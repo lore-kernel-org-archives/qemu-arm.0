@@ -1,137 +1,144 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2696579wru;
-        Fri, 28 Jun 2019 09:46:25 -0700 (PDT)
-X-Received: by 2002:ac2:4243:: with SMTP id m3mr483295lfl.9.1561740385091;
-        Fri, 28 Jun 2019 09:46:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561740385; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2602049wru;
+        Mon, 1 Jul 2019 05:31:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx9IM3rL8fKkjUGsgH81AY2LgSMgzrJ4bHW4qqJgBacIeeX/BcLQPiYRWWDzdINUyZ4i8Pf
+X-Received: by 2002:a50:b561:: with SMTP id z30mr28786389edd.87.1561984301140;
+        Mon, 01 Jul 2019 05:31:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561984301; cv=none;
         d=google.com; s=arc-20160816;
-        b=BxqHQ+R6eII2GTMK2rFz9Baa0Yl5RGb5SM4T60Ia+Hmfzb4E7nLuENBysLNRJ7VXN5
-         qRIM5ZPB+CyByxozmOvA/S6CpttlE6cRPJZOaQVpzrVYdgTfIgMQE7jffX4zCBnyojUH
-         S+WRAt3Zu/nKXWcxlJQxYG1Rh5m18CEYedCR9tMZL5njYmsN9Q8PeRa7i3o9BcpSfn1M
-         CB1Djli5MPlmhwKCEbSipYYL/NBcp8vxJrO2PHpSxSarAiMDW0b+wtKjB8KXDJHLGnof
-         HDO002++kCTlcf59qj5Ur2mbXMfqlP4tBWrk6JZu765zTr4v8WykAlHeSPkDniOpq/Uw
-         jqfw==
+        b=BP3z7ksgT5ayl++fuuPxHWnz2aGZhsSR2CoNQG5kI01XEsYVaakrxu9udM+HHrAE46
+         LAV+DC6qoXHsYuaurjs+So2KUxKzatz/MJpbz/2rzJ7y4wKaEucm9CV7lg5vjUUWHtb/
+         tMMNWnh0KSUzYbQXSso1JRaEJWrDr5hF47OgH9Q0Gi96mI8ResjKCgc8lZsZ22nu31qv
+         KOht/HuzMNbWNh4IOMXXzacdKytbZkQHlL7nKjvgUXKys+bCz5p+//+PIaJyvq2dYC8d
+         FPhljRFBGp5GtzyXqVMRApHNQQwengFZHf6sPHsgO9eLYCFk9UudklO4IKc9D4SeIPHr
+         W/SA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=lf7WOLdPUXHcz585kTad04mWr7d5k1f/cV/mp/ntXhA=;
-        b=IjWFnyBpiy3tu45O4zY9UiJSx8TpnN4lTXR6jqCoaJ/YxLsPP6RgPYmqHtPUJHAEzz
-         DrPI6387UmiWUlQ5mALi98EI/Kvyk3fdn5yCuKOje+mrhnDrNiFJVwGgI8iyOoe/He28
-         o1vgVGnsCBTTwn0YSKqae/3IZhGHYQfDzMBRPVNB4Tszq2sGp4l+z0b9HixICd8sAUhS
-         B+EJTH+ZnH4bmy49sy2j2+gIk/fste1xxoyCsI2zfy83PozY+KG8TbtHsxOj38fds3To
-         Yy7P2DFpc3bIxFXxyjbxqSOKshCtx5KB0CrpNS8bURXTbJKUUXWQbT5q1zG08FzjPD73
-         WIpw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=54jS8qXWtbAsqQlrrk0y6ex9YFKUvvYfmwAQ/9jNWZg=;
+        b=xjpYCYzjpxERDNr2FjexhMV8R5xXYpT1rlYjokRRv0QcdjiNVLCdUa9sPw5ZYCsinL
+         flIQmZrCOZ+pV/9bQt5jovWb86L2aKaF5BkO2/APfidlMhuCwKRn1ZFKS43N3qr7mb0b
+         Gjb8NxaaaHJnla9iCO8ujv2zRBgRBfW6/T+MBAPtSiiwMh7INQUabeDyMTQhPEy+A70K
+         HpTKZbB+HlmI4QleDn+S/ljTKi7vnPCsKrOPOC/VI8DRjDj/LvUZkLVBQJ2rFxn8wEzT
+         OfhHUiwXF6luamjfpyVfck4U7H7/1/60BjersU46yoTB7t1aZt/GHoFpnMcbhzVJA8gf
+         eV0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uad2o0cM;
-       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alistair23@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id q21sor1891308lji.10.2019.06.28.09.46.24
-        (Google Transport Security);
-        Fri, 28 Jun 2019 09:46:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q36si9305789edd.153.2019.07.01.05.31.41
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 01 Jul 2019 05:31:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=uad2o0cM;
-       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=lf7WOLdPUXHcz585kTad04mWr7d5k1f/cV/mp/ntXhA=;
-        b=uad2o0cMm/v4uFExCn6GXCZ995RWWyRvMxl6iqxIvTXzKYe/qvhdarBojlmCUum6rW
-         XySlyxCjKrPpetBffWG2f2H6bc94txIqTFgbBkD4d/Zs5oxjB5i+hPlanRRMSx/rTQ8F
-         UImnsTwQZRHF61lu+XXJveu/lF5Zssg2Zl9Aic/LSGwBEDck7O01bcHKZLh4vSX1DdDr
-         3jfQlCrwzxsJcnVNmSgIJDciRg7px29I2yKg9eu1U+wZ8JvYaFnp2BEGVL3bQRmtmcsc
-         MrVJDm3FsV15tg9+lxIzs9x7fuKcY7+1ulikGwZomvNzBKqEWnZlo29h/BJYlOAlkqe2
-         LDng==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=lf7WOLdPUXHcz585kTad04mWr7d5k1f/cV/mp/ntXhA=;
-        b=bi5Ze0Zs/ZYqwjFzpbu8LK97toM6LgxXfGrg0DknGYeSE1H1Cbh4Ez0HDxQiebEWtb
-         IMMRlqj4ArAum15WJaJwR60ZHo71Vd98xPYct2tvawYdY0SiO0wjQk/f/Qpbs+514OEs
-         1ExSywTHI9hOvQ0VbdoPHBBZiA6zajoRS2gSscGCNYPo/bQ7dCqb+KdF2G6JB0D5+zjI
-         0GFAZQbmEDDJkXGUFjhFcwdtb2rD59/3VWtuB67C9l4oZ5HohRnIl/P5LNqz4QDeF5MU
-         aHDk2D/QBPlyUIMFj9DMdSLBv8Q/1Qb4LLl3JqztX8vxGwdymveQkevLZjEBxKNddK5K
-         rgag==
-X-Gm-Message-State: APjAAAVCoFu3uMM2T0BURahIIHcLVCeLMNMDhNCPQa5wdhfHzW95CkNz
-	Yz06nih7N/G7aSB7rS4gPrDTXnsmPesIjNS4TcQ=
-X-Google-Smtp-Source: APXvYqwvWulw5oOGJ5qVLM6Ryye6q7t53F3cIdvQOqjTI3rsaABEBgkw1nQ4gRKKpCX9ZQNzsSDfSJpzspiORL+BVus=
-X-Received: by 2002:a2e:5d5a:: with SMTP id r87mr6777381ljb.196.1561740384800;
- Fri, 28 Jun 2019 09:46:24 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58216 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hhvTA-0005te-8C
+	for alex.bennee@linaro.org; Mon, 01 Jul 2019 08:31:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57531)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <philmd@redhat.com>) id 1hhvSu-0005tW-Hv
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 08:31:25 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1hhvSt-0002Tf-62
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 08:31:24 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40194)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1hhvSs-0002Qd-Vn; Mon, 01 Jul 2019 08:31:23 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 06CDD307D915;
+ Mon,  1 Jul 2019 12:31:20 +0000 (UTC)
+Received: from x1w.redhat.com (unknown [10.40.205.170])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8AEEB17CC0;
+ Mon,  1 Jul 2019 12:31:10 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon,  1 Jul 2019 14:31:02 +0200
+Message-Id: <20190701123108.12493-1-philmd@redhat.com>
 MIME-Version: 1.0
-References: <20190627202719.17739-1-philmd@redhat.com> <20190627202719.17739-20-philmd@redhat.com>
-In-Reply-To: <20190627202719.17739-20-philmd@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 28 Jun 2019 09:43:20 -0700
-Message-ID: <CAKmqyKPdRe5iXDEo6EXse4s5QZ59_dWCRV07qSCOPh9rVNW2Yg@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v5 19/28] hw/block/pflash_cfi02: Extract pflash_regions_count()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: Stephen Checkoway <stephen.checkoway@oberlin.edu>, 
-	"qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Kevin Wolf <kwolf@redhat.com>, 
-	Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>, 
-	Qemu-block <qemu-block@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
-	John Snow <jsnow@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Alistair Francis <alistair@alistair23.me>, Magnus Damm <magnus.damm@gmail.com>, 
-	Markus Armbruster <armbru@redhat.com>, Max Reitz <mreitz@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Michael Walle <michael@walle.cc>, qemu-arm <qemu-arm@nongnu.org>, 
-	"open list:New World" <qemu-ppc@nongnu.org>, Antony Pavlov <antonynpavlov@gmail.com>, 
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Jan Kiszka <jan.kiszka@web.de>, 
-	Aurelien Jarno <aurelien@aurel32.net>, David Gibson <david@gibson.dropbear.id.au>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.48]); Mon, 01 Jul 2019 12:31:20 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
-X-TUID: xoVakLn1pmd3
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH 0/6] hw/arm: Use ARM_CPU_TYPE_NAME() and
+ object_initialize_child()
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Jason Wang <jasowang@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: k+FTyQHWhpcW
 
-On Thu, Jun 27, 2019 at 1:54 PM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> Extract the pflash_regions_count() function, the code will be
-> easier to review.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+First we use ARM_CPU_TYPE_NAME() when we should.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Then is follow up of
+https://lists.gnu.org/archive/html/qemu-devel/2019-05/msg01492.html
 
-Alistair
+  This series looks at Eduardo suggestions from [1]
+  and Thomas commit aff39be0ed97 to replace various
+  object_initialize + qdev_set_parent_bus calls by
+  sysbus_init_child_obj().
 
-> ---
->  hw/block/pflash_cfi02.c | 8 ++++++--
->  1 file changed, 6 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/block/pflash_cfi02.c b/hw/block/pflash_cfi02.c
-> index 1f096ec185..a0d3bd60dc 100644
-> --- a/hw/block/pflash_cfi02.c
-> +++ b/hw/block/pflash_cfi02.c
-> @@ -157,6 +157,11 @@ static void pflash_register_memory(PFlashCFI02 *pfl,=
- int rom_mode)
->      pfl->rom_mode =3D rom_mode;
->  }
->
-> +static size_t pflash_regions_count(PFlashCFI02 *pfl)
-> +{
-> +    return pfl->cfi_table[0x2c];
-> +}
-> +
->  static void pflash_timer (void *opaque)
->  {
->      PFlashCFI02 *pfl =3D opaque;
-> @@ -192,9 +197,8 @@ static uint64_t pflash_data_read(PFlashCFI02 *pfl, hw=
-addr offset,
->  static uint32_t pflash_sector_len(PFlashCFI02 *pfl, hwaddr offset)
->  {
->      assert(offset < pfl->chip_len);
-> -    int nb_regions =3D pfl->cfi_table[0x2C];
->      hwaddr addr =3D 0;
-> -    for (int i =3D 0; i < nb_regions; ++i) {
-> +    for (int i =3D 0; i < pflash_regions_count(pfl); ++i) {
->          uint64_t region_size =3D (uint64_t)pfl->nb_blocs[i] * pfl->secto=
-r_len[i];
->          if (addr <=3D offset && offset < addr + region_size) {
->              return pfl->sector_len[i];
-> --
-> 2.20.1
->
->
+Finally, some devices are declared orphean while they have a parent,
+let them be together again.
+
+[1] https://patchwork.ozlabs.org/patch/943333/#1953608
+
+Philippe Mathieu-Daud=C3=A9 (6):
+  hw/arm: Use ARM_CPU_TYPE_NAME() macro when appropriate
+  hw/arm: Use object_initialize_child for correct reference counting
+  hw/arm: Use sysbus_init_child_obj for correct reference counting
+  hw/arm/fsl-imx: Add the cpu as child of the SoC object
+  hw/dma/xilinx_axi: Use object_initialize_child for correct ref.
+    counting
+  hw/net/xilinx_axi: Use object_initialize_child for correct ref.
+    counting
+
+ hw/arm/allwinner-a10.c  |  3 ++-
+ hw/arm/cubieboard.c     |  3 ++-
+ hw/arm/digic.c          |  3 ++-
+ hw/arm/exynos4_boards.c |  4 ++--
+ hw/arm/fsl-imx25.c      |  4 +++-
+ hw/arm/fsl-imx31.c      |  4 +++-
+ hw/arm/fsl-imx6.c       |  3 ++-
+ hw/arm/fsl-imx6ul.c     |  3 ++-
+ hw/arm/mcimx7d-sabre.c  |  9 ++++-----
+ hw/arm/mps2-tz.c        | 15 +++++++--------
+ hw/arm/musca.c          |  9 +++++----
+ hw/arm/xlnx-zynqmp.c    |  8 ++++----
+ hw/dma/xilinx_axidma.c  | 16 ++++++++--------
+ hw/net/xilinx_axienet.c | 17 ++++++++---------
+ 14 files changed, 54 insertions(+), 47 deletions(-)
+
+--=20
+2.20.1
+

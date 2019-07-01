@@ -1,99 +1,99 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2717781wru;
-        Mon, 1 Jul 2019 07:33:12 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyJjzAv6PsB6xGipeWhbdSPEL6rnh2AJxtiuahE+2NK7Vx5rZKb6Un3Sfml0HpzoOShaD0e
-X-Received: by 2002:a17:906:d6a:: with SMTP id s10mr23077360ejh.180.1561991592751;
-        Mon, 01 Jul 2019 07:33:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561991592; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2720330wru;
+        Mon, 1 Jul 2019 07:36:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxKhqsrnVOgKZ8oiIIjZC1Geug0kS/Z9uw+e1woP7bROENAmURBMGqG+ZAKz2Swg/jlfp5z
+X-Received: by 2002:a05:6402:8c3:: with SMTP id d3mr21272254edz.183.1561991762299;
+        Mon, 01 Jul 2019 07:36:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561991762; cv=none;
         d=google.com; s=arc-20160816;
-        b=BQGpbPBr5hcsa5D2iDrbZGYSKELIkHqratz6jcHtbLprzotoZS02CXn+OhUO15VMoQ
-         qlr5NpbmDe19d/rcmbttO8tWgZZTi4dJiPyWHY0rU7IFRQP0ry9XpKm8GNLc83ujaYZY
-         FxpkggFw6RJAyW5lbpQMZu+Gv4vgX1o4RURlgPAgtsPPa6NQoUTfgq5dtrryqtuyX4ic
-         z96A6kFdbFQk2SxynCEtcsS6OglRUmxkRNCAfsRcO4Aq5TBhZAn9kQVLwNNJC11mE9qK
-         sYxY8G2WN/o0qp5Pgr42YHtYLmf0ciJ/So8PBMm5qG5u3PGKZ2Jft98ZC0iM9RYlyax1
-         no3g==
+        b=oQfi4Ha5DbDUtOWB7IpHvxfX4uhWi+hsbRWBwnXIH2bkquNvXeDOYqwRu0QaO6RrMA
+         cQfAQF1cCytxGT67XpfzcJvpcPbt1oNc8k4lEPuL/pyfndc/lDCcLotCnzDeN0N+ovtH
+         cCAlNJICJ3bysJjaSnImLOwYOjeHs7sjuUrsDnKvUKq1KR11/kHZN0tZLKsEV/JfB2QR
+         59ksVsN9xuD8QrMEgXQOdU7uh7jqJOVbiDB+WRr7NjQwrt4xWhTdD+3I8yvwwoZjc2uK
+         YHHPA+Xl+d8hWuvpGNhQn2py3r4EiNZBoMaqm5mwkw67+VqJ9jHq0SlD2eiuHQkKYV98
+         bsVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=7SXR3zO9cp1ANHx7ow9CJZAvcgm5OoRPKzo7VdBR5Rk=;
-        b=LW9IVa8XKnh20xmIh1E5+DE0neJAz8INcJ5DQOQh/N6arLXmaOOpNMMEgJ7/19dqYB
-         1x23O9FAYlrpA5PjRJ58FWGhg5sXlF4BKO+CUrYhwKcZWoe6RVaaRl2TrrEym/2V03eE
-         6GhSFphKZdJQAv9lfs88Anp4npYr1txbbPWiQlWJpjVImFe4lZkreL4MsOJlxX72zQaE
-         1oA0B0iqrFA/rEKnS+vPtZ3/9cBagWOAdT0TnC/4k1DAbZJ02k63vw9GoLnRcjhiO3It
-         15c+6nRFAa69V+lYZswFf68PG+L5JI+gFsa8Cs8rHhGrGrWVKTKJ+zurJajMEJF9NJ4+
-         L4Qw==
+        bh=JFZ6A9/Tq76ek+zANoM+rQdepd9TjEaPsh9J0af/75E=;
+        b=ubqXSRFYECrEm4QkbyZMpxzaeksiM64waN+XjXBRzHJwL0/M2O4ggysOfvDD+rjeM5
+         ilUZfkmQiMtobxnsbz+MbouDP9Q5StoGHB0IAVe2GAmOD3xP1vL3mtOgmkJdnZiSpeN+
+         P8ed2fP3mrh2Hb6w7AtG70SDWsUFap2zeUY4AFVb8eNpl/Mz8v3lxSysFw7ftHDU3Vi/
+         oGmDV2cAvZglqMkohbDw0FJe97PR4CVXKjGy8gROG+PXaqjotm2JsyWYEAvSQOlrytWR
+         84eGbgPeSYPVpdd/PKWdXUXctz4ZoxytOvpOTMmcJFhu0TO1ycsdDfH0i2iCDNlWSHTR
+         93fw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="KaN4YC/O";
+       dkim=fail header.i=@linaro.org header.s=google header.b=GZ55qWJs;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j2si8975402edh.405.2019.07.01.07.33.12
+        by mx.google.com with ESMTPS id j5si7200303ejb.211.2019.07.01.07.36.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jul 2019 07:33:12 -0700 (PDT)
+        Mon, 01 Jul 2019 07:36:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="KaN4YC/O";
+       dkim=fail header.i=@linaro.org header.s=google header.b=GZ55qWJs;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59370 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59416 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hhxMl-0001ML-Pu
-	for alex.bennee@linaro.org; Mon, 01 Jul 2019 10:33:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54760)
+	id 1hhxPV-0004t5-CN
+	for alex.bennee@linaro.org; Mon, 01 Jul 2019 10:36:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46983)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hhxHy-00067o-GE
- for qemu-devel@nongnu.org; Mon, 01 Jul 2019 10:28:16 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hhwjb-0002MF-Sd
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 09:52:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hhxHx-0006aJ-Do
- for qemu-devel@nongnu.org; Mon, 01 Jul 2019 10:28:14 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:32926)
+ (envelope-from <peter.maydell@linaro.org>) id 1hhwja-0002vt-Pk
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 09:52:43 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:41999)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hhxHx-0006Zc-7U
- for qemu-devel@nongnu.org; Mon, 01 Jul 2019 10:28:13 -0400
-Received: by mail-oi1-x242.google.com with SMTP id u15so9980763oiv.0
- for <qemu-devel@nongnu.org>; Mon, 01 Jul 2019 07:28:12 -0700 (PDT)
+ id 1hhwja-0002vD-Hy
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 09:52:42 -0400
+Received: by mail-oi1-x243.google.com with SMTP id s184so9994242oie.9
+ for <qemu-devel@nongnu.org>; Mon, 01 Jul 2019 06:52:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=7SXR3zO9cp1ANHx7ow9CJZAvcgm5OoRPKzo7VdBR5Rk=;
- b=KaN4YC/OT8uUTrRz854sdDDoZSJH3CHZ4MrlgNuzqNhb9jSdVYjRMOAv9ShrrwW8Ol
- omxJkjAu+AszK4hp4OfCLvy9p9rkjIcZtrGs6tMCIFc7i++DDh3OxDWhd5t0lOuG2F8S
- pEh59HYv17p2qCKN8VUJgqJafZk8umhPBwP/19E+jV1c+jtRJC7Z5xMQs8zKootoKsje
- bO/XbxCvFRjWBS5cAwIiIhFDC/MA1IViFJGIW+8g5tyYvMZBb9qAjb1cG5yZccqjl0bn
- T44NDHi27QAW653y6CNXSrcMJDgJEGazm9zBhS7+4ltetN4sicrv5P8v63z0HvSk+KLk
- WF/g==
+ :cc; bh=JFZ6A9/Tq76ek+zANoM+rQdepd9TjEaPsh9J0af/75E=;
+ b=GZ55qWJsqoxbOFEgWG6NDxXqA6nNS68JmcxyPZH8SKhehT3VL72uFg+hTRxcEylGXz
+ o2IRsQEO71sUxYxBP/L8LjUOlDFRNoB15DZxbPGklVmQcOzkSwFl7QPZh6DjxWqhw7Pu
+ y24RriH3HNbxNmU7QghISWoz8pTC+EeFjw9in+ez/JvJ967zK3MNIeVAhOW6K5ooaBF8
+ EtK9wg0e8J6pnLduf1E0bGTJvFVP9vVWbzB1goPS6LjnsqHkDxRcH1LoHrwMcqbhbU/4
+ R/fI4iwHKdCGEZ8B+80paCq5jSlGmzhKE3GePKnte5RqTWTP5IN8AGlcm7OT47yjp2YN
+ 8kpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=7SXR3zO9cp1ANHx7ow9CJZAvcgm5OoRPKzo7VdBR5Rk=;
- b=B6eHUYA7rp1ersmzkgilguWzmlQri3EwWoV4PEFKFP6ee6CFM6nFXZJ5uwzc5muaCP
- P/JwKUPGuw8dhabHogpLncEufY5la5uV78RUnq9VDO+uLl5wiXNVUO6+JVhEXoC0Vh4t
- blIH7qMqN2uv4C0BTmCpcvXcpxsYHEB/BDcTLOEFeAkDaJvp9q3/l1mQLL+tk7YV7rn2
- PMhv9BZguOESzpshTSbCKtZS4Q745oRI0nvFO6iDt9V42vAs4d04VkW899K2WKCHaxD2
- AMPlgE+v3vCAeGlB8thdhqNgZndtAjsXkv/VYNWR5e4tA+fFJwsvY773pLiK5UYHqPq4
- haMw==
-X-Gm-Message-State: APjAAAUaSBDJiOq+l/tHMcVx00laR9uxLeLwQzsxhZflpgZSI7SWTBK/
- OGkBrY+87chbD9OCuKN7lDWTOHuB/oT8TWT5oHjiZQ==
-X-Received: by 2002:aca:ac48:: with SMTP id v69mr6787581oie.48.1561991292023; 
- Mon, 01 Jul 2019 07:28:12 -0700 (PDT)
+ bh=JFZ6A9/Tq76ek+zANoM+rQdepd9TjEaPsh9J0af/75E=;
+ b=bAGepvr9ON25luoSId6m94TamkfupWjTPyhoqulCtz4RxtLDDg/YySN2SLb5J2LURq
+ oOTZ54FQHooqR3sT530UpH4aspEX6vD9arIOqaSYnVCetoTSp6oMpojyLr69cnjHdAjU
+ a5Pg3chWVOd5oe010uO4K27+IAymQPIstgLP8OC7TFmQXMB2SRKKZ9dkt+u2mvIBQeZ1
+ TYUEBOO6SOfuaNEzQqsz7K7rJNrZZX6DxZWpLJ8SGkSpi96tVE8exIMT7h+tZUrQiynV
+ eyQVPJHLGmkboWhleBBrgY9xhdfBZZhOfMnGys47bk7FKQ+a17uRM4vAVgVkAeHXdmnI
+ bXHw==
+X-Gm-Message-State: APjAAAU1CSsBD82yDfFZvDsYrusp6PdfmkOTSRs6d/OtOouG7rV71rL3
+ sr8BfW0ke/aLJxeJK/sdCldRTagt97kirbg54q1bCw==
+X-Received: by 2002:a05:6808:8c2:: with SMTP id
+ k2mr6609602oij.98.1561989161521; 
+ Mon, 01 Jul 2019 06:52:41 -0700 (PDT)
 MIME-Version: 1.0
-References: <1561890034-15921-1-git-send-email-hongbo.zhang@linaro.org>
- <1561890034-15921-2-git-send-email-hongbo.zhang@linaro.org>
-In-Reply-To: <1561890034-15921-2-git-send-email-hongbo.zhang@linaro.org>
+References: <20190625121421.22280-1-shameerali.kolothum.thodi@huawei.com>
+In-Reply-To: <20190625121421.22280-1-shameerali.kolothum.thodi@huawei.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 1 Jul 2019 15:28:01 +0100
-Message-ID: <CAFEAcA-F7kcQe1cPn4v22CJu=SyEq5Bi9hAXtb-Z1+-f2b6tYA@mail.gmail.com>
-To: Hongbo Zhang <hongbo.zhang@linaro.org>
+Date: Mon, 1 Jul 2019 14:52:30 +0100
+Message-ID: <CAFEAcA-w1AijFogZxX_9gz2+oDGH-=e2QAOdyCRdji_6k87d-A@mail.gmail.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::242
-Subject: Re: [Qemu-devel] [PATCH v9 1/2] hw/arm: Add arm SBSA reference
- machine, skeleton part
+X-Received-From: 2607:f8b0:4864:20::243
+Subject: Re: [Qemu-devel] [PATCH v6 0/8] ARM virt: ACPI memory hotplug
+ support
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,73 +105,59 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Leif Lindholm <leif.lindholm@linaro.org>,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Cc: Samuel Ortiz <sameo@linux.intel.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Xu Wei <xuwei5@hisilicon.com>,
+ Linuxarm <linuxarm@huawei.com>, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Igor Mammedov <imammedo@redhat.com>,
+ sebastien.boeuf@intel.com, Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xDoSBcsjXPnU
+X-TUID: U11jaKeSN470
 
-On Sun, 30 Jun 2019 at 11:21, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
+On Tue, 25 Jun 2019 at 13:15, Shameer Kolothum
+<shameerali.kolothum.thodi@huawei.com> wrote:
 >
-> For the Aarch64, there is one machine 'virt', it is primarily meant to
-> run on KVM and execute virtualization workloads, but we need an
-> environment as faithful as possible to physical hardware, for supporting
-> firmware and OS development for pysical Aarch64 machines.
-
-"physical"
-
+> This series is an attempt to provide device memory hotplug support
+> on ARM virt platform. This is based on Eric's recent works here[1]
+> and carries some of the pc-dimm related patches dropped from his
+> series.
 >
-> This patch introduces new machine type 'sbsa-ref' with main features:
->  - Based on 'virt' machine type.
->  - A new memory map.
->  - CPU type cortex-a57.
->  - EL2 and EL3 are enabled.
->  - GIC version 3.
->  - System bus AHCI controller.
->  - System bus EHCI controller.
->  - CDROM and hard disc on AHCI bus.
->  - E1000E ethernet card on PCIE bus.
->  - VGA display adaptor on PCIE bus.
->  - No virtio deivces.
-
-"devices"
-
->  - No fw_cfg device.
->  - No ACPI table supplied.
->  - Only minimal device tree nodes.
+> The kernel support for arm64 memory hot add was added recently by
+> Robin and hence the guest kernel should be => 5.0-rc1.
 >
-> Arm Trusted Firmware and UEFI porting to this are done accordingly, and
-> it should supply ACPI tables to load OS, the minimal device tree nodes
-> supplied from this platform are only to pass the dynamic info reflecting
-> command line input to firmware, not for loading OS.
+> NVDIM support is not included currently as we still have an unresolved
+> issue while hot adding NVDIMM[2]. However NVDIMM cold plug patches
+> can be included, but not done for now, for keeping it simple.
 >
-> To make the review easier, this task is split into two patches, the
-> fundamental sceleton part and the peripheral devices part, this patch is
-
-"skeleton"
-
-> the first part.
+> This makes use of GED device to sent hotplug ACPI events to the
+> Guest. GED code is based on Nemu. Thanks to the efforts of Samuel and
+> Sebastien to add the hardware-reduced support to Nemu using GED
+> device[3]. (Please shout if I got the author/signed-off wrong for
+> those patches or missed any names).
 >
-> Signed-off-by: Hongbo Zhang <hongbo.zhang@linaro.org>
-> ---
+> This is sanity tested on a HiSilicon ARM64 platform and appreciate
+> any further testing.
 
-> +static const int sbsa_ref_irqmap[] = {
-> +    [SBSA_UART] = 1,
-> +    [SBSA_RTC] = 2,
-> +    [SBSA_PCIE] = 3, /* ... to 6 */
-> +    [SBSA_GPIO] = 7,
-> +    [SBSA_SECURE_UART] = 8,
-> +    [SBSA_SECURE_UART_MM] = 9,
-> +    [SBSA_AHCI] = 10,
-> +    [SBSA_EHCI] = 11,
-> +};
+Hi; this seems to fail 'make check' (on an x86 host):
 
-This array isn't used in this patch, so it needs to be moved
-into patch 2, to avoid a compile failure with clang because
-of the unused-variable.
+acpi-test: Warning! DSDT binary file mismatch. Actual
+[aml:/tmp/aml-01P83Z], Expected [aml:tests/data/acpi/virt/DSDT].
+acpi-test: Warning! DSDT mismatch. Actual [asl:/tmp/asl-4ZP83Z.dsl,
+aml:/tmp/aml-01P83Z], Expected [asl:/tmp/asl-H7UE4Z.dsl,
+aml:tests/data/acpi/virt/DSDT].
+**
+ERROR:/home/petmay01/linaro/qemu-from-laptop/qemu/tests/bios-tables-test.c:434:test_acpi_asl:
+assertion failed: (all_tables_match)
+ERROR - Bail out!
+ERROR:/home/petmay01/linaro/qemu-from-laptop/qemu/tests/bios-tables-test.c:434:test_acpi_asl:
+assertion failed: (all_tables_match)
+Aborted (core dumped)
+/home/petmay01/linaro/qemu-from-laptop/qemu/tests/Makefile.include:894:
+recipe for target 'check-qtest-aarch64' failed
+
+Is there a need to update the reference DSDT used by the test?
 
 thanks
 -- PMM

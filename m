@@ -1,144 +1,138 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2602049wru;
-        Mon, 1 Jul 2019 05:31:41 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx9IM3rL8fKkjUGsgH81AY2LgSMgzrJ4bHW4qqJgBacIeeX/BcLQPiYRWWDzdINUyZ4i8Pf
-X-Received: by 2002:a50:b561:: with SMTP id z30mr28786389edd.87.1561984301140;
-        Mon, 01 Jul 2019 05:31:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561984301; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2763664wru;
+        Mon, 1 Jul 2019 08:19:53 -0700 (PDT)
+X-Received: by 2002:aca:450:: with SMTP id 77mr7289620oie.114.1561994393326;
+        Mon, 01 Jul 2019 08:19:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561994393; cv=none;
         d=google.com; s=arc-20160816;
-        b=BP3z7ksgT5ayl++fuuPxHWnz2aGZhsSR2CoNQG5kI01XEsYVaakrxu9udM+HHrAE46
-         LAV+DC6qoXHsYuaurjs+So2KUxKzatz/MJpbz/2rzJ7y4wKaEucm9CV7lg5vjUUWHtb/
-         tMMNWnh0KSUzYbQXSso1JRaEJWrDr5hF47OgH9Q0Gi96mI8ResjKCgc8lZsZ22nu31qv
-         KOht/HuzMNbWNh4IOMXXzacdKytbZkQHlL7nKjvgUXKys+bCz5p+//+PIaJyvq2dYC8d
-         FPhljRFBGp5GtzyXqVMRApHNQQwengFZHf6sPHsgO9eLYCFk9UudklO4IKc9D4SeIPHr
-         W/SA==
+        b=NzhO8ZhREn5LuJW23BcX7Fu52OVLJGoeaA8TG1IED40mdj4BmGbGe2I2u1gDs5YLvn
+         BTrjH45/mbtgn/5SKGXZC7wp3kYLfG1ZlRrK3hEoSWAO1jrHmxT/FXMtWQF25xsuQwnC
+         fQEBDEbSk6HNJwUKyevCwzJ51yRFhSc4hlKDV0n64WBeBDtPPWOf3mAuXbw50H0yJvNr
+         NrHF4OGIyBnH/+3IDV6PDP5/Qakqk0u1/0fDoMAHGjIQZbJbUHkUIrasCAhWBxAcUOhk
+         hNxV5dJHsf44xdeEjqafB6MDzUPxuxTKAqOyQ7WP1VhymgX7aOL3RMWIosbZaK+kkvzp
+         K1jA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=54jS8qXWtbAsqQlrrk0y6ex9YFKUvvYfmwAQ/9jNWZg=;
-        b=xjpYCYzjpxERDNr2FjexhMV8R5xXYpT1rlYjokRRv0QcdjiNVLCdUa9sPw5ZYCsinL
-         flIQmZrCOZ+pV/9bQt5jovWb86L2aKaF5BkO2/APfidlMhuCwKRn1ZFKS43N3qr7mb0b
-         Gjb8NxaaaHJnla9iCO8ujv2zRBgRBfW6/T+MBAPtSiiwMh7INQUabeDyMTQhPEy+A70K
-         HpTKZbB+HlmI4QleDn+S/ljTKi7vnPCsKrOPOC/VI8DRjDj/LvUZkLVBQJ2rFxn8wEzT
-         OfhHUiwXF6luamjfpyVfck4U7H7/1/60BjersU46yoTB7t1aZt/GHoFpnMcbhzVJA8gf
-         eV0g==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=88izuRn6GLm/EmQGtulJZg1i2yfV9ZeB3PdO+YNXXoU=;
+        b=k92DJfywCx3uQNKuV3p1DDewocJxK59qAPTDfyUfqenbD/3SVyJuXc0hacgLanaixF
+         4qfe6qQStaHK9ygB/PfeY8JAEwXCAPAc21OPm0m0e6MPmRKL6VvWDchh3xnlg2d/iXnv
+         J+1RAXEfbNIxFfKFm6juKYsask5TSqxCZanfm5zUovqBrZW5q50sa0xtpz4aO1TBf66P
+         QQ4W3ysBzs/JdBRa8IYpeoyU3qB62LV9KFhUxXzb8SDoIwQlFtxIqTkI/mBSGx+v/9hi
+         0ImDKFKxUpX5lfNnPtSWvTG73Jk5kqq3ii4LivC4XSC3vVMEodjOPzM9lC3IMwSfuGoC
+         m+og==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q36si9305789edd.153.2019.07.01.05.31.41
+       dkim=pass header.i=@linaro.org header.s=google header.b=UaM9GUSN;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id u132sor4899358oia.27.2019.07.01.08.19.53
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jul 2019 05:31:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 01 Jul 2019 08:19:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58216 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hhvTA-0005te-8C
-	for alex.bennee@linaro.org; Mon, 01 Jul 2019 08:31:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57531)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hhvSu-0005tW-Hv
- for qemu-arm@nongnu.org; Mon, 01 Jul 2019 08:31:25 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hhvSt-0002Tf-62
- for qemu-arm@nongnu.org; Mon, 01 Jul 2019 08:31:24 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40194)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1hhvSs-0002Qd-Vn; Mon, 01 Jul 2019 08:31:23 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 06CDD307D915;
- Mon,  1 Jul 2019 12:31:20 +0000 (UTC)
-Received: from x1w.redhat.com (unknown [10.40.205.170])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8AEEB17CC0;
- Mon,  1 Jul 2019 12:31:10 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Mon,  1 Jul 2019 14:31:02 +0200
-Message-Id: <20190701123108.12493-1-philmd@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=UaM9GUSN;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=88izuRn6GLm/EmQGtulJZg1i2yfV9ZeB3PdO+YNXXoU=;
+        b=UaM9GUSNRSvLuWgOHYBV3RGaMM1ltC/hXydAor6EgaNxD5KG8SEx2lmQcejuO+zGfi
+         qmzh0BDMx9QnJff5b9hLUXBNCA7liO7xvYKClBi52IiCGh3pTJmWWLmrK7mwzfZ8lmWX
+         NwDEpBFOnexaECf96dCvA9ECUycHtGm8r/FzQCyxiKpHLcvSA9aaqOhXIVdx7M06NDoK
+         z/ul2/6ulK1UZEz6bdzERyWkzthUIq7JHkN+CKmdlvnzrqqmj+ELvJFQdIeq0ct66hnq
+         bEykwNL6Ss21fU6lSUYG8c072iHKbzVhn8Q5YwDR6SZRyrtwyIOix2aP5PIEp8yzT+rT
+         hItw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=88izuRn6GLm/EmQGtulJZg1i2yfV9ZeB3PdO+YNXXoU=;
+        b=hKEDaMADNgK+9c7c8Ch0ndDHdmv2yJFy8LVg7MLLL4XTTL+65xMY1t+59IOuTVCkgE
+         Bg8Bq/K5F2ea0gYdWLdkMPZyag2BI832T3DLe9dGTHbWkcSZG7gjXBK/wfXT8Lw6+xDI
+         UOeWJURP2D/35xRB3yeVCtEzZu4aHiHd2M2wJ3HTAmv0SE7+LgQ/P1IHKkhwV+vD0cj7
+         vXnGdgihLLZdXAXQZWkRC5UityW+/VTSrbjTY/oUn+DGtnN2iO6zzoHIG4q5e4mJl4Oh
+         iXodtvooIMc4+RWH5fSbI0ZiPOOUKsOXTdyH7LPbAEnrCPP0yW7xOGVD8RQoIGR+D0Z7
+         INLQ==
+X-Gm-Message-State: APjAAAVh9+waKwYCA62/0opNGo7T2yNprtk27re0/xk/rNrS2xMKPpT9
+	jYeDvrit2w8h0CxyDlU542Kwsoq7jKOdXuCbhCGsUnHd
+X-Google-Smtp-Source: APXvYqzbYS1BvCZjBSoFBGwSGjTzA8eYsybKPAmnmyGxcieu+hxANClVrQ3+0NJjwHxNaaj3jxAds2AASfCrKJ14JZo=
+X-Received: by 2002:aca:6185:: with SMTP id v127mr7352429oib.163.1561994392862;
+ Mon, 01 Jul 2019 08:19:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.48]); Mon, 01 Jul 2019 12:31:20 +0000 (UTC)
+References: <20190701132516.26392-1-philmd@redhat.com> <20190701132516.26392-14-philmd@redhat.com>
+In-Reply-To: <20190701132516.26392-14-philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 1 Jul 2019 16:19:42 +0100
+Message-ID: <CAFEAcA8GtFqxRnWS+Gb2GZresBXuJFzXbnEWTnOkUfcumdje9w@mail.gmail.com>
+Subject: Re: [PATCH v3 13/27] target/arm: Move debug routines to debug_helper.c
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Yang Zhong <yang.zhong@intel.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Rob Bradford <robert.bradford@intel.com>, Samuel Ortiz <sameo@linux.intel.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 0/6] hw/arm: Use ARM_CPU_TYPE_NAME() and
- object_initialize_child()
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Andrey Smirnov <andrew.smirnov@gmail.com>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>,
- Antony Pavlov <antonynpavlov@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k+FTyQHWhpcW
+X-TUID: H+mtWniRgvk6
 
-First we use ARM_CPU_TYPE_NAME() when we should.
+On Mon, 1 Jul 2019 at 14:26, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
+> wrote:
+>
+> These routines are TCG specific.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  target/arm/Makefile.objs  |   2 +-
+>  target/arm/cpu.c          |  11 +-
+>  target/arm/debug_helper.c | 334 ++++++++++++++++++++++++++++++++++++++
+>  target/arm/helper.c       |  23 ---
+>  target/arm/op_helper.c    | 295 ---------------------------------
+>  5 files changed, 339 insertions(+), 326 deletions(-)
+>  create mode 100644 target/arm/debug_helper.c
 
-Then is follow up of
-https://lists.gnu.org/archive/html/qemu-devel/2019-05/msg01492.html
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -2566,7 +2566,6 @@ static void arm_cpu_class_init(ObjectClass *oc, voi=
+d *data)
+>      cc->gdb_write_register =3D arm_cpu_gdb_write_register;
+>  #ifndef CONFIG_USER_ONLY
+>      cc->do_interrupt =3D arm_cpu_do_interrupt;
+> -    cc->get_phys_page_attrs_debug =3D arm_cpu_get_phys_page_attrs_debug;
+>      cc->asidx_from_attrs =3D arm_asidx_from_attrs;
+>      cc->vmsd =3D &vmstate_arm_cpu;
+>      cc->virtio_is_big_endian =3D arm_cpu_virtio_is_big_endian;
+> @@ -2578,19 +2577,17 @@ static void arm_cpu_class_init(ObjectClass *oc, v=
+oid *data)
+>      cc->gdb_arch_name =3D arm_gdb_arch_name;
+>      cc->gdb_get_dynamic_xml =3D arm_gdb_get_dynamic_xml;
+>      cc->gdb_stop_before_watchpoint =3D true;
+> -    cc->debug_excp_handler =3D arm_debug_excp_handler;
+> -    cc->debug_check_watchpoint =3D arm_debug_check_watchpoint;
+> -#if !defined(CONFIG_USER_ONLY)
+> -    cc->adjust_watchpoint_address =3D arm_adjust_watchpoint_address;
+> -#endif
+> -
+>      cc->disas_set_info =3D arm_disas_set_info;
+>  #ifdef CONFIG_TCG
+>      cc->tcg_initialize =3D arm_translate_init;
+>      cc->tlb_fill =3D arm_cpu_tlb_fill;
+> +    cc->debug_excp_handler =3D arm_debug_excp_handler;
+> +    cc->debug_check_watchpoint =3D arm_debug_check_watchpoint;
+>  #if !defined(CONFIG_USER_ONLY)
+>      cc->do_unaligned_access =3D arm_cpu_do_unaligned_access;
+>      cc->do_transaction_failed =3D arm_cpu_do_transaction_failed;
+> +    cc->adjust_watchpoint_address =3D arm_adjust_watchpoint_address;
+> +    cc->get_phys_page_attrs_debug =3D arm_cpu_get_phys_page_attrs_debug;
+>  #endif /* CONFIG_TCG && !CONFIG_USER_ONLY */
 
-  This series looks at Eduardo suggestions from [1]
-  and Thomas commit aff39be0ed97 to replace various
-  object_initialize + qdev_set_parent_bus calls by
-  sysbus_init_child_obj().
+I don't think get_phys_page_attrs_debug is TCG specific -- anything
+that wants to do a virt-to-phys translation will use it, including
+for instance cpu_memory_rw_debug() or the monitor gva2gpa command.
+target/i386/cpu.c doesn't put its cc->get_phys_page_debug assignment
+inside a CONFIG_TCG ifdef.
 
-Finally, some devices are declared orphean while they have a parent,
-let them be together again.
-
-[1] https://patchwork.ozlabs.org/patch/943333/#1953608
-
-Philippe Mathieu-Daud=C3=A9 (6):
-  hw/arm: Use ARM_CPU_TYPE_NAME() macro when appropriate
-  hw/arm: Use object_initialize_child for correct reference counting
-  hw/arm: Use sysbus_init_child_obj for correct reference counting
-  hw/arm/fsl-imx: Add the cpu as child of the SoC object
-  hw/dma/xilinx_axi: Use object_initialize_child for correct ref.
-    counting
-  hw/net/xilinx_axi: Use object_initialize_child for correct ref.
-    counting
-
- hw/arm/allwinner-a10.c  |  3 ++-
- hw/arm/cubieboard.c     |  3 ++-
- hw/arm/digic.c          |  3 ++-
- hw/arm/exynos4_boards.c |  4 ++--
- hw/arm/fsl-imx25.c      |  4 +++-
- hw/arm/fsl-imx31.c      |  4 +++-
- hw/arm/fsl-imx6.c       |  3 ++-
- hw/arm/fsl-imx6ul.c     |  3 ++-
- hw/arm/mcimx7d-sabre.c  |  9 ++++-----
- hw/arm/mps2-tz.c        | 15 +++++++--------
- hw/arm/musca.c          |  9 +++++----
- hw/arm/xlnx-zynqmp.c    |  8 ++++----
- hw/dma/xilinx_axidma.c  | 16 ++++++++--------
- hw/net/xilinx_axienet.c | 17 ++++++++---------
- 14 files changed, 54 insertions(+), 47 deletions(-)
-
---=20
-2.20.1
-
+thanks
+-- PMM

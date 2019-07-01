@@ -1,34 +1,34 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2654010wru;
-        Mon, 1 Jul 2019 06:26:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwrCLZjV80/xd6tvdCFm7Iv5muL2VT4BrY6MGpIKPu8La4/7Q3wU4DV4MTpgTjwwKxX3sEW
-X-Received: by 2002:aed:24d9:: with SMTP id u25mr20761846qtc.111.1561987611474;
-        Mon, 01 Jul 2019 06:26:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561987611; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2654135wru;
+        Mon, 1 Jul 2019 06:27:01 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzrqyHE/31vD7/KbZtI/GDEXjuGGHxSOycZwCd0bIj5mKp+iSigoLsxbhUmIYNY3icBSei7
+X-Received: by 2002:a37:8ac3:: with SMTP id m186mr20647064qkd.476.1561987621388;
+        Mon, 01 Jul 2019 06:27:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561987621; cv=none;
         d=google.com; s=arc-20160816;
-        b=sYPM8nXFxDAO25+pNYVOcT8xgJm/plL0vKFPKr4Odlwso39Q8wx8TxA14HmEW8Nw4j
-         OsOe31tNT/zk4lhtuu3HqHcxnSQ/aihVKMTv5vuiD7ThrHVY0w2U87GYt0sJDXAnOIqT
-         dVB5ekaRliD3lTaGBZChIIfFeU2dNUCjh+98z2jFwh/znxU/I7IavigAEhEycay/+v/w
-         riguIfKHu8L3sdFat51gfGTi/JSxi2KOjEeHgHRT/2fWoyCXH72XSS6jHiMmtk8oGHs3
-         kDZ1rPO8ywiRAbhcRaGKzq282UoRmEfiQiJoqHgAyqXe+oVsxm5+QEDvx97LS7kc3dK7
-         fPtg==
+        b=s2K/xVBNsjRTq2kw4GAqI2WUHCc1wAZ9SrDoS8u3FXZhGXeyjpH7zWT7eS6OjK9EW7
+         qgqZd1WSu8ifzpvlgWIM1ILHy8kZ+RwPW98yTx+QdKxLbalNHDXYjpMfyZV8Z+DFRxaY
+         IT86LXAOo70z8u9yn15ZWib1xNv0MJY9cWlTTziOHeLg5f+NcCrnfrLzpWyp+2z/Fs/n
+         /anhMTZqCw2o6Xbo1S0lIu7bCMcSMufOoMiPqX43cLpeIDzg/zwPrGnhegnZLyRJfBeA
+         ZpbkTEywQ6Eup+17EFAt070kR0t2+uMGC37guooS+A/cwv20vBrVb3/SXBpq5xRelu4i
+         SDEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=aO0OQfRyFNC3MT6GDwOu7qcPg1Oy3jrBzlG8KFrsjJA=;
-        b=rj4jNzVb9ERteb5v6Y6w/kTYWtEoG4QnXHbtaor+nu6uX1qqs/ud4xUVqz+mGOVnej
-         09u1kni++124n1GVGTMvgDQgQ4QoZMa9HqKqBND3KU4FtHm+CIcSpccdFSv5LZTB2f8b
-         X8/jfTGinnY96+1lWF8TBmlbkfXmBN9JEDA23hBDiOiQpGZngnrYLafDQye21AWYPUr6
-         NtPwLgC0/n26skPZM0gyxbBi6ueCMDIMpMqKRKFarTgMsEiTM0yBHg7ah7ecyUGVRAjd
-         5BUcTYkCSZ+QGX/eYUXIOKwaogu1XHKp6Nbxak+xeNy2qc3ewOpATO+cjP2ljLXoPfPz
-         jdhg==
+        bh=k/h7XGVbxu/crNXysu88UQhYyVJUNg08JH++hiGfSvI=;
+        b=STil1oK4uNftKjpdeRF9c4lyadi9LL5snlswmOfd6LaEH8kYSk0Vm68IOSXp/2JzAS
+         cKPbkH7/NzjjvUF67Iqo0rR8tHWJuS/YZ7YHSEc/SP4dlDjp61dBDbsFAaqavP40pkZp
+         ZGaeKTpzfc/NagqnNd2TcQZtpr+wdRgR653MkhyxHBU6xwKqBcsbrXsXp/W+FdTbdDCJ
+         N/yGNWRJAFnU+liL51lyJxQH6FRzoudTgzAUVgeTDYkxZe3Kd3WtZ5YqOk3hlx6OSviC
+         Eat59E3aPnS0Amo9L/hPsQzTR7QjSPR9uZHubusiUyFbEJ9AIDGAwAF0Ai54gpbWjNY6
+         l7Cg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id d22si7207453qtq.311.2019.07.01.06.26.51
+        by mx.google.com with ESMTPS id r21si7530406qte.212.2019.07.01.06.27.01
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Jul 2019 06:26:51 -0700 (PDT)
+        Mon, 01 Jul 2019 06:27:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
@@ -36,11 +36,11 @@ Authentication-Results: mx.google.com;
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 957D830842D1;
-	Mon,  1 Jul 2019 13:26:50 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 75E7A13A98;
+	Mon,  1 Jul 2019 13:27:00 +0000 (UTC)
 Received: from x1w.redhat.com (unknown [10.40.205.170])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id DD1486085B;
-	Mon,  1 Jul 2019 13:26:47 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 87F5B6085B;
+	Mon,  1 Jul 2019 13:26:55 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Yang Zhong <yang.zhong@intel.com>,
@@ -52,160 +52,96 @@ Cc: Yang Zhong <yang.zhong@intel.com>,
 	Andrew Jones <drjones@redhat.com>,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v3 21/27] target/arm: Declare some M-profile functions publicly
-Date: Mon,  1 Jul 2019 15:25:10 +0200
-Message-Id: <20190701132516.26392-22-philmd@redhat.com>
+Subject: [RFC PATCH v3 23/27] target/arm: Restrict pre-ARMv7 cpus to TCG
+Date: Mon,  1 Jul 2019 15:25:12 +0200
+Message-Id: <20190701132516.26392-24-philmd@redhat.com>
 In-Reply-To: <20190701132516.26392-1-philmd@redhat.com>
 References: <20190701132516.26392-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.40]); Mon, 01 Jul 2019 13:26:50 +0000 (UTC)
-X-TUID: dRUK8d4aB9cK
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Mon, 01 Jul 2019 13:27:00 +0000 (UTC)
+X-TUID: XHTPn1ztW6aG
 
-In the next commit we will split the M-profile functions from this
-file. Some function will be called out of helper.c. Declare them in
-the "internals.h" header.
+KVM requires at least a ARMv7 cpu.
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
-v3: Was v7-only, add v8
----
- target/arm/helper.c    | 38 ++------------------------------------
- target/arm/internals.h | 42 ++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 44 insertions(+), 36 deletions(-)
+ target/arm/cpu.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 515a82af57..4e59ae4d96 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -41,21 +41,6 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-                                hwaddr *phys_ptr, MemTxAttrs *txattrs, int *prot,
-                                target_ulong *page_size_ptr,
-                                ARMMMUFaultInfo *fi, ARMCacheAttrs *cacheattrs);
--
--/* Security attributes for an address, as returned by v8m_security_lookup. */
--typedef struct V8M_SAttributes {
--    bool subpage; /* true if these attrs don't cover the whole TARGET_PAGE */
--    bool ns;
--    bool nsc;
--    uint8_t sregion;
--    bool srvalid;
--    uint8_t iregion;
--    bool irvalid;
--} V8M_SAttributes;
--
--static void v8m_security_lookup(CPUARMState *env, uint32_t address,
--                                MMUAccessType access_type, ARMMMUIdx mmu_idx,
--                                V8M_SAttributes *sattrs);
- #endif
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 37afb12b2d..d0376f46f7 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1643,6 +1643,8 @@ static ObjectClass *arm_cpu_class_by_name(const char *cpu_model)
+ /* CPU models. These are not needed for the AArch64 linux-user build. */
+ #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
  
- static void switch_mode(CPUARMState *env, int mode);
-@@ -7735,25 +7720,6 @@ void arm_log_exception(int idx)
-     }
- }
- 
--/*
-- * Return true if the v7M CPACR permits access to the FPU for the specified
-- * security state and privilege level.
-- */
--static bool v7m_cpacr_pass(CPUARMState *env, bool is_secure, bool is_priv)
--{
--    switch (extract32(env->v7m.cpacr[is_secure], 20, 2)) {
--    case 0:
--    case 2: /* UNPREDICTABLE: we treat like 0 */
--        return false;
--    case 1:
--        return is_priv;
--    case 3:
--        return true;
--    default:
--        g_assert_not_reached();
--    }
--}
--
- /*
-  * What kind of stack write are we doing? This affects how exceptions
-  * generated during the stacking are treated.
-@@ -12119,7 +12085,7 @@ static bool v8m_is_sau_exempt(CPUARMState *env,
-         (address >= 0xe00ff000 && address <= 0xe00fffff);
- }
- 
--static void v8m_security_lookup(CPUARMState *env, uint32_t address,
-+void v8m_security_lookup(CPUARMState *env, uint32_t address,
-                                 MMUAccessType access_type, ARMMMUIdx mmu_idx,
-                                 V8M_SAttributes *sattrs)
++#ifdef CONFIG_TCG
++
+ static void arm926_initfn(Object *obj)
  {
-@@ -12226,7 +12192,7 @@ static void v8m_security_lookup(CPUARMState *env, uint32_t address,
-     }
+     ARMCPU *cpu = ARM_CPU(obj);
+@@ -1853,6 +1855,8 @@ static void cortex_m0_initfn(Object *obj)
+     cpu->midr = 0x410cc200;
  }
  
--static bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-+bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-                               MMUAccessType access_type, ARMMMUIdx mmu_idx,
-                               hwaddr *phys_ptr, MemTxAttrs *txattrs,
-                               int *prot, bool *is_subpage,
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 11bfdba512..232d963875 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -892,6 +892,27 @@ static inline uint32_t v7m_sp_limit(CPUARMState *env)
-     }
++#endif
++
+ static void cortex_m3_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+@@ -2234,6 +2238,8 @@ static void cortex_a15_initfn(Object *obj)
+     define_arm_cp_regs(cpu, cortexa15_cp_reginfo);
  }
  
-+/**
-+ * v7m_cpacr_pass:
-+ * Return true if the v7M CPACR permits access to the FPU for the specified
-+ * security state and privilege level.
-+ */
-+static inline bool v7m_cpacr_pass(CPUARMState *env,
-+                                  bool is_secure, bool is_priv)
-+{
-+    switch (extract32(env->v7m.cpacr[is_secure], 20, 2)) {
-+    case 0:
-+    case 2: /* UNPREDICTABLE: we treat like 0 */
-+        return false;
-+    case 1:
-+        return is_priv;
-+    case 3:
-+        return true;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
++#ifdef CONFIG_TCG
 +
- /**
-  * aarch32_mode_name(): Return name of the AArch32 CPU mode
-  * @psr: Program Status Register indicating CPU mode
-@@ -988,6 +1009,27 @@ static inline int exception_target_el(CPUARMState *env)
+ static void ti925t_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+@@ -2402,6 +2408,8 @@ static void pxa270c5_initfn(Object *obj)
+     cpu->reset_sctlr = 0x00000078;
+ }
  
- #ifndef CONFIG_USER_ONLY
++#endif
++
+ #ifndef TARGET_AARCH64
+ /* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
+  * otherwise, a CPU with as many features enabled as our emulation supports.
+@@ -2470,6 +2478,7 @@ struct ARMCPUInfo {
  
-+/* Security attributes for an address, as returned by v8m_security_lookup. */
-+typedef struct V8M_SAttributes {
-+    bool subpage; /* true if these attrs don't cover the whole TARGET_PAGE */
-+    bool ns;
-+    bool nsc;
-+    uint8_t sregion;
-+    bool srvalid;
-+    uint8_t iregion;
-+    bool irvalid;
-+} V8M_SAttributes;
-+
-+void v8m_security_lookup(CPUARMState *env, uint32_t address,
-+                         MMUAccessType access_type, ARMMMUIdx mmu_idx,
-+                         V8M_SAttributes *sattrs);
-+
-+bool pmsav8_mpu_lookup(CPUARMState *env, uint32_t address,
-+                       MMUAccessType access_type, ARMMMUIdx mmu_idx,
-+                       hwaddr *phys_ptr, MemTxAttrs *txattrs,
-+                       int *prot, bool *is_subpage,
-+                       ARMMMUFaultInfo *fi, uint32_t *mregion);
-+
- /* Cacheability and shareability attributes for a memory access */
- typedef struct ARMCacheAttrs {
-     unsigned int attrs:8; /* as in the MAIR register encoding */
+ static const ARMCPUInfo arm_cpus[] = {
+ #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
++#ifdef CONFIG_TCG
+     { .name = "arm926",      .initfn = arm926_initfn },
+     { .name = "arm946",      .initfn = arm946_initfn },
+     { .name = "arm1026",     .initfn = arm1026_initfn },
+@@ -2482,6 +2491,7 @@ static const ARMCPUInfo arm_cpus[] = {
+     { .name = "arm1176",     .initfn = arm1176_initfn },
+     { .name = "arm11mpcore", .initfn = arm11mpcore_initfn },
+     { .name = "cortex-m0",   .initfn = cortex_m0_initfn,
++#endif
+                              .class_init = arm_v7m_class_init },
+     { .name = "cortex-m3",   .initfn = cortex_m3_initfn,
+                              .class_init = arm_v7m_class_init },
+@@ -2495,6 +2505,7 @@ static const ARMCPUInfo arm_cpus[] = {
+     { .name = "cortex-a8",   .initfn = cortex_a8_initfn },
+     { .name = "cortex-a9",   .initfn = cortex_a9_initfn },
+     { .name = "cortex-a15",  .initfn = cortex_a15_initfn },
++#ifdef CONFIG_TCG
+     { .name = "ti925t",      .initfn = ti925t_initfn },
+     { .name = "sa1100",      .initfn = sa1100_initfn },
+     { .name = "sa1110",      .initfn = sa1110_initfn },
+@@ -2511,6 +2522,7 @@ static const ARMCPUInfo arm_cpus[] = {
+     { .name = "pxa270-b1",   .initfn = pxa270b1_initfn },
+     { .name = "pxa270-c0",   .initfn = pxa270c0_initfn },
+     { .name = "pxa270-c5",   .initfn = pxa270c5_initfn },
++#endif
+ #ifndef TARGET_AARCH64
+     { .name = "max",         .initfn = arm_max_initfn },
+ #endif
 -- 
 2.20.1

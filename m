@@ -1,101 +1,98 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2636085wru;
-        Mon, 1 Jul 2019 06:09:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyPKAFllV8w3G+xC18xADnDVO+g5r3OTM9oREmjZeSsIo54jnmPipMm6rfqGPxT7h9l2JfM
-X-Received: by 2002:a50:ad48:: with SMTP id z8mr28855775edc.66.1561986554193;
-        Mon, 01 Jul 2019 06:09:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561986554; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2750873wru;
+        Mon, 1 Jul 2019 08:07:42 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzWbDrppJeT6+Edyd0iFQ1yGbaLSTSQfQ+PdYy/+j7+sF44RRwwecHd12Jr4cUv/FHhxTGY
+X-Received: by 2002:a17:906:1845:: with SMTP id w5mr24013403eje.0.1561993662660;
+        Mon, 01 Jul 2019 08:07:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561993662; cv=none;
         d=google.com; s=arc-20160816;
-        b=zSs2qLJXa37WpQn9olhLx4YXUCqxmWly0DV6N9pZRrYm85RgoqJ04GO7OirRcKeQNV
-         1GsAqIcSwFk+tJs2BIKyn0DP2CnOhN1lV5QdFuB78yJlEzklHCeAaQ+TC166T/U5YHlc
-         M0Z/hjFxcVV41O2FNw9zdigeSIRH/u9B9xwJuKXBPtgWsiqUHmPAfua86dfcNKE0BkGc
-         c1m8JpC5BrEJcymmIIC6C1DN42HiJb2IoHAjzMC3Xm5771fqoFGRRWc0d9jBgys6WUVk
-         eMWyCfRkG7OImoNCCx5PoDa+A9bBzs610lTB3LlJv6Z4WFMfqG+yWshe5qjOMpUBJAdk
-         yIjw==
+        b=NdwqoZ3S7s3fXbsvQLvnZoEhXsOPVoQVum3LM9S51UOnxBp2TI3uTwtH3uNY8gYbto
+         HRFEwOkjqKLwH7fZRTUzCpjA2iyGOpHl93J8OqRJ5mbZtyi0z91pTwtR4s86rdtPtGPb
+         L2QP9jkJIOY+cN3GhmTsHfqsnINQECzGXf8vUUE1/FDtgPf0O6kvTv7fKz3nYUjYWElD
+         XQiz2s8TnE285mVxTk+QvqwDrOtrQheCAR1aCV5WJBPF9J0J78jlEVFp04OqP+yVC5Ym
+         KHuqgrlGzcHoHVvVnJH8VTgLTWPiMPtzAfIkNdV0jghpd0Zc2keKAS++U77JHcemQnZB
+         mc7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=GFpVemuNL7UhbLtjtR7O0P9wazBxTV9UABGaJgXIshY=;
-        b=F3jPJcQ0qb1XyKVYgm8SFt1zItUXysVUnK3vVZ3sH6JEauzOtl5OByHqezxhfdt+Us
-         ncUZLV0X7VQjWI/W/vMB2rvpM6IWkUknlJKU/tV6F1x5RmwB41HlhBdbjHKO7ONf9qQ+
-         cvhyMaJzcPj34B4crgKlL2jys1Oh+cHWeye9jY+I0TvzuFEk4H+w9BCnN17+m48BBhw0
-         CimXUa6iK6ostQVSzsNlm6biBzFVb3VQS72w45XU+VPqPKK2ihpn7kd6wq8sN6k6Isoh
-         6oDJPda4uQaM0XdO7NqGP+m0wpsC+FLF4locEfhRngiV1H9KMTEvcDqcOp4fMenqzLy9
-         rIOg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=bT/L3E9J3H7vjr92bp5OMJgMLvn8Ud0Rw7GtNyrTxtk=;
+        b=ZqNgLi9FHorRe+na90zcxvbzEid1kGGmChsfyKreYsngHAu5mWEQZXkdW7CAJ20aLp
+         wc9DhVaLy+SE24yX6UsWzXcFhX4BhwVaA0YP6A45z3nol8EgwBKNscJ6ZOkFPxGa0uvd
+         hQ5TRwKq3DPdF0VWQSAQGPD/2lMvWf4VY5EOnbAoJMhZt+o32vcq67OOOBPElDeAzV4L
+         I/kWbEL6GcjxwOwjIBsDk4FEHcD2QIRDTy7jbgac3pfC76y7VaLruzyzHvlnNV3SYN9T
+         2pxFt6CCCeXnwKr2NmcI+FJ54SL3y9TOGSsWW+8ktkxqfa0Hnk3EaSsfyJLHM/2FtcY8
+         4ZSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dCStNmCP;
+       dkim=fail header.i=@linaro.org header.s=google header.b=DvH2Ifhc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g14si7167732eje.238.2019.07.01.06.09.14
+        by mx.google.com with ESMTPS id x22si7859902eju.379.2019.07.01.08.07.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jul 2019 06:09:14 -0700 (PDT)
+        Mon, 01 Jul 2019 08:07:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dCStNmCP;
+       dkim=fail header.i=@linaro.org header.s=google header.b=DvH2Ifhc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58554 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59806 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hhw3V-0004tK-70
-	for alex.bennee@linaro.org; Mon, 01 Jul 2019 09:09:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36700)
+	id 1hhxu9-0006J2-Nf
+	for alex.bennee@linaro.org; Mon, 01 Jul 2019 11:07:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32965)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hhw1l-0002hK-1O
- for qemu-arm@nongnu.org; Mon, 01 Jul 2019 09:07:27 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hhxhY-00070E-H9
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 10:54:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hhw1e-0007on-Cw
- for qemu-arm@nongnu.org; Mon, 01 Jul 2019 09:07:24 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:33272)
+ (envelope-from <peter.maydell@linaro.org>) id 1hhxhW-0003TV-Ja
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 10:54:40 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:46444)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hhw1U-0007J9-P2
- for qemu-arm@nongnu.org; Mon, 01 Jul 2019 09:07:12 -0400
-Received: by mail-oi1-x242.google.com with SMTP id u15so9756334oiv.0
- for <qemu-arm@nongnu.org>; Mon, 01 Jul 2019 06:06:48 -0700 (PDT)
+ id 1hhxhW-0003P5-EP
+ for qemu-arm@nongnu.org; Mon, 01 Jul 2019 10:54:38 -0400
+Received: by mail-oi1-x241.google.com with SMTP id 65so10153514oid.13
+ for <qemu-arm@nongnu.org>; Mon, 01 Jul 2019 07:54:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=GFpVemuNL7UhbLtjtR7O0P9wazBxTV9UABGaJgXIshY=;
- b=dCStNmCPt9WreNdovNC0xder7dlBrJLvhhkZWT1qlkbg4dEiQbVJB3ZbzBGNofHaJl
- FdyLODZlX5wuBaaQjzrsBf5KNT6WqFQN3Ic3lxvAxailNNP4JBrxfpVQE0dqc+jlP5V4
- y6cLwJ7TG4Z1hLR8v02XTRhZgCp6CpJ47hmnvZLTLioFGv8C0N+OByjGnj71F3UzXNaw
- 1mtn3Ig4tnqxTIoYmKuvwEnvmMVroXAVbyiaiRyb6CwK8zKAY6PyNE2k5cq5hPmNKIIX
- fMKNg/r6sksMRIRK+6U9rEoyp8Q4W1Zt1k9mRUKF7lW9W15sjyfYxlCw5VNlDPlILwNk
- BMWQ==
+ :cc; bh=bT/L3E9J3H7vjr92bp5OMJgMLvn8Ud0Rw7GtNyrTxtk=;
+ b=DvH2IfhcSYN2o1qB1/f3zI10cVdiSkycOv0AevZdJyBuihIIHG+H+bOlXGAOM7gjFy
+ ZWZiHo1dQS8Qyn9+3nLR0lDi8k2JcBfK67TeCu2q4vYR2F6uk1wm4w3OFKW9eIQuyQla
+ qLePYpUlREKb0vcbeZLqQW89MH2iw0VHXDLeg6SGiHU+d6knsz/wGoWVTs+1ce/rUUET
+ coc/p7/0B8ovbauNm4DvV2adRd5CRDg/NoW/Gua+cnCHEx2MgTEFoL7XXT98pnIWESH5
+ Ad9/sw8div+NzKMJsu47+E6yuhX5lhTIIehXsp6mNfS45pRHryrYY0TBz0vcKuNXxBGm
+ lTPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=GFpVemuNL7UhbLtjtR7O0P9wazBxTV9UABGaJgXIshY=;
- b=JDCoW+5vtpVfr6i24GeF9if2IehHORxs+IZRtVXGDsf4APMT1bgqg/G5iJrcDjANgu
- F3wfgkFBtw0mcV8apbRqdprKIWnr63t0wlQs+alJ+dFroK3KoQ4kXwzpO4tzwjM5XtDL
- NSuQ0Po8+Rxzlz9Q3bhIEbiUclkzyCfUtOZBbVssv8OwFIj9OqKAcKMjdVI5WK8ErdU3
- tEUWUbxenuMjg8yZZBdMUfLznmjsLvgb2vEHV10861kVaVc/O9aq+dP0ifitnEDgvAct
- 4aed2R6psanyBRrvryiEm0s29+rXQZvxRuhX+xXBDwEoX6RDPpnzJGJ3KB0u2FQM4mFM
- 3+IQ==
-X-Gm-Message-State: APjAAAUAaEGzjdqSdW65ZC36jeDExFWdpCxA0MWQg2izIN4X7ZuSLaPw
- qHc9PXH/guXd54whIu/cT9yYM51r7BSG/SWOawOopg==
-X-Received: by 2002:aca:ac48:: with SMTP id v69mr6542560oie.48.1561986407265; 
- Mon, 01 Jul 2019 06:06:47 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=bT/L3E9J3H7vjr92bp5OMJgMLvn8Ud0Rw7GtNyrTxtk=;
+ b=TgYpLmw82UHFbTFQdDMBEgdL6KSUlWLey/IgmJj8YlgRkws1WgJDoindntAJzBEnUk
+ f06/diPDN00vPS02yFzoBiYVx7bngmgOUGN5Ro7dZCghjABWSoctqBJcL/acNgeLABp/
+ Yc9sogN2Nsk7RMi2wNU/Zh2MQ5xNNSYzaTvDMWDZwGibrU8P95ylA+8PKI9FTy7Gkjmj
+ hMw/ayXiGBxZxLPrd6AHQCnlJ07B++E7vEcK0wUSVp3ME2fii0Uh1hY9ZIAETrEZR9vT
+ W1WFo2aFaWDvRY9Oc6Qpcwzr70nFbfPgkRZmvfdtsIPlkHrMazwQSIM9Ax11oBAvQLUD
+ HW/g==
+X-Gm-Message-State: APjAAAWYifQYRqhr8YkhbNa8k0e6+D99wE3cXxRy8AuZvo+gpjcccq7O
+ oXI/j8VbvZ+8F5Gfxh2xPShdqtayny4c8NvO5pdwKQ==
+X-Received: by 2002:a05:6808:d4:: with SMTP id
+ t20mr7205800oic.170.1561992874882; 
+ Mon, 01 Jul 2019 07:54:34 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190618165311.27066-1-clg@kaod.org>
- <20190618165311.27066-16-clg@kaod.org>
-In-Reply-To: <20190618165311.27066-16-clg@kaod.org>
+References: <1561890034-15921-1-git-send-email-hongbo.zhang@linaro.org>
+In-Reply-To: <1561890034-15921-1-git-send-email-hongbo.zhang@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 1 Jul 2019 14:06:36 +0100
-Message-ID: <CAFEAcA-J+bS2-EtX6pTFYJ1XMaNLx0roYEoQMxV_=-mwMSPDgg@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Date: Mon, 1 Jul 2019 15:54:24 +0100
+Message-ID: <CAFEAcA8P-=mbQ4__9OXB078GnrGfm9afH1YBDLkv88mUXmm=PQ@mail.gmail.com>
+To: Hongbo Zhang <hongbo.zhang@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::242
-Subject: Re: [Qemu-arm] [PATCH v2 15/21] aspeed/smc: add support for DMAs
+X-Received-From: 2607:f8b0:4864:20::241
+Subject: Re: [Qemu-arm] [PATCH v9 0/2] Add Arm SBSA Reference Machine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,130 +104,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Leif Lindholm <leif.lindholm@linaro.org>,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /W7gqUwNCdSS
+X-TUID: zHwTrNATQagM
 
-On Tue, 18 Jun 2019 at 17:55, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Sun, 30 Jun 2019 at 11:21, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
 >
-> The FMC controller on the Aspeed SoCs support DMA to access the flash
-> modules. It can operate in a normal mode, to copy to or from the flash
-> module mapping window, or in a checksum calculation mode, to evaluate
-> the best clock settings for reads.
+> For the Aarch64, there is one machine 'virt', it is primarily meant to
+> run on KVM and execute virtualization workloads, but we need an
+> environment as faithful as possible to physical hardware,  to support
+> firmware and OS development for pysical Aarch64 machines.
 >
-> The model introduces two custom address spaces for DMAs: one for the
-> AHB window of the FMC flash devices and one for the DRAM. The latter
-> is populated using a "dram" link set from the machine with the RAM
-> container region.
->
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> Acked-by: Joel Stanley <joel@jms.id.au>
-> +/*
-> + * Accumulate the result of the reads to provide a checksum that will
-> + * be used to validate the read timing settings.
-> + */
-> +static void aspeed_smc_dma_checksum(AspeedSMCState *s)
-> +{
-> +    MemTxResult result;
-> +    uint32_t data;
-> +
-> +    if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: invalid direction for DMA checksum\n",  __fun=
-c__);
-> +        return;
-> +    }
-> +
-> +    while (s->regs[R_DMA_LEN]) {
-> +        result =3D address_space_read(&s->flash_as, s->regs[R_DMA_FLASH_=
-ADDR],
-> +                                    MEMTXATTRS_UNSPECIFIED,
-> +                                    (uint8_t *)&data, 4);
+> This machine comes with:
+>  - Re-designed memory map.
+>  - CPU cortex-a57.
+>  - EL2 and EL3 enabled.
+>  - GIC version 3.
+>  - System bus AHCI controller.
+>  - System bus XHCI controller.
+>  - CDROM and hard disc on AHCI bus.
+>  - E1000E ethernet card on PCIE bus.
+>  - VGA display adaptor on PCIE bus.
+>  - Only minimal device tree nodes.
+> And without:
+>  - virtio deivces.
+>  - fw_cfg device.
+>  - ACPI tables.
 
-This does a byte-by-byte read into a local uint32_t...
+I've pointed out a number of issues with these patches, but they
+all turn out to be very minor (mostly fixable by moving code between
+patch 1 and 2). The other thing we need is a MAINTAINERS section for
+the new board:
 
-> +        if (result !=3D MEMTX_OK) {
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: Flash read failed @%08x\=
-n",
-> +                          __func__, s->regs[R_DMA_FLASH_ADDR]);
-> +            return;
-> +        }
-> +
-> +        /*
-> +         * When the DMA is on-going, the DMA registers are updated
-> +         * with the current working addresses and length.
-> +         */
-> +        s->regs[R_DMA_CHECKSUM] +=3D data;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index cad58b94879..0bf3739f06a 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -728,6 +728,13 @@ F: include/hw/arm/fsl-imx6.h
+ F: include/hw/misc/imx6_*.h
+ F: include/hw/ssi/imx_spi.h
 
-...which we then use as a (host-endian) 32-bit value.
++SBSA-REF
++M: Hongbo Zhang <hongbo.zhang@linaro.org>
++M: Peter Maydell <peter.maydell@linaro.org>
++L: qemu-arm@nongnu.org
++S: Maintained
++F: hw/arm/sbsa-ref.c
++
+ Sharp SL-5500 (Collie) PDA
+ M: Peter Maydell <peter.maydell@linaro.org>
+ L: qemu-arm@nongnu.org
 
-This will behave differently on big endian and little endian hosts.
-If the h/w behaviour is to to load a 32-bit data type you probably
-want address_space_ldl_le() (or _be() if it's doing a big-endian load).
 
-> +        s->regs[R_DMA_FLASH_ADDR] +=3D 4;
-> +        s->regs[R_DMA_LEN] -=3D 4;
-> +    }
-> +}
-> +
-> +static void aspeed_smc_dma_rw(AspeedSMCState *s)
-> +{
-> +    MemTxResult result;
-> +    uint32_t data;
-> +
-> +    while (s->regs[R_DMA_LEN]) {
-> +        if (s->regs[R_DMA_CTRL] & DMA_CTRL_WRITE) {
-> +            result =3D address_space_read(&s->dram_as, s->regs[R_DMA_DRA=
-M_ADDR],
-> +                                        MEMTXATTRS_UNSPECIFIED,
-> +                                        (uint8_t *)&data, 4);
-> +            if (result !=3D MEMTX_OK) {
-> +                qemu_log_mask(LOG_GUEST_ERROR, "%s: DRAM read failed @%0=
-8x\n",
-> +                              __func__, s->regs[R_DMA_DRAM_ADDR]);
-> +                return;
-> +            }
-> +
-> +            result =3D address_space_write(&s->flash_as,
-> +                                         s->regs[R_DMA_FLASH_ADDR],
-> +                                         MEMTXATTRS_UNSPECIFIED,
-> +                                         (uint8_t *)&data, 4);
-> +            if (result !=3D MEMTX_OK) {
-> +                qemu_log_mask(LOG_GUEST_ERROR, "%s: Flash write failed @=
-%08x\n",
-> +                              __func__, s->regs[R_DMA_FLASH_ADDR]);
-> +                return;
-> +            }
-> +        } else {
-> +            result =3D address_space_read(&s->flash_as, s->regs[R_DMA_FL=
-ASH_ADDR],
-> +                                        MEMTXATTRS_UNSPECIFIED,
-> +                                        (uint8_t *)&data, 4);
-> +            if (result !=3D MEMTX_OK) {
-> +                qemu_log_mask(LOG_GUEST_ERROR, "%s: Flash read failed @%=
-08x\n",
-> +                              __func__, s->regs[R_DMA_FLASH_ADDR]);
-> +                return;
-> +            }
-> +
-> +            result =3D address_space_write(&s->dram_as, s->regs[R_DMA_DR=
-AM_ADDR],
-> +                                         MEMTXATTRS_UNSPECIFIED,
-> +                                         (uint8_t *)&data, 4);
-> +            if (result !=3D MEMTX_OK) {
-> +                qemu_log_mask(LOG_GUEST_ERROR, "%s: DRAM write failed @%=
-08x\n",
-> +                              __func__, s->regs[R_DMA_DRAM_ADDR]);
-> +                return;
-> +            }
-> +        }
-
-Since the code here doesn't do anything with the data the
-address_space_read/write here aren't wrong, but you might
-prefer to use the ldl and stl functions to avoid the casts
-to uint8_t* and need to specify the length.
+So rather than making you do another respin, I'm planning to
+make the fixes in my target-arm.next tree as I apply the patches.
+That way we can get this in before softfreeze (which is tomorrow).
 
 thanks
 -- PMM

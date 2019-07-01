@@ -1,185 +1,144 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp3894635wrg;
-        Mon, 24 Jun 2019 08:23:41 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyno1XcF185wQlNMh97v4Tpr4gGInCpkZ9jWHrb6gcpkyhsEuSygtb257GanP5B2KpS1pqK
-X-Received: by 2002:a50:94d9:: with SMTP id t25mr130380346eda.32.1561389821765;
-        Mon, 24 Jun 2019 08:23:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561389821; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2453493wru;
+        Mon, 1 Jul 2019 02:41:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw+lLHj9o8yHmmfsj6BL4Htihu1iDDvZlHKyXVvPGgtR26PAswICQwqVufOuzb9WfTSdIOP
+X-Received: by 2002:a17:907:20ed:: with SMTP id rh13mr22226535ejb.34.1561974063764;
+        Mon, 01 Jul 2019 02:41:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561974063; cv=none;
         d=google.com; s=arc-20160816;
-        b=UiOSaWdcbrkpudXrXuWchur317nQ5UtWO48AHWuAq3oeCHd0UCiZfKy930pnrUAE4H
-         QtjO7l4/XyKAMjnLXKGnoDNA9MuM+RHngx7qt+pCJB4ScxCEvt88NPRpkqIxtUaCOeQs
-         euLfVEpJ7LJCF2lse35JsWSxiAI1Jl355OJjUQLOrC5ccSHwkqsWDCj3w0JxfkfZpo7K
-         2fR9bctYwnUhE7RsSatnvvfNVz2LOOxjasIZwxQCyqOMPxK1PSAJms5DKhGZ2VJ1dQEU
-         QTO5IWT8xGdyxaZM6Zjn2PQIEvavT8YsWK/kj0GMs5jJmbYmirQlwWGy0VhYdugganwX
-         Ri8Q==
+        b=IzXrZ4f4r953mztz1X1vAib/RDT88Vrn5BK6kBdBDZsJmM/w2wLZkS5GD5wR2Zatyg
+         S1OAZ+gDH9eZFMGJQLY5kETkAVWJDC6DeR9oKpKrGSrNXr11cbvpU9oPYXXgnfLqeF2u
+         Jp3s2EplwKY5sfXTPqv9DM8t3Gc4MT2jOCkstC9KiuY3JJz7ZTJ3Gjzv5v3glq5XLPOL
+         0fOaRQUKanWCygZhIzI/eg/K2vxO9O3CSGx9iF2S3E7xnc1pJoi9a+IdrjholvnUz6uN
+         qQwd62zLJs9szPeKGArKlQExW1n24/AVnSSO8ZGE4xHnzxdUOypVk36Tld0WPCtbbbws
+         4SQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=HsGCODuj3tFF2PIKrepz+fL0M/+7VFs0G5Oaw07yWHg=;
-        b=HkvXSqaecoGDrW4wScRPyBO9sGh3AajwrdKmMZP0rGk161jcPz9J4RbVkOvnV0idNc
-         Zz4kUtKGiV9kKDCvUfKIqEcaRwIeWtAXvhUMquIIC4malq4I3YwZSDVlUG9yTMuwzA1N
-         66wjcCH9WQoVz0WjnFKneJhJooGNp/C1ODnAUnXVCj7O3rlFnyvPYNN0vamB+jwoGlKy
-         5Z7NpsTf7VlcvC1A0IC+uEeihvbqi5MHTK/clcSTYWpJtRQ889en7QG7QuxDAKVSIpST
-         LPM2Z28fGG2Ct6n8CRaG5d41esmdVmgcuv1/MGM0nBaeqPndW35nrIBgc3ghp38DJ6w4
-         za0Q==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=Q+oHhSEDVk1V3F4XlEadg1hm9TLVHLm0W+JZwisqOns=;
+        b=htnX9qR2Ibkl7GxsRph3ZuoXkCZAF7+mzl4wvISbrupPCG1xd654mkJhIFAGZlIms2
+         ey3EIQOcog3YAws3BEl7MipzDfZd9V2auEATMG1ArSfC/tB9VFh0lnyJlBf3kysgW4YD
+         QNu5H+Q1MLzx9pyYk/AY9tH1VtpLo+gadeS9NHqTfV2h0JugY+PHeT+ABq6XM5d6Tpke
+         9gbu1GLU2d4qzKW6lKRiQapCgW8nJRVS5HR3oW/EK/oSm46y7v5i8Sh9sffPcnjsQpVV
+         AsI7CoRyzeLZPQv94t591z89zTbRKvcMquoo8rMhKFbJokHtLFc8kKvKm+4ZLMEKMN/a
+         L3dA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o11si4713725ejr.105.2019.06.24.08.23.41
+        by mx.google.com with ESMTPS id e4si6641932ejc.298.2019.07.01.02.41.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Jun 2019 08:23:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 01 Jul 2019 02:41:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52292 helo=lists.gnu.org)
+Received: from localhost ([::1]:56518 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hfQom-0006vo-Kf
-	for alex.bennee@linaro.org; Mon, 24 Jun 2019 11:23:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42125)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hhso2-0002UI-Qd
+	for alex.bennee@linaro.org; Mon, 01 Jul 2019 05:41:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50629)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <berrange@redhat.com>) id 1hfQog-0006vi-61
- for qemu-arm@nongnu.org; Mon, 24 Jun 2019 11:23:35 -0400
+ (envelope-from <philmd@redhat.com>) id 1hhsji-0005a5-Er
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 05:36:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <berrange@redhat.com>) id 1hfQoe-0000sJ-Oh
- for qemu-arm@nongnu.org; Mon, 24 Jun 2019 11:23:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50352)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <berrange@redhat.com>)
- id 1hfQoe-0000oR-Ej; Mon, 24 Jun 2019 11:23:32 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id A948FC1EB201;
- Mon, 24 Jun 2019 15:23:31 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.17.95])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 125B35D9D3;
- Mon, 24 Jun 2019 15:23:22 +0000 (UTC)
-Date: Mon, 24 Jun 2019 16:23:20 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <20190624152320.GK17698@redhat.com>
-References: <20190620122132.10075-1-philmd@redhat.com>
- <20190620122132.10075-2-philmd@redhat.com>
- <6a0086e7-79ea-fc5e-6359-c1d4d256bf6e@redhat.com>
- <ebe04ce2-0e0a-c764-e235-3aabd420439e@redhat.com>
+ (envelope-from <philmd@redhat.com>) id 1hhsjh-0004i2-I6
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 05:36:34 -0400
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:36895)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hhsjh-0004O8-CJ
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 05:36:33 -0400
+Received: by mail-wr1-f68.google.com with SMTP id v14so12997507wrr.4
+ for <qemu-devel@nongnu.org>; Mon, 01 Jul 2019 02:36:08 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Q+oHhSEDVk1V3F4XlEadg1hm9TLVHLm0W+JZwisqOns=;
+ b=BMqki8lOFxeEG2KwsLgvrO6XJ/aJsd5QfXUr58aouznXckx744yrah8QtqkrYFdZmO
+ nabkg6sRmKDILcrfsUYnWbFjapPynYeNqGcT+mhm/cdfO2ErlNMYqpbyPsFxF4dQ7A8t
+ LVRcALtXICDQyv+ewPGqdqszAlY8C0jXLiIEB6cJBRH4qnkfaTpNIRIta144DOek+h4m
+ GiMJJaQdQh1gLfNPuywNnzKuglAMf0+UsQhcKGbw416ptu0G2dSvoD59uRVmXQQO6LXF
+ 9YbbVaFEX/a9zAOPjIQJu+7XSuauoOVUI4S6hKtVQzepOE3v+xkmIyRiWlg09TBH50AT
+ w7Sg==
+X-Gm-Message-State: APjAAAWKyPTNkVjbHj65Cf4PmZgxcFdtJrIzi7MITzDymvH+VuLApt5c
+ G/HnieAj/29fRl0MBDEr/naO8A==
+X-Received: by 2002:adf:f38b:: with SMTP id m11mr18241660wro.79.1561973767995; 
+ Mon, 01 Jul 2019 02:36:07 -0700 (PDT)
+Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.183])
+ by smtp.gmail.com with ESMTPSA id a84sm10609728wmf.29.2019.07.01.02.36.07
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Mon, 01 Jul 2019 02:36:07 -0700 (PDT)
+To: Jan Kiszka <jan.kiszka@web.de>, Peter Maydell <peter.maydell@linaro.org>, 
+ qemu-devel <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+References: <fc5404f7-4d1d-c28f-6e48-d8799c82acc0@web.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <098adaad-e787-3d5d-a145-5c4999aa32fe@redhat.com>
+Date: Mon, 1 Jul 2019 11:36:06 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
+In-Reply-To: <fc5404f7-4d1d-c28f-6e48-d8799c82acc0@web.de>
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <ebe04ce2-0e0a-c764-e235-3aabd420439e@redhat.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.32]); Mon, 24 Jun 2019 15:23:31 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 1/3] hw/firmware: Add
- Edk2Crypto and edk2_add_host_crypto_policy()
-X-BeenThere: qemu-arm@nongnu.org
+ [fuzzy]
+X-Received-From: 209.85.221.68
+Subject: Re: [Qemu-devel] [PATCH] hw/arm/virt: Add support for Cortex-A7
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +0JzRj7R6MtH
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lqZoQ05s+PsC
 
-On Mon, Jun 24, 2019 at 05:14:23PM +0200, Laszlo Ersek wrote:
-> On 06/24/19 16:53, Laszlo Ersek wrote:
-> > (+Daniel)
-> >=20
-> > On 06/20/19 14:21, Philippe Mathieu-Daud=C3=A9 wrote:
->=20
-> >>   $ qemu-system-x86_64 \
-> >>       --object edk2_crypto,id=3Dhttps,\
-> >>               ciphers=3D/etc/crypto-policies/back-ends/openssl.confi=
-g,\
-> >>               cacerts=3D/etc/pki/ca-trust/extracted/edk2/cacerts.bin
->=20
-> (12) Regarding the command line. It just occurs to me that Daniel
-> suggested [*] that libvirt should not be taught about this feature
-> specifically.
+On 6/30/19 5:13 PM, Jan Kiszka wrote:
+> From: Jan Kiszka <jan.kiszka@siemens.com>
+> 
+> No reason to deny this type.
 
-Oh yes, thank you for reminding me of this point.
+Maybe add "As the A15, it supports the EL2/V7VE features."?
 
-Essentially this is the same use case as with the GNUTLS default crypto
-policy in QEMU.
+> 
+> Signed-off-by: Jan Kiszka <jan.kiszka@siemens.com>
+> ---
+>  hw/arm/virt.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 431e2900fd..ed009fa447 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -176,6 +176,7 @@ static const int a15irqmap[] = {
+>  };
+> 
+>  static const char *valid_cpus[] = {
+> +    ARM_CPU_TYPE_NAME("cortex-a7"),
+>      ARM_CPU_TYPE_NAME("cortex-a15"),
+>      ARM_CPU_TYPE_NAME("cortex-a53"),
+>      ARM_CPU_TYPE_NAME("cortex-a57"),
 
-The tls-creds-x409 object type in QEMU has a "priority" property which
-lets you set a GNUTLS priority string eg
+Should we list here all cpu with arm_feature(ARM_FEATURE_V7VE | V8)? or EL2?
 
-    --object tls-creds-x509,id=3Dtls0,priority=3D@SYSTEM
+> --
+> 2.16.4
+> 
 
-In practice, however, libvirt never uses this because the QEMU configure
-script has a --tls-priority arg and distros will use that arg to set the
-desired priority at build time. eg Fedora/RHEL build QEMU with the
-"--tls-priority=3D@QEMU,SYSTEM" string and libvirt hasn't bothered to
-make use of the 'priority' arg for tls-creds-x509 as a result.
-
-I'd expect similar to be done with EDK2 priority where Fedora/RHEL sets
-a compile time ciphers/cacerts list in RPM build.
-
-Contrary to what we did with GNUTLS though, libvirt might still allow
-this to be overridden at runtime, since the handling of the ciphers
-is not as smart as we get with GNUTLS priority setting.
-
-> Thus, I think we need properties that are "smarter" than plain
-> user-specified strings:
->=20
-> - they should have default values (the ones your example includes above=
-)
->=20
-> - for each of the properties: if the default pathname fails to identify
-> a file, then treat it as a normal situation (leave the corresponding
-> fields NULL)
->=20
-> - if the user overrides the default, and the pathname resolution fails,
-> then that should generate an error
->=20
-> - the user should be permitted to override the default such that the
-> corresponding setting is disabled (i.e. no error, but also no loading)
->=20
->=20
-> It's too bad that I'm not sure about the right way to implement this. I=
-t
-> reminds me of On/Off/Auto, but only vaguely.
->=20
-> In fact, if we never want to teach libvirt about this feature, then we
-> essentially expect QEMU to auto-load these files, whenever they exist -=
--
-> even if the guest ends up booting something other than edk2 firmware!
->=20
-> [*] https://bugzilla.redhat.com/show_bug.cgi?id=3D1536624#c11 --
-> unfortunately, this is a private RHBZ :(
->=20
-> Thanks
-> Laszlo
-
-Regards,
-Daniel
---=20
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberran=
-ge :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.c=
-om :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberran=
-ge :|
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>

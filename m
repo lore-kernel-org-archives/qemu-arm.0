@@ -1,126 +1,147 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2768947wru;
-        Mon, 1 Jul 2019 08:25:17 -0700 (PDT)
-X-Received: by 2002:a9d:6042:: with SMTP id v2mr74260otj.73.1561994717222;
-        Mon, 01 Jul 2019 08:25:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561994717; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2610647wru;
+        Mon, 1 Jul 2019 05:41:12 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqybeu+P2k4LLB21M+MMbSdibwQHHAU6erh0HEnmvjn9yXCdh1jC/GoP7cdiCKU6/0ufzjZO
+X-Received: by 2002:a17:906:b243:: with SMTP id ce3mr22453302ejb.176.1561984872204;
+        Mon, 01 Jul 2019 05:41:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1561984872; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z/UUgDPvJpDXh8IlXfBppjRIOQVQSrgAsVlD2N+WiSBK+MvcURqVMlNfAQn0RrckFr
-         GGHGg3vLYlW2QaolvlafTXF8pIrvM4bykY/hkpTwDpArdQyyLNvS8HGe5niw0yekoF3H
-         gf8JXIzh8aUPOKJNmJxVu5C5MRlltRHwpN+62iw7MgPqSzjovtj7MDrxb1riEqmQlUXc
-         InVRPUYrQaBWoo9Ez6s2pvQzL4OnVTp5xv809c2b60EsWYs2zDvmiYdh2rcr2GgvkNmt
-         Nzsr/MyGWz/ZBRhd1gPucHqfDz0SxrrX85VMZ0NSm3DR4Ahg2IEIRPbGjQOnK9ZM77xj
-         gdjQ==
+        b=oY9P9L3k7IPRuuKJJiSpj7YRGSIwf6tos9NidQzoLSPKaCYHMg86hCIGeDELPo9Omc
+         h7c+NEvFYwLO8LqNFhB/jByd7Kz9RcT4Je8jzeCbfIFwb8g8DjR+25i8Ue1JaZDN8C+h
+         yWylZ5Nw+V0SbpKBWmQccRAwZJCTBp/OCmUQQ1IX13Kj2aCjF3gU4SlcC5GgI32Gjuoi
+         fRAEYpagkJl0gKuXu4r0VJ1Myi5MsZADLqbHNWzyRPW4c0891cqtqqOy8+CBVf8v9k/3
+         ejyhptJflZIT9fFeFOD10ExnPXBbnq45lHlFyoDXQySDqBEnUdLMcvKcbWTPzJDbYsG0
+         DBdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=J5jnrBC9B7cp43w6ntAwQwU4yHdDx/YqgFts1lQu7Uo=;
-        b=PokK+PIUF3Nnt0v1Vo+YlJxTChimUFP3pjfxwLGn4aZSd7/VTQMh/LBkcasdbnoaBY
-         vm7zV1QFlnA6DNa78NPGC9A3dwKYeJRNXv5fYfMrSk1LsNI1FXT8bYsTAj3TzJZCoJGO
-         KED5oEMcC2xAs0UZmViZSty7fSPeSUX0E8RZWuBeRNFANAcCdU3hcBFN2bqmjYAw0ETp
-         2O4t1E4KFDeQ272V6hTmAIrRdRUUCgPcBJHfuPt0yjRb9W/Fn3cgCuhkbk6V0fY1ULDk
-         xpzwUdWNDuMoqEugriIKxa3a36ggZAvhMQNBZQh021pxjjTo1k0YrIm55ENFtt5Zg0K/
-         PqYA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=AZCeRWSMuP4UqySLZZFrYJOMDJVzaBqONi1GOmlAXYg=;
+        b=P1gQqLvduukrsn6IZCTF/RLkq2J2LUIDeq6v3q3GXyxgmOblqzr61yD3B2atf2T9Ef
+         t/ye+z0V1MVnYaGc3Q7TMDpeYkv79wdkcmroUn43mwJgo0OB8t2cHnp1GHnCEfIULWZJ
+         ZhD7YgM3XahWQQxLnaHSJyE6phc+1WZHbWQeAKSQT2879+0eqbO1/oUsLun77/Ph/N2l
+         uhEW4195cXfRlZf0gaLHlIBpui+uHzzOXXRW+w+FAYFqI7ejxpQeMxnRMnTnhwYBz6B2
+         rwe+izgrwLWKgUzK4kyxVsZ9uE87V35//KUw9oXtqjxuVHDATsGC/zMwMyywIMK36ONP
+         UBgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ohk9nY15;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id q25sor5989032otl.168.2019.07.01.08.25.16
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z1si6738700eja.335.2019.07.01.05.41.12
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 01 Jul 2019 08:25:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 01 Jul 2019 05:41:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ohk9nY15;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=J5jnrBC9B7cp43w6ntAwQwU4yHdDx/YqgFts1lQu7Uo=;
-        b=Ohk9nY154Yem1mRA47Lb5WWFoOrU6Ba3968gI6L278x7B5TLWmAxQNX2j6AnxaGph1
-         ox6OqEldxnjaPawZpMQE+eusDveCeEL/gQv5DmthLfjeAD0R7JYh5M51ag7elgRQDOhj
-         Zh3ZvNKpya3Ec4b+Je+Hgra5sRFacpBU9Ccz1sGkHEbSFFafIuqdXUXUCGZ8RimnGGtP
-         l4sI0z0qG3okgdihVYGhL9J/J4C5V1n18q0j+Axc4YGdB0LjWuq4MWTEu3Kos1QNNwnc
-         xfJxWxc7l6DzStnPbLmhDuaXhRjlQl/tdvje++Dxu8YvZZGH21pV2GyUsDq4R2EdWqWp
-         +0jQ==
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58268 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hhvcN-0003YQ-AN
+	for alex.bennee@linaro.org; Mon, 01 Jul 2019 08:41:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58390)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <philmd@redhat.com>) id 1hhvWw-0000CE-59
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 08:35:35 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1hhvWu-0006En-4a
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 08:35:34 -0400
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:35341)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hhvWq-000673-93
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 08:35:30 -0400
+Received: by mail-wr1-f68.google.com with SMTP id c27so5966370wrb.2
+ for <qemu-devel@nongnu.org>; Mon, 01 Jul 2019 05:35:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=J5jnrBC9B7cp43w6ntAwQwU4yHdDx/YqgFts1lQu7Uo=;
-        b=SfADb66YbM1WEv+0OyIZkBgfdVI/BmknOUhHAZ3gOK/xunvnBlK1ZJDHcOmadsbjN8
-         4GYP1BgMIP80rCPgX1I515nSGOe4M0nUdOzdBAF5q0OmR4x7AQENIqAADdUoRHgAB0kO
-         ylKtlwT5sR0x1rGt5IRKomUmqn02nYroT+NcBJP7vk0mfgJSyDh3Ss1mXKUjNmE7/JO1
-         1qWMSyo6gui9HiwkIxcqeYt9SHYF/NwxqdH14RlUb5TFHbHKrh3jNXhit2dx9Nfg14Ds
-         VxmaXpBDJZA6M8Tc2mKfxjWF3xsbfAm1b7DKsGpLBh5R5QKRNafNO7oUQithR3s0sCHH
-         zhXA==
-X-Gm-Message-State: APjAAAWvz2k/ayhDdZQH5yC3ZBJ1P4X6Vy6/7tXO2ul+waQSDeO8qEKl
-	bVAMhi3maFbjaZcmnXzBUCwdID5yjLicZmXj0qHNhMPmL3wI/Q==
-X-Google-Smtp-Source: APXvYqwBDvgV0wSok7dNdW22AVjUeonoxb/GklKK6myUa7/jS2k5VHGs+XQETEZz0CEFfeiVG4Ki/qpApmJ37G8jyqI=
-X-Received: by 2002:a9d:7245:: with SMTP id a5mr21015232otk.232.1561994716772;
- Mon, 01 Jul 2019 08:25:16 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=AZCeRWSMuP4UqySLZZFrYJOMDJVzaBqONi1GOmlAXYg=;
+ b=RHVOsR44DUVO+0Ng+rIkfDHjJA7cOjKrPmNHPGiHphWDxB1ytoUjAzveyBNAlbWVKB
+ lj3PIfU3g67D5PKlNKF+5herhyKSLQM2Vsko0Q4qn043RtWeohuJFLpQwNRj9c2meZ9w
+ 3ENyLjSEX7dbjfDWVIySrnP7LRnOPH473mWWKNg4nokambzeWnHc/dYDwOpnDGo7ZsKZ
+ HV89NBJKmuD74hJEjwPJUA+NCbN8nQl66TQVobxAtMpzQvJ+NYKX3a0bEhJlCGTPbX9+
+ lY6uc0zo45yOuRhlH4Jto7USbJPfL+ga0+k0SfpvsOnShJCR/XQbEN0vIzd9wdTeXXrB
+ PYfQ==
+X-Gm-Message-State: APjAAAVZsIiUbZdkFi7JEdvS09dSJ0JSnYygRpCqxiODjPOu8kIoQyim
+ FKeSqLjlND9BviINVF8Clc4aow==
+X-Received: by 2002:a5d:68c7:: with SMTP id p7mr830627wrw.349.1561984526023;
+ Mon, 01 Jul 2019 05:35:26 -0700 (PDT)
+Received: from [192.168.1.38] (183.red-88-21-202.staticip.rima-tde.net.
+ [88.21.202.183])
+ by smtp.gmail.com with ESMTPSA id x3sm10524424wrp.78.2019.07.01.05.35.24
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Mon, 01 Jul 2019 05:35:25 -0700 (PDT)
+To: qemu-devel@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>
+References: <20190701123108.12493-1-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <626f9e20-cff3-757d-1043-04df3c1c2b3c@redhat.com>
+Date: Mon, 1 Jul 2019 14:35:24 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-References: <20190701132516.26392-1-philmd@redhat.com> <20190701132516.26392-19-philmd@redhat.com>
-In-Reply-To: <20190701132516.26392-19-philmd@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 1 Jul 2019 16:25:05 +0100
-Message-ID: <CAFEAcA_XGuB5x+m5zmdBSE3bQP=jBdfWDzj_v0iBeqWmrETsng@mail.gmail.com>
-Subject: Re: [PATCH v3 18/27] target/arm: Restrict semi-hosting to TCG
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Yang Zhong <yang.zhong@intel.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Rob Bradford <robert.bradford@intel.com>, Samuel Ortiz <sameo@linux.intel.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: AxACgn44uwwh
+In-Reply-To: <20190701123108.12493-1-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.221.68
+Subject: Re: [Qemu-devel] [PATCH 0/6] hw/arm: Use ARM_CPU_TYPE_NAME() and
+ object_initialize_child()
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Jason Wang <jasowang@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: R1ED+joSC0jA
 
-On Mon, 1 Jul 2019 at 14:26, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
-> wrote:
->
-> Per Peter Maydell:
->
->   Semihosting hooks either SVC or HLT instructions, and inside KVM
->   both of those go to EL1, ie to the guest, and can't be trapped to
->   KVM.
->
-> Let check_for_semihosting() return False when not running on TCG.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
-> v3: inline call to g_assert_not_reached if !TCG
-> ---
->  target/arm/Makefile.objs | 2 +-
->  target/arm/cpu.h         | 7 +++++++
->  target/arm/helper.c      | 4 +++-
->  3 files changed, 11 insertions(+), 2 deletions(-)
+Buh I forgot to Cc Eduardo.
 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 49a0f05cd1..1b4da7aa45 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -20,7 +20,6 @@
->  #include "qemu/qemu-print.h"
->  #include "exec/exec-all.h"
->  #include "exec/cpu_ldst.h"
-> -#include "arm_ldst.h"
->  #include <zlib.h> /* For crc32 */
->  #include "hw/semihosting/semihost.h"
->  #include "sysemu/cpus.h"
-> @@ -29,6 +28,9 @@
->  #include "qapi/qapi-commands-target.h"
->  #include "qapi/error.h"
->  #include "qemu/guest-random.h"
-> +#ifdef CONFIG_TCG
-> +#include "arm_ldst.h"
-> +#endif
-
-Should this ifdeffing of the arm_ldst.h include have gone in
-another patch? It doesn't seem related to the change described
-in the commit message.
-
-thanks
--- PMM
+On 7/1/19 2:31 PM, Philippe Mathieu-Daudé wrote:
+> First we use ARM_CPU_TYPE_NAME() when we should.
+> 
+> Then is follow up of
+> https://lists.gnu.org/archive/html/qemu-devel/2019-05/msg01492.html
+> 
+>   This series looks at Eduardo suggestions from [1]
+>   and Thomas commit aff39be0ed97 to replace various
+>   object_initialize + qdev_set_parent_bus calls by
+>   sysbus_init_child_obj().
+> 
+> Finally, some devices are declared orphean while they have a parent,
+> let them be together again.
+> 
+> [1] https://patchwork.ozlabs.org/patch/943333/#1953608
+> 
+> Philippe Mathieu-Daudé (6):
+>   hw/arm: Use ARM_CPU_TYPE_NAME() macro when appropriate
+>   hw/arm: Use object_initialize_child for correct reference counting
+>   hw/arm: Use sysbus_init_child_obj for correct reference counting
+>   hw/arm/fsl-imx: Add the cpu as child of the SoC object
+>   hw/dma/xilinx_axi: Use object_initialize_child for correct ref.
+>     counting
+>   hw/net/xilinx_axi: Use object_initialize_child for correct ref.
+>     counting

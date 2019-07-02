@@ -1,197 +1,194 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3739471wru;
-        Tue, 2 Jul 2019 05:14:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzo1jt09PtcyaYa+6nbNHyZRJLKltVhgpT1kqWh/aMVBAYBQQty+gz/hQNk25vszdcg1gLC
-X-Received: by 2002:ac8:2f1b:: with SMTP id j27mr24173374qta.92.1562069676289;
-        Tue, 02 Jul 2019 05:14:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562069676; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3754264wru;
+        Tue, 2 Jul 2019 05:31:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwgTdbaFqZSRkQAGv7WyQrjIiCs8YTVMuTzPNn39/NKLz0Ul+73htZFXAQx/yfbJbo82ydo
+X-Received: by 2002:ae9:ea09:: with SMTP id f9mr25793395qkg.379.1562070681195;
+        Tue, 02 Jul 2019 05:31:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562070681; cv=none;
         d=google.com; s=arc-20160816;
-        b=tuAABlk9i4DE1tRUmFMRPjTT829xXZXsmrL0bD+BfV9WxkLRn7wzdB9oc+CwC6htYZ
-         vPha66IaXj4YqI5Cv7vANVDl3RSD6e3xyB+sCNs9Son/1jMcouiYz5ai1zFcG02fCQ8N
-         6XMdMO4qjsOlzaAY3tyARptzzrxzLQ3ohKc1Egtv2g+zp0wybfbcdK9qWCVFhxm3pHYn
-         OqGCFAEAQqghlCGBYutn5uZ7uJkzo2alfbUDG/d1VNxPgSSEXMFHl27iI24DB296DzMn
-         cqzcffr1l99ac2rtYUqRlQRY75NF56UwgwLANc6uu3c5kNtl9ik7r7mpN6gej/p64/3w
-         booQ==
+        b=VWCftEhKtLiNgIRLv0Mppzu7T8GKBdudVbxwEkAwvgRAuQorHOZ4fkZHVRrnQvmMRR
+         Kya9RUj5hDtbRNKoWLA3lgQ6IfbiBrBlMwtgOPZN8rKPL5gUVFbcYmV9+N/cKxGSFQuN
+         n329x29R8MTHqmGcw2z8x1KvfBI96XzE5gZbwioprj8A2EFPWTFEcncjyauhH2VCX0AZ
+         1diNgO2USDj3w9nMvDndQvP0qMsTYY36nvZoE9QOiY6DDIksZAgLk/isK9+E+sSYJqvc
+         Mcj/YCEyiBcDa9Ufks3JV74s05RWWNcDdkPiRyVrhglyvyzZqAIa6noZyi3iFWKM5Xtg
+         u2QQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=FczhhQGfbpFEG8C4BfFMset6o8INzajOSM+XO4Po88s=;
-        b=DdUWfyT1NWtXUiuhf/zmom1wjiCThgmjy8+Ejw09tf7UJBzZ5DCw4fCyEvMDgZoZKW
-         Av8V2/y10N8MwY+uOlWdUXfuAc1C0Ud/8I2B8gznl2Q84NoJFyHmOPf6psaNJ9te/K01
-         GqfID+SkI5AAe7wwLqGKLvwWCP4DxIt1KIeWwyh0MyEazIXVwloqwKwn5JcmcYOjNtjo
-         jAd59tgeqAw/WI5rP25azZO2xz2DIDAr0MVfUWTh4OoPTTEXSE3TTVRA/J0/avpzr0ci
-         6aP8aYteiHspGnKeAAIpgTgYNjOhtVQWTnlTN1lw91/qsXth0f0EVa1Qg8rFBrFz7dp6
-         KM3A==
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
+         :subject;
+        bh=VJO8agQspOTXK3wYMjwlJIxnFKguiswGAf+fX7OmrIM=;
+        b=GcfxKw2EMh3uzfdpYlIizqhf0PZ98J5P2ZjZQSFjENlW+cnF/+O5LmAfDHs4Db2O7E
+         sHIOFGY+gLht+aqXysoDaNIgSipFSN3O7dDvdbyP9vb1nmio6twL5cN6ve4V9zYJdvWw
+         BB+tz1mNfMVH2NDgsCFvnipKfYkCkv6nuTXNONrfpTMDZeGauiihEQjHG4ncDb5pWcUb
+         KeuTyz5kR0ciEHT1wN232OymB9BZ+WYax7WQwz3mA3FEr0CvTgeJb2nPZCiBpqQxQ2jS
+         0Lv76X7Q2Q7/x7MEz5HkLGDzHnyXc5t3SMSvjpYsk//iv7BKC2r6fY2t/VDhULua1lDP
+         //sw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=lersek@redhat.com;
+       spf=pass (google.com: domain of jsnow@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <lersek@redhat.com>
+Return-Path: <jsnow@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id q52si9344923qte.125.2019.07.02.05.14.36
+        by mx.google.com with ESMTPS id n12si9376362qkk.143.2019.07.02.05.31.20
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Jul 2019 05:14:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+        Tue, 02 Jul 2019 05:31:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=lersek@redhat.com;
+       spf=pass (google.com: domain of jsnow@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 6A5F16749D;
-	Tue,  2 Jul 2019 12:14:29 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-117-172.ams2.redhat.com [10.36.117.172])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 51CA360C67;
-	Tue,  2 Jul 2019 12:14:06 +0000 (UTC)
-Subject: Re: [Qemu-devel] [PATCH v2 5/9] hw/block/pflash_cfi01: Add the
- DeviceReset() handler
-To: John Snow <jsnow@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
- Aleksandar Rikalo <arikalo@wavecomp.com>,
- Markus Armbruster <armbru@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
- Alistair Francis <alistair23@gmail.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
- <alex.bennee@linaro.org>, Richard Henderson <rth@twiddle.net>,
- Kevin Wolf <kwolf@redhat.com>, Max Reitz <mreitz@redhat.com>,
- Michael Walle <michael@walle.cc>, qemu-ppc@nongnu.org,
- Wei Yang <richardw.yang@linux.intel.com>,
+	by mx1.redhat.com (Postfix) with ESMTPS id C769A30872D1;
+	Tue,  2 Jul 2019 12:31:09 +0000 (UTC)
+Received: from [10.10.120.186] (ovpn-120-186.rdu2.redhat.com [10.10.120.186])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id D97AE80D1;
+	Tue,  2 Jul 2019 12:30:31 +0000 (UTC)
+Subject: Re: [PATCH v2 5/9] hw/block/pflash_cfi01: Add the DeviceReset()
+ handler
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
+ Laszlo Ersek <lersek@redhat.com>, David Gibson
+ <david@gibson.dropbear.id.au>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Max Filippov <jcmvbkbc@gmail.com>,
  Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+ Wei Yang <richardw.yang@linux.intel.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Aurelien Jarno <aurelien@aurel32.net>, BALATON Zoltan <balaton@eik.bme.hu>,
+ Markus Armbruster <armbru@redhat.com>, Andrzej Zaborowski
+ <balrogg@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Michael Walle <michael@walle.cc>, Paolo Bonzini <pbonzini@redhat.com>,
+ Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Alistair Francis <alistair23@gmail.com>, Qemu-block <qemu-block@nongnu.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>
 References: <20190702001301.4768-1-philmd@redhat.com>
  <20190702001301.4768-6-philmd@redhat.com>
  <5163b3e4-f68e-dc6b-3fcc-e7927ebc58e7@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <f147ac70-298c-f323-360b-6a48857293d3@redhat.com>
-Date: Tue, 2 Jul 2019 14:14:05 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+ <CAFEAcA_n3BpZuBPFS8y90XaOwzAo-tuKpO24_apz+9yzpxUxHQ@mail.gmail.com>
+From: John Snow <jsnow@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <0bf70b20-e51a-3899-11a8-1be24b95279f@redhat.com>
+Date: Tue, 2 Jul 2019 08:30:30 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-In-Reply-To: <5163b3e4-f68e-dc6b-3fcc-e7927ebc58e7@redhat.com>
+In-Reply-To: <CAFEAcA_n3BpZuBPFS8y90XaOwzAo-tuKpO24_apz+9yzpxUxHQ@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.30]); Tue, 02 Jul 2019 12:14:34 +0000 (UTC)
-X-TUID: OiE87CsKWqP6
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.47]); Tue, 02 Jul 2019 12:31:15 +0000 (UTC)
+X-TUID: qguXwG/vsAIA
 
-On 07/02/19 05:16, John Snow wrote:
+
+
+On 7/2/19 5:23 AM, Peter Maydell wrote:
+> On Tue, 2 Jul 2019 at 04:16, John Snow <jsnow@redhat.com> wrote:
+>> Does reset always get called as part of realize, really?
+>>
+>> Or are we just trusting that the device is probably going to get reset
+>> by the guest during bringup?
 > 
+> Reset is not called "as part of realize", but it is guaranteed
+> to be called after realize and before we try to run the guest,
+> as long as the device is in the qbus tree. Things are in the
+> qbus tree if either:
+>  * they're plugged into something already in the tree (eg
+>    pci devices, scsi disks)
+>  * they're a sysbus device (which is automatically plugged into
+>    the 'main system bus' which is effectively the root of the
+>    qbus tree)
 > 
-> On 7/1/19 8:12 PM, Philippe Mathieu-Daudé wrote:
->> A "system reset" sets the device state machine in READ_ARRAY mode
->> and, after some delay, set the SR.7 READY bit.
->>
->> We do not model timings, so we set the SR.7 bit directly.
->>
->> This pflash device is a child of TYPE_DEVICE.
->> The TYPE_DEVICE interface provide a DeviceReset handler which will
->> be called after the device is realized, and each time the machine
->> resets itself.
->>
->> To avoid incoherent states when the machine resets (see but report
->> below), factor out the reset code into pflash_cfi01_system_reset,
->> and register the method as a device reset callback.
->>
->> Buglink: https://bugzilla.redhat.com/show_bug.cgi?id=1678713
->> Reported-by: Laszlo Ersek <lersek@redhat.com>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> In this case TYPE_PFLASH_CFI01 is a subclass of TYPE_SYS_BUS_DEVICE,
+> so it will always be reset as part of system reset.
 > 
-> Does reset always get called as part of realize, really?
-
-I'm not an expert on this, but I believe the following happens.
-
-(1) When a device is hotplugged, the device is reset as part of realize
-in the following call stack:
-
-device_set_realized() [hw/core/qdev.c]
-  device_reset()      [hw/core/qdev.c]
-
-
-(2) For when the device is cold-plugged, we have, in main()
-[hw/core/qdev.c]:
-
-    /* TODO: once all bus devices are qdevified, this should be done
-     * when bus is created by qdev.c */
-    qemu_register_reset(qbus_reset_all_fn, sysbus_get_default());
-
-and then a bit later
-
-    qemu_system_reset(SHUTDOWN_CAUSE_NONE);
-
-AIUI it results in a recursive traversal / reset,
-
-qbus_reset_all_fn()      [hw/core/qdev.c]
-  qbus_reset_all()       [hw/core/qdev.c]
-    qbus_walk_children() [hw/core/bus.c]
-      qdev_reset_one()   [hw/core/qdev.c]
-        device_reset()   [hw/core/qdev.c]
-
-
-In other words, I think you have a point about clarifying the commit
-message. It's likely not that the device is re-set (a) after it is
-realized *and* (b) each time the machine is re-set. Because, pflash is
-not hot-plugged, so reset-on-hotplug does not apply, and so case (a)
-falls away. Instead, case (b), "each time the machine is re-set",
-includes the initial launch of the machine, and that is why pflash is
-ultimately re-set at startup. It does happen after realize, but not as
-part of it.
-
-Anyway, Phil can verify this easily: just set a breakpoint on
-pflash_cfi01_system_reset() in gdb before launching qemu, and get a
-backtrace once the breakpoint fires. :)
-
-Thanks
-Laszlo
-
-> Or are we just trusting that the device is probably going to get reset
-> by the guest during bringup?
+> (the main things which don't get automatically reset are direct
+> subclasses of TYPE_DEVICE, notably CPU objects.)
 > 
->> ---
->>  hw/block/pflash_cfi01.c | 15 +++++++++++++--
->>  1 file changed, 13 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
->> index dd1dfd266b..8d632ea941 100644
->> --- a/hw/block/pflash_cfi01.c
->> +++ b/hw/block/pflash_cfi01.c
->> @@ -763,8 +763,6 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
->>          pfl->max_device_width = pfl->device_width;
->>      }
->>  
->> -    pflash_mode_read_array(pfl);
->> -    pfl->status = 0x80; /* WSM ready */
->>      /* Hardcoded CFI table */
->>      /* Standard "QRY" string */
->>      pfl->cfi_table[0x10] = 'Q';
->> @@ -852,6 +850,18 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
->>      pfl->cfi_table[0x3f] = 0x01; /* Number of protection fields */
->>  }
->>  
->> +static void pflash_cfi01_system_reset(DeviceState *dev)
->> +{
->> +    PFlashCFI01 *pfl = PFLASH_CFI01(dev);
->> +
->> +    pflash_mode_read_array(pfl);
->> +    /*
->> +     * The WSM ready timer occurs at most 150ns after system reset.
->> +     * This model deliberately ignores this delay.
->> +     */
->> +    pfl->status = 0x80;
->> +}
->> +
->>  static Property pflash_cfi01_properties[] = {
->>      DEFINE_PROP_DRIVE("drive", PFlashCFI01, blk),
->>      /* num-blocks is the number of blocks actually visible to the guest,
->> @@ -896,6 +906,7 @@ static void pflash_cfi01_class_init(ObjectClass *klass, void *data)
->>  {
->>      DeviceClass *dc = DEVICE_CLASS(klass);
->>  
->> +    dc->reset = pflash_cfi01_system_reset;
->>      dc->realize = pflash_cfi01_realize;
->>      dc->props = pflash_cfi01_properties;
->>      dc->vmsd = &vmstate_pflash;
->>
+> thanks
+> -- PMM
 > 
+
+Thank you for the lesson, that makes sense -- I saw the hotplug clause,
+but missed the sysbus routine. Thanks to Laszlo for pointing this out in
+great detail, too.
+
+Phil, a clarified commit message is perfectly sufficient, and please
+take my RB.

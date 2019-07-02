@@ -1,194 +1,210 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3754264wru;
-        Tue, 2 Jul 2019 05:31:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwgTdbaFqZSRkQAGv7WyQrjIiCs8YTVMuTzPNn39/NKLz0Ul+73htZFXAQx/yfbJbo82ydo
-X-Received: by 2002:ae9:ea09:: with SMTP id f9mr25793395qkg.379.1562070681195;
-        Tue, 02 Jul 2019 05:31:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562070681; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3680109wru;
+        Tue, 2 Jul 2019 04:08:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzG3K0pS4kwIHTQ+wn+lg+e9XYgeW5IiH2hS82l2PAzmFklLD+IYU87P6ANmY/dDCAQ3t9B
+X-Received: by 2002:a17:906:4555:: with SMTP id s21mr27843784ejq.199.1562065737667;
+        Tue, 02 Jul 2019 04:08:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562065737; cv=none;
         d=google.com; s=arc-20160816;
-        b=VWCftEhKtLiNgIRLv0Mppzu7T8GKBdudVbxwEkAwvgRAuQorHOZ4fkZHVRrnQvmMRR
-         Kya9RUj5hDtbRNKoWLA3lgQ6IfbiBrBlMwtgOPZN8rKPL5gUVFbcYmV9+N/cKxGSFQuN
-         n329x29R8MTHqmGcw2z8x1KvfBI96XzE5gZbwioprj8A2EFPWTFEcncjyauhH2VCX0AZ
-         1diNgO2USDj3w9nMvDndQvP0qMsTYY36nvZoE9QOiY6DDIksZAgLk/isK9+E+sSYJqvc
-         Mcj/YCEyiBcDa9Ufks3JV74s05RWWNcDdkPiRyVrhglyvyzZqAIa6noZyi3iFWKM5Xtg
-         u2QQ==
+        b=XFMNC1l0SpPe9sOPOH4EklhR55ixx+agOlBm896x6ZZPMPNOra7shbmfMfSANg6Abb
+         8Vvw0arNWwwxnb0jAVfKhyRZ9fPPQjduyyYGGRJY7yOtW3NosxoE1vnczscUZvxcT2mJ
+         RdHG/tRjUmYuJGICpAAuBEWgaINN8HDVvF9+WQjsDCmDw/B7uBtei/Xtmo7vzyoT7mLJ
+         TH2MXWX+K3z+1iP1C9Q813XmG7y0VjdRUK+zTbVvs0EZVdco79gqDq6b0vVNaezuE0ee
+         pffCPzC5XKw4kWvPpKO+tGNGOX9nLdhLzVOERHpjVo4qZcxiAgDgChNqbqeSwA1c4UyW
+         eX+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
-         :subject;
-        bh=VJO8agQspOTXK3wYMjwlJIxnFKguiswGAf+fX7OmrIM=;
-        b=GcfxKw2EMh3uzfdpYlIizqhf0PZ98J5P2ZjZQSFjENlW+cnF/+O5LmAfDHs4Db2O7E
-         sHIOFGY+gLht+aqXysoDaNIgSipFSN3O7dDvdbyP9vb1nmio6twL5cN6ve4V9zYJdvWw
-         BB+tz1mNfMVH2NDgsCFvnipKfYkCkv6nuTXNONrfpTMDZeGauiihEQjHG4ncDb5pWcUb
-         KeuTyz5kR0ciEHT1wN232OymB9BZ+WYax7WQwz3mA3FEr0CvTgeJb2nPZCiBpqQxQ2jS
-         0Lv76X7Q2Q7/x7MEz5HkLGDzHnyXc5t3SMSvjpYsk//iv7BKC2r6fY2t/VDhULua1lDP
-         //sw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=14zysge9kbKTrMJ9eOjU/kbMaZqlHtztYaniq1p6i9E=;
+        b=CZRMKOaOcJQ4S9S1SfdXuYwtn3fcW6bsKVZJ2UAXLCn1tuP9TFh0ZrPeINHcCEbD6g
+         NSUQYYy5uZ7SRH2pLoNSm5kAueQxiuFdt+To/TEGJhZsJsr6DKbrwyIJ5tCp+JPNNErn
+         KG1uvoEtl77ATCHkF1bS0n3CFD9Eq3Qlz4vYHmQYdsQfNq8d9MeLUxxC0viwfeY74PLu
+         K/yGGDsX+USEMndKHQmV4dC3TBtPhynI3nK4lcpjmkRo6j9+m63Ty+KckmqS8h4rfNaA
+         4g2aCXAEX3quJ1g6QskXSmrI1EeHw8aJIikjjApK8h6z2GQC5XUBp0ibPBm3tBcsPF3m
+         pPiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jsnow@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <jsnow@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id n12si9376362qkk.143.2019.07.02.05.31.20
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Jul 2019 05:31:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t55si11710452edd.95.2019.07.02.04.08.57
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 02 Jul 2019 04:08:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jsnow@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id C769A30872D1;
-	Tue,  2 Jul 2019 12:31:09 +0000 (UTC)
-Received: from [10.10.120.186] (ovpn-120-186.rdu2.redhat.com [10.10.120.186])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id D97AE80D1;
-	Tue,  2 Jul 2019 12:30:31 +0000 (UTC)
-Subject: Re: [PATCH v2 5/9] hw/block/pflash_cfi01: Add the DeviceReset()
- handler
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Laszlo Ersek <lersek@redhat.com>, David Gibson
- <david@gibson.dropbear.id.au>, qemu-ppc <qemu-ppc@nongnu.org>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Wei Yang <richardw.yang@linux.intel.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>, BALATON Zoltan <balaton@eik.bme.hu>,
- Markus Armbruster <armbru@redhat.com>, Andrzej Zaborowski
- <balrogg@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Michael Walle <michael@walle.cc>, Paolo Bonzini <pbonzini@redhat.com>,
- Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Alistair Francis <alistair23@gmail.com>, Qemu-block <qemu-block@nongnu.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>
-References: <20190702001301.4768-1-philmd@redhat.com>
- <20190702001301.4768-6-philmd@redhat.com>
- <5163b3e4-f68e-dc6b-3fcc-e7927ebc58e7@redhat.com>
- <CAFEAcA_n3BpZuBPFS8y90XaOwzAo-tuKpO24_apz+9yzpxUxHQ@mail.gmail.com>
-From: John Snow <jsnow@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <0bf70b20-e51a-3899-11a8-1be24b95279f@redhat.com>
-Date: Tue, 2 Jul 2019 08:30:30 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51678 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hiGee-0001BS-PB
+	for alex.bennee@linaro.org; Tue, 02 Jul 2019 07:08:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54178)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <imammedo@redhat.com>) id 1hiGdC-0007fB-21
+ for qemu-arm@nongnu.org; Tue, 02 Jul 2019 07:07:27 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <imammedo@redhat.com>) id 1hiGdA-0001Qh-Kv
+ for qemu-arm@nongnu.org; Tue, 02 Jul 2019 07:07:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43056)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>)
+ id 1hiGdA-0001O3-BK; Tue, 02 Jul 2019 07:07:24 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 6DBF88552A;
+ Tue,  2 Jul 2019 11:07:18 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DDCF25C1A1;
+ Tue,  2 Jul 2019 11:07:07 +0000 (UTC)
+Date: Tue, 2 Jul 2019 13:07:03 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Message-ID: <20190702130703.0e74cbe6@redhat.com>
+In-Reply-To: <20190625121421.22280-1-shameerali.kolothum.thodi@huawei.com>
+References: <20190625121421.22280-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_n3BpZuBPFS8y90XaOwzAo-tuKpO24_apz+9yzpxUxHQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.47]); Tue, 02 Jul 2019 12:31:15 +0000 (UTC)
-X-TUID: qguXwG/vsAIA
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.28]); Tue, 02 Jul 2019 11:07:23 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 0/8] ARM virt: ACPI memory
+ hotplug support
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
+ shannon.zhaosl@gmail.com, qemu-devel@nongnu.org, xuwei5@hisilicon.com,
+ linuxarm@huawei.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
+ sebastien.boeuf@intel.com, lersek@redhat.com,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tVCcYUYd5EAo
+
+On Tue, 25 Jun 2019 13:14:13 +0100
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+
+> This series is an attempt to provide device memory hotplug support 
+> on ARM virt platform. This is based on Eric's recent works here[1]
+> and carries some of the pc-dimm related patches dropped from his
+> series.
+> 
+> The kernel support for arm64 memory hot add was added recently by
+> Robin and hence the guest kernel should be => 5.0-rc1.
+> 
+> NVDIM support is not included currently as we still have an unresolved
+> issue while hot adding NVDIMM[2]. However NVDIMM cold plug patches
+> can be included, but not done for now, for keeping it simple.
+> 
+> This makes use of GED device to sent hotplug ACPI events to the
+> Guest. GED code is based on Nemu. Thanks to the efforts of Samuel and
+> Sebastien to add the hardware-reduced support to Nemu using GED
+> device[3]. (Please shout if I got the author/signed-off wrong for
+> those patches or missed any names).
+> 
+> This is sanity tested on a HiSilicon ARM64 platform and appreciate
+> any further testing.
+
+There are several things I'd fix/amend but it's nothing that couldn't
+be done on top as bugfixes (I'll comment later on specific issues).
+
+However as a whole from ACPI and memory hotplug POV series looks more
+or less ready for merging.
+
+I've asked Eric to test migration (I'm quite not sure about that part),
+(CCed David)so on condition it works:
+
+  Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
 
+> Thanks,
+> Shameer
+> 
+> [1] https://patchwork.kernel.org/cover/10837565/
+> [2] https://patchwork.kernel.org/cover/10783589/
+> [3] https://github.com/intel/nemu/blob/topic/virt-x86/hw/acpi/ged.c
+> [4] http://lists.infradead.org/pipermail/linux-arm-kernel/2019-May/651763.html
+> 
+> v5 --> v6
+> 
+> -Addressed comments from Eric.
+> -Added R-by from Eric and Igor.
+> 
+> v4 --> v5
+> -Removed gsi/ged-irq routing in virt.
+> -Added Migration support.
+> -Dropped support for DT coldplug case based on the discussions
+>  here[4]
+> -Added system_powerdown support through GED.
+> 
+> v3 --> v4
+> Addressed comments from Igor and Eric,
+> -Renamed "virt-acpi" to "acpi-ged".
+> -Changed ged device parent to TYPE_DEVICE.
+> -Introduced DT memory node property "hotpluggable" to resolve device
+>  memory being treated as early boot memory issue(patch #7).
+> -Combined patches #3 and #9 from v3 into #3.
+> 
+> v2 --> v3
+> 
+> Addressed comments from Igor and Eric,
+> -Made virt acpi device platform independent and moved
+>  to hw/acpi/generic_event_device.c
+> -Moved ged specific code into hw/acpi/generic_event_device.c
+> -Introduced an opt-in feature "fdt" to resolve device-memory being
+>  treated as early boot memory.
+> -Dropped patch #1 from v2.
+> 
+> RFC --> v2
+> 
+> -Use GED device instead of GPIO for ACPI hotplug events.
+> -Removed NVDIMM support for now.
+> -Includes dropped patches from Eric's v9 series.
+> 
+> Eric Auger (1):
+>   hw/arm/virt: Add memory hotplug framework
+> 
+> Samuel Ortiz (2):
+>   hw/acpi: Do not create memory hotplug method when handler is not
+>     defined
+>   hw/acpi: Add ACPI Generic Event Device Support
+> 
+> Shameer Kolothum (5):
+>   hw/acpi: Make ACPI IO address space configurable
+>   hw/arm/virt: Enable device memory cold/hot plug with ACPI boot
+>   hw/arm/virt-acpi-build: Add PC-DIMM in SRAT
+>   hw/acpi: Add system power down support to GED
+>   hw/arm: Use GED for system_powerdown event
+> 
+>  hw/acpi/Kconfig                        |   4 +
+>  hw/acpi/Makefile.objs                  |   1 +
+>  hw/acpi/generic_event_device.c         | 352 +++++++++++++++++++++++++
+>  hw/acpi/memory_hotplug.c               |  35 +--
+>  hw/arm/Kconfig                         |   4 +
+>  hw/arm/virt-acpi-build.c               |  58 ++--
+>  hw/arm/virt.c                          |  88 ++++++-
+>  hw/i386/acpi-build.c                   |   3 +-
+>  include/hw/acpi/generic_event_device.h | 106 ++++++++
+>  include/hw/acpi/memory_hotplug.h       |   9 +-
+>  include/hw/arm/virt.h                  |   3 +
+>  11 files changed, 607 insertions(+), 56 deletions(-)
+>  create mode 100644 hw/acpi/generic_event_device.c
+>  create mode 100644 include/hw/acpi/generic_event_device.h
+> 
 
-On 7/2/19 5:23 AM, Peter Maydell wrote:
-> On Tue, 2 Jul 2019 at 04:16, John Snow <jsnow@redhat.com> wrote:
->> Does reset always get called as part of realize, really?
->>
->> Or are we just trusting that the device is probably going to get reset
->> by the guest during bringup?
-> 
-> Reset is not called "as part of realize", but it is guaranteed
-> to be called after realize and before we try to run the guest,
-> as long as the device is in the qbus tree. Things are in the
-> qbus tree if either:
->  * they're plugged into something already in the tree (eg
->    pci devices, scsi disks)
->  * they're a sysbus device (which is automatically plugged into
->    the 'main system bus' which is effectively the root of the
->    qbus tree)
-> 
-> In this case TYPE_PFLASH_CFI01 is a subclass of TYPE_SYS_BUS_DEVICE,
-> so it will always be reset as part of system reset.
-> 
-> (the main things which don't get automatically reset are direct
-> subclasses of TYPE_DEVICE, notably CPU objects.)
-> 
-> thanks
-> -- PMM
-> 
-
-Thank you for the lesson, that makes sense -- I saw the hotplug clause,
-but missed the sysbus routine. Thanks to Laszlo for pointing this out in
-great detail, too.
-
-Phil, a clarified commit message is perfectly sufficient, and please
-take my RB.

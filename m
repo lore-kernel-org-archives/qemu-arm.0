@@ -1,148 +1,114 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3583441wru;
-        Tue, 2 Jul 2019 02:19:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxotvVqJxA1RuGMWYauJdbyzd3TLg4BSd+9cmWpxaxYRSbFz0oLotbyoIGqkujDtSmLQ5OQ
-X-Received: by 2002:aa7:d845:: with SMTP id f5mr34434280eds.78.1562059173416;
-        Tue, 02 Jul 2019 02:19:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562059173; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3586425wru;
+        Tue, 2 Jul 2019 02:23:18 -0700 (PDT)
+X-Received: by 2002:aca:1304:: with SMTP id e4mr2312256oii.149.1562059398009;
+        Tue, 02 Jul 2019 02:23:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562059398; cv=none;
         d=google.com; s=arc-20160816;
-        b=LBuVGl24NVKJ9mPmd5bJBq2rhGKCExyxfTUcUynqeVRugW1vo960Q3c3CiLX+lFAuR
-         qB2kfFwSKUJLwNwcML+H6WqIfMbjPtDP7u9gjhvybKVgE27bAyKWpe0ChqO0x0GykU02
-         FAMvUs/KicZ735pueSQsO0+oOYqsx4d/svz2vjtVFGZ7+ww1kCS/ybN9XMHvopK2l2UH
-         ESOiDj/6HoPNSl4YJmf5UwrMnZsSp8sZmmn2KXqddLqh61HdTJZv0xD/C3KZ4gQFIX2S
-         Fauyc5TAN7uXas0Rr/lgjm3tOcFyCH/PtyQiYlbDGaVwDh3AwCw3l/KqydUPI2z8aIfB
-         xTsw==
+        b=dXwENCgt/HbbNgD9sKvU9JlTUQbY+RPC/HJaF7PkZnWl5yOJpuwOpLXFg84D3hCAeV
+         4ue6Ap9bsbsso33pL7ia+VtfUn3v0do1UpTkw0eDdGZYW+KNwcSMplUv5ifBwuzI/zFq
+         02dsolXvVJRgzoZCK836KYABGTBj0f6g0P43aPuaMYSsIzAdvNXXmvBNwuHUl0Nl4uAc
+         Wu8K0P9L0waygKneG6UKfl/+GpVXUpx5f5GBFgDWoFaIy8SCx5K4Vmty3l8jVI+KvrRA
+         OrfO2gP7qx2huwuK7jpT52xLD2T341IfuiOlEq+tP+HHpAciYTPjyPfSzLohn+XPvhq1
+         WoEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ExcpDSybs2Us67oe0TsvmpOFGBZM+gGUCA0WnyGo4lk=;
-        b=0Cf+OJmDnanidvyveFesBDALdVavmnbyb4V/oK1a3w1H8sVuENIOq7njZjafOiTFk/
-         bJ+caTT2FXenGxaAyS5RA1KTZ5phoP0hQxUq28tEnMSr9ANBdcfL9H2qEliCqACJLEa7
-         wsswoA0wpZL21yCnzYt54kQ4KlVtJr00vUJTwFwJ0ZTP+dFNwabKuqvH5a+A+yJtUNOl
-         cOw48+A6r4TdiGhAKdHyPFtwvUlK4Y95CBXumVvLy/7mbiKcBh2qQNM6Hr6tLkDaQBoU
-         JqLWeUT9IGTUdEElKLq8C8EP4iY0/sogdSst6aYxO+71goodyRFXK2CMfz5kbL6raBOd
-         kcYg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=HJp8Y3IivklWEU/GlPUXnnihWF/59LLGbSOdRuk95RU=;
+        b=f9B36spLKkq2IZvKBOjhE/Gr3v+fiPhrbpdEFukM1qZJ2C78clwzcLUMChqQOLrz6K
+         aDQFj7f1+M5D87QJzzrdVm+/1KJL/d9LIGGe/GiBeYM36fKb1Zl0Rl/k0z1470Oaerk4
+         YuNorSN9/usta08khRmDdw7hMi7ZPtUGe8o9caUvKkbJ/KKlsphvlpD/DRs+ITD9I67m
+         QqRKWlePXA1HJYrs/LbmRgSroXpcG5fwrFxbkmt85JXF3gzKj+Z4DViPsC2PgfU75+WG
+         O5SvnEONbiVQ4nlGHXpEYqPQeFKwtGhM2iMuEwyEbWVW9jJB1PVq89KRRL+Zf75Z8oao
+         TRtw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YnzBN670;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 4si11716206edz.269.2019.07.02.02.19.33
+       dkim=pass header.i=@linaro.org header.s=google header.b=mxtyvy9h;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id b129sor5930762oih.128.2019.07.02.02.23.17
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jul 2019 02:19:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 02 Jul 2019 02:23:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YnzBN670;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50964 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hiEwm-000801-HO
-	for alex.bennee@linaro.org; Tue, 02 Jul 2019 05:19:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34959)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hiEwV-0007xP-NU
- for qemu-arm@nongnu.org; Tue, 02 Jul 2019 05:19:16 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hiEwP-00066s-VP
- for qemu-arm@nongnu.org; Tue, 02 Jul 2019 05:19:15 -0400
-Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235]:46626)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hiEv7-0005lX-5J
- for qemu-arm@nongnu.org; Tue, 02 Jul 2019 05:19:09 -0400
-Received: by mail-oi1-x235.google.com with SMTP id 65so12439948oid.13
- for <qemu-arm@nongnu.org>; Tue, 02 Jul 2019 02:17:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ExcpDSybs2Us67oe0TsvmpOFGBZM+gGUCA0WnyGo4lk=;
- b=YnzBN670EgyTRClqhXDEQK+UCyLmJI+IbtzLLPULpe31ALd3VIcyK7Rk2AOxOKnT6s
- +2eFocSfBMdyLT6fFTlVnbYqwmvlO/au8q2A9fcdhMDgh20WvmGRhVA+XLlGUz2zHx4h
- sOiZMgGoXKuYsCrzPXigUqV7d2N2SYk/dHiOd1rvV/2mdeK5Zdsolsk1ha9RlE9IGYSI
- Vt8uNFHtMhI6QFS2NcTwz+eYdrdvxkM7xjsUHi2r0KHWTXvAz1HcJiyN6xhurI8+3kQA
- 8GRx529am2qOEKvgNviRwUdWiXXzhp11VbHTdkxtT4Sdzl+35IG+ggEjtrl8tHXJYpjh
- 5lSA==
+       dkim=pass header.i=@linaro.org header.s=google header.b=mxtyvy9h;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=HJp8Y3IivklWEU/GlPUXnnihWF/59LLGbSOdRuk95RU=;
+        b=mxtyvy9hWNVCM5XEYgTpaC0Vy3f00l0OihddldLcVAghD2i5PAb6LcVGe0NUMLDgta
+         93OdO7gsvg6s9P8OxYO7qEs7tAXCe8u4fX2xTDvwJdVPOBFWbIVxKkvx0Z6ZeA5SKH1k
+         X9N62eo/ZuF7jF2Vcei4mrFkem3AW/2ElkbXoA5V28ZuDaO3E8VrvtnoA6+LIUdiSPCg
+         NHXYvBD+tqUOdHY5Ll0immQuMX8r6h/f0S1E9b3SouPOuJ4NaN3W7VzjD+ibVx9i3Pau
+         PP9SdkGmbTUgcUtqwWtVQu3f4yXTlmZ0Iq1s3n+IoZnOf0QbE3hNlh3u1YtqO2QYN9p2
+         SFLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ExcpDSybs2Us67oe0TsvmpOFGBZM+gGUCA0WnyGo4lk=;
- b=B4KoToff+uO3IXV9M6mgf5GeEd31CjAK6w94r6C3Z90dHRu09L4xv0NeXGC5m6oujF
- 8jfoBQWpI9FaidqYM2MM27SPKakcATveqCJZOdilRNk7DeuWzW8FL/xWQSfyNp/wG1uB
- nxoJ6XPA9QSpnMNFnSVPYEKlEumhJMa6dTTqypPxJaTtf1BHLmlgdgtitfJpg3p6AENd
- Debx4zpMTLIjMPjywymTotNSjUwEyoHkClWMrlgQUvrTfZHs0XrCd4o4gLlNZyJNx9eR
- pa9EaLbXLzmUTFpZASzHwgTgPyfQGGmSOlogS2lO9lN5qK/tSTjrOOVLkanGDQRFkOGD
- 5UfQ==
-X-Gm-Message-State: APjAAAWyRGOo1/HigIcAPs6rdAVfl16uKemRp11nc8PctsC9qJvmQAyy
- KA0xLpRTh1Ut7QdoFrCm5xjsvuXWbn+MLR0O/XcGtg==
-X-Received: by 2002:aca:ac48:: with SMTP id v69mr2293712oie.48.1562059067492; 
- Tue, 02 Jul 2019 02:17:47 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=HJp8Y3IivklWEU/GlPUXnnihWF/59LLGbSOdRuk95RU=;
+        b=XAgsUi1nHAzWhwWNe452W3/VkFfOKFgvHhYpOUEtpVvdPNk5KsndVO4ZbAuB+OB3GF
+         cJeqL2GyhaZWsQtZiOe0zSd2WN2A4HPJPBkeU581z4+AzN+h18u9Q8Cb5nkEuACQu3j4
+         WyjA0SryeDwS+IgbSRFV+fwf1c2ef9scy6f7MHmL65CMBXnaaOMA8OjfDgEUVXwwpNen
+         hUG0SbvfH0/R1/WQjbdqGuNB2awNzZRUPPvhHJUl3Vknu+S9XJmG0ST+vHMJklTGasDG
+         BdliXFzlUIXgNpByI3CaZsyLM2ip5e3HgBV6WLsbec+zPd5RYMmeui8e6STJ55m12Czy
+         PQqg==
+X-Gm-Message-State: APjAAAW/KrmMFpS5+05uVrzy8qFcXBRz61abciMT+igmV9Q8t/eX3z9J
+	jKcPLXENSMzgEGUA0IP9Op/h3U6WiWxL/7120nQLKzNV
+X-Google-Smtp-Source: APXvYqyTM0fBOGp/708ohExZKyWab+1S+q3+ssOYp+kRD7V9nLB+b/74b3YRAYIZMSbhw9mIpbcv540IPa/K3Y+PW7Y=
+X-Received: by 2002:aca:ac48:: with SMTP id v69mr2304932oie.48.1562059397642;
+ Tue, 02 Jul 2019 02:23:17 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190628103957.9504-1-kraxel@redhat.com>
-In-Reply-To: <20190628103957.9504-1-kraxel@redhat.com>
+References: <20190702001301.4768-1-philmd@redhat.com> <20190702001301.4768-6-philmd@redhat.com>
+ <5163b3e4-f68e-dc6b-3fcc-e7927ebc58e7@redhat.com>
+In-Reply-To: <5163b3e4-f68e-dc6b-3fcc-e7927ebc58e7@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Jul 2019 10:17:36 +0100
-Message-ID: <CAFEAcA9Dh2EaPkcDmErEdJN+BknuRHvZKe5veOcY_7hMVEXiVQ@mail.gmail.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
+Date: Tue, 2 Jul 2019 10:23:06 +0100
+Message-ID: <CAFEAcA_n3BpZuBPFS8y90XaOwzAo-tuKpO24_apz+9yzpxUxHQ@mail.gmail.com>
+Subject: Re: [PATCH v2 5/9] hw/block/pflash_cfi01: Add the DeviceReset() handler
+To: John Snow <jsnow@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
+	QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>, 
+	Laszlo Ersek <lersek@redhat.com>, David Gibson <david@gibson.dropbear.id.au>, 
+	qemu-ppc <qemu-ppc@nongnu.org>, Max Filippov <jcmvbkbc@gmail.com>, 
+	Aleksandar Markovic <amarkovic@wavecomp.com>, Wei Yang <richardw.yang@linux.intel.com>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Aurelien Jarno <aurelien@aurel32.net>, BALATON Zoltan <balaton@eik.bme.hu>, 
+	Markus Armbruster <armbru@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>, 
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Michael Walle <michael@walle.cc>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>, 
+	Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>, 
+	"Michael S. Tsirkin" <mst@redhat.com>, Alistair Francis <alistair23@gmail.com>, 
+	Qemu-block <qemu-block@nongnu.org>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
+	Eduardo Habkost <ehabkost@redhat.com>, Aleksandar Rikalo <arikalo@wavecomp.com>
 Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::235
-Subject: Re: [Qemu-arm] [PULL 0/6] Vga 20190628 patches
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>, qemu-arm <qemu-arm@nongnu.org>,
- qemu-ppc <qemu-ppc@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QoJCA1ZAMo0q
+X-TUID: ZIH/Tt9PVgqh
 
-On Fri, 28 Jun 2019 at 11:40, Gerd Hoffmann <kraxel@redhat.com> wrote:
+On Tue, 2 Jul 2019 at 04:16, John Snow <jsnow@redhat.com> wrote:
+> Does reset always get called as part of realize, really?
 >
-> The following changes since commit 474f3938d79ab36b9231c9ad3b5a9314c2aeacde:
->
->   Merge remote-tracking branch 'remotes/amarkovic/tags/mips-queue-jun-21-2019' into staging (2019-06-21 15:40:50 +0100)
->
-> are available in the Git repository at:
->
->   git://git.kraxel.org/qemu tags/vga-20190628-pull-request
->
-> for you to fetch changes up to 263807f4e85e94f2d4e988d61d2fc0319b1dd36b:
->
->   ati-vga: switch to vgabios-ati.bin (2019-06-28 10:49:36 +0200)
->
-> ----------------------------------------------------------------
-> vga: ati fixes, add ati vgabios.
->
-> ----------------------------------------------------------------
->
-> BALATON Zoltan (3):
->   i2c: Move bitbang_i2c.h to include/hw/i2c/
->   ati-vga: Implement DDC and EDID info from monitor
->   ati-vga: Fixes to offset and pitch registers
->
-> Gerd Hoffmann (3):
->   seabios: add config for ati vgabios
->   seabios: add ati vgabios binary
->   ati-vga: switch to vgabios-ati.bin
->
+> Or are we just trusting that the device is probably going to get reset
+> by the guest during bringup?
 
-Applied, thanks.
+Reset is not called "as part of realize", but it is guaranteed
+to be called after realize and before we try to run the guest,
+as long as the device is in the qbus tree. Things are in the
+qbus tree if either:
+ * they're plugged into something already in the tree (eg
+   pci devices, scsi disks)
+ * they're a sysbus device (which is automatically plugged into
+   the 'main system bus' which is effectively the root of the
+   qbus tree)
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/4.1
-for any user-visible changes.
+In this case TYPE_PFLASH_CFI01 is a subclass of TYPE_SYS_BUS_DEVICE,
+so it will always be reset as part of system reset.
 
+(the main things which don't get automatically reset are direct
+subclasses of TYPE_DEVICE, notably CPU objects.)
+
+thanks
 -- PMM

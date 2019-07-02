@@ -1,159 +1,129 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3826069wru;
-        Tue, 2 Jul 2019 06:48:11 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxIaWd4xms3s3MSGCZqOFiB0h2BaKxQAzxuk76go4cNH0nBKPKsFLXwwhaxveZq/wd55LUq
-X-Received: by 2002:a17:906:5806:: with SMTP id m6mr2925992ejq.80.1562075291003;
-        Tue, 02 Jul 2019 06:48:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562075290; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3869152wru;
+        Tue, 2 Jul 2019 07:33:36 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwK+ETT0bmkuBFVgafdCLnfr+uWKwj2rozSHv+23KcZ/hRHu6Ade1ekjAQ8VssP0Ccc105e
+X-Received: by 2002:a0c:d0b6:: with SMTP id z51mr26838570qvg.3.1562078016884;
+        Tue, 02 Jul 2019 07:33:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562078016; cv=none;
         d=google.com; s=arc-20160816;
-        b=a8Bou5Qiv+YT/7EM7S8u5wPWA6thaMwI7gcdW0OhLWvMxeUEvsqr2rwkhAeORMDEKO
-         94EsCRyRKZSDuyUlUGdtIxL9B19w6I5ouOD9cR8kAvUOPQPjHbE6p0jT3dLchMuuNqon
-         eiPWHtwMFIf5Cnoy0EA8rH5bcbXDzAbTMPiHV7IHney74bDrm6ddVUT5x7qtAHbb9PFR
-         1K6XdosGHmISab2USuacKX91ktwbrBUMERSadopy8Mq6fAXX82lMeW7m1J87gkjST8vI
-         paA0de31o49CpZgPv6P0OklXB7MWr/KTW6fQMfXMiyIbIJOJJ9jpIYlbWsopvNhe3WPO
-         ELGg==
+        b=0kOka1c6zg9C3Klmb4vYyfy7yPspUnhJJxUwcj4B9DkDNgHU2247kC16S7jLJMbLzq
+         X9tQxHxCOSkDOUlaE+FlsVtWru2bklJnnbBb5KpX5WraTAzEhde3G3iujH2Q2MzMPbip
+         1ic4nqlpBKhgQfNIKC45ZXnbUL8KmLDqR1FtSmoord139iux85jkdiZgXYlWSq821vzU
+         aHGCF6fafvry1Ggr5tkCJU4Jwjp6QKUmmwu+CwcxuH8FIlaYZG8/Ndg8C+M6v0xunwml
+         u8BTPOijA1zt900oZcTKeIubL/LzmjpP0F+av21Rlm58N0LnM6BJAEh/GYZE3j8J9Lbu
+         1Ctw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=VJaf5QiQw12UXFs71Dtz5sRrxskdcL8jkomFVtXibP0=;
-        b=NiOKgN0lJphEEGCwgzsBabdG7zyZNp7Cj0cTz5Qvc++byf6/GTG7hofL5jhl4eAUby
-         NOlp50BuS6wMm3jfXCTrrVS14M5kmzybkE1zWOHUoJnknjrtAA8TKZx3wTXpBu9m8flq
-         wEYrjGlRVxi21GBCpuK+rPWmGIbElU2nJNVT+5T6Lx2ofsMtVi5x8H9s4d+XtqHmdnLR
-         kIWYNv+nYktqv2uKeIWLFjXnPzTN/B2uW8fv2CP1x1Z41mrrvL4qwSpabThywlV1DgXF
-         nRPE4eB8hqDpqEYTr35soORlXrqB7oWI1U8LPHHRRnw1BCwZr/UpfxBzH0cnxrEK9aeK
-         FPiQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=xawgHW1MVMAwfV/rQGIof/tyOURw8nC0S2OPSeQKM2w=;
+        b=SozH9PJBt9PlX9DtlXoCMjXCABgkqNQNCEFj/VqndbHbf8yCQMLN/kolSGpGlhkTVZ
+         VDdF7t+sCiqfGzCUEAvKjVi85iL2fyY6/oQ8TQO6+Ft7p1DZ77mZAhmdCuhcJZdRRG6X
+         B0JlplcG41Xf5iTE7lcY71VxeIKAQmyH4Kc3AGAFTBkCZ1WDXysSDAZYsCOs0giUTyx0
+         r5GBSvKZRnf94Q0QJybnCAZs+BByDHOjxGVID4lQrvaIHTYX+jy5FvYc4/KTCGOB+n6T
+         UosHYPU4zVEsLeYqaNlhKjqJexZCF5+54Q+kktFhxzTlhMDtEK5Yz4kNZyoQw3EGGicK
+         T1+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=q1CppeXP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g23si1633283edg.39.2019.07.02.06.48.10
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jul 2019 06:48:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=lersek@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <lersek@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id 71si9819747qkd.345.2019.07.02.07.33.36
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 02 Jul 2019 07:33:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=q1CppeXP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53546 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hiJ8k-0002bQ-0F
-	for alex.bennee@linaro.org; Tue, 02 Jul 2019 09:48:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37226)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hiJ82-0002Zm-Ic
- for qemu-arm@nongnu.org; Tue, 02 Jul 2019 09:47:27 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hiJ81-0003Hr-7u
- for qemu-arm@nongnu.org; Tue, 02 Jul 2019 09:47:26 -0400
-Received: from mail-ot1-x32c.google.com ([2607:f8b0:4864:20::32c]:37223)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hiJ80-0003Ec-WA
- for qemu-arm@nongnu.org; Tue, 02 Jul 2019 09:47:25 -0400
-Received: by mail-ot1-x32c.google.com with SMTP id s20so17211650otp.4
- for <qemu-arm@nongnu.org>; Tue, 02 Jul 2019 06:47:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=VJaf5QiQw12UXFs71Dtz5sRrxskdcL8jkomFVtXibP0=;
- b=q1CppeXPB23L5qEJCrLxNvAWu5zZmHgRYRtgC9tY9i3QyjTOIDTNHYMWcN3d0OGMfP
- N4qYZAo8Q6qvzxB+wQPX+naN6LVI51CoYkWrRGNrTTw8ltS286itUPymNHF4Dos0uDaz
- gk+OJFRb653oC9Nx8tLl84Oh3u4jlfp879ItP8dVK8/NeLz0lc/+LSljpiryIkrHB9YQ
- 6F3hlyV28UvcPolV5L/BpVeODECCn/VTqU9nRGvZPcHQi/nJEy5WkMZ7ynJBo1ExrReg
- bIgAGLRZlthjjrPKYW0Qz/xmO5eDtR6MtyRNHDgx9lgEqiNolEQoTYz2KDp2/NwPShP6
- zIPg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=VJaf5QiQw12UXFs71Dtz5sRrxskdcL8jkomFVtXibP0=;
- b=Diwamk+rkwtmJJCtzRPjYIgF8ifStB2WsCoR8QfQNtBqoKLjN57Fyevbiy5TZvIk4I
- tOrDk3moES0XklXh5jJ7ffwoYqbzQQboCr9VJ6PE+AIz87yQtnFX/z8zECwDjOhMSUir
- C0+jZhZgVUh3MAddstr0F1sm8PgXUwO8viZkylsLpZv6VMtad7mBFUcO/00kIa1eibc3
- ACQxwQURFo0C+psr8o/SmUy/T7VoieQucEXRO2bWb4bZrCS4wF2OZ393So4zH0tIj65u
- 9jq5a3mJu5CHDX7jn8FKC1MFKI2oDdVVaxrf8m7nu7JJuhGzEs84c0l4Cx9pwQqbCown
- ra4w==
-X-Gm-Message-State: APjAAAXeo2FpvTX4+ZsmoyZmpsnozH2G3vY39Rvc6U+AZOIaK7+AH7aL
- 6kytaw/p936laZ1PtybfsUcsetwLgq6lJNkIC/t0Ew==
-X-Received: by 2002:a9d:6a0f:: with SMTP id g15mr25069542otn.135.1562075243729; 
- Tue, 02 Jul 2019 06:47:23 -0700 (PDT)
+       spf=pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=lersek@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4D1D781DFC;
+	Tue,  2 Jul 2019 14:33:18 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-117-172.ams2.redhat.com [10.36.117.172])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id A3BA01001DD5;
+	Tue,  2 Jul 2019 14:32:37 +0000 (UTC)
+Subject: Re: [PATCH v2 5/9] hw/block/pflash_cfi01: Add the DeviceReset()
+ handler
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, John Snow <jsnow@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann
+ <kraxel@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Max Filippov <jcmvbkbc@gmail.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Wei Yang <richardw.yang@linux.intel.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Aurelien Jarno <aurelien@aurel32.net>, BALATON Zoltan <balaton@eik.bme.hu>,
+ Markus Armbruster <armbru@redhat.com>, Andrzej Zaborowski
+ <balrogg@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Michael Walle <michael@walle.cc>, Paolo Bonzini <pbonzini@redhat.com>,
+ Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Alistair Francis <alistair23@gmail.com>, Qemu-block <qemu-block@nongnu.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>
+References: <20190702001301.4768-1-philmd@redhat.com>
+ <20190702001301.4768-6-philmd@redhat.com>
+ <5163b3e4-f68e-dc6b-3fcc-e7927ebc58e7@redhat.com>
+ <CAFEAcA_n3BpZuBPFS8y90XaOwzAo-tuKpO24_apz+9yzpxUxHQ@mail.gmail.com>
+ <633b88d8-88d0-3fa0-ff25-63935d8806fe@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <d70226ca-4c54-f3f7-5284-482f3207d76d@redhat.com>
+Date: Tue, 2 Jul 2019 16:32:36 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-References: <20190628103957.9504-1-kraxel@redhat.com>
- <CAFEAcA9Dh2EaPkcDmErEdJN+BknuRHvZKe5veOcY_7hMVEXiVQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA9Dh2EaPkcDmErEdJN+BknuRHvZKe5veOcY_7hMVEXiVQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Jul 2019 14:47:12 +0100
-Message-ID: <CAFEAcA8W6OkDa8cY-YWq7dFeFoZENFiEPNfB3Hy3XQPe6GN2rw@mail.gmail.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::32c
-Subject: Re: [Qemu-arm] [PULL 0/6] Vga 20190628 patches
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>, qemu-arm <qemu-arm@nongnu.org>,
- qemu-ppc <qemu-ppc@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GRtpTD1EaVLt
+In-Reply-To: <633b88d8-88d0-3fa0-ff25-63935d8806fe@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.25]); Tue, 02 Jul 2019 14:33:36 +0000 (UTC)
+X-TUID: LiV7cDkAexBU
 
-On Tue, 2 Jul 2019 at 10:17, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Fri, 28 Jun 2019 at 11:40, Gerd Hoffmann <kraxel@redhat.com> wrote:
-> >
-> > The following changes since commit 474f3938d79ab36b9231c9ad3b5a9314c2aeacde:
-> >
-> >   Merge remote-tracking branch 'remotes/amarkovic/tags/mips-queue-jun-21-2019' into staging (2019-06-21 15:40:50 +0100)
-> >
-> > are available in the Git repository at:
-> >
-> >   git://git.kraxel.org/qemu tags/vga-20190628-pull-request
-> >
-> > for you to fetch changes up to 263807f4e85e94f2d4e988d61d2fc0319b1dd36b:
-> >
-> >   ati-vga: switch to vgabios-ati.bin (2019-06-28 10:49:36 +0200)
-> >
-> > ----------------------------------------------------------------
-> > vga: ati fixes, add ati vgabios.
-> >
-> > ----------------------------------------------------------------
-> >
-> > BALATON Zoltan (3):
-> >   i2c: Move bitbang_i2c.h to include/hw/i2c/
-> >   ati-vga: Implement DDC and EDID info from monitor
-> >   ati-vga: Fixes to offset and pitch registers
-> >
-> > Gerd Hoffmann (3):
-> >   seabios: add config for ati vgabios
-> >   seabios: add ati vgabios binary
-> >   ati-vga: switch to vgabios-ati.bin
-> >
->
-> Applied, thanks.
->
-> Please update the changelog at https://wiki.qemu.org/ChangeLog/4.1
-> for any user-visible changes.
+On 07/02/19 11:37, Philippe Mathieu-Daudé wrote:
+> On 7/2/19 11:23 AM, Peter Maydell wrote:
+>> On Tue, 2 Jul 2019 at 04:16, John Snow <jsnow@redhat.com> wrote:
+>>> Does reset always get called as part of realize, really?
+>>>
+>>> Or are we just trusting that the device is probably going to get reset
+>>> by the guest during bringup?
+>>
+>> Reset is not called "as part of realize", but it is guaranteed
+>> to be called after realize and before we try to run the guest,
+>> as long as the device is in the qbus tree. Things are in the
+>> qbus tree if either:
+>>  * they're plugged into something already in the tree (eg
+>>    pci devices, scsi disks)
+>>  * they're a sysbus device (which is automatically plugged into
+>>    the 'main system bus' which is effectively the root of the
+>>    qbus tree)
+>>
+>> In this case TYPE_PFLASH_CFI01 is a subclass of TYPE_SYS_BUS_DEVICE,
+>> so it will always be reset as part of system reset.
+>>
+>> (the main things which don't get automatically reset are direct
+>> subclasses of TYPE_DEVICE, notably CPU objects.)
+> 
+> Thanks for the clarification!
+> 
+> I will update the commit description paraphrasing Peter:
+> 
+>   The TYPE_DEVICE interface provides a DeviceReset handler.
+>   This pflash device is a subclass of TYPE_SYS_BUS_DEVICE (which
+>   is a subclass of TYPE_DEVICE).
+>   SYS_BUS devices are automatically plugged into the 'main system
+>   bus', which is the root of the qbus tree.
+>   Devices in the qbus tree are guaranteed to have their reset()
+>   handler called after realize() and before we try to run the guest.
+> 
+>   To avoid incoherent states when the machine resets (see but report
+>   below), factor out the reset code into pflash_cfi01_system_reset,
+>   and register the method as a device reset callback.
+> 
+> John, Laszlo, is that OK with you?
 
-Hmm, the bitbang-i2c changes in this pull seem to have broken
-patchew's asan build:
-https://patchew.org/logs/20190628103957.9504-1-kraxel@redhat.com/testing.asan/?type=message
+works for me, sure.
 
-(probably because now we're using and testing the buggy
-code in a way we weren't before)
-
-thanks
--- PMM
+Thanks
+Laszlo

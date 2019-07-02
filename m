@@ -1,88 +1,112 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3731236wru;
-        Tue, 2 Jul 2019 05:06:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwPaxXZ67/CS/2z4s86IfLqueb76OqkywCk+LQgCtXG96hNaaQt9xxpblnT3+lk1Yb62Q+M
-X-Received: by 2002:a50:86ea:: with SMTP id 39mr34760132edu.184.1562069165647;
-        Tue, 02 Jul 2019 05:06:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562069165; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3682794wru;
+        Tue, 2 Jul 2019 04:11:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx08sRZQUCiO3zJsnJqXm6K+9Acz8413fpT5SBIigLDx+wmKZsMX0cVEhFb4tiWuY1++Vnl
+X-Received: by 2002:a50:ac24:: with SMTP id v33mr34931662edc.30.1562065898477;
+        Tue, 02 Jul 2019 04:11:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562065898; cv=none;
         d=google.com; s=arc-20160816;
-        b=WA+AUUQzCYBFaiWXj/HWNx2lk0qSAJsibEEM1OvKipzbHRo8r8MACLzqWcrFfR6wp7
-         v1dnZf4XC+sPFBBJ0+arNFh76ZcpSPPga3i2vKalla0eVR1SqCyc7y6C5xtUMrA/CXmg
-         a48ZI4+KzdTNXPQKGf03l+NSvFbZ5xOmXwq/lM10t/OkY1V94dOiPPsCtufp/XcD6rxr
-         aJ+jn6aBLRjy3epfeotYctcXSwOGS4tri0Us+tBYy2LRrcmt3P0Hi1rYMgqSMksQGRpL
-         R87WAr+FThQDWmis0WXS6luBi/eq1QCn84gP8RJehM7hI2pHjkBIkj/C9iYVz4dVq5VF
-         ehtQ==
+        b=bWig3y5qNjs5dH8FSeSCGP7oj2w5pp/JWCwSDoKE9eTSXp3Lh1kygyaX7AFPGpSK97
+         FTuGIzPonTtRyZinqvDNq57vDq/9/UMHCi8YCuTD7BZfodiVyHiAP30tQXZQkTTR5kvD
+         beFCGDm5znSVWVOD7l0AVK86Wj0H/4cEqWdqowib7R+BLVRZo31gmFYKnxGpDD5xlp1Q
+         b2ymfAPrvzWWCwBohcVahvp3HButKF2MOfq+tYiefZpRQDn2ycrTbz3dsskhDWjsOSQe
+         fdORpsmwpOh5/lbeYGP0ctsF5aCtynPfB8GCPjjyQ7BjotKhXR+Cw1dyZAsh70Daa9C2
+         2zSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=1D4ai0AsXGmUei5GaLNRztGQYB0Ew0wukdxafK9XTqI=;
-        b=eYgRnbJG7B+buKTSyuufmBqHbJf9MvSXR8gR0MOMuiYB0Fuhxlxi1O+6SAwsgH5ls/
-         Sfc158xg3Fj2nQdTymUwLwx7fFAYiRCYgjjhwLSy3y+eCkr+2C1k1to+dKRVvMgpdHOr
-         1QPh0suZ+I5qVUPXpPDO+e2kLldimkQ9VvSQ3IOr/n5OZnHSBRcd20sjCUTWBWjj4eL9
-         2FXRUjfIDOuREQ/u5wUXqz7KSXswUG/eH6dxwE+ouQ1g1paDCliKtok2ds8j4VCst/n1
-         PNg8iXuRzfrQ1BrkKdFDRpDLbP6SKluxqUng2KA9DvfmXrBwWwJ/PVyUIPD+vgj+RmyO
-         FYxA==
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature;
+        bh=4ksgFXLm2V4picF6y8O98mbXx4FFmwubuHlJ5yJyT6c=;
+        b=o+du32lLetm9NoL+0AIUdC2S1WA+j4/KXnP7DZnxofOySXbqcdQFuCXlF0C5AKSOUC
+         eP9br0T8zAypEFstJ90F6FrL/e5+WR0OOc5sFDGF5Hore++HnPguGjzJ9jveFoYGtq8a
+         gP//DehUn4Us6o4Ijx2XUJMDQQYGtTGD+0QBTWBrw/ShNqYCRMLRjgzgmTtOQFM/wFBb
+         N1l0bTCy4R4YrM393Sn9ioVw5ljz8JrCddEv2v8BkVWGjg8pZ5GQKFAqZGF+MG/sVW2r
+         o7U6YpfrH/6dCddPpZ1vyouLPkO6Jb6TTSJnHNcBLny62fgel735ZQFs+eSGt+mAGKH1
+         pLxA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HTExFPMd;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j30si13660427eda.52.2019.07.02.05.06.05
+        by mx.google.com with ESMTPS id t15si9117130ejq.294.2019.07.02.04.11.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jul 2019 05:06:05 -0700 (PDT)
+        Tue, 02 Jul 2019 04:11:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HTExFPMd;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52056 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51686 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hiHXw-0003VT-Ov
-	for alex.bennee@linaro.org; Tue, 02 Jul 2019 08:06:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38239)
+	id 1hiGhF-0002dY-Ge
+	for alex.bennee@linaro.org; Tue, 02 Jul 2019 07:11:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52822)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <eric.auger@redhat.com>) id 1hiHTQ-0008Tm-D4
- for qemu-devel@nongnu.org; Tue, 02 Jul 2019 08:01:25 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1hiGVO-0001iu-9h
+ for qemu-devel@nongnu.org; Tue, 02 Jul 2019 06:59:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1hiHTN-0005rP-Nk
- for qemu-devel@nongnu.org; Tue, 02 Jul 2019 08:01:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37950)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1hiHT9-0005Mb-PM; Tue, 02 Jul 2019 08:01:08 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id A0A9B81106;
- Tue,  2 Jul 2019 12:00:52 +0000 (UTC)
-Received: from [10.36.116.95] (ovpn-116-95.ams2.redhat.com [10.36.116.95])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4CAC118A49;
- Tue,  2 Jul 2019 12:00:41 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>
-References: <20190625121421.22280-1-shameerali.kolothum.thodi@huawei.com>
- <20190702130703.0e74cbe6@redhat.com>
- <CAFEAcA8PDNTQXD3cD3XG9wkc_QOLXUcw62-8AUjSC0g7qjti7g@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <0bcc011c-17ff-8bfd-1f0e-65c303272664@redhat.com>
-Date: Tue, 2 Jul 2019 14:00:28 +0200
+ (envelope-from <richard.henderson@linaro.org>) id 1hiGVN-0000Y2-Ct
+ for qemu-devel@nongnu.org; Tue, 02 Jul 2019 06:59:22 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:51687)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1hiGVN-0000WV-3n
+ for qemu-devel@nongnu.org; Tue, 02 Jul 2019 06:59:21 -0400
+Received: by mail-wm1-x341.google.com with SMTP id 207so415401wma.1
+ for <qemu-devel@nongnu.org>; Tue, 02 Jul 2019 03:59:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=4ksgFXLm2V4picF6y8O98mbXx4FFmwubuHlJ5yJyT6c=;
+ b=HTExFPMdNM4Z/DwAPwFp39QoW94zlCarNlymorXpRSKYyeEQvW568YgmE6GVfYwrLx
+ yEsfqHcidogPCBGPb7L2R3npnFnW4sQRvV3kUkhE7DC7Fboh2U4/Ev6oZEw0MQNA1C2N
+ UgK+dW+m8+pxXupc87LK0ipvq8QCXi/Yrgra8ZwsYzfXrvvS3oX3LRMUf03B4qKgCLze
+ qaLqF/PLAVSPYSoolJ19MaagePmH5WSM1O7rUu2VrCV7lwzdGCmca3U+i7Ta/vix8Bs7
+ Jn/p5x33933J8nxl5EVUIrN6F25HlACwTGCkQGBN0Z2due3lZIMZjuR05BVtKPKhujuh
+ ZbbQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=4ksgFXLm2V4picF6y8O98mbXx4FFmwubuHlJ5yJyT6c=;
+ b=j66gPEl+gKsyf8baAC24qtytpTGshWlagaQSTcDiqNT6RZG9L7ej8h7Enib2Yji2/f
+ tLkgZNn6syUwyrAExVQkybRzNE+UMfK0psmGVn39rrNUC77WR9kqixqBw+MsSLVI2I6I
+ WV9z35FcyL18rRjO5Gf1riBSH5Tr7v3NxEtMWy8y6HOMdclh78WCUPHPK99Faq30gUVp
+ Yb5Bga4gMkp4Q9MrKOUmvUSLvqSmKN9Yh0ZhwYYlVB7HXkM5koGagsaVM6T7omlBeOP+
+ pT414M1VyAgeT/AUmJWhDeds+6nUT/lmdU07EvsY+6BaUugIPAgkFqh0f5WJ1y2ETj2E
+ sxvQ==
+X-Gm-Message-State: APjAAAUliYnnB8UFClKb0V9HFlwzKIQDmpZoKVpP+DqfUt+t3uqjWoQT
+ I95BWzzsippof26rPDH5T0u/jUqyNUlsyg==
+X-Received: by 2002:a1c:56d7:: with SMTP id k206mr3036715wmb.56.1562065159847; 
+ Tue, 02 Jul 2019 03:59:19 -0700 (PDT)
+Received: from [192.168.3.43] (93-34-153-63.ip50.fastwebnet.it. [93.34.153.63])
+ by smtp.gmail.com with ESMTPSA id f7sm16505397wrv.38.2019.07.02.03.59.19
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 02 Jul 2019 03:59:19 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20190702105115.9465-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <7896f53a-69f1-8989-f932-734323d8a9b7@linaro.org>
+Date: Tue, 2 Jul 2019 12:59:17 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ Thunderbird/60.7.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8PDNTQXD3cD3XG9wkc_QOLXUcw62-8AUjSC0g7qjti7g@mail.gmail.com>
+In-Reply-To: <20190702105115.9465-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.28]); Tue, 02 Jul 2019 12:01:02 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH v6 0/8] ARM virt: ACPI memory hotplug
- support
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::341
+Subject: Re: [Qemu-devel] [PATCH for-4.1] target/arm: Correct VMOV_imm_dp
+ handling of short vectors
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -94,85 +118,24 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Samuel Ortiz <sameo@linux.intel.com>,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>, Linuxarm <linuxarm@huawei.com>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Xu Wei <xuwei5@hisilicon.com>, sebastien.boeuf@intel.com,
- Laszlo Ersek <lersek@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bpiGWFcRo+f0
+X-TUID: jyGD8NH8OLLa
 
-Hi Peter,
-
-On 7/2/19 1:46 PM, Peter Maydell wrote:
-> On Tue, 2 Jul 2019 at 12:07, Igor Mammedov <imammedo@redhat.com> wrote:
->>
->> On Tue, 25 Jun 2019 13:14:13 +0100
->> Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
->>
->>> This series is an attempt to provide device memory hotplug support
->>> on ARM virt platform. This is based on Eric's recent works here[1]
->>> and carries some of the pc-dimm related patches dropped from his
->>> series.
->>>
->>> The kernel support for arm64 memory hot add was added recently by
->>> Robin and hence the guest kernel should be => 5.0-rc1.
->>>
->>> NVDIM support is not included currently as we still have an unresolved
->>> issue while hot adding NVDIMM[2]. However NVDIMM cold plug patches
->>> can be included, but not done for now, for keeping it simple.
->>>
->>> This makes use of GED device to sent hotplug ACPI events to the
->>> Guest. GED code is based on Nemu. Thanks to the efforts of Samuel and
->>> Sebastien to add the hardware-reduced support to Nemu using GED
->>> device[3]. (Please shout if I got the author/signed-off wrong for
->>> those patches or missed any names).
->>>
->>> This is sanity tested on a HiSilicon ARM64 platform and appreciate
->>> any further testing.
->>
->> There are several things I'd fix/amend but it's nothing that couldn't
->> be done on top as bugfixes (I'll comment later on specific issues).
->>
->> However as a whole from ACPI and memory hotplug POV series looks more
->> or less ready for merging.
->>
->> I've asked Eric to test migration (I'm quite not sure about that part),
->> (CCed David)so on condition it works:
->>
->>   Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+On 7/2/19 12:51 PM, Peter Maydell wrote:
+> Coverity points out (CID 1402195) that the loop in trans_VMOV_imm_dp()
+> that iterates over the destination registers in a short-vector VMOV
+> accidentally throws away the returned updated register number
+> from vfp_advance_dreg(). Add the missing assignment. (We got this
+> correct in trans_VMOV_imm_sp().)
 > 
-> If we want to get this into 4.1 I'll need somebody to do a respin
-> with all the relevant fixes pretty soon (ie within a day or two,
-> and that is pushing it because really it's missed the freeze
-> deadline already). It might be easier just to let it go into 4.2
-> instead...
+> Fixes: 18cf951af9a27ae573a
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/translate-vfp.inc.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-OK so after those late attempts to get it in, I agree with you. If it
-missed the deadline already then let's stick to the process and try to
-get this just after 4.1.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-I have just checked migration and it fails between a qemu 4.1 and qemu
-4.0 with
 
-"qemu-system-aarch64: Unknown savevm section or instance 'acpi-ged' 0.
-Make sure that your current VM setup matches your saved VM setup,
-including any hotplugged devices
-qemu-system-aarch64: load of migration failed: Invalid argument"
-
-so we would need to have a no_acpi_dev class field to avoid using the
-GED device < 4.1 I think.
-
-+ troubles with the DSDT ref files / bios-tables-test.c to be fixed.
-
-Thanks
-
-Eric
-> 
-> thanks
-> -- PMM
-> 
+r~

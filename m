@@ -1,206 +1,153 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp4264947wru;
-        Tue, 2 Jul 2019 14:54:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz/GBTKYUYQVnPYml//LP1CZZfD3WiKKRBQtsFG6aQpAtflcvyNVfkpbKW8RucFIiEMLRdO
-X-Received: by 2002:a17:906:e91:: with SMTP id p17mr5905384ejf.217.1562104441160;
-        Tue, 02 Jul 2019 14:54:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562104441; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp4223627wru;
+        Tue, 2 Jul 2019 14:01:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyxrVThN79ZQCqIDzemK4ZO3Mu9LpkztBEHR3dDhihWkAaJAFRtlqqPaJXRtdzoQstvZ4md
+X-Received: by 2002:aed:2e64:: with SMTP id j91mr25871991qtd.318.1562101274421;
+        Tue, 02 Jul 2019 14:01:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562101274; cv=none;
         d=google.com; s=arc-20160816;
-        b=Re22J+3JBGmvpZXC3mzT2+z7k8iSwoTmejhDews0m/RvRByF42uzShWrTjI5GUL9da
-         uxRx/gGnlr0PlQRTCQ/x5VOyW5MwlSB1QgawI6lAFPMt2MM7rfu19ybMwGN705lYJkCH
-         ntfe/jnvlkwJcgy9w7M44NaaTROyGzWApYr9qfRNXK5Iggc5R3kV1Yds2W1lfwiCizfd
-         vCfc6NqhkR9CsFPQLuwAUVTFs+MlL1UdxBoc3QQFzaStCHecrA0SRdfJQo/QjC/d4or9
-         hbc7cObvYNE4mU79OGGLo694xKpatJ6hBcc33MD4DFFTk0GChe35YWqZuaz2OZPQBDGh
-         woBQ==
+        b=AydfE0mzCe+4lNBVYsp5nkbdc+qCAuDT1cX1DTXkJ+dThFdS4MZkg1CxiFXvi0Y7/g
+         EsLgikhZA5Pr9nbh1U/hdzas7HuPpuO9l1+fF1w/lC9RQPA5ez78OGR9pj5+zr74uGsw
+         fszusW2CzQk1ZkKBj2B1YB/TJHhYZmOUd/7ySr2qEmPckfJkLYymBTfvff00ZBTQTsQw
+         uILyo3dw47sz/wd9oOd25eByPeY5+qdWhArpI5kVCtsTNpPdapuPsrfN5WoXkw4lYmXK
+         zIwbXD2gNNtmeBNspxV/sXHw3UMHxYw+4DEHrALJaDw+ZP1EByxzepQe4uxsOyN6ikj9
+         L8Dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
-         :references:message-id:in-reply-to:to:from:date;
-        bh=lXR3qZeUBi2HBtHpZHd/B47rPacP/HYPw/OvUskbrbY=;
-        b=wxieYqPCGfW343X8rVMqhAcak0nAg9h3DlqyFM8WrjbHxD/yfBtdn0ybhTj5qjKFxi
-         ohEPfwElvC0ku34nlfCC2OGP+qDShFlzJ8V/JQ9erpuvghN4F2yWxNJAbtL4eUtoWDrj
-         HzjKUnTkgnohUb6ReqUgkUoTZB52X66CxWyt46Z3A0+KpCWFHvKKvhEzTE1iYLnTaVvP
-         csQ4aLuc44sS7lAfttjkfEe2kZmt1w2/5vGggh4a2rZUmd7F3AAI1KR3o2N30OV8PaMa
-         ie67cR6eyH7SG+lva/R711FvaoHlv3TNLTwvXXJH3iTNm2GNXkEYDcYg/UtWT7kr3S3f
-         btmw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:references:cc:to:from:subject;
+        bh=ncfi2ptER317Rs2c70pV3h0YVZAjvIWIV7Fx0u+hLbc=;
+        b=t8xVtsFWXs83LR9kM0o/S30Hyz3kEGQ3O3ZhLJoXY2iS5OFl93VuaUOpoINouwGAel
+         IppnO5z6YInYWYDPdjli6QvAl1HjWQGj7oNwYKP1CYy8u9qG3OAkqYCFueAuQ2728Lrr
+         Uf87W5CGoAXwytypEQwOwgP46pH2C8ayOZI+XjKK+JQG0ojZNC5NaT1u1yc+h+NvWpCm
+         vcWkXKZYztoDiVkh4CB7CTJOFnISdD8xmMCpG1GpN72pLaKWZ5U5rgFK0TaT+nluoKuq
+         LIUmoZ4DNkjriN3BW854XcOG67FyjjBiuZl32mqPlVz1GU4WDddSfAzxtQSf+K1fdGPA
+         IWCg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z50si233855edb.13.2019.07.02.14.54.01
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jul 2019 14:54:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=lersek@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <lersek@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id b2si118909qvj.184.2019.07.02.14.01.14
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 02 Jul 2019 14:01:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57834 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hiQiu-0004lz-9I
-	for alex.bennee@linaro.org; Tue, 02 Jul 2019 17:54:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53922)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <balaton@eik.bme.hu>) id 1hiQiD-0004jR-Kd
- for qemu-arm@nongnu.org; Tue, 02 Jul 2019 17:53:20 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <balaton@eik.bme.hu>) id 1hiQi9-0006Ea-01
- for qemu-arm@nongnu.org; Tue, 02 Jul 2019 17:53:14 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:14065)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
- id 1hiQi8-00063e-F7; Tue, 02 Jul 2019 17:53:12 -0400
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id 2A5337456B8;
- Tue,  2 Jul 2019 23:52:53 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id EDA597456B7; Tue,  2 Jul 2019 23:52:52 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id E247274569A;
- Tue,  2 Jul 2019 23:52:52 +0200 (CEST)
-Date: Tue, 2 Jul 2019 23:52:52 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Peter Maydell <peter.maydell@linaro.org>
-In-Reply-To: <20190702163844.20458-1-peter.maydell@linaro.org>
-Message-ID: <alpine.BSF.2.21.9999.1907022343160.68337@zero.eik.bme.hu>
-References: <20190702163844.20458-1-peter.maydell@linaro.org>
-User-Agent: Alpine 2.21.9999 (BSF 287 2018-06-16)
+       spf=pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=lersek@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 128C830BB524;
+	Tue,  2 Jul 2019 21:00:58 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-117-172.ams2.redhat.com [10.36.117.172])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C8CB25C231;
+	Tue,  2 Jul 2019 21:00:38 +0000 (UTC)
+Subject: Re: [Qemu-devel] [PATCH v2 0/9] hw/block/pflash_cfi01: Add
+ DeviceReset() handler
+From: Laszlo Ersek <lersek@redhat.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
+ Aleksandar Rikalo <arikalo@wavecomp.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair23@gmail.com>, John Snow <jsnow@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ Max Reitz <mreitz@redhat.com>, Michael Walle <michael@walle.cc>,
+ qemu-ppc@nongnu.org, Wei Yang <richardw.yang@linux.intel.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+References: <20190702001301.4768-1-philmd@redhat.com>
+ <0f46b807-1fcc-d5d6-9d62-601cc8dfa692@redhat.com>
+ <38dd2737-4cd8-1145-1a57-aacf04f74dfc@redhat.com>
+Message-ID: <38281fa7-30f4-60ec-3357-3e1613c44dbe@redhat.com>
+Date: Tue, 2 Jul 2019 23:00:37 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2001:738:2001:2001::2001
-Subject: Re: [Qemu-arm] [PATCH for-4.1] hw/i2c/bitbang_i2c: Use in-place
- rather than malloc'd bitbang_i2c_interface struct
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Gerd Hoffmann <kraxel@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sQjjj8WgdET2
+In-Reply-To: <38dd2737-4cd8-1145-1a57-aacf04f74dfc@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.49]); Tue, 02 Jul 2019 21:01:08 +0000 (UTC)
+X-TUID: Nr6KjOL+RfDh
 
-On Tue, 2 Jul 2019, Peter Maydell wrote:
-> Currently the bitbang_i2c_init() function allocates a
-> bitbang_i2c_interface struct which it returns.  This is unfortunate
-> because it means that if the function is used from a DeviceState
-> init method then the memory will be leaked by an "init then delete"
-> cycle, as used by the qmp/hmp commands that list device properties.
->
-> Since three out of four of the uses of this function are in
-> device init methods, switch the function to do an in-place
-> initialization of a struct that can be embedded in the
-> device state struct of the caller.
->
-> This fixes LeakSanitizer leak warnings that have appeared in the
-> patchew configuration (which only tries to run the sanitizers
-> for the x86_64-softmmu target) now that we use the bitbang-i2c
-> code in an x86-64 config.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> This isn't the only problem with this code : it is also
-> missing reset and migration handling and generally looks like
-> it needs proper conversion to QOM somehow. But this will shut
-> the patchew complaints up and seems ok for 4.1.
->
-> Disclaimer: checked only that the leak-sanitizer is now happy
-> and with a 'make check'.
+On 07/02/19 15:41, Laszlo Ersek wrote:
+> On 07/02/19 13:52, Laszlo Ersek wrote:
+>> Hi Phil,
+>>
+>> On 07/02/19 02:12, Philippe Mathieu-Daudé wrote:
+>>> The pflash device lacks a reset() function.
+>>> When a machine is resetted, the flash might be in an
+>>> inconsistent state, leading to unexpected behavior:
+>>> https://bugzilla.redhat.com/show_bug.cgi?id=1678713
+>>> Resolve this issue by adding a DeviceReset() handler.
+>>>
+>>> Fix also two minor issues, and clean a bit the codebase.
+>>>
+>>> Since v1: https://lists.gnu.org/archive/html/qemu-devel/2019-05/msg00962.html
+>>> - addressed Laszlo review comments
+>>>
+>>> Maintainers spam list from:
+>>> ./scripts/get_maintainer.pl -f $(git grep -El '(pflash_cfi01_register|TYPE_PFLASH_CFI01)')
+>>>
+>>> Regards,
+>>>
+>>> Phil.
+>>>
+>>> Philippe Mathieu-Daudé (9):
+>>>   hw/block/pflash_cfi01: Removed an unused timer
+>>>   hw/block/pflash_cfi01: Use the correct READ_ARRAY value
+>>>   hw/block/pflash_cfi01: Extract pflash_mode_read_array()
+>>>   hw/block/pflash_cfi01: Start state machine as READY to accept commands
+>>>   hw/block/pflash_cfi01: Add the DeviceReset() handler
+>>>   hw/block/pflash_cfi01: Simplify CFI_QUERY processing
+>>>   hw/block/pflash_cfi01: Improve command comments
+>>>   hw/block/pflash_cfi01: Replace DPRINTF by qemu_log_mask(GUEST_ERROR)
+>>>   hw/block/pflash_cfi01: Hold the PRI table offset in a variable
+>>>
+>>>  hw/block/pflash_cfi01.c | 140 +++++++++++++++++++++-------------------
+>>>  hw/block/trace-events   |   1 +
+>>>  2 files changed, 74 insertions(+), 67 deletions(-)
+>>>
+>>
+>> I'll do some regression-tests with this, using OVMF and ArmVirtQemu.
+>>
+>> I don't think I can usefully review the patches without getting lost in
+>> the related spec(s), and I don't have capacity for that.
+>>
+>> Until I have regression test results, one question: are the changes to
+>> the device model transparent with regard to migration? (You are not
+>> introducing any compat properties.)
+> 
+> I didn't test migration.
+> 
+> With OVMF, I performed my usual Linux guest tests (partly described at
+> <https://github.com/tianocore/tianocore.github.io/wiki/Testing-SMM-with-QEMU,-KVM-and-libvirt#tests-to-perform-in-the-installed-guest-fedora-26-guest>).
+> I found no problems / discrepancies, in either guest behavior or
+> firmware logs.
+> 
+> With ArmVirtQemu, I meant to test on KVM (pflash used to be really
+> sensitive to KVM<->TCG differences), but my aarch64 hardware is
+> apparently dying, and I wouldn't like to spend a day just to provision a
+> remote aarch64 box. So, no test results on aarch64.
 
-I've tested the ppc4xx and ati-vga parts with AROS and MorphOS and these 
-can still access i2c devices so I think it works.
+Managed to run a light regression-test on aarch64 KVM too, using the
+ArmVirtQemu fw and an F28 guest.  (boot+reboot, without the patches and
+with the patches; logs compared, behavior compared.) Everything seems fine.
 
-> ---
-> hw/display/ati_int.h         |  2 +-
-> include/hw/i2c/bitbang_i2c.h | 38 ++++++++++++++++++++++++++++-
-> include/hw/i2c/ppc4xx_i2c.h  |  2 +-
-> hw/display/ati.c             |  7 +++---
-> hw/i2c/bitbang_i2c.c         | 47 +++---------------------------------
-> hw/i2c/ppc4xx_i2c.c          |  6 ++---
-> hw/i2c/versatile_i2c.c       |  8 +++---
-> 7 files changed, 53 insertions(+), 57 deletions(-)
->
-> diff --git a/hw/display/ati_int.h b/hw/display/ati_int.h
-> index 9b67d0022ad..31a1927b3ec 100644
-> --- a/hw/display/ati_int.h
-> +++ b/hw/display/ati_int.h
-> @@ -88,7 +88,7 @@ typedef struct ATIVGAState {
->     uint16_t cursor_size;
->     uint32_t cursor_offset;
->     QEMUCursor *cursor;
-> -    bitbang_i2c_interface *bbi2c;
-> +    bitbang_i2c_interface bbi2c;
->     MemoryRegion io;
->     MemoryRegion mm;
->     ATIVGARegs regs;
-> diff --git a/include/hw/i2c/bitbang_i2c.h b/include/hw/i2c/bitbang_i2c.h
-> index 3a7126d5dee..92334e9016a 100644
-> --- a/include/hw/i2c/bitbang_i2c.h
-> +++ b/include/hw/i2c/bitbang_i2c.h
-> @@ -8,7 +8,43 @@ typedef struct bitbang_i2c_interface bitbang_i2c_interface;
+Thanks
+Laszlo
 
-Maybe this typedef ^^^ can now be moved to the struct below instead of 
-coming first (or even written in the same line as
-typedef struct { } bitbang_i2c_interface;
-as there is no need to have both struct bitbang_i2c_interface and the 
-typedeffed name available). But I don't really mind, so
-
-Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
-
-Thanks for fixing this.
-
-Regards,
-BALATON Zoltan
-
-> #define BITBANG_I2C_SDA 0
-> #define BITBANG_I2C_SCL 1
->
-> -bitbang_i2c_interface *bitbang_i2c_init(I2CBus *bus);
-> +typedef enum bitbang_i2c_state {
-> +    STOPPED = 0,
-> +    SENDING_BIT7,
-> +    SENDING_BIT6,
-> +    SENDING_BIT5,
-> +    SENDING_BIT4,
-> +    SENDING_BIT3,
-> +    SENDING_BIT2,
-> +    SENDING_BIT1,
-> +    SENDING_BIT0,
-> +    WAITING_FOR_ACK,
-> +    RECEIVING_BIT7,
-> +    RECEIVING_BIT6,
-> +    RECEIVING_BIT5,
-> +    RECEIVING_BIT4,
-> +    RECEIVING_BIT3,
-> +    RECEIVING_BIT2,
-> +    RECEIVING_BIT1,
-> +    RECEIVING_BIT0,
-> +    SENDING_ACK,
-> +    SENT_NACK
-> +} bitbang_i2c_state;
-> +
-> +struct bitbang_i2c_interface {
-> +    I2CBus *bus;
-> +    bitbang_i2c_state state;
-> +    int last_data;
-> +    int last_clock;
-> +    int device_out;
-> +    uint8_t buffer;
-> +    int current_addr;
-> +};
-> +
-> +/**
-> + * bitbang_i2c_init: in-place initialize the bitbang_i2c_interface struct
-> + */
-> +void bitbang_i2c_init(bitbang_i2c_interface *s, I2CBus *bus);
-> int bitbang_i2c_set(bitbang_i2c_interface *i2c, int line, int level);
->
-> #endif
+> With those caveats:
+> 
+> Regression-tested-by: Laszlo Ersek <lersek@redhat.com>
+> 
+> Thanks
+> Laszlo
+> 

@@ -1,49 +1,49 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3307734wru;
-        Mon, 1 Jul 2019 20:05:00 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxd/VHb7Qk18a+v/qrzXDrMMhnTFmreKhxh4e+KqomchIJjXlv6rO/I8Lsb5ijQqM4o5kXY
-X-Received: by 2002:ac8:124c:: with SMTP id g12mr22275283qtj.57.1562036700569;
-        Mon, 01 Jul 2019 20:05:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562036700; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3315774wru;
+        Mon, 1 Jul 2019 20:16:49 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzZ6ds0OPPHbTlSBED5EAGe7Bu0Mq8HsWnNWA0hQGUP/30NlKW/DuNu+UPor1JoSnSGnRdH
+X-Received: by 2002:a37:660b:: with SMTP id a11mr22946045qkc.342.1562037409193;
+        Mon, 01 Jul 2019 20:16:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562037409; cv=none;
         d=google.com; s=arc-20160816;
-        b=LZH5FHBbwk3XlBkL/635Qpa9mt/JDyABJdWYfqUGSgkY1MG0p0JXgH4npVMPZJmmIq
-         0z/Bxlcq9Heg7pdJ4PpT9bI0bT0j/2ylS/8ivFxdlq0K1FxRWrcLYsa76FXcHk6a4Rig
-         e7itAAlpbrR6Z29wOHFIdJb/3HZp+WO8qxFeoP0hH03vQdZNmLSPJkSM6L/TyHgRSh1A
-         mS45zXz77/kOBWXIDac3E4rlluityVvKj6hix5JCEm9NjH+oYh9oD1JJDFRmtCmnTySt
-         MeeNE4GKe1M34JxGIzGopgZKHNOtr4DNoWZxIXbeiuW8Nx58mQJzVkYpBRrUZZYWWMZc
-         qeZg==
+        b=Ag8Dx+Re+ENib24sLHPEzX2XLVU9eIxECpOYFkPy6cs+7b/E6KvArgxRqDQ59VhVx0
+         z7G4I9NNT3US6LBbrplqhcNZtQReiXuQZRtOGp6XpcKL22FINBZffDeTOCUlxF7EUToh
+         Ku3PjfIJg+pHwfFDw8JvM9ddiWADEHdVMyCw2G6LWefZLP8jUPvIw9Bkhnk+0R9YLYgs
+         sm+Iyo+rC5kY/cWjfAr5aFrAdeda601AMBQHDaqIZRGEt+QJc7OA3TcoUzNvCEbNVeUY
+         AJCn2s6nqHusWCHa+90DZvxKLL9iNvUIeDdc4M9EjYBkr/EjFmTuPoNBwgFV2mPQcLmZ
+         bjFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
          :subject;
-        bh=qKnxwDJSxbcebsXyEsVh2cZkvWLqWwFOxv+owNYHwe8=;
-        b=cXMs7BrFbPgK1Ioa6PcRyZKWNkSNEiOxMu0N2CWRowH+17kXYnTvIGWcHRQ6cUZ2T/
-         iPF+4Y42dxCCj5xnbnwgB3SfPcRuhMh+R8hcr82IhCzT7A0YKI+VMb40xGiI5xXgHUHv
-         L/ekw4gmg6ylNjLeOrCfbZFmaazC6bVOqQNGEQvBswLewv2F5sQnldtFeOhmXQVceqCI
-         u7iTOVg3y6FaUecn9786WO4tzu/ql1TI6rY/Us3N/BcJ/n7l6bnH66yPkv5a4In0YthU
-         kYHFX7qnSeEQRb/TV95xxsLkXZ6ym/AXVD2zNBxXChJTsl68ffXKCd4hPCutUBFUki+1
-         OB8A==
+        bh=fU8krH0jccAtNKw3iN6F7bmV/xgT/oEbT+NMDjkvwYY=;
+        b=fpa07jdmLacDcldy5jANEmpTtvdUMZWdzWictQHK6rLNJAwxulr4y8D3xtSKyAyEfY
+         bAWTr/fduH4sKiq8X8Wk1Zrimo6TUUYB4LFDebseuHVqUYozbQFB2v1aHKcr16t++19r
+         WB77SYgwSdqcChTeYm8zYcd+lrbxdwov//xcy18OMDgJz9JuyO6aMnd2FsKO9pCuu91O
+         w47cEAxP6xUTjDcHdqQE3oQAWBofk/HwdRSelLy2kC8LgyidXHHZy8zt35og47BPWbOi
+         SHyBxQ2CDHMVMQmVsvDMtQiiOGlA7QIxvx4/j+ZyB1zaNfUHA7x4XxQMD89TcyCTQY2y
+         tvIg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of jsnow@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <jsnow@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id s40si318055qte.44.2019.07.01.20.05.00
+        by mx.google.com with ESMTPS id q1si3001933qte.117.2019.07.01.20.16.48
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Jul 2019 20:05:00 -0700 (PDT)
+        Mon, 01 Jul 2019 20:16:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of jsnow@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 668E93082E70;
-	Tue,  2 Jul 2019 03:04:59 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 22719882F5;
+	Tue,  2 Jul 2019 03:16:48 +0000 (UTC)
 Received: from [10.18.17.215] (dhcp-17-215.bos.redhat.com [10.18.17.215])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 29F1F60852;
-	Tue,  2 Jul 2019 03:04:50 +0000 (UTC)
-Subject: Re: [PATCH v2 4/9] hw/block/pflash_cfi01: Start state machine as
- READY to accept commands
+	by smtp.corp.redhat.com (Postfix) with ESMTP id C2546100194A;
+	Tue,  2 Jul 2019 03:16:38 +0000 (UTC)
+Subject: Re: [PATCH v2 5/9] hw/block/pflash_cfi01: Add the DeviceReset()
+ handler
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
@@ -64,7 +64,7 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Aleksandar Rikalo <arikalo@wavecomp.com>
 References: <20190702001301.4768-1-philmd@redhat.com>
- <20190702001301.4768-5-philmd@redhat.com>
+ <20190702001301.4768-6-philmd@redhat.com>
 From: John Snow <jsnow@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
@@ -141,60 +141,87 @@ Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
  i0HjnLoJP5jDcoMTabZTIazXmJz3pKM11HYJ5/ZsTIf3ZRJJKIvXJpbmcAPVwTZII6XxiJdh
  RSSX4Mvd5pL/+5WI6NTdW6DMfigTtdd85fe6PwBNVJL2ZvBfsBJZ5rxg1TOH3KLsYBqBTgW2
  glQofxhkJhDEcvjLhe3Y2BlbCWKOmvM8XS9TRt0OwUs=
-Message-ID: <977996ac-32ee-f658-deeb-8e6fb91538d7@redhat.com>
-Date: Mon, 1 Jul 2019 23:04:49 -0400
+Message-ID: <5163b3e4-f68e-dc6b-3fcc-e7927ebc58e7@redhat.com>
+Date: Mon, 1 Jul 2019 23:16:38 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.2
 MIME-Version: 1.0
-In-Reply-To: <20190702001301.4768-5-philmd@redhat.com>
+In-Reply-To: <20190702001301.4768-6-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.46]); Tue, 02 Jul 2019 03:04:59 +0000 (UTC)
-X-TUID: DSwu1FG5FNAP
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.28]); Tue, 02 Jul 2019 03:16:48 +0000 (UTC)
+X-TUID: 7CaS2Vh4XpD2
 
 
 
 On 7/1/19 8:12 PM, Philippe Mathieu-Daudé wrote:
-> When the state machine is ready to accept command, the bit 7 of
-> the status register (SR) is set to 1.
-> The guest polls the status register and check this bit before
-> writting command to the internal 'Write State Machine' (WSM).
-
-writing
-
+> A "system reset" sets the device state machine in READ_ARRAY mode
+> and, after some delay, set the SR.7 READY bit.
 > 
-> Set SR.7 bit to 1 when the device is created.
+> We do not model timings, so we set the SR.7 bit directly.
 > 
-
-Right, ok -- it looks like we don't set this on realize otherwise.
-(Or if we do, it's not obvious where or how.)
-
-> Reference: Read Array Flowchart
->   "Common Flash Interface (CFI) and Command Sets"
->    (Intel Application Note 646)
->    Appendix B "Basic Command Set"
+> This pflash device is a child of TYPE_DEVICE.
+> The TYPE_DEVICE interface provide a DeviceReset handler which will
+> be called after the device is realized, and each time the machine
+> resets itself.
 > 
+> To avoid incoherent states when the machine resets (see but report
+> below), factor out the reset code into pflash_cfi01_system_reset,
+> and register the method as a device reset callback.
+> 
+> Buglink: https://bugzilla.redhat.com/show_bug.cgi?id=1678713
+> Reported-by: Laszlo Ersek <lersek@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Reviewed-by: John Snow <jsnow@redhat.com>
+Does reset always get called as part of realize, really?
+
+Or are we just trusting that the device is probably going to get reset
+by the guest during bringup?
 
 > ---
->  hw/block/pflash_cfi01.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/block/pflash_cfi01.c | 15 +++++++++++++--
+>  1 file changed, 13 insertions(+), 2 deletions(-)
 > 
 > diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-> index 33c77f6569..dd1dfd266b 100644
+> index dd1dfd266b..8d632ea941 100644
 > --- a/hw/block/pflash_cfi01.c
 > +++ b/hw/block/pflash_cfi01.c
-> @@ -764,7 +764,7 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
+> @@ -763,8 +763,6 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
+>          pfl->max_device_width = pfl->device_width;
 >      }
 >  
->      pflash_mode_read_array(pfl);
-> -    pfl->status = 0;
-> +    pfl->status = 0x80; /* WSM ready */
+> -    pflash_mode_read_array(pfl);
+> -    pfl->status = 0x80; /* WSM ready */
 >      /* Hardcoded CFI table */
 >      /* Standard "QRY" string */
 >      pfl->cfi_table[0x10] = 'Q';
+> @@ -852,6 +850,18 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
+>      pfl->cfi_table[0x3f] = 0x01; /* Number of protection fields */
+>  }
+>  
+> +static void pflash_cfi01_system_reset(DeviceState *dev)
+> +{
+> +    PFlashCFI01 *pfl = PFLASH_CFI01(dev);
+> +
+> +    pflash_mode_read_array(pfl);
+> +    /*
+> +     * The WSM ready timer occurs at most 150ns after system reset.
+> +     * This model deliberately ignores this delay.
+> +     */
+> +    pfl->status = 0x80;
+> +}
+> +
+>  static Property pflash_cfi01_properties[] = {
+>      DEFINE_PROP_DRIVE("drive", PFlashCFI01, blk),
+>      /* num-blocks is the number of blocks actually visible to the guest,
+> @@ -896,6 +906,7 @@ static void pflash_cfi01_class_init(ObjectClass *klass, void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+>  
+> +    dc->reset = pflash_cfi01_system_reset;
+>      dc->realize = pflash_cfi01_realize;
+>      dc->props = pflash_cfi01_properties;
+>      dc->vmsd = &vmstate_pflash;
 > 

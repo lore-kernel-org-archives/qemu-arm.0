@@ -1,74 +1,73 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3958618wru;
-        Tue, 2 Jul 2019 09:05:47 -0700 (PDT)
-X-Received: by 2002:a05:651c:92:: with SMTP id 18mr18343140ljq.35.1562083547042;
-        Tue, 02 Jul 2019 09:05:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562083547; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3959837wru;
+        Tue, 2 Jul 2019 09:06:54 -0700 (PDT)
+X-Received: by 2002:a2e:3604:: with SMTP id d4mr17925500lja.85.1562083614582;
+        Tue, 02 Jul 2019 09:06:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562083614; cv=none;
         d=google.com; s=arc-20160816;
-        b=kRqdxIpWksmBHwtbJg0wjcJACx4xiBP7DGovvImPAgdPHqRNQiunBmnJ9XqWTNnaqh
-         jd/ajWqXBCd7XFt9AZnF8b8yndK95yZ1mlJB+RDNXPFoL4bl2WiLAAravjfFpRkfgQYB
-         HZRmRYu3Ns2ZTbM2kk20GAP+gs+1nOUCZ047jUePyvoquuJTroQbsMuLdmEXirUkRoa6
-         stD9Xf5o5LEHobgMYj2XeOZNH3xc23YbQywF5a40cZ00zerrKd7+daNrDJhJsbYGWgKH
-         yHnvJP40R4LLunA6WeTfI1LCXsT6riuvkqoNXyOy6fXtbZ2qZ6ALTmPch1O9tdvvq7dF
-         CmtA==
+        b=B8Sm2VnzyusT/Bq2yxL0iRZ3bZ3Z88Tgirlp86XZR4kdXY78Y4MQfoE805m3Vl4XVz
+         k42C1kHgKoVVhJpTwDXwcPKk7nKnN5P7ikkTXQK7itIyRhSSOPJkK+gHHydk8XupOIiy
+         vMxlOjJMuuhZ3RxWvGjmaUEIIsS+0xjx08nyAfXTFHxA729fZmbggyGGnzZuW/wBHaoV
+         lNFkrTlmlSDYLeawL6Aoacp8nUMgmfTa4tE9/BjHtMim70QisYSluOpOpjWgwDj/pco5
+         C/8IGB5GZwao3k+6A6H+r5Eoz5Xas7xVtF4g72Q9S8A71lgA5RrraA6k8W6J/Wwf/eya
+         q0Pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=MelK9/24wgEDxir8AlFJoXVIGm/gACqxwd68SwN6Unw=;
-        b=Q2twZce0499trgCq225pYp/jcjt6YYyk5a7L/gJ9YsA9iDc93AqSeOl1j5jXSAUZFe
-         7inWobtwmRP2UtgeI/kmgA5RQCx5zEyU2VeYhxeao3TXjadw0s/WxktHI0GSQwycgSJA
-         5HUzOSHRXPuNvlcydK5rwYpoo1dYGa+R899zaRhICOtTWdX/Z0u+k7XAVGWffW4UmCQN
-         wWN3xPsRCCwkDxzKx1ZKvqA+2sB00Q8kObJF8IoQg34mdt5k9A5ysc4klHLhkTyDpoJl
-         s4Hj02kfOfGbaHNmnfjqKgLIssazdhHY+1ZgM87J/xwDhMfjAIV85LVQG2Gup/T1REfz
-         /fIQ==
+        bh=191PEazMI6AZYxomtIRj4zRN76qVi7zp+FaJdnT1SJc=;
+        b=kImvOmj+bWLBE2gUt5edpCzpurzfzSIPL9hwMgIRSeZQKjPst6rwXVvC8Ikwd+ZPyF
+         /uajSmqabLUiSflUl5ZyRUuNeRO/TcCwCUpptbN8Ib7Y8a2riJMjH3V8BT2fp+/ISYIE
+         ez92sFSUi/kfapApAdRcg7M9nXRH9RGfmqDdl+N2Y8Y4+vldkpo5fSlgvi+g1mJCvVKm
+         CPcWF6aAzZa1+KbAwwMGziGgaHKA4ANe/fa8NmUQH1Rkxt0C9T1flmf7XoD/y2jV5Xqv
+         Kzssdl92I0tYpOdt7fnNDrNO+Mw4uL3378X3zH2J9tfQBvbgRGkTN547+JeUut4kj0yf
+         qusQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UXLmdoFd;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Am2HpwDf;
        spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <alistair23@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 186sor3522114lfb.10.2019.07.02.09.05.46
+        by mx.google.com with SMTPS id d26sor3478860lfn.9.2019.07.02.09.06.54
         (Google Transport Security);
-        Tue, 02 Jul 2019 09:05:47 -0700 (PDT)
+        Tue, 02 Jul 2019 09:06:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UXLmdoFd;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Am2HpwDf;
        spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=MelK9/24wgEDxir8AlFJoXVIGm/gACqxwd68SwN6Unw=;
-        b=UXLmdoFdeFQOuGae+Klm8S09pNd/PGd3Fx4USmE8o8R1amXntyB7AFTo9h/9LZmMHJ
-         IZ5GfynwjKI98kATLzMeYPoQLUvZKRYNAH0bmjvAfgCbVW/wZSWtZ1CMCh5ams5xaE3L
-         yJuqa8Pzis8y8Kg5BdQaZvvQ8ILo7z30MFngQJWgJzMOKyhuLFOpa6j08K55SjO+TiuP
-         jGH7m31cKOXkM/h2gRjgyfx40P0LpPRkJnCkGR8gdueeL7/lA6Kz0VGQ9cSyD3kiW42T
-         J9Ux3BuILDg4FkmjujPsVwa+cAZneGx5ErfnvMB655x5ldctsIBI/4/KwYETDXqtWxEP
-         Ybjw==
+        bh=191PEazMI6AZYxomtIRj4zRN76qVi7zp+FaJdnT1SJc=;
+        b=Am2HpwDfCU2j4FqQhU35pMIcvHZiJA14RgnYPnaOWp+dBH3ua1vxFlPGaIyM7tlmCN
+         5865o8vL1KQPVgv+vmCjNUQcia3MiLYt//LS3UZFnhiYFYkZOiXM2bJs5eWvK9bxtiqT
+         F8tS3U4fhjx4g+4bZYlQjoaj6XwTTQH8fShnSBpEHQXJt/lted8iHqrtAwmaJf+r18+o
+         VhIBESIA9C7HqUvP5S+pV1knvKV691P4uOqe+7o1CRIBrITVqefhReAu996rqCUjcB2t
+         UZ0MK+AO9D8yaCII5zqoU5LlJ4qyfcjHBrp0ZHEy24b3Rd0r5jxmcHsbGXW4u59sQuOQ
+         fVkw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=MelK9/24wgEDxir8AlFJoXVIGm/gACqxwd68SwN6Unw=;
-        b=fyO5yWaVTMOfRGU6f5yb9/R8PJgUz2Sms+FPqr9kriPzkglCBZC6n+JojKbpe9h/k4
-         oHznYyLiEyPemllUwoZ92PunqPNemI0Ekc1B/TsWOmrPI1FiZ5R8qNxm/CRI+yPFEMAd
-         KvV8f1aSE2Iu7sDJBPVNykCg4Jb4xuJ5rU5L3jE40HW5dopOSn0m4TZkKiwzY8P/vRsh
-         IRnmKmIKc1WGjEQ4c0WYq1NM4Zhqdo+TYTFqcWIgdppsG64KFrBfA+um5uO0CJ2in+gp
-         XHBJwXvPZnpzlOuuZs/TvZlCOhoB46cKaL+mopY1MzGpVnFOuhKx/X97KRFKq9mVOIRg
-         55pA==
-X-Gm-Message-State: APjAAAWLwNVDEeP/BySMrde95xIcO5F6R+MhKWGtMmJoNz34J2sq5wic
-	BQQxRZqA1JA5+Stb66tLADZ0BDY14tnFaNqr3kk=
-X-Google-Smtp-Source: APXvYqxcD7/ledexO5fqoAvjpv9rCd/E8M+qmxQM0/puQbPP2Z2AS4fjg8Qw5NjaP33oBiWzu/p5trcJflQg9sINne8=
-X-Received: by 2002:a19:6a01:: with SMTP id u1mr211477lfu.141.1562083546622;
- Tue, 02 Jul 2019 09:05:46 -0700 (PDT)
+        bh=191PEazMI6AZYxomtIRj4zRN76qVi7zp+FaJdnT1SJc=;
+        b=mFaulV0aN3Uo3zFtJIHPZmnG/Hqe4UcQsEe67ZnlC47Pv8l7ygQK0FXv7HYDO6Ot4O
+         2Q+jrJ37h4TK9Y8oZbCu9dOhQpiOqZdLewzs7S/alTvTafGIpccYvXAUipCEL0GHucnz
+         1Eo8zUnrzIG61RFUHgGDMytth4lQCqSScYNQJ0E54p7JgIS+Fw+ruRj5VPLUige+2rZM
+         yXAGdV9BN54oPiMkRCd0AzQM3knqac5uqvlFzeuOUMjbLyROmViWkdPwgVfM7w0Q3pdz
+         fheGcaDE+mv3i87j6uAnomE9IvrGfaxesFZ18wAlcHTlOV77I8x9QtennY8cjLxgshHW
+         vrDw==
+X-Gm-Message-State: APjAAAW/88pBKyf5HIE5mv7uBg1KWDSIcfnqHV/WHvITWQemmbyh+hTt
+	kPiu8CwbCRsSfWPTDIX7GT8uJOx2JgPE6Pdu2IA=
+X-Google-Smtp-Source: APXvYqyHbgXSZavlE/NdxL+IluKO6aiBhhzlUNZvLBXoABzxVIyUSgTn8WzBKuDJ3cVeZpWtkXfRFpzGcCvHXjuQqY8=
+X-Received: by 2002:a19:4c05:: with SMTP id z5mr14851396lfa.5.1562083614266;
+ Tue, 02 Jul 2019 09:06:54 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190702001301.4768-1-philmd@redhat.com> <20190702001301.4768-5-philmd@redhat.com>
-In-Reply-To: <20190702001301.4768-5-philmd@redhat.com>
+References: <20190702001301.4768-1-philmd@redhat.com> <20190702001301.4768-7-philmd@redhat.com>
+In-Reply-To: <20190702001301.4768-7-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 2 Jul 2019 09:02:43 -0700
-Message-ID: <CAKmqyKO-yYE5-bWnWLAvKA2ZAAiCkH9_WUNsS2GF0GhCMGzf9Q@mail.gmail.com>
-Subject: Re: [PATCH v2 4/9] hw/block/pflash_cfi01: Start state machine as
- READY to accept commands
+Date: Tue, 2 Jul 2019 09:03:51 -0700
+Message-ID: <CAKmqyKMgXKULX8JJSTmLyCbzRYJkeHZ=HqHBHA_cro-a21v=Zg@mail.gmail.com>
+Subject: Re: [PATCH v2 6/9] hw/block/pflash_cfi01: Simplify CFI_QUERY processing
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>, 
 	Laszlo Ersek <lersek@redhat.com>, David Gibson <david@gibson.dropbear.id.au>, 
@@ -86,22 +85,30 @@ Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Gerd Hoffmann <k
 	Aleksandar Rikalo <arikalo@wavecomp.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: K8c+S/s0FxwR
+X-TUID: W6VjW46nruUS
 
-On Mon, Jul 1, 2019 at 5:14 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+On Mon, Jul 1, 2019 at 5:15 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
 om> wrote:
 >
-> When the state machine is ready to accept command, the bit 7 of
-> the status register (SR) is set to 1.
-> The guest polls the status register and check this bit before
-> writting command to the internal 'Write State Machine' (WSM).
+> The current code does:
 >
-> Set SR.7 bit to 1 when the device is created.
+> if (write_cycle =3D=3D 0)
+>   if (command =3D=3D CFI_QUERY)
+>     break
+>   write_cycle +=3D 1
+>   last_command =3D command
 >
-> Reference: Read Array Flowchart
->   "Common Flash Interface (CFI) and Command Sets"
->    (Intel Application Note 646)
->    Appendix B "Basic Command Set"
+> if (write_cycle =3D=3D 1)
+>   if (last_command =3D=3D CFI_QUERY)
+>     if (command =3D=3D READ_ARRAY
+>       write_cycle =3D 0
+>       last_command =3D READ_ARRAY
+>
+> Simplify by not increasing the write_cycle on CFI_QUERY,
+> the next command are processed as normal wcycle=3D0.
+>
+> This matches the hardware datasheet (we do not enter the WRITE
+> state machine, thus no write cycle involved).
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
@@ -110,23 +117,39 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/block/pflash_cfi01.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/block/pflash_cfi01.c | 10 ++--------
+>  1 file changed, 2 insertions(+), 8 deletions(-)
 >
 > diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-> index 33c77f6569..dd1dfd266b 100644
+> index 8d632ea941..c1b02219b2 100644
 > --- a/hw/block/pflash_cfi01.c
 > +++ b/hw/block/pflash_cfi01.c
-> @@ -764,7 +764,7 @@ static void pflash_cfi01_realize(DeviceState *dev, Er=
-ror **errp)
->      }
->
->      pflash_mode_read_array(pfl);
-> -    pfl->status =3D 0;
-> +    pfl->status =3D 0x80; /* WSM ready */
->      /* Hardcoded CFI table */
->      /* Standard "QRY" string */
->      pfl->cfi_table[0x10] =3D 'Q';
+> @@ -492,7 +492,8 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr off=
+set,
+>              return;
+>          case 0x98: /* CFI query */
+>              DPRINTF("%s: CFI query\n", __func__);
+> -            break;
+> +            pfl->cmd =3D cmd;
+> +            return;
+>          case 0xe8: /* Write to buffer */
+>              DPRINTF("%s: Write to buffer\n", __func__);
+>              /* FIXME should save @offset, @width for case 1+ */
+> @@ -566,13 +567,6 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr of=
+fset,
+>                  goto mode_read_array;
+>              }
+>              break;
+> -        case 0x98:
+> -            if (cmd =3D=3D 0xff) {
+> -                goto mode_read_array;
+> -            } else {
+> -                DPRINTF("%s: leaving query mode\n", __func__);
+> -            }
+> -            break;
+>          default:
+>              goto error_flash;
+>          }
 > --
 > 2.20.1
 >

@@ -1,129 +1,154 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3869152wru;
-        Tue, 2 Jul 2019 07:33:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwK+ETT0bmkuBFVgafdCLnfr+uWKwj2rozSHv+23KcZ/hRHu6Ade1ekjAQ8VssP0Ccc105e
-X-Received: by 2002:a0c:d0b6:: with SMTP id z51mr26838570qvg.3.1562078016884;
-        Tue, 02 Jul 2019 07:33:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562078016; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3878354wru;
+        Tue, 2 Jul 2019 07:44:07 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz3kPHur4gpBeIUuLMR2PQlYckSJayEcwFcBeug/oE+j0IFmuA2KnYrDLglnFg/D+nIQhKP
+X-Received: by 2002:aa7:c3d8:: with SMTP id l24mr37208044edr.58.1562078647441;
+        Tue, 02 Jul 2019 07:44:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562078647; cv=none;
         d=google.com; s=arc-20160816;
-        b=0kOka1c6zg9C3Klmb4vYyfy7yPspUnhJJxUwcj4B9DkDNgHU2247kC16S7jLJMbLzq
-         X9tQxHxCOSkDOUlaE+FlsVtWru2bklJnnbBb5KpX5WraTAzEhde3G3iujH2Q2MzMPbip
-         1ic4nqlpBKhgQfNIKC45ZXnbUL8KmLDqR1FtSmoord139iux85jkdiZgXYlWSq821vzU
-         aHGCF6fafvry1Ggr5tkCJU4Jwjp6QKUmmwu+CwcxuH8FIlaYZG8/Ndg8C+M6v0xunwml
-         u8BTPOijA1zt900oZcTKeIubL/LzmjpP0F+av21Rlm58N0LnM6BJAEh/GYZE3j8J9Lbu
-         1Ctw==
+        b=l3em7ZaGQTmflmPktPTqb8HFaeLQwrkg19FVc4sqxaA1nrbBzbmEfVBmiWNl6o79EI
+         PYXisWYe8io3hmyvT9buAsZWz6AJtsxyBgS9nQbcZdgamvTbXnxIOGPn00CTb8uKxCIa
+         dOFSSk+SJsOJqto6sxaaQQ9pZC0nnfzaoXTlp7Hrv7J0wbQn7Aa+x7oBa40Rp+WEtg/z
+         GqFpODyfnrxyaSQkOueRf/KgdBzPkkHYTT0MMjvrZN9BZhAscgOJCuRGu+RwhG73l2Mi
+         vyMPnn6yAFLy5CSgMZ44Ubi0ZBT5n93CKodrVWH7nxdaDmtikvFvzQ9s7kBkpodRv7Bq
+         GtaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=xawgHW1MVMAwfV/rQGIof/tyOURw8nC0S2OPSeQKM2w=;
-        b=SozH9PJBt9PlX9DtlXoCMjXCABgkqNQNCEFj/VqndbHbf8yCQMLN/kolSGpGlhkTVZ
-         VDdF7t+sCiqfGzCUEAvKjVi85iL2fyY6/oQ8TQO6+Ft7p1DZ77mZAhmdCuhcJZdRRG6X
-         B0JlplcG41Xf5iTE7lcY71VxeIKAQmyH4Kc3AGAFTBkCZ1WDXysSDAZYsCOs0giUTyx0
-         r5GBSvKZRnf94Q0QJybnCAZs+BByDHOjxGVID4lQrvaIHTYX+jy5FvYc4/KTCGOB+n6T
-         UosHYPU4zVEsLeYqaNlhKjqJexZCF5+54Q+kktFhxzTlhMDtEK5Yz4kNZyoQw3EGGicK
-         T1+g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=3sUDgD9l3nfK/ol06qXulbOnCayU/9a3NjIzxWJUH9I=;
+        b=K92p2pTiFaUyWiuQZgjkWtffJfv6xRLR06l6RkuAGk8vpbjy6NyLSoFijLvOwHsJ+o
+         U2Mg7GsMjKzW1sinV4S6PN5BvnrpYYtiLZzrhHsG/bkvRi6Yyb5ozh2yGAUxl2oY6vzt
+         diXhLP4WtCJgn3DwPwX3dfAzpbGobmLzxeKGeTMdl7abe2+iWOmIWCUasmdMH339DAY/
+         pca+uiXyjMWFQ9Sdyk9LjvXnrVC2PVUw9UcCUeKuzNISYigP5xZiFCw80thnXvLvudGh
+         P+Nht8eOtkdKRtE6sk67D4G9hTSJuVhzQS2nD4GMCMpsXeU46jzNtI+uZ2p9jvPkDpQl
+         9Juw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=lersek@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <lersek@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id 71si9819747qkd.345.2019.07.02.07.33.36
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Jul 2019 07:33:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id r18si9437949ejp.141.2019.07.02.07.44.07
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 02 Jul 2019 07:44:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=lersek@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4D1D781DFC;
-	Tue,  2 Jul 2019 14:33:18 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-117-172.ams2.redhat.com [10.36.117.172])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id A3BA01001DD5;
-	Tue,  2 Jul 2019 14:32:37 +0000 (UTC)
-Subject: Re: [PATCH v2 5/9] hw/block/pflash_cfi01: Add the DeviceReset()
- handler
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, John Snow <jsnow@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann
- <kraxel@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
- qemu-ppc <qemu-ppc@nongnu.org>, Max Filippov <jcmvbkbc@gmail.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Wei Yang <richardw.yang@linux.intel.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>, BALATON Zoltan <balaton@eik.bme.hu>,
- Markus Armbruster <armbru@redhat.com>, Andrzej Zaborowski
- <balrogg@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Michael Walle <michael@walle.cc>, Paolo Bonzini <pbonzini@redhat.com>,
- Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Alistair Francis <alistair23@gmail.com>, Qemu-block <qemu-block@nongnu.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>
-References: <20190702001301.4768-1-philmd@redhat.com>
- <20190702001301.4768-6-philmd@redhat.com>
- <5163b3e4-f68e-dc6b-3fcc-e7927ebc58e7@redhat.com>
- <CAFEAcA_n3BpZuBPFS8y90XaOwzAo-tuKpO24_apz+9yzpxUxHQ@mail.gmail.com>
- <633b88d8-88d0-3fa0-ff25-63935d8806fe@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <d70226ca-4c54-f3f7-5284-482f3207d76d@redhat.com>
-Date: Tue, 2 Jul 2019 16:32:36 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54122 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hiK0s-0001RH-In
+	for alex.bennee@linaro.org; Tue, 02 Jul 2019 10:44:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52592)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <philmd@redhat.com>) id 1hiK0Z-0001PA-KQ
+ for qemu-arm@nongnu.org; Tue, 02 Jul 2019 10:43:48 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1hiK0Y-0008Qv-EF
+ for qemu-arm@nongnu.org; Tue, 02 Jul 2019 10:43:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49332)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1hiK0Y-0008QE-7q; Tue, 02 Jul 2019 10:43:46 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 6E4D481DE0;
+ Tue,  2 Jul 2019 14:43:45 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-140.brq.redhat.com [10.40.204.140])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7AEBA67142;
+ Tue,  2 Jul 2019 14:43:39 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  2 Jul 2019 16:43:34 +0200
+Message-Id: <20190702144335.10717-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <633b88d8-88d0-3fa0-ff25-63935d8806fe@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.25]); Tue, 02 Jul 2019 14:33:36 +0000 (UTC)
-X-TUID: LiV7cDkAexBU
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.25]); Tue, 02 Jul 2019 14:43:45 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v5 0/1] Support disabling TCG on ARM
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Yang Zhong <yang.zhong@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Samuel Ortiz <sameo@linux.intel.com>, Rob Bradford <robert.bradford@intel.com>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: IjYe7hs1XI3L
 
-On 07/02/19 11:37, Philippe Mathieu-Daudé wrote:
-> On 7/2/19 11:23 AM, Peter Maydell wrote:
->> On Tue, 2 Jul 2019 at 04:16, John Snow <jsnow@redhat.com> wrote:
->>> Does reset always get called as part of realize, really?
->>>
->>> Or are we just trusting that the device is probably going to get reset
->>> by the guest during bringup?
->>
->> Reset is not called "as part of realize", but it is guaranteed
->> to be called after realize and before we try to run the guest,
->> as long as the device is in the qbus tree. Things are in the
->> qbus tree if either:
->>  * they're plugged into something already in the tree (eg
->>    pci devices, scsi disks)
->>  * they're a sysbus device (which is automatically plugged into
->>    the 'main system bus' which is effectively the root of the
->>    qbus tree)
->>
->> In this case TYPE_PFLASH_CFI01 is a subclass of TYPE_SYS_BUS_DEVICE,
->> so it will always be reset as part of system reset.
->>
->> (the main things which don't get automatically reset are direct
->> subclasses of TYPE_DEVICE, notably CPU objects.)
-> 
-> Thanks for the clarification!
-> 
-> I will update the commit description paraphrasing Peter:
-> 
->   The TYPE_DEVICE interface provides a DeviceReset handler.
->   This pflash device is a subclass of TYPE_SYS_BUS_DEVICE (which
->   is a subclass of TYPE_DEVICE).
->   SYS_BUS devices are automatically plugged into the 'main system
->   bus', which is the root of the qbus tree.
->   Devices in the qbus tree are guaranteed to have their reset()
->   handler called after realize() and before we try to run the guest.
-> 
->   To avoid incoherent states when the machine resets (see but report
->   below), factor out the reset code into pflash_cfi01_system_reset,
->   and register the method as a device reset callback.
-> 
-> John, Laszlo, is that OK with you?
+v1 cover from Samuel [1]:
 
-works for me, sure.
+  This patchset allows for building and running ARM targets with TCG
+  disabled. It splits the target/arm/helper.c file into logical TCG and
+  non TCG dependent files so that one can build and run QEMU binaries wit=
+h
+  or without TCG enabled.
 
-Thanks
-Laszlo
+  The rationale behind this work comes from the NEMU project where we're
+  trying to only support x86 and ARM 64-bit architectures, without
+  including the TCG code base. We can only do so if we can build and run
+  ARM binaries with TCG disabled.
+
+v2: https://lists.gnu.org/archive/html/qemu-devel/2019-06/msg03271.html
+v3: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg00162.html
+v4: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg00312.html
+- patches 1-12, 14-17, 19-21 accepted, rebased on target-arm.next
+- addressed Peter's comment (described in each patch).
+v5:
+- patches 1-2 accepted, rebased on target-arm.next
+- addressed Peter's comment (broken v4 rebase, patch not building...)
+
+Based-on: target-arm.next
+$ git backport-diff -u v3 -r target-arm.next..v5
+Key:
+[----] : patches are identical
+[####] : number of functional differences between upstream/downstream pat=
+ch
+[down] : patch is downstream-only
+The flags [FC] indicate (F)unctional and (C)ontextual differences, respec=
+tively
+
+001/1:[0025] [FC] 'target/arm/helper: Move M profile routines to m_helper=
+.c'
+
+Thanks a lot to Alex and Peter for their review time, and Samuel for
+the original effort.
+
+This single patch is not a 'bugfix', simply code movement.
+If it doesn't fit for 4.1-rc0, I'm still glad Peter merged all the
+patches from the previous series :_
+
+Regards,
+
+Phil.
+
+[1]: https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg02451.html
+
+Philippe Mathieu-Daud=C3=A9 (1):
+  target/arm/helper: Move M profile routines to m_helper.c
+
+ target/arm/Makefile.objs |    1 +
+ target/arm/helper.c      | 2638 +------------------------------------
+ target/arm/m_helper.c    | 2676 ++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 2681 insertions(+), 2634 deletions(-)
+ create mode 100644 target/arm/m_helper.c
+
+--=20
+2.20.1
+

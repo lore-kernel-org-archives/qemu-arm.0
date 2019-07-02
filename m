@@ -1,74 +1,74 @@
-Received: by 2002:a17:90a:ad8a:0:0:0:0 with SMTP id s10csp3838968pjq;
-        Tue, 2 Jul 2019 06:58:49 -0700 (PDT)
-X-Received: by 2002:aca:4d84:: with SMTP id a126mr3277176oib.23.1562075929208;
-        Tue, 02 Jul 2019 06:58:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562075929; cv=none;
+Received: by 2002:a17:90a:ad8a:0:0:0:0 with SMTP id s10csp3841600pjq;
+        Tue, 2 Jul 2019 07:01:19 -0700 (PDT)
+X-Received: by 2002:aca:ea0b:: with SMTP id i11mr2951067oih.102.1562076079493;
+        Tue, 02 Jul 2019 07:01:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562076079; cv=none;
         d=google.com; s=arc-20160816;
-        b=TK5ch7lFgble/JHUDO3ILCuKLMhT2z/5eBWOi3Uo4ocBedZqdNgmGhWCC04AyfOUlW
-         kjSPRKcfy/vUc08hNj+FRf2W8k6vaS5O4t9JmlULLZvFNSbdgHpbygTSmgx4uJNTd7pf
-         h9NNjO467vIrJJzxxqoPpwRE/jBUeo9996o790OzmpN0SCDvGnZiW+258TFiCz697/Yn
-         24YLWxSc29RiXstlFEb2891mWa4f2EiCeYSE8qqWEaVt1cASc/PT5RuCppj89czeo7s5
-         Gigf9cShRl6hTIluH1DiX4AT7K+jcSxMID7A+gg5hh7vYsndeDGWHiX6QaGuCh8zb083
-         pgQQ==
+        b=NI/gKFjpkzNXfCLMSCtx3sUwQKNGXfFqb5zspHvEv5wIrF+s8ok6gnWHy13ZMVL66C
+         zCIIHA2CPwarkwDvE2jvOLR43W/nMRf/2weoqXRaevLkSCI30KcwnNdy5SJv8P1iZ/Ks
+         QqQF8cjjAtf/leFZCMpWYXEeNxD2eCmhVzKsjzgrde7vHZc52YAytKCShmtj4smikpHN
+         bWnUy8ZMAxvsUuyuykP6XieDabcHcAPUs06PaHWnEAcqEHQckGucALoIh9mkCtV5ZQNY
+         cNO4yRNF9QKXyiMAQN1ubSErHKJbHPlMdIj/6czP/Bi+uvIAG0yii9iVoWYDJIdYMuiO
+         zBcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=S+jHy48iSxspioqGS3Ovjl+wHzVcWi4HmsUkyeKtm5I=;
-        b=BYOahFN8CWyJKIxSs/YpbwtMOQmntkoHyiAcGE6QqV3vAyXe9pMSpphd46EG3t3l6B
-         7RDwuPlFnDssxTSwc9RXWXoRkX53cXo1VzMGyALQ3WfwZO/WfHpjbih8y3DYDP6dHgsW
-         7xWPJ/8eNVI3fQ5O4+DIhQqXiLHWitfbU3btjjYxL67cSaMu5fMI9eSfFvq2xtiNbI9h
-         ta3AjBxMzFPZp/eZxRp2h40LdNvlj9m57dcqISHrEFGJKxu6ICVH8ASMb0WTpCmO4hza
-         PY7T9P412fBgibsiIJUbs8yH2UGnAim1Bbgm4z10SgGbUjIDJSKgybF2T9gGY5hBpZ50
-         PRfA==
+        bh=cqwgMTTgDEm/b0NIbMgi8rNGvxIw/MePJRH6fknCQjk=;
+        b=KUfGqi7uofDD//J7hWm+2rFyptaiWiTfjtvCS4mHWbk4VZ3sJNVmpIr3qYSHnS88l8
+         HMCWTXLN/d8VJCT+GPqO+ZHZBGxD8c8928uEwcSRwkDCrZ+t7z1F0mD8bWv6z1k3AfUs
+         5n1KoFb+C7eeYx3RjYGH4p/Kvz6T3ZtYHFweWnKbUwR62OFYQy1C8PkX1p1nyGX2Vkjt
+         xBqgRLUxz/g5vTBQZbyWQfNacstgv1t2w32hdPvM+Ko7XGF7uyL0xbt6D77XM8BpZ8Sy
+         tj9jm0Dr80Bw/eKiCzsMwpwkRfx1SRm/A3S4U6ZhOLXaGyBkOijmMF0GUioHxPxFDnk3
+         bJXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="nG/S20r/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=zMGRcftJ;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id r13sor7387990otk.62.2019.07.02.06.58.49
+        by mx.google.com with SMTPS id r131sor6431815oif.20.2019.07.02.07.01.19
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 02 Jul 2019 06:58:49 -0700 (PDT)
+        Tue, 02 Jul 2019 07:01:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="nG/S20r/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=zMGRcftJ;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=S+jHy48iSxspioqGS3Ovjl+wHzVcWi4HmsUkyeKtm5I=;
-        b=nG/S20r/iguAF4sFMgx8Uoy6AWQSopVOz2nhUjGOncE2JRmfkNJGwUxX8C4DQ3/W2U
-         hexwMOZ/2c5ap0wzDhEktzWuvuo2y3oeg0ze5Egra9KLmK/j4vGpgZ/pFL+vHg9dZNuw
-         3z7o3P/P9+BRI22NJVRn9jPPF4weJA9JGetuWP1v6/xs7LaCEbrwD33u290kHQ0XRYTQ
-         5vUk9I5FIXzcjfrvN2g5nUR+7zSWu8kzoW1bVFpjqn3lyv6XyMMVRGEK/ropBlzSJDDA
-         QX5v7dD3dTyrrx2AtFGmzEH3xtBbdlPxLQGPJHMNEQFK+/SFzi2UyuCckwkRJFU1V3NY
-         dlBw==
+        bh=cqwgMTTgDEm/b0NIbMgi8rNGvxIw/MePJRH6fknCQjk=;
+        b=zMGRcftJCYDyiMy3dVyGKxG6vha9EQTuQfKvNTea6EUz8hU9bKKL8c0amR4N+Wy8Zc
+         1WzLYrk77wWjW0T361oAmNDy8sNLU+DMlFSJmGp+Ndg+N/KvDmtu0OmM3EGmf9jhS12Y
+         FPu4AGFw7r0CpBERfkgKbRIno7pjPJCa68e5dU2GX5sz5StXQCNweIAzuC/cAJ4MzlgL
+         btgtqNGfhXsyUEjLfgd7rWogBRdZhWKMoPUZULR09iiWN9H8c4qTq6mKtOzYehVD6cXQ
+         DXpeID+ekFPVlpV8ulLnadtlvQ7gm/xyFydPW5TLNIp6FfXLdxuWVyH1H88omAIW7JY7
+         V7Tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=S+jHy48iSxspioqGS3Ovjl+wHzVcWi4HmsUkyeKtm5I=;
-        b=c+LCfDAH0Ref1Dy7emX/hZ33IXUQ7zv5t2diW6NQBoEFsl65g+FwFZYv7IenTo9cEH
-         iQkq3NjaWcpEMirD8I9iRbHgMl/7B94718GlkXGagZBeoFCYuXmJd0VlKTwDirw6ITsu
-         lvzmGahzRHX9rn/BTUL2Hf57gVfxv41FWOuSwsalPXoQtvUBg2yumFCOGhyBE0A/j3lT
-         cv8dvkW5Re+KU0GxujmlewGKxGq494YJqfH6D57T7bhvp5sxvF8BMKzlgUhLdjbAP7aj
-         g00hGtVKkEMNAhSx4gvZDc73WTfDu6A0bARWAYCJGOsy3MGY/hFps+EbUsA8nvff346z
-         zb2g==
-X-Gm-Message-State: APjAAAWj5ahDM/bZCPtNyjBBkw2cLxQIXTYf4aFoMPuSDk0e/MsTVO6d
-	oYLptvvo9o3TquKXkmLQ034c2S4vCRxjH2MTqQzov/CcfL/o+w==
-X-Google-Smtp-Source: APXvYqwcE4RPq9RDLvCdgHY2TC+CAMUsuI3/1rQwte61yIUvinTXNyhddPOR79QxhoN1sYIuc5AbkstoyqUcwMfiyDw=
-X-Received: by 2002:a9d:6a0f:: with SMTP id g15mr25110572otn.135.1562075928909;
- Tue, 02 Jul 2019 06:58:48 -0700 (PDT)
+        bh=cqwgMTTgDEm/b0NIbMgi8rNGvxIw/MePJRH6fknCQjk=;
+        b=ZqkDeLauXy9OUQ2xbOSfM66ncD0cSXzU3xm94cABZnQ6qqvXnh7Eo3E26WslL3FOu9
+         e4eSwbvE35cr1fmhElxTFv08zuowc3qD/eM5vHsurf27+R7YB/+KcnqdJh/QgUQyAJFs
+         R+Cm9xmcpgCvtCLeseF1OtJnYiVzK6PnFy/W/eYuahyB8pC5z+U/Mo2gyBLXjiOR/IDu
+         VuDyvZyTKa2On2ns8EU+4vKypGbKiFp4/9UB0inr5/9EJX01oPxMd8E3VSPGpPZv9Mnj
+         UxOoDzJn64bKasxpskZEEZ2aJ37zDm1barCdsdMn5QOBQQc6wzfBMvJVOV6nBzZ4OwjJ
+         lXbQ==
+X-Gm-Message-State: APjAAAUXUS/C9hGqH7Hk0VCZsfWIONEX/Y6NDopExYyJcHzhmp0azagU
+	79LVvuyc6x+AHPCCB69hube7tyW3CCwE6OxV8xiZIXdWGbVAQg==
+X-Google-Smtp-Source: APXvYqzcqBiLEx5yGkdB6sw872UZ3nETBgJKOfoap4Iuaxqr0qdqfzzu4MncEGbDi8xz80l/QMGIZhkFx0nmnHu5eo0=
+X-Received: by 2002:a05:6808:8c2:: with SMTP id k2mr2988956oij.98.1562076079127;
+ Tue, 02 Jul 2019 07:01:19 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190701194942.10092-1-philmd@redhat.com> <20190701194942.10092-3-philmd@redhat.com>
-In-Reply-To: <20190701194942.10092-3-philmd@redhat.com>
+References: <20190701194942.10092-1-philmd@redhat.com> <20190701194942.10092-4-philmd@redhat.com>
+In-Reply-To: <20190701194942.10092-4-philmd@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Jul 2019 14:58:37 +0100
-Message-ID: <CAFEAcA855a+_uKWhF9pN5DyArD3g-YEYbQ+7hwMfaVAOvBYQxQ@mail.gmail.com>
-Subject: Re: [PATCH v4 2/8] target/arm: Restrict semi-hosting to TCG
+Date: Tue, 2 Jul 2019 15:01:08 +0100
+Message-ID: <CAFEAcA99QK7u+Rev5C9Xb_vmnGSZvx9EO+8D_fFB1qFmiMejcA@mail.gmail.com>
+Subject: Re: [PATCH v4 3/8] target/arm/helper: Move M profile routines to m_helper.c
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
 	Samuel Ortiz <sameo@linux.intel.com>, Rob Bradford <robert.bradford@intel.com>, 
@@ -77,29 +77,63 @@ Cc: QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.
 	Thomas Huth <thuth@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: r0QJY+v4uBDr
+X-TUID: /Mhhrj3fQaNB
 
 On Mon, 1 Jul 2019 at 20:50, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
 > wrote:
 >
-> Per Peter Maydell:
+> In preparation for supporting TCG disablement on ARM, we move most
+> of TCG related v7m/v8m helpers and APIs into their own file.
 >
->   Semihosting hooks either SVC or HLT instructions, and inside KVM
->   both of those go to EL1, ie to the guest, and can't be trapped to
->   KVM.
+> Note: It is easier to review this commit using the 'histogram'
+>       diff algorithm:
 >
-> Let check_for_semihosting() return False when not running on TCG.
+>     $ git diff --diff-algorithm=3Dhistogram ...
+>   or
+>     $ git diff --histogram ...
 >
+> Suggested-by: Samuel Ortiz <sameo@linux.intel.com>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
-> v3: inline call to g_assert_not_reached if !TCG
-> v4: fixed some ifdef that had moved in the next patch (Peter)
+> patch generated with git diff --histogram.
+>
+> v4: rebased
 > ---
->  target/arm/Makefile.objs | 2 +-
->  target/arm/cpu.h         | 7 +++++++
->  target/arm/helper.c      | 8 +++++++-
->  3 files changed, 15 insertions(+), 2 deletions(-)
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>  target/arm/Makefile.objs |    1 +
+>  target/arm/helper.c      | 2661 +------------------------------------
+>  target/arm/m_helper.c    | 2676 ++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 2681 insertions(+), 2657 deletions(-)
+>  create mode 100644 target/arm/m_helper.c
+
+This patch doesn't compile:
+
+>
+> -hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
+> -                                         MemTxAttrs *attrs)
+> -{
+> -    ARMCPU *cpu =3D ARM_CPU(cs);
+> -    CPUARMState *env =3D &cpu->env;
+> -    hwaddr phys_addr;
+> -    target_ulong page_size;
+> -    int prot;
+> -    bool ret;
+> -    ARMMMUFaultInfo fi =3D {};
+> -    ARMMMUIdx mmu_idx =3D arm_mmu_idx(env);
+> -
+> -    *attrs =3D (MemTxAttrs) {};
+> -
+> -    ret =3D get_phys_addr(env, addr, 0, mmu_idx, &phys_addr,
+> -                        attrs, &prot, &page_size, &fi, NULL);
+> -
+> -    if (ret) {
+> -        return -1;
+> -    }
+> -    return phys_addr;
+> -}
+> -
+
+...it deletes the definition of arm_cpu_get_phys_page_attrs_debug(),
+which should stay where it is.
 
 thanks
 -- PMM

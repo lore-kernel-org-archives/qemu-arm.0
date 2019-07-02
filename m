@@ -1,140 +1,165 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3598443wru;
-        Tue, 2 Jul 2019 02:37:09 -0700 (PDT)
-X-Received: by 2002:a1c:7a01:: with SMTP id v1mr2925601wmc.10.1562060229085;
-        Tue, 02 Jul 2019 02:37:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562060229; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3718250wru;
+        Tue, 2 Jul 2019 04:51:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqychz3OOG7mb3mDBXpkM921dAHpp7xWxU5m8AdYXh3qxW1p3QUYBHjO7ugOTsLAPBwigHgN
+X-Received: by 2002:a17:906:c3d0:: with SMTP id cj16mr28013353ejb.96.1562068317438;
+        Tue, 02 Jul 2019 04:51:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562068317; cv=none;
         d=google.com; s=arc-20160816;
-        b=eE13HlA6vYb7K5DFILUR8b1b6zRHwTOkeMWURbgl9pte0zBsUQLr/GYk2K3hj9+oPu
-         dBaRB/eP9W+tnKUnO6Zprd0R4C5EFCN3b4gweN/WMl7OAWg/OGA1ut7KHftUBeHain9t
-         qLver+j09IPLRFqejLU/SJHLVMPSZzIK5bjXH0++dAjLH9nfYg0H1XUc1vTV8i9Zog53
-         BAhvnU5bxtANAJtkrhxMwLeujUKZZQBbfynao8j2FWwpFaNG4mbQNFpxAZCD/Z63YBdM
-         KjlWzqg8mEsVIaUqyhhPCDlklJBcWFci6BN95J8JX4PVg7OlOQo/oJJ4nJWOoyR7daYb
-         Tn4g==
+        b=c/cy+JePvpQoADJqbXpWpdhmy3jdqRsPvri9gdvOjbhNLRIgQrd+27x4fSIrigvUx0
+         Ai8TEgb5fxxJc1NpBYkGCuBwehVzKSH13yJfzAIPXqB35dlepwva7FM0Hfn64T5LGNzC
+         +lcUZPcUSz4LftxhIqfAGavUQpCoPtPnQsP3Jg2e1/PIfHGx5R2nFoix2QJvX16t22Ba
+         l0t9wtusTxO5gxj+++MclbIL5Syv5uF6vkabwUAx8ctLL6EAkJaE75s/0AmH9dka+ki3
+         P/dF5qL4D+8wU+KDBuNxtFO1ji5E4ucwQHW/l19XbCSQfEgOHW6thVzPRV6/nz4biBKf
+         L3Cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
-        bh=/Q8RWJYyCw3CbRKDqKY7Vc9QfleR2sokn3SYWdrd5hk=;
-        b=RUKS8fSaNALXLNdj30PqnBFN2hhZ+kaENLLdc7w1iswzhb3cZx5tmj+VpnPvqBFrAT
-         Fb9cySJP6sNMl0XyNbl88orthEzV678iZ4X+upCxvE7obnOUamCE+h72ogoEQMNBUFcG
-         rUH5Z8GpR1YJkzkJb/PTBW7rd3uYYr41/WKv4Jas41LsRBHg7CFlKEkO/wF6W9xikICD
-         f3cxKLT9KgiF9mlhZpO5Zpjj1fDoQ3PPXc9lOBiiUX+rugFVOkSnm+G4NviWDLRZPvFG
-         euDVX2dv78SZL3Hr9UHM9zbTq/o80n2lnJTpJp0LQnOscqfjTGj7J6cu1XFuxatxGndA
-         9XFQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=dSRxAHcDzhVFRmaf5h2eXJkPlzIFYCiYsZli86wZ5ls=;
+        b=Q8MJ90HB4aVAG8Q0N1wj1rr4asFANGMHouua6xCTG3uU3B5ZDMUHrXMK7gTQKXbV6h
+         D6T9wkqzvIhDYLD0zlU37jDgrasZqzrbZ4Zaq7nImRWQnBSbBsRlYJYnZytTQLvLI0+J
+         eP4Gty/Bpo0/9aVdm0GpYgT09vZnWYiAvKcWlgPHYGskFQc2f3f7UPBbH3Wbm+BcajjL
+         9SPwwWcxSv01+Xk7z8NVqBlF5lIv2QSNFum/yAP2yYIDcPOfo/bBV7wMzGJIkDU/DRsU
+         fHH+UZy21FJCUMbNf4uEPl7oby8rG+zHv7R0Z2maYCeiPaw9uJOBH1Xlh9uMPn56WPzV
+         Tp9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id f17sor9949859wrv.33.2019.07.02.02.37.09
+       dkim=fail header.i=@linaro.org header.s=google header.b=UsqarQr0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z50si11434879edb.13.2019.07.02.04.51.57
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 02 Jul 2019 02:37:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 02 Jul 2019 04:51:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@linaro.org header.s=google header.b=UsqarQr0;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51942 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hiHKG-0000Hs-H1
+	for alex.bennee@linaro.org; Tue, 02 Jul 2019 07:51:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34825)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <peter.maydell@linaro.org>) id 1hiHFi-0005yT-Uq
+ for qemu-devel@nongnu.org; Tue, 02 Jul 2019 07:47:16 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1hiHFh-00014J-Hg
+ for qemu-devel@nongnu.org; Tue, 02 Jul 2019 07:47:14 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:39829)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hiHFc-0000xH-H8
+ for qemu-devel@nongnu.org; Tue, 02 Jul 2019 07:47:10 -0400
+Received: by mail-ot1-x342.google.com with SMTP id r21so16176725otq.6
+ for <qemu-devel@nongnu.org>; Tue, 02 Jul 2019 04:47:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=dSRxAHcDzhVFRmaf5h2eXJkPlzIFYCiYsZli86wZ5ls=;
+ b=UsqarQr0YXlZxF+nMkyGoj5J15hUK9LpbuuEJ2KPmdnNpO1LgY630cyTaZoI35uuK6
+ DUAvl2nw24uK95MEcdiywj4HJBnf/jY0NQGqYPzrWMdssmZnhio0mqs0stEzzpEcVSkb
+ mYLzZZX/UaQ6l17XZZ7bZLDaEra/ariU2jOvl3UuWMRlr41Bjt/RnO8XS+C5G14X6cRW
+ 0GUwYrxH29JIFS5nRXVT2z6gqPMJZmaZ/4R0Z5N4NuM3m0iXbL+XK0CZKNi8BPYHOpPE
+ NKMeuMBECB9TuWT87FeUb+tSVhyem2ZsYTd085A/dUb5RPv+5vdcI+1nGMK1zfT+KNvl
+ Ga6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=/Q8RWJYyCw3CbRKDqKY7Vc9QfleR2sokn3SYWdrd5hk=;
-        b=KZEYP7xHaPoepi4Fm+3mLxSVl1bPlff6lWAkcqL5RaWEXH9ZcTDL6/K1aU5cfcXVqK
-         4kjyJCfaS4mVcPDuiXTNRdTVY3Bg906nIUTrXidAxjSFSH5ZJ2477ywARrMVBSICnsr6
-         HY8VsUCJqY1AagXr1ql2dqb+JWd2uzOxVj3sTip/bHGdU+U0mjSzgoJd3UGR8hHY1wj7
-         +WOwPFZlX/kKrW3wznVT0b6MxHHFJJ3DYS9KHfANAx2jMELoOzfjjjWrKLS8WehHhyCt
-         /GO1qVVa0OteDsagtcZ02JO2TnOoTw9m2fa4B3oK5s+32+5mv3pBFbObrhSGvulP8Oi9
-         xTFQ==
-X-Gm-Message-State: APjAAAWeWwLvss3Y/UaZJdOMDuwdo5XR4SGlA+0h/u54PFnZeQNWAdqb
-	5WPnoxRS9Hud0laFY6E2p7k5wQ==
-X-Google-Smtp-Source: APXvYqyU+yRZgB24icv2aoJHZDnYxuWzzFwkyoaGCc8B4ml2tRj8SLH8vGpniPKDdKrMO82kg6jcTw==
-X-Received: by 2002:a5d:55c2:: with SMTP id i2mr2848183wrw.113.1562060228839;
-        Tue, 02 Jul 2019 02:37:08 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.38] (56.red-88-18-140.staticip.rima-tde.net. [88.18.140.56])
-        by smtp.gmail.com with ESMTPSA id j16sm2781671wrt.88.2019.07.02.02.37.07
-        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Jul 2019 02:37:08 -0700 (PDT)
-Subject: Re: [PATCH v2 5/9] hw/block/pflash_cfi01: Add the DeviceReset()
- handler
-To: Peter Maydell <peter.maydell@linaro.org>, John Snow <jsnow@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann
- <kraxel@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-ppc <qemu-ppc@nongnu.org>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Wei Yang <richardw.yang@linux.intel.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>, BALATON Zoltan <balaton@eik.bme.hu>,
- Markus Armbruster <armbru@redhat.com>, Andrzej Zaborowski
- <balrogg@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Michael Walle <michael@walle.cc>, Paolo Bonzini <pbonzini@redhat.com>,
- Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Alistair Francis <alistair23@gmail.com>, Qemu-block <qemu-block@nongnu.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>
-References: <20190702001301.4768-1-philmd@redhat.com>
- <20190702001301.4768-6-philmd@redhat.com>
- <5163b3e4-f68e-dc6b-3fcc-e7927ebc58e7@redhat.com>
- <CAFEAcA_n3BpZuBPFS8y90XaOwzAo-tuKpO24_apz+9yzpxUxHQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <633b88d8-88d0-3fa0-ff25-63935d8806fe@redhat.com>
-Date: Tue, 2 Jul 2019 11:37:06 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=dSRxAHcDzhVFRmaf5h2eXJkPlzIFYCiYsZli86wZ5ls=;
+ b=cYGvItwmA/xxPgcOjNdXL+GlHjrwl1wwl72RLdbu/PQcJgdGradgEkNKSEXgJZdAAt
+ U9DTB5Gvr/3a160raOISKqPENoKCx1qjsn5fum+FG/YdpoIXHyjWESIwmzg1S8XvJIPX
+ ePycpxhbQAYgO3EkgMDGjAVT+84MkII6A1nOctoUfs+g4l0MeeWmgk68tKsi+ix/SbCd
+ jLkWiLtAMTrb0hPWE3J4ssV7a2Hkwn15vKA5ZHW14u448pUw+o2pnbMtZRyAgxiq4hrH
+ nmWY4cRT9GiyPnIVN4a77P1RgknUyR5VTkk3USsfkbl4ZkxU0RU0tPHqLIPdfu1hdrqJ
+ vxUg==
+X-Gm-Message-State: APjAAAUbn0OuMDvP9RxBX/3ggO9b7WkGC6yNeAFHTuxq/0XWPU72tFHT
+ Gw15FrdMfxIu5XlMYZ19I7Ebaw0gZtDxo0uuG5nijQ==
+X-Received: by 2002:a9d:6a0f:: with SMTP id g15mr24633658otn.135.1562068026545; 
+ Tue, 02 Jul 2019 04:47:06 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_n3BpZuBPFS8y90XaOwzAo-tuKpO24_apz+9yzpxUxHQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: GeIQP0hAop0X
+References: <20190625121421.22280-1-shameerali.kolothum.thodi@huawei.com>
+ <20190702130703.0e74cbe6@redhat.com>
+In-Reply-To: <20190702130703.0e74cbe6@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 2 Jul 2019 12:46:55 +0100
+Message-ID: <CAFEAcA8PDNTQXD3cD3XG9wkc_QOLXUcw62-8AUjSC0g7qjti7g@mail.gmail.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::342
+Subject: Re: [Qemu-devel] [PATCH v6 0/8] ARM virt: ACPI memory hotplug
+ support
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Samuel Ortiz <sameo@linux.intel.com>,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ Linuxarm <linuxarm@huawei.com>, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Xu Wei <xuwei5@hisilicon.com>,
+ sebastien.boeuf@intel.com, Laszlo Ersek <lersek@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ioJ8Ukwginqd
 
-On 7/2/19 11:23 AM, Peter Maydell wrote:
-> On Tue, 2 Jul 2019 at 04:16, John Snow <jsnow@redhat.com> wrote:
->> Does reset always get called as part of realize, really?
->>
->> Or are we just trusting that the device is probably going to get reset
->> by the guest during bringup?
-> 
-> Reset is not called "as part of realize", but it is guaranteed
-> to be called after realize and before we try to run the guest,
-> as long as the device is in the qbus tree. Things are in the
-> qbus tree if either:
->  * they're plugged into something already in the tree (eg
->    pci devices, scsi disks)
->  * they're a sysbus device (which is automatically plugged into
->    the 'main system bus' which is effectively the root of the
->    qbus tree)
-> 
-> In this case TYPE_PFLASH_CFI01 is a subclass of TYPE_SYS_BUS_DEVICE,
-> so it will always be reset as part of system reset.
-> 
-> (the main things which don't get automatically reset are direct
-> subclasses of TYPE_DEVICE, notably CPU objects.)
+On Tue, 2 Jul 2019 at 12:07, Igor Mammedov <imammedo@redhat.com> wrote:
+>
+> On Tue, 25 Jun 2019 13:14:13 +0100
+> Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+>
+> > This series is an attempt to provide device memory hotplug support
+> > on ARM virt platform. This is based on Eric's recent works here[1]
+> > and carries some of the pc-dimm related patches dropped from his
+> > series.
+> >
+> > The kernel support for arm64 memory hot add was added recently by
+> > Robin and hence the guest kernel should be => 5.0-rc1.
+> >
+> > NVDIM support is not included currently as we still have an unresolved
+> > issue while hot adding NVDIMM[2]. However NVDIMM cold plug patches
+> > can be included, but not done for now, for keeping it simple.
+> >
+> > This makes use of GED device to sent hotplug ACPI events to the
+> > Guest. GED code is based on Nemu. Thanks to the efforts of Samuel and
+> > Sebastien to add the hardware-reduced support to Nemu using GED
+> > device[3]. (Please shout if I got the author/signed-off wrong for
+> > those patches or missed any names).
+> >
+> > This is sanity tested on a HiSilicon ARM64 platform and appreciate
+> > any further testing.
+>
+> There are several things I'd fix/amend but it's nothing that couldn't
+> be done on top as bugfixes (I'll comment later on specific issues).
+>
+> However as a whole from ACPI and memory hotplug POV series looks more
+> or less ready for merging.
+>
+> I've asked Eric to test migration (I'm quite not sure about that part),
+> (CCed David)so on condition it works:
+>
+>   Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
-Thanks for the clarification!
+If we want to get this into 4.1 I'll need somebody to do a respin
+with all the relevant fixes pretty soon (ie within a day or two,
+and that is pushing it because really it's missed the freeze
+deadline already). It might be easier just to let it go into 4.2
+instead...
 
-I will update the commit description paraphrasing Peter:
-
-  The TYPE_DEVICE interface provides a DeviceReset handler.
-  This pflash device is a subclass of TYPE_SYS_BUS_DEVICE (which
-  is a subclass of TYPE_DEVICE).
-  SYS_BUS devices are automatically plugged into the 'main system
-  bus', which is the root of the qbus tree.
-  Devices in the qbus tree are guaranteed to have their reset()
-  handler called after realize() and before we try to run the guest.
-
-  To avoid incoherent states when the machine resets (see but report
-  below), factor out the reset code into pflash_cfi01_system_reset,
-  and register the method as a device reset callback.
-
-John, Laszlo, is that OK with you?
-
-Thanks,
-
-Phil.
+thanks
+-- PMM

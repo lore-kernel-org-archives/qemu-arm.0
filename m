@@ -1,34 +1,34 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3194687wru;
-        Mon, 1 Jul 2019 17:15:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwI5er0Tin2Dj3ZsYM8Nk/pNFApq/Fxd0E4qZeTtnECdwWTFX4MEneZtTPsdt8WV91i0u2H
-X-Received: by 2002:a37:a9c3:: with SMTP id s186mr23287284qke.190.1562026550013;
-        Mon, 01 Jul 2019 17:15:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562026550; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3194929wru;
+        Mon, 1 Jul 2019 17:16:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwS4/X9LS7zIRnnqMjqb2mbpMJaENjTigXwXbO6QLFgfGor+wY7mM3S0LPusi8dRRL0Bn0n
+X-Received: by 2002:a37:9f14:: with SMTP id i20mr22914334qke.211.1562026571218;
+        Mon, 01 Jul 2019 17:16:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562026571; cv=none;
         d=google.com; s=arc-20160816;
-        b=pxIfF7LyNkgx8B3e7xcX53nWRm84MQcFj0iX6VWMogV8JyKsapxQEEbSODEjANMuCM
-         uK1c1C/5GzAz8JV8HQxEC7FBaKSyl+H2vPsXwnLcy2eQJiiGWB9bBuXmetnd0al+aZXr
-         Ctah1G+QoEbnbAScRdzD1HNwqQT7NLCgXW+CvPGSywN4r4WX1bf/ZnhcFZNwSsd2UT8T
-         2oNvRz9Oi4/Q0p9+x8HDJKcjt458Sj2UXCC4+CsEiTNPzdSAbPpiy8uctWe7FdMszsXX
-         GzGeJbYdpgm2Ei6w0YNooAIvtudI4O6csS2PDBPHl05mSiK1JnMBOKwExTYRPyf61Vva
-         f/Sw==
+        b=tUcGgyqrT9AqMKvGTlJYbbBjlxx0ChS+fFmcjRSKAVt95iYqm4ESoINsWLeSpcKO54
+         dmZ/oe41Acm9y32OTLqHTLd3bD9iPU0+b39v6eSAtfheCDv9jqFpxWxxSFE+nxBF6Ige
+         +TbvY2UgeNDujbMI14axdAdSkpeLGQO+Kt3uIwqqVcbFx09S6Edvd0kFPvn+fGao7jIr
+         ihCkdWyJmXtPtyef55dBc7LPTL7k7rFQZWE0Yoq2M7zlQS8MwPi049cqsTQup8HqE+vz
+         mVTFWxtPi5oK8qDxBeJtg0HHT5xSXF875wZaMrPFQPsgNAfpRK9ih3HU9KKowm4thzz8
+         nYbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=X9Tno+rhStFo7yztu/2kwIvKR/zTdLZZ13qf8CnPW+k=;
-        b=uaUXtQptebUJNnS8i4neMUIy5hqRWuyZafs8QHLO5TJTzrl9i0Fu29GSfKRogh6cyL
-         bkMy6lFECZZZiKwfvDG2pMg0Nk2cKHAq2mHMrIFGINB7CRIDTUvYmys9yOdND/D4GzSY
-         GKQebeZSNbP5ZSBiwwwQmDovXMcbvvtwnAIrdO9L0xZ1BKdPKmfJL6iEKjeh2HP2HMyf
-         XYj5e4TTVS0oLmKUE++rRfOpWKYqwvnUZGDEuHsI3jP5Gl6MFuAlVF3RiC2iPqyUbOBJ
-         /Gw/GFgG+RRWbMi2R3NVvPBvDmdjdsKbrXDHOAQpGsXywzsjUhNb6MfrQfOv5vZrBMit
-         MuDA==
+        bh=+fs5NFGmtxZXrh05oNdxW4WVgrpCzSSjQXjZX5dBLr8=;
+        b=AM03/znJhxAq+VF98ygDb5uR+izhW7GmCyA21/oVhirS54awu6+nccnOFy0z+F2ca3
+         BOkUahxDC3cdhl4an3evH0WH8y0r/fHpF41S8RQ+qxkZ3pMweTCgJIXmR/Gt/Eu1yVYu
+         w5zU9sl33U1+hvmuEa5z7kGZcLIPm/ji4OzMoPvtpIug6r+2X0uthNlnEeljE8nT8W7o
+         GqO/hSBz3z0HW++1KZEYm2Q9ibfEXyihFiJMR+zGuM8XPKTCuC+D2a3TBWx5EY4mUqr/
+         CwxtppIjlGs+uBoZIy2ICuxt0myeilU/rvIr78NddZZcc90azeycrtjG58fj2qdI1KXw
+         nbYA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id h14si8779453qtc.229.2019.07.01.17.15.49
+        by mx.google.com with ESMTPS id l44si8382864qtb.303.2019.07.01.17.16.11
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Jul 2019 17:15:50 -0700 (PDT)
+        Mon, 01 Jul 2019 17:16:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
@@ -36,11 +36,11 @@ Authentication-Results: mx.google.com;
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id F3E2C30860DE;
-	Tue,  2 Jul 2019 00:15:48 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 34A80300C033;
+	Tue,  2 Jul 2019 00:16:10 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-21.brq.redhat.com [10.40.204.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id E552A1001943;
-	Tue,  2 Jul 2019 00:15:28 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C07B31001281;
+	Tue,  2 Jul 2019 00:15:49 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>,
@@ -71,75 +71,48 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Aleksandar Rikalo <arikalo@wavecomp.com>
-Subject: [PATCH v2 7/9] hw/block/pflash_cfi01: Improve command comments
-Date: Tue,  2 Jul 2019 02:12:59 +0200
-Message-Id: <20190702001301.4768-8-philmd@redhat.com>
+Subject: [PATCH v2 8/9] hw/block/pflash_cfi01: Replace DPRINTF by qemu_log_mask(GUEST_ERROR)
+Date: Tue,  2 Jul 2019 02:13:00 +0200
+Message-Id: <20190702001301.4768-9-philmd@redhat.com>
 In-Reply-To: <20190702001301.4768-1-philmd@redhat.com>
 References: <20190702001301.4768-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.44]); Tue, 02 Jul 2019 00:15:49 +0000 (UTC)
-X-TUID: hFkD2x/oTik6
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.47]); Tue, 02 Jul 2019 00:16:10 +0000 (UTC)
+X-TUID: gGxQLeOPD4OP
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/block/pflash_cfi01.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ hw/block/pflash_cfi01.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-index c1b02219b2..f50d0a9d37 100644
+index f50d0a9d37..e891112b67 100644
 --- a/hw/block/pflash_cfi01.c
 +++ b/hw/block/pflash_cfi01.c
-@@ -208,11 +208,11 @@ static uint32_t pflash_devid_query(PFlashCFI01 *pfl, hwaddr offset)
-      * Offsets 2/3 are block lock status, is not emulated.
-      */
-     switch (boff & 0xFF) {
--    case 0:
-+    case 0: /* Manufacturer ID */
-         resp = pfl->ident0;
-         trace_pflash_manufacturer_id(resp);
+@@ -286,7 +286,9 @@ static uint32_t pflash_read(PFlashCFI01 *pfl, hwaddr offset,
+     switch (pfl->cmd) {
+     default:
+         /* This should never happen : reset state & treat it as a read */
+-        DPRINTF("%s: unknown command state: %x\n", __func__, pfl->cmd);
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid state, "
++                      "wcycle %d cmd 0x02%x\n",
++                      __func__, pfl->wcycle, pfl->cmd);
+         pfl->wcycle = 0;
+         pfl->cmd = 0xff;
+         /* fall through to read code */
+@@ -631,7 +633,9 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
          break;
--    case 1:
-+    case 1: /* Device ID */
-         resp = pfl->ident1;
-         trace_pflash_device_id(resp);
-         break;
-@@ -456,11 +456,11 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
-     case 0:
-         /* read mode */
-         switch (cmd) {
--        case 0x10: /* Single Byte Program */
--        case 0x40: /* Single Byte Program */
-+        case 0x10: /* Single Byte Program (setup) */
-+        case 0x40: /* Single Byte Program (setup) [Intel] */
-             DPRINTF("%s: Single Byte Program\n", __func__);
-             break;
--        case 0x20: /* Block erase */
-+        case 0x20: /* Block erase (setup) */
-             p = pfl->storage;
-             offset &= ~(pfl->sector_len - 1);
- 
-@@ -516,8 +516,8 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
-         break;
-     case 1:
-         switch (pfl->cmd) {
--        case 0x10: /* Single Byte Program */
--        case 0x40: /* Single Byte Program */
-+        case 0x10: /* Single Byte Program (confirm) */
-+        case 0x40: /* Single Byte Program (confirm) [Intel] */
-             DPRINTF("%s: Single Byte Program\n", __func__);
-             if (!pfl->ro) {
-                 pflash_data_write(pfl, offset, value, width, be);
-@@ -528,7 +528,7 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
-             pfl->status |= 0x80; /* Ready! */
-             pfl->wcycle = 0;
-         break;
--        case 0x20: /* Block erase */
-+        case 0x20: /* Block erase (confirm) */
-         case 0x28:
-             if (cmd == 0xd0) { /* confirm */
-                 pfl->wcycle = 0;
+     default:
+         /* Should never happen */
+-        DPRINTF("%s: invalid write state\n",  __func__);
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid state, "
++                      "wcycle %d cmd (0x02%x -> value 0x02%x)\n",
++                      __func__, pfl->wcycle, pfl->cmd, value);
+         goto mode_read_array;
+     }
+     return;
 -- 
 2.20.1

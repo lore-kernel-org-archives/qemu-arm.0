@@ -1,34 +1,34 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3194460wru;
-        Mon, 1 Jul 2019 17:15:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyGeQrqqJhSMP+YvCY7ehg2RYZwPciw2xakRDVRw04Oo+LrnA53fRldp9GzliGhgShXOQNi
-X-Received: by 2002:a0c:d1e2:: with SMTP id k31mr24263417qvh.173.1562026529105;
-        Mon, 01 Jul 2019 17:15:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562026529; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3194687wru;
+        Mon, 1 Jul 2019 17:15:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwI5er0Tin2Dj3ZsYM8Nk/pNFApq/Fxd0E4qZeTtnECdwWTFX4MEneZtTPsdt8WV91i0u2H
+X-Received: by 2002:a37:a9c3:: with SMTP id s186mr23287284qke.190.1562026550013;
+        Mon, 01 Jul 2019 17:15:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562026550; cv=none;
         d=google.com; s=arc-20160816;
-        b=l006+2zHvGio07jxcZjkK6DwzEE85f7kvah5ZZ7neAhrpcyA4mqWn9cOZEqTv4rGtx
-         mNnAvCPjVI+EB+jIraINmyOhLJ+kXJ/LAwJEXouSCnqrMdRP90G1eQEoKWGn3wxrgzdT
-         zHNzV+/l9IoD4nO5rTgYPZbThnssihqH/kFo7MRZnKAiFwaRHdByfuv5JKP/mqJS6byS
-         mH837iqfCoQ3m3RgtcB8pd1rxOVsd3eKNLwZ+P4X3VS6a+athMJhO40y+8qkCnkvylZU
-         YlxQNkl1ivvo+YikJZizVpDpt37dP03hrZySIakGOv/OsMf5N/3GHIu8k3AzBYwaE4qm
-         KFLw==
+        b=pxIfF7LyNkgx8B3e7xcX53nWRm84MQcFj0iX6VWMogV8JyKsapxQEEbSODEjANMuCM
+         uK1c1C/5GzAz8JV8HQxEC7FBaKSyl+H2vPsXwnLcy2eQJiiGWB9bBuXmetnd0al+aZXr
+         Ctah1G+QoEbnbAScRdzD1HNwqQT7NLCgXW+CvPGSywN4r4WX1bf/ZnhcFZNwSsd2UT8T
+         2oNvRz9Oi4/Q0p9+x8HDJKcjt458Sj2UXCC4+CsEiTNPzdSAbPpiy8uctWe7FdMszsXX
+         GzGeJbYdpgm2Ei6w0YNooAIvtudI4O6csS2PDBPHl05mSiK1JnMBOKwExTYRPyf61Vva
+         f/Sw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=yff0XpuNrzKOow1CNpTsCFfBvFIYeKjHhV+Css2AqAc=;
-        b=xXS92LSaPRWILxOTxa5mElriSgKdPydon35OXjAfMrCOL463ersEQBVNzS6v4uu9Om
-         pzPVbBDVeH7vrVO5oPqUDeT74fIh2nKOLgILlLsqdAmV+aMB9un2M/7p4RR1l/q/Iikn
-         zhmGMrzElW5S5RXJJ3QFq9wDqb6SvkhU/TTnTJatZ00qQJT72UkxL7tCFa++2B/l4koT
-         6qfe+tBfL0fc6QJzYAXAAeHjt3ulFbUbeEFxH6nYO9EpJ1mGfREdWg/SNK88K0BNlol6
-         Xhauk0yJSFpmVlwGvh14vNWotdeWLLwSkVvybEW27++ogo2nD6IaRvOvZQ089xWMxMBv
-         fyaw==
+        bh=X9Tno+rhStFo7yztu/2kwIvKR/zTdLZZ13qf8CnPW+k=;
+        b=uaUXtQptebUJNnS8i4neMUIy5hqRWuyZafs8QHLO5TJTzrl9i0Fu29GSfKRogh6cyL
+         bkMy6lFECZZZiKwfvDG2pMg0Nk2cKHAq2mHMrIFGINB7CRIDTUvYmys9yOdND/D4GzSY
+         GKQebeZSNbP5ZSBiwwwQmDovXMcbvvtwnAIrdO9L0xZ1BKdPKmfJL6iEKjeh2HP2HMyf
+         XYj5e4TTVS0oLmKUE++rRfOpWKYqwvnUZGDEuHsI3jP5Gl6MFuAlVF3RiC2iPqyUbOBJ
+         /Gw/GFgG+RRWbMi2R3NVvPBvDmdjdsKbrXDHOAQpGsXywzsjUhNb6MfrQfOv5vZrBMit
+         MuDA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id l5si8549862qve.23.2019.07.01.17.15.28
+        by mx.google.com with ESMTPS id h14si8779453qtc.229.2019.07.01.17.15.49
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Jul 2019 17:15:29 -0700 (PDT)
+        Mon, 01 Jul 2019 17:15:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
@@ -36,11 +36,11 @@ Authentication-Results: mx.google.com;
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 205313079B8E;
-	Tue,  2 Jul 2019 00:15:28 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id F3E2C30860DE;
+	Tue,  2 Jul 2019 00:15:48 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-21.brq.redhat.com [10.40.204.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 66F001001B01;
-	Tue,  2 Jul 2019 00:15:07 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E552A1001943;
+	Tue,  2 Jul 2019 00:15:28 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>,
@@ -71,70 +71,75 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Aleksandar Rikalo <arikalo@wavecomp.com>
-Subject: [PATCH v2 6/9] hw/block/pflash_cfi01: Simplify CFI_QUERY processing
-Date: Tue,  2 Jul 2019 02:12:58 +0200
-Message-Id: <20190702001301.4768-7-philmd@redhat.com>
+Subject: [PATCH v2 7/9] hw/block/pflash_cfi01: Improve command comments
+Date: Tue,  2 Jul 2019 02:12:59 +0200
+Message-Id: <20190702001301.4768-8-philmd@redhat.com>
 In-Reply-To: <20190702001301.4768-1-philmd@redhat.com>
 References: <20190702001301.4768-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.41]); Tue, 02 Jul 2019 00:15:28 +0000 (UTC)
-X-TUID: +fNxgLiMq5Ah
-
-The current code does:
-
-if (write_cycle == 0)
-  if (command == CFI_QUERY)
-    break
-  write_cycle += 1
-  last_command = command
-
-if (write_cycle == 1)
-  if (last_command == CFI_QUERY)
-    if (command == READ_ARRAY
-      write_cycle = 0
-      last_command = READ_ARRAY
-
-Simplify by not increasing the write_cycle on CFI_QUERY,
-the next command are processed as normal wcycle=0.
-
-This matches the hardware datasheet (we do not enter the WRITE
-state machine, thus no write cycle involved).
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.44]); Tue, 02 Jul 2019 00:15:49 +0000 (UTC)
+X-TUID: hFkD2x/oTik6
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/block/pflash_cfi01.c | 10 ++--------
- 1 file changed, 2 insertions(+), 8 deletions(-)
+ hw/block/pflash_cfi01.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-index 8d632ea941..c1b02219b2 100644
+index c1b02219b2..f50d0a9d37 100644
 --- a/hw/block/pflash_cfi01.c
 +++ b/hw/block/pflash_cfi01.c
-@@ -492,7 +492,8 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
-             return;
-         case 0x98: /* CFI query */
-             DPRINTF("%s: CFI query\n", __func__);
--            break;
-+            pfl->cmd = cmd;
-+            return;
-         case 0xe8: /* Write to buffer */
-             DPRINTF("%s: Write to buffer\n", __func__);
-             /* FIXME should save @offset, @width for case 1+ */
-@@ -566,13 +567,6 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
-                 goto mode_read_array;
-             }
+@@ -208,11 +208,11 @@ static uint32_t pflash_devid_query(PFlashCFI01 *pfl, hwaddr offset)
+      * Offsets 2/3 are block lock status, is not emulated.
+      */
+     switch (boff & 0xFF) {
+-    case 0:
++    case 0: /* Manufacturer ID */
+         resp = pfl->ident0;
+         trace_pflash_manufacturer_id(resp);
+         break;
+-    case 1:
++    case 1: /* Device ID */
+         resp = pfl->ident1;
+         trace_pflash_device_id(resp);
+         break;
+@@ -456,11 +456,11 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
+     case 0:
+         /* read mode */
+         switch (cmd) {
+-        case 0x10: /* Single Byte Program */
+-        case 0x40: /* Single Byte Program */
++        case 0x10: /* Single Byte Program (setup) */
++        case 0x40: /* Single Byte Program (setup) [Intel] */
+             DPRINTF("%s: Single Byte Program\n", __func__);
              break;
--        case 0x98:
--            if (cmd == 0xff) {
--                goto mode_read_array;
--            } else {
--                DPRINTF("%s: leaving query mode\n", __func__);
--            }
--            break;
-         default:
-             goto error_flash;
-         }
+-        case 0x20: /* Block erase */
++        case 0x20: /* Block erase (setup) */
+             p = pfl->storage;
+             offset &= ~(pfl->sector_len - 1);
+ 
+@@ -516,8 +516,8 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
+         break;
+     case 1:
+         switch (pfl->cmd) {
+-        case 0x10: /* Single Byte Program */
+-        case 0x40: /* Single Byte Program */
++        case 0x10: /* Single Byte Program (confirm) */
++        case 0x40: /* Single Byte Program (confirm) [Intel] */
+             DPRINTF("%s: Single Byte Program\n", __func__);
+             if (!pfl->ro) {
+                 pflash_data_write(pfl, offset, value, width, be);
+@@ -528,7 +528,7 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
+             pfl->status |= 0x80; /* Ready! */
+             pfl->wcycle = 0;
+         break;
+-        case 0x20: /* Block erase */
++        case 0x20: /* Block erase (confirm) */
+         case 0x28:
+             if (cmd == 0xd0) { /* confirm */
+                 pfl->wcycle = 0;
 -- 
 2.20.1

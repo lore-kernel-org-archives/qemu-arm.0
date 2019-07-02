@@ -1,164 +1,206 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp4152790wru;
-        Tue, 2 Jul 2019 12:32:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwLyscNQzxPhj75t6gmaNAB1bO44OTSqzZRBTj0hbRKHdDikgHrijv6uxMJ4kGdkJZaPjIc
-X-Received: by 2002:a50:9441:: with SMTP id q1mr37623747eda.41.1562095946837;
-        Tue, 02 Jul 2019 12:32:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562095946; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp4264947wru;
+        Tue, 2 Jul 2019 14:54:01 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz/GBTKYUYQVnPYml//LP1CZZfD3WiKKRBQtsFG6aQpAtflcvyNVfkpbKW8RucFIiEMLRdO
+X-Received: by 2002:a17:906:e91:: with SMTP id p17mr5905384ejf.217.1562104441160;
+        Tue, 02 Jul 2019 14:54:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562104441; cv=none;
         d=google.com; s=arc-20160816;
-        b=DazvRUr8eAPv8Du1GLqVeTnhQXwQmxojDjuDKQRNeXXaPoXBA36xPP4cq+Pu5n94LW
-         /9gN3/LofQWYsydVdswzbm9rV5MW/eBU1ABbVL3++505CO/QM1ckhKZYqR7vIA/A8CzF
-         RUgXPqRFOIVGFRTWbqBdgUbkdYbubxYlRQQ1wZl6qs2WE2mRwQ9RJ2ILSVA69ntkmRFt
-         zCjdX9/DMc9WrKLWUwAyjl8B2zX/pAO6JHwO9IiqufYvTGN+I6l7V60YRuH0dsxQF1zD
-         s1lmtj/b96vWGbp5HSkgkGhipQj6D4XgQ5azMqYdN6+qzVXzftLSOFLDrvxavrIE3f3E
-         OxXg==
+        b=Re22J+3JBGmvpZXC3mzT2+z7k8iSwoTmejhDews0m/RvRByF42uzShWrTjI5GUL9da
+         uxRx/gGnlr0PlQRTCQ/x5VOyW5MwlSB1QgawI6lAFPMt2MM7rfu19ybMwGN705lYJkCH
+         ntfe/jnvlkwJcgy9w7M44NaaTROyGzWApYr9qfRNXK5Iggc5R3kV1Yds2W1lfwiCizfd
+         vCfc6NqhkR9CsFPQLuwAUVTFs+MlL1UdxBoc3QQFzaStCHecrA0SRdfJQo/QjC/d4or9
+         hbc7cObvYNE4mU79OGGLo694xKpatJ6hBcc33MD4DFFTk0GChe35YWqZuaz2OZPQBDGh
+         woBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=4TNElfhzeICSO8M8DhomXXEqirMo3CY4yJhxUTN0qV4=;
-        b=FNTEEu5obydxy+i/zq7Q405eMBf8+AIDGtKMnQaLyQdGAZZuaBEG9e6KHySKV9CBeM
-         s+I7mwiM8yxNtZPsXZ3TiF6lEqicEi0S6E9DQ+Uq5Pe3eblFGjSaP1QJtIUD99mkMqKd
-         iuKsnyMXAvaaG//IhMjql7ZfMrI3NE8xKbhHK14LMG2xU+h2EzmlTiGuUSYPIE2lUF1Q
-         j1IVUcax3VdWLnBlmuPGZNx4QTMmMMyAzZN4HKHROE9LxLwIOq2IzjEX7iocdyqWKe72
-         fd4UezDr17Ic87um2R5Rre6ys55HUiYlwmEjBiuDIMSFivuv6XRPV8qEc0CqMJTUZh1Z
-         uNFQ==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :references:message-id:in-reply-to:to:from:date;
+        bh=lXR3qZeUBi2HBtHpZHd/B47rPacP/HYPw/OvUskbrbY=;
+        b=wxieYqPCGfW343X8rVMqhAcak0nAg9h3DlqyFM8WrjbHxD/yfBtdn0ybhTj5qjKFxi
+         ohEPfwElvC0ku34nlfCC2OGP+qDShFlzJ8V/JQ9erpuvghN4F2yWxNJAbtL4eUtoWDrj
+         HzjKUnTkgnohUb6ReqUgkUoTZB52X66CxWyt46Z3A0+KpCWFHvKKvhEzTE1iYLnTaVvP
+         csQ4aLuc44sS7lAfttjkfEe2kZmt1w2/5vGggh4a2rZUmd7F3AAI1KR3o2N30OV8PaMa
+         ie67cR6eyH7SG+lva/R711FvaoHlv3TNLTwvXXJH3iTNm2GNXkEYDcYg/UtWT7kr3S3f
+         btmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Akd1uaka;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w50si12354185edd.84.2019.07.02.12.32.26
+        by mx.google.com with ESMTPS id z50si233855edb.13.2019.07.02.14.54.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jul 2019 12:32:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 02 Jul 2019 14:54:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Akd1uaka;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56622 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57834 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hiOVt-0008Sz-T7
-	for alex.bennee@linaro.org; Tue, 02 Jul 2019 15:32:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54491)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hiQiu-0004lz-9I
+	for alex.bennee@linaro.org; Tue, 02 Jul 2019 17:54:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53922)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hiOJq-0008Eh-PE
- for qemu-devel@nongnu.org; Tue, 02 Jul 2019 15:20:00 -0400
+ (envelope-from <balaton@eik.bme.hu>) id 1hiQiD-0004jR-Kd
+ for qemu-arm@nongnu.org; Tue, 02 Jul 2019 17:53:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hiOJo-0005F3-FU
- for qemu-devel@nongnu.org; Tue, 02 Jul 2019 15:19:57 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:44891)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hiOJo-00050w-6O
- for qemu-devel@nongnu.org; Tue, 02 Jul 2019 15:19:56 -0400
-Received: by mail-oi1-x244.google.com with SMTP id e189so13996649oib.11
- for <qemu-devel@nongnu.org>; Tue, 02 Jul 2019 12:19:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=4TNElfhzeICSO8M8DhomXXEqirMo3CY4yJhxUTN0qV4=;
- b=Akd1uakagSbKtHTyT4zbYY5vrjFN3fZ0yeqY3LxRD1yqOqHWyaZ+xVBZvTssPpiHfF
- UNS0ojpta2E4KSUV5yF47rgCTPRXM91MsJtOcf784uUgtV0McfYMxxlBLC9Z26Y+M2Xt
- fK80++e++GEm3zm6tfigjgX20KMMfVHxRgVcqOsWes3gQxpRzatsjGxEIDqBmB3GVLst
- 1yb66/uvfLL+fMtUodBv/hbEixQdJ1oIw/v879cIu3UXf1YxVXNkrfUnqS8SgDveKGRA
- PETlaVVMU91agoHDiQDaQg9AZuDcUE3w4gWQbCwM+m/HEMYigAXuTDuN8c+bJWXmk8FY
- wPww==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=4TNElfhzeICSO8M8DhomXXEqirMo3CY4yJhxUTN0qV4=;
- b=md6INpSSaVpgh3jt8DiEC2XOVQoe7mkQ3TVqhHMx+XFFrY5Sd2+xhdOxcV6FkaecUk
- fHvji3osCR10eW8Lm2Yw9LvNuA3pysYVP9Q+bf5I/zNVVQdJu1pl+oVbu2RquokcSzYL
- XJClkWor65Lrle1uS2d4UCKkS4FiLEQSL3kP2CpdwIXEimw9LZVOqncYYqBOfow8ek85
- ZF3Be/I4lOUq6W6/4v1+ToGfvBfqvZpw9Z1dbUqkOsPv2K5VLakcAYk8Z2BzU+CpByFe
- OOxSjI4C4AvMi1GpyrQqCxxpdSi30+S1M0H6O24l71h1lp5XgedbBfIQMyNfg7/xywLB
- qLQw==
-X-Gm-Message-State: APjAAAWMOdDHihTIpSFThbCAhD7umxyVBVDPRhLT/iE94wMR1q8NJR0D
- c0YpLhNInoSo/4xFBPHLpIdsy1DAcDl+R2WrhL02/g==
-X-Received: by 2002:a05:6808:d4:: with SMTP id
- t20mr4245883oic.170.1562095181872; 
- Tue, 02 Jul 2019 12:19:41 -0700 (PDT)
+ (envelope-from <balaton@eik.bme.hu>) id 1hiQi9-0006Ea-01
+ for qemu-arm@nongnu.org; Tue, 02 Jul 2019 17:53:14 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:14065)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
+ id 1hiQi8-00063e-F7; Tue, 02 Jul 2019 17:53:12 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id 2A5337456B8;
+ Tue,  2 Jul 2019 23:52:53 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id EDA597456B7; Tue,  2 Jul 2019 23:52:52 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id E247274569A;
+ Tue,  2 Jul 2019 23:52:52 +0200 (CEST)
+Date: Tue, 2 Jul 2019 23:52:52 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Peter Maydell <peter.maydell@linaro.org>
+In-Reply-To: <20190702163844.20458-1-peter.maydell@linaro.org>
+Message-ID: <alpine.BSF.2.21.9999.1907022343160.68337@zero.eik.bme.hu>
+References: <20190702163844.20458-1-peter.maydell@linaro.org>
+User-Agent: Alpine 2.21.9999 (BSF 287 2018-06-16)
 MIME-Version: 1.0
-References: <20190618165311.27066-1-clg@kaod.org>
- <20190618165311.27066-4-clg@kaod.org>
-In-Reply-To: <20190618165311.27066-4-clg@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Jul 2019 20:19:31 +0100
-Message-ID: <CAFEAcA_wCFE0BL_LjF+04MBPa2XnVgCKk4SP4nPrBjrcjmNVVQ@mail.gmail.com>
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII; format=flowed
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-Subject: Re: [Qemu-devel] [PATCH v2 03/21] hw: timer: Add ASPEED RTC device
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2001:738:2001:2001::2001
+Subject: Re: [Qemu-arm] [PATCH for-4.1] hw/i2c/bitbang_i2c: Use in-place
+ rather than malloc'd bitbang_i2c_interface struct
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: O+l6/kqfEnMK
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Gerd Hoffmann <kraxel@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: sQjjj8WgdET2
 
-On Tue, 18 Jun 2019 at 17:53, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Tue, 2 Jul 2019, Peter Maydell wrote:
+> Currently the bitbang_i2c_init() function allocates a
+> bitbang_i2c_interface struct which it returns.  This is unfortunate
+> because it means that if the function is used from a DeviceState
+> init method then the memory will be leaked by an "init then delete"
+> cycle, as used by the qmp/hmp commands that list device properties.
 >
-> From: Joel Stanley <joel@jms.id.au>
+> Since three out of four of the uses of this function are in
+> device init methods, switch the function to do an in-place
+> initialization of a struct that can be embedded in the
+> device state struct of the caller.
 >
-> The RTC is modeled to provide time and date functionality. It is
-> initialised at zero to match the hardware.
+> This fixes LeakSanitizer leak warnings that have appeared in the
+> patchew configuration (which only tries to run the sanitizers
+> for the x86_64-softmmu target) now that we use the bitbang-i2c
+> code in an x86-64 config.
 >
-> There is no modelling of the alarm functionality, which includes the IRQ
-> line. As there is no guest code to exercise this function that is
-> acceptable for now.
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> This isn't the only problem with this code : it is also
+> missing reset and migration handling and generally looks like
+> it needs proper conversion to QOM somehow. But this will shut
+> the patchew complaints up and seems ok for 4.1.
 >
-> Signed-off-by: Joel Stanley <joel@jms.id.au>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> Disclaimer: checked only that the leak-sanitizer is now happy
+> and with a 'make check'.
 
-Hi; Coverity complains about this function (CID 1402782):
+I've tested the ppc4xx and ati-vga parts with AROS and MorphOS and these 
+can still access i2c devices so I think it works.
 
-> +static void aspeed_rtc_calc_offset(AspeedRtcState *rtc)
-> +{
-> +    struct tm tm;
-> +    uint32_t year, cent;
-> +    uint32_t reg1 =3D rtc->reg[COUNTER1];
-> +    uint32_t reg2 =3D rtc->reg[COUNTER2];
+> ---
+> hw/display/ati_int.h         |  2 +-
+> include/hw/i2c/bitbang_i2c.h | 38 ++++++++++++++++++++++++++++-
+> include/hw/i2c/ppc4xx_i2c.h  |  2 +-
+> hw/display/ati.c             |  7 +++---
+> hw/i2c/bitbang_i2c.c         | 47 +++---------------------------------
+> hw/i2c/ppc4xx_i2c.c          |  6 ++---
+> hw/i2c/versatile_i2c.c       |  8 +++---
+> 7 files changed, 53 insertions(+), 57 deletions(-)
+>
+> diff --git a/hw/display/ati_int.h b/hw/display/ati_int.h
+> index 9b67d0022ad..31a1927b3ec 100644
+> --- a/hw/display/ati_int.h
+> +++ b/hw/display/ati_int.h
+> @@ -88,7 +88,7 @@ typedef struct ATIVGAState {
+>     uint16_t cursor_size;
+>     uint32_t cursor_offset;
+>     QEMUCursor *cursor;
+> -    bitbang_i2c_interface *bbi2c;
+> +    bitbang_i2c_interface bbi2c;
+>     MemoryRegion io;
+>     MemoryRegion mm;
+>     ATIVGARegs regs;
+> diff --git a/include/hw/i2c/bitbang_i2c.h b/include/hw/i2c/bitbang_i2c.h
+> index 3a7126d5dee..92334e9016a 100644
+> --- a/include/hw/i2c/bitbang_i2c.h
+> +++ b/include/hw/i2c/bitbang_i2c.h
+> @@ -8,7 +8,43 @@ typedef struct bitbang_i2c_interface bitbang_i2c_interface;
+
+Maybe this typedef ^^^ can now be moved to the struct below instead of 
+coming first (or even written in the same line as
+typedef struct { } bitbang_i2c_interface;
+as there is no need to have both struct bitbang_i2c_interface and the 
+typedeffed name available). But I don't really mind, so
+
+Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
+
+Thanks for fixing this.
+
+Regards,
+BALATON Zoltan
+
+> #define BITBANG_I2C_SDA 0
+> #define BITBANG_I2C_SCL 1
+>
+> -bitbang_i2c_interface *bitbang_i2c_init(I2CBus *bus);
+> +typedef enum bitbang_i2c_state {
+> +    STOPPED = 0,
+> +    SENDING_BIT7,
+> +    SENDING_BIT6,
+> +    SENDING_BIT5,
+> +    SENDING_BIT4,
+> +    SENDING_BIT3,
+> +    SENDING_BIT2,
+> +    SENDING_BIT1,
+> +    SENDING_BIT0,
+> +    WAITING_FOR_ACK,
+> +    RECEIVING_BIT7,
+> +    RECEIVING_BIT6,
+> +    RECEIVING_BIT5,
+> +    RECEIVING_BIT4,
+> +    RECEIVING_BIT3,
+> +    RECEIVING_BIT2,
+> +    RECEIVING_BIT1,
+> +    RECEIVING_BIT0,
+> +    SENDING_ACK,
+> +    SENT_NACK
+> +} bitbang_i2c_state;
 > +
-> +    tm.tm_mday =3D (reg1 >> 24) & 0x1f;
-> +    tm.tm_hour =3D (reg1 >> 16) & 0x1f;
-> +    tm.tm_min =3D (reg1 >> 8) & 0x3f;
-> +    tm.tm_sec =3D (reg1 >> 0) & 0x3f;
+> +struct bitbang_i2c_interface {
+> +    I2CBus *bus;
+> +    bitbang_i2c_state state;
+> +    int last_data;
+> +    int last_clock;
+> +    int device_out;
+> +    uint8_t buffer;
+> +    int current_addr;
+> +};
 > +
-> +    cent =3D (reg2 >> 16) & 0x1f;
-> +    year =3D (reg2 >> 8) & 0x7f;
-> +    tm.tm_mon =3D ((reg2 >>  0) & 0x0f) - 1;
-> +    tm.tm_year =3D year + (cent * 100) - 1900;
-> +
-> +    rtc->offset =3D qemu_timedate_diff(&tm);
-> +}
-
-because the tm_wday field of 'struct tm tm' is not initialized
-before we call qemu_timedate_diff(). This is a false
-positive because the "read" of this field is just the place
-in qemu_timedate_diff() that does "struct tm tmp =3D *tm;"
-before calling mktime(), and mktime() ignores tm_wday.
-We could make Coverity happy by using a struct initializer
-on 'tm' here; on the other hand we don't do that anywhere else
-which calls qemu_timedate_diff(), so maybe I should just mark
-this a false positive?
-
-thanks
--- PMM
+> +/**
+> + * bitbang_i2c_init: in-place initialize the bitbang_i2c_interface struct
+> + */
+> +void bitbang_i2c_init(bitbang_i2c_interface *s, I2CBus *bus);
+> int bitbang_i2c_set(bitbang_i2c_interface *i2c, int line, int level);
+>
+> #endif

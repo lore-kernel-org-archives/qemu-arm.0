@@ -1,160 +1,155 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp4107375wru;
-        Tue, 2 Jul 2019 11:41:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwBuoz/e52y30MKnSE3evH4rNcHD+mhNMFkXfNrfwS2F8zRc68QQJLrec/aBs/Vr8ULeuec
-X-Received: by 2002:a50:84a1:: with SMTP id 30mr37867911edq.44.1562092886318;
-        Tue, 02 Jul 2019 11:41:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562092886; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp4134544wru;
+        Tue, 2 Jul 2019 12:11:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw0MHK/Tex0AN2IiuHfqTC+cRLCP9k8TScTQ5YtV/aANGO2h5TZ8S8hMLMpkw/r2OiLrnQY
+X-Received: by 2002:a17:906:9144:: with SMTP id y4mr30205153ejw.16.1562094680283;
+        Tue, 02 Jul 2019 12:11:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562094680; cv=none;
         d=google.com; s=arc-20160816;
-        b=YN/qxw02EyGwr7JktGcjfppsNT1Ol/JVEYVzeEcYb7R2tNxcOeG8kHWf5VVFZq6vD8
-         KwTa7phsfV+Oc8Ti5dhb6zHHMl5qKZy+MVUGkamWl5WMKssGJVWW3MaTGaolkXJ78yC7
-         1975jpY8OmbFxM+SJOQnmmN5OO88D+NBoeXxc4c1gxRxOvDmHzmGZGxlQvssrAhdM9jA
-         PpwQXBruDLnpdxqETm3qw3v32g3/LwN30NmeBD+4iZUZG9tfpajIedcnyNX7b/Q9iIZt
-         Arhfo9s8gyklj+bQnJYVsQcAksxVmoiBjRs4uCZZ8jg1ndZAAuUYi6BHRJxOEiVyGDgD
-         tosw==
+        b=vPsm4tnanpkeRZSgFmX5JXhZzbx3dNZspZ/QAnX0Nfu8L834xYKe/pbZYNi7xxITRF
+         qLJEezESwP24wNoNv+0z9Pjn3Qisl86pxZx0QZtF7CaVLYoktfVl2chBgX+7wsb3Ycfb
+         rpe06DaLI8l5kXa6fwItwdBv7F3rvpKz3prZ0bbeBtT+4aUcxdep4td+F6n1Yes0qqFj
+         EdSWirthSQI0EmNWMyFg3Il9adilNO2VnbbZpclNlSJ7VsLCk97oiA5I0MF/NXhcHz9j
+         eOdRAXmv3WO9CgRupA0qaJQ92FFuLDOSb0j9Erydb3qt0EqKgV2cYC7ShSNTaGBHKLVQ
+         bjxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:to:from;
-        bh=wn3jBJO+U5eErsbeQFNrye0n5mVdOnqqqWpUhmqGus4=;
-        b=PdhIowHt29yEpxoYb1HsBDX5EDZ1oVECkxKHMarBFBua3PNY0xLAQIjUDAdhxXgMgv
-         LNoHSwYRiJQLVejBE8/vPIaqbW7XM4ASWGo6OOD1rEXw1Dgmjz8azHduL2DPzFEJffLH
-         JIvdHnrzBNWQwdRIXIRP7IPISbJth7iPoCRqf261saGlrrNvXKCc5maznUfL/HIor65B
-         c2bH0LJtE+ed8UxZPk7f4DjuyAjGLBAwzlO2ZZWf4iSaGkGiEZ1txCbq57A2WTU9Nq3r
-         xEEz25rJhIvuEUJIKi6qt6by/kC2AnU6I/9MphYiHCvo4ISKmKnLnnpUsmKX6NXnU5q7
-         Lyog==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=klcIP54iTYVOquua1GTQlkbZ7h1ar3lWOJocCwstWZU=;
+        b=O+BZqyFKLSNhx9vguPJS/LyEAaqgWyVzQzVbzh5+HuuBqhU4GmHs8ErZQtq5rqsi8F
+         uFPCdsN8XZOWvJMRh9j/GtNo0FRYUOIf407ev9nzJ9zK3ftL6EF+F66ZHMrJ0xDNI3U5
+         kgm/dC1kpazB2WpqxtOQ495KH9oU8eeA13yj9JFmr7JqXv0MngrYPxQGrUfmHppr3ild
+         WksVKnUhPR5AB4g/QPQ/8hXuPQd0R5YMa+rF4/JDbBuMqt06pUbPObUIhw0CRQdTBcFW
+         QOXoOnkUvJ9D8uvplZEI92OtAhztxxx1f28y0ZUgM3l35uHRESQqiGw19L4kO2WL8zAx
+         gLiA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s58si12157269edm.24.2019.07.02.11.41.26
+        by mx.google.com with ESMTPS id q18si10018785eju.227.2019.07.02.12.11.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jul 2019 11:41:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 02 Jul 2019 12:11:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56228 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56420 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hiNiX-0000Rk-E2
-	for alex.bennee@linaro.org; Tue, 02 Jul 2019 14:41:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48809)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hiOBT-0003ry-BD
+	for alex.bennee@linaro.org; Tue, 02 Jul 2019 15:11:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52864)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <BROGERS@suse.com>) id 1hiLfC-00060W-05
- for qemu-devel@nongnu.org; Tue, 02 Jul 2019 12:29:51 -0400
+ (envelope-from <kraxel@redhat.com>) id 1hiLxa-0008Lp-Sk
+ for qemu-arm@nongnu.org; Tue, 02 Jul 2019 12:48:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <BROGERS@suse.com>) id 1hiLfA-0008Q4-M0
- for qemu-devel@nongnu.org; Tue, 02 Jul 2019 12:29:49 -0400
-Received: from m9a0003g.houston.softwaregrp.com ([15.124.64.68]:38212)
- by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <BROGERS@suse.com>)
- id 1hiLfA-0007wy-Eu; Tue, 02 Jul 2019 12:29:48 -0400
-Received: FROM m9a0003g.houston.softwaregrp.com (15.121.0.190) BY
- m9a0003g.houston.softwaregrp.com WITH ESMTP; 
- Tue,  2 Jul 2019 16:29:34 +0000
-Received: from M9W0067.microfocus.com (2002:f79:be::f79:be) by
- M9W0067.microfocus.com (2002:f79:be::f79:be) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10; Tue, 2 Jul 2019 16:20:58 +0000
-Received: from NAM04-CO1-obe.outbound.protection.outlook.com (15.124.72.10) by
- M9W0067.microfocus.com (15.121.0.190) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1591.10 via Frontend Transport; Tue, 2 Jul 2019 16:20:58 +0000
-Received: from CH2PR18MB3096.namprd18.prod.outlook.com (10.255.155.222) by
- CH2PR18MB3191.namprd18.prod.outlook.com (52.132.244.205) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2032.20; Tue, 2 Jul 2019 16:20:57 +0000
-Received: from CH2PR18MB3096.namprd18.prod.outlook.com
- ([fe80::b0ed:1962:7f53:5cc1]) by CH2PR18MB3096.namprd18.prod.outlook.com
- ([fe80::b0ed:1962:7f53:5cc1%2]) with mapi id 15.20.2008.017; Tue, 2 Jul 2019
- 16:20:57 +0000
-From: Bruce Rogers <BROGERS@suse.com>
-To: "kraxel@redhat.com" <kraxel@redhat.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PULL 6/6] ati-vga: switch to vgabios-ati.bin
-Thread-Index: AQHVLZ4GACjNRNcZpk+7A15WWIIybKa3iQQA
-Date: Tue, 2 Jul 2019 16:20:56 +0000
-Message-ID: <89f9490f16b4a50ccb039e4b1de2bacb5567d82f.camel@suse.com>
+ (envelope-from <kraxel@redhat.com>) id 1hiLxW-0005fj-PK
+ for qemu-arm@nongnu.org; Tue, 02 Jul 2019 12:48:50 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38445)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kraxel@redhat.com>)
+ id 1hiLxW-0005as-Im; Tue, 02 Jul 2019 12:48:46 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id E704E307D84D;
+ Tue,  2 Jul 2019 16:48:41 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-96.ams2.redhat.com
+ [10.36.116.96])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 641D71001B20;
+ Tue,  2 Jul 2019 16:48:36 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 0227C11AB8; Tue,  2 Jul 2019 18:48:35 +0200 (CEST)
+Date: Tue, 2 Jul 2019 18:48:35 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20190702164835.3lnefzrbimltb2h6@sirius.home.kraxel.org>
 References: <20190628103957.9504-1-kraxel@redhat.com>
- <20190628103957.9504-7-kraxel@redhat.com>
-In-Reply-To: <20190628103957.9504-7-kraxel@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=BROGERS@suse.com; 
-x-originating-ip: [137.65.184.169]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 13daf7aa-3171-479b-a106-08d6ff094374
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(2017052603328)(7193020);
- SRVR:CH2PR18MB3191; 
-x-ms-traffictypediagnostic: CH2PR18MB3191:
-x-microsoft-antispam-prvs: <CH2PR18MB31919749E74FF396F3220C54D9F80@CH2PR18MB3191.namprd18.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:4303;
-x-forefront-prvs: 008663486A
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(346002)(366004)(39860400002)(396003)(136003)(376002)(199004)(189003)(4326008)(6512007)(99286004)(14454004)(478600001)(6486002)(53936002)(25786009)(229853002)(316002)(6116002)(3846002)(11346002)(68736007)(66066001)(446003)(102836004)(4744005)(6506007)(71200400001)(26005)(72206003)(76176011)(186003)(6436002)(71190400001)(305945005)(81166006)(81156014)(6246003)(86362001)(91956017)(76116006)(118296001)(2501003)(8936002)(7736002)(8676002)(2906002)(14444005)(256004)(5660300002)(66946007)(486006)(66446008)(64756008)(66556008)(66476007)(110136005)(36756003)(54906003)(73956011)(476003)(2616005);
- DIR:OUT; SFP:1102; SCL:1; SRVR:CH2PR18MB3191;
- H:CH2PR18MB3096.namprd18.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: suse.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: 0uSUxyHtfVD3hfJUnhP5URqJWdD9vZ9w31jg7yGcxxeAwg54XuhEA4a5XJZIsxXaD0hNxewBKaC+F6o9y86WgE7M4CRM1YJ4/BzUuSrcNwn/xeBf3nnD0XpQEoYn8lq9cTKwJGKSjT47p/f2nPVLGXjTwy2snRA8vj2MRLrnGbShPGOcrevcIBx3oC7p0fdcgrN32BLhHiRGV7mnTCcKske9vYoVJ22tTkNPu5i0+zCFxBxYDTtcTIbzwRuVdiMYWDVpsWVZFgHxKp6E1PAJfi6QW1oLig0Gq5Ow/KKVJRqQv+WOzNf8ir/WTgxrGaUMMsnz3aa+G6vZnPji7acNRNgCMZnSvkmvvjsDJCdnWGckMZ1Nrn5tvlbFG2xGEAHigmHx9uYu4fUXiyrbzLohyFq6VHJxbFuIC/nveAKxAc4=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <B70A0C9CA5B57F409DFE84BC91A215B0@namprd18.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ <CAFEAcA9Dh2EaPkcDmErEdJN+BknuRHvZKe5veOcY_7hMVEXiVQ@mail.gmail.com>
+ <CAFEAcA8W6OkDa8cY-YWq7dFeFoZENFiEPNfB3Hy3XQPe6GN2rw@mail.gmail.com>
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 13daf7aa-3171-479b-a106-08d6ff094374
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Jul 2019 16:20:56.8920 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 856b813c-16e5-49a5-85ec-6f081e13b527
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: BROGERS@suse.com
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR18MB3191
-X-OriginatorOrg: suse.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA8W6OkDa8cY-YWq7dFeFoZENFiEPNfB3Hy3XQPe6GN2rw@mail.gmail.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.48]); Tue, 02 Jul 2019 16:48:44 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 15.124.64.68
-Subject: Re: [Qemu-devel] [PULL 6/6] ati-vga: switch to vgabios-ati.bin
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PULL 0/6] Vga 20190628 patches
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "cminyard@mvista.com" <cminyard@mvista.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nYtkdcIPyzEc
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Corey Minyard <cminyard@mvista.com>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-ppc <qemu-ppc@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CfIh4hh2Ai1H
 
-T24gRnJpLCAyMDE5LTA2LTI4IGF0IDEyOjM5ICswMjAwLCBHZXJkIEhvZmZtYW5uIHdyb3RlOg0K
-PiBTaWduZWQtb2ZmLWJ5OiBHZXJkIEhvZmZtYW5uIDxrcmF4ZWxAcmVkaGF0LmNvbT4NCj4gVGVz
-dGVkLWJ5OiBCQUxBVE9OIFpvbHRhbiA8YmFsYXRvbkBlaWsuYm1lLmh1Pg0KPiBNZXNzYWdlLWlk
-OiAyMDE5MDYyMDE1MTEwNC4yNjc4LTQta3JheGVsQHJlZGhhdC5jb20NCj4gU2lnbmVkLW9mZi1i
-eTogR2VyZCBIb2ZmbWFubiA8a3JheGVsQHJlZGhhdC5jb20+DQo+IC0tLQ0KPiAgaHcvZGlzcGxh
-eS9hdGkuYyB8IDIgKy0NCj4gIDEgZmlsZSBjaGFuZ2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxl
-dGlvbigtKQ0KPiANCj4gZGlmZiAtLWdpdCBhL2h3L2Rpc3BsYXkvYXRpLmMgYi9ody9kaXNwbGF5
-L2F0aS5jDQo+IGluZGV4IGUxYmRlNWUwYjFlMy4uMGNiMTE3Mzg0ODM5IDEwMDY0NA0KPiAtLS0g
-YS9ody9kaXNwbGF5L2F0aS5jDQo+ICsrKyBiL2h3L2Rpc3BsYXkvYXRpLmMNCj4gQEAgLTkxMCw3
-ICs5MTAsNyBAQCBzdGF0aWMgdm9pZCBhdGlfdmdhX2NsYXNzX2luaXQoT2JqZWN0Q2xhc3MNCj4g
-KmtsYXNzLCB2b2lkICpkYXRhKQ0KPiAgICAgIGstPmNsYXNzX2lkID0gUENJX0NMQVNTX0RJU1BM
-QVlfVkdBOw0KPiAgICAgIGstPnZlbmRvcl9pZCA9IFBDSV9WRU5ET1JfSURfQVRJOw0KPiAgICAg
-IGstPmRldmljZV9pZCA9IFBDSV9ERVZJQ0VfSURfQVRJX1JBR0UxMjhfUEY7DQo+IC0gICAgay0+
-cm9tZmlsZSA9ICJ2Z2FiaW9zLXN0ZHZnYS5iaW4iOw0KPiArICAgIGstPnJvbWZpbGUgPSAidmdh
-Ymlvcy1hdGkuYmluIjsNCj4gICAgICBrLT5yZWFsaXplID0gYXRpX3ZnYV9yZWFsaXplOw0KPiAg
-ICAgIGstPmV4aXQgPSBhdGlfdmdhX2V4aXQ7DQo+ICB9DQoNCkkgZG9uJ3Qgc2VlIHZnYWJpb3Mt
-YXRpLmJpbiBnZXR0aW5nIGluc3RhbGxlZCBhcyBvbmUgb2YgdGhlIGluc3RhbGxlZA0KYmxvYnMu
-IElzIHRoYXQgaW50ZW50aW9uYWwgZm9yIHNvbWUgcmVhc29uPw0KDQpCcnVjZQ0K
+On Tue, Jul 02, 2019 at 02:47:12PM +0100, Peter Maydell wrote:
+> On Tue, 2 Jul 2019 at 10:17, Peter Maydell <peter.maydell@linaro.org> wrote:
+> >
+> > On Fri, 28 Jun 2019 at 11:40, Gerd Hoffmann <kraxel@redhat.com> wrote:
+> > >
+> > > The following changes since commit 474f3938d79ab36b9231c9ad3b5a9314c2aeacde:
+> > >
+> > >   Merge remote-tracking branch 'remotes/amarkovic/tags/mips-queue-jun-21-2019' into staging (2019-06-21 15:40:50 +0100)
+> > >
+> > > are available in the Git repository at:
+> > >
+> > >   git://git.kraxel.org/qemu tags/vga-20190628-pull-request
+> > >
+> > > for you to fetch changes up to 263807f4e85e94f2d4e988d61d2fc0319b1dd36b:
+> > >
+> > >   ati-vga: switch to vgabios-ati.bin (2019-06-28 10:49:36 +0200)
+> > >
+> > > ----------------------------------------------------------------
+> > > vga: ati fixes, add ati vgabios.
+> > >
+> > > ----------------------------------------------------------------
+> > >
+> > > BALATON Zoltan (3):
+> > >   i2c: Move bitbang_i2c.h to include/hw/i2c/
+> > >   ati-vga: Implement DDC and EDID info from monitor
+> > >   ati-vga: Fixes to offset and pitch registers
+> > >
+> > > Gerd Hoffmann (3):
+> > >   seabios: add config for ati vgabios
+> > >   seabios: add ati vgabios binary
+> > >   ati-vga: switch to vgabios-ati.bin
+> > >
+> >
+> > Applied, thanks.
+> >
+> > Please update the changelog at https://wiki.qemu.org/ChangeLog/4.1
+> > for any user-visible changes.
+> 
+> Hmm, the bitbang-i2c changes in this pull seem to have broken
+> patchew's asan build:
+> https://patchew.org/logs/20190628103957.9504-1-kraxel@redhat.com/testing.asan/?type=message
+> 
+> (probably because now we're using and testing the buggy
+> code in a way we weren't before)
+
+Hmm.  Yes, gpio_i2c_init() allocates memory (in inlined
+bitbang_i2c_init).  There is no exit() function so the
+memory is never freed indeed.  On the other hand i2c
+devices are not really hotpluggable, so maybe we only
+need to tag it that way?
+
+cheers,
+  Gerd
+

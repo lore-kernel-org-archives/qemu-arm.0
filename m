@@ -1,154 +1,233 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3878354wru;
-        Tue, 2 Jul 2019 07:44:07 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz3kPHur4gpBeIUuLMR2PQlYckSJayEcwFcBeug/oE+j0IFmuA2KnYrDLglnFg/D+nIQhKP
-X-Received: by 2002:aa7:c3d8:: with SMTP id l24mr37208044edr.58.1562078647441;
-        Tue, 02 Jul 2019 07:44:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562078647; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3921368wru;
+        Tue, 2 Jul 2019 08:28:55 -0700 (PDT)
+X-Received: by 2002:a5d:5450:: with SMTP id w16mr15041042wrv.128.1562081335750;
+        Tue, 02 Jul 2019 08:28:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562081335; cv=none;
         d=google.com; s=arc-20160816;
-        b=l3em7ZaGQTmflmPktPTqb8HFaeLQwrkg19FVc4sqxaA1nrbBzbmEfVBmiWNl6o79EI
-         PYXisWYe8io3hmyvT9buAsZWz6AJtsxyBgS9nQbcZdgamvTbXnxIOGPn00CTb8uKxCIa
-         dOFSSk+SJsOJqto6sxaaQQ9pZC0nnfzaoXTlp7Hrv7J0wbQn7Aa+x7oBa40Rp+WEtg/z
-         GqFpODyfnrxyaSQkOueRf/KgdBzPkkHYTT0MMjvrZN9BZhAscgOJCuRGu+RwhG73l2Mi
-         vyMPnn6yAFLy5CSgMZ44Ubi0ZBT5n93CKodrVWH7nxdaDmtikvFvzQ9s7kBkpodRv7Bq
-         GtaA==
+        b=jArMJQRz38QBS40vtj8+RW9rn4RMzE4HyO7WhHGS+LhYDOJtkMAoNaQ8boF4KwWflZ
+         C7yLIbtbtn/KV0zBB2Mgj26ikmKiCJlIdJ9v/CZEGEuc/3EfjPc5+Iq8bYanwj5Z8WBe
+         a/8+0RCJCMi4DKm8/3mo3ZJ6fRRIoPc7S2ATERrt00N446ouSq4EHARCjlypOhL8sBh4
+         tn3fg2ZqO3V1+8kSZX4FtoVvaiYhnle6Zfx1ATYG9GnV6LjIJavYZCuV4MzdkJV4lqTg
+         V7yyrCqTd4NYBxTRoZIF46yHPtIcZELCbZ1XMmIvhUw5yBfJWJCmiaMB68ZV+t0nx/+p
+         EC8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=3sUDgD9l3nfK/ol06qXulbOnCayU/9a3NjIzxWJUH9I=;
-        b=K92p2pTiFaUyWiuQZgjkWtffJfv6xRLR06l6RkuAGk8vpbjy6NyLSoFijLvOwHsJ+o
-         U2Mg7GsMjKzW1sinV4S6PN5BvnrpYYtiLZzrhHsG/bkvRi6Yyb5ozh2yGAUxl2oY6vzt
-         diXhLP4WtCJgn3DwPwX3dfAzpbGobmLzxeKGeTMdl7abe2+iWOmIWCUasmdMH339DAY/
-         pca+uiXyjMWFQ9Sdyk9LjvXnrVC2PVUw9UcCUeKuzNISYigP5xZiFCw80thnXvLvudGh
-         P+Nht8eOtkdKRtE6sk67D4G9hTSJuVhzQS2nD4GMCMpsXeU46jzNtI+uZ2p9jvPkDpQl
-         9Juw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
+        bh=Kpm+FVcVGLC6WQ+TSkb4xsjH/RwO2EJz626KNut6Zfg=;
+        b=UB5DjYqnZZlXWbmLBifDUakD1eLSjvoaHDKNcLeYin/illU6Xkp+c0ITajT7qUd05R
+         55nzUCjbjkDUb5wCHP5JYTG7nIFyD6WKf1dJudy3LGZG4DHfYEjEsFLzz0UPd6GfHjob
+         He/25GJrc4Os1uU5IaA/FZV2083RhYkebbCKtNq/sF2OmS8vWxQKSdymFWyNMYKl7JA/
+         V79npW3Xl1vw0EOelEmcRcUcL9QYsdvdRIBUF0Zb3NkzvI5i9+nqyjca190yB6SbItxi
+         Xs2hETGH8KVuoMEDU16Dz0NOVmNIshWwuCyZu1kEkqUU+Gf3WyHuBrMQOqgnKUqGUyul
+         jebg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r18si9437949ejp.141.2019.07.02.07.44.07
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id r2sor8029198wrl.34.2019.07.02.08.28.55
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jul 2019 07:44:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 02 Jul 2019 08:28:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54122 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hiK0s-0001RH-In
-	for alex.bennee@linaro.org; Tue, 02 Jul 2019 10:44:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52592)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hiK0Z-0001PA-KQ
- for qemu-arm@nongnu.org; Tue, 02 Jul 2019 10:43:48 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hiK0Y-0008Qv-EF
- for qemu-arm@nongnu.org; Tue, 02 Jul 2019 10:43:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49332)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1hiK0Y-0008QE-7q; Tue, 02 Jul 2019 10:43:46 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 6E4D481DE0;
- Tue,  2 Jul 2019 14:43:45 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-140.brq.redhat.com [10.40.204.140])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7AEBA67142;
- Tue,  2 Jul 2019 14:43:39 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue,  2 Jul 2019 16:43:34 +0200
-Message-Id: <20190702144335.10717-1-philmd@redhat.com>
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=Kpm+FVcVGLC6WQ+TSkb4xsjH/RwO2EJz626KNut6Zfg=;
+        b=AILHejKXSJkg0/0dLlOQHI6iUHvbrf+F61gf818Bjt7mDxj9XExZvOFwNnLc8gqAg2
+         kxINqLp9ZfSKjJ3/xgC6FNjJjMmeCnH+V1Xq+nmKJ5aATAossAWqasJ6HIla/uJPUEI8
+         VCg7ulfqAywWoT49L9l5U5xC/MkT3tYrdRHc3ESaupUi3NoyGHPLdp/5SoZ9b0SNz768
+         ZKviSKchNOUMTKMkQm3viu/EVdGQ7HnzdvdVyzAbpTKdkk9+njW4x4A60DmXW8HKlykU
+         ZWVxVVH03RlY2G86U+xX+1BK0cIhBWb0+II9OkhUf7mHjXFqRv2EZ0rak8/qFBVX0Py5
+         9xMg==
+X-Gm-Message-State: APjAAAXE1iUbcU0DFsQF3awpWAYmrbOWt103hekG29s0uKGXhOCbdGzf
+	yJx/HByvt1KsU4hu35bpdIYuvA==
+X-Google-Smtp-Source: APXvYqxULK7YUIBsuHoqyjaZ74ITUiFetNaDBCMhQ/+J7xZ0dQOTdDTHw83s7qafJED4fD+7a0yj6w==
+X-Received: by 2002:a5d:4309:: with SMTP id h9mr10443007wrq.221.1562081335512;
+        Tue, 02 Jul 2019 08:28:55 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.38] (56.red-88-18-140.staticip.rima-tde.net. [88.18.140.56])
+        by smtp.gmail.com with ESMTPSA id s3sm3593192wmh.27.2019.07.02.08.28.53
+        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+        Tue, 02 Jul 2019 08:28:54 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v2 0/9] hw/block/pflash_cfi01: Add
+ DeviceReset() handler
+To: Laszlo Ersek <lersek@redhat.com>, qemu-devel@nongnu.org,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
+ Aleksandar Rikalo <arikalo@wavecomp.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Markus Armbruster <armbru@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair23@gmail.com>, John Snow <jsnow@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ Max Reitz <mreitz@redhat.com>, Michael Walle <michael@walle.cc>,
+ qemu-ppc@nongnu.org, Wei Yang <richardw.yang@linux.intel.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+References: <20190702001301.4768-1-philmd@redhat.com>
+ <0f46b807-1fcc-d5d6-9d62-601cc8dfa692@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <e8b87bed-b7eb-d8bf-f011-e573b0737775@redhat.com>
+Date: Tue, 2 Jul 2019 17:28:53 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.25]); Tue, 02 Jul 2019 14:43:45 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v5 0/1] Support disabling TCG on ARM
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Yang Zhong <yang.zhong@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
- Samuel Ortiz <sameo@linux.intel.com>, Rob Bradford <robert.bradford@intel.com>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IjYe7hs1XI3L
+In-Reply-To: <0f46b807-1fcc-d5d6-9d62-601cc8dfa692@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: q5flmVrDufPZ
 
-v1 cover from Samuel [1]:
+On 7/2/19 1:52 PM, Laszlo Ersek wrote:
+> Hi Phil,
+> 
+> On 07/02/19 02:12, Philippe Mathieu-Daudé wrote:
+>> The pflash device lacks a reset() function.
+>> When a machine is resetted, the flash might be in an
+>> inconsistent state, leading to unexpected behavior:
+>> https://bugzilla.redhat.com/show_bug.cgi?id=1678713
+>> Resolve this issue by adding a DeviceReset() handler.
+>>
+>> Fix also two minor issues, and clean a bit the codebase.
+>>
+>> Since v1: https://lists.gnu.org/archive/html/qemu-devel/2019-05/msg00962.html
+>> - addressed Laszlo review comments
+>>
+>> Maintainers spam list from:
+>> ./scripts/get_maintainer.pl -f $(git grep -El '(pflash_cfi01_register|TYPE_PFLASH_CFI01)')
+>>
+>> Regards,
+>>
+>> Phil.
+>>
+>> Philippe Mathieu-Daudé (9):
+>>   hw/block/pflash_cfi01: Removed an unused timer
+>>   hw/block/pflash_cfi01: Use the correct READ_ARRAY value
+>>   hw/block/pflash_cfi01: Extract pflash_mode_read_array()
+>>   hw/block/pflash_cfi01: Start state machine as READY to accept commands
+>>   hw/block/pflash_cfi01: Add the DeviceReset() handler
+>>   hw/block/pflash_cfi01: Simplify CFI_QUERY processing
+>>   hw/block/pflash_cfi01: Improve command comments
+>>   hw/block/pflash_cfi01: Replace DPRINTF by qemu_log_mask(GUEST_ERROR)
+>>   hw/block/pflash_cfi01: Hold the PRI table offset in a variable
+>>
+>>  hw/block/pflash_cfi01.c | 140 +++++++++++++++++++++-------------------
+>>  hw/block/trace-events   |   1 +
+>>  2 files changed, 74 insertions(+), 67 deletions(-)
+>>
+> 
+> I'll do some regression-tests with this, using OVMF and ArmVirtQemu.
 
-  This patchset allows for building and running ARM targets with TCG
-  disabled. It splits the target/arm/helper.c file into logical TCG and
-  non TCG dependent files so that one can build and run QEMU binaries wit=
-h
-  or without TCG enabled.
+My local tree is larger with many tracing improvments, but I stripped
+that part to keep this series short and bugfix oriented.
 
-  The rationale behind this work comes from the NEMU project where we're
-  trying to only support x86 and ARM 64-bit architectures, without
-  including the TCG code base. We can only do so if we can build and run
-  ARM binaries with TCG disabled.
+I used the trace logs to analyse the guest accesses.
 
-v2: https://lists.gnu.org/archive/html/qemu-devel/2019-06/msg03271.html
-v3: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg00162.html
-v4: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg00312.html
-- patches 1-12, 14-17, 19-21 accepted, rebased on target-arm.next
-- addressed Peter's comment (described in each patch).
-v5:
-- patches 1-2 accepted, rebased on target-arm.next
-- addressed Peter's comment (broken v4 rebase, patch not building...)
+My test setup is not yet automatized but I'm working on passing all the
+one working with TCG as Avocado tests.
 
-Based-on: target-arm.next
-$ git backport-diff -u v3 -r target-arm.next..v5
-Key:
-[----] : patches are identical
-[####] : number of functional differences between upstream/downstream pat=
-ch
-[down] : patch is downstream-only
-The flags [FC] indicate (F)unctional and (C)ontextual differences, respec=
-tively
+Tests machines (firmwares):
 
-001/1:[0025] [FC] 'target/arm/helper: Move M profile routines to m_helper=
-.c'
+- ARM Verdex with (U-Boot)
+- MIPS Malta with (Linux)
+- LM32 Milkymist One (RTEMS)
+- X86 (EDK2 OVMF)
 
-Thanks a lot to Alex and Peter for their review time, and Samuel for
-the original effort.
+Each guest has different driver, thus use this device quite differently.
 
-This single patch is not a 'bugfix', simply code movement.
-If it doesn't fit for 4.1-rc0, I'm still glad Peter merged all the
-patches from the previous series :_
+What I want to add to this list is:
 
-Regards,
+- AARCH64 Virt (EDK2 ArmVirtQemu)
+
+Because it uses another driver (not the OVMF one).
+
+> I don't think I can usefully review the patches without getting lost in
+> the related spec(s), and I don't have capacity for that.
+> 
+> Until I have regression test results, one question: are the changes to
+> the device model transparent with regard to migration? (You are not
+> introducing any compat properties.)
+
+Good point.
+
+Two fields updated are migrated:
+
+static const VMStateDescription vmstate_pflash = {
+    .name = "pflash_cfi01",
+    .version_id = 1,
+    .minimum_version_id = 1,
+    .post_load = pflash_post_load,
+    .fields = (VMStateField[]) {
+        ...
+        VMSTATE_UINT8(cmd, PFlashCFI01),
+        VMSTATE_UINT8(status, PFlashCFI01),
+        ...
+        VMSTATE_END_OF_LIST()
+    }
+};
+
+- status: should not break anything
+
+- cmd:
+
+  If migrated during cmd == READ_ARRAY state:
+
+  Guest is saved with older QEMU having cmd=READ_ARRAY=0x00
+
+  Guest restored to newer QEMU expecting READ_ARRAY=0xff
+
+  - If the guest do a READ access, we are [currently] fine:
+  the 0x00 command hits the default case and falls through
+  0xff.
+
+    ('currently' because I have a local patch that would
+     clean up this impossible case, but I made it possible).
+
+  - If guest does WRITE access, again the 0x00 is processed
+  by the default case where we jump to the error_flash label.
+  There we log a warning and call pflash_mode_read_array().
+
+  So this is not clean, but safe.
+
+  To be clean I should document 0x00 was previously used and
+  even not matching the specs, we have to live with handling
+  it forever.
+
+
+
+  A cleaner way to keep this safe and the code simple is to
+  increment vmstate_pflash.version_id, and add a new case in
+  the post_load handler:
+
+static int pflash_post_load(void *opaque, int version_id)
+{
+    PFlashCFI01 *pfl = opaque;
+
+    ... // current handler code
+
+    if (version_id < 2) {
+        /* version_id used 0x00 for READ_ARRAY */
+        if (s->cmd == 0x00) {
+            s->cmd =  0xff;
+        }
+    }
+    return 0;
+}
+
+Since I'm new with migration, I Cc'd Dave to check :)
+
+Thanks!
 
 Phil.
-
-[1]: https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg02451.html
-
-Philippe Mathieu-Daud=C3=A9 (1):
-  target/arm/helper: Move M profile routines to m_helper.c
-
- target/arm/Makefile.objs |    1 +
- target/arm/helper.c      | 2638 +------------------------------------
- target/arm/m_helper.c    | 2676 ++++++++++++++++++++++++++++++++++++++
- 3 files changed, 2681 insertions(+), 2634 deletions(-)
- create mode 100644 target/arm/m_helper.c
-
---=20
-2.20.1
-

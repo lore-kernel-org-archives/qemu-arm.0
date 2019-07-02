@@ -1,99 +1,97 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3354243wru;
-        Mon, 1 Jul 2019 21:15:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqykZm2kN73f6PLAgwQJ5rPGmiq8TKntrl+F7FY967VTqofvsVwghg08UE4QOhgwMdmMhAgp
-X-Received: by 2002:a17:906:f43:: with SMTP id h3mr26863737ejj.143.1562040921225;
-        Mon, 01 Jul 2019 21:15:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562040921; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3357411wru;
+        Mon, 1 Jul 2019 21:19:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxe4gpCSgQDqeByfgT+T03+pMCQ2YYWro0KdcNadL11i6kS8L07FF8k3WzaSWEZvCaB1Vk9
+X-Received: by 2002:a17:906:914:: with SMTP id i20mr26525446ejd.213.1562041197991;
+        Mon, 01 Jul 2019 21:19:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562041197; cv=none;
         d=google.com; s=arc-20160816;
-        b=rRIPko7foqNbuxCmXBUzTiGxE65etDp9gWzxeG+y7RbgCuFUHicSTqDkVT6uz6cWld
-         TrjvOatWuPHu5HuZdUZrHrBYDnFM1gOAFV6pdTk/pnlZGgwWflBAwytZ+hZ3HwEEjBUx
-         X3oDMES1CrDHF2bBFHhcmHlTtayjJGZmgXjJZ5kW+QyTgRAdcsc05U3v8iijaDSt0HLl
-         9ETB8yBp9ZtcWSXRU7oZRj1rGr3HK1KvX7xN3+22y76GDkg6OxS+ACHDQKQolRwE+vxj
-         RQ+9v6lNvzGm7jxPbjU0PglNqZ2SVCLuaxOHqzK4IO1yqcQHnA6Vhcsb1if+hthX0tbH
-         TacQ==
+        b=ojCjg+DiBzq2/J9iSpGuDRi/pogckCSmVuIiIurym+YpOWlWWCb1eT8eQkWznigr38
+         XhfGBFwGNgIvDb6iffOOWlbYQ0m17Io+S38IkuLDF5lKwnRviMJRYBplPUcenmmE5yAL
+         gg8RAXOtB1LfSFw45KmrzWWF5oFRUh4tP+P/mM4X0FJnpi3YpZUTRHu6Ddey/jpak3l3
+         8SG4PlLJtXy9qt49uYwUhRUTyLn6eyUNbuM5KuEZoohtgKtpxhcpYoqMLHMlS8J0cAsn
+         rCYj3lXDT5p4V6qRr4xYzPg73NABbt99gKo73pGN0c9ZUSPvaDz6f4wY9TZiwjrAbhkE
+         xqwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=BDB86Swjy48bE1QiXzS97ztQck+19KlDd21qPLXR9cY=;
-        b=SVazkt+AWsdmccLETIerYNu32zm7ZZ5X2ScXHaN/1gc4eTv5sFvvx0iFNfoxSGB8Qa
-         gZQSWJPSDw67wju/aNgkc7NR92qKsWLqhMkKQjRUWLYLfWl7FjjEUG68E2NSOOGYoK6y
-         Z2GrFc+LnpBrABR9GYm9hq4nnMw3zQA2ZgbljU1aEkpLj9/iWpskj9QffjFBKMqoe4iv
-         DXYqSbg8PgJrQgp6oQR0cLDYhy14YVBVYc9lWDOelCiEj/ApKXCIaTrp2d98b8iUQ/y3
-         Ni/iI/BXXeOGTXiCIc50MRYYIpiTqp91NEObaRuXAjMloYPgrFjWwU3j7+kMBbnzoqXo
-         qMAg==
+        bh=+yGUjS9WtkXidBm2EgH77cPR9n2FoDymKRrrTfpAZFY=;
+        b=c0eooKI6gkzgJjTZ87e+7hxA0JX4KQK3I31tLAWPh0J5KMLPc5dboDiriFQkC0a/yO
+         W+ilTTBbO+iYtaMLQjxph/W0rnTRtAkQFxVv4umuKUVS20+W6f91njIFNMw5usV5GvX7
+         HN1yuI8N/h4z7h/jqxZZNvBka70sPDQISGh1jh2/5hNEXR5pHZp7eMq5LQBanRrCdVVs
+         tynTPXXvlIVqm0Vye0L7pqXnyTlFHhqDBNTKJcrXfJ67EvpPhRalVavNDipEU9OZt6kb
+         vpqYh/J3vdOfsF6ddCto23r+GlzUoC7yC8GCOJHs4DLTVX9gSG1iDDGg07Btvu2bs+0N
+         UEHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VctiGbQM;
+       dkim=fail header.i=@linaro.org header.s=google header.b=L9MLz4Bt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q19si8101147ejt.48.2019.07.01.21.15.21
+        by mx.google.com with ESMTPS id n15si7454135ejj.345.2019.07.01.21.19.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Jul 2019 21:15:21 -0700 (PDT)
+        Mon, 01 Jul 2019 21:19:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VctiGbQM;
+       dkim=fail header.i=@linaro.org header.s=google header.b=L9MLz4Bt;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48576 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48616 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hiACO-0002F4-B0
-	for alex.bennee@linaro.org; Tue, 02 Jul 2019 00:15:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38186)
+	id 1hiAGq-0006Hk-BI
+	for alex.bennee@linaro.org; Tue, 02 Jul 2019 00:19:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60365)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <hongbo.zhang@linaro.org>) id 1hi9sK-00068O-O8
- for qemu-devel@nongnu.org; Mon, 01 Jul 2019 23:54:40 -0400
+ (envelope-from <hongbo.zhang@linaro.org>) id 1hi9QI-0007Cn-DX
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 23:25:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <hongbo.zhang@linaro.org>) id 1hi9sD-0005hL-T3
- for qemu-devel@nongnu.org; Mon, 01 Jul 2019 23:54:32 -0400
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:43602)
+ (envelope-from <hongbo.zhang@linaro.org>) id 1hi9QH-00018Y-BX
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 23:25:38 -0400
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:35364)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <hongbo.zhang@linaro.org>)
- id 1hi9sA-0005cM-LF
- for qemu-devel@nongnu.org; Mon, 01 Jul 2019 23:54:27 -0400
-Received: by mail-io1-xd44.google.com with SMTP id k20so7523768ios.10
- for <qemu-devel@nongnu.org>; Mon, 01 Jul 2019 20:54:24 -0700 (PDT)
+ id 1hi9QH-00017D-2l
+ for qemu-devel@nongnu.org; Mon, 01 Jul 2019 23:25:37 -0400
+Received: by mail-io1-xd43.google.com with SMTP id m24so33833553ioo.2
+ for <qemu-devel@nongnu.org>; Mon, 01 Jul 2019 20:25:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=BDB86Swjy48bE1QiXzS97ztQck+19KlDd21qPLXR9cY=;
- b=VctiGbQMHae4VvlV/dV9npuskMfT7KLLe2AeZBhbxahAjAIVG5WhNFLGIJ4fx+/v4M
- OSL33gzt9yycV9VoVK+niWDEc9ar+/itaoNYgnpHWbP+XEWMFy9H0z8sAgKwhOlue0iN
- 62kHjvDSmtbi0SmDNgG8l2sPx6/st9v6if2/oriovIQ5G/nGdP/maMdvs5nsagqZVFYD
- HuKs3TMV1OoPnJjOcUCUZPEL39HOIPN/HbhCT7jGgCXQmtCtOmjIj+jv2IGfDJgk2Cpt
- W6/lmQ8fYW636S72yIbCTJaBPhkQjMuR/3QNc4ESRqPRvXPSsvDmTrsYgQcn/O0XTKJH
- ue8w==
+ :cc; bh=+yGUjS9WtkXidBm2EgH77cPR9n2FoDymKRrrTfpAZFY=;
+ b=L9MLz4BtWOik5geQ9F8UPlEf+MbMN5kfDULnjF/hQfoWFZKY5ymGwJXqTlP/1fyTxi
+ H+lYJ0xBi7XMzxuTYMtU3TcBUjBqb8+xvDUxmmDw4U0HXjxQBKRqN7jUN9RURnIRFbjX
+ GQvfAlBn3dJBNecbsagSmb4SPlk/yEovvFzwdPoUoPI8hd7ANRjHC1NH+Qo1dcjnuIlH
+ 7O0YxBlWFL4D6mcWFutoqRSldXxnJng8p2tw19hQbGHVMt1j+m71MBq2ca/JIptfWiaK
+ GSEz90NMGyWXX1Bm64Eci7nIpO4vb+0aqGdztSn1+j+Df1wH5QamhPeG5a7MmhMWvla6
+ RyFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=BDB86Swjy48bE1QiXzS97ztQck+19KlDd21qPLXR9cY=;
- b=dpWH+AtTQTpQ4sG4Vfb+YEv3mFPUO2K3pCfXpuwYKVOanDwfIGXS0U1xagj9ixCRSR
- E7G8P2ZgecPcVIottiL+pdGIIvvEu+gO5gdxAIbi4MiZdj7UtzCr3OfzY4xtSdp5v73P
- Oa2IitbCH3tKLCYGRau1lW2oySYTpczPFcJFOkZtz3pLldJEl9QpE3cZGedI79HDQCwC
- +tdLTnKIQxExxzo7w4ZgmyskrC0kGSxqXxMwJc6wywnbzBU4qf/qWQ5dGSbtqZ9vwhNj
- eHMYZ1+euSTUwJMJY+5SYS2pN/yqhF5c1xVUu9hFeIKz83DlbLARcJTOwgROQLrYTHhP
- CoKA==
-X-Gm-Message-State: APjAAAUBQDoHD1yVGTqsjKMYE4L1wkKdzxDWXR38qDUukS7or8bDkkKi
- xuPUQtL8VJzigCCYpV5NsoECdgeTbQMcKDcn/BxHZQ==
-X-Received: by 2002:a05:6638:3d3:: with SMTP id
- r19mr33913878jaq.53.1562039663430; 
- Mon, 01 Jul 2019 20:54:23 -0700 (PDT)
+ bh=+yGUjS9WtkXidBm2EgH77cPR9n2FoDymKRrrTfpAZFY=;
+ b=s02DB9ipkW270O0kQXxyPjg+5LmarEJcNqou3EfcsgHW9QsqatcuB/whRXng5DRlGK
+ QX9Cr06nJSUNiP6eDrkx8RsmlOFMIyilYvNmWjKpISe+AdjrSimNqG5X+Mb/FWOIMAHS
+ VrTyCUmRPaoZhKesKoT3Kjl9yjv9IuYUDlhxUCqRYArt71FtgV7PBS6mqn77tt9Np1A+
+ cjBJ+qYGew14SRovCVKkm3gtAjU3+XjGmMjShSxHSZZ62dCTjlAX1+yqj5NTAXgKT54/
+ og0aojZNwO9bdwmgC99RZvVjwsYDZ/C089WSntlVCYN7ciQ01AkVj894TeBdq9DDo6h+
+ PKZA==
+X-Gm-Message-State: APjAAAVSDWLerqH0lAtMemK3rLIIj247KMHLv37H5Gy6IIpfDfqIOIKk
+ BGe4TbvMzWe+XzFas8PUNTI/05fAWumUBN2T0oWfgQ==
+X-Received: by 2002:a6b:e60b:: with SMTP id g11mr31428459ioh.9.1562037934407; 
+ Mon, 01 Jul 2019 20:25:34 -0700 (PDT)
 MIME-Version: 1.0
 References: <1561890034-15921-1-git-send-email-hongbo.zhang@linaro.org>
  <CAFEAcA8P-=mbQ4__9OXB078GnrGfm9afH1YBDLkv88mUXmm=PQ@mail.gmail.com>
- <20190701160846.fwjeco3zuobn3pgv@bivouac.eciton.net>
-In-Reply-To: <20190701160846.fwjeco3zuobn3pgv@bivouac.eciton.net>
+In-Reply-To: <CAFEAcA8P-=mbQ4__9OXB078GnrGfm9afH1YBDLkv88mUXmm=PQ@mail.gmail.com>
 From: Hongbo Zhang <hongbo.zhang@linaro.org>
-Date: Tue, 2 Jul 2019 11:54:13 +0800
-Message-ID: <CAHmQWvDhRHqR2ZWJj5DdJUaqf118E-83mvpK3gn0P35eQpLBJA@mail.gmail.com>
-To: Leif Lindholm <leif.lindholm@linaro.org>
+Date: Tue, 2 Jul 2019 11:25:24 +0800
+Message-ID: <CAHmQWvAbqWjDFotms-aAbiKVOhNzzcbewfRdOcg9NDq3A9aX=A@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::d44
+X-Received-From: 2607:f8b0:4864:20::d43
 Subject: Re: [Qemu-devel] [PATCH v9 0/2] Add Arm SBSA Reference Machine
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -106,73 +104,70 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+Cc: qemu-arm <qemu-arm@nongnu.org>,
  Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
  QEMU Developers <qemu-devel@nongnu.org>,
+ Leif Lindholm <leif.lindholm@linaro.org>,
  Ard Biesheuvel <ard.biesheuvel@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ziQLs3bkwZrw
+X-TUID: qD8GeWQ3Wfps
 
-On Tue, 2 Jul 2019 at 00:08, Leif Lindholm <leif.lindholm@linaro.org> wrote:
+On Mon, 1 Jul 2019 at 22:54, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> Hi Peter,
->
-> On Mon, Jul 01, 2019 at 03:54:24PM +0100, Peter Maydell wrote:
-> > I've pointed out a number of issues with these patches, but they
-> > all turn out to be very minor (mostly fixable by moving code between
-> > patch 1 and 2). The other thing we need is a MAINTAINERS section for
-> > the new board:
+> On Sun, 30 Jun 2019 at 11:21, Hongbo Zhang <hongbo.zhang@linaro.org> wrote:
 > >
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index cad58b94879..0bf3739f06a 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -728,6 +728,13 @@ F: include/hw/arm/fsl-imx6.h
-> >  F: include/hw/misc/imx6_*.h
-> >  F: include/hw/ssi/imx_spi.h
+> > For the Aarch64, there is one machine 'virt', it is primarily meant to
+> > run on KVM and execute virtualization workloads, but we need an
+> > environment as faithful as possible to physical hardware,  to support
+> > firmware and OS development for pysical Aarch64 machines.
 > >
-> > +SBSA-REF
-> > +M: Hongbo Zhang <hongbo.zhang@linaro.org>
-> > +M: Peter Maydell <peter.maydell@linaro.org>
-> > +L: qemu-arm@nongnu.org
-> > +S: Maintained
-> > +F: hw/arm/sbsa-ref.c
-> > +
+> > This machine comes with:
+> >  - Re-designed memory map.
+> >  - CPU cortex-a57.
+> >  - EL2 and EL3 enabled.
+> >  - GIC version 3.
+> >  - System bus AHCI controller.
+> >  - System bus XHCI controller.
+> >  - CDROM and hard disc on AHCI bus.
+> >  - E1000E ethernet card on PCIE bus.
+> >  - VGA display adaptor on PCIE bus.
+> >  - Only minimal device tree nodes.
+> > And without:
+> >  - virtio deivces.
+> >  - fw_cfg device.
+> >  - ACPI tables.
 >
-> Sadly, Hongbo is no longer in Linaro (but has generously helped keep
-> working on this platform being upstreamed since he left). It is my
-> understanding that in his new role, Hongbo does not have the bandwidth
-> to keep maintaining this platform once it's in.
+> I've pointed out a number of issues with these patches, but they
+> all turn out to be very minor (mostly fixable by moving code between
+> patch 1 and 2). The other thing we need is a MAINTAINERS section for
+> the new board:
 >
-> Unless I have misunderstood this (Hongbo, please confirm - we would
-> certainly love to have your help if you feel that you do have the
-> banwidth), could we please add Radek as a maintainer instead?:
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index cad58b94879..0bf3739f06a 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -728,6 +728,13 @@ F: include/hw/arm/fsl-imx6.h
+>  F: include/hw/misc/imx6_*.h
+>  F: include/hw/ssi/imx_spi.h
 >
-Yes we can add Radoslaw as maintainer.
-As to me, my new role still have relation with Arm and virtualization,
-I will keep watching this :)
+> +SBSA-REF
+> +M: Hongbo Zhang <hongbo.zhang@linaro.org>
+> +M: Peter Maydell <peter.maydell@linaro.org>
+> +L: qemu-arm@nongnu.org
+> +S: Maintained
+> +F: hw/arm/sbsa-ref.c
+> +
+>  Sharp SL-5500 (Collie) PDA
+>  M: Peter Maydell <peter.maydell@linaro.org>
+>  L: qemu-arm@nongnu.org
+>
+>
+> So rather than making you do another respin, I'm planning to
+> make the fixes in my target-arm.next tree as I apply the patches.
+> That way we can get this in before softfreeze (which is tomorrow).
+>
+Thank you for the efforts.
 
-> M: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
->
-> If you think it could be useful, feel free to add me as a designated
-> reviewer:
->
-> R: Leif Lindholm <leif.lindholm@linaro.org>
->
-> (I would not be offended if you don't, I have plenty to keep me busy :)
->
-> >  Sharp SL-5500 (Collie) PDA
-> >  M: Peter Maydell <peter.maydell@linaro.org>
-> >  L: qemu-arm@nongnu.org
-> >
-> >
-> > So rather than making you do another respin, I'm planning to
-> > make the fixes in my target-arm.next tree as I apply the patches.
-> > That way we can get this in before softfreeze (which is tomorrow).
->
-> Many thanks!
->
-> Best Regards,
->
-> Leif
+> thanks
+> -- PMM

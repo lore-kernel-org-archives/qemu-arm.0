@@ -1,34 +1,34 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3194929wru;
-        Mon, 1 Jul 2019 17:16:11 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwS4/X9LS7zIRnnqMjqb2mbpMJaENjTigXwXbO6QLFgfGor+wY7mM3S0LPusi8dRRL0Bn0n
-X-Received: by 2002:a37:9f14:: with SMTP id i20mr22914334qke.211.1562026571218;
-        Mon, 01 Jul 2019 17:16:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562026571; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3195122wru;
+        Mon, 1 Jul 2019 17:16:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqycM9XmWMzZlYOSnmPWi0qbcKbw1GW00vah5AbsRg/B6lf/94S9jGsSfvMhUD3RH2M45ngv
+X-Received: by 2002:ac8:1acf:: with SMTP id h15mr22805175qtk.67.1562026593340;
+        Mon, 01 Jul 2019 17:16:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562026593; cv=none;
         d=google.com; s=arc-20160816;
-        b=tUcGgyqrT9AqMKvGTlJYbbBjlxx0ChS+fFmcjRSKAVt95iYqm4ESoINsWLeSpcKO54
-         dmZ/oe41Acm9y32OTLqHTLd3bD9iPU0+b39v6eSAtfheCDv9jqFpxWxxSFE+nxBF6Ige
-         +TbvY2UgeNDujbMI14axdAdSkpeLGQO+Kt3uIwqqVcbFx09S6Edvd0kFPvn+fGao7jIr
-         ihCkdWyJmXtPtyef55dBc7LPTL7k7rFQZWE0Yoq2M7zlQS8MwPi049cqsTQup8HqE+vz
-         mVTFWxtPi5oK8qDxBeJtg0HHT5xSXF875wZaMrPFQPsgNAfpRK9ih3HU9KKowm4thzz8
-         nYbA==
+        b=q8Hh/ilJzuxc70w7qI4ItGJA5L6xKYeG2iM998yDXG72kVqSIcktNrY2IyAH1usosd
+         n3f41b2o3+Py+geeRgRNlj8DQLLwSuA68EpKKEsjzErWLqAlXj7zrabPkAQlpOC1F4W4
+         xwBE+xnqrjN8aCnjRSOctTxv7w5dKQXLEr9/NONMuvYzThvV2ZVxOADCWqgdwK9/kUEZ
+         WnoXg5jrpcPacXHGZwCB/QkKssbwOXLViO3epYcSmzFkTLxGdwNNb2TJpKYpJNVYCWzw
+         b6rXALfo63pwLONuAnNVpRnc1ju4ZP4cjaZ3wsuaDfFfHVqHGk5Hsy03w0P2+uifkmdo
+         ETtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=+fs5NFGmtxZXrh05oNdxW4WVgrpCzSSjQXjZX5dBLr8=;
-        b=AM03/znJhxAq+VF98ygDb5uR+izhW7GmCyA21/oVhirS54awu6+nccnOFy0z+F2ca3
-         BOkUahxDC3cdhl4an3evH0WH8y0r/fHpF41S8RQ+qxkZ3pMweTCgJIXmR/Gt/Eu1yVYu
-         w5zU9sl33U1+hvmuEa5z7kGZcLIPm/ji4OzMoPvtpIug6r+2X0uthNlnEeljE8nT8W7o
-         GqO/hSBz3z0HW++1KZEYm2Q9ibfEXyihFiJMR+zGuM8XPKTCuC+D2a3TBWx5EY4mUqr/
-         CwxtppIjlGs+uBoZIy2ICuxt0myeilU/rvIr78NddZZcc90azeycrtjG58fj2qdI1KXw
-         nbYA==
+        bh=GbeHUC9Fz5aXlSZ+c7JvyNmjJqsPywCwavQXs8TrbS0=;
+        b=ev+l/kg/15gVWnjk+ihYXks/okwpkmGCE1/pDJw5UgIomV/6zCmPzBrTfKoUExX1ri
+         l/W0Vx+koTmYTfqUiAy0OzcBjFV2IjOKT4eR9s57GMM6KxrZuS8ZShbpmuHd0lcyp0YM
+         n8C73Xuotrg4h05udwtcGuVEM/FxmIdUr3UbXVLVMu4RmS/J8zAvhczcnxfFRcxwoYMU
+         2Mi0BAGjU9HV9+ZPaarC4uA0GaOT8fDkHwRLkUYRcP7AVuH1umwcWwNV2fv70vhqtykJ
+         EEWVbFdrXsDJpWcXMn23YXo7bgQZRHa9UeQEKgv7m/LQZ+qWHLzioqV7PFcNQ0iNFQOZ
+         UvJA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id l44si8382864qtb.303.2019.07.01.17.16.11
+        by mx.google.com with ESMTPS id x8si8921149qtf.386.2019.07.01.17.16.33
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Jul 2019 17:16:11 -0700 (PDT)
+        Mon, 01 Jul 2019 17:16:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
@@ -36,11 +36,11 @@ Authentication-Results: mx.google.com;
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 34A80300C033;
-	Tue,  2 Jul 2019 00:16:10 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 39F236EB96;
+	Tue,  2 Jul 2019 00:16:32 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-21.brq.redhat.com [10.40.204.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id C07B31001281;
-	Tue,  2 Jul 2019 00:15:49 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id DC2361001B32;
+	Tue,  2 Jul 2019 00:16:10 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>,
@@ -71,48 +71,113 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Aleksandar Rikalo <arikalo@wavecomp.com>
-Subject: [PATCH v2 8/9] hw/block/pflash_cfi01: Replace DPRINTF by qemu_log_mask(GUEST_ERROR)
-Date: Tue,  2 Jul 2019 02:13:00 +0200
-Message-Id: <20190702001301.4768-9-philmd@redhat.com>
+Subject: [PATCH v2 9/9] hw/block/pflash_cfi01: Hold the PRI table offset in a variable
+Date: Tue,  2 Jul 2019 02:13:01 +0200
+Message-Id: <20190702001301.4768-10-philmd@redhat.com>
 In-Reply-To: <20190702001301.4768-1-philmd@redhat.com>
 References: <20190702001301.4768-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.47]); Tue, 02 Jul 2019 00:16:10 +0000 (UTC)
-X-TUID: gGxQLeOPD4OP
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.25]); Tue, 02 Jul 2019 00:16:32 +0000 (UTC)
+X-TUID: AcGXSNqmVs78
+
+Manufacturers are allowed to move the PRI table, this is why the
+offset is queryable via fixed offsets 0x15/0x16.
+Add a variable to hold the offset, so it will be easier to later
+move the PRI table.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/block/pflash_cfi01.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ hw/block/pflash_cfi01.c | 41 ++++++++++++++++++++++++++---------------
+ 1 file changed, 26 insertions(+), 15 deletions(-)
 
 diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-index f50d0a9d37..e891112b67 100644
+index e891112b67..f65840eb2b 100644
 --- a/hw/block/pflash_cfi01.c
 +++ b/hw/block/pflash_cfi01.c
-@@ -286,7 +286,9 @@ static uint32_t pflash_read(PFlashCFI01 *pfl, hwaddr offset,
-     switch (pfl->cmd) {
-     default:
-         /* This should never happen : reset state & treat it as a read */
--        DPRINTF("%s: unknown command state: %x\n", __func__, pfl->cmd);
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid state, "
-+                      "wcycle %d cmd 0x02%x\n",
-+                      __func__, pfl->wcycle, pfl->cmd);
-         pfl->wcycle = 0;
-         pfl->cmd = 0xff;
-         /* fall through to read code */
-@@ -631,7 +633,9 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
-         break;
-     default:
-         /* Should never happen */
--        DPRINTF("%s: invalid write state\n",  __func__);
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Invalid state, "
-+                      "wcycle %d cmd (0x02%x -> value 0x02%x)\n",
-+                      __func__, pfl->wcycle, pfl->cmd, value);
-         goto mode_read_array;
+@@ -762,6 +762,7 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
      }
-     return;
+ 
+     /* Hardcoded CFI table */
++    const uint16_t pri_ofs = 0x31;
+     /* Standard "QRY" string */
+     pfl->cfi_table[0x10] = 'Q';
+     pfl->cfi_table[0x11] = 'R';
+@@ -770,14 +771,17 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
+     pfl->cfi_table[0x13] = 0x01;
+     pfl->cfi_table[0x14] = 0x00;
+     /* Primary extended table address (none) */
+-    pfl->cfi_table[0x15] = 0x31;
+-    pfl->cfi_table[0x16] = 0x00;
++    pfl->cfi_table[0x15] = pri_ofs;
++    pfl->cfi_table[0x16] = pri_ofs >> 8;
+     /* Alternate command set (none) */
+     pfl->cfi_table[0x17] = 0x00;
+     pfl->cfi_table[0x18] = 0x00;
+     /* Alternate extended table (none) */
+     pfl->cfi_table[0x19] = 0x00;
+     pfl->cfi_table[0x1A] = 0x00;
++
++    /* CFI: System Interface Information */
++
+     /* Vcc min */
+     pfl->cfi_table[0x1B] = 0x45;
+     /* Vcc max */
+@@ -802,6 +806,9 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
+     pfl->cfi_table[0x25] = 0x04;
+     /* Max timeout for chip erase */
+     pfl->cfi_table[0x26] = 0x00;
++
++    /* CFI: Device Geometry Definition */
++
+     /* Device size */
+     pfl->cfi_table[0x27] = ctz32(device_len); /* + 1; */
+     /* Flash device interface (8 & 16 bits) */
+@@ -826,26 +833,30 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
+     pfl->cfi_table[0x2E] = (blocks_per_device - 1) >> 8;
+     pfl->cfi_table[0x2F] = sector_len_per_device >> 8;
+     pfl->cfi_table[0x30] = sector_len_per_device >> 16;
++    assert(0x30 < pri_ofs);
++
++    /* CFI: Primary-Vendor Specific */
+ 
+     /* Extended */
+-    pfl->cfi_table[0x31] = 'P';
+-    pfl->cfi_table[0x32] = 'R';
+-    pfl->cfi_table[0x33] = 'I';
++    pfl->cfi_table[0x00 + pri_ofs] = 'P';
++    pfl->cfi_table[0x01 + pri_ofs] = 'R';
++    pfl->cfi_table[0x02 + pri_ofs] = 'I';
+ 
+-    pfl->cfi_table[0x34] = '1';
+-    pfl->cfi_table[0x35] = '0';
++    pfl->cfi_table[0x03 + pri_ofs] = '1';
++    pfl->cfi_table[0x04 + pri_ofs] = '0';
+ 
+-    pfl->cfi_table[0x36] = 0x00;
+-    pfl->cfi_table[0x37] = 0x00;
+-    pfl->cfi_table[0x38] = 0x00;
+-    pfl->cfi_table[0x39] = 0x00;
++    pfl->cfi_table[0x05 + pri_ofs] = 0x00; /* Optional features */
++    pfl->cfi_table[0x06 + pri_ofs] = 0x00;
++    pfl->cfi_table[0x07 + pri_ofs] = 0x00;
++    pfl->cfi_table[0x08 + pri_ofs] = 0x00;
+ 
+-    pfl->cfi_table[0x3a] = 0x00;
++    pfl->cfi_table[0x09 + pri_ofs] = 0x00; /* Func. supported after suspend */
+ 
+-    pfl->cfi_table[0x3b] = 0x00;
+-    pfl->cfi_table[0x3c] = 0x00;
++    pfl->cfi_table[0x0a + pri_ofs] = 0x00; /* Block status register mask */
++    pfl->cfi_table[0x0b + pri_ofs] = 0x00;
+ 
+-    pfl->cfi_table[0x3f] = 0x01; /* Number of protection fields */
++    pfl->cfi_table[0x0e + pri_ofs] = 0x01; /* Number of protection fields */
++    assert(0x0e + pri_ofs < ARRAY_SIZE(pfl->cfi_table));
+ }
+ 
+ static void pflash_cfi01_system_reset(DeviceState *dev)
 -- 
 2.20.1

@@ -1,142 +1,105 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3855483wru;
-        Tue, 2 Jul 2019 07:18:15 -0700 (PDT)
-X-Received: by 2002:a1c:7c11:: with SMTP id x17mr3380633wmc.22.1562077095335;
-        Tue, 02 Jul 2019 07:18:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562077095; cv=none;
+Received: by 2002:a17:90a:ad8a:0:0:0:0 with SMTP id s10csp3838968pjq;
+        Tue, 2 Jul 2019 06:58:49 -0700 (PDT)
+X-Received: by 2002:aca:4d84:: with SMTP id a126mr3277176oib.23.1562075929208;
+        Tue, 02 Jul 2019 06:58:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562075929; cv=none;
         d=google.com; s=arc-20160816;
-        b=wf3BvsJ8bQyDZipf1DurG7/Yf08NgTzkYWPNV7OiuMZ4G4Ply62JnTIc40TJfy9wGB
-         L4D6P8hgFdg5/TDFV1O9CjCBfNbOObTohkWvDVlv03m/q9/n7ibSQC9bLC9RXTdxVmF3
-         Vl9XI6IVpDgQq3qZ9oxVMsN+//ucWRrvIo7JiQ5dSaiLTF+TfYt5wlcJZf9ya7h+gAob
-         qwNcCSw3XXEMVqiP9AMAIHHT9GOLkh70lrXfWB+aeB3mus78kEVqXFeG7fDqgyIfI7P3
-         UjJorwZUnw8A838aaq+Z7BXUmfmS2wGsCzGqsg3PkR9LgWDDyR17FKH87hS5iLdWemwO
-         psuA==
+        b=TK5ch7lFgble/JHUDO3ILCuKLMhT2z/5eBWOi3Uo4ocBedZqdNgmGhWCC04AyfOUlW
+         kjSPRKcfy/vUc08hNj+FRf2W8k6vaS5O4t9JmlULLZvFNSbdgHpbygTSmgx4uJNTd7pf
+         h9NNjO467vIrJJzxxqoPpwRE/jBUeo9996o790OzmpN0SCDvGnZiW+258TFiCz697/Yn
+         24YLWxSc29RiXstlFEb2891mWa4f2EiCeYSE8qqWEaVt1cASc/PT5RuCppj89czeo7s5
+         Gigf9cShRl6hTIluH1DiX4AT7K+jcSxMID7A+gg5hh7vYsndeDGWHiX6QaGuCh8zb083
+         pgQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
-        bh=ycPWOHZ1BiCQaixmh2lB3gnp7J7qHQ68WKc90qzNU5o=;
-        b=r8x/t7EN6187/h0viS8h8C6FfaNdEuKsQOdIFsnbHFGBOy+1eZsMebrTM9oqvSq8QS
-         VTVyCEAombqqtGHT8U5jaqbsQOnqRQcdDnwT1F35TLOrQbTnb3pJfgm7DgTqdVq43rMk
-         amb/hKcfowOyT7e2igWDDFr1NwnghE6SMiHWgFpX6t8W0heFDt6kDBRU1hmrapoEB0pO
-         SCj6nrxQhFhQP96WOS+Ah7NZI6TI6IFic+7mE+AJB4NgMhDSPW649T3zEj6HLQ4blyvT
-         z6ohxKBhd8H2wzV2D3GAiYI5qf233nSfYuw57aU+byxF+iWewtzYUk3Zddb2wvTXPR4f
-         B0bA==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=S+jHy48iSxspioqGS3Ovjl+wHzVcWi4HmsUkyeKtm5I=;
+        b=BYOahFN8CWyJKIxSs/YpbwtMOQmntkoHyiAcGE6QqV3vAyXe9pMSpphd46EG3t3l6B
+         7RDwuPlFnDssxTSwc9RXWXoRkX53cXo1VzMGyALQ3WfwZO/WfHpjbih8y3DYDP6dHgsW
+         7xWPJ/8eNVI3fQ5O4+DIhQqXiLHWitfbU3btjjYxL67cSaMu5fMI9eSfFvq2xtiNbI9h
+         ta3AjBxMzFPZp/eZxRp2h40LdNvlj9m57dcqISHrEFGJKxu6ICVH8ASMb0WTpCmO4hza
+         PY7T9P412fBgibsiIJUbs8yH2UGnAim1Bbgm4z10SgGbUjIDJSKgybF2T9gGY5hBpZ50
+         PRfA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b="nG/S20r/";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id v17sor10564782wrw.44.2019.07.02.07.18.15
+        by mx.google.com with SMTPS id r13sor7387990otk.62.2019.07.02.06.58.49
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 02 Jul 2019 07:18:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Tue, 02 Jul 2019 06:58:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b="nG/S20r/";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=S+jHy48iSxspioqGS3Ovjl+wHzVcWi4HmsUkyeKtm5I=;
+        b=nG/S20r/iguAF4sFMgx8Uoy6AWQSopVOz2nhUjGOncE2JRmfkNJGwUxX8C4DQ3/W2U
+         hexwMOZ/2c5ap0wzDhEktzWuvuo2y3oeg0ze5Egra9KLmK/j4vGpgZ/pFL+vHg9dZNuw
+         3z7o3P/P9+BRI22NJVRn9jPPF4weJA9JGetuWP1v6/xs7LaCEbrwD33u290kHQ0XRYTQ
+         5vUk9I5FIXzcjfrvN2g5nUR+7zSWu8kzoW1bVFpjqn3lyv6XyMMVRGEK/ropBlzSJDDA
+         QX5v7dD3dTyrrx2AtFGmzEH3xtBbdlPxLQGPJHMNEQFK+/SFzi2UyuCckwkRJFU1V3NY
+         dlBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=ycPWOHZ1BiCQaixmh2lB3gnp7J7qHQ68WKc90qzNU5o=;
-        b=UynlBdAGWmdxgGwCoJAXQN1r/00kDV1/SnEqmb6QPQkiT+4Ji7kTgllFKEZ+b1l95j
-         Dgt8iDPh5mpLoYsJMBvB+Ny1xxMmMEppVHEZjjxiql+f9bPuviD3yiO3qE0kcPjBWmxY
-         tpXl2ZVIgnyuRvYsjvsz0YG2jgNNie6hhdp6k7QsLcsIAVjwtKsb6o4VA21ig+MeWW61
-         vbWXjY3JpMwdBakidSjsmZTaNWAy8k6iUoMZUAmznU6OXR9KaT3J+8I5ufnCq33iYoml
-         M6ETkJf+OIVVqxzgXSLRAq8GN9jUcLRkMK6eUMziE/4THETtpQHmIMXYwsUuJ9zGDW3a
-         cJ8g==
-X-Gm-Message-State: APjAAAXAp6CueMJiwv5O4UNQcb528G4HqTr3y0d1sVxSd8K+NLtk6493
-	VLeLNARChf0+MTS22appPV8+RVZ9ioA=
-X-Google-Smtp-Source: APXvYqxcTBzxRQ/AnK8eUHsT+x0ZvCtrXznppplhoH60ie3qupT/91jV68QLyzTs9JLirWTPEqD7Hw==
-X-Received: by 2002:adf:dfc1:: with SMTP id q1mr8019657wrn.52.1562077095111;
-        Tue, 02 Jul 2019 07:18:15 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.38] (56.red-88-18-140.staticip.rima-tde.net. [88.18.140.56])
-        by smtp.gmail.com with ESMTPSA id z126sm4037859wmb.32.2019.07.02.07.18.13
-        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Tue, 02 Jul 2019 07:18:14 -0700 (PDT)
-Subject: Re: [PATCH v4 3/8] target/arm/helper: Move M profile routines to
- m_helper.c
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Samuel Ortiz <sameo@linux.intel.com>,
- Rob Bradford <robert.bradford@intel.com>, qemu-arm <qemu-arm@nongnu.org>,
- Andrew Jones <drjones@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Yang Zhong <yang.zhong@intel.com>, Thomas Huth <thuth@redhat.com>
-References: <20190701194942.10092-1-philmd@redhat.com>
- <20190701194942.10092-4-philmd@redhat.com>
- <CAFEAcA99QK7u+Rev5C9Xb_vmnGSZvx9EO+8D_fFB1qFmiMejcA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <e15783bc-660f-f8ba-e1ed-1ec870de9474@redhat.com>
-Date: Tue, 2 Jul 2019 16:18:13 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=S+jHy48iSxspioqGS3Ovjl+wHzVcWi4HmsUkyeKtm5I=;
+        b=c+LCfDAH0Ref1Dy7emX/hZ33IXUQ7zv5t2diW6NQBoEFsl65g+FwFZYv7IenTo9cEH
+         iQkq3NjaWcpEMirD8I9iRbHgMl/7B94718GlkXGagZBeoFCYuXmJd0VlKTwDirw6ITsu
+         lvzmGahzRHX9rn/BTUL2Hf57gVfxv41FWOuSwsalPXoQtvUBg2yumFCOGhyBE0A/j3lT
+         cv8dvkW5Re+KU0GxujmlewGKxGq494YJqfH6D57T7bhvp5sxvF8BMKzlgUhLdjbAP7aj
+         g00hGtVKkEMNAhSx4gvZDc73WTfDu6A0bARWAYCJGOsy3MGY/hFps+EbUsA8nvff346z
+         zb2g==
+X-Gm-Message-State: APjAAAWj5ahDM/bZCPtNyjBBkw2cLxQIXTYf4aFoMPuSDk0e/MsTVO6d
+	oYLptvvo9o3TquKXkmLQ034c2S4vCRxjH2MTqQzov/CcfL/o+w==
+X-Google-Smtp-Source: APXvYqwcE4RPq9RDLvCdgHY2TC+CAMUsuI3/1rQwte61yIUvinTXNyhddPOR79QxhoN1sYIuc5AbkstoyqUcwMfiyDw=
+X-Received: by 2002:a9d:6a0f:: with SMTP id g15mr25110572otn.135.1562075928909;
+ Tue, 02 Jul 2019 06:58:48 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA99QK7u+Rev5C9Xb_vmnGSZvx9EO+8D_fFB1qFmiMejcA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: MgfsAVG06Kkl
+References: <20190701194942.10092-1-philmd@redhat.com> <20190701194942.10092-3-philmd@redhat.com>
+In-Reply-To: <20190701194942.10092-3-philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 2 Jul 2019 14:58:37 +0100
+Message-ID: <CAFEAcA855a+_uKWhF9pN5DyArD3g-YEYbQ+7hwMfaVAOvBYQxQ@mail.gmail.com>
+Subject: Re: [PATCH v4 2/8] target/arm: Restrict semi-hosting to TCG
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Samuel Ortiz <sameo@linux.intel.com>, Rob Bradford <robert.bradford@intel.com>, 
+	qemu-arm <qemu-arm@nongnu.org>, Andrew Jones <drjones@redhat.com>, 
+	Paolo Bonzini <pbonzini@redhat.com>, Yang Zhong <yang.zhong@intel.com>, 
+	Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: r0QJY+v4uBDr
 
-On 7/2/19 4:01 PM, Peter Maydell wrote:
-> On Mon, 1 Jul 2019 at 20:50, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->>
->> In preparation for supporting TCG disablement on ARM, we move most
->> of TCG related v7m/v8m helpers and APIs into their own file.
->>
->> Note: It is easier to review this commit using the 'histogram'
->>       diff algorithm:
->>
->>     $ git diff --diff-algorithm=histogram ...
->>   or
->>     $ git diff --histogram ...
->>
->> Suggested-by: Samuel Ortiz <sameo@linux.intel.com>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->> patch generated with git diff --histogram.
->>
->> v4: rebased
->> ---
->>  target/arm/Makefile.objs |    1 +
->>  target/arm/helper.c      | 2661 +------------------------------------
->>  target/arm/m_helper.c    | 2676 ++++++++++++++++++++++++++++++++++++++
->>  3 files changed, 2681 insertions(+), 2657 deletions(-)
->>  create mode 100644 target/arm/m_helper.c
-> 
-> This patch doesn't compile:
-> 
->>
->> -hwaddr arm_cpu_get_phys_page_attrs_debug(CPUState *cs, vaddr addr,
->> -                                         MemTxAttrs *attrs)
->> -{
->> -    ARMCPU *cpu = ARM_CPU(cs);
->> -    CPUARMState *env = &cpu->env;
->> -    hwaddr phys_addr;
->> -    target_ulong page_size;
->> -    int prot;
->> -    bool ret;
->> -    ARMMMUFaultInfo fi = {};
->> -    ARMMMUIdx mmu_idx = arm_mmu_idx(env);
->> -
->> -    *attrs = (MemTxAttrs) {};
->> -
->> -    ret = get_phys_addr(env, addr, 0, mmu_idx, &phys_addr,
->> -                        attrs, &prot, &page_size, &fi, NULL);
->> -
->> -    if (ret) {
->> -        return -1;
->> -    }
->> -    return phys_addr;
->> -}
->> -
-> 
-> ...it deletes the definition of arm_cpu_get_phys_page_attrs_debug(),
-> which should stay where it is.
+On Mon, 1 Jul 2019 at 20:50, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
+> wrote:
+>
+> Per Peter Maydell:
+>
+>   Semihosting hooks either SVC or HLT instructions, and inside KVM
+>   both of those go to EL1, ie to the guest, and can't be trapped to
+>   KVM.
+>
+> Let check_for_semihosting() return False when not running on TCG.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+> v3: inline call to g_assert_not_reached if !TCG
+> v4: fixed some ifdef that had moved in the next patch (Peter)
+> ---
+>  target/arm/Makefile.objs | 2 +-
+>  target/arm/cpu.h         | 7 +++++++
+>  target/arm/helper.c      | 8 +++++++-
+>  3 files changed, 15 insertions(+), 2 deletions(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Grrrrr I missed that rebase failure within the 2676 lines.
-
-I am sorry and ambarassed I failed at notice it doesn't even compile.
+thanks
+-- PMM

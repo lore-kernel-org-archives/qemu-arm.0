@@ -1,34 +1,34 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3194213wru;
-        Mon, 1 Jul 2019 17:15:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxglU7fuFqPsVrytZndjuSAq1AWBarbCa3HlaunVq5fr0pNvSYtnnAw+a80gSW03SloEHbL
-X-Received: by 2002:ad4:5311:: with SMTP id y17mr4943992qvr.1.1562026508824;
-        Mon, 01 Jul 2019 17:15:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562026508; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3194460wru;
+        Mon, 1 Jul 2019 17:15:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyGeQrqqJhSMP+YvCY7ehg2RYZwPciw2xakRDVRw04Oo+LrnA53fRldp9GzliGhgShXOQNi
+X-Received: by 2002:a0c:d1e2:: with SMTP id k31mr24263417qvh.173.1562026529105;
+        Mon, 01 Jul 2019 17:15:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562026529; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mj9doxcR1B8PhXkXJTqf7SbrcVtYGGh0T/QgKZZDLv9Tg08RjXV3jl6g4H6N5fBjGi
-         h2Gz6wJ49OiByteZLwdxRPAQ3VkJs9TK4eNW+BbJKB0qWQpLToJb/TgTXpTJtbF9m3kr
-         xMEU7tCqS8MxIxeGdK+Q50hU5OmqRN+JxOigaILKgY8sH0+5prFxTq5EiNFcPfPA7IPS
-         TXgyNOwI+HHV3ZroRfKehm9PFV7L2gSBO20W9SUdiCh9cR1PkDIDOzZXQPsFkn/qsDRE
-         iX+3moLbuMC5EbK50Z2jvQKZSUBSp2p82TZqhCPgFUhvmIqDYkfSCg02RcL5VAFKFTGO
-         rRUA==
+        b=l006+2zHvGio07jxcZjkK6DwzEE85f7kvah5ZZ7neAhrpcyA4mqWn9cOZEqTv4rGtx
+         mNnAvCPjVI+EB+jIraINmyOhLJ+kXJ/LAwJEXouSCnqrMdRP90G1eQEoKWGn3wxrgzdT
+         zHNzV+/l9IoD4nO5rTgYPZbThnssihqH/kFo7MRZnKAiFwaRHdByfuv5JKP/mqJS6byS
+         mH837iqfCoQ3m3RgtcB8pd1rxOVsd3eKNLwZ+P4X3VS6a+athMJhO40y+8qkCnkvylZU
+         YlxQNkl1ivvo+YikJZizVpDpt37dP03hrZySIakGOv/OsMf5N/3GHIu8k3AzBYwaE4qm
+         KFLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=+9uPOMx3lla0bZZ7PEKTsA2k2/PWOvGPyBWEpYRfYEE=;
-        b=Ymt3Pct3niJFKwPg30oQqRobWnk4Sp0LQyIUDh9fhiThSKGBSR/EbsKnbIFHdgFF2U
-         55+WXhPCQJdUB75P6GekdTiNPrehOxecdr+ByKk7z45kDGeVO1F+BK1vgqustf3Q4lkI
-         oSU3ODUgUNyS28jMH0G+6GYSGqg2Zn+LWBaliHtCKK4h5zv0rxfvKvW1ayQTLi1k6C6V
-         octhTPpLOkm5WgX0C5IYdK0xZUfd1PaORZTz4gS1rz3dkGl5y/Xn7ZKPhvKY0TMW9IeF
-         QWvGi7FMB3owmQZnh7FL2J0x+kPzBxi7BByHAvxHr0UVyej0pyvW1Ja9qLFxLjU3pcyt
-         n2Sg==
+        bh=yff0XpuNrzKOow1CNpTsCFfBvFIYeKjHhV+Css2AqAc=;
+        b=xXS92LSaPRWILxOTxa5mElriSgKdPydon35OXjAfMrCOL463ersEQBVNzS6v4uu9Om
+         pzPVbBDVeH7vrVO5oPqUDeT74fIh2nKOLgILlLsqdAmV+aMB9un2M/7p4RR1l/q/Iikn
+         zhmGMrzElW5S5RXJJ3QFq9wDqb6SvkhU/TTnTJatZ00qQJT72UkxL7tCFa++2B/l4koT
+         6qfe+tBfL0fc6QJzYAXAAeHjt3ulFbUbeEFxH6nYO9EpJ1mGfREdWg/SNK88K0BNlol6
+         Xhauk0yJSFpmVlwGvh14vNWotdeWLLwSkVvybEW27++ogo2nD6IaRvOvZQ089xWMxMBv
+         fyaw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id 4si9610387qkr.144.2019.07.01.17.15.08
+        by mx.google.com with ESMTPS id l5si8549862qve.23.2019.07.01.17.15.28
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Jul 2019 17:15:08 -0700 (PDT)
+        Mon, 01 Jul 2019 17:15:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
@@ -36,11 +36,11 @@ Authentication-Results: mx.google.com;
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A60BFF74BC;
-	Tue,  2 Jul 2019 00:15:07 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 205313079B8E;
+	Tue,  2 Jul 2019 00:15:28 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-21.brq.redhat.com [10.40.204.21])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id EEA1A1001B10;
-	Tue,  2 Jul 2019 00:14:47 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 66F001001B01;
+	Tue,  2 Jul 2019 00:15:07 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>,
@@ -71,78 +71,70 @@ Cc: Gerd Hoffmann <kraxel@redhat.com>,
 	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
 	Eduardo Habkost <ehabkost@redhat.com>,
 	Aleksandar Rikalo <arikalo@wavecomp.com>
-Subject: [PATCH v2 5/9] hw/block/pflash_cfi01: Add the DeviceReset() handler
-Date: Tue,  2 Jul 2019 02:12:57 +0200
-Message-Id: <20190702001301.4768-6-philmd@redhat.com>
+Subject: [PATCH v2 6/9] hw/block/pflash_cfi01: Simplify CFI_QUERY processing
+Date: Tue,  2 Jul 2019 02:12:58 +0200
+Message-Id: <20190702001301.4768-7-philmd@redhat.com>
 In-Reply-To: <20190702001301.4768-1-philmd@redhat.com>
 References: <20190702001301.4768-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.38]); Tue, 02 Jul 2019 00:15:07 +0000 (UTC)
-X-TUID: 5ErYKBkl4+OV
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.41]); Tue, 02 Jul 2019 00:15:28 +0000 (UTC)
+X-TUID: +fNxgLiMq5Ah
 
-A "system reset" sets the device state machine in READ_ARRAY mode
-and, after some delay, set the SR.7 READY bit.
+The current code does:
 
-We do not model timings, so we set the SR.7 bit directly.
+if (write_cycle == 0)
+  if (command == CFI_QUERY)
+    break
+  write_cycle += 1
+  last_command = command
 
-This pflash device is a child of TYPE_DEVICE.
-The TYPE_DEVICE interface provide a DeviceReset handler which will
-be called after the device is realized, and each time the machine
-resets itself.
+if (write_cycle == 1)
+  if (last_command == CFI_QUERY)
+    if (command == READ_ARRAY
+      write_cycle = 0
+      last_command = READ_ARRAY
 
-To avoid incoherent states when the machine resets (see but report
-below), factor out the reset code into pflash_cfi01_system_reset,
-and register the method as a device reset callback.
+Simplify by not increasing the write_cycle on CFI_QUERY,
+the next command are processed as normal wcycle=0.
 
-Buglink: https://bugzilla.redhat.com/show_bug.cgi?id=1678713
-Reported-by: Laszlo Ersek <lersek@redhat.com>
+This matches the hardware datasheet (we do not enter the WRITE
+state machine, thus no write cycle involved).
+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/block/pflash_cfi01.c | 15 +++++++++++++--
- 1 file changed, 13 insertions(+), 2 deletions(-)
+ hw/block/pflash_cfi01.c | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
 
 diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-index dd1dfd266b..8d632ea941 100644
+index 8d632ea941..c1b02219b2 100644
 --- a/hw/block/pflash_cfi01.c
 +++ b/hw/block/pflash_cfi01.c
-@@ -763,8 +763,6 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
-         pfl->max_device_width = pfl->device_width;
-     }
- 
--    pflash_mode_read_array(pfl);
--    pfl->status = 0x80; /* WSM ready */
-     /* Hardcoded CFI table */
-     /* Standard "QRY" string */
-     pfl->cfi_table[0x10] = 'Q';
-@@ -852,6 +850,18 @@ static void pflash_cfi01_realize(DeviceState *dev, Error **errp)
-     pfl->cfi_table[0x3f] = 0x01; /* Number of protection fields */
- }
- 
-+static void pflash_cfi01_system_reset(DeviceState *dev)
-+{
-+    PFlashCFI01 *pfl = PFLASH_CFI01(dev);
-+
-+    pflash_mode_read_array(pfl);
-+    /*
-+     * The WSM ready timer occurs at most 150ns after system reset.
-+     * This model deliberately ignores this delay.
-+     */
-+    pfl->status = 0x80;
-+}
-+
- static Property pflash_cfi01_properties[] = {
-     DEFINE_PROP_DRIVE("drive", PFlashCFI01, blk),
-     /* num-blocks is the number of blocks actually visible to the guest,
-@@ -896,6 +906,7 @@ static void pflash_cfi01_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-+    dc->reset = pflash_cfi01_system_reset;
-     dc->realize = pflash_cfi01_realize;
-     dc->props = pflash_cfi01_properties;
-     dc->vmsd = &vmstate_pflash;
+@@ -492,7 +492,8 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
+             return;
+         case 0x98: /* CFI query */
+             DPRINTF("%s: CFI query\n", __func__);
+-            break;
++            pfl->cmd = cmd;
++            return;
+         case 0xe8: /* Write to buffer */
+             DPRINTF("%s: Write to buffer\n", __func__);
+             /* FIXME should save @offset, @width for case 1+ */
+@@ -566,13 +567,6 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr offset,
+                 goto mode_read_array;
+             }
+             break;
+-        case 0x98:
+-            if (cmd == 0xff) {
+-                goto mode_read_array;
+-            } else {
+-                DPRINTF("%s: leaving query mode\n", __func__);
+-            }
+-            break;
+         default:
+             goto error_flash;
+         }
 -- 
 2.20.1

@@ -1,100 +1,138 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3974290wru;
-        Tue, 2 Jul 2019 09:20:16 -0700 (PDT)
-X-Received: by 2002:a2e:85d7:: with SMTP id h23mr18133877ljj.53.1562084416598;
-        Tue, 02 Jul 2019 09:20:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562084416; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp4076104wru;
+        Tue, 2 Jul 2019 11:08:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyv+OIOJ5bg4ciU08xjC9tRt/jvgZSYSPVuhm7P3xTN+ocFtRZhxbLz+n4Tu50jqSRCZCN+
+X-Received: by 2002:a50:b1e7:: with SMTP id n36mr37198039edd.227.1562090898174;
+        Tue, 02 Jul 2019 11:08:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562090898; cv=none;
         d=google.com; s=arc-20160816;
-        b=WAJvw8hn9IJ4FqhEh5llvMyIQCmVKPcj93jSE4lbys8KpGZR9Nz1Obl+dNFnETbVzb
-         CrU1E170J62Poprd8Zj+Kfwvsme76SBqsI76F3yVXpFvOTFrhLODaMeSZwPQ+K/Qx1zd
-         NzSAfJsBe6DeSbaA08T86oA+ApipM8geDRA9VA4tVe0OWk8odET4/8CGQSjqhJxX0jEU
-         R6BZ1WaFp7ogeCdaBAI8+VjKb7Q0O1c9UKW7Uz3s0D4fi2pX389QSCFpS6tt3YOisNk0
-         XckbQLPGFganCXzA/7tLZvfV+e2bQFMNWpA9HnvlLcSJown514MLNvsLFqMEhF7UusNj
-         47hw==
+        b=m0nhBAJJ7SCJ2ix7wrQYtls9yT9TGydr43mi29v4PqPpTl8eYaIVDGCNjE4B/Qo277
+         SqAnuKEv7lR4PQobINucEAWO6D9gMVYdAKNYdUvilcbycglbxVXlPHFBurIJgF7yrnxo
+         Lp01nvFCm9YWmlUwNgdjzp9LARb9/Zskjb+mpLkqdMoXPPrZ66DOosiM+sLpPps+KqON
+         5n+md51ofWBd/QWTJzzxfHP9w+yXsqnb00gH+WI4t7JcZnjS/GTEWb8Cz96M0R5/sW5B
+         VHj7ZpRyA92giow646EA2Dj42kYeB6vbHSeuhnJmpfDATsD7h9w3ZwXmZs1EKywDrerc
+         J1rA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Q4ef92tiRiSMYTng3BuuzrGksSLOIr5Nj23io44N++Q=;
-        b=YFdDD57JPIG8TyhihMa3Wwqjia8bDt7HR8vEs+RCQeR6aWhZcFWyHE9z6YGOdw2RPJ
-         OXhYckEHmJ+HXxK9zuU/8sWwaIk8e+hPdbOeiKwf0VwvCLAAb5vMa9WADepL8tdinqkH
-         1Qt3HsnBvKwn5qH3cQHP7mEmgE/vXaMSXFGz/c7cXpmWlU7YaOb20OUL0Jk+W3hiYkLC
-         OrEUJ5toGsfEKwic0456CkAfkEDTbcVRBAghmiTwy9bLe1Lkl7sEBT0MTwtDSeJwK5RK
-         HxHFCZal8gzHkUSqQT30HqY6iHgHWHetjRDB7xx9wAgAE4RKHZD/BhnpjannnpO1GMwC
-         gJ2w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=cFgkdvMYsWhiBib6W6plAvh0fpa8NPIlRLO7+mO7kaA=;
+        b=Sp/aEMhn0kpKugeYEOGA/5YuqicZU599VVlERpPQHh8YoDpICmrkLWwuXJVRZdTyno
+         LX3j5JLsTluNVZwIwUeR2DJlqRr3GHNPwOdxkq1KkRSzAtcZCi4j1Nq4lgKcdryUlUCG
+         2zeUNgVcJ3bxQe1mFvMF1W8lKjnTXZWOaVfRgP7YqYAVsJwTQJ0XMjy0uuLbyyet9fdP
+         bMIX6Z/jRZ6sBCz0Y4D+rDFW8H/p3IG3c+nXNuY9XAmN8zzyYvz06tOWKvNPZrrLUf2b
+         t2Cuh8yz0oaTRvplHKeSn5J3R1mRHaGoknnCA24fPH2ilxH7uxm1vqTs2wSsBo4+VwQw
+         BGBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ain3huJI;
-       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alistair23@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id k63sor3416861lfk.16.2019.07.02.09.20.16
-        (Google Transport Security);
-        Tue, 02 Jul 2019 09:20:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NjouclcP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n38si13033907edd.125.2019.07.02.11.08.18
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 02 Jul 2019 11:08:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Ain3huJI;
-       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=Q4ef92tiRiSMYTng3BuuzrGksSLOIr5Nj23io44N++Q=;
-        b=Ain3huJIOq1YLO+yEM2eSrxp2dL/ufBrdSTdEo+pPAnJuXIlO0j4JtbL12HGa24w1S
-         dmSoHWraS0YFtgOtepC0i9b5QjfO6I5oXXOArwf2lvyQq6v9JLKCWCthzLDhUTSu7xk/
-         aBBbFagK9pyNquYQSdw578aaWRSoS2gdZ7hHvMfrgrN3a5wewK7//VQCZ8RJ6T137TjU
-         WO9sjzcEgisr9gGkpIOYChzLoJQgFZe+T8OZzNWtp6l2XMjLxfRZQAJcTj6Nrjc4333J
-         HrpGIHpSxfxQr/Kl6PL/DNDyXqEyl+IKdCdASpAYAC2tWNjcE3tpUTXkxmJbxRADtmb9
-         Wh8Q==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NjouclcP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:56002 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hiNCT-0003GC-9r
+	for alex.bennee@linaro.org; Tue, 02 Jul 2019 14:08:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47441)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <alistair23@gmail.com>) id 1hiLX6-0006Iy-OJ
+ for qemu-devel@nongnu.org; Tue, 02 Jul 2019 12:21:29 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <alistair23@gmail.com>) id 1hiLX5-0002qW-0Y
+ for qemu-devel@nongnu.org; Tue, 02 Jul 2019 12:21:28 -0400
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:39839)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1hiLX3-0002pU-St; Tue, 02 Jul 2019 12:21:26 -0400
+Received: by mail-lj1-x243.google.com with SMTP id v18so17500995ljh.6;
+ Tue, 02 Jul 2019 09:21:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=cFgkdvMYsWhiBib6W6plAvh0fpa8NPIlRLO7+mO7kaA=;
+ b=NjouclcPe83CWqPrA4eudITx8wipx9id4p6wn7Gm4k7M31OhtVr82z1KIyZcy0vemC
+ 7Ovdnq+5vrHjYa7N9NHD9htEA7ArSd+3NOSBNf6HspzetnB5yiuOulYc6DeEikv2oTXt
+ G4UWFVCmomEe0pglcyOikKxmfrvXHCrrKBvx09yz6zT3TJlor8ms/vrWsz2eaa15XSQx
+ Vc0ITFWv6KEGOHoJd5g44KOEJn0UpHcUoOwHT2O1YSF/MiJfjq9+CiFktkVAN/ruhY+U
+ FL9mk5+aLVOsYdTLU2JDyNghG1Nas++K4YKP3BtZyk+PuRJlmbUA66gBNMPpSSQM9aH4
+ Xr6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=Q4ef92tiRiSMYTng3BuuzrGksSLOIr5Nj23io44N++Q=;
-        b=llXgWauwPSPzl/qmNK+/Gv+5orN1QSYAm9SkJ8E45V+HZQNAMo7mqQ+S+M1bzaRhSM
-         hWqJUjN6T36DVp0HPA5f28sPlJYV1ZlOUis0L7JyK1G58emulg4ASkQYzi7w0TuaLIrc
-         1Xpkp7NBJH12uvzejdkegknYKAslmoJ8APE57FtHYbaRmY0E8M19vyPVim+1des/iRHN
-         rTkwqXgiVl7/xxxCZYZ9ZW25l2s7T7DxRSD1EHjW1Ny69UGjVj6Jy7ydyfOx6qTzThYl
-         KuJwqXyZA+QBvhalEPsw7hfl9ZCw5dvspCD9rzS0dXUwjzZzQfWtjgCjIKLfUaPsNlEP
-         a3hQ==
-X-Gm-Message-State: APjAAAXsbyJ06GLiRbrG9Y8RqczNtGftIUtmvvK0ffK1D+qNetvFiFqm
-	2YNSdp35Wq7VD4OgsLt0bNP5PDdMxsUU4qlF50o=
-X-Google-Smtp-Source: APXvYqy73ouNbN/LjJtX6BMysXGKdI+0hXtek/vjy8AN6R9s8jFk97Lu4515Znjsbdd7HXnMRMwvvbsVQ2UVZGA9P9o=
-X-Received: by 2002:a19:c6d4:: with SMTP id w203mr2214883lff.135.1562084416249;
- Tue, 02 Jul 2019 09:20:16 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=cFgkdvMYsWhiBib6W6plAvh0fpa8NPIlRLO7+mO7kaA=;
+ b=gAM1QHb++3pa/DEUTpAjj2WFj1fM1QhIhMUDSNPVi3SKg8khT/aDzVY0xCyEtCAJf2
+ nwIIIwUie0y9kqJgcTboXujUol3FUA9SG0FR9e9vtNI+XCDKn9NyiANz3LU0Y3BlSKmt
+ Kx17YjMfPxFqtCApWxgyxmOa+J1eFwdc0f2WmfSi9F9kZjdRVruKaYKUG3dupSbQbaoS
+ Ftldcmf2DkH685Xe6QtR2NgaMuDtgr9HyMr0x0WrJ/m/UNBhJy/TgQGlgAZAw9IJCwrW
+ I13XpIK68fmxOCExHLZPtquAcktvcSAWQFHO8ShzpXGPaOErUoKzrdSx7e2g8xwvGFDq
+ wA/g==
+X-Gm-Message-State: APjAAAUDB4YwA30GYpatt2nQvYPjY4ucYhfehyq4q6MEbCWThelVvQDq
+ GhJVRlf6fe1MFS+97G9a4ZPUM3nBzFM5K2O1bJc=
+X-Received: by 2002:a2e:3604:: with SMTP id d4mr17966298lja.85.1562084483826; 
+ Tue, 02 Jul 2019 09:21:23 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190702001301.4768-1-philmd@redhat.com> <20190702001301.4768-10-philmd@redhat.com>
-In-Reply-To: <20190702001301.4768-10-philmd@redhat.com>
+References: <20190701123108.12493-1-philmd@redhat.com>
+ <20190701123108.12493-6-philmd@redhat.com>
+In-Reply-To: <20190701123108.12493-6-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 2 Jul 2019 09:17:12 -0700
-Message-ID: <CAKmqyKM0uQa-dRLoZNhU9gD9-X2wpA6k1GfqAJh0ZH3UzBH7Fw@mail.gmail.com>
-Subject: Re: [PATCH v2 9/9] hw/block/pflash_cfi01: Hold the PRI table offset
- in a variable
+Date: Tue, 2 Jul 2019 09:18:20 -0700
+Message-ID: <CAKmqyKMWb5LE=gtdDpbEUcceGD9T3V9gNAXfo16sOuQh2hCVgg@mail.gmail.com>
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>, 
-	Laszlo Ersek <lersek@redhat.com>, David Gibson <david@gibson.dropbear.id.au>, 
-	"open list:New World" <qemu-ppc@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
-	Max Filippov <jcmvbkbc@gmail.com>, John Snow <jsnow@redhat.com>, 
-	Aleksandar Markovic <amarkovic@wavecomp.com>, Wei Yang <richardw.yang@linux.intel.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Aurelien Jarno <aurelien@aurel32.net>, BALATON Zoltan <balaton@eik.bme.hu>, 
-	Markus Armbruster <armbru@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>, 
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Michael Walle <michael@walle.cc>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>, 
-	Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>, 
-	"Michael S. Tsirkin" <mst@redhat.com>, Qemu-block <qemu-block@nongnu.org>, 
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>, 
-	Aleksandar Rikalo <arikalo@wavecomp.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: u3RygtPKwIIU
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::243
+Subject: Re: [Qemu-devel] [PATCH 5/6] hw/dma/xilinx_axi: Use
+ object_initialize_child for correct ref. counting
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Jason Wang <jasowang@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RMZMUmYFUKtq
 
-On Mon, Jul 1, 2019 at 5:16 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+On Mon, Jul 1, 2019 at 5:32 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
 om> wrote:
 >
-> Manufacturers are allowed to move the PRI table, this is why the
-> offset is queryable via fixed offsets 0x15/0x16.
-> Add a variable to hold the offset, so it will be easier to later
-> move the PRI table.
+> As explained in commit aff39be0ed97:
+>
+>   Both functions, object_initialize() and object_property_add_child()
+>   increase the reference counter of the new object, so one of the
+>   references has to be dropped afterwards to get the reference
+>   counting right. Otherwise the child object will not be properly
+>   cleaned up when the parent gets destroyed.
+>   Thus let's use now object_initialize_child() instead to get the
+>   reference counting here right.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
@@ -103,102 +141,43 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/block/pflash_cfi01.c | 41 ++++++++++++++++++++++++++---------------
->  1 file changed, 26 insertions(+), 15 deletions(-)
+>  hw/dma/xilinx_axidma.c | 16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
 >
-> diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-> index e891112b67..f65840eb2b 100644
-> --- a/hw/block/pflash_cfi01.c
-> +++ b/hw/block/pflash_cfi01.c
-> @@ -762,6 +762,7 @@ static void pflash_cfi01_realize(DeviceState *dev, Er=
-ror **errp)
->      }
+> diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+> index 921be178d9..91f5ec587f 100644
+> --- a/hw/dma/xilinx_axidma.c
+> +++ b/hw/dma/xilinx_axidma.c
+> @@ -563,14 +563,14 @@ static void xilinx_axidma_init(Object *obj)
+>      XilinxAXIDMA *s =3D XILINX_AXI_DMA(obj);
+>      SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
 >
->      /* Hardcoded CFI table */
-> +    const uint16_t pri_ofs =3D 0x31;
->      /* Standard "QRY" string */
->      pfl->cfi_table[0x10] =3D 'Q';
->      pfl->cfi_table[0x11] =3D 'R';
-> @@ -770,14 +771,17 @@ static void pflash_cfi01_realize(DeviceState *dev, =
-Error **errp)
->      pfl->cfi_table[0x13] =3D 0x01;
->      pfl->cfi_table[0x14] =3D 0x00;
->      /* Primary extended table address (none) */
-> -    pfl->cfi_table[0x15] =3D 0x31;
-> -    pfl->cfi_table[0x16] =3D 0x00;
-> +    pfl->cfi_table[0x15] =3D pri_ofs;
-> +    pfl->cfi_table[0x16] =3D pri_ofs >> 8;
->      /* Alternate command set (none) */
->      pfl->cfi_table[0x17] =3D 0x00;
->      pfl->cfi_table[0x18] =3D 0x00;
->      /* Alternate extended table (none) */
->      pfl->cfi_table[0x19] =3D 0x00;
->      pfl->cfi_table[0x1A] =3D 0x00;
-> +
-> +    /* CFI: System Interface Information */
-> +
->      /* Vcc min */
->      pfl->cfi_table[0x1B] =3D 0x45;
->      /* Vcc max */
-> @@ -802,6 +806,9 @@ static void pflash_cfi01_realize(DeviceState *dev, Er=
-ror **errp)
->      pfl->cfi_table[0x25] =3D 0x04;
->      /* Max timeout for chip erase */
->      pfl->cfi_table[0x26] =3D 0x00;
-> +
-> +    /* CFI: Device Geometry Definition */
-> +
->      /* Device size */
->      pfl->cfi_table[0x27] =3D ctz32(device_len); /* + 1; */
->      /* Flash device interface (8 & 16 bits) */
-> @@ -826,26 +833,30 @@ static void pflash_cfi01_realize(DeviceState *dev, =
-Error **errp)
->      pfl->cfi_table[0x2E] =3D (blocks_per_device - 1) >> 8;
->      pfl->cfi_table[0x2F] =3D sector_len_per_device >> 8;
->      pfl->cfi_table[0x30] =3D sector_len_per_device >> 16;
-> +    assert(0x30 < pri_ofs);
-> +
-> +    /* CFI: Primary-Vendor Specific */
+> -    object_initialize(&s->rx_data_dev, sizeof(s->rx_data_dev),
+> -                      TYPE_XILINX_AXI_DMA_DATA_STREAM);
+> -    object_initialize(&s->rx_control_dev, sizeof(s->rx_control_dev),
+> -                      TYPE_XILINX_AXI_DMA_CONTROL_STREAM);
+> -    object_property_add_child(OBJECT(s), "axistream-connected-target",
+> -                              (Object *)&s->rx_data_dev, &error_abort);
+> -    object_property_add_child(OBJECT(s), "axistream-control-connected-ta=
+rget",
+> -                              (Object *)&s->rx_control_dev, &error_abort=
+);
+> +    object_initialize_child(OBJECT(s), "axistream-connected-target",
+> +                            &s->rx_data_dev, sizeof(s->rx_data_dev),
+> +                            TYPE_XILINX_AXI_ENET_DATA_STREAM, &error_abo=
+rt,
+> +                            NULL);
+> +    object_initialize_child(OBJECT(s), "axistream-control-connected-targ=
+et",
+> +                            &s->rx_control_dev, sizeof(s->rx_control_dev=
+),
+> +                            TYPE_XILINX_AXI_ENET_CONTROL_STREAM, &error_=
+abort,
+> +                            NULL);
 >
->      /* Extended */
-> -    pfl->cfi_table[0x31] =3D 'P';
-> -    pfl->cfi_table[0x32] =3D 'R';
-> -    pfl->cfi_table[0x33] =3D 'I';
-> +    pfl->cfi_table[0x00 + pri_ofs] =3D 'P';
-> +    pfl->cfi_table[0x01 + pri_ofs] =3D 'R';
-> +    pfl->cfi_table[0x02 + pri_ofs] =3D 'I';
->
-> -    pfl->cfi_table[0x34] =3D '1';
-> -    pfl->cfi_table[0x35] =3D '0';
-> +    pfl->cfi_table[0x03 + pri_ofs] =3D '1';
-> +    pfl->cfi_table[0x04 + pri_ofs] =3D '0';
->
-> -    pfl->cfi_table[0x36] =3D 0x00;
-> -    pfl->cfi_table[0x37] =3D 0x00;
-> -    pfl->cfi_table[0x38] =3D 0x00;
-> -    pfl->cfi_table[0x39] =3D 0x00;
-> +    pfl->cfi_table[0x05 + pri_ofs] =3D 0x00; /* Optional features */
-> +    pfl->cfi_table[0x06 + pri_ofs] =3D 0x00;
-> +    pfl->cfi_table[0x07 + pri_ofs] =3D 0x00;
-> +    pfl->cfi_table[0x08 + pri_ofs] =3D 0x00;
->
-> -    pfl->cfi_table[0x3a] =3D 0x00;
-> +    pfl->cfi_table[0x09 + pri_ofs] =3D 0x00; /* Func. supported after su=
-spend */
->
-> -    pfl->cfi_table[0x3b] =3D 0x00;
-> -    pfl->cfi_table[0x3c] =3D 0x00;
-> +    pfl->cfi_table[0x0a + pri_ofs] =3D 0x00; /* Block status register ma=
-sk */
-> +    pfl->cfi_table[0x0b + pri_ofs] =3D 0x00;
->
-> -    pfl->cfi_table[0x3f] =3D 0x01; /* Number of protection fields */
-> +    pfl->cfi_table[0x0e + pri_ofs] =3D 0x01; /* Number of protection fie=
-lds */
-> +    assert(0x0e + pri_ofs < ARRAY_SIZE(pfl->cfi_table));
->  }
->
->  static void pflash_cfi01_system_reset(DeviceState *dev)
+>      sysbus_init_irq(sbd, &s->streams[0].irq);
+>      sysbus_init_irq(sbd, &s->streams[1].irq);
 > --
 > 2.20.1
+>
 >

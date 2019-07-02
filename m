@@ -1,155 +1,204 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3959837wru;
-        Tue, 2 Jul 2019 09:06:54 -0700 (PDT)
-X-Received: by 2002:a2e:3604:: with SMTP id d4mr17925500lja.85.1562083614582;
-        Tue, 02 Jul 2019 09:06:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562083614; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp4060945wru;
+        Tue, 2 Jul 2019 10:53:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzKBPsbmGpdBJvI142h3V10vce/pUscv1/Dlx3Xeq/OK/v6WVsc2oSqH1AX63Ola97knHD2
+X-Received: by 2002:a50:84e2:: with SMTP id 89mr37372546edq.218.1562090002075;
+        Tue, 02 Jul 2019 10:53:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562090002; cv=none;
         d=google.com; s=arc-20160816;
-        b=B8Sm2VnzyusT/Bq2yxL0iRZ3bZ3Z88Tgirlp86XZR4kdXY78Y4MQfoE805m3Vl4XVz
-         k42C1kHgKoVVhJpTwDXwcPKk7nKnN5P7ikkTXQK7itIyRhSSOPJkK+gHHydk8XupOIiy
-         vMxlOjJMuuhZ3RxWvGjmaUEIIsS+0xjx08nyAfXTFHxA729fZmbggyGGnzZuW/wBHaoV
-         lNFkrTlmlSDYLeawL6Aoacp8nUMgmfTa4tE9/BjHtMim70QisYSluOpOpjWgwDj/pco5
-         C/8IGB5GZwao3k+6A6H+r5Eoz5Xas7xVtF4g72Q9S8A71lgA5RrraA6k8W6J/Wwf/eya
-         q0Pw==
+        b=EQuLvb/ty4zFO/FDS4VVgSenAsvYbswuo2hptKJrf8fchmLfKuKOxfHqXUeMlLEVGJ
+         v3WKffy6Fw+Hzu9OnnLLHLFyX7hH42wLPZjdyXOZnjRxEVPPOrHHAfwCyNolPvij3PDw
+         4y26HWG5SbVcZTLpkXXGQUIUCo5unlx/fsonc6gHWUR45RcX9RSSddm0yibV7yfvRR0e
+         Ve2CwmnVw8jlCVkz7UbTDSeZlc9M2t7W7jAI3MfcZ6LrtLsX4wXRUMFIExTk8rWVyIms
+         rw5YX0ux9MMxjdcgj0fV+ErT0hFxwOFz/YXVzPdj+hE063qwNkd79VhPpVzyfYotP9Mo
+         krKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=191PEazMI6AZYxomtIRj4zRN76qVi7zp+FaJdnT1SJc=;
-        b=kImvOmj+bWLBE2gUt5edpCzpurzfzSIPL9hwMgIRSeZQKjPst6rwXVvC8Ikwd+ZPyF
-         /uajSmqabLUiSflUl5ZyRUuNeRO/TcCwCUpptbN8Ib7Y8a2riJMjH3V8BT2fp+/ISYIE
-         ez92sFSUi/kfapApAdRcg7M9nXRH9RGfmqDdl+N2Y8Y4+vldkpo5fSlgvi+g1mJCvVKm
-         CPcWF6aAzZa1+KbAwwMGziGgaHKA4ANe/fa8NmUQH1Rkxt0C9T1flmf7XoD/y2jV5Xqv
-         Kzssdl92I0tYpOdt7fnNDrNO+Mw4uL3378X3zH2J9tfQBvbgRGkTN547+JeUut4kj0yf
-         qusQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=fMhjUBszIrEjyyu4IyeLoSfp6Qi5xqaef0VPVrzvfUY=;
+        b=uRWvIvgXITi1CntxS1en7IVujzuQ1ghTn588aO36qMw8XazlYLzrpZpc8RHgxSj1uK
+         gjMYLmb0ROVMQK1GNwZ2YrmhR7EE4SOJnKte9uBcj8cog93Y2vUxwmxiING426aQaMCN
+         SvpPoVjoKPUnAqkQa63/WQf6B5MqPS+Zc00MvAGe+lGlqRQxceYiX7jj2qcX79qWaY7v
+         7RzkBHzENWu5yKIgRaC8RcqBYD0KuxvIxUT8cv59TDKZR4Na1VGDlJS3w3on5z+6eLy+
+         KaA3TOX9pveOdSKUVSbIRIdB8mPbPur9X3d0jOFHjrpbvG7dpb4N9iFbCw4y41v6MByk
+         sqVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Am2HpwDf;
-       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alistair23@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id d26sor3478860lfn.9.2019.07.02.09.06.54
-        (Google Transport Security);
-        Tue, 02 Jul 2019 09:06:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id gh2si9329523ejb.254.2019.07.02.10.53.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 02 Jul 2019 10:53:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Am2HpwDf;
-       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=191PEazMI6AZYxomtIRj4zRN76qVi7zp+FaJdnT1SJc=;
-        b=Am2HpwDfCU2j4FqQhU35pMIcvHZiJA14RgnYPnaOWp+dBH3ua1vxFlPGaIyM7tlmCN
-         5865o8vL1KQPVgv+vmCjNUQcia3MiLYt//LS3UZFnhiYFYkZOiXM2bJs5eWvK9bxtiqT
-         F8tS3U4fhjx4g+4bZYlQjoaj6XwTTQH8fShnSBpEHQXJt/lted8iHqrtAwmaJf+r18+o
-         VhIBESIA9C7HqUvP5S+pV1knvKV691P4uOqe+7o1CRIBrITVqefhReAu996rqCUjcB2t
-         UZ0MK+AO9D8yaCII5zqoU5LlJ4qyfcjHBrp0ZHEy24b3Rd0r5jxmcHsbGXW4u59sQuOQ
-         fVkw==
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55910 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hiMy0-0005BF-4V
+	for alex.bennee@linaro.org; Tue, 02 Jul 2019 13:53:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55218)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <philmd@redhat.com>) id 1hiM8p-0003vS-46
+ for qemu-arm@nongnu.org; Tue, 02 Jul 2019 13:00:28 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1hiM8n-0005QU-6O
+ for qemu-arm@nongnu.org; Tue, 02 Jul 2019 13:00:27 -0400
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:45847)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hiM8m-0005PJ-Vw
+ for qemu-arm@nongnu.org; Tue, 02 Jul 2019 13:00:25 -0400
+Received: by mail-wr1-f68.google.com with SMTP id f9so18632585wre.12
+ for <qemu-arm@nongnu.org>; Tue, 02 Jul 2019 10:00:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=191PEazMI6AZYxomtIRj4zRN76qVi7zp+FaJdnT1SJc=;
-        b=mFaulV0aN3Uo3zFtJIHPZmnG/Hqe4UcQsEe67ZnlC47Pv8l7ygQK0FXv7HYDO6Ot4O
-         2Q+jrJ37h4TK9Y8oZbCu9dOhQpiOqZdLewzs7S/alTvTafGIpccYvXAUipCEL0GHucnz
-         1Eo8zUnrzIG61RFUHgGDMytth4lQCqSScYNQJ0E54p7JgIS+Fw+ruRj5VPLUige+2rZM
-         yXAGdV9BN54oPiMkRCd0AzQM3knqac5uqvlFzeuOUMjbLyROmViWkdPwgVfM7w0Q3pdz
-         fheGcaDE+mv3i87j6uAnomE9IvrGfaxesFZ18wAlcHTlOV77I8x9QtennY8cjLxgshHW
-         vrDw==
-X-Gm-Message-State: APjAAAW/88pBKyf5HIE5mv7uBg1KWDSIcfnqHV/WHvITWQemmbyh+hTt
-	kPiu8CwbCRsSfWPTDIX7GT8uJOx2JgPE6Pdu2IA=
-X-Google-Smtp-Source: APXvYqyHbgXSZavlE/NdxL+IluKO6aiBhhzlUNZvLBXoABzxVIyUSgTn8WzBKuDJ3cVeZpWtkXfRFpzGcCvHXjuQqY8=
-X-Received: by 2002:a19:4c05:: with SMTP id z5mr14851396lfa.5.1562083614266;
- Tue, 02 Jul 2019 09:06:54 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=fMhjUBszIrEjyyu4IyeLoSfp6Qi5xqaef0VPVrzvfUY=;
+ b=S4N6Q/J5P0y4TlQrC+8Uj7VYjD7OttPtESuxAluippwupEwdN/jbdWweCrSysTsAFe
+ jFlLJ7oNE4AeugtpO316T/iK9ncmn4EavIffgB0i3uqiFdd+wgMGtFTrESg9JFFzdHcW
+ pr/UdOh84CHOj3yMN4Q/5UPfOPtlBKH83xyZRsbhaBO+l79dlr1ISu9ZwT9J4K9zuMtw
+ pnwlRpiS+qVpEXUwR71zOUIA2MdBki2QnUmPqVvWHhIsDV8B7FNqTRPS6BOw91uyRkf9
+ mOQ2gIglG5uOJaLWvhMX0IOeH9JvHQCibLWGnLDtzf4fWlRXA4gICye5V1YuXIUyuVO1
+ Jitg==
+X-Gm-Message-State: APjAAAVsBXx2vfPl/UbiuanI0Qu2+35/+sVgTr40pO3TzTtZbnxi7XLZ
+ m37oKAMOgO3/q9tReVBWznNXDg==
+X-Received: by 2002:adf:ed50:: with SMTP id u16mr12166638wro.108.1562086823166; 
+ Tue, 02 Jul 2019 10:00:23 -0700 (PDT)
+Received: from [192.168.1.38] (56.red-88-18-140.staticip.rima-tde.net.
+ [88.18.140.56])
+ by smtp.gmail.com with ESMTPSA id q20sm20515867wra.36.2019.07.02.10.00.22
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Tue, 02 Jul 2019 10:00:22 -0700 (PDT)
+To: Alistair Francis <alistair23@gmail.com>
+References: <20190701123108.12493-1-philmd@redhat.com>
+ <20190701123108.12493-6-philmd@redhat.com>
+ <CAKmqyKMWb5LE=gtdDpbEUcceGD9T3V9gNAXfo16sOuQh2hCVgg@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <4c4ea506-edd8-521d-b75f-31362a75f392@redhat.com>
+Date: Tue, 2 Jul 2019 19:00:21 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-References: <20190702001301.4768-1-philmd@redhat.com> <20190702001301.4768-7-philmd@redhat.com>
-In-Reply-To: <20190702001301.4768-7-philmd@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 2 Jul 2019 09:03:51 -0700
-Message-ID: <CAKmqyKMgXKULX8JJSTmLyCbzRYJkeHZ=HqHBHA_cro-a21v=Zg@mail.gmail.com>
-Subject: Re: [PATCH v2 6/9] hw/block/pflash_cfi01: Simplify CFI_QUERY processing
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>, 
-	Laszlo Ersek <lersek@redhat.com>, David Gibson <david@gibson.dropbear.id.au>, 
-	"open list:New World" <qemu-ppc@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
-	Max Filippov <jcmvbkbc@gmail.com>, John Snow <jsnow@redhat.com>, 
-	Aleksandar Markovic <amarkovic@wavecomp.com>, Wei Yang <richardw.yang@linux.intel.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Aurelien Jarno <aurelien@aurel32.net>, BALATON Zoltan <balaton@eik.bme.hu>, 
-	Markus Armbruster <armbru@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>, 
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Michael Walle <michael@walle.cc>, 
-	Paolo Bonzini <pbonzini@redhat.com>, Max Reitz <mreitz@redhat.com>, Kevin Wolf <kwolf@redhat.com>, 
-	Richard Henderson <rth@twiddle.net>, qemu-arm <qemu-arm@nongnu.org>, 
-	"Michael S. Tsirkin" <mst@redhat.com>, Qemu-block <qemu-block@nongnu.org>, 
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>, 
-	Aleksandar Rikalo <arikalo@wavecomp.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: W6VjW46nruUS
+In-Reply-To: <CAKmqyKMWb5LE=gtdDpbEUcceGD9T3V9gNAXfo16sOuQh2hCVgg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.221.68
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 5/6] hw/dma/xilinx_axi: Use
+ object_initialize_child for correct ref. counting
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Jason Wang <jasowang@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ Antony Pavlov <antonynpavlov@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pHp0eoHrhbzG
 
-On Mon, Jul 1, 2019 at 5:15 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om> wrote:
+On 7/2/19 6:18 PM, Alistair Francis wrote:
+> On Mon, Jul 1, 2019 at 5:32 AM Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
+>>
+>> As explained in commit aff39be0ed97:
+>>
+>>   Both functions, object_initialize() and object_property_add_child()
+>>   increase the reference counter of the new object, so one of the
+>>   references has to be dropped afterwards to get the reference
+>>   counting right. Otherwise the child object will not be properly
+>>   cleaned up when the parent gets destroyed.
+>>   Thus let's use now object_initialize_child() instead to get the
+>>   reference counting here right.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> 
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 >
-> The current code does:
->
-> if (write_cycle =3D=3D 0)
->   if (command =3D=3D CFI_QUERY)
->     break
->   write_cycle +=3D 1
->   last_command =3D command
->
-> if (write_cycle =3D=3D 1)
->   if (last_command =3D=3D CFI_QUERY)
->     if (command =3D=3D READ_ARRAY
->       write_cycle =3D 0
->       last_command =3D READ_ARRAY
->
-> Simplify by not increasing the write_cycle on CFI_QUERY,
-> the next command are processed as normal wcycle=3D0.
->
-> This matches the hardware datasheet (we do not enter the WRITE
-> state machine, thus no write cycle involved).
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Alistair
+> 
+>> ---
+>>  hw/dma/xilinx_axidma.c | 16 ++++++++--------
+>>  1 file changed, 8 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+>> index 921be178d9..91f5ec587f 100644
+>> --- a/hw/dma/xilinx_axidma.c
+>> +++ b/hw/dma/xilinx_axidma.c
+>> @@ -563,14 +563,14 @@ static void xilinx_axidma_init(Object *obj)
+>>      XilinxAXIDMA *s = XILINX_AXI_DMA(obj);
+>>      SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+>>
+>> -    object_initialize(&s->rx_data_dev, sizeof(s->rx_data_dev),
+>> -                      TYPE_XILINX_AXI_DMA_DATA_STREAM);
+>> -    object_initialize(&s->rx_control_dev, sizeof(s->rx_control_dev),
+>> -                      TYPE_XILINX_AXI_DMA_CONTROL_STREAM);
+>> -    object_property_add_child(OBJECT(s), "axistream-connected-target",
+>> -                              (Object *)&s->rx_data_dev, &error_abort);
+>> -    object_property_add_child(OBJECT(s), "axistream-control-connected-target",
+>> -                              (Object *)&s->rx_control_dev, &error_abort);
+>> +    object_initialize_child(OBJECT(s), "axistream-connected-target",
+>> +                            &s->rx_data_dev, sizeof(s->rx_data_dev),
+>> +                            TYPE_XILINX_AXI_ENET_DATA_STREAM, &error_abort,
+>> +                            NULL);
+>> +    object_initialize_child(OBJECT(s), "axistream-control-connected-target",
+>> +                            &s->rx_control_dev, sizeof(s->rx_control_dev),
+>> +                            TYPE_XILINX_AXI_ENET_CONTROL_STREAM, &error_abort,
+>> +                            NULL);
+>>
+>>      sysbus_init_irq(sbd, &s->streams[0].irq);
+>>      sysbus_init_irq(sbd, &s->streams[1].irq);
+>> --
+>> 2.20.1
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+As GCC suggested, this patch requires this snippet squashed:
 
-Alistair
+-- >8 --
+diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+@@ -565,11 +565,11 @@ static void xilinx_axidma_init(Object *obj)
 
-> ---
->  hw/block/pflash_cfi01.c | 10 ++--------
->  1 file changed, 2 insertions(+), 8 deletions(-)
->
-> diff --git a/hw/block/pflash_cfi01.c b/hw/block/pflash_cfi01.c
-> index 8d632ea941..c1b02219b2 100644
-> --- a/hw/block/pflash_cfi01.c
-> +++ b/hw/block/pflash_cfi01.c
-> @@ -492,7 +492,8 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr off=
-set,
->              return;
->          case 0x98: /* CFI query */
->              DPRINTF("%s: CFI query\n", __func__);
-> -            break;
-> +            pfl->cmd =3D cmd;
-> +            return;
->          case 0xe8: /* Write to buffer */
->              DPRINTF("%s: Write to buffer\n", __func__);
->              /* FIXME should save @offset, @width for case 1+ */
-> @@ -566,13 +567,6 @@ static void pflash_write(PFlashCFI01 *pfl, hwaddr of=
-fset,
->                  goto mode_read_array;
->              }
->              break;
-> -        case 0x98:
-> -            if (cmd =3D=3D 0xff) {
-> -                goto mode_read_array;
-> -            } else {
-> -                DPRINTF("%s: leaving query mode\n", __func__);
-> -            }
-> -            break;
->          default:
->              goto error_flash;
->          }
-> --
-> 2.20.1
->
+     object_initialize_child(OBJECT(s), "axistream-connected-target",
+                             &s->rx_data_dev, sizeof(s->rx_data_dev),
+-                            TYPE_XILINX_AXI_ENET_DATA_STREAM, &error_abort,
++                            TYPE_XILINX_AXI_DMA_DATA_STREAM, &error_abort,
+                             NULL);
+     object_initialize_child(OBJECT(s),
+"axistream-control-connected-target",
+                             &s->rx_control_dev, sizeof(s->rx_control_dev),
+-                            TYPE_XILINX_AXI_ENET_CONTROL_STREAM,
+&error_abort,
++                            TYPE_XILINX_AXI_DMA_CONTROL_STREAM,
+&error_abort,
+                             NULL);
+
+     sysbus_init_irq(sbd, &s->streams[0].irq);
+---
+
+Since it was commented in reply to the cover, I assume your R-b stands
+with the snippet applied.
+
+Thanks for reviewing,
+
+Phil.

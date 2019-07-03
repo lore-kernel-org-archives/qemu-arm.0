@@ -1,112 +1,83 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp275389wru;
-        Tue, 2 Jul 2019 21:16:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy6xHY8h8m4in4Q/wkA6uDPZDe+NaBX+k5SUjm4gFDa0xstoRyzXSkHuDV+LhPSLukJxwgS
-X-Received: by 2002:aa7:c98c:: with SMTP id c12mr38976131edt.225.1562127380947;
-        Tue, 02 Jul 2019 21:16:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562127380; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp354317wru;
+        Tue, 2 Jul 2019 22:42:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwNIdTXjhTraKx1vqhIRYF5n2rjG1Qn9Wo1MIaiCbR7sOIP55oJUH1X7Q/Q0EKLTJb8h5c6
+X-Received: by 2002:a17:906:4f8f:: with SMTP id o15mr32433527eju.129.1562132543798;
+        Tue, 02 Jul 2019 22:42:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562132543; cv=none;
         d=google.com; s=arc-20160816;
-        b=ldaLCWxETcpHhQmzAvhOl/ypOBRdKEmUXQiVrUz3ZPB8PUUnYV+tAZC5YVuS7iKxNJ
-         z0WFs5E2Y7k/cEQ/NZ8Spt0zkl5wZ71dUnurV/YlBz9EJ5Wy8tzGMl5cBMS3BRs5CSLJ
-         y20jksPefkBBAoBtj679Osk4x/F6OhKjLhTGQ++aAAeQCKDj92QoJ7RFxNe1A1hP4Xr+
-         bC05V33y1hW/Q4a1jWWzHng8a1K95afkHGoUkPjM9ijBmauejMtahfeyeozlCxsBn5wu
-         dJ02fHkVUXLVg1HD1C769W8COoPmZMa6Sw3JSL5sV3b9yZ2NylK3ap518szQw1Kookci
-         XmUA==
+        b=JyrVVnWRHwwKPMDCdYNqmpgPTpkMr1/l0PhQuZM7U6wxQeF1kFIAQrCIHWZAecPQ/e
+         c44QX7CVLgO1t2acxuyyDrqITDoOH5C/qHp0cdjCNpDuuO60HKGx9fjBdVEJlyvov+wt
+         WvUe7NTr7YOSyYONSOCyBbXcm1BO+l8vG4tyKPst1qym+eEXKIoMIyJORrv8eeA1GRs6
+         lHJzvZtPHq0J7aoCjFt+xbsxzSmeeWsi3Al98NopdzUfZQqUqHToOteAZqd00zS6w8Bh
+         7t8/6PGCf6fg/9wfHGyA1rSok1na7gHSwV8s5aZg4/OZx9aiWD1npufZrQ79GcdSKBpC
+         6KUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:from:date:references
-         :in-reply-to:message-id:mime-version:user-agent:dkim-signature
-         :dkim-signature;
-        bh=qNthOCkoDfNQ0czNLw9xgSQqJyrw+r7v3JTNP7ZCxe4=;
-        b=b3eI3tyuqSwJ8+5est1o9MtOYjEA6Uz4wuMXxFtcHjy5h2cDSmuUMI4CKP79/5e4XT
-         hiUh6y5J9d49+6xYNpUAJAPMRvbI9Jcsb4w4l3s5Y6TVRpQJJvL5uxVcoB7NT7NLKvx+
-         edcVJFbRjYB1jSnCcXjxu1hiTUfgtZL8/VjS3aRg8dgia+RzzVz0wSuQp069gqpE3OK5
-         D3ZbQj4NSZP2jKuTwd0STsedGQZwDJbLTCDRrn/3UxQBUIvLLzqpcYDn3suWLGcwX83o
-         c5QGY4AOvViYnloCoWhZ4JjdNvA5pj8ox6lvscW2DtmhhqzaZqBy+Hq/e4pqOYwMCUCi
-         0LJQ==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=G6jF54tGw4yUdpXsCb0eVqZbgEaVzhE+KYRNP1ryB9k=;
+        b=RbmOcqbJkUMSg4Fwq5iuBdeE4ryZQ42y7ePJHFgQbQNMwh9XW7zxjc2RfO3sifWl3R
+         2UuCaFlL2FY1hC6Y39qcQreBfOqpPmO/UokkCInbxEcHZypHQKPXJqf0Gme/HRZTgGko
+         rYtL+zSFUwklSTteblxVN+rJ+9qxsV62rJdyhSFZyghJpLjIh2q+z4ezzOibl5fp+d/u
+         Dl+5RazA7nYp/16Q7CfjdH9LLdjlBTt3tPMkEy2U9CnosuGb2kEvmC4wDvWgU/0envAg
+         v1xU6JvabglRDcksaNBIGpnyQE2S32/43nXT0CDlCrznMobxy39rpzvxb6ZdFsVwrKlY
+         2cXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=hQ09H4Rl;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=H0ZUkoas;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w27si993375edc.327.2019.07.02.21.16.20
+        by mx.google.com with ESMTPS id 90si1127016edq.146.2019.07.02.22.42.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jul 2019 21:16:20 -0700 (PDT)
+        Tue, 02 Jul 2019 22:42:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=hQ09H4Rl;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=H0ZUkoas;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60624 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:32830 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hiWgt-00040H-TK
-	for alex.bennee@linaro.org; Wed, 03 Jul 2019 00:16:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52634)
+	id 1hiY2A-0006vq-Uy
+	for alex.bennee@linaro.org; Wed, 03 Jul 2019 01:42:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40300)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <andrew@aj.id.au>) id 1hiWgj-000402-Tu
- for qemu-arm@nongnu.org; Wed, 03 Jul 2019 00:16:13 -0400
+ (envelope-from <peterx@redhat.com>) id 1hiY1e-0006v8-Dv
+ for qemu-arm@nongnu.org; Wed, 03 Jul 2019 01:41:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <andrew@aj.id.au>) id 1hiWgg-0007wg-9T
- for qemu-arm@nongnu.org; Wed, 03 Jul 2019 00:16:09 -0400
-Received: from wout3-smtp.messagingengine.com ([64.147.123.19]:47303)
+ (envelope-from <peterx@redhat.com>) id 1hiY1b-000846-RM
+ for qemu-arm@nongnu.org; Wed, 03 Jul 2019 01:41:50 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:32930)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <andrew@aj.id.au>)
- id 1hiWgf-0007vJ-Or; Wed, 03 Jul 2019 00:16:06 -0400
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.west.internal (Postfix) with ESMTP id 0F1E3454;
- Wed,  3 Jul 2019 00:16:03 -0400 (EDT)
-Received: from imap2 ([10.202.2.52])
- by compute4.internal (MEProxy); Wed, 03 Jul 2019 00:16:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
- mime-version:message-id:in-reply-to:references:date:from:to:cc
- :subject:content-type; s=fm3; bh=qNthOCkoDfNQ0czNLw9xgSQqJyrw+r7
- v3JTNP7ZCxe4=; b=hQ09H4RlLuM23NHpKSWJhuuZHuIinUM4588eQ6gqqPU0Uup
- g01RuyGKkPlNjxWXBx/rJ4RM3N+tBlxwqxdoMXSik+I6kgdsqJMfOY+uVs+bUbWw
- K/2cB68xiWcGyk8VkWA0VhjIydpewoOWv3zySJxKx/4beij81/XIHcior9AkqKaB
- Ors0GFdGw+FZDkFdTmR6HBB1eRjSBWTW5zEyeacmr2oVxXNHuMn1ob9f0+9bKW1M
- oxyM+Z2kth+2WkMFMVfTkqtfQqcJo3Gclcv4n0Cbx6kwT9KkTJD4u0/yAUX35tNg
- 5YlT1GnlwQJ/U5yiJNYFnGKidjGgd1l0vjt5lsg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=qNthOC
- koDfNQ0czNLw9xgSQqJyrw+r7v3JTNP7ZCxe4=; b=H0ZUkoasPC2u9hwGUduAQG
- 6DuxC4hThCP65qzVBkvfymuqmoVh4Q7cLx5VKD7Ox4GQK/PzLQTwYLp5sKice0kp
- r4E9WwolpTQGtT7rIld1Ike2KhzKVza4d8r73mUtljEm6SKbM67gRUv6O04bGt6T
- ORD87Tsq5g/G5bRVQGkruUXeVELSZOMTvMetMX6qN+kIsYy7icvtiVfO9onWQ/SF
- jGC3GiBygRLexDgIQXxByCbuhcBlrv8sptwqPFV1MA3SUGQEPtEFjzJGYYjmNP1J
- pcdKrcrYVfEmEnXK0A3MAfyZ3092pbdX07MsYl6qmm/fYHpteXDVNEC3j74LFmRA
- ==
-X-ME-Sender: <xms:ASwcXQuvD9bnIcUnaxQ__Lc6RfBnzXtY-aLBoPkHRd61vLJCULpYmA>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduvddrvdelgdekudcutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpefofgggkfgjfhffhffvufgtsehttdertderredtnecuhfhrohhmpedftehnughr
- vgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucfrrghrrg
- hmpehmrghilhhfrhhomheprghnughrvgifsegrjhdrihgurdgruhenucevlhhushhtvghr
- ufhiiigvpedt
-X-ME-Proxy: <xmx:ASwcXZxWwOWMEdVzcVWtqcpeXu9qLxNOBBrkA7gSwnkXDGiv20iBkQ>
- <xmx:ASwcXegRhM8Fj3EzlqpBek8s9m_xGB0seS_X1X7Cj1giarMpt3KB7Q>
- <xmx:ASwcXVCvxY2AGWJhAWZdKI7gEhYz-InIuuShgqh8n19_iBBSN2QiQQ>
- <xmx:AiwcXf9P2YuwXmWLaaGrSD6bVxQtAGiiDDgQHN4BAVmoW911j8WnJw>
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id 75166E08E9; Wed,  3 Jul 2019 00:16:01 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.1.6-731-g19d3b16-fmstable-20190627v1
-Mime-Version: 1.0
-Message-Id: <63f23f7c-a096-438d-9ad7-7e6ffae879c1@www.fastmail.com>
-In-Reply-To: <20190618085154.21498-2-rashmica.g@gmail.com>
-References: <20190618085154.21498-1-rashmica.g@gmail.com>
- <20190618085154.21498-2-rashmica.g@gmail.com>
-Date: Wed, 03 Jul 2019 14:16:00 +1000
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: "Rashmica Gupta" <rashmica.g@gmail.com>, qemu-arm@nongnu.org
-Content-Type: text/plain
+ (Exim 4.71) (envelope-from <peterx@redhat.com>)
+ id 1hiY1S-0007n7-QK; Wed, 03 Jul 2019 01:41:41 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id A2E2630820DD;
+ Wed,  3 Jul 2019 05:41:25 +0000 (UTC)
+Received: from xz-x1 (unknown [10.66.60.162])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0AD887857F;
+ Wed,  3 Jul 2019 05:41:18 +0000 (UTC)
+Date: Wed, 3 Jul 2019 13:41:16 +0800
+From: Peter Xu <peterx@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Message-ID: <20190703054116.GD10408@xz-x1>
+References: <20190701093034.18873-1-eric.auger@redhat.com>
+ <20190701093034.18873-4-eric.auger@redhat.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20190701093034.18873-4-eric.auger@redhat.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.47]); Wed, 03 Jul 2019 05:41:25 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 64.147.123.19
-Subject: Re: [Qemu-arm] [PATCH 1/2] hw/gpio: Add basic Aspeed GPIO model
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v2 3/6] hw/vfio/common: Do not replay IOMMU
+ mappings in nested case
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -118,1146 +89,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org,
- Joel Stanley <joel@jms.id.au>
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, alex.williamson@redhat.com,
+ qemu-arm@nongnu.org, pbonzini@redhat.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e5wNHOuGiUN0
+X-TUID: sO3TeIIdhVEH
 
-
-
-On Tue, 18 Jun 2019, at 18:52, Rashmica Gupta wrote:
-> Add in details for GPIO controller for AST 2400 and 2500
+On Mon, Jul 01, 2019 at 11:30:31AM +0200, Eric Auger wrote:
+> In nested mode, the stage 1 translation tables are owned by
+> the guest and there is no caching on host side. So there is
+> no need to replay the mappings.
 > 
-> Signed-off-by: Rashmica Gupta <rashmica.g@gmail.com>
+> As of today, the SMMUv3 nested mode is not yet implemented
+> and there is no functional VFIO integration without. But
+> keeping the replay call would execute the default implementation
+> of memory_region_iommu_replay and attempt to translate the whole
+> address range, completely stalling qemu. Keeping the MAP/UNMAP
+> notifier registration allows to hit a warning message in the
+> SMMUv3 device that tells the user which VFIO device will not
+> function properly:
+> 
+> "qemu-system-aarch64: -device vfio-pci,host=0000:89:00.0: warning:
+> SMMUv3 does not support notification on MAP: device vfio-pci will not
+> function properly"
+> 
+> Besides, removing the replay call now allows the guest to boot.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > ---
->  hw/gpio/Makefile.objs         |   1 +
->  hw/gpio/aspeed_gpio.c         | 869 ++++++++++++++++++++++++++++++++++
->  include/hw/gpio/aspeed_gpio.h |  76 +++
->  3 files changed, 946 insertions(+)
->  create mode 100644 hw/gpio/aspeed_gpio.c
->  create mode 100644 include/hw/gpio/aspeed_gpio.h
+>  hw/vfio/common.c | 7 ++++++-
+>  1 file changed, 6 insertions(+), 1 deletion(-)
 > 
-> diff --git a/hw/gpio/Makefile.objs b/hw/gpio/Makefile.objs
-> index e5da0cb54f..d305b3b24b 100644
-> --- a/hw/gpio/Makefile.objs
-> +++ b/hw/gpio/Makefile.objs
-> @@ -9,3 +9,4 @@ obj-$(CONFIG_OMAP) += omap_gpio.o
->  obj-$(CONFIG_IMX) += imx_gpio.o
->  obj-$(CONFIG_RASPI) += bcm2835_gpio.o
->  obj-$(CONFIG_NRF51_SOC) += nrf51_gpio.o
-> +obj-$(CONFIG_ASPEED_SOC) += aspeed_gpio.o
-> diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-> new file mode 100644
-> index 0000000000..d84dd69255
-> --- /dev/null
-> +++ b/hw/gpio/aspeed_gpio.c
-> @@ -0,0 +1,869 @@
-> +/*
-> + *  ASPEED GPIO Controller
-> + *
-> + *  Copyright (C) 2017-2019 IBM Corp.
-> + *
-> + * This code is licensed under the GPL version 2 or later.  See
-> + * the COPYING file in the top-level directory.
-> + *
-
-I'd use a SPDX license marker here instead.
-
-> + *
-> + * This models the ast2400 and ast2500 GPIO controllers.
-> + *
-> + * GPIO pins are arranged in groups of 8 pins labeled 
-> A,B,..,Y,Z,AA,AB,AC.
-> + * (Note that the ast2400 controller only goes up to group AB).
-> + * A set has four groups (except set AC which only has one) and is
-> + * referred to by the groups it is composed of (eg 
-> ABCD,EFGH,...,YZAAAB).
-> + * Each set is accessed and controlled by a bank of 14 registers.
-> + *
-> + * These registers operate on a per pin level where each bit in the 
-> register
-> + * corresponds to a pin, except for the command source registers. The 
-> command
-> + * source registers operate on a per group level where bits 24, 16, 8 
-> and 0
-> + * correspond to each group in the set.
-> + *
-> + *  eg. registers for set ABCD:
-> + *  |D7...D0|C7...C0|B7...B0|A7...A0| <- GPIOs
-> + *  |31...24|23...16|15....8|7.....0| <- bit position
-> + *
-> + * Note that there are a couple of groups that only have 4 pins.
-> +
-> + * There are three ways that this model deviates from the behaviour of 
-> the
-> + * actual controller:
-> + * (1) There are three debounce registers which aren't modeled and so 
-> the per
-> + * set debounce setting registers don't affect anything.
-> + *
-> + * (2) The only control source driving the GPIO pins in the model is 
-> the ARM
-> + * model (as there currently aren't models for the LPC or Coprocessor 
-> [TODO]).
-> + *
-> + * (3) None of the registers in the model are reset tolerant. [TODO]
-> + *
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/log.h"
-> +#include "hw/gpio/aspeed_gpio.h"
-> +#include "include/hw/misc/aspeed_scu.h"
-> +#include "qapi/error.h"
-> +#include "qapi/visitor.h"
-> +
-> +#define ASPEED_GPIOS_PER_REG 32
-> +
-> +/* GPIO Source Types */
-> +#define ASPEED_CMD_SRC_MASK         0x01010101
-> +#define ASPEED_SOURCE_ARM           0
-> +#define ASPEED_SOURCE_LPC           1
-> +#define ASPEED_SOURCE_COPROCESSOR   2
-> +#define ASPEED_SOURCE_RESERVED      3
-> +
-> +/* GPIO Interrupt Triggers */
-> +#define ASPEED_FALLING_EDGE 0
-> +#define ASPEED_RISING_EDGE  1
-> +#define ASPEED_LEVEL_LOW    2
-> +#define ASPEED_LEVEL_HIGH   3
-> +#define ASPEED_DUAL_EDGE    4
-> +
-> +/* GPIO Register Address Offsets */
-> +#define GPIO_ABCD_DATA_VALUE     0x000
-> +#define GPIO_ABCD_DIRECTION      0x004
-> +#define GPIO_ABCD_INT_ENABLE     0x008
-> +#define GPIO_ABCD_INT_SENS_0     0x00C
-> +#define GPIO_ABCD_INT_SENS_1     0x010
-> +#define GPIO_ABCD_INT_SENS_2     0x014
-> +#define GPIO_ABCD_INT_STATUS     0x018
-> +#define GPIO_ABCD_RESET_TOLERANT 0x01C
-> +#define GPIO_EFGH_DATA_VALUE     0x020
-> +#define GPIO_EFGH_DIRECTION      0x024
-> +#define GPIO_EFGH_INT_ENABLE     0x028
-> +#define GPIO_EFGH_INT_SENS_0     0x02C
-> +#define GPIO_EFGH_INT_SENS_1     0x030
-> +#define GPIO_EFGH_INT_SENS_2     0x034
-> +#define GPIO_EFGH_INT_STATUS     0x038
-> +#define GPIO_EFGH_RESET_TOL      0x03C
-> +#define GPIO_ABCD_DEBOUNCE_1     0x040
-> +#define GPIO_ABCD_DEBOUNCE_2     0x044
-> +#define GPIO_EFGH_DEBOUNCE_1     0x048
-> +#define GPIO_EFGH_DEBOUNCE_2     0x04C
-> +#define GPIO_DEBOUNCE_TIME_1     0x050
-> +#define GPIO_DEBOUNCE_TIME_2     0x054
-> +#define GPIO_DEBOUNCE_TIME_3     0x058
-> +#define GPIO_ABCD_COMMAND_SRC_0  0x060
-> +#define GPIO_ABCD_COMMAND_SRC_1  0x064
-> +#define GPIO_EFGH_COMMAND_SRC_0  0x068
-> +#define GPIO_EFGH_COMMAND_SRC_1  0x06C
-> +#define GPIO_IJKL_DATA_VALUE     0x070
-> +#define GPIO_IJKL_DIRECTION      0x074
-> +#define GPIO_MNOP_DATA_VALUE     0x078
-> +#define GPIO_MNOP_DIRECTION      0x07C
-> +#define GPIO_QRST_DATA_VALUE     0x080
-> +#define GPIO_QRST_DIRECTION      0x084
-> +#define GPIO_UVWX_DATA_VALUE     0x088
-> +#define GPIO_UWVX_DIRECTION      0x08C
-> +#define GPIO_IJKL_COMMAND_SRC_0  0x090
-> +#define GPIO_IJKL_COMMAND_SRC_1  0x094
-> +#define GPIO_IJKL_INT_ENABLE     0x098
-> +#define GPIO_IJKL_INT_SENS_0     0x09C
-> +#define GPIO_IJKL_INT_SENS_1     0x0A0
-> +#define GPIO_IJKL_INT_SENS_2     0x0A4
-> +#define GPIO_IJKL_INT_STATUS     0x0A8
-> +#define GPIO_IJKL_RESET_TOLERANT 0x0AC
-> +#define GPIO_IJKL_DEBOUNCE_1     0x0B0
-> +#define GPIO_IJKL_DEBOUNCE_2     0x0B4
-> +#define GPIO_IJKL_INPUT_MASK     0x0B8
-> +#define GPIO_ABCD_DATA_READ      0x0C0
-> +#define GPIO_EFGH_DATA_READ      0x0C4
-> +#define GPIO_IJKL_DATA_READ      0x0C8
-> +#define GPIO_MNOP_DATA_READ      0x0CC
-> +#define GPIO_QRST_DATA_READ      0x0D0
-> +#define GPIO_UVWX_DATA_READ      0x0D4
-> +#define GPIO_YZAAAB_DATA_READ    0x0D8
-> +#define GPIO_AC_DATA_READ        0x0DC
-> +#define GPIO_MNOP_COMMAND_SRC_0  0x0E0
-> +#define GPIO_MNOP_COMMAND_SRC_1  0x0E4
-> +#define GPIO_MNOP_INT_ENABLE     0x0E8
-> +#define GPIO_MNOP_INT_SENS_0     0x0EC
-> +#define GPIO_MNOP_INT_SENS_1     0x0F0
-> +#define GPIO_MNOP_INT_SENS_2     0x0F4
-> +#define GPIO_MNOP_INT_STATUS     0x0F8
-> +#define GPIO_MNOP_RESET_TOLERANT 0x0FC
-> +#define GPIO_MNOP_DEBOUNCE_1     0x100
-> +#define GPIO_MNOP_DEBOUNCE_2     0x104
-> +#define GPIO_MNOP_INPUT_MASK     0x108
-> +#define GPIO_QRST_COMMAND_SRC_0  0x110
-> +#define GPIO_QRST_COMMAND_SRC_1  0x114
-> +#define GPIO_QRST_INT_ENABLE     0x118
-> +#define GPIO_QRST_INT_SENS_0     0x11C
-> +#define GPIO_QRST_INT_SENS_1     0x120
-> +#define GPIO_QRST_INT_SENS_2     0x124
-> +#define GPIO_QRST_INT_STATUS     0x128
-> +#define GPIO_QRST_RESET_TOLERANT 0x12C
-> +#define GPIO_QRST_DEBOUNCE_1     0x130
-> +#define GPIO_QRST_DEBOUNCE_2     0x134
-> +#define GPIO_QRST_INPUT_MASK     0x138
-> +#define GPIO_UVWX_COMMAND_SRC_0  0x140
-> +#define GPIO_UVWX_COMMAND_SRC_1  0x144
-> +#define GPIO_UVWX_INT_ENABLE     0x148
-> +#define GPIO_UVWX_INT_SENS_0     0x14C
-> +#define GPIO_UVWX_INT_SENS_1     0x150
-> +#define GPIO_UVWX_INT_SENS_2     0x154
-> +#define GPIO_UVWX_INT_STATUS     0x158
-> +#define GPIO_UVWX_RESET_TOLERANT 0x15C
-> +#define GPIO_UVWX_DEBOUNCE_1     0x160
-> +#define GPIO_UVWX_DEBOUNCE_2     0x164
-> +#define GPIO_UVWX_INPUT_MASK     0x168
-> +#define GPIO_YZAAAB_COMMAND_SRC_0 0x170
-> +#define GPIO_YZAAAB_COMMAND_SRC_1 0x174
-> +#define GPIO_YZAAAB_INT_ENABLE   0x178
-> +#define GPIO_YZAAAB_INT_SENS_0   0x17C
-> +#define GPIO_YZAAAB_INT_SENS_1   0x180
-> +#define GPIO_YZAAAB_INT_SENS_2   0x184
-> +#define GPIO_YZAAAB_INT_STATUS   0x188
-> +#define GPIO_YZAAAB_RESET_TOLERANT 0x18C
-> +#define GPIO_YZAAAB_DEBOUNCE_1   0x190
-> +#define GPIO_YZAAAB_DEBOUNCE_2   0x194
-> +#define GPIO_YZAAAB_INPUT_MASK   0x198
-> +#define GPIO_AC_COMMAND_SRC_0    0x1A0
-> +#define GPIO_AC_COMMAND_SRC_1    0x1A4
-> +#define GPIO_AC_INT_ENABLE       0x1A8
-> +#define GPIO_AC_INT_SENS_0       0x1AC
-> +#define GPIO_AC_INT_SENS_1       0x1B0
-> +#define GPIO_AC_INT_SENS_2       0x1B4
-> +#define GPIO_AC_INT_STATUS       0x1B8
-> +#define GPIO_AC_RESET_TOLERANT   0x1BC
-> +#define GPIO_AC_DEBOUNCE_1       0x1C0
-> +#define GPIO_AC_DEBOUNCE_2       0x1C4
-> +#define GPIO_AC_INPUT_MASK       0x1C8
-> +#define GPIO_ABCD_INPUT_MASK     0x1D0
-> +#define GPIO_EFGH_INPUT_MASK     0x1D4
-> +#define GPIO_YZAAAB_DATA_VALUE   0x1E0
-> +#define GPIO_YZAAAB_DIRECTION    0x1E4
-> +#define GPIO_AC_DATA_VALUE       0x1E8
-> +#define GPIO_AC_DIRECTION        0x1EC
-> +
-> +struct AspeedGPIO {
-> +    uint16_t set_idx;
-> +    uint32_t (*get)(GPIORegs *regs);
-> +    void (*set)(AspeedGPIOState *s, GPIORegs *regs,
-> +                GPIOSetProperties *props, uint32_t val);
-> +};
-> +
-> +static int aspeed_evaluate_irq(GPIORegs *regs, int prev_value_high, 
-> int bit)
-> +{
-> +    uint32_t falling_edge = 0, rising_edge = 0;
-> +    uint32_t int_trigger = extract32(regs->int_sens_0, bit, 1)
-> +                           | extract32(regs->int_sens_1, bit, 1) << 1
-> +                           | extract32(regs->int_sens_2, bit, 1) << 2 ;
-> +    uint32_t curr_pin_high = extract32(regs->data_value, bit, 1);
-> +
-> +    /* Detect edges */
-> +    if (curr_pin_high && !prev_value_high) {
-> +            rising_edge = 1;
-> +    } else if (!curr_pin_high && prev_value_high) {
-> +            falling_edge = 1;
-> +    }
-> +
-> +    if (((int_trigger == ASPEED_FALLING_EDGE)  && falling_edge)  ||
-> +        ((int_trigger == ASPEED_RISING_EDGE)  && rising_edge)  ||
-> +        ((int_trigger == ASPEED_LEVEL_LOW)  && !curr_pin_high)  ||
-> +        ((int_trigger == ASPEED_LEVEL_HIGH)  && curr_pin_high)  ||
-> +        ((int_trigger >= ASPEED_DUAL_EDGE)  && (rising_edge || 
-> falling_edge)))
-> +    {
-> +        regs->int_status = deposit32(regs->int_status, bit, 1, 1);
-> +        return 1;
-> +    }
-> +    return 0;
-> +}
-> +
-> +static void aspeed_gpio_update(AspeedGPIOState *s, GPIORegs *regs)
-> +{
-> +    uint32_t input_mask = regs->input_mask;
-> +    uint32_t direction = regs->direction;
-> +    uint32_t old = regs->data_value;
-> +    uint32_t new = regs->data_read;
-> +    uint32_t diff;
-> +    int bit;
-> +
-> +    diff = old ^ new;
-> +    if (!diff) {
-> +        return;
-> +    }
-> +
-> +    if (!direction) {
-> +        return;
-> +    }
-> +
-> +    for (bit = 0; bit < ASPEED_GPIOS_PER_REG; bit++) {
-> +        uint32_t mask = 1 << bit;
-> +        /* If the bit needs to be updated... */
-> +        if (!(diff & mask)) {
-> +            continue;
+> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+> index a859298fda..9ea58df67a 100644
+> --- a/hw/vfio/common.c
+> +++ b/hw/vfio/common.c
+> @@ -604,6 +604,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
+>      if (memory_region_is_iommu(section->mr)) {
+>          VFIOGuestIOMMU *giommu;
+>          IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(section->mr);
+> +        bool nested = false;
+>          int iommu_idx;
+>  
+>          trace_vfio_listener_region_add_iommu(iova, end);
+> @@ -631,8 +632,12 @@ static void vfio_listener_region_add(MemoryListener *listener,
+>          QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_next);
+>  
+>          memory_region_register_iommu_notifier(section->mr, &giommu->n);
+> -        memory_region_iommu_replay(giommu->iommu, &giommu->n);
+>  
+> +        memory_region_iommu_get_attr(iommu_mr, IOMMU_ATTR_VFIO_NESTED,
+> +                                     (void *)&nested);
+> +        if (!nested) {
+> +            memory_region_iommu_replay(iommu_mr, &giommu->n);
 > +        }
-> +        /* ...and corresponds to an output pin...*/
-> +        if (!(direction & mask)) {
-> +            continue;
-> +        }
-> +        /* ...and isn't masked...  */
-> +        if (input_mask & mask) {
-> +            continue;
-> +        }
-> +        /* ... then update it*/
-> +        if (mask & new) {
-> +            regs->data_value |= mask;
-> +        } else {
-> +            regs->data_value &= ~mask;
-> +        }
-> +
-> +        if (aspeed_evaluate_irq(regs, old & mask, bit)) {
-> +            qemu_set_irq(s->output[bit], 1);
-> +        }
-> +    }
-> +}
-> +
-> +static uint32_t aspeed_adjust_pin(AspeedGPIOState *s, uint32_t pin)
-> +{
-> +    if (pin >= s->ctrl->gap) {
-> +        pin += 4;
-> +    }
-> +
-> +    return pin;
-> +}
-> +
-> +static uint32_t aspeed_get_set_idx_from_pin(AspeedGPIOState *s, 
-> uint32_t pin)
-> +{
-> +    /*
-> +     * For most pins, dividing by 32 gets the set index.
-> +     *
-> +     * However the 2500 has a 4 pin gap in group AB and the 2400 has a 
-> 4 pin
-> +     * gap in group Y (and only four pins in AB but this is the last 
-> group so
-> +     * it doesn't matter).
-> +     */
-> +    return aspeed_adjust_pin(s, pin) >> 5;
-> +}
-> +
-> +static bool aspeed_gpio_get_pin_level(AspeedGPIOState *s, uint32_t pin)
-> +{
-> +    uint32_t reg_val;
-> +    uint32_t mask = 1 << (pin);
-> +    uint32_t set_idx = aspeed_get_set_idx_from_pin(s, pin);
-> +
-> +    reg_val = s->sets[set_idx].data_value;
-> +
-> +    return !!(reg_val & mask);
-> +}
-> +
-> +static void aspeed_gpio_set_pin_level(AspeedGPIOState *s, uint32_t pin,
-> +                                      bool level)
-> +{
-> +    uint32_t mask  = 1 << (pin);
-> +    uint32_t set_idx = aspeed_get_set_idx_from_pin(s, pin);
-> +
-> +    if (level) {
-> +        s->sets[set_idx].data_read |= mask;
-> +    } else {
-> +        s->sets[set_idx].data_read &= !mask;
-> +    }
-> +
-> +    aspeed_gpio_update(s, &s->sets[set_idx]);
-> +}
-> +
-> +/*
-> + *  | src_1 | src_2 |  source     |
-> + *  |-----------------------------|
-> + *  |   0   |   0   |  ARM        |
-> + *  |   0   |   1   |  LPC        |
-> + *  |   1   |   0   |  Coprocessor|
-> + *  |   1   |   1   |  Reserved   |
-> + *
-> + *  Once the source of a set is programmed, corresponding bits in the
-> + *  data_value, direction, interrupt [enable, sens[0-2]], reset_tol and
-> + *  debounce registers can only be written by the source.
-> + *
-> + *  Source is ARM by default
-> + *  only bits 24, 16, 8, and 0 can be set
-> + *
-> + *  we don't currently have a model for the LPC or Coprocessor
-> + */
-> +static uint32_t update_value_control_source(GPIORegs *regs, uint32_t 
-> old_value,
-> +                                            uint32_t value)
-> +{
-> +    int i;
-> +    int cmd_source;
-> +
-> +    /* assume the source is always ARM for now */
-> +    int source = ASPEED_SOURCE_ARM;
-> +
-> +    uint32_t new_value = 0;
-> +
-> +    /* for each group in set */
-> +    for (i = 0; i < ASPEED_GPIOS_PER_REG; i += 8) {
-> +        cmd_source = extract32(regs->cmd_source_0, i, 1)
-> +                | (extract32(regs->cmd_source_1, i, 1) << 1);
-> +
-> +        if (source == cmd_source) {
-> +            new_value |= (0xff << i) & value;
-> +        } else {
-> +            new_value |= (0xff << i) & old_value;
-> +        }
-> +    }
-> +    return new_value;
-> +}
-> +
-> +/* Reader helper functions */
-> +static uint32_t read_direction(GPIORegs *regs)
-> +{
-> +    return regs->direction;
-> +}
-> +
-> +static uint32_t read_data_value(GPIORegs *regs)
-> +{
-> +    return regs->data_value;
-> +}
-> +
-> +static uint32_t read_int_enable(GPIORegs *regs)
-> +{
-> +    return regs->int_enable;
-> +}
-> +
-> +static uint32_t read_int_sens_0(GPIORegs *regs)
-> +{
-> +    return regs->int_sens_0;
-> +}
-> +
-> +static uint32_t read_int_sens_1(GPIORegs *regs)
-> +{
-> +    return regs->int_sens_1;
-> +}
-> +
-> +static uint32_t read_int_sens_2(GPIORegs *regs)
-> +{
-> +    return regs->int_sens_2;
-> +}
-> +
-> +static uint32_t read_int_status(GPIORegs *regs)
-> +{
-> +    return regs->int_status;
-> +}
-> +
-> +static uint32_t read_reset_tol(GPIORegs *regs)
-> +{
-> +    return regs->reset_tol;
-> +}
-> +
-> +static uint32_t read_debounce_1(GPIORegs *regs)
-> +{
-> +    return regs->debounce_1;
-> +}
-> +
-> +static uint32_t read_debounce_2(GPIORegs *regs)
-> +{
-> +    return regs->debounce_2;
-> +}
-> +
-> +static uint32_t read_cmd_source_0(GPIORegs *regs)
-> +{
-> +    return regs->cmd_source_0;
-> +}
-> +
-> +static uint32_t read_cmd_source_1(GPIORegs *regs)
-> +{
-> +    return regs->cmd_source_1;
-> +}
-> +
-> +static uint32_t read_data(GPIORegs *regs)
-> +{
-> +    return regs->data_read;
-> +}
-> +
-> +static uint32_t read_input_mask(GPIORegs *regs)
-> +{
-> +    return regs->input_mask;
-> +}
-> +
-> +/* Write helper functions */
-> +
-> +static void _write_data_value(AspeedGPIOState *s, GPIORegs *regs,
-> +                              GPIOSetProperties *props, uint32_t val)
 
-Lets remove the underscore prefix from the write helpers. It's not
-present on the read helpers.
+For nested, do we need these IOMMU notifiers after all?
 
-> +{
-> +    val &= props->output | ~props->input;
+I'm asking because the no-IOMMU case of vfio_listener_region_add()
+seems to suite very well for nested page tables to me.  For example,
+vfio does not need to listen to MAP events any more because we'll
+simply share the guest IOMMU page table to be the 1st level page table
+of the host SMMU IIUC.  And if we have 2nd page table changes (like
+memory hotplug) then IMHO vfio_listener_region_add() will do this for
+us as well just like when there's no SMMU.
 
-Can you add some comments about why the value is being masked
-in this way? It's not clear to me that it's what we want.
+Another thing is that IOMMU_ATTR_VFIO_NESTED will be the same for all
+the memory regions, so it also seems a bit awkward to make it per
+memory region.  If you see the other real user of this flag (which is
+IOMMU_ATTR_SPAPR_TCE_FD) it's per memory region.
 
-> +    regs->data_read = update_value_control_source(regs, 
-> regs->data_read, val);
-> +    aspeed_gpio_update(s, regs);
-> +}
-> +
-> +static void _write_direction(AspeedGPIOState *s, GPIORegs *regs,
-> +                             GPIOSetProperties *props, uint32_t val)
-> +{
-> +    val &= props->output | ~props->input;
-> +    regs->direction = update_value_control_source(regs, 
-> regs->direction, val);
-> +    aspeed_gpio_update(s, regs);
-> +}
-> +
-> +static void _write_int_enable(AspeedGPIOState *s, GPIORegs *regs,
-> +                              GPIOSetProperties *props, uint32_t val)
-> +{
-> +    regs->int_enable = update_value_control_source(regs, 
-> regs->int_enable, val);
-> +    aspeed_gpio_update(s, regs);
-> +}
-> +
-> +static void _write_int_sens_0(AspeedGPIOState *s, GPIORegs *regs,
-> +                              GPIOSetProperties *props, uint32_t val)
-> +{
-> +    regs->int_sens_0 = update_value_control_source(regs, 
-> regs->int_sens_0, val);
-> +    aspeed_gpio_update(s, regs);
-> +}
-> +
-> +static void _write_int_sens_1(AspeedGPIOState *s, GPIORegs *regs,
-> +                              GPIOSetProperties *props, uint32_t val)
-> +{
-> +    regs->int_sens_1 = update_value_control_source(regs, 
-> regs->int_sens_1, val);
-> +    aspeed_gpio_update(s, regs);
-> +}
-> +
-> +static void _write_int_sens_2(AspeedGPIOState *s, GPIORegs *regs,
-> +                              GPIOSetProperties *props, uint32_t val)
-> +{
-> +    regs->int_sens_2 = update_value_control_source(regs, 
-> regs->int_sens_2, val);
-> +    aspeed_gpio_update(s, regs);
-> +}
-> +
-> +static void _write_int_status(AspeedGPIOState *s, GPIORegs *regs,
-> +                              GPIOSetProperties *props, uint32_t val)
-> +{
-> +    regs->int_status = val;
-> +    aspeed_gpio_update(s, regs);
-> +}
-> +
-> +static void _write_reset_tol(AspeedGPIOState *s, GPIORegs *regs,
-> +                             GPIOSetProperties *props, uint32_t val)
-> +{
-> +    regs->reset_tol = update_value_control_source(regs, 
-> regs->reset_tol, val);
-> +}
-> +
-> +static void _write_debounce_1(AspeedGPIOState *s, GPIORegs *regs,
-> +                              GPIOSetProperties *props, uint32_t val)
-> +{
-> +    regs->debounce_1 = update_value_control_source(regs, 
-> regs->debounce_1, val);
-> +}
-> +
-> +static void _write_debounce_2(AspeedGPIOState *s, GPIORegs *regs,
-> +                              GPIOSetProperties *props, uint32_t val)
-> +{
-> +    regs->debounce_2 = update_value_control_source(regs, 
-> regs->debounce_2, val);
-> +}
-> +
-> +static void _write_cmd_source_0(AspeedGPIOState *s, GPIORegs *regs,
-> +                                GPIOSetProperties *props, uint32_t val)
-> +{
-> +    regs->cmd_source_0 = val & ASPEED_CMD_SRC_MASK;
-> +}
-> +
-> +static void _write_cmd_source_1(AspeedGPIOState *s, GPIORegs *regs,
-> +                                GPIOSetProperties *props, uint32_t val)
-> +{
-> +    regs->cmd_source_1 = val & ASPEED_CMD_SRC_MASK;
-> +}
-> +
-> +/*
-> + * feeds into interrupt generation
-> + * 0: read from data value reg will be updated
-> + * 1: read from data value reg will not be updated
-> + */
-> +static void _write_input_mask(AspeedGPIOState *s, GPIORegs *regs,
-> +                              GPIOSetProperties *props, uint32_t val)
-> +{
-> +    regs->input_mask = val & props->input;
-> +    aspeed_gpio_update(s, regs);
-> +}
-> +
-> +static const struct AspeedGPIO gpios[0x1f0] = {
-> +    /* Set ABCD */
-> +    [GPIO_ABCD_DATA_VALUE] = {0, read_data_value, _write_data_value},
+Regards,
 
-Maybe there would be less tedium (and risk of minor bugs) here if we add
-a table for looking up the read/write callbacks from a type, and just stash
-the type in struct AspeedGPIO (or a pointer to the corresponding type ops),
-e.g:
-
-enum gpio_property { gpio_direction = 0, gpio_int_enable, ... };
-
-struct aspeed_gpio_reg_ops {
-    int (*read)(...);
-    int (*write)(...);
-};
-
-struct aspeed_gpio_reg_ops gpio_reg_ops[] = {
-    [gpio_direction]  = { .read = read_direction, .write = write_direction };
-    ...
-};
-
-Then we have:
-
-static const struct AspeedGPIO gpios[...] = {
-     [GPIO_ABCD_DIRECTION] = { .set = 0, .type = gpio_direction },
-     ...
-};
-
-Not wedded to the idea, just thinking out loud. What do you think?
-
-> +    [GPIO_ABCD_DIRECTION] = {0, read_direction, _write_direction},
-> +    [GPIO_ABCD_INT_ENABLE] = {0, read_int_enable, _write_int_enable},
-> +    [GPIO_ABCD_INT_SENS_0] = {0, read_int_sens_0, _write_int_sens_0},
-> +    [GPIO_ABCD_INT_SENS_1] = {0, read_int_sens_1, _write_int_sens_1},
-> +    [GPIO_ABCD_INT_SENS_2] = {0, read_int_sens_2, _write_int_sens_2},
-> +    [GPIO_ABCD_INT_STATUS] = {0, read_int_status, _write_int_status},
-> +    [GPIO_ABCD_RESET_TOLERANT] = {0, read_reset_tol, _write_reset_tol},
-> +    [GPIO_ABCD_DEBOUNCE_1] = {0, read_debounce_1, _write_debounce_1},
-> +    [GPIO_ABCD_DEBOUNCE_2] = {0, read_debounce_2, _write_debounce_2},
-> +    [GPIO_ABCD_COMMAND_SRC_0] = {0, read_cmd_source_0, 
-> _write_cmd_source_0},
-> +    [GPIO_ABCD_COMMAND_SRC_1] = {0, read_cmd_source_1, 
-> _write_cmd_source_1},
-> +    [GPIO_ABCD_DATA_READ] = {0, read_data, NULL},
-> +    [GPIO_ABCD_INPUT_MASK] = {0, read_input_mask, _write_input_mask},
-> +    /* Set EFGH */
-> +    [GPIO_EFGH_DATA_VALUE] = {1, read_data_value, _write_data_value},
-> +    [GPIO_EFGH_DIRECTION] = {1, read_direction, _write_direction },
-> +    [GPIO_EFGH_INT_ENABLE] = {1, read_int_enable, _write_int_enable},
-> +    [GPIO_EFGH_INT_SENS_0] = {1, read_int_sens_0, _write_int_sens_0},
-> +    [GPIO_EFGH_INT_SENS_1] = {1, read_int_sens_1, _write_int_sens_1},
-> +    [GPIO_EFGH_INT_SENS_2] = {1, read_int_sens_2, _write_int_sens_2},
-> +    [GPIO_EFGH_INT_STATUS] = {1, read_int_status, _write_int_status},
-> +    [GPIO_EFGH_RESET_TOL] = {1, read_reset_tol,   _write_reset_tol},
-> +    [GPIO_EFGH_DEBOUNCE_1] = {1, read_debounce_1,  _write_debounce_1},
-> +    [GPIO_EFGH_DEBOUNCE_2] = {1, read_debounce_2,  _write_debounce_2},
-> +    [GPIO_EFGH_COMMAND_SRC_0] = {1, read_cmd_source_0,  
-> _write_cmd_source_0},
-> +    [GPIO_EFGH_COMMAND_SRC_1] = {1, read_cmd_source_1,  
-> _write_cmd_source_1},
-> +    [GPIO_EFGH_DATA_READ] = {1, read_data, NULL},
-> +    [GPIO_EFGH_INPUT_MASK] = {1, read_input_mask,  _write_input_mask},
-> +    /* Set IJKL */
-> +    [GPIO_IJKL_DATA_VALUE] = {2, read_data_value, _write_data_value},
-> +    [GPIO_IJKL_DIRECTION] = {2, read_direction, _write_direction},
-> +    [GPIO_IJKL_INT_ENABLE] = {2, read_int_enable, _write_int_enable},
-> +    [GPIO_IJKL_INT_SENS_0] = {2, read_int_sens_0, _write_int_sens_0},
-> +    [GPIO_IJKL_INT_SENS_1] = {2, read_int_sens_1, _write_int_sens_1},
-> +    [GPIO_IJKL_INT_SENS_2] = {2, read_int_sens_2, _write_int_sens_2},
-> +    [GPIO_IJKL_INT_STATUS] = {2, read_int_status, _write_int_status},
-> +    [GPIO_IJKL_RESET_TOLERANT] = {2, read_reset_tol, _write_reset_tol},
-> +    [GPIO_IJKL_DEBOUNCE_1] = {2, read_debounce_1, _write_debounce_1},
-> +    [GPIO_IJKL_DEBOUNCE_2] = {2, read_debounce_2, _write_debounce_2},
-> +    [GPIO_IJKL_COMMAND_SRC_0] = {2, read_cmd_source_0, 
-> _write_cmd_source_0},
-> +    [GPIO_IJKL_COMMAND_SRC_1] = {2, read_cmd_source_1, 
-> _write_cmd_source_1},
-> +    [GPIO_IJKL_DATA_READ] = {2, read_data, NULL},
-> +    [GPIO_IJKL_INPUT_MASK] = {2, read_input_mask, _write_input_mask},
-> +    /* Set MNOP */
-> +    [GPIO_MNOP_DATA_VALUE] = {3, read_data_value, _write_data_value},
-> +    [GPIO_MNOP_DIRECTION] = {3, read_direction, _write_direction},
-> +    [GPIO_MNOP_INT_ENABLE] = {3, read_int_enable, _write_int_enable},
-> +    [GPIO_MNOP_INT_SENS_0] = {3, read_int_sens_0, _write_int_sens_0},
-> +    [GPIO_MNOP_INT_SENS_1] = {3, read_int_sens_1, _write_int_sens_1},
-> +    [GPIO_MNOP_INT_SENS_2] = {3, read_int_sens_2, _write_int_sens_2},
-> +    [GPIO_MNOP_INT_STATUS] = {3, read_int_status, _write_int_status},
-> +    [GPIO_MNOP_RESET_TOLERANT] = {3, read_reset_tol,  
-> _write_reset_tol},
-> +    [GPIO_MNOP_DEBOUNCE_1] = {3, read_debounce_1, _write_debounce_1},
-> +    [GPIO_MNOP_DEBOUNCE_2] = {3, read_debounce_2, _write_debounce_2},
-> +    [GPIO_MNOP_COMMAND_SRC_0] = {3, read_cmd_source_0, 
-> _write_cmd_source_0},
-> +    [GPIO_MNOP_COMMAND_SRC_1] = {3, read_cmd_source_1, 
-> _write_cmd_source_1},
-> +    [GPIO_MNOP_DATA_READ] = {3, read_data, NULL},
-> +    [GPIO_MNOP_INPUT_MASK] = {3, read_input_mask, _write_input_mask},
-> +    /* Set QRST */
-> +    [GPIO_QRST_DATA_VALUE] = {4, read_data_value, _write_data_value},
-> +    [GPIO_QRST_DIRECTION] = {4, read_direction, _write_direction},
-> +    [GPIO_QRST_INT_ENABLE] = {4, read_int_enable, _write_int_enable},
-> +    [GPIO_QRST_INT_SENS_0] = {4, read_int_sens_0, _write_int_sens_0},
-> +    [GPIO_QRST_INT_SENS_1] = {4, read_int_sens_1, _write_int_sens_1},
-> +    [GPIO_QRST_INT_SENS_2] = {4, read_int_sens_2, _write_int_sens_2},
-> +    [GPIO_QRST_INT_STATUS] = {4, read_int_status, _write_int_status},
-> +    [GPIO_QRST_RESET_TOLERANT] = {4, read_reset_tol, _write_reset_tol},
-> +    [GPIO_QRST_DEBOUNCE_1] = {4, read_debounce_1, _write_debounce_1},
-> +    [GPIO_QRST_DEBOUNCE_2] = {4, read_debounce_2, _write_debounce_2},
-> +    [GPIO_QRST_COMMAND_SRC_0] = {4, read_cmd_source_0, 
-> _write_cmd_source_0},
-> +    [GPIO_QRST_COMMAND_SRC_1] = {4, read_cmd_source_1, 
-> _write_cmd_source_1},
-> +    [GPIO_QRST_DATA_READ] = {4, read_data, NULL},
-> +    [GPIO_QRST_INPUT_MASK] = {4, read_input_mask,  _write_input_mask},
-> +    /* Set UVWX */
-> +    [GPIO_UVWX_DATA_VALUE] = {5, read_data_value, _write_data_value},
-> +    [GPIO_UWVX_DIRECTION] = {5, read_direction, _write_direction},
-> +    [GPIO_UVWX_INT_ENABLE] = {5, read_int_enable, _write_int_enable},
-> +    [GPIO_UVWX_INT_SENS_0] = {5, read_int_sens_0, _write_int_sens_0},
-> +    [GPIO_UVWX_INT_SENS_1] = {5, read_int_sens_1, _write_int_sens_1},
-> +    [GPIO_UVWX_INT_SENS_2] = {5, read_int_sens_2, _write_int_sens_2},
-> +    [GPIO_UVWX_INT_STATUS] = {5, read_int_status, _write_int_status},
-> +    [GPIO_UVWX_RESET_TOLERANT] = {5, read_reset_tol, _write_reset_tol},
-> +    [GPIO_UVWX_DEBOUNCE_1] = {5, read_debounce_1, _write_debounce_1},
-> +    [GPIO_UVWX_DEBOUNCE_2] = {5, read_debounce_2, _write_debounce_2},
-> +    [GPIO_UVWX_COMMAND_SRC_0] = {5, read_cmd_source_0, 
-> _write_cmd_source_0},
-> +    [GPIO_UVWX_COMMAND_SRC_1] = {5, read_cmd_source_1, 
-> _write_cmd_source_1},
-> +    [GPIO_UVWX_DATA_READ] = {5, read_data, NULL},
-> +    [GPIO_UVWX_INPUT_MASK] = {5, read_input_mask, _write_input_mask},
-> +    /* Set YZAAAB */
-> +    [GPIO_YZAAAB_DATA_VALUE] = {6, read_data_value, _write_data_value},
-> +    [GPIO_YZAAAB_DIRECTION] = {6, read_direction, _write_direction},
-> +    [GPIO_YZAAAB_INT_ENABLE] = {6, read_int_enable, _write_int_enable},
-> +    [GPIO_YZAAAB_INT_SENS_0] = {6, read_int_sens_0, _write_int_sens_0},
-> +    [GPIO_YZAAAB_INT_SENS_1] = {6, read_int_sens_1, _write_int_sens_1},
-> +    [GPIO_YZAAAB_INT_SENS_2] = {6, read_int_sens_2, _write_int_sens_2},
-> +    [GPIO_YZAAAB_INT_STATUS] = {6, read_int_status, _write_int_status},
-> +    [GPIO_YZAAAB_RESET_TOLERANT] = {6, read_reset_tol, 
-> _write_reset_tol},
-> +    [GPIO_YZAAAB_DEBOUNCE_1] = {6, read_debounce_1, _write_debounce_1},
-> +    [GPIO_YZAAAB_DEBOUNCE_2] = {6, read_debounce_2, _write_debounce_2},
-> +    [GPIO_YZAAAB_COMMAND_SRC_0] = {6, read_cmd_source_0, 
-> _write_cmd_source_0},
-> +    [GPIO_YZAAAB_COMMAND_SRC_1] = {6, read_cmd_source_1, 
-> _write_cmd_source_1},
-> +    [GPIO_YZAAAB_DATA_READ] = {6, read_data, NULL},
-> +    [GPIO_YZAAAB_INPUT_MASK] = {6, read_input_mask, _write_input_mask},
-> +    /* Set AC */
-> +    [GPIO_AC_DATA_VALUE] = {7, read_data_value, _write_data_value},
-> +    [GPIO_AC_DIRECTION] = {7, read_direction, _write_direction},
-> +    [GPIO_AC_INT_ENABLE] = {7, read_int_enable, _write_int_enable},
-> +    [GPIO_AC_INT_SENS_0] = {7, read_int_sens_0, _write_int_sens_0},
-> +    [GPIO_AC_INT_SENS_1] = {7, read_int_sens_1, _write_int_sens_1},
-> +    [GPIO_AC_INT_SENS_2] = {7, read_int_sens_2, _write_int_sens_2},
-> +    [GPIO_AC_INT_STATUS] = {7, read_int_status, _write_int_status},
-> +    [GPIO_AC_RESET_TOLERANT] = {7, read_reset_tol, _write_reset_tol},
-> +    [GPIO_AC_DEBOUNCE_1] = {7, read_debounce_1, _write_debounce_1},
-> +    [GPIO_AC_DEBOUNCE_2] = {7, read_debounce_2, _write_debounce_2},
-> +    [GPIO_AC_COMMAND_SRC_0] = {7, read_cmd_source_0, 
-> _write_cmd_source_0},
-> +    [GPIO_AC_COMMAND_SRC_1] = {7, read_cmd_source_1, 
-> _write_cmd_source_1},
-> +    [GPIO_AC_DATA_READ] = {7, read_data, NULL},
-> +    [GPIO_AC_INPUT_MASK] = {7, read_input_mask,     _write_input_mask},
-> +    /* Debounce registers */
-> +    [GPIO_DEBOUNCE_TIME_1] = {-1, NULL, NULL},
-> +};
-> +
-> +static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t 
-> size)
-> +{
-> +    AspeedGPIOState *s = ASPEED_GPIO(opaque);
-> +    uint32_t val = 0;
-> +
-> +    if (size != 4) {
-> +        return 0;
-> +    }
-> +
-> +    if (gpios[offset].get == NULL) {
-
-With the AST2600 we might need to make gpios class-specific rather than
-a static global to the compilation unit (to deal with the 1.8V GPIO registers
-later in the address-space). Not sure though, haven't thought about it for
-more than this paragraph.
-
-> +        qemu_log_mask(LOG_GUEST_ERROR, "no getter for offset %lx", 
-> offset);
-
-Really this is a model error. We should only encounter it if we haven't
-completely described the controller. So maybe it should be an assert
-or some kind of non-guest warning?
-
-> +        return 0;
-> +    }
-> +
-> +    val = gpios[offset].get(&s->sets[gpios[offset].set_idx]);
-
-The indexing here is starting to get a bit hard to follow. I think we could
-improve readability by introducing some locals, and rewriting in terms
-of those:
-
-const struct AspeedGPIO *reg = &gpios[offset];
-const struct GPIORegs *set = &s->sets[gpio.set_idx];
-
-if (!reg.get) {
-    ...
-}
-
-val = reg.get(set);
-
-I think it makes the relationship of the structs a bit clearer too, and I think
-it also suggests we could improve the names:
-
-s/struct AspeedGPIO/struct AspeedGPIOReg/
-s/struct GPIORegs/struct GPIOProperties/
-
-GPIOProperties clashes a bit with GPIOSetProperties though, so maybe we
-need to think of a better name for that too?
-
-> +    return (uint64_t) val;
-> +}
-> +
-> +static void aspeed_gpio_write(void *opaque, hwaddr offset, uint64_t 
-> data,
-> +                              uint32_t size)
-> +{
-> +    AspeedGPIOState *s = ASPEED_GPIO(opaque);
-> +    GPIOSetProperties *props = &s->ctrl->props[gpios[offset].set_idx];
-> +
-> +    if (gpios[offset].set == NULL) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "no setter for offset %lx", 
-> offset);
-
-Same issue here with guest vs model error.
-
-> +        return;
-> +    }
-> +
-> +    uint32_t mask = props->input | props->output;
-> +
-> +    gpios[offset].set(s, &s->sets[gpios[offset].set_idx],
-> +                      props, data & mask);
-> +}
-> +
-> +static void aspeed_gpio_get_pin(Object *obj, Visitor *v, const char 
-> *name,
-> +                                void *opaque, Error **errp)
-> +{
-> +    int pin = 0xfff;
-> +    bool level = true;
-> +    char group[3];
-> +    AspeedGPIOState *s = ASPEED_GPIO(obj);
-> +    if (sscanf(name, "gpio%2[A-Z]%1d", group, &pin) != 2) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "error reading %s", name);
-> +        return;
-> +    }
-> +    level = aspeed_gpio_get_pin_level(s, pin);
-
-We're not using the captured group to determine the pin, and as such the
-code as it stands will use the first bank in all cases. The strings look like
-"gpioAB3" right? That should be pin=bank_index(AB)*8+3=27*8+3=219,
-but the code would pass through pin=3.
-
-> +    visit_type_bool(v, name, &level, errp);
-> +}
-> +
-> +static void aspeed_gpio_set_pin(Object *obj, Visitor *v, const char 
-> *name,
-> +                               void *opaque, Error **errp)
-> +{
-> +    Error *local_err = NULL;
-> +    bool level;
-> +    int pin = 0xfff;
-> +    char group[3];
-> +    AspeedGPIOState *s = ASPEED_GPIO(obj);
-> +    visit_type_bool(v, name, &level, &local_err);
-> +    if (sscanf(name, "gpio%2[A-Z]%1d", group, &pin) != 2) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "error reading %s", name);
-> +        return;
-> +    }
-> +    aspeed_gpio_set_pin_level(s, pin, level);
-
-As above.
-
-> +}
-> +
-> +
-> +/* Setup functions */
-> +static const MemoryRegionOps aspeed_gpio_ops = {
-> +    .read = aspeed_gpio_read,
-> +    .write = aspeed_gpio_write,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
-> +    .valid.min_access_size = 4,
-> +    .valid.max_access_size = 4,
-> +};
-> +
-> +static void aspeed_gpio_reset(DeviceState *dev)
-> +{
-> +    struct AspeedGPIOState *s = ASPEED_GPIO(dev);
-> +
-> +    /* TODO: respect the reset tolerance registers */
-> +    memset(s->sets, 0, sizeof(s->sets));
-> +}
-> +
-> +static void aspeed_gpio_realize(DeviceState *dev, Error **errp)
-> +{
-> +    AspeedGPIOState *s = ASPEED_GPIO(dev);
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-> +
-> +    sysbus_init_irq(sbd, &s->irq);
-> +
-> +    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_gpio_ops, s,
-> +            TYPE_ASPEED_GPIO, 0x1000);
-> +
-> +    sysbus_init_mmio(sbd, &s->iomem);
-> +}
-> +
-> +static const VMStateDescription vmstate_gpio_regs = {
-> +    .name = TYPE_ASPEED_GPIO"/regs",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_UINT32(data_value,   GPIORegs),
-> +        VMSTATE_UINT32(data_read,    GPIORegs),
-> +        VMSTATE_UINT32(direction,    GPIORegs),
-> +        VMSTATE_UINT32(int_enable,   GPIORegs),
-> +        VMSTATE_UINT32(int_sens_0,   GPIORegs),
-> +        VMSTATE_UINT32(int_sens_1,   GPIORegs),
-> +        VMSTATE_UINT32(int_sens_2,   GPIORegs),
-> +        VMSTATE_UINT32(int_status,   GPIORegs),
-> +        VMSTATE_UINT32(reset_tol,    GPIORegs),
-> +        VMSTATE_UINT32(cmd_source_0, GPIORegs),
-> +        VMSTATE_UINT32(cmd_source_1, GPIORegs),
-> +        VMSTATE_UINT32(debounce_1,   GPIORegs),
-> +        VMSTATE_UINT32(debounce_2,   GPIORegs),
-> +        VMSTATE_UINT32(input_mask,   GPIORegs),
-> +        VMSTATE_END_OF_LIST(),
-> +    }
-> +};
-> +static const VMStateDescription vmstate_aspeed_gpio = {
-> +    .name = TYPE_ASPEED_GPIO,
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_STRUCT_ARRAY(sets, AspeedGPIOState, 
-> ASPEED_GPIO_MAX_NR_SETS,
-> +                             1, vmstate_gpio_regs, GPIORegs),
-> +        VMSTATE_END_OF_LIST(),
-> +   }
-> +};
-> +
-> +static void aspeed_gpio_init(Object *obj)
-> +{
-> +    AspeedGPIOState *s = ASPEED_GPIO(obj);
-> +    AspeedGPIOClass *agc = ASPEED_GPIO_GET_CLASS(s);
-> +    int pin;
-> +
-> +    s->ctrl = agc->ctrl;
-> +
-> +    for (pin = 0; pin < agc->ctrl->nr_gpio_pins; pin++) {
-> +        char *name;
-> +        int set_idx = aspeed_get_set_idx_from_pin(s, pin);
-> +        int _pin = aspeed_adjust_pin(s, pin);
-> +        int pin_idx = _pin - (set_idx * 32);
-> +        int group_idx = pin_idx >> 3;
-> +
-> +        name = g_strdup_printf("gpio%s%d",
-> +                               
-> agc->ctrl->props[set_idx].set[group_idx],
-> +                               pin_idx % 8);
-> +        object_property_add(obj, name, "bool",
-> +                            aspeed_gpio_get_pin,
-> +                            aspeed_gpio_set_pin,
-> +                            NULL, NULL, NULL);
-> +    }
-> +}
-> +
-> +static void aspeed_gpio_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +    AspeedGPIOClass *agc = ASPEED_GPIO_CLASS(klass);
-> +
-> +    dc->realize = aspeed_gpio_realize;
-> +    dc->reset = aspeed_gpio_reset;
-> +    dc->desc = "Aspeed GPIO Controller";
-> +    dc->vmsd = &vmstate_aspeed_gpio;
-> +    agc->ctrl = data;
-> +}
-> +
-> +static GPIOSetProperties ast2400_set_props[] = {
-> +    [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-> +    [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-> +    [2] = {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
-> +    [3] = {0xffffffff,  0xffffffff,  {"M", "N", "O", "P"} },
-> +    [4] = {0xffffffff,  0xffffffff,  {"Q", "R", "S", "T"} },
-> +    [5] = {0xffffffff,  0x0000ffff,  {"U", "V", "W", "X"} },
-> +    [6] = {0x0000000f,  0x0fffff0f,  {"Y", "Z", "AA", "AB"} },
-> +};
-> +
-> +static GPIOSetProperties ast2500_set_props[] = {
-> +    [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-> +    [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-> +    [2] = {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
-> +    [3] = {0xffffffff,  0xffffffff,  {"M", "N", "O", "P"} },
-> +    [4] = {0xffffffff,  0xffffffff,  {"Q", "R", "S", "T"} },
-> +    [5] = {0xffffffff,  0x0000ffff,  {"U", "V", "W", "X"} },
-> +    [6] = {0xffffff0f,  0x0fffff0f,  {"Y", "Z", "AA", "AB"} },
-> +    [7] = {0x000000ff,  0x000000ff,  {"AC"} },
-> +};
-> +
-> +static AspeedGPIOController controllers[] = {
-> +    {
-> +        .name           = TYPE_ASPEED_GPIO "-ast2500",
-> +        .props          = ast2500_set_props,
-> +        .nr_gpio_pins   = 228,
-> +        .nr_gpio_sets   = 8,
-> +        .gap            = 220,
-> +    }, {
-> +        .name           = TYPE_ASPEED_GPIO "-ast2400",
-> +        .props          = ast2400_set_props,
-> +        .nr_gpio_pins   = 216,
-> +        .nr_gpio_sets   = 7,
-> +        .gap            = 196,
-> +    }
-> +};
-> +
-> +static const TypeInfo aspeed_gpio_info = {
-> +    .name = TYPE_ASPEED_GPIO,
-> +    .parent = TYPE_SYS_BUS_DEVICE,
-> +    .instance_size = sizeof(AspeedGPIOState),
-> +    .class_size     = sizeof(AspeedGPIOClass),
-> +    .instance_init = aspeed_gpio_init,
-> +    .abstract       = true,
-> +};
-> +
-> +static void aspeed_gpio_register_types(void)
-> +{
-> +    int i;
-> +
-> +    type_register_static(&aspeed_gpio_info);
-> +    for (i = 0; i < ARRAY_SIZE(controllers); i++) {
-> +        TypeInfo t = {
-> +            .name = controllers[i].name,
-> +            .parent = TYPE_ASPEED_GPIO,
-> +            .class_init = aspeed_gpio_class_init,
-> +            .class_data = (void *)&controllers[i],
-> +        };
-> +        type_register(&t);
-> +    };
-
-I think we want separate classes for the 2400 and 2500, especially with
-the 2600 on the way.
-
-> +}
-> +
-> +type_init(aspeed_gpio_register_types);
-> diff --git a/include/hw/gpio/aspeed_gpio.h 
-> b/include/hw/gpio/aspeed_gpio.h
-> new file mode 100644
-> index 0000000000..97a84a5da1
-> --- /dev/null
-> +++ b/include/hw/gpio/aspeed_gpio.h
-> @@ -0,0 +1,76 @@
-> +/*
-> + *  ASPEED GPIO Controller
-> + *
-> + *  Copyright (C) 2017-2018 IBM Corp.
-> + *
-> + * This code is licensed under the GPL version 2 or later.  See
-> + * the COPYING file in the top-level directory.
-> + */
-> +
-> +#ifndef ASPEED_GPIO_H
-> +#define ASPEED_GPIO_H
-> +
-> +#include "hw/sysbus.h"
-> +
-> +#define TYPE_ASPEED_GPIO "aspeed.gpio"
-> +#define ASPEED_GPIO(obj) OBJECT_CHECK(AspeedGPIOState, (obj), 
-> TYPE_ASPEED_GPIO)
-> +#define ASPEED_GPIO_CLASS(klass) \
-> +     OBJECT_CLASS_CHECK(AspeedGPIOClass, (klass), TYPE_ASPEED_GPIO)
-> +#define ASPEED_GPIO_GET_CLASS(obj) \
-> +     OBJECT_GET_CLASS(AspeedGPIOClass, (obj), TYPE_ASPEED_GPIO)
-> +
-> +#define ASPEED_GPIO_MAX_NR_SETS 8
-> +#define ASPEED_REGS_PER_BANK 14
-> +#define ASPEED_GPIO_MAX_NR_REGS (ASPEED_REGS_PER_BANK * 
-> ASPEED_GPIO_MAX_NR_SETS)
-> +#define ASPEED_GPIO_NR_PINS 228
-> +
-> +typedef struct GPIORegs GPIORegs;
-> +typedef const struct GPIOSetProperties {
-
-The const in the typedef seems odd. I feel like it would be better as
-explicit in the code?
-
-> +    uint32_t input;
-> +    uint32_t output;
-> +    char set[4][3];
-> +} GPIOSetProperties;
-> +
-> +typedef const struct AspeedGPIOController {
-
-As above.
-
-Cheers,
-
-Andrew
-
-> +    const char *name;
-> +    GPIOSetProperties *props;
-> +    uint32_t nr_gpio_pins;
-> +    uint32_t nr_gpio_sets;
-> +    uint32_t gap;
-> +} AspeedGPIOController;
-> +
-> +typedef struct  AspeedGPIOClass {
-> +    SysBusDevice parent_obj;
-> +    AspeedGPIOController *ctrl;
-> +}  AspeedGPIOClass;
-> +
-> +typedef struct AspeedGPIOState {
-> +    /* <private> */
-> +    SysBusDevice parent;
-> +
-> +    /*< public >*/
-> +    MemoryRegion iomem;
-> +    qemu_irq output[ASPEED_GPIO_NR_PINS];
-> +    qemu_irq irq;
-> +    AspeedGPIOController *ctrl;
-> +
-> +/* Parallel GPIO Registers */
-> +    struct GPIORegs {
-> +        uint32_t data_value; /* Reflects pin values */
-> +        uint32_t data_read; /* Contains last value written to data 
-> value */
-> +        uint32_t direction;
-> +        uint32_t int_enable;
-> +        uint32_t int_sens_0;
-> +        uint32_t int_sens_1;
-> +        uint32_t int_sens_2;
-> +        uint32_t int_status;
-> +        uint32_t reset_tol;
-> +        uint32_t cmd_source_0;
-> +        uint32_t cmd_source_1;
-> +        uint32_t debounce_1;
-> +        uint32_t debounce_2;
-> +        uint32_t input_mask;
-> +    } sets[ASPEED_GPIO_MAX_NR_SETS];
-> +} AspeedGPIOState;
-> +
-> +#endif /* _ASPEED_GPIO_H_ */
-> -- 
-> 2.17.2
-> 
->
+-- 
+Peter Xu

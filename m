@@ -1,223 +1,420 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id t63sm1621003wmt.6.2019.07.03.03.22.18
-        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Wed, 03 Jul 2019 03:22:18 -0700 (PDT)
-Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 119FD1FF87;
-	Wed,  3 Jul 2019 11:22:18 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [RFC PATCH for semihosting-tests] semihosting tests: add v7m tests
-Date: Wed,  3 Jul 2019 11:22:08 +0100
-Message-Id: <20190703102208.10086-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp540804wru;
+        Wed, 3 Jul 2019 02:04:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx5JhGcwC/IwGMR8/q/0PH/U5zw2XzshCaRmYjL62MJZS2Kg33q6YEAoZyikI5BBVF9GH5S
+X-Received: by 2002:a17:906:454d:: with SMTP id s13mr33555115ejq.255.1562144653844;
+        Wed, 03 Jul 2019 02:04:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562144653; cv=none;
+        d=google.com; s=arc-20160816;
+        b=kUOY1gsLLFqiPMkAflgRUVseBinz0xjR8GUcUbQrnqcki6YGXpfh19Jt8rGGYAhnYv
+         QgCuAh6GW+Xghv5UYcbTaWoyhPnKB7K+vyPpjszDCD/676yDeQ1nqMe+WmOqjvqnU1sb
+         0s7s/ANnM05Za6+8uNdSOmCluuLhpBqTW29ObNERYxv62KcQHNaOzr/r9Pj7tMZCGck7
+         M2bEHTHXx5WOQSwSkSODU489/KrnviqAlytCoaL9KgER0G29U3YOA2o74mPuOz/JR2ON
+         diPFvpDqRh9gkF7jSN6tqkzNxSdwfh50LGBhurLnP8s9D+qO1a3DwpQ6fv4woL8TDs6a
+         Jf/w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=pSk40/Sz//0DjdihCVx9JmZWpX83i4naTzvXAHHOd/Q=;
+        b=fSSIEd4zuhOpT+v1pg6uMVxOSqqLJCLr1i4CPtgU5UWODs4t3PvkJbfo002I0uIBTe
+         RM1ywaOS5EhIiDBWY6Rxu85u/buWJ+Xmx2yh0HTrDBTPDYnJgtWRwnSTeiOuR7GilvgO
+         zzWL4loaI6uvSh8nNs7bOy6caoJZMf2/++TYCcUkeEG9AoAwKbj4snJ7i1PNXx2eXpIN
+         RNYiHVv6WfUEWl13iQfpNGBIco2KPsvNxei4S7a4NYMQfwEXlA/+MroGog4XCTfyA7CH
+         24h+i/Xkn2BYUGRH4HTuRiZRS5v4Tz3utV1CP1MG0XJxiUrUG8Z8jOxxSY0WA10uy2WC
+         /OsA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f14si1200549ejt.144.2019.07.03.02.04.13
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 03 Jul 2019 02:04:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33880 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hibBT-0001uY-Tw
+	for alex.bennee@linaro.org; Wed, 03 Jul 2019 05:04:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55012)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <kraxel@redhat.com>) id 1hib2C-0003Tq-3O
+ for qemu-arm@nongnu.org; Wed, 03 Jul 2019 04:54:37 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <kraxel@redhat.com>) id 1hib2A-0003Ij-Dq
+ for qemu-arm@nongnu.org; Wed, 03 Jul 2019 04:54:36 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56038)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kraxel@redhat.com>)
+ id 1hib2A-00036K-6M; Wed, 03 Jul 2019 04:54:34 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id C1CF558569;
+ Wed,  3 Jul 2019 08:54:22 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-116-96.ams2.redhat.com
+ [10.36.116.96])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 797E9891D6;
+ Wed,  3 Jul 2019 08:54:17 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 80EC41750B; Wed,  3 Jul 2019 10:54:16 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Wed,  3 Jul 2019 10:54:15 +0200
+Message-Id: <20190703085416.21837-4-kraxel@redhat.com>
+In-Reply-To: <20190703085416.21837-1-kraxel@redhat.com>
+References: <20190703085416.21837-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: fnteN2CsgE7U
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.39]); Wed, 03 Jul 2019 08:54:27 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PULL 3/4] hw/i2c/bitbang_i2c: Use in-place rather than
+ malloc'd bitbang_i2c_interface struct
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8Seo6oF9WRYT
 
-M-profile has yet another way of triggering semihosting calls using
-the BKPT instruction. To support this we need to add a M-profile setup
-so we use the nice and simple microbit model which has a Cortex-M0 in
-it.
+From: Peter Maydell <peter.maydell@linaro.org>
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Currently the bitbang_i2c_init() function allocates a
+bitbang_i2c_interface struct which it returns.  This is unfortunate
+because it means that if the function is used from a DeviceState
+init method then the memory will be leaked by an "init then delete"
+cycle, as used by the qmp/hmp commands that list device properties.
+
+Since three out of four of the uses of this function are in
+device init methods, switch the function to do an in-place
+initialization of a struct that can be embedded in the
+device state struct of the caller.
+
+This fixes LeakSanitizer leak warnings that have appeared in the
+patchew configuration (which only tries to run the sanitizers
+for the x86_64-softmmu target) now that we use the bitbang-i2c
+code in an x86-64 config.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
+Tested-by: BALATON Zoltan <balaton@eik.bme.hu>
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Message-id: 20190702163844.20458-1-peter.maydell@linaro.org
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- Makefile         | 24 ++++++++++++++++++++---
- microbit.lds     | 32 ++++++++++++++++++++++++++++++
- semicall.S       |  7 ++++++-
- start-microbit.S | 51 ++++++++++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 110 insertions(+), 4 deletions(-)
- create mode 100644 microbit.lds
- create mode 100644 start-microbit.S
+ hw/display/ati_int.h         |  2 +-
+ include/hw/i2c/bitbang_i2c.h | 38 ++++++++++++++++++++++++++++-
+ include/hw/i2c/ppc4xx_i2c.h  |  2 +-
+ hw/display/ati.c             |  7 +++---
+ hw/i2c/bitbang_i2c.c         | 47 +++---------------------------------
+ hw/i2c/ppc4xx_i2c.c          |  6 ++---
+ hw/i2c/versatile_i2c.c       |  8 +++---
+ 7 files changed, 53 insertions(+), 57 deletions(-)
 
-diff --git a/Makefile b/Makefile
-index 1fea97e..9f04cdd 100644
---- a/Makefile
-+++ b/Makefile
-@@ -40,6 +40,7 @@
- 
- A32GCC := arm-linux-gnueabihf-gcc -marm
- T32GCC := arm-linux-gnueabihf-gcc -mthumb
-+V7MGCC := arm-none-eabi-gcc -mcpu=cortex-m0 -mfloat-abi=soft
- A64GCC := aarch64-linux-gnu-gcc
- 
- A32LD := arm-linux-gnueabihf-ld
-@@ -47,7 +48,9 @@ A32LD := arm-linux-gnueabihf-ld
- A32LINKOPTS := -nostdlib -lgcc -Xlinker --script=baremetal.lds -Xlinker --build-id=none
- A64LINKOPTS := -nostdlib -lgcc -Xlinker --script=baremetal-a64.lds -Xlinker --build-id=none
- 
--QEMU_BUILDDIR := ~/linaro/qemu-from-laptop/qemu/build/x86
-+AV7MLINKOPTS := -nostdlib -lgcc -Xlinker --script=microbit.lds -Xlinker --build-id=none
+diff --git a/hw/display/ati_int.h b/hw/display/ati_int.h
+index 9b67d0022ad9..31a1927b3ecb 100644
+--- a/hw/display/ati_int.h
++++ b/hw/display/ati_int.h
+@@ -88,7 +88,7 @@ typedef struct ATIVGAState {
+     uint16_t cursor_size;
+     uint32_t cursor_offset;
+     QEMUCursor *cursor;
+-    bitbang_i2c_interface *bbi2c;
++    bitbang_i2c_interface bbi2c;
+     MemoryRegion io;
+     MemoryRegion mm;
+     ATIVGARegs regs;
+diff --git a/include/hw/i2c/bitbang_i2c.h b/include/hw/i2c/bitbang_i2c.h
+index 3a7126d5dee8..92334e9016a8 100644
+--- a/include/hw/i2c/bitbang_i2c.h
++++ b/include/hw/i2c/bitbang_i2c.h
+@@ -8,7 +8,43 @@ typedef struct bitbang_i2c_interface bitbang_i2c_interfa=
+ce;
+ #define BITBANG_I2C_SDA 0
+ #define BITBANG_I2C_SCL 1
+=20
+-bitbang_i2c_interface *bitbang_i2c_init(I2CBus *bus);
++typedef enum bitbang_i2c_state {
++    STOPPED =3D 0,
++    SENDING_BIT7,
++    SENDING_BIT6,
++    SENDING_BIT5,
++    SENDING_BIT4,
++    SENDING_BIT3,
++    SENDING_BIT2,
++    SENDING_BIT1,
++    SENDING_BIT0,
++    WAITING_FOR_ACK,
++    RECEIVING_BIT7,
++    RECEIVING_BIT6,
++    RECEIVING_BIT5,
++    RECEIVING_BIT4,
++    RECEIVING_BIT3,
++    RECEIVING_BIT2,
++    RECEIVING_BIT1,
++    RECEIVING_BIT0,
++    SENDING_ACK,
++    SENT_NACK
++} bitbang_i2c_state;
 +
-+QEMU_BUILDDIR := ~/lsrc/qemu.git/builds/arm.all
- 
- ifdef GDBPORT
- SYSGDB := -gdb tcp::$(GDBPORT)
-@@ -60,11 +63,15 @@ QEMU_SYSTEM_ARM = $(QEMU_BUILDDIR)/arm-softmmu/qemu-system-arm $(SYSGDB)
- QEMU_SYSTEM_AARCH64 = $(QEMU_BUILDDIR)/aarch64-softmmu/qemu-system-aarch64 $(SYSGDB)
- 
- all: usertest-a32 usertest-a64 usertest-t32 \
--	systest-a32.axf systest-t32.axf systest-a64.axf
-+	systest-a32.axf systest-t32.axf \
-+	systest-a32-hlt.axf systest-t32-hlt.axf \
-+	systest-t32-bkpt.axf \
-+	systest-a64.axf
- 
- usertest-srcs = usertest.c semihosting.c semicall.S printf/printf.c
- 
- systest-srcs = start.S string.c $(usertest-srcs)
-+microbit-systest-srcs = start-microbit.S string.c $(usertest-srcs)
- 
- usertest-a32: $(usertest-srcs)
- 	$(A32GCC) --static -o $@ $^
-@@ -93,6 +100,9 @@ systest-a32-hlt.axf: $(systest-srcs)
- systest-t32-hlt.axf: $(systest-srcs)
- 	$(T32GCC) -DUSE_HLT -o $@ $^ $(A32LINKOPTS)
- 
-+systest-t32-bkpt.axf: $(microbit-systest-srcs)
-+	$(V7MGCC) -DUSE_BKPT -o $@ $^ $(AV7MLINKOPTS)
++struct bitbang_i2c_interface {
++    I2CBus *bus;
++    bitbang_i2c_state state;
++    int last_data;
++    int last_clock;
++    int device_out;
++    uint8_t buffer;
++    int current_addr;
++};
 +
- systest-a64.axf: $(systest-srcs)
- 	$(A64GCC) -nostdlib -o $@ $^ $(A64LINKOPTS)
- 
-@@ -123,6 +133,9 @@ run-systest-a32-hlt: systest-a32-hlt.axf
- run-systest-t32-hlt: systest-t32-hlt.axf
- 	$(QEMU_SYSTEM_ARM) -M virt --display none --semihosting -kernel $^
- 
-+run-systest-t32-bkpt: systest-t32-bkpt.axf
-+	$(QEMU_SYSTEM_ARM) -M microbit --display none --semihosting -kernel $^
-+
- run-systest-a64: systest-a64.axf
- 	$(QEMU_SYSTEM_AARCH64) -M virt --display none --semihosting \
- 		-cpu cortex-a57 -kernel $^
-@@ -130,4 +143,9 @@ run-systest-a64: systest-a64.axf
- run: run-usertest-a32 run-usertest-t32 run-usertest-a64 \
- 	run-systest-a32 run-systest-t32 run-systest-a64 \
- 	run-usertest-a32-hlt run-usertest-t32-hlt \
--	run-systest-a32-hlt run-systest-t32-hlt
-+	run-systest-a32-hlt run-systest-t32-hlt \
-+	run-systest-t32-bkpt
-+
-+run-alt: run-usertest-a32 run-usertest-t32 run-usertest-a64 \
-+	run-systest-a64 \
-+	run-usertest-a32-hlt run-usertest-t32-hlt \
-diff --git a/microbit.lds b/microbit.lds
-new file mode 100644
-index 0000000..24840a3
---- /dev/null
-+++ b/microbit.lds
-@@ -0,0 +1,32 @@
-+/*
-+ * microbit.lds : simple linker script for baremetal ARM-M test cases
-+ *
-+ * Copyright (C) 2019 Linaro Limited. All rights reserved.
-+ *
-+ * Memory layout is for the BBC Microbit board which puts RAM at 0x20000000
++/**
++ * bitbang_i2c_init: in-place initialize the bitbang_i2c_interface struc=
+t
 + */
-+
-+RAMSTART = 0x20000000;
-+STACKTOP = 0x20004000;
-+
-+ENTRY(exc_reset_thumb)
-+
-+SECTIONS
-+{
-+    . = 0x0;
-+    .text : {
-+        *(.text)
-+    }
-+    .data : {
-+        *(.data)
-+    }
-+    .rodata : {
-+        *(.rodata)
-+    }
-+    .bss : {
-+        *(.bss)
-+    }
-+    /DISCARD/ : {
-+        *(.ARM.attributes)
-+    }
-+}
-diff --git a/semicall.S b/semicall.S
-index 1418a42..e6316c4 100644
---- a/semicall.S
-+++ b/semicall.S
-@@ -51,8 +51,13 @@ __semi_call:
- #else
-         /* traditional svc */
- #if defined(__thumb__)
--        /* NB: assumes not M-profile (which is BKPT) */
-+#if defined(USE_BKPT)
-+        /* M-profile T32 */
-+        bkpt 0xab
-+#else
-+        /* A+R Profile T32 */
-         svc 0xab
-+#endif
- #else
-         svc 0x123456
++void bitbang_i2c_init(bitbang_i2c_interface *s, I2CBus *bus);
+ int bitbang_i2c_set(bitbang_i2c_interface *i2c, int line, int level);
+=20
  #endif
-diff --git a/start-microbit.S b/start-microbit.S
-new file mode 100644
-index 0000000..db1f06e
---- /dev/null
-+++ b/start-microbit.S
-@@ -0,0 +1,51 @@
-+/*
-+ * start-microbit.S - assembly code for startup on baremetal M-profile tests
-+ *
-+ * Copyright (c) 2015 Linaro Limited
-+ * All rights reserved.
-+ *
-+ * Redistribution and use in source and binary forms, with or without
-+ * modification, are permitted provided that the following conditions
-+ * are met:
-+ * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer.
-+ * 2. Redistributions in binary form must reproduce the above copyright
-+ *    notice, this list of conditions and the following disclaimer in
-+ *    the documentation and/or other materials provided with the
-+ *    distribution.
-+ * 3. Neither the name of Linaro Limited nor the names of its
-+ *    contributors may be used to endorse or promote products derived
-+ *    from this software without specific prior written permission.
-+ */
-+
-+        .syntax unified
-+        .cpu cortex-m0
-+        .thumb
-+
-+        .text
-+
-+vector_table:
-+        .word STACKTOP          /* 0. SP_main */
-+        .word exc_reset_thumb   /* 1. Reset */
-+        .word 0                 /* 2. NMI */
-+        .word 0                 /* 3. HardFault */
-+        .rept 7
-+        .word 0                 /* 4-10. Reserved */
-+        .endr
-+        .word 0                 /* 11. SVCall */
-+        .word 0                 /* 12. Reserved */
-+        .word 0                 /* 13. Reserved */
-+        .word 0                 /* 14. PendSV */
-+        .word 0                 /* 15. SysTick */
-+        .rept 32
-+        .word 0                 /* 16-47. External Interrupts */
-+        .endr
-+
-+exc_reset:
-+.equ exc_reset_thumb, exc_reset + 1
-+.global exc_reset_thumb
-+
-+        bl main
-+        bl semi_exit
-+        # not reached
-+1:      b 1b
--- 
-2.20.1
+diff --git a/include/hw/i2c/ppc4xx_i2c.h b/include/hw/i2c/ppc4xx_i2c.h
+index 8437bf070b8b..f6f837fbec00 100644
+--- a/include/hw/i2c/ppc4xx_i2c.h
++++ b/include/hw/i2c/ppc4xx_i2c.h
+@@ -41,7 +41,7 @@ typedef struct PPC4xxI2CState {
+     I2CBus *bus;
+     qemu_irq irq;
+     MemoryRegion iomem;
+-    bitbang_i2c_interface *bitbang;
++    bitbang_i2c_interface bitbang;
+     int mdidx;
+     uint8_t mdata[4];
+     uint8_t lmadr;
+diff --git a/hw/display/ati.c b/hw/display/ati.c
+index 0cb117384839..c1d9d1518f4a 100644
+--- a/hw/display/ati.c
++++ b/hw/display/ati.c
+@@ -538,7 +538,7 @@ static void ati_mm_write(void *opaque, hwaddr addr,
+         break;
+     case GPIO_DVI_DDC:
+         if (s->dev_id !=3D PCI_DEVICE_ID_ATI_RAGE128_PF) {
+-            s->regs.gpio_dvi_ddc =3D ati_i2c(s->bbi2c, data, 0);
++            s->regs.gpio_dvi_ddc =3D ati_i2c(&s->bbi2c, data, 0);
+         }
+         break;
+     case GPIO_MONID ... GPIO_MONID + 3:
+@@ -554,7 +554,7 @@ static void ati_mm_write(void *opaque, hwaddr addr,
+              */
+             if ((s->regs.gpio_monid & BIT(25)) &&
+                 addr <=3D GPIO_MONID + 2 && addr + size > GPIO_MONID + 2=
+) {
+-                s->regs.gpio_monid =3D ati_i2c(s->bbi2c, s->regs.gpio_mo=
+nid, 1);
++                s->regs.gpio_monid =3D ati_i2c(&s->bbi2c, s->regs.gpio_m=
+onid, 1);
+             }
+         }
+         break;
+@@ -856,7 +856,7 @@ static void ati_vga_realize(PCIDevice *dev, Error **e=
+rrp)
+=20
+     /* ddc, edid */
+     I2CBus *i2cbus =3D i2c_init_bus(DEVICE(s), "ati-vga.ddc");
+-    s->bbi2c =3D bitbang_i2c_init(i2cbus);
++    bitbang_i2c_init(&s->bbi2c, i2cbus);
+     I2CSlave *i2cddc =3D I2C_SLAVE(qdev_create(BUS(i2cbus), TYPE_I2CDDC)=
+);
+     i2c_set_slave_address(i2cddc, 0x50);
+=20
+@@ -885,7 +885,6 @@ static void ati_vga_exit(PCIDevice *dev)
+     ATIVGAState *s =3D ATI_VGA(dev);
+=20
+     graphic_console_close(s->vga.con);
+-    g_free(s->bbi2c);
+ }
+=20
+ static Property ati_vga_properties[] =3D {
+diff --git a/hw/i2c/bitbang_i2c.c b/hw/i2c/bitbang_i2c.c
+index 3cb0509b0200..60c7a9be0bca 100644
+--- a/hw/i2c/bitbang_i2c.c
++++ b/hw/i2c/bitbang_i2c.c
+@@ -25,39 +25,6 @@ do { printf("bitbang_i2c: " fmt , ## __VA_ARGS__); } w=
+hile (0)
+ #define DPRINTF(fmt, ...) do {} while(0)
+ #endif
+=20
+-typedef enum bitbang_i2c_state {
+-    STOPPED =3D 0,
+-    SENDING_BIT7,
+-    SENDING_BIT6,
+-    SENDING_BIT5,
+-    SENDING_BIT4,
+-    SENDING_BIT3,
+-    SENDING_BIT2,
+-    SENDING_BIT1,
+-    SENDING_BIT0,
+-    WAITING_FOR_ACK,
+-    RECEIVING_BIT7,
+-    RECEIVING_BIT6,
+-    RECEIVING_BIT5,
+-    RECEIVING_BIT4,
+-    RECEIVING_BIT3,
+-    RECEIVING_BIT2,
+-    RECEIVING_BIT1,
+-    RECEIVING_BIT0,
+-    SENDING_ACK,
+-    SENT_NACK
+-} bitbang_i2c_state;
+-
+-struct bitbang_i2c_interface {
+-    I2CBus *bus;
+-    bitbang_i2c_state state;
+-    int last_data;
+-    int last_clock;
+-    int device_out;
+-    uint8_t buffer;
+-    int current_addr;
+-};
+-
+ static void bitbang_i2c_enter_stop(bitbang_i2c_interface *i2c)
+ {
+     DPRINTF("STOP\n");
+@@ -184,18 +151,12 @@ int bitbang_i2c_set(bitbang_i2c_interface *i2c, int=
+ line, int level)
+     abort();
+ }
+=20
+-bitbang_i2c_interface *bitbang_i2c_init(I2CBus *bus)
++void bitbang_i2c_init(bitbang_i2c_interface *s, I2CBus *bus)
+ {
+-    bitbang_i2c_interface *s;
+-
+-    s =3D g_malloc0(sizeof(bitbang_i2c_interface));
+-
+     s->bus =3D bus;
+     s->last_data =3D 1;
+     s->last_clock =3D 1;
+     s->device_out =3D 1;
+-
+-    return s;
+ }
+=20
+ /* GPIO interface.  */
+@@ -207,7 +168,7 @@ typedef struct GPIOI2CState {
+     SysBusDevice parent_obj;
+=20
+     MemoryRegion dummy_iomem;
+-    bitbang_i2c_interface *bitbang;
++    bitbang_i2c_interface bitbang;
+     int last_level;
+     qemu_irq out;
+ } GPIOI2CState;
+@@ -216,7 +177,7 @@ static void bitbang_i2c_gpio_set(void *opaque, int ir=
+q, int level)
+ {
+     GPIOI2CState *s =3D opaque;
+=20
+-    level =3D bitbang_i2c_set(s->bitbang, irq, level);
++    level =3D bitbang_i2c_set(&s->bitbang, irq, level);
+     if (level !=3D s->last_level) {
+         s->last_level =3D level;
+         qemu_set_irq(s->out, level);
+@@ -234,7 +195,7 @@ static void gpio_i2c_init(Object *obj)
+     sysbus_init_mmio(sbd, &s->dummy_iomem);
+=20
+     bus =3D i2c_init_bus(dev, "i2c");
+-    s->bitbang =3D bitbang_i2c_init(bus);
++    bitbang_i2c_init(&s->bitbang, bus);
+=20
+     qdev_init_gpio_in(dev, bitbang_i2c_gpio_set, 2);
+     qdev_init_gpio_out(dev, &s->out, 1);
+diff --git a/hw/i2c/ppc4xx_i2c.c b/hw/i2c/ppc4xx_i2c.c
+index 5fb4f86c38f1..462729db4ea7 100644
+--- a/hw/i2c/ppc4xx_i2c.c
++++ b/hw/i2c/ppc4xx_i2c.c
+@@ -311,9 +311,9 @@ static void ppc4xx_i2c_writeb(void *opaque, hwaddr ad=
+dr, uint64_t value,
+     case IIC_DIRECTCNTL:
+         i2c->directcntl =3D value & (IIC_DIRECTCNTL_SDAC & IIC_DIRECTCNT=
+L_SCLC);
+         i2c->directcntl |=3D (value & IIC_DIRECTCNTL_SCLC ? 1 : 0);
+-        bitbang_i2c_set(i2c->bitbang, BITBANG_I2C_SCL,
++        bitbang_i2c_set(&i2c->bitbang, BITBANG_I2C_SCL,
+                         i2c->directcntl & IIC_DIRECTCNTL_MSCL);
+-        i2c->directcntl |=3D bitbang_i2c_set(i2c->bitbang, BITBANG_I2C_S=
+DA,
++        i2c->directcntl |=3D bitbang_i2c_set(&i2c->bitbang, BITBANG_I2C_=
+SDA,
+                                (value & IIC_DIRECTCNTL_SDAC) !=3D 0) << =
+1;
+         break;
+     default:
+@@ -347,7 +347,7 @@ static void ppc4xx_i2c_init(Object *o)
+     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
+     sysbus_init_irq(SYS_BUS_DEVICE(s), &s->irq);
+     s->bus =3D i2c_init_bus(DEVICE(s), "i2c");
+-    s->bitbang =3D bitbang_i2c_init(s->bus);
++    bitbang_i2c_init(&s->bitbang, s->bus);
+ }
+=20
+ static void ppc4xx_i2c_class_init(ObjectClass *klass, void *data)
+diff --git a/hw/i2c/versatile_i2c.c b/hw/i2c/versatile_i2c.c
+index 24b6e36b6d52..1ac2a6f59a0a 100644
+--- a/hw/i2c/versatile_i2c.c
++++ b/hw/i2c/versatile_i2c.c
+@@ -35,7 +35,7 @@ typedef struct VersatileI2CState {
+     SysBusDevice parent_obj;
+=20
+     MemoryRegion iomem;
+-    bitbang_i2c_interface *bitbang;
++    bitbang_i2c_interface bitbang;
+     int out;
+     int in;
+ } VersatileI2CState;
+@@ -70,8 +70,8 @@ static void versatile_i2c_write(void *opaque, hwaddr of=
+fset,
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: Bad offset 0x%x\n", __func__, (int)offset);
+     }
+-    bitbang_i2c_set(s->bitbang, BITBANG_I2C_SCL, (s->out & 1) !=3D 0);
+-    s->in =3D bitbang_i2c_set(s->bitbang, BITBANG_I2C_SDA, (s->out & 2) =
+!=3D 0);
++    bitbang_i2c_set(&s->bitbang, BITBANG_I2C_SCL, (s->out & 1) !=3D 0);
++    s->in =3D bitbang_i2c_set(&s->bitbang, BITBANG_I2C_SDA, (s->out & 2)=
+ !=3D 0);
+ }
+=20
+ static const MemoryRegionOps versatile_i2c_ops =3D {
+@@ -88,7 +88,7 @@ static void versatile_i2c_init(Object *obj)
+     I2CBus *bus;
+=20
+     bus =3D i2c_init_bus(dev, "i2c");
+-    s->bitbang =3D bitbang_i2c_init(bus);
++    bitbang_i2c_init(&s->bitbang, bus);
+     memory_region_init_io(&s->iomem, obj, &versatile_i2c_ops, s,
+                           "versatile_i2c", 0x1000);
+     sysbus_init_mmio(sbd, &s->iomem);
+--=20
+2.18.1
+

@@ -1,83 +1,99 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp354985wru;
-        Tue, 2 Jul 2019 22:43:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy9fnUI0wDeJsFiDRICUQiq0kD7ko0Nqs/1FilCOqa4xg5sCvdO+/5ChJmXKkPWSIQrE5Ld
-X-Received: by 2002:a50:86dc:: with SMTP id 28mr40212048edu.132.1562132588919;
-        Tue, 02 Jul 2019 22:43:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562132588; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp533025wru;
+        Wed, 3 Jul 2019 01:56:25 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwFp+SHnblkCBtjFp6heMZXQLG3a2o4ClVjX4WFFSCOvRQ5YzsaVg21LlKyVFhClv++21H+
+X-Received: by 2002:a17:906:46d9:: with SMTP id k25mr32239533ejs.269.1562144185572;
+        Wed, 03 Jul 2019 01:56:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562144185; cv=none;
         d=google.com; s=arc-20160816;
-        b=lJav1/08lvJEB+Yydi/sKxjM12rIF36lXXKydWICTKSgmxfl9z4RgWVUhLIVVaA6wA
-         gVLqyEkADIVQ6UPlCu6axLZOvkBsyTUaY8dtNXCBBLi5uEDJ5mRZZLmZc8c+tk2W/lN+
-         DAYtefI6DIvxqhDn0fJ3N/EK94rCs/JWdpSUYyKDW7a7LcrJYG4PHJPZm9sjDHQhLx7f
-         NNplqKGnRv9pjokVqWJbb6aYCh9V6STwf+lgI8VeRRD3d2doOPc83EhRn2CxHpE2//9X
-         ng8o8kMgq+YHimnEwySv4ctJF71Q/S9jOzNoyhXetPhuMWdItl0vmfhGOt7uT260Db1V
-         fGkg==
+        b=KT7iSPy8eJlo+JZOlrQmf4S0kNzC/mwqXa8c7rxr1q9AddkaCIWEnHk+BNYfSf/yfe
+         GYLXPrqvRPmlGR7kzzbvwG6u5/7CfBpbZD7KdkyM2lNhmqf2eG+Pi4U1euCLpU/tb8+/
+         BBTVQ/RCEQb4U2onCtmYP2KKbYiCL/c7ywIcY/zka6QklZVrv4WXiE6iRZ6zg31o7g77
+         uEcuMUvKgf5VT4RaiQMbCIKEvTQyGM2sCiTPtKyg6yHezrO6ob/JwKuslOWCuiyiTqro
+         nubXhH9FFTnsF2vo8hA0Jk8jIpwn/mIJPNYWECWb0/7GtorxvqzTV76PFDaGCAf+ghpc
+         fOug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=BppcYZAL9DlfxroITCpxQrKgtqYAahnr23HT2KFEeRI=;
-        b=LgeFuCXjpUE6IZXCtBhh+tnSxRHwckX70UM4GmrQ7Pj0PM66dkuKAXAIvbmWO9Qm22
-         0ggZ31v3tCmPPVkJ+aD2j3F5I4NplDFn3BTFOPRIiRBOfTsnR1wSJeMmiaUgJB5l3g1F
-         L98VfPpftXvWh8PLZ+2ajLzJN3HgH/ZjczQJfch1lR/qdFyMw0/g+hMjF94JEK4tOJI0
-         IcdlFPaXoyI76KGy7ZRzGbgF46fniKb/b2pmIhNDmZczMDoWbR9VgG/k/l4PNj7VKXuI
-         jwIVP2A7ai3KqzXEzjWJxjugibKKdCw/ZFbWZGO9SD7GpzZ0T1uvmeCmSqcwClN0Sdca
-         MMjA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=xTlMV/Ve+CV41iUTU7YXAJV9qyigzFDNuvwHzJkTBdc=;
+        b=JWK0P7BeSp/K3ihfaagFn8TJ9OUeYnMfY4c1FkbulzsxKvxkhB/CaVZ5DsKOjQAm9k
+         2rkF4LCgcTRfjIxhEb8kmnnEyLLGSfTclKVqzPNJYXza7jI86Y7da8KBIctI8WIwSyJ4
+         U48agUeHIx5KAbUy8x81FCOfQtsaLFlhA+vIr2Mfe4KHlxfZyIWoULPQkr/hb1TOClSH
+         S4SVLD5NUcs3eAJ7AnK18oAqIDy7dJ+g8jcSen3+Ct0Z1bpwaxAc4aWgIqPMzN9ig6HW
+         4ebQIyxJV5b/SWNjHZPAv7ptKdTStIGsd+tDkhSHn3BZCL1EL7B2ZQMC38ICxppf4DQh
+         85aQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w42si1081282eda.142.2019.07.02.22.43.08
+        by mx.google.com with ESMTPS id i19si1537432edg.33.2019.07.03.01.56.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 02 Jul 2019 22:43:08 -0700 (PDT)
+        Wed, 03 Jul 2019 01:56:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:32840 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33822 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hiY2u-0007cM-1k
-	for alex.bennee@linaro.org; Wed, 03 Jul 2019 01:43:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40606)
+	id 1hib3w-0005BQ-Cf
+	for alex.bennee@linaro.org; Wed, 03 Jul 2019 04:56:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52300)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peterx@redhat.com>) id 1hiY2l-0007Yi-0R
- for qemu-arm@nongnu.org; Wed, 03 Jul 2019 01:42:59 -0400
+ (envelope-from <philmd@redhat.com>) id 1hiarZ-0008V4-HM
+ for qemu-arm@nongnu.org; Wed, 03 Jul 2019 04:43:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peterx@redhat.com>) id 1hiY2j-0000T0-1C
- for qemu-arm@nongnu.org; Wed, 03 Jul 2019 01:42:58 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34836)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <peterx@redhat.com>)
- id 1hiY2h-0000LF-1q; Wed, 03 Jul 2019 01:42:55 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id CE6F44E938;
- Wed,  3 Jul 2019 05:42:45 +0000 (UTC)
-Received: from xz-x1 (unknown [10.66.60.162])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 53FF817480;
- Wed,  3 Jul 2019 05:42:38 +0000 (UTC)
-Date: Wed, 3 Jul 2019 13:42:36 +0800
-From: Peter Xu <peterx@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20190703054236.GF10408@xz-x1>
-References: <20190701093034.18873-1-eric.auger@redhat.com>
- <20190701093034.18873-3-eric.auger@redhat.com>
+ (envelope-from <philmd@redhat.com>) id 1hiarW-0003W7-Po
+ for qemu-arm@nongnu.org; Wed, 03 Jul 2019 04:43:37 -0400
+Received: from mail-wm1-f66.google.com ([209.85.128.66]:52198)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hiarW-0003Rk-JI
+ for qemu-arm@nongnu.org; Wed, 03 Jul 2019 04:43:34 -0400
+Received: by mail-wm1-f66.google.com with SMTP id 207so1299674wma.1
+ for <qemu-arm@nongnu.org>; Wed, 03 Jul 2019 01:43:34 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=xTlMV/Ve+CV41iUTU7YXAJV9qyigzFDNuvwHzJkTBdc=;
+ b=T7w/0iJCh2r6IV5Nt8AyRW64OAM9n7r19lnTBWjH45gGMyR+7bvHje9OfiSi0Mz7mA
+ GmGBtLWspi6m6TNsqHNBHZcZz8mu4AG0aO1C/W0TcdiiYMyl0v7m6AndRymvI+F8yMuy
+ +ENIn617KIQFGqnFk32y+4JnKEP2dPj2i4SXhSeK61O/D4LYg+wODBo6IwsOy4/mKExP
+ lb4n+4EUDARt4BGVan+E+qmQ3BcoOM5ZM597ViFYLO6rNMfc74qcEQyWEvjP8A73AHdW
+ oH5WuCtRw2AXH3KfHtzf14n3Pzx9nP6LD2ZbYBSyCOTHjQsaDYR6fKINwkuaMw5n5lth
+ hhyw==
+X-Gm-Message-State: APjAAAVdAsS6PhCOUqI3k/Jm973l24QcBYyZwhpIT+qH7BgAeobt0quU
+ vlh8aE33jBEgq8EI2w0ml9lmZQ==
+X-Received: by 2002:a1c:2c41:: with SMTP id s62mr7051173wms.8.1562143412492;
+ Wed, 03 Jul 2019 01:43:32 -0700 (PDT)
+Received: from [192.168.1.38] (56.red-88-18-140.staticip.rima-tde.net.
+ [88.18.140.56])
+ by smtp.gmail.com with ESMTPSA id t1sm2304080wra.74.2019.07.03.01.43.31
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Wed, 03 Jul 2019 01:43:31 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+References: <20190702163844.20458-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <fd156926-7db4-b620-1fff-52b11e42a31e@redhat.com>
+Date: Wed, 3 Jul 2019 10:43:30 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
+In-Reply-To: <20190702163844.20458-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20190701093034.18873-3-eric.auger@redhat.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.38]); Wed, 03 Jul 2019 05:42:45 +0000 (UTC)
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 2/6] memory: Add IOMMU_ATTR_VFIO_NESTED
- IOMMU memory region attribute
+ [fuzzy]
+X-Received-From: 209.85.128.66
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-4.1] hw/i2c/bitbang_i2c: Use
+ in-place rather than malloc'd bitbang_i2c_interface struct
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -89,45 +105,315 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, alex.williamson@redhat.com,
- qemu-arm@nongnu.org, pbonzini@redhat.com, eric.auger.pro@gmail.com
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iQoWWQsfymsy
+X-TUID: d1ydnKf5j2oQ
 
-On Mon, Jul 01, 2019 at 11:30:30AM +0200, Eric Auger wrote:
-> We introduce a new IOMMU Memory Region attribute,
-> IOMMU_ATTR_VFIO_NESTED that tells whether the virtual IOMMU
-> requires physical nested stages for VFIO integration.
+On 7/2/19 6:38 PM, Peter Maydell wrote:
+> Currently the bitbang_i2c_init() function allocates a
+> bitbang_i2c_interface struct which it returns.  This is unfortunate
+> because it means that if the function is used from a DeviceState
+> init method then the memory will be leaked by an "init then delete"
+> cycle, as used by the qmp/hmp commands that list device properties.
 > 
-> Current Intel virtual IOMMU device supports "Caching
-> Mode" and does not require 2 stages at physical level to be
-> integrated with VFIO. However SMMUv3 does not implement such
-> "caching mode" and requires to use physical stage 1 for VFIO
-> integration.
+> Since three out of four of the uses of this function are in
+> device init methods, switch the function to do an in-place
+> initialization of a struct that can be embedded in the
+> device state struct of the caller.
 > 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> This fixes LeakSanitizer leak warnings that have appeared in the
+> patchew configuration (which only tries to run the sanitizers
+> for the x86_64-softmmu target) now that we use the bitbang-i2c
+> code in an x86-64 config.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  include/exec/memory.h | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+> This isn't the only problem with this code : it is also
+> missing reset and migration handling and generally looks like
+> it needs proper conversion to QOM somehow. But this will shut
+> the patchew complaints up and seems ok for 4.1.
 > 
-> diff --git a/include/exec/memory.h b/include/exec/memory.h
-> index bdd76653a8..dd7ef23f96 100644
-> --- a/include/exec/memory.h
-> +++ b/include/exec/memory.h
-> @@ -204,7 +204,8 @@ struct MemoryRegionOps {
->  };
+> Disclaimer: checked only that the leak-sanitizer is now happy
+> and with a 'make check'.
+> ---
+>  hw/display/ati_int.h         |  2 +-
+>  include/hw/i2c/bitbang_i2c.h | 38 ++++++++++++++++++++++++++++-
+>  include/hw/i2c/ppc4xx_i2c.h  |  2 +-
+>  hw/display/ati.c             |  7 +++---
+>  hw/i2c/bitbang_i2c.c         | 47 +++---------------------------------
+>  hw/i2c/ppc4xx_i2c.c          |  6 ++---
+>  hw/i2c/versatile_i2c.c       |  8 +++---
+>  7 files changed, 53 insertions(+), 57 deletions(-)
+> 
+> diff --git a/hw/display/ati_int.h b/hw/display/ati_int.h
+> index 9b67d0022ad..31a1927b3ec 100644
+> --- a/hw/display/ati_int.h
+> +++ b/hw/display/ati_int.h
+> @@ -88,7 +88,7 @@ typedef struct ATIVGAState {
+>      uint16_t cursor_size;
+>      uint32_t cursor_offset;
+>      QEMUCursor *cursor;
+> -    bitbang_i2c_interface *bbi2c;
+> +    bitbang_i2c_interface bbi2c;
+>      MemoryRegion io;
+>      MemoryRegion mm;
+>      ATIVGARegs regs;
+> diff --git a/include/hw/i2c/bitbang_i2c.h b/include/hw/i2c/bitbang_i2c.h
+> index 3a7126d5dee..92334e9016a 100644
+> --- a/include/hw/i2c/bitbang_i2c.h
+> +++ b/include/hw/i2c/bitbang_i2c.h
+> @@ -8,7 +8,43 @@ typedef struct bitbang_i2c_interface bitbang_i2c_interface;
+>  #define BITBANG_I2C_SDA 0
+>  #define BITBANG_I2C_SCL 1
 >  
->  enum IOMMUMemoryRegionAttr {
-> -    IOMMU_ATTR_SPAPR_TCE_FD
-> +    IOMMU_ATTR_SPAPR_TCE_FD,
-> +    IOMMU_ATTR_VFIO_NESTED,
+> -bitbang_i2c_interface *bitbang_i2c_init(I2CBus *bus);
+> +typedef enum bitbang_i2c_state {
+> +    STOPPED = 0,
+> +    SENDING_BIT7,
+> +    SENDING_BIT6,
+> +    SENDING_BIT5,
+> +    SENDING_BIT4,
+> +    SENDING_BIT3,
+> +    SENDING_BIT2,
+> +    SENDING_BIT1,
+> +    SENDING_BIT0,
+> +    WAITING_FOR_ACK,
+> +    RECEIVING_BIT7,
+> +    RECEIVING_BIT6,
+> +    RECEIVING_BIT5,
+> +    RECEIVING_BIT4,
+> +    RECEIVING_BIT3,
+> +    RECEIVING_BIT2,
+> +    RECEIVING_BIT1,
+> +    RECEIVING_BIT0,
+> +    SENDING_ACK,
+> +    SENT_NACK
+> +} bitbang_i2c_state;
+> +
+> +struct bitbang_i2c_interface {
+> +    I2CBus *bus;
+> +    bitbang_i2c_state state;
+> +    int last_data;
+> +    int last_clock;
+> +    int device_out;
+> +    uint8_t buffer;
+> +    int current_addr;
+> +};
+> +
+> +/**
+> + * bitbang_i2c_init: in-place initialize the bitbang_i2c_interface struct
+> + */
+> +void bitbang_i2c_init(bitbang_i2c_interface *s, I2CBus *bus);
+>  int bitbang_i2c_set(bitbang_i2c_interface *i2c, int line, int level);
+>  
+>  #endif
+> diff --git a/include/hw/i2c/ppc4xx_i2c.h b/include/hw/i2c/ppc4xx_i2c.h
+> index 8437bf070b8..f6f837fbec0 100644
+> --- a/include/hw/i2c/ppc4xx_i2c.h
+> +++ b/include/hw/i2c/ppc4xx_i2c.h
+> @@ -41,7 +41,7 @@ typedef struct PPC4xxI2CState {
+>      I2CBus *bus;
+>      qemu_irq irq;
+>      MemoryRegion iomem;
+> -    bitbang_i2c_interface *bitbang;
+> +    bitbang_i2c_interface bitbang;
+>      int mdidx;
+>      uint8_t mdata[4];
+>      uint8_t lmadr;
+> diff --git a/hw/display/ati.c b/hw/display/ati.c
+> index 0cb11738483..c1d9d1518f4 100644
+> --- a/hw/display/ati.c
+> +++ b/hw/display/ati.c
+> @@ -538,7 +538,7 @@ static void ati_mm_write(void *opaque, hwaddr addr,
+>          break;
+>      case GPIO_DVI_DDC:
+>          if (s->dev_id != PCI_DEVICE_ID_ATI_RAGE128_PF) {
+> -            s->regs.gpio_dvi_ddc = ati_i2c(s->bbi2c, data, 0);
+> +            s->regs.gpio_dvi_ddc = ati_i2c(&s->bbi2c, data, 0);
+>          }
+>          break;
+>      case GPIO_MONID ... GPIO_MONID + 3:
+> @@ -554,7 +554,7 @@ static void ati_mm_write(void *opaque, hwaddr addr,
+>               */
+>              if ((s->regs.gpio_monid & BIT(25)) &&
+>                  addr <= GPIO_MONID + 2 && addr + size > GPIO_MONID + 2) {
+> -                s->regs.gpio_monid = ati_i2c(s->bbi2c, s->regs.gpio_monid, 1);
+> +                s->regs.gpio_monid = ati_i2c(&s->bbi2c, s->regs.gpio_monid, 1);
+>              }
+>          }
+>          break;
+> @@ -856,7 +856,7 @@ static void ati_vga_realize(PCIDevice *dev, Error **errp)
+>  
+>      /* ddc, edid */
+>      I2CBus *i2cbus = i2c_init_bus(DEVICE(s), "ati-vga.ddc");
+> -    s->bbi2c = bitbang_i2c_init(i2cbus);
+> +    bitbang_i2c_init(&s->bbi2c, i2cbus);
+>      I2CSlave *i2cddc = I2C_SLAVE(qdev_create(BUS(i2cbus), TYPE_I2CDDC));
+>      i2c_set_slave_address(i2cddc, 0x50);
+>  
+> @@ -885,7 +885,6 @@ static void ati_vga_exit(PCIDevice *dev)
+>      ATIVGAState *s = ATI_VGA(dev);
+>  
+>      graphic_console_close(s->vga.con);
+> -    g_free(s->bbi2c);
+>  }
+>  
+>  static Property ati_vga_properties[] = {
+> diff --git a/hw/i2c/bitbang_i2c.c b/hw/i2c/bitbang_i2c.c
+> index 3cb0509b020..60c7a9be0bc 100644
+> --- a/hw/i2c/bitbang_i2c.c
+> +++ b/hw/i2c/bitbang_i2c.c
+> @@ -25,39 +25,6 @@ do { printf("bitbang_i2c: " fmt , ## __VA_ARGS__); } while (0)
+>  #define DPRINTF(fmt, ...) do {} while(0)
+>  #endif
+>  
+> -typedef enum bitbang_i2c_state {
+> -    STOPPED = 0,
+> -    SENDING_BIT7,
+> -    SENDING_BIT6,
+> -    SENDING_BIT5,
+> -    SENDING_BIT4,
+> -    SENDING_BIT3,
+> -    SENDING_BIT2,
+> -    SENDING_BIT1,
+> -    SENDING_BIT0,
+> -    WAITING_FOR_ACK,
+> -    RECEIVING_BIT7,
+> -    RECEIVING_BIT6,
+> -    RECEIVING_BIT5,
+> -    RECEIVING_BIT4,
+> -    RECEIVING_BIT3,
+> -    RECEIVING_BIT2,
+> -    RECEIVING_BIT1,
+> -    RECEIVING_BIT0,
+> -    SENDING_ACK,
+> -    SENT_NACK
+> -} bitbang_i2c_state;
+> -
+> -struct bitbang_i2c_interface {
+> -    I2CBus *bus;
+> -    bitbang_i2c_state state;
+> -    int last_data;
+> -    int last_clock;
+> -    int device_out;
+> -    uint8_t buffer;
+> -    int current_addr;
+> -};
+> -
+>  static void bitbang_i2c_enter_stop(bitbang_i2c_interface *i2c)
+>  {
+>      DPRINTF("STOP\n");
+> @@ -184,18 +151,12 @@ int bitbang_i2c_set(bitbang_i2c_interface *i2c, int line, int level)
+>      abort();
+>  }
+>  
+> -bitbang_i2c_interface *bitbang_i2c_init(I2CBus *bus)
+> +void bitbang_i2c_init(bitbang_i2c_interface *s, I2CBus *bus)
+>  {
+> -    bitbang_i2c_interface *s;
+> -
+> -    s = g_malloc0(sizeof(bitbang_i2c_interface));
+> -
+>      s->bus = bus;
 
-IMHO it'll be better if this patch can be squashed into the first user
-of the new flag to better clarify itself on why it will be needed (if
-finally we still would like to have this flag).
+So, QOM speaking, bitbang_i2c_init() is a DeviceRealize with a .bus
+property. We'll clean that up later, OK.
 
-Regards,
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
--- 
-Peter Xu
+>      s->last_data = 1;
+>      s->last_clock = 1;
+>      s->device_out = 1;
+> -
+> -    return s;
+>  }
+>  
+>  /* GPIO interface.  */
+> @@ -207,7 +168,7 @@ typedef struct GPIOI2CState {
+>      SysBusDevice parent_obj;
+>  
+>      MemoryRegion dummy_iomem;
+> -    bitbang_i2c_interface *bitbang;
+> +    bitbang_i2c_interface bitbang;
+>      int last_level;
+>      qemu_irq out;
+>  } GPIOI2CState;
+> @@ -216,7 +177,7 @@ static void bitbang_i2c_gpio_set(void *opaque, int irq, int level)
+>  {
+>      GPIOI2CState *s = opaque;
+>  
+> -    level = bitbang_i2c_set(s->bitbang, irq, level);
+> +    level = bitbang_i2c_set(&s->bitbang, irq, level);
+>      if (level != s->last_level) {
+>          s->last_level = level;
+>          qemu_set_irq(s->out, level);
+> @@ -234,7 +195,7 @@ static void gpio_i2c_init(Object *obj)
+>      sysbus_init_mmio(sbd, &s->dummy_iomem);
+>  
+>      bus = i2c_init_bus(dev, "i2c");
+> -    s->bitbang = bitbang_i2c_init(bus);
+> +    bitbang_i2c_init(&s->bitbang, bus);
+>  
+>      qdev_init_gpio_in(dev, bitbang_i2c_gpio_set, 2);
+>      qdev_init_gpio_out(dev, &s->out, 1);
+> diff --git a/hw/i2c/ppc4xx_i2c.c b/hw/i2c/ppc4xx_i2c.c
+> index 5fb4f86c38f..462729db4ea 100644
+> --- a/hw/i2c/ppc4xx_i2c.c
+> +++ b/hw/i2c/ppc4xx_i2c.c
+> @@ -311,9 +311,9 @@ static void ppc4xx_i2c_writeb(void *opaque, hwaddr addr, uint64_t value,
+>      case IIC_DIRECTCNTL:
+>          i2c->directcntl = value & (IIC_DIRECTCNTL_SDAC & IIC_DIRECTCNTL_SCLC);
+>          i2c->directcntl |= (value & IIC_DIRECTCNTL_SCLC ? 1 : 0);
+> -        bitbang_i2c_set(i2c->bitbang, BITBANG_I2C_SCL,
+> +        bitbang_i2c_set(&i2c->bitbang, BITBANG_I2C_SCL,
+>                          i2c->directcntl & IIC_DIRECTCNTL_MSCL);
+> -        i2c->directcntl |= bitbang_i2c_set(i2c->bitbang, BITBANG_I2C_SDA,
+> +        i2c->directcntl |= bitbang_i2c_set(&i2c->bitbang, BITBANG_I2C_SDA,
+>                                 (value & IIC_DIRECTCNTL_SDAC) != 0) << 1;
+>          break;
+>      default:
+> @@ -347,7 +347,7 @@ static void ppc4xx_i2c_init(Object *o)
+>      sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
+>      sysbus_init_irq(SYS_BUS_DEVICE(s), &s->irq);
+>      s->bus = i2c_init_bus(DEVICE(s), "i2c");
+> -    s->bitbang = bitbang_i2c_init(s->bus);
+> +    bitbang_i2c_init(&s->bitbang, s->bus);
+>  }
+>  
+>  static void ppc4xx_i2c_class_init(ObjectClass *klass, void *data)
+> diff --git a/hw/i2c/versatile_i2c.c b/hw/i2c/versatile_i2c.c
+> index 24b6e36b6d5..1ac2a6f59a0 100644
+> --- a/hw/i2c/versatile_i2c.c
+> +++ b/hw/i2c/versatile_i2c.c
+> @@ -35,7 +35,7 @@ typedef struct VersatileI2CState {
+>      SysBusDevice parent_obj;
+>  
+>      MemoryRegion iomem;
+> -    bitbang_i2c_interface *bitbang;
+> +    bitbang_i2c_interface bitbang;
+>      int out;
+>      int in;
+>  } VersatileI2CState;
+> @@ -70,8 +70,8 @@ static void versatile_i2c_write(void *opaque, hwaddr offset,
+>          qemu_log_mask(LOG_GUEST_ERROR,
+>                        "%s: Bad offset 0x%x\n", __func__, (int)offset);
+>      }
+> -    bitbang_i2c_set(s->bitbang, BITBANG_I2C_SCL, (s->out & 1) != 0);
+> -    s->in = bitbang_i2c_set(s->bitbang, BITBANG_I2C_SDA, (s->out & 2) != 0);
+> +    bitbang_i2c_set(&s->bitbang, BITBANG_I2C_SCL, (s->out & 1) != 0);
+> +    s->in = bitbang_i2c_set(&s->bitbang, BITBANG_I2C_SDA, (s->out & 2) != 0);
+>  }
+>  
+>  static const MemoryRegionOps versatile_i2c_ops = {
+> @@ -88,7 +88,7 @@ static void versatile_i2c_init(Object *obj)
+>      I2CBus *bus;
+>  
+>      bus = i2c_init_bus(dev, "i2c");
+> -    s->bitbang = bitbang_i2c_init(bus);
+> +    bitbang_i2c_init(&s->bitbang, bus);
+>      memory_region_init_io(&s->iomem, obj, &versatile_i2c_ops, s,
+>                            "versatile_i2c", 0x1000);
+>      sysbus_init_mmio(sbd, &s->iomem);
+> 

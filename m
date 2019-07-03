@@ -1,101 +1,85 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp547817wru;
-        Wed, 3 Jul 2019 02:10:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw1Svaubkl2nXQQUoWVWnTNH/EBdwhGw58UwdUi4crPKkBHNBZ3XWKR60fZ4wgKO5sZl7D3
-X-Received: by 2002:a50:c28a:: with SMTP id o10mr40672851edf.182.1562145033265;
-        Wed, 03 Jul 2019 02:10:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562145033; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp617757wru;
+        Wed, 3 Jul 2019 03:22:28 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxQtor/MO4ay+5lbqidhMjIWS7PwdozLpSAc3PN/ZFtE34VqXxnSa3sPzWvAQ9WAYUCUi34
+X-Received: by 2002:a50:ad0c:: with SMTP id y12mr40742368edc.25.1562149348574;
+        Wed, 03 Jul 2019 03:22:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562149348; cv=none;
         d=google.com; s=arc-20160816;
-        b=GY/Kqwp59FuHEMVDdvVE/iwLhWbWKWTkIYeoZLuyopX00suqeYiWqs6b2kx5/6A+3/
-         lTkbn+VVbQtdXgUqXnqYV20ffxGrQJZNxOBzr8+vhDd36bRBeWA5OwjkDfcmR7aAG8Z+
-         28AiiVmGY40rFbAIcXSJp0xpskuIwbpPvRQTZBKaaf2lESw9TaO58o5L1bpcLs+rwCVp
-         FCrujGbpT0rHba1e5OLDzaZw7VIo4e7PAys2FMQH8ohb7VanrWXOd4OVM6i/jEC+acsJ
-         9YvUQRFZz6QKjaSaSw470tT5Nxt0TQMlgYqdqyJqJro1kmLvjSYOkuO/mr3LEpzUAioI
-         N7Xw==
+        b=PkO+qD5vIcWQgbLkwc18H7+d34hVdA5qIhbVMUzNkE9EDhsPA9docXLYhR98jw2uio
+         t41qWeJ1VRHug+tJiEaX6Rv52PhpvbWbFWL6WrMw0wGcqf03UONQTXuYTInTwLFnQCDS
+         Wxh4jiiQyeTvdEa3SUHl9zQmWuBQIabdhAWNtX4sQUIHwf2w7NpcudAz6Zbv0UisCs2r
+         RcJQRp/mPrUObAGWlQyiV/7Bb9QVJ0cXVosmQ1OSAaMENBrPUK5K/Xf5/fKZLJE/aBT1
+         Ln1343Z7GsiR9f+70H5Rlys8VKJxtjo613SE+zvM4jrrAEeHGeuD0fnfaaXBMTtVWmhz
+         XRzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=7b6ZF5uQklpEPEpc/c7+9woVIVcNJX6/kU+CWiMpu2E=;
-        b=Ck6H31DJHjK/GaQQFhu2aPTyInPHHaHWpcNv5+4PUN06OG7jd66LIkMMs14+CleDth
-         eMxjTrfXV/sFGnB5g9bS35ih0SQvyJBty6LHGV2X1krWkMoCnBa3Jz72RgiK3NqBepMx
-         aH+IS2es4ohrGvJf+IAfZlslqlYx7UDMM6pcTtDa46WM1WtHtZWsPWT+h+l1q0bUSeed
-         GysfGvgDBFWX7tiBQjJANDtQIBBGmkjQJRK7KiZy+oRS2YS8uxSYU4xWENGUVRIU91Zp
-         Y3VHMId1OTS4k/M05gr+AWMwoNSK8unQvbZMD1/FMA8u8e+j4uwTYJ+w453gssAEvQyJ
-         BS8A==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=lkJJpXIH93h9sCRPF5GeAayABNRvEvaZ4wc81AlYE4w=;
+        b=fiF1GXBUDtdxjhqwN/NQyLJSlsxJBTiwo0Qiy/8JSngTNlYQcBR4CgJEt7cSoEGcGM
+         R+1qksU58AR/5gK60q1+ehn9WsQ2jbEZEcWmxFBC4r/VUSk3Nm7VjVxYD8Eg2YtaxEbL
+         W+fzrXJFu4qDXtJv9LehKsuROL1BYisp8vBoj9dF6BQvUK40jjEfzw5BIeBfD4lp36kx
+         07BePXxZs12sEd03Y6L1hjIHhK3j5bHApd3/S8z9/cqIx3Zdta4fvE1xolnb+Oskl+KA
+         A3qC8cATDCjuWgLo1UIdhEcWXbyclACnAX4+EqA7xmS2Z+1SqiwS8BmEHQq4WpTFfref
+         g2JQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i38si1656755ede.163.2019.07.03.02.10.33
+        by mx.google.com with ESMTPS id w27si1830421edw.366.2019.07.03.03.22.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jul 2019 02:10:33 -0700 (PDT)
+        Wed, 03 Jul 2019 03:22:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33936 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34698 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hibHc-0000jo-BL
-	for alex.bennee@linaro.org; Wed, 03 Jul 2019 05:10:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52414)
+	id 1hicPD-0004kC-N8
+	for alex.bennee@linaro.org; Wed, 03 Jul 2019 06:22:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50183)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hiarm-0000bK-Fx
- for qemu-arm@nongnu.org; Wed, 03 Jul 2019 04:43:52 -0400
+ (envelope-from <peterx@redhat.com>) id 1hicOd-0003wZ-0Z
+ for qemu-arm@nongnu.org; Wed, 03 Jul 2019 06:21:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hiarl-000478-2d
- for qemu-arm@nongnu.org; Wed, 03 Jul 2019 04:43:50 -0400
-Received: from mail-wr1-f65.google.com ([209.85.221.65]:47043)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hiark-00042d-8p
- for qemu-arm@nongnu.org; Wed, 03 Jul 2019 04:43:48 -0400
-Received: by mail-wr1-f65.google.com with SMTP id n4so1729624wrw.13
- for <qemu-arm@nongnu.org>; Wed, 03 Jul 2019 01:43:48 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=7b6ZF5uQklpEPEpc/c7+9woVIVcNJX6/kU+CWiMpu2E=;
- b=axV5OQMMpRnbpGfCLppzzU0aQU2DuJPQ1F9qf4iITFcZAK5+vUjOoqsVmcDkNnC1Nk
- UPysDkUKuwV1i2o5NJy2S58aAyT/7MG3joHvA70QWM/FyrwiYHtDRBA7N/JDmt1/gLkq
- AQKxwBgRaoyaCByO2Yf8+ISwJFogUj9R8G9HPwa7hC/K3AHtQHWMfKB6p7MgFGZ3sIto
- 679WrdfkuWbH6CLsIIO2cYtgb07VONyKjXAsl7mytyDxAyMlFSgTW7riE5mU7OIbhsOT
- 1TSMLkv5SeHHxg8tCPSYWdCy5kY6jGU8MEq3kmp6UhaxRuxVby9AEpcHfFcwXw79qmC+
- Jw8Q==
-X-Gm-Message-State: APjAAAUuH+NJ1hDYhXZ9U2AsEVNiUumg0kCGw0vIn6HsjBuUSO4VHP5J
- EciZ3zmwn9Ogzf3tuQNedIGghg==
-X-Received: by 2002:adf:f8cf:: with SMTP id f15mr23372746wrq.333.1562143426819; 
- Wed, 03 Jul 2019 01:43:46 -0700 (PDT)
-Received: from [192.168.1.38] (56.red-88-18-140.staticip.rima-tde.net.
- [88.18.140.56])
- by smtp.gmail.com with ESMTPSA id e6sm1403937wrw.23.2019.07.03.01.43.45
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Wed, 03 Jul 2019 01:43:46 -0700 (PDT)
-To: BALATON Zoltan <balaton@eik.bme.hu>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20190702163844.20458-1-peter.maydell@linaro.org>
- <alpine.BSF.2.21.9999.1907022343160.68337@zero.eik.bme.hu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <18767774-2460-6f39-2909-de9e37737f4c@redhat.com>
-Date: Wed, 3 Jul 2019 10:43:45 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ (envelope-from <peterx@redhat.com>) id 1hicOb-0007K8-En
+ for qemu-arm@nongnu.org; Wed, 03 Jul 2019 06:21:50 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:5553)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <peterx@redhat.com>)
+ id 1hicOb-0007HN-6k; Wed, 03 Jul 2019 06:21:49 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 33F7E6A7CD;
+ Wed,  3 Jul 2019 10:21:43 +0000 (UTC)
+Received: from xz-x1 (ovpn-12-52.pek2.redhat.com [10.72.12.52])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E87688A36E;
+ Wed,  3 Jul 2019 10:21:26 +0000 (UTC)
+Date: Wed, 3 Jul 2019 18:21:22 +0800
+From: Peter Xu <peterx@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Message-ID: <20190703102122.GA3796@xz-x1>
+References: <20190701093034.18873-1-eric.auger@redhat.com>
+ <20190701093034.18873-4-eric.auger@redhat.com>
+ <20190703054116.GD10408@xz-x1>
+ <ac7cb635-b420-e04d-1a80-6fcfe81d12a8@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <alpine.BSF.2.21.9999.1907022343160.68337@zero.eik.bme.hu>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Disposition: inline
+In-Reply-To: <ac7cb635-b420-e04d-1a80-6fcfe81d12a8@redhat.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.27]); Wed, 03 Jul 2019 10:21:43 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.221.65
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-4.1] hw/i2c/bitbang_i2c: Use
- in-place rather than malloc'd bitbang_i2c_interface struct
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v2 3/6] hw/vfio/common: Do not replay IOMMU
+ mappings in nested case
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,137 +91,134 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, alex.williamson@redhat.com,
+ qemu-arm@nongnu.org, pbonzini@redhat.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dqwsfGpZWiXY
+X-TUID: BcDrE0eqTXyo
 
-On 7/2/19 11:52 PM, BALATON Zoltan wrote:
-> On Tue, 2 Jul 2019, Peter Maydell wrote:
->> Currently the bitbang_i2c_init() function allocates a
->> bitbang_i2c_interface struct which it returns.  This is unfortunate
->> because it means that if the function is used from a DeviceState
->> init method then the memory will be leaked by an "init then delete"
->> cycle, as used by the qmp/hmp commands that list device properties.
->>
->> Since three out of four of the uses of this function are in
->> device init methods, switch the function to do an in-place
->> initialization of a struct that can be embedded in the
->> device state struct of the caller.
->>
->> This fixes LeakSanitizer leak warnings that have appeared in the
->> patchew configuration (which only tries to run the sanitizers
->> for the x86_64-softmmu target) now that we use the bitbang-i2c
->> code in an x86-64 config.
->>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
->> This isn't the only problem with this code : it is also
->> missing reset and migration handling and generally looks like
->> it needs proper conversion to QOM somehow. But this will shut
->> the patchew complaints up and seems ok for 4.1.
->>
->> Disclaimer: checked only that the leak-sanitizer is now happy
->> and with a 'make check'.
-> 
-> I've tested the ppc4xx and ati-vga parts with AROS and MorphOS and these
-> can still access i2c devices so I think it works.
+On Wed, Jul 03, 2019 at 11:04:38AM +0200, Auger Eric wrote:
+> Hi Peter,
 
-So:
+Hi, Eric,
 
-Tested-by: BALATON Zoltan <balaton@eik.bme.hu>
+> 
+> On 7/3/19 7:41 AM, Peter Xu wrote:
+> > On Mon, Jul 01, 2019 at 11:30:31AM +0200, Eric Auger wrote:
+> >> In nested mode, the stage 1 translation tables are owned by
+> >> the guest and there is no caching on host side. So there is
+> >> no need to replay the mappings.
+> >>
+> >> As of today, the SMMUv3 nested mode is not yet implemented
+> >> and there is no functional VFIO integration without. But
+> >> keeping the replay call would execute the default implementation
+> >> of memory_region_iommu_replay and attempt to translate the whole
+> >> address range, completely stalling qemu. Keeping the MAP/UNMAP
+> >> notifier registration allows to hit a warning message in the
+> >> SMMUv3 device that tells the user which VFIO device will not
+> >> function properly:
+> >>
+> >> "qemu-system-aarch64: -device vfio-pci,host=0000:89:00.0: warning:
+> >> SMMUv3 does not support notification on MAP: device vfio-pci will not
+> >> function properly"
+> >>
+> >> Besides, removing the replay call now allows the guest to boot.
+> >>
+> >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> >> ---
+> >>  hw/vfio/common.c | 7 ++++++-
+> >>  1 file changed, 6 insertions(+), 1 deletion(-)
+> >>
+> >> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+> >> index a859298fda..9ea58df67a 100644
+> >> --- a/hw/vfio/common.c
+> >> +++ b/hw/vfio/common.c
+> >> @@ -604,6 +604,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
+> >>      if (memory_region_is_iommu(section->mr)) {
+> >>          VFIOGuestIOMMU *giommu;
+> >>          IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(section->mr);
+> >> +        bool nested = false;
+> >>          int iommu_idx;
+> >>  
+> >>          trace_vfio_listener_region_add_iommu(iova, end);
+> >> @@ -631,8 +632,12 @@ static void vfio_listener_region_add(MemoryListener *listener,
+> >>          QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_next);
+> >>  
+> >>          memory_region_register_iommu_notifier(section->mr, &giommu->n);
+> >> -        memory_region_iommu_replay(giommu->iommu, &giommu->n);
+> >>  
+> >> +        memory_region_iommu_get_attr(iommu_mr, IOMMU_ATTR_VFIO_NESTED,
+> >> +                                     (void *)&nested);
+> >> +        if (!nested) {
+> >> +            memory_region_iommu_replay(iommu_mr, &giommu->n);
+> >> +        }
+> > 
+> > For nested, do we need these IOMMU notifiers after all?
+> > 
+> > I'm asking because the no-IOMMU case of vfio_listener_region_add()
+> > seems to suite very well for nested page tables to me.  For example,
+> > vfio does not need to listen to MAP events any more because we'll
+> > simply share the guest IOMMU page table to be the 1st level page table
+> > of the host SMMU IIUC.
+> We don't need the MAP notifier but we need the UNMAP notifier: when the
+> guest invalidates an ASID/IOVA we need to propagate this to the physical
+> IOMMU.
 
->> ---
->> hw/display/ati_int.h         |  2 +-
->> include/hw/i2c/bitbang_i2c.h | 38 ++++++++++++++++++++++++++++-
->> include/hw/i2c/ppc4xx_i2c.h  |  2 +-
->> hw/display/ati.c             |  7 +++---
->> hw/i2c/bitbang_i2c.c         | 47 +++---------------------------------
->> hw/i2c/ppc4xx_i2c.c          |  6 ++---
->> hw/i2c/versatile_i2c.c       |  8 +++---
->> 7 files changed, 53 insertions(+), 57 deletions(-)
->>
->> diff --git a/hw/display/ati_int.h b/hw/display/ati_int.h
->> index 9b67d0022ad..31a1927b3ec 100644
->> --- a/hw/display/ati_int.h
->> +++ b/hw/display/ati_int.h
->> @@ -88,7 +88,7 @@ typedef struct ATIVGAState {
->>     uint16_t cursor_size;
->>     uint32_t cursor_offset;
->>     QEMUCursor *cursor;
->> -    bitbang_i2c_interface *bbi2c;
->> +    bitbang_i2c_interface bbi2c;
->>     MemoryRegion io;
->>     MemoryRegion mm;
->>     ATIVGARegs regs;
->> diff --git a/include/hw/i2c/bitbang_i2c.h b/include/hw/i2c/bitbang_i2c.h
->> index 3a7126d5dee..92334e9016a 100644
->> --- a/include/hw/i2c/bitbang_i2c.h
->> +++ b/include/hw/i2c/bitbang_i2c.h
->> @@ -8,7 +8,43 @@ typedef struct bitbang_i2c_interface
->> bitbang_i2c_interface;
-> 
-> Maybe this typedef ^^^ can now be moved to the struct below instead of
-> coming first (or even written in the same line as
-> typedef struct { } bitbang_i2c_interface;
-> as there is no need to have both struct bitbang_i2c_interface and the
-> typedeffed name available).
+Indeed we need the unmaps.  However I've got a major confusion here:
+With nested mode, we should need unmap events for the 1st level rather
+than the 2nd level, am I right?  I mean, the invalidate request should
+be a GVA range rather than GPA range?  While here IIUC
+vfio_listener_region_add() should be working on GPA address space.
 
-Agreed, from "hw/i2c/i2c.h" to "hw/i2c/bitbang_i2c.h".
+I don't know SMMU enough, but for Intel there should have two
+different kinds of invalidation messages.  Currently because we still
+don't support nested on Intel so the 1st level invalidation is still
+not yet implemented (VTD_INV_DESC_PIOTLB).  And IMHO if it is going to
+be implemented, I think it should be different comparing to current
+IOMMU_NOTIFIER_UNMAP in that it should not even need to bind to a
+memory region, and modules like vfio should simply deliver that exact
+message to the host IOMMU driver for the GVA range to be invalidated,
+just like what it will do with the root pointer of guest 1st level
+page table.
 
-> But I don't really mind, so
 > 
-> Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
+> As mentioned in the cover letter, at the moment, I still register both
+> MAP/UNMAP notifiers as the MAP notifier registration produces an
+> explicit warning message in the SMMUv3 device. If I remove the
+> registration we will loose this message. I hope this code is just an
+> intermediate state towards the actual nested stage support.
+
+I didn't see it in the cover letter.  Would you please provide a link
+to the message?
+
 > 
-> Thanks for fixing this.
+>   And if we have 2nd page table changes (like
+> > memory hotplug) then IMHO vfio_listener_region_add() will do this for
+> > us as well just like when there's no SMMU.
 > 
-> Regards,
-> BALATON Zoltan
+> In the current integration, see [RFC v4 20/27] hw/vfio/common: Setup
+> nested stage mappings (https://patchwork.kernel.org/patch/10962721/) I
+> use a prereg_listener for stage 2 mappings.
+> > 
+> > Another thing is that IOMMU_ATTR_VFIO_NESTED will be the same for all
+> > the memory regions, so it also seems a bit awkward to make it per
+> > memory region.  If you see the other real user of this flag (which is
+> > IOMMU_ATTR_SPAPR_TCE_FD) it's per memory region.
 > 
->> #define BITBANG_I2C_SDA 0
->> #define BITBANG_I2C_SCL 1
->>
->> -bitbang_i2c_interface *bitbang_i2c_init(I2CBus *bus);
->> +typedef enum bitbang_i2c_state {
->> +    STOPPED = 0,
->> +    SENDING_BIT7,
->> +    SENDING_BIT6,
->> +    SENDING_BIT5,
->> +    SENDING_BIT4,
->> +    SENDING_BIT3,
->> +    SENDING_BIT2,
->> +    SENDING_BIT1,
->> +    SENDING_BIT0,
->> +    WAITING_FOR_ACK,
->> +    RECEIVING_BIT7,
->> +    RECEIVING_BIT6,
->> +    RECEIVING_BIT5,
->> +    RECEIVING_BIT4,
->> +    RECEIVING_BIT3,
->> +    RECEIVING_BIT2,
->> +    RECEIVING_BIT1,
->> +    RECEIVING_BIT0,
->> +    SENDING_ACK,
->> +    SENT_NACK
->> +} bitbang_i2c_state;
->> +
->> +struct bitbang_i2c_interface {
->> +    I2CBus *bus;
->> +    bitbang_i2c_state state;
->> +    int last_data;
->> +    int last_clock;
->> +    int device_out;
->> +    uint8_t buffer;
->> +    int current_addr;
->> +};
->> +
->> +/**
->> + * bitbang_i2c_init: in-place initialize the bitbang_i2c_interface
->> struct
->> + */
->> +void bitbang_i2c_init(bitbang_i2c_interface *s, I2CBus *bus);
->> int bitbang_i2c_set(bitbang_i2c_interface *i2c, int line, int level);
->>
->> #endif
+> That's correct all SMMUv3 regions will return this value. But what other
+> API can be used to query IOMMU level attributes?
 > 
+> On the other hand,
+> 
+> Alexey's commit f1334de60b2 ("memory/iommu: Add get_attr()") says:
+>     This adds get_attr() to IOMMUMemoryRegionClass, like
+>     iommu_ops::domain_get_attr in the Linux kernel.
+> 
+> and DOMAIN_ATTR_NESTING is part of enum iommu_attr at kernel level.
+
+Yeah it's fine to me.
+
+Thanks,
+
+-- 
+Peter Xu

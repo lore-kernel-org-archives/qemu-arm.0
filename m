@@ -1,84 +1,101 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp540354wru;
-        Wed, 3 Jul 2019 02:03:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwBWVQqbIO5OlaqzH28vZ/AFKesCWUzwnH6CkXx6V5G94P++BBhsSm0c5h7+D+xJYX9qr+2
-X-Received: by 2002:a17:906:6c7:: with SMTP id v7mr32669468ejb.19.1562144628981;
-        Wed, 03 Jul 2019 02:03:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562144628; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp547817wru;
+        Wed, 3 Jul 2019 02:10:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw1Svaubkl2nXQQUoWVWnTNH/EBdwhGw58UwdUi4crPKkBHNBZ3XWKR60fZ4wgKO5sZl7D3
+X-Received: by 2002:a50:c28a:: with SMTP id o10mr40672851edf.182.1562145033265;
+        Wed, 03 Jul 2019 02:10:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562145033; cv=none;
         d=google.com; s=arc-20160816;
-        b=w0g5fEnQqzZkfGC+48W/iYs82ibm4or9NksCa2r/nzti3hNZcebL88pVcj7H4UCV0Q
-         5KaomDUymfez1dinPHcFuDUYh2AkkQ+wB6Se99YROMJV1LJnOmD2vdYc3PD+r3UXLLr9
-         RJybXdoxuS6y2P4CA2CTUMhNK+9OK7do6ujoVvNHUERy3u2WGIsWiXYxLSd8bTiP0CdZ
-         qE7cZNqwuE0A89wPMhYGbB3BZDF18tzoTMvmxqu2tKLcC74/iF4D3Yjq1/HfT3GIhVtP
-         monGU6dfzjCZlf4Ijy9FyabXMkKlDSQKcnSsa7TGYyfiGI1QATstNeN4v1Id/VpCDxvj
-         Dqvg==
+        b=GY/Kqwp59FuHEMVDdvVE/iwLhWbWKWTkIYeoZLuyopX00suqeYiWqs6b2kx5/6A+3/
+         lTkbn+VVbQtdXgUqXnqYV20ffxGrQJZNxOBzr8+vhDd36bRBeWA5OwjkDfcmR7aAG8Z+
+         28AiiVmGY40rFbAIcXSJp0xpskuIwbpPvRQTZBKaaf2lESw9TaO58o5L1bpcLs+rwCVp
+         FCrujGbpT0rHba1e5OLDzaZw7VIo4e7PAys2FMQH8ohb7VanrWXOd4OVM6i/jEC+acsJ
+         9YvUQRFZz6QKjaSaSw470tT5Nxt0TQMlgYqdqyJqJro1kmLvjSYOkuO/mr3LEpzUAioI
+         N7Xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=ESxCydPkFoZtq6iyFPptIkLUnGe0PeX3QfrIKM7OpEU=;
-        b=ADTCY0aSdcoXGpp0/NL6HeitpZRRh0pXicdHtOml58XUHINJLCO+cN/P9SozTL9h1W
-         d7Q0FpbX4Cjrt/IyC7ZTHKtZn6KoYOxBB65L7awroVuWXvAG6lxxboXgVZnGu9r+l+5f
-         LswdxAMMceYDRyHs5+Tp273mzht3eUZ/UxZl4/VND3ex8uwivF3/L+Co9Vw3NR/HWk5v
-         KkLgiP/d/XBjx9wBkafJbTBe5oSDLOxCMGVnNVBFMVlZuPTh3R3HBm/SRUBrNCHdx6u7
-         7jT7lWLkm3+KG/YqiBOjBmgneJV8cadN2TEAJ7QceOPylM9HK1cQ4xJe8Z8Wrsljl7D/
-         56Ew==
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=7b6ZF5uQklpEPEpc/c7+9woVIVcNJX6/kU+CWiMpu2E=;
+        b=Ck6H31DJHjK/GaQQFhu2aPTyInPHHaHWpcNv5+4PUN06OG7jd66LIkMMs14+CleDth
+         eMxjTrfXV/sFGnB5g9bS35ih0SQvyJBty6LHGV2X1krWkMoCnBa3Jz72RgiK3NqBepMx
+         aH+IS2es4ohrGvJf+IAfZlslqlYx7UDMM6pcTtDa46WM1WtHtZWsPWT+h+l1q0bUSeed
+         GysfGvgDBFWX7tiBQjJANDtQIBBGmkjQJRK7KiZy+oRS2YS8uxSYU4xWENGUVRIU91Zp
+         Y3VHMId1OTS4k/M05gr+AWMwoNSK8unQvbZMD1/FMA8u8e+j4uwTYJ+w453gssAEvQyJ
+         BS8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h52si1392966edh.123.2019.07.03.02.03.48
+        by mx.google.com with ESMTPS id i38si1656755ede.163.2019.07.03.02.10.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jul 2019 02:03:48 -0700 (PDT)
+        Wed, 03 Jul 2019 02:10:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33876 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33936 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hibB6-0001Vo-2F
-	for alex.bennee@linaro.org; Wed, 03 Jul 2019 05:03:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54801)
+	id 1hibHc-0000jo-BL
+	for alex.bennee@linaro.org; Wed, 03 Jul 2019 05:10:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52414)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <clg@kaod.org>) id 1hib1Z-0001oI-V4
- for qemu-arm@nongnu.org; Wed, 03 Jul 2019 04:53:59 -0400
+ (envelope-from <philmd@redhat.com>) id 1hiarm-0000bK-Fx
+ for qemu-arm@nongnu.org; Wed, 03 Jul 2019 04:43:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1hib1Y-000231-N6
- for qemu-arm@nongnu.org; Wed, 03 Jul 2019 04:53:57 -0400
-Received: from 14.mo4.mail-out.ovh.net ([46.105.40.29]:41676)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1hib1Y-0001Pr-Fj
- for qemu-arm@nongnu.org; Wed, 03 Jul 2019 04:53:56 -0400
-Received: from player772.ha.ovh.net (unknown [10.109.160.5])
- by mo4.mail-out.ovh.net (Postfix) with ESMTP id B31B61F3A21
- for <qemu-arm@nongnu.org>; Wed,  3 Jul 2019 10:53:36 +0200 (CEST)
-Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
- (Authenticated sender: clg@kaod.org)
- by player772.ha.ovh.net (Postfix) with ESMTPSA id A610C77E3311;
- Wed,  3 Jul 2019 08:53:29 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20190618165311.27066-1-clg@kaod.org>
- <20190618165311.27066-11-clg@kaod.org>
- <CAFEAcA_4E7b6qpHEaZaQRQO3TB5BJCLCRJ7jROAr7CeQsJ5wcw@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <b88cc8cf-6cf0-6611-28a9-64372eccbeef@kaod.org>
-Date: Wed, 3 Jul 2019 10:53:27 +0200
+ (envelope-from <philmd@redhat.com>) id 1hiarl-000478-2d
+ for qemu-arm@nongnu.org; Wed, 03 Jul 2019 04:43:50 -0400
+Received: from mail-wr1-f65.google.com ([209.85.221.65]:47043)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hiark-00042d-8p
+ for qemu-arm@nongnu.org; Wed, 03 Jul 2019 04:43:48 -0400
+Received: by mail-wr1-f65.google.com with SMTP id n4so1729624wrw.13
+ for <qemu-arm@nongnu.org>; Wed, 03 Jul 2019 01:43:48 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=7b6ZF5uQklpEPEpc/c7+9woVIVcNJX6/kU+CWiMpu2E=;
+ b=axV5OQMMpRnbpGfCLppzzU0aQU2DuJPQ1F9qf4iITFcZAK5+vUjOoqsVmcDkNnC1Nk
+ UPysDkUKuwV1i2o5NJy2S58aAyT/7MG3joHvA70QWM/FyrwiYHtDRBA7N/JDmt1/gLkq
+ AQKxwBgRaoyaCByO2Yf8+ISwJFogUj9R8G9HPwa7hC/K3AHtQHWMfKB6p7MgFGZ3sIto
+ 679WrdfkuWbH6CLsIIO2cYtgb07VONyKjXAsl7mytyDxAyMlFSgTW7riE5mU7OIbhsOT
+ 1TSMLkv5SeHHxg8tCPSYWdCy5kY6jGU8MEq3kmp6UhaxRuxVby9AEpcHfFcwXw79qmC+
+ Jw8Q==
+X-Gm-Message-State: APjAAAUuH+NJ1hDYhXZ9U2AsEVNiUumg0kCGw0vIn6HsjBuUSO4VHP5J
+ EciZ3zmwn9Ogzf3tuQNedIGghg==
+X-Received: by 2002:adf:f8cf:: with SMTP id f15mr23372746wrq.333.1562143426819; 
+ Wed, 03 Jul 2019 01:43:46 -0700 (PDT)
+Received: from [192.168.1.38] (56.red-88-18-140.staticip.rima-tde.net.
+ [88.18.140.56])
+ by smtp.gmail.com with ESMTPSA id e6sm1403937wrw.23.2019.07.03.01.43.45
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Wed, 03 Jul 2019 01:43:46 -0700 (PDT)
+To: BALATON Zoltan <balaton@eik.bme.hu>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20190702163844.20458-1-peter.maydell@linaro.org>
+ <alpine.BSF.2.21.9999.1907022343160.68337@zero.eik.bme.hu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <18767774-2460-6f39-2909-de9e37737f4c@redhat.com>
+Date: Wed, 3 Jul 2019 10:43:45 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_4E7b6qpHEaZaQRQO3TB5BJCLCRJ7jROAr7CeQsJ5wcw@mail.gmail.com>
+In-Reply-To: <alpine.BSF.2.21.9999.1907022343160.68337@zero.eik.bme.hu>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Ovh-Tracer-Id: 7858781350846237611
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrfedtgddtlecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.40.29
-Subject: Re: [Qemu-arm] [PATCH v2 10/21] aspeed/timer: Provide back-pressure
- information for short periods
+ [fuzzy]
+X-Received-From: 209.85.221.65
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-4.1] hw/i2c/bitbang_i2c: Use
+ in-place rather than malloc'd bitbang_i2c_interface struct
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,72 +107,137 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 47ile5p9fZ6i
+X-TUID: dqwsfGpZWiXY
 
-On 01/07/2019 14:59, Peter Maydell wrote:
-> On Tue, 18 Jun 2019 at 17:54, C=C3=A9dric Le Goater <clg@kaod.org> wrot=
-e:
+On 7/2/19 11:52 PM, BALATON Zoltan wrote:
+> On Tue, 2 Jul 2019, Peter Maydell wrote:
+>> Currently the bitbang_i2c_init() function allocates a
+>> bitbang_i2c_interface struct which it returns.  This is unfortunate
+>> because it means that if the function is used from a DeviceState
+>> init method then the memory will be leaked by an "init then delete"
+>> cycle, as used by the qmp/hmp commands that list device properties.
 >>
->> From: Andrew Jeffery <andrew@aj.id.au>
+>> Since three out of four of the uses of this function are in
+>> device init methods, switch the function to do an in-place
+>> initialization of a struct that can be embedded in the
+>> device state struct of the caller.
 >>
->> First up: This is not the way the hardware behaves.
+>> This fixes LeakSanitizer leak warnings that have appeared in the
+>> patchew configuration (which only tries to run the sanitizers
+>> for the x86_64-softmmu target) now that we use the bitbang-i2c
+>> code in an x86-64 config.
 >>
->> However, it helps resolve real-world problems with short periods being
->> used under Linux. Commit 4451d3f59f2a ("clocksource/drivers/fttmr010:
->> Fix set_next_event handler") in Linux fixed the timer driver to
->> correctly schedule the next event for the Aspeed controller, and in
->> combination with 5daa8212c08e ("ARM: dts: aspeed: Describe random numb=
-er
->> device") Linux will now set a timer with a period as low as 1us.
+>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+>> ---
+>> This isn't the only problem with this code : it is also
+>> missing reset and migration handling and generally looks like
+>> it needs proper conversion to QOM somehow. But this will shut
+>> the patchew complaints up and seems ok for 4.1.
 >>
->> Configuring a qemu timer with such a short period results in spending
->> time handling the interrupt in the model rather than executing guest
->> code, leading to noticeable "sticky" behaviour in the guest.
+>> Disclaimer: checked only that the leak-sanitizer is now happy
+>> and with a 'make check'.
+> 
+> I've tested the ppc4xx and ati-vga parts with AROS and MorphOS and these
+> can still access i2c devices so I think it works.
+
+So:
+
+Tested-by: BALATON Zoltan <balaton@eik.bme.hu>
+
+>> ---
+>> hw/display/ati_int.h         |  2 +-
+>> include/hw/i2c/bitbang_i2c.h | 38 ++++++++++++++++++++++++++++-
+>> include/hw/i2c/ppc4xx_i2c.h  |  2 +-
+>> hw/display/ati.c             |  7 +++---
+>> hw/i2c/bitbang_i2c.c         | 47 +++---------------------------------
+>> hw/i2c/ppc4xx_i2c.c          |  6 ++---
+>> hw/i2c/versatile_i2c.c       |  8 +++---
+>> 7 files changed, 53 insertions(+), 57 deletions(-)
 >>
->> The behaviour of Linux is correct with respect to the hardware, so we
->> need to improve our handling under emulation. The approach chosen is t=
-o
->> provide back-pressure information by calculating an acceptable minimum
->> number of ticks to be set on the model. Under Linux an additional read
->> is added in the timer configuration path to detect back-pressure, whic=
-h
->> will never occur on hardware. However if back-pressure is observed, th=
-e
->> driver alerts the clock event subsystem, which then performs its own
->> next event dilation via a config option - d1748302f70b ("clockevents:
->> Make minimum delay adjustments configurable")
+>> diff --git a/hw/display/ati_int.h b/hw/display/ati_int.h
+>> index 9b67d0022ad..31a1927b3ec 100644
+>> --- a/hw/display/ati_int.h
+>> +++ b/hw/display/ati_int.h
+>> @@ -88,7 +88,7 @@ typedef struct ATIVGAState {
+>>     uint16_t cursor_size;
+>>     uint32_t cursor_offset;
+>>     QEMUCursor *cursor;
+>> -    bitbang_i2c_interface *bbi2c;
+>> +    bitbang_i2c_interface bbi2c;
+>>     MemoryRegion io;
+>>     MemoryRegion mm;
+>>     ATIVGARegs regs;
+>> diff --git a/include/hw/i2c/bitbang_i2c.h b/include/hw/i2c/bitbang_i2c.h
+>> index 3a7126d5dee..92334e9016a 100644
+>> --- a/include/hw/i2c/bitbang_i2c.h
+>> +++ b/include/hw/i2c/bitbang_i2c.h
+>> @@ -8,7 +8,43 @@ typedef struct bitbang_i2c_interface
+>> bitbang_i2c_interface;
+> 
+> Maybe this typedef ^^^ can now be moved to the struct below instead of
+> coming first (or even written in the same line as
+> typedef struct { } bitbang_i2c_interface;
+> as there is no need to have both struct bitbang_i2c_interface and the
+> typedeffed name available).
+
+Agreed, from "hw/i2c/i2c.h" to "hw/i2c/bitbang_i2c.h".
+
+> But I don't really mind, so
+> 
+> Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
+> 
+> Thanks for fixing this.
+> 
+> Regards,
+> BALATON Zoltan
+> 
+>> #define BITBANG_I2C_SDA 0
+>> #define BITBANG_I2C_SCL 1
 >>
->> A minimum period of 5us was experimentally determined on a Lenovo
->> T480s, which I've increased to 20us for "safety".
->>
->> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
->> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
->=20
->> --- a/hw/misc/aspeed_scu.c
->> +++ b/hw/misc/aspeed_scu.c
->> @@ -423,6 +423,12 @@ static void aspeed_scu_realize(DeviceState *dev, =
-Error **errp)
->>                            TYPE_ASPEED_SCU, SCU_IO_REGION_SIZE);
->>
->>      sysbus_init_mmio(sbd, &s->iomem);
+>> -bitbang_i2c_interface *bitbang_i2c_init(I2CBus *bus);
+>> +typedef enum bitbang_i2c_state {
+>> +    STOPPED = 0,
+>> +    SENDING_BIT7,
+>> +    SENDING_BIT6,
+>> +    SENDING_BIT5,
+>> +    SENDING_BIT4,
+>> +    SENDING_BIT3,
+>> +    SENDING_BIT2,
+>> +    SENDING_BIT1,
+>> +    SENDING_BIT0,
+>> +    WAITING_FOR_ACK,
+>> +    RECEIVING_BIT7,
+>> +    RECEIVING_BIT6,
+>> +    RECEIVING_BIT5,
+>> +    RECEIVING_BIT4,
+>> +    RECEIVING_BIT3,
+>> +    RECEIVING_BIT2,
+>> +    RECEIVING_BIT1,
+>> +    RECEIVING_BIT0,
+>> +    SENDING_ACK,
+>> +    SENT_NACK
+>> +} bitbang_i2c_state;
 >> +
->> +    /*
->> +     * Reset on realize to ensure the APB clock value is calculated i=
-n time for
->> +     * use by the timer model, which is reset before the SCU.
->> +     */
->> +    aspeed_scu_reset(dev);
->=20
-> This looks wrong. QEMU should always be resetting devices
-> after realize and before actually running anything.
-
-We have something better for this patch (getting rid of the reset=20
-ordering issue). Can we still send you the fix this week ?
-
-Thanks,
-
-C.
+>> +struct bitbang_i2c_interface {
+>> +    I2CBus *bus;
+>> +    bitbang_i2c_state state;
+>> +    int last_data;
+>> +    int last_clock;
+>> +    int device_out;
+>> +    uint8_t buffer;
+>> +    int current_addr;
+>> +};
+>> +
+>> +/**
+>> + * bitbang_i2c_init: in-place initialize the bitbang_i2c_interface
+>> struct
+>> + */
+>> +void bitbang_i2c_init(bitbang_i2c_interface *s, I2CBus *bus);
+>> int bitbang_i2c_set(bitbang_i2c_interface *i2c, int line, int level);
+>>
+>> #endif
+> 

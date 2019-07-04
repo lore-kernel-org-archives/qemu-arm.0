@@ -1,100 +1,102 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1800984wru;
-        Thu, 4 Jul 2019 02:27:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz5JCHCjOQ9nxRWzRPMhSER5q92OKuR5/bo4qN3s28qRo+X/AWhPRnvzgOEzprUS3P5K3eD
-X-Received: by 2002:a17:906:6557:: with SMTP id u23mr22908778ejn.186.1562232429434;
-        Thu, 04 Jul 2019 02:27:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562232429; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1870144wru;
+        Thu, 4 Jul 2019 03:43:28 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzhBDSccTO+gn8fVSmWIjpmwfHO8w+LILvOFEXGbBseT/rN6R4W2x2oS61+zbDHwiKLLRKa
+X-Received: by 2002:a50:b87c:: with SMTP id k57mr46942963ede.226.1562237008364;
+        Thu, 04 Jul 2019 03:43:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562237008; cv=none;
         d=google.com; s=arc-20160816;
-        b=eket4kfNMG2AzW6MW+CfBeMwKupTv/KYVUIgPabnz2gsKGyAo11KkxJLcXtCDkecsY
-         pT/ZS6ZMbmfTw14FSD+Mm00RQO5X88us72iQ3Z9ApLCFwD/6LpwkuRhz2wBP+klqota7
-         KgBBZKzcrHxuxuGou2Z1xq8yRvDvW7dBJ7ilgESxYavUki4kiBpmS9jk154i7LoSNZLQ
-         LdShBR2za1IDtxc919fOm2ksZindreGdvmLh+dBwCmUoGN4wLY9G4PfriY526d85fxcc
-         mRAAjszoTVgwg9mg7KE7gadkohssGvKUL0aDUSU4y4om3rsxb+hPsnxof+v4eZi8DEtn
-         kx+g==
+        b=pOR7Ze76XeBI1ClQC5o5/A52VsWM1mQ+v/Scjcb0w9ttXcwkGCCMDorNXgdy8WbYG9
+         gWQ+qq2hlaywEICRPT1MS5tDts0xpvu2zP0eOGjvt38mfGW9+VrZP2eP98hRg9LM03rU
+         1u9UMdnPoU9rvnYM6+EqSO2NrHre3Fb/IDjl1qSW8t2aREsLeR56y1v9wWKbCuMduW3V
+         m/tmXpQXJrX/jRIysxUuPcJ46FxfIcYvnWceg5+HYGRkgg4bitA6iGWaouBfOqSIyJqI
+         VFJo2QZy9Jz5zSu6R45rdKJKQLLq3bC32/kkHbSmxEkRCHCB+GMWZ+RY6MfAstmdG9rU
+         lRmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=pT2I37Dxf/gfQvnoHHpfem5+6ntsHRbZ8sxz2fUpUiY=;
-        b=OpYfVgdSWOPhG0dcUqUYx9qLEzifyyE3NPnSpZstv9CY5krQuizn0xYFHe82rS+2bi
-         qBu+ROaqW8GWb4mAgohlPpfnadR7CWVk6zdvMcoiqQeDjFoSL1+Mss+kULGKmMeLRT5Z
-         DjlvRG+1CQ0139JvEmT0WpKSAg7FhUg2qKbrAlvgkzo/TIrXb/wtm8SujdUXaJ6rS+Xs
-         UJufGgSWIJhrSfEEy+Mn20kYUDOspsRPJCtN8NLnpsgKyHISnt5qorKJybRpO7I169cE
-         L3a7oujen704e8VHmgNVLOjRpUlJEEqzxsRbbgH/p4inNDD2lQ8fuNc9AcoIIqXlMJHk
-         C+LA==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=aTD4kYXTKhIbspsnLWc3FKHoQnDn0j8oDEKhaY7HNSM=;
+        b=icBSxdhnAr0qyIveHrwfFIRtz5H15hJGnQILBlASAkmQZOfKW09h7ZSz8mtHo/gdt1
+         ft+SaozkPvBvakBEbvyvdOLDm2uVjvgyo4GHu3WWt3Q8jbWKT7GPesyy7nuLpCQ0WIVU
+         N5WlWszgNe8YzHac9z0bCQpoR/Mbmp4KKHrSmJPGdFqhsN9y+xW862SI4PVNZbTYNBDQ
+         4dD6hidz838RsrF9h+4hRrOCQGtatgha+ibN/eRbNOkqFl67ZLFaLFeRa7sd7cBB/izI
+         q4/fu3vBND1IcI40FbAemMZqv19vygXGbR37ms/tEgf5EWX5cifegpg4J7r6Po9lO8KD
+         JAPw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=vlsg7fjR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k51si4355474eda.111.2019.07.04.02.27.09
+        by mx.google.com with ESMTPS id va11si3829118ejb.358.2019.07.04.03.43.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jul 2019 02:27:09 -0700 (PDT)
+        Thu, 04 Jul 2019 03:43:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=vlsg7fjR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43878 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44462 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hiy1E-0001tW-Hc
-	for alex.bennee@linaro.org; Thu, 04 Jul 2019 05:27:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35403)
+	id 1hizD5-0006jQ-GT
+	for alex.bennee@linaro.org; Thu, 04 Jul 2019 06:43:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50382)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hiy14-0001pY-47
- for qemu-arm@nongnu.org; Thu, 04 Jul 2019 05:26:59 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hizCm-0006ih-QC
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2019 06:43:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hiy12-0006cm-RL
- for qemu-arm@nongnu.org; Thu, 04 Jul 2019 05:26:58 -0400
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:53281)
+ (envelope-from <peter.maydell@linaro.org>) id 1hizCk-0004AI-Rs
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2019 06:43:08 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:34615)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hiy12-0006bi-LA
- for qemu-arm@nongnu.org; Thu, 04 Jul 2019 05:26:56 -0400
-Received: by mail-wm1-f66.google.com with SMTP id x15so5013674wmj.3
- for <qemu-arm@nongnu.org>; Thu, 04 Jul 2019 02:26:56 -0700 (PDT)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hizCk-000491-L5
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2019 06:43:06 -0400
+Received: by mail-oi1-x242.google.com with SMTP id l12so4625403oil.1
+ for <qemu-arm@nongnu.org>; Thu, 04 Jul 2019 03:43:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=aTD4kYXTKhIbspsnLWc3FKHoQnDn0j8oDEKhaY7HNSM=;
+ b=vlsg7fjRufkcg2NVfOZYzIXcVgcvSUtOwFwBI1Ju/H8FhJVYmEfsM0wYr+9+aV/AML
+ yxVJVBDO3tjsRRcDeG9YWc2j+xs7Sb0zmCXJFqixu0rfRp2j2i/sNIu3hOt/m5DdB802
+ JnZqYB6Ei2AryM2kce6mvavaz9DiX2+gpkQ8sviQWRDn6wK5K8zYieFG01VGtozr2ec3
+ BmCd0CbPrxe0u358x4bYiFY/p5Jh3OBVP7fJpENwsGvb/c+CRofnVgM/uxhCsA5lwa3n
+ vhMHTzX0uqDNsKO+9JizIDxK3Q7bOnd5nH8HbknMFmZgNll2URPyxH713uXbfML5ibkI
+ P06A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=pT2I37Dxf/gfQvnoHHpfem5+6ntsHRbZ8sxz2fUpUiY=;
- b=CK85vceYUuBzE2Lkvu72l4/1h3vBJGozVgKi1xJjJZ6S9vif/PtyCrdkI2/G4k4f7B
- ZnEZ7J33OQ6v7NS7EF4lxh4k9ouqRyJ7qkqRJsC2fG3FwjT0p6BiiVtrvDhTLOH4seMk
- N8fpgfirbP6+/9264W0tmqhl/TbpLvUUW4llQZSa6+q0pfSaU6koqhl+SxhdF8WLq0Lb
- 8zie56SnZEd1hOPx5AlDT/QSxw8d74bDt/XBMmROkZ30aj+UJjhNyBi4g+izhlTzCZee
- 1kwLXkSwAZUyAwltVp71iljRj5IxPfwaO8m25K0veuJ5DAhSONe0KUrpy9yeKeBuq5FS
- dAQg==
-X-Gm-Message-State: APjAAAVt+swVxTSTtiBUb0h6yHHRBVJQ8zQeCiAR3fTpeF17eEY4071V
- rSX57eBKDtfvEObcgTaY83x9dw==
-X-Received: by 2002:a1c:6c08:: with SMTP id h8mr12353319wmc.62.1562232415599; 
- Thu, 04 Jul 2019 02:26:55 -0700 (PDT)
-Received: from [192.168.1.38] (56.red-88-18-140.staticip.rima-tde.net.
- [88.18.140.56])
- by smtp.gmail.com with ESMTPSA id c1sm7609690wrh.1.2019.07.04.02.26.54
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Thu, 04 Jul 2019 02:26:54 -0700 (PDT)
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20190704055150.4899-1-clg@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <cd1f8a48-27cb-5cc5-1fd2-46f1597a7094@redhat.com>
-Date: Thu, 4 Jul 2019 11:26:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=aTD4kYXTKhIbspsnLWc3FKHoQnDn0j8oDEKhaY7HNSM=;
+ b=UwNta5Cz/MoGUysNJqLVqISlXRpH5r939q3Letg7BLGi+ImsxkPv0x81rRxs4pT0Rs
+ pY2Tm2+hmWUnXo7WiS1V60GkP/Tvn/2zYRGy93TT+9sa33sqnI82DxjJuFbLdCyQSPuh
+ Y0vJIi7NEtjxTc6at9OQTxNJ+kOBlIAU3O6nib7CuChGTOhDwBDbW2vf9Do2+QsBn0xX
+ hupO/YASNkxTeRYcTVQ7QKanBtxb6LEiWuEZ2ijOot/WJWHJ4EZSTQjTU6jkPEzF4qKa
+ lwlEt0JPJpejC6FZ2A93CAcp3Rv3LInCil+86RRtQKVMUt5wolimeCbjllLYOhmxZzEf
+ 8Wfw==
+X-Gm-Message-State: APjAAAULNUpimrXpd10l3fxm73ZDeFKuykq0o866DfApmiXgpmbfQaU+
+ uNf28jzbKbvfYVEaYYlUjh2qa4ZbSHa7KA1wBFN0Cw==
+X-Received: by 2002:aca:ac48:: with SMTP id v69mr1402704oie.48.1562236985537; 
+ Thu, 04 Jul 2019 03:43:05 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190704055150.4899-1-clg@kaod.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.128.66
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for 4.1] aspeed/timer: Provide
- back-pressure information for short periods
+References: <20190703190615.31436-1-ppandit@redhat.com>
+ <59f87427-3d1d-928b-ac87-0a0a4049c4f5@redhat.com>
+In-Reply-To: <59f87427-3d1d-928b-ac87-0a0a4049c4f5@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 4 Jul 2019 11:42:54 +0100
+Message-ID: <CAFEAcA86=RDpZEzWF_5QL_ix8Bghqxvn7ykXUBkAzTWp7KUVcw@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::242
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/ssi/xilinx_spips: add
+ lqspi_write routine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,98 +108,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: Prasad J Pandit <pjp@fedoraproject.org>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Qemu Developers <qemu-devel@nongnu.org>, P J P <ppandit@redhat.com>,
+ Sai Pavan Boddu <saipava@xilinx.com>, Lei Sun <slei.casper@gmail.com>,
+ qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6lOwpzJggzb3
+X-TUID: 0kmknOMtbmMJ
 
-CC'ing Stefan & Paolo for a non-ARM view on this...
+On Thu, 4 Jul 2019 at 11:11, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
+> wrote:
+> However, looking at the datasheet 'UG1085 (v1.0) November 24, 2015',
+> Chapter 22: Quad-SPI Controller, I understand this region is only
+> accessible by the CPU in READ mode, as an AXI slave.
+>
+> So, if we model this, even logging LOG_GUEST_ERROR is incorrect, we
+> should trap some AXI bus access error.
 
-On 7/4/19 7:51 AM, Cédric Le Goater wrote:
-> From: Andrew Jeffery <andrew@aj.id.au>
-> 
-> First up: This is not the way the hardware behaves.
-> 
-> However, it helps resolve real-world problems with short periods being
-> used under Linux. Commit 4451d3f59f2a ("clocksource/drivers/fttmr010:
-> Fix set_next_event handler") in Linux fixed the timer driver to
-> correctly schedule the next event for the Aspeed controller, and in
-> combination with 5daa8212c08e ("ARM: dts: aspeed: Describe random number
-> device") Linux will now set a timer with a period as low as 1us.
-> 
-> Configuring a qemu timer with such a short period results in spending
-> time handling the interrupt in the model rather than executing guest
-> code, leading to noticeable "sticky" behaviour in the guest.
-> 
-> The behaviour of Linux is correct with respect to the hardware, so we
-> need to improve our handling under emulation. The approach chosen is to
-> provide back-pressure information by calculating an acceptable minimum
-> number of ticks to be set on the model. Under Linux an additional read
-> is added in the timer configuration path to detect back-pressure, which
-> will never occur on hardware. However if back-pressure is observed, the
-> driver alerts the clock event subsystem, which then performs its own
-> next event dilation via a config option - d1748302f70b ("clockevents:
-> Make minimum delay adjustments configurable")
-> 
-> A minimum period of 5us was experimentally determined on a Lenovo
-> T480s, which I've increased to 20us for "safety".
-> 
-> Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-> [clg: - changed the computation of min_ticks to be done each time the
->         timer value is reloaded. It removes the ordering issue of the
->         timer and scu reset handlers but is slightly slower ]
->       - introduced TIMER_MIN_NS
->       - introduced calculate_min_ticks() ]
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
-> ---
-> 
->  This is fixing a serious slowdown issue with recent Linux. 
-> 
->  hw/timer/aspeed_timer.c | 17 ++++++++++++++++-
->  1 file changed, 16 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-> index 29cc5e807081..217d59fa7885 100644
-> --- a/hw/timer/aspeed_timer.c
-> +++ b/hw/timer/aspeed_timer.c
-> @@ -42,6 +42,13 @@ enum timer_ctrl_op {
->      op_pulse_enable
->  };
->  
-> +/*
-> + * Minimum value of the reload register to filter out short period
-> + * timers which have a noticeable impact in emulation. 5us should be
-> + * enough, use 20us for "safety".
-> + */
-> +#define TIMER_MIN_NS (20 * SCALE_US)
-> +
->  /**
->   * Avoid mutual references between AspeedTimerCtrlState and AspeedTimer
->   * structs, as it's a waste of memory. The ptimer BH callback needs to know
-> @@ -96,6 +103,14 @@ static inline uint32_t calculate_ticks(struct AspeedTimer *t, uint64_t now_ns)
->      return t->reload - MIN(t->reload, ticks);
->  }
->  
-> +static uint32_t calculate_min_ticks(AspeedTimer *t, uint32_t value)
-> +{
-> +    uint32_t rate = calculate_rate(t);
-> +    uint32_t min_ticks = muldiv64(TIMER_MIN_NS, rate, NANOSECONDS_PER_SECOND);
-> +
-> +    return  value < min_ticks ? min_ticks : value;
-> +}
-> +
->  static inline uint64_t calculate_time(struct AspeedTimer *t, uint32_t ticks)
->  {
->      uint64_t delta_ns;
-> @@ -259,7 +274,7 @@ static void aspeed_timer_set_value(AspeedTimerCtrlState *s, int timer, int reg,
->      switch (reg) {
->      case TIMER_REG_RELOAD:
->          old_reload = t->reload;
-> -        t->reload = value;
-> +        t->reload = calculate_min_ticks(t, value);
->  
->          /* If the reload value was not previously set, or zero, and
->           * the current value is valid, try to start the timer if it is
-> 
+Well, that depends on what the decode and the device really do --
+often datasheets are pretty sloppy and just describe what
+software "should" do, not what the h/w does if software does
+odd things...
+
+thanks
+-- PMM

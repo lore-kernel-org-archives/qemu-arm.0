@@ -1,87 +1,77 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1473048wru;
-        Wed, 3 Jul 2019 19:37:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxJ4mkyi7+hcTU+WypE3BtcMtvmhte5049mMSA3E3yIF9iS2YwRGNPfEKfiGpSR2sbQjYHy
-X-Received: by 2002:a17:906:4a0d:: with SMTP id w13mr37950506eju.103.1562207824104;
-        Wed, 03 Jul 2019 19:37:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562207824; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1619244wru;
+        Wed, 3 Jul 2019 22:52:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwbuyPEL0R7ii3pBdDsAfeBcw5NH8hA4oT5r48fvApjQuT6udekTchkBuqiEqsbIDt7oG8v
+X-Received: by 2002:a50:8bfd:: with SMTP id n58mr46440907edn.272.1562219537682;
+        Wed, 03 Jul 2019 22:52:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562219537; cv=none;
         d=google.com; s=arc-20160816;
-        b=RtAmVW/letD9sBP7ty5JyzXyL4msGogdB113rYhjY+FkZG9jUkTvKOQXjZL2mhxknz
-         lgVJbRNY0KPK88Ky60bPfLyNUALJm3s21b9t3Cd1EI8QYFEyaympsqy8wKHemx7xAzxG
-         Bfkfw6IqEU9TIq/hsPgku6ipCelmDeIsLjDc2bhrRK+jzbd/fCr6thNQLaJCEeetFWLm
-         ngoDLdE1f+t+wD/MW+tfqSKaZgvkaGkmRcl9uAysCdza2KvzrJVwo1uTBygcACc71TNz
-         wbHklJbEe32ABQRiW0posDTTY3zEt/cuj8CdAG17bwB/EIqa5L6CXDmJWQ76RBrapSTU
-         IMSA==
+        b=lfTQgL1CBIGxL0C4+lQ5dEn1V9EnB9TddJeOyLgsRIoyHfw6Sf0JoWv9yDplJvfxPJ
+         cX+5OaDfOxCCc2PdWYx1bW83+okodyy2Jm5ScuUAXZZ56G1ZvdCQYP4hi0UEB1dygfCd
+         jUyA8sepYcCTMMIx6BfeVyvxXWNplHgLWpTNTGUuCMitFCEP4QZfj6Ym8BRe/NM3Xy1W
+         lJbyLSlQJsTLZuW1WKVbIxInJXF5x28Sqj+husLrYK0DJHlEfHfS0qKAOYbSfoupmbA0
+         IP4uCEXTMmgg1UIRP005CzHh81AbUskAyZCdfNkLFEvC3R+i4eaT+K1ecBOyHyG6hujR
+         PCsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=f5Em8/84Zb4JnJbotT0FW1ltMp4mH2LpVhcl1wF4Yg8=;
-        b=V5Z5hE68mEG3vTeiCS5MbI0nOVd/E9XWOiNJxaCi+E5opfT1CGP3DDDByERLNiNscR
-         9CXknHCANLoSNHKWNWrQgy30dlLMzK9Weaw8dJZ5/ObOu+6H38nFmnjyc7LokmAhDbp3
-         Fy18jdUwg4ZRIcs5AYlUNP9jtvgMqb/rnsi+lgjuLlQiRY47SnyifMOjjzCA23gSyz6k
-         JjVCj5Uu5FEpiUutqNKBlaoKgkd0C/Frt7zK9e1Iw7EJEsUREmrgX6EdV1BuZ84zbcUw
-         jNh1rZ1GBvsEKQNC+cOVDokHSYpBfqtDLHLc6vHCpamvyvdfaSuQmNtAnkA6C0N6LVV8
-         E76g==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=1EVOJj9bpAZgf0FuD3mDBa5Ax5hbOtOSsjjlOov5Ilo=;
+        b=Txl11EnR5PDqTdsOSeDdlcG2Hx3Ha3speAWh3dDGmS997fUxZHXlnSeSCy4YfLQSqr
+         86J9f1Chwe/EuaiZnlnsHwfOtWuxlDcdHPAO+F3OmZxhinfw+sdRz6hySBku9M2Z3IKq
+         ZYKA/WjvKFvPlmkJzZsj5da+yHMboxlHpP/qXiDmiKipzoL/LGG+kccm3sYah6HX/TKK
+         +gUAvey7WYGJD1q9Rjm6UzCADhrpRtmRhhNGhv+u/A47P+oQwiqUpI5v4eSNoeQNbvPx
+         TAyDZh6boNZLNqEHN44VmhwEbnJ4idUVJoqBn+ZCVVKy9/NpgrKnmnTNUpipzJwcjAHu
+         yt4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n15si2789604ejj.345.2019.07.03.19.37.03
+        by mx.google.com with ESMTPS id w25si3860178edt.27.2019.07.03.22.52.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 03 Jul 2019 19:37:04 -0700 (PDT)
+        Wed, 03 Jul 2019 22:52:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42484 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42976 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hircN-0004Ma-8S
-	for alex.bennee@linaro.org; Wed, 03 Jul 2019 22:37:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48971)
+	id 1hiufI-0003yf-Qu
+	for alex.bennee@linaro.org; Thu, 04 Jul 2019 01:52:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36571)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peterx@redhat.com>) id 1hircF-0004ML-TA
- for qemu-arm@nongnu.org; Wed, 03 Jul 2019 22:36:57 -0400
+ (envelope-from <clg@kaod.org>) id 1hiufB-0003xZ-63
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2019 01:52:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peterx@redhat.com>) id 1hircE-0007Qm-Ed
- for qemu-arm@nongnu.org; Wed, 03 Jul 2019 22:36:55 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38118)
+ (envelope-from <clg@kaod.org>) id 1hiufA-0004WZ-2Q
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2019 01:52:09 -0400
+Received: from 2.mo179.mail-out.ovh.net ([178.33.250.45]:52647)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <peterx@redhat.com>)
- id 1hircE-0007OS-4P; Wed, 03 Jul 2019 22:36:54 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 67AE185363;
- Thu,  4 Jul 2019 02:36:52 +0000 (UTC)
-Received: from xz-x1 (unknown [10.66.61.6])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E83BD4E6DA;
- Thu,  4 Jul 2019 02:36:47 +0000 (UTC)
-Date: Thu, 4 Jul 2019 10:36:44 +0800
-From: Peter Xu <peterx@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Message-ID: <20190704023644.GB3796@xz-x1>
-References: <20190701093034.18873-1-eric.auger@redhat.com>
- <20190701093034.18873-4-eric.auger@redhat.com>
- <20190703054116.GD10408@xz-x1>
- <ac7cb635-b420-e04d-1a80-6fcfe81d12a8@redhat.com>
- <20190703102122.GA3796@xz-x1>
- <8e3aa297-c374-cb3c-cd3f-f68ad6827e5e@redhat.com>
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1hiuf9-0004V5-Ta
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2019 01:52:08 -0400
+Received: from player789.ha.ovh.net (unknown [10.108.54.237])
+ by mo179.mail-out.ovh.net (Postfix) with ESMTP id 4AED7138C68
+ for <qemu-arm@nongnu.org>; Thu,  4 Jul 2019 07:52:03 +0200 (CEST)
+Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
+ (Authenticated sender: clg@kaod.org)
+ by player789.ha.ovh.net (Postfix) with ESMTPSA id 691267826938;
+ Thu,  4 Jul 2019 05:51:56 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu,  4 Jul 2019 07:51:50 +0200
+Message-Id: <20190704055150.4899-1-clg@kaod.org>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <8e3aa297-c374-cb3c-cd3f-f68ad6827e5e@redhat.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.25]); Thu, 04 Jul 2019 02:36:52 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 10665368344897751825
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrfedugddutddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 3/6] hw/vfio/common: Do not replay IOMMU
- mappings in nested case
+X-Received-From: 178.33.250.45
+Subject: [Qemu-arm] [PATCH for 4.1] aspeed/timer: Provide back-pressure
+ information for short periods
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -93,165 +83,102 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, alex.williamson@redhat.com,
- qemu-arm@nongnu.org, pbonzini@redhat.com, eric.auger.pro@gmail.com
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6cAY+vv5uXeJ
+X-TUID: qU+1rOKtVWae
 
-On Wed, Jul 03, 2019 at 12:45:37PM +0200, Auger Eric wrote:
-> Hi Peter,
+From: Andrew Jeffery <andrew@aj.id.au>
 
-Hi, Eric,
+First up: This is not the way the hardware behaves.
 
-> On 7/3/19 12:21 PM, Peter Xu wrote:
-> > On Wed, Jul 03, 2019 at 11:04:38AM +0200, Auger Eric wrote:
-> >> Hi Peter,
-> > 
-> > Hi, Eric,
-> > 
-> >>
-> >> On 7/3/19 7:41 AM, Peter Xu wrote:
-> >>> On Mon, Jul 01, 2019 at 11:30:31AM +0200, Eric Auger wrote:
-> >>>> In nested mode, the stage 1 translation tables are owned by
-> >>>> the guest and there is no caching on host side. So there is
-> >>>> no need to replay the mappings.
-> >>>>
-> >>>> As of today, the SMMUv3 nested mode is not yet implemented
-> >>>> and there is no functional VFIO integration without. But
-> >>>> keeping the replay call would execute the default implementation
-> >>>> of memory_region_iommu_replay and attempt to translate the whole
-> >>>> address range, completely stalling qemu. Keeping the MAP/UNMAP
-> >>>> notifier registration allows to hit a warning message in the
-> >>>> SMMUv3 device that tells the user which VFIO device will not
-> >>>> function properly:
-> >>>>
-> >>>> "qemu-system-aarch64: -device vfio-pci,host=0000:89:00.0: warning:
-> >>>> SMMUv3 does not support notification on MAP: device vfio-pci will not
-> >>>> function properly"
-> >>>>
-> >>>> Besides, removing the replay call now allows the guest to boot.
-> >>>>
-> >>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> >>>> ---
-> >>>>  hw/vfio/common.c | 7 ++++++-
-> >>>>  1 file changed, 6 insertions(+), 1 deletion(-)
-> >>>>
-> >>>> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-> >>>> index a859298fda..9ea58df67a 100644
-> >>>> --- a/hw/vfio/common.c
-> >>>> +++ b/hw/vfio/common.c
-> >>>> @@ -604,6 +604,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
-> >>>>      if (memory_region_is_iommu(section->mr)) {
-> >>>>          VFIOGuestIOMMU *giommu;
-> >>>>          IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(section->mr);
-> >>>> +        bool nested = false;
-> >>>>          int iommu_idx;
-> >>>>  
-> >>>>          trace_vfio_listener_region_add_iommu(iova, end);
-> >>>> @@ -631,8 +632,12 @@ static void vfio_listener_region_add(MemoryListener *listener,
-> >>>>          QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_next);
-> >>>>  
-> >>>>          memory_region_register_iommu_notifier(section->mr, &giommu->n);
-> >>>> -        memory_region_iommu_replay(giommu->iommu, &giommu->n);
-> >>>>  
-> >>>> +        memory_region_iommu_get_attr(iommu_mr, IOMMU_ATTR_VFIO_NESTED,
-> >>>> +                                     (void *)&nested);
-> >>>> +        if (!nested) {
-> >>>> +            memory_region_iommu_replay(iommu_mr, &giommu->n);
-> >>>> +        }
-> >>>
-> >>> For nested, do we need these IOMMU notifiers after all?
-> >>>
-> >>> I'm asking because the no-IOMMU case of vfio_listener_region_add()
-> >>> seems to suite very well for nested page tables to me.  For example,
-> >>> vfio does not need to listen to MAP events any more because we'll
-> >>> simply share the guest IOMMU page table to be the 1st level page table
-> >>> of the host SMMU IIUC.
-> >> We don't need the MAP notifier but we need the UNMAP notifier: when the
-> >> guest invalidates an ASID/IOVA we need to propagate this to the physical
-> >> IOMMU.
-> > 
-> > Indeed we need the unmaps.  However I've got a major confusion here:
-> > With nested mode, we should need unmap events for the 1st level rather
-> > than the 2nd level, am I right?
-> 
-> yes that's correct
-> 
->   I mean, the invalidate request should
-> > be a GVA range rather than GPA range?  While here IIUC
-> > vfio_listener_region_add() should be working on GPA address space.
-> 
-> Sorry I don't get your point. My understanding is in
-> vfio_listener_region_add() we detect the addition of an IOMMU MR and
-> init a notifier that covers the input AS it translates (GVA). When the
-> guest sends an IOTLB invalidation on its first stage, this is trapped,
-> we notify the UNMAP notifier and this eventually produces a stage1
-> invalidation at physical level (through VFIO/IOMMU kernel path). This
-> piece is not yet implemented: see below.
-> 
-> 
-> > 
-> > I don't know SMMU enough, but for Intel there should have two
-> > different kinds of invalidation messages.  Currently because we still
-> > don't support nested on Intel so the 1st level invalidation is still
-> > not yet implemented (VTD_INV_DESC_PIOTLB).  And IMHO if it is going to
-> > be implemented, I think it should be different comparing to current
-> > IOMMU_NOTIFIER_UNMAP
-> Yes the UNMAP notifier implementation is definitively different. It
-> calls a VFIO iotcl that eventually produces a physical IOMMU stage1
-> invalidation. See ttps://patchwork.kernel.org/patch/10962721/.
+However, it helps resolve real-world problems with short periods being
+used under Linux. Commit 4451d3f59f2a ("clocksource/drivers/fttmr010:
+Fix set_next_event handler") in Linux fixed the timer driver to
+correctly schedule the next event for the Aspeed controller, and in
+combination with 5daa8212c08e ("ARM: dts: aspeed: Describe random number
+device") Linux will now set a timer with a period as low as 1us.
 
-[1]
+Configuring a qemu timer with such a short period results in spending
+time handling the interrupt in the model rather than executing guest
+code, leading to noticeable "sticky" behaviour in the guest.
 
-> 
-> Maybe the confusion comes from the fact this patch is *not* an
-> integration for nested SMMUv3 with VFIO. SMMUv3/VFIO still does not
-> work. It just allows the guest to boot by bypassing the replay function.
-> If things are clearer maybe I should simply assert() in case we detect a
-> VFIO device protected by an SMMUv3.
+The behaviour of Linux is correct with respect to the hardware, so we
+need to improve our handling under emulation. The approach chosen is to
+provide back-pressure information by calculating an acceptable minimum
+number of ticks to be set on the model. Under Linux an additional read
+is added in the timer configuration path to detect back-pressure, which
+will never occur on hardware. However if back-pressure is observed, the
+driver alerts the clock event subsystem, which then performs its own
+next event dilation via a config option - d1748302f70b ("clockevents:
+Make minimum delay adjustments configurable")
 
-Actually that's also my question to your other patch [1]:
+A minimum period of 5us was experimentally determined on a Lenovo
+T480s, which I've increased to 20us for "safety".
 
-+        if (container->iommu_type == VFIO_TYPE1_NESTING_IOMMU) {
-+            /* Config notifier to propagate guest stage 1 config changes */
-+            giommu = vfio_alloc_guest_iommu(container, iommu_mr, offset);
-+            iommu_config_notifier_init(&giommu->n, vfio_iommu_nested_notify,
-+                                       IOMMU_NOTIFIER_CONFIG_PASID, iommu_idx);
-+            QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_next);
-+            memory_region_register_iommu_notifier(section->mr, &giommu->n);
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+[clg: - changed the computation of min_ticks to be done each time the
+        timer value is reloaded. It removes the ordering issue of the
+        timer and scu reset handlers but is slightly slower ]
+      - introduced TIMER_MIN_NS
+      - introduced calculate_min_ticks() ]
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+---
+
+ This is fixing a serious slowdown issue with recent Linux.=20
+
+ hw/timer/aspeed_timer.c | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
+index 29cc5e807081..217d59fa7885 100644
+--- a/hw/timer/aspeed_timer.c
++++ b/hw/timer/aspeed_timer.c
+@@ -42,6 +42,13 @@ enum timer_ctrl_op {
+     op_pulse_enable
+ };
+=20
++/*
++ * Minimum value of the reload register to filter out short period
++ * timers which have a noticeable impact in emulation. 5us should be
++ * enough, use 20us for "safety".
++ */
++#define TIMER_MIN_NS (20 * SCALE_US)
 +
-+            /* IOTLB unmap notifier to propagate guest IOTLB invalidations */
-+            giommu = vfio_alloc_guest_iommu(container, iommu_mr, offset);
-+            iommu_iotlb_notifier_init(&giommu->n, vfio_iommu_unmap_notify,
-+                                      IOMMU_NOTIFIER_IOTLB_UNMAP,
-+                                      section->offset_within_region,
-+                                      int128_get64(llend),
-+                                      iommu_idx);
-+            QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_next);
-+            memory_region_register_iommu_notifier(section->mr, &giommu->n);
-+        } else {
+ /**
+  * Avoid mutual references between AspeedTimerCtrlState and AspeedTimer
+  * structs, as it's a waste of memory. The ptimer BH callback needs to k=
+now
+@@ -96,6 +103,14 @@ static inline uint32_t calculate_ticks(struct AspeedT=
+imer *t, uint64_t now_ns)
+     return t->reload - MIN(t->reload, ticks);
+ }
+=20
++static uint32_t calculate_min_ticks(AspeedTimer *t, uint32_t value)
++{
++    uint32_t rate =3D calculate_rate(t);
++    uint32_t min_ticks =3D muldiv64(TIMER_MIN_NS, rate, NANOSECONDS_PER_=
+SECOND);
++
++    return  value < min_ticks ? min_ticks : value;
++}
++
+ static inline uint64_t calculate_time(struct AspeedTimer *t, uint32_t ti=
+cks)
+ {
+     uint64_t delta_ns;
+@@ -259,7 +274,7 @@ static void aspeed_timer_set_value(AspeedTimerCtrlSta=
+te *s, int timer, int reg,
+     switch (reg) {
+     case TIMER_REG_RELOAD:
+         old_reload =3D t->reload;
+-        t->reload =3D value;
++        t->reload =3D calculate_min_ticks(t, value);
+=20
+         /* If the reload value was not previously set, or zero, and
+          * the current value is valid, try to start the timer if it is
+--=20
+2.21.0
 
-It'll be fine if we want to do this way finally, but it just let me
-feel a bit confusing when we register these notifiers with current
-IOMMU notifiers, because IMHO all these two kinds of events:
-
-  - PASID root pointer
-  - PASID-based IOTLB invalidations
-
-should not bind to any memory region at all, and should not have a
-concept of "memory range to register".  It'll be easier for me to
-understand if vfio simply registers with IOMMU directly (or maybe
-registering with the PCI layer could be a bit better from code
-prospective?) in this case with these two notifiers and there seems to
-have nothing to do with current memory region framework.
-
-My vague memory was that Liu Yi has had some similar work (e.g.,
-introduce some PCI level notifers and let VFIO registers to that
-instead for the nested case, though that's for Intel but IMHO it
-suites too for ARM) but I've totally forgotten the details.
-
-Thanks,
-
--- 
-Peter Xu

@@ -1,104 +1,110 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2084028wru;
-        Thu, 4 Jul 2019 07:20:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw3cFFFKFEjRS2vVL41hQxdw/PQ9xx/PqFhwipb1DBAlajEqLM6bKf/SMKf5cfgeI07Nmz2
-X-Received: by 2002:a50:91ef:: with SMTP id h44mr49116656eda.276.1562250035830;
-        Thu, 04 Jul 2019 07:20:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562250035; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2316552wru;
+        Thu, 4 Jul 2019 12:12:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxt13f1J1MDlaV8f9/Hux4b3qWxjtUOSt7pRIY8fXNPblEOHuUQMnAltYGiBBxfWhGjVTsd
+X-Received: by 2002:a17:906:b216:: with SMTP id p22mr41936124ejz.273.1562267572293;
+        Thu, 04 Jul 2019 12:12:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562267572; cv=none;
         d=google.com; s=arc-20160816;
-        b=f61htEaO73u5THYhSmbnPY0inWSd+cwfxyP4Cgen/i7z4ogUu9AGL+4yEvXJN+Lju3
-         PAmBCqRfVuzYmQWXS2lKY7WEOiVIkTkwz2Gv+027l+VVB7YaptVwQf+lliIw5M5WriN+
-         D6D/gxgEsZ0SEsVnA8P1b6tsH2FrVrBI5LbYdQ5myPOszG8tgZkpxf8BbMp6kcrAnVGA
-         pxM3kc9ipLwQCnpKt42gt69luMd3F2yTrmlNQ9DBbSMcPwh82HHYwIFOIscypsFlEKhQ
-         kbPCmTHpG2RNpJr+OL85VxZZUIRCVQu+eWh/nUv2RQi8/zvMidsXCkfKoVeZN0YLy4FA
-         180g==
+        b=G8+c8RQOs29nAqLs6opjeEtcF/XZ+2+CbNNTVWpQRcJJQAsr/2/iGYXWpo0A6Bqu4V
+         WmOQOJalzGioEzWQIedFvuw2O1hgfLMP27c+IrJHNFld/bMED3rRPYGTohBbcVK84FhC
+         6uR9yU6ssfsCjmm+SmmIrZ/aw+7CsCyVSmlsehupjSOsUJH1Pk+BGs/KnwFrxZmxwawb
+         26QUSQ+R9r6rX8YBxhBe4AGt3dWgMRsHX9BrnsKmbvtVLNshSd3fcSXpyGUXPaBHuP1/
+         NIbtnyoH4ZqUlQYjujplvsA8/J99crvE/+Pfd/eluIMRcI7LBYVKsLA6FGzqnaSRyY/d
+         hdCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature;
-        bh=y2vuXrmq/JT4NCIyF08AXa1zIQrKXhKE3HksSwRif84=;
-        b=j0z5UHZK8bM4Uau0EBxnD0h0xFD6GXjNtPcsjVzcJ1S1QNoJNK9cVV8nFWWXD7D5Gs
-         je6cOXwyABoXmR9pWv+s4gg6EMZdjPc+EWldL+gd3pBlUrE8zA9OpbGIdbcs2hOiIMLs
-         g66ZRVNge1INO76dPYKmAiNKE37jtMalHXUY+1CgHh+QUOWlEM/QcgSpJGjrd2rb0qIm
-         CorrxhX5+rJSTTyqu6dTQ2yGqGES4Lpr+jLZWyDJK9U9hZARRiqB/s2A0f8MJdhyEuD6
-         5Y5Hh0VmRuUScAsDiYxbg6cI5IBhUZ6jhTpr7xiQKpPQchxRERt87p2SqKlW8J9arwK3
-         awEg==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:to:from:date:dkim-signature;
+        bh=MYLsK+KgpWko9IY90dDqVXRWtw25c37fNovrwPJIMhE=;
+        b=MSDMITOo67NJmdQm7RY+vrlcoujwkvCW2HgbeSJ391Z6Yth4MFwl+XCvHJE3ZCHjHG
+         qt9cievn+DbrqnQwacG0RF9YW0sC8O+6d7/1/K7qMciH8pEyKkWa1EPTkJ9Lxln99quA
+         9gd+nRvdfnbVTU8FNiYv/gBqSkp2kEoHkcEAZC7AREGNmP3MQoPTqBxuy57E3yV62Hvb
+         J7J+nr5ag0QFXOTb4vueITBNncKT5pd6xW3SkUTuevZnlQ0krlJTsYi7xo4OT6RgiujF
+         LkDG35w92xxW7lXOab8kNab/k5PGV6EhNmKebWdQoe54W7uLaIxYtGo+ketvWGKP5G9K
+         vd1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="jotr24d/";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VlRwQwqa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w13si5286891edc.372.2019.07.04.07.20.35
+        by mx.google.com with ESMTPS id q17si4093299ejp.398.2019.07.04.12.12.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jul 2019 07:20:35 -0700 (PDT)
+        Thu, 04 Jul 2019 12:12:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="jotr24d/";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VlRwQwqa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46454 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:48300 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hj2bC-0003CX-Si
-	for alex.bennee@linaro.org; Thu, 04 Jul 2019 10:20:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57569)
+	id 1hj7A3-000789-D3
+	for alex.bennee@linaro.org; Thu, 04 Jul 2019 15:12:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36806)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hj2an-00037l-1l
- for qemu-arm@nongnu.org; Thu, 04 Jul 2019 10:20:10 -0400
+ (envelope-from <frasse.iglesias@gmail.com>) id 1hj79v-00075y-Id
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2019 15:12:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hj2al-0006kr-Ux
- for qemu-arm@nongnu.org; Thu, 04 Jul 2019 10:20:08 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:53483)
+ (envelope-from <frasse.iglesias@gmail.com>) id 1hj79u-0004EJ-I5
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2019 15:12:43 -0400
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:36343)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hj2al-0006kX-Nv
- for qemu-arm@nongnu.org; Thu, 04 Jul 2019 10:20:07 -0400
-Received: by mail-wm1-x344.google.com with SMTP id x15so5923180wmj.3
- for <qemu-arm@nongnu.org>; Thu, 04 Jul 2019 07:20:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=y2vuXrmq/JT4NCIyF08AXa1zIQrKXhKE3HksSwRif84=;
- b=jotr24d/ZHImENcxd5LAOPtbpUgTnqn5wNT8asuaodhkC54AjrSl+/Nu5cN9FDMaGt
- 2YD6zvlf9yrEXFOTTZ/Hb0QTCeWd+n/+PN7OpSBMRiBEB7t0n8b1G78jwoemJVN0ZGTV
- xy5pn1YPTEXirxcM49g23aT7AGUgKmaGuwpMxFEV7p+wzjKzLIWl0cMXDhv2xRPUekRB
- XHPzPWYhvBeCxeCVvNzbMhaZ1v3c+uiMLlT2Ci3TW4ogVVBGiDZpCcEbEso69/495aqB
- MSUact+9SZXzRHgJPulmwUDdfT7dMHVql+zKDawlER10LxdU3z+GoaaVOo9235aCc5XI
- BfCA==
+ (Exim 4.71) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1hj79s-0004C6-08; Thu, 04 Jul 2019 15:12:40 -0400
+Received: by mail-lj1-x243.google.com with SMTP id i21so7051395ljj.3;
+ Thu, 04 Jul 2019 12:12:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=MYLsK+KgpWko9IY90dDqVXRWtw25c37fNovrwPJIMhE=;
+ b=VlRwQwqaog5CTdT+rrqF4Hnt5s/6HTrbRvfM6lGXvB3t3a5mD8nSBj8JwmEkoOey+w
+ 7s4fg8G3vEKCENOpFrjxzCYkiDkNx0kis7zdCbgZos+nl0R+J14HyvCaOdwp264TUQhs
+ Hv3T+upZxm4ldcMhnhGDfYzPsj+FAlr7ntux7a4uqt59XtcoD21m9V0/86IzFs95WVVA
+ JyWDF28fwV2slg5tAWiF3Gd3ANC8IJmVOkiBt0tLF/LnCG8zxPjOVXwsJlRyoioRYNRZ
+ T0JIH8v4e3FLn0Ft+g/zTbObu63/Y+TPsQFQyinvloQ/rf3RYGPNEbe72G1J6mxJAPUI
+ AV4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=y2vuXrmq/JT4NCIyF08AXa1zIQrKXhKE3HksSwRif84=;
- b=tZHl+zRjjyi3yvJzdSY8KfbRxeMeTiqxzpjyifZTGVpFCC+OcZfNlssXgkCoKusPM5
- 4KW5WAcHGVnugZZzRQn2ikLXGYdVX48SvXhb0LF71qs0UZt93DblfxRui1+nA70yKzyr
- ceaef7w6tC4tqnCoiExa8hBoDTkdZsz9Clnkwc4Gwb/TazKRaqYUyDZSOFE5UmBhacin
- 8nWabFZ3OjUm/mQniQM+vs6VrYrjiUTFaAE4fiBUpWLn0QOdHQGVcFKgNQ7gsJRvh5nG
- hrn1ypVkH3jAkCB4+ssRaGvQez5MjknZJUgjANgShbBl76qmrnFmUB+Yv8ezQD0Gdbr7
- GnjQ==
-X-Gm-Message-State: APjAAAXDYgxS99w1vEWOmqk6LVS5yT8Eub91OjcFeSgUAoarLauYFBic
- 5Npeu3zcIzPvSAX6IXmzx6dtfZ/Dc/ZfGQ==
-X-Received: by 2002:a1c:9696:: with SMTP id y144mr12844133wmd.73.1562250006394; 
- Thu, 04 Jul 2019 07:20:06 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id c1sm8917572wrh.1.2019.07.04.07.20.05
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 04 Jul 2019 07:20:05 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Thu,  4 Jul 2019 15:20:04 +0100
-Message-Id: <20190704142004.7150-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=MYLsK+KgpWko9IY90dDqVXRWtw25c37fNovrwPJIMhE=;
+ b=fVLj4n4AILHJvSIQ7jd+dJ4aNor+DBZyaIHjZJyFj1YBM2UkZwUp70wUQFzQcMn6Lc
+ CcLIHyfdxIW1Yhq9n+9JjjM3Qn/YSSr5J23E1f+TybR7XPAJzmOXivXCmXNjsvGic7Ct
+ EYteUPYmC7OC5EvTxH3au0Rj0FQWW1tomg3vAc9pmxX/wk9f8FhPDSVZbbbKFFafbatY
+ FW98rDgQWoA8XDuYqgdQzxjfk7a0Nmppbskb8Qt5rLGE7baRA9+U/c4ZloSCx9Q0tUye
+ CcD3JsW8m+pC+D2ZEZv+ZalqMz24ZeU/h6ph21uudrCsmjRALsYp10ewVmxjZP7/LVh2
+ t8Ng==
+X-Gm-Message-State: APjAAAU+COcB2FXRIrsCgL7fZf3lgOff3Zv+ItAfg+ISFWrVKZheAvL9
+ DP16oTfXArd7PekVpeFVCdY=
+X-Received: by 2002:a2e:5b0f:: with SMTP id p15mr25104340ljb.82.1562267557826; 
+ Thu, 04 Jul 2019 12:12:37 -0700 (PDT)
+Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
+ by smtp.gmail.com with ESMTPSA id
+ e26sm1294711ljl.33.2019.07.04.12.12.36
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Thu, 04 Jul 2019 12:12:37 -0700 (PDT)
+Date: Thu, 4 Jul 2019 21:12:35 +0200
+From: Francisco Iglesias <frasse.iglesias@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20190704191234.72ozyrtwdnc7r35a@fralle-msi>
+References: <20190703190615.31436-1-ppandit@redhat.com>
+ <59f87427-3d1d-928b-ac87-0a0a4049c4f5@redhat.com>
+ <CAFEAcA86=RDpZEzWF_5QL_ix8Bghqxvn7ykXUBkAzTWp7KUVcw@mail.gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
+In-Reply-To: <CAFEAcA86=RDpZEzWF_5QL_ix8Bghqxvn7ykXUBkAzTWp7KUVcw@mail.gmail.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::344
-Subject: [Qemu-arm] [PATCH for-4.1] hw/arm/sbsa-ref: Remove unnecessary
- check for secure_sysmem == NULL
+X-Received-From: 2a00:1450:4864:20::243
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw/ssi/xilinx_spips: add
+ lqspi_write routine
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,71 +116,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- Leif Lindholm <leif.lindholm@linaro.org>
+Cc: Prasad J Pandit <pjp@fedoraproject.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Qemu Developers <qemu-devel@nongnu.org>, P J P <ppandit@redhat.com>,
+ Sai Pavan Boddu <saipava@xilinx.com>, Lei Sun <slei.casper@gmail.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Dw4m0t1SV3RI
+X-TUID: uz0nJXsmthk2
 
-In the virt machine, we support TrustZone being either present or
-absent, and so the code must deal with the secure_sysmem pointer
-possibly being NULL. In the sbsa-ref machine, TrustZone is always
-present, but some code and comments copied from virt still treat
-it as possibly not being present.
+Hi,
 
-This causes Coverity to complain (CID 1407287) that we check
-secure_sysmem for being NULL after an unconditional dereference.
-Simplify the code so that instead of initializing the variable
-to NULL, unconditionally assigning it, and then testing it for NULL,
-we just initialize it correctly in the variable declaration and
-then assume it to be non-NULL. We also delete a comment which
-only applied to the non-TrustZone config.
+On [2019 Jul 04] Thu 11:42:54, Peter Maydell wrote:
+> On Thu, 4 Jul 2019 at 11:11, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
+> > However, looking at the datasheet 'UG1085 (v1.0) November 24, 2015',
+> > Chapter 22: Quad-SPI Controller, I understand this region is only
+> > accessible by the CPU in READ mode, as an AXI slave.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Not a bug as such, but we should put it in for 4.1 to
-keep Coverity happy.
----
- hw/arm/sbsa-ref.c | 8 ++------
- 1 file changed, 2 insertions(+), 6 deletions(-)
+'Chapter 24: Quad-SPI controllers' in a newer UG1085 [1] says that
+writes are ignored and that "All AXI writes generate an external AXI slave
+error (SLVERR) on the write response channel" (when speaking of writes to
+the linear address memory region). Philip's solution seems correct to me
+with the minor change to return MEMTX_ERROR.
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index ee53f0ff60d..6f315b79445 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -254,8 +254,6 @@ static void sbsa_flash_map(SBSAMachineState *sms,
-      * sysmem is the system memory space. secure_sysmem is the secure view
-      * of the system, and the first flash device should be made visible only
-      * there. The second flash device is visible to both secure and nonsecure.
--     * If sysmem == secure_sysmem this means there is no separate Secure
--     * address space and both flash devices are generally visible.
-      */
-     hwaddr flashsize = sbsa_ref_memmap[SBSA_FLASH].size / 2;
-     hwaddr flashbase = sbsa_ref_memmap[SBSA_FLASH].base;
-@@ -588,7 +586,7 @@ static void sbsa_ref_init(MachineState *machine)
-     SBSAMachineState *sms = SBSA_MACHINE(machine);
-     MachineClass *mc = MACHINE_GET_CLASS(machine);
-     MemoryRegion *sysmem = get_system_memory();
--    MemoryRegion *secure_sysmem = NULL;
-+    MemoryRegion *secure_sysmem = g_new(MemoryRegion, 1);
-     MemoryRegion *ram = g_new(MemoryRegion, 1);
-     bool firmware_loaded;
-     const CPUArchIdList *possible_cpus;
-@@ -612,13 +610,11 @@ static void sbsa_ref_init(MachineState *machine)
-      * containing the system memory at low priority; any secure-only
-      * devices go in at higher priority and take precedence.
-      */
--    secure_sysmem = g_new(MemoryRegion, 1);
-     memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
-                        UINT64_MAX);
-     memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
- 
--    firmware_loaded = sbsa_firmware_init(sms, sysmem,
--                                         secure_sysmem ?: sysmem);
-+    firmware_loaded = sbsa_firmware_init(sms, sysmem, secure_sysmem);
- 
-     if (machine->kernel_filename && firmware_loaded) {
-         error_report("sbsa-ref: No fw_cfg device on this machine, "
--- 
-2.20.1
+Best regards,
+Francisco
 
+[1] https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf)
+
+> >
+> > So, if we model this, even logging LOG_GUEST_ERROR is incorrect, we
+> > should trap some AXI bus access error.
+> 
+> Well, that depends on what the decode and the device really do --
+> often datasheets are pretty sloppy and just describe what
+> software "should" do, not what the h/w does if software does
+> odd things...
+> 
+> thanks
+> -- PMM

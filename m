@@ -1,51 +1,51 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1733494wru;
-        Thu, 4 Jul 2019 01:06:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxXCGKbKI7joPoiviRjzQUBEor3DzB7IcRqk82INs+2cMb4yZbNLn6OahADjj0UGNOX8vJX
-X-Received: by 2002:a17:906:1e04:: with SMTP id g4mr38554586ejj.48.1562227589155;
-        Thu, 04 Jul 2019 01:06:29 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1758318wru;
+        Thu, 4 Jul 2019 01:36:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzBfIvQtWplA3Ry2GxtmItF6Rv85tfxGTD0K9/WgVBLk82Pf1KivUcDiJtdVShUqNdJSq3k
+X-Received: by 2002:a17:906:154d:: with SMTP id c13mr38742629ejd.208.1562229407383;
+        Thu, 04 Jul 2019 01:36:47 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f49si4244799edd.361.2019.07.04.01.06.29
+        by mx.google.com with ESMTPS id sa2si3441242ejb.65.2019.07.04.01.36.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jul 2019 01:06:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 04 Jul 2019 01:36:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43426 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43542 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hiwlA-0002e1-92
-	for alex.bennee@linaro.org; Thu, 04 Jul 2019 04:06:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51536)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hixEU-0008F4-Gf
+	for alex.bennee@linaro.org; Thu, 04 Jul 2019 04:36:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55106)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <no-reply@patchew.org>) id 1hiwl1-0002c4-Kn
- for qemu-arm@nongnu.org; Thu, 04 Jul 2019 04:06:20 -0400
+ (envelope-from <no-reply@patchew.org>) id 1hixDk-0007T3-Qx
+ for qemu-devel@nongnu.org; Thu, 04 Jul 2019 04:36:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1hiwkz-0007mX-FX
- for qemu-arm@nongnu.org; Thu, 04 Jul 2019 04:06:19 -0400
-Resent-Date: Thu, 04 Jul 2019 04:06:19 -0400
-Resent-Message-Id: <E1hiwkz-0007mX-FX@eggs.gnu.org>
-Received: from sender-of-o52.zoho.com ([135.84.80.217]:21407)
+ (envelope-from <no-reply@patchew.org>) id 1hixDj-0005C8-7V
+ for qemu-devel@nongnu.org; Thu, 04 Jul 2019 04:36:00 -0400
+Resent-Date: Thu, 04 Jul 2019 04:36:00 -0400
+Resent-Message-Id: <E1hixDj-0005C8-7V@eggs.gnu.org>
+Received: from sender4-of-o55.zoho.com ([136.143.188.55]:21516)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1hiwks-0007ia-Ij; Thu, 04 Jul 2019 04:06:10 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1562227510; cv=none; d=zoho.com; s=zohoarc; 
- b=LyPR9PX4g91GVxYrRs82oBXv3JQ2Ib8dFR6GoxjbpM/xoieClM24Jw1WV5/eql6ufqpzS3FdLVqUrEc6ExR8t38yoVE58nQzg6uGCbciJuNdfoucsTIqh67bMakPwdpvjqSFXpqt4o6/mPFPT3sbnJ69KGMLo7IVrpW9vUa6S3A=
+ id 1hixDi-0005BN-W8; Thu, 04 Jul 2019 04:35:59 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1562229324; cv=none; d=zoho.com; s=zohoarc; 
+ b=My09AExats5fsCTrQ6Cj1Puq27N5kzyAvWjAKUAmgHBxRrBk9w+R9Nt5s4uPNhsa7vTcdGhY8Ju4djJtFgJnH+NX3hmkLZdRxEzOOAtrtymU518SPXJfYG1EK6KTJ1mTRfZxYGDKMfCH8V2bOo+CJ/uCC3cLUjeFQfj8SiJioBo=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
- s=zohoarc; t=1562227510;
+ s=zohoarc; t=1562229324;
  h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
- bh=0hrJdJsUEiclc3/L/9oz3wKB+Lwun6WJQ1SLIuoeCZw=; 
- b=ADaTu+EMCVLZ8qMAj8+kVusLKYLd4Sshbpt/sFI/algjujBoXYq0oI/X4qElRvN0A2SJpRkz6mB0PGoK6+/NULPQbDP28FcTs5Ha8g9ViyBLFHsdp6LIkzqkDtcnz9slHpsQhJOaqsE931hDxaECRzWKEpZI24gNekrMrS06G54=
+ bh=4zjuEQXdABlC8zUfB68HMAnWaoSiMo6pRj5wxMpWXEA=; 
+ b=HCXG4u/lcydZ3aTDe9V0dR4BmIGkdL2mswrpU6Sk0zoeevkAtmUKc0CzjwrcHotHtTXk+ZkDJmWLpK5gG4Zj28VDFeyDO1oOw4xmHsEL8Xs+84dDOmsyUryi+zoJuPnhmwq+7Mr1aM6jatbrqA7YCrMbcDr4WD2U3AVnasRVnpc=
 ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
  spf=pass  smtp.mailfrom=no-reply@patchew.org;
  dmarc=pass header.from=<no-reply@patchew.org>
  header.from=<no-reply@patchew.org>
 Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1562227507859290.5570158904585;
- Thu, 4 Jul 2019 01:05:07 -0700 (PDT)
-Message-ID: <156222750645.21218.4512744542143739311@c4a48874b076>
+ mx.zohomail.com with SMTPS id 1562229323007490.1399867706558;
+ Thu, 4 Jul 2019 01:35:23 -0700 (PDT)
+Message-ID: <156222932178.21218.11265452386859398700@c4a48874b076>
 In-Reply-To: <20190703085416.21837-1-kraxel@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
@@ -53,29 +53,29 @@ Content-Transfer-Encoding: base64
 Resent-From: 
 From: no-reply@patchew.org
 To: kraxel@redhat.com
-Date: Thu, 4 Jul 2019 01:05:07 -0700 (PDT)
+Date: Thu, 4 Jul 2019 01:35:23 -0700 (PDT)
 X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 135.84.80.217
-Subject: Re: [Qemu-arm] [Qemu-devel] [PULL 0/4] Vga 20190703 patches
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 136.143.188.55
+Subject: Re: [Qemu-devel] [PULL 0/4] Vga 20190703 patches
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Reply-To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, qemu-ppc@nongnu.org, kraxel@redhat.com,
  david@gibson.dropbear.id.au
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N2f/ENG3HLl/
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NeugZxqbEjti
 
 UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDcwMzA4NTQxNi4yMTgz
 Ny0xLWtyYXhlbEByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhhdmUg
@@ -88,15 +88,15 @@ bCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVl
 CmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFsZ29yaXRobSBoaXN0b2dyYW0KLi9zY3JpcHRzL2No
 ZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBiYXNlLi4KPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClVw
 ZGF0aW5nIDNjOGNmNWE5YzIxZmY4NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKRnJvbSBodHRw
-czovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUKICAgYzIwNGUzNC4uZjA1NzdjNiAg
-bWFzdGVyICAgICAtPiBtYXN0ZXIKIC0gW3RhZyB1cGRhdGVdICAgICAgcGF0Y2hldy8yMDE5MDcw
-MzA4NTQxNi4yMTgzNy0xLWtyYXhlbEByZWRoYXQuY29tIC0+IHBhdGNoZXcvMjAxOTA3MDMwODU0
-MTYuMjE4MzctMS1rcmF4ZWxAcmVkaGF0LmNvbQpTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rl
-c3QnCgo9PT0gT1VUUFVUIEJFR0lOID09PQpjaGVja3BhdGNoLnBsOiBubyByZXZpc2lvbnMgcmV0
-dXJuZWQgZm9yIHJldmxpc3QgJzEnCj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4
-aXRlZCB3aXRoIGNvZGU6IDI1NQoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDov
-L3BhdGNoZXcub3JnL2xvZ3MvMjAxOTA3MDMwODU0MTYuMjE4MzctMS1rcmF4ZWxAcmVkaGF0LmNv
-bS90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBh
-dXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNl
-bmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
+czovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3FlbXUKICogW25ldyB0YWddICAgICAgICAg
+cGF0Y2hldy8yMDE5MDcwNDA4MjczNi4yNTI1OC0xLWltYW1tZWRvQHJlZGhhdC5jb20gLT4gcGF0
+Y2hldy8yMDE5MDcwNDA4MjczNi4yNTI1OC0xLWltYW1tZWRvQHJlZGhhdC5jb20KU3dpdGNoZWQg
+dG8gYSBuZXcgYnJhbmNoICd0ZXN0JwoKPT09IE9VVFBVVCBCRUdJTiA9PT0KY2hlY2twYXRjaC5w
+bDogbm8gcmV2aXNpb25zIHJldHVybmVkIGZvciByZXZsaXN0ICcxJwo9PT0gT1VUUFVUIEVORCA9
+PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAyNTUKCgpUaGUgZnVsbCBsb2cgaXMg
+YXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMTkwNzAzMDg1NDE2LjIxODM3
+LTEta3JheGVsQHJlZGhhdC5jb20vdGVzdGluZy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0t
+LQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNo
+ZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRo
+YXQuY29t
 

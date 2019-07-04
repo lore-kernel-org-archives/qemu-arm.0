@@ -1,99 +1,103 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1968001wru;
-        Thu, 4 Jul 2019 05:26:24 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx5Egqxc5YwDXRLW6mxZe/+BeOFKlnnxkte96LQPTfAq3Vs97pK90Lh/oB6fBOMBDuSKiBU
-X-Received: by 2002:a17:906:ccc7:: with SMTP id ot7mr39488445ejb.198.1562243184024;
-        Thu, 04 Jul 2019 05:26:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562243184; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2011371wru;
+        Thu, 4 Jul 2019 06:08:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwADk+Jfv6xx8jfmraDb3oJeuwe7EFiOqmiOUqHJlXh5retX9NIZxfJcaOWJFLt2USGIPSD
+X-Received: by 2002:a50:9107:: with SMTP id e7mr48897660eda.280.1562245739216;
+        Thu, 04 Jul 2019 06:08:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562245739; cv=none;
         d=google.com; s=arc-20160816;
-        b=QvluXlTWPaWnFDhIxBN0GVRCs+dHgHKOc5Udt2RC18IKDAe4pP8CJHiyfmnDKdLLZ/
-         Vh8r57MO3oAdUNPTl3IGQUjg0E64v1l8XgV3EDfJwp+pPt2GVZBbTV/fUra5YXd6q/JJ
-         xusAUrPB/ylNLAl6cPLPJYWrLe2g0dqv8fg0wgO6I+5kFYgGRXrBMZkkaDg89OyK1zJT
-         doZhBnLSH/DOAMvw2ELL7xd5U06r5ffKBiXT8ArZbN16l1I+Q+Y94obe9RW2bMVQ+H5Y
-         c1osRqUVScK80p3V+yufirBHUrGassfq3i3f1iQWY9Uf1VEdLc3S7vi9pfeX8MrCKLkP
-         9QsA==
+        b=X/viyMxK898UIIT6ENGAq8MwFWD6+BUcAgPIcz+XeCJ4/4Amgh4ZrFhuu+IIRAiBZw
+         pEvD47ZnIzfsCZLh1bXJUfBoaz4cCp28YWfkQBVCt1nb1KhDswJgUQxTTSyvHRMZM43S
+         DknSONZzz1ajqo/FlElfTZ04NfBE+JneiEDaMiC7T00Rsa4secwsdJharPEEHZhQ/zkc
+         4MQp2OOwZyjBbBRgXpC9vZ/U9v9cxbcOpdp1HyV370qAsAchOux6AMYrn+iI0FG0Og38
+         UZ6nwOCDQRyOPwb6iuGFCx5xjmKaSVXxa+BidZCLtHqWw6bNbDyl4wo6HzbYdRDdLlNn
+         3aRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=QQwRpMMrJfYO8143GKfLP5w/nwUehuI9LxF7b29DHDY=;
-        b=LbO2M6NGfB1ZiJkHekDA5Hb6YUzxnHTfkvYQ6ip9E77mk37enX1NM6L0uE+TBKUOeP
-         vFex61YeProHnJMTFJ4bRpi23KbdcWref0gpVQG796XPCvdMgjNnEf2iF/LtFfuCT7qy
-         8+WLCEMLQnhcCqM9LzMtpqiKtVr1Pa7vYukl1q44a3gjoKI15pjZrDXdCioWiwiou5l0
-         v6b/FFby/kPcaIwuGy+ovHMyf5dQCAdsUNUBLmfqVZvm6gTYC8wJxsCkKnb6dOWdqItq
-         deWrrMTHXSKy/uZPsUMC10FhzZU6FbVLjLQqo+jIZKnGYPOYrBro5WdV7+oBkeiT/w0M
-         Dkcw==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=Rs6zRJeUQE19QRdvqv0nWAusH67o0A4RvKI6AFFZ8No=;
+        b=WX+7myDafE/+vSiU+a7T5dj4J3LwnwScYYH09jnDUMETvzh+tUNqsiG85syVXerKTK
+         l/jT3duL6HrdTYvFeO5ZoidHNP7/OKhqTybV/ms9oNXPziR4Xc5lQd7uO7IZSDiGjQD3
+         GrNsz1rRitxMubSZ2xl4QaDb8iNED8FxZtXBLulhU+dwbIcxw6zID9f9YNuww+UEW0lZ
+         ItHMJO3tVtaQSuxQtOS2qiicoLBWWoQ19lfbQ9m226MHBPI3KJJ5PMauK0X9rp7F0aE8
+         qjB0sUFaElhABWiIQD6EkWPnjnAm6RWNVkk5ZW/yOKURm5j7cDd8nliiB7Sj0m7gQQXY
+         eRWw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gNzF7Uce;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l31si4598891edb.143.2019.07.04.05.26.23
+        by mx.google.com with ESMTPS id b2si4776849edd.121.2019.07.04.06.08.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jul 2019 05:26:24 -0700 (PDT)
+        Thu, 04 Jul 2019 06:08:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=gNzF7Uce;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45246 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45656 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hj0oh-0006uv-5N
-	for alex.bennee@linaro.org; Thu, 04 Jul 2019 08:26:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40357)
+	id 1hj1Tu-0003Rd-BX
+	for alex.bennee@linaro.org; Thu, 04 Jul 2019 09:08:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45828)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <pbonzini@redhat.com>) id 1hj0oZ-0006rn-Q8
- for qemu-arm@nongnu.org; Thu, 04 Jul 2019 08:26:16 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hj1TZ-0003PY-Kn
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2019 09:08:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1hj0oY-0001bo-TL
- for qemu-arm@nongnu.org; Thu, 04 Jul 2019 08:26:15 -0400
-Received: from mail-wm1-f67.google.com ([209.85.128.67]:35411)
+ (envelope-from <peter.maydell@linaro.org>) id 1hj1TX-0007dI-QA
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2019 09:08:37 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:38578)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hj0oY-0001ax-MQ
- for qemu-arm@nongnu.org; Thu, 04 Jul 2019 08:26:14 -0400
-Received: by mail-wm1-f67.google.com with SMTP id c6so5974993wml.0
- for <qemu-arm@nongnu.org>; Thu, 04 Jul 2019 05:26:14 -0700 (PDT)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hj1TW-0007bu-DA
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2019 09:08:34 -0400
+Received: by mail-ot1-x341.google.com with SMTP id d17so5920723oth.5
+ for <qemu-arm@nongnu.org>; Thu, 04 Jul 2019 06:08:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=Rs6zRJeUQE19QRdvqv0nWAusH67o0A4RvKI6AFFZ8No=;
+ b=gNzF7Uceon3eGq9lxRj8H2MXTUSXqKUOjQKsPu0rOn2FEzwVsKYVgLb7y9Vbtq+Ft6
+ zMyiHc2R7etcKgyDlf7eB9u1TcZhtnIk2MNIIzQq3nswlSf36gteUG7lJSuyIK1wFL+b
+ uixJ1JuuMbEf/lLHhqwPL/DqRSkR3jYH202D4hXsQxC79bCRp7Mf5JALSml1D67wAibK
+ q31gA51gktJVzr26t5FSuXHOGeIeCKWNZQdbth32GMnNHAJCWO3UgYIYMf/KIGZ+hp4j
+ mHyDXj7QB5alq3EsxcyZBULtbB0qS6w9rtjqdr8DAFoWuMGct9MBNprTZaVVHL2dHiXP
+ 09cw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=QQwRpMMrJfYO8143GKfLP5w/nwUehuI9LxF7b29DHDY=;
- b=P8OrtQ2PXORqP5AoVo7q1hsHqiT3lIO20BheCt5a5gXhU5JPytVbfAPD4LD0cMTAwS
- 2NoK3U9/LZEiq6Rf+KorQq7LT30n6/igSo1JWkl7U3k4CMhG1F+4G+wlkFGarF1LsGWE
- x13aEnmoUMFXDTnAj9fKkT/DJATUpiuXMxFaWcxuDNv9oqPVM7sldDtoUl+9ayr10vMn
- U0dU8TPPSh2MduHtCW6Sm8GSUtBqu7pv7ezrZcyjTZgHF6AneUv4k03q89+wK7vM08sP
- /41rc6Ymca4DZcIMX7WcXJu7QL6P1HPSjMp5oADZ5GMS/wWbR9kNbEEUAqeZEUpme05T
- t06A==
-X-Gm-Message-State: APjAAAUav4Qwj5sTfNa0HY11+Evqio/Wbc19eMHrlsqn1r0lsM2de6NW
- GfrEFUliSJZAchpG47P+rPzwpw==
-X-Received: by 2002:a1c:4b1a:: with SMTP id y26mr12416906wma.105.1562243173584; 
- Thu, 04 Jul 2019 05:26:13 -0700 (PDT)
-Received: from [10.201.49.68] (nat-pool-mxp-u.redhat.com. [149.6.153.187])
- by smtp.gmail.com with ESMTPSA id p11sm6289374wrm.53.2019.07.04.05.26.10
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Thu, 04 Jul 2019 05:26:10 -0700 (PDT)
-To: Stefan Hajnoczi <stefanha@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-References: <20190704055150.4899-1-clg@kaod.org>
- <cd1f8a48-27cb-5cc5-1fd2-46f1597a7094@redhat.com>
- <20190704101345.GC1609@stefanha-x1.localdomain>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <b304e4bd-1315-b1be-6c48-add99df92626@redhat.com>
-Date: Thu, 4 Jul 2019 14:26:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=Rs6zRJeUQE19QRdvqv0nWAusH67o0A4RvKI6AFFZ8No=;
+ b=V/Mgk/Z6vRH5EWWlIiPoTx/xm1D9sNXj8+yVfnZoPy3KPB7b/ckEQWoho8a0qnqG8M
+ 2ZaRAvprtBQKZyNDPYJ7FckHrNbuo6f2nRNJjw8OucCm/zVo71MDGUo10J+i2+R4aLMs
+ F06J0SmAYzBhe2cALO51FmRn6r+MpVeDBj0m13Vw+A7jvuddXPziIMm+fGahS8THmbK4
+ eKdq1SropMXhP0J1QV+e1f3qj3qytaNEzWOObHVLUG8rWbnmYOyOSGg1DxVOdY2n2e/S
+ yNpxF7MrRnmdmghO53uzaBTsZwR1/e8Zf26uOjc4W7+X/8TZyai16Nm6LQzwD4/gYZsM
+ Cg/w==
+X-Gm-Message-State: APjAAAVNFOgovLWqjCeiPWKXhvX6eNH/s7039cGHqckM3Ol+YHAqhSk2
+ ZZYSYT7qyKA2VyfVmh+rVKGervbRY+7E/upUueeI+w==
+X-Received: by 2002:a9d:4d81:: with SMTP id u1mr11409364otk.221.1562245712526; 
+ Thu, 04 Jul 2019 06:08:32 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190704101345.GC1609@stefanha-x1.localdomain>
-Content-Type: text/plain; charset=windows-1252
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.128.67
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for 4.1] aspeed/timer: Provide
- back-pressure information for short periods
+References: <20190618165311.27066-1-clg@kaod.org>
+ <20190618165311.27066-4-clg@kaod.org>
+ <CAFEAcA_wCFE0BL_LjF+04MBPa2XnVgCKk4SP4nPrBjrcjmNVVQ@mail.gmail.com>
+ <CACPK8XfdqDARHV4TupC+c-qsgscOn4kWjtYdpdR+GxOZQzNNMA@mail.gmail.com>
+In-Reply-To: <CACPK8XfdqDARHV4TupC+c-qsgscOn4kWjtYdpdR+GxOZQzNNMA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 4 Jul 2019 14:08:21 +0100
+Message-ID: <CAFEAcA8W6moG+dPOpPazEKFXYg3Gp0COrks1uYz94hn9HHeV5A@mail.gmail.com>
+To: Joel Stanley <joel@jms.id.au>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+Subject: Re: [Qemu-arm] [PATCH v2 03/21] hw: timer: Add ASPEED RTC device
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,22 +109,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TJ6O6TKOdxbE
+X-TUID: Ak4sOyaigWFO
 
-On 04/07/19 12:13, Stefan Hajnoczi wrote:
-> On Thu, Jul 04, 2019 at 11:26:53AM +0200, Philippe Mathieu-Daudé wrote:
->> CC'ing Stefan & Paolo for a non-ARM view on this...
-> 
-> I'm not familiar with the various clock smoothing techniques implemented
-> in QEMU and KVM, but this looks okay given that Linux guests expect
-> this.
+On Thu, 4 Jul 2019 at 08:49, Joel Stanley <joel@jms.id.au> wrote:
+>
+> On Tue, 2 Jul 2019 at 19:19, Peter Maydell <peter.maydell@linaro.org> wro=
+te:
+> >
+> > On Tue, 18 Jun 2019 at 17:53, C=C3=A9dric Le Goater <clg@kaod.org> wrot=
+e:
+> > >
+> > > From: Joel Stanley <joel@jms.id.au>
+> > >
+> > > The RTC is modeled to provide time and date functionality. It is
+> > > initialised at zero to match the hardware.
+> > >
+> > > There is no modelling of the alarm functionality, which includes the =
+IRQ
+> > > line. As there is no guest code to exercise this function that is
+> > > acceptable for now.
+> > >
+> > > Signed-off-by: Joel Stanley <joel@jms.id.au>
+> > > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> >
+> > Hi; Coverity complains about this function (CID 1402782):
+> >
+> > > +static void aspeed_rtc_calc_offset(AspeedRtcState *rtc)
+> > > +{
+> > > +    struct tm tm;
+> > > +    uint32_t year, cent;
+> > > +    uint32_t reg1 =3D rtc->reg[COUNTER1];
+> > > +    uint32_t reg2 =3D rtc->reg[COUNTER2];
+> > > +
+> > > +    tm.tm_mday =3D (reg1 >> 24) & 0x1f;
+> > > +    tm.tm_hour =3D (reg1 >> 16) & 0x1f;
+> > > +    tm.tm_min =3D (reg1 >> 8) & 0x3f;
+> > > +    tm.tm_sec =3D (reg1 >> 0) & 0x3f;
+> > > +
+> > > +    cent =3D (reg2 >> 16) & 0x1f;
+> > > +    year =3D (reg2 >> 8) & 0x7f;
+> > > +    tm.tm_mon =3D ((reg2 >>  0) & 0x0f) - 1;
+> > > +    tm.tm_year =3D year + (cent * 100) - 1900;
+> > > +
+> > > +    rtc->offset =3D qemu_timedate_diff(&tm);
+> > > +}
+> >
+> > because the tm_wday field of 'struct tm tm' is not initialized
+> > before we call qemu_timedate_diff(). This is a false
+> > positive because the "read" of this field is just the place
+> > in qemu_timedate_diff() that does "struct tm tmp =3D *tm;"
+> > before calling mktime(), and mktime() ignores tm_wday.
+> > We could make Coverity happy by using a struct initializer
+> > on 'tm' here; on the other hand we don't do that anywhere else
+> > which calls qemu_timedate_diff(), so maybe I should just mark
+> > this a false positive?
+>
+> I don't have an opinion on which option to take. Perhaps mark it as a
+> false positive?
 
-Yeah, even KVM applies a minimum period of 200us to the x86 LAPIC timer.
+Yeah, seems reasonable.
 
-Paolo
-
+-- PMM

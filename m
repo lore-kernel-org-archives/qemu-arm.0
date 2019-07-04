@@ -1,103 +1,104 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2011371wru;
-        Thu, 4 Jul 2019 06:08:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwADk+Jfv6xx8jfmraDb3oJeuwe7EFiOqmiOUqHJlXh5retX9NIZxfJcaOWJFLt2USGIPSD
-X-Received: by 2002:a50:9107:: with SMTP id e7mr48897660eda.280.1562245739216;
-        Thu, 04 Jul 2019 06:08:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562245739; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2084028wru;
+        Thu, 4 Jul 2019 07:20:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw3cFFFKFEjRS2vVL41hQxdw/PQ9xx/PqFhwipb1DBAlajEqLM6bKf/SMKf5cfgeI07Nmz2
+X-Received: by 2002:a50:91ef:: with SMTP id h44mr49116656eda.276.1562250035830;
+        Thu, 04 Jul 2019 07:20:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562250035; cv=none;
         d=google.com; s=arc-20160816;
-        b=X/viyMxK898UIIT6ENGAq8MwFWD6+BUcAgPIcz+XeCJ4/4Amgh4ZrFhuu+IIRAiBZw
-         pEvD47ZnIzfsCZLh1bXJUfBoaz4cCp28YWfkQBVCt1nb1KhDswJgUQxTTSyvHRMZM43S
-         DknSONZzz1ajqo/FlElfTZ04NfBE+JneiEDaMiC7T00Rsa4secwsdJharPEEHZhQ/zkc
-         4MQp2OOwZyjBbBRgXpC9vZ/U9v9cxbcOpdp1HyV370qAsAchOux6AMYrn+iI0FG0Og38
-         UZ6nwOCDQRyOPwb6iuGFCx5xjmKaSVXxa+BidZCLtHqWw6bNbDyl4wo6HzbYdRDdLlNn
-         3aRA==
+        b=f61htEaO73u5THYhSmbnPY0inWSd+cwfxyP4Cgen/i7z4ogUu9AGL+4yEvXJN+Lju3
+         PAmBCqRfVuzYmQWXS2lKY7WEOiVIkTkwz2Gv+027l+VVB7YaptVwQf+lliIw5M5WriN+
+         D6D/gxgEsZ0SEsVnA8P1b6tsH2FrVrBI5LbYdQ5myPOszG8tgZkpxf8BbMp6kcrAnVGA
+         pxM3kc9ipLwQCnpKt42gt69luMd3F2yTrmlNQ9DBbSMcPwh82HHYwIFOIscypsFlEKhQ
+         kbPCmTHpG2RNpJr+OL85VxZZUIRCVQu+eWh/nUv2RQi8/zvMidsXCkfKoVeZN0YLy4FA
+         180g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=Rs6zRJeUQE19QRdvqv0nWAusH67o0A4RvKI6AFFZ8No=;
-        b=WX+7myDafE/+vSiU+a7T5dj4J3LwnwScYYH09jnDUMETvzh+tUNqsiG85syVXerKTK
-         l/jT3duL6HrdTYvFeO5ZoidHNP7/OKhqTybV/ms9oNXPziR4Xc5lQd7uO7IZSDiGjQD3
-         GrNsz1rRitxMubSZ2xl4QaDb8iNED8FxZtXBLulhU+dwbIcxw6zID9f9YNuww+UEW0lZ
-         ItHMJO3tVtaQSuxQtOS2qiicoLBWWoQ19lfbQ9m226MHBPI3KJJ5PMauK0X9rp7F0aE8
-         qjB0sUFaElhABWiIQD6EkWPnjnAm6RWNVkk5ZW/yOKURm5j7cDd8nliiB7Sj0m7gQQXY
-         eRWw==
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=y2vuXrmq/JT4NCIyF08AXa1zIQrKXhKE3HksSwRif84=;
+        b=j0z5UHZK8bM4Uau0EBxnD0h0xFD6GXjNtPcsjVzcJ1S1QNoJNK9cVV8nFWWXD7D5Gs
+         je6cOXwyABoXmR9pWv+s4gg6EMZdjPc+EWldL+gd3pBlUrE8zA9OpbGIdbcs2hOiIMLs
+         g66ZRVNge1INO76dPYKmAiNKE37jtMalHXUY+1CgHh+QUOWlEM/QcgSpJGjrd2rb0qIm
+         CorrxhX5+rJSTTyqu6dTQ2yGqGES4Lpr+jLZWyDJK9U9hZARRiqB/s2A0f8MJdhyEuD6
+         5Y5Hh0VmRuUScAsDiYxbg6cI5IBhUZ6jhTpr7xiQKpPQchxRERt87p2SqKlW8J9arwK3
+         awEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gNzF7Uce;
+       dkim=fail header.i=@linaro.org header.s=google header.b="jotr24d/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b2si4776849edd.121.2019.07.04.06.08.59
+        by mx.google.com with ESMTPS id w13si5286891edc.372.2019.07.04.07.20.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 04 Jul 2019 06:08:59 -0700 (PDT)
+        Thu, 04 Jul 2019 07:20:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gNzF7Uce;
+       dkim=fail header.i=@linaro.org header.s=google header.b="jotr24d/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45656 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46454 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hj1Tu-0003Rd-BX
-	for alex.bennee@linaro.org; Thu, 04 Jul 2019 09:08:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45828)
+	id 1hj2bC-0003CX-Si
+	for alex.bennee@linaro.org; Thu, 04 Jul 2019 10:20:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57569)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hj1TZ-0003PY-Kn
- for qemu-arm@nongnu.org; Thu, 04 Jul 2019 09:08:39 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hj2an-00037l-1l
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2019 10:20:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hj1TX-0007dI-QA
- for qemu-arm@nongnu.org; Thu, 04 Jul 2019 09:08:37 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:38578)
+ (envelope-from <peter.maydell@linaro.org>) id 1hj2al-0006kr-Ux
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2019 10:20:08 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:53483)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hj1TW-0007bu-DA
- for qemu-arm@nongnu.org; Thu, 04 Jul 2019 09:08:34 -0400
-Received: by mail-ot1-x341.google.com with SMTP id d17so5920723oth.5
- for <qemu-arm@nongnu.org>; Thu, 04 Jul 2019 06:08:33 -0700 (PDT)
+ id 1hj2al-0006kX-Nv
+ for qemu-arm@nongnu.org; Thu, 04 Jul 2019 10:20:07 -0400
+Received: by mail-wm1-x344.google.com with SMTP id x15so5923180wmj.3
+ for <qemu-arm@nongnu.org>; Thu, 04 Jul 2019 07:20:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Rs6zRJeUQE19QRdvqv0nWAusH67o0A4RvKI6AFFZ8No=;
- b=gNzF7Uceon3eGq9lxRj8H2MXTUSXqKUOjQKsPu0rOn2FEzwVsKYVgLb7y9Vbtq+Ft6
- zMyiHc2R7etcKgyDlf7eB9u1TcZhtnIk2MNIIzQq3nswlSf36gteUG7lJSuyIK1wFL+b
- uixJ1JuuMbEf/lLHhqwPL/DqRSkR3jYH202D4hXsQxC79bCRp7Mf5JALSml1D67wAibK
- q31gA51gktJVzr26t5FSuXHOGeIeCKWNZQdbth32GMnNHAJCWO3UgYIYMf/KIGZ+hp4j
- mHyDXj7QB5alq3EsxcyZBULtbB0qS6w9rtjqdr8DAFoWuMGct9MBNprTZaVVHL2dHiXP
- 09cw==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=y2vuXrmq/JT4NCIyF08AXa1zIQrKXhKE3HksSwRif84=;
+ b=jotr24d/ZHImENcxd5LAOPtbpUgTnqn5wNT8asuaodhkC54AjrSl+/Nu5cN9FDMaGt
+ 2YD6zvlf9yrEXFOTTZ/Hb0QTCeWd+n/+PN7OpSBMRiBEB7t0n8b1G78jwoemJVN0ZGTV
+ xy5pn1YPTEXirxcM49g23aT7AGUgKmaGuwpMxFEV7p+wzjKzLIWl0cMXDhv2xRPUekRB
+ XHPzPWYhvBeCxeCVvNzbMhaZ1v3c+uiMLlT2Ci3TW4ogVVBGiDZpCcEbEso69/495aqB
+ MSUact+9SZXzRHgJPulmwUDdfT7dMHVql+zKDawlER10LxdU3z+GoaaVOo9235aCc5XI
+ BfCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Rs6zRJeUQE19QRdvqv0nWAusH67o0A4RvKI6AFFZ8No=;
- b=V/Mgk/Z6vRH5EWWlIiPoTx/xm1D9sNXj8+yVfnZoPy3KPB7b/ckEQWoho8a0qnqG8M
- 2ZaRAvprtBQKZyNDPYJ7FckHrNbuo6f2nRNJjw8OucCm/zVo71MDGUo10J+i2+R4aLMs
- F06J0SmAYzBhe2cALO51FmRn6r+MpVeDBj0m13Vw+A7jvuddXPziIMm+fGahS8THmbK4
- eKdq1SropMXhP0J1QV+e1f3qj3qytaNEzWOObHVLUG8rWbnmYOyOSGg1DxVOdY2n2e/S
- yNpxF7MrRnmdmghO53uzaBTsZwR1/e8Zf26uOjc4W7+X/8TZyai16Nm6LQzwD4/gYZsM
- Cg/w==
-X-Gm-Message-State: APjAAAVNFOgovLWqjCeiPWKXhvX6eNH/s7039cGHqckM3Ol+YHAqhSk2
- ZZYSYT7qyKA2VyfVmh+rVKGervbRY+7E/upUueeI+w==
-X-Received: by 2002:a9d:4d81:: with SMTP id u1mr11409364otk.221.1562245712526; 
- Thu, 04 Jul 2019 06:08:32 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190618165311.27066-1-clg@kaod.org>
- <20190618165311.27066-4-clg@kaod.org>
- <CAFEAcA_wCFE0BL_LjF+04MBPa2XnVgCKk4SP4nPrBjrcjmNVVQ@mail.gmail.com>
- <CACPK8XfdqDARHV4TupC+c-qsgscOn4kWjtYdpdR+GxOZQzNNMA@mail.gmail.com>
-In-Reply-To: <CACPK8XfdqDARHV4TupC+c-qsgscOn4kWjtYdpdR+GxOZQzNNMA@mail.gmail.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=y2vuXrmq/JT4NCIyF08AXa1zIQrKXhKE3HksSwRif84=;
+ b=tZHl+zRjjyi3yvJzdSY8KfbRxeMeTiqxzpjyifZTGVpFCC+OcZfNlssXgkCoKusPM5
+ 4KW5WAcHGVnugZZzRQn2ikLXGYdVX48SvXhb0LF71qs0UZt93DblfxRui1+nA70yKzyr
+ ceaef7w6tC4tqnCoiExa8hBoDTkdZsz9Clnkwc4Gwb/TazKRaqYUyDZSOFE5UmBhacin
+ 8nWabFZ3OjUm/mQniQM+vs6VrYrjiUTFaAE4fiBUpWLn0QOdHQGVcFKgNQ7gsJRvh5nG
+ hrn1ypVkH3jAkCB4+ssRaGvQez5MjknZJUgjANgShbBl76qmrnFmUB+Yv8ezQD0Gdbr7
+ GnjQ==
+X-Gm-Message-State: APjAAAXDYgxS99w1vEWOmqk6LVS5yT8Eub91OjcFeSgUAoarLauYFBic
+ 5Npeu3zcIzPvSAX6IXmzx6dtfZ/Dc/ZfGQ==
+X-Received: by 2002:a1c:9696:: with SMTP id y144mr12844133wmd.73.1562250006394; 
+ Thu, 04 Jul 2019 07:20:06 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id c1sm8917572wrh.1.2019.07.04.07.20.05
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Thu, 04 Jul 2019 07:20:05 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 4 Jul 2019 14:08:21 +0100
-Message-ID: <CAFEAcA8W6moG+dPOpPazEKFXYg3Gp0COrks1uYz94hn9HHeV5A@mail.gmail.com>
-To: Joel Stanley <joel@jms.id.au>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Thu,  4 Jul 2019 15:20:04 +0100
+Message-Id: <20190704142004.7150-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::341
-Subject: Re: [Qemu-arm] [PATCH v2 03/21] hw: timer: Add ASPEED RTC device
+X-Received-From: 2a00:1450:4864:20::344
+Subject: [Qemu-arm] [PATCH for-4.1] hw/arm/sbsa-ref: Remove unnecessary
+ check for secure_sysmem == NULL
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,69 +110,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ Leif Lindholm <leif.lindholm@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ak4sOyaigWFO
+X-TUID: Dw4m0t1SV3RI
 
-On Thu, 4 Jul 2019 at 08:49, Joel Stanley <joel@jms.id.au> wrote:
->
-> On Tue, 2 Jul 2019 at 19:19, Peter Maydell <peter.maydell@linaro.org> wro=
-te:
-> >
-> > On Tue, 18 Jun 2019 at 17:53, C=C3=A9dric Le Goater <clg@kaod.org> wrot=
-e:
-> > >
-> > > From: Joel Stanley <joel@jms.id.au>
-> > >
-> > > The RTC is modeled to provide time and date functionality. It is
-> > > initialised at zero to match the hardware.
-> > >
-> > > There is no modelling of the alarm functionality, which includes the =
-IRQ
-> > > line. As there is no guest code to exercise this function that is
-> > > acceptable for now.
-> > >
-> > > Signed-off-by: Joel Stanley <joel@jms.id.au>
-> > > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> >
-> > Hi; Coverity complains about this function (CID 1402782):
-> >
-> > > +static void aspeed_rtc_calc_offset(AspeedRtcState *rtc)
-> > > +{
-> > > +    struct tm tm;
-> > > +    uint32_t year, cent;
-> > > +    uint32_t reg1 =3D rtc->reg[COUNTER1];
-> > > +    uint32_t reg2 =3D rtc->reg[COUNTER2];
-> > > +
-> > > +    tm.tm_mday =3D (reg1 >> 24) & 0x1f;
-> > > +    tm.tm_hour =3D (reg1 >> 16) & 0x1f;
-> > > +    tm.tm_min =3D (reg1 >> 8) & 0x3f;
-> > > +    tm.tm_sec =3D (reg1 >> 0) & 0x3f;
-> > > +
-> > > +    cent =3D (reg2 >> 16) & 0x1f;
-> > > +    year =3D (reg2 >> 8) & 0x7f;
-> > > +    tm.tm_mon =3D ((reg2 >>  0) & 0x0f) - 1;
-> > > +    tm.tm_year =3D year + (cent * 100) - 1900;
-> > > +
-> > > +    rtc->offset =3D qemu_timedate_diff(&tm);
-> > > +}
-> >
-> > because the tm_wday field of 'struct tm tm' is not initialized
-> > before we call qemu_timedate_diff(). This is a false
-> > positive because the "read" of this field is just the place
-> > in qemu_timedate_diff() that does "struct tm tmp =3D *tm;"
-> > before calling mktime(), and mktime() ignores tm_wday.
-> > We could make Coverity happy by using a struct initializer
-> > on 'tm' here; on the other hand we don't do that anywhere else
-> > which calls qemu_timedate_diff(), so maybe I should just mark
-> > this a false positive?
->
-> I don't have an opinion on which option to take. Perhaps mark it as a
-> false positive?
+In the virt machine, we support TrustZone being either present or
+absent, and so the code must deal with the secure_sysmem pointer
+possibly being NULL. In the sbsa-ref machine, TrustZone is always
+present, but some code and comments copied from virt still treat
+it as possibly not being present.
 
-Yeah, seems reasonable.
+This causes Coverity to complain (CID 1407287) that we check
+secure_sysmem for being NULL after an unconditional dereference.
+Simplify the code so that instead of initializing the variable
+to NULL, unconditionally assigning it, and then testing it for NULL,
+we just initialize it correctly in the variable declaration and
+then assume it to be non-NULL. We also delete a comment which
+only applied to the non-TrustZone config.
 
--- PMM
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Not a bug as such, but we should put it in for 4.1 to
+keep Coverity happy.
+---
+ hw/arm/sbsa-ref.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index ee53f0ff60d..6f315b79445 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -254,8 +254,6 @@ static void sbsa_flash_map(SBSAMachineState *sms,
+      * sysmem is the system memory space. secure_sysmem is the secure view
+      * of the system, and the first flash device should be made visible only
+      * there. The second flash device is visible to both secure and nonsecure.
+-     * If sysmem == secure_sysmem this means there is no separate Secure
+-     * address space and both flash devices are generally visible.
+      */
+     hwaddr flashsize = sbsa_ref_memmap[SBSA_FLASH].size / 2;
+     hwaddr flashbase = sbsa_ref_memmap[SBSA_FLASH].base;
+@@ -588,7 +586,7 @@ static void sbsa_ref_init(MachineState *machine)
+     SBSAMachineState *sms = SBSA_MACHINE(machine);
+     MachineClass *mc = MACHINE_GET_CLASS(machine);
+     MemoryRegion *sysmem = get_system_memory();
+-    MemoryRegion *secure_sysmem = NULL;
++    MemoryRegion *secure_sysmem = g_new(MemoryRegion, 1);
+     MemoryRegion *ram = g_new(MemoryRegion, 1);
+     bool firmware_loaded;
+     const CPUArchIdList *possible_cpus;
+@@ -612,13 +610,11 @@ static void sbsa_ref_init(MachineState *machine)
+      * containing the system memory at low priority; any secure-only
+      * devices go in at higher priority and take precedence.
+      */
+-    secure_sysmem = g_new(MemoryRegion, 1);
+     memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
+                        UINT64_MAX);
+     memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
+ 
+-    firmware_loaded = sbsa_firmware_init(sms, sysmem,
+-                                         secure_sysmem ?: sysmem);
++    firmware_loaded = sbsa_firmware_init(sms, sysmem, secure_sysmem);
+ 
+     if (machine->kernel_filename && firmware_loaded) {
+         error_report("sbsa-ref: No fw_cfg device on this machine, "
+-- 
+2.20.1
+

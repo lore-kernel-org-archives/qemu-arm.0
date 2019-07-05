@@ -1,318 +1,189 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3297708wru;
-        Fri, 5 Jul 2019 08:39:35 -0700 (PDT)
-X-Received: by 2002:aca:4d8:: with SMTP id 207mr2472452oie.88.1562341175721;
-        Fri, 05 Jul 2019 08:39:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562341175; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3221670wru;
+        Fri, 5 Jul 2019 07:17:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxgtUAGp6WwzUSm8LVQm5zwCNGEOJYvoP8hxMhA9e5Ven6g79aKO9qkN4uYGX9Xk58A6KYm
+X-Received: by 2002:a17:906:3098:: with SMTP id 24mr3825980ejv.106.1562336223574;
+        Fri, 05 Jul 2019 07:17:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562336223; cv=none;
         d=google.com; s=arc-20160816;
-        b=y527NwkMO6hEuiMTerm2a4XwnmGQBuMiWEZuqKksQHop9i74YqsMjlbvlFqbja7kBC
-         FZzJlbEkjed2Ixc9NTwZ7Q4Su78Q5LaBgQAR4TRXNuq+2YIcaRwUjVOH1G0Vfu1kdtp1
-         z8Jot1Q3rvHs/16H+AAWSNvdot/PGjA7Oz10sbm2yq7SC/a/VZuvJVNoHNHbE3HHrUpm
-         rN6iAHmtofsZY271758X7HKrlIASNhowVHQkUNVErDqhTMXrOowM5f1AbLe7SUZpZaKK
-         jlfV22hGDhF4dyW3QhJ6IF3QNNb1vJ3vCgmpd4U3cYZ7HX6ieLiBMd19r0YiEMzSrN5s
-         WxDg==
+        b=CbvKE2mn0mTlvbShM4c1jWl6kbujtjtenkHXUOipfaL6OknDLSF5PwiaMSVy07tb1N
+         kM4VhVjsUA0VfBM7vz2Al9Cw4XU25MZ3rklwb9YjYNmy+OKUmssIFWDc0SxxxkxU5KBl
+         2QHWg3heq4YZHD5Bh75748jG8gsTBqPD2eDYTMi74REmNKy4/hx2a0AORFQY+pwtI/X4
+         7gCJeT1rRtqB4Ui0+M9HixghAVwY0REA8d6M4mhUjBxLnrltMK2YEQlM+E0ORsVVJW4k
+         RgtMVGZM35Qi116AYo2OTZKniCwfLNP9HLmgtXb0W55nAywyDmH2MW2QcxIaDpUGd4FD
+         f3ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=shKJw3qDIYwJGnYjocaoDrWEDEOtUhuu1wOY5zKgLQQ=;
-        b=0Vj5jhHvyM1CrNiv+p2Fey5zE+qOhuxRD/2PUoVLAWsyPeF8az8byePOxF6Qc31cwQ
-         AVjiADw51WU5oZCBiUJ+uF5adA2at8pwPld7UV09RKVPyqDiv3NibF0K/NyWDHs895Ab
-         8/j4GT6oqNFNr84PHl0LJ0OLi7lPb9ZqCKR0Eq3BnvluIasUXxx53LV/keCs3gZ1nm70
-         z9WrNx+KHt/+jXK/9SNV9kTM4k42xUdcpHyz0Xkjx6LXxri+3O/yTWHiIU/EywbSxpqO
-         tuRxzv55pzxqlKNylZBVD7IGuKVXOW4zWsJEYElk/hYiDq43reMdT8Ehst3IPh+ypKTv
-         Utuw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:to:from:date:dkim-signature;
+        bh=cTjQuAiD+25YZq/P1/SkkzETHTlAtPOe/XGlBxCRBX8=;
+        b=vUYiZZ1vWyFaQ4lUY/t9b3x5YjuriXo32W2/KZgTUdj/7q3hGmt87+4p7AcdRDaCXj
+         HuHuMVdIj6bQNsjC2OxbzLub2wbUJt1fkMzE47rlJbVD3R8qlmvcBeaVMXzNOJNKGlHZ
+         MceeAVouO51ji6sQi2c2KuF7oM0VtNtCFS433yLN4+40oIqolQZxuQAdYXfSJ61kx59C
+         lNGc3xrVy5h3GAdaRjKMaMOrt060mmTTG+Wgo3SWR0YpMEl/CYWAAv9QbT2I4BHdWYmC
+         ZpiPpMpaTx800aMG9YD/hzwIs3LmCJHYCUap9q2KSTD5p29mSKNp5KQUOvqTb3UO04Si
+         YmeQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="A/QL6bqw";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id q25sor4892543otl.168.2019.07.05.08.39.35
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=brtCIiZ1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n17si5470305ejb.18.2019.07.05.07.17.03
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 05 Jul 2019 08:39:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 05 Jul 2019 07:17:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="A/QL6bqw";
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=shKJw3qDIYwJGnYjocaoDrWEDEOtUhuu1wOY5zKgLQQ=;
-        b=A/QL6bqw42DGjP4UUDLfCdELiebjscYeQ2EfwFOYnVGqVa1R0E4SVlKwHraT/gkEtt
-         PMxVeC06c+UGC23Vz4TgcEoN+PizmQmtIG0vANIAj8pJn8cBB0KHGO7aA+KX+zf32eVb
-         74cIGki+zooo7XPR8JSHrlt3YzBvHLNjs9X98LyuSnzTXM+3pzmnIhyRevAGoOs7egXk
-         sQVrbLgty5yzN+Dpwo/KCvPHjcVd5AJRTsb1uLPBnKr40oI60bGjFDIdH6WQRnxItUgD
-         BBIZ7NeUSdf4yYiNOESYXKCsHLWjj8GQYp6O1pzVOT6EPhs6E57Dw71CHaBdZ+UG2/5j
-         mNqA==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=brtCIiZ1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:53618 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hjP1I-0000SN-MK
+	for alex.bennee@linaro.org; Fri, 05 Jul 2019 10:17:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47759)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <frasse.iglesias@gmail.com>) id 1hjOyd-0007Hl-2e
+ for qemu-devel@nongnu.org; Fri, 05 Jul 2019 10:14:17 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <frasse.iglesias@gmail.com>) id 1hjOyZ-0006ki-T6
+ for qemu-devel@nongnu.org; Fri, 05 Jul 2019 10:14:14 -0400
+Received: from mail-lf1-x143.google.com ([2a00:1450:4864:20::143]:47101)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <frasse.iglesias@gmail.com>)
+ id 1hjOyY-0006RP-KT; Fri, 05 Jul 2019 10:14:11 -0400
+Received: by mail-lf1-x143.google.com with SMTP id z15so6406384lfh.13;
+ Fri, 05 Jul 2019 07:14:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to
+ :user-agent; bh=cTjQuAiD+25YZq/P1/SkkzETHTlAtPOe/XGlBxCRBX8=;
+ b=brtCIiZ1yevmiUisQmVYtqWA1QsMQb4353wAAmYMGnRPQ9svCzrMOAvpXo/nksgGWh
+ ue6AVK2SBwFMqAI1ciEVqv0JAdOEMmsls2pTJ0sihhVfqPv0Yf200k9Ra/5jql4M96vh
+ 82Gpwyc8xidE5Lc/6dqWcTLZS1xgVIqT/dsBQmd0JNobBEPDozIHgT0JNZ0MOSjRLP7E
+ 1PQtHBv28BspFcLmkv4okH1bCzH3Mwcy4gBbhzj+PgSWDzLNzb38p8ghDRhk95JznoHh
+ lgnsjLAycqRnW4mi/B7HlChXvAqHotMjzT8gDcTQ85HKEw2b6pqfDpAiB1nPY3fP4CL9
+ jqWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=shKJw3qDIYwJGnYjocaoDrWEDEOtUhuu1wOY5zKgLQQ=;
-        b=j/hL+YM/oP4tWiVd1bSGudO5mzrZuFOaICSpfewxv4ul3g4OmwQza/gusMLKiZ5RIo
-         99gYIj0Y4JH4Zv4/xH+bYia1CEUNermL9Ib8pY/YnKFB+D2k1mgkWOpqLPDL1KI2xdQc
-         asZrNDqoTmqgZAdjwN1C/wqVJpobrSNWipmpxg+UJ4m5NXiniGcox96rKlXjZ0qBTCJK
-         e1K/cCKE97xk10oa9IAbf+kbFB8ovLQh+bU4qojhjfivKs44uVBrUm/1X11x6rAROwz+
-         egm/hPDJCracaqmuMjp8jPh1cYrVmhJs/5pj+RQ3QqprHeGjnz7zqnbimVJwFl2OuqMl
-         Z2zA==
-X-Gm-Message-State: APjAAAWKD9CSlIPu3hTbrZVsMCN6u51LVrFPek5OL1tlsgRrVQCYQ9NZ
-	is+gpq4WjcYCoEQ8MvICYzBUkZ+nlErE4e3MbrLK9zi3YRzN7A==
-X-Google-Smtp-Source: APXvYqwektAab60un/FkTo/LkVBkKmy78E+owFvv8Y52TDYqY1J4S8v3RYX2r8viGqP1EK6voKqPWTec+TBb9XDRWn8=
-X-Received: by 2002:a9d:7245:: with SMTP id a5mr1936871otk.232.1562341175087;
- Fri, 05 Jul 2019 08:39:35 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=cTjQuAiD+25YZq/P1/SkkzETHTlAtPOe/XGlBxCRBX8=;
+ b=JvooEFjI2kLmtptf5405HhNrGGkclKEctFcaq6xKe1JOuqWWmM8T6yKgW1ezK4wxTj
+ EdMGTveXm4me+xxvtQY7vOVdO7TOP7WWmEdhQLehVWfTpYUQ74w0pn3dj+vdd1IVXnua
+ L4GXmvzKvJrkzY965VSUp3OfrgNQQZnrFT+WufnZxAxNyWfc7+kJYsBwOPPPxyyC2D56
+ i+GHv8SFGSaeNCdyJixvkmJ1KZlYz5DpSxKJbgtd4BCbgxTV1AJ0KxDMMVL+V6ziLFHQ
+ Q4yGKnGJvne67OdAUd/XsLnTd7TyUG+D93X39oe0/MieDk578KXRnFMgbQvlgZo4lCPR
+ eaOw==
+X-Gm-Message-State: APjAAAVE4SNYD4zVpiQNzK5X2pJbipynaZI2zXZkS5XtXV1RsYsVLa/n
+ UBis6cL2T/ZroVi8wvobX7M=
+X-Received: by 2002:ac2:5a44:: with SMTP id r4mr2149766lfn.118.1562336047265; 
+ Fri, 05 Jul 2019 07:14:07 -0700 (PDT)
+Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
+ by smtp.gmail.com with ESMTPSA id
+ u22sm1983515ljd.18.2019.07.05.07.14.06
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Fri, 05 Jul 2019 07:14:06 -0700 (PDT)
+Date: Fri, 5 Jul 2019 16:14:04 +0200
+From: Francisco Iglesias <frasse.iglesias@gmail.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
+Message-ID: <20190705141403.zdipi3ewigihm6tl@fralle-msi>
+References: <20190705104255.24027-1-philmd@redhat.com>
 MIME-Version: 1.0
-References: <20190703102208.10086-1-alex.bennee@linaro.org>
-In-Reply-To: <20190703102208.10086-1-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 5 Jul 2019 16:39:24 +0100
-Message-ID: <CAFEAcA-rT3B-1GvFY55Ete1cm8f+38AGFyzDcJxQsqM1c=D4sQ@mail.gmail.com>
-Subject: Re: [RFC PATCH for semihosting-tests] semihosting tests: add v7m tests
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 1CLd5rqIDZJq
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20190705104255.24027-1-philmd@redhat.com>
+User-Agent: NeoMutt/20170113 (1.7.2)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::143
+Subject: Re: [Qemu-devel] [PATCH-for-4.1 v2] hw/ssi/xilinx_spips: Avoid AXI
+ writes to the LQSPI linear memory
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
+ Prasad J Pandit <ppandit@redhat.com>, Lei Sun <slei.casper@gmail.com>,
+ qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eDnYCT3UHLN6
 
-On Wed, 3 Jul 2019 at 11:22, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
->
-> M-profile has yet another way of triggering semihosting calls using
-> the BKPT instruction. To support this we need to add a M-profile setup
-> so we use the nice and simple microbit model which has a Cortex-M0 in
-> it.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Hi Philippe,
+
+On [2019 Jul 05] Fri 12:42:55, Philippe Mathieu-Daudé wrote:
+> Lei Sun found while auditing the code than a CPU write would
+> trigger a NULL pointer deference.
+> 
+> From UG1085 datasheet [*] AXI writes in this region are ignored
+> and generates an External Slave Error (SLVERR).
+> 
+> Fix by checking the access is a READ before calling the region
+> callback.
+> 
+> [*] https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf
+> 
+> Reported-by: Lei Sun <slei.casper@gmail.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  Makefile         | 24 ++++++++++++++++++++---
->  microbit.lds     | 32 ++++++++++++++++++++++++++++++
->  semicall.S       |  7 ++++++-
->  start-microbit.S | 51 ++++++++++++++++++++++++++++++++++++++++++++++++
->  4 files changed, 110 insertions(+), 4 deletions(-)
->  create mode 100644 microbit.lds
->  create mode 100644 start-microbit.S
-
-Good to have this semihosting mode in the test suite, thanks.
-
-> diff --git a/Makefile b/Makefile
-> index 1fea97e..9f04cdd 100644
-> --- a/Makefile
-> +++ b/Makefile
-> @@ -40,6 +40,7 @@
->
->  A32GCC :=3D arm-linux-gnueabihf-gcc -marm
->  T32GCC :=3D arm-linux-gnueabihf-gcc -mthumb
-> +V7MGCC :=3D arm-none-eabi-gcc -mcpu=3Dcortex-m0 -mfloat-abi=3Dsoft
->  A64GCC :=3D aarch64-linux-gnu-gcc
->
->  A32LD :=3D arm-linux-gnueabihf-ld
-> @@ -47,7 +48,9 @@ A32LD :=3D arm-linux-gnueabihf-ld
->  A32LINKOPTS :=3D -nostdlib -lgcc -Xlinker --script=3Dbaremetal.lds -Xlin=
-ker --build-id=3Dnone
->  A64LINKOPTS :=3D -nostdlib -lgcc -Xlinker --script=3Dbaremetal-a64.lds -=
-Xlinker --build-id=3Dnone
->
-> -QEMU_BUILDDIR :=3D ~/linaro/qemu-from-laptop/qemu/build/x86
-> +AV7MLINKOPTS :=3D -nostdlib -lgcc -Xlinker --script=3Dmicrobit.lds -Xlin=
-ker --build-id=3Dnone
-> +
-> +QEMU_BUILDDIR :=3D ~/lsrc/qemu.git/builds/arm.all
-
-My local devel hack for this is obviously more important
-to have in the git repo than yours :-)
-
->  ifdef GDBPORT
->  SYSGDB :=3D -gdb tcp::$(GDBPORT)
-> @@ -60,11 +63,15 @@ QEMU_SYSTEM_ARM =3D $(QEMU_BUILDDIR)/arm-softmmu/qemu=
--system-arm $(SYSGDB)
->  QEMU_SYSTEM_AARCH64 =3D $(QEMU_BUILDDIR)/aarch64-softmmu/qemu-system-aar=
-ch64 $(SYSGDB)
->
->  all: usertest-a32 usertest-a64 usertest-t32 \
-> -       systest-a32.axf systest-t32.axf systest-a64.axf
-> +       systest-a32.axf systest-t32.axf \
-> +       systest-a32-hlt.axf systest-t32-hlt.axf \
-> +       systest-t32-bkpt.axf \
-> +       systest-a64.axf
-
-(The omission of the -hlt axfs from this target is a separate
-bug, strictly speaking, but I don't think we need to be too picky
-about this kind of thing given this is just a test suite.)
-
->  usertest-srcs =3D usertest.c semihosting.c semicall.S printf/printf.c
->
->  systest-srcs =3D start.S string.c $(usertest-srcs)
-> +microbit-systest-srcs =3D start-microbit.S string.c $(usertest-srcs)
->
->  usertest-a32: $(usertest-srcs)
->         $(A32GCC) --static -o $@ $^
-> @@ -93,6 +100,9 @@ systest-a32-hlt.axf: $(systest-srcs)
->  systest-t32-hlt.axf: $(systest-srcs)
->         $(T32GCC) -DUSE_HLT -o $@ $^ $(A32LINKOPTS)
->
-> +systest-t32-bkpt.axf: $(microbit-systest-srcs)
-> +       $(V7MGCC) -DUSE_BKPT -o $@ $^ $(AV7MLINKOPTS)
-> +
->  systest-a64.axf: $(systest-srcs)
->         $(A64GCC) -nostdlib -o $@ $^ $(A64LINKOPTS)
->
-> @@ -123,6 +133,9 @@ run-systest-a32-hlt: systest-a32-hlt.axf
->  run-systest-t32-hlt: systest-t32-hlt.axf
->         $(QEMU_SYSTEM_ARM) -M virt --display none --semihosting -kernel $=
-^
->
-> +run-systest-t32-bkpt: systest-t32-bkpt.axf
-> +       $(QEMU_SYSTEM_ARM) -M microbit --display none --semihosting -kern=
-el $^
-> +
->  run-systest-a64: systest-a64.axf
->         $(QEMU_SYSTEM_AARCH64) -M virt --display none --semihosting \
->                 -cpu cortex-a57 -kernel $^
-> @@ -130,4 +143,9 @@ run-systest-a64: systest-a64.axf
->  run: run-usertest-a32 run-usertest-t32 run-usertest-a64 \
->         run-systest-a32 run-systest-t32 run-systest-a64 \
->         run-usertest-a32-hlt run-usertest-t32-hlt \
-> -       run-systest-a32-hlt run-systest-t32-hlt
-> +       run-systest-a32-hlt run-systest-t32-hlt \
-> +       run-systest-t32-bkpt
-> +
-> +run-alt: run-usertest-a32 run-usertest-t32 run-usertest-a64 \
-> +       run-systest-a64 \
-> +       run-usertest-a32-hlt run-usertest-t32-hlt \
-
-What's this target for, and why does it end the makefile with a '\' ?
-
-> diff --git a/microbit.lds b/microbit.lds
-> new file mode 100644
-> index 0000000..24840a3
-> --- /dev/null
-> +++ b/microbit.lds
-> @@ -0,0 +1,32 @@
-> +/*
-> + * microbit.lds : simple linker script for baremetal ARM-M test cases
-> + *
-> + * Copyright (C) 2019 Linaro Limited. All rights reserved.
-> + *
-> + * Memory layout is for the BBC Microbit board which puts RAM at 0x20000=
-000
-> + */
-
-I know this is just copied from the baremetal.lds, but we
-really should have a license statement in every source file
-(and I should fix the ones which don't have a license at the moment).
-
-> +
-> +RAMSTART =3D 0x20000000;
-> +STACKTOP =3D 0x20004000;
-
-That puts stacktop really close to the start of the heap --
-isn't there more space to give ourselves some safety margin?
-
-> +
-> +ENTRY(exc_reset_thumb)
-> +
-> +SECTIONS
+> v1: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg01238.html
+> ---
+>  hw/ssi/xilinx_spips.c | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
+> 
+> diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
+> index 8115bb6d46..0c9ccd12bf 100644
+> --- a/hw/ssi/xilinx_spips.c
+> +++ b/hw/ssi/xilinx_spips.c
+> @@ -1202,6 +1202,18 @@ static void lqspi_load_cache(void *opaque, hwaddr addr)
+>      }
+>  }
+>  
+> +static bool lqspi_accepts(void *opaque, hwaddr addr,
+> +                          unsigned size, bool is_write,
+> +                          MemTxAttrs attrs)
 > +{
-> +    . =3D 0x0;
-> +    .text : {
-> +        *(.text)
-> +    }
-> +    .data : {
-> +        *(.data)
-> +    }
-> +    .rodata : {
-> +        *(.rodata)
-> +    }
-> +    .bss : {
-> +        *(.bss)
-> +    }
-> +    /DISCARD/ : {
-> +        *(.ARM.attributes)
-> +    }
+> +    /*
+> +     * From UG1085, Chapter 24 (Quad-SPI controllers):
+> +     * - Writes are ignored
+> +     * - AXI writes generate an external AXI slave error (SLVERR)
+> +     */
+> +    return !is_write;
+
+What I can see above generates an AXI Decode error (MEMTX_DECODE_ERROR),
+MEMTX_ERROR is the one that maps to AXI slave error. What about swapping to the
+solution you proposed yesterday? (but changing return value of the write
+function to be MEMTX_ERROR)
+
+Best regards,
+Francisco Iglesias
+
 > +}
-> diff --git a/semicall.S b/semicall.S
-> index 1418a42..e6316c4 100644
-> --- a/semicall.S
-> +++ b/semicall.S
-> @@ -51,8 +51,13 @@ __semi_call:
->  #else
->          /* traditional svc */
->  #if defined(__thumb__)
-> -        /* NB: assumes not M-profile (which is BKPT) */
-> +#if defined(USE_BKPT)
-> +        /* M-profile T32 */
-> +        bkpt 0xab
-> +#else
-> +        /* A+R Profile T32 */
->          svc 0xab
-> +#endif
->  #else
->          svc 0x123456
->  #endif
-> diff --git a/start-microbit.S b/start-microbit.S
-> new file mode 100644
-> index 0000000..db1f06e
-> --- /dev/null
-> +++ b/start-microbit.S
-> @@ -0,0 +1,51 @@
-> +/*
-> + * start-microbit.S - assembly code for startup on baremetal M-profile t=
-ests
-> + *
-> + * Copyright (c) 2015 Linaro Limited
-> + * All rights reserved.
-> + *
-> + * Redistribution and use in source and binary forms, with or without
-> + * modification, are permitted provided that the following conditions
-> + * are met:
-> + * 1. Redistributions of source code must retain the above copyright
-> + *    notice, this list of conditions and the following disclaimer.
-> + * 2. Redistributions in binary form must reproduce the above copyright
-> + *    notice, this list of conditions and the following disclaimer in
-> + *    the documentation and/or other materials provided with the
-> + *    distribution.
-> + * 3. Neither the name of Linaro Limited nor the names of its
-> + *    contributors may be used to endorse or promote products derived
-> + *    from this software without specific prior written permission.
-> + */
 > +
-> +        .syntax unified
-> +        .cpu cortex-m0
-> +        .thumb
-> +
-> +        .text
-> +
-> +vector_table:
-> +        .word STACKTOP          /* 0. SP_main */
-> +        .word exc_reset_thumb   /* 1. Reset */
-> +        .word 0                 /* 2. NMI */
-> +        .word 0                 /* 3. HardFault */
-> +        .rept 7
-> +        .word 0                 /* 4-10. Reserved */
-> +        .endr
-> +        .word 0                 /* 11. SVCall */
-> +        .word 0                 /* 12. Reserved */
-> +        .word 0                 /* 13. Reserved */
-> +        .word 0                 /* 14. PendSV */
-> +        .word 0                 /* 15. SysTick */
-> +        .rept 32
-> +        .word 0                 /* 16-47. External Interrupts */
-> +        .endr
-> +
-> +exc_reset:
-> +.equ exc_reset_thumb, exc_reset + 1
-> +.global exc_reset_thumb
-
-There must be a better way than this to declare an asm label
-for a thumb entrypoint...
-
-> +
-> +        bl main
-> +        bl semi_exit
-> +        # not reached
-> +1:      b 1b
-> --
-
-thanks
--- PMM
+>  static uint64_t
+>  lqspi_read(void *opaque, hwaddr addr, unsigned int size)
+>  {
+> @@ -1225,6 +1237,7 @@ static const MemoryRegionOps lqspi_ops = {
+>      .read = lqspi_read,
+>      .endianness = DEVICE_NATIVE_ENDIAN,
+>      .valid = {
+> +        .accepts = lqspi_accepts,
+>          .min_access_size = 1,
+>          .max_access_size = 4
+>      }
+> -- 
+> 2.20.1
+> 

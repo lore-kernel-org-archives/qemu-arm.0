@@ -1,52 +1,86 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id 91sm1900253wrp.3.2019.07.05.09.04.21
+        by smtp.gmail.com with ESMTPSA id t15sm9442318wrx.84.2019.07.05.09.04.22
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Fri, 05 Jul 2019 09:04:22 -0700 (PDT)
+        Fri, 05 Jul 2019 09:04:24 -0700 (PDT)
 Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id B65081FF90;
+	by zen.linaroharston (Postfix) with ESMTP id DDC011FF92;
 	Fri,  5 Jul 2019 17:04:21 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: [PATCH  v1 3/5] tests/tcg: fix diff-out pass to properly report failure
-Date: Fri,  5 Jul 2019 17:04:19 +0100
-Message-Id: <20190705160421.19015-4-alex.bennee@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Jon Doron <arilou@gmail.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Subject: [PATCH  v1 5/5] gdbstub: revert to previous set_reg behaviour
+Date: Fri,  5 Jul 2019 17:04:21 +0100
+Message-Id: <20190705160421.19015-6-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190705160421.19015-1-alex.bennee@linaro.org>
 References: <20190705160421.19015-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: yZ6giUNXWJKB
+X-TUID: 3NwCBD5ZqtIB
 
-A side effect of piping the output to head is squash the exit status
-of the diff command. Fix this by only doing the pipe if the diff
-failed and then ensuring the status is non-zero.
+The refactoring of handle_set_reg missed the fact we previously had
+responded with an empty packet when we were not using XML based
+protocols. This broke the fallback behaviour for architectures that
+don't have registers defined in QEMU's gdb-xml directory.
 
+Revert to the previous behaviour and clean up the commentary for what
+is going on.
+
+Fixes: 62b3320bddd
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Cc: Jon Doron <arilou@gmail.com>
+Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 ---
- tests/tcg/Makefile | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ gdbstub.c | 18 ++++++++++++------
+ 1 file changed, 12 insertions(+), 6 deletions(-)
 
-diff --git a/tests/tcg/Makefile b/tests/tcg/Makefile
-index 6fa63cc8d5..7973cd1ba2 100644
---- a/tests/tcg/Makefile
-+++ b/tests/tcg/Makefile
-@@ -45,7 +45,11 @@ run-test = $(call quiet-command, timeout $(TIMEOUT) $2,"TEST",$3)
- endif
+diff --git a/gdbstub.c b/gdbstub.c
+index ea3349d1aa..b6df7ee25a 100644
+--- a/gdbstub.c
++++ b/gdbstub.c
+@@ -1669,12 +1669,23 @@ static void handle_remove_bp(GdbCmdContext *gdb_ctx, void *user_ctx)
+     put_packet(gdb_ctx->s, "E22");
+ }
  
- # $1 = test name, $2 = reference
--diff-out = $(call quiet-command, diff -u $1.out $2 | head -n 10,"DIFF","$1.out with $2")
-+# to work around the pipe squashing the status we only pipe the result if
-+# we know it failed and then force failure at the end.
-+diff-out = $(call quiet-command, diff -q $1.out $2 || \
-+				 (diff -u $1.out $2 | head -n 10 && false), \
-+				 "DIFF","$1.out with $2")
++/*
++ * handle_set/get_reg
++ *
++ * Older gdb are really dumb, and don't use 'G/g' if 'P/p' is available.
++ * This works, but can be very slow. Anything new enough to understand
++ * XML also knows how to use this properly. However to use this we
++ * need to define a local XML file as well as be talking to a
++ * reasonably modern gdb. Responding with an empty packet will cause
++ * the remote gdb to fallback to older methods.
++ */
++
+ static void handle_set_reg(GdbCmdContext *gdb_ctx, void *user_ctx)
+ {
+     int reg_size;
  
- # $1 = test name, $2 = reason
- skip-test = @printf "  SKIPPED %s on $(TARGET_NAME) because %s\n" $1 $2
+     if (!gdb_has_xml) {
+-        put_packet(gdb_ctx->s, "E00");
++        put_packet(gdb_ctx->s, "");
+         return;
+     }
+ 
+@@ -1694,11 +1705,6 @@ static void handle_get_reg(GdbCmdContext *gdb_ctx, void *user_ctx)
+ {
+     int reg_size;
+ 
+-    /*
+-     * Older gdb are really dumb, and don't use 'g' if 'p' is avaialable.
+-     * This works, but can be very slow.  Anything new enough to
+-     * understand XML also knows how to use this properly.
+-     */
+     if (!gdb_has_xml) {
+         put_packet(gdb_ctx->s, "");
+         return;
 -- 
 2.20.1

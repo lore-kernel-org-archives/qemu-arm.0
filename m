@@ -1,102 +1,79 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2906517wru;
-        Fri, 5 Jul 2019 02:01:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqza7lik2FVnRFu+oTQdkArv5XEfKCGwJ1doR5Wr8Ej8YIg44whOwka0h6hPvWXA4cZlo/pr
-X-Received: by 2002:a17:906:4d88:: with SMTP id s8mr2325263eju.225.1562317296889;
-        Fri, 05 Jul 2019 02:01:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562317296; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3009997wru;
+        Fri, 5 Jul 2019 03:43:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwDMXRWCJ3nLqyQz+yVgGUZWOt7r7tG4flHhuuvXGk5f8KbALh6rfTbVeZFqwPlo8QqdZke
+X-Received: by 2002:a05:6402:8cc:: with SMTP id d12mr3773699edz.60.1562323401873;
+        Fri, 05 Jul 2019 03:43:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562323401; cv=none;
         d=google.com; s=arc-20160816;
-        b=xjpTBbF8Ze+qw6PhV6etD4LqEVP+zNzdQ8vmH9GucDJTl0K3Z/cV1sCVU5P399wx4M
-         dBbzwsTdGSwXQq0UlWTD5ByA3Od7Nvd0A1RBOCROUXAUZ/1NqG+83UNKHZ/n7Vrm+sZ+
-         vcWhBvjJhfxenu8gPJ2KD22KPKCDJ0BYSwAP4TnUzFj3OOlaAJCDGd/czdanA0c78YYP
-         VoNPPAppst6ywoXLfbwr/xf9xlFyNlIXGTqHystRL063CNDfeWAJoZOzyOHaPHZjOHO7
-         YMyE4Joz7oLF52yBW0EmVBUQOfWwIr8aAPG7WWWcTWiLeufhUTL6GZovfT66rwemzy42
-         q8PA==
+        b=EUJBHTL/liKoLePCMeCPk8YfuS48H2YlL29On49qlFmLXNY3tngfJD/CcymelvuD7d
+         q3Pg+IVnC2v2blXM56qnDtx17V4ooR//QzoqdqVXDdQ4pT2Qh3dHPaUBSjso/HgmZJ4y
+         Xziyd6qjyPTR5OCD+VGlng9gKKGnZS+wY2s7ncgjvbxcfKDiBx7p4MXdmkc4L2WjctAT
+         n3mDdHReM97+jZp1Pyk+pwtMfEDPLW8dSgKfAhhaeV3OxGImp9SjYTiKeu3ZuUQMl9B8
+         OQs3k9CTiLR4GpE+xXU7plrVDYmWahFq1M0RYXupK1qCrhzFNJpi3EjIDfYWm0eJN+sc
+         yyfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=4jymrkpCB6h9VW4LpjAhUSFnZgwb/0NgBb4Hwzi/Wko=;
-        b=miXdJaCE9R92tvy6+2SWNd0HWaV0hUKcVSKDwnWTBV7lYEDmhxwxjAaT8oVY1Ju30X
-         n7sy5x9ZlkOZV24RJ1oyeMdySEGO6lFDzDJldhVOgpHxzhMoyzkEwCa/VPR7VPdQsnkY
-         Uh/EVkS4YC/u1Gmxj1qok3J3NZO+0Gz6r0ETfXr3P35yHgvgcbQMjXuRaNxiPjtd9NjB
-         gOw+3e8q58S+kUu1wnUIIqCT2JvTLD32gkmqrEoI/XCvVjOR+SI9VXzHmLJdmYKoWWQP
-         FCksCgEbrlCm4HH5Qhcz8adVkf6qBqYXcVXVYb68uoTvAAZQucShPskwQP2erfxWVn5f
-         8asQ==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=ml7nk8nCxHH03HLINrwx+R5ZSSi3LkTrq3VkueLV22A=;
+        b=vE6wUwZzpGvvW0Ialg0x1v4SXwcMfHI7yaNnwOZW9oXRt46UAZdsPTy8eJJCD0y+A0
+         oUZRQ1fDm0rDKbdSQj7y1Y6qspcDgLlycSedw7DJN5WBTCuL9Aioe6MNWdKbChPhPDya
+         OwLj1MIgWWHrZQY9TKwPGynU+fWo6KYfSRzLgBihNFZ6ClgaZK64nLIW3Z4NMth21R9v
+         DBtqvn6Qfu/y79P2UC2hVxvBvyFumrHvM77lNDbJRXyhfgVM3WrXqt9OFOXVqZJ9XP5P
+         DbmCASXmk6Ayzcp1MG7RN3TGUbIem+Ud++oDDtYoGPmfEuKZyOEvtAhgFkqT9YNQq20V
+         rI1A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s6si6378079eda.228.2019.07.05.02.01.36
+        by mx.google.com with ESMTPS id m7si1762251ejc.279.2019.07.05.03.43.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jul 2019 02:01:36 -0700 (PDT)
+        Fri, 05 Jul 2019 03:43:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50730 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51494 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hjK63-0006DI-PS
-	for alex.bennee@linaro.org; Fri, 05 Jul 2019 05:01:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34316)
+	id 1hjLgX-0006SZ-0q
+	for alex.bennee@linaro.org; Fri, 05 Jul 2019 06:43:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57987)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hjK5d-00069j-F4
- for qemu-arm@nongnu.org; Fri, 05 Jul 2019 05:01:10 -0400
+ (envelope-from <philmd@redhat.com>) id 1hjLgL-0006PB-VZ
+ for qemu-arm@nongnu.org; Fri, 05 Jul 2019 06:43:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hjK5b-0001lI-UM
- for qemu-arm@nongnu.org; Fri, 05 Jul 2019 05:01:09 -0400
-Received: from mail-wr1-f66.google.com ([209.85.221.66]:43720)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hjK5b-0001ga-Ml
- for qemu-arm@nongnu.org; Fri, 05 Jul 2019 05:01:07 -0400
-Received: by mail-wr1-f66.google.com with SMTP id p13so9073836wru.10
- for <qemu-arm@nongnu.org>; Fri, 05 Jul 2019 02:00:56 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=4jymrkpCB6h9VW4LpjAhUSFnZgwb/0NgBb4Hwzi/Wko=;
- b=IsvyRMMLEt6jYQpCJ/uqdsdgtbffRARSb5oQvjA4XdR4fVsNBO24QlqqerzK0gEXX+
- /+IgUR0fNNzq0t2L8n9F/xMGcM3ei6FHkfmkzuvtUaw0daaZoSnkCIVpZbK/wuNmRukx
- 0r/xwB3DTO1PBTg1KZG686qo4zdYfs0zd+mx9vWalWizfeZnedd5f0ItZvHQQrJRbdxw
- R6oNqMOdSBst2Hy9UBa/Lmpb4nx/bzkWqTKVPtJRt2Kt9VceFe60M03vuuTz7WP+fw+T
- kVZWsIRWRUGl5xBdf5hIAez8C6I7TknanoSfLOd3Hs4+HecytsS9Yny0e4M6BcxSrBtB
- 11IQ==
-X-Gm-Message-State: APjAAAU+t6Zx9nLXPU3dSMr5AjX1dyFwqr1oZT1G6eRNhF6Jgr5jgxxw
- IV3e93fIkrmq7fJ3afUlehHFig==
-X-Received: by 2002:adf:f30e:: with SMTP id i14mr2959205wro.59.1562317255162; 
- Fri, 05 Jul 2019 02:00:55 -0700 (PDT)
-Received: from [192.168.1.38] (56.red-88-18-140.staticip.rima-tde.net.
- [88.18.140.56])
- by smtp.gmail.com with ESMTPSA id v204sm9283831wma.20.2019.07.05.02.00.54
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Fri, 05 Jul 2019 02:00:54 -0700 (PDT)
-To: Laurent Desnogues <laurent.desnogues@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>
-References: <20190701163943.22313-1-peter.maydell@linaro.org>
- <20190701163943.22313-42-peter.maydell@linaro.org>
- <CABoDooMcKUS0BuS1z2o_z+cRc0tK5SXyrns=4s8MaZQW7LDtKQ@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <b080e911-18e6-ad06-1b03-0b25f37de672@redhat.com>
-Date: Fri, 5 Jul 2019 11:00:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ (envelope-from <philmd@redhat.com>) id 1hjLgK-00056Y-5h
+ for qemu-arm@nongnu.org; Fri, 05 Jul 2019 06:43:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56892)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1hjLgJ-0004vG-Uj; Fri, 05 Jul 2019 06:43:08 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 4D120301E11B;
+ Fri,  5 Jul 2019 10:43:03 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-45.brq.redhat.com [10.40.204.45])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A01EA100164A;
+ Fri,  5 Jul 2019 10:42:57 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri,  5 Jul 2019 12:42:55 +0200
+Message-Id: <20190705104255.24027-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CABoDooMcKUS0BuS1z2o_z+cRc0tK5SXyrns=4s8MaZQW7LDtKQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.41]); Fri, 05 Jul 2019 10:43:03 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.221.66
-Subject: Re: [Qemu-arm] [Qemu-devel] [PULL 41/46] target/arm/vfp_helper:
- Extract vfp_set_fpscr_to_host()
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH-for-4.1 v2] hw/ssi/xilinx_spips: Avoid AXI writes
+ to the LQSPI linear memory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,189 +85,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Prasad J Pandit <ppandit@redhat.com>, Lei Sun <slei.casper@gmail.com>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WCzICd1cAhE3
+X-TUID: L6x7DusN72N4
 
-On 7/5/19 9:24 AM, Laurent Desnogues wrote:
-> Hello,
-> 
-> On Tue, Jul 2, 2019 at 4:18 AM Peter Maydell <peter.maydell@linaro.org> wrote:
->>
->> From: Philippe Mathieu-Daudé <philmd@redhat.com>
->>
->> The vfp_set_fpscr() helper contains code specific to the host
->> floating point implementation (here the SoftFloat library).
->> Extract this code to vfp_set_fpscr_to_host().
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> Message-id: 20190701132516.26392-16-philmd@redhat.com
->> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->> ---
->>  target/arm/vfp_helper.c | 127 +++++++++++++++++++++-------------------
->>  1 file changed, 66 insertions(+), 61 deletions(-)
->>
->> diff --git a/target/arm/vfp_helper.c b/target/arm/vfp_helper.c
->> index d54e3253240..b19a395b67d 100644
->> --- a/target/arm/vfp_helper.c
->> +++ b/target/arm/vfp_helper.c
->> @@ -81,71 +81,11 @@ static inline int vfp_exceptbits_to_host(int target_bits)
->>      return host_bits;
->>  }
->>
->> -uint32_t HELPER(vfp_get_fpscr)(CPUARMState *env)
->> -{
->> -    uint32_t i, fpscr;
->> -
->> -    fpscr = env->vfp.xregs[ARM_VFP_FPSCR]
->> -            | (env->vfp.vec_len << 16)
->> -            | (env->vfp.vec_stride << 20);
->> -
->> -    i = get_float_exception_flags(&env->vfp.fp_status);
->> -    i |= get_float_exception_flags(&env->vfp.standard_fp_status);
->> -    /* FZ16 does not generate an input denormal exception.  */
->> -    i |= (get_float_exception_flags(&env->vfp.fp_status_f16)
->> -          & ~float_flag_input_denormal);
->> -    fpscr |= vfp_exceptbits_from_host(i);
->> -
->> -    i = env->vfp.qc[0] | env->vfp.qc[1] | env->vfp.qc[2] | env->vfp.qc[3];
->> -    fpscr |= i ? FPCR_QC : 0;
->> -
->> -    return fpscr;
->> -}
->> -
->> -uint32_t vfp_get_fpscr(CPUARMState *env)
->> -{
->> -    return HELPER(vfp_get_fpscr)(env);
->> -}
->> -
->> -void HELPER(vfp_set_fpscr)(CPUARMState *env, uint32_t val)
->> +static void vfp_set_fpscr_to_host(CPUARMState *env, uint32_t val)
->>  {
->>      int i;
->>      uint32_t changed = env->vfp.xregs[ARM_VFP_FPSCR];
->>
->> -    /* When ARMv8.2-FP16 is not supported, FZ16 is RES0.  */
->> -    if (!cpu_isar_feature(aa64_fp16, env_archcpu(env))) {
->> -        val &= ~FPCR_FZ16;
->> -    }
->> -
->> -    if (arm_feature(env, ARM_FEATURE_M)) {
->> -        /*
->> -         * M profile FPSCR is RES0 for the QC, STRIDE, FZ16, LEN bits
->> -         * and also for the trapped-exception-handling bits IxE.
->> -         */
->> -        val &= 0xf7c0009f;
->> -    }
->> -
->> -    /*
->> -     * We don't implement trapped exception handling, so the
->> -     * trap enable bits, IDE|IXE|UFE|OFE|DZE|IOE are all RAZ/WI (not RES0!)
->> -     *
->> -     * If we exclude the exception flags, IOC|DZC|OFC|UFC|IXC|IDC
->> -     * (which are stored in fp_status), and the other RES0 bits
->> -     * in between, then we clear all of the low 16 bits.
->> -     */
->> -    env->vfp.xregs[ARM_VFP_FPSCR] = val & 0xf7c80000;
->> -    env->vfp.vec_len = (val >> 16) & 7;
->> -    env->vfp.vec_stride = (val >> 20) & 3;
->> -
->> -    /*
->> -     * The bit we set within fpscr_q is arbitrary; the register as a
->> -     * whole being zero/non-zero is what counts.
->> -     */
->> -    env->vfp.qc[0] = val & FPCR_QC;
->> -    env->vfp.qc[1] = 0;
->> -    env->vfp.qc[2] = 0;
->> -    env->vfp.qc[3] = 0;
->> -
->>      changed ^= val;
->>      if (changed & (3 << 22)) {
->>          i = (val >> 22) & 3;
->> @@ -193,6 +133,71 @@ void HELPER(vfp_set_fpscr)(CPUARMState *env, uint32_t val)
->>      set_float_exception_flags(0, &env->vfp.standard_fp_status);
->>  }
->>
->> +uint32_t HELPER(vfp_get_fpscr)(CPUARMState *env)
->> +{
->> +    uint32_t i, fpscr;
->> +
->> +    fpscr = env->vfp.xregs[ARM_VFP_FPSCR]
->> +            | (env->vfp.vec_len << 16)
->> +            | (env->vfp.vec_stride << 20);
->> +
->> +    i = get_float_exception_flags(&env->vfp.fp_status);
->> +    i |= get_float_exception_flags(&env->vfp.standard_fp_status);
->> +    /* FZ16 does not generate an input denormal exception.  */
->> +    i |= (get_float_exception_flags(&env->vfp.fp_status_f16)
->> +          & ~float_flag_input_denormal);
->> +    fpscr |= vfp_exceptbits_from_host(i);
->> +
->> +    i = env->vfp.qc[0] | env->vfp.qc[1] | env->vfp.qc[2] | env->vfp.qc[3];
->> +    fpscr |= i ? FPCR_QC : 0;
->> +
->> +    return fpscr;
->> +}
->> +
->> +uint32_t vfp_get_fpscr(CPUARMState *env)
->> +{
->> +    return HELPER(vfp_get_fpscr)(env);
->> +}
->> +
->> +void HELPER(vfp_set_fpscr)(CPUARMState *env, uint32_t val)
->> +{
->> +    /* When ARMv8.2-FP16 is not supported, FZ16 is RES0.  */
->> +    if (!cpu_isar_feature(aa64_fp16, env_archcpu(env))) {
->> +        val &= ~FPCR_FZ16;
->> +    }
->> +
->> +    if (arm_feature(env, ARM_FEATURE_M)) {
->> +        /*
->> +         * M profile FPSCR is RES0 for the QC, STRIDE, FZ16, LEN bits
->> +         * and also for the trapped-exception-handling bits IxE.
->> +         */
->> +        val &= 0xf7c0009f;
->> +    }
->> +
->> +    /*
->> +     * We don't implement trapped exception handling, so the
->> +     * trap enable bits, IDE|IXE|UFE|OFE|DZE|IOE are all RAZ/WI (not RES0!)
->> +     *
->> +     * If we exclude the exception flags, IOC|DZC|OFC|UFC|IXC|IDC
->> +     * (which are stored in fp_status), and the other RES0 bits
->> +     * in between, then we clear all of the low 16 bits.
->> +     */
->> +    env->vfp.xregs[ARM_VFP_FPSCR] = val & 0xf7c80000;
->> +    env->vfp.vec_len = (val >> 16) & 7;
->> +    env->vfp.vec_stride = (val >> 20) & 3;
->> +
->> +    /*
->> +     * The bit we set within fpscr_q is arbitrary; the register as a
->> +     * whole being zero/non-zero is what counts.
->> +     */
->> +    env->vfp.qc[0] = val & FPCR_QC;
->> +    env->vfp.qc[1] = 0;
->> +    env->vfp.qc[2] = 0;
->> +    env->vfp.qc[3] = 0;
->> +
->> +    vfp_set_fpscr_to_host(env, val);
->> +}
->> +
->>  void vfp_set_fpscr(CPUARMState *env, uint32_t val)
->>  {
->>      HELPER(vfp_set_fpscr)(env, val);
-> 
-> This patch breaks flag settings because at the point where
-> vfp_set_fpscr_to_host is called, the value in
-> env->vfp.xregs[ARM_VFP_FPSCR] has already been changed.
+Lei Sun found while auditing the code than a CPU write would
+trigger a NULL pointer deference.
 
-Oops.
+From UG1085 datasheet [*] AXI writes in this region are ignored
+and generates an External Slave Error (SLVERR).
 
-> A possible fix to that issue to is to save FPCR value when entering
-> the helper and passing it to vfp_set_fpscr_to_host.
+Fix by checking the access is a READ before calling the region
+callback.
 
-OK, thanks,
+[*] https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-=
+ultrascale-trm.pdf
 
-Phil.
+Reported-by: Lei Sun <slei.casper@gmail.com>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+v1: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg01238.html
+---
+ hw/ssi/xilinx_spips.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
+index 8115bb6d46..0c9ccd12bf 100644
+--- a/hw/ssi/xilinx_spips.c
++++ b/hw/ssi/xilinx_spips.c
+@@ -1202,6 +1202,18 @@ static void lqspi_load_cache(void *opaque, hwaddr =
+addr)
+     }
+ }
+=20
++static bool lqspi_accepts(void *opaque, hwaddr addr,
++                          unsigned size, bool is_write,
++                          MemTxAttrs attrs)
++{
++    /*
++     * From UG1085, Chapter 24 (Quad-SPI controllers):
++     * - Writes are ignored
++     * - AXI writes generate an external AXI slave error (SLVERR)
++     */
++    return !is_write;
++}
++
+ static uint64_t
+ lqspi_read(void *opaque, hwaddr addr, unsigned int size)
+ {
+@@ -1225,6 +1237,7 @@ static const MemoryRegionOps lqspi_ops =3D {
+     .read =3D lqspi_read,
+     .endianness =3D DEVICE_NATIVE_ENDIAN,
+     .valid =3D {
++        .accepts =3D lqspi_accepts,
+         .min_access_size =3D 1,
+         .max_access_size =3D 4
+     }
+--=20
+2.20.1
+

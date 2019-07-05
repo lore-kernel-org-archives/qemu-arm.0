@@ -1,286 +1,124 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id p11sm10635504wrm.53.2019.07.05.08.56.12
-        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Fri, 05 Jul 2019 08:56:12 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 33DCC1FF87;
-	Fri,  5 Jul 2019 16:56:12 +0100 (BST)
-References: <20190703102208.10086-1-alex.bennee@linaro.org> <CAFEAcA-rT3B-1GvFY55Ete1cm8f+38AGFyzDcJxQsqM1c=D4sQ@mail.gmail.com>
-User-agent: mu4e 1.3.2; emacs 26.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>
-Subject: Re: [RFC PATCH for semihosting-tests] semihosting tests: add v7m tests
-In-reply-to: <CAFEAcA-rT3B-1GvFY55Ete1cm8f+38AGFyzDcJxQsqM1c=D4sQ@mail.gmail.com>
-Date: Fri, 05 Jul 2019 16:56:12 +0100
-Message-ID: <87sgrkv5k3.fsf@zen.linaroharston>
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3269833wru;
+        Fri, 5 Jul 2019 08:09:32 -0700 (PDT)
+X-Received: by 2002:adf:f792:: with SMTP id q18mr4164226wrp.161.1562339372584;
+        Fri, 05 Jul 2019 08:09:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562339372; cv=none;
+        d=google.com; s=arc-20160816;
+        b=LILUUqWLSethY9wdZSMv8SNiGcDMO3jIxwHM7XUiZBBUm5ez5raCZmaz6BEFtrxJ7Z
+         TN1B8AQNMUOGq3EtGL2xYTZRp57CMLhTCfR8gxlDAUfvZwO/I7Axoc7M2DmspKWT4qMU
+         Bf86uca0E1etZMB/nbPIxnQGV9ZNS+ty2rauA+Nck05bRDogbWjaZEAqwb9bKK3ejRB4
+         WEZ1ffOafHezo0nTvC44CXesA3U0HjMKELBpU5MM+BZ6t1+jD8OJJTV1iu8R/af+gZhd
+         WavnFNFzZYNnsDZE2h3GElpjcwU/1YBmY/+QFeZKjZC4Cdcq2+TA9Pt7hlVX2t54OPAa
+         eNCw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=q1aEPuqPPejoFOCRSaaYleUZYO2DAIq52Qc9x7onAlw=;
+        b=f5+J39L87azgvV5YGfXmIW5lMxHvhpa/Em/zJoTMd9kGu3MwG29GEwSOR1EOeU9iMH
+         smLDOThdXq6TAPgEk2uLVpBc6H8mbcAp44Cr9TB09x5t4xq8+ZyJobePo5duZyENplnG
+         gdVMwSgXLdh5CfZw1vi/cTLaMbbxZ4D6VcIWjhYDD6q2DKwIn7sVr7dwOAxAV2XEDdy9
+         uQtxKcobVrO+T9sPFMbY5VsPjD3wK1Vi+qQSonbOwv2sagPTgZ5MyINbyydlMY84P7ur
+         I13We0lofEfCr77xm26g2RyrJO0ccr8HACSZwmH0N5RYxwb3tLWXAfjVBKIPVYCdFWuX
+         6swA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PT15IhLg;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id a3sor5296423wmb.7.2019.07.05.08.09.32
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Fri, 05 Jul 2019 08:09:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=PT15IhLg;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=q1aEPuqPPejoFOCRSaaYleUZYO2DAIq52Qc9x7onAlw=;
+        b=PT15IhLg7KfIslfOI2RfmmzLc/GIGvsk05Q+0MoLPgmc3/KVr5vu10CPLdvgZqJKj3
+         F5jY6AAe3k5rt5UvZSRbHBAf942MMZNXIuh6dT+IfES8K6HhXKuLTDmvZoXpTh7mtn2m
+         QiszJ7kvD9aUJFEEzqkfEILTz6o/2c1QzjsOVnP6YR/fzJ5Jy/w5DiXtsV3MU8BhHTqM
+         5FZ6tFeDWgiIZCgeNDhiacLK5+E34fR0ximqezzRY7tSCSZohZvi6r43omrkd2HWl68+
+         fG2Jok+A2EjBgwJO4EdhKTf6XrLyyslMePYvGyA9HpQ/ZATqzs5gDDg/EH1QYrEspC1A
+         5zHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=q1aEPuqPPejoFOCRSaaYleUZYO2DAIq52Qc9x7onAlw=;
+        b=t+XSXvWqsgSGoiwaUz5QTB5bQBiV+kxW9Ou21aj1xj61MFHcWfI+EUTeQ0PhvgfeRD
+         5nEOnQExF9FNTiexDh6qfCxQzKSU6zDO2m7bEybAxyb0mCmIF27U3RuoF5qjS/Wwj7AT
+         2pttQzWfhq64/k+DEqRmx6178NrngfFw6gH1H+0xefV+Gx+SylokDlOoM24KkgOa4i6W
+         Esbc0Nj4DGlqv3jJ19IXhWKdq92K5q59y9DiAuyt4xTL/MOJEvGEtyMIcSAdTKKEeNe0
+         U80cPlGzUFV4qpt9SLZHPGxQ4V5/Tn4qiWbjwcCbIbd+6jFUwa7FBvCnIIQ428KeTCng
+         72BQ==
+X-Gm-Message-State: APjAAAXoWrJwYPOjPuPTD0DKpH6965Cr0l6GHd0sMWVZpI4oJs2OBG7q
+	419++wXQheLTigMVxNmNQHVv/eAq0ZUptujD
+X-Google-Smtp-Source: APXvYqyfcgEo8qNPzdgoW5dW17I45lvAhBzs+f9ZeziSI56Qqib4qhglypEIfJsmXakJ57RRx8gaVA==
+X-Received: by 2002:a7b:c148:: with SMTP id z8mr3938218wmi.142.1562339372193;
+        Fri, 05 Jul 2019 08:09:32 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [10.21.14.234] (host218-183-static.63-88-b.business.telecomitalia.it. [88.63.183.218])
+        by smtp.gmail.com with ESMTPSA id z6sm6922508wrw.2.2019.07.05.08.09.31
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 05 Jul 2019 08:09:31 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v1 1/4] target/arm: handle M-profile
+ semihosting at translate time
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20190703155244.28166-1-alex.bennee@linaro.org>
+ <20190703155244.28166-2-alex.bennee@linaro.org>
+ <927219a5-a56d-bbbe-26ed-ffb8be12f006@linaro.org>
+ <87ef36w14t.fsf@zen.linaroharston>
+ <e7dcd75f-8897-1939-caf6-c879371a2f84@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <42b9274b-e389-4e2f-2ab5-e5601180f3b1@linaro.org>
+Date: Fri, 5 Jul 2019 17:09:29 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.1
 MIME-Version: 1.0
+In-Reply-To: <e7dcd75f-8897-1939-caf6-c879371a2f84@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: wN7rm3KnKXwS
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: n3loYpUuN8eN
 
-
-Peter Maydell <peter.maydell@linaro.org> writes:
-
-> On Wed, 3 Jul 2019 at 11:22, Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
-ote:
+On 7/4/19 12:25 PM, Philippe Mathieu-Daudé wrote:
+> 
+> 
+> On 7/4/19 12:21 PM, Alex Bennée wrote:
 >>
->> M-profile has yet another way of triggering semihosting calls using
->> the BKPT instruction. To support this we need to add a M-profile setup
->> so we use the nice and simple microbit model which has a Cortex-M0 in
->> it.
+>> Richard Henderson <richard.henderson@linaro.org> writes:
 >>
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> ---
->>  Makefile         | 24 ++++++++++++++++++++---
->>  microbit.lds     | 32 ++++++++++++++++++++++++++++++
->>  semicall.S       |  7 ++++++-
->>  start-microbit.S | 51 ++++++++++++++++++++++++++++++++++++++++++++++++
->>  4 files changed, 110 insertions(+), 4 deletions(-)
->>  create mode 100644 microbit.lds
->>  create mode 100644 start-microbit.S
->
-> Good to have this semihosting mode in the test suite, thanks.
->
->> diff --git a/Makefile b/Makefile
->> index 1fea97e..9f04cdd 100644
->> --- a/Makefile
->> +++ b/Makefile
->> @@ -40,6 +40,7 @@
+>>> On 7/3/19 5:52 PM, Alex Bennée wrote:
+>>>> +static inline void gen_thumb_bkpt(DisasContext *s, int imm8)
+>>>> +{
+>>>> +    if (arm_dc_feature(s, ARM_FEATURE_M) &&
+>>>> +        semihosting_enabled() &&
+>>>> +#ifndef CONFIG_USER_ONLY
+>>>> +        s->current_el != 0 &&
+>>>> +#endif
+>>>> +        (imm8 == 0xab)) {
+>>>
+>>> Extra parenthesis.
 >>
->>  A32GCC :=3D arm-linux-gnueabihf-gcc -marm
->>  T32GCC :=3D arm-linux-gnueabihf-gcc -mthumb
->> +V7MGCC :=3D arm-none-eabi-gcc -mcpu=3Dcortex-m0 -mfloat-abi=3Dsoft
->>  A64GCC :=3D aarch64-linux-gnu-gcc
->>
->>  A32LD :=3D arm-linux-gnueabihf-ld
->> @@ -47,7 +48,9 @@ A32LD :=3D arm-linux-gnueabihf-ld
->>  A32LINKOPTS :=3D -nostdlib -lgcc -Xlinker --script=3Dbaremetal.lds -Xli=
-nker --build-id=3Dnone
->>  A64LINKOPTS :=3D -nostdlib -lgcc -Xlinker --script=3Dbaremetal-a64.lds =
--Xlinker --build-id=3Dnone
->>
->> -QEMU_BUILDDIR :=3D ~/linaro/qemu-from-laptop/qemu/build/x86
->> +AV7MLINKOPTS :=3D -nostdlib -lgcc -Xlinker --script=3Dmicrobit.lds -Xli=
-nker --build-id=3Dnone
->> +
->> +QEMU_BUILDDIR :=3D ~/lsrc/qemu.git/builds/arm.all
->
-> My local devel hack for this is obviously more important
-> to have in the git repo than yours :-)
->
->>  ifdef GDBPORT
->>  SYSGDB :=3D -gdb tcp::$(GDBPORT)
->> @@ -60,11 +63,15 @@ QEMU_SYSTEM_ARM =3D $(QEMU_BUILDDIR)/arm-softmmu/qem=
-u-system-arm $(SYSGDB)
->>  QEMU_SYSTEM_AARCH64 =3D $(QEMU_BUILDDIR)/aarch64-softmmu/qemu-system-aa=
-rch64 $(SYSGDB)
->>
->>  all: usertest-a32 usertest-a64 usertest-t32 \
->> -       systest-a32.axf systest-t32.axf systest-a64.axf
->> +       systest-a32.axf systest-t32.axf \
->> +       systest-a32-hlt.axf systest-t32-hlt.axf \
->> +       systest-t32-bkpt.axf \
->> +       systest-a64.axf
->
-> (The omission of the -hlt axfs from this target is a separate
-> bug, strictly speaking, but I don't think we need to be too picky
-> about this kind of thing given this is just a test suite.)
->
->>  usertest-srcs =3D usertest.c semihosting.c semicall.S printf/printf.c
->>
->>  systest-srcs =3D start.S string.c $(usertest-srcs)
->> +microbit-systest-srcs =3D start-microbit.S string.c $(usertest-srcs)
->>
->>  usertest-a32: $(usertest-srcs)
->>         $(A32GCC) --static -o $@ $^
->> @@ -93,6 +100,9 @@ systest-a32-hlt.axf: $(systest-srcs)
->>  systest-t32-hlt.axf: $(systest-srcs)
->>         $(T32GCC) -DUSE_HLT -o $@ $^ $(A32LINKOPTS)
->>
->> +systest-t32-bkpt.axf: $(microbit-systest-srcs)
->> +       $(V7MGCC) -DUSE_BKPT -o $@ $^ $(AV7MLINKOPTS)
->> +
->>  systest-a64.axf: $(systest-srcs)
->>         $(A64GCC) -nostdlib -o $@ $^ $(A64LINKOPTS)
->>
->> @@ -123,6 +133,9 @@ run-systest-a32-hlt: systest-a32-hlt.axf
->>  run-systest-t32-hlt: systest-t32-hlt.axf
->>         $(QEMU_SYSTEM_ARM) -M virt --display none --semihosting -kernel =
-$^
->>
->> +run-systest-t32-bkpt: systest-t32-bkpt.axf
->> +       $(QEMU_SYSTEM_ARM) -M microbit --display none --semihosting -ker=
-nel $^
->> +
->>  run-systest-a64: systest-a64.axf
->>         $(QEMU_SYSTEM_AARCH64) -M virt --display none --semihosting \
->>                 -cpu cortex-a57 -kernel $^
->> @@ -130,4 +143,9 @@ run-systest-a64: systest-a64.axf
->>  run: run-usertest-a32 run-usertest-t32 run-usertest-a64 \
->>         run-systest-a32 run-systest-t32 run-systest-a64 \
->>         run-usertest-a32-hlt run-usertest-t32-hlt \
->> -       run-systest-a32-hlt run-systest-t32-hlt
->> +       run-systest-a32-hlt run-systest-t32-hlt \
->> +       run-systest-t32-bkpt
->> +
->> +run-alt: run-usertest-a32 run-usertest-t32 run-usertest-a64 \
->> +       run-systest-a64 \
->> +       run-usertest-a32-hlt run-usertest-t32-hlt \
->
-> What's this target for, and why does it end the makefile with a '\' ?
+>> The wrapping on imm8 == 0xab? Do you want that cleaned up on the other
+>> patches as well?
+> 
+> I understood this comment for "(s->current_el != 0) &&"
+> 
 
-Ignore that - it was a alternative run while I was working around the
-tests that wouldn't build.
-
->
->> diff --git a/microbit.lds b/microbit.lds
->> new file mode 100644
->> index 0000000..24840a3
->> --- /dev/null
->> +++ b/microbit.lds
->> @@ -0,0 +1,32 @@
->> +/*
->> + * microbit.lds : simple linker script for baremetal ARM-M test cases
->> + *
->> + * Copyright (C) 2019 Linaro Limited. All rights reserved.
->> + *
->> + * Memory layout is for the BBC Microbit board which puts RAM at 0x2000=
-0000
->> + */
->
-> I know this is just copied from the baremetal.lds, but we
-> really should have a license statement in every source file
-> (and I should fix the ones which don't have a license at the moment).
->
->> +
->> +RAMSTART =3D 0x20000000;
->> +STACKTOP =3D 0x20004000;
->
-> That puts stacktop really close to the start of the heap --
-> isn't there more space to give ourselves some safety margin?
-
-We could - do we actually use any heap in this - I thought it was all
-static .data?
-
->
->> +
->> +ENTRY(exc_reset_thumb)
->> +
->> +SECTIONS
->> +{
->> +    . =3D 0x0;
->> +    .text : {
->> +        *(.text)
->> +    }
->> +    .data : {
->> +        *(.data)
->> +    }
->> +    .rodata : {
->> +        *(.rodata)
->> +    }
->> +    .bss : {
->> +        *(.bss)
->> +    }
-
-I wonder if there are runes for setting STACKTOP as end of .bss +
-something? I guess it would help if we could tell the linker what the
-top of microbit memory was.
-
->> +    /DISCARD/ : {
->> +        *(.ARM.attributes)
->> +    }
->> +}
->> diff --git a/semicall.S b/semicall.S
->> index 1418a42..e6316c4 100644
->> --- a/semicall.S
->> +++ b/semicall.S
->> @@ -51,8 +51,13 @@ __semi_call:
->>  #else
->>          /* traditional svc */
->>  #if defined(__thumb__)
->> -        /* NB: assumes not M-profile (which is BKPT) */
->> +#if defined(USE_BKPT)
->> +        /* M-profile T32 */
->> +        bkpt 0xab
->> +#else
->> +        /* A+R Profile T32 */
->>          svc 0xab
->> +#endif
->>  #else
->>          svc 0x123456
->>  #endif
->> diff --git a/start-microbit.S b/start-microbit.S
->> new file mode 100644
->> index 0000000..db1f06e
->> --- /dev/null
->> +++ b/start-microbit.S
->> @@ -0,0 +1,51 @@
->> +/*
->> + * start-microbit.S - assembly code for startup on baremetal M-profile =
-tests
->> + *
->> + * Copyright (c) 2015 Linaro Limited
->> + * All rights reserved.
->> + *
->> + * Redistribution and use in source and binary forms, with or without
->> + * modification, are permitted provided that the following conditions
->> + * are met:
->> + * 1. Redistributions of source code must retain the above copyright
->> + *    notice, this list of conditions and the following disclaimer.
->> + * 2. Redistributions in binary form must reproduce the above copyright
->> + *    notice, this list of conditions and the following disclaimer in
->> + *    the documentation and/or other materials provided with the
->> + *    distribution.
->> + * 3. Neither the name of Linaro Limited nor the names of its
->> + *    contributors may be used to endorse or promote products derived
->> + *    from this software without specific prior written permission.
->> + */
->> +
->> +        .syntax unified
->> +        .cpu cortex-m0
->> +        .thumb
->> +
->> +        .text
->> +
->> +vector_table:
->> +        .word STACKTOP          /* 0. SP_main */
->> +        .word exc_reset_thumb   /* 1. Reset */
->> +        .word 0                 /* 2. NMI */
->> +        .word 0                 /* 3. HardFault */
->> +        .rept 7
->> +        .word 0                 /* 4-10. Reserved */
->> +        .endr
->> +        .word 0                 /* 11. SVCall */
->> +        .word 0                 /* 12. Reserved */
->> +        .word 0                 /* 13. Reserved */
->> +        .word 0                 /* 14. PendSV */
->> +        .word 0                 /* 15. SysTick */
->> +        .rept 32
->> +        .word 0                 /* 16-47. External Interrupts */
->> +        .endr
->> +
->> +exc_reset:
->> +.equ exc_reset_thumb, exc_reset + 1
->> +.global exc_reset_thumb
->
-> There must be a better way than this to declare an asm label
-> for a thumb entrypoint...
-
-That may not be needed any more - I'll drop it and see.
-
->
->> +
->> +        bl main
->> +        bl semi_exit
->> +        # not reached
->> +1:      b 1b
->> --
->
-> thanks
-> -- PMM
+No, I meant imm8 == 0xab.  And, sure, cleaning the other patches would be good.
 
 
---
-Alex Benn=C3=A9e
+r~

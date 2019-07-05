@@ -1,100 +1,79 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp2898606wru;
-        Fri, 5 Jul 2019 01:52:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyG8QSa7HnlY4Z3/0IB12Hwtig5+73XhS4Dmuh22rwR20YMINHcmRHc8kxot1iq20903GLS
-X-Received: by 2002:a17:906:63c2:: with SMTP id u2mr2372625ejk.268.1562316746392;
-        Fri, 05 Jul 2019 01:52:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562316746; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3269568wru;
+        Fri, 5 Jul 2019 08:09:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxZ+8ZrWrgKe5zf8N3rfpXh4WgcpKYh9f2qx4AJq8XgoxDpusKZb4A5U9VIg/bK+mMO8keA
+X-Received: by 2002:a50:976d:: with SMTP id d42mr5092331edb.77.1562339359735;
+        Fri, 05 Jul 2019 08:09:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562339359; cv=none;
         d=google.com; s=arc-20160816;
-        b=B7v03DXiGMAhDKeHs7nCD4sQfUayNBv0+ILw9TVuzj0srp2U/MYoHUkZeyzFRz/tNE
-         /eZ2asjTBdoy786j65MP6Yq6+ADPw5qJkf3A27XqOLkuAF6K/91W6hqxM+SGKFGM1tV9
-         bSpASNkteKLUp1XRffUu+GDPF6EsjpkoQQPQdrZchBy4TeygofcHTnEaSNEXTX+KHNUg
-         g0W8CyuH9ZW+BYMw8qlvbc87k2hZADuy/0dMBwVTtO4CAlbkOD4axdglRLeJGgBXMlzY
-         NTjpx9b/WSmazNwNI6w8mR+qb66MEWG7OULpT66OXr+B0CboZn+0RdsrTzacWKyfwUIf
-         mEpQ==
+        b=TwAr0L6AOE6dsW8wnU9p2ElI/VcneQV1pDRP4tP/y+6fwOmlS7B2s+e0qrGLoS/7PY
+         8s/q9C/y2GUF9HK97nOG3RbwzMChS/gmzREpdDQDBbBI51FzqXRFpXw2xSolF0/05448
+         l4fMGl0ENYwRx3/z8CyJhAOxpvD5RUaWp6vIH6LqHK6SNvYfhD3vJxnuINEeeLq4hBdK
+         SJ+kx3UyoFLTTvO2v/kKFGSO34Q00DvdIq40FBX+86G6IvCap/zj4A+xGkhd+cvyxik2
+         t2qKAouOwgv/BfaxQkbIoRSvU4kJQXl38jAoWBZ1aPwh4g7Hbz8s+dUsabK0g4v7c+KL
+         QHHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=mk4ycAxdx0O0XvVyW6e66hkGhmNaiymjWNoGqwtdors=;
-        b=p2sm8QOh8I1SkIO8HFSJqXY+7uc3MdIvbakoGp2sioiuP9mkJmT1xFR3KdUKiuxJSa
-         mirrxePgYkBpLNmoQb9jD729EA+cyQGkPanK3KEepOMXb95qVbyK5rqcajk1L8+yyTEa
-         9IWMbFoPzLW4kl1m7ADE9bylEWUwPCzldQPyegzLeOX7qE+EjZxvHLXunMszNF+ZQFBn
-         jxBGpxut8HF+dKorp6q4R16Nibf9lSHDmLGM+Q4+yZdObjpANOIBP9PCrFggpJBkeP1o
-         baEeLia652vLeZF8/fch6yrqrMrPTF/Ci3++bbvRoS6eAgyT0oZEnCSk9W61xJq+YpvH
-         uD7A==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=rnYIfY/pudrmDbJ2ZGOy7ARaHA6MfWXB7BGmiTFEAEs=;
+        b=ZH9UizLCPIA6qEjewJYtaHpbxBYkS/sS9CXciB54fTzn4Sh9qcxjy6n7lRohp2ECj9
+         5BS42Z6kQFxFXc3Q9WvluEiiX1NUQgsyDHXU0RkWw7zMjIOzEQlpfmfpF2GK5ev8Z0mC
+         oSuFeWXipEAo5gPe9h8qYOR2fjjc7FiRDdx5Yfe9A+b0z58HDzVJVA4Loba0e5P6aSG5
+         ClwkQb9n1X0fs82ZIDX0RXaz6hSmkeTO0O+CKr/wUOq7a3pkorNvgt2rMcOV3/tJ8MrJ
+         2pT7JXkiYoSK+7otKHCPRIaZpEILGw7QJ7ZpWlMHCSNfMylTWrdLJslg/TSd9MfCtK/8
+         ELsA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pv18si5279472ejb.115.2019.07.05.01.52.26
+        by mx.google.com with ESMTPS id 30si7140654edu.170.2019.07.05.08.09.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Jul 2019 01:52:26 -0700 (PDT)
+        Fri, 05 Jul 2019 08:09:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50664 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54054 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hjJxB-0001Bn-Hf
-	for alex.bennee@linaro.org; Fri, 05 Jul 2019 04:52:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60947)
+	id 1hjPpt-0001cq-HT
+	for alex.bennee@linaro.org; Fri, 05 Jul 2019 11:09:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57711)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hjJwk-00018M-9L
- for qemu-arm@nongnu.org; Fri, 05 Jul 2019 04:51:59 -0400
+ (envelope-from <philmd@redhat.com>) id 1hjPpf-0001ZU-EJ
+ for qemu-arm@nongnu.org; Fri, 05 Jul 2019 11:09:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hjJwj-0004aU-5X
- for qemu-arm@nongnu.org; Fri, 05 Jul 2019 04:51:58 -0400
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:33996)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hjJwi-0004Zv-VQ
- for qemu-arm@nongnu.org; Fri, 05 Jul 2019 04:51:57 -0400
-Received: by mail-wm1-f66.google.com with SMTP id w9so6975055wmd.1
- for <qemu-arm@nongnu.org>; Fri, 05 Jul 2019 01:51:56 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=mk4ycAxdx0O0XvVyW6e66hkGhmNaiymjWNoGqwtdors=;
- b=mQbcr9TAB8Bv5ijQXOJL1DLWfXEoa6XPipNDvE6vLbdDD1sH2+1Qk+5SnExarGY88b
- fquHEcbspaZtRz0u/gkeMOrm5IgprGNt4VQdYe1R/OZAG2oLqyS+sxCY3Wiv2beOYrd8
- 9GajEWSiV4F7L2yRwPq6u5xAtEcALLFwKNYHTa5DDBPBQWbWf3UWsIHr7j2clK51BZ5/
- XHmLVxRBekFnrjZkqPlA+VP5CVBRJpXWt9dzo/fBFUWNTpLfX+YXMSEs1ybWkYQJjLJd
- DiWnFIk1h7ZFEtpYBejRN2MYEGWb3MwCMTIRyx51OSje1J94KUqYSHtM+B2320qFVCfj
- kzWQ==
-X-Gm-Message-State: APjAAAVvsv80PkEvfuwa0nxQN0HZuFK0tcZIOaBYT6psR9bpm8bTsvfj
- Pf1EmFBJSF6jUyvZr8EFipgusA==
-X-Received: by 2002:a1c:9696:: with SMTP id y144mr2398569wmd.73.1562316715449; 
- Fri, 05 Jul 2019 01:51:55 -0700 (PDT)
-Received: from [192.168.1.38] (56.red-88-18-140.staticip.rima-tde.net.
- [88.18.140.56])
- by smtp.gmail.com with ESMTPSA id x20sm7612123wmc.1.2019.07.05.01.51.54
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Fri, 05 Jul 2019 01:51:54 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20190704142004.7150-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <3bb189fa-8e47-acb0-89a2-9b5121c2269f@redhat.com>
-Date: Fri, 5 Jul 2019 10:51:54 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ (envelope-from <philmd@redhat.com>) id 1hjPpc-0008Ep-BG
+ for qemu-arm@nongnu.org; Fri, 05 Jul 2019 11:09:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42522)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1hjPpc-00086I-5U; Fri, 05 Jul 2019 11:09:00 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 851CE30C1CC1;
+ Fri,  5 Jul 2019 15:08:57 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-45.brq.redhat.com [10.40.204.45])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0C0BF18000;
+ Fri,  5 Jul 2019 15:08:52 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri,  5 Jul 2019 17:08:48 +0200
+Message-Id: <20190705150850.4967-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190704142004.7150-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.46]); Fri, 05 Jul 2019 15:08:58 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.128.66
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-4.1] hw/arm/sbsa-ref: Remove
- unnecessary check for secure_sysmem == NULL
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v3 0/2] hw/ssi/xilinx_spips: Avoid NULL pointer
+ deference
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,72 +85,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- Leif Lindholm <leif.lindholm@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Prasad J Pandit <ppandit@redhat.com>, Lei Sun <slei.casper@gmail.com>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GYVtbWZ3dYsa
+X-TUID: xghagIImb1H7
 
-On 7/4/19 4:20 PM, Peter Maydell wrote:
-> In the virt machine, we support TrustZone being either present or
-> absent, and so the code must deal with the secure_sysmem pointer
-> possibly being NULL. In the sbsa-ref machine, TrustZone is always
-> present, but some code and comments copied from virt still treat
-> it as possibly not being present.
-> 
-> This causes Coverity to complain (CID 1407287) that we check
-> secure_sysmem for being NULL after an unconditional dereference.
-> Simplify the code so that instead of initializing the variable
-> to NULL, unconditionally assigning it, and then testing it for NULL,
-> we just initialize it correctly in the variable declaration and
-> then assume it to be non-NULL. We also delete a comment which
-> only applied to the non-TrustZone config.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> Not a bug as such, but we should put it in for 4.1 to
-> keep Coverity happy.
-> ---
->  hw/arm/sbsa-ref.c | 8 ++------
->  1 file changed, 2 insertions(+), 6 deletions(-)
-> 
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index ee53f0ff60d..6f315b79445 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -254,8 +254,6 @@ static void sbsa_flash_map(SBSAMachineState *sms,
->       * sysmem is the system memory space. secure_sysmem is the secure view
->       * of the system, and the first flash device should be made visible only
->       * there. The second flash device is visible to both secure and nonsecure.
-> -     * If sysmem == secure_sysmem this means there is no separate Secure
-> -     * address space and both flash devices are generally visible.
->       */
->      hwaddr flashsize = sbsa_ref_memmap[SBSA_FLASH].size / 2;
->      hwaddr flashbase = sbsa_ref_memmap[SBSA_FLASH].base;
-> @@ -588,7 +586,7 @@ static void sbsa_ref_init(MachineState *machine)
->      SBSAMachineState *sms = SBSA_MACHINE(machine);
->      MachineClass *mc = MACHINE_GET_CLASS(machine);
->      MemoryRegion *sysmem = get_system_memory();
-> -    MemoryRegion *secure_sysmem = NULL;
-> +    MemoryRegion *secure_sysmem = g_new(MemoryRegion, 1);
->      MemoryRegion *ram = g_new(MemoryRegion, 1);
->      bool firmware_loaded;
->      const CPUArchIdList *possible_cpus;
-> @@ -612,13 +610,11 @@ static void sbsa_ref_init(MachineState *machine)
->       * containing the system memory at low priority; any secure-only
->       * devices go in at higher priority and take precedence.
->       */
-> -    secure_sysmem = g_new(MemoryRegion, 1);
->      memory_region_init(secure_sysmem, OBJECT(machine), "secure-memory",
->                         UINT64_MAX);
->      memory_region_add_subregion_overlap(secure_sysmem, 0, sysmem, -1);
->  
-> -    firmware_loaded = sbsa_firmware_init(sms, sysmem,
-> -                                         secure_sysmem ?: sysmem);
-> +    firmware_loaded = sbsa_firmware_init(sms, sysmem, secure_sysmem);
->  
->      if (machine->kernel_filename && firmware_loaded) {
->          error_report("sbsa-ref: No fw_cfg device on this machine, "
-> 
+v1: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg01238.html
+v2: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg01586.html
+v3: Return MEMTX_ERROR instead of MEMTX_DECODE_ERROR
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Philippe Mathieu-Daud=C3=A9 (2):
+  hw/ssi/xilinx_spips: Convert lqspi_read() to read_with_attrs
+  hw/ssi/xilinx_spips: Avoid AXI writes to the LQSPI linear memory
+
+ hw/ssi/xilinx_spips.c | 36 ++++++++++++++++++++++++++----------
+ 1 file changed, 26 insertions(+), 10 deletions(-)
+
+--=20
+2.20.1
+

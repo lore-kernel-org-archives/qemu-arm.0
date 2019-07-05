@@ -1,117 +1,129 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3125971wru;
-        Fri, 5 Jul 2019 05:45:19 -0700 (PDT)
-X-Received: by 2002:a1c:67c2:: with SMTP id b185mr3314433wmc.98.1562330719706;
-        Fri, 05 Jul 2019 05:45:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562330719; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3215041wru;
+        Fri, 5 Jul 2019 07:10:29 -0700 (PDT)
+X-Received: by 2002:a02:a703:: with SMTP id k3mr4808002jam.12.1562335829402;
+        Fri, 05 Jul 2019 07:10:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562335829; cv=none;
         d=google.com; s=arc-20160816;
-        b=hkwZE1zmV+hVWm6tfXb3jFH8U2Dw1r9ickg1+PFX8/464GCWQoHWdTpTwApjOzm+uj
-         jEpjx98peBiHRdcwhkntHgJfjkrlF/3HQLeXxcBv8ZW7aokarUjqFu1bRQCkzzVNlkSz
-         TtHWvt9bhziNvG4tAIM3eUqVg602Fs+vOgSIBw+ElLDKZ54wc6E1LaiSQKC0L9aHdL5g
-         5u3tWbb/D2h6f3xnQjICCVsSUsCLmDwZxtimJ2MVxF/HeogpaYs5UxxpiekC4BcLAJqb
-         t+eH1SQuzHOquH9M6WDQzwD0mJ6ZgA6Zm983U852tmj3g2x8taR13cwR4earaGrvdim+
-         bYBw==
+        b=FzChx5tGiYDtEDPKLls/BnmQdoBwFXnTWG4KTzG5KR8a26uQbrX0MVYQQ1YdMp9Bqq
+         4PpLjKxV2acUG33YGd+ivnd9JkhGcH0P9fHpLFxCB9vMEovuJg6/6sqEUlF2mY8RPhDY
+         uKp4sHXmjkbShurA5jwLKntRl707NEhfGlVFkGtNm7bUi+cZ1+D1eb4Ny5N+YG0w9MYi
+         qNDeppRzyXqYfsudsCiqOpObxvQqOccRDGEe8WbW5JWC6eogDlqhaw1xY8UGzPj07Vhs
+         UWTKqEbAkTcnn/gEvTtYBmrN+hG1GZobeUMmqScwg9doGaXEljBckRLx7bpBTMYbJTZE
+         fKrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
-        bh=5ZM4aqF6lfbJWO2ZTt7CeV3eGrZxp5R0ZeCOE1k4Nio=;
-        b=wwNHs7OSpyT6XnwFJKSADUu7qhOOHGthmxd5AY45N/QDDx2PxISd6zCgOMyeXjmOZ/
-         SyDYnPHSBx2PKrEA81+bfMyeeZbqZ4pLB2KxTmkKNBsDXDBqcmanX8wwoEIjgopMaAlF
-         opgRZ3YvuTTY7txQ70+s/SBYpVu6xtslPec2xstnAy51h0qyQYCXXCAwGA85cdNyLwDs
-         GBd4UPpktUUY00w/9xwWmTrzKSxcMGckIotCkN9chgBe2As9OMo5POIkQruPJhknRMFz
-         mSZSNg+zDhGL5Oybfvj0geUWUKZlyymEiLBsRNH5kIDH3F2HtiHH9JgUO8z/LH1/gB+c
-         6mwQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=jc8T6B1sYMgE8KUu3r8iCtOxhFzftBC0DO27E9t5POg=;
+        b=q68YAxRHLav9IVlvr0QxXOirKVWTGH0A2qChxTlrP085IjfNk4zzJTm6bFD97fG5bF
+         9oQVYljne8eI+074oKEGi3HA+p1p/a5Bb65uyCSKrSZA96/9TqTW5l3veFhNFtmiP8mp
+         8vjfAzdhRmKXIsu5AZ9wPyMXLjGH80iMtzWQlmI7se+ds4yhGx2Q9LF+DjFxDJGUIsEP
+         nq4uEIkwmrXB4tofB+V/sqMUntVDPfhmys/UC45ryB0DdadD7HF9m4VO2Hqm9LTY10DE
+         qxAFeM8UKuOomtW+oi19h3lSesqjx2eLAZNtSgwfwUux1VBlDILJv8anfrmHXg+gLNNn
+         JPaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tyL3hlik;
+       spf=pass (google.com: domain of laurent.desnogues@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=laurent.desnogues@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <laurent.desnogues@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id d18sor3316667wrn.25.2019.07.05.05.45.19
-        for <alex.bennee@linaro.org>
+        by mx.google.com with SMTPS id 197sor20157473jaa.13.2019.07.05.07.10.29
         (Google Transport Security);
-        Fri, 05 Jul 2019 05:45:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Fri, 05 Jul 2019 07:10:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of laurent.desnogues@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tyL3hlik;
+       spf=pass (google.com: domain of laurent.desnogues@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=laurent.desnogues@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=jc8T6B1sYMgE8KUu3r8iCtOxhFzftBC0DO27E9t5POg=;
+        b=tyL3hlikgB7h11DqJBXwuvH1+JMnWTh2xDiNBC/IEwBdd1G6UxmyHfDcWRclCr4OPL
+         WGlaPixlePBhQzKgbBNrMvj+a3PtJlAvyOisdABzL1cqS+ZjhhJwsEHMipfeAUzH+6fW
+         EpIj8DZL74u/8uKgoI3ZKhpQrdk1YBZwe4sba8xlIkOxiz4phnwIp6nTSyM55dRV9W2Q
+         Wv2svVhyMFggrQ0a9BLg9zVx8BJ07DQ48muqSckgK0s+vmqjK0g+Ndp29yBQ1t8s/2hl
+         0O7HiiMSABZLCveKMDOq+0mNSd0voyx+MdyPd6MEMaY/vAu31+5YtK7Bp7yrfqcnehhU
+         UOiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=5ZM4aqF6lfbJWO2ZTt7CeV3eGrZxp5R0ZeCOE1k4Nio=;
-        b=sRM5xuNzgYi9A2x6oXb7uMSEKWttlFMW7QV1gyWX5Q0/TxqUrpZwE1D4CeT3JYZTC4
-         OX/qXUAyLiU1PCDCBZAr5msocAKRnIKYOEcGASR5h5ZAHKNZDT93RrDfiMqY1/BcAry6
-         76Cgy9K5CWRnnAGBqDnTiDRlS8F0EtU8+xjEMxmNN3gbrehIg4Ub5GA94mkP3MoymbZ0
-         g5UNYD4GYs4QdZMhOn56Cs2O0W9AXjaATsAMh65V5jt8Lw6e9lzaas1ONaGY+qjYBeFl
-         SQIf7V3ADncdRFZ5Lko6RbbFUrhq2l/UalrEX7bJUVSp+6kMX+JCrl53ppSMQ5ZvF/v0
-         2YvA==
-X-Gm-Message-State: APjAAAXgkOrSWdLBXs2wBsMy+4hx921c+1+FPMVDSI0R3x073a/w9IdB
-	EIPmvIBOhBwaFng/gXi7aCAlqqFoFNc=
-X-Google-Smtp-Source: APXvYqyWhluM5dF20uilV4CjoWUpOLf+gqGOkSsgMMl0GzNG8onBYAhbrOc+XovPnUV5/nK09PEKYQ==
-X-Received: by 2002:adf:e708:: with SMTP id c8mr3031565wrm.25.1562330719332;
-        Fri, 05 Jul 2019 05:45:19 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.38] (56.red-88-18-140.staticip.rima-tde.net. [88.18.140.56])
-        by smtp.gmail.com with ESMTPSA id x83sm8987408wmb.42.2019.07.05.05.45.18
-        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Fri, 05 Jul 2019 05:45:18 -0700 (PDT)
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=jc8T6B1sYMgE8KUu3r8iCtOxhFzftBC0DO27E9t5POg=;
+        b=W4cUmxhgr6GwahKGOp3pRhxTZviwErMqaCqekGX19O/mQj8dht0yJmH+is12eqa8P9
+         hgfBqUDs/X4EhUBVmk+TIGv7M5wgyoJwjmRB0UDx+3MlHfMYCFDcwAsIt6r+5Fyw+lVy
+         zV9dVEmFhfEIcuqYDev2daOW1l3FaOJM1QJ6LukDIXJWFXwjdOKRsTg9iE33T0SB2baN
+         N4fyYppodXWMasy7gOEIzT3MMRvqFJDbyBIKikcedrZKhucIm3xoVxEOOcY3VhpIyNOE
+         M4zag14kFEDf0eyoW+EYlYufU+DxrTKObPFyrnpd7UlcU+0UZid4BBoUZ3r/q0nk1Aoo
+         Z1cQ==
+X-Gm-Message-State: APjAAAXqYu//8FM45b5JkXLON2mQxYioJRE+W4jdcNwtUxGMgXnablqK
+	54Rp0HjkeDe/vXfMSG7VvrAfWH3MlvuGh51KEoI=
+X-Google-Smtp-Source: APXvYqw498Icl14jRiBkwlADDXenfHTPtE0s9hLvZO1diJiBgjG12GHUUUc/aR3ZyCJaFgHxH5+1DSeq2xvT9WUbiHw=
+X-Received: by 2002:a02:ab83:: with SMTP id t3mr4830212jan.133.1562335828673;
+ Fri, 05 Jul 2019 07:10:28 -0700 (PDT)
+MIME-Version: 1.0
+References: <20190705124318.1075-1-philmd@redhat.com>
+In-Reply-To: <20190705124318.1075-1-philmd@redhat.com>
+From: Laurent Desnogues <laurent.desnogues@gmail.com>
+Date: Fri, 5 Jul 2019 16:10:27 +0200
+Message-ID: <CABoDooNn3HzrgDd3sreGDogFE=_L26=si-ddkeZ6paeoMF+v6w@mail.gmail.com>
 Subject: Re: [PATCH] target/arm/vfp_helper: Call set_fpscr_to_host before
  updating to FPSCR
-To: qemu-devel@nongnu.org
-Cc: Laurent Desnogues <laurent.desnogues@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20190705124318.1075-1-philmd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <db75031d-e9af-c349-903f-276ec92f850d@redhat.com>
-Date: Fri, 5 Jul 2019 14:45:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
-MIME-Version: 1.0
-In-Reply-To: <20190705124318.1075-1-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: Ykxq+sY3PCQu
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: PaJ/IfqmfUdu
 
-Correct subject: "Call set_fpscr_to_host before updating FPSCR reg"
-(or without "reg").
-
-On 7/5/19 2:43 PM, Philippe Mathieu-Daudé wrote:
+On Fri, Jul 5, 2019 at 2:43 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
+om> wrote:
+>
 > In commit e9d652824b0 we extracted the vfp_set_fpscr_to_host()
 > function but failed at calling it in the correct place, we call
 > it after xregs[ARM_VFP_FPSCR] is modified.
-> 
+>
 > Fix by calling this function before we update FPSCR.
-> 
+>
 > Reported-by: Laurent Desnogues <laurent.desnogues@gmail.com>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+Reviewed-by: Laurent Desnogues <laurent.desnogues@gmail.com>
+Tested-by: Laurent Desnogues <laurent.desnogues@gmail.com>
+
+Thanks,
+
+Laurent
+
 > ---
 >  target/arm/vfp_helper.c | 4 ++--
 >  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
+>
 > diff --git a/target/arm/vfp_helper.c b/target/arm/vfp_helper.c
 > index 46041e3294..9710ef1c3e 100644
 > --- a/target/arm/vfp_helper.c
 > +++ b/target/arm/vfp_helper.c
-> @@ -197,6 +197,8 @@ void HELPER(vfp_set_fpscr)(CPUARMState *env, uint32_t val)
->          val &= 0xf7c0009f;
+> @@ -197,6 +197,8 @@ void HELPER(vfp_set_fpscr)(CPUARMState *env, uint32_t=
+ val)
+>          val &=3D 0xf7c0009f;
 >      }
->  
+>
 > +    vfp_set_fpscr_to_host(env, val);
 > +
 >      /*
 >       * We don't implement trapped exception handling, so the
->       * trap enable bits, IDE|IXE|UFE|OFE|DZE|IOE are all RAZ/WI (not RES0!)
-> @@ -217,8 +219,6 @@ void HELPER(vfp_set_fpscr)(CPUARMState *env, uint32_t val)
->      env->vfp.qc[1] = 0;
->      env->vfp.qc[2] = 0;
->      env->vfp.qc[3] = 0;
+>       * trap enable bits, IDE|IXE|UFE|OFE|DZE|IOE are all RAZ/WI (not RES=
+0!)
+> @@ -217,8 +219,6 @@ void HELPER(vfp_set_fpscr)(CPUARMState *env, uint32_t=
+ val)
+>      env->vfp.qc[1] =3D 0;
+>      env->vfp.qc[2] =3D 0;
+>      env->vfp.qc[3] =3D 0;
 > -
 > -    vfp_set_fpscr_to_host(env, val);
 >  }
->  
+>
 >  void vfp_set_fpscr(CPUARMState *env, uint32_t val)
-> 
+> --
+> 2.20.1
+>

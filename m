@@ -1,124 +1,169 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3269833wru;
-        Fri, 5 Jul 2019 08:09:32 -0700 (PDT)
-X-Received: by 2002:adf:f792:: with SMTP id q18mr4164226wrp.161.1562339372584;
-        Fri, 05 Jul 2019 08:09:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562339372; cv=none;
+Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp3323355wru;
+        Fri, 5 Jul 2019 09:07:59 -0700 (PDT)
+X-Received: by 2002:a9d:6204:: with SMTP id g4mr3522150otj.40.1562342879793;
+        Fri, 05 Jul 2019 09:07:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562342879; cv=none;
         d=google.com; s=arc-20160816;
-        b=LILUUqWLSethY9wdZSMv8SNiGcDMO3jIxwHM7XUiZBBUm5ez5raCZmaz6BEFtrxJ7Z
-         TN1B8AQNMUOGq3EtGL2xYTZRp57CMLhTCfR8gxlDAUfvZwO/I7Axoc7M2DmspKWT4qMU
-         Bf86uca0E1etZMB/nbPIxnQGV9ZNS+ty2rauA+Nck05bRDogbWjaZEAqwb9bKK3ejRB4
-         WEZ1ffOafHezo0nTvC44CXesA3U0HjMKELBpU5MM+BZ6t1+jD8OJJTV1iu8R/af+gZhd
-         WavnFNFzZYNnsDZE2h3GElpjcwU/1YBmY/+QFeZKjZC4Cdcq2+TA9Pt7hlVX2t54OPAa
-         eNCw==
+        b=Wuh8cpY1B9fNzSzzRR7RnuRaa16sU8y6cyPkIR2Z1ysJ/8ayMz9wQ8T0kfuTLRuaBp
+         xRN6+mHZQIRyP385Fd0hgmSlybKJ6LRqUgUBrrMyQ0pAvrD8nev/zGq02dvqqh5XN++/
+         O9L+PYaKg8QggBpQAe8zl8xgEaq2KZ+cDBrp6Qw8gqf+wa+NKW4s7g9ePB4U/iAJkk/5
+         BMbnIXEoeo9/zRYg+7+RRvcU3/3OSkkBExLEpG3PY49kkWOukgH/PQLE1uIxAblGqfwj
+         s7W0LKHx8/wlhq2PpWsvwxlpugQXQAlTBLetkCh6tMxvDBC/Qn8uUVaBMb7JQRDq7phy
+         MIqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=q1aEPuqPPejoFOCRSaaYleUZYO2DAIq52Qc9x7onAlw=;
-        b=f5+J39L87azgvV5YGfXmIW5lMxHvhpa/Em/zJoTMd9kGu3MwG29GEwSOR1EOeU9iMH
-         smLDOThdXq6TAPgEk2uLVpBc6H8mbcAp44Cr9TB09x5t4xq8+ZyJobePo5duZyENplnG
-         gdVMwSgXLdh5CfZw1vi/cTLaMbbxZ4D6VcIWjhYDD6q2DKwIn7sVr7dwOAxAV2XEDdy9
-         uQtxKcobVrO+T9sPFMbY5VsPjD3wK1Vi+qQSonbOwv2sagPTgZ5MyINbyydlMY84P7ur
-         I13We0lofEfCr77xm26g2RyrJO0ccr8HACSZwmH0N5RYxwb3tLWXAfjVBKIPVYCdFWuX
-         6swA==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=s00Q9ijUuQV3ApsG7jwaXKYx1gaJ8io9p2etVndcIxo=;
+        b=h9+gAaeBOMruoFn1NqNY9DqSSX4LVk8rIS7+84Yg9zpKQAkYNhirtPYBavtj8D9A3c
+         U+fizlX6QbN6Ra0YSdy91EAk+CRta7oTgnDbLu/rGem1jega0FjBgzx94Hvo6oGl0d1N
+         RMbuERkMlEbiqoMmsQDB4A+XRXo5wzaRVz3/MzKNKOaaDeFq5rMn1KQmsHe43UqwNakr
+         tNpfdcZdijnDEZoiST6Toj+rAwbofFPZXCuGOVfbzE00K6oyedcFJ9uzF8dB5lJuQNBK
+         BuY3L8izMhbJS1VVFgS3ehgfIhKwTSDJ+AXx4dSAFSWpJ1nlpsaG9KdtQFEpB8F29xcb
+         6qVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PT15IhLg;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=z5NovQHu;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id a3sor5296423wmb.7.2019.07.05.08.09.32
+        by mx.google.com with SMTPS id l201sor3941213oih.75.2019.07.05.09.07.59
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 05 Jul 2019 08:09:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Fri, 05 Jul 2019 09:07:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PT15IhLg;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=z5NovQHu;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=q1aEPuqPPejoFOCRSaaYleUZYO2DAIq52Qc9x7onAlw=;
-        b=PT15IhLg7KfIslfOI2RfmmzLc/GIGvsk05Q+0MoLPgmc3/KVr5vu10CPLdvgZqJKj3
-         F5jY6AAe3k5rt5UvZSRbHBAf942MMZNXIuh6dT+IfES8K6HhXKuLTDmvZoXpTh7mtn2m
-         QiszJ7kvD9aUJFEEzqkfEILTz6o/2c1QzjsOVnP6YR/fzJ5Jy/w5DiXtsV3MU8BhHTqM
-         5FZ6tFeDWgiIZCgeNDhiacLK5+E34fR0ximqezzRY7tSCSZohZvi6r43omrkd2HWl68+
-         fG2Jok+A2EjBgwJO4EdhKTf6XrLyyslMePYvGyA9HpQ/ZATqzs5gDDg/EH1QYrEspC1A
-         5zHQ==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=s00Q9ijUuQV3ApsG7jwaXKYx1gaJ8io9p2etVndcIxo=;
+        b=z5NovQHuJL2vVRXUAzlLajOmEHYkgDpL9n43EVJ5IAwCkb7LHwcfucK8r6Ga5xpwXK
+         baN7srn9rk2Z3g8QNPw/GHkrwn5kYaoHXEWVviHJfo1SO4WCVaVUMrc4paivQBvankQ+
+         SCdEZDiOmNb6uKPB2Qey+6fwri6VAMFA5kKR6EFi0baf4FQ+KOS5r/EI2CInQQKNkuWv
+         4J3fhckQdmeFOaApusHtAGF87SE5zYa/eEDPZQhpS9+g/iwnL2dJqCRCGrSE4SO/6bd4
+         5mzJzRRjJhor91xNcIrNMwKh9C2Ytl5ClGsh0i++Jjr/brfe8jBNfbox+5M0VhPOzJ+M
+         KxqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=q1aEPuqPPejoFOCRSaaYleUZYO2DAIq52Qc9x7onAlw=;
-        b=t+XSXvWqsgSGoiwaUz5QTB5bQBiV+kxW9Ou21aj1xj61MFHcWfI+EUTeQ0PhvgfeRD
-         5nEOnQExF9FNTiexDh6qfCxQzKSU6zDO2m7bEybAxyb0mCmIF27U3RuoF5qjS/Wwj7AT
-         2pttQzWfhq64/k+DEqRmx6178NrngfFw6gH1H+0xefV+Gx+SylokDlOoM24KkgOa4i6W
-         Esbc0Nj4DGlqv3jJ19IXhWKdq92K5q59y9DiAuyt4xTL/MOJEvGEtyMIcSAdTKKEeNe0
-         U80cPlGzUFV4qpt9SLZHPGxQ4V5/Tn4qiWbjwcCbIbd+6jFUwa7FBvCnIIQ428KeTCng
-         72BQ==
-X-Gm-Message-State: APjAAAXoWrJwYPOjPuPTD0DKpH6965Cr0l6GHd0sMWVZpI4oJs2OBG7q
-	419++wXQheLTigMVxNmNQHVv/eAq0ZUptujD
-X-Google-Smtp-Source: APXvYqyfcgEo8qNPzdgoW5dW17I45lvAhBzs+f9ZeziSI56Qqib4qhglypEIfJsmXakJ57RRx8gaVA==
-X-Received: by 2002:a7b:c148:: with SMTP id z8mr3938218wmi.142.1562339372193;
-        Fri, 05 Jul 2019 08:09:32 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [10.21.14.234] (host218-183-static.63-88-b.business.telecomitalia.it. [88.63.183.218])
-        by smtp.gmail.com with ESMTPSA id z6sm6922508wrw.2.2019.07.05.08.09.31
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 05 Jul 2019 08:09:31 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH v1 1/4] target/arm: handle M-profile
- semihosting at translate time
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20190703155244.28166-1-alex.bennee@linaro.org>
- <20190703155244.28166-2-alex.bennee@linaro.org>
- <927219a5-a56d-bbbe-26ed-ffb8be12f006@linaro.org>
- <87ef36w14t.fsf@zen.linaroharston>
- <e7dcd75f-8897-1939-caf6-c879371a2f84@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <42b9274b-e389-4e2f-2ab5-e5601180f3b1@linaro.org>
-Date: Fri, 5 Jul 2019 17:09:29 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.1
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=s00Q9ijUuQV3ApsG7jwaXKYx1gaJ8io9p2etVndcIxo=;
+        b=TEY0SzTI9Adz8Ua9l9IdQi9YVieF+RWRW68d2bfH1LvjCQDe+iNzgX6cRgUKx6q1hD
+         dvr30GeSis+Hl6bQs1flevAyp7YimBcqxK624Wux4wSTfRv3IV4x8fJQMIPOBvMa4SIQ
+         LypGHR7UibQRfIkHtdsCUXJS+QEtBhTvOriCG7xonm4XP8W4E27i3Ji13UwRA6jFc1qI
+         3DC2nidV9K+7ZCtFZJpAZtuz1HY+3ZCFGEx2e8bFN6ZOo9FKYpTcSsxKIHMDha12dhP+
+         UZXGqLK7frTp3xUdZp6gNUy1ig03fxAws8tLBZPxOLUuPJDhD/mLzZgwLywDb/QGJ3gd
+         7tCg==
+X-Gm-Message-State: APjAAAXggsjI0/eF374A2vpggsTPKPsvYiulOJeohMrJWA194jGS0TOL
+	x440EGCeuHGdXIqrAbmf9CyJWrvKYCqAtB8a11/aMFq/G324Bw==
+X-Google-Smtp-Source: APXvYqxw/Ogyu1Pq875Wtl5x9p/fR6UUM1re3fnWso0ai1dVNCHUqoWIVVjIM0vcFbhC1b5MWICin5Ql3eXxKZLrCv0=
+X-Received: by 2002:aca:6185:: with SMTP id v127mr2530668oib.163.1562342879203;
+ Fri, 05 Jul 2019 09:07:59 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <e7dcd75f-8897-1939-caf6-c879371a2f84@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: n3loYpUuN8eN
+References: <20190703102208.10086-1-alex.bennee@linaro.org>
+ <CAFEAcA-rT3B-1GvFY55Ete1cm8f+38AGFyzDcJxQsqM1c=D4sQ@mail.gmail.com> <87sgrkv5k3.fsf@zen.linaroharston>
+In-Reply-To: <87sgrkv5k3.fsf@zen.linaroharston>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 5 Jul 2019 17:07:48 +0100
+Message-ID: <CAFEAcA99=Kf7GoHaNfGu7qmyYUrxA7kK1p2jianj-4OTxFebvA@mail.gmail.com>
+Subject: Re: [RFC PATCH for semihosting-tests] semihosting tests: add v7m tests
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: r4NKgSoA46bn
 
-On 7/4/19 12:25 PM, Philippe Mathieu-Daudé wrote:
-> 
-> 
-> On 7/4/19 12:21 PM, Alex Bennée wrote:
->>
->> Richard Henderson <richard.henderson@linaro.org> writes:
->>
->>> On 7/3/19 5:52 PM, Alex Bennée wrote:
->>>> +static inline void gen_thumb_bkpt(DisasContext *s, int imm8)
->>>> +{
->>>> +    if (arm_dc_feature(s, ARM_FEATURE_M) &&
->>>> +        semihosting_enabled() &&
->>>> +#ifndef CONFIG_USER_ONLY
->>>> +        s->current_el != 0 &&
->>>> +#endif
->>>> +        (imm8 == 0xab)) {
->>>
->>> Extra parenthesis.
->>
->> The wrapping on imm8 == 0xab? Do you want that cleaned up on the other
->> patches as well?
-> 
-> I understood this comment for "(s->current_el != 0) &&"
-> 
+On Fri, 5 Jul 2019 at 16:56, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
+>
+>
+> Peter Maydell <peter.maydell@linaro.org> writes:
+>
+> > On Wed, 3 Jul 2019 at 11:22, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
+wrote:
+> >> diff --git a/microbit.lds b/microbit.lds
+> >> new file mode 100644
+> >> index 0000000..24840a3
+> >> --- /dev/null
+> >> +++ b/microbit.lds
+> >> @@ -0,0 +1,32 @@
+> >> +/*
+> >> + * microbit.lds : simple linker script for baremetal ARM-M test cases
+> >> + *
+> >> + * Copyright (C) 2019 Linaro Limited. All rights reserved.
+> >> + *
+> >> + * Memory layout is for the BBC Microbit board which puts RAM at 0x20=
+000000
+> >> + */
+> >
+> > I know this is just copied from the baremetal.lds, but we
+> > really should have a license statement in every source file
+> > (and I should fix the ones which don't have a license at the moment).
+> >
+> >> +
+> >> +RAMSTART =3D 0x20000000;
+> >> +STACKTOP =3D 0x20004000;
+> >
+> > That puts stacktop really close to the start of the heap --
+> > isn't there more space to give ourselves some safety margin?
+>
+> We could - do we actually use any heap in this - I thought it was all
+> static .data?
 
-No, I meant imm8 == 0xab.  And, sure, cleaning the other patches would be good.
+By 'heap' here I mean everything that goes after RAMSTART,
+which is the whole of the .text, .data and .bss sections.
+Mostly I just think we should give ourselves a reasonable
+amount of elbow room so we don't find out the hard way
+that we've expanded the code/data to the point where it
+runs into the stack...
 
+> >
+> >> +
+> >> +ENTRY(exc_reset_thumb)
+> >> +
+> >> +SECTIONS
+> >> +{
+> >> +    . =3D 0x0;
+> >> +    .text : {
+> >> +        *(.text)
+> >> +    }
+> >> +    .data : {
+> >> +        *(.data)
+> >> +    }
+> >> +    .rodata : {
+> >> +        *(.rodata)
+> >> +    }
+> >> +    .bss : {
+> >> +        *(.bss)
+> >> +    }
+>
+> I wonder if there are runes for setting STACKTOP as end of .bss +
+> something? I guess it would help if we could tell the linker what the
+> top of microbit memory was.
 
-r~
+In the baremetal.lds and baremetal-a64.lds files I use
+". =3D RAMSTART;" and ". =3D STACKTOP;" lines, which means that
+the linker will detect whether we've put too much stuff
+in and run past STACKTOP. Your file here seems to be missing those...
+
+(Also, why do you need a .rodata here when the other lds files don't?)
+
+> >> +exc_reset:
+> >> +.equ exc_reset_thumb, exc_reset + 1
+> >> +.global exc_reset_thumb
+> >
+> > There must be a better way than this to declare an asm label
+> > for a thumb entrypoint...
+>
+> That may not be needed any more - I'll drop it and see.
+
+You do definitely need the vector table entry to have
+the low bit set. I just suspect there's a way to say
+"this label is a code entry point for Thumb mode" which
+avoids the need for the manual addition.
+
+thanks
+-- PMM

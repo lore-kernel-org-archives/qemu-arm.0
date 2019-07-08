@@ -1,143 +1,188 @@
-Received: by 2002:adf:a557:0:0:0:0:0 with SMTP id j23csp2293877wrb;
-        Mon, 8 Jul 2019 03:51:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw0JeASbUlqxRmzui7x0b5cUfpqNw3eT+DjOIsWSN8g5Ij4O5V9dMByR5vB8+Nl+QMWm3jK
-X-Received: by 2002:a05:6402:1707:: with SMTP id y7mr18992889edu.223.1562583097271;
-        Mon, 08 Jul 2019 03:51:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562583097; cv=none;
+Received: by 2002:a17:90a:ad8a:0:0:0:0 with SMTP id s10csp6589198pjq;
+        Mon, 8 Jul 2019 08:01:46 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxsbljneD751G8TljSQ1jrXSvAkKcuzVv9+/C2ri8AJo+CHhnR9R9R0QLTC05liGJV1ejWZ
+X-Received: by 2002:a50:b3d0:: with SMTP id t16mr20657934edd.158.1562598106607;
+        Mon, 08 Jul 2019 08:01:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562598106; cv=none;
         d=google.com; s=arc-20160816;
-        b=FZflckZ5uk3MUMSv+gSu35bAGFUnQfVgQVurDMwcsJTFhnMfDhWvJR1YifuisZu2Ud
-         CDw+IBouzWmVXCJM1vWEkFWAOJcPVY5D5mdR0IQNElt+nV4/elYkzXYTi9h83NNDK3bS
-         9O/82nxM70lQGUSAjSLmzm24sdoEBDgPmL49A88CrmIOcDvJk+vj8Lk+//ilfOCc8Acn
-         4O7WDRbZNVPhNpfWNI9Pr7YNIBVso03AhfzxgPrhrCWZTaVhyLRlw6DsIb0bUVrCSEsU
-         yNoEEvJMc/TcSFctaM3zZXE7r+lbjFSRTJfQeCLQ4bHHdWOmitTLMwECXSKvDD4aZLf0
-         6qsw==
+        b=JdwS8AFjDR2IKqCz6ZY6MNV+ft5HBZrJrZfzM/HyLi0JL5z3Zv/gTBDlFHLOt5FflZ
+         OLcepw6ReANXJb0WQTheQjgocCvsrixjCAwK8wXMjbe813LdEb58KmNplk1oPBNhEhAw
+         8ude69dMbNBtmIef0yYY1Ts1SZpwqKTuFbR17ZVN5wqv+oJiqMXJoqRu38SWtkonILfy
+         RMNdXAuQnOhziLE8w7L9IZ3u8jfIL912XA4KzkbDhthha8d8yyP6dZuOjtkzkSOnueOG
+         UQP4iQ0obVqoaw/j5f/xqTr4OUpJjSaQGKRKCJmpmgHIwrv3owRVH/x1V+mLKUmMsjSG
+         TI6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=LDInV+w4ZeXuaMPzxIvXlVye/WE0ytZH7yR7hD92dzw=;
-        b=BN0Wh1a7zoMxqscUWoOu3h5KMKovP1lk1ICDW9B2Zb6h/VKc2/264XAuV8tK+8u38M
-         Tu/Nqhggl0PjtiQHbLvqxdFJ61uMT6rQaPgmrjXFR6qbIY1b7aCbhiY4zjCvt5aR5lTq
-         TeR0jvOODS6H9afh6Vg42UhmEyLAkTPht5IPLnKoa9NOJ2qMxbVyMEl7VVBMM63mZqza
-         KshN26KrKR97e0ttMlelhfsdHhj8Lp353CFhpUNBY8mfRP5zAN2OhM2iD65NN7dH2HOo
-         eWjK2X7py9uIqVIdew6dDDueFRMmCRsUowuqnPxbbMxMsd5wkiPpwKVxP8Zcbj1xl36j
-         Amhw==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=MPOXltMNn0A0LDsHI3omgXItWm/Wma0B48sJlQV4kqQ=;
+        b=nruvwASRTU9DyyZXAKaGbdXlPb5JEh75tC9w9PIzYSkzR20XDYcVzzaAtIzQPyudUD
+         +J9iNyAO+K23AorDlY99qxm9g8B5up+zEYGBYT7aNoe3+bTNwC036qnGF8ZsGdyN+DOh
+         S2rbbJw5NOobKHieVyydzeBnW9+OfxAqewvsEKiYAIG6RHwp7yUw72fRzWZRg3ZDqOpe
+         EulXnIRW5uLF1HqnP/xUSguE4Tken6RRESDCLdn69eXDUJi2sgDzTwZlTDRGbSKp2VE+
+         RREa8eZQx8PMMRDj3L306U/ISItrjnl1Vi8MmEFJ888oT1PpnjFIWlnuSpXjN7DDPNcx
+         M+nw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qn18si5216092ejb.331.2019.07.08.03.51.37
+        by mx.google.com with ESMTPS id o15si986976ejj.350.2019.07.08.08.01.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 08 Jul 2019 03:51:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 08 Jul 2019 08:01:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40358 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42424 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hkRFA-00068n-CR
-	for alex.bennee@linaro.org; Mon, 08 Jul 2019 06:51:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39949)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hkV9D-0002gP-Rf
+	for alex.bennee@linaro.org; Mon, 08 Jul 2019 11:01:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49878)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hkRC9-0002xz-WE
- for qemu-arm@nongnu.org; Mon, 08 Jul 2019 06:48:30 -0400
+ (envelope-from <philmd@redhat.com>) id 1hkV6F-0001DM-IB
+ for qemu-devel@nongnu.org; Mon, 08 Jul 2019 10:58:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hkRC8-0006II-Pu
- for qemu-arm@nongnu.org; Mon, 08 Jul 2019 06:48:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46770)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1hkRC8-0006Hw-K9; Mon, 08 Jul 2019 06:48:28 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 0B6E02DE413;
- Mon,  8 Jul 2019 10:48:24 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-112.brq.redhat.com [10.40.204.112])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A66662E03C;
- Mon,  8 Jul 2019 10:48:18 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Mon,  8 Jul 2019 12:47:50 +0200
-Message-Id: <20190708104750.1071-4-philmd@redhat.com>
-In-Reply-To: <20190708104750.1071-1-philmd@redhat.com>
+ (envelope-from <philmd@redhat.com>) id 1hkV6B-00016T-QT
+ for qemu-devel@nongnu.org; Mon, 08 Jul 2019 10:58:39 -0400
+Received: from mail-wm1-f66.google.com ([209.85.128.66]:37875)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hkV69-0000v1-SO
+ for qemu-devel@nongnu.org; Mon, 08 Jul 2019 10:58:34 -0400
+Received: by mail-wm1-f66.google.com with SMTP id f17so16806737wme.2
+ for <qemu-devel@nongnu.org>; Mon, 08 Jul 2019 07:58:32 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=MPOXltMNn0A0LDsHI3omgXItWm/Wma0B48sJlQV4kqQ=;
+ b=V9u260BpB3SEawI1u+CGydJMNfh4LPWjZ8/6iH25BI1CoUsV75ssR7oyZmx2Nvw4m8
+ Oj7purHfZ9keGwHxImU8c60ZAES3SLs5VOWg9MJ6ItEMYL65RtL3VmkzMGBUTZWSMgba
+ CZKyR5a3/bxLgjxvMkSJCS1vqIdWJhK1OSIThXirkZ5ex2Vog69avzebQ08y096nLyfK
+ P6FXsSqSzXh7fSwyFXypjWXWDuHct+j3iZr1LG/XIKHeTfXph1HJkM3wsOoBofTzEKbg
+ ZXXgR+o2cieG2nWKxdOyCHskN8VgJ+O0ogmPwQ9uO2T9wk805k3LnOPQh5m+2DOllDXc
+ FKaw==
+X-Gm-Message-State: APjAAAXdhFf+ldEOD0VtKNZBAyCxS1HepV3/NnR3KibSZEQOfV0xSKlf
+ do6fwumfpZKZdwFzAySL21oY/g==
+X-Received: by 2002:a1c:6555:: with SMTP id z82mr17735703wmb.129.1562597911299; 
+ Mon, 08 Jul 2019 07:58:31 -0700 (PDT)
+Received: from [192.168.1.38] (56.red-88-18-140.staticip.rima-tde.net.
+ [88.18.140.56])
+ by smtp.gmail.com with ESMTPSA id s3sm18308839wmh.27.2019.07.08.07.58.30
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Mon, 08 Jul 2019 07:58:30 -0700 (PDT)
+To: Francisco Iglesias <frasse.iglesias@gmail.com>
 References: <20190708104750.1071-1-philmd@redhat.com>
+ <20190708104750.1071-4-philmd@redhat.com>
+ <20190708142622.k4s5oknmzzj4brxd@fralle-msi>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <41f075ef-9b80-cb66-0fb1-d03079cd93a4@redhat.com>
+Date: Mon, 8 Jul 2019 16:58:29 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.29]); Mon, 08 Jul 2019 10:48:24 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20190708142622.k4s5oknmzzj4brxd@fralle-msi>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH-for-4.1 v5 3/3] hw/ssi/xilinx_spips: Avoid
+ [fuzzy]
+X-Received-From: 209.85.128.66
+Subject: Re: [Qemu-devel] [PATCH-for-4.1 v5 3/3] hw/ssi/xilinx_spips: Avoid
  out-of-bound access to lqspi_buf[]
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Francisco Iglesias <frasse.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-stable@nongnu.org,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-stable@nongnu.org,
+ Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
  Prasad J Pandit <ppandit@redhat.com>, Lei Sun <slei.casper@gmail.com>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: joIKTxYhsV52
+ qemu-arm@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mtK3Wf8D9tV3
 
-Both lqspi_read() and lqspi_load_cache() expect a 32-bit
-aligned address.
+Hi Francisco,
 
-From UG1085 datasheet [*] Chapter 22: Quad-SPI Controller:
+On 7/8/19 4:26 PM, Francisco Iglesias wrote:
+> Hi Philippe,
+> 
+> On [2019 Jul 08] Mon 12:47:50, Philippe Mathieu-Daudé wrote:
+>> Both lqspi_read() and lqspi_load_cache() expect a 32-bit
+>> aligned address.
+>>
+>> From UG1085 datasheet [*] Chapter 22: Quad-SPI Controller:
+> 
+> s/22/24/
 
-  Transfer Size Limitations
+I'm confuse, Chapter 24 is "SD/SDIO Controller", so it seems this Xilinx
+datasheet is not stable to refer to. Maybe I should simply use:
 
-    Because of the 32-bit wide TX, RX, and generic FIFO, all
-    APB/AXI transfers must be an integer multiple of 4-bytes.
-    Shorter transfers are not possible.
+  From UG1085 datasheet [*] Chapter on 'Quad-SPI Controller':
 
-Set MemoryRegionOps.impl values to force 32-bit accesses,
-this way we are sure we do not access the lqspi_buf[] array
-out of bound.
+> 
+> After above change:
+> 
+> Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com> 
+> Tested-by: Francisco Iglesias <frasse.iglesias@gmail.com>
+> 
+> (I tested all three patches so the Tested-by tag can also be appended on the
+> other two)
 
-[*] https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-=
-ultrascale-trm.pdf
+Thanks!
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
-v5: add datasheet reference, drop RFC prefix, fix build (Francisco)
----
- hw/ssi/xilinx_spips.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
-index 3c4e8365ee..b29e0a4a89 100644
---- a/hw/ssi/xilinx_spips.c
-+++ b/hw/ssi/xilinx_spips.c
-@@ -1239,6 +1239,10 @@ static const MemoryRegionOps lqspi_ops =3D {
-     .read_with_attrs =3D lqspi_read,
-     .write_with_attrs =3D lqspi_write,
-     .endianness =3D DEVICE_NATIVE_ENDIAN,
-+    .impl =3D {
-+        .min_access_size =3D 4,
-+        .max_access_size =3D 4,
-+    },
-     .valid =3D {
-         .min_access_size =3D 1,
-         .max_access_size =3D 4
---=20
-2.20.1
-
+> 
+> Best regards,
+> Francisco Iglesias
+> 
+>>
+>>   Transfer Size Limitations
+>>
+>>     Because of the 32-bit wide TX, RX, and generic FIFO, all
+>>     APB/AXI transfers must be an integer multiple of 4-bytes.
+>>     Shorter transfers are not possible.
+>>
+>> Set MemoryRegionOps.impl values to force 32-bit accesses,
+>> this way we are sure we do not access the lqspi_buf[] array
+>> out of bound.
+>>
+>> [*] https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-ultrascale-trm.pdf
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>> v5: add datasheet reference, drop RFC prefix, fix build (Francisco)
+>> ---
+>>  hw/ssi/xilinx_spips.c | 4 ++++
+>>  1 file changed, 4 insertions(+)
+>>
+>> diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
+>> index 3c4e8365ee..b29e0a4a89 100644
+>> --- a/hw/ssi/xilinx_spips.c
+>> +++ b/hw/ssi/xilinx_spips.c
+>> @@ -1239,6 +1239,10 @@ static const MemoryRegionOps lqspi_ops = {
+>>      .read_with_attrs = lqspi_read,
+>>      .write_with_attrs = lqspi_write,
+>>      .endianness = DEVICE_NATIVE_ENDIAN,
+>> +    .impl = {
+>> +        .min_access_size = 4,
+>> +        .max_access_size = 4,
+>> +    },
+>>      .valid = {
+>>          .min_access_size = 1,
+>>          .max_access_size = 4
+>> -- 
+>> 2.20.1
+>>

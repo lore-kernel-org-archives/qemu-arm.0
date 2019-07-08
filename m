@@ -1,139 +1,115 @@
-Received: by 2002:a5d:6790:0:0:0:0:0 with SMTP id v16csp1393090wru;
-        Thu, 27 Jun 2019 08:02:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxKdMf/zmksix1Pw/FtTvsHT2d8hSSscVXyiYIUJ9JqPq6MTG1NWedswR5KgLUP+JYa3wei
-X-Received: by 2002:a50:c9c2:: with SMTP id c2mr4847992edi.183.1561647749314;
-        Thu, 27 Jun 2019 08:02:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1561647749; cv=none;
+Received: by 2002:adf:a557:0:0:0:0:0 with SMTP id j23csp2291076wrb;
+        Mon, 8 Jul 2019 03:48:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxUfby2j9Gt3BPeoPeX85er4gP/cnzQKmwdKm/LM0cCiz10HXMOasgdmtkZ/alMYYmji23l
+X-Received: by 2002:a17:906:948c:: with SMTP id t12mr15915071ejx.222.1562582912951;
+        Mon, 08 Jul 2019 03:48:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562582912; cv=none;
         d=google.com; s=arc-20160816;
-        b=oQtPu41dAEow+sNPxDN3/Ph/hPc45fVjhKE1VDks1hrmN7qXjuxYR3n8VrXLVHBxIU
-         oDJnIjONjpmme3KwnQNZeDb7gvx2ulJBSwQLfhRHyq6PsPu+fneDNj136w1hAWrsc7xt
-         PyZnjUeQ7opukZwrgn80GSNe9h3cDWnkbp9v4lJ+tvPzp9OMXVcl0XoT1N1VSDAALoMX
-         TdhOKQkidIrNKMz4EbyRHaIX3IpAeyUU7Qr/fmxyhfnVHsiX1c+4YiUNRnyOUtL8x5g2
-         sdOch3fIe3Qlm2Ae2nt9ZxYZ9rIlycuVHqsSaIJBl5suyCvrSM4Ljbz2iVp41fWG9XZM
-         D/qA==
+        b=oG+qLzEYnx7K0/3CUysG4Ifw2eph3mbBFY0i8PzDMSaShYlj8eXgLrv3Au03ptuGJa
+         D+7UhHozbrcxDNYOee52GqThZd4MFLZ+6L8oR0RnNGdYLVEdvGeOJ2tpqxSlLvnAW0VT
+         bOwK6tLKye75mvwDrRQ6vZqz/Oy41klNao9hyIuWAK5nZ5YT1uSNzag9gNkovZDd/o0I
+         zFHqwe4BSWmNtW2FCs4domVi0GZOtSCCveQB5jX/m57qY5E5cgiLaEiDG5KmVfJyMJ/V
+         dW/Rm7PJga8f+Bt3WtRyr+TD/wMHliGYWa1IPjqPQZh75Z51CMm+45nhlUmWC+zE7g7J
+         JJ8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=VXGj6045PLBPA7tU0mFoJrekB2NdENo0IaTGmnqmJ7E=;
-        b=G27aw8g7JZbDaW/A/+ZryjH0KTbhE6MtO9atVhFF5PHIQkOPb0HtdIXRMim+P+EAkv
-         VVA/9K87TR/XPxJO0YFtmEEKQOjQG5Bb1vEw1BZlFvxMwZ55ICZPE0UMKuVBbVB5TBm6
-         1TU9O6RZINN8FwCbWwSz4cWYh19DvvpeHeaP0gqP/PI4y7A2XVnetiLOcpsadjaSVMk1
-         WwcUYLrY3SHCCZrhsQ7IUKNtt1Da7dhGG2WUB5XWqcEhLaDQgc4JkPaIHTEMjTg6e8uq
-         039plSVV7LUnBES4BCObUeThUClUSB9wzI8p8dhoxNXxcudLdXRyWpvb/V5ri9MDGvbW
-         MCRg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=Y2btZEXIHBfcffdTxSefPIzBgNRxeOTwfyYWvH3cwUQ=;
+        b=DCrfoTQaUi5IRbj91LygiX2eznxM56qJCQgED6A3zpt5CosPtfOHrXKNCNjSVJ6mo2
+         XppZWRTkshc6lq8Km+xqWsGyy5Z2d1emXAJAzudf1HWtUB6iC9uKRgHVI5LqQaQHRzin
+         6vuZ22dCKcmOY5M1dPXvCwWS1WebRm5QRUmNZ6KD50IMOUwJxPKAfJTMiNO26vD00M1U
+         uh0uLVq6F2JXjD/ECwxoIRXIQQvy90mTFNSwpcjSzcPXBNYOcoNJuGQusd1BGoKHn3Tt
+         1SYXiOg7hGKfxcSMlGiTSg/xhslgnQ5rCbwE1Lwud+eltzQSXXJ5v8hKLxkfMSlj3sMw
+         VGYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
-Return-Path: <Dave.Martin@arm.com>
-Received: from foss.arm.com (foss.arm.com. [217.140.110.172])
-        by mx.google.com with ESMTP id um8si1730807ejb.373.2019.06.27.08.02.28;
-        Thu, 27 Jun 2019 08:02:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) client-ip=217.140.110.172;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id w19si9972072eje.173.2019.07.08.03.48.32
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 08 Jul 2019 03:48:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of dave.martin@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=Dave.Martin@arm.com
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 510E6360;
-	Thu, 27 Jun 2019 08:02:28 -0700 (PDT)
-Received: from e103592.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id EEA383F246;
-	Thu, 27 Jun 2019 08:02:26 -0700 (PDT)
-Date: Thu, 27 Jun 2019 16:02:24 +0100
-From: Dave Martin <Dave.Martin@arm.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: Andrew Jones <drjones@redhat.com>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>,
-	"armbru@redhat.com" <armbru@redhat.com>,
-	"eblake@redhat.com" <eblake@redhat.com>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"imammedo@redhat.com" <imammedo@redhat.com>
-Subject: Re: [PATCH v2 10/14] target/arm/kvm64: Add kvm_arch_get/put_sve
-Message-ID: <20190627150224.GH2790@e103592.cambridge.arm.com>
-References: <20190621163422.6127-1-drjones@redhat.com>
- <20190621163422.6127-11-drjones@redhat.com>
- <1e0bc93f-42e3-087f-a4b5-d356879cb806@linaro.org>
- <20190627105911.GD2790@e103592.cambridge.arm.com>
- <3e935f36-1065-b82e-86e0-f3e4cd11f95e@linaro.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40328 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hkRCB-0002oU-0y
+	for alex.bennee@linaro.org; Mon, 08 Jul 2019 06:48:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39829)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <philmd@redhat.com>) id 1hkRBx-0002nA-CR
+ for qemu-arm@nongnu.org; Mon, 08 Jul 2019 06:48:18 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1hkRBu-0006AX-Nf
+ for qemu-arm@nongnu.org; Mon, 08 Jul 2019 06:48:17 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59102)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1hkRBu-00069n-Gn; Mon, 08 Jul 2019 06:48:14 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 099FCC05B038;
+ Mon,  8 Jul 2019 10:48:07 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-112.brq.redhat.com [10.40.204.112])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B770057986;
+ Mon,  8 Jul 2019 10:47:56 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon,  8 Jul 2019 12:47:47 +0200
+Message-Id: <20190708104750.1071-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <3e935f36-1065-b82e-86e0-f3e4cd11f95e@linaro.org>
-User-Agent: Mutt/1.5.23 (2014-03-12)
-X-TUID: UXf9sdtdgsSO
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.31]); Mon, 08 Jul 2019 10:48:12 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH-for-4.1 v5 0/3] hw/ssi/xilinx_spips: Avoid NULL
+ dereference and out-of-bound access
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-stable@nongnu.org,
+ Prasad J Pandit <ppandit@redhat.com>, Lei Sun <slei.casper@gmail.com>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Y4J7JqOaFKcZ
 
-On Thu, Jun 27, 2019 at 12:26:06PM +0100, Richard Henderson wrote:
-> On 6/27/19 12:59 PM, Dave Martin wrote:
-> >> It's a shame that these slices exist at all.  It seems like the kernel could
-> >> use the negotiated max sve size to grab the data all at once.
-> > 
-> > The aim here was to be forwards compatible while fitting within the
-> > existing ABI.
-> > 
-> > The ABI doesn't allow variable-sized registers, and if the vq can
-> > someday grow above 16 then the individual registers could become pretty
-> > big.
-> 
-> The ABI doesn't appear to have fixed sized data blocks.  Since that's
-> the case, it didn't seem to me that variable sized blocks was so
-> different, given that the actual size is constrained by the hardware
-> on which we're running.
+v1: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg01238.html
+v2: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg01586.html
+v3: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg01657.html
+v4: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg01777.html
+v5:
+- address Francisco comments from v4
 
-I'm not sure what you mean here.
+Philippe Mathieu-Daud=C3=A9 (3):
+  hw/ssi/xilinx_spips: Convert lqspi_read() to read_with_attrs
+  hw/ssi/xilinx_spips: Avoid AXI writes to the LQSPI linear memory
+  hw/ssi/xilinx_spips: Avoid out-of-bound access to lqspi_buf[]
 
-For KVM_GET_ONE_REG, the size is determined by the reg size field in
-the register ID, so size is deemed to be a fixed property of a
-particular register.
+ hw/ssi/xilinx_spips.c | 43 +++++++++++++++++++++++++++++++------------
+ 1 file changed, 31 insertions(+), 12 deletions(-)
 
-Having the register IDs vary according to the vector length seemed a
-step too far.
+--=20
+2.20.1
 
-> And if VQ does grow large, then do we really want oodles of syscalls in order
-> to transfer the data for each register?  With the 9 bits reserved for this
-> field, we could require a maximum of 1024 syscalls to transfer the whole
-> register set.
-
-A save/restore requires oodles of syscalls in any case, and for SVE
-there is a rapid dropoff of probabilities: VQ < 16 is much likelier than
-VQ == 32 is likelier than VQ == 64 etc.
-
-The reg access API has some shortcomings, and we might find at some
-point that the whole thing needs redesigning.
-
-I suppose we could have taken the view that the KVM ABI would not even
-try to support VQ > 16 in a forwards compatible way.  In the end we
-decided to at least have things workable.
-
-Either way, it's entirely reasonable for userspace not to try to support
-additional slices for now.  We'll have plenty of time to plan away
-across that bridge when we spot it on the horizon...
-
-> > It's for QEMU to choose, but does it actually matter what byteorder you
-> > store a Z-reg or P-reg in?  Maybe the byteswap isn't really needed.
-> 
-> I think the only sensible order for the kernel is that in which LDR/STR itself
-> saves the data.  Which is a byte stream.
-
-We have a choice of STRs though.  Anyway, yes, it is the way it is, now.
-
-> Within QEMU, it has so far made sense to keep the data in 64-bit hunks in
-> host-endian order.  That's how the AdvSIMD code was written originally, and it
-> turned out to be easy enough to continue that for SVE.
-
-Fair enough.  It's entirely up to QEMU to decide -- I just wanted to
-check that there was no misunderstanding about this issue in the ABI.
-
-> Which does mean that if we want to pass data to the kernel as the
-> aforementioned byte stream that a big-endian host does need to bswap the data
-> in 64-bit hunks.
-> 
-> > I don't know how this works when migrating from a little-endian to a
-> > big-endian host or vice-versa (or if that is even supported...)
-> 
-> The data is stored canonically within the vmsave, so such migrations are
-> supposed to work.
-
-Right, I was wondering about that.  Could be fun to test :)
-
-Cheers
----Dave

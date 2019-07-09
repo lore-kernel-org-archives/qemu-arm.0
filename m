@@ -1,82 +1,82 @@
-Received: by 2002:adf:a557:0:0:0:0:0 with SMTP id j23csp3632574wrb;
-        Tue, 9 Jul 2019 05:33:34 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxqVUOR7LkTCyhv+9Eh0W719DZ3sMAtI6hyTCRX5X51nKotrealqhcMpduXRoAa6uNp/3Hs
-X-Received: by 2002:a17:906:e91:: with SMTP id p17mr21414162ejf.217.1562675614039;
-        Tue, 09 Jul 2019 05:33:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562675614; cv=none;
+Received: by 2002:adf:a557:0:0:0:0:0 with SMTP id j23csp3632600wrb;
+        Tue, 9 Jul 2019 05:33:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxNuQ7UZ5h5ZRShlmcFoEJ2sGj5kkZBW7Ya9ib+LL3s9wdGL7k2jLLMG5YwLOspXKc+a2zW
+X-Received: by 2002:a50:bd8b:: with SMTP id y11mr25477641edh.202.1562675615267;
+        Tue, 09 Jul 2019 05:33:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562675615; cv=none;
         d=google.com; s=arc-20160816;
-        b=NwLEWuh283wZrY6ASufygFa3sGca3SwRujjHm7KlkRIc25Y2aGaa952ZohUIfGvt/p
-         cdooXwm9zzlf+0kTtZtEcN3kSF5dKAIAZuKrTnuTl3y0H/Tj3bbIt5aTpT8tK/rBndia
-         Gun3B5Bp71+Fuv7ZmgPNJtrPFW6gGdODieciPRacgtegMr3x8eNFLYG5GTbuYVUEy7SS
-         f+7qXrhJ0tikLWLVtn3FrwAdERJENxspnOpwWm7NZFYNnTAbrgBch1MmLnejz0LQmeyS
-         a+veri6E3fVXlVC61PUhMVgHbTvfUWKKHIcty6wneGKYRpsjhLqHwY9GeEaXCSvY2loB
-         rgGg==
+        b=okhilfQnEoxy43Y8LUll3dxrxgn7kUOm67v2aT0qW9g4u99ZuvLtXIQ75Tt/X3Su3U
+         c+VB0jqFzoM0Tgn9JkLAKASiQNdEAoyosuslg5Lrr4lbnExuwqvgUJGOQdCbLW9iAXSK
+         EurkZ0vKR+pcDBH1fJVeDKfVEsV1B26FGqX+HqZNCeqDZfZJiQJIWBt59NQwAkTAYuGp
+         f7Ftr4i7g7THpinjd1bPlJwv3LvlClXicuLAoWb32KJ0WDbFy/bKL3h7g/F4Kg2Hlk0s
+         pfBE7BgqsbAwoYu0nACfY9hMjXGBBnEtXKkTfY67wOqj1cER2tG05AGBELcoLdnyNewT
+         ZvKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=viUiS2FSc5/NZvlD2g9bsnbkcUHysQf/24txu07mB0U=;
-        b=VHp9ivsBK1yxudttxlod7kaNIHhETs+XmHHCzsLlCWKFdx2570wWOhQu91ZaBhKlTx
-         oVLv0jFeN3VsLQu77tXX5YvvhTTmvInJQMwDe0fRusib2m0al99GrqJMdaaF34V61sq0
-         xj0Lrd0ELIgvfw3YhUT7Uzs3DaUzVTYC3bFJ+OKXG7XHfqmMN4tbv2gtaqCtxKI/S///
-         KRmljJT6i3pLadQ71hE/wisokiOaeQ4bsy1QkIR5IG102PWznOGv7Jh/0jFsjmHkDsBp
-         wFr5UIh3b5j43T/emov0rQKaV4b4izkhkbY3OF0twDWMw6FNUGivCyGnR7zlHH7DCxS6
-         ++gQ==
+        bh=IvNYs7K1upMzHvhWJFVspRY7686Z6zCzwt2vt0+An90=;
+        b=vVPwVKe0jZll1WgNY01qTldJMsrBRS3N3MBUdjGduu/R+1Qpup/c+uc2w187jlQmdo
+         ISyEBI7ZGnVJ3F9XtiI3O07cQVcwKM1J50pBnHb+bDRo2+dJD/JXExrDfzicEEVssxKA
+         MoCQSXWVqivfZBMRPm+GSrv1bbOTeTAOkpj/d5nTB0YViMyWD5VYU5caM+7GkQ8/aD5Q
+         gvVjzqNjtziLZ+SN6vMsmcQW9fE9AerrsObkqqdoAerzl5KqGGYmHaXTzAYu0kTWRpxS
+         4mlEiMsWniWO+v0bnEEoxFyIkSbL4+btO5e8i3XgKBRKveK5QfA6L1LzK8kOzW9cxgFS
+         zYpQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k25si12747526ejz.54.2019.07.09.05.33.33
+        by mx.google.com with ESMTPS id j26si17052724ede.86.2019.07.09.05.33.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jul 2019 05:33:34 -0700 (PDT)
+        Tue, 09 Jul 2019 05:33:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49594 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49602 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hkpJM-0002hP-3j
-	for alex.bennee@linaro.org; Tue, 09 Jul 2019 08:33:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59413)
+	id 1hkpJO-0002mq-9m
+	for alex.bennee@linaro.org; Tue, 09 Jul 2019 08:33:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59431)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hkpIu-0002eY-7V
- for qemu-arm@nongnu.org; Tue, 09 Jul 2019 08:33:05 -0400
+ (envelope-from <philmd@redhat.com>) id 1hkpIv-0002fq-5F
+ for qemu-arm@nongnu.org; Tue, 09 Jul 2019 08:33:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hkpIt-0004Wc-8G
- for qemu-arm@nongnu.org; Tue, 09 Jul 2019 08:33:04 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38568)
+ (envelope-from <philmd@redhat.com>) id 1hkpIu-0004XD-0g
+ for qemu-arm@nongnu.org; Tue, 09 Jul 2019 08:33:05 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60514)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1hkpIt-0004Rv-2g; Tue, 09 Jul 2019 08:33:03 -0400
+ id 1hkpIt-0004WJ-Qs; Tue, 09 Jul 2019 08:33:03 -0400
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 292EDA3EAF;
- Tue,  9 Jul 2019 12:32:54 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 6A4BD3179B62;
+ Tue,  9 Jul 2019 12:32:57 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-166.brq.redhat.com [10.40.204.166])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5FAE71001B37;
- Tue,  9 Jul 2019 12:32:51 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A3CF21001B0F;
+ Tue,  9 Jul 2019 12:32:54 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Tue,  9 Jul 2019 14:32:38 +0200
-Message-Id: <20190709123240.16298-2-philmd@redhat.com>
+Date: Tue,  9 Jul 2019 14:32:39 +0200
+Message-Id: <20190709123240.16298-3-philmd@redhat.com>
 In-Reply-To: <20190709123240.16298-1-philmd@redhat.com>
 References: <20190709123240.16298-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.30]); Tue, 09 Jul 2019 12:32:54 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.41]); Tue, 09 Jul 2019 12:32:57 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH-for-4.1 v6 1/3] hw/ssi/xilinx_spips: Convert
- lqspi_read() to read_with_attrs
+Subject: [Qemu-arm] [PATCH-for-4.1 v6 2/3] hw/ssi/xilinx_spips: Avoid AXI
+ writes to the LQSPI linear memory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -96,63 +96,60 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RhKOl3qboVnM
+X-TUID: VfralfT9NW0d
 
-In the next commit we will implement the write_with_attrs()
-handler. To avoid using different APIs, convert the read()
-handler first.
+Lei Sun found while auditing the code that a CPU write would
+trigger a NULL pointer dereference.
 
+From UG1085 datasheet [*] AXI writes in this region are ignored
+and generates an AXI Slave Error (SLVERR).
+
+Fix by implementing the write_with_attrs() handler.
+Return MEMTX_ERROR when the region is accessed (this error maps
+to an AXI slave error).
+
+[*] https://www.xilinx.com/support/documentation/user_guides/ug1085-zynq-=
+ultrascale-trm.pdf
+
+Reported-by: Lei Sun <slei.casper@gmail.com>
 Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 Tested-by: Francisco Iglesias <frasse.iglesias@gmail.com>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
-v4: Do not ignore lqspi_read() return value (Francisco)
+v4: Fix typos (Francisco)
 ---
- hw/ssi/xilinx_spips.c | 23 +++++++++++------------
- 1 file changed, 11 insertions(+), 12 deletions(-)
+ hw/ssi/xilinx_spips.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
 diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
-index 8115bb6d46..b7c7275dbe 100644
+index b7c7275dbe..3c4e8365ee 100644
 --- a/hw/ssi/xilinx_spips.c
 +++ b/hw/ssi/xilinx_spips.c
-@@ -1202,27 +1202,26 @@ static void lqspi_load_cache(void *opaque, hwaddr=
- addr)
-     }
+@@ -1220,8 +1220,24 @@ static MemTxResult lqspi_read(void *opaque, hwaddr=
+ addr, uint64_t *value,
+     return lqspi_read(opaque, addr, value, size, attrs);
  }
 =20
--static uint64_t
--lqspi_read(void *opaque, hwaddr addr, unsigned int size)
-+static MemTxResult lqspi_read(void *opaque, hwaddr addr, uint64_t *value=
-,
-+                              unsigned size, MemTxAttrs attrs)
- {
--    XilinxQSPIPS *q =3D opaque;
--    uint32_t ret;
-+    XilinxQSPIPS *q =3D XILINX_QSPIPS(opaque);
-=20
-     if (addr >=3D q->lqspi_cached_addr &&
-             addr <=3D q->lqspi_cached_addr + LQSPI_CACHE_SIZE - 4) {
-         uint8_t *retp =3D &q->lqspi_buf[addr - q->lqspi_cached_addr];
--        ret =3D cpu_to_le32(*(uint32_t *)retp);
--        DB_PRINT_L(1, "addr: %08x, data: %08x\n", (unsigned)addr,
--                   (unsigned)ret);
--        return ret;
--    } else {
--        lqspi_load_cache(opaque, addr);
--        return lqspi_read(opaque, addr, size);
-+        *value =3D cpu_to_le32(*(uint32_t *)retp);
-+        DB_PRINT_L(1, "addr: %08" HWADDR_PRIx ", data: %08" PRIx64 "\n",
-+                   addr, *value);
-+        return MEMTX_OK;
-     }
++static MemTxResult lqspi_write(void *opaque, hwaddr offset, uint64_t val=
+ue,
++                               unsigned size, MemTxAttrs attrs)
++{
++    /*
++     * From UG1085, Chapter 24 (Quad-SPI controllers):
++     * - Writes are ignored
++     * - AXI writes generate an external AXI slave error (SLVERR)
++     */
++    qemu_log_mask(LOG_GUEST_ERROR, "%s Unexpected %u-bit access to 0x%" =
+PRIx64
++                                   " (value: 0x%" PRIx64 "\n",
++                  __func__, size << 3, offset, value);
 +
-+    lqspi_load_cache(opaque, addr);
-+    return lqspi_read(opaque, addr, value, size, attrs);
- }
-=20
++    return MEMTX_ERROR;
++}
++
  static const MemoryRegionOps lqspi_ops =3D {
--    .read =3D lqspi_read,
-+    .read_with_attrs =3D lqspi_read,
+     .read_with_attrs =3D lqspi_read,
++    .write_with_attrs =3D lqspi_write,
      .endianness =3D DEVICE_NATIVE_ENDIAN,
      .valid =3D {
          .min_access_size =3D 1,

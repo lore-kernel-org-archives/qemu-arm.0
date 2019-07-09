@@ -1,86 +1,87 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id t15sm9442318wrx.84.2019.07.05.09.04.22
-        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Fri, 05 Jul 2019 09:04:24 -0700 (PDT)
-Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id DDC011FF92;
-	Fri,  5 Jul 2019 17:04:21 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Jon Doron <arilou@gmail.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Subject: [PATCH  v1 5/5] gdbstub: revert to previous set_reg behaviour
-Date: Fri,  5 Jul 2019 17:04:21 +0100
-Message-Id: <20190705160421.19015-6-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190705160421.19015-1-alex.bennee@linaro.org>
-References: <20190705160421.19015-1-alex.bennee@linaro.org>
+Received: by 2002:adf:a557:0:0:0:0:0 with SMTP id j23csp3883453wrb;
+        Tue, 9 Jul 2019 09:34:41 -0700 (PDT)
+X-Received: by 2002:a9d:588a:: with SMTP id x10mr6430793otg.144.1562690081143;
+        Tue, 09 Jul 2019 09:34:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562690081; cv=none;
+        d=google.com; s=arc-20160816;
+        b=Vv0+5FJHLp71iQQ/X4R92Gkroysn5EgEqz5cF/i3Q/WK9LjU/kljypsBVasoFKN5c+
+         A1RDpY12eR7YIDrLV7ZUqKkFT805+BrKEJykbiKbEuypYcROtwv1vLf327XFUtqAFW/k
+         VmVsBXYHf6Rj5x7hKl9enEMPEGB7+viEqssCNssmTzqnBnQBYoEVa4C2tzQ1yEeOUvsA
+         GPb4vO8ZzOx3G1vChP3Awjpkfo6LgxLZaSWFxj/SuS/6G8qeTKfVB+KVNE3Ld4U9jaAP
+         v07vAQUL5timu8mFCNnwj9Uqtb5mGyWFS9oq/rmm2hnlhU9gDMuqhYKy6zi6LDurY26v
+         TWtw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=62P4WDMRlN9BwwlaipqzXSSIKDC0cyC9/+gfZGB4ssY=;
+        b=VXl84A3goNPByRQNDMH7OcfFwktY3iWjn9vThhdd9QM3cI0jMDKjZmCk23uKDyVs0M
+         Esl9lgtzjUjwgPteKNPHEz8pTS9sluL8jcsHgJGHm7HWp2GWYwVleTWXPPaNkafBPdYd
+         Sf4oAEoEuC06i34ZS1b4Y1eTI4Z3d+EXqpBJs8qmD4/9M9gmY5HZ12EwJnqXlYou1cEd
+         i+DEXeejfOX/Kphm8vaMUtVRL6t/785jXHhUgwKBc/6h6S6VzyledyJ4NmwNiUFkEnm4
+         XtONpr+V1pVkH9DQBcvOTfAG81NHtL/1J8H944kjygC76vZF01mKc1snIrrZHhiTAh0q
+         Uteg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DLemL9Lp;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id z9sor11062428otb.0.2019.07.09.09.34.40
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 09 Jul 2019 09:34:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=DLemL9Lp;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=62P4WDMRlN9BwwlaipqzXSSIKDC0cyC9/+gfZGB4ssY=;
+        b=DLemL9LprlotgdOaiQmpoGx5KhZ3X9E4RHJLaRhXv2d+u62MhZOmvaMpAS34fmwktK
+         F/F/gWjOWgrk4r+CwvUFNYYynkwgDJSNL5GJS8WGZgRoX/NoLEcvwvzIXjgD/HGZGo+A
+         OXzCYBDGxPd9whNBwAD7CBtCd7beSxTwz4UMp1/x5CgnslUrrjqADlrlTVIIHROniZRH
+         TqLbV8QcHBgswhnzzWN6vGKzOdrE5l91NmFP2PLyzEb60Zu+pqX2bEo3jyaM+RtmRCcg
+         urfipjuuviMC2i0VaVWVRhy4TTed+eoRNKydwpjmyMIUkwwYuhcfuPceeMySSzaatGNT
+         40Jw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=62P4WDMRlN9BwwlaipqzXSSIKDC0cyC9/+gfZGB4ssY=;
+        b=iw8REZm1EDrv+cbCIq5VnxnTrnq/jJQYThlODE6ryobZT6LVVQ9AHsyTegWwfX8COI
+         MAP1En40DNMVf0xH1fAFfibFYMwZ0ntgpAhqsIjBdz0xSpewM6Tc3FR/Hzi00BEBI6cz
+         q3AlN3MuzfVYcpeevwGlpUk3BAbFCcTU64O+64cJ40lAhA6hIRjweB4NmbUKsJ2KsKaX
+         FfbRzGwyfGQIBPjAu6QI9E9ggXVzoVYpDi3T9KJ3MZEWSY/h6H6hnmN0iLmZfdKvZjJ7
+         BsKLYCXfBH3yMHwVefeL0Ijj4I+f5l6QYlkwT1YZJUJzrPbyrGJvnNvIyD3tuXI9eSRC
+         g6Sg==
+X-Gm-Message-State: APjAAAXz64hmQ5ng3wGf8MeAHs9LqHR3ktnFkMRSQeuVmZQZpl3tF8ZD
+	bsfPQ7l5Neskg+LH2a8DC7oAU79PuemR9nBn0RzwDRFHGmMnWg==
+X-Google-Smtp-Source: APXvYqxv16bmdiL0vR9cElTEVoI4jiNl8gIgOqH0jzzYCn8njQMwNk5ZQMk2EiqZ0hLet1Ubf1VQeMlBAw0Z7nc/L/c=
+X-Received: by 2002:a9d:7245:: with SMTP id a5mr18930291otk.232.1562690080504;
+ Tue, 09 Jul 2019 09:34:40 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 3NwCBD5ZqtIB
+References: <20190703102208.10086-1-alex.bennee@linaro.org> <CAFEAcA-rT3B-1GvFY55Ete1cm8f+38AGFyzDcJxQsqM1c=D4sQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA-rT3B-1GvFY55Ete1cm8f+38AGFyzDcJxQsqM1c=D4sQ@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 9 Jul 2019 17:34:29 +0100
+Message-ID: <CAFEAcA-6Jw6g55AvpHpi3=k+jZ5aMrwdjXz5rE5exsn7eetsvw@mail.gmail.com>
+Subject: Re: [RFC PATCH for semihosting-tests] semihosting tests: add v7m tests
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: poITdV9sZz7B
 
-The refactoring of handle_set_reg missed the fact we previously had
-responded with an empty packet when we were not using XML based
-protocols. This broke the fallback behaviour for architectures that
-don't have registers defined in QEMU's gdb-xml directory.
+On Fri, 5 Jul 2019 at 16:39, Peter Maydell <peter.maydell@linaro.org> wrote:
+> I know this is just copied from the baremetal.lds, but we
+> really should have a license statement in every source file
+> (and I should fix the ones which don't have a license at the moment).
 
-Revert to the previous behaviour and clean up the commentary for what
-is going on.
+I just pushed a new revision to the semihosting-tests repo which
+adds the missing copyright/license comments to the current
+set of files.
 
-Fixes: 62b3320bddd
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Cc: Jon Doron <arilou@gmail.com>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
----
- gdbstub.c | 18 ++++++++++++------
- 1 file changed, 12 insertions(+), 6 deletions(-)
-
-diff --git a/gdbstub.c b/gdbstub.c
-index ea3349d1aa..b6df7ee25a 100644
---- a/gdbstub.c
-+++ b/gdbstub.c
-@@ -1669,12 +1669,23 @@ static void handle_remove_bp(GdbCmdContext *gdb_ctx, void *user_ctx)
-     put_packet(gdb_ctx->s, "E22");
- }
- 
-+/*
-+ * handle_set/get_reg
-+ *
-+ * Older gdb are really dumb, and don't use 'G/g' if 'P/p' is available.
-+ * This works, but can be very slow. Anything new enough to understand
-+ * XML also knows how to use this properly. However to use this we
-+ * need to define a local XML file as well as be talking to a
-+ * reasonably modern gdb. Responding with an empty packet will cause
-+ * the remote gdb to fallback to older methods.
-+ */
-+
- static void handle_set_reg(GdbCmdContext *gdb_ctx, void *user_ctx)
- {
-     int reg_size;
- 
-     if (!gdb_has_xml) {
--        put_packet(gdb_ctx->s, "E00");
-+        put_packet(gdb_ctx->s, "");
-         return;
-     }
- 
-@@ -1694,11 +1705,6 @@ static void handle_get_reg(GdbCmdContext *gdb_ctx, void *user_ctx)
- {
-     int reg_size;
- 
--    /*
--     * Older gdb are really dumb, and don't use 'g' if 'p' is avaialable.
--     * This works, but can be very slow.  Anything new enough to
--     * understand XML also knows how to use this properly.
--     */
-     if (!gdb_has_xml) {
-         put_packet(gdb_ctx->s, "");
-         return;
--- 
-2.20.1
+thanks
+-- PMM

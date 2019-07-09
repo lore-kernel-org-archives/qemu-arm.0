@@ -1,179 +1,198 @@
-Received: by 2002:adf:a557:0:0:0:0:0 with SMTP id j23csp3546942wrb;
-        Tue, 9 Jul 2019 04:12:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxR450/HD2VmaRecsMXNwmcjEsdoqvEuL6siqCnTbqpvAsKUaVN7nljIcI3kHXa4Ynva6Vp
-X-Received: by 2002:a17:906:1e04:: with SMTP id g4mr21008006ejj.48.1562670726808;
-        Tue, 09 Jul 2019 04:12:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562670726; cv=none;
+Received: by 2002:adf:a557:0:0:0:0:0 with SMTP id j23csp3572694wrb;
+        Tue, 9 Jul 2019 04:38:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzeuSdfznOpcrukRd9717A1sXhOkL0sPn+/6N1hEtcdNVqiKtMZL3FsO2t5oC7M88pbx8q3
+X-Received: by 2002:a50:996e:: with SMTP id l43mr25378061edb.187.1562672285560;
+        Tue, 09 Jul 2019 04:38:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562672285; cv=none;
         d=google.com; s=arc-20160816;
-        b=O9j8MAvEje50Nd2+EQw5idnoMOBlvWcxd3OJMXj5IOaIld7VKlLPOLr5bnsPRkK5Ak
-         HqmYSLcjNg+/1jg+MFtcHCrItH0IU2Ghop2ldtPdvPqZ4pCTTHjkNyI/G4ITC2hJTXi4
-         ZWj2Zu56KCsKtK8CVNNIadUrQl9PCWf2+lqFX7drsvF3x7elsiZc8rMd+njkX38LqGlT
-         z+mmqOovoHfMG0weJdH1RvzecwRNn3k1tks78WYsmAFOzgM2D9H4iwWrU+rlAwBiF13i
-         ZUpOozDlLYn3zbt6XtgSXOLy6P+ejMC8WGau73YupQ7afVFiyi72bTOZqXSQq7ppA4JU
-         yFjA==
+        b=TRWqbZRxyKhzbDQcpLxl2lcxFZ1SbqfIQNDRgwYje05HdDuulnkBwfjNXjm6fW+SxE
+         47WmF2EFPcTq1pP+NtM3NBqVVHeKo4o4M8NOjFDvenT35LqK39DC6bzp0+h3ALcrfiJu
+         zZsZszC/ryMRBdA7RgcqmIakHXRz8CMZDRoRurpBPUKYRjlKGhuWfectgI+1EYR6eauV
+         DfebHVuMzseZMf7SwLQAB1ybcNHtYGmf4KRAorvzvlaFNnRgw8ok6PGyP4FlEYRswyZO
+         iFCNRFZYVvYEByNuVLDMY3I0iVNLKKhubnZGoQpMuPnE8bbo1YTHHK3eB3Kvr52otewF
+         X9yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=iCpMKQP1wSq6LChmAKTvqIOjwZP+ADPkJjmV0vxF1GI=;
-        b=m2qZZ4qirDtP4w0nYmBJbwCidi2JqrHZ94mq8rqO3jYhndWfOvmnebPqBBd0XsBd/X
-         QvKf4GhKsZj7LT9kv0KRfHcEnpZD2O9AWXFKTPjPMJEdXIQj4/xlQKqtIHJvtJdjU2uV
-         h9kImUyTjuqu2IhnuY7FcvVnVLCKyABWpPo6ERCJjew/UH+hqPxeoO84IkLmshfirHeX
-         Ho65DU8RT3YBqFIerbq8dsii0nn13hDkiXVOSTPMiuNJUzO5NeHzi7WC5yKHKoL1iG6T
-         ZBFa7Y5OBQ+hbYZJUwEgZaVLRjj3O+S5hBOZ5kLV4Wwzs0hmyxELjCWGUiY/knrgz6nU
-         Mtbg==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=LA+ccWiP1K9VRqKhbFwSNiErAeiTyvQWWpyuZOapxv4=;
+        b=VdEm32Wj0LIYY8XCGec66qVG2Pql0mpmabB9vRY2zpx5Ff2JHcWOt1z1Y6omT+2OHF
+         wZuoVtrYTQyBuxCtXr1fmzdy1r8Q/j8TGFNX9mAc1VccHvOzChDFe3zdLyB/6M83q0yl
+         vWSnUjYZNsosfzEFyDTQyyMLTL5si4YDLSj9DTuUSqLlAkURNDvAUAxM1lj89dllx4AA
+         D2sSBsc1QI54AmtQ7VrXfzDDIXTLCPcAdx8bippbSnjzVHvwsc0ZpN993F63qlrT2Kog
+         a3twmb4ghegJTKakh5BiT9B0YxN0X+ak3sYPC3PanNu2RWU4W/fAiIh3AEvS56tCWn9L
+         +UUw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XvsdgXnz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z39si15252303edd.331.2019.07.09.04.12.06
+        by mx.google.com with ESMTPS id n3si11708460ejk.56.2019.07.09.04.38.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jul 2019 04:12:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 09 Jul 2019 04:38:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=XvsdgXnz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48774 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:48912 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hko2X-0005Bc-U3
-	for alex.bennee@linaro.org; Tue, 09 Jul 2019 07:12:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40941)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hkoRg-0004XI-MS
+	for alex.bennee@linaro.org; Tue, 09 Jul 2019 07:38:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46271)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hko27-0005A5-2j
- for qemu-devel@nongnu.org; Tue, 09 Jul 2019 07:11:39 -0400
+ (envelope-from <philmd@redhat.com>) id 1hkoR8-0004VP-SN
+ for qemu-arm@nongnu.org; Tue, 09 Jul 2019 07:37:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hko26-0001XI-1X
- for qemu-devel@nongnu.org; Tue, 09 Jul 2019 07:11:39 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:41708)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hko25-0001We-Nw
- for qemu-devel@nongnu.org; Tue, 09 Jul 2019 07:11:37 -0400
-Received: by mail-oi1-x244.google.com with SMTP id g7so15046999oia.8
- for <qemu-devel@nongnu.org>; Tue, 09 Jul 2019 04:11:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=iCpMKQP1wSq6LChmAKTvqIOjwZP+ADPkJjmV0vxF1GI=;
- b=XvsdgXnzuag4ixkO+Z66nuQ8Mbo12ilPskojQ7xmDkk8bf1aknAlo8VGr6/PT8GIRQ
- woAUCbT29/BpZ3VjNdALMLdINhisEHkJfLIDJ4vbZbZrDDEZX9LIQmySeGq+Gz8QXgJy
- CIL9aX2yyjPy6hF5SfWOld7lMQ6RPxy+nzLvcDoVEiC/vzXrY3D7EetOXsSReQNossJP
- wT26adhSJ3nfAB5Lev86+E9VPdF/HrjBkOnh0SonW6NfqKjNeSpoC44YU9IeQ0zHvxgZ
- gd/aw3Pi/mCBRzr5SNNmM/lGSABlGC3uEaVWzDVsNw0YRetDQR431FKDzoAdYNMND3YG
- pPzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=iCpMKQP1wSq6LChmAKTvqIOjwZP+ADPkJjmV0vxF1GI=;
- b=QIq9QUgaPBn+Lj8zi5FOgOXgCcNpKqj6WaN12RQySI3EJGAOi38G7063XWW5odQEpw
- wPsWv4AaG92jXrUHlhonTPVY2cUyVpsByGAEQfFNtNEWGTI9D+AQyRt7TaiQ33s5zoPD
- UENlJI6fQ3MI8cByYAXV9VQyZa5I61IKfbG+6D4eicbWQ3E3HcTYozmAGxkvi2WdVj0m
- uHNyXJLzhGc5ZtMsKcXmF9prt0cRkQTFcd3pv39kghhjPD1/Uv+WpET/zUJ0nBcs2+b7
- c0cJCysOvOMqi2tybWwotFg9tSEpJS4GJIVupmt2Dy3qT07Yu0oBC3VRF7gTk8O6gnn5
- OAUQ==
-X-Gm-Message-State: APjAAAUhabr4xdKOoyfMLmliFytj4pHkmp0xQxCikyI9XLtHRAFhbT+9
- 2IgDDTzx5T9ZBsXZVhSBXN5bChB2wq6PxIrPUMR8XA==
-X-Received: by 2002:aca:6185:: with SMTP id v127mr1404994oib.163.1562670696769; 
- Tue, 09 Jul 2019 04:11:36 -0700 (PDT)
+ (envelope-from <philmd@redhat.com>) id 1hkoR6-00079Y-O1
+ for qemu-arm@nongnu.org; Tue, 09 Jul 2019 07:37:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60480)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1hkoR4-00076V-PF; Tue, 09 Jul 2019 07:37:28 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 5F77B5D672;
+ Tue,  9 Jul 2019 11:37:24 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-166.brq.redhat.com [10.40.204.166])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4CEF292AEF;
+ Tue,  9 Jul 2019 11:37:22 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  9 Jul 2019 13:37:13 +0200
+Message-Id: <20190709113715.7761-2-philmd@redhat.com>
+In-Reply-To: <20190709113715.7761-1-philmd@redhat.com>
+References: <20190709113715.7761-1-philmd@redhat.com>
 MIME-Version: 1.0
-References: <20190708104750.1071-1-philmd@redhat.com>
- <20190708104750.1071-2-philmd@redhat.com>
-In-Reply-To: <20190708104750.1071-2-philmd@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 9 Jul 2019 12:11:26 +0100
-Message-ID: <CAFEAcA_NnBYWKs89B5apxmXFBUcA5oh3QShRM-1CkWu4Rp6aug@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.39]); Tue, 09 Jul 2019 11:37:24 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-Subject: Re: [Qemu-devel] [PATCH-for-4.1 v5 1/3] hw/ssi/xilinx_spips:
- Convert lqspi_read() to read_with_attrs
-X-BeenThere: qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH 1/3] hw/ssi/mss-spi: Convert debug printf()s to
+ trace events
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Francisco Iglesias <frasse.iglesias@gmail.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-stable <qemu-stable@nongnu.org>,
- Lei Sun <slei.casper@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Prasad J Pandit <ppandit@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YOFf2yBI5153
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: X8XXPCULIRb9
 
-On Mon, 8 Jul 2019 at 11:48, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
-> wrote:
->
-> In the next commit we will implement the write_with_attrs()
-> handler. To avoid using different APIs, convert the read()
-> handler first.
->
-> Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
-> v4: Do not ignore lqspi_read() return value (Francisco)
-> ---
->  hw/ssi/xilinx_spips.c | 23 +++++++++++------------
->  1 file changed, 11 insertions(+), 12 deletions(-)
->
-> diff --git a/hw/ssi/xilinx_spips.c b/hw/ssi/xilinx_spips.c
-> index 8115bb6d46..b7c7275dbe 100644
-> --- a/hw/ssi/xilinx_spips.c
-> +++ b/hw/ssi/xilinx_spips.c
-> @@ -1202,27 +1202,26 @@ static void lqspi_load_cache(void *opaque, hwaddr=
- addr)
->      }
->  }
->
-> -static uint64_t
-> -lqspi_read(void *opaque, hwaddr addr, unsigned int size)
-> +static MemTxResult lqspi_read(void *opaque, hwaddr addr, uint64_t *value=
-,
-> +                              unsigned size, MemTxAttrs attrs)
->  {
-> -    XilinxQSPIPS *q =3D opaque;
-> -    uint32_t ret;
-> +    XilinxQSPIPS *q =3D XILINX_QSPIPS(opaque);
->
->      if (addr >=3D q->lqspi_cached_addr &&
->              addr <=3D q->lqspi_cached_addr + LQSPI_CACHE_SIZE - 4) {
->          uint8_t *retp =3D &q->lqspi_buf[addr - q->lqspi_cached_addr];
-> -        ret =3D cpu_to_le32(*(uint32_t *)retp);
-> -        DB_PRINT_L(1, "addr: %08x, data: %08x\n", (unsigned)addr,
-> -                   (unsigned)ret);
-> -        return ret;
-> -    } else {
-> -        lqspi_load_cache(opaque, addr);
-> -        return lqspi_read(opaque, addr, size);
-> +        *value =3D cpu_to_le32(*(uint32_t *)retp);
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+Useful while debugging, can be skipped for next dev cycle.
 
-If you find yourself casting a uint8_t* to uint32_t* in
-order to pass it to cpu_to_le32(), it's a sign that you
-should instead be using one of the "load/store value in
-appropriate endianness" operations. In this case I think
-you want
-    *value =3D ldl_le_p(retp);
+ Makefile.objs       |  1 +
+ hw/ssi/mss-spi.c    | 23 ++++++-----------------
+ hw/ssi/trace-events |  6 ++++++
+ 3 files changed, 13 insertions(+), 17 deletions(-)
+ create mode 100644 hw/ssi/trace-events
 
-That looks like it was an issue already present in this code,
-though, (we do it several times in various places in the source file)
-so we can fix it later.
+diff --git a/Makefile.objs b/Makefile.objs
+index 6a143dcd57..60ec443091 100644
+--- a/Makefile.objs
++++ b/Makefile.objs
+@@ -178,6 +178,7 @@ trace-events-subdirs +=3D hw/scsi
+ trace-events-subdirs +=3D hw/sd
+ trace-events-subdirs +=3D hw/sparc
+ trace-events-subdirs +=3D hw/sparc64
++trace-events-subdirs +=3D hw/ssi
+ trace-events-subdirs +=3D hw/timer
+ trace-events-subdirs +=3D hw/tpm
+ trace-events-subdirs +=3D hw/usb
+diff --git a/hw/ssi/mss-spi.c b/hw/ssi/mss-spi.c
+index 918b1f3e82..4878279482 100644
+--- a/hw/ssi/mss-spi.c
++++ b/hw/ssi/mss-spi.c
+@@ -27,18 +27,8 @@
+ #include "hw/ssi/mss-spi.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "trace.h"
+=20
+-#ifndef MSS_SPI_ERR_DEBUG
+-#define MSS_SPI_ERR_DEBUG   0
+-#endif
+-
+-#define DB_PRINT_L(lvl, fmt, args...) do { \
+-    if (MSS_SPI_ERR_DEBUG >=3D lvl) { \
+-        qemu_log("%s: " fmt "\n", __func__, ## args); \
+-    } \
+-} while (0)
+-
+-#define DB_PRINT(fmt, args...) DB_PRINT_L(1, fmt, ## args)
+=20
+ #define FIFO_CAPACITY         32
+=20
+@@ -187,9 +177,9 @@ spi_read(void *opaque, hwaddr addr, unsigned int size=
+)
+         }
+         break;
+     }
+-
+-    DB_PRINT("addr=3D0x%" HWADDR_PRIx " =3D 0x%" PRIx32, addr * 4, ret);
++    trace_mss_spi_read(addr << 2, ret);
+     spi_update_irq(s);
++
+     return ret;
+ }
+=20
+@@ -225,9 +215,9 @@ static void spi_flush_txfifo(MSSSpiState *s)
+         s->regs[R_SPI_STATUS] &=3D ~(S_TXDONE | S_RXRDY);
+=20
+         tx =3D fifo32_pop(&s->tx_fifo);
+-        DB_PRINT("data tx:0x%" PRIx32, tx);
++        trace_mss_spi_flush_fifo("tx", tx);
+         rx =3D ssi_transfer(s->spi, tx);
+-        DB_PRINT("data rx:0x%" PRIx32, rx);
++        trace_mss_spi_flush_fifo("rx", rx);
+=20
+         if (fifo32_num_used(&s->rx_fifo) =3D=3D s->fifo_depth) {
+             s->regs[R_SPI_STATUS] |=3D S_RXCHOVRF;
+@@ -262,9 +252,8 @@ static void spi_write(void *opaque, hwaddr addr,
+     MSSSpiState *s =3D opaque;
+     uint32_t value =3D val64;
+=20
+-    DB_PRINT("addr=3D0x%" HWADDR_PRIx " =3D0x%" PRIx32, addr, value);
++    trace_mss_spi_write(addr, value);
+     addr >>=3D 2;
+-
+     switch (addr) {
+     case R_SPI_TX:
+         /* adding to already full FIFO */
+diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
+new file mode 100644
+index 0000000000..6e494b913c
+--- /dev/null
++++ b/hw/ssi/trace-events
+@@ -0,0 +1,6 @@
++# See docs/devel/tracing.txt for syntax documentation.
++
++# mss-spi.c
++mss_spi_read(uint32_t addr, uint32_t value) "read addr:0x%02x value:0x%0=
+8x"
++mss_spi_write(uint32_t addr, uint32_t value) "write addr:0x%02x value:0x=
+%08x"
++mss_spi_flush_fifo(const char *name, uint32_t value) "flush fifo:%s valu=
+e:0x%08x"
+--=20
+2.20.1
 
-thanks
--- PMM

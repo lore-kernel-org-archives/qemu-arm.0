@@ -1,304 +1,130 @@
-Received: by 2002:adf:a557:0:0:0:0:0 with SMTP id j23csp4717307wrb;
-        Wed, 10 Jul 2019 02:33:27 -0700 (PDT)
-X-Received: by 2002:a9d:7d82:: with SMTP id j2mr23637343otn.171.1562751207230;
-        Wed, 10 Jul 2019 02:33:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562751207; cv=none;
+Received: by 2002:adf:a557:0:0:0:0:0 with SMTP id j23csp4784250wrb;
+        Wed, 10 Jul 2019 03:41:22 -0700 (PDT)
+X-Received: by 2002:a05:600c:2189:: with SMTP id e9mr4634848wme.56.1562755282842;
+        Wed, 10 Jul 2019 03:41:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562755282; cv=none;
         d=google.com; s=arc-20160816;
-        b=lLy1IfMuje0HBDuBYNGhZh4c9GQQHkL0HddnpSnfjtBVf8tu3SSW2kHT8knYjxsqe7
-         5DBk4nC6vmvmt7FcUenProlMnIJkwjl0bVKE90uxAZz3LNyH04+6CYQLWfXdK5llwTF+
-         wYAHgT29UXdZQ15UtYVqOh1k3vnWUL6OCs4g4a0UU3oga69QB+Lo7YcF7TCFAH5Yq4sh
-         0TxWqUOHsotLLR4A2rtJ1brKOUBctogWgLATGImPS1ePQaaWPLpPdTkCn42rbGhSzEJ5
-         mOHSAoSiADW4qhok7FoNLm4n9apbQsC0KcXy5yB/ZOJanP1m6SAmbUC2ljPopRrzS7Fz
-         cyJA==
+        b=SEh1aiLCSdvQsnujkJCeJnURKOEuiKFILr8hGSCMd/GZ30dNVE5sRwOoNznBMz9mNf
+         j9c1ywBKJ+hWT+JDd53TtumvtAIUAhc7i/K8UtC4KKa35NoKfCjC0+FGl+rCNIl8RJ1K
+         8trBQhlnjpKaf5EUDPK8McxunJQ7sBNXrwNbLjZkFRh2zlXeeODpyZOAehCvdooAdzaY
+         qxks30+5nFXF+N2LAIhgqpKAeoShhRZnTUfQoeISTfjB4Q2E99pzTrjzzNhY3g79uffK
+         XTPRQJLnM5PNlhtDFoJSPKtl8pzHRnxWRncOzI7g7kVW1yatvcc+gCsX+IZkhVYIsOVG
+         YekQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:references:in-reply-to
-         :mime-version:dkim-signature;
-        bh=0C7Vne2I0LXUUInU2T8v7zArx3LpW7irxRMIAehEJ8A=;
-        b=ZsS6g+FxBT9Kn48dUSycV+aE7eulzfLix1QW5cv0b8mlRYgwkZg9DHFL51kbzK6CrJ
-         Rl0EKaP3mtoGJuH8MCj2HDGC44CbSGuMl2jfsQzZ6u/1ueJ43IWtEpqXiuNhSvoDQC2h
-         qnFA1dN8OQ0zfL6yVT+dJeHaywkwizfRUSexjxUusqqnol1cDQ58bsmcJHg3u+MbInPv
-         TiYYo8xXxLwcfBzLtVoh3RXB6DkoQE5fc4xR4hmRpK76jC7w0TYYYOOPGKkW4loLkjsS
-         kbBLPmfbr3Ua92kYBAdlfAFHlUx2SVMLpfPZZeJRssP/qo7PcBBwEmZlAECLf/aEcs2V
-         Iyrg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
+        bh=bikpCkm7t8bGzapIgCxmtWgANhQEbQ0YH3XGd5eUdek=;
+        b=BiBYIO9HFjlKWBNXTJ0GMrzY8QKWg7zYohv/U2A01Mqp6f3ePS8+tDb8u4ZblEkzdb
+         8DfIrPCUFyfIB1ziDG+VYZNq4Dy85BzYulOz1SJ6UtG5zw0qpl85vkBSj/6mENLB6CQp
+         fTTS9fJAqcSpeqzGjXMSJrKPEo+Y2uwv3wrK+GW+AnoRC4oUFlRQx6xnt/RrtneSfvFv
+         y4/iJeijqPFU2XngCSqv8VAkgUSKYiffZl+bcG+2R3E24Mgaku9seAyYyN/PzPco/ipi
+         omck3rFzSDJ3Bhcnsh6ghqLk2JWVhsSNGMw+si08YNcSSgjfGc1GKtF/k2hvfpTNu43o
+         ADRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XlRRdEzu;
-       spf=pass (google.com: domain of aleksandar.m.mail@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=aleksandar.m.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <aleksandar.m.mail@gmail.com>
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id k78sor686729oib.103.2019.07.10.02.33.27
+        by mx.google.com with SMTPS id y2sor1376857wrn.33.2019.07.10.03.41.22
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 10 Jul 2019 02:33:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aleksandar.m.mail@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Wed, 10 Jul 2019 03:41:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=XlRRdEzu;
-       spf=pass (google.com: domain of aleksandar.m.mail@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=aleksandar.m.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:in-reply-to:references:from:date:message-id:subject:to
-         :cc;
-        bh=0C7Vne2I0LXUUInU2T8v7zArx3LpW7irxRMIAehEJ8A=;
-        b=XlRRdEzuHpqjIiD+uIqjQODSnM5OG7Cacr5G4bD3lizfBZX5Pl3qkYW9oD9V5e7RDQ
-         aVQ9WLUI1Og7b/gkH+pGfoYH1hSIjevJBE03fsBC4GHpl4ewvY3B2RvTXrccb7ThqeTy
-         8jAsZ1g0kwhKwnF2mSEKexOkf75mtEpnNVLoAcmsbdiUNYgEZeeJie7lYp7yEEGWP3VW
-         YK/CT8g23sIdib6Ldz8vwr2hTGaiFNujtEHOKjt/Cg2O2bV1hqLZJmmzj5X0Q8nQQ+mp
-         eJyi16/wZ/bZS7hMgO+v0TZUSjY7Z9rkz0EwHYY4uSy+8SWRdCqhemZ42xuFePelT8wX
-         RxtA==
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:in-reply-to:references:from:date
-         :message-id:subject:to:cc;
-        bh=0C7Vne2I0LXUUInU2T8v7zArx3LpW7irxRMIAehEJ8A=;
-        b=iC2JSIy+45Xpspipk4w+ReICF15EjQQmhlZ8NKw1lmp+EUtz6CWR/YkguNEHhWFgxM
-         b0Bb5lMIFc1mW92ok8u1lSXxIdkhvuyy+UH6pM9jcpz65ljIsz6qKGgIjIvv4WbyBP7x
-         79JP34E1zIEkWo4g6ZFZ88ToN2KUAdLhrvyXpVvWk9pRtE2Oa8cyxxUFcSmUfZkp/Adt
-         KM1gEDXh2De+zMm5xuIG2BpQsxTsaYx/bTlgvsFc7gaZwjc8BAn75Muz4Biq7GoFC+Ot
-         i6/Psgr1qNxxvrSHQO2t+2QUFsLzH6avZ9qahGt6k6vH8cKfSymtTBVTrhxY8dDPFTcC
-         lMYg==
-X-Gm-Message-State: APjAAAXCRJWmigH7KEpPaMcZlfX8SRnLtdk32ALu2r60FOlstPS4dHVN
-	slLnwGyiFWHWq4AZXRbt3yJ11ExRjSNcvg5K9G1IwA==
-X-Google-Smtp-Source: APXvYqzT/QPqS/ECpIoEIgyxDrxg2b8MaIWSU/bKp5D3RJA7jPLxto17ETfDojeI2ae8QS4RqfIKRm/EH5MSeJ7zbPM=
-X-Received: by 2002:aca:abd8:: with SMTP id u207mr2714622oie.136.1562751206470;
- Wed, 10 Jul 2019 02:33:26 -0700 (PDT)
-MIME-Version: 1.0
-Received: by 2002:a9d:4798:0:0:0:0:0 with HTTP; Wed, 10 Jul 2019 02:33:25
- -0700 (PDT)
-Received: by 2002:a9d:4798:0:0:0:0:0 with HTTP; Wed, 10 Jul 2019 02:33:25
- -0700 (PDT)
-In-Reply-To: <87o922dyog.fsf@zen.linaroharston>
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=bikpCkm7t8bGzapIgCxmtWgANhQEbQ0YH3XGd5eUdek=;
+        b=AncJ65Z8XoOpRJ84E7sw4yGU950kPdyB4A7YfFj5DI3o1iC2mBhvum4uf0CQDmAfeY
+         lTCyGbmAmXrYD1PWy3WbtBD/q85E+x/owUU56m/gMcV82We/vAbcEGgmU8W0F3BF07yR
+         R0w+QhZm1gMfALP3bX8j3nMdkLdAktZUzhQTOVTkpIwIVRwYe2EWnvQVQQFziTcTdRcY
+         i5R05/LGV0FpzMzI37IFN/WCFuruaiuAbcajVTInJxKephBFpMvbcZM+V5WiO4bz1Kp1
+         znjYGAs82UFqhie7AzFOt4CcXOFst3DwoJ+HIPN0Uirj1rQGBZz+gVFaBDUTdnacq5js
+         mKXQ==
+X-Gm-Message-State: APjAAAX9cGKaId8xcWa/sfEy/j5hldiwVnGtVAtE0zbCiO2QHrOLbeMA
+	5rOGKljz94cXVcC8lNghcA2GZQ==
+X-Google-Smtp-Source: APXvYqyJdSFRu81RB9HMQUu54MV0VqESbKlUFPLMJjIwGb4aDSSnggDJ3uJcjLKdgGPWECHjG7e57w==
+X-Received: by 2002:adf:eb86:: with SMTP id t6mr2360129wrn.96.1562755282632;
+        Wed, 10 Jul 2019 03:41:22 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [10.32.224.100] (red-hat-inc.vlan560.asr1.mad1.gblx.net. [159.63.51.90])
+        by smtp.gmail.com with ESMTPSA id b15sm2305028wrt.77.2019.07.10.03.41.21
+        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+        Wed, 10 Jul 2019 03:41:22 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v1 2/5] tests/tcg: fix up test-i386-fprem.ref
+ generation
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
+ Jan Bobek <jan.bobek@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <rth@twiddle.net>
 References: <20190705160421.19015-1-alex.bennee@linaro.org>
- <20190705160421.19015-6-alex.bennee@linaro.org> <CAL1e-=i08h1j0V7d97p7a-OQqdNXzG1s5QATmLDxfGCDtwE-4Q@mail.gmail.com>
- <87o922dyog.fsf@zen.linaroharston>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Wed, 10 Jul 2019 11:33:25 +0200
-Message-ID: <CAL1e-=jTA+kcq-Z25nXH4gy-cd99L4u3DsWo2qN5u8xN49uQ7g@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v1 5/5] gdbstub: revert to previous set_reg behaviour
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	Jon Doron <arilou@gmail.com>, qemu-arm@nongnu.org, 
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Content-Type: multipart/alternative; boundary="00000000000088b761058d505e31"
-X-TUID: iVB8TIVkB3uH
+ <20190705160421.19015-3-alex.bennee@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <af417ca3-248a-d1a8-51c4-46676b6d9d4a@redhat.com>
+Date: Wed, 10 Jul 2019 12:41:20 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
+MIME-Version: 1.0
+In-Reply-To: <20190705160421.19015-3-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: oeJCPi9Gx2wX
 
---00000000000088b761058d505e31
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 7/5/19 6:04 PM, Alex Bennée wrote:
+> We never shipped the reference data in the source tree because it was
+> quite big (64M). As a result the only option is to generate it
 
-On Jul 10, 2019 11:30 AM, "Alex Benn=C3=A9e" <alex.bennee@linaro.org> wrote=
-:
->
->
-> Aleksandar Markovic <aleksandar.m.mail@gmail.com> writes:
->
-> > On Jul 5, 2019 6:08 PM, "Alex Benn=C3=A9e" <alex.bennee@linaro.org> wro=
-te:
-> >>
-> >> The refactoring of handle_set_reg missed the fact we previously had
-> >> responded with an empty packet when we were not using XML based
-> >> protocols. This broke the fallback behaviour for architectures that
-> >> don't have registers defined in QEMU's gdb-xml directory.
-> >>
-> >> Revert to the previous behaviour and clean up the commentary for what
-> >> is going on.
-> >>
-> >> Fixes: 62b3320bddd
-> >> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> >> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> >> Cc: Jon Doron <arilou@gmail.com>
-> >> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> >> ---
-> >
-> > Do you plan to integrate this patch in 4.1?
-> >
-> > Thanks, Aleksandar
->
-> Yes - I'm putting together a PR today.
->
+Can we fetch it (with hash verification) or store it compressed?
 
-That's great, thanks!!
+$ du -ch pc-bios/edk2-*bz2
+1.2M    pc-bios/edk2-aarch64-code.fd.bz2
+1.2M    pc-bios/edk2-arm-code.fd.bz2
+4.0K    pc-bios/edk2-arm-vars.fd.bz2
+1.7M    pc-bios/edk2-i386-code.fd.bz2
+1.9M    pc-bios/edk2-i386-secure-code.fd.bz2
+4.0K    pc-bios/edk2-i386-vars.fd.bz2
+1.7M    pc-bios/edk2-x86_64-code.fd.bz2
+1.9M    pc-bios/edk2-x86_64-secure-code.fd.bz2
+9.3M    total
 
-Aleksandar
-
-> >
-> >>  gdbstub.c | 18 ++++++++++++------
-> >>  1 file changed, 12 insertions(+), 6 deletions(-)
-> >>
-> >> diff --git a/gdbstub.c b/gdbstub.c
-> >> index ea3349d1aa..b6df7ee25a 100644
-> >> --- a/gdbstub.c
-> >> +++ b/gdbstub.c
-> >> @@ -1669,12 +1669,23 @@ static void handle_remove_bp(GdbCmdContext
-> > *gdb_ctx, void *user_ctx)
-> >>      put_packet(gdb_ctx->s, "E22");
-> >>  }
-> >>
-> >> +/*
-> >> + * handle_set/get_reg
-> >> + *
-> >> + * Older gdb are really dumb, and don't use 'G/g' if 'P/p' is
-available.
-> >> + * This works, but can be very slow. Anything new enough to understan=
-d
-> >> + * XML also knows how to use this properly. However to use this we
-> >> + * need to define a local XML file as well as be talking to a
-> >> + * reasonably modern gdb. Responding with an empty packet will cause
-> >> + * the remote gdb to fallback to older methods.
-> >> + */
-> >> +
-> >>  static void handle_set_reg(GdbCmdContext *gdb_ctx, void *user_ctx)
-> >>  {
-> >>      int reg_size;
-> >>
-> >>      if (!gdb_has_xml) {
-> >> -        put_packet(gdb_ctx->s, "E00");
-> >> +        put_packet(gdb_ctx->s, "");
-> >>          return;
-> >>      }
-> >>
-> >> @@ -1694,11 +1705,6 @@ static void handle_get_reg(GdbCmdContext
-*gdb_ctx,
-> > void *user_ctx)
-> >>  {
-> >>      int reg_size;
-> >>
-> >> -    /*
-> >> -     * Older gdb are really dumb, and don't use 'g' if 'p' is
-avaialable.
-> >> -     * This works, but can be very slow.  Anything new enough to
-> >> -     * understand XML also knows how to use this properly.
-> >> -     */
-> >>      if (!gdb_has_xml) {
-> >>          put_packet(gdb_ctx->s, "");
-> >>          return;
-> >> --
-> >> 2.20.1
-> >>
-> >>
->
->
-> --
-> Alex Benn=C3=A9e
-
---00000000000088b761058d505e31
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<p dir=3D"ltr"><br>
-On Jul 10, 2019 11:30 AM, &quot;Alex Benn=C3=A9e&quot; &lt;<a href=3D"mailt=
-o:alex.bennee@linaro.org">alex.bennee@linaro.org</a>&gt; wrote:<br>
-&gt;<br>
-&gt;<br>
-&gt; Aleksandar Markovic &lt;<a href=3D"mailto:aleksandar.m.mail@gmail.com"=
->aleksandar.m.mail@gmail.com</a>&gt; writes:<br>
-&gt;<br>
-&gt; &gt; On Jul 5, 2019 6:08 PM, &quot;Alex Benn=C3=A9e&quot; &lt;<a href=
-=3D"mailto:alex.bennee@linaro.org">alex.bennee@linaro.org</a>&gt; wrote:<br=
->
-&gt; &gt;&gt;<br>
-&gt; &gt;&gt; The refactoring of handle_set_reg missed the fact we previous=
-ly had<br>
-&gt; &gt;&gt; responded with an empty packet when we were not using XML bas=
-ed<br>
-&gt; &gt;&gt; protocols. This broke the fallback behaviour for architecture=
-s that<br>
-&gt; &gt;&gt; don&#39;t have registers defined in QEMU&#39;s gdb-xml direct=
-ory.<br>
-&gt; &gt;&gt;<br>
-&gt; &gt;&gt; Revert to the previous behaviour and clean up the commentary =
-for what<br>
-&gt; &gt;&gt; is going on.<br>
-&gt; &gt;&gt;<br>
-&gt; &gt;&gt; Fixes: 62b3320bddd<br>
-&gt; &gt;&gt; Signed-off-by: Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.be=
-nnee@linaro.org">alex.bennee@linaro.org</a>&gt;<br>
-&gt; &gt;&gt; Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailt=
-o:philmd@redhat.com">philmd@redhat.com</a>&gt;<br>
-&gt; &gt;&gt; Cc: Jon Doron &lt;<a href=3D"mailto:arilou@gmail.com">arilou@=
-gmail.com</a>&gt;<br>
-&gt; &gt;&gt; Cc: Mark Cave-Ayland &lt;<a href=3D"mailto:mark.cave-ayland@i=
-lande.co.uk">mark.cave-ayland@ilande.co.uk</a>&gt;<br>
-&gt; &gt;&gt; ---<br>
-&gt; &gt;<br>
-&gt; &gt; Do you plan to integrate this patch in 4.1?<br>
-&gt; &gt;<br>
-&gt; &gt; Thanks, Aleksandar<br>
-&gt;<br>
-&gt; Yes - I&#39;m putting together a PR today.<br>
-&gt;</p>
-<p dir=3D"ltr">That&#39;s great, thanks!!</p>
-<p dir=3D"ltr">Aleksandar</p>
-<p dir=3D"ltr">&gt; &gt;<br>
-&gt; &gt;&gt;=C2=A0 gdbstub.c | 18 ++++++++++++------<br>
-&gt; &gt;&gt;=C2=A0 1 file changed, 12 insertions(+), 6 deletions(-)<br>
-&gt; &gt;&gt;<br>
-&gt; &gt;&gt; diff --git a/gdbstub.c b/gdbstub.c<br>
-&gt; &gt;&gt; index ea3349d1aa..b6df7ee25a 100644<br>
-&gt; &gt;&gt; --- a/gdbstub.c<br>
-&gt; &gt;&gt; +++ b/gdbstub.c<br>
-&gt; &gt;&gt; @@ -1669,12 +1669,23 @@ static void handle_remove_bp(GdbCmdCo=
-ntext<br>
-&gt; &gt; *gdb_ctx, void *user_ctx)<br>
-&gt; &gt;&gt;=C2=A0 =C2=A0 =C2=A0 put_packet(gdb_ctx-&gt;s, &quot;E22&quot;=
-);<br>
-&gt; &gt;&gt;=C2=A0 }<br>
-&gt; &gt;&gt;<br>
-&gt; &gt;&gt; +/*<br>
-&gt; &gt;&gt; + * handle_set/get_reg<br>
-&gt; &gt;&gt; + *<br>
-&gt; &gt;&gt; + * Older gdb are really dumb, and don&#39;t use &#39;G/g&#39=
-; if &#39;P/p&#39; is available.<br>
-&gt; &gt;&gt; + * This works, but can be very slow. Anything new enough to =
-understand<br>
-&gt; &gt;&gt; + * XML also knows how to use this properly. However to use t=
-his we<br>
-&gt; &gt;&gt; + * need to define a local XML file as well as be talking to =
-a<br>
-&gt; &gt;&gt; + * reasonably modern gdb. Responding with an empty packet wi=
-ll cause<br>
-&gt; &gt;&gt; + * the remote gdb to fallback to older methods.<br>
-&gt; &gt;&gt; + */<br>
-&gt; &gt;&gt; +<br>
-&gt; &gt;&gt;=C2=A0 static void handle_set_reg(GdbCmdContext *gdb_ctx, void=
- *user_ctx)<br>
-&gt; &gt;&gt;=C2=A0 {<br>
-&gt; &gt;&gt;=C2=A0 =C2=A0 =C2=A0 int reg_size;<br>
-&gt; &gt;&gt;<br>
-&gt; &gt;&gt;=C2=A0 =C2=A0 =C2=A0 if (!gdb_has_xml) {<br>
-&gt; &gt;&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 put_packet(gdb_ctx-&gt;s, &quot;=
-E00&quot;);<br>
-&gt; &gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 put_packet(gdb_ctx-&gt;s, &quot;=
-&quot;);<br>
-&gt; &gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-&gt; &gt;&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
-&gt; &gt;&gt;<br>
-&gt; &gt;&gt; @@ -1694,11 +1705,6 @@ static void handle_get_reg(GdbCmdConte=
-xt *gdb_ctx,<br>
-&gt; &gt; void *user_ctx)<br>
-&gt; &gt;&gt;=C2=A0 {<br>
-&gt; &gt;&gt;=C2=A0 =C2=A0 =C2=A0 int reg_size;<br>
-&gt; &gt;&gt;<br>
-&gt; &gt;&gt; -=C2=A0 =C2=A0 /*<br>
-&gt; &gt;&gt; -=C2=A0 =C2=A0 =C2=A0* Older gdb are really dumb, and don&#39=
-;t use &#39;g&#39; if &#39;p&#39; is avaialable.<br>
-&gt; &gt;&gt; -=C2=A0 =C2=A0 =C2=A0* This works, but can be very slow.=C2=
-=A0 Anything new enough to<br>
-&gt; &gt;&gt; -=C2=A0 =C2=A0 =C2=A0* understand XML also knows how to use t=
-his properly.<br>
-&gt; &gt;&gt; -=C2=A0 =C2=A0 =C2=A0*/<br>
-&gt; &gt;&gt;=C2=A0 =C2=A0 =C2=A0 if (!gdb_has_xml) {<br>
-&gt; &gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 put_packet(gdb_ctx-&gt;s, &=
-quot;&quot;);<br>
-&gt; &gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-&gt; &gt;&gt; --<br>
-&gt; &gt;&gt; 2.20.1<br>
-&gt; &gt;&gt;<br>
-&gt; &gt;&gt;<br>
-&gt;<br>
-&gt;<br>
-&gt; --<br>
-&gt; Alex Benn=C3=A9e<br>
-</p>
-
---00000000000088b761058d505e31--
+> locally. Although we have a rule to generate the reference file we
+> missed the dependency and location changes, probably because it is
+> only run for SLOW test runs.
+> 
+> The test still fails with mostly incorrect flags and different than
+> expected NaNs. I'll leave that for the x86 experts to look at.
+> 
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Richard Henderson <rth@twiddle.net>
+> Cc: Eduardo Habkost <ehabkost@redhat.com>
+> Cc: Jan Bobek <jan.bobek@gmail.com>
+> ---
+>  tests/tcg/i386/Makefile.target | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
+> index b4033ba3d1..d0eb7023e5 100644
+> --- a/tests/tcg/i386/Makefile.target
+> +++ b/tests/tcg/i386/Makefile.target
+> @@ -35,9 +35,9 @@ test-i386-fprem.ref: test-i386-fprem
+>  	$(call quiet-command, ./$< > $@,"GENREF","generating $@")
+>  
+>  run-test-i386-fprem: TIMEOUT=60
+> -run-test-i386-fprem: test-i386-fprem
+> +run-test-i386-fprem: test-i386-fprem test-i386-fprem.ref
+>  	$(call run-test,test-i386-fprem, $(QEMU) $<,"$< on $(TARGET_NAME)")
+> -	$(call diff-out,test-i386-fprem, $(I386_SRC)/$<.ref)
+> +	$(call diff-out,test-i386-fprem, test-i386-fprem.ref)
+>  else
+>  run-test-i386-fprem: test-i386-fprem
+>  	$(call skip-test, $<, "SLOW")
+> 

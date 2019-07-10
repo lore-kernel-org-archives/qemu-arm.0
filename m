@@ -1,129 +1,115 @@
-Received: by 2002:adf:a557:0:0:0:0:0 with SMTP id j23csp4591657wrb;
-        Wed, 10 Jul 2019 00:14:32 -0700 (PDT)
-X-Received: by 2002:a05:6830:11cc:: with SMTP id v12mr21696446otq.136.1562742872422;
-        Wed, 10 Jul 2019 00:14:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562742872; cv=none;
+Received: by 2002:adf:a557:0:0:0:0:0 with SMTP id j23csp4592774wrb;
+        Wed, 10 Jul 2019 00:15:47 -0700 (PDT)
+X-Received: by 2002:a54:4f09:: with SMTP id e9mr677120oiy.89.1562742947779;
+        Wed, 10 Jul 2019 00:15:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562742947; cv=none;
         d=google.com; s=arc-20160816;
-        b=suZ9VTAso6EK39yTD8y0VOl68N6tdRL71K+QH/+9qN56zGuPk1G7ujFp6sAVo5lxln
-         w98MO9+7iK0BUEOt7A/LlqBExctU3fdeH3Z9vhtmtiIqoeznINCXS8Wmo4SFqgGYp68Y
-         /J8cjY1fpmLDujxzRiTp+h+Tfxqf25IBDJqtkocthKUTZ/MHzvlZ6SZzFoEIYiLOa/Vw
-         EoOnVNIYSs0nOrEc6COomCrPFTn/cGfdnkffrw991XzCtozxxQH2XSRyh9nI/qN01P++
-         ByECn6S+OGPGQ79XxXsJI1fvSI8OBdBnUoPbCmha9S/FEcqD+4eJUVjDNHlb7TkuJrr7
-         rbAw==
+        b=CF3hfhO+dbtrxxX4CWuTf0fOqltqal7n2Lz9LRRfYVJltjisvNZ9VTMo6cbBg/8qRk
+         V2COWLd/Ys3s6WyFjQe7exFHkxIDv5ggaMDoS/iwKlJPrUkFTp5/jPguQHxOhsCJ4TXJ
+         ONi5Z8jbL5VyLRcGWhX/gTBSu5+HVKas9v8/K2RWPJsuPF6W0hbDY1jsNNAEq4CVIi+h
+         S7f9wBgfUjotM4GYI+nUrHyEULMnoIN/gALf/MBMN+UYkB3gj+O53wRND1U2JilEqZ5A
+         yOb5rcqc70x9+V1g1fCPBa8WyexLRvadCmeEURb8THbVbE6GH2XzWG+3KuAzple+ZEqN
+         6U1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject
          :dkim-signature;
-        bh=h5S9zXKt2KZUpFw1CUz/xrLyFiXFBrqUIN37igt1/Ec=;
-        b=mA+QW/AN9U1uCLbB6+QyndozsuZhXNSP/9TR5oy9r8fsTlEFLnNNp0Pwdod+P1Q/RR
-         JnsEWCxUy15LRnmMcE1GJTSkFDrTNH65MCr27cO9kFOzXRtJZpLAnfPkTHwcUAVqHHs+
-         LxnokpbaQj61++kEFk97QG/gQXmedz6ThuaKhIwA7khJEUt8NQWBAHnjTsC7kvCYh+iR
-         stTEajFCaUiBGqlgJvM2Aj6g5SAl5yf7+OOquN4AqSx6M9imubY07fHCFYiQMnPfXKDF
-         0cZY/haMUYNH5PvKC9+4J19QmLjFjTLaEcdZLxf3VfJcS+p7LjuE6NGzwlewB8GSfnEh
-         YLAA==
+        bh=A2QhuxE+PKanxB2fnz1KZf4nLuqSSG0BPKCsBfK4o/s=;
+        b=upRWGPkNiRnQIIZZ4ZTRi/90BYocE4snYQIvdrp0K1wUMeTJ50V75ggm/Tx5wh4SsN
+         zNsoUCoMBO4WpzQtaqAYaqTbRUKcc2LHzLjcVuDVDuDaPKGGgzMlhTLAN25EsgCcHPU9
+         uooNdoL06Foh2fN68vZbe8nN6TtZ0MAsGXY7Nkf61KiSGEe4nGKuREnv7rlq8qakqaTH
+         oiLRyabboV7r2/plJ6FhgYoWGmCWCJ8wG055X6oqXcKgSDtcG8lg7tV6UhvG8wZsN6V/
+         L0m4sEenpafOguimPc9rwzP35o3T5KYjcyO4F9MTGDdzHFFdFSWz6Zlu9GaCrE3cB1ci
+         duKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H83HKWhI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Lus2BUgg;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id r23sor87632otd.21.2019.07.10.00.14.32
+        by mx.google.com with SMTPS id n23sor632786otj.70.2019.07.10.00.15.47
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 10 Jul 2019 00:14:32 -0700 (PDT)
+        Wed, 10 Jul 2019 00:15:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=H83HKWhI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Lus2BUgg;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=h5S9zXKt2KZUpFw1CUz/xrLyFiXFBrqUIN37igt1/Ec=;
-        b=H83HKWhIRijbLJo31EI5qu0ud6sr5wOd2RdlH94W2msrE/vb7h1Kpiu0Ynn62Kpn8q
-         unkh3iBPE0JEa6rtA8dWuNwwOU1B5dfv9DM/cca0mnMePPNJ5eRyjIZ686lplVZ0/SnA
-         cEXNfRPdpKW/pmVb6P1eH15+uhYZQIZbtsdpqAwL4Rwvd94e5uavkmPmXokXC+YyZWRU
-         RvFPY1ytpel4i70ov5M64XiFOhAXOClozrd/gjt2m3MnEg9qm8HzJTLF5i0I1F430of0
-         lPBycSXlNECNBu1ksMvooXcDifAFNs+gBWKVuVPqN36boiwACLAxFlKpCre1Q9McUBp7
-         dRoA==
+        bh=A2QhuxE+PKanxB2fnz1KZf4nLuqSSG0BPKCsBfK4o/s=;
+        b=Lus2BUggxbCfesyMXznqhK1nmZvrUbXQ68qhjUlK5FdTjictszwCGS1ZStiSQ+OWwE
+         zlnHft6q0ujBHaL6+0ZRwhUmVx6cVuZjvs5FDRZif8Br+dXuwT1AhALbF9L5kRgbkE6R
+         EVZZ7Oq+liw/7arX0LRpEb0UKELsPRkLJSVHP4q9a7J4bXOaKB9Gmgjlx9r++qKzC/Fo
+         g1g2DnfNgZ6UZQzhzWM37feu9Ih9+gijMIMImMBDky+IMmyC6HmXwnf5wom4xh5xN8ZH
+         MyxV+D4/N/rOgxnqJZaVdJIeePFDQBTyVsBaqhDYYCEq+Ehl8I6liQoTAeCRBMJZy/Yz
+         4SPw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=h5S9zXKt2KZUpFw1CUz/xrLyFiXFBrqUIN37igt1/Ec=;
-        b=ioZC9l1IEQEj7BbniyLccx2TnuhkqavMLshPsMiXVmJtOGBQpJZOSn8qlyRxXZ9i40
-         ia1aHjcC68veJ26BwmfijfANFP0YkHpLl7u38elsXd5gYUCrEePPqlDauWEpPkI/sG/m
-         Pl/bDuJ0ubBcJsaQ01MGCQ6dQpfR3/byi3zefVqC0ybv+5JOVwu3mFcRJcFrQBd4CZ2B
-         4JuByhlCA4aftmbc+cZiOXjBLi1ISFRjfn0HrShXHP47cNo8IUysgbJbdF9gBuejQfJQ
-         SIgrIsAY5OZCjfpscM96Rwhx2mOc1X/iBW0eR9uoBq/4r16pVWZL5R9XxqcghfoWFd6q
-         Jx9Q==
-X-Gm-Message-State: APjAAAWKGLR/cmdSrADGcwwNw7sfJm+jWOkD+3LlSkAsWsBT2ThgRCDT
-	C4t46vUoB2ycwI0fAP3SdgQ+Ac/y
-X-Google-Smtp-Source: APXvYqw+x2+k/dfy1dgX97DTyXtqPJy4dECE0GVAhrop20WK33O+1tkYhmuIYllKBQ6y2u7wXzssDw==
-X-Received: by 2002:a9d:664c:: with SMTP id q12mr21149674otm.175.1562742871937;
-        Wed, 10 Jul 2019 00:14:31 -0700 (PDT)
+        bh=A2QhuxE+PKanxB2fnz1KZf4nLuqSSG0BPKCsBfK4o/s=;
+        b=MRE2uI8NLwVq3gVMW5qhMwK6JoxYP66vTXp5gVPpogNNa1PEzh1LP/7oLdIDQsNTuP
+         e6dceAK1MEo6nXT79M+nPXfXBiuA4F807lC13p7CsUtWtTflw0hDIj43/dxNQTGw4Ace
+         B7lWN4pIW5hrpG0uKyw4RIuA9Nl3Y8xwSbAKlUUBSB5U6DMQmpoo8wodBCudfv3J4Fjf
+         Vt+Ylv/D/j1n70DwowFT5suqGAmwrWGhEOag7E7cDSXR+DC02FSpSYYEvo/XCRD2FTXd
+         XXkHi3VM4VY0Y+/eMQ/s9cLEFrhLe6F5DuUVXCm2tpn/sHgh00WBjNrK5QQ5wc1BPld/
+         uN1A==
+X-Gm-Message-State: APjAAAVAzOTv8YZqRwsnH/x96n26tNgHEMegryNigpg4mPtXUJ+j8G5b
+	YR87wvoB2rvuK0R+ATVZ/loOT7ND
+X-Google-Smtp-Source: APXvYqwBmhI+46eMXoj/+0L7aGLaT4RWepZWkZ5OMkcV/XY51pKhgIA95X3qrgIIyjkQQ56U4ORokg==
+X-Received: by 2002:a9d:6508:: with SMTP id i8mr22710531otl.355.1562742947337;
+        Wed, 10 Jul 2019 00:15:47 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.43.94] ([172.56.7.82])
-        by smtp.gmail.com with ESMTPSA id r130sm556344oib.41.2019.07.10.00.14.28
+        by smtp.gmail.com with ESMTPSA id 198sm520866oie.13.2019.07.10.00.15.43
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 10 Jul 2019 00:14:31 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH v1 4/5] gdbstub: add some notes to the header
- comment
+        Wed, 10 Jul 2019 00:15:46 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v1 5/5] gdbstub: revert to previous set_reg
+ behaviour
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-arm@nongnu.org
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-arm@nongnu.org,
+ Jon Doron <arilou@gmail.com>
 References: <20190705160421.19015-1-alex.bennee@linaro.org>
- <20190705160421.19015-5-alex.bennee@linaro.org>
+ <20190705160421.19015-6-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <aec9314d-c1e9-2521-6170-d8ce6be97a97@linaro.org>
-Date: Wed, 10 Jul 2019 09:14:19 +0200
+Message-ID: <fecd49db-8517-764f-d998-bca7656de8d1@linaro.org>
+Date: Wed, 10 Jul 2019 09:15:38 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.1
 MIME-Version: 1.0
-In-Reply-To: <20190705160421.19015-5-alex.bennee@linaro.org>
+In-Reply-To: <20190705160421.19015-6-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: U0n9SiwHrz34
+X-TUID: lzu10u41z7TP
 
 On 7/5/19 6:04 PM, Alex Bennée wrote:
-> Add a link to the remote protocol spec and an SPDX tag.
+> The refactoring of handle_set_reg missed the fact we previously had
+> responded with an empty packet when we were not using XML based
+> protocols. This broke the fallback behaviour for architectures that
+> don't have registers defined in QEMU's gdb-xml directory.
 > 
+> Revert to the previous behaviour and clean up the commentary for what
+> is going on.
+> 
+> Fixes: 62b3320bddd
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Cc: Jon Doron <arilou@gmail.com>
+> Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 > ---
->  gdbstub.c | 6 ++++++
->  1 file changed, 6 insertions(+)
-> 
-> diff --git a/gdbstub.c b/gdbstub.c
-> index 8618e34311..ea3349d1aa 100644
-> --- a/gdbstub.c
-> +++ b/gdbstub.c
-> @@ -1,6 +1,10 @@
->  /*
->   * gdb server stub
->   *
-> + * This implements a subset of the remote protocol as described in:
-> + *
-> + *   https://sourceware.org/gdb/onlinedocs/gdb/Remote-Protocol.html
-> + *
+>  gdbstub.c | 18 ++++++++++++------
+>  1 file changed, 12 insertions(+), 6 deletions(-)
 
-Ack.
-
->   * Copyright (c) 2003-2005 Fabrice Bellard
->   *
->   * This library is free software; you can redistribute it and/or
-> @@ -15,6 +19,8 @@
->   *
->   * You should have received a copy of the GNU Lesser General Public
->   * License along with this library; if not, see <http://www.gnu.org/licenses/>.
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-
-Nack.  The text is for the LGPL.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
 r~

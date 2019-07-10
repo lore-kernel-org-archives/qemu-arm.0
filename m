@@ -1,122 +1,129 @@
-Received: by 2002:adf:a557:0:0:0:0:0 with SMTP id j23csp4575605wrb;
-        Tue, 9 Jul 2019 23:58:55 -0700 (PDT)
-X-Received: by 2002:aca:e046:: with SMTP id x67mr2381299oig.3.1562741935033;
-        Tue, 09 Jul 2019 23:58:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562741935; cv=none;
+Received: by 2002:adf:a557:0:0:0:0:0 with SMTP id j23csp4591657wrb;
+        Wed, 10 Jul 2019 00:14:32 -0700 (PDT)
+X-Received: by 2002:a05:6830:11cc:: with SMTP id v12mr21696446otq.136.1562742872422;
+        Wed, 10 Jul 2019 00:14:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562742872; cv=none;
         d=google.com; s=arc-20160816;
-        b=SN9e4vQKTJwISBinRa8Gqx3JVccZ/6HuS3qFRBq8Yb7onZiMU/CzOECOB6G1WrUr1v
-         e3RA6hTjFj6OEqfSCgKitx9qyLqe1GQc98Mnkl8lTDGNhdcP1jNKFvZWkJQp5XLsm2el
-         yPIygVdxdI9ez8yegmYbEfYZpJxaewhwj4zUbiUwLHB1Xnz5CEtdxWdeVR0U0ZRs7vbh
-         w/MZjESCzkniMyemC+mBzXKUfMAc8DbURQDxDrK6UDlh70AkFhtF43GpzSIbhagA3wx3
-         bkryMaXpn26ArmNV3kfVA1gerqu0dI4RDD0EWB7ruTEwgAhjAZq6HoJNcR1LSyCniQlQ
-         XzoA==
+        b=suZ9VTAso6EK39yTD8y0VOl68N6tdRL71K+QH/+9qN56zGuPk1G7ujFp6sAVo5lxln
+         w98MO9+7iK0BUEOt7A/LlqBExctU3fdeH3Z9vhtmtiIqoeznINCXS8Wmo4SFqgGYp68Y
+         /J8cjY1fpmLDujxzRiTp+h+Tfxqf25IBDJqtkocthKUTZ/MHzvlZ6SZzFoEIYiLOa/Vw
+         EoOnVNIYSs0nOrEc6COomCrPFTn/cGfdnkffrw991XzCtozxxQH2XSRyh9nI/qN01P++
+         ByECn6S+OGPGQ79XxXsJI1fvSI8OBdBnUoPbCmha9S/FEcqD+4eJUVjDNHlb7TkuJrr7
+         rbAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject
          :dkim-signature;
-        bh=XFC/MHhgEfE1Nr1X5gKwGHcvslnu2HFr4KUXcEkFuLU=;
-        b=pWZy+nhmAAswlGEoeGXL1Hr0fVqpb071xLV3QLXVEs/N68rJt/rhYnjyUvQ94bZXwU
-         oUcAVqnuqL2Lgc0Pl3t6xIJhMgmf/XLD3fXmRHm/wzGlBK8vYc5THuJDgOAuGsRv08QD
-         YIK+ZPHpSWb21AF8kQa0URdKJvjaqb8Jn/kCktu15TIKtqDU6sJpkkQ9YvAx7U77qzjd
-         4nfKp7YDrqQQFCvPrul6QWOI0D+CYt7geZNHbKwb5N4NOQ8+lt12Yp6Sr+wYv3FkZlpo
-         Xo7Yp2tUYEfX7Qu7kZbNEZvl6N89et/vJBJgzrSYTgmtqhE//zDfAIFVBp9xpXGp7dQd
-         0tMQ==
+        bh=h5S9zXKt2KZUpFw1CUz/xrLyFiXFBrqUIN37igt1/Ec=;
+        b=mA+QW/AN9U1uCLbB6+QyndozsuZhXNSP/9TR5oy9r8fsTlEFLnNNp0Pwdod+P1Q/RR
+         JnsEWCxUy15LRnmMcE1GJTSkFDrTNH65MCr27cO9kFOzXRtJZpLAnfPkTHwcUAVqHHs+
+         LxnokpbaQj61++kEFk97QG/gQXmedz6ThuaKhIwA7khJEUt8NQWBAHnjTsC7kvCYh+iR
+         stTEajFCaUiBGqlgJvM2Aj6g5SAl5yf7+OOquN4AqSx6M9imubY07fHCFYiQMnPfXKDF
+         0cZY/haMUYNH5PvKC9+4J19QmLjFjTLaEcdZLxf3VfJcS+p7LjuE6NGzwlewB8GSfnEh
+         YLAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QqJkLn2p;
+       dkim=pass header.i=@linaro.org header.s=google header.b=H83HKWhI;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id u4sor559242oic.49.2019.07.09.23.58.54
+        by mx.google.com with SMTPS id r23sor87632otd.21.2019.07.10.00.14.32
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 09 Jul 2019 23:58:54 -0700 (PDT)
+        Wed, 10 Jul 2019 00:14:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QqJkLn2p;
+       dkim=pass header.i=@linaro.org header.s=google header.b=H83HKWhI;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=XFC/MHhgEfE1Nr1X5gKwGHcvslnu2HFr4KUXcEkFuLU=;
-        b=QqJkLn2penLobTO8LA6zYjoP4hvpb/K40qkWaKw+EfybH9ukfJ/tDJ1t9fC6IYlELi
-         pk4uBFy7a7UWU433quQrvwkXrckU6QGaO/YRh5NOO0Vh6e7Lm9ENePq+yJYMZ32CfxpT
-         WvdUXe2bPJN3GHA5kx20uD125/yucMjDr6GBiDyUfs3HcOPZdKdEkETph5YwPeXfhAt3
-         yP894fa7ByRpdi9J0SD+xNHqNCiS/SYaPSIiZpbBjLCtpoECjfmJt0GgKyUjI0i0uP1P
-         nsm9v86iVOIBrdimJa9p6o50cvZb+SLuGDfccpx9gHl2l1ckKRL78OnUQn/rY4iERcKK
-         t0NA==
+        bh=h5S9zXKt2KZUpFw1CUz/xrLyFiXFBrqUIN37igt1/Ec=;
+        b=H83HKWhIRijbLJo31EI5qu0ud6sr5wOd2RdlH94W2msrE/vb7h1Kpiu0Ynn62Kpn8q
+         unkh3iBPE0JEa6rtA8dWuNwwOU1B5dfv9DM/cca0mnMePPNJ5eRyjIZ686lplVZ0/SnA
+         cEXNfRPdpKW/pmVb6P1eH15+uhYZQIZbtsdpqAwL4Rwvd94e5uavkmPmXokXC+YyZWRU
+         RvFPY1ytpel4i70ov5M64XiFOhAXOClozrd/gjt2m3MnEg9qm8HzJTLF5i0I1F430of0
+         lPBycSXlNECNBu1ksMvooXcDifAFNs+gBWKVuVPqN36boiwACLAxFlKpCre1Q9McUBp7
+         dRoA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=XFC/MHhgEfE1Nr1X5gKwGHcvslnu2HFr4KUXcEkFuLU=;
-        b=nS8IXV7G5BwC++cXKsf4htX6kCTvCQW1M9fq2f99WheX6FE7Y6qA+ab4gJQiHZPkms
-         GtTlt1eqO/gfOS7UKlaAGG68vDaJpl9ryIFgelVLiC/kLcKH5WZ6gZJx1oJEkqV59VUW
-         0NX03xC3qXI5iz7vdQiOd1BhG3rQrKcvhMY8++SkQV2r2bUzJYc4QlNhIULcjVAqbLku
-         DxdLBDeB3wf10hRXFi37ZLfAOo/GmMqVUJkOKUZxtGmNBA8nDkhakquooqEH4fgSIzjV
-         O717bLqAQpeFThZ0Jht4/fZW7jB0ujv8RvBk8w9s9J/iUxp8viClGr/38zfmdwIagjmA
-         RSJg==
-X-Gm-Message-State: APjAAAUU6ogGIrRfYvaTuoa1Ta44n35gTG9qz/9f7937S1Xc/2Xfxcnq
-	ZWizdbRSttsD/bSFytyzNtWL6/bT
-X-Google-Smtp-Source: APXvYqyiWlvXOn9WgM02ds8lR8EvTJyN55e/d9sXN8XZrp+GAUg5yX9LVJptk09Z85aIfligIKaO4g==
-X-Received: by 2002:aca:5246:: with SMTP id g67mr2224940oib.116.1562741934515;
-        Tue, 09 Jul 2019 23:58:54 -0700 (PDT)
+        bh=h5S9zXKt2KZUpFw1CUz/xrLyFiXFBrqUIN37igt1/Ec=;
+        b=ioZC9l1IEQEj7BbniyLccx2TnuhkqavMLshPsMiXVmJtOGBQpJZOSn8qlyRxXZ9i40
+         ia1aHjcC68veJ26BwmfijfANFP0YkHpLl7u38elsXd5gYUCrEePPqlDauWEpPkI/sG/m
+         Pl/bDuJ0ubBcJsaQ01MGCQ6dQpfR3/byi3zefVqC0ybv+5JOVwu3mFcRJcFrQBd4CZ2B
+         4JuByhlCA4aftmbc+cZiOXjBLi1ISFRjfn0HrShXHP47cNo8IUysgbJbdF9gBuejQfJQ
+         SIgrIsAY5OZCjfpscM96Rwhx2mOc1X/iBW0eR9uoBq/4r16pVWZL5R9XxqcghfoWFd6q
+         Jx9Q==
+X-Gm-Message-State: APjAAAWKGLR/cmdSrADGcwwNw7sfJm+jWOkD+3LlSkAsWsBT2ThgRCDT
+	C4t46vUoB2ycwI0fAP3SdgQ+Ac/y
+X-Google-Smtp-Source: APXvYqw+x2+k/dfy1dgX97DTyXtqPJy4dECE0GVAhrop20WK33O+1tkYhmuIYllKBQ6y2u7wXzssDw==
+X-Received: by 2002:a9d:664c:: with SMTP id q12mr21149674otm.175.1562742871937;
+        Wed, 10 Jul 2019 00:14:31 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.43.94] ([172.56.7.82])
-        by smtp.gmail.com with ESMTPSA id v22sm571659oth.19.2019.07.09.23.58.49
+        by smtp.gmail.com with ESMTPSA id r130sm556344oib.41.2019.07.10.00.14.28
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 09 Jul 2019 23:58:53 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH v1 2/5] tests/tcg: fix up test-i386-fprem.ref
- generation
+        Wed, 10 Jul 2019 00:14:31 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v1 4/5] gdbstub: add some notes to the header
+ comment
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
-Cc: Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
- Jan Bobek <jan.bobek@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <rth@twiddle.net>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-arm@nongnu.org
 References: <20190705160421.19015-1-alex.bennee@linaro.org>
- <20190705160421.19015-3-alex.bennee@linaro.org>
+ <20190705160421.19015-5-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <d2af01c5-bb85-e6a5-cb02-f73e741e5324@linaro.org>
-Date: Wed, 10 Jul 2019 08:58:41 +0200
+Message-ID: <aec9314d-c1e9-2521-6170-d8ce6be97a97@linaro.org>
+Date: Wed, 10 Jul 2019 09:14:19 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.1
 MIME-Version: 1.0
-In-Reply-To: <20190705160421.19015-3-alex.bennee@linaro.org>
+In-Reply-To: <20190705160421.19015-5-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: zVwAXjjli6MW
+X-TUID: U0n9SiwHrz34
 
 On 7/5/19 6:04 PM, Alex Bennée wrote:
-> We never shipped the reference data in the source tree because it was
-> quite big (64M). As a result the only option is to generate it
-> locally. Although we have a rule to generate the reference file we
-> missed the dependency and location changes, probably because it is
-> only run for SLOW test runs.
-> 
-> The test still fails with mostly incorrect flags and different than
-> expected NaNs. I'll leave that for the x86 experts to look at.
+> Add a link to the remote protocol spec and an SPDX tag.
 > 
 > Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: Richard Henderson <rth@twiddle.net>
-> Cc: Eduardo Habkost <ehabkost@redhat.com>
-> Cc: Jan Bobek <jan.bobek@gmail.com>
 > ---
->  tests/tcg/i386/Makefile.target | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  gdbstub.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/gdbstub.c b/gdbstub.c
+> index 8618e34311..ea3349d1aa 100644
+> --- a/gdbstub.c
+> +++ b/gdbstub.c
+> @@ -1,6 +1,10 @@
+>  /*
+>   * gdb server stub
+>   *
+> + * This implements a subset of the remote protocol as described in:
+> + *
+> + *   https://sourceware.org/gdb/onlinedocs/gdb/Remote-Protocol.html
+> + *
 
-There's nothing here to guess that test-i386-fprem is in any way natively
-runnable.  Otherwise you might just end up testing against the installed qemu.
+Ack.
 
-On the other hand, at the moment this simply won't run at all, since the input
-file is missing.  So I suppose this is good enough for SLOW.
+>   * Copyright (c) 2003-2005 Fabrice Bellard
+>   *
+>   * This library is free software; you can redistribute it and/or
+> @@ -15,6 +19,8 @@
+>   *
+>   * You should have received a copy of the GNU Lesser General Public
+>   * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Nack.  The text is for the LGPL.
 
 
 r~

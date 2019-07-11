@@ -1,395 +1,183 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp988812wrv;
-        Thu, 11 Jul 2019 10:42:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwU1y4JbzSeMOY9WYZB6FKEWHmzEyfawReYqaE0iDNJaxcgb61I6+c5SEQR0gcUUHZ8YMxs
-X-Received: by 2002:a50:eb8b:: with SMTP id y11mr4831107edr.154.1562866966662;
-        Thu, 11 Jul 2019 10:42:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562866966; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp989019wrv;
+        Thu, 11 Jul 2019 10:43:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxtbq1o4iCa2x8Ywjj1SSfxqdlLC7T5HzKouehWM056yF+wzD1eBhED5KvvIpUPYXaADK8A
+X-Received: by 2002:aa7:c515:: with SMTP id o21mr4873184edq.2.1562866982544;
+        Thu, 11 Jul 2019 10:43:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562866982; cv=none;
         d=google.com; s=arc-20160816;
-        b=WIal+jw2X0lSwHecbnfOZC+M886C3iPyRi0h4O9/cOHGGckgg4zBdw3IZi226dMs/x
-         g8pnpByaia8Z+/nNYojDyE9i2u/fgeoi+EZ8tuZlw55RnR1fvAIoJveWJRgVdOQYOmD2
-         NXc8YruDrObyyTjd+rR0pnyuBUxI6Ak6KDIJHsVpqRNA1GQWlbimnQZPPIoJsInlyBd7
-         CTAdXmbEuqrtiEueYb5d7HUm3GCJ81e9rj4XcGYABjkSjZKtldf+LHqKiNCXR+cMsSgV
-         0uVnpiNEY7l+T8R6QDojHllI0Fdka/zRrYIAHVW5BZF+6dri6/0DPbt4G5LmdXq6GZa8
-         061w==
+        b=nsuMlf0ATo4GOTzs8cPEtr2dEFlKmC2nMwuVsr6oo7xJp05n+8y/mvl9BIle8fgtHN
+         H73hrgOZ2ZH2niKuMZEYf1NaAh/In4EvcV4YMMdWDQHhWiiOAcHXzulA0DZdbvzTmBNV
+         ldBy1Xd36tu0x6b5PWAkejxsZ5hJvscI0zV1vN3sABZQJvZqoRJYx5IrmVRcVvaBspOO
+         gs43h0SqH0QEn+i2CX2c13nNzgP5YWcUJ1+uFgM8New7uDob7+afRtJsqRc1mV872yRV
+         cOWt/zu3Ks40nzBfkSjlmgYe34k0ZHPPHW86aziDVonBWPXU/CgW4RUmY400bIdb4Nk5
+         NHUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=UDbhFfMoobx96IKzj76egNDglq26k/uzrPvoHckWxa4=;
-        b=OjzxfttRFn0bUzwdV1wsjPF0co6/duf2wex1R9AWy7D+SWEuOTaT+BH1+Vc32ttaH/
-         jcbJtu5y4BnE7R1oH0nXedAiz/bzvz2oe+QTT+s6PlQswJqQI1k3r/Nys92uYcfIzBsF
-         sXza6qZtSoKaexlBXh5qBvwJMl8cSz6xrYnNFeBNCWubNEhzMS8lJOxVQpiSvx2l74EG
-         q+SbQvkZF9HaVzUl5mpmN7HWJQ/ZeT0iQueaiZyiPOKKApshSNCA5e0Yb0tCa1ttxEsR
-         HIe/XipPwJC7WBiTjzXoMPN9WGDP7bOgzslzZjaMeqltImFjGbs0F2XwQoiBo3io0ZeD
-         HrtA==
+        bh=mkkz2AIY/RkelFHl7nhE9cIEf4MkkglfZFYX3ISggjQ=;
+        b=sHXQlNA3tYXC58oV0YhZTzWDVCp/uaAvRZTZDv+aSLKmcpOHkw6N9VV2VO6E4ffXPq
+         bGFFok1VOB51S4lHPR23lb/2yHjEWOkfMpST82A/OI+WlXY63JJVKHH0bcRmjIEbkwbG
+         4WkNqmZPP3KEV0q4KRcVZPUwm5borMJie5Nzw0+LNbqSqOEBm+b7Z+ym1MnUsh22rHmo
+         /hOxIcZIgRmBV82LBt+bRQO1W40CYhE/paQlnMWiz1WjUnq3tpei/SlAXMhf9N/BdjiI
+         FnVWOLufE0Vnhhfl/+zHpFoGfh0lsukFnVIv105r5ZF2te6KhJsCAYQ8t9SbKcn6NoTN
+         el1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pv18si2172144ejb.115.2019.07.11.10.42.46
+        by mx.google.com with ESMTPS id q19si3236148ejt.48.2019.07.11.10.43.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jul 2019 10:42:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 11 Jul 2019 10:43:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44222 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44228 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hld5g-0002FT-9i
-	for alex.bennee@linaro.org; Thu, 11 Jul 2019 13:42:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38729)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hld5w-000345-17
+	for alex.bennee@linaro.org; Thu, 11 Jul 2019 13:43:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38477)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <eric.auger@redhat.com>) id 1hld4n-000778-Hd
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:41:51 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1hld4T-0005fM-Eb
+ for qemu-devel@nongnu.org; Thu, 11 Jul 2019 13:41:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1hld4l-0005QI-Hd
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:41:49 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50371)
+ (envelope-from <eric.auger@redhat.com>) id 1hld4P-0004y9-9s
+ for qemu-devel@nongnu.org; Thu, 11 Jul 2019 13:41:27 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48878)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1hld4l-0005PV-8t; Thu, 11 Jul 2019 13:41:47 -0400
+ id 1hld4L-0004d6-3d; Thu, 11 Jul 2019 13:41:21 -0400
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
  [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 7E84E308FEE0;
- Thu, 11 Jul 2019 17:41:46 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 70E4E8665F;
+ Thu, 11 Jul 2019 17:40:51 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-46.ams2.redhat.com [10.36.116.46])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0181660600;
- Thu, 11 Jul 2019 17:41:35 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 773F860A97;
+ Thu, 11 Jul 2019 17:40:46 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Thu, 11 Jul 2019 19:39:21 +0200
-Message-Id: <20190711173933.31203-18-eric.auger@redhat.com>
+Date: Thu, 11 Jul 2019 19:39:14 +0200
+Message-Id: <20190711173933.31203-11-eric.auger@redhat.com>
 In-Reply-To: <20190711173933.31203-1-eric.auger@redhat.com>
 References: <20190711173933.31203-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.49]); Thu, 11 Jul 2019 17:41:46 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.26]); Thu, 11 Jul 2019 17:40:51 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v5 17/29] vfio: Set up nested stage mappings
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [RFC v5 10/29] memory: Introduce IOMMU Memory Region
+ inject_faults API
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: drjones@redhat.com, yi.l.liu@intel.com, mst@redhat.com,
  jean-philippe.brucker@arm.com, zhangfei.gao@foxmail.com, peterx@redhat.com,
  alex.williamson@redhat.com, vincent.stehle@arm.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ltF+UqR5dPtq
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Dybds2w2qyu6
 
-In nested mode, legacy vfio_iommu_map_notify cannot be used as
-there is no "caching" mode and we do not trap on map.
-
-On Intel, vfio_iommu_map_notify was used to DMA map the RAM
-through the host single stage.
-
-With nested mode, we need to setup the stage 2 and the stage 1
-separately. This patch introduces a prereg_listener to setup
-the stage 2 mapping.
-
-The stage 1 mapping, owned by the guest, is passed to the host
-when the guest invalidates the stage 1 configuration, through
-a dedicated PCIPASIDOps callback. Guest IOTLB invalidations
-are cascaded downto the host through another IOMMU MR UNMAP
-notifier.
+This new API allows to inject @count iommu_faults into
+the IOMMU memory region.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-
 ---
+ include/exec/memory.h | 25 +++++++++++++++++++++++++
+ memory.c              | 10 ++++++++++
+ 2 files changed, 35 insertions(+)
 
-v4 -> v5:
-- use VFIO_IOMMU_SET_PASID_TABLE
-- use PCIPASIDOps for config notification
-
-v3 -> v4:
-- use iommu_inv_pasid_info for ASID invalidation
-
-v2 -> v3:
-- use VFIO_IOMMU_ATTACH_PASID_TABLE
-- new user API
-- handle leaf
-
-v1 -> v2:
-- adapt to uapi changes
-- pass the asid
-- pass IOMMU_NOTIFIER_S1_CFG when initializing the config notifier
----
- hw/vfio/common.c     | 123 +++++++++++++++++++++++++++++++++++++++----
- hw/vfio/pci.c        |  21 ++++++++
- hw/vfio/trace-events |   2 +
- 3 files changed, 136 insertions(+), 10 deletions(-)
-
-diff --git a/hw/vfio/common.c b/hw/vfio/common.c
-index ef8452a4bc..bd975c5b83 100644
---- a/hw/vfio/common.c
-+++ b/hw/vfio/common.c
-@@ -444,6 +444,52 @@ static bool vfio_get_vaddr(IOMMUTLBEntry *iotlb, voi=
-d **vaddr,
-     return true;
- }
-=20
-+/* Propagate a guest IOTLB invalidation to the host (nested mode) */
-+static void vfio_iommu_unmap_notify(IOMMUNotifier *n, IOMMUTLBEntry *iot=
-lb)
-+{
-+    VFIOGuestIOMMU *giommu =3D container_of(n, VFIOGuestIOMMU, n);
-+    hwaddr start =3D iotlb->iova + giommu->iommu_offset;
-+
-+    VFIOContainer *container =3D giommu->container;
-+    struct vfio_iommu_type1_cache_invalidate ustruct;
-+    size_t size =3D iotlb->addr_mask + 1;
-+    int ret;
-+
-+    assert(iotlb->perm =3D=3D IOMMU_NONE);
-+
-+    ustruct.argsz =3D sizeof(ustruct);
-+    ustruct.flags =3D 0;
-+    ustruct.info.version =3D IOMMU_CACHE_INVALIDATE_INFO_VERSION_1;
-+
-+    if (size <=3D 0x10000) {
-+        ustruct.info.cache =3D IOMMU_CACHE_INV_TYPE_IOTLB;
-+        ustruct.info.granularity =3D IOMMU_INV_GRANU_ADDR;
-+        ustruct.info.addr_info.flags =3D IOMMU_INV_ADDR_FLAGS_ARCHID;
-+        if (iotlb->leaf) {
-+            ustruct.info.addr_info.flags |=3D IOMMU_INV_ADDR_FLAGS_LEAF;
-+        }
-+        ustruct.info.addr_info.archid =3D iotlb->arch_id;
-+        ustruct.info.addr_info.addr =3D start;
-+        ustruct.info.addr_info.granule_size =3D size;
-+        ustruct.info.addr_info.nb_granules =3D 1;
-+        trace_vfio_iommu_addr_inv_iotlb(iotlb->arch_id, start, size, 1,
-+                                        iotlb->leaf);
-+    } else {
-+        ustruct.info.cache =3D IOMMU_CACHE_INV_TYPE_IOTLB;
-+        ustruct.info.granularity =3D IOMMU_INV_GRANU_PASID;
-+        ustruct.info.pasid_info.archid =3D iotlb->arch_id;
-+        ustruct.info.pasid_info.flags =3D IOMMU_INV_PASID_FLAGS_ARCHID;
-+        trace_vfio_iommu_asid_inv_iotlb(iotlb->arch_id);
-+    }
-+
-+    ret =3D ioctl(container->fd, VFIO_IOMMU_CACHE_INVALIDATE, &ustruct);
-+    if (ret) {
-+        error_report("%p: failed to invalidate CACHE for 0x%"PRIx64
-+                     " mask=3D0x%"PRIx64" (%d)",
-+                     container, start, iotlb->addr_mask, ret);
-+    }
-+}
-+
- static void vfio_iommu_map_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb=
-)
- {
-     VFIOGuestIOMMU *giommu =3D container_of(n, VFIOGuestIOMMU, n);
-@@ -613,6 +659,32 @@ static void vfio_dma_unmap_ram_section(VFIOContainer=
- *container,
-     }
- }
-=20
-+static void vfio_prereg_listener_region_add(MemoryListener *listener,
-+                                            MemoryRegionSection *section=
-)
-+{
-+    VFIOContainer *container =3D
-+        container_of(listener, VFIOContainer, prereg_listener);
-+
-+    if (!memory_region_is_ram(section->mr)) {
-+        return;
-+    }
-+
-+    vfio_dma_map_ram_section(container, section);
-+
-+}
-+static void vfio_prereg_listener_region_del(MemoryListener *listener,
-+                                     MemoryRegionSection *section)
-+{
-+    VFIOContainer *container =3D
-+        container_of(listener, VFIOContainer, prereg_listener);
-+
-+    if (!memory_region_is_ram(section->mr)) {
-+        return;
-+    }
-+
-+    vfio_dma_unmap_ram_section(container, section);
-+}
-+
- static void vfio_listener_region_add(MemoryListener *listener,
-                                      MemoryRegionSection *section)
- {
-@@ -709,10 +781,11 @@ static void vfio_listener_region_add(MemoryListener=
- *listener,
-     memory_region_ref(section->mr);
-=20
-     if (memory_region_is_iommu(section->mr)) {
-+        IOMMUNotify notify;
-         VFIOGuestIOMMU *giommu;
-         IOMMUMemoryRegion *iommu_mr =3D IOMMU_MEMORY_REGION(section->mr)=
-;
-         bool nested;
--        int iommu_idx;
-+        int iommu_idx, flags;
-=20
-         trace_vfio_listener_region_add_iommu(iova, end);
-=20
-@@ -738,15 +811,26 @@ static void vfio_listener_region_add(MemoryListener=
- *listener,
-         llend =3D int128_sub(llend, int128_one());
-         iommu_idx =3D memory_region_iommu_attrs_to_index(iommu_mr,
-                                                        MEMTXATTRS_UNSPEC=
-IFIED);
--        iommu_notifier_init(&giommu->n, vfio_iommu_map_notify,
--                            IOMMU_NOTIFIER_ALL,
--                            section->offset_within_region,
--                            int128_get64(llend),
--                            iommu_idx);
--        QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_next);
-=20
-+        if (container->iommu_type =3D=3D VFIO_TYPE1_NESTING_IOMMU) {
-+            /* IOTLB unmap notifier to propagate guest IOTLB invalidatio=
-ns */
-+            flags =3D IOMMU_NOTIFIER_UNMAP;
-+            notify =3D vfio_iommu_unmap_notify;
-+        } else {
-+            /* MAP/UNMAP IOTLB notifier */
-+            flags =3D IOMMU_NOTIFIER_ALL;
-+            notify =3D vfio_iommu_map_notify;
-+        }
-+
-+        iommu_notifier_init(&giommu->n, notify, flags,
-+                            section->offset_within_region,
-+                            int128_get64(llend), iommu_idx);
-+        QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_next);
-         memory_region_register_iommu_notifier(section->mr, &giommu->n);
--        memory_region_iommu_replay(giommu->iommu, &giommu->n);
-+
-+        if (flags & IOMMU_NOTIFIER_MAP) {
-+            memory_region_iommu_replay(giommu->iommu, &giommu->n);
-+        }
-=20
-         return;
-     }
-@@ -835,15 +919,21 @@ static void vfio_listener_region_del(MemoryListener=
- *listener,
-     }
- }
-=20
--static const MemoryListener vfio_memory_listener =3D {
-+static MemoryListener vfio_memory_listener =3D {
-     .region_add =3D vfio_listener_region_add,
-     .region_del =3D vfio_listener_region_del,
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 593ef947c6..d0de192887 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -54,6 +54,8 @@ struct MemoryRegionMmio {
+     CPUWriteMemoryFunc *write[3];
  };
 =20
-+static MemoryListener vfio_memory_prereg_listener =3D {
-+    .region_add =3D vfio_prereg_listener_region_add,
-+    .region_del =3D vfio_prereg_listener_region_del,
-+};
++struct iommu_fault;
 +
- static void vfio_listener_release(VFIOContainer *container)
- {
-     memory_listener_unregister(&container->listener);
--    if (container->iommu_type =3D=3D VFIO_SPAPR_TCE_v2_IOMMU) {
-+    if (container->iommu_type =3D=3D VFIO_SPAPR_TCE_v2_IOMMU ||
-+        container->iommu_type =3D=3D VFIO_TYPE1_NESTING_IOMMU) {
-         memory_listener_unregister(&container->prereg_listener);
-     }
- }
-@@ -1340,6 +1430,19 @@ static int vfio_connect_container(VFIOGroup *group=
-, AddressSpace *as,
-         }
-         vfio_host_win_add(container, 0, (hwaddr)-1, info.iova_pgsizes);
-         container->pgsizes =3D info.iova_pgsizes;
+ typedef struct IOMMUTLBEntry IOMMUTLBEntry;
+=20
+ /* See address_space_translate: bit 0 is read, bit 1 is write.  */
+@@ -342,6 +344,19 @@ typedef struct IOMMUMemoryRegionClass {
+      * @iommu: the IOMMUMemoryRegion
+      */
+     int (*num_indexes)(IOMMUMemoryRegion *iommu);
 +
-+        if (container->iommu_type =3D=3D VFIO_TYPE1_NESTING_IOMMU) {
-+            container->prereg_listener =3D vfio_memory_prereg_listener;
-+            memory_listener_register(&container->prereg_listener,
-+                                     &address_space_memory);
-+            if (container->error) {
-+                memory_listener_unregister(&container->prereg_listener);
-+                ret =3D container->error;
-+                error_setg(errp, "RAM memory listener initialization fai=
-led "
-+                          " for container");
-+                goto free_container_exit;
-+            }
-+        }
-         break;
-     }
-     case VFIO_SPAPR_TCE_v2_IOMMU:
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index d7a4e1875c..729f1f353e 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -2693,6 +2693,25 @@ static void vfio_unregister_req_notifier(VFIOPCIDe=
-vice *vdev)
-     vdev->req_enabled =3D false;
++    /*
++     * Inject @count faults into the IOMMU memory region
++     *
++     * Optional method: if this method is not provided, then
++     * memory_region_injection_faults() will return -ENOENT
++     *
++     * @iommu: the IOMMU memory region to inject the faults in
++     * @count: number of faults to inject
++     * @buf: fault buffer
++     */
++    int (*inject_faults)(IOMMUMemoryRegion *iommu, int count,
++                         struct iommu_fault *buf);
+ } IOMMUMemoryRegionClass;
+=20
+ typedef struct CoalescedMemoryRange CoalescedMemoryRange;
+@@ -1123,6 +1138,16 @@ int memory_region_iommu_attrs_to_index(IOMMUMemory=
+Region *iommu_mr,
+  */
+ int memory_region_iommu_num_indexes(IOMMUMemoryRegion *iommu_mr);
+=20
++/**
++ * memory_region_inject_faults : inject @count faults stored in @buf
++ *
++ * @iommu_mr: the IOMMU memory region
++ * @count: number of faults to be injected
++ * @buf: buffer containing the faults
++ */
++int memory_region_inject_faults(IOMMUMemoryRegion *iommu_mr, int count,
++                                struct iommu_fault *buf);
++
+ /**
+  * memory_region_name: get a memory region's name
+  *
+diff --git a/memory.c b/memory.c
+index 90967b579d..d81525fe11 100644
+--- a/memory.c
++++ b/memory.c
+@@ -2000,6 +2000,16 @@ int memory_region_iommu_num_indexes(IOMMUMemoryReg=
+ion *iommu_mr)
+     return imrc->num_indexes(iommu_mr);
  }
 =20
-+static int vfio_iommu_set_pasid_table(PCIBus *bus, int32_t devfn,
-+                                      IOMMUConfig *config)
++int memory_region_inject_faults(IOMMUMemoryRegion *iommu_mr, int count,
++                                struct iommu_fault *buf)
 +{
-+    PCIDevice *pdev =3D bus->devices[devfn];
-+    VFIOPCIDevice *vdev =3D DO_UPCAST(VFIOPCIDevice, pdev, pdev);
-+    VFIOContainer *container =3D vdev->vbasedev.group->container;
-+    struct vfio_iommu_type1_set_pasid_table info;
-+
-+    info.argsz =3D sizeof(info);
-+    info.flags =3D VFIO_PASID_TABLE_FLAG_SET;
-+    memcpy(&info.config, &config->pasid_cfg, sizeof(config->pasid_cfg));
-+
-+    return ioctl(container->fd, VFIO_IOMMU_SET_PASID_TABLE, &info);
++    IOMMUMemoryRegionClass *imrc =3D IOMMU_MEMORY_REGION_GET_CLASS(iommu=
+_mr);
++    if (!imrc->inject_faults) {
++        return -ENOENT;
++    }
++    return imrc->inject_faults(iommu_mr, count, buf);
 +}
 +
-+static PCIPASIDOps vfio_pci_pasid_ops =3D {
-+    .set_pasid_table =3D vfio_iommu_set_pasid_table,
-+};
-+
- static void vfio_realize(PCIDevice *pdev, Error **errp)
+ void memory_region_set_log(MemoryRegion *mr, bool log, unsigned client)
  {
-     VFIOPCIDevice *vdev =3D PCI_VFIO(pdev);
-@@ -2994,6 +3013,8 @@ static void vfio_realize(PCIDevice *pdev, Error **e=
-rrp)
-     vfio_register_req_notifier(vdev);
-     vfio_setup_resetfn_quirk(vdev);
-=20
-+    pci_setup_pasid_ops(pdev, &vfio_pci_pasid_ops);
-+
-     return;
-=20
- out_teardown:
-diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
-index 410801de6e..9f1868af2d 100644
---- a/hw/vfio/trace-events
-+++ b/hw/vfio/trace-events
-@@ -115,6 +115,8 @@ vfio_region_sparse_mmap_header(const char *name, int =
-index, int nr_areas) "Devic
- vfio_region_sparse_mmap_entry(int i, unsigned long start, unsigned long =
-end) "sparse entry %d [0x%lx - 0x%lx]"
- vfio_get_dev_region(const char *name, int index, uint32_t type, uint32_t=
- subtype) "%s index %d, %08x/%0x8"
- vfio_dma_unmap_overflow_workaround(void) ""
-+vfio_iommu_addr_inv_iotlb(int asid, uint64_t addr, uint64_t size, uint64=
-_t nb_granules, bool leaf) "nested IOTLB invalidate asid=3D%d, addr=3D0x%=
-"PRIx64" granule_size=3D0x%"PRIx64" nb_granules=3D0x%"PRIx64" leaf=3D%d"
-+vfio_iommu_asid_inv_iotlb(int asid) "nested IOTLB invalidate asid=3D%d"
-=20
- # platform.c
- vfio_platform_base_device_init(char *name, int groupid) "%s belongs to g=
-roup #%d"
+     uint8_t mask =3D 1 << client;
 --=20
 2.20.1
 

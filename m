@@ -1,81 +1,82 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp980752wrv;
-        Thu, 11 Jul 2019 10:33:54 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyo0mOsnink+WgwUEqxX2lARuZ6lpTpeAHw2+TB800hs2S2Sc2NCpgMMJ5ZCRAJx3F6BhOK
-X-Received: by 2002:a17:906:2599:: with SMTP id m25mr4220959ejb.177.1562866434800;
-        Thu, 11 Jul 2019 10:33:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562866434; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp980818wrv;
+        Thu, 11 Jul 2019 10:34:00 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx8pl3GC0ss90FKLj38Br0HhlBa6SNQJff663BCGTx6WgatNlra3VVOoFASzXYQVqFtBhd8
+X-Received: by 2002:a17:906:1594:: with SMTP id k20mr4306892ejd.49.1562866440182;
+        Thu, 11 Jul 2019 10:34:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562866440; cv=none;
         d=google.com; s=arc-20160816;
-        b=jG5cdAoy0jQEl46rCyRk7RiFAgKcli5XbcWqxLIEq1tVfg8f+ezkgrBCd4sRXjUDUe
-         +XyLSCT54VkV/x3FIG/wbGHn/lymwhb+VGf49fzwIg/NL0GIaezn+o7zgjKWwlixTOtE
-         cQJGmL8WL9gANEHNARXfZCfyN+sgINg2AYAgqWIn1K+HnWfV0T0iv216FSHU7jG+jnNH
-         QpIwqep297AiUwikplfN3OrROFbD7JDlO1+3LfQrvZMYob04vVnym0dTziZXju8dXhbE
-         M9/L3ixVXtJF3Kta9Sf2uYz6U/LGAsGXspKBAdom+ymjaa9Sza/ZurlUnys9AJSMM+nY
-         r8rQ==
+        b=ge4jFvIxgspcP7jSUDrpcEOr6xmDBCyEZ0e5M6ENFKv1AUuEpGJaFi22x5C1KhKGv4
+         pi8m7uyidJjcZVMnAn5tmS9biVQ3LKwaURo8zjdwlpWfra8HnYxt8pNPL1sufXaqUuK+
+         YBgo+Plex0GVCx6dV4CWrki9Qp7G9G3LKY+NWXCcEO8aLhOoKRZZTgw3TmH0nJjiapXa
+         9qObNzf9wwS9Z0KKf2+ZSrZokKsmCnqPQDJaJRbA2NREqV/3vcutTG8i1+0en1EXsAX+
+         D8DwmnaZdElvlZXIURGNSwkEXnzFx90IiqAIJwttEBokl4or/PlrirK+XDzRfuyQQoB3
+         78Og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=SPLQiDP+dlJ3+9qUpTJ3aSXZrzy4+Y8WYOMlZ3AnnpI=;
-        b=EBfVpcfWywVffTSOZoQ0M6ahwgUOHtCIb1Gfo9eaayvDyALnfkD7xGuNQpnpIOrQSu
-         fwkCtKyreSAYYoVbJkYldAMRP5yZI4KIBnYIHoy3dTbifrMRgPD8zKlhX+9oGJ5/CL4Y
-         pNqiGVN9NTuE9rnbWRj24c80OY9ceL6wdBKICGoyXxGzzkEU/yRvYGqRggkn/8txFJ10
-         vAspIUvMvcgx6mzPmz4vL2dCa1SH9t1dTGz4ICqtyFHJxyUorL3S/sONjXo8FN3CHyMG
-         xGG+VtXU8T40FF7TLsljWHWBCNgVU2Q8yCYWOvKgYjOX6XeBa5YwXoJoFHhf8ZDuvA4U
-         QwMg==
+        bh=wBPzzBn9TdLnefRIHR4ofUqDXXgleC0fbJl17ncnuNk=;
+        b=PEAcGtF0ZMr4Qhf0TkTYlr+ZFPFmlUCfar+JlAM0FwGo75iCycB4DKG8pdyFie8sgX
+         Oc2SZxl2EaocfbeQjlGpeG6aGyh0SlQ8jk9c30Hl4xeJvjs59ZH8iMp9yi84kqUUs2jG
+         /jILoOVRbfrgszXjHcitVIVmGrvz8me0FTP/XRloaJyC2cjkzHMthOVP0AxPJ+RE2Q79
+         t1ixMRIHlg7SovDEo8gTef/ihnw5n9XutgZYGA70QjZOugaTiOe9B/Tztzry1eOCoaKF
+         btbJEdaCLESv5VJik3a1FSKnhO1kVidpmW7BvreqGpDpaiPncJMhsdKErRKBFjJPwWZ9
+         pkGw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n23si3351970ejy.60.2019.07.11.10.33.54
+        by mx.google.com with ESMTPS id x58si4004887eda.238.2019.07.11.10.34.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jul 2019 10:33:54 -0700 (PDT)
+        Thu, 11 Jul 2019 10:34:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43968 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43970 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hlcx7-00030f-Na
-	for alex.bennee@linaro.org; Thu, 11 Jul 2019 13:33:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34854)
+	id 1hlcxB-00035r-Qi
+	for alex.bennee@linaro.org; Thu, 11 Jul 2019 13:33:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34994)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <eric.auger@redhat.com>) id 1hlcvC-00050A-Mb
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:31:56 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1hlcvM-0005Zr-UT
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:32:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1hlcv7-000482-Jp
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:31:52 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36306)
+ (envelope-from <eric.auger@redhat.com>) id 1hlcvK-0004Nu-Mj
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:32:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34276)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1hlcv6-000457-JW; Thu, 11 Jul 2019 13:31:49 -0400
+ id 1hlcvK-0004Le-FT; Thu, 11 Jul 2019 13:32:02 -0400
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B05AAC18B2C2;
- Thu, 11 Jul 2019 17:31:46 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id B3FAC307D857;
+ Thu, 11 Jul 2019 17:32:00 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-46.ams2.redhat.com [10.36.116.46])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7E6B95C1B4;
- Thu, 11 Jul 2019 17:31:41 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6E9BF5C1B4;
+ Thu, 11 Jul 2019 17:31:55 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Thu, 11 Jul 2019 19:28:37 +0200
-Message-Id: <20190711172845.31035-22-eric.auger@redhat.com>
+Date: Thu, 11 Jul 2019 19:28:39 +0200
+Message-Id: <20190711172845.31035-24-eric.auger@redhat.com>
 In-Reply-To: <20190711172845.31035-1-eric.auger@redhat.com>
 References: <20190711172845.31035-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.31]); Thu, 11 Jul 2019 17:31:46 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.48]); Thu, 11 Jul 2019 17:32:00 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v4 21/29] vfio/pci: Set up the DMA FAULT region
+Subject: [Qemu-arm] [RFC v4 23/29] hw/arm/smmuv3: Advertise MSI_TRANSLATE
+ attribute
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -92,140 +93,34 @@ Cc: drjones@redhat.com, yi.l.liu@intel.com, mst@redhat.com,
  alex.williamson@redhat.com, vincent.stehle@arm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FqAfoRNZu4gm
+X-TUID: SDEkRbNGsVOJ
 
-Set up the fault region which is composed of the actual fault
-queue (mmappable) and a header used to handle it. The fault
-queue is mmapped.
+The SMMUv3 has the peculiarity to translate MSI
+transactionss. let's advertise the corresponding
+attribute.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
-
-v4 -> v5:
-- use a single DMA FAULT region. No version selection anymore
 ---
- hw/vfio/pci.c | 64 +++++++++++++++++++++++++++++++++++++++++++++++++++
- hw/vfio/pci.h |  1 +
- 2 files changed, 65 insertions(+)
+ hw/arm/smmuv3.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-index 19702cdbbf..8c8647c4b5 100644
---- a/hw/vfio/pci.c
-+++ b/hw/vfio/pci.c
-@@ -2511,11 +2511,67 @@ int vfio_populate_vga(VFIOPCIDevice *vdev, Error =
-**errp)
-     return 0;
- }
-=20
-+static void vfio_init_fault_regions(VFIOPCIDevice *vdev, Error **errp)
-+{
-+    struct vfio_region_info *fault_region_info =3D NULL;
-+    struct vfio_region_info_cap_fault *cap_fault;
-+    VFIODevice *vbasedev =3D &vdev->vbasedev;
-+    struct vfio_info_cap_header *hdr;
-+    char *fault_region_name;
-+    int ret;
-+
-+    ret =3D vfio_get_dev_region_info(&vdev->vbasedev,
-+                                   VFIO_REGION_TYPE_NESTED,
-+                                   VFIO_REGION_SUBTYPE_NESTED_DMA_FAULT,
-+                                   &fault_region_info);
-+    if (ret) {
-+        goto out;
-+    }
-+
-+    hdr =3D vfio_get_region_info_cap(fault_region_info,
-+                                   VFIO_REGION_INFO_CAP_DMA_FAULT);
-+    if (!hdr) {
-+        error_setg(errp, "failed to retrieve DMA FAULT capability");
-+        goto out;
-+    }
-+    cap_fault =3D container_of(hdr, struct vfio_region_info_cap_fault,
-+                             header);
-+    if (cap_fault->version !=3D 1) {
-+        error_setg(errp, "Unsupported DMA FAULT API version %d",
-+                   cap_fault->version);
-+        goto out;
-+    }
-+
-+    fault_region_name =3D g_strdup_printf("%s DMA FAULT %d",
-+                                        vbasedev->name,
-+                                        fault_region_info->index);
-+
-+    ret =3D vfio_region_setup(OBJECT(vdev), vbasedev,
-+                            &vdev->dma_fault_region,
-+                            fault_region_info->index,
-+                            fault_region_name);
-+    g_free(fault_region_name);
-+    if (ret) {
-+        error_setg_errno(errp, -ret,
-+                         "failed to set up the DMA FAULT region %d",
-+                         fault_region_info->index);
-+        goto out;
-+    }
-+
-+    ret =3D vfio_region_mmap(&vdev->dma_fault_region);
-+    if (ret) {
-+        error_setg_errno(errp, -ret, "Failed to mmap the DMA FAULT queue=
-");
-+    }
-+out:
-+    g_free(fault_region_info);
-+}
-+
- static void vfio_populate_device(VFIOPCIDevice *vdev, Error **errp)
- {
-     VFIODevice *vbasedev =3D &vdev->vbasedev;
-     struct vfio_region_info *reg_info;
-     struct vfio_irq_info irq_info =3D { .argsz =3D sizeof(irq_info) };
-+    Error *err =3D NULL;
-     int i, ret =3D -1;
-=20
-     /* Sanity check device */
-@@ -2579,6 +2635,12 @@ static void vfio_populate_device(VFIOPCIDevice *vd=
-ev, Error **errp)
-         }
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 517755aed5..9372b15b34 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -1499,6 +1499,9 @@ static int smmuv3_get_attr(IOMMUMemoryRegion *iommu=
+,
+     if (attr =3D=3D IOMMU_ATTR_VFIO_NESTED) {
+         *(bool *) data =3D true;
+         return 0;
++    } else if (attr =3D=3D IOMMU_ATTR_MSI_TRANSLATE) {
++        *(bool *) data =3D true;
++        return 0;
      }
-=20
-+    vfio_init_fault_regions(vdev, &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+
-     irq_info.index =3D VFIO_PCI_ERR_IRQ_INDEX;
-=20
-     ret =3D ioctl(vdev->vbasedev.fd, VFIO_DEVICE_GET_IRQ_INFO, &irq_info=
-);
-@@ -3159,6 +3221,7 @@ static void vfio_instance_finalize(Object *obj)
-=20
-     vfio_display_finalize(vdev);
-     vfio_bars_finalize(vdev);
-+    vfio_region_finalize(&vdev->dma_fault_region);
-     g_free(vdev->emulated_config_bits);
-     g_free(vdev->rom);
-     /*
-@@ -3179,6 +3242,7 @@ static void vfio_exitfn(PCIDevice *pdev)
-     vfio_unregister_req_notifier(vdev);
-     vfio_unregister_err_notifier(vdev);
-     vfio_unregister_ext_irq_notifiers(vdev);
-+    vfio_region_exit(&vdev->dma_fault_region);
-     pci_device_set_intx_routing_notifier(&vdev->pdev, NULL);
-     vfio_disable_interrupts(vdev);
-     if (vdev->intx.mmap_timer) {
-diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
-index 893d074375..815154656c 100644
---- a/hw/vfio/pci.h
-+++ b/hw/vfio/pci.h
-@@ -141,6 +141,7 @@ typedef struct VFIOPCIDevice {
-     EventNotifier err_notifier;
-     EventNotifier req_notifier;
-     VFIOPCIExtIRQ *ext_irqs;
-+    VFIORegion dma_fault_region;
-     int (*resetfn)(struct VFIOPCIDevice *);
-     uint32_t vendor_id;
-     uint32_t device_id;
+     return -EINVAL;
+ }
 --=20
 2.20.1
 

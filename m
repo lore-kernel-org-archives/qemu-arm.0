@@ -1,84 +1,100 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp328741wrv;
-        Wed, 10 Jul 2019 23:21:44 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwb1ObqMzW4oo54I8Guc2NGSUdJITYyx4l5iawIWn1m3b4r5PCOUJmmvIuBlI2v3izjbYtP
-X-Received: by 2002:a05:6402:14c4:: with SMTP id f4mr1720787edx.170.1562826104794;
-        Wed, 10 Jul 2019 23:21:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562826104; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp828409wrv;
+        Thu, 11 Jul 2019 07:57:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyEB4LUGKfl+oLxnzCQH352kHhamtC2yZatCXRd8uzG0M3yELqMtsFgg1n6mtC0C+iqq1xn
+X-Received: by 2002:a17:906:30d9:: with SMTP id b25mr3445321ejb.55.1562857076155;
+        Thu, 11 Jul 2019 07:57:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562857076; cv=none;
         d=google.com; s=arc-20160816;
-        b=0N7G3yJUceu4/HBF43l4ysSYCfji7/SwNseigZEYOwxu2izvniWI74ILwnQ8ZRtqRh
-         ZQ90mcQc2iBkPseFyHsU0Q8EAT+nZyBgHUvelc/DSrg2PEuz51yVLwD65Mf014d6pgDl
-         Ig7zh1bHJ/I7Uvj0Txte6lQVAfMzFvzQOiger1tmp/rTsIig7dLJHIp02dCBULuYrl5T
-         5JEc/SPf/U/2omqk8dZ2uA9yxji7pOP/VZI6gD34odcUpEcw/CO3EVSw93bw0RAH3+5/
-         NBkMaHGCDxazVkhNR43JdXs++7TxwD2ooexZMVYKv7lP7MskRDlDMMQtnRO8bpiOQpX8
-         vs7A==
+        b=w1SN8AoOL15hXMKDGpJkoCtmOANUu5ysNYwHLntPMcFZeJPYhQZHG4Gij6bwC1wTDb
+         5eM0UCHF8fsmdjnDRt2jFqax0RzZ/a97TZgUnqtJb3Jdsvbvs90WN7yPoU1CptNUoRon
+         HPB5lVPQ0f1FObsAF/L/JJYOAOHbeEqhpFW+8muUoE0OcvmJbmdLkn7sbuakcrMIkirn
+         uuTNafoJ1jPBqskCYl2xeMK+pzFZ98w8NEnitcjlmrTUQ+y8hXqDgQ8Nu5bZTeJGORq9
+         6CHoLCl9JfimJm4G97W5J5aQ8pp+maQG3Ky9qf0rVzYlVnB8tmA/xwQdYBZ7PL8l1bVN
+         /c3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=w59KGEn/normtEg0JU2ao6+n0EO01yDNUY65eA4pjJs=;
-        b=LzhAbHLPExJOmViSMMB+YaXWtf0H9JZxoUSohXTu92KDZvqyD973AuRt96ouespR8M
-         1xZr+IMBOedIqZXM29YdmrlqdrqR6J2OEqyOWmBNkBNwyCM6frwY6caWiZdDkDrX6x1F
-         tEejfwwlQKAo8ZbmUCNI+GerS7f4nbPJNJctoDizeRLN7Qsft82o9+SZMijrF7aFu9n+
-         F8JeEFkDCfSMF1/+Eaug4fDc9EhVJP42IzozteHGKhc7BfkwLJUGYecs7HMuRmWn+NUO
-         oh7XrJaI52FUErc8/nr+eTw21xl/ubgwPchC+BL4XEmuJUsIAXfEdKI+y4g3xqGEzXhH
-         Q85w==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=gBzFXMgegUrsAfRlHD4O9gEuq3Q0SglD0zqttMeYuLg=;
+        b=gSrTPdr7Codr1AKoBpJfNJQBN7i6jwFnxjx4VWcyeF/1SNeWUQmQguuw60WkWUvdoL
+         b/G3tDUeqIaE7wuEKpIG/CvbWRbF3nMjquBm0LW/hw8Bw2IdOrJdQ1X57AXQvYC/+EV9
+         g2bs1IfIEwW1TVe9pdgJBVjIWu3pSwcwUaBg0ycEFUqTYz6rc3Mu3PQIHOfofpbnrSgm
+         mDVO8xboE72geXNNc+irPs83EHaG664Aiz58LVxcNgaaid3ujfsy463Jcna6lgJ4tbEc
+         AUxZBriDq6HWvyv9MK4927Hudb5PNE/+Qqj6h/lnyMZTV5mn9WoDuMWHrLyrmlLIfZuy
+         rDvw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y16si2923625edb.404.2019.07.10.23.21.44
+        by mx.google.com with ESMTPS id k21si3311093ejr.44.2019.07.11.07.57.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 10 Jul 2019 23:21:44 -0700 (PDT)
+        Thu, 11 Jul 2019 07:57:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38870 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42468 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hlSSd-0000uB-Sw
-	for alex.bennee@linaro.org; Thu, 11 Jul 2019 02:21:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41437)
+	id 1hlaWB-00075J-8x
+	for alex.bennee@linaro.org; Thu, 11 Jul 2019 10:57:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42765)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <eric.auger@redhat.com>) id 1hlSQR-0005kg-RL
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 02:19:29 -0400
+ (envelope-from <philmd@redhat.com>) id 1hlaVg-0006G3-NX
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 10:57:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1hlSQQ-0000Ov-1E
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 02:19:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54242)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1hlSQP-0000NZ-S8; Thu, 11 Jul 2019 02:19:25 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 4F2F1308A98C;
- Thu, 11 Jul 2019 06:19:24 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-46.ams2.redhat.com [10.36.116.46])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0E68D60600;
- Thu, 11 Jul 2019 06:19:19 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, peterx@redhat.com,
- pbonzini@redhat.com, alex.williamson@redhat.com
-Date: Thu, 11 Jul 2019 08:18:56 +0200
-Message-Id: <20190711061857.13086-5-eric.auger@redhat.com>
-In-Reply-To: <20190711061857.13086-1-eric.auger@redhat.com>
-References: <20190711061857.13086-1-eric.auger@redhat.com>
+ (envelope-from <philmd@redhat.com>) id 1hlaVf-0003mS-Oa
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 10:57:24 -0400
+Received: from mail-wm1-f51.google.com ([209.85.128.51]:35958)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hlaVf-0003km-HU
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 10:57:23 -0400
+Received: by mail-wm1-f51.google.com with SMTP id g67so1900607wme.1
+ for <qemu-arm@nongnu.org>; Thu, 11 Jul 2019 07:57:22 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=gBzFXMgegUrsAfRlHD4O9gEuq3Q0SglD0zqttMeYuLg=;
+ b=S7Q884ALxDso4V6YlQ9+unqCSDHnhiqXs7geu2eKOBsCqhfzQrU06XFuIQGgJ3HpJi
+ gtGqvX9gSvPf1gfgIKifbY/NkO8vJf7jThqrHGi0AYIUOQpGtw+ccs1QOcmqzTvdb23a
+ eX2E63Ad4FGDOSBNt4Y2GmkLi8uQGwfybQon+X1WkBuRPak2IfcQTiaByD7YezZa9WNM
+ D/gMRKoc+2/j2oa05XQsBWcbOqYT1t2xAlYGbQe8UV/jDixxr26Rl1LZdAI88aSj5zSF
+ UlZPLlJzvO7lW+vuhMMRtUux8XbP87gLzs7O35IrSAFeJHjTfPcMy6+xp3heKXOnZO2C
+ GIWg==
+X-Gm-Message-State: APjAAAX3uJr6rtCb1EdfuxiR0jnG7vduxT81e5Z6a2/zZCxU0Gs5nJHh
+ YyCui/SeJBi/lYOMA+yam+BUNwfJguI=
+X-Received: by 2002:a1c:f116:: with SMTP id p22mr4618304wmh.70.1562857041890; 
+ Thu, 11 Jul 2019 07:57:21 -0700 (PDT)
+Received: from [192.168.1.103] (62.red-83-42-61.dynamicip.rima-tde.net.
+ [83.42.61.62])
+ by smtp.gmail.com with ESMTPSA id t63sm4754458wmt.6.2019.07.11.07.57.21
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Thu, 11 Jul 2019 07:57:21 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20190709113715.7761-1-philmd@redhat.com>
+ <CAFEAcA9adoeYeJCnrRU=i=WiYzAuJh2vQupYgL_KRAoomvU4Wg@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <e4fc24ff-43db-e11e-8068-aba98929e8aa@redhat.com>
+Date: Thu, 11 Jul 2019 16:57:20 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.41]); Thu, 11 Jul 2019 06:19:24 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <CAFEAcA9adoeYeJCnrRU=i=WiYzAuJh2vQupYgL_KRAoomvU4Wg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH-for-4.2 v3 4/5] hw/arm/smmuv3: Log a guest error
- when decoding an invalid STE
+ [fuzzy]
+X-Received-From: 209.85.128.51
+Subject: Re: [Qemu-arm] [PATCH-for-4.1 0/3] hw: Avoid crash when reading
+ empty RX FIFO
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,31 +106,38 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jydVuhnuDnOX
+X-TUID: GmM4Khc5EzrK
 
-Log a guest error when encountering an invalid STE.
+On 7/11/19 4:51 PM, Peter Maydell wrote:
+> On Tue, 9 Jul 2019 at 12:37, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
+>>
+>> Fix a pair of crashes, one is an audit of first one.
+>>
+>> Philippe Mathieu-Daudé (3):
+>>   hw/ssi/mss-spi: Convert debug printf()s to trace events
+>>   hw/ssi/mss-spi: Avoid crash when reading empty RX FIFO
+>>   hw/display/xlnx_dp: Avoid crash when reading empty RX FIFO
+>>
+> 
+> Applied patches 2 and 3 to target-arm.next, thanks.
+> For future series, could you avoid including both
+> for-4.1 and not-for-4.1 patches in the same series, please?
+> It's a bit of a pain to have to separate them out again,
+> and there's always the risk that I don't notice.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/arm/smmuv3.c | 1 +
- 1 file changed, 1 insertion(+)
+Sure, duly noted.
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 384c02cb91..2e270a0f07 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -320,6 +320,7 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *c=
-fg,
-     uint32_t config;
-=20
-     if (!STE_VALID(ste)) {
-+        qemu_log_mask(LOG_GUEST_ERROR, "invalid STE\n");
-         goto bad_ste;
-     }
-=20
---=20
-2.20.1
+> (You'll probably want to hold onto patch 1 and send it
+> out again after we reopen for 4.2, or I'll forget about its
+> existence :-))
 
+No problem!
+
+Regards,
+
+Phil.

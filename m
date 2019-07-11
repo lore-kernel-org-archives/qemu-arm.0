@@ -1,156 +1,164 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp976573wrv;
-        Thu, 11 Jul 2019 10:29:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzv8sWXtbZLUHIQKAfGK8om+57YAlyFwJzfCMOPgFOZ8oXsvLxN/GYCKVce0P9PKgDINgUW
-X-Received: by 2002:a50:fa42:: with SMTP id c2mr4887908edq.48.1562866156028;
-        Thu, 11 Jul 2019 10:29:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562866156; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp976974wrv;
+        Thu, 11 Jul 2019 10:29:42 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyhEhGRJ0yBvSgSLfhn7ME/mvKjgHi+PjsuTYxMz8htttK85Hyxk70v8/EoTSqbiy+/MxYJ
+X-Received: by 2002:a50:922a:: with SMTP id i39mr4738994eda.219.1562866182633;
+        Thu, 11 Jul 2019 10:29:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562866182; cv=none;
         d=google.com; s=arc-20160816;
-        b=RvYjD6NeD6zesgQJaTW73+EzyyeJ1cB5TOvPCA3rUtzWqZtTR6c3MGY1miXFtc2npy
-         aNVmV/9CZf1jooi0bOExfKTSr+7SUDb6gcsda1wJM1fDoksNRz6oVV6zGU/MkJ4dZ0jQ
-         84++jkpq56hYHdz9f/lHfuQq4oFI7mOdnc4sppwq3icuYjQCuHVpn9UV7i8VU56JUSpj
-         q1mDwd0EwaP1Djxp+JsKMLsIOs6nh8oBZ0iO9yUc8clqVgHIBaHcRjmx/CbA0IaAVQ91
-         PbhmDmNpD+CdjPsypAtZMAWMvATNPpXeIU7xEFT119G7BjHuMm0aXIFUaMsXhDCdg+ex
-         tnDQ==
+        b=uqmG2Kcue9MqW82qoSAiCPH3LH9/xBvg7Zu/4RYXrjDyu+zbHukenc/T3zxjDkHD6U
+         F3rPXNIQOGasNSUqhD7bCBsBJscdOW0nj7oYAddEbR1g1Olf2S8E0YySXNJtKNKjTzO9
+         BAjKU3FwfaMzr9gJhWrMjNuUoEvt8ZQOZR8Mu2nMVBLPRAK6YryY1hL1ifki9m1u+YM6
+         YIpUaes7V7zzVzVouSYfSMdZ+s/nSiqrNULm3EpF5sLV5egsDqkyVIUknJzdzIVFTBb6
+         Ml6sqEySs5JKd8zzqRWULwRk/XgdPZITi95GjEOLlFmrEppHWo6pgwXpWQkfl1fXD6C4
+         zuZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=7UHD9lY69uSojRgLPxEbyMmPbBmfGY6CrMQdmGctMxI=;
-        b=L5SAKm9C8YG9iLpRAejtun/sU2T9T3JLmD1frIEATlk25Ii+ez/qwnpgvhBJB3zgRf
-         Y1p2VBA0osEg6hj/67QeESu+vSEMFNTKMFgj6h9A8RC753JtnctnmlHEhUF3PMcisUoK
-         wm9pTAewmqKwyvQOk+v/4opRluuW2+6I9aVZxWZUvwzynXEserlAjKJRkivfPDhPqym1
-         4UjnXb/+GrLNGJ7amUyH6Wa9vky+jHmOs10fIAMTClzSnUN9lMCDTEOOtYn1vb/FVgmv
-         /yj7kQr6DRAjkQ9DGzityMss0Z67FPG6YZziHTf9NbLpZvvCWSq159452CTfWlAIYy61
-         fPMA==
+        bh=d55vLVoHhDsHINsYSLNRyKE2VPFAuBtSUumm+wzt9r0=;
+        b=RmQ5yBpx1GTw+70umTSvQU+tTPEqdc4ky0rTMxjhaZvpXKQdEtnAgJhjKHoxTZ/QsL
+         0CQZJgIyciG+av0pSzGrzZVtr566Xry2rgM6L0jeqnoModCeBjCccqu9n5ehy9f+ZJPC
+         JSKaSal/xqUy3Z+sxqIM03K7HtXTfADvO4BBmQZIxB37GGq1xEBctFg70s9EHBh5Ixft
+         HNRHwLf4MSoIA35NpW0FQ4kPym8AuhO/6W8SfcLvF4kp3pQCYJJn5DqogH+JuuaZ7hdG
+         d7N+GMkFBMwU0LxkgC3t87eFPGCwA7rXK9b6y+uFfiw50w6Ivfo4ShYy6QankCA30jzh
+         httA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g12si3816319edm.40.2019.07.11.10.29.15
+        by mx.google.com with ESMTPS id d27si3838788ejl.69.2019.07.11.10.29.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jul 2019 10:29:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 11 Jul 2019 10:29:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43774 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43788 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hlcsd-0003BF-59
-	for alex.bennee@linaro.org; Thu, 11 Jul 2019 13:29:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33686)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hlct3-0004k7-8P
+	for alex.bennee@linaro.org; Thu, 11 Jul 2019 13:29:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33756)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <eric.auger@redhat.com>) id 1hlcsZ-00035H-DE
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:29:12 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1hlcsf-0003QX-Qs
+ for qemu-devel@nongnu.org; Thu, 11 Jul 2019 13:29:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1hlcsY-0001Zf-FX
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:29:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41858)
+ (envelope-from <eric.auger@redhat.com>) id 1hlcsd-0001f5-T2
+ for qemu-devel@nongnu.org; Thu, 11 Jul 2019 13:29:17 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50078)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1hlcsY-0001Yb-9d; Thu, 11 Jul 2019 13:29:10 -0400
+ id 1hlcsb-0001cN-Jf; Thu, 11 Jul 2019 13:29:13 -0400
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 83316308FB9D;
- Thu, 11 Jul 2019 17:29:09 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id D807D2F8BDE;
+ Thu, 11 Jul 2019 17:29:12 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-46.ams2.redhat.com [10.36.116.46])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 94C8A5C1B4;
- Thu, 11 Jul 2019 17:29:06 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D6EA15C1B4;
+ Thu, 11 Jul 2019 17:29:09 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Thu, 11 Jul 2019 19:28:17 +0200
-Message-Id: <20190711172845.31035-2-eric.auger@redhat.com>
+Date: Thu, 11 Jul 2019 19:28:18 +0200
+Message-Id: <20190711172845.31035-3-eric.auger@redhat.com>
 In-Reply-To: <20190711172845.31035-1-eric.auger@redhat.com>
 References: <20190711172845.31035-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.43]); Thu, 11 Jul 2019 17:29:09 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.38]); Thu, 11 Jul 2019 17:29:12 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v4 01/29] memory: Remove unused
- memory_region_iommu_replay_all()
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [RFC v4 02/29] memory: Add IOMMU_ATTR_VFIO_NESTED
+ IOMMU memory region attribute
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: drjones@redhat.com, yi.l.liu@intel.com, mst@redhat.com,
  jean-philippe.brucker@arm.com, zhangfei.gao@foxmail.com, peterx@redhat.com,
  alex.williamson@redhat.com, vincent.stehle@arm.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dZ5vFQqaOF4I
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: sIvS8A2JVW85
 
-memory_region_iommu_replay_all is not used. Remove it.
+We introduce a new IOMMU Memory Region attribute,
+IOMMU_ATTR_VFIO_NESTED that tells whether the virtual IOMMU
+requires HW nested paging for VFIO integration.
+
+Current Intel virtual IOMMU device supports "Caching
+Mode" and does not require 2 stages at physical level to be
+integrated with VFIO. However SMMUv3 does not implement such
+"caching mode" and requires to use HW nested paging.
+
+As such SMMUv3 is the first IOMMU device to advertise this
+attribute.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reported-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-Reviewed-by: Peter Xu <peterx@redhat.com>
 ---
- include/exec/memory.h | 10 ----------
- memory.c              |  9 ---------
- 2 files changed, 19 deletions(-)
+ hw/arm/smmuv3.c       | 12 ++++++++++++
+ include/exec/memory.h |  3 ++-
+ 2 files changed, 14 insertions(+), 1 deletion(-)
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 2c5cdffa31..a078cd033f 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -1076,16 +1076,6 @@ void memory_region_register_iommu_notifier(MemoryR=
-egion *mr,
-  */
- void memory_region_iommu_replay(IOMMUMemoryRegion *iommu_mr, IOMMUNotifi=
-er *n);
-=20
--/**
-- * memory_region_iommu_replay_all: replay existing IOMMU translations
-- * to all the notifiers registered.
-- *
-- * Note: this is not related to record-and-replay functionality.
-- *
-- * @iommu_mr: the memory region to observe
-- */
--void memory_region_iommu_replay_all(IOMMUMemoryRegion *iommu_mr);
--
- /**
-  * memory_region_unregister_iommu_notifier: unregister a notifier for
-  * changes to IOMMU translation entries.
-diff --git a/memory.c b/memory.c
-index 480f3d989b..90967b579d 100644
---- a/memory.c
-+++ b/memory.c
-@@ -1910,15 +1910,6 @@ void memory_region_iommu_replay(IOMMUMemoryRegion =
-*iommu_mr, IOMMUNotifier *n)
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index e96d5beb9a..384c02cb91 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -1490,6 +1490,17 @@ static void smmuv3_notify_flag_changed(IOMMUMemory=
+Region *iommu,
      }
  }
 =20
--void memory_region_iommu_replay_all(IOMMUMemoryRegion *iommu_mr)
--{
--    IOMMUNotifier *notifier;
--
--    IOMMU_NOTIFIER_FOREACH(notifier, iommu_mr) {
--        memory_region_iommu_replay(iommu_mr, notifier);
--    }
--}
--
- void memory_region_unregister_iommu_notifier(MemoryRegion *mr,
-                                              IOMMUNotifier *n)
++static int smmuv3_get_attr(IOMMUMemoryRegion *iommu,
++                           enum IOMMUMemoryRegionAttr attr,
++                           void *data)
++{
++    if (attr =3D=3D IOMMU_ATTR_VFIO_NESTED) {
++        *(bool *) data =3D true;
++        return 0;
++    }
++    return -EINVAL;
++}
++
+ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
+                                                   void *data)
  {
+@@ -1497,6 +1508,7 @@ static void smmuv3_iommu_memory_region_class_init(O=
+bjectClass *klass,
+=20
+     imrc->translate =3D smmuv3_translate;
+     imrc->notify_flag_changed =3D smmuv3_notify_flag_changed;
++    imrc->get_attr =3D smmuv3_get_attr;
+ }
+=20
+ static const TypeInfo smmuv3_type_info =3D {
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index a078cd033f..e477a630a8 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -204,7 +204,8 @@ struct MemoryRegionOps {
+ };
+=20
+ enum IOMMUMemoryRegionAttr {
+-    IOMMU_ATTR_SPAPR_TCE_FD
++    IOMMU_ATTR_SPAPR_TCE_FD,
++    IOMMU_ATTR_VFIO_NESTED,
+ };
+=20
+ /**
 --=20
 2.20.1
 

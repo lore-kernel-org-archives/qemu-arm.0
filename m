@@ -1,82 +1,81 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp978180wrv;
-        Thu, 11 Jul 2019 10:31:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy3CHfuuMDXU3bs7r1n8EXbyw37gkWJgiR5jLnbozQrMLjE9wDGdlj0y9lcFcPYXyZkY2sK
-X-Received: by 2002:a17:906:6a87:: with SMTP id p7mr4270908ejr.277.1562866263854;
-        Thu, 11 Jul 2019 10:31:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562866263; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp978656wrv;
+        Thu, 11 Jul 2019 10:31:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzqALhLDF/Y8ekyc1HLggVc7UiWzIV38EZoGdtvtHkUgNY4AuL0IbwVPd24cekJla8uHpIp
+X-Received: by 2002:a05:6402:1612:: with SMTP id f18mr4707029edv.231.1562866295426;
+        Thu, 11 Jul 2019 10:31:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562866295; cv=none;
         d=google.com; s=arc-20160816;
-        b=t7LPOPslaOyIDj15Y5wew3Kgyq+qBsG/6w+kfhGVwjfqDan+8/k0JHWMkrCDjTKXVE
-         w6KkkcLAPegLeuEAebptsitrf6WiWpwB6XhcFsn7fOlC/UDYu5pD0eL5P1dbEXjYpU6f
-         p0ECoRpewkUhaALqEnjMLk+mfsIK+36QZELXEXs4jdAsLhsQd11NpsKJjrNKr/BU2InK
-         dbAII/ZP8D2zsQPhAImHswgPFjFfwGYAlqpFiiw0yXxj//4nuYthy3yVnfiFLqQWfJk6
-         P1mRsHJITjO+jfbg7xMixnfFH38hYwuGaJHmYe8bFLXs3SX4Vl5epXgD38eKvKtYuf98
-         sC9g==
+        b=p+FlmL+ON1gAtwb5kuM2PNUA8AEqOpRlXbkvG3A2F4WB/sCv+D9qn4YEB055+u3fmV
+         GvjN1v/ygooaDiD0+ZvTgwTR1aoM12wyy8KNuJrR2HugACC6Vy56RCtpy3xVsYIPoJ70
+         uG52i0znfym6/48NlxeYUzgphSjZXIP3LFYTfdL1Pi2Gdr2YoRRESiiNXfvo8rzW6Vn2
+         aFSJrQb1OTVBXXl9yKKwsYjNOxTcTQNBUvWgdPLYu4iCUlCjUbufzkTG8JaJdn7X1FMa
+         gbVNVeu6cy1pfTg9B0Idzf9SDgXmuWya5h6wT3SWp96CcXj+ci5gbXtRhOC5Wg19UsdJ
+         YaNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=75oSeTRfIzpvb2sl8/W/Emnq5hgzrbyN0uFKh9htRNQ=;
-        b=OxYZgKdE9EecqP9/jO5g0ThLmH5rp8cnkH1eYLd4lrk0MvpyR8L2YFVaSCNyWXAZMW
-         UUq52im53sYyTCuRGIiPTwGHN/pYndk9uEVbsd/rB7TlSs7z5FdfS9KHgoGHXxuxrdUC
-         67mSzQVzhTtdiBL6g/qwVtYqPBnTbfd6V3j34a8cQrxmB8GqEQF1LVFu1kqYihP7qpqX
-         5OcjYrnGIiPN4mJcbL66Zvgg0IoRcEN+nei+G8x3E8wi1ppxkTB+2CaxTZv8sF25wBj9
-         RqXWOHcmFLV1AvfbmHMkMS+wxYa8Ewu8f68W35PIZYFiBbwWIXll6SOmlmaW2SO9X2qZ
-         PgyQ==
+        bh=UDbhFfMoobx96IKzj76egNDglq26k/uzrPvoHckWxa4=;
+        b=nD9m2GNcF69pukV0iIO7kXxGyDPpZZPugUKAJBsayD653oYmJDHYiBD/MJi8XEQf0u
+         khuKZDmZpG1k7rz7UTnNmTDOceQAbdSZQ76zTSYlOsvbcNKnsNjthRbqwET95tmLyvmP
+         rY6EU951Ag6+i9xGN744cQAeMY79IgohXFQSlDYOnQpIv2w8KMV68nQKUCCEL+QRMg/W
+         5XFL7jIoI9ih4gSVccwCW/8RluhLmzQqoPJIK8hhWFmtwVx7di4C3WFwQqQEefBwYww3
+         ILgpcKl4SNo0Ck8DAHnKI2AepmnUbqjYV477Gnbjj8YhI1j4Y/65iS6Pge17+fyb2fH1
+         MfaA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j42si3880756ede.285.2019.07.11.10.31.03
+        by mx.google.com with ESMTPS id m47si3864028edd.144.2019.07.11.10.31.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jul 2019 10:31:03 -0700 (PDT)
+        Thu, 11 Jul 2019 10:31:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43846 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43864 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hlcuM-0001St-7j
-	for alex.bennee@linaro.org; Thu, 11 Jul 2019 13:31:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34053)
+	id 1hlcur-0003P1-EL
+	for alex.bennee@linaro.org; Thu, 11 Jul 2019 13:31:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34615)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <eric.auger@redhat.com>) id 1hlctJ-0006HP-A7
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:30:00 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1hlcuh-00037B-Vt
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:31:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1hlctE-0002F6-3D
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:29:55 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42196)
+ (envelope-from <eric.auger@redhat.com>) id 1hlcuf-0003bn-6N
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:31:23 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38038)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1hlctD-0002EM-QM; Thu, 11 Jul 2019 13:29:52 -0400
+ id 1hlcue-0003b2-Tx; Thu, 11 Jul 2019 13:31:21 -0400
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 18A20C057F2E;
- Thu, 11 Jul 2019 17:29:51 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 27BEA356CD;
+ Thu, 11 Jul 2019 17:31:20 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-46.ams2.redhat.com [10.36.116.46])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E7A155C1B4;
- Thu, 11 Jul 2019 17:29:47 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A3E4D5C1B4;
+ Thu, 11 Jul 2019 17:31:13 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Thu, 11 Jul 2019 19:28:24 +0200
-Message-Id: <20190711172845.31035-9-eric.auger@redhat.com>
+Date: Thu, 11 Jul 2019 19:28:33 +0200
+Message-Id: <20190711172845.31035-18-eric.auger@redhat.com>
 In-Reply-To: <20190711172845.31035-1-eric.auger@redhat.com>
 References: <20190711172845.31035-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.32]); Thu, 11 Jul 2019 17:29:51 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.30]); Thu, 11 Jul 2019 17:31:20 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v4 08/29] header update against 5.3.0-rc0 and
- IOMMU/VFIO nested stage APIs
+Subject: [Qemu-arm] [RFC v4 17/29] vfio: Set up nested stage mappings
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -93,835 +92,304 @@ Cc: drjones@redhat.com, yi.l.liu@intel.com, mst@redhat.com,
  alex.williamson@redhat.com, vincent.stehle@arm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OjtQmRzeWP+6
+X-TUID: PCMzMCGGrlxe
 
-This is an update against
-https://github.com/eauger/linux/tree/v5.3.0-rc0-2stage-v9.
+In nested mode, legacy vfio_iommu_map_notify cannot be used as
+there is no "caching" mode and we do not trap on map.
+
+On Intel, vfio_iommu_map_notify was used to DMA map the RAM
+through the host single stage.
+
+With nested mode, we need to setup the stage 2 and the stage 1
+separately. This patch introduces a prereg_listener to setup
+the stage 2 mapping.
+
+The stage 1 mapping, owned by the guest, is passed to the host
+when the guest invalidates the stage 1 configuration, through
+a dedicated PCIPASIDOps callback. Guest IOTLB invalidations
+are cascaded downto the host through another IOMMU MR UNMAP
+notifier.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- include/standard-headers/asm-x86/bootparam.h |   2 +
- include/standard-headers/linux/virtio_ids.h  |   1 -
- include/standard-headers/linux/virtio_pmem.h |  34 --
- linux-headers/asm-arm/unistd-common.h        |   1 +
- linux-headers/asm-arm64/kvm.h                |   7 +
- linux-headers/asm-generic/unistd.h           |   4 +-
- linux-headers/asm-mips/unistd_n32.h          |   1 +
- linux-headers/asm-mips/unistd_n64.h          |   1 +
- linux-headers/asm-mips/unistd_o32.h          |   1 +
- linux-headers/asm-powerpc/unistd_32.h        |   1 +
- linux-headers/asm-powerpc/unistd_64.h        |   1 +
- linux-headers/asm-s390/unistd_32.h           |   1 +
- linux-headers/asm-s390/unistd_64.h           |   1 +
- linux-headers/asm-x86/kvm.h                  |   6 +-
- linux-headers/asm-x86/unistd_32.h            |   1 +
- linux-headers/asm-x86/unistd_64.h            |   1 +
- linux-headers/asm-x86/unistd_x32.h           |   1 +
- linux-headers/linux/iommu.h                  | 316 +++++++++++++++++++
- linux-headers/linux/psp-sev.h                |   5 +-
- linux-headers/linux/vfio.h                   | 109 ++++++-
- 20 files changed, 451 insertions(+), 44 deletions(-)
- delete mode 100644 include/standard-headers/linux/virtio_pmem.h
- create mode 100644 linux-headers/linux/iommu.h
 
-diff --git a/include/standard-headers/asm-x86/bootparam.h b/include/stand=
-ard-headers/asm-x86/bootparam.h
-index 67d4f0119f..a6f7cf535e 100644
---- a/include/standard-headers/asm-x86/bootparam.h
-+++ b/include/standard-headers/asm-x86/bootparam.h
-@@ -29,6 +29,8 @@
- #define XLF_EFI_HANDOVER_32		(1<<2)
- #define XLF_EFI_HANDOVER_64		(1<<3)
- #define XLF_EFI_KEXEC			(1<<4)
-+#define XLF_5LEVEL			(1<<5)
-+#define XLF_5LEVEL_ENABLED		(1<<6)
+---
+
+v4 -> v5:
+- use VFIO_IOMMU_SET_PASID_TABLE
+- use PCIPASIDOps for config notification
+
+v3 -> v4:
+- use iommu_inv_pasid_info for ASID invalidation
+
+v2 -> v3:
+- use VFIO_IOMMU_ATTACH_PASID_TABLE
+- new user API
+- handle leaf
+
+v1 -> v2:
+- adapt to uapi changes
+- pass the asid
+- pass IOMMU_NOTIFIER_S1_CFG when initializing the config notifier
+---
+ hw/vfio/common.c     | 123 +++++++++++++++++++++++++++++++++++++++----
+ hw/vfio/pci.c        |  21 ++++++++
+ hw/vfio/trace-events |   2 +
+ 3 files changed, 136 insertions(+), 10 deletions(-)
+
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index ef8452a4bc..bd975c5b83 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -444,6 +444,52 @@ static bool vfio_get_vaddr(IOMMUTLBEntry *iotlb, voi=
+d **vaddr,
+     return true;
+ }
 =20
-=20
- #endif /* _ASM_X86_BOOTPARAM_H */
-diff --git a/include/standard-headers/linux/virtio_ids.h b/include/standa=
-rd-headers/linux/virtio_ids.h
-index 32b2f94d1f..6d5c3b2d4f 100644
---- a/include/standard-headers/linux/virtio_ids.h
-+++ b/include/standard-headers/linux/virtio_ids.h
-@@ -43,6 +43,5 @@
- #define VIRTIO_ID_INPUT        18 /* virtio input */
- #define VIRTIO_ID_VSOCK        19 /* virtio vsock transport */
- #define VIRTIO_ID_CRYPTO       20 /* virtio crypto */
--#define VIRTIO_ID_PMEM         27 /* virtio pmem */
-=20
- #endif /* _LINUX_VIRTIO_IDS_H */
-diff --git a/include/standard-headers/linux/virtio_pmem.h b/include/stand=
-ard-headers/linux/virtio_pmem.h
-deleted file mode 100644
-index 7e3d43b121..0000000000
---- a/include/standard-headers/linux/virtio_pmem.h
-+++ /dev/null
-@@ -1,34 +0,0 @@
--/* SPDX-License-Identifier: GPL-2.0 OR BSD-3-Clause */
--/*
-- * Definitions for virtio-pmem devices.
-- *
-- * Copyright (C) 2019 Red Hat, Inc.
-- *
-- * Author(s): Pankaj Gupta <pagupta@redhat.com>
-- */
--
--#ifndef _UAPI_LINUX_VIRTIO_PMEM_H
--#define _UAPI_LINUX_VIRTIO_PMEM_H
--
--#include "standard-headers/linux/types.h"
--#include "standard-headers/linux/virtio_ids.h"
--#include "standard-headers/linux/virtio_config.h"
--
--struct virtio_pmem_config {
--	uint64_t start;
--	uint64_t size;
--};
--
--#define VIRTIO_PMEM_REQ_TYPE_FLUSH      0
--
--struct virtio_pmem_resp {
--	/* Host return status corresponding to flush request */
--	uint32_t ret;
--};
--
--struct virtio_pmem_req {
--	/* command type */
--	uint32_t type;
--};
--
--#endif
-diff --git a/linux-headers/asm-arm/unistd-common.h b/linux-headers/asm-ar=
-m/unistd-common.h
-index 27a9b6da27..fe1d2e5334 100644
---- a/linux-headers/asm-arm/unistd-common.h
-+++ b/linux-headers/asm-arm/unistd-common.h
-@@ -388,5 +388,6 @@
- #define __NR_fsconfig (__NR_SYSCALL_BASE + 431)
- #define __NR_fsmount (__NR_SYSCALL_BASE + 432)
- #define __NR_fspick (__NR_SYSCALL_BASE + 433)
-+#define __NR_pidfd_open (__NR_SYSCALL_BASE + 434)
-=20
- #endif /* _ASM_ARM_UNISTD_COMMON_H */
-diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.=
-h
-index 2431ec35a9..9d701b6cbd 100644
---- a/linux-headers/asm-arm64/kvm.h
-+++ b/linux-headers/asm-arm64/kvm.h
-@@ -260,6 +260,13 @@ struct kvm_vcpu_events {
- 	 KVM_REG_SIZE_U256 |						\
- 	 ((i) & (KVM_ARM64_SVE_MAX_SLICES - 1)))
-=20
-+/*
-+ * Register values for KVM_REG_ARM64_SVE_ZREG(), KVM_REG_ARM64_SVE_PREG(=
-) and
-+ * KVM_REG_ARM64_SVE_FFR() are represented in memory in an endianness-
-+ * invariant layout which differs from the layout used for the FPSIMD
-+ * V-registers on big-endian systems: see sigcontext.h for more explanat=
-ion.
-+ */
++/* Propagate a guest IOTLB invalidation to the host (nested mode) */
++static void vfio_iommu_unmap_notify(IOMMUNotifier *n, IOMMUTLBEntry *iot=
+lb)
++{
++    VFIOGuestIOMMU *giommu =3D container_of(n, VFIOGuestIOMMU, n);
++    hwaddr start =3D iotlb->iova + giommu->iommu_offset;
 +
- #define KVM_ARM64_SVE_VQ_MIN __SVE_VQ_MIN
- #define KVM_ARM64_SVE_VQ_MAX __SVE_VQ_MAX
++    VFIOContainer *container =3D giommu->container;
++    struct vfio_iommu_type1_cache_invalidate ustruct;
++    size_t size =3D iotlb->addr_mask + 1;
++    int ret;
++
++    assert(iotlb->perm =3D=3D IOMMU_NONE);
++
++    ustruct.argsz =3D sizeof(ustruct);
++    ustruct.flags =3D 0;
++    ustruct.info.version =3D IOMMU_CACHE_INVALIDATE_INFO_VERSION_1;
++
++    if (size <=3D 0x10000) {
++        ustruct.info.cache =3D IOMMU_CACHE_INV_TYPE_IOTLB;
++        ustruct.info.granularity =3D IOMMU_INV_GRANU_ADDR;
++        ustruct.info.addr_info.flags =3D IOMMU_INV_ADDR_FLAGS_ARCHID;
++        if (iotlb->leaf) {
++            ustruct.info.addr_info.flags |=3D IOMMU_INV_ADDR_FLAGS_LEAF;
++        }
++        ustruct.info.addr_info.archid =3D iotlb->arch_id;
++        ustruct.info.addr_info.addr =3D start;
++        ustruct.info.addr_info.granule_size =3D size;
++        ustruct.info.addr_info.nb_granules =3D 1;
++        trace_vfio_iommu_addr_inv_iotlb(iotlb->arch_id, start, size, 1,
++                                        iotlb->leaf);
++    } else {
++        ustruct.info.cache =3D IOMMU_CACHE_INV_TYPE_IOTLB;
++        ustruct.info.granularity =3D IOMMU_INV_GRANU_PASID;
++        ustruct.info.pasid_info.archid =3D iotlb->arch_id;
++        ustruct.info.pasid_info.flags =3D IOMMU_INV_PASID_FLAGS_ARCHID;
++        trace_vfio_iommu_asid_inv_iotlb(iotlb->arch_id);
++    }
++
++    ret =3D ioctl(container->fd, VFIO_IOMMU_CACHE_INVALIDATE, &ustruct);
++    if (ret) {
++        error_report("%p: failed to invalidate CACHE for 0x%"PRIx64
++                     " mask=3D0x%"PRIx64" (%d)",
++                     container, start, iotlb->addr_mask, ret);
++    }
++}
++
+ static void vfio_iommu_map_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb=
+)
+ {
+     VFIOGuestIOMMU *giommu =3D container_of(n, VFIOGuestIOMMU, n);
+@@ -613,6 +659,32 @@ static void vfio_dma_unmap_ram_section(VFIOContainer=
+ *container,
+     }
+ }
 =20
-diff --git a/linux-headers/asm-generic/unistd.h b/linux-headers/asm-gener=
-ic/unistd.h
-index a87904daf1..e5684a4512 100644
---- a/linux-headers/asm-generic/unistd.h
-+++ b/linux-headers/asm-generic/unistd.h
-@@ -844,9 +844,11 @@ __SYSCALL(__NR_fsconfig, sys_fsconfig)
- __SYSCALL(__NR_fsmount, sys_fsmount)
- #define __NR_fspick 433
- __SYSCALL(__NR_fspick, sys_fspick)
-+#define __NR_pidfd_open 434
-+__SYSCALL(__NR_pidfd_open, sys_pidfd_open)
++static void vfio_prereg_listener_region_add(MemoryListener *listener,
++                                            MemoryRegionSection *section=
+)
++{
++    VFIOContainer *container =3D
++        container_of(listener, VFIOContainer, prereg_listener);
++
++    if (!memory_region_is_ram(section->mr)) {
++        return;
++    }
++
++    vfio_dma_map_ram_section(container, section);
++
++}
++static void vfio_prereg_listener_region_del(MemoryListener *listener,
++                                     MemoryRegionSection *section)
++{
++    VFIOContainer *container =3D
++        container_of(listener, VFIOContainer, prereg_listener);
++
++    if (!memory_region_is_ram(section->mr)) {
++        return;
++    }
++
++    vfio_dma_unmap_ram_section(container, section);
++}
++
+ static void vfio_listener_region_add(MemoryListener *listener,
+                                      MemoryRegionSection *section)
+ {
+@@ -709,10 +781,11 @@ static void vfio_listener_region_add(MemoryListener=
+ *listener,
+     memory_region_ref(section->mr);
 =20
- #undef __NR_syscalls
--#define __NR_syscalls 434
-+#define __NR_syscalls 435
+     if (memory_region_is_iommu(section->mr)) {
++        IOMMUNotify notify;
+         VFIOGuestIOMMU *giommu;
+         IOMMUMemoryRegion *iommu_mr =3D IOMMU_MEMORY_REGION(section->mr)=
+;
+         bool nested;
+-        int iommu_idx;
++        int iommu_idx, flags;
 =20
- /*
-  * 32 bit systems traditionally used different
-diff --git a/linux-headers/asm-mips/unistd_n32.h b/linux-headers/asm-mips=
-/unistd_n32.h
-index fb988de900..7dffe8e34e 100644
---- a/linux-headers/asm-mips/unistd_n32.h
-+++ b/linux-headers/asm-mips/unistd_n32.h
-@@ -363,6 +363,7 @@
- #define __NR_fsconfig	(__NR_Linux + 431)
- #define __NR_fsmount	(__NR_Linux + 432)
- #define __NR_fspick	(__NR_Linux + 433)
-+#define __NR_pidfd_open	(__NR_Linux + 434)
+         trace_vfio_listener_region_add_iommu(iova, end);
 =20
+@@ -738,15 +811,26 @@ static void vfio_listener_region_add(MemoryListener=
+ *listener,
+         llend =3D int128_sub(llend, int128_one());
+         iommu_idx =3D memory_region_iommu_attrs_to_index(iommu_mr,
+                                                        MEMTXATTRS_UNSPEC=
+IFIED);
+-        iommu_notifier_init(&giommu->n, vfio_iommu_map_notify,
+-                            IOMMU_NOTIFIER_ALL,
+-                            section->offset_within_region,
+-                            int128_get64(llend),
+-                            iommu_idx);
+-        QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_next);
 =20
- #endif /* _ASM_MIPS_UNISTD_N32_H */
-diff --git a/linux-headers/asm-mips/unistd_n64.h b/linux-headers/asm-mips=
-/unistd_n64.h
-index 17359163c9..f4592d6fc5 100644
---- a/linux-headers/asm-mips/unistd_n64.h
-+++ b/linux-headers/asm-mips/unistd_n64.h
-@@ -339,6 +339,7 @@
- #define __NR_fsconfig	(__NR_Linux + 431)
- #define __NR_fsmount	(__NR_Linux + 432)
- #define __NR_fspick	(__NR_Linux + 433)
-+#define __NR_pidfd_open	(__NR_Linux + 434)
++        if (container->iommu_type =3D=3D VFIO_TYPE1_NESTING_IOMMU) {
++            /* IOTLB unmap notifier to propagate guest IOTLB invalidatio=
+ns */
++            flags =3D IOMMU_NOTIFIER_UNMAP;
++            notify =3D vfio_iommu_unmap_notify;
++        } else {
++            /* MAP/UNMAP IOTLB notifier */
++            flags =3D IOMMU_NOTIFIER_ALL;
++            notify =3D vfio_iommu_map_notify;
++        }
++
++        iommu_notifier_init(&giommu->n, notify, flags,
++                            section->offset_within_region,
++                            int128_get64(llend), iommu_idx);
++        QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_next);
+         memory_region_register_iommu_notifier(section->mr, &giommu->n);
+-        memory_region_iommu_replay(giommu->iommu, &giommu->n);
++
++        if (flags & IOMMU_NOTIFIER_MAP) {
++            memory_region_iommu_replay(giommu->iommu, &giommu->n);
++        }
 =20
+         return;
+     }
+@@ -835,15 +919,21 @@ static void vfio_listener_region_del(MemoryListener=
+ *listener,
+     }
+ }
 =20
- #endif /* _ASM_MIPS_UNISTD_N64_H */
-diff --git a/linux-headers/asm-mips/unistd_o32.h b/linux-headers/asm-mips=
-/unistd_o32.h
-index 83c8d8fb83..04c6728352 100644
---- a/linux-headers/asm-mips/unistd_o32.h
-+++ b/linux-headers/asm-mips/unistd_o32.h
-@@ -409,6 +409,7 @@
- #define __NR_fsconfig	(__NR_Linux + 431)
- #define __NR_fsmount	(__NR_Linux + 432)
- #define __NR_fspick	(__NR_Linux + 433)
-+#define __NR_pidfd_open	(__NR_Linux + 434)
-=20
-=20
- #endif /* _ASM_MIPS_UNISTD_O32_H */
-diff --git a/linux-headers/asm-powerpc/unistd_32.h b/linux-headers/asm-po=
-werpc/unistd_32.h
-index 04cb2d3e61..2af478a7fe 100644
---- a/linux-headers/asm-powerpc/unistd_32.h
-+++ b/linux-headers/asm-powerpc/unistd_32.h
-@@ -416,6 +416,7 @@
- #define __NR_fsconfig	431
- #define __NR_fsmount	432
- #define __NR_fspick	433
-+#define __NR_pidfd_open	434
-=20
-=20
- #endif /* _ASM_POWERPC_UNISTD_32_H */
-diff --git a/linux-headers/asm-powerpc/unistd_64.h b/linux-headers/asm-po=
-werpc/unistd_64.h
-index b1e6921490..4d76f18222 100644
---- a/linux-headers/asm-powerpc/unistd_64.h
-+++ b/linux-headers/asm-powerpc/unistd_64.h
-@@ -388,6 +388,7 @@
- #define __NR_fsconfig	431
- #define __NR_fsmount	432
- #define __NR_fspick	433
-+#define __NR_pidfd_open	434
-=20
-=20
- #endif /* _ASM_POWERPC_UNISTD_64_H */
-diff --git a/linux-headers/asm-s390/unistd_32.h b/linux-headers/asm-s390/=
-unistd_32.h
-index 941853f3e9..6d6cf02d06 100644
---- a/linux-headers/asm-s390/unistd_32.h
-+++ b/linux-headers/asm-s390/unistd_32.h
-@@ -406,5 +406,6 @@
- #define __NR_fsconfig 431
- #define __NR_fsmount 432
- #define __NR_fspick 433
-+#define __NR_pidfd_open 434
-=20
- #endif /* _ASM_S390_UNISTD_32_H */
-diff --git a/linux-headers/asm-s390/unistd_64.h b/linux-headers/asm-s390/=
-unistd_64.h
-index 90271d7f82..93bf370741 100644
---- a/linux-headers/asm-s390/unistd_64.h
-+++ b/linux-headers/asm-s390/unistd_64.h
-@@ -354,5 +354,6 @@
- #define __NR_fsconfig 431
- #define __NR_fsmount 432
- #define __NR_fspick 433
-+#define __NR_pidfd_open 434
-=20
- #endif /* _ASM_S390_UNISTD_64_H */
-diff --git a/linux-headers/asm-x86/kvm.h b/linux-headers/asm-x86/kvm.h
-index 6e7dd792e4..d6ab5b4d15 100644
---- a/linux-headers/asm-x86/kvm.h
-+++ b/linux-headers/asm-x86/kvm.h
-@@ -384,17 +384,17 @@ struct kvm_sync_regs {
- #define KVM_X86_QUIRK_OUT_7E_INC_RIP	(1 << 3)
-=20
- #define KVM_STATE_NESTED_FORMAT_VMX	0
--#define KVM_STATE_NESTED_FORMAT_SVM	1
-+#define KVM_STATE_NESTED_FORMAT_SVM	1	/* unused */
-=20
- #define KVM_STATE_NESTED_GUEST_MODE	0x00000001
- #define KVM_STATE_NESTED_RUN_PENDING	0x00000002
- #define KVM_STATE_NESTED_EVMCS		0x00000004
-=20
--#define KVM_STATE_NESTED_VMX_VMCS_SIZE	0x1000
--
- #define KVM_STATE_NESTED_SMM_GUEST_MODE	0x00000001
- #define KVM_STATE_NESTED_SMM_VMXON	0x00000002
-=20
-+#define KVM_STATE_NESTED_VMX_VMCS_SIZE	0x1000
-+
- struct kvm_vmx_nested_state_data {
- 	__u8 vmcs12[KVM_STATE_NESTED_VMX_VMCS_SIZE];
- 	__u8 shadow_vmcs12[KVM_STATE_NESTED_VMX_VMCS_SIZE];
-diff --git a/linux-headers/asm-x86/unistd_32.h b/linux-headers/asm-x86/un=
-istd_32.h
-index 57bb48854c..3685335df2 100644
---- a/linux-headers/asm-x86/unistd_32.h
-+++ b/linux-headers/asm-x86/unistd_32.h
-@@ -424,5 +424,6 @@
- #define __NR_fsconfig 431
- #define __NR_fsmount 432
- #define __NR_fspick 433
-+#define __NR_pidfd_open 434
-=20
- #endif /* _ASM_X86_UNISTD_32_H */
-diff --git a/linux-headers/asm-x86/unistd_64.h b/linux-headers/asm-x86/un=
-istd_64.h
-index fe6aa0688a..e42933d117 100644
---- a/linux-headers/asm-x86/unistd_64.h
-+++ b/linux-headers/asm-x86/unistd_64.h
-@@ -346,5 +346,6 @@
- #define __NR_fsconfig 431
- #define __NR_fsmount 432
- #define __NR_fspick 433
-+#define __NR_pidfd_open 434
-=20
- #endif /* _ASM_X86_UNISTD_64_H */
-diff --git a/linux-headers/asm-x86/unistd_x32.h b/linux-headers/asm-x86/u=
-nistd_x32.h
-index 09cca49ba7..95890e5df7 100644
---- a/linux-headers/asm-x86/unistd_x32.h
-+++ b/linux-headers/asm-x86/unistd_x32.h
-@@ -299,6 +299,7 @@
- #define __NR_fsconfig (__X32_SYSCALL_BIT + 431)
- #define __NR_fsmount (__X32_SYSCALL_BIT + 432)
- #define __NR_fspick (__X32_SYSCALL_BIT + 433)
-+#define __NR_pidfd_open (__X32_SYSCALL_BIT + 434)
- #define __NR_rt_sigaction (__X32_SYSCALL_BIT + 512)
- #define __NR_rt_sigreturn (__X32_SYSCALL_BIT + 513)
- #define __NR_ioctl (__X32_SYSCALL_BIT + 514)
-diff --git a/linux-headers/linux/iommu.h b/linux-headers/linux/iommu.h
-new file mode 100644
-index 0000000000..9304e16ae9
---- /dev/null
-+++ b/linux-headers/linux/iommu.h
-@@ -0,0 +1,316 @@
-+/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
-+/*
-+ * IOMMU user API definitions
-+ */
-+
-+#ifndef _IOMMU_H
-+#define _IOMMU_H
-+
-+#include <linux/types.h>
-+
-+#define IOMMU_FAULT_PERM_READ	(1 << 0) /* read */
-+#define IOMMU_FAULT_PERM_WRITE	(1 << 1) /* write */
-+#define IOMMU_FAULT_PERM_EXEC	(1 << 2) /* exec */
-+#define IOMMU_FAULT_PERM_PRIV	(1 << 3) /* privileged */
-+
-+/* Generic fault types, can be expanded IRQ remapping fault */
-+enum iommu_fault_type {
-+	IOMMU_FAULT_DMA_UNRECOV =3D 1,	/* unrecoverable fault */
-+	IOMMU_FAULT_PAGE_REQ,		/* page request fault */
-+};
-+
-+enum iommu_fault_reason {
-+	IOMMU_FAULT_REASON_UNKNOWN =3D 0,
-+
-+	/* Could not access the PASID table (fetch caused external abort) */
-+	IOMMU_FAULT_REASON_PASID_FETCH,
-+
-+	/* PASID entry is invalid or has configuration errors */
-+	IOMMU_FAULT_REASON_BAD_PASID_ENTRY,
-+
-+	/*
-+	 * PASID is out of range (e.g. exceeds the maximum PASID
-+	 * supported by the IOMMU) or disabled.
-+	 */
-+	IOMMU_FAULT_REASON_PASID_INVALID,
-+
-+	/*
-+	 * An external abort occurred fetching (or updating) a translation
-+	 * table descriptor
-+	 */
-+	IOMMU_FAULT_REASON_WALK_EABT,
-+
-+	/*
-+	 * Could not access the page table entry (Bad address),
-+	 * actual translation fault
-+	 */
-+	IOMMU_FAULT_REASON_PTE_FETCH,
-+
-+	/* Protection flag check failed */
-+	IOMMU_FAULT_REASON_PERMISSION,
-+
-+	/* access flag check failed */
-+	IOMMU_FAULT_REASON_ACCESS,
-+
-+	/* Output address of a translation stage caused Address Size fault */
-+	IOMMU_FAULT_REASON_OOR_ADDRESS,
-+};
-+
-+/**
-+ * struct iommu_fault_unrecoverable - Unrecoverable fault data
-+ * @reason: reason of the fault, from &enum iommu_fault_reason
-+ * @flags: parameters of this fault (IOMMU_FAULT_UNRECOV_* values)
-+ * @pasid: Process Address Space ID
-+ * @perm: requested permission access using by the incoming transaction
-+ *        (IOMMU_FAULT_PERM_* values)
-+ * @addr: offending page address
-+ * @fetch_addr: address that caused a fetch abort, if any
-+ */
-+struct iommu_fault_unrecoverable {
-+	__u32	reason;
-+#define IOMMU_FAULT_UNRECOV_PASID_VALID		(1 << 0)
-+#define IOMMU_FAULT_UNRECOV_ADDR_VALID		(1 << 1)
-+#define IOMMU_FAULT_UNRECOV_FETCH_ADDR_VALID	(1 << 2)
-+	__u32	flags;
-+	__u32	pasid;
-+	__u32	perm;
-+	__u64	addr;
-+	__u64	fetch_addr;
-+};
-+
-+/**
-+ * struct iommu_fault_page_request - Page Request data
-+ * @flags: encodes whether the corresponding fields are valid and whethe=
-r this
-+ *         is the last page in group (IOMMU_FAULT_PAGE_REQUEST_* values)
-+ * @pasid: Process Address Space ID
-+ * @grpid: Page Request Group Index
-+ * @perm: requested page permissions (IOMMU_FAULT_PERM_* values)
-+ * @addr: page address
-+ * @private_data: device-specific private information
-+ */
-+struct iommu_fault_page_request {
-+#define IOMMU_FAULT_PAGE_REQUEST_PASID_VALID	(1 << 0)
-+#define IOMMU_FAULT_PAGE_REQUEST_LAST_PAGE	(1 << 1)
-+#define IOMMU_FAULT_PAGE_REQUEST_PRIV_DATA	(1 << 2)
-+	__u32	flags;
-+	__u32	pasid;
-+	__u32	grpid;
-+	__u32	perm;
-+	__u64	addr;
-+	__u64	private_data[2];
-+};
-+
-+/**
-+ * struct iommu_fault - Generic fault data
-+ * @type: fault type from &enum iommu_fault_type
-+ * @padding: reserved for future use (should be zero)
-+ * @event: fault event, when @type is %IOMMU_FAULT_DMA_UNRECOV
-+ * @prm: Page Request message, when @type is %IOMMU_FAULT_PAGE_REQ
-+ * @padding2: sets the fault size to allow for future extensions
-+ */
-+struct iommu_fault {
-+	__u32	type;
-+	__u32	padding;
-+	union {
-+		struct iommu_fault_unrecoverable event;
-+		struct iommu_fault_page_request prm;
-+		__u8 padding2[56];
-+	};
-+};
-+
-+/**
-+ * enum iommu_page_response_code - Return status of fault handlers
-+ * @IOMMU_PAGE_RESP_SUCCESS: Fault has been handled and the page tables
-+ *	populated, retry the access. This is "Success" in PCI PRI.
-+ * @IOMMU_PAGE_RESP_FAILURE: General error. Drop all subsequent faults f=
-rom
-+ *	this device if possible. This is "Response Failure" in PCI PRI.
-+ * @IOMMU_PAGE_RESP_INVALID: Could not handle this fault, don't retry th=
-e
-+ *	access. This is "Invalid Request" in PCI PRI.
-+ */
-+enum iommu_page_response_code {
-+	IOMMU_PAGE_RESP_SUCCESS =3D 0,
-+	IOMMU_PAGE_RESP_INVALID,
-+	IOMMU_PAGE_RESP_FAILURE,
-+};
-+
-+/**
-+ * struct iommu_page_response - Generic page response information
-+ * @version: API version of this structure
-+ * @flags: encodes whether the corresponding fields are valid
-+ *         (IOMMU_FAULT_PAGE_RESPONSE_* values)
-+ * @pasid: Process Address Space ID
-+ * @grpid: Page Request Group Index
-+ * @code: response code from &enum iommu_page_response_code
-+ */
-+struct iommu_page_response {
-+#define IOMMU_PAGE_RESP_VERSION_1	1
-+	__u32	version;
-+#define IOMMU_PAGE_RESP_PASID_VALID	(1 << 0)
-+	__u32	flags;
-+	__u32	pasid;
-+	__u32	grpid;
-+	__u32	code;
-+};
-+
-+/**
-+ * struct iommu_pasid_smmuv3 - ARM SMMUv3 Stream Table Entry stage 1 rel=
-ated
-+ *     information
-+ * @version: API version of this structure
-+ * @s1fmt: STE s1fmt (format of the CD table: single CD, linear table
-+ *         or 2-level table)
-+ * @s1dss: STE s1dss (specifies the behavior when @pasid_bits !=3D 0
-+ *         and no PASID is passed along with the incoming transaction)
-+ * @padding: reserved for future use (should be zero)
-+ *
-+ * The PASID table is referred to as the Context Descriptor (CD) table o=
-n ARM
-+ * SMMUv3. Please refer to the ARM SMMU 3.x spec (ARM IHI 0070A) for ful=
-l
-+ * details.
-+ */
-+struct iommu_pasid_smmuv3 {
-+#define PASID_TABLE_SMMUV3_CFG_VERSION_1 1
-+	__u32	version;
-+	__u8	s1fmt;
-+	__u8	s1dss;
-+	__u8	padding[2];
-+};
-+
-+/**
-+ * struct iommu_pasid_table_config - PASID table data used to bind guest=
- PASID
-+ *     table to the host IOMMU
-+ * @version: API version to prepare for future extensions
-+ * @format: format of the PASID table
-+ * @base_ptr: guest physical address of the PASID table
-+ * @pasid_bits: number of PASID bits used in the PASID table
-+ * @config: indicates whether the guest translation stage must
-+ *          be translated, bypassed or aborted.
-+ * @padding: reserved for future use (should be zero)
-+ * @smmuv3: table information when @format is %IOMMU_PASID_FORMAT_SMMUV3
-+ */
-+struct iommu_pasid_table_config {
-+#define PASID_TABLE_CFG_VERSION_1 1
-+	__u32	version;
-+#define IOMMU_PASID_FORMAT_SMMUV3	1
-+	__u32	format;
-+	__u64	base_ptr;
-+	__u8	pasid_bits;
-+#define IOMMU_PASID_CONFIG_TRANSLATE	1
-+#define IOMMU_PASID_CONFIG_BYPASS	2
-+#define IOMMU_PASID_CONFIG_ABORT	3
-+	__u8	config;
-+	__u8    padding[6];
-+	union {
-+		struct iommu_pasid_smmuv3 smmuv3;
-+	};
-+};
-+
-+/* defines the granularity of the invalidation */
-+enum iommu_inv_granularity {
-+	IOMMU_INV_GRANU_DOMAIN,	/* domain-selective invalidation */
-+	IOMMU_INV_GRANU_PASID,	/* PASID-selective invalidation */
-+	IOMMU_INV_GRANU_ADDR,	/* page-selective invalidation */
-+	IOMMU_INV_GRANU_NR,	/* number of invalidation granularities */
-+};
-+
-+/**
-+ * struct iommu_inv_addr_info - Address Selective Invalidation Structure
-+ *
-+ * @flags: indicates the granularity of the address-selective invalidati=
-on
-+ * - If the PASID bit is set, the @pasid field is populated and the inva=
-lidation
-+ *   relates to cache entries tagged with this PASID and matching the ad=
-dress
-+ *   range.
-+ * - If ARCHID bit is set, @archid is populated and the invalidation rel=
-ates
-+ *   to cache entries tagged with this architecture specific ID and matc=
-hing
-+ *   the address range.
-+ * - Both PASID and ARCHID can be set as they may tag different caches.
-+ * - If neither PASID or ARCHID is set, global addr invalidation applies=
-.
-+ * - The LEAF flag indicates whether only the leaf PTE caching needs to =
-be
-+ *   invalidated and other paging structure caches can be preserved.
-+ * @archid: architecture-specific ID
-+ * @pasid: process address space ID
-+ * @addr: first stage/level input address
-+ * @granule_size: page/block size of the mapping in bytes
-+ * @nb_granules: number of contiguous granules to be invalidated
-+ */
-+struct iommu_inv_addr_info {
-+#define IOMMU_INV_ADDR_FLAGS_PASID	(1 << 0)
-+#define IOMMU_INV_ADDR_FLAGS_ARCHID	(1 << 1)
-+#define IOMMU_INV_ADDR_FLAGS_LEAF	(1 << 2)
-+	__u32	flags;
-+	__u32	archid;
-+	__u64	pasid;
-+	__u64	addr;
-+	__u64	granule_size;
-+	__u64	nb_granules;
-+};
-+
-+/**
-+ * struct iommu_inv_pasid_info - PASID Selective Invalidation Structure
-+ *
-+ * @flags: indicates the granularity of the PASID-selective invalidation
-+ * - If the PASID bit is set, the @pasid field is populated and the inva=
-lidation
-+ *   relates to cache entries tagged with this PASID and matching the ad=
-dress
-+ *   range.
-+ * - If the ARCHID bit is set, the @archid is populated and the invalida=
-tion
-+ *   relates to cache entries tagged with this architecture specific ID =
-and
-+ *   matching the address range.
-+ * - Both PASID and ARCHID can be set as they may tag different caches.
-+ * - At least one of PASID or ARCHID must be set.
-+ * @archid: architecture-specific ID
-+ * @pasid: process address space ID
-+ */
-+struct iommu_inv_pasid_info {
-+#define IOMMU_INV_PASID_FLAGS_PASID	(1 << 0)
-+#define IOMMU_INV_PASID_FLAGS_ARCHID	(1 << 1)
-+	__u32	flags;
-+	__u32	archid;
-+	__u64	pasid;
-+};
-+
-+/**
-+ * struct iommu_cache_invalidate_info - First level/stage invalidation
-+ *     information
-+ * @version: API version of this structure
-+ * @cache: bitfield that allows to select which caches to invalidate
-+ * @granularity: defines the lowest granularity used for the invalidatio=
-n:
-+ *     domain > PASID > addr
-+ * @padding: reserved for future use (should be zero)
-+ * @pasid_info: invalidation data when @granularity is %IOMMU_INV_GRANU_=
-PASID
-+ * @addr_info: invalidation data when @granularity is %IOMMU_INV_GRANU_A=
-DDR
-+ *
-+ * Not all the combinations of cache/granularity are valid:
-+ *
-+ * +--------------+---------------+---------------+---------------+
-+ * | type /       |   DEV_IOTLB   |     IOTLB     |      PASID    |
-+ * | granularity  |               |               |      cache    |
-+ * +=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D+=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D+=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D+
-+ * | DOMAIN       |       N/A     |       Y       |       Y       |
-+ * +--------------+---------------+---------------+---------------+
-+ * | PASID        |       Y       |       Y       |       Y       |
-+ * +--------------+---------------+---------------+---------------+
-+ * | ADDR         |       Y       |       Y       |       N/A     |
-+ * +--------------+---------------+---------------+---------------+
-+ *
-+ * Invalidations by %IOMMU_INV_GRANU_DOMAIN don't take any argument othe=
-r than
-+ * @version and @cache.
-+ *
-+ * If multiple cache types are invalidated simultaneously, they all
-+ * must support the used granularity.
-+ */
-+struct iommu_cache_invalidate_info {
-+#define IOMMU_CACHE_INVALIDATE_INFO_VERSION_1 1
-+	__u32	version;
-+/* IOMMU paging structure cache */
-+#define IOMMU_CACHE_INV_TYPE_IOTLB	(1 << 0) /* IOMMU IOTLB */
-+#define IOMMU_CACHE_INV_TYPE_DEV_IOTLB	(1 << 1) /* Device IOTLB */
-+#define IOMMU_CACHE_INV_TYPE_PASID	(1 << 2) /* PASID cache */
-+#define IOMMU_CACHE_INV_TYPE_NR		(3)
-+	__u8	cache;
-+	__u8	granularity;
-+	__u8	padding[2];
-+	union {
-+		struct iommu_inv_pasid_info pasid_info;
-+		struct iommu_inv_addr_info addr_info;
-+	};
-+};
-+
-+#endif /* _IOMMU_H */
-diff --git a/linux-headers/linux/psp-sev.h b/linux-headers/linux/psp-sev.=
-h
-index 36bbe17d8f..bb45d2123f 100644
---- a/linux-headers/linux/psp-sev.h
-+++ b/linux-headers/linux/psp-sev.h
-@@ -1,3 +1,4 @@
-+/* SPDX-License-Identifier: GPL-2.0-only */
- /*
-  * Userspace interface for AMD Secure Encrypted Virtualization (SEV)
-  * platform management commands.
-@@ -7,10 +8,6 @@
-  * Author: Brijesh Singh <brijesh.singh@amd.com>
-  *
-  * SEV API specification is available at: https://developer.amd.com/sev/
-- *
-- * This program is free software; you can redistribute it and/or modify
-- * it under the terms of the GNU General Public License version 2 as
-- * published by the Free Software Foundation.
-  */
-=20
- #ifndef __PSP_SEV_USER_H__
-diff --git a/linux-headers/linux/vfio.h b/linux-headers/linux/vfio.h
-index 24f505199f..d27610b54c 100644
---- a/linux-headers/linux/vfio.h
-+++ b/linux-headers/linux/vfio.h
-@@ -14,6 +14,7 @@
-=20
- #include <linux/types.h>
- #include <linux/ioctl.h>
-+#include <linux/iommu.h>
-=20
- #define VFIO_API_VERSION	0
-=20
-@@ -306,6 +307,9 @@ struct vfio_region_info_cap_type {
- #define VFIO_REGION_TYPE_GFX                    (1)
- #define VFIO_REGION_SUBTYPE_GFX_EDID            (1)
-=20
-+#define VFIO_REGION_TYPE_NESTED			(2)
-+#define VFIO_REGION_SUBTYPE_NESTED_DMA_FAULT	(1)
-+
- /**
-  * struct vfio_region_gfx_edid - EDID region layout.
-  *
-@@ -448,11 +452,30 @@ struct vfio_irq_info {
- #define VFIO_IRQ_INFO_MASKABLE		(1 << 1)
- #define VFIO_IRQ_INFO_AUTOMASKED	(1 << 2)
- #define VFIO_IRQ_INFO_NORESIZE		(1 << 3)
-+#define VFIO_IRQ_INFO_FLAG_CAPS		(1 << 4) /* Info supports caps */
- 	__u32	index;		/* IRQ index */
- 	__u32	count;		/* Number of IRQs within this index */
-+	__u32	cap_offset;	/* Offset within info struct of first cap */
- };
- #define VFIO_DEVICE_GET_IRQ_INFO	_IO(VFIO_TYPE, VFIO_BASE + 9)
-=20
-+/*
-+ * The irq type capability allows IRQs unique to a specific device or
-+ * class of devices to be exposed.
-+ *
-+ * The structures below define version 1 of this capability.
-+ */
-+#define VFIO_IRQ_INFO_CAP_TYPE      3
-+
-+struct vfio_irq_info_cap_type {
-+	struct vfio_info_cap_header header;
-+	__u32 type;     /* global per bus driver */
-+	__u32 subtype;  /* type specific */
-+};
-+
-+#define VFIO_IRQ_TYPE_NESTED				(1)
-+#define VFIO_IRQ_SUBTYPE_DMA_FAULT			(1)
-+
- /**
-  * VFIO_DEVICE_SET_IRQS - _IOW(VFIO_TYPE, VFIO_BASE + 10, struct vfio_ir=
-q_set)
-  *
-@@ -554,7 +577,8 @@ enum {
- 	VFIO_PCI_MSIX_IRQ_INDEX,
- 	VFIO_PCI_ERR_IRQ_INDEX,
- 	VFIO_PCI_REQ_IRQ_INDEX,
--	VFIO_PCI_NUM_IRQS
-+	VFIO_PCI_NUM_IRQS =3D 5	/* Fixed user ABI, IRQ indexes >=3D5 use   */
-+				/* device specific cap to define content */
+-static const MemoryListener vfio_memory_listener =3D {
++static MemoryListener vfio_memory_listener =3D {
+     .region_add =3D vfio_listener_region_add,
+     .region_del =3D vfio_listener_region_del,
  };
 =20
- /*
-@@ -700,6 +724,38 @@ struct vfio_device_ioeventfd {
-=20
- #define VFIO_DEVICE_IOEVENTFD		_IO(VFIO_TYPE, VFIO_BASE + 16)
-=20
-+
-+/*
-+ * Capability exposed by the DMA fault region
-+ * @version: ABI version
-+ */
-+#define VFIO_REGION_INFO_CAP_DMA_FAULT	6
-+
-+struct vfio_region_info_cap_fault {
-+	struct vfio_info_cap_header header;
-+	__u32 version;
++static MemoryListener vfio_memory_prereg_listener =3D {
++    .region_add =3D vfio_prereg_listener_region_add,
++    .region_del =3D vfio_prereg_listener_region_del,
 +};
 +
-+/*
-+ * DMA Fault Region Layout
-+ * @tail: index relative to the start of the ring buffer at which the
-+ *        consumer finds the next item in the buffer
-+ * @entry_size: fault ring buffer entry size in bytes
-+ * @nb_entries: max capacity of the fault ring buffer
-+ * @offset: ring buffer offset relative to the start of the region
-+ * @head: index relative to the start of the ring buffer at which the
-+ *        producer (kernel) inserts items into the buffers
-+ */
-+struct vfio_region_dma_fault {
-+	/* Write-Only */
-+	__u32   tail;
-+	/* Read-Only */
-+	__u32   entry_size;
-+	__u32	nb_entries;
-+	__u32	offset;
-+	__u32   head;
-+};
+ static void vfio_listener_release(VFIOContainer *container)
+ {
+     memory_listener_unregister(&container->listener);
+-    if (container->iommu_type =3D=3D VFIO_SPAPR_TCE_v2_IOMMU) {
++    if (container->iommu_type =3D=3D VFIO_SPAPR_TCE_v2_IOMMU ||
++        container->iommu_type =3D=3D VFIO_TYPE1_NESTING_IOMMU) {
+         memory_listener_unregister(&container->prereg_listener);
+     }
+ }
+@@ -1340,6 +1430,19 @@ static int vfio_connect_container(VFIOGroup *group=
+, AddressSpace *as,
+         }
+         vfio_host_win_add(container, 0, (hwaddr)-1, info.iova_pgsizes);
+         container->pgsizes =3D info.iova_pgsizes;
 +
- /* -------- API for Type1 VFIO IOMMU -------- */
++        if (container->iommu_type =3D=3D VFIO_TYPE1_NESTING_IOMMU) {
++            container->prereg_listener =3D vfio_memory_prereg_listener;
++            memory_listener_register(&container->prereg_listener,
++                                     &address_space_memory);
++            if (container->error) {
++                memory_listener_unregister(&container->prereg_listener);
++                ret =3D container->error;
++                error_setg(errp, "RAM memory listener initialization fai=
+led "
++                          " for container");
++                goto free_container_exit;
++            }
++        }
+         break;
+     }
+     case VFIO_SPAPR_TCE_v2_IOMMU:
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index d7a4e1875c..729f1f353e 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -2693,6 +2693,25 @@ static void vfio_unregister_req_notifier(VFIOPCIDe=
+vice *vdev)
+     vdev->req_enabled =3D false;
+ }
 =20
- /**
-@@ -763,6 +819,57 @@ struct vfio_iommu_type1_dma_unmap {
- #define VFIO_IOMMU_ENABLE	_IO(VFIO_TYPE, VFIO_BASE + 15)
- #define VFIO_IOMMU_DISABLE	_IO(VFIO_TYPE, VFIO_BASE + 16)
++static int vfio_iommu_set_pasid_table(PCIBus *bus, int32_t devfn,
++                                      IOMMUConfig *config)
++{
++    PCIDevice *pdev =3D bus->devices[devfn];
++    VFIOPCIDevice *vdev =3D DO_UPCAST(VFIOPCIDevice, pdev, pdev);
++    VFIOContainer *container =3D vdev->vbasedev.group->container;
++    struct vfio_iommu_type1_set_pasid_table info;
++
++    info.argsz =3D sizeof(info);
++    info.flags =3D VFIO_PASID_TABLE_FLAG_SET;
++    memcpy(&info.config, &config->pasid_cfg, sizeof(config->pasid_cfg));
++
++    return ioctl(container->fd, VFIO_IOMMU_SET_PASID_TABLE, &info);
++}
++
++static PCIPASIDOps vfio_pci_pasid_ops =3D {
++    .set_pasid_table =3D vfio_iommu_set_pasid_table,
++};
++
+ static void vfio_realize(PCIDevice *pdev, Error **errp)
+ {
+     VFIOPCIDevice *vdev =3D PCI_VFIO(pdev);
+@@ -2994,6 +3013,8 @@ static void vfio_realize(PCIDevice *pdev, Error **e=
+rrp)
+     vfio_register_req_notifier(vdev);
+     vfio_setup_resetfn_quirk(vdev);
 =20
-+/**
-+ * VFIO_IOMMU_SET_PASID_TABLE - _IOWR(VFIO_TYPE, VFIO_BASE + 22,
-+ *			struct vfio_iommu_type1_set_pasid_table)
-+ *
-+ * The SET operation passes a PASID table to the host while the
-+ * UNSET operation detaches the one currently programmed. Setting
-+ * a table while another is already programmed replaces the old table.
-+ */
-+struct vfio_iommu_type1_set_pasid_table {
-+	__u32	argsz;
-+	__u32	flags;
-+#define VFIO_PASID_TABLE_FLAG_SET	(1 << 0)
-+#define VFIO_PASID_TABLE_FLAG_UNSET	(1 << 1)
-+	struct iommu_pasid_table_config config; /* used on SET */
-+};
++    pci_setup_pasid_ops(pdev, &vfio_pci_pasid_ops);
 +
-+#define VFIO_IOMMU_SET_PASID_TABLE	_IO(VFIO_TYPE, VFIO_BASE + 22)
-+
-+/**
-+ * VFIO_IOMMU_CACHE_INVALIDATE - _IOWR(VFIO_TYPE, VFIO_BASE + 23,
-+ *			struct vfio_iommu_type1_cache_invalidate)
-+ *
-+ * Propagate guest IOMMU cache invalidation to the host.
-+ */
-+struct vfio_iommu_type1_cache_invalidate {
-+	__u32   argsz;
-+	__u32   flags;
-+	struct iommu_cache_invalidate_info info;
-+};
-+#define VFIO_IOMMU_CACHE_INVALIDATE      _IO(VFIO_TYPE, VFIO_BASE + 23)
-+
-+/**
-+ * VFIO_IOMMU_SET_MSI_BINDING - _IOWR(VFIO_TYPE, VFIO_BASE + 24,
-+ *			struct vfio_iommu_type1_set_msi_binding)
-+ *
-+ * Pass a stage 1 MSI doorbell mapping to the host so that this
-+ * latter can build a nested stage2 mapping. Or conversely tear
-+ * down a previously bound stage 1 MSI binding.
-+ */
-+struct vfio_iommu_type1_set_msi_binding {
-+	__u32   argsz;
-+	__u32   flags;
-+#define VFIO_IOMMU_BIND_MSI	(1 << 0)
-+#define VFIO_IOMMU_UNBIND_MSI	(1 << 1)
-+	__u64	iova;	/* MSI guest IOVA */
-+	/* Fields below are used on BIND */
-+	__u64	gpa;	/* MSI guest physical address */
-+	__u64	size;	/* size of stage1 mapping (bytes) */
-+};
-+#define VFIO_IOMMU_SET_MSI_BINDING      _IO(VFIO_TYPE, VFIO_BASE + 24)
-+
- /* -------- Additional API for SPAPR TCE (Server POWERPC) IOMMU --------=
- */
+     return;
 =20
- /*
+ out_teardown:
+diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
+index 410801de6e..9f1868af2d 100644
+--- a/hw/vfio/trace-events
++++ b/hw/vfio/trace-events
+@@ -115,6 +115,8 @@ vfio_region_sparse_mmap_header(const char *name, int =
+index, int nr_areas) "Devic
+ vfio_region_sparse_mmap_entry(int i, unsigned long start, unsigned long =
+end) "sparse entry %d [0x%lx - 0x%lx]"
+ vfio_get_dev_region(const char *name, int index, uint32_t type, uint32_t=
+ subtype) "%s index %d, %08x/%0x8"
+ vfio_dma_unmap_overflow_workaround(void) ""
++vfio_iommu_addr_inv_iotlb(int asid, uint64_t addr, uint64_t size, uint64=
+_t nb_granules, bool leaf) "nested IOTLB invalidate asid=3D%d, addr=3D0x%=
+"PRIx64" granule_size=3D0x%"PRIx64" nb_granules=3D0x%"PRIx64" leaf=3D%d"
++vfio_iommu_asid_inv_iotlb(int asid) "nested IOTLB invalidate asid=3D%d"
+=20
+ # platform.c
+ vfio_platform_base_device_init(char *name, int groupid) "%s belongs to g=
+roup #%d"
 --=20
 2.20.1
 

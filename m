@@ -1,104 +1,95 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp692304wrv;
-        Thu, 11 Jul 2019 05:46:58 -0700 (PDT)
-X-Received: by 2002:aca:6706:: with SMTP id z6mr2110826oix.43.1562849218286;
-        Thu, 11 Jul 2019 05:46:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562849218; cv=none;
-        d=google.com; s=arc-20160816;
-        b=NSd41Yz/U034EUQ56fGPqZWvRPKZYFS8f2LGBiKlrz1iQXN0FJgz/Zb0dvQ56zwoxn
-         JckYIrUotI6jMS95Ibu98/74dxrBiTJxvqxnaDKzcjUXipxLTnznlBkCqaj5wbohCUPp
-         T59xc6jjIPzWfiLbC6/GpdxWaWJ8RSpRqOFnepwU4X5+QTjcmHBeKcTJEXrdG67NfcMB
-         AHipuONCOdwsLGhRCGZmlLA1rN+qEbwksLH8FWf203TyXZPVyrOhwKt7RSQ9htJU3yAI
-         Wvq7TbnJXPXPLGnnkSU8I08BpJArRRaWOcl2Q4cz+jp66Vsa2620LiD9VBE2/doRLbDr
-         fbmg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=p97YX3IoJy94wJq9tTL1wuf0ASRWpNpZgfBlTY7Zy78=;
-        b=zemUcq79C+hlhnZuPaTc5b6JJ9YlxW9EytUMLPbLEppJuQ8n6hQnkAf/CCpVldffTx
-         TQwheL3SPNu8qmejQsVmOmglbA8XM0QKjL8IlZv9gcdaKlJf4Db1VpZbByBd/iGgsSbW
-         YOmeWkGEYBEmb0LCRzzociF0TCqugd/yh+/ws9MoeFEbocjF/hFaZALkG8jQyvCjCMJ+
-         dpdCrAKCcdgQ0TvRfA85JfMbtvOH+6ySyIrkFlTQ/o2MY+2QQQ+OaLFY4vqnQ4vGvpLx
-         8llAwltDAqwO+48iD0Ty37qa3JZmI8bYK21akH8flCWuzLdhZhKb13zLWDv6Gy0NeIIk
-         /I8Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zVNe892c;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id j24sor2872167otk.32.2019.07.11.05.46.58
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 11 Jul 2019 05:46:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zVNe892c;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=p97YX3IoJy94wJq9tTL1wuf0ASRWpNpZgfBlTY7Zy78=;
-        b=zVNe892cf8T64t9Poweuxia2hTaNBG0dcRus7B/4/adsYiq/mJlZJEIP8XCxKc+Apr
-         cf4OCyI3HspQ/SphiawqlaKfVKSnaZ3kK8pFSy7mLWLCsjOzo3K5RBH7jnvUkUapQtHa
-         FDwONXmh7vTfQg0+w47JjfR6OSgQpg297Q9HLjcujrw3yogd+vwF8vEiRKuAXL9dTHer
-         8R3GTxfIDZykwX7Zm8ck0EGnfhtZJ/foiNF0563FfDgmx+r4/zepfvEyC8BanR3kzCE3
-         inpXIz3lXAnMPBhZDQCamCypBTdw+zQAwiAFHgwCZQY8iUkPvM4cPh806C7LLQ86TcwK
-         q9AA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=p97YX3IoJy94wJq9tTL1wuf0ASRWpNpZgfBlTY7Zy78=;
-        b=U9rcKuLtIT7u2y669HEAXd3jer7YWaECySUZPnlxbBEFaI7Q3fyTuj2OHZ2M7Binsy
-         qYcxNnoSOVyCgr8JLbujxKEcWrByAy7Dvpb6m/xcG0h/A9nKJm+vYXRy34v4cqp1ljmk
-         QlV3JSAlkyFuCQS93TzH/VXfD8JjtZZ3C8mxwX9wRtrMaYc6oNM7QutYkROfFyz4pQfc
-         FC5ZcG9ngrs68hmxWrtU2yo8bTL3o63VmoLw88Sn4/qQvwx22fzQ97MD25zyM6Mz3Om0
-         fkjNh+ordFYMrlXdN9vj61TVQ35LHK/cNppw+NvWDLyQbdOsTlgC9wTjoJffVm8Ymcnc
-         ES2Q==
-X-Gm-Message-State: APjAAAU/Ql6jEDhDvULJZuyGvPZMoFo1bvs1jqzkguL/zIcDbwynW5QG
-	O00VXXQb4yUTPo2CGx38zkQXEO7MgPsG5Yq0zAYtt2VT
-X-Google-Smtp-Source: APXvYqwIuUVnErABgjVY5ASG37fqqVeG7zVNobq/ht3B+tVjL4E39+AYZKLw3JJnxAF+WuLWHzw+0OYnhSHhW96cPVU=
-X-Received: by 2002:a9d:711e:: with SMTP id n30mr3036913otj.97.1562849217964;
- Thu, 11 Jul 2019 05:46:57 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id v124sm5754810wmf.23.2019.07.11.06.01.21
+        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+        Thu, 11 Jul 2019 06:01:21 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id C6A5B1FF87;
+	Thu, 11 Jul 2019 14:01:20 +0100 (BST)
+References: <20190711121231.3601-1-peter.maydell@linaro.org>
+User-agent: mu4e 1.3.2; emacs 26.1
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, Christophe Lyon <christophe.lyon@linaro.org>
+Subject: Re: [PATCH for-4.1] target/arm: Set VFP-related MVFR0 fields for arm926 and arm1026
+In-reply-to: <20190711121231.3601-1-peter.maydell@linaro.org>
+Date: Thu, 11 Jul 2019 14:01:20 +0100
+Message-ID: <87d0igendr.fsf@zen.linaroharston>
 MIME-Version: 1.0
-References: <20190711121231.3601-1-peter.maydell@linaro.org> <21ffce4e-72cf-2c5f-71b1-cb53367dccda@linaro.org>
-In-Reply-To: <21ffce4e-72cf-2c5f-71b1-cb53367dccda@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 11 Jul 2019 13:46:47 +0100
-Message-ID: <CAFEAcA_3RMV1vMk5CQf1Wjk1SJUjhEFxaevn6hupp9+ZjDktAQ@mail.gmail.com>
-Subject: Re: [PATCH for-4.1] target/arm: Set VFP-related MVFR0 fields for
- arm926 and arm1026
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Christophe Lyon <christophe.lyon@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: AYpoOfeT3gvt
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: oxZHPrXy4hlW
 
-On Thu, 11 Jul 2019 at 13:43, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+
+Peter Maydell <peter.maydell@linaro.org> writes:
+
+> The ARMv5 architecture didn't specify detailed per-feature ID
+> registers. Now that we're using the MVFR0 register fields to
+> gate the existence of VFP instructions, we need to set up
+> the correct values in the cpu->isar structure so that we still
+> provide an FPU to the guest.
 >
-> On 7/11/19 2:12 PM, Peter Maydell wrote:
-> > @@ -1713,6 +1719,12 @@ static void arm1026_initfn(Object *obj)
-> >          };
-> >          define_one_arm_cp_reg(cpu, &ifar);
-> >      }
-> > +    /*
-> > +     * Similarly, we need to set MVFR0 fields to enable double precision
-> > +     * and short vector support even though ARMv5 doesn't have this register.
-> > +     */
-> > +    cpu->isar.mvfr0 = FIELD_DP32(cpu->isar.mvfr0, MVFR0, FPSHVEC, 1);
-> > +    cpu->isar.mvfr0 = FIELD_DP32(cpu->isar.mvfr0, MVFR0, FPDP, 1);
-> >  }
+> This fixes a regression in the arm926 and arm1026 CPUs, which
+> are the only ones that both have VFP and are ARMv5 or earlier.
+> This regression was introduced by the VFP refactoring, and more
+> specifically by commits 1120827fa182f0e76 and 266bd25c485597c,
+> which accidentally disabled VFP short-vector support and
+> double-precision support on these CPUs.
 >
-> I would have placed this immediately after the Jazelle isar setup, so that the
-> "Similarly" comment had the proper referent.  But, no biggie.
+> Reported-by: Christophe Lyon <christophe.lyon@linaro.org>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Fixes: 1120827fa182f0e
+> Fixes: 266bd25c485597c
+> Fixes: https://bugs.launchpad.net/qemu/+bug/1836192
+> ---
+> I've followed the existing approach we used for ISAR1 here
+> of just filling in the fields we care about, rather than trying
+> to set the entire register value.
 
-Yes, I'll move it. I'd misread the chunk of code that sets the custom
-IFAR as "ISAR" and assumed it was all of a piece with the Jazelle ISAR
-setup.
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-thanks
--- PMM
+Do you think we have caught them all now? If we end up removing the
+other ARM_FEATURE_foo flags in favour of isar tests we shall have to be
+careful not to re-introduce these sort of bugs.
+
+>
+>  target/arm/cpu.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+>
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index e75a64a25a4..446dd5163dc 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -1666,6 +1666,12 @@ static void arm926_initfn(Object *obj)
+>       * set the field to indicate Jazelle support within QEMU.
+>       */
+>      cpu->isar.id_isar1 =3D FIELD_DP32(cpu->isar.id_isar1, ID_ISAR1, JAZE=
+LLE, 1);
+> +    /*
+> +     * Similarly, we need to set MVFR0 fields to enable double precision
+> +     * and short vector support even though ARMv5 doesn't have this regi=
+ster.
+> +     */
+> +    cpu->isar.mvfr0 =3D FIELD_DP32(cpu->isar.mvfr0, MVFR0, FPSHVEC, 1);
+> +    cpu->isar.mvfr0 =3D FIELD_DP32(cpu->isar.mvfr0, MVFR0, FPDP, 1);
+>  }
+>
+>  static void arm946_initfn(Object *obj)
+> @@ -1713,6 +1719,12 @@ static void arm1026_initfn(Object *obj)
+>          };
+>          define_one_arm_cp_reg(cpu, &ifar);
+>      }
+> +    /*
+> +     * Similarly, we need to set MVFR0 fields to enable double precision
+> +     * and short vector support even though ARMv5 doesn't have this regi=
+ster.
+> +     */
+> +    cpu->isar.mvfr0 =3D FIELD_DP32(cpu->isar.mvfr0, MVFR0, FPSHVEC, 1);
+> +    cpu->isar.mvfr0 =3D FIELD_DP32(cpu->isar.mvfr0, MVFR0, FPDP, 1);
+>  }
+>
+>  static void arm1136_r2_initfn(Object *obj)
+
+
+--
+Alex Benn=C3=A9e

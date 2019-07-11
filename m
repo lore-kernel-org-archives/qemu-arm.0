@@ -1,91 +1,79 @@
-Received: by 2002:a17:90a:ad8a:0:0:0:0 with SMTP id s10csp10512327pjq;
-        Thu, 11 Jul 2019 09:17:48 -0700 (PDT)
-X-Received: by 2002:aca:5241:: with SMTP id g62mr2843006oib.41.1562861868525;
-        Thu, 11 Jul 2019 09:17:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562861868; cv=none;
+Received: by 2002:a17:90a:ad8a:0:0:0:0 with SMTP id s10csp10520102pjq;
+        Thu, 11 Jul 2019 09:25:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxEXyaES+KbBPO656MYIGmtGEAhgOC96quoLW8z9Qhucfc0CVawDjwvwjsgrDxLyTntW+v8
+X-Received: by 2002:a81:4801:: with SMTP id v1mr2601300ywa.105.1562862326131;
+        Thu, 11 Jul 2019 09:25:26 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1562862326; cv=pass;
         d=google.com; s=arc-20160816;
-        b=o6YcuSmJluSr9oQ+1GXHSBvCVLzDIo7j6qxA7ey5PMuLOg2F2PZMLb7QYXGsK2wdVs
-         OXZm/PsuEpTaHWd7jF6lejnVed1tG3c0HENfCP9vu4B26nP8fDiaKl8/OwxUT427GSSO
-         RcXYhiwFzzHjqHRBNqA4nT0H5vXio7g8ruOMuWqc9C06Tc6HhxUJ6RceSajm1jqgGnhK
-         xkUOrJakCRyTL5hbqGU1rNLcXTT9OeomkbmWba32FZbKxh4fEwuJsxxUlZPsRz86rkcy
-         vEcBTcHUwM4R4/uVNjNlajh2COZ3yEN58iWbKIGJevZWdPT4z6JSEY2Bsg4MRj8f/rfT
-         V7kw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=FCKngx4dtGAfj/9myLFOKe04MLdj3WYgs0CuFoIzuy8=;
-        b=vvF9PhT+JkFmKmcy8F4gJQ/WD4mT13Rdk1bX1oT/HEFjM/HA1StRDV3wotyJ6fuN3m
-         1axGEYuvEZckbxezn1fkvFJim9Lwr3k+ZsW/vjTJm/h9TUVdOFCgSKWnQCwbLHpseanr
-         oHdwR6OBD4trk/PqSePWQbQiCzBnutk3P40bDvCuH6WNbc8Aw/LCuZXENLtAmdLEuFKf
-         lkgDFM6DuFhdyzt0nIUYUHbopXNwdcbd67/iqoTOa9oqmzbp5EXtwyvXh1RmOi++LxEY
-         8dwZxUOldiakVSxgJG+jXwPqaQ9QyOxsDge4hM/Zik/4W19rlmOUSkoEnbzbMWMSfo1z
-         eY+Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h+R1PzpU;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id l138sor2957932oib.104.2019.07.11.09.17.48
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 11 Jul 2019 09:17:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        b=aI8p5D42WmNX0X65gWFd5XcezvbPdPRHqj1PJwHN/DQSb1T7XpR3EA5LsUYWDqVCAd
+         UjYG2vHn1BfKa9EABHhVMpvGJbEhpL8pn1ZZK6hlWnU0U6J+mlc87mnauFzGgNlmSAJx
+         jQ2wzJOwWbnF1NJ+m7anHtuz9GGor/9xl3bw/6ejfjcWQtBZxKT0oWbtKusPkyjQvD2J
+         6YLLdSvp429BvdEMcM9ByHj6mCXz5DNYD1XSzAk+TdfxmWqO8nb5Q7mO3/2k5ZUDBkpu
+         5FNffh4ip3gxgFBsSFoAWvjmpgIBk8y1Xz1OXk9u+KCSiQWrtTq/5g9mBSwJz+E7Thtz
+         d8kg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
+         :reply-to:in-reply-to:subject:message-id;
+        bh=8RmIBQYuIurmdHixcjrqO2OiaaXzomWbszRKiFQY0rY=;
+        b=fgyfMRUssdXTcVIB/RImeq5rF1geVgoTFbJLTFCnZdrRMJIRpLMicxPRpZhaDR61BR
+         gwqKLblY5Zo58KDPu+8qPeja/KeUDWcDQUTkfFplMARATE/5JeWJqK1/3IOM0nJxer4t
+         QP5h8VfrpXa541DxSUeo1Lx2igrkW2hO0OposyVqUFfiF+NlOVZXSzQldQVKZ/IJAWCD
+         nzycuJjtctgqWe6R+ambhbGdyvFI756ERhfB/Fkj+dMqUDhUF9qUabEkzZ/DNszrGJdU
+         1fgh5ToBZlkHKlDy5bzRkhVB+I/ckvWeF8AOIbgPFQZ1j9bBSwRYf3hkN6mSapGP3Bu4
+         npoQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
+       spf=pass (google.com: domain of no-reply@patchew.org designates 135.84.80.217 as permitted sender) smtp.mailfrom=no-reply@patchew.org
+Return-Path: <no-reply@patchew.org>
+Received: from sender-of-o52.zoho.com (sender-of-o52.zoho.com. [135.84.80.217])
+        by mx.google.com with ESMTPS id d12si2519546ybj.115.2019.07.11.09.25.25
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 11 Jul 2019 09:25:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 135.84.80.217 as permitted sender) client-ip=135.84.80.217;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=h+R1PzpU;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=FCKngx4dtGAfj/9myLFOKe04MLdj3WYgs0CuFoIzuy8=;
-        b=h+R1PzpUeNTzhFF074BleaGRr55cFYu5nVcAObsIAEuoxxdmKnb6ZK2j9GigJ9oP6L
-         6xq58h6+VuN9aeMkHzFVSg1tf+KnyYKHvB8NiD5+UioSikTSdQufclOjOsQCiHQNsf56
-         J+WlxF6wZewW7TdjCi/kZLzye11biReZx4EJHO2RRaFHK7RbBjlANBH0YOnoKcgZWNUD
-         /hpLHQmHLCV5AqW2T+TCmc82qOmpcKeSJmbgyK7oVpUPxIytOL+rjR/tNp+ny5UFYVvw
-         bnmn+lns72Vv68eclP21U2MHyk58N8ERE/fb/RoHW4kfJJ+OPtpf6svc6vu0L3mKwoR4
-         pxtA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=FCKngx4dtGAfj/9myLFOKe04MLdj3WYgs0CuFoIzuy8=;
-        b=d2m49b2T61q3ptbQIJm6firYEccuoIIfzj6Ne4Ov1adOnx4nq1CSfqF5TZ3QpOdVXs
-         L4xMmEJtWlM0h5LqZU5TVisFT6E29KNpy+WpFSGj/GvO/uU2dCXKQNWO9z12nlZVm3Mt
-         +2FfuSj0/+qlAUfJYV0lPQZDXgG6iWVUwY6l/ax2iCwB7Ot0M6lcMo45HF2JtJdF4j8/
-         r19i945JEyS2722NKYKtNgE/QuMpwur5r7NOHeMLrNaSwrOzOWfn3xfIHmpmbrxTkG3f
-         4cBF1FCnMi/a9rD33lQjbOQovFahp3K9i3qJx3PwWnVEdc84YzD7SFJ2MujsLbJab/dK
-         saYw==
-X-Gm-Message-State: APjAAAVF45B+CBKEhLJNE68HNP2R+c2/yIylNPGRHJvF+8ZqVd0nIMas
-	PYjHh6BvuuSxNtnxoDjcJ5Zhl5mrK/9dDUiAglqkRdSe9VgGxg==
-X-Google-Smtp-Source: APXvYqzUsW3gJjpqQLGTvAy1Hla2/kheGtIu4zGE7VdqTAozNdrzrD5WC3tBhD1yvEQjNrh1/31bZ/kNFw1y2rH7pHs=
-X-Received: by 2002:a05:6808:8c2:: with SMTP id k2mr2859587oij.98.1562861867984;
- Thu, 11 Jul 2019 09:17:47 -0700 (PDT)
+       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
+       spf=pass (google.com: domain of no-reply@patchew.org designates 135.84.80.217 as permitted sender) smtp.mailfrom=no-reply@patchew.org
+ARC-Seal: i=1; a=rsa-sha256; t=1562862323; cv=none; 
+	d=zoho.com; s=zohoarc; 
+	b=E9+97wRinc7j1/xs1w9wA6FBNPfFwigbG+x8Drpb5pvm03khPeHiAxTmavpcx6quctaLs/CaJP/G2OR5Mf7aowFMOGDQwGmDX9eQwpoBp9RLEd3tzZu7ILYzrHzqBtkBSuuWIaMmyOfyIPwJTy6ahV6CmLY0DxHPKivBUPlW1sI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com; s=zohoarc; 
+	t=1562862323; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results; 
+	bh=8RmIBQYuIurmdHixcjrqO2OiaaXzomWbszRKiFQY0rY=; 
+	b=YYYf60rlLk7HclEJ4eYZR9fog9HH9/iuDhG97i92n12wTXHJgn/MmaGMq3o27QhO5LKc7r4zkzcO77xubJLs3yTbEYnAt+nN9yxdhWnFVuW1cL0lPwgeM4bwbkQoLnTXn3/qcTYKrVVUMVUlbvsDxiTsE8/qAstM7PYdlx2lNlg=
+ARC-Authentication-Results: i=1; mx.zoho.com;
+	dkim=pass  header.i=patchew.org;
+	spf=pass  smtp.mailfrom=no-reply@patchew.org;
+	dmarc=pass header.from=<no-reply@patchew.org> header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
+	with SMTPS id 1562862322044667.748582608529; Thu, 11 Jul 2019 09:25:22 -0700 (PDT)
+Message-ID: <156286232095.12463.12241951202734755758@c4a48874b076>
+Subject: Re: [Qemu-devel] [PATCH for-4.1] target/arm: Set VFP-related MVFR0 fields for arm926 and arm1026
+In-Reply-To: <20190711121231.3601-1-peter.maydell@linaro.org>
+Reply-To: <qemu-devel@nongnu.org>
 MIME-Version: 1.0
-References: <20190711135726.14191-1-alex.bennee@linaro.org>
-In-Reply-To: <20190711135726.14191-1-alex.bennee@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 11 Jul 2019 17:17:37 +0100
-Message-ID: <CAFEAcA9AVt8D9d0iYeCUbT-5UtSwoMy9bra2w7qRoihhBNUuVg@mail.gmail.com>
-Subject: Re: [PATCH for semihosting-tests] semihosting tests: add v7m tests
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: udRloEi/+i81
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, alex.bennee@linaro.org, christophe.lyon@linaro.org, richard.henderson@linaro.org
+Date: Thu, 11 Jul 2019 09:25:22 -0700 (PDT)
+X-ZohoMailClient: External
+X-TUID: vmjKh1+4tFY5
 
-On Thu, 11 Jul 2019 at 14:57, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
-> M-profile has yet another way of triggering semihosting calls using
-> the BKPT instruction. To support this we need to add a M-profile setup
-> so we use the nice and simple microbit model which has a Cortex-M0 in
-> it.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-
-Applied to the semihosting-tests repo, thanks.
-
--- PMM
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDcxMTEyMTIzMS4zNjAx
+LTEtcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCBi
+dWlsZCB0ZXN0IG9uIEZyZWVCU0QgaG9zdC4gUGxlYXNlIGZpbmQgdGhlIGRldGFpbHMgYmVsb3cu
+Cgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCiMgVGVzdGluZyBzY3JpcHQg
+d2lsbCBiZSBpbnZva2VkIHVuZGVyIHRoZSBnaXQgY2hlY2tvdXQgd2l0aAojIEhFQUQgcG9pbnRp
+bmcgdG8gYSBjb21taXQgdGhhdCBoYXMgdGhlIHBhdGNoZXMgYXBwbGllZCBvbiB0b3Agb2YgImJh
+c2UiCiMgYnJhbmNoCmlmIHFlbXUtc3lzdGVtLXg4Nl82NCAtLWhlbHAgPi9kZXYvbnVsbCAyPiYx
+OyB0aGVuCiAgUUVNVT1xZW11LXN5c3RlbS14ODZfNjQKZWxpZiAvdXNyL2xpYmV4ZWMvcWVtdS1r
+dm0gLS1oZWxwID4vZGV2L251bGwgMj4mMTsgdGhlbgogIFFFTVU9L3Vzci9saWJleGVjL3FlbXUt
+a3ZtCmVsc2UKICBleGl0IDEKZmkKbWFrZSB2bS1idWlsZC1mcmVlYnNkIEo9MjEgUUVNVT0kUUVN
+VQpleGl0IDAKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCgoKClRoZSBmdWxsIGxvZyBpcyBhdmFp
+bGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAxOTA3MTExMjEyMzEuMzYwMS0xLXBl
+dGVyLm1heWRlbGxAbGluYXJvLm9yZy90ZXN0aW5nLkZyZWVCU0QvP3R5cGU9bWVzc2FnZS4KLS0t
+CkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hl
+dy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhh
+dC5jb20=

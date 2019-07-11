@@ -1,82 +1,81 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp987709wrv;
-        Thu, 11 Jul 2019 10:41:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxd/I51P+/iru/5wU5uBsVWrQR/Jgh0nKn39OOpr16YTmyeH8kW5IMG0EEIMPv687HQ17U8
-X-Received: by 2002:a50:b803:: with SMTP id j3mr4701663ede.208.1562866893455;
-        Thu, 11 Jul 2019 10:41:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562866893; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp987818wrv;
+        Thu, 11 Jul 2019 10:41:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwhdjaKY5e3pbacvoNEI4xTutsSRiSnNz6pAbB/uGUkOPoTLFxjCtLkVinR4SZ8qPf+czED
+X-Received: by 2002:aa7:c554:: with SMTP id s20mr4689923edr.209.1562866899379;
+        Thu, 11 Jul 2019 10:41:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562866899; cv=none;
         d=google.com; s=arc-20160816;
-        b=NeTCLoEQ7H8MKPL/z0kaN5taNbNXv3c8JqgI8ookJKVaaGWUM43yE9Vi3EEhkQqtjx
-         aXDEb6ZIk7Fl59uHsC8OzBzz/N9SsWN6ooF8pZdxWBS/kfwX6EdJP+LZgsu4jg+cCtQI
-         TETwqWnpxTq39kTHwZOLjRbRXYOyFdIRJdRiyDnAOPvPQH+guvD1s8XsBxfLWYHAyPAm
-         ZAVqJUVE+/T+/sEp3YMHTEX/aSI+T6JtBPqWqvpDnb51Yp9NWbJUaD+G8hN6pO7UH0Re
-         WnRFyYxxCs8YyaLp8VfE7loQdyUrixH8v0D2CPfWrpsYas3ozVXuVnfGDwL/9rWmUvma
-         2QtQ==
+        b=Z+IL2iLTNUvqxu/YYkHrVryYFQ/evq4F2W5yW8kI7Jg5/M5PWFmCKWMp1uLdjpHqRA
+         KHU0KW9p9wQfMGEGIZfF8I0+gKzytu/DmAgXoml8PoSvmhP9YWlbyKsXJUqAZIkyNgJw
+         KGzCpDrJ76h00YFNofiFUX91Ac9vBIm2eoLy5bNqpm2vgaIZP6XzIxanIGPlXXVQjKS7
+         6smBrk5nb7f6wcSQXXyZfBbTevVfsY2flnIulRQrglU6Urit6uzGHgGgYOJIUWc4ZjOt
+         9cv+cYg4M51Z/lbh9wW6Ip8q53aoLrdV4kvGQjrvxP9iDSq1oT2T6heOM0rtc0n26xor
+         DRuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=EDENHb0WVO88PucTw+lsKE0YuADlhtP81aPiqiRX9g0=;
-        b=cYVd2iMsSReTWSSmtZ01nZVTTK55m2bgA2axG7llDYwPHoTVORQfUpaSFhxIa2CllX
-         KioUo5mpJj4GhtvNSJEUfOz0YJx36q+c95c8co1XApXzprOcOw2ObM62+zo1yGnlJW2i
-         pLwYmY5Z/rTkRgNjUgkW6v+bavpjDDGZdH9m+9kORwAKVyArvGC5ZsxIjYqhY9qkKoxN
-         dTQEXn8PMzMC9Hu8UowfkZ5MlJhpOo044+M+JOCyeQ59vjGqumME9doKM74PDjJEiYQr
-         qJLQ035oHlt1FOertctil2hI9dTo0SEfqVm9eo6YYfredx2fCtU/q8et0J6vOBWxwXZS
-         9meA==
+        bh=n+shw8snQG3PdT0xuzl46tjwc/uTsaMeI0eD+Z6vhCU=;
+        b=z8VYc3Hci4iI8vJLVITUAnF54IrxJ9roN/160mW22Z8RN2HI1++H4N1tvcNBUK3su7
+         MdcB8grNzVtfycR5RCvrvsJzc6trxXjwxIARTJ/2LNefDqbOcD3qwr6GOtQnnLsuP+3K
+         YWQrMMfp94n99zDL1WIwQTSTpXqKqgOdf6+J3q9RZ2+T7LVXD2bER8oAj0G3xqJs+9MC
+         Xs0+bBxyxKh8wQbAHbJoHe4UX0q59m3DCPiKlN5gzWZv1hq5w564NvQxWvO+k8bbogkk
+         /10ydqCCyHyanW7JWtwaE2bpz+W01bXzZ80GduU7VazmUJblUoqw9sIZs7nNFZUi2og9
+         SQpw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e20si3474252ejb.77.2019.07.11.10.41.33
+        by mx.google.com with ESMTPS id l8si3995877eda.181.2019.07.11.10.41.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jul 2019 10:41:33 -0700 (PDT)
+        Thu, 11 Jul 2019 10:41:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44166 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44170 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hld4V-0005Wf-VN
-	for alex.bennee@linaro.org; Thu, 11 Jul 2019 13:41:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38363)
+	id 1hld4b-0005wS-3O
+	for alex.bennee@linaro.org; Thu, 11 Jul 2019 13:41:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38405)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <eric.auger@redhat.com>) id 1hld4N-0005F4-C4
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:41:24 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1hld4Q-0005Ou-Hq
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:41:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1hld4L-0004uB-3C
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:41:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38056)
+ (envelope-from <eric.auger@redhat.com>) id 1hld4N-0004w0-6o
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:41:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35942)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1hld4K-0004jr-TN; Thu, 11 Jul 2019 13:41:21 -0400
+ id 1hld4L-0004q1-5m; Thu, 11 Jul 2019 13:41:21 -0400
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
  [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 62C6030832C2;
- Thu, 11 Jul 2019 17:41:04 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id ABEB7308AA11;
+ Thu, 11 Jul 2019 17:41:14 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-46.ams2.redhat.com [10.36.116.46])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C851C6092E;
- Thu, 11 Jul 2019 17:40:51 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0D6F660A97;
+ Thu, 11 Jul 2019 17:41:07 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Thu, 11 Jul 2019 19:39:15 +0200
-Message-Id: <20190711173933.31203-12-eric.auger@redhat.com>
+Date: Thu, 11 Jul 2019 19:39:17 +0200
+Message-Id: <20190711173933.31203-14-eric.auger@redhat.com>
 In-Reply-To: <20190711173933.31203-1-eric.auger@redhat.com>
 References: <20190711173933.31203-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.44]); Thu, 11 Jul 2019 17:41:04 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.41]); Thu, 11 Jul 2019 17:41:14 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v5 11/29] memory: Add arch_id and leaf fields in
- IOTLBEntry
+Subject: [Qemu-arm] [RFC v5 13/29] pci: introduce PCIPASIDOps to PCIDevice
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -93,59 +92,147 @@ Cc: drjones@redhat.com, yi.l.liu@intel.com, mst@redhat.com,
  alex.williamson@redhat.com, vincent.stehle@arm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U9kabyCbu+xH
+X-TUID: VYFbcp8NPPjm
 
-TLB entries are usually tagged with some ids such as the asid
-or pasid. When propagating an invalidation command from the
-guest to the host, we need to pass this id.
+From: Liu Yi L <yi.l.liu@intel.com>
 
-Also we add a leaf field which indicates, in case of invalidation
-notification whether only cache entries for the last level of
-translation are required to be invalidated.
+This patch introduces PCIPASIDOps for IOMMU related operations.
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
+https://lists.gnu.org/archive/html/qemu-devel/2018-03/msg00078.html
+https://lists.gnu.org/archive/html/qemu-devel/2018-03/msg00940.html
+
+So far, to setup virt-SVA for assigned SVA capable device, needs to
+configure host translation structures for specific pasid. (e.g. bind
+guest page table to host and enable nested translation in host).
+Besides, vIOMMU emulator needs to forward guest's cache invalidation
+to host since host nested translation is enabled. e.g. on VT-d, guest
+owns 1st level translation table, thus cache invalidation for 1st
+level should be propagated to host.
+
+This patch adds two functions: alloc_pasid and free_pasid to support
+guest pasid allocation and free. The implementations of the callbacks
+would be device passthru modules. Like vfio.
+
+Cc: Kevin Tian <kevin.tian@intel.com>
+Cc: Jacob Pan <jacob.jun.pan@linux.intel.com>
+Cc: Peter Xu <peterx@redhat.com>
+Cc: Eric Auger <eric.auger@redhat.com>
+Cc: Yi Sun <yi.y.sun@linux.intel.com>
+Cc: David Gibson <david@gibson.dropbear.id.au>
+Signed-off-by: Liu Yi L <yi.l.liu@intel.com>
+Signed-off-by: Yi Sun <yi.y.sun@linux.intel.com>
 ---
- include/exec/memory.h | 20 +++++++++++++++++++-
- 1 file changed, 19 insertions(+), 1 deletion(-)
+ hw/pci/pci.c             | 34 ++++++++++++++++++++++++++++++++++
+ include/hw/iommu/iommu.h |  3 +++
+ include/hw/pci/pci.h     | 11 +++++++++++
+ 3 files changed, 48 insertions(+)
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index d0de192887..8dd4d787d4 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -68,12 +68,30 @@ typedef enum {
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index 8076a80ab3..43c0cef2f6 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -2626,6 +2626,40 @@ void pci_setup_iommu(PCIBus *bus, PCIIOMMUFunc fn,=
+ void *opaque)
+     bus->iommu_opaque =3D opaque;
+ }
 =20
- #define IOMMU_ACCESS_FLAG(r, w) (((r) ? IOMMU_RO : 0) | ((w) ? IOMMU_WO =
-: 0))
++void pci_setup_pasid_ops(PCIDevice *dev, PCIPASIDOps *ops)
++{
++    assert(ops && !dev->pasid_ops);
++    dev->pasid_ops =3D ops;
++}
++
++bool pci_device_is_pasid_ops_set(PCIBus *bus, int32_t devfn)
++{
++    PCIDevice *dev;
++
++    if (!bus) {
++        return false;
++    }
++
++    dev =3D bus->devices[devfn];
++    return !!(dev && dev->pasid_ops);
++}
++
++int pci_device_set_pasid_table(PCIBus *bus, int32_t devfn,
++                               IOMMUConfig *config)
++{
++    PCIDevice *dev;
++
++    if (!bus) {
++        return -EINVAL;
++    }
++
++    dev =3D bus->devices[devfn];
++    if (dev && dev->pasid_ops && dev->pasid_ops->set_pasid_table) {
++        return dev->pasid_ops->set_pasid_table(bus, devfn, config);
++    }
++    return -ENOENT;
++}
++
+ static void pci_dev_get_w64(PCIBus *b, PCIDevice *dev, void *opaque)
+ {
+     Range *range =3D opaque;
+diff --git a/include/hw/iommu/iommu.h b/include/hw/iommu/iommu.h
+index 9e60ece160..12092bda7b 100644
+--- a/include/hw/iommu/iommu.h
++++ b/include/hw/iommu/iommu.h
+@@ -12,6 +12,9 @@
 =20
-+/**
-+ * IOMMUTLBEntry - IOMMU TLB entry
-+ *
-+ * Structure used when performing a translation or when notifying MAP or
-+ * UNMAP (invalidation) events
-+ *
-+ * @target_as: target address space
-+ * @iova: IO virtual address (input)
-+ * @translated_addr: translated address (output)
-+ * @addr_mask: address mask (0xfff means 4K binding), must be multiple o=
-f 2
-+ * @perm: permission flag of the mapping (NONE encodes no mapping or
-+ * invalidation notification)
-+ * @arch_id: architecture specific ID tagging the TLB
-+ * @leaf: when @perm is NONE, indicates whether only caches for the last
-+ * level of translation need to be invalidated.
-+ */
- struct IOMMUTLBEntry {
-     AddressSpace    *target_as;
-     hwaddr           iova;
-     hwaddr           translated_addr;
--    hwaddr           addr_mask;  /* 0xfff =3D 4k translation */
-+    hwaddr           addr_mask;
-     IOMMUAccessFlags perm;
-+    uint32_t         arch_id;
-+    bool             leaf;
+ #ifndef QEMU_HW_IOMMU_IOMMU_H
+ #define QEMU_HW_IOMMU_IOMMU_H
++#ifdef __linux__
++#include <linux/iommu.h>
++#endif
+=20
+ typedef struct IOMMUConfig {
+     union {
+diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+index aaf1b9f70d..84be2847a5 100644
+--- a/include/hw/pci/pci.h
++++ b/include/hw/pci/pci.h
+@@ -9,6 +9,7 @@
+ #include "hw/isa/isa.h"
+=20
+ #include "hw/pci/pcie.h"
++#include "hw/iommu/iommu.h"
+=20
+ extern bool pci_available;
+=20
+@@ -263,6 +264,11 @@ struct PCIReqIDCache {
+ };
+ typedef struct PCIReqIDCache PCIReqIDCache;
+=20
++typedef struct PCIPASIDOps PCIPASIDOps;
++struct PCIPASIDOps {
++    int (*set_pasid_table)(PCIBus *bus, int32_t devfn, IOMMUConfig *conf=
+ig);
++};
++
+ struct PCIDevice {
+     DeviceState qdev;
+=20
+@@ -352,6 +358,7 @@ struct PCIDevice {
+     MSIVectorUseNotifier msix_vector_use_notifier;
+     MSIVectorReleaseNotifier msix_vector_release_notifier;
+     MSIVectorPollNotifier msix_vector_poll_notifier;
++    PCIPASIDOps *pasid_ops;
  };
 =20
- /*
+ void pci_register_bar(PCIDevice *pci_dev, int region_num,
+@@ -485,6 +492,10 @@ typedef AddressSpace *(*PCIIOMMUFunc)(PCIBus *, void=
+ *, int);
+ AddressSpace *pci_device_iommu_address_space(PCIDevice *dev);
+ void pci_setup_iommu(PCIBus *bus, PCIIOMMUFunc fn, void *opaque);
+=20
++void pci_setup_pasid_ops(PCIDevice *dev, PCIPASIDOps *ops);
++bool pci_device_is_pasid_ops_set(PCIBus *bus, int32_t devfn);
++int pci_device_set_pasid_table(PCIBus *bus, int32_t devfn, IOMMUConfig *=
+config);
++
+ static inline void
+ pci_set_byte(uint8_t *config, uint8_t val)
+ {
 --=20
 2.20.1
 

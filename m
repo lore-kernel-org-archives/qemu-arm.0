@@ -1,98 +1,101 @@
-Received: by 2002:adf:a557:0:0:0:0:0 with SMTP id j23csp4487256wrb;
-        Tue, 9 Jul 2019 22:18:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzpuI7ivJamjODfhwhJ4803axobmgdtW7HgD2FyqWecSLylXu2iwJg+nRQAI4Ip7UWArv5C
-X-Received: by 2002:a50:89a6:: with SMTP id g35mr30147115edg.145.1562735893820;
-        Tue, 09 Jul 2019 22:18:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562735893; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp822854wrv;
+        Thu, 11 Jul 2019 07:51:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzyOQWQ5uoJ0nDoeBAhhoncbAefdJG6OE7coNSBcADHDs2EXVJ4f/W/MI16sNQWMg1qeM6K
+X-Received: by 2002:aa7:dad6:: with SMTP id x22mr3990407eds.122.1562856713401;
+        Thu, 11 Jul 2019 07:51:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562856713; cv=none;
         d=google.com; s=arc-20160816;
-        b=kxJ/mNq4DEE2NEAbI+8dzI3l8OUaTxmdRFfRdF/8Fb4NbIE98oiCzYd4XaYZc8p6s+
-         NAH7AmJQ1ZAyTIVebW4+WO96aHnMvQdVMdqJTMT9ITQNjAxIL/aY8r0uOqCv7D6t3oyQ
-         y3S8WJGBiAV+9CKnzZQLGqgEjBXwsBrGZFnKb6qTudMeyxCNbG0Y6IygS7OzKLMJNSRi
-         aZ5vSEnaYLS48y5RQYRBW9M5qUJIdMjuGa+gTqv+YPI0usuT63w/ZleEPF2lhNoQ6Iw5
-         MdqiWGSAlJfmMAd0mctKSmWlk2cffYyAzJ6QXj7Vt079dViu4fGZ6YnWA/hR5JchmWI4
-         yNLg==
+        b=EEX7Y4NvvePDj5YJRKQoVOOeM2ox5edA8ibevF4NXS3DBMMkfTeC8Zxm6oqSFJAx21
+         +Lo+2Pbbe+YTunx/665glQpw1vIzfi7PX+ptvqjLySPTsiCF0ZYap5nWX9JpaGr+bLkm
+         +L5yP+hxLHJqppaD0uqz2E0xX1OLyIUDhDHcyHpatgRTmBsYCy7j/ZM5ufwC1z11kQb9
+         iPJAkieyCKenUNuqvn7cYKP9L1/MuU6m3odT/fNADqV+kqC82O8U+ZI4Q4de6EJ70j65
+         PnFpQwy32ZOa3latQZqDVjV4jdY8UAwXcCrLRWGXh/LfgnEEivRR33cqJ6f++sxCLGht
+         ao/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=jvXgVgHwU5VN3XdGoyLLLJeBT/9qkkJah9Go9SvGdt8=;
-        b=eSpIY+irS04JKQNLMdSGE6WtF6mt5+6PX3fVr4ilA1ltTteY89V7nB6K2/BlgisRk5
-         Q1rmOcCQlb3i2aS+ghC7fM60onYQrfpwRT1t0KsHYuYVZCFP082fKuBwQg2HYmWl3gve
-         hXXFwSfIhrZT907sMq7ikTRZ9ofdj/k9AbVRYVPNsQ+AFsGCb00dJdoqQxeKa4avt9ba
-         9lR0kpJcYyS7CK+QwQSkOA+1lMBl3P5iWq1/ULCeroz23lZwF25IS/7nyyLmCl00ai+A
-         bbQc1PnFgcyoYb0UblW4gx+SbIFDrugp1MuY8wsCDcXEwWd+70PLUBS7T+t7eHUdXmwk
-         WIMg==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=yJLyqKsaxzbXx+G9z3/vVff1sRqmJq0mDAb3qNapNyk=;
+        b=qc3MKz1ASQBdfBsAbNTqqLRrTkwfdGp9NzAoGBmMyGatIq96GvFG3KFf2/w0eLO6in
+         mTiidHBar2I+COs9Kz0UmJRmU9mQ/yY3+oslqH26dDUsaXmBPeXinpkdLrJAt7QPaNzV
+         3qiSuPRT4r8LdXlWAMGYph3IgJzWXNJs6zYDJFG4EFHb0xmtItaEW78ExJgHF13A46oB
+         85YwME0Q+mHtSjpvU/jlmsIdSNyeVK9ITp8klrz8n9sTIoTnCgpENP/nH8I4VaUi9zND
+         WTFLU6Wtg/9R+U7TZXuOCoFu4cr3s4cq3rWQaBdJ2rwp2MoR+cmP0LyW5CfSjlRbi838
+         fmBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=jCZBPtkh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f28si724089edb.80.2019.07.09.22.18.13
+        by mx.google.com with ESMTPS id gy22si3303181ejb.300.2019.07.11.07.51.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Jul 2019 22:18:13 -0700 (PDT)
+        Thu, 11 Jul 2019 07:51:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=jCZBPtkh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58024 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42384 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hl4zc-0005h6-VI
-	for alex.bennee@linaro.org; Wed, 10 Jul 2019 01:18:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46819)
+	id 1hlaQK-0005YY-G4
+	for alex.bennee@linaro.org; Thu, 11 Jul 2019 10:51:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41052)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <pbonzini@redhat.com>) id 1hl4yi-0005gv-Cs
- for qemu-arm@nongnu.org; Wed, 10 Jul 2019 01:17:17 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hlaQB-0005UH-Lv
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 10:51:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1hl4yg-0007se-68
- for qemu-arm@nongnu.org; Wed, 10 Jul 2019 01:17:15 -0400
-Received: from mail-wm1-f65.google.com ([209.85.128.65]:33982)
+ (envelope-from <peter.maydell@linaro.org>) id 1hlaQ9-0005IC-I6
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 10:51:43 -0400
+Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231]:42210)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hl4yd-0007h0-BZ
- for qemu-arm@nongnu.org; Wed, 10 Jul 2019 01:17:11 -0400
-Received: by mail-wm1-f65.google.com with SMTP id w9so3870791wmd.1
- for <qemu-arm@nongnu.org>; Tue, 09 Jul 2019 22:17:05 -0700 (PDT)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hlaQ7-00056g-Gg
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 10:51:39 -0400
+Received: by mail-oi1-x231.google.com with SMTP id s184so4682835oie.9
+ for <qemu-arm@nongnu.org>; Thu, 11 Jul 2019 07:51:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=yJLyqKsaxzbXx+G9z3/vVff1sRqmJq0mDAb3qNapNyk=;
+ b=jCZBPtkh6AhVo3eWl23zPlnhDDKn6/IfiyC/JFfAdfuKw1qjps8/F/4mwieMIsJta0
+ QsMGUS+pQHWZMW2UyJxFUi8rMDEEs5jnCq+7FDQ6AB7TVZmxuPLbc/i3yMX1m7NGH0b+
+ X4hePJEHqyWlFCOZuAPX3ay2FztIdP3GN3kMDq861tYJTBbVbDsvQOxFPUG8Xq4iakm2
+ n774GqmDktzexV8+xa4NLT8N1tLe6lJ5Wqc0D8TcaTK4SYq6Ofv+DVsGLrS+3YKso4wC
+ 2DN3gFZPsiz9R3wTC7pas/UvC/mnK/mZDm9tY5CaQLDJq3WACbsYxqhVWx91514QfkbB
+ 4NeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=jvXgVgHwU5VN3XdGoyLLLJeBT/9qkkJah9Go9SvGdt8=;
- b=V4MsqrBaSw4rIB1kKZoR0abM7lYwP7ByDxLALZnZbCis0ZmGWSmmG3dO9oEC1t7viV
- M+c46vpMSEuGez7xGY99HyY7qQCiMbPn60K2KGJu8E8F8Uc/WS5av/6+6lC8e9v7CNwq
- s/tXeAj4YpRXP2haQdKy+oVBuJv/ePqLjqtTSx7ypuJdf9FIYba7SxMjdu82v7PIr09R
- S60oTYjUEGgLGl8xw6Ae3ogYOiJNGYiDhRSAujHRKmWkf0ywRN+tebA6dnm5Dt8igrwT
- P52jjNAkdjHNbxJHF5EP9vnHzY/cROc9noGhg7QZsH2f3+lVCwyGMYpZRl+y+asbEXtQ
- na4g==
-X-Gm-Message-State: APjAAAWvoa2k0A0RGgq0DjKDfE2UlWRpyV5Rvme5dE9bMr9ss1pOAFaQ
- 3fDb60w/jjUf9S6wLrA10mEzYQ==
-X-Received: by 2002:a1c:c005:: with SMTP id q5mr3097838wmf.59.1562735823791;
- Tue, 09 Jul 2019 22:17:03 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:19db:ad53:90ea:9423?
- ([2001:b07:6468:f312:19db:ad53:90ea:9423])
- by smtp.gmail.com with ESMTPSA id s10sm1000053wmf.8.2019.07.09.22.17.02
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Tue, 09 Jul 2019 22:17:03 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20190709143912.28905-1-peter.maydell@linaro.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <dc709a38-b858-8611-986e-52be36696609@redhat.com>
-Date: Wed, 10 Jul 2019 07:17:07 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=yJLyqKsaxzbXx+G9z3/vVff1sRqmJq0mDAb3qNapNyk=;
+ b=GpztkJbyklM4sckxXeo8YAarEZgumotWJdZdhkRl2AFpD73PAibfwZ/TeVNuLWNG26
+ bHufJfoy/+NRmEnjwr34lhAOr5x52VDrhEJSQPX7E2tfaA6pgZP4PhDl7qnobInfTchp
+ j9B7euGZMtl+xOz5L8QX3vwELn5xL6r42xKKpP5GNc/eQHbdQb8CGgg7qm0p39kFUezL
+ aOA43LlJkOoFCac0UmLZjJq85ErogQFng2ofvN5y0QOW6dp6R671rK4Om2RVJsm86ImM
+ McTVpRUcLJmLwDSMT+nQAeBKOdF1HDLHR033JIAjU0PRGctfPWRjeDtnxy/ChTNV5rtk
+ HbxQ==
+X-Gm-Message-State: APjAAAUkdDuXJRamS+qkL0lPEF3ciVM3cTk8tQYglh+fDlFuSDyh1Hjf
+ QxMaPxdNygGbo64umDnecexwkIvCW9EsB4vf22JYVQ==
+X-Received: by 2002:aca:6185:: with SMTP id v127mr2734021oib.163.1562856692614; 
+ Thu, 11 Jul 2019 07:51:32 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190709143912.28905-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.128.65
-Subject: Re: [Qemu-arm] [PATCH for-4.1] pl031: Correctly migrate state when
- using -rtc clock=host
+References: <20190709113715.7761-1-philmd@redhat.com>
+In-Reply-To: <20190709113715.7761-1-philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 11 Jul 2019 15:51:21 +0100
+Message-ID: <CAFEAcA9adoeYeJCnrRU=i=WiYzAuJh2vQupYgL_KRAoomvU4Wg@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::231
+Subject: Re: [Qemu-arm] [PATCH-for-4.1 0/3] hw: Avoid crash when reading
+ empty RX FIFO
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,21 +107,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Russell King <rmk@armlinux.org.uk>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d+YE9VW2msf6
+X-TUID: dI/Q5jQ+tFHz
 
-On 09/07/19 16:39, Peter Maydell wrote:
-> Reported-by: Russell King <rmk@armlinux.org.uk>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> I think this is correct, and it makes the "rtc clock should
-> not stay still across a save/reload" work, but I feel like
-> there might be some subtlety I've missed here. Review
-> definitely needed...
+On Tue, 9 Jul 2019 at 12:37, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
+> wrote:
+>
+> Fix a pair of crashes, one is an audit of first one.
+>
+> Philippe Mathieu-Daud=C3=A9 (3):
+>   hw/ssi/mss-spi: Convert debug printf()s to trace events
+>   hw/ssi/mss-spi: Avoid crash when reading empty RX FIFO
+>   hw/display/xlnx_dp: Avoid crash when reading empty RX FIFO
+>
 
-Yes, this looks good.
+Applied patches 2 and 3 to target-arm.next, thanks.
+For future series, could you avoid including both
+for-4.1 and not-for-4.1 patches in the same series, please?
+It's a bit of a pain to have to separate them out again,
+and there's always the risk that I don't notice.
 
-Paolo
+(You'll probably want to hold onto patch 1 and send it
+out again after we reopen for 4.2, or I'll forget about its
+existence :-))
+
+thanks
+-- PMM

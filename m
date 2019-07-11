@@ -1,64 +1,64 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp138714wrv;
-        Thu, 11 Jul 2019 15:26:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxyO39s5jJoWqdn6c2/MA+SvPgEz0PLdxR77qmKVWJ885nxYbua2xfbK2umyITJLq7qCO1n
-X-Received: by 2002:a17:906:2b47:: with SMTP id b7mr5378130ejg.117.1562884017189;
-        Thu, 11 Jul 2019 15:26:57 -0700 (PDT)
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp225501wrv;
+        Thu, 11 Jul 2019 17:25:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqywUDBznd6lHxAZyHRR2PVr4CAZBgiDVqXfLy+3osMNo0lHlIW7wctRGoqt1qYFCGRBs4W8
+X-Received: by 2002:a50:9422:: with SMTP id p31mr6409078eda.127.1562891116248;
+        Thu, 11 Jul 2019 17:25:16 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w23si3692396eju.93.2019.07.11.15.26.57
+        by mx.google.com with ESMTPS id pk3si3844798ejb.88.2019.07.11.17.25.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jul 2019 15:26:57 -0700 (PDT)
+        Thu, 11 Jul 2019 17:25:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45576 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45958 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hlhWi-0006pR-6b
-	for alex.bennee@linaro.org; Thu, 11 Jul 2019 18:26:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38843)
+	id 1hljND-0008R6-8J
+	for alex.bennee@linaro.org; Thu, 11 Jul 2019 20:25:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41285)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <no-reply@patchew.org>) id 1hlhWb-0006m2-UL
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 18:26:50 -0400
+ (envelope-from <no-reply@patchew.org>) id 1hljN9-0008Ob-Fg
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 20:25:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1hlhWa-0005iD-SH
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 18:26:49 -0400
-Resent-Date: Thu, 11 Jul 2019 18:26:49 -0400
-Resent-Message-Id: <E1hlhWa-0005iD-SH@eggs.gnu.org>
-Received: from sender4-of-o59.zoho.com ([136.143.188.59]:21925)
+ (envelope-from <no-reply@patchew.org>) id 1hljN8-00056e-8D
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 20:25:11 -0400
+Resent-Date: Thu, 11 Jul 2019 20:25:11 -0400
+Resent-Message-Id: <E1hljN8-00056e-8D@eggs.gnu.org>
+Received: from sender4-of-o59.zoho.com ([136.143.188.59]:21911)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1hlhWa-0005gl-Fq
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 18:26:48 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1562883968; cv=none; d=zoho.com; s=zohoarc; 
- b=HVNOUPdVC4adh+ON1SafTmT/PKJ7N9PKJH3QIInf0BID5/KWpbviZTjI7DHqnwxcdGmL4AmfsgfkHlxPU+MRgz5GK0MyFXcP0las2gFoui7OPKLkG/vKo3oASL+C0+oxaunJdXx64jBB1ogIQSQ4ZxqIS7Kh9YwMuEFpcA8K+aU=
+ id 1hljN7-00054h-VV
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 20:25:10 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1562884764; cv=none; d=zoho.com; s=zohoarc; 
+ b=f7juZXvE+04jW/LKmX2YtIpMSvTikt3V2BBMs3ky316x6UEb80bcokBteUGM//gyEVybspTr3kfn+uB8U/yhi+3HfdMTjf3R6f22JwucwchX1ebkPTuxKvihqcbXnNxOHa5jL4SayFP4ybDoykj7U1Wxlav7iMFDxalXpa9h1V0=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
- s=zohoarc; t=1562883968;
+ s=zohoarc; t=1562884764;
  h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
- bh=aifl6bsVuqHmMA4CldjdqwLxfkuDkSE718RvMbYrfr8=; 
- b=f1zlHT6GraTMFbshz07ZI8V3YwVxOlxi37J7f24ccXn+l5+kBzaOzOSWP4H0LiBwCGqUujm5bK17ECLluLUfIkRS+8nvgSAiDtFWEI8ltSPesHzsNPc3/tPzOHxyQMT6PtCWGKbFqq/GpVyYlz9LaP2K0nXGWlU45JloFXz28kg=
+ bh=qtqWDPLt956MNZhBpI2AVtak/U3zOs3s9hVHtz24VAI=; 
+ b=KmBm1wghE483RVejYoCiwNE3H1IVuihsnkOF3E6cUNj/NuJUijLvH6OghZlCUF/v58TwlKmGNlkOy6wjRpVulF+nAuggx092SEBNOt1UiUFyXcwrA6Bja3Ip6EToH7wJibGIrFqDBwrTr7j4SQ08f0vdvMcJllfJ1Kk3tnW8NfY=
 ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
  spf=pass  smtp.mailfrom=no-reply@patchew.org;
  dmarc=pass header.from=<no-reply@patchew.org>
  header.from=<no-reply@patchew.org>
 Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1562883966760138.24248795858557;
- Thu, 11 Jul 2019 15:26:06 -0700 (PDT)
-Message-ID: <156288396475.12463.8495950257512135187@c4a48874b076>
-In-Reply-To: <20190711173933.31203-1-eric.auger@redhat.com>
+ mx.zohomail.com with SMTPS id 1562884763338180.8392248933842;
+ Thu, 11 Jul 2019 15:39:23 -0700 (PDT)
+Message-ID: <156288476131.12463.4757639996334325979@c4a48874b076>
+In-Reply-To: <20190711172845.31035-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: base64
 Resent-From: 
 From: no-reply@patchew.org
 To: eric.auger@redhat.com
-Date: Thu, 11 Jul 2019 15:26:06 -0700 (PDT)
+Date: Thu, 11 Jul 2019 15:39:23 -0700 (PDT)
 X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 136.143.188.59
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v5 00/29] vSMMUv3/pSMMUv3 2 stage
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v4 00/29] vSMMUv3/pSMMUv3 2 stage
  VFIO integration
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -79,10 +79,10 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com, yi.l.liu@intel.com,
  eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6O6xUN8dnfSX
+X-TUID: qR7dI/kPo4V8
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDcxMTE3MzkzMy4zMTIw
-My0xLWVyaWMuYXVnZXJAcmVkaGF0LmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgYnVp
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDcxMTE3Mjg0NS4zMTAz
+NS0xLWVyaWMuYXVnZXJAcmVkaGF0LmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgYnVp
 bGQgdGVzdCBvbiBzMzkweCBob3N0LiBQbGVhc2UgZmluZCB0aGUgZGV0YWlscyBiZWxvdy4KCj09
 PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKIyBUZXN0aW5nIHNjcmlwdCB3aWxs
 IGJlIGludm9rZWQgdW5kZXIgdGhlIGdpdCBjaGVja291dCB3aXRoCiMgSEVBRCBwb2ludGluZyB0
@@ -93,17 +93,17 @@ ZSAtYQoKQ0M9JEhPTUUvYmluL2NjCklOU1RBTEw9JFBXRC9pbnN0YWxsCkJVSUxEPSRQV0QvYnVp
 bGQKbWtkaXIgLXAgJEJVSUxEICRJTlNUQUxMClNSQz0kUFdECmNkICRCVUlMRAokU1JDL2NvbmZp
 Z3VyZSAtLWNjPSRDQyAtLXByZWZpeD0kSU5TVEFMTAptYWtlIC1qNAojIFhYWDogd2UgbmVlZCBy
 ZWxpYWJsZSBjbGVhbiB1cAojIG1ha2UgY2hlY2sgLWo0IFY9MQptYWtlIGluc3RhbGwKPT09IFRF
-U1QgU0NSSVBUIEVORCA9PT0KCiAgQ0MgICAgICBpMzg2LXNvZnRtbXUvaHcvdmlydGlvL3ZpcnRp
-by1jcnlwdG8ubwogIENDICAgICAgaTM4Ni1zb2Z0bW11L2h3L3ZpcnRpby92aXJ0aW8tY3J5cHRv
-LXBjaS5vCiAgQ0MgICAgICBpMzg2LXNvZnRtbXUvaHcvdmlydGlvL3ZpcnRpby1wbWVtLm8KL3Zh
-ci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLXU1MmxqamswL3NyYy9ody92aXJ0aW8vdmlydGlvLXBt
-ZW0uYzoyMToxMDogZmF0YWwgZXJyb3I6IHN0YW5kYXJkLWhlYWRlcnMvbGludXgvdmlydGlvX3Bt
-ZW0uaDogTm8gc3VjaCBmaWxlIG9yIGRpcmVjdG9yeQogICAyMSB8ICNpbmNsdWRlICJzdGFuZGFy
-ZC1oZWFkZXJzL2xpbnV4L3ZpcnRpb19wbWVtLmgiCiAgICAgIHwgICAgICAgICAgXn5+fn5+fn5+
-fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn4KY29tcGlsYXRpb24gdGVybWluYXRlZC4KCgpU
-aGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMTkw
-NzExMTczOTMzLjMxMjAzLTEtZXJpYy5hdWdlckByZWRoYXQuY29tL3Rlc3RpbmcuczM5MHgvP3R5
-cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcg
-W2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRj
-aGV3LWRldmVsQHJlZGhhdC5jb20=
+U1QgU0NSSVBUIEVORCA9PT0KCiAgQ0MgICAgICBhYXJjaDY0LXNvZnRtbXUvaHcvYXJtL21zZjIt
+c29jLm8KICBDQyAgICAgIGkzODYtc29mdG1tdS9ody92aXJ0aW8vdmlydGlvLXBtZW0ubwogIEND
+ICAgICAgYWFyY2g2NC1zb2Z0bW11L2h3L2FybS9tdXNjYS5vCi92YXIvdG1wL3BhdGNoZXctdGVz
+dGVyLXRtcC1yNnR2ZjlhMy9zcmMvaHcvdmlydGlvL3ZpcnRpby1wbWVtLmM6MjE6MTA6IGZhdGFs
+IGVycm9yOiBzdGFuZGFyZC1oZWFkZXJzL2xpbnV4L3ZpcnRpb19wbWVtLmg6IE5vIHN1Y2ggZmls
+ZSBvciBkaXJlY3RvcnkKICAgMjEgfCAjaW5jbHVkZSAic3RhbmRhcmQtaGVhZGVycy9saW51eC92
+aXJ0aW9fcG1lbS5oIgogICAgICB8ICAgICAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+
+fn5+fn5+fn5+fn5+CmNvbXBpbGF0aW9uIHRlcm1pbmF0ZWQuCgoKVGhlIGZ1bGwgbG9nIGlzIGF2
+YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDE5MDcxMTE3Mjg0NS4zMTAzNS0x
+LWVyaWMuYXVnZXJAcmVkaGF0LmNvbS90ZXN0aW5nLnMzOTB4Lz90eXBlPW1lc3NhZ2UuCi0tLQpF
+bWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcu
+b3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQu
+Y29t
 

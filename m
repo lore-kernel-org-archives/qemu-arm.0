@@ -1,82 +1,82 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp981510wrv;
-        Thu, 11 Jul 2019 10:34:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxlDlcE/KN303dh8KbVrZACpihRw5wF3EFW76JPQEXqAW5S+YThuMid1qPRYRIZZ2VkxdIl
-X-Received: by 2002:a17:907:2114:: with SMTP id qn20mr4349975ejb.138.1562866482469;
-        Thu, 11 Jul 2019 10:34:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562866482; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp981612wrv;
+        Thu, 11 Jul 2019 10:34:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzoc3lYBXc4YvPFyFQttBMiChohq/EFpAZj39ZOmQKfr8PiyC0cLL3UBFq0cgnbWA+q0lfb
+X-Received: by 2002:aa7:c313:: with SMTP id l19mr4789747edq.258.1562866487747;
+        Thu, 11 Jul 2019 10:34:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562866487; cv=none;
         d=google.com; s=arc-20160816;
-        b=PPLT+sftfY0NYBTRForRzvD7udyQ8P5JQImmUvr1P0TPd6yW/Csa72FHz/qfVdI3Wz
-         MZYn4sumlw8wh3Kveou6ijf+2IE51SDBpAqI6BGju+1zkQF5tiGf8+4+1dhJRHW81o0K
-         rWaD7hS2ijKSrpmXzx74vA01TspcC8qZzp+7lOH0P/Pxv/6KNWLhPF97PJM8STrHG1w7
-         x5fpyHT3HoIl0wVN8Myn5G6W1wKEfDuyBlkRFNRp0q5CCHymoqYuc+CRzCKcvZFRyyLT
-         Iwrk+6f3RE88OUfSSN26L63EL2hz2o+fpRqhQj0v8ieHROdyZNbLdqIVMILXKlk2R6TJ
-         klkQ==
+        b=eTM2kRecVk0+fkCRwGoyt759mZpZ+OTdNwVmdgy0jRrWLfBzY4GwthadFlrSM+CT/i
+         bqloNc+nnA0eZ29qeOy5SPzr1kTiED0veqeR7tXM+6kzW2SrMZ6noQicZywyKBBgkNRY
+         L3XIHY8OmTcMK/BCQa9vOJ05aoK5cZm6hQ4+9Q2IT18jc3R/6ed8LOsXucLMqzS3P0RW
+         602DuZFEUC9nHoNOPvE7Y6C4laRoMhgosUQzNwecVFZGkYWiitvFPe9VYDPvSsgJ+UhM
+         fS1/PWKOicnEIme3BcRFU++3nHqII9LtBxPWpr7E0TSy/jbSGjeIrGzpgfXQq0sIvR9D
+         ee0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=bt+P1ju0FuVk9MaO7VGGMqI5CIstKQA5iBNFrd0MQY4=;
-        b=UXE320GAJG2G0oDZ0JFVbfYDA/wldRRt7ZkoKCftH5aF/Ps40C90HCBmBpnSaiXiNj
-         UXJFXQ0vXXUImtANW5FZ8kq4INjhJX2MoPI/k/rVeGsnyH2h9S5bvKRLfsJ1ItTJkms9
-         m+EqylAMQrtuFvU9D5M3bZzK9NiUZVF1EDEM2c5WIUPJlq2o6aUik918VQPmSPz+wQAA
-         h92W6MmKHb9UfGez9iW5T36+fLG1wd9hIO4v0QYnzNwKlBB//4SKA5tEivACn0cdgq5n
-         HERO5/rcyTPcqZHlaa4RbmqzNwJZVqnxAS98MJdVtRb59TepQ0B0mJqFU0Q8EXuHNwk8
-         dhWQ==
+        bh=9E8M6yHPov+fhct/MS1yUixcEXGPhJlbK/Ch9hcGvT8=;
+        b=NM5XhfxU07sMroEzOkTzv07d5cICjbiOJfh0JNeUSu4ZYXlpd64HXAC0LhKpvnP0LU
+         EHv29VXLZlDLZzHyVU/f5dST3NaZpdMieFUQa0ZfaJ5CUS7MDlg4r626iEfYAV45zonY
+         nohPN/TJO4k7j6WoWWZyYwsiiS64IzRS/U5UpfPbJG87LSyQ4uW0IJS4ZpYqaykEm4J8
+         0rpvFfU+ZE+o0dBETRBleAKDzlVFh0ijV5R/ak/sE/RHcZLsHVWebQgby4SwVfJVo48W
+         SCmK5D5lmkEmbD8+0MiC7EHYq/kAayIDQmxaNI0KMGbSSXnQaKbQ75t3PJ1pYm7An4Mn
+         MWXg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b9si3334391eje.205.2019.07.11.10.34.42
+        by mx.google.com with ESMTPS id k1si3201229ejh.35.2019.07.11.10.34.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jul 2019 10:34:42 -0700 (PDT)
+        Thu, 11 Jul 2019 10:34:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44010 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44012 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hlcxt-0005zZ-5J
-	for alex.bennee@linaro.org; Thu, 11 Jul 2019 13:34:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35128)
+	id 1hlcxx-0006I0-Gh
+	for alex.bennee@linaro.org; Thu, 11 Jul 2019 13:34:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35233)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <eric.auger@redhat.com>) id 1hlcvh-0006qD-R1
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:32:26 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1hlcw0-00084i-KH
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:32:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1hlcvf-0004ht-Tw
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:32:25 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59052)
+ (envelope-from <eric.auger@redhat.com>) id 1hlcvx-0004wY-Dk
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 13:32:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:43266)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1hlcve-0004h5-S8; Thu, 11 Jul 2019 13:32:23 -0400
+ id 1hlcvv-0004oO-Hi; Thu, 11 Jul 2019 13:32:41 -0400
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 21D7F309174E;
- Thu, 11 Jul 2019 17:32:22 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 1885E308FC4B;
+ Thu, 11 Jul 2019 17:32:34 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-46.ams2.redhat.com [10.36.116.46])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 41B7B5C8B9;
- Thu, 11 Jul 2019 17:32:16 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 790AF5C8B9;
+ Thu, 11 Jul 2019 17:32:22 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Thu, 11 Jul 2019 19:28:42 +0200
-Message-Id: <20190711172845.31035-27-eric.auger@redhat.com>
+Date: Thu, 11 Jul 2019 19:28:43 +0200
+Message-Id: <20190711172845.31035-28-eric.auger@redhat.com>
 In-Reply-To: <20190711172845.31035-1-eric.auger@redhat.com>
 References: <20190711172845.31035-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.41]); Thu, 11 Jul 2019 17:32:22 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.43]); Thu, 11 Jul 2019 17:32:34 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC v4 26/29] hw/arm/smmuv3: Fill the IOTLBEntry leaf
- field on NH_VA invalidation
+Subject: [Qemu-arm] [RFC v4 27/29] hw/arm/smmuv3: Pass stage 1
+ configurations to the host
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -93,106 +93,177 @@ Cc: drjones@redhat.com, yi.l.liu@intel.com, mst@redhat.com,
  alex.williamson@redhat.com, vincent.stehle@arm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zPoKe/IOe5c9
+X-TUID: T3lRlQ1rWxLz
 
-Let's propagate the leaf attribute throughout the invalidation path.
-This hint is used to reduce the scope of the invalidations to the
-last level of translation. Not enforcing it induces large performance
-penalties in nested mode.
+In case PASID PciOps are set for the device we call
+the set_pasid_table() callback on each STE update.
+
+This allows to pass the guest stage 1 configuration
+to the host and apply it at physical level.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
+
 ---
- hw/arm/smmuv3.c     | 16 +++++++++-------
- hw/arm/trace-events |  2 +-
- 2 files changed, 10 insertions(+), 8 deletions(-)
+
+v4 -> v5:
+- Use PciOps instead of config notifiers
+
+v3 -> v4:
+- fix compile issue with mingw
+
+v2 -> v3:
+- adapt to pasid_cfg field changes. Use local variable
+- add trace event
+- set version fields
+- use CONFIG_PASID
+
+v1 -> v2:
+- do not notify anymore on CD change. Anyway the smmuv3 linux
+  driver is not sending any CD invalidation commands. If we were
+  to propagate CD invalidation commands, we would use the
+  CACHE_INVALIDATE VFIO ioctl.
+- notify a precise config flags to prepare for addition of new
+  flags
+---
+ hw/arm/smmuv3.c     | 77 +++++++++++++++++++++++++++++++++++----------
+ hw/arm/trace-events |  1 +
+ 2 files changed, 61 insertions(+), 17 deletions(-)
 
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 8c88923f73..2a6bf78a8e 100644
+index 2a6bf78a8e..4474682a33 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -797,8 +797,7 @@ epilogue:
+@@ -16,6 +16,10 @@
+  * with this program; if not, see <http://www.gnu.org/licenses/>.
   */
- static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
-                                IOMMUNotifier *n,
--                               int asid,
--                               dma_addr_t iova)
-+                               int asid, dma_addr_t iova, bool leaf)
- {
-     SMMUDevice *sdev =3D container_of(mr, SMMUDevice, iommu);
-     SMMUEventInfo event =3D {.inval_ste_allowed =3D true};
-@@ -825,12 +824,14 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *m=
-r,
-     entry.addr_mask =3D (1 << tt->granule_sz) - 1;
-     entry.perm =3D IOMMU_NONE;
-     entry.arch_id =3D asid;
-+    entry.leaf =3D leaf;
 =20
-     memory_region_notify_one(n, &entry);
- }
-=20
- /* invalidate an asid/iova tuple in all mr's */
--static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, dma_addr_t=
- iova)
-+static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid,
-+                                      dma_addr_t iova, bool leaf)
- {
-     SMMUDevice *sdev;
-=20
-@@ -841,7 +842,7 @@ static void smmuv3_inv_notifiers_iova(SMMUState *s, i=
-nt asid, dma_addr_t iova)
-         trace_smmuv3_inv_notifiers_iova(mr->parent_obj.name, asid, iova)=
-;
-=20
-         IOMMU_NOTIFIER_FOREACH(n, mr) {
--            smmuv3_notify_iova(mr, n, asid, iova);
-+            smmuv3_notify_iova(mr, n, asid, iova, leaf);
-         }
++#ifdef __linux__
++#include "linux/iommu.h"
++#endif
++
+ #include "qemu/osdep.h"
+ #include "hw/boards.h"
+ #include "sysemu/sysemu.h"
+@@ -847,6 +851,60 @@ static void smmuv3_inv_notifiers_iova(SMMUState *s, =
+int asid,
      }
  }
-@@ -979,9 +980,10 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-         {
-             dma_addr_t addr =3D CMD_ADDR(&cmd);
-             uint16_t vmid =3D CMD_VMID(&cmd);
-+            bool leaf =3D CMD_LEAF(&cmd);
 =20
--            trace_smmuv3_cmdq_tlbi_nh_vaa(vmid, addr);
--            smmuv3_inv_notifiers_iova(bs, -1, addr);
-+            trace_smmuv3_cmdq_tlbi_nh_vaa(vmid, addr, leaf);
-+            smmuv3_inv_notifiers_iova(bs, -1, addr, leaf);
-             smmu_iotlb_inv_all(bs);
++static void smmuv3_notify_config_change(SMMUState *bs, uint32_t sid)
++{
++#ifdef __linux__
++    IOMMUMemoryRegion *mr =3D smmu_iommu_mr(bs, sid);
++    SMMUEventInfo event =3D {.type =3D SMMU_EVT_NONE, .sid =3D sid,
++                           .inval_ste_allowed =3D true};
++    IOMMUConfig iommu_config;
++    SMMUTransCfg *cfg;
++    SMMUDevice *sdev;
++
++    if (!mr) {
++        return;
++    }
++
++    sdev =3D container_of(mr, SMMUDevice, iommu);
++
++    /* flush QEMU config cache */
++    smmuv3_flush_config(sdev);
++
++    if (!pci_device_is_pasid_ops_set(sdev->bus, sdev->devfn)) {
++        return;
++    }
++
++    cfg =3D smmuv3_get_config(sdev, &event);
++
++    if (!cfg) {
++        return;
++    }
++
++    iommu_config.pasid_cfg.version =3D PASID_TABLE_CFG_VERSION_1;
++    iommu_config.pasid_cfg.format =3D IOMMU_PASID_FORMAT_SMMUV3;
++    iommu_config.pasid_cfg.base_ptr =3D cfg->s1ctxptr;
++    iommu_config.pasid_cfg.pasid_bits =3D 0;
++    iommu_config.pasid_cfg.smmuv3.version =3D PASID_TABLE_SMMUV3_CFG_VER=
+SION_1;
++
++    if (cfg->disabled || cfg->bypassed) {
++        iommu_config.pasid_cfg.config =3D IOMMU_PASID_CONFIG_BYPASS;
++    } else if (cfg->aborted) {
++        iommu_config.pasid_cfg.config =3D IOMMU_PASID_CONFIG_ABORT;
++    } else {
++        iommu_config.pasid_cfg.config =3D IOMMU_PASID_CONFIG_TRANSLATE;
++    }
++
++    trace_smmuv3_notify_config_change(mr->parent_obj.name,
++                                      iommu_config.pasid_cfg.config,
++                                      iommu_config.pasid_cfg.base_ptr);
++
++    if (pci_device_set_pasid_table(sdev->bus, sdev->devfn, &iommu_config=
+)) {
++        error_report("Failed to pass PASID table to host for iommu mr %s=
+ (%m)",
++                     mr->parent_obj.name);
++    }
++#endif
++}
++
+ static int smmuv3_cmdq_consume(SMMUv3State *s)
+ {
+     SMMUState *bs =3D ARM_SMMU(s);
+@@ -897,22 +955,14 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+         case SMMU_CMD_CFGI_STE:
+         {
+             uint32_t sid =3D CMD_SID(&cmd);
+-            IOMMUMemoryRegion *mr =3D smmu_iommu_mr(bs, sid);
+-            SMMUDevice *sdev;
+=20
+             if (CMD_SSEC(&cmd)) {
+                 cmd_error =3D SMMU_CERROR_ILL;
+                 break;
+             }
+=20
+-            if (!mr) {
+-                break;
+-            }
+-
+             trace_smmuv3_cmdq_cfgi_ste(sid);
+-            sdev =3D container_of(mr, SMMUDevice, iommu);
+-            smmuv3_flush_config(sdev);
+-
++            smmuv3_notify_config_change(bs, sid);
              break;
          }
-@@ -993,7 +995,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
-             bool leaf =3D CMD_LEAF(&cmd);
+         case SMMU_CMD_CFGI_STE_RANGE: /* same as SMMU_CMD_CFGI_ALL */
+@@ -929,14 +979,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s)
+             trace_smmuv3_cmdq_cfgi_ste_range(start, end);
 =20
-             trace_smmuv3_cmdq_tlbi_nh_va(vmid, asid, addr, leaf);
--            smmuv3_inv_notifiers_iova(bs, asid, addr);
-+            smmuv3_inv_notifiers_iova(bs, asid, addr, leaf);
-             smmu_iotlb_inv_iova(bs, asid, addr);
+             for (i =3D start; i <=3D end; i++) {
+-                IOMMUMemoryRegion *mr =3D smmu_iommu_mr(bs, i);
+-                SMMUDevice *sdev;
+-
+-                if (!mr) {
+-                    continue;
+-                }
+-                sdev =3D container_of(mr, SMMUDevice, iommu);
+-                smmuv3_flush_config(sdev);
++                smmuv3_notify_config_change(bs, i);
+             }
              break;
          }
 diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 0acedcedc6..3809005cba 100644
+index 3809005cba..741e645ae2 100644
 --- a/hw/arm/trace-events
 +++ b/hw/arm/trace-events
-@@ -43,7 +43,7 @@ smmuv3_cmdq_cfgi_cd(uint32_t sid) "streamid =3D %d"
- smmuv3_config_cache_hit(uint32_t sid, uint32_t hits, uint32_t misses, ui=
-nt32_t perc) "Config cache HIT for sid %d (hits=3D%d, misses=3D%d, hit ra=
-te=3D%d)"
- smmuv3_config_cache_miss(uint32_t sid, uint32_t hits, uint32_t misses, u=
-int32_t perc) "Config cache MISS for sid %d (hits=3D%d, misses=3D%d, hit =
-rate=3D%d)"
- smmuv3_cmdq_tlbi_nh_va(int vmid, int asid, uint64_t addr, bool leaf) "vm=
-id =3D%d asid =3D%d addr=3D0x%"PRIx64" leaf=3D%d"
--smmuv3_cmdq_tlbi_nh_vaa(int vmid, uint64_t addr) "vmid =3D%d addr=3D0x%"=
-PRIx64
-+smmuv3_cmdq_tlbi_nh_vaa(int vmid, uint64_t addr, bool leaf) "vmid =3D%d =
-addr=3D0x%"PRIx64" leaf=3D%d"
- smmuv3_cmdq_tlbi_nh(void) ""
- smmuv3_cmdq_tlbi_nh_asid(uint16_t asid) "asid=3D%d"
- smmu_iotlb_cache_hit(uint16_t asid, uint64_t addr, uint32_t hit, uint32_=
-t miss, uint32_t p) "IOTLB cache HIT asid=3D%d addr=3D0x%"PRIx64" hit=3D%=
-d miss=3D%d hit rate=3D%d"
+@@ -52,4 +52,5 @@ smmuv3_config_cache_inv(uint32_t sid) "Config cache INV=
+ for sid %d"
+ smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iom=
+mu mr=3D%s"
+ smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iom=
+mu mr=3D%s"
+ smmuv3_inv_notifiers_iova(const char *name, uint16_t asid, uint64_t iova=
+) "iommu mr=3D%s asid=3D%d iova=3D0x%"PRIx64
++smmuv3_notify_config_change(const char *name, uint8_t config, uint64_t s=
+1ctxptr) "iommu mr=3D%s config=3D%d s1ctxptr=3D0x%"PRIx64
+=20
 --=20
 2.20.1
 

@@ -1,262 +1,119 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id o20sm12818590wrh.8.2019.07.11.06.57.39
-        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Thu, 11 Jul 2019 06:57:39 -0700 (PDT)
-Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id D2B021FF87;
-	Thu, 11 Jul 2019 14:57:38 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH for semihosting-tests] semihosting tests: add v7m tests
-Date: Thu, 11 Jul 2019 14:57:26 +0100
-Message-Id: <20190711135726.14191-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp810368wrv;
+        Thu, 11 Jul 2019 07:39:10 -0700 (PDT)
+X-Received: by 2002:a9d:1718:: with SMTP id i24mr3497865ota.269.1562855950383;
+        Thu, 11 Jul 2019 07:39:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562855950; cv=none;
+        d=google.com; s=arc-20160816;
+        b=jhwCPFcIjO8mKGk0oMEJlPOP7hl5ujLd52piqaYFQAKF494Qj1ffL1xbYr10zHx7Jq
+         MEUnaEwooMwvzkmo6K8j1wzfOY83NpYbLK9/0o4+0uLoQm2XJp9bqqfs7o+i8f1Ccune
+         cofTCvKDWVL8fm/lz3XVpIjunSrdPKnd2Mj0CB3nRvJ0V99BpF98VcWzD/HYu0Tqi35T
+         t9OI05f+uEQAvYAUyVs3tcjIO+G6IzffFuuxW1N7q7B0HSJEQD1VbHOyYqZ398QcQqIz
+         JOD95aVnAkTpetvhtoKL2z3O4UTjsY3M8LAqcVXAgSTsFPlVO2YWVj19UzBwHzx/pv/9
+         dulg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=BYOEYw35xlqaw1o7LBjte74j1xHji7u5iShs1xXWefQ=;
+        b=OpdYSf5HYA9ZTikxDPTlGjMSKdImHNwXZecKdtdNscP8ykGSlLFML/TrsHCkoyU2O4
+         f8UL8Ivgqb3bGELYUL4EoltzEk5kbZt3C+Yvg/jgbVNhIQkkXEAMZxhrSsDZpa7srXoh
+         yHvdvw+iCdYExHAgYYVzoDiJLi6uiOseszo60OXKGaVk376jLb3ROcD5IRoNnj+7TSLK
+         nrwghywbQ2ScoOR8/vsORdFWmUYeWVU+OJBIKPG3Sj+2CfUt5EKecbHsqCJ/7LHC7bQv
+         XRGaFGcZOzF6BGZBXvNwJb/oVDN1votGtzIi2uyTlg8PrCl0oWr5R4qt0RGlkRYmBdjw
+         15ug==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="EcaEfFB/";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id i4sor3056970ota.11.2019.07.11.07.39.10
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 11 Jul 2019 07:39:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="EcaEfFB/";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=BYOEYw35xlqaw1o7LBjte74j1xHji7u5iShs1xXWefQ=;
+        b=EcaEfFB/nfr8zMoxkiMotiFkTx/0yZ9hMoz+D6BIWKVNUqolvZcjtWmgyYbRvABupO
+         Ow9HQN+zcVO+HnUJ87eC66k4e2c4xHVFDIWcENkBNq4bH/1t2HM9bS5aAIJh3V8TwVsB
+         AJgPlAntPEgAsLfgntLhQdj6APa2Nw11IgQJI0KIzyIrWq7/nBy0kVGepllhx6JclH5r
+         4YyxJOcw00++rJEQ7qjWHSuj3bQFKsk9aDzjLPCv6hpE0NlzObwvSaHNxbL39Wgex2OD
+         xN3On5Qqd4TuuF42PKPj+hOlaN2ddggMmLX7pL1X5hlO3vLsf/RI5KmLNOzHolF4DiaK
+         av2A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=BYOEYw35xlqaw1o7LBjte74j1xHji7u5iShs1xXWefQ=;
+        b=fiAs3h9JfqWMGNe4WJdYivBeP3FylrM5ShlVvyyqt1LAVY8OV73Mr7KNZptPkXklvy
+         XCcQX3IZiuHu8+ZW8xpP1a1WU293H0MxlFIlHOJxwihXbdHAsrHFugRV6rjBUQekfxue
+         NhbInCmRETSeHRdQbrn5ZYNNush7rO86DZ2P4eaLacvMe9xzasebRFEf3MiksbijbCtO
+         NrP53hsGp9zpb8KM9kD+OWPV/LrvDJX0b8Uhwy+kcM1TNtoLFM+Y7SGrpS9ImRfovSDJ
+         TzXsS5FAJxi1aQWM0jdiODU9WdNvbbXsmmqsSs7KLzDB9/XTelG3bCmD00cFSJ+LphcI
+         aCOg==
+X-Gm-Message-State: APjAAAUCQfmXouFf8YVmVkAWzFavEybYyUmFCEOJLWmYB03V9Cs1bFXQ
+	VYaHFsxPusaZfUUmnCy8eCKVsfA3tWdYI011DrgiANxL9xdM9Q==
+X-Google-Smtp-Source: APXvYqyrmvsKMGyjQFlEAAp1a4kK3k+UUWb4MeuLqjsPCHK2f77Ir/fxoWCHXalGd9TIe1490sIeUE1ERHT3dFEb72M=
+X-Received: by 2002:a9d:5f1a:: with SMTP id f26mr3796751oti.91.1562855949933;
+ Thu, 11 Jul 2019 07:39:09 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: LmL+fzkSIGA/
+References: <20190711103737.10017-1-alex.bennee@linaro.org>
+In-Reply-To: <20190711103737.10017-1-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 11 Jul 2019 15:38:58 +0100
+Message-ID: <CAFEAcA-mJ5qcA-iS8BxfoVVMkAt13k11bYOT_eELw-WzcSEvRQ@mail.gmail.com>
+Subject: Re: [PATCH v2 for 4.1] target/arm: report ARMv8-A FP support for
+ AArch32 -cpu max
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	1836078@bugs.launchpad.net, Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: oTHE162M9Mg0
 
-M-profile has yet another way of triggering semihosting calls using
-the BKPT instruction. To support this we need to add a M-profile setup
-so we use the nice and simple microbit model which has a Cortex-M0 in
-it.
+On Thu, 11 Jul 2019 at 11:37, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
+> When we converted to using feature bits in 602f6e42cfbf we missed out
+> the fact (dp && arm_dc_feature(s, ARM_FEATURE_V8)) was supported for
+> -cpu max configurations. This caused a regression in the GCC test
+> suite. Fix this by setting the appropriate bits in mvfr1.FPHP to
+> report ARMv8-A with FP support (but not ARMv8.2-FP16).
+>
+> Fixes: https://bugs.launchpad.net/qemu/+bug/1836078
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/cpu.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+>
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index e75a64a25a..ad164a773b 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -2452,6 +2452,10 @@ static void arm_max_initfn(Object *obj)
+>              t =3D FIELD_DP32(t, ID_ISAR6, SPECRES, 1);
+>              cpu->isar.id_isar6 =3D t;
+>
+> +            t =3D cpu->isar.mvfr1;
+> +            t =3D FIELD_DP32(t, MVFR1, FPHP, 2);     /* v8.0 FP support =
+*/
+> +            cpu->isar.mvfr1 =3D t;
+> +
+>              t =3D cpu->isar.mvfr2;
+>              t =3D FIELD_DP32(t, MVFR2, SIMDMISC, 3); /* SIMD MaxNum */
+>              t =3D FIELD_DP32(t, MVFR2, FPMISC, 4);   /* FP MaxNum */
+> --
+> 2.20.1
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
----
-v2
-  - add copyright headers
-  - better linker script
-  - use .type foo, function instead of hacks
-v3
-  - fix ENTRY(), add comment
----
- Makefile         | 14 ++++++++++++-
- microbit.lds     | 48 ++++++++++++++++++++++++++++++++++++++++++++
- semicall.S       |  8 +++++++-
- start-microbit.S | 52 ++++++++++++++++++++++++++++++++++++++++++++++++
- usertest.c       |  4 +++-
- 5 files changed, 123 insertions(+), 3 deletions(-)
- create mode 100644 microbit.lds
- create mode 100644 start-microbit.S
 
-diff --git a/Makefile b/Makefile
-index 7ad2512..1296fde 100644
---- a/Makefile
-+++ b/Makefile
-@@ -40,6 +40,7 @@
- 
- A32GCC := arm-linux-gnueabihf-gcc -marm
- T32GCC := arm-linux-gnueabihf-gcc -mthumb
-+V7MGCC := arm-none-eabi-gcc -mcpu=cortex-m0 -mfloat-abi=soft
- A64GCC := aarch64-linux-gnu-gcc
- 
- A32LD := arm-linux-gnueabihf-ld
-@@ -47,6 +48,8 @@ A32LD := arm-linux-gnueabihf-ld
- A32LINKOPTS := -nostdlib -lgcc -Xlinker --script=baremetal.lds -Xlinker --build-id=none
- A64LINKOPTS := -nostdlib -lgcc -Xlinker --script=baremetal-a64.lds -Xlinker --build-id=none
- 
-+AV7MLINKOPTS := -nostdlib -lgcc -Xlinker --script=microbit.lds -Xlinker --build-id=none
-+
- QEMU_BUILDDIR := ~/linaro/qemu-from-laptop/qemu/build/x86
- 
- ifdef GDBPORT
-@@ -62,11 +65,13 @@ QEMU_SYSTEM_AARCH64 = $(QEMU_BUILDDIR)/aarch64-softmmu/qemu-system-aarch64 $(SYS
- all: usertest-a32 usertest-a64 usertest-t32 \
- 	systest-a32.axf systest-t32.axf \
- 	systest-a32-hlt.axf systest-t32-hlt.axf \
-+	systest-t32-bkpt.axf \
- 	systest-a64.axf
- 
- usertest-srcs = usertest.c semihosting.c semicall.S printf/printf.c
- 
- systest-srcs = start.S string.c $(usertest-srcs)
-+microbit-systest-srcs = microbit.lds start-microbit.S string.c $(usertest-srcs)
- 
- usertest-a32: $(usertest-srcs)
- 	$(A32GCC) --static -o $@ $^
-@@ -95,6 +100,9 @@ systest-a32-hlt.axf: $(systest-srcs)
- systest-t32-hlt.axf: $(systest-srcs)
- 	$(T32GCC) -DUSE_HLT -o $@ $^ $(A32LINKOPTS)
- 
-+systest-t32-bkpt.axf: $(microbit-systest-srcs)
-+	$(V7MGCC) -DUSE_BKPT -o $@ $^ $(AV7MLINKOPTS)
-+
- systest-a64.axf: $(systest-srcs)
- 	$(A64GCC) -nostdlib -o $@ $^ $(A64LINKOPTS)
- 
-@@ -125,6 +133,9 @@ run-systest-a32-hlt: systest-a32-hlt.axf
- run-systest-t32-hlt: systest-t32-hlt.axf
- 	$(QEMU_SYSTEM_ARM) -M virt --display none --semihosting -kernel $^
- 
-+run-systest-t32-bkpt: systest-t32-bkpt.axf
-+	$(QEMU_SYSTEM_ARM) -M microbit --display none --semihosting -kernel $^
-+
- run-systest-a64: systest-a64.axf
- 	$(QEMU_SYSTEM_AARCH64) -M virt --display none --semihosting \
- 		-cpu cortex-a57 -kernel $^
-@@ -132,4 +143,5 @@ run-systest-a64: systest-a64.axf
- run: run-usertest-a32 run-usertest-t32 run-usertest-a64 \
- 	run-systest-a32 run-systest-t32 run-systest-a64 \
- 	run-usertest-a32-hlt run-usertest-t32-hlt \
--	run-systest-a32-hlt run-systest-t32-hlt
-+	run-systest-a32-hlt run-systest-t32-hlt \
-+	run-systest-t32-bkpt
-diff --git a/microbit.lds b/microbit.lds
-new file mode 100644
-index 0000000..7ce43e2
---- /dev/null
-+++ b/microbit.lds
-@@ -0,0 +1,48 @@
-+/*
-+ * microbit.lds : simple linker script for baremetal ARM-M test cases
-+ *
-+ * Copyright (C) 2019 Linaro Limited. All rights reserved.
-+ *
-+ * Redistribution and use in source and binary forms, with or without
-+ * modification, are permitted provided that the following conditions
-+ * are met:
-+ * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer.
-+ * 2. Redistributions in binary form must reproduce the above copyright
-+ *    notice, this list of conditions and the following disclaimer in
-+ *    the documentation and/or other materials provided with the
-+ *    distribution.
-+ * 3. Neither the name of Linaro Limited nor the names of its
-+ *    contributors may be used to endorse or promote products derived
-+ *    from this software without specific prior written permission.
-+ *
-+ * Memory layout is for the BBC Microbit board which puts RAM at 0x20000000
-+ */
-+
-+RAMSTART = 0x20000000;
-+/* 2kb stack, from the top of RAM */
-+STACKBOT = 0x20003800;
-+STACKTOP = 0x20004000;
-+
-+/* QEMU ignores this in favour of vector_table anyway */
-+ENTRY(reset_thumb)
-+
-+SECTIONS
-+{
-+    . = 0x0;
-+    .text : {
-+        *(.text)
-+    }
-+    . = RAMSTART;
-+    .data : {
-+        *(.data)
-+    }
-+    .bss : {
-+        *(.bss)
-+    }
-+    /* linker should complain if data+bss run into this */
-+    . = STACKBOT;
-+    /DISCARD/ : {
-+        *(.ARM.attributes)
-+    }
-+}
-diff --git a/semicall.S b/semicall.S
-index 1418a42..6213cea 100644
---- a/semicall.S
-+++ b/semicall.S
-@@ -29,6 +29,7 @@
- #endif
- 
-         .globl __semi_call
-+        .type __semi_call, function
- __semi_call:
- #if defined(__aarch64__)
-         hlt 0xf000
-@@ -51,8 +52,13 @@ __semi_call:
- #else
-         /* traditional svc */
- #if defined(__thumb__)
--        /* NB: assumes not M-profile (which is BKPT) */
-+#if defined(USE_BKPT)
-+        /* M-profile T32 */
-+        bkpt 0xab
-+#else
-+        /* A+R Profile T32 */
-         svc 0xab
-+#endif
- #else
-         svc 0x123456
- #endif
-diff --git a/start-microbit.S b/start-microbit.S
-new file mode 100644
-index 0000000..9998bf2
---- /dev/null
-+++ b/start-microbit.S
-@@ -0,0 +1,52 @@
-+/*
-+ * start-microbit.S - assembly code for startup on baremetal M-profile tests
-+ *
-+ * Copyright (c) 2015 Linaro Limited
-+ * All rights reserved.
-+ *
-+ * Redistribution and use in source and binary forms, with or without
-+ * modification, are permitted provided that the following conditions
-+ * are met:
-+ * 1. Redistributions of source code must retain the above copyright
-+ *    notice, this list of conditions and the following disclaimer.
-+ * 2. Redistributions in binary form must reproduce the above copyright
-+ *    notice, this list of conditions and the following disclaimer in
-+ *    the documentation and/or other materials provided with the
-+ *    distribution.
-+ * 3. Neither the name of Linaro Limited nor the names of its
-+ *    contributors may be used to endorse or promote products derived
-+ *    from this software without specific prior written permission.
-+ */
-+
-+        .syntax unified
-+        .cpu cortex-m0
-+        .thumb
-+
-+        .text
-+
-+vector_table:
-+        .word STACKTOP          /* 0. SP_main */
-+        .word reset_thumb       /* 1. Reset */
-+        .word 0                 /* 2. NMI */
-+        .word 0                 /* 3. HardFault */
-+        .rept 7
-+        .word 0                 /* 4-10. Reserved */
-+        .endr
-+        .word 0                 /* 11. SVCall */
-+        .word 0                 /* 12. Reserved */
-+        .word 0                 /* 13. Reserved */
-+        .word 0                 /* 14. PendSV */
-+        .word 0                 /* 15. SysTick */
-+        .rept 32
-+        .word 0                 /* 16-47. External Interrupts */
-+        .endr
-+
-+        /* declare as a function so pointers are appropriatley "thumbed" */
-+        .type reset_thumb, function
-+        .global reset_thumb
-+reset_thumb:
-+
-+        bl main
-+        bl semi_exit
-+        # not reached
-+1:      b 1b
-diff --git a/usertest.c b/usertest.c
-index 16ef0fe..d95cf90 100644
---- a/usertest.c
-+++ b/usertest.c
-@@ -1,5 +1,7 @@
- /*
-- * usertest.c -- top level test file for usermode tests
-+ * usertest.c -- top level test file for usermode tests.
-+ *
-+ * System tests also call this main after start[-microbit].S
-  *
-  * Copyright (c) 2015 Linaro Limited
-  * All rights reserved.
--- 
-2.20.1
+Applied to target-arm.next, thanks.
+
+-- PMM

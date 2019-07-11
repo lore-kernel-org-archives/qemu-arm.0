@@ -1,100 +1,103 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp828409wrv;
-        Thu, 11 Jul 2019 07:57:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyEB4LUGKfl+oLxnzCQH352kHhamtC2yZatCXRd8uzG0M3yELqMtsFgg1n6mtC0C+iqq1xn
-X-Received: by 2002:a17:906:30d9:: with SMTP id b25mr3445321ejb.55.1562857076155;
-        Thu, 11 Jul 2019 07:57:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562857076; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp815539wrv;
+        Thu, 11 Jul 2019 07:44:12 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwObO8IPbeQ8aJ6ZCYAc18j2rQRU+JMHPOfckTDyBTPJnb6UC9Cpt0k2FM8qbY17lAm0py/
+X-Received: by 2002:a17:906:b315:: with SMTP id n21mr3518599ejz.312.1562856252350;
+        Thu, 11 Jul 2019 07:44:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562856252; cv=none;
         d=google.com; s=arc-20160816;
-        b=w1SN8AoOL15hXMKDGpJkoCtmOANUu5ysNYwHLntPMcFZeJPYhQZHG4Gij6bwC1wTDb
-         5eM0UCHF8fsmdjnDRt2jFqax0RzZ/a97TZgUnqtJb3Jdsvbvs90WN7yPoU1CptNUoRon
-         HPB5lVPQ0f1FObsAF/L/JJYOAOHbeEqhpFW+8muUoE0OcvmJbmdLkn7sbuakcrMIkirn
-         uuTNafoJ1jPBqskCYl2xeMK+pzFZ98w8NEnitcjlmrTUQ+y8hXqDgQ8Nu5bZTeJGORq9
-         6CHoLCl9JfimJm4G97W5J5aQ8pp+maQG3Ky9qf0rVzYlVnB8tmA/xwQdYBZ7PL8l1bVN
-         /c3g==
+        b=JWqx13FdKBUb527t21EKZKRg3QXZkgfCR67a2BON0B5a2RA4rG5C+K7SX73F4iBBNS
+         BbT44FXAbePVIIJF/j95O7PCk4QKbIPhMNfEVx/WlWexLfmipaUgki+SADWSkT9nhp6j
+         bkaQqOCLKzGUHSjcM6er5jQFlE3rZgU22AP/4Z7ZXBTYDTQNI84echCkfjF8RXpsuq7D
+         Fiy6qlo1buOtCkHffmXatRQHhW4L2ZbaTrIHLjWeHvSWcfH5JszC6tncEIRtN2BIawxV
+         362pUeNmApTTdgD78qQwYme3ET+oMpxmNbDogs+VRlMnTzNb5+uzwZ6m3vqnxJAIq9ZE
+         aYZA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=gBzFXMgegUrsAfRlHD4O9gEuq3Q0SglD0zqttMeYuLg=;
-        b=gSrTPdr7Codr1AKoBpJfNJQBN7i6jwFnxjx4VWcyeF/1SNeWUQmQguuw60WkWUvdoL
-         b/G3tDUeqIaE7wuEKpIG/CvbWRbF3nMjquBm0LW/hw8Bw2IdOrJdQ1X57AXQvYC/+EV9
-         g2bs1IfIEwW1TVe9pdgJBVjIWu3pSwcwUaBg0ycEFUqTYz6rc3Mu3PQIHOfofpbnrSgm
-         mDVO8xboE72geXNNc+irPs83EHaG664Aiz58LVxcNgaaid3ujfsy463Jcna6lgJ4tbEc
-         AUxZBriDq6HWvyv9MK4927Hudb5PNE/+Qqj6h/lnyMZTV5mn9WoDuMWHrLyrmlLIfZuy
-         rDvw==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=juWF7t80AMiUy6W/39UirWfnLso33OL7l6jDlGM6Yow=;
+        b=HGMdLlEuRajpRT0+Trgjt6mtgZlXT8xe85fTro+UR/1fsVzOkhmgtHd3qudiqe6r9u
+         HrTHIdd/Mlb2c5yMIvMnydAhlQfxqiLuu1PU/YhPinPV/2tPj8Bp+QshWbW+2nvti7z4
+         V3zQvOryEBoWqWZuNyo4NP4nqRgZyh0XtwYzt1T9RjMz01gw+qrvKgOXVX1TTPWeTiuH
+         xkLZ3hKZsRoKnoxlANxnMwgJBqKbb3X0olg5qZ7SzTd6jPiW/WcMhcMnkDEdhvQmFpDJ
+         toTw2D/2TAXkGhJEuWOh6HXyEkDpH3BL+J1Q2i6AMW3lLwUPNheUtAP7tNRiB37i9RGg
+         u0mA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=LuiMmOhq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k21si3311093ejr.44.2019.07.11.07.57.56
+        by mx.google.com with ESMTPS id y38si3622697edd.0.2019.07.11.07.44.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 11 Jul 2019 07:57:56 -0700 (PDT)
+        Thu, 11 Jul 2019 07:44:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=LuiMmOhq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42468 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42344 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hlaWB-00075J-8x
-	for alex.bennee@linaro.org; Thu, 11 Jul 2019 10:57:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42765)
+	id 1hlaIt-0005jR-EV
+	for alex.bennee@linaro.org; Thu, 11 Jul 2019 10:44:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38910)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hlaVg-0006G3-NX
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 10:57:25 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hlaIk-0005iO-9C
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 10:44:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hlaVf-0003mS-Oa
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 10:57:24 -0400
-Received: from mail-wm1-f51.google.com ([209.85.128.51]:35958)
+ (envelope-from <peter.maydell@linaro.org>) id 1hlaIj-00046x-7D
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 10:44:02 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:44850)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hlaVf-0003km-HU
- for qemu-arm@nongnu.org; Thu, 11 Jul 2019 10:57:23 -0400
-Received: by mail-wm1-f51.google.com with SMTP id g67so1900607wme.1
- for <qemu-arm@nongnu.org>; Thu, 11 Jul 2019 07:57:22 -0700 (PDT)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hlaIi-000461-V5
+ for qemu-arm@nongnu.org; Thu, 11 Jul 2019 10:44:01 -0400
+Received: by mail-ot1-x342.google.com with SMTP id b7so6069223otl.11
+ for <qemu-arm@nongnu.org>; Thu, 11 Jul 2019 07:44:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=juWF7t80AMiUy6W/39UirWfnLso33OL7l6jDlGM6Yow=;
+ b=LuiMmOhqnpI9XVRm72HVh+6hcQhkkX5lIqkfffDeBpuHJeglqdRI4F7SBDDGaqvX9C
+ OPPIEHViGUwKIVQ+VY9fdwJvDwKV08gYCljHjE8m/Wr7DvvKwRcl1CkYDUrjBmpXskPW
+ 4k4PDvBmhjCvX6XU/bupLM4Qg9YqgDn2+Ci+J6zxmZzoEJSX0VH4ywHYIOFaXxc1ZJd4
+ MANakSkCidvUY+QtQ4PZ7v9ihwUkCp/sAh36urwlbvMS6TO74Y3L8jVjyCLPSjU2BrDz
+ oT4si2VCFSjMa6roLdFd/zlqJTr1J2axG+CSFusco3hHerKBnL0fv/r/p6EZI6OI2Axj
+ 521g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=gBzFXMgegUrsAfRlHD4O9gEuq3Q0SglD0zqttMeYuLg=;
- b=S7Q884ALxDso4V6YlQ9+unqCSDHnhiqXs7geu2eKOBsCqhfzQrU06XFuIQGgJ3HpJi
- gtGqvX9gSvPf1gfgIKifbY/NkO8vJf7jThqrHGi0AYIUOQpGtw+ccs1QOcmqzTvdb23a
- eX2E63Ad4FGDOSBNt4Y2GmkLi8uQGwfybQon+X1WkBuRPak2IfcQTiaByD7YezZa9WNM
- D/gMRKoc+2/j2oa05XQsBWcbOqYT1t2xAlYGbQe8UV/jDixxr26Rl1LZdAI88aSj5zSF
- UlZPLlJzvO7lW+vuhMMRtUux8XbP87gLzs7O35IrSAFeJHjTfPcMy6+xp3heKXOnZO2C
- GIWg==
-X-Gm-Message-State: APjAAAX3uJr6rtCb1EdfuxiR0jnG7vduxT81e5Z6a2/zZCxU0Gs5nJHh
- YyCui/SeJBi/lYOMA+yam+BUNwfJguI=
-X-Received: by 2002:a1c:f116:: with SMTP id p22mr4618304wmh.70.1562857041890; 
- Thu, 11 Jul 2019 07:57:21 -0700 (PDT)
-Received: from [192.168.1.103] (62.red-83-42-61.dynamicip.rima-tde.net.
- [83.42.61.62])
- by smtp.gmail.com with ESMTPSA id t63sm4754458wmt.6.2019.07.11.07.57.21
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Thu, 11 Jul 2019 07:57:21 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20190709113715.7761-1-philmd@redhat.com>
- <CAFEAcA9adoeYeJCnrRU=i=WiYzAuJh2vQupYgL_KRAoomvU4Wg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <e4fc24ff-43db-e11e-8068-aba98929e8aa@redhat.com>
-Date: Thu, 11 Jul 2019 16:57:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=juWF7t80AMiUy6W/39UirWfnLso33OL7l6jDlGM6Yow=;
+ b=fPTWW5ysWiuE4oa1aI5n4H5x7CKq3Z6YRbJlvF+fGBIHv9oCfeG13IN+4cPaisQeL5
+ rYFmzo2nt8C09zMk75BRqpqBiNrz6B+xHeXpAbbUkhl9mUc4qoQTG5TytplzKbu9/m86
+ SyxFqJKpsA5QZvMcIkv1RyNJXZ92G8tYfk6VnzFtNyUV03hCnJirp8bKrCV9mN8P4rlS
+ VG+HDNCkYGThPRui6sUP3IHrmNug0BN5kjsa9itsAcxlASeXViWO4yZgrfL6rVulcHr6
+ wfQ+DijPNt/FW9UuxR980yoOmSCt8+gzj2BYIWJFgChPjXsa6ArghwscVzjahr2navQY
+ W8Vg==
+X-Gm-Message-State: APjAAAV0KSSgfZ6eNSV4VdpeUm63f22y7Gl8Y1suxV3h2e2aUqoPdEK+
+ czWwLvffPi/4B5+2waqd1cTKfnzayzQMtTRB3L+oeg==
+X-Received: by 2002:a9d:7245:: with SMTP id a5mr3902765otk.232.1562856239945; 
+ Thu, 11 Jul 2019 07:43:59 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9adoeYeJCnrRU=i=WiYzAuJh2vQupYgL_KRAoomvU4Wg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.128.51
-Subject: Re: [Qemu-arm] [PATCH-for-4.1 0/3] hw: Avoid crash when reading
- empty RX FIFO
+References: <20190709123240.16298-1-philmd@redhat.com>
+In-Reply-To: <20190709123240.16298-1-philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 11 Jul 2019 15:43:49 +0100
+Message-ID: <CAFEAcA8h-ghRdj+K9x-6559Djfpth1-s9aPargLkQjTDA5HsLA@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::342
+Subject: Re: [Qemu-arm] 
+	=?utf-8?q?=5BPATCH-for-4=2E1_v6_0/3=5D_hw/ssi/xilinx?=
+	=?utf-8?q?=5Fspips=3A_Avoid_NULL_dereference_and_out-of-bound_acce?=
+	=?utf-8?b?c3PigIs=?=
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,38 +109,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+Cc: Francisco Iglesias <frasse.iglesias@gmail.com>,
+ qemu-stable <qemu-stable@nongnu.org>,
  Alistair Francis <alistair@alistair23.me>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>
+ QEMU Developers <qemu-devel@nongnu.org>, Prasad J Pandit <ppandit@redhat.com>,
+ Lei Sun <slei.casper@gmail.com>, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GmM4Khc5EzrK
+X-TUID: oq7YRS5XllVp
 
-On 7/11/19 4:51 PM, Peter Maydell wrote:
-> On Tue, 9 Jul 2019 at 12:37, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->>
->> Fix a pair of crashes, one is an audit of first one.
->>
->> Philippe Mathieu-Daudé (3):
->>   hw/ssi/mss-spi: Convert debug printf()s to trace events
->>   hw/ssi/mss-spi: Avoid crash when reading empty RX FIFO
->>   hw/display/xlnx_dp: Avoid crash when reading empty RX FIFO
->>
-> 
-> Applied patches 2 and 3 to target-arm.next, thanks.
-> For future series, could you avoid including both
-> for-4.1 and not-for-4.1 patches in the same series, please?
-> It's a bit of a pain to have to separate them out again,
-> and there's always the risk that I don't notice.
+On Tue, 9 Jul 2019 at 13:32, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
+> wrote:
+>
+> v1: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg01238.html
+> v2: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg01586.html
+> v3: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg01657.html
+> v4: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg01777.html
+> v5: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg01959.html
+> v6:
+> - fixed datasheet reference, added Francisco tags
+>
+> Philippe Mathieu-Daud=C3=A9 (3):
+>   hw/ssi/xilinx_spips: Convert lqspi_read() to read_with_attrs
+>   hw/ssi/xilinx_spips: Avoid AXI writes to the LQSPI linear memory
+>   hw/ssi/xilinx_spips: Avoid out-of-bound access to lqspi_buf[]
 
-Sure, duly noted.
 
-> (You'll probably want to hold onto patch 1 and send it
-> out again after we reopen for 4.2, or I'll forget about its
-> existence :-))
 
-No problem!
+Applied to target-arm.next, thanks.
 
-Regards,
-
-Phil.
+-- PMM

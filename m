@@ -1,76 +1,103 @@
-Received: by 2002:a17:90a:ad8a:0:0:0:0 with SMTP id s10csp10521926pjq;
-        Thu, 11 Jul 2019 09:27:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwVQYrXitvxQqYjKdSx3quW9pMaSCaJmbVJusRMlCs8HGqScEAw1b8KZMVAiEKmFLwOC1ep
-X-Received: by 2002:a17:90a:ff17:: with SMTP id ce23mr5795038pjb.47.1562862433298;
-        Thu, 11 Jul 2019 09:27:13 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1562862433; cv=pass;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp586778wrv;
+        Fri, 12 Jul 2019 00:53:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx6Td8sXGU1tgrfKtXWew9XNvX1dGxliUU/7VwIMkPNVTm3u7cs5oPbW1LnzuP6usPxV6hK
+X-Received: by 2002:a50:b343:: with SMTP id r3mr7701247edd.16.1562918033016;
+        Fri, 12 Jul 2019 00:53:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562918033; cv=none;
         d=google.com; s=arc-20160816;
-        b=ShOsOObFhm5FC9lZG2B/w1GpIiTS4XiFIE/XrdiAOPcvrKVIAYfnGbu4u/4HGcxz4N
-         DpdX6tnW1qS6xZoutRTvliieccB00IOxFRxDazxoiX/uCBy9cEoAMTGhp6z95YzAlU55
-         PZIAmRH5kifairjsB0TijMmVDApHJKVqiGGWfIKVG2OZaR9dNAphS7cY0HNpijyJt0Nm
-         J4PaaB2V9KQKfsUq5RJJFbTsFzl8OjwmitfvoX4wKwqIe0HXMJo8PU3YOFjVpnAd/B9B
-         Q2fKPQdQPNcdmO/5PjmSVVsd20lmXol1Be0Dx4pxusBQvg8UOcKvupHR1mDPKQQEGuhG
-         TpIQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
-         :reply-to:in-reply-to:subject:message-id;
-        bh=Cp4gm7ZH8mJSH4RSieA+11u+RdAzfHjQRfeVFOFgpLk=;
-        b=h+O/o1IaoTJR844+qiuhkijPJvZ0b3qkqDhdigli6IsYRtHCYnTP0Ga0pNs6zmQytq
-         Xvesf885uLO/8BwlMunboBe/ydbwiRuZoeZ1/4ILTbtF6Eur/GcwGk++xPfDV2JQiHht
-         4YKSWk5Aek4DuERA2p/GESegCsT+dc9Z9oRw+4rXN9XkWjv5CssH4JdgobvKTraVBUlP
-         4dZoi9Dm1eUcrwG/PkzJmT+0v0r+lTj2Tk5S6YZbSPiyjHAxbj1FxavpbERoYbr/3SaC
-         +1cahKoMHNpUuoMYFyiQxDVhtaFxwXYOc3WJbk8UkBE5bK9Opfs906J2J9F7r6c7cGPj
-         q/Vg==
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.59 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-Return-Path: <no-reply@patchew.org>
-Received: from sender4-of-o59.zoho.com (sender4-of-o59.zoho.com. [136.143.188.59])
-        by mx.google.com with ESMTPS id m11si5240011pls.148.2019.07.11.09.27.11
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Jul 2019 09:27:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 136.143.188.59 as permitted sender) client-ip=136.143.188.59;
+        b=nKpq6iYlzB0lhjnYEbnUgkxUXM5wQ8b1BMk1FL9xLJMEcREusZXROuBq2YNnBmacGG
+         XI8aaMCx8qR3iMZsvOcdOCQ1mnf9y0wNAWacxpSHLhdW7IAavN7lCb3v2oH01Yqlnzkp
+         VL5PImk8DOFikmTflF8qK55mNsj8siCrabuM+/eLoHysYFEtZoUKDKB6HjSMZ8ibLCf6
+         QCvaPW4z46cRRNJ8lIWiUepki3akGcXkicWnr7aySpZmiPKIe1sFHyXmbZrvkLeFPnlB
+         Koy8BcrcyVj+wdkhnQrfBHoGViBAmK4IHTdtgX3l3vX0VDoSF8ssRwRqtglNXoBTVQsL
+         /18g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from;
+        bh=vtIAZ6vmuod1tk+7ROzY0KNSrAfvKQ1HBcJz1j1qLR4=;
+        b=PLp2sWz9AAuVz+OSwXCS6/A0fY8IXwUyMaJMr5SNfxii825bUIR0jWjQ9zBycJZqnW
+         O7yI69JIJWBtevx6Cqvm026N+Qa7ex9I++c1ZbDDi4apegZ0tWevSlIL+vET0jyhISQl
+         ifCKKDl6P2ufeVRHmaRtCQFoIHaS9nWilJo44OyEFnJdQ2n+fC+NY2XXDR2qYlogaksH
+         /SKbWk8gS7pY2ierp5i2aIureqfVDuJXpAhcGD2M0nya3vzbqH2YaGGQXjssuzZCtsMM
+         BoEKoargAM7bWrpOihVkGE30yWEhdiK/9vq2vVXMETR3RKPrbCDE9r/h3EWP/3LWyaL1
+         k5Sg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f15si4277342ejr.71.2019.07.12.00.53.52
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 12 Jul 2019 00:53:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.59 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-ARC-Seal: i=1; a=rsa-sha256; t=1562862430; cv=none; 
-	d=zoho.com; s=zohoarc; 
-	b=BeOwvNsIAPVXoGmxtVD48INYPEbsc09aF1siC/+Rtw1JpBCbZTfrSXJOW52/nAxadeBZAZCjmYJ8dCIR4Dbs3UiG5wL06GQ+rWBkrHhPUazZTRquoT027823aFZo5iLwgCQ62IlExPdHaO55tNRckidUtb/jmP/DuTtEGAcu+IM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com; s=zohoarc; 
-	t=1562862430; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results; 
-	bh=Cp4gm7ZH8mJSH4RSieA+11u+RdAzfHjQRfeVFOFgpLk=; 
-	b=HbZS3+tFmrPaRYtdSjhxQPx/B7KRDtwEh4NZWtuTQcbQnpUO+jmCVcaTriqNcBv9vlq94VbLQT7Xo9y67v8OCn2QL8gBJBmsa9kdVFlZ8jyvTcRqUX8yZ2fXhu5ut2L6jblk5B9kabElbtgAmscKKq1NXKV5pyNjyTeakF5EoFQ=
-ARC-Authentication-Results: i=1; mx.zoho.com;
-	dkim=pass  header.i=patchew.org;
-	spf=pass  smtp.mailfrom=no-reply@patchew.org;
-	dmarc=pass header.from=<no-reply@patchew.org> header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
-	with SMTPS id 1562862430043173.8913739649514; Thu, 11 Jul 2019 09:27:10 -0700 (PDT)
-Message-ID: <156286242894.12463.9844605717946593963@c4a48874b076>
-Subject: Re: [Qemu-devel] [PATCH for-4.1] target/arm: Set VFP-related MVFR0 fields for arm926 and arm1026
-In-Reply-To: <20190711121231.3601-1-peter.maydell@linaro.org>
-Reply-To: <qemu-devel@nongnu.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, alex.bennee@linaro.org, christophe.lyon@linaro.org, richard.henderson@linaro.org
-Date: Thu, 11 Jul 2019 09:27:10 -0700 (PDT)
-X-ZohoMailClient: External
-X-TUID: +ifBJ0AP4TfS
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47282 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hlqNM-0005b9-5G
+	for alex.bennee@linaro.org; Fri, 12 Jul 2019 03:53:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43821)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <david.engraf@sysgo.com>) id 1hlqNJ-0005aq-Hj
+ for qemu-arm@nongnu.org; Fri, 12 Jul 2019 03:53:50 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <david.engraf@sysgo.com>) id 1hlqNI-0000VC-MB
+ for qemu-arm@nongnu.org; Fri, 12 Jul 2019 03:53:49 -0400
+Received: from mail.sysgo.com ([176.9.12.79]:46240)
+ by eggs.gnu.org with esmtp (Exim 4.71)
+ (envelope-from <david.engraf@sysgo.com>)
+ id 1hlqNI-0000Rv-GS; Fri, 12 Jul 2019 03:53:48 -0400
+From: David Engraf <david.engraf@sysgo.com>
+To: peter.maydell@linaro.org,
+	qemu-arm@nongnu.org
+Date: Fri, 12 Jul 2019 09:50:02 +0200
+Message-Id: <20190712075002.14326-1-david.engraf@sysgo.com>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 176.9.12.79
+Subject: [Qemu-arm] [PATCH] hw/arm/virt: Fix non-secure flash mode
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org, David Engraf <david.engraf@sysgo.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1rEjGglx/KTU
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDcxMTEyMTIzMS4zNjAx
-LTEtcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0
-aGUgYXNhbiBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGluZyBjb21tYW5kcyBhbmQK
-dGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5zdGFsbGVkLCB5b3UgY2Fu
-IHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09
-PQojIS9iaW4vYmFzaAptYWtlIGRvY2tlci1pbWFnZS1mZWRvcmEgVj0xIE5FVFdPUks9MQp0aW1l
-IG1ha2UgZG9ja2VyLXRlc3QtZGVidWdAZmVkb3JhIFRBUkdFVF9MSVNUPXg4Nl82NC1zb2Z0bW11
-IEo9MTQgTkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgoKCgpUaGUgZnVsbCBsb2cg
-aXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMTkwNzExMTIxMjMxLjM2
-MDEtMS1wZXRlci5tYXlkZWxsQGxpbmFyby5vcmcvdGVzdGluZy5hc2FuLz90eXBlPW1lc3NhZ2Uu
-Ci0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3Bh
-dGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEBy
-ZWRoYXQuY29t
+Using the whole 128 MiB flash in non-secure mode is not working because
+virt_flash_fdt() expects the same address for secure_sysmem and sysmem.
+This is not correctly handled by caller because it forwards NULL for
+secure_sysmem in non-secure flash mode.
+
+Fixed by using sysmem when secure_sysmem is NULL.
+
+Signed-off-by: David Engraf <david.engraf@sysgo.com>
+---
+ hw/arm/virt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 0b5138cb22..d9496c9363 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1674,7 +1674,7 @@ static void machvirt_init(MachineState *machine)
+                                     &machine->device_memory->mr);
+     }
+ 
+-    virt_flash_fdt(vms, sysmem, secure_sysmem);
++    virt_flash_fdt(vms, sysmem, secure_sysmem ?: sysmem);
+ 
+     create_gic(vms, pic);
+ 
+-- 
+2.17.1
+

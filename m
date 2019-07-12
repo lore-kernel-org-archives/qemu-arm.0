@@ -1,434 +1,107 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp920026wrv;
-        Fri, 12 Jul 2019 06:41:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzbOGBeHQstCrI7Lfhm7Cy8ETAi/D12lfuP2hG2wiIKhVgIr39x63NZUbBGF2m+003XgmcU
-X-Received: by 2002:a17:906:af54:: with SMTP id ly20mr8167555ejb.194.1562938876025;
-        Fri, 12 Jul 2019 06:41:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562938876; cv=none;
-        d=google.com; s=arc-20160816;
-        b=vasN7T5He6JBO9vvU57vt+oYxgxprV5oQb78W98tEsIFIZlG5TjS6eIfVlKX3hGcuh
-         iKM5OTMwPPfoj3TmzL9FTNCteiJ1+deWprs5vwGBBHBEglplFYvZXq6JBX8u+QH9F9wd
-         TZNmNCDEm2hcLVht8tT6p74n4YlNb8Ot2ZeVVWrh5KFH6ly4VdBh9QrEpjTfREczz1Fh
-         5gH1Nslcn6webP+zsDiQY50i+AsMYddD21dLbC0UDlU4baKqptCiZhI6Zz0PzydtccLc
-         6R8rzbag6rdx1KMbqV0/5/FPm4aUnEtm+htmF0lHrkASi6DKU3BaNlZPJQoBh82xONkk
-         Ao7g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=D65al7aAVQUoE60vck5d0SN3eroXBmItcTGoV7s20Fw=;
-        b=BuYHcP8RUdUlyhHWuaR1HdvPZT1K5zqLOBeKbo9Mkq/mZ76BX28Pe/UEozVCLC6Ve3
-         rwVkBUv44qFB3zJRNbjFOBlazlp6Pl2tjU2jP6T2K4vrfvJwnGfWV6x7xbnG0zrh8G4o
-         Ot3PI6oQH9xHPFJvFb/F9MLnWk2SukUXkIbomtnmsSm86BJscOZBXMjUN7Hw22Rq81eZ
-         jNpwRaBdRq7MW2QI7/Ll4Fd6bVoht53WD2AmXwGK0Mi2kdEnPeV/MXrcRAct5kP5bnJW
-         v2YD9xpZcqIXndbqOqty3Yi0f/tMLIdTljK7JEgBxeigeeOlzGBXSVfve0nINajycKi0
-         9AOQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp1010291wrv;
+        Fri, 12 Jul 2019 08:11:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwjKbQ5xcGmlCqaVwjOhObjsZ2PShXLbor1yVz43YGhAi57xC5sJoowWPtb/Z2jgX4fH7K3
+X-Received: by 2002:a50:922a:: with SMTP id i39mr9807042eda.219.1562944266079;
+        Fri, 12 Jul 2019 08:11:06 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f22si4580226eje.19.2019.07.12.06.41.15
+        by mx.google.com with ESMTPS id qc1si4908614ejb.59.2019.07.12.08.11.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Jul 2019 06:41:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 12 Jul 2019 08:11:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49540 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50428 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hlvnX-0001GR-4Y
-	for alex.bennee@linaro.org; Fri, 12 Jul 2019 09:41:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57905)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hlxCT-0007wI-7P
+	for alex.bennee@linaro.org; Fri, 12 Jul 2019 11:11:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56405)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hlvnT-0001G3-Qh
- for qemu-arm@nongnu.org; Fri, 12 Jul 2019 09:41:13 -0400
+ (envelope-from <no-reply@patchew.org>) id 1hlxCO-0007uh-Bz
+ for qemu-devel@nongnu.org; Fri, 12 Jul 2019 11:11:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hlvnS-0007YP-B6
- for qemu-arm@nongnu.org; Fri, 12 Jul 2019 09:41:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55362)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1hlvnS-0007Xf-38; Fri, 12 Jul 2019 09:41:10 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 6457F30C34D4;
- Fri, 12 Jul 2019 13:41:09 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-150.brq.redhat.com [10.40.204.150])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9FF26196AB;
- Fri, 12 Jul 2019 13:40:07 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 12 Jul 2019 15:39:27 +0200
-Message-Id: <20190712133928.21394-7-philmd@redhat.com>
-In-Reply-To: <20190712133928.21394-1-philmd@redhat.com>
-References: <20190712133928.21394-1-philmd@redhat.com>
+ (envelope-from <no-reply@patchew.org>) id 1hlxCN-0008En-2t
+ for qemu-devel@nongnu.org; Fri, 12 Jul 2019 11:11:00 -0400
+Resent-Date: Fri, 12 Jul 2019 11:11:00 -0400
+Resent-Message-Id: <E1hlxCN-0008En-2t@eggs.gnu.org>
+Received: from sender-of-o53.zoho.com ([135.84.80.218]:21819)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1hlxCM-0008DU-Qc; Fri, 12 Jul 2019 11:10:59 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1562944234; cv=none; d=zoho.com; s=zohoarc; 
+ b=aC4+Tt+ZvyqkhW4MBGwPUP4FmpjmTEe513RBfOVJIPVWFzzvoCPwGFB3s5AyeQFQR0aEVwIst5ZaePIG/X7BJ7CcDJLDvCnk9PpeLaKYteBqzQSXNs4yeRVYTSdPKkh46N9a6rgtKiGkbk8IHge4JqYQyr0rud1jEm92Xeoi4uI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+ s=zohoarc; t=1562944234;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+ bh=KFKVQlZ+hiD7Y/yLFhWdGD+6EayaMMXQXh0oGdYhEIc=; 
+ b=PhJvilsF4xBSd7tmhIIn/kYxMLO5CJWhOVU/Hub+8BjuLP0jMd0F1bA3Qn9U7hJMFlrkIpfHv1r1NWpUqE6tq57id37M0cxNw3/mh0dbTwIv6GLACcm/B5TrNVBwen4peHO40cBlHa4CGtrRw71Kl4YfYXXHGVKTcGZPrME/MPc=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 15629442328741021.6922957521897;
+ Fri, 12 Jul 2019 08:10:32 -0700 (PDT)
+Message-ID: <156294423080.12463.1269186501858684252@c4a48874b076>
+In-Reply-To: <20190711172845.31035-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.40]); Fri, 12 Jul 2019 13:41:09 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: eric.auger@redhat.com
+Date: Fri, 12 Jul 2019 08:10:32 -0700 (PDT)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH-for-4.1? 6/7] vl: Extract bt_parse() into its own
- file
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 135.84.80.218
+Subject: Re: [Qemu-devel] [RFC v4 00/29] vSMMUv3/pSMMUv3 2 stage VFIO
+ integration
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Miroslav Rezanina <mrezanin@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: El4Isemmj9P5
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, drjones@redhat.com, yi.l.liu@intel.com,
+ mst@redhat.com, jean-philippe.brucker@arm.com, zhangfei.gao@foxmail.com,
+ qemu-devel@nongnu.org, peterx@redhat.com, eric.auger@redhat.com,
+ alex.williamson@redhat.com, qemu-arm@nongnu.org, vincent.stehle@arm.com,
+ eric.auger.pro@gmail.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ex7uCo+htW0Y
 
-This is required to be able to compile vl.c with CONFIG_BLUETOOTH
-disabled.
-
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
-2300 lines less for the C preprocessor :)
----
- Makefile.objs       |   2 +-
- bt-opts.c           | 140 ++++++++++++++++++++++++++++++++++++++++++++
- include/sysemu/bt.h |   3 +
- vl.c                | 128 ----------------------------------------
- 4 files changed, 144 insertions(+), 129 deletions(-)
- create mode 100644 bt-opts.c
-
-diff --git a/Makefile.objs b/Makefile.objs
-index 6a143dcd57..c2845a0efc 100644
---- a/Makefile.objs
-+++ b/Makefile.objs
-@@ -65,7 +65,7 @@ common-obj-y +=3D replay/
-=20
- common-obj-y +=3D ui/
- common-obj-m +=3D ui/
--common-obj-y +=3D bt-host.o bt-vhci.o
-+common-obj-y +=3D bt-host.o bt-vhci.o bt-opts.o
- bt-host.o-cflags :=3D $(BLUEZ_CFLAGS)
-=20
- common-obj-y +=3D dma-helpers.o
-diff --git a/bt-opts.c b/bt-opts.c
-new file mode 100644
-index 0000000000..d14ae4836f
---- /dev/null
-+++ b/bt-opts.c
-@@ -0,0 +1,140 @@
-+/*
-+ * Bluetooth command line options.
-+ *
-+ * Copyright (C) 2008 Andrzej Zaborowski
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/error-report.h"
-+#include "qemu/cutils.h"
-+#include "sysemu/bt.h"
-+#include "net/net.h"
-+#include "hw/bt.h"
-+
-+static int nb_hcis;
-+static int cur_hci;
-+static struct HCIInfo *hci_table[MAX_NICS];
-+
-+struct HCIInfo *qemu_next_hci(void)
-+{
-+    if (cur_hci =3D=3D nb_hcis) {
-+        return &null_hci;
-+    }
-+
-+    return hci_table[cur_hci++];
-+}
-+
-+static int bt_hci_parse(const char *str)
-+{
-+    struct HCIInfo *hci;
-+    bdaddr_t bdaddr;
-+
-+    if (nb_hcis >=3D MAX_NICS) {
-+        error_report("too many bluetooth HCIs (max %i)", MAX_NICS);
-+        return -1;
-+    }
-+
-+    hci =3D hci_init(str);
-+    if (!hci) {
-+        return -1;
-+    }
-+
-+    bdaddr.b[0] =3D 0x52;
-+    bdaddr.b[1] =3D 0x54;
-+    bdaddr.b[2] =3D 0x00;
-+    bdaddr.b[3] =3D 0x12;
-+    bdaddr.b[4] =3D 0x34;
-+    bdaddr.b[5] =3D 0x56 + nb_hcis;
-+    hci->bdaddr_set(hci, bdaddr.b);
-+
-+    hci_table[nb_hcis++] =3D hci;
-+
-+    return 0;
-+}
-+
-+static void bt_vhci_add(int vlan_id)
-+{
-+    struct bt_scatternet_s *vlan =3D qemu_find_bt_vlan(vlan_id);
-+
-+    if (!vlan->slave) {
-+        warn_report("adding a VHCI to an empty scatternet %i", vlan_id);
-+    }
-+
-+    bt_vhci_init(bt_new_hci(vlan));
-+}
-+
-+static struct bt_device_s *bt_device_add(const char *opt)
-+{
-+    struct bt_scatternet_s *vlan;
-+    int vlan_id =3D 0;
-+    char *endp =3D strstr(opt, ",vlan=3D");
-+    int len =3D (endp ? endp - opt : strlen(opt)) + 1;
-+    char devname[10];
-+
-+    pstrcpy(devname, MIN(sizeof(devname), len), opt);
-+
-+    if (endp) {
-+        if (qemu_strtoi(endp + 6, (const char **)&endp, 0, &vlan_id) < 0=
-) {
-+            error_report("unrecognised bluetooth vlan Id");
-+            return 0;
-+        }
-+    }
-+
-+    vlan =3D qemu_find_bt_vlan(vlan_id);
-+
-+    if (!vlan->slave) {
-+        warn_report("adding a slave device to an empty scatternet %i",
-+                    vlan_id);
-+    }
-+
-+    if (!strcmp(devname, "keyboard")) {
-+        return bt_keyboard_init(vlan);
-+    }
-+
-+    error_report("unsupported bluetooth device '%s'", devname);
-+    return 0;
-+}
-+
-+int bt_parse(const char *opt)
-+{
-+    const char *endp, *p;
-+    int vlan;
-+
-+    if (strstart(opt, "hci", &endp)) {
-+        if (!*endp || *endp =3D=3D ',') {
-+            if (*endp) {
-+                if (!strstart(endp, ",vlan=3D", 0)) {
-+                    opt =3D endp + 1;
-+                }
-+            }
-+
-+            return bt_hci_parse(opt);
-+       }
-+    } else if (strstart(opt, "vhci", &endp)) {
-+        if (!*endp || *endp =3D=3D ',') {
-+            if (*endp) {
-+                if (strstart(endp, ",vlan=3D", &p)) {
-+                    if (qemu_strtoi(p, &endp, 0, &vlan) < 0) {
-+                        error_report("bad scatternet '%s'", p);
-+                        return 1;
-+                    }
-+                } else {
-+                    error_report("bad parameter '%s'", endp + 1);
-+                    return 1;
-+                }
-+            } else {
-+                vlan =3D 0;
-+            }
-+
-+            bt_vhci_add(vlan);
-+            return 0;
-+        }
-+    } else if (strstart(opt, "device:", &endp)) {
-+        return !bt_device_add(endp);
-+    }
-+
-+    error_report("bad bluetooth parameter '%s'", opt);
-+    return 1;
-+}
-diff --git a/include/sysemu/bt.h b/include/sysemu/bt.h
-index 2fd8c0f14b..5b73709c2d 100644
---- a/include/sysemu/bt.h
-+++ b/include/sysemu/bt.h
-@@ -17,4 +17,7 @@ typedef struct HCIInfo {
- struct HCIInfo *bt_host_hci(const char *id);
- struct HCIInfo *qemu_next_hci(void);
-=20
-+/* TODO Convert bt-opts.c to opts_init() and remove from here. */
-+int bt_parse(const char *opt);
-+
- #endif
-diff --git a/vl.c b/vl.c
-index c7f4d01c99..3a6dd3ba2b 100644
---- a/vl.c
-+++ b/vl.c
-@@ -60,7 +60,6 @@ int main(int argc, char **argv)
- #include "hw/isa/isa.h"
- #include "hw/scsi/scsi.h"
- #include "hw/display/vga.h"
--#include "hw/bt.h"
- #include "sysemu/watchdog.h"
- #include "hw/firmware/smbios.h"
- #include "hw/acpi/acpi.h"
-@@ -913,133 +912,6 @@ static void configure_rtc(QemuOpts *opts)
- }
-=20
- /***********************************************************/
--/* Bluetooth support */
--static int nb_hcis;
--static int cur_hci;
--static struct HCIInfo *hci_table[MAX_NICS];
--
--struct HCIInfo *qemu_next_hci(void)
--{
--    if (cur_hci =3D=3D nb_hcis) {
--        return &null_hci;
--    }
--
--    return hci_table[cur_hci++];
--}
--
--static int bt_hci_parse(const char *str)
--{
--    struct HCIInfo *hci;
--    bdaddr_t bdaddr;
--
--    if (nb_hcis >=3D MAX_NICS) {
--        error_report("too many bluetooth HCIs (max %i)", MAX_NICS);
--        return -1;
--    }
--
--    hci =3D hci_init(str);
--    if (!hci) {
--        return -1;
--    }
--
--    bdaddr.b[0] =3D 0x52;
--    bdaddr.b[1] =3D 0x54;
--    bdaddr.b[2] =3D 0x00;
--    bdaddr.b[3] =3D 0x12;
--    bdaddr.b[4] =3D 0x34;
--    bdaddr.b[5] =3D 0x56 + nb_hcis;
--    hci->bdaddr_set(hci, bdaddr.b);
--
--    hci_table[nb_hcis++] =3D hci;
--
--    return 0;
--}
--
--static void bt_vhci_add(int vlan_id)
--{
--    struct bt_scatternet_s *vlan =3D qemu_find_bt_vlan(vlan_id);
--
--    if (!vlan->slave) {
--        warn_report("adding a VHCI to an empty scatternet %i",
--                    vlan_id);
--    }
--
--    bt_vhci_init(bt_new_hci(vlan));
--}
--
--static struct bt_device_s *bt_device_add(const char *opt)
--{
--    struct bt_scatternet_s *vlan;
--    int vlan_id =3D 0;
--    char *endp =3D strstr(opt, ",vlan=3D");
--    int len =3D (endp ? endp - opt : strlen(opt)) + 1;
--    char devname[10];
--
--    pstrcpy(devname, MIN(sizeof(devname), len), opt);
--
--    if (endp) {
--        if (qemu_strtoi(endp + 6, (const char **)&endp, 0, &vlan_id) < 0=
-) {
--            error_report("unrecognised bluetooth vlan Id");
--            return 0;
--        }
--    }
--
--    vlan =3D qemu_find_bt_vlan(vlan_id);
--
--    if (!vlan->slave) {
--        warn_report("adding a slave device to an empty scatternet %i",
--                    vlan_id);
--    }
--
--    if (!strcmp(devname, "keyboard")) {
--        return bt_keyboard_init(vlan);
--    }
--
--    error_report("unsupported bluetooth device '%s'", devname);
--    return 0;
--}
--
--static int bt_parse(const char *opt)
--{
--    const char *endp, *p;
--    int vlan;
--
--    if (strstart(opt, "hci", &endp)) {
--        if (!*endp || *endp =3D=3D ',') {
--            if (*endp) {
--                if (!strstart(endp, ",vlan=3D", 0)) {
--                    opt =3D endp + 1;
--                }
--            }
--
--            return bt_hci_parse(opt);
--       }
--    } else if (strstart(opt, "vhci", &endp)) {
--        if (!*endp || *endp =3D=3D ',') {
--            if (*endp) {
--                if (strstart(endp, ",vlan=3D", &p)) {
--                    if (qemu_strtoi(p, &endp, 0, &vlan) < 0) {
--                        error_report("bad scatternet '%s'", p);
--                        return 1;
--                    }
--                } else {
--                    error_report("bad parameter '%s'", endp + 1);
--                    return 1;
--                }
--            } else {
--                vlan =3D 0;
--            }
--
--            bt_vhci_add(vlan);
--            return 0;
--        }
--    } else if (strstart(opt, "device:", &endp)) {
--        return !bt_device_add(endp);
--    }
--
--    error_report("bad bluetooth parameter '%s'", opt);
--    return 1;
--}
-=20
- static int parse_name(void *opaque, QemuOpts *opts, Error **errp)
- {
---=20
-2.20.1
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDcxMTE3Mjg0NS4zMTAz
+NS0xLWVyaWMuYXVnZXJAcmVkaGF0LmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgYnVp
+bGQgdGVzdCBvbiBzMzkweCBob3N0LiBQbGVhc2UgZmluZCB0aGUgZGV0YWlscyBiZWxvdy4KCj09
+PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKIyBUZXN0aW5nIHNjcmlwdCB3aWxs
+IGJlIGludm9rZWQgdW5kZXIgdGhlIGdpdCBjaGVja291dCB3aXRoCiMgSEVBRCBwb2ludGluZyB0
+byBhIGNvbW1pdCB0aGF0IGhhcyB0aGUgcGF0Y2hlcyBhcHBsaWVkIG9uIHRvcCBvZiAiYmFzZSIK
+IyBicmFuY2gKc2V0IC1lCgplY2hvCmVjaG8gIj09PSBFTlYgPT09IgplbnYKCmVjaG8KZWNobyAi
+PT09IFBBQ0tBR0VTID09PSIKcnBtIC1xYQoKZWNobwplY2hvICI9PT0gVU5BTUUgPT09Igp1bmFt
+ZSAtYQoKQ0M9JEhPTUUvYmluL2NjCklOU1RBTEw9JFBXRC9pbnN0YWxsCkJVSUxEPSRQV0QvYnVp
+bGQKbWtkaXIgLXAgJEJVSUxEICRJTlNUQUxMClNSQz0kUFdECmNkICRCVUlMRAokU1JDL2NvbmZp
+Z3VyZSAtLWNjPSRDQyAtLXByZWZpeD0kSU5TVEFMTAptYWtlIC1qNAojIFhYWDogd2UgbmVlZCBy
+ZWxpYWJsZSBjbGVhbiB1cAojIG1ha2UgY2hlY2sgLWo0IFY9MQptYWtlIGluc3RhbGwKPT09IFRF
+U1QgU0NSSVBUIEVORCA9PT0KCiAgQ0MgICAgICBhcm0tc29mdG1tdS9tb25pdG9yL21pc2Mubwog
+IENDICAgICAgaTM4Ni1zb2Z0bW11L2h3L3ZpcnRpby92aXJ0aW8tcG1lbS5vCiAgQ0MgICAgICBh
+YXJjaDY0LXNvZnRtbXUvaHcvYXJtL2ZzbC1pbXg3Lm8KL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXIt
+dG1wLW9qMnplal82L3NyYy9ody92aXJ0aW8vdmlydGlvLXBtZW0uYzoyMToxMDogZmF0YWwgZXJy
+b3I6IHN0YW5kYXJkLWhlYWRlcnMvbGludXgvdmlydGlvX3BtZW0uaDogTm8gc3VjaCBmaWxlIG9y
+IGRpcmVjdG9yeQogICAyMSB8ICNpbmNsdWRlICJzdGFuZGFyZC1oZWFkZXJzL2xpbnV4L3ZpcnRp
+b19wbWVtLmgiCiAgICAgIHwgICAgICAgICAgXn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+fn5+
+fn5+fn5+fn4KY29tcGlsYXRpb24gdGVybWluYXRlZC4KCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxh
+YmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMTkwNzExMTcyODQ1LjMxMDM1LTEtZXJp
+Yy5hdWdlckByZWRoYXQuY29tL3Rlc3RpbmcuczM5MHgvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWls
+IGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcv
+XS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
 

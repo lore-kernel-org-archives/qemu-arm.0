@@ -1,103 +1,104 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp781444wrv;
-        Fri, 12 Jul 2019 04:22:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzVEtz6G6oJOGXc4sjrCgcxso/qDwwXaheluzSuWEAoRd+A2so1DhXCdXd2/Qgupk7D9v58
-X-Received: by 2002:a37:9dc8:: with SMTP id g191mr5798163qke.431.1562930576456;
-        Fri, 12 Jul 2019 04:22:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562930576; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp782227wrv;
+        Fri, 12 Jul 2019 04:23:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwmxfx2Xgv6t+jt2hwdbQxibFLrkFFy+qFrZVGa/yfH/r14r5gkAiIp+0EmaI1APM8+Q1mL
+X-Received: by 2002:a0c:ad76:: with SMTP id v51mr6306449qvc.232.1562930623541;
+        Fri, 12 Jul 2019 04:23:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562930623; cv=none;
         d=google.com; s=arc-20160816;
-        b=HzbQNeVnDgiH03C+dIl0c3C1iNWD6ZE2g4ylQoebNTT0T2aJI5axQFHI8/nGl+3nrK
-         wc5O7SFk4XOOG4R9qd/OBA7q1pKLt6EZjG1dxOdbo8Hsd3uPcmIWi7rRLdx1907l2LA9
-         OstjRbHGspmni7F83REO3V3RJoKMvQI5OCe2dTg5ROmBxdsUBNb1ikkegfGJ05mV67tP
-         uNcfd1AOABpHU2uZEX7x70G0EIdBOeJ1JtelN4WTqP7TalF4APBk/VCJwpE8Ezk+dhkg
-         qiD/N9C4ZPQ0N5KDmDYQZA1/X9gyKk5xPbBjKLvHkZn05nRKO6yRXj5YWO9c7lFelNO6
-         Shag==
+        b=jrWeygOSLse2EbKPwhhmCe40kEKl+j65oIkzDSZmTd1fj72wzYeOZ4aHEcRoDjVekv
+         j5ALvCA5Y6N1ZcTNJ7mL8yPc9CWbyh9prm5UcOlAx3Ipw3yhBgvvdQJpAZj/v03NW9JH
+         9EVuBgLXOnvm7/MR5SblOlHHnwyvsn54Mghau9vZ7I0ogj5bPMtrz3Af3fjPVAhcWSIb
+         OCVGDELN6AVAiAtg2Cor9eODRbkvsO18OecoBZnlo2NPJ2P4Ko9/YJ6wfhwj0WcieoR0
+         cQgscru5ZKN8kriRR7ovuJvDIa3AWtlEy/1z1cXXQ4HqjCUPGKTpYOINUKFWQTqnrN1L
+         voTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
-         :subject;
-        bh=qU/x560Q6YRtolbDSCs4QjJjFeg58kf5WT9dn+UM/a0=;
-        b=NF6WKUpGt3FHkpi8ap8QJmlcoKQnVyAGRtQjrj6ZekOGEqryhUTNgW4qUSNfnD/h2K
-         nDwAk/slg0Ryy/Z+Vqo+B2k9VdtybjBE2IapwVJaolWv0M/nozdLI2mX4HTN6fpRVNiz
-         mgko90Nt4ShoAW8atplpT5huAGBUD1LuKJ7USRjRrKncEz4KZMVBp+yYkXzoxBwNVnPX
-         VbARSXz8wIwfyhBQ2VWlbiTZEj4HARmD0zWMhd3FP74G8AbUSXrKbSNNPyFIzDBE7zVd
-         57jPMU+FTtpCkyJnRYkrIP0jA6uyRyWSasgdNZaW3BdVfES1KCWWcPSUUXdQCBbsd46D
-         0TyA==
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:cc:to:subject;
+        bh=3G+i4PzdrAdVttW06b+WUVZYZE2Dn9A32XKwfOIaKQY=;
+        b=YtZXKUHJ1y67b3GfbGzxPOa2nl5NSW2Usbu2flseVIYbawokwZR8JtovTis7U8fKSs
+         ekc8ZTQbNi10fB8gZbLvSNE0BLGrONlsP6VDAYOmrjXX2A/tagH/70ZMgvLY2SM41/5k
+         ISPhGt9+PvEH5ac4Ej7oDUgGGUuBTpsdxKFJmdaQpU1paWHhl2XYlXBTvXHH+kzxRMqQ
+         z+V03+P82xZiuMqJwdBGi1q1OVOLANZzfBzU06B0EP0nbIX5qSD5J4una4+kz12E8Nge
+         iiua7kAoCRRBMoeIVER50zn1aaewwtYZs8LrfEkoPHpgKRsHKL2X4sQ8TiELyDohRCxS
+         8nbA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of lvivier@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=lvivier@redhat.com;
+       spf=pass (google.com: domain of thuth@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <lvivier@redhat.com>
+Return-Path: <thuth@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id d54si5273076qtk.13.2019.07.12.04.22.56
+        by mx.google.com with ESMTPS id t64si4803625qke.110.2019.07.12.04.23.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 12 Jul 2019 04:22:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lvivier@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+        Fri, 12 Jul 2019 04:23:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of lvivier@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=lvivier@redhat.com;
+       spf=pass (google.com: domain of thuth@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 96B9785543;
-	Fri, 12 Jul 2019 11:22:55 +0000 (UTC)
-Received: from [10.36.116.109] (ovpn-116-109.ams2.redhat.com [10.36.116.109])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id B524419C4F;
-	Fri, 12 Jul 2019 11:22:53 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 9E6BF3083391;
+	Fri, 12 Jul 2019 11:23:42 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-117-202.ams2.redhat.com [10.36.117.202])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 811AB60BFB;
+	Fri, 12 Jul 2019 11:23:40 +0000 (UTC)
 Subject: Re: [PATCH v1 5/7] tests/migration-test: don't spam the logs when we
  fail
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>,
+Cc: qemu-arm@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Juan Quintela <quintela@redhat.com>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 References: <20190712111849.9006-1-alex.bennee@linaro.org>
  <20190712111849.9006-6-alex.bennee@linaro.org>
-From: Laurent Vivier <lvivier@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
-Autocrypt: addr=lvivier@redhat.com; prefer-encrypt=mutual; keydata=
- mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
- WoeuLWDmXE7A3oJoIsRecD6BXHTb0OYS20lS608anr3B0xn5g0BX7es9Mw+hV/pL+63EOCVm
- SUVTEQwbGQN62guOKnJJJfphbbv82glIC/Ei4Ky8BwZkUuXd7d5NFJKC9/GDrbWdj75cDNQx
- UZ9XXbXEKY9MHX83Uy7JFoiFDMOVHn55HnncflUncO0zDzY7CxFeQFwYRbsCXOUL9yBtqLer
- Ky8/yjBskIlNrp0uQSt9LMoMsdSjYLYhvk1StsNPg74+s4u0Q6z45+l8RAsgLw5OLtTa+ePM
- JyS7OIGNYxAX6eZk1+91a6tnqfyPcMbduxyBaYXn94HUG162BeuyBkbNoIDkB7pCByed1A7q
- q9/FbuTDwgVGVLYthYSfTtN0Y60OgNkWCMtFwKxRaXt1WFA5ceqinN/XkgA+vf2Ch72zBkJL
- RBIhfOPFv5f2Hkkj0MvsUXpOWaOjatiu0fpPo6Hw14UEpywke1zN4NKubApQOlNKZZC4hu6/
- 8pv2t4HRi7s0K88jQYBRPObjrN5+owtI51xMaYzvPitHQ2053LmgsOdN9EKOqZeHAYG2SmRW
- LOxYWKX14YkZI5j/TXfKlTpwSMvXho+efN4kgFvFmP6WT+tPnwARAQABtCNMYXVyZW50IFZp
- dmllciA8bHZpdmllckByZWRoYXQuY29tPokCOAQTAQIAIgUCVgVQgAIbAwYLCQgHAwIGFQgC
- CQoLBBYCAwECHgECF4AACgkQ8ww4vT8vvjwpgg//fSGy0Rs/t8cPFuzoY1cex4limJQfReLr
- SJXCANg9NOWy/bFK5wunj+h/RCFxIFhZcyXveurkBwYikDPUrBoBRoOJY/BHK0iZo7/WQkur
- 6H5losVZtrotmKOGnP/lJYZ3H6OWvXzdz8LL5hb3TvGOP68K8Bn8UsIaZJoeiKhaNR0sOJyI
- YYbgFQPWMHfVwHD/U+/gqRhD7apVysxv5by/pKDln1I5v0cRRH6hd8M8oXgKhF2+rAOL7gvh
- jEHSSWKUlMjC7YwwjSZmUkL+TQyE18e2XBk85X8Da3FznrLiHZFHQ/NzETYxRjnOzD7/kOVy
- gKD/o7asyWQVU65mh/ECrtjfhtCBSYmIIVkopoLaVJ/kEbVJQegT2P6NgERC/31kmTF69vn8
- uQyW11Hk8tyubicByL3/XVBrq4jZdJW3cePNJbTNaT0d/bjMg5zCWHbMErUib2Nellnbg6bc
- 2HLDe0NLVPuRZhHUHM9hO/JNnHfvgiRQDh6loNOUnm9Iw2YiVgZNnT4soUehMZ7au8PwSl4I
- KYE4ulJ8RRiydN7fES3IZWmOPlyskp1QMQBD/w16o+lEtY6HSFEzsK3o0vuBRBVp2WKnssVH
- qeeV01ZHw0bvWKjxVNOksP98eJfWLfV9l9e7s6TaAeySKRRubtJ+21PRuYAxKsaueBfUE7ZT
- 7ze5Ag0EVgUmGQEQALxSQRbl/QOnmssVDxWhHM5TGxl7oLNJms2zmBpcmlrIsn8nNz0rRyxT
- 460k2niaTwowSRK8KWVDeAW6ZAaWiYjLlTunoKwvF8vP3JyWpBz0diTxL5o+xpvy/Q6YU3BN
- efdq8Vy3rFsxgW7mMSrI/CxJ667y8ot5DVugeS2NyHfmZlPGE0Nsy7hlebS4liisXOrN3jFz
- asKyUws3VXek4V65lHwB23BVzsnFMn/bw/rPliqXGcwl8CoJu8dSyrCcd1Ibs0/Inq9S9+t0
- VmWiQWfQkz4rvEeTQkp/VfgZ6z98JRW7S6l6eophoWs0/ZyRfOm+QVSqRfFZdxdP2PlGeIFM
- C3fXJgygXJkFPyWkVElr76JTbtSHsGWbt6xUlYHKXWo+xf9WgtLeby3cfSkEchACrxDrQpj+
- Jt/JFP+q997dybkyZ5IoHWuPkn7uZGBrKIHmBunTco1+cKSuRiSCYpBIXZMHCzPgVDjk4viP
- brV9NwRkmaOxVvye0vctJeWvJ6KA7NoAURplIGCqkCRwg0MmLrfoZnK/gRqVJ/f6adhU1oo6
- z4p2/z3PemA0C0ANatgHgBb90cd16AUxpdEQmOCmdNnNJF/3Zt3inzF+NFzHoM5Vwq6rc1JP
- jfC3oqRLJzqAEHBDjQFlqNR3IFCIAo4SYQRBdAHBCzkM4rWyRhuVABEBAAGJAh8EGAECAAkF
- AlYFJhkCGwwACgkQ8ww4vT8vvjwg9w//VQrcnVg3TsjEybxDEUBm8dBmnKqcnTBFmxN5FFtI
- WlEuY8+YMiWRykd8Ln9RJ/98/ghABHz9TN8TRo2b6WimV64FmlVn17Ri6FgFU3xNt9TTEChq
- AcNg88eYryKsYpFwegGpwUlaUaaGh1m9OrTzcQy+klVfZWaVJ9Nw0keoGRGb8j4XjVpL8+2x
- OhXKrM1fzzb8JtAuSbuzZSQPDwQEI5CKKxp7zf76J21YeRrEW4WDznPyVcDTa+tz++q2S/Bp
- P4W98bXCBIuQgs2m+OflERv5c3Ojldp04/S4NEjXEYRWdiCxN7ca5iPml5gLtuvhJMSy36gl
- U6IW9kn30IWuSoBpTkgV7rLUEhh9Ms82VWW/h2TxL8enfx40PrfbDtWwqRID3WY8jLrjKfTd
- R3LW8BnUDNkG+c4FzvvGUs8AvuqxxyHbXAfDx9o/jXfPHVRmJVhSmd+hC3mcQ+4iX5bBPBPM
- oDqSoLt5w9GoQQ6gDVP2ZjTWqwSRMLzNr37rJjZ1pt0DCMMTbiYIUcrhX8eveCJtY7NGWNyx
- FCRkhxRuGcpwPmRVDwOl39MB3iTsRighiMnijkbLXiKoJ5CDVvX5yicNqYJPKh5MFXN1bvsB
- kmYiStMRbrD0HoY1kx5/VozBtc70OU0EB8Wrv9hZD+Ofp0T3KOr1RUHvCZoLURfFhSQ=
-Message-ID: <a8137849-8d9c-bd87-523f-f2c7cdfa013c@redhat.com>
-Date: Fri, 12 Jul 2019 13:22:52 +0200
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+Organization: Red Hat
+Message-ID: <52bd9e31-7248-2f91-e876-5ae337508d20@redhat.com>
+Date: Fri, 12 Jul 2019 13:23:39 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.0
 MIME-Version: 1.0
@@ -105,11 +106,11 @@ In-Reply-To: <20190712111849.9006-6-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.28]); Fri, 12 Jul 2019 11:22:55 +0000 (UTC)
-X-TUID: BQvhuKMMk0nS
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.44]); Fri, 12 Jul 2019 11:23:42 +0000 (UTC)
+X-TUID: gL3D4bbo5KVh
 
-On 12/07/2019 13:18, Alex Bennée wrote:
+On 12/07/2019 13.18, Alex Bennée wrote:
 > Quite often the information about which test failed is hidden by the
 > wall of repeated failures for each page. Stop outputting the error
 > after 10 bad pages and just summarise the total damage at the end.
@@ -154,8 +155,12 @@ On 12/07/2019 13:18, Alex Bennée wrote:
 > -    g_assert_false(bad);
 > +    if (bad >= 10) {
 > +        fprintf(stderr, "and in another %d pages", bad);
+> +    }
+> +    g_assert(bad == 0);
+>  }
+>  
+>  static void cleanup(const char *filename)
 
-"bad - 10" as you have already displayed 10 errors.
+Good idea.
 
-Thanks,
-Laurent
+Reviewed-by: Thomas Huth <thuth@redhat.com>

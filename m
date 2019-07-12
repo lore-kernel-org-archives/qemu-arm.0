@@ -1,99 +1,100 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp957022wrv;
-        Fri, 12 Jul 2019 07:17:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwIOQgu0qCPKyrcwBpanfNEdZogbuvh+7TO5XqwR/L9KZx+k4VEAT3GRej8oVuhNcZtu++Q
-X-Received: by 2002:a17:906:b7d8:: with SMTP id fy24mr8638411ejb.230.1562941025356;
-        Fri, 12 Jul 2019 07:17:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562941025; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp995666wrv;
+        Fri, 12 Jul 2019 07:58:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxIoaTVhtni4NEgotA5o+E3TxnMLlKwRk9vnj76mEGrIkOZPkz+oe0KgtkVxFjxsnOlMjiR
+X-Received: by 2002:aa7:cf0c:: with SMTP id a12mr9769664edy.146.1562943496601;
+        Fri, 12 Jul 2019 07:58:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1562943496; cv=none;
         d=google.com; s=arc-20160816;
-        b=dKhXyZyaJ7cqiGFBP2I1ivN+FZ9Z9o1R0RhoIuOfJh6JhrAjE/511J1oaG33uWx+SC
-         XjltfaEh3aBxOp3ZQwYx3pqtb6MPAU9RE0Z+b1+ZCZeuGPuBZUgbbaNnZcBl3Rum39x4
-         +1shhuz4Qh+V5HHbrtAyIROlFniTeoeHTLyYg0bJsWNKnkoINS0VXTrT8TQDJyLYM7AC
-         2sIUj3Xpg3iByPsOET0dVXJrFy/t6WCaywMAfq5r+oUqaijcGqbv8LYcYp+gwU0mzbg/
-         3c9MFW+n2COTHORUBd7ZTYsYs9gVfpnToyvCPIaU+zrZYAZ67chX37UpMzBdcb4JIcca
-         kY3A==
+        b=w/6M8hOe+qrh53mSLGjvdMv6UmsWQPjtdC4SICIXcg09pn3IIZaC/fVUKFIScHLyTw
+         0Ld7YHtJkt4nQLzQVb2RBoPnDg3RhryCSTRlbXGsOzux5HaMy+SoP7ftOeCB551xwVpe
+         dvtLrp9+hEnapPu2QuViCAXEbpfxsPZyd+53C0cFa9mQ7VlS0YdBHBHnC2Dpcd3wOHN2
+         awwG80bhQNl+FvixrWWgo78KpcRiZXtLqA9cyIWQvzNki8H8zvoFXfgFYJBfoVdBr12R
+         45aqWTPdnrqB//UvXqpxVEaeQNs6GeOFNgednvn5wu638f68Kzd24uULlhzSusmEaOTI
+         Q4TQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to;
-        bh=4Woz8/m+h9vyanjb6qA+tEUReKa+Sp9AHCYlwtnP22g=;
-        b=wYCNA9w8LNs4cD+NN9L+j65X4CsZTgfZuzcLnujMaD4XZA66PMCEtPCMam+j/vtdgD
-         e70X6YOA/8ZxeYhMnC/C4OPuvts1BHR1w9kJlMXEE2t22ycC07hNPqPnqh+6N9fwnUOe
-         i9vG50ld/rXktUyiJjqc/CIWFVgP8csW/zIZjrXK8Kll4EAPhgId06H9EPl7yBfSSB/H
-         /8tHMKb0GKWsQ8SghOJeu7+/WN1Kh1QeKdAb4DpnkSlG8guDhc/K0LwK7Chf01NzXsvi
-         0PZ+M4bnWpzk5b8EsDN3sRIzONT1SbDkgyPR2LMSKcZn04OJzLIEIZlviiDliEU8n+D9
-         mD0Q==
+        bh=emIsT2uWy5ufwkOAnv2pkH1UDJF6aP1EQX0xPPePb0s=;
+        b=w9PcOLWMwo/9un5mHMYUzlu5PBXkOE7lUp0LHJD1Fd4xozP1D/+eMlMMuIAAFFl38c
+         tv4N4g1lx6VD2+EN5ZX7ydLLb3fWVfnBqbW/pi7fo1eXtXqO1xEu8TTdT9qijujG8xvi
+         JzUYcxqNxvpnYoBu8JBmrH7E8feS1xMIgkjM1AsVeF7A+Qcgfzh87JL87Mr/WLySX1QX
+         Ck3BWyjIyQswKyiFxa9H+xmgWg8f8PqotP+Ckc31LQireLzLB4glFXchRkpU/fRAJLQb
+         tQ5mIoG+f9JUOC3eXVzIjKoILFqQRyK5JTLChVzgSQS047HXF7DYSVpU+LIJMqlrffKU
+         yrwA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f36si5679142edd.292.2019.07.12.07.17.05
+        by mx.google.com with ESMTPS id w50si5579163edd.84.2019.07.12.07.58.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Jul 2019 07:17:05 -0700 (PDT)
+        Fri, 12 Jul 2019 07:58:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49852 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50294 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hlwMC-0002eA-BY
-	for alex.bennee@linaro.org; Fri, 12 Jul 2019 10:17:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39245)
+	id 1hlx03-0000zE-Fe
+	for alex.bennee@linaro.org; Fri, 12 Jul 2019 10:58:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52450)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hlwM9-0002e2-Ia
- for qemu-arm@nongnu.org; Fri, 12 Jul 2019 10:17:02 -0400
+ (envelope-from <pbonzini@redhat.com>) id 1hlx00-0000yK-7P
+ for qemu-arm@nongnu.org; Fri, 12 Jul 2019 10:58:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hlwM8-0005dJ-Mv
- for qemu-arm@nongnu.org; Fri, 12 Jul 2019 10:17:01 -0400
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:36807)
+ (envelope-from <pbonzini@redhat.com>) id 1hlwzz-0005Vp-7j
+ for qemu-arm@nongnu.org; Fri, 12 Jul 2019 10:58:12 -0400
+Received: from mail-wr1-f49.google.com ([209.85.221.49]:40612)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hlwM8-0005c4-HI
- for qemu-arm@nongnu.org; Fri, 12 Jul 2019 10:17:00 -0400
-Received: by mail-wr1-f67.google.com with SMTP id n4so10190808wrs.3
- for <qemu-arm@nongnu.org>; Fri, 12 Jul 2019 07:17:00 -0700 (PDT)
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hlwzz-0005SY-0u
+ for qemu-arm@nongnu.org; Fri, 12 Jul 2019 10:58:11 -0400
+Received: by mail-wr1-f49.google.com with SMTP id r1so10278561wrl.7
+ for <qemu-arm@nongnu.org>; Fri, 12 Jul 2019 07:58:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=4Woz8/m+h9vyanjb6qA+tEUReKa+Sp9AHCYlwtnP22g=;
- b=ISHH+eQKI094o/k6e3RrtznCI5b7bNs7lY7rjh+gX1nc+jYHFwVtWcH4ulZK2WkEgk
- v76615kWarCW9N7Fbu1Tr5LoX7NH4ltT1FesVfVLH0G+/UhbnIrZnLeUBBK5xZkVa7lq
- eggXttERi9mPRH0Do4fOLC0QaLqHdwDFxl9B7bMZQb69f2MZ7OFePAo4DYZqQAaJ/6Y/
- INfmjmcDHxHb/UOykSAzfsX9iPFaIMqnhdSBvU8a8Sr/2p3/6O1+7H56ul84H06ApMfA
- nD87CBkZwxFVOnVN05H1m+eHDX/iBgVHu8e9Rhe+1NU6JAPsPY5nI5ISXbjU1/J7I7+V
- f+dg==
-X-Gm-Message-State: APjAAAXus1C2QzBd6llZiFoC1Sx+Bzx6a1NHL6SrulR/SkPA2Sog100s
- IP9PlOU0wBrv1psi9OLojokRGA==
-X-Received: by 2002:a5d:5186:: with SMTP id k6mr12759602wrv.30.1562941018996; 
- Fri, 12 Jul 2019 07:16:58 -0700 (PDT)
-Received: from [192.168.1.37] (62.red-83-42-61.dynamicip.rima-tde.net.
- [83.42.61.62])
- by smtp.gmail.com with ESMTPSA id f10sm1572210wrs.22.2019.07.12.07.16.58
+ bh=emIsT2uWy5ufwkOAnv2pkH1UDJF6aP1EQX0xPPePb0s=;
+ b=hWgY+7Q94AZtJTdvHU19WOGLGgcZSIm3/1/LsJxmEkyuSf5BvVWxYZQTasHjmIAY4r
+ tYaYF1Qaq2kX3Gd2C+Ul/T74wZ09R3tZ5Zv5EkFW9z26qL/kY0/0qVZ6HUGsTaoQjwA6
+ SyMmEB8WCkaH+B+E4kfCQ6xwiHJCi8QJCe+Q0WJq4ebyYAQKOHMVn30HhwayNAyI3URk
+ iTEvPEANfBMPZot9jw5hxaBmY7nQOvhINJB+pRcDhVb3d0cRWYx/mXd1fybw0LrnVvDZ
+ LHt4A+Y2ehpP4V3tcG0UOSj+nmj1fHOP9nWDKitu4cPWgA1iWEX7nHo8Z/eK0+rpKUNU
+ DobA==
+X-Gm-Message-State: APjAAAU6uz8jp1PL8Gfltg+B3Kx5wWQtYwPJNwCKcXswpYivgnpt5msG
+ YDYIViVS8B+Q5JMsTHRGvuHBkw==
+X-Received: by 2002:adf:dbcb:: with SMTP id e11mr11810506wrj.272.1562943489841; 
+ Fri, 12 Jul 2019 07:58:09 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:d066:6881:ec69:75ab?
+ ([2001:b07:6468:f312:d066:6881:ec69:75ab])
+ by smtp.gmail.com with ESMTPSA id s12sm7973260wmh.34.2019.07.12.07.58.09
  (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Fri, 12 Jul 2019 07:16:58 -0700 (PDT)
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+ Fri, 12 Jul 2019 07:58:09 -0700 (PDT)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
 References: <20190712133928.21394-1-philmd@redhat.com>
  <20190712133928.21394-3-philmd@redhat.com>
  <64a41af4-e635-06e3-05a2-d2cddaf02af0@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <de30351b-6747-b976-16c5-c587b51f2b7a@redhat.com>
-Date: Fri, 12 Jul 2019 16:16:57 +0200
+ <de30351b-6747-b976-16c5-c587b51f2b7a@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <e2a6cb5d-b840-117f-728c-b5b1bf4c18d6@redhat.com>
+Date: Fri, 12 Jul 2019 16:58:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-In-Reply-To: <64a41af4-e635-06e3-05a2-d2cddaf02af0@redhat.com>
+In-Reply-To: <de30351b-6747-b976-16c5-c587b51f2b7a@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.85.221.67
+X-Received-From: 209.85.221.49
 Subject: Re: [Qemu-arm] [PATCH-for-4.1 2/7] hw/usb: Bluetooth HCI USB
  depends on USB & BLUETOOTH
 X-BeenThere: qemu-arm@nongnu.org
@@ -112,40 +113,24 @@ Cc: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  Gerd Hoffmann <kraxel@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 20HblKRqMyUc
+X-TUID: oYAkVTATo1un
 
-On 7/12/19 3:58 PM, Paolo Bonzini wrote:
-> On 12/07/19 15:39, Philippe Mathieu-Daudé wrote:
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  hw/usb/Kconfig | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/usb/Kconfig b/hw/usb/Kconfig
->> index 564305e283..1b435ec002 100644
->> --- a/hw/usb/Kconfig
->> +++ b/hw/usb/Kconfig
->> @@ -82,7 +82,7 @@ config USB_NETWORK
->>  config USB_BLUETOOTH
->>      bool
->>      default y
->> -    depends on USB
->> +    depends on USB && BLUETOOTH
->>  
->>  config USB_SMARTCARD
->>      bool
->>
+On 12/07/19 16:16, Philippe Mathieu-Daudé wrote:
+> I wondered but am not sure, it is default to Yes, but Bluetooth code is
+> deprecated and print a big warning when you use it, so I think this
+> device should not be selected as default, neither pull in the deprecated
+> bluetooth code.
 > 
-> Shouldn't it select BLUETOOTH instead?
+> So personally I'd respin without 'default y'. If you have a good reason
+> to use it, I can use 'select' instead.
 
-I wondered but am not sure, it is default to Yes, but Bluetooth code is
-deprecated and print a big warning when you use it, so I think this
-device should not be selected as default, neither pull in the deprecated
-bluetooth code.
+There are two separate questions.  One is whether USB_BLUETOOTH should
+select BLUETOOTH and the answer there is almost certainly yes (in the
+words of kconfig.rst, BLUETOOTH is a "subsystem" while USB_BLUETOOTH is
+a "device"; devices select the bus that the device provides).
 
-So personally I'd respin without 'default y'. If you have a good reason
-to use it, I can use 'select' instead.
+The other is whether we want to enable USB_BLUETOOTH by default.  I
+wouldn't have any problem there, but if we disable it basically no one
+would ship/use it and we might as well delete the whole thing.
 
-Regards,
-
-Phil.
+Paolo

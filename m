@@ -1,145 +1,126 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp1100833wrv;
-        Fri, 12 Jul 2019 09:45:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwcNvK+ufu5vCMkYLStfB2xddfpiBsVmZFFjVq7fPFqFwRVFSqOl983rOorK4gj7GKCExR2
-X-Received: by 2002:a17:907:20bb:: with SMTP id pw27mr7168472ejb.93.1562949921436;
-        Fri, 12 Jul 2019 09:45:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562949921; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp1866120wrv;
+        Sat, 13 Jul 2019 02:54:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqysBMj73QN0cY9oeFwh9zI+VTAwHd+zwwhNEyvctCxXvficDgr1/cUU9ljtZ4aLAmDiOBTH
+X-Received: by 2002:a05:620a:1107:: with SMTP id o7mr8438779qkk.324.1563011654499;
+        Sat, 13 Jul 2019 02:54:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563011654; cv=none;
         d=google.com; s=arc-20160816;
-        b=yuNoxYqswZu6eXnsldS2QdBz5CHKYfc/oXfKkl7+LqgmD/mIxRWz9eMxGHjEYH4/2V
-         HCQ0hKiVH0nxzD1IweZzg6NwxqT21sdD1zeSfvztOZJLOWBWNgWtl29WTXKeQoGoaGkQ
-         qND5rBou39qqRbtRsAHvadIbFiULRKaySVXWhQuN7Noh36H3hn++FAB72Vj2iL4Yp4mr
-         eypzv+U4RmY2QW1TQvJq9V1aDR5GeErXza/Kr+eDhzUQkSOiseBgyQpRuS8f0bKv72ce
-         CpfbSLdXz0NWwJxDn4y0zJeaas1nMyA5qWLRBNxapY+u7uHW8mwvAhNyntNB4YLF/XW9
-         qL2g==
+        b=C3iarAd5Qk8y1dwDAY9nkjPC+e82HRT7LL2hj0/51nHZdLDRIYHlPYGrCLkcJZWwcA
+         VcU4sUCt2TDJWXSwuGUXI0i5+44IN76D6yLslf6tODgygGslqjRQHOLgOMUS8AlkgVPt
+         8uSB+3pGZ2yRmSxEUqdWv4mxlxfgw8pSL/79b1oHUHZfW43tuc2EW5Jlkin3Y43yXP9m
+         l8nkmkEukxpYGNww4R/1Tp646q9X9+AcF3wJx9g/JQ/HdHvniFRK90TtldwTkUDg95Pw
+         Iq6/gXDCK1mDQ/oNGLYDwMZjQD1z60tG3Xh8o7S3HHzdAyxpt1AXpLQ0SKh6po3/Wpp7
+         LZPw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=2iJqK2wWzbRidHkzsbaQ5idnuCOPPps534A05a+y3YY=;
-        b=qvXV0iUSW2W8WGqJ+pl/6OvesM4TtDQsxVt33I9PP7GGzOLXtBaXj9Q9JCZyQq/Flp
-         rlYoTxPDR3bjbBMbusxWm1uO3uPpTiYCoUQT8ybJd6nBkMDTbkgaUWyVp19i7Um/XYTq
-         /Hx0PtsjQNgrClgAt2lvozem6thWAisTZQF3VKo798mrCsSHPOd0dw+ctFSNo8PIj+SJ
-         +0RPQiumiwZuTGfrY54fktm38QWc6ypM2DVgco0PWLUdVW3t+oBFoLMY2G+PDHp3RuJU
-         zlI2hYw7jiAQGa13WkGvZB88aKin9ezQhk3Z0hwxNWqvT71O+cnOjne9+98+RslO2j8z
-         yscg==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :mime-version:user-agent:date:message-id:subject:from:to;
+        bh=TL4dDnWl8ZQ++2aM1C2wMHmBS5dfW95tDDQGatT4Vhw=;
+        b=noV0lUdsA/zQ61qveHlhL74w+IRwjnbW8mpyl4qvlXUAFrB5+P8kFaqcRKyO5kr4tu
+         +EScyZ6NpanYeAw9rjA0TkPftYly6u9z6mxZEvCLhNuOCovaWkno+2ZiYJS95Tv4wqw8
+         8ThvPitn5m41dDB66stQrXbd6dIf8B9qcKUuxzDZ4L6DHGYwqNLMD4BZEhZYGxHjcbcu
+         zhsuQgumui/jv2OwF0NBPix1ak+jQzbiVz7bW/dw90uV4MknSgHpBA6hLY1dasgonL90
+         C7UAHSBe5uD4MVMqaHEcPvdjAIDfxesTwa3ZfybgYmA1GgtWFT37+ETBY3aotW2Y8Mqz
+         g1rQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x3si5920815eda.298.2019.07.12.09.45.21
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Jul 2019 09:45:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id l7si6412894qkg.304.2019.07.13.02.54.13;
+        Sat, 13 Jul 2019 02:54:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51166 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hlyfg-00082T-89
-	for alex.bennee@linaro.org; Fri, 12 Jul 2019 12:45:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53859)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hlyfb-0007to-92
- for qemu-arm@nongnu.org; Fri, 12 Jul 2019 12:45:16 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hlyfZ-0003Zf-JU
- for qemu-arm@nongnu.org; Fri, 12 Jul 2019 12:45:15 -0400
-Received: from mail-wm1-f42.google.com ([209.85.128.42]:51178)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hlyfZ-0003V2-CJ
- for qemu-arm@nongnu.org; Fri, 12 Jul 2019 12:45:13 -0400
-Received: by mail-wm1-f42.google.com with SMTP id v15so9544539wml.0
- for <qemu-arm@nongnu.org>; Fri, 12 Jul 2019 09:45:11 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=2iJqK2wWzbRidHkzsbaQ5idnuCOPPps534A05a+y3YY=;
- b=AUelJq1BvyCKeBJAyz8yO4hTFHmfczjY/zeT7VAFp11ncjmIZGHt/wLpu9KfZFVUfL
- LLlKpKrH2s1X8Ihz2Hi7Ao0NIYZznrY5CrBTXDkziiySKzrNFicpXu1I+2EawpkQar7O
- Bc4abFcTNo/tttMF3KYeUqOZwyfNvd8g8bLrqLSCjTrRS0AU62oyEivfes91XkDRvkgn
- uhpi/ucX5jNYZ7Xk3qNKRUT8Jr3uYOcmSktniGq5ltP0jCto3ZzNdMlGo9zip8Kur7WG
- zSB09wwcA+ROu1u95T6d0rrWKMDmoYWGSJ+b5syhB1iZdIiygyPaAigLZrBW9BcVRjz1
- Z62g==
-X-Gm-Message-State: APjAAAX9IW+sj/hn8IkyWX13zJEx8tlD2mo3Y+48anGNyi6tmVDCZMrs
- 9Th2NNdXXhcuzeUAD0tIKFUzBg==
-X-Received: by 2002:a7b:c7c2:: with SMTP id z2mr7937258wmk.147.1562949910336; 
- Fri, 12 Jul 2019 09:45:10 -0700 (PDT)
-Received: from [192.168.1.37] (62.red-83-42-61.dynamicip.rima-tde.net.
- [83.42.61.62])
- by smtp.gmail.com with ESMTPSA id n14sm12873255wra.75.2019.07.12.09.45.09
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Fri, 12 Jul 2019 09:45:09 -0700 (PDT)
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-References: <20190712133928.21394-1-philmd@redhat.com>
- <20190712133928.21394-3-philmd@redhat.com>
- <64a41af4-e635-06e3-05a2-d2cddaf02af0@redhat.com>
- <de30351b-6747-b976-16c5-c587b51f2b7a@redhat.com>
- <e2a6cb5d-b840-117f-728c-b5b1bf4c18d6@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <49b41c61-fce7-3b5f-980a-20007125de9f@redhat.com>
-Date: Fri, 12 Jul 2019 18:45:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 7075C4A51C;
+	Sat, 13 Jul 2019 05:54:13 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -1.502
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.502 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3,
+	SPF_HELO_PASS=-0.001] autolearn=no
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id o312Dgxt7e6g; Sat, 13 Jul 2019 05:54:12 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 804CB4A49C;
+	Sat, 13 Jul 2019 05:54:12 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 835FE4A3A5
+ for <kvmarm@lists.cs.columbia.edu>; Sat, 13 Jul 2019 05:54:11 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id wEiH5UNj2ebk for <kvmarm@lists.cs.columbia.edu>;
+ Sat, 13 Jul 2019 05:54:09 -0400 (EDT)
+Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id A5AB84A49C
+ for <kvmarm@lists.cs.columbia.edu>; Sat, 13 Jul 2019 05:54:09 -0400 (EDT)
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id D921CB7764657033EA41;
+ Sat, 13 Jul 2019 17:54:05 +0800 (CST)
+Received: from [127.0.0.1] (10.133.216.73) by DGGEMS407-HUB.china.huawei.com
+ (10.3.19.207) with Microsoft SMTP Server id 14.3.439.0; Sat, 13 Jul 2019
+ 17:53:58 +0800
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
+ <linux-arm-kernel@lists.infradead.org>, <kvmarm@lists.cs.columbia.edu>
+From: Guoheyi <guoheyi@huawei.com>
+Subject: [RFC] Add virtual SDEI support in qemu
+Message-ID: <1b0aa6b2-80b1-a72e-6849-7323c3b9c6bc@huawei.com>
+Date: Sat, 13 Jul 2019 17:53:57 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-In-Reply-To: <e2a6cb5d-b840-117f-728c-b5b1bf4c18d6@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.128.42
-Subject: Re: [Qemu-arm] [PATCH-for-4.1 2/7] hw/usb: Bluetooth HCI USB
- depends on USB & BLUETOOTH
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+X-Originating-IP: [10.133.216.73]
+X-CFilter-Loop: Reflected
+Cc: Marc Zyngier <marc.zyngier@arm.com>
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Miroslav Rezanina <mrezanin@redhat.com>, qemu-arm@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /wOWkbwLyOos
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: Nqiz1O/2P5Y6
 
-On 7/12/19 4:58 PM, Paolo Bonzini wrote:
-> On 12/07/19 16:16, Philippe Mathieu-Daudé wrote:
->> I wondered but am not sure, it is default to Yes, but Bluetooth code is
->> deprecated and print a big warning when you use it, so I think this
->> device should not be selected as default, neither pull in the deprecated
->> bluetooth code.
->>
->> So personally I'd respin without 'default y'. If you have a good reason
->> to use it, I can use 'select' instead.
-> 
-> There are two separate questions.  One is whether USB_BLUETOOTH should
-> select BLUETOOTH and the answer there is almost certainly yes (in the
-> words of kconfig.rst, BLUETOOTH is a "subsystem" while USB_BLUETOOTH is
-> a "device"; devices select the bus that the device provides).
+Hi folks,
 
-Fair :)
+Do it make sense to implement virtual SDEI in qemu? So that we can have 
+the standard way for guest to handle NMI watchdog, RAS events and 
+something else which involves SDEI in a physical ARM64 machine.
 
-> The other is whether we want to enable USB_BLUETOOTH by default.  I
-> wouldn't have any problem there, but if we disable it basically no one
-> would ship/use it and we might as well delete the whole thing.
+My basic idea is like below:
 
-The only user is the ARM Nokia N-series board, so if we set default=n,
-the Bluetooth subsystem will be only be selected on arm-softmmu (and
-aarch64-softmmu).
+1. Change a few lines of code in kvm to allow unhandled SMC invocations 
+(like SDEI) to be sent to qemu, with exit reason of KVM_EXIT_HYPERCALL, 
+so we don't need to add new API.
 
-This seems a sane cleanup. If another board wants to use the bluetooth
-code, it should probably move it out of the orphan status.
+2. qemu handles supported SDEI calls just as the spec says for what a 
+hypervisor should do for a guest OS.
+
+3. For interrupts bound to hypervisor, qemu should stop injecting the 
+IRQ to guest through KVM, but jump to the registered event handler 
+directly, including context saving and restoring. Some interrupts like 
+virtual timer are handled by kvm directly, so we may refuse to bind such 
+interrupts to SDEI events.
+
+Any comment or suggestion will be really appreciated.
+
+Heyi
+
+
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

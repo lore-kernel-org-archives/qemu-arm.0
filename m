@@ -1,105 +1,112 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp1145610wrv;
-        Fri, 12 Jul 2019 10:31:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwk87PnkdyZN/GwKYqnES1mfYRm+C+PKyjdGMRC/UkIoqEkXFNk+BzReh2bUZHC3xGW1p/B
-X-Received: by 2002:aa7:c0cf:: with SMTP id j15mr10531068edp.138.1562952715676;
-        Fri, 12 Jul 2019 10:31:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1562952715; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2890381wrv;
+        Sun, 14 Jul 2019 04:04:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy5k7d9B/ZYImlFDbStEQ8O1Sgc8xP2112yvkLZD/xFefCtf0fl+tr5YbRTnI/rJLai6N7a
+X-Received: by 2002:a50:97ac:: with SMTP id e41mr17932294edb.27.1563102263108;
+        Sun, 14 Jul 2019 04:04:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563102263; cv=none;
         d=google.com; s=arc-20160816;
-        b=NDVnYmYxFNu5il2mrBg6u6pUPzYaMJysOTBm6Yp5l5zrFGRrmkmjVrt9Mgrlk5UHut
-         vuAtTvFC22SQN8k62CJckZ/FNqY47OuF7mhdoXJDHHknDNLhKjg9z24Dg9HiTXAJhPms
-         Z9e5843txdG8Rmz6rWrMEVnZMuJkLGs1UaBEIvCjaU87Nn64vWu6IKANzo6xI+hqUWvv
-         F0JehSF9h73R/iyaxSd9jli2VwGA0lGdJMhkx6UVUuO3Zd0j/JXdz7xCyosPD7VoC7/7
-         JA1djdZRSFnqPZKU28JK9vJ82H7I197xkvBOc8LEj7G1KeKwCLKMT9r1DsJcXtmb2HyJ
-         nEfg==
+        b=d4F1xge7Fy6o6dp58AMW1sCKyvt28UgvTZlI/2jJqpd/kB9tH2d6fAvHcRFZWqvpBR
+         XwxZxa5vk6c8fOIvXxCeaj8hHUghwlvhA/WwpFUsV/7OvbdP7EVlz3Rksr9TBJ3AP6f/
+         0wuu28kYK0O9bGKuJ2zuJ4EYcHXkPLFvs/wes6V/Lb8cC1MUxJlrhTxu0p1tkmNFyRTJ
+         njbapW1bvo/F1wZs7Bv5EgVTzh1nVmLePOwORzuilwQ5FR76qbTZVNMMVhV97LSOcw0U
+         OHCNp97l6n9T0ffF5Tv9yQ0RiPnkdPU40RZAgRwXJchW69EBJRa5zNAXafXK+RloOiwc
+         5RQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=H8er3Um6nwfRz2Bm6YZwaRTZIER+nSM6JmK3tm/TRPw=;
-        b=RZZhyNiKLoJLWihLBCL6YaGsKUpSPkcr28hXisAAmPc1aUFJvP/m1BTds82t3JJvAc
-         PN6mLKGLVDksEwGgGbmNOfZZSeu0Z0zEliE/fWVZLask+CSkkTgx6pX850Pb31pakPFo
-         TV91xDJ9sGKdxJI1MfiFOGkWAptUHo19B3TjlVGMVwi182Qxhksp58I+QMuLuVxmQNP9
-         EVEknasfZRQYrWb3/35bRXoxQTtu3MAD5gdgoWOrVxJ+K5YwmwLbntZOa4cnvKvmdVEf
-         PMtKiXMsyhSPjIxZtlvbBbIpaW2Ceai3oJysRBZGilQfglobW1XwQCsi4IZvBjk55u7f
-         rzVA==
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature;
+        bh=IJCgDVhxiseY7XWwBmZ27J/5fYQgLDVWtvomA/EQ0K0=;
+        b=YrAe5fiKP0gpHNIA/1ioVMFvov2rF/mxPiEUL/QYYg5LblM7pYrd1WBJQ9hICaKoqe
+         UDBQCjIMb411n+45+EMV3P+VlEC7woeQCYwnjR2bI/6eT6p0bQKFTum+t4PuxsxkQ8Mr
+         LqD9KhBnncfpjb/+W5IQE9E3KT8EMfMpgzeSfsF9YWWpoWahZWk499Bd0Ph3boctGe8K
+         6o1wTMDfmp1RsxOsFoos7eMLMyvHbhbM3m87c/0zeCQdlAUConVUJEECFV6B/Ln124/P
+         9wlrneLyAxZNnEzEAE4yxI1aZZlnBTQSsl5PWcFxappaGg+kWvE3GKQ/7UtMtqcDNSix
+         5W+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=YeOtU6cA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v17si6184301edm.4.2019.07.12.10.31.55
+        by mx.google.com with ESMTPS id d33si9095041edb.194.2019.07.14.04.04.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 12 Jul 2019 10:31:55 -0700 (PDT)
+        Sun, 14 Jul 2019 04:04:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=YeOtU6cA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51448 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59708 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hlzOk-00029j-JX
-	for alex.bennee@linaro.org; Fri, 12 Jul 2019 13:31:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38317)
+	id 1hmcIn-0003PL-W7
+	for alex.bennee@linaro.org; Sun, 14 Jul 2019 07:04:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58455)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <pbonzini@redhat.com>) id 1hlzOi-00029b-Ha
- for qemu-arm@nongnu.org; Fri, 12 Jul 2019 13:31:53 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1hmcIj-0003N9-PY
+ for qemu-arm@nongnu.org; Sun, 14 Jul 2019 07:04:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1hlzOh-0007HA-L9
- for qemu-arm@nongnu.org; Fri, 12 Jul 2019 13:31:52 -0400
-Received: from mail-wm1-f54.google.com ([209.85.128.54]:36506)
+ (envelope-from <richard.henderson@linaro.org>) id 1hmcIh-0001lw-Ph
+ for qemu-arm@nongnu.org; Sun, 14 Jul 2019 07:04:17 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:40182)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hlzOh-0007Gh-2S
- for qemu-arm@nongnu.org; Fri, 12 Jul 2019 13:31:51 -0400
-Received: by mail-wm1-f54.google.com with SMTP id g67so5544809wme.1
- for <qemu-arm@nongnu.org>; Fri, 12 Jul 2019 10:31:51 -0700 (PDT)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1hmcIg-0001jo-60
+ for qemu-arm@nongnu.org; Sun, 14 Jul 2019 07:04:15 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id v19so12500064wmj.5
+ for <qemu-arm@nongnu.org>; Sun, 14 Jul 2019 04:04:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=IJCgDVhxiseY7XWwBmZ27J/5fYQgLDVWtvomA/EQ0K0=;
+ b=YeOtU6cA2y2JOd/+5MFMZ3OiSvWVSWFClQCuY60sLh5KeS7uiHiABJiNwFzKVJm27c
+ eEtcINWdkx3KbFLwbLXeDsMQ54oPnCVlkZgNTOvMHuJ4ViA0/kJ7kmVMPZP5Fo98612c
+ I6Z5UNmmobSJl2odHYx42hiuyBReYvb4nTzIYYzNRz2lu9qwLldinTcEX4QmzgZwqkPs
+ eBGoS4IGgMK+tcncsi2/27X+fAnGlarcHazK8YOmH/idwp08ZcXOsgCv+425+chc8aT9
+ 5XuvuH2u+ItyeIzG2xEhA2tFD/tvHK9EBAdJr8asxPXC5o2qtIJcOfCkWyLVUufKXO6K
+ yVsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=H8er3Um6nwfRz2Bm6YZwaRTZIER+nSM6JmK3tm/TRPw=;
- b=MT/QPikIEqfaGHpGXyF89dXEh56Mwx9u+gvE9bjsA1Mkxa8FufrLcwz6U9FHnjwuO4
- gW1T3CtFmMrkbn/e+WQs5UgGFzKvI7MJudBRjq2l+vlKqx1moFGHfL00o9EwiqGgbR2d
- PGzS2N0yJip6f2fNHGcJXAhdGdv6a8MTyapJAoFh0YSOqtAkORfhw4ZSw8JTUgCka+4Z
- BjUY2BFL5LFBE3/8DSomDVqTQBPXg6El53zL7mEMMHwUf4oXjgI0RpfAnxNlDw12Oztz
- VWdQInDbGjWDVurUbI5wGNneHrcaqMEhJ2vyXHBQ+1ByQYg5kMVCHlGANGUTOGpHmOt0
- UzjQ==
-X-Gm-Message-State: APjAAAUKi2KaC/n/Mq/9OEVh0+s/9HmI7GNvHDJTj/xwia1CSk7XGAVL
- BNdQoOh3zIgW1INSd/J7vAYICg==
-X-Received: by 2002:a05:600c:218d:: with SMTP id
- e13mr10774776wme.29.1562952709803; 
- Fri, 12 Jul 2019 10:31:49 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:d066:6881:ec69:75ab?
- ([2001:b07:6468:f312:d066:6881:ec69:75ab])
- by smtp.gmail.com with ESMTPSA id d1sm6875597wrs.94.2019.07.12.10.31.48
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Fri, 12 Jul 2019 10:31:49 -0700 (PDT)
+ bh=IJCgDVhxiseY7XWwBmZ27J/5fYQgLDVWtvomA/EQ0K0=;
+ b=oXU3QdTpRIUUBRZLGEAKw9mDzz0KMXyuyPaUQZJzBzC01OKFZpEB0YOBULiEaksjCn
+ NdOcbaPFTHJUCMrdQvk3NkJckXBm+mAAI21L6gvXrcWe1J9gg4rwSWezDj6sDAW9fkaC
+ WO9fKgHj+yLNYINWcV8/1Qu5TcfBw8TRKWsTaAAx8e3Cb2hA3mf59zNpFUZ0iRjFscqI
+ b7qK3JLRemz0z04jqcKTA8cfdpMG9cLqZDtYTbbTx12FCLvlSgP6l/MJEssQaamJQWMQ
+ 0hfHh1zBAuEKS8FAWwsL3gl9hW2XNE1RnNwCBMtyp2aJ3eZjEfNVMdOs7A0JaRpBGPm+
+ oVyg==
+X-Gm-Message-State: APjAAAX8HdTta6+fMegfw1t3QHvjJzhk2CurWoFCLoSNA6VxHUG6Mdz7
+ jNcVWEvFzM15BqFZ5dXHt94RZQ==
+X-Received: by 2002:a7b:cbcb:: with SMTP id n11mr18496347wmi.54.1563102251955; 
+ Sun, 14 Jul 2019 04:04:11 -0700 (PDT)
+Received: from [10.0.7.42] ([194.144.248.241])
+ by smtp.gmail.com with ESMTPSA id z19sm9925584wmi.7.2019.07.14.04.04.10
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Sun, 14 Jul 2019 04:04:11 -0700 (PDT)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 References: <20190712133928.21394-1-philmd@redhat.com>
- <20190712133928.21394-3-philmd@redhat.com>
- <64a41af4-e635-06e3-05a2-d2cddaf02af0@redhat.com>
- <de30351b-6747-b976-16c5-c587b51f2b7a@redhat.com>
- <e2a6cb5d-b840-117f-728c-b5b1bf4c18d6@redhat.com>
- <49b41c61-fce7-3b5f-980a-20007125de9f@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <993dbb9e-6813-e927-fd69-d16015ea1fc2@redhat.com>
-Date: Fri, 12 Jul 2019 19:31:48 +0200
+Message-ID: <65921981-c235-d8ca-ce26-27e7ef03585e@linaro.org>
+Date: Sun, 14 Jul 2019 13:04:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.2
 MIME-Version: 1.0
-In-Reply-To: <49b41c61-fce7-3b5f-980a-20007125de9f@redhat.com>
+In-Reply-To: <20190712133928.21394-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.128.54
-Subject: Re: [Qemu-arm] [PATCH-for-4.1 2/7] hw/usb: Bluetooth HCI USB
- depends on USB & BLUETOOTH
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::32b
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH-for-4.1? 0/7] vl: Allow building
+ with CONFIG_BLUETOOTH disabled
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,26 +118,34 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Miroslav Rezanina <mrezanin@redhat.com>, qemu-arm@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Miroslav Rezanina <mrezanin@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9uoQDcY5OPg1
+X-TUID: Jf7hXDXwsDD9
 
-On 12/07/19 18:45, Philippe Mathieu-Daudé wrote:
-> On 7/12/19 4:58 PM, Paolo Bonzini wrote:
->> The other is whether we want to enable USB_BLUETOOTH by default.  I
->> wouldn't have any problem there, but if we disable it basically no one
->> would ship/use it and we might as well delete the whole thing.
+On 7/12/19 3:39 PM, Philippe Mathieu-Daudé wrote:
+> A series of obvious patches to build without the deprecated
+> bluetooth devices. Still worth for 4.1 or too late?
+> It is clearly not a bugfix.
 > 
-> The only user is the ARM Nokia N-series board, so if we set default=n,
-> the Bluetooth subsystem will be only be selected on arm-softmmu (and
-> aarch64-softmmu).
+> Regards,
 > 
-> This seems a sane cleanup. If another board wants to use the bluetooth
-> code, it should probably move it out of the orphan status.
+> Phil.
+> 
+> Philippe Mathieu-Daudé (7):
+>   hw/arm: Nokia N-series tablet requires Bluetooth
+>   hw/usb: Bluetooth HCI USB depends on USB & BLUETOOTH
+>   MAINTAINERS: Add a Bluetooth entry
+>   vl: Fix 'braces' coding style issues
+>   vl: Use qemu_strtoi() instead of strtol()
+>   vl: Extract bt_parse() into its own file
+>   hw/bt: Allow building with CONFIG_BLUETOOTH disabled
 
-Fair! ;)
+All of this looks plausible to me to go along with the 4.1 deprecation.
 
-Paolo
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~

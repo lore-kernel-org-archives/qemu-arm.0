@@ -1,131 +1,101 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3960477wrv;
-        Mon, 15 Jul 2019 03:15:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqztq571E/tRsEKey/FjnIZ5wGgtiuNy2PfxzpaTzwTZu9FvrgmnDY01LYMyCn4YpJz7RCPd
-X-Received: by 2002:a17:906:470a:: with SMTP id y10mr5255030ejq.115.1563185755984;
-        Mon, 15 Jul 2019 03:15:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563185755; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3964759wrv;
+        Mon, 15 Jul 2019 03:19:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzYzXsh6hxkvd3awabEbjRvxjnbtxRx7NvTHL/Qe5Ksr6cl/KZLQG5BQLTRNRJBdbYDkpme
+X-Received: by 2002:a50:9947:: with SMTP id l7mr22655187edb.305.1563185993025;
+        Mon, 15 Jul 2019 03:19:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563185993; cv=none;
         d=google.com; s=arc-20160816;
-        b=IDQuuhmRRc8gF42a+s5AxaZ08Qbo667X51QiHkfAx1v7LIDZL9zNkueeNP9lHzhOxj
-         +2QW+NVGzz1V0nFphizLZjzTegc0hMqaG6Qpjr/LS8Hnx9+V1sF6g6FXOcCPZCmmJI6f
-         UhCUHcL4q7cYsIutOURodYfUjwFtr2zu51y1k6Ww6izgEKANFwNx/ndDik//aPijpQ9V
-         ipFCAT+ofpmB7hzBKUV7rLCEYjJK58YNneNELRDrypRjGc0BixL9XC2Q8QWyc7s2UpSC
-         Sbkp29HUqt3jqZUKlDwmYmWB0cV1wSFtACE1Sb0IrOWLHSSBuOwWy/KlRI2MVpDLz8Gh
-         0LYw==
+        b=IvAWFNyBBPsa9o5IaOolaFKN+4O0er1NfEkt69dRhov4DFIUGcQzvdc2LFHi0TJv0I
+         bqRoZR8/TxKiH0JutLo4JzQR9N52u15PHmR9d91dhsA3hVmuCBRgIa3O1OycWFvQJ5lq
+         4D7O71s7EBjNgtS0z5CJaMgC7Z0jA3Ml3ps167Iu/dT803CA6z+Bb0PRzaCXt3+DtSaW
+         TPW8mC97kiH6t+qrwPDADsP8vcoKae4G6+2IqYflfv6wDdfpPIID06K+7q5EiT1twauV
+         FOvCIaFCK2UF2GCYKnqQisE+o5nbPJMIQNtwsj2gxIS0h35No+4r0uHFWMZhq52U1lLK
+         OSyQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to;
-        bh=UXEHcSLOonWvsLMlqY5ECr5vxIlWbKFxSOsV1MDBUk8=;
-        b=vRGU3vgR04uDujHRWdtDDlnGafMorrlG3hipqmz/OKaAWgs1jUvjKjK+nydNAehWHu
-         Kkry2H3GjVaf1sU1opJFWsBZLl83Xja2zVTzqa4TVBenrMy4kpFVzEX+Nj/gbXUNAbkD
-         y8tAy78/Fn5KYKoxNZskzMRmIKr2IbK9cr4v19yyaAlV6KzpJm9XTwAdjyna2Bt2FWnX
-         JB+VDWkjISWMtVn+cFJa+6GmEitYCWjnJ+7dSIVn8mzOU9MuWoDjdcV4Jbqs80UBrFBW
-         egKbsN4M/zUXkyfDmGVEc9c7hUA9EfBY/meFvfvHng1MrnFnCANuE4vZb1qxZh1khhIi
-         fXaw==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=lIY1LG0oQiWA/CK7da0hwk56l330aVFg5UDC40kBwXQ=;
+        b=pKnPmM/P/NIoy9CTppVVc6HyvV4tGprAfKEc2tDavp96aZpunfBbmD31n5qERRdRR4
+         Oufum30rTYq50wPX9lOOZgq8PAMwinA0H61WVO8TP+YkFfqG1HhOEFjvGo82myfls0V0
+         WH5ZMUbQgqtTBKTTvtZtFOQ3oJZ5H9UQSSLkRZN6FdhPV4lmZVCuhTJ4njaa5SFRFig8
+         gvfcEjUqgDYB21nTuKUE6vbQzltjmFmPJbcz3F9rDtexONuhPQJpUB9jaVnNubrZD3oQ
+         bXCjSVmJaGv/tsNM9Ch501hYIWbrdg0RD6+UwwrgH1V1LDV6v2/2K8vpIK4E+driMijL
+         g2Dw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=NJaxPXR7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w16si9133090ejj.232.2019.07.15.03.15.55
+        by mx.google.com with ESMTPS id g14si9706666edy.420.2019.07.15.03.19.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jul 2019 03:15:55 -0700 (PDT)
+        Mon, 15 Jul 2019 03:19:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=NJaxPXR7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36584 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36614 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hmy1T-0003vM-1r
-	for alex.bennee@linaro.org; Mon, 15 Jul 2019 06:15:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33413)
+	id 1hmy5H-0006Hn-KO
+	for alex.bennee@linaro.org; Mon, 15 Jul 2019 06:19:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34099)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <thuth@redhat.com>) id 1hmy1P-0003tw-7T
- for qemu-arm@nongnu.org; Mon, 15 Jul 2019 06:15:52 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hmy5D-0006FT-9Q
+ for qemu-arm@nongnu.org; Mon, 15 Jul 2019 06:19:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1hmy1O-0003LX-49
- for qemu-arm@nongnu.org; Mon, 15 Jul 2019 06:15:51 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43022)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1hmy1N-0003LB-ST; Mon, 15 Jul 2019 06:15:50 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 345388535D;
- Mon, 15 Jul 2019 10:15:48 +0000 (UTC)
-Received: from thuth.remote.csb (reserved-198-198.str.redhat.com
- [10.33.198.198])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 75DE05B681;
- Mon, 15 Jul 2019 10:15:34 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
+ (envelope-from <peter.maydell@linaro.org>) id 1hmy5C-0004ws-8I
+ for qemu-arm@nongnu.org; Mon, 15 Jul 2019 06:19:47 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:33607)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hmy5C-0004wB-1h
+ for qemu-arm@nongnu.org; Mon, 15 Jul 2019 06:19:46 -0400
+Received: by mail-ot1-x343.google.com with SMTP id q20so16367319otl.0
+ for <qemu-arm@nongnu.org>; Mon, 15 Jul 2019 03:19:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=lIY1LG0oQiWA/CK7da0hwk56l330aVFg5UDC40kBwXQ=;
+ b=NJaxPXR7Jxrl287frgOPqUvn3TPAGVR8D51mxlNs4wgqa9WpgxvFK8ZBEC6fIl+NC6
+ I2fp5C0ZBV2mjBtqlf8ZbeLgHO9v8InYaR/XrVnMCDaCDkn6wTO7TftqhWeH5eaKBlwW
+ 0pl68SOIoc5Q5sttFlzXlwrOHDUbYFcw8j85xotZ+eG4iP8gtWxP5nSX4qIXdSiOxtjN
+ zwrqlsLcBV3Jkh3uTBLPstjqKp3tXJ2j4Xm+D2YfB6GjE1bEgF+wqXLAV4rHrkZL4znH
+ ffufe8v+PsSRimk6XO9RWMDDATh8LAlMspwMZVUF7WFu1KCPmn9H6Lbo8aWjmadLpvD4
+ UewA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=lIY1LG0oQiWA/CK7da0hwk56l330aVFg5UDC40kBwXQ=;
+ b=gVz2Tvg0NRSesiqdmt5FUjZF4alJNEKVanQqn71Y11onOiSqWncbWLm4GZHLVNyx47
+ sMIK9ji9QU9wMbIa3bll5BVZV/cX/X8Tg0mcyhFnRuewEWQUtgwXRX7C+kiMn3RkXR1V
+ Gp/GxN3XCFTpXtFq99i2zYkIY4wPZAYF9WnATteUA2ir/kGPeCMJz/x5OX4uvEUUwH5h
+ YafOzrS3FXM2kkwNmU9vO95leF8mNqeQpm3JGRVJCBPECBwJ7Ku5l7MOMivgQgoQE7Sx
+ L+opQq2S0QuRzA7NM+ZBubAjXw2tINxZT6rjrS9U01UA+03/dvkFaiQL4kTuMc+C00cm
+ vLJQ==
+X-Gm-Message-State: APjAAAWmK6ccKE6rCCai1CEWXFcWuBFnBo510VMgM5o9NhRuamEFkcqU
+ ceINynxY4r6922K4ChVkVkigyF2gk9q5R+euE/ZXgQ==
+X-Received: by 2002:a9d:6a0f:: with SMTP id g15mr14428381otn.135.1563185985085; 
+ Mon, 15 Jul 2019 03:19:45 -0700 (PDT)
+MIME-Version: 1.0
 References: <20190715095545.28545-1-philmd@redhat.com>
  <20190715095545.28545-2-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-Organization: Red Hat
-Message-ID: <ca528cdc-6118-0b2f-c1b8-30b06875dde8@redhat.com>
-Date: Mon, 15 Jul 2019 12:15:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
-MIME-Version: 1.0
-In-Reply-To: <20190715095545.28545-2-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.25]); Mon, 15 Jul 2019 10:15:48 +0000 (UTC)
+ <ca528cdc-6118-0b2f-c1b8-30b06875dde8@redhat.com>
+In-Reply-To: <ca528cdc-6118-0b2f-c1b8-30b06875dde8@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 15 Jul 2019 11:19:34 +0100
+Message-ID: <CAFEAcA-wgTVfj0TUJ=piP0wEgLGiNpOYia5DK2GQAO4Q7gNaWg@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
 Subject: Re: [Qemu-arm] [RFC PATCH 1/3] hw/Kconfig: PCI bus implies
  PCI_DEVICES
 X-BeenThere: qemu-arm@nongnu.org
@@ -139,132 +109,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
+Cc: qemu-ppc <qemu-ppc@nongnu.org>, "open list:RISC-V" <qemu-riscv@nongnu.org>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-ppc@nongnu.org,
- Helge Deller <deller@gmx.de>, Palmer Dabbelt <palmer@sifive.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Helge Deller <deller@gmx.de>,
+ Palmer Dabbelt <palmer@sifive.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>,
  Artyom Tarasenko <atar4qemu@gmail.com>,
- "open list:S390" <qemu-s390x@nongnu.org>, qemu-arm@nongnu.org,
+ "open list:S390" <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
  Alistair Francis <Alistair.Francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
  Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: v+ebrH0giBt1
+X-TUID: nMy209laR2hb
 
-On 15/07/2019 11.55, Philippe Mathieu-Daud=C3=A9 wrote:
-> If a controller device provides a PCI bus, we can plug any PCI
-> daughter card on it.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  docs/devel/kconfig.rst | 1 -
->  hw/alpha/Kconfig       | 1 -
->  hw/arm/Kconfig         | 4 ----
->  hw/hppa/Kconfig        | 1 -
->  hw/i386/Kconfig        | 1 -
->  hw/pci/Kconfig         | 1 +
->  hw/ppc/Kconfig         | 6 ------
->  hw/riscv/Kconfig       | 1 -
->  hw/sh4/Kconfig         | 1 -
->  hw/sparc64/Kconfig     | 1 -
->  10 files changed, 1 insertion(+), 17 deletions(-)
->=20
-> diff --git a/docs/devel/kconfig.rst b/docs/devel/kconfig.rst
-> index d6f8eb0977..6c010d38d4 100644
-> --- a/docs/devel/kconfig.rst
-> +++ b/docs/devel/kconfig.rst
-> @@ -56,7 +56,6 @@ stanza like the following::
-> =20
->        config ARM_VIRT
->           bool
-> -         imply PCI_DEVICES
->           imply VFIO_AMD_XGBE
->           imply VFIO_XGMAC
->           select A15MPCORE
-> diff --git a/hw/alpha/Kconfig b/hw/alpha/Kconfig
-> index 15c59ff264..ddac1bf8e5 100644
-> --- a/hw/alpha/Kconfig
-> +++ b/hw/alpha/Kconfig
-> @@ -1,6 +1,5 @@
->  config DP264
->      bool
-> -    imply PCI_DEVICES
->      imply TEST_DEVICES
->      imply E1000_PCI
->      select I82374
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index ab65ecd216..51db042a0a 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -1,6 +1,5 @@
->  config ARM_VIRT
->      bool
-> -    imply PCI_DEVICES
->      imply TEST_DEVICES
->      imply VFIO_AMD_XGBE
->      imply VFIO_PLATFORM
-> @@ -159,7 +158,6 @@ config Z2
-> =20
->  config REALVIEW
->      bool
-> -    imply PCI_DEVICES
->      imply PCI_TESTDEV
->      select SMC91C111
->      select LAN9118
-> @@ -186,7 +184,6 @@ config REALVIEW
-> =20
->  config SBSA_REF
->      bool
-> -    imply PCI_DEVICES
->      select AHCI
->      select ARM_SMMUV3
->      select GPIO_KEY
-> @@ -365,7 +362,6 @@ config MPS2
-> =20
->  config FSL_IMX7
->      bool
-> -    imply PCI_DEVICES
->      imply TEST_DEVICES
->      select A15MPCORE
->      select PCI
-> diff --git a/hw/hppa/Kconfig b/hw/hppa/Kconfig
-> index 6e5d74a825..13183ff243 100644
-> --- a/hw/hppa/Kconfig
-> +++ b/hw/hppa/Kconfig
-> @@ -1,6 +1,5 @@
->  config DINO
->      bool
-> -    imply PCI_DEVICES
->      imply E1000_PCI
->      imply VIRTIO_VGA
->      select PCI
-> diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
-> index 4ddf2a9c55..4eceab2c7c 100644
-> --- a/hw/i386/Kconfig
-> +++ b/hw/i386/Kconfig
-> @@ -10,7 +10,6 @@ config PC
->      imply ISA_IPMI_BT
->      imply ISA_DEBUG
->      imply PARALLEL
-> -    imply PCI_DEVICES
->      imply PVPANIC
->      imply QXL
->      imply SEV
-> diff --git a/hw/pci/Kconfig b/hw/pci/Kconfig
-> index 77f8b005ff..0f7267db35 100644
-> --- a/hw/pci/Kconfig
-> +++ b/hw/pci/Kconfig
-> @@ -1,5 +1,6 @@
->  config PCI
->      bool
-> +    imply PCI_DEVICES
+On Mon, 15 Jul 2019 at 11:15, Thomas Huth <thuth@redhat.com> wrote:
+>
+> On 15/07/2019 11.55, Philippe Mathieu-Daud=C3=A9 wrote:
+> > If a controller device provides a PCI bus, we can plug any PCI
+> > daughter card on it.
+> >
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> > ---
 
-No, please don't change this. This was done on purpose, since almost all
-PCI_DEVICES do not work on s390x (so s390x does *not* imply PCI_DEVICES).
+> > diff --git a/hw/pci/Kconfig b/hw/pci/Kconfig
+> > index 77f8b005ff..0f7267db35 100644
+> > --- a/hw/pci/Kconfig
+> > +++ b/hw/pci/Kconfig
+> > @@ -1,5 +1,6 @@
+> >  config PCI
+> >      bool
+> > +    imply PCI_DEVICES
+>
+> No, please don't change this. This was done on purpose, since almost all
+> PCI_DEVICES do not work on s390x (so s390x does *not* imply PCI_DEVICES).
 
- Thomas
+But that means that every board that provides PCI has to have an
+"imply PCI_DEVICES" line, which is pretty clunky just to work
+around an s390x limitation.
+
+Is there some way in the Kconfig syntax for s390x to say
+"no PCI_DEVICES" so we can have the corner-case be handled
+by the s390x Kconfig in one place rather than in 20 places
+affecting everywhere except s390x?
+
+thanks
+-- PMM

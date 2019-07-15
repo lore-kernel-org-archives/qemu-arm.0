@@ -1,34 +1,34 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4294292wrv;
-        Mon, 15 Jul 2019 08:22:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw6rvZEZthIm7YgA3MaBkNTpbjTocM8GDjL2/OuY3zlODxxnkox3drXC29FMCw4sQIJnyED
-X-Received: by 2002:ac8:2bf1:: with SMTP id n46mr18153722qtn.372.1563204178572;
-        Mon, 15 Jul 2019 08:22:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563204178; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4294515wrv;
+        Mon, 15 Jul 2019 08:23:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxHbeHfCjOeIqDCSGoPUkMspepUFcApPYM1UnDOgEG5YO0X/uZafu96BVDD/Ujx2yuvbs1m
+X-Received: by 2002:a37:9185:: with SMTP id t127mr17339180qkd.482.1563204188894;
+        Mon, 15 Jul 2019 08:23:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563204188; cv=none;
         d=google.com; s=arc-20160816;
-        b=ReVtmP7PQ1Dla5EBpmRZzP+rk4D62N7dnGNqJf6Wt61JekyVJE97MqbU3pbkn625Fb
-         uAmUuRyJZx+2pLbfd1VgLyr6sCKzRPHs09QllADM/YFLW+B6nIMmoO17RxQqfBKvZsv2
-         WiIuoaWxGx1mm+cHrb7SXaS2lVF6Ormyo5K1WABRk1EG/HKbfYnoN9ghbV7jLf2Tz6Qq
-         FHg156MPNbEF9PNZ9fgWgJODT6OlB+0DY7ifiYW4juCqq2tWVRr8zgdPYZ1lFApT2F71
-         3wOoZZWFp3e4H7n+Uelo+PCzsB7hGp2ZSBMuieaFw7CtM+FwJ68oteJAjhprD5PSY2Uh
-         cr1g==
+        b=x9eA2llff2oqFuSnM+u+HN5Hn+ndFow9imJrq9GBHEUbDPTKmCngAjwLDTPx7ELGTD
+         mP0IVBiE5xrHQOrbwl5QAqUjcvOH4yTsRkddN+6RORLXEFZKMbh1gDWelXoumzWWPIDu
+         T2s4V5AOtOAUOYp3RoL2CEkAlIjD6YGSjVxsuLCtIT0ONFh8EDb2tVdQMgnmuI8KNGDm
+         vFZ6v1rcqiYfgUf4No5946I/JqhaBr34sdihQN8waBhXZIUUARH13dVchIN4DAm47N0R
+         ts+nUrv+7xu/nX0cmU0XhaBynQl6Vg3DO9A8BaUXpFrx79ky27WccE3d5f0ghrU5IgWw
+         J8xA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=dCXo/N/emWiO0yHtU3ugCXdk21AwD8P6xDS71/yqCXo=;
-        b=gcXqiVVG3UUUacluXxWFACfq5al4WE2Z6PVRlJzT3lh6y3Ry+4Fv2tE8wGzO2KnRhb
-         4cU9xMogjVA1CPDpUq5esZmSHCuSwYeKThT0/axHt9RqJSq12sAf8XkDNliuigP7kdOt
-         FbQr38P8cVP2chXDq5pqUhW0dbOkREoiu2BVe6LQTDYc13KTtDw0D4FJXsSvU1b4wKNd
-         H4e7hYvyOn8wSHbXtJkToYCrR8awZ/pTDeChD+YykGJOuqwGCM8A6ueMOCRyjfsExizy
-         1v7msN+1EWOKRjBsK1w3LfrbuTSwZk+Op9OoGuqQ5n55QO/c+Lq8UArif5qKaC5/XdoV
-         FX5w==
+        bh=qbGqI0EQJ3rZ5AkVdDFgKEzUWNNrqXgFF7qItjOx5r0=;
+        b=miArAiJpnS74SzeFqKWLPg/7oBv5AXSVBhrNKJWPKFSl0tY42XHmANpG9P6e3KwLAg
+         JGi3cmhc2BMP4QqQkPKy6eL7OTuNAv3uG5yltShYKD95SGGORImfRRDDzXEsD1f8jygG
+         14gQiikWmO77IM7gGDTD3tkJEYzNUyMqRVDKIu7HJrmo3pA0PK/aGe0q7dOUZ8LSys3r
+         GjZAp9Pq+/QEclibsrmieNSqf1DVPuV4GuMJQuPJj8cbkF5BLOqai1pyVdpNDHCJAjOQ
+         uqo0ricKKvlelwrdBg7hTLAmZUefX+hnw1CtdqnOAbD0yUjy1U5iANK2k3U6uRgQsQFd
+         a/aA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id m10si7211626qte.157.2019.07.15.08.22.58
+        by mx.google.com with ESMTPS id l7si10174584qkg.304.2019.07.15.08.23.08
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 15 Jul 2019 08:22:58 -0700 (PDT)
+        Mon, 15 Jul 2019 08:23:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
@@ -36,11 +36,11 @@ Authentication-Results: mx.google.com;
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A075481F31;
-	Mon, 15 Jul 2019 15:22:57 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id F1910307D851;
+	Mon, 15 Jul 2019 15:23:07 +0000 (UTC)
 Received: from x1w.redhat.com (unknown [10.40.205.87])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id B8BC3608CD;
-	Mon, 15 Jul 2019 15:22:50 +0000 (UTC)
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 53539608E4;
+	Mon, 15 Jul 2019 15:22:58 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>,
@@ -55,38 +55,95 @@ Cc: Laurent Vivier <laurent@vivier.eu>,
 	Thomas Huth <thuth@redhat.com>,
 	Aurelien Jarno <aurelien@aurel32.net>,
 	Aleksandar Rikalo <arikalo@wavecomp.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [RFC PATCH-for-4.1? v2 3/5] hw/semihosting: Allow this feature to be disabled
-Date: Mon, 15 Jul 2019 17:22:23 +0200
-Message-Id: <20190715152225.26135-4-philmd@redhat.com>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Miroslav Rezanina <mrezanin@redhat.com>
+Subject: [RFC PATCH-for-4.1? v2 4/5] target/arm: Add stubs to build with CONFIG_SEMIHOSTING disabled
+Date: Mon, 15 Jul 2019 17:22:24 +0200
+Message-Id: <20190715152225.26135-5-philmd@redhat.com>
 In-Reply-To: <20190715152225.26135-1-philmd@redhat.com>
 References: <20190715152225.26135-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.25]); Mon, 15 Jul 2019 15:22:57 +0000 (UTC)
-X-TUID: 458ODinKe8qm
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.48]); Mon, 15 Jul 2019 15:23:08 +0000 (UTC)
+X-TUID: Bfh77ni5rFMJ
 
-So far only the ARM/MIPS/LM32 provide the semihosting feature.
+If a distribution wants to build QEMU without semihosting support,
+it currently gets this build failure:
 
-Do not enable it by default, and let the few targets requiring
-it to manually select it (Actually only ARM/MIPS).
+  $ ./configure --target-list=aarch64-softmmu --without-default-devices
+  $ sed -i s/CONFIG_SEMIHOSTING=y/CONFIG_SEMIHOSTING=n/ default-configs/arm-softmmu.mak
+  $ make subdir-aarch64-softmmu
+  [...]
+    LINK    aarch64-softmmu/qemu-system-aarch64
+  /usr/bin/ld: target/arm/arm-semi.o: in function `do_arm_semihosting':
+  ./target/arm/arm-semi.c:321: undefined reference to `qemu_semihosting_console_out'
+  /usr/bin/ld: ./target/arm/arm-semi.c:318: undefined reference to `qemu_semihosting_console_out'
+  collect2: error: ld returned 1 exit status
+  make[1]: *** [Makefile:204: qemu-system-aarch64] Error 1
+  make: *** [Makefile:472: subdir-aarch64-softmmu] Error 2
 
+Fix it by providing a stub when semihosting is disabled.
+
+Reported-by: Miroslav Rezanina <mrezanin@redhat.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/semihosting/Kconfig | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ default-configs/arm-softmmu.mak |  2 +-
+ target/arm/Makefile.objs        |  3 ++-
+ target/arm/arm-semi-stubs.c     | 21 +++++++++++++++++++++
+ 3 files changed, 24 insertions(+), 2 deletions(-)
+ create mode 100644 target/arm/arm-semi-stubs.c
 
-diff --git a/hw/semihosting/Kconfig b/hw/semihosting/Kconfig
-index efe0a30734..61edb4ada8 100644
---- a/hw/semihosting/Kconfig
-+++ b/hw/semihosting/Kconfig
-@@ -1,3 +1,4 @@
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index ad2debf543..bf34bcb137 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -1,6 +1,6 @@
+ # Default configuration for arm-softmmu
  
- config SEMIHOSTING
--       bool
-+    bool
-+    default n
+-# CONFIG_SEMIHOSTING is always required on this architecture
++# CONFIG_SEMIHOSTING is not required on KVM only builds
+ CONFIG_SEMIHOSTING=y
+ 
+ # TODO: ARM_V7M is currently always required - make this more flexible!
+diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+index 5cafc1eb6c..4afaf82bbe 100644
+--- a/target/arm/Makefile.objs
++++ b/target/arm/Makefile.objs
+@@ -1,4 +1,5 @@
+-obj-$(CONFIG_TCG) += arm-semi.o
++obj-$(CONFIG_SEMIHOSTING) += arm-semi.o
++obj-$(call lnot,$(CONFIG_SEMIHOSTING)) += arm-semi-stubs.o
+ obj-y += helper.o vfp_helper.o
+ obj-y += cpu.o gdbstub.o
+ obj-$(TARGET_AARCH64) += cpu64.o gdbstub64.o
+diff --git a/target/arm/arm-semi-stubs.c b/target/arm/arm-semi-stubs.c
+new file mode 100644
+index 0000000000..a91ecbd9d5
+--- /dev/null
++++ b/target/arm/arm-semi-stubs.c
+@@ -0,0 +1,21 @@
++/*
++ *  Arm "Angel" semihosting stubs
++ *
++ * Copyright (c) 2019 Red Hat, Inc.
++ *
++ * Author:
++ *   Philippe Mathieu-Daudé <philmd@redhat.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or later.
++ * See the COPYING file in the top-level directory.
++ */
++
++#include "qemu/osdep.h"
++#include "cpu.h"
++
++target_ulong do_arm_semihosting(CPUARMState *env)
++{
++    g_assert_not_reached();
++}
 -- 
 2.20.1

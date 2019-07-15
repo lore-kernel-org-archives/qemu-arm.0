@@ -1,157 +1,137 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4249404wrv;
-        Mon, 15 Jul 2019 07:44:54 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwJUGi0rt2Ln0m5q4rWggbF49MkxmH1qA/ViORch2p2A5KFMoK+z9RsjaBriS0wv7m60xWi
-X-Received: by 2002:a05:6214:13a1:: with SMTP id h1mr18367929qvz.190.1563201894595;
-        Mon, 15 Jul 2019 07:44:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563201894; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4293843wrv;
+        Mon, 15 Jul 2019 08:22:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxu7OCXWManIASdLrXYRDSyIKvA7kVkkFpE39n0V+TZLiSxBrWcsAuKvHUK4/kWypidNVkg
+X-Received: by 2002:a37:490d:: with SMTP id w13mr16131416qka.179.1563204155656;
+        Mon, 15 Jul 2019 08:22:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563204155; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z5WUMLKVtSbB5ijLluEkV/TgPCRixf2MkKnh075jtqc1AopmYnITo1fL3pCGZ+EBtE
-         t4OK5UNPUYznzLRB8CEzvY4mqkTqnBeZa6h8Blfqf5y7V4j0sYvAHdnzg4KZPDsvtMHh
-         51+nmBFGd/bOWHq8rp3YQXm4FvKs/vfIhUtRn8NgKHKSwY3exotUMBlU98CdxQ4AVYNs
-         yggPdbIytWfKw8tGg/U1AahTr1htfZPjA3hdeO+ibXYi/diIqkBnkMJOZA1Lh2+TTxKO
-         MRs2Wp1c3otEmnsS7GJTC76Xa9t/uDIhXzigN/fa0l/By6MzugKI56PC8jc9eqoY0uC2
-         2EEw==
+        b=VU4mrqDcN2/ERxDefsr6C2xwwDWz2SwHla8Ark14z/zd8k5otWdgAEErpDPTqtxl3y
+         uVarOzjntBg8stdjxMw686pPvnelr3v6o+nG1DIaG6JETo6AQpEYjC9DXD833+R7ZDAd
+         Gz+hz9Op/ahCRAxq72EQwfmncoOfcrFFAAwMNIsWfTXT8dDSpB2miTLf7ma4wZmj5wBf
+         wAVWpnNRe8ks/+ekZlXFRx92gBJ5rvJrQKRISqRC30NwJ3Mx3dxRE5buE4neHWW027w/
+         s/g9LRhONY2oZ9RW+dL4v3APCd6Nvxfp2z8/r6B+B4Cd/WT9ChOMrd1o3PgiuKm/5Tb4
+         0Brw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:to:from:date;
-        bh=1p+pvuVFCSQQUhGiy7E+dAHcEVgv3vCj3oTZVAWdsCw=;
-        b=q7aT689A7bTI2yI7mMSNjosjpW5gLDXihSNIoWY4W59YMwFBGF5cfbA210yvQDpO0f
-         zo10d1memKrDrXxXmNgHP6BBWfw3vd1NGh1KRRjJDE3mF90bjt8M9CG5hbds3C+FxT4f
-         aqsBHWXfrXnjmxib/IzZaMQ6ipmLdrlC5dpodBJC/KNQ9P7HbjpqJ6iDthjYoDE9vbzA
-         LKapNpijkAXgZAQ0n/fLPUiNP/xCXtyCAUV17cDt/J5hoZ5OolV4pYDudvIz6xxXDXdA
-         Z6TYdzzjLHVt8wIGZKGPHwMogxw5xvCUi/wvArUyR27hbPcEftONVTs9avTDRbnchiNS
-         He9A==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=PjSHW3XbCWe5g3fgCaX/P2uu+QqvoNeQiZFWe71ICv0=;
+        b=GuvqAJgMz8sBCv1tN5El4rPpj9LqfO1mOhJzchDYwY7BLjzo7sEXhTVFybDQS0diVR
+         KFgLqFujx6DsVxnZ2NkfKkFb8EpjUGupjBGTOLhMIZMeTXsg857Mo9+kmOUTgUFFVDwj
+         h+tYELKREYEx9mp1Wc9iYvoD5seVgrjusGxuv2TQ+o+Pt4bHd/HgSUa8ASxOUWfF4VLQ
+         s7xRK/V6kFHEEE4AOe1Xfo/G+IPM7asZ8t/2mrtAd6Q9tyAJUHiOdupR7E/T2TWvUnhW
+         skYe8uPoyxLbdrNJfjyAkoDsyhZNismNAVUvc5x8apsjVnq7keReKGqWm5RbmoOqhx30
+         7HQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id 11si11904769qvf.199.2019.07.15.07.44.54;
-        Mon, 15 Jul 2019 07:44:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id y123si10229851qkd.205.2019.07.15.08.22.35
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 15 Jul 2019 08:22:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 1E2534A51F;
-	Mon, 15 Jul 2019 10:44:54 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.799
-X-Spam-Level: 
-X-Spam-Status: No, score=0.799 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699] autolearn=no
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id LdkALEpzyKUa; Mon, 15 Jul 2019 10:44:52 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id E5C9A4A389;
-	Mon, 15 Jul 2019 10:44:52 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id C0C2D4A389
- for <kvmarm@lists.cs.columbia.edu>; Mon, 15 Jul 2019 10:44:51 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id rLPceuZYBGk2 for <kvmarm@lists.cs.columbia.edu>;
- Mon, 15 Jul 2019 10:44:50 -0400 (EDT)
-Received: from foss.arm.com (foss.arm.com [217.140.110.172])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 401C74A319
- for <kvmarm@lists.cs.columbia.edu>; Mon, 15 Jul 2019 10:44:50 -0400 (EDT)
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 90D3C28;
- Mon, 15 Jul 2019 07:44:49 -0700 (PDT)
-Received: from lakrids.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
- [10.121.207.14])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 714D23F59C;
- Mon, 15 Jul 2019 07:44:48 -0700 (PDT)
-Date: Mon, 15 Jul 2019 15:44:46 +0100
-From: Mark Rutland <mark.rutland@arm.com>
-To: James Morse <james.morse@arm.com>
-Subject: Re: [RFC] Add virtual SDEI support in qemu
-Message-ID: <20190715144446.GK56232@lakrids.cambridge.arm.com>
-References: <1b0aa6b2-80b1-a72e-6849-7323c3b9c6bc@huawei.com>
- <20190715134059.GJ2790@e103592.cambridge.arm.com>
- <20190715134848.GI56232@lakrids.cambridge.arm.com>
- <4daefb19-6c15-f82c-31e9-1ae035d45bd5@arm.com>
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 96E9F308FE8D;
+	Mon, 15 Jul 2019 15:22:34 +0000 (UTC)
+Received: from x1w.redhat.com (unknown [10.40.205.87])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id CEA6A6085B;
+	Mon, 15 Jul 2019 15:22:28 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Aleksandar Markovic <amarkovic@wavecomp.com>,
+	James Hogan <jhogan@kernel.org>,
+	qemu-arm@nongnu.org,
+	James Hogan <james.hogan@mips.com>,
+	Riku Voipio <riku.voipio@iki.fi>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Thomas Huth <thuth@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Aleksandar Rikalo <arikalo@wavecomp.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [RFC PATCH-for-4.1? v2 0/5] semihosting: Build with CONFIG_SEMIHOSTING disabled
+Date: Mon, 15 Jul 2019 17:22:20 +0200
+Message-Id: <20190715152225.26135-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <4daefb19-6c15-f82c-31e9-1ae035d45bd5@arm.com>
-User-Agent: Mutt/1.11.1+11 (2f07cb52) (2018-12-01)
-Cc: Marc Zyngier <marc.zyngier@arm.com>, qemu-devel@nongnu.org,
- Dave Martin <Dave.Martin@arm.com>, qemu-arm@nongnu.org,
- Guoheyi <guoheyi@huawei.com>, kvmarm@lists.cs.columbia.edu,
- linux-arm-kernel@lists.infradead.org
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
-Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: pCen76nVMX2G
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.49]); Mon, 15 Jul 2019 15:22:34 +0000 (UTC)
+X-TUID: 3fTlFc4NfqGy
 
-On Mon, Jul 15, 2019 at 03:26:39PM +0100, James Morse wrote:
-> On 15/07/2019 14:48, Mark Rutland wrote:
-> > On Mon, Jul 15, 2019 at 02:41:00PM +0100, Dave Martin wrote:
-> >> One option (suggested to me by James Morse) would be to allow userspace
-> >> to disable in the in-kernel PSCI implementation and provide its own
-> >> PSCI to the guest via SMC -- in which case userspace that wants to
-> >> implement SDEI would have to implement PSCI as well.
-> > 
-> > I think this would be the best approach, since it puts userspace in
-> > charge of everything.
-> > 
-> > However, this interacts poorly with FW-based mitigations that we
-> > implement in hyp. I suspect we'd probably need a mechanism to delegate
-> > that responsibility back to the kernel, and figure out if that has any
-> > interaction with thigns that got punted to userspace...
-> 
-> This has come up before:
-> https://lore.kernel.org/r/59C139D0.3040507@arm.com
-> 
-> I agree Qemu should opt-in to this, it needs to be a feature that is enabled.
-> 
-> I had an early version of something like this for testing SDEI before
-> there was firmware available. The review feedback from Christoffer was
-> that it should include HVC and SMC, their immediates, and shouldn't be
-> tied to SMC-CC ranges.
-> 
-> I think this should be a catch-all as Heyi describes to deliver
-> 'unhandled SMC/HVC' to user-space as hypercall exits. We should
-> include the immediate in the struct.
-> 
-> We can allow Qemu to disable the in-kernel PSCI implementation, which
-> would let it be done in user-space via this catch-all mechanism. (PSCI
-> in user-space has come up on another thread recently). The in-kernel
-> PSCI needs to be default-on for backwards compatibility.
-> 
-> As Mark points out, the piece that's left is the 'arch workaround'
-> stuff. We always need to handle these in the kernel. I don't think
-> these should be routed-back, they should be un-obtainable by
-> user-space.
+Amusingly Miroslav and myself hit this issue at the same time.
 
-Sure; I meant that those should be handled in the kernel rather than
-going to host userspace and back.
+Note now that "config-devices.h" exists (commit 6c22ea9d83) I could use
+#include "config-devices.h" to implement Alex's suggestion to avoid a stub:
+https://lists.gnu.org/archive/html/qemu-devel/2019-06/msg03607.html
 
-I was suggesting was that userspace would opt into taking ownership of
-all HVC calls, then explicitly opt-in to the kernel handling specific
-(sets of) calls.
+Some know (arch-specific) limitations are:
 
-There are probably issues with that, but I suspect defining "all
-undandled calls" will be problematic otherwise.
+- MIPS ITU is accessed by coprocessor instr (ISA feature)
+- MIPS timer is accessed by coprocessor instr (ISA feature)
+- MIPS semihosting (ISA feature?)
+- ARM semihosting (ISA feature?)
+- ARMv7 NVIC (device)
 
-Thanks,
-Mark.
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+This series attempt to fix this the most trivial way, adding
+stubs for unreachable code.
+
+Since v1: https://lists.gnu.org/archive/html/qemu-devel/2019-05/msg07267.html
+- Always enable semihosting on linux-user
+
+$ git backport-diff -u v1
+Key:
+[----] : patches are identical
+[####] : number of functional differences between upstream/downstream patch
+[down] : patch is downstream-only (new)
+The flags [FC] indicate (F)unctional and (C)ontextual differences, respectively
+
+001/5:[down] 'target/arm: Always enable CONFIG_SEMIHOSTING'
+002/5:[down] 'target/mips: Always enable CONFIG_SEMIHOSTING'
+003/5:[down] 'hw/semihosting: Allow this feature to be disabled'
+004/5:[0004] [FC] 'target/arm: Add stubs to build with CONFIG_SEMIHOSTING disabled'
+005/5:[0005] [FC] 'target/mips: Add stubs to build with CONFIG_SEMIHOSTING disabled'
+
+Philippe Mathieu-Daudé (5):
+  target/arm: Always enable CONFIG_SEMIHOSTING
+  target/mips: Always enable CONFIG_SEMIHOSTING
+  hw/semihosting: Allow this feature to be disabled
+  target/arm: Add stubs to build with CONFIG_SEMIHOSTING disabled
+  target/mips: Add stubs to build with CONFIG_SEMIHOSTING disabled
+
+ default-configs/aarch64-linux-user-common.mak |  4 ++++
+ default-configs/aarch64-linux-user.mak        |  2 ++
+ default-configs/aarch64_be-linux-user.mak     |  2 ++
+ default-configs/arm-linux-user-common.mak     |  4 ++++
+ default-configs/arm-linux-user.mak            |  2 ++
+ default-configs/arm-softmmu.mak               |  4 +++-
+ default-configs/armeb-linux-user.mak          |  2 ++
+ default-configs/mips-linux-user-common.mak    |  4 ++++
+ default-configs/mips-linux-user.mak           |  2 ++
+ default-configs/mips-softmmu-common.mak       |  2 +-
+ default-configs/mips64-linux-user.mak         |  2 ++
+ default-configs/mips64el-linux-user.mak       |  2 ++
+ default-configs/mipsel-linux-user.mak         |  2 ++
+ default-configs/mipsn32-linux-user.mak        |  2 ++
+ default-configs/mipsn32el-linux-user.mak      |  2 ++
+ hw/semihosting/Kconfig                        |  3 ++-
+ target/arm/Makefile.objs                      |  3 ++-
+ target/arm/arm-semi-stubs.c                   | 21 ++++++++++++++++++
+ target/mips/Makefile.objs                     |  3 ++-
+ target/mips/mips-semi-stubs.c                 | 22 +++++++++++++++++++
+ 20 files changed, 85 insertions(+), 5 deletions(-)
+ create mode 100644 default-configs/aarch64-linux-user-common.mak
+ create mode 100644 default-configs/arm-linux-user-common.mak
+ create mode 100644 default-configs/mips-linux-user-common.mak
+ create mode 100644 target/arm/arm-semi-stubs.c
+ create mode 100644 target/mips/mips-semi-stubs.c
+
+-- 
+2.20.1

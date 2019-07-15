@@ -1,72 +1,73 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4006693wrv;
-        Mon, 15 Jul 2019 04:02:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz0rXWndEVuLmjI3WKbSRwoLgWMmvrt5fSstVMKDLs6EDOMCMuXGSld/09ZqAiaq6LJ9V//
-X-Received: by 2002:a17:906:45d7:: with SMTP id z23mr19780353ejq.54.1563188551352;
-        Mon, 15 Jul 2019 04:02:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563188551; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4008668wrv;
+        Mon, 15 Jul 2019 04:04:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyFBjiNMblZoBX5lpXiT3aqpW28CcYUUyqtRq/9bWOcPkdtTdRd7KGGxZrjJzFrpAiZ/Av1
+X-Received: by 2002:a17:906:25c5:: with SMTP id n5mr19434242ejb.195.1563188642937;
+        Mon, 15 Jul 2019 04:04:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563188642; cv=none;
         d=google.com; s=arc-20160816;
-        b=CqonniIkMaB/VY8qpj3mG1AlM0EZCdVTcPYk/Buaho6oPvX6oV5xFcL6Phiw8OHBz5
-         T/IOR8KiIvrZPigdqUuGeW5oV22HcyR+YGkNxrIzR8TXzedrg/ywcAY7QDKnpycpU4QS
-         HnoLqygjziITaGAHm9gb3XdCBMkrX1QbdO1C6F3NQqXsiWFacmlwzlNfeY+TYW35uDVj
-         nQavTqYyHQELcDZKkIwMveWhq77N/UYtXYNK6CBkVDcn4UwkScvhCLMBA6YZQXAiOp0h
-         3H49du/4c0BzOW/STItYa5ID186P8oSTz81we7o4jj+Bo2keop6+vuIzaI5XnjyLo0Um
-         riEw==
+        b=0lI2NZ42cvVUZgtYs2HFKPAaQKNFhjYRI3JOIkCkkiLyGXsDbULYxN0lhn9uOix3q5
+         Tws/8fA9LBoN+osAH5+Hi5WS88nA5StY8k+X9FcS9RiQr0RdUWgyg/XM/bOoeBiwxyRq
+         Rd4B5FgXzORukamC++GGJFYQWAKeyI31HPy9liB7tpsyerTACEn26kaL2EQ715Ym7ERi
+         3ojxd/UqItdO8TrPGUnGPz7KynB/fmQFCckwbgPPCzrwQ48GkSB5URIiobA3MRgc4sP9
+         C+mCSkjZ57kYXba7CQ6x9XV+nSQh3A4F5FFH0yBz+P9iU3lxPmuWeUWWnCdMTQwTVkP1
+         ahYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:organization:autocrypt:openpgp:from
          :references:to;
-        bh=8SWNndBdIzvLeJ1Slc6r+2RiyveW2HMbC3pmOlhvYb8=;
-        b=Aux0uZrD/pKRk2Az0Uymnaux5/esnppn8tddSbR5LcteOdYnhRbeBGsMXCXxlpA6hO
-         Bva1O2eYAvK51htgslPuqiGecDtdAvb7Odg50Aa1AT1C5W3e55EoiPuK9Eu4y76yDBXg
-         Jk5RXfLccNs5t0RtDG8YbkKPvPd7MjjYORa/uhEWOEdwu7qSkRlBZG/3Cr8QC7mkSxpo
-         cklXseAMm4WK8d/6bvJMvi91QqbXtOoxxslw3QALmJ4VGC2VJ93ri1Ku1BdYdZc8EaRC
-         OQMkFALKKWSLIlZjTV07oBw8HGBkLdNNwT/uIYyTbfg9VcsKCJxR2Nfd+IBirMZZK37p
-         v0KA==
+        bh=2H3u3VPpxHcnWuZxfe4yfLQQ/hPuaM5dgN/puyT7Dmk=;
+        b=bOHwTWTbUM542CktwtLss2eq9nzEqLMsNEUx5BvMcZ/rOvybByxYus3ZozGz9qI4CB
+         RaeioC2eP5+egh8bhBvu0TtCU/Ix/cL4eKzRLj4hcwcfJvEg1aFIO/sNumYnfoWQjVMh
+         +tX+MiqV+pnRB96E0CWt/DcBlPyIWgTaQ2tJnAV6V2+48SN93mKzR8zkAL1gceWCygi2
+         S3MBvnu576qNqEejg2xgwjYYQxQrWXwuhnRkX/0YaXGWtEMlxnidZB8dEo1V31lUTu1h
+         NbzNcsdHh7qjZRi1lNMWCVvwRHS9e/AxMY06CMcC9sddXcqF14imGjKdo743GxugYld5
+         c6kw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t22si8760468ejs.45.2019.07.15.04.02.31
+        by mx.google.com with ESMTPS id w9si10100859ejk.288.2019.07.15.04.04.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jul 2019 04:02:31 -0700 (PDT)
+        Mon, 15 Jul 2019 04:04:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37068 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37082 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hmykX-0002FH-Ft
-	for alex.bennee@linaro.org; Mon, 15 Jul 2019 07:02:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44310)
+	id 1hmym2-0003SP-10
+	for alex.bennee@linaro.org; Mon, 15 Jul 2019 07:04:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44743)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <thuth@redhat.com>) id 1hmykU-0002F9-C5
- for qemu-arm@nongnu.org; Mon, 15 Jul 2019 07:02:27 -0400
+ (envelope-from <thuth@redhat.com>) id 1hmyly-0003S4-Jg
+ for qemu-arm@nongnu.org; Mon, 15 Jul 2019 07:03:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1hmykT-00026Z-57
- for qemu-arm@nongnu.org; Mon, 15 Jul 2019 07:02:26 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49940)
+ (envelope-from <thuth@redhat.com>) id 1hmylx-000311-Gp
+ for qemu-arm@nongnu.org; Mon, 15 Jul 2019 07:03:58 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58848)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1hmykS-0001x9-Ph; Mon, 15 Jul 2019 07:02:24 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ id 1hmylx-00030n-8f; Mon, 15 Jul 2019 07:03:57 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 7C6ADC04FFF1;
- Mon, 15 Jul 2019 11:02:09 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 3D335368E6;
+ Mon, 15 Jul 2019 11:03:56 +0000 (UTC)
 Received: from thuth.remote.csb (reserved-198-198.str.redhat.com
  [10.33.198.198])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1626C5D9D6;
- Mon, 15 Jul 2019 11:01:55 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 898D95D772;
+ Mon, 15 Jul 2019 11:03:43 +0000 (UTC)
+To: BALATON Zoltan <balaton@eik.bme.hu>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 References: <20190715095545.28545-1-philmd@redhat.com>
  <20190715095545.28545-3-philmd@redhat.com>
+ <alpine.BSF.2.21.9999.1907151251210.6546@zero.eik.bme.hu>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -112,21 +113,21 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
  WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <abe7f883-b08b-ee4a-1831-f473c10838f8@redhat.com>
-Date: Mon, 15 Jul 2019 13:01:54 +0200
+Message-ID: <64dd9cd5-8599-b157-3ba2-0ec565cee709@redhat.com>
+Date: Mon, 15 Jul 2019 13:03:42 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.2
 MIME-Version: 1.0
-In-Reply-To: <20190715095545.28545-3-philmd@redhat.com>
+In-Reply-To: <alpine.BSF.2.21.9999.1907151251210.6546@zero.eik.bme.hu>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.31]); Mon, 15 Jul 2019 11:02:09 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.30]); Mon, 15 Jul 2019 11:03:56 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH-for-4.2 2/3] hw/usb/Kconfig: Add
+Subject: Re: [Qemu-arm] [Qemu-ppc] [PATCH-for-4.2 2/3] hw/usb/Kconfig: Add
  CONFIG_USB_EHCI_PCI
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -142,74 +143,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
  Eduardo Habkost <ehabkost@redhat.com>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-ppc@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Helge Deller <deller@gmx.de>, Palmer Dabbelt <palmer@sifive.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>, qemu-arm@nongnu.org,
- Alistair Francis <Alistair.Francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XJP9hPynW8Rm
+X-TUID: kiYIItPe7rPE
 
-On 15/07/2019 11.55, Philippe Mathieu-Daud=C3=A9 wrote:
-> The USB_EHCI entry currently include PCI code. Since the EHCI
-> implementation is already split in sysbus/PCI, add a new
-> USB_EHCI_PCI. There are no logical changes, but the Kconfig
-> dependencies tree is cleaner.
+On 15/07/2019 12.54, BALATON Zoltan wrote:
+> On Mon, 15 Jul 2019, Philippe Mathieu-Daud=C3=A9 wrote:
+>> The USB_EHCI entry currently include PCI code. Since the EHCI
+>> implementation is already split in sysbus/PCI, add a new
+>> USB_EHCI_PCI. There are no logical changes, but the Kconfig
+>> dependencies tree is cleaner.
+>>
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>> ---
+>> hw/usb/Kconfig=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 9 ++++++---
+>> hw/usb/Makefile.objs | 5 +++--
+>> 2 files changed, 9 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/hw/usb/Kconfig b/hw/usb/Kconfig
+>> index 564305e283..495c6f2d48 100644
+>> --- a/hw/usb/Kconfig
+>> +++ b/hw/usb/Kconfig
+>> @@ -19,13 +19,16 @@ config USB_OHCI_PCI
+>>
+>> config USB_EHCI
+>> =C2=A0=C2=A0=C2=A0 bool
+>> -=C2=A0=C2=A0=C2=A0 default y if PCI_DEVICES
+>> -=C2=A0=C2=A0=C2=A0 depends on PCI
+>> =C2=A0=C2=A0=C2=A0 select USB
+>>
+>> +config USB_EHCI_PCI
+>> +=C2=A0=C2=A0=C2=A0 bool
+>> +=C2=A0=C2=A0=C2=A0 default y if PCI_DEVICES
+>> +=C2=A0=C2=A0=C2=A0 select USB_EHCI
+>> +
+>> config USB_EHCI_SYSBUS
+>> =C2=A0=C2=A0=C2=A0 bool
+>> -=C2=A0=C2=A0=C2=A0 select USB
+>> +=C2=A0=C2=A0=C2=A0 select USB_EHCI
 >=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  hw/usb/Kconfig       | 9 ++++++---
->  hw/usb/Makefile.objs | 5 +++--
->  2 files changed, 9 insertions(+), 5 deletions(-)
->=20
-> diff --git a/hw/usb/Kconfig b/hw/usb/Kconfig
-> index 564305e283..495c6f2d48 100644
-> --- a/hw/usb/Kconfig
-> +++ b/hw/usb/Kconfig
-> @@ -19,13 +19,16 @@ config USB_OHCI_PCI
-> =20
->  config USB_EHCI
->      bool
-> -    default y if PCI_DEVICES
-> -    depends on PCI
->      select USB
-> =20
-> +config USB_EHCI_PCI
-> +    bool
-> +    default y if PCI_DEVICES
-> +    select USB_EHCI
-> +
->  config USB_EHCI_SYSBUS
->      bool
-> -    select USB
-> +    select USB_EHCI
-> =20
->  config USB_XHCI
->      bool
-> diff --git a/hw/usb/Makefile.objs b/hw/usb/Makefile.objs
-> index 81688f6e70..303ac084a0 100644
-> --- a/hw/usb/Makefile.objs
-> +++ b/hw/usb/Makefile.objs
-> @@ -6,8 +6,9 @@ common-obj-$(CONFIG_USB) +=3D desc.o desc-msos.o
->  common-obj-$(CONFIG_USB_UHCI) +=3D hcd-uhci.o
->  common-obj-$(CONFIG_USB_OHCI) +=3D hcd-ohci.o
->  common-obj-$(CONFIG_USB_OHCI_PCI) +=3D hcd-ohci-pci.o
-> -common-obj-$(CONFIG_USB_EHCI) +=3D hcd-ehci.o hcd-ehci-pci.o
-> -common-obj-$(CONFIG_USB_EHCI_SYSBUS) +=3D hcd-ehci.o hcd-ehci-sysbus.o
-> +common-obj-$(CONFIG_USB_EHCI) +=3D hcd-ehci.o
-> +common-obj-$(CONFIG_USB_EHCI_PCI) +=3D hcd-ehci-pci.o
-> +common-obj-$(CONFIG_USB_EHCI_SYSBUS) +=3D hcd-ehci-sysbus.o
->  common-obj-$(CONFIG_USB_XHCI) +=3D hcd-xhci.o
->  common-obj-$(CONFIG_USB_XHCI_NEC) +=3D hcd-xhci-nec.o
->  common-obj-$(CONFIG_USB_MUSB) +=3D hcd-musb.o
->=20
+> Isn't this making USB_EHCI effectively the same as USB so maybe you
+> don't need to keep that around any more. Can you just add select USB to
+> USB_EHCI_PCI and USB_EHCI_SYSBUS and delete USB_EHCI?
 
-Looks cleaner this way, indeed.
+If you want to compile without USB_EHCI_PCI and without USB_EHCI_SYSBUS,
+but with USB (e.g. due to XHCI), I think we should not include
+hcd-ehci.o file in the build. So I think it's fine that we have a
+separate config switch for this file.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+ Thomas

@@ -1,72 +1,71 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4139698wrv;
-        Mon, 15 Jul 2019 06:08:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxyq6+n55lDSxzrGe5NfLIq9Ffp2QVGVBDCtCqSS+J1UYR/eWT+YV0UaQihqGMoxVzlDUSV
-X-Received: by 2002:aa7:d4cf:: with SMTP id t15mr23196640edr.215.1563196138463;
-        Mon, 15 Jul 2019 06:08:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563196138; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4145018wrv;
+        Mon, 15 Jul 2019 06:13:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwcIAIZyk8TYCUeCN3c9Ud8q2dxf3JQ+zuxHM2KqAFybDV8tqLIh/huJ7Awl2CXNBpUH46V
+X-Received: by 2002:a50:972a:: with SMTP id c39mr23272078edb.46.1563196411872;
+        Mon, 15 Jul 2019 06:13:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563196411; cv=none;
         d=google.com; s=arc-20160816;
-        b=aXW5p7n69GpocRWIIL02St0eKYloBBEEqGooHkH56E4VNQvquh1oV4YnyenJOHX+KG
-         R5OSbh5rSC6lY822yVWWy9KDTNnQwe52WOWYFXzx02HhaaMoL/ZE4YKGm8imbL99wHnt
-         VE/s8JxHQBCGJdxfEY9OOnsC9sLXO+Ak1ReGe5J7DGvTJ9py1zHQjUjb4h2ATjaL0Jix
-         qW1BFbL335w/PzZIp3Yi2yRleLdDoLafG2XmhPw4koXbbRXjw5zUNNLkVqn1DuBAdoCG
-         LdeB30GSCniP2eenn9pNcwD8bZPxwXZ/PYpCqoc1hWH2xDv3o67DtqjlirfJ2T+44Mul
-         qDjQ==
+        b=aG85Yd4cRr0H2QY0wItxqMdDhwvS1PK/6VPUMNUaenHTgenEWeBUhNNHAUk9dCN9xA
+         FjOsM6qFpAjV+o+77WGH8ScmYXd8PE3wMXh2xtgfnmRQdBIQzmi7WAaox27h3qfLkRGC
+         FiDhMpv5SWcJxP6JAavt+Y1Yko/SQIH6DfaY1StQzrqd36hDWWCpjzgZRqGStZl9Ghta
+         k7fwkFmCORQzc09c03phOQqnR03BeqaVyEcrHodTvVolfkklQ52pXbpMzWv9q9jobRf4
+         W7VW86SIyzbwduQv939Zw+dFCxnkMQPAmaKxXqGuW+zfHqxwnCBzoX1Pu4yhAFJcoxrB
+         5vKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:organization:autocrypt:openpgp:from
          :references:to;
-        bh=ColTJuHsj/NindS4cUBN4M5ByWue+qwNRsM+NDGBLeY=;
-        b=os7P8RH04Au5E+gGWvscucUU3TKV5HEtL5BfaEcoaBEgwsHe5/TOA/eGUI+S5PxNj/
-         P7dghJCNjJVgpiT64/gJ1v+qGCQ7rceIYP8//RX0utOR190WrIPSzb2RgRDKHEOGmXBf
-         Cd2xib3EPQmhpq1alhWTlbogLJfRyWb6HRQ7Eo4QQ07VS/a3+4aWh5mXra1TEQEP3A7F
-         VWzs/JVKeAhzSMT6nSdHqh6wwMzl0RN+AqWJnziT4vGab6Uaqk5ztYhl4fi78CZDOH2h
-         nDM+IoWVotq5MTkJfIpOt7301rVLL/zP7GEQSw+mDenA3lRxrMWVVc0d1fJ6YHg/43jM
-         NQfQ==
+        bh=b3/zjvxyYdqSqNbjsxbTIyNpK+WibCa8Xi2KuccCIo8=;
+        b=RgCGrowSSwMPVwitH1gWg89PHTvGz5UaFjEcVYiYg7zhrc0/4qIB8oWxhOmvqLCZu3
+         SIamwNoF0JzqsIhFimF93x5fU/49teVx1KRcYPfm9lUJPXa1N82lU6r10DbQ9tSEreLP
+         AyqWezNEuy0hWywH2k2MPJ5PtZRIRzRW+fF28ZIk/1yrxwA3Flp9OApoSxiAyUTXUhJt
+         pTStMLNCRyeor1zUnHffRFYQf2QYpUkRmcqcq+lg7po+qxG67tt4nRBX46XSjZ/ev7yi
+         HagxOM8vY/qo2qP9wffjG53//H36SPW7PLWMMW4qW2MDJoySXGMZO+tfX/rPMK06Z9Of
+         Uyiw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t4si7042587ejs.337.2019.07.15.06.08.58
+        by mx.google.com with ESMTPS id d35si10667702ede.271.2019.07.15.06.13.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jul 2019 06:08:58 -0700 (PDT)
+        Mon, 15 Jul 2019 06:13:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38402 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38440 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hn0iv-0005E7-Hg
-	for alex.bennee@linaro.org; Mon, 15 Jul 2019 09:08:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44800)
+	id 1hn0nK-0007kx-VT
+	for alex.bennee@linaro.org; Mon, 15 Jul 2019 09:13:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45737)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <thuth@redhat.com>) id 1hn0ir-0005DS-No
- for qemu-arm@nongnu.org; Mon, 15 Jul 2019 09:08:54 -0400
+ (envelope-from <thuth@redhat.com>) id 1hn0nH-0007km-KX
+ for qemu-arm@nongnu.org; Mon, 15 Jul 2019 09:13:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1hn0iq-0003fp-ON
- for qemu-arm@nongnu.org; Mon, 15 Jul 2019 09:08:53 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57762)
+ (envelope-from <thuth@redhat.com>) id 1hn0nG-00069x-O4
+ for qemu-arm@nongnu.org; Mon, 15 Jul 2019 09:13:27 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46956)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1hn0iq-0003fW-GR; Mon, 15 Jul 2019 09:08:52 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ id 1hn0nG-00069c-GQ; Mon, 15 Jul 2019 09:13:26 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 7CF4783F4C;
- Mon, 15 Jul 2019 13:08:51 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 9DE7C308FB93;
+ Mon, 15 Jul 2019 13:13:25 +0000 (UTC)
 Received: from thuth.remote.csb (reserved-198-198.str.redhat.com
  [10.33.198.198])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2EEDC5B684;
- Mon, 15 Jul 2019 13:08:44 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A256A60A9A;
+ Mon, 15 Jul 2019 13:13:19 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 References: <20190712133928.21394-1-philmd@redhat.com>
- <20190712133928.21394-8-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; keydata=
@@ -112,21 +111,21 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
  WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
 Organization: Red Hat
-Message-ID: <fba3d5fc-4a5d-d967-5bb3-075159b93a0d@redhat.com>
-Date: Mon, 15 Jul 2019 15:08:43 +0200
+Message-ID: <421f2fb2-6e8d-7579-029a-e8de726c6a5e@redhat.com>
+Date: Mon, 15 Jul 2019 15:13:18 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.2
 MIME-Version: 1.0
-In-Reply-To: <20190712133928.21394-8-philmd@redhat.com>
+In-Reply-To: <20190712133928.21394-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.27]); Mon, 15 Jul 2019 13:08:51 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.43]); Mon, 15 Jul 2019 13:13:25 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH-for-4.1? 7/7] hw/bt: Allow building with
+Subject: Re: [Qemu-arm] [PATCH-for-4.1? 0/7] vl: Allow building with
  CONFIG_BLUETOOTH disabled
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -144,68 +143,14 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q5iZ/f6kVGde
+X-TUID: zCwMOtYsmrqx
 
 On 12/07/2019 15.39, Philippe Mathieu-Daud=C3=A9 wrote:
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  Makefile.objs       |  3 ++-
->  bt-stubs.c          | 18 ++++++++++++++++++
->  hw/bt/Makefile.objs |  4 ++--
->  3 files changed, 22 insertions(+), 3 deletions(-)
->  create mode 100644 bt-stubs.c
->=20
-> diff --git a/Makefile.objs b/Makefile.objs
-> index c2845a0efc..98269e393a 100644
-> --- a/Makefile.objs
-> +++ b/Makefile.objs
-> @@ -65,8 +65,9 @@ common-obj-y +=3D replay/
-> =20
->  common-obj-y +=3D ui/
->  common-obj-m +=3D ui/
-> -common-obj-y +=3D bt-host.o bt-vhci.o bt-opts.o
->  bt-host.o-cflags :=3D $(BLUEZ_CFLAGS)
-> +common-obj-$(CONFIG_BLUETOOTH) +=3D bt-host.o bt-vhci.o bt-opts.o
-> +common-obj-$(call lnot,$(CONFIG_BLUETOOTH)) +=3D bt-stubs.o
-> =20
->  common-obj-y +=3D dma-helpers.o
->  common-obj-y +=3D vl.o
-> diff --git a/bt-stubs.c b/bt-stubs.c
-> new file mode 100644
-> index 0000000000..d3f5158d3b
-> --- /dev/null
-> +++ b/bt-stubs.c
-> @@ -0,0 +1,18 @@
-> +/*
-> + * Bluetooth stubs.
-> + *
-> + * Copyright (c) 2019 Red Hat, Inc.
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/error-report.h"
-> +#include "sysemu/bt.h"
-> +
-> +int bt_parse(const char *opt)
-> +{
-> +    error_report("Bluetooth support is disabled");
-> +
-> +    return 1;
-> +}
-> diff --git a/hw/bt/Makefile.objs b/hw/bt/Makefile.objs
-> index 867a7d2e8a..46aec8e38e 100644
-> --- a/hw/bt/Makefile.objs
-> +++ b/hw/bt/Makefile.objs
-> @@ -1,3 +1,3 @@
-> -common-obj-y +=3D core.o l2cap.o sdp.o hci.o hid.o
-> -common-obj-y +=3D hci-csr.o
-> +common-obj-$(CONFIG_BLUETOOTH) +=3D core.o l2cap.o sdp.o hci.o hid.o
-> +common-obj-$(CONFIG_BLUETOOTH) +=3D hci-csr.o
+> A series of obvious patches to build without the deprecated
+> bluetooth devices. Still worth for 4.1 or too late?
+> It is clearly not a bugfix.
 
-... ok, so the BLUETOOTH switch gets used here. But I wonder whether we
-should have separate switches for the backends (i.e. the files here) and
-the guest devices (i.e. the ones in hw/bt/) ?
+I wonder whether this series is worth the effort right now, or whether
+we should simply nuke the bluetooth code after 4.1 has been released?
 
  Thomas

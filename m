@@ -1,263 +1,207 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4184387wrv;
-        Mon, 15 Jul 2019 06:50:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxWUtLC19QjFWCsFX1kIuYJqtXQRTav9RvkKEAYeqLTaEGfCjM+oHM4S/INKPIWg72RJWbg
-X-Received: by 2002:a17:906:a39a:: with SMTP id k26mr20412181ejz.82.1563198620792;
-        Mon, 15 Jul 2019 06:50:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563198620; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4228176wrv;
+        Mon, 15 Jul 2019 07:26:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz1nove4IoKqgMHvs9fcWSny1Jvjsfgwvld9ecuymRoWTPQqujJmXQE5eYvEmkqT5UE9Lve
+X-Received: by 2002:a05:620a:533:: with SMTP id h19mr16762634qkh.325.1563200810862;
+        Mon, 15 Jul 2019 07:26:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563200810; cv=none;
         d=google.com; s=arc-20160816;
-        b=VpLtZ5qxEuSPd+fm8dwC12Lb6jx00eM6G2RCMGqMzrsZCNkWh8LHF+QMWFxkv3d5UD
-         BT9ABKFcCFYswfRvq3m0VnDOTTtVbvf5+aLDzVfUMP6Xx6WiiwJQ3bFBgtMDvo97Mpj3
-         wWY5pf/6uScYSqCADZ3s9c/T9Y03Mjv9Bymdzf/oNECsCiRasQNbzpbzuT3rdVkOiRY6
-         hLnO7T8BDDOaENDD8N3f2ugaql5XvazdqsOjiw3lDsegXWgqjdbqxdwCBpqv95oOldU9
-         Drcv3FKO+XriDk864vUpKuu06c/7INOgc6ewpT6KHf8qR8NI5896UEbtCWcTuT9eOiWu
-         mnhQ==
+        b=rPKg2IDEuAUlb9KrGyB+2CZ5MkzzZO+URsaM4FySVy5xqZmz9ugUmV0cUyy0Ovovzr
+         oU+JmqpkN756J/SmutMiYM/+zH9mUBjkVDni4Pp3xqGHuS0Ck4HsI1c+Ur2luN4KMIv6
+         5L+513Pr/a9+lorh3ZXxBKexMw9WWpGRiUKq+F0I3Vy1ZMhm0TF1qfMRyff2gXUn7CCZ
+         ML87mELEHTZQVGhhnQTB+lh5SyyXJEIOZtPFR6FdKXfuZftcKc3+XygvpEEVVNwKIHH6
+         CwgH7atwOslNBoLWIWXJEnsx1mWdEziNWiVlpyDgTyLGttiNmopf6Ilp3xuq7HYtDB1s
+         K/ag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to;
-        bh=zdb2qgPzCOsE+MUmdliRFrJM06EhtZDY40qLwz8+VtA=;
-        b=YWKBH9SPaejJosT7KOwVTWYY0qy95QyFBuTrFBepJZ2k3ZDYBgRhVK2CAdpmX8K48x
-         3D5xpmsFA1zfplpwRDJPl/WTddiOXgyIr/V9t7QeY8+fUhnNwMgDWjY0Ug1C1sSVVY8K
-         rFuU47tIZ3pQ+zeEpMBmwF+dGaGgn/ULzsdR+TfcH/nimawJrJvAx3v8YU5204F8w8tI
-         1wr7I4nzampy03zJk7yp+NNPX4OZzE4wr5RRuT2ShlWu3kV55SvWgCEy57I2KKjozhs3
-         HK9DfVNW5WWyAgPm8Dl1GRBu7EIhJHys7YO6q25WvDobqNgPDCjv4aSkHfQvRMS6ff6G
-         2jrQ==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=9V3pAgATawMfl58XBKmH5bzssn8Vr1drJlw0IufXL2g=;
+        b=LiLBu4DvpV4bJLRhwQGtUkvCBLEnF0q1OTz1u7Gqi3h2ElLjcFyHBu8x01VjwO5QmQ
+         dF2ZKjmBd3H+wbrCmdkjsidTbvnrBdXaQnNG6ft+i+6DfPcZeZdTqLvQSl51AmQtoa/n
+         pUrfHhhZbm7LJzITqxrU5FzZSoqwjMrn88ColixvDY3fCFIMy7z4mrykWPU88QSZWIkw
+         DTx4m5kKiN+Em/VDzlw0Ny3ViPhHxE8lj8guw2Y7ew0UXPEukVP0KsUz5KkOyxfpKCP/
+         AKmgMDEXIUINjhd9IEMgbCPZAVOZDn2zMNtioMClvh40mxMgzXj+tKroeK79e0gUNtR4
+         6zEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a56si10539331edc.379.2019.07.15.06.50.20
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jul 2019 06:50:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id r21si11352773qte.212.2019.07.15.07.26.50;
+        Mon, 15 Jul 2019 07:26:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38872 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hn1Mx-00056q-Tc
-	for alex.bennee@linaro.org; Mon, 15 Jul 2019 09:50:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53521)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <thuth@redhat.com>) id 1hn1Mt-00056W-V9
- for qemu-arm@nongnu.org; Mon, 15 Jul 2019 09:50:17 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1hn1Ms-0002Na-O0
- for qemu-arm@nongnu.org; Mon, 15 Jul 2019 09:50:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39284)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1hn1Ms-0002N7-GK; Mon, 15 Jul 2019 09:50:14 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 369263082DDD;
- Mon, 15 Jul 2019 13:50:13 +0000 (UTC)
-Received: from thuth.remote.csb (reserved-198-198.str.redhat.com
- [10.33.198.198])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8DB645DAA4;
- Mon, 15 Jul 2019 13:49:55 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>
-References: <20190715095545.28545-1-philmd@redhat.com>
- <20190715095545.28545-2-philmd@redhat.com>
- <ca528cdc-6118-0b2f-c1b8-30b06875dde8@redhat.com>
- <CAFEAcA-wgTVfj0TUJ=piP0wEgLGiNpOYia5DK2GQAO4Q7gNaWg@mail.gmail.com>
- <6d69e8ad-d720-ce04-20f2-a03193903078@redhat.com>
- <20190715125653.6e65d575.cohuck@redhat.com>
- <c1c68faf-0424-6c7c-e39f-42159457c3ee@redhat.com>
- <20190715130955.4a117388.cohuck@redhat.com>
- <13fce62f-234c-1b13-595f-5910c066bc4f@redhat.com>
- <6c39a198-e951-c0bd-1ddc-5d227afe72ff@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-Organization: Red Hat
-Message-ID: <a7c01942-9d51-d46b-c6f2-e8a4630f59df@redhat.com>
-Date: Mon, 15 Jul 2019 15:49:54 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 5AF834A389;
+	Mon, 15 Jul 2019 10:26:50 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.799
+X-Spam-Level: 
+X-Spam-Status: No, score=0.799 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699] autolearn=no
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id DZDUpgCnhJsM; Mon, 15 Jul 2019 10:26:48 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id E50544A4C1;
+	Mon, 15 Jul 2019 10:26:48 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id CD16C4A418
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 15 Jul 2019 10:26:47 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id T-ZnFtSXTN8T for <kvmarm@lists.cs.columbia.edu>;
+ Mon, 15 Jul 2019 10:26:46 -0400 (EDT)
+Received: from foss.arm.com (foss.arm.com [217.140.110.172])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 266CF4A389
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 15 Jul 2019 10:26:46 -0400 (EDT)
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B204E28;
+ Mon, 15 Jul 2019 07:26:45 -0700 (PDT)
+Received: from [10.1.196.105] (eglon.cambridge.arm.com [10.1.196.105])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 4E10E3F59C;
+ Mon, 15 Jul 2019 07:26:44 -0700 (PDT)
+Subject: Re: [RFC] Add virtual SDEI support in qemu
+To: Guoheyi <guoheyi@huawei.com>
+References: <1b0aa6b2-80b1-a72e-6849-7323c3b9c6bc@huawei.com>
+ <20190715134059.GJ2790@e103592.cambridge.arm.com>
+ <20190715134848.GI56232@lakrids.cambridge.arm.com>
+From: James Morse <james.morse@arm.com>
+Message-ID: <4daefb19-6c15-f82c-31e9-1ae035d45bd5@arm.com>
+Date: Mon, 15 Jul 2019 15:26:39 +0100
+User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <6c39a198-e951-c0bd-1ddc-5d227afe72ff@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.46]); Mon, 15 Jul 2019 13:50:13 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [qemu-s390x] [RFC PATCH 1/3] hw/Kconfig: PCI bus
- implies PCI_DEVICES
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+In-Reply-To: <20190715134848.GI56232@lakrids.cambridge.arm.com>
+Content-Language: en-GB
+Cc: Marc Zyngier <marc.zyngier@arm.com>, qemu-devel@nongnu.org,
+ Dave Martin <Dave.Martin@arm.com>, qemu-arm@nongnu.org,
+ kvmarm@lists.cs.columbia.edu, linux-arm-kernel@lists.infradead.org
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Collin Walling <walling@linux.ibm.com>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Helge Deller <deller@gmx.de>,
- Palmer Dabbelt <palmer@sifive.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Aurelien Jarno <aurelien@aurel32.net>,
- "open list:S390" <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Alistair Francis <Alistair.Francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc <qemu-ppc@nongnu.org>,
- Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +3kIl22+Fzho
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: cE91sEA6cMJY
 
-On 15/07/2019 15.38, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 7/15/19 3:19 PM, Thomas Huth wrote:
->> On 15/07/2019 13.09, Cornelia Huck wrote:
->>> On Mon, 15 Jul 2019 13:04:28 +0200
->>> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+Hi guys,
+
+On 15/07/2019 14:48, Mark Rutland wrote:
+> On Mon, Jul 15, 2019 at 02:41:00PM +0100, Dave Martin wrote:
+>> On Sat, Jul 13, 2019 at 05:53:57PM +0800, Guoheyi wrote:
+>>> Do it make sense to implement virtual SDEI in qemu? So that we can have the
+>>> standard way for guest to handle NMI watchdog, RAS events and something else
+>>> which involves SDEI in a physical ARM64 machine.
+
+I think so!
+
+
+>>> My basic idea is like below:
 >>>
->>>> On 7/15/19 12:56 PM, Cornelia Huck wrote:
->>>>> On Mon, 15 Jul 2019 12:48:55 +0200
->>>>> Thomas Huth <thuth@redhat.com> wrote:
->>>>>  =20
->>>>>> On 15/07/2019 12.19, Peter Maydell wrote: =20
->>>>>>> On Mon, 15 Jul 2019 at 11:15, Thomas Huth <thuth@redhat.com> wrot=
-e:   =20
->>>>>>>>
->>>>>>>> On 15/07/2019 11.55, Philippe Mathieu-Daud=C3=A9 wrote:   =20
->>>>>>>>> If a controller device provides a PCI bus, we can plug any PCI
->>>>>>>>> daughter card on it.
->>>>>>>>>
->>>>>>>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->>>>>>>>> ---   =20
->>>>>>>    =20
->>>>>>>>> diff --git a/hw/pci/Kconfig b/hw/pci/Kconfig
->>>>>>>>> index 77f8b005ff..0f7267db35 100644
->>>>>>>>> --- a/hw/pci/Kconfig
->>>>>>>>> +++ b/hw/pci/Kconfig
->>>>>>>>> @@ -1,5 +1,6 @@
->>>>>>>>>  config PCI
->>>>>>>>>      bool
->>>>>>>>> +    imply PCI_DEVICES   =20
->>>>>>>>
->>>>>>>> No, please don't change this. This was done on purpose, since al=
-most all
->>>>>>>> PCI_DEVICES do not work on s390x (so s390x does *not* imply PCI_=
-DEVICES).   =20
->>>>>>>
->>>>>>> But that means that every board that provides PCI has to have an
->>>>>>> "imply PCI_DEVICES" line, which is pretty clunky just to work
->>>>>>> around an s390x limitation.
->>>>>>>
->>>>>>> Is there some way in the Kconfig syntax for s390x to say
->>>>>>> "no PCI_DEVICES" so we can have the corner-case be handled
->>>>>>> by the s390x Kconfig in one place rather than in 20 places
->>>>>>> affecting everywhere except s390x?   =20
->>>>>>
->>>>>> IIRC the problem on s390x are the legacy IRQs. s390x has only MSIs=
-. So I
->>>>>> guess the correct way to fix this would be to introduce some
->>>>>> PCI_LEGACY_IRQ switch and let all old devices that do not work wit=
-h MSI
->>>>>> depend on it. =20
->>>>>
->>>>> s/MSI/MSI-X/, IIRC. Not sure how far 'legacy' would stretch. =20
->>>>
->>>> Maybe we can have something like PCI_LEGACY_DEVICES and PCI_MSI_DEVI=
-CES?
->>>>
->>>> So if s390x only selects PCI_LEGACY (not PCI_MSI) bus, then it only =
-get
->>>> legacy devices?
->>>
->>> Wrong way around? We need MSI-X for s390x, not plain MSI or
->>> 'legacy' (whatever that is).
+>>> 1. Change a few lines of code in kvm to allow unhandled SMC invocations
+>>> (like SDEI) to be sent to qemu, with exit reason of KVM_EXIT_HYPERCALL, so
+>>> we don't need to add new API.
 >>
->> With "legacy" I meant the old level-triggered interrupts from the earl=
-y
->> PCI (non-express) days. Sorry for being imprecise here.
+>> So long as KVM_EXIT_HYPERCALL reports sufficient information so that
+>> userspace can identify the cause as an SMC and retrieve the SMC
+>> immediate field, this seems feasible.
 >>
->> So maybe we need two new switches, PCI_CLASSIC (or so) and PCI_MSIX, a=
-nd
->> then the PCI devices should be marked with "default y if PCI_CLASSIC" =
-if
->> they do not have MSIX support, and with "default y if PCI_MSIX" if the=
-y
->> have MSI-X support?
->=20
-> Something like that :)
->=20
-> Per Wikipedia:
->=20
->   Conventional PCI and PCI-X are sometimes called Parallel PCI
->   in order to distinguish them technologically from their more
->   recent successor PCI Express, which adopted a serial,
->   lane-based architecture.
->=20
->   The PCI-SIG introduced the serial PCI Express in c.=E2=80=892004. At
->   the same time, they renamed PCI as Conventional PCI.
->=20
->   PCI Express does not have physical interrupt lines at all.
->   It uses message-signaled interrupts exclusively.
->=20
-> What about PCI_CONVENTIONAL then?
+>> For its own SMCCC APIs, KVM exclusively uses HVC, so rerouting SMC to
+>> userspace shouldn't conflict.
+> 
+> Be _very_ careful here! In systems without EL3 (and without NV), SMC
+> UNDEFs rather than trapping to EL2. Given that, we shouldn't build a
+> hypervisor ABI that depends on SMC.
+> 
+> I am strongly of the opinion that (for !NV) we should always use HVC
+> here and have KVM appropriately forward calls to userspace, rather than
+> trying to use HVC/SMC to distinguish handled-by-kernel and
+> handled-by-userspace events.
+> 
+> For NV, the first guest hypervisor would use SMC to talk to KVM, all
+> else being the same.
+> 
+>> This bouncing of SMCs to userspace would need to be opt-in, otherwise
+>> old userspace would see exits that it doesn't know what to do with.
+>>
+>>> 2. qemu handles supported SDEI calls just as the spec says for what a
+>>> hypervisor should do for a guest OS.
 
-Sounds good to me.
+[pulled point 3 out to discuss separately]
 
- Thomas
+>> Something like that.
+>>
+>> Interactions between SDEI and PSCI would need some thought: for example,
+>> after PSCI_CPU_ON, the newly online cpu needs to have SDEs masked.
+>>
+>> One option (suggested to me by James Morse) would be to allow userspace
+>> to disable in the in-kernel PSCI implementation and provide its own
+>> PSCI to the guest via SMC -- in which case userspace that wants to
+>> implement SDEI would have to implement PSCI as well.
+> 
+> I think this would be the best approach, since it puts userspace in
+> charge of everything.
+> 
+> However, this interacts poorly with FW-based mitigations that we
+> implement in hyp. I suspect we'd probably need a mechanism to delegate
+> that responsibility back to the kernel, and figure out if that has any
+> interaction with thigns that got punted to userspace...
+
+This has come up before:
+https://lore.kernel.org/r/59C139D0.3040507@arm.com
+
+I agree Qemu should opt-in to this, it needs to be a feature that is enabled.
+
+I had an early version of something like this for testing SDEI before there was firmware
+available. The review feedback from Christoffer was that it should include HVC and SMC,
+their immediates, and shouldn't be tied to SMC-CC ranges.
+
+I think this should be a catch-all as Heyi describes to deliver 'unhandled SMC/HVC' to
+user-space as hypercall exits. We should include the immediate in the struct.
+
+We can allow Qemu to disable the in-kernel PSCI implementation, which would let it be done
+in user-space via this catch-all mechanism. (PSCI in user-space has come up on another
+thread recently). The in-kernel PSCI needs to be default-on for backwards compatibility.
+
+As Mark points out, the piece that's left is the 'arch workaround' stuff. We always need
+to handle these in the kernel. I don't think these should be routed-back, they should be
+un-obtainable by user-space.
+Ideally there would be a way for user-space to discover the immediate/x0 values that the
+kernel will not deliver via the catch-all. This could be done via some co-processor
+register... thing...
+
+
+
+>>> 3. For interrupts bound to hypervisor, qemu should stop injecting the IRQ to
+>>> guest through KVM, but jump to the registered event handler directly,
+>>> including context saving and restoring. Some interrupts like virtual timer
+>>> are handled by kvm directly, so we may refuse to bind such interrupts to
+>>> SDEI events.
+
+I don't think we'd ever need a physical interrupt to be delivered via Qemu as an SDEI event.
+The use-cases for this stuff mean it can be done 'higher-up'. For example, your timer is
+probably used as a watchdog. On a real system this may well be a device with an interrupt,
+but Qemu could happily emulate a watchdog using some other linux API. (e.g. SIGALRM).
+
+
+
+Thanks,
+
+James
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

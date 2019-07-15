@@ -1,101 +1,106 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3369665wrv;
-        Sun, 14 Jul 2019 15:08:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxud5CTKzMTISRhnqyeaw1lu0S6R1uYE6QTjH84VnMZzsnBTKQTH1+NlOqRQLkwIt1ezUhM
-X-Received: by 2002:a50:9167:: with SMTP id f36mr19982304eda.297.1563142137273;
-        Sun, 14 Jul 2019 15:08:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563142137; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3557837wrv;
+        Sun, 14 Jul 2019 19:36:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzOBzvGWbvxmuihLWyf/yNauPWyvejj7lAR8wJ9XUA2bF9CF0zdbfO+ACk1um8/CBxc+Eu2
+X-Received: by 2002:a17:906:1911:: with SMTP id a17mr18280859eje.290.1563158177272;
+        Sun, 14 Jul 2019 19:36:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563158177; cv=none;
         d=google.com; s=arc-20160816;
-        b=qujfQYd9KKoElaOHQIhJtLRzGgDfjmT0pXQtViFPGOpNkyVnFdnfpECJfjkPGxydN/
-         MtMGaw3y+hh416+JLvOJnzuoFK0aL29VHC8LJC4RyK/yC5eXdHa47ovwwXx2TReGn9nC
-         mq6zuznWh5Up199BOA7MwzPRjXE5ubxiezkWdl21kYZ+fjYFZfTZGIKcA2dNdNvydugP
-         6xOA11nWeT3dohXIce5shGld8EYZKPuYmISvw2wBTdGCx/Auiz7eyGpN0xmoSQMf46PV
-         N06BjQ+XK5Aq47WsqhLKg02NSuo/cIgn9fp7pAtxf3xF4zQCWzqSjub70bp6+gxzDZKU
-         d5fQ==
+        b=Tj7bIhQ6Y2VrxacJWVQ58o/AHttIpUS1F5xrV4I8foNSI8h5mJJenkX7/XChOd3d43
+         +mb6WiyjaCrg2XtUf+/Oa6owv3uWtTjg96YeAv+T1tzMvF6k5+bARoWnCHpZNnhf6bbe
+         IcfKECf9fc/Dff0j/OPOS55hJ3wW6wvJmIJwUzHyQFD3D931J5ya8nw00FCfdJt0c0Xw
+         1R+IQIj+PcwdmG3CZyy9wxxH0tKOKaFAIrFGc1SJEXR5DoXzKeHgUWz2t3X2bGQyvnO0
+         hr550/Jq2iCW8aCGjrGzI6yffMlb01ZbQkCJ8/PhtE3JXpF70fD0ZN3k7DcNgrndKPND
+         SvNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=v1vLA6NnRH2WUz9EzwXQmezKfms1ODS+chrkpicTKPI=;
-        b=ctwFfF1J8Z9svfrKROCLLEH2YtY8Uvq2PmDw74SDaTwPsTjQ7mKbTDCD24o9T331uf
-         F1KiJn+HWK+9pw2oiBNLddxfmhxBKC/H/5LL4sW8qcjfWslIWO7LCHYVwTjkmIFjGpvM
-         xOXY55PGRYR4tv4vNN3lk+tpfBlRvzbc62WtZHf2zlM4w/lKPl8DcWljRrVBtah3ELq/
-         SE2YewCAlffJP1hGMhjLRPl99V8bVSaf0WAWIXm2gNy4UbsATLHtX+ObL3mHE+vY5Njk
-         pOvmrQFwRaZTbsmFTr/zlx2/R1eHf363vsCaFnLoN3S7cI2fBQ/F8laxsyKBpZnYCTsX
-         m0kg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:user-agent:references
+         :in-reply-to:date:to:from:message-id:dkim-signature;
+        bh=YkKJL6KE7wRWUE2QVBwjSYI4/EogbW9lXJJC12v8RVk=;
+        b=TaipXjEEDLodNOK7K+K2BGDuGrTVLwPOSedC/5iRk1pBCrdh2Bf1Wt7rf/L0SIK1Kk
+         OIwXq4TN6cRXWN+nLMc1DjRv93Vqsl0UjXNYXHDkn96WwXxYnYFONPXm6ZXddewYdexc
+         Gugd570cPdqj9cM9KEjl8TP+J9UFYKcCMTZlxJzgdQdVYoPgd2MbFoQfBrxti9srbWVm
+         b7RFQ/zbs66xpdTnLGTEylSxl+1C3LSfhD7oeMK2qsPI1vScLif0YDa/NakPD+3TNZko
+         R0aI++vGMMa3AYHBqeo3kCRFrzJRj2IuQlu/f7NNnHt9v/OobZVg0+kLSa7mr5f7/85S
+         afMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=oYincNxf;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Apdr3z8A;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e2si7698145ejc.257.2019.07.14.15.08.56
+        by mx.google.com with ESMTPS id w17si8703600ejf.362.2019.07.14.19.36.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 14 Jul 2019 15:08:57 -0700 (PDT)
+        Sun, 14 Jul 2019 19:36:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=oYincNxf;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Apdr3z8A;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34388 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:34874 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hmmfw-0001W8-2h
-	for alex.bennee@linaro.org; Sun, 14 Jul 2019 18:08:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47101)
+	id 1hmqqe-000895-9Y
+	for alex.bennee@linaro.org; Sun, 14 Jul 2019 22:36:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60561)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <radoslaw.biernacki@linaro.org>) id 1hmmfs-0001VW-Aw
- for qemu-arm@nongnu.org; Sun, 14 Jul 2019 18:08:53 -0400
+ (envelope-from <rashmica.g@gmail.com>) id 1hmqqa-00088q-Ad
+ for qemu-arm@nongnu.org; Sun, 14 Jul 2019 22:36:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <radoslaw.biernacki@linaro.org>) id 1hmmfr-0001Gu-4A
- for qemu-arm@nongnu.org; Sun, 14 Jul 2019 18:08:52 -0400
-Received: from mail-yw1-xc42.google.com ([2607:f8b0:4864:20::c42]:32901)
+ (envelope-from <rashmica.g@gmail.com>) id 1hmqqY-0001z2-8r
+ for qemu-arm@nongnu.org; Sun, 14 Jul 2019 22:36:12 -0400
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:46489)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <radoslaw.biernacki@linaro.org>)
- id 1hmmfq-0001GC-Rt
- for qemu-arm@nongnu.org; Sun, 14 Jul 2019 18:08:51 -0400
-Received: by mail-yw1-xc42.google.com with SMTP id l124so6774701ywd.0
- for <qemu-arm@nongnu.org>; Sun, 14 Jul 2019 15:08:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=v1vLA6NnRH2WUz9EzwXQmezKfms1ODS+chrkpicTKPI=;
- b=oYincNxfLuJVVdvqFEIcU+/w1WUd2fhgnNCCs2e0ebj009s96LvUzFADxLcX6xI/HW
- LN4/gtLDyox5hxy+I+LSEG8NMNmvErkelP8rp8LcABCBR/DQ905BJ6B/+xCpW0FssiQm
- pVcD+g2IGM5dLOb+La5hw6CGR++hp0EA+XTy4mOZjOlHDalr8/qC/VU5mGP9zkc42mlX
- fBeR92qGLc364x6596kNWRcA6KY4TWEoOI4bWJeOjQ9rlbKeKuoaKKhAIFKLAyUd0v1L
- 9zJCLrgBMQ1Mq0Zr0x3RgJGJsTtgBkKCVHWnJwkkETTa1BmYRpX4Cm3hYeQtgSRT+PKx
- aeUw==
+ (Exim 4.71) (envelope-from <rashmica.g@gmail.com>)
+ id 1hmqqX-0001yH-TU; Sun, 14 Jul 2019 22:36:10 -0400
+Received: by mail-pf1-x444.google.com with SMTP id c73so6681133pfb.13;
+ Sun, 14 Jul 2019 19:36:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=message-id:subject:from:to:cc:date:in-reply-to:references
+ :user-agent:mime-version:content-transfer-encoding;
+ bh=YkKJL6KE7wRWUE2QVBwjSYI4/EogbW9lXJJC12v8RVk=;
+ b=Apdr3z8Avkdsrvsu/CwN/ZsupsmMmo2CoG2xkBo9AOyZuIUTbba6Nc7dtYrf811ED+
+ Eq0Sp+1uQHmraztFT8RfS9zZkVDscUGR2k38ChILgKBXBVKwy94zni1g2OjZC5adDF4y
+ i6zVE2ap2/KfhlF+EsWlvamfeEXTNMRs9w8HzhrI76VN+OJVvZAROWL5fe+V5MCaZ7HN
+ sNNm3t49Mo5zqrKouhWjMRWFmp+0NVST1ElQxh7WS1aXBFdYHpo01AN2PEV6l8ao8gre
+ kdejqg37bsn2jGpt8bJ0UZmrDKfmpL1ozK2RnCl4zttEcHuNBGlx7DYJk/1B/eALsGkX
+ H1VQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=v1vLA6NnRH2WUz9EzwXQmezKfms1ODS+chrkpicTKPI=;
- b=C4pma8ubEjNM+dZe4ItyVvNzHZvaIZwiM5oGKiP7Y8W6qCS/caRd6tWIMY6g0btnqx
- 56fOu6Bi5JLVgxS9DnhN9uaPLd6jNmWS9fL6zve/ZpqGm/pctvP9TlJr05HBmdLmmVzn
- XdG46iPdTa79cKpZbJIRNwRhnmaO8jJ3s4wN1N5Pv5M2hgNKD5d3gNlXbulx0mAcyykl
- wW+KUWhh/qBd+BaPyBnrRzXtvnpGNyQ2ZBxQqtuNcB0RXmqSkP6Mly+1FS7k8yq8J1EP
- rdquS+22J55gPYqoqV7mYX82ZMjVLLpp2XWFT5fmFfdN/s7ECOmzMzrYj23lmB/kUw5f
- aowg==
-X-Gm-Message-State: APjAAAWdpJ7Pt2K23EhewT8yyMfNA77mJH5cN+2GRz0lv+cJg0GcGPeb
- 87IW14M8F7EPYOW9riEE3UAIcYnhp85GkyPgzRK9Xg==
-X-Received: by 2002:a81:1f42:: with SMTP id f63mr12338043ywf.184.1563142129917; 
- Sun, 14 Jul 2019 15:08:49 -0700 (PDT)
+ h=x-gm-message-state:message-id:subject:from:to:cc:date:in-reply-to
+ :references:user-agent:mime-version:content-transfer-encoding;
+ bh=YkKJL6KE7wRWUE2QVBwjSYI4/EogbW9lXJJC12v8RVk=;
+ b=NePAEzUBw+wq8T/bqM7dBmNMDFjTy+oSijh19LOpo5Vs03+d1B3RPRzOfTN5QqDCES
+ cdv8hUsf2x2B0Ge1OBAqDmXgfG3kwbSeMJqfkrdCLSYHIT/XGNZmCUsCIZfabwLbP9uB
+ shusITrxn7UAAEaX8DviqKXeQD+8I5XqlFISAquHZRU3SB7WbyUvIsTG+RLtDknR0SOr
+ BgqHsTOtDizlJdf1VxpDmI2B8g06/XWICQTPPVcQBxM9zSNmKI8zcTNt17vUA4mlZYHS
+ yzULmm4cfUaAJhJ57dT1gWe2T3nB2l+e6ibMXWur3Il1bGaK5sEdqCUsdQx1b+5+Yk5v
+ HSWA==
+X-Gm-Message-State: APjAAAXEDCESnlixSLQJjr8fqF8YFuYXfdzOet17i3nRd4yur2ZZXXEo
+ QQh398kjok9fggV2lNOopQA=
+X-Received: by 2002:a63:1d0e:: with SMTP id d14mr24334512pgd.324.1563158167990; 
+ Sun, 14 Jul 2019 19:36:07 -0700 (PDT)
+Received: from rashmica.ozlabs.ibm.com ([122.99.82.10])
+ by smtp.googlemail.com with ESMTPSA id d8sm10987917pgh.45.2019.07.14.19.36.05
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Sun, 14 Jul 2019 19:36:07 -0700 (PDT)
+Message-ID: <587f2424881cbb5a5cc927d220f64375d6414cc0.camel@gmail.com>
+From: Rashmica Gupta <rashmica.g@gmail.com>
+To: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org
+Date: Mon, 15 Jul 2019 12:36:02 +1000
+In-Reply-To: <63f23f7c-a096-438d-9ad7-7e6ffae879c1@www.fastmail.com>
+References: <20190618085154.21498-1-rashmica.g@gmail.com>
+ <20190618085154.21498-2-rashmica.g@gmail.com>
+ <63f23f7c-a096-438d-9ad7-7e6ffae879c1@www.fastmail.com>
+Content-Type: text/plain; charset="UTF-8"
+User-Agent: Evolution 3.30.5 (3.30.5-1.fc29) 
 MIME-Version: 1.0
-References: <1561890034-15921-1-git-send-email-hongbo.zhang@linaro.org>
- <20190714152010.GA28247@roeck-us.net>
- <CAEK-wKk+1RQRmFOy8Rp+6fsOaZvzJvXSPNnyTKFY-7c-_VYSXw@mail.gmail.com>
- <bfc94fff-e84f-c07f-322d-d9430048512c@roeck-us.net>
-In-Reply-To: <bfc94fff-e84f-c07f-322d-d9430048512c@roeck-us.net>
-From: Radoslaw Biernacki <radoslaw.biernacki@linaro.org>
-Date: Mon, 15 Jul 2019 00:08:38 +0200
-Message-ID: <CAEK-wK=6hrj-OCFcn+uJpAuPM9chZL2w4tXGdu9=FENuXsA6Rw@mail.gmail.com>
-To: Guenter Roeck <linux@roeck-us.net>
-Content-Type: multipart/alternative; boundary="00000000000063365c058dab635a"
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::c42
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v9 0/2] Add Arm SBSA Reference
- Machine
+X-Received-From: 2607:f8b0:4864:20::444
+Subject: Re: [Qemu-arm] [PATCH 1/2] hw/gpio: Add basic Aspeed GPIO model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,134 +112,435 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Hongbo Zhang <hongbo.zhang@linaro.org>, ard.biesheuvel@linaro.org,
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- leif.lindholm@linaro.org, qemu-arm@nongnu.org
+Cc: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, qemu-devel@nongnu.org,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UUrzhUBMkX3l
+X-TUID: P3vXkhoQ8wt9
 
---00000000000063365c058dab635a
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Sorry for the late reply! I agree with most of your feedback and will
+send out
+a v2 shortly with those changes. I have a few replies below
 
-If running full machine stack is an option, than I think that you will be
-able to use SBSA machine in your tests once we have all the FW images
-ready. But unfortunately we are not there yet.
+[snip]
+
+> > +static const struct AspeedGPIO gpios[0x1f0] = {
+> > +    /* Set ABCD */
+> > +    [GPIO_ABCD_DATA_VALUE] = {0, read_data_value,
+> > _write_data_value},
+> 
+> Maybe there would be less tedium (and risk of minor bugs) here if we
+> add
+> a table for looking up the read/write callbacks from a type, and just
+> stash
+> the type in struct AspeedGPIO (or a pointer to the corresponding type
+> ops),
+> e.g:
+> 
+> enum gpio_property { gpio_direction = 0, gpio_int_enable, ... };
+> 
+> struct aspeed_gpio_reg_ops {
+>     int (*read)(...);
+>     int (*write)(...);
+> };
+> 
+> struct aspeed_gpio_reg_ops gpio_reg_ops[] = {
+>     [gpio_direction]  = { .read = read_direction, .write =
+> write_direction };
+>     ...
+> };
+> 
+> Then we have:
+> 
+> static const struct AspeedGPIO gpios[...] = {
+>      [GPIO_ABCD_DIRECTION] = { .set = 0, .type = gpio_direction },
+>      ...
+> };
+> 
+> Not wedded to the idea, just thinking out loud. What do you think?
+> 
+
+I'm not a huge fan of the extra indirection. It is less error prone but
+is this a place that is likely to be updated regularly?
 
 
-niedz., 14 lip 2019, 23:57 u=C5=BCytkownik Guenter Roeck <linux@roeck-us.ne=
-t>
-napisa=C5=82:
+> > +    [GPIO_ABCD_DIRECTION] = {0, read_direction, _write_direction},
+> > +    [GPIO_ABCD_INT_ENABLE] = {0, read_int_enable,
+> > _write_int_enable},
+> > +    [GPIO_ABCD_INT_SENS_0] = {0, read_int_sens_0,
+> > _write_int_sens_0},
+> > +    [GPIO_ABCD_INT_SENS_1] = {0, read_int_sens_1,
+> > _write_int_sens_1},
+> > +    [GPIO_ABCD_INT_SENS_2] = {0, read_int_sens_2,
+> > _write_int_sens_2},
+> > +    [GPIO_ABCD_INT_STATUS] = {0, read_int_status,
+> > _write_int_status},
+> > +    [GPIO_ABCD_RESET_TOLERANT] = {0, read_reset_tol,
+> > _write_reset_tol},
+> > +    [GPIO_ABCD_DEBOUNCE_1] = {0, read_debounce_1,
+> > _write_debounce_1},
+> > +    [GPIO_ABCD_DEBOUNCE_2] = {0, read_debounce_2,
+> > _write_debounce_2},
+> > +    [GPIO_ABCD_COMMAND_SRC_0] = {0, read_cmd_source_0, 
+> > _write_cmd_source_0},
+> > +    [GPIO_ABCD_COMMAND_SRC_1] = {0, read_cmd_source_1, 
+> > _write_cmd_source_1},
+> > +    [GPIO_ABCD_DATA_READ] = {0, read_data, NULL},
+> > +    [GPIO_ABCD_INPUT_MASK] = {0, read_input_mask,
+> > _write_input_mask},
+> > +    /* Set EFGH */
+> > +    [GPIO_EFGH_DATA_VALUE] = {1, read_data_value,
+> > _write_data_value},
+> > +    [GPIO_EFGH_DIRECTION] = {1, read_direction, _write_direction
+> > },
+> > +    [GPIO_EFGH_INT_ENABLE] = {1, read_int_enable,
+> > _write_int_enable},
+> > +    [GPIO_EFGH_INT_SENS_0] = {1, read_int_sens_0,
+> > _write_int_sens_0},
+> > +    [GPIO_EFGH_INT_SENS_1] = {1, read_int_sens_1,
+> > _write_int_sens_1},
+> > +    [GPIO_EFGH_INT_SENS_2] = {1, read_int_sens_2,
+> > _write_int_sens_2},
+> > +    [GPIO_EFGH_INT_STATUS] = {1, read_int_status,
+> > _write_int_status},
+> > +    [GPIO_EFGH_RESET_TOL] = {1,
+> > read_reset_tol,   _write_reset_tol},
+> > +    [GPIO_EFGH_DEBOUNCE_1] = {1,
+> > read_debounce_1,  _write_debounce_1},
+> > +    [GPIO_EFGH_DEBOUNCE_2] = {1,
+> > read_debounce_2,  _write_debounce_2},
+> > +    [GPIO_EFGH_COMMAND_SRC_0] = {1, read_cmd_source_0,  
+> > _write_cmd_source_0},
+> > +    [GPIO_EFGH_COMMAND_SRC_1] = {1, read_cmd_source_1,  
+> > _write_cmd_source_1},
+> > +    [GPIO_EFGH_DATA_READ] = {1, read_data, NULL},
+> > +    [GPIO_EFGH_INPUT_MASK] = {1,
+> > read_input_mask,  _write_input_mask},
+> > +    /* Set IJKL */
+> > +    [GPIO_IJKL_DATA_VALUE] = {2, read_data_value,
+> > _write_data_value},
+> > +    [GPIO_IJKL_DIRECTION] = {2, read_direction, _write_direction},
+> > +    [GPIO_IJKL_INT_ENABLE] = {2, read_int_enable,
+> > _write_int_enable},
+> > +    [GPIO_IJKL_INT_SENS_0] = {2, read_int_sens_0,
+> > _write_int_sens_0},
+> > +    [GPIO_IJKL_INT_SENS_1] = {2, read_int_sens_1,
+> > _write_int_sens_1},
+> > +    [GPIO_IJKL_INT_SENS_2] = {2, read_int_sens_2,
+> > _write_int_sens_2},
+> > +    [GPIO_IJKL_INT_STATUS] = {2, read_int_status,
+> > _write_int_status},
+> > +    [GPIO_IJKL_RESET_TOLERANT] = {2, read_reset_tol,
+> > _write_reset_tol},
+> > +    [GPIO_IJKL_DEBOUNCE_1] = {2, read_debounce_1,
+> > _write_debounce_1},
+> > +    [GPIO_IJKL_DEBOUNCE_2] = {2, read_debounce_2,
+> > _write_debounce_2},
+> > +    [GPIO_IJKL_COMMAND_SRC_0] = {2, read_cmd_source_0, 
+> > _write_cmd_source_0},
+> > +    [GPIO_IJKL_COMMAND_SRC_1] = {2, read_cmd_source_1, 
+> > _write_cmd_source_1},
+> > +    [GPIO_IJKL_DATA_READ] = {2, read_data, NULL},
+> > +    [GPIO_IJKL_INPUT_MASK] = {2, read_input_mask,
+> > _write_input_mask},
+> > +    /* Set MNOP */
+> > +    [GPIO_MNOP_DATA_VALUE] = {3, read_data_value,
+> > _write_data_value},
+> > +    [GPIO_MNOP_DIRECTION] = {3, read_direction, _write_direction},
+> > +    [GPIO_MNOP_INT_ENABLE] = {3, read_int_enable,
+> > _write_int_enable},
+> > +    [GPIO_MNOP_INT_SENS_0] = {3, read_int_sens_0,
+> > _write_int_sens_0},
+> > +    [GPIO_MNOP_INT_SENS_1] = {3, read_int_sens_1,
+> > _write_int_sens_1},
+> > +    [GPIO_MNOP_INT_SENS_2] = {3, read_int_sens_2,
+> > _write_int_sens_2},
+> > +    [GPIO_MNOP_INT_STATUS] = {3, read_int_status,
+> > _write_int_status},
+> > +    [GPIO_MNOP_RESET_TOLERANT] = {3, read_reset_tol,  
+> > _write_reset_tol},
+> > +    [GPIO_MNOP_DEBOUNCE_1] = {3, read_debounce_1,
+> > _write_debounce_1},
+> > +    [GPIO_MNOP_DEBOUNCE_2] = {3, read_debounce_2,
+> > _write_debounce_2},
+> > +    [GPIO_MNOP_COMMAND_SRC_0] = {3, read_cmd_source_0, 
+> > _write_cmd_source_0},
+> > +    [GPIO_MNOP_COMMAND_SRC_1] = {3, read_cmd_source_1, 
+> > _write_cmd_source_1},
+> > +    [GPIO_MNOP_DATA_READ] = {3, read_data, NULL},
+> > +    [GPIO_MNOP_INPUT_MASK] = {3, read_input_mask,
+> > _write_input_mask},
+> > +    /* Set QRST */
+> > +    [GPIO_QRST_DATA_VALUE] = {4, read_data_value,
+> > _write_data_value},
+> > +    [GPIO_QRST_DIRECTION] = {4, read_direction, _write_direction},
+> > +    [GPIO_QRST_INT_ENABLE] = {4, read_int_enable,
+> > _write_int_enable},
+> > +    [GPIO_QRST_INT_SENS_0] = {4, read_int_sens_0,
+> > _write_int_sens_0},
+> > +    [GPIO_QRST_INT_SENS_1] = {4, read_int_sens_1,
+> > _write_int_sens_1},
+> > +    [GPIO_QRST_INT_SENS_2] = {4, read_int_sens_2,
+> > _write_int_sens_2},
+> > +    [GPIO_QRST_INT_STATUS] = {4, read_int_status,
+> > _write_int_status},
+> > +    [GPIO_QRST_RESET_TOLERANT] = {4, read_reset_tol,
+> > _write_reset_tol},
+> > +    [GPIO_QRST_DEBOUNCE_1] = {4, read_debounce_1,
+> > _write_debounce_1},
+> > +    [GPIO_QRST_DEBOUNCE_2] = {4, read_debounce_2,
+> > _write_debounce_2},
+> > +    [GPIO_QRST_COMMAND_SRC_0] = {4, read_cmd_source_0, 
+> > _write_cmd_source_0},
+> > +    [GPIO_QRST_COMMAND_SRC_1] = {4, read_cmd_source_1, 
+> > _write_cmd_source_1},
+> > +    [GPIO_QRST_DATA_READ] = {4, read_data, NULL},
+> > +    [GPIO_QRST_INPUT_MASK] = {4,
+> > read_input_mask,  _write_input_mask},
+> > +    /* Set UVWX */
+> > +    [GPIO_UVWX_DATA_VALUE] = {5, read_data_value,
+> > _write_data_value},
+> > +    [GPIO_UWVX_DIRECTION] = {5, read_direction, _write_direction},
+> > +    [GPIO_UVWX_INT_ENABLE] = {5, read_int_enable,
+> > _write_int_enable},
+> > +    [GPIO_UVWX_INT_SENS_0] = {5, read_int_sens_0,
+> > _write_int_sens_0},
+> > +    [GPIO_UVWX_INT_SENS_1] = {5, read_int_sens_1,
+> > _write_int_sens_1},
+> > +    [GPIO_UVWX_INT_SENS_2] = {5, read_int_sens_2,
+> > _write_int_sens_2},
+> > +    [GPIO_UVWX_INT_STATUS] = {5, read_int_status,
+> > _write_int_status},
+> > +    [GPIO_UVWX_RESET_TOLERANT] = {5, read_reset_tol,
+> > _write_reset_tol},
+> > +    [GPIO_UVWX_DEBOUNCE_1] = {5, read_debounce_1,
+> > _write_debounce_1},
+> > +    [GPIO_UVWX_DEBOUNCE_2] = {5, read_debounce_2,
+> > _write_debounce_2},
+> > +    [GPIO_UVWX_COMMAND_SRC_0] = {5, read_cmd_source_0, 
+> > _write_cmd_source_0},
+> > +    [GPIO_UVWX_COMMAND_SRC_1] = {5, read_cmd_source_1, 
+> > _write_cmd_source_1},
+> > +    [GPIO_UVWX_DATA_READ] = {5, read_data, NULL},
+> > +    [GPIO_UVWX_INPUT_MASK] = {5, read_input_mask,
+> > _write_input_mask},
+> > +    /* Set YZAAAB */
+> > +    [GPIO_YZAAAB_DATA_VALUE] = {6, read_data_value,
+> > _write_data_value},
+> > +    [GPIO_YZAAAB_DIRECTION] = {6, read_direction,
+> > _write_direction},
+> > +    [GPIO_YZAAAB_INT_ENABLE] = {6, read_int_enable,
+> > _write_int_enable},
+> > +    [GPIO_YZAAAB_INT_SENS_0] = {6, read_int_sens_0,
+> > _write_int_sens_0},
+> > +    [GPIO_YZAAAB_INT_SENS_1] = {6, read_int_sens_1,
+> > _write_int_sens_1},
+> > +    [GPIO_YZAAAB_INT_SENS_2] = {6, read_int_sens_2,
+> > _write_int_sens_2},
+> > +    [GPIO_YZAAAB_INT_STATUS] = {6, read_int_status,
+> > _write_int_status},
+> > +    [GPIO_YZAAAB_RESET_TOLERANT] = {6, read_reset_tol, 
+> > _write_reset_tol},
+> > +    [GPIO_YZAAAB_DEBOUNCE_1] = {6, read_debounce_1,
+> > _write_debounce_1},
+> > +    [GPIO_YZAAAB_DEBOUNCE_2] = {6, read_debounce_2,
+> > _write_debounce_2},
+> > +    [GPIO_YZAAAB_COMMAND_SRC_0] = {6, read_cmd_source_0, 
+> > _write_cmd_source_0},
+> > +    [GPIO_YZAAAB_COMMAND_SRC_1] = {6, read_cmd_source_1, 
+> > _write_cmd_source_1},
+> > +    [GPIO_YZAAAB_DATA_READ] = {6, read_data, NULL},
+> > +    [GPIO_YZAAAB_INPUT_MASK] = {6, read_input_mask,
+> > _write_input_mask},
+> > +    /* Set AC */
+> > +    [GPIO_AC_DATA_VALUE] = {7, read_data_value,
+> > _write_data_value},
+> > +    [GPIO_AC_DIRECTION] = {7, read_direction, _write_direction},
+> > +    [GPIO_AC_INT_ENABLE] = {7, read_int_enable,
+> > _write_int_enable},
+> > +    [GPIO_AC_INT_SENS_0] = {7, read_int_sens_0,
+> > _write_int_sens_0},
+> > +    [GPIO_AC_INT_SENS_1] = {7, read_int_sens_1,
+> > _write_int_sens_1},
+> > +    [GPIO_AC_INT_SENS_2] = {7, read_int_sens_2,
+> > _write_int_sens_2},
+> > +    [GPIO_AC_INT_STATUS] = {7, read_int_status,
+> > _write_int_status},
+> > +    [GPIO_AC_RESET_TOLERANT] = {7, read_reset_tol,
+> > _write_reset_tol},
+> > +    [GPIO_AC_DEBOUNCE_1] = {7, read_debounce_1,
+> > _write_debounce_1},
+> > +    [GPIO_AC_DEBOUNCE_2] = {7, read_debounce_2,
+> > _write_debounce_2},
+> > +    [GPIO_AC_COMMAND_SRC_0] = {7, read_cmd_source_0, 
+> > _write_cmd_source_0},
+> > +    [GPIO_AC_COMMAND_SRC_1] = {7, read_cmd_source_1, 
+> > _write_cmd_source_1},
+> > +    [GPIO_AC_DATA_READ] = {7, read_data, NULL},
+> > +    [GPIO_AC_INPUT_MASK] = {7,
+> > read_input_mask,     _write_input_mask},
+> > +    /* Debounce registers */
+> > +    [GPIO_DEBOUNCE_TIME_1] = {-1, NULL, NULL},
+> > +};
+> > +
+> > +static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset,
+> > uint32_t 
+> > size)
+> > +{
+> > +    AspeedGPIOState *s = ASPEED_GPIO(opaque);
+> > +    uint32_t val = 0;
+> > +
+> > +    if (size != 4) {
+> > +        return 0;
+> > +    }
+> > +
+> > +    if (gpios[offset].get == NULL) {
+> 
+> With the AST2600 we might need to make gpios class-specific rather
+> than
+> a static global to the compilation unit (to deal with the 1.8V GPIO
+> registers
+> later in the address-space). Not sure though, haven't thought about
+> it for
+> more than this paragraph.
 
-> On 7/14/19 8:40 AM, Radoslaw Biernacki wrote:
-> > This machine is not ment for direct kernel boot. Is main purpose is
-> development of FW, kernel and other HW/SW parts for SBSA. We are currentl=
-y
-> working on UEFI and ATF for this machine.
-> >
-> > It might be somehow possible to run kernel with DT but we do not suppor=
-t
-> it at this moment. If all you want is to boot kernel directly, it is far
-> more convenient to use existing virt machine.
-> >
+
+Yup, I agree. Still trying to sort out a nice way to deal with the
+AST2600 differences so I figured I'd leave it like this for now? 
+
+> 
+> > +        qemu_log_mask(LOG_GUEST_ERROR, "no getter for offset
+> > %lx", 
+> > offset);
+> 
+> Really this is a model error. We should only encounter it if we
+> haven't
+> completely described the controller. So maybe it should be an assert
+> or some kind of non-guest warning?
 >
-> Too bad. As you may know, I am testing the Linux kernel by running it wit=
-h
-> as many qemu
-> machines as possible. I already run several boot tests with the 'virt'
-> machine, and
-> I was trying to extend test coverage with the sbsa machine.
->
-> Guenter
->
-> > niedz., 14 lip 2019, 17:20 u=C5=BCytkownik Guenter Roeck <linux@roeck-u=
-s.net
-> <mailto:linux@roeck-us.net>> napisa=C5=82:
-> >
-> >     Hi,
-> >
-> >     On Sun, Jun 30, 2019 at 06:20:32PM +0800, Hongbo Zhang wrote:
-> >      > For the Aarch64, there is one machine 'virt', it is primarily
-> meant to
-> >      > run on KVM and execute virtualization workloads, but we need an
-> >      > environment as faithful as possible to physical hardware,  to
-> support
-> >      > firmware and OS development for pysical Aarch64 machines.
-> >      >
-> >
-> >     I tried to boot linux on this machine with -kernel command line
-> argument,
-> >     but have not been successful. Can someone point me to a working
-> command
-> >     line, one that lets me load the kernel directly ?
-> >
-> >     Thanks,
-> >     Guenter
-> >
->
->
 
---00000000000063365c058dab635a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+I don't think this is quite true. There are values in the gpio memory
+space
+that do not have a register associated with them, ie registers with
+offsets 0x138 and 0x140 exist, but there is no 0x13c. So if the
+kernel tries to access this address, this isn't really a gpio model
+error? 
 
-<div dir=3D"auto"><div>If running full machine stack is an option, than I t=
-hink that you will be able to use SBSA machine in your tests once we have a=
-ll the FW images ready. But unfortunately we are not there yet.</div><div d=
-ir=3D"auto"><br><br><div class=3D"gmail_quote" dir=3D"auto"><div dir=3D"ltr=
-" class=3D"gmail_attr">niedz., 14 lip 2019, 23:57 u=C5=BCytkownik Guenter R=
-oeck &lt;<a href=3D"mailto:linux@roeck-us.net">linux@roeck-us.net</a>&gt; n=
-apisa=C5=82:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0=
- 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">On 7/14/19 8:40 AM, Ra=
-doslaw Biernacki wrote:<br>
-&gt; This machine is not ment for direct kernel boot. Is main purpose is de=
-velopment of FW, kernel and other HW/SW parts for SBSA. We are currently wo=
-rking on UEFI and ATF for this machine.<br>
-&gt; <br>
-&gt; It might be somehow possible to run kernel with DT but we do not suppo=
-rt it at this moment. If all you want is to boot kernel directly, it is far=
- more=C2=A0convenient to use existing virt machine.<br>
-&gt; <br>
-<br>
-Too bad. As you may know, I am testing the Linux kernel by running it with =
-as many qemu<br>
-machines as possible. I already run several boot tests with the &#39;virt&#=
-39; machine, and<br>
-I was trying to extend test coverage with the sbsa machine.<br>
-<br>
-Guenter<br>
-<br>
-&gt; niedz., 14 lip 2019, 17:20 u=C5=BCytkownik Guenter Roeck &lt;<a href=
-=3D"mailto:linux@roeck-us.net" target=3D"_blank" rel=3D"noreferrer">linux@r=
-oeck-us.net</a> &lt;mailto:<a href=3D"mailto:linux@roeck-us.net" target=3D"=
-_blank" rel=3D"noreferrer">linux@roeck-us.net</a>&gt;&gt; napisa=C5=82:<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Hi,<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0On Sun, Jun 30, 2019 at 06:20:32PM +0800, Hongbo Zh=
-ang wrote:<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; For the Aarch64, there is one machine &#39;vi=
-rt&#39;, it is primarily meant to<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; run on KVM and execute virtualization workloa=
-ds, but we need an<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; environment as faithful as possible to physic=
-al hardware,=C2=A0 to support<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt; firmware and OS development for pysical Aarch=
-64 machines.<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 &gt;<br>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0I tried to boot linux on this machine with -kernel =
-command line argument,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0but have not been successful. Can someone point me =
-to a working command<br>
-&gt;=C2=A0 =C2=A0 =C2=A0line, one that lets me load the kernel directly ?<b=
-r>
-&gt; <br>
-&gt;=C2=A0 =C2=A0 =C2=A0Thanks,<br>
-&gt;=C2=A0 =C2=A0 =C2=A0Guenter<br>
-&gt; <br>
-<br>
-</blockquote></div></div></div>
 
---00000000000063365c058dab635a--
+> > +        return 0;
+> > +    }
+> > +
+> > +    val = gpios[offset].get(&s->sets[gpios[offset].set_idx]);
+> 
+> The indexing here is starting to get a bit hard to follow. I think we
+> could
+> improve readability by introducing some locals, and rewriting in
+> terms
+> of those:
+> 
+> const struct AspeedGPIO *reg = &gpios[offset];
+> const struct GPIORegs *set = &s->sets[gpio.set_idx];
+> 
+> if (!reg.get) {
+>     ...
+> }
+> 
+> val = reg.get(set);
+> 
+> I think it makes the relationship of the structs a bit clearer too,
+> and I think
+> it also suggests we could improve the names:
+> 
+> s/struct AspeedGPIO/struct AspeedGPIOReg/
+> s/struct GPIORegs/struct GPIOProperties/
+> 
+
+I agree with the local variables, and renaming AspeedGPIO-
+>AspeedGPIOReg
+but I think GPIOSet makes more sense than GPIOProperties.
+
+
+
+> GPIOProperties clashes a bit with GPIOSetProperties though, so maybe
+> we
+> need to think of a better name for that too?
+> 
+> > +    return (uint64_t) val;
+> > +}
+> > +
+> > +static void aspeed_gpio_write(void *opaque, hwaddr offset,
+> > uint64_t 
+> > data,
+> > +static GPIOSetProperties ast2400_set_props[] = {
+	
+[snip]
+
+> > +    [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
+> > +    [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
+> > +    [2] = {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
+> > +    [3] = {0xffffffff,  0xffffffff,  {"M", "N", "O", "P"} },
+> > +    [4] = {0xffffffff,  0xffffffff,  {"Q", "R", "S", "T"} },
+> > +    [5] = {0xffffffff,  0x0000ffff,  {"U", "V", "W", "X"} },
+> > +    [6] = {0x0000000f,  0x0fffff0f,  {"Y", "Z", "AA", "AB"} },
+> > +};
+> > +
+> > +static GPIOSetProperties ast2500_set_props[] = {
+> > +    [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
+> > +    [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
+> > +    [2] = {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
+> > +    [3] = {0xffffffff,  0xffffffff,  {"M", "N", "O", "P"} },
+> > +    [4] = {0xffffffff,  0xffffffff,  {"Q", "R", "S", "T"} },
+> > +    [5] = {0xffffffff,  0x0000ffff,  {"U", "V", "W", "X"} },
+> > +    [6] = {0xffffff0f,  0x0fffff0f,  {"Y", "Z", "AA", "AB"} },
+> > +    [7] = {0x000000ff,  0x000000ff,  {"AC"} },
+> > +};
+> > +
+> > +static AspeedGPIOController controllers[] = {
+> > +    {
+> > +        .name           = TYPE_ASPEED_GPIO "-ast2500",
+> > +        .props          = ast2500_set_props,
+> > +        .nr_gpio_pins   = 228,
+> > +        .nr_gpio_sets   = 8,
+> > +        .gap            = 220,
+> > +    }, {
+> > +        .name           = TYPE_ASPEED_GPIO "-ast2400",
+> > +        .props          = ast2400_set_props,
+> > +        .nr_gpio_pins   = 216,
+> > +        .nr_gpio_sets   = 7,
+> > +        .gap            = 196,
+> > +    }
+> > +};
+> > +
+> > +static const TypeInfo aspeed_gpio_info = {
+> > +    .name = TYPE_ASPEED_GPIO,
+> > +    .parent = TYPE_SYS_BUS_DEVICE,
+> > +    .instance_size = sizeof(AspeedGPIOState),
+> > +    .class_size     = sizeof(AspeedGPIOClass),
+> > +    .instance_init = aspeed_gpio_init,
+> > +    .abstract       = true,
+> > +};
+> > +
+> > +static void aspeed_gpio_register_types(void)
+> > +{
+> > +    int i;
+> > +
+> > +    type_register_static(&aspeed_gpio_info);
+> > +    for (i = 0; i < ARRAY_SIZE(controllers); i++) {
+> > +        TypeInfo t = {
+> > +            .name = controllers[i].name,
+> > +            .parent = TYPE_ASPEED_GPIO,
+> > +            .class_init = aspeed_gpio_class_init,
+> > +            .class_data = (void *)&controllers[i],
+> > +        };
+> > +        type_register(&t);
+> > +    };
+> 
+> I think we want separate classes for the 2400 and 2500, especially
+> with
+> the 2600 on the way.
+
+I thought this was defining seperate classes that just happen to have
+the same init function? I don't fully grasp classes in qemu yet, so
+likely to be wrong :) 
+
+

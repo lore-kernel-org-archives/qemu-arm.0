@@ -1,92 +1,146 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4016899wrv;
-        Mon, 15 Jul 2019 04:10:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxkf0mIM3GfjxkYJsVmrMh5QFxV71swNDr1Q2QJZk9Q8RgbrKEzFyylDEeVG18f8qYqh0P5
-X-Received: by 2002:a17:906:43c4:: with SMTP id j4mr19754822ejn.227.1563189047909;
-        Mon, 15 Jul 2019 04:10:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563189047; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4027049wrv;
+        Mon, 15 Jul 2019 04:19:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwBRfrL+SaWbaotf0XS///yzNeDFCU750mm4c32PtXo3CjyWdO29XheQ2mUfVKyVSZ6VvTS
+X-Received: by 2002:a17:907:20a6:: with SMTP id pw6mr10148589ejb.111.1563189597422;
+        Mon, 15 Jul 2019 04:19:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563189597; cv=none;
         d=google.com; s=arc-20160816;
-        b=x9fELalVMsJzZZMenQB1EfhoL0/2NKrtEsHzCZNC8ouqmEJExMkCuyZPCnjwrnv3Jv
-         A28MBOTon3E3bu9zm+GwAKifp4tL6qOi5z/8jiDbEZpt3DYpfA6nrwZXv6Znw23wq/aT
-         L8ujnef318g8UoBAmdzAkh82boXu+cxfkgtAgmVa64SQSApf4riJfEznWxOFDskChLG/
-         D9j6e1uWD0B8FvmLGHduyd7Qvy6N6gn2fMNnXCpP1LHFB8aQdZvO+kyJ3yZ7eg4EKOY1
-         XSJ2yBmvMKf19au2izi/5YlLrsEebi7k/b52XWL3LCpcPOHJ8CqMbuTFRe9v8ai0D7hn
-         TIVw==
+        b=KyMlkfv2PsFh7aQNy0kkUsjhWWc81DYv3nLmoaTCUFOUM0YhHsaEq07T5NN1+twJya
+         RQmhKdE/1Y/xIirJAFG5g6bjN+ZqQS2wJRbir2hipFbomeYU6cx3jXr7WXwDb0fLY580
+         CNK5LHVMrPwsRRfhRC3iTEa5du8T9i3BUt6yE8+uzO4krmhGAVSM7Q7RYmAhb9C/zVL5
+         6vbVSbp2mB1w6TkjZYkjt8i0GnqQmjMK4eL/iQxeeBfr9NIUUenMwdOA85W+657n3UEN
+         KulcJMdMdVrtEj/0Z6ZEtgbRfmIe/8KuZgJ1kwaMiYensxRUVZD9vbwnFMhR45XfVRRZ
+         WOtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:user-agent:references
-         :message-id:in-reply-to:to:from:date;
-        bh=AhvGUPK/D1svYYkvA0jU7j+6z0jIT+Ifn389VHHbmAY=;
-        b=n4fUb3LWGhal/PHPlmDDEe/UJPBIMFQvHp7Abh2Gh+hYJ9w8rykyIZw8unP/1km72R
-         xWYMBKr+NcgjrDzizEagkt77KQWqDPqod7gTmgyFe/bMBxAJec/gnjXqOc47IaI4WGgq
-         bEWAMRMIR9bp+TE2kEdWdQvaO06gBL8TzKYIQ7jNRSAqWwyhxYC899GtjViyNbbvG0pG
-         9faI/5h79C5fbsgi9MdhdM9U91jjM4gclweqnAuyrt22lWcYY+TJ82g96e+tSoQVf3no
-         ZSjElZ/kBsQMjQanjGJ5u9+Mf4klYAIGvj4rkgztRX6KqkLGawSLv4UiW2sr6rYBncfN
-         r03g==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=N/H0PZXJaCPdl8+Y73UCNoKLZyKfUshqoUqO0KrdpVk=;
+        b=h2Y4WIkeegWAJRvwLcovOIDGnKtwaGmHnm8E7fnXrojPxcQKbhJ2/5u4wLwKAuqDeu
+         mkry6++dp7U9qHgAtGye23z7ZV5s47ZBHMGFu2Ul+JKJOL8hyFkTBm2E++He2wJGmbB2
+         M2dQ0ASzUursP8owyXQcAJj1RuZuOZFlWd6qIvBwkaETA39M8pp4aEMzufdO5YB2wSkh
+         kF4rfGIvgAPCJJsw3RbWw6GVUYro9xpgtGJtIjPL6nUeLAsuasVfiHiCgFO3Q2D5LHum
+         yVqrfBIjzbCVpNUi/Zw5VonukeVYsBQC6K9A2Vl5la6a6XDAnW8/dvdsDkeJy2sDEx4T
+         iaqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j3si8498367ejc.64.2019.07.15.04.10.47
+        by mx.google.com with ESMTPS id k8si10318395edd.67.2019.07.15.04.19.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jul 2019 04:10:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 15 Jul 2019 04:19:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37168 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37276 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hmysY-0001SA-Jh
-	for alex.bennee@linaro.org; Mon, 15 Jul 2019 07:10:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46103)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hmz1Q-0000Cm-8I
+	for alex.bennee@linaro.org; Mon, 15 Jul 2019 07:19:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48133)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <balaton@eik.bme.hu>) id 1hmysQ-0001F4-Mk
- for qemu-devel@nongnu.org; Mon, 15 Jul 2019 07:10:39 -0400
+ (envelope-from <thuth@redhat.com>) id 1hmz1H-0008Qf-E4
+ for qemu-arm@nongnu.org; Mon, 15 Jul 2019 07:19:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <balaton@eik.bme.hu>) id 1hmysM-0008CF-QU
- for qemu-devel@nongnu.org; Mon, 15 Jul 2019 07:10:38 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2]:21109)
+ (envelope-from <thuth@redhat.com>) id 1hmz1G-0004Lk-6g
+ for qemu-arm@nongnu.org; Mon, 15 Jul 2019 07:19:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55448)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
- id 1hmysJ-00088I-01; Mon, 15 Jul 2019 07:10:31 -0400
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id 44D6C7456CA;
- Mon, 15 Jul 2019 13:10:19 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 25A2F74569D; Mon, 15 Jul 2019 13:10:19 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 212E47456CC;
- Mon, 15 Jul 2019 13:10:19 +0200 (CEST)
-Date: Mon, 15 Jul 2019 13:10:19 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <64dd9cd5-8599-b157-3ba2-0ec565cee709@redhat.com>
-Message-ID: <alpine.BSF.2.21.9999.1907151309190.6546@zero.eik.bme.hu>
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1hmz1E-0004JP-4u; Mon, 15 Jul 2019 07:19:46 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id EA92920260;
+ Mon, 15 Jul 2019 11:19:37 +0000 (UTC)
+Received: from thuth.remote.csb (reserved-198-198.str.redhat.com
+ [10.33.198.198])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3A5756013B;
+ Mon, 15 Jul 2019 11:19:31 +0000 (UTC)
+To: BALATON Zoltan <balaton@eik.bme.hu>
 References: <20190715095545.28545-1-philmd@redhat.com>
  <20190715095545.28545-3-philmd@redhat.com>
  <alpine.BSF.2.21.9999.1907151251210.6546@zero.eik.bme.hu>
  <64dd9cd5-8599-b157-3ba2-0ec565cee709@redhat.com>
-User-Agent: Alpine 2.21.9999 (BSF 287 2018-06-16)
+ <alpine.BSF.2.21.9999.1907151309190.6546@zero.eik.bme.hu>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+Organization: Red Hat
+Message-ID: <49ee5af3-c435-a6ac-7818-e380b44c6f67@redhat.com>
+Date: Mon, 15 Jul 2019 13:19:30 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 152.66.115.2
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <alpine.BSF.2.21.9999.1907151309190.6546@zero.eik.bme.hu>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.29]); Mon, 15 Jul 2019 11:19:38 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
-X-Content-Filtered-By: Mailman/MimeDel 2.1.23
-Subject: Re: [Qemu-devel] [Qemu-ppc] [PATCH-for-4.2 2/3] hw/usb/Kconfig: Add
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-ppc] [PATCH-for-4.2 2/3] hw/usb/Kconfig: Add
  CONFIG_USB_EHCI_PCI
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <Alistair.Francis@wdc.com>, qemu-riscv@nongnu.org,
  Eduardo Habkost <ehabkost@redhat.com>,
@@ -95,63 +149,70 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Helge Deller <deller@gmx.de>, Palmer Dabbelt <palmer@sifive.com>,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>,
- =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KIiDfMwseQ8S
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: O5ANF9Wq+J7X
 
-On Mon, 15 Jul 2019, Thomas Huth wrote:
-> On 15/07/2019 12.54, BALATON Zoltan wrote:
->> On Mon, 15 Jul 2019, Philippe Mathieu-Daud=C3=A9 wrote:
->>> The USB_EHCI entry currently include PCI code. Since the EHCI
->>> implementation is already split in sysbus/PCI, add a new
->>> USB_EHCI_PCI. There are no logical changes, but the Kconfig
->>> dependencies tree is cleaner.
+On 15/07/2019 13.10, BALATON Zoltan wrote:
+> On Mon, 15 Jul 2019, Thomas Huth wrote:
+>> On 15/07/2019 12.54, BALATON Zoltan wrote:
+>>> On Mon, 15 Jul 2019, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>> The USB_EHCI entry currently include PCI code. Since the EHCI
+>>>> implementation is already split in sysbus/PCI, add a new
+>>>> USB_EHCI_PCI. There are no logical changes, but the Kconfig
+>>>> dependencies tree is cleaner.
+>>>>
+>>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>>>> ---
+>>>> hw/usb/Kconfig?????? | 9 ++++++---
+>>>> hw/usb/Makefile.objs | 5 +++--
+>>>> 2 files changed, 9 insertions(+), 5 deletions(-)
+>>>>
+>>>> diff --git a/hw/usb/Kconfig b/hw/usb/Kconfig
+>>>> index 564305e283..495c6f2d48 100644
+>>>> --- a/hw/usb/Kconfig
+>>>> +++ b/hw/usb/Kconfig
+>>>> @@ -19,13 +19,16 @@ config USB_OHCI_PCI
+>>>>
+>>>> config USB_EHCI
+>>>> ??? bool
+>>>> -??? default y if PCI_DEVICES
+>>>> -??? depends on PCI
+>>>> ??? select USB
+>>>>
+>>>> +config USB_EHCI_PCI
+>>>> +??? bool
+>>>> +??? default y if PCI_DEVICES
+>>>> +??? select USB_EHCI
+>>>> +
+>>>> config USB_EHCI_SYSBUS
+>>>> ??? bool
+>>>> -??? select USB
+>>>> +??? select USB_EHCI
 >>>
->>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->>> ---
->>> hw/usb/Kconfig?????? | 9 ++++++---
->>> hw/usb/Makefile.objs | 5 +++--
->>> 2 files changed, 9 insertions(+), 5 deletions(-)
->>>
->>> diff --git a/hw/usb/Kconfig b/hw/usb/Kconfig
->>> index 564305e283..495c6f2d48 100644
->>> --- a/hw/usb/Kconfig
->>> +++ b/hw/usb/Kconfig
->>> @@ -19,13 +19,16 @@ config USB_OHCI_PCI
->>>
->>> config USB_EHCI
->>> ??? bool
->>> -??? default y if PCI_DEVICES
->>> -??? depends on PCI
->>> ??? select USB
->>>
->>> +config USB_EHCI_PCI
->>> +??? bool
->>> +??? default y if PCI_DEVICES
->>> +??? select USB_EHCI
->>> +
->>> config USB_EHCI_SYSBUS
->>> ??? bool
->>> -??? select USB
->>> +??? select USB_EHCI
+>>> Isn't this making USB_EHCI effectively the same as USB so maybe you
+>>> don't need to keep that around any more. Can you just add select USB =
+to
+>>> USB_EHCI_PCI and USB_EHCI_SYSBUS and delete USB_EHCI?
 >>
->> Isn't this making USB_EHCI effectively the same as USB so maybe you
->> don't need to keep that around any more. Can you just add select USB t=
-o
->> USB_EHCI_PCI and USB_EHCI_SYSBUS and delete USB_EHCI?
->
-> If you want to compile without USB_EHCI_PCI and without USB_EHCI_SYSBUS=
-,
-> but with USB (e.g. due to XHCI), I think we should not include
-> hcd-ehci.o file in the build. So I think it's fine that we have a
-> separate config switch for this file.
+>> If you want to compile without USB_EHCI_PCI and without USB_EHCI_SYSBU=
+S,
+>> but with USB (e.g. due to XHCI), I think we should not include
+>> hcd-ehci.o file in the build. So I think it's fine that we have a
+>> separate config switch for this file.
+>=20
+> So shouldn't build depend on either USB_EHCI_PCI or USB_EHCI_SYSBUS
+> selected then?
 
-So shouldn't build depend on either USB_EHCI_PCI or USB_EHCI_SYSBUS=20
-selected then?
+Boards that have a hard-wired sysbus EHCI device already select it, e.g.
+EXYNOS4 in hw/arm/Kconfig. EHCI on a PCI card is optional, so it is only
+marked with "default y if PCI_DEVICES" - which you can override in your
+config if you don't need it.
 
-Regards,
-BALATON Zoltan
+ Thomas

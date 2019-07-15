@@ -1,121 +1,211 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id o7sm14162617wmc.36.2019.07.15.04.08.11
-        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Mon, 15 Jul 2019 04:08:11 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3C9681FF87;
-	Mon, 15 Jul 2019 12:08:11 +0100 (BST)
-References: <20190712111849.9006-1-alex.bennee@linaro.org> <20190712111849.9006-2-alex.bennee@linaro.org> <189b17fc-fdba-5ccc-d018-6fbd27c6babd@redhat.com>
-User-agent: mu4e 1.3.3; emacs 26.1
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Fam Zheng <fam@euphon.net>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
-Subject: Re: [PATCH v1 1/7] tests/docker: add test-misc for building tools & docs
-In-reply-to: <189b17fc-fdba-5ccc-d018-6fbd27c6babd@redhat.com>
-Date: Mon, 15 Jul 2019 12:08:11 +0100
-Message-ID: <87o91vv9lw.fsf@zen.linaroharston>
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4139698wrv;
+        Mon, 15 Jul 2019 06:08:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxyq6+n55lDSxzrGe5NfLIq9Ffp2QVGVBDCtCqSS+J1UYR/eWT+YV0UaQihqGMoxVzlDUSV
+X-Received: by 2002:aa7:d4cf:: with SMTP id t15mr23196640edr.215.1563196138463;
+        Mon, 15 Jul 2019 06:08:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563196138; cv=none;
+        d=google.com; s=arc-20160816;
+        b=aXW5p7n69GpocRWIIL02St0eKYloBBEEqGooHkH56E4VNQvquh1oV4YnyenJOHX+KG
+         R5OSbh5rSC6lY822yVWWy9KDTNnQwe52WOWYFXzx02HhaaMoL/ZE4YKGm8imbL99wHnt
+         VE/s8JxHQBCGJdxfEY9OOnsC9sLXO+Ak1ReGe5J7DGvTJ9py1zHQjUjb4h2ATjaL0Jix
+         qW1BFbL335w/PzZIp3Yi2yRleLdDoLafG2XmhPw4koXbbRXjw5zUNNLkVqn1DuBAdoCG
+         LdeB30GSCniP2eenn9pNcwD8bZPxwXZ/PYpCqoc1hWH2xDv3o67DtqjlirfJ2T+44Mul
+         qDjQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=ColTJuHsj/NindS4cUBN4M5ByWue+qwNRsM+NDGBLeY=;
+        b=os7P8RH04Au5E+gGWvscucUU3TKV5HEtL5BfaEcoaBEgwsHe5/TOA/eGUI+S5PxNj/
+         P7dghJCNjJVgpiT64/gJ1v+qGCQ7rceIYP8//RX0utOR190WrIPSzb2RgRDKHEOGmXBf
+         Cd2xib3EPQmhpq1alhWTlbogLJfRyWb6HRQ7Eo4QQ07VS/a3+4aWh5mXra1TEQEP3A7F
+         VWzs/JVKeAhzSMT6nSdHqh6wwMzl0RN+AqWJnziT4vGab6Uaqk5ztYhl4fi78CZDOH2h
+         nDM+IoWVotq5MTkJfIpOt7301rVLL/zP7GEQSw+mDenA3lRxrMWVVc0d1fJ6YHg/43jM
+         NQfQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t4si7042587ejs.337.2019.07.15.06.08.58
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 15 Jul 2019 06:08:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38402 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hn0iv-0005E7-Hg
+	for alex.bennee@linaro.org; Mon, 15 Jul 2019 09:08:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44800)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <thuth@redhat.com>) id 1hn0ir-0005DS-No
+ for qemu-arm@nongnu.org; Mon, 15 Jul 2019 09:08:54 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <thuth@redhat.com>) id 1hn0iq-0003fp-ON
+ for qemu-arm@nongnu.org; Mon, 15 Jul 2019 09:08:53 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57762)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1hn0iq-0003fW-GR; Mon, 15 Jul 2019 09:08:52 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 7CF4783F4C;
+ Mon, 15 Jul 2019 13:08:51 +0000 (UTC)
+Received: from thuth.remote.csb (reserved-198-198.str.redhat.com
+ [10.33.198.198])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2EEDC5B684;
+ Mon, 15 Jul 2019 13:08:44 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20190712133928.21394-1-philmd@redhat.com>
+ <20190712133928.21394-8-philmd@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+Organization: Red Hat
+Message-ID: <fba3d5fc-4a5d-d967-5bb3-075159b93a0d@redhat.com>
+Date: Mon, 15 Jul 2019 15:08:43 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
+In-Reply-To: <20190712133928.21394-8-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.27]); Mon, 15 Jul 2019 13:08:51 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 8MytpJUxkN5s
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH-for-4.1? 7/7] hw/bt: Allow building with
+ CONFIG_BLUETOOTH disabled
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Miroslav Rezanina <mrezanin@redhat.com>, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: q5iZ/f6kVGde
 
+On 12/07/2019 15.39, Philippe Mathieu-Daud=C3=A9 wrote:
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  Makefile.objs       |  3 ++-
+>  bt-stubs.c          | 18 ++++++++++++++++++
+>  hw/bt/Makefile.objs |  4 ++--
+>  3 files changed, 22 insertions(+), 3 deletions(-)
+>  create mode 100644 bt-stubs.c
+>=20
+> diff --git a/Makefile.objs b/Makefile.objs
+> index c2845a0efc..98269e393a 100644
+> --- a/Makefile.objs
+> +++ b/Makefile.objs
+> @@ -65,8 +65,9 @@ common-obj-y +=3D replay/
+> =20
+>  common-obj-y +=3D ui/
+>  common-obj-m +=3D ui/
+> -common-obj-y +=3D bt-host.o bt-vhci.o bt-opts.o
+>  bt-host.o-cflags :=3D $(BLUEZ_CFLAGS)
+> +common-obj-$(CONFIG_BLUETOOTH) +=3D bt-host.o bt-vhci.o bt-opts.o
+> +common-obj-$(call lnot,$(CONFIG_BLUETOOTH)) +=3D bt-stubs.o
+> =20
+>  common-obj-y +=3D dma-helpers.o
+>  common-obj-y +=3D vl.o
+> diff --git a/bt-stubs.c b/bt-stubs.c
+> new file mode 100644
+> index 0000000000..d3f5158d3b
+> --- /dev/null
+> +++ b/bt-stubs.c
+> @@ -0,0 +1,18 @@
+> +/*
+> + * Bluetooth stubs.
+> + *
+> + * Copyright (c) 2019 Red Hat, Inc.
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/error-report.h"
+> +#include "sysemu/bt.h"
+> +
+> +int bt_parse(const char *opt)
+> +{
+> +    error_report("Bluetooth support is disabled");
+> +
+> +    return 1;
+> +}
+> diff --git a/hw/bt/Makefile.objs b/hw/bt/Makefile.objs
+> index 867a7d2e8a..46aec8e38e 100644
+> --- a/hw/bt/Makefile.objs
+> +++ b/hw/bt/Makefile.objs
+> @@ -1,3 +1,3 @@
+> -common-obj-y +=3D core.o l2cap.o sdp.o hci.o hid.o
+> -common-obj-y +=3D hci-csr.o
+> +common-obj-$(CONFIG_BLUETOOTH) +=3D core.o l2cap.o sdp.o hci.o hid.o
+> +common-obj-$(CONFIG_BLUETOOTH) +=3D hci-csr.o
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+... ok, so the BLUETOOTH switch gets used here. But I wonder whether we
+should have separate switches for the backends (i.e. the files here) and
+the guest devices (i.e. the ones in hw/bt/) ?
 
-> On 7/12/19 1:18 PM, Alex Benn=C3=A9e wrote:
->> Add yet another test type so we cna quickly exercise the miscellaneous
->
-> "cna" -> "can"
->
->> build products of the build system under various docer configurations.
->>
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> ---
->>  tests/docker/test-misc | 22 ++++++++++++++++++++++
->>  1 file changed, 22 insertions(+)
->>  create mode 100755 tests/docker/test-misc
->>
->> diff --git a/tests/docker/test-misc b/tests/docker/test-misc
->> new file mode 100755
->> index 00000000000..d480afedca7
->> --- /dev/null
->> +++ b/tests/docker/test-misc
->> @@ -0,0 +1,22 @@
->> +#!/bin/bash -e
->> +#
->> +# Build the miscellaneous components
->> +#
->> +# Copyright (c) 2019 Linaro Ltd.
->> +#
->> +# Authors:
->> +#  Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> +#
->> +# This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
->> +# See the COPYING file in the top-level directory.
->> +#
->> +# SPDX-License-Identifier: GPL-2.0-or-later
->> +
->> +. common.rc
->> +
->> +cd "$BUILD_DIR"
->> +
->> +# build everything else but QEMU
->> +configure_qemu --disable-user --disable-system --enable-docs --enable-t=
-ools
->> +build_qemu
->> +install_qemu
->>
->
-> I got:
->
-> $ make docker-test-misc@debian-win32-cross
->   BUILD   debian9
->   GEN
-> /home/phil/source/qemu/docker-src.2019-07-13-17.03.48.3829/qemu.tar
->   BUILD   debian9-mxe
-> usage: git archive [<options>] <tree-ish> [<path>...]
->    or: git archive --list
->    or: git archive --remote <repo> [--exec <cmd>] [<options>] <tree-ish>
-> [<path>...]
->    or: git archive --remote <repo> [--exec <cmd>] --list
->
->     --format <fmt>        archive format
->     --prefix <prefix>     prepend prefix to each pathname in the archive
->     -o, --output <file>   write the archive to this file
->     --worktree-attributes
->                           read .gitattributes in working directory
->     -v, --verbose         report archived files on stderr
->     -0                    store only
->     -1                    compress faster
->     -9                    compress better
->
->     -l, --list            list supported archive formats
->
->     --remote <repo>       retrieve the archive from remote repository <re=
-po>
->     --exec <command>      path to the remote git-upload-archive command
->
-> failed to archive qemu
-> make[1]: *** [tests/docker/Makefile.include:31:
-> qemu/docker-src.2019-07-13-17.03.48.3829] Error 1
-
-Hmm I haven't been able to get this... does it depend on having
-uncommited changes in a subproject?
-
->
-> And remembered some script/archive patch on the list:
-> https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg02073.html
-
-I'll look at snarfing that.
-
->
-> With it amended this works correctly, so:
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-
-
---
-Alex Benn=C3=A9e
+ Thomas

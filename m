@@ -1,217 +1,148 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4172443wrv;
-        Mon, 15 Jul 2019 06:38:22 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz7rzX2tU7DaIqHXTpQ/K7yqGVySYi/U2QC54e8uS0MVqLb+9a01TGJu/0diMzjtAJxP1uB
-X-Received: by 2002:a17:906:304d:: with SMTP id d13mr19932767ejd.99.1563197902309;
-        Mon, 15 Jul 2019 06:38:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563197902; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4175335wrv;
+        Mon, 15 Jul 2019 06:41:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx1Sp0CSvK7TB/0M+aiLSFLvsxsvbyY+gRetVYQQcIWvt7gN4uZCWp1HhsKn9GtU7hHDv2a
+X-Received: by 2002:a0c:b521:: with SMTP id d33mr19003814qve.239.1563198069693;
+        Mon, 15 Jul 2019 06:41:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563198069; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nz6feM3eej8pAZ2BBOb52KJfeBKV4Xufw34xORl78MeOmfN2/2KrCYf0I7TMH8pxSD
-         yojJK288R1aGNG8UkERBGKk8FZC2kPIHl/uMl28Qu/IWjtISYqSBRHXqjIDzI06K22rK
-         im9PiFLjG9GFBGJ2MwkJEeOosLRJjz/wONIICmSnQ1EMw893OZ+1/A8aYducZ7+pNjSp
-         bOegVHk4FmW+yDXQ39kvLKrryAMsDXREvDtMWdF2GEsqmvSlqZktzLif0RKvB2X6K3vN
-         bWuzrAYkZBj1oQHtW/FPunB08HHbwN6lHHpO/8NWBEVTQuaF1zadNHrRRaJnpQcJ4koE
-         dyUA==
+        b=OzC9Bg7SbdOayHzbCUxS1X9rp6pXPLgxqhaAKCaIYOWDOLo2bAv7ZyA2mu0f+ild8K
+         9kODCPoY6Ix3b+jRa1+Iaub9BF4xMwWHRmaEpwGeXnckwHqyvXqI4bAk95nqM3rOnuae
+         caf72w6OHK8j0Xt1yeBooY3xPwzzGG38AdCUQLCmKhwHcUYT/vBX8LhVyy3xxpV7R59H
+         n8lXLHY/1oj0nPLzD4jxxxaQpOyH21gT0Aj34uO0/3H/5diS6ZLOs9uRr5zuFnreauJA
+         XyRgDbVlk9FxzY87Wv0BaRSCSIZYVPKEnblU07Ca5AGakgxxvm5JOBUzPxU6m4kMU4E6
+         bPtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=CGv8daBN78F3fs7vQSkYuBd/QM6pYOhv9U+pxIfUj4A=;
-        b=yr1u6dKo99xOBo7cyQyQrHPtaCtX9ssbiDB3oP2ETcty/+yibprbCysUObI+GSiO3f
-         lf7lsSxzEaEyzilti9yLbQ44widtpFb7lPby0vZ/nOkkXEUIMzgvdAlE1wgKVnCVFDUg
-         rrmYebAMIvTqhDEwhD1lJLndD9g7WXZDd5CPheb/POqJ3Ft07bkTdpye3thTA+fmF4RW
-         S54D7ay3hjBX8q2RceDGAG6Pf32c/UQoEUQquxPOWiJ4WyJttjELpskSDrdDG40Kjz69
-         aj4gz5oy0LtYmNbYC27Lj6X3Am+RWJN0c7F5sxlUkrOrsqm1VArvPhs1UpKSYXxr7qC5
-         zs4g==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:to:from:date;
+        bh=xhj1w2U7PZRioXArvAVbLj72tMuMg8Cu82lIfbaAsHo=;
+        b=ykCNR3XubCTj89JbV+CC200zyK+JGlhLbswany43JFr76o+Ry2tS3j5A2Ns8DzHzdu
+         1MQq6QTkVYt+HyTEwFpwwRsVRZSbxu8qqUYwgO8cPsjr1B+Ojs2wm4vTWD7Di3swTZuZ
+         5kk8oUs032CyuH3Dj10w4pHeMdQms1S84EDLlOUU0GlVuf6NkSO6PjiIj6etoj30Wqq/
+         1T1QinEUKIfmqNFzNfVNmaXkLXRNXvXFVyLKmODg+peOTP/WomhtEEXtey9Sx7exaAlJ
+         fG6CsLc9moBR3kmFoq2YD9E1O7CtlVEFJV8ITfm8RzY3Na6vy6EOI0xBae+PA3RCx8cj
+         GMRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v19si8813117ejx.130.2019.07.15.06.38.22
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jul 2019 06:38:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id f6si11275193qtd.251.2019.07.15.06.41.09;
+        Mon, 15 Jul 2019 06:41:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38650 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hn1BN-0003PZ-C6
-	for alex.bennee@linaro.org; Mon, 15 Jul 2019 09:38:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50614)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hn1BJ-0003PB-J2
- for qemu-arm@nongnu.org; Mon, 15 Jul 2019 09:38:18 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hn1BI-0004DY-Ak
- for qemu-arm@nongnu.org; Mon, 15 Jul 2019 09:38:17 -0400
-Received: from mail-wr1-f65.google.com ([209.85.221.65]:34979)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hn1BI-0004Cx-3r
- for qemu-arm@nongnu.org; Mon, 15 Jul 2019 09:38:16 -0400
-Received: by mail-wr1-f65.google.com with SMTP id y4so17172701wrm.2
- for <qemu-arm@nongnu.org>; Mon, 15 Jul 2019 06:38:16 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=CGv8daBN78F3fs7vQSkYuBd/QM6pYOhv9U+pxIfUj4A=;
- b=KbrgVs7mYB0K50dqX864Pwa/0UXPHSvBQ2XXJt0ZCnWXIzNgLl56708QtJu+echhbg
- 7Q7DW7hGZMLXto6qC8pAcWX3pXn3LrmVGQV/f7cIWwGi4nukuKq3NFbFzKUm43B6z4Nc
- qfDA18H6owqiU6A82xheXHQRKcZrS7foXTXwNdSAPAMNimm+RhfGCZte3WGASJ8Uv2z9
- Mxpz2dHpBYXPwzy0znkNcCqIkGay/Wy4JkZCZEgGa9J50ECGDrFrbjyMFSXKPBfGbC+D
- bw4hREHhbmBgSw3s2Xvq2ugQrIkYyZQgCVflTVYEYaraElquzNLE+ftEfZfiv0YQbdtR
- q20Q==
-X-Gm-Message-State: APjAAAUkmlvFUtkpjWByQaDMYs/pPDlFQ8Jdc6n4tKa6i7HD3/s0cZI0
- 3B0OrfB17FIgqgZCPeUCbKsBSQ==
-X-Received: by 2002:a5d:4e50:: with SMTP id r16mr23517341wrt.227.1563197894996; 
- Mon, 15 Jul 2019 06:38:14 -0700 (PDT)
-Received: from [192.168.1.38] (62.red-83-42-61.dynamicip.rima-tde.net.
- [83.42.61.62])
- by smtp.gmail.com with ESMTPSA id b8sm16081336wrr.43.2019.07.15.06.38.13
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Mon, 15 Jul 2019 06:38:14 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>, Cornelia Huck <cohuck@redhat.com>
-References: <20190715095545.28545-1-philmd@redhat.com>
- <20190715095545.28545-2-philmd@redhat.com>
- <ca528cdc-6118-0b2f-c1b8-30b06875dde8@redhat.com>
- <CAFEAcA-wgTVfj0TUJ=piP0wEgLGiNpOYia5DK2GQAO4Q7gNaWg@mail.gmail.com>
- <6d69e8ad-d720-ce04-20f2-a03193903078@redhat.com>
- <20190715125653.6e65d575.cohuck@redhat.com>
- <c1c68faf-0424-6c7c-e39f-42159457c3ee@redhat.com>
- <20190715130955.4a117388.cohuck@redhat.com>
- <13fce62f-234c-1b13-595f-5910c066bc4f@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <6c39a198-e951-c0bd-1ddc-5d227afe72ff@redhat.com>
-Date: Mon, 15 Jul 2019 15:38:12 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 2BC234A51E;
+	Mon, 15 Jul 2019 09:41:09 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.799
+X-Spam-Level: 
+X-Spam-Status: No, score=0.799 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699] autolearn=no
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Jqt4pXRhZ-aD; Mon, 15 Jul 2019 09:41:06 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 8327A4A4FD;
+	Mon, 15 Jul 2019 09:41:06 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 00F134A4FD
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 15 Jul 2019 09:41:05 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id LpOHJmEofGeO for <kvmarm@lists.cs.columbia.edu>;
+ Mon, 15 Jul 2019 09:41:03 -0400 (EDT)
+Received: from foss.arm.com (foss.arm.com [217.140.110.172])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 96BED4A3A3
+ for <kvmarm@lists.cs.columbia.edu>; Mon, 15 Jul 2019 09:41:03 -0400 (EDT)
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 242E228;
+ Mon, 15 Jul 2019 06:41:03 -0700 (PDT)
+Received: from e103592.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
+ [10.121.207.14])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 390B03F71F;
+ Mon, 15 Jul 2019 06:41:02 -0700 (PDT)
+Date: Mon, 15 Jul 2019 14:41:00 +0100
+From: Dave Martin <Dave.Martin@arm.com>
+To: Guoheyi <guoheyi@huawei.com>
+Subject: Re: [RFC] Add virtual SDEI support in qemu
+Message-ID: <20190715134059.GJ2790@e103592.cambridge.arm.com>
+References: <1b0aa6b2-80b1-a72e-6849-7323c3b9c6bc@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <13fce62f-234c-1b13-595f-5910c066bc4f@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.221.65
-Subject: Re: [Qemu-arm] [qemu-s390x] [RFC PATCH 1/3] hw/Kconfig: PCI bus
- implies PCI_DEVICES
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+Content-Disposition: inline
+In-Reply-To: <1b0aa6b2-80b1-a72e-6849-7323c3b9c6bc@huawei.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+Cc: Marc Zyngier <marc.zyngier@arm.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, linux-arm-kernel@lists.infradead.org,
+ kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Collin Walling <walling@linux.ibm.com>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Helge Deller <deller@gmx.de>,
- Palmer Dabbelt <palmer@sifive.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Aurelien Jarno <aurelien@aurel32.net>,
- "open list:S390" <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Alistair Francis <Alistair.Francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc <qemu-ppc@nongnu.org>,
- Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Gl+zPUP34S1x
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: A3LCDvP6/USQ
 
-On 7/15/19 3:19 PM, Thomas Huth wrote:
-> On 15/07/2019 13.09, Cornelia Huck wrote:
->> On Mon, 15 Jul 2019 13:04:28 +0200
->> Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->>
->>> On 7/15/19 12:56 PM, Cornelia Huck wrote:
->>>> On Mon, 15 Jul 2019 12:48:55 +0200
->>>> Thomas Huth <thuth@redhat.com> wrote:
->>>>   
->>>>> On 15/07/2019 12.19, Peter Maydell wrote:  
->>>>>> On Mon, 15 Jul 2019 at 11:15, Thomas Huth <thuth@redhat.com> wrote:    
->>>>>>>
->>>>>>> On 15/07/2019 11.55, Philippe Mathieu-Daudé wrote:    
->>>>>>>> If a controller device provides a PCI bus, we can plug any PCI
->>>>>>>> daughter card on it.
->>>>>>>>
->>>>>>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->>>>>>>> ---    
->>>>>>     
->>>>>>>> diff --git a/hw/pci/Kconfig b/hw/pci/Kconfig
->>>>>>>> index 77f8b005ff..0f7267db35 100644
->>>>>>>> --- a/hw/pci/Kconfig
->>>>>>>> +++ b/hw/pci/Kconfig
->>>>>>>> @@ -1,5 +1,6 @@
->>>>>>>>  config PCI
->>>>>>>>      bool
->>>>>>>> +    imply PCI_DEVICES    
->>>>>>>
->>>>>>> No, please don't change this. This was done on purpose, since almost all
->>>>>>> PCI_DEVICES do not work on s390x (so s390x does *not* imply PCI_DEVICES).    
->>>>>>
->>>>>> But that means that every board that provides PCI has to have an
->>>>>> "imply PCI_DEVICES" line, which is pretty clunky just to work
->>>>>> around an s390x limitation.
->>>>>>
->>>>>> Is there some way in the Kconfig syntax for s390x to say
->>>>>> "no PCI_DEVICES" so we can have the corner-case be handled
->>>>>> by the s390x Kconfig in one place rather than in 20 places
->>>>>> affecting everywhere except s390x?    
->>>>>
->>>>> IIRC the problem on s390x are the legacy IRQs. s390x has only MSIs. So I
->>>>> guess the correct way to fix this would be to introduce some
->>>>> PCI_LEGACY_IRQ switch and let all old devices that do not work with MSI
->>>>> depend on it.  
->>>>
->>>> s/MSI/MSI-X/, IIRC. Not sure how far 'legacy' would stretch.  
->>>
->>> Maybe we can have something like PCI_LEGACY_DEVICES and PCI_MSI_DEVICES?
->>>
->>> So if s390x only selects PCI_LEGACY (not PCI_MSI) bus, then it only get
->>> legacy devices?
->>
->> Wrong way around? We need MSI-X for s390x, not plain MSI or
->> 'legacy' (whatever that is).
+On Sat, Jul 13, 2019 at 05:53:57PM +0800, Guoheyi wrote:
+> Hi folks,
 > 
-> With "legacy" I meant the old level-triggered interrupts from the early
-> PCI (non-express) days. Sorry for being imprecise here.
+> Do it make sense to implement virtual SDEI in qemu? So that we can have the
+> standard way for guest to handle NMI watchdog, RAS events and something else
+> which involves SDEI in a physical ARM64 machine.
 > 
-> So maybe we need two new switches, PCI_CLASSIC (or so) and PCI_MSIX, and
-> then the PCI devices should be marked with "default y if PCI_CLASSIC" if
-> they do not have MSIX support, and with "default y if PCI_MSIX" if they
-> have MSI-X support?
+> My basic idea is like below:
+> 
+> 1. Change a few lines of code in kvm to allow unhandled SMC invocations
+> (like SDEI) to be sent to qemu, with exit reason of KVM_EXIT_HYPERCALL, so
+> we don't need to add new API.
 
-Something like that :)
+So long as KVM_EXIT_HYPERCALL reports sufficient information so that
+userspace can identify the cause as an SMC and retrieve the SMC
+immediate field, this seems feasible.
 
-Per Wikipedia:
+For its own SMCCC APIs, KVM exclusively uses HVC, so rerouting SMC to
+userspace shouldn't conflict.
 
-  Conventional PCI and PCI-X are sometimes called Parallel PCI
-  in order to distinguish them technologically from their more
-  recent successor PCI Express, which adopted a serial,
-  lane-based architecture.
+This bouncing of SMCs to userspace would need to be opt-in, otherwise
+old userspace would see exits that it doesn't know what to do with.
 
-  The PCI-SIG introduced the serial PCI Express in c. 2004. At
-  the same time, they renamed PCI as Conventional PCI.
+> 2. qemu handles supported SDEI calls just as the spec says for what a
+> hypervisor should do for a guest OS.
+> 
+> 3. For interrupts bound to hypervisor, qemu should stop injecting the IRQ to
+> guest through KVM, but jump to the registered event handler directly,
+> including context saving and restoring. Some interrupts like virtual timer
+> are handled by kvm directly, so we may refuse to bind such interrupts to
+> SDEI events.
 
-  PCI Express does not have physical interrupt lines at all.
-  It uses message-signaled interrupts exclusively.
+Something like that.
 
-What about PCI_CONVENTIONAL then?
+Interactions between SDEI and PSCI would need some thought: for example,
+after PSCI_CPU_ON, the newly online cpu needs to have SDEs masked.
 
-Regards,
+One option (suggested to me by James Morse) would be to allow userspace
+to disable in the in-kernel PSCI implementation and provide its own
+PSCI to the guest via SMC -- in which case userspace that wants to
+implement SDEI would have to implement PSCI as well.
 
-Phil.
+There may be reasons why this wouldn't work ... I haven't thought about
+it in depth.
+
+Cheers
+---Dave
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

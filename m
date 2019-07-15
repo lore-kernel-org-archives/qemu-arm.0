@@ -1,114 +1,103 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3563203wrv;
-        Sun, 14 Jul 2019 19:43:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqynj8cxz12oy2KxGjIU/t3ewReN7ZPQwaHWzTMjVe1xsQdJfvfXiCs0hPNJQ4/Ysa7iqBwU
-X-Received: by 2002:a50:b3b8:: with SMTP id s53mr20713447edd.61.1563158608532;
-        Sun, 14 Jul 2019 19:43:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563158608; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3731588wrv;
+        Sun, 14 Jul 2019 23:19:49 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwHcbVEMENaqOSIFMdGfzSGFkKO1dwL3nquVGc8CEfWYoRDj2P+PfdoaLZIn1IliIGHOrIF
+X-Received: by 2002:a17:906:8053:: with SMTP id x19mr18729151ejw.306.1563171589199;
+        Sun, 14 Jul 2019 23:19:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563171589; cv=none;
         d=google.com; s=arc-20160816;
-        b=xrIfAQ8DSANAHUwloBYsbbpvlEcvBjRcngDwM+kpwrDfpeQTKdNJwbt0AKZBsZ66us
-         o9zQf1FDYAT7JCgRKsDIujJWipSeUZ1ZO8k4XXZuy0cRRm0DqKZ4vncave865XllwyMR
-         gaeiAzDIWcoMeXn9mW7AV3dRsr+b/HCCJ+utz1fsPmYuvGv5vZkTzM4WokTKNXVI8AXe
-         HapGSDXF1gmzzYSLcWnuZsvQ7Pxuq0X6dQ+WYkew1NeQ+aalwZdZ2ea+bGHzP+XEnW8E
-         fLHWNVtdN8K1KTXbpyR7OsWFwXmCaumjHWKqrYbzkuSWFpQnbZZ5QCtfmszHKhoIh8XV
-         xrTw==
+        b=CmLzIS2suo8gKV4jPULugRirm4TX6iHWLKGK4OLxq7nn0LpQHdUzaQWxSFyLwUkBga
+         osLUvErfKYP33qBtYb57HIeZFLkmEi9XaifgLC0YG3C7Ku4qetn60Jf+PIUJHNzKzoOr
+         TExISZpuuqQiCzFGALRohU0STLWwKJGXXY0metqV1xeWEJZR/ngwIyQS3P/oZfZxA3so
+         m9XNQjcci1faou4EGHvSzkhUa4ZZEWq6MKFQj2ihALtXFe6BdjfzDv+7TGGo335Ag0tk
+         hnnUkaGs5yCmthuNeooGAns5bbvk3Yg5K6DknMArYTSb3QwHxdaCPVL7PHbXT7BcdpzP
+         5O0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:from:date:references
-         :in-reply-to:message-id:mime-version:user-agent:dkim-signature
-         :dkim-signature;
-        bh=C9X2mWDMtoH2BYknOiPGSn8bcWjjd0r0VHFhSjIpKC8=;
-        b=TjgHJaNnCnGGb+TiE8pPvmvBC6ISs839IQaJvTzjNQ0Mam8zeVzTUD20c+nRw/C9UO
-         2jpmh04FemSA8kjW4rB8fRM5oLxuU2iIURPouBqaXAaJHLlH2PshLZSiAwMeONn1JRP9
-         9kAecRNn+KfXrsnrF2AWXVtHOyKnsw6yKHXNy3AYiQEJBhXgrqYdEOvMz5tgR6RNpqV/
-         XytPmX7CmvXnX81kgaWKUx6JyxunXK/94gcWRBynJNYm/Y9WbGYelRGc4XphDQAQZYbz
-         /Yjehdmi0LBSPwpTyWon/vLdhsC691I/u9GDBH2qnwZJR6mbS4i1yJ3yFuyzaEDo0Fg7
-         ZCvw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=lBGGTqXH/nhd6kXXGRtBAmp2V+9X81H4xeVXysgM8vc=;
+        b=k7irGXIdi5t5WgMphprTRaJyVcF5MFPKEmaEoUwFILvT3z8DcFUMYBKsnCA9kJymho
+         DZVxLle2TEw0vB/4ixwh/ui0kj5ve4092Xp+v6nfElhb71sw/RCtwE9qMXAXq4LOu2vy
+         ZPrfRGZ9XCgl9TztMrh59UTpiJ4ZTUc2CAutxSrBngN2PnnqKVy4LzGAHI9EJukBsvfO
+         HjI5mIBFSOKhuYB4KoZ20sral2U1vqUwAf+UPcJlrIfbUBnZY8C3Mj7hcs4MFppy6YI4
+         GiLI3QhlXV/8V7lR1b+8f/Af628k9KsfCw3cdzf0UYoTLZ6ftJOA2zyUF3vbpfd8Pb5c
+         J4Qw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=jYiPFEpZ;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=O5FHtErS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="vQ4s/thr";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o55si10563801edc.137.2019.07.14.19.43.28
+        by mx.google.com with ESMTPS id w41si9685348eda.9.2019.07.14.23.19.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 14 Jul 2019 19:43:28 -0700 (PDT)
+        Sun, 14 Jul 2019 23:19:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=jYiPFEpZ;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=O5FHtErS;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34890 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="vQ4s/thr";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:35416 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hmqxb-000198-Gf
-	for alex.bennee@linaro.org; Sun, 14 Jul 2019 22:43:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33333)
+	id 1hmuKy-00013z-3g
+	for alex.bennee@linaro.org; Mon, 15 Jul 2019 02:19:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42001)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <andrew@aj.id.au>) id 1hmqxX-00018z-97
- for qemu-arm@nongnu.org; Sun, 14 Jul 2019 22:43:25 -0400
+ (envelope-from <rashmica.g@gmail.com>) id 1hmuKt-0000ud-Lu
+ for qemu-arm@nongnu.org; Mon, 15 Jul 2019 02:19:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <andrew@aj.id.au>) id 1hmqxV-000570-6X
- for qemu-arm@nongnu.org; Sun, 14 Jul 2019 22:43:23 -0400
-Received: from out3-smtp.messagingengine.com ([66.111.4.27]:38993)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <andrew@aj.id.au>)
- id 1hmqxU-00056H-Qu; Sun, 14 Jul 2019 22:43:21 -0400
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id 04068221BD;
- Sun, 14 Jul 2019 22:43:19 -0400 (EDT)
-Received: from imap2 ([10.202.2.52])
- by compute4.internal (MEProxy); Sun, 14 Jul 2019 22:43:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
- mime-version:message-id:in-reply-to:references:date:from:to:cc
- :subject:content-type; s=fm3; bh=C9X2mWDMtoH2BYknOiPGSn8bcWjjd0r
- 0VHFhSjIpKC8=; b=jYiPFEpZaxNbmg5LedG6l698BqayWuJ8EgynT8ulCEHFg9A
- YNei4cOWa5OwcGxkd0YHkrvAtmBTcOGd6lKNQhpb6LqWAofZfXUbWiqIxlGj1HLO
- wOiS2FyTi07nwF6RgVZAg7+lIgQwpmg3FAru/YyH61IVYbLM0GWfYBrrB7vOEDF9
- Vgy5t6PygYctsxPOxZeS1fZI08lGIdxWnJynv8/3PmP/yRao8Y5sOzKr0ZYaqAyZ
- ytV0Ec+M1Cnw2XJIxz7YC1Dr1eTN8H5MgILvqlRn4v17bMHKPNDgPNxXWtnmI82e
- WwEM2RtYC+vKu8Nevx9JQeIpcTkNN3LuJp2Ei+w==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=C9X2mW
- DMtoH2BYknOiPGSn8bcWjjd0r0VHFhSjIpKC8=; b=O5FHtErS6ZOxFpR/Tg9fKv
- YDckveI0L21HOwHe4A84tEUkexltIHp83jBC0tc8nus387okR2UQCgd8FAYv3xiP
- WwjrRUskNE3xYojoCvwDlUaEi77N7UUbYjwRQnl0cbAMCi3CLsGfBD2gngEC8oKD
- KXGuQRgl0BNjAvrHKb75p6O2yvfyBY2IFzqCRU0+BRLeFew3X3Qt3UIfpKXqQ9s9
- s3Ji/ivJTm6E3UkO4PGu+g9FB9qvXoV06ylGfr6llnHMH8fJ3/MOB0+YypgKjiFX
- MZ8HErVJ1PYFQTgdX7E47SN2kRRFQdfBsf44+TPVlvreCGe07lesGzrlXCIk3yUA
- ==
-X-ME-Sender: <xms:ROgrXR4MMhv_1dEFUUgHeMqN5xZuH_OC3mk_StntME_F02ppmRQ7Dw>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduvddrheejgdefhecutefuodetggdotefrodftvf
- curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
- uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
- fjughrpefofgggkfgjfhffhffvufgtsehttdertderredtnecuhfhrohhmpedftehnughr
- vgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucfrrghrrg
- hmpehmrghilhhfrhhomheprghnughrvgifsegrjhdrihgurdgruhenucevlhhushhtvghr
- ufhiiigvpedt
-X-ME-Proxy: <xmx:RegrXauHC3hRd_O_2Rdi9GXiHLF5gsIh5YMszXLiiuy849MA8n2l5w>
- <xmx:RegrXT2fwZxDWwJ6-8EwJnz1HaT_Jw5iwDudgk0XnQJ82pZ3n1t8nQ>
- <xmx:RegrXTrYa5jxo3Mns1QY9xBjAdFfELWbYhTD-1ZN2Sc1_2DVgQhM4g>
- <xmx:RugrXSBq56BUSpli_AK8IJZBhONg3n8HE6WvL13CvKuuX79CUQ9X3w>
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id E1A08E00CC; Sun, 14 Jul 2019 22:43:16 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.1.6-731-g19d3b16-fmstable-20190627v1
-Mime-Version: 1.0
-Message-Id: <d096c552-2295-4d02-b4c0-0fb6f26f7cc2@www.fastmail.com>
-In-Reply-To: <587f2424881cbb5a5cc927d220f64375d6414cc0.camel@gmail.com>
-References: <20190618085154.21498-1-rashmica.g@gmail.com>
- <20190618085154.21498-2-rashmica.g@gmail.com>
- <63f23f7c-a096-438d-9ad7-7e6ffae879c1@www.fastmail.com>
- <587f2424881cbb5a5cc927d220f64375d6414cc0.camel@gmail.com>
-Date: Mon, 15 Jul 2019 12:13:26 +0930
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: "Rashmica Gupta" <rashmica.g@gmail.com>, qemu-arm@nongnu.org
-Content-Type: text/plain
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 66.111.4.27
-Subject: Re: [Qemu-arm] [PATCH 1/2] hw/gpio: Add basic Aspeed GPIO model
+ (envelope-from <rashmica.g@gmail.com>) id 1hmuKs-00025V-Fj
+ for qemu-arm@nongnu.org; Mon, 15 Jul 2019 02:19:43 -0400
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:33063)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <rashmica.g@gmail.com>)
+ id 1hmuKs-00025D-9m; Mon, 15 Jul 2019 02:19:42 -0400
+Received: by mail-pg1-x541.google.com with SMTP id m4so7200947pgk.0;
+ Sun, 14 Jul 2019 23:19:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=lBGGTqXH/nhd6kXXGRtBAmp2V+9X81H4xeVXysgM8vc=;
+ b=vQ4s/throNEE+NOHhKSbLCa1ZmLiqj6ajqSYL8zMkEHg+jzuNmgdbiitlZ48Na9loJ
+ pRytoSlhu+D0UM9ZRypDB7UOwoBYt3OuDuemogDIJkZii/tGsozrT0WX8/2f2VS2Qw2L
+ RkeWmDPvk+LDm/j/nLdAVEbBUTaNSPNvhiV0HaX10+Crq01PTmjM6OmRYMM83E2rs6vT
+ v7VpWpLy/IdGL3NzI9LsX/y4xmGvViUGa1vHwKbOv44cI55padV8DNS41lZ8hG0A/0cC
+ RKRG7BaOG4z/G4nVccGtGTPnns72WRBwfH+R4SYfdaPsBSH9iOJW3HwZEnxgL3v6bf8k
+ qhPg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=lBGGTqXH/nhd6kXXGRtBAmp2V+9X81H4xeVXysgM8vc=;
+ b=jkvV2XXGDjiQd8TKlkAXfmSzVajBVmqtefuVFJzprY45pco+zyxpdWfAcOxp8kdz9G
+ DghSAFNGsbA59hYSx1WVkkKCx1Ffsw/qn8wRUwGV/NwNxLegPIN5ytLmhY0GQ5Ahu5Sv
+ 9Jl7G9EoBdAKHpYFGQm0JKbUNXODOkvCacFsDhUo6GLPn2tN+8VElRWirY9vRX5kjIpG
+ aM43VGwvsjtVtAhAfKEQ1kGpUG5xJVV7B3nou1zUJqetiLZpNNS4Yhpjirr7YObuXLQa
+ 2iq1bc0ss7LbEqfO+tGPp9599ITPeUIaLjkJ0O+yxfmK+FhOg2ey/x4UqUEnvL+tGG9E
+ jvfw==
+X-Gm-Message-State: APjAAAX0YGV4E5oGyL3xHNXWai64NGdyJSJLw1oerSSVOEHW8AYl6xuI
+ sSwzG17yxIzsyBMAECBHgDfjarcL
+X-Received: by 2002:a65:458d:: with SMTP id o13mr24881801pgq.34.1563171581229; 
+ Sun, 14 Jul 2019 23:19:41 -0700 (PDT)
+Received: from rashmica.ozlabs.ibm.com ([122.99.82.10])
+ by smtp.gmail.com with ESMTPSA id 4sm20020018pfc.92.2019.07.14.23.19.38
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Sun, 14 Jul 2019 23:19:40 -0700 (PDT)
+From: Rashmica Gupta <rashmica.g@gmail.com>
+To: qemu-arm@nongnu.org
+Date: Mon, 15 Jul 2019 16:19:25 +1000
+Message-Id: <20190715061925.28030-3-rashmica.g@gmail.com>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190715061925.28030-1-rashmica.g@gmail.com>
+References: <20190715061925.28030-1-rashmica.g@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::541
+Subject: [Qemu-arm] [PATCH 2/2] aspeed: add a GPIO controller to the SoC
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -120,454 +109,109 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org,
- Joel Stanley <joel@jms.id.au>
+Cc: peter.maydell@linaro.org, andrew@aj.id.au, qemu-devel@nongnu.org,
+ clg@kaod.org, Rashmica Gupta <rashmica.g@gmail.com>, joel@jms.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FTVWDOj3w1kd
+X-TUID: nzUqLWpsAJXz
 
+Signed-off-by: Rashmica Gupta <rashmica.g@gmail.com>
+---
+ hw/arm/aspeed_soc.c         | 17 +++++++++++++++++
+ include/hw/arm/aspeed_soc.h |  3 +++
+ 2 files changed, 20 insertions(+)
 
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index c6fb3700f2..ff422c8ad1 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -124,6 +124,7 @@ static const AspeedSoCInfo aspeed_socs[] = {
+         .spis_num     = 1,
+         .fmc_typename = "aspeed.smc.fmc",
+         .spi_typename = aspeed_soc_ast2400_typenames,
++        .gpio_typename = "aspeed.gpio-ast2400",
+         .wdts_num     = 2,
+         .irqmap       = aspeed_soc_ast2400_irqmap,
+         .memmap       = aspeed_soc_ast2400_memmap,
+@@ -136,6 +137,7 @@ static const AspeedSoCInfo aspeed_socs[] = {
+         .spis_num     = 1,
+         .fmc_typename = "aspeed.smc.fmc",
+         .spi_typename = aspeed_soc_ast2400_typenames,
++        .gpio_typename = "aspeed.gpio-ast2400",
+         .wdts_num     = 2,
+         .irqmap       = aspeed_soc_ast2400_irqmap,
+         .memmap       = aspeed_soc_ast2400_memmap,
+@@ -148,6 +150,7 @@ static const AspeedSoCInfo aspeed_socs[] = {
+         .spis_num     = 1,
+         .fmc_typename = "aspeed.smc.fmc",
+         .spi_typename = aspeed_soc_ast2400_typenames,
++        .gpio_typename = "aspeed.gpio-ast2400",
+         .wdts_num     = 2,
+         .irqmap       = aspeed_soc_ast2400_irqmap,
+         .memmap       = aspeed_soc_ast2400_memmap,
+@@ -160,6 +163,7 @@ static const AspeedSoCInfo aspeed_socs[] = {
+         .spis_num     = 2,
+         .fmc_typename = "aspeed.smc.ast2500-fmc",
+         .spi_typename = aspeed_soc_ast2500_typenames,
++        .gpio_typename = "aspeed.gpio-ast2500",
+         .wdts_num     = 3,
+         .irqmap       = aspeed_soc_ast2500_irqmap,
+         .memmap       = aspeed_soc_ast2500_memmap,
+@@ -246,6 +250,9 @@ static void aspeed_soc_init(Object *obj)
+ 
+     sysbus_init_child_obj(obj, "xdma", OBJECT(&s->xdma), sizeof(s->xdma),
+                           TYPE_ASPEED_XDMA);
++
++    sysbus_init_child_obj(obj, "gpio", OBJECT(&s->gpio), sizeof(s->gpio),
++                          sc->info->gpio_typename);
+ }
+ 
+ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+@@ -425,6 +432,16 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+                     sc->info->memmap[ASPEED_XDMA]);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->xdma), 0,
+                        aspeed_soc_get_irq(s, ASPEED_XDMA));
++
++    /* GPIO */
++    object_property_set_bool(OBJECT(&s->gpio), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio), 0, sc->info->memmap[ASPEED_GPIO]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
++                       aspeed_soc_get_irq(s, ASPEED_GPIO));
+ }
+ static Property aspeed_soc_properties[] = {
+     DEFINE_PROP_UINT32("num-cpus", AspeedSoCState, num_cpus, 0),
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index cef605ad6b..fa04abddd8 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -22,6 +22,7 @@
+ #include "hw/ssi/aspeed_smc.h"
+ #include "hw/watchdog/wdt_aspeed.h"
+ #include "hw/net/ftgmac100.h"
++#include "hw/gpio/aspeed_gpio.h"
+ 
+ #define ASPEED_SPIS_NUM  2
+ #define ASPEED_WDTS_NUM  3
+@@ -47,6 +48,7 @@ typedef struct AspeedSoCState {
+     AspeedSDMCState sdmc;
+     AspeedWDTState wdt[ASPEED_WDTS_NUM];
+     FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
++    AspeedGPIOState gpio;
+ } AspeedSoCState;
+ 
+ #define TYPE_ASPEED_SOC "aspeed-soc"
+@@ -60,6 +62,7 @@ typedef struct AspeedSoCInfo {
+     int spis_num;
+     const char *fmc_typename;
+     const char **spi_typename;
++    const char *gpio_typename;
+     int wdts_num;
+     const int *irqmap;
+     const hwaddr *memmap;
+-- 
+2.20.1
 
-On Mon, 15 Jul 2019, at 12:06, Rashmica Gupta wrote:
-> Sorry for the late reply! I agree with most of your feedback and will
-> send out
-> a v2 shortly with those changes. I have a few replies below
-> 
-> [snip]
-> 
-> > > +static const struct AspeedGPIO gpios[0x1f0] = {
-> > > +    /* Set ABCD */
-> > > +    [GPIO_ABCD_DATA_VALUE] = {0, read_data_value,
-> > > _write_data_value},
-> > 
-> > Maybe there would be less tedium (and risk of minor bugs) here if we
-> > add
-> > a table for looking up the read/write callbacks from a type, and just
-> > stash
-> > the type in struct AspeedGPIO (or a pointer to the corresponding type
-> > ops),
-> > e.g:
-> > 
-> > enum gpio_property { gpio_direction = 0, gpio_int_enable, ... };
-> > 
-> > struct aspeed_gpio_reg_ops {
-> >     int (*read)(...);
-> >     int (*write)(...);
-> > };
-> > 
-> > struct aspeed_gpio_reg_ops gpio_reg_ops[] = {
-> >     [gpio_direction]  = { .read = read_direction, .write =
-> > write_direction };
-> >     ...
-> > };
-> > 
-> > Then we have:
-> > 
-> > static const struct AspeedGPIO gpios[...] = {
-> >      [GPIO_ABCD_DIRECTION] = { .set = 0, .type = gpio_direction },
-> >      ...
-> > };
-> > 
-> > Not wedded to the idea, just thinking out loud. What do you think?
-> > 
-> 
-> I'm not a huge fan of the extra indirection. It is less error prone but
-> is this a place that is likely to be updated regularly?
-
-Right - if you've written correctly already then there's not much benefit.
-
-> 
-> 
-> > > +    [GPIO_ABCD_DIRECTION] = {0, read_direction, _write_direction},
-> > > +    [GPIO_ABCD_INT_ENABLE] = {0, read_int_enable,
-> > > _write_int_enable},
-> > > +    [GPIO_ABCD_INT_SENS_0] = {0, read_int_sens_0,
-> > > _write_int_sens_0},
-> > > +    [GPIO_ABCD_INT_SENS_1] = {0, read_int_sens_1,
-> > > _write_int_sens_1},
-> > > +    [GPIO_ABCD_INT_SENS_2] = {0, read_int_sens_2,
-> > > _write_int_sens_2},
-> > > +    [GPIO_ABCD_INT_STATUS] = {0, read_int_status,
-> > > _write_int_status},
-> > > +    [GPIO_ABCD_RESET_TOLERANT] = {0, read_reset_tol,
-> > > _write_reset_tol},
-> > > +    [GPIO_ABCD_DEBOUNCE_1] = {0, read_debounce_1,
-> > > _write_debounce_1},
-> > > +    [GPIO_ABCD_DEBOUNCE_2] = {0, read_debounce_2,
-> > > _write_debounce_2},
-> > > +    [GPIO_ABCD_COMMAND_SRC_0] = {0, read_cmd_source_0, 
-> > > _write_cmd_source_0},
-> > > +    [GPIO_ABCD_COMMAND_SRC_1] = {0, read_cmd_source_1, 
-> > > _write_cmd_source_1},
-> > > +    [GPIO_ABCD_DATA_READ] = {0, read_data, NULL},
-> > > +    [GPIO_ABCD_INPUT_MASK] = {0, read_input_mask,
-> > > _write_input_mask},
-> > > +    /* Set EFGH */
-> > > +    [GPIO_EFGH_DATA_VALUE] = {1, read_data_value,
-> > > _write_data_value},
-> > > +    [GPIO_EFGH_DIRECTION] = {1, read_direction, _write_direction
-> > > },
-> > > +    [GPIO_EFGH_INT_ENABLE] = {1, read_int_enable,
-> > > _write_int_enable},
-> > > +    [GPIO_EFGH_INT_SENS_0] = {1, read_int_sens_0,
-> > > _write_int_sens_0},
-> > > +    [GPIO_EFGH_INT_SENS_1] = {1, read_int_sens_1,
-> > > _write_int_sens_1},
-> > > +    [GPIO_EFGH_INT_SENS_2] = {1, read_int_sens_2,
-> > > _write_int_sens_2},
-> > > +    [GPIO_EFGH_INT_STATUS] = {1, read_int_status,
-> > > _write_int_status},
-> > > +    [GPIO_EFGH_RESET_TOL] = {1,
-> > > read_reset_tol,   _write_reset_tol},
-> > > +    [GPIO_EFGH_DEBOUNCE_1] = {1,
-> > > read_debounce_1,  _write_debounce_1},
-> > > +    [GPIO_EFGH_DEBOUNCE_2] = {1,
-> > > read_debounce_2,  _write_debounce_2},
-> > > +    [GPIO_EFGH_COMMAND_SRC_0] = {1, read_cmd_source_0,  
-> > > _write_cmd_source_0},
-> > > +    [GPIO_EFGH_COMMAND_SRC_1] = {1, read_cmd_source_1,  
-> > > _write_cmd_source_1},
-> > > +    [GPIO_EFGH_DATA_READ] = {1, read_data, NULL},
-> > > +    [GPIO_EFGH_INPUT_MASK] = {1,
-> > > read_input_mask,  _write_input_mask},
-> > > +    /* Set IJKL */
-> > > +    [GPIO_IJKL_DATA_VALUE] = {2, read_data_value,
-> > > _write_data_value},
-> > > +    [GPIO_IJKL_DIRECTION] = {2, read_direction, _write_direction},
-> > > +    [GPIO_IJKL_INT_ENABLE] = {2, read_int_enable,
-> > > _write_int_enable},
-> > > +    [GPIO_IJKL_INT_SENS_0] = {2, read_int_sens_0,
-> > > _write_int_sens_0},
-> > > +    [GPIO_IJKL_INT_SENS_1] = {2, read_int_sens_1,
-> > > _write_int_sens_1},
-> > > +    [GPIO_IJKL_INT_SENS_2] = {2, read_int_sens_2,
-> > > _write_int_sens_2},
-> > > +    [GPIO_IJKL_INT_STATUS] = {2, read_int_status,
-> > > _write_int_status},
-> > > +    [GPIO_IJKL_RESET_TOLERANT] = {2, read_reset_tol,
-> > > _write_reset_tol},
-> > > +    [GPIO_IJKL_DEBOUNCE_1] = {2, read_debounce_1,
-> > > _write_debounce_1},
-> > > +    [GPIO_IJKL_DEBOUNCE_2] = {2, read_debounce_2,
-> > > _write_debounce_2},
-> > > +    [GPIO_IJKL_COMMAND_SRC_0] = {2, read_cmd_source_0, 
-> > > _write_cmd_source_0},
-> > > +    [GPIO_IJKL_COMMAND_SRC_1] = {2, read_cmd_source_1, 
-> > > _write_cmd_source_1},
-> > > +    [GPIO_IJKL_DATA_READ] = {2, read_data, NULL},
-> > > +    [GPIO_IJKL_INPUT_MASK] = {2, read_input_mask,
-> > > _write_input_mask},
-> > > +    /* Set MNOP */
-> > > +    [GPIO_MNOP_DATA_VALUE] = {3, read_data_value,
-> > > _write_data_value},
-> > > +    [GPIO_MNOP_DIRECTION] = {3, read_direction, _write_direction},
-> > > +    [GPIO_MNOP_INT_ENABLE] = {3, read_int_enable,
-> > > _write_int_enable},
-> > > +    [GPIO_MNOP_INT_SENS_0] = {3, read_int_sens_0,
-> > > _write_int_sens_0},
-> > > +    [GPIO_MNOP_INT_SENS_1] = {3, read_int_sens_1,
-> > > _write_int_sens_1},
-> > > +    [GPIO_MNOP_INT_SENS_2] = {3, read_int_sens_2,
-> > > _write_int_sens_2},
-> > > +    [GPIO_MNOP_INT_STATUS] = {3, read_int_status,
-> > > _write_int_status},
-> > > +    [GPIO_MNOP_RESET_TOLERANT] = {3, read_reset_tol,  
-> > > _write_reset_tol},
-> > > +    [GPIO_MNOP_DEBOUNCE_1] = {3, read_debounce_1,
-> > > _write_debounce_1},
-> > > +    [GPIO_MNOP_DEBOUNCE_2] = {3, read_debounce_2,
-> > > _write_debounce_2},
-> > > +    [GPIO_MNOP_COMMAND_SRC_0] = {3, read_cmd_source_0, 
-> > > _write_cmd_source_0},
-> > > +    [GPIO_MNOP_COMMAND_SRC_1] = {3, read_cmd_source_1, 
-> > > _write_cmd_source_1},
-> > > +    [GPIO_MNOP_DATA_READ] = {3, read_data, NULL},
-> > > +    [GPIO_MNOP_INPUT_MASK] = {3, read_input_mask,
-> > > _write_input_mask},
-> > > +    /* Set QRST */
-> > > +    [GPIO_QRST_DATA_VALUE] = {4, read_data_value,
-> > > _write_data_value},
-> > > +    [GPIO_QRST_DIRECTION] = {4, read_direction, _write_direction},
-> > > +    [GPIO_QRST_INT_ENABLE] = {4, read_int_enable,
-> > > _write_int_enable},
-> > > +    [GPIO_QRST_INT_SENS_0] = {4, read_int_sens_0,
-> > > _write_int_sens_0},
-> > > +    [GPIO_QRST_INT_SENS_1] = {4, read_int_sens_1,
-> > > _write_int_sens_1},
-> > > +    [GPIO_QRST_INT_SENS_2] = {4, read_int_sens_2,
-> > > _write_int_sens_2},
-> > > +    [GPIO_QRST_INT_STATUS] = {4, read_int_status,
-> > > _write_int_status},
-> > > +    [GPIO_QRST_RESET_TOLERANT] = {4, read_reset_tol,
-> > > _write_reset_tol},
-> > > +    [GPIO_QRST_DEBOUNCE_1] = {4, read_debounce_1,
-> > > _write_debounce_1},
-> > > +    [GPIO_QRST_DEBOUNCE_2] = {4, read_debounce_2,
-> > > _write_debounce_2},
-> > > +    [GPIO_QRST_COMMAND_SRC_0] = {4, read_cmd_source_0, 
-> > > _write_cmd_source_0},
-> > > +    [GPIO_QRST_COMMAND_SRC_1] = {4, read_cmd_source_1, 
-> > > _write_cmd_source_1},
-> > > +    [GPIO_QRST_DATA_READ] = {4, read_data, NULL},
-> > > +    [GPIO_QRST_INPUT_MASK] = {4,
-> > > read_input_mask,  _write_input_mask},
-> > > +    /* Set UVWX */
-> > > +    [GPIO_UVWX_DATA_VALUE] = {5, read_data_value,
-> > > _write_data_value},
-> > > +    [GPIO_UWVX_DIRECTION] = {5, read_direction, _write_direction},
-> > > +    [GPIO_UVWX_INT_ENABLE] = {5, read_int_enable,
-> > > _write_int_enable},
-> > > +    [GPIO_UVWX_INT_SENS_0] = {5, read_int_sens_0,
-> > > _write_int_sens_0},
-> > > +    [GPIO_UVWX_INT_SENS_1] = {5, read_int_sens_1,
-> > > _write_int_sens_1},
-> > > +    [GPIO_UVWX_INT_SENS_2] = {5, read_int_sens_2,
-> > > _write_int_sens_2},
-> > > +    [GPIO_UVWX_INT_STATUS] = {5, read_int_status,
-> > > _write_int_status},
-> > > +    [GPIO_UVWX_RESET_TOLERANT] = {5, read_reset_tol,
-> > > _write_reset_tol},
-> > > +    [GPIO_UVWX_DEBOUNCE_1] = {5, read_debounce_1,
-> > > _write_debounce_1},
-> > > +    [GPIO_UVWX_DEBOUNCE_2] = {5, read_debounce_2,
-> > > _write_debounce_2},
-> > > +    [GPIO_UVWX_COMMAND_SRC_0] = {5, read_cmd_source_0, 
-> > > _write_cmd_source_0},
-> > > +    [GPIO_UVWX_COMMAND_SRC_1] = {5, read_cmd_source_1, 
-> > > _write_cmd_source_1},
-> > > +    [GPIO_UVWX_DATA_READ] = {5, read_data, NULL},
-> > > +    [GPIO_UVWX_INPUT_MASK] = {5, read_input_mask,
-> > > _write_input_mask},
-> > > +    /* Set YZAAAB */
-> > > +    [GPIO_YZAAAB_DATA_VALUE] = {6, read_data_value,
-> > > _write_data_value},
-> > > +    [GPIO_YZAAAB_DIRECTION] = {6, read_direction,
-> > > _write_direction},
-> > > +    [GPIO_YZAAAB_INT_ENABLE] = {6, read_int_enable,
-> > > _write_int_enable},
-> > > +    [GPIO_YZAAAB_INT_SENS_0] = {6, read_int_sens_0,
-> > > _write_int_sens_0},
-> > > +    [GPIO_YZAAAB_INT_SENS_1] = {6, read_int_sens_1,
-> > > _write_int_sens_1},
-> > > +    [GPIO_YZAAAB_INT_SENS_2] = {6, read_int_sens_2,
-> > > _write_int_sens_2},
-> > > +    [GPIO_YZAAAB_INT_STATUS] = {6, read_int_status,
-> > > _write_int_status},
-> > > +    [GPIO_YZAAAB_RESET_TOLERANT] = {6, read_reset_tol, 
-> > > _write_reset_tol},
-> > > +    [GPIO_YZAAAB_DEBOUNCE_1] = {6, read_debounce_1,
-> > > _write_debounce_1},
-> > > +    [GPIO_YZAAAB_DEBOUNCE_2] = {6, read_debounce_2,
-> > > _write_debounce_2},
-> > > +    [GPIO_YZAAAB_COMMAND_SRC_0] = {6, read_cmd_source_0, 
-> > > _write_cmd_source_0},
-> > > +    [GPIO_YZAAAB_COMMAND_SRC_1] = {6, read_cmd_source_1, 
-> > > _write_cmd_source_1},
-> > > +    [GPIO_YZAAAB_DATA_READ] = {6, read_data, NULL},
-> > > +    [GPIO_YZAAAB_INPUT_MASK] = {6, read_input_mask,
-> > > _write_input_mask},
-> > > +    /* Set AC */
-> > > +    [GPIO_AC_DATA_VALUE] = {7, read_data_value,
-> > > _write_data_value},
-> > > +    [GPIO_AC_DIRECTION] = {7, read_direction, _write_direction},
-> > > +    [GPIO_AC_INT_ENABLE] = {7, read_int_enable,
-> > > _write_int_enable},
-> > > +    [GPIO_AC_INT_SENS_0] = {7, read_int_sens_0,
-> > > _write_int_sens_0},
-> > > +    [GPIO_AC_INT_SENS_1] = {7, read_int_sens_1,
-> > > _write_int_sens_1},
-> > > +    [GPIO_AC_INT_SENS_2] = {7, read_int_sens_2,
-> > > _write_int_sens_2},
-> > > +    [GPIO_AC_INT_STATUS] = {7, read_int_status,
-> > > _write_int_status},
-> > > +    [GPIO_AC_RESET_TOLERANT] = {7, read_reset_tol,
-> > > _write_reset_tol},
-> > > +    [GPIO_AC_DEBOUNCE_1] = {7, read_debounce_1,
-> > > _write_debounce_1},
-> > > +    [GPIO_AC_DEBOUNCE_2] = {7, read_debounce_2,
-> > > _write_debounce_2},
-> > > +    [GPIO_AC_COMMAND_SRC_0] = {7, read_cmd_source_0, 
-> > > _write_cmd_source_0},
-> > > +    [GPIO_AC_COMMAND_SRC_1] = {7, read_cmd_source_1, 
-> > > _write_cmd_source_1},
-> > > +    [GPIO_AC_DATA_READ] = {7, read_data, NULL},
-> > > +    [GPIO_AC_INPUT_MASK] = {7,
-> > > read_input_mask,     _write_input_mask},
-> > > +    /* Debounce registers */
-> > > +    [GPIO_DEBOUNCE_TIME_1] = {-1, NULL, NULL},
-> > > +};
-> > > +
-> > > +static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset,
-> > > uint32_t 
-> > > size)
-> > > +{
-> > > +    AspeedGPIOState *s = ASPEED_GPIO(opaque);
-> > > +    uint32_t val = 0;
-> > > +
-> > > +    if (size != 4) {
-> > > +        return 0;
-> > > +    }
-> > > +
-> > > +    if (gpios[offset].get == NULL) {
-> > 
-> > With the AST2600 we might need to make gpios class-specific rather
-> > than
-> > a static global to the compilation unit (to deal with the 1.8V GPIO
-> > registers
-> > later in the address-space). Not sure though, haven't thought about
-> > it for
-> > more than this paragraph.
-> 
-> 
-> Yup, I agree. Still trying to sort out a nice way to deal with the
-> AST2600 differences so I figured I'd leave it like this for now? 
-
-Okay.
-
-> 
-> > 
-> > > +        qemu_log_mask(LOG_GUEST_ERROR, "no getter for offset
-> > > %lx", 
-> > > offset);
-> > 
-> > Really this is a model error. We should only encounter it if we
-> > haven't
-> > completely described the controller. So maybe it should be an assert
-> > or some kind of non-guest warning?
-> >
-> 
-> I don't think this is quite true. There are values in the gpio memory
-> space
-> that do not have a register associated with them, ie registers with
-> offsets 0x138 and 0x140 exist, but there is no 0x13c. So if the
-> kernel tries to access this address, this isn't really a gpio model
-> error? 
-
-Ah, clearly I hadn't looked closely enough :) Well spotted.
-
-> 
-> 
-> > > +        return 0;
-> > > +    }
-> > > +
-> > > +    val = gpios[offset].get(&s->sets[gpios[offset].set_idx]);
-> > 
-> > The indexing here is starting to get a bit hard to follow. I think we
-> > could
-> > improve readability by introducing some locals, and rewriting in
-> > terms
-> > of those:
-> > 
-> > const struct AspeedGPIO *reg = &gpios[offset];
-> > const struct GPIORegs *set = &s->sets[gpio.set_idx];
-> > 
-> > if (!reg.get) {
-> >     ...
-> > }
-> > 
-> > val = reg.get(set);
-> > 
-> > I think it makes the relationship of the structs a bit clearer too,
-> > and I think
-> > it also suggests we could improve the names:
-> > 
-> > s/struct AspeedGPIO/struct AspeedGPIOReg/
-> > s/struct GPIORegs/struct GPIOProperties/
-> > 
-> 
-> I agree with the local variables, and renaming AspeedGPIO-
-> >AspeedGPIOReg
-> but I think GPIOSet makes more sense than GPIOProperties.
-> 
-
-Okay.
-
-> 
-> 
-> > GPIOProperties clashes a bit with GPIOSetProperties though, so maybe
-> > we
-> > need to think of a better name for that too?
-> > 
-> > > +    return (uint64_t) val;
-> > > +}
-> > > +
-> > > +static void aspeed_gpio_write(void *opaque, hwaddr offset,
-> > > uint64_t 
-> > > data,
-> > > +static GPIOSetProperties ast2400_set_props[] = {
-> 	
-> [snip]
-> 
-> > > +    [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-> > > +    [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-> > > +    [2] = {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
-> > > +    [3] = {0xffffffff,  0xffffffff,  {"M", "N", "O", "P"} },
-> > > +    [4] = {0xffffffff,  0xffffffff,  {"Q", "R", "S", "T"} },
-> > > +    [5] = {0xffffffff,  0x0000ffff,  {"U", "V", "W", "X"} },
-> > > +    [6] = {0x0000000f,  0x0fffff0f,  {"Y", "Z", "AA", "AB"} },
-> > > +};
-> > > +
-> > > +static GPIOSetProperties ast2500_set_props[] = {
-> > > +    [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-> > > +    [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-> > > +    [2] = {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
-> > > +    [3] = {0xffffffff,  0xffffffff,  {"M", "N", "O", "P"} },
-> > > +    [4] = {0xffffffff,  0xffffffff,  {"Q", "R", "S", "T"} },
-> > > +    [5] = {0xffffffff,  0x0000ffff,  {"U", "V", "W", "X"} },
-> > > +    [6] = {0xffffff0f,  0x0fffff0f,  {"Y", "Z", "AA", "AB"} },
-> > > +    [7] = {0x000000ff,  0x000000ff,  {"AC"} },
-> > > +};
-> > > +
-> > > +static AspeedGPIOController controllers[] = {
-> > > +    {
-> > > +        .name           = TYPE_ASPEED_GPIO "-ast2500",
-> > > +        .props          = ast2500_set_props,
-> > > +        .nr_gpio_pins   = 228,
-> > > +        .nr_gpio_sets   = 8,
-> > > +        .gap            = 220,
-> > > +    }, {
-> > > +        .name           = TYPE_ASPEED_GPIO "-ast2400",
-> > > +        .props          = ast2400_set_props,
-> > > +        .nr_gpio_pins   = 216,
-> > > +        .nr_gpio_sets   = 7,
-> > > +        .gap            = 196,
-> > > +    }
-> > > +};
-> > > +
-> > > +static const TypeInfo aspeed_gpio_info = {
-> > > +    .name = TYPE_ASPEED_GPIO,
-> > > +    .parent = TYPE_SYS_BUS_DEVICE,
-> > > +    .instance_size = sizeof(AspeedGPIOState),
-> > > +    .class_size     = sizeof(AspeedGPIOClass),
-> > > +    .instance_init = aspeed_gpio_init,
-> > > +    .abstract       = true,
-> > > +};
-> > > +
-> > > +static void aspeed_gpio_register_types(void)
-> > > +{
-> > > +    int i;
-> > > +
-> > > +    type_register_static(&aspeed_gpio_info);
-> > > +    for (i = 0; i < ARRAY_SIZE(controllers); i++) {
-> > > +        TypeInfo t = {
-> > > +            .name = controllers[i].name,
-> > > +            .parent = TYPE_ASPEED_GPIO,
-> > > +            .class_init = aspeed_gpio_class_init,
-> > > +            .class_data = (void *)&controllers[i],
-> > > +        };
-> > > +        type_register(&t);
-> > > +    };
-> > 
-> > I think we want separate classes for the 2400 and 2500, especially
-> > with
-> > the 2600 on the way.
-> 
-> I thought this was defining seperate classes that just happen to have
-> the same init function? I don't fully grasp classes in qemu yet, so
-> likely to be wrong :) 
-
-Yeah, I'm a bit out of the loop here too, was just expecting to see explicit
-typedef names for each variant and didn't. This is probably fine as is,
-though someone with a better grip on it should weigh in.
-
-Andrew

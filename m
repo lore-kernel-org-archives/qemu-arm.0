@@ -1,101 +1,85 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp809776wrv;
-        Tue, 16 Jul 2019 04:02:17 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyeNERfPDa3HgJku2eINXW+SpRiuraLlOpxFvjslIjC4sMm4ZPm1TUWJTc7JlVbGkg/p4dR
-X-Received: by 2002:a50:f05a:: with SMTP id u26mr28583279edl.116.1563274937722;
-        Tue, 16 Jul 2019 04:02:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563274937; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp872619wrv;
+        Tue, 16 Jul 2019 04:58:36 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwJDJaOMy5pIUHgS7gmpyYpG7VsYiPGyLGxz5atH/7SMN6SFy64GBFsrKLFN2+ta0/3sEsO
+X-Received: by 2002:a50:9203:: with SMTP id i3mr29382837eda.302.1563278316606;
+        Tue, 16 Jul 2019 04:58:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563278316; cv=none;
         d=google.com; s=arc-20160816;
-        b=ffxcQcYrDkBffXoQ5TsKhadJEIiPXGaZHn+267HSW9h8EZyg5ABY57VasrU+nUcpb/
-         JtR2d8+slZ0XPx57SWaJC2Ut3DX16F99WyoLO2tOmynXpE+Nz3CHLUOGpzVY7Ep7vXJu
-         Immq+7vbJPncPtwjGIZKnyKRvoYk0PBLbKFvhVBpIM7gEjhZTesEheVRkbHggW7LEhfW
-         xNk2HUM5K4RA6fg0wFCRsFIZyfiOm7jqS8r/6tr3LC4NFe7brjLF4dIEGkQAfxf3XlJy
-         um/ZMM2rgETnYFJYl36aRgbi4GynTCHQ3UCG8lSce5gHVIQo6FkG4uOOT2JLvAOLzhKd
-         +gjg==
+        b=Z4vdn9Y1GQvZYj5CIMV5ZM78iEE/Yo5LOaP052v8puaoHHM2e+mFCM6rwMTOxSfu8E
+         YMjVP33rRdyXtEKpCVEsNgaKceiybeEOETK3bckwbSJjLjzhdXAv6Fa00gJtzwHogH+t
+         u8YceziTjNfX9KgOM2OwObKXkc87qnABCxkPtizs+e8DVwLQehEww9ceq5fQR86ji4wJ
+         9CHc0GlD7Sff7g9kcsxi6K75upZlssa1u6hVe+R0mgkpolpj4Raq4wgIT2uOhAuvYuE6
+         xcrGampmvTFm67m0KAKPgUyBE9jVet76R5NvOx/sD9ktS8aoVIzLlsLnR94yIDTHjI4F
+         LseQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=mLuPacixCfQL1CqAQgfCd9QBEfriLajdZzVnBsDFPn4=;
-        b=hnGNH/i3+Qq+A+dsV8kfa7YNWLD5PAk5PDL/r1JTGhU0tr4QaKXBFtKFSASdmFuis/
-         vge5LZswWkmdiT3gJZ7bN1RjYjgXJ/1gDXn181+ROJP8ad3TjM3fE+Fl6jP7iebjQbiz
-         +zagckPxUL9Bq7/QgNv8jNTallcX1+i7tQPZ1WLzUoET+GStIDfTbHUHmv2bLsDzScSv
-         Q6tBAIBVE99/gyGHeeBVV6XYwMqK06NWyjEIi6euiOEl/tbbdcx47g5JU34eCxTd7C0p
-         XqzCMdxbeDAZR1R7x3m6ZEnuM55FXQ06lWXhXlbSXp5xCzRJPVAtd045Yp+3F29Y5hlZ
-         0QQA==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=/ry4UQX8ArdtliwPmZ0YyCAvrsF1omQdZ2YXaoHafys=;
+        b=yfMOsloor3DsirJNjXDxPf4/LiNcea8JU0SpHa4cn6cUjyxa69X9fsuj4nQ8tNCRtX
+         MzfUi24/gETD6H23S4xZ5C9fZrYxPNK0/UrweDerSk3NU4eLzScY7y6JMiLCbGJDPwF6
+         EzONWPXPagOgcHACARqPqz6euxN48OBGE9cUVC+acCxXO78FQf/pN7VcQJy6enPCvT5f
+         ohyKfKnIdWIWuBnHKCxMSYihFpbbjszBkojIaB+LVqpcUQQvqilmy12H/YOI3NzFYk9o
+         RhtZ/NwCp05f2OV9iUM6PStZaXG/818AfJErFErbQXarVxukTySD0j8+CDY1C9HrQw0D
+         1OiQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iNmU2TJZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g26si10777635ejr.355.2019.07.16.04.02.17
+        by mx.google.com with ESMTPS id e14si12620406ede.277.2019.07.16.04.58.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jul 2019 04:02:17 -0700 (PDT)
+        Tue, 16 Jul 2019 04:58:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iNmU2TJZ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47226 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47492 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hnLDs-0008DV-JF
-	for alex.bennee@linaro.org; Tue, 16 Jul 2019 07:02:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58407)
+	id 1hnM6N-0002OV-HS
+	for alex.bennee@linaro.org; Tue, 16 Jul 2019 07:58:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46933)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <rfried.dev@gmail.com>) id 1hnLDX-0007AJ-Ry
- for qemu-arm@nongnu.org; Tue, 16 Jul 2019 07:02:00 -0400
+ (envelope-from <jasowang@redhat.com>) id 1hnM6K-0002OM-JB
+ for qemu-arm@nongnu.org; Tue, 16 Jul 2019 07:58:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <rfried.dev@gmail.com>) id 1hnLDW-0006WH-Mv
- for qemu-arm@nongnu.org; Tue, 16 Jul 2019 07:01:55 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:35834)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <rfried.dev@gmail.com>)
- id 1hnLDN-0006OM-Gf; Tue, 16 Jul 2019 07:01:45 -0400
-Received: by mail-wm1-x341.google.com with SMTP id l2so18234964wmg.0;
- Tue, 16 Jul 2019 04:01:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=mLuPacixCfQL1CqAQgfCd9QBEfriLajdZzVnBsDFPn4=;
- b=iNmU2TJZyaAxRkP9j0BcWKwgxig6Ed8x7tJmb38WV7RCJk/im0DjVWIxJYdG3/TwlX
- NVKPCU080FdJZjAmRhILgGUhrlq4/O+ILvaSmmkfqTHyGpXY2q3rQG8LdSGU1M2gc49Z
- rjH9HlXPq6p287V7P+clOjHZ6FfbS/4s9YgmmBsGAS1eNFny0jXMu2r6r7dYxb7hS/YM
- IUMSbqXy+eUZuCTH+VnIi5tDEj7C+RnkYCZ59fnCVs2dT8GBRnSZ63td3ePqL8u2BTuJ
- mJQRjJSIXKbTVBpqQm6U9V8wWB6WuO/gSa7nqEqWzMNdM4nKTshfbuB3BaYh2CbJOFj9
- ewPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=mLuPacixCfQL1CqAQgfCd9QBEfriLajdZzVnBsDFPn4=;
- b=eOEGxtxp4t4cbuqyJkzJPC6WPB9c0Y9aAClkZX+J+FoJG9aYCAXAl61ZyL+T1SgWVh
- GdMAz4k/lVAKRowXTYMA6Rf9cSBVrLiKPLRzmw/wwGg7YvQAGazvjQ2/mQlrLMwCDkCl
- SRYaEf2p6fiW54glEkjCpkduA3vtyxPeqiQNkFd9fzoL3g+IhrTV7qSi4NSh5Nm3W7z4
- r43vC6nM7lH5EDYtyqiG4n0B7E8g+W+6AESexzuiwT4Z0p5ICv+ZANnvL7x9fnEglbG8
- bxaJYpA8WlW07PFsEiAlTMU1HYNq0gcUhMY3Roy01mSUUHu0RhlYRLv92jQKS/kp2XW8
- EgaQ==
-X-Gm-Message-State: APjAAAWdov+jVLKDRKo1zYe1KfkChBqNYdikGfXUcoaevgSjXPX/420v
- NTunSMebcyU1Nn3MLl1YqmWhkJ6mFMZlkajjQqs=
-X-Received: by 2002:a1c:35c2:: with SMTP id c185mr29733757wma.58.1563274904137; 
- Tue, 16 Jul 2019 04:01:44 -0700 (PDT)
+ (envelope-from <jasowang@redhat.com>) id 1hnM6J-0007vc-KF
+ for qemu-arm@nongnu.org; Tue, 16 Jul 2019 07:58:32 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48290)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <jasowang@redhat.com>)
+ id 1hnM6J-0007v9-EU; Tue, 16 Jul 2019 07:58:31 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 89FF13082135;
+ Tue, 16 Jul 2019 11:58:30 +0000 (UTC)
+Received: from [10.72.12.91] (ovpn-12-91.pek2.redhat.com [10.72.12.91])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2D82A5E7A5;
+ Tue, 16 Jul 2019 11:58:23 +0000 (UTC)
+To: Ramon Fried <rfried.dev@gmail.com>, qemu-devel@nongnu.org
+References: <20190716105951.25446-1-rfried.dev@gmail.com>
+From: Jason Wang <jasowang@redhat.com>
+Message-ID: <f6b7308b-f642-a691-eb97-1d74360aebac@redhat.com>
+Date: Tue, 16 Jul 2019 19:58:22 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-References: <20190615051722.13994-1-rfried.dev@gmail.com>
- <555fb9b5-361f-fc3f-ff35-38b993a29edd@redhat.com>
-In-Reply-To: <555fb9b5-361f-fc3f-ff35-38b993a29edd@redhat.com>
-From: Ramon Fried <rfried.dev@gmail.com>
-Date: Tue, 16 Jul 2019 14:01:33 +0300
-Message-ID: <CAGi-RUJPD+q8sCbRfffM2bxc7deLNY4Ewg0AOdkMKfJGQs95Aw@mail.gmail.com>
-To: Jason Wang <jasowang@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <20190716105951.25446-1-rfried.dev@gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.42]); Tue, 16 Jul 2019 11:58:30 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::341
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] net: cadence_gem: clear RX
- control descriptor
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v2] net: cadence_gem: clear RX control
+ descriptor
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,63 +91,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
+Cc: alistair@alistair23.me,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ "open list:Xilinx Zynq" <qemu-arm@nongnu.org>, peter.maydell@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VwJYU7H1o7Gz
+X-TUID: WYtCO82v422j
 
-On Tue, Jul 16, 2019 at 11:42 AM Jason Wang <jasowang@redhat.com> wrote:
+
+On 2019/7/16 =E4=B8=8B=E5=8D=886:59, Ramon Fried wrote:
+> The RX ring descriptors control field is used for setting
+> SOF and EOF (start of frame and end of frame).
+> The SOF and EOF weren't cleared from the previous descriptors,
+> causing inconsistencies in ring buffer.
+> Fix that by clearing the control field of every descriptors we're
+> processing.
 >
+> Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 >
-> On 2019/6/15 =E4=B8=8B=E5=8D=881:17, Ramon Fried wrote:
-> > The RX ring descriptors control field is used for setting
-> > SOF and EOF (start of frame and end of frame).
-> > The SOF and EOF weren't cleared from the previous descriptors,
-> > causing inconsistencies in ring buffer.
-> > Fix that by clearing the control field of every descriptors we're
-> > processing.
-> >
-> > Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
-> > ---
-> >   hw/net/cadence_gem.c | 7 +++++++
-> >   1 file changed, 7 insertions(+)
-> >
-> > diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> > index ecee22525c..d83a82bdb0 100644
-> > --- a/hw/net/cadence_gem.c
-> > +++ b/hw/net/cadence_gem.c
-> > @@ -406,6 +406,11 @@ static inline void rx_desc_set_sof(uint32_t *desc)
-> >       desc[1] |=3D DESC_1_RX_SOF;
-> >   }
-> >
-> > +static inline void rx_desc_clear(uint32_t *desc)
+> ---
+> v2:
+>    * change function name to rx_desc_clear_control as proposed by
+>      Jason Wang
+>    * Move the function call above the comment, as proposed by
+>      Philippe Mathieu-Daud=C3=A9
 >
+>   hw/net/cadence_gem.c | 7 +++++++
+>   1 file changed, 7 insertions(+)
 >
-> Nit: is this better to name this as "rx_desc_clear_control()" ?
-I agree, sent v2.
->
-> Thanks
->
->
-> > +{
-> > +    desc[1]  =3D 0;
-> > +}
-> > +
-> >   static inline void rx_desc_set_eof(uint32_t *desc)
-> >   {
-> >       desc[1] |=3D DESC_1_RX_EOF;
-> > @@ -994,6 +999,8 @@ static ssize_t gem_receive(NetClientState *nc, cons=
+> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+> index ecee22525c..cca3ce7f56 100644
+> --- a/hw/net/cadence_gem.c
+> +++ b/hw/net/cadence_gem.c
+> @@ -406,6 +406,11 @@ static inline void rx_desc_set_sof(uint32_t *desc)
+>       desc[1] |=3D DESC_1_RX_SOF;
+>   }
+>  =20
+> +static inline void rx_desc_clear_control(uint32_t *desc)
+> +{
+> +    desc[1]  =3D 0;
+> +}
+> +
+>   static inline void rx_desc_set_eof(uint32_t *desc)
+>   {
+>       desc[1] |=3D DESC_1_RX_EOF;
+> @@ -993,6 +998,8 @@ static ssize_t gem_receive(NetClientState *nc, cons=
 t uint8_t *buf, size_t size)
-> >           bytes_to_copy -=3D MIN(bytes_to_copy, rxbufsize);
-> >
-> >           /* Update the descriptor.  */
-> > +        rx_desc_clear(s->rx_desc[q]);
-> > +
-> >           if (first_desc) {
-> >               rx_desc_set_sof(s->rx_desc[q]);
-> >               first_desc =3D false;
->
->
->
+>           rxbuf_ptr +=3D MIN(bytes_to_copy, rxbufsize);
+>           bytes_to_copy -=3D MIN(bytes_to_copy, rxbufsize);
+>  =20
+> +        rx_desc_clear_control(s->rx_desc[q]);
+> +
+>           /* Update the descriptor.  */
+>           if (first_desc) {
+>               rx_desc_set_sof(s->rx_desc[q]);
+
+
+Applied.
+
+Thanks
+

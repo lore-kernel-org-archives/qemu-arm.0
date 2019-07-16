@@ -1,151 +1,174 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp667365wrv;
-        Tue, 16 Jul 2019 01:42:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwOhwjYhhFYwdFhFYsR3P4R9cZPDPdndP5krH5SDR1TeTKkpct4OtGEHdSjsS+rpUwCXUJs
-X-Received: by 2002:a17:906:4d19:: with SMTP id r25mr24241253eju.125.1563266552472;
-        Tue, 16 Jul 2019 01:42:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563266552; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp671157wrv;
+        Tue, 16 Jul 2019 01:47:00 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyklN/yZiKgfv5CPn3gQALDuH558if/BLqCjbKdG0IIS3QAem+P5f2NI3o4Wi+MKkU2r6Rc
+X-Received: by 2002:a0c:9214:: with SMTP id a20mr23192983qva.195.1563266820616;
+        Tue, 16 Jul 2019 01:47:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563266820; cv=none;
         d=google.com; s=arc-20160816;
-        b=VXuoHSWMrBXCI5Djgnbm6seOUuJc2bcuLztMJxPWKh0tzdzzlXUZ63MCpQn73AG7h3
-         mdXCYvnWIbbasrbojDv1yBm7hH/mkqpxtvd5B/MED/jVAZBYL24uA/r5R5auCCua4HHl
-         mguL6HFDGksxj6swGzwtbYuxoes/aK9TJRW3fKE7H8WFMQUzQyCOpQISbVqjF5fiAFuT
-         H/PuJlKqLl2Oa/yDDMrSjAWjwsGUcO80UdrOlO6go1zPNWvVM0fvwo6lOrYMCvDkyxFw
-         IKZqAKRDlfrzFn36S+rzE75YN3eTXeNY1QUPEsLFIiTS9fxDQnroqNKc/Wk02syySyQg
-         P5vA==
+        b=J3y2mmBHRBQVoWxFfQUYiPL7vwyVMFxtnYzBaI3K7qC9yed/jMKAVaIHGvwQH/fx+n
+         1vX4Ny5VrTEQ6yWrxk7OQhJjExr2yl6jsXlaZFZnsVmVZy0GtXCY9UXZJ0XL3bxcqOmO
+         ClnTWMLaFAFH5PBMhHWG2zilqlEMM1yaEGQbomCoeB8+t9gmvNTy+isb24G2GoVqt8yB
+         6S3L/S45x9N908fYcmVixf4BxGqc2GWsXa1yWheKH6uBNQ846RHlAyFbd6qfEW3o0+YT
+         Mp320HXRv7Ypc/UnF9MJuc7GAbOKksF6Fd1crzfyWAQ+KX3lYImCsz+gb9nFqn0c2ROq
+         xTow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=Q/YxPxd4DxCSQMytCR8hYeli7iSJ8Ua+Zby+MH7PHRc=;
-        b=eqcID8u9AonZM/Cb3u7wBCImis4MkoSh+grujhu+mYWxBBTuU2tAvtuzXq6pfsqNnE
-         KhVJTMiVDX6aS6mF/k0f5mr2+3wwC9T+r6V9f28XEqZEjbO+2I6cXstrgUPeNL6TiECX
-         ky1fr3QjSin4tAQ5oW0FDREU2PJBOiEAxAb7k3oEWp9ba1tY6MTkkU75uC+zU9YvuWrz
-         rh7A5lICa0m8SMhLnxiSws8sLgjYhsenZUGNy3h/fsRtE/D1MlzFeBKLImaQ+iA52nrF
-         fP+s2lpOsz4V3fJ2qI5d+IDIaG57EgP47BQOtvtNt5QGlTuM6p0xkrpHqhwI1wTRGofZ
-         TudA==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:organization:autocrypt:openpgp:from:references:to
+         :subject;
+        bh=AIG0GmxjjLhfTPnG17RK5yh8eXLb0hculFGKcRd7wWk=;
+        b=KGciYfrc8toLI8LiNJvDGnQ8MDZjy6pPePG7c58CugtRzfT5DjzvWR5fPukZOLSWEV
+         i8IAEq0tWlvqMdCj0ztETOQF3m32oAiwidPqJucv5PXcgCFzAm3KzVS6gWS2OH14ocM9
+         0IkK7rGTcrSbEigAdn1sm7K29M2tOYg5TE1r+OJL0JDTLkqduEo6KbSmUVcaPp3DvPb7
+         xGm/44d5hI53gQQvl0ZuDnaocTsNVZkYF/Wfe+M4k+vnnlumBtL4sGU+KKtdbf1cJEvy
+         dcFL+g0Hg0ywmb6ufRni+wl0sHXfVY4KkOuTIGQyDtca+H06AlgN3Qs+E2C2ZwJKt7ga
+         xOYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x43si11452976eda.147.2019.07.16.01.42.32
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jul 2019 01:42:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id p15si13892741qvj.11.2019.07.16.01.47.00;
+        Tue, 16 Jul 2019 01:47:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46418 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hnJ2d-0001La-I8
-	for alex.bennee@linaro.org; Tue, 16 Jul 2019 04:42:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41260)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <jasowang@redhat.com>) id 1hnJ2a-0001LQ-Al
- for qemu-arm@nongnu.org; Tue, 16 Jul 2019 04:42:29 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jasowang@redhat.com>) id 1hnJ2Z-0008Bu-AY
- for qemu-arm@nongnu.org; Tue, 16 Jul 2019 04:42:28 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:12613)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jasowang@redhat.com>)
- id 1hnJ2Z-00089r-4p; Tue, 16 Jul 2019 04:42:27 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 56BCC87630;
- Tue, 16 Jul 2019 08:42:25 +0000 (UTC)
-Received: from [10.72.12.91] (ovpn-12-91.pek2.redhat.com [10.72.12.91])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BA06560920;
- Tue, 16 Jul 2019 08:42:22 +0000 (UTC)
-To: Ramon Fried <rfried.dev@gmail.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-References: <20190615051722.13994-1-rfried.dev@gmail.com>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <555fb9b5-361f-fc3f-ff35-38b993a29edd@redhat.com>
-Date: Tue, 16 Jul 2019 16:42:20 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 05D6C4A534;
+	Tue, 16 Jul 2019 04:47:00 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.799
+X-Spam-Level: 
+X-Spam-Status: No, score=0.799 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699] autolearn=no
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6w0d6LuZl6mg; Tue, 16 Jul 2019 04:46:58 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id CC8434A536;
+	Tue, 16 Jul 2019 04:46:58 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id CD3334A534
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 16 Jul 2019 04:46:57 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id TBtTXtx7fBuY for <kvmarm@lists.cs.columbia.edu>;
+ Tue, 16 Jul 2019 04:46:55 -0400 (EDT)
+Received: from foss.arm.com (foss.arm.com [217.140.110.172])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id B7A6E4A4E6
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 16 Jul 2019 04:46:55 -0400 (EDT)
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 59DFA2B;
+ Tue, 16 Jul 2019 01:46:55 -0700 (PDT)
+Received: from [10.1.197.61] (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id
+ 66B973F59C; Tue, 16 Jul 2019 01:46:54 -0700 (PDT)
+Subject: Re: [RFC] Add virtual SDEI support in qemu
+To: Dave Martin <Dave.Martin@arm.com>, Mark Rutland <mark.rutland@arm.com>
+References: <1b0aa6b2-80b1-a72e-6849-7323c3b9c6bc@huawei.com>
+ <20190715134059.GJ2790@e103592.cambridge.arm.com>
+ <20190715134848.GI56232@lakrids.cambridge.arm.com>
+ <20190716083050.GK2790@e103592.cambridge.arm.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=marc.zyngier@arm.com; prefer-encrypt=mutual; keydata=
+ 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
+ Z46HaNmN2hZS/oJ69c1DI5Rcww==
+Organization: ARM Ltd
+Message-ID: <c2de59be-eded-b846-fc4d-24348732016c@arm.com>
+Date: Tue, 16 Jul 2019 09:46:52 +0100
+User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.2
 MIME-Version: 1.0
-In-Reply-To: <20190615051722.13994-1-rfried.dev@gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <20190716083050.GK2790@e103592.cambridge.arm.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.26]); Tue, 16 Jul 2019 08:42:25 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] net: cadence_gem: clear RX
- control descriptor
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+Cc: Guoheyi <guoheyi@huawei.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ linux-arm-kernel@lists.infradead.org, kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LBZDkJ9jvUgH
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: TuicYSv/mlT6
 
+On 16/07/2019 09:30, Dave Martin wrote:
+> On Mon, Jul 15, 2019 at 02:48:49PM +0100, Mark Rutland wrote:
+>> On Mon, Jul 15, 2019 at 02:41:00PM +0100, Dave Martin wrote:
+> 
+> [...]
+> 
+>>> So long as KVM_EXIT_HYPERCALL reports sufficient information so that
+>>> userspace can identify the cause as an SMC and retrieve the SMC
+>>> immediate field, this seems feasible.
+>>>
+>>> For its own SMCCC APIs, KVM exclusively uses HVC, so rerouting SMC to
+>>> userspace shouldn't conflict.
+>>
+>> Be _very_ careful here! In systems without EL3 (and without NV), SMC
+>> UNDEFs rather than trapping to EL2. Given that, we shouldn't build a
+>> hypervisor ABI that depends on SMC.
+> 
+> Good point.  I was hoping that was all ancient history by now, but if
+> not...
 
-On 2019/6/15 =E4=B8=8B=E5=8D=881:17, Ramon Fried wrote:
-> The RX ring descriptors control field is used for setting
-> SOF and EOF (start of frame and end of frame).
-> The SOF and EOF weren't cleared from the previous descriptors,
-> causing inconsistencies in ring buffer.
-> Fix that by clearing the control field of every descriptors we're
-> processing.
->
-> Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
-> ---
->   hw/net/cadence_gem.c | 7 +++++++
->   1 file changed, 7 insertions(+)
->
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index ecee22525c..d83a82bdb0 100644
-> --- a/hw/net/cadence_gem.c
-> +++ b/hw/net/cadence_gem.c
-> @@ -406,6 +406,11 @@ static inline void rx_desc_set_sof(uint32_t *desc)
->       desc[1] |=3D DESC_1_RX_SOF;
->   }
->  =20
-> +static inline void rx_desc_clear(uint32_t *desc)
+Unfortunately, XGene-1 is still a thing...
 
-
-Nit: is this better to name this as "rx_desc_clear_control()" ?
-
-Thanks
-
-
-> +{
-> +    desc[1]  =3D 0;
-> +}
-> +
->   static inline void rx_desc_set_eof(uint32_t *desc)
->   {
->       desc[1] |=3D DESC_1_RX_EOF;
-> @@ -994,6 +999,8 @@ static ssize_t gem_receive(NetClientState *nc, cons=
-t uint8_t *buf, size_t size)
->           bytes_to_copy -=3D MIN(bytes_to_copy, rxbufsize);
->  =20
->           /* Update the descriptor.  */
-> +        rx_desc_clear(s->rx_desc[q]);
-> +
->           if (first_desc) {
->               rx_desc_set_sof(s->rx_desc[q]);
->               first_desc =3D false;
-
-
-
+	M.
+-- 
+Jazz is not dead. It just smells funny...
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

@@ -1,41 +1,40 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp671157wrv;
-        Tue, 16 Jul 2019 01:47:00 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyklN/yZiKgfv5CPn3gQALDuH558if/BLqCjbKdG0IIS3QAem+P5f2NI3o4Wi+MKkU2r6Rc
-X-Received: by 2002:a0c:9214:: with SMTP id a20mr23192983qva.195.1563266820616;
-        Tue, 16 Jul 2019 01:47:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563266820; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp671797wrv;
+        Tue, 16 Jul 2019 01:47:42 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzRP3FF6PXaIveI2jCZ3rSG1mg0sX1w3xyRyBFIstaWfmD3I/Z8rOvzlc/5tmjG7gidvsHy
+X-Received: by 2002:a37:9c94:: with SMTP id f142mr18369991qke.427.1563266862539;
+        Tue, 16 Jul 2019 01:47:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563266862; cv=none;
         d=google.com; s=arc-20160816;
-        b=J3y2mmBHRBQVoWxFfQUYiPL7vwyVMFxtnYzBaI3K7qC9yed/jMKAVaIHGvwQH/fx+n
-         1vX4Ny5VrTEQ6yWrxk7OQhJjExr2yl6jsXlaZFZnsVmVZy0GtXCY9UXZJ0XL3bxcqOmO
-         ClnTWMLaFAFH5PBMhHWG2zilqlEMM1yaEGQbomCoeB8+t9gmvNTy+isb24G2GoVqt8yB
-         6S3L/S45x9N908fYcmVixf4BxGqc2GWsXa1yWheKH6uBNQ846RHlAyFbd6qfEW3o0+YT
-         Mp320HXRv7Ypc/UnF9MJuc7GAbOKksF6Fd1crzfyWAQ+KX3lYImCsz+gb9nFqn0c2ROq
-         xTow==
+        b=dQjdnIRMZ3rIZOapAUQWiuWXMLr4sejAcB5KBEHtYuiI0ta/HcFadb67VH6ErOxbDX
+         hBXXc88kckMt9ajbMDs38CAHu6B3Jnvj3XA/XCcga9R/kuOIU3AeXYSqBveABBoVaD61
+         W2KaeMClYSu45F0wB9ynBPWsdTlB8Tp/n3/gMd16BZjWPUgdrx95qUwd4yyfkmn4Ld06
+         8UTtmGLW7Ck5zIV1MmT2TAbwwwi6Y+sebEFt/+0C0bCqIMvCM6/hbEEknhjoJmA/XJgx
+         jG+9SxkRCJkEODE4Yrm8tKPR3gu4J5WAuNNeFrMR4OiWNfPbrgFzFPpm6ed9pXUTuBpi
+         E+1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
          :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:openpgp:from:references:to
-         :subject;
-        bh=AIG0GmxjjLhfTPnG17RK5yh8eXLb0hculFGKcRd7wWk=;
-        b=KGciYfrc8toLI8LiNJvDGnQ8MDZjy6pPePG7c58CugtRzfT5DjzvWR5fPukZOLSWEV
-         i8IAEq0tWlvqMdCj0ztETOQF3m32oAiwidPqJucv5PXcgCFzAm3KzVS6gWS2OH14ocM9
-         0IkK7rGTcrSbEigAdn1sm7K29M2tOYg5TE1r+OJL0JDTLkqduEo6KbSmUVcaPp3DvPb7
-         xGm/44d5hI53gQQvl0ZuDnaocTsNVZkYF/Wfe+M4k+vnnlumBtL4sGU+KKtdbf1cJEvy
-         dcFL+g0Hg0ywmb6ufRni+wl0sHXfVY4KkOuTIGQyDtca+H06AlgN3Qs+E2C2ZwJKt7ga
-         xOYQ==
+         :user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:to:from:date;
+        bh=JGuA6RrRFyi71vW4Re1Zt7jzdjv568BT8vnoBzVGm38=;
+        b=z4qmVbHOuAorwBNiC92E/kZ1iFUM0PmYfn3nDPDB/irCZtpgzNlJhfBuwuCfvnfsaE
+         yezya6v8+RuxKqR4ujZztVnsAdkZbDWweP3BZkm5Ym5cdVW/EuG8+3zrjxLeUeEScyAD
+         EOdn21x7G0wECGw/Wd+u+Fa9Tley/jj7RloYEmxjkHGI2635Q8u75pPW3FhMBzvg3X1K
+         cqlqCKu3xIw4qt60K9bxhWtto8DP5Qq+uJCLTzpdHsBPhrmblIR2FW/yCXb653e8nZcz
+         8fBfzGpC94aYrm6tdBnU2Q16fAEGhixkLhkf2V9pgEHIbJFI1MpdtVmsMG5OL2OIlorH
+         szpw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id p15si13892741qvj.11.2019.07.16.01.47.00;
-        Tue, 16 Jul 2019 01:47:00 -0700 (PDT)
+        by mx.google.com with ESMTP id s4si60471qkg.189.2019.07.16.01.47.42;
+        Tue, 16 Jul 2019 01:47:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 05D6C4A534;
-	Tue, 16 Jul 2019 04:47:00 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 368784A534;
+	Tue, 16 Jul 2019 04:47:42 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
 X-Spam-Score: 0.799
@@ -44,88 +43,45 @@ X-Spam-Status: No, score=0.799 required=6.1 tests=[BAYES_00=-1.9,
 	DNS_FROM_AHBL_RHSBL=2.699] autolearn=no
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 6w0d6LuZl6mg; Tue, 16 Jul 2019 04:46:58 -0400 (EDT)
+	with ESMTP id 2SDOsXw8f4fy; Tue, 16 Jul 2019 04:47:41 -0400 (EDT)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id CC8434A536;
-	Tue, 16 Jul 2019 04:46:58 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id F2DE64A539;
+	Tue, 16 Jul 2019 04:47:40 -0400 (EDT)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id CD3334A534
- for <kvmarm@lists.cs.columbia.edu>; Tue, 16 Jul 2019 04:46:57 -0400 (EDT)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 3A5BB4A534
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 16 Jul 2019 04:47:40 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TBtTXtx7fBuY for <kvmarm@lists.cs.columbia.edu>;
- Tue, 16 Jul 2019 04:46:55 -0400 (EDT)
+ with ESMTP id lVNC+TzQcUC9 for <kvmarm@lists.cs.columbia.edu>;
+ Tue, 16 Jul 2019 04:47:38 -0400 (EDT)
 Received: from foss.arm.com (foss.arm.com [217.140.110.172])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id B7A6E4A4E6
- for <kvmarm@lists.cs.columbia.edu>; Tue, 16 Jul 2019 04:46:55 -0400 (EDT)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id BBD974A4E6
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 16 Jul 2019 04:47:38 -0400 (EDT)
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 59DFA2B;
- Tue, 16 Jul 2019 01:46:55 -0700 (PDT)
-Received: from [10.1.197.61] (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id
- 66B973F59C; Tue, 16 Jul 2019 01:46:54 -0700 (PDT)
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 13D242B;
+ Tue, 16 Jul 2019 01:47:38 -0700 (PDT)
+Received: from e103592.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
+ [10.121.207.14])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id E94343F59C;
+ Tue, 16 Jul 2019 01:47:36 -0700 (PDT)
+Date: Tue, 16 Jul 2019 09:47:34 +0100
+From: Dave Martin <Dave.Martin@arm.com>
+To: Mark Rutland <mark.rutland@arm.com>
 Subject: Re: [RFC] Add virtual SDEI support in qemu
-To: Dave Martin <Dave.Martin@arm.com>, Mark Rutland <mark.rutland@arm.com>
+Message-ID: <20190716084734.GL2790@e103592.cambridge.arm.com>
 References: <1b0aa6b2-80b1-a72e-6849-7323c3b9c6bc@huawei.com>
  <20190715134059.GJ2790@e103592.cambridge.arm.com>
  <20190715134848.GI56232@lakrids.cambridge.arm.com>
- <20190716083050.GK2790@e103592.cambridge.arm.com>
-From: Marc Zyngier <marc.zyngier@arm.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=marc.zyngier@arm.com; prefer-encrypt=mutual; keydata=
- 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
- Z46HaNmN2hZS/oJ69c1DI5Rcww==
-Organization: ARM Ltd
-Message-ID: <c2de59be-eded-b846-fc4d-24348732016c@arm.com>
-Date: Tue, 16 Jul 2019 09:46:52 +0100
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ <4daefb19-6c15-f82c-31e9-1ae035d45bd5@arm.com>
+ <20190715144446.GK56232@lakrids.cambridge.arm.com>
 MIME-Version: 1.0
-In-Reply-To: <20190716083050.GK2790@e103592.cambridge.arm.com>
-Content-Language: en-US
-Cc: Guoheyi <guoheyi@huawei.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- linux-arm-kernel@lists.infradead.org, kvmarm@lists.cs.columbia.edu
+Content-Disposition: inline
+In-Reply-To: <20190715144446.GK56232@lakrids.cambridge.arm.com>
+User-Agent: Mutt/1.5.23 (2014-03-12)
+Cc: Marc Zyngier <marc.zyngier@arm.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Guoheyi <guoheyi@huawei.com>,
+ kvmarm@lists.cs.columbia.edu, linux-arm-kernel@lists.infradead.org
 X-BeenThere: kvmarm@lists.cs.columbia.edu
 X-Mailman-Version: 2.1.14
 Precedence: list
@@ -141,33 +97,72 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: TuicYSv/mlT6
+X-TUID: acsSwwaFjgrP
 
-On 16/07/2019 09:30, Dave Martin wrote:
-> On Mon, Jul 15, 2019 at 02:48:49PM +0100, Mark Rutland wrote:
->> On Mon, Jul 15, 2019 at 02:41:00PM +0100, Dave Martin wrote:
+On Mon, Jul 15, 2019 at 03:44:46PM +0100, Mark Rutland wrote:
+> On Mon, Jul 15, 2019 at 03:26:39PM +0100, James Morse wrote:
+> > On 15/07/2019 14:48, Mark Rutland wrote:
+> > > On Mon, Jul 15, 2019 at 02:41:00PM +0100, Dave Martin wrote:
+> > >> One option (suggested to me by James Morse) would be to allow userspace
+> > >> to disable in the in-kernel PSCI implementation and provide its own
+> > >> PSCI to the guest via SMC -- in which case userspace that wants to
+> > >> implement SDEI would have to implement PSCI as well.
+> > > 
+> > > I think this would be the best approach, since it puts userspace in
+> > > charge of everything.
+> > > 
+> > > However, this interacts poorly with FW-based mitigations that we
+> > > implement in hyp. I suspect we'd probably need a mechanism to delegate
+> > > that responsibility back to the kernel, and figure out if that has any
+> > > interaction with thigns that got punted to userspace...
+> > 
+> > This has come up before:
+> > https://lore.kernel.org/r/59C139D0.3040507@arm.com
+> > 
+> > I agree Qemu should opt-in to this, it needs to be a feature that is enabled.
+> > 
+> > I had an early version of something like this for testing SDEI before
+> > there was firmware available. The review feedback from Christoffer was
+> > that it should include HVC and SMC, their immediates, and shouldn't be
+> > tied to SMC-CC ranges.
+> > 
+> > I think this should be a catch-all as Heyi describes to deliver
+> > 'unhandled SMC/HVC' to user-space as hypercall exits. We should
+> > include the immediate in the struct.
+> > 
+> > We can allow Qemu to disable the in-kernel PSCI implementation, which
+> > would let it be done in user-space via this catch-all mechanism. (PSCI
+> > in user-space has come up on another thread recently). The in-kernel
+> > PSCI needs to be default-on for backwards compatibility.
+> > 
+> > As Mark points out, the piece that's left is the 'arch workaround'
+> > stuff. We always need to handle these in the kernel. I don't think
+> > these should be routed-back, they should be un-obtainable by
+> > user-space.
 > 
-> [...]
+> Sure; I meant that those should be handled in the kernel rather than
+> going to host userspace and back.
 > 
->>> So long as KVM_EXIT_HYPERCALL reports sufficient information so that
->>> userspace can identify the cause as an SMC and retrieve the SMC
->>> immediate field, this seems feasible.
->>>
->>> For its own SMCCC APIs, KVM exclusively uses HVC, so rerouting SMC to
->>> userspace shouldn't conflict.
->>
->> Be _very_ careful here! In systems without EL3 (and without NV), SMC
->> UNDEFs rather than trapping to EL2. Given that, we shouldn't build a
->> hypervisor ABI that depends on SMC.
-> 
-> Good point.  I was hoping that was all ancient history by now, but if
-> not...
+> I was suggesting was that userspace would opt into taking ownership of
+> all HVC calls, then explicitly opt-in to the kernel handling specific
+> (sets of) calls.
 
-Unfortunately, XGene-1 is still a thing...
+The most logical thing to do would be to have userspace handle all
+calls, but add an ioctl to forward a call to KVM.  This puts userspace
+in charge of the SMCCC interface, with KVM handling only those things
+that userspace can't do for itself, on request.
 
-	M.
--- 
-Jazz is not dead. It just smells funny...
+If the performance overhead is unacceptable for certain calls, we could
+have a way to delegate specific function IDs to KVM.  I suspect that
+will be the exception rather than the rule.
+
+> There are probably issues with that, but I suspect defining "all
+> undandled calls" will be problematic otherwise.
+
+Agreed: the set of calls not handled by KVM will mutate over time.
+
+Cheers
+---Dave
 _______________________________________________
 kvmarm mailing list
 kvmarm@lists.cs.columbia.edu

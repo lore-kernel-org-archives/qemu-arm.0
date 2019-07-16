@@ -1,149 +1,112 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp953129wrv;
-        Tue, 16 Jul 2019 06:07:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwcpUTFCXlwiY3jv18Q1iK03kOK14g+KuIDbzNhw2QIatYks/F7bBFHRemIkrmRQnIsD021
-X-Received: by 2002:a17:906:7f01:: with SMTP id d1mr24611001ejr.310.1563282434882;
-        Tue, 16 Jul 2019 06:07:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563282434; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp1037284wrv;
+        Tue, 16 Jul 2019 07:15:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwEUdRn8v9LEPcpSYjKXBCnmHYfePWp0W8Hq7l8Uilwg0MWAACiTddKUX+dAsKoIXVChLP2
+X-Received: by 2002:a81:3295:: with SMTP id y143mr19640194ywy.328.1563286530763;
+        Tue, 16 Jul 2019 07:15:30 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1563286530; cv=pass;
         d=google.com; s=arc-20160816;
-        b=AjyKqOmPuEfaxGAOdsBtbDS98v/q6yrEieat8Dplb9EdgP/I6uB+8xUpNKqtQbiVxG
-         EvRoKW1UoZze6uSdw3N+nhelJ6/LROdcfjPtIs/hBSGouyQ8+0t/2wXP2Oi4s+K2QVQc
-         RUyvicLlyxq7JJmQv/WO6MxnUiPVWuiUBoSXenXmALKxXiYaqk9rGJULNJOTxXOJbofe
-         xYRlSEkywS0VlYNdB76TvktV9FZnNrU6F1GbSlJ61spBY0LjBNQLQZVbI38aXlaNYmet
-         u/LC/5OCKOApXQfmFOxTEYfhMytsJj5TWNl3I9ObNapzoJilW7yrNajm2PY7QL0xrL0c
-         pt3w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
-         :message-id:in-reply-to:date:references:to:from;
-        bh=6rfG2UuNmKZmAhOqD05ntLl8RXF1rOCdk/LW1zlA1fg=;
-        b=kib9Jni2E1J6J59tj2ruePV3BVPwSpf3Gr16LhbIhk2qtn0c1Vdv6oc5q1gWrHyQSh
-         OC/UI/iz/RqHxuGtFov+StlXc1R9MoR5d2Z9SZ9/8OQW7mcIJYKCl/HHRre6sc+prAfJ
-         HaTmICalP/9pfKfPLPhK/t101hVJdg3L8EDcMxki0mWcssjRCsJAQUfpNx2UvWPO3nFB
-         Uj0Vbr5wBi86u0JacJmY7LrYWjH8fAzQ0Q86OniXl6wl4Wf82JdfBC9HNwQC1kj+2rsz
-         q4jqrnkkGwBfENzlxvBlxP5G5xUE/3Q7U6PXuVA3X/oSFtqBspoWaJbadMzh43fvbUo2
-         Vd/g==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id pk3si10431617ejb.88.2019.07.16.06.07.14
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jul 2019 06:07:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        b=hrB1PNpZH/JLEIMazbWv5tijOZyIawPBgb3En4Rsexg7MiouNKmXE8sBS0ILYPdt7q
+         LJQNcZXQpjz8z3rKtKlKrtXWTRappJp/vlCYAe+ZGGsuOw6zhh8op467+DO9PfjBwZfD
+         6i3mETvcOg+IKv0bYe3Ym/DgcghapsS8jamFHX48k340YYRWXn/BhSdFQ4WCuaMZkI2X
+         JbvRHPT13lTLISzZn3fwp2wzGv5zobwwwcGmNZv90271VdUOZpZ9qcLPwlULxXIqlukb
+         Z/XOBxV8F3lUjbeCSV+7jO3rwRTv+Pr/LKOhfA9oZfhZvHOzuPeHy/TK2DGOdr2M7xgE
+         VBYQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
+         :reply-to:in-reply-to:subject:message-id;
+        bh=mKESzVD2dSHs6Co5PY1b54s2EhLh2vWJuz6cSoRYUAs=;
+        b=m+Ek9tM9F+kFZ1zfm0lCoswb3wdiizrgeUdhG3UNQKWpg/w8c4uvY61ocn+EkBoB2h
+         ksl253/IrUrRrtQyMPJ5E5oQ/qtitJNRBoN1w4Y8XG5nwWVDA20AKvaO3WZLbvHVPVrH
+         bGez7h5YfHYSXesiWd6q+xejj1PXEQxnbAnAdcGdWA1nyr2BW+ZGT0CmDPBL5Me60y38
+         E5aXMK20t5RV1j0k4bInttw60REV/WZiBJ0QEUCT00AeAPLgFXM/Cr09FI+1k1cQwbQb
+         BF5TdFr6sSuu9H1yxlDTysMyFLDWWYZzls9Snmvva00k8Y7kRPj/vfeuIqOdbkvauXld
+         qCrg==
+ARC-Authentication-Results: i=2; mx.google.com;
+       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
+       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.59 as permitted sender) smtp.mailfrom=no-reply@patchew.org
+Return-Path: <no-reply@patchew.org>
+Received: from sender4-of-o59.zoho.com (sender4-of-o59.zoho.com. [136.143.188.59])
+        by mx.google.com with ESMTPS id x13si9314907ybf.454.2019.07.16.07.15.29
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 16 Jul 2019 07:15:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 136.143.188.59 as permitted sender) client-ip=136.143.188.59;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48622 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hnNAo-0002c0-0Y
-	for alex.bennee@linaro.org; Tue, 16 Jul 2019 09:07:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44266)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <armbru@redhat.com>) id 1hnNAk-0002bg-Lv
- for qemu-arm@nongnu.org; Tue, 16 Jul 2019 09:07:11 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <armbru@redhat.com>) id 1hnNAj-000113-QO
- for qemu-arm@nongnu.org; Tue, 16 Jul 2019 09:07:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45046)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <armbru@redhat.com>)
- id 1hnNAj-00010Z-Kf; Tue, 16 Jul 2019 09:07:09 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 6E90B83F3B;
- Tue, 16 Jul 2019 13:07:08 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-116-111.ams2.redhat.com
- [10.36.116.111])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 328F419C59;
- Tue, 16 Jul 2019 13:06:59 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 7EA9C11386A0; Tue, 16 Jul 2019 15:06:58 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-References: <20190715095545.28545-1-philmd@redhat.com>
- <20190715095545.28545-2-philmd@redhat.com>
- <ca528cdc-6118-0b2f-c1b8-30b06875dde8@redhat.com>
- <CAFEAcA-wgTVfj0TUJ=piP0wEgLGiNpOYia5DK2GQAO4Q7gNaWg@mail.gmail.com>
- <6d69e8ad-d720-ce04-20f2-a03193903078@redhat.com>
- <20190715125653.6e65d575.cohuck@redhat.com>
- <c1c68faf-0424-6c7c-e39f-42159457c3ee@redhat.com>
- <20190715130955.4a117388.cohuck@redhat.com>
- <13fce62f-234c-1b13-595f-5910c066bc4f@redhat.com>
- <6c39a198-e951-c0bd-1ddc-5d227afe72ff@redhat.com>
- <87a7dfth4i.fsf@dusky.pond.sub.org>
- <20190715181206.3cb1db93.cohuck@redhat.com>
- <799aa0f5-8850-5caa-5103-e1cf3cdb018f@redhat.com>
-Date: Tue, 16 Jul 2019 15:06:58 +0200
-In-Reply-To: <799aa0f5-8850-5caa-5103-e1cf3cdb018f@redhat.com> (Paolo
- Bonzini's message of "Mon, 15 Jul 2019 20:22:41 +0200")
-Message-ID: <87h87m2knh.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
+       arc=pass (i=1 spf=pass spfdomain=patchew.org dkim=pass dkdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
+       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.59 as permitted sender) smtp.mailfrom=no-reply@patchew.org
+ARC-Seal: i=1; a=rsa-sha256; t=1563286483; cv=none; 
+	d=zoho.com; s=zohoarc; 
+	b=CrD+LVZQvYLe13ovF7vgjFzkCNFEn8HJISHKYSVr5SlOI58Py2+FL5vLi5UQZ/JV9SWEWwa0p+Y/yen6wCvqqGNdewohow9lZ8tL3sQFbwVewYF3U8z9LwOoBZmv/5zOjtWk4YiN7OgI6ebevrTOHyp2vIkUqXNZHM2mI9MDOto=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com; s=zohoarc; 
+	t=1563286483; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results; 
+	bh=mKESzVD2dSHs6Co5PY1b54s2EhLh2vWJuz6cSoRYUAs=; 
+	b=YXNv5kP8UoPcHoRlwKkdqcdV5TMlpwOzVL1LFFDhIpRJoUhqBH9lAnir7bpW0bzHwbrPgBKhJa2XEyR+XDHC0YDqJWTpiTY6g1A7Lkdwv19IQmZd+gpKxKfY81NOTNRvdVvX+BKtQowLOIQeX25vtr14hEENkGXBL3DjLz6SeKM=
+ARC-Authentication-Results: i=1; mx.zoho.com;
+	dkim=pass  header.i=patchew.org;
+	spf=pass  smtp.mailfrom=no-reply@patchew.org;
+	dmarc=pass header.from=<no-reply@patchew.org> header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
+	with SMTPS id 1563286481320244.7377986805792; Tue, 16 Jul 2019 07:14:41 -0700 (PDT)
+Message-ID: <156328647934.3080.7715534955297688180@c4a48874b076>
+Subject: Re: [Qemu-devel] [RFC PATCH-for-4.1? v2 0/5] semihosting: Build with CONFIG_SEMIHOSTING disabled
+In-Reply-To: <20190715152225.26135-1-philmd@redhat.com>
+Reply-To: <qemu-devel@nongnu.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.27]); Tue, 16 Jul 2019 13:07:08 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [qemu-s390x] [RFC PATCH 1/3]
- hw/Kconfig: PCI bus implies PCI_DEVICES
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Collin Walling <walling@linux.ibm.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Palmer Dabbelt <palmer@sifive.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Alistair Francis <Alistair.Francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Helge Deller <deller@gmx.de>, David Gibson <david@gibson.dropbear.id.au>,
- Philippe =?utf-8?Q?Mathieu-?= =?utf-8?Q?Daud=C3=A9?= <philmd@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- "open list:S390" <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <rth@twiddle.net>, "open
- list:RISC-V" <qemu-riscv@nongnu.org>, Cornelia Huck <cohuck@redhat.com>,
- qemu-ppc <qemu-ppc@nongnu.org>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7yzdef7vaSPe
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: philmd@redhat.com
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, thuth@redhat.com, arikalo@wavecomp.com, jhogan@kernel.org, riku.voipio@iki.fi, laurent@vivier.eu, philmd@redhat.com, qemu-arm@nongnu.org, amarkovic@wavecomp.com, pbonzini@redhat.com, james.hogan@mips.com, alex.bennee@linaro.org, aurelien@aurel32.net
+Date: Tue, 16 Jul 2019 07:14:41 -0700 (PDT)
+X-ZohoMailClient: External
+X-TUID: d/8kYnhPKTba
 
-Paolo Bonzini <pbonzini@redhat.com> writes:
-
-> On 15/07/19 18:12, Cornelia Huck wrote:
->>> Is it INTx vs. MSI vs. MSI-X?
->> 
->> I think for s390x we need (INTx || MSI) vs MSI-X...
->
-> I think MSI vs MSI-X is just how it's configured, not the actual
-> behavior, so it should be irrelevant.
-
-My best guesses from confusing information, please correct
-misunderstandings:
-
-1. PCI devices need to support MSI or MSI-X to work with s390x.
-
-2. We want a way to Kconfig the PCI devices that work, i.e. only the
-   ones that support MSI or MSI-X.
-
-I don't like calling devices without any MSI capability "classic" or
-"conventional devices".  I'd rather call them "MSI-capable" or
-"MSI/MSI-X devices".
-
-Since PCI-E devices must implement MSI or MSI-X, we could perhaps
-configure just the PCI-E devices for s390x.  No need to invent a new
-name then.  Do we even have device models that can do MSI but not E?
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDcxNTE1MjIyNS4yNjEz
+NS0xLXBoaWxtZEByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCBidWlsZCB0
+ZXN0IG9uIHMzOTB4IGhvc3QuIFBsZWFzZSBmaW5kIHRoZSBkZXRhaWxzIGJlbG93LgoKPT09IFRF
+U1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAojIFRlc3Rpbmcgc2NyaXB0IHdpbGwgYmUg
+aW52b2tlZCB1bmRlciB0aGUgZ2l0IGNoZWNrb3V0IHdpdGgKIyBIRUFEIHBvaW50aW5nIHRvIGEg
+Y29tbWl0IHRoYXQgaGFzIHRoZSBwYXRjaGVzIGFwcGxpZWQgb24gdG9wIG9mICJiYXNlIgojIGJy
+YW5jaApzZXQgLWUKCmVjaG8KZWNobyAiPT09IEVOViA9PT0iCmVudgoKZWNobwplY2hvICI9PT0g
+UEFDS0FHRVMgPT09IgpycG0gLXFhCgplY2hvCmVjaG8gIj09PSBVTkFNRSA9PT0iCnVuYW1lIC1h
+CgpDQz0kSE9NRS9iaW4vY2MKSU5TVEFMTD0kUFdEL2luc3RhbGwKQlVJTEQ9JFBXRC9idWlsZApt
+a2RpciAtcCAkQlVJTEQgJElOU1RBTEwKU1JDPSRQV0QKY2QgJEJVSUxECiRTUkMvY29uZmlndXJl
+IC0tY2M9JENDIC0tcHJlZml4PSRJTlNUQUxMCm1ha2UgLWo0CiMgWFhYOiB3ZSBuZWVkIHJlbGlh
+YmxlIGNsZWFuIHVwCiMgbWFrZSBjaGVjayAtajQgVj0xCm1ha2UgaW5zdGFsbAo9PT0gVEVTVCBT
+Q1JJUFQgRU5EID09PQoKICBDQyAgICAgIG1pcHMtbGludXgtdXNlci90YXJnZXQvbWlwcy9nZGJz
+dHViLm8KICBDQyAgICAgIG1pcHMtbGludXgtdXNlci90YXJnZXQvbWlwcy9tc2FfaGVscGVyLm8K
+ICBDQyAgICAgIG1pcHNlbC1saW51eC11c2VyL3RhcmdldC9taXBzL21pcHMtc2VtaS1zdHVicy5v
+Ci92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC0zZGtkbTVmdC9zcmMvdGFyZ2V0L21pcHMvbWlw
+cy1zZW1pLXN0dWJzLmM6MTk6NjogZXJyb3I6IG5vIHByZXZpb3VzIHByb3RvdHlwZSBmb3Ig4oCY
+aGVscGVyX2RvX3NlbWlob3N0aW5n4oCZIFstV2Vycm9yPW1pc3NpbmctcHJvdG90eXBlc10KICAg
+MTkgfCB2b2lkIGhlbHBlcl9kb19zZW1paG9zdGluZyhDUFVNSVBTU3RhdGUgKmVudikKICAgICAg
+fCAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fgpjYzE6IGFsbCB3YXJuaW5ncyBiZWluZyB0cmVh
+dGVkIGFzIGVycm9ycwotLS0KICBDQyAgICAgIG1pcHM2NC1saW51eC11c2VyL2ZwdS9zb2Z0Zmxv
+YXQubwogIENDICAgICAgbWlwcy1saW51eC11c2VyL3RhcmdldC9taXBzL21pcHMtc2VtaS1zdHVi
+cy5vCiAgQ0MgICAgICBtaXBzNjQtbGludXgtdXNlci9nZGJzdHViLm8KL3Zhci90bXAvcGF0Y2hl
+dy10ZXN0ZXItdG1wLTNka2RtNWZ0L3NyYy90YXJnZXQvbWlwcy9taXBzLXNlbWktc3R1YnMuYzox
+OTo2OiBlcnJvcjogbm8gcHJldmlvdXMgcHJvdG90eXBlIGZvciDigJhoZWxwZXJfZG9fc2VtaWhv
+c3RpbmfigJkgWy1XZXJyb3I9bWlzc2luZy1wcm90b3R5cGVzXQogICAxOSB8IHZvaWQgaGVscGVy
+X2RvX3NlbWlob3N0aW5nKENQVU1JUFNTdGF0ZSAqZW52KQogICAgICB8ICAgICAgXn5+fn5+fn5+
+fn5+fn5+fn5+fn5+CmNjMTogYWxsIHdhcm5pbmdzIGJlaW5nIHRyZWF0ZWQgYXMgZXJyb3JzCi0t
+LQogIENDICAgICAgbWlwczY0LWxpbnV4LXVzZXIvYWNjZWwvdGNnL3RjZy1ydW50aW1lLWd2ZWMu
+bwogIENDICAgICAgbWlwczY0ZWwtbGludXgtdXNlci90YXJnZXQvbWlwcy9taXBzLXNlbWktc3R1
+YnMubwogIENDICAgICAgbWlwczY0LWxpbnV4LXVzZXIvYWNjZWwvdGNnL2NwdS1leGVjLm8KL3Zh
+ci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLTNka2RtNWZ0L3NyYy90YXJnZXQvbWlwcy9taXBzLXNl
+bWktc3R1YnMuYzoxOTo2OiBlcnJvcjogbm8gcHJldmlvdXMgcHJvdG90eXBlIGZvciDigJhoZWxw
+ZXJfZG9fc2VtaWhvc3RpbmfigJkgWy1XZXJyb3I9bWlzc2luZy1wcm90b3R5cGVzXQogICAxOSB8
+IHZvaWQgaGVscGVyX2RvX3NlbWlob3N0aW5nKENQVU1JUFNTdGF0ZSAqZW52KQogICAgICB8ICAg
+ICAgXn5+fn5+fn5+fn5+fn5+fn5+fn5+CmNjMTogYWxsIHdhcm5pbmdzIGJlaW5nIHRyZWF0ZWQg
+YXMgZXJyb3JzCi0tLQogIENDICAgICAgbWlwczY0LWxpbnV4LXVzZXIvdGFyZ2V0L21pcHMvZ2Ri
+c3R1Yi5vCiAgQ0MgICAgICBtaXBzNjQtbGludXgtdXNlci90YXJnZXQvbWlwcy9tc2FfaGVscGVy
+Lm8KICBDQyAgICAgIG1pcHM2NC1saW51eC11c2VyL3RhcmdldC9taXBzL21pcHMtc2VtaS1zdHVi
+cy5vCi92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC0zZGtkbTVmdC9zcmMvdGFyZ2V0L21pcHMv
+bWlwcy1zZW1pLXN0dWJzLmM6MTk6NjogZXJyb3I6IG5vIHByZXZpb3VzIHByb3RvdHlwZSBmb3Ig
+4oCYaGVscGVyX2RvX3NlbWlob3N0aW5n4oCZIFstV2Vycm9yPW1pc3NpbmctcHJvdG90eXBlc10K
+ICAgMTkgfCB2b2lkIGhlbHBlcl9kb19zZW1paG9zdGluZyhDUFVNSVBTU3RhdGUgKmVudikKICAg
+ICAgfCAgICAgIF5+fn5+fn5+fn5+fn5+fn5+fn5+fgpjYzE6IGFsbCB3YXJuaW5ncyBiZWluZyB0
+cmVhdGVkIGFzIGVycm9ycwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3Bh
+dGNoZXcub3JnL2xvZ3MvMjAxOTA3MTUxNTIyMjUuMjYxMzUtMS1waGlsbWRAcmVkaGF0LmNvbS90
+ZXN0aW5nLnMzOTB4Lz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGlj
+YWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIg
+ZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t

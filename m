@@ -1,85 +1,97 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp872619wrv;
-        Tue, 16 Jul 2019 04:58:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwJDJaOMy5pIUHgS7gmpyYpG7VsYiPGyLGxz5atH/7SMN6SFy64GBFsrKLFN2+ta0/3sEsO
-X-Received: by 2002:a50:9203:: with SMTP id i3mr29382837eda.302.1563278316606;
-        Tue, 16 Jul 2019 04:58:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563278316; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp953129wrv;
+        Tue, 16 Jul 2019 06:07:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwcpUTFCXlwiY3jv18Q1iK03kOK14g+KuIDbzNhw2QIatYks/F7bBFHRemIkrmRQnIsD021
+X-Received: by 2002:a17:906:7f01:: with SMTP id d1mr24611001ejr.310.1563282434882;
+        Tue, 16 Jul 2019 06:07:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563282434; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z4vdn9Y1GQvZYj5CIMV5ZM78iEE/Yo5LOaP052v8puaoHHM2e+mFCM6rwMTOxSfu8E
-         YMjVP33rRdyXtEKpCVEsNgaKceiybeEOETK3bckwbSJjLjzhdXAv6Fa00gJtzwHogH+t
-         u8YceziTjNfX9KgOM2OwObKXkc87qnABCxkPtizs+e8DVwLQehEww9ceq5fQR86ji4wJ
-         9CHc0GlD7Sff7g9kcsxi6K75upZlssa1u6hVe+R0mgkpolpj4Raq4wgIT2uOhAuvYuE6
-         xcrGampmvTFm67m0KAKPgUyBE9jVet76R5NvOx/sD9ktS8aoVIzLlsLnR94yIDTHjI4F
-         LseQ==
+        b=AjyKqOmPuEfaxGAOdsBtbDS98v/q6yrEieat8Dplb9EdgP/I6uB+8xUpNKqtQbiVxG
+         EvRoKW1UoZze6uSdw3N+nhelJ6/LROdcfjPtIs/hBSGouyQ8+0t/2wXP2Oi4s+K2QVQc
+         RUyvicLlyxq7JJmQv/WO6MxnUiPVWuiUBoSXenXmALKxXiYaqk9rGJULNJOTxXOJbofe
+         xYRlSEkywS0VlYNdB76TvktV9FZnNrU6F1GbSlJ61spBY0LjBNQLQZVbI38aXlaNYmet
+         u/LC/5OCKOApXQfmFOxTEYfhMytsJj5TWNl3I9ObNapzoJilW7yrNajm2PY7QL0xrL0c
+         pt3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=/ry4UQX8ArdtliwPmZ0YyCAvrsF1omQdZ2YXaoHafys=;
-        b=yfMOsloor3DsirJNjXDxPf4/LiNcea8JU0SpHa4cn6cUjyxa69X9fsuj4nQ8tNCRtX
-         MzfUi24/gETD6H23S4xZ5C9fZrYxPNK0/UrweDerSk3NU4eLzScY7y6JMiLCbGJDPwF6
-         EzONWPXPagOgcHACARqPqz6euxN48OBGE9cUVC+acCxXO78FQf/pN7VcQJy6enPCvT5f
-         ohyKfKnIdWIWuBnHKCxMSYihFpbbjszBkojIaB+LVqpcUQQvqilmy12H/YOI3NzFYk9o
-         RhtZ/NwCp05f2OV9iUM6PStZaXG/818AfJErFErbQXarVxukTySD0j8+CDY1C9HrQw0D
-         1OiQ==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:user-agent
+         :message-id:in-reply-to:date:references:to:from;
+        bh=6rfG2UuNmKZmAhOqD05ntLl8RXF1rOCdk/LW1zlA1fg=;
+        b=kib9Jni2E1J6J59tj2ruePV3BVPwSpf3Gr16LhbIhk2qtn0c1Vdv6oc5q1gWrHyQSh
+         OC/UI/iz/RqHxuGtFov+StlXc1R9MoR5d2Z9SZ9/8OQW7mcIJYKCl/HHRre6sc+prAfJ
+         HaTmICalP/9pfKfPLPhK/t101hVJdg3L8EDcMxki0mWcssjRCsJAQUfpNx2UvWPO3nFB
+         Uj0Vbr5wBi86u0JacJmY7LrYWjH8fAzQ0Q86OniXl6wl4Wf82JdfBC9HNwQC1kj+2rsz
+         q4jqrnkkGwBfENzlxvBlxP5G5xUE/3Q7U6PXuVA3X/oSFtqBspoWaJbadMzh43fvbUo2
+         Vd/g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e14si12620406ede.277.2019.07.16.04.58.36
+        by mx.google.com with ESMTPS id pk3si10431617ejb.88.2019.07.16.06.07.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jul 2019 04:58:36 -0700 (PDT)
+        Tue, 16 Jul 2019 06:07:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47492 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48622 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hnM6N-0002OV-HS
-	for alex.bennee@linaro.org; Tue, 16 Jul 2019 07:58:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46933)
+	id 1hnNAo-0002c0-0Y
+	for alex.bennee@linaro.org; Tue, 16 Jul 2019 09:07:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44266)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <jasowang@redhat.com>) id 1hnM6K-0002OM-JB
- for qemu-arm@nongnu.org; Tue, 16 Jul 2019 07:58:33 -0400
+ (envelope-from <armbru@redhat.com>) id 1hnNAk-0002bg-Lv
+ for qemu-arm@nongnu.org; Tue, 16 Jul 2019 09:07:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jasowang@redhat.com>) id 1hnM6J-0007vc-KF
- for qemu-arm@nongnu.org; Tue, 16 Jul 2019 07:58:32 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48290)
+ (envelope-from <armbru@redhat.com>) id 1hnNAj-000113-QO
+ for qemu-arm@nongnu.org; Tue, 16 Jul 2019 09:07:10 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45046)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jasowang@redhat.com>)
- id 1hnM6J-0007v9-EU; Tue, 16 Jul 2019 07:58:31 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ (Exim 4.71) (envelope-from <armbru@redhat.com>)
+ id 1hnNAj-00010Z-Kf; Tue, 16 Jul 2019 09:07:09 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 89FF13082135;
- Tue, 16 Jul 2019 11:58:30 +0000 (UTC)
-Received: from [10.72.12.91] (ovpn-12-91.pek2.redhat.com [10.72.12.91])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2D82A5E7A5;
- Tue, 16 Jul 2019 11:58:23 +0000 (UTC)
-To: Ramon Fried <rfried.dev@gmail.com>, qemu-devel@nongnu.org
-References: <20190716105951.25446-1-rfried.dev@gmail.com>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <f6b7308b-f642-a691-eb97-1d74360aebac@redhat.com>
-Date: Tue, 16 Jul 2019 19:58:22 +0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+ by mx1.redhat.com (Postfix) with ESMTPS id 6E90B83F3B;
+ Tue, 16 Jul 2019 13:07:08 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-116-111.ams2.redhat.com
+ [10.36.116.111])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 328F419C59;
+ Tue, 16 Jul 2019 13:06:59 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 7EA9C11386A0; Tue, 16 Jul 2019 15:06:58 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+References: <20190715095545.28545-1-philmd@redhat.com>
+ <20190715095545.28545-2-philmd@redhat.com>
+ <ca528cdc-6118-0b2f-c1b8-30b06875dde8@redhat.com>
+ <CAFEAcA-wgTVfj0TUJ=piP0wEgLGiNpOYia5DK2GQAO4Q7gNaWg@mail.gmail.com>
+ <6d69e8ad-d720-ce04-20f2-a03193903078@redhat.com>
+ <20190715125653.6e65d575.cohuck@redhat.com>
+ <c1c68faf-0424-6c7c-e39f-42159457c3ee@redhat.com>
+ <20190715130955.4a117388.cohuck@redhat.com>
+ <13fce62f-234c-1b13-595f-5910c066bc4f@redhat.com>
+ <6c39a198-e951-c0bd-1ddc-5d227afe72ff@redhat.com>
+ <87a7dfth4i.fsf@dusky.pond.sub.org>
+ <20190715181206.3cb1db93.cohuck@redhat.com>
+ <799aa0f5-8850-5caa-5103-e1cf3cdb018f@redhat.com>
+Date: Tue, 16 Jul 2019 15:06:58 +0200
+In-Reply-To: <799aa0f5-8850-5caa-5103-e1cf3cdb018f@redhat.com> (Paolo
+ Bonzini's message of "Mon, 15 Jul 2019 20:22:41 +0200")
+Message-ID: <87h87m2knh.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20190716105951.25446-1-rfried.dev@gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.42]); Tue, 16 Jul 2019 11:58:30 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+ (mx1.redhat.com [10.5.110.27]); Tue, 16 Jul 2019 13:07:08 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2] net: cadence_gem: clear RX control
- descriptor
+Subject: Re: [Qemu-arm] [Qemu-devel] [qemu-s390x] [RFC PATCH 1/3]
+ hw/Kconfig: PCI bus implies PCI_DEVICES
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -91,64 +103,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: alistair@alistair23.me,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- "open list:Xilinx Zynq" <qemu-arm@nongnu.org>, peter.maydell@linaro.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Collin Walling <walling@linux.ibm.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Palmer Dabbelt <palmer@sifive.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Helge Deller <deller@gmx.de>, David Gibson <david@gibson.dropbear.id.au>,
+ Philippe =?utf-8?Q?Mathieu-?= =?utf-8?Q?Daud=C3=A9?= <philmd@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ "open list:S390" <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <rth@twiddle.net>, "open
+ list:RISC-V" <qemu-riscv@nongnu.org>, Cornelia Huck <cohuck@redhat.com>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WYtCO82v422j
+X-TUID: 7yzdef7vaSPe
 
+Paolo Bonzini <pbonzini@redhat.com> writes:
 
-On 2019/7/16 =E4=B8=8B=E5=8D=886:59, Ramon Fried wrote:
-> The RX ring descriptors control field is used for setting
-> SOF and EOF (start of frame and end of frame).
-> The SOF and EOF weren't cleared from the previous descriptors,
-> causing inconsistencies in ring buffer.
-> Fix that by clearing the control field of every descriptors we're
-> processing.
+> On 15/07/19 18:12, Cornelia Huck wrote:
+>>> Is it INTx vs. MSI vs. MSI-X?
+>> 
+>> I think for s390x we need (INTx || MSI) vs MSI-X...
 >
-> Signed-off-by: Ramon Fried <rfried.dev@gmail.com>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->
-> ---
-> v2:
->    * change function name to rx_desc_clear_control as proposed by
->      Jason Wang
->    * Move the function call above the comment, as proposed by
->      Philippe Mathieu-Daud=C3=A9
->
->   hw/net/cadence_gem.c | 7 +++++++
->   1 file changed, 7 insertions(+)
->
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index ecee22525c..cca3ce7f56 100644
-> --- a/hw/net/cadence_gem.c
-> +++ b/hw/net/cadence_gem.c
-> @@ -406,6 +406,11 @@ static inline void rx_desc_set_sof(uint32_t *desc)
->       desc[1] |=3D DESC_1_RX_SOF;
->   }
->  =20
-> +static inline void rx_desc_clear_control(uint32_t *desc)
-> +{
-> +    desc[1]  =3D 0;
-> +}
-> +
->   static inline void rx_desc_set_eof(uint32_t *desc)
->   {
->       desc[1] |=3D DESC_1_RX_EOF;
-> @@ -993,6 +998,8 @@ static ssize_t gem_receive(NetClientState *nc, cons=
-t uint8_t *buf, size_t size)
->           rxbuf_ptr +=3D MIN(bytes_to_copy, rxbufsize);
->           bytes_to_copy -=3D MIN(bytes_to_copy, rxbufsize);
->  =20
-> +        rx_desc_clear_control(s->rx_desc[q]);
-> +
->           /* Update the descriptor.  */
->           if (first_desc) {
->               rx_desc_set_sof(s->rx_desc[q]);
+> I think MSI vs MSI-X is just how it's configured, not the actual
+> behavior, so it should be irrelevant.
 
+My best guesses from confusing information, please correct
+misunderstandings:
 
-Applied.
+1. PCI devices need to support MSI or MSI-X to work with s390x.
 
-Thanks
+2. We want a way to Kconfig the PCI devices that work, i.e. only the
+   ones that support MSI or MSI-X.
 
+I don't like calling devices without any MSI capability "classic" or
+"conventional devices".  I'd rather call them "MSI-capable" or
+"MSI/MSI-X devices".
+
+Since PCI-E devices must implement MSI or MSI-X, we could perhaps
+configure just the PCI-E devices for s390x.  No need to invent a new
+name then.  Do we even have device models that can do MSI but not E?

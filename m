@@ -1,98 +1,156 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp619062wrv;
-        Wed, 17 Jul 2019 02:25:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzGRDgDWkUpNVjsQ4liCjhABRzfeB1VKoMuoXf6yMR/DEUkky3+hor9hSFTyB4xcynDI6z9
-X-Received: by 2002:ae9:ea17:: with SMTP id f23mr7367277qkg.236.1563355549632;
-        Wed, 17 Jul 2019 02:25:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563355549; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp629021wrv;
+        Wed, 17 Jul 2019 02:36:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwwApGaKjGcgg7BIcPE9hdLA0DogtTyLL4nV+YQrpRb3T9m+jtIEOFPLFGM+yyfy8+N5CAh
+X-Received: by 2002:ac8:28e2:: with SMTP id j31mr26911452qtj.274.1563356162312;
+        Wed, 17 Jul 2019 02:36:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563356162; cv=none;
         d=google.com; s=arc-20160816;
-        b=ikXyl381aMfwuTdTosGSqHfafgZQk2WeCoq3MwBjO5yL0TOrgCPuRVQ0awpnzutWsV
-         2qQSdxjZamPZ0GMdRgBfIrb2InVLx/SvxGdyXlNnQ0YDctFUaJxf984oAoU1vmsJN9RX
-         itZ5uWzH2gLUbF+N+zE+ahue9FV0YFSqK74XXL1wkkF6/v6ng8KM7GSE6sF9km2lYh8R
-         e6RRNivWJWk9NK0H28BSwwm9O0D2LXVhqfd8zVLt1tvFhEYCN7Uxg0MI3Q6FkjRlc3I+
-         KgA+yi+7UKl2G9ntPdfoD0mS7l3l1PIq48wXCnGsLJlolTt+sGrezM+KHljQ8bkFXTtd
-         VBMA==
+        b=Keoj6kFE3vH/NERWj7Tt/71NVT5LqaGUytyQoEH//sRNWau/N4yo5c0fsSbnK1OCPF
+         Jh/U0HKGBa1Ex/UH65mgwiLs7fG5Sl0k3BPkJvDHoYRNe1dK378hVdX2O/lgfik0agIJ
+         wtoa1bFdL+B+q4bQ3LnXNOKvagtisWXwVuWVGVik0Gu3FwNWWpg4DjY+J2HlOPPuZHT4
+         yE51NeXwN/Rp6S2JNyW6czcta/TmQq/GZUUYrtF4V0BqyDrlAxBBG/8LnaLz/YCv0/SY
+         GpSMYKdJaccv2QPYObp0hYoAmRm/ozfaLcYo3qFtDGXXH6JiUFJYfuJ449VAV6GAykcR
+         RgsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=user-agent:in-reply-to:content-disposition:mime-version:references
          :message-id:subject:cc:to:from:date;
-        bh=Mf2gFFmkF9YT7+d129DSOa6vCVTJN1ojRmxnxX/8gaQ=;
-        b=me2yEIm00gGLy5bBR2kamwn/CZK5KFp8RhOZEMo2xMJl/8nIBvnX0oj/vF5rqEiCXO
-         w3jt4H5sbWhtHFbemmil1/XQ69QIMy+KiGJThwqpwF7rvdh/xGT1rQ68RUuJvSCiXA5r
-         Plt3TjyNOCy2oktVbbRXDIWlKgQGcV1LHbIGWPqgUw1MjABjToZvJ+oBkG/I98Pe5Lsm
-         4gTuTB/sI1DX0qMe/c7oGMgZngHt2/rwmOg8N/rFU/gAPdFVHqy0FZKeGMigER8p6DPM
-         nTNNMxNywLuo04JXruEAmT5XKaQlf4aTpoxOQ3jvXT68xtgHg91GTO3qdi0GBUmq98Rc
-         39SA==
+        bh=5FCRwXgB3s6P15IhIHaOgboVH0A/wLIC3Mw7G5S4N3c=;
+        b=vFlYkIgcBXYsy0+SBNoogvrsIDhmncK3fecSyQWcVdNhwh1APuuTLOeMprexoarkat
+         CxuQi5yVggEsTbdP6JnVpQhS5xw9L0nXJE94fYfKyMReuhtj+2pN0rsqwNbvV+VH4KnB
+         A41IHSv1fuR9bQfolwSX9cxxIzzBuMjvS5clXwwiyHWe3zSJrPAUZOfDMSmNhkq0jM8t
+         ZIG6+ALEsSChgN9B6LYfIpZcGlLltsEy48G/2+JicojS4PpmyRAxYJKmbRwMjYz7uME2
+         1ow2K2b/9uYEmM4A7fJRdEUVvCq6q7dyrfvpR+p0pEIP9YUAx0S73OjVuY9QxzZ27aaK
+         PFXA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <drjones@redhat.com>
 Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id d35si15463449qte.177.2019.07.17.02.25.49
+        by mx.google.com with ESMTPS id a5si13663670qkn.9.2019.07.17.02.36.02
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 17 Jul 2019 02:25:49 -0700 (PDT)
+        Wed, 17 Jul 2019 02:36:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id A3A22302245A;
-	Wed, 17 Jul 2019 09:25:48 +0000 (UTC)
+	by mx1.redhat.com (Postfix) with ESMTPS id 49495C057EC0;
+	Wed, 17 Jul 2019 09:36:01 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id B0B2660BE2;
-	Wed, 17 Jul 2019 09:25:44 +0000 (UTC)
-Date: Wed, 17 Jul 2019 11:25:42 +0200
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 47DA85C257;
+	Wed, 17 Jul 2019 09:35:56 +0000 (UTC)
+Date: Wed, 17 Jul 2019 11:35:53 +0200
 From: Andrew Jones <drjones@redhat.com>
-To: Dave Martin <Dave.Martin@arm.com>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-	"peter.maydell@linaro.org" <peter.maydell@linaro.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
-	"armbru@redhat.com" <armbru@redhat.com>,
-	"eric.auger@redhat.com" <eric.auger@redhat.com>,
-	"qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
-	"imammedo@redhat.com" <imammedo@redhat.com>,
-	"alex.bennee@linaro.org" <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+	armbru@redhat.com, eric.auger@redhat.com, imammedo@redhat.com,
+	alex.bennee@linaro.org, Dave.Martin@arm.com
 Subject: Re: [Qemu-devel] [PATCH v2 10/14] target/arm/kvm64: Add
  kvm_arch_get/put_sve
-Message-ID: <20190717092542.hkzcukvc3bwgvvk5@kamzik.brq.redhat.com>
+Message-ID: <20190717093553.r5uomcocbtqkofkl@kamzik.brq.redhat.com>
 References: <20190621163422.6127-1-drjones@redhat.com>
  <20190621163422.6127-11-drjones@redhat.com>
  <1e0bc93f-42e3-087f-a4b5-d356879cb806@linaro.org>
- <20190627105911.GD2790@e103592.cambridge.arm.com>
- <3e935f36-1065-b82e-86e0-f3e4cd11f95e@linaro.org>
- <20190627150224.GH2790@e103592.cambridge.arm.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20190627150224.GH2790@e103592.cambridge.arm.com>
+In-Reply-To: <1e0bc93f-42e3-087f-a4b5-d356879cb806@linaro.org>
 User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.49]); Wed, 17 Jul 2019 09:25:48 +0000 (UTC)
-X-TUID: iRS98dshGoeC
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.32]); Wed, 17 Jul 2019 09:36:01 +0000 (UTC)
+X-TUID: TVJfWnKPxk0S
 
-On Thu, Jun 27, 2019 at 04:02:24PM +0100, Dave Martin wrote:
-> Either way, it's entirely reasonable for userspace not to try to support
-> additional slices for now.  We'll have plenty of time to plan away
-> across that bridge when we spot it on the horizon...
-
-Which makes me inclined to keep the get/put register code the way it is
-in this patch, at least with regards to the hard coded number of slices
-and the build-bug. The way it's written (to me) serves to document the
-state of things, rather than truly implement anything, but also (to me)
-it's easier to understand that code than would be a couple of paragraphs
-of actual documentation trying to explain it.
-
-> > Within QEMU, it has so far made sense to keep the data in 64-bit hunks in
-> > host-endian order.  That's how the AdvSIMD code was written originally, and it
-> > turned out to be easy enough to continue that for SVE.
+On Wed, Jun 26, 2019 at 05:22:34PM +0200, Richard Henderson wrote:
+> On 6/21/19 6:34 PM, Andrew Jones wrote:
+> > +/*
+> > + * If ARM_MAX_VQ is increased to be greater than 16, then we can no
+> > + * longer hard code slices to 1 in kvm_arch_put/get_sve().
+> > + */
+> > +QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
 > 
-> Fair enough.  It's entirely up to QEMU to decide -- I just wanted to
-> check that there was no misunderstanding about this issue in the ABI.
+> This seems easy to fix, or simply drop the slices entirely for now, as
+> otherwise they are a teeny bit confusing.
 
-We do need to use/swap-to host-endian when we implement the monitor's
-dump-guest-memory command, at it also creates ELF notes for the general
-and VFP (and, coming soon, SVE) registers. Implementing those ELF notes
-for SVE is on my TODO, right after this series.
+I can do that, but as I replied down thread, I sort of like it this way
+for documentation purposes. Anyway, I don't have a strong opinion here,
+so I'm happy to make reviewers happy :-)
+
+> 
+> It's a shame that these slices exist at all.  It seems like the kernel could
+> use the negotiated max sve size to grab the data all at once.
+> 
+> > +        for (n = 0; n < KVM_ARM64_SVE_NUM_ZREGS; n++) {
+> > +            uint64_t *q = aa64_vfp_qreg(env, n);
+> > +#ifdef HOST_WORDS_BIGENDIAN
+> > +            uint64_t d[ARM_MAX_VQ * 2];
+> > +            int j;
+> > +            for (j = 0; j < cpu->sve_max_vq * 2; j++) {
+> > +                d[j] = bswap64(q[j]);
+> > +            }
+> > +            reg.addr = (uintptr_t)d;
+> > +#else
+> > +            reg.addr = (uintptr_t)q;
+> > +#endif
+> > +            reg.id = KVM_REG_ARM64_SVE_ZREG(n, i);
+> > +            ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> 
+> It might be worth splitting this...
+> 
+> > +        for (n = 0; n < KVM_ARM64_SVE_NUM_PREGS; n++) {
+> > +            uint64_t *q = &env->vfp.pregs[n].p[0];
+> > +#ifdef HOST_WORDS_BIGENDIAN
+> > +            uint64_t d[ARM_MAX_VQ * 2 / 8];
+> > +            int j;
+> > +            for (j = 0; j < cpu->sve_max_vq * 2 / 8; j++) {
+> > +                d[j] = bswap64(q[j]);
+> > +            }
+> > +            reg.addr = (uintptr_t)d;
+> > +#else
+> > +            reg.addr = (uintptr_t)q;
+> > +#endif
+> > +            reg.id = KVM_REG_ARM64_SVE_PREG(n, i);
+> > +            ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> 
+> ... and this (unified w/ reg + size parameters?) to a function because ...
+> 
+> > +        reg.addr = (uintptr_t)&env->vfp.pregs[FFR_PRED_NUM].p[0];
+> > +        reg.id = KVM_REG_ARM64_SVE_FFR(i);
+> > +        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+> 
+> ... you forgot to apply the bswap here.
+
+Ah, thanks for catching this. I'll fix it for v3, possibly with the
+factoring, as you suggest.
+
+> 
+> Likewise for the other direction.
+> 
+> 
+> r~
+> 
+> 
+> PS: It's also tempting to drop the ifdefs and, since we know the host supports
+> sve instructions, and that the host supports sve_max_vq, do the reformatting as
+> 
+>     uint64_t scratch[ARM_MAX_VQ * 2];
+>     asm("whilelo  p0.d, xzr, %2\n\t"
+>         "ld1d     z0.d, p0/z [%1]\n\t"
+>         "str      z0, [%0]"
+>         : "=Q"(scratch)
+>         : "Q"(*aa64_vfp_qreg(env, n)),
+>           "r"(cpu->sve_max_vq)
+>         : "p0", "v0");
+
+This is nice, but as we don't have any other asm's in this file, I'm
+inclined to leave it with the loops/swaps until we can use a builtin,
+as you suggest below.
+
+> 
+> PPS: Ideally, this would be further cleaned up with acle builtins, but those
+> are still under development for GCC.
+> 
 
 Thanks,
 drew

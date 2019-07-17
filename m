@@ -1,96 +1,81 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp977749wrv;
-        Wed, 17 Jul 2019 07:55:12 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwOT7IUcoWbdKlDyI+8FRv07kE8CFb8HMmjrxLeSx+E+sYwchAmwQYDf4fwLB/u/nWfX5xP
-X-Received: by 2002:a17:907:110b:: with SMTP id qu11mr31785306ejb.18.1563375312589;
-        Wed, 17 Jul 2019 07:55:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563375312; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp990657wrv;
+        Wed, 17 Jul 2019 08:05:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxgaA3PguW1T81/e7ylXqMrrSBIAsLHWqsP9vi5/PQxeQVB70fzDr5fyPoz5AjBt1kEbYPq
+X-Received: by 2002:a17:906:6802:: with SMTP id k2mr7464679ejr.174.1563375906764;
+        Wed, 17 Jul 2019 08:05:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563375906; cv=none;
         d=google.com; s=arc-20160816;
-        b=GYYGX61kFOxi9oDdbsDAPcD5RHmpwFHqAn3HkbncnY5z+D85tyiKaMlOY2pwZYeQuH
-         fiRNRdHqOaa/jUZlH516lQeCY3iSRuvTAxM8XYEzTNm9sX1S2FsZql3LqGiAw8vvJKYp
-         AqmFDSGmCk2Er3zKtd2Jhd3o5gxyvelxnErftdZMBdL6xPqRQOSq/FFKQDOWwkY/az9c
-         baJJyyKWcXfSU6ay8faRWE1Tpl1VsW9eyMpiE7NuuFNw8QDW9EUhUVPVweLCebRbWK3M
-         t1Qs9JQBgp7z/XWtrmHVIX3z97bsdKvU0LHyhcOqvUhKXkSBk5m4xvanwIeA6WJI4tZd
-         Y6nA==
+        b=H7UMcCLY3W53BEGj9/2rYSVtik6KjzGRcwHgMAcONDC8PkL0Vunbm5MIdDZzq0YF/D
+         frbF6GZGGhYszB/aqMODwHfSS2uOV/02m73Hd9omo45HqGRfGb8eqvuSuK56vZ2V6Jnb
+         36AXLdJd8YHnrjs1OjgNZI5kWB/XV6ZgK/3UUfVVHIY58CUKL09TlDcO1C+J4ltk9hwX
+         hfzhQDQ9Y1l1LZmwauUT+2nN6sLhfFUIJmgHPmurENvBs6aF7aLWIWrnSW4DnDCggZ5y
+         ywYoZVsFG99UXVe9pM18b6SZxhXPLF+MFIarOYNd9puMCPuj5/KvRORK09Y5hKhY8Bqf
+         Eyaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=WADpoW40uzGy25tw3mEmXIEBth98h4AlI6ziyvbNrHA=;
-        b=bdICdKpV+8KwRZ+tJC2fTjGqAcPqd/1ldqbnq+y93EuB1CCvwHnEeusC+CHPJJUyCU
-         mUdyhw+HxhybLKIae82uDBajVUMGICr5UZrtNxSu4c0/LMulGKn9UFT22DdcwwuUQ3Db
-         XX94B/IYTvB9rinzkG3YiJ40exZf1FxUFSfGTHRHU1/4hTFHJCjT2z7ozQx3Nn+rW39b
-         Zv6VSZ/As2KkntMqtVqyEKdd5T2BlQvViZhrxkGft5OAnCs8tCKdmTd4FLi/8mqctYxM
-         AHdnzq1PkxefRDwN1mgJGiWb0R+4GtD4OPY84vYjem6c5k4z7M8BwI/oHsKQBINJ6F0u
-         QMXA==
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=VwrimCKZzMkOjKNaXoxJLyzC8mk1qj7TpfAu8V+pbD8=;
+        b=sSC6dbp2+dTZMquYmLngCWdHCvfWbpCA8MHLsp9SzEFJvxx+5Xf+WD8AGoiK8aKSPQ
+         FPc2dAZHKANsL/yTZF8T8A1zf+2Z2yoV7zUoqx5URw4DnRWXtzBCvwRjR2dk8sTFpXac
+         2/WK2fsA+TVgnuRwypMg8vs04p2nZsMBwqVMt5az4Ih6kNBwBqhFPg8rEyb/V9RphVbX
+         sEHr3QPefGrAYCG6oiDsJgN5DKiCvTPApXqQOO2BX03OmXzVSZG/saaqGiWoseez9a3D
+         B6MeQTfR1NjSuTwMStgfduKsCBKeueDZUIfYCS+K8CO/Y1O1qCSka7d3fIQ9OaZtFgMc
+         /p4Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 90si13819189edq.146.2019.07.17.07.55.12
+        by mx.google.com with ESMTPS id v9si15564127edc.31.2019.07.17.08.05.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jul 2019 07:55:12 -0700 (PDT)
+        Wed, 17 Jul 2019 08:05:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:58090 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58264 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hnlKp-0002lG-Cd
-	for alex.bennee@linaro.org; Wed, 17 Jul 2019 10:55:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47947)
+	id 1hnlUP-0006Kt-KE
+	for alex.bennee@linaro.org; Wed, 17 Jul 2019 11:05:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52892)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <walling@linux.ibm.com>) id 1hnlKk-0002co-IP
- for qemu-arm@nongnu.org; Wed, 17 Jul 2019 10:55:07 -0400
+ (envelope-from <pbonzini@redhat.com>) id 1hnlUL-0006Et-LO
+ for qemu-arm@nongnu.org; Wed, 17 Jul 2019 11:05:02 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <walling@linux.ibm.com>) id 1hnlKj-0000WK-KQ
- for qemu-arm@nongnu.org; Wed, 17 Jul 2019 10:55:06 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:42910)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <walling@linux.ibm.com>)
- id 1hnlKj-0000VO-6l; Wed, 17 Jul 2019 10:55:05 -0400
-Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x6HEsGSY054452; Wed, 17 Jul 2019 10:54:34 -0400
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2tt5p08jqp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 17 Jul 2019 10:54:34 -0400
-Received: from m0098399.ppops.net (m0098399.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.27/8.16.0.27) with SMTP id x6HEsX65055510;
- Wed, 17 Jul 2019 10:54:33 -0400
-Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com
- [169.62.189.11])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2tt5p08jq0-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 17 Jul 2019 10:54:33 -0400
-Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
- by ppma03dal.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id x6HEodJb018144;
- Wed, 17 Jul 2019 14:54:32 GMT
-Received: from b03cxnp08026.gho.boulder.ibm.com
- (b03cxnp08026.gho.boulder.ibm.com [9.17.130.18])
- by ppma03dal.us.ibm.com with ESMTP id 2tq6x7ga8b-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 17 Jul 2019 14:54:32 +0000
-Received: from b03ledav003.gho.boulder.ibm.com
- (b03ledav003.gho.boulder.ibm.com [9.17.130.234])
- by b03cxnp08026.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- x6HEsVDx57016782
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 17 Jul 2019 14:54:31 GMT
-Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 4A4966A04D;
- Wed, 17 Jul 2019 14:54:31 +0000 (GMT)
-Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id ED2CB6A057;
- Wed, 17 Jul 2019 14:54:29 +0000 (GMT)
-Received: from [9.60.89.78] (unknown [9.60.89.78])
- by b03ledav003.gho.boulder.ibm.com (Postfix) with ESMTP;
- Wed, 17 Jul 2019 14:54:29 +0000 (GMT)
-To: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ (envelope-from <pbonzini@redhat.com>) id 1hnlUI-0006Tv-Nl
+ for qemu-arm@nongnu.org; Wed, 17 Jul 2019 11:05:00 -0400
+Received: from mail-wr1-f65.google.com ([209.85.221.65]:34458)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hnlUI-0006Sg-GZ
+ for qemu-arm@nongnu.org; Wed, 17 Jul 2019 11:04:58 -0400
+Received: by mail-wr1-f65.google.com with SMTP id 31so25254926wrm.1
+ for <qemu-arm@nongnu.org>; Wed, 17 Jul 2019 08:04:57 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=VwrimCKZzMkOjKNaXoxJLyzC8mk1qj7TpfAu8V+pbD8=;
+ b=OAMRWjhJkhthWzOyNyvSTejWySuCri6x0YF0Lq7cgYv98OZlZUtmgE4ZiHaXn5atN7
+ jvBYfxwzUXTMGqPFpowzP72Su7lkeBWdY0mtoJDH+92sIC8LShP72Av6Y5H0YEQALjnt
+ v8/YbTzxiNS9aQCJUiMCGmEGr7D1+w04hBhnJ8L6R8VxR5Y4diKKZasU1M+K4BOOezgD
+ eYoev9WW8DjYZwpucSxMFakeq5fVdQ8WpSPB9iHZ0g844+js+9RdTt1/fqx/C5QWiQl5
+ EvFItWxuq36k5XyJtrKFInckpjDeQSQFEsUcK+c4r4ewNTUTEwTXOYjMC2f7FBQofSr9
+ yAbQ==
+X-Gm-Message-State: APjAAAXJZcq+meKdjw7x5Ht7bw/45Ldk7yhyvjns1giUvWxVMBISjDtU
+ C7NwoSoynqhVC0iPFKCYxJg6ug==
+X-Received: by 2002:adf:f883:: with SMTP id u3mr43259593wrp.0.1563375896647;
+ Wed, 17 Jul 2019 08:04:56 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:e427:3beb:1110:dda2?
+ ([2001:b07:6468:f312:e427:3beb:1110:dda2])
+ by smtp.gmail.com with ESMTPSA id b5sm20503921wru.69.2019.07.17.08.04.54
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Wed, 17 Jul 2019 08:04:56 -0700 (PDT)
+To: Collin Walling <walling@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
  Markus Armbruster <armbru@redhat.com>
 References: <20190715095545.28545-1-philmd@redhat.com>
  <20190715095545.28545-2-philmd@redhat.com>
@@ -109,27 +94,21 @@ References: <20190715095545.28545-1-philmd@redhat.com>
  <beb5fe93-991d-ba2b-d2c1-51e01b912dbe@redhat.com>
  <50befb09-d381-4362-9cd1-6fb11c96a719@linux.ibm.com>
  <633cc3f7-eb20-1bfe-03d2-e481be188eb1@redhat.com>
-From: Collin Walling <walling@linux.ibm.com>
-Message-ID: <87f07cd0-ebbc-3569-9070-5700e47d4af8@linux.ibm.com>
-Date: Wed, 17 Jul 2019 10:54:29 -0400
+ <87f07cd0-ebbc-3569-9070-5700e47d4af8@linux.ibm.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <a88a7f65-60c2-22a8-5523-faedabc06b44@redhat.com>
+Date: Wed, 17 Jul 2019 17:04:54 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-In-Reply-To: <633cc3f7-eb20-1bfe-03d2-e481be188eb1@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <87f07cd0-ebbc-3569-9070-5700e47d4af8@linux.ibm.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-07-17_07:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1810050000 definitions=main-1907170174
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 148.163.156.1
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.221.65
 Subject: Re: [Qemu-arm] [Qemu-devel] [qemu-s390x] [RFC PATCH 1/3]
  hw/Kconfig: PCI bus implies PCI_DEVICES
 X-BeenThere: qemu-arm@nongnu.org
@@ -159,40 +138,19 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
  Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EteTGvqi/eyL
+X-TUID: kG6G3ohECDXs
 
-On 7/17/19 9:52 AM, Paolo Bonzini wrote:
-> On 17/07/19 14:59, Collin Walling wrote:
->> On 7/16/19 11:04 AM, Thomas Huth wrote:
->>> On 16/07/2019 15.06, Markus Armbruster wrote:
->>>> Paolo Bonzini <pbonzini@redhat.com> writes:
->>>>
->>>>> On 15/07/19 18:12, Cornelia Huck wrote:
->>>>>>> Is it INTx vs. MSI vs. MSI-X?
->>>>>>
->>>>>> I think for s390x we need (INTx || MSI) vs MSI-X...
->>>>>
->>>>> I think MSI vs MSI-X is just how it's configured, not the actual
->>>>> behavior, so it should be irrelevant.
->>>>
->>>> My best guesses from confusing information, please correct
->>>> misunderstandings:
->>>>
->>>> 1. PCI devices need to support MSI or MSI-X to work with s390x.
->>>
->>> I think Cornelia mentioned that we might even require MSI-X there ...
->>> Collin (being listed as "S390 PCI" maintainer), can you confirm?
->>
->> MSI-X is mandatory for PCI devices in the s390 architecture.
+On 17/07/19 16:54, Collin Walling wrote:
+> PCI host plugging will check for the MSI-X capability on the
+> PCI device. If the MSI-X cap is missing, we fail device plugging.
+> We do not check for MSI. Only MSI-X.
 > 
-> How are MSI and MSI-X distinguished?
-> 
-> Paolo
-> 
+> Specifically, the capability is represented by PCI_CAP_ID_MSIX
+> in pci_regs.h
 
-PCI host plugging will check for the MSI-X capability on the
-PCI device. If the MSI-X cap is missing, we fail device plugging.
-We do not check for MSI. Only MSI-X.
+The code in Linux says that single MSIs are supported too:
 
-Specifically, the capability is represented by PCI_CAP_ID_MSIX
-in pci_regs.h
+       if (type == PCI_CAP_ID_MSI && nvec > 1)
+               return 1;
+
+Paolo

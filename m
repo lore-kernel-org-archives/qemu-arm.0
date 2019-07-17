@@ -1,83 +1,137 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp973297wrv;
-        Wed, 17 Jul 2019 07:51:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw9zwOV/nMUTfQKqZUR//sIQGrThrKaLCUF7m84W2Y7r1AMWurKala/+2c2dsn3kRA2AliF
-X-Received: by 2002:aa7:d058:: with SMTP id n24mr9900104edo.143.1563375083727;
-        Wed, 17 Jul 2019 07:51:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563375083; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp977749wrv;
+        Wed, 17 Jul 2019 07:55:12 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwOT7IUcoWbdKlDyI+8FRv07kE8CFb8HMmjrxLeSx+E+sYwchAmwQYDf4fwLB/u/nWfX5xP
+X-Received: by 2002:a17:907:110b:: with SMTP id qu11mr31785306ejb.18.1563375312589;
+        Wed, 17 Jul 2019 07:55:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563375312; cv=none;
         d=google.com; s=arc-20160816;
-        b=BIxNyJjePzH/ghM/W3P0wn0el0KYl6IXiAHA2B97vOiloxNMnm2/D4lskmBsiyDYoj
-         VVG1rg8uKAB1L0dUBal3sOxruy9ZUjrnbQGWNkiG01U5qavjAjeHceCD33nYb/oQ9cHl
-         LEzy8fYKKijNW+K78bXxesgBt+PRfhDErISyxLlVb5w+ZAIjrTqZ34fD3g7WptViuuha
-         lMQfEj6AauhTTRozpaOrXZop1jqSG450xv+05eOXEPbyOmuSTtqrfz42eprKoqa9EQCC
-         dl5SueGlCYnWznh/X9PnGoAy+bxURM7b5hKjy0LAhLYFTcWJMPGQDZbh3D+VXu0WVZV4
-         S57Q==
+        b=GYYGX61kFOxi9oDdbsDAPcD5RHmpwFHqAn3HkbncnY5z+D85tyiKaMlOY2pwZYeQuH
+         fiRNRdHqOaa/jUZlH516lQeCY3iSRuvTAxM8XYEzTNm9sX1S2FsZql3LqGiAw8vvJKYp
+         AqmFDSGmCk2Er3zKtd2Jhd3o5gxyvelxnErftdZMBdL6xPqRQOSq/FFKQDOWwkY/az9c
+         baJJyyKWcXfSU6ay8faRWE1Tpl1VsW9eyMpiE7NuuFNw8QDW9EUhUVPVweLCebRbWK3M
+         t1Qs9JQBgp7z/XWtrmHVIX3z97bsdKvU0LHyhcOqvUhKXkSBk5m4xvanwIeA6WJI4tZd
+         Y6nA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=11dNTPwMbxSeAtJfgGtl57uF3lLec09tN8bksP3rTRg=;
-        b=ZBM7lEAl5Zh0WF+fMpOtxI4Kbn/v17dhPCAfsab9KiAk5dO0C9hbsLpXgp2ocs9hmq
-         lBwN/okeKcUf4UQPeV59WDR2ZmRwiZ2u3A9ZRTuHKKebwUXqFWX8LyvfBk+5LK8eCbt2
-         L8AAqq2baW8oqozo/GXiyQ0amoi+si16xoxHAKHQ4gjLIfZk3rW4EDEiJmFnwX+XR7j0
-         dzCnge/DkdYx6/rjNng5ZbLpG3YzfEote5+XLfiRwM4cILWUHynsVUeIzA2iTMW5h4fn
-         v4yjWAbk04kbymlrhqs8u86rUAoduT+B1yhIcUOG/N6tfv6fFN+/G5cFIH5/blj1FsC5
-         iw5Q==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=WADpoW40uzGy25tw3mEmXIEBth98h4AlI6ziyvbNrHA=;
+        b=bdICdKpV+8KwRZ+tJC2fTjGqAcPqd/1ldqbnq+y93EuB1CCvwHnEeusC+CHPJJUyCU
+         mUdyhw+HxhybLKIae82uDBajVUMGICr5UZrtNxSu4c0/LMulGKn9UFT22DdcwwuUQ3Db
+         XX94B/IYTvB9rinzkG3YiJ40exZf1FxUFSfGTHRHU1/4hTFHJCjT2z7ozQx3Nn+rW39b
+         Zv6VSZ/As2KkntMqtVqyEKdd5T2BlQvViZhrxkGft5OAnCs8tCKdmTd4FLi/8mqctYxM
+         AHdnzq1PkxefRDwN1mgJGiWb0R+4GtD4OPY84vYjem6c5k4z7M8BwI/oHsKQBINJ6F0u
+         QMXA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f30si14392259edb.390.2019.07.17.07.51.23
+        by mx.google.com with ESMTPS id 90si13819189edq.146.2019.07.17.07.55.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 17 Jul 2019 07:51:23 -0700 (PDT)
+        Wed, 17 Jul 2019 07:55:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58064 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:58090 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hnlH8-0001T8-QQ
-	for alex.bennee@linaro.org; Wed, 17 Jul 2019 10:51:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46863)
+	id 1hnlKp-0002lG-Cd
+	for alex.bennee@linaro.org; Wed, 17 Jul 2019 10:55:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47947)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <imammedo@redhat.com>) id 1hnlH5-0001Sp-5k
- for qemu-arm@nongnu.org; Wed, 17 Jul 2019 10:51:20 -0400
+ (envelope-from <walling@linux.ibm.com>) id 1hnlKk-0002co-IP
+ for qemu-arm@nongnu.org; Wed, 17 Jul 2019 10:55:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1hnlH4-0005LD-2A
- for qemu-arm@nongnu.org; Wed, 17 Jul 2019 10:51:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44258)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>)
- id 1hnlH3-0005KL-Qq; Wed, 17 Jul 2019 10:51:17 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 68D8859440;
- Wed, 17 Jul 2019 14:51:16 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 83AC219C4F;
- Wed, 17 Jul 2019 14:51:09 +0000 (UTC)
-Date: Wed, 17 Jul 2019 16:51:08 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Message-ID: <20190717165108.237c1926@redhat.com>
-In-Reply-To: <20190716153816.17676-6-shameerali.kolothum.thodi@huawei.com>
-References: <20190716153816.17676-1-shameerali.kolothum.thodi@huawei.com>
- <20190716153816.17676-6-shameerali.kolothum.thodi@huawei.com>
+ (envelope-from <walling@linux.ibm.com>) id 1hnlKj-0000WK-KQ
+ for qemu-arm@nongnu.org; Wed, 17 Jul 2019 10:55:06 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:42910)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <walling@linux.ibm.com>)
+ id 1hnlKj-0000VO-6l; Wed, 17 Jul 2019 10:55:05 -0400
+Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x6HEsGSY054452; Wed, 17 Jul 2019 10:54:34 -0400
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2tt5p08jqp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 17 Jul 2019 10:54:34 -0400
+Received: from m0098399.ppops.net (m0098399.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.27/8.16.0.27) with SMTP id x6HEsX65055510;
+ Wed, 17 Jul 2019 10:54:33 -0400
+Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com
+ [169.62.189.11])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2tt5p08jq0-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 17 Jul 2019 10:54:33 -0400
+Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
+ by ppma03dal.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id x6HEodJb018144;
+ Wed, 17 Jul 2019 14:54:32 GMT
+Received: from b03cxnp08026.gho.boulder.ibm.com
+ (b03cxnp08026.gho.boulder.ibm.com [9.17.130.18])
+ by ppma03dal.us.ibm.com with ESMTP id 2tq6x7ga8b-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 17 Jul 2019 14:54:32 +0000
+Received: from b03ledav003.gho.boulder.ibm.com
+ (b03ledav003.gho.boulder.ibm.com [9.17.130.234])
+ by b03cxnp08026.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ x6HEsVDx57016782
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 17 Jul 2019 14:54:31 GMT
+Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 4A4966A04D;
+ Wed, 17 Jul 2019 14:54:31 +0000 (GMT)
+Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id ED2CB6A057;
+ Wed, 17 Jul 2019 14:54:29 +0000 (GMT)
+Received: from [9.60.89.78] (unknown [9.60.89.78])
+ by b03ledav003.gho.boulder.ibm.com (Postfix) with ESMTP;
+ Wed, 17 Jul 2019 14:54:29 +0000 (GMT)
+To: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>
+References: <20190715095545.28545-1-philmd@redhat.com>
+ <20190715095545.28545-2-philmd@redhat.com>
+ <ca528cdc-6118-0b2f-c1b8-30b06875dde8@redhat.com>
+ <CAFEAcA-wgTVfj0TUJ=piP0wEgLGiNpOYia5DK2GQAO4Q7gNaWg@mail.gmail.com>
+ <6d69e8ad-d720-ce04-20f2-a03193903078@redhat.com>
+ <20190715125653.6e65d575.cohuck@redhat.com>
+ <c1c68faf-0424-6c7c-e39f-42159457c3ee@redhat.com>
+ <20190715130955.4a117388.cohuck@redhat.com>
+ <13fce62f-234c-1b13-595f-5910c066bc4f@redhat.com>
+ <6c39a198-e951-c0bd-1ddc-5d227afe72ff@redhat.com>
+ <87a7dfth4i.fsf@dusky.pond.sub.org>
+ <20190715181206.3cb1db93.cohuck@redhat.com>
+ <799aa0f5-8850-5caa-5103-e1cf3cdb018f@redhat.com>
+ <87h87m2knh.fsf@dusky.pond.sub.org>
+ <beb5fe93-991d-ba2b-d2c1-51e01b912dbe@redhat.com>
+ <50befb09-d381-4362-9cd1-6fb11c96a719@linux.ibm.com>
+ <633cc3f7-eb20-1bfe-03d2-e481be188eb1@redhat.com>
+From: Collin Walling <walling@linux.ibm.com>
+Message-ID: <87f07cd0-ebbc-3569-9070-5700e47d4af8@linux.ibm.com>
+Date: Wed, 17 Jul 2019 10:54:29 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <633cc3f7-eb20-1bfe-03d2-e481be188eb1@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.39]); Wed, 17 Jul 2019 14:51:16 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH-for-4.2 v7 05/10] hw/arm/virt: Add 4.2
- machine type
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-07-17_07:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1810050000 definitions=main-1907170174
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.156.1
+Subject: Re: [Qemu-arm] [Qemu-devel] [qemu-s390x] [RFC PATCH 1/3]
+ hw/Kconfig: PCI bus implies PCI_DEVICES
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -89,78 +143,56 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, sameo@linux.intel.com, shannon.zhaosl@gmail.com,
- ard.biesheuvel@linaro.org, qemu-devel@nongnu.org, xuwei5@hisilicon.com,
- linuxarm@huawei.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
- sebastien.boeuf@intel.com, lersek@redhat.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>,
+ "open list:RISC-V" <qemu-riscv@nongnu.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Helge Deller <deller@gmx.de>,
+ Palmer Dabbelt <palmer@sifive.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ "open list:S390" <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ qemu-ppc <qemu-ppc@nongnu.org>, David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xSyKR9byxjH8
+X-TUID: EteTGvqi/eyL
 
-On Tue, 16 Jul 2019 16:38:11 +0100
-Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
-
-> This is in preparation to create ACPI GED device as we
-> need to disable it for <4.2 for migration to work.
+On 7/17/19 9:52 AM, Paolo Bonzini wrote:
+> On 17/07/19 14:59, Collin Walling wrote:
+>> On 7/16/19 11:04 AM, Thomas Huth wrote:
+>>> On 16/07/2019 15.06, Markus Armbruster wrote:
+>>>> Paolo Bonzini <pbonzini@redhat.com> writes:
+>>>>
+>>>>> On 15/07/19 18:12, Cornelia Huck wrote:
+>>>>>>> Is it INTx vs. MSI vs. MSI-X?
+>>>>>>
+>>>>>> I think for s390x we need (INTx || MSI) vs MSI-X...
+>>>>>
+>>>>> I think MSI vs MSI-X is just how it's configured, not the actual
+>>>>> behavior, so it should be irrelevant.
+>>>>
+>>>> My best guesses from confusing information, please correct
+>>>> misunderstandings:
+>>>>
+>>>> 1. PCI devices need to support MSI or MSI-X to work with s390x.
+>>>
+>>> I think Cornelia mentioned that we might even require MSI-X there ...
+>>> Collin (being listed as "S390 PCI" maintainer), can you confirm?
+>>
+>> MSI-X is mandatory for PCI devices in the s390 architecture.
 > 
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-
-> ---
->  hw/arm/virt.c       | 9 ++++++++-
->  hw/core/machine.c   | 3 +++
->  include/hw/boards.h | 3 +++
->  3 files changed, 14 insertions(+), 1 deletion(-)
+> How are MSI and MSI-X distinguished?
 > 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 907fb64bb9..bbe156dc35 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2095,10 +2095,17 @@ static void machvirt_machine_init(void)
->  }
->  type_init(machvirt_machine_init);
->  
-> +static void virt_machine_4_2_options(MachineClass *mc)
-> +{
-> +}
-> +DEFINE_VIRT_MACHINE_AS_LATEST(4, 2)
-> +
->  static void virt_machine_4_1_options(MachineClass *mc)
->  {
-> +    virt_machine_4_2_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_4_1, hw_compat_4_1_len);
->  }
-> -DEFINE_VIRT_MACHINE_AS_LATEST(4, 1)
-> +DEFINE_VIRT_MACHINE(4, 1)
->  
->  static void virt_machine_4_0_options(MachineClass *mc)
->  {
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index c58a8e594e..a79d4ad740 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -27,6 +27,9 @@
->  #include "hw/pci/pci.h"
->  #include "hw/mem/nvdimm.h"
->  
-> +GlobalProperty hw_compat_4_1[] = {};
-> +const size_t hw_compat_4_1_len = G_N_ELEMENTS(hw_compat_4_1);
-> +
->  GlobalProperty hw_compat_4_0[] = {
->      { "VGA",            "edid", "false" },
->      { "secondary-vga",  "edid", "false" },
-> diff --git a/include/hw/boards.h b/include/hw/boards.h
-> index a71d1a53a5..d9ec37d807 100644
-> --- a/include/hw/boards.h
-> +++ b/include/hw/boards.h
-> @@ -317,6 +317,9 @@ struct MachineState {
->      } \
->      type_init(machine_initfn##_register_types)
->  
-> +extern GlobalProperty hw_compat_4_1[];
-> +extern const size_t hw_compat_4_1_len;
-> +
->  extern GlobalProperty hw_compat_4_0[];
->  extern const size_t hw_compat_4_0_len;
->  
+> Paolo
+> 
 
+PCI host plugging will check for the MSI-X capability on the
+PCI device. If the MSI-X cap is missing, we fail device plugging.
+We do not check for MSI. Only MSI-X.
+
+Specifically, the capability is represented by PCI_CAP_ID_MSIX
+in pci_regs.h

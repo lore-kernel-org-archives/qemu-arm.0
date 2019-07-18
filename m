@@ -1,158 +1,133 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2238539wrv;
-        Thu, 18 Jul 2019 05:59:30 -0700 (PDT)
-X-Received: by 2002:adf:f042:: with SMTP id t2mr49491405wro.139.1563454770736;
-        Thu, 18 Jul 2019 05:59:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563454770; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2372829wrv;
+        Thu, 18 Jul 2019 07:58:29 -0700 (PDT)
+X-Received: by 2002:a63:b1d:: with SMTP id 29mr48226288pgl.103.1563461909790;
+        Thu, 18 Jul 2019 07:58:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563461909; cv=none;
         d=google.com; s=arc-20160816;
-        b=rwU+fvBoFj5CyeEcNUMrjxQi2qPq/WHtukIYn56vtNbgbF0CYfwMi7JWznMNtgfy13
-         TYMsX4lZx1cqYTUE+/cMm4J6WVlpAXQwcEh/2J5jQx3u5FakI+d40aoR8VTs6mqc/hox
-         kP/riC650knfSu0XUHfoV+Hyjd2Cown9VuaXuDbhJ26bfug3xnelFtm8RwsRsu4aT0v+
-         WLpDodrSkyHBBgXSL8yOz3o7AK44fl2owjI9vsRvavisCRaze9sxgf3PI2AAl9ufOS+U
-         hTf5oumWJO/6qKfcLYfn+1U/GnuhDr3zUsA1Uxs7lnteKeilPMLqPHkKLQPm4sHhCLTn
-         3NbQ==
+        b=Cz29WKqu5d0C38hOKYfjaybgJO55eidhejpxHggQ5+ojJMlL2VaEtcBFERmyIxjCuJ
+         98VhCU7F3TgTywsK+mE2rLsJhKBuLpbx+YNzZ6TAmZ7O4mjh8pc1C3gFYNcP7gbVnL14
+         1RqNfgcJAI1L80ZQzspy5Xo86gDaefpa1aDkpXfyHzydMzu6Nd+PyTaPeWeArGTq03sA
+         84mugislS4zCLhRofYmgh9UWbbwAFLh4JKxXUlvmDjpTa1jZsWeGEf7Zj4YQW2+ZtxFA
+         rPZdXYXC/ZRtDdwE54pE3S65cdt73do91BKR48si6DCJGOvismvTuK84a39oqszkTzfy
+         Zizw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=CyoFO1RlKJhdoAKsNHGdbd1/3rVaZK+AHTqU2IwHJqU=;
-        b=LzSv8zlbmk3nXHqc47wkficvslpRp0KyydrEH7wkUj4ESPDZUo2Vta+DmGWV+deH7h
-         vUGkd8kDmFfIiJRGtDZbvtzXUHVeSYTZHoDuPFEKvQlKh5D4L66/iFpMXfu0AgMA5fVm
-         qtQ3hxJVX11dvv/SBdhqECXQWFnJ1Zo8k4FCmsiXVM4ZRav50J2cqR3V7jiowGvsomfO
-         7jkC2O1rbSjMoLOHeqqEIW5/yrdw2vyx0zQ9bl6p6w7p8JkHsWWVa2f50dyRxn1jEEQE
-         U0n87TkWK2N5I2nT3CqWxs/rnSTen2qM6PH3oSh+2bKpxuW5o5fLW65V1WBfz0xod+bK
-         zDmQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=TgjiWKnYVhNow5aXdsbc/uRaAI4MYXerKql/FbghhWU=;
+        b=WmUkoPS41uXbCjQufbn6QqjWvowrq6NJvoU65CcKVi9+xtuIatyjuFbfsYkzjUQTio
+         G60tFiW+gX4cnCsjhbHho/C/SkIEzdD2Ce4LYS53fcRzc3ZmMnVMsUi0MsvVWtkBXScl
+         G1U2FlelFTdNvI5grd+E6YN21VLvO0d3rl1WHlGlvPrcVJDPT3d1ZQPwibItw+Hdf++q
+         U7uT5MYgiWGCc0ygZzY6F24SIyv3r7eA8dgdSzh8yhBk3WePUkvOJN296gvH/+Io+r6j
+         nyZXoQaWcePIXqpNKfhT5kvhvGV8W2ce9as5K3LZu2AnlWKyyPRmg4QxUisjTDTgOHVT
+         UHoQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XqlyUQ1i;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Gk+9bV+u;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id y132sor15997491wmd.19.2019.07.18.05.59.30
+        by mx.google.com with SMTPS id n11sor32943033plg.68.2019.07.18.07.58.29
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 18 Jul 2019 05:59:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Thu, 18 Jul 2019 07:58:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XqlyUQ1i;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Gk+9bV+u;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=CyoFO1RlKJhdoAKsNHGdbd1/3rVaZK+AHTqU2IwHJqU=;
-        b=XqlyUQ1ib5opKjytg8AA5cVa1pCmD4UYNw8UOcfTQuisuAAjGQCOrOyeMtwvOdTSki
-         xtD+XW6mdU33sLRVJssk1A/dh0XqL4w975WymYlI8XDVSYK4FDfCeErRGACrbvGiJf8R
-         XATn2/YZJ29DckArQaVSpEm9DhfNkfsM9j062VKZAJm5QzjW/8iMzwA7T8imYFB7ELFx
-         u7EG9+3MO4MIQLoSbjrgdSxTd/GmZThYE6FDtFYrFH/kaG1V0qR9kZtTN6R0WOp6LgYI
-         aCkR+gwbRO4gp4HRyddCKjC2r2iPd8fFo35QVkMM2IkG1iGVEtWHLGxI0WVQq0lgJ5KM
-         AIvw==
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=TgjiWKnYVhNow5aXdsbc/uRaAI4MYXerKql/FbghhWU=;
+        b=Gk+9bV+upaQ1YgstmeYjiwhK8OJvM2Q68ZuapcDbLc4iEOXb9mr3npR4P59nxWi+zE
+         sNLk9bRrFA2clzQJmOWgWYfkN34RQnGNumpgU5Y0d7bAbiCGxJ3YMaYaMaOpnLmhhQvG
+         hiFjp9NeqkxpcfyA+zvTEGN4u3DTcGPJLcBLhAq0CG9610V8GJbdIMNfNXEVFOJaWly8
+         HP7zzsYdxp6X/4zyf/OLvNdORRdBpsPJNj4jFTKVSiOm4D0AcrLVHvEXgDB793ZokSf4
+         aDVj84bnzXyI2+KpuZ58r2fmNvyAR4jGmnh8V2XEjSG7Y/+DC6ZXgyX9dCnNIZc/ENpD
+         d7gQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=CyoFO1RlKJhdoAKsNHGdbd1/3rVaZK+AHTqU2IwHJqU=;
-        b=tXDcgeg9Jl3IXrzF2O/Jo2zQXS4CVyMR0ku9TJklYx/pATw/O5ynSe3u1vSe14C5qt
-         KLmvZaVTfeGLS5NXoVuNqj+gzHeqDxiDKQTo9fySBbb91TaeWFUr3RvizlK9PQgV4ctL
-         /Zs2DRKxRiqMf1XKKz87jCFMBeaHLhHUfqgj3oUY0rtr1VZsoljInt3VoeadauJnK1EH
-         4fJlc/HKE03ksjQgHZWHFHMm1rpYTVA1GvG2q+QRD2gRbk5PgtDTFRo+LU5ES4LF9WY1
-         zpZCbsGKXpId1wua7iTFpuK2QvwUvAGNA5WmCDSnrQyjmP31LOg9MBkAlRt/uWYJH59F
-         8TCw==
-X-Gm-Message-State: APjAAAVWtMeMuAduRz+V6lZ9+2S0beK+jjOwpFRZkTqwYO8J407kb/hP
-	iGUTS/e2HvCcaVI6cUZ6xo879/BX
-X-Google-Smtp-Source: APXvYqx/Wtku8ad9iXWdPJ1Luln+/0XKpr0pXSY6Qpt6pyazyOU7kP5fL5qQTMQea/huGBsdF0nbYg==
-X-Received: by 2002:a1c:6882:: with SMTP id d124mr41531689wmc.40.1563454770381;
-        Thu, 18 Jul 2019 05:59:30 -0700 (PDT)
-Return-Path: <peter.maydell@linaro.org>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-        by smtp.gmail.com with ESMTPSA id t63sm21622182wmt.6.2019.07.18.05.59.29
-        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Thu, 18 Jul 2019 05:59:29 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
+        bh=TgjiWKnYVhNow5aXdsbc/uRaAI4MYXerKql/FbghhWU=;
+        b=Umf+MnaJNztJ03dGCfn7A4M/6CMGwK16cYjqDWMRRaG2Qf/9bMJIltdgLpHFASpNbS
+         5vkd3X/vhE3W5wk1Xq60eYmZymZEBNWeuDmwZfeNzIk6QXf5JHd+RfBGYI/NQZSQWJwF
+         7NyJW1hSOSnGkRntDwGXlh4Eu9BVSQkE8pFBtBecIqGW5FxBJorHDVBqciYH/E/flO1a
+         HvIFpWjkKjBO7V9aKAkqre2dgIIi0wmxegi4syjyuhcjjf0YJMNFgT8XiM+ASjglctz3
+         lYoWIcOlNFnWdW6jiPmQS9GNI+5ciDzCFBOciuYvcFx6P+oMbqTD+g2khjKkc/Pm2nOh
+         TgDA==
+X-Gm-Message-State: APjAAAWEFLsMjW8Canv0KEhnYtcK99XOgScSjzzGfVKvXjZ4Y3O0IBNm
+	hmibTmhsy2lNzeMUKEbfeO6gjmBUdYgPJg==
+X-Google-Smtp-Source: APXvYqxTBR2lbuJeeNk0ACGX2TgvYzf9zUcFi4VAYQKmXcMZSptDP1Sb1aVngks/y1+7tqEpIUkaog==
+X-Received: by 2002:a17:902:a607:: with SMTP id u7mr50899107plq.43.1563461908878;
+        Thu, 18 Jul 2019 07:58:28 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (97-113-176-6.tukw.qwest.net. [97.113.176.6])
+        by smtp.gmail.com with ESMTPSA id c130sm26785693pfc.184.2019.07.18.07.58.27
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 18 Jul 2019 07:58:28 -0700 (PDT)
+Subject: Re: [PATCH for-4.1] target/arm: Limit ID register assertions to TCG
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
 Cc: Laszlo Ersek <lersek@redhat.com>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH for-4.1] target/arm: Limit ID register assertions to TCG
-Date: Thu, 18 Jul 2019 13:59:28 +0100
-Message-Id: <20190718125928.20147-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20190718125928.20147-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <3b7e18bf-5450-3246-137f-9bc694edc17b@linaro.org>
+Date: Thu, 18 Jul 2019 07:58:26 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: hlxX/ZwIlUC6
+In-Reply-To: <20190718125928.20147-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: PhlzzwKyyJMN
 
-In arm_cpu_realizefn() we make several assertions about the values of
-guest ID registers:
- * if the CPU provides AArch32 v7VE or better it must advertise the
-   ARM_DIV feature
- * if the CPU provides AArch32 A-profile v6 or better it must
-   advertise the Jazelle feature
+On 7/18/19 5:59 AM, Peter Maydell wrote:
+> In arm_cpu_realizefn() we make several assertions about the values of
+> guest ID registers:
+>  * if the CPU provides AArch32 v7VE or better it must advertise the
+>    ARM_DIV feature
+>  * if the CPU provides AArch32 A-profile v6 or better it must
+>    advertise the Jazelle feature
+> 
+> These are essentially consistency checks that our ID register
+> specifications in cpu.c didn't accidentally miss out a feature,
+> because increasingly the TCG emulation gates features on the values
+> in ID registers rather than using old-style checks of ARM_FEATURE_FOO
+> bits.
+> 
+> Unfortunately, these asserts can cause problems if we're running KVM,
+> because in that case we don't control the values of the ID registers
+> -- we read them from the host kernel.  In particular, if the host
+> kernel is older than 4.15 then it doesn't expose the ID registers via
+> the KVM_GET_ONE_REG ioctl, and we set up dummy values for some
+> registers and leave the rest at zero.  (See the comment in
+> target/arm/kvm64.c kvm_arm_get_host_cpu_features().) This set of
+> dummy values is not sufficient to pass our assertions, and so on
+> those kernels running an AArch32 guest on AArch64 will assert.
+> 
+> We could provide a more sophisticated set of dummy ID registers in
+> this case, but that still leaves the possibility of a host CPU which
+> reports bogus ID register values that would cause us to assert.  It's
+> more robust to only do these ID register checks if we're using TCG,
+> as that is the only case where this is truly a QEMU code bug.
+> 
+> Reported-by: Laszlo Ersek <lersek@redhat.com>
+> Fixes: https://bugs.launchpad.net/qemu/+bug/1830864
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> Laszlo, would you mind testing this on your setup? I don't have
+> a system with an old enough kernel to trigger the assert. (The
+> change is pretty much a "has to work" one though :-))
 
-These are essentially consistency checks that our ID register
-specifications in cpu.c didn't accidentally miss out a feature,
-because increasingly the TCG emulation gates features on the values
-in ID registers rather than using old-style checks of ARM_FEATURE_FOO
-bits.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Unfortunately, these asserts can cause problems if we're running KVM,
-because in that case we don't control the values of the ID registers
--- we read them from the host kernel.  In particular, if the host
-kernel is older than 4.15 then it doesn't expose the ID registers via
-the KVM_GET_ONE_REG ioctl, and we set up dummy values for some
-registers and leave the rest at zero.  (See the comment in
-target/arm/kvm64.c kvm_arm_get_host_cpu_features().) This set of
-dummy values is not sufficient to pass our assertions, and so on
-those kernels running an AArch32 guest on AArch64 will assert.
 
-We could provide a more sophisticated set of dummy ID registers in
-this case, but that still leaves the possibility of a host CPU which
-reports bogus ID register values that would cause us to assert.  It's
-more robust to only do these ID register checks if we're using TCG,
-as that is the only case where this is truly a QEMU code bug.
-
-Reported-by: Laszlo Ersek <lersek@redhat.com>
-Fixes: https://bugs.launchpad.net/qemu/+bug/1830864
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Laszlo, would you mind testing this on your setup? I don't have
-a system with an old enough kernel to trigger the assert. (The
-change is pretty much a "has to work" one though :-))
-
- target/arm/cpu.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
-
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 1959467fdc8..9eb40ff755f 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1369,6 +1369,9 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-      * There exist AArch64 cpus without AArch32 support.  When KVM
-      * queries ID_ISAR0_EL1 on such a host, the value is UNKNOWN.
-      * Similarly, we cannot check ID_AA64PFR0 without AArch64 support.
-+     * As a general principle, we also do not make ID register
-+     * consistency checks anywhere unless using TCG, because only
-+     * for TCG would a consistency-check failure be a QEMU bug.
-      */
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-         no_aa32 = !cpu_isar_feature(aa64_aa32, cpu);
-@@ -1383,7 +1386,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-          * Presence of EL2 itself is ARM_FEATURE_EL2, and of the
-          * Security Extensions is ARM_FEATURE_EL3.
-          */
--        assert(no_aa32 || cpu_isar_feature(arm_div, cpu));
-+        assert(!tcg_enabled() || no_aa32 || cpu_isar_feature(arm_div, cpu));
-         set_feature(env, ARM_FEATURE_LPAE);
-         set_feature(env, ARM_FEATURE_V7);
-     }
-@@ -1409,7 +1412,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     if (arm_feature(env, ARM_FEATURE_V6)) {
-         set_feature(env, ARM_FEATURE_V5);
-         if (!arm_feature(env, ARM_FEATURE_M)) {
--            assert(no_aa32 || cpu_isar_feature(jazelle, cpu));
-+            assert(!tcg_enabled() || no_aa32 || cpu_isar_feature(jazelle, cpu));
-             set_feature(env, ARM_FEATURE_AUXCR);
-         }
-     }
--- 
-2.20.1
+r~

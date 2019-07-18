@@ -1,83 +1,83 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2249114wrv;
-        Thu, 18 Jul 2019 06:07:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwSam3XHOXWOopQLs8/omcn9x9RdzMv7Q3Pz0R8ARRwzysiJuVex8XITkFW4Qx2zz00gRiy
-X-Received: by 2002:a17:906:6582:: with SMTP id x2mr13722053ejn.2.1563455249043;
-        Thu, 18 Jul 2019 06:07:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563455249; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2256725wrv;
+        Thu, 18 Jul 2019 06:13:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxe/MU5Si9/e61zkgDYG0StJlw59C1t8+6yxidmjH5NhgYFWii1nbriJfW6rUyyLA5s5Lc6
+X-Received: by 2002:a50:b6e6:: with SMTP id f35mr40478026ede.82.1563455606561;
+        Thu, 18 Jul 2019 06:13:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563455606; cv=none;
         d=google.com; s=arc-20160816;
-        b=gOtuEk5wmZJZagAvl8P61snMQcdmrBVM86sp/1DFG5EO+t47yEPh10j/EnQ7uRqWEy
-         DHb0gQinbxXf/lFPIzjn58ZBqx2TqgITAg3xCXGqGt0TUoE2sXK/04JoU9tHE/AXB2Px
-         QgaA5g/Jalpq6Llj7i9l+/2eEDyPukETvCLE1TtNGWxr59eP0q0CEyykjlO0FAexcdrQ
-         lhJ5QFPSgF7t1/ERo3N+Y1JHX67o4KzfvntBqdM2XI8DVEudtjdk6YrMbiu5eQLm4EDZ
-         KFHdOV9w1t5kNvs8J12PDV4hLXFAsk8wRRnfQnrQDEEJsgUaSGdISBOh19UAaUY4cJDJ
-         sfwQ==
+        b=VQmqrHV87PHELCjaDWJkC8i0kfzeIRG8YuzUPort4dOjazpO9YtFLDuqKSf2olZynm
+         5M5jOpzkRc6Zso74/ee1pnloExQC3igBgoAIXvfC9TrQP2M6aJJD4+Xpmat/VtkPt23h
+         h28OdpU22Gzkyzcu1iGGD82nXwGhm2ftnODPR1US0M3XAXdEEn4Yv/GLtRyo6V/aVdFk
+         b7n+VZLetcXOhaHglXqGfJqEuQ+drLc0QsxON8j8/DfGfnmIkzd1olo5Uhfs5oZ1kY2G
+         hUs1ohUJnZJS+UyFLY8Y75QWI+cRHrkWclMpm8tgt4uHSE/XlFa5nsfTAKqgTsaOAdS6
+         VaWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:to:from:date;
-        bh=7COdLhwu1ux9GlGIghEf4KOrlca+eYnbqHzPvijg4RQ=;
-        b=r5aeyYJi+Jm2rr9b5hTqwRrCOVZ/4bI1iL00PIN8dTVr1kWWVP8TKhYtW6mpfn9MsL
-         ImXhhUkeYEHJwckALPKztK1O0gAaoASxDJ9pDIGyPHCOry4rWgH9HOZFMtdh6Kg7LTHu
-         I1Ulmq0Qi9cu2TXYkyeJ84K5x0V6VegCYZpq3HLZ4RmCUXygSeISIhhGoFBmJiVCvekX
-         QFHoNxVpaPEP++pGAfII9KtBWOYkYVDgNagPlDNf/LiuXebKBb4PddW91Ws684RQM08h
-         YFcvuG/XlJ9spKO4cZ9stEyv5qvwx1nbpulRp92SynDyYidEcSIbLfBF1W+2xeTGflFV
-         OAlg==
+        bh=CEBsTvsBuvlrxgYGy/ikVY24p4m6LE3jGDB63cXXMKE=;
+        b=d4aTHrgXTsGVWH55wJWasriW/KyN4AvyQoWAvERi+WnZrFv7KWdc1H8rzI6KyDBN89
+         WVhQlKqvMMlg0SRKq+/5kkAiWAQspYW3rJUH11PflRqf3v6/230/n45GDRyKeTyqIdc2
+         yL8buvPaflv99N1MlFDkzhp4fMx55n03CoMEbuRpJc5vBuWdYUxuYNKcNL16W1KGek0F
+         ph1s1VX1uHhh+S+1Gd/nRaccxF0RjfdoVQBcpjSPXlBeUjigullRiUCaQYMsXAeJ3/Mn
+         bWfwsP6NbEu/88veBkpR7OLxIB8VbVKy2+/BPKP9sw5ZkE9+UKV1l5egcgAQ5cU9mFq0
+         8Pjw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h19si447764ede.279.2019.07.18.06.07.28
+        by mx.google.com with ESMTPS id w33si699644eda.399.2019.07.18.06.13.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Jul 2019 06:07:29 -0700 (PDT)
+        Thu, 18 Jul 2019 06:13:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37848 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37896 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ho687-0001Ed-OA
-	for alex.bennee@linaro.org; Thu, 18 Jul 2019 09:07:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55107)
+	id 1ho6Dt-0006Xf-JJ
+	for alex.bennee@linaro.org; Thu, 18 Jul 2019 09:13:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57526)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <imammedo@redhat.com>) id 1ho683-0001EB-EP
- for qemu-arm@nongnu.org; Thu, 18 Jul 2019 09:07:24 -0400
+ (envelope-from <imammedo@redhat.com>) id 1ho6Dq-0006XZ-EF
+ for qemu-arm@nongnu.org; Thu, 18 Jul 2019 09:13:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1ho682-0003bZ-Eu
- for qemu-arm@nongnu.org; Thu, 18 Jul 2019 09:07:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33422)
+ (envelope-from <imammedo@redhat.com>) id 1ho6Dp-0006lV-AK
+ for qemu-arm@nongnu.org; Thu, 18 Jul 2019 09:13:22 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59188)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <imammedo@redhat.com>)
- id 1ho682-0003b0-9L; Thu, 18 Jul 2019 09:07:22 -0400
+ id 1ho6Dp-0006jW-3j; Thu, 18 Jul 2019 09:13:21 -0400
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id EBDB330BD1B1;
- Thu, 18 Jul 2019 13:07:20 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 9CC783DDBE;
+ Thu, 18 Jul 2019 13:13:19 +0000 (UTC)
 Received: from localhost (unknown [10.43.2.182])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 323DB1001B02;
- Thu, 18 Jul 2019 13:07:15 +0000 (UTC)
-Date: Thu, 18 Jul 2019 15:07:14 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2114D1001B0C;
+ Thu, 18 Jul 2019 13:13:16 +0000 (UTC)
+Date: Thu, 18 Jul 2019 15:13:15 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Message-ID: <20190718150714.691f91f9@redhat.com>
-In-Reply-To: <20190716153816.17676-9-shameerali.kolothum.thodi@huawei.com>
+Message-ID: <20190718151315.2c1d3aff@redhat.com>
+In-Reply-To: <20190716153816.17676-11-shameerali.kolothum.thodi@huawei.com>
 References: <20190716153816.17676-1-shameerali.kolothum.thodi@huawei.com>
- <20190716153816.17676-9-shameerali.kolothum.thodi@huawei.com>
+ <20190716153816.17676-11-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.49]); Thu, 18 Jul 2019 13:07:21 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.29]); Thu, 18 Jul 2019 13:13:19 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH-for-4.2 v7 08/10] hw/acpi: Add system power
- down support to GED
+Subject: Re: [Qemu-arm] [PATCH-for-4.2 v7 10/10] tests: Update DSDT ACPI
+ table for arm/virt board with PCDIMM related changes
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -95,71 +95,50 @@ Cc: peter.maydell@linaro.org, sameo@linux.intel.com, shannon.zhaosl@gmail.com,
  sebastien.boeuf@intel.com, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: G+rx8DJ2c/KC
+X-TUID: 5B9A5+ZpkrG8
 
-On Tue, 16 Jul 2019 16:38:14 +0100
+On Tue, 16 Jul 2019 16:38:16 +0100
 Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-> This adds support to use GED for system power down event.
-[...]
+> From: Eric Auger <eric.auger@redhat.com>
+> 
+> PCDIMM hotplug addition updated the DSDT. Update the reference table.
 
-> @@ -232,6 +238,13 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
->      acpi_ged_event(s, sel);
->  }
->  
-> +static void acpi_ged_pm_powerdown_req(Notifier *n, void *opaque)
-> +{
-> +    AcpiGedState *s = container_of(n, AcpiGedState, powerdown_notifier);
-> +
-> +    acpi_ged_event(s, ACPI_GED_PWR_DOWN_EVT);
-> +}
-> +
->  static void acpi_ged_device_realize(DeviceState *dev, Error **errp)
->  {
->      AcpiGedState *s = ACPI_GED(dev);
-> @@ -243,6 +256,9 @@ static void acpi_ged_device_realize(DeviceState *dev, Error **errp)
->      }
->  
->      acpi_ged_init(get_system_memory(), dev, &s->ged_state);
-> +
-> +    s->powerdown_notifier.notify = acpi_ged_pm_powerdown_req;
+it's not correct process. series should be merged through Michael's pci branch
+and see
+commit ab50f22309a17c772c51931940596e707c200739 (mst/pci)
+Author: Michael S. Tsirkin <mst@redhat.com>
+Date:   Tue May 21 17:38:47 2019 -0400
 
-one more thing:
-I'd reuse virt_powerdown_req() instead.
+    bios-tables-test: add diff allowed list
 
-pass it machine pointer and then from notifier you'd be able to get to acpi_dev
+how to request table update.
 
-> +    qemu_register_powerdown_notifier(&s->powerdown_notifier);
->  }
->  
->  static Property acpi_ged_properties[] = {
-> diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-> index f69d084c89..9e63b72cb9 100644
-> --- a/include/hw/acpi/generic_event_device.h
-> +++ b/include/hw/acpi/generic_event_device.h
-> @@ -61,6 +61,8 @@
->  
->  #include "hw/acpi/memory_hotplug.h"
->  
-> +#define ACPI_POWER_BUTTON_DEVICE "PWRB"
-> +
->  #define TYPE_ACPI_GED "acpi-ged"
->  #define ACPI_GED(obj) \
->      OBJECT_CHECK(AcpiGedState, (obj), TYPE_ACPI_GED)
-> @@ -79,6 +81,7 @@
->   * through GED.
->   */
->  #define ACPI_GED_MEM_HOTPLUG_EVT   0x1
-> +#define ACPI_GED_PWR_DOWN_EVT      0x2
->  
->  typedef struct GEDState {
->      MemoryRegion io;
-> @@ -88,6 +91,7 @@ typedef struct GEDState {
->  
->  typedef struct AcpiGedState {
->      DeviceClass parent_obj;
-> +    Notifier powerdown_notifier;
->      MemHotplugState memhp_state;
->      hwaddr memhp_base;
->      hwaddr ged_base;
+
+Another thing:
+bios-tables-test has test_acpi_tcg_dimm_pxm() test case,
+pls make use of it to test arm/virt variant
+
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> ---
+>  tests/data/acpi/virt/DSDT | Bin 18476 -> 18493 bytes
+>  1 file changed, 0 insertions(+), 0 deletions(-)
+> 
+> diff --git a/tests/data/acpi/virt/DSDT b/tests/data/acpi/virt/DSDT
+> index 20e85c7f89f645c69935c615c07084e221419960..1a5c3e5243c78eb25345fdf7ffa442afec3c5c28 100644
+> GIT binary patch
+> delta 172
+> zcmZ28fpPByMlP3Nmk?VI1_q{Y6S<_BIvO{s=eSSi^^mWRZt~=a(Tfjuig$N)iRXy-
+> z@O0sIbPn(|FfcS`;D`?ea)A;+mUB?BARiZZCmRDZqb36bLnT9WgKLnhI|B~`0|zG;
+> zOLQYQi0kYc?CPT+ViNBf7Q$Ho;v_5(n_Qj1$iNt*&kVB1*CW8$H`v*4fdEjLhl`1U
+> Ni>WOjJjjWw0RY`tDw+TQ  
+> 
+> delta 134
+> zcmdlxfpN_QMlP3Nmk=Ef1_q{ziCof5?F}2%bKIpo*xdvC4LIUGJY9GlgM2*<49pA}
+> zIN}{$f+og`c`$P_2rw{ovN13+sxvS!RDxt&Jq4Ay6ndl?7@-g-A<n=c$sh-0Ff)LR
+> Z11c2ZjdwLLW@rlt4|3vam^{&45den68LI#Q
+> 
 

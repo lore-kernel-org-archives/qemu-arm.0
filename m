@@ -1,146 +1,171 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2807685wrv;
-        Thu, 18 Jul 2019 15:45:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxKrmNBPe++CnxKeoIVQM7t43k7FpTpmFUqN3WISD8OjaHsG6kXBAp4z/ck/3pRCG7ht8aP
-X-Received: by 2002:a37:3c4:: with SMTP id 187mr30271371qkd.406.1563489949505;
-        Thu, 18 Jul 2019 15:45:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563489949; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3482794wrv;
+        Fri, 19 Jul 2019 04:47:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx71P0mkwpagKtMHjAG4H3eTy4UpNyDwXPHjUx5Y15qmm32WEhxwqnzvb39/bEAnOvxJMXk
+X-Received: by 2002:a17:906:5ad0:: with SMTP id x16mr41234606ejs.23.1563536851604;
+        Fri, 19 Jul 2019 04:47:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563536851; cv=none;
         d=google.com; s=arc-20160816;
-        b=GEAlTct5dUanHxT+JDxuNFTB/umdMWGt1/SovDYoq9OGHmndZPeK1XbRPmM3oPZJbu
-         2pvo8KYr7xnQv8dffn6lWDZc9OtXFZuRFIw1ru8jEhlJwcsrlSX2V5eOoPNnwjnySGuN
-         cxIK8awN4yD5iDjcyJ/QgZ3PQu6mJmxfEK+HWKw8/KB8qKhw4GGZRiwQfaXLD4Hd/pNf
-         odtpUxtjeS3c3mRz0Tc0DWz6KVIaPA7h2k71P4xGDcZz3IpmOfLnKEkYJonTsjFsvqvH
-         w3gGY7TQr76bXndf/5KLBwxFm1Ao97KRGzLBCBhOyR1DquBUqdfxoSn39+c+x9YOofrW
-         NH6g==
+        b=b4v+G3d0a7tmHcfAmbBPHUqPdM8S6rTOEascK74eBznicoyb/2LEau8+72PyUOQ4ER
+         t8cHutucoRixIU/5OFtGwvXYDhX/OwdMCGz0+ZGg3WCAkDa8aYTDIod/K4IfX3388jRA
+         Jvo5JxjS4oXZeVDgpP0O1b5doi+u0YyC7zt3N/rPHC8ROmvZ+x89OTQl3nDL0XsWOAX+
+         gMHamU+uJSw9Nb2SZyy8OThwdyAcIYvP52Uapju+MRQChFIUEpvL7MGLtPmnLzoH65lX
+         hnXOwdv5rhtMtuEeIAEdL0QH1jaa+AJx08MKo/I2/uujPLQp9rtN1jMPv7vP6cWE8qoR
+         MQyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=XNv/MLuEPijZabgrZtgNgFL+cBzoVRFjOzWDFuuK3qM=;
-        b=fLB3p2NXTfwa5HSW3PzJPAQpIwwFtn6MVO7jFXISJWckH3pDqUCchX44H9bS89aw50
-         oCqqgp5vBPWoOMK9p6eIK4aiGnIF9L/p6q+L8IldBml8UehXbQl7SytDPbHBCytn5vOT
-         NW4EfQcvul0MWYL/8uUbNOhW57DngoSzrxJMLz1sG50guC3+XsLKB/4RJKM0SeRzXChP
-         Dh9Q2lpT3ay9WB4s4rMxDCt5sdRont2o405x2NiDJtkqk7A38+rUH/kGV0mB5kI+Dc1q
-         LzJa7/UrrDkhMPuFy6PrjKNzoT5+uIN83VslkN1LfJc3TZyisgXg2O+IY+JfPBMlzjf2
-         oAkA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=z4iPOBzFhMTUPZoHyJ55VwwkuY8lGjxWl84caEjm7i0=;
+        b=KA1i1Wb4yzdLOvQKVdSymki+L4Pfv9xUPFhBC9mOXAbss7bOlJmwypRLCq7zXkaBAM
+         QXatyN3l/spcerMPYMB+QqzJz2h7V6+4zlq12/VN15nbv7+BPPYjYYSvI6LaQN08tv+P
+         MC5pqw3cF+/oXLJAGY8vxLd3Zue0i9FnYZ98S1nzBQJBezJAtY4KVzPxNoO6IDtJj47h
+         atTA36nEiTRzGyykY2bAm7TuDEKpwoEkkhWyeQWYvgG6STl+FqorRr0i+9aJg9BF4KeS
+         QRNbHr0QtC6Pv38LYSHXFeNdKsRp8V9fpZ67yEafYMMPP9JP4+jmZsAwzNXOeJP8qOLA
+         mp9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=lersek@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <lersek@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id r29si18756661qte.170.2019.07.18.15.45.49
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 18 Jul 2019 15:45:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=fail header.i=@linaro.org header.s=google header.b=RGpPrTGr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f6si158064eja.338.2019.07.19.04.47.31
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 19 Jul 2019 04:47:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of lersek@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=lersek@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 890BE7FDE9;
-	Thu, 18 Jul 2019 22:45:48 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-116-25.ams2.redhat.com [10.36.116.25])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id EE7915D719;
-	Thu, 18 Jul 2019 22:45:43 +0000 (UTC)
-Subject: Re: [PATCH for-4.1] target/arm: Limit ID register assertions to TCG
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20190718125928.20147-1-peter.maydell@linaro.org>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <a47660f2-4b72-3ae7-7bf2-90db54d553ae@redhat.com>
-Date: Fri, 19 Jul 2019 00:45:42 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Thunderbird/52.9.1
+       dkim=fail header.i=@linaro.org header.s=google header.b=RGpPrTGr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44196 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hoRMI-0000aR-EG
+	for alex.bennee@linaro.org; Fri, 19 Jul 2019 07:47:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41615)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <peter.maydell@linaro.org>) id 1hoRME-0000aA-LK
+ for qemu-arm@nongnu.org; Fri, 19 Jul 2019 07:47:27 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1hoRMC-00023X-E7
+ for qemu-arm@nongnu.org; Fri, 19 Jul 2019 07:47:26 -0400
+Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b]:40295)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hoRMA-00021b-NO
+ for qemu-arm@nongnu.org; Fri, 19 Jul 2019 07:47:22 -0400
+Received: by mail-ot1-x32b.google.com with SMTP id y20so16483451otk.7
+ for <qemu-arm@nongnu.org>; Fri, 19 Jul 2019 04:47:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=z4iPOBzFhMTUPZoHyJ55VwwkuY8lGjxWl84caEjm7i0=;
+ b=RGpPrTGrEXUHccK/w5sLwXWCwQ8BMpD0cwlhrg203G521YBccl9PiaxlfAj6pFFT9o
+ tWJEsBaBOhLzum2Az0T2NVpwPyepuTAUr2iDOJrsLNqSz+sU3MY3mp6l1GnV9zdDHRvi
+ XHi8v0kvZwChVzXO4UYpfA0R0D/WIu4/hyzaijYhksr+FtGNAJAH2HpKxzI2IJjW991Q
+ jiNXQWGfxDWIPyXbUJMqaTwkYSVoQnkFGti9h5xNKHOkFZxB3ULgl4jHpzm76li7bQNb
+ MPDYt338cGLl1GH84T5EJOY7EblPFqKe8RNLzw2cMgZWUduyUFI6S7uWHNdBt8H3cBxM
+ PZKQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=z4iPOBzFhMTUPZoHyJ55VwwkuY8lGjxWl84caEjm7i0=;
+ b=rakZrFj/ljVtNWP5SQ1AqjHe4a0MElaSx6fbAI4Rt3rnqJKGJqFMSB6i5JMSXrPaWh
+ mruF9DO0u+4Wi03IxHOCVXb5uP8OoxZ5rmzhExgLjlgWZ+mqYuJxe3u5oGtufTNImTs8
+ /DHoWndl9kCZN/IjwH62T7solur6j0405G6YgSZnChgfVu8Ekcq+OKGOLVogzzELnA/p
+ r7DzWoZvg2vc/kDyBhCwg56yOrkEnV0pe96fiv+vHM8Sj2A2zCjI/Kn7EDCN2nDhHt96
+ TqpBLtyWcE2cKRPWRNK9TOBPFl4/ORvPPpYkfQtX4c/AqYVza+X/Qmihztje3Q2dNbA3
+ hIbg==
+X-Gm-Message-State: APjAAAVQ0H0DRhPQbao2k75tziWJR/aS85n4cBMqLWDxQFPuMqV+zYzf
+ dl+DUz4So5TEX5QecNPddQjlRwvgdV2NkxX16TU0ijrOCD4=
+X-Received: by 2002:a05:6830:1653:: with SMTP id
+ h19mr31665938otr.232.1563536840512; 
+ Fri, 19 Jul 2019 04:47:20 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190718125928.20147-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.27]); Thu, 18 Jul 2019 22:45:48 +0000 (UTC)
-X-TUID: LyfhZRItsmcp
+References: <20190719111451.12406-1-philmd@redhat.com>
+In-Reply-To: <20190719111451.12406-1-philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 19 Jul 2019 12:47:09 +0100
+Message-ID: <CAFEAcA92mCp6WYb5wVEYbVNEFkPb9TwpedjNwj4SdS9Mb_rNtw@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::32b
+Subject: Re: [Qemu-arm] [PATCH-for-4.1] target/arm: Add missing break
+ statement for Hypervisor Trap Exception
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Gk/Kpmam5H3V
 
-On 07/18/19 14:59, Peter Maydell wrote:
-> In arm_cpu_realizefn() we make several assertions about the values of
-> guest ID registers:
->  * if the CPU provides AArch32 v7VE or better it must advertise the
->    ARM_DIV feature
->  * if the CPU provides AArch32 A-profile v6 or better it must
->    advertise the Jazelle feature
-> 
-> These are essentially consistency checks that our ID register
-> specifications in cpu.c didn't accidentally miss out a feature,
-> because increasingly the TCG emulation gates features on the values
-> in ID registers rather than using old-style checks of ARM_FEATURE_FOO
-> bits.
-> 
-> Unfortunately, these asserts can cause problems if we're running KVM,
-> because in that case we don't control the values of the ID registers
-> -- we read them from the host kernel.  In particular, if the host
-> kernel is older than 4.15 then it doesn't expose the ID registers via
-> the KVM_GET_ONE_REG ioctl, and we set up dummy values for some
-> registers and leave the rest at zero.  (See the comment in
-> target/arm/kvm64.c kvm_arm_get_host_cpu_features().) This set of
-> dummy values is not sufficient to pass our assertions, and so on
-> those kernels running an AArch32 guest on AArch64 will assert.
-> 
-> We could provide a more sophisticated set of dummy ID registers in
-> this case, but that still leaves the possibility of a host CPU which
-> reports bogus ID register values that would cause us to assert.  It's
-> more robust to only do these ID register checks if we're using TCG,
-> as that is the only case where this is truly a QEMU code bug.
-> 
-> Reported-by: Laszlo Ersek <lersek@redhat.com>
-> Fixes: https://bugs.launchpad.net/qemu/+bug/1830864
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+On Fri, 19 Jul 2019 at 12:15, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> Reported by GCC9 when building with  -Wimplicit-fallthrough=3D2:
+>
+>   target/arm/helper.c: In function =E2=80=98arm_cpu_do_interrupt_aarch32_=
+hyp=E2=80=99:
+>   target/arm/helper.c:7958:14: error: this statement may fall through [-W=
+error=3Dimplicit-fallthrough=3D]
+>    7958 |         addr =3D 0x14;
+>         |         ~~~~~^~~~~~
+>   target/arm/helper.c:7959:5: note: here
+>    7959 |     default:
+>         |     ^~~~~~~
+>   cc1: all warnings being treated as errors
+>
+> Fixes: b9bc21ff9f9
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
-> Laszlo, would you mind testing this on your setup? I don't have
-> a system with an old enough kernel to trigger the assert. (The
-> change is pretty much a "has to work" one though :-))
-
-32-bit guest runs fine, with this patch applied to v4.1.0-rc1 :)
-
-Tested-by: Laszlo Ersek <lersek@redhat.com>
-
-Thank you!
-Laszlo
-
-> 
->  target/arm/cpu.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
-> 
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 1959467fdc8..9eb40ff755f 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1369,6 +1369,9 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->       * There exist AArch64 cpus without AArch32 support.  When KVM
->       * queries ID_ISAR0_EL1 on such a host, the value is UNKNOWN.
->       * Similarly, we cannot check ID_AA64PFR0 without AArch64 support.
-> +     * As a general principle, we also do not make ID register
-> +     * consistency checks anywhere unless using TCG, because only
-> +     * for TCG would a consistency-check failure be a QEMU bug.
->       */
->      if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
->          no_aa32 = !cpu_isar_feature(aa64_aa32, cpu);
-> @@ -1383,7 +1386,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->           * Presence of EL2 itself is ARM_FEATURE_EL2, and of the
->           * Security Extensions is ARM_FEATURE_EL3.
->           */
-> -        assert(no_aa32 || cpu_isar_feature(arm_div, cpu));
-> +        assert(!tcg_enabled() || no_aa32 || cpu_isar_feature(arm_div, cpu));
->          set_feature(env, ARM_FEATURE_LPAE);
->          set_feature(env, ARM_FEATURE_V7);
+>  target/arm/helper.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 20f8728be1..b74c23a9bc 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -7956,6 +7956,7 @@ static void arm_cpu_do_interrupt_aarch32_hyp(CPUSta=
+te *cs)
+>          break;
+>      case EXCP_HYP_TRAP:
+>          addr =3D 0x14;
+> +        break;
+>      default:
+>          cpu_abort(cs, "Unhandled exception 0x%x\n", cs->exception_index)=
+;
 >      }
-> @@ -1409,7 +1412,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
->      if (arm_feature(env, ARM_FEATURE_V6)) {
->          set_feature(env, ARM_FEATURE_V5);
->          if (!arm_feature(env, ARM_FEATURE_M)) {
-> -            assert(no_aa32 || cpu_isar_feature(jazelle, cpu));
-> +            assert(!tcg_enabled() || no_aa32 || cpu_isar_feature(jazelle, cpu));
->              set_feature(env, ARM_FEATURE_AUXCR);
->          }
->      }
-> 
+
+I think this is right, but EXCP_HYP_TRAP is a bit odd -- we appear
+to use this only for the case of "SMC instruction is trapped from
+NS EL1 to EL2 by HCR.TSC". I was expecting more traps-to-EL2
+to use this EXCP_ variable... Mostly we seem to use EXCP_UDEF,
+eg for CP_ACCESS_TRAP_UNCATEGORIZED_EL2 coprocessor/sysreg accesses:
+this has the same behaviour as EXCP_HYP_TRAP as long as we know
+we are going from an EL below 2 to EL2. Which I think we could
+also use in the one place we use EXCP_HYP_TRAP; or we could make
+wider use of EXCP_HYP_TRAP, since feeding everything through
+EXCP_UDEF is rather confusing.
+
+Anyway, for 4.1 we should do this.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

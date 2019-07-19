@@ -1,189 +1,157 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3783475wrv;
-        Fri, 19 Jul 2019 09:47:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwxeNTZaNqMMWAw7EpFiUSYUS75pXIdLP7dTJ/tztU9OQFQkFCqIqWCndQQCSF4UcuZJyaI
-X-Received: by 2002:a17:906:af86:: with SMTP id mj6mr14605069ejb.157.1563554870992;
-        Fri, 19 Jul 2019 09:47:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563554870; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3818171wrv;
+        Fri, 19 Jul 2019 10:21:57 -0700 (PDT)
+X-Received: by 2002:a1c:6555:: with SMTP id z82mr50557232wmb.129.1563556917731;
+        Fri, 19 Jul 2019 10:21:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563556917; cv=none;
         d=google.com; s=arc-20160816;
-        b=yGyNYHlqXaGCHld/XwP1g0M2yS0D14DqTuIEfY47fETIW3yY1sSqimw8LxLF5kPvNb
-         z6TGOd8Bw5LnQFyZus/X0bj9HFfJmySLa+PQwO/NB9qvDyvrypiWzKRA1vcCMPdCJd5d
-         KI+5bld1C+iWuRDPxBPhR3EmB9qqkRQIDYK63WM3bSbmoEZXLqEaYoZ1mzPsfhpv9Cfl
-         rgSkEdluZYRAdzH8+wWG5gFrC3V1V1ehLyagoZwA6p0xHpZryvg+CA7+08R2cKorP78B
-         nnlncyFzn2XVuYn2fYtUsuH+AGWMOiDQ3q+Lmhjx05nYyDMNWDk7fdOUg8p/xWhgQ3MU
-         MFmg==
+        b=twlcL6qn3WrAqXfdyFl6EsfV9MiUHRCr48bqh8k4vJ5un5Wah27s4DXhBhz77+J66d
+         HMdbljaq75d/MELmUP3SnbuUtMdPuabtavUpqn5/kT7X2GiOHFfBsZ1ZL2g2oybDUG+d
+         uN/AkPr8pg/pz7SdBIaD1E2Hci1RoWOSHRq8GOJPOIS3onIwO+rIMR94Y4XvymMiiKPX
+         wFGRm8Dvx9qlm3rI/sdv3eL52ZNcE6frezHKXDo2790/9dXmvXxLNhvnCea9vvUZgtQK
+         P+eROZX6ncn8oLLAj5RViBcaW/3tkEV8Zk74ETTdgJUfu3exs16km8W1Hyw6CZUmjX2R
+         WEkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=vq/1njf9PygBg32sSxcoBRqOUHCJ6SdsFVFBk0xDPU4=;
-        b=vaI8B5Y69KeGEpEM539xIFk7Juca73XvvFV4E8X5pXM0QdtaRbYNTHfKtjZFivZ9gB
-         uDWEfqRUrCZykxArlDbIlwU5mM9IoHdN33wHxcvv+0M4ki2YAtxh0qEFov+/rYbwLvMI
-         xLNO3Er+q46ROOBEldciQ11aAayjbWZJbJa/ybHXLYHiQwu4Ef/MPWhO9LMbj29npbdr
-         TOyi9zMMMjQv5d9JdyR+/uWe6W+3D6PymRFTd42wP4Z1VygfHVKX3JcveC8GJ+2rEgjk
-         +SfYXlGdAHeecJi6a8sGiYwAHaPwoYm6vMZ7s70ceFO6qUHHIl56wzVlBKDOhV/W09xn
-         uD7g==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
+        bh=PbhLHDdRUx14ysCaVZJdG4IkpobtNSYGHjXGxn1nrzI=;
+        b=Ww17gLjxvF+/Odo7rQf+VI2b8OyrbCFn5PCsVKWGLCk2dSWtdQ3gza9lxEnGxs4fDU
+         XX2liaCrhWRA8kZ//905csO2F8i/X3KCoB2t5X/kZcJaNpLZoX8HDyqOp+zkbPaLq4uJ
+         EOD0+EDFjpQg0Rypj0QYu6NkVioklwfj9WkyaaxWS1+JkiFWziV1f7YAzF3engrexY0V
+         CUtG15T/hPbtnu1KQ0ACw5ursS/NvOjB6ADceDeGBeUcVNXyWEPCEiOae9rA/BZXSrSZ
+         +UlcWx+1+4BfRLX3dc51jTzpQLYbPQoxDcntUlDgsGTA1v6XSCEAMTLgrQ+P4Z+ky6Ss
+         0K3w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j4si115254ede.193.2019.07.19.09.47.50
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id 131sor18164735wmd.1.2019.07.19.10.21.57
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 19 Jul 2019 09:47:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Fri, 19 Jul 2019 10:21:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47106 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hoW2v-0001Nu-Qj
-	for alex.bennee@linaro.org; Fri, 19 Jul 2019 12:47:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47012)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <mark.rutland@arm.com>) id 1hoW2s-0001Na-2K
- for qemu-arm@nongnu.org; Fri, 19 Jul 2019 12:47:47 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mark.rutland@arm.com>) id 1hoW2q-0006Th-9v
- for qemu-arm@nongnu.org; Fri, 19 Jul 2019 12:47:45 -0400
-Received: from foss.arm.com ([217.140.110.172]:43914)
- by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <mark.rutland@arm.com>)
- id 1hoW2n-0006IT-1B; Fri, 19 Jul 2019 12:47:41 -0400
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id B6096344;
- Fri, 19 Jul 2019 09:47:36 -0700 (PDT)
-Received: from lakrids.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
- [10.121.207.14])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 061A23F59C;
- Fri, 19 Jul 2019 09:47:35 -0700 (PDT)
-Date: Fri, 19 Jul 2019 17:47:30 +0100
-From: Mark Rutland <mark.rutland@arm.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20190719164729.GA22520@lakrids.cambridge.arm.com>
-References: <20190516144733.32399-1-peter.maydell@linaro.org>
- <20190516144733.32399-4-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190516144733.32399-4-peter.maydell@linaro.org>
-User-Agent: Mutt/1.11.1+11 (2f07cb52) (2018-12-01)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.140.110.172
-Subject: Re: [Qemu-arm] [PATCH v2 3/4] hw/arm/boot: Avoid placing the initrd
- on top of the kernel
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=PbhLHDdRUx14ysCaVZJdG4IkpobtNSYGHjXGxn1nrzI=;
+        b=g+/fl8nPux+DLIrP1jFsZeB/fwyd98UP1/9QSsGDYFE06ffKzJO6z8hkHPblPI+s8u
+         MG8vr6avqBv3qpBBMDCBwUjeO56odu1xxXZj6s2EK7CNugfi2yz1/0LbRfcj9sKweCVo
+         aNjYRN5ytkcjD9nLR8AfyejbUq58FUv2sggkvvVwEOxKAab0tvM13URjz19NllUeOKKu
+         +y3MAiMUeAMZv1Czb+ZKc+RtmStpgirKGRYcvtXS0boUvQuwsUtBa/1vctwXOtxuV0hJ
+         RlW6/dHQ1HxuqACnC+Tx8TqcrakjUGYYuMjkhyoGaZfTljUb6E3DKc+PitZ3Ttk13tZ0
+         Coiw==
+X-Gm-Message-State: APjAAAVaRSjgb7ocueKYDwGVf8hcEEabBdWqzFox1GF+zAQI0GoZmDhG
+	MpFRni2dOoSPnVd9h35SldaXD6e3GWE=
+X-Google-Smtp-Source: APXvYqwRk+/wRd4YpxLm/ztvOrmkyFqGsbOnC1KssjwCrbE2ZZOcBeHJf5OvDaU707qox/s4F/1PRg==
+X-Received: by 2002:a7b:c104:: with SMTP id w4mr51056912wmi.42.1563556917300;
+        Fri, 19 Jul 2019 10:21:57 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.37] (62.red-83-42-61.dynamicip.rima-tde.net. [83.42.61.62])
+        by smtp.gmail.com with ESMTPSA id o11sm29424004wmh.37.2019.07.19.10.21.56
+        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+        Fri, 19 Jul 2019 10:21:56 -0700 (PDT)
+Subject: Re: [PATCH for-4.1] target/arm: Limit ID register assertions to TCG
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: O/IRyTTP3eQ3
+Cc: Laszlo Ersek <lersek@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20190718125928.20147-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <40085853-280c-cd33-57ac-ccc9db6f9b36@redhat.com>
+Date: Fri, 19 Jul 2019 19:21:55 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
+MIME-Version: 1.0
+In-Reply-To: <20190718125928.20147-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: jL72YuwrxiL1
 
-Hi Peter,
-
-I've just been testing on QEMU v4.1.0-rc1, and found a case where the
-DTB overlapped the end of the kernel, and I think there's a bug in this
-patch -- explanation below.
-
-On Thu, May 16, 2019 at 03:47:32PM +0100, Peter Maydell wrote:
-> We currently put the initrd at the smaller of:
->  * 128MB into RAM
->  * halfway into the RAM
-> (with the dtb following it).
+On 7/18/19 2:59 PM, Peter Maydell wrote:
+> In arm_cpu_realizefn() we make several assertions about the values of
+> guest ID registers:
+>  * if the CPU provides AArch32 v7VE or better it must advertise the
+>    ARM_DIV feature
+>  * if the CPU provides AArch32 A-profile v6 or better it must
+>    advertise the Jazelle feature
 > 
-> However for large kernels this might mean that the kernel
-> overlaps the initrd. For some kinds of kernel (self-decompressing
-> 32-bit kernels, and ELF images with a BSS section at the end)
-> we don't know the exact size, but even there we have a
-> minimum size. Put the initrd at least further into RAM than
-> that. For image formats that can give us an exact kernel size, this
-> will mean that we definitely avoid overlaying kernel and initrd.
+> These are essentially consistency checks that our ID register
+> specifications in cpu.c didn't accidentally miss out a feature,
+> because increasingly the TCG emulation gates features on the values
+> in ID registers rather than using old-style checks of ARM_FEATURE_FOO
+> bits.
 > 
+> Unfortunately, these asserts can cause problems if we're running KVM,
+> because in that case we don't control the values of the ID registers
+> -- we read them from the host kernel.  In particular, if the host
+> kernel is older than 4.15 then it doesn't expose the ID registers via
+> the KVM_GET_ONE_REG ioctl, and we set up dummy values for some
+> registers and leave the rest at zero.  (See the comment in
+> target/arm/kvm64.c kvm_arm_get_host_cpu_features().) This set of
+> dummy values is not sufficient to pass our assertions, and so on
+> those kernels running an AArch32 guest on AArch64 will assert.
+> 
+> We could provide a more sophisticated set of dummy ID registers in
+> this case, but that still leaves the possibility of a host CPU which
+> reports bogus ID register values that would cause us to assert.  It's
+> more robust to only do these ID register checks if we're using TCG,
+> as that is the only case where this is truly a QEMU code bug.
+
+Agreed, this is clever and simpler.
+
+> 
+> Reported-by: Laszlo Ersek <lersek@redhat.com>
+> Fixes: https://bugs.launchpad.net/qemu/+bug/1830864
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/arm/boot.c | 34 ++++++++++++++++++++--------------
->  1 file changed, 20 insertions(+), 14 deletions(-)
+> Laszlo, would you mind testing this on your setup? I don't have
+> a system with an old enough kernel to trigger the assert. (The
+> change is pretty much a "has to work" one though :-))
 > 
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index 935be3b92a5..e441393fdf5 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -999,20 +999,6 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
->      if (info->nb_cpus == 0)
->          info->nb_cpus = 1;
->  
-> -    /*
-> -     * We want to put the initrd far enough into RAM that when the
-> -     * kernel is uncompressed it will not clobber the initrd. However
-> -     * on boards without much RAM we must ensure that we still leave
-> -     * enough room for a decent sized initrd, and on boards with large
-> -     * amounts of RAM we must avoid the initrd being so far up in RAM
-> -     * that it is outside lowmem and inaccessible to the kernel.
-> -     * So for boards with less  than 256MB of RAM we put the initrd
-> -     * halfway into RAM, and for boards with 256MB of RAM or more we put
-> -     * the initrd at 128MB.
-> -     */
-> -    info->initrd_start = info->loader_start +
-> -        MIN(info->ram_size / 2, 128 * 1024 * 1024);
-> -
->      /* Assume that raw images are linux kernels, and ELF images are not.  */
->      kernel_size = arm_load_elf(info, &elf_entry, &elf_low_addr,
->                                 &elf_high_addr, elf_machine, as);
-> @@ -1064,6 +1050,26 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
+>  target/arm/cpu.c | 7 +++++--
+>  1 file changed, 5 insertions(+), 2 deletions(-)
+> 
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 1959467fdc8..9eb40ff755f 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -1369,6 +1369,9 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>       * There exist AArch64 cpus without AArch32 support.  When KVM
+>       * queries ID_ISAR0_EL1 on such a host, the value is UNKNOWN.
+>       * Similarly, we cannot check ID_AA64PFR0 without AArch64 support.
+> +     * As a general principle, we also do not make ID register
+> +     * consistency checks anywhere unless using TCG, because only
+> +     * for TCG would a consistency-check failure be a QEMU bug.
+>       */
+>      if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+>          no_aa32 = !cpu_isar_feature(aa64_aa32, cpu);
+> @@ -1383,7 +1386,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>           * Presence of EL2 itself is ARM_FEATURE_EL2, and of the
+>           * Security Extensions is ARM_FEATURE_EL3.
+>           */
+> -        assert(no_aa32 || cpu_isar_feature(arm_div, cpu));
+> +        assert(!tcg_enabled() || no_aa32 || cpu_isar_feature(arm_div, cpu));
+>          set_feature(env, ARM_FEATURE_LPAE);
+>          set_feature(env, ARM_FEATURE_V7);
 >      }
->  
->      info->entry = entry;
-
-Note: this is the start of the kernel image...
-
-> +
-> +    /*
-> +     * We want to put the initrd far enough into RAM that when the
-> +     * kernel is uncompressed it will not clobber the initrd. However
-> +     * on boards without much RAM we must ensure that we still leave
-> +     * enough room for a decent sized initrd, and on boards with large
-> +     * amounts of RAM we must avoid the initrd being so far up in RAM
-> +     * that it is outside lowmem and inaccessible to the kernel.
-> +     * So for boards with less  than 256MB of RAM we put the initrd
-> +     * halfway into RAM, and for boards with 256MB of RAM or more we put
-> +     * the initrd at 128MB.
-> +     * We also refuse to put the initrd somewhere that will definitely
-> +     * overlay the kernel we just loaded, though for kernel formats which
-> +     * don't tell us their exact size (eg self-decompressing 32-bit kernels)
-> +     * we might still make a bad choice here.
-> +     */
-> +    info->initrd_start = info->loader_start +
-> +        MAX(MIN(info->ram_size / 2, 128 * 1024 * 1024), kernel_size);
-
-... but here we add kernel_size to the start of the loader, which is
-below the kernel. Should that be info->entry?
-
-I've seen this trigger a case where:
-
-* The kernel's image_size is 0x0a7a8000
-* The kernel was loaded at   0x40080000
-* The end of the kernel is   0x4A828000
-* The DTB was loaded at      0x4a800000
-
-... and the kernel is unable to find a usable DTB.
-
-Thanks,
-Mark.
-
-> +    info->initrd_start = TARGET_PAGE_ALIGN(info->initrd_start);
-> +
->      if (is_linux) {
->          uint32_t fixupcontext[FIXUP_MAX];
->  
-> -- 
-> 2.20.1
+> @@ -1409,7 +1412,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>      if (arm_feature(env, ARM_FEATURE_V6)) {
+>          set_feature(env, ARM_FEATURE_V5);
+>          if (!arm_feature(env, ARM_FEATURE_M)) {
+> -            assert(no_aa32 || cpu_isar_feature(jazelle, cpu));
+> +            assert(!tcg_enabled() || no_aa32 || cpu_isar_feature(jazelle, cpu));
+>              set_feature(env, ARM_FEATURE_AUXCR);
+>          }
+>      }
 > 
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>

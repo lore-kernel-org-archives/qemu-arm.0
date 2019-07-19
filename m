@@ -1,152 +1,180 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2413820wrv;
-        Thu, 18 Jul 2019 08:33:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyN/CJF2FuP3LOcqsIVrcZMVQ65VP1ttvH1K87MXVHN4XOBgH19OTlDFUnHfd9ClOY8tIym
-X-Received: by 2002:a50:940b:: with SMTP id p11mr42110234eda.194.1563464013771;
-        Thu, 18 Jul 2019 08:33:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563464013; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2946116wrv;
+        Thu, 18 Jul 2019 18:49:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyHTUoT3ZJhzK80hiiJgUP00/a5BVbT6T3Z54rCuGfXLq4SdUdu1I8kBvK1JLXYS8/Hy7LC
+X-Received: by 2002:a37:4986:: with SMTP id w128mr32578955qka.417.1563500978052;
+        Thu, 18 Jul 2019 18:49:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563500978; cv=none;
         d=google.com; s=arc-20160816;
-        b=FUKMSw1AX1be2doye140r0j0JlryQUNFGMAKt1XbTjo1QWPd9Am3v/XAhyfUnyQOPa
-         8ric/P5pxBpd6f/DuPgvdRES7q09Ja3mLEEj0JGFdmmZGcFo54T2/xQjT3Y0qqYc8E4j
-         8oy0F26EVxxK7izgq1QI3BACagXx7na7yxvESSd0gnJlB0SlLyVYwdQ5VQc2N8Eit9f+
-         jbtRHpLjA3iUa1Kff9fr6N83nNfx2mo9Z7xz/HpwgkVLuA5O1wkym1cRUusj2/cN2iWV
-         /QRYBnf98DUg7tUS1ndyTYuQk7IvvRu8aC+gvNytE5fUNHnqG29xkgtaiG7RyhkDGNGt
-         EUxQ==
+        b=FquZD+7Tyhax4KNhvJjoH99113uwnAG/SsyoB/WY0ZM/DrIBwu8BjB3gtJI2GNehFi
+         4npqfs3Bp54H4hlyFoiI3+9qO/wzIL+2rNN5ELuxF5Yj+rXyCIvg1cvUOrolW+V5BATp
+         XpPXm94ZPA6hTMtCtvvEWW0ywXa2ogyIr8BW53Hz040pTsI9nEuo4ltXdbD5wI+YL3wT
+         4TNeBEa+8fQf7FIi0V78a20Y8Nvnim0Ns+gV3Uk5it0yWRb6Jh21CWjH69Fo4xdPBwRn
+         OPYYGey3gfOy1K7+mq6KWpFK6Dx5WctVqgRGullO3UYXPdoCAKoM8iD2wjC94XUfvnGM
+         Ob4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:to:from:date;
-        bh=klx9LNwsHI+HyfJS5DEmG6V6fmRWPe1Lm+XglBN3+Qo=;
-        b=jXSWg6SCfRY6spfom+BBIDrI0K7hxffGM3FovabGLeEOIJ5wL6dhQBKvlx6AVsvNa4
-         l7JaBYKgE7TeNdc1XIu05gNgxjLCgpK/BmeEILLDjiG4z2TAUgL9VhrlL+Y7ddsOukFM
-         XfkNM2D+rKuYhwh0SH7cWo/QF6M/ut6jMwyPC9O3+YheUpdvH36YcLdmMTs0PEIbSATD
-         e28dP+mR6gpEyKohw7I34e8TtBItFZgWrQPwUoi3tUHnIG0afOxatW/74eMxY+Lmk8CA
-         Et8RQKij7HPkeme3WfLSR1gBvJSJN9q6JgQpIqtZoPb/yWVEZyxfYrTBjMXpS6fsAMKL
-         /JYg==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:subject;
+        bh=xSygIBD8+H0z4P/kJCIBz5O7VHHCZw7bm9rKibONKcI=;
+        b=JTUcNOJssFIPPO1cx5Gky0Z9VzHBlrbNjJGxfZT0G7AuG5qLUM/mV1VDHsf/M6H8r6
+         7dYwTg3/4rFC+DE1dI6ySI1r9mGVNbB+tVnaBnX2HVrinhM9Am1HVuUplIujl29aCKq7
+         2SarjxgHE+q6wGpRCGY+nPd4G86F/OjeDknX5auizg8Yu9V20KFNgfk5WGQoxgIkuMOG
+         eCetOPpClwK45GCBpjE3w0LzYI6mCyVmon8f9z4V2WHxIUjd3iIwEGpUjtO9XWIio7mQ
+         3djK/cvWRjCuU5sR5/y0VZhWuC7fUAW8ETTc1AKtIg2G8sxVjJBwoVRt+2kOrwV5ABns
+         d86g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b52si52567ede.326.2019.07.18.08.33.33
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 18 Jul 2019 08:33:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id q69si18315477qke.342.2019.07.18.18.49.37;
+        Thu, 18 Jul 2019 18:49:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39238 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ho8PU-0006xt-St
-	for alex.bennee@linaro.org; Thu, 18 Jul 2019 11:33:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49534)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <cohuck@redhat.com>) id 1ho8PS-0006vm-90
- for qemu-arm@nongnu.org; Thu, 18 Jul 2019 11:33:31 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <cohuck@redhat.com>) id 1ho8PR-0007y4-AX
- for qemu-arm@nongnu.org; Thu, 18 Jul 2019 11:33:30 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:64805)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <cohuck@redhat.com>)
- id 1ho8PR-0007xS-3g; Thu, 18 Jul 2019 11:33:29 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id D227430860D5;
- Thu, 18 Jul 2019 15:33:27 +0000 (UTC)
-Received: from gondolin (dhcp-192-232.str.redhat.com [10.33.192.232])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 31E4819C5B;
- Thu, 18 Jul 2019 15:33:11 +0000 (UTC)
-Date: Thu, 18 Jul 2019 17:33:08 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <20190718173308.224f01a9.cohuck@redhat.com>
-In-Reply-To: <a88a7f65-60c2-22a8-5523-faedabc06b44@redhat.com>
-References: <20190715095545.28545-1-philmd@redhat.com>
- <20190715095545.28545-2-philmd@redhat.com>
- <ca528cdc-6118-0b2f-c1b8-30b06875dde8@redhat.com>
- <CAFEAcA-wgTVfj0TUJ=piP0wEgLGiNpOYia5DK2GQAO4Q7gNaWg@mail.gmail.com>
- <6d69e8ad-d720-ce04-20f2-a03193903078@redhat.com>
- <20190715125653.6e65d575.cohuck@redhat.com>
- <c1c68faf-0424-6c7c-e39f-42159457c3ee@redhat.com>
- <20190715130955.4a117388.cohuck@redhat.com>
- <13fce62f-234c-1b13-595f-5910c066bc4f@redhat.com>
- <6c39a198-e951-c0bd-1ddc-5d227afe72ff@redhat.com>
- <87a7dfth4i.fsf@dusky.pond.sub.org>
- <20190715181206.3cb1db93.cohuck@redhat.com>
- <799aa0f5-8850-5caa-5103-e1cf3cdb018f@redhat.com>
- <87h87m2knh.fsf@dusky.pond.sub.org>
- <beb5fe93-991d-ba2b-d2c1-51e01b912dbe@redhat.com>
- <50befb09-d381-4362-9cd1-6fb11c96a719@linux.ibm.com>
- <633cc3f7-eb20-1bfe-03d2-e481be188eb1@redhat.com>
- <87f07cd0-ebbc-3569-9070-5700e47d4af8@linux.ibm.com>
- <a88a7f65-60c2-22a8-5523-faedabc06b44@redhat.com>
-Organization: Red Hat GmbH
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 59DAE4A53B;
+	Thu, 18 Jul 2019 21:49:37 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -1.502
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.502 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3,
+	SPF_HELO_PASS=-0.001] autolearn=no
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id j8sPev43m5kD; Thu, 18 Jul 2019 21:49:35 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 7A57C4A4F6;
+	Thu, 18 Jul 2019 21:49:35 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id B66934A4F6
+ for <kvmarm@lists.cs.columbia.edu>; Thu, 18 Jul 2019 21:49:33 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 62y1a1ZToJuq for <kvmarm@lists.cs.columbia.edu>;
+ Thu, 18 Jul 2019 21:49:32 -0400 (EDT)
+Received: from huawei.com (szxga06-in.huawei.com [45.249.212.32])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id E92BA4A4EB
+ for <kvmarm@lists.cs.columbia.edu>; Thu, 18 Jul 2019 21:49:31 -0400 (EDT)
+Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 946D830309C0A785A41F;
+ Fri, 19 Jul 2019 09:49:28 +0800 (CST)
+Received: from [127.0.0.1] (10.133.216.73) by DGGEMS401-HUB.china.huawei.com
+ (10.3.19.201) with Microsoft SMTP Server id 14.3.439.0; Fri, 19 Jul 2019
+ 09:49:22 +0800
+Subject: Re: [RFC] Add virtual SDEI support in qemu
+To: Dave Martin <Dave.Martin@arm.com>, Mark Rutland <mark.rutland@arm.com>
+References: <1b0aa6b2-80b1-a72e-6849-7323c3b9c6bc@huawei.com>
+ <20190715134059.GJ2790@e103592.cambridge.arm.com>
+ <20190715134848.GI56232@lakrids.cambridge.arm.com>
+ <4daefb19-6c15-f82c-31e9-1ae035d45bd5@arm.com>
+ <20190715144446.GK56232@lakrids.cambridge.arm.com>
+ <20190716084734.GL2790@e103592.cambridge.arm.com>
+From: Guoheyi <guoheyi@huawei.com>
+Message-ID: <287f566e-7697-3763-56b8-eb4821bd8347@huawei.com>
+Date: Fri, 19 Jul 2019 09:49:22 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
+ Thunderbird/45.7.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.44]); Thu, 18 Jul 2019 15:33:28 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [qemu-s390x] [RFC PATCH 1/3]
- hw/Kconfig: PCI bus implies PCI_DEVICES
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+In-Reply-To: <20190716084734.GL2790@e103592.cambridge.arm.com>
+X-Originating-IP: [10.133.216.73]
+X-CFilter-Loop: Reflected
+Cc: Marc Zyngier <marc.zyngier@arm.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu,
+ linux-arm-kernel@lists.infradead.org
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Collin Walling <walling@linux.ibm.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- "Michael S. Tsirkin" <mst@redhat.com>, Palmer Dabbelt <palmer@sifive.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Alistair Francis <Alistair.Francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Helge Deller <deller@gmx.de>, Markus Armbruster <armbru@redhat.com>,
- Richard Henderson <rth@twiddle.net>,
- Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "open
- list:S390" <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- David Gibson <david@gibson.dropbear.id.au>, "open
- list:RISC-V" <qemu-riscv@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bLK1gTFFH/gn
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: AHybmCYfJhW5
 
-On Wed, 17 Jul 2019 17:04:54 +0200
-Paolo Bonzini <pbonzini@redhat.com> wrote:
+Thanks for all your comments. I'm going to write a simple demo to go 
+through the whole workflow first, and then adjust the policies following 
+the conclusions of our discussion.
 
-> On 17/07/19 16:54, Collin Walling wrote:
-> > PCI host plugging will check for the MSI-X capability on the
-> > PCI device. If the MSI-X cap is missing, we fail device plugging.
-> > We do not check for MSI. Only MSI-X.
-> > 
-> > Specifically, the capability is represented by PCI_CAP_ID_MSIX
-> > in pci_regs.h  
-> 
-> The code in Linux says that single MSIs are supported too:
-> 
->        if (type == PCI_CAP_ID_MSI && nvec > 1)
->                return 1;
+Heyi
 
-Interestingly, the check for MSI-X in QEMU seems to have been
-introduced in 857cc71985dc ("s390x/pci: merge msix init functions"),
-but that commit does not give a rationale (maybe it just referred to the
-existing code structure?)
 
-A quick look through the code suggests that single MSIs should be
-supportable; can someone with access to the details verify?
+On 2019/7/16 16:47, Dave Martin wrote:
+> On Mon, Jul 15, 2019 at 03:44:46PM +0100, Mark Rutland wrote:
+>> On Mon, Jul 15, 2019 at 03:26:39PM +0100, James Morse wrote:
+>>> On 15/07/2019 14:48, Mark Rutland wrote:
+>>>> On Mon, Jul 15, 2019 at 02:41:00PM +0100, Dave Martin wrote:
+>>>>> One option (suggested to me by James Morse) would be to allow userspace
+>>>>> to disable in the in-kernel PSCI implementation and provide its own
+>>>>> PSCI to the guest via SMC -- in which case userspace that wants to
+>>>>> implement SDEI would have to implement PSCI as well.
+>>>> I think this would be the best approach, since it puts userspace in
+>>>> charge of everything.
+>>>>
+>>>> However, this interacts poorly with FW-based mitigations that we
+>>>> implement in hyp. I suspect we'd probably need a mechanism to delegate
+>>>> that responsibility back to the kernel, and figure out if that has any
+>>>> interaction with thigns that got punted to userspace...
+>>> This has come up before:
+>>> https://lore.kernel.org/r/59C139D0.3040507@arm.com
+>>>
+>>> I agree Qemu should opt-in to this, it needs to be a feature that is enabled.
+>>>
+>>> I had an early version of something like this for testing SDEI before
+>>> there was firmware available. The review feedback from Christoffer was
+>>> that it should include HVC and SMC, their immediates, and shouldn't be
+>>> tied to SMC-CC ranges.
+>>>
+>>> I think this should be a catch-all as Heyi describes to deliver
+>>> 'unhandled SMC/HVC' to user-space as hypercall exits. We should
+>>> include the immediate in the struct.
+>>>
+>>> We can allow Qemu to disable the in-kernel PSCI implementation, which
+>>> would let it be done in user-space via this catch-all mechanism. (PSCI
+>>> in user-space has come up on another thread recently). The in-kernel
+>>> PSCI needs to be default-on for backwards compatibility.
+>>>
+>>> As Mark points out, the piece that's left is the 'arch workaround'
+>>> stuff. We always need to handle these in the kernel. I don't think
+>>> these should be routed-back, they should be un-obtainable by
+>>> user-space.
+>> Sure; I meant that those should be handled in the kernel rather than
+>> going to host userspace and back.
+>>
+>> I was suggesting was that userspace would opt into taking ownership of
+>> all HVC calls, then explicitly opt-in to the kernel handling specific
+>> (sets of) calls.
+> The most logical thing to do would be to have userspace handle all
+> calls, but add an ioctl to forward a call to KVM.  This puts userspace
+> in charge of the SMCCC interface, with KVM handling only those things
+> that userspace can't do for itself, on request.
+>
+> If the performance overhead is unacceptable for certain calls, we could
+> have a way to delegate specific function IDs to KVM.  I suspect that
+> will be the exception rather than the rule.
+>
+>> There are probably issues with that, but I suspect defining "all
+>> undandled calls" will be problematic otherwise.
+> Agreed: the set of calls not handled by KVM will mutate over time.
+>
+> Cheers
+> ---Dave
+>
+> .
+>
+
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

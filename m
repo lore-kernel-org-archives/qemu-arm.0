@@ -1,113 +1,101 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3335839lfa;
-        Sun, 18 Oct 2020 13:58:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxF8yt9iH5MfISdPznqXEAqari5M++HOc79/2O7L+fG1FMAuCaYIjL5m/NydhuoAfbYEiRE
-X-Received: by 2002:a25:bcc9:: with SMTP id l9mr17249305ybm.183.1603054691096;
-        Sun, 18 Oct 2020 13:58:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603054691; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6816263wrv;
+        Mon, 22 Jul 2019 04:59:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxZ1NCfSzT8tDC7URGa0NsHE7mgxKDksdlQdRc3e10RfhUiA57nNoS2XpuXb+FGs1OT1tGS
+X-Received: by 2002:aed:2ca3:: with SMTP id g32mr50551399qtd.359.1563796759670;
+        Mon, 22 Jul 2019 04:59:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563796759; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sjjf061LT4HQ5nvJ6GU36Qvt7YD1q8D5nfmT+NOJsbhoJQBwJd1ZnWK9Oij5RTlsl2
-         pZh3OYPl9KsWVq4u41UkCeAn5EWRK7B56i5f1PM61VDLxAUQk3jzTAhyA1Kupx+naol/
-         F++4coU+tdC4Vx+WU3qCtBava0MPie0kPX/FbY4OjKUxUMPGIoAT+uaCzp0/R5ad1aHQ
-         82ndmMoE0uq8lB5la4lMqMpjWtq0Ul8xEzA6tOS13M2iP2bd2JIW1rjBlwSUKHQvDMY4
-         C9BRiqcdWoDgTF2bWbi5J2reK5pFcnl7S+uh+2CRR5QJFwiH4+ETESRtVLcjn9oxcEbZ
-         yE3A==
+        b=T+iVr7XN5yj5QFx/OHRj8fHjttlpadot+m9R9eIPMw4gxPbDw4qJRUoRaTwNV48pCT
+         YmNzlyX4IzaOBqLWxcmTT+Yny6BB0BkpI7CvsKYmsu38I5zS/6jUo5lc8FV27IaJkcUI
+         bwnNFsvF129G1B04nKnKGpv7w64yET4YzyRQn8ecgxx+w8KZ4xY7NZuDJhTHAbA9Y418
+         ZGGczL4cWT11q1FhzFWa1J2tnQTDtCCHNyOsXHVzFMkRXi4yfx9H9pmBAMpi8oVCzyi4
+         pZ5xVs0IlmWB1Rvu3VNO5q9/MNDVBHxKn+NMVEhjAK4yL2cuV9vHJAMmIJt6TZgeKPgC
+         +Nqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=H4Vj4prHafiErMNGerrw49ZgJ7IM19BsKxuWO4t5AF8=;
-        b=Sxva31A8UY+AwBJ1OcNGr0qZPAf+PaOfgS5A9AoOuWXFhlBtSWX1iImjVnkkI6HfU8
-         KFIDE3rn6nDlJgvJ9gFIyCDp7IheME1Ta+mD1CuqBR3iCe6VT2miRgNGf8QvH6ns1FQn
-         qCkwAt2m21IS/CLZWAIwVvE82KPzTJ7dwDopSU5Jo5PjmCsOWiTVxqgduj4TMQGXOS6Y
-         WQPgyz1mP9XBBXr5VOlRTpyYkD7L9Eq4ul/X84LWCzT9I4/WucvJDlJD79w3DQQa22Sf
-         3xfb44ZBL3bzVJ3xiTlQ+ItHfAYTxm/joojqft/ryxo/U9GBU31OnIN3foCkbB7xD8k5
-         EpMw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=CqKQ7cXKJ1z7FTKs4TehgVkv9/3MjuQ1pzUNh98uYSc=;
+        b=cHgNSH4Pn8ecwnL1/rMad5/PLM0U35yywk0Rt7QrRjeaojbYPmIO84JRK/Yo9uUJ2/
+         2Dsqb0MavGxx9ejBfD4r+kzfN7eEdn5EErZIrw58IotjFrLh9vxFw+wTbUnH/hPT+OUk
+         3JAiWikpu9p/HMU6kwTQCVHW2IhswuavXOBc1SnXI2CteuFDRkbYCI7V6ahgyXvqbiUq
+         Wva+Zk/UuFOBKrJLaH9Wl0rxJs2BleuhiukvihgplYOxni8cGmTUDUyaCcil2fejcGZU
+         rph01EAD7c+m1ubSu+/NbV8f2WOEUzp2NVm37ROxW3XGLLRJBy0RZtR6uuHKeJDijBAK
+         GTcA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rO1ItjBK;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ezZQpMQx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r62si7160564yba.202.2020.10.18.13.58.10
+        by mx.google.com with ESMTPS id h40si26840547qta.172.2019.07.22.04.59.19
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Oct 2020 13:58:11 -0700 (PDT)
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 22 Jul 2019 04:59:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rO1ItjBK;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ezZQpMQx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:41074 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60736 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kUFko-0000JT-GB
-	for alex.bennee@linaro.org; Sun, 18 Oct 2020 16:58:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41658)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kUFis-00063i-B9; Sun, 18 Oct 2020 16:56:10 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:45282)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kUFiq-0003qS-TO; Sun, 18 Oct 2020 16:56:10 -0400
-Received: by mail-wr1-x441.google.com with SMTP id e17so9125673wru.12;
- Sun, 18 Oct 2020 13:56:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=H4Vj4prHafiErMNGerrw49ZgJ7IM19BsKxuWO4t5AF8=;
- b=rO1ItjBKyeiW1aL2VZWP1VWyDoieT2uDkEkaSyU4wBw8KpKSsWym96gcMfYja3dRYG
- hhk39KvxVuZv6cdAdOBe746VUG9oCniDbR4HBu9DFAIMvNZkBr9l1n9vt/HkTeRYn9sn
- EpvLqp0XKk0C/OWxjbIulNg83ybZVxo0EcUL8ks1jsAk30g6q6gEhSBsl2yLjNjI4p0u
- 9vde+OlvMkWCBsVaTK/5MQs9gRJkGFPDmocg/p4DLKllDUKaV+Tbx3rXtViIM+IJ383E
- emQR+JybIovRUz0f26IBEHUgdA57zwt4PyPPvCt+qbOsjL1Dm83qg0BrP1tzD+JREoUe
- 0OaQ==
+	id 1hpWyM-00027l-OJ
+	for alex.bennee@linaro.org; Mon, 22 Jul 2019 07:59:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56558)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <peter.maydell@linaro.org>) id 1hpWyI-000267-Ex
+ for qemu-arm@nongnu.org; Mon, 22 Jul 2019 07:59:15 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1hpWyH-0002MH-4V
+ for qemu-arm@nongnu.org; Mon, 22 Jul 2019 07:59:14 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:45218)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hpWyG-0002Lp-TP
+ for qemu-arm@nongnu.org; Mon, 22 Jul 2019 07:59:13 -0400
+Received: by mail-ot1-x343.google.com with SMTP id x21so1444076otq.12
+ for <qemu-arm@nongnu.org>; Mon, 22 Jul 2019 04:59:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=CqKQ7cXKJ1z7FTKs4TehgVkv9/3MjuQ1pzUNh98uYSc=;
+ b=ezZQpMQxrTtc+6pnxh/RFQAAvu4DbBbNg8hEap23CfdzNJ7R2rD6mcnxlqaPrVnqmW
+ hC66ZF8cDIAmYKYsRaGVHnIyIeipTuWWro6FOGh1OhEqnB2DrFMs4c5wnL4yz0Pt2LaG
+ sBcVpIXgLQr3Fn7AyeCywsYYcCjDePEIjBwX0bHRVu0lqKLNhUMln8OfP1h/BoDAXOvN
+ N7LQQ/j6cLottztJuYwbhiNGkb2KVg4J/wWw9A7jBBm1qeNT449wL7Fgg1GV1ftSDmEM
+ eiTFYdyAC6w9zgDJS9nYH1uO5xBiTtwnt3fxwFnwAqywoq0TlbbYej8SZchD7c+eLsUc
+ kudQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=H4Vj4prHafiErMNGerrw49ZgJ7IM19BsKxuWO4t5AF8=;
- b=S0RC0ushhT5wFg/VYe5LtvyvMOp/IHr60rOnMyoBgiY0ZwKx9DbGzT+aZxfx7wmNYk
- kgoTZfFxwQoL451gFGW6neQLzkCyKd02Z5JXc+ew9vWGxv7xDlGsXnRXT5PxLnLKV3tA
- WEXVZYh1OAIKduX8IVsuQVIO5grd2bU40EXpDeHeN5dkRk91X/PuJLGZ7nnpz5u1Py8r
- cicSaAjvH5gHaXcgwyIvMxRtzJVJq2xFvMHxhjur5HffHhjxs4VOIa8Ve5cScVNzlP6F
- nzuQ+c49ELGWOM0r4v9+Hoxv4YXf1B9NU6w0YGJs8N5I8CHW2JoENCWRgjnHBjnnoWBG
- dV4g==
-X-Gm-Message-State: AOAM532Fe0Ktzy0WjbX/sWG39M+Hi+lD27kDLo1cZMumaC7++tEqn1hP
- QF0Q3ZJDturxeiPM7f4BHrKLKdx0wXE=
-X-Received: by 2002:a5d:43c6:: with SMTP id v6mr16119386wrr.20.1603054567144; 
- Sun, 18 Oct 2020 13:56:07 -0700 (PDT)
-Received: from localhost.localdomain
- (117.red-83-52-172.dynamicip.rima-tde.net. [83.52.172.117])
- by smtp.gmail.com with ESMTPSA id u20sm13159004wmm.29.2020.10.18.13.56.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 18 Oct 2020 13:56:06 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [NOTFORMERGE PATCH v2 3/3] hw/arm/raspi: Remove unsupported raspi4
- peripherals from device tree
-Date: Sun, 18 Oct 2020 22:55:51 +0200
-Message-Id: <20201018205551.1537927-4-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20201018205551.1537927-1-f4bug@amsat.org>
-References: <20201018205551.1537927-1-f4bug@amsat.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=CqKQ7cXKJ1z7FTKs4TehgVkv9/3MjuQ1pzUNh98uYSc=;
+ b=MJtrDGUR/lkt8CXm9SNYyo7tneG8Sz8BANQuRKm2erjdoIBzTeDKJUtHpRcrl6Ojrs
+ tbZj03ScLB5Tq+FjCj3uLaw4DQ2f5oMv28c22aCSzPijZdvet4YyYG3G35ZlM0PEILO+
+ nTvt8q0fiSAG8ydWvTFlPETVBhRx/ha05sEUr2ZdfRpSiDo4J/LAEptSnIvFjdWaWGvd
+ NwoE87YTLpa5XslA42r6EPJJRqGo6l6WHGOsKqfeZz9eSYCUH+1lwfCiEk5Wy1KzGhc9
+ a02z7wfJV6kilJlwE6G4nvgvB13Cjf84SdQ5cLSjOYtXLjv19mi7lds4cBdeLw+VJTah
+ pGtA==
+X-Gm-Message-State: APjAAAUS+ipB3IXJFzLapNq+H3EJ1dAW0IJxt85jK39PVPcW9UDoy5EU
+ HndOc5rWJLG4QjrP70juHoz6/vbkYx7B7/FlPo7prQ==
+X-Received: by 2002:a05:6830:1653:: with SMTP id
+ h19mr44391642otr.232.1563796752009; 
+ Mon, 22 Jul 2019 04:59:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
+References: <20190516144733.32399-1-peter.maydell@linaro.org>
+ <20190516144733.32399-4-peter.maydell@linaro.org>
+ <20190719164729.GA22520@lakrids.cambridge.arm.com>
+In-Reply-To: <20190719164729.GA22520@lakrids.cambridge.arm.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 22 Jul 2019 12:59:01 +0100
+Message-ID: <CAFEAcA_i_0=xAp86RJVSpurAdWfT5KDfgoh6Y51-mwBJa=_QTQ@mail.gmail.com>
+To: Mark Rutland <mark.rutland@arm.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-arm] [PATCH v2 3/4] hw/arm/boot: Avoid placing the initrd
+ on top of the kernel
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -119,79 +107,109 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Esteban Bosse <estebanbosse@gmail.com>, qemu-arm@nongnu.org,
- Stewart Hildebrand <Stewart.Hildebrand@dornerworks.com>,
- Johnny Sun <psunjohnny@gmail.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NGIbap0twXh7
+X-TUID: 6k/JYoOIKHrZ
 
-Kludge when using Linux kernels to reach userland.
-No device in DT -> no hardware initialization.
+On Fri, 19 Jul 2019 at 17:47, Mark Rutland <mark.rutland@arm.com> wrote:
+>
+> Hi Peter,
+>
+> I've just been testing on QEMU v4.1.0-rc1, and found a case where the
+> DTB overlapped the end of the kernel, and I think there's a bug in this
+> patch -- explanation below.
+>
+> On Thu, May 16, 2019 at 03:47:32PM +0100, Peter Maydell wrote:
+> > We currently put the initrd at the smaller of:
+> >  * 128MB into RAM
+> >  * halfway into the RAM
+> > (with the dtb following it).
+> >
+> > However for large kernels this might mean that the kernel
+> > overlaps the initrd. For some kinds of kernel (self-decompressing
+> > 32-bit kernels, and ELF images with a BSS section at the end)
+> > we don't know the exact size, but even there we have a
+> > minimum size. Put the initrd at least further into RAM than
+> > that. For image formats that can give us an exact kernel size, this
+> > will mean that we definitely avoid overlaying kernel and initrd.
+> >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> >  hw/arm/boot.c | 34 ++++++++++++++++++++--------------
+> >  1 file changed, 20 insertions(+), 14 deletions(-)
+> >
+> > diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+> > index 935be3b92a5..e441393fdf5 100644
+> > --- a/hw/arm/boot.c
+> > +++ b/hw/arm/boot.c
+> > @@ -999,20 +999,6 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
+> >      if (info->nb_cpus == 0)
+> >          info->nb_cpus = 1;
+> >
+> > -    /*
+> > -     * We want to put the initrd far enough into RAM that when the
+> > -     * kernel is uncompressed it will not clobber the initrd. However
+> > -     * on boards without much RAM we must ensure that we still leave
+> > -     * enough room for a decent sized initrd, and on boards with large
+> > -     * amounts of RAM we must avoid the initrd being so far up in RAM
+> > -     * that it is outside lowmem and inaccessible to the kernel.
+> > -     * So for boards with less  than 256MB of RAM we put the initrd
+> > -     * halfway into RAM, and for boards with 256MB of RAM or more we put
+> > -     * the initrd at 128MB.
+> > -     */
+> > -    info->initrd_start = info->loader_start +
+> > -        MIN(info->ram_size / 2, 128 * 1024 * 1024);
+> > -
+> >      /* Assume that raw images are linux kernels, and ELF images are not.  */
+> >      kernel_size = arm_load_elf(info, &elf_entry, &elf_low_addr,
+> >                                 &elf_high_addr, elf_machine, as);
+> > @@ -1064,6 +1050,26 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
+> >      }
+> >
+> >      info->entry = entry;
+>
+> Note: this is the start of the kernel image...
 
-Linux 5.9 uses the RPI_FIRMWARE_GET_CLOCKS so we now need to
-implement that feature too. Look like a cat and mouse game...
+It's the entry point, which isn't quite the same thing as
+the start of the image (if we just loaded an ELF file then
+'entry' is whatever the ELF file said the entrypoint is, which
+could be a long way into the image).
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/raspi.c | 27 +++++++++++++++++++++++++++
- 1 file changed, 27 insertions(+)
+> > +
+> > +    /*
+> > +     * We want to put the initrd far enough into RAM that when the
+> > +     * kernel is uncompressed it will not clobber the initrd. However
+> > +     * on boards without much RAM we must ensure that we still leave
+> > +     * enough room for a decent sized initrd, and on boards with large
+> > +     * amounts of RAM we must avoid the initrd being so far up in RAM
+> > +     * that it is outside lowmem and inaccessible to the kernel.
+> > +     * So for boards with less  than 256MB of RAM we put the initrd
+> > +     * halfway into RAM, and for boards with 256MB of RAM or more we put
+> > +     * the initrd at 128MB.
+> > +     * We also refuse to put the initrd somewhere that will definitely
+> > +     * overlay the kernel we just loaded, though for kernel formats which
+> > +     * don't tell us their exact size (eg self-decompressing 32-bit kernels)
+> > +     * we might still make a bad choice here.
+> > +     */
+> > +    info->initrd_start = info->loader_start +
+> > +        MAX(MIN(info->ram_size / 2, 128 * 1024 * 1024), kernel_size);
+>
+> ... but here we add kernel_size to the start of the loader, which is
+> below the kernel. Should that be info->entry?
 
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 6a793766840..93eb6591ee8 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -25,6 +25,7 @@
- #include "hw/arm/boot.h"
- #include "sysemu/sysemu.h"
- #include "qom/object.h"
-+#include <libfdt.h>
- 
- #define SMPBOOT_ADDR    0x300 /* this should leave enough space for ATAGS */
- #define MVBAR_ADDR      0x400 /* secure vectors */
-@@ -200,6 +201,29 @@ static void reset_secondary(ARMCPU *cpu, const struct arm_boot_info *info)
-     cpu_set_pc(cs, info->smp_loader_start);
- }
- 
-+static void raspi4_modify_dtb(const struct arm_boot_info *info, void *fdt)
-+{
-+    int offset;
-+
-+    offset = fdt_node_offset_by_compatible(fdt, -1, "brcm,genet-v5");
-+    if (offset >= 0) {
-+        /* FIXME we shouldn't nop the parent */
-+        offset = fdt_parent_offset(fdt, offset);
-+        if (offset >= 0) {
-+            if (!fdt_nop_node(fdt, offset)) {
-+                warn_report("dtc: bcm2838-genet removed!");
-+            }
-+        }
-+    }
-+
-+    offset = fdt_node_offset_by_compatible(fdt, -1, "brcm,avs-tmon-bcm2838");
-+    if (offset >= 0) {
-+        if (!fdt_nop_node(fdt, offset)) {
-+            warn_report("dtc: bcm2838-tmon removed!");
-+        }
-+    }
-+}
-+
- static void setup_boot(MachineState *machine, RaspiProcessorId processor_id,
-                        size_t ram_size)
- {
-@@ -234,6 +258,9 @@ static void setup_boot(MachineState *machine, RaspiProcessorId processor_id,
-         }
-         s->binfo.secondary_cpu_reset_hook = reset_secondary;
-     }
-+    if (processor_id >= PROCESSOR_ID_BCM2838) {
-+        s->binfo.modify_dtb = raspi4_modify_dtb;
-+    }
- 
-     /* If the user specified a "firmware" image (e.g. UEFI), we bypass
-      * the normal Linux boot process
--- 
-2.26.2
+loader_start here really means "base of RAM". I think what
+we want here is something like
 
+  info->initrd_start = info->loader_start + MIN(info->ram_size / 2,
+128 * 1024 * 1024);
+  info->initrd_start = MAX(info->initrd_start, kernel_end);
+
+where kernel_end is just past whatever the highest addr of the kernel
+is, which is not something that's totally trivial to calculate
+with the variables we have to hand at this point.
+
+thanks
+-- PMM

@@ -1,76 +1,76 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7042585wrv;
-        Mon, 22 Jul 2019 08:48:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxfl/jxqChE0i72i9u9KiTlT8P6tdjqAy5EBH7mXXQdNIz3VAO9XD/7+3RKpfwOBecci6wZ
-X-Received: by 2002:a67:8081:: with SMTP id b123mr43958563vsd.117.1563810490795;
-        Mon, 22 Jul 2019 08:48:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563810490; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7042866wrv;
+        Mon, 22 Jul 2019 08:48:34 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyRlgWy4D583C3KfHhsv7CM+dpFlrkG5h1hs9N9lfGq84hXp43zJjcwdIcgUM3hYu3qL2X+
+X-Received: by 2002:ab0:a1:: with SMTP id 30mr42858264uaj.29.1563810513964;
+        Mon, 22 Jul 2019 08:48:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563810513; cv=none;
         d=google.com; s=arc-20160816;
-        b=kJW+pQOJyQJ6dLn9LRKXrZDY5kixxSj0zK5+1wpWTeWLfUi68iUAVBK99VstriBzlP
-         GNRXWBY1S6LYzlQYk+/WWALwuvyudB2ULN/B51r9SdSfkjVRvKxmAm4f5gK9DSyAIzzx
-         HkXImJR2G6EOXiMSu8tjlf6mXBV9iX27WjRuFzsvD37rpERsJAAO1zwCupooStb4prVf
-         Y17zgeVwCNBoQARtRY2cMmGkgB6PDCnSusSKX8xiIClJRaGhbPtz/v4KEoVAhRpK6DFj
-         Prxznk0/vwI2l+RkA6dQrTHO4eZH6nqbRuPWBOIneTs1jD05ssS/Idmcp+l81DKwq03+
-         CBDw==
+        b=AFk1KLFN7k7uGSeFvvMuaFG0EyaOn7xO5jfKe1MHcjud9aLYFoWFYgC6t4E/mxi03I
+         0t+t3G0/3tSDc/4mNCFOsMG/MudSh6FuViOM7RMTpZ+1Lyv+xFWMnY6RBvQyqCUUz5+P
+         NP0cRrmi8VQdNFw8j9ZfHVerDbACXMps2aaaBLE74fRyWPhcMsZcZNzj05CodbKtBEAV
+         H4kqa1qnEXNNHna9CESeS/jfd6B0CsbQhJqtGUcyP/XzyFvDSp8SJb0Z1j8/gUd+ob9k
+         jAdp64ebxlI5qQdCqi4iKOluGc1gmBLDWzlVVIXUIl3v6qi/Py/MjfvSijTWU/wIqZPj
+         HEpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:content-language
          :accept-language:in-reply-to:references:message-id:date:thread-index
          :thread-topic:to:from;
-        bh=8HOZrlr6Y6uei3bLliqEFmiPLvfjT4QoTZN4MQUx+mk=;
-        b=pfh+ehezu2dPvK/4XNKPl3200z9LdKKAtYOOOmvZNyalxUUF6yJvMOebdAN0LZDBvQ
-         K+863pTlntsKUu8nnzKpLRE1FjEBZ9a/dGJNME0kjItckwyFOcAqdjYgLjKJwSxvsLkK
-         o9T99CeiNPvq8H+5racmWB/gxq0Y9yRTjsLebht93cdvxusLjRdapCbYBFn1g95x7mRr
-         wM8NfboTm0C1tCdiQUK3uvZ7IhsYVv4WHbpcMtOyMbeDKAA2xJqqWc8s0eZlIu/gf+Ah
-         upVj/Vyp9z9lgYD0IAA37eoXfonYu0WhnvNdGazyOy0jTEFfHcO8XhgzEbXC2D/jOKko
-         K7xA==
+        bh=h+Yyft3LkdYzi3P26BfviVaU3Vo2epUj+laX5N+t2e0=;
+        b=mTVQtUJUAFofY0mePwWv5Q6tHMe1wEewemvHEHtY4pgpjOzlVaKTUUUW8M0T01JkWJ
+         QJfMyFWSoWyiV6JrR6Ihvbuwjt13hTO3leqVnLbGYqizJY2sw+stjTPdvrS0MIwHRyxv
+         8JP9rkDrreDDBdGjCOY7Z9YzLnC3wm2IuoImBUKY07A3iMhAD4tZlVn8RqiarizBUft3
+         lWFB505Hzb1/UIVtnL6uafdw7VfN/8RwybRRSvhojc5j4vSfJ6JJ23T1hyJBo2qb8eo4
+         d3h5R4feBf7BDTwFDlqJHKLPhc4QBKjl5gSnWx5kWt9f/IAVRk73TDdcOD1pej38Tgvt
+         1Qiw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k70si9800802vsd.57.2019.07.22.08.48.10
+        by mx.google.com with ESMTPS id 123si9889548vsu.37.2019.07.22.08.48.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jul 2019 08:48:10 -0700 (PDT)
+        Mon, 22 Jul 2019 08:48:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:34926 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34952 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hpaXq-0001m2-6U
-	for alex.bennee@linaro.org; Mon, 22 Jul 2019 11:48:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53420)
+	id 1hpaYD-0002uR-2J
+	for alex.bennee@linaro.org; Mon, 22 Jul 2019 11:48:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53560)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <tony.nguyen@bt.com>) id 1hpaXU-0000tP-0u
- for qemu-devel@nongnu.org; Mon, 22 Jul 2019 11:47:49 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hpaXr-00024B-Hk
+ for qemu-devel@nongnu.org; Mon, 22 Jul 2019 11:48:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hpaXQ-0007D1-1G
- for qemu-devel@nongnu.org; Mon, 22 Jul 2019 11:47:46 -0400
-Received: from smtpe1.intersmtp.com ([213.121.35.78]:11937)
+ (envelope-from <tony.nguyen@bt.com>) id 1hpaXq-0007ak-An
+ for qemu-devel@nongnu.org; Mon, 22 Jul 2019 11:48:11 -0400
+Received: from smtpe1.intersmtp.com ([213.121.35.74]:26775)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hpaX5-00071G-16; Mon, 22 Jul 2019 11:47:23 -0400
-Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- BWP09926083.bt.com (10.36.82.114) with Microsoft SMTP Server (version=TLS1_2, 
+ id 1hpaXQ-0007AZ-8o; Mon, 22 Jul 2019 11:47:44 -0400
+Received: from tpw09926dag18f.domain1.systemhost.net (10.9.212.26) by
+ BWP09926079.bt.com (10.36.82.110) with Microsoft SMTP Server (version=TLS1_2, 
  cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Mon, 22
- Jul 2019 16:45:56 +0100
+ Jul 2019 16:47:37 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18e.domain1.systemhost.net (10.9.212.18) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Mon, 22 Jul 2019 16:45:56 +0100
+ tpw09926dag18f.domain1.systemhost.net (10.9.212.26) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Mon, 22 Jul 2019 16:47:15 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Mon, 22 Jul
- 2019 16:45:56 +0100
+ 2019 16:47:15 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v2 08/20] target/mips: Access MemoryRegion
- with MemOp
-Thread-Index: AQHVQKSNE9Apjwo+sUuRTOACfuKYCQ==
-Date: Mon, 22 Jul 2019 15:45:56 +0000
-Message-ID: <1563810356505.44472@bt.com>
+Thread-Topic: [Qemu-devel] [PATCH v2 10/20] hw/intc/armv7m_nic: Access
+ MemoryRegion with MemOp
+Thread-Index: AQHVQKS8ru+KIa1tqke/bCiWCh2RRA==
+Date: Mon, 22 Jul 2019 15:47:15 +0000
+Message-ID: <1563810434810.27249@bt.com>
 References: <e9c6e5310b1a4863be45d45bf087fc3d@tpw09926dag18e.domain1.systemhost.net>
 In-Reply-To: <e9c6e5310b1a4863be45d45bf087fc3d@tpw09926dag18e.domain1.systemhost.net>
 Accept-Language: en-AU, en-GB, en-US
@@ -81,12 +81,12 @@ x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.37]
 MIME-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 213.121.35.78
+X-Received-From: 213.121.35.74
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 X-Content-Filtered-By: Mailman/MimeDel 2.1.23
-Subject: [Qemu-devel] [PATCH v2 08/20] target/mips: Access MemoryRegion with
- MemOp
+Subject: [Qemu-devel] [PATCH v2 10/20] hw/intc/armv7m_nic: Access
+ MemoryRegion with MemOp
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,43 +109,75 @@ Cc: peter.maydell@linaro.org, walling@linux.ibm.com, mst@redhat.com,
  aurelien@aurel32.net
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fG+RZmUEFk1L
+X-TUID: 3qlMnf/I6cP2
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
 ---
- target/mips/op_helper.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ hw/intc/armv7m_nvic.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/target/mips/op_helper.c b/target/mips/op_helper.c
-index 9e2e02f..dccb8df 100644
---- a/target/mips/op_helper.c
-+++ b/target/mips/op_helper.c
-@@ -24,6 +24,7 @@
- #include "exec/helper-proto.h"
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index 9f8f0d3..25bb88a 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -18,6 +18,7 @@
+ #include "hw/intc/armv7m_nvic.h"
+ #include "target/arm/cpu.h"
  #include "exec/exec-all.h"
- #include "exec/cpu_ldst.h"
 +#include "exec/memop.h"
- #include "sysemu/kvm.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "trace.h"
+@@ -2345,7 +2346,8 @@ static MemTxResult nvic_sysreg_ns_write(void *opaque,=
+ hwaddr addr,
+     if (attrs.secure) {
+         /* S accesses to the alias act like NS accesses to the real region=
+ */
+         attrs.secure =3D 0;
+-        return memory_region_dispatch_write(mr, addr, value, size, attrs);
++        return memory_region_dispatch_write(mr, addr, value, SIZE_MEMOP(si=
+ze),
++                                            attrs);
+     } else {
+         /* NS attrs are RAZ/WI for privileged, and BusFault for user */
+         if (attrs.user) {
+@@ -2364,7 +2366,8 @@ static MemTxResult nvic_sysreg_ns_read(void *opaque, =
+hwaddr addr,
+     if (attrs.secure) {
+         /* S accesses to the alias act like NS accesses to the real region=
+ */
+         attrs.secure =3D 0;
+-        return memory_region_dispatch_read(mr, addr, data, size, attrs);
++        return memory_region_dispatch_read(mr, addr, data, SIZE_MEMOP(size=
+),
++                                           attrs);
+     } else {
+         /* NS attrs are RAZ/WI for privileged, and BusFault for user */
+         if (attrs.user) {
+@@ -2390,7 +2393,8 @@ static MemTxResult nvic_systick_write(void *opaque, h=
+waddr addr,
 
- /*************************************************************************=
-****/
-@@ -4740,11 +4741,11 @@ void helper_cache(CPUMIPSState *env, target_ulong a=
-ddr, uint32_t op)
-     if (op =3D=3D 9) {
-         /* Index Store Tag */
-         memory_region_dispatch_write(env->itc_tag, index, env->CP0_TagLo,
--                                     8, MEMTXATTRS_UNSPECIFIED);
-+                                     SIZE_MEMOP(8), MEMTXATTRS_UNSPECIFIED=
-);
-     } else if (op =3D=3D 5) {
-         /* Index Load Tag */
-         memory_region_dispatch_read(env->itc_tag, index, &env->CP0_TagLo,
--                                    8, MEMTXATTRS_UNSPECIFIED);
-+                                    SIZE_MEMOP(8), MEMTXATTRS_UNSPECIFIED)=
-;
-     }
- #endif
+     /* Direct the access to the correct systick */
+     mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systick[attrs.secure]=
+), 0);
+-    return memory_region_dispatch_write(mr, addr, value, size, attrs);
++    return memory_region_dispatch_write(mr, addr, value, SIZE_MEMOP(size),
++                                        attrs);
  }
+
+ static MemTxResult nvic_systick_read(void *opaque, hwaddr addr,
+@@ -2402,7 +2406,7 @@ static MemTxResult nvic_systick_read(void *opaque, hw=
+addr addr,
+
+     /* Direct the access to the correct systick */
+     mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systick[attrs.secure]=
+), 0);
+-    return memory_region_dispatch_read(mr, addr, data, size, attrs);
++    return memory_region_dispatch_read(mr, addr, data, SIZE_MEMOP(size), a=
+ttrs);
+ }
+
+ static const MemoryRegionOps nvic_systick_ops =3D {
 --
 1.8.3.1
 

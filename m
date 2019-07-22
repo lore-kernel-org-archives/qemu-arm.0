@@ -1,158 +1,336 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7100364wrv;
-        Mon, 22 Jul 2019 09:52:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx+hoDxEAhoilQerr/BwvjecX4wEYC4Vrit6jpzOhxEzheDvqb7rbnOEmQ7eMEhpHDV8uh+
-X-Received: by 2002:a1f:3c82:: with SMTP id j124mr25960251vka.47.1563814343286;
-        Mon, 22 Jul 2019 09:52:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563814343; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7030588wrv;
+        Mon, 22 Jul 2019 08:35:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz1/PExKO/s32bsI8Xx+tKt7v3FSrH00B/eCwOaUkDu1vB9I5IcFA6rTXy/lKRZAHPgcviv
+X-Received: by 2002:a17:906:5ad0:: with SMTP id x16mr54700932ejs.23.1563809705499;
+        Mon, 22 Jul 2019 08:35:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563809705; cv=none;
         d=google.com; s=arc-20160816;
-        b=eAFW5JMhd2o411WJZ/oRJ74T56l7tkxWe1L0Si4D7B6pAp6eeNiI/yDrBPpOCn8nad
-         AH4DRX0i5YSEjkS601i/IUrlibdnuRwxfDaPsyxm53DTm0nNQt1U7bVsVFtJZEYuco3E
-         0eHzQuctrl71eEx2NP7ftQPhlOZKId3/dMuyVpspiHHSeTwXDwQ8P3I3D83JEeB8+1AJ
-         GnCrkgx+Q8AwObTSoL3QLS613ZyiellOI67kCqGwlvG7hINbE3q2+JQONY3dsRbHn//7
-         BTeYUSO0UmAgdTpO+T2uq9WXIkZ2UdKEU65wI0dXtegGyjnf/I8k7G6SZSLrgfrBajMN
-         6XeA==
+        b=Lzn7ScQa0ZUAloPhZ5BiigBwHAY3kjKYQsUWFqIap5XgEawTl79+0uZV6oXqi7sT0n
+         uS2SWeV1YD1drOJ4MmzfkULMgouU3kl2p9kBJLVj9QGNcddEh3e88IVHnVbhAznMwjPz
+         VBxJRY68UKYs20rRLTcllSBJISVsNKByJNvWWo9FMq/YrBTH9hWxNyBlZwCFXBjh/GnB
+         AF1jQfnZQOcFtQseJaFAmv/RNYxHxMiHdhmfocW6W4FtwL3Rwgddx7NspWQxfR7lGilq
+         a4XYbl1bnrDCajxClCI4+7l3YnbjcA+yutcunvuyjQ0EBt4auNEzK/I6mUOgfiBW5of5
+         WijQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=sIFUH8/MtmQN8FiQU9rKLdGDeEOpUF2rqObC8PV34ks=;
-        b=P69UIzlF0RO5hDB8hgRfBAeoEwpwVJgBkxKeKFTMBhUPBRp5nQMlbtFX/GeJ7DP1N/
-         NXRTYc32eO6g1rpboTiBpjrqHg3OVsNW0cktqC49ZhL+9YvlZHP19gPGPuqMsy4k+z5I
-         Y4CVLLNKO3FgjzLIzORVJ0oHbZO1H49kxIzXAByLXU50H1Gp+6+E2G3/xnMUC3rnHU1L
-         lw34ma+C7vUeW3JlE11FEr4xASm26X/8/F56sVRttl8nkAxi+faTcWe7wZ9N7voy9brZ
-         M7HjCrIKh2dB7EPuzRcRPHbD66kWck9qozerqFz0/bvn1lkPMRmHwxmGMX/+q0XTwJ+S
-         nabw==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :message-id:date:thread-index:thread-topic:to:from;
+        bh=wCRVAvRNTXfKcB9mJTNruNpnUclDoFQ3JXgvs0zC3D0=;
+        b=JDqUvlxSGP1Z4elCWFnHiYjaomhjLkf09H+9RYrI1pt39r8SCU5s3SCWHABvWA10Bf
+         ZhBAhH4C+Aqi9F0Cc2Jyu52hux/bwlr9ry38AcCRTTYrnJ4j2e96eEWeNV9S3M0T2fP1
+         gdliSbRfQ/Olo1o0NmqaXQoaj6z0QpTyAW3zVe3P6LKwh8k7V0fTpjJrzpd9j0BBBuiK
+         +MePRCndNDG3ZqjjZCEw7O6/2rpkoEBylA8PC0VhktoX5iYyIKVc2kU45lGJkymG8Syv
+         rwB2LBhzYnIwawzD8zR8scp5xc48Fetcb9qRl97mgSNJ4ww2FJNYSqATw0PUcFvzlQdF
+         HtsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v21si9932668vsv.77.2019.07.22.09.52.23
+        by mx.google.com with ESMTPS id v17si5141938edm.4.2019.07.22.08.35.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jul 2019 09:52:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 22 Jul 2019 08:35:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35988 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
+Received: from localhost ([::1]:34626 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hpbXy-0004e6-S8
-	for alex.bennee@linaro.org; Mon, 22 Jul 2019 12:52:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42744)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hpaLA-00066C-Ij
+	for alex.bennee@linaro.org; Mon, 22 Jul 2019 11:35:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50435)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <mark.rutland@arm.com>) id 1hpbXu-0004dt-WF
- for qemu-arm@nongnu.org; Mon, 22 Jul 2019 12:52:20 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hpaKv-0005f0-GM
+ for qemu-devel@nongnu.org; Mon, 22 Jul 2019 11:34:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <mark.rutland@arm.com>) id 1hpbXt-00078v-U8
- for qemu-arm@nongnu.org; Mon, 22 Jul 2019 12:52:18 -0400
-Received: from foss.arm.com ([217.140.110.172]:40696)
- by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <mark.rutland@arm.com>)
- id 1hpbXt-000782-Of; Mon, 22 Jul 2019 12:52:17 -0400
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 7FE0F1509;
- Mon, 22 Jul 2019 09:52:16 -0700 (PDT)
-Received: from lakrids.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com
- [10.121.207.14])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C8FBC3F694;
- Mon, 22 Jul 2019 09:52:15 -0700 (PDT)
-Date: Mon, 22 Jul 2019 17:52:08 +0100
-From: Mark Rutland <mark.rutland@arm.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20190722165208.GA6261@lakrids.cambridge.arm.com>
-References: <20190722151804.25467-1-peter.maydell@linaro.org>
+ (envelope-from <tony.nguyen@bt.com>) id 1hpaKt-0004qK-UT
+ for qemu-devel@nongnu.org; Mon, 22 Jul 2019 11:34:49 -0400
+Received: from smtpe1.intersmtp.com ([62.239.224.236]:51876)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
+ id 1hpaKf-0004gW-Qd; Mon, 22 Jul 2019 11:34:34 -0400
+Received: from tpw09926dag18h.domain1.systemhost.net (10.9.212.42) by
+ RDW083A009ED65.bt.com (10.187.98.35) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Mon, 22 Jul 2019 16:30:52 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
+ tpw09926dag18h.domain1.systemhost.net (10.9.212.42) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Mon, 22 Jul 2019 16:34:29 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net
+ ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
+ ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Mon, 22 Jul
+ 2019 16:34:29 +0100
+From: <tony.nguyen@bt.com>
+To: <qemu-devel@nongnu.org>
+Thread-Topic: [Qemu-devel] [PATCH v2 00/20] Invert Endian bit in SPARCv9 MMU
+ TTE
+Thread-Index: AQHVQKLzQYdvLYhbLUSW1HY6Ut95kQ==
+Date: Mon, 22 Jul 2019 15:34:29 +0000
+Message-ID: <e9c6e5310b1a4863be45d45bf087fc3d@tpw09926dag18e.domain1.systemhost.net>
+Accept-Language: en-AU, en-GB, en-US
+Content-Language: en-AU
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.187.101.37]
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190722151804.25467-1-peter.maydell@linaro.org>
-User-Agent: Mutt/1.11.1+11 (2f07cb52) (2018-12-01)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 217.140.110.172
-Subject: Re: [Qemu-arm] [PATCH for-4.1? 0/2] arm: further improve initrd
- positioning
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 62.239.224.236
+Subject: [Qemu-devel] [PATCH v2 00/20] Invert Endian bit in SPARCv9 MMU TTE
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WXFltJ7Gotn4
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, walling@linux.ibm.com, david@redhat.com,
+ palmer@sifive.com, mark.cave-ayland@ilande.co.uk, Alistair.Francis@wdc.com,
+ arikalo@wavecomp.com, mst@redhat.com, pasic@linux.ibm.com,
+ borntraeger@de.ibm.com, rth@twiddle.net, atar4qemu@gmail.com,
+ ehabkost@redhat.com, sw@weilnetz.de, alex.williamson@redhat.com,
+ qemu-arm@nongnu.org, david@gibson.dropbear.id.au, qemu-riscv@nongnu.org,
+ cohuck@redhat.com, claudio.fontana@huawei.com, qemu-s390x@nongnu.org,
+ qemu-ppc@nongnu.org, amarkovic@wavecomp.com, pbonzini@redhat.com,
+ aurelien@aurel32.net
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: b3FR6rDFTY/p
 
-Hi Peter,
-
-On Mon, Jul 22, 2019 at 04:18:02PM +0100, Peter Maydell wrote:
-> In commit e6b2b20d9735d4ef we made the boot loader code try to avoid
-> putting the initrd on top of the kernel.  However the expression used
-> to calculate the start of the initrd:
-> 
->     info->initrd_start = info->loader_start +
->         MAX(MIN(info->ram_size / 2, 128 * 1024 * 1024), kernel_size);
-> 
-> incorrectly uses 'kernel_size' as the offset within RAM of the
-> highest address to avoid.  This is incorrect because the kernel
-> doesn't start at address 0, but slightly higher than that.  This
-> means that we can still incorrectly end up overlaying the initrd on
-> the kernel in some cases, for example:
-> 
-> * The kernel's image_size is 0x0a7a8000
-> * The kernel was loaded at   0x40080000
-> * The end of the kernel is   0x4A828000
-> * The DTB was loaded at      0x4a800000
-> 
-> To get this right we need to track the actual highest address used
-> by the kernel and use that rather than kernel_size. We already
-> trace the low_addr and high_addr for ELF images; set them
-> also for the various other image types we support, and then use
-> high_addr as the lowest allowed address for the initrd.
-> 
-> Patch 1 just does a preliminary variable rename; patch 2 is the meat.
-> 
-> Only very lightly tested...
-
-FWIW, I've given this a spin, and it manages to boot my growing
-collection of problematic images, along with all the previously-working
-images I had lying around.
-
-For both patches, feel free to take that as:
-
-Tested-by: Mark Rutland <mark.rutland@arm.com>
-
-> Marked as 'maybe for 4.1' because it is a bug fix and to code which
-> is new in 4.1. OTOH cases that fail now would have failed with 4.0
-> so it is not a regression strictly speaking. And we're getting
-> steadily closer to release and I haven't very heavily tested this
-> patch. I incline towards including it, overall.
-
-Having these in 4.1 would be nice. AIUI the logic is correct, and this
-seems low risk to me, but it is your call.
-
-If you decide to hold off for a release, I can apply these patches
-locally without too much pain.
-
-Thanks for dealing with this, anyhow!
-
-Mark.
-
-> 
-> thanks
-> -- PMM
-> 
-> Peter Maydell (2):
->   hw/arm/boot: Rename elf_{low,high}_addr to image_{low,high}_addr
->   hw/arm/boot: Further improve initrd positioning code
-> 
->  hw/arm/boot.c | 37 +++++++++++++++++++++++++++----------
->  1 file changed, 27 insertions(+), 10 deletions(-)
-> 
-> -- 
-> 2.20.1
-> 
+This patchset implements the IE (Invert Endian) bit in SPARCv9 MMU TTE.=0A=
+=0A=
+It is an attempt of the instructions outlined by Richard Henderson to Mark=
+=0A=
+Cave-Ayland.=0A=
+=0A=
+Tested with OpenBSD on sun4u. Solaris 10 is my actual goal, but unfortunate=
+ly a=0A=
+separate keyboard issue remains in the way.=0A=
+=0A=
+On 01/11/17 19:15, Mark Cave-Ayland wrote:=0A=
+=0A=
+>On 15/08/17 19:10, Richard Henderson wrote:=0A=
+>=0A=
+>> [CC Peter re MemTxAttrs below]=0A=
+>> =0A=
+>> On 08/15/2017 09:38 AM, Mark Cave-Ayland wrote:=0A=
+>>> Working through an incorrect endian issue on qemu-system-sparc64, it ha=
+s=0A=
+>>> become apparent that at least one OS makes use of the IE (Invert Endian=
+)=0A=
+>>> bit in the SPARCv9 MMU TTE to map PCI memory space without the=0A=
+>>> programmer having to manually endian-swap accesses.=0A=
+>>>=0A=
+>>> In other words, to quote the UltraSPARC specification: "if this bit is=
+=0A=
+>>> set, accesses to the associated page are processed with inverse=0A=
+>>> endianness from what is specified by the instruction (big-for-little an=
+d=0A=
+>>> little-for-big)".=0A=
+=0A=
+A good explanation by Mark why the IE bit is required.=0A=
+=0A=
+>>>=0A=
+>>> Looking through various bits of code, I'm trying to get a feel for the=
+=0A=
+>>> best way to implement this in an efficient manner. From what I can see=
+=0A=
+>>> this could be solved using an additional MMU index, however I'm not=0A=
+>>> overly familiar with the memory and softmmu subsystems.=0A=
+>> =0A=
+>> No, it can't be solved with an MMU index.=0A=
+>> =0A=
+>>> Can anyone point me in the right direction as to what would be the best=
+=0A=
+>>> way to implement this feature within QEMU?=0A=
+>> =0A=
+>> It's definitely tricky.=0A=
+>> =0A=
+>> We definitely need some TLB_FLAGS_MASK bit set so that we're forced thro=
+ugh =0A=
+>> the=0A=
+>> memory slow path.  There is no other way to bypass the endianness that w=
+e've=0A=
+>> already encoded from the target instruction.=0A=
+>> =0A=
+>> Given the tlb_set_page_with_attrs interface, I would think that we need =
+a new=0A=
+>> bit in MemTxAttrs, so that the target/sparc tlb_fill (and subroutines) c=
+an =0A=
+>> pass=0A=
+>> along the TTE bit for the given page.=0A=
+>> =0A=
+>> We have an existing problem in softmmu_template.h,=0A=
+>> =0A=
+>>     /* ??? Note that the io helpers always read data in the target=0A=
+>>        byte ordering.  We should push the LE/BE request down into io.  *=
+/=0A=
+>>     res =3D glue(io_read, SUFFIX)(env, mmu_idx, index, addr, retaddr);=
+=0A=
+>>     res =3D TGT_BE(res);=0A=
+>> =0A=
+>> We do not want to add a third(!) byte swap along the i/o path.  We need =
+to=0A=
+>> collapse the two that we have already before considering this one.=0A=
+>> =0A=
+>> This probably takes the form of:=0A=
+>> =0A=
+>> (1) Replacing the "int size" argument with "TCGMemOp memop" for=0A=
+>>       a) io_{read,write}x in accel/tcg/cputlb.c,=0A=
+>>       b) memory_region_dispatch_{read,write} in memory.c,=0A=
+>>       c) adjust_endianness in memory.c.=0A=
+>>     This carries size+sign+endianness down to the next level.=0A=
+>> =0A=
+>> (2) In memory.c, adjust_endianness,=0A=
+>> =0A=
+>>      if (memory_region_wrong_endianness(mr)) {=0A=
+>> -        switch (size) {=0A=
+>> +        memop ^=3D MO_BSWAP;=0A=
+>> +    }=0A=
+>> +    if (memop & MO_BSWAP) {=0A=
+>> =0A=
+>>     For extra credit, re-arrange memory_region_wrong_endianness=0A=
+>>     to something more explicit -- "wrong" isn't helpful.=0A=
+>=0A=
+>Finally I've had a bit of spare time to experiment with this approach,=0A=
+>and from what I can see there are currently 2 issues:=0A=
+>=0A=
+>=0A=
+>1) Using TCGMemOp in memory.c means it is no longer accelerator agnostic=
+=0A=
+>=0A=
+>For the moment I've defined a separate MemOp in memory.h and provided a=0A=
+>mapping function in io_{read,write}x to map from TCGMemOp to MemOp and=0A=
+>then pass that into memory_region_dispatch_{read,write}.=0A=
+>=0A=
+>Other than not referencing TCGMemOp in the memory API, another reason=0A=
+>for doing this was that I wasn't convinced that all the MO_ attributes=0A=
+>were valid outside of TCG. I do, of course, strongly defer to other=0A=
+>people's knowledge in this area though.=0A=
+>=0A=
+>=0A=
+>2) The above changes to adjust_endianness() fail when=0A=
+>memory_region_dispatch_{read,write} are called recursively=0A=
+>=0A=
+>Whilst booting qemu-system-sparc64 I see that=0A=
+>memory_region_dispatch_{read,write} get called recursively - once via=0A=
+>io_{read,write}x and then again via flatview_read_continue() in exec.c.=0A=
+>=0A=
+>The net effect of this is that we perform the bswap correctly at the=0A=
+>tail of the recursion, but then as we travel back up the stack we hit=0A=
+>memory_region_dispatch_{read,write} once again causing a second bswap=0A=
+>which means the value is returned with the incorrect endian again.=0A=
+>=0A=
+>=0A=
+>My understanding from your softmmu_template.h comment above is that the=0A=
+>memory API should do the endian swapping internally allowing the removal=
+=0A=
+>of the final TGT_BE/TGT_LE applied to the result, or did I get this wrong?=
+=0A=
+>=0A=
+>> (3) In tlb_set_page_with_attrs, notice attrs.byte_swap and set=0A=
+>>     a new TLB_FORCE_SLOW bit within TLB_FLAGS_MASK.=0A=
+>> =0A=
+>> (4) In io_{read,write}x, if iotlbentry->attrs.byte_swap is set,=0A=
+>>     then memop ^=3D MO_BSWAP.=0A=
+=0A=
+Thanks for v1 feedback.=0A=
+=0A=
+v2:=0A=
+- Moved size+sign+endianness attributes from TCGMemOp into MemOp.=0A=
+  In v1 TCGMemOp was re-purposed entirely into MemOp.=0A=
+- Replaced MemOp MO_{8|16|32|64} with TCGMemOp MO_{UB|UW|UL|UQ} alias.=0A=
+  This is to avoid warnings on comparing and coercing different enums.=0A=
+- Renamed get_memop to get_tcgmemop for clarity.=0A=
+- MEMOP is now SIZE_MEMOP, which is just ctzl(size). =0A=
+- Split patch 3/4 so one memory_region_dispatch_{read|write} interface=0A=
+  is converted per patch.=0A=
+- Do not reuse TLB_RECHECK, use new TLB_FORCE_SLOW instead.=0A=
+- Split patch 4/4 so adding the MemTxAddrs parameters and converting=0A=
+  tlb_set_page() to tlb_set_page_with_attrs() is separate from usage.=0A=
+- CC'd maintainers.=0A=
+=0A=
+Tony Nguyen (20):=0A=
+  tcg: Replace MO_8 with MO_UB alias=0A=
+  tcg: Replace MO_16 with MO_UW alias=0A=
+  tcg: Replace MO_32 with MO_UL alias=0A=
+  tcg: Replace MO_64 with MO_UQ alias=0A=
+  tcg: Move size+sign+endian from TCGMemOp to MemOp=0A=
+  tcg: Rename get_memop to get_tcgmemop=0A=
+  memory: Access MemoryRegion with MemOp=0A=
+  target/mips: Access MemoryRegion with MemOp=0A=
+  hw/s390x: Access MemoryRegion with MemOp=0A=
+  hw/intc/armv7m_nic: Access MemoryRegion with MemOp=0A=
+  hw/virtio: Access MemoryRegion with MemOp=0A=
+  hw/vfio: Access MemoryRegion with MemOp=0A=
+  exec: Access MemoryRegion with MemOp=0A=
+  cputlb: Access MemoryRegion with MemOp=0A=
+  memory: Access MemoryRegion with MemOp semantics=0A=
+  memory: Single byte swap along the I/O path=0A=
+  cpu: TLB_FLAGS_MASK bit to force memory slow path=0A=
+  cputlb: Byte swap memory transaction attribute=0A=
+  target/sparc: Add TLB entry with attributes=0A=
+  target/sparc: sun4u Invert Endian TTE bit=0A=
+=0A=
+ MAINTAINERS                         |   1 +=0A=
+ accel/tcg/cputlb.c                  |  75 +++---=0A=
+ exec.c                              |   6 +-=0A=
+ hw/intc/armv7m_nvic.c               |  12 +-=0A=
+ hw/s390x/s390-pci-inst.c            |   8 +-=0A=
+ hw/vfio/pci-quirks.c                |   5 +-=0A=
+ hw/virtio/virtio-pci.c              |   7 +-=0A=
+ include/exec/cpu-all.h              |  10 +-=0A=
+ include/exec/memattrs.h             |   2 +=0A=
+ include/exec/memop.h                |  30 +++=0A=
+ include/exec/memory.h               |   9 +-=0A=
+ memory.c                            |  37 +--=0A=
+ memory_ldst.inc.c                   |  18 +-=0A=
+ target/arm/sve_helper.c             |  16 +-=0A=
+ target/arm/translate-a64.c          | 516 ++++++++++++++++++--------------=
+----=0A=
+ target/arm/translate-sve.c          |  74 +++---=0A=
+ target/arm/translate-vfp.inc.c      |  10 +-=0A=
+ target/arm/translate.c              | 134 +++++-----=0A=
+ target/i386/translate.c             | 506 +++++++++++++++++---------------=
+---=0A=
+ target/mips/op_helper.c             |   5 +-=0A=
+ target/mips/translate.c             |   8 +-=0A=
+ target/ppc/translate.c              |  28 +-=0A=
+ target/ppc/translate/fp-impl.inc.c  |   4 +-=0A=
+ target/ppc/translate/vmx-impl.inc.c | 118 ++++-----=0A=
+ target/ppc/translate/vsx-impl.inc.c |  22 +-=0A=
+ target/s390x/translate.c            |  10 +-=0A=
+ target/s390x/translate_vx.inc.c     |  12 +-=0A=
+ target/s390x/vec.h                  |  16 +-=0A=
+ target/sparc/cpu.h                  |   2 +=0A=
+ target/sparc/mmu_helper.c           |  40 +--=0A=
+ target/sparc/translate.c            |   4 +-=0A=
+ tcg/aarch64/tcg-target.inc.c        |  82 +++---=0A=
+ tcg/arm/tcg-target.inc.c            |  38 +--=0A=
+ tcg/i386/tcg-target.inc.c           | 176 ++++++------=0A=
+ tcg/mips/tcg-target.inc.c           |  38 +--=0A=
+ tcg/optimize.c                      |   2 +-=0A=
+ tcg/ppc/tcg-target.inc.c            |  28 +-=0A=
+ tcg/riscv/tcg-target.inc.c          |  26 +-=0A=
+ tcg/s390/tcg-target.inc.c           |  18 +-=0A=
+ tcg/sparc/tcg-target.inc.c          |  18 +-=0A=
+ tcg/tcg-op-gvec.c                   | 342 ++++++++++++------------=0A=
+ tcg/tcg-op-vec.c                    |  30 +--=0A=
+ tcg/tcg-op.c                        |  66 ++---=0A=
+ tcg/tcg.c                           |   2 +-=0A=
+ tcg/tcg.h                           |  34 ++-=0A=
+ tcg/tci.c                           |   8 +-=0A=
+ 46 files changed, 1365 insertions(+), 1288 deletions(-)=0A=
+ create mode 100644 include/exec/memop.h=0A=
+=0A=
+-- =0A=
+1.8.3.1=0A=

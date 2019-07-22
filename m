@@ -1,75 +1,74 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7042963wrv;
-        Mon, 22 Jul 2019 08:48:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz1WbywSN8WvCIHj6KbotWtCq14OhZweZ/WJ61LOEcGa8eo9crTKoHp55rmqXVc/IPwBFm5
-X-Received: by 2002:a1f:b48e:: with SMTP id d136mr25779645vkf.57.1563810519139;
-        Mon, 22 Jul 2019 08:48:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563810519; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7043595wrv;
+        Mon, 22 Jul 2019 08:49:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwdUiqGYBq3+tvvb4rN1k02qGZYTCDWY+0py1ph4W0EXScycsOSfGdl935ID7TnxDR/Js8j
+X-Received: by 2002:a1f:745:: with SMTP id 66mr26148017vkh.89.1563810560397;
+        Mon, 22 Jul 2019 08:49:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563810560; cv=none;
         d=google.com; s=arc-20160816;
-        b=PxAHhoKdeJbTy8RdAIZDd1xap0uyriR7Q13bkfcvTzjmDKZNLHnzzalFCvhjDj8Pmc
-         Zef298MSjeO7iEVuvtHgrzU8sdha/fwJZsQD8zTewR3D6QhFwDdOf85gZmQx6Zv72/tu
-         WuYd83xqi+EESIen/2EBle8PfN1cFnOAtfSdXVeTCgDMGndzm6p7C7l77wfnypNw+P5A
-         650A3W0s3r9Br7a/wN062Csl8K6NJ7H35pojTPJkAhi56ras8pvWAlCVOIv+P7ji/VMO
-         lmPqelDI3aEUMZOMIuALP/dhJsxqZyEC7rHlMLurMqfkf3wWsVoOoLYpo280PEmkEjij
-         YJRw==
+        b=jhSvGUtEN414FrrHRkSE5wd/MNg6RHaeV7a/j18CebaqqGSFyGlYwkiBDsIp+XsTbB
+         CiamGGIKX2jzuOrcWWZCZX0uSizKHcV1Pg017aJexPE0Xyr6EQjevv42RCy8qiRwhkQl
+         4ZM6HzD5TJS4AaIkxFYj48yKMYAL+X37f7bcEk5fZRawu77GEmLPsGXXQ9NhfvBh90F2
+         sqxtWUReCXJA9Ryb08VsAMMVVB5mLqqubUWVZhrRX/m4xykT5HfGa832riG1se3sgtdQ
+         6lJXbZDQgYf9aiyflcZH8TpauQd4IU4Qc4q2C4rA/M1zmT847Mq35w57PpIKQLgiSYYn
+         L6LQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:to:from;
-        bh=zf3xdgvgL56FpRZLeZetkq9F1u7/uFRhGu0wLYE+jAE=;
-        b=QQHrELVYCq1e7AWP8bTk2E3ayY3x4UyB6fLZWA8JCsQLrWUPh1oF2H3VkHu1dED+cn
-         WR2lveIwC6mys42ap3UELFL3DaN3yGjt6xj23zcpmL4OtwyLhH9N0lSkRu8IdO1k0MAS
-         mCox4cMPuTxvHyIJ9ZjRpqNdMyT0sWqnwL/uqrKj38z3iGuxHuHunDWWS1K72UGJFL5W
-         lCF3aj789Kdfl2z4Az8cR3PFyS0i+WWuke/v5ROx+Mnr/puzReSiXWJUB2YEWXj9R5F+
-         yoWrK3GcCkweMd6SqFgRXkfB6wNYq97Zo6ZC4LAsEwrY9ZOPoCsMSPkK0Tdp7JUX95xG
-         6cuA==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-language:accept-language:in-reply-to:references:message-id
+         :date:thread-index:thread-topic:to:from;
+        bh=52LYfB22Y+rXz6Vxdhi/2tLp78voQYrZZ1WDYWwKT1s=;
+        b=Ad/hVoVK5cV+E2w9qmRAzc7/Nr6lESL1wmAHJEDfyyu2aeAscKJeBQ+/+/fqmeq3yc
+         dIAUBoDlk554FROvDbw+/Q3X6DPYreRGNu9cMUqu+/+2PQum9pDDlzTYBVHJUMNK9+nF
+         xSEnQauUiOUfp/09boXbBr2719Rrec/vPc8Y0eSyl3wy6lvl35HJLc1/I0UrkhCYnpNJ
+         YaPUw+/05Y9ysxhRxmsH3SQfwn3tyeG1AVGUoHJQR+OfY7Ve1fPg3+yZJOt9cfJapOgg
+         QHSssBXzFvmqgCAdV5ffmY4ODcmH3Cy5sNjj82+QhuoiLlG0BeoafeNVxCexFqnUOS45
+         YtzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x128si9183989vsc.386.2019.07.22.08.48.38
+        by mx.google.com with ESMTPS id t5si9456882vsm.395.2019.07.22.08.49.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jul 2019 08:48:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 22 Jul 2019 08:49:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:34954 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34998 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hpaYI-0003BE-9A
-	for alex.bennee@linaro.org; Mon, 22 Jul 2019 11:48:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53579)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hpaYx-0005QV-2G
+	for alex.bennee@linaro.org; Mon, 22 Jul 2019 11:49:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53778)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <tony.nguyen@bt.com>) id 1hpaXu-0002D1-2J
- for qemu-devel@nongnu.org; Mon, 22 Jul 2019 11:48:15 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hpaYP-00043o-J8
+ for qemu-arm@nongnu.org; Mon, 22 Jul 2019 11:48:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hpaXs-0007bm-N0
- for qemu-devel@nongnu.org; Mon, 22 Jul 2019 11:48:13 -0400
-Received: from smtpe1.intersmtp.com ([62.239.224.234]:43242)
+ (envelope-from <tony.nguyen@bt.com>) id 1hpaYO-0007ry-CA
+ for qemu-arm@nongnu.org; Mon, 22 Jul 2019 11:48:45 -0400
+Received: from smtpe1.intersmtp.com ([62.239.224.234]:54471)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hpaXl-0007WK-Pe; Mon, 22 Jul 2019 11:48:06 -0400
-Received: from tpw09926dag18g.domain1.systemhost.net (10.9.212.34) by
- RDW083A012ED68.bt.com (10.187.98.38) with Microsoft SMTP Server (TLS) id
- 14.3.439.0; Mon, 22 Jul 2019 16:47:47 +0100
+ id 1hpaYL-0007pT-Sf; Mon, 22 Jul 2019 11:48:42 -0400
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18g.domain1.systemhost.net (10.9.212.34) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Mon, 22 Jul 2019 16:48:01 +0100
+ RDW083A012ED68.bt.com (10.187.98.38) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Mon, 22 Jul 2019 16:48:25 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
+ tpw09926dag18e.domain1.systemhost.net (10.9.212.18) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Mon, 22 Jul 2019 16:48:39 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Mon, 22 Jul
- 2019 16:48:00 +0100
+ 2019 16:48:39 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v2 11/20] hw/virtio: Access MemoryRegion
- with MemOp
-Thread-Index: AQHVQKTX+Ks5rP6+AkSy2PJ+oMCFiQ==
-Date: Mon, 22 Jul 2019 15:48:00 +0000
-Message-ID: <1563810480347.95681@bt.com>
+Thread-Topic: [Qemu-devel] [PATCH v2 12/20] hw/vfio: Access MemoryRegion with
+ MemOp
+Thread-Index: AQHVQKTuS8e10R7j0EyH7DK1WdG0Fg==
+Date: Mon, 22 Jul 2019 15:48:39 +0000
+Message-ID: <1563810519326.25905@bt.com>
 References: <e9c6e5310b1a4863be45d45bf087fc3d@tpw09926dag18e.domain1.systemhost.net>
 In-Reply-To: <e9c6e5310b1a4863be45d45bf087fc3d@tpw09926dag18e.domain1.systemhost.net>
 Accept-Language: en-AU, en-GB, en-US
@@ -78,26 +77,24 @@ X-MS-Has-Attach:
 X-MS-TNEF-Correlator: 
 x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.37]
+Content-Type: multipart/alternative; boundary="_000_156381051932625905btcom_"
 MIME-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 62.239.224.234
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-X-Content-Filtered-By: Mailman/MimeDel 2.1.23
-Subject: [Qemu-devel] [PATCH v2 11/20] hw/virtio: Access MemoryRegion with
- MemOp
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v2 12/20] hw/vfio: Access
+ MemoryRegion with MemOp
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, walling@linux.ibm.com, mst@redhat.com,
  palmer@sifive.com, mark.cave-ayland@ilande.co.uk, Alistair.Francis@wdc.com,
  arikalo@wavecomp.com, david@redhat.com, pasic@linux.ibm.com,
@@ -107,107 +104,128 @@ Cc: peter.maydell@linaro.org, walling@linux.ibm.com, mst@redhat.com,
  cohuck@redhat.com, claudio.fontana@huawei.com, alex.williamson@redhat.com,
  qemu-ppc@nongnu.org, amarkovic@wavecomp.com, pbonzini@redhat.com,
  aurelien@aurel32.net
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 53dMYhTutwq1
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Ih96zM12VclB
 
-On 17/07/19 08:06, Paolo Bonzini wrote:
-
-> My main concern is that MO_BE/MO_LE/MO_TE do not really apply to the
-> memory.c paths.  MO_BSWAP is never passed into the MemOp, even if target
-> endianness !=3D host endianness.
->
-> Therefore, you could return MO_TE | MO_{8,16,32,64} from this function,
-> and change memory_region_endianness_inverted to test
-> HOST_WORDS_BIGENDIAN instead of TARGET_WORDS_BIGENDIAN.  Then the two
-> MO_BSWAPs (one from MO_TE, one from adjust_endianness because
-> memory_region_endianness_inverted returns true) cancel out if the
-> memory region's endianness is the same as the host's but different
-> from the target's.
->
-> Some care is needed in virtio_address_space_write and zpci_write_bar.  I
-> think the latter is okay, while the former could do something like this:
->
-> diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
-> index ce928f2429..61885f020c 100644
-> --- a/hw/virtio/virtio-pci.c
-> +++ b/hw/virtio/virtio-pci.c
-> @@ -541,16 +541,16 @@ void virtio_address_space_write(VirtIOPCIProxy *pro=
-xy,
-> hwaddr addr,
->          val =3D pci_get_byte(buf);
->          break;
->      case 2:
-> -        val =3D cpu_to_le16(pci_get_word(buf));
-> +        val =3D pci_get_word(buf);
->          break;
->      case 4:
-> -        val =3D cpu_to_le32(pci_get_long(buf));
-> +        val =3D pci_get_long(buf);
->          break;
->      default:
->          /* As length is under guest control, handle illegal values. */
->          return;
->      }
-> -    memory_region_dispatch_write(mr, addr, val, len, MEMTXATTRS_UNSPECIF=
-IED);
-> +    memory_region_dispatch_write(mr, addr, val, size_memop(len) & ~MO_BS=
-WAP,
-> MEMTXATTRS_UNSPECIFIED);
->  }
->
->  static void
-
-Sorry Paolo, I noted the need to take care in virtio_address_space_write an=
-d
-zpci_write_bar but did not understand.
-
-> Some care is needed in virtio_address_space_write and zpci_write_bar.
-Is this advice for my v1 implementation, or in the case of the
-MO_TE | MO_{8,16,32,64} idead suggested in the paragraph before?
+--_000_156381051932625905btcom_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
 ---
- hw/virtio/virtio-pci.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ hw/vfio/pci-quirks.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
-index ce928f2..265f066 100644
---- a/hw/virtio/virtio-pci.c
-+++ b/hw/virtio/virtio-pci.c
-@@ -17,6 +17,7 @@
+diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
+index b35a640..3240afa 100644
+--- a/hw/vfio/pci-quirks.c
++++ b/hw/vfio/pci-quirks.c
+@@ -1071,7 +1071,7 @@ static void vfio_rtl8168_quirk_address_write(void *op=
+aque, hwaddr addr,
 
- #include "qemu/osdep.h"
-
-+#include "exec/memop.h"
- #include "standard-headers/linux/virtio_pci.h"
- #include "hw/virtio/virtio.h"
- #include "hw/pci/pci.h"
-@@ -550,7 +551,8 @@ void virtio_address_space_write(VirtIOPCIProxy *proxy, =
-hwaddr addr,
-         /* As length is under guest control, handle illegal values. */
-         return;
+                 /* Write to the proper guest MSI-X table instead */
+                 memory_region_dispatch_write(&vdev->pdev.msix_table_mmio,
+-                                             offset, val, size,
++                                             offset, val, SIZE_MEMOP(size)=
+,
+                                              MEMTXATTRS_UNSPECIFIED);
+             }
+             return; /* Do not write guest MSI-X data to hardware */
+@@ -1102,7 +1102,8 @@ static uint64_t vfio_rtl8168_quirk_data_read(void *op=
+aque,
+     if (rtl->enabled && (vdev->pdev.cap_present & QEMU_PCI_CAP_MSIX)) {
+         hwaddr offset =3D rtl->addr & 0xfff;
+         memory_region_dispatch_read(&vdev->pdev.msix_table_mmio, offset,
+-                                    &data, size, MEMTXATTRS_UNSPECIFIED);
++                                    &data, SIZE_MEMOP(size),
++                                    MEMTXATTRS_UNSPECIFIED);
+         trace_vfio_quirk_rtl8168_msix_read(vdev->vbasedev.name, offset, da=
+ta);
      }
--    memory_region_dispatch_write(mr, addr, val, len, MEMTXATTRS_UNSPECIFIE=
-D);
-+    memory_region_dispatch_write(mr, addr, val, SIZE_MEMOP(len),
-+                                 MEMTXATTRS_UNSPECIFIED);
- }
 
- static void
-@@ -573,7 +575,8 @@ virtio_address_space_read(VirtIOPCIProxy *proxy, hwaddr=
- addr,
-     /* Make sure caller aligned buf properly */
-     assert(!(((uintptr_t)buf) & (len - 1)));
-
--    memory_region_dispatch_read(mr, addr, &val, len, MEMTXATTRS_UNSPECIFIE=
-D);
-+    memory_region_dispatch_read(mr, addr, &val, SIZE_MEMOP(len),
-+                                MEMTXATTRS_UNSPECIFIED);
-     switch (len) {
-     case 1:
-         pci_set_byte(buf, val);
 --
 1.8.3.1
 
 
+
+
+--_000_156381051932625905btcom_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none"><!-- P { margin-top: 0px; m=
+argin-bottom: 0px; } .EmailQuote { margin-left: 1pt; padding-left: 4pt; bor=
+der-left-width: 2px; border-left-style: solid; border-left-color: rgb(128, =
+0, 0); }--></style>
+</head>
+<body dir=3D"ltr" style=3D"font-size:12pt;color:#000000;background-color:#F=
+FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
+<p></p>
+<div><span style=3D"font-size: 12pt;">Signed-off-by: Tony Nguyen &lt;tony.n=
+guyen@bt.com&gt;</span><br>
+</div>
+<div>---</div>
+<div>&nbsp;hw/vfio/pci-quirks.c | 5 &#43;&#43;&#43;--</div>
+<div>&nbsp;1 file changed, 3 insertions(&#43;), 2 deletions(-)</div>
+<div><br>
+</div>
+<div>diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c</div>
+<div>index b35a640..3240afa 100644</div>
+<div>--- a/hw/vfio/pci-quirks.c</div>
+<div>&#43;&#43;&#43; b/hw/vfio/pci-quirks.c</div>
+<div>@@ -1071,7 &#43;1071,7 @@ static void vfio_rtl8168_quirk_address_write=
+(void *opaque, hwaddr addr,</div>
+<div>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* Write=
+ to the proper guest MSI-X table instead */</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;memory_r=
+egion_dispatch_write(&amp;vdev-&gt;pdev.msix_table_mmio,</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; offset, val, size,</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; offset, val, SIZE_MEMOP(size),</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; MEMTXATTRS_UNSPECIFIED);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return; /* Do not writ=
+e guest MSI-X data to hardware */</div>
+<div>@@ -1102,7 &#43;1102,8 @@ static uint64_t vfio_rtl8168_quirk_data_read=
+(void *opaque,</div>
+<div>&nbsp; &nbsp; &nbsp;if (rtl-&gt;enabled &amp;&amp; (vdev-&gt;pdev.cap_=
+present &amp; QEMU_PCI_CAP_MSIX)) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;hwaddr offset =3D rtl-&gt;addr &amp;=
+ 0xfff;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;memory_region_dispatch_read(&amp;vde=
+v-&gt;pdev.msix_table_mmio, offset,</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&amp;data, size, M=
+EMTXATTRS_UNSPECIFIED);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&amp;data, SIZ=
+E_MEMOP(size),</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MEMTXATTRS_UNS=
+PECIFIED);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;trace_vfio_quirk_rtl8168_msix_read(v=
+dev-&gt;vbasedev.name, offset, data);</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp;</div>
+<div>--&nbsp;</div>
+<div>1.8.3.1</div>
+<div><br>
+<br>
+</div>
+<p><br>
+</p>
+</body>
+</html>
+
+--_000_156381051932625905btcom_--

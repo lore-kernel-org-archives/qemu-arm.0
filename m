@@ -1,447 +1,180 @@
-Received: by 2002:adf:c793:0:0:0:0:0 with SMTP id l19csp4620529wrg;
-        Mon, 20 May 2019 00:43:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxN3Dwo5cTvd4+qB/KSn7CsmGJkFpWJmAjGlA43Jn+QiBzm2oaK0bW330EHzYOBx6qtS20M
-X-Received: by 2002:a50:ef02:: with SMTP id m2mr72539927eds.213.1558338233297;
-        Mon, 20 May 2019 00:43:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558338233; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7014114wrv;
+        Mon, 22 Jul 2019 08:18:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyhgADMXjGyBDI4IFGvW3gmzstPGpwi/zL35VDYwON+F+pfa/M28hE76FAscKWg1irYhoWp
+X-Received: by 2002:a05:620a:1661:: with SMTP id d1mr47987040qko.192.1563808697005;
+        Mon, 22 Jul 2019 08:18:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563808696; cv=none;
         d=google.com; s=arc-20160816;
-        b=kfI2nL7312LiQF4Rzo9uzl4OAm2YkihpCGLxcPIuyX8GtlglSyD5droNlA5wXcQf3N
-         t/LsqqHYA7sGRP1AIF4LSgwZ5/z78NkSfprxdMc80VUCkr4xQfFk3hoEtYW+4Bj/k0AS
-         pBIWLW42WYnItp3WkQ/iUhU4PAG0/LCIb3dzeRPyLDcUOmu1sSe1UeZ4fsKNG960TpmZ
-         57Bkw3gqbr2ox5q8pVNR4hghxT+9FeO5BO1ntMv2SDfBOBZqEqyykFx5x/U0Elv0fPU9
-         XeQv6D6L/QXX5K6+Yc+q4gwGbfmTD7A+8Zpjh668Hb7CRq9Yr6qxF2lSVjSBr14u+pZr
-         YfiQ==
+        b=mU1Z8VdLdqAE+PFh3QkKRcRJLKr6CKJaoC7YxEgpHTnapz8hCL85od2VsPrV3y8+Ty
+         y/NFkpILj/eWu3jrgta9MP87mr4FhbBq52x/4Dia7KjMYBqWMnP2Dc4bQUI2uMwEH5Qi
+         BqMz68pNOzZqDrwYfY7WkxhXRz7pt0oV4xtLH9VvNGfvdafEqQSgNj//UGA8qt5skFu3
+         6Ih6b/zFXwB/ifTj9vO1j0c9WYuvDXOZte45z6TpxBOtZsBaZBbFcPTd8bSA12wwAStY
+         Pf3NfbCU0ekieW6ZJIesb7xo87yy+LoECVHOrZWUfzGyV1FuBIcr4B2xIzGeKucznGoK
+         7INw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
-         :from:dkim-signature;
-        bh=YvNnGGiqzik9yLoBfItllN+CqFOvKviULyn2Yr3mbkA=;
-        b=Y386SXjGZXEmq2OvK4wlWMsYhskEbSwRPDEy/sycGQL+cbUE0xJ3TrMYAU1wIHJ1wf
-         mBc/ClQSfTePEnO3AOI90P768Gzsa8U3lTjkjQi7U430iC4XTUUIN74A6mYLy9GYFwSu
-         qwnJ08ha2Pfs8Ll8AO+NEQh3MLXSq1hyNlV5l1oyf1E3BGmPj643OK+me9XS21A9frS5
-         Ib5PYTn3rqLHlzxTpG9SMu8DJIfS18EwuhLpWMxn8c1ANgtUNnozh5aRaLZIxXUiR4Kg
-         esongBBtrOKgZvgnLKzCjdtrYWqHHG2laLak4VmcQEn6dbBH4MDVwTVM/2u10xlMT07+
-         RwHQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=OYBMZusYqESde0qHUOjc4d/ttVAW59Cu3YSqerf0Vp0=;
+        b=FfUH97s9zuF1GfVyUAL4Lb5ARVQ18VkVJh7MZ5FElsS0Q2BnHdsYWl+PFV1SsCX5iK
+         U7wyn1A00r5lyt4TJ0JmOI7LKStshzQ1Mp0B3QvqWV2XNMKVN7Dfh/R8JSh2VUxJRLPH
+         XqIhzOZMjtefMxQFd2lfVu7eaeSQ0eUs1rsDLowSilEkhttaACNmyooOIq5iu8sLxLhQ
+         3gOM30LxFd7iEhwcDRCuvHh/VFswm+tdv2n8ko64DTkhYkTmGtMcltOehmIeO4T+vDaB
+         pOgxklRx+XzQ4bGI/GAYqe9E3PyPQBJnp1eHJorLzb1WD0BNogq1s+33nWoxhjFivW27
+         ktvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@kpnmail.nl header.s=kpnmail01 header.b=rpl79his;
+       dkim=fail header.i=@linaro.org header.s=google header.b="BYAkNYV/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eltan.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w19si10077938ejv.224.2019.05.20.00.43.53
+        by mx.google.com with ESMTPS id o6si9204441vsr.441.2019.07.22.08.18.16
         for <alex.bennee@linaro.org>
-        (version=TLS1 cipher=AES128-SHA bits=128/128);
-        Mon, 20 May 2019 00:43:53 -0700 (PDT)
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 22 Jul 2019 08:18:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@kpnmail.nl header.s=kpnmail01 header.b=rpl79his;
+       dkim=fail header.i=@linaro.org header.s=google header.b="BYAkNYV/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=eltan.com
-Received: from localhost ([127.0.0.1]:59557 helo=lists.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.71)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:34458 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hScxc-0006Yg-95
-	for alex.bennee@linaro.org; Mon, 20 May 2019 03:43:52 -0400
-Received: from eggs.gnu.org ([209.51.188.92]:38276)
-	by lists.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wvervoorn@eltan.com>) id 1hScxI-0006Wx-OV
-	for qemu-arm@nongnu.org; Mon, 20 May 2019 03:43:34 -0400
+	id 1hpa4t-0002il-Px
+	for alex.bennee@linaro.org; Mon, 22 Jul 2019 11:18:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46764)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <peter.maydell@linaro.org>) id 1hpa4o-0002hu-Fh
+ for qemu-arm@nongnu.org; Mon, 22 Jul 2019 11:18:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
-	(envelope-from <wvervoorn@eltan.com>) id 1hScxG-00073f-T3
-	for qemu-arm@nongnu.org; Mon, 20 May 2019 03:43:32 -0400
-Received: from cpsmtpb-ews02.kpnxchange.com ([213.75.39.5]:52984)
-	by eggs.gnu.org with esmtp (Exim 4.71)
-	(envelope-from <wvervoorn@eltan.com>)
-	id 1hScxC-00070B-6q; Mon, 20 May 2019 03:43:26 -0400
-Received: from cpsps-ews26.kpnxchange.com ([10.94.84.192]) by
-	cpsmtpb-ews02.kpnxchange.com with Microsoft SMTPSVC(7.5.7601.17514); 
-	Mon, 20 May 2019 09:43:21 +0200
-X-Brand: 7abm2Q==
-X-KPN-SpamVerdict: e1=0;e2=0;e3=0;e4=(e4=10;e1=10;e3=10;e2=11);EVW:Whi
-	te;BM:NotScanned;FinalVerdict:Clean
-X-CMAE-Analysis: v=2.3 cv=ePTCc0h1 c=1 sm=1 tr=0 cx=a_idp_e
-	a=dZ5u/0G9QtS9WKCcNUBnHQ==:117 a=dZ5u/0G9QtS9WKCcNUBnHQ==:17
-	a=jpOVt7BSZ2e4Z31A5e1TngXxSK0=:19 a=eIHzyqS2sMcA:10 a=8nJEP1OIZ-IA:10
-	a=xqWC_Br6kY4A:10 a=E5NmQfObTbMA:10 a=aow-egSQAAAA:8 a=X5F7dNyOAAAA:8
-	a=69wJf7TsAAAA:8 a=KKAkSRfTAAAA:8 a=ID6ng7r3AAAA:8 a=91tezXpfAAAA:8
-	a=pn6ru4JPoqBJmmpkdyEA:9 a=ost055EMga0DVaJk:21 a=x8rp8Tg9KyjXGnad:21
-	a=wPNLvfGTeEIA:10 a=gFNbaldVC-z-bsjSTzMo:22 a=pS7LufLo7ZPxIL5li5Lt:22
-	a=Fg1AiH1G6rFz08G2ETeA:22 a=cvBusfyB2V15izCimMoJ:22
-	a=AkheI1RvQwOzcTXhi5f4:22 a=QzzagUt76mSoFDrDCo4I:22
-X-CM-AcctID: kpn@feedback.cloudmark.com
-Received: from smtp.kpnmail.nl ([195.121.84.13]) by cpsps-ews26.kpnxchange.com
-	over TLS secured channel with Microsoft SMTPSVC(8.5.9600.16384);
-	Mon, 20 May 2019 09:43:21 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=kpnmail.nl; s=kpnmail01;
-	h=mime-version:content-type:message-id:date:subject:to:from;
-	bh=YvNnGGiqzik9yLoBfItllN+CqFOvKviULyn2Yr3mbkA=;
-	b=rpl79hisFxiwnY7nywOgOryhPD454VZGXwE2+s0sPaO0Zyx3Vh8eMh23DNU1O2WLrB27rQ4og+Hd0
-	IiD49KvyPQOS/nnovjqixg/C8ebXyyaIz28TDgVT0Onzx51j6Z2W5+rhctYKaJBbMY+s9zAphEWHIv
-	WqEZErEOtcFQyzNk=
-Received: from Eltsrv03.Eltan.local (unknown [84.85.114.86])
-	by smtp.kpnmail.nl (Halon) with ESMTPS
-	id f0709b6f-7ad2-11e9-89e3-005056998788;
-	Mon, 20 May 2019 09:43:21 +0200 (CEST)
-Received: from Eltsrv03.Eltan.local (192.168.100.3) by Eltsrv03.Eltan.local
-	(192.168.100.3) with Microsoft SMTP Server (TLS) id 15.0.847.32;
-	Mon, 20 May 2019 09:42:45 +0200
-Received: from Eltsrv03.Eltan.local ([fe80::24e7:1cc6:a76a:a3a8]) by
-	Eltsrv03.Eltan.local ([fe80::24e7:1cc6:a76a:a3a8%12]) with mapi id
-	15.00.0847.040; Mon, 20 May 2019 09:42:32 +0200
-From: Wim Vervoorn <wvervoorn@eltan.com>
-To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
-	<qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>, Andrew Jeffery
-	<andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>
-Thread-Topic: aspeed qemu question
-Thread-Index: AdULwnm8cADYiO1ZRNGvxixzeWIzuQAJZaCAACbA8VAAASgwgACVvbog
-Date: Mon, 20 May 2019 07:42:32 +0000
-Message-ID: <e1f87ee13d164655ae568b2d22f68128@Eltsrv03.Eltan.local>
-References: <d0fea426e8b245769f3022dad121c17e@Eltsrv03.Eltan.local>
-	<3ee8eb5a-d38c-9570-3da5-a055e9f147e5@kaod.org>
-In-Reply-To: <3ee8eb5a-d38c-9570-3da5-a055e9f147e5@kaod.org>
-Accept-Language: nl-NL, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [192.168.100.108]
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (envelope-from <peter.maydell@linaro.org>) id 1hpa4n-00023A-9R
+ for qemu-arm@nongnu.org; Mon, 22 Jul 2019 11:18:10 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:33715)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hpa4n-00022F-2a
+ for qemu-arm@nongnu.org; Mon, 22 Jul 2019 11:18:09 -0400
+Received: by mail-wr1-x444.google.com with SMTP id n9so39919392wru.0
+ for <qemu-arm@nongnu.org>; Mon, 22 Jul 2019 08:18:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=OYBMZusYqESde0qHUOjc4d/ttVAW59Cu3YSqerf0Vp0=;
+ b=BYAkNYV/IKOanaijq53MZGBHOwjZxQ+QrPknvcXKF1JZrvOoF3xLjGRjSv+AOSGWWr
+ 3wLEJvLq83zDi3Tr8DYh0kP6legijgYfAJ5pic8mCSgAodAS6hbCPfYrbOLQihe6mUf6
+ MIShX/Qg7GRlEYWKZt+LLOugBAxF25tAVs5nrVUg8VOFth7YlXqYduETHvOREtxDPe0P
+ n4lqU/hFR4Y/kp6XQDjnOjjegGATmq7/Hokrx9zDtu8zkY6/zaSbsTU9O7BHi+omt/gU
+ 9ntK94Dc+SyGsCmyvxiGABsFDTE5cD8LNcWcqXUGiUH06LI2jlKf6BetGmbtRTqIWNXZ
+ 7ToA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=OYBMZusYqESde0qHUOjc4d/ttVAW59Cu3YSqerf0Vp0=;
+ b=A5//qnatajm1gJ66NH8BYi0zmp9YN9U8QGMue1ugsJC81Uy/jRvdlSZU6eMt4z1sL+
+ Nn73QCNML3AqXDxrjbFdP76ILXiJjRSon/WgXfJPOoAyKf/7caI7CNTg0hLRd/B7MZol
+ jVuPV+IuBIkb0/p6WqhAmfmPTllqdiXBkQuP00AOP3PyF31rHieKH/gPY2YEHXhbTsC5
+ PGGf0FSUUqU2zvy+Ifdg/0giULSQb6hVsGH2dlZttqpvDhqh6vcYtCax/s7+IFUOjPaS
+ Ln3CG9+XPdvOxBosO2vcvu6kegUXt3aua7ute9Mkv3TDT7kj00elC4mm3OLYnhySYaka
+ JQzw==
+X-Gm-Message-State: APjAAAXtI7//wlSpnGWGjHtCu/mjl0DcD/KAvfKj07giLKHp6mFzQsoW
+ nPSXzfs1HPAkT453Mc8uW0SzbOjHirKT6Q==
+X-Received: by 2002:adf:dd51:: with SMTP id u17mr72073092wrm.218.1563808687889; 
+ Mon, 22 Jul 2019 08:18:07 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id s15sm23163990wrw.21.2019.07.22.08.18.06
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 22 Jul 2019 08:18:07 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Mon, 22 Jul 2019 16:18:03 +0100
+Message-Id: <20190722151804.25467-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190722151804.25467-1-peter.maydell@linaro.org>
+References: <20190722151804.25467-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-X-OriginalArrivalTime: 20 May 2019 07:43:21.0297 (UTC)
-	FILETIME=[B286C410:01D50EDF]
-X-RcptDomain: nongnu.org
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8
-X-Received-From: 213.75.39.5
-Subject: Re: [Qemu-arm] aspeed qemu question
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::444
+Subject: [Qemu-arm] [PATCH for-4.1? 1/2] hw/arm/boot: Rename elf_{low,
+ high}_addr to image_{low, high}_addr
 X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.21
+X-Mailman-Version: 2.1.23
 Precedence: list
 List-Id: <qemu-arm.nongnu.org>
 List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <http://lists.nongnu.org/archive/html/qemu-arm/>
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
 List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
-	<mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aJY+juydnJU2
+X-TUID: kpxd8wiR9wTq
 
-Hello C=E9dric,
+Rename the elf_low_addr and elf_high_addr variables to image_low_addr
+and image_high_addr -- in the next commit we will extend them to
+be set for other kinds of image file and not just ELF files.
 
-It was not yet my intention to have this patch included in the qemu repo so=
- I didn't pay attention to checking the indentation etc. So I misunderstood=
- your suggestion. I am sorry about that.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/arm/boot.c | 20 +++++++++++---------
+ 1 file changed, 11 insertions(+), 9 deletions(-)
 
-I will address your remarks in a new patch.
-
-Besides this I have another question.
-
-First of all I don't think qemu should assert due to a lacking NIC definiti=
-on on the commandline so that is why I think I am missing something.
-
-Secondly I have started qemu with various attempts to define a 2nd NIC all =
-with the same result (an assert). The issue with this is that I am not 100%=
- sure I am defining the NICs in the correct way. If you could provide me wi=
-th a commandline that is known to be correct I can use that for testing.
-
-Thanks for you patience.
-
-Best Regards,
-Wim Vervoorn
-
-
------Original Message-----
-From: C=E9dric Le Goater [mailto:clg@kaod.org]=20
-Sent: Friday, May 17, 2019 12:08 PM
-To: Wim Vervoorn <wvervoorn@eltan.com>; qemu-devel@nongnu.org; qemu-arm@non=
-gnu.org; Joel Stanley <joel@jms.id.au>; Andrew Jeffery <andrew@aj.id.au>; P=
-eter Maydell <peter.maydell@linaro.org>
-Subject: Re: aspeed qemu question
-
-Hello Win,
-
-On 5/17/19 9:46 AM, Wim Vervoorn wrote:
-> Hello Cedr=EDc,
->=20
-> Thanks for your response. I created and attached the patch. You are right=
- the code snipped turns out unreadable.
-
-You should try to send the patch directly and not attached. Checkout the gi=
-t send-email commands for it. See also :
-
-https://wiki.qemu.org/Contribute/SubmitAPatch
-
-> In the patch I enable the MAC's depending on the value in hwstrap1 just a=
-s in the real hardware. In the Palmetto both nics will be enabled (just as =
-in the real palmetto).=20
->=20
-> I added a 2nd AST2400 BMC the Eltan Piestewa Peak. Here I enabled the 2nd=
- NIC only.
->=20
-> What I see is that when I use Palmetto I get an assert in net/net.c line =
-256, this is in the "qemu_net_client_setup()". I assume I have to prepare s=
-omething regarding the host side of the network implementation but I this p=
-oint I have no clue what and I have a hard time figuring out how the networ=
-king architecture really works.=20
-
-Did you define two nics on the command line  ?
-
-more comments below.
-
-[ ... ]=20
-
-> From bbf9392b84f38531b89e4ea39e06210b99ec7a0c Mon Sep 17 00:00:00 2001
-> Message-Id:=20
-> <bbf9392b84f38531b89e4ea39e06210b99ec7a0c.1558078463.git.wvervoorn@elt
-> an.com>
-> From: Wim Vervoorn <wvervoorn@eltan.com>
-> Date: Fri, 17 May 2019 09:26:16 +0200
-> Subject: [PATCH] ASPEED BMC: Add support for 2nd NIC
->=20
-> Add support for 2nd NIC.
->=20
-> This solution is using the hwstrap1 value to enable disable the=20
-> controllers.
-
-OK. Let see how this shows in the code.
-
-> The Palmetto leaves both NICs enabled while the Piestewa Peak only=20
-> enables one.
-
-You should send two different patches, one for the NIC, one for Piestewa Pe=
-ak machine.=20
-
-> The Palmetto asserts in net/net.c line 256 when qemu starts so=20
-> something must be missing to support the 2nd nic.
-
-You need a "signed-off-by:" tag here
-
-> ---
->  hw/arm/aspeed.c             | 26 ++++++++++++++++++++++
->  hw/arm/aspeed_soc.c         | 54 ++++++++++++++++++++++++++++++++-------=
-------
->  include/hw/arm/aspeed_soc.h |  2 +-
->  3 files changed, 66 insertions(+), 16 deletions(-)
->=20
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c old mode 100644 new=20
-> mode 100755 index 0203642..f957a5b
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -43,6 +43,23 @@ struct AspeedBoardState {
->          SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |       =
-\
->          SCU_HW_STRAP_VGA_CLASS_CODE |                                   =
-\
->          SCU_HW_STRAP_LPC_RESET_PIN |                                    =
-\
-> +        SCU_HW_STRAP_MAC0_RGMII |                                       =
-\
-> +        SCU_HW_STRAP_MAC1_RGMII |                                       =
-\
-> +        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN) |                =
-\
-> +        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1=
-) | \
-> +        SCU_HW_STRAP_SPI_WIDTH |                                        =
-\
-> +        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       =
-\
-> +        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
-> +
-> +/* Piestewa Peak hardware value:  */
-> +#define ELTANPWP_BMC_HW_STRAP1 (                                        =
-\
-> +        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_256MB) |               =
-\
-> +        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2 /* DDR3 with CL=3D6, CWL=3D5 =
-*/) | \
-> +        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 =
-\
-> +        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |       =
-\
-> +        SCU_HW_STRAP_VGA_CLASS_CODE |                                   =
-\
-> +        SCU_HW_STRAP_LPC_RESET_PIN |                                    =
-\
-> +        SCU_HW_STRAP_MAC1_RGMII |                                       =
-\
->          SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN) |                =
-\
->          SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1=
-) | \
->          SCU_HW_STRAP_SPI_WIDTH |                                        =
-\
-> @@ -423,6 +440,15 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
->          .num_cs    =3D 1,
->          .i2c_init  =3D palmetto_bmc_i2c_init,
->      }, {
-> +        .name      =3D MACHINE_TYPE_NAME("eltanpwp-bmc"),
-> +        .desc      =3D "Eltan Piestewa Peak BMC (ARM926EJ-S)",
-> +        .soc_name  =3D "ast2400-a1",
-> +        .hw_strap1 =3D ELTANPWP_BMC_HW_STRAP1,
-> +        .fmc_model =3D "n25q256a",
-> +        .spi_model =3D "mx25l25635e",
-
-Are these the correct flash models for your board ?=20
-
-> +        .num_cs    =3D 1,
-> +        .i2c_init  =3D palmetto_bmc_i2c_init,
-> +    }, {
->          .name      =3D MACHINE_TYPE_NAME("ast2500-evb"),
->          .desc      =3D "Aspeed AST2500 EVB (ARM1176)",
->          .soc_name  =3D "ast2500-a1",
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c old mode 100644=20
-> new mode 100755 index 0f6e5be..8ed7902
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -184,9 +184,13 @@ static void aspeed_soc_init(Object *obj)
->                                         OBJECT(&s->scu), &error_abort);
->      }
-> =20
-> -    object_initialize(&s->ftgmac100, sizeof(s->ftgmac100), TYPE_FTGMAC10=
-0);
-> -    object_property_add_child(obj, "ftgmac100", OBJECT(&s->ftgmac100), N=
-ULL);
-> -    qdev_set_parent_bus(DEVICE(&s->ftgmac100), sysbus_get_default());
-> +    object_initialize(&s->ftgmac100[0], sizeof(s->ftgmac100), TYPE_FTGMA=
-C100);
-> +    object_property_add_child(obj, "ftgmac100[0]", OBJECT(&s->ftgmac100[=
-0]), NULL);
-> +    qdev_set_parent_bus(DEVICE(&s->ftgmac100[0]),=20
-> + sysbus_get_default());
-> +
-> +    object_initialize(&s->ftgmac100[1], sizeof(s->ftgmac100), TYPE_FTGMA=
-C100);
-> +    object_property_add_child(obj, "ftgmac100[1]", OBJECT(&s->ftgmac100[=
-1]), NULL);
-> +    qdev_set_parent_bus(DEVICE(&s->ftgmac100[1]),=20
-> + sysbus_get_default());
-
-using a loop would be better. The future Aspeed SoCs might have more than t=
-wo MACs.
-> =20
->      object_initialize(&s->ibt, sizeof(s->ibt), TYPE_ASPEED_IBT);
->      object_property_add_child(obj, "bt", OBJECT(&s->ibt), NULL); @@=20
-> -384,19 +388,39 @@ static void aspeed_soc_realize(DeviceState *dev, Error=
- **errp)
->                          ASPEED_SOC_WDT_BASE + i * 0x20);
->      }
-> =20
-> -    /* Net */
-> -    qdev_set_nic_properties(DEVICE(&s->ftgmac100), &nd_table[0]);
-> -    object_property_set_bool(OBJECT(&s->ftgmac100), true, "aspeed", &err=
-);
-> -    object_property_set_bool(OBJECT(&s->ftgmac100), true, "realized",
-> -                             &local_err);
-> -    error_propagate(&err, local_err);
-> -    if (err) {
-> -        error_propagate(errp, err);
-> -        return;
-> +    /* Net LAN 0*/
-> +        qdev_set_nic_properties(DEVICE(&s->ftgmac100[0]), &nd_table[0]);
-> +        object_property_set_bool(OBJECT(&s->ftgmac100[0]), true,=20
-> + "aspeed", &err);
-
-This is not the correct indentation. Please run checkpatch.pl on the patch.
-
-> +    if (s->scu.hw_strap1 & SCU_HW_STRAP_MAC0_RGMII) {
-> +        qemu_log("%s: LAN0 enabled\n", __func__);
-
-we don't need this kind of information.
-
-> +        object_property_set_bool(OBJECT(&s->ftgmac100[0]), true, "realiz=
-ed",
-> +                                &local_err);
-> +        error_propagate(&err, local_err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100[0]), 0, ASPEED_SOC_=
-ETH1_BASE);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100[0]), 0,
-> +                        qdev_get_gpio_in(DEVICE(&s->vic), 2));
-> +    }
-> +
-> +    /* Net LAN 1*/
-> +        qdev_set_nic_properties(DEVICE(&s->ftgmac100[1]), &nd_table[1]);
-> +        object_property_set_bool(OBJECT(&s->ftgmac100[1]), true, "aspeed=
-", &err);
-> +    if (s->scu.hw_strap1 & SCU_HW_STRAP_MAC1_RGMII) {
-> +        qemu_log("%s: LAN1 enabled\n", __func__);
-> +        object_property_set_bool(OBJECT(&s->ftgmac100[1]), true, "realiz=
-ed",
-> +                                &local_err);
-> +        error_propagate(&err, local_err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100[1]), 0, ASPEED_SOC_=
-ETH2_BASE);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100[1]), 0,
-> +                        qdev_get_gpio_in(DEVICE(&s->vic), 3));
-
-I would use a loop such as :=20
-
-    for (i =3D 0; i < nb_nics; i++) {
-        NICInfo *nd =3D &nd_table[i];
-
-  	/* test SCU ... */
-
-  	...
-    }
-
-to realize the NICs.
-
->      }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ftgmac100), 0, ASPEED_SOC_ETH1_BA=
-SE);
-> -    sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100), 0,
-> -                       qdev_get_gpio_in(DEVICE(&s->vic), 2));
-> =20
->      /* iBT */
->      object_property_set_bool(OBJECT(&s->ibt), true, "realized",=20
-> &err); diff --git a/include/hw/arm/aspeed_soc.h=20
-> b/include/hw/arm/aspeed_soc.h old mode 100644 new mode 100755 index=20
-> 623223d..0799d61
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -47,7 +47,7 @@ typedef struct AspeedSoCState {
->      AspeedSMCState spi[ASPEED_SPIS_NUM];
->      AspeedSDMCState sdmc;
->      AspeedWDTState wdt[ASPEED_WDTS_NUM];
-> -    FTGMAC100State ftgmac100;
-> +    FTGMAC100State ftgmac100[2];
-
-2 needs a macro.
-
-
-I have a patchset currently being reviewed which should help you to define =
-the different addresses, interrupt numbers of the MACS.
-Let me ping you when this is merge and then you can rebase.=20
-
-However, you can send a patch for your board definition. There should not b=
-e any conflicts with this addition.
-
-Thanks,
-
-C.
-
-
-
-
->      AspeedIBTState ibt;
->      AspeedGPIOState gpio;
->      AspeedPWMState pwm;
-> --
-> 2.7.4
->=20
-
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 1fb24fbef27..b7b31753aca 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -986,7 +986,9 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
+     int kernel_size;
+     int initrd_size;
+     int is_linux = 0;
+-    uint64_t elf_entry, elf_low_addr, elf_high_addr;
++    uint64_t elf_entry;
++    /* Addresses of first byte used and first byte not used by the image */
++    uint64_t image_low_addr, image_high_addr;
+     int elf_machine;
+     hwaddr entry;
+     static const ARMInsnFixup *primary_loader;
+@@ -1014,24 +1016,24 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
+         info->nb_cpus = 1;
+ 
+     /* Assume that raw images are linux kernels, and ELF images are not.  */
+-    kernel_size = arm_load_elf(info, &elf_entry, &elf_low_addr,
+-                               &elf_high_addr, elf_machine, as);
++    kernel_size = arm_load_elf(info, &elf_entry, &image_low_addr,
++                               &image_high_addr, elf_machine, as);
+     if (kernel_size > 0 && have_dtb(info)) {
+         /*
+          * If there is still some room left at the base of RAM, try and put
+          * the DTB there like we do for images loaded with -bios or -pflash.
+          */
+-        if (elf_low_addr > info->loader_start
+-            || elf_high_addr < info->loader_start) {
++        if (image_low_addr > info->loader_start
++            || image_high_addr < info->loader_start) {
+             /*
+-             * Set elf_low_addr as address limit for arm_load_dtb if it may be
++             * Set image_low_addr as address limit for arm_load_dtb if it may be
+              * pointing into RAM, otherwise pass '0' (no limit)
+              */
+-            if (elf_low_addr < info->loader_start) {
+-                elf_low_addr = 0;
++            if (image_low_addr < info->loader_start) {
++                image_low_addr = 0;
+             }
+             info->dtb_start = info->loader_start;
+-            info->dtb_limit = elf_low_addr;
++            info->dtb_limit = image_low_addr;
+         }
+     }
+     entry = elf_entry;
+-- 
+2.20.1
 

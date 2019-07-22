@@ -1,76 +1,75 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7039348wrv;
-        Mon, 22 Jul 2019 08:44:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw4xmTDZeHQ8od7OcJH7Vm3gygGbYVFwwLXP/3WbXEm18q0HexPymUKo3IvaaYi8hZngVna
-X-Received: by 2002:a17:907:2091:: with SMTP id pv17mr53637861ejb.152.1563810260129;
-        Mon, 22 Jul 2019 08:44:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563810260; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7039928wrv;
+        Mon, 22 Jul 2019 08:45:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwtWi+07nsAFX6CuNIpgr5cVnmBsMUnysTgj+kIC5SBkHZ96sQd7nJXWhargSfqOJmyJVMn
+X-Received: by 2002:a17:906:af82:: with SMTP id mj2mr52437159ejb.25.1563810303763;
+        Mon, 22 Jul 2019 08:45:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563810303; cv=none;
         d=google.com; s=arc-20160816;
-        b=0ib6VVSqTXHiiwku2Ji1Z7AzVLkJooTBWOthrCddyjfsE7Um5vLCgx9jHtMH+l6Brj
-         R/q0rZaEigDK+wdhCTrUgdYeMKrcxlDtWIOFknT77urdCWbsdE3ZB/VoHSR42HJUkkUv
-         jKFvfu9VEmNmrOw8OazNiqWGB5SivswBqK5u/MW9ggPUzzLRIsYYKbq8E/N8uKgFcsbs
-         4AEGGtWCyQENPOqKRQv3p9MieFHOFUjbLkap4PLMYsRFYk1FiYXw0XGJ6jl355CMs/4i
-         IN10ukGoXsUnboB2keliTCayA/lXgXZGPbSGlbHMT3i93smCluLMrxlMBfpg2TekmxgK
-         t8Mw==
+        b=J/s/8Xi3eg1wFsqU5TYcxUA7qRdR9yoSBT6PwJUxDcrccPstNPLiQ/vPw5tCJPxdub
+         UC/BzYbBpMgzlW/sIMePl//VhLHMvjH6eED5RtZ2LWKa9cVdWUpDXYCvIeOCKARDj8Fz
+         8Pi/BpmTepbO1F748cGuVJLWJUhXbkOZVcKFb6u3BxMujU5IylbM+PRNzWWZ+zNE/3uq
+         bIrio0rBaJd7aeDBdExb/pXt5pBh3xvTU/WDFypmal/GrwWgqfZyFQ3Mf3VtqBAud+kV
+         etHhtUYs7y3gB25GaISbyhqdVYWc1rvUcNmCqMl+Uv8VlSQs7LulBRzgBlGslOwWF546
+         zikA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:content-language
          :accept-language:in-reply-to:references:message-id:date:thread-index
          :thread-topic:to:from;
-        bh=D74kE6pcqoD/tMAXadM0vE59NkP8DzUtGjLzkFSzNjs=;
-        b=HbMrYeEYdP4xDdxe9W5oSZzodVm6TCQHkNTwLkTAqc2b/tdFfPEWHrTrgpbouriM+E
-         KKn/I8QBC8qJfIVmAHq5QQmCz5zNCt1nSdiWtzlvuHo4qa6F1xa1W6luKS1vKmM+IAs0
-         Y32Qa3EhBU7toscBqIoLndF81yAeKDR6euJmGY4wqiJlw4Et/dqLwzbXKxoB4fnEEOmj
-         qouGwQbUi2hn0FaSjd5Y3YxMlRr/qDww7vSK/JiCP0IUnxiZ2WvyAGHzWY5LCFX4qDDe
-         pzdkR9P9cuQaBsML3AA14HCyUASDejqZzrlFs3PF4s88+QxT9mHMtNzze3KhK/lkWxNC
-         dB3Q==
+        bh=wzHKyjjmrUj1elQl71aRKfuZ3HFR2lFkmxC00Pm/9rM=;
+        b=yUWzqAqodfaD1lgosmAZlmkvEOY0C9TE6JyeLr4igoLjIx6p1S8jWtMn5DG2M6hQIR
+         Mnxr1auzkeWzvwqKVy/hjZ93bMSATZseXeHjzOpIqEayrIJfgo240qhi8o/AjHEyoDpB
+         r/YSiuN/wJwPsaqOybOK5dt4AMA8R/MaiWG7dhnKFLzHsFEDvcWisL0pFPlBIKwltnfz
+         EnmvKpEDQqpiEGuptFGxKlHECcmmqaGSFKIWsrcdkmqgCYDa/2bjUMsU9AIZnplHKcmO
+         d3bx16mXpUco36JqzZlHcVTTs/zX5GEequq2jnBOEQtakIyUpil2Z1YS1YhF/0DIkf+X
+         7tXw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e17si5076977ede.425.2019.07.22.08.44.20
+        by mx.google.com with ESMTPS id k45si4710290edb.235.2019.07.22.08.45.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jul 2019 08:44:20 -0700 (PDT)
+        Mon, 22 Jul 2019 08:45:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:34752 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34806 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hpaU7-0005nu-7K
-	for alex.bennee@linaro.org; Mon, 22 Jul 2019 11:44:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52487)
+	id 1hpaUo-0006jn-Ob
+	for alex.bennee@linaro.org; Mon, 22 Jul 2019 11:45:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52686)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <tony.nguyen@bt.com>) id 1hpaTv-0005P7-A3
- for qemu-devel@nongnu.org; Mon, 22 Jul 2019 11:44:08 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hpaUZ-0006Ke-DM
+ for qemu-devel@nongnu.org; Mon, 22 Jul 2019 11:44:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hpaTt-00046T-CE
- for qemu-devel@nongnu.org; Mon, 22 Jul 2019 11:44:07 -0400
-Received: from smtpe1.intersmtp.com ([213.121.35.80]:15138)
+ (envelope-from <tony.nguyen@bt.com>) id 1hpaUV-0004fC-KI
+ for qemu-devel@nongnu.org; Mon, 22 Jul 2019 11:44:47 -0400
+Received: from smtpe1.intersmtp.com ([62.239.224.236]:37940)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hpaTZ-0003rl-65; Mon, 22 Jul 2019 11:43:45 -0400
-Received: from tpw09926dag18h.domain1.systemhost.net (10.9.212.42) by
- BWP09926085.bt.com (10.36.82.116) with Microsoft SMTP Server (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Mon, 22
- Jul 2019 16:43:46 +0100
+ id 1hpaUF-0004Ux-Jz; Mon, 22 Jul 2019 11:44:28 -0400
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18h.domain1.systemhost.net (10.9.212.42) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Mon, 22 Jul 2019 16:43:43 +0100
+ RDW083A009ED65.bt.com (10.187.98.35) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Mon, 22 Jul 2019 16:40:47 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
+ tpw09926dag18e.domain1.systemhost.net (10.9.212.18) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Mon, 22 Jul 2019 16:44:24 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Mon, 22 Jul
- 2019 16:43:43 +0100
+ 2019 16:44:24 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v2 05/20] tcg: Move size+sign+endian from
- TCGMemOp to MemOp
-Thread-Index: AQHVQKQ9cEFsk0Sv/kSj8smbj0lJlQ==
-Date: Mon, 22 Jul 2019 15:43:43 +0000
-Message-ID: <1563810222730.76414@bt.com>
+Thread-Topic: [Qemu-devel] [PATCH v2 06/20] tcg: Rename get_memop to
+ get_tcgmemop
+Thread-Index: AQHVQKRWuilU/GWOfUKTTPphRrvupQ==
+Date: Mon, 22 Jul 2019 15:44:24 +0000
+Message-ID: <1563810264064.38406@bt.com>
 References: <e9c6e5310b1a4863be45d45bf087fc3d@tpw09926dag18e.domain1.systemhost.net>
 In-Reply-To: <e9c6e5310b1a4863be45d45bf087fc3d@tpw09926dag18e.domain1.systemhost.net>
 Accept-Language: en-AU, en-GB, en-US
@@ -80,13 +79,13 @@ X-MS-TNEF-Correlator:
 x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.37]
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 213.121.35.80
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 62.239.224.236
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 X-Content-Filtered-By: Mailman/MimeDel 2.1.23
-Subject: [Qemu-devel] [PATCH v2 05/20] tcg: Move size+sign+endian from
- TCGMemOp to MemOp
+Subject: [Qemu-devel] [PATCH v2 06/20] tcg: Rename get_memop to get_tcgmemop
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,101 +108,510 @@ Cc: peter.maydell@linaro.org, walling@linux.ibm.com, mst@redhat.com,
  aurelien@aurel32.net
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oHn2JIOxdOUL
+X-TUID: vRQLOxJLEGUq
 
-Preparation for modifying the memory API to take size+sign+endianness
-instead of just size.
-
-Accelerator independent MemOp enum is extended by TCGMemOp enum.
+Correct naming as there is now both MemOp and TCGMemOp.
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
 ---
- MAINTAINERS          |  1 +
- include/exec/memop.h | 27 +++++++++++++++++++++++++++
- tcg/tcg.h            | 15 +++++----------
- 3 files changed, 33 insertions(+), 10 deletions(-)
- create mode 100644 include/exec/memop.h
+ accel/tcg/cputlb.c           |  6 +++---
+ tcg/aarch64/tcg-target.inc.c |  8 ++++----
+ tcg/arm/tcg-target.inc.c     |  8 ++++----
+ tcg/i386/tcg-target.inc.c    |  8 ++++----
+ tcg/mips/tcg-target.inc.c    | 10 +++++-----
+ tcg/optimize.c               |  2 +-
+ tcg/ppc/tcg-target.inc.c     |  8 ++++----
+ tcg/riscv/tcg-target.inc.c   | 10 +++++-----
+ tcg/s390/tcg-target.inc.c    |  8 ++++----
+ tcg/sparc/tcg-target.inc.c   |  4 ++--
+ tcg/tcg.c                    |  2 +-
+ tcg/tcg.h                    |  4 ++--
+ tcg/tci.c                    |  8 ++++----
+ 13 files changed, 43 insertions(+), 43 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index cc9636b..3f148cd 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1890,6 +1890,7 @@ M: Paolo Bonzini <pbonzini@redhat.com>
- S: Supported
- F: include/exec/ioport.h
- F: ioport.c
-+F: include/exec/memop.h
- F: include/exec/memory.h
- F: include/exec/ram_addr.h
- F: memory.c
-diff --git a/include/exec/memop.h b/include/exec/memop.h
-new file mode 100644
-index 0000000..43e99d7
---- /dev/null
-+++ b/include/exec/memop.h
-@@ -0,0 +1,27 @@
-+/*
-+ * Constants for memory operations
-+ *
-+ * Authors:
-+ *  Richard Henderson <rth@twiddle.net>
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2 or late=
-r.
-+ * See the COPYING file in the top-level directory.
-+ *
-+ */
-+
-+#ifndef MEMOP_H
-+#define MEMOP_H
-+
-+typedef enum MemOp {
-+    MO_8     =3D 0,
-+    MO_16    =3D 1,
-+    MO_32    =3D 2,
-+    MO_64    =3D 3,
-+    MO_SIZE  =3D 3,   /* Mask for the above.  */
-+
-+    MO_SIGN  =3D 4,   /* Sign-extended, otherwise zero-extended.  */
-+
-+    MO_BSWAP =3D 8,   /* Host reverse endian.  */
-+} MemOp;
-+
-+#endif
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index bb9897b..184fc54 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -1133,7 +1133,7 @@ static void *atomic_mmu_lookup(CPUArchState *env, tar=
+get_ulong addr,
+     uintptr_t index =3D tlb_index(env, mmu_idx, addr);
+     CPUTLBEntry *tlbe =3D tlb_entry(env, mmu_idx, addr);
+     target_ulong tlb_addr =3D tlb_addr_write(tlbe);
+-    TCGMemOp mop =3D get_memop(oi);
++    TCGMemOp mop =3D get_tcgmemop(oi);
+     int a_bits =3D get_alignment_bits(mop);
+     int s_bits =3D mop & MO_SIZE;
+     void *hostaddr;
+@@ -1257,7 +1257,7 @@ load_helper(CPUArchState *env, target_ulong addr, TCG=
+MemOpIdx oi,
+         offsetof(CPUTLBEntry, addr_code) : offsetof(CPUTLBEntry, addr_read=
+);
+     const MMUAccessType access_type =3D
+         code_read ? MMU_INST_FETCH : MMU_DATA_LOAD;
+-    unsigned a_bits =3D get_alignment_bits(get_memop(oi));
++    unsigned a_bits =3D get_alignment_bits(get_tcgmemop(oi));
+     void *haddr;
+     uint64_t res;
+
+@@ -1506,7 +1506,7 @@ store_helper(CPUArchState *env, target_ulong addr, ui=
+nt64_t val,
+     CPUTLBEntry *entry =3D tlb_entry(env, mmu_idx, addr);
+     target_ulong tlb_addr =3D tlb_addr_write(entry);
+     const size_t tlb_off =3D offsetof(CPUTLBEntry, addr_write);
+-    unsigned a_bits =3D get_alignment_bits(get_memop(oi));
++    unsigned a_bits =3D get_alignment_bits(get_tcgmemop(oi));
+     void *haddr;
+
+     /* Handle CPU specific unaligned behaviour */
+diff --git a/tcg/aarch64/tcg-target.inc.c b/tcg/aarch64/tcg-target.inc.c
+index d14afa9..886da51 100644
+--- a/tcg/aarch64/tcg-target.inc.c
++++ b/tcg/aarch64/tcg-target.inc.c
+@@ -1580,7 +1580,7 @@ static inline void tcg_out_adr(TCGContext *s, TCGReg =
+rd, void *target)
+ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, TCGLabelQemuLdst *lb)
+ {
+     TCGMemOpIdx oi =3D lb->oi;
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+     TCGMemOp size =3D opc & MO_SIZE;
+
+     if (!reloc_pc19(lb->label_ptr[0], s->code_ptr)) {
+@@ -1605,7 +1605,7 @@ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, =
+TCGLabelQemuLdst *lb)
+ static bool tcg_out_qemu_st_slow_path(TCGContext *s, TCGLabelQemuLdst *lb)
+ {
+     TCGMemOpIdx oi =3D lb->oi;
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+     TCGMemOp size =3D opc & MO_SIZE;
+
+     if (!reloc_pc19(lb->label_ptr[0], s->code_ptr)) {
+@@ -1804,7 +1804,7 @@ static void tcg_out_qemu_st_direct(TCGContext *s, TCG=
+MemOp memop,
+ static void tcg_out_qemu_ld(TCGContext *s, TCGReg data_reg, TCGReg addr_re=
+g,
+                             TCGMemOpIdx oi, TCGType ext)
+ {
+-    TCGMemOp memop =3D get_memop(oi);
++    TCGMemOp memop =3D get_tcgmemop(oi);
+     const TCGType otype =3D TARGET_LONG_BITS =3D=3D 64 ? TCG_TYPE_I64 : TC=
+G_TYPE_I32;
+ #ifdef CONFIG_SOFTMMU
+     unsigned mem_index =3D get_mmuidx(oi);
+@@ -1829,7 +1829,7 @@ static void tcg_out_qemu_ld(TCGContext *s, TCGReg dat=
+a_reg, TCGReg addr_reg,
+ static void tcg_out_qemu_st(TCGContext *s, TCGReg data_reg, TCGReg addr_re=
+g,
+                             TCGMemOpIdx oi)
+ {
+-    TCGMemOp memop =3D get_memop(oi);
++    TCGMemOp memop =3D get_tcgmemop(oi);
+     const TCGType otype =3D TARGET_LONG_BITS =3D=3D 64 ? TCG_TYPE_I64 : TC=
+G_TYPE_I32;
+ #ifdef CONFIG_SOFTMMU
+     unsigned mem_index =3D get_mmuidx(oi);
+diff --git a/tcg/arm/tcg-target.inc.c b/tcg/arm/tcg-target.inc.c
+index 70eeb8a..98c5b47 100644
+--- a/tcg/arm/tcg-target.inc.c
++++ b/tcg/arm/tcg-target.inc.c
+@@ -1348,7 +1348,7 @@ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, =
+TCGLabelQemuLdst *lb)
+ {
+     TCGReg argreg, datalo, datahi;
+     TCGMemOpIdx oi =3D lb->oi;
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+     void *func;
+
+     if (!reloc_pc24(lb->label_ptr[0], s->code_ptr)) {
+@@ -1412,7 +1412,7 @@ static bool tcg_out_qemu_st_slow_path(TCGContext *s, =
+TCGLabelQemuLdst *lb)
+ {
+     TCGReg argreg, datalo, datahi;
+     TCGMemOpIdx oi =3D lb->oi;
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+
+     if (!reloc_pc24(lb->label_ptr[0], s->code_ptr)) {
+         return false;
+@@ -1589,7 +1589,7 @@ static void tcg_out_qemu_ld(TCGContext *s, const TCGA=
+rg *args, bool is64)
+     addrlo =3D *args++;
+     addrhi =3D (TARGET_LONG_BITS =3D=3D 64 ? *args++ : 0);
+     oi =3D *args++;
+-    opc =3D get_memop(oi);
++    opc =3D get_tcgmemop(oi);
+
+ #ifdef CONFIG_SOFTMMU
+     mem_index =3D get_mmuidx(oi);
+@@ -1720,7 +1720,7 @@ static void tcg_out_qemu_st(TCGContext *s, const TCGA=
+rg *args, bool is64)
+     addrlo =3D *args++;
+     addrhi =3D (TARGET_LONG_BITS =3D=3D 64 ? *args++ : 0);
+     oi =3D *args++;
+-    opc =3D get_memop(oi);
++    opc =3D get_tcgmemop(oi);
+
+ #ifdef CONFIG_SOFTMMU
+     mem_index =3D get_mmuidx(oi);
+diff --git a/tcg/i386/tcg-target.inc.c b/tcg/i386/tcg-target.inc.c
+index 3a73334..e4525ca 100644
+--- a/tcg/i386/tcg-target.inc.c
++++ b/tcg/i386/tcg-target.inc.c
+@@ -1810,7 +1810,7 @@ static void add_qemu_ldst_label(TCGContext *s, bool i=
+s_ld, bool is_64,
+ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
+ {
+     TCGMemOpIdx oi =3D l->oi;
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+     TCGReg data_reg;
+     tcg_insn_unit **label_ptr =3D &l->label_ptr[0];
+     int rexw =3D (l->type =3D=3D TCG_TYPE_I64 ? P_REXW : 0);
+@@ -1895,7 +1895,7 @@ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, =
+TCGLabelQemuLdst *l)
+ static bool tcg_out_qemu_st_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
+ {
+     TCGMemOpIdx oi =3D l->oi;
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+     TCGMemOp s_bits =3D opc & MO_SIZE;
+     tcg_insn_unit **label_ptr =3D &l->label_ptr[0];
+     TCGReg retaddr;
+@@ -2114,7 +2114,7 @@ static void tcg_out_qemu_ld(TCGContext *s, const TCGA=
+rg *args, bool is64)
+     addrlo =3D *args++;
+     addrhi =3D (TARGET_LONG_BITS > TCG_TARGET_REG_BITS ? *args++ : 0);
+     oi =3D *args++;
+-    opc =3D get_memop(oi);
++    opc =3D get_tcgmemop(oi);
+
+ #if defined(CONFIG_SOFTMMU)
+     mem_index =3D get_mmuidx(oi);
+@@ -2232,7 +2232,7 @@ static void tcg_out_qemu_st(TCGContext *s, const TCGA=
+rg *args, bool is64)
+     addrlo =3D *args++;
+     addrhi =3D (TARGET_LONG_BITS > TCG_TARGET_REG_BITS ? *args++ : 0);
+     oi =3D *args++;
+-    opc =3D get_memop(oi);
++    opc =3D get_tcgmemop(oi);
+
+ #if defined(CONFIG_SOFTMMU)
+     mem_index =3D get_mmuidx(oi);
+diff --git a/tcg/mips/tcg-target.inc.c b/tcg/mips/tcg-target.inc.c
+index ef31fc8..010afd0 100644
+--- a/tcg/mips/tcg-target.inc.c
++++ b/tcg/mips/tcg-target.inc.c
+@@ -1215,7 +1215,7 @@ static void tcg_out_tlb_load(TCGContext *s, TCGReg ba=
+se, TCGReg addrl,
+                              TCGReg addrh, TCGMemOpIdx oi,
+                              tcg_insn_unit *label_ptr[2], bool is_load)
+ {
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+     unsigned s_bits =3D opc & MO_SIZE;
+     unsigned a_bits =3D get_alignment_bits(opc);
+     int mem_index =3D get_mmuidx(oi);
+@@ -1313,7 +1313,7 @@ static void add_qemu_ldst_label(TCGContext *s, int is=
+_ld, TCGMemOpIdx oi,
+ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
+ {
+     TCGMemOpIdx oi =3D l->oi;
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+     TCGReg v0;
+     int i;
+
+@@ -1363,7 +1363,7 @@ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, =
+TCGLabelQemuLdst *l)
+ static bool tcg_out_qemu_st_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
+ {
+     TCGMemOpIdx oi =3D l->oi;
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+     TCGMemOp s_bits =3D opc & MO_SIZE;
+     int i;
+
+@@ -1532,7 +1532,7 @@ static void tcg_out_qemu_ld(TCGContext *s, const TCGA=
+rg *args, bool is_64)
+     addr_regl =3D *args++;
+     addr_regh =3D (TCG_TARGET_REG_BITS < TARGET_LONG_BITS ? *args++ : 0);
+     oi =3D *args++;
+-    opc =3D get_memop(oi);
++    opc =3D get_tcgmemop(oi);
+
+ #if defined(CONFIG_SOFTMMU)
+     tcg_out_tlb_load(s, base, addr_regl, addr_regh, oi, label_ptr, 1);
+@@ -1635,7 +1635,7 @@ static void tcg_out_qemu_st(TCGContext *s, const TCGA=
+rg *args, bool is_64)
+     addr_regl =3D *args++;
+     addr_regh =3D (TCG_TARGET_REG_BITS < TARGET_LONG_BITS ? *args++ : 0);
+     oi =3D *args++;
+-    opc =3D get_memop(oi);
++    opc =3D get_tcgmemop(oi);
+
+ #if defined(CONFIG_SOFTMMU)
+     tcg_out_tlb_load(s, base, addr_regl, addr_regh, oi, label_ptr, 0);
+diff --git a/tcg/optimize.c b/tcg/optimize.c
+index d2424de..422bcbb 100644
+--- a/tcg/optimize.c
++++ b/tcg/optimize.c
+@@ -1014,7 +1014,7 @@ void tcg_optimize(TCGContext *s)
+         CASE_OP_32_64(qemu_ld):
+             {
+                 TCGMemOpIdx oi =3D op->args[nb_oargs + nb_iargs];
+-                TCGMemOp mop =3D get_memop(oi);
++                TCGMemOp mop =3D get_tcgmemop(oi);
+                 if (!(mop & MO_SIGN)) {
+                     mask =3D (2ULL << ((8 << (mop & MO_SIZE)) - 1)) - 1;
+                 }
+diff --git a/tcg/ppc/tcg-target.inc.c b/tcg/ppc/tcg-target.inc.c
+index 13a2437..0ab4faa 100644
+--- a/tcg/ppc/tcg-target.inc.c
++++ b/tcg/ppc/tcg-target.inc.c
+@@ -1633,7 +1633,7 @@ static void add_qemu_ldst_label(TCGContext *s, bool i=
+s_ld, TCGMemOpIdx oi,
+ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, TCGLabelQemuLdst *lb)
+ {
+     TCGMemOpIdx oi =3D lb->oi;
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+     TCGReg hi, lo, arg =3D TCG_REG_R3;
+
+     if (!reloc_pc14(lb->label_ptr[0], s->code_ptr)) {
+@@ -1680,7 +1680,7 @@ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, =
+TCGLabelQemuLdst *lb)
+ static bool tcg_out_qemu_st_slow_path(TCGContext *s, TCGLabelQemuLdst *lb)
+ {
+     TCGMemOpIdx oi =3D lb->oi;
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+     TCGMemOp s_bits =3D opc & MO_SIZE;
+     TCGReg hi, lo, arg =3D TCG_REG_R3;
+
+@@ -1755,7 +1755,7 @@ static void tcg_out_qemu_ld(TCGContext *s, const TCGA=
+rg *args, bool is_64)
+     addrlo =3D *args++;
+     addrhi =3D (TCG_TARGET_REG_BITS < TARGET_LONG_BITS ? *args++ : 0);
+     oi =3D *args++;
+-    opc =3D get_memop(oi);
++    opc =3D get_tcgmemop(oi);
+     s_bits =3D opc & MO_SIZE;
+
+ #ifdef CONFIG_SOFTMMU
+@@ -1830,7 +1830,7 @@ static void tcg_out_qemu_st(TCGContext *s, const TCGA=
+rg *args, bool is_64)
+     addrlo =3D *args++;
+     addrhi =3D (TCG_TARGET_REG_BITS < TARGET_LONG_BITS ? *args++ : 0);
+     oi =3D *args++;
+-    opc =3D get_memop(oi);
++    opc =3D get_tcgmemop(oi);
+     s_bits =3D opc & MO_SIZE;
+
+ #ifdef CONFIG_SOFTMMU
+diff --git a/tcg/riscv/tcg-target.inc.c b/tcg/riscv/tcg-target.inc.c
+index 90363df..ab4e035 100644
+--- a/tcg/riscv/tcg-target.inc.c
++++ b/tcg/riscv/tcg-target.inc.c
+@@ -970,7 +970,7 @@ static void tcg_out_tlb_load(TCGContext *s, TCGReg addr=
+l,
+                              TCGReg addrh, TCGMemOpIdx oi,
+                              tcg_insn_unit **label_ptr, bool is_load)
+ {
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+     unsigned s_bits =3D opc & MO_SIZE;
+     unsigned a_bits =3D get_alignment_bits(opc);
+     tcg_target_long compare_mask;
+@@ -1044,7 +1044,7 @@ static void add_qemu_ldst_label(TCGContext *s, int is=
+_ld, TCGMemOpIdx oi,
+ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
+ {
+     TCGMemOpIdx oi =3D l->oi;
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+     TCGReg a0 =3D tcg_target_call_iarg_regs[0];
+     TCGReg a1 =3D tcg_target_call_iarg_regs[1];
+     TCGReg a2 =3D tcg_target_call_iarg_regs[2];
+@@ -1077,7 +1077,7 @@ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, =
+TCGLabelQemuLdst *l)
+ static bool tcg_out_qemu_st_slow_path(TCGContext *s, TCGLabelQemuLdst *l)
+ {
+     TCGMemOpIdx oi =3D l->oi;
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+     TCGMemOp s_bits =3D opc & MO_SIZE;
+     TCGReg a0 =3D tcg_target_call_iarg_regs[0];
+     TCGReg a1 =3D tcg_target_call_iarg_regs[1];
+@@ -1183,7 +1183,7 @@ static void tcg_out_qemu_ld(TCGContext *s, const TCGA=
+rg *args, bool is_64)
+     addr_regl =3D *args++;
+     addr_regh =3D (TCG_TARGET_REG_BITS < TARGET_LONG_BITS ? *args++ : 0);
+     oi =3D *args++;
+-    opc =3D get_memop(oi);
++    opc =3D get_tcgmemop(oi);
+
+ #if defined(CONFIG_SOFTMMU)
+     tcg_out_tlb_load(s, addr_regl, addr_regh, oi, label_ptr, 1);
+@@ -1254,7 +1254,7 @@ static void tcg_out_qemu_st(TCGContext *s, const TCGA=
+rg *args, bool is_64)
+     addr_regl =3D *args++;
+     addr_regh =3D (TCG_TARGET_REG_BITS < TARGET_LONG_BITS ? *args++ : 0);
+     oi =3D *args++;
+-    opc =3D get_memop(oi);
++    opc =3D get_tcgmemop(oi);
+
+ #if defined(CONFIG_SOFTMMU)
+     tcg_out_tlb_load(s, addr_regl, addr_regh, oi, label_ptr, 0);
+diff --git a/tcg/s390/tcg-target.inc.c b/tcg/s390/tcg-target.inc.c
+index db1102e..4d8078b 100644
+--- a/tcg/s390/tcg-target.inc.c
++++ b/tcg/s390/tcg-target.inc.c
+@@ -1614,7 +1614,7 @@ static bool tcg_out_qemu_ld_slow_path(TCGContext *s, =
+TCGLabelQemuLdst *lb)
+     TCGReg addr_reg =3D lb->addrlo_reg;
+     TCGReg data_reg =3D lb->datalo_reg;
+     TCGMemOpIdx oi =3D lb->oi;
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+
+     if (!patch_reloc(lb->label_ptr[0], R_390_PC16DBL,
+                      (intptr_t)s->code_ptr, 2)) {
+@@ -1639,7 +1639,7 @@ static bool tcg_out_qemu_st_slow_path(TCGContext *s, =
+TCGLabelQemuLdst *lb)
+     TCGReg addr_reg =3D lb->addrlo_reg;
+     TCGReg data_reg =3D lb->datalo_reg;
+     TCGMemOpIdx oi =3D lb->oi;
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+
+     if (!patch_reloc(lb->label_ptr[0], R_390_PC16DBL,
+                      (intptr_t)s->code_ptr, 2)) {
+@@ -1694,7 +1694,7 @@ static void tcg_prepare_user_ldst(TCGContext *s, TCGR=
+eg *addr_reg,
+ static void tcg_out_qemu_ld(TCGContext* s, TCGReg data_reg, TCGReg addr_re=
+g,
+                             TCGMemOpIdx oi)
+ {
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+ #ifdef CONFIG_SOFTMMU
+     unsigned mem_index =3D get_mmuidx(oi);
+     tcg_insn_unit *label_ptr;
+@@ -1721,7 +1721,7 @@ static void tcg_out_qemu_ld(TCGContext* s, TCGReg dat=
+a_reg, TCGReg addr_reg,
+ static void tcg_out_qemu_st(TCGContext* s, TCGReg data_reg, TCGReg addr_re=
+g,
+                             TCGMemOpIdx oi)
+ {
+-    TCGMemOp opc =3D get_memop(oi);
++    TCGMemOp opc =3D get_tcgmemop(oi);
+ #ifdef CONFIG_SOFTMMU
+     unsigned mem_index =3D get_mmuidx(oi);
+     tcg_insn_unit *label_ptr;
+diff --git a/tcg/sparc/tcg-target.inc.c b/tcg/sparc/tcg-target.inc.c
+index 7c50118..e6cf2c4 100644
+--- a/tcg/sparc/tcg-target.inc.c
++++ b/tcg/sparc/tcg-target.inc.c
+@@ -1164,7 +1164,7 @@ static const int qemu_st_opc[16] =3D {
+ static void tcg_out_qemu_ld(TCGContext *s, TCGReg data, TCGReg addr,
+                             TCGMemOpIdx oi, bool is_64)
+ {
+-    TCGMemOp memop =3D get_memop(oi);
++    TCGMemOp memop =3D get_tcgmemop(oi);
+ #ifdef CONFIG_SOFTMMU
+     unsigned memi =3D get_mmuidx(oi);
+     TCGReg addrz, param;
+@@ -1246,7 +1246,7 @@ static void tcg_out_qemu_ld(TCGContext *s, TCGReg dat=
+a, TCGReg addr,
+ static void tcg_out_qemu_st(TCGContext *s, TCGReg data, TCGReg addr,
+                             TCGMemOpIdx oi)
+ {
+-    TCGMemOp memop =3D get_memop(oi);
++    TCGMemOp memop =3D get_tcgmemop(oi);
+ #ifdef CONFIG_SOFTMMU
+     unsigned memi =3D get_mmuidx(oi);
+     TCGReg addrz, param;
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index be2c33c..492d7c6 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -2056,7 +2056,7 @@ static void tcg_dump_ops(TCGContext *s, bool have_pre=
+fs)
+             case INDEX_op_qemu_st_i64:
+                 {
+                     TCGMemOpIdx oi =3D op->args[k++];
+-                    TCGMemOp op =3D get_memop(oi);
++                    TCGMemOp op =3D get_tcgmemop(oi);
+                     unsigned ix =3D get_mmuidx(oi);
+
+                     if (op & ~(MO_AMASK | MO_BSWAP | MO_SSIZE)) {
 diff --git a/tcg/tcg.h b/tcg/tcg.h
-index 63e9897..18b91fe 100644
+index 18b91fe..8a3f912 100644
 --- a/tcg/tcg.h
 +++ b/tcg/tcg.h
-@@ -26,6 +26,7 @@
- #define TCG_H
+@@ -1197,12 +1197,12 @@ static inline TCGMemOpIdx make_memop_idx(TCGMemOp o=
+p, unsigned idx)
+ }
 
- #include "cpu.h"
-+#include "exec/memop.h"
- #include "exec/tb-context.h"
- #include "qemu/bitops.h"
- #include "qemu/queue.h"
-@@ -309,17 +310,11 @@ typedef enum TCGType {
- #endif
- } TCGType;
-
--/* Constants for qemu_ld and qemu_st for the Memory Operation field.  */
-+/*
-+ * Extend MemOp with constants for qemu_ld and qemu_st for the Memory
-+ * Operation field.
-+ */
- typedef enum TCGMemOp {
--    MO_8     =3D 0,
--    MO_16    =3D 1,
--    MO_32    =3D 2,
--    MO_64    =3D 3,
--    MO_SIZE  =3D 3,   /* Mask for the above.  */
--
--    MO_SIGN  =3D 4,   /* Sign-extended, otherwise zero-extended.  */
--
--    MO_BSWAP =3D 8,   /* Host reverse endian.  */
- #ifdef HOST_WORDS_BIGENDIAN
-     MO_LE    =3D MO_BSWAP,
-     MO_BE    =3D 0,
+ /**
+- * get_memop
++ * get_tcgmemop
+  * @oi: combined op/idx parameter
+  *
+  * Extract the memory operation from the combined value.
+  */
+-static inline TCGMemOp get_memop(TCGMemOpIdx oi)
++static inline TCGMemOp get_tcgmemop(TCGMemOpIdx oi)
+ {
+     return oi >> 4;
+ }
+diff --git a/tcg/tci.c b/tcg/tci.c
+index 33edca1..b3c5795 100644
+--- a/tcg/tci.c
++++ b/tcg/tci.c
+@@ -1109,7 +1109,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t=
+ *tb_ptr)
+             t0 =3D *tb_ptr++;
+             taddr =3D tci_read_ulong(regs, &tb_ptr);
+             oi =3D tci_read_i(&tb_ptr);
+-            switch (get_memop(oi) & (MO_BSWAP | MO_SSIZE)) {
++            switch (get_tcgmemop(oi) & (MO_BSWAP | MO_SSIZE)) {
+             case MO_UB:
+                 tmp32 =3D qemu_ld_ub;
+                 break;
+@@ -1146,7 +1146,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t=
+ *tb_ptr)
+             }
+             taddr =3D tci_read_ulong(regs, &tb_ptr);
+             oi =3D tci_read_i(&tb_ptr);
+-            switch (get_memop(oi) & (MO_BSWAP | MO_SSIZE)) {
++            switch (get_tcgmemop(oi) & (MO_BSWAP | MO_SSIZE)) {
+             case MO_UB:
+                 tmp64 =3D qemu_ld_ub;
+                 break;
+@@ -1195,7 +1195,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t=
+ *tb_ptr)
+             t0 =3D tci_read_r(regs, &tb_ptr);
+             taddr =3D tci_read_ulong(regs, &tb_ptr);
+             oi =3D tci_read_i(&tb_ptr);
+-            switch (get_memop(oi) & (MO_BSWAP | MO_SIZE)) {
++            switch (get_tcgmemop(oi) & (MO_BSWAP | MO_SIZE)) {
+             case MO_UB:
+                 qemu_st_b(t0);
+                 break;
+@@ -1219,7 +1219,7 @@ uintptr_t tcg_qemu_tb_exec(CPUArchState *env, uint8_t=
+ *tb_ptr)
+             tmp64 =3D tci_read_r64(regs, &tb_ptr);
+             taddr =3D tci_read_ulong(regs, &tb_ptr);
+             oi =3D tci_read_i(&tb_ptr);
+-            switch (get_memop(oi) & (MO_BSWAP | MO_SIZE)) {
++            switch (get_tcgmemop(oi) & (MO_BSWAP | MO_SIZE)) {
+             case MO_UB:
+                 qemu_st_b(tmp64);
+                 break;
 --
 1.8.3.1
 

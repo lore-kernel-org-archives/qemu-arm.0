@@ -1,89 +1,132 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7047648wrv;
-        Mon, 22 Jul 2019 08:54:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxDBDT0hOj7rXiOUiN0FotNmtryDlatuUQveIdpEt9QFNkp+QiUVD5SZ7uXFT8Zkz3aGGj1
-X-Received: by 2002:a50:922a:: with SMTP id i39mr60925460eda.219.1563810855379;
-        Mon, 22 Jul 2019 08:54:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563810855; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7808620wrv;
+        Tue, 23 Jul 2019 01:04:36 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx/xvsR7DEbpwGGcPHX2lAMcDMfxXWFH0+k3i9Z32tvSkWgIOcpjmM39U1Elb+0HJLI1Tp6
+X-Received: by 2002:aed:2667:: with SMTP id z94mr53563770qtc.2.1563869076621;
+        Tue, 23 Jul 2019 01:04:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563869076; cv=none;
         d=google.com; s=arc-20160816;
-        b=EZKWNVzBjHvH4gtDjnugU6BEnzZF9awleBoao5E7qJhKZqgT9IAjIboi6rkbtswbB6
-         o/fcO5R1uS1GuLMg3TXNXe1AEuEoxdgJJv2nsZWm1sgNh/50iLXCs+QQW+STXbJxFhLL
-         Rko3ak+s+CeHuxlP5cvnsdYjTzZuA7oX7dwGSlhlR92m2qCnUkeS8r4TDjt1GxNe9LOJ
-         Y9TUnsVG/rdMtY4WJozaYAF/NwWwrvdopRB5uD5NeARveKID6lGt5SHNkdh1lPS3cjID
-         dhKCZ8F+O0BxguWnCo14gUod9KC+N2Sr2M4M73cVItrIHzw8SZNvLYzkourhj+ivfbV9
-         05+A==
+        b=eUQD+xa8ZemnUORL89Z73B5ZAZAxF1U3ALk08K4s0RL0hiYOlrmRnMrNtqokcOE39D
+         Qf0bxQhvUlOohHmiyyReonBCx/yQ8BU6ZH6+yBXsli+D0WL7rbJxcgFAlwoZfqAz7eyF
+         1H64L/eWzTUgh1wLyJnXmToxYa+BN+Fb1TFS2CLKmXq8I6+RaTaLf+4PPToj/IIz3yDP
+         L8C0/XdLzYIdVEeT0kP5eQWqqM+uBj8jSMCS2QiPpFGOaj+aCHYpT9Vt1m5xMivZOA4l
+         Me10eGuGT8WlWTVeBK50/JSAIz26FpFgumZtQy1AH4HlOlm+2Mi7brlfBFsdVhKpAx5y
+         tQTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:to:from;
-        bh=NYOOS2PioKqysM1Aaqlr504lBcQ8gGmQwua7QjvwFzE=;
-        b=gvDUlaGCuqLw4anBldFDzUmZamP/uCA48V8PiaoemZgIj/fYfQMg85dAnGg/HbprzM
-         lBt+EUGNB56Arr/7QN371+XUE0U81/cOoDfZKl2mSHbxT5ZlAiCYMOngxLC2uD3rPQaK
-         LxnidMTqGP58mHXMbA7RveRNcQGSVvIhkSnukr4WfKXCzCG31NmYDJTzqfnS+gEpzI3u
-         VdN/USCQrUFI3uoQQoWycjGWYuhENjnH5x3tulUlUlH6HGnbeUNZkxizddiQ1oHbxyiO
-         dzr7PYrdZkXLPo8rKi+bCWLcXLeifHv9RGKBrz4z2eaYhfecCxW/fFLTzhUaSMnnwW/J
-         DSCw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=G89Xcik8SzkvGQMUGHdU3b9sH5gXi/2KgcBxGLwIWgk=;
+        b=WNFocInR9bxg/KpncCoOquO62D804JK0/jZiellKv+gBx8bEgovH2TF4aSxTZ8BVHg
+         Qk+i9ix0YP3m/Pd7S7Z4Z1AAV2CFWIqK6jFaZgbM/9p3QEDpr1nbd5UB4C0k1uCShnfR
+         FuLOdI/BKOEIcyF/olkyWQtoFjC1d+jlJvfA2gZuDUsW2O0UINpsZAoja9n+2pEx3SDm
+         bMwVczsNYssOqcoxECgcdE14nhyzO4AtQRS/h7Sg1DXny2ECKuLQQa8CTh7Lxik7IorZ
+         mkoZzAo/6LqbtEqRZsSsWL1mxW9+uU6e6Xu6DustmlTrbp2tWW44vc+EYBy0tORtxP5i
+         hIgg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w51si5263172edd.246.2019.07.22.08.54.15
+        by mx.google.com with ESMTPS id 37si29020496qvq.206.2019.07.23.01.04.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 22 Jul 2019 08:54:15 -0700 (PDT)
+        Tue, 23 Jul 2019 01:04:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:35314 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39958 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hpadi-0000W5-Fw
-	for alex.bennee@linaro.org; Mon, 22 Jul 2019 11:54:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55569)
+	id 1hppmm-0006a3-6L
+	for alex.bennee@linaro.org; Tue, 23 Jul 2019 04:04:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51727)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <tony.nguyen@bt.com>) id 1hpade-0000Vx-UC
- for qemu-arm@nongnu.org; Mon, 22 Jul 2019 11:54:12 -0400
+ (envelope-from <david@redhat.com>) id 1hppmi-0006Zk-2z
+ for qemu-arm@nongnu.org; Tue, 23 Jul 2019 04:04:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hpadc-0004LS-Sq
- for qemu-arm@nongnu.org; Mon, 22 Jul 2019 11:54:10 -0400
-Received: from smtpe1.intersmtp.com ([62.239.224.237]:21209)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hpadX-0004IC-6E; Mon, 22 Jul 2019 11:54:04 -0400
-Received: from tpw09926dag18g.domain1.systemhost.net (10.9.212.34) by
- RDW083A010ED66.bt.com (10.187.98.36) with Microsoft SMTP Server (TLS) id
- 14.3.439.0; Mon, 22 Jul 2019 16:53:08 +0100
-Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18g.domain1.systemhost.net (10.9.212.34) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Mon, 22 Jul 2019 16:54:00 +0100
-Received: from tpw09926dag18e.domain1.systemhost.net
- ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
- ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Mon, 22 Jul
- 2019 16:54:00 +0100
-From: <tony.nguyen@bt.com>
-To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v2 20/20] target/sparc: sun4u Invert Endian
- TTE bit
-Thread-Index: AQHVQKWtc7DbOsb7Y06HeJbM6CaVHA==
-Date: Mon, 22 Jul 2019 15:54:00 +0000
-Message-ID: <1563810840218.14603@bt.com>
+ (envelope-from <david@redhat.com>) id 1hppmh-0003YJ-2F
+ for qemu-arm@nongnu.org; Tue, 23 Jul 2019 04:04:32 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45155)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <david@redhat.com>)
+ id 1hppmg-0003Ws-RD; Tue, 23 Jul 2019 04:04:31 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 2F61D3083362;
+ Tue, 23 Jul 2019 08:04:28 +0000 (UTC)
+Received: from [10.36.117.53] (ovpn-117-53.ams2.redhat.com [10.36.117.53])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9443160605;
+ Tue, 23 Jul 2019 08:04:16 +0000 (UTC)
+To: tony.nguyen@bt.com, qemu-devel@nongnu.org
 References: <e9c6e5310b1a4863be45d45bf087fc3d@tpw09926dag18e.domain1.systemhost.net>
-In-Reply-To: <e9c6e5310b1a4863be45d45bf087fc3d@tpw09926dag18e.domain1.systemhost.net>
-Accept-Language: en-AU, en-GB, en-US
-Content-Language: en-AU
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.187.101.37]
-Content-Type: multipart/alternative; boundary="_000_156381084021814603btcom_"
+ <1563809888089.57547@bt.com>
+From: David Hildenbrand <david@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+ SE+xAvmumFBY
+Organization: Red Hat GmbH
+Message-ID: <79b11bbd-fa1c-1b6d-e49f-f61f2017fbbd@redhat.com>
+Date: Tue, 23 Jul 2019 10:04:15 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 62.239.224.237
-Subject: [Qemu-arm] [Qemu-devel] [PATCH v2 20/20] target/sparc: sun4u Invert
- Endian TTE bit
+In-Reply-To: <1563809888089.57547@bt.com>
+Content-Type: text/plain; charset=windows-1252
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.44]); Tue, 23 Jul 2019 08:04:28 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [qemu-s390x] [Qemu-devel] [PATCH v2 01/20] tcg:
+ Replace MO_8 with MO_UB alias
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -97,239 +140,72 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, walling@linux.ibm.com, mst@redhat.com,
  palmer@sifive.com, mark.cave-ayland@ilande.co.uk, Alistair.Francis@wdc.com,
- arikalo@wavecomp.com, david@redhat.com, pasic@linux.ibm.com,
- borntraeger@de.ibm.com, rth@twiddle.net, atar4qemu@gmail.com,
- ehabkost@redhat.com, sw@weilnetz.de, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, david@gibson.dropbear.id.au, qemu-riscv@nongnu.org,
- cohuck@redhat.com, claudio.fontana@huawei.com, alex.williamson@redhat.com,
- qemu-ppc@nongnu.org, amarkovic@wavecomp.com, pbonzini@redhat.com,
- aurelien@aurel32.net
+ arikalo@wavecomp.com, pasic@linux.ibm.com, borntraeger@de.ibm.com,
+ rth@twiddle.net, atar4qemu@gmail.com, ehabkost@redhat.com, sw@weilnetz.de,
+ alex.williamson@redhat.com, qemu-arm@nongnu.org, david@gibson.dropbear.id.au,
+ qemu-riscv@nongnu.org, cohuck@redhat.com, claudio.fontana@huawei.com,
+ qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, amarkovic@wavecomp.com,
+ pbonzini@redhat.com, aurelien@aurel32.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gz4W/pk+AXLf
+X-TUID: Whw6KyhpY6Z8
 
---_000_156381084021814603btcom_
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-This bit configures endianness of PCI MMIO devices. It is used by
-Solaris and OpenBSD sunhme drivers.
-
-Tested working on OpenBSD.
-
-Unfortunately Solaris 10 had a unrelated keyboard issue blocking
-testing... another inch towards Solaris 10 on SPARC64 =3D)
-
-Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
----
- target/sparc/cpu.h        | 2 ++
- target/sparc/mmu_helper.c | 8 +++++++-
- 2 files changed, 9 insertions(+), 1 deletion(-)
-
-diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-index 8ed2250..77e8e07 100644
---- a/target/sparc/cpu.h
-+++ b/target/sparc/cpu.h
-@@ -277,6 +277,7 @@ enum {
-
- #define TTE_VALID_BIT       (1ULL << 63)
- #define TTE_NFO_BIT         (1ULL << 60)
-+#define TTE_IE_BIT          (1ULL << 59)
- #define TTE_USED_BIT        (1ULL << 41)
- #define TTE_LOCKED_BIT      (1ULL <<  6)
- #define TTE_SIDEEFFECT_BIT  (1ULL <<  3)
-@@ -293,6 +294,7 @@ enum {
-
- #define TTE_IS_VALID(tte)   ((tte) & TTE_VALID_BIT)
- #define TTE_IS_NFO(tte)     ((tte) & TTE_NFO_BIT)
-+#define TTE_IS_IE(tte)      ((tte) & TTE_IE_BIT)
- #define TTE_IS_USED(tte)    ((tte) & TTE_USED_BIT)
- #define TTE_IS_LOCKED(tte)  ((tte) & TTE_LOCKED_BIT)
- #define TTE_IS_SIDEEFFECT(tte) ((tte) & TTE_SIDEEFFECT_BIT)
-diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c
-index 826e14b..77dc86a 100644
---- a/target/sparc/mmu_helper.c
-+++ b/target/sparc/mmu_helper.c
-@@ -537,6 +537,10 @@ static int get_physical_address_data(CPUSPARCState *en=
-v, hwaddr *physical,
-         if (ultrasparc_tag_match(&env->dtlb[i], address, context, physical=
-)) {
-             int do_fault =3D 0;
-
-+            if (TTE_IS_IE(env->dtlb[i].tte)) {
-+                attrs->byte_swap =3D true;
-+            }
-+
-             /* access ok? */
-             /* multiple bits in SFSR.FT may be set on TT_DFAULT */
-             if (TTE_IS_PRIV(env->dtlb[i].tte) && is_user) {
-@@ -792,7 +796,7 @@ void dump_mmu(CPUSPARCState *env)
-             }
-             if (TTE_IS_VALID(env->dtlb[i].tte)) {
-                 qemu_printf("[%02u] VA: %" PRIx64 ", PA: %llx"
--                            ", %s, %s, %s, %s, ctx %" PRId64 " %s\n",
-+                            ", %s, %s, %s, %s, ie %s, ctx %" PRId64 " %s\n=
-",
-                             i,
-                             env->dtlb[i].tag & (uint64_t)~0x1fffULL,
-                             TTE_PA(env->dtlb[i].tte),
-@@ -801,6 +805,8 @@ void dump_mmu(CPUSPARCState *env)
-                             TTE_IS_W_OK(env->dtlb[i].tte) ? "RW" : "RO",
-                             TTE_IS_LOCKED(env->dtlb[i].tte) ?
-                             "locked" : "unlocked",
-+                            TTE_IS_IE(env->dtlb[i].tte) ?
-+                            "yes" : "no",
-                             env->dtlb[i].tag & (uint64_t)0x1fffULL,
-                             TTE_IS_GLOBAL(env->dtlb[i].tte) ?
-                             "global" : "local");
+On 22.07.19 17:38, tony.nguyen@bt.com wrote:
+> Preparation for splitting MO_8 out from TCGMemOp into new accelerator
+> independent MemOp.
+>=20
+> As MO_8 will be a value of MemOp, existing TCGMemOp comparisons and
+> coercions will trigger -Wenum-compare and -Wenum-conversion.
+>=20
+> Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
+> ---
+> =A0target/arm/sve_helper.c =A0 =A0 =A0 =A0 =A0 =A0 | =A04 +-
+> =A0target/arm/translate-a64.c =A0 =A0 =A0 =A0 =A0| 14 +++----
+> =A0target/arm/translate-sve.c =A0 =A0 =A0 =A0 =A0| =A04 +-
+> =A0target/arm/translate.c =A0 =A0 =A0 =A0 =A0 =A0 =A0| 38 +++++++++----=
+------
+> =A0target/i386/translate.c =A0 =A0 =A0 =A0 =A0 =A0 | 72
+> +++++++++++++++++------------------
+> =A0target/mips/translate.c =A0 =A0 =A0 =A0 =A0 =A0 | =A04 +-
+> =A0target/ppc/translate/vmx-impl.inc.c | 28 +++++++-------
+> =A0target/s390x/translate.c =A0 =A0 =A0 =A0 =A0 =A0| =A02 +-
+> =A0target/s390x/translate_vx.inc.c =A0 =A0 | =A04 +-
+> =A0target/s390x/vec.h =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0| =A04 +-
+> =A0tcg/aarch64/tcg-target.inc.c =A0 =A0 =A0 =A0| 16 ++++----
+> =A0tcg/arm/tcg-target.inc.c =A0 =A0 =A0 =A0 =A0 =A0| =A06 +--
+> =A0tcg/i386/tcg-target.inc.c =A0 =A0 =A0 =A0 =A0 | 54 +++++++++++++----=
+---------
+> =A0tcg/mips/tcg-target.inc.c =A0 =A0 =A0 =A0 =A0 | =A04 +-
+> =A0tcg/riscv/tcg-target.inc.c =A0 =A0 =A0 =A0 =A0| =A04 +-
+> =A0tcg/sparc/tcg-target.inc.c =A0 =A0 =A0 =A0 =A0| =A02 +-
+> =A0tcg/tcg-op-gvec.c =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 | 76
+> ++++++++++++++++++-------------------
+> =A0tcg/tcg-op-vec.c =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0| 10 ++---
+> =A0tcg/tcg-op.c =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0| =A06 +=
 --
-1.8.3.1
+> =A0tcg/tcg.h =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 =A0 | =A02=
+ +-
+> =A020 files changed, 177 insertions(+), 177 deletions(-)
+>=20
+> diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
+> index fc0c175..4c7e11f 100644
+> --- a/target/arm/sve_helper.c
+> +++ b/target/arm/sve_helper.c
+> @@ -1531,7 +1531,7 @@ void HELPER(sve_cpy_m_b)(void *vd, void *vn, void=
+ *vg,
+> =A0 =A0 =A0uint64_t *d =3D vd, *n =3D vn;
+> =A0 =A0 =A0uint8_t *pg =3D vg;
+> =A0
+> - =A0 =A0mm =3D dup_const(MO_8, mm);
+> + =A0 =A0mm =3D dup_const(MO_UB, mm);
 
+Sorry, but I don't like this. I never liked the use of
+byte/word/long/quad for 8/16/32/64. It is a constant source of
+confusion. Yes, we have it in the code, but at least I'd rather want to
+see this getting less than more.
 
+--=20
 
+Thanks,
 
---_000_156381084021814603btcom_
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<style type=3D"text/css" style=3D"display:none"><!-- P { margin-top: 0px; m=
-argin-bottom: 0px; } .EmailQuote { margin-left: 1pt; padding-left: 4pt; bor=
-der-left-width: 2px; border-left-style: solid; border-left-color: rgb(128, =
-0, 0); }--></style>
-</head>
-<body dir=3D"ltr" style=3D"font-size:12pt;color:#000000;background-color:#F=
-FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
-<p></p>
-<div><span style=3D"font-size: 12pt;">This bit configures endianness of PCI=
- MMIO devices. It is used by</span><br>
-</div>
-<div>Solaris and OpenBSD sunhme drivers.</div>
-<div><br>
-</div>
-<div>Tested working on OpenBSD.</div>
-<div><br>
-</div>
-<div>Unfortunately Solaris 10 had a unrelated keyboard issue blocking</div>
-<div>testing... another inch towards Solaris 10 on SPARC64 =3D)</div>
-<div><br>
-</div>
-<div>Signed-off-by: Tony Nguyen &lt;tony.nguyen@bt.com&gt;</div>
-<div>---</div>
-<div>&nbsp;target/sparc/cpu.h &nbsp; &nbsp; &nbsp; &nbsp;| 2 &#43;&#43;</di=
-v>
-<div>&nbsp;target/sparc/mmu_helper.c | 8 &#43;&#43;&#43;&#43;&#43;&#43;&#43=
-;-</div>
-<div>&nbsp;2 files changed, 9 insertions(&#43;), 1 deletion(-)</div>
-<div><br>
-</div>
-<div>diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h</div>
-<div>index 8ed2250..77e8e07 100644</div>
-<div>--- a/target/sparc/cpu.h</div>
-<div>&#43;&#43;&#43; b/target/sparc/cpu.h</div>
-<div>@@ -277,6 &#43;277,7 @@ enum {</div>
-<div>&nbsp;</div>
-<div>&nbsp;#define TTE_VALID_BIT &nbsp; &nbsp; &nbsp; (1ULL &lt;&lt; 63)</d=
-iv>
-<div>&nbsp;#define TTE_NFO_BIT &nbsp; &nbsp; &nbsp; &nbsp; (1ULL &lt;&lt; 6=
-0)</div>
-<div>&#43;#define TTE_IE_BIT &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(1ULL &lt;&l=
-t; 59)</div>
-<div>&nbsp;#define TTE_USED_BIT &nbsp; &nbsp; &nbsp; &nbsp;(1ULL &lt;&lt; 4=
-1)</div>
-<div>&nbsp;#define TTE_LOCKED_BIT &nbsp; &nbsp; &nbsp;(1ULL &lt;&lt; &nbsp;=
-6)</div>
-<div>&nbsp;#define TTE_SIDEEFFECT_BIT &nbsp;(1ULL &lt;&lt; &nbsp;3)</div>
-<div>@@ -293,6 &#43;294,7 @@ enum {</div>
-<div>&nbsp;</div>
-<div>&nbsp;#define TTE_IS_VALID(tte) &nbsp; ((tte) &amp; TTE_VALID_BIT)</di=
-v>
-<div>&nbsp;#define TTE_IS_NFO(tte) &nbsp; &nbsp; ((tte) &amp; TTE_NFO_BIT)<=
-/div>
-<div>&#43;#define TTE_IS_IE(tte) &nbsp; &nbsp; &nbsp;((tte) &amp; TTE_IE_BI=
-T)</div>
-<div>&nbsp;#define TTE_IS_USED(tte) &nbsp; &nbsp;((tte) &amp; TTE_USED_BIT)=
-</div>
-<div>&nbsp;#define TTE_IS_LOCKED(tte) &nbsp;((tte) &amp; TTE_LOCKED_BIT)</d=
-iv>
-<div>&nbsp;#define TTE_IS_SIDEEFFECT(tte) ((tte) &amp; TTE_SIDEEFFECT_BIT)<=
-/div>
-<div>diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c</di=
-v>
-<div>index 826e14b..77dc86a 100644</div>
-<div>--- a/target/sparc/mmu_helper.c</div>
-<div>&#43;&#43;&#43; b/target/sparc/mmu_helper.c</div>
-<div>@@ -537,6 &#43;537,10 @@ static int get_physical_address_data(CPUSPARC=
-State *env, hwaddr *physical,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (ultrasparc_tag_match(&amp;env-&g=
-t;dtlb[i], address, context, physical)) {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;int do_fault =3D 0;</d=
-iv>
-<div>&nbsp;</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (TTE_IS_IE(env-&gt;d=
-tlb[i].tte)) {</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;attrs-&gt=
-;byte_swap =3D true;</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&#43;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* access ok? */</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* multiple bits in SF=
-SR.FT may be set on TT_DFAULT */</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (TTE_IS_PRIV(env-&g=
-t;dtlb[i].tte) &amp;&amp; is_user) {</div>
-<div>@@ -792,7 &#43;796,7 @@ void dump_mmu(CPUSPARCState *env)</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (TTE_IS_VALID(env-&=
-gt;dtlb[i].tte)) {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;qemu_pri=
-ntf(&quot;[%02u] VA: %&quot; PRIx64 &quot;, PA: %llx&quot;</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp; &nbsp;&quot;, %s, %s, %s, %s, ctx %&quot; PRId64 &qu=
-ot; %s\n&quot;,</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;, %s, %s, %s, %s, ie %s, ctx %&quot;=
- PRId64 &quot; %s\n&quot;,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;i,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;env-&gt;dtlb[i].tag &amp; (uint64_t)~0x1f=
-ffULL,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TTE_PA(env-&gt;dtlb[i].tte),</div>
-<div>@@ -801,6 &#43;805,8 @@ void dump_mmu(CPUSPARCState *env)</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TTE_IS_W_OK(env-&gt;dtlb[i].tte) ? &quot;=
-RW&quot; : &quot;RO&quot;,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TTE_IS_LOCKED(env-&gt;dtlb[i].tte) ?</div=
->
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;locked&quot; : &quot;unlocked&quot;=
-,</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TTE_IS_IE(env-&gt;dtlb[i].tte) ?</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;yes&quot; : &quot;no&quot;,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;env-&gt;dtlb[i].tag &amp; (uint64_t)0x1ff=
-fULL,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TTE_IS_GLOBAL(env-&gt;dtlb[i].tte) ?</div=
->
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;global&quot; : &quot;local&quot;);<=
-/div>
-<div>--&nbsp;</div>
-<div>1.8.3.1</div>
-<div><br>
-<br>
-</div>
-<p><br>
-</p>
-</body>
-</html>
-
---_000_156381084021814603btcom_--
+David / dhildenb

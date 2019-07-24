@@ -1,159 +1,215 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp9403297wrv;
-        Wed, 24 Jul 2019 07:18:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzz/rPZJwkjxndpayitpMaYVTZbP6445EtBafm0MrjtinY1RYzcy/mMz2L9xWnQNNefEgGd
-X-Received: by 2002:a50:ba28:: with SMTP id g37mr71555701edc.109.1563977936122;
-        Wed, 24 Jul 2019 07:18:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563977936; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp9404238wrv;
+        Wed, 24 Jul 2019 07:19:49 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzvUA8D+ZZc/EBN5H+teTmlNlQwpnG5GysNmTXqsu3QEjRSpGTs/RVV/tRhgX86NQuPSIxH
+X-Received: by 2002:ac8:323a:: with SMTP id x55mr56556461qta.211.1563977989684;
+        Wed, 24 Jul 2019 07:19:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563977989; cv=none;
         d=google.com; s=arc-20160816;
-        b=sJsa/QCzs6mrCpCbNeIHYw5eX4te6FOhdYHZORvNnptDABkYpmEbW2Adxb6xonlCLM
-         PFIrVQFoD0RGrSR3DmkcB0yMVjjCs9OOIDU3dKIji6bdKegO1lIS1bhEKHHLWqBxdkqz
-         L0VPeJCD5CX4ybKEPRcUxvF4zwN8Ocp6/sEzUnhTdFCW8MUgGffAXqtNxE5Fq6Zxxbez
-         5U/CySGgXJGfRQgfXjeUAkCFah8LajNAkDD+c04J7GOkRZUjW77DLW9F7ddGiXyWvqS6
-         02RJ9/UQdkZGvxAb2G2e9Pc+uL92Vn6gYd4sPkLytP3y1w6okyHWfIqf0Knz8liWbPpQ
-         pDcg==
+        b=rm2a1qgftsILWSyACA2aIT33jKWbJnrP1JFYmQ7enZ9e2j9zevZ8hesXBw3Vu/wDZ1
+         Quw8yUO1kn4nILgjc0UZnlbrwq3/eNb3RfaIqaAaBsDNuQc5OcAqP9gmEn1JMR5AgYTl
+         pO4vCtMNiIyafGAVkh7mHQ0eiaP5psuu+uVQ0JRfumb2EoefY5dWGXcFSJfQSsOPuJF0
+         m1DiGTXXUTQRjoYh0Nkbrm6Huw8IpFemL7yMqEROXYHPIzwdiGsGiSX9UMYJMsqocuxR
+         QfPX/EfSl2UlITFW0EQirhm3d+EKdcFeb9xD0EuFGasJaHaGjF2twae0krY5RZFBDE9D
+         KQmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:to:from:date;
-        bh=g9rsBNFWUKAhxvQtbUiHWg/bXSMJOzMvlYYUZlD48T8=;
-        b=BLSTMGRYUeCc6pNwQXpWHr6B3Ru+KymqVpBVsU8nkDDfebLHKnmLq5P64GZnIjCDFa
-         DQBIZs0fglTcMOG3GphiMxdxD10QiyqwRSFZstlRjbw2CmeKZFrJQ9Xc+C6TjaGv4EXZ
-         OTjfZ+QHpDkOzFhsltNbMibZXxfLwivopT0T9h+VObdKqGLY1znzjNVHZq0l+s4JcWlf
-         UaF1W2aCZTf5FzdqPRHf91NievWyRZ7JE2AOWHIxOaABIHj/IaSzg8zB2Sn0IaKeeYje
-         8mH+WzM95cqV3FK1YaryjOBzUpKMQE/scHCkUuXl4c9RCIR1JHriW9c4R2Bi1lOTb5zw
-         ujPg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=aV8tJ9x8Uq00+xf0r1fu5Hd4ckIn9YB+2TcEhwYVKnw=;
+        b=yeQ/qPViCR9bsDZqvvmLqq9yYpgdNGJEdLSjr6uIkkS7TbX78z0WpVRdi603FL+TDE
+         cK43tKmTDuf37mefTctRKvoZfg/nM3BmedMjG2VtZoJYT0Xd0Jfdgf+MwW9EgdiZazRP
+         UM087ZXES3S3ytL/g1DKyVMNpwSgSSlYKjVVCBTym9d6EB6VFwDKSJInlKwI6XzLr3aY
+         CJbzUiXAthsDGH/GBrNylsVvdnUrEPpLzbDZlWNHxMMpyKV7UY7rxco3aNxwHxpbBmvf
+         XTQIthXjBTyw+EQLqH38JKGdWY0r9nJcekDAZKdu1OEr2Ok/A6aqQdTWS4DknLXpzccq
+         w2LQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v28si8354664edc.45.2019.07.24.07.18.55
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 24 Jul 2019 07:18:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id w64si28197478qkb.254.2019.07.24.07.19.49
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 24 Jul 2019 07:19:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:52043 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hqI6Z-000355-7A
-	for alex.bennee@linaro.org; Wed, 24 Jul 2019 10:18:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55075)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <pasic@linux.ibm.com>) id 1hqI6L-0002gG-1e
- for qemu-devel@nongnu.org; Wed, 24 Jul 2019 10:18:41 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pasic@linux.ibm.com>) id 1hqI6K-0005uh-2m
- for qemu-devel@nongnu.org; Wed, 24 Jul 2019 10:18:40 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:21042
- helo=mx0a-001b2d01.pphosted.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pasic@linux.ibm.com>) id 1hqI6J-0005rM-V9
- for qemu-devel@nongnu.org; Wed, 24 Jul 2019 10:18:40 -0400
-Received: from pps.filterd (m0098414.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x6OEIIqO131608
- for <qemu-devel@nongnu.org>; Wed, 24 Jul 2019 10:18:33 -0400
-Received: from e06smtp04.uk.ibm.com (e06smtp04.uk.ibm.com [195.75.94.100])
- by mx0b-001b2d01.pphosted.com with ESMTP id 2txqnqvdfj-1
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
- for <qemu-devel@nongnu.org>; Wed, 24 Jul 2019 10:18:32 -0400
-Received: from localhost
- by e06smtp04.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
- Violators will be prosecuted
- for <qemu-devel@nongnu.org> from <pasic@linux.ibm.com>;
- Wed, 24 Jul 2019 15:18:30 +0100
-Received: from b06avi18878370.portsmouth.uk.ibm.com (9.149.26.194)
- by e06smtp04.uk.ibm.com (192.168.101.134) with IBM ESMTP SMTP Gateway:
- Authorized Use Only! Violators will be prosecuted; 
- (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
- Wed, 24 Jul 2019 15:18:27 +0100
-Received: from d06av21.portsmouth.uk.ibm.com (d06av21.portsmouth.uk.ibm.com
- [9.149.105.232])
- by b06avi18878370.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id x6OEIQaM37683566
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 24 Jul 2019 14:18:26 GMT
-Received: from d06av21.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 0F3E45204F;
- Wed, 24 Jul 2019 14:18:26 +0000 (GMT)
-Received: from oc2783563651 (unknown [9.152.224.141])
- by d06av21.portsmouth.uk.ibm.com (Postfix) with ESMTP id 9F9F15204E;
- Wed, 24 Jul 2019 14:18:25 +0000 (GMT)
-Date: Wed, 24 Jul 2019 16:18:24 +0200
-From: Halil Pasic <pasic@linux.ibm.com>
-To: Cornelia Huck <cohuck@redhat.com>
-In-Reply-To: <20190724103524.20916-1-cohuck@redhat.com>
-References: <20190724103524.20916-1-cohuck@redhat.com>
-Organization: IBM
-X-Mailer: Claws Mail 3.11.1 (GTK+ 2.24.31; x86_64-redhat-linux-gnu)
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id CEC1C307D844;
+	Wed, 24 Jul 2019 14:19:48 +0000 (UTC)
+Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 859F760619;
+	Wed, 24 Jul 2019 14:19:46 +0000 (UTC)
+Subject: Re: [Qemu-devel] [PATCH v2 01/14] target/arm/cpu64: Ensure kvm really
+ supports aarch64=off
+To: Andrew Jones <drjones@redhat.com>
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, armbru@redhat.com, qemu-arm@nongnu.org,
+ imammedo@redhat.com, alex.bennee@linaro.org, Dave.Martin@arm.com
+References: <20190621163422.6127-1-drjones@redhat.com>
+ <20190621163422.6127-2-drjones@redhat.com>
+ <1ed69063-eaae-2c02-1fe1-2650492496d4@redhat.com>
+ <20190625133452.3f4ik4xn7vh5zi2b@kamzik.brq.redhat.com>
+ <8dea18ae-39ed-6f7d-0e91-61abd22eb74e@redhat.com>
+ <20190724135237.z5ufzxutnkpvt6vg@kamzik.brq.redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <facf08ac-ac96-a4de-7b06-c78633dacd09@redhat.com>
+Date: Wed, 24 Jul 2019 16:19:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-x-cbid: 19072414-0016-0000-0000-00000295B973
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 19072414-0017-0000-0000-000032F3AEB5
-Message-Id: <20190724161824.05f891a5.pasic@linux.ibm.com>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-07-24_05:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1906280000 definitions=main-1907240160
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 148.163.158.5
-Subject: Re: [Qemu-devel] [PATCH for-4.2] hw: add compat machines for 4.2
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>,
- David Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org,
- Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UFxxw0s/Bd1m
+In-Reply-To: <20190724135237.z5ufzxutnkpvt6vg@kamzik.brq.redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.48]); Wed, 24 Jul 2019 14:19:48 +0000 (UTC)
+X-TUID: 2qilMcOdmyDu
 
-On Wed, 24 Jul 2019 12:35:24 +0200
-Cornelia Huck <cohuck@redhat.com> wrote:
+Hi Drew,
 
-> Add 4.2 machine types for arm/i440fx/q35/s390x/spapr.
+On 7/24/19 3:52 PM, Andrew Jones wrote:
+> On Wed, Jul 24, 2019 at 02:51:15PM +0200, Auger Eric wrote:
+>> Hi Drew,
+>>
+>> On 6/25/19 3:34 PM, Andrew Jones wrote:
+>>> On Tue, Jun 25, 2019 at 11:35:12AM +0200, Auger Eric wrote:
+>>>> Hi Drew,
+>>>>
+>>>> On 6/21/19 6:34 PM, Andrew Jones wrote:
+>>>>> If -cpu <cpu>,aarch64=off is used then KVM must also be used, and it
+>>>>> and the host must support running the vcpu in 32-bit mode. Also, if
+>> s/and it//
 > 
-> For i440fx and q35, unversioned cpu models are still translated
-> to -v1, as 0788a56bd1ae ("i386: Make unversioned CPU models be
-> aliases") states this should only transition to the latest cpu
-> model version in 4.3 (or later).
+> "and it and the host" means "and KVM and the host", as 'it' refers to the
+> last subject, which is KVM. I wanted to point out both the host (machine)
+> and KVM (version of kernel with KVM) need to support the feature.
+hum ok
 > 
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> ---
->  hw/arm/virt.c              |  9 ++++++++-
->  hw/core/machine.c          |  3 +++
->  hw/i386/pc.c               |  3 +++
->  hw/i386/pc_piix.c          | 14 +++++++++++++-
->  hw/i386/pc_q35.c           | 13 ++++++++++++-
->  hw/ppc/spapr.c             | 15 +++++++++++++--
->  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
->  include/hw/boards.h        |  3 +++
->  include/hw/i386/pc.h       |  3 +++
->  9 files changed, 71 insertions(+), 6 deletions(-)
+>>>>> -cpu <cpu>,aarch64=on is used, then it doesn't matter if kvm is
+>>>>> enabled or not.
+>>>>>
+>>>>> Signed-off-by: Andrew Jones <drjones@redhat.com>
+>>>>
+>>>>
+>>>>> ---
+>>>>>  target/arm/cpu64.c   | 12 ++++++------
+>>>>>  target/arm/kvm64.c   | 11 +++++++++++
+>>>>>  target/arm/kvm_arm.h | 14 ++++++++++++++
+>>>>>  3 files changed, 31 insertions(+), 6 deletions(-)
+>>>>>
+>>>>> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+>>>>> index 1901997a0645..946994838d8a 100644
+>>>>> --- a/target/arm/cpu64.c
+>>>>> +++ b/target/arm/cpu64.c
+>>>>> @@ -407,13 +407,13 @@ static void aarch64_cpu_set_aarch64(Object *obj, bool value, Error **errp)
+>>>>>       * restriction allows us to avoid fixing up functionality that assumes a
+>>>>>       * uniform execution state like do_interrupt.
+>>>>>       */> -    if (!kvm_enabled()) {
+>>>>> -        error_setg(errp, "'aarch64' feature cannot be disabled "
+>>>>> -                         "unless KVM is enabled");
+>>>>> -        return;
+>>>>> -    }
+>>>>> -
+>>>>>      if (value == false) {
+>>>>> +        if (!kvm_enabled() || !kvm_arm_aarch32_supported(CPU(cpu))) {
+>>>>> +            error_setg(errp, "'aarch64' feature cannot be disabled "
+>>>>> +                             "unless KVM is enabled and 32-bit EL1 "
+>>>>> +                             "is supported");
+>>>>> +            return;
+>>>>> +        }
+>>>>>          unset_feature(&cpu->env, ARM_FEATURE_AARCH64);
+>>>>>      } else {
+>>>>>          set_feature(&cpu->env, ARM_FEATURE_AARCH64);
+>>>>> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+>>>>> index 22d19c9aec6f..45ccda589903 100644
+>>>>> --- a/target/arm/kvm64.c
+>>>>> +++ b/target/arm/kvm64.c
+>>>>> @@ -24,7 +24,9 @@
+>>>>>  #include "exec/gdbstub.h"
+>>>>>  #include "sysemu/sysemu.h"
+>>>>>  #include "sysemu/kvm.h"
+>>>>> +#include "sysemu/kvm_int.h"
+>>>>>  #include "kvm_arm.h"
+>>>>> +#include "hw/boards.h"
+>> By the way those two new headers are not needed by this patch
+> 
+> Really?
+> 
+> current_machine is defined in hw/boards.h and KVM_STATE is defined
+> in sysemu/kvm_int.h.
+argh my bad.
 
-The for s390 change:
-Reviewed-by: Halil Pasic <pasic@linux.ibm.com>
+Sorry for the noise
 
+Eric
+> 
+>>>>>  #include "internals.h"
+>>>>>  
+>>>>>  static bool have_guest_debug;
+>>>>> @@ -593,6 +595,15 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>>>>>      return true;
+>>>>>  }
+>>>>>  
+>>>>> +bool kvm_arm_aarch32_supported(CPUState *cpu)
+>>>>> +{
+>>>>> +    KVMState *s = KVM_STATE(current_machine->accelerator);
+>>>>> +    int ret;
+>>>>> +
+>>>>> +    ret = kvm_check_extension(s, KVM_CAP_ARM_EL1_32BIT);
+>>>>> +    return ret > 0;
+>>>> nit: return kvm_check_extension() should be sufficient
+>>>
+>>> Ah yes, I forgot kvm_check_extension() already converts negative
+>>> error codes to zero. I'll fix that for v3.
+>>>
+>>>>> +}
+>>>>> +
+>>>>>  #define ARM_CPU_ID_MPIDR       3, 0, 0, 0, 5
+>>>>>  
+>>>>>  int kvm_arch_init_vcpu(CPUState *cs)
+>>>>> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+>>>>> index 2a07333c615f..812125f805a1 100644
+>>>>> --- a/target/arm/kvm_arm.h
+>>>>> +++ b/target/arm/kvm_arm.h
+>>>>> @@ -207,6 +207,15 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf);
+>>>>>   */
+>>>>>  void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
+>>>>>  
+>>>>> +/**
+>>>>> + * kvm_arm_aarch32_supported:
+>>>>> + * @cs: CPUState
+>>>> use kernel-doc comment style?
+>>>
+>>> This file (kvm_arm.h) doesn't appear to have a super consistent comment
+>>> style. I see some use @var: for the parameters and some have 'Returns:
+>>> ...' lines as well. I'm happy to do whatever the maintainers prefer. For
+>>> now I was just trying to mimic whatever caught my eye.>
+>>>>> + *
+>>>>> + * Returns true if the KVM VCPU can enable AArch32 mode and false
+>>>>> + * otherwise.
+>>>>> + */
+>>>>> +bool kvm_arm_aarch32_supported(CPUState *cs);
+>>>>> +
+>>>>>  /**
+>>>>>   * kvm_arm_get_max_vm_ipa_size - Returns the number of bits in the
+>>>>>   * IPA address space supported by KVM
+>>>>> @@ -247,6 +256,11 @@ static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+>>>>>      cpu->host_cpu_probe_failed = true;
+>>>>>  }
+>>>>>  
+>>>>> +static inline bool kvm_arm_aarch32_supported(CPUState *cs)
+>>>>> +{
+>>>>> +    return false;
+>>>>> +}
+>>>>> +
+>>>>>  static inline int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
+>>>>>  {
+>>>>>      return -ENOENT;
+>>>>>
+>>>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> 
+> Thanks,
+> drew
+> 

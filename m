@@ -1,202 +1,390 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp9372801wrv;
-        Wed, 24 Jul 2019 06:52:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwtHiFaJz1gYsNVjKzofiiSriqKJLfbchSky/SRL/BAK15MrDOy2CTlj7yHS0OYlF7/RN1E
-X-Received: by 2002:a37:9c0c:: with SMTP id f12mr53919879qke.442.1563976365624;
-        Wed, 24 Jul 2019 06:52:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563976365; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp9387360wrv;
+        Wed, 24 Jul 2019 07:05:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyEp0hI59JusnHAs10VfC6h3KjSW57hqVGyKB0vzItvxdzKswfdDGz6PLrfymhYByUsF3JZ
+X-Received: by 2002:a37:a58f:: with SMTP id o137mr55363563qke.84.1563977117796;
+        Wed, 24 Jul 2019 07:05:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563977117; cv=none;
         d=google.com; s=arc-20160816;
-        b=NU7iZ6CqGcWjpXGFt/bxwpzcGG4Wp+OGod7D4YG76FFY6jsJvyXEo85I3JHr5tcEwN
-         oNLUaQpvtJi5sFNYWWQAp0kf0FtJ9JjeimufBqZQYjZblcm4ZcrNUq6z1Xyv/jlwXKwI
-         KfZfqhq37mzJN4GIByimXf2HdqY3SjmQ9jY5xul/GjPtYTZio6fYkC7gnLa1cdNH7iHg
-         6Kp3FAvtzO8wxIStBb5ZvDC2XRaAianOwPh7/GNhsVJpZ4uwbvcb7M0C41LgtYsHmuJo
-         u6ipcOtMag+LJmMrLikUnzmOSJGZ+NbRzYwk5b+Y2wD4k6xGv+RYDvZwLfKQeonC4zTG
-         e+JA==
+        b=WXwnxlCeNGbH2gWAi81ZznkyjKDm5H2p7lgtIg6YcxbKrwgyC+USsLrS8bLcY7nf2F
+         pca6FIyKc2xg/zrYP2wVEoEeXWXI+j2azz41Qb8IZLLthVGfgQj01rVk1VH4RcfDg6oC
+         DRbOmsWACJd6fFosBxXKa+dS023a4EzNO/1bDpSdD6gVSl/1UGhVJXDUXg6grx5nNm7V
+         YZXAIGov2nzTvvPV7PQxD99Lpygt8qahAcUEh/A1poD+ypUGucFjW9niD+sWOhcAg+br
+         sueatbdgl8Sr6F3T9AhDzWTRe6mkByiKKmp3C6Z4kH14n0X/OO9cl9P2wMbzVSwIcDnX
+         7ywA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=J1YAiXnrg5ZeMnMsgf6YJOfeQvs3P9J20zExjFXi27g=;
-        b=vQ3QFvdGIfnYTx6SzxiDnSZw9P5tvNFQYwoiPDH5T6VKcG+96zepkaAomTbJz50aaq
-         WEgK1sT9Lg9bgBOE33aF2zFgM1xfAkyYk9kXcResj2vrjt7S4b4xO7XL+Dlv8SR50HvA
-         tt5IFI4J/ZX1/FJZnsG8Op8FUxVRdqrtx/RAlXxeksg87nOL0v5z4OD6E2TkGEucBn/8
-         bV/ZUp903w+403Ar7Zpn2gbsPtNITMpNJdF/pM9UkDiTkudZ+qXSY46ckGTHunxXQxbp
-         QP3ZLo+BoCfIiRwqu2n8jVqcSfsk0eO16F+2peG13KhwMZT0o5dMRXrxkvVDGGCqyIsI
-         1LCw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=orbX9/Zr4yxgygFyxeXGCjHusivWIAb/vUtB9a1p7v4=;
+        b=ymMkbdKDL00T5v2u6Y1cJkAyWzWeetVhVYhuWPBr16RY5h60RW67biieglf+5Bbbv/
+         50voCgkjZZN+vQ1wX35k4zpr1wDImWfypdxMNBevyMUq+MiKY8TUp6MPAYBQvwMYVgyv
+         OgL8VVSa02AIFzSvXzMOpdfkOczUiGYCVNq2BL83PGA+yV7lKiFq3K5xvpeE01+ujvIX
+         CLF8Iiz/FLBWeYEHv8M+s1YtzDFgg2ZYeC1xvbveRpx0AlqJLqR3oiiaheRE0Pr+KBG4
+         6VDTOWHjFQe1byu62blvsFSKZUXZWcEzqTc5IYgCAA7GE6yNTFx+WTE9d6DMOZhkojYK
+         hXNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id d35si29422306qte.177.2019.07.24.06.52.45
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 24 Jul 2019 06:52:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g21si29511488qtk.144.2019.07.24.07.05.17
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 24 Jul 2019 07:05:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B66C44E93D;
-	Wed, 24 Jul 2019 13:52:44 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id EFAE35D71C;
-	Wed, 24 Jul 2019 13:52:39 +0000 (UTC)
-Date: Wed, 24 Jul 2019 15:52:37 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
-	qemu-devel@nongnu.org, armbru@redhat.com, qemu-arm@nongnu.org,
-	imammedo@redhat.com, alex.bennee@linaro.org, Dave.Martin@arm.com
-Subject: Re: [Qemu-devel] [PATCH v2 01/14] target/arm/cpu64: Ensure kvm
- really supports aarch64=off
-Message-ID: <20190724135237.z5ufzxutnkpvt6vg@kamzik.brq.redhat.com>
-References: <20190621163422.6127-1-drjones@redhat.com>
- <20190621163422.6127-2-drjones@redhat.com>
- <1ed69063-eaae-2c02-1fe1-2650492496d4@redhat.com>
- <20190625133452.3f4ik4xn7vh5zi2b@kamzik.brq.redhat.com>
- <8dea18ae-39ed-6f7d-0e91-61abd22eb74e@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51940 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hqHtN-0000FT-BF
+	for alex.bennee@linaro.org; Wed, 24 Jul 2019 10:05:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51367)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <david@redhat.com>) id 1hqHtK-0000FM-ES
+ for qemu-arm@nongnu.org; Wed, 24 Jul 2019 10:05:15 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <david@redhat.com>) id 1hqHtI-0005ch-Rn
+ for qemu-arm@nongnu.org; Wed, 24 Jul 2019 10:05:14 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42126)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <david@redhat.com>)
+ id 1hqHtI-0005Wo-G4; Wed, 24 Jul 2019 10:05:12 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 331D8B2DEC;
+ Wed, 24 Jul 2019 14:05:09 +0000 (UTC)
+Received: from [10.36.117.47] (ovpn-117-47.ams2.redhat.com [10.36.117.47])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 82D0060A9F;
+ Wed, 24 Jul 2019 14:04:44 +0000 (UTC)
+To: Cornelia Huck <cohuck@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <rth@twiddle.net>,
+ David Gibson <david@gibson.dropbear.id.au>, Halil Pasic
+ <pasic@linux.ibm.com>, Christian Borntraeger <borntraeger@de.ibm.com>
+References: <20190724103524.20916-1-cohuck@redhat.com>
+From: David Hildenbrand <david@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+ SE+xAvmumFBY
+Organization: Red Hat GmbH
+Message-ID: <baada96b-0dbc-b643-1bc0-53bae01e03cd@redhat.com>
+Date: Wed, 24 Jul 2019 16:04:43 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <8dea18ae-39ed-6f7d-0e91-61abd22eb74e@redhat.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.38]); Wed, 24 Jul 2019 13:52:44 +0000 (UTC)
-X-TUID: uaeaHj1Wqz+Q
+In-Reply-To: <20190724103524.20916-1-cohuck@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.26]); Wed, 24 Jul 2019 14:05:09 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH for-4.2] hw: add compat machines for 4.2
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tEAKZgcwxZ3m
 
-On Wed, Jul 24, 2019 at 02:51:15PM +0200, Auger Eric wrote:
-> Hi Drew,
+On 24.07.19 12:35, Cornelia Huck wrote:
+> Add 4.2 machine types for arm/i440fx/q35/s390x/spapr.
 > 
-> On 6/25/19 3:34 PM, Andrew Jones wrote:
-> > On Tue, Jun 25, 2019 at 11:35:12AM +0200, Auger Eric wrote:
-> >> Hi Drew,
-> >>
-> >> On 6/21/19 6:34 PM, Andrew Jones wrote:
-> >>> If -cpu <cpu>,aarch64=off is used then KVM must also be used, and it
-> >>> and the host must support running the vcpu in 32-bit mode. Also, if
-> s/and it//
+> For i440fx and q35, unversioned cpu models are still translated
+> to -v1, as 0788a56bd1ae ("i386: Make unversioned CPU models be
+> aliases") states this should only transition to the latest cpu
+> model version in 4.3 (or later).
+> 
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> ---
+>  hw/arm/virt.c              |  9 ++++++++-
+>  hw/core/machine.c          |  3 +++
+>  hw/i386/pc.c               |  3 +++
+>  hw/i386/pc_piix.c          | 14 +++++++++++++-
+>  hw/i386/pc_q35.c           | 13 ++++++++++++-
+>  hw/ppc/spapr.c             | 15 +++++++++++++--
+>  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+>  include/hw/boards.h        |  3 +++
+>  include/hw/i386/pc.h       |  3 +++
+>  9 files changed, 71 insertions(+), 6 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index d9496c936342..64e3fc34401a 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -2046,10 +2046,17 @@ static void machvirt_machine_init(void)
+>  }
+>  type_init(machvirt_machine_init);
+>  
+> +static void virt_machine_4_2_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_VIRT_MACHINE_AS_LATEST(4, 2)
+> +
+>  static void virt_machine_4_1_options(MachineClass *mc)
+>  {
+> +    virt_machine_4_2_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_4_1, hw_compat_4_1_len);
+>  }
+> -DEFINE_VIRT_MACHINE_AS_LATEST(4, 1)
+> +DEFINE_VIRT_MACHINE(4, 1)
+>  
+>  static void virt_machine_4_0_options(MachineClass *mc)
+>  {
+> diff --git a/hw/core/machine.c b/hw/core/machine.c
+> index c58a8e594efc..a79d4ad740a0 100644
+> --- a/hw/core/machine.c
+> +++ b/hw/core/machine.c
+> @@ -27,6 +27,9 @@
+>  #include "hw/pci/pci.h"
+>  #include "hw/mem/nvdimm.h"
+>  
+> +GlobalProperty hw_compat_4_1[] = {};
+> +const size_t hw_compat_4_1_len = G_N_ELEMENTS(hw_compat_4_1);
+> +
+>  GlobalProperty hw_compat_4_0[] = {
+>      { "VGA",            "edid", "false" },
+>      { "secondary-vga",  "edid", "false" },
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 549c43705096..2aa1c49701dd 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -116,6 +116,9 @@ struct hpet_fw_config hpet_cfg = {.count = UINT8_MAX};
+>  /* Physical Address of PVH entry point read from kernel ELF NOTE */
+>  static size_t pvh_start_addr;
+>  
+> +GlobalProperty pc_compat_4_1[] = {};
+> +const size_t pc_compat_4_1_len = G_N_ELEMENTS(pc_compat_4_1);
+> +
+>  GlobalProperty pc_compat_4_0[] = {};
+>  const size_t pc_compat_4_0_len = G_N_ELEMENTS(pc_compat_4_0);
+>  
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index c2280c72effb..24e71be1d218 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -433,7 +433,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+>      machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
+>  }
+>  
+> -static void pc_i440fx_4_1_machine_options(MachineClass *m)
+> +static void pc_i440fx_4_2_machine_options(MachineClass *m)
+>  {
+>      PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+>      pc_i440fx_machine_options(m);
+> @@ -442,6 +442,18 @@ static void pc_i440fx_4_1_machine_options(MachineClass *m)
+>      pcmc->default_cpu_version = 1;
+>  }
+>  
+> +DEFINE_I440FX_MACHINE(v4_2, "pc-i440fx-4.2", NULL,
+> +                      pc_i440fx_4_2_machine_options);
+> +
+> +static void pc_i440fx_4_1_machine_options(MachineClass *m)
+> +{
+> +    pc_i440fx_4_2_machine_options(m);
+> +    m->alias = NULL;
+> +    m->is_default = 0;
+> +    compat_props_add(m->compat_props, hw_compat_4_1, hw_compat_4_1_len);
+> +    compat_props_add(m->compat_props, pc_compat_4_1, pc_compat_4_1_len);
+> +}
+> +
+>  DEFINE_I440FX_MACHINE(v4_1, "pc-i440fx-4.1", NULL,
+>                        pc_i440fx_4_1_machine_options);
+>  
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index 397e1fdd2f37..e61260762cdc 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -365,7 +365,7 @@ static void pc_q35_machine_options(MachineClass *m)
+>      m->max_cpus = 288;
+>  }
+>  
+> -static void pc_q35_4_1_machine_options(MachineClass *m)
+> +static void pc_q35_4_2_machine_options(MachineClass *m)
+>  {
+>      PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+>      pc_q35_machine_options(m);
+> @@ -373,6 +373,17 @@ static void pc_q35_4_1_machine_options(MachineClass *m)
+>      pcmc->default_cpu_version = 1;
+>  }
+>  
+> +DEFINE_Q35_MACHINE(v4_2, "pc-q35-4.2", NULL,
+> +                   pc_q35_4_2_machine_options);
+> +
+> +static void pc_q35_4_1_machine_options(MachineClass *m)
+> +{
+> +    pc_q35_4_2_machine_options(m);
+> +    m->alias = NULL;
+> +    compat_props_add(m->compat_props, hw_compat_4_1, hw_compat_4_1_len);
+> +    compat_props_add(m->compat_props, pc_compat_4_1, pc_compat_4_1_len);
+> +}
+> +
+>  DEFINE_Q35_MACHINE(v4_1, "pc-q35-4.1", NULL,
+>                     pc_q35_4_1_machine_options);
+>  
+> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> index 821f0d4a49ff..6c8aa6054508 100644
+> --- a/hw/ppc/spapr.c
+> +++ b/hw/ppc/spapr.c
+> @@ -4426,15 +4426,26 @@ static const TypeInfo spapr_machine_info = {
+>      }                                                                \
+>      type_init(spapr_machine_register_##suffix)
+>  
+> +/*
+> + * pseries-4.2
+> + */
+> +static void spapr_machine_4_2_class_options(MachineClass *mc)
+> +{
+> +    /* Defaults for the latest behaviour inherited from the base class */
+> +}
+> +
+> +DEFINE_SPAPR_MACHINE(4_2, "4.2", true);
+> +
+>  /*
+>   * pseries-4.1
+>   */
+>  static void spapr_machine_4_1_class_options(MachineClass *mc)
+>  {
+> -    /* Defaults for the latest behaviour inherited from the base class */
+> +    spapr_machine_4_2_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_4_1, hw_compat_4_1_len);
+>  }
+>  
+> -DEFINE_SPAPR_MACHINE(4_1, "4.1", true);
+> +DEFINE_SPAPR_MACHINE(4_1, "4.1", false);
+>  
+>  /*
+>   * pseries-4.0
+> diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> index 5b6a9a4e5574..593b34e0e201 100644
+> --- a/hw/s390x/s390-virtio-ccw.c
+> +++ b/hw/s390x/s390-virtio-ccw.c
+> @@ -660,14 +660,26 @@ bool css_migration_enabled(void)
+>      }                                                                         \
+>      type_init(ccw_machine_register_##suffix)
+>  
+> +static void ccw_machine_4_2_instance_options(MachineState *machine)
+> +{
+> +}
+> +
+> +static void ccw_machine_4_2_class_options(MachineClass *mc)
+> +{
+> +}
+> +DEFINE_CCW_MACHINE(4_2, "4.2", true);
+> +
+>  static void ccw_machine_4_1_instance_options(MachineState *machine)
+>  {
+> +    ccw_machine_4_2_instance_options(machine);
+>  }
+>  
+>  static void ccw_machine_4_1_class_options(MachineClass *mc)
+>  {
+> +    ccw_machine_4_2_class_options(mc);
+> +    compat_props_add(mc->compat_props, hw_compat_4_1, hw_compat_4_1_len);
+>  }
+> -DEFINE_CCW_MACHINE(4_1, "4.1", true);
+> +DEFINE_CCW_MACHINE(4_1, "4.1", false);
+>  
+>  static void ccw_machine_4_0_instance_options(MachineState *machine)
+>  {
+> diff --git a/include/hw/boards.h b/include/hw/boards.h
+> index a71d1a53a5c0..d9ec37d80743 100644
+> --- a/include/hw/boards.h
+> +++ b/include/hw/boards.h
+> @@ -317,6 +317,9 @@ struct MachineState {
+>      } \
+>      type_init(machine_initfn##_register_types)
+>  
+> +extern GlobalProperty hw_compat_4_1[];
+> +extern const size_t hw_compat_4_1_len;
+> +
+>  extern GlobalProperty hw_compat_4_0[];
+>  extern const size_t hw_compat_4_0_len;
+>  
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 859b64c51d45..c840e392515b 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -302,6 +302,9 @@ int e820_add_entry(uint64_t, uint64_t, uint32_t);
+>  int e820_get_num_entries(void);
+>  bool e820_get_entry(int, uint32_t, uint64_t *, uint64_t *);
+>  
+> +extern GlobalProperty pc_compat_4_1[];
+> +extern const size_t pc_compat_4_1_len;
+> +
+>  extern GlobalProperty pc_compat_4_0[];
+>  extern const size_t pc_compat_4_0_len;
+>  
+> 
 
-"and it and the host" means "and KVM and the host", as 'it' refers to the
-last subject, which is KVM. I wanted to point out both the host (machine)
-and KVM (version of kernel with KVM) need to support the feature.
+s390x bits
 
-> >>> -cpu <cpu>,aarch64=on is used, then it doesn't matter if kvm is
-> >>> enabled or not.
-> >>>
-> >>> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> >>
-> >>
-> >>> ---
-> >>>  target/arm/cpu64.c   | 12 ++++++------
-> >>>  target/arm/kvm64.c   | 11 +++++++++++
-> >>>  target/arm/kvm_arm.h | 14 ++++++++++++++
-> >>>  3 files changed, 31 insertions(+), 6 deletions(-)
-> >>>
-> >>> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> >>> index 1901997a0645..946994838d8a 100644
-> >>> --- a/target/arm/cpu64.c
-> >>> +++ b/target/arm/cpu64.c
-> >>> @@ -407,13 +407,13 @@ static void aarch64_cpu_set_aarch64(Object *obj, bool value, Error **errp)
-> >>>       * restriction allows us to avoid fixing up functionality that assumes a
-> >>>       * uniform execution state like do_interrupt.
-> >>>       */> -    if (!kvm_enabled()) {
-> >>> -        error_setg(errp, "'aarch64' feature cannot be disabled "
-> >>> -                         "unless KVM is enabled");
-> >>> -        return;
-> >>> -    }
-> >>> -
-> >>>      if (value == false) {
-> >>> +        if (!kvm_enabled() || !kvm_arm_aarch32_supported(CPU(cpu))) {
-> >>> +            error_setg(errp, "'aarch64' feature cannot be disabled "
-> >>> +                             "unless KVM is enabled and 32-bit EL1 "
-> >>> +                             "is supported");
-> >>> +            return;
-> >>> +        }
-> >>>          unset_feature(&cpu->env, ARM_FEATURE_AARCH64);
-> >>>      } else {
-> >>>          set_feature(&cpu->env, ARM_FEATURE_AARCH64);
-> >>> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> >>> index 22d19c9aec6f..45ccda589903 100644
-> >>> --- a/target/arm/kvm64.c
-> >>> +++ b/target/arm/kvm64.c
-> >>> @@ -24,7 +24,9 @@
-> >>>  #include "exec/gdbstub.h"
-> >>>  #include "sysemu/sysemu.h"
-> >>>  #include "sysemu/kvm.h"
-> >>> +#include "sysemu/kvm_int.h"
-> >>>  #include "kvm_arm.h"
-> >>> +#include "hw/boards.h"
-> By the way those two new headers are not needed by this patch
+Reviewed-by: David Hildenbrand <david@redhat.com>
 
-Really?
-
-current_machine is defined in hw/boards.h and KVM_STATE is defined
-in sysemu/kvm_int.h.
-
-> >>>  #include "internals.h"
-> >>>  
-> >>>  static bool have_guest_debug;
-> >>> @@ -593,6 +595,15 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-> >>>      return true;
-> >>>  }
-> >>>  
-> >>> +bool kvm_arm_aarch32_supported(CPUState *cpu)
-> >>> +{
-> >>> +    KVMState *s = KVM_STATE(current_machine->accelerator);
-> >>> +    int ret;
-> >>> +
-> >>> +    ret = kvm_check_extension(s, KVM_CAP_ARM_EL1_32BIT);
-> >>> +    return ret > 0;
-> >> nit: return kvm_check_extension() should be sufficient
-> > 
-> > Ah yes, I forgot kvm_check_extension() already converts negative
-> > error codes to zero. I'll fix that for v3.
-> > 
-> >>> +}
-> >>> +
-> >>>  #define ARM_CPU_ID_MPIDR       3, 0, 0, 0, 5
-> >>>  
-> >>>  int kvm_arch_init_vcpu(CPUState *cs)
-> >>> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> >>> index 2a07333c615f..812125f805a1 100644
-> >>> --- a/target/arm/kvm_arm.h
-> >>> +++ b/target/arm/kvm_arm.h
-> >>> @@ -207,6 +207,15 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf);
-> >>>   */
-> >>>  void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
-> >>>  
-> >>> +/**
-> >>> + * kvm_arm_aarch32_supported:
-> >>> + * @cs: CPUState
-> >> use kernel-doc comment style?
-> > 
-> > This file (kvm_arm.h) doesn't appear to have a super consistent comment
-> > style. I see some use @var: for the parameters and some have 'Returns:
-> > ...' lines as well. I'm happy to do whatever the maintainers prefer. For
-> > now I was just trying to mimic whatever caught my eye.>
-> >>> + *
-> >>> + * Returns true if the KVM VCPU can enable AArch32 mode and false
-> >>> + * otherwise.
-> >>> + */
-> >>> +bool kvm_arm_aarch32_supported(CPUState *cs);
-> >>> +
-> >>>  /**
-> >>>   * kvm_arm_get_max_vm_ipa_size - Returns the number of bits in the
-> >>>   * IPA address space supported by KVM
-> >>> @@ -247,6 +256,11 @@ static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
-> >>>      cpu->host_cpu_probe_failed = true;
-> >>>  }
-> >>>  
-> >>> +static inline bool kvm_arm_aarch32_supported(CPUState *cs)
-> >>> +{
-> >>> +    return false;
-> >>> +}
-> >>> +
-> >>>  static inline int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
-> >>>  {
-> >>>      return -ENOENT;
-> >>>
-> >> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+-- 
 
 Thanks,
-drew
+
+David / dhildenb

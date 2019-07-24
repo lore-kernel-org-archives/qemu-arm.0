@@ -1,85 +1,84 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp8078185wrv;
-        Tue, 23 Jul 2019 05:58:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyqPdyTMmw3WSKuaF9GpwBrVCBd0Euvt7LDMPj7xw5BVJhlTCaR3ceYzPEHvXOCXjd90KRv
-X-Received: by 2002:a17:906:9256:: with SMTP id c22mr57173118ejx.172.1563886719017;
-        Tue, 23 Jul 2019 05:58:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563886719; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp9184672wrv;
+        Wed, 24 Jul 2019 03:35:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwtwXSmD/dldSek8zMkoF2Sk4PgerAhcxDmIfGsAzPp1qgd4oixwulPJCSOXWfsxMjBKZEP
+X-Received: by 2002:a17:906:580b:: with SMTP id m11mr42961182ejq.0.1563964541049;
+        Wed, 24 Jul 2019 03:35:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563964541; cv=none;
         d=google.com; s=arc-20160816;
-        b=uchC2lneSkxOTlLI0pJFycAa/wF6BbGypxxc04UQ438xdxcEChIrqNKT5WTZBs/Gxz
-         uk4HcXJYEuPWgNt4JEmwOdwMaEfsJt6lNrKh9OwvB1j3mCZaGgvh8AGyMiAUarf0sHiZ
-         Xzy5299KKZof9x5od0wRppzzbkIZ2k05wWoX6RkQQaFD1rmjTJOXcUe7ABs1yqWPgTuX
-         SghJpz2Q3hFRc7Yi6d4hgR0ONwzhrjfOGohwTAfMiQWmZBcg1VO2uadrzXznQ/1s7p6u
-         KD60LkgM5gWH2aTdpt91v9h/trNhnnxTUCIUdTm9unn0oZI+om/FTTSyfUSHt71o0qGK
-         ABmA==
+        b=srnFfyTIhDGwry6CWBkgA7fn47GQwM4MF9eWMGqheo+zFmrBxT++DTNINc9lEuumic
+         abaihsawZqdU1EMrT6TNF3/abguyOl13IHl22jIRSXTjUBgc4lS1nKfgdHprqm5jS8Xh
+         JJ4sqCEu4AKQ51hQ7wzqGZEI4yjgMUAALmB5FeVPivf8NtwEBQHngGtkm8U9GnkaqLGH
+         0VoBcH/BUWAgwJFij8UZfs8MaIhRowELDuVEdLEM3BdjcxJRd3tFOFHHNXyNoJQbiaXk
+         Fo9jN7OF8I98/lSKU8jph3aytSIvKT1z/oYwc/oZDvuSmCQqML2+ECgm+VEp0Z9razR+
+         EQLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=TIBNzvg4xs86Pdw3EIQSFC6rNMxTwtANiBbHRk/w+tQ=;
-        b=nGLEAnqFhfNpf5Jf9IpvaOzaxtcKS7BOpbQe5MBNdrdGTfcZ97m6bsgrs8407Pbo1x
-         dYQKB8jJAbRBOFQdnrIs9cVpRbqBGxw+cNPtlWWtj1AVblh0bGmXbAkwPHlJlSmZ0sTt
-         0JxApDl2fabwpJiI2XOeLXS6v5yLoYraysQ3dg005M2zZhYo8xnK7jSvYxE3Cufursnq
-         fNg2j9hq3DKY+n50+xDoDkXhKhBCARkSt8BicA30tUn8DLg4fIotVh3piXaPo25L+QMv
-         C+ItVn47Npaj8ffwbFt5CrWF1Y4PyK3AGH68uiQB3mQwKG3W+pR+yaDjsmAdLAwZ/rTY
-         qk6w==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=BamwRUPrEGoEAmNDRmTdxrl8XGKzhkGXILRTB86eoN8=;
+        b=bHfDk5wxTfNPkKFNGt6lxbp0MmVryWBX+LU/OA5lGiWdRoQSx9ltrTRQIJaOpIQ+br
+         5fh3T/V580WRAbUH6ksprQMJZ2Lmib8Rc+UYQ6YF91tahV4dF4wx89sNt3tbfx6T5+ST
+         KM31SB3FKOB2/k0NhfjKeuswoebqZVqNeVoCrmp9wb320yZLCpF0skM4TfZV1TPmIzT0
+         5KcG2am4G2TdFrgp4Q3Y/ZdAO67kF+xmHwNdm5iGwIjYjvjnuDdt24DNXuitT7//zrJl
+         eyBrEoLzH8gAYxmTpBDw5jT9/dK5TEbR7YgupM1IZP7bIfmc2vvbI57BlVecg5sT9jdE
+         /DPA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j19si6166858eda.46.2019.07.23.05.58.38
+        by mx.google.com with ESMTPS id j4si8325576ede.193.2019.07.24.03.35.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Jul 2019 05:58:39 -0700 (PDT)
+        Wed, 24 Jul 2019 03:35:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42214 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50332 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hpuNJ-0006UJ-Uv
-	for alex.bennee@linaro.org; Tue, 23 Jul 2019 08:58:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49682)
+	id 1hqEcW-0007Xd-4p
+	for alex.bennee@linaro.org; Wed, 24 Jul 2019 06:35:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37604)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <imammedo@redhat.com>) id 1hpuNG-0006U0-HB
- for qemu-arm@nongnu.org; Tue, 23 Jul 2019 08:58:36 -0400
+ (envelope-from <cohuck@redhat.com>) id 1hqEcS-0007XW-RW
+ for qemu-arm@nongnu.org; Wed, 24 Jul 2019 06:35:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1hpuNF-0004nl-1r
- for qemu-arm@nongnu.org; Tue, 23 Jul 2019 08:58:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58830)
+ (envelope-from <cohuck@redhat.com>) id 1hqEcR-0002xI-DK
+ for qemu-arm@nongnu.org; Wed, 24 Jul 2019 06:35:36 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40908)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>)
- id 1hpuNE-0004nM-Pe; Tue, 23 Jul 2019 08:58:33 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ (Exim 4.71) (envelope-from <cohuck@redhat.com>)
+ id 1hqEcR-0002wh-3o; Wed, 24 Jul 2019 06:35:35 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id A318B8CB48;
- Tue, 23 Jul 2019 12:58:31 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D57285D9C5;
- Tue, 23 Jul 2019 12:58:24 +0000 (UTC)
-Date: Tue, 23 Jul 2019 14:58:22 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-Message-ID: <20190723145822.5fab37c2@redhat.com>
-In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA83F310B0C@lhreml524-mbs.china.huawei.com>
-References: <20190716153816.17676-1-shameerali.kolothum.thodi@huawei.com>
- <20190716153816.17676-11-shameerali.kolothum.thodi@huawei.com>
- <20190718151315.2c1d3aff@redhat.com>
- <5FC3163CFD30C246ABAA99954A238FA83F310B0C@lhreml524-mbs.china.huawei.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id 652347FDE9;
+ Wed, 24 Jul 2019 10:35:33 +0000 (UTC)
+Received: from localhost (dhcp-192-181.str.redhat.com [10.33.192.181])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0EE3260BCE;
+ Wed, 24 Jul 2019 10:35:27 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>
+Date: Wed, 24 Jul 2019 12:35:24 +0200
+Message-Id: <20190724103524.20916-1-cohuck@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.26]); Tue, 23 Jul 2019 12:58:32 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.27]); Wed, 24 Jul 2019 10:35:33 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH-for-4.2 v7 10/10] tests: Update
- DSDT ACPI table for arm/virt board with PCDIMM related changes
+Subject: [Qemu-arm] [PATCH for-4.2] hw: add compat machines for 4.2
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -91,216 +90,249 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "sameo@linux.intel.com" <sameo@linux.intel.com>,
- "ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
- "sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
- "lersek@redhat.com" <lersek@redhat.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>
+Cc: qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-devel@nongnu.org, Cornelia Huck <cohuck@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VU8/QPGW38HP
+X-TUID: Fi0y0mcgYc8e
 
-On Mon, 22 Jul 2019 14:51:59 +0000
-Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
+Add 4.2 machine types for arm/i440fx/q35/s390x/spapr.
 
-> Hi Igor,
-> 
-> > -----Original Message-----
-> > From: Qemu-devel
-> > [mailto:qemu-devel-bounces+shameerali.kolothum.thodi=huawei.com@nongn
-> > u.org] On Behalf Of Igor Mammedov
-> > Sent: 18 July 2019 14:13
-> > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> > Cc: peter.maydell@linaro.org; sameo@linux.intel.com;
-> > shannon.zhaosl@gmail.com; ard.biesheuvel@linaro.org;
-> > qemu-devel@nongnu.org; xuwei (O) <xuwei5@huawei.com>; Linuxarm
-> > <linuxarm@huawei.com>; eric.auger@redhat.com; qemu-arm@nongnu.org;
-> > sebastien.boeuf@intel.com; lersek@redhat.com
-> > Subject: Re: [Qemu-devel] [PATCH-for-4.2 v7 10/10] tests: Update DSDT ACPI
-> > table for arm/virt board with PCDIMM related changes
-> > 
-> > On Tue, 16 Jul 2019 16:38:16 +0100
-> > Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
-> >   
-> > > From: Eric Auger <eric.auger@redhat.com>
-> > >
-> > > PCDIMM hotplug addition updated the DSDT. Update the reference table.  
-> > 
-> > it's not correct process. series should be merged through Michael's pci branch
-> > and see
-> > commit ab50f22309a17c772c51931940596e707c200739 (mst/pci)
-> > Author: Michael S. Tsirkin <mst@redhat.com>
-> > Date:   Tue May 21 17:38:47 2019 -0400
-> > 
-> >     bios-tables-test: add diff allowed list
-> > 
-> > how to request table update.  
-> 
-> Ok. Just to confirm, this means I can probably add the below diff to patch #6 and
-> remove this patch(10/10) from the series. 
+For i440fx and q35, unversioned cpu models are still translated
+to -v1, as 0788a56bd1ae ("i386: Make unversioned CPU models be
+aliases") states this should only transition to the latest cpu
+model version in 4.3 (or later).
 
-you can use commit 4a4418369d6 as an example
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+---
+ hw/arm/virt.c              |  9 ++++++++-
+ hw/core/machine.c          |  3 +++
+ hw/i386/pc.c               |  3 +++
+ hw/i386/pc_piix.c          | 14 +++++++++++++-
+ hw/i386/pc_q35.c           | 13 ++++++++++++-
+ hw/ppc/spapr.c             | 15 +++++++++++++--
+ hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+ include/hw/boards.h        |  3 +++
+ include/hw/i386/pc.h       |  3 +++
+ 9 files changed, 71 insertions(+), 6 deletions(-)
 
-> 
-> diff --git a/tests/bios-tables-test-allowed-diff.h b/tests/bios-tables-test-allowed-diff.h
-> index dfb8523c8b..7b4adbc822 100644
-> --- a/tests/bios-tables-test-allowed-diff.h
-> +++ b/tests/bios-tables-test-allowed-diff.h
-> @@ -1 +1,2 @@
->  /* List of comma-separated changed AML files to ignore */
-> +"tests/data/acpi/virt/DSDT",
-> 
-> > 
-> > Another thing:
-> > bios-tables-test has test_acpi_tcg_dimm_pxm() test case,
-> > pls make use of it to test arm/virt variant  
-> 
-> I had a go with this, but has found an issue with this.
-> 
-> This is what I added in order to run the dimm_pxm test.
-> 
-> - - 8- -
-> 
-> diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
-> index a356ac3489..79af4f4874 100644
-> --- a/tests/bios-tables-test.c
-> +++ b/tests/bios-tables-test.c
-> @@ -871,6 +871,36 @@ static void test_acpi_piix4_tcg_dimm_pxm(void)
->      test_acpi_tcg_dimm_pxm(MACHINE_PC);
->  }
->  
-> +static void test_acpi_virt_tcg_dimm_pxm(void)
-> +{
-> +    test_data data = {
-> +        .machine = "virt",
-> +        .accel = "tcg",
-> +        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-> +        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-> +        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
-> +        .ram_start = 0x40000000ULL,
-> +        .scan_len = 128ULL * 1024 * 1024,
-> +    };
-> +
-> +    data.variant = ".dimmpxm";
-> +    test_acpi_one(" -cpu cortex-a57"
-> +                  " -smp 4"
-> +                  " -m 512M,slots=3,maxmem=2G"
-> +                  " -object memory-backend-ram,id=ram0,size=128M"
-> +                  " -object memory-backend-ram,id=ram1,size=128M"
-> +                  " -object memory-backend-ram,id=ram2,size=128M"
-> +                  " -object memory-backend-ram,id=ram3,size=128M"
-> +                  " -numa node,memdev=ram0,nodeid=0"
-> +                  " -numa node,memdev=ram1,nodeid=1"
-> +                  " -numa node,memdev=ram2,nodeid=2"
-> +                  " -numa node,memdev=ram3,nodeid=3"
-> +                  " -object memory-backend-ram,id=ram4,size=1G"
-> +                  " -device pc-dimm,id=dimm0,memdev=ram4,node=0",
-> +                  &data);
-> +    free_test_data(&data);
-> +}
-> +
->  static void test_acpi_virt_tcg(void)
->  {
->      test_data data = {
-> @@ -917,6 +947,7 @@ int main(int argc, char *argv[])
->          qtest_add_func("acpi/q35/dimmpxm", test_acpi_q35_tcg_dimm_pxm);
->      } else if (strcmp(arch, "aarch64") == 0) {
->          qtest_add_func("acpi/virt", test_acpi_virt_tcg);
-> +        qtest_add_func("acpi/virt/dimmpxm", test_acpi_virt_tcg_dimm_pxm);
->      }
->      ret = g_test_run();
->      boot_sector_cleanup(disk);
-> 
-> - - 8- -
-> 
-> Then used the script to generate the acpi tables and "make check" runs fine.
-> 
-> But when I changed the memory configuration to,
-> 
-> test_acpi_one(" -cpu cortex-a57"
->             " -smp 4"
->             " -m 256M,slots=3,maxmem=2G"
->             " -object memory-backend-ram,id=ram0,size=64M"
->             " -object memory-backend-ram,id=ram1,size=64M"
->             " -object memory-backend-ram,id=ram2,size=64M"
->             " -object memory-backend-ram,id=ram3,size=64M"
->             " -numa node,memdev=ram0,nodeid=0"
->             " -numa node,memdev=ram1,nodeid=1"
->             " -numa node,memdev=ram2,nodeid=2"
->             " -numa node,memdev=ram3,nodeid=3"
->             " -object memory-backend-ram,id=ram4,size=1G"
->             " -device pc-dimm,id=dimm0,memdev=ram4,node=0",
->             &data);
-> 
-> "make check" gets stuck at,
-> 
->   CC      tests/bios-tables-test.o
->   LINK    tests/bios-tables-test
->   TEST    check-qtest-aarch64: tests/numa-test
->   TEST    check-qtest-aarch64: tests/boot-serial-test
->   TEST    check-qtest-aarch64: tests/migration-test
->   TEST    check-qtest-aarch64: tests/bios-tables-test -->stuck here.
-> 
-> But if I use the same memory configuration and run the qemu guest independently
-> it boots fine.
-> 
-> ./qemu-system-aarch64 -machine virt,accel=tcg \
-> -cpu cortex-a57 \
-> -nographic -smp 4 \
-> -bios QEMU_EFI_Release.fd \
-> -kernel Image_5.2rc2 \
-> -drive if=none,file=ubuntu-est-5.0,id=fs \
-> -device virtio-blk-device,drive=fs \
-> -m 256M,slots=3,maxmem=2G \
-> -object memory-backend-ram,id=ram0,size=64M \
-> -object memory-backend-ram,id=ram1,size=64M \
-> -object memory-backend-ram,id=ram2,size=64M \
-> -object memory-backend-ram,id=ram3,size=64M \
-> -numa node,memdev=ram0,nodeid=0 \
-> -numa node,memdev=ram1,nodeid=1 \
-> -numa node,memdev=ram2,nodeid=2 \
-> -numa node,memdev=ram3,nodeid=3 \
-> -object memory-backend-ram,id=ram4,size=1G \
-> -device pc-dimm,id=dimm1,memdev=ram4,node=0 \
-> -append "console=ttyAMA0 root=/dev/vda rw acpi=force"
->  
-> root@ubuntu:~# numactl -H
-> available: 4 nodes (0-3)
-> node 0 cpus: 0
-> node 0 size: 1067 MB
-> node 0 free: 1015 MB
-> node 1 cpus: 1
-> node 1 size: 44 MB
-> node 1 free: 5 MB
-> node 2 cpus: 2
-> node 2 size: 63 MB
-> node 2 free: 24 MB
-> node 3 cpus: 3
-> node 3 size: 63 MB
-> node 3 free: 31 MB
-> node distances:
-> node   0   1   2   3 
->   0:  10  20  20  20 
->   1:  20  10  20  20 
->   2:  20  20  10  20 
->   3:  20  20  20  10 
-> root@ubuntu:~#
-> 
-> I am not sure why "make check" hangs with 64M size!. 
-> Please take a look and let me know if I missed anything obvious here.
-
-I'd try to see what tests/bios-tables-test does when it's stuck.
-(I'd guess that it can't find ACPI tables)
-
-also pay attention to .scan_len so it would cover all RAM
-
-
-> 
-> Thanks,
-> Shameer
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index d9496c936342..64e3fc34401a 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2046,10 +2046,17 @@ static void machvirt_machine_init(void)
+ }
+ type_init(machvirt_machine_init);
+=20
++static void virt_machine_4_2_options(MachineClass *mc)
++{
++}
++DEFINE_VIRT_MACHINE_AS_LATEST(4, 2)
++
+ static void virt_machine_4_1_options(MachineClass *mc)
+ {
++    virt_machine_4_2_options(mc);
++    compat_props_add(mc->compat_props, hw_compat_4_1, hw_compat_4_1_len)=
+;
+ }
+-DEFINE_VIRT_MACHINE_AS_LATEST(4, 1)
++DEFINE_VIRT_MACHINE(4, 1)
+=20
+ static void virt_machine_4_0_options(MachineClass *mc)
+ {
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index c58a8e594efc..a79d4ad740a0 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -27,6 +27,9 @@
+ #include "hw/pci/pci.h"
+ #include "hw/mem/nvdimm.h"
+=20
++GlobalProperty hw_compat_4_1[] =3D {};
++const size_t hw_compat_4_1_len =3D G_N_ELEMENTS(hw_compat_4_1);
++
+ GlobalProperty hw_compat_4_0[] =3D {
+     { "VGA",            "edid", "false" },
+     { "secondary-vga",  "edid", "false" },
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index 549c43705096..2aa1c49701dd 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -116,6 +116,9 @@ struct hpet_fw_config hpet_cfg =3D {.count =3D UINT8_=
+MAX};
+ /* Physical Address of PVH entry point read from kernel ELF NOTE */
+ static size_t pvh_start_addr;
+=20
++GlobalProperty pc_compat_4_1[] =3D {};
++const size_t pc_compat_4_1_len =3D G_N_ELEMENTS(pc_compat_4_1);
++
+ GlobalProperty pc_compat_4_0[] =3D {};
+ const size_t pc_compat_4_0_len =3D G_N_ELEMENTS(pc_compat_4_0);
+=20
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index c2280c72effb..24e71be1d218 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -433,7 +433,7 @@ static void pc_i440fx_machine_options(MachineClass *m=
+)
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
+ }
+=20
+-static void pc_i440fx_4_1_machine_options(MachineClass *m)
++static void pc_i440fx_4_2_machine_options(MachineClass *m)
+ {
+     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
+     pc_i440fx_machine_options(m);
+@@ -442,6 +442,18 @@ static void pc_i440fx_4_1_machine_options(MachineCla=
+ss *m)
+     pcmc->default_cpu_version =3D 1;
+ }
+=20
++DEFINE_I440FX_MACHINE(v4_2, "pc-i440fx-4.2", NULL,
++                      pc_i440fx_4_2_machine_options);
++
++static void pc_i440fx_4_1_machine_options(MachineClass *m)
++{
++    pc_i440fx_4_2_machine_options(m);
++    m->alias =3D NULL;
++    m->is_default =3D 0;
++    compat_props_add(m->compat_props, hw_compat_4_1, hw_compat_4_1_len);
++    compat_props_add(m->compat_props, pc_compat_4_1, pc_compat_4_1_len);
++}
++
+ DEFINE_I440FX_MACHINE(v4_1, "pc-i440fx-4.1", NULL,
+                       pc_i440fx_4_1_machine_options);
+=20
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 397e1fdd2f37..e61260762cdc 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -365,7 +365,7 @@ static void pc_q35_machine_options(MachineClass *m)
+     m->max_cpus =3D 288;
+ }
+=20
+-static void pc_q35_4_1_machine_options(MachineClass *m)
++static void pc_q35_4_2_machine_options(MachineClass *m)
+ {
+     PCMachineClass *pcmc =3D PC_MACHINE_CLASS(m);
+     pc_q35_machine_options(m);
+@@ -373,6 +373,17 @@ static void pc_q35_4_1_machine_options(MachineClass =
+*m)
+     pcmc->default_cpu_version =3D 1;
+ }
+=20
++DEFINE_Q35_MACHINE(v4_2, "pc-q35-4.2", NULL,
++                   pc_q35_4_2_machine_options);
++
++static void pc_q35_4_1_machine_options(MachineClass *m)
++{
++    pc_q35_4_2_machine_options(m);
++    m->alias =3D NULL;
++    compat_props_add(m->compat_props, hw_compat_4_1, hw_compat_4_1_len);
++    compat_props_add(m->compat_props, pc_compat_4_1, pc_compat_4_1_len);
++}
++
+ DEFINE_Q35_MACHINE(v4_1, "pc-q35-4.1", NULL,
+                    pc_q35_4_1_machine_options);
+=20
+diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+index 821f0d4a49ff..6c8aa6054508 100644
+--- a/hw/ppc/spapr.c
++++ b/hw/ppc/spapr.c
+@@ -4426,15 +4426,26 @@ static const TypeInfo spapr_machine_info =3D {
+     }                                                                \
+     type_init(spapr_machine_register_##suffix)
+=20
++/*
++ * pseries-4.2
++ */
++static void spapr_machine_4_2_class_options(MachineClass *mc)
++{
++    /* Defaults for the latest behaviour inherited from the base class *=
+/
++}
++
++DEFINE_SPAPR_MACHINE(4_2, "4.2", true);
++
+ /*
+  * pseries-4.1
+  */
+ static void spapr_machine_4_1_class_options(MachineClass *mc)
+ {
+-    /* Defaults for the latest behaviour inherited from the base class *=
+/
++    spapr_machine_4_2_class_options(mc);
++    compat_props_add(mc->compat_props, hw_compat_4_1, hw_compat_4_1_len)=
+;
+ }
+=20
+-DEFINE_SPAPR_MACHINE(4_1, "4.1", true);
++DEFINE_SPAPR_MACHINE(4_1, "4.1", false);
+=20
+ /*
+  * pseries-4.0
+diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+index 5b6a9a4e5574..593b34e0e201 100644
+--- a/hw/s390x/s390-virtio-ccw.c
++++ b/hw/s390x/s390-virtio-ccw.c
+@@ -660,14 +660,26 @@ bool css_migration_enabled(void)
+     }                                                                   =
+      \
+     type_init(ccw_machine_register_##suffix)
+=20
++static void ccw_machine_4_2_instance_options(MachineState *machine)
++{
++}
++
++static void ccw_machine_4_2_class_options(MachineClass *mc)
++{
++}
++DEFINE_CCW_MACHINE(4_2, "4.2", true);
++
+ static void ccw_machine_4_1_instance_options(MachineState *machine)
+ {
++    ccw_machine_4_2_instance_options(machine);
+ }
+=20
+ static void ccw_machine_4_1_class_options(MachineClass *mc)
+ {
++    ccw_machine_4_2_class_options(mc);
++    compat_props_add(mc->compat_props, hw_compat_4_1, hw_compat_4_1_len)=
+;
+ }
+-DEFINE_CCW_MACHINE(4_1, "4.1", true);
++DEFINE_CCW_MACHINE(4_1, "4.1", false);
+=20
+ static void ccw_machine_4_0_instance_options(MachineState *machine)
+ {
+diff --git a/include/hw/boards.h b/include/hw/boards.h
+index a71d1a53a5c0..d9ec37d80743 100644
+--- a/include/hw/boards.h
++++ b/include/hw/boards.h
+@@ -317,6 +317,9 @@ struct MachineState {
+     } \
+     type_init(machine_initfn##_register_types)
+=20
++extern GlobalProperty hw_compat_4_1[];
++extern const size_t hw_compat_4_1_len;
++
+ extern GlobalProperty hw_compat_4_0[];
+ extern const size_t hw_compat_4_0_len;
+=20
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index 859b64c51d45..c840e392515b 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -302,6 +302,9 @@ int e820_add_entry(uint64_t, uint64_t, uint32_t);
+ int e820_get_num_entries(void);
+ bool e820_get_entry(int, uint32_t, uint64_t *, uint64_t *);
+=20
++extern GlobalProperty pc_compat_4_1[];
++extern const size_t pc_compat_4_1_len;
++
+ extern GlobalProperty pc_compat_4_0[];
+ extern const size_t pc_compat_4_0_len;
+=20
+--=20
+2.20.1
 

@@ -1,75 +1,74 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10274461wrv;
-        Thu, 25 Jul 2019 00:10:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyySh9ArUPY42n39b6FCm3EUpW2zEZ2ygTXogCzCckuoLEHV1HKj+RO2VR4lzal7NQFGk6J
-X-Received: by 2002:a50:9947:: with SMTP id l7mr76252603edb.305.1564038602023;
-        Thu, 25 Jul 2019 00:10:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564038602; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10275271wrv;
+        Thu, 25 Jul 2019 00:10:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxPS0HlK9ZAereVyB8Hn7bGxl/AQ11hhgvxI0PFmdJ+ZgacNHu9Ls8N7m2i/KlC+WG6aUEc
+X-Received: by 2002:ac8:1a3c:: with SMTP id v57mr60202221qtj.339.1564038652225;
+        Thu, 25 Jul 2019 00:10:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564038652; cv=none;
         d=google.com; s=arc-20160816;
-        b=V+cREoueYru0W9zn4/fVI4zWDHRz3wnj/uinzfAEr5jLPSUQbDU2XI9FaHhoypT1rb
-         1Lmjc9o5ilviK32/JF3458N88C8MGvJQuaDKyyiu4QEiAfqnA5IhuTvUyfsSsDgMUFPQ
-         T+FID1wOFq0gVTmGyzQulTWbVt3z1pQixKSuyVsrVKFRXfXTcec5LrFVc385F0BjTjy5
-         gxyFp+zg3VL7hysxS/Nxt0zZRgHiuzYP6P6f1y7vEBJ6cSxbjwtuDlT6C5GbuNAoWPvp
-         voOiv+AlU9U5FJPT+KxySj4TBPgLHdRMYRdJtJ11luPtjLyxnzdlc3jTm9TQ62fODjab
-         bN6g==
+        b=JR39QCSo6p1zeNCFohLz0H6FZHphVo3emY7M8Z6l9O6jY44N54yP/6RR472WSgfPAL
+         qM4LnzY2w7ftqYM9oJX0ARMciSZxylyaXO1V079Co1FSwOQGVWR/Bo5RloRDvvPUfRk+
+         948387C4mJJYzSFjFBPJ+wLcH1cUeKJN4Kw+3aqi3wj/880+ODtdOXYivJo/Gax8OWvh
+         FIOxBib95Oh70wSjLTrB5/QFmJNhmh+l0wKUGQzz3bDGT8sTIvQXUMSZ6Kkr9Bg3LGBD
+         ZBOlleIivAxuthqnEuKAZbUleWmfaqMQU0EdCo3heYKKcudIN7hv70kSa5IfVXbO3X0f
+         kkKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-language:accept-language:in-reply-to:references:message-id
          :date:thread-index:thread-topic:to:from;
-        bh=L3MCDr66oTZiEIBxiKeoj/2KlJTTMFrAd5D/b0sgXcI=;
-        b=ckxDReMJwshLIkKTAQob02PsKRPIObHZQiyrp7ZEogLQfp0HFEtLAUf1iuVDsmTDvc
-         OcAWcmRl2FNAqJxc/5XF/Wa8Vhao30eomHbyfzcYE/b8Xt80uqfzZC3g6JRVf6pHmElv
-         CNrUYHHrBuUr9yC4f2R6Ebxhzz8NHaxuhDe4qUmtr+O2NBGmt/NLfiTwFMUTueGD24fp
-         xhm01CegsZkZwiDZefOER0847R/Hs0GqZ58jaLzZ+S6Qw9F//UWVegV28/JTgjLHEgHi
-         5YkDjJUYAnArTduS6WiNhnwG5K0P8INkI/pVEgTbDx37lT7KagxE6EwuT76USsbvXQ0O
-         A8Yw==
+        bh=4J5Jk+84FFbfUCLxRqqYxcXcI5BGaJtKp5tpkAYpP/Y=;
+        b=nWmU4qhbNcqK24uS2+gH5hO53/Y88K7oy7keRMooh9PptYvQZuvBINj3wLo4L6uqAm
+         d+uCDmsvec+QPdyEY6XxpIsLTxk5tNZKEZJtnj0IdPf2wKPSTceFoppl++zhHF06iO99
+         9kHRrdPyPdnz6NVWtZJAL4lgS7ZsDGrgfH/6Ohv7Qd3NIttPgs96AnxJ0xi3lWfGv5us
+         r+2YXBdUIdLvlC2fJKo2B0DxwSoAqiyWhLw0ehBlgONHGwAEEePrJvQsRVFoEtutYpx5
+         xUtu/QiGHpEIs8bk9TNozQlGom7CnX0+/QM9KR+uTxLTn/3aeK5QsHyk6GV5agEF9lR5
+         xZaQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e33si11006991eda.183.2019.07.25.00.10.01
+        by mx.google.com with ESMTPS id 12si15051185qts.46.2019.07.25.00.10.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jul 2019 00:10:02 -0700 (PDT)
+        Thu, 25 Jul 2019 00:10:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:56320 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56348 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hqXt3-0005r2-4n
-	for alex.bennee@linaro.org; Thu, 25 Jul 2019 03:10:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53459)
+	id 1hqXtr-0007MY-N5
+	for alex.bennee@linaro.org; Thu, 25 Jul 2019 03:10:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53761)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <tony.nguyen@bt.com>) id 1hqXsz-0005pQ-Bl
- for qemu-arm@nongnu.org; Thu, 25 Jul 2019 03:09:58 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hqXtn-0007El-WA
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 03:10:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hqXsy-0002wj-Ba
- for qemu-arm@nongnu.org; Thu, 25 Jul 2019 03:09:57 -0400
-Received: from smtpe1.intersmtp.com ([213.121.35.78]:45158)
+ (envelope-from <tony.nguyen@bt.com>) id 1hqXtm-00044T-WE
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 03:10:47 -0400
+Received: from smtpe1.intersmtp.com ([62.239.224.237]:29460)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hqXst-0002q0-Pf; Thu, 25 Jul 2019 03:09:51 -0400
+ id 1hqXti-0003xX-GO; Thu, 25 Jul 2019 03:10:42 -0400
 Received: from tpw09926dag18g.domain1.systemhost.net (10.9.212.34) by
- BWP09926083.bt.com (10.36.82.114) with Microsoft SMTP Server (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Thu, 25
- Jul 2019 08:09:46 +0100
+ RDW083A010ED66.bt.com (10.187.98.36) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Thu, 25 Jul 2019 08:09:49 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
  tpw09926dag18g.domain1.systemhost.net (10.9.212.34) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Thu, 25 Jul 2019 08:09:47 +0100
+ Server (TLS) id 15.0.1395.4; Thu, 25 Jul 2019 08:10:40 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Thu, 25 Jul
- 2019 08:09:47 +0100
+ 2019 08:10:40 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v3 10/15] memory: Access MemoryRegion with
- MemOp semantics
-Thread-Index: AQHVQrfxPtZP/QR+vUG3ewcqt8H5PQ==
-Date: Thu, 25 Jul 2019 07:09:46 +0000
-Message-ID: <1564038586947.36125@bt.com>
+Thread-Topic: [Qemu-devel] [PATCH v3 12/15] cpu: TLB_FLAGS_MASK bit to force
+ memory slow path
+Thread-Index: AQHVQrgRPCpmzkpBZU+e1y78k9/qQQ==
+Date: Thu, 25 Jul 2019 07:10:40 +0000
+Message-ID: <1564038640436.21069@bt.com>
 References: <e9c6e5310b1a4863be45d45bf087fc3d@tpw09926dag18e.domain1.systemhost.net>, 
  <1563810716254.18886@bt.com>,<1564038073754.91133@bt.com>
 In-Reply-To: <1564038073754.91133@bt.com>
@@ -79,12 +78,13 @@ X-MS-Has-Attach:
 X-MS-TNEF-Correlator: 
 x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.42]
-Content-Type: multipart/alternative; boundary="_000_156403858694736125btcom_"
+Content-Type: multipart/alternative; boundary="_000_156403864043621069btcom_"
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 213.121.35.78
-Subject: [Qemu-arm] [Qemu-devel] [PATCH v3 10/15] memory: Access
- MemoryRegion with MemOp semantics
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 62.239.224.237
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v3 12/15] cpu: TLB_FLAGS_MASK bit to
+ force memory slow path
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,47 +106,54 @@ Cc: peter.maydell@linaro.org, walling@linux.ibm.com, mst@redhat.com,
  amarkovic@wavecomp.com, pbonzini@redhat.com, aurelien@aurel32.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OQNBC2tXc3X5
+X-TUID: DXyPTAVebhDu
 
---_000_156403858694736125btcom_
+--_000_156403864043621069btcom_
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
-To convert interfaces of MemoryRegion access, MEMOP_SIZE and
-SIZE_MEMOP no-op stubs were introduced to change syntax while keeping
-the existing semantics.
+The fast path is taken when TLB_FLAGS_MASK is all zero.
 
-Now with interfaces converted, we fill the stubs and use MemOp
-semantics.
+TLB_FORCE_SLOW is simply a TLB_FLAGS_MASK bit to force the slow path,
+there are no other side effects.
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
 ---
- include/exec/memop.h | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ include/exec/cpu-all.h | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/include/exec/memop.h b/include/exec/memop.h
-index 09c8d20..f2847e8 100644
---- a/include/exec/memop.h
-+++ b/include/exec/memop.h
-@@ -106,8 +106,7 @@ typedef enum MemOp {
-     MO_SSIZE =3D MO_SIZE | MO_SIGN,
- } MemOp;
+diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+index 536ea58..e496f99 100644
+--- a/include/exec/cpu-all.h
++++ b/include/exec/cpu-all.h
+@@ -331,12 +331,18 @@ CPUArchState *cpu_copy(CPUArchState *env);
+ #define TLB_MMIO            (1 << (TARGET_PAGE_BITS - 3))
+ /* Set if TLB entry must have MMU lookup repeated for every access */
+ #define TLB_RECHECK         (1 << (TARGET_PAGE_BITS - 4))
++/* Set if TLB entry must take the slow path.  */
++#define TLB_FORCE_SLOW      (1 << (TARGET_PAGE_BITS - 5))
 
--/* No-op while memory_region_dispatch_[read|write] is converted to MemOp *=
-/
--#define MEMOP_SIZE(op)  (op)    /* MemOp to size.  */
--#define SIZE_MEMOP(ul)  (ul)    /* Size to MemOp.  */
-+#define MEMOP_SIZE(op)  (1 << ((op) & MO_SIZE)) /* MemOp to size.  */
-+#define SIZE_MEMOP(ul)  (ctzl(ul))              /* Size to MemOp.  */
+ /* Use this mask to check interception with an alignment mask
+  * in a TCG backend.
+  */
+-#define TLB_FLAGS_MASK  (TLB_INVALID_MASK | TLB_NOTDIRTY | TLB_MMIO \
+-                         | TLB_RECHECK)
++#define TLB_FLAGS_MASK \
++    (TLB_INVALID_MASK  \
++     | TLB_NOTDIRTY    \
++     | TLB_MMIO        \
++     | TLB_RECHECK     \
++     | TLB_FORCE_SLOW)
 
- #endif
+ /**
+  * tlb_hit_page: return true if page aligned @addr is a hit against the
 --
 1.8.3.1
 
 
 
 
---_000_156403858694736125btcom_
+--_000_156403864043621069btcom_
 Content-Type: text/html; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
@@ -162,44 +169,57 @@ der-left-width: 2px; border-left-style: solid; border-left-color: rgb(128, =
 <body dir=3D"ltr" style=3D"font-size:12pt;color:#000000;background-color:#F=
 FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
 <p></p>
-<div><span style=3D"font-size: 12pt;">To convert interfaces of MemoryRegion=
- access, MEMOP_SIZE and</span><br>
+<div><span style=3D"font-size: 12pt;">The fast path is taken when TLB_FLAGS=
+_MASK is all zero.</span><br>
 </div>
-<div>SIZE_MEMOP no-op stubs were introduced to change syntax while keeping<=
-/div>
-<div>the existing semantics.</div>
 <div><br>
 </div>
-<div>Now with interfaces converted, we fill the stubs and use MemOp</div>
-<div>semantics.</div>
+<div>TLB_FORCE_SLOW is simply a TLB_FLAGS_MASK bit to force the slow path,<=
+/div>
+<div>there are no other side effects.</div>
 <div><br>
 </div>
 <div>Signed-off-by: Tony Nguyen &lt;tony.nguyen@bt.com&gt;</div>
 <div>---</div>
-<div>&nbsp;include/exec/memop.h | 5 &#43;&#43;---</div>
-<div>&nbsp;1 file changed, 2 insertions(&#43;), 3 deletions(-)</div>
+<div>&nbsp;include/exec/cpu-all.h | 10 &#43;&#43;&#43;&#43;&#43;&#43;&#43;&=
+#43;--</div>
+<div>&nbsp;1 file changed, 8 insertions(&#43;), 2 deletions(-)</div>
 <div><br>
 </div>
-<div>diff --git a/include/exec/memop.h b/include/exec/memop.h</div>
-<div>index 09c8d20..f2847e8 100644</div>
-<div>--- a/include/exec/memop.h</div>
-<div>&#43;&#43;&#43; b/include/exec/memop.h</div>
-<div>@@ -106,8 &#43;106,7 @@ typedef enum MemOp {</div>
-<div>&nbsp; &nbsp; &nbsp;MO_SSIZE =3D MO_SIZE | MO_SIGN,</div>
-<div>&nbsp;} MemOp;</div>
+<div>diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h</div>
+<div>index 536ea58..e496f99 100644</div>
+<div>--- a/include/exec/cpu-all.h</div>
+<div>&#43;&#43;&#43; b/include/exec/cpu-all.h</div>
+<div>@@ -331,12 &#43;331,18 @@ CPUArchState *cpu_copy(CPUArchState *env);</=
+div>
+<div>&nbsp;#define TLB_MMIO &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(1 &lt=
+;&lt; (TARGET_PAGE_BITS - 3))</div>
+<div>&nbsp;/* Set if TLB entry must have MMU lookup repeated for every acce=
+ss */</div>
+<div>&nbsp;#define TLB_RECHECK &nbsp; &nbsp; &nbsp; &nbsp; (1 &lt;&lt; (TAR=
+GET_PAGE_BITS - 4))</div>
+<div>&#43;/* Set if TLB entry must take the slow path. &nbsp;*/</div>
+<div>&#43;#define TLB_FORCE_SLOW &nbsp; &nbsp; &nbsp;(1 &lt;&lt; (TARGET_PA=
+GE_BITS - 5))</div>
 <div>&nbsp;</div>
-<div>-/* No-op while memory_region_dispatch_[read|write] is converted to Me=
-mOp */</div>
-<div>-#define MEMOP_SIZE(op) &nbsp;(op) &nbsp; &nbsp;/* MemOp to size. &nbs=
-p;*/</div>
-<div>-#define SIZE_MEMOP(ul) &nbsp;(ul) &nbsp; &nbsp;/* Size to MemOp. &nbs=
-p;*/</div>
-<div>&#43;#define MEMOP_SIZE(op) &nbsp;(1 &lt;&lt; ((op) &amp; MO_SIZE)) /*=
- MemOp to size. &nbsp;*/</div>
-<div>&#43;#define SIZE_MEMOP(ul) &nbsp;(ctzl(ul)) &nbsp; &nbsp; &nbsp; &nbs=
-p; &nbsp; &nbsp; &nbsp;/* Size to MemOp. &nbsp;*/</div>
+<div>&nbsp;/* Use this mask to check interception with an alignment mask</d=
+iv>
+<div>&nbsp; * in a TCG backend.</div>
+<div>&nbsp; */</div>
+<div>-#define TLB_FLAGS_MASK &nbsp;(TLB_INVALID_MASK | TLB_NOTDIRTY | TLB_M=
+MIO \</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; | TLB_RECHECK)</div>
+<div>&#43;#define TLB_FLAGS_MASK \</div>
+<div>&#43; &nbsp; &nbsp;(TLB_INVALID_MASK &nbsp;\</div>
+<div>&#43; &nbsp; &nbsp; | TLB_NOTDIRTY &nbsp; &nbsp;\</div>
+<div>&#43; &nbsp; &nbsp; | TLB_MMIO &nbsp; &nbsp; &nbsp; &nbsp;\</div>
+<div>&#43; &nbsp; &nbsp; | TLB_RECHECK &nbsp; &nbsp; \</div>
+<div>&#43; &nbsp; &nbsp; | TLB_FORCE_SLOW)</div>
 <div>&nbsp;</div>
-<div>&nbsp;#endif</div>
+<div>&nbsp;/**</div>
+<div>&nbsp; * tlb_hit_page: return true if page aligned @addr is a hit agai=
+nst the</div>
 <div>--&nbsp;</div>
 <div>1.8.3.1</div>
 <div><br>
@@ -210,4 +230,4 @@ p; &nbsp; &nbsp; &nbsp;/* Size to MemOp. &nbsp;*/</div>
 </body>
 </html>
 
---_000_156403858694736125btcom_--
+--_000_156403864043621069btcom_--

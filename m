@@ -1,91 +1,87 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10325867wrv;
-        Thu, 25 Jul 2019 01:06:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxyl5g9oV5oUwbJk62UGakB44rM/ZE56zXLywdPLC6zaexuNlxLOR+1gUl3Mjxj4oDmjHw3
-X-Received: by 2002:a50:eac6:: with SMTP id u6mr75606343edp.83.1564042016362;
-        Thu, 25 Jul 2019 01:06:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564042016; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10334535wrv;
+        Thu, 25 Jul 2019 01:16:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz3mRfuJoKu1TWHQlrAiX8wtn1MMMww80A+nkMB+whdJoBzHvgq9vdAqRTTnF/Rjs3JdJO6
+X-Received: by 2002:a50:ae8f:: with SMTP id e15mr75099707edd.74.1564042589422;
+        Thu, 25 Jul 2019 01:16:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564042589; cv=none;
         d=google.com; s=arc-20160816;
-        b=qL+ppIvie4vX8uxLr9RU3PAxixi2TufIlMPni3Ma5ZMGl3xJrianHmCG2vILB072Sq
-         i8X845P7epLFehYy9pUfVi5tlBU5eAa/S6EoOfZumYD2hqtAc0Mv+FPuRgtZFKEBSXrm
-         xjn4dGoAIh2hrpdTWOqW2JCjDamG3xfA/OaJ5zL0qOQoTwyzxGC2Dx4COjeCp9yHjwkL
-         72SpfDPWMdGzZoV4/y7Be/mgQvNsZcbFaqiroz2rKhQpp65wp9ZTsURfoqhekgCZW1OZ
-         K4BctGDbPXwQmKM2T1X5tSeXc/4yGZA7HNOqi4PCOS7oSFxdX4qxuLDV2OhRV5KdgjCk
-         EW3Q==
+        b=VGLiGTW0/T+Lh3H3tn0RAmLTSWhJ2doFt2smAxs7o4CV/RdPuNgLf5SrK39WeVSsq6
+         7Zu70JmitICuRH95MMxP2q5oGvAFtcd96DzgNpL9gRqc1mTKEC1utGcup9letcrKvrlw
+         LunCzVsw66IbzYTkFKZWlFBePnb1MpjMZv3zEL3l4f5UlkIZwLsZA2rch3di6lK+0AAL
+         bPAu8cYnZsETIGxCyMrX/XhWIqiSXorTO27CO603qopXykjKRjatrowHedseCYSGQoOf
+         CuHtcSbHkYI4K14gkmOu1jfWAP0Iy5URUyxpKIgOxVUGfO8IbQcdULIteKV1kj5gtx6z
+         BaAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:to:from;
-        bh=96WXvUyZUPXlWAImSx4qG2UYpbTx5pn7ST13UkIfQKE=;
-        b=wkQCrpkgIgFgmvDhG2zmZp0rtImbI1kB/GcNwMpbkZXiONyDhzt/ZcH4MwODS4urY+
-         Cx9PxMd3cQw8hsvZEicIBi7xHxbA/aryBaJZCHfu/CQf8YjcS9zdlul5Km35YwEhmiHl
-         zT6Uutc5v4GHLEZd5aaVN/k1u9N0DJ4qVGLdIHFm4eFmy0CBErs/LoK0MKmxsalXg+W8
-         0J+CAWwvb9r0ffsMMthEZD4+NWiKST4FwDn0rwllC9LCTauewbI/MdS3X5TyJVmo60Nb
-         2KMtBmTqoVA2+jkdEzYkTp/rSWwSSTfY0+U5byqFWQL2wWNbsezw6iz54b/cuMqHjMK6
-         OsPQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=pXehI4uoZtMVse2N0JGWNDj/CxsVExY7nnJovaW66sk=;
+        b=xebDrHeOdAIK50Hbs3QgaiKLFlFq3l/CvKMQs43svuNXVdCHBOVi5FvGA7Fg6MAKmp
+         BhTe+XTYE6+Lfks+60aXTQntDXZy1Qikt43/a82QengXb4LDq+FVLl2DVo/cdqN36S67
+         FAO5AK9lscRQKl3rqm1dhZRK1JOSIcgWFzNfFGO64LNtEF2XJxRaIvJgUwLIYgSJUDeM
+         v+BmisyQOfa+qTkehDlCOmb8PBjoy3UzbGG5H9OHyP2VW/ZfTB+dXa91YxMoXCAQTFAX
+         aLmrvV64mCQhvanwmXCLU1iNBdO613DqDxWainkg3xsh4PEcqQ3rC4j+L3MrUo6z3VSq
+         tHxw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ha23si1966571ejb.56.2019.07.25.01.06.56
+        by mx.google.com with ESMTPS id s45si10965778edd.112.2019.07.25.01.16.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jul 2019 01:06:56 -0700 (PDT)
+        Thu, 25 Jul 2019 01:16:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:56920 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56956 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hqYm7-00057x-H4
-	for alex.bennee@linaro.org; Thu, 25 Jul 2019 04:06:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38896)
+	id 1hqYvM-0007ni-Fk
+	for alex.bennee@linaro.org; Thu, 25 Jul 2019 04:16:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40645)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <tony.nguyen@bt.com>) id 1hqYm3-00057f-UW
- for qemu-arm@nongnu.org; Thu, 25 Jul 2019 04:06:53 -0400
+ (envelope-from <dgilbert@redhat.com>) id 1hqYvH-0007nY-B5
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 04:16:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hqYm2-000498-LF
- for qemu-arm@nongnu.org; Thu, 25 Jul 2019 04:06:51 -0400
-Received: from smtpe1.intersmtp.com ([62.239.224.235]:50374)
+ (envelope-from <dgilbert@redhat.com>) id 1hqYvG-0006hV-76
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 04:16:23 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36298)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hqYlw-000476-Ul; Thu, 25 Jul 2019 04:06:45 -0400
-Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- RDW083A011ED67.bt.com (10.187.98.37) with Microsoft SMTP Server (TLS) id
- 14.3.439.0; Thu, 25 Jul 2019 09:11:48 +0100
-Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18e.domain1.systemhost.net (10.9.212.18) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Thu, 25 Jul 2019 09:06:39 +0100
-Received: from tpw09926dag18e.domain1.systemhost.net
- ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
- ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Thu, 25 Jul
- 2019 09:06:39 +0100
-From: <tony.nguyen@bt.com>
-To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v4 15/15] target/sparc: sun4u Invert Endian
- TTE bit
-Thread-Index: AQHVQr/jO7xRepGO106zKmk+g9KU3A==
-Date: Thu, 25 Jul 2019 08:06:39 +0000
-Message-ID: <1564041999359.53189@bt.com>
-References: <e9c6e5310b1a4863be45d45bf087fc3d@tpw09926dag18e.domain1.systemhost.net>, 
- <1563810716254.18886@bt.com>, <1564038073754.91133@bt.com>,
- <1564041524365.23360@bt.com>
-In-Reply-To: <1564041524365.23360@bt.com>
-Accept-Language: en-AU, en-GB, en-US
-Content-Language: en-AU
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.187.101.42]
-Content-Type: multipart/alternative; boundary="_000_156404199935953189btcom_"
+ (Exim 4.71) (envelope-from <dgilbert@redhat.com>)
+ id 1hqYvF-0006gm-Vr; Thu, 25 Jul 2019 04:16:22 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 049258F02B;
+ Thu, 25 Jul 2019 08:16:21 +0000 (UTC)
+Received: from work-vm (ovpn-117-187.ams2.redhat.com [10.36.117.187])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DD8265DD8E;
+ Thu, 25 Jul 2019 08:16:14 +0000 (UTC)
+Date: Thu, 25 Jul 2019 09:16:12 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <20190725081612.GA2656@work-vm>
+References: <20190724143553.21557-1-damien.hedde@greensocs.com>
+ <543de194-b4e9-de7b-3dab-55fcc0976bc2@redhat.com>
+ <20190724163812.GJ2717@work-vm>
+ <e66cc73d-d185-c52a-b9fd-5081f960f0d8@greensocs.com>
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 62.239.224.235
-Subject: [Qemu-arm] [Qemu-devel] [PATCH v4 15/15] target/sparc: sun4u Invert
- Endian TTE bit
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <e66cc73d-d185-c52a-b9fd-5081f960f0d8@greensocs.com>
+User-Agent: Mutt/1.12.0 (2019-05-25)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.26]); Thu, 25 Jul 2019 08:16:21 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for 4.1?] pl330: fix vmstate
+ description
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -97,240 +93,63 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, walling@linux.ibm.com, mst@redhat.com,
- palmer@sifive.com, mark.cave-ayland@ilande.co.uk, Alistair.Francis@wdc.com,
- arikalo@wavecomp.com, david@redhat.com, pasic@linux.ibm.com,
- borntraeger@de.ibm.com, rth@twiddle.net, atar4qemu@gmail.com,
- ehabkost@redhat.com, sw@weilnetz.de, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, david@gibson.dropbear.id.au, qemu-riscv@nongnu.org,
- cohuck@redhat.com, alex.williamson@redhat.com, qemu-ppc@nongnu.org,
- amarkovic@wavecomp.com, pbonzini@redhat.com, aurelien@aurel32.net
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k/ns6UauZfYU
+X-TUID: 9KhvqkwArjx+
 
---_000_156404199935953189btcom_
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+* Damien Hedde (damien.hedde@greensocs.com) wrote:
+>=20
+>=20
+> On 7/24/19 6:38 PM, Dr. David Alan Gilbert wrote:
+> > * Philippe Mathieu-Daud=E9 (philmd@redhat.com) wrote:
+> >> On 7/24/19 4:35 PM, Damien Hedde wrote:
+> >>> Fix the pl330 main and queue vmstate description.
+> >>> There were missing POINTER flags causing crashes during
+> >>> incoming migration because:
+> >>> + PL330State chan field is a pointer to an array
+> >>> + PL330Queue queue field is a pointer to an array
+> >>>
+> >>> Also bump corresponding vmsd version numbers.
+> >>>
+> >>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+> >>> ---
+> >>>
+> >>> I found this while working on reset with xilinx-zynq machine.
+> >>>
+> >>> I'm not sure what's the vmsd version policy in such cases (for
+> >>> backward compatibility). I've simply bumped them since migration
+> >>> was not working anyway (vmstate_load_state was erasing critical par=
+t
+> >>> of PL330State and causing segfaults while loading following fields)=
+.
+> >>
+> >> I still not understand versioning and migration
+> >=20
+> > Incrementing the version (and minimum) is the right thing
+> > to do if you conclude the old one was hopelessly broken.
+> > Migration to and from old qemu breaks, but who cares since it was toa=
+st
+> > anyway.
+> > As far as I can tell pl330 is only on our zynq and exynos models
+> > so wont break our versioned 'virt' type.
+> > So from a migration point of view:
+>=20
+> Since switching from VARRAY to VARRAY_POINTER does not change the size
+> of what's migrated, it should be possible to accept migration from old
+> qemu if we can ignore the data in such cases and default to something
+> (but what ? put the pl330 in reset state ?)
 
-This bit configures endianness of PCI MMIO devices. It is used by
-Solaris and OpenBSD sunhme drivers.
+I don't think it's worth worrying about doing that unless you need to
+preserve migration compatibility - which is less important for
+stuff where it's used for dev rather than VMs
 
-Tested working on OpenBSD.
 
-Unfortunately Solaris 10 had a unrelated keyboard issue blocking
-testing... another inch towards Solaris 10 on SPARC64 =3D)
+Dave
 
-Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
----
- target/sparc/cpu.h        | 2 ++
- target/sparc/mmu_helper.c | 8 +++++++-
- 2 files changed, 9 insertions(+), 1 deletion(-)
-
-diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-index 8ed2250..77e8e07 100644
---- a/target/sparc/cpu.h
-+++ b/target/sparc/cpu.h
-@@ -277,6 +277,7 @@ enum {
-
- #define TTE_VALID_BIT       (1ULL << 63)
- #define TTE_NFO_BIT         (1ULL << 60)
-+#define TTE_IE_BIT          (1ULL << 59)
- #define TTE_USED_BIT        (1ULL << 41)
- #define TTE_LOCKED_BIT      (1ULL <<  6)
- #define TTE_SIDEEFFECT_BIT  (1ULL <<  3)
-@@ -293,6 +294,7 @@ enum {
-
- #define TTE_IS_VALID(tte)   ((tte) & TTE_VALID_BIT)
- #define TTE_IS_NFO(tte)     ((tte) & TTE_NFO_BIT)
-+#define TTE_IS_IE(tte)      ((tte) & TTE_IE_BIT)
- #define TTE_IS_USED(tte)    ((tte) & TTE_USED_BIT)
- #define TTE_IS_LOCKED(tte)  ((tte) & TTE_LOCKED_BIT)
- #define TTE_IS_SIDEEFFECT(tte) ((tte) & TTE_SIDEEFFECT_BIT)
-diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c
-index 826e14b..77dc86a 100644
---- a/target/sparc/mmu_helper.c
-+++ b/target/sparc/mmu_helper.c
-@@ -537,6 +537,10 @@ static int get_physical_address_data(CPUSPARCState *en=
-v, hwaddr *physical,
-         if (ultrasparc_tag_match(&env->dtlb[i], address, context, physical=
-)) {
-             int do_fault =3D 0;
-
-+            if (TTE_IS_IE(env->dtlb[i].tte)) {
-+                attrs->byte_swap =3D true;
-+            }
-+
-             /* access ok? */
-             /* multiple bits in SFSR.FT may be set on TT_DFAULT */
-             if (TTE_IS_PRIV(env->dtlb[i].tte) && is_user) {
-@@ -792,7 +796,7 @@ void dump_mmu(CPUSPARCState *env)
-             }
-             if (TTE_IS_VALID(env->dtlb[i].tte)) {
-                 qemu_printf("[%02u] VA: %" PRIx64 ", PA: %llx"
--                            ", %s, %s, %s, %s, ctx %" PRId64 " %s\n",
-+                            ", %s, %s, %s, %s, ie %s, ctx %" PRId64 " %s\n=
-",
-                             i,
-                             env->dtlb[i].tag & (uint64_t)~0x1fffULL,
-                             TTE_PA(env->dtlb[i].tte),
-@@ -801,6 +805,8 @@ void dump_mmu(CPUSPARCState *env)
-                             TTE_IS_W_OK(env->dtlb[i].tte) ? "RW" : "RO",
-                             TTE_IS_LOCKED(env->dtlb[i].tte) ?
-                             "locked" : "unlocked",
-+                            TTE_IS_IE(env->dtlb[i].tte) ?
-+                            "yes" : "no",
-                             env->dtlb[i].tag & (uint64_t)0x1fffULL,
-                             TTE_IS_GLOBAL(env->dtlb[i].tte) ?
-                             "global" : "local");
+> Thanks,
+> Damien
 --
-1.8.3.1
-
-
-
-
---_000_156404199935953189btcom_
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<style type=3D"text/css" style=3D"display:none"><!-- P { margin-top: 0px; m=
-argin-bottom: 0px; } .EmailQuote { margin-left: 1pt; padding-left: 4pt; bor=
-der-left-width: 2px; border-left-style: solid; border-left-color: rgb(128, =
-0, 0); }--></style>
-</head>
-<body dir=3D"ltr" style=3D"font-size:12pt;color:#000000;background-color:#F=
-FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
-<p></p>
-<div><span style=3D"font-size: 12pt;">This bit configures endianness of PCI=
- MMIO devices. It is used by</span><br>
-</div>
-<div>Solaris and OpenBSD sunhme drivers.</div>
-<div><br>
-</div>
-<div>Tested working on OpenBSD.</div>
-<div><br>
-</div>
-<div>Unfortunately Solaris 10 had a unrelated keyboard issue blocking</div>
-<div>testing... another inch towards Solaris 10 on SPARC64 =3D)</div>
-<div><br>
-</div>
-<div>Signed-off-by: Tony Nguyen &lt;tony.nguyen@bt.com&gt;</div>
-<div>---</div>
-<div>&nbsp;target/sparc/cpu.h &nbsp; &nbsp; &nbsp; &nbsp;| 2 &#43;&#43;</di=
-v>
-<div>&nbsp;target/sparc/mmu_helper.c | 8 &#43;&#43;&#43;&#43;&#43;&#43;&#43=
-;-</div>
-<div>&nbsp;2 files changed, 9 insertions(&#43;), 1 deletion(-)</div>
-<div><br>
-</div>
-<div>diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h</div>
-<div>index 8ed2250..77e8e07 100644</div>
-<div>--- a/target/sparc/cpu.h</div>
-<div>&#43;&#43;&#43; b/target/sparc/cpu.h</div>
-<div>@@ -277,6 &#43;277,7 @@ enum {</div>
-<div>&nbsp;</div>
-<div>&nbsp;#define TTE_VALID_BIT &nbsp; &nbsp; &nbsp; (1ULL &lt;&lt; 63)</d=
-iv>
-<div>&nbsp;#define TTE_NFO_BIT &nbsp; &nbsp; &nbsp; &nbsp; (1ULL &lt;&lt; 6=
-0)</div>
-<div>&#43;#define TTE_IE_BIT &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(1ULL &lt;&l=
-t; 59)</div>
-<div>&nbsp;#define TTE_USED_BIT &nbsp; &nbsp; &nbsp; &nbsp;(1ULL &lt;&lt; 4=
-1)</div>
-<div>&nbsp;#define TTE_LOCKED_BIT &nbsp; &nbsp; &nbsp;(1ULL &lt;&lt; &nbsp;=
-6)</div>
-<div>&nbsp;#define TTE_SIDEEFFECT_BIT &nbsp;(1ULL &lt;&lt; &nbsp;3)</div>
-<div>@@ -293,6 &#43;294,7 @@ enum {</div>
-<div>&nbsp;</div>
-<div>&nbsp;#define TTE_IS_VALID(tte) &nbsp; ((tte) &amp; TTE_VALID_BIT)</di=
-v>
-<div>&nbsp;#define TTE_IS_NFO(tte) &nbsp; &nbsp; ((tte) &amp; TTE_NFO_BIT)<=
-/div>
-<div>&#43;#define TTE_IS_IE(tte) &nbsp; &nbsp; &nbsp;((tte) &amp; TTE_IE_BI=
-T)</div>
-<div>&nbsp;#define TTE_IS_USED(tte) &nbsp; &nbsp;((tte) &amp; TTE_USED_BIT)=
-</div>
-<div>&nbsp;#define TTE_IS_LOCKED(tte) &nbsp;((tte) &amp; TTE_LOCKED_BIT)</d=
-iv>
-<div>&nbsp;#define TTE_IS_SIDEEFFECT(tte) ((tte) &amp; TTE_SIDEEFFECT_BIT)<=
-/div>
-<div>diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c</di=
-v>
-<div>index 826e14b..77dc86a 100644</div>
-<div>--- a/target/sparc/mmu_helper.c</div>
-<div>&#43;&#43;&#43; b/target/sparc/mmu_helper.c</div>
-<div>@@ -537,6 &#43;537,10 @@ static int get_physical_address_data(CPUSPARC=
-State *env, hwaddr *physical,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (ultrasparc_tag_match(&amp;env-&g=
-t;dtlb[i], address, context, physical)) {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;int do_fault =3D 0;</d=
-iv>
-<div>&nbsp;</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (TTE_IS_IE(env-&gt;d=
-tlb[i].tte)) {</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;attrs-&gt=
-;byte_swap =3D true;</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&#43;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* access ok? */</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* multiple bits in SF=
-SR.FT may be set on TT_DFAULT */</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (TTE_IS_PRIV(env-&g=
-t;dtlb[i].tte) &amp;&amp; is_user) {</div>
-<div>@@ -792,7 &#43;796,7 @@ void dump_mmu(CPUSPARCState *env)</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (TTE_IS_VALID(env-&=
-gt;dtlb[i].tte)) {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;qemu_pri=
-ntf(&quot;[%02u] VA: %&quot; PRIx64 &quot;, PA: %llx&quot;</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp; &nbsp;&quot;, %s, %s, %s, %s, ctx %&quot; PRId64 &qu=
-ot; %s\n&quot;,</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;, %s, %s, %s, %s, ie %s, ctx %&quot;=
- PRId64 &quot; %s\n&quot;,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;i,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;env-&gt;dtlb[i].tag &amp; (uint64_t)~0x1f=
-ffULL,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TTE_PA(env-&gt;dtlb[i].tte),</div>
-<div>@@ -801,6 &#43;805,8 @@ void dump_mmu(CPUSPARCState *env)</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TTE_IS_W_OK(env-&gt;dtlb[i].tte) ? &quot;=
-RW&quot; : &quot;RO&quot;,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TTE_IS_LOCKED(env-&gt;dtlb[i].tte) ?</div=
->
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;locked&quot; : &quot;unlocked&quot;=
-,</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TTE_IS_IE(env-&gt;dtlb[i].tte) ?</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;yes&quot; : &quot;no&quot;,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;env-&gt;dtlb[i].tag &amp; (uint64_t)0x1ff=
-fULL,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TTE_IS_GLOBAL(env-&gt;dtlb[i].tte) ?</div=
->
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;global&quot; : &quot;local&quot;);<=
-/div>
-<div>--&nbsp;</div>
-<div>1.8.3.1</div>
-<div><br>
-<br>
-</div>
-<p><br>
-</p>
-</body>
-</html>
-
---_000_156404199935953189btcom_--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK

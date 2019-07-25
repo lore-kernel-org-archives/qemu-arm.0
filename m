@@ -1,96 +1,96 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10836675wrv;
-        Thu, 25 Jul 2019 09:37:44 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzDarkVw4275liAFyTQX9qi+FhJDmRSQQWWqIb3xccgdREjAusZYOMaU1vFZSnqcpJ3abez
-X-Received: by 2002:a67:b70f:: with SMTP id h15mr51225897vsf.161.1564072664414;
-        Thu, 25 Jul 2019 09:37:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564072664; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10836725wrv;
+        Thu, 25 Jul 2019 09:37:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwYVc0V+lAnu/x6G7g/WkQ+Pr5To5AOA2xBNBM/Yee8+JGyRICptWV4Ow6nwb2l8ATSNCAP
+X-Received: by 2002:a17:906:fd5:: with SMTP id c21mr69119699ejk.135.1564072667244;
+        Thu, 25 Jul 2019 09:37:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564072667; cv=none;
         d=google.com; s=arc-20160816;
-        b=YUTbRazlAqvT9IvvlrZj4IVlltqF1lucaACTm+H/Z1mxWgyr3gtUmsCLyZqvDR3BLC
-         YVKMVVr+4351t7joL7RWiva2hSJMDJcl++rZiZafSUntfsnprQYP/x1iJIbzv/oHEn7a
-         bVkm4bR0Pu5kBdmH6gQgn/LjP0ay/htOYh7JugQCmhtyk9O/tPQz4b9nJnDx4gRSlDKc
-         F0VAjfdt0XYGo5Wjj+cg3I2Q4Ru+0UmEKq+6R6d9tp4Nk5TWdAfSUlplAMZLzz86D4xQ
-         ky6bEvvta526B1m7OuanslrIKS//XlR9LkxWeYYY1sdRafmAo6VbfGvkqH3KeeaXK0w5
-         R0mQ==
+        b=qjed+21OHTXbhechWlLRzzCKo7EI3dMITO/FriEXJnfx/O6SMax6VvtxJ287CF7tFE
+         sz26apZa5erG/CByMyHLbV+qBZmf2dvLqH0zxhiTLJJ9HLJMH7ZicOU8ugOilXFtGh4n
+         Y6W9bYpTjBTt3MwMHuvWc4bZ7KUXihuZUka10taVyO0WYqR/pZbg88fI7Ue5ZsYF8OTv
+         tZ51A93IsPyDvEfyj5LEs+sUt1rKxbbUHPJFQ78XNGu0tzx5WOEKafJImC/Hinh6+tnD
+         /wOqLralYYm+WVXW5qF3lxpcQd51kQw9ZYr0RHgZhtCwOHdlXIEuN5W4X+UO0DUVw+lR
+         y/TQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=yM6cVpuxn4Ke92kaJ4AKkVK8RWiK/GxhKcUyMJM8z1M=;
-        b=XKYZjGz28XEZIZA+xfPAu+qSohL2B5PQhjL8TW06R8Yamukga9FJdgnbAAHCl6721M
-         jvqULE4NnVG2T6ROB5F9zDlLt3Z+mqy1cBlBujEf8cx36QuvpjIs/DjSzQ5hzrPoQJgi
-         GJtiJtiGshdRoPwqE2p9lfxXUabXhxSHZgI6K3gwrl0F81WmbtGYaoBAfLyQbQcyXC00
-         26tYHxV/ZzCb6Noxe3FnnpLqLarQLjr6vay4CkIdAGas/L8ks00c0wfl+4JelqijykQg
-         f3nSgna22X51LHrVpYjTTvejQ+a0dR4pNVeCFz/zSzZGB9cvNLW04OQqgzL/fFHgJDHh
-         YQmg==
+        bh=vYIyeQ8tMXnaOwO0DQZAfFrr4L+yvHcwOrLW+5bk0zY=;
+        b=ClNUpY1qICm8obsClNBVsptzdUXgNt8aBorUyt4JpePfOfiUvVkrVO5J18caVdYPDa
+         svRmPafSpjkFjgGn1BBjMrNs/vbrshruuhnjzd3uZ0fxOLv3wqyz5AcoQNJ7dFCkoIBS
+         Nll0OVgK33UnreTd+OW9EUJB8aSztcjVNZFwj1uG8up09qgcBImKcutF85urE86ZEBX6
+         xDAfEyUc7KJ42h/HOEAbRNWqfqrHrg7yZ2DF/f36lO0lMXNmFVVnCc6hNNTubqKEZnNE
+         XvifC5aLF0vECUokG+KJuYZjmb6QJmfd0WPaWPznZC5pep6+jYnerFqVny3LN1w9otgi
+         MPlw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DjFVat4F;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BIIE0CQg;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r7si2216252vkd.7.2019.07.25.09.37.44
+        by mx.google.com with ESMTPS id f6si10795591edx.449.2019.07.25.09.37.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jul 2019 09:37:44 -0700 (PDT)
+        Thu, 25 Jul 2019 09:37:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=DjFVat4F;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BIIE0CQg;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33918 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33922 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hqgkR-0005nU-Fu
-	for alex.bennee@linaro.org; Thu, 25 Jul 2019 12:37:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48366)
+	id 1hqgkU-000618-0D
+	for alex.bennee@linaro.org; Thu, 25 Jul 2019 12:37:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48407)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hqgk0-0004bY-H9
- for qemu-devel@nongnu.org; Thu, 25 Jul 2019 12:37:17 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hqgk1-0004bv-S7
+ for qemu-devel@nongnu.org; Thu, 25 Jul 2019 12:37:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hqgjz-0007EZ-CJ
- for qemu-devel@nongnu.org; Thu, 25 Jul 2019 12:37:16 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:55848)
+ (envelope-from <peter.maydell@linaro.org>) id 1hqgk0-0007GX-Jm
+ for qemu-devel@nongnu.org; Thu, 25 Jul 2019 12:37:17 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:38907)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hqgjz-0007DE-68
- for qemu-devel@nongnu.org; Thu, 25 Jul 2019 12:37:15 -0400
-Received: by mail-wm1-x341.google.com with SMTP id a15so45582588wmj.5
- for <qemu-devel@nongnu.org>; Thu, 25 Jul 2019 09:37:15 -0700 (PDT)
+ id 1hqgk0-0007FA-Af
+ for qemu-devel@nongnu.org; Thu, 25 Jul 2019 12:37:16 -0400
+Received: by mail-wm1-x341.google.com with SMTP id s15so23961600wmj.3
+ for <qemu-devel@nongnu.org>; Thu, 25 Jul 2019 09:37:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=yM6cVpuxn4Ke92kaJ4AKkVK8RWiK/GxhKcUyMJM8z1M=;
- b=DjFVat4FH98pFLbbLk+slSWzmsHNOwovfvZGBlQivOkRG7faTKI4L17ghY1gr0OT8e
- dEyxzQp+sEZb3zmxy7p4NEuXHEF7dcSOCLREPlVQlAj4jq2CTp1s8Z7uawZ5Y70Ri3Pt
- FAJhHPaygvT7rEL4jNOQhJOjPqvDTSIo30Le3qdEd+D1Vkona5/NouCdJx7jMD4A/l9F
- iVLcDOn56kRqGdAVpTDhCTP7hQBJgih1aaeC011DEupvIoEerSecl/hO2aNq2+/HFQFP
- FDbau2qt4aMqfbZl/VGXpo/Zfh+LzDy01qmuQ7L+Bo8wrBo+rgFpZ7IWU8Kuz02NG5CZ
- W4Qg==
+ bh=vYIyeQ8tMXnaOwO0DQZAfFrr4L+yvHcwOrLW+5bk0zY=;
+ b=BIIE0CQgSuzQhD5JHhS+DUvDX58ZBtNd/3IMydrGj9GMl5erOtSqeUQiDgup9G7f7H
+ jZPsrsDgzOQsBRMSk0u64vW8VoEfiw44RoMj2h9u/sx1SPMTd9VRCoSvbHopi2OSyCOS
+ 8ob7cBKA8ZlJe++dzY9xH8y3lMi8IY+74u2NAfrQWPiSiX6ewS3XzE8TW3uT9Xm5l8Ta
+ e2oea7RgQHsYdJWuTDCCJJd6fHhlMWuHTtq8QOxk/0q+sIaSBBPenVsAVj/tk0aTdenj
+ KixokBmtWXSFayPuuXM6cQfMlkHOjz0UgPvEq2zoVJtA6eNIPtFunUIoPTJioiZGb9mI
+ wDcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=yM6cVpuxn4Ke92kaJ4AKkVK8RWiK/GxhKcUyMJM8z1M=;
- b=F3PUCcFM2EDAF1DzV+SpxO5J1c/9vVuTeqOWWvA1CIJiUPspjSyrIJ7MZWUobffbzA
- 9QhaOfZwqf3+mbzE/WHSpwULg7LdvJsQduVryuH8nN6c3sTFKdDKhKCfk9miKmMyvVnz
- CXyZeHh7G10KULCZH+0ZcBQtECuvMLOpEsh/LUk+6tuTcq2GGuv3/KBtpGruSjijvxaw
- 2vSmczx6lLsGmLjgwccs82fneKWoUA0ppjZKwFCQJUJb3RI20vu99fosNImtE59/r9Gm
- 3jjWLGKJ4nHxdDa5uD89LcJsUye8QDXFwdVMgWv0nujDzlIrHZSm35g9A0Hag42GhovB
- zxBw==
-X-Gm-Message-State: APjAAAUrpVpee70+0Yv08a30J2PfiTAFTwPjGk+XYTELA2NpB0Xz2Mjv
- znDZXosFX1VTemQUi0Ovsxs9ZRwROtD1NQ==
-X-Received: by 2002:a1c:7e85:: with SMTP id z127mr82974403wmc.95.1564072634239; 
- Thu, 25 Jul 2019 09:37:14 -0700 (PDT)
+ bh=vYIyeQ8tMXnaOwO0DQZAfFrr4L+yvHcwOrLW+5bk0zY=;
+ b=LejxTIXt0M2+u+GMd5TNZ8F7KLEZP4I5LS7x032E+LH0w42k9hRqZ3Nq0EMYL/8y0K
+ 64bhbkiWCtWOg2ffeg3jo6g+/53v65xrxv2hI3g7eEqY4bgSLMXWTf+lA0bqA8R+E+4x
+ Jdztm26LOeMpxJC7AxWaWTGS07mcaaubaboG6u4wEkAXWWbeKMmidEOQOUX5qjC5LmNU
+ mJepdkflXd2Tm2WQEvn0m9NxSYnto1aA1CmnPXYsYzu6799d2pV1jhBC9GsDFe4wtsy6
+ FcZE7jlbyZP+gRvGTd/Wzr0279UFuggT/6MfBicMd4D6BWhu8/KB6UuBNixalV8bBAOv
+ wd9Q==
+X-Gm-Message-State: APjAAAX8JSEPP+pANMa1g4L9PDiV4MPi0sTbpB9rVRakgspAkXuLwl3Q
+ loC1wvwjjwi8TXb0kd4650eHdQ==
+X-Received: by 2002:a1c:35c2:: with SMTP id c185mr79395234wma.58.1564072635360; 
+ Thu, 25 Jul 2019 09:37:15 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id c7sm44125140wro.70.2019.07.25.09.37.12
+ by smtp.gmail.com with ESMTPSA id c7sm44125140wro.70.2019.07.25.09.37.14
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Thu, 25 Jul 2019 09:37:13 -0700 (PDT)
+ Thu, 25 Jul 2019 09:37:14 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Thu, 25 Jul 2019 17:37:09 +0100
-Message-Id: <20190725163710.11703-2-peter.maydell@linaro.org>
+Date: Thu, 25 Jul 2019 17:37:10 +0100
+Message-Id: <20190725163710.11703-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190725163710.11703-1-peter.maydell@linaro.org>
 References: <20190725163710.11703-1-peter.maydell@linaro.org>
@@ -99,8 +99,8 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 2a00:1450:4864:20::341
-Subject: [Qemu-devel] [PATCH for-4.1? 1/2] stellaris_input: Fix vmstate
- description of buttons field
+Subject: [Qemu-devel] [PATCH for-4.1? 2/2] vmstate.h: Type check
+ VMSTATE_STRUCT_VARRAY macros
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,45 +117,120 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>,
  Juan Quintela <quintela@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VvhibG08Ekph
+X-TUID: Rsdns+W5ICq2
 
-gamepad_state::buttons is a pointer to an array of structs,
-not an array of structs, so should be declared in the vmstate
-with VMSTATE_STRUCT_VARRAY_POINTER_INT32; otherwise we
-corrupt memory on incoming migration.
+The VMSTATE_STRUCT_VARRAY_UINT32 macro is intended to handle
+migrating a field which is an array of structs, but where instead of
+migrating the entire array we only migrate a variable number of
+elements of it.
 
-We bump the vmstate version field as the easiest way to
-deal with the migration break, since migration wouldn't have
-worked reliably before anyway.
+The VMSTATE_STRUCT_VARRAY_POINTER_UINT32 macro is intended to handle
+migrating a field which is of pointer type, and points to a
+dynamically allocated array of structs of variable size.
+
+We weren't actually checking that the field passed to
+VMSTATE_STRUCT_VARRAY_UINT32 really is an array, with the result that
+accidentally using it where the _POINTER_ macro was intended would
+compile but silently corrupt memory on migration.
+
+Add type-checking that enforces that the field passed in is
+really of the right array type. This applies to all the VMSTATE
+macros which use flags including VMS_VARRAY_* but not VMS_POINTER.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/input/stellaris_input.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ include/migration/vmstate.h | 27 +++++++++++++++++++++------
+ 1 file changed, 21 insertions(+), 6 deletions(-)
 
-diff --git a/hw/input/stellaris_input.c b/hw/input/stellaris_input.c
-index 20c87d86f40..3a666d61d47 100644
---- a/hw/input/stellaris_input.c
-+++ b/hw/input/stellaris_input.c
-@@ -60,12 +60,14 @@ static const VMStateDescription vmstate_stellaris_button = {
+diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
+index ca68584eba4..2df333c3612 100644
+--- a/include/migration/vmstate.h
++++ b/include/migration/vmstate.h
+@@ -227,8 +227,19 @@ extern const VMStateInfo vmstate_info_bitmap;
+ extern const VMStateInfo vmstate_info_qtailq;
  
- static const VMStateDescription vmstate_stellaris_gamepad = {
-     .name = "stellaris_gamepad",
--    .version_id = 1,
--    .minimum_version_id = 1,
-+    .version_id = 2,
-+    .minimum_version_id = 2,
-     .fields = (VMStateField[]) {
-         VMSTATE_INT32(extension, gamepad_state),
--        VMSTATE_STRUCT_VARRAY_INT32(buttons, gamepad_state, num_buttons, 0,
--                              vmstate_stellaris_button, gamepad_button),
-+        VMSTATE_STRUCT_VARRAY_POINTER_INT32(buttons, gamepad_state,
-+                                            num_buttons,
-+                                            vmstate_stellaris_button,
-+                                            gamepad_button),
-         VMSTATE_END_OF_LIST()
-     }
- };
+ #define type_check_2darray(t1,t2,n,m) ((t1(*)[n][m])0 - (t2*)0)
++/* Check that t2 is an array of t1 of size n */
+ #define type_check_array(t1,t2,n) ((t1(*)[n])0 - (t2*)0)
+ #define type_check_pointer(t1,t2) ((t1**)0 - (t2*)0)
++/*
++ * type of element 0 of the specified (array) field of the type.
++ * Note that if the field is a pointer then this will return the
++ * pointed-to type rather than complaining.
++ */
++#define typeof_elt_of_field(type, field) typeof(((type *)0)->field[0])
++/* Check that field f in struct type t2 is an array of t1, of any size */
++#define type_check_varray(t1, t2, f)                                 \
++    (type_check(t1, typeof_elt_of_field(t2, f))                      \
++     + QEMU_BUILD_BUG_ON_ZERO(!QEMU_IS_ARRAY(((t2 *)0)->f)))
+ 
+ #define vmstate_offset_value(_state, _field, _type)                  \
+     (offsetof(_state, _field) +                                      \
+@@ -253,6 +264,10 @@ extern const VMStateInfo vmstate_info_qtailq;
+     vmstate_offset_array(_state, _field, uint8_t,                    \
+                          sizeof(typeof_field(_state, _field)))
+ 
++#define vmstate_offset_varray(_state, _field, _type)                 \
++    (offsetof(_state, _field) +                                      \
++     type_check_varray(_type, _state, _field))
++
+ /* In the macros below, if there is a _version, that means the macro's
+  * field will be processed only if the version being received is >=
+  * the _version specified.  In general, if you add a new field, you
+@@ -347,7 +362,7 @@ extern const VMStateInfo vmstate_info_qtailq;
+     .info       = &(_info),                                          \
+     .size       = sizeof(_type),                                     \
+     .flags      = VMS_VARRAY_UINT32|VMS_MULTIPLY_ELEMENTS,           \
+-    .offset     = offsetof(_state, _field),                          \
++    .offset     = vmstate_offset_varray(_state, _field, _type),      \
+ }
+ 
+ #define VMSTATE_ARRAY_TEST(_field, _state, _num, _test, _info, _type) {\
+@@ -376,7 +391,7 @@ extern const VMStateInfo vmstate_info_qtailq;
+     .info       = &(_info),                                          \
+     .size       = sizeof(_type),                                     \
+     .flags      = VMS_VARRAY_INT32,                                  \
+-    .offset     = offsetof(_state, _field),                          \
++    .offset     = vmstate_offset_varray(_state, _field, _type),      \
+ }
+ 
+ #define VMSTATE_VARRAY_INT32(_field, _state, _field_num, _version, _info, _type) {\
+@@ -416,7 +431,7 @@ extern const VMStateInfo vmstate_info_qtailq;
+     .info       = &(_info),                                          \
+     .size       = sizeof(_type),                                     \
+     .flags      = VMS_VARRAY_UINT16,                                 \
+-    .offset     = offsetof(_state, _field),                          \
++    .offset     = vmstate_offset_varray(_state, _field, _type),      \
+ }
+ 
+ #define VMSTATE_VSTRUCT_TEST(_field, _state, _test, _version, _vmsd, _type, _struct_version) { \
+@@ -520,7 +535,7 @@ extern const VMStateInfo vmstate_info_qtailq;
+     .vmsd       = &(_vmsd),                                          \
+     .size       = sizeof(_type),                                     \
+     .flags      = VMS_STRUCT|VMS_VARRAY_UINT8,                       \
+-    .offset     = offsetof(_state, _field),                          \
++    .offset     = vmstate_offset_varray(_state, _field, _type),      \
+ }
+ 
+ /* a variable length array (i.e. _type *_field) but we know the
+@@ -573,7 +588,7 @@ extern const VMStateInfo vmstate_info_qtailq;
+     .vmsd       = &(_vmsd),                                          \
+     .size       = sizeof(_type),                                     \
+     .flags      = VMS_STRUCT|VMS_VARRAY_INT32,                       \
+-    .offset     = offsetof(_state, _field),                          \
++    .offset     = vmstate_offset_varray(_state, _field, _type),      \
+ }
+ 
+ #define VMSTATE_STRUCT_VARRAY_UINT32(_field, _state, _field_num, _version, _vmsd, _type) { \
+@@ -583,7 +598,7 @@ extern const VMStateInfo vmstate_info_qtailq;
+     .vmsd       = &(_vmsd),                                          \
+     .size       = sizeof(_type),                                     \
+     .flags      = VMS_STRUCT|VMS_VARRAY_UINT32,                      \
+-    .offset     = offsetof(_state, _field),                          \
++    .offset     = vmstate_offset_varray(_state, _field, _type),      \
+ }
+ 
+ #define VMSTATE_STRUCT_VARRAY_ALLOC(_field, _state, _field_num, _version, _vmsd, _type) {\
 -- 
 2.20.1
 

@@ -1,170 +1,232 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3525330lfq;
-        Mon, 28 Sep 2020 03:55:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwrfVZp1F1Uk0tYB6nHgyVBL8Pqh/1kD82HuYjRzxz+JB/xH0aY3NsKSW43m4kskXlHNjuT
-X-Received: by 2002:a25:900b:: with SMTP id s11mr1098781ybl.426.1601290543070;
-        Mon, 28 Sep 2020 03:55:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601290543; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10321976wrv;
+        Thu, 25 Jul 2019 01:03:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxcAhfrL5kFRoG2hj6DSCU3MCPT7voHzhujoByAJ4AfRE2I1VmSmqXAh4qFpr3Yw9u0tA9P
+X-Received: by 2002:a50:f70c:: with SMTP id g12mr76613507edn.139.1564041815310;
+        Thu, 25 Jul 2019 01:03:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564041815; cv=none;
         d=google.com; s=arc-20160816;
-        b=blbHX8XIN8E1tOU62bJ4hBeH0kSCfDeNfx6TUSORL7EeoM0INlvW17uFF6vlsC/IEr
-         BlUd76bUTaWunvn6zXASuLEjqtz4v8d0a3notkjZ+nyirjtifaKO7ZHVWUMh5Gu9kxbu
-         mgYBXRvAtcXcVGjWH3g8rgCgtqTx0LVOAMq7YhgX2mlUpLe8fwSloVzOgLaLlL7ZPpwq
-         IiAuKpusqvQDTo11kssIBq46rdu4/bSfVT6RaDO3ghYA9gi2Pg2VDXJd2HGAHYirwu//
-         +/2+ibIjm+ELC1ZwVOOme1f/Gj+V9hy6upH9Pq3jXcX6Opy4aNN7J7qXzh2VqVi7z8ES
-         Qgkw==
+        b=owXDBo5x/26eBfvsjNmxOf1Uqt1jxQQoli4dmwEtL8dq7x4u0EN2f2eI1MCUqBlh9q
+         jEcil9I65KDt0JzLpj+j5p7CYFJ2Q3yMeytj6W9iySB2jBBGpYWsEYy2UfQLPgUIKK5V
+         5VrG0LHPoP8s9Zv/3VTjv8PGcCUFNeYXpw0taWy8dyAQuxnrB0r7JVvNOsDHUiu6GAIM
+         ktBZJDOeFGbxO9F7JXgFZhtwb+yKBPg6Gikqvyj6LCFYCsC6x8VPEi0X33y5toKGfA8H
+         iKPDr5OQXWRktTMSoFaBtd/xjd+1GGslnlRR+cAPUmisGOexy60qbmAWHkbEJgJVY/Sh
+         Gmlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=B/O5gsXjKG4eYKRVeKOAbZCyaCMso8Y+a7OWQwBVyq4=;
-        b=jwQZAOkydmGWNUZPRCgNuts6p+UEpvMzioXqRrVqEpBrSy7T+6osMYCMl8ppcKi/JI
-         eDy3yusivoXxZ4U8spMYkxAxVvwWOL7vivvUBA+YQf1NSbxNJqiTpDsmkKdy2/Cpnyhn
-         0CpfSbDVkH7QBF5EwYcBLQyBh7AMQ1B+L+j3pWpOAWcsdL0rlB0TJSxM7eSll9nlSTsw
-         FMacr/uR8rKeto8hdxxsgtIBc0rga3D0NvAwGpeyZpht/HFjuznLOG7WPz0wqvIrHpXs
-         Bl9vzzlsP8jfkPNgKIM7WC/r0yfj/G9n1jDFELDk1HOr2pJ6WXwkkJua4+DNQbAoLMT/
-         +8kQ==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-language:accept-language:in-reply-to:references:message-id
+         :date:thread-index:thread-topic:to:from;
+        bh=Ey7fVRwiGDMYKE6TQw9ADzQFa0zdcT5EWMgD8uZWgtY=;
+        b=LddyB5IBKUuOrgttV2IHakV+kRBa9SXRDUwl3OmD8mpAijgXGQW8eLUe7e99oy9BzY
+         PSqOQ9KmeOrvZvEuqdvYBm/e2DptBjLY5Ak4OsrJY4aJOU8PLsmekNALoB2cvNaZeZic
+         jq5/TTkaR0xa8qtLLAvMqvAjU8I/biAR/PJJi7BtamQFfRVB/kCn/ZpVW8OMBI8/XQd2
+         LHCwqacJ+nekZI+PwM7dFaKYG+s2iL2rP4J/rXyRtQX5MD/978tMQ+gZym21ojEVgA5b
+         V4MX176i94uWgm33L6Sx4xkLzH7K++wTkIbT57P0f6zqPopV1Z4QTHAV6/6vkatTjYnW
+         v8yA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VesCkVAh;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a63si451014ybg.163.2020.09.28.03.55.42
+        by mx.google.com with ESMTPS id 90si9854354edq.146.2019.07.25.01.03.35
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Sep 2020 03:55:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 25 Jul 2019 01:03:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VesCkVAh;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40844 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kMqoo-0004if-DG
-	for alex.bennee@linaro.org; Mon, 28 Sep 2020 06:55:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44018)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kMqct-0007zF-88
- for qemu-devel@nongnu.org; Mon, 28 Sep 2020 06:43:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:59890)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kMqcp-0006JM-Qd
- for qemu-devel@nongnu.org; Mon, 28 Sep 2020 06:43:22 -0400
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601289799;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=B/O5gsXjKG4eYKRVeKOAbZCyaCMso8Y+a7OWQwBVyq4=;
- b=VesCkVAhE3g0t4mFSUzuwrhPDg6vlKCoRKbswwhakyndEDHZ+Yox+JN9mxz+BJM33Gu056
- fg5jBFVUM6vgrPdBfhjKr9HMVy/LGUbnr7GsYY8fK0HfvI/yrmPfDEbdWa39sPRHLQGQc0
- w91w1YtPyEQcTel2sJLv/BBEpUIPAow=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-334-Tjs6gLsYPd2yhay7ibDYFQ-1; Mon, 28 Sep 2020 06:43:15 -0400
-X-MC-Unique: Tjs6gLsYPd2yhay7ibDYFQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DC46C1074643;
- Mon, 28 Sep 2020 10:43:13 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-112-56.ams2.redhat.com
- [10.36.112.56])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BE33655779;
- Mon, 28 Sep 2020 10:43:07 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id AE96240856; Mon, 28 Sep 2020 12:42:56 +0200 (CEST)
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 09/12] tests/acpi: factor out common microvm test setup
-Date: Mon, 28 Sep 2020 12:42:53 +0200
-Message-Id: <20200928104256.9241-10-kraxel@redhat.com>
-In-Reply-To: <20200928104256.9241-1-kraxel@redhat.com>
-References: <20200928104256.9241-1-kraxel@redhat.com>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
+Received: from localhost ([::1]:56766 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hqYir-0002To-R1
+	for alex.bennee@linaro.org; Thu, 25 Jul 2019 04:03:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37595)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <tony.nguyen@bt.com>) id 1hqYim-0002JU-Cl
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 04:03:29 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <tony.nguyen@bt.com>) id 1hqYil-0002id-CQ
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 04:03:28 -0400
+Received: from smtpe1.intersmtp.com ([213.121.35.73]:32634)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
+ id 1hqYib-0002d5-Cx; Thu, 25 Jul 2019 04:03:20 -0400
+Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
+ BWP09926078.bt.com (10.36.82.109) with Microsoft SMTP Server (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Thu, 25
+ Jul 2019 09:03:12 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
+ tpw09926dag18e.domain1.systemhost.net (10.9.212.18) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Thu, 25 Jul 2019 09:03:15 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net
+ ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
+ ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Thu, 25 Jul
+ 2019 09:03:15 +0100
+From: <tony.nguyen@bt.com>
+To: <qemu-devel@nongnu.org>
+Thread-Topic: [Qemu-devel] [PATCH v4 07/15] hw/vfio: Access MemoryRegion with
+ MemOp
+Thread-Index: AQHVQr9p6VOuhpHwaES2SUI3Lnzf5g==
+Date: Thu, 25 Jul 2019 08:03:15 +0000
+Message-ID: <1564041795139.77652@bt.com>
+References: <e9c6e5310b1a4863be45d45bf087fc3d@tpw09926dag18e.domain1.systemhost.net>, 
+ <1563810716254.18886@bt.com>, <1564038073754.91133@bt.com>,
+ <1564041524365.23360@bt.com>
+In-Reply-To: <1564041524365.23360@bt.com>
+Accept-Language: en-AU, en-GB, en-US
+Content-Language: en-AU
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.187.101.42]
+Content-Type: multipart/alternative; boundary="_000_156404179513977652btcom_"
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/28 03:47:08
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -36
-X-Spam_score: -3.7
-X-Spam_bar: ---
-X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.576,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 213.121.35.73
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v4 07/15] hw/vfio: Access
+ MemoryRegion with MemOp
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Radoslaw Biernacki <rad@semihalf.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Leif Lindholm <leif@nuviainc.com>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BtJPP8zcQpOT
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, walling@linux.ibm.com, mst@redhat.com,
+ palmer@sifive.com, mark.cave-ayland@ilande.co.uk, Alistair.Francis@wdc.com,
+ arikalo@wavecomp.com, david@redhat.com, pasic@linux.ibm.com,
+ borntraeger@de.ibm.com, rth@twiddle.net, atar4qemu@gmail.com,
+ ehabkost@redhat.com, sw@weilnetz.de, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, david@gibson.dropbear.id.au, qemu-riscv@nongnu.org,
+ cohuck@redhat.com, alex.williamson@redhat.com, qemu-ppc@nongnu.org,
+ amarkovic@wavecomp.com, pbonzini@redhat.com, aurelien@aurel32.net
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 32gCZA2ZMJYE
 
-... into new test_acpi_microvm_prepare helper
+--_000_156404179513977652btcom_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
 ---
- tests/qtest/bios-tables-test.c | 15 ++++++++++-----
- 1 file changed, 10 insertions(+), 5 deletions(-)
+ hw/vfio/pci-quirks.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index a9c8d478aee3..cc4579d914e7 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -1044,15 +1044,20 @@ static void test_acpi_virt_tcg_memhp(void)
- 
- }
- 
-+static void test_acpi_microvm_prepare(test_data *data)
-+{
-+    memset(data, 0, sizeof(*data));
-+    data->machine = "microvm";
-+    data->required_struct_types = NULL; /* no smbios */
-+    data->required_struct_types_len = 0;
-+    data->blkdev = "virtio-blk-device";
-+}
-+
- static void test_acpi_microvm_tcg(void)
- {
-     test_data data;
- 
--    memset(&data, 0, sizeof(data));
--    data.machine = "microvm";
--    data.required_struct_types = NULL; /* no smbios */
--    data.required_struct_types_len = 0;
--    data.blkdev = "virtio-blk-device";
-+    test_acpi_microvm_prepare(&data);
-     test_acpi_one(" -machine microvm,acpi=on,rtc=off",
-                   &data);
-     free_test_data(&data);
--- 
-2.27.0
+diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
+index b35a640..3240afa 100644
+--- a/hw/vfio/pci-quirks.c
++++ b/hw/vfio/pci-quirks.c
+@@ -1071,7 +1071,7 @@ static void vfio_rtl8168_quirk_address_write(void *op=
+aque, hwaddr addr,
 
+                 /* Write to the proper guest MSI-X table instead */
+                 memory_region_dispatch_write(&vdev->pdev.msix_table_mmio,
+-                                             offset, val, size,
++                                             offset, val, SIZE_MEMOP(size)=
+,
+                                              MEMTXATTRS_UNSPECIFIED);
+             }
+             return; /* Do not write guest MSI-X data to hardware */
+@@ -1102,7 +1102,8 @@ static uint64_t vfio_rtl8168_quirk_data_read(void *op=
+aque,
+     if (rtl->enabled && (vdev->pdev.cap_present & QEMU_PCI_CAP_MSIX)) {
+         hwaddr offset =3D rtl->addr & 0xfff;
+         memory_region_dispatch_read(&vdev->pdev.msix_table_mmio, offset,
+-                                    &data, size, MEMTXATTRS_UNSPECIFIED);
++                                    &data, SIZE_MEMOP(size),
++                                    MEMTXATTRS_UNSPECIFIED);
+         trace_vfio_quirk_rtl8168_msix_read(vdev->vbasedev.name, offset, da=
+ta);
+     }
+
+--
+1.8.3.1
+
+
+
+
+--_000_156404179513977652btcom_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none"><!-- P { margin-top: 0px; m=
+argin-bottom: 0px; } .EmailQuote { margin-left: 1pt; padding-left: 4pt; bor=
+der-left-width: 2px; border-left-style: solid; border-left-color: rgb(128, =
+0, 0); }--></style>
+</head>
+<body dir=3D"ltr" style=3D"font-size:12pt;color:#000000;background-color:#F=
+FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
+<p></p>
+<div><span style=3D"font-size: 12pt;">Signed-off-by: Tony Nguyen &lt;tony.n=
+guyen@bt.com&gt;</span><br>
+</div>
+<div>---</div>
+<div>&nbsp;hw/vfio/pci-quirks.c | 5 &#43;&#43;&#43;--</div>
+<div>&nbsp;1 file changed, 3 insertions(&#43;), 2 deletions(-)</div>
+<div><br>
+</div>
+<div>diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c</div>
+<div>index b35a640..3240afa 100644</div>
+<div>--- a/hw/vfio/pci-quirks.c</div>
+<div>&#43;&#43;&#43; b/hw/vfio/pci-quirks.c</div>
+<div>@@ -1071,7 &#43;1071,7 @@ static void vfio_rtl8168_quirk_address_write=
+(void *opaque, hwaddr addr,</div>
+<div>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* Write=
+ to the proper guest MSI-X table instead */</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;memory_r=
+egion_dispatch_write(&amp;vdev-&gt;pdev.msix_table_mmio,</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; offset, val, size,</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; offset, val, SIZE_MEMOP(size),</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; MEMTXATTRS_UNSPECIFIED);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return; /* Do not writ=
+e guest MSI-X data to hardware */</div>
+<div>@@ -1102,7 &#43;1102,8 @@ static uint64_t vfio_rtl8168_quirk_data_read=
+(void *opaque,</div>
+<div>&nbsp; &nbsp; &nbsp;if (rtl-&gt;enabled &amp;&amp; (vdev-&gt;pdev.cap_=
+present &amp; QEMU_PCI_CAP_MSIX)) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;hwaddr offset =3D rtl-&gt;addr &amp;=
+ 0xfff;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;memory_region_dispatch_read(&amp;vde=
+v-&gt;pdev.msix_table_mmio, offset,</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&amp;data, size, M=
+EMTXATTRS_UNSPECIFIED);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&amp;data, SIZ=
+E_MEMOP(size),</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MEMTXATTRS_UNS=
+PECIFIED);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;trace_vfio_quirk_rtl8168_msix_read(v=
+dev-&gt;vbasedev.name, offset, data);</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp;</div>
+<div>--&nbsp;</div>
+<div>1.8.3.1</div>
+<div><br>
+<br>
+</div>
+<p><br>
+</p>
+</body>
+</html>
+
+--_000_156404179513977652btcom_--

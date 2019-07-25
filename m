@@ -1,100 +1,101 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10909419wrv;
-        Thu, 25 Jul 2019 10:58:07 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyVNGEwElWLrSfCO/6gNcyqnQQ+nqIVp/DJ65VgJudnhGBlBKrJRuMSeM8HfCOP0mOddNR3
-X-Received: by 2002:a17:906:ad86:: with SMTP id la6mr66155674ejb.43.1564077487715;
-        Thu, 25 Jul 2019 10:58:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564077487; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10911036wrv;
+        Thu, 25 Jul 2019 11:00:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx74+Rhzg1AQfOsC+PTbfdcleNSIW2q2GuRJkz6TK5EJn72SOY0Mj0gKBleZujEw4JyBQuJ
+X-Received: by 2002:aa7:ca41:: with SMTP id j1mr79850133edt.149.1564077609483;
+        Thu, 25 Jul 2019 11:00:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564077609; cv=none;
         d=google.com; s=arc-20160816;
-        b=vIIofIxjybPeNAJJcAriRBpULbqPlpxkr7zwOF2dl/IscYJhAH63n46VYScIsL4rDp
-         iu1X/zCDVfPM6R3Q7Us/RTuvmpGT5C9cCODKgdcZ3Gp0vF7REx6/e8PrnKN3Nl2EmClY
-         gdDFpNoiTHlGY+RCM/mG3SBDT8OEzBem8Yo0JAkaV7Ec+Xwg+1AiM55Nd0Zcsg+kYhvj
-         AMNrR7io7bs1oW78figvWNdkrka8CnpBwuk7ys308fEi5K7UhAwIQMfZX5j2vpQnMRBM
-         /ByZgS/SUshq00JL5fwU35Er4/rOY2nUitwJdxhz71gM43TzK5CzqStAr4OLSzC14X7x
-         ffwA==
+        b=ArTiN5zIvJe3OWvKRj2kc9dJBvMhRIZ8QdXNMCM+kwtTdFTLiBtX1MYcLxCVSLbjCE
+         8RWYu+IWuEtoBqiXi4gvG9QSIwW8pmJ/mr3PP3VSJLZM2tsQH8cfqGRy9Ol2/ycGlLSU
+         AmjbnHkC04c0J5Y1RNjF5Gf6EDCvqIqmJMiWSbtdLjW5G3YadGDSNKZzDptDhHYXxz6k
+         whVDHsuFO5mo+3guciuXkqk+aaR/QO2mmY/dQTUJFLHIjAM8QbqxKHuK4+1/bynarf8O
+         TzsnLvJ+iCONsvHWj2dcYQCBhaA5syfIxespQlgkQNpcxgoGfka4u8wa5xGwpSTVPgBV
+         PO7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=SrvQJHhbgxkTfVbg9JKYbdlPyaIOvl90pvGXP3Jzbgk=;
-        b=gJCFYB9C5WqeNTfOzpjcOMWKq9G/OX8pqKyYom2u7LTcwcbUn0X+FLUfHJ1MCPR1+s
-         UtMDvmLqSu2+ybBABFKf4EIQ4JOu2F6yvpdFNMHOIVmkdyg5Y0sN/URoxzB4THfQ5twR
-         3mSBPAL1q6mi0hPKj13cRBfoMCScB11uMzvlMFGQ/sxAwKVNhVj/Kpy+VKZPFseYq0Bt
-         gFVvGem6Dxaqknjt+IzZysGyImMa3iO8BJfRY8nAzWwbH8zRtK1uiu3+gXjjal2/ZgBD
-         mCBw9CWYxUHLGctX+hpchHw+yct9UYhFsMGza+1gVvfrN5//f3dGXuYZ0/WWZQNtUINC
-         g6dA==
+        bh=elNNG/UcrQabTxjIvTIAJ4efMjiVM2QCOARro76Y5+c=;
+        b=lL2gRxorspewy90pr6zwbFmfifIsZfmBRN1IjgIQTeSlMFv8/PvZ9PC+OtWOJQudQM
+         iOw5v+xBCnvDenm1IkbKp8bKaXOIqtegKnAKRDfzRgftDE3HCXZGGEj67KnvqR8BlNvv
+         UWvTuhi0VtP+EFMpM6qGfK/QUU+Ks2CtOtd5Mgb9EzUgQEB6UYHuqywCN6a+li4W6tCG
+         nvXWS+NW8yCaBONt07gfh+BYshhJdyNMIIZDx9PurFEWM6QXv3ReFp0pqlqrzeZ9vIQU
+         n4spJtK6J1AvjrQDkp81M6vlh/EEOhi2jEK/pryVorpHhvhjEXozLAgh/GS3JvO6iCta
+         caLQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GX1nDeta;
+       dkim=fail header.i=@linaro.org header.s=google header.b=szp70NQu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u8si11464246edm.69.2019.07.25.10.58.07
+        by mx.google.com with ESMTPS id e28si12214987edb.265.2019.07.25.11.00.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jul 2019 10:58:07 -0700 (PDT)
+        Thu, 25 Jul 2019 11:00:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=GX1nDeta;
+       dkim=fail header.i=@linaro.org header.s=google header.b=szp70NQu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34604 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34632 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hqi0E-0007Ts-HN
-	for alex.bennee@linaro.org; Thu, 25 Jul 2019 13:58:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41424)
+	id 1hqi2C-0001RL-53
+	for alex.bennee@linaro.org; Thu, 25 Jul 2019 14:00:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44513)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hqi0A-0007Sc-87
- for qemu-arm@nongnu.org; Thu, 25 Jul 2019 13:58:03 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hqi28-0001Qy-8N
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 14:00:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hqi09-0006yj-2q
- for qemu-arm@nongnu.org; Thu, 25 Jul 2019 13:58:02 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:34494)
+ (envelope-from <peter.maydell@linaro.org>) id 1hqi27-0000ct-7o
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 14:00:04 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:37789)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hqi08-0006xk-RO
- for qemu-arm@nongnu.org; Thu, 25 Jul 2019 13:58:00 -0400
-Received: by mail-ot1-x343.google.com with SMTP id n5so52608767otk.1
- for <qemu-arm@nongnu.org>; Thu, 25 Jul 2019 10:58:00 -0700 (PDT)
+ id 1hqi27-0000bD-1H
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 14:00:03 -0400
+Received: by mail-oi1-x241.google.com with SMTP id t76so38332214oih.4
+ for <qemu-arm@nongnu.org>; Thu, 25 Jul 2019 11:00:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=SrvQJHhbgxkTfVbg9JKYbdlPyaIOvl90pvGXP3Jzbgk=;
- b=GX1nDetatmNCIBdmRL638ibfMja/6Mv4BkyLI/P8fLhSn3DHelryc8tp5wviTefEga
- RbHoE0WNWoSk7zTvKs+GhfpFP/HcLHYCe0Hnovoz3bKeq48bXAiPlCQsdSIb3L53umt0
- pMU8dFEwBFORmHsFk4MkvoCuCYRANlLekqbphzpbmRJwxOVKwVPLtKEEpjtgM4vcqX/M
- /6CrELeD2bp0doZcsHWAJhHZ4OSelYt/qGjFWL2V9m9U+CExaZ1WSMqITnhrlBNx4RX6
- w4LGhQEF+atBNbHEdl4Pu+2StWHK/u0KX2Jd5CPyn5VwV8hC94DdoNaZwvZi+KdtjD3a
- pifQ==
+ :cc; bh=elNNG/UcrQabTxjIvTIAJ4efMjiVM2QCOARro76Y5+c=;
+ b=szp70NQuHKhZ/Q4tFtrPyoFAaBTNbN8nAkBZ6D5Y/OffaklRgz/vqb4dTuOgsDjgx+
+ RjUAD9Me6h9TjdTUAE8HgKWJvw348FpFd40vEqqIGiEXnXryj/w+dc3nmj/DRCfaIlGW
+ cPxVq3VXRkMvl+C7CQUitjzp4kfmsHtsVTszPxnOBFG6OWzV3EZc3+msisOpOTBA+SlL
+ Xdumfl+7HC1xQ8w6y0XWVlkUNnhkbZkD36eFlUaNCWYERAca7EYtS/GT6udojeAHzfxH
+ LHg0KHCmzVufmiCi1/aJFQJrXEA4TGiHSX5ko0f+0kvobYthFECM4wUYVkqKXFQVCUIi
+ iCWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=SrvQJHhbgxkTfVbg9JKYbdlPyaIOvl90pvGXP3Jzbgk=;
- b=L6w4B85YpwhlgCj3ozisCcjQo0pn0EWkrKDN6vrVhS2bCNiyGxq1y686oW28Fs7ZtK
- yFj2ZrJ0Mypu4CaQDoiyCrnetsSsIL895EyXKm9m+E5eohdvGDhJ0Ns0vSYnZwZKOdVd
- g7gULciOZ6eJpl+/dACWZoJYCNXcgkllP2yPdpYPPPIj0Ue5haco786QAftpo5njm41m
- f8WdPIU41YdWWjbFGhPq/zV3dCUQroABDR0msTYmCUj5TF0zhWCAyVZLtZgdVAhFSqQk
- YUN/xNWiRZo1NT94IOk6PzmEIGDsSG3A49xq+UtdqXSJluJqF7Evmz4Mr4eo06/ARLTc
- 9mqw==
-X-Gm-Message-State: APjAAAVJt3g4tYZbJcX1efIr+C/VAxGnLPmrLo1t+5Mv6xa3Cc1pLsaq
- Y+bYnPebTlOq5s2vB3iwMBENQQcAaiYLuEtMt1JdpA==
-X-Received: by 2002:a9d:5f1a:: with SMTP id f26mr7769782oti.91.1564077480022; 
- Thu, 25 Jul 2019 10:58:00 -0700 (PDT)
+ bh=elNNG/UcrQabTxjIvTIAJ4efMjiVM2QCOARro76Y5+c=;
+ b=aEPQI72g6o0fdHLI2BJNEnoNDX5XMciSIYtv925Ar86XuZnv8HMqwU1WRrOd8vBMPR
+ tqocgrfwa0/IG66W72WaZ6ZCGWNcU44mqa9T8t9w0kCuQ8E4lrRQj7Q6EOfLaEQ59rg/
+ 6E/PdpxwmIKFwRqr+7Nmlr0v37fDCKq6Jod9MqeBB1ctSY8/APojAHZy8Rx2khY8nGNA
+ 6v6WUwAOWOv+GiYf9DqbVb4v6LADjCzGQUpfCrh8YXxFaOJxdPZxHYn4XVGoghW5JYYl
+ uKp6sV2S3u5t9VHuja+k333j02Ar1bRNh8zkWkMFC69P2+I3CffkCuh3kCNWfnYUhDTF
+ doow==
+X-Gm-Message-State: APjAAAWJVRsS3n5RAj2mdin6I23E0EVn4fqGahdgrQbxxbuQAQKTB+a3
+ CDuFqwSxP5XEmIejIfrXt6w+anjxmDusY9s9SvEVlg==
+X-Received: by 2002:aca:6185:: with SMTP id
+ v127mr45544465oib.163.1564077601969; 
+ Thu, 25 Jul 2019 11:00:01 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190725163710.11703-1-peter.maydell@linaro.org>
- <20190725163710.11703-3-peter.maydell@linaro.org>
- <20190725172712.GM2656@work-vm>
-In-Reply-To: <20190725172712.GM2656@work-vm>
+ <20190725163710.11703-2-peter.maydell@linaro.org>
+ <20190725170228.GL2656@work-vm>
+In-Reply-To: <20190725170228.GL2656@work-vm>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 25 Jul 2019 18:57:49 +0100
-Message-ID: <CAFEAcA-jGvNS4N4qobLekHYdV82qSUWVQOvTRQbrpcCRF0Yvwg@mail.gmail.com>
+Date: Thu, 25 Jul 2019 18:59:50 +0100
+Message-ID: <CAFEAcA9RQBz=t8F_nOTH9FZu_jKD0XVMJtPwmdnJBfnFR4G9oA@mail.gmail.com>
 To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::343
-Subject: Re: [Qemu-arm] [PATCH for-4.1? 2/2] vmstate.h: Type check
- VMSTATE_STRUCT_VARRAY macros
+X-Received-From: 2607:f8b0:4864:20::241
+Subject: Re: [Qemu-arm] [PATCH for-4.1? 1/2] stellaris_input: Fix vmstate
+ description of buttons field
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,70 +111,31 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>, qemu-arm <qemu-arm@nongnu.org>,
  QEMU Developers <qemu-devel@nongnu.org>, Juan Quintela <quintela@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /n7DOHaVWnQV
+X-TUID: mw+ocSBYw/Rx
 
-On Thu, 25 Jul 2019 at 18:27, Dr. David Alan Gilbert
+On Thu, 25 Jul 2019 at 18:02, Dr. David Alan Gilbert
 <dgilbert@redhat.com> wrote:
 >
 > * Peter Maydell (peter.maydell@linaro.org) wrote:
-> > The VMSTATE_STRUCT_VARRAY_UINT32 macro is intended to handle
-> > migrating a field which is an array of structs, but where instead of
-> > migrating the entire array we only migrate a variable number of
-> > elements of it.
+> > gamepad_state::buttons is a pointer to an array of structs,
+> > not an array of structs, so should be declared in the vmstate
+> > with VMSTATE_STRUCT_VARRAY_POINTER_INT32; otherwise we
+> > corrupt memory on incoming migration.
 > >
-> > The VMSTATE_STRUCT_VARRAY_POINTER_UINT32 macro is intended to handle
-> > migrating a field which is of pointer type, and points to a
-> > dynamically allocated array of structs of variable size.
-> >
-> > We weren't actually checking that the field passed to
-> > VMSTATE_STRUCT_VARRAY_UINT32 really is an array, with the result that
-> > accidentally using it where the _POINTER_ macro was intended would
-> > compile but silently corrupt memory on migration.
-> >
-> > Add type-checking that enforces that the field passed in is
-> > really of the right array type. This applies to all the VMSTATE
-> > macros which use flags including VMS_VARRAY_* but not VMS_POINTER.
+> > We bump the vmstate version field as the easiest way to
+> > deal with the migration break, since migration wouldn't have
+> > worked reliably before anyway.
 > >
 > > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 >
-> > ---
-> >  include/migration/vmstate.h | 27 +++++++++++++++++++++------
-> >  1 file changed, 21 insertions(+), 6 deletions(-)
-> >
-> > diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-> > index ca68584eba4..2df333c3612 100644
-> > --- a/include/migration/vmstate.h
-> > +++ b/include/migration/vmstate.h
-> > @@ -227,8 +227,19 @@ extern const VMStateInfo vmstate_info_bitmap;
-> >  extern const VMStateInfo vmstate_info_qtailq;
-> >
-> >  #define type_check_2darray(t1,t2,n,m) ((t1(*)[n][m])0 - (t2*)0)
-> > +/* Check that t2 is an array of t1 of size n */
-> >  #define type_check_array(t1,t2,n) ((t1(*)[n])0 - (t2*)0)
->
-> I'd have to admit I don't understand why that does what you say;
-> I'd expected something to index a t2 pointer with [n].
+> OK, it would be great to change num_buttons to uint32_t and make that a
+> UINT32 at some point;  it's hard to press negative buttons.
 
-Note that this is just a comment describing what the existing
-macro does, as a way to distinguish its job from that of the
-new macro I'm adding.
+Is there much benefit though?
 
-What happens here is that t2 is a type like "foo [32]", ie
-it is an array type already. t1 is the base 'foo' type; so the macro
-is checking that t1[n] matches t2, where n is passed in to us
-and must match the declared array size of the field (32 in
-my example). (In C the size of the array is carried around as
-part of its type, and must match on both sides of the expression;
-so if you pass in the name of an array field that's the wrong size the
-type check will fail, which is what we want.)
-
-> However, for the rest of it, from migration I'm happy:
->
-> Reviewed-by: Dr. David Alan Gilbert <dgilbert@redhat.com>
->
-> given it's just fixing an ARM bug, and given it'll blow up straight away
-> I think it's OK for 4.1; the only risk is if we find a compiler we don't
-> like.
+As an aside, I'm surprised also the macro doesn't complain
+that we said the num_buttons field is int32 but it's really "int"...
+arguably a different kind of missing type check.
 
 thanks
 -- PMM

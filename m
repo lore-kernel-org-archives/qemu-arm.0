@@ -1,204 +1,135 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp11977931wrv;
-        Fri, 26 Jul 2019 07:25:07 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzeqSWnlYZEw7gbG3vlUDjMAUrleL3NrymOOSwPIua/lvbe6uAR11MIVpp+lVa/2DEK3e9v
-X-Received: by 2002:a17:906:4354:: with SMTP id z20mr32507891ejm.163.1564151107905;
-        Fri, 26 Jul 2019 07:25:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564151107; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10942607wrv;
+        Thu, 25 Jul 2019 11:32:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwmHiQY/5SC2e176vjHiqx7ADw6PNoJbEPoULfdQ9msT7+DFwNeVfw6R+bANFsfy1n9eHkg
+X-Received: by 2002:a17:906:c785:: with SMTP id cw5mr22665399ejb.215.1564079568114;
+        Thu, 25 Jul 2019 11:32:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564079568; cv=none;
         d=google.com; s=arc-20160816;
-        b=O+8p4V9WSqiAryyKg85Myl15rT0mA/6he9jojr/gTlZpdgIkhJgBcg2qqp8Mz/H1vJ
-         Yr4eL0bHYifvOiisb7VoIySBsZAjEDlJbQkSPWA0v7S9h+Yl/JuycWSGCEMaZk+Mq5UD
-         wL40RvoyxIaC8ne0t6mkWZVGLg3rpBddPur+Px93OAxXMuq5aSVAEwxCme85jNJJvxht
-         nne3682OxcqyM2i03Q6HUdT4b0BBoVBvpWdgpAwbVkSHbbkvGA2SUpbPIlrixHEcLM7e
-         Mg06sN6XNfQyOYvilChRAVH6BNisCYE/5V3jUOzKTuc3P0j1u4jMg+Snw0lGHQ69WXik
-         Yrhg==
+        b=lFQ2MHGLmP3Y9kVt9jxSU3Pe+7KDA1iAWVBbW9oT0UOtHrxpvWMBPydv+I6nejEofk
+         8hZjeZA6Dv+6UCmKQx0yGn4hfLrGFfoKhWGntNFhdc5KoQLCbvCASC9IwnXJcJqinphK
+         +d4vBt/rv2uPSP9nJNiOU8WwMWxGM7gXATXw2xBDziVLUbmJAyoo2NCZtGl4ay5QXbUj
+         ZlQb4kHKiIZ+Qa4kdVBIaJ3awCfbEQFhdfMyUlEPU3zdIdSPV1OBMYu63sJBdNZBeXRT
+         DF3fCeIIVW2syagwk/zbK4l3JXGunaxn1FdfUh206PBOmHaJkay/sT98xqVF+OAZT4HB
+         HHTw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature;
-        bh=ch7GhX8r4Ua0ued6sWDZ5gUIVhUso0uIeEsP69b2pZY=;
-        b=v6YR9D7Xygtu2ztZWc6MSVndaiVrpvv+awL5dtMD2c1VfbioIOuEXq6XPPs+xBOcTK
-         3vlZVS/prf5KeVUNdvWKK4Ha8whahpHQzl+iiGwG8OuSQrpr9ipPVOkNoYkaFFxn+c/O
-         8OE5AjleuGKDhjb+IqQxEpXxraKZB9q0wn01Vg5yddymHIyzY83UcMjJSqkCurfq+lsN
-         p10w6vuaKNqF4hPnt9n9ZW9/vjCsHUPSrHte1gE4iqqXunjrnxsWLG7boRqm+2ISUJJy
-         L19OyJX4fWSYZAE9v4L2utmWeF9Hy4yT42+6yujhin4EX9POd0/GRF4Qov8ldSovK9a3
-         XPIg==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=XFaOTfK7v3wTewarL4TAEn8mlS61s3Ag88QZ9VnpL0M=;
+        b=lS/pv5DWqW9GQui2IEtt2sIQo5gVxtukLHn2Y19GyLOeqMBJz8ZNwTyexKpBEMiups
+         EnhFnITZwkX/VnDxA2PWq7J8AYBM8EoxifOI4qF3Evo+zX17b1DcWkyVdmlWOZCQlnq2
+         8cTw83NWyNx3ArgatGCGWVVqzj6Y7jIk1MKcoj9k5W+uFpSF436h7dkEd020kW6kAVUm
+         mfd9W3Cpx0/1hWiTuuMUfBiCgaa9yn7WOur0YdldFZvFschslFEALmt61grTOJURTMx2
+         BV9RApgmsGrifyw4mBTGF9OQW7J/prMl+Ttr52mY4z6FYZCmVZpkOhIrgYIK5UaObdp3
+         dwtA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=MN835LS0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i29si13415956eda.300.2019.07.26.07.25.07
+        by mx.google.com with ESMTPS id m13si11534588edc.233.2019.07.25.11.32.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jul 2019 07:25:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 25 Jul 2019 11:32:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=MN835LS0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40516 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34814 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hr19e-0006jg-Vh
-	for alex.bennee@linaro.org; Fri, 26 Jul 2019 10:25:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35872)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hqiXn-0006ti-7Q
+	for alex.bennee@linaro.org; Thu, 25 Jul 2019 14:32:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40269)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <richard.henderson@linaro.org>) id 1hr19Q-0005wB-2D
- for qemu-devel@nongnu.org; Fri, 26 Jul 2019 10:24:53 -0400
+ (envelope-from <dgilbert@redhat.com>) id 1hqiXj-0006tZ-IJ
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 14:32:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1hr19O-00041b-Qk
- for qemu-devel@nongnu.org; Fri, 26 Jul 2019 10:24:51 -0400
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:42971)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1hr19O-0003zr-II
- for qemu-devel@nongnu.org; Fri, 26 Jul 2019 10:24:50 -0400
-Received: by mail-pg1-x544.google.com with SMTP id t132so24861440pgb.9
- for <qemu-devel@nongnu.org>; Fri, 26 Jul 2019 07:24:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ch7GhX8r4Ua0ued6sWDZ5gUIVhUso0uIeEsP69b2pZY=;
- b=MN835LS0CPkIR+fLKbEAD32Q6aOiotryzACHWZFmTtEGv3TTD+xkck5wPvj0KshTkE
- j0ZUJC0KtpnAzkMiLulHHUnfbr+Ul3br6lb/amGB4hTvnF1h0h6anllyp40/ZogTH5JC
- +Hcc1egomrLtt2+xz5gJMVV3QHBWdDW6wkswEYEQCRDbUMqESEf1BI7L9+OKeRZjJM51
- pgyP7+CUALIsQqEoEU0feN5VVs3TMfL9T9eGc3Bf5ng8wDozqPhKmoVp9XdXztSVJXrB
- O3x3y1h8sqtAwsH02jJ9FpEGvx6rpOBr01Rn3AxVqS9wsi+KKHn6W5NX2/UriM6sWjde
- gbBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ch7GhX8r4Ua0ued6sWDZ5gUIVhUso0uIeEsP69b2pZY=;
- b=FELfmi6tATeVNeB339iRYUhg/dwOVv6rBKBygw+sQTlddAn5lXGQQH5j9lGmK01Dpm
- eGT5GW2kGB8wI5J3SFW+IXi/v+KsFBAn6RiPdcqYxsDlthdbTMDU5uE2CzFgfhH/AECT
- MicwBFgpWA5XRUeOOPOl4zD2P9yDCaiDeKno+zHEkQ1ebTxzRBkksdOcH/4PUxSjkS6w
- M+gFDNlJfOu3g+1KRYhephWZf05CsJbnlam/t50biePI4MBbjA2L+5oVsVfLyfTglPzc
- SJeKl5ZaJ6d/o8vct0XKGW8Z8hpurMzQtPp59f3OVkQ27U/bWZ2n57jvBmA7/ZUq10/i
- CfeA==
-X-Gm-Message-State: APjAAAVFIMC8cfVDdlu2BSG9v3qgFKu4ANfDG4ArsdcVcizix+RJ+GWf
- XjqCxEjKryxD1mq4hZ+JvuAU7A==
-X-Received: by 2002:a62:b60e:: with SMTP id j14mr22759183pff.54.1564151088872; 
- Fri, 26 Jul 2019 07:24:48 -0700 (PDT)
-Received: from [192.168.1.11] (97-126-117-207.tukw.qwest.net. [97.126.117.207])
- by smtp.gmail.com with ESMTPSA id x26sm68965119pfq.69.2019.07.26.07.24.46
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 26 Jul 2019 07:24:47 -0700 (PDT)
-To: tony.nguyen@bt.com, qemu-devel@nongnu.org
-References: <3106a3c959c4498fad13a5799c89ba7b@tpw09926dag18e.domain1.systemhost.net>
- <1564123643791.27023@bt.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <182cfe57-bd92-77e4-2b8f-9c4f543c6661@linaro.org>
-Date: Fri, 26 Jul 2019 07:24:45 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ (envelope-from <dgilbert@redhat.com>) id 1hqiXh-0006mY-1F
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 14:32:43 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55706)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dgilbert@redhat.com>)
+ id 1hqiXg-0006lS-RW; Thu, 25 Jul 2019 14:32:40 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 24D0B859FF;
+ Thu, 25 Jul 2019 18:32:39 +0000 (UTC)
+Received: from work-vm (ovpn-117-187.ams2.redhat.com [10.36.117.187])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C4AEF1018A31;
+ Thu, 25 Jul 2019 18:32:37 +0000 (UTC)
+Date: Thu, 25 Jul 2019 19:32:35 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20190725183235.GO2656@work-vm>
+References: <20190725163710.11703-1-peter.maydell@linaro.org>
+ <20190725163710.11703-2-peter.maydell@linaro.org>
+ <20190725170228.GL2656@work-vm>
+ <CAFEAcA9RQBz=t8F_nOTH9FZu_jKD0XVMJtPwmdnJBfnFR4G9oA@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <1564123643791.27023@bt.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::544
-Subject: Re: [Qemu-devel] [PATCH v5 10/15] memory: Access MemoryRegion with
- MemOp semantics
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA9RQBz=t8F_nOTH9FZu_jKD0XVMJtPwmdnJBfnFR4G9oA@mail.gmail.com>
+User-Agent: Mutt/1.12.0 (2019-05-25)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.26]); Thu, 25 Jul 2019 18:32:39 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH for-4.1? 1/2] stellaris_input: Fix vmstate
+ description of buttons field
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, walling@linux.ibm.com, sagark@eecs.berkeley.edu,
- mst@redhat.com, palmer@sifive.com, mark.cave-ayland@ilande.co.uk,
- Alistair.Francis@wdc.com, edgar.iglesias@gmail.com, alex.williamson@redhat.com,
- arikalo@wavecomp.com, david@redhat.com, pasic@linux.ibm.com,
- borntraeger@de.ibm.com, rth@twiddle.net, atar4qemu@gmail.com,
- ehabkost@redhat.com, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- stefanha@redhat.com, shorne@gmail.com, david@gibson.dropbear.id.au,
- qemu-riscv@nongnu.org, kbastian@mail.uni-paderborn.de, cohuck@redhat.com,
- laurent@vivier.eu, qemu-ppc@nongnu.org, amarkovic@wavecomp.com,
- pbonzini@redhat.com, aurelien@aurel32.net
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vheCs6pN/2mG
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Juan Quintela <quintela@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WUsR0l2NgVsW
 
-On 7/25/19 11:47 PM, tony.nguyen@bt.com wrote:
-> To convert interfaces of MemoryRegion access, MEMOP_SIZE and
-> SIZE_MEMOP no-op stubs were introduced to change syntax while keeping
-> the existing semantics.
+* Peter Maydell (peter.maydell@linaro.org) wrote:
+> On Thu, 25 Jul 2019 at 18:02, Dr. David Alan Gilbert
+> <dgilbert@redhat.com> wrote:
+> >
+> > * Peter Maydell (peter.maydell@linaro.org) wrote:
+> > > gamepad_state::buttons is a pointer to an array of structs,
+> > > not an array of structs, so should be declared in the vmstate
+> > > with VMSTATE_STRUCT_VARRAY_POINTER_INT32; otherwise we
+> > > corrupt memory on incoming migration.
+> > >
+> > > We bump the vmstate version field as the easiest way to
+> > > deal with the migration break, since migration wouldn't have
+> > > worked reliably before anyway.
+> > >
+> > > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> >
+> > OK, it would be great to change num_buttons to uint32_t and make that a
+> > UINT32 at some point;  it's hard to press negative buttons.
 > 
-> Now with interfaces converted, we fill the stubs and use MemOp
-> semantics.
-> 
-> Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
-> ---
->  include/exec/memop.h  | 5 ++---
->  include/exec/memory.h | 4 ++--
->  2 files changed, 4 insertions(+), 5 deletions(-)
-> 
-> diff --git a/include/exec/memop.h b/include/exec/memop.h
-> index 09c8d20..f2847e8 100644
-> --- a/include/exec/memop.h
-> +++ b/include/exec/memop.h
-> @@ -106,8 +106,7 @@ typedef enum MemOp {
->      MO_SSIZE = MO_SIZE | MO_SIGN,
->  } MemOp;
-> 
-> -/* No-op while memory_region_dispatch_[read|write] is converted to MemOp */
-> -#define MEMOP_SIZE(op)  (op)    /* MemOp to size.  */
-> -#define SIZE_MEMOP(ul)  (ul)    /* Size to MemOp.  */
-> +#define MEMOP_SIZE(op)  (1 << ((op) & MO_SIZE)) /* MemOp to size.  */
-> +#define SIZE_MEMOP(ul)  (ctzl(ul))              /* Size to MemOp.  */
+> Is there much benefit though?
 
-As mentioned, I'd prefer inline functions.
+Not much and it's not urgent
 
-I think it wouldn't go amiss to do
+> As an aside, I'm surprised also the macro doesn't complain
+> that we said the num_buttons field is int32 but it's really "int"...
+> arguably a different kind of missing type check.
 
-static inline MemOp size_memop(unsigned size)
-{
-#ifdef CONFIG_DEBUG_TCG
-    /* power of 2 up to 8 */
-    assert((size & (size - 1)) == 0 && size >= 1 && size <= 8);
-#endif
-    return ctz32(size);
-}
+I was just concerned what would happen if your migration stream
+had a negative value in.
 
+Dave
 
-> diff --git a/include/exec/memory.h b/include/exec/memory.h
-> index 0ea4843..975b86a 100644
-> --- a/include/exec/memory.h
-> +++ b/include/exec/memory.h
-> @@ -1732,7 +1732,7 @@ void mtree_info(bool flatview, bool dispatch_tree, bool owner);
->   * @mr: #MemoryRegion to access
->   * @addr: address within that region
->   * @pval: pointer to uint64_t which the data is written to
-> - * @op: size of the access in bytes
-> + * @op: size, sign, and endianness of the memory operation
->   * @attrs: memory transaction attributes to use for the access
->   */
->  MemTxResult memory_region_dispatch_read(MemoryRegion *mr,
-> @@ -1747,7 +1747,7 @@ MemTxResult memory_region_dispatch_read(MemoryRegion *mr,
->   * @mr: #MemoryRegion to access
->   * @addr: address within that region
->   * @data: data to write
-> - * @op: size of the access in bytes
-> + * @op: size, sign, and endianness of the memory operation
->   * @attrs: memory transaction attributes to use for the access
->   */
->  MemTxResult memory_region_dispatch_write(MemoryRegion *mr,
-
-As I mentioned, now is when the actual interface change to these functions
-should occur.
-
-
-r~
+> thanks
+> -- PMM
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK

@@ -1,336 +1,747 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10323444wrv;
-        Thu, 25 Jul 2019 01:04:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyhiaLH+pvI7O7tF/XtBFviGwjAoTBHsdk0BstJwca3TO3TynNGsVHFj2dBcQkIOy0S6BpH
-X-Received: by 2002:aed:39e5:: with SMTP id m92mr59689068qte.135.1564041890767;
-        Thu, 25 Jul 2019 01:04:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564041890; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10323785wrv;
+        Thu, 25 Jul 2019 01:05:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyJo/z4kpU6YfieH0Y+I+VAwEH6kzZcZIT38q8jEB707xvmR2+rZhmTiIvORpIFH8s347GI
+X-Received: by 2002:a50:922a:: with SMTP id i39mr75218165eda.219.1564041908108;
+        Thu, 25 Jul 2019 01:05:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564041908; cv=none;
         d=google.com; s=arc-20160816;
-        b=kh9kE06HR/4Ja12mudlkqlv2+9yGdUl+a9upDOgf31XZxt6DJ0jr0CUiDgjw9tM8SA
-         LlAke9YDGigjGa6YvZlo2mOtQcGNMLwISRJBRk3CS/pQTHuxV4EAnoux/TRK2Uiz+y78
-         K9dpAEeWxsU4tQ/GhK+dKt2WcLGGP9gM10ZByf8eOzltM5fcKmNBngrnYVR8b0jaRuo8
-         guyf7TT+ViXNxY0lOBUSv7YrVa+kJMj/RkgDRGNmqJRY8EcTFUzfS7I6UedkGDpmvNcV
-         FobDNiE/LFcTgOkG0AcXhSpnlFEAISqPk40O9d4eTvK4P6URw67VPlv6CD6fItSWBqns
-         SopA==
+        b=qVOv9iFjnB8d35yHN3mVSWM8uUhOJ3VZ4swtbQnl1rOOBxfT/IBqM9B56QUC9MVe9G
+         RT5y+2LDbNNBQHYwATg+ZpGqGAGzVrHcT1pMlZ8GGUWVZRbIj1WQFTItHXCT1L+uOG6b
+         /ZKDtAAQN91rNMVqTQUhOWW7nV8Yk/rwAJsuU0DcNeqNlsxvqvZw0gIMzx8pLZiAWdzp
+         uJxG7YieuQsFdZXS2JJsROHbuKimL7judVf/k8yGAc49Ji9LM094/Ep2len3SeTZegX1
+         aFFah10y0Hzu3vtNdBJ1bQj/GDN06yvOvY6xN8X+/fYDoSZyOBuTvWlpn/+mxlT2JYqP
+         Ds6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=laMmQJI+aOnESR43lF6zmTCCTP81Aznb41+hhDRZN5o=;
-        b=IzJz+cUIQWPD+OFPtNNL3jZjZ4yg7t/bJ5zgqHXJtXisqdkUbZSo36axc2FsIn20Ug
-         IhS8y6QPlYNTsdjmRVQu4xyeyvBD/eM2DssFrgsY6NNPg5WvvH86DyG17580+7FpEtfK
-         59wz1K2MqH3DvH4zDr6oaNyvvL1DP5dwBK0krd+lykyGFHXkPN5tGL6ORJBgNOHvlWto
-         zQ0AfzpUTpA5foiCxls3fy0yIRFGldsXgSVm6reYRJnnHevOPGqPIAIZpiNff6LL3BKe
-         RkWuiWx2w8cV45d7XLMm+LmqKy+zUWYH5UpqmdgCPZb+03HEIjuPx8qrHlEXywwTq0Ha
-         U2rw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-language:accept-language:in-reply-to:references:message-id
+         :date:thread-index:thread-topic:to:from;
+        bh=66b70lmgbjJlkY6Yq53+RMc9IKn0v5VGQ2mfZzDlVl8=;
+        b=O4EK8tNWG75rtYUkUQgNRrEa9DsN6+kPIGt3vJv/1wll6Gz/IYA5ZLuU3Ju5+K5VeE
+         /8fvMRxgUfw1GdLl2r1p7tSqSl7poN6Wbf3KvfRj7vRQ2EFrhGKsBSy7/BBP33UGBvL8
+         rqUWUrE/eC1IaMs4feFSJNdXphDJtfSAZbzgECQO9TaIBmgxfX4R2siydbHXxHJF9NTb
+         b0y8VTdYO1naFfXst1MEEIWPo5aR3r5mvaf9OxwwOiX3PogNdPA/koUSu25GLKtL+iDK
+         lXgtCQsuO/32uxOwH1FPOjepr6vPhxocpJKr9mx2Hzs9XhGanD9FhgU2gbRUT8quRvN9
+         OCrQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id x21si27744492qkj.215.2019.07.25.01.04.50
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Jul 2019 01:04:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c42si11919724eda.70.2019.07.25.01.05.07
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 25 Jul 2019 01:05:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id EE444A836;
-	Thu, 25 Jul 2019 08:04:49 +0000 (UTC)
-Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8A60A1001DE0;
-	Thu, 25 Jul 2019 08:04:47 +0000 (UTC)
-Subject: Re: [PATCH v2 03/14] target/arm/monitor: Introduce
- qmp_query_cpu_model_expansion
-To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
- alex.bennee@linaro.org, armbru@redhat.com, eblake@redhat.com,
- Dave.Martin@arm.com, imammedo@redhat.com
-References: <20190621163422.6127-1-drjones@redhat.com>
- <20190621163422.6127-4-drjones@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <d3f489ac-8e2c-cba7-7c0d-c71e23882b4a@redhat.com>
-Date: Thu, 25 Jul 2019 10:04:45 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
+Received: from localhost ([::1]:56842 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hqYkM-0007W5-RC
+	for alex.bennee@linaro.org; Thu, 25 Jul 2019 04:05:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38285)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <tony.nguyen@bt.com>) id 1hqYkH-0007JC-3W
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 04:05:03 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <tony.nguyen@bt.com>) id 1hqYkE-0003R7-Se
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 04:05:00 -0400
+Received: from smtpe1.intersmtp.com ([62.239.224.236]:56355)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
+ id 1hqYkA-0003P2-7o; Thu, 25 Jul 2019 04:04:54 -0400
+Received: from tpw09926dag18h.domain1.systemhost.net (10.9.212.42) by
+ RDW083A009ED65.bt.com (10.187.98.35) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Thu, 25 Jul 2019 09:01:14 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
+ tpw09926dag18h.domain1.systemhost.net (10.9.212.42) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Thu, 25 Jul 2019 09:04:51 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net
+ ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
+ ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Thu, 25 Jul
+ 2019 09:04:51 +0100
+From: <tony.nguyen@bt.com>
+To: <qemu-devel@nongnu.org>
+Thread-Topic: [Qemu-devel] [PATCH v4 11/15] memory: Single byte swap along the
+ I/O path
+Thread-Index: AQHVQr+iZ7d8llqteEm6WGitpsstMw==
+Date: Thu, 25 Jul 2019 08:04:51 +0000
+Message-ID: <1564041891013.88577@bt.com>
+References: <e9c6e5310b1a4863be45d45bf087fc3d@tpw09926dag18e.domain1.systemhost.net>, 
+ <1563810716254.18886@bt.com>, <1564038073754.91133@bt.com>,
+ <1564041524365.23360@bt.com>
+In-Reply-To: <1564041524365.23360@bt.com>
+Accept-Language: en-AU, en-GB, en-US
+Content-Language: en-AU
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.187.101.42]
+Content-Type: multipart/alternative; boundary="_000_156404189101388577btcom_"
 MIME-Version: 1.0
-In-Reply-To: <20190621163422.6127-4-drjones@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.29]); Thu, 25 Jul 2019 08:04:50 +0000 (UTC)
-X-TUID: G7Kw+Dvudn0N
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 62.239.224.236
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v4 11/15] memory: Single byte swap
+ along the I/O path
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, walling@linux.ibm.com, mst@redhat.com,
+ palmer@sifive.com, mark.cave-ayland@ilande.co.uk, Alistair.Francis@wdc.com,
+ arikalo@wavecomp.com, david@redhat.com, pasic@linux.ibm.com,
+ borntraeger@de.ibm.com, rth@twiddle.net, atar4qemu@gmail.com,
+ ehabkost@redhat.com, sw@weilnetz.de, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, david@gibson.dropbear.id.au, qemu-riscv@nongnu.org,
+ cohuck@redhat.com, alex.williamson@redhat.com, qemu-ppc@nongnu.org,
+ amarkovic@wavecomp.com, pbonzini@redhat.com, aurelien@aurel32.net
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: sWgyJTmoil2n
 
-Hi Drew,
+--_000_156404189101388577btcom_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-On 6/21/19 6:34 PM, Andrew Jones wrote:
-> Add support for the query-cpu-model-expansion QMP command to Arm. We
-> do this selectively, only exposing CPU properties which represent
-> optional CPU features which the user may want to enable/disable. Also,
-> for simplicity, we restrict the list of queryable cpu models to 'max',
-> 'host', or the current type when KVM is in use, even though there
-> may exist KVM hosts where other types would also work. For example on a
-> seattle you could use 'host' for the current type, but then attempt to
-> query 'cortex-a57', which is also a valid CPU type to use with KVM on
-> seattle hosts, but that query will fail with our simplifications. This
-> shouldn't be an issue though as management layers and users have been
-> preferring the 'host' CPU type for use with KVM for quite some time.
-> Additionally, if the KVM-enabled QEMU instance running on a seattle
-> host is using the cortex-a57 CPU type, then querying 'cortex-a57' will
-> work. Finally, we only implement expansion type 'full', as Arm does not
-> yet have a "base" CPU type. Below are some example calls and results
-> (to save character clutter they're not in json, but are still json-ish
-> to give the idea)
-> 
->  # expand the 'max' CPU model
->  query-cpu-model-expansion: type:full, model:{ name:max }
-> 
->  return: model:{ name:max, props:{ 'aarch64': true, 'pmu': true }}
-> 
->  # attempt to expand the 'max' CPU model with pmu=off
->  query-cpu-model-expansion:
->    type:full, model:{ name:max, props:{ 'pmu': false }}
-> 
->  return: model:{ name:max, props:{ 'aarch64': true, 'pmu': false }}
-> 
->  # attempt to expand the 'max' CPU model with aarch64=off
->  query-cpu-model-expansion:
->    type:full, model:{ name:max, props:{ 'aarch64': false }}
-> 
->  error: "'aarch64' feature cannot be disabled unless KVM is enabled
->          and 32-bit EL1 is supported"
+Now that MemOp has been pushed down into the memory API, we can
+collapse the two byte swaps adjust_endianness and handle_bswap into
+the former.
 
-I struggled quite a lot to get the right syntax to test with qmp-shell
-(which I think is the most user friendly way to run those commands). In
-the commit message, you may add an example such as:
+Collapsing byte swaps along the I/O path enables additional endian
+inversion logic, e.g. SPARC64 Invert Endian TTE bit, with redundant
+byte swaps cancelling out.
 
-(QEMU) query-cpu-model-expansion type=full
-model={"name":"host","props":{"aarch64":true,"pmu":true}}
-{"return": {"model": {"name": "host", "props": {"aarch64": true, "pmu":
-true}}}}
+Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
+---
+ accel/tcg/cputlb.c | 58 +++++++++++++++++++++++++-------------------------=
+----
+ memory.c           | 30 ++++++++++++++++------------
+ 2 files changed, 44 insertions(+), 44 deletions(-)
 
-(QEMU) query-cpu-model-expansion type=full model={"name":"host"}
-{"return": {"model": {"name": "host", "props": {"aarch64": true, "pmu":
-true}}}}
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index a4a0bf7..e61b1eb 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -881,7 +881,7 @@ static void tlb_fill(CPUState *cpu, target_ulong addr, =
+int size,
 
-Thanks
+ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+                          int mmu_idx, target_ulong addr, uintptr_t retaddr=
+,
+-                         MMUAccessType access_type, int size)
++                         MMUAccessType access_type, MemOp op)
+ {
+     CPUState *cpu =3D env_cpu(env);
+     hwaddr mr_offset;
+@@ -906,14 +906,13 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBE=
+ntry *iotlbentry,
+         qemu_mutex_lock_iothread();
+         locked =3D true;
+     }
+-    r =3D memory_region_dispatch_read(mr, mr_offset, &val, SIZE_MEMOP(size=
+),
+-                                    iotlbentry->attrs);
++    r =3D memory_region_dispatch_read(mr, mr_offset, &val, op, iotlbentry-=
+>attrs);
+     if (r !=3D MEMTX_OK) {
+         hwaddr physaddr =3D mr_offset +
+             section->offset_within_address_space -
+             section->offset_within_region;
 
-Eric
+-        cpu_transaction_failed(cpu, physaddr, addr, size, access_type,
++        cpu_transaction_failed(cpu, physaddr, addr, MEMOP_SIZE(op), access=
+_type,
+                                mmu_idx, iotlbentry->attrs, r, retaddr);
+     }
+     if (locked) {
+@@ -925,7 +924,7 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEnt=
+ry *iotlbentry,
+
+ static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+                       int mmu_idx, uint64_t val, target_ulong addr,
+-                      uintptr_t retaddr, int size)
++                      uintptr_t retaddr, MemOp op)
+ {
+     CPUState *cpu =3D env_cpu(env);
+     hwaddr mr_offset;
+@@ -947,15 +946,15 @@ static void io_writex(CPUArchState *env, CPUIOTLBEntr=
+y *iotlbentry,
+         qemu_mutex_lock_iothread();
+         locked =3D true;
+     }
+-    r =3D memory_region_dispatch_write(mr, mr_offset, val, SIZE_MEMOP(size=
+),
+-                                    iotlbentry->attrs);
++    r =3D memory_region_dispatch_write(mr, mr_offset, val, op, iotlbentry-=
+>attrs);
+     if (r !=3D MEMTX_OK) {
+         hwaddr physaddr =3D mr_offset +
+             section->offset_within_address_space -
+             section->offset_within_region;
+
+-        cpu_transaction_failed(cpu, physaddr, addr, size, MMU_DATA_STORE,
+-                               mmu_idx, iotlbentry->attrs, r, retaddr);
++        cpu_transaction_failed(cpu, physaddr, addr, MEMOP_SIZE(op),
++                               MMU_DATA_STORE, mmu_idx, iotlbentry->attrs,=
+ r,
++                               retaddr);
+     }
+     if (locked) {
+         qemu_mutex_unlock_iothread();
+@@ -1210,26 +1209,13 @@ static void *atomic_mmu_lookup(CPUArchState *env, t=
+arget_ulong addr,
+ #endif
+
+ /*
+- * Byte Swap Helper
++ * Byte Swap Checker
+  *
+- * This should all dead code away depending on the build host and
+- * access type.
++ * Dead code should all go away depending on the build host and access typ=
+e.
+  */
+-
+-static inline uint64_t handle_bswap(uint64_t val, int size, bool big_endia=
+n)
++static inline bool need_bswap(bool big_endian)
+ {
+-    if ((big_endian && NEED_BE_BSWAP) || (!big_endian && NEED_LE_BSWAP)) {
+-        switch (size) {
+-        case 1: return val;
+-        case 2: return bswap16(val);
+-        case 4: return bswap32(val);
+-        case 8: return bswap64(val);
+-        default:
+-            g_assert_not_reached();
+-        }
+-    } else {
+-        return val;
+-    }
++    return (big_endian && NEED_BE_BSWAP) || (!big_endian && NEED_LE_BSWAP)=
+;
+ }
+
+ /*
+@@ -1260,6 +1246,7 @@ load_helper(CPUArchState *env, target_ulong addr, TCG=
+MemOpIdx oi,
+     unsigned a_bits =3D get_alignment_bits(get_memop(oi));
+     void *haddr;
+     uint64_t res;
++    MemOp op;
+
+     /* Handle CPU specific unaligned behaviour */
+     if (addr & ((1 << a_bits) - 1)) {
+@@ -1305,9 +1292,13 @@ load_helper(CPUArchState *env, target_ulong addr, TC=
+GMemOpIdx oi,
+             }
+         }
+
+-        res =3D io_readx(env, &env_tlb(env)->d[mmu_idx].iotlb[index],
+-                       mmu_idx, addr, retaddr, access_type, size);
+-        return handle_bswap(res, size, big_endian);
++        op =3D SIZE_MEMOP(size);
++        if (need_bswap(big_endian)) {
++            op ^=3D MO_BSWAP;
++        }
++
++        return io_readx(env, &env_tlb(env)->d[mmu_idx].iotlb[index],
++                       mmu_idx, addr, retaddr, access_type, op);
+     }
+
+     /* Handle slow unaligned access (it spans two pages or IO).  */
+@@ -1508,6 +1499,7 @@ store_helper(CPUArchState *env, target_ulong addr, ui=
+nt64_t val,
+     const size_t tlb_off =3D offsetof(CPUTLBEntry, addr_write);
+     unsigned a_bits =3D get_alignment_bits(get_memop(oi));
+     void *haddr;
++    MemOp op;
+
+     /* Handle CPU specific unaligned behaviour */
+     if (addr & ((1 << a_bits) - 1)) {
+@@ -1553,9 +1545,13 @@ store_helper(CPUArchState *env, target_ulong addr, u=
+int64_t val,
+             }
+         }
+
++        op =3D SIZE_MEMOP(size);
++        if (need_bswap(big_endian)) {
++            op ^=3D MO_BSWAP;
++        }
++
+         io_writex(env, &env_tlb(env)->d[mmu_idx].iotlb[index], mmu_idx,
+-                  handle_bswap(val, size, big_endian),
+-                  addr, retaddr, size);
++                  val, addr, retaddr, op);
+         return;
+     }
+
+diff --git a/memory.c b/memory.c
+index 6982e19..0277d3d 100644
+--- a/memory.c
++++ b/memory.c
+@@ -352,7 +352,7 @@ static bool memory_region_big_endian(MemoryRegion *mr)
+ #endif
+ }
+
+-static bool memory_region_wrong_endianness(MemoryRegion *mr)
++static bool memory_region_endianness_inverted(MemoryRegion *mr)
+ {
+ #ifdef TARGET_WORDS_BIGENDIAN
+     return mr->ops->endianness =3D=3D DEVICE_LITTLE_ENDIAN;
+@@ -361,23 +361,27 @@ static bool memory_region_wrong_endianness(MemoryRegi=
+on *mr)
+ #endif
+ }
+
+-static void adjust_endianness(MemoryRegion *mr, uint64_t *data, unsigned s=
+ize)
++static void adjust_endianness(MemoryRegion *mr, uint64_t *data, MemOp op)
+ {
+-    if (memory_region_wrong_endianness(mr)) {
+-        switch (size) {
+-        case 1:
++    if (memory_region_endianness_inverted(mr)) {
++        op ^=3D MO_BSWAP;
++    }
++
++    if (op & MO_BSWAP) {
++        switch (op & MO_SIZE) {
++        case MO_8:
+             break;
+-        case 2:
++        case MO_16:
+             *data =3D bswap16(*data);
+             break;
+-        case 4:
++        case MO_32:
+             *data =3D bswap32(*data);
+             break;
+-        case 8:
++        case MO_64:
+             *data =3D bswap64(*data);
+             break;
+         default:
+-            abort();
++            g_assert_not_reached();
+         }
+     }
+ }
+@@ -1451,7 +1455,7 @@ MemTxResult memory_region_dispatch_read(MemoryRegion =
+*mr,
+     }
+
+     r =3D memory_region_dispatch_read1(mr, addr, pval, size, attrs);
+-    adjust_endianness(mr, pval, size);
++    adjust_endianness(mr, pval, op);
+     return r;
+ }
+
+@@ -1494,7 +1498,7 @@ MemTxResult memory_region_dispatch_write(MemoryRegion=
+ *mr,
+         return MEMTX_DECODE_ERROR;
+     }
+
+-    adjust_endianness(mr, &data, size);
++    adjust_endianness(mr, &data, op);
+
+     if ((!kvm_eventfds_enabled()) &&
+         memory_region_dispatch_write_eventfds(mr, addr, data, size, attrs)=
+) {
+@@ -2340,7 +2344,7 @@ void memory_region_add_eventfd(MemoryRegion *mr,
+     }
+
+     if (size) {
+-        adjust_endianness(mr, &mrfd.data, size);
++        adjust_endianness(mr, &mrfd.data, SIZE_MEMOP(size));
+     }
+     memory_region_transaction_begin();
+     for (i =3D 0; i < mr->ioeventfd_nb; ++i) {
+@@ -2375,7 +2379,7 @@ void memory_region_del_eventfd(MemoryRegion *mr,
+     unsigned i;
+
+     if (size) {
+-        adjust_endianness(mr, &mrfd.data, size);
++        adjust_endianness(mr, &mrfd.data, SIZE_MEMOP(size));
+     }
+     memory_region_transaction_begin();
+     for (i =3D 0; i < mr->ioeventfd_nb; ++i) {
+--
+1.8.3.1
 
 
-> 
-> In the last example KVM was not in use so an error was returned.
-> 
-> Note1: It's possible for features to have dependencies on other
-> features. I.e. it may be possible to change one feature at a time
-> without error, but when attempting to change all features at once
-> an error could occur depending on the order they are processed. It's
-> also possible changing all at once doesn't generate an error, because
-> a feature's dependencies are satisfied with other features, but the
-> same feature cannot be changed independently without error. For these
-> reasons callers should always attempt to make their desired changes
-> all at once in order to ensure the collection is valid.
-> 
-> Note2: Certainly more features may be added to the list of
-> advertised features, e.g. 'vfp' and 'neon'. The only requirement
-> is that their property set accessors fail when invalid
-> configurations are detected. For vfp we would need something like
-> 
->  set_vfp()
->  {
->    if (arm_feature(env, ARM_FEATURE_AARCH64) &&
->        cpu->has_vfp != cpu->has_neon)
->        error("AArch64 CPUs must have both VFP and Neon or neither")
-> 
-> in its set accessor, and the same for neon, rather than doing that
-> check at realize time, which isn't executed at qmp query time.
-> 
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> ---
->  qapi/target.json     |   6 +-
->  target/arm/monitor.c | 132 +++++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 135 insertions(+), 3 deletions(-)
-> 
-> diff --git a/qapi/target.json b/qapi/target.json
-> index 1d4d54b6002e..edfa2f82b916 100644
-> --- a/qapi/target.json
-> +++ b/qapi/target.json
-> @@ -408,7 +408,7 @@
->  ##
->  { 'struct': 'CpuModelExpansionInfo',
->    'data': { 'model': 'CpuModelInfo' },
-> -  'if': 'defined(TARGET_S390X) || defined(TARGET_I386)' }
-> +  'if': 'defined(TARGET_S390X) || defined(TARGET_I386) || defined(TARGET_ARM)' }
->  
->  ##
->  # @query-cpu-model-expansion:
-> @@ -433,7 +433,7 @@
->  #   query-cpu-model-expansion while using these is not advised.
->  #
->  # Some architectures may not support all expansion types. s390x supports
-> -# "full" and "static".
-> +# "full" and "static". Arm only supports "full".
->  #
->  # Returns: a CpuModelExpansionInfo. Returns an error if expanding CPU models is
->  #          not supported, if the model cannot be expanded, if the model contains
-> @@ -447,7 +447,7 @@
->    'data': { 'type': 'CpuModelExpansionType',
->              'model': 'CpuModelInfo' },
->    'returns': 'CpuModelExpansionInfo',
-> -  'if': 'defined(TARGET_S390X) || defined(TARGET_I386)' }
-> +  'if': 'defined(TARGET_S390X) || defined(TARGET_I386) || defined(TARGET_ARM)' }
->  
->  ##
->  # @CpuDefinitionInfo:
-> diff --git a/target/arm/monitor.c b/target/arm/monitor.c
-> index 41b32b94b258..19e3120eef95 100644
-> --- a/target/arm/monitor.c
-> +++ b/target/arm/monitor.c
-> @@ -23,7 +23,13 @@
->  #include "qemu/osdep.h"
->  #include "hw/boards.h"
->  #include "kvm_arm.h"
-> +#include "qapi/error.h"
-> +#include "qapi/visitor.h"
-> +#include "qapi/qobject-input-visitor.h"
->  #include "qapi/qapi-commands-target.h"
-> +#include "qapi/qmp/qerror.h"
-> +#include "qapi/qmp/qdict.h"
-> +#include "qom/qom-qobject.h"
->  
->  static GICCapability *gic_cap_new(int version)
->  {
-> @@ -82,3 +88,129 @@ GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
->  
->      return head;
->  }
-> +
-> +static const char *cpu_model_advertised_features[] = {
-> +    "aarch64", "pmu",
-> +    NULL
-> +};
-> +
-> +CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
-> +                                                     CpuModelInfo *model,
-> +                                                     Error **errp)
-> +{
-> +    CpuModelExpansionInfo *expansion_info;
-> +    const QDict *qdict_in = NULL;
-> +    QDict *qdict_out;
-> +    ObjectClass *oc;
-> +    Object *obj;
-> +    const char *name;
-> +    int i;
-> +
-> +    if (type != CPU_MODEL_EXPANSION_TYPE_FULL) {
-> +        error_setg(errp, "The requested expansion type is not supported.");
-> +        return NULL;
-> +    }
-> +
-> +    if (!kvm_enabled() && !strcmp(model->name, "host")) {
-> +        error_setg(errp, "The CPU definition '%s' requires KVM", model->name);
-> +        return NULL;
-> +    }
-> +
-> +    oc = cpu_class_by_name(TYPE_ARM_CPU, model->name);
-> +    if (!oc) {
-> +        error_setg(errp, "The CPU definition '%s' is unknown.", model->name);
-> +        return NULL;
-> +    }
-> +
-> +    if (kvm_enabled()) {
-> +        const char *cpu_type = current_machine->cpu_type;
-> +        int len = strlen(cpu_type) - strlen(ARM_CPU_TYPE_SUFFIX);
-> +        bool supported = false;
-> +
-> +        if (!strcmp(model->name, "host") || !strcmp(model->name, "max")) {
-> +            /* These are kvmarm's recommended cpu types */
-> +            supported = true;
-> +        } else if (strlen(model->name) == len &&
-> +                   !strncmp(model->name, cpu_type, len)) {
-> +            /* KVM is enabled and we're using this type, so it works. */
-> +            supported = true;
-> +        }
-> +        if (!supported) {
-> +            error_setg(errp, "The CPU definition '%s' cannot "
-> +                             "be used with KVM on this host", model->name);
-> +            return NULL;
-> +        }
-> +    }
-> +
-> +    if (model->props) {
-> +        qdict_in = qobject_to(QDict, model->props);
-> +        if (!qdict_in) {
-> +            error_setg(errp, QERR_INVALID_PARAMETER_TYPE, "props", "dict");
-> +            return NULL;
-> +        }
-> +    }
-> +
-> +    obj = object_new(object_class_get_name(oc));
-> +
-> +    if (qdict_in) {
-> +        Visitor *visitor;
-> +
-> +        visitor = qobject_input_visitor_new(model->props);
-> +        visit_start_struct(visitor, NULL, NULL, 0, errp);
-> +        if (*errp) {
-> +            object_unref(obj);
-> +            return NULL;
-> +        }
-> +
-> +        i = 0;
-> +        while ((name = cpu_model_advertised_features[i++]) != NULL) {
-> +            if (qdict_get(qdict_in, name)) {
-> +                object_property_set(obj, visitor, name, errp);
-> +                if (*errp) {
-> +                    break;
-> +                }
-> +            }
-> +        }
-> +
-> +        if (!*errp) {
-> +            visit_check_struct(visitor, errp);
-> +        }
-> +        visit_end_struct(visitor, NULL);
-> +        visit_free(visitor);
-> +        if (*errp) {
-> +            object_unref(obj);
-> +            return NULL;
-> +        }
-> +    }
-> +
-> +    expansion_info = g_new0(CpuModelExpansionInfo, 1);
-> +    expansion_info->model = g_malloc0(sizeof(*expansion_info->model));
-> +    expansion_info->model->name = g_strdup(model->name);
-> +
-> +    qdict_out = qdict_new();
-> +
-> +    i = 0;
-> +    while ((name = cpu_model_advertised_features[i++]) != NULL) {
-> +        ObjectProperty *prop = object_property_find(obj, name, NULL);
-> +        if (prop) {
-> +            QObject *value;
-> +
-> +            assert(prop->get);
-> +            value = object_property_get_qobject(obj, name, errp);
-> +            assert(!*errp);
-> +
-> +            qdict_put_obj(qdict_out, name, value);
-> +        }
-> +    }
-> +
-> +    if (!qdict_size(qdict_out)) {
-> +        qobject_unref(qdict_out);
-> +    } else {
-> +        expansion_info->model->props = QOBJECT(qdict_out);
-> +        expansion_info->model->has_props = true;
-> +    }
-> +
-> +    object_unref(obj);
-> +
-> +    return expansion_info;
-> +}
-> 
+
+
+--_000_156404189101388577btcom_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none"><!-- P { margin-top: 0px; m=
+argin-bottom: 0px; } .EmailQuote { margin-left: 1pt; padding-left: 4pt; bor=
+der-left-width: 2px; border-left-style: solid; border-left-color: rgb(128, =
+0, 0); }--></style>
+</head>
+<body dir=3D"ltr" style=3D"font-size:12pt;color:#000000;background-color:#F=
+FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
+<p></p>
+<div><span style=3D"font-size: 12pt;">Now that MemOp has been pushed down i=
+nto the memory API, we can</span><br>
+</div>
+<div>collapse the two byte swaps adjust_endianness and handle_bswap into</d=
+iv>
+<div>the former.</div>
+<div><br>
+</div>
+<div>Collapsing byte swaps along the I/O path enables additional endian</di=
+v>
+<div>inversion logic, e.g. SPARC64 Invert Endian TTE bit, with redundant</d=
+iv>
+<div>byte swaps cancelling out.</div>
+<div><br>
+</div>
+<div>Signed-off-by: Tony Nguyen &lt;tony.nguyen@bt.com&gt;</div>
+<div>---</div>
+<div>&nbsp;accel/tcg/cputlb.c | 58 &#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;=
+&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;=
+&#43;&#43;-----------------------------</div>
+<div>&nbsp;memory.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | 30 &#43;&#43;&#43;=
+&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;----------=
+--</div>
+<div>&nbsp;2 files changed, 44 insertions(&#43;), 44 deletions(-)</div>
+<div><br>
+</div>
+<div>diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c</div>
+<div>index a4a0bf7..e61b1eb 100644</div>
+<div>--- a/accel/tcg/cputlb.c</div>
+<div>&#43;&#43;&#43; b/accel/tcg/cputlb.c</div>
+<div>@@ -881,7 &#43;881,7 @@ static void tlb_fill(CPUState *cpu, target_ulo=
+ng addr, int size,</div>
+<div>&nbsp;</div>
+<div>&nbsp;static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlb=
+entry,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; int mmu_idx, target_ulong addr, uintptr_t retaddr,</di=
+v>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; MMUAccessType access_type, int size)</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; MMUAccessType access_type, MemOp op)</div>
+<div>&nbsp;{</div>
+<div>&nbsp; &nbsp; &nbsp;CPUState *cpu =3D env_cpu(env);</div>
+<div>&nbsp; &nbsp; &nbsp;hwaddr mr_offset;</div>
+<div>@@ -906,14 &#43;906,13 @@ static uint64_t io_readx(CPUArchState *env, =
+CPUIOTLBEntry *iotlbentry,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;qemu_mutex_lock_iothread();</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;locked =3D true;</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>- &nbsp; &nbsp;r =3D memory_region_dispatch_read(mr, mr_offset, &amp;v=
+al, SIZE_MEMOP(size),</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;iotlbentry-&gt;att=
+rs);</div>
+<div>&#43; &nbsp; &nbsp;r =3D memory_region_dispatch_read(mr, mr_offset, &a=
+mp;val, op, iotlbentry-&gt;attrs);</div>
+<div>&nbsp; &nbsp; &nbsp;if (r !=3D MEMTX_OK) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;hwaddr physaddr =3D mr_offset &#43;<=
+/div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;section-&gt;offset_wit=
+hin_address_space -</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;section-&gt;offset_wit=
+hin_region;</div>
+<div>&nbsp;</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;cpu_transaction_failed(cpu, physaddr, add=
+r, size, access_type,</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;cpu_transaction_failed(cpu, physaddr,=
+ addr, MEMOP_SIZE(op), access_type,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mmu_idx, iotlbentry-&gt;attrs, r,=
+ retaddr);</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp; &nbsp; &nbsp;if (locked) {</div>
+<div>@@ -925,7 &#43;924,7 @@ static uint64_t io_readx(CPUArchState *env, CP=
+UIOTLBEntry *iotlbentry,</div>
+<div>&nbsp;</div>
+<div>&nbsp;static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbent=
+ry,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp;int mmu_idx, uint64_t val, target_ulong addr,</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp;uintptr_t retaddr, int size)</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp;uintptr_t retaddr, MemOp op)</div>
+<div>&nbsp;{</div>
+<div>&nbsp; &nbsp; &nbsp;CPUState *cpu =3D env_cpu(env);</div>
+<div>&nbsp; &nbsp; &nbsp;hwaddr mr_offset;</div>
+<div>@@ -947,15 &#43;946,15 @@ static void io_writex(CPUArchState *env, CPU=
+IOTLBEntry *iotlbentry,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;qemu_mutex_lock_iothread();</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;locked =3D true;</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>- &nbsp; &nbsp;r =3D memory_region_dispatch_write(mr, mr_offset, val, =
+SIZE_MEMOP(size),</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;iotlbentry-&gt;att=
+rs);</div>
+<div>&#43; &nbsp; &nbsp;r =3D memory_region_dispatch_write(mr, mr_offset, v=
+al, op, iotlbentry-&gt;attrs);</div>
+<div>&nbsp; &nbsp; &nbsp;if (r !=3D MEMTX_OK) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;hwaddr physaddr =3D mr_offset &#43;<=
+/div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;section-&gt;offset_wit=
+hin_address_space -</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;section-&gt;offset_wit=
+hin_region;</div>
+<div>&nbsp;</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;cpu_transaction_failed(cpu, physaddr, add=
+r, size, MMU_DATA_STORE,</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mmu_idx, iotlbentry-&gt;attrs, r, reta=
+ddr);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;cpu_transaction_failed(cpu, physaddr,=
+ addr, MEMOP_SIZE(op),</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MMU_DATA_STORE, mmu_idx, iotlbentr=
+y-&gt;attrs, r,</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; retaddr);</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp; &nbsp; &nbsp;if (locked) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;qemu_mutex_unlock_iothread();</div>
+<div>@@ -1210,26 &#43;1209,13 @@ static void *atomic_mmu_lookup(CPUArchStat=
+e *env, target_ulong addr,</div>
+<div>&nbsp;#endif</div>
+<div>&nbsp;</div>
+<div>&nbsp;/*</div>
+<div>- * Byte Swap Helper</div>
+<div>&#43; * Byte Swap Checker</div>
+<div>&nbsp; *</div>
+<div>- * This should all dead code away depending on the build host and</di=
+v>
+<div>- * access type.</div>
+<div>&#43; * Dead code should all go away depending on the build host and a=
+ccess type.</div>
+<div>&nbsp; */</div>
+<div>-</div>
+<div>-static inline uint64_t handle_bswap(uint64_t val, int size, bool big_=
+endian)</div>
+<div>&#43;static inline bool need_bswap(bool big_endian)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;if ((big_endian &amp;&amp; NEED_BE_BSWAP) || (!big_endi=
+an &amp;&amp; NEED_LE_BSWAP)) {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;switch (size) {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 1: return val;</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 2: return bswap16(val);</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 4: return bswap32(val);</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 8: return bswap64(val);</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;default:</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;g_assert_not_reached();</di=
+v>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>- &nbsp; &nbsp;} else {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;return val;</div>
+<div>- &nbsp; &nbsp;}</div>
+<div>&#43; &nbsp; &nbsp;return (big_endian &amp;&amp; NEED_BE_BSWAP) || (!b=
+ig_endian &amp;&amp; NEED_LE_BSWAP);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp;/*</div>
+<div>@@ -1260,6 &#43;1246,7 @@ load_helper(CPUArchState *env, target_ulong =
+addr, TCGMemOpIdx oi,</div>
+<div>&nbsp; &nbsp; &nbsp;unsigned a_bits =3D get_alignment_bits(get_memop(o=
+i));</div>
+<div>&nbsp; &nbsp; &nbsp;void *haddr;</div>
+<div>&nbsp; &nbsp; &nbsp;uint64_t res;</div>
+<div>&#43; &nbsp; &nbsp;MemOp op;</div>
+<div>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;/* Handle CPU specific unaligned behaviour */</div=
+>
+<div>&nbsp; &nbsp; &nbsp;if (addr &amp; ((1 &lt;&lt; a_bits) - 1)) {</div>
+<div>@@ -1305,9 &#43;1292,13 @@ load_helper(CPUArchState *env, target_ulong=
+ addr, TCGMemOpIdx oi,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp;</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;res =3D io_readx(env, &amp;env_tlb(env)-&=
+gt;d[mmu_idx].iotlb[index],</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; mmu_idx, addr, retaddr, access_type, size);</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;return handle_bswap(res, size, big_endian=
+);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;op =3D SIZE_MEMOP(size);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;if (need_bswap(big_endian)) {</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;op ^=3D MO_BSWAP;</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&#43;</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;return io_readx(env, &amp;env_tlb(env=
+)-&gt;d[mmu_idx].iotlb[index],</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; mmu_idx, addr, retaddr, access_type, op);</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;/* Handle slow unaligned access (it spans two page=
+s or IO). &nbsp;*/</div>
+<div>@@ -1508,6 &#43;1499,7 @@ store_helper(CPUArchState *env, target_ulong=
+ addr, uint64_t val,</div>
+<div>&nbsp; &nbsp; &nbsp;const size_t tlb_off =3D offsetof(CPUTLBEntry, add=
+r_write);</div>
+<div>&nbsp; &nbsp; &nbsp;unsigned a_bits =3D get_alignment_bits(get_memop(o=
+i));</div>
+<div>&nbsp; &nbsp; &nbsp;void *haddr;</div>
+<div>&#43; &nbsp; &nbsp;MemOp op;</div>
+<div>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;/* Handle CPU specific unaligned behaviour */</div=
+>
+<div>&nbsp; &nbsp; &nbsp;if (addr &amp; ((1 &lt;&lt; a_bits) - 1)) {</div>
+<div>@@ -1553,9 &#43;1545,13 @@ store_helper(CPUArchState *env, target_ulon=
+g addr, uint64_t val,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp;</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;op =3D SIZE_MEMOP(size);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;if (need_bswap(big_endian)) {</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;op ^=3D MO_BSWAP;</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&#43;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;io_writex(env, &amp;env_tlb(env)-&gt=
+;d[mmu_idx].iotlb[index], mmu_idx,</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;handle=
+_bswap(val, size, big_endian),</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;addr, =
+retaddr, size);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;va=
+l, addr, retaddr, op);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return;</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp;</div>
+<div>diff --git a/memory.c b/memory.c</div>
+<div>index 6982e19..0277d3d 100644</div>
+<div>--- a/memory.c</div>
+<div>&#43;&#43;&#43; b/memory.c</div>
+<div>@@ -352,7 &#43;352,7 @@ static bool memory_region_big_endian(MemoryReg=
+ion *mr)</div>
+<div>&nbsp;#endif</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>-static bool memory_region_wrong_endianness(MemoryRegion *mr)</div>
+<div>&#43;static bool memory_region_endianness_inverted(MemoryRegion *mr)</=
+div>
+<div>&nbsp;{</div>
+<div>&nbsp;#ifdef TARGET_WORDS_BIGENDIAN</div>
+<div>&nbsp; &nbsp; &nbsp;return mr-&gt;ops-&gt;endianness =3D=3D DEVICE_LIT=
+TLE_ENDIAN;</div>
+<div>@@ -361,23 &#43;361,27 @@ static bool memory_region_wrong_endianness(M=
+emoryRegion *mr)</div>
+<div>&nbsp;#endif</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>-static void adjust_endianness(MemoryRegion *mr, uint64_t *data, unsig=
+ned size)</div>
+<div>&#43;static void adjust_endianness(MemoryRegion *mr, uint64_t *data, M=
+emOp op)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;if (memory_region_wrong_endianness(mr)) {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;switch (size) {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 1:</div>
+<div>&#43; &nbsp; &nbsp;if (memory_region_endianness_inverted(mr)) {</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;op ^=3D MO_BSWAP;</div>
+<div>&#43; &nbsp; &nbsp;}</div>
+<div>&#43;</div>
+<div>&#43; &nbsp; &nbsp;if (op &amp; MO_BSWAP) {</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;switch (op &amp; MO_SIZE) {</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;case MO_8:</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 2:</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;case MO_16:</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*data =3D bswap16(*dat=
+a);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 4:</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;case MO_32:</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*data =3D bswap32(*dat=
+a);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 8:</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;case MO_64:</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*data =3D bswap64(*dat=
+a);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;default:</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;abort();</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;g_assert_not_reached();=
+</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp;}</div>
+<div>@@ -1451,7 &#43;1455,7 @@ MemTxResult memory_region_dispatch_read(Memo=
+ryRegion *mr,</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;r =3D memory_region_dispatch_read1(mr, addr, pval,=
+ size, attrs);</div>
+<div>- &nbsp; &nbsp;adjust_endianness(mr, pval, size);</div>
+<div>&#43; &nbsp; &nbsp;adjust_endianness(mr, pval, op);</div>
+<div>&nbsp; &nbsp; &nbsp;return r;</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>@@ -1494,7 &#43;1498,7 @@ MemTxResult memory_region_dispatch_write(Mem=
+oryRegion *mr,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return MEMTX_DECODE_ERROR;</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp;</div>
+<div>- &nbsp; &nbsp;adjust_endianness(mr, &amp;data, size);</div>
+<div>&#43; &nbsp; &nbsp;adjust_endianness(mr, &amp;data, op);</div>
+<div>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;if ((!kvm_eventfds_enabled()) &amp;&amp;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;memory_region_dispatch_write_eventfd=
+s(mr, addr, data, size, attrs)) {</div>
+<div>@@ -2340,7 &#43;2344,7 @@ void memory_region_add_eventfd(MemoryRegion =
+*mr,</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;if (size) {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;adjust_endianness(mr, &amp;mrfd.data, siz=
+e);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;adjust_endianness(mr, &amp;mrfd.data,=
+ SIZE_MEMOP(size));</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp; &nbsp; &nbsp;memory_region_transaction_begin();</div>
+<div>&nbsp; &nbsp; &nbsp;for (i =3D 0; i &lt; mr-&gt;ioeventfd_nb; &#43;&#4=
+3;i) {</div>
+<div>@@ -2375,7 &#43;2379,7 @@ void memory_region_del_eventfd(MemoryRegion =
+*mr,</div>
+<div>&nbsp; &nbsp; &nbsp;unsigned i;</div>
+<div>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;if (size) {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;adjust_endianness(mr, &amp;mrfd.data, siz=
+e);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;adjust_endianness(mr, &amp;mrfd.data,=
+ SIZE_MEMOP(size));</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp; &nbsp; &nbsp;memory_region_transaction_begin();</div>
+<div>&nbsp; &nbsp; &nbsp;for (i =3D 0; i &lt; mr-&gt;ioeventfd_nb; &#43;&#4=
+3;i) {</div>
+<div>--&nbsp;</div>
+<div>1.8.3.1</div>
+<div><br>
+<br>
+</div>
+<p><br>
+</p>
+</body>
+</html>
+
+--_000_156404189101388577btcom_--

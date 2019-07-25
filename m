@@ -1,75 +1,74 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10320220wrv;
-        Thu, 25 Jul 2019 01:02:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyVzpXMJFMO6nLwNw7z0hc6KTDIgaYJIelOe9j5sx/9NlUGWbJtntjTiYpgSi15qvYQ3rlT
-X-Received: by 2002:ac8:252e:: with SMTP id 43mr60814725qtm.61.1564041726813;
-        Thu, 25 Jul 2019 01:02:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564041726; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10321231wrv;
+        Thu, 25 Jul 2019 01:03:00 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzkW2m7jFO6O6m25q/V9XLNIA7Ylu3Odnotk8DFDcllEmPIRRcjZM4pFHSAd/J3Jy1JbZkG
+X-Received: by 2002:a17:906:c459:: with SMTP id ck25mr65640587ejb.32.1564041780852;
+        Thu, 25 Jul 2019 01:03:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564041780; cv=none;
         d=google.com; s=arc-20160816;
-        b=jTTOaWLL4egJ2+p0rePFKoPV4UAybLY74UNduT12D8CSeZTJWSF8XJ9n3HH0LoAnL6
-         D7F3fessTo5rKslze6E1rB/jdo61zK/REIUOdy3O0EvaNIEalO7cVHyH5iKPgu8zfJE8
-         ET/1kBaDRFiso4dui6U1cgDUv4YpJhoD4Z95fy8/dIAAp4RlvuqjaXo5Tk7DgsC2urli
-         dsATVZ9XnPXdvNprD5a5JvAj5SaoKTM3LK/ceDmBnuxS0IvNQU1X07/x4Xx4sV5kGIv9
-         Nj9KoNUJ6BG4ORe7mnZJ/gKTrbqxlzHFlUXRp0m8fmi//istohv4DrqjwwLw4vncH0wA
-         k7GQ==
+        b=wOtE9QcR+t+i8p8Wd8zP6L+ABTp/Y/rD0awebyXRvd3ZBTE43EyKnEupQFdkH3Lec3
+         uxq1S+zzUsca7CwKAM1MjglUtPPGGOaNF9j5PQHpxRk4c4kylDrS1a4xCP0wG71IBCse
+         nMHdss000gExvVlUEtqm4U1jPaLMoTfF+fuo0ZB1jP2vXGLfuUd2NJo7osoo1hEFe959
+         vXnLCRM2/iIlMiSgYoW7YbKFdyUeovOsUA3NoJjUM2ERfG4KZ7AcUaukWkIwDPQKfw66
+         adxbGjgp5nCZIthsI9VlRcJ2sZ03FboPOx1afWLySFkMuOuEiCEhWrIyC/MU69/TzcRb
+         q7gQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-language:accept-language:in-reply-to:references:message-id
          :date:thread-index:thread-topic:to:from;
-        bh=vXcigFAcDDCZxHb/Eojqk3zxjmUuI0LALFwMi9wCSnQ=;
-        b=qP7dm5nb9WtERDyn9X0wEZRzqG8W0s+eDEvfqBfNJSU+aaV51whrXVNOXZ055SogCo
-         6sBhvZkkLifHPs0146bnET30CoYhyqoj3VjAWGi/hYBTnKhyReCWH5fUv3rK7fgC0CFx
-         Nt4cIpTwCGLpsZqr7WXrgykB7KfSCbGClOaH6W0D0DZQQ2xvEb9hvOSuQtp4m04uM3Ts
-         Ag/1x/hMWsQk0zgdQRvHK4Zf2wjPtkDkea7ECK70oUdzFvzthBJrk8r9fcgRhNPHpSWL
-         QmbEd5vQCwQpG2RP+nuW8dnaS+Ma5MEEdOshkVpaB1x9S5qAdwBf++lj99Jm3YjZNlR+
-         VOFg==
+        bh=TI3Om4QuR6bRgeuwqDmsu/EZVHG+JvBJK95acGgQW2s=;
+        b=AfOinWaO+MzXkSaCJREYuinukwKenEMmUY3xS3+8+araXQSnijVuNI8Xt0fghd3I63
+         P2J+HBDaTnlDHMVhnAZjpe+TMfFRcYBuHUdzFAYMBdxj5pDWVPRQahg6R8pXhK8kjZTQ
+         JRA+HVysd2znsOBzn4hzW4SKWwqUrnAGdJx2HEYktWRQC1kXincg944fSw3h+OgzU2mP
+         lN0CT0w+zQCCg1TWj36FXZ0oDBTGtjU89F38afxO4lBVDn418DQHiEAVfj+OrKAKTOP+
+         73iyMKgOrKYPLFb6XJOEjjrzP9B48A+V+MMZnSMWJ7VvAvhlDmlv9OV+rxj+Z+VJnsWf
+         vUzg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i8si28362761qkm.147.2019.07.25.01.02.06
+        by mx.google.com with ESMTPS id s23si8733747eju.114.2019.07.25.01.03.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jul 2019 01:02:06 -0700 (PDT)
+        Thu, 25 Jul 2019 01:03:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:56700 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56740 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hqYhS-0006PC-6p
-	for alex.bennee@linaro.org; Thu, 25 Jul 2019 04:02:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37061)
+	id 1hqYiJ-0000Sp-PS
+	for alex.bennee@linaro.org; Thu, 25 Jul 2019 04:02:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37210)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <tony.nguyen@bt.com>) id 1hqYhO-0006Mw-0X
- for qemu-arm@nongnu.org; Thu, 25 Jul 2019 04:02:03 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hqYho-0007eJ-7U
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 04:02:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hqYhM-00029Q-L1
- for qemu-arm@nongnu.org; Thu, 25 Jul 2019 04:02:01 -0400
-Received: from smtpe1.intersmtp.com ([213.121.35.73]:28612)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (envelope-from <tony.nguyen@bt.com>) id 1hqYhm-0002LC-Qj
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 04:02:28 -0400
+Received: from smtpe1.intersmtp.com ([62.239.224.234]:38693)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hqYhF-00025t-AY; Thu, 25 Jul 2019 04:01:53 -0400
+ id 1hqYhj-0002J9-ON; Thu, 25 Jul 2019 04:02:24 -0400
 Received: from tpw09926dag18h.domain1.systemhost.net (10.9.212.42) by
- BWP09926078.bt.com (10.36.82.109) with Microsoft SMTP Server (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Thu, 25
- Jul 2019 09:01:48 +0100
+ RDW083A012ED68.bt.com (10.187.98.38) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Thu, 25 Jul 2019 09:01:42 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
  tpw09926dag18h.domain1.systemhost.net (10.9.212.42) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Thu, 25 Jul 2019 09:01:51 +0100
+ Server (TLS) id 15.0.1395.4; Thu, 25 Jul 2019 09:02:21 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Thu, 25 Jul
- 2019 09:01:51 +0100
+ 2019 09:02:20 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v4 04/15] hw/s390x: Access MemoryRegion with
- MemOp
-Thread-Index: AQHVQr836exqWWmOP0ypESrXknrVFA==
-Date: Thu, 25 Jul 2019 08:01:51 +0000
-Message-ID: <1564041710744.75150@bt.com>
+Thread-Topic: [Qemu-devel] [PATCH v4 05/15] hw/intc/armv7m_nic: Access
+ MemoryRegion with MemOp
+Thread-Index: AQHVQr9JAEc8fNvT0E20LRoWmFM+dw==
+Date: Thu, 25 Jul 2019 08:02:20 +0000
+Message-ID: <1564041740688.46909@bt.com>
 References: <e9c6e5310b1a4863be45d45bf087fc3d@tpw09926dag18e.domain1.systemhost.net>, 
  <1563810716254.18886@bt.com>, <1564038073754.91133@bt.com>,
  <1564041524365.23360@bt.com>
@@ -80,11 +79,12 @@ X-MS-Has-Attach:
 X-MS-TNEF-Correlator: 
 x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.42]
-Content-Type: multipart/alternative; boundary="_000_156404171074475150btcom_"
+Content-Type: multipart/alternative; boundary="_000_156404174068846909btcom_"
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 213.121.35.73
-Subject: [Qemu-arm] [Qemu-devel] [PATCH v4 04/15] hw/s390x: Access
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 62.239.224.234
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v4 05/15] hw/intc/armv7m_nic: Access
  MemoryRegion with MemOp
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -107,67 +107,86 @@ Cc: peter.maydell@linaro.org, walling@linux.ibm.com, mst@redhat.com,
  amarkovic@wavecomp.com, pbonzini@redhat.com, aurelien@aurel32.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AyqWiQAniO+y
+X-TUID: BYAzONm67SFU
 
---_000_156404171074475150btcom_
+--_000_156404174068846909btcom_
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
 ---
- hw/s390x/s390-pci-inst.c | 8 +++++---
- 1 file changed, 5 insertions(+), 3 deletions(-)
+ hw/intc/armv7m_nvic.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/hw/s390x/s390-pci-inst.c b/hw/s390x/s390-pci-inst.c
-index 0023514..c126bcc 100644
---- a/hw/s390x/s390-pci-inst.c
-+++ b/hw/s390x/s390-pci-inst.c
-@@ -15,6 +15,7 @@
- #include "cpu.h"
- #include "s390-pci-inst.h"
- #include "s390-pci-bus.h"
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index 9f8f0d3..25bb88a 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -18,6 +18,7 @@
+ #include "hw/intc/armv7m_nvic.h"
+ #include "target/arm/cpu.h"
+ #include "exec/exec-all.h"
 +#include "exec/memop.h"
- #include "exec/memory-internal.h"
- #include "qemu/error-report.h"
- #include "sysemu/hw_accel.h"
-@@ -372,7 +373,7 @@ static MemTxResult zpci_read_bar(S390PCIBusDevice *pbde=
-v, uint8_t pcias,
-     mr =3D pbdev->pdev->io_regions[pcias].memory;
-     mr =3D s390_get_subregion(mr, offset, len);
-     offset -=3D mr->addr;
--    return memory_region_dispatch_read(mr, offset, data, len,
-+    return memory_region_dispatch_read(mr, offset, data, SIZE_MEMOP(len),
-                                        MEMTXATTRS_UNSPECIFIED);
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "trace.h"
+@@ -2345,7 +2346,8 @@ static MemTxResult nvic_sysreg_ns_write(void *opaque,=
+ hwaddr addr,
+     if (attrs.secure) {
+         /* S accesses to the alias act like NS accesses to the real region=
+ */
+         attrs.secure =3D 0;
+-        return memory_region_dispatch_write(mr, addr, value, size, attrs);
++        return memory_region_dispatch_write(mr, addr, value, SIZE_MEMOP(si=
+ze),
++                                            attrs);
+     } else {
+         /* NS attrs are RAZ/WI for privileged, and BusFault for user */
+         if (attrs.user) {
+@@ -2364,7 +2366,8 @@ static MemTxResult nvic_sysreg_ns_read(void *opaque, =
+hwaddr addr,
+     if (attrs.secure) {
+         /* S accesses to the alias act like NS accesses to the real region=
+ */
+         attrs.secure =3D 0;
+-        return memory_region_dispatch_read(mr, addr, data, size, attrs);
++        return memory_region_dispatch_read(mr, addr, data, SIZE_MEMOP(size=
+),
++                                           attrs);
+     } else {
+         /* NS attrs are RAZ/WI for privileged, and BusFault for user */
+         if (attrs.user) {
+@@ -2390,7 +2393,8 @@ static MemTxResult nvic_systick_write(void *opaque, h=
+waddr addr,
+
+     /* Direct the access to the correct systick */
+     mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systick[attrs.secure]=
+), 0);
+-    return memory_region_dispatch_write(mr, addr, value, size, attrs);
++    return memory_region_dispatch_write(mr, addr, value, SIZE_MEMOP(size),
++                                        attrs);
  }
 
-@@ -471,7 +472,7 @@ static MemTxResult zpci_write_bar(S390PCIBusDevice *pbd=
-ev, uint8_t pcias,
-     mr =3D pbdev->pdev->io_regions[pcias].memory;
-     mr =3D s390_get_subregion(mr, offset, len);
-     offset -=3D mr->addr;
--    return memory_region_dispatch_write(mr, offset, data, len,
-+    return memory_region_dispatch_write(mr, offset, data, SIZE_MEMOP(len),
-                                         MEMTXATTRS_UNSPECIFIED);
+ static MemTxResult nvic_systick_read(void *opaque, hwaddr addr,
+@@ -2402,7 +2406,7 @@ static MemTxResult nvic_systick_read(void *opaque, hw=
+addr addr,
+
+     /* Direct the access to the correct systick */
+     mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systick[attrs.secure]=
+), 0);
+-    return memory_region_dispatch_read(mr, addr, data, size, attrs);
++    return memory_region_dispatch_read(mr, addr, data, SIZE_MEMOP(size), a=
+ttrs);
  }
 
-@@ -780,7 +781,8 @@ int pcistb_service_call(S390CPU *cpu, uint8_t r1, uint8=
-_t r3, uint64_t gaddr,
-
-     for (i =3D 0; i < len / 8; i++) {
-         result =3D memory_region_dispatch_write(mr, offset + i * 8,
--                                              ldq_p(buffer + i * 8), 8,
-+                                              ldq_p(buffer + i * 8),
-+                                              SIZE_MEMOP(8),
-                                               MEMTXATTRS_UNSPECIFIED);
-         if (result !=3D MEMTX_OK) {
-             s390_program_interrupt(env, PGM_OPERAND, 6, ra);
+ static const MemoryRegionOps nvic_systick_ops =3D {
 --
 1.8.3.1
 
 
 
 
---_000_156404171074475150btcom_
+--_000_156404174068846909btcom_
 Content-Type: text/html; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
@@ -187,73 +206,89 @@ FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
 guyen@bt.com&gt;</span><br>
 </div>
 <div>---</div>
-<div>&nbsp;hw/s390x/s390-pci-inst.c | 8 &#43;&#43;&#43;&#43;&#43;---</div>
-<div>&nbsp;1 file changed, 5 insertions(&#43;), 3 deletions(-)</div>
+<div>&nbsp;hw/intc/armv7m_nvic.c | 12 &#43;&#43;&#43;&#43;&#43;&#43;&#43;&#=
+43;----</div>
+<div>&nbsp;1 file changed, 8 insertions(&#43;), 4 deletions(-)</div>
 <div><br>
 </div>
-<div>diff --git a/hw/s390x/s390-pci-inst.c b/hw/s390x/s390-pci-inst.c</div>
-<div>index 0023514..c126bcc 100644</div>
-<div>--- a/hw/s390x/s390-pci-inst.c</div>
-<div>&#43;&#43;&#43; b/hw/s390x/s390-pci-inst.c</div>
-<div>@@ -15,6 &#43;15,7 @@</div>
-<div>&nbsp;#include &quot;cpu.h&quot;</div>
-<div>&nbsp;#include &quot;s390-pci-inst.h&quot;</div>
-<div>&nbsp;#include &quot;s390-pci-bus.h&quot;</div>
+<div>diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c</div>
+<div>index 9f8f0d3..25bb88a 100644</div>
+<div>--- a/hw/intc/armv7m_nvic.c</div>
+<div>&#43;&#43;&#43; b/hw/intc/armv7m_nvic.c</div>
+<div>@@ -18,6 &#43;18,7 @@</div>
+<div>&nbsp;#include &quot;hw/intc/armv7m_nvic.h&quot;</div>
+<div>&nbsp;#include &quot;target/arm/cpu.h&quot;</div>
+<div>&nbsp;#include &quot;exec/exec-all.h&quot;</div>
 <div>&#43;#include &quot;exec/memop.h&quot;</div>
-<div>&nbsp;#include &quot;exec/memory-internal.h&quot;</div>
-<div>&nbsp;#include &quot;qemu/error-report.h&quot;</div>
-<div>&nbsp;#include &quot;sysemu/hw_accel.h&quot;</div>
-<div>@@ -372,7 &#43;373,7 @@ static MemTxResult zpci_read_bar(S390PCIBusDev=
-ice *pbdev, uint8_t pcias,</div>
-<div>&nbsp; &nbsp; &nbsp;mr =3D pbdev-&gt;pdev-&gt;io_regions[pcias].memory=
-;</div>
-<div>&nbsp; &nbsp; &nbsp;mr =3D s390_get_subregion(mr, offset, len);</div>
-<div>&nbsp; &nbsp; &nbsp;offset -=3D mr-&gt;addr;</div>
-<div>- &nbsp; &nbsp;return memory_region_dispatch_read(mr, offset, data, le=
-n,</div>
-<div>&#43; &nbsp; &nbsp;return memory_region_dispatch_read(mr, offset, data=
-, SIZE_MEMOP(len),</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MEMTX=
-ATTRS_UNSPECIFIED);</div>
-<div>&nbsp;}</div>
-<div>&nbsp;</div>
-<div>@@ -471,7 &#43;472,7 @@ static MemTxResult zpci_write_bar(S390PCIBusDe=
-vice *pbdev, uint8_t pcias,</div>
-<div>&nbsp; &nbsp; &nbsp;mr =3D pbdev-&gt;pdev-&gt;io_regions[pcias].memory=
-;</div>
-<div>&nbsp; &nbsp; &nbsp;mr =3D s390_get_subregion(mr, offset, len);</div>
-<div>&nbsp; &nbsp; &nbsp;offset -=3D mr-&gt;addr;</div>
-<div>- &nbsp; &nbsp;return memory_region_dispatch_write(mr, offset, data, l=
-en,</div>
-<div>&#43; &nbsp; &nbsp;return memory_region_dispatch_write(mr, offset, dat=
-a, SIZE_MEMOP(len),</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-;MEMTXATTRS_UNSPECIFIED);</div>
-<div>&nbsp;}</div>
-<div>&nbsp;</div>
-<div>@@ -780,7 &#43;781,8 @@ int pcistb_service_call(S390CPU *cpu, uint8_t =
-r1, uint8_t r3, uint64_t gaddr,</div>
-<div>&nbsp;</div>
-<div>&nbsp; &nbsp; &nbsp;for (i =3D 0; i &lt; len / 8; i&#43;&#43;) {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;result =3D memory_region_dispatch_wr=
-ite(mr, offset &#43; i * 8,</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
-sp; &nbsp; &nbsp;ldq_p(buffer &#43; i * 8), 8,</div>
+<div>&nbsp;#include &quot;qemu/log.h&quot;</div>
+<div>&nbsp;#include &quot;qemu/module.h&quot;</div>
+<div>&nbsp;#include &quot;trace.h&quot;</div>
+<div>@@ -2345,7 &#43;2346,8 @@ static MemTxResult nvic_sysreg_ns_write(void=
+ *opaque, hwaddr addr,</div>
+<div>&nbsp; &nbsp; &nbsp;if (attrs.secure) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* S accesses to the alias act like =
+NS accesses to the real region */</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;attrs.secure =3D 0;</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;return memory_region_dispatch_write(mr, a=
+ddr, value, size, attrs);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;return memory_region_dispatch_write(m=
+r, addr, value, SIZE_MEMOP(size),</div>
 <div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
 nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
- &nbsp; &nbsp; &nbsp;ldq_p(buffer &#43; i * 8),</div>
+ &nbsp; &nbsp;attrs);</div>
+<div>&nbsp; &nbsp; &nbsp;} else {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* NS attrs are RAZ/WI for privilege=
+d, and BusFault for user */</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (attrs.user) {</div>
+<div>@@ -2364,7 &#43;2366,8 @@ static MemTxResult nvic_sysreg_ns_read(void =
+*opaque, hwaddr addr,</div>
+<div>&nbsp; &nbsp; &nbsp;if (attrs.secure) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* S accesses to the alias act like =
+NS accesses to the real region */</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;attrs.secure =3D 0;</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;return memory_region_dispatch_read(mr, ad=
+dr, data, size, attrs);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;return memory_region_dispatch_read(mr=
+, addr, data, SIZE_MEMOP(size),</div>
 <div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
 nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
- &nbsp; &nbsp; &nbsp;SIZE_MEMOP(8),</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp;MEMTXATTRS_UNSPECIFIED);</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (result !=3D MEMTX_OK) {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;s390_program_interrupt=
-(env, PGM_OPERAND, 6, ra);</div>
+ &nbsp; attrs);</div>
+<div>&nbsp; &nbsp; &nbsp;} else {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* NS attrs are RAZ/WI for privilege=
+d, and BusFault for user */</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (attrs.user) {</div>
+<div>@@ -2390,7 &#43;2393,8 @@ static MemTxResult nvic_systick_write(void *=
+opaque, hwaddr addr,</div>
+<div>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;/* Direct the access to the correct systick */</di=
+v>
+<div>&nbsp; &nbsp; &nbsp;mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&amp;=
+s-&gt;systick[attrs.secure]), 0);</div>
+<div>- &nbsp; &nbsp;return memory_region_dispatch_write(mr, addr, value, si=
+ze, attrs);</div>
+<div>&#43; &nbsp; &nbsp;return memory_region_dispatch_write(mr, addr, value=
+, SIZE_MEMOP(size),</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+attrs);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp;static MemTxResult nvic_systick_read(void *opaque, hwaddr addr,<=
+/div>
+<div>@@ -2402,7 &#43;2406,7 @@ static MemTxResult nvic_systick_read(void *o=
+paque, hwaddr addr,</div>
+<div>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;/* Direct the access to the correct systick */</di=
+v>
+<div>&nbsp; &nbsp; &nbsp;mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&amp;=
+s-&gt;systick[attrs.secure]), 0);</div>
+<div>- &nbsp; &nbsp;return memory_region_dispatch_read(mr, addr, data, size=
+, attrs);</div>
+<div>&#43; &nbsp; &nbsp;return memory_region_dispatch_read(mr, addr, data, =
+SIZE_MEMOP(size), attrs);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp;static const MemoryRegionOps nvic_systick_ops =3D {</div>
 <div>--&nbsp;</div>
 <div>1.8.3.1</div>
 <div><br>
@@ -264,4 +299,4 @@ nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
 </body>
 </html>
 
---_000_156404171074475150btcom_--
+--_000_156404174068846909btcom_--

@@ -1,346 +1,717 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10313109wrv;
-        Thu, 25 Jul 2019 00:54:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw2yf4WrZt7eG2SheT97t3Q91Tb8HAgtbMk8k2Eiq8GriS/auqCRb5t9f2zeakIDKmDUqPa
-X-Received: by 2002:a0c:d0fc:: with SMTP id b57mr62440707qvh.78.1564041253823;
-        Thu, 25 Jul 2019 00:54:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564041253; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10317038wrv;
+        Thu, 25 Jul 2019 00:59:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzGSfJhLILX9UEC2gijcg85cf81GkMk0K430UyIabDPOLZicfKVB7POHANrLBz3izte32xC
+X-Received: by 2002:ac8:3a63:: with SMTP id w90mr24967054qte.371.1564041545870;
+        Thu, 25 Jul 2019 00:59:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564041545; cv=none;
         d=google.com; s=arc-20160816;
-        b=rVlQ0BSHttEUU66lLgsEkesi2UhxVwZdpCAa5xWYIVUJReoet3+IbybujaGK16JFpd
-         Hlec3qKBH10FN7azu6D9J9QmxwTnQkLKVLOD3p4eg0YGAHYZaZM2asJtLHtW1Bm4u5u3
-         ENYlFeV5u+9Hz5e66tCgbpNvSpLApRu5MZxLtyT5YorDGEXVwpmCAdVpbYYdey6kgrhr
-         5L4Wrd0C2uGEUjJcEMeYKWfByyFVSPd8dayQZCHjsJ8M5XV2XLVY2Yo00hc5+5x04z97
-         19fQKBas5efkVnlNnVcOFgRyQwCndszK5GF2TMbYHn8yIUoE+pnwbHISyFckDi4oU7sR
-         AEFQ==
+        b=vp6WTdEMhODeWRCSzo/QwFJM1v1tZE52z05mDTYdRwCQYlmUkHXYdxoxinF3xLt9Ev
+         Az9NEzEWTiHoWbPg1qXIpUFI80ApiLuP0A7D1fcHB+7ycvduhJatCa+Tw9LIosdWjyUB
+         ACjDOLA2KMG8K5yysljsE21OYzbbxJOSh7879MsJVYr9me4p6lefRpCjJH/muNDQvh43
+         Mm2PjLlCBH6NSxi0Ffx3dHYcmFJ3g2XMqfEHgUaV+T4aax4t3Rk+WwRu35hYJsWjGumC
+         lzOMdQFFGKo4BtScK5DrCAejgMeRTGyKK/K4eRhF8jKWxVWKLRireaOUBAG3s0EU9HoL
+         bIUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=v+mGXcvvTPOt+U7MivEF2pk2Cm1vZWUNVmZtTf9aJ60=;
-        b=N9K0Xvt5EoG7K1MkXg2v2HBbu2U/kziI7tgI8yuU8PnCfEkjx0gO4IpafwzVQ4tElv
-         ZT91tq/bb5L5oDQZYJUovm51eBn1CDcxdL3QKDZA+Jd8zctiAQok/DQ+2tafyCEm76qw
-         VPhqZj5rpWwg7EYV37GZbbnwJBpOGLyEUzR6EaZcW93IhIJAEADM2cYih9bHssm4I92W
-         ZThmHJFYQUYWLIJImBL7qsS170exuR6AAycyo/8Bgr/y8d572m96PtnjnMxvKmkwPBYA
-         DCSMYJhv2kIrIyPxRF7H0Fadu96V0cXUc9PK57QTUO6v5lhQqxH5AC54WipzF53BHzWL
-         fInQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-language:accept-language:in-reply-to:references:message-id
+         :date:thread-index:thread-topic:to:from;
+        bh=ix9QUeUEBgQZUH14RlbJRCqqjCNnx1Vt1sD8ferSojs=;
+        b=KdFS8Y4/fMrrDHUZxizdJ9nfpphYsJpNUUaMvyTrwKr7A4SpyVJ+dNCrjQxl/1x0p+
+         HRQxXJVDJm1S7QOrqXqtXgigZQc8SPFURsVRVDKBgm7TKwkCiAvf89riMlapoIxRSKZj
+         byR4F8LyRvoQLjgoG8NIwaVNcOJdtZXTcbc9vXuAO3xqgMGogb0uXvww6Tn68lK5wzWb
+         jbjqmAurhJe1uHXppf0eKYsX8afwwfsP1kuqkyp8NqTpD+5y8SG3AzwHFChz5EP1FNwg
+         4jAJ4Mfp2b42o1ZItAe70O2dfVJQXBsA34D561r93J2dqG76LigyegvlGZvNuh0C7cgV
+         upkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id x3si15726888qkn.31.2019.07.25.00.54.13
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 25 Jul 2019 00:54:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h33si31711639qvc.120.2019.07.25.00.59.05
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 25 Jul 2019 00:59:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 9CCAFC065116;
-	Thu, 25 Jul 2019 07:54:12 +0000 (UTC)
-Received: from [10.36.116.102] (ovpn-116-102.ams2.redhat.com [10.36.116.102])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id D80D45D9DE;
-	Thu, 25 Jul 2019 07:54:09 +0000 (UTC)
-Subject: Re: [PATCH v2 04/14] tests: arm: Introduce cpu feature tests
-To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
- alex.bennee@linaro.org, armbru@redhat.com, eblake@redhat.com,
- Dave.Martin@arm.com, imammedo@redhat.com
-References: <20190621163422.6127-1-drjones@redhat.com>
- <20190621163422.6127-5-drjones@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <62c4c0cb-8b17-aea2-369c-61149e2c4df2@redhat.com>
-Date: Thu, 25 Jul 2019 09:54:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
+Received: from localhost ([::1]:56620 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hqYeX-00023m-1q
+	for alex.bennee@linaro.org; Thu, 25 Jul 2019 03:59:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36123)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <tony.nguyen@bt.com>) id 1hqYeR-00020D-S5
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 03:59:02 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <tony.nguyen@bt.com>) id 1hqYeP-00084Q-Ig
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 03:58:59 -0400
+Received: from smtpe1.intersmtp.com ([213.121.35.77]:5178)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
+ id 1hqYeF-0007nv-O8; Thu, 25 Jul 2019 03:58:48 -0400
+Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
+ BWP09926082.bt.com (10.36.82.113) with Microsoft SMTP Server (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Thu, 25
+ Jul 2019 08:58:44 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
+ tpw09926dag18e.domain1.systemhost.net (10.9.212.18) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Thu, 25 Jul 2019 08:58:44 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net
+ ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
+ ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Thu, 25 Jul
+ 2019 08:58:44 +0100
+From: <tony.nguyen@bt.com>
+To: <qemu-devel@nongnu.org>
+Thread-Topic: [Qemu-devel] [PATCH v4 00/15] Invert Endian bit in SPARCv9 MMU
+ TTE
+Thread-Index: AQHVQr7IivTZaitMbk2NSP05VRPAXQ==
+Date: Thu, 25 Jul 2019 07:58:44 +0000
+Message-ID: <1564041524365.23360@bt.com>
+References: <e9c6e5310b1a4863be45d45bf087fc3d@tpw09926dag18e.domain1.systemhost.net>, 
+ <1563810716254.18886@bt.com>,<1564038073754.91133@bt.com>
+In-Reply-To: <1564038073754.91133@bt.com>
+Accept-Language: en-AU, en-GB, en-US
+Content-Language: en-AU
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.187.101.42]
+Content-Type: multipart/alternative; boundary="_000_156404152436523360btcom_"
 MIME-Version: 1.0
-In-Reply-To: <20190621163422.6127-5-drjones@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.31]); Thu, 25 Jul 2019 07:54:12 +0000 (UTC)
-X-TUID: 84nqwbVPQSWg
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 213.121.35.77
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v4 00/15] Invert Endian bit in
+ SPARCv9 MMU TTE
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, walling@linux.ibm.com, mst@redhat.com,
+ palmer@sifive.com, mark.cave-ayland@ilande.co.uk, Alistair.Francis@wdc.com,
+ arikalo@wavecomp.com, david@redhat.com, pasic@linux.ibm.com,
+ borntraeger@de.ibm.com, rth@twiddle.net, atar4qemu@gmail.com,
+ ehabkost@redhat.com, sw@weilnetz.de, alex.williamson@redhat.com,
+ qemu-arm@nongnu.org, david@gibson.dropbear.id.au, qemu-riscv@nongnu.org,
+ cohuck@redhat.com, qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
+ amarkovic@wavecomp.com, pbonzini@redhat.com, aurelien@aurel32.net
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 33XQgc14ZNm+
 
-Hi Drew,
+--_000_156404152436523360btcom_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-On 6/21/19 6:34 PM, Andrew Jones wrote:
-> Now that Arm CPUs have advertised features lets add tests to ensure
-> we maintain their expected availability with and without KVM.
-> 
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> ---
->  tests/Makefile.include   |   5 +-
->  tests/arm-cpu-features.c | 221 +++++++++++++++++++++++++++++++++++++++
->  2 files changed, 225 insertions(+), 1 deletion(-)
->  create mode 100644 tests/arm-cpu-features.c
-> 
-> diff --git a/tests/Makefile.include b/tests/Makefile.include
-> index db750dd6d09b..d5f43fe03067 100644
-> --- a/tests/Makefile.include
-> +++ b/tests/Makefile.include
-> @@ -255,13 +255,15 @@ check-qtest-sparc64-$(CONFIG_ISA_TESTDEV) = tests/endianness-test$(EXESUF)
->  check-qtest-sparc64-y += tests/prom-env-test$(EXESUF)
->  check-qtest-sparc64-y += tests/boot-serial-test$(EXESUF)
->  
-> +check-qtest-arm-y += tests/arm-cpu-features$(EXESUF)
->  check-qtest-arm-y += tests/microbit-test$(EXESUF)
->  check-qtest-arm-y += tests/m25p80-test$(EXESUF)
->  check-qtest-arm-y += tests/test-arm-mptimer$(EXESUF)
->  check-qtest-arm-y += tests/boot-serial-test$(EXESUF)
->  check-qtest-arm-y += tests/hexloader-test$(EXESUF)
->  
-> -check-qtest-aarch64-y = tests/numa-test$(EXESUF)
-> +check-qtest-aarch64-y += tests/arm-cpu-features$(EXESUF)
-> +check-qtest-aarch64-y += tests/numa-test$(EXESUF)
->  check-qtest-aarch64-y += tests/boot-serial-test$(EXESUF)
->  check-qtest-aarch64-y += tests/migration-test$(EXESUF)
->  # TODO: once aarch64 TCG is fixed on ARM 32 bit host, make test unconditional
-> @@ -822,6 +824,7 @@ tests/test-qapi-util$(EXESUF): tests/test-qapi-util.o $(test-util-obj-y)
->  tests/numa-test$(EXESUF): tests/numa-test.o
->  tests/vmgenid-test$(EXESUF): tests/vmgenid-test.o tests/boot-sector.o tests/acpi-utils.o
->  tests/cdrom-test$(EXESUF): tests/cdrom-test.o tests/boot-sector.o $(libqos-obj-y)
-> +tests/arm-cpu-features$(EXESUF): tests/arm-cpu-features.o
->  
->  tests/migration/stress$(EXESUF): tests/migration/stress.o
->  	$(call quiet-command, $(LINKPROG) -static -O3 $(PTHREAD_LIB) -o $@ $< ,"LINK","$(TARGET_DIR)$@")
-> diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
-> new file mode 100644
-> index 000000000000..31b1c15bb979
-> --- /dev/null
-> +++ b/tests/arm-cpu-features.c
-> @@ -0,0 +1,221 @@
-> +/*
-> + * Arm CPU feature test cases
-> + *
-> + * Copyright (c) 2019 Red Hat Inc.
-> + * Authors:
-> + *  Andrew Jones <drjones@redhat.com>
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
-> + * See the COPYING file in the top-level directory.
-> + */
-> +#include "qemu/osdep.h"
-> +#include "libqtest.h"
-> +#include "qapi/qmp/qdict.h"
-> +#include "qapi/qmp/qjson.h"
-> +
-> +#define MACHINE    "-machine virt,gic-version=max "
-> +#define QUERY_HEAD "{ 'execute': 'query-cpu-model-expansion', " \
-> +                     "'arguments': { 'type': 'full', "
-> +#define QUERY_TAIL "}}"
-> +
-> +static QDict *do_query_no_props(QTestState *qts, const char *cpu_type)
-> +{
-> +    return qtest_qmp(qts, QUERY_HEAD "'model': { 'name': %s }"
-> +                          QUERY_TAIL, cpu_type);
-> +}
-> +
-> +static const char *resp_get_error(QDict *resp)
-> +{
-> +    QDict *qdict;
-> +
-> +    g_assert(resp);
-> +    qdict = qdict_get_qdict(resp, "error");
-> +    if (qdict) {
-> +        return qdict_get_str(qdict, "desc");
-> +    }
-> +    return NULL;
-> +}
-> +
-> +static char *get_error(QTestState *qts, const char *cpu_type,
-> +                       const char *fmt, ...)
-> +{
-> +    QDict *resp;
-> +    char *error;
-> +
-> +    if (fmt) {
-> +        QDict *args;
-> +        va_list ap;
-> +
-> +        va_start(ap, fmt);
-> +        args = qdict_from_vjsonf_nofail(fmt, ap);
-> +        va_end(ap);
-> +
-> +        resp = qtest_qmp(qts, QUERY_HEAD "'model': { 'name': %s, "
-> +                                                    "'props': %p }"
-> +                              QUERY_TAIL, cpu_type, args);
-> +    } else {
-> +        resp = do_query_no_props(qts, cpu_type);
-> +    }
-> +
-> +    g_assert(resp);
-> +    error = g_strdup(resp_get_error(resp));
-> +    qobject_unref(resp);
-> +
-> +    return error;
-> +}
-> +
-> +#define assert_error(qts, cpu_type, expected_error, fmt, ...)          \
-> +({                                                                     \
-> +    char *_error = get_error(qts, cpu_type, fmt, ##__VA_ARGS__);       \
-> +    g_assert(_error);                                                  \
-> +    g_assert(g_str_equal(_error, expected_error));                     \
-> +    g_free(_error);                                                    \
-> +})
-> +
-> +static QDict *resp_get_props(QDict *resp)
-> +{
-> +    QDict *qdict;
-> +
-> +    g_assert(resp);
-> +    g_assert(qdict_haskey(resp, "return"));
-> +    qdict = qdict_get_qdict(resp, "return");
-> +    g_assert(qdict_haskey(qdict, "model"));
-> +    qdict = qdict_get_qdict(qdict, "model");
-> +    g_assert(qdict_haskey(qdict, "props"));
-> +    qdict = qdict_get_qdict(qdict, "props");
-> +    return qdict;
-> +}
-> +
-> +#define assert_has_feature(qts, cpu_type, feature)                     \
-> +({                                                                     \
-> +    QDict *_resp = do_query_no_props(qts, cpu_type);                   \
-> +    g_assert(_resp);                                                   \
-> +    g_assert(qdict_get(resp_get_props(_resp), feature));               \
-> +    qobject_unref(_resp);                                              \
-> +})
-> +
-> +#define assert_has_not_feature(qts, cpu_type, feature)                 \
-> +({                                                                     \
-> +    QDict *_resp = do_query_no_props(qts, cpu_type);                   \
-> +    g_assert(_resp);                                                   \
-> +    g_assert(!qdict_get(resp_get_props(_resp), feature));              \
-> +    qobject_unref(_resp);                                              \
-> +})
-> +
-> +static void assert_type_full(QTestState *qts, const char *cpu_type)
-nit: you don't really care about the cpu_type as static is not supported.
-> +{
-> +    const char *error;
-> +    QDict *resp;
-> +
-> +    resp = qtest_qmp(qts, "{ 'execute': 'query-cpu-model-expansion', "
-> +                            "'arguments': { 'type': 'static', "
-> +                                           "'model': { 'name': %s }}}",
-> +                     cpu_type);
-> +    g_assert(resp);
-> +    error = resp_get_error(resp);
-> +    g_assert(error);
-> +    g_assert(g_str_equal(error,
-> +                         "The requested expansion type is not supported."));
-> +    qobject_unref(resp);
-> +}
-> +
-> +static void assert_bad_props(QTestState *qts, const char *cpu_type)
-> +{
-> +    const char *error;
-> +    QDict *resp;
-> +
-> +    resp = qtest_qmp(qts, "{ 'execute': 'query-cpu-model-expansion', "
-> +                            "'arguments': { 'type': 'full', "
-> +                                           "'model': { 'name': %s, "
-> +                                                      "'props': false }}}",
-> +                     cpu_type);
-> +    g_assert(resp);
-> +    error = resp_get_error(resp);
-> +    g_assert(error);
-> +    g_assert(g_str_equal(error,
-> +                         "Invalid parameter type for 'props', expected: dict"));
-> +    qobject_unref(resp);
-> +}
-> +
-> +static void test_query_cpu_model_expansion(const void *data)
-> +{
-> +    QTestState *qts;
-> +
-> +    qts = qtest_init(MACHINE "-cpu max");
-> +
-> +    /* Test common query-cpu-model-expansion input validation */
-> +    assert_type_full(qts, "foo");
-> +    assert_bad_props(qts, "max");
-> +    assert_error(qts, "foo", "The CPU definition 'foo' is unknown.", NULL);
-> +    assert_error(qts, "max", "Parameter 'not-a-prop' is unexpected",
-> +                 "{ 'not-a-prop': false }");
-> +    assert_error(qts, "host", "The CPU definition 'host' requires KVM", NULL);
-> +
-> +    /* Test expected feature presence/absence for some cpu types */
-> +    assert_has_feature(qts, "max", "pmu");
-> +    assert_has_feature(qts, "cortex-a15", "pmu");
-> +    assert_has_not_feature(qts, "cortex-a15", "aarch64");
-> +
-> +    if (g_str_equal(qtest_get_arch(), "aarch64")) {
-> +        assert_has_feature(qts, "max", "aarch64");
-> +        assert_has_feature(qts, "cortex-a57", "pmu");
-> +        assert_has_feature(qts, "cortex-a57", "aarch64");
-> +
-> +        /* Test that features that depend on KVM generate errors without. */
-> +        assert_error(qts, "max",
-> +                     "'aarch64' feature cannot be disabled "
-> +                     "unless KVM is enabled and 32-bit EL1 "
-> +                     "is supported",
-> +                     "{ 'aarch64': false }");
-> +    }
-> +
-> +    qtest_quit(qts);
-> +}
-> +
-> +static void test_query_cpu_model_expansion_kvm(const void *data)
-> +{
-> +    QTestState *qts;
-> +
-> +    qts = qtest_init(MACHINE "-accel kvm -cpu host");
-> +
-> +    assert_has_feature(qts, "host", "pmu");
-> +
-> +    if (g_str_equal(qtest_get_arch(), "aarch64")) {
-> +        assert_has_feature(qts, "host", "aarch64");
-> +
-> +        assert_error(qts, "cortex-a15",
-> +            "The CPU definition 'cortex-a15' cannot "
-> +            "be used with KVM on this host", NULL);
-> +    } else {
-> +        assert_error(qts, "host",
-> +                     "'pmu' feature not supported by KVM on this host",
-> +                     "{ 'pmu': true }");
-> +    }
-> +
-> +    qtest_quit(qts);
-> +}
-> +
-> +int main(int argc, char **argv)
-> +{
-> +    bool kvm_available = false;
-> +
-> +    if (!access("/dev/kvm",  R_OK | W_OK)) {
-> +#if defined(HOST_AARCH64)
-> +        kvm_available = g_str_equal(qtest_get_arch(), "aarch64");
-> +#elif defined(HOST_ARM)
-> +        kvm_available = g_str_equal(qtest_get_arch(), "arm");
-> +#endif
-> +    }
-> +
-> +    g_test_init(&argc, &argv, NULL);
-> +
-> +    qtest_add_data_func("/arm/query-cpu-model-expansion",
-> +                        NULL, test_query_cpu_model_expansion);
-> +
-> +    if (kvm_available) {
-> +        qtest_add_data_func("/arm/kvm/query-cpu-model-expansion",
-> +                            NULL, test_query_cpu_model_expansion_kvm);
-> +    }
-> +
-> +    return g_test_run();
-> +}
-> 
+This patchset implements the IE (Invert Endian) bit in SPARCv9 MMU TTE.
 
-The code looks good to me. Assuming you updated the error strings
-according to the previous discussion and test passes again, feel free to
-add:
+It is an attempt of the instructions outlined by Richard Henderson to Mark
+Cave-Ayland.
 
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Tested with OpenBSD on sun4u. Solaris 10 is my actual goal, but unfortunate=
+ly a
+separate keyboard issue remains in the way.
 
-Thanks
+On 01/11/17 19:15, Mark Cave-Ayland wrote:
 
-Eric
+>On 15/08/17 19:10, Richard Henderson wrote:
+>
+>> [CC Peter re MemTxAttrs below]
+>>
+>> On 08/15/2017 09:38 AM, Mark Cave-Ayland wrote:
+>>> Working through an incorrect endian issue on qemu-system-sparc64, it ha=
+s
+>>> become apparent that at least one OS makes use of the IE (Invert Endian=
+)
+>>> bit in the SPARCv9 MMU TTE to map PCI memory space without the
+>>> programmer having to manually endian-swap accesses.
+>>>
+>>> In other words, to quote the UltraSPARC specification: "if this bit is
+>>> set, accesses to the associated page are processed with inverse
+>>> endianness from what is specified by the instruction (big-for-little an=
+d
+>>> little-for-big)".
+
+A good explanation by Mark why the IE bit is required.
+
+>>>
+>>> Looking through various bits of code, I'm trying to get a feel for the
+>>> best way to implement this in an efficient manner. From what I can see
+>>> this could be solved using an additional MMU index, however I'm not
+>>> overly familiar with the memory and softmmu subsystems.
+>>
+>> No, it can't be solved with an MMU index.
+>>
+>>> Can anyone point me in the right direction as to what would be the best
+>>> way to implement this feature within QEMU?
+>>
+>> It's definitely tricky.
+>>
+>> We definitely need some TLB_FLAGS_MASK bit set so that we're forced thro=
+ugh
+>> the
+>> memory slow path.  There is no other way to bypass the endianness that w=
+e've
+>> already encoded from the target instruction.
+>>
+>> Given the tlb_set_page_with_attrs interface, I would think that we need =
+a new
+>> bit in MemTxAttrs, so that the target/sparc tlb_fill (and subroutines) c=
+an
+>> pass
+>> along the TTE bit for the given page.
+>>
+>> We have an existing problem in softmmu_template.h,
+>>
+>>     /* ??? Note that the io helpers always read data in the target
+>>        byte ordering.  We should push the LE/BE request down into io.  *=
+/
+>>     res =3D glue(io_read, SUFFIX)(env, mmu_idx, index, addr, retaddr);
+>>     res =3D TGT_BE(res);
+>>
+>> We do not want to add a third(!) byte swap along the i/o path.  We need =
+to
+>> collapse the two that we have already before considering this one.
+>>
+>> This probably takes the form of:
+>>
+>> (1) Replacing the "int size" argument with "TCGMemOp memop" for
+>>       a) io_{read,write}x in accel/tcg/cputlb.c,
+>>       b) memory_region_dispatch_{read,write} in memory.c,
+>>       c) adjust_endianness in memory.c.
+>>     This carries size+sign+endianness down to the next level.
+>>
+>> (2) In memory.c, adjust_endianness,
+>>
+>>      if (memory_region_wrong_endianness(mr)) {
+>> -        switch (size) {
+>> +        memop ^=3D MO_BSWAP;
+>> +    }
+>> +    if (memop & MO_BSWAP) {
+>>
+>>     For extra credit, re-arrange memory_region_wrong_endianness
+>>     to something more explicit -- "wrong" isn't helpful.
+>
+>Finally I've had a bit of spare time to experiment with this approach,
+>and from what I can see there are currently 2 issues:
+>
+>
+>1) Using TCGMemOp in memory.c means it is no longer accelerator agnostic
+>
+>For the moment I've defined a separate MemOp in memory.h and provided a
+>mapping function in io_{read,write}x to map from TCGMemOp to MemOp and
+>then pass that into memory_region_dispatch_{read,write}.
+>
+>Other than not referencing TCGMemOp in the memory API, another reason
+>for doing this was that I wasn't convinced that all the MO_ attributes
+>were valid outside of TCG. I do, of course, strongly defer to other
+>people's knowledge in this area though.
+>
+>
+>2) The above changes to adjust_endianness() fail when
+>memory_region_dispatch_{read,write} are called recursively
+>
+>Whilst booting qemu-system-sparc64 I see that
+>memory_region_dispatch_{read,write} get called recursively - once via
+>io_{read,write}x and then again via flatview_read_continue() in exec.c.
+>
+>The net effect of this is that we perform the bswap correctly at the
+>tail of the recursion, but then as we travel back up the stack we hit
+>memory_region_dispatch_{read,write} once again causing a second bswap
+>which means the value is returned with the incorrect endian again.
+>
+>
+>My understanding from your softmmu_template.h comment above is that the
+>memory API should do the endian swapping internally allowing the removal
+>of the final TGT_BE/TGT_LE applied to the result, or did I get this wrong?
+>
+>> (3) In tlb_set_page_with_attrs, notice attrs.byte_swap and set
+>>     a new TLB_FORCE_SLOW bit within TLB_FLAGS_MASK.
+>>
+>> (4) In io_{read,write}x, if iotlbentry->attrs.byte_swap is set,
+>>     then memop ^=3D MO_BSWAP.
+
+Thanks all for the feedback.
+
+v2:
+- Moved size+sign+endianness attributes from TCGMemOp into MemOp.
+  In v1 TCGMemOp was re-purposed entirely into MemOp.
+- Replaced MemOp MO_{8|16|32|64} with TCGMemOp MO_{UB|UW|UL|UQ} alias.
+  This is to avoid warnings on comparing and coercing different enums.
+- Renamed get_memop to get_tcgmemop for clarity.
+- MEMOP is now SIZE_MEMOP, which is just ctzl(size).
+- Split patch 3/4 so one memory_region_dispatch_{read|write} interface
+  is converted per patch.
+- Do not reuse TLB_RECHECK, use new TLB_FORCE_SLOW instead.
+- Split patch 4/4 so adding the MemTxAddrs parameters and converting
+  tlb_set_page() to tlb_set_page_with_attrs() is separate from usage.
+- CC'd maintainers.
+
+v3:
+- Like v1, the entire TCGMemOp enum is now MemOp.
+- MemOp target dependant attributes are conditional upon NEED_CPU_H
+
+v4:
+- Added Paolo Bonzini as include/exec/memop.h maintainer
+
+Tony Nguyen (15):
+  tcg: TCGMemOp is now accelerator independent MemOp
+  memory: Access MemoryRegion with MemOp
+  target/mips: Access MemoryRegion with MemOp
+  hw/s390x: Access MemoryRegion with MemOp
+  hw/intc/armv7m_nic: Access MemoryRegion with MemOp
+  hw/virtio: Access MemoryRegion with MemOp
+  hw/vfio: Access MemoryRegion with MemOp
+  exec: Access MemoryRegion with MemOp
+  cputlb: Access MemoryRegion with MemOp
+  memory: Access MemoryRegion with MemOp semantics
+  memory: Single byte swap along the I/O path
+  cpu: TLB_FLAGS_MASK bit to force memory slow path
+  cputlb: Byte swap memory transaction attribute
+  target/sparc: Add TLB entry with attributes
+  target/sparc: sun4u Invert Endian TTE bit
+
+ MAINTAINERS                             |   1 +
+ accel/tcg/cputlb.c                      |  71 +++++++++--------
+ exec.c                                  |   6 +-
+ hw/intc/armv7m_nvic.c                   |  12 ++-
+ hw/s390x/s390-pci-inst.c                |   8 +-
+ hw/vfio/pci-quirks.c                    |   5 +-
+ hw/virtio/virtio-pci.c                  |   7 +-
+ include/exec/cpu-all.h                  |  10 ++-
+ include/exec/memattrs.h                 |   2 +
+ include/exec/memop.h                    | 112 +++++++++++++++++++++++++++
+ include/exec/memory.h                   |   9 ++-
+ memory.c                                |  37 +++++----
+ memory_ldst.inc.c                       |  18 ++---
+ target/alpha/translate.c                |   2 +-
+ target/arm/translate-a64.c              |  48 ++++++------
+ target/arm/translate-a64.h              |   2 +-
+ target/arm/translate-sve.c              |   2 +-
+ target/arm/translate.c                  |  32 ++++----
+ target/arm/translate.h                  |   2 +-
+ target/hppa/translate.c                 |  14 ++--
+ target/i386/translate.c                 | 132 ++++++++++++++++------------=
+----
+ target/m68k/translate.c                 |   2 +-
+ target/microblaze/translate.c           |   4 +-
+ target/mips/op_helper.c                 |   5 +-
+ target/mips/translate.c                 |   8 +-
+ target/openrisc/translate.c             |   4 +-
+ target/ppc/translate.c                  |  12 +--
+ target/riscv/insn_trans/trans_rva.inc.c |   8 +-
+ target/riscv/insn_trans/trans_rvi.inc.c |   4 +-
+ target/s390x/translate.c                |   6 +-
+ target/s390x/translate_vx.inc.c         |  10 +--
+ target/sparc/cpu.h                      |   2 +
+ target/sparc/mmu_helper.c               |  40 ++++++----
+ target/sparc/translate.c                |  14 ++--
+ target/tilegx/translate.c               |  10 +--
+ target/tricore/translate.c              |   8 +-
+ tcg/README                              |   2 +-
+ tcg/aarch64/tcg-target.inc.c            |  26 +++----
+ tcg/arm/tcg-target.inc.c                |  26 +++----
+ tcg/i386/tcg-target.inc.c               |  24 +++---
+ tcg/mips/tcg-target.inc.c               |  16 ++--
+ tcg/optimize.c                          |   2 +-
+ tcg/ppc/tcg-target.inc.c                |  12 +--
+ tcg/riscv/tcg-target.inc.c              |  20 ++---
+ tcg/s390/tcg-target.inc.c               |  14 ++--
+ tcg/sparc/tcg-target.inc.c              |   6 +-
+ tcg/tcg-op.c                            |  38 ++++-----
+ tcg/tcg-op.h                            |  86 ++++++++++-----------
+ tcg/tcg.c                               |   2 +-
+ tcg/tcg.h                               |  99 ++----------------------
+ trace/mem-internal.h                    |   4 +-
+ trace/mem.h                             |   4 +-
+ 52 files changed, 562 insertions(+), 488 deletions(-)
+ create mode 100644 include/exec/memop.h
+
+--
+1.8.3.1
+
+
+
+
+--_000_156404152436523360btcom_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none"><!-- P { margin-top: 0px; m=
+argin-bottom: 0px; } .EmailQuote { margin-left: 1pt; padding-left: 4pt; bor=
+der-left-width: 2px; border-left-style: solid; border-left-color: rgb(128, =
+0, 0); }--></style>
+</head>
+<body dir=3D"ltr" style=3D"font-size:12pt;color:#000000;background-color:#F=
+FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
+<p></p>
+<div><span style=3D"font-size: 12pt;">This patchset implements the IE (Inve=
+rt Endian) bit in SPARCv9 MMU TTE.</span><br>
+</div>
+<div><br>
+</div>
+<div>It is an attempt of the instructions outlined by Richard Henderson to =
+Mark<br>
+</div>
+<div>Cave-Ayland.</div>
+<div><br>
+</div>
+<div>Tested with OpenBSD on sun4u. Solaris 10 is my actual goal, but unfort=
+unately a</div>
+<div>separate keyboard issue remains in the way.</div>
+<div><br>
+</div>
+<div>On 01/11/17 19:15, Mark Cave-Ayland wrote:</div>
+<div><br>
+</div>
+<div>&gt;On 15/08/17 19:10, Richard Henderson wrote:</div>
+<div>&gt;</div>
+<div>&gt;&gt; [CC Peter re MemTxAttrs below]</div>
+<div>&gt;&gt;<br>
+</div>
+<div>&gt;&gt; On 08/15/2017 09:38 AM, Mark Cave-Ayland wrote:</div>
+<div>&gt;&gt;&gt; Working through an incorrect endian issue on qemu-system-=
+sparc64, it has</div>
+<div>&gt;&gt;&gt; become apparent that at least one OS makes use of the IE =
+(Invert Endian)</div>
+<div>&gt;&gt;&gt; bit in the SPARCv9 MMU TTE to map PCI memory space withou=
+t the</div>
+<div>&gt;&gt;&gt; programmer having to manually endian-swap accesses.<br>
+</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; In other words, to quote the UltraSPARC specification: &q=
+uot;if this bit is</div>
+<div>&gt;&gt;&gt; set, accesses to the associated page are processed with i=
+nverse</div>
+<div>&gt;&gt;&gt; endianness from what is specified by the instruction (big=
+-for-little and</div>
+<div>&gt;&gt;&gt; little-for-big)&quot;.</div>
+<div><br>
+</div>
+<div>A good explanation by Mark why the IE bit is required.</div>
+<div><br>
+</div>
+<div>&gt;&gt;&gt;</div>
+<div>&gt;&gt;&gt; Looking through various bits of code, I'm trying to get a=
+ feel for the</div>
+<div>&gt;&gt;&gt; best way to implement this in an efficient manner. From w=
+hat I can see</div>
+<div>&gt;&gt;&gt; this could be solved using an additional MMU index, howev=
+er I'm not</div>
+<div>&gt;&gt;&gt; overly familiar with the memory and softmmu subsystems.</=
+div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt; No, it can't be solved with an MMU index.</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt;&gt; Can anyone point me in the right direction as to what wou=
+ld be the best</div>
+<div>&gt;&gt;&gt; way to implement this feature within QEMU?</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt; It's definitely tricky.</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt; We definitely need some TLB_FLAGS_MASK bit set so that we're =
+forced through</div>
+<div>&gt;&gt; the</div>
+<div>&gt;&gt; memory slow path. &nbsp;There is no other way to bypass the e=
+ndianness that we've</div>
+<div>&gt;&gt; already encoded from the target instruction.</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt; Given the tlb_set_page_with_attrs interface, I would think th=
+at we need a new</div>
+<div>&gt;&gt; bit in MemTxAttrs, so that the target/sparc tlb_fill (and sub=
+routines) can</div>
+<div>&gt;&gt; pass</div>
+<div>&gt;&gt; along the TTE bit for the given page.</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt; We have an existing problem in softmmu_template.h,</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt; &nbsp; &nbsp; /* ??? Note that the io helpers always read dat=
+a in the target</div>
+<div>&gt;&gt; &nbsp; &nbsp; &nbsp; &nbsp;byte ordering. &nbsp;We should pus=
+h the LE/BE request down into io. &nbsp;*/</div>
+<div>&gt;&gt; &nbsp; &nbsp; res =3D glue(io_read, SUFFIX)(env, mmu_idx, ind=
+ex, addr, retaddr);</div>
+<div>&gt;&gt; &nbsp; &nbsp; res =3D TGT_BE(res);</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt; We do not want to add a third(!) byte swap along the i/o path=
+. &nbsp;We need to</div>
+<div>&gt;&gt; collapse the two that we have already before considering this=
+ one.</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt; This probably takes the form of:</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt; (1) Replacing the &quot;int size&quot; argument with &quot;TC=
+GMemOp memop&quot; for</div>
+<div>&gt;&gt; &nbsp; &nbsp; &nbsp; a) io_{read,write}x in accel/tcg/cputlb.=
+c,</div>
+<div>&gt;&gt; &nbsp; &nbsp; &nbsp; b) memory_region_dispatch_{read,write} i=
+n memory.c,</div>
+<div>&gt;&gt; &nbsp; &nbsp; &nbsp; c) adjust_endianness in memory.c.</div>
+<div>&gt;&gt; &nbsp; &nbsp; This carries size&#43;sign&#43;endianness down =
+to the next level.</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt; (2) In memory.c, adjust_endianness,</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt; &nbsp; &nbsp; &nbsp;if (memory_region_wrong_endianness(mr)) {=
+</div>
+<div>&gt;&gt; - &nbsp; &nbsp; &nbsp; &nbsp;switch (size) {</div>
+<div>&gt;&gt; &#43; &nbsp; &nbsp; &nbsp; &nbsp;memop ^=3D MO_BSWAP;</div>
+<div>&gt;&gt; &#43; &nbsp; &nbsp;}</div>
+<div>&gt;&gt; &#43; &nbsp; &nbsp;if (memop &amp; MO_BSWAP) {</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt; &nbsp; &nbsp; For extra credit, re-arrange memory_region_wron=
+g_endianness</div>
+<div>&gt;&gt; &nbsp; &nbsp; to something more explicit -- &quot;wrong&quot;=
+ isn't helpful.</div>
+<div>&gt;</div>
+<div>&gt;Finally I've had a bit of spare time to experiment with this appro=
+ach,</div>
+<div>&gt;and from what I can see there are currently 2 issues:</div>
+<div>&gt;</div>
+<div>&gt;</div>
+<div>&gt;1) Using TCGMemOp in memory.c means it is no longer accelerator ag=
+nostic</div>
+<div>&gt;</div>
+<div>&gt;For the moment I've defined a separate MemOp in memory.h and provi=
+ded a</div>
+<div>&gt;mapping function in io_{read,write}x to map from TCGMemOp to MemOp=
+ and</div>
+<div>&gt;then pass that into memory_region_dispatch_{read,write}.</div>
+<div>&gt;</div>
+<div>&gt;Other than not referencing TCGMemOp in the memory API, another rea=
+son</div>
+<div>&gt;for doing this was that I wasn't convinced that all the MO_ attrib=
+utes</div>
+<div>&gt;were valid outside of TCG. I do, of course, strongly defer to othe=
+r</div>
+<div>&gt;people's knowledge in this area though.</div>
+<div>&gt;</div>
+<div>&gt;</div>
+<div>&gt;2) The above changes to adjust_endianness() fail when</div>
+<div>&gt;memory_region_dispatch_{read,write} are called recursively</div>
+<div>&gt;</div>
+<div>&gt;Whilst booting qemu-system-sparc64 I see that</div>
+<div>&gt;memory_region_dispatch_{read,write} get called recursively - once =
+via</div>
+<div>&gt;io_{read,write}x and then again via flatview_read_continue() in ex=
+ec.c.</div>
+<div>&gt;</div>
+<div>&gt;The net effect of this is that we perform the bswap correctly at t=
+he</div>
+<div>&gt;tail of the recursion, but then as we travel back up the stack we =
+hit</div>
+<div>&gt;memory_region_dispatch_{read,write} once again causing a second bs=
+wap</div>
+<div>&gt;which means the value is returned with the incorrect endian again.=
+</div>
+<div>&gt;</div>
+<div>&gt;</div>
+<div>&gt;My understanding from your softmmu_template.h comment above is tha=
+t the</div>
+<div>&gt;memory API should do the endian swapping internally allowing the r=
+emoval</div>
+<div>&gt;of the final TGT_BE/TGT_LE applied to the result, or did I get thi=
+s wrong?</div>
+<div>&gt;</div>
+<div>&gt;&gt; (3) In tlb_set_page_with_attrs, notice attrs.byte_swap and se=
+t</div>
+<div>&gt;&gt; &nbsp; &nbsp; a new TLB_FORCE_SLOW bit within TLB_FLAGS_MASK.=
+</div>
+<div>&gt;&gt;</div>
+<div>&gt;&gt; (4) In io_{read,write}x, if iotlbentry-&gt;attrs.byte_swap is=
+ set,</div>
+<div>&gt;&gt; &nbsp; &nbsp; then memop ^=3D MO_BSWAP.</div>
+<div><br>
+</div>
+<div>Thanks all for the&nbsp;feedback.</div>
+<div><br>
+</div>
+<div>v2:</div>
+<div>- Moved size&#43;sign&#43;endianness attributes from TCGMemOp into Mem=
+Op.</div>
+<div>&nbsp; In v1 TCGMemOp was re-purposed entirely into MemOp.</div>
+<div>- Replaced MemOp MO_{8|16|32|64} with TCGMemOp MO_{UB|UW|UL|UQ} alias.=
+</div>
+<div>&nbsp; This is to avoid warnings on comparing and coercing different e=
+nums.</div>
+<div>- Renamed get_memop to get_tcgmemop for clarity.</div>
+<div>- MEMOP is now SIZE_MEMOP, which is just ctzl(size).</div>
+<div>- Split patch 3/4 so one memory_region_dispatch_{read|write} interface=
+</div>
+<div>&nbsp; is converted per patch.</div>
+<div>- Do not reuse TLB_RECHECK, use new TLB_FORCE_SLOW instead.</div>
+<div>- Split patch 4/4 so adding the MemTxAddrs parameters and converting</=
+div>
+<div>&nbsp; tlb_set_page() to tlb_set_page_with_attrs() is separate from us=
+age.</div>
+<div>- CC'd maintainers.</div>
+<div><br>
+</div>
+<div>v3:</div>
+<div>- Like v1, the entire TCGMemOp enum is now MemOp.</div>
+<div>- MemOp target dependant attributes are conditional upon NEED_CPU_H</d=
+iv>
+<div><br>
+</div>
+<div>v4:</div>
+<div>- Added Paolo Bonzini as include/exec/memop.h maintainer</div>
+<div><br>
+</div>
+<div>Tony Nguyen (15):</div>
+<div>&nbsp; tcg: TCGMemOp is now accelerator independent MemOp</div>
+<div>&nbsp; memory: Access MemoryRegion with MemOp<br>
+</div>
+<div>&nbsp; target/mips: Access MemoryRegion with MemOp</div>
+<div>&nbsp; hw/s390x: Access MemoryRegion with MemOp</div>
+<div>&nbsp; hw/intc/armv7m_nic: Access MemoryRegion with MemOp</div>
+<div>&nbsp; hw/virtio: Access MemoryRegion with MemOp</div>
+<div>&nbsp; hw/vfio: Access MemoryRegion with MemOp</div>
+<div>&nbsp; exec: Access MemoryRegion with MemOp</div>
+<div>&nbsp; cputlb: Access MemoryRegion with MemOp</div>
+<div>&nbsp; memory: Access MemoryRegion with MemOp semantics</div>
+<div>&nbsp; memory: Single byte swap along the I/O path</div>
+<div>&nbsp; cpu: TLB_FLAGS_MASK bit to force memory slow path</div>
+<div>&nbsp; cputlb: Byte swap memory transaction attribute</div>
+<div>&nbsp; target/sparc: Add TLB entry with attributes</div>
+<div>&nbsp; target/sparc: sun4u Invert Endian TTE bit</div>
+<div><br>
+</div>
+<div>&nbsp;MAINTAINERS &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; 1 &#43;</div>
+<div>&nbsp;accel/tcg/cputlb.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp;71 &#43;&#43;&#43;&#43;&#43;&#43;&#4=
+3;&#43;&#43;--------</div>
+<div>&nbsp;exec.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; 6 &#4=
+3;-</div>
+<div>&nbsp;hw/intc/armv7m_nvic.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; | &nbsp;12 &#43;&#43;-</div>
+<div>&nbsp;hw/s390x/s390-pci-inst.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp;| &nbsp; 8 &#43;-</div>
+<div>&nbsp;hw/vfio/pci-quirks.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; 5 &#43;-</div>
+<div>&nbsp;hw/virtio/virtio-pci.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp;| &nbsp; 7 &#43;-</div>
+<div>&nbsp;include/exec/cpu-all.h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp;| &nbsp;10 &#43;&#43;-</div>
+<div>&nbsp;include/exec/memattrs.h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; | &nbsp; 2 &#43;</div>
+<div>&nbsp;include/exec/memop.h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp;| 112 &#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#4=
+3;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#4=
+3;&#43;&#43;&#43;</div>
+<div>&nbsp;include/exec/memory.h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; | &nbsp; 9 &#43;&#43;-</div>
+<div>&nbsp;memory.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp;37 &#43;&#4=
+3;&#43;&#43;&#43;----</div>
+<div>&nbsp;memory_ldst.inc.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp;18 &#43;&#43;---</div>
+<div>&nbsp;target/alpha/translate.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp;| &nbsp; 2 &#43;-</div>
+<div>&nbsp;target/arm/translate-a64.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp;| &nbsp;48 &#43;&#43;&#43;&#43;&#43;&#43;------</div>
+<div>&nbsp;target/arm/translate-a64.h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp;| &nbsp; 2 &#43;-</div>
+<div>&nbsp;target/arm/translate-sve.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp;| &nbsp; 2 &#43;-</div>
+<div>&nbsp;target/arm/translate.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp;| &nbsp;32 &#43;&#43;&#43;&#43;----</div>
+<div>&nbsp;target/arm/translate.h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp;| &nbsp; 2 &#43;-</div>
+<div>&nbsp;target/hppa/translate.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; | &nbsp;14 &#43;&#43;--</div>
+<div>&nbsp;target/i386/translate.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; | 132 &#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#4=
+3;&#43;&#43;&#43;&#43;&#43;----------------</div>
+<div>&nbsp;target/m68k/translate.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; | &nbsp; 2 &#43;-</div>
+<div>&nbsp;target/microblaze/translate.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ | &nbsp; 4 &#43;-</div>
+<div>&nbsp;target/mips/op_helper.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; | &nbsp; 5 &#43;-</div>
+<div>&nbsp;target/mips/translate.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; | &nbsp; 8 &#43;-</div>
+<div>&nbsp;target/openrisc/translate.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; | &nbsp; 4 &#43;-</div>
+<div>&nbsp;target/ppc/translate.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp;| &nbsp;12 &#43;--</div>
+<div>&nbsp;target/riscv/insn_trans/trans_rva.inc.c | &nbsp; 8 &#43;-</div>
+<div>&nbsp;target/riscv/insn_trans/trans_rvi.inc.c | &nbsp; 4 &#43;-</div>
+<div>&nbsp;target/s390x/translate.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp;| &nbsp; 6 &#43;-</div>
+<div>&nbsp;target/s390x/translate_vx.inc.c &nbsp; &nbsp; &nbsp; &nbsp; | &n=
+bsp;10 &#43;--</div>
+<div>&nbsp;target/sparc/cpu.h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; 2 &#43;</div>
+<div>&nbsp;target/sparc/mmu_helper.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; | &nbsp;40 &#43;&#43;&#43;&#43;&#43;&#43;----</div>
+<div>&nbsp;target/sparc/translate.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp;| &nbsp;14 &#43;&#43;--</div>
+<div>&nbsp;target/tilegx/translate.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; | &nbsp;10 &#43;--</div>
+<div>&nbsp;target/tricore/translate.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp;| &nbsp; 8 &#43;-</div>
+<div>&nbsp;tcg/README &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; 2 &#43;-</div>
+<div>&nbsp;tcg/aarch64/tcg-target.inc.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp;| &nbsp;26 &#43;&#43;&#43;----</div>
+<div>&nbsp;tcg/arm/tcg-target.inc.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp;| &nbsp;26 &#43;&#43;&#43;----</div>
+<div>&nbsp;tcg/i386/tcg-target.inc.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; | &nbsp;24 &#43;&#43;&#43;---</div>
+<div>&nbsp;tcg/mips/tcg-target.inc.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; | &nbsp;16 &#43;&#43;--</div>
+<div>&nbsp;tcg/optimize.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; 2 &#43;-</div>
+<div>&nbsp;tcg/ppc/tcg-target.inc.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
+p; &nbsp; &nbsp;| &nbsp;12 &#43;--</div>
+<div>&nbsp;tcg/riscv/tcg-target.inc.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp;| &nbsp;20 &#43;&#43;---</div>
+<div>&nbsp;tcg/s390/tcg-target.inc.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; | &nbsp;14 &#43;&#43;--</div>
+<div>&nbsp;tcg/sparc/tcg-target.inc.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp;| &nbsp; 6 &#43;-</div>
+<div>&nbsp;tcg/tcg-op.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp;38 &#43;&#43;&#43;&#4=
+3;-----</div>
+<div>&nbsp;tcg/tcg-op.h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
+bsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp;86 &#43;&#43;&#43;&#4=
+3;&#43;&#43;&#43;&#43;&#43;&#43;-----------</div>
+<div>&nbsp;tcg/tcg.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; 2 &#43;-</div>
+<div>&nbsp;tcg/tcg.h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp;99 &#43;&#43;---=
+-------------------</div>
+<div>&nbsp;trace/mem-internal.h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; 4 &#43;-</div>
+<div>&nbsp;trace/mem.h &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; 4 &#43;-</div>
+<div>&nbsp;52 files changed, 562 insertions(&#43;), 488 deletions(-)</div>
+<div>&nbsp;create mode 100644 include/exec/memop.h</div>
+<div><br>
+</div>
+<div>--&nbsp;</div>
+<div>1.8.3.1</div>
+<div><br>
+<br>
+</div>
+<p><br>
+</p>
+</body>
+</html>
+
+--_000_156404152436523360btcom_--

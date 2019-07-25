@@ -1,74 +1,74 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10271684wrv;
-        Thu, 25 Jul 2019 00:07:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzwvXjLgqT8HDQiuIdRyJXfp0gsEjWvBidtdpvnW+PAI4UxLS34eEM9ZrMDZb14pp8mLxgy
-X-Received: by 2002:a17:906:2409:: with SMTP id z9mr20762655eja.179.1564038422065;
-        Thu, 25 Jul 2019 00:07:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564038422; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10272400wrv;
+        Thu, 25 Jul 2019 00:07:46 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzDZTijvnU1Eg2iJF9OGeADPP0q2gWcrE3BrM8fdmm3mofle6aZHXQp2U2tvz4VwCI8c5lQ
+X-Received: by 2002:a50:d7d0:: with SMTP id m16mr73770411edj.162.1564038465938;
+        Thu, 25 Jul 2019 00:07:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564038465; cv=none;
         d=google.com; s=arc-20160816;
-        b=yNR02TdvDO2E/vQkg1iLyRNieSPE9zLhIjTXmJGIDQb54aE18LfeUMkmInLj3IUvrj
-         5/EbhgKG2ctej1NAQeyWivYRQKNNVZ3imYzoD+TDfC3lh5/85foI738P/6f1nXVdl1ij
-         469O7ieZK9l20r6ccZ4/kU1xMnOUZl7JruXjG8/dpXopfqTG8QGzZrISZWX9Uegt6Heq
-         Y0pZsBiWMlvSl2Ec6PvXiTow9M9vqAOsHlv7RtO5Gt7Yct8Pi9BJrSjrH1fy2BwPqX0K
-         ozTDVYu8Mk3UcN6iGLrNAqOhf2ve7T8FmOQU4SB/6YPLMPEliIkx2qDb8ckT8I7Gsirb
-         yH6A==
+        b=XbBUDWk1CCp0NSDApdD/sIUUizou+fKV+3YYOhUXV0RwhTh1skGhPub75D3zTUHJHh
+         DE5oEovhBQfdeU+kVUZ6UeRBVP8j2UJlLCCjCSPNKrmB2miK+bUk5XekqhwCz3/2/A3Q
+         Lu+Qex85v9QVNJe7ZqEnF+cw1kAOAeixARJ+9QwBUrlnrn8lNTPkdOit9jq2uiuCgOEb
+         igniLXZrXSX0xvg68Qr/msBQBvdE9/IpvKRs1SdeynV/mfdCQXEIs5OxYsVX8bD9zpQh
+         reJ48JACk18tNev4X7D66iHPeRhT8Soo6xBtlRnxoqLfwhLIdn9aMGR/H6UMXierfvFd
+         d9aA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-language:accept-language:in-reply-to:references:message-id
          :date:thread-index:thread-topic:to:from;
-        bh=lVcpJL50qXTxyFpunn2x9gWvtiUP1W+U7B18i0pg+Rc=;
-        b=co/5GlT7AL2qmwbfVZpJp9LRJhHS1R0Byf6ijqTvstvwJX0VQnIooc5t1HuRzG+wEa
-         PgbbbEVMo1Ft0fCCrVdq61bODDsE3MRnDzec1hjYv7/0iQUExHyjjWZC4ofIdyLGyxnl
-         bcsXvKecFVh4/wKFZKRZVaN4J3ixZUOCVe/TZdkEwagsWHzITm+mXOvOGE/uRhJLLcIe
-         umkD3xms+Lsd/hhdxZQTGwBi4KpaHqbbyoZuyvHV3Qm7Ord59RO3GHtE8o1tZLoU9Yeh
-         BA0cx1xBB09M/Cz7j22qbqJtCnSByFG3/FdMqrUwaa7c7Qu2LWnbpLfoQFYW2DdTlD8R
-         xKgw==
+        bh=VW3GzSkN+Lh6q27jcW7N4lu3Ts2IuHpTjvHRGkSF9Kg=;
+        b=F65M25zDVIEh98KrPsyjDFg+OKAyFNdqxSM24xuciOCKdcNCXFA3UcFisiLWey9N83
+         45vhg2IGWcS6QVpG1xsttchZ6z8Snx+fPkCfvjJ54gu5bAwLy7ix/Ajg42GZu4Wn7ZJi
+         PLOmjlYgQwF9k15iAC8hww4KmLqyIai7VNrBNU0W7KdFgr0IJLQggrzA3LUD3hahc3Nm
+         EeQOR3Hk4Qj2uBIAVbGpNK3d8thV4Lwck+vyrCTWLhZdMBkZ4hy8RvxkMZI1VrNlR6xl
+         31Ro8+5hGM6SLZpw4H32QAEpPkIKGWeTU/hp70qCWM98mQHa1FkDo+l5XfF2/WFLlB3d
+         xPAw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f26si9726408edd.411.2019.07.25.00.07.01
+        by mx.google.com with ESMTPS id f13si10801284eda.21.2019.07.25.00.07.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jul 2019 00:07:02 -0700 (PDT)
+        Thu, 25 Jul 2019 00:07:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:56228 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56248 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hqXq9-0000Fx-1v
-	for alex.bennee@linaro.org; Thu, 25 Jul 2019 03:07:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52055)
+	id 1hqXqq-0001OO-TL
+	for alex.bennee@linaro.org; Thu, 25 Jul 2019 03:07:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52308)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <tony.nguyen@bt.com>) id 1hqXq6-0000Eu-7I
- for qemu-arm@nongnu.org; Thu, 25 Jul 2019 03:06:59 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hqXqm-0001Ml-JW
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 03:07:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hqXq5-0007Ek-0D
- for qemu-arm@nongnu.org; Thu, 25 Jul 2019 03:06:58 -0400
-Received: from smtpe1.intersmtp.com ([62.239.224.234]:24375)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (envelope-from <tony.nguyen@bt.com>) id 1hqXql-0008TC-HD
+ for qemu-arm@nongnu.org; Thu, 25 Jul 2019 03:07:40 -0400
+Received: from smtpe1.intersmtp.com ([62.239.224.237]:43356)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hqXpz-00078A-Iv; Thu, 25 Jul 2019 03:06:51 -0400
-Received: from tpw09926dag18g.domain1.systemhost.net (10.9.212.34) by
- RDW083A012ED68.bt.com (10.187.98.38) with Microsoft SMTP Server (TLS) id
- 14.3.439.0; Thu, 25 Jul 2019 08:06:10 +0100
+ id 1hqXqg-0008KS-T8; Thu, 25 Jul 2019 03:07:35 -0400
+Received: from tpw09926dag18h.domain1.systemhost.net (10.9.212.42) by
+ RDW083A010ED66.bt.com (10.187.98.36) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Thu, 25 Jul 2019 08:06:41 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18g.domain1.systemhost.net (10.9.212.34) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Thu, 25 Jul 2019 08:06:48 +0100
+ tpw09926dag18h.domain1.systemhost.net (10.9.212.42) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Thu, 25 Jul 2019 08:07:32 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Thu, 25 Jul
- 2019 08:06:48 +0100
+ 2019 08:07:32 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v3 05/15] hw/intc/armv7m_nic: Access
- MemoryRegion with MemOp
-Thread-Index: AQHVQreGXs+LWda4j0ugTj4v613yCg==
-Date: Thu, 25 Jul 2019 07:06:48 +0000
-Message-ID: <1564038408751.63288@bt.com>
+Thread-Topic: [Qemu-devel] [PATCH v3 06/15] hw/virtio: Access MemoryRegion
+ with MemOp
+Thread-Index: AQHVQregjO9Bui4k5UKiA3Z9jTV6mg==
+Date: Thu, 25 Jul 2019 07:07:32 +0000
+Message-ID: <1564038452045.48239@bt.com>
 References: <e9c6e5310b1a4863be45d45bf087fc3d@tpw09926dag18e.domain1.systemhost.net>, 
  <1563810716254.18886@bt.com>,<1564038073754.91133@bt.com>
 In-Reply-To: <1564038073754.91133@bt.com>
@@ -78,12 +78,12 @@ X-MS-Has-Attach:
 X-MS-TNEF-Correlator: 
 x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.42]
-Content-Type: multipart/alternative; boundary="_000_156403840875163288btcom_"
+Content-Type: multipart/alternative; boundary="_000_156403845204548239btcom_"
 MIME-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 62.239.224.234
-Subject: [Qemu-arm] [Qemu-devel] [PATCH v3 05/15] hw/intc/armv7m_nic: Access
+X-Received-From: 62.239.224.237
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v3 06/15] hw/virtio: Access
  MemoryRegion with MemOp
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -106,86 +106,60 @@ Cc: peter.maydell@linaro.org, walling@linux.ibm.com, mst@redhat.com,
  amarkovic@wavecomp.com, pbonzini@redhat.com, aurelien@aurel32.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AcYM0xJKyi5T
+X-TUID: cT4hlEYV9yr1
 
---_000_156403840875163288btcom_
+--_000_156403845204548239btcom_
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
 ---
- hw/intc/armv7m_nvic.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+ hw/virtio/virtio-pci.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 9f8f0d3..25bb88a 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -18,6 +18,7 @@
- #include "hw/intc/armv7m_nvic.h"
- #include "target/arm/cpu.h"
- #include "exec/exec-all.h"
+diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
+index ce928f2..265f066 100644
+--- a/hw/virtio/virtio-pci.c
++++ b/hw/virtio/virtio-pci.c
+@@ -17,6 +17,7 @@
+
+ #include "qemu/osdep.h"
+
 +#include "exec/memop.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "trace.h"
-@@ -2345,7 +2346,8 @@ static MemTxResult nvic_sysreg_ns_write(void *opaque,=
- hwaddr addr,
-     if (attrs.secure) {
-         /* S accesses to the alias act like NS accesses to the real region=
- */
-         attrs.secure =3D 0;
--        return memory_region_dispatch_write(mr, addr, value, size, attrs);
-+        return memory_region_dispatch_write(mr, addr, value, SIZE_MEMOP(si=
-ze),
-+                                            attrs);
-     } else {
-         /* NS attrs are RAZ/WI for privileged, and BusFault for user */
-         if (attrs.user) {
-@@ -2364,7 +2366,8 @@ static MemTxResult nvic_sysreg_ns_read(void *opaque, =
+ #include "standard-headers/linux/virtio_pci.h"
+ #include "hw/virtio/virtio.h"
+ #include "hw/pci/pci.h"
+@@ -550,7 +551,8 @@ void virtio_address_space_write(VirtIOPCIProxy *proxy, =
 hwaddr addr,
-     if (attrs.secure) {
-         /* S accesses to the alias act like NS accesses to the real region=
- */
-         attrs.secure =3D 0;
--        return memory_region_dispatch_read(mr, addr, data, size, attrs);
-+        return memory_region_dispatch_read(mr, addr, data, SIZE_MEMOP(size=
-),
-+                                           attrs);
-     } else {
-         /* NS attrs are RAZ/WI for privileged, and BusFault for user */
-         if (attrs.user) {
-@@ -2390,7 +2393,8 @@ static MemTxResult nvic_systick_write(void *opaque, h=
-waddr addr,
-
-     /* Direct the access to the correct systick */
-     mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systick[attrs.secure]=
-), 0);
--    return memory_region_dispatch_write(mr, addr, value, size, attrs);
-+    return memory_region_dispatch_write(mr, addr, value, SIZE_MEMOP(size),
-+                                        attrs);
+         /* As length is under guest control, handle illegal values. */
+         return;
+     }
+-    memory_region_dispatch_write(mr, addr, val, len, MEMTXATTRS_UNSPECIFIE=
+D);
++    memory_region_dispatch_write(mr, addr, val, SIZE_MEMOP(len),
++                                 MEMTXATTRS_UNSPECIFIED);
  }
 
- static MemTxResult nvic_systick_read(void *opaque, hwaddr addr,
-@@ -2402,7 +2406,7 @@ static MemTxResult nvic_systick_read(void *opaque, hw=
-addr addr,
+ static void
+@@ -573,7 +575,8 @@ virtio_address_space_read(VirtIOPCIProxy *proxy, hwaddr=
+ addr,
+     /* Make sure caller aligned buf properly */
+     assert(!(((uintptr_t)buf) & (len - 1)));
 
-     /* Direct the access to the correct systick */
-     mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systick[attrs.secure]=
-), 0);
--    return memory_region_dispatch_read(mr, addr, data, size, attrs);
-+    return memory_region_dispatch_read(mr, addr, data, SIZE_MEMOP(size), a=
-ttrs);
- }
-
- static const MemoryRegionOps nvic_systick_ops =3D {
+-    memory_region_dispatch_read(mr, addr, &val, len, MEMTXATTRS_UNSPECIFIE=
+D);
++    memory_region_dispatch_read(mr, addr, &val, SIZE_MEMOP(len),
++                                MEMTXATTRS_UNSPECIFIED);
+     switch (len) {
+     case 1:
+         pci_set_byte(buf, val);
 --
 1.8.3.1
 
 
 
 
---_000_156403840875163288btcom_
+--_000_156403845204548239btcom_
 Content-Type: text/html; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
@@ -202,92 +176,56 @@ der-left-width: 2px; border-left-style: solid; border-left-color: rgb(128, =
 FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
 <p></p>
 <div><span style=3D"font-size: 12pt;">Signed-off-by: Tony Nguyen &lt;tony.n=
-guyen@bt.com&gt;</span><br>
+guyen@bt.c</span><span style=3D"font-size: 12pt;">om&gt;</span><br>
 </div>
 <div>---</div>
-<div>&nbsp;hw/intc/armv7m_nvic.c | 12 &#43;&#43;&#43;&#43;&#43;&#43;&#43;&#=
-43;----</div>
-<div>&nbsp;1 file changed, 8 insertions(&#43;), 4 deletions(-)</div>
+<div>&nbsp;hw/virtio/virtio-pci.c | 7 &#43;&#43;&#43;&#43;&#43;--</div>
+<div>&nbsp;1 file changed, 5 insertions(&#43;), 2 deletions(-)</div>
 <div><br>
 </div>
-<div>diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c</div>
-<div>index 9f8f0d3..25bb88a 100644</div>
-<div>--- a/hw/intc/armv7m_nvic.c</div>
-<div>&#43;&#43;&#43; b/hw/intc/armv7m_nvic.c</div>
-<div>@@ -18,6 &#43;18,7 @@</div>
-<div>&nbsp;#include &quot;hw/intc/armv7m_nvic.h&quot;</div>
-<div>&nbsp;#include &quot;target/arm/cpu.h&quot;</div>
-<div>&nbsp;#include &quot;exec/exec-all.h&quot;</div>
+<div>diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c</div>
+<div>index ce928f2..265f066 100644</div>
+<div>--- a/hw/virtio/virtio-pci.c</div>
+<div>&#43;&#43;&#43; b/hw/virtio/virtio-pci.c</div>
+<div>@@ -17,6 &#43;17,7 @@</div>
+<div>&nbsp;</div>
+<div>&nbsp;#include &quot;qemu/osdep.h&quot;</div>
+<div>&nbsp;</div>
 <div>&#43;#include &quot;exec/memop.h&quot;</div>
-<div>&nbsp;#include &quot;qemu/log.h&quot;</div>
-<div>&nbsp;#include &quot;qemu/module.h&quot;</div>
-<div>&nbsp;#include &quot;trace.h&quot;</div>
-<div>@@ -2345,7 &#43;2346,8 @@ static MemTxResult nvic_sysreg_ns_write(void=
- *opaque, hwaddr addr,</div>
-<div>&nbsp; &nbsp; &nbsp;if (attrs.secure) {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* S accesses to the alias act like =
-NS accesses to the real region */</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;attrs.secure =3D 0;</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;return memory_region_dispatch_write(mr, a=
-ddr, value, size, attrs);</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;return memory_region_dispatch_write(m=
-r, addr, value, SIZE_MEMOP(size),</div>
+<div>&nbsp;#include &quot;standard-headers/linux/virtio_pci.h&quot;</div>
+<div>&nbsp;#include &quot;hw/virtio/virtio.h&quot;</div>
+<div>&nbsp;#include &quot;hw/pci/pci.h&quot;</div>
+<div>@@ -550,7 &#43;551,8 @@ void virtio_address_space_write(VirtIOPCIProxy=
+ *proxy, hwaddr addr,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* As length is under guest control,=
+ handle illegal values. */</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return;</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>- &nbsp; &nbsp;memory_region_dispatch_write(mr, addr, val, len, MEMTXA=
+TTRS_UNSPECIFIED);</div>
+<div>&#43; &nbsp; &nbsp;memory_region_dispatch_write(mr, addr, val, SIZE_ME=
+MOP(len),</div>
 <div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
- &nbsp; &nbsp;attrs);</div>
-<div>&nbsp; &nbsp; &nbsp;} else {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* NS attrs are RAZ/WI for privilege=
-d, and BusFault for user */</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (attrs.user) {</div>
-<div>@@ -2364,7 &#43;2366,8 @@ static MemTxResult nvic_sysreg_ns_read(void =
-*opaque, hwaddr addr,</div>
-<div>&nbsp; &nbsp; &nbsp;if (attrs.secure) {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* S accesses to the alias act like =
-NS accesses to the real region */</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;attrs.secure =3D 0;</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;return memory_region_dispatch_read(mr, ad=
-dr, data, size, attrs);</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;return memory_region_dispatch_read(mr=
-, addr, data, SIZE_MEMOP(size),</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
- &nbsp; attrs);</div>
-<div>&nbsp; &nbsp; &nbsp;} else {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* NS attrs are RAZ/WI for privilege=
-d, and BusFault for user */</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (attrs.user) {</div>
-<div>@@ -2390,7 &#43;2393,8 @@ static MemTxResult nvic_systick_write(void *=
-opaque, hwaddr addr,</div>
-<div>&nbsp;</div>
-<div>&nbsp; &nbsp; &nbsp;/* Direct the access to the correct systick */</di=
-v>
-<div>&nbsp; &nbsp; &nbsp;mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&amp;=
-s-&gt;systick[attrs.secure]), 0);</div>
-<div>- &nbsp; &nbsp;return memory_region_dispatch_write(mr, addr, value, si=
-ze, attrs);</div>
-<div>&#43; &nbsp; &nbsp;return memory_region_dispatch_write(mr, addr, value=
-, SIZE_MEMOP(size),</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
-attrs);</div>
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MEMTXATTRS_UNSPECIFIED);</d=
+iv>
 <div>&nbsp;}</div>
 <div>&nbsp;</div>
-<div>&nbsp;static MemTxResult nvic_systick_read(void *opaque, hwaddr addr,<=
-/div>
-<div>@@ -2402,7 &#43;2406,7 @@ static MemTxResult nvic_systick_read(void *o=
-paque, hwaddr addr,</div>
+<div>&nbsp;static void</div>
+<div>@@ -573,7 &#43;575,8 @@ virtio_address_space_read(VirtIOPCIProxy *prox=
+y, hwaddr addr,</div>
+<div>&nbsp; &nbsp; &nbsp;/* Make sure caller aligned buf properly */</div>
+<div>&nbsp; &nbsp; &nbsp;assert(!(((uintptr_t)buf) &amp; (len - 1)));</div>
 <div>&nbsp;</div>
-<div>&nbsp; &nbsp; &nbsp;/* Direct the access to the correct systick */</di=
+<div>- &nbsp; &nbsp;memory_region_dispatch_read(mr, addr, &amp;val, len, ME=
+MTXATTRS_UNSPECIFIED);</div>
+<div>&#43; &nbsp; &nbsp;memory_region_dispatch_read(mr, addr, &amp;val, SIZ=
+E_MEMOP(len),</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;MEMTXATTRS_UNSPECIFIED);</di=
 v>
-<div>&nbsp; &nbsp; &nbsp;mr =3D sysbus_mmio_get_region(SYS_BUS_DEVICE(&amp;=
-s-&gt;systick[attrs.secure]), 0);</div>
-<div>- &nbsp; &nbsp;return memory_region_dispatch_read(mr, addr, data, size=
-, attrs);</div>
-<div>&#43; &nbsp; &nbsp;return memory_region_dispatch_read(mr, addr, data, =
-SIZE_MEMOP(size), attrs);</div>
-<div>&nbsp;}</div>
-<div>&nbsp;</div>
-<div>&nbsp;static const MemoryRegionOps nvic_systick_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;switch (len) {</div>
+<div>&nbsp; &nbsp; &nbsp;case 1:</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;pci_set_byte(buf, val);</div>
 <div>--&nbsp;</div>
 <div>1.8.3.1</div>
 <div><br>
@@ -298,4 +236,4 @@ SIZE_MEMOP(size), attrs);</div>
 </body>
 </html>
 
---_000_156403840875163288btcom_--
+--_000_156403845204548239btcom_--

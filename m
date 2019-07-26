@@ -1,298 +1,402 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp206873wrv;
-        Fri, 26 Jul 2019 10:50:47 -0700 (PDT)
-X-Received: by 2002:a17:90a:d983:: with SMTP id d3mr97885350pjv.88.1564163447757;
-        Fri, 26 Jul 2019 10:50:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564163447; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp206917wrv;
+        Fri, 26 Jul 2019 10:50:50 -0700 (PDT)
+X-Received: by 2002:a17:90a:9301:: with SMTP id p1mr98957769pjo.22.1564163450789;
+        Fri, 26 Jul 2019 10:50:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564163450; cv=none;
         d=google.com; s=arc-20160816;
-        b=tFFQEokr3pFtt+SOhUP60z6MxERc2ZzlzFAhxdAcd6wCC99Laszeo9+jJydeDCtECg
-         7PqI/sapwln89310Cd5lXFVmlssIjOy8WHESoZEY+ewUpH/uFn3vqxE7wyY45L/881PS
-         MaJj2EKSyB5nute7lHwWcUEvHsyerp72ZzNhO1wV5hAnP5fgOyDZ1afqILygpPxf6hyZ
-         dxdXz5wcDM2cORABMgggUnHUJHls5fN4VlYAH+PUX2/Fb9/T+qPQ0RMq4ju/G+6Sf5nr
-         7ENaFO239bCnMMORVGvpcCkMaEABIXPEcaRbpD9RU6FGHfKrEsBzkFcOb1dWw7tlY6uR
-         zlVg==
+        b=WT8tSbWcJq4C9hmxbNDLHPP6ljwnmddn0XtGVrkeFnd8ApC+2JAdFaGRJrDNloIUi0
+         W7l0MPb1fiwhiEofyKdIlTauXtQ1pXx5l5f5Dlj4tumpTjtE259RjOO7FdTjg7hI+ahe
+         C6RVjw152FzDOyhFT2kkaFx6wMRPYwp4XNacAYNV5Akk01+PMESLyVLA6puq/XT4xeV/
+         SVahKvF19hXykaWyxSg/NpYEBlcaB+pJDiyx/ymvLxVc+xW+G2Mu1Ls99ONT7UjYFk6B
+         r3j4vCN4Q4FcVlApK2tI+FtUX9KMAsQpaLk29CPwjvCRAk+U9sYhlLE6jYv9YzKNwOXP
+         b51w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=sBwbqU4X+hNE91dFDdhNVeb0wgaIhMrDk27NuEJee50=;
-        b=q62lIH3vQ9Pzr8k9qARSlzNvgiDbaBoyUqKH2oIkf7YhHPRb2APxaTelkMyHq/Ekjz
-         Br1sArdPNnBMW9lfJItqS4IOHEubSVRw2vHS0IbuxTt7SshwqiOhofUw9DQ0LOuFM0dc
-         jWzcMuSoaLlo9v0wL6S33IKxjzGTDoz7bxWxq6mcf7vuQaowGy/Ay5A8kSkfIaJZ00N7
-         a9xvhZ4b7fyQxOphogAEVQ9Ql1kPtSxF1DT749O+Aq1FMdoEQ4nNprbb25A9Yzts8anD
-         sI4LXKEaWydlAtaG6DFkLlJZOk1tWrsc08ujqlC1emjThkoCb1KOD2gztSLvlycwNyLL
-         kQ7g==
+        bh=GoQmT1N8IU0T5z5+kFmORBhM2hYdVyMn2yGubYbJrVU=;
+        b=MN31PI1APJ7lEu3/WdSnY8WRLi7YgmJFTfczDJFRMiSSX4JlUaeSOuKua0DdLXxvyH
+         rM0Z6No9u1LPuJ9AT83Tvab/aHQB04sWmw7HTqYNMyPwIq17IsGbp4hXPPKA1rK+djSv
+         qc0KnYE6+5Ubl1283hjju6jiqrqmwooY67RbGCWqTIWzD5GX1q3Wfd0kLQz8foc2xo2x
+         AFRKqTK4bet50+sl+j8LsOYEgpdX4fWYCIReisy6VJoU1hd1w+tIauXO5fvh/W+X0wP3
+         B/RsfOJQxNGzlKCF18RyOBus3nebLJHYf5kSeKI2M/agS0h+EKyNyuHgWsnlgi+UOCy8
+         5t+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KKS7nzsL;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GBfq2eFV;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id q39sor64934286pjb.7.2019.07.26.10.50.47
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id d33sor65651669pla.46.2019.07.26.10.50.50
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 26 Jul 2019 10:50:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Fri, 26 Jul 2019 10:50:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KKS7nzsL;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GBfq2eFV;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=sBwbqU4X+hNE91dFDdhNVeb0wgaIhMrDk27NuEJee50=;
-        b=KKS7nzsLDVSNc1VvbWRcglwTfyMTZEEnYUte/KDEWGqNeypXRZCXi1Dtie8xRm3mZF
-         qh/mWdgvddeWWyGwhkf3086WYUK0u23Tb5sb3tyAxdZLnUB310agADpJVgVq/Fgsiflp
-         niYozs+Qo6EGdY4n9T3uk82z2B2K01L3LjGYUqwVt+CCk0tgYJ+Kp9lFGnVh1vO/g920
-         JYKsXJ0KbM6lDHmR1zICJrVUejvqArz/dEDBp8HLokInn3uxP0BspjK8pPkirhkXy7fu
-         Vnz467al7dYqUppYkJGdH1ofy2YeDDIX764PRJA7X8mm/uhXbFcTTQZzq/y3hvcz4KFc
-         WMnA==
+        bh=GoQmT1N8IU0T5z5+kFmORBhM2hYdVyMn2yGubYbJrVU=;
+        b=GBfq2eFV1G5lsZB/WX3pGNcloK6upS0papCHl/UXrwsYp5VXqeYW+fLFC8i1eTjELU
+         78mEuOAAPL62ASIEUm7glkaNSqiIwf3v+hfKZozFCTGrapHYABQoTawYkcyIc2ELBzOK
+         SDon1V+FkCkxbhdQUBR62bfEnK4o47FvBHI/jb5SNAvH9sEwEbh7+tU80Hqx0zoaIqCp
+         zAGCM0GktRXRroLWSimtWX8meuOOc44a1reUuCXyhavWA9FvSyXUXywRTpR9oT8mCQrI
+         pMkFFbdwSZUvOlq9kGujkuPpQPT43/HIdDiqOdWwidXFN7pmCdDdtU6TVjdDnajrMchR
+         lOHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=sBwbqU4X+hNE91dFDdhNVeb0wgaIhMrDk27NuEJee50=;
-        b=OCVE8jHOKOk/FkoSeC5FHX61y0g0XD0LLBL/kB4HmrNsPz2txqZhE4Vh/Lt5tXlc/z
-         HTGehbRUWGW0h5QOxABxts0RGeZf9B907yJPyzKCcSJa4GdSNSLq29Dw0114KlYeCkMl
-         YpLxVjO3UpeYID8oUPbxjKZJ7oNpl664ZIcxILou0L4gZox1PZFxrytO3351uuKnYMNe
-         Ef8alzwBFQ/mcVEf7VwVXiF5sFdr5y0N8P2bAS1hVoLar7NptIJ1ziq9ztJ8hAQ6QAkt
-         wE1/vkF8Z+JFwdTzbx5YTGOHS7Hdz/y5qPmOQhy/N1BhF3yo5ZcQHO19iI/I3mPdH2Hg
-         KoqQ==
-X-Gm-Message-State: APjAAAU4oKePDU+zjy1F6ON6mxanYLf6A2xGskKGDaQiqbf+2ILXHhB5
-	XFPwdEPl3puGOyTIXgix+KTnFm0b
-X-Google-Smtp-Source: APXvYqwfAj7jNE7A1tUSHlSV+Fl/GcN3L2pLyWFK6+Idq2kWBgm74ODlPlrZyUiqUyFKdB1Q57AxHw==
-X-Received: by 2002:a17:90a:c68c:: with SMTP id n12mr99655403pjt.33.1564163447257;
-        Fri, 26 Jul 2019 10:50:47 -0700 (PDT)
+        bh=GoQmT1N8IU0T5z5+kFmORBhM2hYdVyMn2yGubYbJrVU=;
+        b=T+SBZMcnkV8XKL9J5LFL7iJxou+eRleo1uPL5cuSmnYPjcH0c87Zp/8zN7t9N5qJaI
+         JizuWoOmCHU+EPaLuHtgVtCsup80ZtbApQj/k96hKxgg41HeD0tBcNGRFbKyWXx3j2cZ
+         BMTtqBiP+XNdyn8lVLvhunhy5nMDJk8Uyn4K3KXtDb/z/ScVvs3GiFs9LnsWpalEn/ll
+         uvH+pUtMXg1C/HqnQsfe7G0H3u/pyHEnYfQJh1RNjYDbVN5eq4GfQam6CGadn+eDBMOB
+         UApDMZkrfm+zAZYRNcvfOAGkSIUn5q15Qnt71yC+H2WtKrd+nI8REjo5xvwzAZUNmHB2
+         ZJ6Q==
+X-Gm-Message-State: APjAAAU9hjoHYux0paTbZGSV4zDc3fFqeE39tv7/7Un/lJLhz8AYJUi7
+	A7usYFFAdGqror936TZTIWiU+UMW
+X-Google-Smtp-Source: APXvYqzuPxjXezwokKyoSJe/jJW6Og90+IPbgFiK3kAMhbe/BJiSJiUmJxhPHOeGx+ulUTc3iUgC0A==
+X-Received: by 2002:a17:902:8ec3:: with SMTP id x3mr95853641plo.313.1564163450345;
+        Fri, 26 Jul 2019 10:50:50 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-126-117-207.tukw.qwest.net. [97.126.117.207])
-        by smtp.gmail.com with ESMTPSA id o24sm104287919pfp.135.2019.07.26.10.50.46
+        by smtp.gmail.com with ESMTPSA id o24sm104287919pfp.135.2019.07.26.10.50.49
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Fri, 26 Jul 2019 10:50:46 -0700 (PDT)
+        Fri, 26 Jul 2019 10:50:49 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org
-Subject: [PATCH 11/67] target/arm: Add stubs for aa32 decodetree
-Date: Fri, 26 Jul 2019 10:49:36 -0700
-Message-Id: <20190726175032.6769-12-richard.henderson@linaro.org>
+Subject: [PATCH 14/67] target/arm: Convert multiply and multiply accumulate
+Date: Fri, 26 Jul 2019 10:49:39 -0700
+Message-Id: <20190726175032.6769-15-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190726175032.6769-1-richard.henderson@linaro.org>
 References: <20190726175032.6769-1-richard.henderson@linaro.org>
-X-TUID: ARe+H4DHSXQl
-
-Add the infrastructure that will become the new decoder.
-No instructions adjusted so far.
+X-TUID: 3n+f16uPjT+w
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate.c       | 45 +++++++++++++++++++++++++++++++++++-
- target/arm/Makefile.objs     | 18 +++++++++++++++
- target/arm/a32-uncond.decode | 23 ++++++++++++++++++
- target/arm/a32.decode        | 23 ++++++++++++++++++
- target/arm/t32.decode        | 20 ++++++++++++++++
- 5 files changed, 128 insertions(+), 1 deletion(-)
- create mode 100644 target/arm/a32-uncond.decode
- create mode 100644 target/arm/a32.decode
- create mode 100644 target/arm/t32.decode
+ target/arm/translate.c | 214 ++++++++++++++++++++++++-----------------
+ target/arm/a32.decode  |  17 ++++
+ target/arm/t32.decode  |  19 ++++
+ 3 files changed, 163 insertions(+), 87 deletions(-)
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 36419025db..4738b91957 100644
+index ee7d53dfa5..354a52d36c 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -7715,6 +7715,33 @@ static void arm_skip_unless(DisasContext *s, uint32_t cond)
-     }
+@@ -7376,21 +7376,6 @@ static void gen_storeq_reg(DisasContext *s, int rlow, int rhigh, TCGv_i64 val)
+     store_reg(s, rhigh, tmp);
  }
  
-+/*
-+ * Include the generated decoders.
-+ * Note that the T32 decoder reuses some of the trans_* functions
-+ * initially declared by the A32 decoder, which results in duplicate
-+ * declaration warnings.  Suppress them.
-+ */
-+
-+#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
-+# pragma GCC diagnostic push
-+# pragma GCC diagnostic ignored "-Wredundant-decls"
-+# ifdef __clang__
-+#  pragma GCC diagnostic ignored "-Wtypedef-redefinition"
-+# endif
-+#endif
-+
-+#include "decode-a32.inc.c"
-+#include "decode-a32-uncond.inc.c"
-+#include "decode-t32.inc.c"
-+
-+#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
-+# pragma GCC diagnostic pop
-+#endif
-+
-+/*
-+ * Legacy decoder.
-+ */
-+
- static void disas_arm_insn(DisasContext *s, unsigned int insn)
+-/* load a 32-bit value from a register and perform a 64-bit accumulate.  */
+-static void gen_addq_lo(DisasContext *s, TCGv_i64 val, int rlow)
+-{
+-    TCGv_i64 tmp;
+-    TCGv_i32 tmp2;
+-
+-    /* Load value and extend to 64 bits.  */
+-    tmp = tcg_temp_new_i64();
+-    tmp2 = load_reg(s, rlow);
+-    tcg_gen_extu_i32_i64(tmp, tmp2);
+-    tcg_temp_free_i32(tmp2);
+-    tcg_gen_add_i64(val, val, tmp);
+-    tcg_temp_free_i64(tmp);
+-}
+-
+ /* load and add a 64-bit value from a register pair.  */
+ static void gen_addq(DisasContext *s, TCGv_i64 val, int rlow, int rhigh)
  {
-     unsigned int cond, val, op1, i, shift, rm, rs, rn, rd, sh;
-@@ -7733,7 +7760,8 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-         return;
-     }
-     cond = insn >> 28;
--    if (cond == 0xf){
+@@ -8068,6 +8053,128 @@ static bool trans_ORN_rri(DisasContext *s, arg_s_rri_rot *a)
+ #undef DO_ANY
+ #undef DO_LOGIC
+ 
++/*
++ * Multiply and multiply accumulate
++ */
 +
-+    if (cond == 0xf) {
-         /* In ARMv3 and v4 the NV condition is UNPREDICTABLE; we
-          * choose to UNDEF. In ARMv5 and above the space is used
-          * for miscellaneous unconditional instructions.
-@@ -7741,6 +7769,11 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-         ARCH(5);
- 
-         /* Unconditional instructions.  */
-+        if (disas_a32_uncond(s, insn)) {
-+            return;
-+        }
-+        /* fall back to legacy decoder */
++static bool op_mla(DisasContext *s, arg_s_rrrr *a, bool add)
++{
++    TCGv_i32 t1, t2;
 +
-         if (((insn >> 25) & 7) == 1) {
-             /* NEON Data processing.  */
-             if (!arm_dc_feature(s, ARM_FEATURE_NEON)) {
-@@ -7953,6 +7986,11 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
- 
-     arm_skip_unless(s, cond);
- 
-+    if (disas_a32(s, insn)) {
-+        return;
++    t1 = load_reg(s, a->rn);
++    t2 = load_reg(s, a->rm);
++    tcg_gen_mul_i32(t1, t1, t2);
++    tcg_temp_free_i32(t2);
++    if (add) {
++        t2 = load_reg(s, a->ra);
++        tcg_gen_add_i32(t1, t1, t2);
++        tcg_temp_free_i32(t2);
 +    }
-+    /* fall back to legacy decoder */
-+
-     if ((insn & 0x0f900000) == 0x03000000) {
-         if ((insn & (1 << 21)) == 0) {
-             ARCH(6T2);
-@@ -9440,6 +9478,11 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
-         ARCH(6T2);
-     }
- 
-+    if (disas_t32(s, insn)) {
-+        return;
++    if (a->s) {
++        gen_logic_CC(t1);
 +    }
-+    /* fall back to legacy decoder */
++    store_reg(s, a->rd, t1);
++    return true;
++}
 +
-     rn = (insn >> 16) & 0xf;
-     rs = (insn >> 12) & 0xf;
-     rd = (insn >> 8) & 0xf;
-diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
-index 5cafc1eb6c..7806b4dac0 100644
---- a/target/arm/Makefile.objs
-+++ b/target/arm/Makefile.objs
-@@ -28,9 +28,27 @@ target/arm/decode-vfp-uncond.inc.c: $(SRC_PATH)/target/arm/vfp-uncond.decode $(D
- 	  $(PYTHON) $(DECODETREE) --static-decode disas_vfp_uncond -o $@ $<,\
- 	  "GEN", $(TARGET_DIR)$@)
- 
-+target/arm/decode-a32.inc.c: $(SRC_PATH)/target/arm/a32.decode $(DECODETREE)
-+	$(call quiet-command,\
-+	  $(PYTHON) $(DECODETREE) --static-decode disas_a32 -o $@ $<,\
-+	  "GEN", $(TARGET_DIR)$@)
++static bool trans_MUL(DisasContext *s, arg_MUL *a)
++{
++    return op_mla(s, a, false);
++}
 +
-+target/arm/decode-a32-uncond.inc.c: $(SRC_PATH)/target/arm/a32-uncond.decode $(DECODETREE)
-+	$(call quiet-command,\
-+	  $(PYTHON) $(DECODETREE) --static-decode disas_a32_uncond -o $@ $<,\
-+	  "GEN", $(TARGET_DIR)$@)
++static bool trans_MLA(DisasContext *s, arg_MLA *a)
++{
++    return op_mla(s, a, true);
++}
 +
-+target/arm/decode-t32.inc.c: $(SRC_PATH)/target/arm/t32.decode $(DECODETREE)
-+	$(call quiet-command,\
-+	  $(PYTHON) $(DECODETREE) --static-decode disas_t32 -o $@ $<,\
-+	  "GEN", $(TARGET_DIR)$@)
++static bool trans_MLS(DisasContext *s, arg_MLS *a)
++{
++    TCGv_i32 t1, t2;
 +
- target/arm/translate-sve.o: target/arm/decode-sve.inc.c
- target/arm/translate.o: target/arm/decode-vfp.inc.c
- target/arm/translate.o: target/arm/decode-vfp-uncond.inc.c
-+target/arm/translate.o: target/arm/decode-a32.inc.c
-+target/arm/translate.o: target/arm/decode-a32-uncond.inc.c
-+target/arm/translate.o: target/arm/decode-t32.inc.c
- 
- obj-y += tlb_helper.o debug_helper.o
- obj-y += translate.o op_helper.o
-diff --git a/target/arm/a32-uncond.decode b/target/arm/a32-uncond.decode
-new file mode 100644
-index 0000000000..8dee26d3b6
---- /dev/null
-+++ b/target/arm/a32-uncond.decode
-@@ -0,0 +1,23 @@
-+# A32 unconditional instructions
-+#
-+#  Copyright (c) 2019 Linaro, Ltd
-+#
-+# This library is free software; you can redistribute it and/or
-+# modify it under the terms of the GNU Lesser General Public
-+# License as published by the Free Software Foundation; either
-+# version 2 of the License, or (at your option) any later version.
-+#
-+# This library is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+# Lesser General Public License for more details.
-+#
-+# You should have received a copy of the GNU Lesser General Public
-+# License along with this library; if not, see <http://www.gnu.org/licenses/>.
++    t1 = load_reg(s, a->rn);
++    t2 = load_reg(s, a->rm);
++    tcg_gen_mul_i32(t1, t1, t2);
++    tcg_temp_free_i32(t2);
++    t2 = load_reg(s, a->ra);
++    tcg_gen_sub_i32(t1, t2, t1);
++    tcg_temp_free_i32(t2);
++    store_reg(s, a->rd, t1);
++    return true;
++}
 +
-+#
-+# This file is processed by scripts/decodetree.py
-+#
-+# All insns that have 0xf in insn[31:28] are decoded here.
-+# All of those that have a COND field in insn[31:28] are in a32.decode
-+#
++static bool op_mlal(DisasContext *s, arg_s_rrrr *a, bool uns, bool add)
++{
++    TCGv_i32 t0, t1, t2, t3;
++
++    t0 = load_reg(s, a->rm);
++    t1 = load_reg(s, a->rn);
++    if (uns) {
++        tcg_gen_mulu2_i32(t0, t1, t0, t1);
++    } else {
++        tcg_gen_muls2_i32(t0, t1, t0, t1);
++    }
++    if (add) {
++        t2 = load_reg(s, a->ra);
++        t3 = load_reg(s, a->rd);
++        tcg_gen_add2_i32(t0, t1, t0, t1, t2, t3);
++        tcg_temp_free_i32(t2);
++        tcg_temp_free_i32(t3);
++    }
++    store_reg(s, a->ra, t0);
++    store_reg(s, a->rd, t1);
++    if (a->s) {
++        gen_logicq_cc(t0, t1);
++    }
++    return true;
++}
++
++static bool trans_UMULL(DisasContext *s, arg_UMULL *a)
++{
++    return op_mlal(s, a, true, false);
++}
++
++static bool trans_SMULL(DisasContext *s, arg_SMULL *a)
++{
++    return op_mlal(s, a, false, false);
++}
++
++static bool trans_UMLAL(DisasContext *s, arg_UMLAL *a)
++{
++    return op_mlal(s, a, true, true);
++}
++
++static bool trans_SMLAL(DisasContext *s, arg_SMLAL *a)
++{
++    return op_mlal(s, a, false, true);
++}
++
++static bool trans_UMAAL(DisasContext *s, arg_UMAAL *a)
++{
++    TCGv_i32 t0, t1, t2, zero;
++
++    if (s->thumb
++        ? !arm_dc_feature(s, ARM_FEATURE_THUMB_DSP)
++        : !ENABLE_ARCH_6) {
++        return false;
++    }
++
++    t0 = load_reg(s, a->rm);
++    t1 = load_reg(s, a->rn);
++    tcg_gen_mulu2_i32(t0, t1, t0, t1);
++    zero = tcg_const_i32(0);
++    t2 = load_reg(s, a->ra);
++    tcg_gen_add2_i32(t0, t1, t0, t1, t2, zero);
++    tcg_temp_free_i32(t2);
++    t2 = load_reg(s, a->rd);
++    tcg_gen_add2_i32(t0, t1, t0, t1, t2, zero);
++    tcg_temp_free_i32(t2);
++    tcg_temp_free_i32(zero);
++    store_reg(s, a->ra, t0);
++    store_reg(s, a->rd, t1);
++    return true;
++}
++
++
+ /*
+  * Legacy decoder.
+  */
+@@ -8612,71 +8719,9 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+             sh = (insn >> 5) & 3;
+             if (sh == 0) {
+                 if (op1 == 0x0) {
+-                    rd = (insn >> 16) & 0xf;
+-                    rn = (insn >> 12) & 0xf;
+-                    rs = (insn >> 8) & 0xf;
+-                    rm = (insn) & 0xf;
+-                    op1 = (insn >> 20) & 0xf;
+-                    switch (op1) {
+-                    case 0: case 1: case 2: case 3: case 6:
+-                        /* 32 bit mul */
+-                        tmp = load_reg(s, rs);
+-                        tmp2 = load_reg(s, rm);
+-                        tcg_gen_mul_i32(tmp, tmp, tmp2);
+-                        tcg_temp_free_i32(tmp2);
+-                        if (insn & (1 << 22)) {
+-                            /* Subtract (mls) */
+-                            ARCH(6T2);
+-                            tmp2 = load_reg(s, rn);
+-                            tcg_gen_sub_i32(tmp, tmp2, tmp);
+-                            tcg_temp_free_i32(tmp2);
+-                        } else if (insn & (1 << 21)) {
+-                            /* Add */
+-                            tmp2 = load_reg(s, rn);
+-                            tcg_gen_add_i32(tmp, tmp, tmp2);
+-                            tcg_temp_free_i32(tmp2);
+-                        }
+-                        if (insn & (1 << 20))
+-                            gen_logic_CC(tmp);
+-                        store_reg(s, rd, tmp);
+-                        break;
+-                    case 4:
+-                        /* 64 bit mul double accumulate (UMAAL) */
+-                        ARCH(6);
+-                        tmp = load_reg(s, rs);
+-                        tmp2 = load_reg(s, rm);
+-                        tmp64 = gen_mulu_i64_i32(tmp, tmp2);
+-                        gen_addq_lo(s, tmp64, rn);
+-                        gen_addq_lo(s, tmp64, rd);
+-                        gen_storeq_reg(s, rn, rd, tmp64);
+-                        tcg_temp_free_i64(tmp64);
+-                        break;
+-                    case 8: case 9: case 10: case 11:
+-                    case 12: case 13: case 14: case 15:
+-                        /* 64 bit mul: UMULL, UMLAL, SMULL, SMLAL. */
+-                        tmp = load_reg(s, rs);
+-                        tmp2 = load_reg(s, rm);
+-                        if (insn & (1 << 22)) {
+-                            tcg_gen_muls2_i32(tmp, tmp2, tmp, tmp2);
+-                        } else {
+-                            tcg_gen_mulu2_i32(tmp, tmp2, tmp, tmp2);
+-                        }
+-                        if (insn & (1 << 21)) { /* mult accumulate */
+-                            TCGv_i32 al = load_reg(s, rn);
+-                            TCGv_i32 ah = load_reg(s, rd);
+-                            tcg_gen_add2_i32(tmp, tmp2, tmp, tmp2, al, ah);
+-                            tcg_temp_free_i32(al);
+-                            tcg_temp_free_i32(ah);
+-                        }
+-                        if (insn & (1 << 20)) {
+-                            gen_logicq_cc(tmp, tmp2);
+-                        }
+-                        store_reg(s, rn, tmp);
+-                        store_reg(s, rd, tmp2);
+-                        break;
+-                    default:
+-                        goto illegal_op;
+-                    }
++                    /* Multiply and multiply accumulate.  */
++                    /* All done in decodetree.  Reach here for illegal ops.  */
++                    goto illegal_op;
+                 } else {
+                     rn = (insn >> 16) & 0xf;
+                     rd = (insn >> 12) & 0xf;
+@@ -10292,13 +10337,8 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
+                     }
+                 }
+                 if (op & 4) {
+-                    /* umaal */
+-                    if (!arm_dc_feature(s, ARM_FEATURE_THUMB_DSP)) {
+-                        tcg_temp_free_i64(tmp64);
+-                        goto illegal_op;
+-                    }
+-                    gen_addq_lo(s, tmp64, rs);
+-                    gen_addq_lo(s, tmp64, rd);
++                    /* umaal, in decodetree */
++                    goto illegal_op;
+                 } else if (op & 0x40) {
+                     /* 64-bit accumulate.  */
+                     gen_addq(s, tmp64, rs, rd);
 diff --git a/target/arm/a32.decode b/target/arm/a32.decode
-new file mode 100644
-index 0000000000..2d84a02861
---- /dev/null
+index 1db621576f..71846b79fd 100644
+--- a/target/arm/a32.decode
 +++ b/target/arm/a32.decode
-@@ -0,0 +1,23 @@
-+# A32 conditional instructions
-+#
-+#  Copyright (c) 2019 Linaro, Ltd
-+#
-+# This library is free software; you can redistribute it and/or
-+# modify it under the terms of the GNU Lesser General Public
-+# License as published by the Free Software Foundation; either
-+# version 2 of the License, or (at your option) any later version.
-+#
-+# This library is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+# Lesser General Public License for more details.
-+#
-+# You should have received a copy of the GNU Lesser General Public
-+# License along with this library; if not, see <http://www.gnu.org/licenses/>.
+@@ -25,6 +25,8 @@
+ &s_rrr_shi       s rd rn rm shim shty
+ &s_rrr_shr       s rn rd rm rs shty
+ &s_rri_rot       s rn rd imm rot
++&s_rrrr          s rd rn rm ra
++&rrrr            rd rn rm ra
+ 
+ # Data-processing (register)
+ 
+@@ -105,3 +107,18 @@ ORR_rri          .... 001 1100 . .... .... ............       @s_rri_rot
+ MOV_rri          .... 001 1101 . 0000 .... ............       @s_rxi_rot
+ BIC_rri          .... 001 1110 . .... .... ............       @s_rri_rot
+ MVN_rri          .... 001 1111 . 0000 .... ............       @s_rxi_rot
 +
-+#
-+# This file is processed by scripts/decodetree.py
-+#
-+# All of the insn that have a COND field in insn[31:28] are here.
-+# All insns that have 0xf in insn[31:28] are in a32u.decode.
-+#
++# Multiply and multiply accumulate
++
++@s_rdamn         ---- .... ... s:1 rd:4 ra:4 rm:4 .... rn:4   &s_rrrr
++@s_rd0mn         ---- .... ... s:1 rd:4 .... rm:4 .... rn:4   &s_rrrr ra=0
++@rdamn           ---- .... ... .   rd:4 ra:4 rm:4 .... rn:4   &rrrr
++
++MUL              .... 0000 000 . .... 0000 .... 1001 ....     @s_rd0mn
++MLA              .... 0000 001 . .... .... .... 1001 ....     @s_rdamn
++UMAAL            .... 0000 010 0 .... .... .... 1001 ....     @rdamn
++MLS              .... 0000 011 0 .... .... .... 1001 ....     @rdamn
++UMULL            .... 0000 100 . .... .... .... 1001 ....     @s_rdamn
++UMLAL            .... 0000 101 . .... .... .... 1001 ....     @s_rdamn
++SMULL            .... 0000 110 . .... .... .... 1001 ....     @s_rdamn
++SMLAL            .... 0000 111 . .... .... .... 1001 ....     @s_rdamn
 diff --git a/target/arm/t32.decode b/target/arm/t32.decode
-new file mode 100644
-index 0000000000..ac01fb6958
---- /dev/null
+index 7bfd8ee854..8e301ed2a1 100644
+--- a/target/arm/t32.decode
 +++ b/target/arm/t32.decode
-@@ -0,0 +1,20 @@
-+# Thumb2 instructions
-+#
-+#  Copyright (c) 2019 Linaro, Ltd
-+#
-+# This library is free software; you can redistribute it and/or
-+# modify it under the terms of the GNU Lesser General Public
-+# License as published by the Free Software Foundation; either
-+# version 2 of the License, or (at your option) any later version.
-+#
-+# This library is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-+# Lesser General Public License for more details.
-+#
-+# You should have received a copy of the GNU Lesser General Public
-+# License along with this library; if not, see <http://www.gnu.org/licenses/>.
+@@ -22,6 +22,8 @@
+ &s_rrr_shi       !extern s rd rn rm shim shty
+ &s_rrr_shr       !extern s rn rd rm rs shty
+ &s_rri_rot       !extern s rn rd imm rot
++&s_rrrr          !extern s rd rn rm ra
++&rrrr            !extern rd rn rm ra
+ 
+ # Data-processing (register-shifted register)
+ 
+@@ -109,3 +111,20 @@ SBC_rri          1111 0.0 1011 . .... 0 ... .... ........     @s_rri_rot
+   SUB_rri        1111 0.0 1101 . .... 0 ... .... ........     @s_rri_rot
+ }
+ RSB_rri          1111 0.0 1110 . .... 0 ... .... ........     @s_rri_rot
 +
-+#
-+# This file is processed by scripts/decodetree.py
-+#
++# Multiply and multiply accumulate
++
++@s0_rnadm        .... .... .... rn:4 ra:4 rd:4 .... rm:4      &s_rrrr s=0
++@s0_rn0dm        .... .... .... rn:4 .... rd:4 .... rm:4      &s_rrrr ra=0 s=0
++@rnadm           .... .... .... rn:4 ra:4 rd:4 .... rm:4      &rrrr
++
++{
++  MUL            1111 1011 0000 .... 1111 .... 0000 ....      @s0_rn0dm
++  MLA            1111 1011 0000 .... .... .... 0000 ....      @s0_rnadm
++}
++MLS              1111 1011 0000 .... .... .... 0001 ....      @rnadm
++SMULL            1111 1011 1000 .... .... .... 0000 ....      @s0_rnadm
++UMULL            1111 1011 1010 .... .... .... 0000 ....      @s0_rnadm
++SMLAL            1111 1011 1100 .... .... .... 0000 ....      @s0_rnadm
++UMLAL            1111 1011 1110 .... .... .... 0000 ....      @s0_rnadm
++UMAAL            1111 1011 1110 .... .... .... 0110 ....      @rnadm
 -- 
 2.17.1

@@ -1,100 +1,111 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp11765932wrv;
-        Fri, 26 Jul 2019 04:03:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzie1/pyMByxI9zEgZFdRuPWZz+I+yOttUV/OstOKghLSrG2oct1X9OHAnpoDNl5eJNxSzu
-X-Received: by 2002:ac8:6c31:: with SMTP id k17mr63933127qtu.253.1564139000576;
-        Fri, 26 Jul 2019 04:03:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564139000; cv=none;
-        d=google.com; s=arc-20160816;
-        b=XP+YVKMPqeDKWbo8mMe8H0bXAaQf8yL6qDG4ObqPlyBLcKKV2F/r8eYomAU7NaGTql
-         3WxEZkt/ralj15tDw9DYYpxOK7yVctUIW+Oe6CidULTr5rHzSByJsRAjgfMRPxnDWL/I
-         4ZwJSKOqEObqEbQZRpHhml/zVIKH/1KM7Fh6hg3Pxajw88PdjaGtFJCs80X9NdtSSFhb
-         iwp24ID/AhxRG4vqF0NnOd+Y94VyRTfk8sOMJ7dWsAMlAG8s6P7j/iBgRl/yPH5on8sQ
-         ZFaXoE5FBFksEv2/H78QBlR+4SX1Z6VnCZOsKnLuEgzUB+6XOyUkiyv7caE5mdQPDNgT
-         0Scw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=6umawaz58VrZjodVPQ7Rd283rV9fK/tEWuXuksm8zU8=;
-        b=hw3mY4BaFlTw34xb7XcTJM2RE9JK1RMn/tzZ69HYpRlExF0sJT7G3jf54iUpoy6fVn
-         /Yw6Z9pTkIA/kepcXcpz/PoAutS9EWvTtFbJEP2ecvIIZOiab7v7FbqonaZQdaC5Vx9I
-         JRCQCymsuVvZdNmxlxEe7dOHTq5zcoT2mxqBUL3TU8u9T6Dj5C2X9FcaCG/b9P7Fu8tp
-         Z403dR09jo3k8FPBcdzwohn8ov7j2z19Mp+EH9pgMYpH5y6HYnn1cyKqLiVdnTQCzDPF
-         uXqRk5HZcIkEl3IqcVjYru9RSUVac4hHKIc+qgVL2AemqE4RRpxzY3OkFdZLFiTPAwwH
-         2c7Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp11782604wrv;
+        Fri, 26 Jul 2019 04:16:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwe4LebJ8zk+fxSSCYEOPFNAewsEAwr1dlNeUMKQZ76+Ea7EIiojZvj5IK4IOud7MoJ24RM
+X-Received: by 2002:a37:4986:: with SMTP id w128mr60994153qka.417.1564139818704;
+        Fri, 26 Jul 2019 04:16:58 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t5si34112589qtc.270.2019.07.26.04.03.19
+        by mx.google.com with ESMTPS id g33si34411355qtb.145.2019.07.26.04.16.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jul 2019 04:03:20 -0700 (PDT)
+        Fri, 26 Jul 2019 04:16:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38438 helo=lists1p.gnu.org)
+       dkim=fail header.i=@wavecomp.com header.s=selector1 header.b=AYo+YQv6;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38542 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hqy0L-00078p-DC
-	for alex.bennee@linaro.org; Fri, 26 Jul 2019 07:03:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47782)
+	id 1hqyDT-0005lw-Os
+	for alex.bennee@linaro.org; Fri, 26 Jul 2019 07:16:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46354)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hqy0E-00076d-Hy
- for qemu-arm@nongnu.org; Fri, 26 Jul 2019 07:03:12 -0400
+ (envelope-from <amarkovic@wavecomp.com>) id 1hqyDN-0005Uk-HN
+ for qemu-arm@nongnu.org; Fri, 26 Jul 2019 07:16:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hqy0D-0002Kv-1s
- for qemu-arm@nongnu.org; Fri, 26 Jul 2019 07:03:10 -0400
-Received: from mail-wr1-f67.google.com ([209.85.221.67]:42319)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hqy0C-0002DM-OG
- for qemu-arm@nongnu.org; Fri, 26 Jul 2019 07:03:08 -0400
-Received: by mail-wr1-f67.google.com with SMTP id x1so4080763wrr.9
- for <qemu-arm@nongnu.org>; Fri, 26 Jul 2019 04:03:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=6umawaz58VrZjodVPQ7Rd283rV9fK/tEWuXuksm8zU8=;
- b=aWsGGBoOb06GrYSd90AfoF1kEa6uUThsX1N2N83nKANH84hQciDH84ZG0V9zPCe/30
- vAN97B6GXyTXkOJWv373ElIpCy3y2uKWjT8UnRhc3FryyOsBCgBOEToNFVBGpsgYvnqu
- ld/9MjBe1/3Cwdn6ks9vFiO/jonKWGTjaB0yo53QYxZG/LbRo31S3NU0IRtOctV3Epji
- MbesSHvbXINJKkeUyMCmATXWOIwObYl0cUuf80AJzZnM5SfJCHH9J25xpwbu6ubP3OwJ
- +aFUhudnuIHVBjBsDqnuHHWs6YiOlArStZbelafYwMoxKAuKFO5/oJj0NcreXV/Lgzkc
- 1iFA==
-X-Gm-Message-State: APjAAAUVhBjBNqNsyozf6MdadRtkqyKxr1YJi/sjCH599ZBufF8H1PnH
- CYiz+iiWJdn4UFf+xT7z6WDSqQ==
-X-Received: by 2002:adf:f1d1:: with SMTP id z17mr29267913wro.190.1564138986653; 
- Fri, 26 Jul 2019 04:03:06 -0700 (PDT)
-Received: from [192.168.50.36] (243.red-88-26-246.staticip.rima-tde.net.
- [88.26.246.243])
- by smtp.gmail.com with ESMTPSA id t15sm45627206wrx.84.2019.07.26.04.03.04
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Fri, 26 Jul 2019 04:03:05 -0700 (PDT)
-To: tony.nguyen@bt.com, qemu-devel@nongnu.org
-References: <3106a3c959c4498fad13a5799c89ba7b@tpw09926dag18e.domain1.systemhost.net>
- <1564123618147.19868@bt.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <55d4c7f3-633b-0005-f74c-53578dd1bee1@redhat.com>
-Date: Fri, 26 Jul 2019 13:03:03 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
-MIME-Version: 1.0
-In-Reply-To: <1564123618147.19868@bt.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.221.67
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 09/15] cputlb: Access
+ (envelope-from <amarkovic@wavecomp.com>) id 1hqyDL-0003ZV-En
+ for qemu-arm@nongnu.org; Fri, 26 Jul 2019 07:16:44 -0400
+Received: from mail-eopbgr710106.outbound.protection.outlook.com
+ ([40.107.71.106]:10063 helo=NAM05-BY2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <amarkovic@wavecomp.com>)
+ id 1hqyDD-0002td-QM; Fri, 26 Jul 2019 07:16:36 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=R7EWf7QQj2ULWrhlJI/VX6h0OWdyh/k3ulWCg5hMOiCAaUUQmo3BZe5jCuXBVrFbXQskN2xDAeUTvyuL0ZFO7AEeEz0tqYyk8fgXPM/HXZV4NkE1pwh0rJWVXdxmkMLKhf8lCprU6J/vsghiL1e+0IDrdLqcSAg2M2AB4aQdsSj/SlJ+KPJnhZF9hCCUi/UHrn/Sr4vF7Eh0s0yAqM+BQTgfpoxgb1efTl5z3DN3LFSFbsm2qKe6jSSKYzWAsq7Ee4xdkVNmacSQILo4row1jOQYYf0GxZWgkSQUOycCqQuh10erhEqfakf0sIt6hpytXDyESVuCxjYkGXAZYUh7fQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=vMhAaPb3Co477k7rDny6wCuyCH2GWQtjyE4k1jcjR4E=;
+ b=hxRFCY4rlkrpYsNe3qIMFW02xVEaxtIzX7KVMmwnvbEJtg/JdhcZcQ9s8ToquRC4EVDPUFNoQpUR60IpBAOb6Ysg+plQAhuED/rXAEDNARHEU0oJcAnKomw78jVxYEl8nLJd2kINjgxGNBlUNVcAbc9NgKtScHx8IB6DRgK6oIqCF+/LgTTdHOKvsA8qZMIM+fcHjJmvwVbyHDhTUF4wunXvN/Hf0IOQp9nektsBn+pLW+/RCCWzW1BAhbQS+UAH2iDyXuAREl3Uujd/jqPZBUCmhxjkQZ4sAFCJL7iGQ/rwjloAEMEnFddn+Bd8qSCZInELl610b8QZE+lJaASbdg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
+ smtp.mailfrom=wavecomp.com;dmarc=pass action=none
+ header.from=wavecomp.com;dkim=pass header.d=wavecomp.com;arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=wavecomp.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=vMhAaPb3Co477k7rDny6wCuyCH2GWQtjyE4k1jcjR4E=;
+ b=AYo+YQv6eXcElRov082KzYR5cuOO5F2YXLSytu7xHc21+f2jlznpeevzQwjyuZdteE8zGkfSM072vk92iaJPy8wacI1W5TtmsOezzVqziPudjEXrFlqT4/R54UciR6sjzc9W+vsCdWQnJRMd+SCoyHLU5FR06Yumpb7DBn4y0ME=
+Received: from BN6PR2201MB1251.namprd22.prod.outlook.com (10.174.81.139) by
+ BN6PR2201MB1153.namprd22.prod.outlook.com (10.174.91.21) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2115.10; Fri, 26 Jul 2019 11:16:28 +0000
+Received: from BN6PR2201MB1251.namprd22.prod.outlook.com
+ ([fe80::509b:7797:a22a:f2bb]) by BN6PR2201MB1251.namprd22.prod.outlook.com
+ ([fe80::509b:7797:a22a:f2bb%3]) with mapi id 15.20.2094.017; Fri, 26 Jul 2019
+ 11:16:28 +0000
+From: Aleksandar Markovic <amarkovic@wavecomp.com>
+To: =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>,
+ "tony.nguyen@bt.com" <tony.nguyen@bt.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+Thread-Topic: [EXTERNAL]Re: [Qemu-devel] [PATCH v5 09/15] cputlb: Access
  MemoryRegion with MemOp
+Thread-Index: AQHVQ6IbUaNvFRVr0EmGVWMLY+9noqbcvsrp
+Date: Fri, 26 Jul 2019 11:16:27 +0000
+Message-ID: <BN6PR2201MB1251F66358DF5F3509046674C6C00@BN6PR2201MB1251.namprd22.prod.outlook.com>
+References: <3106a3c959c4498fad13a5799c89ba7b@tpw09926dag18e.domain1.systemhost.net>
+ <1564123618147.19868@bt.com>, <55d4c7f3-633b-0005-f74c-53578dd1bee1@redhat.com>
+In-Reply-To: <55d4c7f3-633b-0005-f74c-53578dd1bee1@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=amarkovic@wavecomp.com; 
+x-originating-ip: [82.117.201.26]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 4a61eea7-4539-4106-2d39-08d711bab436
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(7168020)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(2017052603328)(7193020);
+ SRVR:BN6PR2201MB1153; 
+x-ms-traffictypediagnostic: BN6PR2201MB1153:
+x-microsoft-antispam-prvs: <BN6PR2201MB11534D8FA4150FC71ACD8221C6C00@BN6PR2201MB1153.namprd22.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:2089;
+x-forefront-prvs: 01106E96F6
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(136003)(346002)(366004)(39850400004)(396003)(376002)(189003)(199004)(256004)(229853002)(6116002)(11346002)(478600001)(7406005)(7416002)(3846002)(2201001)(110136005)(8676002)(305945005)(446003)(71200400001)(81166006)(186003)(8936002)(5660300002)(81156014)(54906003)(7736002)(66066001)(68736007)(6246003)(316002)(2906002)(71190400001)(66446008)(25786009)(7696005)(66476007)(486006)(66946007)(74316002)(66556008)(55016002)(52536014)(76176011)(99286004)(2501003)(86362001)(14454004)(53936002)(55236004)(6506007)(53546011)(102836004)(4326008)(26005)(33656002)(91956017)(76116006)(6436002)(476003)(4744005)(64756008)(9686003);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:BN6PR2201MB1153;
+ H:BN6PR2201MB1251.namprd22.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: wavecomp.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: 4KU2PwSAK63ITFVXkvAkFV5ojQsacORvqtWnu+FY7liVglWwmGp3f+WRr4WKSv5zOyrl6bJ8zqeSUM/sPt/Pq3kwayp4C+a1fwyRgmHHXR4/jeQPZaSUA/mfosf4X1KV52Hg3OTOTa+Z1JqTgyRWTuOBaSF1yk5nf2Zmclkp6ASI8i5hoUd9ZWz0hZlNTYPXbfjMeW0ZPR9JDJWdUjp8/RFOn1rAN0uuaFmssyXNAMTATmqg9GYLC8gSSJacuFHxv6gFx1oe4HYBeJOVZCmiwsQP/nIgh38xJOUIZ2UiO7O0zto09jDebw+KfLQSOmfhS2K1wFo/hEmhDfLCYAx/7MXCdyr5plFQ8IRCpvMWt/BtzL9CV0oNHJkQOTw8OqtQ42OQJ6jE31TO4QlgcrQW4rZvd0y2BPNyuZsbyiHPgEA=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: wavecomp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4a61eea7-4539-4106-2d39-08d711bab436
+X-MS-Exchange-CrossTenant-originalarrivaltime: 26 Jul 2019 11:16:27.5425 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 463607d3-1db3-40a0-8a29-970c56230104
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: amarkovic@wavecomp.com
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN6PR2201MB1153
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 40.107.71.106
+Subject: Re: [Qemu-arm] [EXTERNAL]Re: [Qemu-devel] [PATCH v5 09/15] cputlb:
+ Access MemoryRegion with MemOp
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,115 +117,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, walling@linux.ibm.com, sagark@eecs.berkeley.edu,
- mst@redhat.com, palmer@sifive.com, mark.cave-ayland@ilande.co.uk,
- Alistair.Francis@wdc.com, alex.williamson@redhat.com, arikalo@wavecomp.com,
- david@redhat.com, pasic@linux.ibm.com, borntraeger@de.ibm.com, rth@twiddle.net,
- atar4qemu@gmail.com, ehabkost@redhat.com, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, stefanha@redhat.com, shorne@gmail.com,
- david@gibson.dropbear.id.au, qemu-riscv@nongnu.org,
- kbastian@mail.uni-paderborn.de, cohuck@redhat.com, laurent@vivier.eu,
- qemu-ppc@nongnu.org, amarkovic@wavecomp.com, pbonzini@redhat.com,
- aurelien@aurel32.net
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "walling@linux.ibm.com" <walling@linux.ibm.com>,
+ "sagark@eecs.berkeley.edu" <sagark@eecs.berkeley.edu>,
+ "mst@redhat.com" <mst@redhat.com>, "palmer@sifive.com" <palmer@sifive.com>,
+ "mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
+ "Alistair.Francis@wdc.com" <Alistair.Francis@wdc.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>,
+ "david@redhat.com" <david@redhat.com>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
+ "borntraeger@de.ibm.com" <borntraeger@de.ibm.com>,
+ "rth@twiddle.net" <rth@twiddle.net>,
+ "atar4qemu@gmail.com" <atar4qemu@gmail.com>,
+ "ehabkost@redhat.com" <ehabkost@redhat.com>,
+ "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "stefanha@redhat.com" <stefanha@redhat.com>,
+ "shorne@gmail.com" <shorne@gmail.com>,
+ "david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+ "kbastian@mail.uni-paderborn.de" <kbastian@mail.uni-paderborn.de>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "laurent@vivier.eu" <laurent@vivier.eu>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "aurelien@aurel32.net" <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GO737dIE7WgV
+X-TUID: tEydlW55jV+p
 
-On 7/26/19 8:46 AM, tony.nguyen@bt.com wrote:
-> No-op MEMOP_SIZE and SIZE_MEMOP macros allows us to later easily
-> convert memory_region_dispatch_{read|write} paramter "unsigned size"
-> into a size+sign+endianness encoded "MemOp op".
-> 
-> Being a no-op macro, this patch does not introduce any logical change.
-> 
-> Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
-> ---
->  accel/tcg/cputlb.c | 21 ++++++++++-----------
->  1 file changed, 10 insertions(+), 11 deletions(-)
-> 
-> diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-> index 523be4c..5d88cec 100644
-> --- a/accel/tcg/cputlb.c
-> +++ b/accel/tcg/cputlb.c
-> @@ -881,7 +881,7 @@ static void tlb_fill(CPUState *cpu, target_ulong addr, int size,
-> 
->  static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
->                           int mmu_idx, target_ulong addr, uintptr_t retaddr,
-> -                         MMUAccessType access_type, int size)
-> +                         MMUAccessType access_type, MemOp op)
->  {
->      CPUState *cpu = env_cpu(env);
->      hwaddr mr_offset;
-> @@ -906,14 +906,13 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
->          qemu_mutex_lock_iothread();
->          locked = true;
->      }
-> -    r = memory_region_dispatch_read(mr, mr_offset,
-> -                                    &val, size, iotlbentry->attrs);
-> +    r = memory_region_dispatch_read(mr, mr_offset, &val, op, iotlbentry->attrs);
->      if (r != MEMTX_OK) {
->          hwaddr physaddr = mr_offset +
->              section->offset_within_address_space -
->              section->offset_within_region;
-> 
-> -        cpu_transaction_failed(cpu, physaddr, addr, size, access_type,
-> +        cpu_transaction_failed(cpu, physaddr, addr, MEMOP_SIZE(op), access_type,
->                                 mmu_idx, iotlbentry->attrs, r, retaddr);
->      }
->      if (locked) {
-> @@ -925,7 +924,7 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
-> 
->  static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
->                        int mmu_idx, uint64_t val, target_ulong addr,
-> -                      uintptr_t retaddr, int size)
-> +                      uintptr_t retaddr, MemOp op)
->  {
->      CPUState *cpu = env_cpu(env);
->      hwaddr mr_offset;
-> @@ -947,15 +946,15 @@ static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
->          qemu_mutex_lock_iothread();
->          locked = true;
->      }
-> -    r = memory_region_dispatch_write(mr, mr_offset,
-> -                                     val, size, iotlbentry->attrs);
-> +    r = memory_region_dispatch_write(mr, mr_offset, val, op, iotlbentry->attrs);
->      if (r != MEMTX_OK) {
->          hwaddr physaddr = mr_offset +
->              section->offset_within_address_space -
->              section->offset_within_region;
-> 
-> -        cpu_transaction_failed(cpu, physaddr, addr, size, MMU_DATA_STORE,
-> -                               mmu_idx, iotlbentry->attrs, r, retaddr);
-> +        cpu_transaction_failed(cpu, physaddr, addr, MEMOP_SIZE(op),
-> +                               MMU_DATA_STORE, mmu_idx, iotlbentry->attrs, r,
-> +                               retaddr);
->      }
->      if (locked) {
->          qemu_mutex_unlock_iothread();
-> @@ -1306,7 +1305,7 @@ load_helper(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
->          }
-> 
->          res = io_readx(env, &env_tlb(env)->d[mmu_idx].iotlb[index],
-> -                       mmu_idx, addr, retaddr, access_type, size);
-> +                       mmu_idx, addr, retaddr, access_type, SIZE_MEMOP(size));
->          return handle_bswap(res, size, big_endian);
->      }
-> 
-> @@ -1555,7 +1554,7 @@ store_helper(CPUArchState *env, target_ulong addr, uint64_t val,
-> 
->          io_writex(env, &env_tlb(env)->d[mmu_idx].iotlb[index], mmu_idx,
->                    handle_bswap(val, size, big_endian),
-> -                  addr, retaddr, size);
-> +                  addr, retaddr, SIZE_MEMOP(size));
->          return;
->      }
-> 
-> --
-> 1.8.3.1
-> 
-> 
-> 
-
-Cleaner :)
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+On 7/26/19 8:46 AM, tony.nguyen@bt.com wrote:=0A=
+> No-op MEMOP_SIZE and SIZE_MEMOP macros allows us to later easily=0A=
+> convert memory_region_dispatch_{read|write} paramter "unsigned size"=0A=
+> into a size+sign+endianness encoded "MemOp op".=0A=
+> =0A=
+> Being a no-op macro, this patch does not introduce any logical change.=0A=
+> =0A=
+=0A=
+"allows" should read "allow".=0A=
+=0A=
+"paramter" should read "parameter".=0A=
+=0A=
+"logical change" should read "change in behavior".=0A=
+=0A=
+Thanks,=0A=
+Aleksandar=0A=
+=0A=
+> Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>=0A=
+> ---=

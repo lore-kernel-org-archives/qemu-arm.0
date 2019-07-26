@@ -1,11 +1,11 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id z5sm36048241wmf.48.2019.07.26.03.04.18
+        by smtp.gmail.com with ESMTPSA id t15sm45454776wrx.84.2019.07.26.03.16.02
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Fri, 26 Jul 2019 03:04:18 -0700 (PDT)
+        Fri, 26 Jul 2019 03:16:02 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id CC6FD1FF87;
-	Fri, 26 Jul 2019 11:04:17 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 642621FF87;
+	Fri, 26 Jul 2019 11:16:02 +0100 (BST)
 References: <20190722151804.25467-1-peter.maydell@linaro.org>
  <20190722151804.25467-2-peter.maydell@linaro.org>
 User-agent: mu4e 1.3.3; emacs 27.0.50
@@ -16,12 +16,12 @@ Cc: qemu-devel@nongnu.org, Mark Rutland <mark.rutland@arm.com>, Richard
 Subject: Re: [Qemu-arm] [PATCH for-4.1? 1/2] hw/arm/boot: Rename elf_{low,
  high}_addr to image_{low, high}_addr
 In-reply-to: <20190722151804.25467-2-peter.maydell@linaro.org>
-Date: Fri, 26 Jul 2019 11:04:17 +0100
-Message-ID: <87zhl1gli6.fsf@linaro.org>
+Date: Fri, 26 Jul 2019 11:16:02 +0100
+Message-ID: <87y30lgkyl.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: QAerJrMJR6UT
+X-TUID: pO0u/ZAYHMKL
 
 
 Peter Maydell <peter.maydell@linaro.org> writes:

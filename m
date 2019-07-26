@@ -1,75 +1,75 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp11516784wrv;
-        Thu, 25 Jul 2019 23:45:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxkJ7fUoWC2wZ2NaEwIw/I2tIpDNjtwpH0OWcEXEG8cHCWxye4EJtoUJJ1xZGJwQhCZpAmF
-X-Received: by 2002:a17:906:370c:: with SMTP id d12mr71203978ejc.140.1564123504126;
-        Thu, 25 Jul 2019 23:45:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564123504; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp11517140wrv;
+        Thu, 25 Jul 2019 23:45:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwMsAuQNdGkUsbUDKFXXLu4+SmdsqpvnTL9mnd/N3t2pQUOaHdSQyisoUQRTOWxItY7kCpG
+X-Received: by 2002:a50:ba09:: with SMTP id g9mr82308205edc.172.1564123526310;
+        Thu, 25 Jul 2019 23:45:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564123526; cv=none;
         d=google.com; s=arc-20160816;
-        b=YLSb8YuRgypLrh5PYJH5GG/8YXwayVuBuZY5GpSbMrl8Ap4JCwM58rAliSOWja/naM
-         4HuLMevTXrYPsJH1oiqfggpNnis2Hcg6BzCwHoYP094dq6Wp9dhgpRFccekJmJc4+rdF
-         yZYstfFDLIwbvDp572oOWt5EyrJQf66fM33N9Jklq2GCNWtek6Z7BDbc/qlUeu6+YhQD
-         yNpeXGE+78fftxdcYX2hExBEXHlMmeGREGqX0gpVukY3DFcgRiITgEIxoMwU66ZPCn/f
-         yguva/K8YeyTRA4Qm8fI9a61XgQ+8Y1YtvrIenAAmaisRKcSGs0BmJR34WV4/qduFB/8
-         sT8w==
+        b=yB3yRBcJeNtynuU6ogyH48wQjYc81ViQ6EuR+rHGsdC1atowDLPZdKue19Bc9R4RyH
+         1idQUEGQJczu3b5xaVyaycYUB2w0S3vcqzh0u3u1Dd1c9Yn0g9JxLwX7Oukdn7Oyjo3I
+         P1f65qPXV1H6gOHvHfUDQfxM9GOf55nZIoAcfQHB1xuBub8wpzDD0Mppz7ghf3LGFf1e
+         vXSp2PkpAtHaf45Loo6cP4XGUzYUUJPDFKmSKo2AbvUPyEqRBFeL5/MAHKt6okD6P6ZP
+         je2CpHd49QOq7B1HV5Jx9xGCastQcNbn6/wC8DHp22LiSV/RkFL45m2WEHDbaaMV/OVw
+         GO+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-language:accept-language:in-reply-to:references:message-id
          :date:thread-index:thread-topic:to:from;
-        bh=0wHlh686Dx2xczwThcQnWNW6yqVJ6DRIabv7Dzp/Jeo=;
-        b=surNDdaEjfr7eDyYUJ3xJxKI/zN7zYKvu7pGFN01UNLZTTqPF7HSvw1TV78tWdbhGI
-         zKi45Sio2vzosZNjRVu0RXtmTl+2kjFUjUys0MykhiIdcsFAgJxuhfibc979Wnn6ZCyp
-         931sBboVG18lfxy4+OH2FIEuUkCAb28+gOqeQM737Sy1U29N/3e0Mq2nBMJ9a3+wDFLb
-         EY1W9id+NP/5wkLOzh15Xi08MsTZDqTNswDvM2V5o6ClJML96cMOe8N/opW8iGdQUV2+
-         57V/iElzNiptlfdSIWaCVn7L/UOubMSk+5jqbSfZY9hnhWwtRwIp5sQn89H3x2Bu/RZg
-         +HGA==
+        bh=2g8imSRyAxgTL7CWXomGm8I8U8GxAXmOT1w7pQLH7FU=;
+        b=oEWSXT6gbU3myYbjsGBbQLy/aGf/BuFI1JioyPs2BsfxZGDXuJaA9QK856AxcBOalF
+         QlSA9f4Va5S9NJtS7Ss2Ru92ncsBIFXoEqkrphrQVwyZZovDK9RGSCeq5Y++HF6CqfKn
+         8iZH0Z39HUlvjvDld1GFAUtqB9Ye5menjrR+TX2uHBexPpdOIKhQ3+rYiTPg5b0mKNbd
+         7DSt4rbjd2cyEL6a1A1Nb93ZG0OB9zTjG0ISBu2XEmi8ALbjZFi3VU+RNmLOLSppL9sz
+         5O2/tZA9tN5Wu5yqQs+myXy8rovV3wpI5yFoxRRNG35w1ihIFKgqwE/a24S9YoPIVxMP
+         NgqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p6si12409307eda.198.2019.07.25.23.45.03
+        by mx.google.com with ESMTPS id y8si12927682edb.251.2019.07.25.23.45.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jul 2019 23:45:04 -0700 (PDT)
+        Thu, 25 Jul 2019 23:45:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:36592 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36614 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hqtyR-0002Wg-8I
-	for alex.bennee@linaro.org; Fri, 26 Jul 2019 02:45:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40818)
+	id 1hqtyl-0003Mz-1R
+	for alex.bennee@linaro.org; Fri, 26 Jul 2019 02:45:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42497)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <tony.nguyen@bt.com>) id 1hqtyN-0002Va-5y
- for qemu-arm@nongnu.org; Fri, 26 Jul 2019 02:45:01 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hqtyd-00034T-TE
+ for qemu-arm@nongnu.org; Fri, 26 Jul 2019 02:45:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hqtyK-0007WH-1c
- for qemu-arm@nongnu.org; Fri, 26 Jul 2019 02:44:57 -0400
-Received: from smtpe1.intersmtp.com ([213.121.35.74]:29280)
+ (envelope-from <tony.nguyen@bt.com>) id 1hqtyb-0008If-A0
+ for qemu-arm@nongnu.org; Fri, 26 Jul 2019 02:45:14 -0400
+Received: from smtpe1.intersmtp.com ([213.121.35.80]:30168)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hqtxv-0006hn-3c; Fri, 26 Jul 2019 02:44:31 -0400
-Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- BWP09926079.bt.com (10.36.82.110) with Microsoft SMTP Server (version=TLS1_2, 
+ id 1hqtyM-0007W0-Cp; Fri, 26 Jul 2019 02:44:58 -0400
+Received: from tpw09926dag18h.domain1.systemhost.net (10.9.212.42) by
+ BWP09926085.bt.com (10.36.82.116) with Microsoft SMTP Server (version=TLS1_2, 
  cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Fri, 26
- Jul 2019 07:44:21 +0100
+ Jul 2019 07:44:51 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18e.domain1.systemhost.net (10.9.212.18) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Fri, 26 Jul 2019 07:44:23 +0100
+ tpw09926dag18h.domain1.systemhost.net (10.9.212.42) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Fri, 26 Jul 2019 07:44:54 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Fri, 26 Jul
- 2019 07:44:23 +0100
+ 2019 07:44:54 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v5 03/15] target/mips: Access MemoryRegion
- with MemOp
-Thread-Index: AQHVQ32Ph1ewMgIgD0ia7t/HR6A1zg==
-Date: Fri, 26 Jul 2019 06:44:23 +0000
-Message-ID: <1564123462960.14205@bt.com>
+Thread-Topic: [Qemu-devel] [PATCH v5 04/15] hw/s390x: Access MemoryRegion with
+ MemOp
+Thread-Index: AQHVQ32iItJWUO75NU6+dhN3vwLBnw==
+Date: Fri, 26 Jul 2019 06:44:54 +0000
+Message-ID: <1564123494194.79744@bt.com>
 References: <3106a3c959c4498fad13a5799c89ba7b@tpw09926dag18e.domain1.systemhost.net>
 In-Reply-To: <3106a3c959c4498fad13a5799c89ba7b@tpw09926dag18e.domain1.systemhost.net>
 Accept-Language: en-AU, en-GB, en-US
@@ -78,11 +78,11 @@ X-MS-Has-Attach:
 X-MS-TNEF-Correlator: 
 x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.42]
-Content-Type: multipart/alternative; boundary="_000_156412346296014205btcom_"
+Content-Type: multipart/alternative; boundary="_000_156412349419479744btcom_"
 MIME-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 213.121.35.74
-Subject: [Qemu-arm] [Qemu-devel] [PATCH v5 03/15] target/mips: Access
+X-Received-From: 213.121.35.80
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v5 04/15] hw/s390x: Access
  MemoryRegion with MemOp
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -107,9 +107,9 @@ Cc: peter.maydell@linaro.org, walling@linux.ibm.com, sagark@eecs.berkeley.edu,
  aurelien@aurel32.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FM2EYQx0grOm
+X-TUID: X+UTngLMY+k9
 
---_000_156412346296014205btcom_
+--_000_156412349419479744btcom_
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
@@ -120,48 +120,60 @@ size+sign+endianness encoded "MemOp op".
 Being a no-op macro, this patch does not introduce any logical change.
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
-Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 ---
- target/mips/op_helper.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ hw/s390x/s390-pci-inst.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-diff --git a/target/mips/op_helper.c b/target/mips/op_helper.c
-index 9e2e02f..dccb8df 100644
---- a/target/mips/op_helper.c
-+++ b/target/mips/op_helper.c
-@@ -24,6 +24,7 @@
- #include "exec/helper-proto.h"
- #include "exec/exec-all.h"
- #include "exec/cpu_ldst.h"
+diff --git a/hw/s390x/s390-pci-inst.c b/hw/s390x/s390-pci-inst.c
+index 0023514..c126bcc 100644
+--- a/hw/s390x/s390-pci-inst.c
++++ b/hw/s390x/s390-pci-inst.c
+@@ -15,6 +15,7 @@
+ #include "cpu.h"
+ #include "s390-pci-inst.h"
+ #include "s390-pci-bus.h"
 +#include "exec/memop.h"
- #include "sysemu/kvm.h"
-
- /*************************************************************************=
-****/
-@@ -4740,11 +4741,11 @@ void helper_cache(CPUMIPSState *env, target_ulong a=
-ddr, uint32_t op)
-     if (op =3D=3D 9) {
-         /* Index Store Tag */
-         memory_region_dispatch_write(env->itc_tag, index, env->CP0_TagLo,
--                                     8, MEMTXATTRS_UNSPECIFIED);
-+                                     SIZE_MEMOP(8), MEMTXATTRS_UNSPECIFIED=
-);
-     } else if (op =3D=3D 5) {
-         /* Index Load Tag */
-         memory_region_dispatch_read(env->itc_tag, index, &env->CP0_TagLo,
--                                    8, MEMTXATTRS_UNSPECIFIED);
-+                                    SIZE_MEMOP(8), MEMTXATTRS_UNSPECIFIED)=
-;
-     }
- #endif
+ #include "exec/memory-internal.h"
+ #include "qemu/error-report.h"
+ #include "sysemu/hw_accel.h"
+@@ -372,7 +373,7 @@ static MemTxResult zpci_read_bar(S390PCIBusDevice *pbde=
+v, uint8_t pcias,
+     mr =3D pbdev->pdev->io_regions[pcias].memory;
+     mr =3D s390_get_subregion(mr, offset, len);
+     offset -=3D mr->addr;
+-    return memory_region_dispatch_read(mr, offset, data, len,
++    return memory_region_dispatch_read(mr, offset, data, SIZE_MEMOP(len),
+                                        MEMTXATTRS_UNSPECIFIED);
  }
+
+@@ -471,7 +472,7 @@ static MemTxResult zpci_write_bar(S390PCIBusDevice *pbd=
+ev, uint8_t pcias,
+     mr =3D pbdev->pdev->io_regions[pcias].memory;
+     mr =3D s390_get_subregion(mr, offset, len);
+     offset -=3D mr->addr;
+-    return memory_region_dispatch_write(mr, offset, data, len,
++    return memory_region_dispatch_write(mr, offset, data, SIZE_MEMOP(len),
+                                         MEMTXATTRS_UNSPECIFIED);
+ }
+
+@@ -780,7 +781,8 @@ int pcistb_service_call(S390CPU *cpu, uint8_t r1, uint8=
+_t r3, uint64_t gaddr,
+
+     for (i =3D 0; i < len / 8; i++) {
+         result =3D memory_region_dispatch_write(mr, offset + i * 8,
+-                                              ldq_p(buffer + i * 8), 8,
++                                              ldq_p(buffer + i * 8),
++                                              SIZE_MEMOP(8),
+                                               MEMTXATTRS_UNSPECIFIED);
+         if (result !=3D MEMTX_OK) {
+             s390_program_interrupt(env, PGM_OPERAND, 6, ra);
 --
 1.8.3.1
 
 
 
 
---_000_156412346296014205btcom_
+--_000_156412349419479744btcom_
 Content-Type: text/html; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
@@ -177,8 +189,9 @@ der-left-width: 2px; border-left-style: solid; border-left-color: rgb(128, =
 <body dir=3D"ltr" style=3D"font-size:12pt;color:#000000;background-color:#F=
 FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
 <p></p>
-<span style=3D"font-size: 12pt;">No-op SIZE_MEMOP macro allows us to later =
-easily convert</span>
+<div><span style=3D"font-size: 12pt;">No-op SIZE_MEMOP macro allows us to l=
+ater easily convert</span><br>
+</div>
 <div>memory_region_dispatch_{read|write} paramter &quot;unsigned size&quot;=
  into a</div>
 <div>size&#43;sign&#43;endianness encoded &quot;MemOp op&quot;.</div>
@@ -189,50 +202,74 @@ easily convert</span>
 <div><br>
 </div>
 <div>Signed-off-by: Tony Nguyen &lt;tony.nguyen@bt.com&gt;</div>
-<div>Reviewed-by: Philippe Mathieu-Daud=E9 &lt;philmd@redhat.com&gt;</div>
 <div>---</div>
-<div>&nbsp;target/mips/op_helper.c | 5 &#43;&#43;&#43;--</div>
-<div>&nbsp;1 file changed, 3 insertions(&#43;), 2 deletions(-)</div>
+<div>&nbsp;hw/s390x/s390-pci-inst.c | 8 &#43;&#43;&#43;&#43;&#43;---</div>
+<div>&nbsp;1 file changed, 5 insertions(&#43;), 3 deletions(-)</div>
 <div><br>
 </div>
-<div>diff --git a/target/mips/op_helper.c b/target/mips/op_helper.c</div>
-<div>index 9e2e02f..dccb8df 100644</div>
-<div>--- a/target/mips/op_helper.c</div>
-<div>&#43;&#43;&#43; b/target/mips/op_helper.c</div>
-<div>@@ -24,6 &#43;24,7 @@</div>
-<div>&nbsp;#include &quot;exec/helper-proto.h&quot;</div>
-<div>&nbsp;#include &quot;exec/exec-all.h&quot;</div>
-<div>&nbsp;#include &quot;exec/cpu_ldst.h&quot;</div>
+<div>diff --git a/hw/s390x/s390-pci-inst.c b/hw/s390x/s390-pci-inst.c</div>
+<div>index 0023514..c126bcc 100644</div>
+<div>--- a/hw/s390x/s390-pci-inst.c</div>
+<div>&#43;&#43;&#43; b/hw/s390x/s390-pci-inst.c</div>
+<div>@@ -15,6 &#43;15,7 @@</div>
+<div>&nbsp;#include &quot;cpu.h&quot;</div>
+<div>&nbsp;#include &quot;s390-pci-inst.h&quot;</div>
+<div>&nbsp;#include &quot;s390-pci-bus.h&quot;</div>
 <div>&#43;#include &quot;exec/memop.h&quot;</div>
-<div>&nbsp;#include &quot;sysemu/kvm.h&quot;</div>
-<div>&nbsp;</div>
-<div>&nbsp;/***************************************************************=
-**************/</div>
-<div>@@ -4740,11 &#43;4741,11 @@ void helper_cache(CPUMIPSState *env, targe=
-t_ulong addr, uint32_t op)</div>
-<div>&nbsp; &nbsp; &nbsp;if (op =3D=3D 9) {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* Index Store Tag */</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;memory_region_dispatch_write(env-&gt=
-;itc_tag, index, env-&gt;CP0_TagLo,</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 8, MEMTXATTRS_UNS=
-PECIFIED);</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SIZE_MEMOP(8)=
-, MEMTXATTRS_UNSPECIFIED);</div>
-<div>&nbsp; &nbsp; &nbsp;} else if (op =3D=3D 5) {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* Index Load Tag */</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;memory_region_dispatch_read(env-&gt;=
-itc_tag, index, &amp;env-&gt;CP0_TagLo,</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;8, MEMTXATTRS_UNSP=
-ECIFIED);</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SIZE_MEMOP(8),=
- MEMTXATTRS_UNSPECIFIED);</div>
-<div>&nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp;#endif</div>
+<div>&nbsp;#include &quot;exec/memory-internal.h&quot;</div>
+<div>&nbsp;#include &quot;qemu/error-report.h&quot;</div>
+<div>&nbsp;#include &quot;sysemu/hw_accel.h&quot;</div>
+<div>@@ -372,7 &#43;373,7 @@ static MemTxResult zpci_read_bar(S390PCIBusDev=
+ice *pbdev, uint8_t pcias,</div>
+<div>&nbsp; &nbsp; &nbsp;mr =3D pbdev-&gt;pdev-&gt;io_regions[pcias].memory=
+;</div>
+<div>&nbsp; &nbsp; &nbsp;mr =3D s390_get_subregion(mr, offset, len);</div>
+<div>&nbsp; &nbsp; &nbsp;offset -=3D mr-&gt;addr;</div>
+<div>- &nbsp; &nbsp;return memory_region_dispatch_read(mr, offset, data, le=
+n,</div>
+<div>&#43; &nbsp; &nbsp;return memory_region_dispatch_read(mr, offset, data=
+, SIZE_MEMOP(len),</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MEMTX=
+ATTRS_UNSPECIFIED);</div>
 <div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>@@ -471,7 &#43;472,7 @@ static MemTxResult zpci_write_bar(S390PCIBusDe=
+vice *pbdev, uint8_t pcias,</div>
+<div>&nbsp; &nbsp; &nbsp;mr =3D pbdev-&gt;pdev-&gt;io_regions[pcias].memory=
+;</div>
+<div>&nbsp; &nbsp; &nbsp;mr =3D s390_get_subregion(mr, offset, len);</div>
+<div>&nbsp; &nbsp; &nbsp;offset -=3D mr-&gt;addr;</div>
+<div>- &nbsp; &nbsp;return memory_region_dispatch_write(mr, offset, data, l=
+en,</div>
+<div>&#43; &nbsp; &nbsp;return memory_region_dispatch_write(mr, offset, dat=
+a, SIZE_MEMOP(len),</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+;MEMTXATTRS_UNSPECIFIED);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>@@ -780,7 &#43;781,8 @@ int pcistb_service_call(S390CPU *cpu, uint8_t =
+r1, uint8_t r3, uint64_t gaddr,</div>
+<div>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;for (i =3D 0; i &lt; len / 8; i&#43;&#43;) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;result =3D memory_region_dispatch_wr=
+ite(mr, offset &#43; i * 8,</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp;ldq_p(buffer &#43; i * 8), 8,</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp;ldq_p(buffer &#43; i * 8),</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp;SIZE_MEMOP(8),</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp;MEMTXATTRS_UNSPECIFIED);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (result !=3D MEMTX_OK) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;s390_program_interrupt=
+(env, PGM_OPERAND, 6, ra);</div>
 <div>--&nbsp;</div>
 <div>1.8.3.1</div>
 <div><br>
@@ -243,4 +280,4 @@ nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SIZE_MEMOP(8),=
 </body>
 </html>
 
---_000_156412346296014205btcom_--
+--_000_156412349419479744btcom_--

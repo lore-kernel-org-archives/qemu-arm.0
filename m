@@ -1,136 +1,184 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp207573wrv;
-        Fri, 26 Jul 2019 10:51:32 -0700 (PDT)
-X-Received: by 2002:a63:c44c:: with SMTP id m12mr53794785pgg.396.1564163491936;
-        Fri, 26 Jul 2019 10:51:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564163491; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp207596wrv;
+        Fri, 26 Jul 2019 10:51:33 -0700 (PDT)
+X-Received: by 2002:a65:4045:: with SMTP id h5mr95136055pgp.247.1564163493145;
+        Fri, 26 Jul 2019 10:51:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564163493; cv=none;
         d=google.com; s=arc-20160816;
-        b=wKN7ES72nqS9Y5wWh04pPxaRV7nv4sfttOpVqC14T40/GO3eggCuqbvfqMDO7kiFfu
-         aiBM4pe1WvaY9f9X3446a26FCdamtvfjS3ic3Uc31jgt0tnKOqGDFSP0HJURBz+vAjin
-         oqssA/VC8n/wpofrcLxARhKdFl5fC/jCM7UZ9Bg68kicdlBG94mPcKSNyFay/jVK/BIv
-         Sj92p7OG1QxIDyiHFhUxPYXmwRwM2fBpb4bcPDwvVlPzmI6+9cCjKuF/RvtsOQKe86j/
-         kBTx+j/iriNB5HmtlyxS4pNG+VU41v5o0j3+RXcuWZDf7ryE7Sz+xJmgHM/nqyyQ/43o
-         tAiA==
+        b=FdSFU6VfjqRpVgWwHDmyWMXQ4bMw7nIxR2KkNaYWhvv2iYTnjAAYDxMNFTeBaYnSp9
+         nmrCd0ZMNVASsxPATeIWXOKY9C8NsN3AsvdUlz1gTi+4PGBwhndBntvkHThOBFbEWu4O
+         nYkeo3n/lPR00Yg5uulKs+UVFsQEsPJBC+2Ct3LeNQ6n+D/RqXPzhvwK3uwsKuUB3Fsx
+         Gq/MMqvcvkWW4mkFnxYCliETa2Yvm1MMHEs4SGGGH3hSqtDyVhHg02vW6fAwyZoYpTlB
+         0WV0lurGXaANDsk8Fz+C3kVk7wPqXTz+7qoBPBcfNx+oPO5YHcbExx9yVojR/5BMSml4
+         EcJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=wDt/gxXOEruKJVqZkyq92uFSMEbVcSh409biqimT4es=;
-        b=b/jYtVRzRJyNz7bul5VH0FZVqIl0A778BxzrEIvNowkkr2956V93MBI9ek0BygcUpx
-         PxslYJQhNw/A2w7oSjxg247GLDBdj3rXLA6msu0ngqEY1q53YNlZEmk95kWG5IT70rgG
-         0b40S7Cc5YH/Ih1TMNCCXeCxYPkzbtTdl8vQBRvxfr68NJ8Io+QDCH0tA0QQP40ul+uT
-         X6UExUFBkAWSz7l8wh9nTI3fDTkiFcscI33XVjRL8CuN6N219DnTHHBynBpHahDdEzs7
-         K1TqK+hOz2oGe9MBXhTrmyndqg35UOUMw3QB/mHtjAqYm834495KebNoAzCOkDtv61GY
-         K8Og==
+        bh=BTtAZNtC5LEslFth4SXf60p+WzB9yMjQ3jwBVq1HIi4=;
+        b=z/LkgSc+g/u1UZWmsT4bY3G1b3c93/k11+OT0sGEzmRNnUC8GfR0jZtAaQDpEKMyT3
+         gc5jqxhMRSk5v9pkcMjrscYPRzi3SYTHrIss2TF46R+WTY6lmu4wmx2ObBIsP24pIDuK
+         w2V4+2FR8woKSrTttCrqakiUVVRBNdGBfaNHe7CTneI5M5CHZBQ880ndPbx/s3M2kWvY
+         A0iSrBumJ9FWvMdJUMeV6OpEg6VAR3WOaQFSSjds/R0Ty9lD/z6AkI6AcEtPgjv3SvE+
+         ecYzSHXpUfSLVxtiWsTIJEk4hRlD6J+gNFUks8NR+PGPI8V8IaqXEWAn4B+JofJ0bHIF
+         GeJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=l2uVYsyC;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=P9xCZVJS;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id h71sor32830890pge.80.2019.07.26.10.51.31
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id r7sor65084518pli.56.2019.07.26.10.51.32
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 26 Jul 2019 10:51:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Fri, 26 Jul 2019 10:51:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=l2uVYsyC;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=P9xCZVJS;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=wDt/gxXOEruKJVqZkyq92uFSMEbVcSh409biqimT4es=;
-        b=l2uVYsyChcSlp0SE+aT5EmxpknN6lP8vdMTXyOHaOGtOP3IPv5s0hGhJ6fer3Yjtir
-         CYMcjPuWSPL4/wiznTn2JlwZTedJHqywSb5VzPcfPzF80R23aoySf4wYC7L9xcfjZw4E
-         C5xFPl7y+htqkPEKndGiu5Nr/gJNrm2HAuHM8ULNYzAlfmn7knmZhKFfs3t1YkEhXSzA
-         t56/NTjFzKtl8/bel1g0TCPFZ145TchN6kJKVv9sJwq+FJoNv9/KrYJ3I1IQ5qU+2JnN
-         n/vDamCocGRuScJGVsvYQ7EFh6d1YhRDR0v4AuOHGB7/foJhz+YwKJYgzhYcrMMTFGgW
-         bDXg==
+        bh=BTtAZNtC5LEslFth4SXf60p+WzB9yMjQ3jwBVq1HIi4=;
+        b=P9xCZVJSzzPbFwt0skLMTpo8XnRqYGuhw2eh9OeVGkUmwz70l2P48a8hNEpssL939P
+         cD+1uSa2ZfLb+9AUrt85qbbGF3dQk06EazdGaBc0ekb9rnlyvujhFs157VEQceB7ijdT
+         w8cuD4WpDWzftv3dtWezARrsm04RKbDv94SfS9dEVdgkLGnyuBlb2Xp5TKVLy4SEO0if
+         a+igRl3ht4NxL1Wo2vopl7KFJaYW1cZEakz2h6t0QprPt/uqs802fXE1Qq8RD2kDPkw1
+         cs35MLeu7axsUcn43OUGOSb8wvwiv2G8zjTpTt8oD1HF8pvClicJx8JJrrP4x3Rr9lhY
+         AjKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=wDt/gxXOEruKJVqZkyq92uFSMEbVcSh409biqimT4es=;
-        b=hXooR4Fzzy1ikUjfzpQ0/eK8lmyiM5medSXB61u8L+5sgithDslYxInIqhj5LCn5we
-         FLUgSc0hVetcnV5S0u9Uuacb5XqL+NuM/LKt378f5o89zo9MvqJZQmLoINhSkAW3fYkI
-         tCf4I/z6ifKytT5zVk1xbNySRH1qP1ZkLpfXj/4an5tCb52DOQ7HrChyc8g5bC6JzOxw
-         Q+hHMgB5JtuET6ZPXHilHYF13s0p/ZbIz7ZUpZlAlgK57swzNwstx6tPo2FY1k1T+YDp
-         /QmdtZZdvjU62Q5sd4ZK12YQN7FD80IJJaTou6i1m4Zcu0D61yoAt1P5Xshmi1oeIbUM
-         BMzQ==
-X-Gm-Message-State: APjAAAWx2SjWzoDqpxAUYL+NwNTSlVbZh2JWXSsLdY5azqd6LmTNuaH8
-	NFoi3ypG124fRbav/xVvE3LKak6q
-X-Google-Smtp-Source: APXvYqyjh5D2v+wVrGKFmXKjS/apWCccoyAa5YCXvG2foKRxmp4v0bNuRxZ02+mvRVRJP0Cf+ZsGfg==
-X-Received: by 2002:a63:b904:: with SMTP id z4mr90750276pge.388.1564163491483;
-        Fri, 26 Jul 2019 10:51:31 -0700 (PDT)
+        bh=BTtAZNtC5LEslFth4SXf60p+WzB9yMjQ3jwBVq1HIi4=;
+        b=ft4xX+ntRidU7epY6ZzUI2k9Cyw2U5FDzH3Wl/HQetXaZKvwMyEpRYaWiePZ3oHdnV
+         ioW3sMDZMV6WaV6b/hNy3u0PuFZz0+SSnV3uvf4J3NvtRtQk+YGkjVbEtAtCycXe6n/T
+         pVzntZeUP2CQ1Cwhscu8yTieruDbwYdrIKiBDFb43uZgb1UJY+dgF06bnCUMYuIPhVVz
+         quPA8TopqW+aVFjARYwaAfHWM3tgRsNTkIOgEIoauz008rboML8HtMZLa/XRMP6Goh6M
+         S0MpFd56FPupFUt9OZC4DF1BwNZJyPMeJm9T8TGpJ5sj4IUJ9iAgZxlBFYfRUffoD9/r
+         oJNA==
+X-Gm-Message-State: APjAAAVY/5omVr+zldDP+VZu0FYqyl13foOygi8xGgpRe6mc/ywrm6Hi
+	L15nts5sgtmIuQlAZ2QBv5w3GI7X
+X-Google-Smtp-Source: APXvYqxGKsWl+5/l25OfpcTTAgVJNE+QrokbXWOLMWIHBjhIfGI2O53Jfvx3OeIVgKAIDOr/bDTnmw==
+X-Received: by 2002:a17:902:424:: with SMTP id 33mr17653195ple.151.1564163492748;
+        Fri, 26 Jul 2019 10:51:32 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-126-117-207.tukw.qwest.net. [97.126.117.207])
-        by smtp.gmail.com with ESMTPSA id o24sm104287919pfp.135.2019.07.26.10.51.30
+        by smtp.gmail.com with ESMTPSA id o24sm104287919pfp.135.2019.07.26.10.51.31
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Fri, 26 Jul 2019 10:51:30 -0700 (PDT)
+        Fri, 26 Jul 2019 10:51:32 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org
-Subject: [PATCH 47/67] target/arm: Convert T16 add pc/sp (immediate)
-Date: Fri, 26 Jul 2019 10:50:12 -0700
-Message-Id: <20190726175032.6769-48-richard.henderson@linaro.org>
+Subject: [PATCH 48/67] target/arm: Convert T16 load/store multiple
+Date: Fri, 26 Jul 2019 10:50:13 -0700
+Message-Id: <20190726175032.6769-49-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190726175032.6769-1-richard.henderson@linaro.org>
 References: <20190726175032.6769-1-richard.henderson@linaro.org>
-X-TUID: OpZhbZaG3FOZ
+X-TUID: FsBV6opm5x8n
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate.c | 12 +-----------
- target/arm/t16.decode  |  7 +++++++
- 2 files changed, 8 insertions(+), 11 deletions(-)
+ target/arm/translate.c | 47 +++++++-----------------------------------
+ target/arm/t16.decode  |  8 +++++++
+ 2 files changed, 16 insertions(+), 39 deletions(-)
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 28f274ca7c..525276ed13 100644
+index 525276ed13..f551fde3db 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -10758,19 +10758,9 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
-     case 7: /* load/store byte immediate offset, in decodetree */
+@@ -9988,6 +9988,13 @@ static bool trans_LDM(DisasContext *s, arg_ldst_block *a)
+     return true;
+ }
+ 
++static bool trans_LDM_t16(DisasContext *s, arg_ldst_block *a)
++{
++    /* Writeback is conditional on the base register not being loaded.  */
++    a->w = !(a->list & (1 << a->rn));
++    return trans_LDM(s, a);
++}
++
+ /*
+  * Branch, branch with link
+  */
+@@ -10759,6 +10766,7 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
      case 8: /* load/store halfword immediate offset, in decodetree */
      case 9: /* load/store from stack, in decodetree */
-+    case 10: /* add PC/SP (immediate), in decodetree */
+     case 10: /* add PC/SP (immediate), in decodetree */
++    case 12: /* load/store multiple, in decodetree */
          goto illegal_op;
  
--    case 10:
--        /*
--         * 0b1010_xxxx_xxxx_xxxx
--         *  - Add PC/SP (immediate)
--         */
--        rd = (insn >> 8) & 7;
--        val = (insn & 0xff) * 4;
--        tmp = add_reg_for_lit(s, insn & (1 << 11) ? 13 : 15, val);
--        store_reg(s, rd, tmp);
--        break;
--
      case 11:
-         /* misc */
-         op = (insn >> 8) & 0xf;
+@@ -10984,45 +10992,6 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
+         }
+         break;
+ 
+-    case 12:
+-    {
+-        /* load/store multiple */
+-        TCGv_i32 loaded_var = NULL;
+-        rn = (insn >> 8) & 0x7;
+-        addr = load_reg(s, rn);
+-        for (i = 0; i < 8; i++) {
+-            if (insn & (1 << i)) {
+-                if (insn & (1 << 11)) {
+-                    /* load */
+-                    tmp = tcg_temp_new_i32();
+-                    gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+-                    if (i == rn) {
+-                        loaded_var = tmp;
+-                    } else {
+-                        store_reg(s, i, tmp);
+-                    }
+-                } else {
+-                    /* store */
+-                    tmp = load_reg(s, i);
+-                    gen_aa32_st32(s, tmp, addr, get_mem_index(s));
+-                    tcg_temp_free_i32(tmp);
+-                }
+-                /* advance to the next address */
+-                tcg_gen_addi_i32(addr, addr, 4);
+-            }
+-        }
+-        if ((insn & (1 << rn)) == 0) {
+-            /* base reg not in list: base register writeback */
+-            store_reg(s, rn, addr);
+-        } else {
+-            /* base reg in list: if load, complete it now */
+-            if (insn & (1 << 11)) {
+-                store_reg(s, rn, loaded_var);
+-            }
+-            tcg_temp_free_i32(addr);
+-        }
+-        break;
+-    }
+     case 13:
+         /* conditional branch or swi */
+         cond = (insn >> 8) & 0xf;
 diff --git a/target/arm/t16.decode b/target/arm/t16.decode
-index 797e4e7068..568656ecd6 100644
+index 568656ecd6..67476b30dc 100644
 --- a/target/arm/t16.decode
 +++ b/target/arm/t16.decode
-@@ -23,6 +23,7 @@
- &s_rrr_shr       !extern s rn rd rm rs shty
- &s_rri_rot       !extern s rn rd imm rot
- &s_rrrr          !extern s rd rn rm ra
-+&ri              !extern rd imm
+@@ -26,6 +26,7 @@
+ &ri              !extern rd imm
  &ldst_rr         !extern p w u rn rt rm shimm shtype
  &ldst_ri         !extern p w u rn rt imm
++&ldst_block      !extern rn i b u w list
  
-@@ -102,3 +103,9 @@ LDRH_ri         10001 ..... ... ...             @ldst_ri_2
- 
- STR_ri          10010 ... ........              @ldst_spec_i rn=13
- LDR_ri          10011 ... ........              @ldst_spec_i rn=13
+ # Set S if the instruction is outside of an IT block.
+ %s               !function=t16_setflags
+@@ -109,3 +110,10 @@ LDR_ri          10011 ... ........              @ldst_spec_i rn=13
+ ADR             10100 rd:3 ........             imm=%imm8_0x4
+ ADD_rri         10101 rd:3 ........ \
+                 &s_rri_rot rn=13 s=0 rot=0 imm=%imm8_0x4  # SP
 +
-+# Add PC/SP (immediate)
++# Load/store multiple
 +
-+ADR             10100 rd:3 ........             imm=%imm8_0x4
-+ADD_rri         10101 rd:3 ........ \
-+                &s_rri_rot rn=13 s=0 rot=0 imm=%imm8_0x4  # SP
++@ldstm          ..... rn:3 list:8               &ldst_block i=1 b=0 u=0 w=1
++
++STM             11000 ... ........              @ldstm
++LDM_t16         11001 ... ........              @ldstm
 -- 
 2.17.1

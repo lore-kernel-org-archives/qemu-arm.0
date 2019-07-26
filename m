@@ -1,158 +1,127 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp11560237wrv;
-        Fri, 26 Jul 2019 00:30:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwUaWwe169u8a6qdbOoK8bPGDtMD3RqrewOVasZMuIbGT4u5x34NDxBehHszNA7TvxpR+Eu
-X-Received: by 2002:aa7:c2c8:: with SMTP id m8mr80686725edp.63.1564126233549;
-        Fri, 26 Jul 2019 00:30:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564126233; cv=none;
-        d=google.com; s=arc-20160816;
-        b=KUbvsNkVMh1FKXirDpFgJA5EXJxlkhHKOB4dApGBJ84hm0W94z6nlP60GiZOKay+Mq
-         UfHnsnKCoOVAelzJMPiQPmIYm0y5eYwX/l9w0YwXG843jW758lhS4kgs+Y9fRwx4eIDP
-         C/j1FlD3EMqu+ljbu1CK0n9AxN0/wgTScwyoXHd8yuYNN8C306qVWo0v6HJibJ4hgFgr
-         d3osu77aUFIKoZh2zfMZ5h4ryrE40/zzDJuzSaESOwmhxdIU3dJlhMaLhEPMOKh/po5t
-         6ghMmTnVLjchfYV84ufX/OWoKenpO7PgVTd1Le6KyHd45NdZJ+MK0iMIhLP83U6J1abQ
-         ZiLA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature;
-        bh=XCG1XsX5TULoX97moVf5NJrMaQ1SNpb6Uo710ySNGvk=;
-        b=GQtcbm1AsSD3LuFuCCvJCe1Id0DbPOqxlziyumvCMs2AQOFNvOplYMqIAm78NCZFHA
-         Pb7hOHCnAlvYvfFDSxlYnE5DyBJ9gV0E8pTTGE8iS2RhthO+B0uRmh9jsLpK0yv7Jrmz
-         R17F1Cxg9/VQYFNALae5Hh6E39VRO0nXyrTzQKAC61hbFnMo4NBShfzwB/rT8jEv885B
-         zezXv/LyNRMcvxB92RksFmTcUnaA0SyYNtLohZfErmLlOjOvpco1IvvlImjEijrSeHn5
-         T+o8SqrZSY/YYkIgmNNJDnowlpsefbQMrGzcCjO/GjZPiu9nC6R2VnQ32y9q1oePa04y
-         aWtA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=cM3cEF3k;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp11611639wrv;
+        Fri, 26 Jul 2019 01:25:36 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxR3DQO6nxxo2rU4sPGFpv2znyjYWhx8nsm3Ezu2X0sH8pzT18lc1aBMh1JFL+EZfb2QyQI
+X-Received: by 2002:a50:922a:: with SMTP id i39mr80792204eda.219.1564129536254;
+        Fri, 26 Jul 2019 01:25:36 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z40si12039779edc.260.2019.07.26.00.30.33
+        by mx.google.com with ESMTPS id n4si12883034edn.139.2019.07.26.01.25.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jul 2019 00:30:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 26 Jul 2019 01:25:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=cM3cEF3k;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37010 helo=lists1p.gnu.org)
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=zEVfJHq0;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37264 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hqugP-0002jo-QD
-	for alex.bennee@linaro.org; Fri, 26 Jul 2019 03:30:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38048)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hqvXi-0007vx-0j
+	for alex.bennee@linaro.org; Fri, 26 Jul 2019 04:25:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36670)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <dgibson@ozlabs.org>) id 1hquff-0000e9-18
- for qemu-devel@nongnu.org; Fri, 26 Jul 2019 03:29:44 -0400
+ (envelope-from <damien.hedde@greensocs.com>) id 1hqvXc-0007vR-9c
+ for qemu-arm@nongnu.org; Fri, 26 Jul 2019 04:25:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1hqufb-0005JH-T3
- for qemu-devel@nongnu.org; Fri, 26 Jul 2019 03:29:40 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:57821)
+ (envelope-from <damien.hedde@greensocs.com>) id 1hqvXa-0001l4-07
+ for qemu-arm@nongnu.org; Fri, 26 Jul 2019 04:25:27 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:50668)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1hqufV-0004YD-O7; Fri, 26 Jul 2019 03:29:35 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 45w11J1rBVz9sBZ; Fri, 26 Jul 2019 17:29:24 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1564126164;
- bh=Pzy0vgp7asCKngwZxuCI/GX0nFz5gexF168CIHS12QY=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=cM3cEF3kSx4cIt5EdGv0JEujelGn0qn2+GWRCIGLIzFUaVQzS067m0Xt26WEL/3H4
- q2ePNxshd4E5vZmqpVoCmi0eRnvg3cmFl98VgXzH9czLWjN1k9GYgqkyUQGxi8s6k0
- urybRMKo5oOdWa7fAvU4dCq9Jyf15eeYi/zrJfNo=
-Date: Thu, 25 Jul 2019 13:31:45 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Message-ID: <20190725033145.GC28601@umbus>
-References: <20190724103524.20916-1-cohuck@redhat.com>
- <20190724135017.GK11469@habkost.net>
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1hqvXZ-0001H6-A5; Fri, 26 Jul 2019 04:25:25 -0400
+Received: from [172.16.11.117] (unknown [172.16.11.117])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 50B2696F52;
+ Fri, 26 Jul 2019 08:25:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1564129517;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=7uhW//7NlF6/8uxZp9/haXV+K5W2WJaZQenevO7YlQs=;
+ b=zEVfJHq0vxcOBY5OxuxL/n16bD1NMzkNWt1y2ptn4yLJIP5fABAOkhIu+1cWQete8sTu2c
+ jqEwHb0cXtpct1LuyBiGjOoq6MtCS26aFBDBJgi/4BHBISMXZZPCABKgfTq8k6AUlv7/b5
+ q/CFR0R4WQinLv5oOB2AU4T+o+d08oA=
+To: Peter Maydell <peter.maydell@linaro.org>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+References: <20190725163710.11703-1-peter.maydell@linaro.org>
+ <20190725163710.11703-2-peter.maydell@linaro.org>
+ <20190725170228.GL2656@work-vm>
+ <CAFEAcA9RQBz=t8F_nOTH9FZu_jKD0XVMJtPwmdnJBfnFR4G9oA@mail.gmail.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <9631a4e2-80da-9369-038a-45f3b0399bc4@greensocs.com>
+Date: Fri, 26 Jul 2019 10:25:16 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="pAwQNkOnpTn9IO2O"
-Content-Disposition: inline
-In-Reply-To: <20190724135017.GK11469@habkost.net>
-User-Agent: Mutt/1.12.0 (2019-05-25)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-devel] [PATCH for-4.2] hw: add compat machines for 4.2
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <CAFEAcA9RQBz=t8F_nOTH9FZu_jKD0XVMJtPwmdnJBfnFR4G9oA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1564129518;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=7uhW//7NlF6/8uxZp9/haXV+K5W2WJaZQenevO7YlQs=;
+ b=ARfkxlVVu+UQcCGqXwKWtS5w4Q0Fu2Unx6kKZh2bTpejR498TJwEO+dorcwA7RtMqx+9w4
+ 88Am0TeXJfIvuovqL5yJ4tW7TAzQHefUk+O8U8fFpPZZcafp+qTvFaEMtIZR/WZ/x5Marx
+ 8/xpRPebX9r5MOMH0DH/cLDTcUuyVzI=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564129518; a=rsa-sha256; cv=none;
+ b=FO77mzVqNdj/4ViDHbOWdCPPQPoKVQPFaqDEALlPhkDZiEa4ASd06GQifyDw+HBAlKNzeC
+ KH6RqqvLjMk0vNTFAjNBCCUQ24rv0YMDTPpoBV3HaGqBH2D+M8tBhayq1V7PldY9jDaal0
+ TcM5exGH2DsqehlnrGUPsJ/Wn4y68ow=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 5.135.226.135
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-4.1? 1/2] stellaris_input:
+ Fix vmstate description of buttons field
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- David Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nPohvbO74l1M
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Juan Quintela <quintela@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: TWNVVOyWf0yF
 
 
---pAwQNkOnpTn9IO2O
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jul 24, 2019 at 10:50:17AM -0300, Eduardo Habkost wrote:
-> On Wed, Jul 24, 2019 at 12:35:24PM +0200, Cornelia Huck wrote:
-> > Add 4.2 machine types for arm/i440fx/q35/s390x/spapr.
-> >=20
-> > For i440fx and q35, unversioned cpu models are still translated
-> > to -v1, as 0788a56bd1ae ("i386: Make unversioned CPU models be
-> > aliases") states this should only transition to the latest cpu
-> > model version in 4.3 (or later).
-> >=20
-> > Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->=20
-> Reviewed-by: Eduardo Habkost <ehabkost@redhat.com>
->=20
-> I plan to queue it for 4.2, but I think it's OK to queue this in
-> parallel through other trees if necessary (so patches that depend
-> on the new machine types can be queued too).
+On 7/25/19 7:59 PM, Peter Maydell wrote:
+> On Thu, 25 Jul 2019 at 18:02, Dr. David Alan Gilbert
+> <dgilbert@redhat.com> wrote:
+>>
+>> * Peter Maydell (peter.maydell@linaro.org) wrote:
+>>> gamepad_state::buttons is a pointer to an array of structs,
+>>> not an array of structs, so should be declared in the vmstate
+>>> with VMSTATE_STRUCT_VARRAY_POINTER_INT32; otherwise we
+>>> corrupt memory on incoming migration.
+>>>
+>>> We bump the vmstate version field as the easiest way to
+>>> deal with the migration break, since migration wouldn't have
+>>> worked reliably before anyway.
+>>>
+>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Yeah, I've put it into my ppc-for-4.2 tree, expecting to resolve a
-minor conflict once the 4.2 tree opens.
+Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
 
-Oh, and, ppc parts
+> As an aside, I'm surprised also the macro doesn't complain
+> that we said the num_buttons field is int32 but it's really "int"...
+> arguably a different kind of missing type check.
 
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+We would need to compile on a host with int size not being 32bit to
+catch this kind of problem I think.
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
-
---pAwQNkOnpTn9IO2O
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl05IqEACgkQbDjKyiDZ
-s5K5ExAAhRGVya8wcftc9LiL/mNmXmFUYSmGnNwyXUJtRFYrsgu3Plv4ADd1x7tA
-kQiARmhTeuRwoSRKEXMWnL3dbJQXpOcc0+vjac2MOkI2DwPkTIvbiU3InlieTeBu
-GS4jgaZ30lx8q4Yjsye8G21mciHPyC6p5vjeWG/1+wU5fmtFtiHNI/4I77B00z5R
-s+N7JRKNySdXIkcFDOY0dxxPxwjcfowgL5enQo9JGJ/iPqzibJZKep3qRHAwfQOa
-uzUMvyHlfpuePUng7mzO0ZwOBxa7mkyIvyfajAU5GBQinT7hU2dD0sxuDZFKtI8y
-YiV3BySga09ROdTdAQEfqmqf9det+9uGPVaTrcKuvyODGxqS8w52afWPpQ9lzvvM
-5j8anj6ml/qbd6epCdGfHredbvPw1HEECnAgIjK5Df0RfSoR4O8bzLaMW3fszLFb
-L/dpGPYy3VyeiaQS2qqSQc3Y+1RdKdudifjFBD47pRMi2Dedl3eBiAV3l4FS6ggi
-RcbMbdJ/03nb0ucgSGNDtgyOXtasvEqm1Slo7sAtJ0n7fKHeSuFCj4UcNHoeXlTD
-N+3uIpFMnlhe5k6vWZIjYjj5agvLYOrb7im4Ck9sl6ZPYFJqennoRrJWhgPhUkC+
-hpxsvQarGmnOF5Bcgu0Iwfwgo/G1T84qovP1VpL8/FRMk3aNW3w=
-=H05V
------END PGP SIGNATURE-----
-
---pAwQNkOnpTn9IO2O--
+--
+Damien

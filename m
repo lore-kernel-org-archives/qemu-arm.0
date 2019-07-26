@@ -1,195 +1,164 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp207468wrv;
-        Fri, 26 Jul 2019 10:51:26 -0700 (PDT)
-X-Received: by 2002:a17:90a:9f0b:: with SMTP id n11mr60528161pjp.98.1564163486382;
-        Fri, 26 Jul 2019 10:51:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564163486; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp207495wrv;
+        Fri, 26 Jul 2019 10:51:27 -0700 (PDT)
+X-Received: by 2002:a63:2148:: with SMTP id s8mr90456583pgm.336.1564163487406;
+        Fri, 26 Jul 2019 10:51:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564163487; cv=none;
         d=google.com; s=arc-20160816;
-        b=bP5F1zrRoJBG7u33v/B7xkt66TwdcVtGCPaHxQz00BPuwHMKeafEvnddsv3RF1nrpe
-         aC8v/ohzb/7EC9kh5uVa1TZYL1hgznK7bxU1+IHiKOi17vjLiM9MCnP3hD5I2o9xAhDl
-         SIbnskZvxsTDUlJQBeNKK8dFCwwj7j4UDVPflRc/993Tu0jx/cGxywR2tRKyXhDm8LJH
-         PD1GM4kVbV5FdNfusZfj+MT7/Wit3N4BWTRUdTC51bxMKTFRiu0IBlcCsaasYXixd56+
-         4Q49L0FnsNQHiMMC1pqhpak2rhtlYEMq9U5IKwH/2+LmLlo7Df0DBZHlum2f/pJHJ7P4
-         L+SA==
+        b=ncxi459g/YinP+AWBtS7YfISWimtNEtu3+TYlrmqRT+rD4fCfQXfPzSQm4A//2tgis
+         EUq8U04QDET7VhgOt5xM3SD6wAzTeuBGBMzcPHdzF2ytSqrnRza+6zOgmNVn8Ie+tleH
+         N4YOaj7oXW7mBdEjTqykvNsVza1lkreen5wmh7XmS3CxzD1tdVpfj5oHdP4JxB+tMNtf
+         XV3hcGBbnhJeBKUTvniHp1nFpmvDKgD09kV5tQ47NNE6UnUYui8GmqWErlsYzcXqX0e6
+         Dl3AUs1dh01uoM3i+Ctom5fdA9bJ2e7HZwWWfb1eld8tPD4NYRoZ0xRSGASLOPnYWFkz
+         mkTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=W3BPBGeDUmZyQaUuLRW8yTB0WQP3Hy+VMnlWae7mNLI=;
-        b=aFLyuoUydlI9l+vmB+HUGCdc6Tc67FeiDKDxRmaf9EaDVOTXEz+KcRLq0JxF+a92gw
-         KJFQuZrKPLS6xfqiApQYMkjuO6bMyBmTK8Y0xv6MISoLb9e6q7Re3z6Q65ifG/eqQwlQ
-         GBiXz27pHzd6yH6dzwS0++qMWfLMdVqWerHXJLgLzDFt4rVa8wBAhpep0OZ4Qjmx/H+P
-         m8CNt37/ivsOx/aAwAMdHRWgsehsIb14yOphi4pbxYkDNTA73mMNNE66GGOmuRx9mJTu
-         3OjP5GCS66RLU+2QCefjoN783U/DcKssdTWsAwPaj17xFsJC3PrdEjw2JaLMDHl/WD/x
-         Urqw==
+        bh=BeJ+pb6ctnzLHVd1R33fd022stp222LK5CW6SHtredI=;
+        b=AJE/Exhj8+59+mQl8130dC7FkTtb4z53enRcGYLlRRJvI/exjrCBlNJ6Aghw3CaF5i
+         aPIOyhhEoaxkyy24ITll95p7UczlIOjsdwYA3jvYKXg5DLWSOL5GpxnwaIGoiZepJTCE
+         zrd68fz1kpAUrIXeavahp7iCfiznOC1RX+SFEfYH68QNer4VidErvN+uKd34zLy8++e0
+         8Os0TedyBiYjc7SQfrmX8S4n6SIum8zktA0J7QFCo6FYY3njvXNBq5RssDkjcKO5Pqj3
+         U10u0nUREyzmtRlCyesBcgRAcCFB8nesS2JGwBZDsrOufr7Jmha42to3aHPRiaPYknFB
+         HgRQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=e2fvHXQI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pZqwVVtH;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id m23sor65602608pjv.21.2019.07.26.10.51.26
+        by mx.google.com with SMTPS id l98sor64364598pje.13.2019.07.26.10.51.27
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 26 Jul 2019 10:51:26 -0700 (PDT)
+        Fri, 26 Jul 2019 10:51:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=e2fvHXQI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=pZqwVVtH;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=W3BPBGeDUmZyQaUuLRW8yTB0WQP3Hy+VMnlWae7mNLI=;
-        b=e2fvHXQIMl+wPOnNu8W2rqNL50WX5PTNxKgxp9oViVF2Nim5/j+AP4LFKxtn9xE34Z
-         csnLdnCeetCKbD/GthGFGI7aiYowxav48QoktypnxNu2IpK0O4VJRbwMtXyMvXcV1f9F
-         4ANePOseex7d16MGcl6GK3oeebjVVya2f/tw2VQ4kkKBLtskwxQUNPJAmBDpWSbq/Jb3
-         DIllizJ9tLPPW9YGyS0WMHIUG6mad/nEkCHSAdb1btmILxccoFGQ1p5ukr2mwQa873dV
-         b/+wX7xUQFNBhsP6NMRCL/dWbM3/2NvHOyflAINZ0UtZL8rf7jpBk+VP3lcn1kfpSf9j
-         nBsg==
+        bh=BeJ+pb6ctnzLHVd1R33fd022stp222LK5CW6SHtredI=;
+        b=pZqwVVtHLxWhL94AkDYYgYTXk1sGL8fnfLESWlIPloluyfnCXCrXrlQok3gH3Hod8O
+         2DN/m31BMtPDGnBdhJnjasfsVoc1IaApeEhwh1gauPzgOg1nOlUkhOAb5YQ6cMKc/uuI
+         xTXO7w0KqHU9ePwl25vFJ9t3j7lZhhIm7LfaLB8VS09mSmvVza6OBAZSlvZVjEfNO3YV
+         WXcJJWCrCyq9Qgp0PpBCC62jmn4n3hhYfoJdDWrERwKza+p4pLDjfCeSPRmNW11iy9o9
+         5FqdDPpou1NF9S7wRRJGkdWOIZVsgWB6ygCM6m1oF75PJucJWmwWIY3scZSG3DpS5Wkg
+         NReg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=W3BPBGeDUmZyQaUuLRW8yTB0WQP3Hy+VMnlWae7mNLI=;
-        b=Pfg6XtFpN3fgIyPamI7sydY0sv0B2c2uOPn/BKHVBuRdySKD6b6RJV7C1jXY2X59wH
-         8d881g0u0sWnkBYd5mJOr7sUqbs2vcolgxQPz+A3ux+KlpbTMsLr0xVmJCdn51MG9yez
-         3nfxv9K9PkyHRTKhAyUvv84YYTD2H9oX0j7Lbno6csYKHJAHSCAhzbFp/vTohhtt55Ov
-         DLHpIESJOlsBImY6jYQuMLn4HvODYzuQtr82pVlK6s9FIYmj80KLcItUlg/fQQQTCjwV
-         MOx5HBtuU+s6gpTRDsyUPVw0BzQvDwLSc4Z59GGwCLNTFRlrLVouFmtuKlwTKWiF7/Qn
-         f6Qw==
-X-Gm-Message-State: APjAAAVK9mM4YQ0H3HIgwHv2o4WSlTU4nvGv+wD0/eBgWyevW0SaO9Zd
-	k51aqOAob5SBbnXuIyuwWK+lpu0P
-X-Google-Smtp-Source: APXvYqwEalD0r43IGyBY6NPFx5rHSCx/4gI+8fTOG4l5V80U9nIibdl82rLGe+Yz3ID35xhXwv9vOw==
-X-Received: by 2002:a17:90a:c68c:: with SMTP id n12mr100875680pjt.29.1564163485938;
-        Fri, 26 Jul 2019 10:51:25 -0700 (PDT)
+        bh=BeJ+pb6ctnzLHVd1R33fd022stp222LK5CW6SHtredI=;
+        b=gpUVxnJtBdrYtDVosEvgqr2v5tFSNKe2g3ZqzHFNF5Tg+PzI8PFVKFGmg6gdk/4+se
+         qgu+vRkhoxID5Ew09MlaLSscivKRaIPem0Kw8NPhzVj5WIJIdHl9irbI2WuwuC1eTccr
+         3QbFFO904F/f0AEAHIAmesqF04P6Da+uGppwAh/cnP6mpdhY/TdeJ+kle8x2Tk00Zvdc
+         XhAijAiGcbPJCb98g2h+7C6pzNuGo8CGQS8zDF1h6N28QW5Y3wc6G4LkCcY+k5Nkn0Iu
+         kTJqN0byHABXvG8JXvN/qumnLy4mh7FGa3K/XXy8Iu1m5wPkmUZ09TKVfKBUkY8wfbnN
+         ONNg==
+X-Gm-Message-State: APjAAAVlVzy8nLNVJAAhU7ijUpZAgUPl3JEfYYnNja1flU3OVaochRMg
+	YLlCAZMJYuFqqTueFBnh+fwtcZJ7yzUNRQ==
+X-Google-Smtp-Source: APXvYqyyL/u9LNINsiyDFyavW78h1Dk6i2x2dIqu+MObX9ZfP0f3qjYsFRteY92tHudJA9VVOSK1Aw==
+X-Received: by 2002:a17:90a:d814:: with SMTP id a20mr99531064pjv.48.1564163486971;
+        Fri, 26 Jul 2019 10:51:26 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-126-117-207.tukw.qwest.net. [97.126.117.207])
-        by smtp.gmail.com with ESMTPSA id o24sm104287919pfp.135.2019.07.26.10.51.24
+        by smtp.gmail.com with ESMTPSA id o24sm104287919pfp.135.2019.07.26.10.51.25
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Fri, 26 Jul 2019 10:51:25 -0700 (PDT)
+        Fri, 26 Jul 2019 10:51:26 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org
-Subject: [PATCH 42/67] target/arm: Simplify disas_arm_insn
-Date: Fri, 26 Jul 2019 10:50:07 -0700
-Message-Id: <20190726175032.6769-43-richard.henderson@linaro.org>
+Subject: [PATCH 43/67] target/arm: Add skeleton for T16 decodetree
+Date: Fri, 26 Jul 2019 10:50:08 -0700
+Message-Id: <20190726175032.6769-44-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190726175032.6769-1-richard.henderson@linaro.org>
 References: <20190726175032.6769-1-richard.henderson@linaro.org>
-X-TUID: VDdak23lfXMV
-
-Fold away all of the cases that now just goto illegal_op,
-because all of their internal bits are now in decodetree.
+X-TUID: LYsOdVfh0Wue
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate.c | 69 ++++++++++--------------------------------
- 1 file changed, 16 insertions(+), 53 deletions(-)
+ target/arm/translate.c   |  6 ++++++
+ target/arm/Makefile.objs |  6 ++++++
+ target/arm/t16.decode    | 20 ++++++++++++++++++++
+ 3 files changed, 32 insertions(+)
+ create mode 100644 target/arm/t16.decode
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 836b3752f7..65a74a963b 100644
+index 65a74a963b..db93b12608 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -10257,7 +10257,7 @@ static bool trans_PLI(DisasContext *s, arg_PLD *a)
+@@ -7608,6 +7608,7 @@ static int t32_branch24(DisasContext *s, int x)
+ #include "decode-a32.inc.c"
+ #include "decode-a32-uncond.inc.c"
+ #include "decode-t32.inc.c"
++#include "decode-t16.inc.c"
  
- static void disas_arm_insn(DisasContext *s, unsigned int insn)
- {
--    unsigned int cond, op1;
-+    unsigned int cond = insn >> 28;
+ #ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
+ # pragma GCC diagnostic pop
+@@ -10559,6 +10560,11 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
+     TCGv_i32 tmp2;
+     TCGv_i32 addr;
  
-     /* M variants do not implement ARM mode; this must raise the INVSTATE
-      * UsageFault exception.
-@@ -10267,7 +10267,6 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-                            default_exception_el(s));
-         return;
-     }
--    cond = insn >> 28;
++    if (disas_t16(s, insn)) {
++        return;
++    }
++    /* fall back to legacy decoder */
++
+     switch (insn >> 12) {
+     case 0: case 1:
  
-     if (cond == 0xf) {
-         /* In ARMv3 and v4 the NV condition is UNPREDICTABLE; we
-@@ -10332,11 +10331,6 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-                 goto illegal_op;
-             }
-             return;
--        } else if ((insn & 0x0fe00000) == 0x0c400000) {
--            /* Coprocessor double register transfer.  */
--            ARCH(5TE);
--        } else if ((insn & 0x0f000010) == 0x0e000010) {
--            /* Additional coprocessor register transfer.  */
-         }
-         goto illegal_op;
-     }
-@@ -10348,55 +10342,24 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-     }
-     /* fall back to legacy decoder */
+diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+index 7806b4dac0..cf26c16f5f 100644
+--- a/target/arm/Makefile.objs
++++ b/target/arm/Makefile.objs
+@@ -43,12 +43,18 @@ target/arm/decode-t32.inc.c: $(SRC_PATH)/target/arm/t32.decode $(DECODETREE)
+ 	  $(PYTHON) $(DECODETREE) --static-decode disas_t32 -o $@ $<,\
+ 	  "GEN", $(TARGET_DIR)$@)
  
--    if ((insn & 0x0f900000) == 0x03000000) {
--        /* All done in decodetree.  Illegal ops reach here.  */
--        goto illegal_op;
--    } else if ((insn & 0x0f900000) == 0x01000000
--               && (insn & 0x00000090) != 0x00000090) {
--        /* miscellaneous instructions */
--        /* All done in decodetree.  Illegal ops reach here.  */
--        goto illegal_op;
--    } else if (((insn & 0x0e000000) == 0 &&
--                (insn & 0x00000090) != 0x90) ||
--               ((insn & 0x0e000000) == (1 << 25))) {
--        /* Data-processing (reg, reg-shift-reg, imm).  */
--        /* All done in decodetree.  Reach here for illegal ops.  */
--        goto illegal_op;
--    } else {
--        /* other instructions */
--        op1 = (insn >> 24) & 0xf;
--        switch(op1) {
--        case 0x0:
--        case 0x1:
--        case 0x4:
--        case 0x5:
--        case 0x6:
--        case 0x7:
--        case 0x08:
--        case 0x09:
--        case 0xa:
--        case 0xb:
--        case 0xf:
--            /* All done in decodetree.  Reach here for illegal ops.  */
--            goto illegal_op;
--        case 0xc:
--        case 0xd:
--        case 0xe:
--            if (((insn >> 8) & 0xe) == 10) {
--                /* VFP.  */
--                if (disas_vfp_insn(s, insn)) {
--                    goto illegal_op;
--                }
--            } else if (disas_coproc_insn(s, insn)) {
--                /* Coprocessor.  */
-+    switch ((insn >> 24) & 0xf) {
-+    case 0xc:
-+    case 0xd:
-+    case 0xe:
-+        if (((insn >> 8) & 0xe) == 10) {
-+            /* VFP.  */
-+            if (disas_vfp_insn(s, insn)) {
-                 goto illegal_op;
-             }
--            break;
--        default:
--        illegal_op:
--            gen_illegal_op(s);
--            break;
-+        } else if (disas_coproc_insn(s, insn)) {
-+            /* Coprocessor.  */
-+            goto illegal_op;
-         }
-+        break;
-+    default:
-+    illegal_op:
-+        gen_illegal_op(s);
-+        break;
-     }
- }
++target/arm/decode-t16.inc.c: $(SRC_PATH)/target/arm/t16.decode $(DECODETREE)
++	$(call quiet-command,\
++	  $(PYTHON) $(DECODETREE) -w 16 --static-decode disas_t16 -o $@ $<,\
++	  "GEN", $(TARGET_DIR)$@)
++
+ target/arm/translate-sve.o: target/arm/decode-sve.inc.c
+ target/arm/translate.o: target/arm/decode-vfp.inc.c
+ target/arm/translate.o: target/arm/decode-vfp-uncond.inc.c
+ target/arm/translate.o: target/arm/decode-a32.inc.c
+ target/arm/translate.o: target/arm/decode-a32-uncond.inc.c
+ target/arm/translate.o: target/arm/decode-t32.inc.c
++target/arm/translate.o: target/arm/decode-t16.inc.c
  
+ obj-y += tlb_helper.o debug_helper.o
+ obj-y += translate.o op_helper.o
+diff --git a/target/arm/t16.decode b/target/arm/t16.decode
+new file mode 100644
+index 0000000000..e954f61fe4
+--- /dev/null
++++ b/target/arm/t16.decode
+@@ -0,0 +1,20 @@
++# Thumb1 instructions
++#
++#  Copyright (c) 2019 Linaro, Ltd
++#
++# This library is free software; you can redistribute it and/or
++# modify it under the terms of the GNU Lesser General Public
++# License as published by the Free Software Foundation; either
++# version 2 of the License, or (at your option) any later version.
++#
++# This library is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++# Lesser General Public License for more details.
++#
++# You should have received a copy of the GNU Lesser General Public
++# License along with this library; if not, see <http://www.gnu.org/licenses/>.
++
++#
++# This file is processed by scripts/decodetree.py
++#
 -- 
 2.17.1

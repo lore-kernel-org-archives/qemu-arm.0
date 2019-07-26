@@ -1,75 +1,75 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp11520012wrv;
-        Thu, 25 Jul 2019 23:48:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzIXQOgQ9GKxz41vclcBFBWlKqnp7mbCYXr2R+iOJmq8mSqmRGLBrdpk5TGXiBSO7nelsib
-X-Received: by 2002:a05:6214:3f0:: with SMTP id cf16mr66182318qvb.211.1564123731707;
-        Thu, 25 Jul 2019 23:48:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564123731; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp11520070wrv;
+        Thu, 25 Jul 2019 23:48:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzxY8KUxKO1PdohNTsSbgk73QJBIYK5cYah3NfWL4yKuNk1PF+FstCunWjhTZbcTGpXnTaw
+X-Received: by 2002:aed:228d:: with SMTP id p13mr64961898qtc.208.1564123736760;
+        Thu, 25 Jul 2019 23:48:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564123736; cv=none;
         d=google.com; s=arc-20160816;
-        b=WBP5Bv6wF6FyzzEmSvzo9IutoiwtCMa641ujdFR7vGXZOhfIXGjIThUJzJBE2SWkN6
-         DM+5203On8Ny9ErRv5niDhVLpAXqseMt6rOq0KcLZVPVuaqODzp6O08/z4VgKV8wmlva
-         va26c7sPBdLICMG/Tz3QrGjmSL1UF0QMSqNM8zCVrFZpbs5OfkcMI8kxfENkRjRgGmDq
-         qT8ETtQjKVtjLt2CyMQjzxI6Bk4Rl/pZmDfXFc78jaJfMHPBBRxXdgBB79fhasYM6Sny
-         HVxaMzA3o4rdPhfhGiLk6VmFxrCwCtiG8s7F6WYzrYfudrsYcUValHQMC3k1/bxzzupT
-         bHrw==
+        b=Kmpm+8LFVx2fsSX4nuROStcR3HPp/KMCDudgV+5J874uojObBmZrEYITYxXSftblP8
+         Ig335+yvxyKXR9dkLhtaufShm3pmSaeUoOm1VQOM4U1M7+plWbzPT6gIHNpJ3r17Fvj+
+         oU1Wu6gwZ8qTcnWjGkjbkZaZ//RdMzR41N+O+ceLETdzkiGpH288lDibf4rzgoOIDd9H
+         2SF+qCxZrt/vCw9QOICBJ13YwCrXHu7XGGGfmoW5gpj0jaYJUauqJ25kniS+6dEOC4h8
+         duj/ytLTOsU6X0HFd2Sd0lbN7OE7hizyg8lwRiX9mFVazWkmXKa3aAoAHLsMrqYgX3fb
+         8cYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-language:accept-language:in-reply-to:references:message-id
          :date:thread-index:thread-topic:to:from;
-        bh=PAigY1D/vw2aF0LPZ1mzLOJTpkDdd+5++oQRI+xKwAY=;
-        b=aNi5CDK/Okn113MhwuE49NES95PBHOQQBT8nVhmjve9/oVKqAkSyJI6zW4tkIP03FI
-         iGpwy8AmSmp2vjR7dV1/Q9o+pBJFa3Klo96AdYnHlx9k53yhghSN02KEiBeqgRHYLiaa
-         L3TFC0FoQoZIo2/JXE2tKPIjdXhSb1FYNmXlp8cT5PJtXD2xKG/dkpbxsc46bl8aGbRE
-         v8z5RphpzDe6hoIlmeyzkHXuTfMKPdrIgVLvPnMsMmtM1w+MdRe7ZPnwBf4PIhle7XnI
-         q97MIhMg2skFX425ai8Z6BrpXPP91R+0W2OyrOX479pmOWTThsVu8uphmr2dTsDuYljc
-         q43Q==
+        bh=ytAxM+SkIjbnorOsAGP76+0VP6fTKrSqODYbhDOAXPU=;
+        b=yXzLyjyvRdaq/bueddnc4R692uCMXfKRNGP3Fy6FTBnzFcvJOlVShBg+cgDBhECfJt
+         Rx3N+qtsBtG5QVO1qjC9oQ2cPoC+ogt9H/zfv4MUUdrwxiGsG+axrfAq1QEhpYzIUa31
+         ZSWpUAVyTvQCuEDQz6xfdy0jQHO00qvlolY14rs999S0g66ZOCDjFj3oQpT0bxDb5hxN
+         dRu9e+Tmumctzrl/EifEfmBuDWHI9GJDN2DyLwT1EEH8UHDGVOVJzgX4JTRjwkO3C0Ab
+         nOCIEnhlDU2tHlsXiCvlxW8Az0+uvOPMoRX6XxVunMqsQmby0Ws+s06gZWwFI41RHOWf
+         KTmw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d124si30483477qkb.151.2019.07.25.23.48.51
+        by mx.google.com with ESMTPS id h8si32234150qtb.258.2019.07.25.23.48.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jul 2019 23:48:51 -0700 (PDT)
+        Thu, 25 Jul 2019 23:48:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:36762 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36772 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hqu27-0006K8-6U
-	for alex.bennee@linaro.org; Fri, 26 Jul 2019 02:48:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57079)
+	id 1hqu2A-0006Yo-PJ
+	for alex.bennee@linaro.org; Fri, 26 Jul 2019 02:48:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57652)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <tony.nguyen@bt.com>) id 1hqu20-0006EL-EY
- for qemu-arm@nongnu.org; Fri, 26 Jul 2019 02:48:46 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hqu25-0006R4-GA
+ for qemu-arm@nongnu.org; Fri, 26 Jul 2019 02:48:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hqu1u-0006Oe-MN
- for qemu-arm@nongnu.org; Fri, 26 Jul 2019 02:48:41 -0400
-Received: from smtpe1.intersmtp.com ([213.121.35.77]:51296)
+ (envelope-from <tony.nguyen@bt.com>) id 1hqu23-0006hM-MR
+ for qemu-arm@nongnu.org; Fri, 26 Jul 2019 02:48:49 -0400
+Received: from smtpe1.intersmtp.com ([213.121.35.76]:42340)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hqu1G-0005Rv-G8; Fri, 26 Jul 2019 02:48:00 -0400
-Received: from tpw09926dag18h.domain1.systemhost.net (10.9.212.42) by
- BWP09926082.bt.com (10.36.82.113) with Microsoft SMTP Server (version=TLS1_2, 
+ id 1hqu1r-00069h-LX; Fri, 26 Jul 2019 02:48:35 -0400
+Received: from tpw09926dag18g.domain1.systemhost.net (10.9.212.34) by
+ BWP09926081.bt.com (10.36.82.112) with Microsoft SMTP Server (version=TLS1_2, 
  cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Fri, 26
- Jul 2019 07:47:46 +0100
+ Jul 2019 07:48:26 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18h.domain1.systemhost.net (10.9.212.42) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Fri, 26 Jul 2019 07:47:47 +0100
+ tpw09926dag18g.domain1.systemhost.net (10.9.212.34) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Fri, 26 Jul 2019 07:48:32 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Fri, 26 Jul
- 2019 07:47:47 +0100
+ 2019 07:48:32 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v5 11/15] memory: Single byte swap along the
- I/O path
-Thread-Index: AQHVQ34JFcVl51mE9EO/EnEfwkEv1Q==
-Date: Fri, 26 Jul 2019 06:47:47 +0000
-Message-ID: <1564123667210.66446@bt.com>
+Thread-Topic: [Qemu-devel] [PATCH v5 13/15] cputlb: Byte swap memory
+ transaction attribute
+Thread-Index: AQHVQ34jskv5VeYPtk+aUr0XFdc8Gg==
+Date: Fri, 26 Jul 2019 06:48:32 +0000
+Message-ID: <1564123712210.75919@bt.com>
 References: <3106a3c959c4498fad13a5799c89ba7b@tpw09926dag18e.domain1.systemhost.net>
 In-Reply-To: <3106a3c959c4498fad13a5799c89ba7b@tpw09926dag18e.domain1.systemhost.net>
 Accept-Language: en-AU, en-GB, en-US
@@ -78,12 +78,12 @@ X-MS-Has-Attach:
 X-MS-TNEF-Correlator: 
 x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.42]
-Content-Type: multipart/alternative; boundary="_000_156412366721066446btcom_"
+Content-Type: multipart/alternative; boundary="_000_156412371221075919btcom_"
 MIME-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 213.121.35.77
-Subject: [Qemu-arm] [Qemu-devel] [PATCH v5 11/15] memory: Single byte swap
- along the I/O path
+X-Received-From: 213.121.35.76
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v5 13/15] cputlb: Byte swap memory
+ transaction attribute
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,216 +107,86 @@ Cc: peter.maydell@linaro.org, walling@linux.ibm.com, sagark@eecs.berkeley.edu,
  aurelien@aurel32.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 685EPuHcB7GV
+X-TUID: PD7CzbNe89l9
 
---_000_156412366721066446btcom_
+--_000_156412371221075919btcom_
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
-Now that MemOp has been pushed down into the memory API, we can
-collapse the two byte swaps adjust_endianness and handle_bswap into
-the former.
+Notice new attribute, byte swap, and force the transaction through the
+memory slow path.
 
-Collapsing byte swaps along the I/O path enables additional endian
-inversion logic, e.g. SPARC64 Invert Endian TTE bit, with redundant
-byte swaps cancelling out.
+Required by architectures that can invert endianness of memory
+transaction, e.g. SPARC64 has the Invert Endian TTE bit.
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
 ---
- accel/tcg/cputlb.c | 41 +++++++++++++++++++----------------------
- memory.c           | 30 +++++++++++++++++-------------
- 2 files changed, 36 insertions(+), 35 deletions(-)
+ accel/tcg/cputlb.c      | 11 +++++++++++
+ include/exec/memattrs.h |  2 ++
+ 2 files changed, 13 insertions(+)
 
 diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index 5d88cec..e61b1eb 100644
+index e61b1eb..f292a87 100644
 --- a/accel/tcg/cputlb.c
 +++ b/accel/tcg/cputlb.c
-@@ -1209,26 +1209,13 @@ static void *atomic_mmu_lookup(CPUArchState *env, t=
-arget_ulong addr,
- #endif
-
- /*
-- * Byte Swap Helper
-+ * Byte Swap Checker
-  *
-- * This should all dead code away depending on the build host and
-- * access type.
-+ * Dead code should all go away depending on the build host and access typ=
-e.
-  */
--
--static inline uint64_t handle_bswap(uint64_t val, int size, bool big_endia=
-n)
-+static inline bool need_bswap(bool big_endian)
- {
--    if ((big_endian && NEED_BE_BSWAP) || (!big_endian && NEED_LE_BSWAP)) {
--        switch (size) {
--        case 1: return val;
--        case 2: return bswap16(val);
--        case 4: return bswap32(val);
--        case 8: return bswap64(val);
--        default:
--            g_assert_not_reached();
--        }
--    } else {
--        return val;
--    }
-+    return (big_endian && NEED_BE_BSWAP) || (!big_endian && NEED_LE_BSWAP)=
-;
- }
-
- /*
-@@ -1259,6 +1246,7 @@ load_helper(CPUArchState *env, target_ulong addr, TCG=
-MemOpIdx oi,
-     unsigned a_bits =3D get_alignment_bits(get_memop(oi));
-     void *haddr;
-     uint64_t res;
-+    MemOp op;
-
-     /* Handle CPU specific unaligned behaviour */
-     if (addr & ((1 << a_bits) - 1)) {
-@@ -1304,9 +1292,13 @@ load_helper(CPUArchState *env, target_ulong addr, TC=
-GMemOpIdx oi,
-             }
-         }
-
--        res =3D io_readx(env, &env_tlb(env)->d[mmu_idx].iotlb[index],
--                       mmu_idx, addr, retaddr, access_type, SIZE_MEMOP(siz=
-e));
--        return handle_bswap(res, size, big_endian);
-+        op =3D SIZE_MEMOP(size);
-+        if (need_bswap(big_endian)) {
-+            op ^=3D MO_BSWAP;
-+        }
-+
-+        return io_readx(env, &env_tlb(env)->d[mmu_idx].iotlb[index],
-+                       mmu_idx, addr, retaddr, access_type, op);
+@@ -738,6 +738,9 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulon=
+g vaddr,
+          */
+         address |=3D TLB_RECHECK;
      }
++    if (attrs.byte_swap) {
++        address |=3D TLB_FORCE_SLOW;
++    }
+     if (!memory_region_is_ram(section->mr) &&
+         !memory_region_is_romd(section->mr)) {
+         /* IO memory case */
+@@ -891,6 +894,10 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEn=
+try *iotlbentry,
+     bool locked =3D false;
+     MemTxResult r;
 
-     /* Handle slow unaligned access (it spans two pages or IO).  */
-@@ -1507,6 +1499,7 @@ store_helper(CPUArchState *env, target_ulong addr, ui=
-nt64_t val,
-     const size_t tlb_off =3D offsetof(CPUTLBEntry, addr_write);
-     unsigned a_bits =3D get_alignment_bits(get_memop(oi));
-     void *haddr;
-+    MemOp op;
-
-     /* Handle CPU specific unaligned behaviour */
-     if (addr & ((1 << a_bits) - 1)) {
-@@ -1552,9 +1545,13 @@ store_helper(CPUArchState *env, target_ulong addr, u=
-int64_t val,
-             }
-         }
-
-+        op =3D SIZE_MEMOP(size);
-+        if (need_bswap(big_endian)) {
-+            op ^=3D MO_BSWAP;
-+        }
-+
-         io_writex(env, &env_tlb(env)->d[mmu_idx].iotlb[index], mmu_idx,
--                  handle_bswap(val, size, big_endian),
--                  addr, retaddr, SIZE_MEMOP(size));
-+                  val, addr, retaddr, op);
-         return;
-     }
-
-diff --git a/memory.c b/memory.c
-index 6982e19..0277d3d 100644
---- a/memory.c
-+++ b/memory.c
-@@ -352,7 +352,7 @@ static bool memory_region_big_endian(MemoryRegion *mr)
- #endif
- }
-
--static bool memory_region_wrong_endianness(MemoryRegion *mr)
-+static bool memory_region_endianness_inverted(MemoryRegion *mr)
- {
- #ifdef TARGET_WORDS_BIGENDIAN
-     return mr->ops->endianness =3D=3D DEVICE_LITTLE_ENDIAN;
-@@ -361,23 +361,27 @@ static bool memory_region_wrong_endianness(MemoryRegi=
-on *mr)
- #endif
- }
-
--static void adjust_endianness(MemoryRegion *mr, uint64_t *data, unsigned s=
-ize)
-+static void adjust_endianness(MemoryRegion *mr, uint64_t *data, MemOp op)
- {
--    if (memory_region_wrong_endianness(mr)) {
--        switch (size) {
--        case 1:
-+    if (memory_region_endianness_inverted(mr)) {
++    if (iotlbentry->attrs.byte_swap) {
 +        op ^=3D MO_BSWAP;
 +    }
 +
-+    if (op & MO_BSWAP) {
-+        switch (op & MO_SIZE) {
-+        case MO_8:
-             break;
--        case 2:
-+        case MO_16:
-             *data =3D bswap16(*data);
-             break;
--        case 4:
-+        case MO_32:
-             *data =3D bswap32(*data);
-             break;
--        case 8:
-+        case MO_64:
-             *data =3D bswap64(*data);
-             break;
-         default:
--            abort();
-+            g_assert_not_reached();
-         }
-     }
- }
-@@ -1451,7 +1455,7 @@ MemTxResult memory_region_dispatch_read(MemoryRegion =
-*mr,
-     }
+     section =3D iotlb_to_section(cpu, iotlbentry->addr, iotlbentry->attrs)=
+;
+     mr =3D section->mr;
+     mr_offset =3D (iotlbentry->addr & TARGET_PAGE_MASK) + addr;
+@@ -933,6 +940,10 @@ static void io_writex(CPUArchState *env, CPUIOTLBEntry=
+ *iotlbentry,
+     bool locked =3D false;
+     MemTxResult r;
 
-     r =3D memory_region_dispatch_read1(mr, addr, pval, size, attrs);
--    adjust_endianness(mr, pval, size);
-+    adjust_endianness(mr, pval, op);
-     return r;
- }
-
-@@ -1494,7 +1498,7 @@ MemTxResult memory_region_dispatch_write(MemoryRegion=
- *mr,
-         return MEMTX_DECODE_ERROR;
-     }
-
--    adjust_endianness(mr, &data, size);
-+    adjust_endianness(mr, &data, op);
-
-     if ((!kvm_eventfds_enabled()) &&
-         memory_region_dispatch_write_eventfds(mr, addr, data, size, attrs)=
-) {
-@@ -2340,7 +2344,7 @@ void memory_region_add_eventfd(MemoryRegion *mr,
-     }
-
-     if (size) {
--        adjust_endianness(mr, &mrfd.data, size);
-+        adjust_endianness(mr, &mrfd.data, SIZE_MEMOP(size));
-     }
-     memory_region_transaction_begin();
-     for (i =3D 0; i < mr->ioeventfd_nb; ++i) {
-@@ -2375,7 +2379,7 @@ void memory_region_del_eventfd(MemoryRegion *mr,
-     unsigned i;
-
-     if (size) {
--        adjust_endianness(mr, &mrfd.data, size);
-+        adjust_endianness(mr, &mrfd.data, SIZE_MEMOP(size));
-     }
-     memory_region_transaction_begin();
-     for (i =3D 0; i < mr->ioeventfd_nb; ++i) {
++    if (iotlbentry->attrs.byte_swap) {
++        op ^=3D MO_BSWAP;
++    }
++
+     section =3D iotlb_to_section(cpu, iotlbentry->addr, iotlbentry->attrs)=
+;
+     mr =3D section->mr;
+     mr_offset =3D (iotlbentry->addr & TARGET_PAGE_MASK) + addr;
+diff --git a/include/exec/memattrs.h b/include/exec/memattrs.h
+index d4a3477..a0644eb 100644
+--- a/include/exec/memattrs.h
++++ b/include/exec/memattrs.h
+@@ -37,6 +37,8 @@ typedef struct MemTxAttrs {
+     unsigned int user:1;
+     /* Requester ID (for MSI for example) */
+     unsigned int requester_id:16;
++    /* SPARC64: TTE invert endianness */
++    unsigned int byte_swap:1;
+     /*
+      * The following are target-specific page-table bits.  These are not
+      * related to actual memory transactions at all.  However, this struct=
+ure
 --
 1.8.3.1
 
 
 
 
---_000_156412366721066446btcom_
+--_000_156412371221075919btcom_
 Content-Type: text/html; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
@@ -332,249 +202,84 @@ der-left-width: 2px; border-left-style: solid; border-left-color: rgb(128, =
 <body dir=3D"ltr" style=3D"font-size:12pt;color:#000000;background-color:#F=
 FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
 <p></p>
-<div><span style=3D"font-size: 12pt;">Now that MemOp has been pushed down i=
-nto the memory API, we can</span><br>
+<div><span style=3D"font-size: 12pt;">Notice new attribute, byte swap, and =
+force the transaction through the</span><br>
 </div>
-<div>collapse the two byte swaps adjust_endianness and handle_bswap into</d=
-iv>
-<div>the former.</div>
+<div>memory slow path.</div>
 <div><br>
 </div>
-<div>Collapsing byte swaps along the I/O path enables additional endian</di=
-v>
-<div>inversion logic, e.g. SPARC64 Invert Endian TTE bit, with redundant</d=
-iv>
-<div>byte swaps cancelling out.</div>
+<div>Required by architectures that can invert endianness of memory</div>
+<div>transaction, e.g. SPARC64 has the Invert Endian TTE bit.</div>
 <div><br>
 </div>
 <div>Signed-off-by: Tony Nguyen &lt;tony.nguyen@bt.com&gt;</div>
 <div>---</div>
-<div>&nbsp;accel/tcg/cputlb.c | 41 &#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;=
-&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;--------------------=
---</div>
-<div>&nbsp;memory.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | 30 &#43;&#43;&#43;=
-&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;-----=
---------</div>
-<div>&nbsp;2 files changed, 36 insertions(&#43;), 35 deletions(-)</div>
+<div>&nbsp;accel/tcg/cputlb.c &nbsp; &nbsp; &nbsp;| 11 &#43;&#43;&#43;&#43;=
+&#43;&#43;&#43;&#43;&#43;&#43;&#43;</div>
+<div>&nbsp;include/exec/memattrs.h | &nbsp;2 &#43;&#43;</div>
+<div>&nbsp;2 files changed, 13 insertions(&#43;)</div>
 <div><br>
 </div>
 <div>diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c</div>
-<div>index 5d88cec..e61b1eb 100644</div>
+<div>index e61b1eb..f292a87 100644</div>
 <div>--- a/accel/tcg/cputlb.c</div>
 <div>&#43;&#43;&#43; b/accel/tcg/cputlb.c</div>
-<div>@@ -1209,26 &#43;1209,13 @@ static void *atomic_mmu_lookup(CPUArchStat=
-e *env, target_ulong addr,</div>
-<div>&nbsp;#endif</div>
-<div>&nbsp;</div>
-<div>&nbsp;/*</div>
-<div>- * Byte Swap Helper</div>
-<div>&#43; * Byte Swap Checker</div>
-<div>&nbsp; *</div>
-<div>- * This should all dead code away depending on the build host and</di=
-v>
-<div>- * access type.</div>
-<div>&#43; * Dead code should all go away depending on the build host and a=
-ccess type.</div>
-<div>&nbsp; */</div>
-<div>-</div>
-<div>-static inline uint64_t handle_bswap(uint64_t val, int size, bool big_=
-endian)</div>
-<div>&#43;static inline bool need_bswap(bool big_endian)</div>
-<div>&nbsp;{</div>
-<div>- &nbsp; &nbsp;if ((big_endian &amp;&amp; NEED_BE_BSWAP) || (!big_endi=
-an &amp;&amp; NEED_LE_BSWAP)) {</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;switch (size) {</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 1: return val;</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 2: return bswap16(val);</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 4: return bswap32(val);</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 8: return bswap64(val);</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;default:</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;g_assert_not_reached();</di=
-v>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>- &nbsp; &nbsp;} else {</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;return val;</div>
-<div>- &nbsp; &nbsp;}</div>
-<div>&#43; &nbsp; &nbsp;return (big_endian &amp;&amp; NEED_BE_BSWAP) || (!b=
-ig_endian &amp;&amp; NEED_LE_BSWAP);</div>
-<div>&nbsp;}</div>
-<div>&nbsp;</div>
-<div>&nbsp;/*</div>
-<div>@@ -1259,6 &#43;1246,7 @@ load_helper(CPUArchState *env, target_ulong =
-addr, TCGMemOpIdx oi,</div>
-<div>&nbsp; &nbsp; &nbsp;unsigned a_bits =3D get_alignment_bits(get_memop(o=
-i));</div>
-<div>&nbsp; &nbsp; &nbsp;void *haddr;</div>
-<div>&nbsp; &nbsp; &nbsp;uint64_t res;</div>
-<div>&#43; &nbsp; &nbsp;MemOp op;</div>
-<div>&nbsp;</div>
-<div>&nbsp; &nbsp; &nbsp;/* Handle CPU specific unaligned behaviour */</div=
->
-<div>&nbsp; &nbsp; &nbsp;if (addr &amp; ((1 &lt;&lt; a_bits) - 1)) {</div>
-<div>@@ -1304,9 &#43;1292,13 @@ load_helper(CPUArchState *env, target_ulong=
- addr, TCGMemOpIdx oi,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp;</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;res =3D io_readx(env, &amp;env_tlb(env)-&=
-gt;d[mmu_idx].iotlb[index],</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; mmu_idx, addr, retaddr, access_type, SIZE_MEMOP(size));</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;return handle_bswap(res, size, big_endian=
-);</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;op =3D SIZE_MEMOP(size);</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;if (need_bswap(big_endian)) {</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;op ^=3D MO_BSWAP;</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&#43;</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;return io_readx(env, &amp;env_tlb(env=
-)-&gt;d[mmu_idx].iotlb[index],</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; mmu_idx, addr, retaddr, access_type, op);</div>
+<div>@@ -738,6 &#43;738,9 @@ void tlb_set_page_with_attrs(CPUState *cpu, ta=
+rget_ulong vaddr,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;address |=3D TLB_RECHECK;</div>
 <div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&#43; &nbsp; &nbsp;if (attrs.byte_swap) {</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;address |=3D TLB_FORCE_SLOW;</div>
+<div>&#43; &nbsp; &nbsp;}</div>
+<div>&nbsp; &nbsp; &nbsp;if (!memory_region_is_ram(section-&gt;mr) &amp;&am=
+p;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;!memory_region_is_romd(section-&gt;m=
+r)) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* IO memory case */</div>
+<div>@@ -891,6 &#43;894,10 @@ static uint64_t io_readx(CPUArchState *env, C=
+PUIOTLBEntry *iotlbentry,</div>
+<div>&nbsp; &nbsp; &nbsp;bool locked =3D false;</div>
+<div>&nbsp; &nbsp; &nbsp;MemTxResult r;</div>
 <div>&nbsp;</div>
-<div>&nbsp; &nbsp; &nbsp;/* Handle slow unaligned access (it spans two page=
-s or IO). &nbsp;*/</div>
-<div>@@ -1507,6 &#43;1499,7 @@ store_helper(CPUArchState *env, target_ulong=
- addr, uint64_t val,</div>
-<div>&nbsp; &nbsp; &nbsp;const size_t tlb_off =3D offsetof(CPUTLBEntry, add=
-r_write);</div>
-<div>&nbsp; &nbsp; &nbsp;unsigned a_bits =3D get_alignment_bits(get_memop(o=
-i));</div>
-<div>&nbsp; &nbsp; &nbsp;void *haddr;</div>
-<div>&#43; &nbsp; &nbsp;MemOp op;</div>
-<div>&nbsp;</div>
-<div>&nbsp; &nbsp; &nbsp;/* Handle CPU specific unaligned behaviour */</div=
->
-<div>&nbsp; &nbsp; &nbsp;if (addr &amp; ((1 &lt;&lt; a_bits) - 1)) {</div>
-<div>@@ -1552,9 &#43;1545,13 @@ store_helper(CPUArchState *env, target_ulon=
-g addr, uint64_t val,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp;</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;op =3D SIZE_MEMOP(size);</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;if (need_bswap(big_endian)) {</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;op ^=3D MO_BSWAP;</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&#43;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;io_writex(env, &amp;env_tlb(env)-&gt=
-;d[mmu_idx].iotlb[index], mmu_idx,</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;handle=
-_bswap(val, size, big_endian),</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;addr, =
-retaddr, SIZE_MEMOP(size));</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;va=
-l, addr, retaddr, op);</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return;</div>
-<div>&nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp;</div>
-<div>diff --git a/memory.c b/memory.c</div>
-<div>index 6982e19..0277d3d 100644</div>
-<div>--- a/memory.c</div>
-<div>&#43;&#43;&#43; b/memory.c</div>
-<div>@@ -352,7 &#43;352,7 @@ static bool memory_region_big_endian(MemoryReg=
-ion *mr)</div>
-<div>&nbsp;#endif</div>
-<div>&nbsp;}</div>
-<div>&nbsp;</div>
-<div>-static bool memory_region_wrong_endianness(MemoryRegion *mr)</div>
-<div>&#43;static bool memory_region_endianness_inverted(MemoryRegion *mr)</=
-div>
-<div>&nbsp;{</div>
-<div>&nbsp;#ifdef TARGET_WORDS_BIGENDIAN</div>
-<div>&nbsp; &nbsp; &nbsp;return mr-&gt;ops-&gt;endianness =3D=3D DEVICE_LIT=
-TLE_ENDIAN;</div>
-<div>@@ -361,23 &#43;361,27 @@ static bool memory_region_wrong_endianness(M=
-emoryRegion *mr)</div>
-<div>&nbsp;#endif</div>
-<div>&nbsp;}</div>
-<div>&nbsp;</div>
-<div>-static void adjust_endianness(MemoryRegion *mr, uint64_t *data, unsig=
-ned size)</div>
-<div>&#43;static void adjust_endianness(MemoryRegion *mr, uint64_t *data, M=
-emOp op)</div>
-<div>&nbsp;{</div>
-<div>- &nbsp; &nbsp;if (memory_region_wrong_endianness(mr)) {</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;switch (size) {</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 1:</div>
-<div>&#43; &nbsp; &nbsp;if (memory_region_endianness_inverted(mr)) {</div>
+<div>&#43; &nbsp; &nbsp;if (iotlbentry-&gt;attrs.byte_swap) {</div>
 <div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;op ^=3D MO_BSWAP;</div>
 <div>&#43; &nbsp; &nbsp;}</div>
 <div>&#43;</div>
-<div>&#43; &nbsp; &nbsp;if (op &amp; MO_BSWAP) {</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;switch (op &amp; MO_SIZE) {</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;case MO_8:</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 2:</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;case MO_16:</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*data =3D bswap16(*dat=
-a);</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 4:</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;case MO_32:</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*data =3D bswap32(*dat=
-a);</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 8:</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;case MO_64:</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;*data =3D bswap64(*dat=
-a);</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;default:</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;abort();</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;g_assert_not_reached();=
-</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp;}</div>
-<div>@@ -1451,7 &#43;1455,7 @@ MemTxResult memory_region_dispatch_read(Memo=
-ryRegion *mr,</div>
-<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp; &nbsp; &nbsp;section =3D iotlb_to_section(cpu, iotlbentry-&gt;a=
+ddr, iotlbentry-&gt;attrs);</div>
+<div>&nbsp; &nbsp; &nbsp;mr =3D section-&gt;mr;</div>
+<div>&nbsp; &nbsp; &nbsp;mr_offset =3D (iotlbentry-&gt;addr &amp; TARGET_PA=
+GE_MASK) &#43; addr;</div>
+<div>@@ -933,6 &#43;940,10 @@ static void io_writex(CPUArchState *env, CPUI=
+OTLBEntry *iotlbentry,</div>
+<div>&nbsp; &nbsp; &nbsp;bool locked =3D false;</div>
+<div>&nbsp; &nbsp; &nbsp;MemTxResult r;</div>
 <div>&nbsp;</div>
-<div>&nbsp; &nbsp; &nbsp;r =3D memory_region_dispatch_read1(mr, addr, pval,=
- size, attrs);</div>
-<div>- &nbsp; &nbsp;adjust_endianness(mr, pval, size);</div>
-<div>&#43; &nbsp; &nbsp;adjust_endianness(mr, pval, op);</div>
-<div>&nbsp; &nbsp; &nbsp;return r;</div>
-<div>&nbsp;}</div>
-<div>&nbsp;</div>
-<div>@@ -1494,7 &#43;1498,7 @@ MemTxResult memory_region_dispatch_write(Mem=
-oryRegion *mr,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return MEMTX_DECODE_ERROR;</div>
-<div>&nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp;</div>
-<div>- &nbsp; &nbsp;adjust_endianness(mr, &amp;data, size);</div>
-<div>&#43; &nbsp; &nbsp;adjust_endianness(mr, &amp;data, op);</div>
-<div>&nbsp;</div>
-<div>&nbsp; &nbsp; &nbsp;if ((!kvm_eventfds_enabled()) &amp;&amp;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;memory_region_dispatch_write_eventfd=
-s(mr, addr, data, size, attrs)) {</div>
-<div>@@ -2340,7 &#43;2344,7 @@ void memory_region_add_eventfd(MemoryRegion =
-*mr,</div>
-<div>&nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp;</div>
-<div>&nbsp; &nbsp; &nbsp;if (size) {</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;adjust_endianness(mr, &amp;mrfd.data, siz=
-e);</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;adjust_endianness(mr, &amp;mrfd.data,=
- SIZE_MEMOP(size));</div>
-<div>&nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp; &nbsp; &nbsp;memory_region_transaction_begin();</div>
-<div>&nbsp; &nbsp; &nbsp;for (i =3D 0; i &lt; mr-&gt;ioeventfd_nb; &#43;&#4=
-3;i) {</div>
-<div>@@ -2375,7 &#43;2379,7 @@ void memory_region_del_eventfd(MemoryRegion =
-*mr,</div>
-<div>&nbsp; &nbsp; &nbsp;unsigned i;</div>
-<div>&nbsp;</div>
-<div>&nbsp; &nbsp; &nbsp;if (size) {</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;adjust_endianness(mr, &amp;mrfd.data, siz=
-e);</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;adjust_endianness(mr, &amp;mrfd.data,=
- SIZE_MEMOP(size));</div>
-<div>&nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp; &nbsp; &nbsp;memory_region_transaction_begin();</div>
-<div>&nbsp; &nbsp; &nbsp;for (i =3D 0; i &lt; mr-&gt;ioeventfd_nb; &#43;&#4=
-3;i) {</div>
+<div>&#43; &nbsp; &nbsp;if (iotlbentry-&gt;attrs.byte_swap) {</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;op ^=3D MO_BSWAP;</div>
+<div>&#43; &nbsp; &nbsp;}</div>
+<div>&#43;</div>
+<div>&nbsp; &nbsp; &nbsp;section =3D iotlb_to_section(cpu, iotlbentry-&gt;a=
+ddr, iotlbentry-&gt;attrs);</div>
+<div>&nbsp; &nbsp; &nbsp;mr =3D section-&gt;mr;</div>
+<div>&nbsp; &nbsp; &nbsp;mr_offset =3D (iotlbentry-&gt;addr &amp; TARGET_PA=
+GE_MASK) &#43; addr;</div>
+<div>diff --git a/include/exec/memattrs.h b/include/exec/memattrs.h</div>
+<div>index d4a3477..a0644eb 100644</div>
+<div>--- a/include/exec/memattrs.h</div>
+<div>&#43;&#43;&#43; b/include/exec/memattrs.h</div>
+<div>@@ -37,6 &#43;37,8 @@ typedef struct MemTxAttrs {</div>
+<div>&nbsp; &nbsp; &nbsp;unsigned int user:1;</div>
+<div>&nbsp; &nbsp; &nbsp;/* Requester ID (for MSI for example) */</div>
+<div>&nbsp; &nbsp; &nbsp;unsigned int requester_id:16;</div>
+<div>&#43; &nbsp; &nbsp;/* SPARC64: TTE invert endianness */</div>
+<div>&#43; &nbsp; &nbsp;unsigned int byte_swap:1;</div>
+<div>&nbsp; &nbsp; &nbsp;/*</div>
+<div>&nbsp; &nbsp; &nbsp; * The following are target-specific page-table bi=
+ts. &nbsp;These are not</div>
+<div>&nbsp; &nbsp; &nbsp; * related to actual memory transactions at all. &=
+nbsp;However, this structure</div>
 <div>--&nbsp;</div>
 <div>1.8.3.1</div>
 <div><br>
@@ -585,4 +290,4 @@ e);</div>
 </body>
 </html>
 
---_000_156412366721066446btcom_--
+--_000_156412371221075919btcom_--

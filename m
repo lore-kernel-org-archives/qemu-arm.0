@@ -1,151 +1,163 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp207614wrv;
-        Fri, 26 Jul 2019 10:51:34 -0700 (PDT)
-X-Received: by 2002:aa7:858b:: with SMTP id w11mr22512074pfn.68.1564163494086;
-        Fri, 26 Jul 2019 10:51:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564163494; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp207631wrv;
+        Fri, 26 Jul 2019 10:51:35 -0700 (PDT)
+X-Received: by 2002:a62:ae01:: with SMTP id q1mr22908892pff.219.1564163495405;
+        Fri, 26 Jul 2019 10:51:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564163495; cv=none;
         d=google.com; s=arc-20160816;
-        b=opqWr+g5bniFueXDDPHTXO/d0YTLj9YzDVU0izEyuIQM1qE/v4Tqyg3HCwXNOusTDZ
-         SP8Z+WonuHSfh3Lsxn5uT0bI8Eo6YERv1Wl+n1Y+roexTJsrtVZaP8ftEdeXJ9od/BGv
-         h0SUnqksWyUP93xdsRqT6VGfD6FSJ8Pvn86npent9BYIX0/5OcsOizepO0EEQzppgoIQ
-         S6qslkZ5iqvUDUTvB9EWrEJIYtlpTjFVzvOS7KjUV4Tsp5Wgphmi7qg4c4dl5jXdMDBQ
-         k8806Deo1d0NzbaFmuJaeGK3BMusqGLSFkqte5BSs2gmVwWpTu07H98HpSs9nQlBMhuP
-         k5zw==
+        b=qhFDWngPC4VZa0Vs16nDwPFI+QhkKwt5UTOuBlH+nrQ4nFAqOqVGJOwLd9iulrBQJW
+         jhz+B8ETJ9keFUpUxDqpspzTYMk6WJB1ZRdUmvdTpYnc5eVBbFvupN89HhZnN1BWE/O/
+         0GQLFWTNIm8p2y+0LVvebczXa59xbYpSi1DdC4CUIPecJYxqlqtjxO8Hgg+EzxG/LQlN
+         wviSbDzdvpJ2rDE29vtlASvNosuKrcQyrmEH+FupBE+lta1BVrIViQXEKcifEl5zolL3
+         1qTAhQrgN5fhrEPX8s5A/e79ANLJbjJQOyKZ2h7/dlNrxPcy9fNnJ4SKE4hKW2ni6+S9
+         QOhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=7nWDfS+LdH5ciQPlK6I4CJ7o4VfuIN/4vlkt7Y4d8wE=;
-        b=Z2MUDQWDB+7HGfAGELjQ9liwmqcpSWznGuyEjaOMKn5Q2ZtsQGRdEau0U/CozF/pzQ
-         t3WtxaoD8at5XpRnEKF+bA2IBhlfkMoygtukjwhvhsulEU8ladixXZZD9SeBNvbb69fF
-         82YOMcEgkJWSAP8doffKCusWeYhzyoUJJonv7UfkqvvMm5Vp1wHfHMcTzcd3X4fWGdiJ
-         u+2NTwh3jVQRHZntnNTKoOSShKtWTjMkAopTRR75THnafSBN6HMQD70zZ9Z2ha4KWWTO
-         qZGFfGqCMYIWWCCCw6YhshD15iZbdWczv1fOSGc66jcTv2zPuqObWqKEVt2xFQr6dc8I
-         id7Q==
+        bh=8uDpXmk2fu+tSj6HfWWHlssj2XKXCMWZi0tyb4tGXOc=;
+        b=qQM0+TodDoAvc8s5b4cd6dkDqM/KR9KIH/IBKsK2TUgzEOrdO8AEMdq+KJWXiQ52df
+         yyeTy2GpsMRv9RpVuL4KOQNaXlYedhFG6Kd0sWxPDmkGxYBLQ3OZrXWTmkhwKJEyQcwj
+         g+0+4ZdBHudTcgw2FKSY6hpgXsHEOgvGm+09pxOTH8EZwjtxFTMyHH1ChPFGwWm+5Psr
+         yPYqGmwf65D2nYUNiFlgVdaf5bvz56w7uPqSllaiH1bd9pb6nUbB9Pjh59C1hEW2nq+8
+         EJs3bJWh43nWAs1Xo1EPyoBXcBjRdFY0emkpb1yWQ6r6Z74h6GkiWf+2WoR/kAslyTnB
+         /oGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KT+IyBJ0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=atpvhmyD;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id h90sor64765538plb.26.2019.07.26.10.51.33
+        by mx.google.com with SMTPS id 1sor64575780plw.7.2019.07.26.10.51.35
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 26 Jul 2019 10:51:34 -0700 (PDT)
+        Fri, 26 Jul 2019 10:51:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KT+IyBJ0;
+       dkim=pass header.i=@linaro.org header.s=google header.b=atpvhmyD;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=7nWDfS+LdH5ciQPlK6I4CJ7o4VfuIN/4vlkt7Y4d8wE=;
-        b=KT+IyBJ0sQ4gxsqcoF8Y9qFThtAqsqt8oEfZeIROZyIyzZKUae7CJfu664N7GDnRJR
-         VNus7Haphr8QjZ3VWoiWV3y2OeZc2h/t4Nd592i/embtWuZOMiQ0+BWEi/4Dbd8lXvzK
-         yI9e/vposoNleYJFWqVHuJr97CXVfhIy6Yu0gVwJ0LPgLgqpq/9QBp51adkG0U3TdsH6
-         oEqfZuZ1C7FDV1Xw86XCdgfp9WbzIORxENAtj7NoUvNdoDkmGunOrJI17d19HiDr7Fu9
-         QBW4vaqZQoY4cN0L+YjKLuFlBhqfkhM84usqbV/wM4KqFazgP/E0RLv54W2vB5O9yQhI
-         O3/Q==
+        bh=8uDpXmk2fu+tSj6HfWWHlssj2XKXCMWZi0tyb4tGXOc=;
+        b=atpvhmyDtUy1RYtrvBv8oBntVn6bXSSR/tqasJqEeDKCXAJtNA4QXtSDtVERLdpQic
+         HlIgcmBOi3sFqG2kOMXxGD5lX0bd8ZOGOnYO38RRda5KT3rv/wxfKu0a139NyIYhb9NZ
+         WNUPWW/H7XT2HRnJ3zv9oqSj1+eJVT9Z4byUzp6fomtXJWWG10wPgEq0OCugjjjUffgE
+         uT460ehbKiJPf33AqhO4dpUVDx6v5MEkQmRCk9yWq33tbPJL45WvYCAalHYbgC0LCOZq
+         qJ7XtBiG3epLuMHsX9v/1S5GDzLiUxSKViQqLaMwrdUgBP4YUOe01a5XTYzt+/e6goCJ
+         ZQGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=7nWDfS+LdH5ciQPlK6I4CJ7o4VfuIN/4vlkt7Y4d8wE=;
-        b=e4BMWUmr9BP2UEsrQaVe5gd6WqS8fkahR/zmB8UPPsHLkVRAk7v1+NPiGt6Y323n+0
-         TPRBxa4oWKA04m5hYRSEmfXLuUJjsgFj04PqoLTQRkiqyosxxRfbg4Pvt+Xqt3Qzn33d
-         SQAESDAZRx101Z8zTDgnVo7l1sf2XKwp6iFdcxhpveHwZL4HPmfLf5jt6deJGnUYL2B3
-         XGjlmCRgBlQI37Gkv7MVFzv65UKBoFtlmA7FYsrAf1s7+ypJLha5W0qD+2Ng10x8x5UI
-         LvOdpRf3HBo6I/MHaDiWFJQv8ocmMWjhPjdD+VM59d3oxqrVwiK3WkS2kN9Wi9PKZ+a5
-         CBZg==
-X-Gm-Message-State: APjAAAWqq5ECL4x/Ae72rcwmws439o6dkI0LwUOqvx1eiVEJ2w0vxBfN
-	YtqjfDbtwJ4FAiuDygz2HmFn+YVw
-X-Google-Smtp-Source: APXvYqz/XR//yyEDJrSUkQ83RzDap/BP21UiaCQV+jkOkjV3VKvhMvpt/mN4vdvfZb8sjOUOLQKDZA==
-X-Received: by 2002:a17:902:b48f:: with SMTP id y15mr99334283plr.268.1564163493700;
-        Fri, 26 Jul 2019 10:51:33 -0700 (PDT)
+        bh=8uDpXmk2fu+tSj6HfWWHlssj2XKXCMWZi0tyb4tGXOc=;
+        b=pXUazETV8R4oDvAQm2LQteonNFONIjdRDaXjaQH/jY5CS7DBGUxaQ+tX1fAJIXy8Bb
+         USr4oqii1zMsu6prPZXRsNQUO+frgCP7Og2kZ72QBHqreMvoiOu0lta+n5hH+gTAjdl9
+         9XPcXE0gTt5qN9SDoVlos36CeX0epGcTPMQo4KvA6epmz74woAw+9CNu9EpXKLtOJKTE
+         aq4uwufVH/dsmWGUKXUeZiAhfb2zPjQw9HgiyW7h1nuEokLFlQZSskc0bv3/ZsM2GnQo
+         KrC/ckMJDuRM+RUXpken7RbfJv09elrEztZQ51d4QBB29xb1mkkoEOnWMhl5WzldJe+R
+         Hbew==
+X-Gm-Message-State: APjAAAVOtOgJMjnxmv5rxTDA47BJSkw56kvuuHj8dZ5h3HZtBhX5YkTS
+	GyQzx6KNfSWNc8hHzmwHJXj6+oWI
+X-Google-Smtp-Source: APXvYqxS5X6bOUz7Pj1WvHsVSILAQhsLX9Xe+SlELQBuv29a4cwHVw3pYoNgFWAMfqLNWq/kGoY2LA==
+X-Received: by 2002:a17:902:d70a:: with SMTP id w10mr92328491ply.251.1564163495029;
+        Fri, 26 Jul 2019 10:51:35 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-126-117-207.tukw.qwest.net. [97.126.117.207])
-        by smtp.gmail.com with ESMTPSA id o24sm104287919pfp.135.2019.07.26.10.51.32
+        by smtp.gmail.com with ESMTPSA id o24sm104287919pfp.135.2019.07.26.10.51.33
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Fri, 26 Jul 2019 10:51:33 -0700 (PDT)
+        Fri, 26 Jul 2019 10:51:34 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org
-Subject: [PATCH 49/67] target/arm: Convert T16 add/sub (3 low, 2 low and imm)
-Date: Fri, 26 Jul 2019 10:50:14 -0700
-Message-Id: <20190726175032.6769-50-richard.henderson@linaro.org>
+Subject: [PATCH 50/67] target/arm: Convert T16 one low register and immediate
+Date: Fri, 26 Jul 2019 10:50:15 -0700
+Message-Id: <20190726175032.6769-51-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190726175032.6769-1-richard.henderson@linaro.org>
 References: <20190726175032.6769-1-richard.henderson@linaro.org>
-X-TUID: ZcuQPe54404Z
+X-TUID: 4+MIkaoZvgjs
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate.c | 26 ++------------------------
- target/arm/t16.decode  | 16 ++++++++++++++++
- 2 files changed, 18 insertions(+), 24 deletions(-)
+ target/arm/translate.c | 44 ++----------------------------------------
+ target/arm/t16.decode  | 11 +++++++++++
+ 2 files changed, 13 insertions(+), 42 deletions(-)
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index f551fde3db..692891dbe0 100644
+index 692891dbe0..9bdcb91537 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -10580,31 +10580,9 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
-              * 0b0001_1xxx_xxxx_xxxx
-              *  - Add, subtract (three low registers)
-              *  - Add, subtract (two low registers and immediate)
-+             * In decodetree.
-              */
--            rn = (insn >> 3) & 7;
--            tmp = load_reg(s, rn);
--            if (insn & (1 << 10)) {
--                /* immediate */
--                tmp2 = tcg_temp_new_i32();
--                tcg_gen_movi_i32(tmp2, (insn >> 6) & 7);
--            } else {
--                /* reg */
--                rm = (insn >> 6) & 7;
--                tmp2 = load_reg(s, rm);
--            }
--            if (insn & (1 << 9)) {
--                if (s->condexec_mask)
--                    tcg_gen_sub_i32(tmp, tmp, tmp2);
--                else
--                    gen_sub_CC(tmp, tmp, tmp2);
--            } else {
+@@ -10594,48 +10594,8 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
+             store_reg(s, rd, tmp);
+         }
+         break;
+-    case 2: case 3:
+-        /*
+-         * 0b001x_xxxx_xxxx_xxxx
+-         *  - Add, subtract, compare, move (one low register and immediate)
+-         */
+-        op = (insn >> 11) & 3;
+-        rd = (insn >> 8) & 0x7;
+-        if (op == 0) { /* mov */
+-            tmp = tcg_temp_new_i32();
+-            tcg_gen_movi_i32(tmp, insn & 0xff);
+-            if (!s->condexec_mask)
+-                gen_logic_CC(tmp);
+-            store_reg(s, rd, tmp);
+-        } else {
+-            tmp = load_reg(s, rd);
+-            tmp2 = tcg_temp_new_i32();
+-            tcg_gen_movi_i32(tmp2, insn & 0xff);
+-            switch (op) {
+-            case 1: /* cmp */
+-                gen_sub_CC(tmp, tmp, tmp2);
+-                tcg_temp_free_i32(tmp);
+-                tcg_temp_free_i32(tmp2);
+-                break;
+-            case 2: /* add */
 -                if (s->condexec_mask)
 -                    tcg_gen_add_i32(tmp, tmp, tmp2);
 -                else
 -                    gen_add_CC(tmp, tmp, tmp2);
+-                tcg_temp_free_i32(tmp2);
+-                store_reg(s, rd, tmp);
+-                break;
+-            case 3: /* sub */
+-                if (s->condexec_mask)
+-                    tcg_gen_sub_i32(tmp, tmp, tmp2);
+-                else
+-                    gen_sub_CC(tmp, tmp, tmp2);
+-                tcg_temp_free_i32(tmp2);
+-                store_reg(s, rd, tmp);
+-                break;
 -            }
--            tcg_temp_free_i32(tmp2);
--            store_reg(s, rd, tmp);
-+            goto illegal_op;
-         } else {
-             /* shift immediate */
-             rm = (insn >> 3) & 7;
+-        }
+-        break;
++    case 2: case 3: /* add, sub, cmp, mov (reg, imm), in decodetree */
++        goto illegal_op;
+     case 4:
+         if (insn & (1 << 11)) {
+             rd = (insn >> 8) & 7;
 diff --git a/target/arm/t16.decode b/target/arm/t16.decode
-index 67476b30dc..965fb1bf6e 100644
+index 965fb1bf6e..edb67a3896 100644
 --- a/target/arm/t16.decode
 +++ b/target/arm/t16.decode
-@@ -117,3 +117,19 @@ ADD_rri         10101 rd:3 ........ \
+@@ -133,3 +133,14 @@ SUB_rrri        0001101 ... ... ...             @addsub_3
  
- STM             11000 ... ........              @ldstm
- LDM_t16         11001 ... ........              @ldstm
+ ADD_rri         0001 110 ... ... ...            @addsub_2i
+ SUB_rri         0001 111 ... ... ...            @addsub_2i
 +
-+# Add/subtract (three low registers)
++# Add, subtract, compare, move (one low register and immediate)
 +
-+@addsub_3       ....... rm:3 rn:3 rd:3 \
-+                &s_rrr_shi %s shim=0 shty=0
++%reg_8          8:3
++@arith_1i       ..... rd:3 imm:8 \
++                &s_rri_rot rot=0 rn=%reg_8
 +
-+ADD_rrri        0001100 ... ... ...             @addsub_3
-+SUB_rrri        0001101 ... ... ...             @addsub_3
-+
-+# Add/subtract (two low registers and immediate)
-+
-+@addsub_2i      ....... imm:3 rn:3 rd:3 \
-+                &s_rri_rot %s rot=0
-+
-+ADD_rri         0001 110 ... ... ...            @addsub_2i
-+SUB_rri         0001 111 ... ... ...            @addsub_2i
++MOV_rri         00100 ... ........              @arith_1i %s
++CMP_rri         00101 ... ........              @arith_1i s=1
++ADD_rri         00110 ... ........              @arith_1i %s
++SUB_rri         00111 ... ........              @arith_1i %s
 -- 
 2.17.1

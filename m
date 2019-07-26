@@ -1,99 +1,87 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp11669780wrv;
-        Fri, 26 Jul 2019 02:27:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxo+mHL9X/3FCiVHZSRESRvUsK7kwrav2nyPplMhvFewG2XetDv+Mhbg3IAlD7BT8ByJqcB
-X-Received: by 2002:a0c:b163:: with SMTP id r32mr67917944qvc.169.1564133228987;
-        Fri, 26 Jul 2019 02:27:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564133228; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp11675121wrv;
+        Fri, 26 Jul 2019 02:32:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz1/TpAFFDR8NdgEPSPM51gTLkf28sFhdEJjZ97XDWL46w8f8475QtA1CcnlacI3aNUERzF
+X-Received: by 2002:ac8:f3b:: with SMTP id e56mr65628602qtk.123.1564133549270;
+        Fri, 26 Jul 2019 02:32:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564133549; cv=none;
         d=google.com; s=arc-20160816;
-        b=sH9Kv4GWAwlD3LW8V0BpUfDY+PO+lQ3qt4P9TPAtWSEzGqjgTBb/t9sMo2xgvt/NZz
-         jaNPAgmuHA3v+TBeIoVRXFswAIonM8Hg9xAGbNzrAbUymH0YyzA7rP6Hr3NbRhvaafnC
-         BQwRROZ8aUPwkhvd9dNHiMX8jGCtLQ01gwk/ZsCZw6RcJFdcfxsmhsSl5eRxZ3/6irZX
-         T6/o67kc9t6aMa5Lml1ROTKc02x2Cqw1qunhzke1wT7OfNkVM0fGPurO2nX3Kc9z/N7w
-         QneWCJhmKERHbg3VgEdGC+q4D+Fnee+YhW4jCPk/p0fEb0/4Hv39/WXbS2aDsrahEAzI
-         Iotg==
+        b=oKqIQYUxUsTrDveQxFWqQqMW1odebEuFSdZYSKb6kQ+UBlB16xB1mjmbedn+sZM/kC
+         ZTSR2MoEp08TZ9VX22Kn5DiCM4FuggE3Qpgz4SCjfOYL4GZ0kEZKkismpb/IZhU4yL3O
+         RYuKyygwGr7iuPHWjMClkjzHNiVGfuNbzaYBrnpp63a8Qn+B6WeqJ2mcwzPNPe/wHE1y
+         Yc3oAalM99modefSYzEg35uhlRZQNiltPQ/RXF4oxZWvKY3CERfzQBvag9f7SGfaHA44
+         8fdD2iVzxvXXqJ01ndcu0f7suj/vDZ3scN9idnBM4AmdJhfmVjLGzif0tWihhbzXI5x1
+         GeGw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=q+oWH/lOElaqbnOZuAMvJ1Z4i+kZvaUG2j2o1tOHmT0=;
-        b=HhqDkWbJmZQ+5sFH+cYabGEjOh2wYdOsdx7m//EllryATGay804A3KpR89WhGM7LN7
-         DYkYwXdYTMeNpKOEPVedgrF4oGaJvhehEkIS11oxop4jEpbR+sffXwF+3hCgVXRs6pdI
-         WsXtqBs6Zxgg0bd/quUOBl4dP8FtCCyMbjmfJ630oaQWq9bdctZNvzggcafar2ZGQ1m/
-         62KQICOwJ4JVxv8BvDg8ZaiqzFyK0NlCWIl9kok/DuO6FFzF5yBjTALTqP/FNJALDr/a
-         f1IU0wV/Um7wmcNn4wLiwhzGj8NSFF+BXMmsSVzCODPYWx8G8ref7ItKcW02h13iWje4
-         kr/Q==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=0+N7ovjR625b1xlz32FMyGqe7lUMx++1TPwmSSJ/wnI=;
+        b=VLmyZK4t2JlH8CjqEWdr6muUG5sk+IZGePI6TIbE3UOB3+QSgVLXEIzDLINu9mI3hD
+         BwdiKsxtsz1L8q5TZec8pc7bexRWes3sjZ71yeVzOirfT24gnav7ZFqo6+OLWbQsI/iD
+         h3MOP6xOTLajuaR1ybLqdG0DMQ5D73WlwyWMoqjK8TYci9QSM67lRj1VuBXlJwR0hixh
+         +nmezKSyntrevEQVGVdVvlvpikEidND2XcazAuVDv3NTN6RZCq/RqLbgkMGMWmfRJBod
+         S4i3jvn+vTP57+jyx/uArNvuguVUAoM+4wAlo0vlslVMgFcUjQFNY5sOvicTJq2rqON8
+         Lgug==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u34si31987101qtj.301.2019.07.26.02.27.08
+        by mx.google.com with ESMTPS id e26si32660161qtk.76.2019.07.26.02.32.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jul 2019 02:27:08 -0700 (PDT)
+        Fri, 26 Jul 2019 02:32:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37708 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37734 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hqwVE-00085r-Cq
-	for alex.bennee@linaro.org; Fri, 26 Jul 2019 05:27:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51375)
+	id 1hqwaO-0002IC-TH
+	for alex.bennee@linaro.org; Fri, 26 Jul 2019 05:32:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38315)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <pbonzini@redhat.com>) id 1hqwVA-00083v-Nu
- for qemu-arm@nongnu.org; Fri, 26 Jul 2019 05:27:01 -0400
+ (envelope-from <dgilbert@redhat.com>) id 1hqwaL-0002GC-DC
+ for qemu-arm@nongnu.org; Fri, 26 Jul 2019 05:32:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1hqwV8-0006LS-NU
- for qemu-arm@nongnu.org; Fri, 26 Jul 2019 05:26:59 -0400
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:33273)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hqwV8-0006By-HP
- for qemu-arm@nongnu.org; Fri, 26 Jul 2019 05:26:58 -0400
-Received: by mail-wm1-f66.google.com with SMTP id h19so37578526wme.0
- for <qemu-arm@nongnu.org>; Fri, 26 Jul 2019 02:26:57 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=q+oWH/lOElaqbnOZuAMvJ1Z4i+kZvaUG2j2o1tOHmT0=;
- b=JGEVbxOLLh1Sa4QhNoZx09eyW8RoyaY7WyrKePCjtfw1npxasJGoA8jPusbjJwYPXR
- H2AWjbWFJjEeza3G6CgxoysznMV6MeNqI8JII5mqy7V3dMdLxTtYkktzTBV4B0ZJeYGK
- FHm4Uj0Rq4zXMY1vNal447IHos0/mPIjI6j3F7q3Ize62cZlBIhTDhChn6O5PILEm0w8
- 8yHQoadZ7beWtXH1WbxeU+UION25gB0dnvI5mbyz6xj7RoXk/W9TeGKiMJ+9UZvZ4egi
- WFHsFFcaI2dMhNke1T8gREchyA/Qs8SvonFJ8TrbLWVDYmYwrSuinW7RYm4u8CAUdytu
- vneg==
-X-Gm-Message-State: APjAAAVmilNytifRAlC+VWZTZykbCTVg83EovYjTIX+n3l+eij4lR6Cn
- RjeO5Q/MWaKjYAJ9hBLvNLBj7w==
-X-Received: by 2002:a1c:ca14:: with SMTP id a20mr42211047wmg.71.1564133215103; 
- Fri, 26 Jul 2019 02:26:55 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:cc23:f353:392:d2ee?
- ([2001:b07:6468:f312:cc23:f353:392:d2ee])
- by smtp.gmail.com with ESMTPSA id b15sm67878742wrt.77.2019.07.26.02.26.52
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Fri, 26 Jul 2019 02:26:54 -0700 (PDT)
-To: tony.nguyen@bt.com, qemu-devel@nongnu.org
-References: <3106a3c959c4498fad13a5799c89ba7b@tpw09926dag18e.domain1.systemhost.net>
- <1564123667210.66446@bt.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <3a893408-e864-cb3b-d86c-b6cf7b50cc39@redhat.com>
-Date: Fri, 26 Jul 2019 11:26:52 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ (envelope-from <dgilbert@redhat.com>) id 1hqwaJ-0000Es-D5
+ for qemu-arm@nongnu.org; Fri, 26 Jul 2019 05:32:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37634)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dgilbert@redhat.com>)
+ id 1hqwaJ-0008FP-73; Fri, 26 Jul 2019 05:32:19 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 9497B3071D7E;
+ Fri, 26 Jul 2019 09:32:12 +0000 (UTC)
+Received: from work-vm (ovpn-117-185.ams2.redhat.com [10.36.117.185])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E78CD5D719;
+ Fri, 26 Jul 2019 09:32:10 +0000 (UTC)
+Date: Fri, 26 Jul 2019 10:32:08 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20190726093208.GC2657@work-vm>
+References: <20190725163710.11703-1-peter.maydell@linaro.org>
+ <20190725163710.11703-3-peter.maydell@linaro.org>
+ <20190725172712.GM2656@work-vm>
+ <CAFEAcA-jGvNS4N4qobLekHYdV82qSUWVQOvTRQbrpcCRF0Yvwg@mail.gmail.com>
+ <20190725180007.GN2656@work-vm>
+ <CAFEAcA8T25Fq5wj8a-K9KAyXdfj3+HtW=kTJ13zr+-iHFz4-GA@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <1564123667210.66446@bt.com>
-Content-Type: text/plain; charset=windows-1252
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA8T25Fq5wj8a-K9KAyXdfj3+HtW=kTJ13zr+-iHFz4-GA@mail.gmail.com>
+User-Agent: Mutt/1.12.0 (2019-05-25)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.47]); Fri, 26 Jul 2019 09:32:12 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.128.66
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 11/15] memory: Single byte
- swap along the I/O path
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH for-4.1? 2/2] vmstate.h: Type check
+ VMSTATE_STRUCT_VARRAY macros
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,30 +93,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, walling@linux.ibm.com, sagark@eecs.berkeley.edu,
- mst@redhat.com, palmer@sifive.com, mark.cave-ayland@ilande.co.uk,
- laurent@vivier.eu, Alistair.Francis@wdc.com, arikalo@wavecomp.com,
- david@redhat.com, pasic@linux.ibm.com, borntraeger@de.ibm.com, rth@twiddle.net,
- atar4qemu@gmail.com, ehabkost@redhat.com, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, stefanha@redhat.com, shorne@gmail.com,
- david@gibson.dropbear.id.au, qemu-riscv@nongnu.org,
- kbastian@mail.uni-paderborn.de, cohuck@redhat.com, alex.williamson@redhat.com,
- qemu-ppc@nongnu.org, amarkovic@wavecomp.com, aurelien@aurel32.net
+Cc: Damien Hedde <damien.hedde@greensocs.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Juan Quintela <quintela@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gxHsR1i/uZhl
+X-TUID: tw/yWdypvDzh
 
-On 26/07/19 08:47, tony.nguyen@bt.com wrote:
-> +        op = SIZE_MEMOP(size);
-> +        if (need_bswap(big_endian)) {
-> +            op ^= MO_BSWAP;
-> +        }
+* Peter Maydell (peter.maydell@linaro.org) wrote:
+> On Thu, 25 Jul 2019 at 19:00, Dr. David Alan Gilbert
+> <dgilbert@redhat.com> wrote:
+> >
+> > * Peter Maydell (peter.maydell@linaro.org) wrote:
+> > > On Thu, 25 Jul 2019 at 18:27, Dr. David Alan Gilbert
+> > > <dgilbert@redhat.com> wrote:
+> > > >
+> > > > * Peter Maydell (peter.maydell@linaro.org) wrote:
+> > > > >  #define type_check_2darray(t1,t2,n,m) ((t1(*)[n][m])0 - (t2*)0)
+> > > > > +/* Check that t2 is an array of t1 of size n */
+> > > > >  #define type_check_array(t1,t2,n) ((t1(*)[n])0 - (t2*)0)
+> > > >
+> > > > I'd have to admit I don't understand why that does what you say;
+> > > > I'd expected something to index a t2 pointer with [n].
+> > >
+> > > Note that this is just a comment describing what the existing
+> > > macro does, as a way to distinguish its job from that of the
+> > > new macro I'm adding.
+> > >
+> > > What happens here is that t2 is a type like "foo [32]", ie
+> > > it is an array type already. t1 is the base 'foo' type; so the macro
+> > > is checking that t1[n] matches t2, where n is passed in to us
+> > > and must match the declared array size of the field (32 in
+> > > my example). (In C the size of the array is carried around as
+> > > part of its type, and must match on both sides of the expression;
+> > > so if you pass in the name of an array field that's the wrong size the
+> > > type check will fail, which is what we want.)
+> >
+> > Ah, OK that makes sense; what it really needs is that example to make
+> > me realise that t2 was already the array.
+> 
+> Would
+> 
+> /*
+>  * Check that type t2 is an array of type t1 of size n,
+>  * eg if t1 is 'foo' and n is 32 then t2 must be 'foo[32]'
+>  */
+> 
+> be clearer ?
 
-And this has the same issue as the first version.  It should be
+Yep.
 
-	op = SIZE_MEMOP(size) | (big_endian ? MO_BE : MO_LE);
+Dave
 
-and everything should work.  If it doesn't (and indeed it doesn't :)) it
-means you have bugs somewhere else.
-
-Paolo
+> thanks
+> -- PMM
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK

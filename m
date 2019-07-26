@@ -1,143 +1,298 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp206857wrv;
-        Fri, 26 Jul 2019 10:50:46 -0700 (PDT)
-X-Received: by 2002:a17:90a:2343:: with SMTP id f61mr100555874pje.130.1564163446672;
-        Fri, 26 Jul 2019 10:50:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564163446; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp206873wrv;
+        Fri, 26 Jul 2019 10:50:47 -0700 (PDT)
+X-Received: by 2002:a17:90a:d983:: with SMTP id d3mr97885350pjv.88.1564163447757;
+        Fri, 26 Jul 2019 10:50:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564163447; cv=none;
         d=google.com; s=arc-20160816;
-        b=L9B7jaOhtP6MTl4XSAvPOf+5qNzazncvWmkog4lVie7bZyuLjLqY4jn2bZPMtjXuyi
-         OXQZQ0VCUiXbq8VTSHpgoKD4RX8prv171DY2MXW4taNYG30fJrnJ3PDsuyvH79InWKzU
-         EvA57Ys/DUpbi06eDuKa8aTTKmTQhqVznhpgQU5X1X8CblQcmq27oy7CURzAirX7BEXb
-         Zq8Q+A5Q+CDqC/kXxqz0bJBydqSnOUztuu4TWQ0kmeMSuCvvp19nALV1XgrGQyQF8BwJ
-         xhXW7XsHGuSDg0UKJkG8NMnRcahYIPnnn4gFyDuRWaFW1Fephb6utU04AcHmuarfj/yL
-         UVOw==
+        b=tFFQEokr3pFtt+SOhUP60z6MxERc2ZzlzFAhxdAcd6wCC99Laszeo9+jJydeDCtECg
+         7PqI/sapwln89310Cd5lXFVmlssIjOy8WHESoZEY+ewUpH/uFn3vqxE7wyY45L/881PS
+         MaJj2EKSyB5nute7lHwWcUEvHsyerp72ZzNhO1wV5hAnP5fgOyDZ1afqILygpPxf6hyZ
+         dxdXz5wcDM2cORABMgggUnHUJHls5fN4VlYAH+PUX2/Fb9/T+qPQ0RMq4ju/G+6Sf5nr
+         7ENaFO239bCnMMORVGvpcCkMaEABIXPEcaRbpD9RU6FGHfKrEsBzkFcOb1dWw7tlY6uR
+         zlVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=6AlrLPoHEa++V99L7+ZXhJHR2MnP9U+NbGuctJWMxJE=;
-        b=yPXrIw8viUyE2z6ISOWMXcHY0/pzskJHwVEk1QQY8EQ2RkdnIy84a1I1Fl9Yfx+/CY
-         M6ltT+Cwm2SVEBBlMhqTd0gbCfXRkDt4hg23OjlQsUqGfsQwZ4s03XnQ4sYo5CkTBBDH
-         rEfRntPfxjeb5J+3mXfOBVnnI2yK2HZTq5kacc2KXI2ysfL5dFfyhN6i2YDMAYwxoBXO
-         tE/YVCskTS68OR+MrcvvNMDZ9/Zy59b7qaEKJwlFq+wee3ulEKHCBFQHW7rSPYo4byPk
-         B4oqogMZ8pJOE1l15kIdGLXNAJNzV9WFibmC9ZZpSR+8CqLxH8YVRpmmXFikYFCnvbc7
-         zz9g==
+        bh=sBwbqU4X+hNE91dFDdhNVeb0wgaIhMrDk27NuEJee50=;
+        b=q62lIH3vQ9Pzr8k9qARSlzNvgiDbaBoyUqKH2oIkf7YhHPRb2APxaTelkMyHq/Ekjz
+         Br1sArdPNnBMW9lfJItqS4IOHEubSVRw2vHS0IbuxTt7SshwqiOhofUw9DQ0LOuFM0dc
+         jWzcMuSoaLlo9v0wL6S33IKxjzGTDoz7bxWxq6mcf7vuQaowGy/Ay5A8kSkfIaJZ00N7
+         a9xvhZ4b7fyQxOphogAEVQ9Ql1kPtSxF1DT749O+Aq1FMdoEQ4nNprbb25A9Yzts8anD
+         sI4LXKEaWydlAtaG6DFkLlJZOk1tWrsc08ujqlC1emjThkoCb1KOD2gztSLvlycwNyLL
+         kQ7g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mqb8bBC+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KKS7nzsL;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id j13sor14449531pgb.72.2019.07.26.10.50.46
+        by mx.google.com with SMTPS id q39sor64934286pjb.7.2019.07.26.10.50.47
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 26 Jul 2019 10:50:46 -0700 (PDT)
+        Fri, 26 Jul 2019 10:50:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mqb8bBC+;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KKS7nzsL;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=6AlrLPoHEa++V99L7+ZXhJHR2MnP9U+NbGuctJWMxJE=;
-        b=mqb8bBC+RsDkqdEMK9OWURwjjLzi83s/2TP/cn0X/bcMBMFQt9jPUJkzStfa+59HBK
-         VPfzXXkPsdu6+vc1IGIME0HhVU4rjindrTnDcc2gsfOmvMEuxo/Wby2TgPPhaj74alAh
-         3Rrn9UUznq3sT9Qb/hxM61DUtZgUPB8OYHG/B2WRCnebxf7M5KL4W6NMfCHg49MzTWiQ
-         8J9jGvodc2fCCXPPFtZ5i6l3aYJMIESIxRBPzVrd+RMBx5JgcOOOhdL6a8h4FoVj98Uo
-         A1pPHfz96ZQCZmXlpsD2V/JWP+5Zh45+415MhmiXeNhmOROQpD04BLmMV+u5K3AaquZB
-         88wA==
+        bh=sBwbqU4X+hNE91dFDdhNVeb0wgaIhMrDk27NuEJee50=;
+        b=KKS7nzsLDVSNc1VvbWRcglwTfyMTZEEnYUte/KDEWGqNeypXRZCXi1Dtie8xRm3mZF
+         qh/mWdgvddeWWyGwhkf3086WYUK0u23Tb5sb3tyAxdZLnUB310agADpJVgVq/Fgsiflp
+         niYozs+Qo6EGdY4n9T3uk82z2B2K01L3LjGYUqwVt+CCk0tgYJ+Kp9lFGnVh1vO/g920
+         JYKsXJ0KbM6lDHmR1zICJrVUejvqArz/dEDBp8HLokInn3uxP0BspjK8pPkirhkXy7fu
+         Vnz467al7dYqUppYkJGdH1ofy2YeDDIX764PRJA7X8mm/uhXbFcTTQZzq/y3hvcz4KFc
+         WMnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=6AlrLPoHEa++V99L7+ZXhJHR2MnP9U+NbGuctJWMxJE=;
-        b=PsZ4zsQVw9z9hh5C84EMKVs96DpO2p3xmzePnJMJCOghuUmdpgjakwajyYJsBcFsBw
-         IID6vFPZSogqib6ZD2T7ztwKP73Yr2BV6MmGDJXrqjxt+U6KnlVBhM1QClxP/Gvd5kx9
-         gK0cTCRpJSXcKtzhqDJG2Q//ttuAlV81rNIdX3JqNLeZ4NxHEatrAhrDxqVAUjTOGJr8
-         M5bo88oU8rmZgE8oYIc6f4LTsS3Eu9y1YFoN/N5Jpr9fn5OPzCCNorqtPO6y7whSS6HM
-         KpaXvODdfFhoagH3sKaeZPASo4ijJCzSQZ5pI3bmclGgbHN8ZqVrrWoV2JQu41b96rHr
-         7WXQ==
-X-Gm-Message-State: APjAAAXJavrF1raDCiT0DhGOv/dqwDH74++G3P2BrAJ1RznX10jS5kGY
-	if9ibuP95krpvrrSNmdeThefQj4o
-X-Google-Smtp-Source: APXvYqzi+sVHu8VG0O+VlkBK5lFI8X3/Vo1+1+1uShW6w4ASsOmFlmZxT/6ZdjwhL7XMnBAVU1eTwg==
-X-Received: by 2002:a63:ec48:: with SMTP id r8mr16802349pgj.387.1564163446138;
-        Fri, 26 Jul 2019 10:50:46 -0700 (PDT)
+        bh=sBwbqU4X+hNE91dFDdhNVeb0wgaIhMrDk27NuEJee50=;
+        b=OCVE8jHOKOk/FkoSeC5FHX61y0g0XD0LLBL/kB4HmrNsPz2txqZhE4Vh/Lt5tXlc/z
+         HTGehbRUWGW0h5QOxABxts0RGeZf9B907yJPyzKCcSJa4GdSNSLq29Dw0114KlYeCkMl
+         YpLxVjO3UpeYID8oUPbxjKZJ7oNpl664ZIcxILou0L4gZox1PZFxrytO3351uuKnYMNe
+         Ef8alzwBFQ/mcVEf7VwVXiF5sFdr5y0N8P2bAS1hVoLar7NptIJ1ziq9ztJ8hAQ6QAkt
+         wE1/vkF8Z+JFwdTzbx5YTGOHS7Hdz/y5qPmOQhy/N1BhF3yo5ZcQHO19iI/I3mPdH2Hg
+         KoqQ==
+X-Gm-Message-State: APjAAAU4oKePDU+zjy1F6ON6mxanYLf6A2xGskKGDaQiqbf+2ILXHhB5
+	XFPwdEPl3puGOyTIXgix+KTnFm0b
+X-Google-Smtp-Source: APXvYqwfAj7jNE7A1tUSHlSV+Fl/GcN3L2pLyWFK6+Idq2kWBgm74ODlPlrZyUiqUyFKdB1Q57AxHw==
+X-Received: by 2002:a17:90a:c68c:: with SMTP id n12mr99655403pjt.33.1564163447257;
+        Fri, 26 Jul 2019 10:50:47 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-126-117-207.tukw.qwest.net. [97.126.117.207])
-        by smtp.gmail.com with ESMTPSA id o24sm104287919pfp.135.2019.07.26.10.50.45
+        by smtp.gmail.com with ESMTPSA id o24sm104287919pfp.135.2019.07.26.10.50.46
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Fri, 26 Jul 2019 10:50:45 -0700 (PDT)
+        Fri, 26 Jul 2019 10:50:46 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org
-Subject: [PATCH 10/67] target/arm: Move test for AL into arm_skip_unless
-Date: Fri, 26 Jul 2019 10:49:35 -0700
-Message-Id: <20190726175032.6769-11-richard.henderson@linaro.org>
+Subject: [PATCH 11/67] target/arm: Add stubs for aa32 decodetree
+Date: Fri, 26 Jul 2019 10:49:36 -0700
+Message-Id: <20190726175032.6769-12-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190726175032.6769-1-richard.henderson@linaro.org>
 References: <20190726175032.6769-1-richard.henderson@linaro.org>
-X-TUID: ioRoDv+On1YR
+X-TUID: ARe+H4DHSXQl
 
-We will shortly be calling this function much more often.
+Add the infrastructure that will become the new decoder.
+No instructions adjusted so far.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate.c | 28 ++++++++++++----------------
- 1 file changed, 12 insertions(+), 16 deletions(-)
+ target/arm/translate.c       | 45 +++++++++++++++++++++++++++++++++++-
+ target/arm/Makefile.objs     | 18 +++++++++++++++
+ target/arm/a32-uncond.decode | 23 ++++++++++++++++++
+ target/arm/a32.decode        | 23 ++++++++++++++++++
+ target/arm/t32.decode        | 20 ++++++++++++++++
+ 5 files changed, 128 insertions(+), 1 deletion(-)
+ create mode 100644 target/arm/a32-uncond.decode
+ create mode 100644 target/arm/a32.decode
+ create mode 100644 target/arm/t32.decode
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 53c46fcdc4..36419025db 100644
+index 36419025db..4738b91957 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -7705,8 +7705,14 @@ static void arm_gen_condlabel(DisasContext *s)
- /* Skip this instruction if the ARM condition is false */
- static void arm_skip_unless(DisasContext *s, uint32_t cond)
- {
--    arm_gen_condlabel(s);
--    arm_gen_test_cc(cond ^ 1, s->condlabel);
-+    /*
-+     * Conditionally skip the insn. Note that both 0xe and 0xf mean
-+     * "always"; 0xf is not "never".
-+     */
-+    if (cond < 0xe) {
-+        arm_gen_condlabel(s);
-+        arm_gen_test_cc(cond ^ 1, s->condlabel);
-+    }
+@@ -7715,6 +7715,33 @@ static void arm_skip_unless(DisasContext *s, uint32_t cond)
+     }
  }
  
- static void disas_arm_insn(DisasContext *s, unsigned int insn)
-@@ -7944,11 +7950,9 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-         }
-         goto illegal_op;
-     }
--    if (cond != 0xe) {
--        /* if not always execute, we generate a conditional jump to
--           next instruction */
--        arm_skip_unless(s, cond);
--    }
++/*
++ * Include the generated decoders.
++ * Note that the T32 decoder reuses some of the trans_* functions
++ * initially declared by the A32 decoder, which results in duplicate
++ * declaration warnings.  Suppress them.
++ */
 +
-+    arm_skip_unless(s, cond);
++#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
++# pragma GCC diagnostic push
++# pragma GCC diagnostic ignored "-Wredundant-decls"
++# ifdef __clang__
++#  pragma GCC diagnostic ignored "-Wtypedef-redefinition"
++# endif
++#endif
++
++#include "decode-a32.inc.c"
++#include "decode-a32-uncond.inc.c"
++#include "decode-t32.inc.c"
++
++#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
++# pragma GCC diagnostic pop
++#endif
++
++/*
++ * Legacy decoder.
++ */
++
+ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+ {
+     unsigned int cond, val, op1, i, shift, rm, rs, rn, rd, sh;
+@@ -7733,7 +7760,8 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+         return;
+     }
+     cond = insn >> 28;
+-    if (cond == 0xf){
++
++    if (cond == 0xf) {
+         /* In ARMv3 and v4 the NV condition is UNPREDICTABLE; we
+          * choose to UNDEF. In ARMv5 and above the space is used
+          * for miscellaneous unconditional instructions.
+@@ -7741,6 +7769,11 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+         ARCH(5);
+ 
+         /* Unconditional instructions.  */
++        if (disas_a32_uncond(s, insn)) {
++            return;
++        }
++        /* fall back to legacy decoder */
++
+         if (((insn >> 25) & 7) == 1) {
+             /* NEON Data processing.  */
+             if (!arm_dc_feature(s, ARM_FEATURE_NEON)) {
+@@ -7953,6 +7986,11 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+ 
+     arm_skip_unless(s, cond);
+ 
++    if (disas_a32(s, insn)) {
++        return;
++    }
++    /* fall back to legacy decoder */
 +
      if ((insn & 0x0f900000) == 0x03000000) {
          if ((insn & (1 << 21)) == 0) {
              ARCH(6T2);
-@@ -12095,15 +12099,7 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-     dc->insn = insn;
- 
-     if (dc->condexec_mask && !thumb_insn_is_unconditional(dc, insn)) {
--        uint32_t cond = dc->condexec_cond;
--
--        /*
--         * Conditionally skip the insn. Note that both 0xe and 0xf mean
--         * "always"; 0xf is not "never".
--         */
--        if (cond < 0x0e) {
--            arm_skip_unless(dc, cond);
--        }
-+        arm_skip_unless(dc, dc->condexec_cond);
+@@ -9440,6 +9478,11 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
+         ARCH(6T2);
      }
  
-     if (is_16bit) {
++    if (disas_t32(s, insn)) {
++        return;
++    }
++    /* fall back to legacy decoder */
++
+     rn = (insn >> 16) & 0xf;
+     rs = (insn >> 12) & 0xf;
+     rd = (insn >> 8) & 0xf;
+diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+index 5cafc1eb6c..7806b4dac0 100644
+--- a/target/arm/Makefile.objs
++++ b/target/arm/Makefile.objs
+@@ -28,9 +28,27 @@ target/arm/decode-vfp-uncond.inc.c: $(SRC_PATH)/target/arm/vfp-uncond.decode $(D
+ 	  $(PYTHON) $(DECODETREE) --static-decode disas_vfp_uncond -o $@ $<,\
+ 	  "GEN", $(TARGET_DIR)$@)
+ 
++target/arm/decode-a32.inc.c: $(SRC_PATH)/target/arm/a32.decode $(DECODETREE)
++	$(call quiet-command,\
++	  $(PYTHON) $(DECODETREE) --static-decode disas_a32 -o $@ $<,\
++	  "GEN", $(TARGET_DIR)$@)
++
++target/arm/decode-a32-uncond.inc.c: $(SRC_PATH)/target/arm/a32-uncond.decode $(DECODETREE)
++	$(call quiet-command,\
++	  $(PYTHON) $(DECODETREE) --static-decode disas_a32_uncond -o $@ $<,\
++	  "GEN", $(TARGET_DIR)$@)
++
++target/arm/decode-t32.inc.c: $(SRC_PATH)/target/arm/t32.decode $(DECODETREE)
++	$(call quiet-command,\
++	  $(PYTHON) $(DECODETREE) --static-decode disas_t32 -o $@ $<,\
++	  "GEN", $(TARGET_DIR)$@)
++
+ target/arm/translate-sve.o: target/arm/decode-sve.inc.c
+ target/arm/translate.o: target/arm/decode-vfp.inc.c
+ target/arm/translate.o: target/arm/decode-vfp-uncond.inc.c
++target/arm/translate.o: target/arm/decode-a32.inc.c
++target/arm/translate.o: target/arm/decode-a32-uncond.inc.c
++target/arm/translate.o: target/arm/decode-t32.inc.c
+ 
+ obj-y += tlb_helper.o debug_helper.o
+ obj-y += translate.o op_helper.o
+diff --git a/target/arm/a32-uncond.decode b/target/arm/a32-uncond.decode
+new file mode 100644
+index 0000000000..8dee26d3b6
+--- /dev/null
++++ b/target/arm/a32-uncond.decode
+@@ -0,0 +1,23 @@
++# A32 unconditional instructions
++#
++#  Copyright (c) 2019 Linaro, Ltd
++#
++# This library is free software; you can redistribute it and/or
++# modify it under the terms of the GNU Lesser General Public
++# License as published by the Free Software Foundation; either
++# version 2 of the License, or (at your option) any later version.
++#
++# This library is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++# Lesser General Public License for more details.
++#
++# You should have received a copy of the GNU Lesser General Public
++# License along with this library; if not, see <http://www.gnu.org/licenses/>.
++
++#
++# This file is processed by scripts/decodetree.py
++#
++# All insns that have 0xf in insn[31:28] are decoded here.
++# All of those that have a COND field in insn[31:28] are in a32.decode
++#
+diff --git a/target/arm/a32.decode b/target/arm/a32.decode
+new file mode 100644
+index 0000000000..2d84a02861
+--- /dev/null
++++ b/target/arm/a32.decode
+@@ -0,0 +1,23 @@
++# A32 conditional instructions
++#
++#  Copyright (c) 2019 Linaro, Ltd
++#
++# This library is free software; you can redistribute it and/or
++# modify it under the terms of the GNU Lesser General Public
++# License as published by the Free Software Foundation; either
++# version 2 of the License, or (at your option) any later version.
++#
++# This library is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++# Lesser General Public License for more details.
++#
++# You should have received a copy of the GNU Lesser General Public
++# License along with this library; if not, see <http://www.gnu.org/licenses/>.
++
++#
++# This file is processed by scripts/decodetree.py
++#
++# All of the insn that have a COND field in insn[31:28] are here.
++# All insns that have 0xf in insn[31:28] are in a32u.decode.
++#
+diff --git a/target/arm/t32.decode b/target/arm/t32.decode
+new file mode 100644
+index 0000000000..ac01fb6958
+--- /dev/null
++++ b/target/arm/t32.decode
+@@ -0,0 +1,20 @@
++# Thumb2 instructions
++#
++#  Copyright (c) 2019 Linaro, Ltd
++#
++# This library is free software; you can redistribute it and/or
++# modify it under the terms of the GNU Lesser General Public
++# License as published by the Free Software Foundation; either
++# version 2 of the License, or (at your option) any later version.
++#
++# This library is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++# Lesser General Public License for more details.
++#
++# You should have received a copy of the GNU Lesser General Public
++# License along with this library; if not, see <http://www.gnu.org/licenses/>.
++
++#
++# This file is processed by scripts/decodetree.py
++#
 -- 
 2.17.1

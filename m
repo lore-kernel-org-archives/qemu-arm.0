@@ -1,88 +1,100 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp11478691wrv;
-        Thu, 25 Jul 2019 23:03:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwZ/aE50nyZInQKb9z5R0HgfjLDjzlVkwZsdAaXnK2KeS93A59kKDhqcxxfXP8WbY0Zj0dj
-X-Received: by 2002:ad4:4373:: with SMTP id u19mr67516757qvt.202.1564121011721;
-        Thu, 25 Jul 2019 23:03:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564121011; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp11486322wrv;
+        Thu, 25 Jul 2019 23:10:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw6zTIYCrqMr4fASHncnUB9LqWP3jLYX9ew7F87ADzDIWxKygJQ4W+KqICgVF6e55vxnlke
+X-Received: by 2002:a17:906:959:: with SMTP id j25mr69379509ejd.94.1564121458966;
+        Thu, 25 Jul 2019 23:10:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564121458; cv=none;
         d=google.com; s=arc-20160816;
-        b=NHe+Cx1NUwV5qrQLpvmWWTeuPeQMhtHpVb/HqQrFHl5jVWyhDBgw07JJ5VoDGs9HBa
-         1ZHY+D4qEFT1yw6/Jrm/UUph8r5D86p1W/4lJAe98yqHNXSlDk9/vLj4PbyOHRTNokAY
-         Epx2sBoUAyY/OCyYJ+BYEoeZ2Y+rJT20WjiDCsToqvppiTpELpT4smYSBS3Juu5OMcM0
-         MiBp5r/RlbcMUgC9oyVACicv2t3L6GxZhaB6nX4hMLMIpAHwRczA6nRUIjkPfu7d3njg
-         RHdd7EkPD4C/0okB32a44pNDapTtmeidgMneaVutHhZtPmeew9yg3VEjYUsBXvhztlfQ
-         6koA==
+        b=nLOqU/Uz4VjjLopBnqelq/8sRMezanv36PKmB8OyXlicLTVIU+QaNQrlwA6ndsWtvx
+         mA3HZAiZex/Cy8/ychA6JPEB996VZlAOdqhwJxVLbMnMPOvs8s8B416Ev7X04cTXAjp9
+         BqmsD669tjpevA4HLB/346hMoBMi4ArShAHlxQsge3LxZr6DA9sPEPsdI8dy6UhUvseg
+         MJGRU9Cc5a163CLI+YKBRiRWE9IaSn0jkbpqgb2I7hHM1mH+1oy2o9XLrnVTFTYBMXZt
+         5KPSOpQLIQSVG0KrCblvRkFqwTzwwBBDxoVtBPyT6GYiru3kqVWGZhNh8sBWIdyS2G8v
+         tVrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:to:from;
-        bh=b+p8otFpVNHnyjlC+YMEi0EH9ns+NWALrj2jCIZeXaY=;
-        b=A/U+GO+K5RDvn2QQ9dl3EeUwv1KkYmLYDIHS28SVUlw+2ijaDob8NUL8W4i0KHH5uL
-         qiVsJkSYI2TJ2pU6VbdQxb9CjYRP8mIY48aqV/L+hEZmfYmYs8r/DvSmvSnf6FEL4v13
-         2kkxVBzxwAbfbcv3J8a9naGuv5tdB7VpSjGnbx6TqLIRFJ9SKxsn6EvK3MIY8Yo4uwVk
-         1+UiTqleUppsMs0XUdx+2C7rN27ayr86fuahm7qUeWocRdD8QUfrHUcjFsNbAYoCIkQ5
-         bJaItV+nbegWJQwENsDm81ql9ZtyfXqmZfsMYeMlTTpYyLPQ3X8wN1fkieSbHc7ORJ92
-         leSA==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=+CKSmJY/FGQYHMgYVWAkMOHJmJzWL/EmlEhTzHXyM3Q=;
+        b=Bm/djyog/VgBLNuEIyA7wRqg0RM0AQrXg/f7/zmv9P+lhj20dA/TdTf8Ow962Ilanz
+         VzBZXxLYSnCOCjsO9wddTshRFttbPn25JaFKQUMWxNaL+vBVZuVN4WfRVf7Ug2ww1k/8
+         SKtj1IEjtFoBCisDTXprNVqLp1gg7rNFnUWFrxhO+5d2zxJAnjgTLcPRmTbDKw5XxLsK
+         pigb8x9U4Ol49c2O96rbkrTLVr1mNm58P7eGiPqXSf0FVNgDY9kljfdUnNJGkamU5Tur
+         vSCPQFQ5JRof+8jyWD/ModJFKlam25U/SRyF/xegkwRfDualG/KBPHTn2dWeNKjgPk3Z
+         68oA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t53si33185691qvc.91.2019.07.25.23.03.31
+        by mx.google.com with ESMTPS id a53si13008955eda.155.2019.07.25.23.10.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 25 Jul 2019 23:03:31 -0700 (PDT)
+        Thu, 25 Jul 2019 23:10:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:36392 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36430 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hqtKE-0003a7-9r
-	for alex.bennee@linaro.org; Fri, 26 Jul 2019 02:03:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51660)
+	id 1hqtRQ-0007T4-TR
+	for alex.bennee@linaro.org; Fri, 26 Jul 2019 02:10:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40437)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <tony.nguyen@bt.com>) id 1hqtK8-0003Yf-Ki
- for qemu-arm@nongnu.org; Fri, 26 Jul 2019 02:03:27 -0400
+ (envelope-from <philmd@redhat.com>) id 1hqtRK-0007MR-TP
+ for qemu-arm@nongnu.org; Fri, 26 Jul 2019 02:10:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hqtK6-0003Pr-Db
- for qemu-arm@nongnu.org; Fri, 26 Jul 2019 02:03:24 -0400
-Received: from smtpe1.intersmtp.com ([213.121.35.71]:57753)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hqtJu-0002vb-Gx; Fri, 26 Jul 2019 02:03:10 -0400
-Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- BWP09926076.bt.com (10.36.82.107) with Microsoft SMTP Server (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Fri, 26
- Jul 2019 07:03:05 +0100
-Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18e.domain1.systemhost.net (10.9.212.18) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Fri, 26 Jul 2019 07:03:05 +0100
-Received: from tpw09926dag18e.domain1.systemhost.net
- ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
- ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Fri, 26 Jul
- 2019 07:03:05 +0100
-From: <tony.nguyen@bt.com>
-To: <philmd@redhat.com>, <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v4 02/15] memory: Access MemoryRegion with
- MemOp
-Thread-Index: AQHVQs6us5Ke12ptjEW1c49AzysqcKbbJooAgAE/RY4=
-Date: Fri, 26 Jul 2019 06:03:05 +0000
-Message-ID: <1564120985317.14967@bt.com>
+ (envelope-from <philmd@redhat.com>) id 1hqtRI-0004s8-0U
+ for qemu-arm@nongnu.org; Fri, 26 Jul 2019 02:10:49 -0400
+Received: from mail-wm1-f67.google.com ([209.85.128.67]:36108)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hqtRE-0004oX-8v
+ for qemu-arm@nongnu.org; Fri, 26 Jul 2019 02:10:45 -0400
+Received: by mail-wm1-f67.google.com with SMTP id g67so42510494wme.1
+ for <qemu-arm@nongnu.org>; Thu, 25 Jul 2019 23:10:43 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=+CKSmJY/FGQYHMgYVWAkMOHJmJzWL/EmlEhTzHXyM3Q=;
+ b=Zwikja1u2ewK7Fx6nSdeu/g95tu8hoZR9duwCidDyJDIy/JACQlc+yBb1hFDE025Wj
+ am2t3caVTc75hxI89ofe7wkFSDrA5w62B3Zx8uG4ajRlAfu07ss95oaMWUFdSsxY2drr
+ BasJjmrLhMOyDkRcWceyIFr0bGSojNnwXoLWau9Hj2cNIOP7wrrMysSX4aoWv1nuOvpV
+ dkwpmBhQXBiKEHTwP5MEGtXcwyxX8VnLkyBl9y80br4Kum0lo3WahmooJCTl1QVKRz3j
+ lRqEnjp5/wTLma/eOeb2D55DrGMP036Jaq5Llx5ItE94yIRA0UHrFJFLnt/9RT+1M+VD
+ cquA==
+X-Gm-Message-State: APjAAAU/NGfAi/zK0AUXKlXrYPyAQmsIP0LUo4+4yINOUbR8L0FTKAtS
+ 3g+lAVmVgeZPCbi5URK2IsjcLA==
+X-Received: by 2002:a7b:c84c:: with SMTP id c12mr80806507wml.70.1564121442118; 
+ Thu, 25 Jul 2019 23:10:42 -0700 (PDT)
+Received: from [192.168.1.37] (190.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.190])
+ by smtp.gmail.com with ESMTPSA id z25sm55374341wmf.38.2019.07.25.23.10.40
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Thu, 25 Jul 2019 23:10:41 -0700 (PDT)
+To: tony.nguyen@bt.com, qemu-devel@nongnu.org
 References: <45d1ebe4b2ed4c039c9da20a738652df@tpw09926dag18e.domain1.systemhost.net>
- <1564048354001.54262@bt.com>, <ee5949da-4457-0560-4525-40e4d4aaef4a@redhat.com>
-In-Reply-To: <ee5949da-4457-0560-4525-40e4d4aaef4a@redhat.com>
-Accept-Language: en-AU, en-GB, en-US
-Content-Language: en-AU
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.187.101.42]
-Content-Type: multipart/alternative; boundary="_000_156412098531714967btcom_"
+ <1564048354001.54262@bt.com>
+ <ee5949da-4457-0560-4525-40e4d4aaef4a@redhat.com>
+ <1564120985317.14967@bt.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <dbc40cd4-f252-6b05-4edf-ae43143248b2@redhat.com>
+Date: Fri, 26 Jul 2019 08:10:39 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 213.121.35.71
+In-Reply-To: <1564120985317.14967@bt.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.128.67
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v4 02/15] memory: Access
  MemoryRegion with MemOp
 X-BeenThere: qemu-arm@nongnu.org
@@ -108,138 +120,53 @@ Cc: peter.maydell@linaro.org, walling@linux.ibm.com, sagark@eecs.berkeley.edu,
  aurelien@aurel32.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HVprviAaT3RN
+X-TUID: 1Gg+PUfIAS8Y
 
---_000_156412098531714967btcom_
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-On 7/25/19 9:45 PM, Philippe Mathieu-Daud=E9 wrote:
->On 7/25/19 11:52 AM, tony.nguyen@bt.com wrote:
->> Replacing size with size+sign+endianness (MemOp) will enable us to
->> collapse the two byte swaps, adjust_endianness and handle_bswap, along
->> the I/O path.
+On 7/26/19 8:03 AM, tony.nguyen@bt.com wrote:
+> On 7/25/19 9:45 PM, Philippe Mathieu-Daudé wrote: 
+>>On 7/25/19 11:52 AM, tony.nguyen@bt.com wrote:
+>>> Replacing size with size+sign+endianness (MemOp) will enable us to
+>>> collapse the two byte swaps, adjust_endianness and handle_bswap, along
+>>> the I/O path.
+>>> 
+>>> While interfaces are converted, callers will have existing unsigned
+>>> size coerced into a MemOp, and the callee will use this MemOp as an
+>>> unsigned size.
+>>> 
+>>> Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
+>>> ---
+>>>  include/exec/memop.h  | 4 ++++
+>>>  include/exec/memory.h | 9 +++++----
+>>>  memory.c              | 7 +++++--
+>>>  3 files changed, 14 insertions(+), 6 deletions(-)
+>>> 
+>>> diff --git a/include/exec/memop.h b/include/exec/memop.h
+>>> index ac58066..09c8d20 100644
+>>> --- a/include/exec/memop.h
+>>> +++ b/include/exec/memop.h
+>>> @@ -106,4 +106,8 @@ typedef enum MemOp {
+>>>      MO_SSIZE = MO_SIZE | MO_SIGN,
+>>>  } MemOp;
+>>> 
+>>> +/* No-op while memory_region_dispatch_[read|write] is converted to
+> MemOp */
+>>> +#define MEMOP_SIZE(op)  (op)    /* MemOp to size.  */
+>>> +#define SIZE_MEMOP(ul)  (ul)    /* Size to MemOp.  */
 >>
->> While interfaces are converted, callers will have existing unsigned
->> size coerced into a MemOp, and the callee will use this MemOp as an
->> unsigned size.
->>
->> Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
->> ---
->>  include/exec/memop.h  | 4 ++++
->>  include/exec/memory.h | 9 +++++----
->>  memory.c              | 7 +++++--
->>  3 files changed, 14 insertions(+), 6 deletions(-)
->>
->> diff --git a/include/exec/memop.h b/include/exec/memop.h
->> index ac58066..09c8d20 100644
->> --- a/include/exec/memop.h
->> +++ b/include/exec/memop.h
->> @@ -106,4 +106,8 @@ typedef enum MemOp {
->>      MO_SSIZE =3D MO_SIZE | MO_SIGN,
->>  } MemOp;
->>
->> +/* No-op while memory_region_dispatch_[read|write] is converted to MemO=
-p */
->> +#define MEMOP_SIZE(op)  (op)    /* MemOp to size.  */
->> +#define SIZE_MEMOP(ul)  (ul)    /* Size to MemOp.  */
->
->SIZE_MEMOP() is never used until patch #10 "memory: Access MemoryRegion
->with MemOp semantics", it would be clearer to only introduce the
->MEMOP_SIZE() no-op here, and directly introduce the correct SIZE_MEMOP()
->macro in patch #10.
+>>SIZE_MEMOP() is never used until patch #10 "memory: Access MemoryRegion
+>>with MemOp semantics", it would be clearer to only introduce the
+>>MEMOP_SIZE() no-op here, and directly introduce the correct SIZE_MEMOP()
+>>macro in patch #10.
+> 
+> SIZE_MEMOP() is used, and is the main change, in patches #3 to #10.
+> Perhaps you
+> meant MEMOP_SIZE()?
 
-SIZE_MEMOP() is used, and is the main change, in patches #3 to #10. Perhaps=
- you
-meant MEMOP_SIZE()?
+Eh, I inverted the macro names... :( Thanks for correcting me.
 
-Either way, you have raised an issue :)
-
-There is a lack of clarity in how the two macros are used to update the
-interfaces.?
-
-
---_000_156412098531714967btcom_
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<style type=3D"text/css" style=3D"display:none"><!-- P { margin-top: 0px; m=
-argin-bottom: 0px; } .EmailQuote { margin-left: 1pt; padding-left: 4pt; bor=
-der-left-width: 2px; border-left-style: solid; border-left-color: rgb(128, =
-0, 0); }--></style>
-</head>
-<body dir=3D"ltr" style=3D"font-size:12pt;color:#000000;background-color:#F=
-FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
-<p></p>
-<div>On 7/25/19 9:45 PM, Philippe Mathieu-Daud=E9 wrote:&nbsp;</div>
-<div>&gt;On 7/25/19 11:52 AM, tony.nguyen@bt.com wrote:</div>
-<div>&gt;&gt; Replacing size with size&#43;sign&#43;endianness (MemOp) will=
- enable us to</div>
-<div>&gt;&gt; collapse the two byte swaps, adjust_endianness and handle_bsw=
-ap, along</div>
-<div>&gt;&gt; the I/O path.</div>
-<div>&gt;&gt;&nbsp;</div>
-<div>&gt;&gt; While interfaces are converted, callers will have existing un=
-signed</div>
-<div>&gt;&gt; size coerced into a MemOp, and the callee will use this MemOp=
- as an</div>
-<div>&gt;&gt; unsigned size.</div>
-<div>&gt;&gt;&nbsp;</div>
-<div>&gt;&gt; Signed-off-by: Tony Nguyen &lt;tony.nguyen@bt.com&gt;</div>
-<div>&gt;&gt; ---</div>
-<div>&gt;&gt; &nbsp;include/exec/memop.h &nbsp;| 4 &#43;&#43;&#43;&#43;</di=
-v>
-<div>&gt;&gt; &nbsp;include/exec/memory.h | 9 &#43;&#43;&#43;&#43;&#43;----=
-</div>
-<div>&gt;&gt; &nbsp;memory.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
-p;| 7 &#43;&#43;&#43;&#43;&#43;--</div>
-<div>&gt;&gt; &nbsp;3 files changed, 14 insertions(&#43;), 6 deletions(-)</=
-div>
-<div>&gt;&gt;&nbsp;</div>
-<div>&gt;&gt; diff --git a/include/exec/memop.h b/include/exec/memop.h</div=
->
-<div>&gt;&gt; index ac58066..09c8d20 100644</div>
-<div>&gt;&gt; --- a/include/exec/memop.h</div>
-<div>&gt;&gt; &#43;&#43;&#43; b/include/exec/memop.h</div>
-<div>&gt;&gt; @@ -106,4 &#43;106,8 @@ typedef enum MemOp {</div>
-<div>&gt;&gt; &nbsp; &nbsp; &nbsp;MO_SSIZE =3D MO_SIZE | MO_SIGN,</div>
-<div>&gt;&gt; &nbsp;} MemOp;</div>
-<div>&gt;&gt;&nbsp;</div>
-<div>&gt;&gt; &#43;/* No-op while memory_region_dispatch_[read|write] is co=
-nverted to MemOp */</div>
-<div>&gt;&gt; &#43;#define MEMOP_SIZE(op) &nbsp;(op) &nbsp; &nbsp;/* MemOp =
-to size. &nbsp;*/</div>
-<div>&gt;&gt; &#43;#define SIZE_MEMOP(ul) &nbsp;(ul) &nbsp; &nbsp;/* Size t=
-o MemOp. &nbsp;*/</div>
-<div>&gt;</div>
-<div>&gt;SIZE_MEMOP() is never used until patch #10 &quot;memory: Access Me=
-moryRegion</div>
-<div>&gt;with MemOp semantics&quot;, it would be clearer to only introduce =
-the</div>
-<div>&gt;MEMOP_SIZE() no-op here, and directly introduce the correct SIZE_M=
-EMOP()</div>
-<div>&gt;macro in patch #10.</div>
-<div><br>
-</div>
-<div>SIZE_MEMOP() is used, and is the main change, in patches #3 to #10. Pe=
-rhaps you</div>
-<div>meant MEMOP_SIZE()?</div>
-<div><br>
-</div>
-<div>Either way, you have raised an issue :)</div>
-<div><br>
-</div>
-<div>There is a lack of clarity in how the two macros are used to update th=
-e</div>
-<div>interfaces.&#8203;<br>
-</div>
-<p><br>
-</p>
-</body>
-</html>
-
---_000_156412098531714967btcom_--
+> Either way, you have raised an issue :)
+> 
+> There is a lack of clarity in how the two macros are used to update the
+> interfaces.​
+> 
+> 

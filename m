@@ -1,317 +1,283 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp207257wrv;
-        Fri, 26 Jul 2019 10:51:13 -0700 (PDT)
-X-Received: by 2002:a17:902:a03:: with SMTP id 3mr96217430plo.302.1564163472975;
-        Fri, 26 Jul 2019 10:51:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564163472; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp207267wrv;
+        Fri, 26 Jul 2019 10:51:14 -0700 (PDT)
+X-Received: by 2002:a17:902:b68f:: with SMTP id c15mr98469008pls.104.1564163474136;
+        Fri, 26 Jul 2019 10:51:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564163474; cv=none;
         d=google.com; s=arc-20160816;
-        b=qw4/c3j0FTdWy4Od5Hu3MRdI4RDL2I7DAssZ+uHWAljt4OZkq6vd/irbImQ6tuxpQl
-         ojXs/1C4NI0bSu2W0p3LHZu+q8oXTNX/PRTlVXsZnreUxJ20Fy3IcZQgkX45i5w3LHh9
-         VzPyqXX7D2bncv6ccCNLm2fVaKBXWQzGSqpE2p46i2xNV1i+L1YvYDGrvTKxN4u4I3+J
-         ZqehhAQe6oOdXGYSSTksCmw39oKrp1BpBWwZOVFnKoa8u7jauOMiqSe6RI0Z05mq5onP
-         pINc2kMhjFZKF4G/plWkeEHqOtA8nQygE9fa7L+fhp5JdDE5jSNCeAHkhUi8Z+8rSt6x
-         Z0eg==
+        b=WLdOXB7DO9Uk3eqTw9Jw+1Zt9BEML8PsMOCrThv1B7DRTODJCqyo7bjlJbnMZY29bn
+         gRW1TRnVRK1wcSEDzRL2BgzPZ/8SKV4v4BmJ8nluQe+AF3kkbcvtjaxPkBarpJki/KyV
+         dpVqSD2ve9+TaWOP0gVDRgORulBsyToroz12yhH6N2i18EJAqVa+8Ek+FMuNWyXXXhAI
+         SU46qNbSr2fyMmfMbmXFiniLpi5cuJqjkXawTasbfzF9x1tfJEISV4KX//T64YIl2ZKo
+         UIWyZahGlcA2G0W9xTJXjQGaOKgp9Nquka6f24cIs/kBWVdfMkLdjYkA1+Pbvi+IoJhj
+         +3lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=9vUZl6rgWeXH1YY9hBMz+TVXEkH2e7x0hrOM8enxV9o=;
-        b=uKQ0o8PiCUXIkg8o2wOO88GV9+zXUprq76sNF3pwqX9CvC5n5NfDpsrob8VibCjOfY
-         ICNU1PWLDZW66eoozc1VFnCQ6+nr6LRuCjibB2wAHuS6i3CAfhSFe+NtqPWvD7sShBGJ
-         0vWHJ4VkCQOex+jCobF5qqZegVeNk/72Q6I4NSOdQvFb5h51DP3mKIVUiQ89/PJ8oWhV
-         Sc6utmKsaOsmn+KOiZksF/78MGDIegqGS6hU6djh7rTuySEnG82l5y9JEsdTFBjC/Gat
-         MsXBUX2VAKIM3g5ijluybcegTcYtbKywcbjKJTJyL4WdM5lqe5wifZiema02rxmyjQvM
-         wWgQ==
+        bh=VzkvUsUZh9EVbOcurylb0EvE0t9ji9eIajoY1fu0OlU=;
+        b=PtSzHAyVj/FINbiwNy1eFVnsQHdSBb6sJktii//Zzxe6bbinsJfb31pI9qKb/vBofX
+         SPYEoUNg3rZXPCLIHHUWy0Le754V00Y82UtbKxT3q5GQ6et/tQGdA+vq4CnbW8ND7Msr
+         qAroCJN7PYfNWX7094/QjnR8B+LozSaK3BMkXvEe/K9X2ji2D08wIO5zD144lwnBNQT0
+         SRFzzzUcChwGx+jC01/5uF8pLMDTCyeQteacOHPiDYbAh7mnzOPJQqI7zU0v+ipfRAcl
+         DuRtPHSjl5HbP00JeUNrwiUcxUK7r7OkStWsueDjVPpoy1P1qqe1QxgizA208SA4tFYd
+         GvZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uUD8jLH2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JTiaH8qg;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id i20sor34497367pfa.12.2019.07.26.10.51.12
+        by mx.google.com with SMTPS id o21sor64981523pll.8.2019.07.26.10.51.13
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 26 Jul 2019 10:51:12 -0700 (PDT)
+        Fri, 26 Jul 2019 10:51:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uUD8jLH2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JTiaH8qg;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=9vUZl6rgWeXH1YY9hBMz+TVXEkH2e7x0hrOM8enxV9o=;
-        b=uUD8jLH2uTXEyAQE2vjg5gcofjHMYcFoOZOQlE3d3QNnTxp9M2lHr6Q9AqEEwEU/WU
-         DcUStg+cB+EOQElxrpyqPCzYOPOdKYygIf6012cyxZ/BNe+yyrM8IUo1u0Tt9cp/NGxy
-         qN6ffZrS5mGRR1libC/Xfn0JQut6I/CI2bNdZZkaI8W700q5uVjS3g/ehCcHsa5EBGpR
-         OCLfR8VKPJWqwTIJwLXdBsMFSwXeB884Z+hLge8OMaQ4nJh6ubrH+43R51mdPVl6SpW0
-         CWC7Om8iJi/PoGJRIhJEkadFNM30DEfzSAol/YHGKVACqOS9cSetZXk839MtKMS/rKxt
-         R9Rw==
+        bh=VzkvUsUZh9EVbOcurylb0EvE0t9ji9eIajoY1fu0OlU=;
+        b=JTiaH8qg13W5L7ZBXSUJXBfgCem9ARL1uiQFgjSz3GSsuW+K63GFGoVMb1eXI/kHqS
+         j5hIjUWGgN1EPPkz2rr1n64pKilRQCsxioGELbw3wawI+4wddJNXnP1nhoWD8pNmyV+C
+         mNdpGdJaP81pZoxCI7PxFV7p6yVbbTITfQIw2go7rFoCe9x7xUaeBIACssl/3OzYWVCu
+         ZY+9QXhV0w6pPtg4I9FY8QkZLOQp4g2sbKK8TBKlGAtn5myrOZEnDGIg/POrKhl92QWA
+         8lj0WeCyZz+FbWjo0mJ9pL4EKimeh8qPjin+JDCX8JxUhY/7WK2QK+16mujg8FbpX1GH
+         n4lA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=9vUZl6rgWeXH1YY9hBMz+TVXEkH2e7x0hrOM8enxV9o=;
-        b=oNtk4aEG2mMSuJQrk2gkxZavCSm1+kxrcShTp7OxvIIGKu3GsimmE/20bcWM1sdUhn
-         GiO1EXmtrzjEV48EiG+NJpVTJX3JHDsGKIl7MBORdjbVYQvmNrdwBrAWaNKJyNQhVFxN
-         PVvwXbNzviqOomUNGq+FAMXES0oGkEmP8eoIFRNmr5v0785VcNSC/oYnUC7cM1IuuCnA
-         W6CwsrT9BM0/ApgVGqjmSNJbhPdKuwLG0KGr6X5DSghb3G70gpR+nmrn/1YLwzqaVVnR
-         zLIZVkUA+UGzc9TxLzIKbipAlGzu4byjew1SYjux8fh+N3e/EuNOuF/DzC34T6+jRLQs
-         MGQg==
-X-Gm-Message-State: APjAAAXAsfnkznUPO9nAlPQJwOBOhjJFFT8K6R4ujX0OOJoXFoFO0YAP
-	HbQvv7OAdRL7pFEjunFzL4twReiD
-X-Google-Smtp-Source: APXvYqw1Z6xsXa5FzIq4cNUlrDXl5QQdDXmbMlUG7+/edA0B7VdxbITfD8QJqFKkQ7ZzOxAvEI+TVA==
-X-Received: by 2002:aa7:9298:: with SMTP id j24mr22747609pfa.58.1564163472492;
-        Fri, 26 Jul 2019 10:51:12 -0700 (PDT)
+        bh=VzkvUsUZh9EVbOcurylb0EvE0t9ji9eIajoY1fu0OlU=;
+        b=DdP7jzJoS9VeXK2n0GkXIz6D9Q0B8zEw6JxPlN0+siCdn5V+o6z2vKeviB/iXnxPah
+         hZVBrbPouvEqyAF23c1DIG709Hc7cMOF9gu89RK5Lq2o0r0ksnIqUMToeTJNOnNGzXIc
+         lYBYD6CyHQRBPDfZINu9pgRKpfx2V0yNSYurvUSb/aaUVDte/rYwkERAKdVPuBDcggdW
+         X/hQg3rN2RNJAgOa/0JVCbB8rNFC43PV1wwVlFmBemGrasDQCtjY+f45qeCh7S4taIcy
+         QFQa1iKMy78fRz/iAWIoR6RRq6fcEtqPb7eLwilx7nCJp7+aOhQzDKnHXe6AQGRRi4OH
+         DCrQ==
+X-Gm-Message-State: APjAAAXVtyXITYU6Xg+z1dgqzNDwD4sddprZA4YslD6fhabHh7NMN77u
+	pcU4wfFJ3tJebZ7Q3SJzzExE6KeKDuLYLA==
+X-Google-Smtp-Source: APXvYqxWWCMF/SkQ5z4AGVssYKZpV0IvQ5lNu0WWehVYQr1IZCsGOhBghnGhwiVr2MoONTwazEpk0g==
+X-Received: by 2002:a17:902:aa83:: with SMTP id d3mr94715985plr.74.1564163473666;
+        Fri, 26 Jul 2019 10:51:13 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-126-117-207.tukw.qwest.net. [97.126.117.207])
-        by smtp.gmail.com with ESMTPSA id o24sm104287919pfp.135.2019.07.26.10.51.11
+        by smtp.gmail.com with ESMTPSA id o24sm104287919pfp.135.2019.07.26.10.51.12
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Fri, 26 Jul 2019 10:51:11 -0700 (PDT)
+        Fri, 26 Jul 2019 10:51:13 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	alex.bennee@linaro.org
-Subject: [PATCH 32/67] target/arm: Convert RFE and SRS
-Date: Fri, 26 Jul 2019 10:49:57 -0700
-Message-Id: <20190726175032.6769-33-richard.henderson@linaro.org>
+Subject: [PATCH 33/67] target/arm: Convert Clear-Exclusive, Barriers
+Date: Fri, 26 Jul 2019 10:49:58 -0700
+Message-Id: <20190726175032.6769-34-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190726175032.6769-1-richard.henderson@linaro.org>
 References: <20190726175032.6769-1-richard.henderson@linaro.org>
-X-TUID: VhvdBHVUYPaG
+X-TUID: DvrA87nXAtFP
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate.c       | 150 ++++++++++++++---------------------
- target/arm/a32-uncond.decode |   8 ++
- target/arm/t32.decode        |  12 +++
- 3 files changed, 81 insertions(+), 89 deletions(-)
+ target/arm/translate.c       | 122 +++++++++++++++--------------------
+ target/arm/a32-uncond.decode |  10 +++
+ target/arm/t32.decode        |  10 +++
+ 3 files changed, 73 insertions(+), 69 deletions(-)
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 7ea118a795..b43b344f96 100644
+index b43b344f96..797e8f7344 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -9991,16 +9991,71 @@ static bool trans_SVC(DisasContext *s, arg_SVC *a)
+@@ -10049,6 +10049,58 @@ static bool trans_SRS(DisasContext *s, arg_SRS *a)
      return true;
  }
  
 +/*
-+ * Unconditional system instructions
++ * Clear-Exclusive, Barriers
 + */
 +
-+static bool trans_RFE(DisasContext *s, arg_RFE *a)
++static bool trans_CLREX(DisasContext *s, arg_CLREX *a)
 +{
-+    int32_t offset;
-+    TCGv_i32 addr, t1, t2;
-+
-+    if (IS_USER(s) || !ENABLE_ARCH_6) {
++    if (!ENABLE_ARCH_6K) {
 +        return false;
 +    }
-+
-+    addr = load_reg(s, a->rn);
-+
-+    switch (a->pu) {
-+    case 0: offset = -4; break; /* DA */
-+    case 1: offset =  0; break; /* IA */
-+    case 2: offset = -8; break; /* DB */
-+    case 3: offset =  4; break; /* IB */
-+    default:
-+        g_assert_not_reached();
-+    }
-+    tcg_gen_addi_i32(addr, addr, offset);
-+
-+    /* Load PC into tmp and CPSR into tmp2.  */
-+    t1 = tcg_temp_new_i32();
-+    gen_aa32_ld32u(s, t1, addr, get_mem_index(s));
-+    tcg_gen_addi_i32(addr, addr, 4);
-+    t2 = tcg_temp_new_i32();
-+    gen_aa32_ld32u(s, t2, addr, get_mem_index(s));
-+
-+    if (a->w) {
-+        /* Base writeback.  */
-+        switch (a->pu) {
-+        case 0: offset = -8; break;
-+        case 1: offset =  4; break;
-+        case 2: offset = -4; break;
-+        case 3: offset =  0; break;
-+        }
-+        tcg_gen_addi_i32(addr, addr, offset);
-+        store_reg(s, a->rn, addr);
-+    } else {
-+        tcg_temp_free_i32(addr);
-+    }
-+    gen_rfe(s, t1, t2);
++    gen_clrex(s);
 +    return true;
 +}
 +
-+static bool trans_SRS(DisasContext *s, arg_SRS *a)
++static bool trans_DSB(DisasContext *s, arg_DSB *a)
 +{
-+    if (!ENABLE_ARCH_6) {
++    if (!s->thumb && !ENABLE_ARCH_7) {
 +        return false;
 +    }
-+    gen_srs(s, a->mode, a->pu, a->w);
++    tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
++    return true;
++}
++
++static bool trans_DMB(DisasContext *s, arg_DMB *a)
++{
++    return trans_DSB(s, NULL);
++}
++
++static bool trans_ISB(DisasContext *s, arg_ISB *a)
++{
++    /*
++     * We need to break the TB after this insn to execute
++     * self-modifying code correctly and also to take
++     * any pending interrupts immediately.
++     */
++    gen_goto_tb(s, 0, s->pc & ~1);
++    return true;
++}
++
++static bool trans_SB(DisasContext *s, arg_SB *a)
++{
++    if (!dc_isar_feature(aa32_sb, s)) {
++        return false;
++    }
++    /*
++     * TODO: There is no speculation barrier opcode
++     * for TCG; MB and end the TB instead.
++     */
++    tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
++    gen_goto_tb(s, 0, s->pc & ~1);
 +    return true;
 +}
 +
  /*
   * Legacy decoder.
   */
- 
- static void disas_arm_insn(DisasContext *s, unsigned int insn)
- {
--    unsigned int cond, op1, i, rn;
--    TCGv_i32 tmp;
--    TCGv_i32 tmp2;
--    TCGv_i32 addr;
-+    unsigned int cond, op1;
- 
-     /* M variants do not implement ARM mode; this must raise the INVSTATE
-      * UsageFault exception.
-@@ -10119,52 +10174,6 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-             default:
-                 goto illegal_op;
+@@ -10142,38 +10194,6 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                 s->base.is_jmp = DISAS_UPDATE;
              }
--        } else if ((insn & 0x0e5fffe0) == 0x084d0500) {
--            /* srs */
--            ARCH(6);
--            gen_srs(s, (insn & 0x1f), (insn >> 23) & 3, insn & (1 << 21));
--            return;
--        } else if ((insn & 0x0e50ffe0) == 0x08100a00) {
--            /* rfe */
--            int32_t offset;
--            if (IS_USER(s))
--                goto illegal_op;
--            ARCH(6);
--            rn = (insn >> 16) & 0xf;
--            addr = load_reg(s, rn);
--            i = (insn >> 23) & 3;
--            switch (i) {
--            case 0: offset = -4; break; /* DA */
--            case 1: offset = 0; break; /* IA */
--            case 2: offset = -8; break; /* DB */
--            case 3: offset = 4; break; /* IB */
--            default: abort();
--            }
--            if (offset)
--                tcg_gen_addi_i32(addr, addr, offset);
--            /* Load PC into tmp and CPSR into tmp2.  */
--            tmp = tcg_temp_new_i32();
--            gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
--            tcg_gen_addi_i32(addr, addr, 4);
--            tmp2 = tcg_temp_new_i32();
--            gen_aa32_ld32u(s, tmp2, addr, get_mem_index(s));
--            if (insn & (1 << 21)) {
--                /* Base writeback.  */
--                switch (i) {
--                case 0: offset = -8; break;
--                case 1: offset = 4; break;
--                case 2: offset = -4; break;
--                case 3: offset = 0; break;
--                default: abort();
+             return;
+-        } else if ((insn & 0x0fffff00) == 0x057ff000) {
+-            switch ((insn >> 4) & 0xf) {
+-            case 1: /* clrex */
+-                ARCH(6K);
+-                gen_clrex(s);
+-                return;
+-            case 4: /* dsb */
+-            case 5: /* dmb */
+-                ARCH(7);
+-                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
+-                return;
+-            case 6: /* isb */
+-                /* We need to break the TB after this insn to execute
+-                 * self-modifying code correctly and also to take
+-                 * any pending interrupts immediately.
+-                 */
+-                gen_goto_tb(s, 0, s->pc & ~1);
+-                return;
+-            case 7: /* sb */
+-                if ((insn & 0xf) || !dc_isar_feature(aa32_sb, s)) {
+-                    goto illegal_op;
 -                }
--                if (offset)
--                    tcg_gen_addi_i32(addr, addr, offset);
--                store_reg(s, rn, addr);
--            } else {
--                tcg_temp_free_i32(addr);
+-                /*
+-                 * TODO: There is no speculation barrier opcode
+-                 * for TCG; MB and end the TB instead.
+-                 */
+-                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
+-                gen_goto_tb(s, 0, s->pc & ~1);
+-                return;
+-            default:
+-                goto illegal_op;
 -            }
--            gen_rfe(s, tmp, tmp2);
--            return;
          } else if ((insn & 0x0e000f00) == 0x0c000100) {
              if (arm_dc_feature(s, ARM_FEATURE_IWMMXT)) {
                  /* iWMMXt register transfer.  */
-@@ -10324,7 +10333,6 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
-     uint32_t imm, offset;
-     uint32_t rd, rn, rm, rs;
-     TCGv_i32 tmp;
--    TCGv_i32 tmp2;
-     TCGv_i32 addr;
-     int op;
- 
-@@ -10473,44 +10481,8 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
-                 goto illegal_op;
-             }
-         } else {
--            /* Load/store multiple, RFE, SRS.  */
--            if (((insn >> 23) & 1) == ((insn >> 24) & 1)) {
--                /* RFE, SRS: not available in user mode or on M profile */
--                if (IS_USER(s) || arm_dc_feature(s, ARM_FEATURE_M)) {
--                    goto illegal_op;
--                }
--                if (insn & (1 << 20)) {
--                    /* rfe */
--                    addr = load_reg(s, rn);
--                    if ((insn & (1 << 24)) == 0)
--                        tcg_gen_addi_i32(addr, addr, -8);
--                    /* Load PC into tmp and CPSR into tmp2.  */
--                    tmp = tcg_temp_new_i32();
--                    gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
--                    tcg_gen_addi_i32(addr, addr, 4);
--                    tmp2 = tcg_temp_new_i32();
--                    gen_aa32_ld32u(s, tmp2, addr, get_mem_index(s));
--                    if (insn & (1 << 21)) {
--                        /* Base writeback.  */
--                        if (insn & (1 << 24)) {
--                            tcg_gen_addi_i32(addr, addr, 4);
--                        } else {
--                            tcg_gen_addi_i32(addr, addr, -4);
+@@ -10636,43 +10656,7 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
+                             gen_set_psr_im(s, offset, 0, imm);
+                         }
+                         break;
+-                    case 3: /* Special control operations.  */
+-                        if (!arm_dc_feature(s, ARM_FEATURE_V7) &&
+-                            !arm_dc_feature(s, ARM_FEATURE_M)) {
+-                            goto illegal_op;
 -                        }
--                        store_reg(s, rn, addr);
--                    } else {
--                        tcg_temp_free_i32(addr);
--                    }
--                    gen_rfe(s, tmp, tmp2);
--                } else {
--                    /* srs */
--                    gen_srs(s, (insn & 0x1f), (insn & (1 << 24)) ? 1 : 2,
--                            insn & (1 << 21));
--                }
--            } else {
--                /* Load/store multiple, in decodetree */
--                goto illegal_op;
--            }
-+            /* Load/store multiple, RFE, SRS, in decodetree */
-+            goto illegal_op;
-         }
-         break;
-     case 5:
+-                        op = (insn >> 4) & 0xf;
+-                        switch (op) {
+-                        case 2: /* clrex */
+-                            gen_clrex(s);
+-                            break;
+-                        case 4: /* dsb */
+-                        case 5: /* dmb */
+-                            tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
+-                            break;
+-                        case 6: /* isb */
+-                            /* We need to break the TB after this insn
+-                             * to execute self-modifying code correctly
+-                             * and also to take any pending interrupts
+-                             * immediately.
+-                             */
+-                            gen_goto_tb(s, 0, s->pc & ~1);
+-                            break;
+-                        case 7: /* sb */
+-                            if ((insn & 0xf) || !dc_isar_feature(aa32_sb, s)) {
+-                                goto illegal_op;
+-                            }
+-                            /*
+-                             * TODO: There is no speculation barrier opcode
+-                             * for TCG; MB and end the TB instead.
+-                             */
+-                            tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
+-                            gen_goto_tb(s, 0, s->pc & ~1);
+-                            break;
+-                        default:
+-                            goto illegal_op;
+-                        }
+-                        break;
++                    case 3: /* Special control operations, in decodetree */
+                     case 4: /* bxj, in decodetree */
+                     case 5: /* eret, in decodetree */
+                     case 6: /* MRS, in decodetree */
 diff --git a/target/arm/a32-uncond.decode b/target/arm/a32-uncond.decode
-index 573ac2cf8e..3b961233e5 100644
+index 3b961233e5..b077958cec 100644
 --- a/target/arm/a32-uncond.decode
 +++ b/target/arm/a32-uncond.decode
-@@ -29,3 +29,11 @@
- %imm24h          0:s24 24:1 !function=times_2
+@@ -22,6 +22,7 @@
+ # All of those that have a COND field in insn[31:28] are in a32.decode
+ #
  
- BLX_i            1111 101 . ........................          &i imm=%imm24h
++&empty           !extern
+ &i               !extern imm
+ 
+ # Branch with Link and Exchange
+@@ -37,3 +38,12 @@ BLX_i            1111 101 . ........................          &i imm=%imm24h
+ 
+ RFE              1111 100 pu:2 0 w:1 1 rn:4 0000 1010 0000 0000   &rfe
+ SRS              1111 110 pu:2 1 w:1 0 1101 0000 0101 000 mode:5  &srs
 +
-+# System Instructions
++# Clear-Exclusive, Barriers
 +
-+&rfe             rn w pu
-+&srs             mode w pu
-+
-+RFE              1111 100 pu:2 0 w:1 1 rn:4 0000 1010 0000 0000   &rfe
-+SRS              1111 110 pu:2 1 w:1 0 1101 0000 0101 000 mode:5  &srs
++# QEMU does not require the option field for the barriers.
++CLREX            1111 0101 0111 1111 1111 0000 0001 1111
++DSB              1111 0101 0111 1111 1111 0000 0100 ----
++DMB              1111 0101 0111 1111 1111 0000 0101 ----
++ISB              1111 0101 0111 1111 1111 0000 0110 ----
++SB               1111 0101 0111 1111 1111 0000 0111 0000
 diff --git a/target/arm/t32.decode b/target/arm/t32.decode
-index ab7d7ba100..26b51c3bb2 100644
+index 26b51c3bb2..9fe1500fe0 100644
 --- a/target/arm/t32.decode
 +++ b/target/arm/t32.decode
-@@ -582,6 +582,18 @@ STM              1110 1001 00.0 .... ................         @ldstm i=0 b=1
- LDM              1110 1000 10.1 .... ................         @ldstm i=1 b=0
- LDM              1110 1001 00.1 .... ................         @ldstm i=0 b=1
- 
-+&rfe             !extern rn w pu
-+@rfe             .... .... .. w:1 . rn:4 ................     &rfe
+@@ -306,6 +306,16 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 ....      @rdm
+       # of the space is "reserved hint, behaves as nop".
+       NOP        1111 0011 1010 1111 1000 0000 ---- ----
+     }
 +
-+RFE              1110 1000 00.1 .... 1100000000000000         @rfe pu=2
-+RFE              1110 1001 10.1 .... 1100000000000000         @rfe pu=1
++    # Miscelaneous control
++    {
++      CLREX      1111 0011 1011 1111 1000 1111 0010 1111
++      DSB        1111 0011 1011 1111 1000 1111 0100 ----
++      DMB        1111 0011 1011 1111 1000 1111 0101 ----
++      ISB        1111 0011 1011 1111 1000 1111 0110 ----
++      SB         1111 0011 1011 1111 1000 1111 0111 0000
++    }
 +
-+&srs             !extern mode w pu
-+@srs             .... .... .. w:1 . .... ........... mode:5   &srs
-+
-+SRS              1110 1000 00.0 1101 1100 0000 000. ....      @srs pu=2
-+SRS              1110 1001 10.0 1101 1100 0000 000. ....      @srs pu=1
-+
- # Branches
- 
- %imm24           26:s1 13:1 11:1 16:10 0:11 !function=t32_branch24
+     # Note that the v7m insn overlaps both the normal and banked insn.
+     {
+       MRS_bank   1111 0011 111 r:1 .... 1000 rd:4   001. 0000  \
 -- 
 2.17.1

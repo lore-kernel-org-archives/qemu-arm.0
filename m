@@ -1,70 +1,70 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3248715wrv;
-        Mon, 29 Jul 2019 08:01:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwwhh1U6Pz/6MAMFXodAtsKbr4YI2F7MJWoTn47c/F+aRSZo5QAJen3jbk/QBaODK1dmksH
-X-Received: by 2002:ab0:6e2:: with SMTP id g89mr23599951uag.56.1564412508271;
-        Mon, 29 Jul 2019 08:01:48 -0700 (PDT)
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3248863wrv;
+        Mon, 29 Jul 2019 08:01:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxha/Mvd5v9jiwaOkkY2ShzoAN/wG5DP8Vu2xJIA3pyh2pkKO/ihhr5R4M+qiFNzjWS67il
+X-Received: by 2002:ae9:ee14:: with SMTP id i20mr66121915qkg.428.1564412514490;
+        Mon, 29 Jul 2019 08:01:54 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c22si13552565uas.145.2019.07.29.08.01.48
+        by mx.google.com with ESMTPS id p1si12801744vsh.223.2019.07.29.08.01.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jul 2019 08:01:48 -0700 (PDT)
+        Mon, 29 Jul 2019 08:01:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=EnWuoyn6;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=CroHY+Il;
        arc=fail (body hash mismatch);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52928 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52934 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hs79n-00005J-NU
-	for alex.bennee@linaro.org; Mon, 29 Jul 2019 11:01:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37514)
+	id 1hs79s-0000JB-PK
+	for alex.bennee@linaro.org; Mon, 29 Jul 2019 11:01:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37635)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <damien.hedde@greensocs.com>) id 1hs775-0003qV-8q
- for qemu-arm@nongnu.org; Mon, 29 Jul 2019 10:59:01 -0400
+ (envelope-from <damien.hedde@greensocs.com>) id 1hs779-00040t-EK
+ for qemu-arm@nongnu.org; Mon, 29 Jul 2019 10:59:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1hs773-0004QA-3W
- for qemu-arm@nongnu.org; Mon, 29 Jul 2019 10:58:59 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:47988)
+ (envelope-from <damien.hedde@greensocs.com>) id 1hs777-0004Tw-Di
+ for qemu-arm@nongnu.org; Mon, 29 Jul 2019 10:59:03 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:48070)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1hs772-0004PP-Qz; Mon, 29 Jul 2019 10:58:57 -0400
+ id 1hs777-0004TL-1w; Mon, 29 Jul 2019 10:59:01 -0400
 Received: from kouign-amann.bar.greensocs.com (unknown [172.16.11.117])
- by beetle.greensocs.com (Postfix) with ESMTPS id A311D96F59;
- Mon, 29 Jul 2019 14:58:54 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPS id D39C596F5E;
+ Mon, 29 Jul 2019 14:58:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1564412335;
+ s=mail; t=1564412340;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=rxGn1CVCZ0DI+UxefdppQg1uDC8rnLqqzLKgyNbd95U=;
- b=EnWuoyn6PiWNMjrwMLvec93loNTSro61pVSsk/pHdEPRSvWq9ulcjbpoIws9Eu7+zhkJqs
- Xj29nVkqbjZiqLsp+05tiu1+QmvrPucS1gqQA+RYrmtnoTHHCLoI9rumR/Jky8xeImQumG
- CQADDhNmj2m1HoNQhkcnVnvlsFLgedc=
+ bh=NnkkIoHVwWj6c273Ch/WUhHvEUJl8xs34edh8vQqVyY=;
+ b=CroHY+IlItvjMM4Iw8/7AYkxH5q8EiTBp1PKOIK+M0rdPIHctZYv9o1GokUeUF5uTySRNj
+ fO8u47ZuIG+TSBno3xcVOgBS4os+0iLJ/5bfKNCLRprHTocNKBxKxID9LM2xqptAiIHor/
+ V3gQvO/Jxh+CZ27PTXuYGxw613ku4OU=
 From: Damien Hedde <damien.hedde@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 29 Jul 2019 16:56:25 +0200
-Message-Id: <20190729145654.14644-5-damien.hedde@greensocs.com>
+Date: Mon, 29 Jul 2019 16:56:28 +0200
+Message-Id: <20190729145654.14644-8-damien.hedde@greensocs.com>
 X-Mailer: git-send-email 2.22.0
 In-Reply-To: <20190729145654.14644-1-damien.hedde@greensocs.com>
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
 MIME-Version: 1.0
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1564412335;
+ s=mail; t=1564412340;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=rxGn1CVCZ0DI+UxefdppQg1uDC8rnLqqzLKgyNbd95U=;
- b=YHkgyGAQulCF1XXnb8+AQB7dROmvHjBWLvYsj6VlvBCg4plVjF+LlD9HyM/hNt6Fy9UYj9
- TmgOUx5wsWG8WL8VCdjGlTuLrCZmM5ZXd3WvgBbjY7AHl2E54A+GDVYTmeTt+wDdayXChA
- +eTGHSSbEx3tFgQ3IL3ZsX35pGIZu0g=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564412335; a=rsa-sha256; cv=none;
- b=l26Udfv/6iNz5ygpEeeY/wjm68EJ/xCx0jBg73FjM2fyOer7WkKI4UdOQq0yJ4U+u1jRkT
- zqqUmQBwx45UCbKY9gcSrDF9lB0GWWQDdSd0tDKuuY/RygkNsVYoh+kMikzFGpT8BvbMQI
- 797d7V9jyKcZbJqrjlUW3b7XNaucUFY=
+ bh=NnkkIoHVwWj6c273Ch/WUhHvEUJl8xs34edh8vQqVyY=;
+ b=NFJL4PD3UgBLR7FmwdToZdyfJh+nCcCVNXArVa4OtIbRuz0PoSUGZ+bl5HZSd1I7C5Stvy
+ 351xcD331HNpGgIFDA/gRnLDcGopGY2Bc3QmEoacdjQpD5TpifOfi01xTDzTIaZI3mRWMg
+ zE701oZWUEyMYk/qp/oqfdW8u+TgCI0=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564412340; a=rsa-sha256; cv=none;
+ b=XwPuZipvWSknFivXe90DlrcOw0OtcyvyzoGCBs9TYAJuwybn3igXaReNWrg991UMTMRDs4
+ AiT3xcKfHAdH2kOJ8xNEQxxsXTQuxzX1h/t+ckopXNAAzKR0fkPOUfAk1iGO1/erfhMoJT
+ 7b7TOiaXU/Z/cN7GGLWb61OvUTXGgQ4=
 ARC-Authentication-Results: i=1;
 	beetle.greensocs.com;
 	none
@@ -72,7 +72,8 @@ X-Spam: Yes
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 5.135.226.135
-Subject: [Qemu-arm] [PATCH v3 04/33] make Device and Bus Resettable
+Subject: [Qemu-arm] [PATCH v3 07/33] automatically add vmstate for reset
+ support in devices
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -97,451 +98,139 @@ Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
  qemu-ppc@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Oy/DQQKPXTrG
+X-TUID: 7asW8xf+Pbh5
 
-This add Resettable interface implementation for both Bus and Device.
-
-*resetting* counter and *reset_is_cold* flag are added in DeviceState
-and BusState.
-
-Compatibility with existing code base is ensured.
-The legacy bus or device reset method is called in the new exit phase
-and the other 2 phases are let empty. Using the exit phase guarantee that
-legacy resets are called in the "post" order (ie: children then parent)
-in hierarchical reset. That is the same order as legacy qdev_reset_all
-or qbus_reset_all were using.
-
-New *device_reset* and *bus_reset* function are proposed with an
-additional boolean argument telling whether the reset is cold or warm.
-Helper functions *device_reset_[warm|cold]* and *bus_reset_[warm|cold]*
-are defined also as helpers.
-
-Also add a [device|bus]_is_resetting and [device|bus]_is_reset_cold
-functions telling respectively whether the object is currently under rese=
-t and
-if the current reset is cold or not.
+This add the reset related sections for every QOM
+device.
 
 Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 ---
- hw/core/bus.c          | 85 ++++++++++++++++++++++++++++++++++++++++++
- hw/core/qdev.c         | 82 ++++++++++++++++++++++++++++++++++++++++
- include/hw/qdev-core.h | 84 ++++++++++++++++++++++++++++++++++++++---
- tests/Makefile.include |  1 +
- 4 files changed, 247 insertions(+), 5 deletions(-)
+ hw/core/qdev-vmstate.c | 41 +++++++++++++++++++++++++++++++++++++++++
+ hw/core/qdev.c         | 12 +++++++++++-
+ include/hw/qdev-core.h |  3 +++
+ stubs/Makefile.objs    |  1 +
+ stubs/device.c         |  7 +++++++
+ 5 files changed, 63 insertions(+), 1 deletion(-)
+ create mode 100644 stubs/device.c
 
-diff --git a/hw/core/bus.c b/hw/core/bus.c
-index 17bc1edcde..08a97addb6 100644
---- a/hw/core/bus.c
-+++ b/hw/core/bus.c
-@@ -22,6 +22,7 @@
- #include "qemu/module.h"
- #include "hw/qdev.h"
- #include "qapi/error.h"
-+#include "hw/resettable.h"
-=20
- void qbus_set_hotplug_handler(BusState *bus, Object *handler, Error **er=
-rp)
+diff --git a/hw/core/qdev-vmstate.c b/hw/core/qdev-vmstate.c
+index 07b010811f..24f8465c61 100644
+--- a/hw/core/qdev-vmstate.c
++++ b/hw/core/qdev-vmstate.c
+@@ -43,3 +43,44 @@ const struct VMStateDescription device_vmstate_reset =3D=
  {
-@@ -68,6 +69,75 @@ int qbus_walk_children(BusState *bus,
-     return 0;
- }
-=20
-+void bus_reset(BusState *bus, bool cold)
-+{
-+    resettable_reset(OBJECT(bus), cold);
-+}
-+
-+bool bus_is_resetting(BusState *bus)
-+{
-+    return (bus->resetting !=3D 0);
-+}
-+
-+bool bus_is_reset_cold(BusState *bus)
-+{
-+    return bus->reset_is_cold;
-+}
-+
-+static uint32_t bus_get_reset_count(Object *obj)
-+{
-+    BusState *bus =3D BUS(obj);
-+    return bus->resetting;
-+}
-+
-+static uint32_t bus_increment_reset_count(Object *obj)
-+{
-+    BusState *bus =3D BUS(obj);
-+    return ++bus->resetting;
-+}
-+
-+static uint32_t bus_decrement_reset_count(Object *obj)
-+{
-+    BusState *bus =3D BUS(obj);
-+    return --bus->resetting;
-+}
-+
-+static bool bus_set_reset_cold(Object *obj, bool cold)
-+{
-+    BusState *bus =3D BUS(obj);
-+    bool old =3D bus->reset_is_cold;
-+    bus->reset_is_cold =3D cold;
-+    return old;
-+}
-+
-+static bool bus_set_hold_needed(Object *obj, bool hold_needed)
-+{
-+    BusState *bus =3D BUS(obj);
-+    bool old =3D bus->reset_hold_needed;
-+    bus->reset_hold_needed =3D hold_needed;
-+    return old;
-+}
-+
-+static void bus_foreach_reset_child(Object *obj, void (*func)(Object *))
-+{
-+    BusState *bus =3D BUS(obj);
-+    BusChild *kid;
-+
-+    QTAILQ_FOREACH(kid, &bus->children, sibling) {
-+        func(OBJECT(kid->child));
-+    }
-+}
-+
-+static void bus_obj_legacy_reset(Object *obj)
-+{
-+    BusState *bus =3D BUS(obj);
-+    BusClass *bc =3D BUS_GET_CLASS(obj);
-+
-+    if (bc->reset) {
-+        bc->reset(bus);
-+    }
-+}
-+
- static void qbus_realize(BusState *bus, DeviceState *parent, const char =
-*name)
- {
-     const char *typename =3D object_get_typename(OBJECT(bus));
-@@ -192,6 +262,8 @@ static void qbus_initfn(Object *obj)
-                              NULL);
-     object_property_add_bool(obj, "realized",
-                              bus_get_realized, bus_set_realized, NULL);
-+
-+    bus->resetting =3D 0;
- }
-=20
- static char *default_bus_get_fw_dev_path(DeviceState *dev)
-@@ -202,9 +274,18 @@ static char *default_bus_get_fw_dev_path(DeviceState=
- *dev)
- static void bus_class_init(ObjectClass *class, void *data)
- {
-     BusClass *bc =3D BUS_CLASS(class);
-+    ResettableClass *rc =3D RESETTABLE_CLASS(class);
-=20
-     class->unparent =3D bus_unparent;
-     bc->get_fw_dev_path =3D default_bus_get_fw_dev_path;
-+
-+    rc->phases.exit =3D bus_obj_legacy_reset;
-+    rc->get_count =3D bus_get_reset_count;
-+    rc->increment_count =3D bus_increment_reset_count;
-+    rc->decrement_count =3D bus_decrement_reset_count;
-+    rc->foreach_child =3D bus_foreach_reset_child;
-+    rc->set_cold =3D bus_set_reset_cold;
-+    rc->set_hold_needed =3D bus_set_hold_needed;
- }
-=20
- static void qbus_finalize(Object *obj)
-@@ -223,6 +304,10 @@ static const TypeInfo bus_info =3D {
-     .instance_init =3D qbus_initfn,
-     .instance_finalize =3D qbus_finalize,
-     .class_init =3D bus_class_init,
-+    .interfaces =3D (InterfaceInfo[]) {
-+        { TYPE_RESETTABLE },
-+        { }
-+    },
+         VMSTATE_END_OF_LIST()
+     },
  };
-=20
- static void bus_register_types(void)
++
++static VMStateDescription *vmsd_duplicate_and_append(
++        const VMStateDescription *old_vmsd,
++        const VMStateDescription *new_subsection)
++{
++    VMStateDescription *vmsd;
++    int n =3D 0;
++
++    assert(old_vmsd && new_subsection);
++
++    vmsd =3D (VMStateDescription *) g_memdup(old_vmsd, sizeof(*vmsd));
++
++    if (old_vmsd->subsections) {
++        while (old_vmsd->subsections[n]) {
++            n +=3D 1;
++        }
++    }
++    vmsd->subsections =3D g_new(const VMStateDescription *, n + 2);
++
++    if (old_vmsd->subsections) {
++        memcpy(vmsd->subsections, old_vmsd->subsections,
++               sizeof(VMStateDescription *) * n);
++    }
++    vmsd->subsections[n] =3D new_subsection;
++    vmsd->subsections[n + 1] =3D NULL;
++
++    return vmsd;
++}
++
++void device_class_build_extended_vmsd(DeviceClass *dc)
++{
++    assert(dc->vmsd);
++    assert(!dc->vmsd_ext);
++
++    /* forge a subsection with proper name */
++    VMStateDescription *reset;
++    reset =3D g_memdup(&device_vmstate_reset, sizeof(*reset));
++    reset->name =3D g_strdup_printf("%s/device_reset", dc->vmsd->name);
++
++    dc->vmsd_ext =3D vmsd_duplicate_and_append(dc->vmsd, reset);
++}
 diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-index 043e058396..559ced070d 100644
+index e9e5f2d5f9..88387d3743 100644
 --- a/hw/core/qdev.c
 +++ b/hw/core/qdev.c
-@@ -254,6 +254,64 @@ HotplugHandler *qdev_get_hotplug_handler(DeviceState=
- *dev)
-     return hotplug_ctrl;
- }
-=20
-+void device_reset(DeviceState *dev, bool cold)
-+{
-+    resettable_reset(OBJECT(dev), cold);
-+}
-+
-+bool device_is_resetting(DeviceState *dev)
-+{
-+    return (dev->resetting !=3D 0);
-+}
-+
-+bool device_is_reset_cold(DeviceState *dev)
-+{
-+    return dev->reset_is_cold;
-+}
-+
-+static uint32_t device_get_reset_count(Object *obj)
-+{
-+    DeviceState *dev =3D DEVICE(obj);
-+    return dev->resetting;
-+}
-+
-+static uint32_t device_increment_reset_count(Object *obj)
-+{
-+    DeviceState *dev =3D DEVICE(obj);
-+    return ++dev->resetting;
-+}
-+
-+static uint32_t device_decrement_reset_count(Object *obj)
-+{
-+    DeviceState *dev =3D DEVICE(obj);
-+    return --dev->resetting;
-+}
-+
-+static bool device_set_reset_cold(Object *obj, bool cold)
-+{
-+    DeviceState *dev =3D DEVICE(obj);
-+    bool old =3D dev->reset_is_cold;
-+    dev->reset_is_cold =3D cold;
-+    return old;
-+}
-+
-+static bool device_set_hold_needed(Object *obj, bool hold_needed)
-+{
-+    DeviceState *dev =3D DEVICE(obj);
-+    bool old =3D dev->reset_hold_needed;
-+    dev->reset_hold_needed =3D hold_needed;
-+    return old;
-+}
-+
-+static void device_foreach_reset_child(Object *obj, void (*func)(Object =
-*))
-+{
-+    DeviceState *dev =3D DEVICE(obj);
-+    BusState *bus;
-+    QLIST_FOREACH(bus, &dev->child_bus, sibling) {
-+        func(OBJECT(bus));
-+    }
-+}
-+
- static int qdev_reset_one(DeviceState *dev, void *opaque)
+@@ -45,7 +45,17 @@ bool qdev_hot_removed =3D false;
+ const VMStateDescription *qdev_get_vmsd(DeviceState *dev)
  {
-     device_legacy_reset(dev);
-@@ -954,6 +1012,7 @@ static void device_initfn(Object *obj)
-=20
-     dev->instance_id_alias =3D -1;
-     dev->realized =3D false;
-+    dev->resetting =3D 0;
-=20
-     object_property_add_bool(obj, "realized",
-                              device_get_realized, device_set_realized, N=
-ULL);
-@@ -1046,9 +1105,20 @@ static void device_unparent(Object *obj)
-     }
- }
-=20
-+static void device_obj_legacy_reset(Object *obj)
-+{
-+    DeviceState *dev =3D DEVICE(obj);
-+    DeviceClass *dc =3D DEVICE_GET_CLASS(dev);
+     DeviceClass *dc =3D DEVICE_GET_CLASS(dev);
+-    return dc->vmsd;
 +
-+    if (dc->reset) {
-+        dc->reset(dev);
++    if (!dc->vmsd) {
++        return NULL;
 +    }
-+}
 +
- static void device_class_init(ObjectClass *class, void *data)
- {
-     DeviceClass *dc =3D DEVICE_CLASS(class);
-+    ResettableClass *rc =3D RESETTABLE_CLASS(class);
-=20
-     class->unparent =3D device_unparent;
-=20
-@@ -1060,6 +1130,14 @@ static void device_class_init(ObjectClass *class, =
-void *data)
-      */
-     dc->hotpluggable =3D true;
-     dc->user_creatable =3D true;
++    if (!dc->vmsd_ext) {
++        /* build it first time we need it */
++        device_class_build_extended_vmsd(dc);
++    }
 +
-+    rc->phases.exit =3D device_obj_legacy_reset;
-+    rc->get_count =3D device_get_reset_count;
-+    rc->increment_count =3D device_increment_reset_count;
-+    rc->decrement_count =3D device_decrement_reset_count;
-+    rc->foreach_child =3D device_foreach_reset_child;
-+    rc->set_cold =3D device_set_reset_cold;
-+    rc->set_hold_needed =3D device_set_hold_needed;
++    return dc->vmsd_ext;
  }
 =20
- void device_class_set_parent_reset(DeviceClass *dc,
-@@ -1117,6 +1195,10 @@ static const TypeInfo device_type_info =3D {
-     .class_init =3D device_class_init,
-     .abstract =3D true,
-     .class_size =3D sizeof(DeviceClass),
-+    .interfaces =3D (InterfaceInfo[]) {
-+        { TYPE_RESETTABLE },
-+        { }
-+    },
- };
-=20
- static void qdev_register_types(void)
+ static void bus_remove_child(BusState *bus, DeviceState *child)
 diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-index 690ce72433..eeb75611c8 100644
+index 1670ae41bb..926d4bbcb1 100644
 --- a/include/hw/qdev-core.h
 +++ b/include/hw/qdev-core.h
-@@ -7,6 +7,7 @@
- #include "hw/irq.h"
- #include "hw/hotplug.h"
- #include "sysemu/sysemu.h"
-+#include "hw/resettable.h"
+@@ -120,6 +120,7 @@ typedef struct DeviceClass {
 =20
- enum {
-     DEV_NVECTORS_UNSPECIFIED =3D -1,
-@@ -132,6 +133,10 @@ struct NamedGPIOList {
- /**
-  * DeviceState:
-  * @realized: Indicates whether the device has been fully constructed.
-+ * @resetting: Indicates whether the device is under reset. Also
-+ * used to count how many times reset has been initiated on the device.
-+ * @reset_is_cold: If the device is under reset, indicates whether it is=
- cold
-+ * or warm.
-  *
-  * This structure should not be accessed directly.  We declare it here
-  * so that it can be embedded in individual device state structures.
-@@ -153,6 +158,9 @@ struct DeviceState {
-     int num_child_bus;
-     int instance_id_alias;
-     int alias_required_for_version;
-+    uint32_t resetting;
-+    bool reset_is_cold;
-+    bool reset_hold_needed;
- };
+     /* device state */
+     const struct VMStateDescription *vmsd;
++    const struct VMStateDescription *vmsd_ext;
 =20
- struct DeviceListener {
-@@ -199,6 +207,10 @@ typedef struct BusChild {
- /**
-  * BusState:
-  * @hotplug_handler: link to a hotplug handler associated with bus.
-+ * @resetting: Indicates whether the bus is under reset. Also
-+ * used to count how many times reset has been initiated on the bus.
-+ * @reset_is_cold: If the bus is under reset, indicates whether it is co=
-ld
-+ * or warm.
-  */
- struct BusState {
-     Object obj;
-@@ -210,6 +222,9 @@ struct BusState {
-     int num_children;
-     QTAILQ_HEAD(, BusChild) children;
-     QLIST_ENTRY(BusState) sibling;
-+    uint32_t resetting;
-+    bool reset_is_cold;
-+    bool reset_hold_needed;
- };
+     /* Private to qdev / bus.  */
+     const char *bus_type;
+@@ -520,6 +521,8 @@ void device_class_set_parent_unrealize(DeviceClass *d=
+c,
 =20
- /**
-@@ -376,6 +391,70 @@ int qdev_walk_children(DeviceState *dev,
-                        qdev_walkerfn *post_devfn, qbus_walkerfn *post_bu=
-sfn,
-                        void *opaque);
+ const struct VMStateDescription *qdev_get_vmsd(DeviceState *dev);
 =20
-+/**
-+ * device_reset:
-+ * Resets the device @dev, @cold tell whether to do a cold or warm reset=
-.
-+ * Uses the ressetable interface.
-+ * Base behavior is to reset the device and its qdev/qbus subtree.
-+ */
-+void device_reset(DeviceState *dev, bool cold);
++void device_class_build_extended_vmsd(DeviceClass *dc);
 +
-+static inline void device_reset_warm(DeviceState *dev)
+ const char *qdev_fw_name(DeviceState *dev);
+=20
+ Object *qdev_get_machine(void);
+diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
+index 9c7393b08c..432b56f290 100644
+--- a/stubs/Makefile.objs
++++ b/stubs/Makefile.objs
+@@ -40,4 +40,5 @@ stub-obj-y +=3D pci-host-piix.o
+ stub-obj-y +=3D ram-block.o
+ stub-obj-y +=3D ramfb.o
+ stub-obj-y +=3D fw_cfg.o
++stub-obj-y +=3D device.o
+ stub-obj-$(CONFIG_SOFTMMU) +=3D semihost.o
+diff --git a/stubs/device.c b/stubs/device.c
+new file mode 100644
+index 0000000000..e9b4f57e5f
+--- /dev/null
++++ b/stubs/device.c
+@@ -0,0 +1,7 @@
++#include "qemu/osdep.h"
++#include "hw/qdev-core.h"
++
++void device_class_build_extended_vmsd(DeviceClass *dc)
 +{
-+    device_reset(dev, false);
++    return;
 +}
-+
-+static inline void device_reset_cold(DeviceState *dev)
-+{
-+    device_reset(dev, true);
-+}
-+
-+/**
-+ * bus_reset:
-+ * Resets the bus @bus, @cold tell whether to do a cold or warm reset.
-+ * Uses the ressetable interface.
-+ * Base behavior is to reset the bus and its qdev/qbus subtree.
-+ */
-+void bus_reset(BusState *bus, bool cold);
-+
-+static inline void bus_reset_warm(BusState *bus)
-+{
-+    bus_reset(bus, false);
-+}
-+
-+static inline void bus_reset_cold(BusState *bus)
-+{
-+    bus_reset(bus, true);
-+}
-+
-+/**
-+ * device_is_resetting:
-+ * Tell whether the device @dev is currently under reset.
-+ */
-+bool device_is_resetting(DeviceState *dev);
-+
-+/**
-+ * device_is_reset_cold:
-+ * Tell whether the device @dev is currently under reset cold or warm re=
-set.
-+ *
-+ * Note: only valid when device_is_resetting returns true.
-+ */
-+bool device_is_reset_cold(DeviceState *dev);
-+
-+/**
-+ * bus_is_resetting:
-+ * Tell whether the bus @bus is currently under reset.
-+ */
-+bool bus_is_resetting(BusState *bus);
-+
-+/**
-+ * bus_is_reset_cold:
-+ * Tell whether the bus @bus is currently under reset cold or warm reset=
-.
-+ *
-+ * Note: only valid when bus_is_resetting returns true.
-+ */
-+bool bus_is_reset_cold(BusState *bus);
-+
- void qdev_reset_all(DeviceState *dev);
- void qdev_reset_all_fn(void *opaque);
-=20
-@@ -413,11 +492,6 @@ void qdev_machine_init(void);
-  */
- void device_legacy_reset(DeviceState *dev);
-=20
--static inline void device_reset(DeviceState *dev)
--{
--    device_legacy_reset(dev);
--}
--
- void device_class_set_parent_reset(DeviceClass *dc,
-                                    DeviceReset dev_reset,
-                                    DeviceReset *parent_reset);
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index fd7fdb8658..1c0a5345b9 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -561,6 +561,7 @@ tests/fp/%:
-=20
- tests/test-qdev-global-props$(EXESUF): tests/test-qdev-global-props.o \
- 	hw/core/qdev.o hw/core/qdev-properties.o hw/core/hotplug.o\
-+	hw/core/resettable.o \
- 	hw/core/bus.o \
- 	hw/core/irq.o \
- 	hw/core/fw-path-provider.o \
 --=20
 2.22.0
 

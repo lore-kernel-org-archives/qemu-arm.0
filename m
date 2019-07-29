@@ -1,84 +1,84 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3178467wrv;
-        Mon, 29 Jul 2019 06:50:31 -0700 (PDT)
-X-Received: by 2002:a9d:70d3:: with SMTP id w19mr18404028otj.208.1564408231664;
-        Mon, 29 Jul 2019 06:50:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564408231; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3180508wrv;
+        Mon, 29 Jul 2019 06:52:53 -0700 (PDT)
+X-Received: by 2002:a9d:5d0b:: with SMTP id b11mr10446731oti.333.1564408373210;
+        Mon, 29 Jul 2019 06:52:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564408373; cv=none;
         d=google.com; s=arc-20160816;
-        b=eyo3QO/j99vTYef9qgK7p/sfeP1FwYwcVVvFWUrNcvJBCw5KLj4vv+EdCLZR8jEWn+
-         bVcuGaO3jqnOvaNq5yL59KcFOqIbu5PN4AaoyKwRXDOC8q2DcqSNeyxq42cxc6xDkQnA
-         oRi6PVSwyy3aQtI492YdjvVkVZy+qDEQyggYJlfQF2lzNarCx861P4xOs0l6v4dGa4Fr
-         cuWq1Z1CcmjGVYQjuY4YZ7tpsFiLcgxWL/NiowW2JalCAxtXBu6dnzClYRdpcK2TElOi
-         pwxUwMbTlqZ7Wx2+7XpkiTPzQV2iVGuUQ25l6i/5t9sZhXjC48x2/+AsHCOdvaVkE+Yh
-         4jng==
+        b=jvVUQI7fKO6Dqt5Bz1k0cY5r+37PmsFpS7QpUJo//vy+qts/6Ysz9lin13vNisZMbg
+         x74szfQ6PlNwYi9NVTDNwgGQJ+yHmHivtRR2z/QNPu+DykK6GZMC52QPB2scJV4n1DkY
+         kHony43kFNMuyuShsc98/bn422sEgr6rxXJpg0SvzUVHNeGnbEVKL5ClyYZWviqU2eng
+         Q4/unz3m3adlpqJXz4kdD+l228E2XCRarpcAJCiK6oWl8B+A36YE0M5SjOfdOPvtu9Bx
+         6L0DsX4gT5XJLdIwPIaKuTfQI2vTG63pLOrVAiejUq4ZsIyBwz8fVpZA401FyszUskIS
+         6tpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=u9E9kzr6fZRxsNz5JxBpfqg9DVltmbmfiigEisB9a7Q=;
-        b=bs/E3+CwmFwhIftFyHdEEnhsHCGCbInn2QGdBMUN0hA+08Bm3iVlWRZlARphfTBDjR
-         dhMCW+jE149qYFa7GIF55WmVZi3HG27hk8162zSeWnBS98/cSUp64hvnMHVejwV8o9xx
-         QCpomr9glGW5u7GtmtCNUh+J15IfGthyH9zjo+pPYjW32HHHasuqaVzs/Eyvl8RFBA1M
-         8H8VNc+pvsfXYNhiODYb+dB1MDMOqzWvVqJ4wy/iaLJ/UegOUSjzz/0IuoNyRowpubzn
-         BWdXrAnebnEXIfzV9hHYO+ltMdSQFaWVmAS6CT95NFIECh6UgT5ack17E6VJv2Sybjuq
-         tW6A==
+        bh=AJIPApmunRaDVleF7ASJ0u00EHmTdBgJRyKlvg7vvbQ=;
+        b=qcbmsioeJe63FMEic3UyXXARPUkTsKjbJG5P9RqGhlF2NwfSX6v/XRqXF9Nq+qrRLh
+         QcHF/AojF2Ob/KldJEGR2V9aePg34gLAcR1QNIeWoBVrDiitv0Q+nB1L8UOoBjgnlFfB
+         BtU3dvZk8T3b9fGbQVGpNKYBMnIK2iQJVdYN6Vb24npw5V3mJtrQip61ESvRLSLGzQvt
+         G6U16wUkc3mtMNkdAe/ADkvbJBNIiOEHh240eNrzuE8zQNdD+nMXHdzo+MVxjccnb6Yb
+         7xZFJlu+IwqkYRq0XQ4rLnAABQoisiHdnpvQ1XprGKVunY5RdDEcanO8PBh+f/q815si
+         ueqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pYcrDjPI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VEDuSBPC;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id y27sor26924565ote.102.2019.07.29.06.50.31
+        by mx.google.com with SMTPS id p129sor26680723oib.67.2019.07.29.06.52.53
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 29 Jul 2019 06:50:31 -0700 (PDT)
+        Mon, 29 Jul 2019 06:52:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pYcrDjPI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VEDuSBPC;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=u9E9kzr6fZRxsNz5JxBpfqg9DVltmbmfiigEisB9a7Q=;
-        b=pYcrDjPIVFKkmYAo0NxgkKanf6B65kN2mio7KyZ+zoe9es81Wt4dGKFWuVDwBdpWqD
-         40u9mcSFEhvMxbebwd+G9UijPWHDHMaJcAEVMkYD4KjCWVWyvS/muuJLauI7NoRNSyDp
-         Cr0XXDPuEvn1KTl/pf4L1GDT4UAQKqLkpB2BrZFtezPiEbOPhiFfbDfTzhiNZA9sqJWX
-         XHyyq8GD0X8N0aumB7TNfTnTjZ9Xxj53uQ7i7s3ajGS4A9SBp7O55RvPH3altfIXKNQT
-         T6KucaOy9qW3nEsW+DfNXUXnpRcWfBbdbziF8jkwS9zHbhzm+gkZ+GjR5sRxvQk9ug6k
-         3Ybg==
+        bh=AJIPApmunRaDVleF7ASJ0u00EHmTdBgJRyKlvg7vvbQ=;
+        b=VEDuSBPCaubJRL/6B8k84wXeRJeNGZuEbznNn7YKAWS+oXoHqb5Lc03aHsscZftA2v
+         vGB91YB4SD4yxkuZAkCkQ6uE77rGc6YWFcf2EBP8tDv2okH+XWktlZzTXhqr2igeKPW+
+         sGYTqksbcuxBcFbO6OJGbPPBDL6+TOXzplO+DY8anE6vTnBFMZVopokJ3PgeCdOn8FMZ
+         1KUhAy9tFSDRCbrWnXBD0TDkZ6deckrJdhI+jxthXkpcVzcB/dpEbaJrkD7o5Pdy1diB
+         w/rnlg9yU7T1fnPYmfW9uwSjdWKA9R/6/bImWDD229MxcuksFrhbgcQJw/qHxYwIceou
+         s7Tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=u9E9kzr6fZRxsNz5JxBpfqg9DVltmbmfiigEisB9a7Q=;
-        b=NMNEPhtYApURirIejz8w0tyL9CZ/fdeI3tnGNLCBbecC86zW9QODBrCovXoMYfKN+E
-         qdRRFmoAh6q8LC6WtllCAl91jUdg/SzRTPON8FlV1H9EZOpBufAfw1XCsWUhZs3FTXpZ
-         2uD9q1gNEaDmAS8gbaiKRYJ5M4lZ/1YDvLAf+nqQoGnsTBM15kN6WZNuNIN24+GVttlG
-         y/ZXF78iiIkOtgdujVxcZ/LMZ2xQdkHhvrOFbEvNt2GGOa7uxOFvn+xglHjA/8FvpJdw
-         Xi5hkuiGXea4b2ArcO82DsFYMBHXJTpTtclKa5dj6SXU4YjLIWtupERT6XAdErBP1LVS
-         qOSw==
-X-Gm-Message-State: APjAAAX0GRRUWLA1CVwScCPRPaI0ZmmWqCGzAb7yX4z3gIOdbt6GOsRM
-	vMPlh3TSYJypnwrZ0zYggCye4QkK52ZTY/XVXcwvxJby
-X-Google-Smtp-Source: APXvYqy5cJvQt7tbenOcDqjCT+saQIbjmoA5EVIcXLzHCDAji2un0WbhJuUmG0SYL96i0BL+LBe8r5w1RCuZMME1LsA=
-X-Received: by 2002:a05:6830:1653:: with SMTP id h19mr26899294otr.232.1564408231320;
- Mon, 29 Jul 2019 06:50:31 -0700 (PDT)
+        bh=AJIPApmunRaDVleF7ASJ0u00EHmTdBgJRyKlvg7vvbQ=;
+        b=UjfC869OMfp3R/FJMeKQcUPuDFgKeeZhJ/C0k8Dtep7EeklOcQDtbWxTo+wWOqN64G
+         xDY3g0S0omCadIlwYrNZLmMfINPlWfxASumQuxfWdj1QuI9irFHGVjXbxVcfaQoOvZYB
+         rvuajTOAj78QEXti4yqPn8i6VoRadGY8gMyCcnvIULWo5WHOaJw3E0X+f7mvKUyya3na
+         SfVobfxp+SDx1tkiLqmGOAqVWHWucK7QlPeQKgTX1wIEApG0cB/QKkwGRNNgFsOYHRZg
+         iPyb33gyo7LtC+/ZYQFUwXZWQXjxolyYuNsomEzvBirjM6FNOMniGsSm3JeTXeCj+x0A
+         /7Ig==
+X-Gm-Message-State: APjAAAXAcHa6nqeLutQZ3LHQv7LnY03AyOmqST0W2HDr5RvePNSAPnyX
+	Rmb2Jv9Kk1EF63otAFnABrVDOpyhmBgBrqelENuOrIGC
+X-Google-Smtp-Source: APXvYqySCUbdvELL8v0YCzLbJlmtHQNPecqJ3XF1wVcNLXQdgadSRLXga8fe4ExovbTJGbcoqzpbcaISj42ruktfArA=
+X-Received: by 2002:aca:5cd7:: with SMTP id q206mr49047676oib.146.1564408372825;
+ Mon, 29 Jul 2019 06:52:52 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190726175032.6769-1-richard.henderson@linaro.org> <20190726175032.6769-4-richard.henderson@linaro.org>
-In-Reply-To: <20190726175032.6769-4-richard.henderson@linaro.org>
+References: <20190726175032.6769-1-richard.henderson@linaro.org> <20190726175032.6769-5-richard.henderson@linaro.org>
+In-Reply-To: <20190726175032.6769-5-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 29 Jul 2019 14:50:20 +0100
-Message-ID: <CAFEAcA-RCm7zqtYz=kJrfvySvv8TBkej+mu4h8+oR26AYZ3DNw@mail.gmail.com>
-Subject: Re: [PATCH 03/67] target/arm: Remove offset argument to gen_exception_bkpt_insn
+Date: Mon, 29 Jul 2019 14:52:42 +0100
+Message-ID: <CAFEAcA-W7idBRdD-DHxrVqfnBsKmAOPZoQAJkaUVOcjnLnGugw@mail.gmail.com>
+Subject: Re: [PATCH 04/67] target/arm: Remove offset argument to gen_exception_internal_insn
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
 	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: Gg95jhSjoHmH
+X-TUID: 0RqdKPFJ5Z8j
 
 On Fri, 26 Jul 2019 at 18:50, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> The address of the current insn is still available in s->base.pc_next.
+> The actual argument is 0 for all callers.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
@@ -86,43 +86,52 @@ On Fri, 26 Jul 2019 at 18:50, Richard Henderson
 >  1 file changed, 4 insertions(+), 4 deletions(-)
 >
 > diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index 33f78296eb..19b126d4f3 100644
+> index 19b126d4f3..0848fb933a 100644
 > --- a/target/arm/translate.c
 > +++ b/target/arm/translate.c
-> @@ -1256,12 +1256,12 @@ static void gen_exception_insn(DisasContext *s, int excp, int syn,
->      s->base.is_jmp = DISAS_NORETURN;
+> @@ -1239,10 +1239,10 @@ static inline void gen_smc(DisasContext *s)
+>      s->base.is_jmp = DISAS_SMC;
 >  }
 >
-> -static void gen_exception_bkpt_insn(DisasContext *s, int offset, uint32_t syn)
-> +static void gen_exception_bkpt_insn(DisasContext *s, uint32_t syn)
+> -static void gen_exception_internal_insn(DisasContext *s, int offset, int excp)
+> +static void gen_exception_internal_insn(DisasContext *s, int excp)
 >  {
->      TCGv_i32 tcg_syn;
->
 >      gen_set_condexec(s);
 > -    gen_set_pc_im(s, s->pc - offset);
-> +    gen_set_pc_im(s, s->base.pc_next);
->      tcg_syn = tcg_const_i32(syn);
->      gen_helper_exception_bkpt_insn(cpu_env, tcg_syn);
->      tcg_temp_free_i32(tcg_syn);
-> @@ -8139,7 +8139,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
->              case 1:
->                  /* bkpt */
->                  ARCH(5);
-> -                gen_exception_bkpt_insn(s, 4, syn_aa32_bkpt(imm16, false));
-> +                gen_exception_bkpt_insn(s, syn_aa32_bkpt(imm16, false));
->                  break;
->              case 2:
->                  /* Hypervisor call (v7) */
-> @@ -11611,7 +11611,7 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
->          {
->              int imm8 = extract32(insn, 0, 8);
->              ARCH(5);
-> -            gen_exception_bkpt_insn(s, 2, syn_aa32_bkpt(imm8, true));
-> +            gen_exception_bkpt_insn(s, syn_aa32_bkpt(imm8, true));
->              break;
->          }
+> +    gen_set_pc_im(s, s->pc);
+>      gen_exception_internal(excp);
+>      s->base.is_jmp = DISAS_NORETURN;
+>  }
+> @@ -1294,7 +1294,7 @@ static inline void gen_hlt(DisasContext *s, int imm)
+>          s->current_el != 0 &&
+>  #endif
+>          (imm == (s->thumb ? 0x3c : 0xf000))) {
+> -        gen_exception_internal_insn(s, 0, EXCP_SEMIHOST);
+> +        gen_exception_internal_insn(s, EXCP_SEMIHOST);
+>          return;
+>      }
+>
+> @@ -11984,7 +11984,7 @@ static bool arm_tr_breakpoint_check(DisasContextBase *dcbase, CPUState *cpu,
+>          /* End the TB early; it's likely not going to be executed */
+>          dc->base.is_jmp = DISAS_TOO_MANY;
+>      } else {
+> -        gen_exception_internal_insn(dc, 0, EXCP_DEBUG);
+> +        gen_exception_internal_insn(dc, EXCP_DEBUG);
+>          /* The address covered by the breakpoint must be
+>             included in [tb->pc, tb->pc + tb->size) in order
+>             to for it to be properly cleared -- thus we
+> --
+> 2.17.1
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+I'm not so convinced about this one -- gen_exception_insn()
+and gen_exception_internal_insn() shouldn't have the
+same pattern of function prototype but different semantics
+like this, it's confusing. It happens that both the cases
+of wanting to generate an "internal" exception happen to want
+it to be taken with the PC being for the following insn,
+not the current one, but that seems more coincidence to
+me than anything else.
 
 thanks
 -- PMM

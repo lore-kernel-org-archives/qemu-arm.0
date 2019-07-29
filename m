@@ -1,172 +1,105 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp248798wrv;
-        Fri, 26 Jul 2019 11:34:06 -0700 (PDT)
-X-Received: by 2002:a63:8ac3:: with SMTP id y186mr92230174pgd.13.1564166046297;
-        Fri, 26 Jul 2019 11:34:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564166046; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3110712wrv;
+        Mon, 29 Jul 2019 05:44:17 -0700 (PDT)
+X-Received: by 2002:a9d:12d1:: with SMTP id g75mr64874277otg.300.1564404257698;
+        Mon, 29 Jul 2019 05:44:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564404257; cv=none;
         d=google.com; s=arc-20160816;
-        b=LoBHg0KYCyI3vEYf2hePGAwf7DwPE+d4kkJW101KvT3uKIY/M7ISU7ymGEnULqWK81
-         zvv1eZTe1qFf8UrDE4FK5nLZkXPz14Xvw46OCQU3c+zkFQHLjAlkiVMi676kZIsWYG7O
-         wt9U4/Q1wFUtwnhax8zO/HVxkkNOG+wyoaH4MpVKEppVwpb6Lsf7Cf40nbp+WSTAvEnT
-         qXsLsqgHoYK4qqtAqYgigOGk9tYYY/stNCTZc3FmnA+RIH0RfmEaEvED3FBqIcORxYnc
-         cRvhMtK/JplGqeKxxrOZ+DvUc5oL92lkvjuG/PcHsdR8eHihBa/9wckL5lSwubwUKyz/
-         hDJA==
+        b=BsWOE7Z+Fl+kU3guJhP2/Csa1H8jRHPf9kqssa84fvr3nmTswY3oN7/zlNT3YoFpMW
+         C5YhmpF1yPaoUWMlxBiUKsv5sAWfp2SsHNtFo/D6QVX+BgxcbnUiFlkR+0N0L+pk38bX
+         YukhldFo6LaiXihzMVG1z6uUF1facHMGC0d2flcduS0I5nT5HUKHWukFzDlcxbIlIGV3
+         +Bv4JsOndEcgHdKKwrmOfCFewyEy9feLS9R5ImWtlC7aoSomny+zDfZLeimtMb0h7JUK
+         D2XkpdfYvRhP6CK1DcLEOzUZDNUalpJhMq2hO7wIbZu6QREuLi1X29dWKf8wfLlX9GGV
+         FKew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=wkSx0OalOfQUYo0gvwfAvDMu6TklzMt4esDAb6i7vsM=;
-        b=hjq0mjMsb1AWFrHK1dUF3SawUNhHv4QT2e/v4skJK3oJCQ1JdTiIMZKDwzKtGNjPpZ
-         0djNg1YALw0elAYQw+RhC67fmSAf1Xn1rNwPmW1mklZRP1/H4aM3oyAS5K8gjM1HNPzP
-         aSOzEwb+M5lRHLMQRAf7ibXavPCIGVFJDuLCCc4wtkQWkbqauKW2Z5WGpDnUSi5WRLgi
-         NlF+1VzY+862Yn2iAnW/W0K2qNIfwVa+fN1WW0u2eg3Ai3G8Mf08Z8AsTxIFtFL2SlXr
-         Ue1F+BRvqNHY6WNmbAIyIK3HCsE1yuXmXbu8SKWbNJU0ZCBAYIdBmW7Ljs2MB1Tz8FIn
-         xIWQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=axBUDQ/juYdTqJW1DQMakICAGQZ6LrtKnM5P6S7oZps=;
+        b=KCOMHIV8kWuSF36KM4KTcqnTkU0GzPbFm/riB9xAm9U7DwHv2ZFu6W0gQlSUmcUEEX
+         oX60klVWRjoaJWWLfTqgR08KJKSn7/WjXLLC7tdBgjTszISDb/xLXJdZ3tRL/uVtdnDh
+         pkpn73pMK/2vvVzfuTMXwf7gGltI5Hh8by01jhE0LSzfsSMKMZVcPn84QWiQL0MCf8fL
+         ewgF7mxeyZkFQsUIRQk2u/8xGQItH8p1CcNp3r5jcGgl5P8ySMoTCJXNXIIzdqOdO1Sk
+         5VVh3SC1eUdwpBnS9eaFS/2QGoK5fIHayWo7E59lrzCaOgHzgkirUnTCNB/29lZFsTcR
+         VNbw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zGucbvKM;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vLNgS7CL;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id a6sor13082182pgt.14.2019.07.26.11.34.06
+        by mx.google.com with SMTPS id 106sor31519573otg.120.2019.07.29.05.44.17
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 26 Jul 2019 11:34:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Mon, 29 Jul 2019 05:44:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=zGucbvKM;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vLNgS7CL;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=wkSx0OalOfQUYo0gvwfAvDMu6TklzMt4esDAb6i7vsM=;
-        b=zGucbvKMTMdz8tPJMPMB8Q6aR8acVZMipNc8MMaMUKnm7UNZSqetfMY+w1jR5xDMqq
-         fdE8g5LXfnRXbyDbCnlXC4M2ab15qXC7DDJyJCDtCO7DdvzAvLXNa6qH86h/WC75En8N
-         f7OIiPjGoBDE9l0hDDtibf//APVG6XQGEi04CY53nV0Jse+opsDCjCvXp++Nv456+MfN
-         oE8tUEOHh5xUVofTixr6pU8O+bt2NHKzXS7AT4xx7R/2QHaLTfsYjgXO58ag2P8U09cU
-         DtjG6Cx0OIPeXoxC5ei5h0KBbQp+FRU1doVhKmaxbX1HbFeyBmzZ0SXC2WbH+Rx7t7ra
-         9T+Q==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=axBUDQ/juYdTqJW1DQMakICAGQZ6LrtKnM5P6S7oZps=;
+        b=vLNgS7CLdVg6n80qTAeeMCM6TR96YysizTjetC1BTVkSusLAG5g2VqrV9Mm8GWwpv7
+         YQazvJm8sjhPtFwjMG+qnWE6kNbbROOZjHePojR/6l+hyBJETgdFVEXdX6wDt57RJVZU
+         Z2rhf6IUcCoXlOlRen8QjHeXEv7FEZIfJbq2HKVenBjfZQYxtf59OFwMtXO/DYmG2OZS
+         U6r2zf0RqEoAk5+NdF1POQh2beGtK7WapYC2VeYsvxd3aqPHVykcAShRbADrgPn5K4vd
+         GRsahwBoqn7jKr1KGmy2RLKce9uftpbwvhZQGPDsg6+RJ6PEDYASlA4nP527fx3cUijX
+         S3zg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=wkSx0OalOfQUYo0gvwfAvDMu6TklzMt4esDAb6i7vsM=;
-        b=lq8b++ItM/19NAr/dipob6ysyRBtb5gUL7JhsTpS3QorqDo8/AAxJM/JCcIFAHSa8E
-         yuVtqmqkdF/TY5S38YzRkv3BSnD2Zn5d1qXV0ij2z+blp9F3LcqmbLDj1vsctar7XgMo
-         yIiHp3Vnb1gOZgYV50MXn+wK+VfMB6vbsvbtW0ZZT0Itr5mh0A97w9F+dA7d+gTJ+0fL
-         3W7LBmtwR7dtTgKaDzvXYJf73+DdjfgqzZMU+uWP26Pl2fm5KNf4XKycN6pmtqmAsX3N
-         0uPQOeL7hJcIdvDpGdf6JT2TAPb1PbIoxftZY/8XeDcteHCy/tPouboVxSpjBXjD/oRB
-         brpQ==
-X-Gm-Message-State: APjAAAXx5iDaWE9OU5aRmHlXH39cBZ29YLdoaPCp12amYyQeGwKsnt/d
-	4T3mkhT1TMjKD3tUYmQgl42YeZTnfSqxDA==
-X-Google-Smtp-Source: APXvYqxW+DkdA1INys4b3oTci2eLSXQ6MqdQ9ho0zZVcXIAi92r45eN3JmJe7+Pxb352rqS09J7OUw==
-X-Received: by 2002:a63:1d4:: with SMTP id 203mr17677684pgb.441.1564166045241;
-        Fri, 26 Jul 2019 11:34:05 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (97-126-117-207.tukw.qwest.net. [97.126.117.207])
-        by smtp.gmail.com with ESMTPSA id v7sm10908081pff.87.2019.07.26.11.34.04
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 26 Jul 2019 11:34:04 -0700 (PDT)
-Subject: Re: [PATCH 66/67] target/arm: Move singlestep check from gen_jmp to
- gen_goto_tb
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20190726175032.6769-1-richard.henderson@linaro.org>
- <20190726175032.6769-67-richard.henderson@linaro.org>
- <CAFEAcA9s44Lc58X=C1DzPRRCyi_KOpx0CiMfhKWEzAdDoU326A@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <77302caf-9111-8341-c05a-aff996437c2b@linaro.org>
-Date: Fri, 26 Jul 2019 11:34:02 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=axBUDQ/juYdTqJW1DQMakICAGQZ6LrtKnM5P6S7oZps=;
+        b=I0qFOLPrZVR6AYYbJ5/4eDh7L+4DRpq2cSgEo4+5GouZyUXRhNbbWJOV0NZlr7GFAp
+         iKf3oP02i+HkEwxS0BxjBv1gwqW9IWl3E5RmAAyKBtFKa9lQ6/C/Bl19hTsI+MHCYu/W
+         LyMV7zzF3mNAbEMSlGNiL0yFN77dh7jHblqr0C9u/U248LFbw7QHWmDG2Gsn1pSqBN2M
+         wdWJcaJLaHk8wn8o3wVEZOH/3AU5G+MOtxOqHAgjtEzBPN3aKpxqKmX+aNXvYv71TYOx
+         F8XhcVspbPBQlGQz/X9FqJM0+YDUkgAr2qq0XwPGzzH60v6DRXacS9o2apuOScnTwgGt
+         YLPw==
+X-Gm-Message-State: APjAAAWo0d+PWte54EyH/+y0NRF/Fp72Xa2BQ255JB+4vY+B17g7LzMx
+	Zoif3oGnStC4w7dNd3SCSc1Rmcl7DsV4qxZJ5ZoKChJi+p0=
+X-Google-Smtp-Source: APXvYqx3x0h2tzqFojssy0RlaJbtAIXWP3juCbAgkaeHGnWUwdpT94f/VmK6yeQXmMPE0NrRndVzo1iV1Hodrm3fSZw=
+X-Received: by 2002:a9d:4d81:: with SMTP id u1mr32509663otk.221.1564404257124;
+ Mon, 29 Jul 2019 05:44:17 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9s44Lc58X=C1DzPRRCyi_KOpx0CiMfhKWEzAdDoU326A@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: spFL0MYAl0jO
+References: <20190726113950.7499-1-alex.bennee@linaro.org>
+In-Reply-To: <20190726113950.7499-1-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 29 Jul 2019 13:44:06 +0100
+Message-ID: <CAFEAcA-N5BCMkHA7Mujyts3Q2WiyAMqZq=+L=tsr=cak2QTzYA@mail.gmail.com>
+Subject: Re: [PATCH v5] target/arm: generate a custom MIDR for -cpu max
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: WhyOxtWxUu0x
 
-On 7/26/19 11:13 AM, Peter Maydell wrote:
-> On Fri, 26 Jul 2019 at 18:51, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> We miss quite a number of single-step events by having
->> the check in the wrong place.
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>  target/arm/translate.c | 16 ++++++----------
->>  1 file changed, 6 insertions(+), 10 deletions(-)
->>
->> diff --git a/target/arm/translate.c b/target/arm/translate.c
->> index c2b8b86fd2..9ae9b23823 100644
->> --- a/target/arm/translate.c
->> +++ b/target/arm/translate.c
->> @@ -2740,7 +2740,10 @@ static void gen_goto_ptr(void)
->>   */
->>  static void gen_goto_tb(DisasContext *s, int n, target_ulong dest)
->>  {
->> -    if (use_goto_tb(s, dest)) {
->> +    if (unlikely(is_singlestepping(s))) {
->> +        gen_set_pc_im(s, dest);
->> +        gen_singlestep_exception(s);
->> +    } else if (use_goto_tb(s, dest)) {
->>          tcg_gen_goto_tb(n);
->>          gen_set_pc_im(s, dest);
->>          tcg_gen_exit_tb(s->base.tb, n);
->> @@ -2751,16 +2754,9 @@ static void gen_goto_tb(DisasContext *s, int n, target_ulong dest)
->>      s->base.is_jmp = DISAS_NORETURN;
->>  }
->>
->> -static inline void gen_jmp (DisasContext *s, uint32_t dest)
->> +static inline void gen_jmp(DisasContext *s, uint32_t dest)
->>  {
->> -    if (unlikely(is_singlestepping(s))) {
->> -        /* An indirect jump so that we still trigger the debug exception.  */
->> -        if (s->thumb)
->> -            dest |= 1;
->> -        gen_bx_im(s, dest);
->> -    } else {
->> -        gen_goto_tb(s, 0, dest);
->> -    }
->> +    gen_goto_tb(s, 0, dest);
->>  }
->>
->>  static inline void gen_mulxy(TCGv_i32 t0, TCGv_i32 t1, int x, int y)
-> 
-> I haven't tested but I'm not sure this change is right.
-> The idea of the current code is that we handle generating
-> the actual singlestep exception in arm_tr_tb_stop() at the
-> end, rather than in the process of generating code for the
-> insn. This change means we now do a gen_singlestep_exception()
-> in the gen_jmp()/gen_goto_tb() part of the code, but we haven't
-> removed the handling of it in arm_tr_tb_stop(), so we're now
-> doing this in two places. Why doesn't the current design work?
+On Fri, 26 Jul 2019 at 12:39, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
+> While most features are now detected by probing the ID_* registers
+> kernels can (and do) use MIDR_EL1 for working out of they have to
+> apply errata. This can trip up warnings in the kernel as it tries to
+> work out if it should apply workarounds to features that don't
+> actually exist in the reported CPU type.
+>
+> Avoid this problem by synthesising our own MIDR value.
+>
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>
+> ---
+> v2
+>   - don't leak QEMU version into ID reg
+> v3
+>   - move comment into one block
+>   - explicit setting of more fields
+> v4
+>   - minor reword of comment
+> v5
+>   - VARIANT->PARTNUM and extra words
 
-Note that the existing gen_goto_tb does not test for single-step, and always
-emits NORETURN code, either via tcg_gen_goto_tb() or
-tcg_gen_lookup_and_goto_ptr().  The singlestep exception is neither generated
-nor would it be reachable.
+Applied to target-arm.next for 4.2, thanks.
 
-Another way to do handle this would be to test single-step but set DISAS_JUMP
-instead of actually generate the singlestep exception in gen_goto_tb.  Do you
-prefer that method?
-
-> And if we need to do something different for the route to
-> "change the PC via gen_jmp()" why don't we need to do it
-> also when we change the PC via eg gen_bx_im() ?
-
-See patch 67.
-
->  * four places for barrier insns where we use a
->    gen_goto_tb to end the TB -- this isn't consistent
->    with how we end the TB for other situations...)
-
-Fixing this sounds like a good cleanup.
-
-
-r~
+-- PMM

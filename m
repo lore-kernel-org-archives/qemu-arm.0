@@ -1,70 +1,70 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3260363wrv;
-        Mon, 29 Jul 2019 08:11:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxOwrgeInRRBOQHQU0iwsVQXMcvUno9dtznGWQJvYYaI97yBjtJvBYfWM/XDUHeveDMPZXb
-X-Received: by 2002:a67:e296:: with SMTP id g22mr47408473vsf.174.1564413086323;
-        Mon, 29 Jul 2019 08:11:26 -0700 (PDT)
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3261736wrv;
+        Mon, 29 Jul 2019 08:12:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzz0wJybxT7FFQx8Jl0XtY7MNizluugNleL2472N58ZT2P4IOk4u3IKgioCfCDI0FrI3SAf
+X-Received: by 2002:aa7:c486:: with SMTP id m6mr97149404edq.298.1564413157148;
+        Mon, 29 Jul 2019 08:12:37 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m4si22529724vsq.396.2019.07.29.08.11.26
+        by mx.google.com with ESMTPS id u13si16357232ejx.356.2019.07.29.08.12.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jul 2019 08:11:26 -0700 (PDT)
+        Mon, 29 Jul 2019 08:12:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=pQTJedEF;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=xTKf3JbP;
        arc=fail (body hash mismatch);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53232 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53258 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hs7J7-0001QZ-Rd
-	for alex.bennee@linaro.org; Mon, 29 Jul 2019 11:11:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38895)
+	id 1hs7KG-0003xy-79
+	for alex.bennee@linaro.org; Mon, 29 Jul 2019 11:12:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39563)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <damien.hedde@greensocs.com>) id 1hs78J-0005uj-SZ
- for qemu-devel@nongnu.org; Mon, 29 Jul 2019 11:00:16 -0400
+ (envelope-from <damien.hedde@greensocs.com>) id 1hs798-0007EC-AL
+ for qemu-devel@nongnu.org; Mon, 29 Jul 2019 11:01:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1hs78I-0005kb-O2
- for qemu-devel@nongnu.org; Mon, 29 Jul 2019 11:00:15 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:48426)
+ (envelope-from <damien.hedde@greensocs.com>) id 1hs796-0006U0-SS
+ for qemu-devel@nongnu.org; Mon, 29 Jul 2019 11:01:06 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:49062)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1hs78E-0004iO-8s; Mon, 29 Jul 2019 11:00:10 -0400
+ id 1hs78u-0005Tu-K7; Mon, 29 Jul 2019 11:00:53 -0400
 Received: from kouign-amann.bar.greensocs.com (unknown [172.16.11.117])
- by beetle.greensocs.com (Postfix) with ESMTPS id D84C596F8F;
- Mon, 29 Jul 2019 14:59:12 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPS id 225ED96FE3;
+ Mon, 29 Jul 2019 14:59:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1564412354;
+ s=mail; t=1564412365;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=IojvZJcR6TrNzXejNkbhfStORPj7CffyX3e9LR2zhu0=;
- b=pQTJedEFzSEhToYRJonGcyEJsut6kxPeewLDxgIoti8xf3Y2g4muzo7+iEpR2lAT0EKUtB
- EXOfgBkzpZZDvNvFJCH8dNKhSWSGF84dKsKt8ijRGvPZ5jtivjMp4PMlknGrfBwpS17J+m
- P3QUDPseQOJAbSQY0wtKraRR6dgTp+s=
+ bh=p5l1fmWgkohnYfqwDvu/gGAV5E6NY7tIcptUny/2QoI=;
+ b=xTKf3JbPAx1i2E2+hOM1o5Jx5CwFUMK0mIg6d0hDPA2uq9XqrC1hjAi2W7Zc3ZuBdJ/MJJ
+ 2bqPdU5HT0Jaed7xGUl83+xBk+wceANeKoF43MYFjxaoyp1iAqnzcn9FwNbQ6qP9cGUSNf
+ /AtZkXhDEzCmPNZBkas1dlzL7wadFcY=
 From: Damien Hedde <damien.hedde@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 29 Jul 2019 16:56:38 +0200
-Message-Id: <20190729145654.14644-18-damien.hedde@greensocs.com>
+Date: Mon, 29 Jul 2019 16:56:46 +0200
+Message-Id: <20190729145654.14644-26-damien.hedde@greensocs.com>
 X-Mailer: git-send-email 2.22.0
 In-Reply-To: <20190729145654.14644-1-damien.hedde@greensocs.com>
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
 MIME-Version: 1.0
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1564412354;
+ s=mail; t=1564412365;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=IojvZJcR6TrNzXejNkbhfStORPj7CffyX3e9LR2zhu0=;
- b=Y6q5K32mpl0fpwHYvDKhkQBHZ9iVben+BD4D7MsEj4wevi2BxXlCxS60WBzQzQI2syPsE5
- dqvuB0Ar/YXxgGyRwrkuWFdv1Vhe/0I4Vmp1iSY0qyE6A5gj+ZHrTR+wjs7xmDjONZ1uQI
- 9RdKGsBsUwHwOrv8spxlAYhkh4EZmno=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564412354; a=rsa-sha256; cv=none;
- b=Shawad7IqON5VSONAGP4x8Uk9zJwyF+1tn0CWqTmXEbt/2uuIttSlevf0Iy3nXAdkAcNLw
- S6FbOWr8JcI5vL2krQ9MiQalI25Q0NGXmEXseIiYQ1+yvePrMAGJQzMGciga7FEvYianf5
- dOx5CfJ3qFH9HTNIlj5AbJbbxjOY7WE=
+ bh=p5l1fmWgkohnYfqwDvu/gGAV5E6NY7tIcptUny/2QoI=;
+ b=zY+GYV/DDvu/oLJcsLrR2NFWMFitWRZDW+El9glEQer/WSvDFVosPPMXAL8jMBvWIrtfVk
+ 03kXZFsjdImszCQLyJfEdO0R/wOvY/9/GYN2B5eZyj6pgPf4/w/gHBv/yIrsGM3JIQj5oG
+ ++1GOidE8bU5UXt0D9+CUzKGgBQk8BI=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564412365; a=rsa-sha256; cv=none;
+ b=AkHvT+/uLNLqiZknofRYqcrNzI/hWV7H8OW87AWt1E7g0UbyoydnSKYMrAqOpX1xWyJGDF
+ XoVq69K1PEFFfHH8C5HlpKJZKf2ACiT+dj+kginTeGqR3gsbVtxky8cUbflOCv47ANvef1
+ 8GUKdWPUaRDbFV8EvpXsyZwCnT8iPPg=
 ARC-Authentication-Results: i=1;
 	beetle.greensocs.com;
 	none
@@ -72,8 +72,8 @@ X-Spam: Yes
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 5.135.226.135
-Subject: [Qemu-devel] [PATCH v3 17/33] hw/usb/dev-uas.c: remove
- qdev_reset_all call
+Subject: [Qemu-devel] [PATCH v3 25/33] hw/i386/pc.c: remove
+ device_legacy_reset call
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -97,30 +97,31 @@ Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
  qemu-ppc@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ird6H7a87bw+
+X-TUID: cDU3o4Rp4zEm
 
-Replace deprecated qdev_reset_all by device_reset_warm.
+Replace additional APIC legacy reset by device_reset_cold.
 
-This does not impact the behavior.
+The new function propagates also the reset to the sub-buses tree.
+APIC does not have any so it should have no impact on behavior.
 
 Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 ---
- hw/usb/dev-uas.c | 2 +-
+ hw/i386/pc.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/usb/dev-uas.c b/hw/usb/dev-uas.c
-index abd8070d0c..b3a6e470e4 100644
---- a/hw/usb/dev-uas.c
-+++ b/hw/usb/dev-uas.c
-@@ -777,7 +777,7 @@ static void usb_uas_task(UASDevice *uas, uas_iu *iu)
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index c0f20fe8aa..a175d76819 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -2823,7 +2823,7 @@ static void pc_machine_reset(MachineState *machine)
+         cpu =3D X86_CPU(cs);
 =20
-     case UAS_TMF_LOGICAL_UNIT_RESET:
-         trace_usb_uas_tmf_logical_unit_reset(uas->dev.addr, tag, lun);
--        qdev_reset_all(&dev->qdev);
-+        device_reset_warm(&dev->qdev);
-         usb_uas_queue_response(uas, tag, UAS_RC_TMF_COMPLETE);
-         break;
-=20
+         if (cpu->apic_state) {
+-            device_legacy_reset(cpu->apic_state);
++            device_reset_cold(cpu->apic_state);
+         }
+     }
+ }
 --=20
 2.22.0
 

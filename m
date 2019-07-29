@@ -1,70 +1,70 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3263358wrv;
-        Mon, 29 Jul 2019 08:14:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqziYjguwJcMAe0XNbaYaGJ/tt+sL84iqx3OgL6IeuMp6vjj1j8GNgxXXowgwRtYtMdP2VsY
-X-Received: by 2002:a1f:b6c5:: with SMTP id g188mr12620466vkf.2.1564413245367;
-        Mon, 29 Jul 2019 08:14:05 -0700 (PDT)
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3263498wrv;
+        Mon, 29 Jul 2019 08:14:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyX8MB2ZdQ1YG7HJPECQckX5Ls5/BtTwB3JDwFHxg1gYVJyV/qhxCETDXpDqA2q6JvkZwDZ
+X-Received: by 2002:a67:e24e:: with SMTP id w14mr48519608vse.124.1564413253885;
+        Mon, 29 Jul 2019 08:14:13 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v22si4237168vsp.142.2019.07.29.08.14.05
+        by mx.google.com with ESMTPS id j190si13273348vkh.48.2019.07.29.08.14.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 29 Jul 2019 08:14:05 -0700 (PDT)
+        Mon, 29 Jul 2019 08:14:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="Rk25e/Uy";
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b="cskjG/Wi";
        arc=fail (body hash mismatch);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53314 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53320 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hs7Lg-0007ou-SZ
-	for alex.bennee@linaro.org; Mon, 29 Jul 2019 11:14:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39408)
+	id 1hs7Lp-0008JW-DZ
+	for alex.bennee@linaro.org; Mon, 29 Jul 2019 11:14:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39403)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <damien.hedde@greensocs.com>) id 1hs794-00073U-B2
- for qemu-arm@nongnu.org; Mon, 29 Jul 2019 11:01:04 -0400
+ (envelope-from <damien.hedde@greensocs.com>) id 1hs794-00073M-AY
+ for qemu-arm@nongnu.org; Mon, 29 Jul 2019 11:01:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1hs78w-0006Hy-Dl
- for qemu-arm@nongnu.org; Mon, 29 Jul 2019 11:01:02 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:49052)
+ (envelope-from <damien.hedde@greensocs.com>) id 1hs78y-0006K0-4H
+ for qemu-arm@nongnu.org; Mon, 29 Jul 2019 11:01:00 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:49070)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1hs78t-0005S4-Oh; Mon, 29 Jul 2019 11:00:53 -0400
+ id 1hs78x-0005ZJ-64; Mon, 29 Jul 2019 11:00:55 -0400
 Received: from kouign-amann.bar.greensocs.com (unknown [172.16.11.117])
- by beetle.greensocs.com (Postfix) with ESMTPS id 1DE7C96F97;
- Mon, 29 Jul 2019 14:59:17 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPS id 675B297030;
+ Mon, 29 Jul 2019 14:59:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1564412358;
+ s=mail; t=1564412369;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mT1SeeKucmc8IuW94V9VP/AALM7YEnzQm+i28TezWA0=;
- b=Rk25e/UyeEwl3Nl5ykINYeodVRnVemJuBNes2CqyrP47faAsghjCXyblixQVDnwV6hMYMf
- foh0XxF04aTrFe75RvcDuzeCMuTg7qX1T23wrdOj9fvkpB5N85XWgRH6bGMqd+msdY3VqA
- g5dAEOE6pI7Yfz2Fijvm8kPB1Y4tq6I=
+ bh=CuK0R1yEmIw3ue/ncT8aMu/7cio9gA+aFOL7xtl6KDw=;
+ b=cskjG/WiG5xmo0EZ5ctOjAYEAz9/P3DtnpxcAWXvok8IT6V/FhQIzeru61jdcrryhbixyQ
+ atYYSt3cwsd7JJ406AbQeeGVdpM5g1illutRlpexX3b0Wz0qrOyMGlNzFbl6TeRZpy6zhh
+ qguG3ljV7Im2cpbDwK9UsFepxoaw2lM=
 From: Damien Hedde <damien.hedde@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Mon, 29 Jul 2019 16:56:41 +0200
-Message-Id: <20190729145654.14644-21-damien.hedde@greensocs.com>
+Date: Mon, 29 Jul 2019 16:56:49 +0200
+Message-Id: <20190729145654.14644-29-damien.hedde@greensocs.com>
 X-Mailer: git-send-email 2.22.0
 In-Reply-To: <20190729145654.14644-1-damien.hedde@greensocs.com>
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
 MIME-Version: 1.0
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1564412358;
+ s=mail; t=1564412369;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mT1SeeKucmc8IuW94V9VP/AALM7YEnzQm+i28TezWA0=;
- b=PGGiRBGftSOHGSCE+X+S8zduGQFjtpLkNhWzHwjFMgSXLu4bOnHcBAPbbs/GPlBNXXu/zW
- zhfRv6FXfuyB6f485IN2GlRxpKo0CAqmtSFZlkbOXflPEIjci/ATcROqIt32YLTOZYfkd9
- Hz+WxKHq1hJGom2yTfcIj9mBnJWPL+c=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564412358; a=rsa-sha256; cv=none;
- b=QcBwg0BVzq57f5hlgeh94iiJ2W/FtCuuNmtg8MaCzwXNpzljhjwwnyj57NSrPcDplD7dzi
- R1gczB2c1TRBGMZGE61zNiU47Vsa5BxS73OIOoMVjHP9vYZOxceQ2aNqmCNvG4sq2eXCyn
- yuhB5yq9qCO9YVxcwKZhtLRK1EV4pIk=
+ bh=CuK0R1yEmIw3ue/ncT8aMu/7cio9gA+aFOL7xtl6KDw=;
+ b=gcfzcXQO8gkMIyW+3VrA6ezPHFaNLe/3LfG7unKflwxesGP9AkN5FoEGj0Twiyzmb/7PuX
+ 4lAGRJ1jW35yYMHVWyI3Qff+Etf03JPiandTm8dH4dyyN3mdcPL3kyNMg70JdxxUzkptSS
+ 1WGpVTiCt1yXArDQVLnny2G7FO9XSCE=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564412369; a=rsa-sha256; cv=none;
+ b=fbsfWrUIatX6lxuQoJRaFMOj+zbSPCsSlLQ4lGkibvRYbaBy/DTSjsVWEWaAErj7nap7x9
+ PTE3R62B40fokyR9jFphjQNC0qt0ZdkVgyzJFh33Nw91lrNf3pkD58qwk/E7ksOWPDJTyC
+ gg8/KOSxDPWYc4SzGjViy69UxnPeUgw=
 ARC-Authentication-Results: i=1;
 	beetle.greensocs.com;
 	none
@@ -72,8 +72,8 @@ X-Spam: Yes
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 5.135.226.135
-Subject: [Qemu-arm] [PATCH v3 20/33] hw/hyperv/hyperv.c: remove
- device_legacy_reset call
+Subject: [Qemu-arm] [PATCH v3 28/33] qdev: Remove unused deprecated reset
+ functions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -98,33 +98,121 @@ Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
  qemu-ppc@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +f+14LHxn5Uc
+X-TUID: UK+K/B+4/U4N
 
-Replace legacy's reset call by device_reset_warm in
-*hyperv_synic_reset*.
-
-The new function propagates also the reset to the sub-buses tree but this=
- has
-no impact since SynICState has no child bus.
+Remove the functions now they are unused:
++ device_legacy_reset
++ qdev_reset_all[_fn]
++ qbus_reset_all[_fn]
 
 Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 ---
- hw/hyperv/hyperv.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/core/qdev.c         | 30 ------------------------------
+ include/hw/qdev-core.h | 29 -----------------------------
+ 2 files changed, 59 deletions(-)
 
-diff --git a/hw/hyperv/hyperv.c b/hw/hyperv/hyperv.c
-index cd9db3cb5c..ae377934ee 100644
---- a/hw/hyperv/hyperv.c
-+++ b/hw/hyperv/hyperv.c
-@@ -140,7 +140,7 @@ void hyperv_synic_reset(CPUState *cs)
-     SynICState *synic =3D get_synic(cs);
-=20
-     if (synic) {
--        device_legacy_reset(DEVICE(synic));
-+        device_reset_warm(DEVICE(synic));
+diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+index 11a4de55ea..896b55f7ba 100644
+--- a/hw/core/qdev.c
++++ b/hw/core/qdev.c
+@@ -322,27 +322,6 @@ static void device_foreach_reset_child(Object *obj, =
+void (*func)(Object *))
      }
  }
 =20
+-void qdev_reset_all(DeviceState *dev)
+-{
+-    device_reset(dev, false);
+-}
+-
+-void qdev_reset_all_fn(void *opaque)
+-{
+-    qdev_reset_all(DEVICE(opaque));
+-}
+-
+-void qbus_reset_all(BusState *bus)
+-{
+-    bus_reset(bus, false);
+-}
+-
+-void qbus_reset_all_fn(void *opaque)
+-{
+-    BusState *bus =3D opaque;
+-    qbus_reset_all(bus);
+-}
+-
+ /* can be used as ->unplug() callback for the simple cases */
+ void qdev_simple_device_unplug_cb(HotplugHandler *hotplug_dev,
+                                   DeviceState *dev, Error **errp)
+@@ -1223,15 +1202,6 @@ void device_class_set_parent_unrealize(DeviceClass=
+ *dc,
+     dc->unrealize =3D dev_unrealize;
+ }
+=20
+-void device_legacy_reset(DeviceState *dev)
+-{
+-    DeviceClass *klass =3D DEVICE_GET_CLASS(dev);
+-
+-    if (klass->reset) {
+-        klass->reset(dev);
+-    }
+-}
+-
+ Object *qdev_get_machine(void)
+ {
+     static Object *dev;
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index f724ddc8f4..eb6370970e 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -518,25 +518,6 @@ bool bus_is_resetting(BusState *bus);
+  */
+ bool bus_is_reset_cold(BusState *bus);
+=20
+-/**
+- * qbus/qdev_reset_all:
+- * @bus/dev: Bus/Device to be reset.
+- *
+- * Reset @bus/dev and perform a bus-level reset of all devices/buses con=
+nected
+- * to it, including recursive processing of all buses below @bus itself.=
+  A
+- * hard reset means that qbus_reset_all will reset all state of the devi=
+ce.
+- * For PCI devices, for example, this will include the base address regi=
+sters
+- * or configuration space.
+- *
+- * Theses functions are deprecated, please use device/bus_reset or
+- * resettable_reset_* instead
+- * TODO: remove them when all occurence are removed
+- */
+-void qdev_reset_all(DeviceState *dev);
+-void qdev_reset_all_fn(void *opaque);
+-void qbus_reset_all(BusState *bus);
+-void qbus_reset_all_fn(void *opaque);
+-
+ /* This should go away once we get rid of the NULL bus hack */
+ BusState *sysbus_get_default(void);
+=20
+@@ -551,16 +532,6 @@ char *qdev_get_own_fw_dev_path_from_handler(BusState=
+ *bus, DeviceState *dev);
+  */
+ void qdev_machine_init(void);
+=20
+-/**
+- * device_legacy_reset:
+- *
+- * Reset a single device (by calling the reset method).
+- *
+- * This function is deprecated, please use device_reset() instead.
+- * TODO: remove the function when all occurences are removed.
+- */
+-void device_legacy_reset(DeviceState *dev);
+-
+ /**
+  * device_class_set_parent_reset:
+  * TODO: remove the function when DeviceClass's reset method
 --=20
 2.22.0
 

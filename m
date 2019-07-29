@@ -1,187 +1,120 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3205285wrv;
-        Mon, 29 Jul 2019 07:15:37 -0700 (PDT)
-X-Received: by 2002:a9d:7248:: with SMTP id a8mr17906933otk.363.1564409737582;
-        Mon, 29 Jul 2019 07:15:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564409737; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3216708wrv;
+        Mon, 29 Jul 2019 07:26:55 -0700 (PDT)
+X-Received: by 2002:a05:6830:1653:: with SMTP id h19mr27056492otr.232.1564410415083;
+        Mon, 29 Jul 2019 07:26:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564410415; cv=none;
         d=google.com; s=arc-20160816;
-        b=KSE3Heu3r0JMqY+PEWEW4gAbFtSo47Q5asFbXOjqpVrFo6GZo7i9WkEfEnA5FD1uW9
-         ohYQuZv9B8iQNOBPSk25hEvwoLJdlzTPN9nejqXR/p127InxiI9GGuijpSyC3jdUeyS6
-         DTII3Bpd6VFEHHJQK2KCQ0WgUWWqaRdM1cvsTGcTg1g8EFo4kGtBkK/aL16gmLixZagu
-         Q0mMAQFVe9Fye1CwvuEUQeYettRYl3Q+P35z+GTG6MhufaEEpvbqe9Mu+cng5QLkKOEY
-         EPqPLVM3j1JJ85YIJEYR/rTNlM511Cc7oqPtW8HzWE4tuCOaw2bkRNHqtQUEtBZZpsjV
-         fv6A==
+        b=xtlD1k+ATEA47wI3EM5Dx1BGzhtwNebkFuqCdck6GJHWHIrMf24uDLG1UjGLqc7iHg
+         NUTMqA7s9muM3ryJ/HBscsEdFm/hfJC4FYklyzTM83O2fRSm5p6HHWVpHEneKmHdOC6g
+         CRLjhOJZM0Mz9CMSlLg8s6JBj7hg6bdIHOWCj17H2ls7/HETy//Tq9oT6xPxPSxAbqkT
+         pKcQjFv4Rac4sZrthE0tCJjg8mY/I5O1iZFBgieaVgdP/AEe1wbMbfXOnwdHOAcEtnnG
+         Urn4exX7Xgyuxejny6xVnStCd5jfu9AYn/AOCBDyBVUTLzx+f4MsS2c0VnChW5Sgvk8r
+         LD+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=KQrl1BFn7FHz3PBVwJtYxz4acbe9CFGzumyCZ9gkleM=;
-        b=xb2hBnNGNxxKn+YhVka8HyMVvD12zGGhH0I/hYTbxqvyjJ0EZNJxtvZ+i/4pCLMfk+
-         l9QvmxJCiMMAyVOYjD9r8dlTqzBrJ4b4e6U5CPZBpxWmAxgXIOLq885Xf+lgydq3H1CI
-         89OTEIAcGdeWMp5eL11Mj/oJpBMfKydOIXvYwbA/IFuz3P/IeCB35opbeXc48k2eqFWc
-         vyW98MLeW+LH54/2bwKD4pE5fitnPbDl1IK0VjoQk4gUyqn4jTOvXRtamCdGDe5UL5H0
-         0IkBDn2WafyhuB1nJ/HrfGC0bDOJNljuu1iqmvjXC445Pe0wM51gzBCLr7EbVaVxkfkk
-         aJhg==
+        bh=WDo+MdWnXv2rn0jkx3UgOUpQoU5HO3vfEk+x0LJuISw=;
+        b=vNVPbEt0P0xiSaA5wo5P6WtioTJrP0VL3MvLkg+rrH2U9oEjIeXiZAPuEDwtzYqDHQ
+         ceZ2do6dd3WYzI1jk8SymFMT+e1a5lQO4QTC7iJT+NnC8suPl1PLRALGLiBai5WOmoQJ
+         vbISjRqMweu9oSB3ZJ4Kc5wuOMDMaz+TrGQ2qThGwgSlOPCYx4Tmf0Z70z5pKL817+4Q
+         EgqKQjK7pN3QqNBgYFsK1B/5K9JQGpL1bPtXbGbt64YbgsMduvvow1y9JcPJ2+yNreL9
+         bR5fdFPRcWeWPOw3TuhhszMjhs7gDMcnLW8o4Wr2AOR/4297qIhTtwdAVgnoOsqJE1ER
+         8Dmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ib5miL4N;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z2GDvN8E;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id z16sor31575784otp.77.2019.07.29.07.15.37
+        by mx.google.com with SMTPS id p129sor26692993oig.120.2019.07.29.07.26.54
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 29 Jul 2019 07:15:37 -0700 (PDT)
+        Mon, 29 Jul 2019 07:26:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Ib5miL4N;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Z2GDvN8E;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=KQrl1BFn7FHz3PBVwJtYxz4acbe9CFGzumyCZ9gkleM=;
-        b=Ib5miL4NAiQszXsR5dFJDTfv8nIxoMXpYuqJWbha37asuk2aov23uXthBzDiCNEjJw
-         vxXxpbOF6AfCx45L5XPM7P12Vn7UwWBy6DqaoUMEbKo6E102BMMpywERatK/417ynN7F
-         KEPZxpjvkvM+M38LiZ0CKVtQvmla7kY+FcHZdJWpCeGwDICpjYMmEwq9OabPx2sf79cm
-         0WwDuC2nbweeMlP3bijcFRUyCxOhP2klCNOlQ+yZ4kFF67AkxlBbfqDYWTCVCKi9Xs3U
-         qYu01ltttZbCvb52Ztnqoi/LTCoeq/DFg6DtH3hmzrVcpauqInb8kmTYfxfRqNzAyWz8
-         l6gg==
+        bh=WDo+MdWnXv2rn0jkx3UgOUpQoU5HO3vfEk+x0LJuISw=;
+        b=Z2GDvN8ESQLeUCoAie3A+zs/932fJkIuxy8z1wdxfj5N88v2oMNWSJjz/suicfWLWm
+         64v1GAFqVP3w5EQVEKn1UGz1HohqoW0LD57LozBDXQ5tMzTKtYmvFuQbeC/GwdP8J0Tv
+         uuZpWQ+238vJXZ9ETG5zO4r+giQwZjglKz25AMCc2jrul0rkORvksyEnE55hT8e7CHIA
+         XvF5Pou3hQltsq35P6gkLK4Mu24riRBOFSUvWVuEah0PPHB6qVChDq76C6Fh0Ag7Tqqr
+         qgYUMxIBSEjQuJu1l+lB8K+cB+jlCZJcckHSdKOnJigREZqIYQz1lp8XpBDjAOi4fsuj
+         r0Qw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=KQrl1BFn7FHz3PBVwJtYxz4acbe9CFGzumyCZ9gkleM=;
-        b=ii07Kn1/MBGUusreszeI+5TlWnF2J7DpxTEIIqc6ySGWUT8Ju5PIX8qfrw0lptulLk
-         DQRPvqTg2MDrsyHWx6v0Fj8L+gIJ17GXzlYZsNKS/0/cN61gY5behWauzZsMkNCYm0KE
-         CEZySurRXX9bjUzloNJwol3y4SqSu07BlFjQEXYaaMuoF03RnFsKmPTmixwRc5EIxCnX
-         yJ8iYQbFExpbT5FBfefNihVcMxsVV1BC7lDGisLYfgXMEyqDnw8lseVhvTN5w/yyOhvw
-         CiAEFzdcF/mLZJV87XNB/7iKLf+0DZicbxkNXEypAv9EtRy/S9WsGVjoUk1W0Orlx+Yt
-         5FWA==
-X-Gm-Message-State: APjAAAXHd6a7/8zPHpthU2OqFp1ESW/kAzoH9pwVzwqSQ25ikKBblqv9
-	+XVz+gb8cWEIik7c7jfcVbyAyF3BL86vhccp3Lmm3uMG
-X-Google-Smtp-Source: APXvYqx5B5+80R6D8ZZRXEitZM26v+oEEicdccDuUJRcP9DwfeOsPQd9TWQlOAlFnke971OXUYhS0Lxo6XHraTNktjM=
-X-Received: by 2002:a9d:6a0f:: with SMTP id g15mr52343390otn.135.1564409737009;
- Mon, 29 Jul 2019 07:15:37 -0700 (PDT)
+        bh=WDo+MdWnXv2rn0jkx3UgOUpQoU5HO3vfEk+x0LJuISw=;
+        b=SSHEhhEqFphxDC3hHOk+zF9WpKUHYx53fDyD+VtDEr3bmPzvkx5pZXEiuMwm+5exHt
+         IbF1MhaalbdULcsozH5iptkHkNgmyg4F4QGUAUja2JCeslMShFrb3w359CagzcTAdAad
+         RjUpzRc9WeT4uAN7h0hLkiAq1Z2bgSdFL9KLuG4hAaRvTCvn7r/SYgrwY4nfnWfpMboc
+         ykM4CcmwxQCnOEMpBzBT+NwaW5qYgqfCRBnv9ZGkjoUj16SMaYC2pS9/ULmzUw2308zy
+         cJWbC4jl7cbsGVez1s7S+soMgAMeGP9M1OL/3zuyXRidRbRR3KQm5FgE4ETAt2I+aOjA
+         TBMw==
+X-Gm-Message-State: APjAAAVoniPH1omcECWmTSOdl58BxwGWnQf7ydf8KJPGsjsaJYylZYlf
+	eJsCklda+W0KkINkXJ/Fzz+M/yIFwxORODJAf2gkO714SwU=
+X-Google-Smtp-Source: APXvYqykypGIxzp1UmbsUjLs5TNa7ACnuL6WGhhC6U59zGJeZU7Z/RjjuKB8DopQCRFP//9xJ4XJbbo4y668d7WNvFw=
+X-Received: by 2002:aca:5cd7:: with SMTP id q206mr49146229oib.146.1564410414592;
+ Mon, 29 Jul 2019 07:26:54 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190726175032.6769-1-richard.henderson@linaro.org> <20190726175032.6769-8-richard.henderson@linaro.org>
-In-Reply-To: <20190726175032.6769-8-richard.henderson@linaro.org>
+References: <20190726175032.6769-1-richard.henderson@linaro.org> <20190726175032.6769-9-richard.henderson@linaro.org>
+In-Reply-To: <20190726175032.6769-9-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 29 Jul 2019 15:15:26 +0100
-Message-ID: <CAFEAcA_HY=WuGEPxTEm5g5tYuCDHXRDs=9EXQd6r+zvsL6_=Uw@mail.gmail.com>
-Subject: Re: [PATCH 07/67] target/arm: Introduce add_reg_for_lit
+Date: Mon, 29 Jul 2019 15:26:43 +0100
+Message-ID: <CAFEAcA9twN1i6GLORiu0ygpxcjCUQB2Srm6g7-TcWSXXTyRbwA@mail.gmail.com>
+Subject: Re: [PATCH 08/67] target/arm: Use store_reg_from_load in thumb2 code
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
 	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: KXnce34vQCKW
+X-TUID: v7U6Ebt5WEm9
 
 On Fri, 26 Jul 2019 at 18:50, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Used only on the thumb side so far, but will be more obvious
-> once we start unifying the implementation of A32+T32.
+> There is an extra always-true ARMv5 test, but this will
+> become more obvious once we start unifying the
+> implementation of A32+T32.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/translate-vfp.inc.c |  34 +------
->  target/arm/translate.c         | 163 +++++++++++++++------------------
->  2 files changed, 76 insertions(+), 121 deletions(-)
+>  target/arm/translate.c | 12 +++---------
+>  1 file changed, 3 insertions(+), 9 deletions(-)
 >
-> diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
-> index e7389bc057..4066b2febf 100644
-> --- a/target/arm/translate-vfp.inc.c
-> +++ b/target/arm/translate-vfp.inc.c
-> @@ -941,14 +941,7 @@ static bool trans_VLDR_VSTR_sp(DisasContext *s, arg_VLDR_VSTR_sp *a)
->          offset = -offset;
->      }
->
-> -    if (s->thumb && a->rn == 15) {
-> -        /* This is actually UNPREDICTABLE */
-> -        addr = tcg_temp_new_i32();
-> -        tcg_gen_movi_i32(addr, s->pc & ~2);
-> -    } else {
-> -        addr = load_reg(s, a->rn);
-> -    }
-> -    tcg_gen_addi_i32(addr, addr, offset);
-> +    addr = add_reg_for_lit(s, a->rn, offset);
->      tmp = tcg_temp_new_i32();
->      if (a->l) {
->          gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
-> @@ -983,14 +976,7 @@ static bool trans_VLDR_VSTR_dp(DisasContext *s, arg_VLDR_VSTR_dp *a)
->          offset = -offset;
->      }
->
-> -    if (s->thumb && a->rn == 15) {
-> -        /* This is actually UNPREDICTABLE */
-> -        addr = tcg_temp_new_i32();
-> -        tcg_gen_movi_i32(addr, s->pc & ~2);
-> -    } else {
-> -        addr = load_reg(s, a->rn);
-> -    }
-> -    tcg_gen_addi_i32(addr, addr, offset);
-> +    addr = add_reg_for_lit(s, a->rn, offset);
->      tmp = tcg_temp_new_i64();
->      if (a->l) {
->          gen_aa32_ld64(s, tmp, addr, get_mem_index(s));
-> @@ -1029,13 +1015,7 @@ static bool trans_VLDM_VSTM_sp(DisasContext *s, arg_VLDM_VSTM_sp *a)
->          return true;
->      }
->
-> -    if (s->thumb && a->rn == 15) {
-> -        /* This is actually UNPREDICTABLE */
-> -        addr = tcg_temp_new_i32();
-> -        tcg_gen_movi_i32(addr, s->pc & ~2);
-> -    } else {
-> -        addr = load_reg(s, a->rn);
-> -    }
-> +    addr = add_reg_for_lit(s, a->rn, 0);
->      if (a->p) {
->          /* pre-decrement */
->          tcg_gen_addi_i32(addr, addr, -(a->imm << 2));
-> @@ -1112,13 +1092,7 @@ static bool trans_VLDM_VSTM_dp(DisasContext *s, arg_VLDM_VSTM_dp *a)
->          return true;
->      }
->
-> -    if (s->thumb && a->rn == 15) {
-> -        /* This is actually UNPREDICTABLE */
-> -        addr = tcg_temp_new_i32();
-> -        tcg_gen_movi_i32(addr, s->pc & ~2);
-> -    } else {
-> -        addr = load_reg(s, a->rn);
-> -    }
-> +    addr = add_reg_for_lit(s, a->rn, 0);
->      if (a->p) {
->          /* pre-decrement */
->          tcg_gen_addi_i32(addr, addr, -(a->imm << 2));
 > diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index a48e9a90f8..5e2dd8bb16 100644
+> index 5e2dd8bb16..e316eeb312 100644
 > --- a/target/arm/translate.c
 > +++ b/target/arm/translate.c
-> @@ -214,6 +214,23 @@ static inline TCGv_i32 load_reg(DisasContext *s, int reg)
->      return tmp;
->  }
->
-> +/*
-> + * Create a new temp, incremented by OFS, except PC is aligned but not
-> + * incremented for thumb.  This is used for load/store for which use of
-> + * PC implies (literal), or ADD that implies ADR.
-> + */
-> +static TCGv_i32 add_reg_for_lit(DisasContext *s, int reg, int ofs)
-> +{
-> +    TCGv_i32 tmp = tcg_temp_new_i32();
-> +
-> +    if (reg == 15) {
-> +        tcg_gen_movi_i32(tmp, (s->pc_read & ~3) + ofs);
-> +    } else {
-> +        tcg_gen_addi_i32(tmp, cpu_R[reg], ofs);
-> +    }
-> +    return tmp;
-> +}
+> @@ -9773,13 +9773,11 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
+>                          /* Load.  */
+>                          tmp = tcg_temp_new_i32();
+>                          gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
+> -                        if (i == 15) {
+> -                            gen_bx_excret(s, tmp);
+> -                        } else if (i == rn) {
+> +                        if (i == rn) {
+>                              loaded_var = tmp;
+>                              loaded_base = 1;
+>                          } else {
+> -                            store_reg(s, i, tmp);
+> +                            store_reg_from_load(s, i, tmp);
+>                          }
+>                      } else {
+>                          /* Store.  */
 
-This is losing the information in the comments about the UNPREDICTABLE
-cases. Are there callsites where the new function is called where
-"thumb and reg == 15" is not UNPREDICTABLE, or are they all
-that way?
+I thought at first this would change behaviour if rn == 15
+but in practice it doesn't because 15 is the end of the loop
+anyway. (This is an UNPREDICTABLE case, but if they get in our
+way it might be better to explicitly make them UNDEF rather than
+just behaving like whatever falls out from the implementation.)
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

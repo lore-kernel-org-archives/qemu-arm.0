@@ -1,161 +1,117 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4433122wrv;
-        Tue, 30 Jul 2019 07:10:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxqYOmZVBMt6NKul+VMh3RtZB7mMyqiUtpV40xhIm/0XtLrOhp/wuGzscQRZYWVFPO3GFlX
-X-Received: by 2002:ac8:6717:: with SMTP id e23mr77638042qtp.27.1564495804884;
-        Tue, 30 Jul 2019 07:10:04 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 21si40527375qvm.154.2019.07.30.07.10.04
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4476724wrv;
+        Tue, 30 Jul 2019 07:54:21 -0700 (PDT)
+X-Received: by 2002:a62:107:: with SMTP id 7mr42675614pfb.4.1564498461847;
+        Tue, 30 Jul 2019 07:54:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564498461; cv=none;
+        d=google.com; s=arc-20160816;
+        b=h/AkHypkA5o8aWXVdGlx4OhkLiRJowJ4V6JlZOgNrTdA99p9Sa7k94Y9gTZLf5Dhk+
+         JGTYXX7kvJOlM0uMzrd5riL1mZSWkFOFHwvG7Kbi76YtnyL4LUCguXeZp8TVnDQ/hSfi
+         yTtHAFG3w/wAm+Qlq61aSgO9IbJFqhUelnFM4ohA8TVE/QQmOUsXUIWHOFpP3Hnmevc5
+         nPJcNyrp41mSIUKh3JByXHWeeOaoMl9vLt/6+eRsz50vfGw7YupxjHFs0BfRLOi1WXnX
+         prBweb42wSe+1jNFoh5Oex00P0yR1Y1dQZSmulyx4dIWhyistwa5A9nIJDk6aJGuZUb/
+         SIxQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=lLkaJ3wgFvcEuAPw7ikJ5rmvzJ8As6bAxa2G5iVp+/E=;
+        b=KHnaVTbeswHMZm6yW6MiZYKVgphFhwnzHCU9lZmS9a6XxRsJ3kZenjBLouuQ1fcre4
+         0G4vFpXfPSqi5r4BvlXmpVwhHbTk0y04+waS9wqfZs1Wmjlg2aaiCHN+jWR6/LuBEdgw
+         yBdLoq285Ulk7yhwE9fsTmzQEXD9BNcFRO9wBCVUeKmf1G+TvZdB1sNeveGnEJ35ovrF
+         YMzOFl+tKsio7rsgjJcKlNkpzcwurhQWd2YKE26oOxq8pQWUbl/0N5tkY5UgPvaxlg9l
+         07ehv2jAr502zSqDKx+spWo85UISKIX3TpNx1bljOznBwSDRtKbcMTWPz3Lu3nWqZAQH
+         Vk3Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=AH0GvLYG;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id s10sor77747090pjc.5.2019.07.30.07.54.21
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jul 2019 07:10:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 30 Jul 2019 07:54:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=xikLSMD7;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33308 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hsSpI-0008OJ-E2
-	for alex.bennee@linaro.org; Tue, 30 Jul 2019 10:10:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57291)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <damien.hedde@greensocs.com>) id 1hsSoL-0006eL-Ns
- for qemu-arm@nongnu.org; Tue, 30 Jul 2019 10:09:06 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1hsSoK-0005GO-IN
- for qemu-arm@nongnu.org; Tue, 30 Jul 2019 10:09:05 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:56814)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1hsSoK-0005FG-1c; Tue, 30 Jul 2019 10:09:04 -0400
-Received: from [172.16.11.117] (unknown [172.16.11.117])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 63AE496F52;
- Tue, 30 Jul 2019 14:09:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1564495741;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=72PTcUrEl0VNBb2YbcwlUOaUC4ci2fKOleI/sbnYZek=;
- b=xikLSMD75ffLqRUBKoE5sn+zBED+AAYdUcI6+gh9YpDSf89kEjs3cJQR+aupdHORuvho/2
- /9mHIvHZwcKmEKkxQ3DM2OaD8GRVZ0kmgUUalLnGSzKX9AG5o2nz6NQ14NThjdXtdI5vU3
- geb7piyEmRNySR7I2Jxr56TMtydniwc=
-To: Peter Maydell <peter.maydell@linaro.org>, Cornelia Huck <cohuck@redhat.com>
-References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-2-damien.hedde@greensocs.com>
- <20190730154209.2049f10a.cohuck@redhat.com>
- <CAFEAcA-rwBiXkDEDuT-=KQVJ2A2ob16=P0obbZBPUfZeYXy+dQ@mail.gmail.com>
- <20190730155547.7b201f5e.cohuck@redhat.com>
- <CAFEAcA_BU3DECLVv2QD_RshR0OL3=GqGwsm0YAmEAE6_SpW=HA@mail.gmail.com>
-From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <34a216b0-0067-8627-599c-6a67622c4bd2@greensocs.com>
-Date: Tue, 30 Jul 2019 16:08:59 +0200
+       dkim=pass header.i=@linaro.org header.s=google header.b=AH0GvLYG;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=lLkaJ3wgFvcEuAPw7ikJ5rmvzJ8As6bAxa2G5iVp+/E=;
+        b=AH0GvLYG37kF5plDzvl43jiLzrrC0DnRDDjHlaKpzfKmjyk22Fj0VmS5s7G8fVGbj5
+         PaB99FgF8anrRZ4rhr1VE/xpCXz8FRa9GA1tOMo8vQqET4JGoK1/Yr/v5Y3vsfXXYJNb
+         5RptY5WBBBhgDMGhF05BXvnRCE+yfOLw01tturUgjsIaqZ0uALorYNnvzP3AvE/VMypm
+         R+Y7+EHY1fabDMXxIJD+JxJzU49YMVG6tD0v7/4CQ5JbC8XGFYT+zhZ/5ugX+33PNQ2i
+         gjbgyPDyQx+R2fmrLeB8rCjsTab1yNe7QdkATe/vLYaWo2MEPq5M0ezEgD/UJGSrLXlP
+         TAWw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=lLkaJ3wgFvcEuAPw7ikJ5rmvzJ8As6bAxa2G5iVp+/E=;
+        b=uGDK37xmOqp2InwCgragAbwsedz7oADP/eG0HyyzK5mJF8J7bchVikmaGBrDUlt6EC
+         wDPUKrTsc+LmrHc1PanPMUm7ptJRnxibXfni107pWHkPAfsbCTEFPokDD9NwteuuSLH9
+         Tzo6zvZQqRIZwfEa5b9hkvdWUvXohtib4LwcaiBNdLXIR+wVN0YhIRyjcMp2mYHpb/gZ
+         hm4gIX8+IBvzkbMC8vAF2EXuvgcmZPvu48qsgGzSOQgxqquO8+QdpcEbLKET77ZhN6/P
+         It4hrmBznOGN6L5GG/S6XZ+AJbUa+uKP4VkB/Fko1MqGFHN0NaysA3MYy34807BH3B9Z
+         uzvQ==
+X-Gm-Message-State: APjAAAUWvJt5TMZoaUxt1Ql73W9Y/Hc3Bs/8P/9+CkhgqeQvxULrIz84
+	BR8uTVQmm9Jf4D7KdSlFQxdo4xN31N1eqA==
+X-Google-Smtp-Source: APXvYqzCUJgfyVYv/LynUZ7w4X+HENloQlavokj2Nsq9w7XlNQA787qXtKVbAL2l/5oyyTgvcgYbTA==
+X-Received: by 2002:a17:90a:cb01:: with SMTP id z1mr2628925pjt.93.1564498460892;
+        Tue, 30 Jul 2019 07:54:20 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.101.105] ([75.147.178.105])
+        by smtp.gmail.com with ESMTPSA id x65sm65132285pfd.139.2019.07.30.07.54.19
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 30 Jul 2019 07:54:20 -0700 (PDT)
+Subject: Re: [PATCH for-4.1?] target/arm: Deliver BKPT/BRK exceptions to
+ correct exception level
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20190730132522.27086-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <6788a31f-a46a-0fd3-0513-a2fe558d0703@linaro.org>
+Date: Tue, 30 Jul 2019 07:54:18 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.1
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_BU3DECLVv2QD_RshR0OL3=GqGwsm0YAmEAE6_SpW=HA@mail.gmail.com>
+In-Reply-To: <20190730132522.27086-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US-large
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1564495741;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=72PTcUrEl0VNBb2YbcwlUOaUC4ci2fKOleI/sbnYZek=;
- b=wwrpUZDU/W6QlgICbr+k39DoadLRQuOFEuCbtttIuVPQd7LASm8PiCnxy+oJsXpYRfS0bO
- IJJpMhK6CrsR2atAduI/kJyyjaIIB/5Ck0bGAJZAm9yukZsmqPcz760z8Pm8fFNblaASF7
- z08mx2xAQc0ZedBZfYEkS7XuVaJUMT4=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564495741; a=rsa-sha256; cv=none;
- b=rq1QyBpTZvoxvoaVYWal0IFKxkeyUyTTuSLpOl2QqNA7+4XW3NhAi69vDwov+v2wwaYkRx
- z3QgeeC2WREafpEBNle90r4invfcy/fcK9OQVB+7UBYyeEMOpTp8utW+DmzClFLVR4AD46
- u2sNo1puklUPzSCCuB3SHhRs9TZsLks=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 5.135.226.135
-Subject: Re: [Qemu-arm] [PATCH v3 01/33] Create Resettable QOM interface
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Edgar Iglesias <edgar.iglesias@xilinx.com>, Hannes Reinecke <hare@suse.com>,
- Qemu-block <qemu-block@nongnu.org>, David Hildenbrand <david@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-s390x <qemu-s390x@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, John Snow <jsnow@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Mark Burton <mark.burton@greensocs.com>, qemu-ppc <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RW1oc+VAeEbR
+X-TUID: 5+y9FSBMPZLR
 
-
-On 7/30/19 3:59 PM, Peter Maydell wrote:
-> On Tue, 30 Jul 2019 at 14:56, Cornelia Huck <cohuck@redhat.com> wrote:
->>
->> On Tue, 30 Jul 2019 14:44:21 +0100
->> Peter Maydell <peter.maydell@linaro.org> wrote:
->>
->>> On Tue, 30 Jul 2019 at 14:42, Cornelia Huck <cohuck@redhat.com> wrote:
->>>> I'm having a hard time figuring out what a 'cold' or a 'warm' reset is
->>>> supposed to be... can you add a definition/guideline somewhere?
->>>
->>> Generally "cold" reset is "power on" and "warm" is "we were already
->>> powered-on, but somebody flipped a reset line somewhere".
->>
->> Ok, that makes sense... my main concern is to distinguish that in a
->> generic way, as it is a generic interface. What about adding something
->> like:
->>
->> "A 'cold' reset means that the object to be reset is initially reset; a 'warm'
->> reset means that the object to be reset has already been initialized."
->>
->> Or is that again too generic?
+On 7/30/19 6:25 AM, Peter Maydell wrote:
+> Most Arm architectural debug exceptions (eg watchpoints) are ignored
+> if the configured "debug exception level" is below the current
+> exception level (so for example EL1 can't arrange to get debug exceptions
+> for EL2 execution). Exceptions generated by the BRK or BPKT instructions
+> are a special case -- they must always cause an exception, so if
+> we're executing above the debug exception level then we
+> must take them to the current exception level.
 > 
-> I think it doesn't quite capture the idea -- an object can have already
-> been reset and then get a 'cold' reset: this is like having a powered-on
-> machine and then power-cycling it.
+> This fixes a bug where executing BRK at EL2 could result in an
+> exception being taken at EL1 (which is strictly forbidden by the
+> architecture).
 > 
-> The 'warm' reset is the vaguer one, because the specific behaviour
-> is somewhat device-dependent (many devices might not have any
-> difference from 'cold' reset, for those that do the exact detail
-> of what doesn't get reset on warm-reset will vary). But every
-> device should have some kind of "as if you power-cycled it" (or
-> for QEMU, "go back to the same state as if you just started QEMU on the
-> command line"). Our current "reset" method is really cold-reset.
-> 
+> Fixes: https://bugs.launchpad.net/qemu/+bug/1838277
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Exactly. In the following patches, I've tried to replace existing reset
-calls by cold or warm reset depending on whether:
-+ it is called through the main system reset -> cold
-+ it is called during normal life-time       -> warm
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-But I definitely can add some docs/comments to better explain that.
+> At this point in the release cycle I'm not sure we should put this
+> into 4.1 -- it is definitely a bug but it's not a regression as
+> we've been wrong like this for multiple releases, pretty much
+> since we put in the debug handling code I suspect.
 
---
-Damien
+I'd lean to putting it in, fwiw.
+
+
+r~

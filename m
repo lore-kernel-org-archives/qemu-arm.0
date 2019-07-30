@@ -1,224 +1,170 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3738622wrv;
-        Mon, 29 Jul 2019 17:51:28 -0700 (PDT)
-X-Received: by 2002:a63:e610:: with SMTP id g16mr103955807pgh.392.1564447888611;
-        Mon, 29 Jul 2019 17:51:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564447888; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3742885wrv;
+        Mon, 29 Jul 2019 17:57:35 -0700 (PDT)
+X-Received: by 2002:a62:5c01:: with SMTP id q1mr16896036pfb.53.1564448254902;
+        Mon, 29 Jul 2019 17:57:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564448254; cv=none;
         d=google.com; s=arc-20160816;
-        b=stgL5DCQkaqeoT6eG5hXQkSqUziOvQ+7IAqs3Gtt7DHDHrv+DGzqjnOaShsRYd305X
-         qG1X4dqkHcTOXlm1ty8/cOVy+r3rtGwhFB558wXQyFpkXrEzd9a0X5succ/NBUN3spL0
-         xBBODpb+o5z4JZTFfQ3hFR6tKkUXFAI02ILdh9Yx3hMZCcrGF9y272J45mejz01E9FF5
-         gSXCwTOqnxIn5bJ1m5EAWQ5oLokNz8iu5IDbzIY4xgLKfptX+rYyrb6i0TnjPaQfmDHV
-         xJmk78LlNlcwQoYkt638ATOyGRdVXA0CaEqwpLA0jcJdBou2t1bHbhhWbTBQ1I7mlzGe
-         CCdQ==
+        b=Xnq/RqHMKt5zGq34An+NJyO7YXRiB/LN4SiKln5luQAJPRbCe9QHkNt37ozLudjEFK
+         drXFZ+UBRfVfrj62/R5Qi/+u/wYngE+TPXDJU//WbRd8T+ObkBehfniVNMZ3Q6LkDWy0
+         +g7cqOZwVBH0erKvPDoS+kqwVoJz4RIByKxjHFt0Bm9p7MojMiMGwW1j7MTsnenh6y00
+         d6nxjOCdsIv1GhOhTwKl5vE6tcGLUIvLyUGKvqk07Bju/+dXQx2NXQpghgfIoCinrjfN
+         K/fo2QwpaUW8DC9W0pFhNV+4q36Vv6TOf1EUPzPpMPuC1EttmP7qIGARwomf1r9r2aCQ
+         HJCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject
          :dkim-signature;
-        bh=LF7L82GhpFbVdHeg16Q5O7ojfqytaYQnqcY5Dv+kQXE=;
-        b=HaxiqJGSivAw29Bsov18ulhGI0Q1Db1L+TPv+9yC0f6YiLnKn1HN3S8eNfzM+ZUkhE
-         cgpRRTF24bQTypKQdkswK4CGaULY5ad7jdSHygHKQPkl0+MgMGDztpRfT3W18CEjVJQZ
-         UJM6+Z57gVIuA5fxOQeXP7hKHWneZJa3bpKwTgsgFMGX9KSgkPqaNrGcKwGmfk01Pew0
-         UYsjO+xZgViin6bRn16tV98Ab8PdDmQe9zL70ajUPGuOVOnCJXbdkILeMSmuDvPheNfG
-         k1fsTUb/cPxn3+CQXEk+HYxCI1yTrnJ6oAE2RZlkGK//NT4SoOFF/hyCQZTGphWrTCom
-         qJbw==
+        bh=esrCG6HfxpWpYhrk5c7Xqz0WWHxzjIRuUMh3KVljiLY=;
+        b=RYJQb+7Bb/qvsEJM8gXgxlvIWzT46ETfBu5ACMY4qcTN8kHISFRub46WYEmAkFyvTt
+         XkwmCwX8stjJ+K6ZjaWedhSs0NckOJCHdU+80Bl3Gd2+59hyC+LBzIlC9IKYCmxgYsgT
+         a0p9Nn3sRK7yN5idX8XeDwWV2JgY9ssCFU7pgz3gdhvlf7TwzbJmsD6S84YpqnaxRHEn
+         FOPbQwivS/HpV1Aac6mD6IpV5MtqQzc4AWOunb3yVxJe6NCFuYlpbhYi5sJ2F3BBvvKs
+         +04fuGZo+wnuCci1VYC8uadNQ5Ca1VHiK+NDV2xQqev1RX4QtRRksfDb59/DXpb5N28j
+         OdHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NtXXzMJ7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=t3ITc092;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id r27sor44534333pfq.73.2019.07.29.17.51.28
+        by mx.google.com with SMTPS id d64sor22146711pgc.69.2019.07.29.17.57.34
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 29 Jul 2019 17:51:28 -0700 (PDT)
+        Mon, 29 Jul 2019 17:57:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NtXXzMJ7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=t3ITc092;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=LF7L82GhpFbVdHeg16Q5O7ojfqytaYQnqcY5Dv+kQXE=;
-        b=NtXXzMJ7KGT3WpJqKxX+cIhueHC2Ibnsyt2qtYuc2Z1DU7yxoYbD7FcgcAgBuWNhDi
-         YtmLbSb9z5QP9E8ytviq1US9YNaa+VG1O3bHv879uEAW4Y+KSkltrWsaKeDrdfj3JWeU
-         uncm0JC6EywytvBvuoy7LtWyf4W+8XEYWIje3sZRzZZ64sR3Siv9GqsKU+DOEDpr92N6
-         OdoGR7j+MjnNDN8WMSrXL/P3nRATUaP5rNbuK0BMGXLIcsYDHevb6iyW2ukzLrA1JrZW
-         tqCa4k7jk0GJYINLrQ5M+6Prbckgec+P8V/4/2jXdcDPJBQIlvzFApLeKmjsgV0cdjn0
-         fiWQ==
+        bh=esrCG6HfxpWpYhrk5c7Xqz0WWHxzjIRuUMh3KVljiLY=;
+        b=t3ITc092eLc6++yaikhVL3DVwWbdIrLGhMNQ0JlTCZHd1p9pA4PbWw8l/9QTwmArcI
+         GWoVturtvh7o7eVENk7L58Zs/VSGXDeFL4bhenP+NEh28EHM4y8z4Sq4XbG6aNmom452
+         2Nt9mnuDbcGMI5RLmJRoWfTqmap0mZ1itfweiLqVkpm2lp9eSBEeiao7ZlLbLke8iRRS
+         3Ux42cy7b3cAD3mQgxzKuloCzkrj8nXrS7uVCVA6/aXHvFUQQF/ZGzhuiF1bGEd03Unn
+         Z23h7ikx/snVByURRAYkxBEy95eXfxS5kWOVhnan9LAHQwMA22F/b+mH0rlR2N1SBbEh
+         hpUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=LF7L82GhpFbVdHeg16Q5O7ojfqytaYQnqcY5Dv+kQXE=;
-        b=lUeHcwvaN3z/gjoo+xZIpxe/OU2pIk9ecj2vK1M62lgyy0KJiv/IbPmT8R1MbvONl1
-         YhsVA1SbcncaHIif8xn5aVyaEb3VDawHIQ+E1ht0YOyP1zflqe6KdKOOCsAW740JDmAv
-         4h7i8+Fm6iOInPDnreHlBCGWuaxjyvZLczufqhfO5weEVoDEGlZwsqJxhYEgbgrtY97j
-         wZuw5/30cBTfeUrru1ypGH6pz3/6AVFGByOFDeoMCf9KL+gN9Na/CwsTdAGcI7sRJZEG
-         NFV6XVujVWQ3lp4wcbVEWGWG0DhpF+QCHU73Jqrt/Fw6CeNdRhlrAKDAcpoPFMHGfgXQ
-         cvQA==
-X-Gm-Message-State: APjAAAXOfsWunFdKWJJP+t3gijzMA5ER+LU4Q8jf4pD1lQZnzS8XtFHK
-	Aj0nwS7f6GCXP2YFlaq5KOwz+jZub9YB0w==
-X-Google-Smtp-Source: APXvYqwVUWMV/I2EwAyVhIPt4QCisbkYAWEZCrNNPH1c4HBBAvF1u5ilKo4jqCfcFZBw21dWJljlqA==
-X-Received: by 2002:a62:35c6:: with SMTP id c189mr39285539pfa.96.1564447887584;
-        Mon, 29 Jul 2019 17:51:27 -0700 (PDT)
+        bh=esrCG6HfxpWpYhrk5c7Xqz0WWHxzjIRuUMh3KVljiLY=;
+        b=uDlzZ+xCAlb3hsR7qStx8t4s0Sl/k9D3jm0I1LwkND6GOAJI6FzvM3wXoF/wZfut/C
+         +9kB6PaePMu7N3Sd6UkflbSrQinO9ZHxn9YDdgZzM3RzBI9d/uuZE9SHMVEM0+n2Y++1
+         AkWSLtyLgCTrfbSykhEFzl82LAkiTk4HKRZU1g0mXoGrPpCX+IBCVVkQhR739laV4vyl
+         PR1q0lUqCRohCYi3InZcHGZdme8FGrK7MtSLLacK+MCtzCdo6eTB70nKlwTaj4Rs3njK
+         nTekLpVXhjtlP1nLBHzTU4jbbCcE5REFXl3yEzphc4Z7tbeuLA96bRnOb7Emx++ZAnPv
+         piJw==
+X-Gm-Message-State: APjAAAW9thJftgPbiaWijtQ7vGD5eCe96i6xhnJs1oPk8tDf816+V7ei
+	AMUOyyAU0TQAFue58VNdv161pOsTbFZ3/g==
+X-Google-Smtp-Source: APXvYqxLMpRzsoexi6Tu0g5PXjmE6TMWpnvjQLMeCFmVe73bznFElY419zg9aLx7Zv92GtwxNgR3bA==
+X-Received: by 2002:a63:2252:: with SMTP id t18mr106902673pgm.5.1564448254072;
+        Mon, 29 Jul 2019 17:57:34 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.101.105] ([75.147.178.105])
-        by smtp.gmail.com with ESMTPSA id g2sm103342035pfq.88.2019.07.29.17.51.26
+        by smtp.gmail.com with ESMTPSA id j12sm54558458pff.4.2019.07.29.17.57.32
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 29 Jul 2019 17:51:26 -0700 (PDT)
-Subject: Re: [PATCH 07/67] target/arm: Introduce add_reg_for_lit
+        Mon, 29 Jul 2019 17:57:33 -0700 (PDT)
+Subject: Re: [PATCH 10/67] target/arm: Move test for AL into arm_skip_unless
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <20190726175032.6769-1-richard.henderson@linaro.org>
- <20190726175032.6769-8-richard.henderson@linaro.org>
- <CAFEAcA_HY=WuGEPxTEm5g5tYuCDHXRDs=9EXQd6r+zvsL6_=Uw@mail.gmail.com>
+ <20190726175032.6769-11-richard.henderson@linaro.org>
+ <CAFEAcA83GM6wgWs1xGygmqCoir=CXtFXYkzPBMdUeb638kCzmw@mail.gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <af4f9f07-ac63-dfeb-9f2d-734ffff3fe7d@linaro.org>
-Date: Mon, 29 Jul 2019 17:51:24 -0700
+Message-ID: <28a5710a-37a7-2d6a-1609-5218d5e8e931@linaro.org>
+Date: Mon, 29 Jul 2019 17:57:31 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_HY=WuGEPxTEm5g5tYuCDHXRDs=9EXQd6r+zvsL6_=Uw@mail.gmail.com>
+In-Reply-To: <CAFEAcA83GM6wgWs1xGygmqCoir=CXtFXYkzPBMdUeb638kCzmw@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-TUID: HWmw/Gbv9akL
+X-TUID: lzA/dVgONoHf
 
-On 7/29/19 7:15 AM, Peter Maydell wrote:
+On 7/29/19 7:32 AM, Peter Maydell wrote:
 > On Fri, 26 Jul 2019 at 18:50, Richard Henderson
 > <richard.henderson@linaro.org> wrote:
 >>
->> Used only on the thumb side so far, but will be more obvious
->> once we start unifying the implementation of A32+T32.
+>> We will shortly be calling this function much more often.
 >>
 >> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 >> ---
->>  target/arm/translate-vfp.inc.c |  34 +------
->>  target/arm/translate.c         | 163 +++++++++++++++------------------
->>  2 files changed, 76 insertions(+), 121 deletions(-)
+>>  target/arm/translate.c | 28 ++++++++++++----------------
+>>  1 file changed, 12 insertions(+), 16 deletions(-)
 >>
->> diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
->> index e7389bc057..4066b2febf 100644
->> --- a/target/arm/translate-vfp.inc.c
->> +++ b/target/arm/translate-vfp.inc.c
->> @@ -941,14 +941,7 @@ static bool trans_VLDR_VSTR_sp(DisasContext *s, arg_VLDR_VSTR_sp *a)
->>          offset = -offset;
->>      }
->>
->> -    if (s->thumb && a->rn == 15) {
->> -        /* This is actually UNPREDICTABLE */
->> -        addr = tcg_temp_new_i32();
->> -        tcg_gen_movi_i32(addr, s->pc & ~2);
->> -    } else {
->> -        addr = load_reg(s, a->rn);
->> -    }
->> -    tcg_gen_addi_i32(addr, addr, offset);
->> +    addr = add_reg_for_lit(s, a->rn, offset);
->>      tmp = tcg_temp_new_i32();
->>      if (a->l) {
->>          gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
->> @@ -983,14 +976,7 @@ static bool trans_VLDR_VSTR_dp(DisasContext *s, arg_VLDR_VSTR_dp *a)
->>          offset = -offset;
->>      }
->>
->> -    if (s->thumb && a->rn == 15) {
->> -        /* This is actually UNPREDICTABLE */
->> -        addr = tcg_temp_new_i32();
->> -        tcg_gen_movi_i32(addr, s->pc & ~2);
->> -    } else {
->> -        addr = load_reg(s, a->rn);
->> -    }
->> -    tcg_gen_addi_i32(addr, addr, offset);
->> +    addr = add_reg_for_lit(s, a->rn, offset);
->>      tmp = tcg_temp_new_i64();
->>      if (a->l) {
->>          gen_aa32_ld64(s, tmp, addr, get_mem_index(s));
->> @@ -1029,13 +1015,7 @@ static bool trans_VLDM_VSTM_sp(DisasContext *s, arg_VLDM_VSTM_sp *a)
->>          return true;
->>      }
->>
->> -    if (s->thumb && a->rn == 15) {
->> -        /* This is actually UNPREDICTABLE */
->> -        addr = tcg_temp_new_i32();
->> -        tcg_gen_movi_i32(addr, s->pc & ~2);
->> -    } else {
->> -        addr = load_reg(s, a->rn);
->> -    }
->> +    addr = add_reg_for_lit(s, a->rn, 0);
->>      if (a->p) {
->>          /* pre-decrement */
->>          tcg_gen_addi_i32(addr, addr, -(a->imm << 2));
->> @@ -1112,13 +1092,7 @@ static bool trans_VLDM_VSTM_dp(DisasContext *s, arg_VLDM_VSTM_dp *a)
->>          return true;
->>      }
->>
->> -    if (s->thumb && a->rn == 15) {
->> -        /* This is actually UNPREDICTABLE */
->> -        addr = tcg_temp_new_i32();
->> -        tcg_gen_movi_i32(addr, s->pc & ~2);
->> -    } else {
->> -        addr = load_reg(s, a->rn);
->> -    }
->> +    addr = add_reg_for_lit(s, a->rn, 0);
->>      if (a->p) {
->>          /* pre-decrement */
->>          tcg_gen_addi_i32(addr, addr, -(a->imm << 2));
 >> diff --git a/target/arm/translate.c b/target/arm/translate.c
->> index a48e9a90f8..5e2dd8bb16 100644
+>> index 53c46fcdc4..36419025db 100644
 >> --- a/target/arm/translate.c
 >> +++ b/target/arm/translate.c
->> @@ -214,6 +214,23 @@ static inline TCGv_i32 load_reg(DisasContext *s, int reg)
->>      return tmp;
+>> @@ -7705,8 +7705,14 @@ static void arm_gen_condlabel(DisasContext *s)
+>>  /* Skip this instruction if the ARM condition is false */
+>>  static void arm_skip_unless(DisasContext *s, uint32_t cond)
+>>  {
+>> -    arm_gen_condlabel(s);
+>> -    arm_gen_test_cc(cond ^ 1, s->condlabel);
+>> +    /*
+>> +     * Conditionally skip the insn. Note that both 0xe and 0xf mean
+>> +     * "always"; 0xf is not "never".
+>> +     */
+>> +    if (cond < 0xe) {
+>> +        arm_gen_condlabel(s);
+>> +        arm_gen_test_cc(cond ^ 1, s->condlabel);
+>> +    }
 >>  }
 >>
->> +/*
->> + * Create a new temp, incremented by OFS, except PC is aligned but not
->> + * incremented for thumb.  This is used for load/store for which use of
->> + * PC implies (literal), or ADD that implies ADR.
->> + */
->> +static TCGv_i32 add_reg_for_lit(DisasContext *s, int reg, int ofs)
->> +{
->> +    TCGv_i32 tmp = tcg_temp_new_i32();
+>>  static void disas_arm_insn(DisasContext *s, unsigned int insn)
+>> @@ -7944,11 +7950,9 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+>>          }
+>>          goto illegal_op;
+>>      }
+>> -    if (cond != 0xe) {
+>> -        /* if not always execute, we generate a conditional jump to
+>> -           next instruction */
+>> -        arm_skip_unless(s, cond);
+>> -    }
 >> +
->> +    if (reg == 15) {
->> +        tcg_gen_movi_i32(tmp, (s->pc_read & ~3) + ofs);
->> +    } else {
->> +        tcg_gen_addi_i32(tmp, cpu_R[reg], ofs);
->> +    }
->> +    return tmp;
->> +}
+>> +    arm_skip_unless(s, cond);
+>> +
+>>      if ((insn & 0x0f900000) == 0x03000000) {
+>>          if ((insn & (1 << 21)) == 0) {
+>>              ARCH(6T2);
+>> @@ -12095,15 +12099,7 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+>>      dc->insn = insn;
+>>
+>>      if (dc->condexec_mask && !thumb_insn_is_unconditional(dc, insn)) {
+>> -        uint32_t cond = dc->condexec_cond;
+>> -
+>> -        /*
+>> -         * Conditionally skip the insn. Note that both 0xe and 0xf mean
+>> -         * "always"; 0xf is not "never".
+>> -         */
+>> -        if (cond < 0x0e) {
+>> -            arm_skip_unless(dc, cond);
+>> -        }
+>> +        arm_skip_unless(dc, dc->condexec_cond);
+>>      }
 > 
-> This is losing the information in the comments about the UNPREDICTABLE
-> cases. Are there callsites where the new function is called where
-> "thumb and reg == 15" is not UNPREDICTABLE, or are they all
-> that way?
+> In the other callsites for arm_skip_unless() the cond argument
+> can never be 0xe or 0xf.
+> 
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-These call sites are that way, but this function will eventually be used for
-LDR (literal) and ADR, which obviously are not UNPREDICTABLE.
+In my original version I included cond in the fields collected by decodetree,
+and so every single trans_* function called arm_skip_unless, so that would not
+be the case there.
 
-I don't think this comment attached to this code is useful as-is.  Either we do
-the natural a32-ish behaviour and use ALIGN(PC,4), or we should
-gen_illegal_op() and be done with it.
+I discarded that in the version posted here, but I still think it might be a
+cleaner design overall.
 
-Would you prefer a function like
-
-/* Use of PC is UNPREDICTABLE in thumb mode, but allowed in arm mode. */
-static TCGv_i32 load_reg_nothumbpc(DisasContext *s, int reg)
-{
-    if (unlikely(reg == 15) && s->thumb) {
-        gen_illegal_op(s);
-        /* Unreachable tcg ops will be deleted but must still be legal. */
-        return tcg_const_i32(0);
-    }
-    return load_reg(s, reg);
-}
-
-for these specific usages?
+In the short term, maybe I should just discard this patch?
 
 
 r~

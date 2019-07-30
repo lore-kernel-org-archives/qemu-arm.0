@@ -1,145 +1,171 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4519214wrv;
-        Tue, 30 Jul 2019 08:31:12 -0700 (PDT)
-X-Received: by 2002:a05:6000:11c6:: with SMTP id i6mr27469539wrx.193.1564500672002;
-        Tue, 30 Jul 2019 08:31:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564500671; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4535139wrv;
+        Tue, 30 Jul 2019 08:48:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw1s0jADDuh0DGLQV0l8I67OITry0MPkP3r/YPL5wCi3DAxWHZR/IxrAxKNlHXIeEqH1L00
+X-Received: by 2002:a17:906:1596:: with SMTP id k22mr7667675ejd.102.1564501701505;
+        Tue, 30 Jul 2019 08:48:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564501701; cv=none;
         d=google.com; s=arc-20160816;
-        b=BbktgOOL4G6XhIZ2qm5Ui84Qcv0+U51Fld/2yJJJTPAM5VU/AnJoMhIIxUi+ZoeHIK
-         KEFyC0cI1ADiZuhiYCjmbRzP0g20jYHhiBTMKUOSh25Mt5KMNmQwbtyD2EhLWMsaeEKI
-         mkDAjrVdD54TTo5dlYYDT9b8S6Eq+lFKuz8Eb7gf81gEybWFI2NCfn7rlrJER2+mRHrZ
-         hmS2tUVEgwKSUmCAoOyeRGz4z4g8HTsZKISBgnJ6FVf8NkuTAfxs6vvxUtsIVDnQhpNu
-         dykFrNO295j1OJi69oBzzmCzVzhHkMdRQx5ArM5RxEfHpzpoXuav84aNozZ4oaI1xTO5
-         qJLw==
+        b=sjZ29dm+PWmXjBdItv775sF1tHZg8VcNNy1v6kbeY3wk4ELFSO3s/Iq/VD6uCtXLJa
+         wiHHwdRnEQd54Rtu0mFjWXRK/IYN11l1DXdq/udVUcZ/9EtIgiFGFQQKmYkkAhtLkuxP
+         qxfyVBTyVkNg8K/038vQ5orUdT1iLDoBp6Lmd2+sCJMs/DZghGgDLkewP8nSI6OvcsZs
+         pz/rBVFZYXHBumdWsOQ/fSt5Z8IUxTHqh7dOko2orJOxugkd/8bk+It5Qxju/CZTY+ah
+         Po2Ezdf/ji1KnFvOuBHSf3M/AzGDBD7dHCrNfykqZ6C5XJWw8eB+zq6IxquiwuqdQnZH
+         oVNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
-        bh=8J3NE8IIlpYqZdQ6IG202nyQ8353ntqIWj2xg30dRhw=;
-        b=QDv0Wd3yQbdWJZF0+WR30sgg8YkaeHCPYXVkM3Ul93Hf0uNa9VF+8AXdds2gPcb3yr
-         ihSOCcUJFWPTIunrQycAR48jpQGHRevlk2JocKKIHdO349dUOOVxVqo2ixo1fzS8UiN5
-         1gSm15D+sufIpjA4j2RF7rbdjlzSJpwNoEdr81HWExmcQHRHDyv2w1NEWQ2H6KIgMakP
-         rLkozNoX9aPj8XlinthYr9ZdvonQxz69Jyf4Z/SDn6204GMBPSTXUzjUR8ZShG+6tETn
-         pGXJ5BM/1tZw1avrvynvvd1ZNBWezg7JsUaLr8e7ZS4qRDOxlCP/nlusZpe6hufmddQq
-         MNVA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:to:from:date;
+        bh=k/1MNvSm+lb/E+TR9eipkiJxGSgYHd6fuvqL2DKtLCk=;
+        b=kepV6H3e79JeT7kBiQnD/GpDQ0G+EN+KYikpnuhMf3XfVcjhNR6MB6SwOAUn8GwrYj
+         d5b3+h24ShBbGbqQ2hUz53zAcqVJqQ3w9xEqCTkBoDOacMTPMQJDxDDXJsxqK1+pr4/5
+         K2/hE2QWng914PDtrQ9RVK3EDeo8MfiztkO3qly/bgjeNeqE6OQAbsiLxLzbY3ZIPudx
+         23RitWRFY4TbaNJZvGzrqqjvRHlXctbIa67RE1hG+2txelDsMKdGVpD0co/qxMPsHDNl
+         Nq8s6mmXO/9Pjy98nPo9+p9AoO0AsO3LiG3ywWaK7nEI1NX7HQ84kJLLseGf485ZUJwS
+         a2cQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 103sor51078090wrc.8.2019.07.30.08.31.11
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f36si19939271edd.292.2019.07.30.08.48.21
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 30 Jul 2019 08:31:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 30 Jul 2019 08:48:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=8J3NE8IIlpYqZdQ6IG202nyQ8353ntqIWj2xg30dRhw=;
-        b=VDj92FVKpdCQUO+qHIjPDWDeJwR5++IElGkwNJ3Lo3VJaHtGfB7XBkAOg/xOIX5OEK
-         ynNAXCzZOnRxjG5lGpuguBDOjJ+c202Sobv8FyE8WOVwEg9uUtocpJQXGAdaKhyBF99q
-         7Ztj0v9gjTsyDXc2AtegA8V6+KSZ2xvPMIRRN78TT6Pcv0GBwPXMSWtVAJd5t9bqkxWx
-         goSdLgILRjod+713xFSDtbtdWlXeL7l5w+/jBgAZVniBhQ+nTFvqje6Z8FbNZlfXRzPs
-         dnNAJnWrHD/eLI9gHQxxvJ2iq1zM2V7vktZi27XZq065Y9Bq/RIhktAgoDU92NMiY2bn
-         T/YQ==
-X-Gm-Message-State: APjAAAXt68+NqDZnCTurtie3el8X/CbmD8cCCH40+lU2ytol8CCVyjZv
-	QOP3lVv5vxQr5BnelddG2105fA==
-X-Google-Smtp-Source: APXvYqw3WgMSeg7XBhU7eFym5HuqYb7GgcWUJyL6k4foIGyEBDgkjxa9FLW7drasgo7uQpcFdxmGuw==
-X-Received: by 2002:a5d:6a84:: with SMTP id s4mr50866969wru.125.1564500671769;
-        Tue, 30 Jul 2019 08:31:11 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.43.238] (63.red-95-127-155.staticip.rima-tde.net. [95.127.155.63])
-        by smtp.gmail.com with ESMTPSA id n8sm53148891wro.89.2019.07.30.08.31.10
-        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Tue, 30 Jul 2019 08:31:11 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH for-4.1?] target/arm: Deliver BKPT/BRK
- exceptions to correct exception level
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20190730132522.27086-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <c8d89a39-a711-a416-b069-5710d672b4e7@redhat.com>
-Date: Tue, 30 Jul 2019 17:31:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34072 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hsUMO-0006Ou-JZ
+	for alex.bennee@linaro.org; Tue, 30 Jul 2019 11:48:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47138)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <cohuck@redhat.com>) id 1hsUMI-0006Oo-90
+ for qemu-arm@nongnu.org; Tue, 30 Jul 2019 11:48:15 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <cohuck@redhat.com>) id 1hsUMF-0006BD-4w
+ for qemu-arm@nongnu.org; Tue, 30 Jul 2019 11:48:14 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37618)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <cohuck@redhat.com>)
+ id 1hsUM5-000649-Mb; Tue, 30 Jul 2019 11:48:04 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id EE83B30BD1CC;
+ Tue, 30 Jul 2019 15:47:58 +0000 (UTC)
+Received: from gondolin (dhcp-192-232.str.redhat.com [10.33.192.232])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8F83719C5B;
+ Tue, 30 Jul 2019 15:47:28 +0000 (UTC)
+Date: Tue, 30 Jul 2019 17:47:25 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <20190730174725.10419dfb.cohuck@redhat.com>
+In-Reply-To: <34a216b0-0067-8627-599c-6a67622c4bd2@greensocs.com>
+References: <20190729145654.14644-1-damien.hedde@greensocs.com>
+ <20190729145654.14644-2-damien.hedde@greensocs.com>
+ <20190730154209.2049f10a.cohuck@redhat.com>
+ <CAFEAcA-rwBiXkDEDuT-=KQVJ2A2ob16=P0obbZBPUfZeYXy+dQ@mail.gmail.com>
+ <20190730155547.7b201f5e.cohuck@redhat.com>
+ <CAFEAcA_BU3DECLVv2QD_RshR0OL3=GqGwsm0YAmEAE6_SpW=HA@mail.gmail.com>
+ <34a216b0-0067-8627-599c-6a67622c4bd2@greensocs.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-In-Reply-To: <20190730132522.27086-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: eNhKH+8HBeaV
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.49]); Tue, 30 Jul 2019 15:47:59 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v3 01/33] Create Resettable QOM interface
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Collin Walling <walling@linux.ibm.com>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
+ Edgar Iglesias <edgar.iglesias@xilinx.com>, Hannes Reinecke <hare@suse.com>,
+ Qemu-block <qemu-block@nongnu.org>, David Hildenbrand <david@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-s390x <qemu-s390x@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@kaod.org>,
+ John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Mark Burton <mark.burton@greensocs.com>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GDkgTNCs3yln
 
-On 7/30/19 3:25 PM, Peter Maydell wrote:
-> Most Arm architectural debug exceptions (eg watchpoints) are ignored
-> if the configured "debug exception level" is below the current
-> exception level (so for example EL1 can't arrange to get debug exceptions
-> for EL2 execution). Exceptions generated by the BRK or BPKT instructions
-> are a special case -- they must always cause an exception, so if
-> we're executing above the debug exception level then we
-> must take them to the current exception level.
-> 
-> This fixes a bug where executing BRK at EL2 could result in an
-> exception being taken at EL1 (which is strictly forbidden by the
-> architecture).
-> 
-> Fixes: https://bugs.launchpad.net/qemu/+bug/1838277
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> At this point in the release cycle I'm not sure we should put this
-> into 4.1 -- it is definitely a bug but it's not a regression as
-> we've been wrong like this for multiple releases, pretty much
-> since we put in the debug handling code I suspect.
+On Tue, 30 Jul 2019 16:08:59 +0200
+Damien Hedde <damien.hedde@greensocs.com> wrote:
 
-The fix is quite trivial, and the user reported using a release, so
-having it in the next release would be nice.
-Or as usual, wait for 'last-minute-bugfix-that-postpone-another-rc' and
-squeeze this fix in.
+> On 7/30/19 3:59 PM, Peter Maydell wrote:
+> > On Tue, 30 Jul 2019 at 14:56, Cornelia Huck <cohuck@redhat.com> wrote:  
+> >>
+> >> On Tue, 30 Jul 2019 14:44:21 +0100
+> >> Peter Maydell <peter.maydell@linaro.org> wrote:
+> >>  
+> >>> On Tue, 30 Jul 2019 at 14:42, Cornelia Huck <cohuck@redhat.com> wrote:  
+> >>>> I'm having a hard time figuring out what a 'cold' or a 'warm' reset is
+> >>>> supposed to be... can you add a definition/guideline somewhere?  
+> >>>
+> >>> Generally "cold" reset is "power on" and "warm" is "we were already
+> >>> powered-on, but somebody flipped a reset line somewhere".  
+> >>
+> >> Ok, that makes sense... my main concern is to distinguish that in a
+> >> generic way, as it is a generic interface. What about adding something
+> >> like:
+> >>
+> >> "A 'cold' reset means that the object to be reset is initially reset; a 'warm'
+> >> reset means that the object to be reset has already been initialized."
+> >>
+> >> Or is that again too generic?  
+> > 
+> > I think it doesn't quite capture the idea -- an object can have already
+> > been reset and then get a 'cold' reset: this is like having a powered-on
+> > machine and then power-cycling it.
+> > 
+> > The 'warm' reset is the vaguer one, because the specific behaviour
+> > is somewhat device-dependent (many devices might not have any
+> > difference from 'cold' reset, for those that do the exact detail
+> > of what doesn't get reset on warm-reset will vary). But every
+> > device should have some kind of "as if you power-cycled it" (or
+> > for QEMU, "go back to the same state as if you just started QEMU on the
+> > command line"). Our current "reset" method is really cold-reset.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Ah ok, that makes sense.
 
+> >   
 > 
->  target/arm/op_helper.c | 16 +++++++++++++++-
->  1 file changed, 15 insertions(+), 1 deletion(-)
+> Exactly. In the following patches, I've tried to replace existing reset
+> calls by cold or warm reset depending on whether:
+> + it is called through the main system reset -> cold
+> + it is called during normal life-time       -> warm
 > 
-> diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-> index 1ab91f915e4..5e1625a1c8a 100644
-> --- a/target/arm/op_helper.c
-> +++ b/target/arm/op_helper.c
-> @@ -370,6 +370,9 @@ void HELPER(exception_with_syndrome)(CPUARMState *env, uint32_t excp,
->   */
->  void HELPER(exception_bkpt_insn)(CPUARMState *env, uint32_t syndrome)
->  {
-> +    int debug_el = arm_debug_target_el(env);
-> +    int cur_el = arm_current_el(env);
-> +
->      /* FSR will only be used if the debug target EL is AArch32. */
->      env->exception.fsr = arm_debug_exception_fsr(env);
->      /* FAR is UNKNOWN: clear vaddress to avoid potentially exposing
-> @@ -377,7 +380,18 @@ void HELPER(exception_bkpt_insn)(CPUARMState *env, uint32_t syndrome)
->       * exception/security level.
->       */
->      env->exception.vaddress = 0;
-> -    raise_exception(env, EXCP_BKPT, syndrome, arm_debug_target_el(env));
-> +    /*
-> +     * Other kinds of architectural debug exception are ignored if
-> +     * they target an exception level below the current one (in QEMU
-> +     * this is checked by arm_generate_debug_exceptions()). Breakpoint
-> +     * instructions are special because they always generate an exception
-> +     * to somewhere: if they can't go to the configured debug exception
-> +     * level they are taken to the current exception level.
-> +     */
-> +    if (debug_el < cur_el) {
-> +        debug_el = cur_el;
-> +    }
-> +    raise_exception(env, EXCP_BKPT, syndrome, debug_el);
->  }
->  
->  uint32_t HELPER(cpsr_read)(CPUARMState *env)
-> 
+> But I definitely can add some docs/comments to better explain that.
+
+Yes, that would be great; I think I now understand enough for looking
+at the patches.

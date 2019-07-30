@@ -1,171 +1,118 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4535139wrv;
-        Tue, 30 Jul 2019 08:48:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw1s0jADDuh0DGLQV0l8I67OITry0MPkP3r/YPL5wCi3DAxWHZR/IxrAxKNlHXIeEqH1L00
-X-Received: by 2002:a17:906:1596:: with SMTP id k22mr7667675ejd.102.1564501701505;
-        Tue, 30 Jul 2019 08:48:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564501701; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4587232wrv;
+        Tue, 30 Jul 2019 09:42:03 -0700 (PDT)
+X-Received: by 2002:a9d:65cb:: with SMTP id z11mr48833537oth.325.1564504923659;
+        Tue, 30 Jul 2019 09:42:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564504923; cv=none;
         d=google.com; s=arc-20160816;
-        b=sjZ29dm+PWmXjBdItv775sF1tHZg8VcNNy1v6kbeY3wk4ELFSO3s/Iq/VD6uCtXLJa
-         wiHHwdRnEQd54Rtu0mFjWXRK/IYN11l1DXdq/udVUcZ/9EtIgiFGFQQKmYkkAhtLkuxP
-         qxfyVBTyVkNg8K/038vQ5orUdT1iLDoBp6Lmd2+sCJMs/DZghGgDLkewP8nSI6OvcsZs
-         pz/rBVFZYXHBumdWsOQ/fSt5Z8IUxTHqh7dOko2orJOxugkd/8bk+It5Qxju/CZTY+ah
-         Po2Ezdf/ji1KnFvOuBHSf3M/AzGDBD7dHCrNfykqZ6C5XJWw8eB+zq6IxquiwuqdQnZH
-         oVNA==
+        b=FSGDctvUlY/gofXaqNQQuoTyFNJPeleAOePygrzVuasgb+6NsGzquToK/9tILj0l8T
+         Si1uXbr5balZeJHoeT4WysRYEYH4f4iFG6JvdYKVs+YQMl6lfHZVpabBDvdssavsQuoY
+         gZNrf69kQCDGN/s7CHeXA/rrWFrcLGuFxuo3kUnZvNFZDDk520/1HBReAFlyVrHj8QPp
+         70GZzBAFT2/tyJOKshAOk+kFEFwMGKdjU0esEXozhjak2eYhcAKResLBGYMpOSq9FiRX
+         fPygfCe02esNIPvnqYEp6NVxMXv5c4ia+DZbh00XJvSLwHhIiS8OoTTHc0UPMIvKrzdJ
+         gwOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:to:from:date;
-        bh=k/1MNvSm+lb/E+TR9eipkiJxGSgYHd6fuvqL2DKtLCk=;
-        b=kepV6H3e79JeT7kBiQnD/GpDQ0G+EN+KYikpnuhMf3XfVcjhNR6MB6SwOAUn8GwrYj
-         d5b3+h24ShBbGbqQ2hUz53zAcqVJqQ3w9xEqCTkBoDOacMTPMQJDxDDXJsxqK1+pr4/5
-         K2/hE2QWng914PDtrQ9RVK3EDeo8MfiztkO3qly/bgjeNeqE6OQAbsiLxLzbY3ZIPudx
-         23RitWRFY4TbaNJZvGzrqqjvRHlXctbIa67RE1hG+2txelDsMKdGVpD0co/qxMPsHDNl
-         Nq8s6mmXO/9Pjy98nPo9+p9AoO0AsO3LiG3ywWaK7nEI1NX7HQ84kJLLseGf485ZUJwS
-         a2cQ==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=OfafEYSPfzAyOBXdbB1n/j4rOF8gCfb1ntDDy8rwbIA=;
+        b=LjPsM+DcR8Bsu/aLsxx90bHAmiOaw8SKPAs10bFVXkfQ6udwGRCCKlZdW8UW3ulvrE
+         4aT8r+CRgv1wc5fH4QijU/PWTwyX5N0cIXRQuDWLMX4GbqenDqnfItYA9kq7hSVSuFE4
+         DxmY7FPFHne0vZIZleBTGoQUpEMLOorO+bob4XMUTmW9yh9xrCJxbYKgkhsssDSmJjK9
+         ApDK+Hf42hynig6XiaF2Xv+JtNqLk5kfFLBvtJPsTl4XCmuq9ulpxAlzK0VcA4vUU1/H
+         lyKSsxDQbjKZvrpVuxryte640ees6fTiDVqTiddj2+Orvkzszz936zLeSy6gDje8bfEk
+         /JTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f36si19939271edd.292.2019.07.30.08.48.21
+       dkim=pass header.i=@linaro.org header.s=google header.b=nGF4koiv;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id h81sor28256979oia.128.2019.07.30.09.42.03
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jul 2019 08:48:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 30 Jul 2019 09:42:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34072 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hsUMO-0006Ou-JZ
-	for alex.bennee@linaro.org; Tue, 30 Jul 2019 11:48:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47138)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <cohuck@redhat.com>) id 1hsUMI-0006Oo-90
- for qemu-arm@nongnu.org; Tue, 30 Jul 2019 11:48:15 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <cohuck@redhat.com>) id 1hsUMF-0006BD-4w
- for qemu-arm@nongnu.org; Tue, 30 Jul 2019 11:48:14 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37618)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <cohuck@redhat.com>)
- id 1hsUM5-000649-Mb; Tue, 30 Jul 2019 11:48:04 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id EE83B30BD1CC;
- Tue, 30 Jul 2019 15:47:58 +0000 (UTC)
-Received: from gondolin (dhcp-192-232.str.redhat.com [10.33.192.232])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8F83719C5B;
- Tue, 30 Jul 2019 15:47:28 +0000 (UTC)
-Date: Tue, 30 Jul 2019 17:47:25 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <20190730174725.10419dfb.cohuck@redhat.com>
-In-Reply-To: <34a216b0-0067-8627-599c-6a67622c4bd2@greensocs.com>
-References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-2-damien.hedde@greensocs.com>
- <20190730154209.2049f10a.cohuck@redhat.com>
- <CAFEAcA-rwBiXkDEDuT-=KQVJ2A2ob16=P0obbZBPUfZeYXy+dQ@mail.gmail.com>
- <20190730155547.7b201f5e.cohuck@redhat.com>
- <CAFEAcA_BU3DECLVv2QD_RshR0OL3=GqGwsm0YAmEAE6_SpW=HA@mail.gmail.com>
- <34a216b0-0067-8627-599c-6a67622c4bd2@greensocs.com>
-Organization: Red Hat GmbH
+       dkim=pass header.i=@linaro.org header.s=google header.b=nGF4koiv;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=OfafEYSPfzAyOBXdbB1n/j4rOF8gCfb1ntDDy8rwbIA=;
+        b=nGF4koiv+oDd3rnl/K2HD/M7kQBlUWRoHIPwUayluI93qFFG5QOs/lyqiwkz7mEx/b
+         fjBPKvWcmg/15Zi/n3mvsuVC6/L3Qmx4MlM3QRbRSPwGSRiYE7ADnZrbo+NWDmgSs8U1
+         AnmK2IkVcCDr7nDVROblItMTtCD2bCb6O64vd0M8oxVz45LmW3nujgy6Z1v4YscSjV0E
+         VrKl06/xKuvkroT9kKNYPLnDxY8qm1w59Tx9FlFdB+HcI0MSIevyCKqrYfLSjLk3FS8O
+         pdepQLkF/rjWjcFo0xWkUJFq81HV4efG+i65uEIMyInT14vAo7aJ8CtRVGrMWKUBS24b
+         r7EA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=OfafEYSPfzAyOBXdbB1n/j4rOF8gCfb1ntDDy8rwbIA=;
+        b=TlySpoDnwWf6flW+pf2+wse+0n8NRMPbRXsh04LcGjrnuGp9TFvcgbxWMK+Ft5f8Ym
+         XkY7+liYVJb8o1x2SZQcNlhrOC6OooWFdN1hJrRBhv6Evtird2RCPyy17kfAdGsY0/U/
+         LVhdbibNC0SM+Rw0gg89dK7iWeG9YMa2CSxFSFNoYD3s8s/yVBdEt0SC5FJT3G2xrNwF
+         2jArIM8FbmtPb0NmCTX/X5KotrMZaXZrVZLGvS/VIVfNMBZszLDiJAXgXuLZZW3taS07
+         kkuQAXPN8u/blh7B2R6HpJwK6bYxMrnQx2WOzuRhbR2ipmhU0RcaWwmDA8SzIZTyAerN
+         LTjw==
+X-Gm-Message-State: APjAAAV0v7CYIMMCQec2WfzaG1MAo3zxtRuDWVBJ/eN7EVplCFHmDDWB
+	R7zZRGOCNelJPzsD95kYPEJ4HbkTbzVNhTNnZyNGEWx7
+X-Google-Smtp-Source: APXvYqyeLfRy7iSI8pYbVvXOhB/uWLvBLzQeX/BgOiojfOYMaFtPKKoSrmlvsegEZk3sCxVnijqI07GqrseBLRY5K8M=
+X-Received: by 2002:a05:6808:8c2:: with SMTP id k2mr55474571oij.98.1564504923200;
+ Tue, 30 Jul 2019 09:42:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.49]); Tue, 30 Jul 2019 15:47:59 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v3 01/33] Create Resettable QOM interface
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Collin Walling <walling@linux.ibm.com>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Edgar Iglesias <edgar.iglesias@xilinx.com>, Hannes Reinecke <hare@suse.com>,
- Qemu-block <qemu-block@nongnu.org>, David Hildenbrand <david@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-s390x <qemu-s390x@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@kaod.org>,
- John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Mark Burton <mark.burton@greensocs.com>, qemu-ppc <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GDkgTNCs3yln
+References: <20190730132522.27086-1-peter.maydell@linaro.org> <c8d89a39-a711-a416-b069-5710d672b4e7@redhat.com>
+In-Reply-To: <c8d89a39-a711-a416-b069-5710d672b4e7@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 30 Jul 2019 17:41:52 +0100
+Message-ID: <CAFEAcA_5+tYKyMO5A2h-YRe4h25VrGS0wm1G=yTY4OLX4Q4XMQ@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH for-4.1?] target/arm: Deliver BKPT/BRK
+ exceptions to correct exception level
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: KJEsJVgp3m2J
 
-On Tue, 30 Jul 2019 16:08:59 +0200
-Damien Hedde <damien.hedde@greensocs.com> wrote:
+On Tue, 30 Jul 2019 at 16:31, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> On 7/30/19 3:25 PM, Peter Maydell wrote:
+> > Most Arm architectural debug exceptions (eg watchpoints) are ignored
+> > if the configured "debug exception level" is below the current
+> > exception level (so for example EL1 can't arrange to get debug exceptio=
+ns
+> > for EL2 execution). Exceptions generated by the BRK or BPKT instruction=
+s
+> > are a special case -- they must always cause an exception, so if
+> > we're executing above the debug exception level then we
+> > must take them to the current exception level.
+> >
+> > This fixes a bug where executing BRK at EL2 could result in an
+> > exception being taken at EL1 (which is strictly forbidden by the
+> > architecture).
+> >
+> > Fixes: https://bugs.launchpad.net/qemu/+bug/1838277
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> > At this point in the release cycle I'm not sure we should put this
+> > into 4.1 -- it is definitely a bug but it's not a regression as
+> > we've been wrong like this for multiple releases, pretty much
+> > since we put in the debug handling code I suspect.
+>
+> The fix is quite trivial, and the user reported using a release, so
+> having it in the next release would be nice.
+> Or as usual, wait for 'last-minute-bugfix-that-postpone-another-rc' and
+> squeeze this fix in.
+>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-> On 7/30/19 3:59 PM, Peter Maydell wrote:
-> > On Tue, 30 Jul 2019 at 14:56, Cornelia Huck <cohuck@redhat.com> wrote:  
-> >>
-> >> On Tue, 30 Jul 2019 14:44:21 +0100
-> >> Peter Maydell <peter.maydell@linaro.org> wrote:
-> >>  
-> >>> On Tue, 30 Jul 2019 at 14:42, Cornelia Huck <cohuck@redhat.com> wrote:  
-> >>>> I'm having a hard time figuring out what a 'cold' or a 'warm' reset is
-> >>>> supposed to be... can you add a definition/guideline somewhere?  
-> >>>
-> >>> Generally "cold" reset is "power on" and "warm" is "we were already
-> >>> powered-on, but somebody flipped a reset line somewhere".  
-> >>
-> >> Ok, that makes sense... my main concern is to distinguish that in a
-> >> generic way, as it is a generic interface. What about adding something
-> >> like:
-> >>
-> >> "A 'cold' reset means that the object to be reset is initially reset; a 'warm'
-> >> reset means that the object to be reset has already been initialized."
-> >>
-> >> Or is that again too generic?  
-> > 
-> > I think it doesn't quite capture the idea -- an object can have already
-> > been reset and then get a 'cold' reset: this is like having a powered-on
-> > machine and then power-cycling it.
-> > 
-> > The 'warm' reset is the vaguer one, because the specific behaviour
-> > is somewhat device-dependent (many devices might not have any
-> > difference from 'cold' reset, for those that do the exact detail
-> > of what doesn't get reset on warm-reset will vary). But every
-> > device should have some kind of "as if you power-cycled it" (or
-> > for QEMU, "go back to the same state as if you just started QEMU on the
-> > command line"). Our current "reset" method is really cold-reset.
+OK, people seem to think it's worth putting in, so I've applied
+it to master.
 
-Ah ok, that makes sense.
-
-> >   
-> 
-> Exactly. In the following patches, I've tried to replace existing reset
-> calls by cold or warm reset depending on whether:
-> + it is called through the main system reset -> cold
-> + it is called during normal life-time       -> warm
-> 
-> But I definitely can add some docs/comments to better explain that.
-
-Yes, that would be great; I think I now understand enough for looking
-at the patches.
+thanks
+-- PMM

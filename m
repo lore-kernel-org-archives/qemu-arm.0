@@ -1,128 +1,141 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4200663wrv;
-        Tue, 30 Jul 2019 03:14:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzowNsApLgRS/7undK7i897y1YeENlR+ngwuN8c0Jqk4okgbTtbcLbj1KPJbAMEU+5Fg7t4
-X-Received: by 2002:a05:620a:533:: with SMTP id h19mr75738026qkh.325.1564481676095;
-        Tue, 30 Jul 2019 03:14:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564481676; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4385876wrv;
+        Tue, 30 Jul 2019 06:25:25 -0700 (PDT)
+X-Received: by 2002:a1c:9e90:: with SMTP id h138mr109112220wme.67.1564493125145;
+        Tue, 30 Jul 2019 06:25:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564493125; cv=none;
         d=google.com; s=arc-20160816;
-        b=GzkMEm4SPApZizR7gA7TBqhaZ8+EStS4d1w7VvfjZUMon+ylTDTf98g6VfSaeRO3m7
-         QyQ2bVOjR4aRZRNRiHlUYtYpFcu0DBqGE5bkQelP45M2WCVgJpKfz8aGITmjcHKkS7SE
-         raTJp3hNY1lufelEwNER1RfgztpA3DzbRDVZCxE68lt7dtM6OTSmYB0EjCxq/+fWOPH3
-         BjglXTkYdkQnWvnQ/O2hlJSnDPYUMXS1VDOZtwe/pjw/W+OTt3ugCw9uUJVpIfHRe5gY
-         lPtqmbTFgjRL76+6C0LVClVRR1nd7F3chnRVF8paDk6/ifQi85i8WyLe1HwWZ7cH179Z
-         mvsg==
+        b=zowY0ut87Bd2fH4oe6klJpzhYoPmFW6yw/tPczjFyCa3UYj9LOHtbiA4KD1WNQd3Fq
+         YCe7VBj2+9meQrqWJDrNvLAMC5RP+dPZoyk7YdY2Cbg2/BMhAO6zK441YcQ7N7VqgBsL
+         bkMU6+ASe3BS+v4EPW98ORnyjFr6bhABGEcnmOSauIwzN5V2eWhyhVvTtfca7wtQgGzM
+         zKavNGTlbt8XJKjbwYpo66Yqp6AmA0LGm9pfWOmFESo/9L8uI/Nuf3gXm0z9OHSESbI4
+         gX/IQ/rWABfFjtqEReQOBuFcZZYnCfA6ZP8L2BC6e+BBX0rWFkgjAiH6sV1RqyLEUWOs
+         XqSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:to:from:date;
-        bh=64JsCrSzJVyGly0HuDb+JAaO8UxhvYq6LddWXi+eEP0=;
-        b=MYjFdpjQjJGQyjqunR0Dm/eA8SUjYTwuWLFOD//Lj9x6LjRjbwC7bgjaOXD+blOD2R
-         xnRKETfT9vFIBMH76VVrmkmYYHhrWuNg/M4dIDMiBRyDXYcReXUP2CbBrjMsCzz9CI5T
-         TCihCZM5mqv9kwBwvIwiIUYlr6FHryfk0Qo3QBAs6SfR1bQrKKqf29pRKVPi2gAJkF48
-         fQ0Us7+Ryyz8FPuBmRHCHdSekFchv0MHsnMMgIcqNMGWI/+VHw0SVcQGnmePG2EmG4pn
-         RcPJg19/N7U8WwIp/0yG8eXSL8dKlEE/WDnEZ6P/qC1pAIptlp31cgkSmeWQ25sZbySR
-         eBIA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=k60h7N7EIxaxf66BX3JejTtIWy6wazpW1QrSO9+z374=;
+        b=WTXe4QXw97z3XZbJGeKw6HScZcNLfR06hOA9EncD+puVMcM+TUlVL7npHZZQPWUdop
+         kk4tr/vWxdT99lnI3o0zEhO0wo4hVJkhUIyHUYuEzS9ZjaSzX3GGOLgZKTMVk5mJ3qjP
+         dp44eeglE92Ad6dENYZUFOG/hSsmEUJoZn8hPxa8IF187aTBBOs5Dq1KydyCk3DtwxcQ
+         2R5MxDqZJ/bXsfRKvH7Qg0b7LGNoHL+qAaxpKqcgjJBbwEnJ5VlkZb96fk+EnxlOTEzG
+         ep4pFpQi6Pwnvak1rJPL1XzijPaJj9uILCxPFJHmTZ2GqIPHTcwc+ZZG/pEnR3A3KPEH
+         bcBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v54si40397058qtv.88.2019.07.30.03.14.35
+       dkim=pass header.i=@linaro.org header.s=google header.b=SqQsgaYn;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id 131sor35890064wmd.1.2019.07.30.06.25.25
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jul 2019 03:14:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 30 Jul 2019 06:25:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59408 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hsP9P-0003ik-Ki
-	for alex.bennee@linaro.org; Tue, 30 Jul 2019 06:14:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40399)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <cohuck@redhat.com>) id 1hsP9K-0003h7-Jl
- for qemu-arm@nongnu.org; Tue, 30 Jul 2019 06:14:31 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <cohuck@redhat.com>) id 1hsP9J-0006Ui-O5
- for qemu-arm@nongnu.org; Tue, 30 Jul 2019 06:14:30 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55366)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <cohuck@redhat.com>)
- id 1hsP9I-0006UM-M2; Tue, 30 Jul 2019 06:14:29 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id D136230BD1B5;
- Tue, 30 Jul 2019 10:14:26 +0000 (UTC)
-Received: from gondolin (dhcp-192-232.str.redhat.com [10.33.192.232])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A9F3A19C70;
- Tue, 30 Jul 2019 10:14:10 +0000 (UTC)
-Date: Tue, 30 Jul 2019 12:14:08 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <20190730121408.2e27f74f.cohuck@redhat.com>
-In-Reply-To: <20190729145654.14644-1-damien.hedde@greensocs.com>
-References: <20190729145654.14644-1-damien.hedde@greensocs.com>
-Organization: Red Hat GmbH
+       dkim=pass header.i=@linaro.org header.s=google header.b=SqQsgaYn;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=k60h7N7EIxaxf66BX3JejTtIWy6wazpW1QrSO9+z374=;
+        b=SqQsgaYn4x7sPE1mhDmtKxdm3DwOJylh7+/jy+3XPBr2Gd1ivE9/I2YWQpej8mLirR
+         SdBnu9+SbHWq61lOdbFQDyh3XlqVtJMuVn7m0pZmUlrIyJTdmjLAtCaAIbQnU5ZjXNB5
+         C6QIw5OvyTIutOlN+pfvq/JNibzCBFdCmLkuH2Lto3VCqTIrbo8UeclYBN/oQA7XjuZA
+         qAmrYFMi6qlfvuHyrIaXnzoFbNImm62lqvy0ZeXE63+OBr3uFlvI7pnY1Rou8T/05rZN
+         LdMKwf8tVowaPordwBMPLdAdOQn+UjxzrRyA76EJOET6yvRzfyS6sVenSjK3mTy1FfKB
+         EZhw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=k60h7N7EIxaxf66BX3JejTtIWy6wazpW1QrSO9+z374=;
+        b=FiTGH0UjpUF5ehV7/Q/eZ/LkkTaQF6CTCsao0v5dmGC1aP6iFN6pQKDGu3DWmbfshq
+         c20rprEytG9wQeDnnao2ZGhBWMBuZU5b+XeQgZ5mwPKCF4mrtG82Hx3bPd9buN6snEf5
+         e0wRo+vWE7itVf31/gYBYOOP77OL+rur6vhYUoUYI/g7qBG7EADB7X+YFGDO3pe3RuWx
+         QAZgWRpRLUMQW7nens9hGPQYwH3xiYnDwV8S2VVfIfGO8e95YN2ezbI/W5lFd6z8cH1c
+         gcnF3zOfsZVirwiannXyYxovEXraM6SKRdOndfg4sj+6liOJHfKyOqjalMGZ0R6T216g
+         4F4A==
+X-Gm-Message-State: APjAAAWTRUereJRZ9sgrwRDpvn40CpsRK0Tu2hgs2NBB6HNGQHcjp0jJ
+	II/zE3O/zhhqEHmlDoL76khoBAWQ
+X-Google-Smtp-Source: APXvYqzYshGyq5SwwStPFWF3ni4qtOvANH3e9PhZZLi5q2xpbc0RegCMuSsFffg39y+/Fb+lcjxF3Q==
+X-Received: by 2002:a1c:b457:: with SMTP id d84mr111200322wmf.153.1564493124885;
+        Tue, 30 Jul 2019 06:25:24 -0700 (PDT)
+Return-Path: <peter.maydell@linaro.org>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+        by smtp.gmail.com with ESMTPSA id f1sm44391896wml.28.2019.07.30.06.25.23
+        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+        Tue, 30 Jul 2019 06:25:24 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH for-4.1?] target/arm: Deliver BKPT/BRK exceptions to correct exception level
+Date: Tue, 30 Jul 2019 14:25:22 +0100
+Message-Id: <20190730132522.27086-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.49]); Tue, 30 Jul 2019 10:14:27 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v3 00/33] Multi-phase reset mechanism
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
- dmitry.fleytman@gmail.com, mst@redhat.com, mark.cave-ayland@ilande.co.uk,
- qemu-devel@nongnu.org, kraxel@redhat.com, edgar.iglesias@xilinx.com,
- hare@suse.com, qemu-block@nongnu.org, david@redhat.com, pasic@linux.ibm.com,
- borntraeger@de.ibm.com, marcel.apfelbaum@gmail.com,
- marcandre.lureau@redhat.com, rth@twiddle.net, thuth@redhat.com,
- ehabkost@redhat.com, alistair@alistair23.me, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, clg@kaod.org, jsnow@redhat.com,
- david@gibson.dropbear.id.au, berrange@redhat.com, mark.burton@greensocs.com,
- qemu-ppc@nongnu.org, pbonzini@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QOt+t15UEmQu
+Content-Transfer-Encoding: 8bit
+X-TUID: /e2SmqEBnpa3
 
-On Mon, 29 Jul 2019 16:56:21 +0200
-Damien Hedde <damien.hedde@greensocs.com> wrote:
+Most Arm architectural debug exceptions (eg watchpoints) are ignored
+if the configured "debug exception level" is below the current
+exception level (so for example EL1 can't arrange to get debug exceptions
+for EL2 execution). Exceptions generated by the BRK or BPKT instructions
+are a special case -- they must always cause an exception, so if
+we're executing above the debug exception level then we
+must take them to the current exception level.
 
-(...)
+This fixes a bug where executing BRK at EL2 could result in an
+exception being taken at EL1 (which is strictly forbidden by the
+architecture).
 
-> 2. old's device_reset
-> 
-> There was a few call to this function, I renamed it *device_legacy_reset* to
-> handle the transition. This function allowed to reset only a given device 
-> (and not its eventual qbus subtree). This behavior is not possible with
-> the Resettable interface. I changed existing calls. Most of the time there is
-> no change of behavior because devices have no sub-buses.
-> Here the summary after checking each one (I've reproduced the list made by
-> Peter with some additional commentary of myself):
+Fixes: https://bugs.launchpad.net/qemu/+bug/1838277
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+At this point in the release cycle I'm not sure we should put this
+into 4.1 -- it is definitely a bug but it's not a regression as
+we've been wrong like this for multiple releases, pretty much
+since we put in the debug handling code I suspect.
 
-(...)
+ target/arm/op_helper.c | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
 
->  hw/s390x/s390-pci-inst.c
->   -- resets the S390PCIBusDevice Needs S390 expertise, but probably
->      either no child buses or failure to reset them is a bug.
-
-That's the 'zpci' device, which holds additional architecture
-information for each pci device. Looks fine to me, but additional
-confirmation from Collin would be good.
+diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+index 1ab91f915e4..5e1625a1c8a 100644
+--- a/target/arm/op_helper.c
++++ b/target/arm/op_helper.c
+@@ -370,6 +370,9 @@ void HELPER(exception_with_syndrome)(CPUARMState *env, uint32_t excp,
+  */
+ void HELPER(exception_bkpt_insn)(CPUARMState *env, uint32_t syndrome)
+ {
++    int debug_el = arm_debug_target_el(env);
++    int cur_el = arm_current_el(env);
++
+     /* FSR will only be used if the debug target EL is AArch32. */
+     env->exception.fsr = arm_debug_exception_fsr(env);
+     /* FAR is UNKNOWN: clear vaddress to avoid potentially exposing
+@@ -377,7 +380,18 @@ void HELPER(exception_bkpt_insn)(CPUARMState *env, uint32_t syndrome)
+      * exception/security level.
+      */
+     env->exception.vaddress = 0;
+-    raise_exception(env, EXCP_BKPT, syndrome, arm_debug_target_el(env));
++    /*
++     * Other kinds of architectural debug exception are ignored if
++     * they target an exception level below the current one (in QEMU
++     * this is checked by arm_generate_debug_exceptions()). Breakpoint
++     * instructions are special because they always generate an exception
++     * to somewhere: if they can't go to the configured debug exception
++     * level they are taken to the current exception level.
++     */
++    if (debug_el < cur_el) {
++        debug_el = cur_el;
++    }
++    raise_exception(env, EXCP_BKPT, syndrome, debug_el);
+ }
+ 
+ uint32_t HELPER(cpsr_read)(CPUARMState *env)
+-- 
+2.20.1

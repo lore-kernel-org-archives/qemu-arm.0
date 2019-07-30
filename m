@@ -1,334 +1,162 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id f3sm44986225wrt.56.2019.07.29.09.07.48
-        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Mon, 29 Jul 2019 09:07:48 -0700 (PDT)
-Received: from zen.linaroharston. (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 6DBD61FF87;
-	Mon, 29 Jul 2019 17:07:48 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	richard.henderson@linaro.org,
-	vandersonmr2@gmail.com,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <rth@twiddle.net>,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [RFC PATCH] tcg: add annotations to dissembler output (RFC, HACK, PoC)
-Date: Mon, 29 Jul 2019 17:07:29 +0100
-Message-Id: <20190729160729.19927-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3729053wrv;
+        Mon, 29 Jul 2019 17:39:02 -0700 (PDT)
+X-Received: by 2002:aa7:8202:: with SMTP id k2mr39939948pfi.31.1564447141892;
+        Mon, 29 Jul 2019 17:39:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564447141; cv=none;
+        d=google.com; s=arc-20160816;
+        b=qW33qWnwKhclUMAQqGV2EoonlJFZrV7g+wU35JYdkxCUEAT64ZUC3r9kXc7kc3HwWZ
+         TR0FwxJ4d3UwrbDYcUCg8gdX7KRZYAauH6gVy95cloDN5NuRFDSO91YZM1ua/vZnGqV+
+         479yuDAJtu5XCsfQ5SfebukUDT0UmXvPDMV0PH8y8rRHG7s/I/Pe1Frqt6KlvvxueDPI
+         BpX9bZrClbG/mIPWPpFgGr+WKly2ZUm2wAmlT6qid+ev58iBYtvddUpwIcf8vib0f7nD
+         cmbU2THkbYfnjPjdHFihjM6slaccrX1Cymp8CFO3AInvG3+K9bTKMTahC11hbOfNEccL
+         b0jQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=SHxGOz4FDTbH87+rztjIu6ElAtxs8i8JjXHc55Ce8o0=;
+        b=irmmzSavt3zeYfFEiP6Vr8nzUzPxDhMJ30hWHEk/gaZpcrghqhHNZ2kA3eF7+yJUmP
+         ysNsjeX5EeiuI2VXFGe17lNN3azR7KXzIGFUpmZCK0qdn/FqGlCF0k+4xtjFyDeEdFCm
+         u9VynmRzWRZQ6IKyASybg4rg3P6MYF+d5AL/Bx7zw/zJeTD31wJXJC067rV4jQG5/V0r
+         SWZzu2eeKbs1b5VC8UOf4RfKwjeubj/y04uBOwogQjACOWv1DQPfi3xH3YNoSvMQ63TY
+         11+0Twu4KcSx44kEbKTEBRXZ8HQDvRgSgzOwtpPOCrPocTa+/qozmgVHstKfLq3fRvk7
+         ACCQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hYfN5axu;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id m93sor75255268pje.1.2019.07.29.17.39.01
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 29 Jul 2019 17:39:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=hYfN5axu;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=SHxGOz4FDTbH87+rztjIu6ElAtxs8i8JjXHc55Ce8o0=;
+        b=hYfN5axuyAYrKda26vzAlWd7q3YMtYmFDs5bo3E5uyQ1qXccFqOh3Nwa2tN7gdf0Hs
+         I2f7Dh72dHjp7L7i4USKbGOIVgaxDrmaY2vLKHQOgmiqvNqrMcC53G2uGTfV1R2uwlqP
+         cqkDKMmjz1p5A28GyGUVFkHr82DNoshLBf87KWKkzEkCYm2hEjp7KHLqwxtgxTn02zh0
+         D06SDBIxI84rUr1RlO9EZjkv1iU78mSI428zECkOSmfvpXTsRCJeZraWPQWGSKPGSUyB
+         WWPumy71n+nmQkA5XaaOrZQogBMgQAm4a9nH07OvnGXJ0fQieO0keOja8sWnNK4O3fpv
+         395w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=SHxGOz4FDTbH87+rztjIu6ElAtxs8i8JjXHc55Ce8o0=;
+        b=Pn9BnFApCHGM9PGl6oIHUNdkj35pjDYo0BMpvs6cfeufW4WY6vulI6VMA4zH4LNoJa
+         R1YBfZF/cw4OdNMa9UPLwv/P25HwbnSIPAL5yaMifKd+Xa9jHe1hFFiNReC2TaPlJuJh
+         wzTRXV9LWIETzpOo4hGAMnCc9Zq1Wx2AWPJFM4woFCvZ2yz+HwWAGvDoYsoFNiR+fdrh
+         DU5Lwbq+8i26b3WmO4QIS24DdT5mvFx/N+h9dQ+ZR8ymq7WHbLyUWq82YGWfiIYAbpLA
+         myDOcH17dP8e/Yw8mh8vJs4/TiNVoz+fSi3QVnxQh/Y/mt+J23lZBTI9sV//KU3F1D00
+         MSpQ==
+X-Gm-Message-State: APjAAAXdHZ3qiIwzZWkmqQlSc5E9ZLde7uyvcTkIbTNqmod3m8eftCc4
+	4Q6ubgiUelupDiTSRcZVQ7DEJC+OaSBsYw==
+X-Google-Smtp-Source: APXvYqxaTBXc9TgYc86GS5zcJkOyEFnDPF5r91w3yhEd4ExMZAGhgqDIKfGfPdBgkKIMAXI8jQGr+A==
+X-Received: by 2002:a17:90a:ad89:: with SMTP id s9mr115656081pjq.41.1564447140874;
+        Mon, 29 Jul 2019 17:39:00 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.101.105] ([75.147.178.105])
+        by smtp.gmail.com with ESMTPSA id u70sm26546799pgb.20.2019.07.29.17.38.59
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 29 Jul 2019 17:38:59 -0700 (PDT)
+Subject: Re: [PATCH 06/67] target/arm: Introduce pc_read
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20190726175032.6769-1-richard.henderson@linaro.org>
+ <20190726175032.6769-7-richard.henderson@linaro.org>
+ <CAFEAcA_kmuX6bxR50eU_3nTdRcjON2nVTqVWiRamSRe6jui3ig@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <09b930e2-0a92-25a3-4e26-8bea1f437039@linaro.org>
+Date: Mon, 29 Jul 2019 17:38:57 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: sMQzPAcbdG4z
+In-Reply-To: <CAFEAcA_kmuX6bxR50eU_3nTdRcjON2nVTqVWiRamSRe6jui3ig@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: 1VmpW5MoM2AT
 
-Sometimes it can be a bit tricky to line up the final host assembly
-with the instructions being translated. This is made harder by the
-fact disassembly is somewhat grafted into QEMU to support multiple
-dissemblers.
+On 7/29/19 7:05 AM, Peter Maydell wrote:
+> On Fri, 26 Jul 2019 at 18:50, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> We currently have 3 different ways of computing the architectural
+>> value of "PC" as seen in the ARM ARM.
+>>
+>> The value of s->pc has been incremented past the current insn,
+>> but that is all.  Thus for a32, PC = s->pc + 4; for t32, PC = s->pc;
+>> for t16, PC = s->pc + 2.  These differing computations make it
+>> impossible at present to unify the various code paths.
+>>
+>> Let s->pc_read hold the architectural value of PC for all cases.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>  target/arm/translate.h | 10 ++++++++
+>>  target/arm/translate.c | 53 ++++++++++++++++++------------------------
+>>  2 files changed, 32 insertions(+), 31 deletions(-)
+>>
+>> diff --git a/target/arm/translate.h b/target/arm/translate.h
+>> index a20f6e2056..2dfdd8ca66 100644
+>> --- a/target/arm/translate.h
+>> +++ b/target/arm/translate.h
+>> @@ -9,7 +9,17 @@ typedef struct DisasContext {
+>>      DisasContextBase base;
+>>      const ARMISARegisters *isar;
+>>
+>> +    /*
+>> +     * Summary of the various values for "PC":
+>> +     * base.pc_next -- the start of the current insn
+>> +     * pc           -- the start of the next insn
+> 
+> These are confusingly named -- logically "pc_next" ought to
+> be the PC of the next instruction and "pc" ought to be
+> that of the current one...
 
-Attempt to add more information to the output by:
+Yes, well.  I don't quite remember why "pc_next" was chosen for this field.  It
+is the "next" upon entry to tr_foo_disas_insn().  Often the target will
+increment s->base.pc_next immediately, so it will also be the "next" insn
+throughout translation.  Though that isn't currently the case for ARM.
 
-  - tracking TCGNotes as we generate the code
-  - using this to annotate lines of host disassembly
+Once most of the uses of s->pc get moved to s->pc_read, it might be reasonable
+to rename the remaining "s->base.pc_next" -> "s->pc_orig" and "s->pc" ->
+"s->base.pc_next".  Perhaps that would be clearer, I'm not sure.
 
-UNRESOLVED ISSUES:
 
-We are duplicating some of the tracking done for INDEX_op_insn_start.
-We should probably merge and have a common system that can be used
-for:
-  a) required stuff (insn bounderies, resolving registers on faults)
-  b) nice debug info (which ops are loads/stores/splills)
+>> +     * pc_read      -- the value for "PC" in the ARM ARM;
+> 
+> nit: this line should end with a colon, rather than a semicolon
 
-The hacking in of extra info into the disassembly stream if fugly.
+Oops, typo.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- accel/tcg/translate-all.c |  5 +++--
- disas.c                   | 17 +++++++++--------
- include/disas/disas.h     |  4 +++-
- include/exec/log.h        |  6 ++++--
- tcg/tcg.c                 | 39 ++++++++++++++++++++++++++++++++++++---
- tcg/tcg.h                 | 17 +++++++++++++++++
- 6 files changed, 72 insertions(+), 16 deletions(-)
 
-diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
-index 0394e989d06..2f7ade495e2 100644
---- a/accel/tcg/translate-all.c
-+++ b/accel/tcg/translate-all.c
-@@ -1775,6 +1775,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
-     tb->cflags = cflags;
-     tb->trace_vcpu_dstate = *cpu->trace_dstate;
-     tcg_ctx->tb_cflags = cflags;
-+    tcg_ctx->notes = g_array_set_size(tcg_ctx->notes, 0);
-  tb_overflow:
- 
- #ifdef CONFIG_PROFILER
-@@ -1896,7 +1897,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
-             size_t data_size = gen_code_size - code_size;
-             size_t i;
- 
--            log_disas(tb->tc.ptr, code_size);
-+            log_disas(tb->tc.ptr, code_size, tcg_ctx);
- 
-             for (i = 0; i < data_size; i += sizeof(tcg_target_ulong)) {
-                 if (sizeof(tcg_target_ulong) == 8) {
-@@ -1910,7 +1911,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
-                 }
-             }
-         } else {
--            log_disas(tb->tc.ptr, gen_code_size);
-+            log_disas(tb->tc.ptr, gen_code_size, tcg_ctx);
-         }
-         qemu_log("\n");
-         qemu_log_flush();
-diff --git a/disas.c b/disas.c
-index c0f57284a43..edf4462846f 100644
---- a/disas.c
-+++ b/disas.c
-@@ -342,7 +342,7 @@ static bool cap_disas_target(disassemble_info *info, uint64_t pc, size_t size)
- }
- 
- /* Disassemble SIZE bytes at CODE for the host.  */
--static bool cap_disas_host(disassemble_info *info, void *code, size_t size)
-+static bool cap_disas_host(disassemble_info *info, void *code, size_t size, void *opaque)
- {
-     csh handle;
-     const uint8_t *cbuf;
-@@ -359,6 +359,7 @@ static bool cap_disas_host(disassemble_info *info, void *code, size_t size)
- 
-     while (cs_disasm_iter(handle, &cbuf, &size, &pc, insn)) {
-        cap_dump_insn(info, insn);
-+       tcg_disas_annotation(stderr, opaque, pc);
-     }
-     if (size != 0) {
-         (*info->fprintf_func)(info->stream,
-@@ -416,7 +417,7 @@ static bool cap_disas_monitor(disassemble_info *info, uint64_t pc, int count)
- #endif /* !CONFIG_USER_ONLY */
- #else
- # define cap_disas_target(i, p, s)  false
--# define cap_disas_host(i, p, s)  false
-+# define cap_disas_host(i, p, s, o)  false
- # define cap_disas_monitor(i, p, c)  false
- #endif /* CONFIG_CAPSTONE */
- 
-@@ -462,7 +463,6 @@ void target_disas(FILE *out, CPUState *cpu, target_ulong code,
-     for (pc = code; size > 0; pc += count, size -= count) {
- 	fprintf(out, "0x" TARGET_FMT_lx ":  ", pc);
- 	count = s.info.print_insn(pc, &s.info);
--	fprintf(out, "\n");
- 	if (count < 0)
- 	    break;
-         if (size < count) {
-@@ -477,7 +477,7 @@ void target_disas(FILE *out, CPUState *cpu, target_ulong code,
- 
- 
- /* Disassemble this for me please... (debugging). */
--void disas(FILE *out, void *code, unsigned long size)
-+void disas(FILE *out, void *code, unsigned long size, void *opaque)
- {
-     uintptr_t pc;
-     int count;
-@@ -555,7 +555,7 @@ void disas(FILE *out, void *code, unsigned long size)
-     print_insn = print_insn_hppa;
- #endif
- 
--    if (s.info.cap_arch >= 0 && cap_disas_host(&s.info, code, size)) {
-+    if (s.info.cap_arch >= 0 && cap_disas_host(&s.info, code, size, opaque)) {
-         return;
-     }
- 
-@@ -565,9 +565,10 @@ void disas(FILE *out, void *code, unsigned long size)
-     for (pc = (uintptr_t)code; size > 0; pc += count, size -= count) {
-         fprintf(out, "0x%08" PRIxPTR ":  ", pc);
-         count = print_insn(pc, &s.info);
--	fprintf(out, "\n");
--	if (count < 0)
--	    break;
-+        tcg_disas_annotation(out, opaque, pc);
-+        fprintf(out, "\n");
-+        if (count < 0)
-+            break;
-     }
- }
- 
-diff --git a/include/disas/disas.h b/include/disas/disas.h
-index 15da511f49c..c2f75c759f1 100644
---- a/include/disas/disas.h
-+++ b/include/disas/disas.h
-@@ -5,8 +5,10 @@
- #ifdef NEED_CPU_H
- #include "cpu.h"
- 
-+void tcg_disas_annotation(FILE *out, void *opaque, uintptr_t pc);
-+
- /* Disassemble this for me please... (debugging). */
--void disas(FILE *out, void *code, unsigned long size);
-+void disas(FILE *out, void *code, unsigned long size, void *s);
- void target_disas(FILE *out, CPUState *cpu, target_ulong code,
-                   target_ulong size);
- 
-diff --git a/include/exec/log.h b/include/exec/log.h
-index de067f173b8..9fe239fa8c3 100644
---- a/include/exec/log.h
-+++ b/include/exec/log.h
-@@ -43,11 +43,13 @@ static inline void log_target_disas(CPUState *cpu, target_ulong start,
-     target_disas(qemu_logfile, cpu, start, len);
- }
- 
--static inline void log_disas(void *code, unsigned long size)
-+static inline void log_disas(void *code, unsigned long size, void *s)
- {
--    disas(qemu_logfile, code, size);
-+    disas(qemu_logfile, code, size, s);
- }
- 
-+void tcg_disas_annotation(FILE *out, void *opaque, uintptr_t pc);
-+
- #if defined(CONFIG_USER_ONLY)
- /* page_dump() output to the log file: */
- static inline void log_page_dump(void)
-diff --git a/tcg/tcg.c b/tcg/tcg.c
-index 46b31a2f68b..301408ff511 100644
---- a/tcg/tcg.c
-+++ b/tcg/tcg.c
-@@ -781,6 +781,8 @@ void tcg_register_thread(void)
-     g_assert(n < ms->smp.max_cpus);
-     atomic_set(&tcg_ctxs[n], s);
- 
-+    s->notes = g_array_new(true, false, sizeof(TCGNote));
-+
-     tcg_ctx = s;
-     qemu_mutex_lock(&region.lock);
-     err = tcg_region_initial_alloc__locked(tcg_ctx);
-@@ -977,6 +979,8 @@ void tcg_context_init(TCGContext *s)
-         indirect_reg_alloc_order[i] = tcg_target_reg_alloc_order[i];
-     }
- 
-+    s->notes = g_array_new(true, false, sizeof(TCGNote));
-+
-     tcg_ctx = s;
-     /*
-      * In user-mode we simply share the init context among threads, since we
-@@ -1078,7 +1082,7 @@ void tcg_prologue_init(TCGContext *s)
-             size_t data_size = prologue_size - code_size;
-             size_t i;
- 
--            log_disas(buf0, code_size);
-+            log_disas(buf0, code_size, s);
- 
-             for (i = 0; i < data_size; i += sizeof(tcg_target_ulong)) {
-                 if (sizeof(tcg_target_ulong) == 8) {
-@@ -1092,7 +1096,7 @@ void tcg_prologue_init(TCGContext *s)
-                 }
-             }
-         } else {
--            log_disas(buf0, prologue_size);
-+            log_disas(buf0, prologue_size, s);
-         }
-         qemu_log("\n");
-         qemu_log_flush();
-@@ -3124,6 +3128,10 @@ static void temp_sync(TCGContext *s, TCGTemp *ts, TCGRegSet allocated_regs,
-             /* fallthrough */
- 
-         case TEMP_VAL_REG:
-+        {
-+            TCGNote n = { REGISTER_SPILL, s->code_ptr };
-+            g_array_append_val(s->notes, n);
-+            
-             tcg_out_st(s, ts->type, ts->reg,
-                        ts->mem_base->reg, ts->mem_offset);
- 
-@@ -3132,7 +3140,7 @@ static void temp_sync(TCGContext *s, TCGTemp *ts, TCGRegSet allocated_regs,
-                 atomic_inc(&s->current_tb->tb_stats->code.spills);
-             }
-             break;
--
-+        }
-         case TEMP_VAL_MEM:
-             break;
- 
-@@ -4133,6 +4141,9 @@ int tcg_gen_code(TCGContext *s, TranslationBlock *tb)
-             tcg_reg_alloc_dup(s, op);
-             break;
-         case INDEX_op_insn_start:
-+        {
-+            TCGNote n = { INSN_START, s->code_ptr };
-+            g_array_append_val(s->notes, n);
-             if (num_insns >= 0) {
-                 size_t off = tcg_current_code_size(s);
-                 s->gen_insn_end_off[num_insns] = off;
-@@ -4150,6 +4161,7 @@ int tcg_gen_code(TCGContext *s, TranslationBlock *tb)
-                 s->gen_insn_data[num_insns][i] = a;
-             }
-             break;
-+        }
-         case INDEX_op_discard:
-             temp_dead(s, arg_temp(op->args[0]));
-             break;
-@@ -4221,6 +4233,27 @@ void tcg_dump_info(void)
-     dump_jit_profile_info(s);
- }
- 
-+void tcg_disas_annotation(FILE *out, void *opaque, uintptr_t pc)
-+{
-+    TCGContext *s = (TCGContext *) opaque;
-+    int i;
-+
-+    for (i = 0; i < s->notes->len; i++) {
-+        TCGNote *n = &g_array_index(s->notes, TCGNote, i);
-+        if (n->start == (tcg_insn_unit *) pc) {
-+            switch (n->e) {
-+            case INSN_START:
-+                fprintf(out, "\tinsn");
-+                break;
-+            case REGISTER_SPILL:
-+                fprintf(out, "\tspill");
-+                break;
-+            }
-+        }
-+    }
-+}
-+
-+
- #ifdef ELF_HOST_MACHINE
- /* In order to use this feature, the backend needs to do three things:
- 
-diff --git a/tcg/tcg.h b/tcg/tcg.h
-index 026a066b9a1..b4fcf7f7170 100644
---- a/tcg/tcg.h
-+++ b/tcg/tcg.h
-@@ -653,6 +653,21 @@ typedef struct TCGProfile {
-     int64_t table_op_count[NB_OPS];
- } TCGProfile;
- 
-+/*
-+ * TCGNote entries are used to track points in the outgoing instruction stream
-+ * for better debug output.
-+ */
-+
-+typedef enum {
-+    INSN_START,
-+    REGISTER_SPILL
-+} TCGEvent;
-+
-+typedef struct {
-+    TCGEvent e;
-+    tcg_insn_unit *start;
-+} TCGNote;
-+
- struct TCGContext {
-     uint8_t *pool_cur, *pool_end;
-     TCGPool *pool_first, *pool_current, *pool_first_large;
-@@ -687,6 +702,8 @@ struct TCGContext {
-     const TCGOpcode *vecop_list;
- #endif
- 
-+    GArray *notes;
-+
-     /* Code generation.  Note that we specifically do not use tcg_insn_unit
-        here, because there's too much arithmetic throughout that relies
-        on addition and subtraction working on bytes.  Rely on the GCC
--- 
-2.20.1
+>> +     *                 in arm mode, the current insn + 8;
+>> +     *                 in thumb mode, the current insn + 4;
+>> +     *                 in aa64 mode, unused.
+>> +     */
+>>      target_ulong pc;
+>> +    target_ulong pc_read;
+>>      target_ulong page_start;
+>>      uint32_t insn;
+> 
+> Why target_ulong rather than uint32_t, given this is
+> aarch32 only?
+
+I didn't know if it would stay aarch32 only and it seemed more natural to match
+the types.
+
+
+r~

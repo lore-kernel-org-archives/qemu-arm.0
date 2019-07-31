@@ -1,82 +1,81 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5254515wrv;
-        Tue, 30 Jul 2019 23:34:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzgxboUSr9BjFb3WXoMRJE681GrolFwczTsMAPlCwXd4eKcQHsZzd5xdFrss7tubsv7ogzD
-X-Received: by 2002:a17:906:d183:: with SMTP id c3mr4615273ejz.149.1564554853487;
-        Tue, 30 Jul 2019 23:34:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564554853; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5254611wrv;
+        Tue, 30 Jul 2019 23:34:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxMOTm6fnSPj7EGTKxwwLGQkQI6o1DHr8Qii8YeOH2n1KWKRPqGan/pkqdjutLkeHleto0g
+X-Received: by 2002:a17:906:4e92:: with SMTP id v18mr96133644eju.57.1564554860988;
+        Tue, 30 Jul 2019 23:34:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564554860; cv=none;
         d=google.com; s=arc-20160816;
-        b=fWeKfNATB8TcKEVjt/z2ReXBi/tgWdnSSCk/JQIiSqMui0mg+XwbQYRUxU8EuCi85Y
-         VugiVA7kdKgST6goxsg+c1WvYuNkFDSKTMexeqP4zAAOa9S0ksugkys7a2TcB/RytXPE
-         SDrbaTa8z4+VF6QhQrLmoaX4Cc1iuhTB3hDSr68qZKSU7F5ucN05hJe4FNPyKVLpyeN7
-         uhpU1pTVcXiD3c/UoU3wZ7XId3VTt5r37xu1IOSGk8nkYcXfpwsHtURaGbcHYkO4/TZj
-         XqRCxd0aKRIkclsx7+gNwn8HFghwmluKXWszNoVrVycxGjj4R5TtyyD+IZuCDqoQGwcL
-         3SMQ==
+        b=Wzsrf7iT9JVssVW10SJVE4dLs8OIJMXol2C4jCe8RzSIk8z1WVr+O77R5gOGSDwOnR
+         opylyrquLLvwZQ2aSZ3r1v928BmvUN7K0ZOcwFfdCo/tyMICPElHYkDQDJd7Czh5lHvr
+         Fg3PWp4tyWpfpPMrh+e7w1xm+4pj9+LAc++gDkKbu0pRAZc2RYbcLbCUQ0UNLTG+R17X
+         R/vz1WXCTdxCzlt/GDpNVJWtDhQaBC1WP1qN02q60ZBWnpcTW1gwF4mGK1kg9Ve8WT1J
+         b9M8r81bT6W9a9Zln6IJgy/U3NkI7wPitzeI6AZ1DuFdlJ6fp2pDnQYtfUTfksaDtk1w
+         wDdw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :dkim-signature;
-        bh=8SGEfMoTLWENDeCb7lL09El3H621zCoZFFw91tpFB48=;
-        b=m8GKHaN+BBK0/VeUtmhFgBwYqPkusREWz138A7R4pDwGqOLiAXveYLYRuoNFbe7imF
-         9Er1p+TRbyKmHy+4UQdgDjXMBLHEYpkj+dkagMFvEHeeWi3ukPeGHqbB86kPKVHoyO5z
-         GMyiNOp/IZD2ZxQ4pFYMIjJIB+hMusb0+dNpSar75HLaRVYyMDSb6X8ms06Y2XMEgBZa
-         BXLPWHwSgisGpuZMyuO4W2S1JUvDs8dylZktAkJSeQDysz4igcu5ik7MwF3cA75AWH+3
-         mCHSmZbsNrnjgelQGHjOwRKwVH5/NxW31p7t7keJJqillz+p49RF5mCn6RXHQFdu3sh5
-         Aa6Q==
+        bh=pMZGLEkD4+YxxZbc8AjSODbXRntAAUSvpSonbQbirU0=;
+        b=peIRuhR1b7W6ymRgO7HTUXlHW0H0gAhqj14O3IQkUNoj1ZuGPtj9FMHQIOxRrN8GUj
+         T8xq8APgVXraHNSduSggfiUHqxJ7acxmvzcmZbhcsEk9lyuudEBF9nKhGd3Vz7vxETHA
+         a87aq/ZMcaXbTq+EcktFwZznqvV0fWXyFp1JCD0Lh1ibwCEu4oE8rcA8jLrjph+4VHAb
+         TI2WnV05Zod/1VronPIPTWPHZvbwuhfuszkABxNo6O1S8DzeaQ3cFrJO4OCMLBqls3Cf
+         jwxZkgrVhAqizZp4sNimsP6V3V8ubFm9PAOZa2INVQfwoVINzgwFRQsnnHDCdGIPpM9N
+         REHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=mdUmVcay;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=bLwqy+vA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d24si18270347ejt.166.2019.07.30.23.34.13
+        by mx.google.com with ESMTPS id z43si19980204edb.102.2019.07.30.23.34.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jul 2019 23:34:13 -0700 (PDT)
+        Tue, 30 Jul 2019 23:34:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=mdUmVcay;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=bLwqy+vA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38234 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38230 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hsiBf-0003P3-TJ
-	for alex.bennee@linaro.org; Wed, 31 Jul 2019 02:34:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45613)
+	id 1hsiBk-0003Ok-Vg
+	for alex.bennee@linaro.org; Wed, 31 Jul 2019 02:34:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45574)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <dgibson@ozlabs.org>) id 1hsiBQ-0003OJ-AD
+ (envelope-from <dgibson@ozlabs.org>) id 1hsiBO-0003OH-Tf
  for qemu-arm@nongnu.org; Wed, 31 Jul 2019 02:33:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1hsiBM-0000Ie-E6
- for qemu-arm@nongnu.org; Wed, 31 Jul 2019 02:33:55 -0400
-Received: from ozlabs.org ([203.11.71.1]:45971)
+ (envelope-from <dgibson@ozlabs.org>) id 1hsiBM-0000Ix-Hx
+ for qemu-arm@nongnu.org; Wed, 31 Jul 2019 02:33:54 -0400
+Received: from ozlabs.org ([203.11.71.1]:49971)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1hsiBL-00086J-0A; Wed, 31 Jul 2019 02:33:52 -0400
+ id 1hsiBL-00086K-NM; Wed, 31 Jul 2019 02:33:52 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
- id 45z3Xk4z4Vz9sMr; Wed, 31 Jul 2019 16:33:42 +1000 (AEST)
+ id 45z3Xk3bR7z9sN4; Wed, 31 Jul 2019 16:33:42 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=gibson.dropbear.id.au; s=201602; t=1564554822;
- bh=GwcyTEln1jYY3LzdIKE7lFauBXJ4alh9w5AgOOIslmY=;
+ bh=YO3lr6xTHisSEYSyCUnctjxyty/C9WJkfz5EmRT6FYE=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=mdUmVcayDTPOQJ0fRDdXpq07sFs/VI6Ah4Uo+/PP8sWRpgyCM97Icb1vPHK2iikzx
- u2ETDgtGXKSwl2hctvz3giC2d7AhEkkmLO2kjGI7oaHHoERT2l4rTiJfFmyJfIzDHy
- y8x07Qzwvq+UuMLfN1TRAZHmnWVKIPkzk4PZFbUA=
-Date: Wed, 31 Jul 2019 16:11:08 +1000
+ b=bLwqy+vAEeA2cjt5W1QkWFKfTEx47DU2DBj/w173Yl3KirlbwcF37t7ysJIemu3fU
+ gyBqh426IFzx9c6/QRqtoMCHUZUVJygdnmH8RSzEzhvi+5sTr2tWyvQH2Fxb+2GTyY
+ h8THgoCbsqBsMY6OV63dcTKHboio5S6Ou6zZiSIE=
+Date: Wed, 31 Jul 2019 15:56:40 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <20190731061108.GF2032@umbus.fritz.box>
+Message-ID: <20190731055640.GC2032@umbus.fritz.box>
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-9-damien.hedde@greensocs.com>
+ <20190729145654.14644-5-damien.hedde@greensocs.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="gdTfX7fkYsEEjebm"
+ protocol="application/pgp-signature"; boundary="O3RTKUHj+75w1tg5"
 Content-Disposition: inline
-In-Reply-To: <20190729145654.14644-9-damien.hedde@greensocs.com>
+In-Reply-To: <20190729145654.14644-5-damien.hedde@greensocs.com>
 User-Agent: Mutt/1.12.0 (2019-05-25)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 203.11.71.1
-Subject: Re: [Qemu-arm] [PATCH v3 08/33] Add function to control reset with
- gpio inputs
+Subject: Re: [Qemu-arm] [PATCH v3 04/33] make Device and Bus Resettable
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -100,253 +99,461 @@ Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
  pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6eSQwkFGcT1E
+X-TUID: T8ty5uimLFvG
 
 
---gdTfX7fkYsEEjebm
+--O3RTKUHj+75w1tg5
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Jul 29, 2019 at 04:56:29PM +0200, Damien Hedde wrote:
-> It adds the possibility to add 2 gpios to control the warm and cold reset.
-> With theses ios, the reset can be maintained during some time.
-> Each io is associated with a state to detect level changes.
+On Mon, Jul 29, 2019 at 04:56:25PM +0200, Damien Hedde wrote:
+> This add Resettable interface implementation for both Bus and Device.
 >=20
-> Vmstate subsections are also added to the existsing device_reset
-> subsection.
-
-This doesn't seem like a thing that should be present on every single
-DeviceState.
-
+> *resetting* counter and *reset_is_cold* flag are added in DeviceState
+> and BusState.
+>=20
+> Compatibility with existing code base is ensured.
+> The legacy bus or device reset method is called in the new exit phase
+> and the other 2 phases are let empty. Using the exit phase guarantee that
+> legacy resets are called in the "post" order (ie: children then parent)
+> in hierarchical reset. That is the same order as legacy qdev_reset_all
+> or qbus_reset_all were using.
+>=20
+> New *device_reset* and *bus_reset* function are proposed with an
+> additional boolean argument telling whether the reset is cold or warm.
+> Helper functions *device_reset_[warm|cold]* and *bus_reset_[warm|cold]*
+> are defined also as helpers.
+>=20
+> Also add a [device|bus]_is_resetting and [device|bus]_is_reset_cold
+> functions telling respectively whether the object is currently under rese=
+t and
+> if the current reset is cold or not.
 >=20
 > Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 > ---
->  hw/core/qdev-vmstate.c | 15 ++++++++++
->  hw/core/qdev.c         | 65 ++++++++++++++++++++++++++++++++++++++++++
->  include/hw/qdev-core.h | 57 ++++++++++++++++++++++++++++++++++++
->  3 files changed, 137 insertions(+)
+>  hw/core/bus.c          | 85 ++++++++++++++++++++++++++++++++++++++++++
+>  hw/core/qdev.c         | 82 ++++++++++++++++++++++++++++++++++++++++
+>  include/hw/qdev-core.h | 84 ++++++++++++++++++++++++++++++++++++++---
+>  tests/Makefile.include |  1 +
+>  4 files changed, 247 insertions(+), 5 deletions(-)
 >=20
-> diff --git a/hw/core/qdev-vmstate.c b/hw/core/qdev-vmstate.c
-> index 24f8465c61..72f84c6cee 100644
-> --- a/hw/core/qdev-vmstate.c
-> +++ b/hw/core/qdev-vmstate.c
-> @@ -24,10 +24,23 @@ static int device_vmstate_reset_post_load(void *opaqu=
-e, int version_id)
+> diff --git a/hw/core/bus.c b/hw/core/bus.c
+> index 17bc1edcde..08a97addb6 100644
+> --- a/hw/core/bus.c
+> +++ b/hw/core/bus.c
+> @@ -22,6 +22,7 @@
+>  #include "qemu/module.h"
+>  #include "hw/qdev.h"
+>  #include "qapi/error.h"
+> +#include "hw/resettable.h"
+> =20
+>  void qbus_set_hotplug_handler(BusState *bus, Object *handler, Error **er=
+rp)
 >  {
->      DeviceState *dev =3D (DeviceState *) opaque;
->      BusState *bus;
-> +    uint32_t io_count =3D 0;
-> +
->      QLIST_FOREACH(bus, &dev->child_bus, sibling) {
->          bus->resetting =3D dev->resetting;
->          bus->reset_is_cold =3D dev->reset_is_cold;
->      }
-> +
-> +    if (dev->cold_reset_input.state) {
-> +        io_count +=3D 1;
-> +    }
-> +    if (dev->warm_reset_input.state) {
-> +        io_count +=3D 1;
-> +    }
-> +    /* ensure resetting count is coherent with io states */
-> +    if (dev->resetting < io_count) {
-> +        return -1;
-> +    }
+> @@ -68,6 +69,75 @@ int qbus_walk_children(BusState *bus,
 >      return 0;
 >  }
 > =20
-> @@ -40,6 +53,8 @@ const struct VMStateDescription device_vmstate_reset =
-=3D {
->      .fields =3D (VMStateField[]) {
->          VMSTATE_UINT32(resetting, DeviceState),
->          VMSTATE_BOOL(reset_is_cold, DeviceState),
-> +        VMSTATE_BOOL(cold_reset_input.state, DeviceState),
-> +        VMSTATE_BOOL(warm_reset_input.state, DeviceState),
->          VMSTATE_END_OF_LIST()
->      },
->  };
-> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-> index 88387d3743..11a4de55ea 100644
-> --- a/hw/core/qdev.c
-> +++ b/hw/core/qdev.c
-> @@ -450,6 +450,67 @@ void qdev_init_gpio_in(DeviceState *dev, qemu_irq_ha=
-ndler handler, int n)
->      qdev_init_gpio_in_named(dev, handler, NULL, n);
+> +void bus_reset(BusState *bus, bool cold)
+> +{
+> +    resettable_reset(OBJECT(bus), cold);
+> +}
+> +
+> +bool bus_is_resetting(BusState *bus)
+> +{
+> +    return (bus->resetting !=3D 0);
+> +}
+> +
+> +bool bus_is_reset_cold(BusState *bus)
+> +{
+> +    return bus->reset_is_cold;
+> +}
+> +
+> +static uint32_t bus_get_reset_count(Object *obj)
+> +{
+> +    BusState *bus =3D BUS(obj);
+> +    return bus->resetting;
+> +}
+> +
+> +static uint32_t bus_increment_reset_count(Object *obj)
+> +{
+> +    BusState *bus =3D BUS(obj);
+> +    return ++bus->resetting;
+> +}
+> +
+> +static uint32_t bus_decrement_reset_count(Object *obj)
+> +{
+> +    BusState *bus =3D BUS(obj);
+> +    return --bus->resetting;
+> +}
+> +
+> +static bool bus_set_reset_cold(Object *obj, bool cold)
+> +{
+> +    BusState *bus =3D BUS(obj);
+> +    bool old =3D bus->reset_is_cold;
+> +    bus->reset_is_cold =3D cold;
+> +    return old;
+> +}
+> +
+> +static bool bus_set_hold_needed(Object *obj, bool hold_needed)
+> +{
+> +    BusState *bus =3D BUS(obj);
+> +    bool old =3D bus->reset_hold_needed;
+> +    bus->reset_hold_needed =3D hold_needed;
+> +    return old;
+> +}
+> +
+> +static void bus_foreach_reset_child(Object *obj, void (*func)(Object *))
+> +{
+> +    BusState *bus =3D BUS(obj);
+> +    BusChild *kid;
+> +
+> +    QTAILQ_FOREACH(kid, &bus->children, sibling) {
+> +        func(OBJECT(kid->child));
+> +    }
+> +}
+
+IIUC, every resettable class would need more or less identical
+implementations of the above.  That seems like an awful lot of
+boilerplate.
+
+> +
+> +static void bus_obj_legacy_reset(Object *obj)
+> +{
+> +    BusState *bus =3D BUS(obj);
+> +    BusClass *bc =3D BUS_GET_CLASS(obj);
+> +
+> +    if (bc->reset) {
+> +        bc->reset(bus);
+> +    }
+> +}
+> +
+>  static void qbus_realize(BusState *bus, DeviceState *parent, const char =
+*name)
+>  {
+>      const char *typename =3D object_get_typename(OBJECT(bus));
+> @@ -192,6 +262,8 @@ static void qbus_initfn(Object *obj)
+>                               NULL);
+>      object_property_add_bool(obj, "realized",
+>                               bus_get_realized, bus_set_realized, NULL);
+> +
+> +    bus->resetting =3D 0;
 >  }
 > =20
-> +static DeviceResetInputState *device_get_reset_input_state(DeviceState *=
-dev,
-> +                                                            bool cold)
-> +{
-> +    return cold ? &dev->cold_reset_input : &dev->warm_reset_input;
-> +}
-> +
-> +static void device_reset_handler(DeviceState *dev, bool cold, bool level)
-> +{
-> +    DeviceResetInputState *dris =3D device_get_reset_input_state(dev, co=
-ld);
-> +
-> +    if (dris->type =3D=3D DEVICE_RESET_ACTIVE_LOW) {
-> +        level =3D !level;
-> +    }
-> +
-> +    if (dris->state =3D=3D level) {
-> +        /* io state has not changed */
-> +        return;
-> +    }
-> +
-> +    dris->state =3D level;
-> +
-> +    if (level) {
-> +        resettable_assert_reset(OBJECT(dev), cold);
-> +    } else {
-> +        resettable_deassert_reset(OBJECT(dev));
-> +    }
-> +}
-> +
-> +static void device_cold_reset_handler(void *opaque, int n, int level)
-> +{
-> +    device_reset_handler((DeviceState *) opaque, true, level);
-> +}
-> +
-> +static void device_warm_reset_handler(void *opaque, int n, int level)
-> +{
-> +    device_reset_handler((DeviceState *) opaque, false, level);
-> +}
-> +
-> +void qdev_init_reset_gpio_in_named(DeviceState *dev, const char *name,
-> +                                   bool cold, DeviceResetActiveType type)
-> +{
-> +    DeviceResetInputState *dris =3D device_get_reset_input_state(dev, co=
-ld);
-> +    qemu_irq_handler handler;
-> +
-> +    switch (type) {
-> +    case DEVICE_RESET_ACTIVE_LOW:
-> +    case DEVICE_RESET_ACTIVE_HIGH:
-> +        break;
-> +    default:
-> +        assert(false);
-> +        break;
-> +    }
-> +
-> +    assert(!dris->exists);
-> +    dris->exists =3D true;
-> +    dris->type =3D type;
-> +
-> +    handler =3D cold ? device_cold_reset_handler : device_warm_reset_han=
-dler;
-> +    qdev_init_gpio_in_named(dev, handler, name, 1);
-> +}
-> +
->  void qdev_init_gpio_out_named(DeviceState *dev, qemu_irq *pins,
->                                const char *name, int n)
+>  static char *default_bus_get_fw_dev_path(DeviceState *dev)
+> @@ -202,9 +274,18 @@ static char *default_bus_get_fw_dev_path(DeviceState=
+ *dev)
+>  static void bus_class_init(ObjectClass *class, void *data)
 >  {
-> @@ -1007,6 +1068,10 @@ static void device_initfn(Object *obj)
+>      BusClass *bc =3D BUS_CLASS(class);
+> +    ResettableClass *rc =3D RESETTABLE_CLASS(class);
+> =20
+>      class->unparent =3D bus_unparent;
+>      bc->get_fw_dev_path =3D default_bus_get_fw_dev_path;
+> +
+> +    rc->phases.exit =3D bus_obj_legacy_reset;
+> +    rc->get_count =3D bus_get_reset_count;
+> +    rc->increment_count =3D bus_increment_reset_count;
+> +    rc->decrement_count =3D bus_decrement_reset_count;
+> +    rc->foreach_child =3D bus_foreach_reset_child;
+> +    rc->set_cold =3D bus_set_reset_cold;
+> +    rc->set_hold_needed =3D bus_set_hold_needed;
+>  }
+> =20
+>  static void qbus_finalize(Object *obj)
+> @@ -223,6 +304,10 @@ static const TypeInfo bus_info =3D {
+>      .instance_init =3D qbus_initfn,
+>      .instance_finalize =3D qbus_finalize,
+>      .class_init =3D bus_class_init,
+> +    .interfaces =3D (InterfaceInfo[]) {
+> +        { TYPE_RESETTABLE },
+> +        { }
+> +    },
+>  };
+> =20
+>  static void bus_register_types(void)
+> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+> index 043e058396..559ced070d 100644
+> --- a/hw/core/qdev.c
+> +++ b/hw/core/qdev.c
+> @@ -254,6 +254,64 @@ HotplugHandler *qdev_get_hotplug_handler(DeviceState=
+ *dev)
+>      return hotplug_ctrl;
+>  }
+> =20
+> +void device_reset(DeviceState *dev, bool cold)
+> +{
+> +    resettable_reset(OBJECT(dev), cold);
+> +}
+> +
+> +bool device_is_resetting(DeviceState *dev)
+> +{
+> +    return (dev->resetting !=3D 0);
+> +}
+> +
+> +bool device_is_reset_cold(DeviceState *dev)
+> +{
+> +    return dev->reset_is_cold;
+> +}
+> +
+> +static uint32_t device_get_reset_count(Object *obj)
+> +{
+> +    DeviceState *dev =3D DEVICE(obj);
+> +    return dev->resetting;
+> +}
+> +
+> +static uint32_t device_increment_reset_count(Object *obj)
+> +{
+> +    DeviceState *dev =3D DEVICE(obj);
+> +    return ++dev->resetting;
+> +}
+> +
+> +static uint32_t device_decrement_reset_count(Object *obj)
+> +{
+> +    DeviceState *dev =3D DEVICE(obj);
+> +    return --dev->resetting;
+> +}
+> +
+> +static bool device_set_reset_cold(Object *obj, bool cold)
+> +{
+> +    DeviceState *dev =3D DEVICE(obj);
+> +    bool old =3D dev->reset_is_cold;
+> +    dev->reset_is_cold =3D cold;
+> +    return old;
+> +}
+> +
+> +static bool device_set_hold_needed(Object *obj, bool hold_needed)
+> +{
+> +    DeviceState *dev =3D DEVICE(obj);
+> +    bool old =3D dev->reset_hold_needed;
+> +    dev->reset_hold_needed =3D hold_needed;
+> +    return old;
+> +}
+> +
+> +static void device_foreach_reset_child(Object *obj, void (*func)(Object =
+*))
+> +{
+> +    DeviceState *dev =3D DEVICE(obj);
+> +    BusState *bus;
+> +    QLIST_FOREACH(bus, &dev->child_bus, sibling) {
+> +        func(OBJECT(bus));
+> +    }
+> +}
+> +
+>  static int qdev_reset_one(DeviceState *dev, void *opaque)
+>  {
+>      device_legacy_reset(dev);
+> @@ -954,6 +1012,7 @@ static void device_initfn(Object *obj)
+> =20
 >      dev->instance_id_alias =3D -1;
 >      dev->realized =3D false;
->      dev->resetting =3D 0;
-> +    dev->cold_reset_input.exists =3D false;
-> +    dev->cold_reset_input.state =3D false;
-> +    dev->warm_reset_input.exists =3D false;
-> +    dev->warm_reset_input.state =3D false;
+> +    dev->resetting =3D 0;
 > =20
 >      object_property_add_bool(obj, "realized",
 >                               device_get_realized, device_set_realized, N=
 ULL);
-> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-> index 926d4bbcb1..f724ddc8f4 100644
-> --- a/include/hw/qdev-core.h
-> +++ b/include/hw/qdev-core.h
-> @@ -136,6 +136,23 @@ struct NamedGPIOList {
->      QLIST_ENTRY(NamedGPIOList) node;
+> @@ -1046,9 +1105,20 @@ static void device_unparent(Object *obj)
+>      }
+>  }
+> =20
+> +static void device_obj_legacy_reset(Object *obj)
+> +{
+> +    DeviceState *dev =3D DEVICE(obj);
+> +    DeviceClass *dc =3D DEVICE_GET_CLASS(dev);
+> +
+> +    if (dc->reset) {
+> +        dc->reset(dev);
+> +    }
+> +}
+> +
+>  static void device_class_init(ObjectClass *class, void *data)
+>  {
+>      DeviceClass *dc =3D DEVICE_CLASS(class);
+> +    ResettableClass *rc =3D RESETTABLE_CLASS(class);
+> =20
+>      class->unparent =3D device_unparent;
+> =20
+> @@ -1060,6 +1130,14 @@ static void device_class_init(ObjectClass *class, =
+void *data)
+>       */
+>      dc->hotpluggable =3D true;
+>      dc->user_creatable =3D true;
+> +
+> +    rc->phases.exit =3D device_obj_legacy_reset;
+> +    rc->get_count =3D device_get_reset_count;
+> +    rc->increment_count =3D device_increment_reset_count;
+> +    rc->decrement_count =3D device_decrement_reset_count;
+> +    rc->foreach_child =3D device_foreach_reset_child;
+> +    rc->set_cold =3D device_set_reset_cold;
+> +    rc->set_hold_needed =3D device_set_hold_needed;
+>  }
+> =20
+>  void device_class_set_parent_reset(DeviceClass *dc,
+> @@ -1117,6 +1195,10 @@ static const TypeInfo device_type_info =3D {
+>      .class_init =3D device_class_init,
+>      .abstract =3D true,
+>      .class_size =3D sizeof(DeviceClass),
+> +    .interfaces =3D (InterfaceInfo[]) {
+> +        { TYPE_RESETTABLE },
+> +        { }
+> +    },
 >  };
 > =20
-> +typedef enum DeviceResetActiveType {
-> +    DEVICE_RESET_ACTIVE_LOW,
-> +    DEVICE_RESET_ACTIVE_HIGH,
-> +} DeviceResetActiveType;
-> +
-> +/**
-> + * DeviceResetInputState:
-> + * @exists: tell if io exists
-> + * @type: tell whether the io active low or high
-> + * @state: true if reset is currently active
-> + */
-> +typedef struct DeviceResetInputState {
-> +    bool exists;
-> +    DeviceResetActiveType type;
-> +    bool state;
-> +} DeviceResetInputState;
-> +
+>  static void qdev_register_types(void)
+> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+> index 690ce72433..eeb75611c8 100644
+> --- a/include/hw/qdev-core.h
+> +++ b/include/hw/qdev-core.h
+> @@ -7,6 +7,7 @@
+>  #include "hw/irq.h"
+>  #include "hw/hotplug.h"
+>  #include "sysemu/sysemu.h"
+> +#include "hw/resettable.h"
+> =20
+>  enum {
+>      DEV_NVECTORS_UNSPECIFIED =3D -1,
+> @@ -132,6 +133,10 @@ struct NamedGPIOList {
 >  /**
 >   * DeviceState:
 >   * @realized: Indicates whether the device has been fully constructed.
-> @@ -143,6 +160,8 @@ struct NamedGPIOList {
->   * used to count how many times reset has been initiated on the device.
->   * @reset_is_cold: If the device is under reset, indicates whether it is=
+> + * @resetting: Indicates whether the device is under reset. Also
+> + * used to count how many times reset has been initiated on the device.
+> + * @reset_is_cold: If the device is under reset, indicates whether it is=
  cold
->   * or warm.
-> + * @cold_reset_input: state data for cold reset io
-> + * @warm_reset_input: state data for warm reset io
+> + * or warm.
 >   *
 >   * This structure should not be accessed directly.  We declare it here
 >   * so that it can be embedded in individual device state structures.
-> @@ -167,6 +186,8 @@ struct DeviceState {
->      uint32_t resetting;
->      bool reset_is_cold;
->      bool reset_hold_needed;
-> +    DeviceResetInputState cold_reset_input;
-> +    DeviceResetInputState warm_reset_input;
+> @@ -153,6 +158,9 @@ struct DeviceState {
+>      int num_child_bus;
+>      int instance_id_alias;
+>      int alias_required_for_version;
+> +    uint32_t resetting;
+> +    bool reset_is_cold;
+> +    bool reset_hold_needed;
 >  };
 > =20
 >  struct DeviceListener {
-> @@ -372,6 +393,42 @@ static inline void qdev_init_gpio_in_named(DeviceSta=
-te *dev,
->  void qdev_pass_gpios(DeviceState *dev, DeviceState *container,
->                       const char *name);
+> @@ -199,6 +207,10 @@ typedef struct BusChild {
+>  /**
+>   * BusState:
+>   * @hotplug_handler: link to a hotplug handler associated with bus.
+> + * @resetting: Indicates whether the bus is under reset. Also
+> + * used to count how many times reset has been initiated on the bus.
+> + * @reset_is_cold: If the bus is under reset, indicates whether it is co=
+ld
+> + * or warm.
+>   */
+>  struct BusState {
+>      Object obj;
+> @@ -210,6 +222,9 @@ struct BusState {
+>      int num_children;
+>      QTAILQ_HEAD(, BusChild) children;
+>      QLIST_ENTRY(BusState) sibling;
+> +    uint32_t resetting;
+> +    bool reset_is_cold;
+> +    bool reset_hold_needed;
+>  };
+> =20
+>  /**
+> @@ -376,6 +391,70 @@ int qdev_walk_children(DeviceState *dev,
+>                         qdev_walkerfn *post_devfn, qbus_walkerfn *post_bu=
+sfn,
+>                         void *opaque);
 > =20
 > +/**
-> + * qdev_init_reset_gpio_in_named:
-> + * Create a gpio controlling the warm or cold reset of the device.
-> + *
-> + * @cold: specify whether it triggers cold or warm reset
-> + * @type: what kind of reset io it is
-> + *
-> + * Note: the io is considered created in its inactive state. No reset
-> + * is started by this function.
+> + * device_reset:
+> + * Resets the device @dev, @cold tell whether to do a cold or warm reset.
+> + * Uses the ressetable interface.
+> + * Base behavior is to reset the device and its qdev/qbus subtree.
 > + */
-> +void qdev_init_reset_gpio_in_named(DeviceState *dev, const char *name,
-> +                                   bool cold, DeviceResetActiveType type=
-);
+> +void device_reset(DeviceState *dev, bool cold);
 > +
-> +/**
-> + * qdev_init_warm_reset_gpio:
-> + * Create the input to control the device warm reset.
-> + */
-> +static inline void qdev_init_warm_reset_gpio(DeviceState *dev,
-> +                                             const char *name,
-> +                                             DeviceResetActiveType type)
+> +static inline void device_reset_warm(DeviceState *dev)
 > +{
-> +    qdev_init_reset_gpio_in_named(dev, name, false, type);
+> +    device_reset(dev, false);
+> +}
+> +
+> +static inline void device_reset_cold(DeviceState *dev)
+> +{
+> +    device_reset(dev, true);
 > +}
 > +
 > +/**
-> + * qdev_init_cold_reset_gpio:
-> + * Create the input to control the device cold reset.
-> + * It can also be used as a power gate control.
+> + * bus_reset:
+> + * Resets the bus @bus, @cold tell whether to do a cold or warm reset.
+> + * Uses the ressetable interface.
+> + * Base behavior is to reset the bus and its qdev/qbus subtree.
 > + */
-> +static inline void qdev_init_cold_reset_gpio(DeviceState *dev,
-> +                                             const char *name,
-> +                                             DeviceResetActiveType type)
+> +void bus_reset(BusState *bus, bool cold);
+> +
+> +static inline void bus_reset_warm(BusState *bus)
 > +{
-> +    qdev_init_reset_gpio_in_named(dev, name, true, type);
+> +    bus_reset(bus, false);
 > +}
 > +
->  BusState *qdev_get_parent_bus(DeviceState *dev);
+> +static inline void bus_reset_cold(BusState *bus)
+> +{
+> +    bus_reset(bus, true);
+> +}
+> +
+> +/**
+> + * device_is_resetting:
+> + * Tell whether the device @dev is currently under reset.
+> + */
+> +bool device_is_resetting(DeviceState *dev);
+> +
+> +/**
+> + * device_is_reset_cold:
+> + * Tell whether the device @dev is currently under reset cold or warm re=
+set.
+> + *
+> + * Note: only valid when device_is_resetting returns true.
+> + */
+> +bool device_is_reset_cold(DeviceState *dev);
+> +
+> +/**
+> + * bus_is_resetting:
+> + * Tell whether the bus @bus is currently under reset.
+> + */
+> +bool bus_is_resetting(BusState *bus);
+> +
+> +/**
+> + * bus_is_reset_cold:
+> + * Tell whether the bus @bus is currently under reset cold or warm reset.
+> + *
+> + * Note: only valid when bus_is_resetting returns true.
+> + */
+> +bool bus_is_reset_cold(BusState *bus);
+> +
+>  void qdev_reset_all(DeviceState *dev);
+>  void qdev_reset_all_fn(void *opaque);
 > =20
->  /*** BUS API. ***/
+> @@ -413,11 +492,6 @@ void qdev_machine_init(void);
+>   */
+>  void device_legacy_reset(DeviceState *dev);
+> =20
+> -static inline void device_reset(DeviceState *dev)
+> -{
+> -    device_legacy_reset(dev);
+> -}
+> -
+>  void device_class_set_parent_reset(DeviceClass *dc,
+>                                     DeviceReset dev_reset,
+>                                     DeviceReset *parent_reset);
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index fd7fdb8658..1c0a5345b9 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -561,6 +561,7 @@ tests/fp/%:
+> =20
+>  tests/test-qdev-global-props$(EXESUF): tests/test-qdev-global-props.o \
+>  	hw/core/qdev.o hw/core/qdev-properties.o hw/core/hotplug.o\
+> +	hw/core/resettable.o \
+>  	hw/core/bus.o \
+>  	hw/core/irq.o \
+>  	hw/core/fw-path-provider.o \
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -354,24 +561,24 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---gdTfX7fkYsEEjebm
+--O3RTKUHj+75w1tg5
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl1BMPwACgkQbDjKyiDZ
-s5IINxAA4Vc6I8WjwCTpZSPAI8fdiXVCNWOqdTRWDmIDckrchhPkZ6RorQme66uw
-KpvksM8X0u5HcDkTvDiXhLcI2BxlZd5ibI56wgcZlxmAXUW95bwuopS5Nyn4yuWV
-UolClo3rwERQX6MjDO8N0aYovFngH9ebF2sYGu28PLNUxDuRrRGX1FhyJQ1eHPnY
-UyT8Oh4KbLzJjTTIEFmW4yRVKkg7yCd4R/lXwaQqKFo6xvSsNt/S6PwX8DfTMtf3
-qbdnIKjwTxgGyDI4ZdggmDOir33C80J5obC1IPLznXXtWCAwHmvgPcaF36o0wG8Z
-ETSBtJY2jVOmfme1Z7UGsIWmxkyDsGSjwG5NSKA94pYdU3BjTSK9UvfwLBil34mP
-qjmTS88fW5+6rhG8bTMUyzHfkZnPG1D9quE5EDvFb4iTzVOu5UX1oMrpouVE3nlU
-Gp0qK4w58A1mPomC5AMq1sCidK1AD0qILZKYxsnd0J+cu72OfhxUgehZqPkyo16g
-SRDendKFvkKEBMm8lUtqUFuDlONfWoJT4MZNM+SlxWNAHx+rMtTHSRHahkqEh6BV
-eyP9R45/X7t4ucUtBtm0XNXzxqVPDY5Hg+awVPE8mXH6SVsCIX4rYBJlcXd0AjaY
-lb35GPT+0jDVe/Z6+ZAujCEGxqJ0XOqzYtY5pmpVJJhq9bTRL3g=
-=p8+m
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl1BLZgACgkQbDjKyiDZ
+s5LRJBAAwVkJyW6r+BB4rDnY0nNiF/nIOloT6M90dQ5vLFqC5JAupWUbnfP0uAJI
+ol7smVFYlUD/mpKWEtFJlmsfGYQV9VMv5o2Sn3SoqEdhdSiKms7s42Le3fqejn+I
+Q/HiAoUTF6UJ2Xvx3/2d8JNAJplMHHG1eDo0TpniTXIYa0nGtfe15JXqXtEHBqro
+BVzl9NVXcARWTvIvBBcSItn08GtoAdN9sI2PlP4sTfKKO0ANHIb5WA+4ciP0nNZe
+UcAFRxhiA4tn0xZatnF32eS4JNlcGburvpiUuGCSSCTAkWVDfoqrC5H1FolNsApL
+dS/ME/AjS5INBCFUCeiGz7j4Peu0c1d7PUhYCn5iC90nhRrikbiWh6Le5c2CGy9y
+B6d2LgrmTCQJdCJ8GjK9zPr2wJA0GwGh9wumw/jkzAUzX+y88OOf1LxDuqQGJyC7
+fdV2VJe6iqTDeJMkvpQvJVDbhWaewRjLSs3tqdn79P6dB6WZR5Ds64qfAkNZIKQG
+AgEbAPBupnCQoIGQ5CjRcNd2NKBmhobPb1h7U87jP+kMzXIIilCNeM7LJe/xgp8V
++La/pa6RFcZXUB8dtGHXit/Y6+mXbUBSnwO7b0SX9N17C4Y68KE+BdZT3SoIqrfY
+dmp3M005R19jIBv8L4Jq5FQluxisLD2B6vM4tP5VvS/WvL/+Foo=
+=9No3
 -----END PGP SIGNATURE-----
 
---gdTfX7fkYsEEjebm--
+--O3RTKUHj+75w1tg5--

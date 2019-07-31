@@ -1,109 +1,156 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6071199wrv;
-        Wed, 31 Jul 2019 13:38:23 -0700 (PDT)
-X-Received: by 2002:a63:4185:: with SMTP id o127mr4496424pga.82.1564605503213;
-        Wed, 31 Jul 2019 13:38:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564605503; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6198600wrv;
+        Wed, 31 Jul 2019 16:24:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxMZDs2jVr5vTTukTzj6b1mEEMYRirRWxlJiCpCkqEaFL1hJgYfC2xvIWSR1k5nB3pEtRCs
+X-Received: by 2002:a05:6402:6d0:: with SMTP id n16mr27778538edy.168.1564615481812;
+        Wed, 31 Jul 2019 16:24:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564615481; cv=none;
         d=google.com; s=arc-20160816;
-        b=RvE0nmJqnbJI+Oz24x0lBHzVmyNY9KwS8EZRqp3HVs6CyHhEJQG2LXPYfUYCpSxFVO
-         3XxWZQKxsVs/8/nGi6lyEFlAh70PfWb/SJI3U9P3UhrHcjv4xeG/WS0clCtusKzlAQZo
-         +MOHgLPrQZfcqMxiCUCImNkPGywLGZ4g//7QmXL/s5jX+gUFWdPIObAfq/QXeiAFd6yH
-         8lF0tIUD2lFQ+Td55cEDMIypTVd7ZbFgFHRkFpl8GW/wat0C2a1/QBcQEBMAmeK4sPs3
-         3E9tfZaL2m4Ln8hkTFhrlG664wqae5/24qhhNCq/9womn5BQ3VrlJJhv8i7UhnpM/ITZ
-         QG3Q==
+        b=Jw/XyusdKvauM0lTPZIB0kFeX+oM8IZ8us73gx2m8X59EYiP0PI0cbQD7Lg1qB4mqU
+         72G7iu4fcxjrR3GhUp+POcf6YaPZ+/MjHuRVfQZ+rNvPJZjQAGIGS+xWcRwcAIY/CUpF
+         SZBX3cFQXcyPFzCUDpCSSWSOp0dA75IvKwvq/AIT6OYK56xhBLuwoOGiC6DBtM+tbscc
+         ayiE82Fv6WeGuL4s8VPrNfyNYNaSBc2ogRk8hQV44i60VWJBlNUWoP4vbbv/izucO1oP
+         RbX7g2eI5jgocmttoMesCQruYrVsk2qqTbXi3tzjTIp6Y/Y885Pvv79iHEOoeporlWc6
+         xLfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=6IeFtwkeZbBPVLT5Rmllb3ExAsBhlKcdIq9EZhAeEOQ=;
-        b=0Fs2QQ+uoJbN7ddJ/giArL8ohiWbP8KpOhL72vT5SnS7hcyLHxK764wpNVeEN9rdWI
-         2fYq0BIFao+5RxL5DGaXw5gw6eqhnSPW0qG0KN5T/FGYj4tLeAZ/MB+houI3xy3Yecto
-         480+kswYxij6Mfk9yUtybSkOr++3lTbxnGYAEK1JECOPnmJkgxzNbdi7syXWDbyeiIWl
-         GeFuXNnqespLzCa4fI9AjifB6bSp5DstwFOtnLY+5tIpaox0OfGarY9UMjupCwsJM5xv
-         YPH0qVkAz/E7EE1nXfpFs6lwnHjWBJnRrrv1dbsjNxV361hexv2jpge2xxQgEfM8ksVo
-         TLPg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:dlp-reaction:dlp-version:dlp-product
+         :content-language:accept-language:in-reply-to:references:message-id
+         :date:thread-index:thread-topic:to:from;
+        bh=JiOENqEGwZ0VwIxuaQJE5qjhFBRs2h4k0ibwOSY2oHQ=;
+        b=gQViI+wGSuIhpvZcIai+lQsNsly5u/7blj6fAunlMEKe6tPDVLDwD8dGSYbYW195qt
+         oVJ7GuyC1LKvpgW5pVNhmbULltrtGHv/58ZA0dt35JoVgb9guW9pwmDjKXeT3mOYTHD3
+         7t8zZ7F4qWz5EUiQTGFQH47vXiasUccjs95qC4Kr3TWRo7uNRpAemZ5lGsQk+gsD14ny
+         G+p2KeK9oujjAmeJCV9kmx65+5f2lbfch5qGZ5Rb5rcfR2QYe+7xazxmTd+LRD/5XRBk
+         EGoT+mZ2jAP3nTNrVQtcnXDrAY8rEfSHQG2aPXuBXORDuYEoqw/F94IkRJU57zwiPaWV
+         rcsA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="O/GWG1vm";
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id y21sor49900042pfm.25.2019.07.31.13.38.23
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o5si19421905eju.390.2019.07.31.16.24.41
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 31 Jul 2019 13:38:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 31 Jul 2019 16:24:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="O/GWG1vm";
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=6IeFtwkeZbBPVLT5Rmllb3ExAsBhlKcdIq9EZhAeEOQ=;
-        b=O/GWG1vm0GYyFApT/JUxE06dQDg+BEu9I0fKzi/ASPf07ZtfGyq9opJRL4dUai0mux
-         eU7ruZSdfVcqEFARLpd/rSUmTwckk6nwb8nEx09lZUMw99HBKO7ZeodlseN5m6Rsr3uH
-         NrJCjDhHmDoLZ0APwwhUsUPv0BXorZcsVjzb4X8rp0Vub3WO2fZmfMpt/MeMbSi39hYo
-         zPFdo3VDUCJGRtpohDA9p0gKBcFPkEJE5pFVj5dQBsuncOG22hO78T6DZi9w8HYcIYLh
-         11FEbIo2DltQXa5cvKMr0mba9j8LftBQuF1tPblPELqpKDxUdJa+QXO4ifV0+230SU8d
-         fR6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=6IeFtwkeZbBPVLT5Rmllb3ExAsBhlKcdIq9EZhAeEOQ=;
-        b=VLPHE8xjTnqoDpaoQH2okb9wK+U9QUrTTgWCFCWz2fi/TFZO050nU/ICy1Zph2AwQN
-         y8lDdlLJc36Q8weggpGj3PVSBw0NvqQ++aOPM3cJMawslul3cG+2hJrsDa6ae2hUT5ao
-         0xtwSyxkpCxtwY0RBunHbQTBcuIWNVGGhXVD/M/61sgscuae7lyc63AcXCAE7tCPkUGO
-         b+MCv43gR0OOe6wsyg76gds1UMIfs21oGmPAeJwlOURGgp3sonq+NWQLByMlQSQr+mIE
-         qJllA8o6D7ODXsdDT35SNdcuV71FMRFCet86PrgOKbe+yYzYtQHvFmVu2czJTsmv03Ui
-         ENAw==
-X-Gm-Message-State: APjAAAXRTPFZNShN9cfMHrXoIeUBRhgxUrZb6pYxHidYbNqwbiUynxju
-	WuCORQX0jY9lCMENVi0WLQuAdYA1jxACvw==
-X-Google-Smtp-Source: APXvYqxPcmvh5VYQWOzxJCBS0y9i2ckmXm+3TIue93ewDGEjwJkruVEQcz4UUPsK8Wr2AXnSKzDx1g==
-X-Received: by 2002:a62:2582:: with SMTP id l124mr48886230pfl.43.1564605502801;
-        Wed, 31 Jul 2019 13:38:22 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id g4sm84054164pfo.93.2019.07.31.13.38.21
-        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Wed, 31 Jul 2019 13:38:22 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	alex.bennee@linaro.org,
-	peter.maydell@linaro.org
-Subject: [PATCH v2 06/32] target/arm: Define isar_feature_aa64_vh
-Date: Wed, 31 Jul 2019 13:37:47 -0700
-Message-Id: <20190731203813.30765-7-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190731203813.30765-1-richard.henderson@linaro.org>
-References: <20190731203813.30765-1-richard.henderson@linaro.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1]:45024 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hsxxY-00052O-Ue
+	for alex.bennee@linaro.org; Wed, 31 Jul 2019 19:24:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51614)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <kevin.tian@intel.com>) id 1hsxwZ-000433-VW
+ for qemu-devel@nongnu.org; Wed, 31 Jul 2019 19:23:41 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <kevin.tian@intel.com>) id 1hsxwZ-0001TB-3H
+ for qemu-devel@nongnu.org; Wed, 31 Jul 2019 19:23:39 -0400
+Received: from mga03.intel.com ([134.134.136.65]:5182)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kevin.tian@intel.com>)
+ id 1hsxwY-0001OU-Rj; Wed, 31 Jul 2019 19:23:39 -0400
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga003.jf.intel.com ([10.7.209.27])
+ by orsmga103.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 31 Jul 2019 16:23:30 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,332,1559545200"; d="scan'208";a="174973704"
+Received: from fmsmsx103.amr.corp.intel.com ([10.18.124.201])
+ by orsmga003.jf.intel.com with ESMTP; 31 Jul 2019 16:23:29 -0700
+Received: from fmsmsx115.amr.corp.intel.com (10.18.116.19) by
+ FMSMSX103.amr.corp.intel.com (10.18.124.201) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 31 Jul 2019 16:23:28 -0700
+Received: from shsmsx108.ccr.corp.intel.com (10.239.4.97) by
+ fmsmsx115.amr.corp.intel.com (10.18.116.19) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Wed, 31 Jul 2019 16:23:28 -0700
+Received: from shsmsx104.ccr.corp.intel.com ([169.254.5.112]) by
+ SHSMSX108.ccr.corp.intel.com ([169.254.8.163]) with mapi id 14.03.0439.000;
+ Thu, 1 Aug 2019 07:23:26 +0800
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Auger Eric <eric.auger@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
+Thread-Topic: [PATCH for-4.2 v10 11/15] virtio-iommu: Expose the IOAPIC MSI
+ reserved region when relevant
+Thread-Index: AQHVRvuB+lYfnIqunUiYF7Ql9SMCpqbjCI0AgADC99CAAMu+AIAABW2AgADAzMA=
+Date: Wed, 31 Jul 2019 23:23:26 +0000
+Message-ID: <AADFC41AFE54684AB9EE6CBC0274A5D19CAFD1AF@SHSMSX104.ccr.corp.intel.com>
+References: <20190730172137.23114-1-eric.auger@redhat.com>
+ <20190730172137.23114-12-eric.auger@redhat.com>
+ <20190730153628-mutt-send-email-mst@kernel.org>
+ <AADFC41AFE54684AB9EE6CBC0274A5D19CAF8E1B@SHSMSX104.ccr.corp.intel.com>
+ <20190731151834-mutt-send-email-mst@kernel.org>
+ <95de34e9-1b1a-3eff-cebb-ee146e9acc78@redhat.com>
+In-Reply-To: <95de34e9-1b1a-3eff-cebb-ee146e9acc78@redhat.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ctpclassification: CTP_NT
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiNDQ3ZTA0ZTktNDgwNC00ZjcwLWFkZjgtMDNkMTI3YTM5ZmNiIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoib2lZR0hYWkZqbStORFBUdktsdldMU0wweTVNV3FHMlZMNThETzVnTmRBVjM3elVEbHIrclJvTTVcL1B2RUI0WFIifQ==
+dlp-product: dlpe-windows
+dlp-version: 11.0.400.15
+dlp-reaction: no-action
+x-originating-ip: [10.239.127.40]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: PM383OP2qdjk
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 134.134.136.65
+Subject: Re: [Qemu-devel] [PATCH for-4.2 v10 11/15] virtio-iommu: Expose the
+ IOAPIC MSI reserved region when relevant
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "tn@semihalf.com" <tn@semihalf.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "peterx@redhat.com" <peterx@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "bharat.bhushan@nxp.com" <bharat.bhushan@nxp.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UrtnCJCci9hF
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu.h | 5 +++++
- 1 file changed, 5 insertions(+)
-
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 94c990cddb..e6a76d14c6 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3573,6 +3573,11 @@ static inline bool isar_feature_aa64_sve(const ARMISARegisters *id)
-     return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, SVE) != 0;
- }
- 
-+static inline bool isar_feature_aa64_vh(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, VH) != 0;
-+}
-+
- static inline bool isar_feature_aa64_lor(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, LO) != 0;
--- 
-2.17.1
+PiBGcm9tOiBBdWdlciBFcmljIFttYWlsdG86ZXJpYy5hdWdlckByZWRoYXQuY29tXQ0KPiBTZW50
+OiBUaHVyc2RheSwgQXVndXN0IDEsIDIwMTkgMzo0NSBBTQ0KPiANCj4gSGkgTWljaGFlbCwNCj4g
+DQo+IE9uIDcvMzEvMTkgOToyNSBQTSwgTWljaGFlbCBTLiBUc2lya2luIHdyb3RlOg0KPiA+IE9u
+IFR1ZSwgSnVsIDMwLCAyMDE5IGF0IDExOjIwOjQ0UE0gKzAwMDAsIFRpYW4sIEtldmluIHdyb3Rl
+Og0KPiA+Pj4gRnJvbTogTWljaGFlbCBTLiBUc2lya2luIFttYWlsdG86bXN0QHJlZGhhdC5jb21d
+DQo+ID4+PiBTZW50OiBXZWRuZXNkYXksIEp1bHkgMzEsIDIwMTkgMzozOCBBTQ0KPiA+Pj4NCj4g
+Pj4+IE9uIFR1ZSwgSnVsIDMwLCAyMDE5IGF0IDA3OjIxOjMzUE0gKzAyMDAsIEVyaWMgQXVnZXIg
+d3JvdGU6DQo+ID4+Pj4gV2UgaW50cm9kdWNlIGEgbmV3IG1zaV9ieXBhc3MgZmllbGQgd2hpY2gg
+aW5kaWNhdGVzIHdoZXRoZXINCj4gPj4+PiB0aGUgSU9BUElDIE1TSSB3aW5kb3cgWzB4RkVFMDAw
+MDAgLSAweEZFRUZGRkZGXSBtdXN0IGJlIGV4cG9zZWQNCj4gPj4NCj4gPj4gaXQncyBub3QgZ29v
+ZCB0byBjYWxsIGl0IElPQVBJQyBNU0kgd2luZG93LiBhbnkgd3JpdGUgdG8gdGhpcyByYW5nZSwg
+ZWl0aGVyDQo+ID4+IGZyb20gSU9BUElDIG9yIFBDSSBkZXZpY2UsIGlzIGludGVycHJldGVkIGJ5
+IHRoZSBwbGF0Zm9ybSBhcyBpbnRlcnJ1cHQNCj4gPj4gcmVxdWVzdC4gSSdkIGNhbGwgaXQgIng4
+NiBpbnRlcnJ1cHQgYWRkcmVzcyByYW5nZSIuDQo+ID4NCj4gPiBJc24ndCB0aGlzIEFQSUNfREVG
+QVVMVF9BRERSRVNTPyBJJ20gbm90IHN1cmUgZ3Vlc3RzIGNhbid0IGNoYW5nZSBpdA0KPiA+IGV2
+ZW4gdGhvdWdoIEknbSBub3Qgc3VyZSBxZW11IHN1cHBvcnRzIGNoYW5naW5nIGl0Lg0KPiANCj4g
+VGhhdCdzIGluZGVlZCBtYXRjaGluZzoNCj4gDQo+ICNkZWZpbmUgQVBJQ19ERUZBVUxUX0FERFJF
+U1MgMHhmZWUwMDAwMA0KPiAjZGVmaW5lIEFQSUNfU1BBQ0VfU0laRSAgICAgIDB4MTAwMDAwDQo+
+IA0KDQpUaGV5IGFyZSBkaWZmZXJlbnQgdGhpbmcsIHRob3VnaCB2YWx1ZSBtYXRjaGVzLiBBUElD
+IGRlZmF1bHQgYWRkcmVzcw0KaXMgdGhlIG1lbW9yeS1tYXBwZWQgcmVnaW9uIGZvciBzb2Z0d2Fy
+ZSB0byBhY2Nlc3MgQVBJQyByZWdpc3Rlci4gSXQNCmNhbiBiZSByZWxvY2F0ZWQgYnkgdGhlIHNv
+ZnR3YXJlLCB3aXRoIGRlZmF1bHQgYXMgMHhmZWUwMDAwMC4gT24gdGhlDQpvdGhlciBoYW5kLCB0
+aGUgaW50ZXJydXB0IGFkZHJlc3MgcmFuZ2UgaXMgZm9yIHJvb3QgY29tcGxleCB0byBpbnRlcnBy
+ZXQNCmludGVycnVwdCBtZXNzYWdlIGZyb20gZGV2aWNlcy4gWW91IGNhbiBsb29rIGF0IEludGVs
+IFNETSAzQSwgMTAuMTENCk1lc3NhZ2UgU2lnbmFsbGVkIEludGVycnVwdHMsIHdoZXJlIHRoZSBt
+ZXNzYWdlIGFkZHJlc3MgcmVnaXN0ZXINCmZvcm1hdCBpcyBkZWZpbmVkIHdpdGggMHhmZWUgYXMg
+dGhlIGhhcmQgcHJlZml4Lg0KDQpUaGFua3MNCktldmluDQo=

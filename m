@@ -1,192 +1,200 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6071442wrv;
-        Wed, 31 Jul 2019 13:38:42 -0700 (PDT)
-X-Received: by 2002:a62:8f91:: with SMTP id n139mr8503000pfd.48.1564605522835;
-        Wed, 31 Jul 2019 13:38:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564605522; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6071462wrv;
+        Wed, 31 Jul 2019 13:38:44 -0700 (PDT)
+X-Received: by 2002:a17:902:9b94:: with SMTP id y20mr121977987plp.260.1564605524071;
+        Wed, 31 Jul 2019 13:38:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564605524; cv=none;
         d=google.com; s=arc-20160816;
-        b=O2+9Gs2dSIMBHZL5wUCVUI8B992Lt7B3i3iPy/VXCynzvitkIaXOZ0smjikp5KEEdI
-         92Jg+hYfN4VXz5yHxhnbbZMePTb7fhlEGPLf2JVFPV5nslrdtBeoeXb8+FcFsnRZNOyD
-         dnQtiLxfJMdBZS7F6UyyIIbAsKSm7mEXj8XYu6LOsnAEWwz1Jgw+E+hbowWI99NkNpjB
-         51TK8j3Z3Fc2V6bcWtVK0yr1aD8L1tA44UmNozJhBSdvUgG1Ilno4LMKAYnZjcF9GQcz
-         0CenSxvphk2mp75woHCrAIZhsDZ0ouy3LfhhIKxOor85gdV033GzrhnQyZbycan2XeOY
-         zTWQ==
+        b=Ap5OIOpiW7oovnGB5w4CwYQz2RmDCH5nutRYTe+NhW4F3eybjvPCa+W11sFLorBmkO
+         4BC5VlbV4NRue3yv/eMUAu7crHmoLDUKHMR0GwReycneyD+nvu2HpjQzmGyCn1GVonrO
+         V8qT0WYfbFe/27cgjymI9pWlgYoWjOMq3Fc3MN6Rr7UVGU5q0+4LpUW4442z3hz8twH+
+         fUyBvDFrHgeOK5tYk4Nf5OivwA/GfgcCBpswSz71Tl4BDtrGGv/Es9mnFPieudisYlMS
+         Vwo4IJvcuOKGLxWUo11tKK5y0Pn96Nt+uiM/+SslcMtgrEtDECyC3UzbejNiZjwRYGH1
+         G8Zw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=F8zJJPz0HoAAcPGItYsG98fn3EhRGHL9/KSAWCPhxyQ=;
-        b=p1fWD2NDS37faXTrB7jz61juG316TCUEDE3rprHtvOkrhGVvLJfCjPJ9LDHXquyEmU
-         /qVLlwxlPuN2xEKNIK96Lp/AlbJyNmk9YYPh5z2+NEboDJniyX/oeNt2kJnE+xkBBaDn
-         ag9JJHAmm763XhrLgGGOwkLiIZ6wRRi3ApL227IS/TzpMFDRBySVTubCTAO0/MAjaiom
-         doxVhH9JWmTjYX9ej/wJHEOUEHpNSRa7zko8RtONchMZIHNZuzonWZqBSxm7qQFmi63l
-         BVRN90M4rXriQtu2YXyx/y1HavDofW3kx6/LqXOeNQEgNjUiDMN0vAspB+5eY2JsLA81
-         bFwg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=gkdd1xo9dAf4K2ZLEThkLYxs4H8KbbboSDJfUHi98zc=;
+        b=XlH15fqyJiGNujWFpht+zYGbUA3c5Kb5UoRUy6hCqp0kAk8bToI8FXRa0hYDljMZSp
+         4gO9WF9JfiXHcdQS7at2014iS4Tmw4/FPUX4Hevq+ZApPavZWUDfwuPssjbS6SCZdQXv
+         EsXCEsQxuC/yJgTEZOmpdjeY8DzhvQFr56ygR+HbM7y1IbOf8NrrC+yWFjxLKYFZHAUY
+         5x1bkQWcbiIGehGERLt8BCS5vzzIQitlP8acRDduOS/kCgaTdw47DVCtbEZRyGhIrW1D
+         pdh66OQR1US6+2CY/Wl3UXYcZi0F96FSHKFjCKPgzL9UPYMTAC+tLMvm6nmS9sBfTzRs
+         KK6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Kdwl74B6;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZDbaISIZ;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id 142sor46089916pge.7.2019.07.31.13.38.42
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id a3sor50499055pfo.61.2019.07.31.13.38.43
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 31 Jul 2019 13:38:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Wed, 31 Jul 2019 13:38:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Kdwl74B6;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZDbaISIZ;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=F8zJJPz0HoAAcPGItYsG98fn3EhRGHL9/KSAWCPhxyQ=;
-        b=Kdwl74B6/jWmsEEKylVhNh+FnEqvpfAEzIn2lRU1DV+O/n0aqloQ5a9vX12Kj+4j+a
-         AhFLTo/SkoMoEZu0dPjijScKjTXgFHIreIjwOGrdEpw/a8TLIsXUs8BT66ED9TnXbzYe
-         VuK58p3XkTOTfylmbJXdoHnsQkMk0JfAw3i8+dCotxAOcyZ3+WxrhPH5Y08pZ1xUdH6d
-         VcGvyaF2775EPpVE1zlsbEJjPZwCAOwagUCd9m9Q1DmZ+W7jA25BCPeyS9hzI+wDedeq
-         IsqL8bubc932Lws41JBLO2MTvydw/Bz8l12PPTb7Hxfkw9MctKDI6qdeZ+ZTcRXvAoae
-         clgg==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=gkdd1xo9dAf4K2ZLEThkLYxs4H8KbbboSDJfUHi98zc=;
+        b=ZDbaISIZ3zgNqxZlEnpBUY3V2zdR9HW9CR1WHtGeWAaHAYFzmG1zEiUvprFlqdWgBF
+         OoDezKag3b/3idd6mx+ISvn38e2INhCTTjhgRgA+fb6OzEVxk99vZjc/n6f2Fkrtt4MP
+         NdvOAY9UqpPnTLAdnqnZmP01d4tCo5Nr8TW04LgZrHetRTTiu8Xjt6e2i9kNZVlrDjRp
+         QaxgMB3oG/u5BZp4G516V1v9Mh3ICvJJQTvv3F4m1EQn/ME1w9Cxsl83+cUjn0UQJEIu
+         U0hyfSgyExKgrah2yP6hc33PXurZbRsvoO3umB0UXjfv16/TJZde8QSaqIVi5NEce9Wb
+         HZEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=F8zJJPz0HoAAcPGItYsG98fn3EhRGHL9/KSAWCPhxyQ=;
-        b=avXL2FrE6cBHB+r2A9KLr9onaneRQFS8JdPq7jWX13hqLsER2+8Y19V2XaHZUWg493
-         gPWgX5k5rt4yHP0A9k6deklNt+442TqdUwg4xu9enQ6yksFPx5huy3QexSz3mg+WGcrq
-         AcDGfDk8tKIMV9ZVtU298Mv3vAhGWiFY88zWiwQp0Wi6ZDIin7frmuutZ6LPt0o0rLKZ
-         KEDx7ZNj1I1+ZhYUBjqOSnu2bfbid1Mn+0/pEHkeFuxKnpVC8Ic4NltnzaxwqHajChSI
-         CVRfTfJFEztv2AYdrv7dcHsDskkltU7q/h66by/awGIhdTI8y52KmFxNtIyksWPhyzA1
-         vgBw==
-X-Gm-Message-State: APjAAAXJJ86Poa8n+hUkMzr+Fkj9KAkonxnyYg5a2LppPpwxJHg1ckh0
-	34TencSNgf9I/NVf/kLym5FOSiUPwzww5Q==
-X-Google-Smtp-Source: APXvYqzMfdfh+XWUeoxyr1jeHDBR6hkx2nkKxbcKB8o5LdXGl98IHaupUed4PR2GNMK8i22Pfx8bLg==
-X-Received: by 2002:a63:7c0d:: with SMTP id x13mr75531824pgc.360.1564605522335;
-        Wed, 31 Jul 2019 13:38:42 -0700 (PDT)
+         :references:mime-version:content-transfer-encoding;
+        bh=gkdd1xo9dAf4K2ZLEThkLYxs4H8KbbboSDJfUHi98zc=;
+        b=kRPLbY/dH9zOvk2wnPOBum1XG+no/MAfWxqU3ci8vKlNYcYRPFDFBw223I7FFg08wn
+         aAxDuhgSLXUf1Fq4IL+cYw6z16cmfkOU/7hnHp7KdZBUa/OUG8qayio1TD91cFIsLC8A
+         ECjFilKqHCJQQN+ylQR6rN69INham8dunW7z3RSgbivccP/FWMU6G4qyLafjgbXrT0es
+         LrHDoBIOo2aZreMJDPp/CXMLFFscw1sRiLGE3QysgCWmVdpE9dSYTTbCUFWgZc3gFzKK
+         qyBr+8Zh3cLejSok00fyt7t096zt3L+f1Fz05Uh2QiMqKfS3+GbQ16A1dmmathw9c+F6
+         oztg==
+X-Gm-Message-State: APjAAAU4UyqMHOvPouv5jVPhjXeulpE6/t58R3QTQ5uZXUlfh3Y7uU09
+	kPk3Bb1WFGcHyOMnNc/V/vGycG2E
+X-Google-Smtp-Source: APXvYqxI9PkBPDFz1O+ZDnSIrP/QU7NtnsaAm7mvEC2zO8tOn+kFG6lKJgv2UTEXdcZ5Uzot5HIbqw==
+X-Received: by 2002:a62:198d:: with SMTP id 135mr48906850pfz.169.1564605523502;
+        Wed, 31 Jul 2019 13:38:43 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id g4sm84054164pfo.93.2019.07.31.13.38.41
+        by smtp.gmail.com with ESMTPSA id g4sm84054164pfo.93.2019.07.31.13.38.42
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Wed, 31 Jul 2019 13:38:41 -0700 (PDT)
+        Wed, 31 Jul 2019 13:38:42 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v2 22/32] target/arm: Add regime_has_2_ranges
-Date: Wed, 31 Jul 2019 13:38:03 -0700
-Message-Id: <20190731203813.30765-23-richard.henderson@linaro.org>
+Subject: [PATCH v2 23/32] target/arm: Update arm_mmu_idx for VHE
+Date: Wed, 31 Jul 2019 13:38:04 -0700
+Message-Id: <20190731203813.30765-24-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190731203813.30765-1-richard.henderson@linaro.org>
 References: <20190731203813.30765-1-richard.henderson@linaro.org>
-X-TUID: ikrAb57/jWNR
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: fQW2xBYxzJrJ
 
+This covers initial generation in arm_mmu_idx, and reconstruction
+in core_to_arm_mmu_idx.  As a conseqeuence, we also need a bit in
+TBFLAGS in order to make the latter reliable.
+
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h     | 16 ++++++++++++++++
- target/arm/helper.c        | 22 +++++-----------------
- target/arm/translate-a64.c |  3 +--
- 3 files changed, 22 insertions(+), 19 deletions(-)
+ target/arm/cpu.h    |  2 ++
+ target/arm/helper.c | 42 +++++++++++++++++++++++++++++++-----------
+ 2 files changed, 33 insertions(+), 11 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index dd0bc4377f..1b64ceeda6 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -824,6 +824,22 @@ static inline void arm_call_el_change_hook(ARMCPU *cpu)
-     }
- }
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index b5300f9014..64cda8dbea 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3153,6 +3153,8 @@ FIELD(TBFLAG_ANY, PSTATE_SS, 26, 1)
+ /* Target EL if we take a floating-point-disabled exception */
+ FIELD(TBFLAG_ANY, FPEXC_EL, 24, 2)
+ FIELD(TBFLAG_ANY, BE_DATA, 23, 1)
++/* For A profile only, if EL2 is AA64 and HCR_EL2.E2H is set.  */
++FIELD(TBFLAG_ANY, E2H, 22, 1)
  
-+/* Return true if this address translation regime has two ranges.  */
-+static inline bool regime_has_2_ranges(ARMMMUIdx mmu_idx)
-+{
-+    switch (mmu_idx) {
-+    case ARMMMUIdx_Stage1_E0:
-+    case ARMMMUIdx_Stage1_E1:
-+    case ARMMMUIdx_EL10_0:
-+    case ARMMMUIdx_EL10_1:
-+    case ARMMMUIdx_EL20_0:
-+    case ARMMMUIdx_EL20_2:
-+        return true;
-+    default:
-+        return false;
-+    }
-+}
-+
- /* Return true if this address translation regime is secure */
- static inline bool regime_is_secure(CPUARMState *env, ARMMMUIdx mmu_idx)
- {
+ /* Bit usage when in AArch32 state: */
+ FIELD(TBFLAG_A32, THUMB, 0, 1)
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 9c2c81c434..5472424179 100644
+index 5472424179..578dcfefbf 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -9006,15 +9006,8 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
+@@ -11257,21 +11257,29 @@ int fp_exception_el(CPUARMState *env, int cur_el)
+ 
+ ARMMMUIdx core_to_arm_mmu_idx(CPUARMState *env, int mmu_idx)
+ {
++    bool e2h;
++
+     if (arm_feature(env, ARM_FEATURE_M)) {
+         return mmu_idx | ARM_MMU_IDX_M;
      }
  
-     if (is_aa64) {
--        switch (regime_el(env, mmu_idx)) {
--        case 1:
--            if (!is_user) {
--                xn = pxn || (user_rw & PAGE_WRITE);
--            }
--            break;
--        case 2:
--        case 3:
--            break;
-+        if (regime_has_2_ranges(mmu_idx) && !is_user) {
-+            xn = pxn || (user_rw & PAGE_WRITE);
-         }
-     } else if (arm_feature(env, ARM_FEATURE_V7)) {
-         switch (regime_el(env, mmu_idx)) {
-@@ -9548,7 +9541,6 @@ ARMVAParameters aa64_va_parameters_both(CPUARMState *env, uint64_t va,
-                                         ARMMMUIdx mmu_idx)
+     mmu_idx |= ARM_MMU_IDX_A;
++    if (mmu_idx & ARM_MMU_IDX_S) {
++        return mmu_idx;
++    }
++
++    e2h = (env->cp15.hcr_el2 & HCR_E2H) != 0;
++    if (!arm_el_is_aa64(env, 2)) {
++        e2h = false;
++    }
++
+     switch (mmu_idx) {
+     case 0 | ARM_MMU_IDX_A:
+-        return ARMMMUIdx_EL10_0;
++        return e2h ? ARMMMUIdx_EL20_0 : ARMMMUIdx_EL10_0;
+     case 1 | ARM_MMU_IDX_A:
+         return ARMMMUIdx_EL10_1;
+     case ARMMMUIdx_E2:
+-    case ARMMMUIdx_SE0:
+-    case ARMMMUIdx_SE1:
+-    case ARMMMUIdx_SE3:
+-        return mmu_idx;
++        return e2h ? ARMMMUIdx_EL20_2 : ARMMMUIdx_E2;
+     default:
+         g_assert_not_reached();
+     }
+@@ -11299,24 +11307,28 @@ ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
+ 
+ ARMMMUIdx arm_mmu_idx(CPUARMState *env)
  {
-     uint64_t tcr = regime_tcr(env, mmu_idx)->raw_tcr;
--    uint32_t el = regime_el(env, mmu_idx);
-     bool tbi, tbid, epd, hpd, using16k, using64k;
-     int select, tsz;
++    bool e2h, sec;
+     int el;
  
-@@ -9558,7 +9550,7 @@ ARMVAParameters aa64_va_parameters_both(CPUARMState *env, uint64_t va,
-      */
-     select = extract64(va, 55, 1);
+     if (arm_feature(env, ARM_FEATURE_M)) {
+         return arm_v7m_mmu_idx_for_secstate(env, env->v7m.secure);
+     }
  
--    if (el > 1) {
-+    if (!regime_has_2_ranges(mmu_idx)) {
-         tsz = extract32(tcr, 0, 6);
-         using64k = extract32(tcr, 14, 1);
-         using16k = extract32(tcr, 15, 1);
-@@ -9714,10 +9706,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-         param = aa64_va_parameters(env, address, mmu_idx,
-                                    access_type != MMU_INST_FETCH);
-         level = 0;
--        /* If we are in 64-bit EL2 or EL3 then there is no TTBR1, so mark it
--         * invalid.
--         */
--        ttbr1_valid = (el < 2);
-+        ttbr1_valid = regime_has_2_ranges(mmu_idx);
-         addrsize = 64 - 8 * param.tbi;
-         inputsize = 64 - param.tsz;
-     } else {
-@@ -11368,8 +11357,7 @@ void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-             ARMVAParameters p0 = aa64_va_parameters_both(env, 0, stage1);
-             int tbii, tbid;
++    sec = arm_is_secure_below_el3(env);
++    e2h = (env->cp15.hcr_el2 & HCR_E2H) != 0;
++    if (!arm_el_is_aa64(env, 2)) {
++        e2h = false;
++    }
++
+     el = arm_current_el(env);
+     switch (el) {
+     case 0:
+-        /* TODO: ARMv8.1-VHE */
++        return sec ? ARMMMUIdx_SE0 : e2h ? ARMMMUIdx_EL20_0 : ARMMMUIdx_EL10_0;
+     case 1:
+-        return (arm_is_secure_below_el3(env)
+-                ? ARMMMUIdx_SE0 + el
+-                : ARMMMUIdx_EL10_0 + el);
++        return sec ? ARMMMUIdx_SE1 : ARMMMUIdx_EL10_1;
+     case 2:
+-        /* TODO: ARMv8.1-VHE */
+         /* TODO: ARMv8.4-SecEL2 */
+-        return ARMMMUIdx_E2;
++        return e2h ? ARMMMUIdx_EL20_2 : ARMMMUIdx_E2;
+     case 3:
+         return ARMMMUIdx_SE3;
+     default:
+@@ -11428,6 +11440,14 @@ void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
  
--            /* FIXME: ARMv8.1-VHE S2 translation regime.  */
--            if (regime_el(env, stage1) < 2) {
-+            if (regime_has_2_ranges(mmu_idx)) {
-                 ARMVAParameters p1 = aa64_va_parameters_both(env, -1, stage1);
-                 tbid = (p1.tbi << 1) | p0.tbi;
-                 tbii = tbid & ~((p1.tbid << 1) | p0.tbid);
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index dbe2189e51..06ff3a7f2e 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -175,8 +175,7 @@ static void gen_top_byte_ignore(DisasContext *s, TCGv_i64 dst,
-     if (tbi == 0) {
-         /* Load unmodified address */
-         tcg_gen_mov_i64(dst, src);
--    } else if (s->current_el >= 2) {
--        /* FIXME: ARMv8.1-VHE S2 translation regime.  */
-+    } else if (!regime_has_2_ranges(s->mmu_idx)) {
-         /* Force tag byte to all zero */
-         tcg_gen_extract_i64(dst, src, 0, 56);
-     } else {
+     flags = FIELD_DP32(flags, TBFLAG_ANY, MMUIDX, arm_to_core_mmu_idx(mmu_idx));
+ 
++    /*
++     * Include E2H in TBFLAGS so that core_to_arm_mmu_idx can
++     * reliably determine E1&0 vs E2&0 regimes.
++     */
++    if (arm_el_is_aa64(env, 2) && (env->cp15.hcr_el2 & HCR_E2H)) {
++        flags = FIELD_DP32(flags, TBFLAG_ANY, E2H, 1);
++    }
++
+     /* The SS_ACTIVE and PSTATE_SS bits correspond to the state machine
+      * states defined in the ARM ARM for software singlestep:
+      *  SS_ACTIVE   PSTATE.SS   State
 -- 
 2.17.1

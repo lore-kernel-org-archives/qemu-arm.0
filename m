@@ -1,255 +1,164 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5395270wrv;
-        Wed, 31 Jul 2019 02:06:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw8vWkibvccTpcynxqr1HZPc7g0cw9q52wPCUv2DxrbcRlbgf0lCkKRyGUDDHb4l0nceCR6
-X-Received: by 2002:a37:b0c3:: with SMTP id z186mr79359964qke.178.1564563981221;
-        Wed, 31 Jul 2019 02:06:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564563981; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5408568wrv;
+        Wed, 31 Jul 2019 02:18:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxGPDmbwcWEkKgnlipX9wyfdnKX6qQtnVHb6H+ysZNUW2p1g7n078IYRyuceaVINZZYUH/l
+X-Received: by 2002:a05:620a:16dc:: with SMTP id a28mr14039927qkn.200.1564564706156;
+        Wed, 31 Jul 2019 02:18:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564564706; cv=none;
         d=google.com; s=arc-20160816;
-        b=CBcERt1tneDfVJY/wxk9rVJ4E7B8Q7C5kncectpZ5doU07z+W6toI/h+iFklnK8qQh
-         D+RntDRPA9YKGyXddCVJ+4UB+wosJKlq3F6W1BeM9106QPZwoNBdeEuOmv3dgkoa5VOZ
-         jLr+Fsgl76hmbHBwMrKeXjZGlANQDjZGpLEKvNxkcqA7etz1D5cWj06IYgp7m6iydp5I
-         s/HThWiTatkNxlrL/NKAoPBE8IaBx4jqzXFiPaBu2zZMyht08FDAdXOKpxrcRngoGfMS
-         Wwvu7tC7NolMrnCMBScLjyJofI7juHv+sEgmJXLD/wq4WNgWfOR3DUd7djbb0W524RJ2
-         FsVA==
+        b=zXC9MDKKCf3Bv2lBbqLohknjqeaa+Ec6U0T0nb8SMQcMMPyuoh89tBUuZ3ziX92njb
+         QlGw45G31ynKPdFibs/pAhc1RhL/Hs+cNwWgIHRDH2V+vcWMIHX9L3Y7lZS8PY8ovlWa
+         /6ZxPLtXe6YPHKJkV0aYHOFDnmzGHpD8n702AEqdtqsm+l8WT6Jd7Dq2EUcYDf0SQD+f
+         Tawx8E4PYFzlftkUAbIu5WsmkilHCEJCn1W+XNZ6vvaoKsn1RURFugNPQbcgaWz+vUNg
+         Pby8xNv7Ibs3ag2HxeIrRgYflenOJoxbiap2lOJeEAZiv0Ezdmbbi0ywZOI987eWrIBf
+         /k5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:references:to:from;
-        bh=6V1PiMD2GyIVmtAprYo6eEAmBaQJPWyKN1zG7WizqOA=;
-        b=pMeV1V2BdN6Gyit9ky3/3cnx6uBPgSKBEYe1vIWTuxj7QzZivtTNic/IBaOJUqRBRD
-         wlELDTUv3V13DurCNYkDH/51MwqLY+4P59eOGDI8xKmi0aBFWulWl9stzF86tXeTkym1
-         igYsmpUGpAUPyvnPzBfd6UTjMKSNdD3a13JJFOdrYSicCQo8UHrIKWGb7f6Vdlz1ULaB
-         vFPnnERgC2tEsbJHShNfOFJxyWqEjwoPejHMJhgI4LkDaCJUuauwhrDZEnyUxZNK8hqN
-         qwy9KKUMHMjDl4/iLdaXD2AIIhr1IiUCX6SJU446VbHTurHumz/sTY2V9fOGHf70T9iP
-         7CCg==
+         :list-unsubscribe:list-id:precedence:subject:message-id
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:to:from:date;
+        bh=xwmUzhP86If6FMoZXx/kimgni9Mln5EHwZpWJMcT4tw=;
+        b=ioZJHBodJDe5vphhf3yy2acl4Np6tUj80X4kjDqZBCB/d2eRKJEmDCQlI+a4Vq85Qo
+         j5jWgT7zbWwbZCjb8ZVAFMECkW8c+iiSoVp1waAGeFkQPKwB6xGonN/SQYCQEhYXNo1X
+         y8VS7mSmR08+s4TtwW24dMKm9oL1YtY3L82I7xNGl5jRg9n1q3K3PZsaZMJLz1r0We7e
+         ywy2rDCeyJMOaWHgUfXrjGsh0GUjfvlKvoa1eKaxzh7lCLyZRD9T7zCOnY/u28mq7wOC
+         zcv5qYjpY7wsjnFOs5SJv02n2T2aiX3PmUEwBBme8Q2oGDtnNuvSuL2Je3YlKI5V4+RK
+         d1Lg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 15si1960146qvh.95.2019.07.31.02.06.21
+        by mx.google.com with ESMTPS id 7si36735316qke.65.2019.07.31.02.18.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Jul 2019 02:06:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 31 Jul 2019 02:18:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39140 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:39216 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hskYu-0002xl-PT
-	for alex.bennee@linaro.org; Wed, 31 Jul 2019 05:06:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55532)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hskkb-0000do-Om
+	for alex.bennee@linaro.org; Wed, 31 Jul 2019 05:18:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58825)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <eric.auger@redhat.com>) id 1hskYp-0002xf-Iu
- for qemu-arm@nongnu.org; Wed, 31 Jul 2019 05:06:16 -0400
+ (envelope-from <daniel@linux.ibm.com>) id 1hskk9-0000Dy-S0
+ for qemu-devel@nongnu.org; Wed, 31 Jul 2019 05:17:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1hskYo-0000za-9g
- for qemu-arm@nongnu.org; Wed, 31 Jul 2019 05:06:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55176)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1hskYo-0000zE-18; Wed, 31 Jul 2019 05:06:14 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (envelope-from <daniel@linux.ibm.com>) id 1hskk8-00072D-U4
+ for qemu-devel@nongnu.org; Wed, 31 Jul 2019 05:17:57 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:35928
+ helo=mx0a-001b2d01.pphosted.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <daniel@linux.ibm.com>)
+ id 1hskk8-000719-Nd
+ for qemu-devel@nongnu.org; Wed, 31 Jul 2019 05:17:56 -0400
+Received: from pps.filterd (m0098421.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x6V92BK8032503
+ for <qemu-devel@nongnu.org>; Wed, 31 Jul 2019 05:17:56 -0400
+Received: from e06smtp01.uk.ibm.com (e06smtp01.uk.ibm.com [195.75.94.97])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2u37g4aaq7-1
+ (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
+ for <qemu-devel@nongnu.org>; Wed, 31 Jul 2019 05:17:55 -0400
+Received: from localhost
+ by e06smtp01.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ Violators will be prosecuted
+ for <qemu-devel@nongnu.org> from <daniel@linux.ibm.com>;
+ Wed, 31 Jul 2019 10:17:53 +0100
+Received: from b06cxnps4076.portsmouth.uk.ibm.com (9.149.109.198)
+ by e06smtp01.uk.ibm.com (192.168.101.131) with IBM ESMTP SMTP Gateway:
+ Authorized Use Only! Violators will be prosecuted; 
+ (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
+ Wed, 31 Jul 2019 10:17:49 +0100
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com
+ (b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
+ by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ x6V9HmgD53477458
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 31 Jul 2019 09:17:49 GMT
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id E1AFAA405B;
+ Wed, 31 Jul 2019 09:17:48 +0000 (GMT)
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 8C451A4054;
+ Wed, 31 Jul 2019 09:17:48 +0000 (GMT)
+Received: from ozlabs.au.ibm.com (unknown [9.192.253.14])
+ by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Wed, 31 Jul 2019 09:17:48 +0000 (GMT)
+Received: from volution.fritz.box (unknown [9.102.40.183])
+ (using TLSv1.2 with cipher AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 52AC84E924;
- Wed, 31 Jul 2019 09:06:13 +0000 (UTC)
-Received: from [10.36.116.49] (ovpn-116-49.ams2.redhat.com [10.36.116.49])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 78187600D1;
- Wed, 31 Jul 2019 09:05:59 +0000 (UTC)
-From: Auger Eric <eric.auger@redhat.com>
-To: "Tian, Kevin" <kevin.tian@intel.com>, "Michael S. Tsirkin" <mst@redhat.com>
-References: <20190730172137.23114-1-eric.auger@redhat.com>
- <20190730172137.23114-12-eric.auger@redhat.com>
- <20190730153628-mutt-send-email-mst@kernel.org>
- <AADFC41AFE54684AB9EE6CBC0274A5D19CAF8E1B@SHSMSX104.ccr.corp.intel.com>
-Message-ID: <4677dac9-3131-bcbb-f147-28ddba552ff2@redhat.com>
-Date: Wed, 31 Jul 2019 11:05:57 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by ozlabs.au.ibm.com (Postfix) with ESMTPSA id CDA98A0224;
+ Wed, 31 Jul 2019 19:17:44 +1000 (AEST)
+Date: Wed, 31 Jul 2019 19:17:40 +1000
+From: Daniel Black <daniel@linux.ibm.com>
+To: qemu-devel@nongnu.org, Tao Xu <tao3.xu@intel.com>
+In-Reply-To: <20190731084034.9498-1-daniel@linux.ibm.com>
+References: <20190731084034.9498-1-daniel@linux.ibm.com>
+Organization: IBM
+X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <AADFC41AFE54684AB9EE6CBC0274A5D19CAF8E1B@SHSMSX104.ccr.corp.intel.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.38]); Wed, 31 Jul 2019 09:06:13 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH for-4.2 v10 11/15] virtio-iommu: Expose the
- IOAPIC MSI reserved region when relevant
-X-BeenThere: qemu-arm@nongnu.org
+X-TM-AS-GCONF: 00
+x-cbid: 19073109-4275-0000-0000-000003525522
+X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
+x-cbparentid: 19073109-4276-0000-0000-000038634408
+Message-Id: <20190731191740.58e474cc@volution.fritz.box>
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-07-31_04:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1906280000 definitions=main-1907310096
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.158.5
+Subject: Re: [Qemu-devel] [PATCH] numa: numa nodeid need not be sequential
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "tn@semihalf.com" <tn@semihalf.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "peterx@redhat.com" <peterx@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "bharat.bhushan@nxp.com" <bharat.bhushan@nxp.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iXvqxHjG96kD
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Leif Lindholm <leif.lindholm@linaro.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, "open
+ list:sPAPR" <qemu-ppc@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +ALu406QiR+o
 
-Hi Kevin, Michael,
 
-On 7/31/19 1:20 AM, Tian, Kevin wrote:
->> From: Michael S. Tsirkin [mailto:mst@redhat.com]
->> Sent: Wednesday, July 31, 2019 3:38 AM
->>
->> On Tue, Jul 30, 2019 at 07:21:33PM +0200, Eric Auger wrote:
->>> We introduce a new msi_bypass field which indicates whether
->>> the IOAPIC MSI window [0xFEE00000 - 0xFEEFFFFF] must be exposed
-> 
-> it's not good to call it IOAPIC MSI window. any write to this range, either
-> from IOAPIC or PCI device, is interpreted by the platform as interrupt
-> request. I'd call it "x86 interrupt address range".
-Thank you for the clarification. I will reword the commit message as
-suggested.
-> 
->>> as a reserved region. By default the field is set to true at
->>> instantiation time. Later on we will introduce a property at
->>> virtio pci proxy level to turn it off.
->>>
->>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>
->>> ---
->>>
->>> v8 -> v9:
->>> - pass IOAPIC_RANGE_END to virtio_iommu_register_resv_region
->>> - take into account the change in the struct virtio_iommu_probe_resv_mem
->>>   definition
->>> - We just introduce the field here. A property will be introduced later on
->>>   at pci proxy level.
->>> ---
->>>  hw/virtio/virtio-iommu.c         | 36 ++++++++++++++++++++++++++++++++
->>>  include/hw/virtio/virtio-iommu.h |  1 +
->>>  2 files changed, 37 insertions(+)
->>>
->>> diff --git a/hw/virtio/virtio-iommu.c b/hw/virtio/virtio-iommu.c
->>> index 66be9a4627..74038288b0 100644
->>> --- a/hw/virtio/virtio-iommu.c
->>> +++ b/hw/virtio/virtio-iommu.c
->>> @@ -39,6 +39,9 @@
->>>  #define VIOMMU_DEFAULT_QUEUE_SIZE 256
->>>  #define VIOMMU_PROBE_SIZE 512
->>>
->>> +#define IOAPIC_RANGE_START      (0xfee00000)
->>> +#define IOAPIC_RANGE_END        (0xfeefffff)
->>> +
->>>  #define SUPPORTED_PROBE_PROPERTIES (\
->>>      1 << VIRTIO_IOMMU_PROBE_T_RESV_MEM)
->>>
->>
->> Sorry where are these numbers coming from?
-> 
-> this is architecturally defined in x86 SDM.
-> 
->> Does this really work on all platforms?
-> 
-> x86 only. 
-Yes, the initial goal was to allow the x86 integration. Maybe I should allow
-the machine to pass reserved regions as device properties instead.
 
-As integration with pc/q35 is beyond the scope of this initial series,
-maybe I should remove that patch?
+On Wed, 31 Jul 2019 18:40:33 +1000
+Daniel Black <daniel@linux.ibm.com> wrote:
 
-Thanks
+> Replace all nodeid assumptions with lookups in the numa_info array
 
-Eric
-> 
->> With all guests?
-> 
-> yes.
-> 
->>
->>> @@ -100,6 +103,30 @@ static void
->> virtio_iommu_detach_endpoint_from_domain(viommu_endpoint *ep)
->>>      ep->domain = NULL;
->>>  }
->>>
->>> +static void virtio_iommu_register_resv_region(viommu_endpoint *ep,
->>> +                                              uint8_t subtype,
->>> +                                              uint64_t start, uint64_t end)
->>> +{
->>> +    viommu_interval *interval;
->>> +    struct virtio_iommu_probe_resv_mem *resv_reg_prop;
->>> +    size_t prop_size = sizeof(struct virtio_iommu_probe_resv_mem);
->>> +    size_t value_size = prop_size -
->>> +                sizeof(struct virtio_iommu_probe_property);
->>> +
->>> +    interval = g_malloc0(sizeof(*interval));
->>> +    interval->low = start;
->>> +    interval->high = end;
->>> +
->>> +    resv_reg_prop = g_malloc0(prop_size);
->>> +    resv_reg_prop->head.type = VIRTIO_IOMMU_PROBE_T_RESV_MEM;
->>> +    resv_reg_prop->head.length = cpu_to_le64(value_size);
->>> +    resv_reg_prop->subtype = cpu_to_le64(subtype);
->>> +    resv_reg_prop->start = cpu_to_le64(start);
->>> +    resv_reg_prop->end = cpu_to_le64(end);
->>> +
->>> +    g_tree_insert(ep->reserved_regions, interval, resv_reg_prop);
->>> +}
->>> +
->>>  static viommu_endpoint *virtio_iommu_get_endpoint(VirtIOIOMMU *s,
->>>                                                    uint32_t ep_id)
->>>  {
->>> @@ -117,6 +144,12 @@ static viommu_endpoint
->> *virtio_iommu_get_endpoint(VirtIOIOMMU *s,
->>>      ep->reserved_regions =
->> g_tree_new_full((GCompareDataFunc)interval_cmp,
->>>                                              NULL, (GDestroyNotify)g_free,
->>>                                              (GDestroyNotify)g_free);
->>> +    if (s->msi_bypass) {
->>> +        virtio_iommu_register_resv_region(ep,
->> VIRTIO_IOMMU_RESV_MEM_T_MSI,
->>> +                                          IOAPIC_RANGE_START,
->>> +                                          IOAPIC_RANGE_END);
->>> +    }
->>> +
->>>      return ep;
->>>  }
->>>
->>> @@ -822,6 +855,9 @@ static void virtio_iommu_set_status(VirtIODevice
->> *vdev, uint8_t status)
->>>
->>>  static void virtio_iommu_instance_init(Object *obj)
->>>  {
->>> +    VirtIOIOMMU *s = VIRTIO_IOMMU(obj);
->>> +
->>> +    s->msi_bypass = true;
->>>  }
->>>
->>>  static const VMStateDescription vmstate_virtio_iommu = {
->>> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-
->> iommu.h
->>> index f55f48d304..56c8b4e57f 100644
->>> --- a/include/hw/virtio/virtio-iommu.h
->>> +++ b/include/hw/virtio/virtio-iommu.h
->>> @@ -59,6 +59,7 @@ typedef struct VirtIOIOMMU {
->>>      GTree *domains;
->>>      QemuMutex mutex;
->>>      GTree *endpoints;
->>> +    bool msi_bypass;
->>>  } VirtIOIOMMU;
->>>
->>>  #endif
->>> --
->>> 2.20.1
+Tao Xu,
+
+Sorry, only just noticed your patches of the move of numa_info and other
+elements into MachineState. I approve of it. Lets see if I can follow
+all of Igor's comments there too.
+
+I'll be up for a V2 once merged.
+
+Cheers,
+
+Daniel
+

@@ -1,91 +1,160 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5721285wrv;
-        Wed, 31 Jul 2019 07:22:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxHSXyJ2G8+6KUado2NPSv9a6rQ894P9yvjOkhy06Cx0OxLy3ph5f+HcSteHO38j8RvX5/T
-X-Received: by 2002:a37:6d85:: with SMTP id i127mr81060097qkc.74.1564582966393;
-        Wed, 31 Jul 2019 07:22:46 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5794681wrv;
+        Wed, 31 Jul 2019 08:30:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwVP/b8/TxiRuDouOeJ5v9chPbV/SkJALWzEbDw1/NostwOsOvLbJJQg7CKax3fYRICvlNE
+X-Received: by 2002:a0c:b2da:: with SMTP id d26mr88028226qvf.48.1564587004143;
+        Wed, 31 Jul 2019 08:30:04 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q20si39239373qke.380.2019.07.31.07.22.46
+        by mx.google.com with ESMTPS id y17si41430247qth.380.2019.07.31.08.30.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Jul 2019 07:22:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 31 Jul 2019 08:30:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=Y0clnCzh;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41388 helo=lists1p.gnu.org)
+       dkim=neutral (body hash did not verify) header.i=@microsoft.com header.s=selector1 header.b=nI7op8qa;
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41826 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hspV7-00033F-Vm
-	for alex.bennee@linaro.org; Wed, 31 Jul 2019 10:22:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37738)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hsqYF-0001tz-NY
+	for alex.bennee@linaro.org; Wed, 31 Jul 2019 11:30:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56274)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <damien.hedde@greensocs.com>) id 1hspTX-0000V0-N1
- for qemu-arm@nongnu.org; Wed, 31 Jul 2019 10:21:08 -0400
+ (envelope-from <Andrew.Baumann@microsoft.com>) id 1hsqWn-0000vv-Ch
+ for qemu-devel@nongnu.org; Wed, 31 Jul 2019 11:28:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1hspTW-0007T3-MU
- for qemu-arm@nongnu.org; Wed, 31 Jul 2019 10:21:07 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:38428)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1hspTW-0007SM-4g; Wed, 31 Jul 2019 10:21:06 -0400
-Received: from [172.16.11.117] (unknown [172.16.11.117])
- by beetle.greensocs.com (Postfix) with ESMTPSA id F109996F50;
- Wed, 31 Jul 2019 14:21:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1564582864;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=CIx9wnDk9ftdXlP6H4HNfr9G4iy0BtPVqZppcCvc0MM=;
- b=Y0clnCzheLnDW+uiXaKZNuswYUqvIC908J1hOp8ryf7/5J9v45yt09MKQJwh5loWuhwah6
- CWILtJ5Nzp4sqUk5+PsQU/TX9QzcUCU1vfDYXkxdOZrherX+EfReMFuYf6qu1auj3k8oiV
- EpuAeRyu6rGUdFmACcHI+mmu6lk5Lj4=
-From: Damien Hedde <damien.hedde@greensocs.com>
-To: QEMU Developers <qemu-devel@nongnu.org>
-Message-ID: <6ea54e80-63cd-5759-337b-1eb1686453f5@greensocs.com>
-Date: Wed, 31 Jul 2019 16:21:02 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.1
+ (envelope-from <Andrew.Baumann@microsoft.com>) id 1hsqWl-0006Hj-VS
+ for qemu-devel@nongnu.org; Wed, 31 Jul 2019 11:28:33 -0400
+Received: from mail-eopbgr760120.outbound.protection.outlook.com
+ ([40.107.76.120]:23149 helo=NAM02-CY1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <Andrew.Baumann@microsoft.com>)
+ id 1hsqWl-0006GZ-L2; Wed, 31 Jul 2019 11:28:31 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=ORjaQFDd1WFaDMuGIsByHB9ztCfXoftoBEZI8DmrhNKRsSfkwn9sZgn3zMSYqRgDKOaJfZp662v7BilVPpxlqcLFrcGZTd7BEYT3ZSRVr63w4fiFZWTDpFZZFMIB8IUST+CVP7XcCFiFDANZ8d/VFmdB4f1QY7J1r4WsfNPJ7fPnBltFPLChAXil3FEJY1QEumkacDPKZAmm5Kh5q6rKK7jJeqlUmDXqrrbmO3mzmtH5RyOvu6RNWm7ci6yKJdnd7rlAcRhugytJkkn/s32aqA+BxqfK2xpuL2lhFJgqtcc7r2BUwJDYjTeNC24Stt2aR4o/uVAjk3G2EbbsCB15Hw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=dH7GSOA2q9wXkYgrTOunEFF6rvhlZ8xhsFC2Ti6OsHI=;
+ b=W5a8/F8JDkPkIz1Y+evQye2MogkLCrXeBqX2wuOTVxQFKeWJXj1GnAbFKzG9XrUSoRXe3MpFTf7u16pTNEewpKEW6PtnF7RZgJCQ3WQ9D/RyIlGlRtI73xpCHOW7e64hr5WkaYVXwsrWRoNYau2l3rnM7IvhDTN9wdIgTyOzg5l79zAckWnNtv7l33z2Qjz9fmPMM6zbdueGK+tcreryMDqtNiPsaOtmVysDXjLeJ940HDk316mmQ4khzq0SQmCvc0WCp83+lUDL0NHvQZmQS7NnJiFzfL2GT/vWTfba75YNjX0x0bjLXak0jCi+kiDXpjI66cG808c26cUgRYGAYg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=microsoft.com; dmarc=pass action=none
+ header.from=microsoft.com; dkim=pass header.d=microsoft.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=dH7GSOA2q9wXkYgrTOunEFF6rvhlZ8xhsFC2Ti6OsHI=;
+ b=nI7op8qan0NfOgnkATBvmABOs0G0WjkV9S0SOeR6ozVjdm8HmrhWYIuI2KRvPAFxkr/ScmJea2qubIN/eaHJWC0QLaBf+BIsFtZ4M12UfigLkm+PkYITzX+ZcBFaO60KL0QY0bN63AwJGxyWof4mh4XKUto8vzruDyrHad4MF5Y=
+Received: from CY4PR21MB0278.namprd21.prod.outlook.com (10.173.193.144) by
+ CY4PR21MB0151.namprd21.prod.outlook.com (10.173.189.21) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2157.2; Wed, 31 Jul 2019 15:28:29 +0000
+Received: from CY4PR21MB0278.namprd21.prod.outlook.com
+ ([fe80::e44b:de9d:ef3d:a46d]) by CY4PR21MB0278.namprd21.prod.outlook.com
+ ([fe80::e44b:de9d:ef3d:a46d%4]) with mapi id 15.20.2157.001; Wed, 31 Jul 2019
+ 15:28:29 +0000
+To: Damien Hedde <damien.hedde@greensocs.com>, QEMU Developers
+ <qemu-devel@nongnu.org>, "clement.deschamps@antfield.fr"
+ <clement.deschamps@antfield.fr>
+Thread-Topic: RFC raspberry pi sd-card reset
+Thread-Index: AQHVR6syQqCyH6u8gkCOvSjGlFYBkqbk11ZS
+Date: Wed, 31 Jul 2019 15:28:29 +0000
+Message-ID: <CY4PR21MB0278B2C6EDDA39E6F85DD15C9EDF0@CY4PR21MB0278.namprd21.prod.outlook.com>
+References: <6ea54e80-63cd-5759-337b-1eb1686453f5@greensocs.com>
+In-Reply-To: <6ea54e80-63cd-5759-337b-1eb1686453f5@greensocs.com>
+Accept-Language: en-AU, en-US
+Content-Language: en-AU
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=Andrew.Baumann@microsoft.com; 
+x-originating-ip: [131.107.160.155]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 62c1727e-e2f5-47f9-02a6-08d715cbbd3d
+x-ms-office365-filtering-ht: Tenant
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(4618075)(2017052603328)(7193020);
+ SRVR:CY4PR21MB0151; 
+x-ms-traffictypediagnostic: CY4PR21MB0151:
+x-microsoft-antispam-prvs: <CY4PR21MB0151A373BC990BA62291E39B9EDF0@CY4PR21MB0151.namprd21.prod.outlook.com>
+x-o365-sonar-daas-pilot: True
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-forefront-prvs: 011579F31F
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(4636009)(136003)(376002)(396003)(366004)(39860400002)(346002)(189003)(199004)(6116002)(99286004)(3846002)(14454004)(7736002)(66066001)(22452003)(10290500003)(68736007)(81166006)(81156014)(8676002)(478600001)(86362001)(8936002)(71190400001)(25786009)(52536014)(5660300002)(19627235002)(74316002)(10090500001)(71200400001)(8990500004)(4326008)(7696005)(14444005)(2906002)(54896002)(76176011)(9686003)(316002)(26005)(256004)(186003)(6246003)(91956017)(76116006)(53546011)(66476007)(102836004)(66946007)(66446008)(6506007)(64756008)(66556008)(486006)(53936002)(11346002)(446003)(33656002)(476003)(229853002)(2501003)(55016002)(6436002)(110136005)(54906003);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:CY4PR21MB0151;
+ H:CY4PR21MB0278.namprd21.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; MX:1; A:1; 
+received-spf: None (protection.outlook.com: microsoft.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: aYVQ0AQppYX6NvV803CE/jtvhQJcBQ1uN9vOLWGN0HElyIBbU8TFRjiXv42C0Aj49g/kg+hdfIcG/Xj/xYrhL9cxwwAW0GeyisKSxjIgTrC7LC16BpoAoRfb/9g4+EsTI/BY0c9mY4Zy+psVY7zogml1KTmR3+x5m30PhLpWD8h+k+ro5ZbLeZC+6D3LP5u26E2cbpKc7GYlWarLs7pKU64jJZ8Vv103ntsN4LgQCDz3ClNjCINuwTlY+RG863ZC3kYKeDbJQD/QSrjzSR1x+bQXLQB7XHCmshLayjocpaRU+M9e6VRTFUXVPj66n93dc60OOl4f81CJqRu9Ht7dvw9Oj8AOqbn8RwktR8jKX5E8bM5KhyAD09rNwl/XjomrJUxUDwCFFuEWW4cUZPlMOkVaGBtcgL0pGWEpX+Rbhpg=
+x-ms-exchange-transport-forked: True
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US-large
-Content-Transfer-Encoding: 7bit
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1564582864;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=CIx9wnDk9ftdXlP6H4HNfr9G4iy0BtPVqZppcCvc0MM=;
- b=wJ0grTRADndZKLn8vEEkpRTuqgEcz9oiHc5v7uTVRAZHli41NYYMAmPN1kucZGyBOSa1g6
- UJZ8mVt7Okpi2Vj2zrZZWqgy2f1lDXqKw1HMdJtnWyXaLe+7qLUhMTronLUu/dudZXrSZa
- 3g6SDsVQHvat8tJRkR+SfINVa7E/BDQ=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564582864; a=rsa-sha256; cv=none;
- b=MSvXQ8Qik1H1dtitCw+iFXeGmi49irVrFbnAqYD85AIJGRR4/bToVbM/07SjGBVcKaYqQM
- ef9LKrjSU1xZ11pLtUfO8vPiqQbYc9tAZI0Yj49e3wd6oJ8+CrQESuDRa7Pz1w2KPKn2SI
- R5Ei0RYvzD/8pBpfArLCFY7fz+YxhWo=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 5.135.226.135
-Subject: [Qemu-arm] RFC raspberry pi sd-card reset
-X-BeenThere: qemu-arm@nongnu.org
+X-OriginatorOrg: microsoft.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 62c1727e-e2f5-47f9-02a6-08d715cbbd3d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Jul 2019 15:28:29.0792 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 72f988bf-86f1-41af-91ab-2d7cd011db47
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: uhMb3j5F707ghkWQQdQKALniRHVaEbL0zNiad2cR6UVrInxOOl1y16g0taGpuKFPNzBl75CFsnPcbB70GMJgwA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR21MB0151
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 40.107.76.120
+Content-Type: text/plain; charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+X-Content-Filtered-By: Mailman/MimeDel 2.1.23
+Subject: Re: [Qemu-devel] RFC raspberry pi sd-card reset
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+From: Andrew Baumann via Qemu-devel <qemu-devel@nongnu.org>
+Reply-To: Andrew Baumann <Andrew.Baumann@microsoft.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- f4bug@amsat.org, Andrew.Baumann@microsoft.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oHyypPHT90mD
+ "f4bug@amsat.org" <f4bug@amsat.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Vba40v45jrzN
+
+Hi,
+
+
+
+(Sorry for top-posting, just wanted to give you some quick context.)
+
+
+
+The Pi-specific quirk here is that there are two different SD controllers o=
+n the board, both accessing the same card, where only one can be used at a =
+time. IIRC Clement Deschamps added this reparenting logic to accomplish tha=
+t when he implemented the second SD controller. I can=92t give you a concre=
+te suggestion, but =93initialize the platform with the sd-card at the right=
+ initial place=94 is not really viable given that the right place changes d=
+epending on GPIO programming by the guest.
+
+
+
+Andrew
+
+
+
+________________________________
+From: Damien Hedde <damien.hedde@greensocs.com>
+Sent: Wednesday, July 31, 2019 7:21:02 AM
+To: QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>; Andrew Baumann <Andrew.Bauman=
+n@microsoft.com>; f4bug@amsat.org <f4bug@amsat.org>; qemu-arm <qemu-arm@non=
+gnu.org>
+Subject: RFC raspberry pi sd-card reset
 
 Hi,
 
@@ -112,7 +181,8 @@ sdhci-bus. More precisely the bcm2835_gpio reset method does it (the
 sd-card can be mapped on bcm2835-sdhost-bus or sdhci-bus depending on
 bcm2835_gpio registers, reset configuration corresponds to the sdhci-bus).
 
-Reset call order is the following (it follows children-before-parent order):
+Reset call order is the following (it follows children-before-parent order)=
+:
  1 sd-card
  2 sd-bus
  3 bcm2835_gpio -> move the sd-card

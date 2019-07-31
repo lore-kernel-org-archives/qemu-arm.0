@@ -1,81 +1,82 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5254705wrv;
-        Tue, 30 Jul 2019 23:34:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyb69Xoju9djTwWp4hQEq0mVwnt+XR0ICk3aUdp0S/ReeaklKfpvu4TREMHOe42F9Li2zkt
-X-Received: by 2002:a50:aa14:: with SMTP id o20mr105963384edc.165.1564554866703;
-        Tue, 30 Jul 2019 23:34:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564554866; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5254715wrv;
+        Tue, 30 Jul 2019 23:34:27 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyMBt2RwBqNVeel1WVhvpLQwUp6mzX9b0W8Owwmjd5JW1VF4JRTyn7kgw8n15y/34EmVDoY
+X-Received: by 2002:ac8:124c:: with SMTP id g12mr23414430qtj.57.1564554867144;
+        Tue, 30 Jul 2019 23:34:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564554867; cv=none;
         d=google.com; s=arc-20160816;
-        b=QrgChmP3plb+TqZcN6+rK00xbbqLvZqXJ/UtDpaj4tK2FNDU8lEJtGm/pVX7FG0Ckl
-         mHuJHocO/8z07ijNFtVh+oL94OK4OSxdoYaB0iMHprc/v7nfOjobMn/o4x8OkNQ62NMT
-         Fm7+rZYXsiAxyNiCsLIqOjRpXa6ZU450TGREi55Y53OSPcdm6Xd2YjOMhiTnfBcAxdrf
-         T/ZgH/NV+kxXOS2CcUATXjEIRx15RTyNIBQqc+2ASrbw+4seC1ulFic8rzPrlZ8bo/O0
-         dJtidJ/CCH/r6waLz5k1/vzqokdz+OuErdFLytV0X8sslkYm7KU4IoEoQ74CmhioP8T4
-         05PA==
+        b=Z0Jfaj8lwSmzQsCRsPMseu0o7aFqaiCPXMfWr/RgklwevfZGm/9aiOimrO1ztXOSsV
+         kv7P9iAM6ImtGX2Ouu1ZEWsh6QiHuDnTpuU2IKUkL/Wb1bgcLRK2OQd9lArxsX+r/go4
+         cMh9+yqwksWSueBZgTKOgFd2DzgyxEUzX/n3B0cFcLrJxZZfnXpg8CaWepmZ7nYktJA/
+         dFsG9rBDA9aUoy+AAuRQ7lsKP0E1ULU9mhV9XJuqf+9ItqNKPuwexauki6TYTxFF1/EB
+         YQlnwIJFu+dwGE/biy4m5z4KQdTLwl8V/o89NfY3InxtXQi1zJGqh5/6y3exCIzhUkrZ
+         PH2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :dkim-signature;
-        bh=cdz364aCZQ1/cEQbxXo+zscT4lxVTQyEMRylGtI79Fg=;
-        b=jMglw7W9CNdF6lfCiWLULKLY6OM2gRWaX8uYldjS/xrSOJ43IBv+1KsnfQVRclKTJP
-         D8A/OSaIB8mavNpvRFahOFaUitIbZMSq9ny+qhniQ8YR0UZ8s9pWsyF7R1oYmjbs1gZB
-         E9BXm8bBM7BQ5ZCYc/3bIP8G4BONh/6dDnGq+ZYLe60/r1y2MQBvOcS0gRWXKqQ4bSdx
-         cIv/BX3j12ctuCXo8AckAFOIPgp/l3xOcBC+WmE+VLgMy2tPncMfUVDJzaSY9xXXjdHU
-         2rvTN+0hitRQtr5esEJG6grKcahVOdVcbM+JCJRXAs7W18xOQaOOJQ2OCkJvD+VzIBwt
-         YAAQ==
+        bh=XTqL1FYvYCAfs59iFmFW5GxgcAsLgv9rl7ChusMW0UM=;
+        b=UVm5Ap/mOM7bh++7Ya5ZYlbC6dNKZvTOpcg8uzXjK/X5dzJgFATy5Am3OyRBIFETJj
+         M2LoI0rWbiiFskSHwmn6hdwUt0/clKkj0OM6n6vgycX1OVLPmKPF3ounz9JT/MaZG4uK
+         /hYRk4KRsjzWKOqWksCieH+Wlp9/aULSzFWeDVhbahw1uicHrXgzC2B6wEewGTFcydUQ
+         qCZqkpUOnXBHK3Xq2cdGsxIHyO6MpROCIEXV6MLsYRKVTYTDaRwBAg2ZTRTH0C2vSvL6
+         4TLDh5wDncffG1UbSuKRUYTpmNvF/uvADYdUpkLXvqYNg3XnjGBB2a4QYEHt5/Yy4UcK
+         KQzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=MXEoMv3p;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=fBmdYlEi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c5si17352090ejz.322.2019.07.30.23.34.26
+        by mx.google.com with ESMTPS id f10si29094143qvh.21.2019.07.30.23.34.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jul 2019 23:34:26 -0700 (PDT)
+        Tue, 30 Jul 2019 23:34:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=MXEoMv3p;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=fBmdYlEi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38242 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38246 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hsiBs-0003nR-Pq
+	id 1hsiBs-0003oO-Ia
 	for alex.bennee@linaro.org; Wed, 31 Jul 2019 02:34:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46520)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45505)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <dgibson@ozlabs.org>) id 1hsiBa-0003VG-RX
- for qemu-arm@nongnu.org; Wed, 31 Jul 2019 02:34:09 -0400
+ (envelope-from <dgibson@ozlabs.org>) id 1hsiBQ-0003OF-8U
+ for qemu-arm@nongnu.org; Wed, 31 Jul 2019 02:33:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1hsiBR-0000f3-4y
- for qemu-arm@nongnu.org; Wed, 31 Jul 2019 02:34:05 -0400
-Received: from ozlabs.org ([203.11.71.1]:58429)
+ (envelope-from <dgibson@ozlabs.org>) id 1hsiBM-0000IV-DY
+ for qemu-arm@nongnu.org; Wed, 31 Jul 2019 02:33:54 -0400
+Received: from bilbo.ozlabs.org ([203.11.71.1]:37505 helo=ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1hsiBQ-0000KO-GW; Wed, 31 Jul 2019 02:33:57 -0400
+ id 1hsiBL-00085S-8V; Wed, 31 Jul 2019 02:33:52 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
- id 45z3Xl0T85z9sN6; Wed, 31 Jul 2019 16:33:42 +1000 (AEST)
+ id 45z3Xk1802z9sMQ; Wed, 31 Jul 2019 16:33:42 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1564554823;
- bh=lhKFUlcqXUWUHnuDUXNCadW3btjJUEJeC4/cXTJe+QQ=;
+ d=gibson.dropbear.id.au; s=201602; t=1564554822;
+ bh=qMhsVxlSWMcTtA/U8kbukBk84nnZwiZSTFwDcLtxMMs=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=MXEoMv3pI5bb7Qoy8jD2Zt1dE9bZVikz1JUiatW+QDy2GxSv3LxsTsCyXxrXMzD47
- bGAGcGj2JQzxKhd7ARSNs3SSOANmr5b9m0kxFNVpVpwzx/t0yxnyd7wFDhcmAYUsLz
- fnUTMn+791Yst2sBlHD/GQcY5Q2CBcKiIalpAIAM=
-Date: Wed, 31 Jul 2019 16:30:44 +1000
+ b=fBmdYlEiL8eqwxfeFIiDzOhPtrkR1VXbJYR1Y+ATTjnJaqf8G9N45Y6JRsKL8w/H+
+ MJeY6UqcWtkEBh2ka5dgyosIpTAQqlxD8XRSjZbEAHvi3knzFE+KMtIYtfeXvj2n/E
+ kOXclISiCfwu5BU/qiwFYKJcq6GX1xG7UFEDjtgI=
+Date: Wed, 31 Jul 2019 15:52:29 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <20190731063044.GG2032@umbus.fritz.box>
+Message-ID: <20190731055229.GB2032@umbus.fritz.box>
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-10-damien.hedde@greensocs.com>
+ <20190729145654.14644-4-damien.hedde@greensocs.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="gm5TwAJMO0F2iVRz"
+ protocol="application/pgp-signature"; boundary="WYTEVAkct0FjGQmd"
 Content-Disposition: inline
-In-Reply-To: <20190729145654.14644-10-damien.hedde@greensocs.com>
+In-Reply-To: <20190729145654.14644-4-damien.hedde@greensocs.com>
 User-Agent: Mutt/1.12.0 (2019-05-25)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 203.11.71.1
-Subject: Re: [Qemu-arm] [PATCH v3 09/33] add doc about Resettable interface
+Subject: Re: [Qemu-arm] [PATCH v3 03/33] Replace all call to device_reset by
+ call to device_legacy_reset
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -99,229 +100,225 @@ Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
  pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Um66Jmz2YOqJ
+X-TUID: 03d08weNiNYA
 
 
---gm5TwAJMO0F2iVRz
+--WYTEVAkct0FjGQmd
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Jul 29, 2019 at 04:56:30PM +0200, Damien Hedde wrote:
+On Mon, Jul 29, 2019 at 04:56:24PM +0200, Damien Hedde wrote:
 > Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+
+I don't see a lot of point keeping this patch separate from the
+previous one.
+
 > ---
->  docs/devel/reset.txt | 165 +++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 165 insertions(+)
->  create mode 100644 docs/devel/reset.txt
+>  hw/audio/intel-hda.c     | 2 +-
+>  hw/hyperv/hyperv.c       | 2 +-
+>  hw/i386/pc.c             | 2 +-
+>  hw/ide/microdrive.c      | 8 ++++----
+>  hw/intc/spapr_xive.c     | 2 +-
+>  hw/ppc/pnv_psi.c         | 2 +-
+>  hw/ppc/spapr_pci.c       | 2 +-
+>  hw/ppc/spapr_vio.c       | 2 +-
+>  hw/s390x/s390-pci-inst.c | 2 +-
+>  hw/scsi/vmw_pvscsi.c     | 2 +-
+>  hw/sd/omap_mmc.c         | 2 +-
+>  hw/sd/pl181.c            | 2 +-
+>  12 files changed, 15 insertions(+), 15 deletions(-)
 >=20
-> diff --git a/docs/devel/reset.txt b/docs/devel/reset.txt
-> new file mode 100644
-> index 0000000000..c7a1eb068f
-> --- /dev/null
-> +++ b/docs/devel/reset.txt
-> @@ -0,0 +1,165 @@
-> +
-> +=3D=3D=3D=3D=3D
-> +Reset
-> +=3D=3D=3D=3D=3D
-> +
-> +The reset of qemu objects is handled using the Resettable interface decl=
-ared
-> +in *include/hw/resettable.h*.
-> +As of now DeviceClass and BusClass implement this interface.
-> +
-> +
-> +Triggering reset
-> +----------------
-> +
-> +The function *resettable_reset* is used to trigger a reset on a given
-> +object.
-> +void resettable_reset(Object *obj, bool cold)
-> +
-> +The parameter *obj* must implement the Resettable interface.
-
-And what happens if it doesn't?  This function has no way to report an
-error.
-
-> +The parameter *cold* is a boolean specifying whether to do a cold or warm
-> +reset
-
-This doc really needs to explain the distinction between cold and warm
-reset.
-
-> +For Devices and Buses there is also the corresponding helpers:
-> +void device_reset(Device *dev, bool cold)
-> +void bus_reset(Device *dev, bool cold)
-
-What's the semantic difference between resetting a bus and resetting
-the bridge device which owns it?
-
-> +If one wants to put an object into a reset state. There is the
-> +*resettable_assert_reset* function.
-> +void resettable_assert_reset(Object *obj, bool cold)
-> +
-> +One must eventually call the function *resettable_deassert_reset* to end=
- the
-> +reset state:
-> +void resettable_deassert_reset(Object *obj, bool cold)
-> +
-> +Calling *resettable_assert_reset* then *resettable_deassert_reset* is the
-> +same as calling *resettable_reset*.
-> +
-> +It is possible to interleave multiple calls to
-> + - resettable_reset,
-> + - resettable_assert_reset, and
-> + - resettable_deassert_reset.
-> +The only constraint is that *resettable_deassert_reset* must be called o=
-nce
-> +per *resettable_assert_reset* call so that the object leaves the reset s=
-tate.
-> +
-> +Therefore there may be several reset sources/controllers of a given obje=
-ct.
-> +The interface handle everything and the controllers do not need to know
-> +anything about each others. The object will leave reset state only when =
-all
-> +controllers released their reset.
-> +
-> +All theses functions must called while holding the iothread lock.
-> +
-> +
-> +Implementing reset for a Resettable object : Multi-phase reset
-> +--------------------------------------------------------------
-> +
-> +The Resettable uses a multi-phase mechanism to handle some ordering cons=
-traints
-> +when resetting multiple object at the same time. For a given object the =
-reset
-> +procedure is split into three different phases executed in order:
-> + 1 INIT: This phase should set/reset the state of the Resettable it has =
-when is
-> +         in reset state. Side-effects to others object is forbidden (suc=
-h as
-> +         setting IO level).
-> + 2 HOLD: This phase corresponds to the external side-effects due to stay=
-ing into
-> +         the reset state.
-> + 3 EXIT: This phase corresponds to leaving the reset state. It have both
-> +         local and external effects.
-> +
-> +*resettable_assert_reset* does the INIT and HOLD phases. While
-> +*resettable_deassert_reset* does the EXIT phase.
-> +
-> +When resetting multiple object at the same time. The interface executes =
-the
-> +given phase of the objects before going to the next phase. This guarante=
-e that
-> +all INIT phases are done before any HOLD phase and so on.
-> +
-> +There is three methods in the interface so must be implemented in an obj=
-ect.
-> +The methods corresponds to the three phases:
-> +```
-> +typedef void (*ResettableInitPhase)(Object *obj);
-> +typedef void (*ResettableHoldPhase)(Object *obj);
-> +typedef void (*ResettableExitPhase)(Object *obj);
-> +typedef struct ResettableClass {
-> +    InterfaceClass parent_class;
-> +
-> +    struct ResettablePhases {
-> +        ResettableInitPhase init;
-> +        ResettableHoldPhase hold;
-> +        ResettableExitPhase exit;
-> +    } phases;
-> +    [...]
-> +} ResettableClass;
-> +```
-> +
-> +Theses methods should be updated when specializing an object. For this t=
-he
-> +helper function *resettable_class_set_parent_reset_phases* can be used to
-> +backup parent methods while changing the specialized ones.
-> +void resettable_class_set_parent_reset_phases(ResettableClass *rc,
-> +                                              ResettableInitPhase init,
-> +                                              ResettableHoldPhase hold,
-> +                                              ResettableExitPhase exit,
-> +
-> +For Devices and Buses, some helper exists to know if a device/bus is und=
-er
-> +reset and what type of reset it is:
-> +```
-> +bool device_is_resetting(DeviceState *dev);
-> +bool device_is_reset_cold(DeviceState *dev);
-
-It's not really clear to me when *_is_reset_cold() would be useful.
-
-> +bool bus_is_resetting(BusState *bus);
-> +bool bus_is_reset_cold(BusState *bus);
-> +```
-> +
-> +
-> +Implementing the base Resettable behavior : Re-entrance, Hierarchy and C=
-old/Warm
-> +------------------------------------------------------------------------=
---------
-> +
-> +There is five others methods in the interface to handle the base mechani=
-cs
-> +of the Resettable interface. The methods should be implemented in object
-> +base class. DeviceClass and BusClass implement them.
-> +
-> +```
-> +typedef bool (*ResettableSetCold)(Object *obj, bool cold);
-> +typedef bool (*ResettableSetHoldNeeded)(Object *obj, bool hold_needed);
-> +typedef uint32_t (*ResettableGetCount)(Object *obj);
-> +typedef uint32_t (*ResettableIncrementCount)(Object *obj);
-> +typedef uint32_t (*ResettableDecrementCount)(Object *obj);
-> +typedef void (*ResettableForeachChild)(Object *obj, void (*visitor)(Obje=
-ct *));
-> +typedef struct ResettableClass {
-> +    InterfaceClass parent_class;
-> +
-> +    [...]
-> +
-> +    ResettableSetCold set_cold;
-> +    ResettableSetHoldNeeded set_hold_needed;
-> +    ResettableGetCount get_count;
-> +    ResettableIncrementCount increment_count;
-> +    ResettableDecrementCount decrement_count;
-> +    ResettableForeachChild foreach_child;
-> +} ResettableClass;
-> +```
-> +
-> +*set_cold* is used when entering reset, before calling the init phase, to
-> +indicate the reset type.
-> +
-> +*set_hold_needed* is used to set/clear and retrieve an "hold_needed" fla=
-g.
-> +This flag allows to omly execute the hold pahse when required.
-> +
-> +As stated above, several reset procedures can be concurrent on an object.
-> +This is handled with the three methods *get_count*, *increment_count* and
-> +*decrement_count*. An object is in reset state if the count is non-zero.
-> +
-> +The reset hierarchy is handled using the *foreach_child* method. This me=
-thod
-> +executes a given function on every reset "child".
-> +
-> +In DeviceClass and BusClass the base behavior is to mimic the legacy qdev
-> +reset. Reset hierarchy follows the qdev/qbus tree.
-> +
-> +Reset control through GPIO
-> +--------------------------
-> +
-> +For devices, two reset inputs can be added: one for the cold, one the wa=
-rm
-> +reset. This is done using the following function.
-> +```
-> +typedef enum DeviceResetActiveType {
-> +    DEVICE_RESET_ACTIVE_LOW,
-> +    DEVICE_RESET_ACTIVE_HIGH,
-> +} DeviceResetActiveType;
-> +void qdev_init_reset_gpio_in_named(DeviceState *dev, const char *name,
-> +                                   bool cold, DeviceResetActiveType type=
-);
-> +```
+> diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
+> index b78baac295..f133684b10 100644
+> --- a/hw/audio/intel-hda.c
+> +++ b/hw/audio/intel-hda.c
+> @@ -1086,7 +1086,7 @@ static void intel_hda_reset(DeviceState *dev)
+>      QTAILQ_FOREACH(kid, &d->codecs.qbus.children, sibling) {
+>          DeviceState *qdev =3D kid->child;
+>          cdev =3D HDA_CODEC_DEVICE(qdev);
+> -        device_reset(DEVICE(cdev));
+> +        device_legacy_reset(DEVICE(cdev));
+>          d->state_sts |=3D (1 << cdev->cad);
+>      }
+>      intel_hda_update_irq(d);
+> diff --git a/hw/hyperv/hyperv.c b/hw/hyperv/hyperv.c
+> index 6ebf31c310..cd9db3cb5c 100644
+> --- a/hw/hyperv/hyperv.c
+> +++ b/hw/hyperv/hyperv.c
+> @@ -140,7 +140,7 @@ void hyperv_synic_reset(CPUState *cs)
+>      SynICState *synic =3D get_synic(cs);
+> =20
+>      if (synic) {
+> -        device_reset(DEVICE(synic));
+> +        device_legacy_reset(DEVICE(synic));
+>      }
+>  }
+> =20
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 549c437050..c0f20fe8aa 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -2823,7 +2823,7 @@ static void pc_machine_reset(MachineState *machine)
+>          cpu =3D X86_CPU(cs);
+> =20
+>          if (cpu->apic_state) {
+> -            device_reset(cpu->apic_state);
+> +            device_legacy_reset(cpu->apic_state);
+>          }
+>      }
+>  }
+> diff --git a/hw/ide/microdrive.c b/hw/ide/microdrive.c
+> index 92ee6e0af8..fc346f5ad5 100644
+> --- a/hw/ide/microdrive.c
+> +++ b/hw/ide/microdrive.c
+> @@ -173,7 +173,7 @@ static void md_attr_write(PCMCIACardState *card, uint=
+32_t at, uint8_t value)
+>      case 0x00:	/* Configuration Option Register */
+>          s->opt =3D value & 0xcf;
+>          if (value & OPT_SRESET) {
+> -            device_reset(DEVICE(s));
+> +            device_legacy_reset(DEVICE(s));
+>          }
+>          md_interrupt_update(s);
+>          break;
+> @@ -316,7 +316,7 @@ static void md_common_write(PCMCIACardState *card, ui=
+nt32_t at, uint16_t value)
+>      case 0xe:	/* Device Control */
+>          s->ctrl =3D value;
+>          if (value & CTRL_SRST) {
+> -            device_reset(DEVICE(s));
+> +            device_legacy_reset(DEVICE(s));
+>          }
+>          md_interrupt_update(s);
+>          break;
+> @@ -541,7 +541,7 @@ static int dscm1xxxx_attach(PCMCIACardState *card)
+>      md->attr_base =3D pcc->cis[0x74] | (pcc->cis[0x76] << 8);
+>      md->io_base =3D 0x0;
+> =20
+> -    device_reset(DEVICE(md));
+> +    device_legacy_reset(DEVICE(md));
+>      md_interrupt_update(md);
+> =20
+>      return 0;
+> @@ -551,7 +551,7 @@ static int dscm1xxxx_detach(PCMCIACardState *card)
+>  {
+>      MicroDriveState *md =3D MICRODRIVE(card);
+> =20
+> -    device_reset(DEVICE(md));
+> +    device_legacy_reset(DEVICE(md));
+>      return 0;
+>  }
+> =20
+> diff --git a/hw/intc/spapr_xive.c b/hw/intc/spapr_xive.c
+> index 3ae311d9ff..22e11ad10c 100644
+> --- a/hw/intc/spapr_xive.c
+> +++ b/hw/intc/spapr_xive.c
+> @@ -1511,7 +1511,7 @@ static target_ulong h_int_reset(PowerPCCPU *cpu,
+>          return H_PARAMETER;
+>      }
+> =20
+> -    device_reset(DEVICE(xive));
+> +    device_legacy_reset(DEVICE(xive));
+> =20
+>      if (kvm_irqchip_in_kernel()) {
+>          Error *local_err =3D NULL;
+> diff --git a/hw/ppc/pnv_psi.c b/hw/ppc/pnv_psi.c
+> index d7b6f5d75b..78eafa353a 100644
+> --- a/hw/ppc/pnv_psi.c
+> +++ b/hw/ppc/pnv_psi.c
+> @@ -703,7 +703,7 @@ static void pnv_psi_p9_mmio_write(void *opaque, hwadd=
+r addr,
+>          break;
+>      case PSIHB9_INTERRUPT_CONTROL:
+>          if (val & PSIHB9_IRQ_RESET) {
+> -            device_reset(DEVICE(&psi9->source));
+> +            device_legacy_reset(DEVICE(&psi9->source));
+>          }
+>          psi->regs[reg] =3D val;
+>          break;
+> diff --git a/hw/ppc/spapr_pci.c b/hw/ppc/spapr_pci.c
+> index 9003fe9010..3c6cf79a5e 100644
+> --- a/hw/ppc/spapr_pci.c
+> +++ b/hw/ppc/spapr_pci.c
+> @@ -2029,7 +2029,7 @@ static int spapr_phb_children_reset(Object *child, =
+void *opaque)
+>      DeviceState *dev =3D (DeviceState *) object_dynamic_cast(child, TYPE=
+_DEVICE);
+> =20
+>      if (dev) {
+> -        device_reset(dev);
+> +        device_legacy_reset(dev);
+>      }
+> =20
+>      return 0;
+> diff --git a/hw/ppc/spapr_vio.c b/hw/ppc/spapr_vio.c
+> index 583c13deda..5a0b5cc35c 100644
+> --- a/hw/ppc/spapr_vio.c
+> +++ b/hw/ppc/spapr_vio.c
+> @@ -306,7 +306,7 @@ int spapr_vio_send_crq(SpaprVioDevice *dev, uint8_t *=
+crq)
+>  static void spapr_vio_quiesce_one(SpaprVioDevice *dev)
+>  {
+>      if (dev->tcet) {
+> -        device_reset(DEVICE(dev->tcet));
+> +        device_legacy_reset(DEVICE(dev->tcet));
+>      }
+>      free_crq(dev);
+>  }
+> diff --git a/hw/s390x/s390-pci-inst.c b/hw/s390x/s390-pci-inst.c
+> index 00235148be..93cda37c27 100644
+> --- a/hw/s390x/s390-pci-inst.c
+> +++ b/hw/s390x/s390-pci-inst.c
+> @@ -242,7 +242,7 @@ int clp_service_call(S390CPU *cpu, uint8_t r2, uintpt=
+r_t ra)
+>                  stw_p(&ressetpci->hdr.rsp, CLP_RC_SETPCIFN_FHOP);
+>                  goto out;
+>              }
+> -            device_reset(DEVICE(pbdev));
+> +            device_legacy_reset(DEVICE(pbdev));
+>              pbdev->fh &=3D ~FH_MASK_ENABLE;
+>              pbdev->state =3D ZPCI_FS_DISABLED;
+>              stl_p(&ressetpci->fh, pbdev->fh);
+> diff --git a/hw/scsi/vmw_pvscsi.c b/hw/scsi/vmw_pvscsi.c
+> index 14641df1c8..cda3fc96a0 100644
+> --- a/hw/scsi/vmw_pvscsi.c
+> +++ b/hw/scsi/vmw_pvscsi.c
+> @@ -835,7 +835,7 @@ pvscsi_on_cmd_reset_device(PVSCSIState *s)
+> =20
+>      if (sdev !=3D NULL) {
+>          s->resetting++;
+> -        device_reset(&sdev->qdev);
+> +        device_legacy_reset(&sdev->qdev);
+>          s->resetting--;
+>          return PVSCSI_COMMAND_PROCESSING_SUCCEEDED;
+>      }
+> diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
+> index d0c98ca021..24a1edc149 100644
+> --- a/hw/sd/omap_mmc.c
+> +++ b/hw/sd/omap_mmc.c
+> @@ -317,7 +317,7 @@ void omap_mmc_reset(struct omap_mmc_s *host)
+>       * into any bus, and we must reset it manually. When omap_mmc is
+>       * QOMified this must move into the QOM reset function.
+>       */
+> -    device_reset(DEVICE(host->card));
+> +    device_legacy_reset(DEVICE(host->card));
+>  }
+> =20
+>  static uint64_t omap_mmc_read(void *opaque, hwaddr offset,
+> diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
+> index 81b406dbf0..15b4aaa67f 100644
+> --- a/hw/sd/pl181.c
+> +++ b/hw/sd/pl181.c
+> @@ -480,7 +480,7 @@ static void pl181_reset(DeviceState *d)
+>      /* Since we're still using the legacy SD API the card is not plugged
+>       * into any bus, and we must reset it manually.
+>       */
+> -    device_reset(DEVICE(s->card));
+> +    device_legacy_reset(DEVICE(s->card));
+>  }
+> =20
+>  static void pl181_init(Object *obj)
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -329,24 +326,24 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---gm5TwAJMO0F2iVRz
+--WYTEVAkct0FjGQmd
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl1BNZEACgkQbDjKyiDZ
-s5LM4w//SL0C4gnI3wMv7jfhk7z2mpqiWd2qrgtrG2CLfc5l0gDrrlTzm7RpRWjj
-Ly/tjC/eWLzMceXGF1787Z7WsXuw7y/0eRcHKuRtB2luKyZ77xF11t02Aj9vUERY
-989b38kmjmOKdPxGuWhcxa/Dk2P6fsDqHuRxofUZfj7f8w8z+ewZfPh/pJEd3q2e
-Atnezbb8JnflvUIGTe+BaXi1Ywhd0Fo5O5aJ1WZdiIohU9vGXK5D5C8GZC9M6OFH
-sSR7JsyAjqIR0L4exq9O9R5V2r+F+1z5BtKNcCQQ+tHgrTGpfKVZMWFBX+BAAG1V
-YDhgdZ8vqBlr3W52Y0nZOuNc1Xwxx2Z9mCkHDqshfB5JJFRl1kI9N45dm6HcX73h
-RqhI22Ox23n4pk5sVNuzkUZ1JLKeoLsLn8GLwnqQkQN4exV+G7fXoSdE+EjEMHi0
-3uc8R/Wjr44KKdt/O3trCH0lJAMKzIWXmV/Emv9Orr/X5svLScE0SRjADaZrKUNf
-2S5YAgk9Xywnmq51CecTRCf594GsYeEGJIKpxlg8ARF/QFjPcigbFIokgjOUVf2R
-D8lhWmsVYg6NDF7eb/4GQnb1f6bD9P4ZkzhWC++9PSg91WcLGpAF95T7FMs/ww7v
-GT/Z8fMFr06/VTzDIYb/lyCkwtxD6LqLC7TEbbBoHSdlunlsTfM=
-=WVZ4
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl1BLJ0ACgkQbDjKyiDZ
+s5LLSBAAqYrK9ATewznLykGq+OVKUVbs5tnYBXoxjMUTezx49kVnyVOuee7cp1zT
+QGYVY2ah9VZHJL40ieBIvhQJsBrPpRG9F0T4jopSkY+Yuyq/lUlhqy7so2cHpFYw
+oD/CjKalD4fZiDxk6vqcQX/+QxgYKNBpIUPIsS0VXaWkyfJ7SBpd+PYKH/oTxlV+
+I+GqSB/9xi2zdES15L/9yO1LruyXy5uP99Q4n34rFhCkU/I0Lz1rEa5UgHw8xMnm
+KmN92GF7wgnjaJBsTJI+0/d4uteACyL+X0Q58GGHp+TekXjPzApL3Ypd9qcPi4yB
+uF6E7XJGAOIQH2B9Go0snRMSREo7p8mZTeli5sDfSYcCh0powPl4TkMTW/16+5Fw
+RT/ynJjHBQf10N/aMrXsB90GolRLlJa6HT+1zaZ3Kmu+QkYMKuS2Cj3UA2vJENsS
+Ur08bQeR6mTJasGSgfwPSDO4gGzIM3ZjCyRHDPadmSdIpaA85p7uplnGBDo/eK4H
+b46HZ0IfDkFDEEEXEL3oqUCFXDn5m/gz3hPv6vg4Ks0oxVssoncOG/hprsJUNH5k
+fpBvWgHwSQxyf1smU2kEboJkM+kStaxmuRSDm67pklcElTlF10PxXaEWea5tJvKM
+lR4CS78fE8mkKqnwtvJz9mXMwfS0bf3nFCbgk3UaN0QptLoLfcU=
+=2+j4
 -----END PGP SIGNATURE-----
 
---gm5TwAJMO0F2iVRz--
+--WYTEVAkct0FjGQmd--

@@ -1,133 +1,109 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6071182wrv;
-        Wed, 31 Jul 2019 13:38:22 -0700 (PDT)
-X-Received: by 2002:a17:902:42a5:: with SMTP id h34mr126042223pld.16.1564605502006;
-        Wed, 31 Jul 2019 13:38:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564605502; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6071199wrv;
+        Wed, 31 Jul 2019 13:38:23 -0700 (PDT)
+X-Received: by 2002:a63:4185:: with SMTP id o127mr4496424pga.82.1564605503213;
+        Wed, 31 Jul 2019 13:38:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564605503; cv=none;
         d=google.com; s=arc-20160816;
-        b=OV2kZEiTIbNhTBl3jpLvMWCJ9MzztHTbEsoI5ToHMQY0FGmPLfUgNwrPW6JR5H80Vz
-         eXLzvrQ2sMoKB9i/ud7ildZ67c2nOEnztyRHCU482cClCFVQwOS4fUZPc6YbmfXlp2AA
-         TPoZheFOZAToQA28TMUxczzMzuJIBYcB7AjCsveYpVf/MwMOrLB1idVpVOul3F6W2Hnb
-         VKP4kr80L2Bp58pRsU5VBM2VwJ5iRanDxCZ+9SF16VEcptH78VAAxvL8lBP9NcxpyP26
-         QuGkXtK9MuTTIFCRkUVEZ5vTKkr3whowxrfjmygbCFJHPqzPRnDOr/5BPHqfuG4ATbsp
-         Vhew==
+        b=RvE0nmJqnbJI+Oz24x0lBHzVmyNY9KwS8EZRqp3HVs6CyHhEJQG2LXPYfUYCpSxFVO
+         3XxWZQKxsVs/8/nGi6lyEFlAh70PfWb/SJI3U9P3UhrHcjv4xeG/WS0clCtusKzlAQZo
+         +MOHgLPrQZfcqMxiCUCImNkPGywLGZ4g//7QmXL/s5jX+gUFWdPIObAfq/QXeiAFd6yH
+         8lF0tIUD2lFQ+Td55cEDMIypTVd7ZbFgFHRkFpl8GW/wat0C2a1/QBcQEBMAmeK4sPs3
+         3E9tfZaL2m4Ln8hkTFhrlG664wqae5/24qhhNCq/9womn5BQ3VrlJJhv8i7UhnpM/ITZ
+         QG3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=hV2eslCkM9+11E22XGBDo1tPxuDz+vxwGvc3iXR5Q+U=;
-        b=Z0y3xIf+axT3jTHUqTN0g8iHcqYncptfSgd/J77+coxrwr9YBN/mj0MoYlfTNvQUCu
-         SKaujuaEhNR8/rFujO4SLuhKJVy2v2F10lYwtwhTKlUbv7spFmvosSSLkSh5ritTWu/O
-         KpW2FthWv7nf7YqDgcwzVPDmQKoF/c/hOzXxBi56CCgXzi+zgrgPz4g+V8w3JR2McEHL
-         Ap9qOPRCb2U7rRKZPKoGIPiCjII5zuBi/QDLpALacBG62U0TKCnaEt21TKkVrIFvCaMF
-         BKmZYpiRdV4cV+KsvNcdw7UR9gkpFd9wrqffOum3aY4PIA1DFbZgPD7LFIWS1tXVSsx4
-         xKQA==
+        bh=6IeFtwkeZbBPVLT5Rmllb3ExAsBhlKcdIq9EZhAeEOQ=;
+        b=0Fs2QQ+uoJbN7ddJ/giArL8ohiWbP8KpOhL72vT5SnS7hcyLHxK764wpNVeEN9rdWI
+         2fYq0BIFao+5RxL5DGaXw5gw6eqhnSPW0qG0KN5T/FGYj4tLeAZ/MB+houI3xy3Yecto
+         480+kswYxij6Mfk9yUtybSkOr++3lTbxnGYAEK1JECOPnmJkgxzNbdi7syXWDbyeiIWl
+         GeFuXNnqespLzCa4fI9AjifB6bSp5DstwFOtnLY+5tIpaox0OfGarY9UMjupCwsJM5xv
+         YPH0qVkAz/E7EE1nXfpFs6lwnHjWBJnRrrv1dbsjNxV361hexv2jpge2xxQgEfM8ksVo
+         TLPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QNmCPw3G;
+       dkim=pass header.i=@linaro.org header.s=google header.b="O/GWG1vm";
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id o11sor84171887plk.18.2019.07.31.13.38.21
+        by mx.google.com with SMTPS id y21sor49900042pfm.25.2019.07.31.13.38.23
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 31 Jul 2019 13:38:21 -0700 (PDT)
+        Wed, 31 Jul 2019 13:38:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QNmCPw3G;
+       dkim=pass header.i=@linaro.org header.s=google header.b="O/GWG1vm";
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=hV2eslCkM9+11E22XGBDo1tPxuDz+vxwGvc3iXR5Q+U=;
-        b=QNmCPw3GCuujd8LoT8j4bsCJSixD7op8PTLgNifr81NcecAEkA9d/fNMyHEA/3bPl1
-         EiN7CzYJbcBQAHqYrBVOkNpnJWkTqJSNeZ+rlLVnDTfVsYVqMi6Yoj/q7Dvy59N7Vgtz
-         mJka6IEPmGDCnUAb0ogeiP7XOzvbfjiupgMvRLVzS9MFGibnBjtyq+RPH6PzaiZzP+VN
-         KDXE/qyFcvcXMHouwvNzY+Y6OKs/Dgp3aL0sDLLFm9HyDLG9FbXMbXOeCD2ysmSluVLi
-         DXlO9v5a31ollQGNny6RsqgeupPNNtM234csP23pUHdMX+760AQ4e/E23fAmqvMfbJjl
-         DLAg==
+        bh=6IeFtwkeZbBPVLT5Rmllb3ExAsBhlKcdIq9EZhAeEOQ=;
+        b=O/GWG1vm0GYyFApT/JUxE06dQDg+BEu9I0fKzi/ASPf07ZtfGyq9opJRL4dUai0mux
+         eU7ruZSdfVcqEFARLpd/rSUmTwckk6nwb8nEx09lZUMw99HBKO7ZeodlseN5m6Rsr3uH
+         NrJCjDhHmDoLZ0APwwhUsUPv0BXorZcsVjzb4X8rp0Vub3WO2fZmfMpt/MeMbSi39hYo
+         zPFdo3VDUCJGRtpohDA9p0gKBcFPkEJE5pFVj5dQBsuncOG22hO78T6DZi9w8HYcIYLh
+         11FEbIo2DltQXa5cvKMr0mba9j8LftBQuF1tPblPELqpKDxUdJa+QXO4ifV0+230SU8d
+         fR6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=hV2eslCkM9+11E22XGBDo1tPxuDz+vxwGvc3iXR5Q+U=;
-        b=QUcqwuNZUVedJEk4wRDzZ3rqDGt9c/N3l91wo+oADQF93/VNgHqUyH0aKsJggl8EQA
-         ZQKbd3VQvN00kHMSsdtrwf5M59Qlh38n/bCPM3nFrMb+gg85g8scKEfsBfHzgSBM5o1r
-         UXWfNjEQbiCnl8/mjNDUFXtbtWRFads0/55D4lZAyEg7fPE1uByDeCyy/B4ZjcLYEJes
-         59beIMoiwkSsdzUVCbI5m6mJXuqxYvMGfrgGiQg3FX9ij7M18SDv9TqvKG0a6m+xqvO1
-         rxuf2n1dYv0TzJw8q1AIwe3599mKSJixA0aquHSKkM5U12eoZNLVuSyeyygM6bn+VRqS
-         5cHw==
-X-Gm-Message-State: APjAAAUEO1k2AOFaqTmydwpq/LvUtXoJrawoWK/Mdob3upgMQEA3VZcM
-	28h26drDJwbg6QWXxPRzTIJVee+r
-X-Google-Smtp-Source: APXvYqxOiDSAeJ+RBMLE5SPQtY//yIxMGzLsjoYBWLyI3JToLrJ4Or80Gl67YMLSVzHF3NPv+CWSVA==
-X-Received: by 2002:a17:902:aa8a:: with SMTP id d10mr124813523plr.154.1564605501580;
-        Wed, 31 Jul 2019 13:38:21 -0700 (PDT)
+        bh=6IeFtwkeZbBPVLT5Rmllb3ExAsBhlKcdIq9EZhAeEOQ=;
+        b=VLPHE8xjTnqoDpaoQH2okb9wK+U9QUrTTgWCFCWz2fi/TFZO050nU/ICy1Zph2AwQN
+         y8lDdlLJc36Q8weggpGj3PVSBw0NvqQ++aOPM3cJMawslul3cG+2hJrsDa6ae2hUT5ao
+         0xtwSyxkpCxtwY0RBunHbQTBcuIWNVGGhXVD/M/61sgscuae7lyc63AcXCAE7tCPkUGO
+         b+MCv43gR0OOe6wsyg76gds1UMIfs21oGmPAeJwlOURGgp3sonq+NWQLByMlQSQr+mIE
+         qJllA8o6D7ODXsdDT35SNdcuV71FMRFCet86PrgOKbe+yYzYtQHvFmVu2czJTsmv03Ui
+         ENAw==
+X-Gm-Message-State: APjAAAXRTPFZNShN9cfMHrXoIeUBRhgxUrZb6pYxHidYbNqwbiUynxju
+	WuCORQX0jY9lCMENVi0WLQuAdYA1jxACvw==
+X-Google-Smtp-Source: APXvYqxPcmvh5VYQWOzxJCBS0y9i2ckmXm+3TIue93ewDGEjwJkruVEQcz4UUPsK8Wr2AXnSKzDx1g==
+X-Received: by 2002:a62:2582:: with SMTP id l124mr48886230pfl.43.1564605502801;
+        Wed, 31 Jul 2019 13:38:22 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id g4sm84054164pfo.93.2019.07.31.13.38.20
+        by smtp.gmail.com with ESMTPSA id g4sm84054164pfo.93.2019.07.31.13.38.21
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Wed, 31 Jul 2019 13:38:21 -0700 (PDT)
+        Wed, 31 Jul 2019 13:38:22 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v2 05/32] target/arm: Install ASIDs for EL2
-Date: Wed, 31 Jul 2019 13:37:46 -0700
-Message-Id: <20190731203813.30765-6-richard.henderson@linaro.org>
+Subject: [PATCH v2 06/32] target/arm: Define isar_feature_aa64_vh
+Date: Wed, 31 Jul 2019 13:37:47 -0700
+Message-Id: <20190731203813.30765-7-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190731203813.30765-1-richard.henderson@linaro.org>
 References: <20190731203813.30765-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: xfPYkghMq7ad
-
-The VMID is the ASID for the 2nd stage page lookup.
+X-TUID: PM383OP2qdjk
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 26 ++++++++++++++++----------
- 1 file changed, 16 insertions(+), 10 deletions(-)
+ target/arm/cpu.h | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index c0dc76ed41..65e3ffbb43 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -3452,17 +3452,23 @@ static void vmsa_ttbr_el1_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static void vttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                         uint64_t value)
- {
--    ARMCPU *cpu = env_archcpu(env);
--    CPUState *cs = CPU(cpu);
-+    CPUState *cs = env_cpu(env);
-+    int vmid;
- 
--    /* Accesses to VTTBR may change the VMID so we must flush the TLB.  */
--    if (raw_read(env, ri) != value) {
--        tlb_flush_by_mmuidx(cs,
--                            ARMMMUIdxBit_S12NSE1 |
--                            ARMMMUIdxBit_S12NSE0 |
--                            ARMMMUIdxBit_S2NS);
--        raw_write(env, ri, value);
--    }
-+    raw_write(env, ri, value);
-+
-+    /*
-+     * TODO: with ARMv8.1-VMID16, aarch64 must examine VTCR.VS
-+     * (re-evaluating with changes to VTCR) then use bits [63:48].
-+     */
-+    vmid = extract64(value, 48, 8);
-+
-+    /*
-+     * A change in VMID to the stage2 page table (S2NS) invalidates
-+     * the combined stage 1&2 tlbs (S12NSE1 and S12NSE0).
-+     */
-+    tlb_set_asid_for_mmuidx(cs, vmid, ARMMMUIdxBit_S2NS,
-+                            ARMMMUIdxBit_S12NSE1 | ARMMMUIdxBit_S12NSE0);
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 94c990cddb..e6a76d14c6 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -3573,6 +3573,11 @@ static inline bool isar_feature_aa64_sve(const ARMISARegisters *id)
+     return FIELD_EX64(id->id_aa64pfr0, ID_AA64PFR0, SVE) != 0;
  }
  
- static const ARMCPRegInfo vmsa_pmsa_cp_reginfo[] = {
++static inline bool isar_feature_aa64_vh(const ARMISARegisters *id)
++{
++    return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, VH) != 0;
++}
++
+ static inline bool isar_feature_aa64_lor(const ARMISARegisters *id)
+ {
+     return FIELD_EX64(id->id_aa64mmfr1, ID_AA64MMFR1, LO) != 0;
 -- 
 2.17.1

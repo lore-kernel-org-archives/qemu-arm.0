@@ -1,81 +1,81 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5398784wrv;
-        Wed, 31 Jul 2019 02:09:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy0dUjIvcvdZUvjlPZVDNZn3kR+mpuCnH6amketsLBuetT8WbTB4dqIwXeAGu5NtkBEfsJI
-X-Received: by 2002:a50:eb96:: with SMTP id y22mr105446807edr.211.1564564158274;
-        Wed, 31 Jul 2019 02:09:18 -0700 (PDT)
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5419615wrv;
+        Wed, 31 Jul 2019 02:29:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxRr6b/+98sHbaMHP/iJi8QmRVVslWN2uzyR6vp43uUfgxw1MPnXw72FNQKEdwJq8xO4RY7
+X-Received: by 2002:a17:906:7d12:: with SMTP id u18mr91866318ejo.24.1564565388203;
+        Wed, 31 Jul 2019 02:29:48 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x11si19779827edm.128.2019.07.31.02.09.18
+        by mx.google.com with ESMTPS id w23si18919476edd.89.2019.07.31.02.29.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Jul 2019 02:09:18 -0700 (PDT)
+        Wed, 31 Jul 2019 02:29:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=w396Mv4l;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=Myy55KeF;
        arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39156 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39310 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hskbl-0004zm-Dd
-	for alex.bennee@linaro.org; Wed, 31 Jul 2019 05:09:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56458)
+	id 1hskvb-0000Nh-AS
+	for alex.bennee@linaro.org; Wed, 31 Jul 2019 05:29:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33822)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <damien.hedde@greensocs.com>) id 1hskbf-0004xZ-5t
- for qemu-arm@nongnu.org; Wed, 31 Jul 2019 05:09:12 -0400
+ (envelope-from <damien.hedde@greensocs.com>) id 1hskvV-0000NH-83
+ for qemu-arm@nongnu.org; Wed, 31 Jul 2019 05:29:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1hskbd-0002z7-V0
- for qemu-arm@nongnu.org; Wed, 31 Jul 2019 05:09:11 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:57706)
+ (envelope-from <damien.hedde@greensocs.com>) id 1hskvU-00040e-5H
+ for qemu-arm@nongnu.org; Wed, 31 Jul 2019 05:29:41 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:58424)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1hskbd-0002xV-D2; Wed, 31 Jul 2019 05:09:09 -0400
+ id 1hskvT-0003zb-Kh; Wed, 31 Jul 2019 05:29:40 -0400
 Received: from [172.16.11.117] (unknown [172.16.11.117])
- by beetle.greensocs.com (Postfix) with ESMTPSA id A571D96F50;
- Wed, 31 Jul 2019 09:09:05 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 96A5696F50;
+ Wed, 31 Jul 2019 09:29:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1564564146;
+ s=mail; t=1564565377;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=EdWJrB74+JJFJQQlRMKyVQ4d1uYy9h5A4h0dfyTSt04=;
- b=w396Mv4lOCzXExBJjBR1gGLh+X/3idvXVjMo+TA3mqI03gBtfmYL1+uiw+GRynYj/S+Hcs
- kcPLRxnllMWtKhw7cdDtpVw4sZctqit9g8GF+fbxa0/B/OF7p9o58/oUEokT11axbayvBH
- rdUkx9/BPbzW8ZSVRN3qBOnb6S/YLEY=
+ bh=kSQAjbqA5TXg43q0JVmvSZNd+foS5vyVzOrBfp+PDgs=;
+ b=Myy55KeFleX9wJmVFLeMeoIzKsXzJj/DPAYVBQth4Fq+a6c0J0bVNvuttjX4lIRpngEeQ6
+ WFI9zuNMXB8QaVdzTXerix2fcRT6Zyypc59ywVY1Th4VRv/KRueMpR9wcUYmhMQM9Tsp8M
+ Z5zWFCikxLJ5Y9eqfhoeotkEApKtl1Q=
 To: David Gibson <david@gibson.dropbear.id.au>
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-5-damien.hedde@greensocs.com>
- <20190731055640.GC2032@umbus.fritz.box>
+ <20190729145654.14644-6-damien.hedde@greensocs.com>
+ <20190731060533.GD2032@umbus.fritz.box>
 From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <98250dc3-c2db-844d-f9f5-46a27488e94f@greensocs.com>
-Date: Wed, 31 Jul 2019 11:09:05 +0200
+Message-ID: <51aa7e6d-3568-8485-4b67-a598a24a1f3d@greensocs.com>
+Date: Wed, 31 Jul 2019 11:29:36 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.1
 MIME-Version: 1.0
-In-Reply-To: <20190731055640.GC2032@umbus.fritz.box>
+In-Reply-To: <20190731060533.GD2032@umbus.fritz.box>
 Content-Type: text/plain; charset=windows-1252
 Content-Language: en-US-large
 Content-Transfer-Encoding: 7bit
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1564564147;
+ s=mail; t=1564565377;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=EdWJrB74+JJFJQQlRMKyVQ4d1uYy9h5A4h0dfyTSt04=;
- b=NODQuPewIpRqwUO/OsuxVXJyq+b5OA+MMPuzKpuPRZlNeOPusqlFFGQQTJuDWcyOkurSPe
- KqPoZu55qDrafmS/jAhGrGihAuzD3s6YwEq2AIbGHHzMO+5Jf/Ca8DWFC+zRgb8KmhjRk7
- reV/JQxVBnAnZmz9k9ozX0vuISrrqow=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564564147; a=rsa-sha256; cv=none;
- b=eePtbpv4XK7vrKMQVIvqKeVdWcYFj7Vejk9UiSK4NcFhl3bouUuXafHXALgu/MQXt9kENO
- TiPBr84TIJBincWhmtHXSoD/O8NQTD27cblsBkoQb+LBG51SuUzizSfbPCb2w0GEaPyxIm
- 3Hm8vqy9Chh1NvwDYBr7a2zzPsV29HY=
+ bh=kSQAjbqA5TXg43q0JVmvSZNd+foS5vyVzOrBfp+PDgs=;
+ b=BYat8WSK2wwrLuymKzxmOuaU+48VQnKbhqFhKd3D/0TFwZdrov0AenLwwDsQ3U+NSzxkru
+ 6fb2qQ9yVDrQM1NvojjnMfptnKFcOQDlZoafG9DQZD/HYPqQr7F6TbdCG2ZggBkGuFEnsx
+ 1fFW9BfBcMip0CADm+eg3DhcGyDNigg=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564565377; a=rsa-sha256; cv=none;
+ b=OogKBj3OvtXeELBZNrnS4sXNv/RJpmueV4tXZIjIi1x3UaW9bhCXUNCIdDvhTm2CKrvfd4
+ EnI2+tW0jMQcWF9OoeuyiiFZoO0IZ6TGhdSl7YhOjX4DnCov/6k3FiNWR68RygszaTla2F
+ ztSPsjqT0I6fzfyles/6XQVIeLacrOU=
 ARC-Authentication-Results: i=1; ORIGINATING;
  auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 5.135.226.135
-Subject: Re: [Qemu-arm] [PATCH v3 04/33] make Device and Bus Resettable
+Subject: Re: [Qemu-arm] [PATCH v3 05/33] Switch to new api in qdev/bus
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -99,127 +99,84 @@ Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
  pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eexMBmOnjcPB
+X-TUID: CZFfC//BKXNj
 
 
 
-On 7/31/19 7:56 AM, David Gibson wrote:
-> On Mon, Jul 29, 2019 at 04:56:25PM +0200, Damien Hedde wrote:
->> This add Resettable interface implementation for both Bus and Device.
->>
->> *resetting* counter and *reset_is_cold* flag are added in DeviceState
->> and BusState.
->>
->> Compatibility with existing code base is ensured.
->> The legacy bus or device reset method is called in the new exit phase
->> and the other 2 phases are let empty. Using the exit phase guarantee that
->> legacy resets are called in the "post" order (ie: children then parent)
->> in hierarchical reset. That is the same order as legacy qdev_reset_all
->> or qbus_reset_all were using.
->>
->> New *device_reset* and *bus_reset* function are proposed with an
->> additional boolean argument telling whether the reset is cold or warm.
->> Helper functions *device_reset_[warm|cold]* and *bus_reset_[warm|cold]*
->> are defined also as helpers.
->>
->> Also add a [device|bus]_is_resetting and [device|bus]_is_reset_cold
->> functions telling respectively whether the object is currently under reset and
->> if the current reset is cold or not.
+On 7/31/19 8:05 AM, David Gibson wrote:
+> On Mon, Jul 29, 2019 at 04:56:26PM +0200, Damien Hedde wrote:
+>> Deprecate old reset apis and make them use the new one while they
+>> are still used somewhere.
 >>
 >> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 >> ---
->>  hw/core/bus.c          | 85 ++++++++++++++++++++++++++++++++++++++++++
->>  hw/core/qdev.c         | 82 ++++++++++++++++++++++++++++++++++++++++
->>  include/hw/qdev-core.h | 84 ++++++++++++++++++++++++++++++++++++++---
->>  tests/Makefile.include |  1 +
->>  4 files changed, 247 insertions(+), 5 deletions(-)
+>>  hw/core/qdev.c         | 22 +++-------------------
+>>  include/hw/qdev-core.h | 28 ++++++++++++++++++++++------
+>>  2 files changed, 25 insertions(+), 25 deletions(-)
 >>
->> diff --git a/hw/core/bus.c b/hw/core/bus.c
->> index 17bc1edcde..08a97addb6 100644
->> --- a/hw/core/bus.c
->> +++ b/hw/core/bus.c
->> @@ -22,6 +22,7 @@
->>  #include "qemu/module.h"
->>  #include "hw/qdev.h"
->>  #include "qapi/error.h"
->> +#include "hw/resettable.h"
->>  
->>  void qbus_set_hotplug_handler(BusState *bus, Object *handler, Error **errp)
->>  {
->> @@ -68,6 +69,75 @@ int qbus_walk_children(BusState *bus,
->>      return 0;
+>> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+>> index 559ced070d..e9e5f2d5f9 100644
+>> --- a/hw/core/qdev.c
+>> +++ b/hw/core/qdev.c
+>> @@ -312,25 +312,9 @@ static void device_foreach_reset_child(Object *obj, void (*func)(Object *))
+>>      }
 >>  }
 >>  
->> +void bus_reset(BusState *bus, bool cold)
->> +{
->> +    resettable_reset(OBJECT(bus), cold);
->> +}
->> +
->> +bool bus_is_resetting(BusState *bus)
->> +{
->> +    return (bus->resetting != 0);
->> +}
->> +
->> +bool bus_is_reset_cold(BusState *bus)
->> +{
->> +    return bus->reset_is_cold;
->> +}
->> +
->> +static uint32_t bus_get_reset_count(Object *obj)
->> +{
->> +    BusState *bus = BUS(obj);
->> +    return bus->resetting;
->> +}
->> +
->> +static uint32_t bus_increment_reset_count(Object *obj)
->> +{
->> +    BusState *bus = BUS(obj);
->> +    return ++bus->resetting;
->> +}
->> +
->> +static uint32_t bus_decrement_reset_count(Object *obj)
->> +{
->> +    BusState *bus = BUS(obj);
->> +    return --bus->resetting;
->> +}
->> +
->> +static bool bus_set_reset_cold(Object *obj, bool cold)
->> +{
->> +    BusState *bus = BUS(obj);
->> +    bool old = bus->reset_is_cold;
->> +    bus->reset_is_cold = cold;
->> +    return old;
->> +}
->> +
->> +static bool bus_set_hold_needed(Object *obj, bool hold_needed)
->> +{
->> +    BusState *bus = BUS(obj);
->> +    bool old = bus->reset_hold_needed;
->> +    bus->reset_hold_needed = hold_needed;
->> +    return old;
->> +}
->> +
->> +static void bus_foreach_reset_child(Object *obj, void (*func)(Object *))
->> +{
->> +    BusState *bus = BUS(obj);
->> +    BusChild *kid;
->> +
->> +    QTAILQ_FOREACH(kid, &bus->children, sibling) {
->> +        func(OBJECT(kid->child));
->> +    }
->> +}
+>> -static int qdev_reset_one(DeviceState *dev, void *opaque)
+>> -{
+>> -    device_legacy_reset(dev);
+>> -
+>> -    return 0;
+>> -}
+>> -
+>> -static int qbus_reset_one(BusState *bus, void *opaque)
+>> -{
+>> -    BusClass *bc = BUS_GET_CLASS(bus);
+>> -    if (bc->reset) {
+>> -        bc->reset(bus);
+>> -    }
+>> -    return 0;
+>> -}
+>> -
+>>  void qdev_reset_all(DeviceState *dev)
+>>  {
+>> -    qdev_walk_children(dev, NULL, NULL, qdev_reset_one, qbus_reset_one, NULL);
+>> +    device_reset(dev, false);
+>>  }
+>>  
+>>  void qdev_reset_all_fn(void *opaque)
+>> @@ -340,7 +324,7 @@ void qdev_reset_all_fn(void *opaque)
+>>  
+>>  void qbus_reset_all(BusState *bus)
+>>  {
+>> -    qbus_walk_children(bus, NULL, NULL, qdev_reset_one, qbus_reset_one, NULL);
+>> +    bus_reset(bus, false);
+>>  }
+>>  
+>>  void qbus_reset_all_fn(void *opaque)
+>> @@ -922,7 +906,7 @@ static void device_set_realized(Object *obj, bool value, Error **errp)
+>>              }
+>>          }
+>>          if (dev->hotplugged) {
+>> -            device_legacy_reset(dev);
+>> +            device_reset(dev, true);
 > 
-> IIUC, every resettable class would need more or less identical
-> implementations of the above.  That seems like an awful lot of
-> boilerplate.
+> So.. is this change in the device_reset() signature really necessary?
+> Even if there are compelling reasons to handle warm reset in the new
+> API, that doesn't been you need to change device_reset() itself from
+> its established meaning of a cold (i.e. as per power cycle) reset.
+> Warm resets are generally called in rather more specific circumstances
+> (often under guest software direction) so it seems likely that users
+> would want to engage with the new reset API directly.  Or we could
+> just create a device_warm_reset() wrapper.  That would also avoid the
+> bare boolean parameter, which is not great for readability (you have
+> to look up the signature to have any idea what it means).
 
-Do you mean the get/increment_count/decrement_count, set_cold/hold part ?
-True, but it's limited to the base classes.
-Since Resettable is an interface, we have no state there to store what
-we need. Only alternative is to have some kind of single
-get_resettable_state method returning a pointer to the state (allowing
-us to keep the functions in the interface code).
-Beyond Device and Bus, which are done here, there is probably not so
-many class candidates for the Resettable interface.
+I've added device_reset_cold/warm wrapper functions to avoid having to
+pass the boolean parameter. it seems I forgot to use them in qdev.c
+I suppose, like you said, we could live with
++ no function with the boolean parameter
++ device_reset doing cold reset
++ device_reset_warm (or device_warm_reset) for the warm version
 
 Damien

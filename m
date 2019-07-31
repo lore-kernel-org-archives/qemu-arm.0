@@ -1,217 +1,162 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6071472wrv;
-        Wed, 31 Jul 2019 13:38:45 -0700 (PDT)
-X-Received: by 2002:a63:2f44:: with SMTP id v65mr113215263pgv.185.1564605525165;
-        Wed, 31 Jul 2019 13:38:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564605525; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6071484wrv;
+        Wed, 31 Jul 2019 13:38:46 -0700 (PDT)
+X-Received: by 2002:a62:b411:: with SMTP id h17mr47156616pfn.99.1564605526205;
+        Wed, 31 Jul 2019 13:38:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564605526; cv=none;
         d=google.com; s=arc-20160816;
-        b=KKvDiHgd02nxZK6JNW1l9vwv0A97R0pGRWwp99Ff8A/TCdr48QX3Xkm8+SrBjVNX0H
-         yetuBKL+54Fm37j/7OhukheKBxaunLtecCTKTNY4aeriW7hFv/38hS4RczyCkYU8quKh
-         WgyquY/m5mpxBinLleqfi28s5bK70Wx3DdlpYIvW+NRG1YOk6aCZ8fqeK78Lg2RqRVJy
-         Ap6l8x8/RwjiBeB0nBk0oif9XqKl/+NdpWpMZjiBoAo1q+Y9Tl5yvBnAs4Y/NZpEZMQb
-         UAT/v5F1GUvli35+mB421bu2RIrhk5gM+/SDevfrd3aWjYlMDiv+zS9eYbtf5kcK55s9
-         TXgg==
+        b=xGtfW3SfRw2dELvlLK9n/5SUr8/+54zIs3+h5llW+5cc32FyajfWk6iuM5XrKbLutq
+         QR2G1GCG98SaO/CZG6ljw9jm3QoESV7WlIEJMlPh1TSTlwAQVigDGIuqxEYfcfTYWHq4
+         Rk+2kVXbz1VEWNoowNtloLR+A6g5n9ymZQ4j617Q12sy7zSpxhUT108xCBtRfJ+10j+K
+         AiRIAMeIiJJBvbilK5MvGCJpJAJQ5mTpLB9BHaJV4cjb3WD9QK8HvDO1FUq24//KfPGl
+         KiLYFzcbbShx12npWQ0SyhtUHRZPcNv0SCI5xqm98S7PhbuPiQgOz8QekMHudrvUB7Vc
+         yx6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ANNHdO/zBUkLNhCgl4wRP8H0y0X0qC4dG7xLb+E0zx4=;
-        b=Bmd2X4BxmyEZW1dbvGpJPri/VPrtaZWH28DihGtbePl39QDbP1dJq68FpMT7OT6S5U
-         1to5zeBETLwdVY4kwXI90P9xW2OKqlnujngHeFNK+xHGG/slpSp4+Pwh0+wk6phme2en
-         P/ejCrcFpRGn/oPqonZsiZY6HiOtraorw18Gl2tQDFYPnn/CquV7jEW6qdFikwMHTSNk
-         Ei7xSIwAX84LXCONYKR128VScp89uxSGtX2e9Ks8sARDaHnlgtYengt6cis33BML+/ib
-         LsoNqdrunn+Kbo9/0iE+pMQCeA+VPEfCuXIlwF6bOYJmvomoh3t8ZtSpWb6yDLFDfphX
-         K1tQ==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=LCePFTUgV8mXAATt2U3SG8TFwN2aa4K3amCrfCCSR5k=;
+        b=QBHeyPWH57xLw66zmL9HVDoJzTLULyFbK7Gm3ecsI6Hf/cb/lymHaBOdMPPK7vARr2
+         0+dXXYPUOwSknB0hXSVdWH6gtelD5EayZLqniHvk5fFH0Syhny/WaRt9GaGJCWldIaa+
+         suP8wQANV5X+TxvXc45+QUbI4Oi4MFtFPLXzGLpV+VoBDLJpoUUfEVRgxfYWCaGX/Hq0
+         Fy+1/4JftV66Y0xDSXSpOxm0XxV/Lhf5H24D8aJAyavCZcSUtgV5tRKcza8zGqZoR9Zu
+         rd2rZjtnSuZ/SKClVk2LHN1r+/V+MJddmnjSpsZKHx7T5yHS0+PzWfHXv0DsS28VIHbA
+         INBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hJwlrZJC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ylcLI33w;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id b17sor3424863pjz.4.2019.07.31.13.38.44
+        by mx.google.com with SMTPS id 75sor50297135pfv.11.2019.07.31.13.38.46
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 31 Jul 2019 13:38:45 -0700 (PDT)
+        Wed, 31 Jul 2019 13:38:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hJwlrZJC;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ylcLI33w;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=ANNHdO/zBUkLNhCgl4wRP8H0y0X0qC4dG7xLb+E0zx4=;
-        b=hJwlrZJCHdgQWubKECzMUn3b7kQ09I+dYs05SKGnRm1d+8AyIatq3u9UgKJKRVGIOn
-         wcwcfFXPbzsMtW6QRzVTurSySAQ8Z7hdusyNfiF/1oG/rBcpgMxH3QuxG+mYCgVqSVHz
-         0YLHJ8SQx3Xlsj4/EMfwawe5W2JVii56TYkvH2B8W6jZu4RwdtYlSzRIdspTBHCCEt0k
-         DSz0tnkOmky4F6YAUHjM2hjmfsvxZu6q6fz6sqF/7BlNVXfVt1WOZOM7zKbIQwDj9RcP
-         w7CzBWbZ8mOuBZSzPHuzSoEvVr0QHrMEysqAKZ3I2ibTHlRZmX3NtW25DZin2PVO1mLL
-         wYkQ==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=LCePFTUgV8mXAATt2U3SG8TFwN2aa4K3amCrfCCSR5k=;
+        b=ylcLI33wAu8jB+aF2RW3yIA7CY7z4OkSO67AZXkNhw0oJWzLdIplqnhrrRQRhUGiX+
+         MRrS1dCFaWrcsZ0CO/dMpxAui4+ZBtg6dRA+TlZauo6VV7NXtil+5dpCzWVBuUm8dJko
+         /9CVVD5eQh14fJaRha5bs2zg5EnLxDyMGgTBKJduh6Tact3fBZf1Zyl7r+KrKheGa0L2
+         582ykZER8T+zrtCCauIOt96pruwGsEkhYX2Ydq4ZcFPUvZrO2H7Yb1eItzoLkCLK9pV/
+         li33q3IkeJPZf4kTyGLEMWO2Ad7kUp+8GQITwwrzPkOgBn9Y6TwLlsRNmyHGrAuvKeoE
+         xQ7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=ANNHdO/zBUkLNhCgl4wRP8H0y0X0qC4dG7xLb+E0zx4=;
-        b=Edz+wKYrhs57NdpZp6wY52ia6IgGYpOIMzYC5TDtCJHpe1dz5ayXnxt3jCbEt0MCjN
-         spqPQc2/Ugu5Gz4385PKty3O9fBhD2Qka6Gtns7D0mhUhI4wSZ8nbM+9Msz5IOI8YTJp
-         ufbO8PubV2rJVWK8VkAmKAu2lfXgpVMl9MGSLwB6X7fyCunDs6WLCRf51ORmv/EYRBSW
-         cgQrtbYKHFtf+51zmUHkBrTWVHgReiDmFiC8YwSco+7iSV3KJc4IxJe11E61eqSMIIVQ
-         QAJVoO3Aea3SWlxD1HN+PO50kmCRMTuK//NYZ9KLwRVeNn39MqfeTtdfwLO3sAWEdLRO
-         Mdag==
-X-Gm-Message-State: APjAAAW3HSrUyRK8QmgE9ddb8qGYE+VoBrpdzZaLThFMbwbAsKWnpCXm
-	Dd//2ev3MU4UbWIAtvwLkvJFeeJu
-X-Google-Smtp-Source: APXvYqzFjCmUxBGewxqBNn5FET3fk96MPNLs1F9/D0IYgxShOvD0XX7Ci68goWzC9PABhjaut3QjYg==
-X-Received: by 2002:a17:90a:5887:: with SMTP id j7mr4659919pji.136.1564605524679;
-        Wed, 31 Jul 2019 13:38:44 -0700 (PDT)
+         :references;
+        bh=LCePFTUgV8mXAATt2U3SG8TFwN2aa4K3amCrfCCSR5k=;
+        b=OzSbdUPCtMG6WUP9JGL3Eu0VShPlan07mE7aP9J+Jw/BymFDEmOu+QDD4dBlBcgbOW
+         cHLXGcAvYAS23aZVSr1JNjyRpj/qO2w2Q6Ki+6V2jpSOJu2YT9KYyu0RDa77KGoiI4mX
+         2AghwW4MlXe8Vefhq5n+d5OFDlkBtwZKQdNeO5evSRc2QNBDpptt9uenTo1XCTLOmyJ/
+         9CpfMBcPccrp+rJBB9Ndhf+c6SosZmVnclBKG6HPyKyEkjOL2dnTbDhcqkcXWRTLqo5i
+         61Xaz2XCtpJLZ0XGDh+IXIn2I8qQPBH/sKoiH6L6lrOnHJrQIgZuuO6TtaYQOw+wf86b
+         NCyw==
+X-Gm-Message-State: APjAAAWo45dcDbQ2wJAqnIZZpryOvGOHIOwhHJIx7a+sh7sM41G97VJq
+	loHu4UOiGbCJYiFAL1s6GUW7lcJD
+X-Google-Smtp-Source: APXvYqxnYjLEeHlM08/x5xP620ezHYZoGXIJPtdB14e+wl1qym3Dj9OqqPwR/DEsiQD8o7781IX0JA==
+X-Received: by 2002:aa7:93a8:: with SMTP id x8mr50841612pff.49.1564605525791;
+        Wed, 31 Jul 2019 13:38:45 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id g4sm84054164pfo.93.2019.07.31.13.38.43
+        by smtp.gmail.com with ESMTPSA id g4sm84054164pfo.93.2019.07.31.13.38.44
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Wed, 31 Jul 2019 13:38:44 -0700 (PDT)
+        Wed, 31 Jul 2019 13:38:45 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v2 24/32] target/arm: Update arm_sctlr for VHE
-Date: Wed, 31 Jul 2019 13:38:05 -0700
-Message-Id: <20190731203813.30765-25-richard.henderson@linaro.org>
+Subject: [PATCH v2 25/32] target/arm: Install asids for E2&0 translation regime
+Date: Wed, 31 Jul 2019 13:38:06 -0700
+Message-Id: <20190731203813.30765-26-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190731203813.30765-1-richard.henderson@linaro.org>
 References: <20190731203813.30765-1-richard.henderson@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: Jkqg6sLnGsZq
+X-TUID: OL2Pk87oOqV2
 
-Use this function in many more places in order to select
-the correct control.
+When clearing HCR_E2H, this involves re-installing the EL1&0 asid.
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.h          | 10 ++++++----
- target/arm/arch_dump.c    |  2 +-
- target/arm/helper-a64.c   |  2 +-
- target/arm/helper.c       | 10 +++++-----
- target/arm/pauth_helper.c |  9 +--------
- 5 files changed, 14 insertions(+), 19 deletions(-)
+ target/arm/helper.c | 38 ++++++++++++++++++++++++++++++++++----
+ 1 file changed, 34 insertions(+), 4 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 64cda8dbea..c41da1d791 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3099,11 +3099,13 @@ static inline bool arm_sctlr_b(CPUARMState *env)
- static inline uint64_t arm_sctlr(CPUARMState *env, int el)
- {
-     if (el == 0) {
--        /* FIXME: ARMv8.1-VHE S2 translation regime.  */
--        return env->cp15.sctlr_el[1];
--    } else {
--        return env->cp15.sctlr_el[el];
-+        if (arm_el_is_aa64(env, 2) && (arm_hcr_el2_eff(env) & HCR_E2H)) {
-+            el = 2;
-+        } else {
-+            el = 1;
-+        }
-     }
-+    return env->cp15.sctlr_el[el];
- }
- 
- 
-diff --git a/target/arm/arch_dump.c b/target/arm/arch_dump.c
-index 26a2c09868..5fbd008d8c 100644
---- a/target/arm/arch_dump.c
-+++ b/target/arm/arch_dump.c
-@@ -320,7 +320,7 @@ int cpu_get_dump_info(ArchDumpInfo *info,
-      * dump a hypervisor that happens to be running an opposite-endian
-      * kernel.
-      */
--    info->d_endian = (env->cp15.sctlr_el[1] & SCTLR_EE) != 0
-+    info->d_endian = (arm_sctlr(env, 1) & SCTLR_EE) != 0
-                      ? ELFDATA2MSB : ELFDATA2LSB;
- 
-     return 0;
-diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
-index 060699b901..3bf1b731e7 100644
---- a/target/arm/helper-a64.c
-+++ b/target/arm/helper-a64.c
-@@ -70,7 +70,7 @@ static void daif_check(CPUARMState *env, uint32_t op,
-                        uint32_t imm, uintptr_t ra)
- {
-     /* DAIF update to PSTATE. This is OK from EL0 only if UMA is set.  */
--    if (arm_current_el(env) == 0 && !(env->cp15.sctlr_el[1] & SCTLR_UMA)) {
-+    if (arm_current_el(env) == 0 && !(arm_sctlr(env, 0) & SCTLR_UMA)) {
-         raise_exception_ra(env, EXCP_UDEF,
-                            syn_aa64_sysregtrap(0, extract32(op, 0, 3),
-                                                extract32(op, 3, 3), 4,
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 578dcfefbf..2883d6e568 100644
+index 2883d6e568..30f93f4792 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -3867,7 +3867,7 @@ static void aa64_fpsr_write(CPUARMState *env, const ARMCPRegInfo *ri,
- static CPAccessResult aa64_daif_access(CPUARMState *env, const ARMCPRegInfo *ri,
-                                        bool isread)
- {
--    if (arm_current_el(env) == 0 && !(env->cp15.sctlr_el[1] & SCTLR_UMA)) {
-+    if (arm_current_el(env) == 0 && !(arm_sctlr(env, 0) & SCTLR_UMA)) {
-         return CP_ACCESS_TRAP;
+@@ -3518,10 +3518,29 @@ static void vmsa_ttbr_el1_write(CPUARMState *env, const ARMCPRegInfo *ri,
      }
-     return CP_ACCESS_OK;
-@@ -3886,7 +3886,7 @@ static CPAccessResult aa64_cacheop_access(CPUARMState *env,
-     /* Cache invalidate/clean: NOP, but EL0 must UNDEF unless
-      * SCTLR_EL1.UCI is set.
-      */
--    if (arm_current_el(env) == 0 && !(env->cp15.sctlr_el[1] & SCTLR_UCI)) {
-+    if (arm_current_el(env) == 0 && !(arm_sctlr(env, 0) & SCTLR_UCI)) {
-         return CP_ACCESS_TRAP;
-     }
-     return CP_ACCESS_OK;
-@@ -4116,7 +4116,7 @@ static CPAccessResult aa64_zva_access(CPUARMState *env, const ARMCPRegInfo *ri,
-     /* We don't implement EL2, so the only control on DC ZVA is the
-      * bit in the SCTLR which can prohibit access for EL0.
-      */
--    if (arm_current_el(env) == 0 && !(env->cp15.sctlr_el[1] & SCTLR_DZE)) {
-+    if (arm_current_el(env) == 0 && !(arm_sctlr(env, 0) & SCTLR_DZE)) {
-         return CP_ACCESS_TRAP;
-     }
-     return CP_ACCESS_OK;
-@@ -5348,7 +5348,7 @@ static CPAccessResult ctr_el0_access(CPUARMState *env, const ARMCPRegInfo *ri,
-     /* Only accessible in EL0 if SCTLR.UCT is set (and only in AArch64,
-      * but the AArch32 CTR has its own reginfo struct)
-      */
--    if (arm_current_el(env) == 0 && !(env->cp15.sctlr_el[1] & SCTLR_UCT)) {
-+    if (arm_current_el(env) == 0 && !(arm_sctlr(env, 0) & SCTLR_UCT)) {
-         return CP_ACCESS_TRAP;
-     }
-     return CP_ACCESS_OK;
-@@ -8167,7 +8167,7 @@ static void take_aarch32_exception(CPUARMState *env, int new_mode,
-     env->uncached_cpsr = (env->uncached_cpsr & ~CPSR_M) | new_mode;
-     /* Set new mode endianness */
-     env->uncached_cpsr &= ~CPSR_E;
--    if (env->cp15.sctlr_el[arm_current_el(env)] & SCTLR_EE) {
-+    if (arm_sctlr(env, arm_current_el(env)) & SCTLR_EE) {
-         env->uncached_cpsr |= CPSR_E;
-     }
-     /* J and IL must always be cleared for exception entry */
-diff --git a/target/arm/pauth_helper.c b/target/arm/pauth_helper.c
-index d3194f2043..42c9141bb7 100644
---- a/target/arm/pauth_helper.c
-+++ b/target/arm/pauth_helper.c
-@@ -386,14 +386,7 @@ static void pauth_check_trap(CPUARMState *env, int el, uintptr_t ra)
- 
- static bool pauth_key_enabled(CPUARMState *env, int el, uint32_t bit)
- {
--    uint32_t sctlr;
--    if (el == 0) {
--        /* FIXME: ARMv8.1-VHE S2 translation regime.  */
--        sctlr = env->cp15.sctlr_el[1];
--    } else {
--        sctlr = env->cp15.sctlr_el[el];
--    }
--    return (sctlr & bit) != 0;
-+    return (arm_sctlr(env, el) & bit) != 0;
  }
  
- uint64_t HELPER(pacia)(CPUARMState *env, uint64_t x, uint64_t y)
++static void update_el2_asid(CPUARMState *env)
++{
++    CPUState *cs = env_cpu(env);
++    uint64_t ttbr0, ttbr1, ttcr;
++    int asid, idxmask;
++
++    ttbr0 = env->cp15.ttbr0_el[2];
++    ttbr1 = env->cp15.ttbr1_el[2];
++    ttcr = env->cp15.tcr_el[2].raw_tcr;
++    idxmask = ARMMMUIdxBit_EL20_2 | ARMMMUIdxBit_EL20_0;
++    asid = extract64(ttcr & TTBCR_A1 ? ttbr1 : ttbr0, 48, 16);
++
++    tlb_set_asid_for_mmuidx(cs, asid, idxmask, 0);
++}
++
+ static void vmsa_tcr_ttbr_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                                     uint64_t value)
+ {
+     raw_write(env, ri, value);
++    if (arm_hcr_el2_eff(env) & HCR_E2H) {
++        /* We are running with EL2&0 regime and the ASID is active.  */
++        update_el2_asid(env);
++    }
+ }
+ 
+ static void vttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -4654,6 +4673,7 @@ static void hcr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+     ARMCPU *cpu = env_archcpu(env);
+     /* Begin with bits defined in base ARMv8.0.  */
+     uint64_t valid_mask = MAKE_64BIT_MASK(0, 34);
++    uint64_t old_value;
+ 
+     if (arm_feature(env, ARM_FEATURE_EL3)) {
+         valid_mask &= ~HCR_HCD;
+@@ -4680,15 +4700,25 @@ static void hcr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+     /* Clear RES0 bits.  */
+     value &= valid_mask;
+ 
+-    /* These bits change the MMU setup:
++    old_value = env->cp15.hcr_el2;
++    env->cp15.hcr_el2 = value;
++
++    /*
++     * These bits change the MMU setup:
+      * HCR_VM enables stage 2 translation
+      * HCR_PTW forbids certain page-table setups
+-     * HCR_DC Disables stage1 and enables stage2 translation
++     * HCR_DC disables stage1 and enables stage2 translation
++     * HCR_E2H enables E2&0 translation regime.
+      */
+-    if ((env->cp15.hcr_el2 ^ value) & (HCR_VM | HCR_PTW | HCR_DC)) {
++    if ((old_value ^ value) & (HCR_VM | HCR_PTW | HCR_DC | HCR_E2H)) {
+         tlb_flush(CPU(cpu));
++        /* Also install the correct ASID for the regime.  */
++        if (value & HCR_E2H) {
++            update_el2_asid(env);
++        } else {
++            update_lpae_el1_asid(env, false);
++        }
+     }
+-    env->cp15.hcr_el2 = value;
+ 
+     /*
+      * Updates to VI and VF require us to update the status of
 -- 
 2.17.1

@@ -1,82 +1,81 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5254676wrv;
-        Tue, 30 Jul 2019 23:34:25 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzssNTQtCxSdmGTlBG6VOzSdalS6v3VQmGYh9Uv9vDx4ZnNGxZsM/rTpdNHjtlQJ7v6IYpE
-X-Received: by 2002:a17:906:418:: with SMTP id d24mr94643702eja.258.1564554865390;
-        Tue, 30 Jul 2019 23:34:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564554865; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5254705wrv;
+        Tue, 30 Jul 2019 23:34:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyb69Xoju9djTwWp4hQEq0mVwnt+XR0ICk3aUdp0S/ReeaklKfpvu4TREMHOe42F9Li2zkt
+X-Received: by 2002:a50:aa14:: with SMTP id o20mr105963384edc.165.1564554866703;
+        Tue, 30 Jul 2019 23:34:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564554866; cv=none;
         d=google.com; s=arc-20160816;
-        b=dqUIp6K/EEERuWN3W/NbLoVEsRr0uyLMkVKwCwFQx6tNqIlEZWEa2r8PUkJ2s7xjUa
-         QX8rysxHy/TkqtXBD7mf6554o9vIh6TNXLRDzdXG/GG1dTbL9GKJdwHDwM51lr2/gZ9B
-         qTR2+mb83biNmv77Psm2Ebmhbh+xuWsUmNbc0bbskeWPANyXgHaQXH9nIcKyd7lQZMrf
-         Xn9Bbrp5dsV4fZBB2bz+AN5lXxNQ8A+Vuj2YbkwOgXpavPEVO54nFLRFImthsSUMxCeK
-         VkyYpjTlQnq/y4WjA0kj4VykE/HH9mdzcXbKEq4HMi0sSTn9dcGGiD8LjoxidyQ5cwHY
-         IqQg==
+        b=QrgChmP3plb+TqZcN6+rK00xbbqLvZqXJ/UtDpaj4tK2FNDU8lEJtGm/pVX7FG0Ckl
+         mHuJHocO/8z07ijNFtVh+oL94OK4OSxdoYaB0iMHprc/v7nfOjobMn/o4x8OkNQ62NMT
+         Fm7+rZYXsiAxyNiCsLIqOjRpXa6ZU450TGREi55Y53OSPcdm6Xd2YjOMhiTnfBcAxdrf
+         T/ZgH/NV+kxXOS2CcUATXjEIRx15RTyNIBQqc+2ASrbw+4seC1ulFic8rzPrlZ8bo/O0
+         dJtidJ/CCH/r6waLz5k1/vzqokdz+OuErdFLytV0X8sslkYm7KU4IoEoQ74CmhioP8T4
+         05PA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :dkim-signature;
-        bh=ogXZEvZUL+GX7EZrAQ6DYmN/QTZRSV5qEqyYEneh9ew=;
-        b=Zw8w9/jf/wiOGxQUDU1+Bufcq6+/62CFpDbplFCo9ZCK2mvfyjsAK3N2tdGfBspGVN
-         bD5Re1MKDxpSXEfTrc+9cYmczduTq8KHWKY58JZMZG9MVsZtutHg4FvNfYu96Jcm5uXv
-         0BXlBk65I1abIClIUf6tt48UT8q9ECE95PsmApXMWKtEQY4z+jWLzgWaJ2RzC/GIgiRM
-         6pidYl0uI0AWe3m6jH7uhMAfh9BRZB2BDx9ZkpO/IvLyxxb5Q10i8mFYbTFrUMLxXNIa
-         MvXQIxFKDeHUN51DpEHTMJsTEAWsZ6ZiJiLoYQhKf2V7/1h8W0PZtKrZCR4/NCs5al3Y
-         8Hsg==
+        bh=cdz364aCZQ1/cEQbxXo+zscT4lxVTQyEMRylGtI79Fg=;
+        b=jMglw7W9CNdF6lfCiWLULKLY6OM2gRWaX8uYldjS/xrSOJ43IBv+1KsnfQVRclKTJP
+         D8A/OSaIB8mavNpvRFahOFaUitIbZMSq9ny+qhniQ8YR0UZ8s9pWsyF7R1oYmjbs1gZB
+         E9BXm8bBM7BQ5ZCYc/3bIP8G4BONh/6dDnGq+ZYLe60/r1y2MQBvOcS0gRWXKqQ4bSdx
+         cIv/BX3j12ctuCXo8AckAFOIPgp/l3xOcBC+WmE+VLgMy2tPncMfUVDJzaSY9xXXjdHU
+         2rvTN+0hitRQtr5esEJG6grKcahVOdVcbM+JCJRXAs7W18xOQaOOJQ2OCkJvD+VzIBwt
+         YAAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=C5HVez2e;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=MXEoMv3p;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p8si17508388ejo.306.2019.07.30.23.34.25
+        by mx.google.com with ESMTPS id c5si17352090ejz.322.2019.07.30.23.34.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jul 2019 23:34:25 -0700 (PDT)
+        Tue, 30 Jul 2019 23:34:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=C5HVez2e;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=MXEoMv3p;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38240 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38242 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hsiBq-0003gV-E0
-	for alex.bennee@linaro.org; Wed, 31 Jul 2019 02:34:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45558)
+	id 1hsiBs-0003nR-Pq
+	for alex.bennee@linaro.org; Wed, 31 Jul 2019 02:34:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46520)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <dgibson@ozlabs.org>) id 1hsiBQ-0003OG-Pe
- for qemu-arm@nongnu.org; Wed, 31 Jul 2019 02:33:58 -0400
+ (envelope-from <dgibson@ozlabs.org>) id 1hsiBa-0003VG-RX
+ for qemu-arm@nongnu.org; Wed, 31 Jul 2019 02:34:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1hsiBN-0000MJ-9A
- for qemu-arm@nongnu.org; Wed, 31 Jul 2019 02:33:54 -0400
-Received: from ozlabs.org ([203.11.71.1]:41985)
+ (envelope-from <dgibson@ozlabs.org>) id 1hsiBR-0000f3-4y
+ for qemu-arm@nongnu.org; Wed, 31 Jul 2019 02:34:05 -0400
+Received: from ozlabs.org ([203.11.71.1]:58429)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1hsiBM-00085T-Ip; Wed, 31 Jul 2019 02:33:53 -0400
+ id 1hsiBQ-0000KO-GW; Wed, 31 Jul 2019 02:33:57 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
- id 45z3Xk6gQ1z9sND; Wed, 31 Jul 2019 16:33:42 +1000 (AEST)
+ id 45z3Xl0T85z9sN6; Wed, 31 Jul 2019 16:33:42 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1564554822;
- bh=29ai3ILc/EcKe7R0bLUQp9FTyRHWOu86Sxlqb+PMQ6w=;
+ d=gibson.dropbear.id.au; s=201602; t=1564554823;
+ bh=lhKFUlcqXUWUHnuDUXNCadW3btjJUEJeC4/cXTJe+QQ=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=C5HVez2eUzeO4FL3VwpAH7HFYa3w7lqQeLg712rkZm8p54QGd2bojRGVU4YBaGiM/
- LKj4kF2RhPp5wjeMdzCozSG8eznwzCenC8uFsVRDteUvEYqrHSaykcZS70FxlPbsRH
- 3lGwU9kWqwOtJSlgb+O3cmqA5geZ6puBpzyLuztc=
-Date: Wed, 31 Jul 2019 16:08:50 +1000
+ b=MXEoMv3pI5bb7Qoy8jD2Zt1dE9bZVikz1JUiatW+QDy2GxSv3LxsTsCyXxrXMzD47
+ bGAGcGj2JQzxKhd7ARSNs3SSOANmr5b9m0kxFNVpVpwzx/t0yxnyd7wFDhcmAYUsLz
+ fnUTMn+791Yst2sBlHD/GQcY5Q2CBcKiIalpAIAM=
+Date: Wed, 31 Jul 2019 16:30:44 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <20190731060850.GE2032@umbus.fritz.box>
+Message-ID: <20190731063044.GG2032@umbus.fritz.box>
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-7-damien.hedde@greensocs.com>
+ <20190729145654.14644-10-damien.hedde@greensocs.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="dFWYt1i2NyOo1oI9"
+ protocol="application/pgp-signature"; boundary="gm5TwAJMO0F2iVRz"
 Content-Disposition: inline
-In-Reply-To: <20190729145654.14644-7-damien.hedde@greensocs.com>
+In-Reply-To: <20190729145654.14644-10-damien.hedde@greensocs.com>
 User-Agent: Mutt/1.12.0 (2019-05-25)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 203.11.71.1
-Subject: Re: [Qemu-arm] [PATCH v3 06/33] add the vmstate description for
- device reset state
+Subject: Re: [Qemu-arm] [PATCH v3 09/33] add doc about Resettable interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -100,105 +99,229 @@ Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
  pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xA8ZrX2cKJe9
+X-TUID: Um66Jmz2YOqJ
 
 
---dFWYt1i2NyOo1oI9
+--gm5TwAJMO0F2iVRz
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Jul 29, 2019 at 04:56:27PM +0200, Damien Hedde wrote:
-> It contains the resetting counter and cold flag status.
->=20
-> At this point, migration of bus reset related state (counter and cold/warm
-> flag) is handled by parent device. This done using the post_load
-> function in the vmsd subsection.
->=20
-> This is last point allow to add an initial support of migration with part=
- of
-> qdev/qbus tree in reset state under the following condition:
-> + time-lasting reset are asserted on Device only
->=20
-> Note that if this condition is not respected, migration will succeed and
-> no failure will occurs. The only impact is that the resetting counter
-> of a bus may lower afer a migration.
->=20
+On Mon, Jul 29, 2019 at 04:56:30PM +0200, Damien Hedde wrote:
 > Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 > ---
->  hw/core/Makefile.objs  |  1 +
->  hw/core/qdev-vmstate.c | 45 ++++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 46 insertions(+)
->  create mode 100644 hw/core/qdev-vmstate.c
+>  docs/devel/reset.txt | 165 +++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 165 insertions(+)
+>  create mode 100644 docs/devel/reset.txt
 >=20
-> diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
-> index d9234aa98a..49e9be0228 100644
-> --- a/hw/core/Makefile.objs
-> +++ b/hw/core/Makefile.objs
-> @@ -4,6 +4,7 @@ common-obj-y +=3D bus.o reset.o
->  common-obj-y +=3D resettable.o
->  common-obj-$(CONFIG_SOFTMMU) +=3D qdev-fw.o
->  common-obj-$(CONFIG_SOFTMMU) +=3D fw-path-provider.o
-> +common-obj-$(CONFIG_SOFTMMU) +=3D qdev-vmstate.o
->  # irq.o needed for qdev GPIO handling:
->  common-obj-y +=3D irq.o
->  common-obj-y +=3D hotplug.o
-> diff --git a/hw/core/qdev-vmstate.c b/hw/core/qdev-vmstate.c
+> diff --git a/docs/devel/reset.txt b/docs/devel/reset.txt
 > new file mode 100644
-> index 0000000000..07b010811f
+> index 0000000000..c7a1eb068f
 > --- /dev/null
-> +++ b/hw/core/qdev-vmstate.c
-> @@ -0,0 +1,45 @@
-> +/*
-> + * Device vmstate
-> + *
-> + * Copyright (c) 2019 GreenSocs
-> + *
-> + * Authors:
-> + *   Damien Hedde
-> + *
-> + * This work is licensed under the terms of the GNU GPL, version 2 or la=
-ter.
-> + * See the COPYING file in the top-level directory.
-> + */
+> +++ b/docs/devel/reset.txt
+> @@ -0,0 +1,165 @@
 > +
-> +#include "qemu/osdep.h"
-> +#include "hw/qdev.h"
-> +#include "migration/vmstate.h"
+> +=3D=3D=3D=3D=3D
+> +Reset
+> +=3D=3D=3D=3D=3D
 > +
-> +static bool device_vmstate_reset_needed(void *opaque)
-> +{
-> +    DeviceState *dev =3D (DeviceState *) opaque;
-> +    return dev->resetting !=3D 0;
-> +}
+> +The reset of qemu objects is handled using the Resettable interface decl=
+ared
+> +in *include/hw/resettable.h*.
+> +As of now DeviceClass and BusClass implement this interface.
 > +
-> +static int device_vmstate_reset_post_load(void *opaque, int version_id)
-> +{
-> +    DeviceState *dev =3D (DeviceState *) opaque;
-> +    BusState *bus;
-> +    QLIST_FOREACH(bus, &dev->child_bus, sibling) {
-> +        bus->resetting =3D dev->resetting;
+> +
+> +Triggering reset
+> +----------------
+> +
+> +The function *resettable_reset* is used to trigger a reset on a given
+> +object.
+> +void resettable_reset(Object *obj, bool cold)
+> +
+> +The parameter *obj* must implement the Resettable interface.
 
-Having redundant copies of the resetting bit in the bridge and every
-bus instance seems kind of bogus.
+And what happens if it doesn't?  This function has no way to report an
+error.
 
-> +        bus->reset_is_cold =3D dev->reset_is_cold;
-> +    }
-> +    return 0;
-> +}
+> +The parameter *cold* is a boolean specifying whether to do a cold or warm
+> +reset
+
+This doc really needs to explain the distinction between cold and warm
+reset.
+
+> +For Devices and Buses there is also the corresponding helpers:
+> +void device_reset(Device *dev, bool cold)
+> +void bus_reset(Device *dev, bool cold)
+
+What's the semantic difference between resetting a bus and resetting
+the bridge device which owns it?
+
+> +If one wants to put an object into a reset state. There is the
+> +*resettable_assert_reset* function.
+> +void resettable_assert_reset(Object *obj, bool cold)
 > +
-> +const struct VMStateDescription device_vmstate_reset =3D {
-> +    .name =3D "device_reset",
-> +    .version_id =3D 0,
-> +    .minimum_version_id =3D 0,
-> +    .needed =3D device_vmstate_reset_needed,
-> +    .post_load =3D device_vmstate_reset_post_load,
-> +    .fields =3D (VMStateField[]) {
-> +        VMSTATE_UINT32(resetting, DeviceState),
-> +        VMSTATE_BOOL(reset_is_cold, DeviceState),
-> +        VMSTATE_END_OF_LIST()
-> +    },
-> +};
+> +One must eventually call the function *resettable_deassert_reset* to end=
+ the
+> +reset state:
+> +void resettable_deassert_reset(Object *obj, bool cold)
+> +
+> +Calling *resettable_assert_reset* then *resettable_deassert_reset* is the
+> +same as calling *resettable_reset*.
+> +
+> +It is possible to interleave multiple calls to
+> + - resettable_reset,
+> + - resettable_assert_reset, and
+> + - resettable_deassert_reset.
+> +The only constraint is that *resettable_deassert_reset* must be called o=
+nce
+> +per *resettable_assert_reset* call so that the object leaves the reset s=
+tate.
+> +
+> +Therefore there may be several reset sources/controllers of a given obje=
+ct.
+> +The interface handle everything and the controllers do not need to know
+> +anything about each others. The object will leave reset state only when =
+all
+> +controllers released their reset.
+> +
+> +All theses functions must called while holding the iothread lock.
+> +
+> +
+> +Implementing reset for a Resettable object : Multi-phase reset
+> +--------------------------------------------------------------
+> +
+> +The Resettable uses a multi-phase mechanism to handle some ordering cons=
+traints
+> +when resetting multiple object at the same time. For a given object the =
+reset
+> +procedure is split into three different phases executed in order:
+> + 1 INIT: This phase should set/reset the state of the Resettable it has =
+when is
+> +         in reset state. Side-effects to others object is forbidden (suc=
+h as
+> +         setting IO level).
+> + 2 HOLD: This phase corresponds to the external side-effects due to stay=
+ing into
+> +         the reset state.
+> + 3 EXIT: This phase corresponds to leaving the reset state. It have both
+> +         local and external effects.
+> +
+> +*resettable_assert_reset* does the INIT and HOLD phases. While
+> +*resettable_deassert_reset* does the EXIT phase.
+> +
+> +When resetting multiple object at the same time. The interface executes =
+the
+> +given phase of the objects before going to the next phase. This guarante=
+e that
+> +all INIT phases are done before any HOLD phase and so on.
+> +
+> +There is three methods in the interface so must be implemented in an obj=
+ect.
+> +The methods corresponds to the three phases:
+> +```
+> +typedef void (*ResettableInitPhase)(Object *obj);
+> +typedef void (*ResettableHoldPhase)(Object *obj);
+> +typedef void (*ResettableExitPhase)(Object *obj);
+> +typedef struct ResettableClass {
+> +    InterfaceClass parent_class;
+> +
+> +    struct ResettablePhases {
+> +        ResettableInitPhase init;
+> +        ResettableHoldPhase hold;
+> +        ResettableExitPhase exit;
+> +    } phases;
+> +    [...]
+> +} ResettableClass;
+> +```
+> +
+> +Theses methods should be updated when specializing an object. For this t=
+he
+> +helper function *resettable_class_set_parent_reset_phases* can be used to
+> +backup parent methods while changing the specialized ones.
+> +void resettable_class_set_parent_reset_phases(ResettableClass *rc,
+> +                                              ResettableInitPhase init,
+> +                                              ResettableHoldPhase hold,
+> +                                              ResettableExitPhase exit,
+> +
+> +For Devices and Buses, some helper exists to know if a device/bus is und=
+er
+> +reset and what type of reset it is:
+> +```
+> +bool device_is_resetting(DeviceState *dev);
+> +bool device_is_reset_cold(DeviceState *dev);
+
+It's not really clear to me when *_is_reset_cold() would be useful.
+
+> +bool bus_is_resetting(BusState *bus);
+> +bool bus_is_reset_cold(BusState *bus);
+> +```
+> +
+> +
+> +Implementing the base Resettable behavior : Re-entrance, Hierarchy and C=
+old/Warm
+> +------------------------------------------------------------------------=
+--------
+> +
+> +There is five others methods in the interface to handle the base mechani=
+cs
+> +of the Resettable interface. The methods should be implemented in object
+> +base class. DeviceClass and BusClass implement them.
+> +
+> +```
+> +typedef bool (*ResettableSetCold)(Object *obj, bool cold);
+> +typedef bool (*ResettableSetHoldNeeded)(Object *obj, bool hold_needed);
+> +typedef uint32_t (*ResettableGetCount)(Object *obj);
+> +typedef uint32_t (*ResettableIncrementCount)(Object *obj);
+> +typedef uint32_t (*ResettableDecrementCount)(Object *obj);
+> +typedef void (*ResettableForeachChild)(Object *obj, void (*visitor)(Obje=
+ct *));
+> +typedef struct ResettableClass {
+> +    InterfaceClass parent_class;
+> +
+> +    [...]
+> +
+> +    ResettableSetCold set_cold;
+> +    ResettableSetHoldNeeded set_hold_needed;
+> +    ResettableGetCount get_count;
+> +    ResettableIncrementCount increment_count;
+> +    ResettableDecrementCount decrement_count;
+> +    ResettableForeachChild foreach_child;
+> +} ResettableClass;
+> +```
+> +
+> +*set_cold* is used when entering reset, before calling the init phase, to
+> +indicate the reset type.
+> +
+> +*set_hold_needed* is used to set/clear and retrieve an "hold_needed" fla=
+g.
+> +This flag allows to omly execute the hold pahse when required.
+> +
+> +As stated above, several reset procedures can be concurrent on an object.
+> +This is handled with the three methods *get_count*, *increment_count* and
+> +*decrement_count*. An object is in reset state if the count is non-zero.
+> +
+> +The reset hierarchy is handled using the *foreach_child* method. This me=
+thod
+> +executes a given function on every reset "child".
+> +
+> +In DeviceClass and BusClass the base behavior is to mimic the legacy qdev
+> +reset. Reset hierarchy follows the qdev/qbus tree.
+> +
+> +Reset control through GPIO
+> +--------------------------
+> +
+> +For devices, two reset inputs can be added: one for the cold, one the wa=
+rm
+> +reset. This is done using the following function.
+> +```
+> +typedef enum DeviceResetActiveType {
+> +    DEVICE_RESET_ACTIVE_LOW,
+> +    DEVICE_RESET_ACTIVE_HIGH,
+> +} DeviceResetActiveType;
+> +void qdev_init_reset_gpio_in_named(DeviceState *dev, const char *name,
+> +                                   bool cold, DeviceResetActiveType type=
+);
+> +```
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -206,24 +329,24 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---dFWYt1i2NyOo1oI9
+--gm5TwAJMO0F2iVRz
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl1BMHIACgkQbDjKyiDZ
-s5IPkRAA3qZhu/RLWXmjjSlPGlNqZSJgaD+8gmEZQVU3r+1GtTrLpLPOuMtoFRLZ
-qNpvHPtIB8vWd40A1w9igbVKK0cYbAjlmPCRy1rauFyZuWy1KQF9sQFJx/ZmDk0S
-0OTNr2qjftIcOsNcD48V65WSNmIT+vAFkAFUlHhM24FHLuX57EcjxAcZBRPDIePB
-7iu9eTBOa+VN1Y29+iRfqQgL1lYGdwRyn4+5QOfcoRczNQ3OL0oeAoHWrgFa/fiu
-ojWk3YvYgwT63nmoM1c/WsVqO6vWPvUX5u9c+yiL6qcfryRE0nHI8kAjFD+CN2/4
-VjGc8f0SAcdkmiFOkVyEPsekxs0eeF7fn0UrTqNchcDrBHjam3nuRqyEC9X4l5Vr
-R3cox9h8/mFkGhmED3SKrCovOQohrcqv0BxjVGiEu+nhsRO1Or8Mh4a0lmamQ9Mo
-GOIrkNST2/hflpvf5AflwhMQUdRTjHs7A9FTHUXsYV6Q+EdFH+gbMKNrsHhzIs5o
-fg9DWQlkxdhycNm/QK3FQOsAI5fTqa9rGBDeLbr+4LeEQ96aHdGYkNpRJ1dYKpkq
-MOtq7Al4FOxH9MHWL15LvD6bTfK1UEMz/3glw2Rs/ry+Mx7hniM2LIQSfQM+CM6B
-TQmicwGJGJb/ope9SjKEwvCpX2uKlarD3uLUPP7u2LNOmqI9fb8=
-=qu7o
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl1BNZEACgkQbDjKyiDZ
+s5LM4w//SL0C4gnI3wMv7jfhk7z2mpqiWd2qrgtrG2CLfc5l0gDrrlTzm7RpRWjj
+Ly/tjC/eWLzMceXGF1787Z7WsXuw7y/0eRcHKuRtB2luKyZ77xF11t02Aj9vUERY
+989b38kmjmOKdPxGuWhcxa/Dk2P6fsDqHuRxofUZfj7f8w8z+ewZfPh/pJEd3q2e
+Atnezbb8JnflvUIGTe+BaXi1Ywhd0Fo5O5aJ1WZdiIohU9vGXK5D5C8GZC9M6OFH
+sSR7JsyAjqIR0L4exq9O9R5V2r+F+1z5BtKNcCQQ+tHgrTGpfKVZMWFBX+BAAG1V
+YDhgdZ8vqBlr3W52Y0nZOuNc1Xwxx2Z9mCkHDqshfB5JJFRl1kI9N45dm6HcX73h
+RqhI22Ox23n4pk5sVNuzkUZ1JLKeoLsLn8GLwnqQkQN4exV+G7fXoSdE+EjEMHi0
+3uc8R/Wjr44KKdt/O3trCH0lJAMKzIWXmV/Emv9Orr/X5svLScE0SRjADaZrKUNf
+2S5YAgk9Xywnmq51CecTRCf594GsYeEGJIKpxlg8ARF/QFjPcigbFIokgjOUVf2R
+D8lhWmsVYg6NDF7eb/4GQnb1f6bD9P4ZkzhWC++9PSg91WcLGpAF95T7FMs/ww7v
+GT/Z8fMFr06/VTzDIYb/lyCkwtxD6LqLC7TEbbBoHSdlunlsTfM=
+=WVZ4
 -----END PGP SIGNATURE-----
 
---dFWYt1i2NyOo1oI9--
+--gm5TwAJMO0F2iVRz--

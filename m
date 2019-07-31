@@ -1,87 +1,82 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5212994wrv;
-        Tue, 30 Jul 2019 22:48:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzzlyYdSLPd1j9NUdntNvM3B9yAhEqVnD/pRIihfqQJMqOY6ylCPjj515T2dnDOLVJxWFd+
-X-Received: by 2002:a37:9c0c:: with SMTP id f12mr79034413qke.442.1564552089893;
-        Tue, 30 Jul 2019 22:48:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564552089; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5254515wrv;
+        Tue, 30 Jul 2019 23:34:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzgxboUSr9BjFb3WXoMRJE681GrolFwczTsMAPlCwXd4eKcQHsZzd5xdFrss7tubsv7ogzD
+X-Received: by 2002:a17:906:d183:: with SMTP id c3mr4615273ejz.149.1564554853487;
+        Tue, 30 Jul 2019 23:34:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564554853; cv=none;
         d=google.com; s=arc-20160816;
-        b=UEETOVmJjOYLOEOUOZuuxuPVr07vjXngOaBuaNob7JeMoxcOfJz+hSH88KWAgHBGY2
-         XPSukYhnKA6J4zWWei/zy89dRWdEFpP0m1KtFHUvo3NglX7RCev8ogKM3hDwGPYBsq85
-         X7fD+1hYzmrfRQLproBP/i4WPMPevlSPu7Bpva21TlMRAcFD96s7bqs0k40Bdirnv4oc
-         QErE23krj2cKnzmoDKFPcoIO0C+Sit4hP65/FMZ9TMohj91CUV3kMHqmNQUklEr9SJpL
-         6Lsu3olQE0IcGyGBpGaNKF8nTRL+if5AssB0Vc+x5oGQ8lF9QiRTtCFqgjRg6GXpSGWt
-         kEYw==
+        b=fWeKfNATB8TcKEVjt/z2ReXBi/tgWdnSSCk/JQIiSqMui0mg+XwbQYRUxU8EuCi85Y
+         VugiVA7kdKgST6goxsg+c1WvYuNkFDSKTMexeqP4zAAOa9S0ksugkys7a2TcB/RytXPE
+         SDrbaTa8z4+VF6QhQrLmoaX4Cc1iuhTB3hDSr68qZKSU7F5ucN05hJe4FNPyKVLpyeN7
+         uhpU1pTVcXiD3c/UoU3wZ7XId3VTt5r37xu1IOSGk8nkYcXfpwsHtURaGbcHYkO4/TZj
+         XqRCxd0aKRIkclsx7+gNwn8HFghwmluKXWszNoVrVycxGjj4R5TtyyD+IZuCDqoQGwcL
+         3SMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :dkim-signature;
-        bh=XAGesxNqHtk5R8SYZsIJKH8bkBU+8QVjckVuHx0fcnI=;
-        b=IoqBW76KbIX52zibvrv9oLkxDall/I8aO/lu4QMDfFqAlsi06fhYkc/tMIm5clBg07
-         6RnKhx27DqHce/3Av9wLd4/OqkwDujPOtfb5zIUHNxcL5PWccapeSCOJFear/Dds/0eq
-         jJzLmGveDVmYWz89K+cVabJaBQp0KvUNG+rTOh6Q//kXopsjgliqeMqT24KBGLwQnniG
-         mDRGzqUXiUFDWvjCECE1WmREYeSqnS2XUWPfNoI7+OAxUldvX5j1x2Qd/9XfY9Ej1+PV
-         vX6LxYzZrBstGIQCxW4/D5zYSnOFxriD7F16UKYz0tWpcnxzaSITMqIM39TE6cT5JEMZ
-         o/Vw==
+        bh=8SGEfMoTLWENDeCb7lL09El3H621zCoZFFw91tpFB48=;
+        b=m8GKHaN+BBK0/VeUtmhFgBwYqPkusREWz138A7R4pDwGqOLiAXveYLYRuoNFbe7imF
+         9Er1p+TRbyKmHy+4UQdgDjXMBLHEYpkj+dkagMFvEHeeWi3ukPeGHqbB86kPKVHoyO5z
+         GMyiNOp/IZD2ZxQ4pFYMIjJIB+hMusb0+dNpSar75HLaRVYyMDSb6X8ms06Y2XMEgBZa
+         BXLPWHwSgisGpuZMyuO4W2S1JUvDs8dylZktAkJSeQDysz4igcu5ik7MwF3cA75AWH+3
+         mCHSmZbsNrnjgelQGHjOwRKwVH5/NxW31p7t7keJJqillz+p49RF5mCn6RXHQFdu3sh5
+         Aa6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=oFrFjzqQ;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=mdUmVcay;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t54si39477763qth.352.2019.07.30.22.48.09
+        by mx.google.com with ESMTPS id d24si18270347ejt.166.2019.07.30.23.34.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 30 Jul 2019 22:48:09 -0700 (PDT)
+        Tue, 30 Jul 2019 23:34:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=oFrFjzqQ;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=mdUmVcay;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38112 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38234 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hshT7-000469-G3
-	for alex.bennee@linaro.org; Wed, 31 Jul 2019 01:48:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35099)
+	id 1hsiBf-0003P3-TJ
+	for alex.bennee@linaro.org; Wed, 31 Jul 2019 02:34:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45613)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <dgibson@ozlabs.org>) id 1hshSz-000463-Kh
- for qemu-arm@nongnu.org; Wed, 31 Jul 2019 01:48:03 -0400
+ (envelope-from <dgibson@ozlabs.org>) id 1hsiBQ-0003OJ-AD
+ for qemu-arm@nongnu.org; Wed, 31 Jul 2019 02:33:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1hshSy-0007Aw-7J
- for qemu-arm@nongnu.org; Wed, 31 Jul 2019 01:48:01 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:45499)
+ (envelope-from <dgibson@ozlabs.org>) id 1hsiBM-0000Ie-E6
+ for qemu-arm@nongnu.org; Wed, 31 Jul 2019 02:33:55 -0400
+Received: from ozlabs.org ([203.11.71.1]:45971)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1hshSw-0006mc-Ib; Wed, 31 Jul 2019 01:48:00 -0400
+ id 1hsiBL-00086J-0A; Wed, 31 Jul 2019 02:33:52 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
- id 45z2Wp1JgXz9sBF; Wed, 31 Jul 2019 15:47:50 +1000 (AEST)
+ id 45z3Xk4z4Vz9sMr; Wed, 31 Jul 2019 16:33:42 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1564552070;
- bh=oGsplCAdBOMa679rb9YPeAihpYC+mr4lyv24NKaSaF0=;
+ d=gibson.dropbear.id.au; s=201602; t=1564554822;
+ bh=GwcyTEln1jYY3LzdIKE7lFauBXJ4alh9w5AgOOIslmY=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=oFrFjzqQYRDiGaNowZmZXmvYHhyUfy+ROcpm+zuIjNYg2c9T1Kw/grBdemWwwNpSo
- AunkcWIMnellrpf8ufj9GA/+9QS0U9irmqtV4dZ6LgsJtjYygVem5sRv5mPPGOVY6V
- V5cuVk2X0U/9WOpN4RR3B6b2ucxI7fiQ0ThQ//5Y=
-Date: Wed, 31 Jul 2019 15:46:12 +1000
+ b=mdUmVcayDTPOQJ0fRDdXpq07sFs/VI6Ah4Uo+/PP8sWRpgyCM97Icb1vPHK2iikzx
+ u2ETDgtGXKSwl2hctvz3giC2d7AhEkkmLO2kjGI7oaHHoERT2l4rTiJfFmyJfIzDHy
+ y8x07Qzwvq+UuMLfN1TRAZHmnWVKIPkzk4PZFbUA=
+Date: Wed, 31 Jul 2019 16:11:08 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <20190731054612.GA2032@umbus.fritz.box>
+Message-ID: <20190731061108.GF2032@umbus.fritz.box>
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-2-damien.hedde@greensocs.com>
- <20190730154209.2049f10a.cohuck@redhat.com>
- <CAFEAcA-rwBiXkDEDuT-=KQVJ2A2ob16=P0obbZBPUfZeYXy+dQ@mail.gmail.com>
- <20190730155547.7b201f5e.cohuck@redhat.com>
- <CAFEAcA_BU3DECLVv2QD_RshR0OL3=GqGwsm0YAmEAE6_SpW=HA@mail.gmail.com>
- <34a216b0-0067-8627-599c-6a67622c4bd2@greensocs.com>
+ <20190729145654.14644-9-damien.hedde@greensocs.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="BXVAT5kNtrzKuDFl"
+ protocol="application/pgp-signature"; boundary="gdTfX7fkYsEEjebm"
 Content-Disposition: inline
-In-Reply-To: <34a216b0-0067-8627-599c-6a67622c4bd2@greensocs.com>
+In-Reply-To: <20190729145654.14644-9-damien.hedde@greensocs.com>
 User-Agent: Mutt/1.12.0 (2019-05-25)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [PATCH v3 01/33] Create Resettable QOM interface
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 203.11.71.1
+Subject: Re: [Qemu-arm] [PATCH v3 08/33] Add function to control reset with
+ gpio inputs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -93,96 +88,265 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Collin Walling <walling@linux.ibm.com>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Edgar Iglesias <edgar.iglesias@xilinx.com>, Hannes Reinecke <hare@suse.com>,
- Qemu-block <qemu-block@nongnu.org>, David Hildenbrand <david@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-s390x <qemu-s390x@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
- "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Mark Burton <mark.burton@greensocs.com>, qemu-ppc <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
+ dmitry.fleytman@gmail.com, mst@redhat.com, mark.cave-ayland@ilande.co.uk,
+ qemu-devel@nongnu.org, kraxel@redhat.com, edgar.iglesias@xilinx.com,
+ hare@suse.com, qemu-block@nongnu.org, david@redhat.com, pasic@linux.ibm.com,
+ borntraeger@de.ibm.com, marcel.apfelbaum@gmail.com,
+ marcandre.lureau@redhat.com, thuth@redhat.com, ehabkost@redhat.com,
+ alistair@alistair23.me, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ clg@kaod.org, jsnow@redhat.com, rth@twiddle.net, berrange@redhat.com,
+ cohuck@redhat.com, mark.burton@greensocs.com, qemu-ppc@nongnu.org,
+ pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rVXrk/PaeT8D
+X-TUID: 6eSQwkFGcT1E
 
 
---BXVAT5kNtrzKuDFl
+--gdTfX7fkYsEEjebm
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Tue, Jul 30, 2019 at 04:08:59PM +0200, Damien Hedde wrote:
+On Mon, Jul 29, 2019 at 04:56:29PM +0200, Damien Hedde wrote:
+> It adds the possibility to add 2 gpios to control the warm and cold reset.
+> With theses ios, the reset can be maintained during some time.
+> Each io is associated with a state to detect level changes.
 >=20
-> On 7/30/19 3:59 PM, Peter Maydell wrote:
-> > On Tue, 30 Jul 2019 at 14:56, Cornelia Huck <cohuck@redhat.com> wrote:
-> >>
-> >> On Tue, 30 Jul 2019 14:44:21 +0100
-> >> Peter Maydell <peter.maydell@linaro.org> wrote:
-> >>
-> >>> On Tue, 30 Jul 2019 at 14:42, Cornelia Huck <cohuck@redhat.com> wrote:
-> >>>> I'm having a hard time figuring out what a 'cold' or a 'warm' reset =
-is
-> >>>> supposed to be... can you add a definition/guideline somewhere?
-> >>>
-> >>> Generally "cold" reset is "power on" and "warm" is "we were already
-> >>> powered-on, but somebody flipped a reset line somewhere".
-> >>
-> >> Ok, that makes sense... my main concern is to distinguish that in a
-> >> generic way, as it is a generic interface. What about adding something
-> >> like:
-> >>
-> >> "A 'cold' reset means that the object to be reset is initially reset; =
-a 'warm'
-> >> reset means that the object to be reset has already been initialized."
-> >>
-> >> Or is that again too generic?
-> >=20
-> > I think it doesn't quite capture the idea -- an object can have already
-> > been reset and then get a 'cold' reset: this is like having a powered-on
-> > machine and then power-cycling it.
-> >=20
-> > The 'warm' reset is the vaguer one, because the specific behaviour
-> > is somewhat device-dependent (many devices might not have any
-> > difference from 'cold' reset, for those that do the exact detail
-> > of what doesn't get reset on warm-reset will vary). But every
-> > device should have some kind of "as if you power-cycled it" (or
-> > for QEMU, "go back to the same state as if you just started QEMU on the
-> > command line"). Our current "reset" method is really cold-reset.
-> >=20
+> Vmstate subsections are also added to the existsing device_reset
+> subsection.
+
+This doesn't seem like a thing that should be present on every single
+DeviceState.
+
 >=20
-> Exactly. In the following patches, I've tried to replace existing reset
-> calls by cold or warm reset depending on whether:
-> + it is called through the main system reset -> cold
-> + it is called during normal life-time       -> warm
+> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+> ---
+>  hw/core/qdev-vmstate.c | 15 ++++++++++
+>  hw/core/qdev.c         | 65 ++++++++++++++++++++++++++++++++++++++++++
+>  include/hw/qdev-core.h | 57 ++++++++++++++++++++++++++++++++++++
+>  3 files changed, 137 insertions(+)
 >=20
-> But I definitely can add some docs/comments to better explain that.
-
-Hrm, that helps, but it still seems pretty vague to me.
-
-It's not really my call, but building the concept of warm versus cold
-resets into such a generic interface seems pretty dubios to me.  While
-it's moderately common for things to have a notion of warm versus cold
-reset it's certainly not universal.  There are many devices where
-there's no meaningful difference between the two.  There are some
-devices where there are > 2 different types of reset suitable for
-various different situations.
-
-Is there any way this could work with it usually just presenting the
-cold reset (which is the closest to a universal concept), and any warm
-or additional resets are handled buy a different instance of the
-Resettable interface?
+> diff --git a/hw/core/qdev-vmstate.c b/hw/core/qdev-vmstate.c
+> index 24f8465c61..72f84c6cee 100644
+> --- a/hw/core/qdev-vmstate.c
+> +++ b/hw/core/qdev-vmstate.c
+> @@ -24,10 +24,23 @@ static int device_vmstate_reset_post_load(void *opaqu=
+e, int version_id)
+>  {
+>      DeviceState *dev =3D (DeviceState *) opaque;
+>      BusState *bus;
+> +    uint32_t io_count =3D 0;
+> +
+>      QLIST_FOREACH(bus, &dev->child_bus, sibling) {
+>          bus->resetting =3D dev->resetting;
+>          bus->reset_is_cold =3D dev->reset_is_cold;
+>      }
+> +
+> +    if (dev->cold_reset_input.state) {
+> +        io_count +=3D 1;
+> +    }
+> +    if (dev->warm_reset_input.state) {
+> +        io_count +=3D 1;
+> +    }
+> +    /* ensure resetting count is coherent with io states */
+> +    if (dev->resetting < io_count) {
+> +        return -1;
+> +    }
+>      return 0;
+>  }
+> =20
+> @@ -40,6 +53,8 @@ const struct VMStateDescription device_vmstate_reset =
+=3D {
+>      .fields =3D (VMStateField[]) {
+>          VMSTATE_UINT32(resetting, DeviceState),
+>          VMSTATE_BOOL(reset_is_cold, DeviceState),
+> +        VMSTATE_BOOL(cold_reset_input.state, DeviceState),
+> +        VMSTATE_BOOL(warm_reset_input.state, DeviceState),
+>          VMSTATE_END_OF_LIST()
+>      },
+>  };
+> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+> index 88387d3743..11a4de55ea 100644
+> --- a/hw/core/qdev.c
+> +++ b/hw/core/qdev.c
+> @@ -450,6 +450,67 @@ void qdev_init_gpio_in(DeviceState *dev, qemu_irq_ha=
+ndler handler, int n)
+>      qdev_init_gpio_in_named(dev, handler, NULL, n);
+>  }
+> =20
+> +static DeviceResetInputState *device_get_reset_input_state(DeviceState *=
+dev,
+> +                                                            bool cold)
+> +{
+> +    return cold ? &dev->cold_reset_input : &dev->warm_reset_input;
+> +}
+> +
+> +static void device_reset_handler(DeviceState *dev, bool cold, bool level)
+> +{
+> +    DeviceResetInputState *dris =3D device_get_reset_input_state(dev, co=
+ld);
+> +
+> +    if (dris->type =3D=3D DEVICE_RESET_ACTIVE_LOW) {
+> +        level =3D !level;
+> +    }
+> +
+> +    if (dris->state =3D=3D level) {
+> +        /* io state has not changed */
+> +        return;
+> +    }
+> +
+> +    dris->state =3D level;
+> +
+> +    if (level) {
+> +        resettable_assert_reset(OBJECT(dev), cold);
+> +    } else {
+> +        resettable_deassert_reset(OBJECT(dev));
+> +    }
+> +}
+> +
+> +static void device_cold_reset_handler(void *opaque, int n, int level)
+> +{
+> +    device_reset_handler((DeviceState *) opaque, true, level);
+> +}
+> +
+> +static void device_warm_reset_handler(void *opaque, int n, int level)
+> +{
+> +    device_reset_handler((DeviceState *) opaque, false, level);
+> +}
+> +
+> +void qdev_init_reset_gpio_in_named(DeviceState *dev, const char *name,
+> +                                   bool cold, DeviceResetActiveType type)
+> +{
+> +    DeviceResetInputState *dris =3D device_get_reset_input_state(dev, co=
+ld);
+> +    qemu_irq_handler handler;
+> +
+> +    switch (type) {
+> +    case DEVICE_RESET_ACTIVE_LOW:
+> +    case DEVICE_RESET_ACTIVE_HIGH:
+> +        break;
+> +    default:
+> +        assert(false);
+> +        break;
+> +    }
+> +
+> +    assert(!dris->exists);
+> +    dris->exists =3D true;
+> +    dris->type =3D type;
+> +
+> +    handler =3D cold ? device_cold_reset_handler : device_warm_reset_han=
+dler;
+> +    qdev_init_gpio_in_named(dev, handler, name, 1);
+> +}
+> +
+>  void qdev_init_gpio_out_named(DeviceState *dev, qemu_irq *pins,
+>                                const char *name, int n)
+>  {
+> @@ -1007,6 +1068,10 @@ static void device_initfn(Object *obj)
+>      dev->instance_id_alias =3D -1;
+>      dev->realized =3D false;
+>      dev->resetting =3D 0;
+> +    dev->cold_reset_input.exists =3D false;
+> +    dev->cold_reset_input.state =3D false;
+> +    dev->warm_reset_input.exists =3D false;
+> +    dev->warm_reset_input.state =3D false;
+> =20
+>      object_property_add_bool(obj, "realized",
+>                               device_get_realized, device_set_realized, N=
+ULL);
+> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+> index 926d4bbcb1..f724ddc8f4 100644
+> --- a/include/hw/qdev-core.h
+> +++ b/include/hw/qdev-core.h
+> @@ -136,6 +136,23 @@ struct NamedGPIOList {
+>      QLIST_ENTRY(NamedGPIOList) node;
+>  };
+> =20
+> +typedef enum DeviceResetActiveType {
+> +    DEVICE_RESET_ACTIVE_LOW,
+> +    DEVICE_RESET_ACTIVE_HIGH,
+> +} DeviceResetActiveType;
+> +
+> +/**
+> + * DeviceResetInputState:
+> + * @exists: tell if io exists
+> + * @type: tell whether the io active low or high
+> + * @state: true if reset is currently active
+> + */
+> +typedef struct DeviceResetInputState {
+> +    bool exists;
+> +    DeviceResetActiveType type;
+> +    bool state;
+> +} DeviceResetInputState;
+> +
+>  /**
+>   * DeviceState:
+>   * @realized: Indicates whether the device has been fully constructed.
+> @@ -143,6 +160,8 @@ struct NamedGPIOList {
+>   * used to count how many times reset has been initiated on the device.
+>   * @reset_is_cold: If the device is under reset, indicates whether it is=
+ cold
+>   * or warm.
+> + * @cold_reset_input: state data for cold reset io
+> + * @warm_reset_input: state data for warm reset io
+>   *
+>   * This structure should not be accessed directly.  We declare it here
+>   * so that it can be embedded in individual device state structures.
+> @@ -167,6 +186,8 @@ struct DeviceState {
+>      uint32_t resetting;
+>      bool reset_is_cold;
+>      bool reset_hold_needed;
+> +    DeviceResetInputState cold_reset_input;
+> +    DeviceResetInputState warm_reset_input;
+>  };
+> =20
+>  struct DeviceListener {
+> @@ -372,6 +393,42 @@ static inline void qdev_init_gpio_in_named(DeviceSta=
+te *dev,
+>  void qdev_pass_gpios(DeviceState *dev, DeviceState *container,
+>                       const char *name);
+> =20
+> +/**
+> + * qdev_init_reset_gpio_in_named:
+> + * Create a gpio controlling the warm or cold reset of the device.
+> + *
+> + * @cold: specify whether it triggers cold or warm reset
+> + * @type: what kind of reset io it is
+> + *
+> + * Note: the io is considered created in its inactive state. No reset
+> + * is started by this function.
+> + */
+> +void qdev_init_reset_gpio_in_named(DeviceState *dev, const char *name,
+> +                                   bool cold, DeviceResetActiveType type=
+);
+> +
+> +/**
+> + * qdev_init_warm_reset_gpio:
+> + * Create the input to control the device warm reset.
+> + */
+> +static inline void qdev_init_warm_reset_gpio(DeviceState *dev,
+> +                                             const char *name,
+> +                                             DeviceResetActiveType type)
+> +{
+> +    qdev_init_reset_gpio_in_named(dev, name, false, type);
+> +}
+> +
+> +/**
+> + * qdev_init_cold_reset_gpio:
+> + * Create the input to control the device cold reset.
+> + * It can also be used as a power gate control.
+> + */
+> +static inline void qdev_init_cold_reset_gpio(DeviceState *dev,
+> +                                             const char *name,
+> +                                             DeviceResetActiveType type)
+> +{
+> +    qdev_init_reset_gpio_in_named(dev, name, true, type);
+> +}
+> +
+>  BusState *qdev_get_parent_bus(DeviceState *dev);
+> =20
+>  /*** BUS API. ***/
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -190,24 +354,24 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---BXVAT5kNtrzKuDFl
+--gdTfX7fkYsEEjebm
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl1BKyEACgkQbDjKyiDZ
-s5J7Fg/+If0wZcHwkyO/Gfc6jm7q4clR5PkknL3flknnadM3Q+a0qSVSudI12YBY
-cHMsYASW89HIAQLdaWAuztEOST1j/2dmLoCfV7zKZxW8Go4xeSIV4xcvDmoM7be6
-vYdA3Fp1Xl5xA/6IEd2Ti1uuJesAR7Ek+/OX9Xgl/RsGscH7kw84rjqhRUl+B0EX
-TrIrJ20+hag1pApuc/jwjh/evwRJQji3nTMTHE7Uhqq4PO/zFUaNX/VOtdmEyI9s
-cYUcTzcqWCsERyMKKVROUSVesdanofXo6+6m2I96MU9MzhpvFdY6E7Qg76CrRUUq
-myeEligXs03oLXQTXNoQAQUj0Ujc7eQ4vUy69Pw3hf3/smxho1sQ5DTjJxzb2glP
-0K+/uDjahi58wl/yqgkBno38kzl17EfOZlzfj7TF5m5TMwsJ4nW5M265lHKxqDTB
-wj2UvBk2K3HHzM2E2h/JeebP6Iwnpi8glbfL9lkgIrWR0g6hbTAqORTsvdImz09t
-Jm/YvI0UyIaEhOkyuwGTEYoJCLAl6VaGmIF1MamNkkhVZoISm2KHN2wqxYOr1onb
-fZTE5nJcqukQF5PDS7eV4jw1b8X1TFYeLxOPiBefxNu5PqFQI7UeuEf2UaF3nzAV
-SlwDum5aCwv1psOud/eOQbWI/hRUS37/Hz+iUE3LouVR815BEQg=
-=VnA+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl1BMPwACgkQbDjKyiDZ
+s5IINxAA4Vc6I8WjwCTpZSPAI8fdiXVCNWOqdTRWDmIDckrchhPkZ6RorQme66uw
+KpvksM8X0u5HcDkTvDiXhLcI2BxlZd5ibI56wgcZlxmAXUW95bwuopS5Nyn4yuWV
+UolClo3rwERQX6MjDO8N0aYovFngH9ebF2sYGu28PLNUxDuRrRGX1FhyJQ1eHPnY
+UyT8Oh4KbLzJjTTIEFmW4yRVKkg7yCd4R/lXwaQqKFo6xvSsNt/S6PwX8DfTMtf3
+qbdnIKjwTxgGyDI4ZdggmDOir33C80J5obC1IPLznXXtWCAwHmvgPcaF36o0wG8Z
+ETSBtJY2jVOmfme1Z7UGsIWmxkyDsGSjwG5NSKA94pYdU3BjTSK9UvfwLBil34mP
+qjmTS88fW5+6rhG8bTMUyzHfkZnPG1D9quE5EDvFb4iTzVOu5UX1oMrpouVE3nlU
+Gp0qK4w58A1mPomC5AMq1sCidK1AD0qILZKYxsnd0J+cu72OfhxUgehZqPkyo16g
+SRDendKFvkKEBMm8lUtqUFuDlONfWoJT4MZNM+SlxWNAHx+rMtTHSRHahkqEh6BV
+eyP9R45/X7t4ucUtBtm0XNXzxqVPDY5Hg+awVPE8mXH6SVsCIX4rYBJlcXd0AjaY
+lb35GPT+0jDVe/Z6+ZAujCEGxqJ0XOqzYtY5pmpVJJhq9bTRL3g=
+=p8+m
 -----END PGP SIGNATURE-----
 
---BXVAT5kNtrzKuDFl--
+--gdTfX7fkYsEEjebm--

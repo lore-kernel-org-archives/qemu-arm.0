@@ -1,239 +1,354 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6071281wrv;
-        Wed, 31 Jul 2019 13:38:29 -0700 (PDT)
-X-Received: by 2002:aa7:8dd2:: with SMTP id j18mr48614756pfr.88.1564605509448;
-        Wed, 31 Jul 2019 13:38:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564605509; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6071300wrv;
+        Wed, 31 Jul 2019 13:38:31 -0700 (PDT)
+X-Received: by 2002:a62:8f91:: with SMTP id n139mr8502397pfd.48.1564605510885;
+        Wed, 31 Jul 2019 13:38:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564605510; cv=none;
         d=google.com; s=arc-20160816;
-        b=rtPL+xEJuHwPrRaK6vaGyC2gcAIhsQGT7CraEKhTkn9+F/bMZ2MbElWFOG3CSO4FiL
-         0k96AU/igWSVJWh4pJeZ6QREl7Iotg96gS8mw48Cca3MzRnGWj2snEutdDUg59AW5CNI
-         mhPg2OIaj2h+EjV61scHOtpGTx/sB6DGRHACK3eNXT4vbTyLl3SDTzG0Jz0mOKKx4Rrq
-         qvQGpoTAZej//SprviWx5W9bYQfd///fQ6zEUpqxTFxMGiZjkyfyLeqI4nZKo7IDYlSY
-         bR2XpzFeklhY+lImvwa497NUNrewh1QPPcc8xlAxdb/jTuyETcN2F5Tfx42kVigYSDhj
-         YEag==
+        b=BsWwFyFvLLRUivtNTkmjkSwUnCAcC4tw9Yhh/3t7xid+6KRE/YuWx+ODJFLwPheqHU
+         iim/I7YWNMvuX1w/8wu/H/ILNZnwbL1cJfRukkx4dKt7eQM4k+sPZy7/36CcEUaBf6B8
+         D7sa8X+SHBwzLNky0JnD6QkXrbbNH22IEchY4I6e6CigZ0TmCX3U/Zukcez34ZvXvmrS
+         Cm7lffVkQ2/G/muvxXDR0WqmGtkjEkPWY83NfkdE8JlwGM+IfmwVOB5qnqqGGMvPr7na
+         UMqBhSXp4F5O0n6u1uJK8BjgJmTVUGzC2yTwkYDMMjVwT+XZbRVFpFPutsHWXYhI36LA
+         13PQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=CFTl19ZF5edhUenxmEwmpn5Y/VYa/1WL6bwC0O5YAUU=;
-        b=cEIitjp7eZfiAqbWzbN3YJswLgoCQ28rqMQKDJgaYLJ3gf4W89JwJADUDkCFPkXErE
-         5gp8yDbYQVKJWWG0UdkOE9UtuhldORR8CnzJlxMBs/qb40DxQQqlFkiYqTCipVLKS+47
-         8ACwaNcD37uNj/Y9YkG1Ma/oX959P8rtQy5nwzN5kEq4bbXQHqdFdwIaL+0dVgGuxHN2
-         QmVNHAvQWwbC4f3XAvfzOdSZnUq9eCbjYm+6xQfNOHpvhWkh24VvyKXrhe6LJ6X8FKKG
-         sL+QfJH2f+WMUg76A2nGXcPDqi6Pj3ul9uTE3u4DB8yVunFfrfMH5JnK0bqgkiLt9ejE
-         WfqQ==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=mRFuXKk2Gwl0/7zE7hzogtQkhwOwZ57w0oxCxJ+Y7Jc=;
+        b=dLMjV/JML5K7xFZDYIVoL8CEH/JBhgpk7464WBF/WJ5YNTbhINwa+5ccRCk9tx9hly
+         GceO0i2zFq+FmQnTtoCWmQhUKjznlM15NH5TM5UGIfOt8KkBH9LAoPiC60ji9xsHLfXW
+         W6LONjFi/mwVn4wV0PKWE/GIepbKG4tCduOZKQFPQcQ/Xwy8SJM1sTOfZVoRe3429weT
+         8ZEVvjoGrKlEXcT+9VUpJ3HqJYIfmurQd4Hu108Pl906YPZtQztSDAxSNrpzACp3idGB
+         zhZzMc+YPHFO1Mp39eKmxKMrZPcb1c1iojMQTmodr6w0ryFzGjLs9ESWG9R8HthMhXeu
+         b7qw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=amuUyuNw;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fGPtrJi5;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id b64sor3493616pjc.24.2019.07.31.13.38.29
+        by mx.google.com with SMTPS id 11sor27866876pgf.75.2019.07.31.13.38.30
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 31 Jul 2019 13:38:29 -0700 (PDT)
+        Wed, 31 Jul 2019 13:38:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=amuUyuNw;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fGPtrJi5;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=CFTl19ZF5edhUenxmEwmpn5Y/VYa/1WL6bwC0O5YAUU=;
-        b=amuUyuNwDci6gXi5XG1g/VwjnH2iPNi7yLWFwNScGq65RDwAoi1nJAx+bRS0q49EN5
-         oK8W2K/TN2nqy7CVzonuNVUM+JIITKfOG98/TCzvh0qNE/5HUHTEcKWDHY+FQxVCvYf3
-         B12VxhY/wLtFJj7v1fkdvPULody89gFCTh2UOaJ0cpDRbdLVrMb01o6/FeA2a+OgjPPA
-         o+QTwKVmcBEfzSi6tcyetU2ubXGsd7xC7M1Km/POBvW4rvsa9hJYImXfTFTPIJWeSl4M
-         RLDvQ3r5WBeYo1ZY8wZJbqKQ8Gy2XL8dk/5bYFMAXb9kW6zqdiUfSKPIBz5QYYKJ1cBY
-         WHyA==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=mRFuXKk2Gwl0/7zE7hzogtQkhwOwZ57w0oxCxJ+Y7Jc=;
+        b=fGPtrJi5lMT5db66q3lUVogvy1stjLkaPyGvAtBruficEjFf1GvyrkRNhgkQl2/+Uy
+         PytEwlEo6zjLNTsti/sxJCtyURJN1c/GHPruTRIM1qdfdeGgutEryRyGQzlFZf3pHqLg
+         Ivkq3Qq+R8rFUk1KnhllUNqnojOcSoCOVLX7du2gD/3wM79ZmeOsXB2Wf0y3GtSDQALc
+         GhobsRrQjPV5M+S6svitEK/ZjYtfMlEMiPYsUmhs+baG/X8wrbFaR6i3R+WEYrcHhMCs
+         Wn9bbbjAM4C7USvW50fi5Q3F/jskctSNB5bIl4bqsgo4trJQTP8k6b3sLRTJoHx8CD9i
+         7Gqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=CFTl19ZF5edhUenxmEwmpn5Y/VYa/1WL6bwC0O5YAUU=;
-        b=l8HPimscx90LlgC3A1GsyeL8gt85mzNV8uqxxT6PbOQNOwL6RpBSyrdndcVt68SfKX
-         jC/o89EhSuBcbqVin7HHXYu5PXnershcPBuJuPIU2WP4iMiYnJx/BlUBJjplMvGJUmEG
-         6GIB1qKZk8pJaxhhsCzhCzJFNip1DoKgKtOwpKfflagzX/aaIEE7LPuI77MWFGOBbEve
-         f+DWF0/KT6t+QKL52sHWZ4zkrlLuuX3+hJtEvxM1DKp/4ksOidGfGNrKZcAu0C6JqFYR
-         JjQ9VDRkEk2WPHLnEFmqAOc3ayo3cug3ek+5isxYgwUmW3YEdp7RgC7XpDslUeRLgW4I
-         tOHg==
-X-Gm-Message-State: APjAAAUVFEJlDea0RuJ6fd70GYuVV2RjU0WPSA7wDITnBMFrsNG1PaxI
-	TeLnbmvkD0T4/YZoWU+WQD/jbZDN
-X-Google-Smtp-Source: APXvYqyGLOOxqQiryuyFxgUVwuW7mgaPqKiJOD2c2zGANGfK5om39sexJYEq4WObtiteKWKW8qlNng==
-X-Received: by 2002:a17:90a:2ec1:: with SMTP id h1mr4754846pjs.101.1564605508954;
-        Wed, 31 Jul 2019 13:38:28 -0700 (PDT)
+         :references;
+        bh=mRFuXKk2Gwl0/7zE7hzogtQkhwOwZ57w0oxCxJ+Y7Jc=;
+        b=O0Q2GilPWL3VlFilzsbLaH91A/SO6XZFk0h/mVtKd9tFqNHMErpXJh8vG7C+tgT7Ui
+         wXjrTimh11Vfmm1qEAsWFBJOiaEYUQuUxHiprffsJTWojFYThprjcPjErh6gKGLL6UVp
+         3PcTZVd9SAKDg+ZvNE5FCtmIDF3BKRsfzQ91m45S1jqB5y9fIt9j8dv14v/EWD+Vr8GH
+         bqJXd6xSwDRVflsnpyOiYhOkjhfOMK0rJR1TSSqD3SiCfTvLE/JlMSNDKIkdWggsLsnV
+         yGpYDQ963nrjAb/DwrnYhMfn7z7PLq6xpwSieUH3z3m/9G0Qoa+fuCoyt0ep3jE234un
+         +bgg==
+X-Gm-Message-State: APjAAAV0IjfnEHbuUdoxngT2Fw5iySJyK0fOznddOlpiNk6i8Wc5Np0E
+	fztflc+tD+VIa+ihTtzv1Olu8i9a
+X-Google-Smtp-Source: APXvYqyhjZ5R+/B2YsiAszESP1POQNreO4Dns6HtEA1jSw4p0zZceg6blvW5kby/+CZe7bN6Hj4pxg==
+X-Received: by 2002:a65:610a:: with SMTP id z10mr115874511pgu.178.1564605510226;
+        Wed, 31 Jul 2019 13:38:30 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id g4sm84054164pfo.93.2019.07.31.13.38.27
+        by smtp.gmail.com with ESMTPSA id g4sm84054164pfo.93.2019.07.31.13.38.29
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Wed, 31 Jul 2019 13:38:28 -0700 (PDT)
+        Wed, 31 Jul 2019 13:38:29 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v2 11/32] target/arm: Add the hypervisor virtual counter
-Date: Wed, 31 Jul 2019 13:37:52 -0700
-Message-Id: <20190731203813.30765-12-richard.henderson@linaro.org>
+Subject: [PATCH v2 12/32] target/arm: Add VHE system register redirection and aliasing
+Date: Wed, 31 Jul 2019 13:37:53 -0700
+Message-Id: <20190731203813.30765-13-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190731203813.30765-1-richard.henderson@linaro.org>
 References: <20190731203813.30765-1-richard.henderson@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: A1QgABgesCtc
+X-TUID: 1DwEvhtycMIN
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Several of the EL1/0 registers are redirected to the EL2 version when in
+EL2 and HCR_EL2.E2H is set.  Many of these registers have side effects.
+Link together the two ARMCPRegInfo structures after they have been
+properly instantiated.  Install common dispatch routines to all of the
+relevant registers.
+
+The same set of registers that are redirected also have additional
+EL12/EL02 aliases created to access the original register that was
+redirected.
+
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu-qom.h |  1 +
- target/arm/cpu.h     | 11 +++++----
- target/arm/cpu.c     |  2 ++
- target/arm/helper.c  | 57 ++++++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 66 insertions(+), 5 deletions(-)
+ target/arm/cpu.h    |  44 +++++++----
+ target/arm/helper.c | 175 ++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 206 insertions(+), 13 deletions(-)
 
-diff --git a/target/arm/cpu-qom.h b/target/arm/cpu-qom.h
-index 2049fa9612..43fc8296db 100644
---- a/target/arm/cpu-qom.h
-+++ b/target/arm/cpu-qom.h
-@@ -76,6 +76,7 @@ void arm_gt_ptimer_cb(void *opaque);
- void arm_gt_vtimer_cb(void *opaque);
- void arm_gt_htimer_cb(void *opaque);
- void arm_gt_stimer_cb(void *opaque);
-+void arm_gt_hvtimer_cb(void *opaque);
- 
- #define ARM_AFF0_SHIFT 0
- #define ARM_AFF0_MASK  (0xFFULL << ARM_AFF0_SHIFT)
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index e37008a4f7..bba4e1f984 100644
+index bba4e1f984..a0f10b60eb 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -144,11 +144,12 @@ typedef struct ARMGenericTimer {
-     uint64_t ctl; /* Timer Control register */
- } ARMGenericTimer;
+@@ -2455,19 +2455,6 @@ struct ARMCPRegInfo {
+      */
+     ptrdiff_t fieldoffset; /* offsetof(CPUARMState, field) */
  
--#define GTIMER_PHYS 0
--#define GTIMER_VIRT 1
--#define GTIMER_HYP  2
--#define GTIMER_SEC  3
--#define NUM_GTIMERS 4
-+#define GTIMER_PHYS     0
-+#define GTIMER_VIRT     1
-+#define GTIMER_HYP      2
-+#define GTIMER_SEC      3
-+#define GTIMER_HYPVIRT  4
-+#define NUM_GTIMERS     5
+-    /* Offsets of the secure and non-secure fields in CPUARMState for the
+-     * register if it is banked.  These fields are only used during the static
+-     * registration of a register.  During hashing the bank associated
+-     * with a given security state is copied to fieldoffset which is used from
+-     * there on out.
+-     *
+-     * It is expected that register definitions use either fieldoffset or
+-     * bank_fieldoffsets in the definition but not both.  It is also expected
+-     * that both bank offsets are set when defining a banked register.  This
+-     * use indicates that a register is banked.
+-     */
+-    ptrdiff_t bank_fieldoffsets[2];
+-
+     /* Function for making any access checks for this register in addition to
+      * those specified by the 'access' permissions bits. If NULL, no extra
+      * checks required. The access check is performed at runtime, not at
+@@ -2502,6 +2489,37 @@ struct ARMCPRegInfo {
+      * fieldoffset is 0 then no reset will be done.
+      */
+     CPResetFn *resetfn;
++
++    union {
++        /*
++         * Offsets of the secure and non-secure fields in CPUARMState for
++         * the register if it is banked.  These fields are only used during
++         * the static registration of a register.  During hashing the bank
++         * associated with a given security state is copied to fieldoffset
++         * which is used from there on out.
++         *
++         * It is expected that register definitions use either fieldoffset
++         * or bank_fieldoffsets in the definition but not both.  It is also
++         * expected that both bank offsets are set when defining a banked
++         * register.  This use indicates that a register is banked.
++         */
++        ptrdiff_t bank_fieldoffsets[2];
++
++        /*
++         * "Original" writefn and readfn.
++         * For ARMv8.1-VHE register aliases, we overwrite the read/write
++         * accessor functions of various EL1/EL0 to perform the runtime
++         * check for which sysreg should actually be modified, and then
++         * forwards the operation.  Before overwriting the accessors,
++         * the original function is copied here, so that accesses that
++         * really do go to the EL1/EL0 version proceed normally.
++         * (The corresponding EL2 register is linked via opaque.)
++         */
++        struct {
++            CPReadFn *orig_readfn;
++            CPWriteFn *orig_writefn;
++        };
++    };
+ };
  
- typedef struct {
-     uint64_t raw_tcr;
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 9eb40ff755..e10b510c0b 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1218,6 +1218,8 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-                                           arm_gt_htimer_cb, cpu);
-     cpu->gt_timer[GTIMER_SEC] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
-                                           arm_gt_stimer_cb, cpu);
-+    cpu->gt_timer[GTIMER_HYPVIRT] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
-+                                              arm_gt_hvtimer_cb, cpu);
- #endif
- 
-     cpu_exec_realizefn(cs, &local_err);
+ /* Macros which are lvalues for the field in CPUARMState for the
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index e2fcb03da5..e0f5627218 100644
+index e0f5627218..e9f4cae5e8 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -2527,6 +2527,7 @@ static uint64_t gt_tval_read(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -5225,6 +5225,171 @@ static const ARMCPRegInfo el3_cp_reginfo[] = {
+     REGINFO_SENTINEL
+ };
  
-     switch (timeridx) {
-     case GTIMER_VIRT:
-+    case GTIMER_HYPVIRT:
-         offset = gt_virt_cnt_offset(env);
-         break;
-     }
-@@ -2543,6 +2544,7 @@ static void gt_tval_write(CPUARMState *env, const ARMCPRegInfo *ri,
- 
-     switch (timeridx) {
-     case GTIMER_VIRT:
-+    case GTIMER_HYPVIRT:
-         offset = gt_virt_cnt_offset(env);
-         break;
-     }
-@@ -2698,6 +2700,34 @@ static void gt_sec_ctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     gt_ctl_write(env, ri, GTIMER_SEC, value);
- }
- 
-+static void gt_hv_timer_reset(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    gt_timer_reset(env, ri, GTIMER_HYPVIRT);
-+}
-+
-+static void gt_hv_cval_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                             uint64_t value)
-+{
-+    gt_cval_write(env, ri, GTIMER_HYPVIRT, value);
-+}
-+
-+static uint64_t gt_hv_tval_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    return gt_tval_read(env, ri, GTIMER_HYPVIRT);
-+}
-+
-+static void gt_hv_tval_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                             uint64_t value)
-+{
-+    gt_tval_write(env, ri, GTIMER_HYPVIRT, value);
-+}
-+
-+static void gt_hv_ctl_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                            uint64_t value)
-+{
-+    gt_ctl_write(env, ri, GTIMER_HYPVIRT, value);
-+}
-+
- void arm_gt_ptimer_cb(void *opaque)
- {
-     ARMCPU *cpu = opaque;
-@@ -2726,6 +2756,13 @@ void arm_gt_stimer_cb(void *opaque)
-     gt_recalc_timer(cpu, GTIMER_SEC);
- }
- 
-+void arm_gt_hvtimer_cb(void *opaque)
-+{
-+    ARMCPU *cpu = opaque;
-+
-+    gt_recalc_timer(cpu, GTIMER_HYPVIRT);
-+}
-+
- static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     /* Note that CNTFRQ is purely reads-as-written for the benefit
-      * of software; writing it doesn't actually change the timer frequency.
-@@ -6849,6 +6886,26 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 0, .opc2 = 1,
-               .access = PL2_RW, .writefn = vmsa_tcr_ttbr_el2_write,
-               .fieldoffset = offsetof(CPUARMState, cp15.ttbr1_el[2]) },
 +#ifndef CONFIG_USER_ONLY
-+            { .name = "CNTHV_CVAL_EL2", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 4, .crn = 14, .crm = 3, .opc2 = 2,
-+              .fieldoffset =
-+                offsetof(CPUARMState, cp15.c14_timer[GTIMER_HYPVIRT].cval),
-+              .type = ARM_CP_IO, .access = PL2_RW,
-+              .writefn = gt_hv_cval_write, .raw_writefn = raw_write },
-+            { .name = "CNTHV_TVAL_EL2", .state = ARM_CP_STATE_BOTH,
-+              .opc0 = 3, .opc1 = 4, .crn = 14, .crm = 3, .opc2 = 0,
-+              .type = ARM_CP_NO_RAW | ARM_CP_IO, .access = PL2_RW,
-+              .resetfn = gt_hv_timer_reset,
-+              .readfn = gt_hv_tval_read, .writefn = gt_hv_tval_write },
-+            { .name = "CNTHV_CTL_EL2", .state = ARM_CP_STATE_BOTH,
-+              .type = ARM_CP_IO,
-+              .opc0 = 3, .opc1 = 4, .crn = 14, .crm = 3, .opc2 = 1,
-+              .access = PL2_RW,
-+              .fieldoffset =
-+                offsetof(CPUARMState, cp15.c14_timer[GTIMER_HYPVIRT].ctl),
-+              .writefn = gt_hv_ctl_write, .raw_writefn = raw_write },
++/* Test if system register redirection is to occur in the current state.  */
++static bool redirect_for_e2h(CPUARMState *env)
++{
++    return arm_current_el(env) == 2 && (arm_hcr_el2_eff(env) & HCR_E2H);
++}
++
++static uint64_t el2_e2h_read(CPUARMState *env, const ARMCPRegInfo *ri)
++{
++    CPReadFn *readfn;
++
++    if (redirect_for_e2h(env)) {
++        /* Switch to the saved EL2 version of the register.  */
++        ri = ri->opaque;
++        readfn = ri->readfn;
++    } else {
++        readfn = ri->orig_readfn;
++    }
++    if (readfn == NULL) {
++        readfn = raw_read;
++    }
++    return readfn(env, ri);
++}
++
++static void el2_e2h_write(CPUARMState *env, const ARMCPRegInfo *ri,
++                          uint64_t value)
++{
++    CPWriteFn *writefn;
++
++    if (redirect_for_e2h(env)) {
++        /* Switch to the saved EL2 version of the register.  */
++        ri = ri->opaque;
++        writefn = ri->writefn;
++    } else {
++        writefn = ri->orig_writefn;
++    }
++    if (writefn == NULL) {
++        writefn = raw_write;
++    }
++    writefn(env, ri, value);
++}
++
++static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
++{
++    struct E2HAlias {
++        uint32_t src_key, dst_key, new_key;
++        const char *src_name, *dst_name, *new_name;
++        bool (*feature)(const ARMISARegisters *id);
++    };
++
++#define K(op0, op1, crn, crm, op2) \
++    ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP, crn, crm, op0, op1, op2)
++
++    static const struct E2HAlias aliases[] = {
++        { K(3, 0,  1, 0, 0), K(3, 4,  1, 0, 0), K(3, 5, 1, 0, 0),
++          "SCTLR", "SCTLR_EL2", "SCTLR_EL12" },
++        { K(3, 0,  1, 0, 2), K(3, 4,  1, 1, 2), K(3, 5, 1, 0, 2),
++          "CPACR", "CPTR_EL2", "CPACR_EL12" },
++        { K(3, 0,  2, 0, 0), K(3, 4,  2, 0, 0), K(3, 5, 2, 0, 0),
++          "TTBR0_EL1", "TTBR0_EL2", "TTBR0_EL12" },
++        { K(3, 0,  2, 0, 1), K(3, 4,  2, 0, 1), K(3, 5, 2, 0, 1),
++          "TTBR1_EL1", "TTBR1_EL2", "TTBR1_EL12" },
++        { K(3, 0,  2, 0, 2), K(3, 4,  2, 0, 2), K(3, 5, 2, 0, 2),
++          "TCR_EL1", "TCR_EL2", "TCR_EL12" },
++        { K(3, 0,  4, 0, 0), K(3, 4,  4, 0, 0), K(3, 5, 4, 0, 0),
++          "SPSR_EL1", "SPSR_EL2", "SPSR_EL12" },
++        { K(3, 0,  4, 0, 1), K(3, 4,  4, 0, 1), K(3, 5, 4, 0, 1),
++          "ELR_EL1", "ELR_EL2", "ELR_EL12" },
++        { K(3, 0,  5, 1, 0), K(3, 4,  5, 1, 0), K(3, 5, 5, 1, 0),
++          "AFSR0_EL1", "AFSR0_EL2", "AFSR0_EL12" },
++        { K(3, 0,  5, 1, 1), K(3, 4,  5, 1, 1), K(3, 5, 5, 1, 1),
++          "AFSR1_EL1", "AFSR1_EL2", "AFSR1_EL12" },
++        { K(3, 0,  5, 2, 0), K(3, 4,  5, 2, 0), K(3, 5, 5, 2, 0),
++          "ESR_EL1", "ESR_EL2", "ESR_EL12" },
++        { K(3, 0,  6, 0, 0), K(3, 4,  6, 0, 0), K(3, 5, 6, 0, 0),
++          "FAR_EL1", "FAR_EL2", "FAR_EL12" },
++        { K(3, 0, 10, 2, 0), K(3, 4, 10, 2, 0), K(3, 5, 10, 2, 0),
++          "MAIR_EL1", "MAIR_EL2", "MAIR_EL12" },
++        { K(3, 0, 10, 3, 0), K(3, 4, 10, 3, 0), K(3, 5, 10, 3, 0),
++          "AMAIR0", "AMAIR_EL2", "AMAIR_EL12" },
++        { K(3, 0, 12, 0, 0), K(3, 4, 12, 0, 0), K(3, 5, 12, 0, 0),
++          "VBAR", "VBAR_EL2", "VBAR_EL12" },
++        { K(3, 0, 13, 0, 1), K(3, 4, 13, 0, 1), K(3, 5, 13, 0, 1),
++          "CONTEXTIDR_EL1", "CONTEXTIDR_EL2", "CONTEXTIDR_EL12" },
++        { K(3, 0, 14, 1, 0), K(3, 4, 14, 1, 0), K(3, 5, 14, 1, 0),
++          "CNTKCTL", "CNTHCTL_EL2", "CNTKCTL_EL12" },
++        { K(3, 3, 14, 2, 0), K(3, 4, 14, 2, 0), K(3, 5, 14, 2, 0),
++          "CNTP_TVAL_EL0", "CNTHP_TVAL_EL2", "CNTP_TVAL_EL02" },
++        { K(3, 3, 14, 2, 1), K(3, 4, 14, 2, 1), K(3, 5, 14, 2, 1),
++          "CNTP_CTL_EL0", "CNTHP_CTL_EL2", "CNTP_CTL_EL02" },
++        { K(3, 3, 14, 2, 2), K(3, 4, 14, 2, 2), K(3, 5, 14, 2, 2),
++          "CNTP_CVAL_EL0", "CNTHP_CVAL_EL2", "CNTP_CVAL_EL02" },
++        { K(3, 3, 14, 3, 0), K(3, 4, 14, 3, 0), K(3, 5, 14, 3, 0),
++          "CNTV_TVAL_EL0", "CNTHV_TVAL_EL2", "CNTV_TVAL_EL02" },
++        { K(3, 3, 14, 3, 1), K(3, 4, 14, 3, 1), K(3, 5, 14, 3, 1),
++          "CNTV_CTL_EL0", "CNTHV_CTL_EL2", "CNTV_CTL_EL02" },
++        { K(3, 3, 14, 3, 2), K(3, 4, 14, 3, 2), K(3, 5, 14, 3, 2),
++          "CNTV_CVAL_EL0", "CNTHV_CVAL_EL2", "CNTV_CVAL_EL02" },
++        /*
++         * CNTHV_CVAL is a special case because there is no separate
++         * AArch32 EL2 register to which CNTV_CVAL may be directed.
++         * The effect can be achieved via CNTHV_CVAL_EL2.
++         */
++        { ENCODE_CP_REG(15, 1, 1, 0, 14, 3, 0), K(3, 4, 14, 3, 2), 0,
++          "CNTV_CVAL", "CNTHV_CVAL_EL2", NULL },
++
++        /*
++         * Note that redirection of ZCR is mentioned in the description
++         * of ZCR_EL2, and aliasing in the description of ZCR_EL1, but
++         * not in the summary table.
++         */
++        { K(3, 0,  1, 2, 0), K(3, 4,  1, 2, 0), K(3, 5, 1, 2, 0),
++          "ZCR_EL1", "ZCR_EL2", "ZCR_EL12", isar_feature_aa64_sve },
++
++        /* TODO: ARMv8.2-SPE -- PMSCR_EL2 */
++        /* TODO: ARMv8.4-Trace -- TRFCR_EL2 */
++    };
++#undef K
++
++    size_t i;
++
++    for (i = 0; i < ARRAY_SIZE(aliases); i++) {
++        const struct E2HAlias *a = &aliases[i];
++        ARMCPRegInfo *src_reg, *dst_reg;
++
++        if (a->feature && !a->feature(&cpu->isar)) {
++            continue;
++        }
++
++        src_reg = g_hash_table_lookup(cpu->cp_regs, &a->src_key);
++        dst_reg = g_hash_table_lookup(cpu->cp_regs, &a->dst_key);
++        g_assert(src_reg != NULL);
++        g_assert(dst_reg != NULL);
++
++        /* Cross-compare names to detect typos in the keys.  */
++        g_assert(strcmp(src_reg->name, a->src_name) == 0);
++        g_assert(strcmp(dst_reg->name, a->dst_name) == 0);
++
++        /* None of the core system registers use opaque; we will.  */
++        g_assert(src_reg->opaque == NULL);
++
++        /* Create alias before redirection so we dup the right data. */
++        if (a->new_key) {
++            ARMCPRegInfo *new_reg = g_memdup(src_reg, sizeof(ARMCPRegInfo));
++            uint32_t *new_key = g_memdup(&a->new_key, sizeof(uint32_t));
++            bool ok;
++
++            new_reg->name = a->new_name;
++            new_reg->type |= ARM_CP_ALIAS;
++            /* Remove PL1/PL0 access, leaving PL2/PL3 R/W in place.  */
++            new_reg->access &= 0xf0;
++
++            ok = g_hash_table_insert(cpu->cp_regs, new_key, new_reg);
++            g_assert(ok);
++        }
++
++        src_reg->opaque = dst_reg;
++        src_reg->orig_readfn = src_reg->readfn;
++        src_reg->orig_writefn = src_reg->writefn;
++        src_reg->readfn = el2_e2h_read;
++        src_reg->writefn = el2_e2h_write;
++    }
++}
 +#endif
-             REGINFO_SENTINEL
-         };
-         define_arm_cp_regs(cpu, vhe_reginfo);
++
+ static CPAccessResult ctr_el0_access(CPUARMState *env, const ARMCPRegInfo *ri,
+                                      bool isread)
+ {
+@@ -6942,6 +7107,16 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+         : cpu_isar_feature(aa32_predinv, cpu)) {
+         define_arm_cp_regs(cpu, predinv_reginfo);
+     }
++
++#ifndef CONFIG_USER_ONLY
++    /*
++     * Register redirections and aliases must be done last,
++     * after the registers from the other extensions have been defined.
++     */
++    if (arm_feature(env, ARM_FEATURE_EL2) && cpu_isar_feature(aa64_vh, cpu)) {
++        define_arm_vh_e2h_redirects_aliases(cpu);
++    }
++#endif
+ }
+ 
+ void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
 -- 
 2.17.1

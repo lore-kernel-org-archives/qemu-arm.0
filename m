@@ -1,81 +1,82 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5456732wrv;
-        Wed, 31 Jul 2019 03:05:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwBQUqSI0Z8K/lqhWJDaJFyaqvEDhq/B75gpSTJY3IaEo7W09mY7Xk75XJbu1oRFTKdkihR
-X-Received: by 2002:aa7:ca49:: with SMTP id j9mr24402629edt.148.1564567550531;
-        Wed, 31 Jul 2019 03:05:50 -0700 (PDT)
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5461084wrv;
+        Wed, 31 Jul 2019 03:09:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyXzD+SnRRmP00BwBITD48UmF/umOV4WEJ9tIQFjr/dCR8CZE4yFZjeM4jnidUVvhOPfapT
+X-Received: by 2002:a50:f98a:: with SMTP id q10mr106229652edn.267.1564567751655;
+        Wed, 31 Jul 2019 03:09:11 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t38si20557359edb.15.2019.07.31.03.05.50
+        by mx.google.com with ESMTPS id k28si23119637ede.131.2019.07.31.03.09.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Jul 2019 03:05:50 -0700 (PDT)
+        Wed, 31 Jul 2019 03:09:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=bjOV4+Gp;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=SZeg6uWb;
        arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39458 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39500 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hslUT-00062h-Lv
-	for alex.bennee@linaro.org; Wed, 31 Jul 2019 06:05:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51363)
+	id 1hslXi-0007Pn-Oh
+	for alex.bennee@linaro.org; Wed, 31 Jul 2019 06:09:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52310)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <damien.hedde@greensocs.com>) id 1hslUN-00062I-HG
- for qemu-arm@nongnu.org; Wed, 31 Jul 2019 06:05:44 -0400
+ (envelope-from <damien.hedde@greensocs.com>) id 1hslXb-0007PJ-OO
+ for qemu-arm@nongnu.org; Wed, 31 Jul 2019 06:09:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1hslUL-0003Dv-VF
- for qemu-arm@nongnu.org; Wed, 31 Jul 2019 06:05:43 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:59690)
+ (envelope-from <damien.hedde@greensocs.com>) id 1hslXa-0004st-Tw
+ for qemu-arm@nongnu.org; Wed, 31 Jul 2019 06:09:03 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:59836)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1hslUL-0003C9-Cm; Wed, 31 Jul 2019 06:05:41 -0400
+ id 1hslXa-0004sR-MX; Wed, 31 Jul 2019 06:09:02 -0400
 Received: from [172.16.11.117] (unknown [172.16.11.117])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 1D2F996F50;
- Wed, 31 Jul 2019 10:05:37 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 7D63D96F50;
+ Wed, 31 Jul 2019 10:09:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1564567539;
+ s=mail; t=1564567741;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=A264x5ClUypgBWpVmQ8KWpvcamOfMY020oGf4ui6c6A=;
- b=bjOV4+Gproz5NyAxrjpnxW2+LVC42zwvjPjjI7R6iqUeGwP6ZdMjGID+55VyV5ZoRfp/Oz
- 3XTYpsqFuWWNT3ZdOqdweWUSXslEpN7s+SW4Gb5Ml/KRpaCkVc10EuGH3jFV7i6JgA4YO6
- l1cYjC1THX2Fp8SUswU+AOnjflFR48I=
+ bh=FtZBQB8DT4en71goxDVZvd77dEX7543VUXeHbpv0V/I=;
+ b=SZeg6uWbHGINr/U/tP++VJcjrXJZZzsgMmIS5g5MzN4uhr+OgKHT4/eUo/qsSONZlxOyqB
+ EG1k7Mlj0K/DwjleThrGHcPyAmRcawbsca93oDqfm+AzwIlnH3erEBXJvvosPs5War2y5j
+ K0im6MJoGMZTQfhEEQlWt2jbBi3V0mE=
 To: David Gibson <david@gibson.dropbear.id.au>
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-10-damien.hedde@greensocs.com>
- <20190731063044.GG2032@umbus.fritz.box>
+ <20190729145654.14644-9-damien.hedde@greensocs.com>
+ <20190731061108.GF2032@umbus.fritz.box>
 From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <00f40c0d-ecef-0310-201c-f2ac4a773258@greensocs.com>
-Date: Wed, 31 Jul 2019 12:05:37 +0200
+Message-ID: <4e30472f-1800-af8f-4bd2-18ce7147162b@greensocs.com>
+Date: Wed, 31 Jul 2019 12:09:00 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.1
 MIME-Version: 1.0
-In-Reply-To: <20190731063044.GG2032@umbus.fritz.box>
+In-Reply-To: <20190731061108.GF2032@umbus.fritz.box>
 Content-Type: text/plain; charset=windows-1252
 Content-Language: en-US-large
 Content-Transfer-Encoding: 7bit
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1564567539;
+ s=mail; t=1564567741;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=A264x5ClUypgBWpVmQ8KWpvcamOfMY020oGf4ui6c6A=;
- b=s3XLrBj5eCbSwifcpkg/Xt4fOIkIbFvMQ0L7IIhMuHOW/mJGfaqkuVQdE7rjC+fSFgPd27
- QVW4Zyepq8M2CWOCxhxOKFMrMOdhy/hNJA+P2HEEo39nMbvff2NtSCrriCL+Ycp8BvNrp4
- Cg8dvxFa6g6V3h173obPKLYIl3LEp2E=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564567539; a=rsa-sha256; cv=none;
- b=xjPQOjcQZguiBFljKK7R7MNFT8acgTQSAyV3Dj8WaVK48VjUS3XeSQny0+W2BT4aTrS7eL
- liDgYSWIUk5H1GoVcNf9NYGA31Gixgg4WfT8Z5hiWIpALpaMvOMLc6YxBLeHqxwPSdqCsJ
- 597djsafcFRmIpwGhIIDOy5oTaJCbAo=
+ bh=FtZBQB8DT4en71goxDVZvd77dEX7543VUXeHbpv0V/I=;
+ b=wkiTmo9f4VQKQWBWc5xVqrYNPscN6jVMDEg3FisFbPby7vg29IMpmd7xmWpQkNJwV+yXpC
+ kh9C/Mln4Glwr8KhS0rd7JkZlH6mKfcLWbL8MjiedxaGM84i/fFI51fZgCAoQBcx0Ka6K6
+ qie70sdBoyO/sbO8Y2NoFKz1D+JqAp4=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564567741; a=rsa-sha256; cv=none;
+ b=PkVK3f8pZTWsn9eP9uPzohQitzZl5p7OKPP8E/UxU655sNkNo7X87WWKHPyNxBDywrQUWF
+ XuvkQw4t99GzKasyEHKlsdCYuuzE0Zts3WlQnIVBmWgrqFOHM1oYQauawM9q8mAOhuv+MU
+ c1BsKxw6nzz5yQ0nNrcfQRm1k+0uPNY=
 ARC-Authentication-Results: i=1; ORIGINATING;
  auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 5.135.226.135
-Subject: Re: [Qemu-arm] [PATCH v3 09/33] add doc about Resettable interface
+Subject: Re: [Qemu-arm] [PATCH v3 08/33] Add function to control reset with
+ gpio inputs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -99,156 +100,23 @@ Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
  pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WMLwsEa104EU
+X-TUID: 4Ho/pnXJHIwX
 
 
 
-On 7/31/19 8:30 AM, David Gibson wrote:
-> On Mon, Jul 29, 2019 at 04:56:30PM +0200, Damien Hedde wrote:
->> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
->> ---
->>  docs/devel/reset.txt | 165 +++++++++++++++++++++++++++++++++++++++++++
->>  1 file changed, 165 insertions(+)
->>  create mode 100644 docs/devel/reset.txt
+On 7/31/19 8:11 AM, David Gibson wrote:
+> On Mon, Jul 29, 2019 at 04:56:29PM +0200, Damien Hedde wrote:
+>> It adds the possibility to add 2 gpios to control the warm and cold reset.
+>> With theses ios, the reset can be maintained during some time.
+>> Each io is associated with a state to detect level changes.
 >>
->> diff --git a/docs/devel/reset.txt b/docs/devel/reset.txt
->> new file mode 100644
->> index 0000000000..c7a1eb068f
->> --- /dev/null
->> +++ b/docs/devel/reset.txt
->> @@ -0,0 +1,165 @@
->> +
->> +=====
->> +Reset
->> +=====
->> +
->> +The reset of qemu objects is handled using the Resettable interface declared
->> +in *include/hw/resettable.h*.
->> +As of now DeviceClass and BusClass implement this interface.
->> +
->> +
->> +Triggering reset
->> +----------------
->> +
->> +The function *resettable_reset* is used to trigger a reset on a given
->> +object.
->> +void resettable_reset(Object *obj, bool cold)
->> +
->> +The parameter *obj* must implement the Resettable interface.
+>> Vmstate subsections are also added to the existsing device_reset
+>> subsection.
 > 
-> And what happens if it doesn't?  This function has no way to report an
-> error.
+> This doesn't seem like a thing that should be present on every single
+> DeviceState.
 
-In the function, while retrieving the Resettable class, there is an
-assert checking the obj is compatible. We could put an error argument
-there to report that if that's preferable.
-But then it means an error object should be given for every reset call.
-
-> 
->> +The parameter *cold* is a boolean specifying whether to do a cold or warm
->> +reset
-> 
-> This doc really needs to explain the distinction between cold and warm
-> reset.
-
-ok
-
-> 
->> +For Devices and Buses there is also the corresponding helpers:
->> +void device_reset(Device *dev, bool cold)
->> +void bus_reset(Device *dev, bool cold)
-> 
-> What's the semantic difference between resetting a bus and resetting
-> the bridge device which owns it?
-
-I can't speak for specific cases.
-BusClass has already a reset method and qbus_reset_all is used as well
-as qdev_reset_all in current code base. Currently both devices and buses
-are used as reset entry point. I'm just keeping it that way.
-
-> 
->> +If one wants to put an object into a reset state. There is the
->> +*resettable_assert_reset* function.
->> +void resettable_assert_reset(Object *obj, bool cold)
->> +
->> +One must eventually call the function *resettable_deassert_reset* to end the
->> +reset state:
->> +void resettable_deassert_reset(Object *obj, bool cold)
->> +
->> +Calling *resettable_assert_reset* then *resettable_deassert_reset* is the
->> +same as calling *resettable_reset*.
->> +
->> +It is possible to interleave multiple calls to
->> + - resettable_reset,
->> + - resettable_assert_reset, and
->> + - resettable_deassert_reset.
->> +The only constraint is that *resettable_deassert_reset* must be called once
->> +per *resettable_assert_reset* call so that the object leaves the reset state.
->> +
->> +Therefore there may be several reset sources/controllers of a given object.
->> +The interface handle everything and the controllers do not need to know
->> +anything about each others. The object will leave reset state only when all
->> +controllers released their reset.
->> +
->> +All theses functions must called while holding the iothread lock.
->> +
->> +
->> +Implementing reset for a Resettable object : Multi-phase reset
->> +--------------------------------------------------------------
->> +
->> +The Resettable uses a multi-phase mechanism to handle some ordering constraints
->> +when resetting multiple object at the same time. For a given object the reset
->> +procedure is split into three different phases executed in order:
->> + 1 INIT: This phase should set/reset the state of the Resettable it has when is
->> +         in reset state. Side-effects to others object is forbidden (such as
->> +         setting IO level).
->> + 2 HOLD: This phase corresponds to the external side-effects due to staying into
->> +         the reset state.
->> + 3 EXIT: This phase corresponds to leaving the reset state. It have both
->> +         local and external effects.
->> +
->> +*resettable_assert_reset* does the INIT and HOLD phases. While
->> +*resettable_deassert_reset* does the EXIT phase.
->> +
->> +When resetting multiple object at the same time. The interface executes the
->> +given phase of the objects before going to the next phase. This guarantee that
->> +all INIT phases are done before any HOLD phase and so on.
->> +
->> +There is three methods in the interface so must be implemented in an object.
->> +The methods corresponds to the three phases:
->> +```
->> +typedef void (*ResettableInitPhase)(Object *obj);
->> +typedef void (*ResettableHoldPhase)(Object *obj);
->> +typedef void (*ResettableExitPhase)(Object *obj);
->> +typedef struct ResettableClass {
->> +    InterfaceClass parent_class;
->> +
->> +    struct ResettablePhases {
->> +        ResettableInitPhase init;
->> +        ResettableHoldPhase hold;
->> +        ResettableExitPhase exit;
->> +    } phases;
->> +    [...]
->> +} ResettableClass;
->> +```
->> +
->> +Theses methods should be updated when specializing an object. For this the
->> +helper function *resettable_class_set_parent_reset_phases* can be used to
->> +backup parent methods while changing the specialized ones.
->> +void resettable_class_set_parent_reset_phases(ResettableClass *rc,
->> +                                              ResettableInitPhase init,
->> +                                              ResettableHoldPhase hold,
->> +                                              ResettableExitPhase exit,
->> +
->> +For Devices and Buses, some helper exists to know if a device/bus is under
->> +reset and what type of reset it is:
->> +```
->> +bool device_is_resetting(DeviceState *dev);
->> +bool device_is_reset_cold(DeviceState *dev);
-> 
-> It's not really clear to me when *_is_reset_cold() would be useful.
-
-Useful only for devices/buses that have different cold/warm reset
-behavior. In particular this should be used in the reset init phase.
+I can revert to previous version where the io state has to be explicitly
+added in devices using it.
 
 Damien

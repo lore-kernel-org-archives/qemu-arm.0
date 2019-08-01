@@ -1,141 +1,100 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7022515wrv;
-        Thu, 1 Aug 2019 07:20:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxD/vxdBANUA92RzH7XEeeadFIiZAkuDAGVdQKclraXevT7HWnpnDEygnoatHJ4a8/dvNfL
-X-Received: by 2002:a1f:5285:: with SMTP id g127mr51570830vkb.83.1564669256756;
-        Thu, 01 Aug 2019 07:20:56 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1564669256; cv=pass;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7042355wrv;
+        Thu, 1 Aug 2019 07:38:30 -0700 (PDT)
+X-Received: by 2002:aca:7293:: with SMTP id p141mr56926758oic.122.1564670310265;
+        Thu, 01 Aug 2019 07:38:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564670310; cv=none;
         d=google.com; s=arc-20160816;
-        b=R90fSt5hjtR2WZEskUyNdUKpI444X8LrFd5YPP880Xvlli32cuXp/3J2kcKXXR+BF+
-         lynXS4TAYV3SSmGPDgQ+g5yC2pg+rY1bmhCTkoemvp1nPKX5vuxlsGX2IS1r8o0BF5Uv
-         p9pAcyWEjhDfCF8RSamHpuQ5x797ldYzQV/C6MsUG/F76F6VRiBuk1rnXvRj4XE4AgjA
-         D2HCFbL0AXxf3ovxB/UaVV1Gms2Ya+weV1BpYnFj0MbhCd09DIuutxuUyiqC99ePMYpi
-         08fK3+/s/xqKVmIMy7Bc0tMyBOjY/I6IkYasOeFtZ1LTlA2v8+EhJ7LXM9scr0HvzU3b
-         zfqw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=9/al+RlmCG68yjHS0+nQyhBsMsPmB3jwvG1d2/Kx/6c=;
-        b=au/fVniqKGBm6yOlrPjRnltv3Gf2i4pF3qcts3XPO+RFl4Ae8P2B7XG99FLWSXZXfE
-         DIcvY8VGPyRpRzRz8OGD0Hh2u4VoqUCN7eC0oNLjJisF6aI4HjScqthhTQxiH6Ys/JT6
-         QzHMKETEkYxLHlf4xa2G1Yl/hUVwPsjN1qXNcFZ2iFwRyhAbB+Yl+AVZ2MzBXgJ1zD4M
-         H5YLubghWsc/72eZENRg9DbEyVblKmuDay7iyqfEo8epbpHqbcDUsfaFGu0tUWg4cKZo
-         8ouo/TA6XlRzHRSsequDO7bE9YFaL/moFvbGFdGFBQHngbo9uUIC2tVGSwF6dihNjrK+
-         E1ZQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@greensocs.com header.s=mail header.b="FLT9z3/o";
-       arc=pass (i=1);
-       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
-Return-Path: <damien.hedde@greensocs.com>
-Received: from beetle.greensocs.com (beetle.greensocs.com. [5.135.226.135])
-        by mx.google.com with ESMTPS id x5si18014961vsi.291.2019.08.01.07.20.56
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Aug 2019 07:20:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) client-ip=5.135.226.135;
+        b=1DxDZv4S/MCpeCpcPDKdAutxdRe/PkqHM2XH6AMRJY6p7N0/WmD5YIN89JrhW0p5gE
+         9oaYhvcP+tK/GJGMAHgt9t7NVXeNJEsSEt6risHmX1G8lQjxfuUqLkKfQU/7peuVIdso
+         OYKKEaVc+IL15nkd5XkceoXv5/1SJL20i/rSVpXjtGXRRh40ow7aD7TfZHuVOs4UkSpt
+         B6JFHkeDNJhOrfu/9rEERy5ufDoE9fzFhDtMYdcxKqBQR5KXZJn+0Fq0jpT/iN/tmc1J
+         6P0JRJIoZt0USwtfIZQf4JvfOs37eA2z8n880zdft5k7eLkS4LuW4a8Lh9iU77rKbeTR
+         gYSQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=sd+kBTIn1vxtV46hDUciCkeOpwmQ7MLQs/Y6E4lbOlk=;
+        b=QK5WrVQJiCqp9NOm0Ivhfg86ejSoP9T95VF3N0nQko0/va8yT2ArUYSdBJDYMONB14
+         kquh1QFjnp3qbZGxMflrk5KU0yIj1SAgsy/Vm5koJgV28yYA7ktNJs4SwIB1u6RTZecA
+         tZCgC8Z6hffOyQTWxE+q+jJKW5Liszq3nODieQAWFI3gPJhsQgVzSBcLacR/KfRsDcdf
+         Ap6f435Gp5etb5KDu8/6xEmdGsAkTcQAcjHKCcj2QBTKCsCheakHHlAch68u4PEue9Dt
+         Qj2NEL9BxtMzsBXy0PDdQ3ambtHjHxgJylRZMfBpgJHaCDV1AkSS10TBLLiyySdxoQip
+         In7w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=d7CtjVII;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id 66sor32855768oih.141.2019.08.01.07.38.30
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 01 Aug 2019 07:38:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@greensocs.com header.s=mail header.b="FLT9z3/o";
-       arc=pass (i=1);
-       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
-Received: from [172.16.11.117] (unknown [172.16.11.117])
-	by beetle.greensocs.com (Postfix) with ESMTPSA id 4890D96F50;
-	Thu,  1 Aug 2019 14:20:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
-	s=mail; t=1564669254;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9/al+RlmCG68yjHS0+nQyhBsMsPmB3jwvG1d2/Kx/6c=;
-	b=FLT9z3/o/CxgwvtVIZVl3Cwv3+Pps5jDo1mU19kl9achq2nRv/kbJ3463lt/tjoH+cJx5Q
-	tthfqhVWm+TiQ9vgQxQOWR7dZmnATIdbejEVqvMRlzNeQUAblifDD/qok6WAs1hTvqhrhG
-	RWA39rFenrNhBB5pskcC3znMq8GGKOI=
+       dkim=pass header.i=@linaro.org header.s=google header.b=d7CtjVII;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=sd+kBTIn1vxtV46hDUciCkeOpwmQ7MLQs/Y6E4lbOlk=;
+        b=d7CtjVIIujX5QmgM5Ti0tRBBdy0ZQzCYhliixl+F16Pzx/MQ/RmKMu7Qf4ySFCD6P3
+         2uffV2HASIJJ99YdpouXvfipmgwhYhQOn7M7h7wrOFBMOOo9y3wc9we19BwbiEO9B3jn
+         O5KNm9Mh5Vir9sOso1xlz3/BrdTq6KnMmLfIY+lvAZPSslH3L79yUsgyu8sSnGe1lfns
+         xDcDX+GkYkD+2zDBVaGDtrOe/QQtZax7zjgBjZY/KY4ILXO9WYe7ZOtUkf7HF/lBNNHh
+         pLZWH6s9lmfGOINGYem7TeUlijjTcLgpeHgeHMs/H8R3B46AQmUKitsyPf7daCySu65U
+         VVDA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=sd+kBTIn1vxtV46hDUciCkeOpwmQ7MLQs/Y6E4lbOlk=;
+        b=DkHaxlWpy7xTQZxbIQRzMyGPQn30q+w26WH/dzwud2YwaVVDOQodYr7WNgdmzS9bVf
+         euZjZffnzBuDErVBWeF8GSeS1nr9Db5LZkfEy3RzRLZi7Dbj4EXML9+657VnO9wXqc6B
+         yRjrXdo5+4QAjl/4eVO+17Owf7lGq7Cc5pNAjUvRHVjLzM2OwQbiNhyzPZOx1hITn5Ju
+         d2reTY8QKcYNevJxyMX9mAOYx2/8DUg7Nc2NdufIgQj8fp/wbLTrf2xk+mXMTu8iNWwM
+         myILJgZrooJd8TtlZIDeGrKzeCLL25OG97vMVP0Dt14NsdObviJao8DxQE9IVDxkZx5y
+         XVMg==
+X-Gm-Message-State: APjAAAXWBEx8iMVWeZ5nVMNIWQCg4cOmhbzigUSD6hWZ7hPUUxGCri12
+	Pqof/mApcW5vQDFDgxoaDHn96sqXGF6w02/GvGLVP1wQQrk=
+X-Google-Smtp-Source: APXvYqzEvIY2nh0q0cKiIHdSiiMs6cqXWwr34dME9fJZdqYM9hLJKBGevw35/foXDbD/d/dqnkXolnBCX8h0qYWZOXM=
+X-Received: by 2002:a05:6808:8c2:: with SMTP id k2mr61800073oij.98.1564670309823;
+ Thu, 01 Aug 2019 07:38:29 -0700 (PDT)
+MIME-Version: 1.0
+References: <20190801105742.20036-1-peter.maydell@linaro.org> <af347b17-b524-1075-d462-2b0e6eef41a5@greensocs.com>
+In-Reply-To: <af347b17-b524-1075-d462-2b0e6eef41a5@greensocs.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 1 Aug 2019 15:38:18 +0100
+Message-ID: <CAFEAcA87XdDJH5TO-AiDfSqudmwzuY0yoa0H60objxXp3Bh9LA@mail.gmail.com>
 Subject: Re: [Qemu-devel] [PATCH for-4.1] target/arm: Avoid bogus NSACR traps
  on M-profile without Security Extension
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20190801105742.20036-1-peter.maydell@linaro.org>
-From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <af347b17-b524-1075-d462-2b0e6eef41a5@greensocs.com>
-Date: Thu, 1 Aug 2019 16:20:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.1
-MIME-Version: 1.0
-In-Reply-To: <20190801105742.20036-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US-large
-Content-Transfer-Encoding: 7bit
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
-	s=mail; t=1564669254;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9/al+RlmCG68yjHS0+nQyhBsMsPmB3jwvG1d2/Kx/6c=;
-	b=nu+c48VnDczwCR2StkbQDAAnq49BC/4KM7Sd4vuQF8o4sj+nM2R30Zx583St1g1H6Z+rgF
-	35Tn7Xg2L2VfyvGBCunsXCls+wbkBxjePnwr5MnpMnoMShniP2t98y6eu05vFBYzhoGuRS
-	9+5ZIfniBxYprsZKDNy4jn5xm8OBCSQ=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564669254; a=rsa-sha256;
-	cv=none;
-	b=qF7VLBUem9oXMALwJZenCWFpsMLx1nv/hHzHcEJz9C76bm3qblv7thiXRDEyFecCBxkKtF
-	R1DOIM+NKpeyFl6uQ8Tp2Tz2CFA/65NIilGpll/rsMlnBZLtiHaeyE+OKmcCG13cKJh4nf
-	Q19R1vea/w67vf0SxZuTg8dtPjykJsw=
-ARC-Authentication-Results: i=1;
-	ORIGINATING;
-	auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
-X-TUID: wY0FlbmtdvpR
+To: Damien Hedde <damien.hedde@greensocs.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: ctijkpdYNrN1
 
+On Thu, 1 Aug 2019 at 15:20, Damien Hedde <damien.hedde@greensocs.com> wrote:
+>
+>
+> On 8/1/19 12:57 PM, Peter Maydell wrote:
+> > In Arm v8.0 M-profile CPUs without the Security Extension and also in
+> > v7M CPUs, there is no NSACR register. However, the code we have to handle
+> > the FPU does not always check whether the ARM_FEATURE_M_SECURITY bit
+> > is set before testing whether env->v7m.nsacr permits access to the
+> > FPU. This means that for a CPU with an FPU but without the Security
+> > Extension we would always take a bogus fault when trying to stack
+> > the FPU registers on an exception entry.
+> >
+> > We could fix this by adding extra feature bit checks for all uses,
+> > but it is simpler to just make the internal value of nsacr 0x3ff
+>
+> s/0x3ff/0xcff/ I think, given you put 0xcff after and in the code
 
-On 8/1/19 12:57 PM, Peter Maydell wrote:
-> In Arm v8.0 M-profile CPUs without the Security Extension and also in
-> v7M CPUs, there is no NSACR register. However, the code we have to handle
-> the FPU does not always check whether the ARM_FEATURE_M_SECURITY bit
-> is set before testing whether env->v7m.nsacr permits access to the
-> FPU. This means that for a CPU with an FPU but without the Security
-> Extension we would always take a bogus fault when trying to stack
-> the FPU registers on an exception entry.
-> 
-> We could fix this by adding extra feature bit checks for all uses,
-> but it is simpler to just make the internal value of nsacr 0x3ff
+Yes, 0xcff is correct and the commit message is wrong. (Bits 8 and 9
+of the NSACR are RES0 in all situations.)
 
-s/0x3ff/0xcff/ I think, given you put 0xcff after and in the code
-
-> ("all non-secure accesses allowed"), since this is not guest
-> visible when the Security Extension is not present. This allows
-> us to continue to follow the Arm ARM pseudocode which takes a
-> similar approach. (In particular, in the v8.1 Arm ARM the register
-> is documented as reading as 0xcff in this configuration.)
-> 
-> Fixes: https://bugs.launchpad.net/qemu/+bug/1838475
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> I've marked this as for-4.1 because support for M-profile FPU
-> is new in this release and this is a pretty bad bug for it.
-> It probably doesn't qualify as so bad we need an rc4 but I
-> think we need an rc4 anyway and it probably does merit putting
-> in at that point.
-> 
->  target/arm/cpu.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
-> 
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 9eb40ff755f..ec2ab95dbeb 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -266,6 +266,14 @@ static void arm_cpu_reset(CPUState *s)
->               * on ARM_FEATURE_V8 (we don't let the guest see the bit).
->               */
->              env->v7m.aircr = R_V7M_AIRCR_BFHFNMINS_MASK;
-> +            /*
-> +             * Set NSACR to indicate "NS access permitted to everything";
-> +             * this avoids having to have all the tests of it being
-> +             * conditional on ARM_FEATURE_M_SECURITY. Note also that from
-> +             * v8.1M the guest-visible value of NSACR in a CPU without the
-> +             * Security Extension is 0xcff.
-> +             */
-> +            env->v7m.nsacr = 0xcff;
->          }
->  
->          /* In v7M the reset value of this bit is IMPDEF, but ARM recommends
-> 
+thanks
+-- PMM

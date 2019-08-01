@@ -1,154 +1,182 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6071590wrv;
-        Wed, 31 Jul 2019 13:38:54 -0700 (PDT)
-X-Received: by 2002:aa7:8106:: with SMTP id b6mr49224909pfi.5.1564605534658;
-        Wed, 31 Jul 2019 13:38:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564605534; cv=none;
-        d=google.com; s=arc-20160816;
-        b=TVhBvpgBSH3+S/+rAudFrV2DE9pAtwlhOENMZNY06SM6r967IHxKnBlv5AOBuWvIXD
-         yeI9ieCAqJjchmP9j12YuZfDaktBUwg7pAIgCao5LAJG7qY7c3EZJ4uhqdgGQ8/MxNAZ
-         JjFyxatSP11r/aJ3Xpw138BnvNRI47rgd0AMEJA9VMdMB4+qqxQNTblXNyX3wFkI3ty9
-         mf1lPhGj0G1QQIesheZ/8AON1qol6BmBISB1Kq+d9D1Pw3/uDmHgiB8/sbOdTkr7UlLy
-         BzLnSDu8Pz1hKM+5n2jsrVDsROQrq0YXyaBQ+V2EOcgk3aDvbYMkwh76sTFFRgNR9yeb
-         Ev/Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=rCEnVED33NpbOad0FfG1c7z9lc80+f3mCsiBq0HqyvU=;
-        b=EWVdR1za+pnFuVwypM1TpidyMpyKdOPGE8sYyPL6dYMfxsJ1W1JPM5kJa8UOkMpfR+
-         XAQTkLgJxdoXEjhQiVq8H25jQATAbZUFhJ63+4sfU7x3aq4HeMvRcloNS/H9nJuT7bXN
-         n+76hXWoXnDaSleBuS5f5U+Yfp/ytFwbJoQQgtUqoFzzKcs87CfWktIluxRQrRDW3xrG
-         252RAnatIVrpHTA3JKk65CzE2QJ5P5v5D8B1B3o3pUp25RtgvF7IcUUV0sZL8sh2TJyN
-         F5KCyEpWacmb5wncKHRgR+v34E6u2CDEpHe+WODPP2DaUac9qYGcYQoVouxhMQ4KTLbU
-         sqiw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DX5wfvfh;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id t5sor32859682pgp.83.2019.07.31.13.38.54
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6680570wrv;
+        Thu, 1 Aug 2019 02:19:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxI1Gjt+/pypSL9+Y01DQUuk+Q0sIxGDlK05aNk/IGHKt3uomIjVxx1ZzKTzXkC6Z279zpM
+X-Received: by 2002:ac8:f91:: with SMTP id b17mr88298335qtk.352.1564651156812;
+        Thu, 01 Aug 2019 02:19:16 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v5si1891431qtb.115.2019.08.01.02.19.16
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 31 Jul 2019 13:38:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 01 Aug 2019 02:19:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=DX5wfvfh;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=rCEnVED33NpbOad0FfG1c7z9lc80+f3mCsiBq0HqyvU=;
-        b=DX5wfvfhHx0n2P2s6jl6RwziKqDkDxXUOzDh7/6cIrZEbTQqGsEd+W+FyUdIZ0RkGw
-         P5arA1F6Y8ZC6vw5DUFCrz/he4PxGXmFRQJF35Dw3jLQEFo+QFxAjy61gKKerwr2lk9Y
-         TNewzFtsTvvoWeenZLzItpoSeulZVmILyKKjRMeSM81X+JANzAn3L9ivEeaDzkmGZVU3
-         3rj2vJoEBSFbi8KNDlqG0VZJJ8ZEzVM3H17Y25SD35h6qqPZIAjwffvfOAsThAcK2M+l
-         N52mDMflXcUB5Yl1qa1LhqLtrlMBOvc6TFUfo1iJuI3xal2npnqXgi2PbtiyCOTWmc+n
-         XvMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=rCEnVED33NpbOad0FfG1c7z9lc80+f3mCsiBq0HqyvU=;
-        b=t0Dvo/OCgAFTAl7F2kZbrctHAi5iX3HEKw0qjvSC6/O4vydmtLjAZyKJYl6oGNJDx2
-         625R4jqqOhtcIaHedoKaAJrlRrnzRrknLcuuD9K2NQf44qnPA1jSCieavs51HdSJ4R8W
-         c39VlvXmuz6OXok+ikeNh3EP2dw/ybO5bp2CRCqg2a/lqq43K/ViKm89pbCuqUUgaNom
-         v2dc0zo9xjZfAAqMBXoUvxyDXsODuX+Ofbblb5qYIoLALBujKUaJFOcCZszWovwvHQ38
-         blVDySQFFndX2AZKKff7RE3BaZWydM+uTuIOfUvONlUxnhLD5hpT+Wv1UGmFsvR5Zhe0
-         Tbvw==
-X-Gm-Message-State: APjAAAVGSc5bMzsJQfAE3i6g2CIJUQ3PV91j57nHmQcvFOHnsSa3fsnu
-	G75Wr4pNE8pBJ7hj+bk1Q2L1MpBW
-X-Google-Smtp-Source: APXvYqzT69kO8SA8gFvdvWnfzS57ZpuhMi0E9khqmPD/SwfJjVZy7cSrTQm9JoqEoxEuXVAW+pCVeQ==
-X-Received: by 2002:a65:430b:: with SMTP id j11mr113663987pgq.383.1564605534112;
-        Wed, 31 Jul 2019 13:38:54 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id g4sm84054164pfo.93.2019.07.31.13.38.53
-        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Wed, 31 Jul 2019 13:38:53 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	alex.bennee@linaro.org,
-	peter.maydell@linaro.org
-Subject: [PATCH v2 32/32] target/arm: generate a custom MIDR for -cpu max
-Date: Wed, 31 Jul 2019 13:38:13 -0700
-Message-Id: <20190731203813.30765-33-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190731203813.30765-1-richard.henderson@linaro.org>
-References: <20190731203813.30765-1-richard.henderson@linaro.org>
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=R1V8NuhT;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53990 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ht7Ey-0003Qi-D7
+	for alex.bennee@linaro.org; Thu, 01 Aug 2019 05:19:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35934)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <damien.hedde@greensocs.com>) id 1ht7Et-0003Qc-0T
+ for qemu-arm@nongnu.org; Thu, 01 Aug 2019 05:19:12 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <damien.hedde@greensocs.com>) id 1ht7Er-0007m6-PG
+ for qemu-arm@nongnu.org; Thu, 01 Aug 2019 05:19:10 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:39310)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1ht7Er-0007e8-7L; Thu, 01 Aug 2019 05:19:09 -0400
+Received: from [172.16.11.117] (unknown [172.16.11.117])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 23E3C96F50;
+ Thu,  1 Aug 2019 09:19:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1564651146;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2xEFMHvXxqwQhncoWzR+ekn2Dn0YHfOYMpy/iOjXnRU=;
+ b=R1V8NuhTuk5/DIKNl5KyCF+l8BKfD50Hvp+prdXQeucG/KqKTZerVBFE3NLT/8X9JvhkTH
+ BVa3NAKeJ2auf7idlkZmqkWp+1Qq1aeds3u3OCxtwXhcXk+HG4c1/svjVVO97Y5JzanQSo
+ ooYUbRVTIgEPqNMc841XcfmGamCSDyo=
+To: Christophe de Dinechin <dinechin@redhat.com>, qemu-devel@nongnu.org
+References: <20190729145654.14644-1-damien.hedde@greensocs.com>
+ <20190729145654.14644-2-damien.hedde@greensocs.com>
+ <20190730154209.2049f10a.cohuck@redhat.com>
+ <CAFEAcA-rwBiXkDEDuT-=KQVJ2A2ob16=P0obbZBPUfZeYXy+dQ@mail.gmail.com>
+ <20190730155547.7b201f5e.cohuck@redhat.com>
+ <CAFEAcA_BU3DECLVv2QD_RshR0OL3=GqGwsm0YAmEAE6_SpW=HA@mail.gmail.com>
+ <m1y30emrsh.fsf@redhat.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <e42eac74-b5f7-badd-f5e6-4423c8608a85@greensocs.com>
+Date: Thu, 1 Aug 2019 11:19:04 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: goG1fB7pVcRC
+In-Reply-To: <m1y30emrsh.fsf@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1564651146;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2xEFMHvXxqwQhncoWzR+ekn2Dn0YHfOYMpy/iOjXnRU=;
+ b=4qSE2tmUio0rdBSwJP8abQT8PiHvfY5B9llE6QaiTKxAadN7tV8hq+zWyZIYKDjYLoTWMB
+ afYFwInGJoXBssObG9OlU5dT8wQPnM2FOSNvlCzCBlwKMx2efszuk+vcywIcWxI6Ovsnoe
+ HK2LBLx8qOZJ/UQbKCGkzX3xXFFgMY4=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564651146; a=rsa-sha256; cv=none;
+ b=FZPsl2rIYHsM9fyAzdxfSB76ItuzJ3dkLqeHSCwULlnZjcaptaj9T2MAsIpitsn4NlUx+r
+ w8w2S2o88YEzsA0funzVEPERu92Pwnc80fm0mEc5VqJOrDwk1bLiZWzaqD4wkTa3tqXOB5
+ iQIYRynAf0O/WT30Ay7EmwTOLruWFkU=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 5.135.226.135
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 01/33] Create Resettable QOM
+ interface
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Gerd Hoffmann <kraxel@redhat.com>, Edgar Iglesias <edgar.iglesias@xilinx.com>,
+ Hannes Reinecke <hare@suse.com>, Qemu-block <qemu-block@nongnu.org>,
+ David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-s390x <qemu-s390x@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, John Snow <jsnow@redhat.com>,
+ Richard Henderson <rth@twiddle.net>,
+ "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ Mark Burton <mark.burton@greensocs.com>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: v+5mXbl8VbB0
 
-From: Alex Bennée <alex.bennee@linaro.org>
 
-While most features are now detected by probing the ID_* registers
-kernels can (and do) use MIDR_EL1 for working out of they have to
-apply errata. This can trip up warnings in the kernel as it tries to
-work out if it should apply workarounds to features that don't
-actually exist in the reported CPU type.
+On 7/31/19 12:17 PM, Christophe de Dinechin wrote:
+> 
+> Peter Maydell writes:
+> 
+>> On Tue, 30 Jul 2019 at 14:56, Cornelia Huck <cohuck@redhat.com> wrote:
+>>>
+>>> On Tue, 30 Jul 2019 14:44:21 +0100
+>>> Peter Maydell <peter.maydell@linaro.org> wrote:
+>>>
+>>>> On Tue, 30 Jul 2019 at 14:42, Cornelia Huck <cohuck@redhat.com> wrote:
+>>>>> I'm having a hard time figuring out what a 'cold' or a 'warm' reset is
+>>>>> supposed to be... can you add a definition/guideline somewhere?
+>>>>
+>>>> Generally "cold" reset is "power on" and "warm" is "we were already
+>>>> powered-on, but somebody flipped a reset line somewhere".
+>>>
+>>> Ok, that makes sense... my main concern is to distinguish that in a
+>>> generic way, as it is a generic interface. What about adding something
+>>> like:
+>>>
+>>> "A 'cold' reset means that the object to be reset is initially reset; a 'warm'
+>>> reset means that the object to be reset has already been initialized."
+>>>
+>>> Or is that again too generic?
+>>
+>> I think it doesn't quite capture the idea -- an object can have already
+>> been reset and then get a 'cold' reset: this is like having a powered-on
+>> machine and then power-cycling it.
+>>
+>> The 'warm' reset is the vaguer one, because the specific behaviour
+>> is somewhat device-dependent (many devices might not have any
+>> difference from 'cold' reset, for those that do the exact detail
+>> of what doesn't get reset on warm-reset will vary). But every
+>> device should have some kind of "as if you power-cycled it" (or
+>> for QEMU, "go back to the same state as if you just started QEMU on the
+>> command line"). Our current "reset" method is really cold-reset.
+> 
+> Is there any concept of locality associated with warm reset?
+> For example, you'd expect a cold reset to happen on the whole system,
+> but I guess a warm reset could be restricted to a single bus.
+> 
+> The documentation should give examples of how warm reset could be
+> triggered, and what it could do differently from cold reset.
+> 
 
-Avoid this problem by synthesising our own MIDR value.
+Not sure we really have some locality difference between cold/warm
+resets. I think, most generally, locality of reset is on a per-device
+scale with different grouping level (up to the whole system). But buses
+are not always the way things are grouped.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20190726113950.7499-1-alex.bennee@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpu.h   |  6 ++++++
- target/arm/cpu64.c | 19 +++++++++++++++++++
- 2 files changed, 25 insertions(+)
+Inside a soc (and microcontrollers in general) it follows more the clock
+tree than the internal bus tree. For example on the the machine I worked
+here (xilinx-zynq-a9) and, you can control by software the reset of
+basically every single device and the bus too (but resetting the bus
+does not reset devices on it).
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index c41da1d791..bc9b6db9b4 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1605,6 +1605,12 @@ FIELD(V7M_FPCCR, ASPEN, 31, 1)
- /*
-  * System register ID fields.
-  */
-+FIELD(MIDR_EL1, REVISION, 0, 4)
-+FIELD(MIDR_EL1, PARTNUM, 4, 12)
-+FIELD(MIDR_EL1, ARCHITECTURE, 16, 4)
-+FIELD(MIDR_EL1, VARIANT, 20, 4)
-+FIELD(MIDR_EL1, IMPLEMENTER, 24, 8)
-+
- FIELD(ID_ISAR0, SWAP, 0, 4)
- FIELD(ID_ISAR0, BITCOUNT, 4, 4)
- FIELD(ID_ISAR0, BITFIELD, 8, 4)
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index b1bb394c6d..3a1e98a18e 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -296,6 +296,25 @@ static void aarch64_max_initfn(Object *obj)
-         uint32_t u;
-         aarch64_a57_initfn(obj);
- 
-+        /*
-+         * Reset MIDR so the guest doesn't mistake our 'max' CPU type for a real
-+         * one and try to apply errata workarounds or use impdef features we
-+         * don't provide.
-+         * An IMPLEMENTER field of 0 means "reserved for software use";
-+         * ARCHITECTURE must be 0xf indicating "v7 or later, check ID registers
-+         * to see which features are present";
-+         * the VARIANT, PARTNUM and REVISION fields are all implementation
-+         * defined and we choose to define PARTNUM just in case guest
-+         * code needs to distinguish this QEMU CPU from other software
-+         * implementations, though this shouldn't be needed.
-+         */
-+        t = FIELD_DP64(0, MIDR_EL1, IMPLEMENTER, 0);
-+        t = FIELD_DP64(t, MIDR_EL1, ARCHITECTURE, 0xf);
-+        t = FIELD_DP64(t, MIDR_EL1, PARTNUM, 'Q');
-+        t = FIELD_DP64(t, MIDR_EL1, VARIANT, 0);
-+        t = FIELD_DP64(t, MIDR_EL1, REVISION, 0);
-+        cpu->midr = t;
-+
-         t = cpu->isar.id_aa64isar0;
-         t = FIELD_DP64(t, ID_AA64ISAR0, AES, 2); /* AES + PMULL */
-         t = FIELD_DP64(t, ID_AA64ISAR0, SHA1, 1);
--- 
-2.17.1
+On the other hand, there is some buses, like pci, which explicitly
+defines some bus reset mechanism with differences between cold and warm
+(some registers keep their values). (see
+https://wiki.qemu.org/Features/ResetAPI)
+
+Regarding cold reset, if a soc supports some power gating, you'll
+probably have non-global cold reset in the process.
+
+Do you mean "real world" example ?

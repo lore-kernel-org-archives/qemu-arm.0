@@ -1,192 +1,268 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6698703wrv;
-        Thu, 1 Aug 2019 02:35:34 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxajSR7qQBlGPomtMCvYtPE1Wyeglo9G+IkLUJOnRQsGLwNpH4i+zxNrAq6Z2ahVLXwSZsk
-X-Received: by 2002:a50:b566:: with SMTP id z35mr114770311edd.129.1564652134017;
-        Thu, 01 Aug 2019 02:35:34 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g27si20829223ejc.229.2019.08.01.02.35.33
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Aug 2019 02:35:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6958301wrv;
+        Thu, 1 Aug 2019 06:27:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwxBHJMWmSEoE4yZWGYSdzrLpq7V5P0Fs+HQengd0V71C3Zh2UPWLPIijdaCNAb5DNE7MQZ
+X-Received: by 2002:a17:906:84f:: with SMTP id f15mr34236345ejd.22.1564666044917;
+        Thu, 01 Aug 2019 06:27:24 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1564666044; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=e22rCg8lb8B8sfesZEMzedGjAptqmwRVqJ1inlJusZ//S1gzayKEb5aIBa5ePWK0YV
+         lQN8GRQteucc+zElFh4RR77q2oRbpooNyPay+gkSCNSQ8Ag9f9fuAqjaqbEuGP21nQTy
+         M2uTQUkIoc9CFf+YWHzo2Sa4ZPQZgr/GMO81iYLpyDa6gJ2w0yn3gD1G9zevzP1tAtwI
+         bcxg2Llyfq43IL02qDspYFZBwQ38n9AEM5CTjST8mqe3jfl0gyke/o0a3yYaW4QjVcEC
+         KQCPg7J1yHqCnbk2bbVG3DT+vSpjL8OShHF2YJmYxxHy6pNJbyxTqZP1x6xi5lpjOJ8d
+         kNoQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-transfer-encoding:content-id:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:dkim-signature;
+        bh=0cLIhCJHLXxq+SWthXwvTMEcYdhMZSn+6Zpj5ZqUCJY=;
+        b=PXp4Qtj4HfjdZnCQWJrfWk7og7fkXxmjoCjKQyoL1oD51VwEZFZu6U73Zc0dgp7e1k
+         YKslP6Hv4rhYvfX0kWN4LLLvTPeI+exBlAomjpge5YvwlCKWkYci60dbRYrAf0Z3fhfP
+         3uXk5MuOVikjzUc8VazKKxI5fTPvGGGlrMVU1orN4UWcVOrkR3rGcI2rbpI/MlczQSD6
+         ObC72/K9RYgQJI2e/o9gmJ+WZYAG4Yy2RtvzB2YL3J+ATq3FeQQzQYRdzVFqdJdQxSp2
+         GS+iAhed0HdvmEZxoIMzLtBJXRKhxcxIR0J4XxDhLruvPdJJDKrexKPc0DWV9oHiKsxs
+         O5uQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector1 header.b=E4qKgWrn;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
+       spf=pass (google.com: domain of aaron@os.amperecomputing.com designates 40.107.82.113 as permitted sender) smtp.mailfrom=aaron@os.amperecomputing.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
+Return-Path: <aaron@os.amperecomputing.com>
+Received: from NAM01-SN1-obe.outbound.protection.outlook.com (mail-eopbgr820113.outbound.protection.outlook.com. [40.107.82.113])
+        by mx.google.com with ESMTPS id i16si19499859ejr.287.2019.08.01.06.27.24
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 01 Aug 2019 06:27:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of aaron@os.amperecomputing.com designates 40.107.82.113 as permitted sender) client-ip=40.107.82.113;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=Owa0DGGa;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54092 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ht7Uj-0000jI-42
-	for alex.bennee@linaro.org; Thu, 01 Aug 2019 05:35:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38752)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <damien.hedde@greensocs.com>) id 1ht7Uc-0000hd-0l
- for qemu-arm@nongnu.org; Thu, 01 Aug 2019 05:35:27 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1ht7Ua-0006cU-Ob
- for qemu-arm@nongnu.org; Thu, 01 Aug 2019 05:35:25 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:39786)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1ht7Ua-0006b4-7g; Thu, 01 Aug 2019 05:35:24 -0400
-Received: from [172.16.11.117] (unknown [172.16.11.117])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 3E7D896F50;
- Thu,  1 Aug 2019 09:35:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1564652122;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=nriKtxb87UsfPA9J85BeVqjBwR431vjNFezY0aAKjYo=;
- b=Owa0DGGasQKiaj3LA9qgupXgm8u4ANQMWc2duWwDMzbqGl0odgBfJbjkDPryjNfH76mU4X
- aiWS3mgXue1hQJlKzk9pSkTY31e+zHy+6aiw72ljJaojxLQgjpZG1G2e1sWHetFfbUx+Sh
- hLnEVlQ+QNDPHfrRy3CYkFvEeyNcm1E=
-To: David Gibson <david@gibson.dropbear.id.au>
-References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-2-damien.hedde@greensocs.com>
- <20190730154209.2049f10a.cohuck@redhat.com>
- <CAFEAcA-rwBiXkDEDuT-=KQVJ2A2ob16=P0obbZBPUfZeYXy+dQ@mail.gmail.com>
- <20190730155547.7b201f5e.cohuck@redhat.com>
- <CAFEAcA_BU3DECLVv2QD_RshR0OL3=GqGwsm0YAmEAE6_SpW=HA@mail.gmail.com>
- <34a216b0-0067-8627-599c-6a67622c4bd2@greensocs.com>
- <20190731054612.GA2032@umbus.fritz.box>
-From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <1ed75cda-805e-af0b-77f5-62b9bc489e95@greensocs.com>
-Date: Thu, 1 Aug 2019 11:35:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.1
+       dkim=pass header.i=@os.amperecomputing.com header.s=selector1 header.b=E4qKgWrn;
+       arc=pass (i=1 spf=pass spfdomain=os.amperecomputing.com dkim=pass dkdomain=os.amperecomputing.com dmarc=pass fromdomain=os.amperecomputing.com);
+       spf=pass (google.com: domain of aaron@os.amperecomputing.com designates 40.107.82.113 as permitted sender) smtp.mailfrom=aaron@os.amperecomputing.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amperecomputing.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=k4S9Vnx0RqBisog9RJU6DY9mZrY9Q/BEhlWDC0aNKHoJM/4IjcbhTqogNKuH5g9qgbMygfqBmDkSnw6L3MYMU5aviOhJgDp7NfJXNIOkoLsggSsxZ4vmFR594xdAaDI1NUgWZQ7KrryVEFXaP4fI9a7XfVwPbAtMZ40ZPy/6bFckAwcQid/773Wv/YZ8/qjr3FX6PH8O2ReTxs3jY8Npr/lwd9fO1ZgAfCW/rUZv99FZzYVYXw/qAAHNN/c5klEgrQlxA+227stEmEP2qrapzoh7715wNKC+Huw6IVjy3CmZ80mjt6aHhQFA9A9W0DCGOep+1SKiAPp9fhcDxQkBQg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0cLIhCJHLXxq+SWthXwvTMEcYdhMZSn+6Zpj5ZqUCJY=;
+ b=iuqffrxpLP/V66BuFg/EfKQebBTwmwxNOiMF5skYXZAZj5WlUPPyHmjXrk65x15mk37SXhNoxcx/2iATwXiou7U12EEnalAxsrznz0DaaITPCWHG8fGiGG4PmEjqUbgI/rW2Isbr2Mt2cuxs1VYqbUa5meIWrEFwJH8+9Hqxoq9cfcCfwSWRhyjoampRbRS1pRH+xVKNeTq4UbQezKNLPUEqWC5q6STjPioZ/2Z66UhsarvrF8v4BJ+tOrKP0opNB7PvaN0LjoldYQIleizaUqbo+ob1PCVgJdaibAkGRVeHSZFRTOat/4/EsC3k0ruNqyHCV1Wiolxo1nt79OyD7g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1;spf=pass
+ smtp.mailfrom=os.amperecomputing.com;dmarc=pass action=none
+ header.from=os.amperecomputing.com;dkim=pass
+ header.d=os.amperecomputing.com;arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=os.amperecomputing.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0cLIhCJHLXxq+SWthXwvTMEcYdhMZSn+6Zpj5ZqUCJY=;
+ b=E4qKgWrn5rTRbMJFAz7sxb6VcFEjoXAtv0hmztfu/5NAW7SSHe6KaPW4k56laWMRdhz7mq4jicn8QR1PLS7LhzQZ0Q+T2kn4c2GXREU95mueg5c+L6nTAGBAxXwNDFDUnpnVAItDkG9icm/dkwQAqkwQ0RgGEYVRfCCuGZEMFGs=
+Received: from DM6PR01MB4825.prod.exchangelabs.com (20.177.218.222) by
+ DM6PR01MB4587.prod.exchangelabs.com (20.177.222.90) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2136.16; Thu, 1 Aug 2019 13:27:16 +0000
+Received: from DM6PR01MB4825.prod.exchangelabs.com
+ ([fe80::4943:2b46:af24:e807]) by DM6PR01MB4825.prod.exchangelabs.com
+ ([fe80::4943:2b46:af24:e807%7]) with mapi id 15.20.2136.010; Thu, 1 Aug 2019
+ 13:27:16 +0000
+From: Aaron Lindsay OS <aaron@os.amperecomputing.com>
+To: =?iso-8859-1?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "cota@braap.org"
+	<cota@braap.org>, "bobby.prani@gmail.com" <bobby.prani@gmail.com>, Peter
+ Maydell <peter.maydell@linaro.org>, "open list:ARM TCG CPUs"
+	<qemu-arm@nongnu.org>
+Subject: Re: [PATCH  v4 04/54] target/arm: remove run time semihosting checks
+Thread-Topic: [PATCH  v4 04/54] target/arm: remove run time semihosting checks
+Thread-Index: AQHVR7oL9+ayys4sVECwZPH13XtFFKbmSjSA
+Date: Thu, 1 Aug 2019 13:27:15 +0000
+Message-ID: <20190801132659.GJ5034@quinoa.localdomain>
+References: <20190731160719.11396-1-alex.bennee@linaro.org>
+ <20190731160719.11396-5-alex.bennee@linaro.org>
+In-Reply-To: <20190731160719.11396-5-alex.bennee@linaro.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-clientproxiedby: CY4PR21CA0046.namprd21.prod.outlook.com
+ (2603:10b6:903:12b::32) To DM6PR01MB4825.prod.exchangelabs.com
+ (2603:10b6:5:6b::30)
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=aaron@os.amperecomputing.com; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-originating-ip: [108.169.132.82]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: bd635bab-cd88-4e70-9824-08d71683f814
+x-microsoft-antispam:
+ BCL:0;PCL:0;RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(2017052603328)(7193020);SRVR:DM6PR01MB4587;
+x-ms-traffictypediagnostic: DM6PR01MB4587:
+x-microsoft-antispam-prvs:
+ <DM6PR01MB45877FECC47FB74BF12A05738ADE0@DM6PR01MB4587.prod.exchangelabs.com>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-forefront-prvs: 01165471DB
+x-forefront-antispam-report:
+ SFV:NSPM;SFS:(10019020)(4636009)(136003)(39830400003)(346002)(396003)(376002)(366004)(199004)(189003)(256004)(3846002)(6486002)(25786009)(478600001)(66946007)(486006)(14444005)(66476007)(66556008)(64756008)(66446008)(53936002)(14454004)(66066001)(11346002)(229853002)(4326008)(476003)(6436002)(6512007)(9686003)(6246003)(81156014)(81166006)(68736007)(71190400001)(71200400001)(66574012)(1076003)(6916009)(33656002)(2906002)(186003)(26005)(8676002)(5660300002)(8936002)(54906003)(99286004)(76176011)(6116002)(316002)(86362001)(446003)(102836004)(52116002)(305945005)(7736002)(6506007)(386003);DIR:OUT;SFP:1102;SCL:1;SRVR:DM6PR01MB4587;H:DM6PR01MB4825.prod.exchangelabs.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;A:0;MX:1;
+received-spf: None (protection.outlook.com: os.amperecomputing.com does not
+ designate permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info:
+ 4Jjd34pR9lA4HJDqk/GD7oAaEttz395vk3q/5tFmd57HEdQ6qCuw8UHhJa0EG9boDqAx0VS7SreuQrt4v9dEjgO1sl0AzUM9FKrw68fPJ0cxQX9t+h4GkF7vMnSG8z9/dxuBALpLD0RxsX2nA1OM6LolfZvnd0zXaXeemzP3jvKQCAIP1YiUwGVvybBkV2Yd7w+ZNc90t37ylmcYVmq4lWTs/zOa+P0R+wYRfJAv7I76nTQ4f/R7XEDbsXtey6axCgRXva0uAou9F1w77CFIVEvgoJd1LHb25D6Nsum9Ruekpme5sYV2zQouobUT4suR+rpHmZ+/oXFI64zcccefhoaizrkUwYmE5UR94qDevljddFznoDZ+s+CqFhabQgPLvgZQ/ttHlIabYY/jxP25w7++5t4MuS4XyYq1k5diHa0=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-ID: <23CDEE135EF656488066B3295778FC98@prod.exchangelabs.com>
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-In-Reply-To: <20190731054612.GA2032@umbus.fritz.box>
-Content-Type: text/plain; charset=windows-1252
-Content-Language: en-US-large
-Content-Transfer-Encoding: 7bit
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1564652122;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=nriKtxb87UsfPA9J85BeVqjBwR431vjNFezY0aAKjYo=;
- b=c2vyHtO0x/QVRLB10kkp5S8b/VpmIy8a5bJhSfKESbkxfq1TQ2SiAY6uQYd9Ks6pYpybOQ
- XoxV3OuYaJEoWV1Y3Q09f64e8dDOWcHJg4ikSw66WOgMVYpfgD1qZAenrzBCj4gBhUf9GE
- pJqjdCWhonVZQeW5O4pOGIc/AzaIj2U=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564652122; a=rsa-sha256; cv=none;
- b=HdhuFftnYD2d/OLaIJjWyQmpLnBY1j4dNWpRcozeBSplEOhdNa4KWRI7Gu+qHY4jjw90n+
- UWx8n7gORzGRXznEFdR7u4+yF8PrrPMUQy2z6ha7xiY/10LLzPah8OqNb6khL5HDJ3XcWV
- eXQgDdMiQLzwW/wsyyrEPZw2v3FZEOw=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 5.135.226.135
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 01/33] Create Resettable QOM
- interface
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Collin Walling <walling@linux.ibm.com>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Edgar Iglesias <edgar.iglesias@xilinx.com>, Hannes Reinecke <hare@suse.com>,
- Qemu-block <qemu-block@nongnu.org>, David Hildenbrand <david@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-s390x <qemu-s390x@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>,
- "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Mark Burton <mark.burton@greensocs.com>, qemu-ppc <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lLG2fcaLdRwz
+X-OriginatorOrg: os.amperecomputing.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bd635bab-cd88-4e70-9824-08d71683f814
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Aug 2019 13:27:15.9228
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Aaron@os.amperecomputing.com
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR01MB4587
+X-TUID: QdWz1uUOY9AX
 
+On Jul 31 17:06, Alex Benn=E9e wrote:
+> Now we do all our checking and use a common EXCP_SEMIHOST for
+> semihosting operations we can make helper code a lot simpler.
+>=20
+> Signed-off-by: Alex Benn=E9e <alex.bennee@linaro.org>
+>=20
+> ---
+> v2
+>   - fix re-base conflicts
+>   - hoist EXCP_SEMIHOST check
+>   - comment cleanups
+> ---
+>  target/arm/helper.c | 90 +++++++++------------------------------------
+>  1 file changed, 18 insertions(+), 72 deletions(-)
+>=20
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index b74c23a9bc0..c5b90a83d36 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -8259,86 +8259,30 @@ static void arm_cpu_do_interrupt_aarch64(CPUState=
+ *cs)
+>                    new_el, env->pc, pstate_read(env));
+>  }
+> =20
+> -static inline bool check_for_semihosting(CPUState *cs)
+> +/*
+> + * Do semihosting call and set the appropriate return value. All the
+> + * permission and validity checks have been done at translate time.
+> + *
+> + * We only see semihosting exceptions in TCG only as they are not
+> + * trapped to the hypervisor in KVM.
+> + */
+> +static void handle_semihosting(CPUState *cs)
+>  {
+>  #ifdef CONFIG_TCG
+> -    /* Check whether this exception is a semihosting call; if so
+> -     * then handle it and return true; otherwise return false.
+> -     */
+>      ARMCPU *cpu =3D ARM_CPU(cs);
+>      CPUARMState *env =3D &cpu->env;
+> =20
+>      if (is_a64(env)) {
+> -        if (cs->exception_index =3D=3D EXCP_SEMIHOST) {
+> -            /* This is always the 64-bit semihosting exception.
+> -             * The "is this usermode" and "is semihosting enabled"
+> -             * checks have been done at translate time.
+> -             */
+> -            qemu_log_mask(CPU_LOG_INT,
+> -                          "...handling as semihosting call 0x%" PRIx64 "=
+\n",
+> -                          env->xregs[0]);
+> -            env->xregs[0] =3D do_arm_semihosting(env);
+> -            return true;
+> -        }
+> -        return false;
+> +        qemu_log_mask(CPU_LOG_INT,
+> +                      "...handling as semihosting call 0x%" PRIx64 "\n",
+> +                      env->xregs[0]);
+> +        env->xregs[0] =3D do_arm_semihosting(env);
+>      } else {
+> -        uint32_t imm;
+> -
+> -        /* Only intercept calls from privileged modes, to provide some
+> -         * semblance of security.
+> -         */
+> -        if (cs->exception_index !=3D EXCP_SEMIHOST &&
+> -            (!semihosting_enabled() ||
+> -             ((env->uncached_cpsr & CPSR_M) =3D=3D ARM_CPU_MODE_USR))) {
+> -            return false;
+> -        }
+> -
+> -        switch (cs->exception_index) {
+> -        case EXCP_SEMIHOST:
+> -            /* This is always a semihosting call; the "is this usermode"
+> -             * and "is semihosting enabled" checks have been done at
+> -             * translate time.
+> -             */
+> -            break;
+> -        case EXCP_SWI:
+> -            /* Check for semihosting interrupt.  */
+> -            if (env->thumb) {
+> -                imm =3D arm_lduw_code(env, env->regs[15] - 2, arm_sctlr_=
+b(env))
+> -                    & 0xff;
+> -                if (imm =3D=3D 0xab) {
+> -                    break;
+> -                }
+> -            } else {
+> -                imm =3D arm_ldl_code(env, env->regs[15] - 4, arm_sctlr_b=
+(env))
+> -                    & 0xffffff;
+> -                if (imm =3D=3D 0x123456) {
+> -                    break;
+> -                }
+> -            }
+> -            return false;
+> -        case EXCP_BKPT:
+> -            /* See if this is a semihosting syscall.  */
+> -            if (env->thumb) {
+> -                imm =3D arm_lduw_code(env, env->regs[15], arm_sctlr_b(en=
+v))
+> -                    & 0xff;
+> -                if (imm =3D=3D 0xab) {
+> -                    env->regs[15] +=3D 2;
+> -                    break;
+> -                }
+> -            }
+> -            return false;
+> -        default:
+> -            return false;
+> -        }
+> -
+>          qemu_log_mask(CPU_LOG_INT,
+>                        "...handling as semihosting call 0x%x\n",
+>                        env->regs[0]);
+>          env->regs[0] =3D do_arm_semihosting(env);
+> -        return true;
+>      }
+> -#else
+> -    return false;
+>  #endif
+>  }
+> =20
+> @@ -8371,11 +8315,13 @@ void arm_cpu_do_interrupt(CPUState *cs)
+>          return;
+>      }
+> =20
+> -    /* Semihosting semantics depend on the register width of the
+> -     * code that caused the exception, not the target exception level,
+> -     * so must be handled here.
+> +    /*
+> +     * Semihosting semantics depend on the register width of the code
+> +     * that caused the exception, not the target exception level, so
+> +     * must be handled here.
+>       */
+> -    if (check_for_semihosting(cs)) {
+> +    if (cs->exception_index =3D=3D EXCP_SEMIHOST) {
+> +        handle_semihosting(cs);
+>          return;
+>      }
 
+Previously, this code would never return here if CONFIG_TCG was not
+defined because check_for_semihosting() always returned false in that
+case. Is it now true that `cs->exception_index` will never hold a value
+of EXCP_SEMIHOST if CONFIG_TCG is not defined (or that it is otherwise
+correct to return here in that case where it wasn't previously)?
 
-On 7/31/19 7:46 AM, David Gibson wrote:
-> On Tue, Jul 30, 2019 at 04:08:59PM +0200, Damien Hedde wrote:
->>
->> On 7/30/19 3:59 PM, Peter Maydell wrote:
->>> On Tue, 30 Jul 2019 at 14:56, Cornelia Huck <cohuck@redhat.com> wrote:
->>>>
->>>> On Tue, 30 Jul 2019 14:44:21 +0100
->>>> Peter Maydell <peter.maydell@linaro.org> wrote:
->>>>
->>>>> On Tue, 30 Jul 2019 at 14:42, Cornelia Huck <cohuck@redhat.com> wrote:
->>>>>> I'm having a hard time figuring out what a 'cold' or a 'warm' reset is
->>>>>> supposed to be... can you add a definition/guideline somewhere?
->>>>>
->>>>> Generally "cold" reset is "power on" and "warm" is "we were already
->>>>> powered-on, but somebody flipped a reset line somewhere".
->>>>
->>>> Ok, that makes sense... my main concern is to distinguish that in a
->>>> generic way, as it is a generic interface. What about adding something
->>>> like:
->>>>
->>>> "A 'cold' reset means that the object to be reset is initially reset; a 'warm'
->>>> reset means that the object to be reset has already been initialized."
->>>>
->>>> Or is that again too generic?
->>>
->>> I think it doesn't quite capture the idea -- an object can have already
->>> been reset and then get a 'cold' reset: this is like having a powered-on
->>> machine and then power-cycling it.
->>>
->>> The 'warm' reset is the vaguer one, because the specific behaviour
->>> is somewhat device-dependent (many devices might not have any
->>> difference from 'cold' reset, for those that do the exact detail
->>> of what doesn't get reset on warm-reset will vary). But every
->>> device should have some kind of "as if you power-cycled it" (or
->>> for QEMU, "go back to the same state as if you just started QEMU on the
->>> command line"). Our current "reset" method is really cold-reset.
->>>
->>
->> Exactly. In the following patches, I've tried to replace existing reset
->> calls by cold or warm reset depending on whether:
->> + it is called through the main system reset -> cold
->> + it is called during normal life-time       -> warm
->>
->> But I definitely can add some docs/comments to better explain that.
-> 
-> Hrm, that helps, but it still seems pretty vague to me.
-> 
-> It's not really my call, but building the concept of warm versus cold
-> resets into such a generic interface seems pretty dubios to me.  While
-> it's moderately common for things to have a notion of warm versus cold
-> reset it's certainly not universal.  There are many devices where
-> there's no meaningful difference between the two.  There are some
-> devices where there are > 2 different types of reset suitable for
-> various different situations.
-> 
-> Is there any way this could work with it usually just presenting the
-> cold reset (which is the closest to a universal concept), and any warm
-> or additional resets are handled buy a different instance of the
-> Resettable interface?
-> 
-
-In my current implementation, cold/warm is only a question of setting a
-flag before calling the reset methods. I rely and the reset methods to
-check that flag if necessary. The feature can be added/removed without
-pain (if we stick with device_reset to do a cold one). So if it's
-better, I can put it aside for now.
-
-IMO handling warm reset with another interface is probably not a good
-idea because it will need another load of methods.
-
---
-Damien
+-Aaron

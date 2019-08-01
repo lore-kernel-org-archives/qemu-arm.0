@@ -1,214 +1,141 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6986243wrv;
-        Thu, 1 Aug 2019 06:51:25 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzJ9Pq8D55ZdbsKJFJiaxnbFJ779ENW1kiA1RXoWj6AvKX36y7jWkyMddt2wlCeK3VaOi3w
-X-Received: by 2002:a50:8825:: with SMTP id b34mr113442660edb.22.1564667485426;
-        Thu, 01 Aug 2019 06:51:25 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c1si17066244eja.25.2019.08.01.06.51.25
-        for <alex.bennee@linaro.org>
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7022515wrv;
+        Thu, 1 Aug 2019 07:20:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxD/vxdBANUA92RzH7XEeeadFIiZAkuDAGVdQKclraXevT7HWnpnDEygnoatHJ4a8/dvNfL
+X-Received: by 2002:a1f:5285:: with SMTP id g127mr51570830vkb.83.1564669256756;
+        Thu, 01 Aug 2019 07:20:56 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1564669256; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=R90fSt5hjtR2WZEskUyNdUKpI444X8LrFd5YPP880Xvlli32cuXp/3J2kcKXXR+BF+
+         lynXS4TAYV3SSmGPDgQ+g5yC2pg+rY1bmhCTkoemvp1nPKX5vuxlsGX2IS1r8o0BF5Uv
+         p9pAcyWEjhDfCF8RSamHpuQ5x797ldYzQV/C6MsUG/F76F6VRiBuk1rnXvRj4XE4AgjA
+         D2HCFbL0AXxf3ovxB/UaVV1Gms2Ya+weV1BpYnFj0MbhCd09DIuutxuUyiqC99ePMYpi
+         08fK3+/s/xqKVmIMy7Bc0tMyBOjY/I6IkYasOeFtZ1LTlA2v8+EhJ7LXM9scr0HvzU3b
+         zfqw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=9/al+RlmCG68yjHS0+nQyhBsMsPmB3jwvG1d2/Kx/6c=;
+        b=au/fVniqKGBm6yOlrPjRnltv3Gf2i4pF3qcts3XPO+RFl4Ae8P2B7XG99FLWSXZXfE
+         DIcvY8VGPyRpRzRz8OGD0Hh2u4VoqUCN7eC0oNLjJisF6aI4HjScqthhTQxiH6Ys/JT6
+         QzHMKETEkYxLHlf4xa2G1Yl/hUVwPsjN1qXNcFZ2iFwRyhAbB+Yl+AVZ2MzBXgJ1zD4M
+         H5YLubghWsc/72eZENRg9DbEyVblKmuDay7iyqfEo8epbpHqbcDUsfaFGu0tUWg4cKZo
+         8ouo/TA6XlRzHRSsequDO7bE9YFaL/moFvbGFdGFBQHngbo9uUIC2tVGSwF6dihNjrK+
+         E1ZQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@greensocs.com header.s=mail header.b="FLT9z3/o";
+       arc=pass (i=1);
+       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
+Return-Path: <damien.hedde@greensocs.com>
+Received: from beetle.greensocs.com (beetle.greensocs.com. [5.135.226.135])
+        by mx.google.com with ESMTPS id x5si18014961vsi.291.2019.08.01.07.20.56
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Aug 2019 06:51:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 01 Aug 2019 07:20:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) client-ip=5.135.226.135;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=MbL+Hhix;
-       arc=fail (body hash mismatch);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56094 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1htBUK-0005M7-Ii
-	for alex.bennee@linaro.org; Thu, 01 Aug 2019 09:51:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43649)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <damien.hedde@greensocs.com>) id 1htBUF-0005M1-BK
- for qemu-arm@nongnu.org; Thu, 01 Aug 2019 09:51:20 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1htBUE-0001z4-4C
- for qemu-arm@nongnu.org; Thu, 01 Aug 2019 09:51:19 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:46356)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1htBUD-0001w2-KT; Thu, 01 Aug 2019 09:51:18 -0400
+       dkim=pass header.i=@greensocs.com header.s=mail header.b="FLT9z3/o";
+       arc=pass (i=1);
+       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
 Received: from [172.16.11.117] (unknown [172.16.11.117])
- by beetle.greensocs.com (Postfix) with ESMTPSA id A0E7B96F50;
- Thu,  1 Aug 2019 13:51:15 +0000 (UTC)
+	by beetle.greensocs.com (Postfix) with ESMTPSA id 4890D96F50;
+	Thu,  1 Aug 2019 14:20:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1564667475;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=5DEY8Rq+H+80IURsrwtuyl95l1hjeRxfSQ9fPSXIGQ0=;
- b=MbL+HhixyGVY66PEDOh9Ui1c8Hd95r10CRTx9Rvks3hJaUlbBBHPYjDvNw5vPS0VYr+Gvi
- F5AtCt9MHmr7FBU96fwaO6aof62Wha7wUSRWmFv6HXLxtr43n0fS6SZ44EqFTjty9zSOKJ
- trAtW01BcZ7PpL7up2uqLTodlLQqYbs=
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>
-References: <6ea54e80-63cd-5759-337b-1eb1686453f5@greensocs.com>
- <e979936e-3545-87fb-eec6-e3a098785113@redhat.com>
- <CAP+75-XzR9bQAm6KVdF=QZ4Bs9yWw-OLt6cRXNM=j8d0BjSZmQ@mail.gmail.com>
+	s=mail; t=1564669254;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9/al+RlmCG68yjHS0+nQyhBsMsPmB3jwvG1d2/Kx/6c=;
+	b=FLT9z3/o/CxgwvtVIZVl3Cwv3+Pps5jDo1mU19kl9achq2nRv/kbJ3463lt/tjoH+cJx5Q
+	tthfqhVWm+TiQ9vgQxQOWR7dZmnATIdbejEVqvMRlzNeQUAblifDD/qok6WAs1hTvqhrhG
+	RWA39rFenrNhBB5pskcC3znMq8GGKOI=
+Subject: Re: [Qemu-devel] [PATCH for-4.1] target/arm: Avoid bogus NSACR traps
+ on M-profile without Security Extension
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20190801105742.20036-1-peter.maydell@linaro.org>
 From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <dfbfb8a0-2a85-c62c-1ae8-9ed20cbeee1f@greensocs.com>
-Date: Thu, 1 Aug 2019 15:51:15 +0200
+Message-ID: <af347b17-b524-1075-d462-2b0e6eef41a5@greensocs.com>
+Date: Thu, 1 Aug 2019 16:20:53 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.1
 MIME-Version: 1.0
-In-Reply-To: <CAP+75-XzR9bQAm6KVdF=QZ4Bs9yWw-OLt6cRXNM=j8d0BjSZmQ@mail.gmail.com>
+In-Reply-To: <20190801105742.20036-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US-large
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1564667476;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=5DEY8Rq+H+80IURsrwtuyl95l1hjeRxfSQ9fPSXIGQ0=;
- b=dmJ3B4bBRJUOh9p+nARRl94e7hmaaeMaIIBcNvbcACmdLg3kDUNZDe7RDb/lAzJwwDjInj
- OPQLTsx6W+2U/GjWWa4W5l8F7+kPcCla8VDT0BGlKPU8I8VuzcAYmJTqB0aBrHK+XzDrBn
- 5SwecNzil7S2qWkTIDPKWZ55Wz1mYW4=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564667476; a=rsa-sha256; cv=none;
- b=CKCGaAJ4OItbjmqf7/VG6ipuaeAbQts/aPsTxiS40aJ13DfwBahnnmDVAH1laHJp9pvAPp
- hv4/kFT3RdCsjqLGIc/TUA/6UOcAN+szQ0+AvJh4ntFzYEegHO0UNy2S4OA7kMvG8OGeIZ
- XcQhvjmmh0GkWtSMCQxj1W9i8uS5U3k=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 5.135.226.135
-Subject: Re: [Qemu-arm] [Qemu-devel] RFC raspberry pi sd-card reset
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9V/eiFuIwxy6
+Content-Transfer-Encoding: 7bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+	s=mail; t=1564669254;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=9/al+RlmCG68yjHS0+nQyhBsMsPmB3jwvG1d2/Kx/6c=;
+	b=nu+c48VnDczwCR2StkbQDAAnq49BC/4KM7Sd4vuQF8o4sj+nM2R30Zx583St1g1H6Z+rgF
+	35Tn7Xg2L2VfyvGBCunsXCls+wbkBxjePnwr5MnpMnoMShniP2t98y6eu05vFBYzhoGuRS
+	9+5ZIfniBxYprsZKDNy4jn5xm8OBCSQ=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564669254; a=rsa-sha256;
+	cv=none;
+	b=qF7VLBUem9oXMALwJZenCWFpsMLx1nv/hHzHcEJz9C76bm3qblv7thiXRDEyFecCBxkKtF
+	R1DOIM+NKpeyFl6uQ8Tp2Tz2CFA/65NIilGpll/rsMlnBZLtiHaeyE+OKmcCG13cKJh4nf
+	Q19R1vea/w67vf0SxZuTg8dtPjykJsw=
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
+X-TUID: wY0FlbmtdvpR
 
 
-On 7/31/19 5:45 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> On Wed, Jul 31, 2019 at 5:43 PM Philippe Mathieu-Daud=C3=A9
-> <philmd@redhat.com> wrote:
->> On 7/31/19 4:21 PM, Damien Hedde wrote:
->>> Concerning the reset on the raspi2/3 machine, I ran into an issue wit=
-h
->>> the sd-card.
->>>
->>> Here follows a subset of the qbus/qdev tree of the raspi2&3 machine a=
-s
->>> it is initialized:
->>>  + System
->>>    * bcm2835_gpio
->>>      + sd-bus
->>>        * sd-card
->>>    * bcm2835-sdhost
->>>      + bcm2835-sdhost-bus
->>>    * generic-sdhci
->>>      + sdhci-bus
->>>
->>> raspi_init does 2 things:
->>>  + it creates the soc
->>>  + then it explicitly creates the sd-card on the bcm2835_gpio's sd-bu=
-s
->>>
->>> As it happens, the reset moves the sd-card on another bus: the
->>> sdhci-bus. More precisely the bcm2835_gpio reset method does it (the
->>> sd-card can be mapped on bcm2835-sdhost-bus or sdhci-bus depending on
->>> bcm2835_gpio registers, reset configuration corresponds to the sdhci-=
-bus).
->>>
->>> Reset call order is the following (it follows children-before-parent =
-order):
->>>  1 sd-card
->>>  2 sd-bus
->>>  3 bcm2835_gpio -> move the sd-card
->>>  4 bcm2835-sdhost-bus
->>>  5 bcm2835-sdhost
->>>  6 sd-card  (again)
->>>  7 sdhci-bus
->>>  8 generic-sdhci
->>>
->>> In the end, the sd-card is reset twice, which is no big-deal in itsel=
-f.
->>
->> The machine cold reset implicitly cold resets the sd-card.
->>
->> IIRC the sd-bus shouldn't (cold/warm)-reset the sd-card.
->>
->> Only SDBusClass::set_inserted() can cold-reset the card.
+On 8/1/19 12:57 PM, Peter Maydell wrote:
+> In Arm v8.0 M-profile CPUs without the Security Extension and also in
+> v7M CPUs, there is no NSACR register. However, the code we have to handle
+> the FPU does not always check whether the ARM_FEATURE_M_SECURITY bit
+> is set before testing whether env->v7m.nsacr permits access to the
+> FPU. This means that for a CPU with an FPU but without the Security
+> Extension we would always take a bogus fault when trying to stack
+> the FPU registers on an exception entry.
+> 
+> We could fix this by adding extra feature bit checks for all uses,
+> but it is simpler to just make the internal value of nsacr 0x3ff
 
-I agree but it's something we cannot address until the reset propagation
-is hard-coded to be qdev/qbus based.
+s/0x3ff/0xcff/ I think, given you put 0xcff after and in the code
 
->>
->>> But it only depends on the bcm2835_gpio tree being reset before the
->>> generic-sdhci (probably depends on the machine creation code).
->>>
->>> I checked and it seems this is the only platform where such things
->>> happen during master reset.
->>>
->>> IMO this is a bit hazardous because reset is based on the qdev/qbus
->>> tree (and with the multi-phase I'm working on, even if it still works=
-,
->>> it's worse).
->>> I'm not sure what we should do to avoid this (and if there's is
->>> something to be done).
->>>
->>> The easiest solution would be to initialize the platform with the
->>> sd-card at the right initial place (I do not really understand why it=
- is
->>> created in the bcm2835_gpio in the first place since we move it just
->>> after). But it won't solve the issue if a reset is done afterwards.
->>>
->>> Or maybe we could move the sd-card on the proper bus in a machine
->>> reset code so that it's on the right place when we do the sysbus tree
->>> reset just after.
->>>
->>> What do you think ?
->>
->> There is only 1 bus, the SDHCI bus lines are muxed with the GPIO ones.
->>
->> bcm2835-sdhost-bus should not be child of bcm2835-sdhost, the sdbus
->> might be child of bcm2835-peripherals and shared by both sdhost and gp=
-io
->> (as a link property?).
->=20
-> There is a similar modelling issue with the AUX uart and SPI on this de=
-vice.
->=20
->> I tried to do that 2 years ago. I thought I posted the series and Pete=
-r
->> rejected it but can't find it, maybe we had an IRC chat. I won't have
->> time until next week to dig for it.
-
-I was thinking of doing a work-around by defining the raspi machine
-reset to something like that.
-
-static void raspi_reset(MachineState *machine)
-{
-    SDBus *sdhci, *sdhost, *sdbus;
-    /*
-     * anticipate following reset and ensure the sd-card at its
-     * end-of-reset place
-     */
-    sdhci =3D object_resolve_path("/path/to/sdhci");
-    sdhost =3D object_resolve_path("/path/to/sdhost");
-    sdbus =3D object_resolve_path("/path/to/sdbus");
-    sdbus_reparent_card(sdbus, sdhci); // no-op if card is not on sdbus
-    sdbus_reparent_card(sdhost, sdhci); //no-op if card is not on sdhost
-
-    /* standard reset */
-    qemu_devices_reset();
-}
-
-Damien
+> ("all non-secure accesses allowed"), since this is not guest
+> visible when the Security Extension is not present. This allows
+> us to continue to follow the Arm ARM pseudocode which takes a
+> similar approach. (In particular, in the v8.1 Arm ARM the register
+> is documented as reading as 0xcff in this configuration.)
+> 
+> Fixes: https://bugs.launchpad.net/qemu/+bug/1838475
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> I've marked this as for-4.1 because support for M-profile FPU
+> is new in this release and this is a pretty bad bug for it.
+> It probably doesn't qualify as so bad we need an rc4 but I
+> think we need an rc4 anyway and it probably does merit putting
+> in at that point.
+> 
+>  target/arm/cpu.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 9eb40ff755f..ec2ab95dbeb 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -266,6 +266,14 @@ static void arm_cpu_reset(CPUState *s)
+>               * on ARM_FEATURE_V8 (we don't let the guest see the bit).
+>               */
+>              env->v7m.aircr = R_V7M_AIRCR_BFHFNMINS_MASK;
+> +            /*
+> +             * Set NSACR to indicate "NS access permitted to everything";
+> +             * this avoids having to have all the tests of it being
+> +             * conditional on ARM_FEATURE_M_SECURITY. Note also that from
+> +             * v8.1M the guest-visible value of NSACR in a CPU without the
+> +             * Security Extension is 0xcff.
+> +             */
+> +            env->v7m.nsacr = 0xcff;
+>          }
+>  
+>          /* In v7M the reset value of this bit is IMPDEF, but ARM recommends
+> 

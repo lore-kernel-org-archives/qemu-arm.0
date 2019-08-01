@@ -1,137 +1,88 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6609541wrv;
-        Thu, 1 Aug 2019 01:08:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqya8TKikREoXQlEwBVPNV2SSQoyN3ok21LHxkPfJiQAiE1Zq3hdoNFPNcO3qEibzXIQIohL
-X-Received: by 2002:a37:f516:: with SMTP id l22mr35394751qkk.123.1564646911747;
-        Thu, 01 Aug 2019 01:08:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564646911; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6636448wrv;
+        Thu, 1 Aug 2019 01:36:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzWcTH6h1/QpFrS1toP2qjteZfhRS6WJ9LRwY6bFu5clgxzGneVQcrvqkiscNT+7xRPSBxM
+X-Received: by 2002:a50:ad45:: with SMTP id z5mr110575847edc.21.1564648618553;
+        Thu, 01 Aug 2019 01:36:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564648618; cv=none;
         d=google.com; s=arc-20160816;
-        b=NwZ2vQgIQczfp57hvTHMHc+ZVU9A8z0LUV2XRm8YoKfzR7KuCTduBXixh+FhOGwpPl
-         ysXEIBPDRpfwBkRhr0K3/YMP8ZTJPCYv7xr1JdfmO3Uas66z+6MO9ienImhVVo7tNmhW
-         kVO1seqEbJUubnlslq2Cho/dFXs7O84j8jBOaB9XU+e++gu24KeN361xFB6Xmkb3FGF3
-         A3AeunnewilvQumQf+t/U7Znurpk+ZoE4ZAyuWuuLFESxQOrUjS1qcH9jjT4BKji5TUs
-         UvpRHtyQAoOeSj190+H+k25rwiRaUxXPrApiuQbfOve98OQynLHU1r2vIq1r9puVkVR/
-         j7WQ==
+        b=r5k9/WWxaa4vgfdH96+/WiTgeIV+/t/hq1VxhP491czDWoi1PUa8ZxlLy4p120FI84
+         j9rCPFNuzIvMOaFWY2NeoCFUL5JT0gItgFkuhdfyDsAWTcZwvH2BAY9r1VpTh1Gjupap
+         57sFf1E2tkDUHR45zdgnrqZaaCJKq2pvT/fH8EGitXQAuUuM8oHiPqjAJvgDs2XSIQ6I
+         S1xYj6Mn5eObZXAtWaNc6+D/37XFNrN3EIgsN+yn8HG6UROeAP4yBUoU7t3aM42lOpA7
+         a6Zbwow8YRO+100eGy0+oSorHuRAUyRCgqKrPwqxjDt4mfKWqFVGZ++sngau4dWCTd/d
+         zP1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to;
-        bh=vm0jFg4S0tKDTKmTf5+WchR6YvwN7GIDUl7OKb9L7V4=;
-        b=Uh6qqJcGQX5n1Vwd8WO/QbSAgG3OUiN2TEJ+j6uk/+fM0qhagcSsHUZjMUBCFvD4/S
-         2rreGoOo78pOyxKRMoNVQhsQ4XmgjIykUrDvqKWaM0Xn+V23FeLmfI//N7AmwWv/xIsl
-         KxBs5jIU6UauYrVSEOX27bJmkSRm1YnnWaqabUMcnCUi/kBlV9xDfl7sjs6mZwMlng9L
-         JT0I7+t47bIQMrCn5wQCDb08M+Be8JF/ed9mvwEVR/6mXwbF/3nq9bp/fuxdCLR6MJm2
-         9bNcNgsCYkokTi7r/DlyQS7X4NdIRvcqksi/GAigMGRCyjuRvpFDOADCtVMvBdX1wzed
-         M5tQ==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
+         :from;
+        bh=F/hbsKpZIjJf/LhyEuGbnJJXB/Zaak9DGIxe3zGWmTE=;
+        b=WVm+lflSkHwQsStbEVRgK0yYSrdcHY8ZZrw0xS09ODSV8a5CR1Y6UNuuAVpRRVarT6
+         3GDppeoKe3YLLTCIhD8hN1xjHObkfOcqJeiLbXKm/tFvtz1wfNx1X7t6MnUnnwQVURMK
+         hIw9cPFeauTXO/tz1fiSWE6zV5XppCZVUk9Jq/CaejT/GI6DPLfPY58Lq6C+hrxpS4Oq
+         cGM4Y+j0aD2gZsuv4NHA/RRTqbi72mrwsq9O3N15+XbueYp+HK5zKNt82q+k+7Nd6nUy
+         mMtCDyHboE/4cNAYo/omtIvXoa8B9vwKl3ylKOBeLfcUJaUUNHSewyIrMKCM6nZh7RGP
+         DFcw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x2si41400871qvf.105.2019.08.01.01.08.31
+        by mx.google.com with ESMTPS id a8si15324923edc.258.2019.08.01.01.36.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Aug 2019 01:08:31 -0700 (PDT)
+        Thu, 01 Aug 2019 01:36:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46294 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46402 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ht68V-0002Rd-BR
-	for alex.bennee@linaro.org; Thu, 01 Aug 2019 04:08:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48335)
+	id 1ht6a1-00020s-Ma
+	for alex.bennee@linaro.org; Thu, 01 Aug 2019 04:36:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54148)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <thuth@redhat.com>) id 1ht68O-0002RN-VA
- for qemu-arm@nongnu.org; Thu, 01 Aug 2019 04:08:25 -0400
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1ht6Zp-00020X-Vu
+ for qemu-arm@nongnu.org; Thu, 01 Aug 2019 04:36:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1ht68N-00051Q-W4
- for qemu-arm@nongnu.org; Thu, 01 Aug 2019 04:08:24 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:33778)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1ht6Zo-0001tE-Jf
+ for qemu-arm@nongnu.org; Thu, 01 Aug 2019 04:36:45 -0400
+Received: from lhrrgout.huawei.com ([185.176.76.210]:45430 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1ht68N-00050p-PA; Thu, 01 Aug 2019 04:08:23 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id D546A3091761;
- Thu,  1 Aug 2019 08:08:21 +0000 (UTC)
-Received: from thuth.remote.csb (dhcp-200-228.str.redhat.com [10.33.200.228])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 03FC85D9CD;
- Thu,  1 Aug 2019 08:08:16 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Yang Zhong <yang.zhong@intel.com>,
- QEMU Developers <qemu-devel@nongnu.org>
-References: <20190731075652.17053-1-thuth@redhat.com>
- <20190731075652.17053-8-thuth@redhat.com>
- <f2399005-cead-a147-37a5-600fda7eaea5@redhat.com>
- <b9bbf556-e2fc-8634-2238-9c1c5ead7a35@redhat.com>
- <18d71b10-6be2-b76e-54d6-76c0395ca700@redhat.com>
- <CAP+75-Vrr5JcNd1tFhossrNDNEaJV4U4a+iyyDH2rgE5P6tV9g@mail.gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
- xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
- yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
- 4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
- tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
- 0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
- O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
- 0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
- gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
- 3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
- zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABzRxUaG9tYXMgSHV0
- aCA8dGguaHV0aEBnbXguZGU+wsF7BBMBAgAlAhsDBgsJCAcDAgYVCAIJCgsEFgIDAQIeAQIX
- gAUCUfuWKwIZAQAKCRAu2dd0/nAttbe/EACb9hafyOb2FmhUqeAiBORSsUifFacQ7laVjcgR
- I4um8CSHvxijYftpkM2EdAtmXIKgbNDpQoXcWLXB9lu9mLgTO4DVT00TRR65ikn3FCWcyT74
- ENTOzRKyKLsDCjhXKPblTPIQbYAUCOWElcyAPm0ERd62fA/rKNxgIiNo/l4UODOMoOJm2/Ox
- ZoTckW68Eqv7k9L7m7j+Hn3hoDTjAmcCBJt+j7pOhzWvCbqoNOIH8C8qvPaNlrba+R/K6jkO
- 6jZkTbYQpGIofEQJ/TNn38IsNGpI1ALTHWFtoMxp3j2Imz0REO6dRE2fHRN8sVlHgkoeGhmY
- NbDsDE1jFQOEObFnu0euk//7BXU7tGOHckVAZ8T1smiRPHfQU7UEH2a/grndxJ+PNeM5w7n2
- l+FN3cf2KgPotCK2s9MjSdZA7C5e3rFYO8lqiqTJKvc62vqp3e7B0Kjyy5/QtzSOejBij2QL
- xkKSFNtxIz4MtuxN8e3IDQNxsKry3nF7R4MDvouXlMo6wP9KuyNWb+vFJt9GtbgfDMIFVamp
- ZfhEWzWRJH4VgksENA4K/BzjEHCcbTUb1TFsiB1VRnBPJ0SqlvifnfKk6HcpkDk6Pg8Q5FOJ
- gbNHrdgXsm+m/9GF2zUUr+rOlhVbK23TUqKqPfwnD7uxjpakVcJnsVCFqJpZi1F/ga9IN87B
- TQRR+3lMARAAtp831HniPHb9AuKq3wj83ujZK8lH5RLrfVsB4X1wi47bwo56BqhXpR/zxPTR
- eOFT0gnbw9UkphVc7uk/alnXMDEmgvnuxv89PwIQX6k3qLABeV7ykJQG/WT5HQ6+2DdGtVw3
- 2vjYAPiWQeETsgWRRQMDR0/hwp8s8tL/UodwYCScH6Vxx9pdy353L1fK4Bb9G73a+9FPjp9l
- x+WwKTsltVqSBuSjyZQ3c3EE8qbTidXZxB38JwARH8yN3TX+t65cbBqLl/zRUUUTapHQpUEd
- yoAsHIml32e4q+3xdLtTdlLi7FgPBItSazcqZPjEcYW73UAuLcmQmfJlQ5PkDiuqcitn+KzH
- /1pqsTU7QFZjbmSMJyXY0TDErOFuMOjf20b6arcpEqse1V3IKrb+nqqA2azboRm3pEANLAJw
- iVTwK3qwGRgK5ut6N/Znv20VEHkFUsRAZoOusrIRfR5HFDxlXguAdEz8M/hxXFYYXqOoaCYy
- 6pJxTjy0Y/tIfmS/g9Bnp8qg9wsrsnk0+XRnDVPak++G3Uq9tJPwpJbyO0vcqEI3vAXkAB7X
- VXLzvFwi66RrsPUoDkuzj+aCNumtOePDOCpXQGPpKl+l1aYRMN/+lNSk3+1sVuc2C07WnYyE
- gV/cbEVklPmKrNwu6DeUyD0qI/bVzKMWZAiB1r56hsGeyYcAEQEAAcLBXwQYAQIACQUCUft5
- TAIbDAAKCRAu2dd0/nAttYTwEACLAS/THRqXRKb17PQmKwZHerUvZm2klo+lwQ3wNQBHUJAT
- p2R9ULexyXrJPqjUpy7+voz+FcKiuQBTKyieiIxO46oMxsbXGZ70o3gxjxdYdgimUD6U8PPd
- JH8tfAL4BR5FZNjspcnscN2jgbF4OrpDeOLyBaj6HPmElNPtECHWCaf1xbIFsZxSDGMA6cUh
- 0uX3Q8VI7JN1AR2cfiIRY7NrIlWYucJxyKjO3ivWm69nCtsHiJ0wcF8KlVo7F2eLaufo0K8A
- ynL8SHMF3VEyxsXOP2f1UR9T2Ur30MXcTBpjUxml1TX3RWY5uH89Js/jlIugBwuAmacJ7JYh
- lTg6sF/GNc4nPb4kk2yktNWTade+TzsllYlJPaorD2Qe8qX0iFUhFC6y9+O6mP4ZvWoYapp9
- ezYNuebMgEr93ob1+4sFg3812wNP01WqsGtWCJHnPv/JoonFdMzD/bIkXGEJMk6ks2kxQQZq
- g6Ik/s/vxOfao/xCn8nHt7GwvVy41795hzK6tbSl+BuyCRp0vfPRP34OnK7+jR2nvQpJu/pU
- rCELuGwT9hsYkUPjVd4lfylN3mzEc6iAv/wwjsc0DRTSQCpXT3v2ymTAsRKrVaEZLibTXaf+
- WslxWek3xNYRiqwwWAJuL652eAlxUgQ5ZS+fXBRTiQpJ+F26I/2lccScRd9G5w==
-Organization: Red Hat
-Message-ID: <7c468dcf-51bf-59a9-d281-1f0616b04487@redhat.com>
-Date: Thu, 1 Aug 2019 10:08:16 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <CAP+75-Vrr5JcNd1tFhossrNDNEaJV4U4a+iyyDH2rgE5P6tV9g@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
+ (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1ht6Zo-0001nj-Db; Thu, 01 Aug 2019 04:36:44 -0400
+Received: from lhreml706-cah.china.huawei.com (unknown [172.18.7.107])
+ by Forcepoint Email with ESMTP id BA6CBE775D649C9C7468;
+ Thu,  1 Aug 2019 09:36:38 +0100 (IST)
+Received: from LHREML524-MBS.china.huawei.com ([169.254.2.132]) by
+ lhreml706-cah.china.huawei.com ([10.201.108.47]) with mapi id 14.03.0415.000; 
+ Thu, 1 Aug 2019 09:36:32 +0100
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Thread-Topic: [Qemu-devel] [PATCH-for-4.2 v8 3/9] hw/acpi: Add ACPI Generic
+ Event Device Support
+Thread-Index: AQHVQ59yMX5aLsD6RUC6fmsBLoK9kKbjPgEAgALB4LA=
+Date: Thu, 1 Aug 2019 08:36:33 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA83F33D896@lhreml524-mbs.china.huawei.com>
+References: <20190726104519.23812-1-shameerali.kolothum.thodi@huawei.com>
+ <20190726104519.23812-4-shameerali.kolothum.thodi@huawei.com>
+ <20190730172524.6cf566ed@Igors-MacBook-Pro>
+In-Reply-To: <20190730172524.6cf566ed@Igors-MacBook-Pro>
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.41]); Thu, 01 Aug 2019 08:08:22 +0000 (UTC)
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.237]
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 7/8] hw/misc: Add a config
- switch for the "unimplemented" device
+X-Received-From: 185.176.76.210
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH-for-4.2 v8 3/9] hw/acpi: Add
+ ACPI Generic Event Device Support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -143,48 +94,169 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "sameo@linux.intel.com" <sameo@linux.intel.com>,
+ "ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
+ "lersek@redhat.com" <lersek@redhat.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: m/IqwqXl/7Mh
+X-TUID: 3yLXChLkkfbz
 
-On 31/07/2019 17.59, Philippe Mathieu-Daud=C3=A9 wrote:
-> On Wed, Jul 31, 2019 at 5:55 PM Philippe Mathieu-Daud=C3=A9
-> <philmd@redhat.com> wrote:
->> On 7/31/19 1:50 PM, Thomas Huth wrote:
->>> On 31/07/2019 13.47, Philippe Mathieu-Daud=C3=A9 wrote:
->>>> On 7/31/19 9:56 AM, Thomas Huth wrote:
->>>>> The device is only used by some few boards. Let's use a proper Kcon=
-fig
->>>>> switch so that we only compile this code if we really need it.
->>>>
->>>> I'd prefer having the UnimpDevice user-creatable and always present =
-as a
->>>> core device...
->>>
->>> Why? This is a sysbus device that needs to be wired up in code, so I
->>> don't see a reason for making this user-creatable right now.
->>
->> Right now no.
->>
->>> Anyway, that's a different subject, so this should not be part of thi=
-s
->>> patch.
->>
->> Fair enough.
->>
->> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Hi Igor,
+
+> -----Original Message-----
+> From: Qemu-devel
+> [mailto:qemu-devel-bounces+shameerali.kolothum.thodi=3Dhuawei.com@nongn
+> u.org] On Behalf Of Igor Mammedov
+> Sent: 30 July 2019 16:25
+> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> Cc: peter.maydell@linaro.org; sameo@linux.intel.com;
+> ard.biesheuvel@linaro.org; shannon.zhaosl@gmail.com;
+> qemu-devel@nongnu.org; xuwei (O) <xuwei5@huawei.com>; Linuxarm
+> <linuxarm@huawei.com>; eric.auger@redhat.com; qemu-arm@nongnu.org;
+> Paolo Bonzini <pbonzini@redhat.com>; sebastien.boeuf@intel.com;
+> lersek@redhat.com
+> Subject: Re: [Qemu-devel] [PATCH-for-4.2 v8 3/9] hw/acpi: Add ACPI Generi=
+c
+> Event Device Support
 >=20
-> Err, you missed MUSCA and MPS2.
+> On Fri, 26 Jul 2019 11:45:13 +0100
+> Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+>=20
+> > From: Samuel Ortiz <sameo@linux.intel.com>
+> >
+> > The ACPI Generic Event Device (GED) is a hardware-reduced specific
+> > device[ACPI v6.1 Section 5.6.9] that handles all platform events,
+> > including the hotplug ones. This patch generates the AML code that
+> > defines GEDs.
+> >
+> > Platforms need to specify their own GED Event bitmap to describe
+> > what kind of events they want to support through GED.  Also this
+> > uses a a single interrupt for the  GED device, relying on IO
+> > memory region to communicate the type of device affected by the
+> > interrupt. This way, we can support up to 32 events with a unique
+> > interrupt.
+> >
+> > This supports only memory hotplug for now.
+> >
+>=20
+> > diff --git a/hw/acpi/generic_event_device.c
+> b/hw/acpi/generic_event_device.c
+> > new file mode 100644
+> > index 0000000000..7902e9d706
+> > --- /dev/null
+> > +++ b/hw/acpi/generic_event_device.c
+> [...]
+> > +void build_ged_aml(Aml *table, const char *name, HotplugHandler
+> *hotplug_dev,
+> > +                   uint32_t ged_irq, AmlRegionSpace rs)
+> > +{
+> [...]
+> > +
+> > +        if (ged_events) {
+> > +            error_report("GED: Unsupported events specified");
+> > +            exit(1);
+> I'd use error_abort instead, since it's programing error, if you have to =
+respin
+> series.
 
-Ah, well, that's another one of those indirections that we discussed in
-v1 and which I apparently forgot to add now in v2 ... both select ARMSSE
-which in turn select UNIMP, so it's not completely missing. I'll send a
-v3 with a fix.
+Ok.
 
-Thanks for noticing!
+> > +        }
+> > +    }
+> > +
+> > +    /* Append _EVT method */
+> > +    aml_append(dev, evt);
+> > +
+> > +    aml_append(table, dev);
+> > +}
+> > +
+> [...]
+> > +static void acpi_ged_device_realize(DeviceState *dev, Error **errp)
+> > +{
+> > +    AcpiGedState *s =3D ACPI_GED(dev);
+> > +
+> > +    assert(s->ged_base);
+> > +    acpi_ged_init(get_system_memory(), dev, &s->ged_state);
+>=20
+> calling get_system_memory() from device code used to be a reason for
+> rejecting patch,
+> I'm not sure what suggest though.
+>=20
+> Maybe Paolo could suggest something.
 
- Thomas
+How about using object_property_set_link()? Something like below.
+
+------8-----
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.=
+c
+index f00b0ab14b..eb1ed38f4a 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -229,11 +229,12 @@ static void acpi_ged_device_realize(DeviceState *dev,=
+ Error **errp)
+     AcpiGedState *s =3D ACPI_GED(dev);
+=20
+     assert(s->ged_base);
+-    acpi_ged_init(get_system_memory(), dev, &s->ged_state);
++    assert(s->sys_mem);
++    acpi_ged_init(s->sys_mem, dev, &s->ged_state);
+=20
+     if (s->memhp_state.is_enabled) {
+         assert(s->memhp_base);
+-        acpi_memory_hotplug_init(get_system_memory(), OBJECT(dev),
++        acpi_memory_hotplug_init(s->sys_mem, OBJECT(dev),
+                                  &s->memhp_state,
+                                  s->memhp_base);
+     }
+@@ -245,6 +246,8 @@ static Property acpi_ged_properties[] =3D {
+      * because GED handles memory hotplug event and acpi-mem-hotplug
+      * memory region gets initialized when GED device is realized.
+      */
++    DEFINE_PROP_LINK("memory", AcpiGedState, sys_mem, TYPE_MEMORY_REGION,
++                     MemoryRegion *),
+     DEFINE_PROP_UINT64("memhp-base", AcpiGedState, memhp_base, 0),
+     DEFINE_PROP_BOOL("memory-hotplug-support", AcpiGedState,
+                      memhp_state.is_enabled, true),
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 73a758d9a9..0cbaf6c6e1 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -529,8 +529,12 @@ static inline DeviceState *create_acpi_ged(VirtMachine=
+State *vms, qemu_irq *pic)
+     DeviceState *dev;
+     int irq =3D vms->irqmap[VIRT_ACPI_GED];
+     uint32_t event =3D ACPI_GED_MEM_HOTPLUG_EVT | ACPI_GED_PWR_DOWN_EVT;
++    MemoryRegion *sys_mem =3D get_system_memory();
+=20
+     dev =3D DEVICE(object_new(TYPE_ACPI_GED));
++
++    object_property_set_link(OBJECT(dev), OBJECT(sys_mem),
++                             "memory", &error_abort);
+     qdev_prop_set_uint64(dev, "memhp-base",
+                          vms->memmap[VIRT_PCDIMM_ACPI].base);
+     qdev_prop_set_uint64(dev, "ged-base", vms->memmap[VIRT_ACPI_GED].base)=
+;
+diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/gener=
+ic_event_device.h
+index 63104f1344..f1f2f337f7 100644
+--- a/include/hw/acpi/generic_event_device.h
++++ b/include/hw/acpi/generic_event_device.h
+@@ -89,6 +89,7 @@ typedef struct GEDState {
+=20
+ typedef struct AcpiGedState {
+     DeviceClass parent_obj;
++    MemoryRegion *sys_mem;
+     MemHotplugState memhp_state;
+     hwaddr memhp_base;
+     hwaddr ged_base;
+
+---8----
+

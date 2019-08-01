@@ -1,128 +1,190 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6288608wrv;
-        Wed, 31 Jul 2019 18:17:11 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy9/v2YZXuij0HFdgYBz4jc1+2Rxm21OOEh6qmZvLHBRFFdO+HhcUkiwnj2jJK/AjZG6LgV
-X-Received: by 2002:a0c:8695:: with SMTP id 21mr91565935qvf.166.1564622231354;
-        Wed, 31 Jul 2019 18:17:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564622231; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6609541wrv;
+        Thu, 1 Aug 2019 01:08:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqya8TKikREoXQlEwBVPNV2SSQoyN3ok21LHxkPfJiQAiE1Zq3hdoNFPNcO3qEibzXIQIohL
+X-Received: by 2002:a37:f516:: with SMTP id l22mr35394751qkk.123.1564646911747;
+        Thu, 01 Aug 2019 01:08:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564646911; cv=none;
         d=google.com; s=arc-20160816;
-        b=XeRWYWXWwpkjteKNzENLAmtzzIsNs9ArcKLCWn5n9MlaYE+knZDz1f0e+zGu3pUtZu
-         l21hawbm7s75DxZTTJ5Toh4Vb9Uhx401m/ZxGxc6H+TMZ0icn4zPrU8MXDCHqzfwV9j+
-         zi0sF7H3H7FuMONpdeEE/JuxjdKCyHptvaZY3qDOKtTNJZ9FNRb9vI7IShOF1FBMUhsY
-         zLOKHQtVW9hhjRliSQSWEXv7q4ksXXhBiAikhlXq872zpXKsG1HhX+oYR97EJcxpuX1Y
-         l/mb255EfgYU98YJElNDv+/dComrh25md3xEalW5yASuiKRK7IrbzzranToTngDIiuik
-         eZDg==
+        b=NwZ2vQgIQczfp57hvTHMHc+ZVU9A8z0LUV2XRm8YoKfzR7KuCTduBXixh+FhOGwpPl
+         ysXEIBPDRpfwBkRhr0K3/YMP8ZTJPCYv7xr1JdfmO3Uas66z+6MO9ienImhVVo7tNmhW
+         kVO1seqEbJUubnlslq2Cho/dFXs7O84j8jBOaB9XU+e++gu24KeN361xFB6Xmkb3FGF3
+         A3AeunnewilvQumQf+t/U7Znurpk+ZoE4ZAyuWuuLFESxQOrUjS1qcH9jjT4BKji5TUs
+         UvpRHtyQAoOeSj190+H+k25rwiRaUxXPrApiuQbfOve98OQynLHU1r2vIq1r9puVkVR/
+         j7WQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=CxVAF7zVW0awDxC0sf8CyN7SN/LjlmbfxWO9LE8a4G4=;
-        b=kTEK6X6Otjb+NgmWxd1af6y+lFFh4T179A6BX/+5/i4nuYOcFKJs/TyS2m5U4Wy6mn
-         6kEVyeMqUa6S2IO/ZYlLzM45vHa6aH6fyfeTIWLeWduVp6sl2/yeWqrBO/j94vDzGXmg
-         69jr0BfS7gwT7G4d+2eZG/+wDb0PV/QCtq3VLh2e27HSBMBPhiJsHgHlAqoaFmGKBvRn
-         TcgxZP+ARqQgmZ9ZrBsswv4rbLMBC8vkBeonwqMf5uXDOg9GitX4lY0fsjyaMh1MLp6e
-         OZ3aW7MXKEAnfs1UfN3P8ll+VQ4zC155YPwImihkAba+Xq8EU1d8iFk140uqq+6s7EQk
-         e8DA==
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=vm0jFg4S0tKDTKmTf5+WchR6YvwN7GIDUl7OKb9L7V4=;
+        b=Uh6qqJcGQX5n1Vwd8WO/QbSAgG3OUiN2TEJ+j6uk/+fM0qhagcSsHUZjMUBCFvD4/S
+         2rreGoOo78pOyxKRMoNVQhsQ4XmgjIykUrDvqKWaM0Xn+V23FeLmfI//N7AmwWv/xIsl
+         KxBs5jIU6UauYrVSEOX27bJmkSRm1YnnWaqabUMcnCUi/kBlV9xDfl7sjs6mZwMlng9L
+         JT0I7+t47bIQMrCn5wQCDb08M+Be8JF/ed9mvwEVR/6mXwbF/3nq9bp/fuxdCLR6MJm2
+         9bNcNgsCYkokTi7r/DlyQS7X4NdIRvcqksi/GAigMGRCyjuRvpFDOADCtVMvBdX1wzed
+         M5tQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 39si24606037qtr.30.2019.07.31.18.17.11
+        by mx.google.com with ESMTPS id x2si41400871qvf.105.2019.08.01.01.08.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 31 Jul 2019 18:17:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 01 Aug 2019 01:08:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:45364 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:46294 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hsziQ-0000GZ-VM
-	for alex.bennee@linaro.org; Wed, 31 Jul 2019 21:17:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57420)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1ht68V-0002Rd-BR
+	for alex.bennee@linaro.org; Thu, 01 Aug 2019 04:08:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48335)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <tao3.xu@intel.com>) id 1hszhi-0008CU-6i
- for qemu-devel@nongnu.org; Wed, 31 Jul 2019 21:16:26 -0400
+ (envelope-from <thuth@redhat.com>) id 1ht68O-0002RN-VA
+ for qemu-arm@nongnu.org; Thu, 01 Aug 2019 04:08:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tao3.xu@intel.com>) id 1hszhh-0001Cs-C7
- for qemu-devel@nongnu.org; Wed, 31 Jul 2019 21:16:26 -0400
-Received: from mga05.intel.com ([192.55.52.43]:32388)
+ (envelope-from <thuth@redhat.com>) id 1ht68N-00051Q-W4
+ for qemu-arm@nongnu.org; Thu, 01 Aug 2019 04:08:24 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33778)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <tao3.xu@intel.com>)
- id 1hszhd-00018Z-2C; Wed, 31 Jul 2019 21:16:21 -0400
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga003.fm.intel.com ([10.253.24.29])
- by fmsmga105.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 31 Jul 2019 18:16:12 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.64,332,1559545200"; d="scan'208";a="180500643"
-Received: from txu2-mobl.ccr.corp.intel.com (HELO [10.239.196.216])
- ([10.239.196.216])
- by FMSMGA003.fm.intel.com with ESMTP; 31 Jul 2019 18:16:09 -0700
-To: Daniel Black <daniel@linux.ibm.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-References: <20190731084034.9498-1-daniel@linux.ibm.com>
- <20190731191740.58e474cc@volution.fritz.box>
-From: Tao Xu <tao3.xu@intel.com>
-Message-ID: <6d42f8c2-17c1-b172-a670-0a506cfc1ec2@intel.com>
-Date: Thu, 1 Aug 2019 09:16:09 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1ht68N-00050p-PA; Thu, 01 Aug 2019 04:08:23 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id D546A3091761;
+ Thu,  1 Aug 2019 08:08:21 +0000 (UTC)
+Received: from thuth.remote.csb (dhcp-200-228.str.redhat.com [10.33.200.228])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 03FC85D9CD;
+ Thu,  1 Aug 2019 08:08:16 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Yang Zhong <yang.zhong@intel.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
+References: <20190731075652.17053-1-thuth@redhat.com>
+ <20190731075652.17053-8-thuth@redhat.com>
+ <f2399005-cead-a147-37a5-600fda7eaea5@redhat.com>
+ <b9bbf556-e2fc-8634-2238-9c1c5ead7a35@redhat.com>
+ <18d71b10-6be2-b76e-54d6-76c0395ca700@redhat.com>
+ <CAP+75-Vrr5JcNd1tFhossrNDNEaJV4U4a+iyyDH2rgE5P6tV9g@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+Organization: Red Hat
+Message-ID: <7c468dcf-51bf-59a9-d281-1f0616b04487@redhat.com>
+Date: Thu, 1 Aug 2019 10:08:16 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190731191740.58e474cc@volution.fritz.box>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <CAP+75-Vrr5JcNd1tFhossrNDNEaJV4U4a+iyyDH2rgE5P6tV9g@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 192.55.52.43
-Subject: Re: [Qemu-devel] [PATCH] numa: numa nodeid need not be sequential
-X-BeenThere: qemu-devel@nongnu.org
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.41]); Thu, 01 Aug 2019 08:08:22 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 7/8] hw/misc: Add a config
+ switch for the "unimplemented" device
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Radoslaw Biernacki <radoslaw.biernacki@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Leif Lindholm <leif.lindholm@linaro.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- "open list:sPAPR" <qemu-ppc@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mI423U9GbXp/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: m/IqwqXl/7Mh
 
-On 7/31/2019 5:17 PM, Daniel Black wrote:
-> 
-> 
-> On Wed, 31 Jul 2019 18:40:33 +1000
-> Daniel Black <daniel@linux.ibm.com> wrote:
-> 
->> Replace all nodeid assumptions with lookups in the numa_info array
-> 
-> Tao Xu,
-> 
-> Sorry, only just noticed your patches of the move of numa_info and other
-> elements into MachineState. I approve of it. Lets see if I can follow
-> all of Igor's comments there too.
-> 
-> I'll be up for a V2 once merged.
-> 
-> Cheers,
-> 
-> Daniel
-> 
-OK, Thanks
+On 31/07/2019 17.59, Philippe Mathieu-Daud=C3=A9 wrote:
+> On Wed, Jul 31, 2019 at 5:55 PM Philippe Mathieu-Daud=C3=A9
+> <philmd@redhat.com> wrote:
+>> On 7/31/19 1:50 PM, Thomas Huth wrote:
+>>> On 31/07/2019 13.47, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>> On 7/31/19 9:56 AM, Thomas Huth wrote:
+>>>>> The device is only used by some few boards. Let's use a proper Kcon=
+fig
+>>>>> switch so that we only compile this code if we really need it.
+>>>>
+>>>> I'd prefer having the UnimpDevice user-creatable and always present =
+as a
+>>>> core device...
+>>>
+>>> Why? This is a sysbus device that needs to be wired up in code, so I
+>>> don't see a reason for making this user-creatable right now.
+>>
+>> Right now no.
+>>
+>>> Anyway, that's a different subject, so this should not be part of thi=
+s
+>>> patch.
+>>
+>> Fair enough.
+>>
+>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>=20
+> Err, you missed MUSCA and MPS2.
+
+Ah, well, that's another one of those indirections that we discussed in
+v1 and which I apparently forgot to add now in v2 ... both select ARMSSE
+which in turn select UNIMP, so it's not completely missing. I'll send a
+v3 with a fix.
+
+Thanks for noticing!
+
+ Thomas

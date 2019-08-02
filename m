@@ -1,100 +1,115 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7042355wrv;
-        Thu, 1 Aug 2019 07:38:30 -0700 (PDT)
-X-Received: by 2002:aca:7293:: with SMTP id p141mr56926758oic.122.1564670310265;
-        Thu, 01 Aug 2019 07:38:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564670310; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp525307wrv;
+        Fri, 2 Aug 2019 00:51:12 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz0ypoz5rHgHnmEIr/rC7TEpq72F81rXIGKocEJ2t301ayvPIY7aC62v3C0dX5QSqLE0ooa
+X-Received: by 2002:a67:f7cd:: with SMTP id a13mr22881585vsp.163.1564732272224;
+        Fri, 02 Aug 2019 00:51:12 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1564732272; cv=pass;
         d=google.com; s=arc-20160816;
-        b=1DxDZv4S/MCpeCpcPDKdAutxdRe/PkqHM2XH6AMRJY6p7N0/WmD5YIN89JrhW0p5gE
-         9oaYhvcP+tK/GJGMAHgt9t7NVXeNJEsSEt6risHmX1G8lQjxfuUqLkKfQU/7peuVIdso
-         OYKKEaVc+IL15nkd5XkceoXv5/1SJL20i/rSVpXjtGXRRh40ow7aD7TfZHuVOs4UkSpt
-         B6JFHkeDNJhOrfu/9rEERy5ufDoE9fzFhDtMYdcxKqBQR5KXZJn+0Fq0jpT/iN/tmc1J
-         6P0JRJIoZt0USwtfIZQf4JvfOs37eA2z8n880zdft5k7eLkS4LuW4a8Lh9iU77rKbeTR
-         gYSQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=sd+kBTIn1vxtV46hDUciCkeOpwmQ7MLQs/Y6E4lbOlk=;
-        b=QK5WrVQJiCqp9NOm0Ivhfg86ejSoP9T95VF3N0nQko0/va8yT2ArUYSdBJDYMONB14
-         kquh1QFjnp3qbZGxMflrk5KU0yIj1SAgsy/Vm5koJgV28yYA7ktNJs4SwIB1u6RTZecA
-         tZCgC8Z6hffOyQTWxE+q+jJKW5Liszq3nODieQAWFI3gPJhsQgVzSBcLacR/KfRsDcdf
-         Ap6f435Gp5etb5KDu8/6xEmdGsAkTcQAcjHKCcj2QBTKCsCheakHHlAch68u4PEue9Dt
-         Qj2NEL9BxtMzsBXy0PDdQ3ambtHjHxgJylRZMfBpgJHaCDV1AkSS10TBLLiyySdxoQip
-         In7w==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=d7CtjVII;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 66sor32855768oih.141.2019.08.01.07.38.30
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 01 Aug 2019 07:38:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        b=gRgDPRXwafT7Tkow/Y8tv3trBJ6LCSB3OfQcJazhnuUnubiuBXHxzadD5ZIMax6Txv
+         HuWiq+PUZkXG3wFbylyLla019keoNzJKRK3tfIN00Cp/8yu9oDCbbjG3kl2zXD4Y3IG1
+         AUfL44iql8vYyNoyXQ6Q5xLy+6EwPqJ5AjATJmO3gnBn/E0HO0rXu6NIKPhD+4FIbbq/
+         m9u77VupHMbjIm0sIIJhuoXrQdWdarXpaCW9JSV5hGyXztF/mILqN014B2zJ1vyvZVYX
+         4mAh/C28LTw/XW0AttUbmjLliYRJTT96PsVqEEy6ABtJCmuJ1AGdbWhRuYRD28iXe3/B
+         hq2Q==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=v5JXYGFw0SrkNdhYWhkbF5nQDgnrRl/1ad5g55DAqfU=;
+        b=eI/2K5CmS5+6ZFs3N4/IGVuV0eneS+EzNcDNL3Sja1l53+rpwSWDrG6nJlxQyARrTo
+         cxFy9soxfZPajmgEjlC66Cnnr7Ij3/CWCh8CjPmhTgoAOFZO1ZIDcZk+YXq+1Y4ePkCD
+         Dr0kZX8mTML3OwnZKyrKu+Wysgu4UrML0ncJUxqC839/NiX289EdCBT0zOx6EVx9y2l3
+         g8gskRA8scsXqYMANcOiDasrWm2pTNrDQIiADHVI9LQM4sAMV6c2DkPhSydaRH2oQCYy
+         FRt11ppJ6/HerU6qKDjOl0iCWDqkW6WTjqVkl4nyqWPWKN2lZynt4IUOp2O847H5Sa2q
+         Rp1A==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=icEkShbJ;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
+Return-Path: <damien.hedde@greensocs.com>
+Received: from beetle.greensocs.com (beetle.greensocs.com. [5.135.226.135])
+        by mx.google.com with ESMTPS id s202si16708787vks.58.2019.08.02.00.51.10
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 02 Aug 2019 00:51:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) client-ip=5.135.226.135;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=d7CtjVII;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=sd+kBTIn1vxtV46hDUciCkeOpwmQ7MLQs/Y6E4lbOlk=;
-        b=d7CtjVIIujX5QmgM5Ti0tRBBdy0ZQzCYhliixl+F16Pzx/MQ/RmKMu7Qf4ySFCD6P3
-         2uffV2HASIJJ99YdpouXvfipmgwhYhQOn7M7h7wrOFBMOOo9y3wc9we19BwbiEO9B3jn
-         O5KNm9Mh5Vir9sOso1xlz3/BrdTq6KnMmLfIY+lvAZPSslH3L79yUsgyu8sSnGe1lfns
-         xDcDX+GkYkD+2zDBVaGDtrOe/QQtZax7zjgBjZY/KY4ILXO9WYe7ZOtUkf7HF/lBNNHh
-         pLZWH6s9lmfGOINGYem7TeUlijjTcLgpeHgeHMs/H8R3B46AQmUKitsyPf7daCySu65U
-         VVDA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=sd+kBTIn1vxtV46hDUciCkeOpwmQ7MLQs/Y6E4lbOlk=;
-        b=DkHaxlWpy7xTQZxbIQRzMyGPQn30q+w26WH/dzwud2YwaVVDOQodYr7WNgdmzS9bVf
-         euZjZffnzBuDErVBWeF8GSeS1nr9Db5LZkfEy3RzRLZi7Dbj4EXML9+657VnO9wXqc6B
-         yRjrXdo5+4QAjl/4eVO+17Owf7lGq7Cc5pNAjUvRHVjLzM2OwQbiNhyzPZOx1hITn5Ju
-         d2reTY8QKcYNevJxyMX9mAOYx2/8DUg7Nc2NdufIgQj8fp/wbLTrf2xk+mXMTu8iNWwM
-         myILJgZrooJd8TtlZIDeGrKzeCLL25OG97vMVP0Dt14NsdObviJao8DxQE9IVDxkZx5y
-         XVMg==
-X-Gm-Message-State: APjAAAXWBEx8iMVWeZ5nVMNIWQCg4cOmhbzigUSD6hWZ7hPUUxGCri12
-	Pqof/mApcW5vQDFDgxoaDHn96sqXGF6w02/GvGLVP1wQQrk=
-X-Google-Smtp-Source: APXvYqzEvIY2nh0q0cKiIHdSiiMs6cqXWwr34dME9fJZdqYM9hLJKBGevw35/foXDbD/d/dqnkXolnBCX8h0qYWZOXM=
-X-Received: by 2002:a05:6808:8c2:: with SMTP id k2mr61800073oij.98.1564670309823;
- Thu, 01 Aug 2019 07:38:29 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190801105742.20036-1-peter.maydell@linaro.org> <af347b17-b524-1075-d462-2b0e6eef41a5@greensocs.com>
-In-Reply-To: <af347b17-b524-1075-d462-2b0e6eef41a5@greensocs.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 1 Aug 2019 15:38:18 +0100
-Message-ID: <CAFEAcA87XdDJH5TO-AiDfSqudmwzuY0yoa0H60objxXp3Bh9LA@mail.gmail.com>
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=icEkShbJ;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of damien.hedde@greensocs.com designates 5.135.226.135 as permitted sender) smtp.mailfrom=damien.hedde@greensocs.com
+Received: from [172.16.11.117] (unknown [172.16.11.117])
+	by beetle.greensocs.com (Postfix) with ESMTPSA id 3B83096F50;
+	Fri,  2 Aug 2019 07:51:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+	s=mail; t=1564732269;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=v5JXYGFw0SrkNdhYWhkbF5nQDgnrRl/1ad5g55DAqfU=;
+	b=icEkShbJ+BtVXi+xWe8U3asaCRCoqwSEpDsW86i7/d6OvOXfc814QgE0bX2yrR5MXEA9xb
+	fhYJAwVhXRWkbH99S+zVO7ioLv1eYjpLwREspIOtDrWi+wrP9yps6ty35jpYYQbUya/Uj8
+	SE2IZYYz7kwWlFRmgOoQ9sybtYrJOHo=
 Subject: Re: [Qemu-devel] [PATCH for-4.1] target/arm: Avoid bogus NSACR traps
  on M-profile without Security Extension
-To: Damien Hedde <damien.hedde@greensocs.com>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: ctijkpdYNrN1
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+References: <20190801105742.20036-1-peter.maydell@linaro.org>
+ <af347b17-b524-1075-d462-2b0e6eef41a5@greensocs.com>
+ <CAFEAcA87XdDJH5TO-AiDfSqudmwzuY0yoa0H60objxXp3Bh9LA@mail.gmail.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <569b96b1-e11a-59c5-4f67-1da2d592b8fc@greensocs.com>
+Date: Fri, 2 Aug 2019 09:51:07 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.1
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA87XdDJH5TO-AiDfSqudmwzuY0yoa0H60objxXp3Bh9LA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+	s=mail; t=1564732269;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=v5JXYGFw0SrkNdhYWhkbF5nQDgnrRl/1ad5g55DAqfU=;
+	b=CCX5KgZFNQ5uuMfb0M85LyFvy6KHZd1IzKZxczqavDzp5VaGuTooZh4HAni4ziQzSVRhjn
+	bwOE21kFDyZam0K7iFpvnIDknLJpCMQmNqYOsElt5B6d7v0av6h2ZOcag4TUix4snqBNlZ
+	vcGdo6fX8YeoqXSPeF2rFptWczsQtWU=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1564732269; a=rsa-sha256;
+	cv=none;
+	b=iaKoeFsU6/PNB5qBJi81Pzop+eWfGeZV6fqYBIkCz9LPSgQTQSlr3XxL6JfbIWjR+6wZMM
+	NXwY/lLpCYLHAjheINP9130n0RdxrAYnfR+Z8XvA9RQv1QG4JQThknIKbMpbk7YELcSiZp
+	WyhzIDHIgZJhveRIF7uu5DEbk/OeT/c=
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
+X-TUID: 2ADMj2qD7sy8
 
-On Thu, 1 Aug 2019 at 15:20, Damien Hedde <damien.hedde@greensocs.com> wrote:
->
->
-> On 8/1/19 12:57 PM, Peter Maydell wrote:
-> > In Arm v8.0 M-profile CPUs without the Security Extension and also in
-> > v7M CPUs, there is no NSACR register. However, the code we have to handle
-> > the FPU does not always check whether the ARM_FEATURE_M_SECURITY bit
-> > is set before testing whether env->v7m.nsacr permits access to the
-> > FPU. This means that for a CPU with an FPU but without the Security
-> > Extension we would always take a bogus fault when trying to stack
-> > the FPU registers on an exception entry.
-> >
-> > We could fix this by adding extra feature bit checks for all uses,
-> > but it is simpler to just make the internal value of nsacr 0x3ff
->
-> s/0x3ff/0xcff/ I think, given you put 0xcff after and in the code
 
-Yes, 0xcff is correct and the commit message is wrong. (Bits 8 and 9
-of the NSACR are RES0 in all situations.)
+On 8/1/19 4:38 PM, Peter Maydell wrote:
+> On Thu, 1 Aug 2019 at 15:20, Damien Hedde <damien.hedde@greensocs.com> wrote:
+>>
+>>
+>> On 8/1/19 12:57 PM, Peter Maydell wrote:
+>>> In Arm v8.0 M-profile CPUs without the Security Extension and also in
+>>> v7M CPUs, there is no NSACR register. However, the code we have to handle
+>>> the FPU does not always check whether the ARM_FEATURE_M_SECURITY bit
+>>> is set before testing whether env->v7m.nsacr permits access to the
+>>> FPU. This means that for a CPU with an FPU but without the Security
+>>> Extension we would always take a bogus fault when trying to stack
+>>> the FPU registers on an exception entry.
+>>>
+>>> We could fix this by adding extra feature bit checks for all uses,
+>>> but it is simpler to just make the internal value of nsacr 0x3ff
+>>
+>> s/0x3ff/0xcff/ I think, given you put 0xcff after and in the code
+> 
+> Yes, 0xcff is correct and the commit message is wrong. (Bits 8 and 9
+> of the NSACR are RES0 in all situations.)
+> 
 
-thanks
--- PMM
+Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>

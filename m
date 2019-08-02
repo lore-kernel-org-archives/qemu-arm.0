@@ -1,113 +1,112 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp1040090wrv;
-        Fri, 2 Aug 2019 09:35:52 -0700 (PDT)
-X-Received: by 2002:a63:2364:: with SMTP id u36mr120978182pgm.449.1564763752325;
-        Fri, 02 Aug 2019 09:35:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564763752; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp1042711wrv;
+        Fri, 2 Aug 2019 09:38:41 -0700 (PDT)
+X-Received: by 2002:a9d:61c7:: with SMTP id h7mr29528642otk.357.1564763921307;
+        Fri, 02 Aug 2019 09:38:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564763921; cv=none;
         d=google.com; s=arc-20160816;
-        b=FYCtLEd3cqkwJEBWc9hCiwBYZnVzqnF1t0yG2x5AS7Wl2y2Q+eO6f9DVDKKa0VlzSn
-         MbLMcxYSiYJHDqnY7cLbQzdvJMx9efjioXqDpSQkikxwrVhvG9A+jPQ+6FugZSsaIGug
-         eddPDB3+38yS9MXvUMfWjOIPUkQ179Rf4ltUMxYlErOWKVHOYGHi9vdhU2/xXx47nDOT
-         lwyCP6AZ4N7wadScrCnMoM3N+THQpsonxhHNMdLsETzIc7j/zI2UYBEqz/ojz0T5O/5r
-         YS5UfNfP70rYOVrt9AteUkDEVkiiEHFrbzFtwEkglou9Hrh5JJr6mpmR2oTztUYRSZQW
-         yhkg==
+        b=W7kS91nzvbN48SqwMWbcizYxTaEoillICFTO5AHfor32kscSkDctuqOujd/rRWdpli
+         BLSGnUD/dGEDTzqowK5/KKHcrHfXyxLnbRqi4WMLj+BTia3HB0OuAAHXJ8P/wDhhkewP
+         c7rosEXcfqgXAlrN/YLsb0pMntj1lqkFeLr33EGa97qbZ9YQ/ivyPUVA3qcHoDfOcSRa
+         C9nGZXSlOiZ3UZ1OQMf3GInAqEMSQaneVdfqHyLllMJ3BEKDKi9e5PyJG63VV4coUo07
+         gmjolbEzYQbz6X9iff95S5ptQ+lwu8yIp6XiIO2prWoMF9+pDAmQ4xS0a8JkMFhuIjwh
+         t8Ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=ofHR5x+bnfIPl+rlR7IwCOhCOElxnwlX0H9IAE/w9mc=;
-        b=K3GoxPsZipivHTXsCW8cIkThXdCmnRopup060eAj35Sh34rrpHdKgcVRzpdtZSr3ua
-         cZUz5XbIkv2u8N6cmBuS+bh18N22Srb/hpXLQuoyQ4cBpKiUs71b4yE1JjF2Urb25EeX
-         HC4ES2dwty82ckXvpHo9Y4OrlVLfVML9CdcCmppg0VqslMmirvIKnOtRWrrdwYFp+r8S
-         GPqHC5/4we8Zmt7Vv67PovwukgP0ynq06bbtj5MCTJAR5getcWtb9olIQq6KUYGFSPJS
-         IjmHyRHSwj35mCzMZyCvJF9CignRbwY/KZfhC/fTOAX+qDzYve+s4JczJlwIfZfO3LKo
-         o1xg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=xFI2+7XPTOv3b7japO9eQFMtUcdolV/Yk2OxnwsKfZk=;
+        b=tjQeaDyy3+89t50BEiaL42d+iZDojnxpZljz5kgUPlhBw4k0UFbavmI4C7/VinCfGE
+         hDc2WFUetzUM7bRcCYlsDxIfBDTNVOkPnuTGoXDn37kz03RpDifZKs63UAlpAGrBOo+g
+         7aWLIalfGfFXr0+yjAK7T0vsR+eb+qGd4+DMfDb52UN1y/FPccM8dkx25Wl+BO8LP2k5
+         f2XcZxUz5P1R7vtXo++kfKcP0jfvo6CWX/qVDUB0twSWieSUnazbp2ToJz/lA2dIo4y5
+         dmDXIwQhWAp0h9uTCRdzbZ2sEog1lVra0lB3EdczxlAn/0yx/H61L6znEYl4F71aZb0p
+         iKRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a2DtwsCJ;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=k1e5doCM;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id g18sor57293805pfo.60.2019.08.02.09.35.52
+        by mx.google.com with SMTPS id u19sor37650293otq.144.2019.08.02.09.38.40
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 02 Aug 2019 09:35:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Fri, 02 Aug 2019 09:38:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=a2DtwsCJ;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=k1e5doCM;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=ofHR5x+bnfIPl+rlR7IwCOhCOElxnwlX0H9IAE/w9mc=;
-        b=a2DtwsCJJwkt7EWoz+CCYzpQ9lutYz3w1dyDa04Td3mu/m9GHzswyj/a9jLuXlwJ99
-         XTLkx/BOpiRSO2nr7wp5iTI4PHkRHZQFM4+cYWkvw1NXdprMhti7nNKI/KdBEj15Vu5b
-         LoIOwnbc1lySiOjIXHObrtZL7drd5wX1WSGhP7h8O4MHziWdnyv5WABIyoz3t1Qorufj
-         azFrK1dp34JMhvoGOpzrejcv8aUomGOIEPIza1CY+I6woRm80ES7EUd3ynulZCyYQYmq
-         fvDiyf4l3grVvi0HBif2hN/ZW8wtmzl57XUH51CA5Ef+KcMxjgxm+9YbK+TVUghIQ+Mq
-         a+gQ==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=xFI2+7XPTOv3b7japO9eQFMtUcdolV/Yk2OxnwsKfZk=;
+        b=k1e5doCMkVCCaFON4eNc9BukwQMWmq00YRXBVHoQl7u3Eo0CeK7lv9ZKCXV1lbyWKN
+         JtrB044h1FD3AdBxGmyyWlY1O5UQLv44oHPv1qR2pGZ7IzcBoShSgKnXnKLvuQcPJKXX
+         uJVzqfr5SDRkFB7FjAeWo+QNXF+G23LRJk+OHeGuKHVJ30LC6vEv+7kOd4tGDjnA9IV7
+         NtxC6rBQkDr2nA+b9BVrxlW9PBb66q4oANKz17Cud6nW3MpM2p/pW6FQxiClWP24QK/N
+         Q+YOZq+ee4d8fTebwhMfGbkUpBhLvBTPFrd8i8qfw+tUYCUAAD2W496Wl9zlgBNBLTyQ
+         xXkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=ofHR5x+bnfIPl+rlR7IwCOhCOElxnwlX0H9IAE/w9mc=;
-        b=Wb90B+KnyVZCbYb9xKlqGciIZjaaCcyi74FMQiU0GHMPWid2pfJOcdm639kZiVrazF
-         hGYXqR/Uk7XYIPaJfpB8u5NCW06eqYEFbS3yanIRYfxXcupE7xXLi77cCUljX0B3SlUN
-         mSvcu8USbXZFrwbGIBGhiICj1YpLnhK21YxzKLSFNavukrG0K3EvS0qqI+Jj3RWhJ3jx
-         VAXOwITZfeAD9NvNppXKb0n106EGi9Pi7TLrO+jFpzo2o4m65eDkxsOY17TD3SRbCEha
-         l19//oYjdG7JGVink6bNBPE1Ar0Q+iLhEafWUmiYhizan/JDvOHhi+IHdNd89dKIZLQx
-         XJgQ==
-X-Gm-Message-State: APjAAAUViYyQueb7bDGYGcFslNSerhszuVcAPNXa6HcgfIeT93HtTwJu
-	PXZqQe+amPUtA3KBHwwA7sbvJ9RD
-X-Google-Smtp-Source: APXvYqzuP9aZLLdkCqSTmUzvqjZUlPQNljTGZqcRITtOxAkTUXAFEZvyteTuVwhPNNSd9k0v1rEM0w==
-X-Received: by 2002:a62:1c93:: with SMTP id c141mr62500792pfc.9.1564763751885;
-        Fri, 02 Aug 2019 09:35:51 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id t7sm7023610pjq.15.2019.08.02.09.35.50
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Aug 2019 09:35:51 -0700 (PDT)
-Subject: Re: [PATCH v3 07/15] target/arm: Allow SVE to be disabled via a CPU
- property
-To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, alex.bennee@linaro.org, armbru@redhat.com,
- eblake@redhat.com, Dave.Martin@arm.com, eric.auger@redhat.com,
- imammedo@redhat.com
-References: <20190802122540.26385-1-drjones@redhat.com>
- <20190802122540.26385-8-drjones@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <045c61e9-ab5d-a068-dd54-441a6f864ea7@linaro.org>
-Date: Fri, 2 Aug 2019 09:35:48 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=xFI2+7XPTOv3b7japO9eQFMtUcdolV/Yk2OxnwsKfZk=;
+        b=Ab6OqKhxn7sWHByzEaYIDcGBZHYBVLbFVm/9CWuZu8aAPJW9sBd/LmAg8ATN2uTANv
+         sn9G4nwmFTLzd+OA+0k9uED5hBiAEUrIxLv82QHW4n1fqGAOaOndIc5zmtIMS1t8LOye
+         eIdf1sF0cjvkBTaZbq6x43xacqA5tA/EdG1cSa8BUZRL5ckAzLVGYvrnbxN90ym6JHFh
+         z3Op2qH1ZKECrnE91vv7KguYg9zHSbRPVqsLyuGWyTvNNC5GkQW4W6wkGuRPYJOFjD6q
+         b2jFkb4dU9knY56hxHswclvYZeXQN3Pbo7cpCuhIuKHmdjsKqxs+ixgpmoPVavtUgkxY
+         5XMA==
+X-Gm-Message-State: APjAAAVdJFqzlMCeLQpxOBmNWAAwxcAo8ujpBYZ0lpoNjaFNQEWiV3lA
+	vltCArNawOQIvOpT02wtZRRIGNGWaymJ4BYoxec1zMN2
+X-Google-Smtp-Source: APXvYqwGrBgdTE4EDZg8pEKWRd0mwZy5xLCn9LpS+go97X1sgzBsJB9faApnTbQTYDpmeXOmlNurDiDkREaojyLcDCc=
+X-Received: by 2002:a9d:5f1a:: with SMTP id f26mr43437299oti.91.1564763920712;
+ Fri, 02 Aug 2019 09:38:40 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190802122540.26385-8-drjones@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: 2M23zjnydhiN
+References: <20190801105742.20036-1-peter.maydell@linaro.org>
+ <af347b17-b524-1075-d462-2b0e6eef41a5@greensocs.com> <CAFEAcA87XdDJH5TO-AiDfSqudmwzuY0yoa0H60objxXp3Bh9LA@mail.gmail.com>
+ <569b96b1-e11a-59c5-4f67-1da2d592b8fc@greensocs.com>
+In-Reply-To: <569b96b1-e11a-59c5-4f67-1da2d592b8fc@greensocs.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 2 Aug 2019 17:38:30 +0100
+Message-ID: <CAFEAcA_K3v_XXHh-eTpdrb39cVGu9Co95TaLQG+zAU1qa8MXKw@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH for-4.1] target/arm: Avoid bogus NSACR traps
+ on M-profile without Security Extension
+To: Damien Hedde <damien.hedde@greensocs.com>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	qemu-arm <qemu-arm@nongnu.org>, Richard Henderson <richard.henderson@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: ATxvCkXTy0wE
 
-On 8/2/19 5:25 AM, Andrew Jones wrote:
-> Since 97a28b0eeac14 ("target/arm: Allow VFP and Neon to be disabled via
-> a CPU property") we can disable the 'max' cpu model's VFP and neon
-> features, but there's no way to disable SVE. Add the 'sve=on|off'
-> property to give it that flexibility. We also rename
-> cpu_max_get/set_sve_vq to cpu_max_get/set_sve_max_vq in order for them
-> to follow the typical *_get/set_<property-name> pattern.
-> 
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> ---
->  target/arm/cpu.c         |  3 ++-
->  target/arm/cpu64.c       | 42 ++++++++++++++++++++++++++++++++++------
->  target/arm/monitor.c     |  2 +-
->  tests/arm-cpu-features.c |  1 +
->  4 files changed, 40 insertions(+), 8 deletions(-)
+On Fri, 2 Aug 2019 at 08:51, Damien Hedde <damien.hedde@greensocs.com> wrote:
+>
+>
+> On 8/1/19 4:38 PM, Peter Maydell wrote:
+> > On Thu, 1 Aug 2019 at 15:20, Damien Hedde <damien.hedde@greensocs.com> wrote:
+> >>
+> >>
+> >> On 8/1/19 12:57 PM, Peter Maydell wrote:
+> >>> In Arm v8.0 M-profile CPUs without the Security Extension and also in
+> >>> v7M CPUs, there is no NSACR register. However, the code we have to handle
+> >>> the FPU does not always check whether the ARM_FEATURE_M_SECURITY bit
+> >>> is set before testing whether env->v7m.nsacr permits access to the
+> >>> FPU. This means that for a CPU with an FPU but without the Security
+> >>> Extension we would always take a bogus fault when trying to stack
+> >>> the FPU registers on an exception entry.
+> >>>
+> >>> We could fix this by adding extra feature bit checks for all uses,
+> >>> but it is simpler to just make the internal value of nsacr 0x3ff
+> >>
+> >> s/0x3ff/0xcff/ I think, given you put 0xcff after and in the code
+> >
+> > Yes, 0xcff is correct and the commit message is wrong. (Bits 8 and 9
+> > of the NSACR are RES0 in all situations.)
+> >
+>
+> Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Thanks; since we need an rc4 anyway I have pushed this to master,
+with the commit message typo fixed.
 
-
-r~
+-- PMM

@@ -1,146 +1,162 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2200942wrv;
-        Sat, 3 Aug 2019 11:48:14 -0700 (PDT)
-X-Received: by 2002:a17:90a:7f85:: with SMTP id m5mr10404590pjl.78.1564858094098;
-        Sat, 03 Aug 2019 11:48:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564858094; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2200960wrv;
+        Sat, 3 Aug 2019 11:48:15 -0700 (PDT)
+X-Received: by 2002:a17:902:347:: with SMTP id 65mr42082851pld.232.1564858095443;
+        Sat, 03 Aug 2019 11:48:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564858095; cv=none;
         d=google.com; s=arc-20160816;
-        b=Loao9Ah4iwf1pm67uB/fwTdcojDw3Ds1fSVsnv4O265+Hfbz/N2ori/ap7XEKbsCVt
-         YRLfQ/jb+TGwDG3QGonfaRLiW3Or4i+rfXjpKYV4m5oXHnEBVFweUzY46wzD6/sUbv2d
-         mhLTDlrYxAMFvkSAeN8Uc8INts3039vlb8ESNcHS1tU92PRTW7vGQ4oDV2KriuJBFoFh
-         LgSM/8K0xozteAuoZ/kU61duVrBlK0S1wQgFV1zfqTz6bqQP+ustZICMb+o7jGbAy5JR
-         6FR2miquBPBqGeXkkEaVq+fpRl8rEEJJP8HKxY1BRgs+PzBMa6fxEIpAXsNsOMuTcYaN
-         SEFA==
+        b=stTtxk8J2xgDHZYUcLrdcT6mt8q8vNKZyeveGKAmUg8MLDE7ctuw2h8R5f5+h11hGa
+         kRZKpwYw5kCTsHk9Fzw6Y6yH9YDeTFduebvmzqjYQD19K4xCVA1qgMeHI5RS5+AKhVZ8
+         o/c3Ivg9sqYjs/4JNtnkY410UiFOFB1ymbc+I7k2oPuYhdFFbM9+m4afpzq4hJEB9nQ8
+         Y9rhpKwFabvCJFBZ5X0ACRKtxulgmFtuKdvyC+z2husVZDUY1Yz7PleWbLBFBSC4G77s
+         0pnUiDcpX2w0Ld246A0LERphMtZqyP8dSMglO1DcCp0GhzPR9GQZl5etEh4EYvqE8GSM
+         ldYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=eXztB5+CPZYWvtJqCXCkkbobp/U8zAPLQueishTnE64=;
-        b=xO0pipweOFrwm/OPHCuQ0+BcZAt0cklCb2Sw5DKWodwsONYBIJHWszUhQPOtxSq1fV
-         Oloxx2cGfF2AneOM3cfzFpuzRxdVlfuVgEULlLvEy7YR3MGk0kWdJ1wyj3Zje9Sf9+7S
-         KxQWp4eyFuxC779E19uQOW/9D3qMF2wZYZtTTp5RDcjVGl+kUQirs+bUOOHk/P3FL0dz
-         yPY51pmbkvTD2a1gG0vDJENAFyu2LAHrCZXIgsilz61GrbFdyJpbdjgqvNqx9M7KlU89
-         JYCfBwsvioDt9hCW9qgW33ze6PcD8m7w3croyl7t/ZPpLNLlbzWFd86ikzaF0PkZccYH
-         lZCQ==
+        bh=ebweW1bxG4mlr4zUkxD0Pv+fcpZzn603jNjjqkso5Rc=;
+        b=iiuIKylmbfDEju+S6DiJRgQZvls/GxFynpVdtH9joKyDwoNNoumHvuuVdnfgHxUcEv
+         TtN/PcuJkLyU9h4CnIwczK+c7yi3Ln5VQ9BXa/bF4PxgPBziAcsBXB8XemnXSxsnHvoN
+         t6YTTx9RELbtK5ClLQxAAS1YuJXYJfyz9/u0cK9nyLb5xdr9oIcny3GKeL8gctVGPsAc
+         I8yR1qgoGdzPKIX3C8f66nmBUCSLz8Fo7RNeIyFKcuxMXRqL4LaXyN7VasX60u9geY/f
+         stAHQQJinUnQ8zdwTNBHdnJ//+0vACB+GoiAsOJ+zULYNjMoiYd8B/Uuk3w2ScEYfzmK
+         pgww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AJ98DjJu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dO8sJijZ;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id s138sor34909059pfc.44.2019.08.03.11.48.13
+        by mx.google.com with SMTPS id 9sor58673026pfo.45.2019.08.03.11.48.15
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 03 Aug 2019 11:48:14 -0700 (PDT)
+        Sat, 03 Aug 2019 11:48:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=AJ98DjJu;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dO8sJijZ;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=eXztB5+CPZYWvtJqCXCkkbobp/U8zAPLQueishTnE64=;
-        b=AJ98DjJuyQa8Lr5B1/KRUNoK+ILQGZEY9Jv3+Ww03P6WGufe/CvR8wyHMj88ptaIR4
-         r0bz8uvJn0E8vEGQoHbmsxXpve9cfB66rxvlVOkP9ljpopFmHG1HcxbH8MWz7/H6q3M6
-         u95D3jILdArc0uyivXitYvp/ISBhXCsXQvaDnNABaopop/5PgGllnE99riLxlLbRUUc8
-         2uo3HYe/J1G0KDBaQFEyXM7aXMX/W/5LTHVOxlT+NvzzmkBDKDJxrQZBOVYCfq3ezmxW
-         fV87C/o1zBtN9yOn+zD50rUqX+VBxjFC3dQUVAaej+TKRJgx1ZB5eCkudDlyeWXz1YUf
-         Jtsw==
+        bh=ebweW1bxG4mlr4zUkxD0Pv+fcpZzn603jNjjqkso5Rc=;
+        b=dO8sJijZ1OJHBbtBkNrBGZwgxZqhDR3pnZ17F4RG48Q+rZ2YYG+zmyWKMdUWJgYasD
+         npGZFmyiQ+SppHzUz0YshpFHT2cj/buuGGrgh6aROftTUI9XolXqun8J9P5EhmWip+ze
+         Bp0dYd2RLKbOSIOmH3ZOElHSGMHsJ0a+RudWjmrdPGtZNqYbT3WSKKumXM3D5Q5ZjFeg
+         f0fLiQwKRm/adsq7n+R+xANG4DA6lWtGQfIIjrlDHkyRD2yTYz1fACiEGO3OxFEHVpED
+         oErG27FbDZuX3lNsJGA1vopDmV4jeiHvqNwZlt49WL/y73eqCBV908eDQtKxRA7afIxZ
+         eaEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=eXztB5+CPZYWvtJqCXCkkbobp/U8zAPLQueishTnE64=;
-        b=naUNDQcf4YlPRZ6TDQrviFY32DbrWabijZUUUFIwo5FLxy3pd8forxZKaJfKzl9VSF
-         eWM4OjcYSC3qRKsCGNOOTfyYlNBvSVx43beZ3diaiFt2pjh82VBmjnRd2EA7YNJK2Q1c
-         iFFmp1XemJ7zeBl9Ebp6JEc7t0fqVF4IIVJLmsa+fh/3ZmMHQjNEwQwWQHQ1TkNEpboa
-         rn0J5DjzRG0z5vD6cXD5Uk9aVQdvS6XnT+SB8osX7Dpy0XsDi3o25BQOFxE9s687T6pl
-         jOcjGXtiqUoqkRTtQ1k/OkNtwhGvE6lr+r/7q4bVc8BC6Gsml73gVRSVWH9y9MZ1TsZI
-         sU8Q==
-X-Gm-Message-State: APjAAAVDpCQdaDB5x1SYfrvt5SKHOyVa3a1pVEV2u3NMLWaLfzR0PjM3
-	vpCbkDHziF2Bs4OVMjLcGHEXlIfI
-X-Google-Smtp-Source: APXvYqxLtTrDQd2ygpe7u9I3MpwqN034hu3moDA93qP3hIuKQzIwJYfCmTIvAo5R/ZLJ4/IHyRsOnQ==
-X-Received: by 2002:a62:750c:: with SMTP id q12mr67644200pfc.59.1564858093677;
-        Sat, 03 Aug 2019 11:48:13 -0700 (PDT)
+        bh=ebweW1bxG4mlr4zUkxD0Pv+fcpZzn603jNjjqkso5Rc=;
+        b=DaJLqQIiHotFDF2LWgfq5fRbF8cJxu2BYUy++QgEy6BQcxOEQttO+FZiaEn19YZ6fk
+         ++640Wz9FUiFezGPtO6U1cgEnq6DiBjl5FidIktVstG51MJjNLzCQeaUo7nTzoDVj/gx
+         5SMi/BzwFL4KpfI5X/nyBclsIDoyV8Q0IPi2FtuXC05EQYL2CttC+ifu5Wqp/CZw52nI
+         WCo06ZXJ7+o2HFizPEsweR3JeCMAlK84TwahpQzdTSXgbkPjdU9ee0FZdWNR8fPZ4MmU
+         ItJEGjm7so0/CKWnFTKdWX13q4f+a5hlCSEJ+ZpNo9IKwzqxW8BzzhQiHEd43Maij0wS
+         o2Og==
+X-Gm-Message-State: APjAAAXA2U7IMsX7uKBC46KGZEfM82Ks9fR368LpFspvOG8h7ursqWpR
+	zYjLrEd9H5XhU8FDNoooDCLutU+ovtIQ+Q==
+X-Google-Smtp-Source: APXvYqzESc5O7rN+zLAS85mB8ekDyYCTLf/IJJ0EFezaffKKgvlIv9CQteMSbBvCYvSLesZLKBEGdQ==
+X-Received: by 2002:a62:e710:: with SMTP id s16mr67733969pfh.183.1564858095005;
+        Sat, 03 Aug 2019 11:48:15 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id q69sm15405454pjb.0.2019.08.03.11.48.12
+        by smtp.gmail.com with ESMTPSA id q69sm15405454pjb.0.2019.08.03.11.48.13
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Sat, 03 Aug 2019 11:48:12 -0700 (PDT)
+        Sat, 03 Aug 2019 11:48:14 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v3 09/34] target/arm: Add TTBR1_EL2
-Date: Sat,  3 Aug 2019 11:47:35 -0700
-Message-Id: <20190803184800.8221-10-richard.henderson@linaro.org>
+Subject: [PATCH v3 10/34] target/arm: Update CNTVCT_EL0 for VHE
+Date: Sat,  3 Aug 2019 11:47:36 -0700
+Message-Id: <20190803184800.8221-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190803184800.8221-1-richard.henderson@linaro.org>
 References: <20190803184800.8221-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 8jkwzDGFP61P
+X-TUID: a/oBaeQVJNnS
 
-At the same time, add writefn to TTBR0_EL2 and TCR_EL2.
-A later patch will update any ASID therein.
+The virtual offset may be 0 depending on EL, E2H and TGE.
 
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 18 +++++++++++++-----
- 1 file changed, 13 insertions(+), 5 deletions(-)
+ target/arm/helper.c | 40 +++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 37 insertions(+), 3 deletions(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 8baeb3f319..8d8b3cc40e 100644
+index 8d8b3cc40e..e2fcb03da5 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -3449,6 +3449,12 @@ static void vmsa_ttbr_el1_write(CPUARMState *env, const ARMCPRegInfo *ri,
-     }
+@@ -2484,9 +2484,31 @@ static uint64_t gt_cnt_read(CPUARMState *env, const ARMCPRegInfo *ri)
+     return gt_get_countervalue(env);
  }
  
-+static void vmsa_tcr_ttbr_el2_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                    uint64_t value)
++static uint64_t gt_virt_cnt_offset(CPUARMState *env)
 +{
-+    raw_write(env, ri, value);
++    uint64_t hcr;
++
++    switch (arm_current_el(env)) {
++    case 2:
++        hcr = arm_hcr_el2_eff(env);
++        if (hcr & HCR_E2H) {
++            return 0;
++        }
++        break;
++    case 0:
++        hcr = arm_hcr_el2_eff(env);
++        if ((hcr & (HCR_E2H | HCR_TGE)) == (HCR_E2H | HCR_TGE)) {
++            return 0;
++        }
++        break;
++    }
++
++    return env->cp15.cntvoff_el2;
 +}
 +
- static void vttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-                         uint64_t value)
+ static uint64_t gt_virt_cnt_read(CPUARMState *env, const ARMCPRegInfo *ri)
  {
-@@ -4844,10 +4850,8 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
-       .resetvalue = 0 },
-     { .name = "TCR_EL2", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 0, .opc2 = 2,
--      .access = PL2_RW,
--      /* no .writefn needed as this can't cause an ASID change;
--       * no .raw_writefn or .resetfn needed as we never use mask/base_mask
--       */
-+      .access = PL2_RW, .writefn = vmsa_tcr_ttbr_el2_write,
-+      /* no .raw_writefn or .resetfn needed as we never use mask/base_mask */
-       .fieldoffset = offsetof(CPUARMState, cp15.tcr_el[2]) },
-     { .name = "VTCR", .state = ARM_CP_STATE_AA32,
-       .cp = 15, .opc1 = 4, .crn = 2, .crm = 1, .opc2 = 2,
-@@ -4881,7 +4885,7 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
-       .fieldoffset = offsetof(CPUARMState, cp15.tpidr_el[2]) },
-     { .name = "TTBR0_EL2", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 0, .opc2 = 0,
--      .access = PL2_RW, .resetvalue = 0,
-+      .access = PL2_RW, .resetvalue = 0, .writefn = vmsa_tcr_ttbr_el2_write,
-       .fieldoffset = offsetof(CPUARMState, cp15.ttbr0_el[2]) },
-     { .name = "HTTBR", .cp = 15, .opc1 = 4, .crm = 2,
-       .access = PL2_RW, .type = ARM_CP_64BIT | ARM_CP_ALIAS,
-@@ -6807,6 +6811,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .opc0 = 3, .opc1 = 4, .crn = 13, .crm = 0, .opc2 = 1,
-               .access = PL2_RW,
-               .fieldoffset = offsetof(CPUARMState, cp15.contextidr_el[2]) },
-+            { .name = "TTBR1_EL2", .state = ARM_CP_STATE_AA64,
-+              .opc0 = 3, .opc1 = 4, .crn = 2, .crm = 0, .opc2 = 1,
-+              .access = PL2_RW, .writefn = vmsa_tcr_ttbr_el2_write,
-+              .fieldoffset = offsetof(CPUARMState, cp15.ttbr1_el[2]) },
-             REGINFO_SENTINEL
-         };
-         define_arm_cp_regs(cpu, vhe_reginfo);
+-    return gt_get_countervalue(env) - env->cp15.cntvoff_el2;
++    return gt_get_countervalue(env) - gt_virt_cnt_offset(env);
+ }
+ 
+ static void gt_cval_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -2501,7 +2523,13 @@ static void gt_cval_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ static uint64_t gt_tval_read(CPUARMState *env, const ARMCPRegInfo *ri,
+                              int timeridx)
+ {
+-    uint64_t offset = timeridx == GTIMER_VIRT ? env->cp15.cntvoff_el2 : 0;
++    uint64_t offset = 0;
++
++    switch (timeridx) {
++    case GTIMER_VIRT:
++        offset = gt_virt_cnt_offset(env);
++        break;
++    }
+ 
+     return (uint32_t)(env->cp15.c14_timer[timeridx].cval -
+                       (gt_get_countervalue(env) - offset));
+@@ -2511,7 +2539,13 @@ static void gt_tval_write(CPUARMState *env, const ARMCPRegInfo *ri,
+                           int timeridx,
+                           uint64_t value)
+ {
+-    uint64_t offset = timeridx == GTIMER_VIRT ? env->cp15.cntvoff_el2 : 0;
++    uint64_t offset = 0;
++
++    switch (timeridx) {
++    case GTIMER_VIRT:
++        offset = gt_virt_cnt_offset(env);
++        break;
++    }
+ 
+     trace_arm_gt_tval_write(timeridx, value);
+     env->cp15.c14_timer[timeridx].cval = gt_get_countervalue(env) - offset +
 -- 
 2.17.1

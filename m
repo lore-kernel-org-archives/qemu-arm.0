@@ -1,100 +1,179 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2201173wrv;
-        Sat, 3 Aug 2019 11:48:39 -0700 (PDT)
-X-Received: by 2002:a63:e70f:: with SMTP id b15mr130128218pgi.152.1564858118827;
-        Sat, 03 Aug 2019 11:48:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564858118; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2201185wrv;
+        Sat, 3 Aug 2019 11:48:40 -0700 (PDT)
+X-Received: by 2002:a17:90a:8a84:: with SMTP id x4mr10237114pjn.105.1564858119903;
+        Sat, 03 Aug 2019 11:48:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564858119; cv=none;
         d=google.com; s=arc-20160816;
-        b=XQzteb6T6DyL2GIhbjdkqU7fbhFeIz279XWmyTb0ws/N/zHXZ0bzhx0dGlus3HngWJ
-         OcavFmEHavETA9K/xKvwyH5Nd7hwlaPRm3thmQpqCjmfZPzwTkLxQ2zDZLo+pIAJI41c
-         mrq5iH7GW3KpElTFRN6kg7zgQVZfHzLTtCyUvwTVIj1LQsnIW/TUbXSznvnGC85nTGm0
-         TWbJgCkVdv1Q5XEHgAH6E+o2LfaZoDcRLOjMJKr56j9Qgu7+SPP4y91yRmfUJ7VdXVcK
-         F1wxl1Xm6gn4h4ql0MNyWi0uXRh9ZwMNcg+6V3MqO2mBm8FS92cEOUEhsGR8l+MDFwaR
-         A3GQ==
+        b=VZ+BVZqELCqth1qMoFa2ZZOmykbIA1sevgbi3CTr4N2G2wo/1mVU5YDcwh5xdBabGo
+         os2+/TcEx4TwX5u/uQ3v0f+huL89i8jLXPiw8iFNKVyyyu34CUKS8QEHb6vX5CnZrg1c
+         ZevTjtLPoPEQVlrmVse0MxtzY0I76aWARGEW89vuiExOHSR9QXTR4ua2sIX9lck6llSK
+         xZ2A0b1pxyAfvRJLhs3Xk5mX0gkoKSL0TgOOJbeUiiEadxYA/GllpGZr67GwZfYypQAE
+         FMDAR80LLBQaJYrXnFAN3WP+Yp10cDzmbc+f7xr7qGViI+yPJxR9WcL0wgHnalPpEFsn
+         7DOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=x75zfy++4h7G7+9uJPGHwt0vV9wve8SgXFTPLCjlkks=;
-        b=UgYVhmmcj97pSkfNmvf3ThIi2dR6vnbVkae9AqcbCxFGxmZyDPMr0HDfG8Au5WtHsw
-         ZAwrVROZ38tUKMnIgCa1Korm13JFLUif7XAKUxEpaOZ/1Pyb/3C5KG9m31cM9LQDmCiN
-         3sZPJNe2vKpe6tbHKxDM3eM3z+ybrc0iDLk4n3rPAzSmOWXxteUSI42Yd4RslpRlma4V
-         n98kBn7jVPD9ADV+ZgBI/NkJnxKO6s71GfFTVKYVlcs/FGMr1jdVcN2bGmj+POQlSvCh
-         WblUN9lZmTNOsxi/h7SJkq5nSbXyIr1FbMwuiwuiABF9Jz/3sJCwbRH0xCuzU92Z6lu5
-         gspQ==
+        bh=fQb2baX8+br9XDTjkUGb5FILfpDmjfnieLRvexjfCRg=;
+        b=BTJWRIocrkLhnkUMFfIGCl1BqfnaedouktugmOikRskKJNxsz7JklOe72cu6d9fJVD
+         xY1Ab/srM4P1eYfDnVtWODxKaUhUrPdoRvFPkTmw8PmV9TmYlNTAfpkz88stdeC59t9u
+         D4cJ2pEQVB8CQhqnBhyxkaXSU/6wnLXTteY9ICYlUH/TA5SBkWIqxU1PKxT/6pyDwzgb
+         EJHPq95kLPwEdORgF1DJ33ih2rjYijumVKvGoJpQuhkziLCYjf1jWynWsHxRr1JZp1jJ
+         6ZkZlNc/vsOpckcxHhN++XFMjFcdJmV4Pxml56pkFlMxotF5H+6LMt1geSb0XuQOBiat
+         LMIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vSbLBug1;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZHFbLtM2;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id d1sor14729106pju.23.2019.08.03.11.48.38
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id j8sor60810371pfa.53.2019.08.03.11.48.39
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 03 Aug 2019 11:48:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Sat, 03 Aug 2019 11:48:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vSbLBug1;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=ZHFbLtM2;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=x75zfy++4h7G7+9uJPGHwt0vV9wve8SgXFTPLCjlkks=;
-        b=vSbLBug1LuIdmY3e05odA6DONIHNQKBNmeojBFBcQFRAAln5HmcZSfiO3bZML0gPB5
-         o8uOagH6fGlOmk8pB3PnoKl7zwdN7KJ1daKWWnv7qLvZ2hpKzvFkKkhywpFiGYe4Pgc4
-         H+7HCtNZ41yARIYpZ3zOhQ040U7hPn1sQ7zwAplnf+MjdUdL6jt5VYhNGQuY9GE4yg+0
-         3EQg3ZZYJOKjWUJrtrzD2X3w9kldGktifhfDyKwll+jqOD8QSgGsBIkTATiSDCtG9URd
-         S4Hg6G47XIilxW10LxvEJvPMtcjlVL8kqZebme30vgQxacppg4ev4lKoDVYHeGPAXsSt
-         hrAA==
+        bh=fQb2baX8+br9XDTjkUGb5FILfpDmjfnieLRvexjfCRg=;
+        b=ZHFbLtM2E06kgJw7hT0Egbeg9owC+1p6dPnG4drYYDaV1gn4UGEFq6dm4GnDGTxgJ6
+         yPYbHxLvHHTQ3bYaIFZwUNkS/1xDppWkvjVkOmRUqHXoI+Tf4z1UGdu1DjksEdf8uGXl
+         +SuFpIsNLFprQtP1if5EjQGhtH8IcVn+wwwCn7GLUllKJRV88oqO8J/DCg0D5HJfDnT6
+         +o5weLX8BQujymbxv3/CzWAb7CFIMmM4VCf+WhyDSWqlwF8rYhiXKUZaPemUAn9/qU3C
+         TBMaSgrAct7EUoGw408h+YJRJYNrc2S3hF6DF8YeT/KQP1YpAbN8O6n1vfsTauCdmhs1
+         Q2vA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references;
-        bh=x75zfy++4h7G7+9uJPGHwt0vV9wve8SgXFTPLCjlkks=;
-        b=cORROESUaiWzHAzLYi5sgOjyTAyG1x8a7bePtXwkAZutpRRvSEl6otgMBYZOcgoT34
-         cg3cnpKOEciqSG0ynGAc+0YL6lnq554gm/C6MKvu135PlBTChEZmT7kYFEmKjCDP+qcN
-         7NLTz+PoXIh+2rv7jMS2N+VOxEMWDhaSMZIaotCEiJ0KxzQkn2q6gfUoSDO9y3tzWVpf
-         vut4P+FpH5GmbPoiVckG2xTU9HcYA9NE4oYx0Z8sNMyuStxATYFPvHis5lXCr7wm5U2b
-         xqDAKZ/3W3emDcuiOcLreQohNk4E4EV7TPKgYMpLPXAddNZtQ27vFsKvp/hZa5GynWSV
-         rMug==
-X-Gm-Message-State: APjAAAW1tQx8P5dYNMRKwH7LsdF9HpiLgmX2le95ornKFkOYhvVOtAeg
-	S+ANfFDhKSidsZu7Bwa5QTjgCbe5
-X-Google-Smtp-Source: APXvYqxZ2T2wVdpWFl09fwK3nMJTtfcpGyVFU53yW1XfeyIu/WHv9qxSV4TyuvQAJYewR7ay0JP8zA==
-X-Received: by 2002:a17:90a:24ac:: with SMTP id i41mr10331984pje.124.1564858118408;
-        Sat, 03 Aug 2019 11:48:38 -0700 (PDT)
+        bh=fQb2baX8+br9XDTjkUGb5FILfpDmjfnieLRvexjfCRg=;
+        b=qnF4XvpRtUGgPl5bdSxvXR+a24B0dt3hILoXpfrJR5Mc7p8Zb7TF19jumim8/p66Ml
+         iH1FAFcAvCxKUHKrqr09R97PvGBXRplNMMz58DpV7l912UlHWuak6a1BFho2susXmgH0
+         g5/k1I5uSY7AWCyc9vKz/Op0DbdwUtzEPOdtV8GEG5DqdIY0sjYxHNYwywFo6Y6jVmtQ
+         wtWJbR1sZoQu2heAOraVATtZNpykHqlC4zs72C8e0bylHnMajzLoUs7XjA6Kqwg5N9tX
+         mD5ilfObGdi5LOB3qOoRqPcbSbpuME68GGME+aEvLu5SQZ7BQGYE+jrOwjqhcIjE4VsM
+         zW6A==
+X-Gm-Message-State: APjAAAVwJrxJAHefx281UkoABk3ZDrgKaiOu/jbM3KdM3nM+orNDHsKP
+	xlx9vK/aLdbXGAYuW+Yvbyng0OMF
+X-Google-Smtp-Source: APXvYqxINb8Pz4XuN9P/UruqFE4PZJ/nLF369CIR3xnPOPBp6QD6RZuXQ+W29y3PmKGblH6A890Abw==
+X-Received: by 2002:aa7:8b10:: with SMTP id f16mr66690094pfd.44.1564858119468;
+        Sat, 03 Aug 2019 11:48:39 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id q69sm15405454pjb.0.2019.08.03.11.48.37
+        by smtp.gmail.com with ESMTPSA id q69sm15405454pjb.0.2019.08.03.11.48.38
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Sat, 03 Aug 2019 11:48:37 -0700 (PDT)
+        Sat, 03 Aug 2019 11:48:38 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v3 30/34] target/arm: Update regime_is_user for EL2&0
-Date: Sat,  3 Aug 2019 11:47:56 -0700
-Message-Id: <20190803184800.8221-31-richard.henderson@linaro.org>
+Subject: [PATCH v3 31/34] target/arm: Update {fp,sve}_exception_el for VHE
+Date: Sat,  3 Aug 2019 11:47:57 -0700
+Message-Id: <20190803184800.8221-32-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190803184800.8221-1-richard.henderson@linaro.org>
 References: <20190803184800.8221-1-richard.henderson@linaro.org>
-X-TUID: +9kvw4EBHIRt
+X-TUID: yz4gJ/mNsONG
+
+When TGE+E2H are both set, CPACR_EL1 is ignored.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/helper.c | 1 +
- 1 file changed, 1 insertion(+)
+ target/arm/helper.c | 53 ++++++++++++++++++++++++---------------------
+ 1 file changed, 28 insertions(+), 25 deletions(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index a0969b78bf..d481716b97 100644
+index d481716b97..2939454c8a 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -8936,6 +8936,7 @@ static inline bool regime_is_user(CPUARMState *env, ARMMMUIdx mmu_idx)
+@@ -5539,7 +5539,9 @@ static const ARMCPRegInfo debug_lpae_cp_reginfo[] = {
+ int sve_exception_el(CPUARMState *env, int el)
  {
-     switch (mmu_idx) {
-     case ARMMMUIdx_SE0:
-+    case ARMMMUIdx_EL20_0:
-     case ARMMMUIdx_Stage1_E0:
-     case ARMMMUIdx_MUser:
-     case ARMMMUIdx_MSUser:
+ #ifndef CONFIG_USER_ONLY
+-    if (el <= 1) {
++    uint64_t hcr_el2 = arm_hcr_el2_eff(env);
++
++    if (el <= 1 && (hcr_el2 & (HCR_E2H | HCR_TGE)) != (HCR_E2H | HCR_TGE)) {
+         bool disabled = false;
+ 
+         /* The CPACR.ZEN controls traps to EL1:
+@@ -5554,8 +5556,7 @@ int sve_exception_el(CPUARMState *env, int el)
+         }
+         if (disabled) {
+             /* route_to_el2 */
+-            return (arm_feature(env, ARM_FEATURE_EL2)
+-                    && (arm_hcr_el2_eff(env) & HCR_TGE) ? 2 : 1);
++            return hcr_el2 & HCR_TGE ? 2 : 1;
+         }
+ 
+         /* Check CPACR.FPEN.  */
+@@ -11263,8 +11264,6 @@ uint32_t HELPER(crc32c)(uint32_t acc, uint32_t val, uint32_t bytes)
+ int fp_exception_el(CPUARMState *env, int cur_el)
+ {
+ #ifndef CONFIG_USER_ONLY
+-    int fpen;
+-
+     /* CPACR and the CPTR registers don't exist before v6, so FP is
+      * always accessible
+      */
+@@ -11292,30 +11291,34 @@ int fp_exception_el(CPUARMState *env, int cur_el)
+      * 0, 2 : trap EL0 and EL1/PL1 accesses
+      * 1    : trap only EL0 accesses
+      * 3    : trap no accesses
++     * This register is ignored if E2H+TGE are both set.
+      */
+-    fpen = extract32(env->cp15.cpacr_el1, 20, 2);
+-    switch (fpen) {
+-    case 0:
+-    case 2:
+-        if (cur_el == 0 || cur_el == 1) {
+-            /* Trap to PL1, which might be EL1 or EL3 */
+-            if (arm_is_secure(env) && !arm_el_is_aa64(env, 3)) {
++    if ((arm_hcr_el2_eff(env) & (HCR_E2H | HCR_TGE)) != (HCR_E2H | HCR_TGE)) {
++        int fpen = extract32(env->cp15.cpacr_el1, 20, 2);
++
++        switch (fpen) {
++        case 0:
++        case 2:
++            if (cur_el == 0 || cur_el == 1) {
++                /* Trap to PL1, which might be EL1 or EL3 */
++                if (arm_is_secure(env) && !arm_el_is_aa64(env, 3)) {
++                    return 3;
++                }
++                return 1;
++            }
++            if (cur_el == 3 && !is_a64(env)) {
++                /* Secure PL1 running at EL3 */
+                 return 3;
+             }
+-            return 1;
++            break;
++        case 1:
++            if (cur_el == 0) {
++                return 1;
++            }
++            break;
++        case 3:
++            break;
+         }
+-        if (cur_el == 3 && !is_a64(env)) {
+-            /* Secure PL1 running at EL3 */
+-            return 3;
+-        }
+-        break;
+-    case 1:
+-        if (cur_el == 0) {
+-            return 1;
+-        }
+-        break;
+-    case 3:
+-        break;
+     }
+ 
+     /*
 -- 
 2.17.1

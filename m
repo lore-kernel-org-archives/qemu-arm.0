@@ -1,154 +1,395 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp1444229wrv;
-        Fri, 2 Aug 2019 18:28:56 -0700 (PDT)
-X-Received: by 2002:a17:902:347:: with SMTP id 65mr38807784pld.232.1564795736014;
-        Fri, 02 Aug 2019 18:28:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564795736; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2201012wrv;
+        Sat, 3 Aug 2019 11:48:22 -0700 (PDT)
+X-Received: by 2002:a17:902:2aa8:: with SMTP id j37mr130707452plb.316.1564858102513;
+        Sat, 03 Aug 2019 11:48:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564858102; cv=none;
         d=google.com; s=arc-20160816;
-        b=PiQf6AsJS7r9wZLBV2Wljmc9DLnlXv0wqWnQ/UYN2oZg4iXN8t5t90Vak15q7pqWLJ
-         VEmhTx10aExPavLTZUHCksXkKeK0JAnPIgQPo0qiQ2DY9NQkB6VQpks8+rPaiADow6Wr
-         w31lmxG9AD+U6rrwjFepNdUWxogqQ1N1HZwILRbASV+0dD2F+1fKulFenQ9E5B/d058A
-         9yg39qkd/7gs6eM7V+ePFTEucCL3Aed8MIw3zcjDuM5DFLsif9WEzJfusZ844KHoLDZW
-         yQ3BesYbVDJ6Z2SWGV3cEdosb1b/gbAgPH/CllKmX9XdQS5bDnI0bqfn77osiy1VtjNO
-         vDrg==
+        b=aWugIo5XrDOUhdSCmsVuzu2UFmeWP8nOXERNEXr0QRx4nAVxhfzG9cfImNiyhZBMhh
+         yyoa69OYEyDGuc/HVT39IcJcQRAZvQcVZ0XM9TGTEYBduHkw/i4ymnVz+qpzlEIvEcZu
+         Iqqzm+v2xdfGSS2Pz75WLiA/5eudouDNPIiOFDYwzjEBR2bBPlNGOwZ2pmCZWEbEc2DG
+         G0LdVdhQlW0/Ebf6EGKrzwHRIPms7nUBjkgdBaBbWj0GTfoRWOlwFQw1glf5fLY4D/a+
+         SGr725vL540xRODMdxVjbGRTqeyUyz6Gd1DcWXX+v7K9CaBZhd1Fc+UQFEMNI15nyuj+
+         bQ/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:references:cc:to:from:subject
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=O2YN/QvQPLAClyEHRsWfCjD/z1AkYNw3I+YAPw1gM+M=;
-        b=FuAGJ+YR3BQPFTBFz0LKqWE/bvr2FdUuE6FjLLE4yKS+TDY3LBSeG/COY+q/188Sgf
-         Mn30yU67V83MvupziZezfBfKEzmZ+ggQBfZukM+VVlnJzXKAdOotmpgNHlaSJhShe2ts
-         HNoanHRzKlNljvC1nzdL0jRjzZti+96X/B789WPib10DFNeD7jgnzk2SaWHrKiKKr1fB
-         WFiku/mncGVksKjQbZuBE/hEzpDvOSLgUOfhT/5dYD6NLanrs03tOUEdcx6Ncvi+dIOZ
-         I6g/miJ0py/MElJthIRG+wW7/S/DF165E7wwJ/ejAxl50vYddXQSVRn4OGrGKGnbQKGD
-         dGhg==
+        bh=la7qxtvs05jrNqcA9h6vjUFPOQjXr0T0i1pOh4sumx8=;
+        b=nXU/d7JI137pvRgNAlwXfuua2/Z+TvJK3qVthd7ADGXRZ5K1cHGRkvP8FFMKEtOmKv
+         Yi2jaKu7618dM5BbgacTCQ8HL/k/snHB3heOTXkRoJrG2maaIocCcmjO6BnpxBttUz60
+         zpx2tsPgxVccmiYUklQjJZfqnB/7g86jg/q2nrZ7Tthr3uH2Rl3nGqlqTWoKux5lWI5j
+         9LXm2mii7tbJD7O5Hq6NPHVpnhq5txI2XaBxB6n4lKM1f7sG5cQGp/7jeBWwJaykRSnv
+         zHal0PC3GS5KI6k3jYeN8Ndo7zsSu6dt5PFPT+BlOJBKTOAftLAqj06W25EcAH9za8Er
+         0AAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="peAEqdQ/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=BPtXKMjQ;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id a1sor12261300pjv.18.2019.08.02.18.28.55
+        by mx.google.com with SMTPS id 11sor35895337pgf.75.2019.08.03.11.48.22
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 02 Aug 2019 18:28:55 -0700 (PDT)
+        Sat, 03 Aug 2019 11:48:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="peAEqdQ/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=BPtXKMjQ;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=subject:from:to:cc:references:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=O2YN/QvQPLAClyEHRsWfCjD/z1AkYNw3I+YAPw1gM+M=;
-        b=peAEqdQ/+jsPCbvSoNEMbZBGBEB7ki3rifLdsBrYOJ5QKxZWLx1r+73A+qAOYmq5mD
-         UFghBw8pYHSMfttL1UUuMSG05BfX39qf5PZz+gdA0dHRPJp1XfiGz/H5P4Sv8v9VWu8e
-         sC142ceEEwx9Qnyg/aOteuebeBAw7hzsmkWuruWg1To0qG+FtFjEIJYf7EZPOmero6wa
-         M6oNh9j/hNaLxjBCirpPkbVsIemJlO5tXPEAVpWRAGIeUkvYzpiTZ4JmQr7/rBHMgqK8
-         /sVlTbxaTIHb+Yj+HHw/eiE7uGIxUUhj+hk3mCJizkgW9XXv/prcPgaB1DQQ7GG60g0q
-         oKyA==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references;
+        bh=la7qxtvs05jrNqcA9h6vjUFPOQjXr0T0i1pOh4sumx8=;
+        b=BPtXKMjQXEwSqf4ihkATokxXgdqYfxy91qDkVzIxkd8iyWIMNJcnybknDrqwLuSPO0
+         v+TTl6BOSG4nU+HVMi5sEAifBXSQchp0yeklueMV0O6rn821vBeKviV8RKtAPheLeoaN
+         4wZ8hwpcZ7AXYMhodmsLtWVbVGU5S+bMhZBtn1zhKcZ9e4sR5kEs1CSG3XPhYb369n2J
+         B8Hp4xd9ZjqVXqXoKH2CHlj3R+mNrbFbbvG/hhjeDssuLwzTjTJrzP+ZIeJfmZIT8cMy
+         FPZJxvYz7PvoLF6DG6sCYS+w9gHkTEEzgYeqMwH1a67K+LJ2gIxts7rsHFdkyunLSV+A
+         b5qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:from:to:cc:references:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=O2YN/QvQPLAClyEHRsWfCjD/z1AkYNw3I+YAPw1gM+M=;
-        b=cZEpdoDPZJ1ghfv99Y8q1LpFSJiEmaJKtSGDN2Ji31BLkKV7jLSlpbCT3axAlIEetn
-         7mKc/bwwxDuctejHdC9vHRbC3nlfn+ZqVq2+nT4g+JY95zNqvA8kNeGGFX6mA9LW6fEv
-         v3gLUYnjSdVLgpqbxeki2q+L7/WqtT3Q2n2VXzsIffQKR6ti0hfIj+k7dDnr2GPBTx+5
-         kjlxrtbYTV44noaOI+LEViAbBnG0CR3op5vbmCsHMvLxW4kqIiP1lv5ykTYcXvufPT2x
-         dN5/f3PFGuDHaMb0MOQcAW/hvuF9C/SsCDOi035C9egWVmC9OvvdAyHpF53gb3XTZXBl
-         jUdw==
-X-Gm-Message-State: APjAAAUQYxzN1pYnrC2SgkJxXy+wf/8sfRNQrzUKbEcma94otS5rZvKz
-	fjjcIuz6bQ7vJbElMRCIW/3/BQDs
-X-Google-Smtp-Source: APXvYqwnVSUZlfREhsnBw9LuHXiDiZQOlt95M3/uViEX+7mxMOn6jU98+8N42JxsR+pBkaRjBsNXqw==
-X-Received: by 2002:a17:90a:8c90:: with SMTP id b16mr6967034pjo.133.1564795735351;
-        Fri, 02 Aug 2019 18:28:55 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references;
+        bh=la7qxtvs05jrNqcA9h6vjUFPOQjXr0T0i1pOh4sumx8=;
+        b=kSGaXedw0116I0qZwlBfmZorB9bXBCrqZ4lNfcJLyWaCq2Yn6Zg2ejAt3nxnZUWWU+
+         nt8EKqzRpis2zV/Gs6sTuOoXCtTmjawEkbI9BDL7egr8KQkK+02SDk7kXD0rBMVF5onb
+         OPICU5yY9S6C9aTyjiaAZBxaNXApwDXm+dQZqTFjd0/Mxb3frawLLpYgwDWAYvQh72gJ
+         iMH6lIXi0/ZyaqgQKlPfJhHeJQt9YVpuL4TwUNRIPU4we30YHjNOeIoGeouXN5r/QhQc
+         uv7Wxl7pFbgn1pCwr78jw05wUE1bYUeCBT0nnzdN/QYp36waIHNetfFUTUy69K2Ct4XG
+         m8Jw==
+X-Gm-Message-State: APjAAAU20fGGnN1WcHRD6GOATBGXX9INaCc6Da9e7lWbTLg+S3/Q3oLv
+	E2rnzLpRpvjs4GmvDoM5Fer8/+eJ
+X-Google-Smtp-Source: APXvYqxuDAEGyeqJ0ZmaCVWpz2kKBg/VgvLK6A+238W+QhyfAL22XuxwQM85UonPGZLE9FD9b9NZeA==
+X-Received: by 2002:a63:fd57:: with SMTP id m23mr64994336pgj.204.1564858101921;
+        Sat, 03 Aug 2019 11:48:21 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id v13sm89644104pfe.105.2019.08.02.18.28.53
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Aug 2019 18:28:54 -0700 (PDT)
-Subject: Re: [PATCH v3 03/15] target/arm/monitor: Introduce
- qmp_query_cpu_model_expansion
+Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+        by smtp.gmail.com with ESMTPSA id q69sm15405454pjb.0.2019.08.03.11.48.20
+        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+        Sat, 03 Aug 2019 11:48:21 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
-To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, alex.bennee@linaro.org, armbru@redhat.com,
- eblake@redhat.com, Dave.Martin@arm.com, eric.auger@redhat.com,
- imammedo@redhat.com
-References: <20190802122540.26385-1-drjones@redhat.com>
- <20190802122540.26385-4-drjones@redhat.com>
- <d0983bd5-c1a5-adf6-324d-2b199ca0e23c@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <ec44ddad-c33c-918b-e94b-a534a2519a9e@linaro.org>
-Date: Fri, 2 Aug 2019 18:28:51 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <d0983bd5-c1a5-adf6-324d-2b199ca0e23c@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: SkYzXf75bhU2
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	alex.bennee@linaro.org,
+	peter.maydell@linaro.org
+Subject: [PATCH v3 16/34] target/arm: Rename ARMMMUIdx_S2NS to ARMMMUIdx_Stage2
+Date: Sat,  3 Aug 2019 11:47:42 -0700
+Message-Id: <20190803184800.8221-17-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190803184800.8221-1-richard.henderson@linaro.org>
+References: <20190803184800.8221-1-richard.henderson@linaro.org>
+X-TUID: h/lU7xbV8GV6
 
-On 8/2/19 9:27 AM, Richard Henderson wrote:
-> On 8/2/19 5:25 AM, Andrew Jones wrote:
->> Note, certainly more features may be added to the list of
->> advertised features, e.g. 'vfp' and 'neon'. The only requirement
->> is that their property set accessors fail when invalid
->> configurations are detected. For vfp we would need something like
->>
->>  set_vfp()
->>  {
->>    if (arm_feature(env, ARM_FEATURE_AARCH64) &&
->>        cpu->has_vfp != cpu->has_neon)
->>        error("AArch64 CPUs must have both VFP and Neon or neither")
->>
->> in its set accessor, and the same for neon, rather than doing that
->> check at realize time, which isn't executed at qmp query time.
-> 
-> How could this succeed?  Either set_vfp or set_neon would be called first, at
-> which point the two features are temporarily out of sync, but the error would
-> trigger anyway.
-> 
-> This would seem to require some separate "qmp validate" step that is processed
-> after a collection of properties are set.
-> 
-> I was about to say something about this being moot until someone actually wants
-> to be able to disable vfp+neon on aarch64, but then...
-> 
->> +A note about CPU feature dependencies
->> +-------------------------------------
->> +
->> +It's possible for features to have dependencies on other features. I.e.
->> +it may be possible to change one feature at a time without error, but
->> +when attempting to change all features at once an error could occur
->> +depending on the order they are processed.  It's also possible changing
->> +all at once doesn't generate an error, because a feature's dependencies
->> +are satisfied with other features, but the same feature cannot be changed
->> +independently without error.  For these reasons callers should always
->> +attempt to make their desired changes all at once in order to ensure the
->> +collection is valid.
-> 
-> ... this language makes me think that you've already encountered an ordering
-> problem that might be better solved with a separate validate step?
+The EL1&0 regime is the only one that uses 2-stage translation.
 
-It appears to me that we can handle both use cases with a single function to
-handle validation of the cross-dependent properties.
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/cpu.h           |  4 +--
+ target/arm/internals.h     |  2 +-
+ target/arm/helper.c        | 54 +++++++++++++++++++-------------------
+ target/arm/translate-a64.c |  2 +-
+ target/arm/translate.c     |  2 +-
+ 5 files changed, 32 insertions(+), 32 deletions(-)
 
-It would need to be called at the beginning of arm_cpu_realizefn, for the case
-in which we are building a cpu that we wish to instantiate, and
-
-> +        if (!err) {
-> +            visit_check_struct(visitor, &err);
-> +        }
-
-here, inside qmp_query_cpu_model_expansion for the query case.
-
-Looking at the validation code scattered across multiple functions, across 4
-patches, convinces me that the code will be smaller and more readable if we
-consolidate them into a single validation function.
-
-
-r~
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 8a3f61bc2c..14730d29c6 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2856,7 +2856,7 @@ typedef enum ARMMMUIdx {
+     ARMMMUIdx_S1E3 = 3 | ARM_MMU_IDX_A,
+     ARMMMUIdx_S1SE0 = 4 | ARM_MMU_IDX_A,
+     ARMMMUIdx_S1SE1 = 5 | ARM_MMU_IDX_A,
+-    ARMMMUIdx_S2NS = 6 | ARM_MMU_IDX_A,
++    ARMMMUIdx_Stage2 = 6 | ARM_MMU_IDX_A,
+     ARMMMUIdx_MUser = 0 | ARM_MMU_IDX_M,
+     ARMMMUIdx_MPriv = 1 | ARM_MMU_IDX_M,
+     ARMMMUIdx_MUserNegPri = 2 | ARM_MMU_IDX_M,
+@@ -2882,7 +2882,7 @@ typedef enum ARMMMUIdxBit {
+     ARMMMUIdxBit_S1E3 = 1 << 3,
+     ARMMMUIdxBit_S1SE0 = 1 << 4,
+     ARMMMUIdxBit_S1SE1 = 1 << 5,
+-    ARMMMUIdxBit_S2NS = 1 << 6,
++    ARMMMUIdxBit_Stage2 = 1 << 6,
+     ARMMMUIdxBit_MUser = 1 << 0,
+     ARMMMUIdxBit_MPriv = 1 << 1,
+     ARMMMUIdxBit_MUserNegPri = 1 << 2,
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index fafefdc59e..1caa15e7e0 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -813,7 +813,7 @@ static inline bool regime_is_secure(CPUARMState *env, ARMMMUIdx mmu_idx)
+     case ARMMMUIdx_S1NSE0:
+     case ARMMMUIdx_S1NSE1:
+     case ARMMMUIdx_S1E2:
+-    case ARMMMUIdx_S2NS:
++    case ARMMMUIdx_Stage2:
+     case ARMMMUIdx_MPrivNegPri:
+     case ARMMMUIdx_MUserNegPri:
+     case ARMMMUIdx_MPriv:
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index e391654638..6c8eddfdf4 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -684,7 +684,7 @@ static void tlbiall_nsnh_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     tlb_flush_by_mmuidx(cs,
+                         ARMMMUIdxBit_EL10_1 |
+                         ARMMMUIdxBit_EL10_0 |
+-                        ARMMMUIdxBit_S2NS);
++                        ARMMMUIdxBit_Stage2);
+ }
+ 
+ static void tlbiall_nsnh_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -695,7 +695,7 @@ static void tlbiall_nsnh_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     tlb_flush_by_mmuidx_all_cpus_synced(cs,
+                                         ARMMMUIdxBit_EL10_1 |
+                                         ARMMMUIdxBit_EL10_0 |
+-                                        ARMMMUIdxBit_S2NS);
++                                        ARMMMUIdxBit_Stage2);
+ }
+ 
+ static void tlbiipas2_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -716,7 +716,7 @@ static void tlbiipas2_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ 
+     pageaddr = sextract64(value << 12, 0, 40);
+ 
+-    tlb_flush_page_by_mmuidx(cs, pageaddr, ARMMMUIdxBit_S2NS);
++    tlb_flush_page_by_mmuidx(cs, pageaddr, ARMMMUIdxBit_Stage2);
+ }
+ 
+ static void tlbiipas2_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -732,7 +732,7 @@ static void tlbiipas2_is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     pageaddr = sextract64(value << 12, 0, 40);
+ 
+     tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
+-                                             ARMMMUIdxBit_S2NS);
++                                             ARMMMUIdxBit_Stage2);
+ }
+ 
+ static void tlbiall_hyp_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -3539,10 +3539,10 @@ static void vttbr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     vmid = extract64(value, 48, 8);
+ 
+     /*
+-     * A change in VMID to the stage2 page table (S2NS) invalidates
++     * A change in VMID to the stage2 page table (Stage2) invalidates
+      * the combined stage 1&2 tlbs (EL10_1 and EL10_0).
+      */
+-    tlb_set_asid_for_mmuidx(cs, vmid, ARMMMUIdxBit_S2NS,
++    tlb_set_asid_for_mmuidx(cs, vmid, ARMMMUIdxBit_Stage2,
+                             ARMMMUIdxBit_EL10_1 | ARMMMUIdxBit_EL10_0);
+ }
+ 
+@@ -3937,7 +3937,7 @@ static int vmalle1_tlbmask(CPUARMState *env)
+     if (arm_is_secure_below_el3(env)) {
+         return ARMMMUIdxBit_S1SE1 | ARMMMUIdxBit_S1SE0;
+     } else if (arm_feature(env, ARM_FEATURE_EL2)) {
+-        return ARMMMUIdxBit_EL10_1 | ARMMMUIdxBit_EL10_0 | ARMMMUIdxBit_S2NS;
++        return ARMMMUIdxBit_EL10_1 | ARMMMUIdxBit_EL10_0 | ARMMMUIdxBit_Stage2;
+     } else {
+         return ARMMMUIdxBit_EL10_1 | ARMMMUIdxBit_EL10_0;
+     }
+@@ -4091,7 +4091,7 @@ static void tlbi_aa64_ipas2e1_write(CPUARMState *env, const ARMCPRegInfo *ri,
+ 
+     pageaddr = sextract64(value << 12, 0, 48);
+ 
+-    tlb_flush_page_by_mmuidx(cs, pageaddr, ARMMMUIdxBit_S2NS);
++    tlb_flush_page_by_mmuidx(cs, pageaddr, ARMMMUIdxBit_Stage2);
+ }
+ 
+ static void tlbi_aa64_ipas2e1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -4107,7 +4107,7 @@ static void tlbi_aa64_ipas2e1is_write(CPUARMState *env, const ARMCPRegInfo *ri,
+     pageaddr = sextract64(value << 12, 0, 48);
+ 
+     tlb_flush_page_by_mmuidx_all_cpus_synced(cs, pageaddr,
+-                                             ARMMMUIdxBit_S2NS);
++                                             ARMMMUIdxBit_Stage2);
+ }
+ 
+ static CPAccessResult aa64_zva_access(CPUARMState *env, const ARMCPRegInfo *ri,
+@@ -8690,7 +8690,7 @@ void arm_cpu_do_interrupt(CPUState *cs)
+ static inline uint32_t regime_el(CPUARMState *env, ARMMMUIdx mmu_idx)
+ {
+     switch (mmu_idx) {
+-    case ARMMMUIdx_S2NS:
++    case ARMMMUIdx_Stage2:
+     case ARMMMUIdx_S1E2:
+         return 2;
+     case ARMMMUIdx_S1E3:
+@@ -8744,7 +8744,7 @@ static inline bool regime_translation_disabled(CPUARMState *env,
+         }
+     }
+ 
+-    if (mmu_idx == ARMMMUIdx_S2NS) {
++    if (mmu_idx == ARMMMUIdx_Stage2) {
+         /* HCR.DC means HCR.VM behaves as 1 */
+         return (env->cp15.hcr_el2 & (HCR_DC | HCR_VM)) == 0;
+     }
+@@ -8775,7 +8775,7 @@ static inline bool regime_translation_big_endian(CPUARMState *env,
+ static inline uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx,
+                                    int ttbrn)
+ {
+-    if (mmu_idx == ARMMMUIdx_S2NS) {
++    if (mmu_idx == ARMMMUIdx_Stage2) {
+         return env->cp15.vttbr_el2;
+     }
+     if (ttbrn == 0) {
+@@ -8790,7 +8790,7 @@ static inline uint64_t regime_ttbr(CPUARMState *env, ARMMMUIdx mmu_idx,
+ /* Return the TCR controlling this translation regime */
+ static inline TCR *regime_tcr(CPUARMState *env, ARMMMUIdx mmu_idx)
+ {
+-    if (mmu_idx == ARMMMUIdx_S2NS) {
++    if (mmu_idx == ARMMMUIdx_Stage2) {
+         return &env->cp15.vtcr_el2;
+     }
+     return &env->cp15.tcr_el[regime_el(env, mmu_idx)];
+@@ -8977,7 +8977,7 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
+     bool have_wxn;
+     int wxn = 0;
+ 
+-    assert(mmu_idx != ARMMMUIdx_S2NS);
++    assert(mmu_idx != ARMMMUIdx_Stage2);
+ 
+     user_rw = simple_ap_to_rw_prot_is_user(ap, true);
+     if (is_user) {
+@@ -9069,7 +9069,7 @@ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
+                                ARMMMUFaultInfo *fi)
+ {
+     if ((mmu_idx == ARMMMUIdx_S1NSE0 || mmu_idx == ARMMMUIdx_S1NSE1) &&
+-        !regime_translation_disabled(env, ARMMMUIdx_S2NS)) {
++        !regime_translation_disabled(env, ARMMMUIdx_Stage2)) {
+         target_ulong s2size;
+         hwaddr s2pa;
+         int s2prot;
+@@ -9086,7 +9086,7 @@ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
+             pcacheattrs = &cacheattrs;
+         }
+ 
+-        ret = get_phys_addr_lpae(env, addr, 0, ARMMMUIdx_S2NS, &s2pa,
++        ret = get_phys_addr_lpae(env, addr, 0, ARMMMUIdx_Stage2, &s2pa,
+                                  &txattrs, &s2prot, &s2size, fi, pcacheattrs);
+         if (ret) {
+             assert(fi->type != ARMFault_None);
+@@ -9558,7 +9558,7 @@ ARMVAParameters aa64_va_parameters_both(CPUARMState *env, uint64_t va,
+         tsz = extract32(tcr, 0, 6);
+         using64k = extract32(tcr, 14, 1);
+         using16k = extract32(tcr, 15, 1);
+-        if (mmu_idx == ARMMMUIdx_S2NS) {
++        if (mmu_idx == ARMMMUIdx_Stage2) {
+             /* VTCR_EL2 */
+             tbi = tbid = hpd = false;
+         } else {
+@@ -9619,7 +9619,7 @@ static ARMVAParameters aa32_va_parameters(CPUARMState *env, uint32_t va,
+     int select, tsz;
+     bool epd, hpd;
+ 
+-    if (mmu_idx == ARMMMUIdx_S2NS) {
++    if (mmu_idx == ARMMMUIdx_Stage2) {
+         /* VTCR */
+         bool sext = extract32(tcr, 4, 1);
+         bool sign = extract32(tcr, 3, 1);
+@@ -9721,7 +9721,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
+         level = 1;
+         /* There is no TTBR1 for EL2 */
+         ttbr1_valid = (el != 2);
+-        addrsize = (mmu_idx == ARMMMUIdx_S2NS ? 40 : 32);
++        addrsize = (mmu_idx == ARMMMUIdx_Stage2 ? 40 : 32);
+         inputsize = addrsize - param.tsz;
+     }
+ 
+@@ -9772,7 +9772,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
+         goto do_fault;
+     }
+ 
+-    if (mmu_idx != ARMMMUIdx_S2NS) {
++    if (mmu_idx != ARMMMUIdx_Stage2) {
+         /* The starting level depends on the virtual address size (which can
+          * be up to 48 bits) and the translation granule size. It indicates
+          * the number of strides (stride bits at a time) needed to
+@@ -9872,7 +9872,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
+         attrs = extract64(descriptor, 2, 10)
+             | (extract64(descriptor, 52, 12) << 10);
+ 
+-        if (mmu_idx == ARMMMUIdx_S2NS) {
++        if (mmu_idx == ARMMMUIdx_Stage2) {
+             /* Stage 2 table descriptors do not include any attribute fields */
+             break;
+         }
+@@ -9903,7 +9903,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
+     ap = extract32(attrs, 4, 2);
+     xn = extract32(attrs, 12, 1);
+ 
+-    if (mmu_idx == ARMMMUIdx_S2NS) {
++    if (mmu_idx == ARMMMUIdx_Stage2) {
+         ns = true;
+         *prot = get_S2prot(env, ap, xn);
+     } else {
+@@ -9930,7 +9930,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
+     }
+ 
+     if (cacheattrs != NULL) {
+-        if (mmu_idx == ARMMMUIdx_S2NS) {
++        if (mmu_idx == ARMMMUIdx_Stage2) {
+             cacheattrs->attrs = convert_stage2_attrs(env,
+                                                      extract32(attrs, 0, 4));
+         } else {
+@@ -9951,7 +9951,7 @@ do_fault:
+     fi->type = fault_type;
+     fi->level = level;
+     /* Tag the error as S2 for failed S1 PTW at S2 or ordinary S2.  */
+-    fi->stage2 = fi->s1ptw || (mmu_idx == ARMMMUIdx_S2NS);
++    fi->stage2 = fi->s1ptw || (mmu_idx == ARMMMUIdx_Stage2);
+     return true;
+ }
+ 
+@@ -10765,13 +10765,13 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+                                 prot, page_size, fi, cacheattrs);
+ 
+             /* If S1 fails or S2 is disabled, return early.  */
+-            if (ret || regime_translation_disabled(env, ARMMMUIdx_S2NS)) {
++            if (ret || regime_translation_disabled(env, ARMMMUIdx_Stage2)) {
+                 *phys_ptr = ipa;
+                 return ret;
+             }
+ 
+             /* S1 is done. Now do S2 translation.  */
+-            ret = get_phys_addr_lpae(env, ipa, access_type, ARMMMUIdx_S2NS,
++            ret = get_phys_addr_lpae(env, ipa, access_type, ARMMMUIdx_Stage2,
+                                      phys_ptr, attrs, &s2_prot,
+                                      page_size, fi,
+                                      cacheattrs != NULL ? &cacheattrs2 : NULL);
+@@ -10813,7 +10813,7 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
+     /* Fast Context Switch Extension. This doesn't exist at all in v8.
+      * In v7 and earlier it affects all stage 1 translations.
+      */
+-    if (address < 0x02000000 && mmu_idx != ARMMMUIdx_S2NS
++    if (address < 0x02000000 && mmu_idx != ARMMMUIdx_Stage2
+         && !arm_feature(env, ARM_FEATURE_V8)) {
+         if (regime_el(env, mmu_idx) == 3) {
+             address += env->cp15.fcseidr_s;
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index ece749fe03..73801c5df7 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -119,7 +119,7 @@ static inline int get_a64_user_mem_index(DisasContext *s)
+     case ARMMMUIdx_S1SE1:
+         useridx = ARMMMUIdx_S1SE0;
+         break;
+-    case ARMMMUIdx_S2NS:
++    case ARMMMUIdx_Stage2:
+         g_assert_not_reached();
+     default:
+         useridx = s->mmu_idx;
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index afff595726..995010834f 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -172,7 +172,7 @@ static inline int get_a32_user_mem_index(DisasContext *s)
+     case ARMMMUIdx_MSUserNegPri:
+     case ARMMMUIdx_MSPrivNegPri:
+         return arm_to_core_mmu_idx(ARMMMUIdx_MSUserNegPri);
+-    case ARMMMUIdx_S2NS:
++    case ARMMMUIdx_Stage2:
+     default:
+         g_assert_not_reached();
+     }
+-- 
+2.17.1

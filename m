@@ -1,100 +1,113 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2201202wrv;
-        Sat, 3 Aug 2019 11:48:41 -0700 (PDT)
-X-Received: by 2002:a62:1c5:: with SMTP id 188mr63183139pfb.26.1564858120868;
-        Sat, 03 Aug 2019 11:48:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564858120; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2201215wrv;
+        Sat, 3 Aug 2019 11:48:42 -0700 (PDT)
+X-Received: by 2002:aa7:86cc:: with SMTP id h12mr58761103pfo.2.1564858121955;
+        Sat, 03 Aug 2019 11:48:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564858121; cv=none;
         d=google.com; s=arc-20160816;
-        b=j6qEubkg6ZTaw2xyh+T+GRE9veGmYOKoJfDW8qFg0tewSCQ6SmkzgDmzlIIY2BmBA/
-         CJdVoJEP8IKo0QUC1vKVqXBMDktnPjeX4JaJb5bwN4lWCu4y+orvnGzD+Rcif0+oFzir
-         6OnMzBfGVmvAkTPolrv8chRvqow/1KlR6RW7Bu/40CIg0+yELZlbjSDfcX+OTYk3I61u
-         dwBvqxiUOCv84FdOyLd7rBD/2FvtuxPfyHfPsoQYLK2mNDf2KCNMJ6bvvLVkmRX/zk9Z
-         ZUnQbmeSNeeHIqzKKevlyXBKz+lmWgDDIeQqcaBXaC1qp1DLCCozg+uP5EUg7fQNBJeV
-         yraA==
+        b=KGqnAGTT1YDyN9VZsdaq+9w7AEkYbTq/LFwfEJTWh95JvsI7vVyBq6l9OhhUtgpKP9
+         WsO6yQaMosSksGzl8uk7QDd9TLyk3VHwDEDDaiwCFeQ9qecMjl2J5DhsE6hYRPM11b/f
+         zPzETyEVOJUdGrxmldpZb2+wSPqU9TBq4wGf/9f/8iaOhIwvR4E8DPH6Yzi8vopAcY32
+         Q9qIF1NcXralZp2tXjosmnNysAjBqXJ1hfsv+2X2o1Jq31rboKrll5wO+26t7JUesqC2
+         i8dnaA/+4TTapZfRHmbvuspI1eMoEjY6H1FKI6OkF0h2jgRu0oyfK6bydM+qzRh3QvGi
+         qtFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=JBDZxP60+vIjwwzQbC3L2o1kpMj6601b/tqCyxFOHVI=;
-        b=Jtguv/14nM5Q5SltLAXvUYA4ixsmT3+yOiZ9oFywWpI419PPiA/If2a+6ATkRjE1s4
-         n7C4lZI+sGafYs+30PwNTw/VgVSy6X8jDTiao71ndI6Gqwmtc/dionFNm5Mpr6vwh73n
-         6HdeEVnEwG9ywucltCvM2rjeEqVH+F34DVMcIPePGz7B37oSTLi5GF3z6akg3jCk1GEI
-         M/M5liR2srHHeOFCfLZ6OK0qEMKHAe8oX0Ds/ZzAbccQrvaARi9DIS+0wAGfbRXiAOvt
-         zwewHnReBiB1+XZqDBkuwEN2JhmO6jDdZYbTY7+2UuLPoNm9et7oLF8U086ZDjm9Fcum
-         IFqg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=1OFhZYB7REGpAAmdzyA7otQ/hGEth32oUJ6nOIibRSY=;
+        b=Ei1EJDOm2/MCfjvRsEeHF+k+WwSChqj6RWaPHvaV14GhplhUKd6mo7ljrAvS/GOMsS
+         ALQhKy8uokh3wWBJ5zPQNy4fu8ddRURJ75fubY6VzjBkjnzJ/zHiTeXykEoD8kco2TZ7
+         D8LV7Z/kBuSnZqrkeMuu1RIJEy4b9vZ5jpf3KHOa6JQKaFGsoWhPL7lNenczZKD9bA0U
+         8ldIg7weAlPyHZ7LCGMlQKTa/SzZIby2TePScqtGxkZ3s15MTUj4jsjHXcmjY/sCYPF3
+         4lP7xhaJFUXRgRirpmFSIAp2xOO4lyJtQEBliW8vLgcMgbGh/8sB8yIIYHwDHBdR25+t
+         r6Gg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QWKl0+P7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Q2KjR7sz;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id a9sor14693510pjw.26.2019.08.03.11.48.40
+        by mx.google.com with SMTPS id u18sor60356949pfm.33.2019.08.03.11.48.41
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 03 Aug 2019 11:48:40 -0700 (PDT)
+        Sat, 03 Aug 2019 11:48:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QWKl0+P7;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Q2KjR7sz;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=JBDZxP60+vIjwwzQbC3L2o1kpMj6601b/tqCyxFOHVI=;
-        b=QWKl0+P7ZCOzrJrGAAa335JojcAeKlcVoNs1cAydwjDyaxukqGtQnw6FMo6klTTsSr
-         V8JrdKdrddDhr1/jqvOmEUZOrm/NCNmkWtc8YEsvczoU0dOKyATP6Pzc1B01JyNL34dN
-         J3mwHRjHZGob/MtP/AJsmyZpX9MFb2OXxjLYg7rPRwIJkEK2p9CpM/ojJYbxjJNjJvej
-         YEwlX7vtKw5QXwXU+l7G6J7yC5ppYyeCTRz+COZRCf9UjW6lf2K0c3AeYlyNvlA6a16X
-         /lHkMqyLXBtduo9etkcuJU4JK7ICQiik7TISJxmCSAZlFZDX6l65LIBrGBUCRbwafi81
-         337g==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=1OFhZYB7REGpAAmdzyA7otQ/hGEth32oUJ6nOIibRSY=;
+        b=Q2KjR7szqQzFJBEH2NX0Shzd0whUpZj611QA5mIAYhzgpKlRBh5ODsGM5FpzlG4XYN
+         E60p6k7knFLoG/3l6e6jb7NjxMSe0Uv8+wqgGre6LtOAO8f9GbaDAC+QVVD/ZN5iyITN
+         lGdwQcy388XZhoO0jJnjvMrs8PgL8MKY8f2zAiABXU4jRRFArYBaW2DC9HbECCXS3boA
+         MVFaJlKA0Jjiem7h2Fc2fVhhL4udB+lpnGcgR8fnzJZy8uhg7VgTozjHaTNGGsA68nb+
+         pNMQWGe5juX6arF/6MAQUZs+Ue9hikLMS6b4/+dUo5QLrj218JfX5gH9w7La9BbmqPbo
+         yNEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=JBDZxP60+vIjwwzQbC3L2o1kpMj6601b/tqCyxFOHVI=;
-        b=Jxooml3gMX6OYiBfrQoepcarU14JJf6LUu8bMKsn8r6bkPE4/sYXnp0Ult/WwhJsfU
-         4mnIwNQtZtjdGLG/3q+Bh1Z4tpG6gZUrVE1N7+cjZcRwbYw7UpFtjCCodhp6FcReBVrH
-         n56HrZJkeGGxrlUAURKDO40hD8zjhMiDyfBqcyx3d/DwwqXAqLenkcOwYgTzebNA2bk6
-         VdBb2o6xr6QMQkkin/OzhI1qWj0FSLXfwNk7+Q/2tFrRTPc7/TXwQgMltPcsG/P1PRUX
-         bPJfDYhqB2AG16WpCOKE0yfESg35I8GZblY9TbxU5ozojDH46Zv9lJc00Jpv7ePl3/Sb
-         qwaw==
-X-Gm-Message-State: APjAAAXawPKYo9UeV84gY4MB1tSZIMcLMo4iQBt1Kb7vjes7VPGoofJz
-	dTepihpM0uk1FiJod2JzcIL/3JB7
-X-Google-Smtp-Source: APXvYqyw43hH5g5+9yj8il4fBZ/JqVWEEe+LCjQgr0W4w2DChR3Y+K97beq7ZV93AlZ4kzUNQG17aw==
-X-Received: by 2002:a17:90a:2525:: with SMTP id j34mr10667580pje.11.1564858120445;
-        Sat, 03 Aug 2019 11:48:40 -0700 (PDT)
+         :references:mime-version:content-transfer-encoding;
+        bh=1OFhZYB7REGpAAmdzyA7otQ/hGEth32oUJ6nOIibRSY=;
+        b=kHo7nbv4SEU2VNC6L86YeZdv5YbeOfLyPmCkk+8LdBwYtSuDgj+WU4ScCXo2aKbzEB
+         dANJz84EnQnlVQXXC+QmrTOa/qnCCutxiV7KXkUsbArqu9XViwbXYxWASo+liQxgeb3/
+         JZwVgy4mJ+2JcrIRUhSpjP4phehprdKuFFImpVFqQ/TNUPAt3qcSKzxolAxGkjbycgmX
+         GpeSR6kCnZLItuvbPjpSW0KCcNgcUufcVVkntJCImoDR6YnT5sUjTJDqCPtswZRmAE2b
+         cWwkWtKiREgMbVWHYmvjeSqsSNy8INySOG3d33ccuZyCwK0n72b098pR3LkpF3Hnq2GU
+         c4YQ==
+X-Gm-Message-State: APjAAAWU2fIxkMYin8qxn0D2EHu4X06IySFHoRQzFAcx/2h1dGMYL0dS
+	Umb06eEsp1Nla/c+oyY80QkUknzW
+X-Google-Smtp-Source: APXvYqwcpUfQm+lN0lAiyTvKZ+LKiZdqq8LkPAnYLxLczAXe8PepUtoBWVyUkepumSba4RRwsKQ6zg==
+X-Received: by 2002:a62:ac11:: with SMTP id v17mr65823645pfe.236.1564858121535;
+        Sat, 03 Aug 2019 11:48:41 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id q69sm15405454pjb.0.2019.08.03.11.48.39
+        by smtp.gmail.com with ESMTPSA id q69sm15405454pjb.0.2019.08.03.11.48.40
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Sat, 03 Aug 2019 11:48:39 -0700 (PDT)
+        Sat, 03 Aug 2019 11:48:40 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v3 32/34] target/arm: Enable ARMv8.1-VHE in -cpu max
-Date: Sat,  3 Aug 2019 11:47:58 -0700
-Message-Id: <20190803184800.8221-33-richard.henderson@linaro.org>
+Subject: [PATCH v3 33/34] target/arm: check TGE and E2H flags for EL0 pauth traps
+Date: Sat,  3 Aug 2019 11:47:59 -0700
+Message-Id: <20190803184800.8221-34-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190803184800.8221-1-richard.henderson@linaro.org>
 References: <20190803184800.8221-1-richard.henderson@linaro.org>
-X-TUID: P0h2hpL36siQ
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: LW++nwekmdw7
 
+From: Alex Bennée <alex.bennee@linaro.org>
+
+According to ARM ARM we should only trap from EL0
+when TCG or E2H are 0.
+
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu64.c | 1 +
- 1 file changed, 1 insertion(+)
+ target/arm/pauth_helper.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 1901997a06..b1bb394c6d 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -337,6 +337,7 @@ static void aarch64_max_initfn(Object *obj)
-         t = cpu->isar.id_aa64mmfr1;
-         t = FIELD_DP64(t, ID_AA64MMFR1, HPDS, 1); /* HPD */
-         t = FIELD_DP64(t, ID_AA64MMFR1, LO, 1);
-+        t = FIELD_DP64(t, ID_AA64MMFR1, VH, 1);
-         cpu->isar.id_aa64mmfr1 = t;
- 
-         /* Replicate the same data to the 32-bit id registers.  */
+diff --git a/target/arm/pauth_helper.c b/target/arm/pauth_helper.c
+index 42c9141bb7..9fa002068e 100644
+--- a/target/arm/pauth_helper.c
++++ b/target/arm/pauth_helper.c
+@@ -371,7 +371,9 @@ static void pauth_check_trap(CPUARMState *env, int el, uintptr_t ra)
+     if (el < 2 && arm_feature(env, ARM_FEATURE_EL2)) {
+         uint64_t hcr = arm_hcr_el2_eff(env);
+         bool trap = !(hcr & HCR_API);
+-        /* FIXME: ARMv8.1-VHE: trap only applies to EL1&0 regime.  */
++        if (el < 1) {
++            trap &= !(hcr & HCR_TGE) | !(hcr & HCR_E2H);
++        }
+         /* FIXME: ARMv8.3-NV: HCR_NV trap takes precedence for ERETA[AB].  */
+         if (trap) {
+             pauth_trap(env, 2, ra);
 -- 
 2.17.1

@@ -1,139 +1,178 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp1030861wrv;
-        Fri, 2 Aug 2019 09:27:03 -0700 (PDT)
-X-Received: by 2002:a17:90a:3590:: with SMTP id r16mr5169282pjb.44.1564763223556;
-        Fri, 02 Aug 2019 09:27:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564763223; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2200818wrv;
+        Sat, 3 Aug 2019 11:48:03 -0700 (PDT)
+X-Received: by 2002:a63:553:: with SMTP id 80mr133213555pgf.280.1564858083649;
+        Sat, 03 Aug 2019 11:48:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564858083; cv=none;
         d=google.com; s=arc-20160816;
-        b=nudYsKGlO3FW3QEnYRgIReKgzcFw7kYzO2BHbITbzKcBzbskgnNCmyLTElizfWc47F
-         oW5JqUlMTAKGCyBQ3NfW6ksnfZSSdymbGfl3r078eahZxIruJh3gOehpHxvowFPVJxDk
-         YIMXfJHuUNpvXjBfAP8HbwtV3L9G1ed4gFuUgZNMd9SGEixjkSoaiBnh/Wbm80QT+5K2
-         owIBLDWTyJXYPfSdjDpB3+O2beyVj45HMB8OCv9jXiiDdFyi1OBR3kPUHBsttuEkNkil
-         /8q2WRgIRS7iTU8sZX03N0gxS3EEheKtMh6nUANosLELPtK4kIlZbMtSrmVx/wbS8XT8
-         dsWg==
+        b=BOlEeAeMMmEy6l2DnjgDwJeBQBIt+FyfUZyU/ylW2Y5TtG7R0LRxuRE6zOGD3oKYXe
+         mhMNL9phblJz+7LmPeFS1Ag+CDu5YQNAdnaznKMSgn9OVU+IFMdGUL9hk9FQ0nQfW14u
+         gMEqkgKygEI65EUmykrij+VehnoV0qsciryQOow4J5swH7SvSgxAjRyZh5Kk8nq89mmA
+         J+n5LBVij/N57K2fUYLC84kmoK8devWNOEvP+kFxldEACpqw49OTieZZh8O1BByefEe6
+         y7tlaRcKDpua6u4LMRH8VcDMEKlYkUP8UnlwDARuErECd1oQQghJd6UxJvddtt7YKBZ9
+         rEwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=GS8ER9DbxbrmSZza9XhZrac1/kV/t+hDGahI/wKxDyI=;
-        b=KyM4U2CAgoJkvocS+RD25uu+TlFuoVWb8AA3JqWsK6ghPzoLZ2zp937V72fqqIUS+J
-         Lg0VkeyaMfkMgjn4+k5OLm9CXL1gKEZjAr53nPBFGJqYwIae5MirIAIqgf9UTGuLgBku
-         RbcfTeOWcMIp0oqCKFoZzD3zUgNmDF8u9/uZgI1rse0HIEmrTykFZ5gbLF14wUCISZ2o
-         ybMRefijGyuIWi0YfHIpjusYFyV/6vNV60O60/53M4342BbRmKcTmxR0wiW0txYkrwMJ
-         /gjCYWam29XUBFC9WC0JTh/ksZVsKj8Dh7DeQOI31CBW+9KeJ65WmqUeLfGh0DHK/Zwp
-         jvZw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=Mdp2g3jSgzrGtd9KtHgOE+2yumLnmy9dW9qf3A8Vh/A=;
+        b=wAD6+Y6KIbonZ6YLBiXZ7KsPekNmLEZWotg/KYDM+BMdGDBjbnjz4UNlnQ3UyQb480
+         /jYU4VYmRajO7vT1OssfVP8oaYyvxG15tjijlbswzIMCajdGX86JC492hbNULPEFCcVl
+         nnXHcvRmlc2Xy9aAgHaNu9tcsSB3JYjAK0UVPq4OKMBuYpy186RIRY+RkmrGTr2e0x/w
+         v5U8IYrcqlZ5ohEjdMh3mDEs0Clf2izYVtvhIzH6TiFXcGFCqTCknndWEYrd6zoAacvT
+         rsAY8vdaeJtH7mPjwcnX0l0Fo1Ri13AbR8VAshMxEM+8926GTTTOGrxk3WYZjFox6Vwi
+         vuNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Y9PWMX8l;
+       dkim=pass header.i=@linaro.org header.s=google header.b="M/WffFcz";
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 13sor57061139pfi.28.2019.08.02.09.27.03
+        by mx.google.com with SMTPS id x27sor60226910pfo.43.2019.08.03.11.48.03
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 02 Aug 2019 09:27:03 -0700 (PDT)
+        Sat, 03 Aug 2019 11:48:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Y9PWMX8l;
+       dkim=pass header.i=@linaro.org header.s=google header.b="M/WffFcz";
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=GS8ER9DbxbrmSZza9XhZrac1/kV/t+hDGahI/wKxDyI=;
-        b=Y9PWMX8lCsqFdI1gTTuHnE8GHPx75MODVn5LfizK5RxSqZIOYVj/F9z2K1+PPYrd6k
-         y3+93WN48CEYJSpLrg2Viavd6UbS+EFuycR1Ba6oQkj02pZzm3FV6Lj5YEGix5kpR0Uq
-         /bm4qB8eWpMCUg7E5J+OWBUimlMjr9w5N97Qq/Q6l6tOL7rY6p8ZMYVjqNOfX2sk2pTX
-         vUu7xje6sNcDZC2LgDDWlF5Ssv2YYwMQztHMMMl10q8qWrOA4GVtDHnyUjxrpBPkz6u6
-         uGxYWYvwZYIkTRwDKt41EvPh1RbGB94Qe0u3EcPHLyArQsNGg2YLD35uxSCiHsNTDspP
-         xRHg==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Mdp2g3jSgzrGtd9KtHgOE+2yumLnmy9dW9qf3A8Vh/A=;
+        b=M/WffFczN/fF0BKujryYFO7wtRBF0xlsTxmkm/n2qqwNGBn6fj5IZIGUl+y0zN4O+J
+         MqJ2/KI0Opah1zmQsgGJOj7gNoXROcEpWp+jO+W+LeZr6nobami600pIy/qAOL+RxVfL
+         FWXxV8hJmxoqxVK7ebqkI1wdU056Y4fwXjaEU/0AP7Zbm+mZ7jDiFzlQmfDsMysXQOv1
+         FnK2GHwLpHzSr4TF5pYvHEnlkwnQh2bIHyVQcUgd2vpu2Nv0XPLfkKiUgfPE8UVYtC/w
+         N4HUJHTF35aN3vSEQpudO3w8Dk2ZW/ZsdjJ6h8ouC9GbcTcDXj23fuVr8pwtkdAtuyCO
+         CsOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=GS8ER9DbxbrmSZza9XhZrac1/kV/t+hDGahI/wKxDyI=;
-        b=gcdZyh3Nlfasx9boIOmFXgCO5gux6ZuN3lVdz1ZiSC8SLQFITKFmLsSgeQXCNfmkZr
-         3xiOykbJ/TIIUWbhUDdmDgf5+nG3ehx52tKUL/yJJzHT8CvX6x9hx4mP/KrGmSMX1jO2
-         u/rlriu5EJEnu+W5Y7wutFYjsIkqKdq7ZoMVbxHGo4O03tJPnyD2y6OutjctIA7ksYTM
-         CnMug7yU2Jmaa5i3uoDj21ETC3Ukk5lVWomxmW83PuYsHE1G0iA0bPpw/nlByUkrIH/n
-         sUZcJ+g1NHXjjT9fDKOVYESnhmcSZZJ6R4s+GuMcbU3oivX6OkUonExiQ0UeHte749w1
-         orXw==
-X-Gm-Message-State: APjAAAUAeEZ1Z7f5XDALdpNqoDDkMRmiiyj4mFNBodeR4hM0ZZHDve0P
-	woLFk3ahXlWPD6i1aX2mkGu5qUkH
-X-Google-Smtp-Source: APXvYqxd+uO5rua+zoo+RjlQPPvZcii0QrBwMpr0HdTEQJsT7oBwOXCVayQInrz6mYAO4N8xqU1usw==
-X-Received: by 2002:aa7:81d9:: with SMTP id c25mr61603169pfn.255.1564763223043;
-        Fri, 02 Aug 2019 09:27:03 -0700 (PDT)
+        bh=Mdp2g3jSgzrGtd9KtHgOE+2yumLnmy9dW9qf3A8Vh/A=;
+        b=BKNEJnNR7MB+UB7IN+OMp38EFk5NVjGfudFVXFIWPC+21lkWGcJ+IRnos3xA9jXytP
+         ehQJiQIljdHW3oGeO1ZPNDQYoeWJXMYzI8Hn9izF3dTPuEIqdI7YwFPdrJsmbGmRj9jC
+         nhZRKPNSy7osN6t1tlD4Tl/PddcI5jY1LmJup8OP9qHigtPEsvJxTiNcgS4DfPMijfbv
+         hjMRnTafWknD815sjkt6q2SnvQMVEJL8U6lesqTB4O0+7mgvFNfnHz+2WaPlwh/B52ix
+         lJyAZZu2Io7naLVLrfvadzk/IEKmHP0lkwykYT52HYKLXWnk+kqq/xCL43xLvXkDpqPp
+         1jlw==
+X-Gm-Message-State: APjAAAVFmipRD0qOgmBq9JjzJn6TwjRyZ2fLc/RcTSW10KU6gQGUAZmV
+	D2MNAEPzWvDuwi/GKBz/nmP9XgFQNxahIQ==
+X-Google-Smtp-Source: APXvYqym32Jjcqm6Y5uD9VOGwQumhKcN0/1ZruKLacdjKeyh1L+2lBKh7SShcpX6bfXFE13wffbkKw==
+X-Received: by 2002:aa7:8705:: with SMTP id b5mr13375773pfo.27.1564858083031;
+        Sat, 03 Aug 2019 11:48:03 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id a3sm78757971pfi.63.2019.08.02.09.27.01
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 02 Aug 2019 09:27:02 -0700 (PDT)
-Subject: Re: [PATCH v3 03/15] target/arm/monitor: Introduce
- qmp_query_cpu_model_expansion
-To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, alex.bennee@linaro.org, armbru@redhat.com,
- eblake@redhat.com, Dave.Martin@arm.com, eric.auger@redhat.com,
- imammedo@redhat.com
-References: <20190802122540.26385-1-drjones@redhat.com>
- <20190802122540.26385-4-drjones@redhat.com>
+Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+        by smtp.gmail.com with ESMTPSA id q69sm15405454pjb.0.2019.08.03.11.48.00
+        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+        Sat, 03 Aug 2019 11:48:02 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <d0983bd5-c1a5-adf6-324d-2b199ca0e23c@linaro.org>
-Date: Fri, 2 Aug 2019 09:27:00 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	alex.bennee@linaro.org,
+	peter.maydell@linaro.org
+Subject: [PATCH v3 00/34] target/arm: Implement ARMv8.1-VHE
+Date: Sat,  3 Aug 2019 11:47:26 -0700
+Message-Id: <20190803184800.8221-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-In-Reply-To: <20190802122540.26385-4-drjones@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: XxFaezeNN+/h
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: iXR2aJK0TtbR
 
-On 8/2/19 5:25 AM, Andrew Jones wrote:
-> Note, certainly more features may be added to the list of
-> advertised features, e.g. 'vfp' and 'neon'. The only requirement
-> is that their property set accessors fail when invalid
-> configurations are detected. For vfp we would need something like
-> 
->  set_vfp()
->  {
->    if (arm_feature(env, ARM_FEATURE_AARCH64) &&
->        cpu->has_vfp != cpu->has_neon)
->        error("AArch64 CPUs must have both VFP and Neon or neither")
-> 
-> in its set accessor, and the same for neon, rather than doing that
-> check at realize time, which isn't executed at qmp query time.
+About half of this patch set is cleanup of the qemu tlb handling
+leading up to the actual implementation of VHE, and the biggest
+piece of that: The EL2&0 translation regime.
 
-How could this succeed?  Either set_vfp or set_neon would be called first, at
-which point the two features are temporarily out of sync, but the error would
-trigger anyway.
+Changes since v2:
+  * arm_mmu_idx was incomplete; test TGE+E2H not just E2H.
+  * arm_sctlr was incomplete; now uses arm_mmu_idx to avoid
+    duplication of tests.
+  * Update aa64_zva_access and ctr_el0_access for EL2.
 
-This would seem to require some separate "qmp validate" step that is processed
-after a collection of properties are set.
+Changes since v1:
+  * Merge feedback from AJB.
+  * Split out 7 renaming patches from "Reorganize ARMMMUIdx".
+  * Alex's MIDR patch keeps the nested KVM from spitting warnings.
 
-I was about to say something about this being moot until someone actually wants
-to be able to disable vfp+neon on aarch64, but then...
+I have tested 
 
-> +A note about CPU feature dependencies
-> +-------------------------------------
-> +
-> +It's possible for features to have dependencies on other features. I.e.
-> +it may be possible to change one feature at a time without error, but
-> +when attempting to change all features at once an error could occur
-> +depending on the order they are processed.  It's also possible changing
-> +all at once doesn't generate an error, because a feature's dependencies
-> +are satisfied with other features, but the same feature cannot be changed
-> +independently without error.  For these reasons callers should always
-> +attempt to make their desired changes all at once in order to ensure the
-> +collection is valid.
+  qemu-system-aarch64 -accel kvm -cpu host -M virt,gic-version-host \
+    -m 512 -bios /usr/share/edk2/aarch64/QEMU_EFI.fd -nographic
 
-... this language makes me think that you've already encountered an ordering
-problem that might be better solved with a separate validate step?
+with fedora 30 system qemu, itself booted with
 
-The actual code looks good.
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+  ../bld/aarch64-softmmu/qemu-system-aarch64 \
+    -cpu max -M virt,gic-version=3,virtualization=on \
+    -drive if=virtio,file=./f30.q,format=qcow2 \
+    -m 4G -nographic
+
+It took a while, but eventually the nested bios arrived at the
+pxe boot sequence.  Thankfully (?), the f30 shipped bios has
+debug enabled, so there's some sense of progress in the meantime.
 
 
 r~
+
+
+Alex Bennée (2):
+  target/arm: check TGE and E2H flags for EL0 pauth traps
+  target/arm: generate a custom MIDR for -cpu max
+
+Richard Henderson (32):
+  cputlb: Add tlb_set_asid_for_mmuidx
+  cputlb: Add tlb_flush_asid_by_mmuidx and friends
+  target/arm: Install ASIDs for long-form from EL1
+  target/arm: Install ASIDs for short-form from EL1
+  target/arm: Install ASIDs for EL2
+  target/arm: Define isar_feature_aa64_vh
+  target/arm: Enable HCR_E2H for VHE
+  target/arm: Add CONTEXTIDR_EL2
+  target/arm: Add TTBR1_EL2
+  target/arm: Update CNTVCT_EL0 for VHE
+  target/arm: Add the hypervisor virtual counter
+  target/arm: Add VHE system register redirection and aliasing
+  target/arm: Split out vae1_tlbmask, vmalle1_tlbmask
+  target/arm: Simplify tlb_force_broadcast alternatives
+  target/arm: Rename ARMMMUIdx*_S12NSE* to ARMMMUIdx*_E10_*
+  target/arm: Rename ARMMMUIdx_S2NS to ARMMMUIdx_Stage2
+  target/arm: Rename ARMMMUIdx_S1NSE* to ARMMMUIdx_Stage1_E*
+  target/arm: Rename ARMMMUIdx_S1SE* to ARMMMUIdx_SE*
+  target/arm: Rename ARMMMUIdx*_S1E3 to ARMMMUIdx*_SE3
+  target/arm: Rename ARMMMUIdx_S1E2 to ARMMMUIdx_E2
+  target/arm: Reorganize ARMMMUIdx
+  target/arm: Add regime_has_2_ranges
+  target/arm: Update arm_mmu_idx for VHE
+  target/arm: Update arm_sctlr for VHE
+  target/arm: Update aa64_zva_access for EL2
+  target/arm: Update ctr_el0_access for EL2
+  target/arm: Install asids for E2&0 translation regime
+  target/arm: Flush tlbs for E2&0 translation regime
+  target/arm: Update arm_phys_excp_target_el for TGE
+  target/arm: Update regime_is_user for EL2&0
+  target/arm: Update {fp,sve}_exception_el for VHE
+  target/arm: Enable ARMv8.1-VHE in -cpu max
+
+ include/exec/cpu-all.h     |   11 +
+ include/exec/cpu-defs.h    |    2 +
+ include/exec/exec-all.h    |   35 ++
+ include/qom/cpu.h          |    2 +
+ target/arm/cpu-qom.h       |    1 +
+ target/arm/cpu.h           |  261 ++++-----
+ target/arm/internals.h     |   62 ++-
+ target/arm/translate.h     |    2 +-
+ accel/tcg/cputlb.c         |   81 +++
+ target/arm/cpu.c           |    2 +
+ target/arm/cpu64.c         |   20 +
+ target/arm/debug_helper.c  |   50 +-
+ target/arm/helper-a64.c    |    2 +-
+ target/arm/helper.c        | 1042 +++++++++++++++++++++++++-----------
+ target/arm/m_helper.c      |    6 +-
+ target/arm/pauth_helper.c  |   13 +-
+ target/arm/translate-a64.c |   13 +-
+ target/arm/translate.c     |   17 +-
+ 18 files changed, 1134 insertions(+), 488 deletions(-)
+
+-- 
+2.17.1

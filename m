@@ -1,178 +1,209 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2200818wrv;
-        Sat, 3 Aug 2019 11:48:03 -0700 (PDT)
-X-Received: by 2002:a63:553:: with SMTP id 80mr133213555pgf.280.1564858083649;
-        Sat, 03 Aug 2019 11:48:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564858083; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp2200831wrv;
+        Sat, 3 Aug 2019 11:48:04 -0700 (PDT)
+X-Received: by 2002:a17:902:8696:: with SMTP id g22mr133517170plo.249.1564858084777;
+        Sat, 03 Aug 2019 11:48:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1564858084; cv=none;
         d=google.com; s=arc-20160816;
-        b=BOlEeAeMMmEy6l2DnjgDwJeBQBIt+FyfUZyU/ylW2Y5TtG7R0LRxuRE6zOGD3oKYXe
-         mhMNL9phblJz+7LmPeFS1Ag+CDu5YQNAdnaznKMSgn9OVU+IFMdGUL9hk9FQ0nQfW14u
-         gMEqkgKygEI65EUmykrij+VehnoV0qsciryQOow4J5swH7SvSgxAjRyZh5Kk8nq89mmA
-         J+n5LBVij/N57K2fUYLC84kmoK8devWNOEvP+kFxldEACpqw49OTieZZh8O1BByefEe6
-         y7tlaRcKDpua6u4LMRH8VcDMEKlYkUP8UnlwDARuErECd1oQQghJd6UxJvddtt7YKBZ9
-         rEwQ==
+        b=AZCVBLUNwUOeXZ7ljFQCU8CJQv+pKtbE/dtwIuXTAofUCLgl+t86au3ecXQgAfv6dZ
+         D2GSnoPi9OCzqZ3HY8B7MeCipdn6x7NwFrMdQfp763wJhL5l9Ix9lN7gsU/CJ11SHmAX
+         XOd/QSTk/r/4I//Bw1nc1z0WK05FsBLLBp3ztdDcKZo3b5MBub55EbKOnqbp5oJuBsbF
+         BRQ1AQh8tTz6OtPh8IePO2nyMroHjZuEhCSNs/8/ON1jJUKyBi8hfLKYIpXR6GkEBSm8
+         jU1bZBSambs5HwRAhDRgv5Zzm3rY2HWhMYmvpPbe8tDW7b8zSyrBrkWWb1QcNAKpWroV
+         fFhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=Mdp2g3jSgzrGtd9KtHgOE+2yumLnmy9dW9qf3A8Vh/A=;
-        b=wAD6+Y6KIbonZ6YLBiXZ7KsPekNmLEZWotg/KYDM+BMdGDBjbnjz4UNlnQ3UyQb480
-         /jYU4VYmRajO7vT1OssfVP8oaYyvxG15tjijlbswzIMCajdGX86JC492hbNULPEFCcVl
-         nnXHcvRmlc2Xy9aAgHaNu9tcsSB3JYjAK0UVPq4OKMBuYpy186RIRY+RkmrGTr2e0x/w
-         v5U8IYrcqlZ5ohEjdMh3mDEs0Clf2izYVtvhIzH6TiFXcGFCqTCknndWEYrd6zoAacvT
-         rsAY8vdaeJtH7mPjwcnX0l0Fo1Ri13AbR8VAshMxEM+8926GTTTOGrxk3WYZjFox6Vwi
-         vuNA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=3Vv1PJfuLW2Q3y6jhZwS+VA5WdsiwenJEhdiHqcPU8E=;
+        b=a+xp11jOEo1pNC341rdtHkDYReum+2xPTa4bBnBeJboE2ERVDyxdTuVrPjXPUD4z+a
+         7q7pvx1hjoULBdOTzJuI7SCxCDSoR3JhWUjU8vyrGUiLiIvV/ST+HXGCTez21LhvwV8i
+         6IIYdlD3qtK9fzPjajzZVW0EXIgTtN0fAeqSPo/6Cbk10FdpfDTefKN6KRalmR4TBXDI
+         BSfCk3wyo/u6JxQRHyRzrdhDDQqEbIZPBRRWsWPpRJpu/4rrHsO4G2YoDv4CEPY1Y+b1
+         nUKtc2CWet7pHCtjgaA9Wj7z8P8xxGweDmUcXJJ1fsLuBmLxl/UG1uW8j66JEXwOcn4Q
+         VLtA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="M/WffFcz";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Y6m4R1Ug;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id x27sor60226910pfo.43.2019.08.03.11.48.03
+        by mx.google.com with SMTPS id h3sor94778028pld.23.2019.08.03.11.48.04
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 03 Aug 2019 11:48:03 -0700 (PDT)
+        Sat, 03 Aug 2019 11:48:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="M/WffFcz";
+       dkim=pass header.i=@linaro.org header.s=google header.b=Y6m4R1Ug;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Mdp2g3jSgzrGtd9KtHgOE+2yumLnmy9dW9qf3A8Vh/A=;
-        b=M/WffFczN/fF0BKujryYFO7wtRBF0xlsTxmkm/n2qqwNGBn6fj5IZIGUl+y0zN4O+J
-         MqJ2/KI0Opah1zmQsgGJOj7gNoXROcEpWp+jO+W+LeZr6nobami600pIy/qAOL+RxVfL
-         FWXxV8hJmxoqxVK7ebqkI1wdU056Y4fwXjaEU/0AP7Zbm+mZ7jDiFzlQmfDsMysXQOv1
-         FnK2GHwLpHzSr4TF5pYvHEnlkwnQh2bIHyVQcUgd2vpu2Nv0XPLfkKiUgfPE8UVYtC/w
-         N4HUJHTF35aN3vSEQpudO3w8Dk2ZW/ZsdjJ6h8ouC9GbcTcDXj23fuVr8pwtkdAtuyCO
-         CsOQ==
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=3Vv1PJfuLW2Q3y6jhZwS+VA5WdsiwenJEhdiHqcPU8E=;
+        b=Y6m4R1UgmbocM8caPBMrteJtERSrOeJiLGnM3FPGwmGvHF1A8Jb61r+XJbxj43PlWF
+         B5y6PhvJZrCKursx25LMzydByDVTzhvucAfy446c2Q4hxyNzGTI8d8WiqCWUdberr7Kj
+         XkF89KpMLlQBNygZxWlYdoksgbNQP0iXwFpIz+R4zrGbvRErBodIME22Cm1l62poJiTx
+         qc6O0x1PhiJGWaM6/owU9OxUYbJU6znzRCJNW9CYcJz2fWPj0HeIH0BnErk4XUS4pGCl
+         pH7HGPzyFuuQ/6bX9YtBHNn4C6+JGOb6+kj8V1s07E3xuoVEJ7tmN814k5Qex7Knr9cr
+         6kTA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Mdp2g3jSgzrGtd9KtHgOE+2yumLnmy9dW9qf3A8Vh/A=;
-        b=BKNEJnNR7MB+UB7IN+OMp38EFk5NVjGfudFVXFIWPC+21lkWGcJ+IRnos3xA9jXytP
-         ehQJiQIljdHW3oGeO1ZPNDQYoeWJXMYzI8Hn9izF3dTPuEIqdI7YwFPdrJsmbGmRj9jC
-         nhZRKPNSy7osN6t1tlD4Tl/PddcI5jY1LmJup8OP9qHigtPEsvJxTiNcgS4DfPMijfbv
-         hjMRnTafWknD815sjkt6q2SnvQMVEJL8U6lesqTB4O0+7mgvFNfnHz+2WaPlwh/B52ix
-         lJyAZZu2Io7naLVLrfvadzk/IEKmHP0lkwykYT52HYKLXWnk+kqq/xCL43xLvXkDpqPp
-         1jlw==
-X-Gm-Message-State: APjAAAVFmipRD0qOgmBq9JjzJn6TwjRyZ2fLc/RcTSW10KU6gQGUAZmV
-	D2MNAEPzWvDuwi/GKBz/nmP9XgFQNxahIQ==
-X-Google-Smtp-Source: APXvYqym32Jjcqm6Y5uD9VOGwQumhKcN0/1ZruKLacdjKeyh1L+2lBKh7SShcpX6bfXFE13wffbkKw==
-X-Received: by 2002:aa7:8705:: with SMTP id b5mr13375773pfo.27.1564858083031;
-        Sat, 03 Aug 2019 11:48:03 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=3Vv1PJfuLW2Q3y6jhZwS+VA5WdsiwenJEhdiHqcPU8E=;
+        b=ZkBmYq5QA6+DUjgcDQPhWEerAhWKHR7wVtfh2VVBTJz4x6NKjBuIlPBqX9MEVJaXDx
+         YHK8JkXNua0+M4rlYmnhdk6KwIqZXkrwBFNsxOjpay9LS1yxID46Js7XPI/7Fz41p12j
+         pAgmv/jOtnJ5qh7NhwH4Tw2F5n/U4IBI69nltNtZmdB4hXBYOI3AYdMJB+6R413qaM0i
+         JORVeG3ReAcoLdqaWAWQXUjyAcgruxeR3hkxaRky6o62MSNY6bjwuzjzsRTYbhVNXzMX
+         sAafjtIG9nF+65t7wOpdJF2xTV2UxlyU6jh6/RKDivKfUpzFERSpfYLHaqqzin0+bbB3
+         nuww==
+X-Gm-Message-State: APjAAAXnE1IlbCb3RbpIA5KdQhOyOLBMgyZVOzvmgb2xFGuYQ65BF5rk
+	H+9XZK/QFA+Cee5E29dfbj4iyjXBPysXPA==
+X-Google-Smtp-Source: APXvYqwElKJuSKp+zFrcUjqRod6t4pk2yXi5P8txvmjGa8EcrsWx5h0RSCHbx4q4R95sSU+q8ZKxgQ==
+X-Received: by 2002:a17:902:f082:: with SMTP id go2mr143791348plb.25.1564858084208;
+        Sat, 03 Aug 2019 11:48:04 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id q69sm15405454pjb.0.2019.08.03.11.48.00
+        by smtp.gmail.com with ESMTPSA id q69sm15405454pjb.0.2019.08.03.11.48.03
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Sat, 03 Aug 2019 11:48:02 -0700 (PDT)
+        Sat, 03 Aug 2019 11:48:03 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	alex.bennee@linaro.org,
 	peter.maydell@linaro.org
-Subject: [PATCH v3 00/34] target/arm: Implement ARMv8.1-VHE
-Date: Sat,  3 Aug 2019 11:47:26 -0700
-Message-Id: <20190803184800.8221-1-richard.henderson@linaro.org>
+Subject: [PATCH v3 01/34] cputlb: Add tlb_set_asid_for_mmuidx
+Date: Sat,  3 Aug 2019 11:47:27 -0700
+Message-Id: <20190803184800.8221-2-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190803184800.8221-1-richard.henderson@linaro.org>
+References: <20190803184800.8221-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: iXR2aJK0TtbR
+X-TUID: 2Fg4CxO/oIP8
 
-About half of this patch set is cleanup of the qemu tlb handling
-leading up to the actual implementation of VHE, and the biggest
-piece of that: The EL2&0 translation regime.
+Although we can't do much with ASIDs except remember them, this
+will allow cleanups within target/ that should make things clearer.
 
-Changes since v2:
-  * arm_mmu_idx was incomplete; test TGE+E2H not just E2H.
-  * arm_sctlr was incomplete; now uses arm_mmu_idx to avoid
-    duplication of tests.
-  * Update aa64_zva_access and ctr_el0_access for EL2.
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+v2: Assert cpu_is_self; only flush idx w/ asid mismatch.
+v3: Improve asid comment.
+---
+ include/exec/cpu-all.h  | 11 +++++++++++
+ include/exec/cpu-defs.h |  2 ++
+ include/exec/exec-all.h | 19 +++++++++++++++++++
+ accel/tcg/cputlb.c      | 26 ++++++++++++++++++++++++++
+ 4 files changed, 58 insertions(+)
 
-Changes since v1:
-  * Merge feedback from AJB.
-  * Split out 7 renaming patches from "Reorganize ARMMMUIdx".
-  * Alex's MIDR patch keeps the nested KVM from spitting warnings.
-
-I have tested 
-
-  qemu-system-aarch64 -accel kvm -cpu host -M virt,gic-version-host \
-    -m 512 -bios /usr/share/edk2/aarch64/QEMU_EFI.fd -nographic
-
-with fedora 30 system qemu, itself booted with
-
-  ../bld/aarch64-softmmu/qemu-system-aarch64 \
-    -cpu max -M virt,gic-version=3,virtualization=on \
-    -drive if=virtio,file=./f30.q,format=qcow2 \
-    -m 4G -nographic
-
-It took a while, but eventually the nested bios arrived at the
-pxe boot sequence.  Thankfully (?), the f30 shipped bios has
-debug enabled, so there's some sense of progress in the meantime.
-
-
-r~
-
-
-Alex Bennée (2):
-  target/arm: check TGE and E2H flags for EL0 pauth traps
-  target/arm: generate a custom MIDR for -cpu max
-
-Richard Henderson (32):
-  cputlb: Add tlb_set_asid_for_mmuidx
-  cputlb: Add tlb_flush_asid_by_mmuidx and friends
-  target/arm: Install ASIDs for long-form from EL1
-  target/arm: Install ASIDs for short-form from EL1
-  target/arm: Install ASIDs for EL2
-  target/arm: Define isar_feature_aa64_vh
-  target/arm: Enable HCR_E2H for VHE
-  target/arm: Add CONTEXTIDR_EL2
-  target/arm: Add TTBR1_EL2
-  target/arm: Update CNTVCT_EL0 for VHE
-  target/arm: Add the hypervisor virtual counter
-  target/arm: Add VHE system register redirection and aliasing
-  target/arm: Split out vae1_tlbmask, vmalle1_tlbmask
-  target/arm: Simplify tlb_force_broadcast alternatives
-  target/arm: Rename ARMMMUIdx*_S12NSE* to ARMMMUIdx*_E10_*
-  target/arm: Rename ARMMMUIdx_S2NS to ARMMMUIdx_Stage2
-  target/arm: Rename ARMMMUIdx_S1NSE* to ARMMMUIdx_Stage1_E*
-  target/arm: Rename ARMMMUIdx_S1SE* to ARMMMUIdx_SE*
-  target/arm: Rename ARMMMUIdx*_S1E3 to ARMMMUIdx*_SE3
-  target/arm: Rename ARMMMUIdx_S1E2 to ARMMMUIdx_E2
-  target/arm: Reorganize ARMMMUIdx
-  target/arm: Add regime_has_2_ranges
-  target/arm: Update arm_mmu_idx for VHE
-  target/arm: Update arm_sctlr for VHE
-  target/arm: Update aa64_zva_access for EL2
-  target/arm: Update ctr_el0_access for EL2
-  target/arm: Install asids for E2&0 translation regime
-  target/arm: Flush tlbs for E2&0 translation regime
-  target/arm: Update arm_phys_excp_target_el for TGE
-  target/arm: Update regime_is_user for EL2&0
-  target/arm: Update {fp,sve}_exception_el for VHE
-  target/arm: Enable ARMv8.1-VHE in -cpu max
-
- include/exec/cpu-all.h     |   11 +
- include/exec/cpu-defs.h    |    2 +
- include/exec/exec-all.h    |   35 ++
- include/qom/cpu.h          |    2 +
- target/arm/cpu-qom.h       |    1 +
- target/arm/cpu.h           |  261 ++++-----
- target/arm/internals.h     |   62 ++-
- target/arm/translate.h     |    2 +-
- accel/tcg/cputlb.c         |   81 +++
- target/arm/cpu.c           |    2 +
- target/arm/cpu64.c         |   20 +
- target/arm/debug_helper.c  |   50 +-
- target/arm/helper-a64.c    |    2 +-
- target/arm/helper.c        | 1042 +++++++++++++++++++++++++-----------
- target/arm/m_helper.c      |    6 +-
- target/arm/pauth_helper.c  |   13 +-
- target/arm/translate-a64.c |   13 +-
- target/arm/translate.c     |   17 +-
- 18 files changed, 1134 insertions(+), 488 deletions(-)
-
+diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+index 536ea58f81..40b140cbba 100644
+--- a/include/exec/cpu-all.h
++++ b/include/exec/cpu-all.h
+@@ -439,4 +439,15 @@ static inline CPUTLB *env_tlb(CPUArchState *env)
+     return &env_neg(env)->tlb;
+ }
+ 
++/**
++ * cpu_tlb(env)
++ * @cpu: The generic CPUState
++ *
++ * Return the CPUTLB state associated with the cpu.
++ */
++static inline CPUTLB *cpu_tlb(CPUState *cpu)
++{
++    return &cpu_neg(cpu)->tlb;
++}
++
+ #endif /* CPU_ALL_H */
+diff --git a/include/exec/cpu-defs.h b/include/exec/cpu-defs.h
+index 9bc713a70b..b42986d822 100644
+--- a/include/exec/cpu-defs.h
++++ b/include/exec/cpu-defs.h
+@@ -169,6 +169,8 @@ typedef struct CPUTLBDesc {
+     size_t n_used_entries;
+     /* The next index to use in the tlb victim table.  */
+     size_t vindex;
++    /* The current ASID for this tlb, if used; otherwise ignored.  */
++    uint32_t asid;
+     /* The tlb victim table, in two parts.  */
+     CPUTLBEntry vtable[CPU_VTLB_SIZE];
+     CPUIOTLBEntry viotlb[CPU_VTLB_SIZE];
+diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
+index 16034ee651..9c77aa5bf9 100644
+--- a/include/exec/exec-all.h
++++ b/include/exec/exec-all.h
+@@ -225,6 +225,21 @@ void tlb_flush_by_mmuidx_all_cpus(CPUState *cpu, uint16_t idxmap);
+  * depend on when the guests translation ends the TB.
+  */
+ void tlb_flush_by_mmuidx_all_cpus_synced(CPUState *cpu, uint16_t idxmap);
++/**
++ * tlb_set_asid_for_mmuidx:
++ * @cpu: Originating cpu
++ * @asid: Address Space Identifier
++ * @idxmap: bitmap of MMU indexes to set to @asid
++ * @depmap: bitmap of dependent MMU indexes
++ *
++ * Set an ASID for all of @idxmap.  If any previous ASID was different,
++ * then we will flush the mmu idx.  If a flush is required, then also flush
++ * all dependent mmu indicies in @depmap.  This latter is typically used
++ * for secondary page resolution, for implementing virtualization within
++ * the guest.
++ */
++void tlb_set_asid_for_mmuidx(CPUState *cpu, uint32_t asid,
++                             uint16_t idxmap, uint16_t dep_idxmap);
+ /**
+  * tlb_set_page_with_attrs:
+  * @cpu: CPU to add this TLB entry for
+@@ -310,6 +325,10 @@ static inline void tlb_flush_by_mmuidx_all_cpus_synced(CPUState *cpu,
+                                                        uint16_t idxmap)
+ {
+ }
++static inline void tlb_set_asid_for_mmuidx(CPUState *cpu, uint32_t asid,
++                                           uint16_t idxmap, uint16_t depmap)
++{
++}
+ #endif
+ 
+ #define CODE_GEN_ALIGN           16 /* must be >= of the size of a icache line */
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index bb9897b25a..c68f57755b 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -540,6 +540,32 @@ void tlb_flush_page_all_cpus_synced(CPUState *src, target_ulong addr)
+     tlb_flush_page_by_mmuidx_all_cpus_synced(src, addr, ALL_MMUIDX_BITS);
+ }
+ 
++void tlb_set_asid_for_mmuidx(CPUState *cpu, uint32_t asid, uint16_t idxmap,
++                             uint16_t depmap)
++{
++    CPUTLB *tlb = cpu_tlb(cpu);
++    uint16_t work, to_flush = 0;
++
++    /* It doesn't make sense to set context across cpus.  */
++    assert_cpu_is_self(cpu);
++
++    /*
++     * We don't support ASIDs except for trivially.
++     * If there is any change, then we must flush the TLB.
++     */
++    for (work = idxmap; work != 0; work &= work - 1) {
++        int mmu_idx = ctz32(work);
++        if (tlb->d[mmu_idx].asid != asid) {
++            tlb->d[mmu_idx].asid = asid;
++            to_flush |= 1 << mmu_idx;
++        }
++    }
++    if (to_flush) {
++        to_flush |= depmap;
++        tlb_flush_by_mmuidx_async_work(cpu, RUN_ON_CPU_HOST_INT(to_flush));
++    }
++}
++
+ /* update the TLBs so that writes to code in the virtual page 'addr'
+    can be detected */
+ void tlb_protect_code(ram_addr_t ram_addr)
 -- 
 2.17.1

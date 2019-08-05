@@ -1,100 +1,87 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4071393wrv;
-        Mon, 5 Aug 2019 07:47:40 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwahoY0su4DOdGBmVqGgM4D5klTy5G/ZZsva0CmoYrZxzG/qphI6WRyJ/oJbGEK5cCyqhoA
-X-Received: by 2002:ac8:21b7:: with SMTP id 52mr104468188qty.59.1565016459949;
-        Mon, 05 Aug 2019 07:47:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565016459; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4134632wrv;
+        Mon, 5 Aug 2019 08:47:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxe9zPVRbbRACbXRJNs2CKO8JztEyhnPGvSXstb/O4qiumBc9sVxUqFCUrvMMe5SHwSEYhS
+X-Received: by 2002:a0c:acab:: with SMTP id m40mr111771068qvc.52.1565020033187;
+        Mon, 05 Aug 2019 08:47:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565020033; cv=none;
         d=google.com; s=arc-20160816;
-        b=arOtxywjObRWEu+l+QgGEZxLM6X22qBuA5BNEfjbBlGMioxaPlinZO8c+w6EuG9KcQ
-         W9c0LZZ4knuNsuTnot/Bv7ofECS0cVwVouMmjxfvbruP6TCJGoWbuwcFOWuryBk31vRa
-         vFjeaQfW0RpvUifBWJGynVYBiO5Ucz+GUjRSKGBfSpFzoRe/T3sFl9OaW3v+IRRadXz2
-         5Ns3km0bOFM9bNlWFb49xelX8iSF3iIEQgDKzF5LOxyK0/9PcoTmtJbEwmhkNJs7MJO4
-         WrfTr6lSfAWtIFYrlLR2Tjg/riiT0B3ENie4HKdJcxRGYBq7k6DSrYFPkgUNoNvQSONO
-         GZKw==
+        b=rtOAphwY+rs+AA/iHrzmtL0QfbLM2OSpSOaxcNWgJLVejbx0rqtyiEGxgOIH7T/TzV
+         4JaIjWCUyzLMAkcVcz+KdSS0mcb9nPmNqju1r7vUBz4gos/AQCaM5IIllpJ5Cqj32KTP
+         +bwtZ/Eg56ZLTVoa+x5VyrNxF3E+UFlt3r+hncZDvG09CEMahSss7pfDk8kVSoWnyvhb
+         BwbOs9t9su7e9k2vGJOrFGpSA2N+15WaNV/uJPohL1mENp/47T20fWH4QWvEqBZla5Yp
+         Tg3o6G2XdA4TgJAXjGYeyj1UOMuTFeyuLUIEFkENy9un1IX7BU3hyWGs47wZeW6bwMwk
+         Aj9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=/nl/WkNbFtK4oDCY/sJp5HyAz2vVgFv/Gwuty8xGzHY=;
-        b=PSoMLS9/khI5I72zpEeqR3cKwn6stz95NEMGKU8kOmT2Dyd3nysr4vfg3LLIFOkj8i
-         UgN6ryqHvKEgtNLQHsm8C7w8JaSMdU8reX/nIIeJROo541nqe78oxSvU4Ac6Z6w5TJYz
-         3fhcsYw/3q7HN3aFGWiSKS0QsHhkd+PVea3qUDA/VSyRLXvUZkA76DXI0aOXfbN8Ph9v
-         MFbyAUjjmAxSAqwPGew6/I1tGDBLgs/NWdSqV4vpKHCLJ0ojuCrkeTLOPp7VHJyKuup9
-         X9W2x0JKN/jX5NL6j6TbI5AjzSR6FXYbHgNea9xJhl3MM2VE+AOOiMMWS749b+ewKlNq
-         qTHQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=F25GD2va4CsqMNCtutqTCsUW4YzbYOCFRswQQT4wlxg=;
+        b=JmRP+nrb3F6RYlXIzoxHpSVWIf17XJ9c36Us9RQ3N9OcTYYgb91wEP41YwCYphfnuJ
+         DJVOIidt8ONWFgcaEMcJtr2fpWIxYMeWmZWtlGWtXEXM+mGxD2pKp+RYLDUKWY6twerB
+         8HskzIunGJbX3G5DFeeogZTnRu1vjed9W7levS14tO2T2KaJPLDWS14T01bi6QgRThAw
+         QcBSIcwwhz7Ph0ZzwFPn832ayZsq2AOhK4il5rico+E+RCMVEYikqrUX1RjL5Z+mdX4Z
+         /Tx22mPBv0fzHmgG5jpLoQ1rE/1zEt4fZZL5Qi2zFoOx5Hwh1JHfU4wzSDI/GSoa1gG0
+         TVig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=EnbEhUTD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q2si50947233qtj.247.2019.08.05.07.47.39
+        by mx.google.com with ESMTPS id f11si45425596qkb.182.2019.08.05.08.47.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Aug 2019 07:47:39 -0700 (PDT)
+        Mon, 05 Aug 2019 08:47:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=EnbEhUTD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54568 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55178 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hueGx-0000Ey-H0
-	for alex.bennee@linaro.org; Mon, 05 Aug 2019 10:47:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40349)
+	id 1hufCa-0007ww-Os
+	for alex.bennee@linaro.org; Mon, 05 Aug 2019 11:47:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55668)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hueGj-0000DX-8V
- for qemu-arm@nongnu.org; Mon, 05 Aug 2019 10:47:26 -0400
+ (envelope-from <imammedo@redhat.com>) id 1hufCU-0007wf-61
+ for qemu-arm@nongnu.org; Mon, 05 Aug 2019 11:47:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hueGi-0006HC-7N
- for qemu-arm@nongnu.org; Mon, 05 Aug 2019 10:47:25 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:41804)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hueGi-0006GL-0z
- for qemu-arm@nongnu.org; Mon, 05 Aug 2019 10:47:24 -0400
-Received: by mail-oi1-x244.google.com with SMTP id g7so62197307oia.8
- for <qemu-arm@nongnu.org>; Mon, 05 Aug 2019 07:47:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=/nl/WkNbFtK4oDCY/sJp5HyAz2vVgFv/Gwuty8xGzHY=;
- b=EnbEhUTDqCi8p0Nut56C0/rgXFX7fkBRWcGNTU030BH1SlZOksuP4GaE0UYH1D3Psj
- WCfbXv6uHxK3ibfuTojMz7BVwqSA6I66nznYxzNgclrk87GmvJAkw6MFBKQgR1Mh7lj4
- UKSB0xXymGUD7UegNjEwcfp/xgRJAq37fcvU4+v4z77BoeoyAqmkmgs+DoGu5NBgoqYz
- dRSCxqWzvUyMtlccBSzE2jRloBXCqH60RgwpTnXbf19pcm1K93TFyoU3w4benEP5A815
- O0Rhi6CryF4NBY3Vt1AWpPNBe7I95za/7yFgdcWu7MvrZuMEwlP2Nw/AyCIYqK2tzUdW
- Ibkg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=/nl/WkNbFtK4oDCY/sJp5HyAz2vVgFv/Gwuty8xGzHY=;
- b=NuAhFMlab7boVrdYev75N0Y4mdMrjeFxbeWdMqcETG7sju72eLrvgHoSzG1HqwaQ55
- Q7DYfFPRYWmq6kIwwhq0M2x1Eji0XssNkY4lw0SFUUdep+iSmgRoZPOBazfMSHPvRFlF
- 3wnAsyaButvVcntJZfv/Q8iF3v4B0/c8mcBS/STGphBCjN0RGTKeR1umcIEE1ed+3+AE
- Fr/7g0Ss/7C+gNyPMw3YbUO9qwMwsiPq9j340XKRz6/ngIqBTPEs2n0C4hWbXWt61ecO
- 0AkujPW7EYDRAXdClG+1W4O/JSyh+clLz1teFr75Hw5+nA3Hae6hXAch9IkBVaLAdA4G
- vH6A==
-X-Gm-Message-State: APjAAAUh1tq3tqDj2cUhQYXC0G0t6MYPPhmOnJB+hPm6jQRt+K+vlrp3
- ieYWqaSwVESLK2TgCAW1mbMd2m2q8I5pktoozykYeQ==
-X-Received: by 2002:a05:6808:8c2:: with SMTP id
- k2mr11142438oij.98.1565016443077; 
- Mon, 05 Aug 2019 07:47:23 -0700 (PDT)
+ (envelope-from <imammedo@redhat.com>) id 1hufCT-000479-0E
+ for qemu-arm@nongnu.org; Mon, 05 Aug 2019 11:47:06 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37640)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>)
+ id 1hufCS-00046f-NI; Mon, 05 Aug 2019 11:47:04 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 39D853090FF4;
+ Mon,  5 Aug 2019 15:47:03 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8115B60A97;
+ Mon,  5 Aug 2019 15:46:54 +0000 (UTC)
+Date: Mon, 5 Aug 2019 17:46:52 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20190805174652.61e9852a@redhat.com>
+In-Reply-To: <CAFEAcA-+z4t75VwfWG1ezJm=4zfdWH6nz1Oe75Zs953+vKMvdQ@mail.gmail.com>
+References: <20190726104519.23812-1-shameerali.kolothum.thodi@huawei.com>
+ <20190726104519.23812-4-shameerali.kolothum.thodi@huawei.com>
+ <20190730172524.6cf566ed@Igors-MacBook-Pro>
+ <5FC3163CFD30C246ABAA99954A238FA83F33D896@lhreml524-mbs.china.huawei.com>
+ <20190805153045.60db7bf5@redhat.com>
+ <CAFEAcA-+z4t75VwfWG1ezJm=4zfdWH6nz1Oe75Zs953+vKMvdQ@mail.gmail.com>
 MIME-Version: 1.0
-References: <20190711061857.13086-1-eric.auger@redhat.com>
- <20190711061857.13086-3-eric.auger@redhat.com>
-In-Reply-To: <20190711061857.13086-3-eric.auger@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 5 Aug 2019 15:47:12 +0100
-Message-ID: <CAFEAcA_UvvCydihGLhGy8Y_gk6Qh3UDGm1tC4xb3g4-UCbM1zg@mail.gmail.com>
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-Subject: Re: [Qemu-arm] [PATCH-for-4.2 v3 2/5] memory: Add
- IOMMU_ATTR_VFIO_NESTED IOMMU memory region attribute
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.43]); Mon, 05 Aug 2019 15:47:03 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH-for-4.2 v8 3/9] hw/acpi: Add
+ ACPI Generic Event Device Support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,89 +93,107 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Eric Auger <eric.auger.pro@gmail.com>
+Cc: "sameo@linux.intel.com" <sameo@linux.intel.com>,
+ "ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ Linuxarm <linuxarm@huawei.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
+ "lersek@redhat.com" <lersek@redhat.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qRwS4YtXId9x
+X-TUID: +1f98ju1AYXS
 
-On Thu, 11 Jul 2019 at 07:19, Eric Auger <eric.auger@redhat.com> wrote:
->
-> We introduce a new IOMMU Memory Region attribute,
-> IOMMU_ATTR_VFIO_NESTED that tells whether the virtual IOMMU
-> requires HW nested paging for VFIO integration.
->
-> Current Intel virtual IOMMU device supports "Caching
-> Mode" and does not require 2 stages at physical level to be
-> integrated with VFIO. However SMMUv3 does not implement such
-> "caching mode" and requires to use HW nested paging.
->
-> As such SMMUv3 is the first IOMMU device to advertise this
-> attribute.
+On Mon, 5 Aug 2019 14:42:38 +0100
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-I'm not sure the name of the attribute really captures
-the intention here, though I don't have any better
-suggestions. Maybe IOMMU_ATTR_VFIO_NEEDS_HW_NESTED_PAGING ?
-
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  hw/arm/smmuv3.c       | 12 ++++++++++++
->  include/exec/memory.h |  3 ++-
->  2 files changed, 14 insertions(+), 1 deletion(-)
->
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index e96d5beb9a..384c02cb91 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -1490,6 +1490,17 @@ static void smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
->      }
->  }
->
-> +static int smmuv3_get_attr(IOMMUMemoryRegion *iommu,
-> +                           enum IOMMUMemoryRegionAttr attr,
-> +                           void *data)
+> On Mon, 5 Aug 2019 at 14:30, Igor Mammedov <imammedo@redhat.com> wrote:
+> >
+> > On Thu, 1 Aug 2019 08:36:33 +0000
+> > Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
+> >  
+> > > Hi Igor,
+> > >  
+> > > > -----Original Message-----  
+> > > > > +static void acpi_ged_device_realize(DeviceState *dev, Error **errp)
+> > > > > +{
+> > > > > +    AcpiGedState *s = ACPI_GED(dev);
+> > > > > +
+> > > > > +    assert(s->ged_base);
+> > > > > +    acpi_ged_init(get_system_memory(), dev, &s->ged_state);  
+> > > >
+> > > > calling get_system_memory() from device code used to be a reason for
+> > > > rejecting patch,
+> > > > I'm not sure what suggest though.
+> > > >
+> > > > Maybe Paolo could suggest something.  
+> > >
+> > > How about using object_property_set_link()? Something like below.  
+> > I'm afraid it doesn't help much. Issue here is that we are letting
+> > device to manage whole address space (which should be managed by machine)
+> > So I'd just keep get_system_memory() as is for now if there aren't any
+> > objections.  
+> 
+> What are we trying to do with this device, and what does it need
+> the system memory region for?
+> 
+> In this case, we seem to do:
+> 
+> +static void acpi_ged_init(MemoryRegion *as, DeviceState *dev, GEDState *ged_st)
 > +{
-> +    if (attr == IOMMU_ATTR_VFIO_NESTED) {
-> +        *(bool *) data = true;
-
-I'm surprised checkpatch doesn't warn about the space after
-the cast here.
-
-> +        return 0;
-> +    }
-> +    return -EINVAL;
-> +}
+> +    AcpiGedState *s = ACPI_GED(dev);
 > +
->  static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
->                                                    void *data)
->  {
-> @@ -1497,6 +1508,7 @@ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
->
->      imrc->translate = smmuv3_translate;
->      imrc->notify_flag_changed = smmuv3_notify_flag_changed;
-> +    imrc->get_attr = smmuv3_get_attr;
->  }
->
->  static const TypeInfo smmuv3_type_info = {
-> diff --git a/include/exec/memory.h b/include/exec/memory.h
-> index a078cd033f..e477a630a8 100644
-> --- a/include/exec/memory.h
-> +++ b/include/exec/memory.h
-> @@ -204,7 +204,8 @@ struct MemoryRegionOps {
->  };
->
->  enum IOMMUMemoryRegionAttr {
-> -    IOMMU_ATTR_SPAPR_TCE_FD
-> +    IOMMU_ATTR_SPAPR_TCE_FD,
-> +    IOMMU_ATTR_VFIO_NESTED,
->  };
+> +    memory_region_init_io(&ged_st->io, OBJECT(dev), &ged_ops, ged_st,
+> +                          TYPE_ACPI_GED, ACPI_GED_EVT_SEL_LEN);
+> +    memory_region_add_subregion(as, s->ged_base, &ged_st->io);
+> +    qdev_init_gpio_out_named(DEVICE(s), &s->irq, "ged-irq", 1);
+> +}
+> 
+> 
+> This is definitely a bad idea -- devices should not add their
+> own memory regions to the system memory MR. They should
+> expose their MRs (by being a sysbus-device) and let the board
+> code do the wiring up of the MRs into the right memory space
+> at the right address.
 
-Could we have a comment documenting what the attribute's meaning
-and semantics are, please? (including what the type is that the
-data pointer is expected to point to, ie 'bool'.)
+it's not the only place in GED that is trying to add to system address
+space, optionally if called acpi_memory_hotplug_init() will do the same,
+then later we could add cpu hotplug memory region over there.
 
-(We ought also to document the spapr-specific attribute...)
+Perhaps we could use bus-less device plug code path,
+in that case memory_region_init_io()/qdev_init_gpio_out_named()
+should be moved to ged_initfn() and mapping part into specialized helper
+(similar to pc_dimm_plug() ) that's called by board (from virt_machine_device_plug_cb)
+callback during completing device realize stage, it would be something like:
 
-thanks
--- PMM
+virt.c:
+   virt_machine_device_plug_cb()
+      if dev == GED_TYPE
+        machine_ged_plug_helper(system_memory)
+
+generic_event_device.c:
+   machine_ged_plug_helper(as, irq) // similar to sysbus_mmio_map() but ged specialized
+      connect_irq()
+      memory_region_add_subregion(as, ged->ged_base, &ged->io)
+      if ged->memory-hotplug-support
+          memory_region_add_subregion(as, ged->memhp_base , &ged->memhp_state.memhp_io)
+
+
+in this case addresses could be normally hard-codded in board code if device is not optional
+(as in patch 6/9: create_acpi_ged() )
+or potentially they could come from CLI as -device parameters
+(/me thinking about building blocks that allow to create machine from config)
+
+sysbus device might be fine as shortcut if we are thinking about
+only creating device during machine_init (although I have a reservations towards
+sysbus interface (ex: caller of sysbus_mmio_map() has no clue when mapping N-th
+region at some address)).
+
+
+> thanks
+> -- PMM
+

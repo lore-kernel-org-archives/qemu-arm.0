@@ -1,83 +1,101 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3991354wrv;
-        Mon, 5 Aug 2019 06:31:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyimi4PQL5inLeWbcBBSJeO2oWD1j/qTgEfG1IPkyTr+4pSmqavsNVvauWpq8NImJtGwJlN
-X-Received: by 2002:a50:ec0e:: with SMTP id g14mr93663405edr.210.1565011864949;
-        Mon, 05 Aug 2019 06:31:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565011864; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4004039wrv;
+        Mon, 5 Aug 2019 06:42:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwDeEcLokEmDyX2GP9QmsVZmdIXkk14qf6Zgexb4x0OzyjjUg7LsvodOlEGRld6WJRgVMsR
+X-Received: by 2002:a17:906:19d3:: with SMTP id h19mr17033247ejd.300.1565012578051;
+        Mon, 05 Aug 2019 06:42:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565012578; cv=none;
         d=google.com; s=arc-20160816;
-        b=oCWYkZxfHf1I/CXxw6s0GSosDrYeq7abpkQOLRaMYZ+D1rBrD6tgKIRtfUEYsA8Fml
-         3ft3HTWhtg2Fo3GJjYnLs5s4/aqMNqafaL5qtvP7hr+aqQLltQ1PBDkpaTv9WQmDZJN5
-         b0wauqzVUa766W0L/AC7BBLVQWBr8fjXeznsItl+Qf9A39sSFNqlNgI60kGVRCPrrS4a
-         Mne8sP74jmoQ/3JMIp8o+/gyUUGlwsgrAeCiJG0KzrOD8TzZ3UkcPpZx7szXBGqkIWGY
-         EQgtmejDul/15252WQgpBEC7dSp96qIVGl4CIONihJd57GaVeYhZy5GKQdkYFj0cWG2E
-         ritQ==
+        b=Cee066Vn26OBiGL/ew+0PqS8B8Hw8pLdfl+pf/TVjhDQhh+heb9+Pvu4Gjrzjf1clt
+         o3Ocr77IgxCK5R4uovjktacq92E9sgAYuwP4Q8xrshhwyQ7r1byI4OZFrcxUU7h2mB67
+         w89gKdhATQ9zYDkw4/79jQmmPY6x/3G75tl4M80DGfmpVZ7HRMwbWiDTuBLRio7I3Uf1
+         +lniR5JbTVun7uD9nCVaF9AZspHirw5QEtP2x1z3iPB26ybWPL+UAvppCnZcp21DmFSD
+         jKgSMjvm2ZD28OwoPNRZN2EvWLksMMYCUSswhKyRIUcin31DsjudZqoL9/RaJt1EOxrd
+         YoOg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:to:from:date;
-        bh=/PtjzSnaw1in76wOqYFAqlHjNJNABefgCUjeGUJy4uE=;
-        b=bXvuvAjbjN9/ju6IIiaYSAjw+FUijfacu47Fo1Gk8cpo3lC6xtRU14ny4bF9Hm6J7v
-         QfMGQLa9lQ967ZdVWEFC8fhJWO5hhYzVmxfs3TJep6OZO96HClunusiPhgltN6ow9D21
-         0z4as6CqtYSM6Pj8LdFRtJzUTwq3uLRtb9F4nZqmWiV4R+5Ya8H8YgIQ7iF0FHtsTlmv
-         oSD/r88U3y51+NiRJ+CAuEZQccnMBWE6ZEy7NWgNpY3c2rjYU6fJGrVBF09kBi4YnM15
-         Mn2um2U04PNP93rR4hTTVvg2XLd8Gs2SAC2eXbHMbko4xjO/8cLoVzX6YBlimx4DemNR
-         1fdw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=B05wnJyj1chi2fFWX1oj/Ms4Et6tx00K/F2SQ69Q/a0=;
+        b=V0qRt/s7cvulnAsvobyqv7vCGwpEH48MS8j9Yi820TQEllkKX77QBpXVmxupawEEiJ
+         lY3xX6KTg1ENLd66cGbUa25nQPV6IibcQvxITThhQSuyMw4fYGPjno/dLDXIahxcVYMk
+         Tsy1NU2jZZZuJsNJYotk8dG7kg9jO/hU+nSsGyrZwboUv5hV9UIJ9Da4Q0b9E5JT4JDR
+         eTwZlnuxv9rUXAHLkr8vyS7ze7LktdZYCW18AuteWlSgv2mplPoj5+cqKsBc+yuzxoDa
+         dCR4y8JfBsOxIc9HEouMp0ZvYJkg4vxKSbJTrwk9zY/L6kpHJpiCus+l9iyw5ATNvdc0
+         XlQA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=g7Twu7Wq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e12si28752522edb.442.2019.08.05.06.31.04
+        by mx.google.com with ESMTPS id s41si19705785eda.207.2019.08.05.06.42.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Aug 2019 06:31:04 -0700 (PDT)
+        Mon, 05 Aug 2019 06:42:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=g7Twu7Wq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53918 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54002 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hud4q-000421-1Z
-	for alex.bennee@linaro.org; Mon, 05 Aug 2019 09:31:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56152)
+	id 1hudGL-0007jt-41
+	for alex.bennee@linaro.org; Mon, 05 Aug 2019 09:42:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57816)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <imammedo@redhat.com>) id 1hud4j-00041k-QA
- for qemu-arm@nongnu.org; Mon, 05 Aug 2019 09:30:59 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hudGF-0007io-9A
+ for qemu-arm@nongnu.org; Mon, 05 Aug 2019 09:42:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1hud4i-0001H7-Ew
- for qemu-arm@nongnu.org; Mon, 05 Aug 2019 09:30:57 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38066)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <imammedo@redhat.com>)
- id 1hud4i-0001GY-6k; Mon, 05 Aug 2019 09:30:56 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 34691300BC7B;
- Mon,  5 Aug 2019 13:30:55 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.182])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 162D461140;
- Mon,  5 Aug 2019 13:30:46 +0000 (UTC)
-Date: Mon, 5 Aug 2019 15:30:45 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-Message-ID: <20190805153045.60db7bf5@redhat.com>
-In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA83F33D896@lhreml524-mbs.china.huawei.com>
+ (envelope-from <peter.maydell@linaro.org>) id 1hudGE-0000Wp-5j
+ for qemu-arm@nongnu.org; Mon, 05 Aug 2019 09:42:51 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:35467)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hudGD-0000VU-T1
+ for qemu-arm@nongnu.org; Mon, 05 Aug 2019 09:42:50 -0400
+Received: by mail-oi1-x243.google.com with SMTP id a127so61991901oii.2
+ for <qemu-arm@nongnu.org>; Mon, 05 Aug 2019 06:42:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=B05wnJyj1chi2fFWX1oj/Ms4Et6tx00K/F2SQ69Q/a0=;
+ b=g7Twu7Wq3JWKEudi1gjMwSQmz1i6CDmI0hqIsOWXQpyWYIE4xGtJ5CtkPWsRtaNHQy
+ WnkPe4XKO/C6U6lfFM4YCbtNTJ2e3XbRf4br2USMFfPdYjE3Q23ZLivbkAhpzu/fxdUp
+ vIc5CayJ3+cEnDUJeako1c+kz5FcEfhtf6t6sAfhR9PDyu3qwGtskUauHMZzJUccMjoD
+ JC+ULivLU7+TG7tocw0SxJExmHMmswFur88mhMJWZO6AU0eJaFddRD0YoiNDSuBXu5st
+ nIzwu0so3vNfoyEI4AfCEjqjWcZehXjIXKu2FnGAw4A4cAWjRPUQejCyZ94gk4HwmAO+
+ Fcjw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=B05wnJyj1chi2fFWX1oj/Ms4Et6tx00K/F2SQ69Q/a0=;
+ b=tg+WHqZY70wY/ypC0o6L8ZEawIf3asgnp7LKvsxQtVYCm7fNWZuNHW7HyD0oTFZpzL
+ wU8bQiknnAsKSOTz1yTmXE1ezXVSr/5TC+SwTLrDxA6EqVZE5t9gyEi1dOyPCIGApoN4
+ Pk5vtlLp4O2iU4qg1IG8KWpwJkmJvF9aYIvikUAWp/KdQEsLUhLZXUXKOXvNMNuOX2+3
+ J/R2vC9BgeIuv7ZXFx1xcM4/NhQTl7Fxs13qnrsnc0dV5IzQNYQ9ixNMnyLAj1g1ehig
+ O/XJgzdofa5GVzSDavQM5dPlqSvedP7WJymQZ3kYdtqm3ksVgR2MgcBzRCzHb3yVEFhh
+ mxqA==
+X-Gm-Message-State: APjAAAUmqveCcF1TMPjk4rdRVqmtXNUn2oatLPtWHQIfAyza8JbCdIZu
+ Ivmyek6l/DMk5VXA6Nzfg+pMGbniYm9Pedh/vbCMHQ==
+X-Received: by 2002:aca:4bcc:: with SMTP id
+ y195mr10299171oia.146.1565012568944; 
+ Mon, 05 Aug 2019 06:42:48 -0700 (PDT)
+MIME-Version: 1.0
 References: <20190726104519.23812-1-shameerali.kolothum.thodi@huawei.com>
  <20190726104519.23812-4-shameerali.kolothum.thodi@huawei.com>
  <20190730172524.6cf566ed@Igors-MacBook-Pro>
  <5FC3163CFD30C246ABAA99954A238FA83F33D896@lhreml524-mbs.china.huawei.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.42]); Mon, 05 Aug 2019 13:30:55 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+ <20190805153045.60db7bf5@redhat.com>
+In-Reply-To: <20190805153045.60db7bf5@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 5 Aug 2019 14:42:38 +0100
+Message-ID: <CAFEAcA-+z4t75VwfWG1ezJm=4zfdWH6nz1Oe75Zs953+vKMvdQ@mail.gmail.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::243
 Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH-for-4.2 v8 3/9] hw/acpi: Add
  ACPI Generic Event Device Support
 X-BeenThere: qemu-arm@nongnu.org
@@ -91,10 +109,10 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "sameo@linux.intel.com" <sameo@linux.intel.com>,
+Cc: "sameo@linux.intel.com" <sameo@linux.intel.com>,
  "ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
  Linuxarm <linuxarm@huawei.com>,
  "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
@@ -104,157 +122,56 @@ Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
  "eric.auger@redhat.com" <eric.auger@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0tmFHZ7GNwcc
+X-TUID: UgQFU6JnZoWn
 
-On Thu, 1 Aug 2019 08:36:33 +0000
-Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
-
-> Hi Igor,
-> 
-> > -----Original Message-----
-> > From: Qemu-devel
-> > [mailto:qemu-devel-bounces+shameerali.kolothum.thodi=huawei.com@nongn
-> > u.org] On Behalf Of Igor Mammedov
-> > Sent: 30 July 2019 16:25
-> > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> > Cc: peter.maydell@linaro.org; sameo@linux.intel.com;
-> > ard.biesheuvel@linaro.org; shannon.zhaosl@gmail.com;
-> > qemu-devel@nongnu.org; xuwei (O) <xuwei5@huawei.com>; Linuxarm
-> > <linuxarm@huawei.com>; eric.auger@redhat.com; qemu-arm@nongnu.org;
-> > Paolo Bonzini <pbonzini@redhat.com>; sebastien.boeuf@intel.com;
-> > lersek@redhat.com
-> > Subject: Re: [Qemu-devel] [PATCH-for-4.2 v8 3/9] hw/acpi: Add ACPI Generic
-> > Event Device Support
-> > 
-> > On Fri, 26 Jul 2019 11:45:13 +0100
-> > Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
-> >   
-> > > From: Samuel Ortiz <sameo@linux.intel.com>
+On Mon, 5 Aug 2019 at 14:30, Igor Mammedov <imammedo@redhat.com> wrote:
+>
+> On Thu, 1 Aug 2019 08:36:33 +0000
+> Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
+>
+> > Hi Igor,
+> >
+> > > -----Original Message-----
+> > > > +static void acpi_ged_device_realize(DeviceState *dev, Error **errp)
+> > > > +{
+> > > > +    AcpiGedState *s = ACPI_GED(dev);
+> > > > +
+> > > > +    assert(s->ged_base);
+> > > > +    acpi_ged_init(get_system_memory(), dev, &s->ged_state);
 > > >
-> > > The ACPI Generic Event Device (GED) is a hardware-reduced specific
-> > > device[ACPI v6.1 Section 5.6.9] that handles all platform events,
-> > > including the hotplug ones. This patch generates the AML code that
-> > > defines GEDs.
+> > > calling get_system_memory() from device code used to be a reason for
+> > > rejecting patch,
+> > > I'm not sure what suggest though.
 > > >
-> > > Platforms need to specify their own GED Event bitmap to describe
-> > > what kind of events they want to support through GED.  Also this
-> > > uses a a single interrupt for the  GED device, relying on IO
-> > > memory region to communicate the type of device affected by the
-> > > interrupt. This way, we can support up to 32 events with a unique
-> > > interrupt.
-> > >
-> > > This supports only memory hotplug for now.
-> > >  
-> >   
-> > > diff --git a/hw/acpi/generic_event_device.c  
-> > b/hw/acpi/generic_event_device.c  
-> > > new file mode 100644
-> > > index 0000000000..7902e9d706
-> > > --- /dev/null
-> > > +++ b/hw/acpi/generic_event_device.c  
-> > [...]  
-> > > +void build_ged_aml(Aml *table, const char *name, HotplugHandler  
-> > *hotplug_dev,  
-> > > +                   uint32_t ged_irq, AmlRegionSpace rs)
-> > > +{  
-> > [...]  
-> > > +
-> > > +        if (ged_events) {
-> > > +            error_report("GED: Unsupported events specified");
-> > > +            exit(1);  
-> > I'd use error_abort instead, since it's programing error, if you have to respin
-> > series.  
-> 
-> Ok.
-> 
-> > > +        }
-> > > +    }
-> > > +
-> > > +    /* Append _EVT method */
-> > > +    aml_append(dev, evt);
-> > > +
-> > > +    aml_append(table, dev);
-> > > +}
-> > > +  
-> > [...]  
-> > > +static void acpi_ged_device_realize(DeviceState *dev, Error **errp)
-> > > +{
-> > > +    AcpiGedState *s = ACPI_GED(dev);
-> > > +
-> > > +    assert(s->ged_base);
-> > > +    acpi_ged_init(get_system_memory(), dev, &s->ged_state);  
-> > 
-> > calling get_system_memory() from device code used to be a reason for
-> > rejecting patch,
-> > I'm not sure what suggest though.
-> > 
-> > Maybe Paolo could suggest something.  
-> 
-> How about using object_property_set_link()? Something like below.
-I'm afraid it doesn't help much. Issue here is that we are letting
-device to manage whole address space (which should be managed by machine)
-So I'd just keep get_system_memory() as is for now if there aren't any
-objections.
+> > > Maybe Paolo could suggest something.
+> >
+> > How about using object_property_set_link()? Something like below.
+> I'm afraid it doesn't help much. Issue here is that we are letting
+> device to manage whole address space (which should be managed by machine)
+> So I'd just keep get_system_memory() as is for now if there aren't any
+> objections.
 
-> ------8-----
-> diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-> index f00b0ab14b..eb1ed38f4a 100644
-> --- a/hw/acpi/generic_event_device.c
-> +++ b/hw/acpi/generic_event_device.c
-> @@ -229,11 +229,12 @@ static void acpi_ged_device_realize(DeviceState *dev, Error **errp)
->      AcpiGedState *s = ACPI_GED(dev);
->  
->      assert(s->ged_base);
-> -    acpi_ged_init(get_system_memory(), dev, &s->ged_state);
-> +    assert(s->sys_mem);
-> +    acpi_ged_init(s->sys_mem, dev, &s->ged_state);
->  
->      if (s->memhp_state.is_enabled) {
->          assert(s->memhp_base);
-> -        acpi_memory_hotplug_init(get_system_memory(), OBJECT(dev),
-> +        acpi_memory_hotplug_init(s->sys_mem, OBJECT(dev),
->                                   &s->memhp_state,
->                                   s->memhp_base);
->      }
-> @@ -245,6 +246,8 @@ static Property acpi_ged_properties[] = {
->       * because GED handles memory hotplug event and acpi-mem-hotplug
->       * memory region gets initialized when GED device is realized.
->       */
-> +    DEFINE_PROP_LINK("memory", AcpiGedState, sys_mem, TYPE_MEMORY_REGION,
-> +                     MemoryRegion *),
->      DEFINE_PROP_UINT64("memhp-base", AcpiGedState, memhp_base, 0),
->      DEFINE_PROP_BOOL("memory-hotplug-support", AcpiGedState,
->                       memhp_state.is_enabled, true),
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 73a758d9a9..0cbaf6c6e1 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -529,8 +529,12 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms, qemu_irq *pic)
->      DeviceState *dev;
->      int irq = vms->irqmap[VIRT_ACPI_GED];
->      uint32_t event = ACPI_GED_MEM_HOTPLUG_EVT | ACPI_GED_PWR_DOWN_EVT;
-> +    MemoryRegion *sys_mem = get_system_memory();
->  
->      dev = DEVICE(object_new(TYPE_ACPI_GED));
-> +
-> +    object_property_set_link(OBJECT(dev), OBJECT(sys_mem),
-> +                             "memory", &error_abort);
->      qdev_prop_set_uint64(dev, "memhp-base",
->                           vms->memmap[VIRT_PCDIMM_ACPI].base);
->      qdev_prop_set_uint64(dev, "ged-base", vms->memmap[VIRT_ACPI_GED].base);
-> diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-> index 63104f1344..f1f2f337f7 100644
-> --- a/include/hw/acpi/generic_event_device.h
-> +++ b/include/hw/acpi/generic_event_device.h
-> @@ -89,6 +89,7 @@ typedef struct GEDState {
->  
->  typedef struct AcpiGedState {
->      DeviceClass parent_obj;
-> +    MemoryRegion *sys_mem;
->      MemHotplugState memhp_state;
->      hwaddr memhp_base;
->      hwaddr ged_base;
-> 
-> ---8----
-> 
+What are we trying to do with this device, and what does it need
+the system memory region for?
 
+In this case, we seem to do:
+
++static void acpi_ged_init(MemoryRegion *as, DeviceState *dev, GEDState *ged_st)
++{
++    AcpiGedState *s = ACPI_GED(dev);
++
++    memory_region_init_io(&ged_st->io, OBJECT(dev), &ged_ops, ged_st,
++                          TYPE_ACPI_GED, ACPI_GED_EVT_SEL_LEN);
++    memory_region_add_subregion(as, s->ged_base, &ged_st->io);
++    qdev_init_gpio_out_named(DEVICE(s), &s->irq, "ged-irq", 1);
++}
+
+
+This is definitely a bad idea -- devices should not add their
+own memory regions to the system memory MR. They should
+expose their MRs (by being a sysbus-device) and let the board
+code do the wiring up of the MRs into the right memory space
+at the right address.
+
+thanks
+-- PMM

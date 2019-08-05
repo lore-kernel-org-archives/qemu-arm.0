@@ -1,150 +1,151 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([81.128.185.34])
-        by smtp.gmail.com with ESMTPSA id 91sm171174498wrp.3.2019.08.05.06.02.26
-        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Mon, 05 Aug 2019 06:02:26 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 65BD01FF87;
-	Mon,  5 Aug 2019 14:02:26 +0100 (BST)
-References: <20190803184800.8221-1-richard.henderson@linaro.org>
-User-agent: mu4e 1.3.4; emacs 27.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
-Subject: Re: [PATCH v3 00/34] target/arm: Implement ARMv8.1-VHE
-In-reply-to: <20190803184800.8221-1-richard.henderson@linaro.org>
-Date: Mon, 05 Aug 2019 14:02:26 +0100
-Message-ID: <8736ifkbod.fsf@linaro.org>
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3967964wrv;
+        Mon, 5 Aug 2019 06:10:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwfz6bxLiwpvhuPPuiz6kpcjpRMNgkgbLl17XcunyonzyVjlGVPWJ34or5+S28IuK9pH1g0
+X-Received: by 2002:a50:ba19:: with SMTP id g25mr133144099edc.123.1565010605831;
+        Mon, 05 Aug 2019 06:10:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565010605; cv=none;
+        d=google.com; s=arc-20160816;
+        b=XCkeiyr022w8sKPYwmmiAJXzCXPDnwekZmrFJsPzKIOEMEPugfICrh792jGTwrj6Yl
+         pWh7YPvPL1qQFWn1bhwohUFxGxt1x8vNsVWuxnnRS6VE+2WXjv+CUT9Dj7QIm77KSmn9
+         CNj1mBNcSfNQ0x5yXttOCHlwZwVEvCBSETGH+DxkxslfzFWXDj8et1MHitUD0Sgv1sMx
+         GDd5njBdjoFWdogqf2LqpMi1KmiO1W7//TStiQBUE+jU/Y8Fq54gQVhvhcUb8W6oMHOx
+         9gC6m6QsF/0UAV/B+/0MvZb1nHKcklXBtjkxruejSM/z6IW20VUJjYUZjDncyAZG2iWd
+         iwew==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=PfycPF5aiJmuNstFajU/Uk41X7HWSjK63QrpgD0M47o=;
+        b=Nr8Lr6723qjiPZhwjUR6NxBz/uDIWHBZDZLoabBgiXuno0jUo2zH2xj7On7OEOLII8
+         BAQ4nvY0rLnODVYAlTxbvfY8RptVuuwSEKEFB4z6nFps4LWmnJrZY5gTT60uGOvIrJRE
+         zYJrn/so2UmX3MuafGGsHPR6STm9K7KG+r4FmuuOvrpdvpOGF/T2oDOGiY0+xSuqPrNK
+         neuVvssdBHhuFKEjTZVUJWrI5bBH8pmmjvzPm6E1MHyXEr/sRlchl3pBxF1CqMAN+LXd
+         pEEzgQ+8nu7e+whQ9KkYc9M7ANWYsPeAlLepVDlTC95twki52++VexT3UlOVJobGv0mH
+         9FnA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b="TGyUpmg/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f58si28652962edf.135.2019.08.05.06.10.05
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 05 Aug 2019 06:10:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b="TGyUpmg/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53722 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1huckW-0000Yx-VT
+	for alex.bennee@linaro.org; Mon, 05 Aug 2019 09:10:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52725)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <peter.maydell@linaro.org>) id 1huckP-0000Ye-GM
+ for qemu-arm@nongnu.org; Mon, 05 Aug 2019 09:09:58 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1huckO-000471-DC
+ for qemu-arm@nongnu.org; Mon, 05 Aug 2019 09:09:57 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:41139)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1huckO-00046I-6z
+ for qemu-arm@nongnu.org; Mon, 05 Aug 2019 09:09:56 -0400
+Received: by mail-wr1-x444.google.com with SMTP id c2so81136710wrm.8
+ for <qemu-arm@nongnu.org>; Mon, 05 Aug 2019 06:09:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=PfycPF5aiJmuNstFajU/Uk41X7HWSjK63QrpgD0M47o=;
+ b=TGyUpmg/2kGRs4D2xVOEN1JtsN9P0F2e4WjLrFWEDIm1c5UkX4J+wzIItOSMU46GSP
+ v9fHjy7vrIAqtDbbU58pA80IAiTZzLGjQcbOn8xzzLOMseZ6CezxMDFzdxXeC9cmaWQU
+ Q/Zs8zTWiH4myFzQ+CZ5nuyBdyR6A5JUOz5QzloIY/kKaqVC0lhwvDZ/DVYXVeLH0ba0
+ kwDkOfOwZZg66tolcbzmeIAedFADhYwk0HQJ3rCB6xkChQMAgtTM9l1BHMmxe3dmEYM7
+ k1Oq9VKgB5Ocz2s1TOR4+RPpt+CCod4dnA8hQ82vQPXQEpDnU91mxs14E2NIrb/W2jFj
+ 1ojA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=PfycPF5aiJmuNstFajU/Uk41X7HWSjK63QrpgD0M47o=;
+ b=EI1lrINpEUjc0o0LLhmgbqKeyP62Y6XoBSJrJ1bJZ9PVyC53P3Q0J5qfHJd+b5pF75
+ 1pRxFoxZx5SEA1c4DWYhUzig/cjYL+wpcYBbOMFyDtSoNnfdNHE6VNMh/1BKFLlNE6Nl
+ bW/H1nifQv/kN4rj9rGw2tiV3ZYdM/egg6zTFLENn2W4fC2/TzCW2C4FJgBVuhrF1W6R
+ tlc+1TpmUTPDVs9KUfv4npp62c4JHzMTjm5KkRQH7woEeyaqUG3HubjFb6XQR4zd0MUy
+ KTGRZrVnJNGnWgxsc3O7nUL3FgOaktrjELcrorRhsO3Mzvx3m/tscfjKrCFGdGC51+H9
+ LklA==
+X-Gm-Message-State: APjAAAWenzTrgkeauShIqac4UiJ34LwXVW9rVkzkNi+nKNSxr2+k57ce
+ r8oxEPzeLjx4aE/zERDRbrzxHiKer8Gtcg==
+X-Received: by 2002:a5d:4950:: with SMTP id r16mr59897575wrs.136.1565010594873; 
+ Mon, 05 Aug 2019 06:09:54 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id x20sm65233782wmc.1.2019.08.05.06.09.54
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 05 Aug 2019 06:09:54 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Mon,  5 Aug 2019 14:09:50 +0100
+Message-Id: <20190805130952.4415-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: khvsQ604wtG4
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::444
+Subject: [Qemu-arm] [PATCH 0/2] target/arm: Fix routing of singlestep
+ exceptions
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +ggfcdZofyty
 
+Bug https://bugs.launchpad.net/qemu/+bug/1838913 reports that
+when doing architectural singlestepping we send the singlestep
+exceptions to EL1, even if the guest has configured the debug
+exception level to be EL2 or EL3.
 
-Richard Henderson <richard.henderson@linaro.org> writes:
+This patchset fixes that, by putting the debug target EL into
+the TB flags and sending exceptions there, rather than sending
+them to the default exception level.
 
-> About half of this patch set is cleanup of the qemu tlb handling
-> leading up to the actual implementation of VHE, and the biggest
-> piece of that: The EL2&0 translation regime.
->
-> Changes since v2:
->   * arm_mmu_idx was incomplete; test TGE+E2H not just E2H.
->   * arm_sctlr was incomplete; now uses arm_mmu_idx to avoid
->     duplication of tests.
->   * Update aa64_zva_access and ctr_el0_access for EL2.
->
-> Changes since v1:
->   * Merge feedback from AJB.
->   * Split out 7 renaming patches from "Reorganize ARMMMUIdx".
->   * Alex's MIDR patch keeps the nested KVM from spitting warnings.
->
-> I have tested
->
->   qemu-system-aarch64 -accel kvm -cpu host -M virt,gic-version-host \
->     -m 512 -bios /usr/share/edk2/aarch64/QEMU_EFI.fd -nographic
+Patch 1 is a preliminary refactoring out of the "generate the
+exception" code into translate.h; we then have a single
+place to do the actual fix, which is in patch 2.
 
-So testing with a host doing:
+(This bug has been present for ages, and it only affects
+guests that try to do debug to EL2, which is pretty rare,
+so it's not 4.1 material, especially at this point in the
+release cycle.)
 
-  ./aarch64-softmmu/qemu-system-aarch64 -machine type=3Dvirt,virtualization=
-=3Don -cpu cortex-a57 -serial mon:stdio -nic user,model=3Dvirtio-net-pci,ho=
-stfwd=3Dtcp::2222-:22 -device virtio-scsi-pci -drive file=3D/dev/zvol/hackp=
-ool-0/debian-buster-arm64,id=3Dhd0,index=3D0,if=3Dnone,format=3Draw,discard=
-=3Don -device scsi-hd,drive=3Dhd0 -kernel ../linux.git/builds/arm64/arch/ar=
-m64/boot/Image -append "console=3DttyAMA0 root=3D/dev/sda2" -display none -=
-m 4096 -smp 8
+thanks
+-- PMM
 
-And a guest doing:
+Peter Maydell (2):
+  target/arm: Factor out 'generate singlestep exception' function
+  target/arm: Fix routing of singlestep exceptions
 
-  ./aarch64-softmmu/qemu-system-aarch64 -machine type=3Dvirt -cpu host
-  -serial mon:stdio -nic user,model=3Dvirtio-net-pci -device
-  virtio-scsi-pci -kernel /boot/vmlinuz-4.19.0-5-arm64 -append "console=3Dt=
-tyAMA0 panic=3D-1" -display none -m 256 -smp 4 --no-reboot
-  --enable-kvm
+ target/arm/cpu.h           |  5 +++++
+ target/arm/translate.h     | 34 ++++++++++++++++++++++++++++++++--
+ target/arm/helper.c        |  6 ++++++
+ target/arm/translate-a64.c | 21 +++------------------
+ target/arm/translate.c     | 24 +++++-------------------
+ 5 files changed, 51 insertions(+), 39 deletions(-)
 
-I triggered:
+-- 
+2.20.1
 
-  ERROR:/home/alex.bennee/lsrc/qemu.git/target/arm/helper.c:3436:update_lpa=
-e_el1_asid: code should not be reached
-fish: =E2=80=9C./aarch64-softmmu/qemu-system-a=E2=80=A6=E2=80=9D terminated=
- by signal SIGABRT (Abort)
-
-With -cpu max on the host it hangs the whole thing. I'm going to
-continue to experiment with explicit GIC versions.
-
->
-> with fedora 30 system qemu, itself booted with
->
->   ../bld/aarch64-softmmu/qemu-system-aarch64 \
->     -cpu max -M virt,gic-version=3D3,virtualization=3Don \
->     -drive if=3Dvirtio,file=3D./f30.q,format=3Dqcow2 \
->     -m 4G -nographic
->
-> It took a while, but eventually the nested bios arrived at the
-> pxe boot sequence.  Thankfully (?), the f30 shipped bios has
-> debug enabled, so there's some sense of progress in the meantime.
->
->
-> r~
->
->
-> Alex Benn=C3=A9e (2):
->   target/arm: check TGE and E2H flags for EL0 pauth traps
->   target/arm: generate a custom MIDR for -cpu max
->
-> Richard Henderson (32):
->   cputlb: Add tlb_set_asid_for_mmuidx
->   cputlb: Add tlb_flush_asid_by_mmuidx and friends
->   target/arm: Install ASIDs for long-form from EL1
->   target/arm: Install ASIDs for short-form from EL1
->   target/arm: Install ASIDs for EL2
->   target/arm: Define isar_feature_aa64_vh
->   target/arm: Enable HCR_E2H for VHE
->   target/arm: Add CONTEXTIDR_EL2
->   target/arm: Add TTBR1_EL2
->   target/arm: Update CNTVCT_EL0 for VHE
->   target/arm: Add the hypervisor virtual counter
->   target/arm: Add VHE system register redirection and aliasing
->   target/arm: Split out vae1_tlbmask, vmalle1_tlbmask
->   target/arm: Simplify tlb_force_broadcast alternatives
->   target/arm: Rename ARMMMUIdx*_S12NSE* to ARMMMUIdx*_E10_*
->   target/arm: Rename ARMMMUIdx_S2NS to ARMMMUIdx_Stage2
->   target/arm: Rename ARMMMUIdx_S1NSE* to ARMMMUIdx_Stage1_E*
->   target/arm: Rename ARMMMUIdx_S1SE* to ARMMMUIdx_SE*
->   target/arm: Rename ARMMMUIdx*_S1E3 to ARMMMUIdx*_SE3
->   target/arm: Rename ARMMMUIdx_S1E2 to ARMMMUIdx_E2
->   target/arm: Reorganize ARMMMUIdx
->   target/arm: Add regime_has_2_ranges
->   target/arm: Update arm_mmu_idx for VHE
->   target/arm: Update arm_sctlr for VHE
->   target/arm: Update aa64_zva_access for EL2
->   target/arm: Update ctr_el0_access for EL2
->   target/arm: Install asids for E2&0 translation regime
->   target/arm: Flush tlbs for E2&0 translation regime
->   target/arm: Update arm_phys_excp_target_el for TGE
->   target/arm: Update regime_is_user for EL2&0
->   target/arm: Update {fp,sve}_exception_el for VHE
->   target/arm: Enable ARMv8.1-VHE in -cpu max
->
->  include/exec/cpu-all.h     |   11 +
->  include/exec/cpu-defs.h    |    2 +
->  include/exec/exec-all.h    |   35 ++
->  include/qom/cpu.h          |    2 +
->  target/arm/cpu-qom.h       |    1 +
->  target/arm/cpu.h           |  261 ++++-----
->  target/arm/internals.h     |   62 ++-
->  target/arm/translate.h     |    2 +-
->  accel/tcg/cputlb.c         |   81 +++
->  target/arm/cpu.c           |    2 +
->  target/arm/cpu64.c         |   20 +
->  target/arm/debug_helper.c  |   50 +-
->  target/arm/helper-a64.c    |    2 +-
->  target/arm/helper.c        | 1042 +++++++++++++++++++++++++-----------
->  target/arm/m_helper.c      |    6 +-
->  target/arm/pauth_helper.c  |   13 +-
->  target/arm/translate-a64.c |   13 +-
->  target/arm/translate.c     |   17 +-
->  18 files changed, 1134 insertions(+), 488 deletions(-)
-
-
---
-Alex Benn=C3=A9e

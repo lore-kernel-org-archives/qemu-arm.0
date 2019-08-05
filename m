@@ -1,100 +1,99 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4065009wrv;
-        Mon, 5 Aug 2019 07:40:44 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzeat3F8TMO7o4RRZBudbrGUQUurUbwdEhP36yLt7T83ub7w2SMORdiSJpU3xB5l4o7MoWy
-X-Received: by 2002:a17:906:5c4e:: with SMTP id c14mr114639132ejr.73.1565016044289;
-        Mon, 05 Aug 2019 07:40:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565016044; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4065995wrv;
+        Mon, 5 Aug 2019 07:41:49 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxciVkEgSUBQe5KnTNOAVNGmD2HkpMePRnZ1zsBXFOc600j4W8oMvVhPdrPblO82nwIEVmQ
+X-Received: by 2002:a37:bf42:: with SMTP id p63mr50144820qkf.437.1565016109090;
+        Mon, 05 Aug 2019 07:41:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565016109; cv=none;
         d=google.com; s=arc-20160816;
-        b=0ST/TXk9vMscgoQvAZNUFCVsIMC81ucS/7uhqBubMnlalaGv1kGAuOGeQpGcRFPUol
-         yjsj5b+xO4f0qi4c7xklHl7ZwuGQmozGC39exa7rimc0gZLMbsgJv4Zhg5G6CbVNg3X8
-         rsgE0B3rYPv9mmOVyPsNGGKd9Kfon12EzGFjNcip/SRxZd/IrlWNg2wBAtPD/V+yT8aN
-         ombI1CAjSgJKaJ16cQLQm9nI62fFBsUOzfJjaA6/XGUW6sF4UqK2f7FQJwN49AnmhzB5
-         efFX1KNWJWl+mdZFofGJbiHAbAsdOhHrWWhkt+n3IwsNaiByOJaZ49aWjmSqnpbOpHTo
-         1+lg==
+        b=ZeTLzp9NL92GEWIuWCtNENKlL2A6u99fLmjxHUKwnD7FQIlTunFktb48MxuIcHDmHz
+         pMbqLGLCPVWClmTGD9nphhWfR4e53uGtqeBFLuSOHsCu83w5h/g7VrYkAU3hYm2M+t4S
+         NRu+NEV1F0Jz/6eiXXiXHZVJv3auTU81it0dfy/EGZNBw88LYMI1y0TYbm5wOWgoB/RN
+         H2dQu6j2GROep4Lth7S5n6YwKSep4sbhpfwEqyMf4mnPmZcW/zjSVsr1TACcCPfYTc0a
+         Dzee6z05BZ/lbuxJ6yoKqrxLwJeE5bc/dGBGabR77WMsGRU/ZVXZTeY7VaBDwt/nqn9H
+         GcSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
-         :dkim-signature;
-        bh=VhPZmvFibXmJaI09tUvuq3f8eUmJMc+sicy3PZ/JuQY=;
-        b=el0HsAdhOavGWOWOtv4SgcS7wE9ZGd4t0yKj/jPRmERA7TJla5+Mw+NGh6ASxyJFV+
-         32SH43hulqhPVseUo3MoTDrHAT5difzhgRRjf/90KmJdFg/Gb1moCD31WrI3JKm6rVUn
-         /zItGUvjV013tvkSmmTkFU1yg6XNiC+vCF4g0zx2d/llrjopYcqc/JWEIz68+yJrZp2k
-         IVwuEjRFNBGKcRF+cbiQBOjuhPFYOmrBt1JA48lTJ31mjSpxMIlRPh0H1mF+pgtTYra7
-         WLSvPE6Mq7AcUIuLRrkSFIHyyOaN4d/6e545BqVi2K8OWf63BnrC2vHZN8+Yp3r2mvGK
-         ldTg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=zUOYRM1EOhdMiSMBt/ZvivXhL3kt1XZhGVCOp5W+Bk0=;
+        b=sP7p3SDWvefGkRLh/x1E65cAR6+H757ecr275e7gBrUPMN4U/qKA+/JAR2mlz3KO4e
+         1SxN+/rEgSSTsFImpp33g9lct8wzdLHhit6QwG9bCfHZ2jYF+rnDliAB8ycrQVOJah6e
+         PdXAeIglYsXaGJeyOwF0zTMABDUf0hH5eC8TClLhZngEs/UlWgJ4LGwV2yYEpVusG/Od
+         3OmJAUaYKEw+6T9kFn/q8XXW7efueH7V8Zk03VYbsEPDg6APseMc+sysyGP+DAemujiB
+         Po1B6fhxMa0wE4CV+9pAw/yE7OeUEbTOBsOB3LCjA839F0LgffR0wqvSQWgej2eMpYYM
+         4drQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="FPKo/uNo";
+       dkim=fail header.i=@linaro.org header.s=google header.b=vjk6tF00;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 2si31489658edu.19.2019.08.05.07.40.44
+        by mx.google.com with ESMTPS id p23si50053022qve.127.2019.08.05.07.41.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Aug 2019 07:40:44 -0700 (PDT)
+        Mon, 05 Aug 2019 07:41:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="FPKo/uNo";
+       dkim=fail header.i=@linaro.org header.s=google header.b=vjk6tF00;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54506 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54530 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hueAF-0005li-CF
-	for alex.bennee@linaro.org; Mon, 05 Aug 2019 10:40:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37005)
+	id 1hueBI-00076D-Nc
+	for alex.bennee@linaro.org; Mon, 05 Aug 2019 10:41:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39543)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <aa1ronham@gmail.com>) id 1hudub-0007bM-2f
- for qemu-arm@nongnu.org; Mon, 05 Aug 2019 10:24:34 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hueBE-00075p-4y
+ for qemu-arm@nongnu.org; Mon, 05 Aug 2019 10:41:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <aa1ronham@gmail.com>) id 1huduZ-0006PM-Up
- for qemu-arm@nongnu.org; Mon, 05 Aug 2019 10:24:33 -0400
-Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744]:34727)
+ (envelope-from <peter.maydell@linaro.org>) id 1hueBD-0002Yp-7c
+ for qemu-arm@nongnu.org; Mon, 05 Aug 2019 10:41:44 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:37792)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <aa1ronham@gmail.com>)
- id 1huduX-0006K0-BK; Mon, 05 Aug 2019 10:24:29 -0400
-Received: by mail-qk1-x744.google.com with SMTP id t8so60194662qkt.1;
- Mon, 05 Aug 2019 07:24:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id;
- bh=VhPZmvFibXmJaI09tUvuq3f8eUmJMc+sicy3PZ/JuQY=;
- b=FPKo/uNo/JAF9rjCM6Qgi31TXTo5aYTI50GFMpT6G9jE2k7zQ6APtzmDOWytiQVEfC
- vDJX6WW+Yhbj+6/UVkSez3mCbAfbRlCYLfvwdNxW7aimIFtMEDou38noCUjeJXIf3Co4
- 9C1rqnGfjUJyOAqXyfns56fzI/eDIR+cg+zgt9fY/x46bvbNJtrOonQd+18wqrG3Bfk7
- Ka4y0BKYJimHvuUB4zuyBNMWFwPpoBmOjSAw4FDIbGxz1AXCp+o3bd7MKZr8t8s5bQsg
- 2FY4da82CltelG5l3fAhZK8+xETKek3cbEIm3gPmGTGKtNPFelAa/XG47d+xF3rJae1F
- 83NA==
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hueBC-0002YV-Vc
+ for qemu-arm@nongnu.org; Mon, 05 Aug 2019 10:41:43 -0400
+Received: by mail-ot1-x343.google.com with SMTP id s20so19996465otp.4
+ for <qemu-arm@nongnu.org>; Mon, 05 Aug 2019 07:41:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=zUOYRM1EOhdMiSMBt/ZvivXhL3kt1XZhGVCOp5W+Bk0=;
+ b=vjk6tF00pSzrwmPLNOxLjRHejSjVpHk4nnPqrziQ+UEmMaHDt5XRVRGv0qYPplpRGo
+ P8k2+f8Z5LDIWgW9uIcrkcC0w6h+I655eqFbQc+iooYaEkHuND9o0/c/kZYn99L5rjRQ
+ HXE/s1MRLKY4HQbdNpPr3ljeB5s5NqVZJaVTHrok11OKESah/96N/AycMEo/iqbZQ7Mj
+ 5O274lHSoMDO15moPWQscSnYhGEuiIs/s7/EYlW8lNn1iQLeOBt2nQx/M86lUeEhDkr0
+ PGiHi152RWuH4CeOf8GvZeQ1ehmvY3Au4jeB34f4286xJuR8Rg5jtUFxftvZFyW9mDLb
+ DcSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id;
- bh=VhPZmvFibXmJaI09tUvuq3f8eUmJMc+sicy3PZ/JuQY=;
- b=nJOsUasjlG3BA+ocU0uUElflJBPKV8wM9gnqssztYGj5sDKlJuzEYPmQhNoioAPrmX
- 42eC8e6cNYbeeJxnRGywxPz1qD0i7q+XjJFSdo4YJ6XFcQod8uwDIj7ei03wyUYhKqn9
- xcoHdU/Yozwh0zCPOVBH5/fDpBbYhm7FiP0l/mOez60m4PrEcvnI1Wf5lqwHXojK3jIj
- YsVu2+fdeayyG430buPuppHz0aLZd8Mj6mreDbQWLGlrzy0duOXKHrElbeGeGjpHwteH
- 63/JAfz9y8d/otMMrdPL8gVDvmVzuxkvvWIaTbgSU1WRw6ixj9ObGyudABMysqfcYKBf
- 16gw==
-X-Gm-Message-State: APjAAAVEiHUL+pAcCLGQGEWgANfVrkcYKTWyc1yEIAKz4C3+d8WyTpLX
- gfC5wbgLeqpa+Pz78EOH5ThVh6bowDY=
-X-Received: by 2002:a37:76c5:: with SMTP id
- r188mr100858733qkc.394.1565015068123; 
- Mon, 05 Aug 2019 07:24:28 -0700 (PDT)
-Received: from alertlap116-ubuntu.alertinnovation.com
- (50-203-79-218-static.hfc.comcastbusiness.net. [50.203.79.218])
- by smtp.googlemail.com with ESMTPSA id o10sm41045572qti.62.2019.08.05.07.24.27
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 05 Aug 2019 07:24:27 -0700 (PDT)
-From: Aaron Hill <aa1ronham@gmail.com>
-X-Google-Original-From: Aaron Hill <aaron.hill@alertinnovation.com>
-To: qemu-devel@nongnu.org
-Date: Mon,  5 Aug 2019 10:24:17 -0400
-Message-Id: <20190805142417.10433-1-aaron.hill@alertinnovation.com>
-X-Mailer: git-send-email 2.17.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=zUOYRM1EOhdMiSMBt/ZvivXhL3kt1XZhGVCOp5W+Bk0=;
+ b=RZuydU75ZZpBmKHixXO8O/bwWdY1/GaXjVMpri6RpwHkIGYuM5m4u4rVUmbjyWtq9P
+ JfNv+sVjT9PwdsBtVqlNz9JllXCWpCBJL5OFethRD8bBxr8D8kDJo6/F8Lw9GlZ5vxYA
+ EZFObT2OEXVNF2R7jQuyVeUfseQmNq2lxZLwz2sNVxtY/iTjgNIxjYIBi6wwQ68UgqW3
+ g/M6f/xUOWPXg96P7CrtG8FrjooVDgksjZgfd13V/sQ04akWmy0AhfCkffpGsV0LMPK7
+ /tmD77AMPEzoqCL7LanzmpJihiZswcmg3zRyrjmtHkxecilEp7XgKfdAS2o2Ljd0NNSH
+ JvUQ==
+X-Gm-Message-State: APjAAAUN6d0eH8/EoNlrrqoSnCbsV9RgjgAc8LnFOtYuJPxumg6OXQGR
+ Y3FPMn0KAnG0ykkgGv0L37UgBjtts5dbzVkPUHyxMg==
+X-Received: by 2002:a9d:6a0f:: with SMTP id g15mr85032806otn.135.1565016102060; 
+ Mon, 05 Aug 2019 07:41:42 -0700 (PDT)
+MIME-Version: 1.0
+References: <20190711061857.13086-1-eric.auger@redhat.com>
+ <20190711061857.13086-4-eric.auger@redhat.com>
+In-Reply-To: <20190711061857.13086-4-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 5 Aug 2019 15:41:31 +0100
+Message-ID: <CAFEAcA_=Rz5f8RvZU7kjKXhM5sHKFDujoMRTuzanrauP3ChPVA@mail.gmail.com>
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::744
-X-Mailman-Approved-At: Mon, 05 Aug 2019 10:40:23 -0400
-Subject: [Qemu-arm] [PATCH] Set ENET_BD_BDU in I.MX FEC controller
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-arm] [PATCH-for-4.2 v3 3/5] hw/vfio/common: Assert in
+ case of nested mode
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,70 +105,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, jasowang@redhat.com, qemu-arm@nongnu.org,
- peter.chubb@nicta.com.au, Aaron Hill <aa1ronham@gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Etp1nhDOVXiM
+X-TUID: wbh0dykP4BHT
 
-From: Aaron Hill <aa1ronham@gmail.com>
+On Thu, 11 Jul 2019 at 07:19, Eric Auger <eric.auger@redhat.com> wrote:
+>
+> As of today, VFIO only works along with vIOMMU supporting
+> caching mode. The SMMUv3 does not support this mode and
+> requires HW nested paging to work properly with VFIO.
+>
+> So any attempt to run a VFIO device protected by such IOMMU
+> would prevent the assigned device from working and at the
+> moment the guest does not even boot as the default
+> memory_region_iommu_replay() implementation attempts to
+> translate the whole address space and completely stalls
+> the execution.
+>
+> So let's assert if we recognize nested mode case.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  hw/vfio/common.c | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+>
+> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+> index a859298fda..d622191fe6 100644
+> --- a/hw/vfio/common.c
+> +++ b/hw/vfio/common.c
+> @@ -604,9 +604,17 @@ static void vfio_listener_region_add(MemoryListener *listener,
+>      if (memory_region_is_iommu(section->mr)) {
+>          VFIOGuestIOMMU *giommu;
+>          IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(section->mr);
+> +        bool nested;
+>          int iommu_idx;
+>
+>          trace_vfio_listener_region_add_iommu(iova, end);
+> +
+> +        if (!memory_region_iommu_get_attr(iommu_mr, IOMMU_ATTR_VFIO_NESTED,
+> +                                          (void *)&nested) && nested) {
+> +            error_report("VFIO/vIOMMU integration based on HW nested paging "
+> +                         "is not yet supported");
+> +            abort();
+> +        }
+>          /*
+>           * FIXME: For VFIO iommu types which have KVM acceleration to
+>           * avoid bouncing all map/unmaps through qemu this way, this
 
-This commit properly sets the ENET_BD_BDU flag once the emulated FEC controller
-has finished processing the last descriptor. This is done for both transmit
-and receive descriptors.
+Other failure paths in this function mostly seem to do an
+error_report() and return (apart from the one call to hw_error()
+at the bottom of the function). Is an abort() OK here?
 
-This allows the QNX 7.0.0 BSP for the Sabrelite board (which can be
-found at http://blackberry.qnx.com/en/developers/bsp) to properly
-control the FEC. Without this patch, the BSP ethernet driver will never
-re-use FEC descriptors, as the unset ENET_BD_BDU flag will cause
-it to believe that the descriptors are still in use by the NIC.
-
-Note that Linux does not appear to use this field at all, and is
-unaffected by this patch.
-
-Without this patch, QNX will think that the NIC is still processing its
-transaction descriptors, and won't send any more data over the network.
-
-For reference:
-
-On page 1192 of the I.MX 6DQ reference manual revision (Rev. 5, 06/2018),
-which can be found at https://www.nxp.com/products/processors-and-microcontrollers/arm-based-processors-and-mcus/i.mx-applications-processors/i.mx-6-processors/i.mx-6quad-processors-high-performance-3d-graphics-hd-video-arm-cortex-a9-core:i.MX6Q?&tab=Documentation_Tab&linkline=Application-Note
-
-the 'BDU' field is described as follows for the 'Enhanced transmit
-buffer descriptor':
-
-'Last buffer descriptor update done. Indicates that the last BD data has been updated by
-uDMA. This field is written by the user (=0) and uDMA (=1).'
-
-The same description is used for the receive buffer descriptor.
-
-Signed-off-by: Aaron Hill <aa1ronham@gmail.com>
----
- hw/net/imx_fec.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-index 404154ebbf..4693bfb246 100644
---- a/hw/net/imx_fec.c
-+++ b/hw/net/imx_fec.c
-@@ -590,6 +590,8 @@ static void imx_enet_do_tx(IMXFECState *s, uint32_t index)
-             if (bd.option & ENET_BD_TX_INT) {
-                 s->regs[ENET_EIR] |= int_txf;
-             }
-+            /* Indicate that we've updated the last buffer descriptor. */
-+            bd.last_buffer = ENET_BD_BDU;
-         }
-         if (bd.option & ENET_BD_TX_INT) {
-             s->regs[ENET_EIR] |= int_txb;
-@@ -1239,6 +1241,8 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
-             /* Last buffer in frame.  */
-             bd.flags |= flags | ENET_BD_L;
-             FEC_PRINTF("rx frame flags %04x\n", bd.flags);
-+            /* Indicate that we've updated the last buffer descriptor. */
-+            bd.last_buffer = ENET_BD_BDU;
-             if (bd.option & ENET_BD_RX_INT) {
-                 s->regs[ENET_EIR] |= ENET_INT_RXF;
-             }
--- 
-2.17.1
-
+thanks
+-- PMM

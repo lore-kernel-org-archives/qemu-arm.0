@@ -1,265 +1,146 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp3968035wrv;
-        Mon, 5 Aug 2019 06:10:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyoW3UJSgh+Icac/0Fq2hx8eNyVqsIgbgYtRHW/2q4yNpVP4h5ocBlwTnO63/09gLu7KzyA
-X-Received: by 2002:a17:906:454d:: with SMTP id s13mr119246680ejq.255.1565010608852;
-        Mon, 05 Aug 2019 06:10:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565010608; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4020523wrv;
+        Mon, 5 Aug 2019 07:00:28 -0700 (PDT)
+X-Received: by 2002:a17:90a:3548:: with SMTP id q66mr18505495pjb.17.1565013628852;
+        Mon, 05 Aug 2019 07:00:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565013628; cv=none;
         d=google.com; s=arc-20160816;
-        b=dL02HmXRkcg0MEP/ZAH2iBK/CTf5Z/JXKNLqlMpDTWNhpfM+ATLw8jcUh9BizChsRP
-         /ai/MMgG8xK84rt3iwT1cDBUV4IlX2zuWoDddNLkE+x4fhUbojKkJ/ILgHOH60ucCKf8
-         vVbU9zc2tFGsalBZvWXavLkSfOsu0ic/M4A3QYy+gsnH4UCb8tDJipsts9hOZhMcKDdW
-         Qt9BcPJxwI/sj4lL6ggSpemncjZZKJd7C2jp5kHeIxWP8tUloYbWD3vubaIeM3G6obwl
-         kVX2v+HvevWke8SbZ0dmkOYLX/uEbm0axduSkGKR1hSztCB2sCy2DKbTWARObVVk4DdM
-         gHJA==
+        b=jKw16nSjN2gch1tgfNwweC1w4n0BCHuQquBwCsuAImakbKRCCCkHYgtpvWOjzsRsAo
+         HaDFntfaZEHG65Vbvgj4g7nUgS7QoRFMDQvJW1NCZ4pmRSSoF4Odb+Vr8RbhLeScDfi+
+         O2qM+yRdHNSCVh+NEikzmXsCB06pF9cWN+3V+aPwo3yhSHr7dDWGw4gdEK44QisQLFBe
+         PmLkkwRKSpsStnxgan5Jvrw+V7XSxBhGKFgrKFzpxh1C+9nHADZIWnw2KPpNEk9kfuqg
+         Zvng2WI743Vggnq4aRNR/P3YU33x9SRR4IisEeuHFq7/sbykL3kdMxCE+PV/cuEn9OQl
+         zx1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=EGU+/MpxT8YGsEWvI+W5cKlSVCq/nVM+/LNMb9QzO4c=;
-        b=m0IW/WmcgAHuyPGgzte5RdJUNgguoyhaaoYipqb3jB3O8UFPu1kcVvvQ/4o3RCZHX0
-         E9qwF0jic6OPSkpXkErEoGNz183aR7zkUh77qQyau6LVE9ggQMhbGtDpQYEKU8NUDrDU
-         TZwgAKM/O1tjs2EIuz42/SxclCm42SNlpqa1JvNQV3MAVLVwmdGDkbW4nX4t25uI/lsF
-         bU58/qUYfOYj2vkgFuGjGBwX6L6xgpNXRpaNvaur8BUzuxpeP6Xo/FbTlBAoyBYohrQ1
-         v8KGyBeahNUybVdvbUnxIZ4NbMFuddMMhOygK//E/2Rond98jCPorG0wrgAN5t0DD7hs
-         FDKQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=/wy4ViPRWDvx0bz3Qem2DWS/A61LNcdI96nSPoQZO7Q=;
+        b=TlvZOCgk9CIdU1ssgCFHkmCPom2890hEw4RDfSHk+LrPeeKlbgB89HrRy05tzin371
+         NvstdhR2zxAXs8Qk5kUPuhK0ihF3joprx4aEi6EXo+2AtPD3oWtZx4L4QBjtjNzgPpfO
+         5H8E9ZHHWPmlRpVlBnYyftQhDnFgHsGHI767NujiQZmdQWpNKP58u9XqsbRs1AuY+5WN
+         U4pDQzi/kzbSIs/keU0qW3K3cMv529nq0FjMrUS8kTUDL2MlG0uCH68uWWX8C2nBbyWB
+         Jn/T9CEniA5xjQLc6T6vup+h0iwHA0juAGLntWiyan73y6QowzmFxrcHQ8L04m6Y02OK
+         5hmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Skq7d1PQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m47si28594656edd.144.2019.08.05.06.10.08
+       dkim=pass header.i=@linaro.org header.s=google header.b=OqrcPzxP;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id f41sor20816268pjg.15.2019.08.05.07.00.28
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Aug 2019 06:10:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 05 Aug 2019 07:00:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Skq7d1PQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53728 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1huckZ-0000g6-TY
-	for alex.bennee@linaro.org; Mon, 05 Aug 2019 09:10:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52776)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1huckR-0000ZZ-Tb
- for qemu-arm@nongnu.org; Mon, 05 Aug 2019 09:10:01 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1huckQ-00048q-8f
- for qemu-arm@nongnu.org; Mon, 05 Aug 2019 09:09:59 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:35454)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1huckQ-000486-2o
- for qemu-arm@nongnu.org; Mon, 05 Aug 2019 09:09:58 -0400
-Received: by mail-wr1-x442.google.com with SMTP id y4so84376570wrm.2
- for <qemu-arm@nongnu.org>; Mon, 05 Aug 2019 06:09:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=EGU+/MpxT8YGsEWvI+W5cKlSVCq/nVM+/LNMb9QzO4c=;
- b=Skq7d1PQQKXxFfH2kBZuqrlsKs2tQBGi3UzIQBCmxL67trB3L7Vk26REcFp7wkj1Dd
- rXBhaaHOYFtjnCEiYv/6JOeo/cnMxX89KCrMKy+yXypK8dDMdk3ohpwjlBcVDrU2nAVG
- NHCmJft3LidBo8Y7lAcuMoxYSWKdoQhhMljJFfTrGY428O8ywENkxrhSB4IwVaAGvLGx
- hagIdEQ8DM4xNPXD3Kw9IssVdLlTeB69IWiSR24Ak4fht072PqcAEAWdamZ6+T9UvyYA
- h80S5IlHdlsNo/QnJeIcpKDphmsO2u4R4oOX2oIcwQIwsOgf9r34ote8wU90nu4+Wu9k
- o0kg==
+       dkim=pass header.i=@linaro.org header.s=google header.b=OqrcPzxP;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=/wy4ViPRWDvx0bz3Qem2DWS/A61LNcdI96nSPoQZO7Q=;
+        b=OqrcPzxPBU4o/ROYAzmcRiDWfCh0y6Jo8frZ3nHTDvjwxMLuC3AYHjMHkDeeh7w48h
+         0uaLwkLECFspyC6JpWkOPYScr6o7LvM0d7+gPmJ5XUByRoDCHI495emwq412iLJD3XTv
+         KhESveGD0roWLaQt7DS6HHLTmPnRXYbTV6LF6+a6CLlrx1gJy5D9W+mPPuUa3FrQn9Ct
+         YpGrEFoJTmdXc3o+J45fUKe+jHKde7AAQDNpIXdjaNLQTwwgQEvx2x6YYqmFf0TlHIEc
+         fLnmGpl7LnNsReBiMi9tSpIHyEzrFxav/GmykQAOEU2YkieqpVOmSBqKzht1pZ4Xpn6w
+         KRqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=EGU+/MpxT8YGsEWvI+W5cKlSVCq/nVM+/LNMb9QzO4c=;
- b=qZT8uRRm0hlCJepdJU10WCeXBfIncZgGL3rSKQq/S4FI+OYENc0a8i3WojBVrZVeDN
- 0yVZVdWyD7nIuV/epGTvtOE8L3StnCPIsV87DS1ayTg5i27rSuwMdhcnRq02ocz17ku5
- mqGPe6b73c4z1rtPv7WjsMboYCBtrD8vPOVhRyfxlv9kwq3H09DUoqKc6niDb3bU5b7t
- f5f7n1jTAbOH5yjoQiT6JlacApeWWmcdLqaU8UHr6I/v7RUIFtDSuj9J947O1RI3rldC
- 2dL57AIJXRpZhusVfbIWjZawCWd4StQ0l0ZzbwgEDrzX9QxAZLmm5i5707Qqj7vYFzpw
- Wawg==
-X-Gm-Message-State: APjAAAVw13xZU4hBf+pFgqLybUc9dhhtAm7JV6tdRNG/MseMU0M5RUJE
- zU6JOjYWchnbm6O7PTTQFOHg3BTUaUomvQ==
-X-Received: by 2002:adf:df10:: with SMTP id
- y16mr140679568wrl.302.1565010596914; 
- Mon, 05 Aug 2019 06:09:56 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id x20sm65233782wmc.1.2019.08.05.06.09.55
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Mon, 05 Aug 2019 06:09:56 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Mon,  5 Aug 2019 14:09:52 +0100
-Message-Id: <20190805130952.4415-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190805130952.4415-1-peter.maydell@linaro.org>
-References: <20190805130952.4415-1-peter.maydell@linaro.org>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=/wy4ViPRWDvx0bz3Qem2DWS/A61LNcdI96nSPoQZO7Q=;
+        b=cXK22qdwE08F2G5D00q7q+nPwdwFsQzlGCxb4yG3yTgwkmyT2esBTf+lOUZZtxL8Z9
+         iGH2ecL3cwg/BxKmoljxkd+QBzFsd1XDWypunJO0A6eETi5CPQP1bcm7QH/cEKPft2z9
+         UBGOd3eLWRLzaAHZGKwUlUYAaA/BOsgVwfVCU9be92jdER5rFNcT1YzJUi2TM4pyuwCR
+         hUDD4yIqH1wM3brc8gr9q2J3bcIWaZf95zL+KBjqlDo3IKbGXaIugiLwm/pvnR1EqJqq
+         PEE6dWLeSLGa+6DLvpeK/b5su/5mHl/UEu2aZZ1RUstGADQErx1e63WO8evT0Rv6muw/
+         ktSQ==
+X-Gm-Message-State: APjAAAUppcTYCUhxG9LXZLpZ+ajVHDKm72t+qlY/oisePpuSMSC2Usek
+	M9/jpnwjIXYMXoB8UWsNc0bBbJ1guGbggQ==
+X-Google-Smtp-Source: APXvYqzS2SXsW/nAT0UTDFb8y5gV5wxcDbQ5Tk2+SjQ3slGFXKZIVnZ7cn2KuXG217ZJshX3eNMx7w==
+X-Received: by 2002:a17:90a:7f85:: with SMTP id m5mr18234603pjl.78.1565013628309;
+        Mon, 05 Aug 2019 07:00:28 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+        by smtp.gmail.com with ESMTPSA id p20sm108180589pgi.81.2019.08.05.07.00.26
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 05 Aug 2019 07:00:27 -0700 (PDT)
+Subject: Re: [PATCH v3 00/34] target/arm: Implement ARMv8.1-VHE
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
+References: <20190803184800.8221-1-richard.henderson@linaro.org>
+ <8736ifkbod.fsf@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <db7e63d9-fcf6-fda2-c164-af8f90815617@linaro.org>
+Date: Mon, 5 Aug 2019 07:00:25 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
+In-Reply-To: <8736ifkbod.fsf@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::442
-Subject: [Qemu-arm] [PATCH 2/2] target/arm: Fix routing of singlestep
- exceptions
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HvmH0EQr0DNu
+X-TUID: r7dH/4FiNIKL
 
-When generating an architectural single-step exception we were
-routing it to the "default exception level", which is to say
-the same exception level we execute at except that EL0 exceptions
-go to EL1. This is incorrect because the debug exception level
-can be configured by the guest for situations such as single
-stepping of EL0 and EL1 code by EL2.
+On 8/5/19 6:02 AM, Alex Bennée wrote:
+> 
+> Richard Henderson <richard.henderson@linaro.org> writes:
+> 
+>> About half of this patch set is cleanup of the qemu tlb handling
+>> leading up to the actual implementation of VHE, and the biggest
+>> piece of that: The EL2&0 translation regime.
+>>
+>> Changes since v2:
+>>   * arm_mmu_idx was incomplete; test TGE+E2H not just E2H.
+>>   * arm_sctlr was incomplete; now uses arm_mmu_idx to avoid
+>>     duplication of tests.
+>>   * Update aa64_zva_access and ctr_el0_access for EL2.
+>>
+>> Changes since v1:
+>>   * Merge feedback from AJB.
+>>   * Split out 7 renaming patches from "Reorganize ARMMMUIdx".
+>>   * Alex's MIDR patch keeps the nested KVM from spitting warnings.
+>>
+>> I have tested
+>>
+>>   qemu-system-aarch64 -accel kvm -cpu host -M virt,gic-version-host \
+>>     -m 512 -bios /usr/share/edk2/aarch64/QEMU_EFI.fd -nographic
+> 
+> So testing with a host doing:
+> 
+>   ./aarch64-softmmu/qemu-system-aarch64 -machine type=virt,virtualization=on -cpu cortex-a57 -serial mon:stdio -nic user,model=virtio-net-pci,hostfwd=tcp::2222-:22 -device virtio-scsi-pci -drive file=/dev/zvol/hackpool-0/debian-buster-arm64,id=hd0,index=0,if=none,format=raw,discard=on -device scsi-hd,drive=hd0 -kernel ../linux.git/builds/arm64/arch/arm64/boot/Image -append "console=ttyAMA0 root=/dev/sda2" -display none -m 4096 -smp 8
+> 
+> And a guest doing:
+> 
+>   ./aarch64-softmmu/qemu-system-aarch64 -machine type=virt -cpu host
+>   -serial mon:stdio -nic user,model=virtio-net-pci -device
+>   virtio-scsi-pci -kernel /boot/vmlinuz-4.19.0-5-arm64 -append "console=ttyAMA0 panic=-1" -display none -m 256 -smp 4 --no-reboot
+>   --enable-kvm
+> 
+> I triggered:
+> 
+>   ERROR:/home/alex.bennee/lsrc/qemu.git/target/arm/helper.c:3436:update_lpae_el1_asid: code should not be reached
+> fish: “./aarch64-softmmu/qemu-system-a…” terminated by signal SIGABRT (Abort)
 
-We have to track the target debug exception level in the TB
-flags, because it is dependent on CPU state like HCR_EL2.TGE
-and MDCR_EL2.TDE. (That we were previously calling the
-arm_debug_target_el() function to determine dc->ss_same_el
-is itself a bug, though one that would only have manifested
-as incorrect syndrome information.) Since we are out of TB
-flag bits unless we want to expand into the cs_base field,
-we share some bits with the M-profile only HANDLER and
-STACKCHECK bits, since only A-profile has this singlestep.
+Whoops.  Rebase error while changing the signature of this function.
+Thanks for re-testing the case where VHE isn't present.  :-P
 
-Fixes: https://bugs.launchpad.net/qemu/+bug/1838913
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-In theory it would be possible to use just a single TB flag
-bit, because other than the route_to_el2 bool, all the
-state arm_debug_target_el() checks is either constant or
-known from other TB flags. But I think trying to do this
-would be pretty hard to maintain and might well break
-anyway with future architectural changes.
+> With -cpu max on the host it hangs the whole thing. I'm going to
+> continue to experiment with explicit GIC versions.
 
-Slightly less painfully we could reclaim the existing
-TBFLAG_ANY_SS_ACTIVE, since the debug target EL can't
-be 0 and is irrelevant if SS is not active, so we
-could arrange for SS_ACTIVE to be DEBUG_TARGET_EL == 0.
-But we're going to have to overspill into cs_base pretty
-soon anyway so I'm not too keen on being very stingy with
-the current flags word at the expense of maintainability.
----
- target/arm/cpu.h           |  5 +++++
- target/arm/translate.h     | 15 +++++++++++----
- target/arm/helper.c        |  6 ++++++
- target/arm/translate-a64.c |  2 +-
- target/arm/translate.c     |  4 +++-
- 5 files changed, 26 insertions(+), 6 deletions(-)
+Hangs the host?  Are you sure that the guest isn't just slow?
+That's why I changed my testing to boot a debug edk2, which
+outputs stuff much sooner than the kernel does.
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 94c990cddbd..23ca6c79144 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3142,6 +3142,11 @@ FIELD(TBFLAG_ANY, PSTATE_SS, 26, 1)
- /* Target EL if we take a floating-point-disabled exception */
- FIELD(TBFLAG_ANY, FPEXC_EL, 24, 2)
- FIELD(TBFLAG_ANY, BE_DATA, 23, 1)
-+/*
-+ * For A-profile only, target EL for debug exceptions.
-+ * Note that this overlaps with the M-profile-only HANDLER and STACKCHECK bits.
-+ */
-+FIELD(TBFLAG_ANY, DEBUG_TARGET_EL, 21, 2)
- 
- /* Bit usage when in AArch32 state: */
- FIELD(TBFLAG_A32, THUMB, 0, 1)
-diff --git a/target/arm/translate.h b/target/arm/translate.h
-index 45053190baa..b65954c669b 100644
---- a/target/arm/translate.h
-+++ b/target/arm/translate.h
-@@ -50,6 +50,8 @@ typedef struct DisasContext {
-     uint32_t svc_imm;
-     int aarch64;
-     int current_el;
-+    /* Debug target exception level for single-step exceptions */
-+    int debug_target_el;
-     GHashTable *cp_regs;
-     uint64_t features; /* CPU features bits */
-     /* Because unallocated encodings generate different exception syndrome
-@@ -70,8 +72,6 @@ typedef struct DisasContext {
-      * ie A64 LDX*, LDAX*, A32/T32 LDREX*, LDAEX*.
-      */
-     bool is_ldex;
--    /* True if a single-step exception will be taken to the current EL */
--    bool ss_same_el;
-     /* True if v8.3-PAuth is active.  */
-     bool pauth_active;
-     /* True with v8.5-BTI and SCTLR_ELx.BT* set.  */
-@@ -251,8 +251,15 @@ static inline void gen_exception(int excp, uint32_t syndrome,
- /* Generate an architectural singlestep exception */
- static inline void gen_swstep_exception(DisasContext *s, int isv, int ex)
- {
--    gen_exception(EXCP_UDEF, syn_swstep(s->ss_same_el, isv, ex),
--                  default_exception_el(s));
-+    bool same_el = (s->debug_target_el == s->current_el);
-+
-+    /*
-+     * If singlestep is targeting a lower EL than the current one,
-+     * then s->ss_active must be false and we can never get here.
-+     */
-+    assert(s->debug_target_el >= s->current_el);
-+
-+    gen_exception(EXCP_UDEF, syn_swstep(same_el, isv, ex), s->debug_target_el);
- }
- 
- /*
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index b74c23a9bc0..24806c16ca2 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -11170,6 +11170,12 @@ void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-         }
-     }
- 
-+    if (!arm_feature(env, ARM_FEATURE_M)) {
-+        int target_el = arm_debug_target_el(env);
-+
-+        flags = FIELD_DP32(flags, TBFLAG_ANY, DEBUG_TARGET_EL, target_el);
-+    }
-+
-     *pflags = flags;
-     *cs_base = 0;
- }
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index f6729b96fd0..90850eadc1b 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -14180,7 +14180,7 @@ static void aarch64_tr_init_disas_context(DisasContextBase *dcbase,
-     dc->ss_active = FIELD_EX32(tb_flags, TBFLAG_ANY, SS_ACTIVE);
-     dc->pstate_ss = FIELD_EX32(tb_flags, TBFLAG_ANY, PSTATE_SS);
-     dc->is_ldex = false;
--    dc->ss_same_el = (arm_debug_target_el(env) == dc->current_el);
-+    dc->debug_target_el = FIELD_EX32(tb_flags, TBFLAG_ANY, DEBUG_TARGET_EL);
- 
-     /* Bound the number of insns to execute to those left on the page.  */
-     bound = -(dc->base.pc_first | TARGET_PAGE_MASK) / 4;
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 19b9d8f2725..b32508cd2f9 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -11882,7 +11882,9 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
-     dc->ss_active = FIELD_EX32(tb_flags, TBFLAG_ANY, SS_ACTIVE);
-     dc->pstate_ss = FIELD_EX32(tb_flags, TBFLAG_ANY, PSTATE_SS);
-     dc->is_ldex = false;
--    dc->ss_same_el = false; /* Can't be true since EL_d must be AArch64 */
-+    if (!arm_feature(env, ARM_FEATURE_M)) {
-+        dc->debug_target_el = FIELD_EX32(tb_flags, TBFLAG_ANY, DEBUG_TARGET_EL);
-+    }
- 
-     dc->page_start = dc->base.pc_first & TARGET_PAGE_MASK;
- 
--- 
-2.20.1
+Although I have no idea why the guest should be extra slow.
+It does seem like it ought to be booting at the same speed as
+the host.  I see tlb flushes as quite high in the profile,
+and wonder if I'm doing too many of them.
 
+
+r~

@@ -1,170 +1,322 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5735262wrv;
-        Tue, 6 Aug 2019 14:43:43 -0700 (PDT)
-X-Received: by 2002:a5d:4e8a:: with SMTP id e10mr6829419wru.26.1565127823601;
-        Tue, 06 Aug 2019 14:43:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565127823; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Pcxqc0EbIF0Nwo07L06g7bV3Uw2iwQoYYYOjD2i6HqzOk8nrtiP4ErD+CRxvdVL7Mk
-         sutgNfAJ3+UuXS9NVxtMfxno0SHIEuEN7esOw9JpPZkjnlFm3EasH6QIVA/mEv4pQ+rW
-         ANHLMlM6KHhONh/nrQ3JYdy21PIgfXpXAn9DSPtYXH04hmmn5sCaWJtQnqTQKWG0i5Py
-         ep9ZQFQ1II+73x/2WrhaWObt0K+umkfzI49DfjpCj5nj6e316v7Ur101X32l0K0Dobmu
-         ffU3qDyxCIovTU1AQfWUFquNkzNIqiDH82a148esMabGJPtmcqaPCHimF+O6zziOR6bL
-         rq4Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
-        bh=IX6nPM56vk/25QrLXlB3ikR5cSVcOfF8itYoe/f7z7Y=;
-        b=EpYdB2KU6MlcxFoK37KYtx6mnTAHZPvIvpHEH/QkYiZi3C3do4VTfhg8qxbeB6pu2Y
-         VSxm240YZXNotv90GDsXAYKxCZLHUvmjXntmYfgfv26vykpwYi+R56e2cwFzlyEYuHj5
-         AWWMXxR7rhz+uOT9hSdf1A6UEa/LXXwLyjnmrcjhBQVvxejnHeZYZ9Q/9dFEPgceswg+
-         55DfSgS4B5IbMvFCGE0G+4vvB2qUKFrnahgtKHk0vaKBzAG9LVX6ociK+AjxxJnjd4kO
-         lOjDSzS4pRawk4BEgEbzcj6973psryub9GCJlKAzgS4YJdBWuzmXDTz4LJNHl4wM+zaP
-         lzNQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id v14sor2243238wrn.23.2019.08.06.14.43.43
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 06 Aug 2019 14:43:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=IX6nPM56vk/25QrLXlB3ikR5cSVcOfF8itYoe/f7z7Y=;
-        b=i4ds/3mWaT3yf/HfsneytkpoGSddODGwBcreZoh61mytqHMUHNBATH9CkCiuvAA3oj
-         O1EOWjRTgrSjm0DXMEN/mIsm+rJlqDszOtb7pjGmu7rIUgHwhOktJNBrvJt55n+YoEx7
-         DCRr9D3+O8ZIXPJtwbVJD140drYWkhCbmN3vFH3oyt7qpeDlj+9KD9lmtwX/YYHcgPAz
-         AaeVH2FfKKTyI2lkqePv2hep4zLFhNHQXPRs6fRfsDi4+LjIPiRiTNfNXwB7WNT5Emt9
-         +n65cEXWbx/Clu9XPCHzMGbLmr0G/jNU2WIDuk+XP0QW31HyIEtu1OWhb8uMOdnDkfSI
-         S+2w==
-X-Gm-Message-State: APjAAAWGxgndr7FVR9FgjLPHZZ+oQzTCz4JBkco3qJEdi57Mfh1ITEhB
-	7tS/MbtE0c0fliKXxseFLBibsNAnlso=
-X-Google-Smtp-Source: APXvYqwzImpm9iTGfKHmmdH0gWqSE4XD0019SL5uT9rQUSMP/cCSrx3dqT9ldpHmzi40kviK0p31tw==
-X-Received: by 2002:a5d:4602:: with SMTP id t2mr6447434wrq.340.1565127823211;
-        Tue, 06 Aug 2019 14:43:43 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [10.0.0.124] ([185.102.219.36])
-        by smtp.gmail.com with ESMTPSA id g2sm80116964wmh.0.2019.08.06.14.43.41
-        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Aug 2019 14:43:42 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH 12/67] target/arm: Introduce gen_illegal_op
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, alex.bennee@linaro.org
-References: <20190726175032.6769-1-richard.henderson@linaro.org>
- <20190726175032.6769-13-richard.henderson@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <61c30a12-110b-7c89-3e29-3a34ac699358@redhat.com>
-Date: Tue, 6 Aug 2019 23:43:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id y1sm62847620wma.32.2019.08.05.04.25.28
+        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+        Mon, 05 Aug 2019 04:25:28 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id D65F31FF87;
+	Mon,  5 Aug 2019 12:25:27 +0100 (BST)
+References: <20190803184800.8221-1-richard.henderson@linaro.org>
+ <20190803184800.8221-13-richard.henderson@linaro.org>
+User-agent: mu4e 1.3.4; emacs 27.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
+Subject: Re: [PATCH v3 12/34] target/arm: Add VHE system register
+ redirection and aliasing
+In-reply-to: <20190803184800.8221-13-richard.henderson@linaro.org>
+Date: Mon, 05 Aug 2019 12:25:27 +0100
+Message-ID: <874l2vkg60.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20190726175032.6769-13-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: rFUueG4AWZgA
+Content-Transfer-Encoding: quoted-printable
+X-TUID: v+8PrsBvHUGA
 
-On 7/26/19 7:49 PM, Richard Henderson wrote:
-> Unify the code sequence for generating an illegal opcode exception.
-> 
+
+Richard Henderson <richard.henderson@linaro.org> writes:
+
+> Several of the EL1/0 registers are redirected to the EL2 version when in
+> EL2 and HCR_EL2.E2H is set.  Many of these registers have side effects.
+> Link together the two ARMCPRegInfo structures after they have been
+> properly instantiated.  Install common dispatch routines to all of the
+> relevant registers.
+>
+> The same set of registers that are redirected also have additional
+> EL12/EL02 aliases created to access the original register that was
+> redirected.
+>
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
 > ---
->  target/arm/translate-vfp.inc.c |  3 +--
->  target/arm/translate.c         | 21 +++++++++++----------
->  2 files changed, 12 insertions(+), 12 deletions(-)
-> 
-> diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
-> index 4066b2febf..1b08930649 100644
-> --- a/target/arm/translate-vfp.inc.c
-> +++ b/target/arm/translate-vfp.inc.c
-> @@ -108,8 +108,7 @@ static bool full_vfp_access_check(DisasContext *s, bool ignore_vfp_enabled)
->  
->      if (!s->vfp_enabled && !ignore_vfp_enabled) {
->          assert(!arm_dc_feature(s, ARM_FEATURE_M));
-> -        gen_exception_insn(s, EXCP_UDEF, syn_uncategorized(),
-> -                           default_exception_el(s));
-> +        gen_illegal_op(s);
->          return false;
->      }
->  
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index 4738b91957..0f21ee9ce7 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -1279,6 +1279,12 @@ static void gen_exception_bkpt_insn(DisasContext *s, uint32_t syn)
->      s->base.is_jmp = DISAS_NORETURN;
->  }
->  
-> +static void gen_illegal_op(DisasContext *s)
+>  target/arm/cpu.h    |  44 +++++++----
+>  target/arm/helper.c | 175 ++++++++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 206 insertions(+), 13 deletions(-)
+>
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index bba4e1f984..a0f10b60eb 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -2455,19 +2455,6 @@ struct ARMCPRegInfo {
+>       */
+>      ptrdiff_t fieldoffset; /* offsetof(CPUARMState, field) */
+>
+> -    /* Offsets of the secure and non-secure fields in CPUARMState for the
+> -     * register if it is banked.  These fields are only used during the =
+static
+> -     * registration of a register.  During hashing the bank associated
+> -     * with a given security state is copied to fieldoffset which is use=
+d from
+> -     * there on out.
+> -     *
+> -     * It is expected that register definitions use either fieldoffset or
+> -     * bank_fieldoffsets in the definition but not both.  It is also exp=
+ected
+> -     * that both bank offsets are set when defining a banked register.  =
+This
+> -     * use indicates that a register is banked.
+> -     */
+> -    ptrdiff_t bank_fieldoffsets[2];
+> -
+>      /* Function for making any access checks for this register in additi=
+on to
+>       * those specified by the 'access' permissions bits. If NULL, no ext=
+ra
+>       * checks required. The access check is performed at runtime, not at
+> @@ -2502,6 +2489,37 @@ struct ARMCPRegInfo {
+>       * fieldoffset is 0 then no reset will be done.
+>       */
+>      CPResetFn *resetfn;
+> +
+> +    union {
+> +        /*
+> +         * Offsets of the secure and non-secure fields in CPUARMState for
+> +         * the register if it is banked.  These fields are only used dur=
+ing
+> +         * the static registration of a register.  During hashing the ba=
+nk
+> +         * associated with a given security state is copied to fieldoffs=
+et
+> +         * which is used from there on out.
+> +         *
+> +         * It is expected that register definitions use either fieldoffs=
+et
+> +         * or bank_fieldoffsets in the definition but not both.  It is a=
+lso
+> +         * expected that both bank offsets are set when defining a banked
+> +         * register.  This use indicates that a register is banked.
+> +         */
+> +        ptrdiff_t bank_fieldoffsets[2];
+> +
+> +        /*
+> +         * "Original" writefn and readfn.
+> +         * For ARMv8.1-VHE register aliases, we overwrite the read/write
+> +         * accessor functions of various EL1/EL0 to perform the runtime
+> +         * check for which sysreg should actually be modified, and then
+> +         * forwards the operation.  Before overwriting the accessors,
+> +         * the original function is copied here, so that accesses that
+> +         * really do go to the EL1/EL0 version proceed normally.
+> +         * (The corresponding EL2 register is linked via opaque.)
+> +         */
+> +        struct {
+> +            CPReadFn *orig_readfn;
+> +            CPWriteFn *orig_writefn;
+> +        };
+> +    };
+>  };
+>
+>  /* Macros which are lvalues for the field in CPUARMState for the
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index e0f5627218..e9f4cae5e8 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -5225,6 +5225,171 @@ static const ARMCPRegInfo el3_cp_reginfo[] =3D {
+>      REGINFO_SENTINEL
+>  };
+>
+> +#ifndef CONFIG_USER_ONLY
+> +/* Test if system register redirection is to occur in the current state.=
+  */
+> +static bool redirect_for_e2h(CPUARMState *env)
 > +{
-> +    gen_exception_insn(s, EXCP_UDEF, syn_uncategorized(),
-> +                       default_exception_el(s));
+> +    return arm_current_el(env) =3D=3D 2 && (arm_hcr_el2_eff(env) & HCR_E=
+2H);
 > +}
 > +
->  /* Force a TB lookup after an instruction that changes the CPU state.  */
->  static inline void gen_lookup_tb(DisasContext *s)
+> +static uint64_t el2_e2h_read(CPUARMState *env, const ARMCPRegInfo *ri)
+> +{
+> +    CPReadFn *readfn;
+> +
+> +    if (redirect_for_e2h(env)) {
+> +        /* Switch to the saved EL2 version of the register.  */
+> +        ri =3D ri->opaque;
+> +        readfn =3D ri->readfn;
+> +    } else {
+> +        readfn =3D ri->orig_readfn;
+> +    }
+> +    if (readfn =3D=3D NULL) {
+> +        readfn =3D raw_read;
+> +    }
+> +    return readfn(env, ri);
+> +}
+> +
+> +static void el2_e2h_write(CPUARMState *env, const ARMCPRegInfo *ri,
+> +                          uint64_t value)
+> +{
+> +    CPWriteFn *writefn;
+> +
+> +    if (redirect_for_e2h(env)) {
+> +        /* Switch to the saved EL2 version of the register.  */
+> +        ri =3D ri->opaque;
+> +        writefn =3D ri->writefn;
+> +    } else {
+> +        writefn =3D ri->orig_writefn;
+> +    }
+> +    if (writefn =3D=3D NULL) {
+> +        writefn =3D raw_write;
+> +    }
+> +    writefn(env, ri, value);
+> +}
+> +
+> +static void define_arm_vh_e2h_redirects_aliases(ARMCPU *cpu)
+> +{
+> +    struct E2HAlias {
+> +        uint32_t src_key, dst_key, new_key;
+> +        const char *src_name, *dst_name, *new_name;
+> +        bool (*feature)(const ARMISARegisters *id);
+> +    };
+> +
+> +#define K(op0, op1, crn, crm, op2) \
+> +    ENCODE_AA64_CP_REG(CP_REG_ARM64_SYSREG_CP, crn, crm, op0, op1, op2)
+> +
+> +    static const struct E2HAlias aliases[] =3D {
+> +        { K(3, 0,  1, 0, 0), K(3, 4,  1, 0, 0), K(3, 5, 1, 0, 0),
+> +          "SCTLR", "SCTLR_EL2", "SCTLR_EL12" },
+> +        { K(3, 0,  1, 0, 2), K(3, 4,  1, 1, 2), K(3, 5, 1, 0, 2),
+> +          "CPACR", "CPTR_EL2", "CPACR_EL12" },
+> +        { K(3, 0,  2, 0, 0), K(3, 4,  2, 0, 0), K(3, 5, 2, 0, 0),
+> +          "TTBR0_EL1", "TTBR0_EL2", "TTBR0_EL12" },
+> +        { K(3, 0,  2, 0, 1), K(3, 4,  2, 0, 1), K(3, 5, 2, 0, 1),
+> +          "TTBR1_EL1", "TTBR1_EL2", "TTBR1_EL12" },
+> +        { K(3, 0,  2, 0, 2), K(3, 4,  2, 0, 2), K(3, 5, 2, 0, 2),
+> +          "TCR_EL1", "TCR_EL2", "TCR_EL12" },
+> +        { K(3, 0,  4, 0, 0), K(3, 4,  4, 0, 0), K(3, 5, 4, 0, 0),
+> +          "SPSR_EL1", "SPSR_EL2", "SPSR_EL12" },
+> +        { K(3, 0,  4, 0, 1), K(3, 4,  4, 0, 1), K(3, 5, 4, 0, 1),
+> +          "ELR_EL1", "ELR_EL2", "ELR_EL12" },
+> +        { K(3, 0,  5, 1, 0), K(3, 4,  5, 1, 0), K(3, 5, 5, 1, 0),
+> +          "AFSR0_EL1", "AFSR0_EL2", "AFSR0_EL12" },
+> +        { K(3, 0,  5, 1, 1), K(3, 4,  5, 1, 1), K(3, 5, 5, 1, 1),
+> +          "AFSR1_EL1", "AFSR1_EL2", "AFSR1_EL12" },
+> +        { K(3, 0,  5, 2, 0), K(3, 4,  5, 2, 0), K(3, 5, 5, 2, 0),
+> +          "ESR_EL1", "ESR_EL2", "ESR_EL12" },
+> +        { K(3, 0,  6, 0, 0), K(3, 4,  6, 0, 0), K(3, 5, 6, 0, 0),
+> +          "FAR_EL1", "FAR_EL2", "FAR_EL12" },
+> +        { K(3, 0, 10, 2, 0), K(3, 4, 10, 2, 0), K(3, 5, 10, 2, 0),
+> +          "MAIR_EL1", "MAIR_EL2", "MAIR_EL12" },
+> +        { K(3, 0, 10, 3, 0), K(3, 4, 10, 3, 0), K(3, 5, 10, 3, 0),
+> +          "AMAIR0", "AMAIR_EL2", "AMAIR_EL12" },
+> +        { K(3, 0, 12, 0, 0), K(3, 4, 12, 0, 0), K(3, 5, 12, 0, 0),
+> +          "VBAR", "VBAR_EL2", "VBAR_EL12" },
+> +        { K(3, 0, 13, 0, 1), K(3, 4, 13, 0, 1), K(3, 5, 13, 0, 1),
+> +          "CONTEXTIDR_EL1", "CONTEXTIDR_EL2", "CONTEXTIDR_EL12" },
+> +        { K(3, 0, 14, 1, 0), K(3, 4, 14, 1, 0), K(3, 5, 14, 1, 0),
+> +          "CNTKCTL", "CNTHCTL_EL2", "CNTKCTL_EL12" },
+> +        { K(3, 3, 14, 2, 0), K(3, 4, 14, 2, 0), K(3, 5, 14, 2, 0),
+> +          "CNTP_TVAL_EL0", "CNTHP_TVAL_EL2", "CNTP_TVAL_EL02" },
+> +        { K(3, 3, 14, 2, 1), K(3, 4, 14, 2, 1), K(3, 5, 14, 2, 1),
+> +          "CNTP_CTL_EL0", "CNTHP_CTL_EL2", "CNTP_CTL_EL02" },
+> +        { K(3, 3, 14, 2, 2), K(3, 4, 14, 2, 2), K(3, 5, 14, 2, 2),
+> +          "CNTP_CVAL_EL0", "CNTHP_CVAL_EL2", "CNTP_CVAL_EL02" },
+> +        { K(3, 3, 14, 3, 0), K(3, 4, 14, 3, 0), K(3, 5, 14, 3, 0),
+> +          "CNTV_TVAL_EL0", "CNTHV_TVAL_EL2", "CNTV_TVAL_EL02" },
+> +        { K(3, 3, 14, 3, 1), K(3, 4, 14, 3, 1), K(3, 5, 14, 3, 1),
+> +          "CNTV_CTL_EL0", "CNTHV_CTL_EL2", "CNTV_CTL_EL02" },
+> +        { K(3, 3, 14, 3, 2), K(3, 4, 14, 3, 2), K(3, 5, 14, 3, 2),
+> +          "CNTV_CVAL_EL0", "CNTHV_CVAL_EL2", "CNTV_CVAL_EL02" },
+> +        /*
+> +         * CNTHV_CVAL is a special case because there is no separate
+> +         * AArch32 EL2 register to which CNTV_CVAL may be directed.
+> +         * The effect can be achieved via CNTHV_CVAL_EL2.
+> +         */
+> +        { ENCODE_CP_REG(15, 1, 1, 0, 14, 3, 0), K(3, 4, 14, 3, 2), 0,
+> +          "CNTV_CVAL", "CNTHV_CVAL_EL2", NULL },
+> +
+> +        /*
+> +         * Note that redirection of ZCR is mentioned in the description
+> +         * of ZCR_EL2, and aliasing in the description of ZCR_EL1, but
+> +         * not in the summary table.
+> +         */
+> +        { K(3, 0,  1, 2, 0), K(3, 4,  1, 2, 0), K(3, 5, 1, 2, 0),
+> +          "ZCR_EL1", "ZCR_EL2", "ZCR_EL12", isar_feature_aa64_sve },
+> +
+> +        /* TODO: ARMv8.2-SPE -- PMSCR_EL2 */
+> +        /* TODO: ARMv8.4-Trace -- TRFCR_EL2 */
+> +    };
+> +#undef K
+> +
+> +    size_t i;
+> +
+> +    for (i =3D 0; i < ARRAY_SIZE(aliases); i++) {
+> +        const struct E2HAlias *a =3D &aliases[i];
+> +        ARMCPRegInfo *src_reg, *dst_reg;
+> +
+> +        if (a->feature && !a->feature(&cpu->isar)) {
+> +            continue;
+> +        }
+> +
+> +        src_reg =3D g_hash_table_lookup(cpu->cp_regs, &a->src_key);
+> +        dst_reg =3D g_hash_table_lookup(cpu->cp_regs, &a->dst_key);
+> +        g_assert(src_reg !=3D NULL);
+> +        g_assert(dst_reg !=3D NULL);
+> +
+> +        /* Cross-compare names to detect typos in the keys.  */
+> +        g_assert(strcmp(src_reg->name, a->src_name) =3D=3D 0);
+> +        g_assert(strcmp(dst_reg->name, a->dst_name) =3D=3D 0);
+> +
+> +        /* None of the core system registers use opaque; we will.  */
+> +        g_assert(src_reg->opaque =3D=3D NULL);
+> +
+> +        /* Create alias before redirection so we dup the right data. */
+> +        if (a->new_key) {
+> +            ARMCPRegInfo *new_reg =3D g_memdup(src_reg, sizeof(ARMCPRegI=
+nfo));
+> +            uint32_t *new_key =3D g_memdup(&a->new_key, sizeof(uint32_t)=
+);
+> +            bool ok;
+> +
+> +            new_reg->name =3D a->new_name;
+> +            new_reg->type |=3D ARM_CP_ALIAS;
+> +            /* Remove PL1/PL0 access, leaving PL2/PL3 R/W in place.  */
+> +            new_reg->access &=3D 0xf0;
+> +
+> +            ok =3D g_hash_table_insert(cpu->cp_regs, new_key, new_reg);
+> +            g_assert(ok);
+> +        }
+> +
+> +        src_reg->opaque =3D dst_reg;
+> +        src_reg->orig_readfn =3D src_reg->readfn;
+> +        src_reg->orig_writefn =3D src_reg->writefn;
+> +        src_reg->readfn =3D el2_e2h_read;
+> +        src_reg->writefn =3D el2_e2h_write;
+> +    }
+> +}
+> +#endif
+> +
+>  static CPAccessResult ctr_el0_access(CPUARMState *env, const ARMCPRegInf=
+o *ri,
+>                                       bool isread)
 >  {
-> @@ -1309,8 +1315,7 @@ static inline void gen_hlt(DisasContext *s, int imm)
->          return;
+> @@ -6942,6 +7107,16 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>          : cpu_isar_feature(aa32_predinv, cpu)) {
+>          define_arm_cp_regs(cpu, predinv_reginfo);
 >      }
->  
-> -    gen_exception_insn(s, EXCP_UDEF, syn_uncategorized(),
-> -                       default_exception_el(s));
-> +    gen_illegal_op(s);
+> +
+> +#ifndef CONFIG_USER_ONLY
+> +    /*
+> +     * Register redirections and aliases must be done last,
+> +     * after the registers from the other extensions have been defined.
+> +     */
+> +    if (arm_feature(env, ARM_FEATURE_EL2) && cpu_isar_feature(aa64_vh, c=
+pu)) {
+> +        define_arm_vh_e2h_redirects_aliases(cpu);
+> +    }
+> +#endif
 >  }
->  
->  static inline void gen_add_data_offset(DisasContext *s, unsigned int insn,
-> @@ -7631,8 +7636,7 @@ static void gen_srs(DisasContext *s,
->      }
->  
->      if (undef) {
-> -        gen_exception_insn(s, EXCP_UDEF, syn_uncategorized(),
-> -                           default_exception_el(s));
-> +        gen_illegal_op(s);
->          return;
->      }
->  
-> @@ -9299,8 +9303,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
->              break;
->          default:
->          illegal_op:
-> -            gen_exception_insn(s, EXCP_UDEF, syn_uncategorized(),
-> -                               default_exception_el(s));
-> +            gen_illegal_op(s);
->              break;
->          }
->      }
-> @@ -10990,8 +10993,7 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
->      }
->      return;
->  illegal_op:
-> -    gen_exception_insn(s, EXCP_UDEF, syn_uncategorized(),
-> -                       default_exception_el(s));
-> +    gen_illegal_op(s);
->  }
->  
->  static void disas_thumb_insn(DisasContext *s, uint32_t insn)
-> @@ -11816,8 +11818,7 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
->      return;
->  illegal_op:
->  undef:
-> -    gen_exception_insn(s, EXCP_UDEF, syn_uncategorized(),
-> -                       default_exception_el(s));
-> +    gen_illegal_op(s);
->  }
->  
->  static bool insn_crosses_page(CPUARMState *env, DisasContext *s)
-> 
+>
+>  void arm_cpu_register_gdb_regs_for_features(ARMCPU *cpu)
+
+
+--
+Alex Benn=C3=A9e

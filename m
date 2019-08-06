@@ -1,123 +1,265 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5419352wrv;
-        Tue, 6 Aug 2019 08:53:38 -0700 (PDT)
-X-Received: by 2002:a65:5144:: with SMTP id g4mr3673969pgq.202.1565106818653;
-        Tue, 06 Aug 2019 08:53:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565106818; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5693670wrv;
+        Tue, 6 Aug 2019 13:52:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz6hHFDHyJdq2pJ+Tet/kynvnwmZwxSoXNE1bXOOx6E47Qjag6uI61ZrY7TeXP7fg2aHkKz
+X-Received: by 2002:a37:c81:: with SMTP id 123mr568085qkm.300.1565124772537;
+        Tue, 06 Aug 2019 13:52:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565124772; cv=none;
         d=google.com; s=arc-20160816;
-        b=dkn02wcaahpTUDcVMGJsxvpVWDnD/lL7wOpAW1VcMrnqoWlg7krTn+DcmR/S1Lq4Fb
-         ZVrppXpgxLGRbwQGIuaGbSSX2sd/7TBDYXZAou53/Hrm/iIw16otmUcengnrAC1hJ9ZC
-         PpFcGjfX7u2DbMpp64uuJr+ibd1HFDRkggEjydUcyo1Yg57tPiIDzTcWKOw2AyALaKKT
-         JXz+pg64ECS871E8B6NQ+oO6D3+iTXbG3nmE3jG/Uuorx3mS5tpLMX74h7h7qh+d9pWJ
-         WK5sQHa1cjN4DNRO+wFPlur9IjDCySt5wvEpWtwOOq9Xby6cEKj3WUcFkm760EOdfZdk
-         Twvw==
+        b=Hi1hgaYdPsEKMUGj1ZR5hiumlySFLMcLTKfb+XS816MRsbFvgZ/aXHr/Fqdhm1cUUr
+         Iz53y7bzhhq88E7mz+LSV4ZHRvdMqZ6Y+/wTR5pWhOGTWN8EJwKwG9ccmcBvtHvNw/BS
+         ZtMUU1yyIlFirNMZU2HSudUKF4MWF5bX9GG/Y0WoonPm/bX9hn1amFBYjZH3rAgSX+r3
+         NXPOS82vvpx2Xd0p/J7ovnHHk7H7b9WYS+i1g1bBsoq9gkpO+VJduP4jjwAxfN4NM3vF
+         QufSGRMJaGGfRUzN3lVF2n8+jFmM4DId8CNMSOTBLyW9nJdm6sJNH/mt4t+qYAHcgnGg
+         n8rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=SBXxT2xNMmL+bDeSQnhWV5BAJd/5Ujq99vRg/5LFopc=;
-        b=IcdIDUeR0XYDgqkLNyHBYzztPsyyQMVgJVbzEWQVpHPf60/KPAZfG7eCQCTPMA5ZHt
-         uSvt2KBcuAFrbqeuUgAO0I6fpLKvRBM4rfWYapYkjkDx1/aNIBEryNvm7jUs6rxrLjDM
-         v5N4rGn87EynpJSVVWat2wLxC79A68yplNelPOLvLfgUm2JecAkArJln3g2EeUbw1t8k
-         9c59zCPsLV1ZYRIajO0STqpBvzGDbG7hvpnfbiTsNcwN0dE0FQusv+4MYBDfgavFSYNj
-         iIdb4KNkYTy0dj5FVFV/bnjmNuBP/5pU3CumkullEnRT76+8XL3G0iypNamD8Ww7S4nF
-         /ORA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=u9ApZj2VaEXqX6eILsw6k22KOwSDwU0EqiPTvyHlhuY=;
+        b=Fle+k3WAKar9VrOSZszUNWRBYcdXMJ3Mrdq3s680IbTuQj7GqK42693Lstli9LCc6X
+         bwPUqIYmWeTENXpUsyX44rOb4MAkk/c36ietoztwpoiUXxMeaFw0DGf92MqEZFRIn+HN
+         Y3nRO2lKfPW8IjjFkh3Xl9khKgWNdPQAlYfEVyaktMoDJZahaNc72xtsLGwgAqDUwspx
+         +kwx0cxoQgG+9G30M9KndD82HR3iv9zsNPPwT2qLsOxPYyPaG95hKdq51Ub8/8LtV6iQ
+         UITV//PlmPbIR1wI9SZnaYiC00uYQaVsluUY/T2Tl7hYrKXurtzgNjSlOGnhO7Bwexs/
+         lOkg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="qrWOK/gv";
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id d6sor68003486pfd.59.2019.08.06.08.53.38
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t53si52907141qvc.91.2019.08.06.13.52.52
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 06 Aug 2019 08:53:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 06 Aug 2019 13:52:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="qrWOK/gv";
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=SBXxT2xNMmL+bDeSQnhWV5BAJd/5Ujq99vRg/5LFopc=;
-        b=qrWOK/gvWsOR37lgZQkecB9ScjRyPeZNoQQ9qb8gKBIZJhwZ+L7DxbH2DEVkQ+yeTV
-         /xoy1qdliQTpgcytqEIKIip+kOOHuZJBTqjOxBUIumOSH9dsj+esEyScd1B+5XUTxlJL
-         myJbFgWn7++aKKbxHjP6ev3wr+HNZ5fKgNsL0WlzCy/ZZeEOGoQhrmjSZ/A33x2NVUiX
-         BenNlFvitpGcoZr0bOFRLqWxUS1cJ+K4PFvCQFhDAf3+erZGAyMEJAbZNd9YtCtbj4Nv
-         Qj4g/9JxuVbD43Q9R7HPdS4v/n65dI2lsR6rO6+4ja+U32wmGipxx0XnfW0ptRYM4hGf
-         n9MA==
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36162 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hv6Rw-0001sK-4H
+	for alex.bennee@linaro.org; Tue, 06 Aug 2019 16:52:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38140)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <philmd@redhat.com>) id 1hv6Ro-0001lN-4q
+ for qemu-arm@nongnu.org; Tue, 06 Aug 2019 16:52:45 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1hv6Rm-0001Ya-Oc
+ for qemu-arm@nongnu.org; Tue, 06 Aug 2019 16:52:44 -0400
+Received: from mail-wm1-f65.google.com ([209.85.128.65]:50560)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hv6Rm-0001XQ-I3
+ for qemu-arm@nongnu.org; Tue, 06 Aug 2019 16:52:42 -0400
+Received: by mail-wm1-f65.google.com with SMTP id v15so79563502wml.0
+ for <qemu-arm@nongnu.org>; Tue, 06 Aug 2019 13:52:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=SBXxT2xNMmL+bDeSQnhWV5BAJd/5Ujq99vRg/5LFopc=;
-        b=oSTaCnTDeIMXaIoqkF5OXAKEBsAikFHSdQZ8m/6SlScVag1m21es93DAOlK97U0jrw
-         t2sIu+KmuolreArqPkOBLXPgOsXLLmM1d6yDG0Lw1dNwGf0FZSZJLBL2mCwyVi3A1R+U
-         uOJoNv/Tqay8jYbDOHBWxO5kDw0PID3MP/2H7IEbkH8TGdevY+vKxo0roaZ0wAjhAKci
-         yb2ri2ZV23t8t6/7oHagjMsl/oEjXDhjBW1XVDvGim4YsuO9T+EaumFGI0wF7uBHs5wA
-         i/nCg1Gxd3OKLH3TKxnplLGRPHptmTsCXe0Ne1INdZA1zaEJyu5eMaUIFcHwb1h9RMH4
-         p1FA==
-X-Gm-Message-State: APjAAAXWJeuKzpkXg28hyW7B+gxGB/yXHAc8yADk8SB/ipfldIdqD03I
-	0yAsQuYe89MMlsikHjrDf4CK7hEEDz1OUA==
-X-Google-Smtp-Source: APXvYqwTL7GfslmG/7We7B4urn1cnJ4oOsE4fRJtEB7xG10EOwG4EYpfxQerOvTyAprEYzC77A9g5Q==
-X-Received: by 2002:a62:5253:: with SMTP id g80mr4325675pfb.179.1565106817593;
-        Tue, 06 Aug 2019 08:53:37 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id f14sm7070219pgu.8.2019.08.06.08.53.36
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Aug 2019 08:53:36 -0700 (PDT)
-Subject: Re: [PATCH 06/67] target/arm: Introduce pc_read
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20190726175032.6769-1-richard.henderson@linaro.org>
- <20190726175032.6769-7-richard.henderson@linaro.org>
- <CAFEAcA_kmuX6bxR50eU_3nTdRcjON2nVTqVWiRamSRe6jui3ig@mail.gmail.com>
- <09b930e2-0a92-25a3-4e26-8bea1f437039@linaro.org>
- <CAFEAcA9yQQSYnwEeSNbx4P94deuG5v5fKs7gW4VgG7LFzBX03w@mail.gmail.com>
- <92a7e54e-678e-cf4e-fadc-373e1bd6a41b@linaro.org>
- <CAFEAcA_oy067xK9p51cKwRDcCVTaj2JuqE+11jLS5L_gFFyzrQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <58642e3d-d54a-80e4-cbe2-6b5ab06b36ec@linaro.org>
-Date: Tue, 6 Aug 2019 08:53:35 -0700
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=u9ApZj2VaEXqX6eILsw6k22KOwSDwU0EqiPTvyHlhuY=;
+ b=L8UtyX2q1arl37QBWVMZfihO+Hms12UC/FnaMf4LjTYiuBEwjUpFHDVtP/oBiT2EMn
+ MADjgbhVYululRhBC1gcEerZUBx22w67GdZHEYC0Ur95A4HYOflgyI28OgY2FswU7qpm
+ jBeJKIGeAaeQDpSha2yLfJvRgZdIBm1cWf+b+lLLQNnrZsFirX6Cx92ULO9RZMNm4Uok
+ b6L5F9nr7Pk4W9W7zlpGnCHYQM3PvcMtHVMdbXdL0KSkBjf/Spcd5vsKpwPlnNstJI75
+ awFFgRVIfndNMbkutFRhklKcrE0GxXPNiuwvY4p3LrJCzZz1v01k4d9skyDMPcmAKR1X
+ 2lHg==
+X-Gm-Message-State: APjAAAWK1GX3HEendRCRaaQKwme2P/+IuZnio48DYLFKWtwi/EUJ6+6S
+ zZlmAOYXhyTrRHPslj8b2qGWBQ==
+X-Received: by 2002:a1c:a1c5:: with SMTP id k188mr6312934wme.102.1565124760847; 
+ Tue, 06 Aug 2019 13:52:40 -0700 (PDT)
+Received: from [10.0.0.124] ([185.102.219.36])
+ by smtp.gmail.com with ESMTPSA id g19sm109421077wmg.10.2019.08.06.13.52.39
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Tue, 06 Aug 2019 13:52:40 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20190805130952.4415-1-peter.maydell@linaro.org>
+ <20190805130952.4415-2-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <3b543e16-f6f7-0aa7-0c6b-94871fda62ff@redhat.com>
+Date: Tue, 6 Aug 2019 22:52:37 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_oy067xK9p51cKwRDcCVTaj2JuqE+11jLS5L_gFFyzrQ@mail.gmail.com>
+In-Reply-To: <20190805130952.4415-2-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: 4HTtFdPHwS/I
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.128.65
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 1/2] target/arm: Factor out
+ 'generate singlestep exception' function
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Jef36kGohg2d
 
-On 8/6/19 8:21 AM, Peter Maydell wrote:
-> On Tue, 6 Aug 2019 at 16:04, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> On 8/6/19 3:00 AM, Peter Maydell wrote:
->>> Renaming pc_next would be a cross-target change, so let's put that
->>> on the shelf for the moment. Maybe just put a TODO comment to the
->>> effect that we could consider renaming in future ?
->>
->> I wasn't suggesting renaming the cross-target variable.
->>
->> I was suggesting shuffling around the current names, and using "pc_next" for
->> what it sounds like -- the pc of the next insn.
+On 8/5/19 3:09 PM, Peter Maydell wrote:
+> Factor out code to 'generate a singlestep exception', which is
+> currently repeated in four places.
 > 
-> Oh, I see, so incrementing base->pc_next after we load
-> the insn? Yeah, that would work too. Though it seems a bit
-> odd to me to have the target-specific code modifying
-> a field in the base struct -- that seems like it ought to
-> be purely for the generic TCG code to use.
+> To do this we need to also pull the identical copies of the
+> gen-exception() function out of translate-a64.c and translate.c
+> into translate.h.
+> 
+> (There is a bug in the code: we're taking the exception to the wrong
+> target EL.  This will be simpler to fix if there's only one place to
+> do it.)
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Part of the contract with translator.c is that base.pc_next is updated.  See
-arm_post_translate_insn.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-The difference would be to update early, immediately after reading the insn
-word, before decode, instead of delaying the update until the end after decode.
-
-
-r~
+> ---
+>  target/arm/translate.h     | 23 +++++++++++++++++++++++
+>  target/arm/translate-a64.c | 19 ++-----------------
+>  target/arm/translate.c     | 20 ++------------------
+>  3 files changed, 27 insertions(+), 35 deletions(-)
+> 
+> diff --git a/target/arm/translate.h b/target/arm/translate.h
+> index a20f6e20568..45053190baa 100644
+> --- a/target/arm/translate.h
+> +++ b/target/arm/translate.h
+> @@ -2,6 +2,7 @@
+>  #define TARGET_ARM_TRANSLATE_H
+>  
+>  #include "exec/translator.h"
+> +#include "internals.h"
+>  
+>  
+>  /* internal defines */
+> @@ -232,6 +233,28 @@ static inline void gen_ss_advance(DisasContext *s)
+>      }
+>  }
+>  
+> +static inline void gen_exception(int excp, uint32_t syndrome,
+> +                                 uint32_t target_el)
+> +{
+> +    TCGv_i32 tcg_excp = tcg_const_i32(excp);
+> +    TCGv_i32 tcg_syn = tcg_const_i32(syndrome);
+> +    TCGv_i32 tcg_el = tcg_const_i32(target_el);
+> +
+> +    gen_helper_exception_with_syndrome(cpu_env, tcg_excp,
+> +                                       tcg_syn, tcg_el);
+> +
+> +    tcg_temp_free_i32(tcg_el);
+> +    tcg_temp_free_i32(tcg_syn);
+> +    tcg_temp_free_i32(tcg_excp);
+> +}
+> +
+> +/* Generate an architectural singlestep exception */
+> +static inline void gen_swstep_exception(DisasContext *s, int isv, int ex)
+> +{
+> +    gen_exception(EXCP_UDEF, syn_swstep(s->ss_same_el, isv, ex),
+> +                  default_exception_el(s));
+> +}
+> +
+>  /*
+>   * Given a VFP floating point constant encoded into an 8 bit immediate in an
+>   * instruction, expand it to the actual constant value of the specified
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index d3231477a27..f6729b96fd0 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -253,19 +253,6 @@ static void gen_exception_internal(int excp)
+>      tcg_temp_free_i32(tcg_excp);
+>  }
+>  
+> -static void gen_exception(int excp, uint32_t syndrome, uint32_t target_el)
+> -{
+> -    TCGv_i32 tcg_excp = tcg_const_i32(excp);
+> -    TCGv_i32 tcg_syn = tcg_const_i32(syndrome);
+> -    TCGv_i32 tcg_el = tcg_const_i32(target_el);
+> -
+> -    gen_helper_exception_with_syndrome(cpu_env, tcg_excp,
+> -                                       tcg_syn, tcg_el);
+> -    tcg_temp_free_i32(tcg_el);
+> -    tcg_temp_free_i32(tcg_syn);
+> -    tcg_temp_free_i32(tcg_excp);
+> -}
+> -
+>  static void gen_exception_internal_insn(DisasContext *s, int offset, int excp)
+>  {
+>      gen_a64_set_pc_im(s->pc - offset);
+> @@ -305,8 +292,7 @@ static void gen_step_complete_exception(DisasContext *s)
+>       * of the exception, and our syndrome information is always correct.
+>       */
+>      gen_ss_advance(s);
+> -    gen_exception(EXCP_UDEF, syn_swstep(s->ss_same_el, 1, s->is_ldex),
+> -                  default_exception_el(s));
+> +    gen_swstep_exception(s, 1, s->is_ldex);
+>      s->base.is_jmp = DISAS_NORETURN;
+>  }
+>  
+> @@ -14261,8 +14247,7 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+>           * bits should be zero.
+>           */
+>          assert(dc->base.num_insns == 1);
+> -        gen_exception(EXCP_UDEF, syn_swstep(dc->ss_same_el, 0, 0),
+> -                      default_exception_el(dc));
+> +        gen_swstep_exception(dc, 0, 0);
+>          dc->base.is_jmp = DISAS_NORETURN;
+>      } else {
+>          disas_a64_insn(env, dc);
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 7853462b21b..19b9d8f2725 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -282,20 +282,6 @@ static void gen_exception_internal(int excp)
+>      tcg_temp_free_i32(tcg_excp);
+>  }
+>  
+> -static void gen_exception(int excp, uint32_t syndrome, uint32_t target_el)
+> -{
+> -    TCGv_i32 tcg_excp = tcg_const_i32(excp);
+> -    TCGv_i32 tcg_syn = tcg_const_i32(syndrome);
+> -    TCGv_i32 tcg_el = tcg_const_i32(target_el);
+> -
+> -    gen_helper_exception_with_syndrome(cpu_env, tcg_excp,
+> -                                       tcg_syn, tcg_el);
+> -
+> -    tcg_temp_free_i32(tcg_el);
+> -    tcg_temp_free_i32(tcg_syn);
+> -    tcg_temp_free_i32(tcg_excp);
+> -}
+> -
+>  static void gen_step_complete_exception(DisasContext *s)
+>  {
+>      /* We just completed step of an insn. Move from Active-not-pending
+> @@ -308,8 +294,7 @@ static void gen_step_complete_exception(DisasContext *s)
+>       * of the exception, and our syndrome information is always correct.
+>       */
+>      gen_ss_advance(s);
+> -    gen_exception(EXCP_UDEF, syn_swstep(s->ss_same_el, 1, s->is_ldex),
+> -                  default_exception_el(s));
+> +    gen_swstep_exception(s, 1, s->is_ldex);
+>      s->base.is_jmp = DISAS_NORETURN;
+>  }
+>  
+> @@ -12024,8 +12009,7 @@ static bool arm_pre_translate_insn(DisasContext *dc)
+>           * bits should be zero.
+>           */
+>          assert(dc->base.num_insns == 1);
+> -        gen_exception(EXCP_UDEF, syn_swstep(dc->ss_same_el, 0, 0),
+> -                      default_exception_el(dc));
+> +        gen_swstep_exception(dc, 0, 0);
+>          dc->base.is_jmp = DISAS_NORETURN;
+>          return true;
+>      }
+> 

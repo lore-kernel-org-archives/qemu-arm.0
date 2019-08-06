@@ -1,128 +1,139 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5041713wrv;
-        Tue, 6 Aug 2019 02:55:21 -0700 (PDT)
-X-Received: by 2002:aca:5106:: with SMTP id f6mr1200574oib.69.1565085321849;
-        Tue, 06 Aug 2019 02:55:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565085321; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5045979wrv;
+        Tue, 6 Aug 2019 03:00:14 -0700 (PDT)
+X-Received: by 2002:aca:6044:: with SMTP id u65mr1829291oib.25.1565085614077;
+        Tue, 06 Aug 2019 03:00:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565085614; cv=none;
         d=google.com; s=arc-20160816;
-        b=jcUVyaWiOL3Cnx0NS9becYBt0j8VUavQsiLXO1sopPZW7G8iH0vdeS7hwG723RJOrc
-         DHV94iRzLciefpqxPFJhjZdaWPqD4+Fi/F3ANCnzQznqdl590wGndkUuf6VSwwel87PT
-         9hlfxzJD1RRBaNn42figmjilGiaPmPlboT0wDtsF6AenEQIOJZoYorKWh0PYsj6UMYpz
-         Eon+IW0Kh21Ro9k987n9UGTBJyox7HQijLrmn0qsUIT55yaL0PCQlIM7rFxes+qPJz4y
-         Py1WTtHBHNaP+BteUCAocpvAX44Qm4jv7H7Ze33VAdiAnfE4K6OO/g4/gtrqZdHUeGYo
-         DoKA==
+        b=mmNE+j3Q6j+0nFKBHiXmV1NkvZxMbXu/rzaUFwCx4gBy8yuGB0HNzRoSU4r9lr7dgO
+         B1x3EiBs4xPIgBPSKfeFY9Jv8sOVZjqhm73vtdGFX32DRK3OEefuFSiGHXwtdAfv6y93
+         q8ve3adj5kV3BvRnM7c9HLlqeGmt5Ozd/u+fezL6YR6ne+eGg/DN8HqoaT6adKLinvZu
+         5AXHMakS/ljCF74sdiFHmvA4qWo7TnsXnsR4cVBfvTefzDjW9gwunoOy+aTJKErN00Fl
+         qGcizdzmDwPfz8KWJePVA+ysCRz0mf2wcoUjKqKyy+DYBCZxLVPP1VxfIbifI7iizIHG
+         wVdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=bPXYZJMTNoLajk96h5a6B0Oeqlu3okr2ghnhZP4/sgo=;
-        b=sLIcI/7TXYeadRzYozX3GVJQmeRo1bpXmL57W0Qns6JlWZavoZwRd0Lch6Z8km7FmB
-         zzqAiYIOPe+F8UETkDYDScGKgrgDt4Vv4XWwiyR4JLYjVnrH3gcYsh6owrpShYVT8JGU
-         E69U80TLy3lwLYVhGFp5EEzBa5a6cXWO+u0IxSNt9SMRCDVX3+bYnp49aYbufG5tAIsf
-         Y7AwZjIv8xv9d4jq+qwnQbPhs4IuXrK0OYtGPxpGaMxI5m20u7P/fJiLpiq84/q2lkxS
-         ISR20+Nj6KJv2ZWC3Tz0UKtZeRb1EwdXUQ5ARpbFauxKoBf+aaQjADmjvT2f65jNRjlK
-         NsUA==
+        bh=xQ9rvOA4yllu34jtpdFTkP3+LnU6bZ5qPXS670owBSU=;
+        b=mhCeDOZm1VxbdBQWc12pIQDrb4Ci8WCPaG+sB5tOjm1O3/Eq0S/jDOCNas4KCJDswO
+         Q3qkGS7BN0tsFzAumLVtOc935+cAiiQhHpudr/QCKGol5ldRCXsBXEZ3KvfejYkhgB9F
+         ky8Pc7/DJZHQrmZxTIDB7ohuVVvka+s7HpzCV1M74mzr4U4WFaGKSx5cRSG/xEHP8uac
+         WiSMFaz8QFcJSBQDL7+O82ldebcsQEi8hkqvx+mhz9Il/6WzXw4M2xdmkugSXRUlm1uU
+         xhaJisdDWAacP5tpAjdm71CVCqT6qEYK7Sl6osE+abH1I8JTj+YkzdRyaWBXNrg9jKXF
+         /dag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TGS0x2on;
+       dkim=pass header.i=@linaro.org header.s=google header.b=A4bSsgDw;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id q11sor44180278otf.29.2019.08.06.02.55.21
+        by mx.google.com with SMTPS id n191sor39626636oig.148.2019.08.06.03.00.13
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 06 Aug 2019 02:55:21 -0700 (PDT)
+        Tue, 06 Aug 2019 03:00:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TGS0x2on;
+       dkim=pass header.i=@linaro.org header.s=google header.b=A4bSsgDw;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=bPXYZJMTNoLajk96h5a6B0Oeqlu3okr2ghnhZP4/sgo=;
-        b=TGS0x2onOOLm9F82P2Dy2vI58pxs0x0+O1VabogPfM3WLV3QtGYMZSaNtRVs7+8zs2
-         WueVyR7iwRGEKq83GKXgKxNtAenE7SlTtER8GLlNtY3vGFP5tuplGEZKrDMYC5HduK9l
-         xiLrkl4+sBJHhtVExPe18N86K0PFgBWx7HKw4BJTxCGwrfg7psngllQUNiPr5ps67jWb
-         di6aV7XoY62EqfnnMf12rU4LrmiYYnWRkNVD2wRVtgAN44X5dCRkfTdsFJr3OAfa1+wr
-         TGAz1DCVd1i7UGF0ilt531RbMyWsFDpxAc8DqEpXcC1ZEQsIWQfvv6jgK7ywfvTXTzDZ
-         +ZvQ==
+        bh=xQ9rvOA4yllu34jtpdFTkP3+LnU6bZ5qPXS670owBSU=;
+        b=A4bSsgDwGdLXvvBrIrUF8zO060rddgpaM5bUEW4IZuraj7dpvhtesrdZ+nV31JXpYY
+         9roDFpcintRFriFmq9zAtsQtyMjxG/Cpn9yW1+UXN1LSfOKdUTvNHiRyblSBSqdhUeGI
+         bZi/sZEGXtANhbrNIum2mzG1nxXjd9NquOKWDvD5sSBjwsoVZPCTxYOqJJVt8KSho9gB
+         Y7QlRSpPQKllkv8kNKAVrhjEfkN+YiiPAltBukPg+xgnofpExf1JEzCowpB47c/55TAL
+         1ra1fX/BqB1CIwt9AZKZnhy3HIT1N5Ao5GY7FPORl6JqLy/yyKDqCbM5jyuEa+ztDFf7
+         Tp5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=bPXYZJMTNoLajk96h5a6B0Oeqlu3okr2ghnhZP4/sgo=;
-        b=uDSfZJx7q987kuAjX1WyVfw/e+FvHLAZmrXYuGzffsir/bMEAJ++UHGztvVI4cAjMo
-         OlmLmYr8yUfsHFoZMN1ds7WSm32kL6szTKKbqyts7/TSZfUj8ZFBkpsToTIvuN22soBs
-         tAXTGoIIeKwaCW0WWoJpJundIK+yguhe1J6272ka4BM3favY2x7CzLhwB5wizbn45YtM
-         9JnPBWOrEGH3eq4uzD2VoyoQXAgIzvZYSDHVFWkMBHfaGCU2rPvn3oj44EE2wgwA2zuD
-         AKbuzc9uVdz3DlfLpHd3W5sCv9r1kXogSzJ4K7g5spZs7H2PoaCPlGY4SMBGcXKNkDPy
-         dVDw==
-X-Gm-Message-State: APjAAAV5JY9haqaZGoqOkW0fGpron0GmKBsQw+ZGe2j9Vr9M1D7sPjjJ
-	GAVFXkJ/ZcwanGq125sPstTa0L4cZUVpTkd4mc+RwoVaziw=
-X-Google-Smtp-Source: APXvYqzWZa1qsZqm+JYfZ5jXQWKLp/g48frTeyVJ7+fafdVZM3hKs+Bvm2JND1PMykpXrX19zEJrGGHWnP441N5X6Yc=
-X-Received: by 2002:a9d:5f1a:: with SMTP id f26mr2477235oti.91.1565085321445;
- Tue, 06 Aug 2019 02:55:21 -0700 (PDT)
+        bh=xQ9rvOA4yllu34jtpdFTkP3+LnU6bZ5qPXS670owBSU=;
+        b=p5UBzEIxmt/dOLH1BJwmj/YL5e7S7I3GI2BQByEJ/nArZV2zvu9OG2mY9Bij9m+Voe
+         OvYDny9HXhr3MnMsOMbWLgWnPHwpzDEd4Sb/oDifud4BLH9b9pvCKahpAedB9q/xmD1s
+         3xCdCKmaPgZ6rgqaTbxDILT2VN6mxRQP4hnFfimoozIaxQfnf0kIAu3kAb8423WyZOM3
+         fr+EybhCa17oDMz/AU+/4sfvbJQx5Eqt+22MNgLuODHh7qKq+l+6jI0l6pTP2kLnGb0I
+         sH+gf8y9xiGIdGMhqX9QdUaLm3z2FXLOKvrkHvwl96Vy5mqNG17KBTrZP23Vr/+VYtjU
+         CZ9w==
+X-Gm-Message-State: APjAAAW8JG/2bfg/acQ0oEVzq+WWIbn/oVgbjD7qhcMd35EKlMaG5va9
+	E+Gb2t6Dv1RsFZEG1AqY3q9PSKjYVdpiykp6dxsQ7I3UIPk=
+X-Google-Smtp-Source: APXvYqw+2Uxt4JSnPwPPQlJ202JF81PmBI8uuAXbbcBcCVVdTrSqzJoKv5AGSXJvH5pdGgDtpOi6Jt7dIRxCI4kig+o=
+X-Received: by 2002:aca:ac48:: with SMTP id v69mr1073152oie.48.1565085613691;
+ Tue, 06 Aug 2019 03:00:13 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190726175032.6769-1-richard.henderson@linaro.org>
- <20190726175032.6769-5-richard.henderson@linaro.org> <CAFEAcA-W7idBRdD-DHxrVqfnBsKmAOPZoQAJkaUVOcjnLnGugw@mail.gmail.com>
- <c7a3ef78-d541-aa0a-21a5-8b4f48db1fd7@linaro.org>
-In-Reply-To: <c7a3ef78-d541-aa0a-21a5-8b4f48db1fd7@linaro.org>
+ <20190726175032.6769-7-richard.henderson@linaro.org> <CAFEAcA_kmuX6bxR50eU_3nTdRcjON2nVTqVWiRamSRe6jui3ig@mail.gmail.com>
+ <09b930e2-0a92-25a3-4e26-8bea1f437039@linaro.org>
+In-Reply-To: <09b930e2-0a92-25a3-4e26-8bea1f437039@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 6 Aug 2019 10:55:10 +0100
-Message-ID: <CAFEAcA-QzmZ8aaKU_qYbTtphgQNmNNTPH_C7YMF0-yJ0ZxeUiA@mail.gmail.com>
-Subject: Re: [PATCH 04/67] target/arm: Remove offset argument to gen_exception_internal_insn
+Date: Tue, 6 Aug 2019 11:00:03 +0100
+Message-ID: <CAFEAcA9yQQSYnwEeSNbx4P94deuG5v5fKs7gW4VgG7LFzBX03w@mail.gmail.com>
+Subject: Re: [PATCH 06/67] target/arm: Introduce pc_read
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
 	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: YOYAY5eEKl+X
+X-TUID: TyvLbxl4cKgI
 
-On Tue, 30 Jul 2019 at 03:11, Richard Henderson
+On Tue, 30 Jul 2019 at 01:39, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> On 7/29/19 6:52 AM, Peter Maydell wrote:
-> > I'm not so convinced about this one -- gen_exception_insn()
-> > and gen_exception_internal_insn() shouldn't have the
-> > same pattern of function prototype but different semantics
-> > like this, it's confusing. It happens that both the cases
-> > of wanting to generate an "internal" exception happen to want
-> > it to be taken with the PC being for the following insn,
-> > not the current one, but that seems more coincidence to
-> > me than anything else.
+> On 7/29/19 7:05 AM, Peter Maydell wrote:
+> > On Fri, 26 Jul 2019 at 18:50, Richard Henderson
+> > <richard.henderson@linaro.org> wrote:
+> >>
+> >> We currently have 3 different ways of computing the architectural
+> >> value of "PC" as seen in the ARM ARM.
+> >>
+> >> The value of s->pc has been incremented past the current insn,
+> >> but that is all.  Thus for a32, PC = s->pc + 4; for t32, PC = s->pc;
+> >> for t16, PC = s->pc + 2.  These differing computations make it
+> >> impossible at present to unify the various code paths.
+> >>
+> >> Let s->pc_read hold the architectural value of PC for all cases.
+> >>
+> >> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> >> ---
+> >>  target/arm/translate.h | 10 ++++++++
+> >>  target/arm/translate.c | 53 ++++++++++++++++++------------------------
+> >>  2 files changed, 32 insertions(+), 31 deletions(-)
+> >>
+> >> diff --git a/target/arm/translate.h b/target/arm/translate.h
+> >> index a20f6e2056..2dfdd8ca66 100644
+> >> --- a/target/arm/translate.h
+> >> +++ b/target/arm/translate.h
+> >> @@ -9,7 +9,17 @@ typedef struct DisasContext {
+> >>      DisasContextBase base;
+> >>      const ARMISARegisters *isar;
+> >>
+> >> +    /*
+> >> +     * Summary of the various values for "PC":
+> >> +     * base.pc_next -- the start of the current insn
+> >> +     * pc           -- the start of the next insn
+> >
+> > These are confusingly named -- logically "pc_next" ought to
+> > be the PC of the next instruction and "pc" ought to be
+> > that of the current one...
 >
-> I don't like "offsets", because they don't work as expected between different
-> modes.  Would you prefer the pc in full be passed in?  Would you prefer that
-> the previous patches also pass in a pc, instead of implicitly using
-> base.pc_next (you had rationale vs patch 2 for why it was ok as-is).
+> Yes, well.  I don't quite remember why "pc_next" was chosen for this field.  It
+> is the "next" upon entry to tr_foo_disas_insn().  Often the target will
+> increment s->base.pc_next immediately, so it will also be the "next" insn
+> throughout translation.  Though that isn't currently the case for ARM.
 >
-> Shall we shuffle these patches later, after the Great Renaming of Things Named
-> PC, as discussed wrt patch 6 (pc_read and friends), so that the "offset"
-> parameter immediately becomes the Right Sort of PC, rather than some
-> intermediary confusion?
+> Once most of the uses of s->pc get moved to s->pc_read, it might be reasonable
+> to rename the remaining "s->base.pc_next" -> "s->pc_orig" and "s->pc" ->
+> "s->base.pc_next".  Perhaps that would be clearer, I'm not sure.
 
-I think what we're really trying to distinguish here is two
-orthogonal sets of possibilities:
- * take an exception, with the PC pointing to the following insn
- * take an exception, with the PC pointing to the current insn
-and also
- * take an "internal" exception
- * take a guest-visible exception
+Renaming pc_next would be a cross-target change, so let's put that
+on the shelf for the moment. Maybe just put a TODO comment to the
+effect that we could consider renaming in future ?
 
-(of which we happen to only want 2 of the 4 possible flavours at
-the moment). I don't particularly mind what API we use as long
-as the naming/parameter setup cleanly separates out the two
-orthogonal concerns such that you could have all four without
-having to rename anything. Possibilities:
- * have gen_exception{_internal,}_insn and
-   gen_exception{_internal,}_next_insn
- * have the functions take a bool for "exception on this insn
-   or on next insn?" (not ideal because 'bool' parameters are
-   a bit opaque in meaning at the callsites)
- * pass in the specific PC to use
-
-PS: the "_insn" part of the function name isn't sacrosanct:
-it sort of makes sense I think but if better names occur that
-don't include it that's fine.
+Or we could just copy s->base.pc_next into s->some_field_we_choose_the_name_of,
+eating 8 unnecessary bytes in the DisasContext struct but giving us a more
+uniform s->something for all of the different PC variants rather than
+having one of them be in s->base.something.
 
 thanks
 -- PMM

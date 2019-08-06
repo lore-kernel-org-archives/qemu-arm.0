@@ -1,93 +1,97 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5102997wrv;
-        Tue, 6 Aug 2019 03:57:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyx4oIEOWzH6yJXc+ANjEMDN38eceu9nM4Kx0/DqzwauNgnW88+c0XCnBp1U6HjVqsBNzig
-X-Received: by 2002:a50:fd0c:: with SMTP id i12mr3214242eds.55.1565089073860;
-        Tue, 06 Aug 2019 03:57:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565089073; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5306611wrv;
+        Tue, 6 Aug 2019 07:09:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzJasV2tRfHKdGdf3d96MSxC9cIIKL2x5Zj0vwNxAd/NwBPaui2NqNKNbeRCtlmtvpfXVUh
+X-Received: by 2002:aa7:c393:: with SMTP id k19mr4039616edq.76.1565100544472;
+        Tue, 06 Aug 2019 07:09:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565100544; cv=none;
         d=google.com; s=arc-20160816;
-        b=UoVuzdFQ3J/KsozKhV4qVOidS8ySs/92EVSLJ4ZBmw08FXLq/1OxwN0Rs29Gr9rBuG
-         815YUsVvtKIlQmtsXOPcXGVc3W+j53x7W3ES6AptISyrfQgDScnQ4DQOwr1YYdYtiE4q
-         8TYdq77/gL6f0dc0vzUdM56yCPh3SIP2iIkVTTJBbau+xc82EfQDwjSfOtY1MIplJXrZ
-         KsltREj7JJ+1K25HIkDkstJWioW6iEvWkLTD7SflkgqcJa4wyAroIoEKwVwqW03X5JI+
-         0Qod9/s3HOO5BuvBN2tg+LHFOeze0VcHjQUnIIv72yjltBchBrdHK9eafrnJKapbwz7a
-         Vw7g==
+        b=kU/vv4RbJ4TlzQ9pXTwUkhHTI+6FQDOkefSZJQU/xGyogBG5/lCjND0sMmk/kZ7Ys6
+         sKTT/nvstJZBl2x2PhIsKHN+X+lymfhB9pZ9nzLf4Jx/EaJD2WO0iBEfF0v0JVKOBgXD
+         tJxbfNJjV1mlb+8byVkvTA5Ht36O69yOF5ufy8EWuTHzoFPp8YCuOlDdFaNEt5KoCEZG
+         KX7k1nLXP7wHuo8mNmQQlXe/v5Y1EZ8JDNTVdDwFF9qj5ndprVZ6a+XaRoMkO0rRVjwH
+         +DshRUt9z1Nd0ac3YrCHRMk7iUpE/5jejQiTKiDWh/MDDI5A6O6ffprP7HxcV1VQ/TBo
+         AjBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=Bm++tRfJLR6gx6xLf4+qVNoCTr6y24Gn+Rxn9bUAAMg=;
-        b=wVDSZ4c5N7TH+6HZN1c3c5Fhcj9dgZ5/az1Pf2iApv2JuuCX9i5zOhFA7NhmFc5fH3
-         62d6sD72q0VV2zc9cxYamocRq+1aALu/EYFTM1ZiGDl4AtuUu6EtB66wr+ciGwAjUltU
-         7OLspewxhbbT1/Gk52KTh+f8VMNMhbQWjsiKDmM/T8gKIZ/gM9M081AtgF+dBRqr0oPv
-         KtKpHWwBsUT3qCsXSYwDMUCmK5fBf8QLcAl3YYYosyv/04w5jzPZr+V/vQJHyz2KpS48
-         SnDTxL9ZgI6Q8t33c3SS9FS/pKSCjPulKwrMJzujSgR6zRItnzCfK+SDexJHQr1bnGPQ
-         uBoA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=gzgxtu0/dq4kwvaccOAO9rAoqxbKfC7HMKno1MSksXQ=;
+        b=vOh1OWjaalulVT2p1P06P9LSgPVCcW/DrqRdeCrF3Pnnh5XC9aRuKpPBFBdb6t43EL
+         ViGxyroS9nJsu1Iv4dTbgPYeHpMXxQL8/BT3n6VWxyNGZfZv7gxAe0m/I+lkh1u0ipB5
+         GifrhM/VDV1VhkY6RR//cQiSF097gYVF9iTljPWLeUOEisTJ/BDNy6O/KK4lMYz+GByq
+         ziIP9D8wuXjaAaaFhLv23VnQBuQ8bW9rdBwfac9Q0LLpucD0NsLxR4x35nGCr9GCjgsu
+         uuuFJD+2XfrX4jbNX9yWb39dSZnOAA5l6lb+LjSndO3mce8J2+dX0oWNm6Leebn07Dxc
+         F8oQ==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=VJ7e+Z1O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q17si27662686eja.24.2019.08.06.03.57.53
+        by mx.google.com with ESMTPS id v6si27675555ejx.120.2019.08.06.07.09.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Aug 2019 03:57:53 -0700 (PDT)
+        Tue, 06 Aug 2019 07:09:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=VJ7e+Z1O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60244 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:33736 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1huxA8-0000QR-Vw
-	for alex.bennee@linaro.org; Tue, 06 Aug 2019 06:57:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47462)
+	id 1hv099-0005R2-Ik
+	for alex.bennee@linaro.org; Tue, 06 Aug 2019 10:09:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38521)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <sgarzare@redhat.com>) id 1huxA2-0000PV-FE
- for qemu-arm@nongnu.org; Tue, 06 Aug 2019 06:57:47 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hv092-0005QI-Ts
+ for qemu-arm@nongnu.org; Tue, 06 Aug 2019 10:08:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <sgarzare@redhat.com>) id 1huxA1-0006JT-I7
- for qemu-arm@nongnu.org; Tue, 06 Aug 2019 06:57:46 -0400
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:42190)
+ (envelope-from <peter.maydell@linaro.org>) id 1hv091-0000Kg-PB
+ for qemu-arm@nongnu.org; Tue, 06 Aug 2019 10:08:56 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:39319)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1huxA1-0006J2-CH
- for qemu-arm@nongnu.org; Tue, 06 Aug 2019 06:57:45 -0400
-Received: by mail-wr1-f68.google.com with SMTP id x1so37537754wrr.9
- for <qemu-arm@nongnu.org>; Tue, 06 Aug 2019 03:57:44 -0700 (PDT)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hv091-0000KM-Im
+ for qemu-arm@nongnu.org; Tue, 06 Aug 2019 10:08:55 -0400
+Received: by mail-ot1-x341.google.com with SMTP id r21so86768901otq.6
+ for <qemu-arm@nongnu.org>; Tue, 06 Aug 2019 07:08:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=gzgxtu0/dq4kwvaccOAO9rAoqxbKfC7HMKno1MSksXQ=;
+ b=VJ7e+Z1Ol7lot7JU9WFcp8j272IHcxtN39+DctnTo9G72lkpiWxVQvh8fjHFF/Rfsl
+ f0S9jBPfinAnzWkgP/DNPlqna4Sp/P2M8qeNv+dSSulsXexTs4HJ7wRQbaWnD6EzXWRg
+ I74d1YmHkOEH87ltf21QOxo50iyf2tTN0ZTcZLWvBDoRtHq7Pd7zsUZwGdIU4vfAsarM
+ 31DRysbx5cQ7aYDIK7YHQmbGqQPCwywbBYqdy9do1SqxY6wVIh6rjr8PjcFvkwR4c+e9
+ 0P0wBUct7aK1ggypZrveaOihL3cEg4xzzHX7NO4YD1Re+va3PLDEc6onfqFoP9uX+SDw
+ 7o+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=Bm++tRfJLR6gx6xLf4+qVNoCTr6y24Gn+Rxn9bUAAMg=;
- b=IhMtZYnO1gdHHw0yChPFqYvksLYP1gkgwyWrzecWvJATH9pPR3PFME/7AimMcmjc46
- PSAxcXBTfr8ZsKfqJ5652doK+XJPXCT+SSpT3d6dI3ciJSQOitqsNKLH+hxr9mTJrxze
- 9oLZNKCoYGbYp8W34UP4k8v85bK7gqRZ5roiwZ4IATGdD+nm8VFSYyJHHct5pog9yLTH
- V/AV16KJl1vyrIwJUSrfF2tnlZzwI1l7kBppIjJE7qIVbaRmOSkcl3Yvr3D5lJxIcoLf
- eGoqVqjGpL0eSitlxgGHrZ6iRm/diMGY5x/peIriyFZ5PuHUC7ZeJj5PnHKeurtik+Fz
- wreQ==
-X-Gm-Message-State: APjAAAWrysK1A7VxnqqaQi4oV5+ukIv9VajEsIUtxLZT3H0mhFE4VxmK
- W6L6Dkq9sVdUJN3/+Tm7tOmdkA==
-X-Received: by 2002:adf:afe7:: with SMTP id y39mr4040045wrd.350.1565089062785; 
- Tue, 06 Aug 2019 03:57:42 -0700 (PDT)
-Received: from steredhat (host122-201-dynamic.13-79-r.retail.telecomitalia.it.
- [79.13.201.122])
- by smtp.gmail.com with ESMTPSA id l9sm68223969wmh.36.2019.08.06.03.57.41
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 06 Aug 2019 03:57:42 -0700 (PDT)
-Date: Tue, 6 Aug 2019 12:57:39 +0200
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: Bin Meng <bmeng.cn@gmail.com>
-Message-ID: <20190806105739.ypoa545l4vigsscg@steredhat>
-References: <1565020374-23888-1-git-send-email-bmeng.cn@gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=gzgxtu0/dq4kwvaccOAO9rAoqxbKfC7HMKno1MSksXQ=;
+ b=fLZH6DnclRyxj1Bvs63IpsetYneYfGc57KHH4J6+br7T4tMHzIpfUcMTh8BfXNUyDz
+ sstevijIoUoL1mMJ0ljGWsNn9NQvh98K8etA9/HYDSxmwwlOnTBzShzdwXhLCpmlQv8/
+ qs+qwkoBLaMH7z5IGy4k09OAyh1r0yX7ttKHoiGdSLCD0hIRwdDun3ihsW1dHW7TofUn
+ cQdBFzFx9EOFoUT5J4KeTencYbVwbA8/yCltV4wNPHJIKqgHTSNCE4l5q41suP0BVTTT
+ cVhaxB5hp29yHj11ySpG1dqrt3yR6LSNrILMdowvGZSie2uyLZiSxt6G1YfMSLC2C6JG
+ vTlQ==
+X-Gm-Message-State: APjAAAUo4v9zjPczUaGrysYiA5RYZyjlBgsHlbqxIQorwWFIJPsOJ2Md
+ JxXJJHLKY9iLhQK3S67o3dnHse2PtSHhzVlCAe6l9A==
+X-Received: by 2002:a9d:5f1a:: with SMTP id f26mr3505008oti.91.1565100534453; 
+ Tue, 06 Aug 2019 07:08:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <1565020374-23888-1-git-send-email-bmeng.cn@gmail.com>
-User-Agent: NeoMutt/20180716
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.221.68
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw: net: cadence_gem: Fix build
- errors in DB_PRINT()
+References: <20190730054501.32727-1-rashmica.g@gmail.com>
+In-Reply-To: <20190730054501.32727-1-rashmica.g@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 6 Aug 2019 15:08:43 +0100
+Message-ID: <CAFEAcA_-qLt4JzMkG7mm5wnVvrpC8qnO=XC0GWmcU2ZXoMQEtA@mail.gmail.com>
+To: Rashmica Gupta <rashmica.g@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+Subject: Re: [Qemu-arm] [PATCH v3 0/3] Add Aspeed GPIO controller model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -99,46 +103,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+ Joel Stanley <joel@jms.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 83rn5Pa5aIG1
+X-TUID: hGGGUYOUDItB
 
-On Mon, Aug 05, 2019 at 08:52:54AM -0700, Bin Meng wrote:
-> When CADENCE_GEM_ERR_DEBUG is turned on, there are several
-> compilation errors in DB_PRINT(). Fix them.
-> 
-> Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
-> ---
-> 
->  hw/net/cadence_gem.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index d412085..7516e8f 100644
-> --- a/hw/net/cadence_gem.c
-> +++ b/hw/net/cadence_gem.c
-> @@ -983,8 +983,9 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
->              return -1;
->          }
->  
-> -        DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy, rxbufsize),
-> -                rx_desc_get_buffer(s->rx_desc[q]));
-> +        DB_PRINT("copy %d bytes to " TARGET_FMT_plx "\n",
-> +                 MIN(bytes_to_copy, rxbufsize),
-> +                 rx_desc_get_buffer(s, s->rx_desc[q]));
->  
->          /* Copy packet data to emulated DMA buffer */
->          address_space_write(&s->dma_as, rx_desc_get_buffer(s, s->rx_desc[q]) +
-> @@ -1157,7 +1158,7 @@ static void gem_transmit(CadenceGEMState *s)
->              if (tx_desc_get_length(desc) > sizeof(tx_packet) -
->                                                 (p - tx_packet)) {
->                  DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x space " \
-> -                         "0x%x\n", (unsigned)packet_desc_addr,
-> +                         "0x%lx\n", (unsigned)packet_desc_addr,
+On Tue, 30 Jul 2019 at 06:45, Rashmica Gupta <rashmica.g@gmail.com> wrote:
+>
+> There are a couple of things I'm not confident about here:
+> - what should be in init vs realize?
 
-What about using 'z' modifier? I mean "0x%zx" to print sizeof(..).
+We are not very good at documenting this distinction (and there's
+some bits of it I'm not sure about either), but:
+ * init cannot contain anything that might fail
+ * init cannot contain anything that affects the simulation
+ * init shouldn't do anything that needs explicit cleanup
+   (eg memory allocation)
+ * property creation has to happen in init, because properties
+   are set after init but before realize
 
-Thanks,
-Stefano
+Thomas did a good blog post on this:
+http://people.redhat.com/~thuth/blog/qemu/2018/09/10/instance-init-realize.html
+
+
+> - should the irq state be in vmstate?
+
+I guess you mean the "uint32_t int_status;" field here?
+If it's state that's in your device then it needs to be
+in vmstate (this roughly corresponds to 'is there a flipflop
+in the hardware that holds this state', though that is not
+a 100% perfect guide). A 'qemu_irq' holds no state of its own,
+so you cannot query it for the state of the line after migration.
+So if your device model needs to be able to know that state
+itself then it has to keep it in a struct field and migrate
+that struct field. (For some devices the state of the outbound
+interrupt line is a purely combinatorial result of some other
+state: "int_output = int_status & int_mask" is a common one
+where there's a "raw interrupt status" and a mask bit that
+suppresses the outbound irq line. In that case the int_output
+need not be in the device's state struct or migrated, because
+we can just calculate it when we need it from the int_status
+and int_mask state.)
+
+> - is there a better way to do composition of classes (patch 3)?
+
+No strong opinion. From a quick scan through of patch 3 it
+didn't look obviously doing something in a suboptimal way.
+
+thanks
+-- PMM

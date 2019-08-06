@@ -1,145 +1,165 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4216578wrv;
-        Mon, 5 Aug 2019 10:08:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy/lxxyHRZVsm6qeAjM0EwPxx0wdk21jFZ7I1QcnLfykmfxIfl+oxpnA5SL9vIPka5HpYLd
-X-Received: by 2002:a37:9c88:: with SMTP id f130mr100862847qke.494.1565024900143;
-        Mon, 05 Aug 2019 10:08:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565024900; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4553018wrv;
+        Mon, 5 Aug 2019 17:05:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxLps1EfW1SaAozLVV/t1+FUm31VlcAV5t7jUeTS3lSyQYW5c+QI8u5NfY2R8wn+wZZEgRL
+X-Received: by 2002:a50:e619:: with SMTP id y25mr922004edm.247.1565049918801;
+        Mon, 05 Aug 2019 17:05:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565049918; cv=none;
         d=google.com; s=arc-20160816;
-        b=w7F17/jF1lLqFb9HtOVkpGYOxkqsCc4Io4343Oau7YxcYkdPp9zvUhVrRO241Xyk6w
-         dWpFW9gRljoO8HG3qVz5KLSwWiT2XDnLf1zwYxCnNy9EvpMaLBQgQuVrRxEt5Hbq6Tla
-         KOPYxOMWYy6yscVd0p4ca5V7/hYtHe0LsDjiF2oaRD+ylNT2ujshaqWQfTOZ7H8sikb+
-         yLmk56Kvo+Cb6SCId7vJXbcW21EmFy9Yjco8onQ8qM3yocQSH1RkNGmI2D0DfSMUzcxB
-         M7u6jobPKkbklgWTBT+49+g9LOHaI+x97el3Ad7y3kFpsYM4YtDiNW08bGGKCRpmA184
-         VixA==
+        b=WcTJaZ0wuhhJhH+kDFF2PCtJIdSMlVEyKHYfdRQ4XO2/m9NSLyJZTRd+MCPkdRnWku
+         JeHqRT43ub6SC+4jXZqV9YhrJRx690gu4hl88Y5Sf0PhKiEJ475qxXyOq0MiiIengWgl
+         i4WYzo3ucpN69OOit5G984zO6LNa/NjQhPBJiVEiVnR/s/yi8XtlxIG4EU5gCvSRyUZR
+         GgAXcN1BCSFC7Zb1OUNq6gK8gHaSnkQqUeOPVKZhBJCxraCai0AZLCl8Pe0WsVGPHhR3
+         1PjyXW4xYq2D7WQFbvmTLV/rN6hxklAuT5sfrKKxkL+AVOjFiD3W1UpDnD4JhSJZQhlj
+         18/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=n4VD/TPRQDUMzNqZGhCvOlXEUFnIudw6nAu1fCasCWM=;
-        b=lLyajmsqTquKNxbp1piI+uRRPTWO5CiW6zPHPoMu5GtKj49YoeWhfjOQJWElwihmL8
-         c9NjmRQKxnINM/AkSvHTuuofVOzsdjTgkNQiFqqaS/Dw2L+oFhNmweAQGdqg92thAicL
-         VrjgtrCNkeZF23eOOrA+40ZYzHPKWUnZqPZdzuGiVf2ApoTnye31Fs8fQgLZCWShFkx9
-         Z6g1oixvjMa/DipUIEAp3OtOQZlEQy3D1FV87ScvQ6mbXdPq0VxcVmsZ6c/VR9qAQ22L
-         WYp5/EWP23AtMWeK95Bmww0aKxMSAIb4JTpy63qOUZl/ntlTSzkOjIPIbbDhGOMEeYzN
-         2o8A==
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=R+6Mvp82E0p6yB/libxbibUQjbVuKcqpL4edZewcAUM=;
+        b=NBb7PJ/VW9RkfsR2G+bWYoXOfrOp9/3/XMjYFywvewjVVZ3jYUraK0nK6b/64ToYpt
+         Vs2AEhSG3AA6o8RtpDAYbxs2Xjv/1pGmdDijNzml3XmvFCzWBgzfyECB9ZXgNb7z93pL
+         TnvX+yy0wBd80CI/Nn2cQ8MU+FkpOr4wGKmmIDj8MO1mOcteRADiorWkWUsWqZn8DaPK
+         HQEbIZiZka9D6b5pvdSBKYr4LRzoktoQdDAFc8/W8AP8L4/i2Tpm0UxHYrlBRF7Pk9ke
+         /1LRkyN/KVLMxEBnUpCcEXXcN/j+AZCV8KWBC4PYVWbRoBFaMwPiIzMWCZ08JvReN2Re
+         85Kw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="eLcz6/P6";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b="TC0/4oct";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 35si10567100qvj.125.2019.08.05.10.08.19
+        by mx.google.com with ESMTPS id a8si23604303edc.258.2019.08.05.17.05.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Aug 2019 10:08:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 05 Aug 2019 17:05:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="eLcz6/P6";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:56214 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="TC0/4oct";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57568 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hugT5-0000Zm-OV
-	for alex.bennee@linaro.org; Mon, 05 Aug 2019 13:08:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43116)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1humyb-0003va-UF
+	for alex.bennee@linaro.org; Mon, 05 Aug 2019 20:05:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33611)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <alistair23@gmail.com>) id 1hugSf-0008VR-Pj
- for qemu-devel@nongnu.org; Mon, 05 Aug 2019 13:07:54 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1humyX-0003vP-1A
+ for qemu-arm@nongnu.org; Mon, 05 Aug 2019 20:05:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1hugSf-0002nl-03
- for qemu-devel@nongnu.org; Mon, 05 Aug 2019 13:07:53 -0400
-Received: from mail-lf1-x141.google.com ([2a00:1450:4864:20::141]:36831)
+ (envelope-from <richard.henderson@linaro.org>) id 1humyV-0008Dc-Pz
+ for qemu-arm@nongnu.org; Mon, 05 Aug 2019 20:05:12 -0400
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:37060)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1hugSe-0002nB-PI; Mon, 05 Aug 2019 13:07:52 -0400
-Received: by mail-lf1-x141.google.com with SMTP id j17so4571689lfp.3;
- Mon, 05 Aug 2019 10:07:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=n4VD/TPRQDUMzNqZGhCvOlXEUFnIudw6nAu1fCasCWM=;
- b=eLcz6/P6/FeblnHWgJrPfhsdfS3gbLz2A7hPraNaJZN3RaEEl62haAe9c73VJGxvbo
- xf3+8GVGankcP9bNA8GaG52cVNqX/gQYcAiO77A5Jn1JqU9q6wiByON3vu7wEmAlznmP
- mkYNo08dZtRxR+XiUjjoxeTydN3/EwkECsHLCJn/mgEpKLz82f0kqFEdv//m/Ver3I6t
- 5UitIrEK4KnNgRStEqMgnIlFgFgRTQfchqaCZgnlTtdzRUE9FNFlivqOUM0jnN/fLKRB
- DoR3xojqHzkYGdqPaOlHrDqYoh6PRilUQEmPUiPHUzQjsT+SPBj9Xo9LIenhSKC0yozj
- IfPw==
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1humyV-0008Cc-Ib
+ for qemu-arm@nongnu.org; Mon, 05 Aug 2019 20:05:11 -0400
+Received: by mail-pf1-x441.google.com with SMTP id 19so40446040pfa.4
+ for <qemu-arm@nongnu.org>; Mon, 05 Aug 2019 17:05:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=R+6Mvp82E0p6yB/libxbibUQjbVuKcqpL4edZewcAUM=;
+ b=TC0/4octsAFEwyWOWZmMJbyVxDCiiIZz70lFfhc1WCV07Ovs0pP11cEe3JrS1zXb6j
+ vPIcOREW7ql4OIafmbgxzRU0q2BdMkBlRTbSAXUY19yIwDVpD8RpJet4hg+ZQWeRxN51
+ ZQ6fKszWHIlzqE20SZknMNC5EMJoAtSIszRvJ+j17VxPhAYsP6iR3fI7r4dht+xNt8fi
+ Ibsbk4APXOPfYMHY9QEN6HeNzK29a88S3HQ5aAptO918BiG+d8F/go1z5UgkSe7x+UgL
+ JbkdmofWVQRG7SDrFsRsapeSaZ0tWnzaYmX00IU0N7XgMrCGsWrHvdOirUiEhQYmJKNP
+ Iqyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=n4VD/TPRQDUMzNqZGhCvOlXEUFnIudw6nAu1fCasCWM=;
- b=tUXt2rGC/kE8PqanBKWKojJ0InruSUimENTrlyEvZ+R2ZsptlqEvPUHReXPD07mHvg
- DjE43j7vXzHQu+QRKQAWvH+8pvgzg6AyjshSO8Y6Dz6pbZmcXbDZNcXS24Ie0DN/Lych
- Oj8TNHf88kWsJugnHZm2BHIfiUcIeGUxXsTLkVYcPd7pLou8lkPqFOj/7h12SrxqaTi3
- 0XXpHpfg1ZIEml72/2UW07tvEUQXbsucuLoQHZFueqpZdSDhFeF20FscHNwA+6c21bnF
- /OsjcdwNUc/D08NLyNm53ATFPk+lWL9BYYOsQLf4SYVLVDxOJPEZmJ49AaIEZqxJ7kXJ
- 2ALg==
-X-Gm-Message-State: APjAAAUpkaxBs9BxUy7wgjbkwcA999RwWLCJHota0Fm1bu/QCVQKnLRy
- ZPbF8KYafzUBFJtZVREYPxjc+Xu1lCaJOgcsfeI=
-X-Received: by 2002:ac2:563c:: with SMTP id b28mr58321278lff.93.1565024871247; 
- Mon, 05 Aug 2019 10:07:51 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=R+6Mvp82E0p6yB/libxbibUQjbVuKcqpL4edZewcAUM=;
+ b=D22SuDf44J1MdDlhetowlobxVl4lE30N9OM4+t/FDespWeGVQwml7G0+zSoY/FKLXE
+ wVpDd/BaVv/kc7P7X/H+nhVpSTyKA06fZpufSCuhiUgEFYfk4K8qZaVwXGHW+VRlf8QT
+ kTcThpTcon72w/UpMWUIsk9orMkccoBl6BzqucZr6TZl+5P8WHGeMxXb51X9Vddz0b16
+ BNvcYFi0qlo224H/UDcI8QRgMhA5G16j5wF/Ja1y64VTodwCWyH3kox8VesuXtodAgtd
+ VurkRuKb9Kjr2nzuw+/UfPhNLqsBoTzPoLLxuKgu9Oc0GhU8kHv8Ml0e3GZkeKjVxsGk
+ 7rcg==
+X-Gm-Message-State: APjAAAVmG1jOb391PE1mSaAo0GBcNSwPlQgHNA6kB94FPcDG233VQh3T
+ WixzGdNDa5Jfd4WDQE4YHhSVUg==
+X-Received: by 2002:a17:90a:fa07:: with SMTP id
+ cm7mr289075pjb.138.1565049909624; 
+ Mon, 05 Aug 2019 17:05:09 -0700 (PDT)
+Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
+ [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id i3sm92149782pfo.138.2019.08.05.17.05.07
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Mon, 05 Aug 2019 17:05:08 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Mon,  5 Aug 2019 17:05:03 -0700
+Message-Id: <20190806000506.10833-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-References: <20190731075652.17053-1-thuth@redhat.com>
- <20190731075652.17053-5-thuth@redhat.com>
- <b3696656-201d-9777-0b73-b6903949d61f@redhat.com>
- <533ca6da-a3ae-1c6b-a75d-f20bf97d8115@redhat.com>
-In-Reply-To: <533ca6da-a3ae-1c6b-a75d-f20bf97d8115@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 5 Aug 2019 10:04:10 -0700
-Message-ID: <CAKmqyKP=sNYUr1YF19eQNwBMVtPyJBqOAHb2h0chti3ReTVXAQ@mail.gmail.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::141
-Subject: Re: [Qemu-devel] [PATCH v2 4/8] hw/core: Add a config switch for
- the "register" device
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::441
+Subject: [Qemu-arm] [PATCH v4 0/3] target/arm: Reduce overhead of
+ cpu_get_tb_cpu_state
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Yang Zhong <yang.zhong@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <thuth@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <Alistair.Francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0t+0qfMA2LUY
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SXr+siYtopqp
 
-On Wed, Jul 31, 2019 at 5:33 AM Paolo Bonzini <pbonzini@redhat.com> wrote:
->
-> On 31/07/19 13:44, Philippe Mathieu-Daud=C3=A9 wrote:
-> > What about naming it REGISTER_ARRAY or REGISTER_BLOCK?
-> >
-> > The API is:
-> >
-> >     RegisterInfoArray *register_init_block32(...);
-> >
-> > Cc'ing Alistair for better name ideas :)
-> >
->
-> I think REGISTER is okay. :)
+Version 3 was back in February:
+https://lists.gnu.org/archive/html/qemu-devel/2019-02/msg06002.html
 
-I think REGISTER is fine as well. If you really wanted something
-longer I would go with REGISTER_API.
+Changes since v3:
+  * Rebase.
+  * Do not cache XSCALE_CPAR now that it overlaps VECSTRIDE.
+  * Leave the new v7m bits as uncached.  I haven't figured
+    out all of the ways fpccr is modified.
 
-Alistair
+Changes since v2:
+  * Do not cache VECLEN, VECSTRIDE, VFPEN.
+    These variables come from VFP_FPSCR and VFP_FPEXC, not from
+    system control registers.
+  * Move HANDLER and STACKCHECK to rebuild_hflags_a32,
+    instead of building them in rebuild_hflags_common.
 
->
-> Paolo
->
+Changes since v1:
+  * Apparently I had started a last-minute API change, and failed to
+    covert all of the users, and also failed to re-test afterward.
+  * Retain assertions for --enable-debug-tcg.
+
+
+r~
+
+
+Richard Henderson (3):
+  target/arm: Split out recompute_hflags et al
+  target/arm: Rebuild hflags at EL changes and MSR writes
+  target/arm: Rely on hflags correct in cpu_get_tb_cpu_state
+
+ target/arm/cpu.h           |  35 ++--
+ target/arm/helper.h        |   3 +
+ target/arm/internals.h     |   3 +
+ linux-user/syscall.c       |   1 +
+ target/arm/cpu.c           |   1 +
+ target/arm/helper-a64.c    |   3 +
+ target/arm/helper.c        | 334 ++++++++++++++++++++++---------------
+ target/arm/machine.c       |   1 +
+ target/arm/op_helper.c     |   1 +
+ target/arm/translate-a64.c |   6 +-
+ target/arm/translate.c     |  14 +-
+ 11 files changed, 254 insertions(+), 148 deletions(-)
+
+-- 
+2.17.1
+

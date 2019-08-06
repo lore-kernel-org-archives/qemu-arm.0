@@ -1,108 +1,144 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5047375wrv;
-        Tue, 6 Aug 2019 03:01:22 -0700 (PDT)
-X-Received: by 2002:a05:6830:1319:: with SMTP id p25mr2476640otq.224.1565085682309;
-        Tue, 06 Aug 2019 03:01:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565085682; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5102997wrv;
+        Tue, 6 Aug 2019 03:57:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyx4oIEOWzH6yJXc+ANjEMDN38eceu9nM4Kx0/DqzwauNgnW88+c0XCnBp1U6HjVqsBNzig
+X-Received: by 2002:a50:fd0c:: with SMTP id i12mr3214242eds.55.1565089073860;
+        Tue, 06 Aug 2019 03:57:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565089073; cv=none;
         d=google.com; s=arc-20160816;
-        b=ns3ugOybdAlDXeN7i+E78eTw4kEhTJ6KA8TpuU7S77hzqNFU6YTM/Q6o9GYAy2WR2b
-         mifYubtWEd712AKpJAqZgqBOx4rDwPnfBwVUzdewTfUtN10BtPMYnf6wRtsx8D9jZaRq
-         aCD2H2vDWDXBrCc8SWfGgJM7FvBDzAvrimsWqqRKOr20IeNEPw0ApN7SqcqoQClZn6wM
-         fqU32khaLC76bmdnaKbxCrpq9eejRDQ3Izlh2NPNJIljZimSsyKy1sfHDyNyY8JxACvJ
-         dLJw1tX3FEzjn4Xga/bVUHhrQsuCb8tFpSRe03yZ/F+CxBpaSri/qUo56YWrYoZJxS9o
-         gu9w==
+        b=UoVuzdFQ3J/KsozKhV4qVOidS8ySs/92EVSLJ4ZBmw08FXLq/1OxwN0Rs29Gr9rBuG
+         815YUsVvtKIlQmtsXOPcXGVc3W+j53x7W3ES6AptISyrfQgDScnQ4DQOwr1YYdYtiE4q
+         8TYdq77/gL6f0dc0vzUdM56yCPh3SIP2iIkVTTJBbau+xc82EfQDwjSfOtY1MIplJXrZ
+         KsltREj7JJ+1K25HIkDkstJWioW6iEvWkLTD7SflkgqcJa4wyAroIoEKwVwqW03X5JI+
+         0Qod9/s3HOO5BuvBN2tg+LHFOeze0VcHjQUnIIv72yjltBchBrdHK9eafrnJKapbwz7a
+         Vw7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=OyCkWYd4rR9Q+Suj817p2WoAsuYr+I0FZ+hkdGRfV3c=;
-        b=RpgABJwbHuzEXX9McWD7G3wttBgEjR4BYUF5soq3jFEY57EeT8uAdMeYCU/0eZD5oX
-         LSlYXLGNZA1DAWJru6Ufpek8LigXIE3xWre3UI3czeq0SwmRZPmBxOGOV5MRfG70HVIZ
-         WJNXmRfJnmKC+VMvPnjblkAUDta0M/kGjkneh/+sq2eztxApb+31IXvvQnD4qCzsSmA5
-         Y+IVA1SngFQSqS++08iy+OYZgtFdjVaQJO60rWy2m4IndoeXwnsYh+9alFyLGtwo9HU4
-         k+aQkOyjIm32J/Jl1Ar0Cyo22tD8o+uNlpCG7c8gYEY6Z0PhPtRhDUFJFePTofWyvUVk
-         oQzg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=Bm++tRfJLR6gx6xLf4+qVNoCTr6y24Gn+Rxn9bUAAMg=;
+        b=wVDSZ4c5N7TH+6HZN1c3c5Fhcj9dgZ5/az1Pf2iApv2JuuCX9i5zOhFA7NhmFc5fH3
+         62d6sD72q0VV2zc9cxYamocRq+1aALu/EYFTM1ZiGDl4AtuUu6EtB66wr+ciGwAjUltU
+         7OLspewxhbbT1/Gk52KTh+f8VMNMhbQWjsiKDmM/T8gKIZ/gM9M081AtgF+dBRqr0oPv
+         KtKpHWwBsUT3qCsXSYwDMUCmK5fBf8QLcAl3YYYosyv/04w5jzPZr+V/vQJHyz2KpS48
+         SnDTxL9ZgI6Q8t33c3SS9FS/pKSCjPulKwrMJzujSgR6zRItnzCfK+SDexJHQr1bnGPQ
+         uBoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Z4iZ23ta;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 100sor45489893otg.71.2019.08.06.03.01.22
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q17si27662686eja.24.2019.08.06.03.57.53
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 06 Aug 2019 03:01:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 06 Aug 2019 03:57:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Z4iZ23ta;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=OyCkWYd4rR9Q+Suj817p2WoAsuYr+I0FZ+hkdGRfV3c=;
-        b=Z4iZ23taEgEeTDYfZCBlLw1Ljp5ApuvHcd3EKiCGwFNd3iM9DjgXwO7BRFwiBLfTvr
-         +5gapkcyKfHHUlSO4ynABfo8wBMj87/niamQ5cAh51grf8Mgik5SCbRTpXMS7dTehmbF
-         gZ+XspEFhJc0AWRRt9IYnpCoCLac/zRXzoaKzhn/FH6TI0vCmfNMk4emrdZ68gV23rLa
-         SXqmXHBL0SRiB5hM57/pShLm7Dq6v09hOLL0+blaUa+nrEgq5imarQwc4OkkbKDQ5Dum
-         6Ki0rrSN5boa7ELWJCgfb6sMwMA6VMz/opPzONMDoJ/c9PVqSqQcssK/wOf9AdFRevMX
-         FJuQ==
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60244 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1huxA8-0000QR-Vw
+	for alex.bennee@linaro.org; Tue, 06 Aug 2019 06:57:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47462)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <sgarzare@redhat.com>) id 1huxA2-0000PV-FE
+ for qemu-arm@nongnu.org; Tue, 06 Aug 2019 06:57:47 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <sgarzare@redhat.com>) id 1huxA1-0006JT-I7
+ for qemu-arm@nongnu.org; Tue, 06 Aug 2019 06:57:46 -0400
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:42190)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1huxA1-0006J2-CH
+ for qemu-arm@nongnu.org; Tue, 06 Aug 2019 06:57:45 -0400
+Received: by mail-wr1-f68.google.com with SMTP id x1so37537754wrr.9
+ for <qemu-arm@nongnu.org>; Tue, 06 Aug 2019 03:57:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=OyCkWYd4rR9Q+Suj817p2WoAsuYr+I0FZ+hkdGRfV3c=;
-        b=HtQiQDsza9hPnkiqUD80Di+U9eXkyWK+kY6lO4JqGUzV/YxwrT687d8gOwThGAG2JN
-         06ZAuM2s1AAPkC1h3dJNjinQBXKhn/6NhyLHFTyH4Yt2cJem2kso0AcCgy4D/wwjtdRG
-         HoXVc65MNLcByQNAQHpV2wYL+kf/yTdjk+opyOILX29yQXs3GzElnv+DtyuV19QhabAM
-         +6seOo5clW0Y96wLfHoSddJnD47s3Qt/dVFRnwQlqrxwOAgM0Qf8xtW/FE7r4g+Q770R
-         Gt+/lvkhcq7xqczSyn3DKMe7yozxX9MTjw139Flj2+WQw4LZ/XWG4HY0exuVuCaaesGG
-         T3Ig==
-X-Gm-Message-State: APjAAAWhxSca0+VTYRRCUpNHpzzM07Rc0v7CJjSSvTJMVf0WiTVv3kcQ
-	Z2PBvnik887UDJGFgMAWK1ZjNzvilX8I178IMJRv95WE
-X-Google-Smtp-Source: APXvYqwjgN0OJG4Xw+aMuYsKoc4K0duH+s8ErPXEkBAxpJq5g/0E1CNjkt14ma3vF5bvCmDbki44X3pW8JTIqOQLi3s=
-X-Received: by 2002:a9d:5f1a:: with SMTP id f26mr2498351oti.91.1565085682005;
- Tue, 06 Aug 2019 03:01:22 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=Bm++tRfJLR6gx6xLf4+qVNoCTr6y24Gn+Rxn9bUAAMg=;
+ b=IhMtZYnO1gdHHw0yChPFqYvksLYP1gkgwyWrzecWvJATH9pPR3PFME/7AimMcmjc46
+ PSAxcXBTfr8ZsKfqJ5652doK+XJPXCT+SSpT3d6dI3ciJSQOitqsNKLH+hxr9mTJrxze
+ 9oLZNKCoYGbYp8W34UP4k8v85bK7gqRZ5roiwZ4IATGdD+nm8VFSYyJHHct5pog9yLTH
+ V/AV16KJl1vyrIwJUSrfF2tnlZzwI1l7kBppIjJE7qIVbaRmOSkcl3Yvr3D5lJxIcoLf
+ eGoqVqjGpL0eSitlxgGHrZ6iRm/diMGY5x/peIriyFZ5PuHUC7ZeJj5PnHKeurtik+Fz
+ wreQ==
+X-Gm-Message-State: APjAAAWrysK1A7VxnqqaQi4oV5+ukIv9VajEsIUtxLZT3H0mhFE4VxmK
+ W6L6Dkq9sVdUJN3/+Tm7tOmdkA==
+X-Received: by 2002:adf:afe7:: with SMTP id y39mr4040045wrd.350.1565089062785; 
+ Tue, 06 Aug 2019 03:57:42 -0700 (PDT)
+Received: from steredhat (host122-201-dynamic.13-79-r.retail.telecomitalia.it.
+ [79.13.201.122])
+ by smtp.gmail.com with ESMTPSA id l9sm68223969wmh.36.2019.08.06.03.57.41
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Tue, 06 Aug 2019 03:57:42 -0700 (PDT)
+Date: Tue, 6 Aug 2019 12:57:39 +0200
+From: Stefano Garzarella <sgarzare@redhat.com>
+To: Bin Meng <bmeng.cn@gmail.com>
+Message-ID: <20190806105739.ypoa545l4vigsscg@steredhat>
+References: <1565020374-23888-1-git-send-email-bmeng.cn@gmail.com>
 MIME-Version: 1.0
-References: <20190726175032.6769-1-richard.henderson@linaro.org>
- <CAFEAcA_JDfN+Njo8J0EhbtECWEW5_LcCVehbxmpY6AX3BLbOsA@mail.gmail.com> <d2b6ae73-6f48-1808-fb95-631bc12834f0@linaro.org>
-In-Reply-To: <d2b6ae73-6f48-1808-fb95-631bc12834f0@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 6 Aug 2019 11:01:11 +0100
-Message-ID: <CAFEAcA91b4FpbiUnZCVbs+nPvLo_q-iKwWkx94yxpXrZDnLhcg@mail.gmail.com>
-Subject: Re: [PATCH 00/67] target/arm: Convert aa32 base isa to decodetree
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: mZXTbETjzKz3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1565020374-23888-1-git-send-email-bmeng.cn@gmail.com>
+User-Agent: NeoMutt/20180716
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.221.68
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] hw: net: cadence_gem: Fix build
+ errors in DB_PRINT()
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Jason Wang <jasowang@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 83rn5Pa5aIG1
 
-On Mon, 5 Aug 2019 at 22:26, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 8/5/19 8:44 AM, Peter Maydell wrote:
-> > On Fri, 26 Jul 2019 at 18:50, Richard Henderson
-> > <richard.henderson@linaro.org> wrote:
-> >>
-> >> This unifies the implementation of the actual instructions
-> >> for a32, t32, and t16.  In order to make this happen, we
-> >> need several preliminary cleanups.  Most importantly to how
-> >> we handle the architectural representation of PC.
-> >
-> > I'd be happy to take the preliminary-cleanups part (subject
-> > to the various review comments) without waiting for the
-> > rest of the series to get respun.
->
-> I had an outstanding question re patch 4:
-> Message-ID: <c7a3ef78-d541-aa0a-21a5-8b4f48db1fd7@linaro.org>
-> https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg06520.html
->
-> and another re patch 6:
-> Message-ID: <09b930e2-0a92-25a3-4e26-8bea1f437039@linaro.org>
-> https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg06508.html
+On Mon, Aug 05, 2019 at 08:52:54AM -0700, Bin Meng wrote:
+> When CADENCE_GEM_ERR_DEBUG is turned on, there are several
+> compilation errors in DB_PRINT(). Fix them.
+> 
+> Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
+> ---
+> 
+>  hw/net/cadence_gem.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+> index d412085..7516e8f 100644
+> --- a/hw/net/cadence_gem.c
+> +++ b/hw/net/cadence_gem.c
+> @@ -983,8 +983,9 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+>              return -1;
+>          }
+>  
+> -        DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy, rxbufsize),
+> -                rx_desc_get_buffer(s->rx_desc[q]));
+> +        DB_PRINT("copy %d bytes to " TARGET_FMT_plx "\n",
+> +                 MIN(bytes_to_copy, rxbufsize),
+> +                 rx_desc_get_buffer(s, s->rx_desc[q]));
+>  
+>          /* Copy packet data to emulated DMA buffer */
+>          address_space_write(&s->dma_as, rx_desc_get_buffer(s, s->rx_desc[q]) +
+> @@ -1157,7 +1158,7 @@ static void gem_transmit(CadenceGEMState *s)
+>              if (tx_desc_get_length(desc) > sizeof(tx_packet) -
+>                                                 (p - tx_packet)) {
+>                  DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x space " \
+> -                         "0x%x\n", (unsigned)packet_desc_addr,
+> +                         "0x%lx\n", (unsigned)packet_desc_addr,
 
-I've followed up to 4, 6 and 7 giving some thoughts on those.
-Anywhere I've still not been very specific it's because I don't
-have a clear idea of the right thing, so use your own judgement :-)
+What about using 'z' modifier? I mean "0x%zx" to print sizeof(..).
 
-thanks
--- PMM
+Thanks,
+Stefano

@@ -1,132 +1,128 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5032036wrv;
-        Tue, 6 Aug 2019 02:44:26 -0700 (PDT)
-X-Received: by 2002:a54:4703:: with SMTP id k3mr1046665oik.143.1565084666169;
-        Tue, 06 Aug 2019 02:44:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565084666; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5041713wrv;
+        Tue, 6 Aug 2019 02:55:21 -0700 (PDT)
+X-Received: by 2002:aca:5106:: with SMTP id f6mr1200574oib.69.1565085321849;
+        Tue, 06 Aug 2019 02:55:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565085321; cv=none;
         d=google.com; s=arc-20160816;
-        b=hjHsz3bcB0Y5p/L5RspsP27GEvxkoWAVDWry6T6+VqKAZBhx7dMLxI/XqmkAtzIIAs
-         SI2AUTFlN1nf2hyTuPRxU82Wu7pwTXiW2jGdVQcCZ9QqjfVqFDVdbpoowXaEzjm9yCas
-         +mwZCnvKnocHI6OrlHyw9PibwVHqe+V20fr1BkMRBdT1f7Zps8uibob0imce+Gi0Uarx
-         nyoJ+rj1Cbn7ZeQ+WK1r0jmDLH7UoqdPh+GB7uZHMP110AtaSR7kcYRJ0lHn30//Zc7S
-         vMvklM2itFfmdJ2csHhn0XrXtQJRTSJz78a8zxB1O//7rhSfpHcieu3EyJHJEc92ofm8
-         75MQ==
+        b=jcUVyaWiOL3Cnx0NS9becYBt0j8VUavQsiLXO1sopPZW7G8iH0vdeS7hwG723RJOrc
+         DHV94iRzLciefpqxPFJhjZdaWPqD4+Fi/F3ANCnzQznqdl590wGndkUuf6VSwwel87PT
+         9hlfxzJD1RRBaNn42figmjilGiaPmPlboT0wDtsF6AenEQIOJZoYorKWh0PYsj6UMYpz
+         Eon+IW0Kh21Ro9k987n9UGTBJyox7HQijLrmn0qsUIT55yaL0PCQlIM7rFxes+qPJz4y
+         Py1WTtHBHNaP+BteUCAocpvAX44Qm4jv7H7Ze33VAdiAnfE4K6OO/g4/gtrqZdHUeGYo
+         DoKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=midoLkk2oROs660CFtNkSmeuZgvHzcbI7Yf4h/5nf/4=;
-        b=OZ4prkgF96hhfDxEH9tfHYyqOc42VAhba5xYOn/2TAWNkUx/AkBWp2+7nEWEpOdIHj
-         Kf1JIQgmb5csxfHNIhi++4z2GLtPu6WYGKMrkgP/GUE2jUHmqi8jxzs8VXRwR/bxheeY
-         YlL3rgBCgtz+uCZhKO1OPScfyCmpizb9XWm18ktoW/1dIjf5xHEdBVCRxUvaKHtRHzZQ
-         hn+DlxZy9HB2k099J2r5IdPthtKeBPRMcONXW7KXdRmzQ/5jNMLuz10sPaUsCtLoCBG2
-         kwfj81fW3D8o+6bHQg266Bo4YCjfyhcZxo/s63XyKN/T8UmkFTM4lVinw+pBrcPq4KJC
-         EBLA==
+        bh=bPXYZJMTNoLajk96h5a6B0Oeqlu3okr2ghnhZP4/sgo=;
+        b=sLIcI/7TXYeadRzYozX3GVJQmeRo1bpXmL57W0Qns6JlWZavoZwRd0Lch6Z8km7FmB
+         zzqAiYIOPe+F8UETkDYDScGKgrgDt4Vv4XWwiyR4JLYjVnrH3gcYsh6owrpShYVT8JGU
+         E69U80TLy3lwLYVhGFp5EEzBa5a6cXWO+u0IxSNt9SMRCDVX3+bYnp49aYbufG5tAIsf
+         Y7AwZjIv8xv9d4jq+qwnQbPhs4IuXrK0OYtGPxpGaMxI5m20u7P/fJiLpiq84/q2lkxS
+         ISR20+Nj6KJv2ZWC3Tz0UKtZeRb1EwdXUQ5ARpbFauxKoBf+aaQjADmjvT2f65jNRjlK
+         NsUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PDXNOtl4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TGS0x2on;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id g16sor43260386otq.174.2019.08.06.02.44.25
+        by mx.google.com with SMTPS id q11sor44180278otf.29.2019.08.06.02.55.21
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 06 Aug 2019 02:44:26 -0700 (PDT)
+        Tue, 06 Aug 2019 02:55:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PDXNOtl4;
+       dkim=pass header.i=@linaro.org header.s=google header.b=TGS0x2on;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=midoLkk2oROs660CFtNkSmeuZgvHzcbI7Yf4h/5nf/4=;
-        b=PDXNOtl40nrF18gOQXLL51CBSw2F4g+TaQhJ78B/HwWoir17gxEGA8zr21GyU7mgWV
-         pd5rqX69Gx2SHudBbKOMnkZO8oVQjqkdORh1rQTRe4p0VAU0Qa/lyeYFzOzE0OnZ4+2G
-         k+97PFY8Yz7GVJbrsXeL1hWVJ8bVVyleZXMajRZws2pm3KfC6e1XgQtU1qhQniz2yvTx
-         u2dWQ3pX9j3qq9oXFqHnPQ4cETOwo4fKr2RsndOD/31Ec8nceNLDKEa1x4rBWwgjdyD3
-         /hLYY/BU3yzN6u3Qcr3on3AkgYx2sHgMqIRmgrP9dWQLUYG+QRQSTIU5QvsFCcgiY2gf
-         seNg==
+        bh=bPXYZJMTNoLajk96h5a6B0Oeqlu3okr2ghnhZP4/sgo=;
+        b=TGS0x2onOOLm9F82P2Dy2vI58pxs0x0+O1VabogPfM3WLV3QtGYMZSaNtRVs7+8zs2
+         WueVyR7iwRGEKq83GKXgKxNtAenE7SlTtER8GLlNtY3vGFP5tuplGEZKrDMYC5HduK9l
+         xiLrkl4+sBJHhtVExPe18N86K0PFgBWx7HKw4BJTxCGwrfg7psngllQUNiPr5ps67jWb
+         di6aV7XoY62EqfnnMf12rU4LrmiYYnWRkNVD2wRVtgAN44X5dCRkfTdsFJr3OAfa1+wr
+         TGAz1DCVd1i7UGF0ilt531RbMyWsFDpxAc8DqEpXcC1ZEQsIWQfvv6jgK7ywfvTXTzDZ
+         +ZvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=midoLkk2oROs660CFtNkSmeuZgvHzcbI7Yf4h/5nf/4=;
-        b=hzmjLYR6eX22OHolLu8kwsiTcw2ULwQU0ADu0+p9+YhjOBKn/XVIYbKV1ogQsSPCMj
-         C2Jde1FhBSTpVwI4Nl9fj1spzeijsLmFSjqYopRRNOsOGOKXlvhZKAvM0T2uqM3+CAzY
-         hWRMVIeHrzui+PJgQ+Cl0FvU28yCjwmL7KlA1f9ualoJ9lfEYqph7Juy9z0xen9gnXY4
-         t1MKjOe3zY3y39tY+sjbcJsIV1r6A0nUHh4KG5v1ZUJafaYHLTSIKPIaVIEhW3y4qZRF
-         58IeuuONpt6Fvqr3WbMVlCWSKiv6rHLJ6hik/ztlhQ2FuFE8uGM+HciV6JU4s5B3ylqd
-         doBw==
-X-Gm-Message-State: APjAAAVvOpnkzjv3ZlBvJ2s5wFTTIU83T1sviQ73iTTAfS2j/Q0JPrM2
-	+5wuLkEReExU3P/45Gfcf/KUnGIVxgmvrvF9SS/GhdHY
-X-Google-Smtp-Source: APXvYqwZ+2O/NhfRLHtWqfelbIErtceLNVP16Ak1dS5XMiJkSTmB0KvSUZxMZJaMzCvErIN18OlB0ib6flLWUUz4IuY=
-X-Received: by 2002:a9d:711e:: with SMTP id n30mr2063944otj.97.1565084665664;
- Tue, 06 Aug 2019 02:44:25 -0700 (PDT)
+        bh=bPXYZJMTNoLajk96h5a6B0Oeqlu3okr2ghnhZP4/sgo=;
+        b=uDSfZJx7q987kuAjX1WyVfw/e+FvHLAZmrXYuGzffsir/bMEAJ++UHGztvVI4cAjMo
+         OlmLmYr8yUfsHFoZMN1ds7WSm32kL6szTKKbqyts7/TSZfUj8ZFBkpsToTIvuN22soBs
+         tAXTGoIIeKwaCW0WWoJpJundIK+yguhe1J6272ka4BM3favY2x7CzLhwB5wizbn45YtM
+         9JnPBWOrEGH3eq4uzD2VoyoQXAgIzvZYSDHVFWkMBHfaGCU2rPvn3oj44EE2wgwA2zuD
+         AKbuzc9uVdz3DlfLpHd3W5sCv9r1kXogSzJ4K7g5spZs7H2PoaCPlGY4SMBGcXKNkDPy
+         dVDw==
+X-Gm-Message-State: APjAAAV5JY9haqaZGoqOkW0fGpron0GmKBsQw+ZGe2j9Vr9M1D7sPjjJ
+	GAVFXkJ/ZcwanGq125sPstTa0L4cZUVpTkd4mc+RwoVaziw=
+X-Google-Smtp-Source: APXvYqzWZa1qsZqm+JYfZ5jXQWKLp/g48frTeyVJ7+fafdVZM3hKs+Bvm2JND1PMykpXrX19zEJrGGHWnP441N5X6Yc=
+X-Received: by 2002:a9d:5f1a:: with SMTP id f26mr2477235oti.91.1565085321445;
+ Tue, 06 Aug 2019 02:55:21 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190726175032.6769-1-richard.henderson@linaro.org>
- <20190726175032.6769-8-richard.henderson@linaro.org> <CAFEAcA_HY=WuGEPxTEm5g5tYuCDHXRDs=9EXQd6r+zvsL6_=Uw@mail.gmail.com>
- <af4f9f07-ac63-dfeb-9f2d-734ffff3fe7d@linaro.org>
-In-Reply-To: <af4f9f07-ac63-dfeb-9f2d-734ffff3fe7d@linaro.org>
+ <20190726175032.6769-5-richard.henderson@linaro.org> <CAFEAcA-W7idBRdD-DHxrVqfnBsKmAOPZoQAJkaUVOcjnLnGugw@mail.gmail.com>
+ <c7a3ef78-d541-aa0a-21a5-8b4f48db1fd7@linaro.org>
+In-Reply-To: <c7a3ef78-d541-aa0a-21a5-8b4f48db1fd7@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 6 Aug 2019 10:44:14 +0100
-Message-ID: <CAFEAcA8Ju1C9x9uR1f0Pyzf1sGPnXdyNZmVSqos6BNrbidhMpw@mail.gmail.com>
-Subject: Re: [PATCH 07/67] target/arm: Introduce add_reg_for_lit
+Date: Tue, 6 Aug 2019 10:55:10 +0100
+Message-ID: <CAFEAcA-QzmZ8aaKU_qYbTtphgQNmNNTPH_C7YMF0-yJ0ZxeUiA@mail.gmail.com>
+Subject: Re: [PATCH 04/67] target/arm: Remove offset argument to gen_exception_internal_insn
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
 	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: Hxw7TUv0TxN0
+X-TUID: YOYAY5eEKl+X
 
-On Tue, 30 Jul 2019 at 01:51, Richard Henderson
+On Tue, 30 Jul 2019 at 03:11, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> On 7/29/19 7:15 AM, Peter Maydell wrote:
-> > On Fri, 26 Jul 2019 at 18:50, Richard Henderson
-> > <richard.henderson@linaro.org> wrote:
-> >>
-> >> Used only on the thumb side so far, but will be more obvious
-> >> once we start unifying the implementation of A32+T32.
-> >>
-> >> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> >> ---
-
-> > This is losing the information in the comments about the UNPREDICTABLE
-> > cases. Are there callsites where the new function is called where
-> > "thumb and reg == 15" is not UNPREDICTABLE, or are they all
-> > that way?
+> On 7/29/19 6:52 AM, Peter Maydell wrote:
+> > I'm not so convinced about this one -- gen_exception_insn()
+> > and gen_exception_internal_insn() shouldn't have the
+> > same pattern of function prototype but different semantics
+> > like this, it's confusing. It happens that both the cases
+> > of wanting to generate an "internal" exception happen to want
+> > it to be taken with the PC being for the following insn,
+> > not the current one, but that seems more coincidence to
+> > me than anything else.
 >
-> These call sites are that way, but this function will eventually be used for
-> LDR (literal) and ADR, which obviously are not UNPREDICTABLE.
+> I don't like "offsets", because they don't work as expected between different
+> modes.  Would you prefer the pc in full be passed in?  Would you prefer that
+> the previous patches also pass in a pc, instead of implicitly using
+> base.pc_next (you had rationale vs patch 2 for why it was ok as-is).
 >
-> I don't think this comment attached to this code is useful as-is.  Either we do
-> the natural a32-ish behaviour and use ALIGN(PC,4), or we should
-> gen_illegal_op() and be done with it.
+> Shall we shuffle these patches later, after the Great Renaming of Things Named
+> PC, as discussed wrt patch 6 (pc_read and friends), so that the "offset"
+> parameter immediately becomes the Right Sort of PC, rather than some
+> intermediary confusion?
 
-I think it's usually worth noting when something's UNPREDICTABLE
-and we're choosing to take the falls-out-of-the-code behaviour,
-that's all.
+I think what we're really trying to distinguish here is two
+orthogonal sets of possibilities:
+ * take an exception, with the PC pointing to the following insn
+ * take an exception, with the PC pointing to the current insn
+and also
+ * take an "internal" exception
+ * take a guest-visible exception
 
-> Would you prefer a function like
->
-> /* Use of PC is UNPREDICTABLE in thumb mode, but allowed in arm mode. */
-> static TCGv_i32 load_reg_nothumbpc(DisasContext *s, int reg)
-> {
->     if (unlikely(reg == 15) && s->thumb) {
->         gen_illegal_op(s);
->         /* Unreachable tcg ops will be deleted but must still be legal. */
->         return tcg_const_i32(0);
->     }
->     return load_reg(s, reg);
-> }
->
-> for these specific usages?
+(of which we happen to only want 2 of the 4 possible flavours at
+the moment). I don't particularly mind what API we use as long
+as the naming/parameter setup cleanly separates out the two
+orthogonal concerns such that you could have all four without
+having to rename anything. Possibilities:
+ * have gen_exception{_internal,}_insn and
+   gen_exception{_internal,}_next_insn
+ * have the functions take a bool for "exception on this insn
+   or on next insn?" (not ideal because 'bool' parameters are
+   a bit opaque in meaning at the callsites)
+ * pass in the specific PC to use
 
-I definitely don't favour this -- all our "is this going to UNDEF"
-checks should go right at the start before we generate any
-TCG code at all for the insn. One of the things I'm hoping this
-series cleans up is that the current decoder is quite bad at
-sometimes detecting UNDEF conditions late (which then results
-in warnings about potential leaks of TCG variables).
+PS: the "_insn" part of the function name isn't sacrosanct:
+it sort of makes sense I think but if better names occur that
+don't include it that's fine.
 
 thanks
 -- PMM

@@ -1,156 +1,105 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5306611wrv;
-        Tue, 6 Aug 2019 07:09:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzJasV2tRfHKdGdf3d96MSxC9cIIKL2x5Zj0vwNxAd/NwBPaui2NqNKNbeRCtlmtvpfXVUh
-X-Received: by 2002:aa7:c393:: with SMTP id k19mr4039616edq.76.1565100544472;
-        Tue, 06 Aug 2019 07:09:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565100544; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5366487wrv;
+        Tue, 6 Aug 2019 08:04:53 -0700 (PDT)
+X-Received: by 2002:a63:2c8:: with SMTP id 191mr3379958pgc.139.1565103893592;
+        Tue, 06 Aug 2019 08:04:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565103893; cv=none;
         d=google.com; s=arc-20160816;
-        b=kU/vv4RbJ4TlzQ9pXTwUkhHTI+6FQDOkefSZJQU/xGyogBG5/lCjND0sMmk/kZ7Ys6
-         sKTT/nvstJZBl2x2PhIsKHN+X+lymfhB9pZ9nzLf4Jx/EaJD2WO0iBEfF0v0JVKOBgXD
-         tJxbfNJjV1mlb+8byVkvTA5Ht36O69yOF5ufy8EWuTHzoFPp8YCuOlDdFaNEt5KoCEZG
-         KX7k1nLXP7wHuo8mNmQQlXe/v5Y1EZ8JDNTVdDwFF9qj5ndprVZ6a+XaRoMkO0rRVjwH
-         +DshRUt9z1Nd0ac3YrCHRMk7iUpE/5jejQiTKiDWh/MDDI5A6O6ffprP7HxcV1VQ/TBo
-         AjBA==
+        b=RMIydNlHw8tUs6KhcRg9/caJQgFPxY6cijkXuyqjxINcb/PUaKXYWvw6iu5NNqExCt
+         K31Me+ee14keAB16CNNc8vMufZu2mKbZ1H/xxy+BFOodyGrFGqjfwHJBe0uKS8622Ywf
+         nekR2WZNHtTqfCKWhh67qtyn9Nrgv27SwBbUtxQZlLGvHyAUSK80JFj/O2GxY1IQ5Cjd
+         n0y/WH+taMC7y5Wa+ry/5tcsKaGuWgmCmOxYxNcpoZ2sfmpTUxxny8D4yaKYwnYBWjY5
+         lwWHMIv4vddu9KPYPj3PjYPiKw9xs1N1erQFqxve64fctqVsVljWiC9z5MM7BNdL+5rZ
+         +1NA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=gzgxtu0/dq4kwvaccOAO9rAoqxbKfC7HMKno1MSksXQ=;
-        b=vOh1OWjaalulVT2p1P06P9LSgPVCcW/DrqRdeCrF3Pnnh5XC9aRuKpPBFBdb6t43EL
-         ViGxyroS9nJsu1Iv4dTbgPYeHpMXxQL8/BT3n6VWxyNGZfZv7gxAe0m/I+lkh1u0ipB5
-         GifrhM/VDV1VhkY6RR//cQiSF097gYVF9iTljPWLeUOEisTJ/BDNy6O/KK4lMYz+GByq
-         ziIP9D8wuXjaAaaFhLv23VnQBuQ8bW9rdBwfac9Q0LLpucD0NsLxR4x35nGCr9GCjgsu
-         uuuFJD+2XfrX4jbNX9yWb39dSZnOAA5l6lb+LjSndO3mce8J2+dX0oWNm6Leebn07Dxc
-         F8oQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=0UvgkNYT4XxnBleRsi7bo7lrrahSm8tWNJn+dEGwjUs=;
+        b=GfDHRLTJQVJTyVP4w2uinohsEyl4a0UZ/38qjhkQHsD3RNavsNyvERyGMxz4qigYBX
+         +DrrFFeytqZGTmuVEXEAMvuTxh6ord2ttnGy4f5/j17kzPsh6fJ5rYEOkAbIMDctr7eP
+         BZsmlsuzCBTLyX3kiyGigUR9S57Pf6rRPyr31R7uDlPhvHLKlAwqVhm2i6odW7qaH6fK
+         0fz9i2rDG8I2HQMRYSUc6GcLQ1K+xNNpbjp91stOZa71lVN3INHC2TMH5nDb8TS6x0/p
+         Mc63oix34KrrL8NeRPYQPIkIxDdibzkNvFfyxK8FuSIORkBWx4gQ9JLhQR071Dj2qXyR
+         XpvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VJ7e+Z1O;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v6si27675555ejx.120.2019.08.06.07.09.04
+       dkim=pass header.i=@linaro.org header.s=google header.b=BsmGIqSt;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id s14sor25196463pjb.11.2019.08.06.08.04.53
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Aug 2019 07:09:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 06 Aug 2019 08:04:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VJ7e+Z1O;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33736 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hv099-0005R2-Ik
-	for alex.bennee@linaro.org; Tue, 06 Aug 2019 10:09:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38521)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hv092-0005QI-Ts
- for qemu-arm@nongnu.org; Tue, 06 Aug 2019 10:08:58 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hv091-0000Kg-PB
- for qemu-arm@nongnu.org; Tue, 06 Aug 2019 10:08:56 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:39319)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hv091-0000KM-Im
- for qemu-arm@nongnu.org; Tue, 06 Aug 2019 10:08:55 -0400
-Received: by mail-ot1-x341.google.com with SMTP id r21so86768901otq.6
- for <qemu-arm@nongnu.org>; Tue, 06 Aug 2019 07:08:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gzgxtu0/dq4kwvaccOAO9rAoqxbKfC7HMKno1MSksXQ=;
- b=VJ7e+Z1Ol7lot7JU9WFcp8j272IHcxtN39+DctnTo9G72lkpiWxVQvh8fjHFF/Rfsl
- f0S9jBPfinAnzWkgP/DNPlqna4Sp/P2M8qeNv+dSSulsXexTs4HJ7wRQbaWnD6EzXWRg
- I74d1YmHkOEH87ltf21QOxo50iyf2tTN0ZTcZLWvBDoRtHq7Pd7zsUZwGdIU4vfAsarM
- 31DRysbx5cQ7aYDIK7YHQmbGqQPCwywbBYqdy9do1SqxY6wVIh6rjr8PjcFvkwR4c+e9
- 0P0wBUct7aK1ggypZrveaOihL3cEg4xzzHX7NO4YD1Re+va3PLDEc6onfqFoP9uX+SDw
- 7o+Q==
+       dkim=pass header.i=@linaro.org header.s=google header.b=BsmGIqSt;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=0UvgkNYT4XxnBleRsi7bo7lrrahSm8tWNJn+dEGwjUs=;
+        b=BsmGIqStDVudsifgfrdE1GITdloX52P4jiKkg3LUxxfWdnMQX1fo9zcQoCwNl0lMxz
+         Gj1uXmf7T33QwA73W5Ju6j1oEZq50kQvqsbvQCPwC5S45KUWUFkAkEzkFZ4JHnfw0UuC
+         ey3GUlpTOl0uZ0IFIiwweHO3KuICTUNMdwXkveGXRAjy7G6rWccUWzbRGgnV9bPr/C9a
+         QlwJWaCBJr4knbr4qiFsrAfD0qFMDjmdIfxLC72682SQt2dN7CKueAZT18My+Jt0NrTj
+         LpSBLZb/DrFGRuotTLuNMn8yg5yKSmk6mIyP+m85cMTkl4MV1FKUWE/SDavy+vCikDcU
+         6YZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=gzgxtu0/dq4kwvaccOAO9rAoqxbKfC7HMKno1MSksXQ=;
- b=fLZH6DnclRyxj1Bvs63IpsetYneYfGc57KHH4J6+br7T4tMHzIpfUcMTh8BfXNUyDz
- sstevijIoUoL1mMJ0ljGWsNn9NQvh98K8etA9/HYDSxmwwlOnTBzShzdwXhLCpmlQv8/
- qs+qwkoBLaMH7z5IGy4k09OAyh1r0yX7ttKHoiGdSLCD0hIRwdDun3ihsW1dHW7TofUn
- cQdBFzFx9EOFoUT5J4KeTencYbVwbA8/yCltV4wNPHJIKqgHTSNCE4l5q41suP0BVTTT
- cVhaxB5hp29yHj11ySpG1dqrt3yR6LSNrILMdowvGZSie2uyLZiSxt6G1YfMSLC2C6JG
- vTlQ==
-X-Gm-Message-State: APjAAAUo4v9zjPczUaGrysYiA5RYZyjlBgsHlbqxIQorwWFIJPsOJ2Md
- JxXJJHLKY9iLhQK3S67o3dnHse2PtSHhzVlCAe6l9A==
-X-Received: by 2002:a9d:5f1a:: with SMTP id f26mr3505008oti.91.1565100534453; 
- Tue, 06 Aug 2019 07:08:54 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=0UvgkNYT4XxnBleRsi7bo7lrrahSm8tWNJn+dEGwjUs=;
+        b=TLFg3zv+vDnnH5ckIHRqGsI/XZpj+sHPQ8DeFY5XYjY7POfHOxj4gErt5XoGiJYgTR
+         ZSmoRapO2FVCLLbvyZr2l721S2IH1wAiugcgb9WqvP/2WbunUXdiQz73pvA+dJVYvCPT
+         CwwclW3UMdMUwFv+a2/Mb08qNaPWIKypdrVgl63stVT/uWmTcA8H0m1PK2DS3eTZPAnd
+         FXzLJtaX6CmHQeBClqmwtJUw4iNn2vWMCm+EuAmxZsuJ3hHZkJcd2YYWnEJpf/Hz7Dn9
+         udhjIM5VyqEUR0L0vobtZy6JRwgfDh2OBIN/TYCSSyJUabpLBZU7o4ZbLvsLQA+X9IHB
+         Ebnw==
+X-Gm-Message-State: APjAAAVqeZOPnm0MfXWWaDOL57tyecq9HOmXR8j5Aai9mMOIQ+CRisHm
+	1y/cUDKQstEpggAoEkDsTh/PMgeV71triA==
+X-Google-Smtp-Source: APXvYqyKhOiKBS1Us3ex4IuGQgF8/zyArymUfFzEZeLZj4GfpdzZROuvY8poWruB8yhtD3GF7infVg==
+X-Received: by 2002:a17:90a:26e4:: with SMTP id m91mr3659576pje.93.1565103892410;
+        Tue, 06 Aug 2019 08:04:52 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+        by smtp.gmail.com with ESMTPSA id 85sm93424647pfv.130.2019.08.06.08.04.51
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 06 Aug 2019 08:04:51 -0700 (PDT)
+Subject: Re: [PATCH 06/67] target/arm: Introduce pc_read
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20190726175032.6769-1-richard.henderson@linaro.org>
+ <20190726175032.6769-7-richard.henderson@linaro.org>
+ <CAFEAcA_kmuX6bxR50eU_3nTdRcjON2nVTqVWiRamSRe6jui3ig@mail.gmail.com>
+ <09b930e2-0a92-25a3-4e26-8bea1f437039@linaro.org>
+ <CAFEAcA9yQQSYnwEeSNbx4P94deuG5v5fKs7gW4VgG7LFzBX03w@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <92a7e54e-678e-cf4e-fadc-373e1bd6a41b@linaro.org>
+Date: Tue, 6 Aug 2019 08:04:49 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-References: <20190730054501.32727-1-rashmica.g@gmail.com>
-In-Reply-To: <20190730054501.32727-1-rashmica.g@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 6 Aug 2019 15:08:43 +0100
-Message-ID: <CAFEAcA_-qLt4JzMkG7mm5wnVvrpC8qnO=XC0GWmcU2ZXoMQEtA@mail.gmail.com>
-To: Rashmica Gupta <rashmica.g@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::341
-Subject: Re: [Qemu-arm] [PATCH v3 0/3] Add Aspeed GPIO controller model
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- Joel Stanley <joel@jms.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hGGGUYOUDItB
+In-Reply-To: <CAFEAcA9yQQSYnwEeSNbx4P94deuG5v5fKs7gW4VgG7LFzBX03w@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: mn/0T4c4AVCL
 
-On Tue, 30 Jul 2019 at 06:45, Rashmica Gupta <rashmica.g@gmail.com> wrote:
->
-> There are a couple of things I'm not confident about here:
-> - what should be in init vs realize?
+On 8/6/19 3:00 AM, Peter Maydell wrote:
+> Renaming pc_next would be a cross-target change, so let's put that
+> on the shelf for the moment. Maybe just put a TODO comment to the
+> effect that we could consider renaming in future ?
 
-We are not very good at documenting this distinction (and there's
-some bits of it I'm not sure about either), but:
- * init cannot contain anything that might fail
- * init cannot contain anything that affects the simulation
- * init shouldn't do anything that needs explicit cleanup
-   (eg memory allocation)
- * property creation has to happen in init, because properties
-   are set after init but before realize
+I wasn't suggesting renaming the cross-target variable.
 
-Thomas did a good blog post on this:
-http://people.redhat.com/~thuth/blog/qemu/2018/09/10/instance-init-realize.html
+I was suggesting shuffling around the current names, and using "pc_next" for
+what it sounds like -- the pc of the next insn.
 
 
-> - should the irq state be in vmstate?
-
-I guess you mean the "uint32_t int_status;" field here?
-If it's state that's in your device then it needs to be
-in vmstate (this roughly corresponds to 'is there a flipflop
-in the hardware that holds this state', though that is not
-a 100% perfect guide). A 'qemu_irq' holds no state of its own,
-so you cannot query it for the state of the line after migration.
-So if your device model needs to be able to know that state
-itself then it has to keep it in a struct field and migrate
-that struct field. (For some devices the state of the outbound
-interrupt line is a purely combinatorial result of some other
-state: "int_output = int_status & int_mask" is a common one
-where there's a "raw interrupt status" and a mask bit that
-suppresses the outbound irq line. In that case the int_output
-need not be in the device's state struct or migrated, because
-we can just calculate it when we need it from the int_status
-and int_mask state.)
-
-> - is there a better way to do composition of classes (patch 3)?
-
-No strong opinion. From a quick scan through of patch 3 it
-didn't look obviously doing something in a suboptimal way.
-
-thanks
--- PMM
+r~

@@ -1,75 +1,75 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6256045wrv;
-        Wed, 7 Aug 2019 01:36:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwndpg8bQjR5pUJTaWn9aXokXiJd9ku9cwyNKEpWBDpQQyqx4R0vI/lM8Ffl1nPgLC/F7qM
-X-Received: by 2002:a17:906:c785:: with SMTP id cw5mr7188186ejb.215.1565166966426;
-        Wed, 07 Aug 2019 01:36:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565166966; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6256693wrv;
+        Wed, 7 Aug 2019 01:36:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxyXNLozlcL5sg8t0dT3T2OPFAPFOceal+FMKhVAUKL3iFkN9NaaseQzTf3bd6/UMW6oSwG
+X-Received: by 2002:a50:d2d3:: with SMTP id q19mr8353828edg.64.1565167017080;
+        Wed, 07 Aug 2019 01:36:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565167017; cv=none;
         d=google.com; s=arc-20160816;
-        b=HfEeONSOvvbdD3QKK5dqC0F/UMiIRS/4ucXrk9jHHdC+sqlIs58nUb4ddbi9G5ZwHm
-         V/R/707CT+Yt/3/AnUKc9x3IYlawBU4vWS7wFtKZkkKHSTuWYP0q2pqBnTfpvfF0ZwAV
-         A0emp2m9n290f5k+A49BdkSjUDtds0AYJkdf9j4mj/ctZtDYUGuDeDvs11IQHtc8ajBv
-         xvf4HbAEjlBup7Vn+gzGwlFR0HwhnQHl4qsgb1aO9y/bpdpC6dV1PS0darT72KoxItvi
-         E5UL4jOYgdFJSqnBuDqWwntHWPwk/raJikQV44MorWE9OaMXEsuephOmgj2NWs9h7P7M
-         RBcw==
+        b=YqPEp+2v8frykIWG+y7pT12fnskVv+1zHDfmd3FV6VLU0dgLXvW9nMgyjEhjvDEWPg
+         QI4hf69lhf8uPilFPLQ0WcfWuIYHmjmP5tAvgJwhg4f0dZ05TC8FDZVbglPgDZy4f5QN
+         n3DqUr1u+j+QZmA3/vYtriEqL0Q/g93/ZTgs9LSdknTfkrbDVa6X5ypBDpGErLPkfghI
+         If69VI0zRr1OvRE+35ly3DxWT+rtiDsbXW609UsWpYtv/Wjc8Tc20Mi4rC4pqAFBBI56
+         PNqrMcKu+c+FPGmTsBalO0l78UvqhhSkG+i09lDrDheAXeXCPPGqTB0zlc+nIp1y39+R
+         /EeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-language:accept-language:in-reply-to:references:message-id
          :date:thread-index:thread-topic:to:from;
-        bh=pEUH1VIkHglFzbuxJyhFDkR3PcdZdTOOGUUqHS+0ROs=;
-        b=bpE+aXUtjtszouikJYTWscQq6qzLuOVmUcrQZhwu7D+i948tr9XdDCu/B6U4qJ8oYF
-         rudKOMNQuLFM1OhH4xDesRqOIXgE816aiWLrz8dXFY/t7z7il3u16nrfwnXuho7pqZzF
-         EPAnFQbiuzNEUQfnoqTXl+23AvuWYEbV1x2OFxN43i4cG9+wMJIHSh+BCFONr/1+nTR+
-         axZeC8k7kNjHS/R0rXQGvuduy223z1S7nqr0u3qC46baqmo7QW2vNAy28hwf94m1dMzQ
-         1NgIl7g0F757zrcdyejokGzKmGVcpkIrMOwmW/52tmWpySO88lChwLhBQUG4wUltSx+C
-         L1kQ==
+        bh=3t+69R78Rz0h3e/rbunaDyac0r8O2CX/lBh82NAL7jM=;
+        b=PoprngiaRsEX1ALjVojx4sNvnQOg5libZO5Dm9oarPFoGNuPkTWExqknrKqDAF/XT3
+         W3AEUg9gauFzTJs+3XYgvlibEJBc3FGa/wb/S4QMMkIWSWyUrRuEevqG4Eb7TU4+xTt9
+         O3n1cgMiQggZU7U/Euk/mPoLaNsmTnMhT/87xqHx3gQbouxZuG+HizlrfTY5eWQaXb1C
+         KhuFavyKOpb3jqDJVVBCqw+H7UJec8C8Jm9p6qwZUMxv8mF/TOrJ5Xe8iv70U/G7T/5V
+         thxRShgsLxQ9/WNsbiRQsy9LoO6RzBi42VPX5pgehkNDvsbXolkvmVKNlxXLVcvxYecl
+         BU8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x10si32637987edd.307.2019.08.07.01.36.06
+        by mx.google.com with ESMTPS id j24si29079003ejt.212.2019.08.07.01.36.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 01:36:06 -0700 (PDT)
+        Wed, 07 Aug 2019 01:36:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:38620 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38652 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvHQT-0007rP-Ci
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 04:36:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46170)
+	id 1hvHRH-00014z-RA
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 04:36:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45643)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <tony.nguyen@bt.com>) id 1hvHQI-0007cf-6k
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 04:35:56 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hvHOi-0004Wt-9l
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 04:34:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hvHQF-0004Nd-IZ
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 04:35:54 -0400
-Received: from smtpe1.intersmtp.com ([213.121.35.78]:48605)
+ (envelope-from <tony.nguyen@bt.com>) id 1hvHOW-0003R6-Kg
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 04:34:15 -0400
+Received: from smtpe1.intersmtp.com ([213.121.35.79]:53897)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hvHQ8-0004KN-7j; Wed, 07 Aug 2019 04:35:44 -0400
-Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- BWP09926083.bt.com (10.36.82.114) with Microsoft SMTP Server (version=TLS1_2, 
+ id 1hvHOA-00038U-PI; Wed, 07 Aug 2019 04:33:43 -0400
+Received: from tpw09926dag18g.domain1.systemhost.net (10.9.212.34) by
+ BWP09926084.bt.com (10.36.82.115) with Microsoft SMTP Server (version=TLS1_2, 
  cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Wed, 7 Aug
- 2019 09:35:32 +0100
+ 2019 09:33:33 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18e.domain1.systemhost.net (10.9.212.18) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Wed, 7 Aug 2019 09:35:41 +0100
+ tpw09926dag18g.domain1.systemhost.net (10.9.212.34) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Wed, 7 Aug 2019 09:33:40 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Wed, 7 Aug 2019
- 09:35:41 +0100
+ 09:33:39 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v6 26/26] target/sparc: sun4u Invert Endian
- TTE bit
-Thread-Index: AQHVTPsYByi6svInOEeTzdAlz34bIw==
-Date: Wed, 7 Aug 2019 08:35:41 +0000
-Message-ID: <1565166941186.41868@bt.com>
+Thread-Topic: [Qemu-devel] [PATCH v6 21/26] cputlb: Replace size and endian
+ operands for MemOp
+Thread-Index: AQHVTPrQs9TU2DS1Dka5k39fGdVfMw==
+Date: Wed, 7 Aug 2019 08:33:39 +0000
+Message-ID: <1565166819111.14515@bt.com>
 References: <45ec4924e0b34a3d9124e2db06af75b4@tpw09926dag18e.domain1.systemhost.net>
 In-Reply-To: <45ec4924e0b34a3d9124e2db06af75b4@tpw09926dag18e.domain1.systemhost.net>
 Accept-Language: en-AU, en-GB, en-US
@@ -78,12 +78,12 @@ X-MS-Has-Attach:
 X-MS-TNEF-Correlator: 
 x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.44]
-Content-Type: multipart/alternative; boundary="_000_156516694118641868btcom_"
+Content-Type: multipart/alternative; boundary="_000_156516681911114515btcom_"
 MIME-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 213.121.35.78
-Subject: [Qemu-arm] [Qemu-devel] [PATCH v6 26/26] target/sparc: sun4u Invert
- Endian TTE bit
+X-Received-From: 213.121.35.79
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v6 21/26] cputlb: Replace size and
+ endian operands for MemOp
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,90 +123,547 @@ Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
  aurelien@aurel32.net, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /JjKuHVJBYq0
+X-TUID: pG1IqoQh2o9H
 
---_000_156516694118641868btcom_
+--_000_156516681911114515btcom_
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
-This bit configures endianness of PCI MMIO devices. It is used by
-Solaris and OpenBSD sunhme drivers.
-
-Tested working on OpenBSD.
-
-Unfortunately Solaris 10 had a unrelated keyboard issue blocking
-testing... another inch towards Solaris 10 on SPARC64 =3D)
+Preparation for collapsing the two byte swaps adjust_endianness and
+handle_bswap into the former.
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/sparc/cpu.h        | 2 ++
- target/sparc/mmu_helper.c | 8 +++++++-
- 2 files changed, 9 insertions(+), 1 deletion(-)
+ accel/tcg/cputlb.c   | 170 +++++++++++++++++++++++++----------------------=
+----
+ include/exec/memop.h |   6 ++
+ memory.c             |  11 +---
+ 3 files changed, 90 insertions(+), 97 deletions(-)
 
-diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-index 1406f0b..c6bafa8 100644
---- a/target/sparc/cpu.h
-+++ b/target/sparc/cpu.h
-@@ -275,6 +275,7 @@ enum {
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index 6c83878..86d85cc 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -881,7 +881,7 @@ static void tlb_fill(CPUState *cpu, target_ulong addr, =
+int size,
 
- #define TTE_VALID_BIT       (1ULL << 63)
- #define TTE_NFO_BIT         (1ULL << 60)
-+#define TTE_IE_BIT          (1ULL << 59)
- #define TTE_USED_BIT        (1ULL << 41)
- #define TTE_LOCKED_BIT      (1ULL <<  6)
- #define TTE_SIDEEFFECT_BIT  (1ULL <<  3)
-@@ -291,6 +292,7 @@ enum {
+ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+                          int mmu_idx, target_ulong addr, uintptr_t retaddr=
+,
+-                         MMUAccessType access_type, int size)
++                         MMUAccessType access_type, MemOp op)
+ {
+     CPUState *cpu =3D env_cpu(env);
+     hwaddr mr_offset;
+@@ -906,14 +906,13 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBE=
+ntry *iotlbentry,
+         qemu_mutex_lock_iothread();
+         locked =3D true;
+     }
+-    r =3D memory_region_dispatch_read(mr, mr_offset, &val, size_memop(size=
+),
+-                                    iotlbentry->attrs);
++    r =3D memory_region_dispatch_read(mr, mr_offset, &val, op, iotlbentry-=
+>attrs);
+     if (r !=3D MEMTX_OK) {
+         hwaddr physaddr =3D mr_offset +
+             section->offset_within_address_space -
+             section->offset_within_region;
 
- #define TTE_IS_VALID(tte)   ((tte) & TTE_VALID_BIT)
- #define TTE_IS_NFO(tte)     ((tte) & TTE_NFO_BIT)
-+#define TTE_IS_IE(tte)      ((tte) & TTE_IE_BIT)
- #define TTE_IS_USED(tte)    ((tte) & TTE_USED_BIT)
- #define TTE_IS_LOCKED(tte)  ((tte) & TTE_LOCKED_BIT)
- #define TTE_IS_SIDEEFFECT(tte) ((tte) & TTE_SIDEEFFECT_BIT)
-diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c
-index 826e14b..77dc86a 100644
---- a/target/sparc/mmu_helper.c
-+++ b/target/sparc/mmu_helper.c
-@@ -537,6 +537,10 @@ static int get_physical_address_data(CPUSPARCState *en=
-v, hwaddr *physical,
-         if (ultrasparc_tag_match(&env->dtlb[i], address, context, physical=
-)) {
-             int do_fault =3D 0;
+-        cpu_transaction_failed(cpu, physaddr, addr, size, access_type,
++        cpu_transaction_failed(cpu, physaddr, addr, memop_size(op), access=
+_type,
+                                mmu_idx, iotlbentry->attrs, r, retaddr);
+     }
+     if (locked) {
+@@ -925,7 +924,7 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEnt=
+ry *iotlbentry,
 
-+            if (TTE_IS_IE(env->dtlb[i].tte)) {
-+                attrs->byte_swap =3D true;
-+            }
-+
-             /* access ok? */
-             /* multiple bits in SFSR.FT may be set on TT_DFAULT */
-             if (TTE_IS_PRIV(env->dtlb[i].tte) && is_user) {
-@@ -792,7 +796,7 @@ void dump_mmu(CPUSPARCState *env)
+ static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbentry,
+                       int mmu_idx, uint64_t val, target_ulong addr,
+-                      uintptr_t retaddr, int size)
++                      uintptr_t retaddr, MemOp op)
+ {
+     CPUState *cpu =3D env_cpu(env);
+     hwaddr mr_offset;
+@@ -947,15 +946,15 @@ static void io_writex(CPUArchState *env, CPUIOTLBEntr=
+y *iotlbentry,
+         qemu_mutex_lock_iothread();
+         locked =3D true;
+     }
+-    r =3D memory_region_dispatch_write(mr, mr_offset, val, size_memop(size=
+),
+-                                     iotlbentry->attrs);
++    r =3D memory_region_dispatch_write(mr, mr_offset, val, op, iotlbentry-=
+>attrs);
+     if (r !=3D MEMTX_OK) {
+         hwaddr physaddr =3D mr_offset +
+             section->offset_within_address_space -
+             section->offset_within_region;
+
+-        cpu_transaction_failed(cpu, physaddr, addr, size, MMU_DATA_STORE,
+-                               mmu_idx, iotlbentry->attrs, r, retaddr);
++        cpu_transaction_failed(cpu, physaddr, addr, memop_size(op),
++                               MMU_DATA_STORE, mmu_idx, iotlbentry->attrs,=
+ r,
++                               retaddr);
+     }
+     if (locked) {
+         qemu_mutex_unlock_iothread();
+@@ -1216,14 +1215,15 @@ static void *atomic_mmu_lookup(CPUArchState *env, t=
+arget_ulong addr,
+  * access type.
+  */
+
+-static inline uint64_t handle_bswap(uint64_t val, int size, bool big_endia=
+n)
++static inline uint64_t handle_bswap(uint64_t val, MemOp op)
+ {
+-    if ((big_endian && NEED_BE_BSWAP) || (!big_endian && NEED_LE_BSWAP)) {
+-        switch (size) {
+-        case 1: return val;
+-        case 2: return bswap16(val);
+-        case 4: return bswap32(val);
+-        case 8: return bswap64(val);
++    if ((memop_big_endian(op) && NEED_BE_BSWAP) ||
++        (!memop_big_endian(op) && NEED_LE_BSWAP)) {
++        switch (op & MO_SIZE) {
++        case MO_8: return val;
++        case MO_16: return bswap16(val);
++        case MO_32: return bswap32(val);
++        case MO_64: return bswap64(val);
+         default:
+             g_assert_not_reached();
+         }
+@@ -1246,7 +1246,7 @@ typedef uint64_t FullLoadHelper(CPUArchState *env, ta=
+rget_ulong addr,
+
+ static inline uint64_t __attribute__((always_inline))
+ load_helper(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
+-            uintptr_t retaddr, size_t size, bool big_endian, bool code_rea=
+d,
++            uintptr_t retaddr, MemOp op, bool code_read,
+             FullLoadHelper *full_load)
+ {
+     uintptr_t mmu_idx =3D get_mmuidx(oi);
+@@ -1260,6 +1260,7 @@ load_helper(CPUArchState *env, target_ulong addr, TCG=
+MemOpIdx oi,
+     unsigned a_bits =3D get_alignment_bits(get_memop(oi));
+     void *haddr;
+     uint64_t res;
++    size_t size =3D memop_size(op);
+
+     /* Handle CPU specific unaligned behaviour */
+     if (addr & ((1 << a_bits) - 1)) {
+@@ -1305,9 +1306,10 @@ load_helper(CPUArchState *env, target_ulong addr, TC=
+GMemOpIdx oi,
              }
-             if (TTE_IS_VALID(env->dtlb[i].tte)) {
-                 qemu_printf("[%02u] VA: %" PRIx64 ", PA: %llx"
--                            ", %s, %s, %s, %s, ctx %" PRId64 " %s\n",
-+                            ", %s, %s, %s, %s, ie %s, ctx %" PRId64 " %s\n=
-",
-                             i,
-                             env->dtlb[i].tag & (uint64_t)~0x1fffULL,
-                             TTE_PA(env->dtlb[i].tte),
-@@ -801,6 +805,8 @@ void dump_mmu(CPUSPARCState *env)
-                             TTE_IS_W_OK(env->dtlb[i].tte) ? "RW" : "RO",
-                             TTE_IS_LOCKED(env->dtlb[i].tte) ?
-                             "locked" : "unlocked",
-+                            TTE_IS_IE(env->dtlb[i].tte) ?
-+                            "yes" : "no",
-                             env->dtlb[i].tag & (uint64_t)0x1fffULL,
-                             TTE_IS_GLOBAL(env->dtlb[i].tte) ?
-                             "global" : "local");
+         }
+
++        /* FIXME: io_readx ignores MO_BSWAP.  */
+         res =3D io_readx(env, &env_tlb(env)->d[mmu_idx].iotlb[index],
+-                       mmu_idx, addr, retaddr, access_type, size);
+-        return handle_bswap(res, size, big_endian);
++                       mmu_idx, addr, retaddr, access_type, op);
++        return handle_bswap(res, op);
+     }
+
+     /* Handle slow unaligned access (it spans two pages or IO).  */
+@@ -1324,7 +1326,7 @@ load_helper(CPUArchState *env, target_ulong addr, TCG=
+MemOpIdx oi,
+         r2 =3D full_load(env, addr2, oi, retaddr);
+         shift =3D (addr & (size - 1)) * 8;
+
+-        if (big_endian) {
++        if (memop_big_endian(op)) {
+             /* Big-endian combine.  */
+             res =3D (r1 << shift) | (r2 >> ((size * 8) - shift));
+         } else {
+@@ -1336,30 +1338,27 @@ load_helper(CPUArchState *env, target_ulong addr, T=
+CGMemOpIdx oi,
+
+  do_aligned_access:
+     haddr =3D (void *)((uintptr_t)addr + entry->addend);
+-    switch (size) {
+-    case 1:
++    switch (op) {
++    case MO_8:
+         res =3D ldub_p(haddr);
+         break;
+-    case 2:
+-        if (big_endian) {
+-            res =3D lduw_be_p(haddr);
+-        } else {
+-            res =3D lduw_le_p(haddr);
+-        }
++    case MO_BEUW:
++        res =3D lduw_be_p(haddr);
+         break;
+-    case 4:
+-        if (big_endian) {
+-            res =3D (uint32_t)ldl_be_p(haddr);
+-        } else {
+-            res =3D (uint32_t)ldl_le_p(haddr);
+-        }
++    case MO_LEUW:
++        res =3D lduw_le_p(haddr);
+         break;
+-    case 8:
+-        if (big_endian) {
+-            res =3D ldq_be_p(haddr);
+-        } else {
+-            res =3D ldq_le_p(haddr);
+-        }
++    case MO_BEUL:
++        res =3D (uint32_t)ldl_be_p(haddr);
++        break;
++    case MO_LEUL:
++        res =3D (uint32_t)ldl_le_p(haddr);
++        break;
++    case MO_BEQ:
++        res =3D ldq_be_p(haddr);
++        break;
++    case MO_LEQ:
++        res =3D ldq_le_p(haddr);
+         break;
+     default:
+         g_assert_not_reached();
+@@ -1381,8 +1380,7 @@ load_helper(CPUArchState *env, target_ulong addr, TCG=
+MemOpIdx oi,
+ static uint64_t full_ldub_mmu(CPUArchState *env, target_ulong addr,
+                               TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    return load_helper(env, addr, oi, retaddr, 1, false, false,
+-                       full_ldub_mmu);
++    return load_helper(env, addr, oi, retaddr, MO_8, false, full_ldub_mmu)=
+;
+ }
+
+ tcg_target_ulong helper_ret_ldub_mmu(CPUArchState *env, target_ulong addr,
+@@ -1394,7 +1392,7 @@ tcg_target_ulong helper_ret_ldub_mmu(CPUArchState *en=
+v, target_ulong addr,
+ static uint64_t full_le_lduw_mmu(CPUArchState *env, target_ulong addr,
+                                  TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    return load_helper(env, addr, oi, retaddr, 2, false, false,
++    return load_helper(env, addr, oi, retaddr, MO_LEUW, false,
+                        full_le_lduw_mmu);
+ }
+
+@@ -1407,7 +1405,7 @@ tcg_target_ulong helper_le_lduw_mmu(CPUArchState *env=
+, target_ulong addr,
+ static uint64_t full_be_lduw_mmu(CPUArchState *env, target_ulong addr,
+                                  TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    return load_helper(env, addr, oi, retaddr, 2, true, false,
++    return load_helper(env, addr, oi, retaddr, MO_BEUW, false,
+                        full_be_lduw_mmu);
+ }
+
+@@ -1420,7 +1418,7 @@ tcg_target_ulong helper_be_lduw_mmu(CPUArchState *env=
+, target_ulong addr,
+ static uint64_t full_le_ldul_mmu(CPUArchState *env, target_ulong addr,
+                                  TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    return load_helper(env, addr, oi, retaddr, 4, false, false,
++    return load_helper(env, addr, oi, retaddr, MO_LEUL, false,
+                        full_le_ldul_mmu);
+ }
+
+@@ -1433,7 +1431,7 @@ tcg_target_ulong helper_le_ldul_mmu(CPUArchState *env=
+, target_ulong addr,
+ static uint64_t full_be_ldul_mmu(CPUArchState *env, target_ulong addr,
+                                  TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    return load_helper(env, addr, oi, retaddr, 4, true, false,
++    return load_helper(env, addr, oi, retaddr, MO_BEUL, false,
+                        full_be_ldul_mmu);
+ }
+
+@@ -1446,14 +1444,14 @@ tcg_target_ulong helper_be_ldul_mmu(CPUArchState *e=
+nv, target_ulong addr,
+ uint64_t helper_le_ldq_mmu(CPUArchState *env, target_ulong addr,
+                            TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    return load_helper(env, addr, oi, retaddr, 8, false, false,
++    return load_helper(env, addr, oi, retaddr, MO_LEQ, false,
+                        helper_le_ldq_mmu);
+ }
+
+ uint64_t helper_be_ldq_mmu(CPUArchState *env, target_ulong addr,
+                            TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    return load_helper(env, addr, oi, retaddr, 8, true, false,
++    return load_helper(env, addr, oi, retaddr, MO_BEQ, false,
+                        helper_be_ldq_mmu);
+ }
+
+@@ -1499,7 +1497,7 @@ tcg_target_ulong helper_be_ldsl_mmu(CPUArchState *env=
+, target_ulong addr,
+
+ static inline void __attribute__((always_inline))
+ store_helper(CPUArchState *env, target_ulong addr, uint64_t val,
+-             TCGMemOpIdx oi, uintptr_t retaddr, size_t size, bool big_endi=
+an)
++             TCGMemOpIdx oi, uintptr_t retaddr, MemOp op)
+ {
+     uintptr_t mmu_idx =3D get_mmuidx(oi);
+     uintptr_t index =3D tlb_index(env, mmu_idx, addr);
+@@ -1508,6 +1506,7 @@ store_helper(CPUArchState *env, target_ulong addr, ui=
+nt64_t val,
+     const size_t tlb_off =3D offsetof(CPUTLBEntry, addr_write);
+     unsigned a_bits =3D get_alignment_bits(get_memop(oi));
+     void *haddr;
++    size_t size =3D memop_size(op);
+
+     /* Handle CPU specific unaligned behaviour */
+     if (addr & ((1 << a_bits) - 1)) {
+@@ -1553,9 +1552,10 @@ store_helper(CPUArchState *env, target_ulong addr, u=
+int64_t val,
+             }
+         }
+
++        /* FIXME: io_writex ignores MO_BSWAP.  */
+         io_writex(env, &env_tlb(env)->d[mmu_idx].iotlb[index], mmu_idx,
+-                  handle_bswap(val, size, big_endian),
+-                  addr, retaddr, size);
++                  handle_bswap(val, op),
++                  addr, retaddr, op);
+         return;
+     }
+
+@@ -1591,7 +1591,7 @@ store_helper(CPUArchState *env, target_ulong addr, ui=
+nt64_t val,
+          */
+         for (i =3D 0; i < size; ++i) {
+             uint8_t val8;
+-            if (big_endian) {
++            if (memop_big_endian(op)) {
+                 /* Big-endian extract.  */
+                 val8 =3D val >> (((size - 1) * 8) - (i * 8));
+             } else {
+@@ -1605,30 +1605,27 @@ store_helper(CPUArchState *env, target_ulong addr, =
+uint64_t val,
+
+  do_aligned_access:
+     haddr =3D (void *)((uintptr_t)addr + entry->addend);
+-    switch (size) {
+-    case 1:
++    switch (op) {
++    case MO_8:
+         stb_p(haddr, val);
+         break;
+-    case 2:
+-        if (big_endian) {
+-            stw_be_p(haddr, val);
+-        } else {
+-            stw_le_p(haddr, val);
+-        }
++    case MO_BEUW:
++        stw_be_p(haddr, val);
+         break;
+-    case 4:
+-        if (big_endian) {
+-            stl_be_p(haddr, val);
+-        } else {
+-            stl_le_p(haddr, val);
+-        }
++    case MO_LEUW:
++        stw_le_p(haddr, val);
+         break;
+-    case 8:
+-        if (big_endian) {
+-            stq_be_p(haddr, val);
+-        } else {
+-            stq_le_p(haddr, val);
+-        }
++    case MO_BEUL:
++        stl_be_p(haddr, val);
++        break;
++    case MO_LEUL:
++        stl_le_p(haddr, val);
++        break;
++    case MO_BEQ:
++        stq_be_p(haddr, val);
++        break;
++    case MO_LEQ:
++        stq_le_p(haddr, val);
+         break;
+     default:
+         g_assert_not_reached();
+@@ -1639,43 +1636,43 @@ store_helper(CPUArchState *env, target_ulong addr, =
+uint64_t val,
+ void helper_ret_stb_mmu(CPUArchState *env, target_ulong addr, uint8_t val,
+                         TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    store_helper(env, addr, val, oi, retaddr, 1, false);
++    store_helper(env, addr, val, oi, retaddr, MO_8);
+ }
+
+ void helper_le_stw_mmu(CPUArchState *env, target_ulong addr, uint16_t val,
+                        TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    store_helper(env, addr, val, oi, retaddr, 2, false);
++    store_helper(env, addr, val, oi, retaddr, MO_LEUW);
+ }
+
+ void helper_be_stw_mmu(CPUArchState *env, target_ulong addr, uint16_t val,
+                        TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    store_helper(env, addr, val, oi, retaddr, 2, true);
++    store_helper(env, addr, val, oi, retaddr, MO_BEUW);
+ }
+
+ void helper_le_stl_mmu(CPUArchState *env, target_ulong addr, uint32_t val,
+                        TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    store_helper(env, addr, val, oi, retaddr, 4, false);
++    store_helper(env, addr, val, oi, retaddr, MO_LEUL);
+ }
+
+ void helper_be_stl_mmu(CPUArchState *env, target_ulong addr, uint32_t val,
+                        TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    store_helper(env, addr, val, oi, retaddr, 4, true);
++    store_helper(env, addr, val, oi, retaddr, MO_BEUL);
+ }
+
+ void helper_le_stq_mmu(CPUArchState *env, target_ulong addr, uint64_t val,
+                        TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    store_helper(env, addr, val, oi, retaddr, 8, false);
++    store_helper(env, addr, val, oi, retaddr, MO_LEQ);
+ }
+
+ void helper_be_stq_mmu(CPUArchState *env, target_ulong addr, uint64_t val,
+                        TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    store_helper(env, addr, val, oi, retaddr, 8, true);
++    store_helper(env, addr, val, oi, retaddr, MO_BEQ);
+ }
+
+ /* First set of helpers allows passing in of OI and RETADDR.  This makes
+@@ -1740,8 +1737,7 @@ void helper_be_stq_mmu(CPUArchState *env, target_ulon=
+g addr, uint64_t val,
+ static uint64_t full_ldub_cmmu(CPUArchState *env, target_ulong addr,
+                                TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    return load_helper(env, addr, oi, retaddr, 1, false, true,
+-                       full_ldub_cmmu);
++    return load_helper(env, addr, oi, retaddr, MO_8, true, full_ldub_cmmu)=
+;
+ }
+
+ uint8_t helper_ret_ldb_cmmu(CPUArchState *env, target_ulong addr,
+@@ -1753,7 +1749,7 @@ uint8_t helper_ret_ldb_cmmu(CPUArchState *env, target=
+_ulong addr,
+ static uint64_t full_le_lduw_cmmu(CPUArchState *env, target_ulong addr,
+                                   TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    return load_helper(env, addr, oi, retaddr, 2, false, true,
++    return load_helper(env, addr, oi, retaddr, MO_LEUW, true,
+                        full_le_lduw_cmmu);
+ }
+
+@@ -1766,7 +1762,7 @@ uint16_t helper_le_ldw_cmmu(CPUArchState *env, target=
+_ulong addr,
+ static uint64_t full_be_lduw_cmmu(CPUArchState *env, target_ulong addr,
+                                   TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    return load_helper(env, addr, oi, retaddr, 2, true, true,
++    return load_helper(env, addr, oi, retaddr, MO_BEUW, true,
+                        full_be_lduw_cmmu);
+ }
+
+@@ -1779,7 +1775,7 @@ uint16_t helper_be_ldw_cmmu(CPUArchState *env, target=
+_ulong addr,
+ static uint64_t full_le_ldul_cmmu(CPUArchState *env, target_ulong addr,
+                                   TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    return load_helper(env, addr, oi, retaddr, 4, false, true,
++    return load_helper(env, addr, oi, retaddr, MO_LEUL, true,
+                        full_le_ldul_cmmu);
+ }
+
+@@ -1792,7 +1788,7 @@ uint32_t helper_le_ldl_cmmu(CPUArchState *env, target=
+_ulong addr,
+ static uint64_t full_be_ldul_cmmu(CPUArchState *env, target_ulong addr,
+                                   TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    return load_helper(env, addr, oi, retaddr, 4, true, true,
++    return load_helper(env, addr, oi, retaddr, MO_BEUL, true,
+                        full_be_ldul_cmmu);
+ }
+
+@@ -1805,13 +1801,13 @@ uint32_t helper_be_ldl_cmmu(CPUArchState *env, targ=
+et_ulong addr,
+ uint64_t helper_le_ldq_cmmu(CPUArchState *env, target_ulong addr,
+                             TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    return load_helper(env, addr, oi, retaddr, 8, false, true,
++    return load_helper(env, addr, oi, retaddr, MO_LEQ, true,
+                        helper_le_ldq_cmmu);
+ }
+
+ uint64_t helper_be_ldq_cmmu(CPUArchState *env, target_ulong addr,
+                             TCGMemOpIdx oi, uintptr_t retaddr)
+ {
+-    return load_helper(env, addr, oi, retaddr, 8, true, true,
++    return load_helper(env, addr, oi, retaddr, MO_BEQ, true,
+                        helper_be_ldq_cmmu);
+ }
+diff --git a/include/exec/memop.h b/include/exec/memop.h
+index 47a5500..e6e03d9 100644
+--- a/include/exec/memop.h
++++ b/include/exec/memop.h
+@@ -129,4 +129,10 @@ static inline MemOp size_memop(unsigned size)
+ #endif
+ }
+
++/* Big endianness from MemOp.  */
++static inline bool memop_big_endian(MemOp op)
++{
++    return (op & MO_BSWAP) =3D=3D MO_BE;
++}
++
+ #endif
+diff --git a/memory.c b/memory.c
+index 11db6ec..264c624 100644
+--- a/memory.c
++++ b/memory.c
+@@ -343,15 +343,6 @@ static void flatview_simplify(FlatView *view)
+     }
+ }
+
+-static bool memory_region_big_endian(MemoryRegion *mr)
+-{
+-#ifdef TARGET_WORDS_BIGENDIAN
+-    return mr->ops->endianness !=3D MO_LE;
+-#else
+-    return mr->ops->endianness =3D=3D MO_BE;
+-#endif
+-}
+-
+ static bool memory_region_wrong_endianness(MemoryRegion *mr)
+ {
+ #ifdef TARGET_WORDS_BIGENDIAN
+@@ -564,7 +555,7 @@ static MemTxResult access_with_adjusted_size(hwaddr add=
+r,
+     /* FIXME: support unaligned access? */
+     access_size =3D MAX(MIN(size, access_size_max), access_size_min);
+     access_mask =3D MAKE_64BIT_MASK(0, access_size * 8);
+-    if (memory_region_big_endian(mr)) {
++    if (memop_big_endian(mr->ops->endianness)) {
+         for (i =3D 0; i < size; i +=3D access_size) {
+             r |=3D access_fn(mr, addr + i, value, access_size,
+                         (size - access_size - i) * 8, access_mask, attrs);
 --
 1.8.3.1
 
 ?
 
 
---_000_156516694118641868btcom_
+--_000_156516681911114515btcom_
 Content-Type: text/html; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
@@ -222,126 +679,734 @@ der-left-width: 2px; border-left-style: solid; border-left-color: rgb(128, =
 <body dir=3D"ltr" style=3D"font-size:12pt;color:#000000;background-color:#F=
 FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
 <p></p>
-<div><span style=3D"font-size: 12pt;">This bit configures endianness of PCI=
- MMIO devices. It is used by</span><br>
+<div><span style=3D"font-size: 12pt;">Preparation for collapsing the two by=
+te swaps adjust_endianness and</span><br>
 </div>
-<div>Solaris and OpenBSD sunhme drivers.</div>
-<div><br>
-</div>
-<div>Tested working on OpenBSD.</div>
-<div><br>
-</div>
-<div>Unfortunately Solaris 10 had a unrelated keyboard issue blocking</div>
-<div>testing... another inch towards Solaris 10 on SPARC64 =3D)</div>
+<div>handle_bswap into the former.</div>
 <div><br>
 </div>
 <div>Signed-off-by: Tony Nguyen &lt;tony.nguyen@bt.com&gt;</div>
-<div>Reviewed-by: Richard Henderson &lt;richard.henderson@linaro.org&gt;</d=
-iv>
 <div>---</div>
-<div>&nbsp;target/sparc/cpu.h &nbsp; &nbsp; &nbsp; &nbsp;| 2 &#43;&#43;</di=
-v>
-<div>&nbsp;target/sparc/mmu_helper.c | 8 &#43;&#43;&#43;&#43;&#43;&#43;&#43=
-;-</div>
-<div>&nbsp;2 files changed, 9 insertions(&#43;), 1 deletion(-)</div>
+<div>&nbsp;accel/tcg/cputlb.c &nbsp; | 170 &#43;&#43;&#43;&#43;&#43;&#43;&#=
+43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#=
+43;&#43;&#43;&#43;--------------------------</div>
+<div>&nbsp;include/exec/memop.h | &nbsp; 6 &#43;&#43;</div>
+<div>&nbsp;memory.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp;11 &#=
+43;---</div>
+<div>&nbsp;3 files changed, 90 insertions(&#43;), 97 deletions(-)</div>
 <div><br>
 </div>
-<div>diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h</div>
-<div>index 1406f0b..c6bafa8 100644</div>
-<div>--- a/target/sparc/cpu.h</div>
-<div>&#43;&#43;&#43; b/target/sparc/cpu.h</div>
-<div>@@ -275,6 &#43;275,7 @@ enum {</div>
+<div>diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c</div>
+<div>index 6c83878..86d85cc 100644</div>
+<div>--- a/accel/tcg/cputlb.c</div>
+<div>&#43;&#43;&#43; b/accel/tcg/cputlb.c</div>
+<div>@@ -881,7 &#43;881,7 @@ static void tlb_fill(CPUState *cpu, target_ulo=
+ng addr, int size,</div>
 <div>&nbsp;</div>
-<div>&nbsp;#define TTE_VALID_BIT &nbsp; &nbsp; &nbsp; (1ULL &lt;&lt; 63)</d=
-iv>
-<div>&nbsp;#define TTE_NFO_BIT &nbsp; &nbsp; &nbsp; &nbsp; (1ULL &lt;&lt; 6=
-0)</div>
-<div>&#43;#define TTE_IE_BIT &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(1ULL &lt;&l=
-t; 59)</div>
-<div>&nbsp;#define TTE_USED_BIT &nbsp; &nbsp; &nbsp; &nbsp;(1ULL &lt;&lt; 4=
-1)</div>
-<div>&nbsp;#define TTE_LOCKED_BIT &nbsp; &nbsp; &nbsp;(1ULL &lt;&lt; &nbsp;=
-6)</div>
-<div>&nbsp;#define TTE_SIDEEFFECT_BIT &nbsp;(1ULL &lt;&lt; &nbsp;3)</div>
-<div>@@ -291,6 &#43;292,7 @@ enum {</div>
-<div>&nbsp;</div>
-<div>&nbsp;#define TTE_IS_VALID(tte) &nbsp; ((tte) &amp; TTE_VALID_BIT)</di=
+<div>&nbsp;static uint64_t io_readx(CPUArchState *env, CPUIOTLBEntry *iotlb=
+entry,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; int mmu_idx, target_ulong addr, uintptr_t retaddr,</di=
 v>
-<div>&nbsp;#define TTE_IS_NFO(tte) &nbsp; &nbsp; ((tte) &amp; TTE_NFO_BIT)<=
-/div>
-<div>&#43;#define TTE_IS_IE(tte) &nbsp; &nbsp; &nbsp;((tte) &amp; TTE_IE_BI=
-T)</div>
-<div>&nbsp;#define TTE_IS_USED(tte) &nbsp; &nbsp;((tte) &amp; TTE_USED_BIT)=
-</div>
-<div>&nbsp;#define TTE_IS_LOCKED(tte) &nbsp;((tte) &amp; TTE_LOCKED_BIT)</d=
-iv>
-<div>&nbsp;#define TTE_IS_SIDEEFFECT(tte) ((tte) &amp; TTE_SIDEEFFECT_BIT)<=
-/div>
-<div>diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c</di=
-v>
-<div>index 826e14b..77dc86a 100644</div>
-<div>--- a/target/sparc/mmu_helper.c</div>
-<div>&#43;&#43;&#43; b/target/sparc/mmu_helper.c</div>
-<div>@@ -537,6 &#43;537,10 @@ static int get_physical_address_data(CPUSPARC=
-State *env, hwaddr *physical,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (ultrasparc_tag_match(&amp;env-&g=
-t;dtlb[i], address, context, physical)) {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;int do_fault =3D 0;</d=
-iv>
-<div>&nbsp;</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (TTE_IS_IE(env-&gt;d=
-tlb[i].tte)) {</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;attrs-&gt=
-;byte_swap =3D true;</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&#43;</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* access ok? */</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* multiple bits in SF=
-SR.FT may be set on TT_DFAULT */</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (TTE_IS_PRIV(env-&g=
-t;dtlb[i].tte) &amp;&amp; is_user) {</div>
-<div>@@ -792,7 &#43;796,7 @@ void dump_mmu(CPUSPARCState *env)</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (TTE_IS_VALID(env-&=
-gt;dtlb[i].tte)) {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;qemu_pri=
-ntf(&quot;[%02u] VA: %&quot; PRIx64 &quot;, PA: %llx&quot;</div>
 <div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
-; &nbsp; &nbsp; &nbsp; &nbsp;&quot;, %s, %s, %s, %s, ctx %&quot; PRId64 &qu=
-ot; %s\n&quot;,</div>
+; &nbsp; &nbsp; MMUAccessType access_type, int size)</div>
 <div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;, %s, %s, %s, %s, ie %s, ctx %&quot;=
- PRId64 &quot; %s\n&quot;,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;i,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;env-&gt;dtlb[i].tag &amp; (uint64_t)~0x1f=
-ffULL,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TTE_PA(env-&gt;dtlb[i].tte),</div>
-<div>@@ -801,6 &#43;805,8 @@ void dump_mmu(CPUSPARCState *env)</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TTE_IS_W_OK(env-&gt;dtlb[i].tte) ? &quot;=
-RW&quot; : &quot;RO&quot;,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TTE_IS_LOCKED(env-&gt;dtlb[i].tte) ?</div=
->
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;locked&quot; : &quot;unlocked&quot;=
-,</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TTE_IS_IE(env-&gt;dtlb[i].tte) ?</div>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;yes&quot; : &quot;no&quot;,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;env-&gt;dtlb[i].tag &amp; (uint64_t)0x1ff=
-fULL,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TTE_IS_GLOBAL(env-&gt;dtlb[i].tte) ?</div=
->
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;global&quot; : &quot;local&quot;);<=
+nbsp; &nbsp; &nbsp; MMUAccessType access_type, MemOp op)</div>
+<div>&nbsp;{</div>
+<div>&nbsp; &nbsp; &nbsp;CPUState *cpu =3D env_cpu(env);</div>
+<div>&nbsp; &nbsp; &nbsp;hwaddr mr_offset;</div>
+<div>@@ -906,14 &#43;906,13 @@ static uint64_t io_readx(CPUArchState *env, =
+CPUIOTLBEntry *iotlbentry,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;qemu_mutex_lock_iothread();</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;locked =3D true;</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>- &nbsp; &nbsp;r =3D memory_region_dispatch_read(mr, mr_offset, &amp;v=
+al, size_memop(size),</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;iotlbentry-&gt;att=
+rs);</div>
+<div>&#43; &nbsp; &nbsp;r =3D memory_region_dispatch_read(mr, mr_offset, &a=
+mp;val, op, iotlbentry-&gt;attrs);</div>
+<div>&nbsp; &nbsp; &nbsp;if (r !=3D MEMTX_OK) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;hwaddr physaddr =3D mr_offset &#43;<=
 /div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;section-&gt;offset_wit=
+hin_address_space -</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;section-&gt;offset_wit=
+hin_region;</div>
+<div>&nbsp;</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;cpu_transaction_failed(cpu, physaddr, add=
+r, size, access_type,</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;cpu_transaction_failed(cpu, physaddr,=
+ addr, memop_size(op), access_type,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mmu_idx, iotlbentry-&gt;attrs, r,=
+ retaddr);</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp; &nbsp; &nbsp;if (locked) {</div>
+<div>@@ -925,7 &#43;924,7 @@ static uint64_t io_readx(CPUArchState *env, CP=
+UIOTLBEntry *iotlbentry,</div>
+<div>&nbsp;</div>
+<div>&nbsp;static void io_writex(CPUArchState *env, CPUIOTLBEntry *iotlbent=
+ry,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp;int mmu_idx, uint64_t val, target_ulong addr,</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp;uintptr_t retaddr, int size)</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp;uintptr_t retaddr, MemOp op)</div>
+<div>&nbsp;{</div>
+<div>&nbsp; &nbsp; &nbsp;CPUState *cpu =3D env_cpu(env);</div>
+<div>&nbsp; &nbsp; &nbsp;hwaddr mr_offset;</div>
+<div>@@ -947,15 &#43;946,15 @@ static void io_writex(CPUArchState *env, CPU=
+IOTLBEntry *iotlbentry,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;qemu_mutex_lock_iothread();</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;locked =3D true;</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>- &nbsp; &nbsp;r =3D memory_region_dispatch_write(mr, mr_offset, val, =
+size_memop(size),</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; iotlbentry-&gt;at=
+trs);</div>
+<div>&#43; &nbsp; &nbsp;r =3D memory_region_dispatch_write(mr, mr_offset, v=
+al, op, iotlbentry-&gt;attrs);</div>
+<div>&nbsp; &nbsp; &nbsp;if (r !=3D MEMTX_OK) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;hwaddr physaddr =3D mr_offset &#43;<=
+/div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;section-&gt;offset_wit=
+hin_address_space -</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;section-&gt;offset_wit=
+hin_region;</div>
+<div>&nbsp;</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;cpu_transaction_failed(cpu, physaddr, add=
+r, size, MMU_DATA_STORE,</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; mmu_idx, iotlbentry-&gt;attrs, r, reta=
+ddr);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;cpu_transaction_failed(cpu, physaddr,=
+ addr, memop_size(op),</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MMU_DATA_STORE, mmu_idx, iotlbentr=
+y-&gt;attrs, r,</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; retaddr);</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp; &nbsp; &nbsp;if (locked) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;qemu_mutex_unlock_iothread();</div>
+<div>@@ -1216,14 &#43;1215,15 @@ static void *atomic_mmu_lookup(CPUArchStat=
+e *env, target_ulong addr,</div>
+<div>&nbsp; * access type.</div>
+<div>&nbsp; */</div>
+<div>&nbsp;</div>
+<div>-static inline uint64_t handle_bswap(uint64_t val, int size, bool big_=
+endian)</div>
+<div>&#43;static inline uint64_t handle_bswap(uint64_t val, MemOp op)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;if ((big_endian &amp;&amp; NEED_BE_BSWAP) || (!big_endi=
+an &amp;&amp; NEED_LE_BSWAP)) {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;switch (size) {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 1: return val;</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 2: return bswap16(val);</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 4: return bswap32(val);</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;case 8: return bswap64(val);</div>
+<div>&#43; &nbsp; &nbsp;if ((memop_big_endian(op) &amp;&amp; NEED_BE_BSWAP)=
+ ||</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;(!memop_big_endian(op) &amp;&amp; NEE=
+D_LE_BSWAP)) {</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;switch (op &amp; MO_SIZE) {</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;case MO_8: return val;</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;case MO_16: return bswap16(val);</div=
+>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;case MO_32: return bswap32(val);</div=
+>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;case MO_64: return bswap64(val);</div=
+>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;default:</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;g_assert_not_reached()=
+;</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>@@ -1246,7 &#43;1246,7 @@ typedef uint64_t FullLoadHelper(CPUArchState=
+ *env, target_ulong addr,</div>
+<div>&nbsp;</div>
+<div>&nbsp;static inline uint64_t __attribute__((always_inline))</div>
+<div>&nbsp;load_helper(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi=
+,</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uintptr_t retaddr, size_t s=
+ize, bool big_endian, bool code_read,</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uintptr_t retaddr, MemO=
+p op, bool code_read,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;FullLoadHelper *full_l=
+oad)</div>
+<div>&nbsp;{</div>
+<div>&nbsp; &nbsp; &nbsp;uintptr_t mmu_idx =3D get_mmuidx(oi);</div>
+<div>@@ -1260,6 &#43;1260,7 @@ load_helper(CPUArchState *env, target_ulong =
+addr, TCGMemOpIdx oi,</div>
+<div>&nbsp; &nbsp; &nbsp;unsigned a_bits =3D get_alignment_bits(get_memop(o=
+i));</div>
+<div>&nbsp; &nbsp; &nbsp;void *haddr;</div>
+<div>&nbsp; &nbsp; &nbsp;uint64_t res;</div>
+<div>&#43; &nbsp; &nbsp;size_t size =3D memop_size(op);</div>
+<div>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;/* Handle CPU specific unaligned behaviour */</div=
+>
+<div>&nbsp; &nbsp; &nbsp;if (addr &amp; ((1 &lt;&lt; a_bits) - 1)) {</div>
+<div>@@ -1305,9 &#43;1306,10 @@ load_helper(CPUArchState *env, target_ulong=
+ addr, TCGMemOpIdx oi,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp;</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;/* FIXME: io_readx ignores MO_BSWAP. =
+&nbsp;*/</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;res =3D io_readx(env, &amp;env_tlb(e=
+nv)-&gt;d[mmu_idx].iotlb[index],</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; mmu_idx, addr, retaddr, access_type, size);</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;return handle_bswap(res, size, big_endian=
+);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; mmu_idx, addr, retaddr, access_type, op);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;return handle_bswap(res, op);</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;/* Handle slow unaligned access (it spans two page=
+s or IO). &nbsp;*/</div>
+<div>@@ -1324,7 &#43;1326,7 @@ load_helper(CPUArchState *env, target_ulong =
+addr, TCGMemOpIdx oi,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;r2 =3D full_load(env, addr2, oi, ret=
+addr);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;shift =3D (addr &amp; (size - 1)) * =
+8;</div>
+<div>&nbsp;</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;if (big_endian) {</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;if (memop_big_endian(op)) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* Big-endian combine.=
+ &nbsp;*/</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;res =3D (r1 &lt;&lt; s=
+hift) | (r2 &gt;&gt; ((size * 8) - shift));</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;} else {</div>
+<div>@@ -1336,30 &#43;1338,27 @@ load_helper(CPUArchState *env, target_ulon=
+g addr, TCGMemOpIdx oi,</div>
+<div>&nbsp;</div>
+<div>&nbsp; do_aligned_access:</div>
+<div>&nbsp; &nbsp; &nbsp;haddr =3D (void *)((uintptr_t)addr &#43; entry-&gt=
+;addend);</div>
+<div>- &nbsp; &nbsp;switch (size) {</div>
+<div>- &nbsp; &nbsp;case 1:</div>
+<div>&#43; &nbsp; &nbsp;switch (op) {</div>
+<div>&#43; &nbsp; &nbsp;case MO_8:</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;res =3D ldub_p(haddr);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>- &nbsp; &nbsp;case 2:</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;if (big_endian) {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;res =3D lduw_be_p(haddr);</=
+div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;} else {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;res =3D lduw_le_p(haddr);</=
+div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&#43; &nbsp; &nbsp;case MO_BEUW:</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;res =3D lduw_be_p(haddr);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>- &nbsp; &nbsp;case 4:</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;if (big_endian) {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;res =3D (uint32_t)ldl_be_p(=
+haddr);</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;} else {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;res =3D (uint32_t)ldl_le_p(=
+haddr);</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&#43; &nbsp; &nbsp;case MO_LEUW:</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;res =3D lduw_le_p(haddr);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>- &nbsp; &nbsp;case 8:</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;if (big_endian) {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;res =3D ldq_be_p(haddr);</d=
+iv>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;} else {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;res =3D ldq_le_p(haddr);</d=
+iv>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&#43; &nbsp; &nbsp;case MO_BEUL:</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;res =3D (uint32_t)ldl_be_p(haddr);</d=
+iv>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>&#43; &nbsp; &nbsp;case MO_LEUL:</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;res =3D (uint32_t)ldl_le_p(haddr);</d=
+iv>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>&#43; &nbsp; &nbsp;case MO_BEQ:</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;res =3D ldq_be_p(haddr);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>&#43; &nbsp; &nbsp;case MO_LEQ:</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;res =3D ldq_le_p(haddr);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>&nbsp; &nbsp; &nbsp;default:</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;g_assert_not_reached();</div>
+<div>@@ -1381,8 &#43;1380,7 @@ load_helper(CPUArchState *env, target_ulong =
+addr, TCGMemOpIdx oi,</div>
+<div>&nbsp;static uint64_t full_ldub_mmu(CPUArchState *env, target_ulong ad=
+dr,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TCGMemOpIdx oi, uintptr_t retaddr)=
+</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, 1, false, fa=
+lse,</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; full_ldub_mmu);</div>
+<div>&#43; &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, MO_8, fa=
+lse, full_ldub_mmu);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp;tcg_target_ulong helper_ret_ldub_mmu(CPUArchState *env, target_u=
+long addr,</div>
+<div>@@ -1394,7 &#43;1392,7 @@ tcg_target_ulong helper_ret_ldub_mmu(CPUArch=
+State *env, target_ulong addr,</div>
+<div>&nbsp;static uint64_t full_le_lduw_mmu(CPUArchState *env, target_ulong=
+ addr,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; TCGMemOpIdx oi, uintptr_t =
+retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, 2, false, fa=
+lse,</div>
+<div>&#43; &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, MO_LEUW,=
+ false,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; full_le_lduw_mmu);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>@@ -1407,7 &#43;1405,7 @@ tcg_target_ulong helper_le_lduw_mmu(CPUArchS=
+tate *env, target_ulong addr,</div>
+<div>&nbsp;static uint64_t full_be_lduw_mmu(CPUArchState *env, target_ulong=
+ addr,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; TCGMemOpIdx oi, uintptr_t =
+retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, 2, true, fal=
+se,</div>
+<div>&#43; &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, MO_BEUW,=
+ false,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; full_be_lduw_mmu);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>@@ -1420,7 &#43;1418,7 @@ tcg_target_ulong helper_be_lduw_mmu(CPUArchS=
+tate *env, target_ulong addr,</div>
+<div>&nbsp;static uint64_t full_le_ldul_mmu(CPUArchState *env, target_ulong=
+ addr,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; TCGMemOpIdx oi, uintptr_t =
+retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, 4, false, fa=
+lse,</div>
+<div>&#43; &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, MO_LEUL,=
+ false,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; full_le_ldul_mmu);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>@@ -1433,7 &#43;1431,7 @@ tcg_target_ulong helper_le_ldul_mmu(CPUArchS=
+tate *env, target_ulong addr,</div>
+<div>&nbsp;static uint64_t full_be_ldul_mmu(CPUArchState *env, target_ulong=
+ addr,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; TCGMemOpIdx oi, uintptr_t =
+retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, 4, true, fal=
+se,</div>
+<div>&#43; &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, MO_BEUL,=
+ false,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; full_be_ldul_mmu);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>@@ -1446,14 &#43;1444,14 @@ tcg_target_ulong helper_be_ldul_mmu(CPUArc=
+hState *env, target_ulong addr,</div>
+<div>&nbsp;uint64_t helper_le_ldq_mmu(CPUArchState *env, target_ulong addr,=
+</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; TCGMemOpIdx oi, uintptr_t retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, 8, false, fa=
+lse,</div>
+<div>&#43; &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, MO_LEQ, =
+false,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; helper_le_ldq_mmu);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp;uint64_t helper_be_ldq_mmu(CPUArchState *env, target_ulong addr,=
+</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; TCGMemOpIdx oi, uintptr_t retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, 8, true, fal=
+se,</div>
+<div>&#43; &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, MO_BEQ, =
+false,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; helper_be_ldq_mmu);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>@@ -1499,7 &#43;1497,7 @@ tcg_target_ulong helper_be_ldsl_mmu(CPUArchS=
+tate *env, target_ulong addr,</div>
+<div>&nbsp;</div>
+<div>&nbsp;static inline void __attribute__((always_inline))</div>
+<div>&nbsp;store_helper(CPUArchState *env, target_ulong addr, uint64_t val,=
+</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; TCGMemOpIdx oi, uintptr_t =
+retaddr, size_t size, bool big_endian)</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; TCGMemOpIdx oi, uintpt=
+r_t retaddr, MemOp op)</div>
+<div>&nbsp;{</div>
+<div>&nbsp; &nbsp; &nbsp;uintptr_t mmu_idx =3D get_mmuidx(oi);</div>
+<div>&nbsp; &nbsp; &nbsp;uintptr_t index =3D tlb_index(env, mmu_idx, addr);=
+</div>
+<div>@@ -1508,6 &#43;1506,7 @@ store_helper(CPUArchState *env, target_ulong=
+ addr, uint64_t val,</div>
+<div>&nbsp; &nbsp; &nbsp;const size_t tlb_off =3D offsetof(CPUTLBEntry, add=
+r_write);</div>
+<div>&nbsp; &nbsp; &nbsp;unsigned a_bits =3D get_alignment_bits(get_memop(o=
+i));</div>
+<div>&nbsp; &nbsp; &nbsp;void *haddr;</div>
+<div>&#43; &nbsp; &nbsp;size_t size =3D memop_size(op);</div>
+<div>&nbsp;</div>
+<div>&nbsp; &nbsp; &nbsp;/* Handle CPU specific unaligned behaviour */</div=
+>
+<div>&nbsp; &nbsp; &nbsp;if (addr &amp; ((1 &lt;&lt; a_bits) - 1)) {</div>
+<div>@@ -1553,9 &#43;1552,10 @@ store_helper(CPUArchState *env, target_ulon=
+g addr, uint64_t val,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp;</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;/* FIXME: io_writex ignores MO_BSWAP.=
+ &nbsp;*/</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;io_writex(env, &amp;env_tlb(env)-&gt=
+;d[mmu_idx].iotlb[index], mmu_idx,</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;handle=
+_bswap(val, size, big_endian),</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;addr, =
+retaddr, size);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ha=
+ndle_bswap(val, op),</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;ad=
+dr, retaddr, op);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return;</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp;</div>
+<div>@@ -1591,7 &#43;1591,7 @@ store_helper(CPUArchState *env, target_ulong=
+ addr, uint64_t val,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; */</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;for (i =3D 0; i &lt; size; &#43;&#43=
+;i) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uint8_t val8;</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (big_endian) {</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (memop_big_endian(op=
+)) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* Big-e=
+ndian extract. &nbsp;*/</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;val8 =3D=
+ val &gt;&gt; (((size - 1) * 8) - (i * 8));</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;} else {</div>
+<div>@@ -1605,30 &#43;1605,27 @@ store_helper(CPUArchState *env, target_ulo=
+ng addr, uint64_t val,</div>
+<div>&nbsp;</div>
+<div>&nbsp; do_aligned_access:</div>
+<div>&nbsp; &nbsp; &nbsp;haddr =3D (void *)((uintptr_t)addr &#43; entry-&gt=
+;addend);</div>
+<div>- &nbsp; &nbsp;switch (size) {</div>
+<div>- &nbsp; &nbsp;case 1:</div>
+<div>&#43; &nbsp; &nbsp;switch (op) {</div>
+<div>&#43; &nbsp; &nbsp;case MO_8:</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;stb_p(haddr, val);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>- &nbsp; &nbsp;case 2:</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;if (big_endian) {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;stw_be_p(haddr, val);</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;} else {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;stw_le_p(haddr, val);</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&#43; &nbsp; &nbsp;case MO_BEUW:</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;stw_be_p(haddr, val);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>- &nbsp; &nbsp;case 4:</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;if (big_endian) {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;stl_be_p(haddr, val);</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;} else {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;stl_le_p(haddr, val);</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&#43; &nbsp; &nbsp;case MO_LEUW:</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;stw_le_p(haddr, val);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>- &nbsp; &nbsp;case 8:</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;if (big_endian) {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;stq_be_p(haddr, val);</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;} else {</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;stq_le_p(haddr, val);</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp;}</div>
+<div>&#43; &nbsp; &nbsp;case MO_BEUL:</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;stl_be_p(haddr, val);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>&#43; &nbsp; &nbsp;case MO_LEUL:</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;stl_le_p(haddr, val);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>&#43; &nbsp; &nbsp;case MO_BEQ:</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;stq_be_p(haddr, val);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>&#43; &nbsp; &nbsp;case MO_LEQ:</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;stq_le_p(haddr, val);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;break;</div>
+<div>&nbsp; &nbsp; &nbsp;default:</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;g_assert_not_reached();</div>
+<div>@@ -1639,43 &#43;1636,43 @@ store_helper(CPUArchState *env, target_ulo=
+ng addr, uint64_t val,</div>
+<div>&nbsp;void helper_ret_stb_mmu(CPUArchState *env, target_ulong addr, ui=
+nt8_t val,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp;TCGMemOpIdx oi, uintptr_t retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;store_helper(env, addr, val, oi, retaddr, 1, false);</d=
+iv>
+<div>&#43; &nbsp; &nbsp;store_helper(env, addr, val, oi, retaddr, MO_8);</d=
+iv>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp;void helper_le_stw_mmu(CPUArchState *env, target_ulong addr, uin=
+t16_t val,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; TCGMemOpIdx oi, uintptr_t retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;store_helper(env, addr, val, oi, retaddr, 2, false);</d=
+iv>
+<div>&#43; &nbsp; &nbsp;store_helper(env, addr, val, oi, retaddr, MO_LEUW);=
+</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp;void helper_be_stw_mmu(CPUArchState *env, target_ulong addr, uin=
+t16_t val,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; TCGMemOpIdx oi, uintptr_t retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;store_helper(env, addr, val, oi, retaddr, 2, true);</di=
+v>
+<div>&#43; &nbsp; &nbsp;store_helper(env, addr, val, oi, retaddr, MO_BEUW);=
+</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp;void helper_le_stl_mmu(CPUArchState *env, target_ulong addr, uin=
+t32_t val,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; TCGMemOpIdx oi, uintptr_t retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;store_helper(env, addr, val, oi, retaddr, 4, false);</d=
+iv>
+<div>&#43; &nbsp; &nbsp;store_helper(env, addr, val, oi, retaddr, MO_LEUL);=
+</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp;void helper_be_stl_mmu(CPUArchState *env, target_ulong addr, uin=
+t32_t val,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; TCGMemOpIdx oi, uintptr_t retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;store_helper(env, addr, val, oi, retaddr, 4, true);</di=
+v>
+<div>&#43; &nbsp; &nbsp;store_helper(env, addr, val, oi, retaddr, MO_BEUL);=
+</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp;void helper_le_stq_mmu(CPUArchState *env, target_ulong addr, uin=
+t64_t val,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; TCGMemOpIdx oi, uintptr_t retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;store_helper(env, addr, val, oi, retaddr, 8, false);</d=
+iv>
+<div>&#43; &nbsp; &nbsp;store_helper(env, addr, val, oi, retaddr, MO_LEQ);<=
+/div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp;void helper_be_stq_mmu(CPUArchState *env, target_ulong addr, uin=
+t64_t val,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; TCGMemOpIdx oi, uintptr_t retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;store_helper(env, addr, val, oi, retaddr, 8, true);</di=
+v>
+<div>&#43; &nbsp; &nbsp;store_helper(env, addr, val, oi, retaddr, MO_BEQ);<=
+/div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp;/* First set of helpers allows passing in of OI and RETADDR. &nb=
+sp;This makes</div>
+<div>@@ -1740,8 &#43;1737,7 @@ void helper_be_stq_mmu(CPUArchState *env, ta=
+rget_ulong addr, uint64_t val,</div>
+<div>&nbsp;static uint64_t full_ldub_cmmu(CPUArchState *env, target_ulong a=
+ddr,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; TCGMemOpIdx oi, uintptr_t retaddr=
+)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, 1, false, tr=
+ue,</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; full_ldub_cmmu);</div>
+<div>&#43; &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, MO_8, tr=
+ue, full_ldub_cmmu);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp;uint8_t helper_ret_ldb_cmmu(CPUArchState *env, target_ulong addr=
+,</div>
+<div>@@ -1753,7 &#43;1749,7 @@ uint8_t helper_ret_ldb_cmmu(CPUArchState *en=
+v, target_ulong addr,</div>
+<div>&nbsp;static uint64_t full_le_lduw_cmmu(CPUArchState *env, target_ulon=
+g addr,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TCGMemOpIdx oi, uint=
+ptr_t retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, 2, false, tr=
+ue,</div>
+<div>&#43; &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, MO_LEUW,=
+ true,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; full_le_lduw_cmmu);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>@@ -1766,7 &#43;1762,7 @@ uint16_t helper_le_ldw_cmmu(CPUArchState *en=
+v, target_ulong addr,</div>
+<div>&nbsp;static uint64_t full_be_lduw_cmmu(CPUArchState *env, target_ulon=
+g addr,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TCGMemOpIdx oi, uint=
+ptr_t retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, 2, true, tru=
+e,</div>
+<div>&#43; &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, MO_BEUW,=
+ true,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; full_be_lduw_cmmu);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>@@ -1779,7 &#43;1775,7 @@ uint16_t helper_be_ldw_cmmu(CPUArchState *en=
+v, target_ulong addr,</div>
+<div>&nbsp;static uint64_t full_le_ldul_cmmu(CPUArchState *env, target_ulon=
+g addr,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TCGMemOpIdx oi, uint=
+ptr_t retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, 4, false, tr=
+ue,</div>
+<div>&#43; &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, MO_LEUL,=
+ true,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; full_le_ldul_cmmu);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>@@ -1792,7 &#43;1788,7 @@ uint32_t helper_le_ldl_cmmu(CPUArchState *en=
+v, target_ulong addr,</div>
+<div>&nbsp;static uint64_t full_be_ldul_cmmu(CPUArchState *env, target_ulon=
+g addr,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TCGMemOpIdx oi, uint=
+ptr_t retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, 4, true, tru=
+e,</div>
+<div>&#43; &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, MO_BEUL,=
+ true,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; full_be_ldul_cmmu);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>@@ -1805,13 &#43;1801,13 @@ uint32_t helper_be_ldl_cmmu(CPUArchState *=
+env, target_ulong addr,</div>
+<div>&nbsp;uint64_t helper_le_ldq_cmmu(CPUArchState *env, target_ulong addr=
+,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TCGMemOpIdx oi, uintptr_t retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, 8, false, tr=
+ue,</div>
+<div>&#43; &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, MO_LEQ, =
+true,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; helper_le_ldq_cmmu);</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>&nbsp;uint64_t helper_be_ldq_cmmu(CPUArchState *env, target_ulong addr=
+,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TCGMemOpIdx oi, uintptr_t retaddr)</div>
+<div>&nbsp;{</div>
+<div>- &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, 8, true, tru=
+e,</div>
+<div>&#43; &nbsp; &nbsp;return load_helper(env, addr, oi, retaddr, MO_BEQ, =
+true,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; helper_be_ldq_cmmu);</div>
+<div>&nbsp;}</div>
+<div>diff --git a/include/exec/memop.h b/include/exec/memop.h</div>
+<div>index 47a5500..e6e03d9 100644</div>
+<div>--- a/include/exec/memop.h</div>
+<div>&#43;&#43;&#43; b/include/exec/memop.h</div>
+<div>@@ -129,4 &#43;129,10 @@ static inline MemOp size_memop(unsigned size)=
+</div>
+<div>&nbsp;#endif</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>&#43;/* Big endianness from MemOp. &nbsp;*/</div>
+<div>&#43;static inline bool memop_big_endian(MemOp op)</div>
+<div>&#43;{</div>
+<div>&#43; &nbsp; &nbsp;return (op &amp; MO_BSWAP) =3D=3D MO_BE;</div>
+<div>&#43;}</div>
+<div>&#43;</div>
+<div>&nbsp;#endif</div>
+<div>diff --git a/memory.c b/memory.c</div>
+<div>index 11db6ec..264c624 100644</div>
+<div>--- a/memory.c</div>
+<div>&#43;&#43;&#43; b/memory.c</div>
+<div>@@ -343,15 &#43;343,6 @@ static void flatview_simplify(FlatView *view)=
+</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
+<div>-static bool memory_region_big_endian(MemoryRegion *mr)</div>
+<div>-{</div>
+<div>-#ifdef TARGET_WORDS_BIGENDIAN</div>
+<div>- &nbsp; &nbsp;return mr-&gt;ops-&gt;endianness !=3D MO_LE;</div>
+<div>-#else</div>
+<div>- &nbsp; &nbsp;return mr-&gt;ops-&gt;endianness =3D=3D MO_BE;</div>
+<div>-#endif</div>
+<div>-}</div>
+<div>-</div>
+<div>&nbsp;static bool memory_region_wrong_endianness(MemoryRegion *mr)</di=
+v>
+<div>&nbsp;{</div>
+<div>&nbsp;#ifdef TARGET_WORDS_BIGENDIAN</div>
+<div>@@ -564,7 &#43;555,7 @@ static MemTxResult access_with_adjusted_size(h=
+waddr addr,</div>
+<div>&nbsp; &nbsp; &nbsp;/* FIXME: support unaligned access? */</div>
+<div>&nbsp; &nbsp; &nbsp;access_size =3D MAX(MIN(size, access_size_max), ac=
+cess_size_min);</div>
+<div>&nbsp; &nbsp; &nbsp;access_mask =3D MAKE_64BIT_MASK(0, access_size * 8=
+);</div>
+<div>- &nbsp; &nbsp;if (memory_region_big_endian(mr)) {</div>
+<div>&#43; &nbsp; &nbsp;if (memop_big_endian(mr-&gt;ops-&gt;endianness)) {<=
+/div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;for (i =3D 0; i &lt; size; i &#43;=
+=3D access_size) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;r |=3D access_fn(mr, a=
+ddr &#43; i, value, access_size,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp;(size - access_size - i) * 8, access_mask, attrs);</div=
+>
 <div>--&nbsp;</div>
 <div>1.8.3.1</div>
 <div><br>
@@ -352,4 +1417,4 @@ fULL,</div>
 </body>
 </html>
 
---_000_156516694118641868btcom_--
+--_000_156516681911114515btcom_--

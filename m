@@ -1,173 +1,192 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6073293wrv;
-        Tue, 6 Aug 2019 21:55:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzQ4BuiDm+uC8wCiWddjrkqM84si9CuBO1bo5cDItKuhU8jR98TmotKKPMZ8FFj5CfZjTGP
-X-Received: by 2002:a50:982a:: with SMTP id g39mr7581075edb.88.1565153745593;
-        Tue, 06 Aug 2019 21:55:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565153745; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6073931wrv;
+        Tue, 6 Aug 2019 21:56:34 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyMfZcBdKbsyuvDYyxm6ETeTV6PgodSZhUwPoekorAfNW3jN9CbNXmIZEl8/rTTDUbGDLFf
+X-Received: by 2002:a17:907:217b:: with SMTP id rl27mr6608535ejb.154.1565153794329;
+        Tue, 06 Aug 2019 21:56:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565153794; cv=none;
         d=google.com; s=arc-20160816;
-        b=saPH86e2LvIL9wcLGeJEFNFCjI5KYYEMmoqvR9eak5++9wmmkyi5a/mAx09iLvD2sB
-         CxHV6D9aEJyWjQRZzbEMW6zjlIfVOxco6HVbUFKTIor8IaV2o5/VGzl6pTktnC+0Ivok
-         W55KCZtLP0kf45GbtaI+8To5c2ViG9A39N+9k7wqxJqQ2cknF1ZVkvAq4gIWcpXGE/Tu
-         bU9gXRlDkfRFAqR0nYm/9Q1vBF4dVNJzY382KPf/DpX7eGbYD67TV8s918AUZmwRlIhH
-         A4AOm8l2i/Qt7cIEpb2bHaRXsp/hOiKQCUB18GxjChYk7qnNNRTFClQj9MNiEFHxCh6w
-         hIhg==
+        b=egpfsiUnvMoWMb4Fefs9cU1PX3jjsYvvF+K18LynDPdv/2JpGKmAqAcHECSdj1piru
+         B8AqYb6MyW4B9AxAVmkmB9rVC5DqNj40aKIhKqn7Pu1823K3cx+7UllIQgt8YGOMQ2wm
+         fflcJLwEufGoDNM6zEQTxQZa2AT1XNBVHd5is5gxPwlvhbslruTrd03DZR+5Q7iZ8YnF
+         K7vsx7X1a/OxtkUdnsEPTN1VUTxFy7BMk6Mt3WVt3e5ljtiuQce5DMaemBafjAnEZ1TF
+         XQvcCBciKkv7UT6fKo15O8Iq+nasZFbyYr6fnh0/dIVir6FmshAGLEDCy8GBa3QAV4bD
+         ex3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=4bDE+Hq+chnI8wPbuqNYe22C+ZJ9SH+TnuzWZSpaQbg=;
-        b=Xia2+7ER+Vufjw+9kXV+Y9sk4fumA55o/rNyUVE7lr59xNTJoRpVrr3hDubIOakisV
-         gJaALROhxLrZ+HsAPprWY8DVsaR4su+PtKJXODq7TZSjfHAfF6i2W/Zc4fnPAUo9Ve0V
-         fw10kJzEq2xlO5PCWMJCTaOzkwv7aeNUP0q1l00D81qtfAoqS2Vhj9IQQ9Lce2bILzXW
-         qCdFELteQ5W0bf0r69adxoWr44r3oSlGOqEXVAPns/oSpY0bRF3QKxyU89UOOcVjyhT3
-         BeFw8nsIIn4pSOwdMJ41IPVAhAwvxTCqY6C0E9RcA/ka4lvW1JTHhiRGLtwJCYsFeSLN
-         AF/Q==
+        bh=UlqJA+9OtOIxQsXhtvfeB1bXxV7N+Aorv6VBupensFc=;
+        b=I8aa9theeZeqYLM85ParimZsqaT2MMXNM2gs7SNjStAcUk0kw1ATGOrcKXocQT09vk
+         Ox5FAcgU5PdB88ys6r7cPLWHF4b716ZAviD8XlqgZlTIh2+OWr6qCorsZgaOmn8Jy8fS
+         zVDXsgr1Xax0obd0ImvC+TKXpwY+Dt+VoI5G/X71wdveDOp0JHKaUdHmGDWttYNGfZKt
+         /ZAl+zC1E2Fv7GC0F+KXWD1OqRrSQPwejPl/CwNDPz9BiS2kEaGPQbggtM9l6lJ4A8tN
+         NrTRZgtaRvfgw3BenkzPuSoP+YMHJc1m7bvPbE9opBHjG2P2o6AR/MEvyIOrhAIbvUAY
+         h+BQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Ua3pUkWX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=QAEn9u0Y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w11si28002245ejo.207.2019.08.06.21.55.45
+        by mx.google.com with ESMTPS id gu21si27577452ejb.329.2019.08.06.21.56.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Aug 2019 21:55:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 06 Aug 2019 21:56:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Ua3pUkWX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=QAEn9u0Y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37228 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37240 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvDzE-0005Ew-Md
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 00:55:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40662)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hvE01-0006j4-Ed
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 00:56:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40768)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <richard.henderson@linaro.org>) id 1hvDxQ-0001DH-Dj
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 00:53:53 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1hvDxV-0001Ry-7v
+ for qemu-devel@nongnu.org; Wed, 07 Aug 2019 00:53:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1hvDxP-0004pB-An
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 00:53:52 -0400
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:40110)
+ (envelope-from <richard.henderson@linaro.org>) id 1hvDxU-0004u1-53
+ for qemu-devel@nongnu.org; Wed, 07 Aug 2019 00:53:57 -0400
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:42006)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1hvDxP-0004oi-59
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 00:53:51 -0400
-Received: by mail-pf1-x444.google.com with SMTP id p184so42759539pfp.7
- for <qemu-arm@nongnu.org>; Tue, 06 Aug 2019 21:53:51 -0700 (PDT)
+ id 1hvDxT-0004tP-Uc
+ for qemu-devel@nongnu.org; Wed, 07 Aug 2019 00:53:56 -0400
+Received: by mail-pf1-x442.google.com with SMTP id q10so42748180pff.9
+ for <qemu-devel@nongnu.org>; Tue, 06 Aug 2019 21:53:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=4bDE+Hq+chnI8wPbuqNYe22C+ZJ9SH+TnuzWZSpaQbg=;
- b=Ua3pUkWXv2z/gC4cHUT+sHLFhoLP+71LGQbIIarkscRJMXHvRTz/AQqr1V8CKLbY/9
- ND6tXeih6OeGhS3myNqIEKDNKXKR+7R2EuBKQrVgzdClouFQ2i1OpDd4G/oeAI7ffcsY
- /l0JGZT/W8H6f1Pybp0itHvEUbpUVgUBzaW/tiFETrbU4SXjEwAfcb+U4wWQvpyFTdgq
- 0J7wH6t0Co+Sgy3+iWkr6OQjbOHrmBZynzKSgrVa92L/B/tVPp0sPTv8Y+fb2Gz/3bQz
- +GihBac0ibkdWi2zOi6VQjp13rDC6BjjOs562PAxEuMf/RP5f9Kr2bAkKBtZlJf7k+jm
- zGeQ==
+ bh=UlqJA+9OtOIxQsXhtvfeB1bXxV7N+Aorv6VBupensFc=;
+ b=QAEn9u0Ym0ad5dh9yIMsWRcOVWzhx0B4Z1kznE3zTtN3t5ogG33OKegtSs1Rnb+wi0
+ rTUaWmKP/mDnNkhhYqDO4kJsoaeuj4MIyu9fnVRIgZW9Lguw+R6LBwd0z8DEtcxTHjJD
+ exxXpMx9mo6RtOITA2yqLj+6AEXwHa5iHl97IwlfSPfAtgLO1GwWGP+ghtHdhWtj4OHw
+ z8fogGbqZpskzAObq8DFtQdxQV8JjfGX1I9OLXi5jESbTPFwuzRJw9nwdAukzmpLkHlS
+ rJSBIWnSI8UDIoguqba/3nZdnoWmrpdG4xq6+F50m9O4kUAJceX9b0Wk8Y92aHRq/3G/
+ MGPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=4bDE+Hq+chnI8wPbuqNYe22C+ZJ9SH+TnuzWZSpaQbg=;
- b=JDdAP6WviO9N6mWH9QoaQXrYJd4hl7+o+RawxU/yb6TVTDphopc0IIS/SAU71hCJkp
- eY5m3wF2KcbNrLIq4BWb0oYbQKsiheKX+a7rsVhWzviPNQLypE32sKhhIXGHow3TStej
- h7n67IlNP3GCrtW46Ic1nhA8jNMdFMuEnpGyaS0ov+s7Y+zi9v28IN0+9dNZ3aygrN22
- YIqNTm6etfb2XTRSJ3+Tiu6FwTQ4csnpoD6wlPxg1fgoCsHw2dx/FRf6fpit7eQGlI++
- dLkKvBzXNuQiyjQjOV17clOQgobmU5RZANBWTGENSHN2cbmDmPVahJLA8rJUMTPFEe3S
- kR3w==
-X-Gm-Message-State: APjAAAVmbB9ZMwEgw3wdRF8wNgUXdnKTr+OYdTJ1KQxkc4eIee17xbv8
- J/v4oQYLfqSOWQOKtvkCWTBUGw==
-X-Received: by 2002:a62:1444:: with SMTP id 65mr7297001pfu.145.1565153630212; 
- Tue, 06 Aug 2019 21:53:50 -0700 (PDT)
+ bh=UlqJA+9OtOIxQsXhtvfeB1bXxV7N+Aorv6VBupensFc=;
+ b=Ps/N7xDo732IzS5wmZVgK1SMx1lL8oXYXK5ENTATDqrHKN0aPcGSY33JdGO3D5IU4X
+ fTokzb3SCXNt4JJQYAns5u+6DLhFzIzZxkfVvAx9FH20ZUf73kRwug793sxT3BwDI7+v
+ bKIBAKcrUgOEikUfzVOIe09dJKbMU0ZvXsr2AXjIo6LQXhyoNeGjyWE0QMIUfZBiTvhp
+ NfowGz2vky9Q87r6umdWDDckQZKAUMhQ0vLkW+5t4QisGYKL7hL3qenWB/S+ob9KOKGh
+ 4OJ/9zi4P21bxF+gyhfNuctHRBnsNYUvqS10NExbujX90nYtaYuurrCTS6BbF1KFhSzw
+ h0Tw==
+X-Gm-Message-State: APjAAAUYLFM11ob4XujRHeKxI3rWhP2F2w0QAF1oJSLGLeTMJE34/fbD
+ QREI8kVYSakFK9DYNH8zQzRJC/Lct+c=
+X-Received: by 2002:a62:1d11:: with SMTP id d17mr7453663pfd.249.1565153634726; 
+ Tue, 06 Aug 2019 21:53:54 -0700 (PDT)
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
  [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id t9sm24347921pji.18.2019.08.06.21.53.48
+ by smtp.gmail.com with ESMTPSA id t9sm24347921pji.18.2019.08.06.21.53.53
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 06 Aug 2019 21:53:49 -0700 (PDT)
+ Tue, 06 Aug 2019 21:53:54 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Tue,  6 Aug 2019 21:53:29 -0700
-Message-Id: <20190807045335.1361-6-richard.henderson@linaro.org>
+Date: Tue,  6 Aug 2019 21:53:33 -0700
+Message-Id: <20190807045335.1361-10-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190807045335.1361-1-richard.henderson@linaro.org>
 References: <20190807045335.1361-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::444
-Subject: [Qemu-arm] [PATCH 05/11] target/arm: Remove redundant s->pc & ~1
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::442
+Subject: [Qemu-devel] [PATCH 09/11] target/arm: Remove offset argument to
+ gen_exception_bkpt_insn
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8mm6yIq7VbB9
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: FKu7yxzKf/uu
 
-The thumb bit has already been removed from s->pc, and is always even.
+Unlike the other more generic gen_exception{,_internal}_insn
+interfaces, breakpoints always refer to the current instruction.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate.c | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ target/arm/translate-a64.c | 7 +++----
+ target/arm/translate.c     | 8 ++++----
+ 2 files changed, 7 insertions(+), 8 deletions(-)
 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 71d94c053b..100f958e33 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -1288,7 +1288,7 @@ static void gen_exception_bkpt_insn(DisasContext *s, int offset, uint32_t syn)
- /* Force a TB lookup after an instruction that changes the CPU state.  */
- static inline void gen_lookup_tb(DisasContext *s)
- {
--    tcg_gen_movi_i32(cpu_R[15], s->pc & ~1);
-+    tcg_gen_movi_i32(cpu_R[15], s->pc);
-     s->base.is_jmp = DISAS_EXIT;
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index c8504d221a..d68bfc66d3 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -281,12 +281,11 @@ static void gen_exception_insn(DisasContext *s, uint64_t pc, int excp,
+     s->base.is_jmp = DISAS_NORETURN;
  }
  
-@@ -7819,7 +7819,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-                  * self-modifying code correctly and also to take
-                  * any pending interrupts immediately.
-                  */
--                gen_goto_tb(s, 0, s->pc & ~1);
-+                gen_goto_tb(s, 0, s->pc);
-                 return;
-             case 7: /* sb */
-                 if ((insn & 0xf) || !dc_isar_feature(aa32_sb, s)) {
-@@ -7830,7 +7830,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-                  * for TCG; MB and end the TB instead.
-                  */
-                 tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
--                gen_goto_tb(s, 0, s->pc & ~1);
-+                gen_goto_tb(s, 0, s->pc);
-                 return;
-             default:
-                 goto illegal_op;
-@@ -10464,7 +10464,7 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
-                              * and also to take any pending interrupts
-                              * immediately.
-                              */
--                            gen_goto_tb(s, 0, s->pc & ~1);
-+                            gen_goto_tb(s, 0, s->pc);
-                             break;
-                         case 7: /* sb */
-                             if ((insn & 0xf) || !dc_isar_feature(aa32_sb, s)) {
-@@ -10475,7 +10475,7 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
-                              * for TCG; MB and end the TB instead.
-                              */
-                             tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
--                            gen_goto_tb(s, 0, s->pc & ~1);
-+                            gen_goto_tb(s, 0, s->pc);
-                             break;
-                         default:
-                             goto illegal_op;
+-static void gen_exception_bkpt_insn(DisasContext *s, int offset,
+-                                    uint32_t syndrome)
++static void gen_exception_bkpt_insn(DisasContext *s, uint32_t syndrome)
+ {
+     TCGv_i32 tcg_syn;
+ 
+-    gen_a64_set_pc_im(s->base.pc_next - offset);
++    gen_a64_set_pc_im(s->pc_curr);
+     tcg_syn = tcg_const_i32(syndrome);
+     gen_helper_exception_bkpt_insn(cpu_env, tcg_syn);
+     tcg_temp_free_i32(tcg_syn);
+@@ -1914,7 +1913,7 @@ static void disas_exc(DisasContext *s, uint32_t insn)
+             break;
+         }
+         /* BRK */
+-        gen_exception_bkpt_insn(s, 4, syn_aa64_bkpt(imm16));
++        gen_exception_bkpt_insn(s, syn_aa64_bkpt(imm16));
+         break;
+     case 2:
+         if (op2_ll != 0) {
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index e6b18ecdaf..d6b0ab7247 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -1273,12 +1273,12 @@ static void gen_exception_insn(DisasContext *s, uint32_t pc, int excp,
+     s->base.is_jmp = DISAS_NORETURN;
+ }
+ 
+-static void gen_exception_bkpt_insn(DisasContext *s, int offset, uint32_t syn)
++static void gen_exception_bkpt_insn(DisasContext *s, uint32_t syn)
+ {
+     TCGv_i32 tcg_syn;
+ 
+     gen_set_condexec(s);
+-    gen_set_pc_im(s, s->base.pc_next - offset);
++    gen_set_pc_im(s, s->pc_curr);
+     tcg_syn = tcg_const_i32(syn);
+     gen_helper_exception_bkpt_insn(cpu_env, tcg_syn);
+     tcg_temp_free_i32(tcg_syn);
+@@ -8155,7 +8155,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+             case 1:
+                 /* bkpt */
+                 ARCH(5);
+-                gen_exception_bkpt_insn(s, 4, syn_aa32_bkpt(imm16, false));
++                gen_exception_bkpt_insn(s, syn_aa32_bkpt(imm16, false));
+                 break;
+             case 2:
+                 /* Hypervisor call (v7) */
+@@ -11581,7 +11581,7 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
+         {
+             int imm8 = extract32(insn, 0, 8);
+             ARCH(5);
+-            gen_exception_bkpt_insn(s, 2, syn_aa32_bkpt(imm8, true));
++            gen_exception_bkpt_insn(s, syn_aa32_bkpt(imm8, true));
+             break;
+         }
+ 
 -- 
 2.17.1
 

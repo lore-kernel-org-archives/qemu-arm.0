@@ -1,99 +1,82 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6728118wrv;
-        Wed, 7 Aug 2019 09:04:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwKqJ9uGCVLmHnK1ytfNgx3lNwGlVvDNrfqFfVl1FffhYKqnPk9mHtI/cr9R0+lwphvYei4
-X-Received: by 2002:a37:9c0c:: with SMTP id f12mr9026821qke.442.1565193842021;
-        Wed, 07 Aug 2019 09:04:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565193842; cv=none;
-        d=google.com; s=arc-20160816;
-        b=tqxrAGK5sigqDFnSAcAzZCIxP8NEnwOXSmoPKWD/zcllR7zUyiIDMWqyfjDXrJGzFf
-         mTzmNeqeEOK+BqlxUVLztOQRpSehxcEA1yICgaJjgjkCm4QXHnib5NBkb/i9yOCKaWm1
-         gZ50wRPJLO/63BxTr5v5+IIF8eLVHiMpOtGW+hceRfeIqw04/lfLSfoI3Xwe5iUrbtiL
-         /iidNb62kutEerLeKaFKUvd1u9lmZ6jUiaE99DL2K2qH9sAfp0caOy3n/H9yvefeoLdj
-         fyvPJnL3w65ocQlQICbX6dx48d+U+3gQLgP2v8ZtXoLPAiFgYJmY9NAxa5OIqxDDgUQk
-         CcsQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=JRp+GCBhRCvNVP/Ko71Bv5RLsa9azOABccrtfnznMFM=;
-        b=nsiSXtSMDynC/aLjN9GE4f2wZIT8STG1BOuvN9Z4Hi6CpUpD2K0J1zyRSIz+ZA3S93
-         Nq8sGy3gGNx6Hi95klkwy6ZOkKujv7vMf2Qwyq4ifKIksHZm9pK1XgDHpXxAhyVdJAa7
-         lI1TXDdxEn+LjZlrgJ8P3ULTgscJ0vwDoK1dX+/EI/D9dOe42ergyfhSPwCmWqXNOr8Y
-         cKd/pbx1gG+YZFF595rwPq0djaaKV8K+Bxx6yyGcnSSLwoL3WmnGLAvu+pRanLocByF7
-         /FlwWQdei1CvQW3agySTsLJS2VSGjXBxaK1Uxj+Qc7IZO9mqEPzki+dmkhMKQ6OoY/7C
-         JhcQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NaloFjre;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6786867wrv;
+        Wed, 7 Aug 2019 09:57:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzTMAuuPjM3ojFH97Kw4oxj17r0nk4ug2Gn2IXnQloa6O2NuwFxq8je8dVh2rTbtDiuSnJU
+X-Received: by 2002:a37:a388:: with SMTP id m130mr9507186qke.250.1565197028182;
+        Wed, 07 Aug 2019 09:57:08 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 22si61570823qvr.63.2019.08.07.09.04.01
+        by mx.google.com with ESMTPS id 127si31129600qkk.310.2019.08.07.09.57.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 09:04:02 -0700 (PDT)
+        Wed, 07 Aug 2019 09:57:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NaloFjre;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43210 helo=lists1p.gnu.org)
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=Yho5747o;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43554 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvOPx-0004Nj-Hi
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 12:04:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37044)
+	id 1hvPFL-0001IL-P3
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 12:57:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49305)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hvOO5-0000mi-Ju
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 12:02:07 -0400
+ (envelope-from <damien.hedde@greensocs.com>) id 1hvPFG-0001IF-1b
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 12:57:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hvOO1-00068s-Oh
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 12:02:03 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:44574)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hvOO0-0005vP-JR
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 12:02:01 -0400
-Received: by mail-ot1-x344.google.com with SMTP id b7so56139756otl.11
- for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 09:01:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=JRp+GCBhRCvNVP/Ko71Bv5RLsa9azOABccrtfnznMFM=;
- b=NaloFjreMAMcG84k0+ZCWZGy/vgs+qon7TMAIa7UGyq/+pRaZByvToXFaLIOicEPcG
- UDKhyA6k3r4umIx8jhOrY0oo/BaYr737yaTEn+49SDraChk7NIuUFhPTucwuWI5Y/cem
- r/jxW+bXrSdOepnRIVExwUymgWw7VYGMAlpGVmjC8lUgRyaYU8jaEQq/hWpsYMLDel4h
- msX9Mvtd+nucMK74JSNIUBEc3Jy6rKlmMDzw1+S5CaBiyvdZUpY7Att8qkMiMZwhVoJI
- ZNWacTc/ciGzhV7xrZf69j2BBuanVH0N5+47W1d7js67HEpWYyTXLMVJjMHz86Sp8LJc
- QWHw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=JRp+GCBhRCvNVP/Ko71Bv5RLsa9azOABccrtfnznMFM=;
- b=Kr+GtPn/JRW4G6iZ2wjiOvetKJ20hQKD8LIafOGyha01BacscpSWQw+sYMm5dD/b5d
- 1S0G9fOSO1mTCKBinRnaCRdT0s1y5w9AxX4D/srT7SJHIbzIhCtn/3jDgOqYUDGVS75j
- WfVmxrYjUInB5tchsRJyc5/pH5U65v5EwD2Bg7XawRkpdZkkJqpULGh+hLITqI20xQPV
- b8xrTL3GgCdGImwRkEAmIaHOJgh5vrKc8DtLup0HSJZxAJkSpzeu+uUg4k6I18QOTEr/
- LNMZH//+4bOSCYiwBI3JK9xH8oaOc9LOBQKc5blj7eoZ1kpHVZWkgM/zAmg96sVFhb7K
- ukQA==
-X-Gm-Message-State: APjAAAXZc1tjvtY+iqaW4TmD15TgNpuReQytVb1LWLSy+lb3Fs8+ngK+
- 6R3QOOKclqXPLCWDWpn7Qhtozt29WZPGVUlOjus7gA==
-X-Received: by 2002:a9d:5f1a:: with SMTP id f26mr8913557oti.91.1565193713448; 
- Wed, 07 Aug 2019 09:01:53 -0700 (PDT)
-MIME-Version: 1.0
+ (envelope-from <damien.hedde@greensocs.com>) id 1hvPFE-0004HE-PS
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 12:57:01 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:35182)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1hvPFE-0004Em-8g; Wed, 07 Aug 2019 12:57:00 -0400
+Received: from [172.16.11.117] (unknown [172.16.11.117])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 3415296F50;
+ Wed,  7 Aug 2019 16:56:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1565197017;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=JXY7K4YIlJui1wCXpDlV3I+Oqpy2MwzkeCka4cjwYn8=;
+ b=Yho5747ojy5/6V1iP4phjGjCN1ktpQVkq1bQYc5yG9buJ9GGViz1bI6POH/7ILpXIySHz+
+ H9i2FWYeu3OexK93xHFTYzshLYKnRsPe9JPnmojBveukIFZLEZAemO6mbLQvN++K/GN342
+ 9CDFX2pGQFWkkR+TuiQqfbwwTZZFTgo=
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-10-damien.hedde@greensocs.com>
- <20190731063044.GG2032@umbus.fritz.box>
-In-Reply-To: <20190731063044.GG2032@umbus.fritz.box>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 7 Aug 2019 17:01:42 +0100
-Message-ID: <CAFEAcA97PbDP3XrtHCXuiwZorC7B8hY_EGL+iRLsJeC=L=kekw@mail.gmail.com>
-To: David Gibson <david@gibson.dropbear.id.au>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::344
-Subject: Re: [Qemu-arm] [PATCH v3 09/33] add doc about Resettable interface
+ <20190729145654.14644-9-damien.hedde@greensocs.com>
+ <CAFEAcA_M5fOoQ8yN_1QhJ-WOLxra6B-Ltwh2DHtq6erz4V0a2A@mail.gmail.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <4958551b-0202-f82b-9133-457c8051e5aa@greensocs.com>
+Date: Wed, 7 Aug 2019 18:56:55 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA_M5fOoQ8yN_1QhJ-WOLxra6B-Ltwh2DHtq6erz4V0a2A@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1565197018;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=JXY7K4YIlJui1wCXpDlV3I+Oqpy2MwzkeCka4cjwYn8=;
+ b=61AVsz7zqLUFkN7BIfUVT8fBWXRM+POfnb7qv9KgmZ3QA48uaKuLCLP/znF8qEL7fS2qH7
+ te+awcniYql1A1wryXGmDISY27u/v0haKL0XfNMRT0yJOdXelkmvY1tYWqMpKkHWYmWZrP
+ rH4fyIiyL93t+1IxZtE79mzGZI21aP8=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1565197018; a=rsa-sha256; cv=none;
+ b=KwTYywea0LmbjsmozgCLPolJ4X58HGkBelUk2XYAzWuTyz0YR46sITCn1Eb2ZttN6yVvt2
+ RtnJ0Al2UM+B+zh/TvtO9xgpSwZE1hyFHYj4qkfN8XSJrD32ahPrY5SDcilW2zwSxQ1kIS
+ 66cAsP+TYZmfhxdDhGCaOzrLNfCwxLs=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 5.135.226.135
+Subject: Re: [Qemu-arm] [PATCH v3 08/33] Add function to control reset with
+ gpio inputs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -115,45 +98,169 @@ Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
  Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>, qemu-s390x <qemu-s390x@nongnu.org>,
  qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Damien Hedde <damien.hedde@greensocs.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, John Snow <jsnow@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
  "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
  Mark Burton <mark.burton@greensocs.com>, qemu-ppc <qemu-ppc@nongnu.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZIidEFoPGaa+
-
-On Wed, 31 Jul 2019 at 07:33, David Gibson <david@gibson.dropbear.id.au> wrote:
->
-> On Mon, Jul 29, 2019 at 04:56:30PM +0200, Damien Hedde wrote:
-> > Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
-> > +For Devices and Buses there is also the corresponding helpers:
-> > +void device_reset(Device *dev, bool cold)
-> > +void bus_reset(Device *dev, bool cold)
->
-> What's the semantic difference between resetting a bus and resetting
-> the bridge device which owns it?
-
-We should definitely explain this in the documentation, but
-consider for instance a SCSI controller. Resetting the
-SCSI controller puts all its registers back into whatever
-the reset state is for the device, as well as resetting
-everything on the SCSI bus. Resetting just the SCSI bus
-resets the disks and so on on the bus, but doesn't change
-the state of the controller itself, which remains programmed
-with whatever state the guest has set up.
-
-PCI has a similar distinction between resetting the controller
-and resetting the bus.
-
-Note that we have this distinction in the current APIs too:
-qbus_reset_all() vs qdev_reset_all().
+X-TUID: BNv/L8k2UYAS
 
 
-thanks
--- PMM
+
+On 8/7/19 5:18 PM, Peter Maydell wrote:
+> On Mon, 29 Jul 2019 at 15:59, Damien Hedde <damien.hedde@greensocs.com> wrote:
+>>
+>> It adds the possibility to add 2 gpios to control the warm and cold reset.
+>> With theses ios, the reset can be maintained during some time.
+>> Each io is associated with a state to detect level changes.
+>>
+>> Vmstate subsections are also added to the existsing device_reset
+>> subsection.
+>>
+>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+>> ---
+>>  hw/core/qdev-vmstate.c | 15 ++++++++++
+>>  hw/core/qdev.c         | 65 ++++++++++++++++++++++++++++++++++++++++++
+>>  include/hw/qdev-core.h | 57 ++++++++++++++++++++++++++++++++++++
+>>  3 files changed, 137 insertions(+)
+>>
+>> diff --git a/hw/core/qdev-vmstate.c b/hw/core/qdev-vmstate.c
+>> index 24f8465c61..72f84c6cee 100644
+>> --- a/hw/core/qdev-vmstate.c
+>> +++ b/hw/core/qdev-vmstate.c
+>> @@ -24,10 +24,23 @@ static int device_vmstate_reset_post_load(void *opaque, int version_id)
+>>  {
+>>      DeviceState *dev = (DeviceState *) opaque;
+>>      BusState *bus;
+>> +    uint32_t io_count = 0;
+>> +
+>>      QLIST_FOREACH(bus, &dev->child_bus, sibling) {
+>>          bus->resetting = dev->resetting;
+>>          bus->reset_is_cold = dev->reset_is_cold;
+>>      }
+>> +
+>> +    if (dev->cold_reset_input.state) {
+>> +        io_count += 1;
+>> +    }
+>> +    if (dev->warm_reset_input.state) {
+>> +        io_count += 1;
+>> +    }
+>> +    /* ensure resetting count is coherent with io states */
+>> +    if (dev->resetting < io_count) {
+>> +        return -1;
+>> +    }
+>>      return 0;
+>>  }
+>>
+>> @@ -40,6 +53,8 @@ const struct VMStateDescription device_vmstate_reset = {
+>>      .fields = (VMStateField[]) {
+>>          VMSTATE_UINT32(resetting, DeviceState),
+>>          VMSTATE_BOOL(reset_is_cold, DeviceState),
+>> +        VMSTATE_BOOL(cold_reset_input.state, DeviceState),
+>> +        VMSTATE_BOOL(warm_reset_input.state, DeviceState),
+> 
+> If we're just adding these fields to this VMStateDescription
+> then this patch should come earlier in the series than the
+> patch where we create and start using the fields. Otherwise
+> there's a migration compat break between a QEMU just
+> before this patch and a QEMU with it. I think the simplest
+> fix is to put this patch before patches 6/7 and have a note
+> in the commit message that this functionality can't be used
+> until after the patch which adds the migration support.
+
+Independently of the compat break you mention, maybe it is better to
+have 'conditional' subsection for each input ?
+
+> 
+>>          VMSTATE_END_OF_LIST()
+>>      },
+>>  };
+>> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+>> index 88387d3743..11a4de55ea 100644
+>> --- a/hw/core/qdev.c
+>> +++ b/hw/core/qdev.c
+>> @@ -450,6 +450,67 @@ void qdev_init_gpio_in(DeviceState *dev, qemu_irq_handler handler, int n)
+>>      qdev_init_gpio_in_named(dev, handler, NULL, n);
+>>  }
+>>
+>> +static DeviceResetInputState *device_get_reset_input_state(DeviceState *dev,
+>> +                                                            bool cold)
+>> +{
+>> +    return cold ? &dev->cold_reset_input : &dev->warm_reset_input;
+>> +}
+>> +
+>> +static void device_reset_handler(DeviceState *dev, bool cold, bool level)
+>> +{
+>> +    DeviceResetInputState *dris = device_get_reset_input_state(dev, cold);
+>> +
+>> +    if (dris->type == DEVICE_RESET_ACTIVE_LOW) {
+>> +        level = !level;
+>> +    }
+>> +
+>> +    if (dris->state == level) {
+>> +        /* io state has not changed */
+>> +        return;
+>> +    }
+>> +
+>> +    dris->state = level;
+>> +
+>> +    if (level) {
+>> +        resettable_assert_reset(OBJECT(dev), cold);
+>> +    } else {
+>> +        resettable_deassert_reset(OBJECT(dev));
+>> +    }
+>> +}
+>> +
+>> +static void device_cold_reset_handler(void *opaque, int n, int level)
+>> +{
+>> +    device_reset_handler((DeviceState *) opaque, true, level);
+>> +}
+>> +
+>> +static void device_warm_reset_handler(void *opaque, int n, int level)
+>> +{
+>> +    device_reset_handler((DeviceState *) opaque, false, level);
+>> +}
+>> +
+>> +void qdev_init_reset_gpio_in_named(DeviceState *dev, const char *name,
+>> +                                   bool cold, DeviceResetActiveType type)
+>> +{
+>> +    DeviceResetInputState *dris = device_get_reset_input_state(dev, cold);
+>> +    qemu_irq_handler handler;
+>> +
+>> +    switch (type) {
+>> +    case DEVICE_RESET_ACTIVE_LOW:
+>> +    case DEVICE_RESET_ACTIVE_HIGH:
+>> +        break;
+>> +    default:
+>> +        assert(false);
+>> +        break;
+> 
+> The usual way to write this is
+>     g_assert_not_reached();
+> (and no following 'break').
+> 
+> 
+> But the whole switch statement seems to be a complicated way
+> of writing
+>    assert(type == DEVICE_RESET_ACTIVE_LOW || type == DEVICE_RESET_ACTIVE_HIGH);
+> 
+>> +    }
+>> +
+>> +    assert(!dris->exists);
+>> +    dris->exists = true;
+>> +    dris->type = type;
+>> +
+>> +    handler = cold ? device_cold_reset_handler : device_warm_reset_handler;
+>> +    qdev_init_gpio_in_named(dev, handler, name, 1);
+>> +}
+> 
+> thanks
+> -- PMM
+> 

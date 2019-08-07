@@ -1,101 +1,99 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6690523wrv;
-        Wed, 7 Aug 2019 08:29:40 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw8WvnBXNA2FJmnFjtj8nAc7BTLeWmzrmpS1NQl3CZnsLJtLRZlXX90981DGPDLtWFCXPha
-X-Received: by 2002:a05:6214:1441:: with SMTP id b1mr8451105qvy.218.1565191780579;
-        Wed, 07 Aug 2019 08:29:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565191780; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6692664wrv;
+        Wed, 7 Aug 2019 08:31:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzqU4ufH6gQUovGh8QVn+mkLyW/xkfcMAjRzkWdtX3/6kButSiDSiHl2VJBT/gNsiSPGgO1
+X-Received: by 2002:a17:906:6a89:: with SMTP id p9mr8903652ejr.44.1565191891251;
+        Wed, 07 Aug 2019 08:31:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565191891; cv=none;
         d=google.com; s=arc-20160816;
-        b=BlQuBARXOHZHbsg1O7aeQe+Xygo2y6vynRsehZsgCfOki/4XXU3ggu6SeaI/d9JqKk
-         Vyym6D/mX6IiHRTHH/K1YG6ixy+/+86F2aO3PpYnpwRDM1UNKEUJSF0ENP47ZGBFymSQ
-         PmdsCb8VHfB0lVrdcQMIoit9ICJfYEWzo/MlaJ6IhRF0xGzb3slndHDLEutkHzk/Iu/9
-         rSpVnWJQmd5h64DY/sLXLWT5kWQP++MyAWsY7kBnN417HR71pVXGnttngM/rXe6oNgqs
-         YyVYX0Rk/TtACOQg41taUghDPlvbdHJMGzrtilCstvKI4des9oJHj/rLnSakJUouDHSv
-         nXoQ==
+        b=nZ3EV/MzWpZiuaEdFHWcZo6ani3//FY8KHhrprOfaiFMd6UyFlHeHwTC8b7IaOuvVL
+         iFxPMz4r+FSlbkVwkpcoiMy8b+TpAlqttc7CYfWN535UN9OCJ4zTi3y1RNifNUegTK1X
+         ahJTm3QVfbYd3gU2JHFOF0y3kJsv40rhHiLTMPugQToliaPd6GRPRGQ1JeRNUDCTLAzj
+         lEcH/lTlNfUBQt/HnPqyVvAILgJV8pR2R3TKmJS6+pF5Ar9Gqyxa25j0HX7o1HPVv27O
+         KyFDeLLPxEHO+C7FNYIa62PUHdtGtW+rW3hRexhHxVmV7p8ibNdULkFTzx8JPPOfJoJi
+         dr7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=vsWAd3sS+abRbYDwBUJmXOh15cy4aX+CfS9hDhks7DQ=;
-        b=Tc2EwNuhw7RY2cBbRp82j0Xl4KCR+jDAdvmp6mZWRvxnrIipQTytIY7vphUL7vDAMR
-         vU9YhApkoruyjiWTDTZtXjieOgibTw74rFvT05BobljiT+HM2BJxHW3/BpqGV/L8bObP
-         8wxVS+kER6XwIJ8QQ6eCTCYlaWw+2IcrYVI78S8ro09kbHb1IKkeZ70QUdaMo/bb2HzV
-         +39V8+jQWyJqK6zaNfW3bWN5tpljH8GB1x5e9XQFsGQML3WyBXSlS0X3L/D1xmoAjrX3
-         GDbcb85Z44BvJNbB+plcNARNLsuBrFuSaOxi9drvVlmzk45CtqY5QRVeNIMMWYiLOCoR
-         y8qQ==
+        bh=yMsieLqwqdlIND1Ne1OG/KGvtJnV0/Iki6Rpdgsvs1M=;
+        b=oDnxOh665BGiLVoEGhjfmYHMxp2d42TY3ze7ciBuPFslNodGISdE0owc1om1bsnVSj
+         11sBapAU/Imzf8sQDt3IpHUcAsw2lxbKelNJZjWfSc/lomsP4kjiMUiJumFeJdYv2zED
+         vysLJ5jXdoHRaywimwG1+pRYhNlCGuuQrln3ib+mypU/ZTaZXDVULBSz4qlg+5/mIU29
+         R7QcegWRmy1M6wY7ksRkMururA/mBYaPNBlu1SvRzODeRoyCeFb6wFseW9rH9+G5Xv4M
+         tibkc/e0feWCpUGWza7BaeTzhrhdlZNpIXP2f+mSuWlEFuedXN1LnWAX7JrGGj5U5Muv
+         e2tA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=FG4BZfJE;
+       dkim=fail header.i=@linaro.org header.s=google header.b=WSko8Jab;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o50si2807862qtb.255.2019.08.07.08.29.40
+        by mx.google.com with ESMTPS id i25si32186948edv.222.2019.08.07.08.31.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 08:29:40 -0700 (PDT)
+        Wed, 07 Aug 2019 08:31:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=FG4BZfJE;
+       dkim=fail header.i=@linaro.org header.s=google header.b=WSko8Jab;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42576 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42606 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvNsi-0002ic-3y
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 11:29:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53996)
+	id 1hvNuU-0004Po-At
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 11:31:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54287)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hvNrn-0001jm-CO
- for qemu-devel@nongnu.org; Wed, 07 Aug 2019 11:28:44 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hvNsr-0003S9-EJ
+ for qemu-devel@nongnu.org; Wed, 07 Aug 2019 11:29:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hvNrm-0003TL-5L
- for qemu-devel@nongnu.org; Wed, 07 Aug 2019 11:28:43 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:33403)
+ (envelope-from <peter.maydell@linaro.org>) id 1hvNsq-0003vu-Ft
+ for qemu-devel@nongnu.org; Wed, 07 Aug 2019 11:29:49 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:45993)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hvNrl-0003Sw-WD
- for qemu-devel@nongnu.org; Wed, 07 Aug 2019 11:28:42 -0400
-Received: by mail-ot1-x342.google.com with SMTP id q20so105776075otl.0
- for <qemu-devel@nongnu.org>; Wed, 07 Aug 2019 08:28:41 -0700 (PDT)
+ id 1hvNsq-0003vK-9n
+ for qemu-devel@nongnu.org; Wed, 07 Aug 2019 11:29:48 -0400
+Received: by mail-ot1-x343.google.com with SMTP id x21so12598471otq.12
+ for <qemu-devel@nongnu.org>; Wed, 07 Aug 2019 08:29:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=vsWAd3sS+abRbYDwBUJmXOh15cy4aX+CfS9hDhks7DQ=;
- b=FG4BZfJEFkrslbfAitSQfpiiWhxrb3hyjOf1fcyk4TiavPCc6vX6efpJbFD2WDWprz
- vDHZ1/L6DR+X811JKk2xQGnbt/kWMcCZDzcvKDyTbYxDC8db1hjCPsoKV3KhKaLB3Ad7
- GuTTgdxtVOMJOXxlORiKEvzf7K2D/4OPsAFP0fQzMBuPFfmZ4nrL/GMVVDvISs4TDKqi
- PRcZxYlK6VgWO/VLxFk02wfh1Ah/V25K/yGYOjZAcAVSQmBF7YtO5vka267d3hBwGvWu
- vdP1q7WlL+y2z2yknV7KCdRRbQxE7i1Sm9f/YwaNPWDrJNkP2OR5Cd54AlCtqWoJPyXj
- bFDA==
+ :cc; bh=yMsieLqwqdlIND1Ne1OG/KGvtJnV0/Iki6Rpdgsvs1M=;
+ b=WSko8JabmfPMK1q8/FwWDmsr3Ln3t6hpurlZGEGmzH2S5TZ9qgBAxUEfxO3ofzOqKr
+ 8smCs6UjCNgkMpEa96jQFHmb+Ywca3TJQNZPLzLQq8IlDL/viPUp7/nuD5Qvfejpk6bG
+ lsAckyzUkSOOHjeVO0OdL8fGD7BA0n6peBrXgWp0nKe70tfyFzLoooOAgD2cGrSVl2ec
+ iLaUa4ew2b+bJmSjGXZgiYUKsqKADVQc7t3amAkD7n7wEFIZxDpjQi8mCbumhFp6qYQU
+ RtDbZ/bApyzdHBMc1NtdNja60OuimrdrFJjR10OGrfYnsBHBGkvTiC93own6tyDlVGt7
+ 2h1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=vsWAd3sS+abRbYDwBUJmXOh15cy4aX+CfS9hDhks7DQ=;
- b=FPWa2V+4Nxwd43aW5dK+z/70DTNFwY4ILzbN8ka0Wp19+oPftC7Pa1uZbj51flQ/sU
- htoY3yhDLvbCMltzufVVIjeB1s0OPl5lj3cQicKjz4lMmuRKDJyC/5uC4iofxRaOUeoj
- nd8sj8v6semSahTbIwfPpl3DQPYh7ysm6hEObmVIK4JriqPCi4zGANyxXWHAUueL622m
- LyFn8nhQSeBGYzZCbaH1b6zbPg/O3wIC+anBFRZlITynWsO6nKK3sEuH1+xxNK+1jDsI
- JCHH8s9wHnzgzoMFDsyS9NaHhqEG3pmEpoiVCJqq/W3DVJv3876rAOCFk0r7cBPDR1bZ
- /HSg==
-X-Gm-Message-State: APjAAAX1lSYIW6ED9Pum7SJS1Ea2KOVdVBVdo+/e+dmmdS9P4igH47WA
- rSGO3DQohrLE44ipJi9G4Cfxs1WTTUKXcFhAH2QKTA==
-X-Received: by 2002:a6b:b593:: with SMTP id
- e141mr10236695iof.203.1565191721376; 
- Wed, 07 Aug 2019 08:28:41 -0700 (PDT)
+ bh=yMsieLqwqdlIND1Ne1OG/KGvtJnV0/Iki6Rpdgsvs1M=;
+ b=AU1coQApxau4ZNf1z4drOnOYCx7DrownmZNsQytRGSbzcwgfwGBLGPVIsEVUzrSM97
+ I9t5PWTjKWX0GuqdYTMPw5IyTdg9fzvrRgcVP55Le6D7frgkh4ZIeJwyjNuGhOMFH72t
+ ZSxNhaudGKPx+4RTVz1qlJg/HsPwZ6IqOGU8t+kPjzrPO5V7eLgVCH7vqhaaFsJnQxvt
+ /agkDTB5POWm90mnrcpzu3+6VHIBZRCy18ohc541KsYElCSUpeP6152o02PQUcVFIJ9u
+ UuBArQ6uEiChH5qq/pLCyTrT7y6ksktdiFkd3Cs6fdQ7KJI+/5R52eM6pqRYFEiDx4Vx
+ zy4Q==
+X-Gm-Message-State: APjAAAWFDUb+7Amdo/40xT/eh279rOuPqI5Rv5SfLqIfPiVvHToSYbiH
+ Ie97SdkkBUSERri9/UksAAuXVc9WhcKnmk4Pv76kcg==
+X-Received: by 2002:a6b:5103:: with SMTP id f3mr9718926iob.142.1565191787480; 
+ Wed, 07 Aug 2019 08:29:47 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-5-damien.hedde@greensocs.com>
- <CAFEAcA_WEf6YKwMWbE0=Qqn1NfUN-Hwr9iMk1PKe0ZxZfVfwVA@mail.gmail.com>
- <625412c2-1866-7c01-3035-334335088fa3@greensocs.com>
-In-Reply-To: <625412c2-1866-7c01-3035-334335088fa3@greensocs.com>
+ <20190729145654.14644-29-damien.hedde@greensocs.com>
+In-Reply-To: <20190729145654.14644-29-damien.hedde@greensocs.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 7 Aug 2019 16:28:30 +0100
-Message-ID: <CAFEAcA-Jmvu3rYU0Q99+hm-Gg=v1Y+Azrr8J8iZ7cW_BiSpUqw@mail.gmail.com>
+Date: Wed, 7 Aug 2019 16:29:36 +0100
+Message-ID: <CAFEAcA-1njp77xVH5jk50hiUCwHhoJ9skWPBARD4_uYiT=dVTQ@mail.gmail.com>
 To: Damien Hedde <damien.hedde@greensocs.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::342
-Subject: Re: [Qemu-devel] [PATCH v3 04/33] make Device and Bus Resettable
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-devel] [PATCH v3 28/33] qdev: Remove unused deprecated
+ reset functions
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -128,48 +126,19 @@ Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 470gUb3Ws1pc
+X-TUID: +LTPdn02dtU6
 
-On Wed, 7 Aug 2019 at 16:23, Damien Hedde <damien.hedde@greensocs.com> wrote:
-> On 8/7/19 4:41 PM, Peter Maydell wrote:
-> > On Mon, 29 Jul 2019 at 15:58, Damien Hedde <damien.hedde@greensocs.com> wrote:
-> >> legacy resets are called in the "post" order (ie: children then parent)
-> >> in hierarchical reset. That is the same order as legacy qdev_reset_all
-> >> or qbus_reset_all were using.
-> >
-> > This is true, but on the other hand the semantics of most device
-> > reset methods match "init", not "exit" -- they just set device
-> > internal fields to the correct reset state.
+On Mon, 29 Jul 2019 at 15:59, Damien Hedde <damien.hedde@greensocs.com> wrote:
 >
-> I changed from "init" to "exit" due to the change of the init phase call
-> order to parent-then-children.
+> Remove the functions now they are unused:
+> + device_legacy_reset
+> + qdev_reset_all[_fn]
+> + qbus_reset_all[_fn]
 >
-> This is a consequence of what I found about the raspi reset: it changes
-> the reset hierarchy during reset. The only way I saw to have a chance
-> allowing this kind of things cleanly is: do parent init first so that it
-> can setup its children before they are considered for reset.
+> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+> ---
 
-Changing the reset hierarchy during reset is a bit awkward;
-I'll have to have a look at the email you sent about the raspi.
-
-I can't decide whether there's an obvious "natural" order to
-want the phases to be done in for parent vs children. I guess
-it only matters for controller devices and the things on their
-bus (eg pci controller vs pci devices, scsi controller vs scsi
-devices). We should figure out what the right semantics for our
-new multi phase setup are by looking at those, I suppose.
-
-> I can put the legacy reset method to the hold phase which is part of the
-> "enter reset state". Otherwise I need to change back the order of init
-> phase.
->
-> My other concern with putting it in init phase is that some device do
-> things we forbid in it (like setting irq).
-
-Yes, but those devices are broken today, because we forbid
-setting IRQs in a 'legacy' device reset method as well!
-The correct fix for those (eventually) would be to split the 'set irq'
-part out into new-style 'init' and 'hold' methods.
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM

@@ -1,163 +1,169 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6754097wrv;
-        Wed, 7 Aug 2019 09:24:44 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzIOMRQGhsSugK9e7LEz10A0IWhBRQ81BodWP6n3EIvpC8zRdakcrH2tx91u69WC3jsmaLF
-X-Received: by 2002:aa7:c3c4:: with SMTP id l4mr10849215edr.32.1565195084671;
-        Wed, 07 Aug 2019 09:24:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565195084; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6796197wrv;
+        Wed, 7 Aug 2019 10:05:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwqRZ+2fYPwhth+bpOPxWmYGXSBHGKrgER3YshrhD3sUdk8xcD+rtkTD65YYxxYvO6ZK+45
+X-Received: by 2002:a50:9107:: with SMTP id e7mr11112225eda.280.1565197551754;
+        Wed, 07 Aug 2019 10:05:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565197551; cv=none;
         d=google.com; s=arc-20160816;
-        b=MFgYLeC9dWAj64St8tSxHeMEep2cGA/WRvGy11gxLToXX1ittdGpXz9ueBWtwT3E/y
-         2xM0hE4eti8Ml5mV0/qKC2H8VBoh5/KfV2nFSmNcHpNVH0uK11xpevEZx68BULmM8vJa
-         Vom8KPnkrXuw5t+aK3PXSANxWVs+qPurC03h1KHXhJ/XYUFIWQIkVghmyvlVFJweH0iC
-         ouYiGHEfpZLPJT4G8ZrwHJ7GI6Nje3uDjhGz1Gw05h8A4BMckPIDmosBN9UfaX3mox35
-         uPglILeBHXGRd6rZ12C8tZNry9GHGlqKJMv9ycWzLZ73dAdzPT3fO/OCTvo526xwPYbd
-         Pj4A==
+        b=kJvSiH/T8LKV7AUUhxZMXBEwyF4hahOAlFI0PxijN1sq2XcreRcaPp+3PmEFlytDFk
+         dK+YS+afkrmdTyvraDjDYvkMcvN9SLZZcJ/hdctkVClWpIf6SR0dV2KrcINT+LsoMPKu
+         bnsaR2rwT+pvEPd2yamolATUmqj3oJFrT0QIzadVQulNQT4JMfyqDufjw7cVyXS2rFFd
+         h3jyd78lVQRmAB6Iwt1IfywwfEdM8rKukmIfcbFx0vvH9QUM6MHfDwKIXh7UwrGNSy9z
+         5RaSR0tGffRmPNo5mD8e5L3L1Z5qq6q7BJPb8THQLSnpXaratgvOSXuxcxQFebl4fVzQ
+         LRgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature;
-        bh=aYYfm+vIRRwS8+uBU3AWzg+SbxWwC9WZ5LnrTr11tTs=;
-        b=AycLwM0QQU7uFsf36ogRZtqzvH5HFGu6HLaB8i3AoaO5vsJv665pctQpBxM8NjlJo3
-         Hto7sX+B8eHcvc3M3qNd0cArzCNY3i3gbfUbP1O/V5jQoZOuxFO2gE9YX/Cf21w+h3w/
-         70Xjfua8HBtT++yzFhSjaYIxOajXP+NUpUw5ocFUEM1nznFiI5ru3c8aHcHI1hAWpaVP
-         HDdaBLaTA46JBhJpvqKw38xdRX+Zsy5YBfyJ86FL3oX24nJ78OC0aSLdkzDdf1EC/Y7H
-         6M/z/fhiZb52zOMe0bCMnHJZeD5daTtb9yVnJvAoDmiUeqMlT0vV2777e9ogfAAU98KT
-         qT3A==
+         :content-transfer-encoding:to:message-id:date:from:in-reply-to
+         :references:mime-version:dkim-signature;
+        bh=fdYLrUT287k+tJgWqDNZMrBa/YcSpTzUb+gyNVLX6M8=;
+        b=GMt0ri4LYdkD71gpOzGY4XLErYR4fx2ScrprYwGRESllEfIJfj6U527JBoy8QqKi1n
+         X9HmRx07cabJvWwiC018K6n16c5mvLu+EIviEcRa7OoDLvgm53OtIC+gjGbZHX+qasRw
+         BRWILLgQMybEGnPCvULQk1CG7TcgMhNdlvUo/QIl9+LfeddP+rgiGIEFLFCdTNI/ismX
+         uiyPnVEDS2zl17JsyA1+Rx0x7QCDBfCQE4Wlm0DrxAnMYz/0+odAtUzLDNdWCcm7ybyz
+         pmwAHfqM/96vw1Bwcst1uZf5hG/GZSIC+K0E6aU3MAPD2Ou9jlMGCopvb98oVz47HtpC
+         5jiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=y0bRoBWs;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=xeAf38Qc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a51si33709782eda.161.2019.08.07.09.24.44
+        by mx.google.com with ESMTPS id b2si33677614ede.451.2019.08.07.10.05.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 09:24:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 07 Aug 2019 10:05:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=y0bRoBWs;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=xeAf38Qc;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43380 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43612 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvOjz-0001tV-PS
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 12:24:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41543)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hvPNm-0005dU-RU
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 13:05:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51150)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <richard.henderson@linaro.org>) id 1hvOjM-0000km-C0
- for qemu-devel@nongnu.org; Wed, 07 Aug 2019 12:24:05 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hvPNg-0005cQ-Mh
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:05:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1hvOjL-0005bx-C4
- for qemu-devel@nongnu.org; Wed, 07 Aug 2019 12:24:04 -0400
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:41454)
+ (envelope-from <peter.maydell@linaro.org>) id 1hvPNf-0000Xu-Jo
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:05:44 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:45362)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1hvOjL-0005ah-47
- for qemu-devel@nongnu.org; Wed, 07 Aug 2019 12:24:03 -0400
-Received: by mail-pl1-x644.google.com with SMTP id m9so41408124pls.8
- for <qemu-devel@nongnu.org>; Wed, 07 Aug 2019 09:24:03 -0700 (PDT)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hvPNf-0000WM-7v
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:05:43 -0400
+Received: by mail-ot1-x344.google.com with SMTP id x21so13859369otq.12
+ for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 10:05:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=aYYfm+vIRRwS8+uBU3AWzg+SbxWwC9WZ5LnrTr11tTs=;
- b=y0bRoBWsit3vYVWoy2IIyQk2NlSE9Whdckg2ww8rJWfzkOyqG34pue44La9x5ZZXWM
- qrQe/8ZUXeINHn01gTY+5T2q4i8qP8tGe/+c7uVc1nZntD7ApW8gWrsaOHVqaigbYFXq
- zz7aLv6I2zYmeG5Jv/EtpA7A2X1U5ftBtkok6NKqk/4GZgVsklw8N6uD0f3eETNB86xK
- Slx0/+AvvMaK9/r3UPLrfytNDzazCOsPMzugsLRpTNma7avbpR0/5ZnWL0IPFj1rAD9i
- uSTrIk9RTgXOESR9qRVIFIsh1YOgv9PGBfO3EBPtzIVvFbU87YFURq+XJmUikprQhf70
- axPA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=fdYLrUT287k+tJgWqDNZMrBa/YcSpTzUb+gyNVLX6M8=;
+ b=xeAf38QcOgtgzKyz8qXEjeJ9Y/ta+tk1/JuzozUXR7zhpHAanM6e+3/xQXSbfe1fJw
+ j+QeRAO5HFoEUvCNXIN6NUsAZjIQn8U9kelA56vyI8vygb/3qPYYguF0DR9Ih2orJgeL
+ RLtewXo2fxPoJ8w7v4mx6ctErP+mt1a+6HD1kqbExI5u2vnFV80WqpI3G/pNSKwFVWIv
+ a01iW5Qsc/MD/v+y8Ie0bAkFcUqghXwvVWPpLgIsoiFlVwfFv+iY4BuauQsTzCJNwnUE
+ zjd2YZyM8zTPlDzZelbT8zhGvAOuQOrMkJ7/G0Dsl7H+iH+++1OpiM0HLFouuFb01dwc
+ BqJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=aYYfm+vIRRwS8+uBU3AWzg+SbxWwC9WZ5LnrTr11tTs=;
- b=Pieoa7CQgUFALVidRrI+fsnuY38BTzavaN0eUI1/N2XqT3U8ZutIqt55bBqQhX3WBF
- YUARDOaGj39bzyeBNRbKAcVkoFbu2ry0QY6stQgDZJWIDbZ75rzHI0eV5AFEmww01np1
- 7bZ0AQcHqyxTWuTyoPXoq4U651kmRD9q6sggE4WGmwa6eswI7qGpe/XAF38InkGkwI72
- 47qnLRVp2gqQtfjJeFfQCP+AVO5Pl47AgawDfFGMvFOFcB7p+nYx5UYBKTuFHRNTsTZo
- D6odR0Ik8Oo+qb/d1BLC1PH7vhWX5YzahBHfB7DhA2vU7AXYswkvaTOVxIc7wHG9lHXS
- Czuw==
-X-Gm-Message-State: APjAAAWZr8gOpKU+1YyToc4q/wXvi3y9Czo1aTM0KorrMRuRqCBWtZkq
- n+0D5n2yUpcqHRn3VBxOZmjQ+A==
-X-Received: by 2002:a63:e901:: with SMTP id i1mr8256677pgh.451.1565195042061; 
- Wed, 07 Aug 2019 09:24:02 -0700 (PDT)
-Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id j5sm107874000pfi.104.2019.08.07.09.23.59
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 07 Aug 2019 09:24:01 -0700 (PDT)
-To: tony.nguyen@bt.com, qemu-devel@nongnu.org
-References: <45ec4924e0b34a3d9124e2db06af75b4@tpw09926dag18e.domain1.systemhost.net>
- <1565166747494.26346@bt.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <5afaa158-e9a4-96c5-841a-e4ffc041b35d@linaro.org>
-Date: Wed, 7 Aug 2019 09:23:58 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=fdYLrUT287k+tJgWqDNZMrBa/YcSpTzUb+gyNVLX6M8=;
+ b=BDT0H8ei9VguqO8j9UPEKU0/jvwL6xQrfDIruPCSoV8JIa4SRhIEsrDl/wvObmer5I
+ 45K/VxhWJCVL+Um4L8I+++N/1URr06kSAthc6Rz83OJ7dO4Lp1shZuWRsQawtg3iDlA+
+ ABNoh/3HNw55FPMejlvtJh1HVOvirIa+QSFm0GgfYZTvKmIYUneHnKkUGcSVKdPduBUi
+ 8sLBTEKx8j2KajCtNvz6kyVy2EQnMLZ3NydZrNKepbfiOc/xdrTPLaj29doNRZBdZH0j
+ LDtpFM7mw7Z8ZEfH5ENv1PmaAQX1UCBalPXX7TBJOIIik4xFqSfzhbpSvUGbv6PUKChl
+ /+Bg==
+X-Gm-Message-State: APjAAAXtfmEkVrIh8ciXkZMz0H+eg/1Z4w6cjcSRGEYvxTPBqX8aspIm
+ /bPoxGOJuA0sBjhW5ohjJMBXzXdKdd3HCHsC43DseQ==
+X-Received: by 2002:a9d:5f1a:: with SMTP id f26mr9172136oti.91.1565197542250; 
+ Wed, 07 Aug 2019 10:05:42 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1565166747494.26346@bt.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+References: <20190805142417.10433-1-aaron.hill@alertinnovation.com>
+In-Reply-To: <20190805142417.10433-1-aaron.hill@alertinnovation.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 7 Aug 2019 18:05:31 +0100
+Message-ID: <CAFEAcA-WN_wPiG=mCSTR4N2C10TuW3cuyhN-K0xmA4AxwX3N3g@mail.gmail.com>
+To: Aaron Hill <aa1ronham@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::644
-Subject: Re: [Qemu-devel] [PATCH v6 18/26] exec: Delete device_endian
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::344
+Subject: Re: [Qemu-arm] [PATCH] Set ENET_BD_BDU in I.MX FEC controller
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
- dmitry.fleytman@gmail.com, imammedo@redhat.com, sagark@eecs.berkeley.edu,
- david@redhat.com, jasowang@redhat.com, palmer@sifive.com,
- mark.cave-ayland@ilande.co.uk, laurent@vivier.eu, keith.busch@intel.com,
- jcmvbkbc@gmail.com, frederic.konrad@adacore.com, pbonzini@redhat.com,
- kraxel@redhat.com, edgar.iglesias@gmail.com, gxt@mprc.pku.edu.cn,
- pburton@wavecomp.com, marex@denx.de, robh@kernel.org, hare@suse.com,
- sstabellini@kernel.org, berto@igalia.com, proljc@gmail.com,
- qemu-block@nongnu.org, arikalo@wavecomp.com, jslaby@suse.cz, deller@gmx.de,
- mst@redhat.com, magnus.damm@gmail.com, pasic@linux.ibm.com,
- borntraeger@de.ibm.com, mreitz@redhat.com, hpoussin@reactos.org,
- joel@jms.id.au, anthony.perard@citrix.com, xen-devel@lists.xenproject.org,
- rth@twiddle.net, philmd@redhat.com, green@moxielogic.com, atar4qemu@gmail.com,
- antonynpavlov@gmail.com, jiri@resnulli.us, ehabkost@redhat.com,
- minyard@acm.org, sw@weilnetz.de, alistair@alistair23.me, chouteau@adacore.com,
- b.galvani@gmail.com, eric.auger@redhat.com, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, peter.chubb@nicta.com.au, yuval.shaia@oracle.com,
- stefanha@redhat.com, marcandre.lureau@redhat.com, shorne@gmail.com,
- sundeep.lkml@gmail.com, jsnow@redhat.com, david@gibson.dropbear.id.au,
- kwolf@redhat.com, crwulff@gmail.com, qemu-riscv@nongnu.org,
- xiaoguangrong.eric@gmail.com, i.mitsyanko@gmail.com, lersek@redhat.com,
- cohuck@redhat.com, alex.williamson@redhat.com, Andrew.Baumann@microsoft.com,
- jcd@tribudubois.net, andrew@aj.id.au, michael@walle.cc,
- paul.durrant@citrix.com, qemu-ppc@nongnu.org, huth@tuxfamily.org,
- amarkovic@wavecomp.com, kbastian@mail.uni-paderborn.de, jan.kiszka@web.de,
- stefanb@linux.ibm.com, andrew.smirnov@gmail.com, aurelien@aurel32.net,
- clg@kaod.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZCcuvi6pSDos
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Jason Wang <jasowang@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1w8JQ1QeMVda
 
-On 8/7/19 1:32 AM, tony.nguyen@bt.com wrote:
-> device_endian has been made redundant by MemOp.
-> 
-> Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
+On Mon, 5 Aug 2019 at 15:24, Aaron Hill <aa1ronham@gmail.com> wrote:
+>
+> From: Aaron Hill <aa1ronham@gmail.com>
+>
+> This commit properly sets the ENET_BD_BDU flag once the emulated FEC cont=
+roller
+> has finished processing the last descriptor. This is done for both transm=
+it
+> and receive descriptors.
+>
+> This allows the QNX 7.0.0 BSP for the Sabrelite board (which can be
+> found at http://blackberry.qnx.com/en/developers/bsp) to properly
+> control the FEC. Without this patch, the BSP ethernet driver will never
+> re-use FEC descriptors, as the unset ENET_BD_BDU flag will cause
+> it to believe that the descriptors are still in use by the NIC.
+>
+> Note that Linux does not appear to use this field at all, and is
+> unaffected by this patch.
+>
+> Without this patch, QNX will think that the NIC is still processing its
+> transaction descriptors, and won't send any more data over the network.
+>
+> For reference:
+>
+> On page 1192 of the I.MX 6DQ reference manual revision (Rev. 5, 06/2018),
+> which can be found at https://www.nxp.com/products/processors-and-microco=
+ntrollers/arm-based-processors-and-mcus/i.mx-applications-processors/i.mx-6=
+-processors/i.mx-6quad-processors-high-performance-3d-graphics-hd-video-arm=
+-cortex-a9-core:i.MX6Q?&tab=3DDocumentation_Tab&linkline=3DApplication-Note
+>
+> the 'BDU' field is described as follows for the 'Enhanced transmit
+> buffer descriptor':
+>
+> 'Last buffer descriptor update done. Indicates that the last BD data has =
+been updated by
+> uDMA. This field is written by the user (=3D0) and uDMA (=3D1).'
+>
+> The same description is used for the receive buffer descriptor.
+>
+> Signed-off-by: Aaron Hill <aa1ronham@gmail.com>
 > ---
->  include/exec/cpu-common.h | 8 --------
->  1 file changed, 8 deletions(-)
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
-r~
 
+Hi; thanks for this patch. The data sheet's description of the
+buffer descriptors was a bit confusing to me (since it describes
+what we have as a "uint32_t last_buffer" as two separate 16 bit
+fields) but I think this is correct given how we define ENET_BD_BDU.
+
+I've applied it to target-arm.next ready to go in once the
+4.1 release ships and we reopen trunk for new development.
+
+thanks
+-- PMM

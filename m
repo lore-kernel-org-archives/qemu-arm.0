@@ -1,100 +1,97 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6824763wrv;
-        Wed, 7 Aug 2019 10:35:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy1V1xRLdznJThu1BYcJqQevzfvZay7upLjk4KYEn+bMj/mDG7evJVWJZUCI4PZxgWcseNP
-X-Received: by 2002:a17:906:161b:: with SMTP id m27mr9398411ejd.203.1565199358556;
-        Wed, 07 Aug 2019 10:35:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565199358; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6839608wrv;
+        Wed, 7 Aug 2019 10:53:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw6wWhgr4tRN8tp+rs6/LcFAqxttD6SiF+2h69nRvl1NQX9nmDVASV/6njv8eIVmiiQDiBB
+X-Received: by 2002:a37:9a4a:: with SMTP id c71mr9564453qke.258.1565200397087;
+        Wed, 07 Aug 2019 10:53:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565200397; cv=none;
         d=google.com; s=arc-20160816;
-        b=DMa0ktNuMnkcY1MoDr6VW5igUwXyns0i4xt/1Jf45N+0yUSmQlBp6H7/vnMlZyR0OJ
-         4TbeKI57Kw/NHW3uEc3QSwWqDSJtPGNB4NpescRHiNS+fBxRWnij7XElQ0UQyF8TDIV4
-         xDS8b0i9Jq+cStdT8lb+scQucyehqBmyzv9V1KQ9lFm1tmaXl6F4Y9Ym/VTmyHt9Vm0R
-         dNRMW1yKOfUtoSrehoVhZBvdv7Irw9NkZiV8RCpAnT7bLU4ZrCYNjiKdilEd13uUWSTG
-         r+XYTPTTtqPi48VRztOWGJr6k7i7ddoJ43t9VOCt/2kxS804CEiax3fi9xI0VuUv4fzY
-         n8AQ==
+        b=waeIPzb+5C1cA2pyztGYwe7HnEh4hrNCBwJesLhnEGMmGx4gumuIgCyM41WsXPTiGL
+         kwR5+o+9KGCE3A6CNpSSGS9VxtL13W3MKgqbizSgHRkbYI5F5Fv55Xe5YwadhIRZ1xnH
+         kgg9iGCsnL+smc6IN3LxUHybYBbJ3jTOl18ihece5qRpkDiSPDN37Ksy61gGWENNn/YX
+         PbzVnkAr82c8bLiuN9t5pV38vNfDIUqmZBnftJ4h/sfNCsbthWBHBI0hSqJSBz20bohG
+         m2rvWl5/BiiKx15Zsl/8DIadJu2O8Gg7Ccu+KvYzA1A3CWiK0WvzNpD4cNyXNXqlXnDj
+         gqAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=HYrgFBsUh/JwzlsP+KSAQpJRfwY5SoFff50j98OSet0=;
-        b=l9ZqItU+AkNKEo22QLeLUKr2YdYdD3VgFmhhIdvAouY/qGpTR43/g3NI/CqACUeJJ0
-         ryPmctyG9QthI179xJjP/TlmUXeTn3SlJr54CYE/KjT8iuKZJu2l+Jeq0eJEeY9V0pAE
-         k/ga4eh6Zq0bGkQJjFZ8b8ZhDpnJIm51rctLrkTJTOx9sb7xYgJ+oyiQzqnZCQ8OgLyz
-         agyIW2xdxDYxhJnjcDVu5g1/UX20Be+mt7Kc3bJpecO/fXXfwbk3he2IwrfUqVe1IgGW
-         onwwK40meoHW9XO8omROsMK9c/aK48j8XXZSFwBNR9ju1wN3K/IgxgXUgW4GTsxUjbol
-         ZxmA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=TFJ8+QiEz3CZrxJGNn8ZjRZU6uLheuguQ13sLuKkqUI=;
+        b=0QKiwSqNDhh+HqEdHt83xHT8Kvyro7EptoQ+9n8A0VE1QfqHh627U9gSyDC0kmalig
+         562Ke099Ji5PGzwFjpJoC4ho0ReVl3g5Vvl3fbMxp1FgMqsyved0cqoFRiQMxy88kjyy
+         +nEmM64QEryq61+pdMTGfZ09mJjc2p/UQK5c8okDaHiEfF5F8Qiu050ASvSBaCNaB1vy
+         nj+ku0oX3/bZIEcyg/OFDHD/89NVEF7XaqwnIkUTg5hxgKIhgsmvo0cycxq3/iNAti0k
+         hv17Yo3at6IiXzJi9bZr5bPrm8oEV3DJujKKuwlTzNUlNmnJOKRtbCsLlSXGhJOnyVVs
+         aIBA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=q4Ds4wOF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o5si30021356eju.390.2019.08.07.10.35.58
+        by mx.google.com with ESMTPS id v3si22825945qkd.376.2019.08.07.10.53.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 10:35:58 -0700 (PDT)
+        Wed, 07 Aug 2019 10:53:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=q4Ds4wOF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43878 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44102 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvPqv-0002an-Kd
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 13:35:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56086)
+	id 1hvQ7g-0005lm-Jx
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 13:53:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59726)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hvPqp-0002Xj-1b
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:35:52 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hvQ7Z-0005g6-R8
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:53:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hvPqn-0002HC-OV
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:35:50 -0400
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:46653)
+ (envelope-from <peter.maydell@linaro.org>) id 1hvQ7Y-0007O9-VA
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:53:09 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:45557)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hvPqn-0002Fi-Iy
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:35:49 -0400
-Received: by mail-wr1-f68.google.com with SMTP id z1so92200805wru.13
- for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 10:35:49 -0700 (PDT)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hvQ7Y-0007Lv-PK
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:53:08 -0400
+Received: by mail-ot1-x341.google.com with SMTP id x21so14441392otq.12
+ for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 10:53:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=TFJ8+QiEz3CZrxJGNn8ZjRZU6uLheuguQ13sLuKkqUI=;
+ b=q4Ds4wOFOD3Hm9eA0LlREjKzGx9FN+lf9rj7gGOInDJ9476/wJsCxiOgof+mw3XepD
+ ETr/w8ZzIpy3Ha3aa5Ip/Sw01+I6pQCqKR9qCX/ujC5bGYG2IFDRGVXgNATrYRO4zRKQ
+ okJ1mJmgyKTUnLfNUFHfHlY92VIRQc61VOwU/8e1dyBrxf6AswbHKIw74i0LIt4CVP6b
+ 6ROLUHuDU2CtflPtUKB4dOBaekXoTzzyEfaQZ4ir66Lr2U5iXPqSQsNYim4VPmKhv9Es
+ 75ZWD3EjS3wTmA7lJ+Y96IVv5XsbbMD66ziw2BPm6eyOxr1MtfglbKadzbLDeJkFya98
+ AE+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=HYrgFBsUh/JwzlsP+KSAQpJRfwY5SoFff50j98OSet0=;
- b=rdMi7uOGUgPN98AU0kFUusWjNluLLsADhDYmb9hff88WLLpyRkXVPZKHUcZVXSEZ3B
- Xc+3CnHVUFWrmZPXzqv5OOVEiOIi+9DbkrSUEQOo1sb3jFK+5lbU1WP3F9+KjmC6+LGt
- DgZQPiDhhIgF1dv0ssz2tFMQlqSHjGi3VxXOt8l7v9Qm5UuZL+BXktwCsWCeTQWLS83a
- 86XYvnaw7G4f3VnVoqv1YiiHf7r/AOIFdvKhh94XJiDZnVOGSrdLvh7c/7HJ8PbuAx+E
- We13ZPLFEMP9KrXuuoyfKT+JD4i7umx4w/9S7rNhhSj1GkC/BGXTcLdtVu5VxC5TRXfF
- N0aw==
-X-Gm-Message-State: APjAAAUiJMdI9Tf9FN9eBmhYaQHqgCoZILSC6rKq9b9k528DEMVBlzhJ
- bnrFLAYk+DurEJc/gTM/Iwzzjc5K30g=
-X-Received: by 2002:a5d:4d4c:: with SMTP id a12mr2018839wru.343.1565199348523; 
- Wed, 07 Aug 2019 10:35:48 -0700 (PDT)
-Received: from [192.168.1.115] (214.red-83-51-160.dynamicip.rima-tde.net.
- [83.51.160.214])
- by smtp.gmail.com with ESMTPSA id u13sm3498266wrw.45.2019.08.07.10.35.47
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Wed, 07 Aug 2019 10:35:47 -0700 (PDT)
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-References: <20190807045335.1361-1-richard.henderson@linaro.org>
- <20190807045335.1361-11-richard.henderson@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <b8a42bb2-829f-e330-3135-d4d128b3e5be@redhat.com>
-Date: Wed, 7 Aug 2019 19:35:46 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=TFJ8+QiEz3CZrxJGNn8ZjRZU6uLheuguQ13sLuKkqUI=;
+ b=sEk/ZFyDnPhu20lr6jEia4ZF8RjMYX529cUVvG5G8wijoliOmfA1E/EL4Cdx4PDWxT
+ oFtxALNgijyIHiqvITcxEWP5Z8bHl17OtSNMgKl+ennNDXcRteoueCjvg3GyWBGABmDn
+ bfJi9v9t+JPUMbDB6JS7c29caJbH8lyNwE5jv5TqpmzU7Sf6+i12iGIu5YM2uad6l6+B
+ IWT4Fs3419fZh6htRV7VwzzVLbmZ1X2BeuTsZlD4HqGvTulzvfoxIoqA1dYBCR86KylZ
+ P+cJzLuNvjI2+IIVme0MnRfznckLwX9QkSclE2Ie7ZhyTy7EK8zbPKjn50WNPs1/mdM7
+ r1Hw==
+X-Gm-Message-State: APjAAAXP79Jr5hAQrgYHIt3guWWcK6CcuxvrlhNtWDuDDLUdkNg0/blg
+ RMlSuOtdxcO89WMvXFBubBhSa2rvDxUPGDTNZglEpw==
+X-Received: by 2002:aca:ac48:: with SMTP id v69mr751481oie.48.1565200387864;
+ Wed, 07 Aug 2019 10:53:07 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190807045335.1361-11-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.221.68
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 10/11] target/arm: Use
- unallocated_encoding for aarch32
+References: <20190807045335.1361-1-richard.henderson@linaro.org>
+In-Reply-To: <20190807045335.1361-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 7 Aug 2019 18:52:57 +0100
+Message-ID: <CAFEAcA-s3DZcW=L0X=Snxj7PwyLQerhQwrYiKj=icJwkHp6pqw@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+Subject: Re: [Qemu-arm] [PATCH 00/11] target/arm: decodetree prep patches
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,154 +103,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0cthIzrdSLf7
+X-TUID: fHNi5dLfrSZG
 
-On 8/7/19 6:53 AM, Richard Henderson wrote:
-> Promote this function from aarch64 to fully general use.
-> Use it to unify the code sequences for generating illegal
-> opcode exceptions.
-> 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/translate-a64.h     |  2 --
->  target/arm/translate.h         |  2 ++
->  target/arm/translate-a64.c     |  7 -------
->  target/arm/translate-vfp.inc.c |  3 +--
->  target/arm/translate.c         | 22 ++++++++++++----------
->  5 files changed, 15 insertions(+), 21 deletions(-)
-> 
-> diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
-> index 9cd2b3d238..12ad8ac6ed 100644
-> --- a/target/arm/translate-a64.h
-> +++ b/target/arm/translate-a64.h
-> @@ -18,8 +18,6 @@
->  #ifndef TARGET_ARM_TRANSLATE_A64_H
->  #define TARGET_ARM_TRANSLATE_A64_H
->  
-> -void unallocated_encoding(DisasContext *s);
-> -
->  #define unsupported_encoding(s, insn)                                    \
->      do {                                                                 \
->          qemu_log_mask(LOG_UNIMP,                                         \
-> diff --git a/target/arm/translate.h b/target/arm/translate.h
-> index de600073d8..6a65df0b27 100644
-> --- a/target/arm/translate.h
-> +++ b/target/arm/translate.h
-> @@ -98,6 +98,8 @@ typedef struct DisasCompare {
->      bool value_global;
->  } DisasCompare;
->  
-> +void unallocated_encoding(DisasContext *s);
-> +
->  /* Share the TCG temporaries common between 32 and 64 bit modes.  */
->  extern TCGv_i32 cpu_NF, cpu_ZF, cpu_CF, cpu_VF;
->  extern TCGv_i64 cpu_exclusive_addr;
-> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index d68bfc66d3..9e1ffe9cfb 100644
-> --- a/target/arm/translate-a64.c
-> +++ b/target/arm/translate-a64.c
-> @@ -352,13 +352,6 @@ static inline void gen_goto_tb(DisasContext *s, int n, uint64_t dest)
->      }
->  }
->  
-> -void unallocated_encoding(DisasContext *s)
-> -{
-> -    /* Unallocated and reserved encodings are uncategorized */
-> -    gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn_uncategorized(),
-> -                       default_exception_el(s));
-> -}
-> -
->  static void init_tmp_a64_array(DisasContext *s)
->  {
->  #ifdef CONFIG_DEBUG_TCG
-> diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
-> index 5065d4524c..3e8ea80493 100644
-> --- a/target/arm/translate-vfp.inc.c
-> +++ b/target/arm/translate-vfp.inc.c
-> @@ -108,8 +108,7 @@ static bool full_vfp_access_check(DisasContext *s, bool ignore_vfp_enabled)
->  
->      if (!s->vfp_enabled && !ignore_vfp_enabled) {
->          assert(!arm_dc_feature(s, ARM_FEATURE_M));
-> -        gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn_uncategorized(),
-> -                           default_exception_el(s));
-> +        unallocated_encoding(s);
->          return false;
->      }
->  
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index d6b0ab7247..2d447d4b90 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -1285,6 +1285,13 @@ static void gen_exception_bkpt_insn(DisasContext *s, uint32_t syn)
->      s->base.is_jmp = DISAS_NORETURN;
->  }
->  
-> +void unallocated_encoding(DisasContext *s)
-> +{
-> +    /* Unallocated and reserved encodings are uncategorized */
-> +    gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn_uncategorized(),
-> +                       default_exception_el(s));
-> +}
-> +
->  /* Force a TB lookup after an instruction that changes the CPU state.  */
->  static inline void gen_lookup_tb(DisasContext *s)
->  {
-> @@ -1315,8 +1322,7 @@ static inline void gen_hlt(DisasContext *s, int imm)
->          return;
->      }
->  
-> -    gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn_uncategorized(),
-> -                       default_exception_el(s));
-> +    unallocated_encoding(s);
->  }
->  
->  static inline void gen_add_data_offset(DisasContext *s, unsigned int insn,
-> @@ -7638,8 +7644,7 @@ static void gen_srs(DisasContext *s,
->      }
->  
->      if (undef) {
-> -        gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn_uncategorized(),
-> -                           default_exception_el(s));
-> +        unallocated_encoding(s);
->          return;
->      }
->  
-> @@ -9266,8 +9271,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
->              break;
->          default:
->          illegal_op:
-> -            gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn_uncategorized(),
-> -                               default_exception_el(s));
-> +            unallocated_encoding(s);
->              break;
->          }
->      }
-> @@ -10955,8 +10959,7 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
->      }
->      return;
->  illegal_op:
-> -    gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn_uncategorized(),
-> -                       default_exception_el(s));
-> +    unallocated_encoding(s);
->  }
->  
->  static void disas_thumb_insn(DisasContext *s, uint32_t insn)
-> @@ -11779,8 +11782,7 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
->      return;
->  illegal_op:
->  undef:
-> -    gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn_uncategorized(),
-> -                       default_exception_el(s));
-> +    unallocated_encoding(s);
->  }
->  
->  static bool insn_crosses_page(CPUARMState *env, DisasContext *s)
-> 
+On Wed, 7 Aug 2019 at 05:53, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> These are split out of my decodetree conversion of the
+> aarch32 general instructions.  With one exception, these
+> are all related to cleaning up how we refer to "PC".
+>
+>
+> r~
+>
+>
+> Richard Henderson (11):
+>   target/arm: Pass in pc to thumb_insn_is_16bit
+>   target/arm: Introduce pc_curr
+>   target/arm: Introduce read_pc
+>   target/arm: Introduce add_reg_for_lit
+>   target/arm: Remove redundant s->pc & ~1
+>   target/arm: Replace s->pc with s->base.pc_next
+>   target/arm: Replace offset with pc in gen_exception_insn
+>   target/arm: Replace offset with pc in gen_exception_internal_insn
+>   target/arm: Remove offset argument to gen_exception_bkpt_insn
+>   target/arm: Use unallocated_encoding for aarch32
+>   target/arm: Remove helper_double_saturate
 
-I wanted to suggest naming it gen_unallocated_encoding_exception() but
-it is already used ~250 times, so no :)
+Whole series
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+I have one query on 3/11 but the change itself is clearly
+correct so it's just a question of if we need to tweak the
+commit message. Once we've figured that out I'll apply the
+series to target-arm.next.
+
+thanks
+-- PMM

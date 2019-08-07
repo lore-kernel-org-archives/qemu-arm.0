@@ -1,98 +1,99 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6643876wrv;
-        Wed, 7 Aug 2019 07:49:17 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxu1nHO3rJfYQW3/SYQhadLEw2sUYdn+QzJVolhnU+DBALHjMLauQX5kY/Ds6epCOHPQAzQ
-X-Received: by 2002:a17:906:6d06:: with SMTP id m6mr845856ejr.166.1565189357797;
-        Wed, 07 Aug 2019 07:49:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565189357; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6648092wrv;
+        Wed, 7 Aug 2019 07:53:44 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwQcBO33fFQRP1XNvceNOX8StNpNTs19OZKqkx8RpaBv2+Im2pY+CuoZ3Vu9IeziKLvrQqh
+X-Received: by 2002:a50:94f5:: with SMTP id t50mr10168218eda.150.1565189624215;
+        Wed, 07 Aug 2019 07:53:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565189624; cv=none;
         d=google.com; s=arc-20160816;
-        b=l+K/anjAxt8ji+gs0aKRQYHrczjcTAhH1/aLGeH+XaeG3Z0VuLJfnwy6g0mxKju1tB
-         tHSj3AIausegr3hyZV+G9z+JXFGdWxh2Y5TUP90A5RPaGDvc0YHHdgUb+tmHwhLPsRaI
-         mMinIgXPOnKTWf2i9BYd+z5ECzC/bq7w6F6BQ++uIJrtSD5ulEWyDVdC6BohRcBuF4Mo
-         b9qsi/lKIlebXaUxAuxVLxI4fSVy/AYJ1rz1UgwhDVdk8nE9VpqjS6Gpxcnq3HgaUIcy
-         4eHQyBX4cjQXxEf15+SfbBPGCHiVBFXPCiXal7Wi6YcKoElWYzPGY0mJdDmGorS08wPu
-         jsgA==
+        b=v/xIE7i1DLDzALABXByDr1REq56kUU+zwt+e3r3j1yge+zITvP/rc5bn7/l1LM7DXB
+         A4nU3BmoaBVhtlU8J1hhHHU0zT0zYvzZZuEAFSbgZKAzkdKMrZIdjannu4Y8ML15XRX3
+         3J/FvzLTOGXlBoTD8O4NvMlH3ajw+c3T6aQHtIN/pFw59R1QvjZ6lbc1yiRlo1O8l/TA
+         rIQg71hJlGmOciMS+XuMeDTfIJe1ou8Lw6QoQvCXqUlwpoDt/Y+lHukFuXlOhCBwH6LI
+         Gq+QwOtILRSqfPrxMXeAPclYGBFA0MxEv3qjVAoycngCPNTWZp+wOghCEOF4SJYfZkdl
+         rqrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=Xcs8eszuqoo75MPHipKVwOdBKi8vP3Ou/V7cEZfAmDM=;
-        b=QHM3IRYgnUTc36kBSz3wjxISWhCafMKuYIQI9PVe+kciC+AH/43sbSF0GYLhmbI04P
-         7PfS7xuimuXZpeUngVRxT3/DegRmGranIonEOCtwrD7ZFSypG3yuM01q56FHIQC26l7l
-         KBbcNxpSfrclJbMW2hyuPZxvU7EBu6HaJrcs84NmhrLneht8OlGRQ0J7sm4unn1ByxaR
-         qsTaPWhSEHEtiHXvOW4NqkeaUvQxoTxhnNXX2f+ymoKV0tyUo9oZCOySK+EX4WSKNj/7
-         N+iEDbHSwcEjQzjibOY+T786sua8ZhZ1HIStZNE/45GSlb3YyKKiRk7722z6N/yCqZ0f
-         vH4Q==
+        bh=o4YAZdlZGHTYqTNb1MVuymX+rEuuIehN8yuCA4wcFOk=;
+        b=u/4/YP13b0mQGPzcX2vK5zGjiJQmvxGVVccnqjyOl9WnOCka7O8JmQm7pucivIXQZ8
+         Xe7wB94s10OD/nK93a+C8hqbjKCGhAjFjVwRGVuz3zbgakXWl09c+b3TX3PiA5T0q1XA
+         +VzbPRpgVNMN3PL631piWKz9odkRn7udj5Raoe9e8DKxz1F16xa2yVbD92uO+5ywipMp
+         9ykyWprSeZzfut3Pzke1D5B+5aSC+To0SD1dl/zeF5OCn9MHyeYGtM3UW/nCOibV2rnr
+         Tvbnhraq9E2ppSvykDe7eaFvDdq2LwUuIMDjLyZXJdm8hMp1u/gSnVhqo4CY6vGIN7Cq
+         rmDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=s8KNTiLF;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Ui33b5Gn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y8si35018128edb.251.2019.08.07.07.49.17
+        by mx.google.com with ESMTPS id w12si34657607edb.109.2019.08.07.07.53.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 07:49:17 -0700 (PDT)
+        Wed, 07 Aug 2019 07:53:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=s8KNTiLF;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Ui33b5Gn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42038 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42108 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvNFc-0007jS-SN
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 10:49:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44517)
+	id 1hvNJv-0004fu-BN
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 10:53:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45711)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hvNEw-0006ib-O1
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 10:48:36 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hvNJn-0004b8-Ds
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 10:53:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hvNEv-0006Xi-4C
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 10:48:34 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:42748)
+ (envelope-from <peter.maydell@linaro.org>) id 1hvNJm-0001rd-68
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 10:53:35 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:40231)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hvNEu-0006U8-SO
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 10:48:33 -0400
-Received: by mail-ot1-x343.google.com with SMTP id l15so105332395otn.9
- for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 07:48:29 -0700 (PDT)
+ id 1hvNJl-0001qo-Vw
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 10:53:34 -0400
+Received: by mail-ot1-x343.google.com with SMTP id l15so48145782oth.7
+ for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 07:53:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Xcs8eszuqoo75MPHipKVwOdBKi8vP3Ou/V7cEZfAmDM=;
- b=s8KNTiLFjmIPG8oLZ/GxijanephAJui6nVR+rHZ7VPnbcvCyimWuBAoa8Qnqx8L63P
- pCtDFz4392cPrAKnXAL9JJWEkUKqNkdqtQwz2IEdskBfCGwvvXkkVbTz5HBn4I5b7F/G
- AFISfvOYY7fg7OrsbZNMG4cwKQOohplmr+yJQyaZvySAxPL9a47sAPxZKEd/P3VT/zp2
- RrZrqlxg1Rdn7Kf3vy1i/DV0/R8X9wpkGGfht9pGalTp7VF+5OMTpGykhjSbERN3uB+c
- NJhmxLQK9nEYsPVlC+E+R1lAU/whSR1Q+TjKlUMy2hMtKbIUP1ISNDvBb/mM3NqmQE8Q
- kf4g==
+ :cc; bh=o4YAZdlZGHTYqTNb1MVuymX+rEuuIehN8yuCA4wcFOk=;
+ b=Ui33b5GnMVWOX3+cLzhijVULDAi8R2EYRcn0u898iE9V13IVpas4MCY5ikMdRjkyFP
+ fVVCtumv+b3k5GtVD03mund+LAuCH6cuPSPT+qlPSh4qo+BJOuP2nG0uUGVJGbqb8113
+ hGBhthJSjOd3kZjaZDZqIksUP0GHll0ejZAtdnjGgJF+i6ThUIHPHcfRlKWwPvEx/WDZ
+ 8gyEKj9z7tHh6ccgRvdEaGrcXQu7KycO+949CmwwqwY99GfzQNFF8VBL62nbQATG783X
+ 8yLmzxV9EquvnGphu7ShSkIXFdDiRPlGkc0OVOBLj6eTTasaXdkQpO6pHcnQFGjy0Uce
+ vnDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Xcs8eszuqoo75MPHipKVwOdBKi8vP3Ou/V7cEZfAmDM=;
- b=otsDjCFoNl2KlFN7w+qpbkea1i1J3XW2/O4DVTeryfuKVLvzyoTMTn1nY5pUuKOzUQ
- Vl6byCv/wV7+N/6APStNt/EWSW2pgxv05qUaqK9bezs4MooFAVDZ4CW5qK0VgFhsd22Z
- wrIluYIWPHlRSvz7IEg6xHh50aOwZHatbpOCRQ3FoXyS5jqDdMb8OtTnEqyZb1MTgzoF
- L9+u9FnDtMfjcje5QBSIUAfAo7gwsB437XeFXHOhmcxgOBh52VTSL1rcaRuTZom/xe/c
- MQwJiYQHucNzc/iqkAuDG7js/diLstC/RQvgKoqdT9NkwicFzNAunl2D0wZfDAfQTvgl
- fCIg==
-X-Gm-Message-State: APjAAAXbBju2PhSt4Zt0t6fpOl9JEwATaNJQAWux3La3VsRlPR5AhqEn
- KGDxA6e7p5VA2Vg4mc0ppWcGmGTVGGXELSWHIAzYpA==
-X-Received: by 2002:aca:ac48:: with SMTP id v69mr235392oie.48.1565189308794;
- Wed, 07 Aug 2019 07:48:28 -0700 (PDT)
+ bh=o4YAZdlZGHTYqTNb1MVuymX+rEuuIehN8yuCA4wcFOk=;
+ b=Atn/G3NqDfo7XTuMzhgxeepFKDz4MO+C/1VfDRjAUDRYRbDLo7foFvsiv4Vk7jRu3G
+ 0QB6Fkllt1v6nYA6V8lH0KZ4mTeOrn5XAL3/k0CMa1S1GzBteSoab6RFYZOVKguGKKWN
+ OLFo7krwxri8w9jGUyEpK3kc2P55sxIpz8/Sbana+2JzBz2QVlWuYjbOn2Xj7K+kIXoS
+ mEQ0q83RahHrcewOVhUz0mupKsNKnr3v1sXEJ8Ft1+N1tAkBUxLmGMIhLSjDWSGlYNZE
+ TPPIaNk5xq/aTRTaoPvjAfyo7YtN+YSzxjuKWZktNks9bqtRSSSScXXz8Nb+uMRH7gex
+ RUeA==
+X-Gm-Message-State: APjAAAXeFSQzJlqMhvtBm/A8rLG8OcrLAALYe8uH+FnzYRPP+WQ+IHuf
+ TYllg9Fl0AgwFrbdxMq/8tOnRE9Vo416YG4qrdOcQg==
+X-Received: by 2002:a05:6808:8c2:: with SMTP id k2mr250210oij.98.1565189612881; 
+ Wed, 07 Aug 2019 07:53:32 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-6-damien.hedde@greensocs.com>
-In-Reply-To: <20190729145654.14644-6-damien.hedde@greensocs.com>
+ <20190729145654.14644-7-damien.hedde@greensocs.com>
+In-Reply-To: <20190729145654.14644-7-damien.hedde@greensocs.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 7 Aug 2019 15:48:18 +0100
-Message-ID: <CAFEAcA9+ivkBKgZ83qVE8LKuyQvng6m_85oyj6G1kx0bu86NUQ@mail.gmail.com>
+Date: Wed, 7 Aug 2019 15:53:22 +0100
+Message-ID: <CAFEAcA8xPTm3g7bg8wEY=ZwpeJOnEXGbhmCt+VvrRDf8tCRRpw@mail.gmail.com>
 To: Damien Hedde <damien.hedde@greensocs.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 2607:f8b0:4864:20::343
-Subject: Re: [Qemu-arm] [PATCH v3 05/33] Switch to new api in qdev/bus
+Subject: Re: [Qemu-arm] [PATCH v3 06/33] add the vmstate description for
+ device reset state
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -126,151 +127,117 @@ Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TSyg9oByZHu2
+X-TUID: zc86d5xn4Up1
 
 On Mon, 29 Jul 2019 at 15:58, Damien Hedde <damien.hedde@greensocs.com> wrote:
 >
-> Deprecate old reset apis and make them use the new one while they
-> are still used somewhere.
+> It contains the resetting counter and cold flag status.
 >
+> At this point, migration of bus reset related state (counter and cold/warm
+> flag) is handled by parent device. This done using the post_load
+
+"is done"
+
+> function in the vmsd subsection.
+>
+> This is last point allow to add an initial support of migration with part of
+> qdev/qbus tree in reset state under the following condition:
+> + time-lasting reset are asserted on Device only
+>
+> Note that if this condition is not respected, migration will succeed and
+> no failure will occurs. The only impact is that the resetting counter
+> of a bus may lower afer a migration.
+
+We should just migrate the bus state correctly -- see below.
+
 > Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 > ---
->  hw/core/qdev.c         | 22 +++-------------------
->  include/hw/qdev-core.h | 28 ++++++++++++++++++++++------
->  2 files changed, 25 insertions(+), 25 deletions(-)
+>  hw/core/Makefile.objs  |  1 +
+>  hw/core/qdev-vmstate.c | 45 ++++++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 46 insertions(+)
+>  create mode 100644 hw/core/qdev-vmstate.c
 >
-> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
-> index 559ced070d..e9e5f2d5f9 100644
-> --- a/hw/core/qdev.c
-> +++ b/hw/core/qdev.c
-> @@ -312,25 +312,9 @@ static void device_foreach_reset_child(Object *obj, void (*func)(Object *))
->      }
->  }
->
-> -static int qdev_reset_one(DeviceState *dev, void *opaque)
-> -{
-> -    device_legacy_reset(dev);
-> -
-> -    return 0;
-> -}
-> -
-> -static int qbus_reset_one(BusState *bus, void *opaque)
-> -{
-> -    BusClass *bc = BUS_GET_CLASS(bus);
-> -    if (bc->reset) {
-> -        bc->reset(bus);
-> -    }
-> -    return 0;
-> -}
-> -
->  void qdev_reset_all(DeviceState *dev)
->  {
-> -    qdev_walk_children(dev, NULL, NULL, qdev_reset_one, qbus_reset_one, NULL);
-> +    device_reset(dev, false);
->  }
->
->  void qdev_reset_all_fn(void *opaque)
-> @@ -340,7 +324,7 @@ void qdev_reset_all_fn(void *opaque)
->
->  void qbus_reset_all(BusState *bus)
->  {
-> -    qbus_walk_children(bus, NULL, NULL, qdev_reset_one, qbus_reset_one, NULL);
-> +    bus_reset(bus, false);
->  }
->
->  void qbus_reset_all_fn(void *opaque)
-> @@ -922,7 +906,7 @@ static void device_set_realized(Object *obj, bool value, Error **errp)
->              }
->          }
->          if (dev->hotplugged) {
-> -            device_legacy_reset(dev);
-> +            device_reset(dev, true);
->          }
->          dev->pending_deleted_event = false;
-
-The other changes here don't change the semantics, but this
-one does -- previously we were only resetting this specific
-device and now we're resetting both the device and its children.
-I think it belongs as its own patch in with the other
-"remove device_legacy_reset call" patches.
-
->
-> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-> index eeb75611c8..1670ae41bb 100644
-> --- a/include/hw/qdev-core.h
-> +++ b/include/hw/qdev-core.h
-> @@ -109,6 +109,11 @@ typedef struct DeviceClass {
->      bool hotpluggable;
->
->      /* callbacks */
-> +    /*
-> +     * Reset method here is deprecated and replaced by methods in the
-> +     * resettable class interface to implement a multi-phase reset.
-> +     * TODO: remove once every reset callback is unused
-> +     */
->      DeviceReset reset;
->      DeviceRealize realize;
->      DeviceUnrealize unrealize;
-> @@ -455,19 +460,22 @@ bool bus_is_resetting(BusState *bus);
->   */
->  bool bus_is_reset_cold(BusState *bus);
->
-> -void qdev_reset_all(DeviceState *dev);
-> -void qdev_reset_all_fn(void *opaque);
-> -
->  /**
-> - * @qbus_reset_all:
-> - * @bus: Bus to be reset.
-> + * qbus/qdev_reset_all:
-> + * @bus/dev: Bus/Device to be reset.
->   *
-> - * Reset @bus and perform a bus-level ("hard") reset of all devices connected
-> + * Reset @bus/dev and perform a bus-level reset of all devices/buses connected
->   * to it, including recursive processing of all buses below @bus itself.  A
->   * hard reset means that qbus_reset_all will reset all state of the device.
->   * For PCI devices, for example, this will include the base address registers
->   * or configuration space.
+> diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+> index d9234aa98a..49e9be0228 100644
+> --- a/hw/core/Makefile.objs
+> +++ b/hw/core/Makefile.objs
+> @@ -4,6 +4,7 @@ common-obj-y += bus.o reset.o
+>  common-obj-y += resettable.o
+>  common-obj-$(CONFIG_SOFTMMU) += qdev-fw.o
+>  common-obj-$(CONFIG_SOFTMMU) += fw-path-provider.o
+> +common-obj-$(CONFIG_SOFTMMU) += qdev-vmstate.o
+>  # irq.o needed for qdev GPIO handling:
+>  common-obj-y += irq.o
+>  common-obj-y += hotplug.o
+> diff --git a/hw/core/qdev-vmstate.c b/hw/core/qdev-vmstate.c
+> new file mode 100644
+> index 0000000000..07b010811f
+> --- /dev/null
+> +++ b/hw/core/qdev-vmstate.c
+> @@ -0,0 +1,45 @@
+> +/*
+> + * Device vmstate
 > + *
-> + * Theses functions are deprecated, please use device/bus_reset or
-
-"these"
-
-> + * resettable_reset_* instead
-> + * TODO: remove them when all occurence are removed
-
-"occurrences" (two 'r's, plural with 's'), here and below
-
->   */
-
-The comment here says that qbus_reset_all() does a "hard" reset,
-which presumably is equivalent to a 'cold' reset, but the
-code in our new implementation passes cold = false.
-
-> +void qdev_reset_all(DeviceState *dev);
-> +void qdev_reset_all_fn(void *opaque);
->  void qbus_reset_all(BusState *bus);
->  void qbus_reset_all_fn(void *opaque);
->
-> @@ -489,9 +497,17 @@ void qdev_machine_init(void);
->   * device_legacy_reset:
->   *
->   * Reset a single device (by calling the reset method).
+> + * Copyright (c) 2019 GreenSocs
 > + *
-> + * This function is deprecated, please use device_reset() instead.
-> + * TODO: remove the function when all occurences are removed.
->   */
->  void device_legacy_reset(DeviceState *dev);
->
-> +/**
-> + * device_class_set_parent_reset:
-> + * TODO: remove the function when DeviceClass's reset method
-> + * is not used anymore.
+> + * Authors:
+> + *   Damien Hedde
+> + *
+> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+> + * See the COPYING file in the top-level directory.
 > + */
->  void device_class_set_parent_reset(DeviceClass *dc,
->                                     DeviceReset dev_reset,
->                                     DeviceReset *parent_reset);
-> --
-> 2.22.0
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/qdev.h"
+> +#include "migration/vmstate.h"
+> +
+> +static bool device_vmstate_reset_needed(void *opaque)
+> +{
+> +    DeviceState *dev = (DeviceState *) opaque;
+> +    return dev->resetting != 0;
+> +}
+> +
+> +static int device_vmstate_reset_post_load(void *opaque, int version_id)
+> +{
+> +    DeviceState *dev = (DeviceState *) opaque;
+> +    BusState *bus;
+> +    QLIST_FOREACH(bus, &dev->child_bus, sibling) {
+> +        bus->resetting = dev->resetting;
+> +        bus->reset_is_cold = dev->reset_is_cold;
+> +    }
+
+Bus reset state might not be the same as the parent device's
+reset state, so we need to migrate them both separately.
+
+The way to do this is that in a pre-save hook we iterate
+through the child buses and capture their state into
+an array. Then we can migrate the array. In the post-load
+hook we can set the bus state fields from the array contents.
+VMSTATE_WITH_TMP is useful for this kind of situation.
+
+One thing I'm slightly wary of here is that this will mean
+that the ordering of child buses within the child_bus
+array becomes significant to avoid migration compat breaks.
+I think this is OK, though.
+
+> +    return 0;
+> +}
+> +
+> +const struct VMStateDescription device_vmstate_reset = {
+> +    .name = "device_reset",
+> +    .version_id = 0,
+> +    .minimum_version_id = 0,
+> +    .needed = device_vmstate_reset_needed,
+> +    .post_load = device_vmstate_reset_post_load,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32(resetting, DeviceState),
+> +        VMSTATE_BOOL(reset_is_cold, DeviceState),
+> +        VMSTATE_END_OF_LIST()
+> +    },
+> +};
+
+This isn't used -- I think you should squash patch 7 in
+with this one.
 
 thanks
 -- PMM

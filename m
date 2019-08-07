@@ -1,150 +1,176 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6362921wrv;
-        Wed, 7 Aug 2019 03:28:25 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy1f0WKDjkt18ty/RuNClrteo+4btkVDOOO/BGeTO58EvtDZ/SkoKKFlkGgcacGSFvFv/V8
-X-Received: by 2002:a17:906:1303:: with SMTP id w3mr7758002ejb.143.1565173705703;
-        Wed, 07 Aug 2019 03:28:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565173705; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6373244wrv;
+        Wed, 7 Aug 2019 03:38:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwoiTW6fOFFG77hMno9JV4F2Y0jS2OSx7/wJwYJgqzqD7PbwalcIfxatIhTPVx0IbFcPzuy
+X-Received: by 2002:a37:9d15:: with SMTP id g21mr6938427qke.343.1565174291538;
+        Wed, 07 Aug 2019 03:38:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565174291; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wax3Mj/RChve/pdBzTfhIoMlk7gMf1qW8OqGobOyA5YgU8mURwClBkBC3HJl2jeZ8A
-         NNqzLDLMpOtbDmdtiWhAoA4CUgnJlNVrZYY1NxCTt3dJNVcuAU922f1qhN1E8AjINAZ9
-         XKOdTv90iyVC2F283ejcCi4ecPyCGi66r39C9YGSN+1MSb+uxhk9XDTXjb0/Eggk/Pwo
-         nyqrJT5cF6DChf78iBZ3JiszFZWm7ISQ6E5cl84BsVnbOUFUWlOv+WYo9dsuw9gIMaqB
-         1bJp+k2YaMaviIjbcxDFI191IolpmWlonmYiZf4JaOsNBDqACgoquKI3sCXBGo2Ssjbr
-         +LPg==
+        b=zr4h1CV3PZw00hwwyq+6HoOo2664qJVHInHhEyegNaC5hqJoztdCBbJpR5H2//WKHV
+         Ib2LqxqFAc9vqVQiLzbeU8WXdb/pvgYG0mILz9iqze8QY8nwbb/akEDe5hYRuNwPdDLO
+         L2DBgcf6vPmoKvH8GTQetseAwlhBXxf6lH0/PMBGTrkZiVFInvcsZQo0lCRDRvL5OVbg
+         iWfgO6y13Nx+Ol5TLZgZAIL/sCykSXld/TgR7K4rwCWkbVCdXd3wmEcObNoIeFVBQEM0
+         LHpc7NB+NYg6T421NtwZWEmhqjWeQlX7wUscTAM74MGW0dHH0xmBhPU+Qeqr80IPmdL+
+         aAMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to;
-        bh=/LJjhzk0pzvPz9qFfoMgQKRDTJEZj0sV+l+GJ63ac0c=;
-        b=vL5TiQb6wrrwpYDqvtj+z960XNdzOf/fI0V8UFdug4Y9p+FVSTkGyVcdjEm8Jffoxc
-         6+WNof4CZSW8lDGoC85y8lsXUNu1Am+6W5TMDttB95/Uz6S3U73eiH81K53cwir8ZmRn
-         cAjEJ9xm5Vv/FPbuodnXmV7yFpcW6Kps6Ze+CumbFQQudjxbTmzSFSr0/hWQ8CZhGFau
-         0K0HX8lEhGPQ2kmOFO7d3xKVmBXcLjqZG5cqYJto+jKqbw39XDpBoeog13DdZa0fS31I
-         zNQp7CT4h/uHnF4VcvmW/SS07RDus8qMXPq7l0+6hqz24/geyC9mQWEbgtM25rUVHJSP
-         SQFw==
+        bh=xGIMuvKiRWGAighMeIoXICvoM84+mSRh6SCMOKg4t50=;
+        b=jcjE/ZoQTvYNA7C2IW/EvcAXTwwElf/85rfeoKhHgEf8eNeWX82tfxRiWRK+I27Bf7
+         OM5IgTbHz3QOh9iCnulQpWwnZzxguUInDxcHcbvNarwznz7au7dmV30nTfQ09SOkmjIi
+         llYG1GrPuHfSP6MDHST7lITvcCfVLxY45MgAF7GZ74u5v6rR4wme0nzksE+jxh5h0Ow8
+         FiY+2aCSMTeS0qeuDW1b1NqMHjo14VF2xs1psneyE2Iqz69iG1u9zd+DbcKp2qMHHNW9
+         f/k0CAoaYrnw9djswfq90RPQM1+HWYh74PVrwzGQUpEjLhmu/zW0nIDxNfQS8k/vRI5q
+         P0Tw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c22si34227551edc.378.2019.08.07.03.28.25
+        by mx.google.com with ESMTPS id v63si51057434qkc.17.2019.08.07.03.38.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 03:28:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 07 Aug 2019 03:38:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39506 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39582 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvJBA-0007XC-R9
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 06:28:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44129)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hvJKd-00048g-1y
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 06:38:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45608)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <pbonzini@redhat.com>) id 1hvJAb-0006Sp-LO
- for qemu-devel@nongnu.org; Wed, 07 Aug 2019 06:27:50 -0400
+ (envelope-from <philmd@redhat.com>) id 1hvJKU-00045A-JN
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 06:38:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1hvJAa-0004Xi-M3
- for qemu-devel@nongnu.org; Wed, 07 Aug 2019 06:27:49 -0400
-Received: from mail-wm1-f65.google.com ([209.85.128.65]:37712)
+ (envelope-from <philmd@redhat.com>) id 1hvJKT-0001c4-C7
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 06:38:02 -0400
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:43944)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1hvJAa-0004WU-F2
- for qemu-devel@nongnu.org; Wed, 07 Aug 2019 06:27:48 -0400
-Received: by mail-wm1-f65.google.com with SMTP id f17so79417722wme.2
- for <qemu-devel@nongnu.org>; Wed, 07 Aug 2019 03:27:48 -0700 (PDT)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hvJKT-0001b9-5F
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 06:38:01 -0400
+Received: by mail-wr1-f68.google.com with SMTP id p13so16254632wru.10
+ for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 03:38:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=/LJjhzk0pzvPz9qFfoMgQKRDTJEZj0sV+l+GJ63ac0c=;
- b=LF/QGR0vK12mvv8igq3P8Yq/Q5eQBoOmoy3HgWvoJIXWfdvIRS70nVqtWMl8mraMGF
- Z5R1qrRffTo5rBztvrrKkfuZ8y4u2iUTT0n0oFC23kx8+PjNFpK0NVB9nRlGk/yNqNZJ
- aSOuD066NT0jswiKrOQB7002uIXR9qa1b7UkegXNNTClZvqnJ/XD7RpjUQgOwyMg5PmM
- YYZxpoxYftcnSKpiZVBwoyCWtasC4V1/eTJyuUTc+msHq/f0+7uwktmZ9Ark3PtsTquy
- lqy1A0QzMHiX12u4kpnMwzcQ83eyjhzs4gtcS+x3xL32aK/3EoKOOu3kHOMgxZh202qw
- EjJQ==
-X-Gm-Message-State: APjAAAXyY2mUeb+PgQXxp6NbU2GFMrZCmhICGsQV97MHHtt1m37vSate
- EmllSywr1ZVcOBMmykLnjs0S+Q==
-X-Received: by 2002:a05:600c:da:: with SMTP id
- u26mr4445252wmm.70.1565173667357; 
- Wed, 07 Aug 2019 03:27:47 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:dc26:ed70:9e4c:3810?
- ([2001:b07:6468:f312:dc26:ed70:9e4c:3810])
- by smtp.gmail.com with ESMTPSA id z25sm93483780wmf.38.2019.08.07.03.27.43
+ bh=xGIMuvKiRWGAighMeIoXICvoM84+mSRh6SCMOKg4t50=;
+ b=URSA6GHWYyBJttZ6i8QJtclBGU2hvMipwXZF3xYGu730Dz35Trlf7nZhm/cYerigM8
+ rJZ5wpami8NUlWoNHMXP9pGtoi5TbfHVCRG7XKTROQFxg5QcY6HkhAkPszPP5Qy99r0r
+ otI8WqDgWn6QImvD/ZOGewkw52S6LYYWbMW9AmduHqCtes9NR+8moGZfO25vIw03+klc
+ 4rDnBMU5L7TMlcng/im2+C9szBrldEmqTsGxT7w4FVMo6fw4ChGE0yroTWtjbazv+o9n
+ rCmU5VLhXLNNSmW9QdR03JvA2v4dgUK9ZZHl6z/PchE+E/xhfKTrPYsEk9U/N/U6q36y
+ nN7g==
+X-Gm-Message-State: APjAAAVr9l6pUik7vcktVpEkXqhjDsp3tdKgNF5ke+prxfWBFeUg08vN
+ iIBLpbU1Vd2RK7xQKI2ggkvEaQ==
+X-Received: by 2002:adf:f481:: with SMTP id l1mr3615709wro.123.1565174280079; 
+ Wed, 07 Aug 2019 03:38:00 -0700 (PDT)
+Received: from [192.168.1.39] (214.red-83-51-160.dynamicip.rima-tde.net.
+ [83.51.160.214])
+ by smtp.gmail.com with ESMTPSA id c187sm4719394wmd.39.2019.08.07.03.37.56
  (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Wed, 07 Aug 2019 03:27:46 -0700 (PDT)
+ Wed, 07 Aug 2019 03:37:59 -0700 (PDT)
 To: tony.nguyen@bt.com, qemu-devel@nongnu.org
 References: <45ec4924e0b34a3d9124e2db06af75b4@tpw09926dag18e.domain1.systemhost.net>
- <1565166794966.57397@bt.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <089fb8b0-c5ad-00ab-ee85-437b022b54eb@redhat.com>
-Date: Wed, 7 Aug 2019 12:27:43 +0200
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <2397186a-a28e-85dd-131c-900e777a60ad@redhat.com>
+Date: Wed, 7 Aug 2019 12:37:55 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <1565166794966.57397@bt.com>
-Content-Type: text/plain; charset=windows-1252
+In-Reply-To: <45ec4924e0b34a3d9124e2db06af75b4@tpw09926dag18e.domain1.systemhost.net>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.85.128.65
-Subject: Re: [Qemu-devel] [PATCH v6 20/26] memory: Access MemoryRegion with
- endianness
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.85.221.68
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 00/26] Invert Endian bit in
+ SPARCv9 MMU TTE
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
- cohuck@redhat.com, sagark@eecs.berkeley.edu, david@redhat.com,
- jasowang@redhat.com, palmer@sifive.com, mark.cave-ayland@ilande.co.uk,
- i.mitsyanko@gmail.com, keith.busch@intel.com, jcmvbkbc@gmail.com,
- frederic.konrad@adacore.com, dmitry.fleytman@gmail.com, kraxel@redhat.com,
- edgar.iglesias@gmail.com, gxt@mprc.pku.edu.cn, pburton@wavecomp.com,
- xiaoguangrong.eric@gmail.com, peter.chubb@nicta.com.au, philmd@redhat.com,
- robh@kernel.org, hare@suse.com, sstabellini@kernel.org, berto@igalia.com,
- chouteau@adacore.com, qemu-block@nongnu.org, arikalo@wavecomp.com,
- jslaby@suse.cz, deller@gmx.de, mst@redhat.com, magnus.damm@gmail.com,
- jcd@tribudubois.net, pasic@linux.ibm.com, borntraeger@de.ibm.com,
- mreitz@redhat.com, hpoussin@reactos.org, joel@jms.id.au,
- anthony.perard@citrix.com, xen-devel@lists.xenproject.org,
- david@gibson.dropbear.id.au, lersek@redhat.com, green@moxielogic.com,
- atar4qemu@gmail.com, antonynpavlov@gmail.com, marex@denx.de, jiri@resnulli.us,
- ehabkost@redhat.com, minyard@acm.org, qemu-s390x@nongnu.org, sw@weilnetz.de,
- alistair@alistair23.me, yuval.shaia@oracle.com, b.galvani@gmail.com,
- eric.auger@redhat.com, alex.williamson@redhat.com, qemu-arm@nongnu.org,
- jan.kiszka@web.de, clg@kaod.org, stefanha@redhat.com,
- marcandre.lureau@redhat.com, shorne@gmail.com, jsnow@redhat.com,
- rth@twiddle.net, kwolf@redhat.com, qemu-riscv@nongnu.org, proljc@gmail.com,
- andrew@aj.id.au, kbastian@mail.uni-paderborn.de, crwulff@gmail.com,
+ dmitry.fleytman@gmail.com, sagark@eecs.berkeley.edu, mst@redhat.com,
+ green@moxielogic.com, palmer@sifive.com, mark.cave-ayland@ilande.co.uk,
+ balaton@eik.bme.hu, keith.busch@intel.com, jcmvbkbc@gmail.com,
+ frederic.konrad@adacore.com, pbonzini@redhat.com, kraxel@redhat.com,
+ mreitz@redhat.com, pburton@wavecomp.com, marex@denx.de, robh@kernel.org,
+ hare@suse.com, gxt@mprc.pku.edu.cn, berto@igalia.com, proljc@gmail.com,
+ qemu-block@nongnu.org, arikalo@wavecomp.com, jslaby@suse.cz, deller@gmx.de,
+ david@redhat.com, magnus.damm@gmail.com, yuval.shaia@oracle.com,
+ pasic@linux.ibm.com, borntraeger@de.ibm.com, hpoussin@reactos.org,
+ joel@jms.id.au, marcel.apfelbaum@gmail.com, anthony.perard@citrix.com,
+ marcandre.lureau@redhat.com, david@gibson.dropbear.id.au, balrogg@gmail.com,
+ jasowang@redhat.com, atar4qemu@gmail.com, antonynpavlov@gmail.com,
+ jiri@resnulli.us, ehabkost@redhat.com, minyard@acm.org, jcd@tribudubois.net,
+ sw@weilnetz.de, alistair@alistair23.me, chouteau@adacore.com,
+ b.galvani@gmail.com, eric.auger@redhat.com, alex.williamson@redhat.com,
+ sstabellini@kernel.org, jan.kiszka@web.de, clg@kaod.org, stefanha@redhat.com,
+ imammedo@redhat.com, xen-devel@lists.xenproject.org, shorne@gmail.com,
+ andrew.smirnov@gmail.com, jsnow@redhat.com, rth@twiddle.net, kwolf@redhat.com,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, xiaoguangrong.eric@gmail.com,
+ qemu-riscv@nongnu.org, andrew@aj.id.au, lersek@redhat.com, crwulff@gmail.com,
  laurent@vivier.eu, Andrew.Baumann@microsoft.com, sundeep.lkml@gmail.com,
- andrew.smirnov@gmail.com, michael@walle.cc, paul.durrant@citrix.com,
+ i.mitsyanko@gmail.com, michael@walle.cc, paul.durrant@citrix.com,
  qemu-ppc@nongnu.org, huth@tuxfamily.org, amarkovic@wavecomp.com,
- imammedo@redhat.com, aurelien@aurel32.net, stefanb@linux.ibm.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dUlpTlotlU++
+ kbastian@mail.uni-paderborn.de, cohuck@redhat.com, peter.chubb@nicta.com.au,
+ aurelien@aurel32.net, stefanb@linux.ibm.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: FO/2eLVNGFfX
 
-On 07/08/19 10:33, tony.nguyen@bt.com wrote:
-> +#ifdef NEED_CPU_H
-> +    return ctz32(size) | MO_TE;
-> +#else
->      return ctz32(size);
-> +#endif
+On 8/7/19 10:23 AM, tony.nguyen@bt.com wrote:
+[...]
+> v3:
+> - Like v1, the entire TCGMemOp enum is now MemOp.
+> - MemOp target dependant attributes are conditional upon NEED_CPU_H
+> 
+> v4:
+> - Added Paolo Bonzini as include/exec/memop.h maintainer
+> 
+> v5:
+> - Improved commit messages to clarify how interface to access
+>   MemoryRegion will be converted from "unsigned size" to "MemOp op".
+> - Moved cpu_transaction_failed() MemOp conversion from patch #11 to #9
+>   to make review easier.
+> 
+> v6:
+> - Improved commit messages.
+> - Include as patch #1 an earlier posted TARGET_ALIGNED_ONLY configure patch.
+> - Typeless macro SIZE_MEMOP is now inline.
+> - size_memop now includes CONFIG_DEBUG_TCG code.
+> - size_memop now also encodes endianness via MO_TE.
+> - Reverted size_memop operand "unsigned long" back to "unsigned".
+> - Second pass of size_memop to replace no-op place holder with MO_{8|16|32|64}.
+> - Delay memory_region_dispatch_{read,write} operand conversion until no-op
+>   size_memop is implemented so we have proper typing at all points in between.
+> - Fixed bug where not all memory_region_dispatch_{read,write} callers where
+>   encoding endianness into the MemOp operand, see patch #20.
+> - Fixed bug where not all memory_region_dispatch_{read,write} callers were
+>   collapsing their byte swap into adjust_endianness, see patch #20 and #22.
+> - Split byte swap collapsing patch (v5 #11) into #21 and #22.
+> - Corrected non-common *-common-obj to *-obj.
+> - Replaced enum device_endian with MemOp to simplify endianness checks. A
+>   straight forward sed but touched *alot* of files. See patch #16 and #17.
+> - Deleted enum device_endian.
+> - Deleted DEVICE_HOST_ENDIAN definition.
+> - Generalized the description of introduced MemTxAttrs attribute byte_swap.
 
-Please use two separate functions for this, for example size_to_memop
-and target_size_to_memop, or even just add MO_TE to the callers that
-need it (only cputlb.c?).
-
-Paolo
+I'm confused I think I already reviewed various patches of your previous
+series but don't see my Reviewed-by tags.

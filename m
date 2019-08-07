@@ -1,99 +1,100 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6817204wrv;
-        Wed, 7 Aug 2019 10:27:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz5/ur9Qc10IOfiwn+ynAII2BFQQgBt+jSzU5MYjPJADZ+BvhIavt5+wxTXkEDijNU7VAcb
-X-Received: by 2002:ac8:31ba:: with SMTP id h55mr9309964qte.363.1565198866034;
-        Wed, 07 Aug 2019 10:27:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565198866; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6824763wrv;
+        Wed, 7 Aug 2019 10:35:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy1V1xRLdznJThu1BYcJqQevzfvZay7upLjk4KYEn+bMj/mDG7evJVWJZUCI4PZxgWcseNP
+X-Received: by 2002:a17:906:161b:: with SMTP id m27mr9398411ejd.203.1565199358556;
+        Wed, 07 Aug 2019 10:35:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565199358; cv=none;
         d=google.com; s=arc-20160816;
-        b=MNcQi9K8lk4LS51LSuP2AZ9EefdCf/xCmI+iYQ7Xc10AwFn1G9m5jSyNL3/pcVQSL9
-         cVD+ZMvm+mdJWiRy4pxwx8Ngx4uToXhpQNzy06ZkYzqAqL5sEiFFPqvUSRSSUQAsJU7X
-         FI7G5QFzmvoSzC+s0Ha9+3421+qfPnFwcZFdZdu98lDZNaW1mMHlcPVkpbAShLK7vO8g
-         dw+Ye62y+t1h8P+XS3YovpVDmU3dh81I1f+SPp8yTSHpcl8Q6hnFFTH2kGgoiJMnGvGD
-         6QpZ4/lZtjOBDowekr10YNdSdWTnPV5oyRcs+2nXdNfVonAzgJzK0uvX30wRUWPJVHeB
-         lA7A==
+        b=DMa0ktNuMnkcY1MoDr6VW5igUwXyns0i4xt/1Jf45N+0yUSmQlBp6H7/vnMlZyR0OJ
+         4TbeKI57Kw/NHW3uEc3QSwWqDSJtPGNB4NpescRHiNS+fBxRWnij7XElQ0UQyF8TDIV4
+         xDS8b0i9Jq+cStdT8lb+scQucyehqBmyzv9V1KQ9lFm1tmaXl6F4Y9Ym/VTmyHt9Vm0R
+         dNRMW1yKOfUtoSrehoVhZBvdv7Irw9NkZiV8RCpAnT7bLU4ZrCYNjiKdilEd13uUWSTG
+         r+XYTPTTtqPi48VRztOWGJr6k7i7ddoJ43t9VOCt/2kxS804CEiax3fi9xI0VuUv4fzY
+         n8AQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=AHdOn7vFi2h++gG3kKrp+8meZRPHwwmLn9Dt/7//sJo=;
-        b=gMi9BnxRyUmeSpoz5KNGdv3kkkRTK4m4MCVjgqH+ATvF5GBMa6V7o12/+8+d1JHDTm
-         9GaDrXRAxATBd21ExCKps60U9Q8Z9NSA8lGwOLNkAv9ci1y5jJdFSQqU1Ehrms3gm8Jk
-         0+uUm7fkCimJkIEkwX74ph87GCkmLGaYNlTyHMzU6NbgFc7IK+mP0XmperHTZws+RKz7
-         2a7KCUH1RPhvyzJBP5nPhvFc4WIQKCkPaY3DNsKRTNES7LMualPLFtK3sAhxpCrDgsmV
-         gwwMZNfhZoG3AjtuLgtbcoq2HAX/jGtP9UgtALzCw0PmJvcb+CVbscfCwiPU/uXWSWfv
-         Py2w==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=HYrgFBsUh/JwzlsP+KSAQpJRfwY5SoFff50j98OSet0=;
+        b=l9ZqItU+AkNKEo22QLeLUKr2YdYdD3VgFmhhIdvAouY/qGpTR43/g3NI/CqACUeJJ0
+         ryPmctyG9QthI179xJjP/TlmUXeTn3SlJr54CYE/KjT8iuKZJu2l+Jeq0eJEeY9V0pAE
+         k/ga4eh6Zq0bGkQJjFZ8b8ZhDpnJIm51rctLrkTJTOx9sb7xYgJ+oyiQzqnZCQ8OgLyz
+         agyIW2xdxDYxhJnjcDVu5g1/UX20Be+mt7Kc3bJpecO/fXXfwbk3he2IwrfUqVe1IgGW
+         onwwK40meoHW9XO8omROsMK9c/aK48j8XXZSFwBNR9ju1wN3K/IgxgXUgW4GTsxUjbol
+         ZxmA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="JJMmGeE/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s77si4041000qke.29.2019.08.07.10.27.45
+        by mx.google.com with ESMTPS id o5si30021356eju.390.2019.08.07.10.35.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 10:27:46 -0700 (PDT)
+        Wed, 07 Aug 2019 10:35:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="JJMmGeE/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43812 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43878 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvPiz-0004PT-KR
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 13:27:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54765)
+	id 1hvPqv-0002an-Kd
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 13:35:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56086)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hvPit-0004Or-68
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:27:40 -0400
+ (envelope-from <philmd@redhat.com>) id 1hvPqp-0002Xj-1b
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:35:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hvPis-0003EG-3Z
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:27:39 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:40370)
+ (envelope-from <philmd@redhat.com>) id 1hvPqn-0002HC-OV
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:35:50 -0400
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:46653)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hvPir-0003DY-TE
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:27:38 -0400
-Received: by mail-ot1-x343.google.com with SMTP id l15so50188753oth.7
- for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 10:27:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=AHdOn7vFi2h++gG3kKrp+8meZRPHwwmLn9Dt/7//sJo=;
- b=JJMmGeE/Xe81+uVR1YItaVDeRa20wwlm1Va4/XnOoVzu2+9YwKP8K0xDGqdGjFKfan
- JVs2FUnsUMXoAaR+caeviE+ZD00DJxDU8YrXEz53RTI/1pjCYWAUxZEgwEzInriyMt9t
- 9ntFRnctFFVG1cao4Ouyb3Z2GVuU4o3EUJVQ/QVsd5IEIULRqYOgPtJuCAScdGHAuNFw
- LAuF9XFisDp5D/WYde2Fn+Mji0LM4dWOXJvaFCn1GheRDmklEvrgEXLoj5lrkmDrmfq4
- XmfDQS9kktlZ45Z6lbsIhRzFgKp+tPGx+53q3rkSgM1EyxA5ih2QkUYRiovggSupiED/
- Ng0w==
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hvPqn-0002Fi-Iy
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:35:49 -0400
+Received: by mail-wr1-f68.google.com with SMTP id z1so92200805wru.13
+ for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 10:35:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=AHdOn7vFi2h++gG3kKrp+8meZRPHwwmLn9Dt/7//sJo=;
- b=fw9vE1jQv4zGVRP7yEJXaUQYQ34C+YH++MGQ9IUyKkujHA1ZB2JA/OidrT/u/keZqs
- Te9uNCpROBX+zBUaoCJBVHX0yWVjbpZjwLWQgreR7YyYO8StY7JYV3+bJp/67YF/smgG
- HWhH0wn/zGvFhCBxVlSjz7A9QojRnxiBNgRVJQUV+5SoLa3WHWQVv0PgArGH0tOxQZOT
- 12FxY+heU7qrkZbIUM161OcTrdcj0c5PjHos88zLHphVbUNw6rLOW6QOXUYUOpyTEX7N
- sfYxNyOXJG6OUpwFGFj+OnuWdio/thKuwTN5J61iNSju3lC8e3pl/QMhZsMjACpWJsYr
- fD0g==
-X-Gm-Message-State: APjAAAUc5VB5eLrDqlXlru5hT89iUPygieq91ojZAYEWZSoxbfvmhkkL
- cWYCXCPKBhkn3lsGh9zyGmPnpAOtOhrktT0z8Lrv5g==
-X-Received: by 2002:a05:6808:d4:: with SMTP id
- t20mr731905oic.170.1565198857134; 
- Wed, 07 Aug 2019 10:27:37 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=HYrgFBsUh/JwzlsP+KSAQpJRfwY5SoFff50j98OSet0=;
+ b=rdMi7uOGUgPN98AU0kFUusWjNluLLsADhDYmb9hff88WLLpyRkXVPZKHUcZVXSEZ3B
+ Xc+3CnHVUFWrmZPXzqv5OOVEiOIi+9DbkrSUEQOo1sb3jFK+5lbU1WP3F9+KjmC6+LGt
+ DgZQPiDhhIgF1dv0ssz2tFMQlqSHjGi3VxXOt8l7v9Qm5UuZL+BXktwCsWCeTQWLS83a
+ 86XYvnaw7G4f3VnVoqv1YiiHf7r/AOIFdvKhh94XJiDZnVOGSrdLvh7c/7HJ8PbuAx+E
+ We13ZPLFEMP9KrXuuoyfKT+JD4i7umx4w/9S7rNhhSj1GkC/BGXTcLdtVu5VxC5TRXfF
+ N0aw==
+X-Gm-Message-State: APjAAAUiJMdI9Tf9FN9eBmhYaQHqgCoZILSC6rKq9b9k528DEMVBlzhJ
+ bnrFLAYk+DurEJc/gTM/Iwzzjc5K30g=
+X-Received: by 2002:a5d:4d4c:: with SMTP id a12mr2018839wru.343.1565199348523; 
+ Wed, 07 Aug 2019 10:35:48 -0700 (PDT)
+Received: from [192.168.1.115] (214.red-83-51-160.dynamicip.rima-tde.net.
+ [83.51.160.214])
+ by smtp.gmail.com with ESMTPSA id u13sm3498266wrw.45.2019.08.07.10.35.47
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Wed, 07 Aug 2019 10:35:47 -0700 (PDT)
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 References: <20190807045335.1361-1-richard.henderson@linaro.org>
- <20190807045335.1361-4-richard.henderson@linaro.org>
-In-Reply-To: <20190807045335.1361-4-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 7 Aug 2019 18:27:26 +0100
-Message-ID: <CAFEAcA_MFg1_gpaT5+X71s8r5SYZFTizdXs2vQ_6mLooP7E+kg@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::343
-Subject: Re: [Qemu-arm] [PATCH 03/11] target/arm: Introduce read_pc
+ <20190807045335.1361-11-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <b8a42bb2-829f-e330-3135-d4d128b3e5be@redhat.com>
+Date: Wed, 7 Aug 2019 19:35:46 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
+MIME-Version: 1.0
+In-Reply-To: <20190807045335.1361-11-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.221.68
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 10/11] target/arm: Use
+ unallocated_encoding for aarch32
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,66 +106,154 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Q2fH7YZ6H3V+
+X-TUID: 0cthIzrdSLf7
 
-On Wed, 7 Aug 2019 at 05:53, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> We currently have 3 different ways of computing the architectural
-> value of "PC" as seen in the ARM ARM.
->
-> The value of s->pc has been incremented past the current insn,
-> but that is all.  Thus for a32, PC = s->pc + 4; for t32, PC = s->pc;
-> for t16, PC = s->pc + 2.  These differing computations make it
-> impossible at present to unify the various code paths.
->
-> With the newly introduced s->pc_curr, we can compute the correct
-> value for all cases, using the formula given in the ARM ARM.
->
+On 8/7/19 6:53 AM, Richard Henderson wrote:
+> Promote this function from aarch64 to fully general use.
+> Use it to unify the code sequences for generating illegal
+> opcode exceptions.
+> 
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/translate.c | 59 ++++++++++++++++--------------------------
->  1 file changed, 23 insertions(+), 36 deletions(-)
->
+>  target/arm/translate-a64.h     |  2 --
+>  target/arm/translate.h         |  2 ++
+>  target/arm/translate-a64.c     |  7 -------
+>  target/arm/translate-vfp.inc.c |  3 +--
+>  target/arm/translate.c         | 22 ++++++++++++----------
+>  5 files changed, 15 insertions(+), 21 deletions(-)
+> 
+> diff --git a/target/arm/translate-a64.h b/target/arm/translate-a64.h
+> index 9cd2b3d238..12ad8ac6ed 100644
+> --- a/target/arm/translate-a64.h
+> +++ b/target/arm/translate-a64.h
+> @@ -18,8 +18,6 @@
+>  #ifndef TARGET_ARM_TRANSLATE_A64_H
+>  #define TARGET_ARM_TRANSLATE_A64_H
+>  
+> -void unallocated_encoding(DisasContext *s);
+> -
+>  #define unsupported_encoding(s, insn)                                    \
+>      do {                                                                 \
+>          qemu_log_mask(LOG_UNIMP,                                         \
+> diff --git a/target/arm/translate.h b/target/arm/translate.h
+> index de600073d8..6a65df0b27 100644
+> --- a/target/arm/translate.h
+> +++ b/target/arm/translate.h
+> @@ -98,6 +98,8 @@ typedef struct DisasCompare {
+>      bool value_global;
+>  } DisasCompare;
+>  
+> +void unallocated_encoding(DisasContext *s);
+> +
+>  /* Share the TCG temporaries common between 32 and 64 bit modes.  */
+>  extern TCGv_i32 cpu_NF, cpu_ZF, cpu_CF, cpu_VF;
+>  extern TCGv_i64 cpu_exclusive_addr;
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index d68bfc66d3..9e1ffe9cfb 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -352,13 +352,6 @@ static inline void gen_goto_tb(DisasContext *s, int n, uint64_t dest)
+>      }
+>  }
+>  
+> -void unallocated_encoding(DisasContext *s)
+> -{
+> -    /* Unallocated and reserved encodings are uncategorized */
+> -    gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn_uncategorized(),
+> -                       default_exception_el(s));
+> -}
+> -
+>  static void init_tmp_a64_array(DisasContext *s)
+>  {
+>  #ifdef CONFIG_DEBUG_TCG
+> diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
+> index 5065d4524c..3e8ea80493 100644
+> --- a/target/arm/translate-vfp.inc.c
+> +++ b/target/arm/translate-vfp.inc.c
+> @@ -108,8 +108,7 @@ static bool full_vfp_access_check(DisasContext *s, bool ignore_vfp_enabled)
+>  
+>      if (!s->vfp_enabled && !ignore_vfp_enabled) {
+>          assert(!arm_dc_feature(s, ARM_FEATURE_M));
+> -        gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn_uncategorized(),
+> -                           default_exception_el(s));
+> +        unallocated_encoding(s);
+>          return false;
+>      }
+>  
 > diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index 59e35aafbf..61933865d5 100644
+> index d6b0ab7247..2d447d4b90 100644
 > --- a/target/arm/translate.c
 > +++ b/target/arm/translate.c
-> @@ -196,17 +196,17 @@ static inline void store_cpu_offset(TCGv_i32 var, int offset)
->  #define store_cpu_field(var, name) \
->      store_cpu_offset(var, offsetof(CPUARMState, name))
->
-> +/* The architectural value of PC.  */
-> +static uint32_t read_pc(DisasContext *s)
+> @@ -1285,6 +1285,13 @@ static void gen_exception_bkpt_insn(DisasContext *s, uint32_t syn)
+>      s->base.is_jmp = DISAS_NORETURN;
+>  }
+>  
+> +void unallocated_encoding(DisasContext *s)
 > +{
-> +    return s->pc_curr + (s->thumb ? 4 : 8);
+> +    /* Unallocated and reserved encodings are uncategorized */
+> +    gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn_uncategorized(),
+> +                       default_exception_el(s));
 > +}
 > +
->  /* Set a variable to the value of a CPU register.  */
->  static void load_reg_var(DisasContext *s, TCGv_i32 var, int reg)
+>  /* Force a TB lookup after an instruction that changes the CPU state.  */
+>  static inline void gen_lookup_tb(DisasContext *s)
 >  {
->      if (reg == 15) {
-> -        uint32_t addr;
-> -        /* normally, since we updated PC, we need only to add one insn */
-> -        if (s->thumb)
-> -            addr = (long)s->pc + 2;
-> -        else
-> -            addr = (long)s->pc + 4;
-> -        tcg_gen_movi_i32(var, addr);
-> +        tcg_gen_movi_i32(var, read_pc(s));
+> @@ -1315,8 +1322,7 @@ static inline void gen_hlt(DisasContext *s, int imm)
+>          return;
+>      }
+>  
+> -    gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn_uncategorized(),
+> -                       default_exception_el(s));
+> +    unallocated_encoding(s);
+>  }
+>  
+>  static inline void gen_add_data_offset(DisasContext *s, unsigned int insn,
+> @@ -7638,8 +7644,7 @@ static void gen_srs(DisasContext *s,
+>      }
+>  
+>      if (undef) {
+> -        gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn_uncategorized(),
+> -                           default_exception_el(s));
+> +        unallocated_encoding(s);
+>          return;
+>      }
+>  
+> @@ -9266,8 +9271,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+>              break;
+>          default:
+>          illegal_op:
+> -            gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn_uncategorized(),
+> -                               default_exception_el(s));
+> +            unallocated_encoding(s);
+>              break;
+>          }
+>      }
+> @@ -10955,8 +10959,7 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
+>      }
+>      return;
+>  illegal_op:
+> -    gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn_uncategorized(),
+> -                       default_exception_el(s));
+> +    unallocated_encoding(s);
+>  }
+>  
+>  static void disas_thumb_insn(DisasContext *s, uint32_t insn)
+> @@ -11779,8 +11782,7 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
+>      return;
+>  illegal_op:
+>  undef:
+> -    gen_exception_insn(s, s->pc_curr, EXCP_UDEF, syn_uncategorized(),
+> -                       default_exception_el(s));
+> +    unallocated_encoding(s);
+>  }
+>  
+>  static bool insn_crosses_page(CPUARMState *env, DisasContext *s)
+> 
 
-So previously:
- * for A32 we would return s->pc + 4, which is the same as s->pc_curr + 8
- * for T16 we would return s->pc + 2, which is the same as s->pc_curr + 4
- * for T32 we would return s->pc + 2 -- but that's not the same as
-   s->pc_curr + 4, it's s->pc_curr + 6...
+I wanted to suggest naming it gen_unallocated_encoding_exception() but
+it is already used ~250 times, so no :)
 
-Since s->pc_curr + 4 is the right architectural answer, are we
-fixing a bug here? Or are all the places where T32 code calls
-this function UNPREDICTABLE for the reg == 15 case ?
-
-thanks
--- PMM
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>

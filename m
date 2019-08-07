@@ -1,102 +1,98 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6695760wrv;
-        Wed, 7 Aug 2019 08:34:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyiK7L/O5W/tuePIWmqk+B6W0n+sZNE6wSvF/TKoNsWSfLlk6Kz1xFV0DuvO2H1+K0Mi0eG
-X-Received: by 2002:a0c:ba0b:: with SMTP id w11mr8635115qvf.71.1565192057987;
-        Wed, 07 Aug 2019 08:34:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565192057; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6721602wrv;
+        Wed, 7 Aug 2019 08:58:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxBTQH/7EdKLJxg/hbsH1k2yafCUF3J1yjdh29A4n1NHieYyXtxGY4GoHaBkzZRXwm9oDRS
+X-Received: by 2002:a50:fa05:: with SMTP id b5mr10454822edq.269.1565193536605;
+        Wed, 07 Aug 2019 08:58:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565193536; cv=none;
         d=google.com; s=arc-20160816;
-        b=MxvHystBuTjjN4Ea5Ge+TxLvTOieSLw8vPVfpJmYH6E6dmDe4k+S0xA00y0HQqNPdx
-         n30rAthIUfiyICYLe3o58nhq37cmkMjR5BiktfIjy93F5hVLuhl2v2MphAIBlu5H6yyC
-         Wy4uBHPj4hC/GS5dzXyLugU1hVa3/2NCRz8e5rx5mJp+Nqz0OsXeMr5kZmXP3EA0Db/J
-         1FMW8JoANujE4lFag54iz/9HCTzuGPnVfCCBGeo2oTcFhKr30MkDx8kUGduDmPtwdJzS
-         Tr9hopAwjElcMAOnLndyhNT7HpMY+p7HeRgKEIRcXHkEsy5HDv+1F8p4x2M0Ty5WlWo8
-         P2KA==
+        b=iS+QDMG1S1bdjv/+O7omYMjds3gYJ+ukSCh/6ebIyQx2jPnXp1ICLKZeFTGdaal4jd
+         8V66rWROPMRDSDxV8cQqdv3gVd888HGliM+6QoSIMyTjl8GvSDfUZrrNNL6DI1l87QPD
+         pwbGwArPCozQ5UlrKnqOqbXVeLZU/+CnI+kY33A5EOm24AYiNyVX6mJbFsvq/rcdZZu4
+         BFSKrYABpc0kF4xg2GzQWpYXMghz8jT6Pc/qR7acJHjjjIztJHT0YOwdB7rF1hnnhYG6
+         Wep4Tt/yeommFHYShrQNQdLyn7oiSMtjJ8NiWUziO9lB671V9VxbENQxqmJMcZRRHLCj
+         y66Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=Km1xqJmdFW3OmzGAQbZzLGpRXzZpw3vkLbE5a8lCoQg=;
-        b=XW2Yh7qbkJzQHto8GJLEtYq0LJBtJwaHfSy56qCOa7LQuu0eLLaijhTbJlSvD95tjQ
-         yQPRISEVxuNgH0tcVJxaESNP1yJm17HYZ6UFnG0Xbwmj/2uuVioDIuwbfT/KX+LKTNQ5
-         ke5TMfCRga5Hqr1Ty9ygfQl/wclDxhSugGA+TWMYmiT3QEAgF/xcF75cgT6YJFhqadkQ
-         kU/DqRV5z/3UGqwBGuSYuH+UNmcARVD3GCkoDu8FlxapWslisZl0TEdfPCMXoGVikEtC
-         ML+DXeH9tqnkTP7t35SOghe2ZgpcOYUdVQ2tnCoQpdx+MPap7CNod7SjfTQtTBl0tSjh
-         EjMw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=nDCrpao1DoUXvHLGq8oQ8nGL/3V+y9My6Yv9BJkV1/c=;
+        b=jsUn+emvdv5YDrhRNMyZF10rHw38WLFe0lpx3MJwWFPAmV3aW/LDujHt9aWaxxavf8
+         s9hSPxGSGSk9RK4kHy6Zc1PtDGf8WBBpS60iYxTZyS/nckyjzyF6iCOzTAqPKs3LzA3r
+         8305E6VvrdFkg6ToVfgkDC69JycbgoagPUvBndNoa7cptr+etFdUbN+UkrgAmROF6LIj
+         kZEwSrOQkh9ObjwO923Xmd6KWlpiHCEWEey/dqBe1/zr9L9KkYGnB8+LlVTxdrJa64ZD
+         nsYOzY7V83FTB1wEDCx67weUEZ8LTynGBN6/rMxXo8LYOUGKpEjGvAJck0SisdPB07vS
+         wZ6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=C5Udf9Gu;
+       dkim=fail header.i=@linaro.org header.s=google header.b=czmSL6ox;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m8si2746973qkk.18.2019.08.07.08.34.17
+        by mx.google.com with ESMTPS id d24si29914435ejt.166.2019.08.07.08.58.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 08:34:17 -0700 (PDT)
+        Wed, 07 Aug 2019 08:58:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=C5Udf9Gu;
+       dkim=fail header.i=@linaro.org header.s=google header.b=czmSL6ox;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42676 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42950 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvNxB-0008Jz-GJ
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 11:34:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55598)
+	id 1hvOL1-0006TO-LC
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 11:58:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36071)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hvNwn-000850-Tk
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 11:33:55 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hvOKo-0006JO-4J
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 11:58:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hvNwm-0006TX-SV
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 11:33:53 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:37753)
+ (envelope-from <peter.maydell@linaro.org>) id 1hvOKl-0000JB-P9
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 11:58:42 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:35571)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hvNwm-0006S5-O4
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 11:33:52 -0400
-Received: by mail-ot1-x344.google.com with SMTP id s20so40449547otp.4
- for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 08:33:52 -0700 (PDT)
+ id 1hvOKl-0000HA-Ep
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 11:58:39 -0400
+Received: by mail-ot1-x343.google.com with SMTP id j19so29623122otq.2
+ for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 08:58:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Km1xqJmdFW3OmzGAQbZzLGpRXzZpw3vkLbE5a8lCoQg=;
- b=C5Udf9GuRBRV9n77JWc9KP4oOujE279iNEHBUnZ0uKtF724gmmGzGOrDd1eMYlQrLR
- B8VBstYLSDyTGQZvaxj69A2BLTE2eABTLi0BOsf+XI2P5nd12HNDCWmJAhxW5zsjAj08
- FuEU5ybtm/TP4/kLpFtZh1HE4YKvb3E/cTa4bn87Jq09whwcEwZhymqgnfhsw6+kheQY
- F/vuWKIdd05rE5UVn86IR+DXNba9qu54By514OnUcspUH9TTV4wKPbPCRsAPjTzq2r3y
- vPslfrJ8E1hclqT6TSh56/G382xPQGuOSyerxFJOZGUEuZnwpg5zCDiENGzrerf7fnqK
- u+7A==
+ :cc; bh=nDCrpao1DoUXvHLGq8oQ8nGL/3V+y9My6Yv9BJkV1/c=;
+ b=czmSL6oxe/XI1/OGJz/FBW7SUWvAJxg3Fs2UJr7lDTBbTuLVSIvQE+hiqwaKy3cmgm
+ 4woa/+r1pjIGTFddQ1RCSc65A78MAUNRNzYB8A+T4oSl5AChAo7VUQQ9yejGN63lxeaO
+ sEV9455e++VIgLXKHazkBusmUsPuILiU+cLsvGu1r8AkwAL/099sR2qdzHX+/yb0H1bQ
+ 76U6XUvNiDb5dZNkmd3yPhlgarxkCGAW0b2lSO7/NzEeHhZfUmgXWNbSFbkDL0VzAcox
+ L4LwKx1iBE6/RCI6LukJHL8OCp5fV4eSmxPKKoZ41q6RWygYpFbumdRdE+xLA9crHRpJ
+ n5gw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Km1xqJmdFW3OmzGAQbZzLGpRXzZpw3vkLbE5a8lCoQg=;
- b=mC9KjLVqFf+KjXLXg0mY7AstgmLNQ0/lWxgloIXcHFu61TdAidJlZgoGpCd9Z0k4b0
- FSActy/mprh5GQF3BqBwVpem1fxgb8YYOf0StfEnImjdZma00HIrONpoJnOEK1y23h77
- lpHVtfBlZo9/mwKBI0oOfoPtwyQbmcOpr6rgXv7ouUkuLkLQ0LQQaLMwRxA4CSObeG2K
- iN/IBzvphvihLut6zN3XSCXFjJshljVpwCrfYZzuOn9tu00/VCYplHftOv7a8knc6CRL
- 4z7MEoQ0xp1LMvBcWSax+PDfmtrEawLXsWo3Nnv6TOvsStST569DtR58lJED3FhD1giG
- dv3Q==
-X-Gm-Message-State: APjAAAV5TpuZENDqq2EQdJ1oqu90QI1t+Uums5908Eua2wpHacbaW78w
- utWjrbnV6vHiD9r2sWQbnMezTavDU74utCCBF0zBGg==
-X-Received: by 2002:a5e:db0a:: with SMTP id q10mr769271iop.168.1565192031536; 
- Wed, 07 Aug 2019 08:33:51 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=nDCrpao1DoUXvHLGq8oQ8nGL/3V+y9My6Yv9BJkV1/c=;
+ b=rZiDE2ZXS2V2I4zyV24o3lsEndjDtMvTJLX7eJ0PGd1wFken0QNNwEPAgb/4Nx028N
+ wZzqdiIUcWM7DeB0Ah+6TTT3Lbs9SbjFN5+XXyzTEHtu9FAN7rr7gW2MDpt7TjXYJwle
+ 2X1r0LII7jLxcDOphHL2VvmzP6aLbwIt8EmFD8ynVZ7ViE0kRP2wzYE2G8B3kdPTFttH
+ WcFTvaAMt721xtT7dCvBEl5C/6ly2M3WddEz1FFmBjXM32Ma9Eh9dYIBTrt3FebmHmG0
+ 0T2cftqGRjUggWY8uyzlZ1p4sdPqBGMmaiAd41ffaCTeL8A5YXt6i1SiSVqtfZTF2f0P
+ Q8yA==
+X-Gm-Message-State: APjAAAVXv5/Q/FQvK2/j22PkulbZoTEYeTeLbp05N+d7OKqDc3r4ljw5
+ FwZnCyozko7Ux+CdTw1NYsbppTdkn2SmGUQlczLCcQ==
+X-Received: by 2002:a9d:4d81:: with SMTP id u1mr7692455otk.221.1565193518332; 
+ Wed, 07 Aug 2019 08:58:38 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-30-damien.hedde@greensocs.com>
-In-Reply-To: <20190729145654.14644-30-damien.hedde@greensocs.com>
+ <20190729145654.14644-10-damien.hedde@greensocs.com>
+In-Reply-To: <20190729145654.14644-10-damien.hedde@greensocs.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 7 Aug 2019 16:33:40 +0100
-Message-ID: <CAFEAcA-Fr=wGXN5Oeh14gOMgdVDGBa3Lzpj6QNxrRpcJytwELA@mail.gmail.com>
+Date: Wed, 7 Aug 2019 16:58:27 +0100
+Message-ID: <CAFEAcA_Uyd0kFCOB2SzS13n=5qfrFRV0AFBUfu8J0KmOBth+Mg@mail.gmail.com>
 To: Damien Hedde <damien.hedde@greensocs.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::344
-Subject: Re: [Qemu-arm] [PATCH v3 29/33] hw/misc/zynq_slcr: use standard
- register definition
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-arm] [PATCH v3 09/33] add doc about Resettable interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,17 +108,15 @@ Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
  Dmitry Fleytman <dmitry.fleytman@gmail.com>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
  Edgar Iglesias <edgar.iglesias@xilinx.com>, Hannes Reinecke <hare@suse.com>,
  Qemu-block <qemu-block@nongnu.org>, David Hildenbrand <david@redhat.com>,
  Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- Richard Henderson <rth@twiddle.net>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>, qemu-s390x <qemu-s390x@nongnu.org>,
  qemu-arm <qemu-arm@nongnu.org>,
  =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, John Snow <jsnow@redhat.com>,
@@ -132,27 +126,280 @@ Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WZMHy7EsS4Qi
+X-TUID: fBrXdfgNayFQ
 
-On Mon, 29 Jul 2019 at 15:59, Damien Hedde <damien.hedde@greensocs.com> wro=
-te:
->
-> Replace the zynq_slcr registers enum and macros using the
-> hw/registerfields.h macros.
+On Mon, 29 Jul 2019 at 15:59, Damien Hedde <damien.hedde@greensocs.com> wrote:
 >
 > Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 > ---
->  hw/misc/zynq_slcr.c | 472 ++++++++++++++++++++++----------------------
->  1 file changed, 236 insertions(+), 236 deletions(-)
+>  docs/devel/reset.txt | 165 +++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 165 insertions(+)
+>  create mode 100644 docs/devel/reset.txt
 >
+> diff --git a/docs/devel/reset.txt b/docs/devel/reset.txt
+> new file mode 100644
+> index 0000000000..c7a1eb068f
+> --- /dev/null
+> +++ b/docs/devel/reset.txt
+> @@ -0,0 +1,165 @@
+> +
+> +=====
+> +Reset
+> +=====
+> +
+> +The reset of qemu objects is handled using the Resettable interface declared
+> +in *include/hw/resettable.h*.
+> +As of now DeviceClass and BusClass implement this interface.
+> +> +
+> +Triggering reset
+> +----------------
 
-Since this patch has been reviewed and it's unrelated to the
-reset APIs, I'm going to pull it into target-arm.next, and
-then you can stop carrying it around in your patchset
-(well, once it's gone into master and you've rebased on that,
-which will probably be in a week or two).
+I think this would be clearer if we documented it the other way around:
+
+  This section documents the APIs which "users" of a resettable
+  object should use to control it.
+
+  A resettable object can be put into its "in reset" state and
+  held there indefinitely.
+
+  [documentation for resettable_assert/deassert_reset goes here]
+
+  If you want to just trigger a reset event but not leave the
+  object in reset for any period of time, you can use
+  resettable_reset(), which is a convenience function identical
+  in behaviour to calling resettable_assert() and then immediately
+  calling resettable_deassert().
+
+  [resettable_reset() docs here]
+
+> +
+> +The function *resettable_reset* is used to trigger a reset on a given
+> +object.
+> +void resettable_reset(Object *obj, bool cold)
+> +
+> +The parameter *obj* must implement the Resettable interface.
+> +The parameter *cold* is a boolean specifying whether to do a cold or warm
+> +reset
+> +
+> +For Devices and Buses there is also the corresponding helpers:
+> +void device_reset(Device *dev, bool cold)
+> +void bus_reset(Device *dev, bool cold)
+
+We should explain what these do.
+
+> +
+> +If one wants to put an object into a reset state. There is the
+> +*resettable_assert_reset* function.
+> +void resettable_assert_reset(Object *obj, bool cold)
+> +
+> +One must eventually call the function *resettable_deassert_reset* to end the
+> +reset state:
+> +void resettable_deassert_reset(Object *obj, bool cold)
+> +
+> +Calling *resettable_assert_reset* then *resettable_deassert_reset* is the
+> +same as calling *resettable_reset*.
+> +
+> +It is possible to interleave multiple calls to
+> + - resettable_reset,
+> + - resettable_assert_reset, and
+> + - resettable_deassert_reset.
+> +The only constraint is that *resettable_deassert_reset* must be called once
+> +per *resettable_assert_reset* call so that the object leaves the reset state.
+> +
+> +Therefore there may be several reset sources/controllers of a given object.
+> +The interface handle everything and the controllers do not need to know
+
+"handles"
+
+> +anything about each others. The object will leave reset state only when all
+
+"each other"
+
+> +controllers released their reset.
+
+"release"
+
+> +
+> +All theses functions must called while holding the iothread lock.
+
+"these"; "be called"
+
+> +
+> +
+> +Implementing reset for a Resettable object : Multi-phase reset
+> +--------------------------------------------------------------
+
+  This section documents the APIs that an implementation of a
+  resettable object must provide.
+
+> +
+> +The Resettable uses a multi-phase mechanism to handle some ordering constraints
+> +when resetting multiple object at the same time. For a given object the reset
+
+"objects"
+
+> +procedure is split into three different phases executed in order:
+> + 1 INIT: This phase should set/reset the state of the Resettable it has when is
+> +         in reset state. Side-effects to others object is forbidden (such as
+> +         setting IO level).
+> + 2 HOLD: This phase corresponds to the external side-effects due to staying into
+> +         the reset state.
+> + 3 EXIT: This phase corresponds to leaving the reset state. It have both
+> +         local and external effects.
+
+We should be a bit more detailed here. I had some text in
+my review of patch 1 for the doc-comments which we can put here too.
+
+> +
+> +*resettable_assert_reset* does the INIT and HOLD phases. While
+> +*resettable_deassert_reset* does the EXIT phase.
+
+Delete this bit -- we don't want to muddle the reader up between
+the 'user' APIs and the 'implementer' APIs.
+
+> +
+> +When resetting multiple object at the same time. The interface executes the
+
+Comma, not full stop.
+
+> +given phase of the objects before going to the next phase. This guarantee that
+
+"guarantees"
+
+> +all INIT phases are done before any HOLD phase and so on.
+> +
+> +There is three methods in the interface so must be implemented in an object.
+
+"are"; "that must"
+
+> +The methods corresponds to the three phases:
+
+"correspond"
+
+> +```
+> +typedef void (*ResettableInitPhase)(Object *obj);
+> +typedef void (*ResettableHoldPhase)(Object *obj);
+> +typedef void (*ResettableExitPhase)(Object *obj);
+> +typedef struct ResettableClass {
+> +    InterfaceClass parent_class;
+> +
+> +    struct ResettablePhases {
+> +        ResettableInitPhase init;
+> +        ResettableHoldPhase hold;
+> +        ResettableExitPhase exit;
+> +    } phases;
+> +    [...]
+> +} ResettableClass;
+> +```
+> +
+> +Theses methods should be updated when specializing an object. For this the
+
+"These"
+
+> +helper function *resettable_class_set_parent_reset_phases* can be used to
+> +backup parent methods while changing the specialized ones.
+> +void resettable_class_set_parent_reset_phases(ResettableClass *rc,
+> +                                              ResettableInitPhase init,
+> +                                              ResettableHoldPhase hold,
+> +                                              ResettableExitPhase exit,
+> +
+> +For Devices and Buses, some helper exists to know if a device/bus is under
+
+"helpers"
+
+> +reset and what type of reset it is:
+> +```
+> +bool device_is_resetting(DeviceState *dev);
+> +bool device_is_reset_cold(DeviceState *dev);
+> +bool bus_is_resetting(BusState *bus);
+> +bool bus_is_reset_cold(BusState *bus);
+> +```
+
+What are these for? Are they part of the API intended for 'users'
+of a resettable device', or something that the 'implementor' might
+want to use as part of their implementation. More detail would be good.
+
+> +
+> +
+> +Implementing the base Resettable behavior : Re-entrance, Hierarchy and Cold/Warm
+> +--------------------------------------------------------------------------------
+
+  This section documents parts of the reset mechanism that you only
+  need to know about if you are extending it to work with a new
+  base class other than DeviceClass or BusClass, or maintaining
+  the existing code in those classes. Most people can ignore it.
+
+> +
+> +There is five others methods in the interface to handle the base mechanics
+
+"are five other methods"
+
+> +of the Resettable interface. The methods should be implemented in object
+> +base class. DeviceClass and BusClass implement them.
+> +
+> +```
+> +typedef bool (*ResettableSetCold)(Object *obj, bool cold);
+> +typedef bool (*ResettableSetHoldNeeded)(Object *obj, bool hold_needed);
+> +typedef uint32_t (*ResettableGetCount)(Object *obj);
+> +typedef uint32_t (*ResettableIncrementCount)(Object *obj);
+> +typedef uint32_t (*ResettableDecrementCount)(Object *obj);
+> +typedef void (*ResettableForeachChild)(Object *obj, void (*visitor)(Object *));
+> +typedef struct ResettableClass {
+> +    InterfaceClass parent_class;
+> +
+> +    [...]
+> +
+> +    ResettableSetCold set_cold;
+> +    ResettableSetHoldNeeded set_hold_needed;
+> +    ResettableGetCount get_count;
+> +    ResettableIncrementCount increment_count;
+> +    ResettableDecrementCount decrement_count;
+> +    ResettableForeachChild foreach_child;
+> +} ResettableClass;
+> +```
+> +
+> +*set_cold* is used when entering reset, before calling the init phase, to
+> +indicate the reset type.
+> +
+> +*set_hold_needed* is used to set/clear and retrieve an "hold_needed" flag.
+> +This flag allows to omly execute the hold pahse when required.
+> +
+> +As stated above, several reset procedures can be concurrent on an object.
+> +This is handled with the three methods *get_count*, *increment_count* and
+> +*decrement_count*. An object is in reset state if the count is non-zero.
+> +
+> +The reset hierarchy is handled using the *foreach_child* method. This method
+> +executes a given function on every reset "child".
+> +
+> +In DeviceClass and BusClass the base behavior is to mimic the legacy qdev
+> +reset. Reset hierarchy follows the qdev/qbus tree.
+
+We should document the behaviour of the new system specifically,
+without saying it's like the old legacy reset. After all the idea
+is that the legacy reset is going to go away, so readers should be
+able to understand the new system without first knowing about the
+old one.
+
+> +
+> +Reset control through GPIO
+> +--------------------------
+> +
+> +For devices, two reset inputs can be added: one for the cold, one the warm
+> +reset. This is done using the following function.
+> +```
+> +typedef enum DeviceResetActiveType {
+> +    DEVICE_RESET_ACTIVE_LOW,
+> +    DEVICE_RESET_ACTIVE_HIGH,
+> +} DeviceResetActiveType;
+> +void qdev_init_reset_gpio_in_named(DeviceState *dev, const char *name,
+> +                                   bool cold, DeviceResetActiveType type);
+> +```
+
+Rather than just quoting the prototype of the function, we should
+provide a more descriptive documentation of what this feature is
+for and why you'd want to use it. Then we can just refer the
+reader to the function (which should have its own doc comment)
+for the exact details of how the API works.
 
 thanks
 -- PMM

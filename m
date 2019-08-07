@@ -1,76 +1,75 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6257503wrv;
-        Wed, 7 Aug 2019 01:38:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwfmNsvzD+5sRihHsEZU+tyxv6YwnPqXgWr77hnO6Z2KenMuuxiEkNVzQB9VPUjSNs/4M3q
-X-Received: by 2002:ae9:ebc3:: with SMTP id b186mr7147009qkg.222.1565167084867;
-        Wed, 07 Aug 2019 01:38:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565167084; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6257548wrv;
+        Wed, 7 Aug 2019 01:38:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqygFiP7N3YY7M63a3t76nodE4jHlOOvvTyhMwxIl314IOBqYEjTLMbKG/sXhCuUoFf7NKht
+X-Received: by 2002:ae9:efc6:: with SMTP id d189mr6745770qkg.323.1565167088846;
+        Wed, 07 Aug 2019 01:38:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565167088; cv=none;
         d=google.com; s=arc-20160816;
-        b=vO9e5Dej0/EVlK53/P0yle50/npKfSxAOg2tUulLypS/tdfMGHC9nfJnvOkfvO/rp8
-         7kVqOWayQsKeEud/AUZezgAUeE2Kv8yRxJkeOMPQNJ82aQnQuuK0jY8YLH1yp3/EElb8
-         /n6oK5/CekleLKDTrqI92jNwRv+fJFeVLK/Wh5kek6+MOxdMh7iOaPLZMEabBMtlzvGL
-         Agsyn3P9M4sE7rThDhDd0UJSFi21sAP3FOe4Mx61PKHcqGE+L9wn55lsSEMFXtfzD4JP
-         DbF+SJ8bSh3qNJUaFVQDTc7hM5m70rxnXFD+lztnUxS7uuxtDZISrg+WRFxo52KJuwzD
-         0RUw==
+        b=BHdVdHD1XqkebeWKPLm9TfmEE0bc30oo6d+9m0sMd9XbJo9IOnuOMr09H7m5j7rfgZ
+         STOqxvn+ayeGUha+j2fw4kwLxbHJbAZYEjIvKdgQOWmqiHYCVFpMoT8UIxedljyNriOu
+         HIsvP3joThyjvp1c7nRsvqo2G6duGjrDSPv9aUWf3rG8Zfpw+DapDrDw3hujepfy71O0
+         KffDJIkDDo8X7dXT+HUZ9edacUzjlszpBzexrphclDtSW+xKsCb+eAkWKdsWWKn+obEj
+         OSa9ESiLKNlO1j1Wii1vINJq8ilsAOibJQjYyFPpLQl6XxvgFdQ9EhEjXsn89ZvFHWIi
+         w6dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:content-language
          :accept-language:in-reply-to:references:message-id:date:thread-index
          :thread-topic:to:from;
-        bh=sN2vO9YGCLUhxIjRIsRrpzd4lqBE8fRaZgQ9lZvMiDM=;
-        b=SoeFIkQB1++Dv/qfOhkXpatcve8tUUUss0JIPpGDC4iBE7CJPIbJ/kSNWa4s1wsua3
-         Ic/RloGZ3H3axUqH4CXsNxCvE5fZyR68AUrnLxq+gIcEL5r04vvXRE/YTdnyPpYqJ7/x
-         x2DgLmBRyHREkMPts42cRkchGwXZN+Blrb37C/B+1LvJQXWlzDby58nzNCQ+jLHGi2cg
-         owmxZhBybKLmhuLVx3n8UoIz+LVQAg4ykr35JWyMqALEp8eIeSSMgPgPJMmOblErMb+Q
-         DUFKzCaqk9J4Pecx2njjt2h7lnRWqKaPqyUd+AgtMkt+ukYdGLV0qMVuFAVb7BknNsoj
-         9V8A==
+        bh=LOXGVpXSYrr6MxAclyxBCmv/LxNje2vl+VUPgU9I9wM=;
+        b=vjokm+ZScjx4D3FezNdJ3TjbeR9ONWcSvHxYZWxWPTJSuvGHsBQi2H9GY1c2u2Xuxa
+         6nOva30vcsIM+4QuVp3GLU3ki3va1zTg+VjHQkWy7d+/cp42EnKjO9Qx7SVkpXSIkF9n
+         oPlBX/VY07plnBPo1yIf82jjWYA7vYdMncTZyZMrJlEu2uUJugEqsMDjmS736KVNnbEV
+         6feIVQuWepYbRO6zh4O5zd5dx+C6WV18zQcJ+LBZYC3QSS/LTb//dHfaU9Knivs460Ib
+         WIf3/psivmCXKBplPBSfoeEpy/9W/ICeCG2IMndFcEmO9OVxH53CRIAC/R0xKECGaL95
+         pQ0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r188si198090qkb.263.2019.08.07.01.38.04
+        by mx.google.com with ESMTPS id x190si24559835qke.175.2019.08.07.01.38.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 01:38:04 -0700 (PDT)
+        Wed, 07 Aug 2019 01:38:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:38694 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38696 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvHSO-0003Ai-8D
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 04:38:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45804)
+	id 1hvHSS-0003EM-D2
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 04:38:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45882)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <tony.nguyen@bt.com>) id 1hvHPA-0005kv-55
- for qemu-devel@nongnu.org; Wed, 07 Aug 2019 04:34:46 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hvHPQ-0006Mi-TW
+ for qemu-devel@nongnu.org; Wed, 07 Aug 2019 04:35:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hvHP8-0003iE-CO
- for qemu-devel@nongnu.org; Wed, 07 Aug 2019 04:34:44 -0400
-Received: from smtpe1.intersmtp.com ([213.121.35.80]:56674)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (envelope-from <tony.nguyen@bt.com>) id 1hvHPN-0003pI-UJ
+ for qemu-devel@nongnu.org; Wed, 07 Aug 2019 04:35:00 -0400
+Received: from smtpe1.intersmtp.com ([62.239.224.234]:12698)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hvHOo-0003ZO-Mp; Wed, 07 Aug 2019 04:34:22 -0400
-Received: from tpw09926dag18f.domain1.systemhost.net (10.9.212.26) by
- BWP09926085.bt.com (10.36.82.116) with Microsoft SMTP Server (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Wed, 7 Aug
- 2019 09:34:00 +0100
+ id 1hvHPC-0003jG-Qy; Wed, 07 Aug 2019 04:34:47 -0400
+Received: from tpw09926dag18h.domain1.systemhost.net (10.9.212.42) by
+ RDW083A012ED68.bt.com (10.187.98.38) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Wed, 7 Aug 2019 09:34:22 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18f.domain1.systemhost.net (10.9.212.26) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Wed, 7 Aug 2019 09:34:20 +0100
+ tpw09926dag18h.domain1.systemhost.net (10.9.212.42) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Wed, 7 Aug 2019 09:34:41 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Wed, 7 Aug 2019
- 09:34:20 +0100
+ 09:34:41 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v6 23/26] cpu: TLB_FLAGS_MASK bit to force
- memory slow path
-Thread-Index: AQHVTPro0vQvufbzNk2MLG7d+V6v7w==
-Date: Wed, 7 Aug 2019 08:34:20 +0000
-Message-ID: <1565166860242.78427@bt.com>
+Thread-Topic: [Qemu-devel] [PATCH v6 24/26] cputlb: Byte swap memory
+ transaction attribute
+Thread-Index: AQHVTPr0XHOobhwzF02y9V3sLlC8dA==
+Date: Wed, 7 Aug 2019 08:34:40 +0000
+Message-ID: <1565166880633.15851@bt.com>
 References: <45ec4924e0b34a3d9124e2db06af75b4@tpw09926dag18e.domain1.systemhost.net>
 In-Reply-To: <45ec4924e0b34a3d9124e2db06af75b4@tpw09926dag18e.domain1.systemhost.net>
 Accept-Language: en-AU, en-GB, en-US
@@ -80,13 +79,14 @@ X-MS-TNEF-Correlator:
 x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.44]
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 213.121.35.80
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 62.239.224.234
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 X-Content-Filtered-By: Mailman/MimeDel 2.1.23
-Subject: [Qemu-devel] [PATCH v6 23/26] cpu: TLB_FLAGS_MASK bit to force
- memory slow path
+Subject: [Qemu-devel] [PATCH v6 24/26] cputlb: Byte swap memory transaction
+ attribute
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -127,44 +127,77 @@ Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
  stefanb@linux.ibm.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KIFe0+pDJuzq
+X-TUID: 8gG0jG3o4bBc
 
-The fast path is taken when TLB_FLAGS_MASK is all zero.
+Notice new attribute, byte swap, and force the transaction through the
+memory slow path.
 
-TLB_FORCE_SLOW is simply a TLB_FLAGS_MASK bit to force the slow path,
-there are no other side effects.
+Required by architectures that can invert endianness of memory
+transaction, e.g. SPARC64 has the Invert Endian TTE bit.
 
+Suggested-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/cpu-all.h | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+ accel/tcg/cputlb.c      | 11 +++++++++++
+ include/exec/memattrs.h |  2 ++
+ 2 files changed, 13 insertions(+)
 
-diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index 536ea58..e496f99 100644
---- a/include/exec/cpu-all.h
-+++ b/include/exec/cpu-all.h
-@@ -331,12 +331,18 @@ CPUArchState *cpu_copy(CPUArchState *env);
- #define TLB_MMIO            (1 << (TARGET_PAGE_BITS - 3))
- /* Set if TLB entry must have MMU lookup repeated for every access */
- #define TLB_RECHECK         (1 << (TARGET_PAGE_BITS - 4))
-+/* Set if TLB entry must take the slow path.  */
-+#define TLB_FORCE_SLOW      (1 << (TARGET_PAGE_BITS - 5))
+diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
+index 473b8e6..f6f4dd5 100644
+--- a/accel/tcg/cputlb.c
++++ b/accel/tcg/cputlb.c
+@@ -738,6 +738,9 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_ulon=
+g vaddr,
+          */
+         address |=3D TLB_RECHECK;
+     }
++    if (attrs.byte_swap) {
++        address |=3D TLB_FORCE_SLOW;
++    }
+     if (!memory_region_is_ram(section->mr) &&
+         !memory_region_is_romd(section->mr)) {
+         /* IO memory case */
+@@ -891,6 +894,10 @@ static uint64_t io_readx(CPUArchState *env, CPUIOTLBEn=
+try *iotlbentry,
+     bool locked =3D false;
+     MemTxResult r;
 
- /* Use this mask to check interception with an alignment mask
-  * in a TCG backend.
-  */
--#define TLB_FLAGS_MASK  (TLB_INVALID_MASK | TLB_NOTDIRTY | TLB_MMIO \
--                         | TLB_RECHECK)
-+#define TLB_FLAGS_MASK \
-+    (TLB_INVALID_MASK  \
-+     | TLB_NOTDIRTY    \
-+     | TLB_MMIO        \
-+     | TLB_RECHECK     \
-+     | TLB_FORCE_SLOW)
++    if (iotlbentry->attrs.byte_swap) {
++        op ^=3D MO_BSWAP;
++    }
++
+     section =3D iotlb_to_section(cpu, iotlbentry->addr, iotlbentry->attrs)=
+;
+     mr =3D section->mr;
+     mr_offset =3D (iotlbentry->addr & TARGET_PAGE_MASK) + addr;
+@@ -933,6 +940,10 @@ static void io_writex(CPUArchState *env, CPUIOTLBEntry=
+ *iotlbentry,
+     bool locked =3D false;
+     MemTxResult r;
 
- /**
-  * tlb_hit_page: return true if page aligned @addr is a hit against the
++    if (iotlbentry->attrs.byte_swap) {
++        op ^=3D MO_BSWAP;
++    }
++
+     section =3D iotlb_to_section(cpu, iotlbentry->addr, iotlbentry->attrs)=
+;
+     mr =3D section->mr;
+     mr_offset =3D (iotlbentry->addr & TARGET_PAGE_MASK) + addr;
+diff --git a/include/exec/memattrs.h b/include/exec/memattrs.h
+index d4a3477..95f2d20 100644
+--- a/include/exec/memattrs.h
++++ b/include/exec/memattrs.h
+@@ -37,6 +37,8 @@ typedef struct MemTxAttrs {
+     unsigned int user:1;
+     /* Requester ID (for MSI for example) */
+     unsigned int requester_id:16;
++    /* Invert endianness for this page */
++    unsigned int byte_swap:1;
+     /*
+      * The following are target-specific page-table bits.  These are not
+      * related to actual memory transactions at all.  However, this struct=
+ure
 --
 1.8.3.1
 

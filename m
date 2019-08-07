@@ -1,103 +1,88 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6074477wrv;
-        Tue, 6 Aug 2019 21:57:25 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyuVEBLSApeY6WGmpYX8Nt/N+s28ik1PDjIyxkzyOVKxB63k4tmMh4GHikfquTXvTBC3Otg
-X-Received: by 2002:aa7:d5cf:: with SMTP id d15mr7654098eds.67.1565153845509;
-        Tue, 06 Aug 2019 21:57:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565153845; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6243470wrv;
+        Wed, 7 Aug 2019 01:19:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx4R+CWvOkG8kEFb71dTI93cWGKMrYcquPC1TXNIO9we272i/S2SB3ads35yexmFOa2VP5h
+X-Received: by 2002:ac8:66c5:: with SMTP id m5mr3116768qtp.71.1565165978416;
+        Wed, 07 Aug 2019 01:19:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565165978; cv=none;
         d=google.com; s=arc-20160816;
-        b=bAlJSiaPs2skJBKY7mCbxkFSX1u19kzIlcxAvyB0vUyXNUU3dri9TIs1hwnA/5M8C9
-         lEgxgghzRb0/9pol3gXfAGupJx+e2MEiwr4n6fm+0fT+jD1kSbKeUBcncAlZca+C5CY9
-         +puvGqraNWYwnZ2UNq2tIJX1wngr8O7hvbgcNVpjkpFb7aZxrPeUYN8HckjrLcPwnLnY
-         Eg6w9hJ7+2uCIoCyySpinUCzSKMbun/1ZDgQ0BkuiaHpH68a2bTB9uthwkF1R01E0ey3
-         3KAV62FLWLB6RJDYCUEiC38hlCvt13mnKj0yH4e3Jn1JoWdryfGuv/Om0BiP7O0lQXJu
-         7kqw==
+        b=uGCYvY2ddjY1OspRJ1kpE0auzECQlKUyCDllPS4cyZOP6y+lt57sQY+f/M1SWIBXrK
+         xx6yHhaEo1FGDsX3bj/rmzqiWmJLIdyMNyGeo11zq6s2WRmzFiCwdQ+BqxupKxiKzG2q
+         38lmwQF+EMQ4tmoBeDZFAb1zVRMNjR8uXCM1fbk3+UIdTu2/ypoC2S/AQLcn2pcBT8VK
+         zNN2zQncFiIugxVH3ddMtZCnvTJfJhQ152QGKn+NhpeIadfk9vxiQNfL7mwDb5eNH/nW
+         GPDIcU83MclnJJJyILM7NeVGLfhtiohI2Pk/Tv9uCbhNGf0mWHms3Ue1qJnItXuoRSo8
+         8TKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=wDovHb8+ljpi4sI8lS1gqNoa7uBRHGNbFn35mP5+duU=;
-        b=BZk/QcZmkIyXq18duqi7QlDqRIbGf7xSQ7wLWR4Hb6LC6hjQgNgRZburFoZ7UGf+Qq
-         Ihy2D+gvdAguqK+3UK3e6OKuSsJ3uPhrpar3A61doJMY6FP6zqohHmNYxMPDShnh6EeY
-         trkGNzm2XQba3oRf1KTabBE8pwxX7WP6c5IojqsZmHegpqifRG6Ke583nnEoXA7IpzMI
-         GslyX0P89TRdbYubKcFITofqrb79ViunYYpozx0rEa2qSnh0THyUeNVJotl7L2zW7za9
-         fCG/DNUTAqZnVMcdCA/zp/gv1BaUtI2PvsvFg8ksgZqZuJa9/A5yHHRu1OrOsS9JsRed
-         p4Yg==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
+         :from;
+        bh=SD5bRsd7W4ayml0/yKU+yH1ql1rFpAq2CG0UXTij2rw=;
+        b=s3AeU0TRBnmmaZ+dVC+4i1FgGRvUUwkz48jeXnrshTSOVPSrB9gKDusVtGM5jBKOG5
+         VHYLpHw24k2hbDdTmWaIY3vdI5yfvi58IUXtfBGHbIVfNIDg+smbLX99M0LZCei/7f3N
+         Zyg7VHmMMTV/Hq/KmMCE9+qkHtyxiSSU5FgaH/tlBy/FqoVMOghietgAVaETBW4u0ioT
+         LIYRg00nxr7byzIfiITcOjacfOORiTErAH+E2bTYCTbUsw7Yn4PsDr1Adny7OLPucgpE
+         yc+TJ1PrXsIkyow1liyK9hcDrQtPXqL1g1rKveap/8kilTepSmbama+3mVtAT7uDd4Qf
+         aG5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OqT2BEgI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s26si28687136eja.330.2019.08.06.21.57.25
+        by mx.google.com with ESMTPS id k17si55262128qvf.122.2019.08.07.01.19.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Aug 2019 21:57:25 -0700 (PDT)
+        Wed, 07 Aug 2019 01:19:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OqT2BEgI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37260 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38164 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvE0q-0000QO-L0
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 00:57:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40726)
+	id 1hvHAY-0001h1-03
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 04:19:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42390)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <richard.henderson@linaro.org>) id 1hvDxT-0001NS-Pc
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 00:53:56 -0400
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1hvHAR-0001gn-Kk
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 04:19:33 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1hvDxS-0004sy-KG
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 00:53:55 -0400
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:46205)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1hvDxS-0004sO-DO
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 00:53:54 -0400
-Received: by mail-pf1-x443.google.com with SMTP id c3so19625315pfa.13
- for <qemu-arm@nongnu.org>; Tue, 06 Aug 2019 21:53:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=wDovHb8+ljpi4sI8lS1gqNoa7uBRHGNbFn35mP5+duU=;
- b=OqT2BEgIEQuSd8ShFb3RaeD82r3Bh/yyMtSbdIegm7GtN/0mckol0Dk8e4CEQ9atBS
- 9r584wbilgkg7XYqXAxTZ/Uxjvr74kX+H+fcN5OLDoQrHPej+ca94YDPcy9ho4UFNHuq
- ZdnJQSASU/HJCbEY0RmnonneN3CaLWvi4c5YJMIdM3skY9kjrWlhOkzPq0h4FNTPtpF+
- NDGqmRGJC7P2Dbijt1aF5MRIQ7tXbvmWZVm5abW+IuVdH2qccZW43718n7Zu5MWaNhyt
- FDDbnnBNlT3Asfqqscp+nh/92mCtHE19TCW8vUIY4ssvYsDsTzK22aIE+Zk6/NvcrpXA
- fBLQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=wDovHb8+ljpi4sI8lS1gqNoa7uBRHGNbFn35mP5+duU=;
- b=ild1vaj/ueHuWf9RZG1rzs9c909BE63M7vV57poEbSIz64Nw9Ny213JluEUgmR8QRj
- JTWqyMRvDZH38PvLs0XLyWLa6Fs34vWFTqSHPkYs54xn0tv6VG7d5L/pShLNrmW9GSwt
- zuADKy86Oym4ScnzQ3vrOnJ6O4JaW6mQg07bVKxunCdY7aPBW5S8Ysq/FtJcD7rO9PIM
- xdJmDcy8qini9ZbxW1PEF5okgs7GJkg5rT0rRmMVUzBREsYgVYS4aTJiFT1Ieqo+8M+J
- /FM2IegtE+/IlkPpOIDe8+atEKJkUzH5+OvdiUBxnTgHDqYB0GQGBqE/y9bWwfSvbZnp
- 5Ccg==
-X-Gm-Message-State: APjAAAWKkBoB/LbOWITKWAkwIMoMjRhuzo+6eE+WVk5tnwSlvxXKpgs2
- y4ZlNfFpEyPo/MV68GCVbTVWHg==
-X-Received: by 2002:a17:90a:2385:: with SMTP id
- g5mr6788791pje.12.1565153633487; 
- Tue, 06 Aug 2019 21:53:53 -0700 (PDT)
-Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
- [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id t9sm24347921pji.18.2019.08.06.21.53.52
- (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Tue, 06 Aug 2019 21:53:52 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Date: Tue,  6 Aug 2019 21:53:32 -0700
-Message-Id: <20190807045335.1361-9-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190807045335.1361-1-richard.henderson@linaro.org>
-References: <20190807045335.1361-1-richard.henderson@linaro.org>
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::443
-Subject: [Qemu-arm] [PATCH 08/11] target/arm: Replace offset with pc in
- gen_exception_internal_insn
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1hvHAP-0004ev-St
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 04:19:31 -0400
+Received: from lhrrgout.huawei.com ([185.176.76.210]:45431 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1hvHAP-0004dY-KC; Wed, 07 Aug 2019 04:19:29 -0400
+Received: from lhreml704-cah.china.huawei.com (unknown [172.18.7.106])
+ by Forcepoint Email with ESMTP id 2D21074BF81C43DD61CA;
+ Wed,  7 Aug 2019 09:19:24 +0100 (IST)
+Received: from LHREML524-MBS.china.huawei.com ([169.254.2.132]) by
+ lhreml704-cah.china.huawei.com ([10.201.108.45]) with mapi id 14.03.0415.000; 
+ Wed, 7 Aug 2019 09:19:16 +0100
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Thread-Topic: [Qemu-devel] [PATCH-for-4.2 v8 6/9] hw/arm/virt: Enable device
+ memory cold/hot plug with ACPI boot
+Thread-Index: AQHVTFgcgZAsgDGlxk2I68tSjBvK8KbvVrTQ
+Date: Wed, 7 Aug 2019 08:19:16 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA83F347054@lhreml524-mbs.china.huawei.com>
+References: <20190726104519.23812-1-shameerali.kolothum.thodi@huawei.com>
+ <20190726104519.23812-7-shameerali.kolothum.thodi@huawei.com>
+ <20190806150839.350a5add@redhat.com>
+In-Reply-To: <20190806150839.350a5add@redhat.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.237]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 185.176.76.210
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH-for-4.2 v8 6/9] hw/arm/virt:
+ Enable device memory cold/hot plug with ACPI boot
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,89 +94,207 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "sameo@linux.intel.com" <sameo@linux.intel.com>,
+ "ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ "sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
+ "lersek@redhat.com" <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TCpEkQD0fEvp
+X-TUID: LjOunsuzr53t
 
-The offset is variable depending on the instruction set.
-Passing in the actual value is clearer in intent.
+Hi Igor,
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/translate-a64.c | 8 ++++----
- target/arm/translate.c     | 8 ++++----
- 2 files changed, 8 insertions(+), 8 deletions(-)
+> -----Original Message-----
+> From: Igor Mammedov [mailto:imammedo@redhat.com]
+> Sent: 06 August 2019 14:09
+> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
+> eric.auger@redhat.com; peter.maydell@linaro.org; sameo@linux.intel.com;
+> ard.biesheuvel@linaro.org; Linuxarm <linuxarm@huawei.com>; xuwei (O)
+> <xuwei5@huawei.com>; shannon.zhaosl@gmail.com;
+> sebastien.boeuf@intel.com; lersek@redhat.com
+> Subject: Re: [Qemu-devel] [PATCH-for-4.2 v8 6/9] hw/arm/virt: Enable devi=
+ce
+> memory cold/hot plug with ACPI boot
+=20
+[...]
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 92aa6db12e..c8504d221a 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -266,9 +266,9 @@ static void gen_exception(int excp, uint32_t syndrome, uint32_t target_el)
-     tcg_temp_free_i32(tcg_excp);
- }
- 
--static void gen_exception_internal_insn(DisasContext *s, int offset, int excp)
-+static void gen_exception_internal_insn(DisasContext *s, uint64_t pc, int excp)
- {
--    gen_a64_set_pc_im(s->base.pc_next - offset);
-+    gen_a64_set_pc_im(pc);
-     gen_exception_internal(excp);
-     s->base.is_jmp = DISAS_NORETURN;
- }
-@@ -1938,7 +1938,7 @@ static void disas_exc(DisasContext *s, uint32_t insn)
-                 break;
-             }
- #endif
--            gen_exception_internal_insn(s, 0, EXCP_SEMIHOST);
-+            gen_exception_internal_insn(s, s->base.pc_next, EXCP_SEMIHOST);
-         } else {
-             unsupported_encoding(s, insn);
-         }
-@@ -14234,7 +14234,7 @@ static bool aarch64_tr_breakpoint_check(DisasContextBase *dcbase, CPUState *cpu,
-         /* End the TB early; it likely won't be executed */
-         dc->base.is_jmp = DISAS_TOO_MANY;
-     } else {
--        gen_exception_internal_insn(dc, 0, EXCP_DEBUG);
-+        gen_exception_internal_insn(dc, dc->base.pc_next, EXCP_DEBUG);
-         /* The address covered by the breakpoint must be
-            included in [tb->pc, tb->pc + tb->size) in order
-            to for it to be properly cleared -- thus we
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 7a05ecae87..e6b18ecdaf 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -1256,10 +1256,10 @@ static inline void gen_smc(DisasContext *s)
-     s->base.is_jmp = DISAS_SMC;
- }
- 
--static void gen_exception_internal_insn(DisasContext *s, int offset, int excp)
-+static void gen_exception_internal_insn(DisasContext *s, uint32_t pc, int excp)
- {
-     gen_set_condexec(s);
--    gen_set_pc_im(s, s->base.pc_next - offset);
-+    gen_set_pc_im(s, pc);
-     gen_exception_internal(excp);
-     s->base.is_jmp = DISAS_NORETURN;
- }
-@@ -1311,7 +1311,7 @@ static inline void gen_hlt(DisasContext *s, int imm)
-         s->current_el != 0 &&
- #endif
-         (imm == (s->thumb ? 0x3c : 0xf000))) {
--        gen_exception_internal_insn(s, 0, EXCP_SEMIHOST);
-+        gen_exception_internal_insn(s, s->base.pc_next, EXCP_SEMIHOST);
-         return;
-     }
- 
-@@ -11953,7 +11953,7 @@ static bool arm_tr_breakpoint_check(DisasContextBase *dcbase, CPUState *cpu,
-         /* End the TB early; it's likely not going to be executed */
-         dc->base.is_jmp = DISAS_TOO_MANY;
-     } else {
--        gen_exception_internal_insn(dc, 0, EXCP_DEBUG);
-+        gen_exception_internal_insn(dc, dc->base.pc_next, EXCP_DEBUG);
-         /* The address covered by the breakpoint must be
-            included in [tb->pc, tb->pc + tb->size) in order
-            to for it to be properly cleared -- thus we
--- 
-2.17.1
+> > +static inline DeviceState *create_acpi_ged(VirtMachineState *vms,
+> qemu_irq *pic)
+> > +{
+> > +    DeviceState *dev;
+> > +    int irq =3D vms->irqmap[VIRT_ACPI_GED];
+> > +    uint32_t event =3D ACPI_GED_MEM_HOTPLUG_EVT;
+> > +
+> > +    dev =3D DEVICE(object_new(TYPE_ACPI_GED));
+> > +    qdev_prop_set_uint64(dev, "memhp-base",
+> > +                         vms->memmap[VIRT_PCDIMM_ACPI].base);
+> > +    qdev_prop_set_uint64(dev, "ged-base",
+> vms->memmap[VIRT_ACPI_GED].base);
+> > +    qdev_prop_set_uint32(dev, "ged-event", event);
+> > +    object_property_add_child(qdev_get_machine(), "acpi-ged",
+> > +                              OBJECT(dev), NULL);
+> > +    qdev_init_nofail(dev);
+> > +    qdev_connect_gpio_out_named(dev, "ged-irq", 0, pic[irq]);
+> > +
+> > +    object_unref(OBJECT(dev));
+> > +
+> > +    return dev;
+> > +}
+>=20
+> this function will need changes to accommodate for sysbus device
+> init sequence [3/9].
+
+Yes. I think we are proposing to use sysbus_mmio_map() here for "ged-base".
+But what about " memhp-base"? Is it ok to invoke
+acpi_memory_hotplug_init(get_system_memoty(), ...) from ged device?
+
+Or go with _set_link() function to pass the address space ?
+
+Thanks,
+Shameer
+
+=20
+> > +
+> >  static void create_its(VirtMachineState *vms, DeviceState *gicdev)
+> >  {
+> >      const char *itsclass =3D its_class_name();
+> > @@ -1483,6 +1508,7 @@ static void machvirt_init(MachineState *machine)
+> >      MemoryRegion *ram =3D g_new(MemoryRegion, 1);
+> >      bool firmware_loaded;
+> >      bool aarch64 =3D true;
+> > +    bool has_ged =3D !vmc->no_ged;
+> >      unsigned int smp_cpus =3D machine->smp.cpus;
+> >      unsigned int max_cpus =3D machine->smp.max_cpus;
+> >
+> > @@ -1697,6 +1723,10 @@ static void machvirt_init(MachineState
+> *machine)
+> >
+> >      create_gpio(vms, pic);
+> >
+> > +    if (has_ged && aarch64 && firmware_loaded && acpi_enabled) {
+> > +        vms->acpi_dev =3D create_acpi_ged(vms, pic);
+> > +    }
+> > +
+> >      /* Create mmio transports, so the user can create virtio backends
+> >       * (which will be automatically plugged in to the transports). If
+> >       * no backend is created the transport will just sit harmlessly id=
+le.
+> > @@ -1876,27 +1906,34 @@ static const CPUArchIdList
+> *virt_possible_cpu_arch_ids(MachineState *ms)
+> >  static void virt_memory_pre_plug(HotplugHandler *hotplug_dev,
+> DeviceState *dev,
+> >                                   Error **errp)
+> >  {
+> > +    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
+> > +    const bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev),
+> TYPE_NVDIMM);
+> >
+> > -    /*
+> > -     * The device memory is not yet exposed to the Guest either throug=
+h
+> > -     * DT or ACPI and hence both cold/hot plug of memory is explicitly
+> > -     * disabled for now.
+> > -     */
+> > -    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
+> > -        error_setg(errp, "memory cold/hot plug is not yet supported");
+> > +    if (is_nvdimm) {
+> > +        error_setg(errp, "nvdimm is not yet supported");
+> >          return;
+> >      }
+> >
+> > +    if (!vms->acpi_dev) {
+> > +        error_setg(errp, "memory hotplug is not enabled: missing acpi
+> device");
+> > +        return;
+> > +    }
+> > +
+> > +    hotplug_handler_pre_plug(HOTPLUG_HANDLER(vms->acpi_dev), dev,
+> errp);
+> use local_error and check for error condition here. see pc_memory_pre_plu=
+g()
+>=20
+> > +
+> >      pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL,
+> errp);
+> >  }
+> >
+> >  static void virt_memory_plug(HotplugHandler *hotplug_dev,
+> >                               DeviceState *dev, Error **errp)
+> >  {
+> > +    HotplugHandlerClass *hhc;
+> >      VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
+> >
+> >      pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), NULL);
+>                                                 ^^^^
+> >
+> > +    hhc =3D HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
+> > +    hhc->plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, NULL);
+>                                                       ^^^^
+> why errors are ignored here, pls check for errors and propagate
+> them to the caller.
+>=20
+> >  }
+> >
+> >  static void virt_machine_device_pre_plug_cb(HotplugHandler
+> *hotplug_dev,
+> > @@ -2102,8 +2139,11 @@ DEFINE_VIRT_MACHINE_AS_LATEST(4, 2)
+> >
+> >  static void virt_machine_4_1_options(MachineClass *mc)
+> >  {
+> > +    VirtMachineClass *vmc =3D VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+> > +
+> >      virt_machine_4_2_options(mc);
+> >      compat_props_add(mc->compat_props, hw_compat_4_1,
+> hw_compat_4_1_len);
+> > +    vmc->no_ged =3D true;
+> >  }
+> >  DEFINE_VIRT_MACHINE(4, 1)
+> >
+> > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> > index a72094204e..577ee49b4b 100644
+> > --- a/include/hw/arm/virt.h
+> > +++ b/include/hw/arm/virt.h
+> > @@ -77,6 +77,8 @@ enum {
+> >      VIRT_GPIO,
+> >      VIRT_SECURE_UART,
+> >      VIRT_SECURE_MEM,
+> > +    VIRT_PCDIMM_ACPI,
+> > +    VIRT_ACPI_GED,
+> >      VIRT_LOWMEMMAP_LAST,
+> >  };
+> >
+> > @@ -106,6 +108,7 @@ typedef struct {
+> >      bool claim_edge_triggered_timers;
+> >      bool smbios_old_sys_ver;
+> >      bool no_highmem_ecam;
+> > +    bool no_ged;   /* Machines < 4.2 has no support for ACPI GED devic=
+e
+> */
+> >  } VirtMachineClass;
+> >
+> >  typedef struct {
+> > @@ -133,6 +136,7 @@ typedef struct {
+> >      uint32_t iommu_phandle;
+> >      int psci_conduit;
+> >      hwaddr highest_gpa;
+> > +    DeviceState *acpi_dev;
+> >  } VirtMachineState;
+> >
+> >  #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM :
+> VIRT_PCIE_ECAM)
+> > diff --git a/tests/bios-tables-test-allowed-diff.h
+> b/tests/bios-tables-test-allowed-diff.h
+> > index dfb8523c8b..7b4adbc822 100644
+> > --- a/tests/bios-tables-test-allowed-diff.h
+> > +++ b/tests/bios-tables-test-allowed-diff.h
+> > @@ -1 +1,2 @@
+> >  /* List of comma-separated changed AML files to ignore */
+> > +"tests/data/acpi/virt/DSDT",
 

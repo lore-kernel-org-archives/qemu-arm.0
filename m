@@ -1,82 +1,82 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6786867wrv;
-        Wed, 7 Aug 2019 09:57:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzTMAuuPjM3ojFH97Kw4oxj17r0nk4ug2Gn2IXnQloa6O2NuwFxq8je8dVh2rTbtDiuSnJU
-X-Received: by 2002:a37:a388:: with SMTP id m130mr9507186qke.250.1565197028182;
-        Wed, 07 Aug 2019 09:57:08 -0700 (PDT)
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6812917wrv;
+        Wed, 7 Aug 2019 10:22:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwCFXADfqtSy0coy/CWZWYZcLObRX5eHZ+HvHRv8iz7j8qHrforSFWLGUD5Jzcf+p8BoMcK
+X-Received: by 2002:aa7:c753:: with SMTP id c19mr11153061eds.81.1565198552302;
+        Wed, 07 Aug 2019 10:22:32 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 127si31129600qkk.310.2019.08.07.09.57.08
+        by mx.google.com with ESMTPS id qw10si30212060ejb.58.2019.08.07.10.22.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 09:57:08 -0700 (PDT)
+        Wed, 07 Aug 2019 10:22:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=Yho5747o;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=AJOnJrzW;
        arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43554 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43750 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvPFL-0001IL-P3
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 12:57:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49305)
+	id 1hvPdv-00071k-Dw
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 13:22:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53865)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <damien.hedde@greensocs.com>) id 1hvPFG-0001IF-1b
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 12:57:03 -0400
+ (envelope-from <damien.hedde@greensocs.com>) id 1hvPdo-0006y7-Jb
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:22:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1hvPFE-0004HE-PS
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 12:57:01 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:35182)
+ (envelope-from <damien.hedde@greensocs.com>) id 1hvPdn-00021Q-0m
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:22:24 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:35982)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1hvPFE-0004Em-8g; Wed, 07 Aug 2019 12:57:00 -0400
+ id 1hvPdm-0001xZ-GD; Wed, 07 Aug 2019 13:22:22 -0400
 Received: from [172.16.11.117] (unknown [172.16.11.117])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 3415296F50;
- Wed,  7 Aug 2019 16:56:56 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 08E2D96F50;
+ Wed,  7 Aug 2019 17:22:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1565197017;
+ s=mail; t=1565198540;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=JXY7K4YIlJui1wCXpDlV3I+Oqpy2MwzkeCka4cjwYn8=;
- b=Yho5747ojy5/6V1iP4phjGjCN1ktpQVkq1bQYc5yG9buJ9GGViz1bI6POH/7ILpXIySHz+
- H9i2FWYeu3OexK93xHFTYzshLYKnRsPe9JPnmojBveukIFZLEZAemO6mbLQvN++K/GN342
- 9CDFX2pGQFWkkR+TuiQqfbwwTZZFTgo=
+ bh=SCtTvLmzSiemBHeANvk3b80SP/U/qrrMI3BjFMs0KRU=;
+ b=AJOnJrzWYHNUUss0+v/S9TBZc/TWqzwacIPuR/3hSPDn/SHNYfAHPRhuchM4AOVfcaVDCJ
+ ESIK6tdWl/GEvFImpIGawkX+BgEujUby2BYQ3MpE7asE0IbNCwRaGQiVI0rngD6GXtZcv+
+ oUk17VmHNuZfs8aPSKA/KtGTRwLOo+U=
 To: Peter Maydell <peter.maydell@linaro.org>
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-9-damien.hedde@greensocs.com>
- <CAFEAcA_M5fOoQ8yN_1QhJ-WOLxra6B-Ltwh2DHtq6erz4V0a2A@mail.gmail.com>
+ <20190729145654.14644-8-damien.hedde@greensocs.com>
+ <CAFEAcA-W0SaaGbUnGZ0b61ngxKY8R9xjwGXeN+=MaUi4bMDgNg@mail.gmail.com>
 From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <4958551b-0202-f82b-9133-457c8051e5aa@greensocs.com>
-Date: Wed, 7 Aug 2019 18:56:55 +0200
+Message-ID: <b75f5edf-671c-8f7e-2dfe-a77f76117211@greensocs.com>
+Date: Wed, 7 Aug 2019 19:22:18 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_M5fOoQ8yN_1QhJ-WOLxra6B-Ltwh2DHtq6erz4V0a2A@mail.gmail.com>
+In-Reply-To: <CAFEAcA-W0SaaGbUnGZ0b61ngxKY8R9xjwGXeN+=MaUi4bMDgNg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US-large
 Content-Transfer-Encoding: 7bit
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1565197018;
+ s=mail; t=1565198540;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=JXY7K4YIlJui1wCXpDlV3I+Oqpy2MwzkeCka4cjwYn8=;
- b=61AVsz7zqLUFkN7BIfUVT8fBWXRM+POfnb7qv9KgmZ3QA48uaKuLCLP/znF8qEL7fS2qH7
- te+awcniYql1A1wryXGmDISY27u/v0haKL0XfNMRT0yJOdXelkmvY1tYWqMpKkHWYmWZrP
- rH4fyIiyL93t+1IxZtE79mzGZI21aP8=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1565197018; a=rsa-sha256; cv=none;
- b=KwTYywea0LmbjsmozgCLPolJ4X58HGkBelUk2XYAzWuTyz0YR46sITCn1Eb2ZttN6yVvt2
- RtnJ0Al2UM+B+zh/TvtO9xgpSwZE1hyFHYj4qkfN8XSJrD32ahPrY5SDcilW2zwSxQ1kIS
- 66cAsP+TYZmfhxdDhGCaOzrLNfCwxLs=
+ bh=SCtTvLmzSiemBHeANvk3b80SP/U/qrrMI3BjFMs0KRU=;
+ b=DvyqHwIR0zlLaLC844zu+6NM1fxkoRF20oj1zyZ6IrFK8gpFoKjnHodxuFhYNfW5L7nnzE
+ HZlwRho2lonOK70CPqoF5aLHrnHU8BwREbh+MJpohSdINJBKNUGQYLc7O6u0reEvDEa8pK
+ Xu6zAQOtdjL8xYEnQJ4Kab+MGZ40UT4=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1565198540; a=rsa-sha256; cv=none;
+ b=67gyvM6WuhthLMBH/RWXiZvEfcG5al9dDr/VQ6mn4hy6HgpKmVEDfaejACpQ6bBJm8YO6Z
+ RPXmwDyI8VrvhJ7fFZXj1g4hI/qQYLuYwf1Q/urvdLH3MH7flrkHFFJXqWfdojDrYEt0S8
+ N1k6Rprr824vXOQmwDvesgQUPb2es7Q=
 ARC-Authentication-Results: i=1; ORIGINATING;
  auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 5.135.226.135
-Subject: Re: [Qemu-arm] [PATCH v3 08/33] Add function to control reset with
- gpio inputs
+Subject: Re: [Qemu-arm] [PATCH v3 07/33] automatically add vmstate for reset
+ support in devices
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -101,8 +101,9 @@ Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
  =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
  Richard Henderson <rth@twiddle.net>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-s390x <qemu-s390x@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ qemu-s390x <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
  =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, John Snow <jsnow@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>,
  "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
@@ -110,156 +111,203 @@ Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BNv/L8k2UYAS
+X-TUID: +q2pojJE89Tk
 
 
 
-On 8/7/19 5:18 PM, Peter Maydell wrote:
+On 8/7/19 5:07 PM, Peter Maydell wrote:
 > On Mon, 29 Jul 2019 at 15:59, Damien Hedde <damien.hedde@greensocs.com> wrote:
 >>
->> It adds the possibility to add 2 gpios to control the warm and cold reset.
->> With theses ios, the reset can be maintained during some time.
->> Each io is associated with a state to detect level changes.
->>
->> Vmstate subsections are also added to the existsing device_reset
->> subsection.
->>
+>> This add the reset related sections for every QOM
+>> device.
+> 
+> A bit more detail in the commit message would help, I think --
+> this is adding extra machinery which has to copy and modify
+> the VMStateDescription passed in by the device in order to
+> add the subsection that handles reset.
+
+Sorry for that, thought I've added some...
+
+I've kept this patch separate from previous one because this it is
+awkward. I'm not sure this is the right place (I mean in qdev files) do
+this kind of stuff. It basically replaces every static vmsd by dynamic
+ones, so it makes it harder to follow when debugging since there is no
+symbol associated to them. But on the other hand, I don't see an
+alternative.
+
+I copy there what I've put in the cover-letter:
+For devices, I've added a patch to automate the addition of reset
+related subsection. In consequence it is not necessary to explicitly add
+the reset subsection in every device specialization requiring it.
+Right know this is kind of a hack into qdev to dynamically modify the
+vmsd before the registration. There is probably a much cleaner way to do
+this but I prefered to demonstrate it by keeping modification local to qdev.
+As far as I can tell it's ok to dynamically add subsections at the end.
+This does not prevent from further adding subsections in the orignal
+vmsd: the subsections order in the array is irrelevant from migration
+point-of-view. The loading part just lookup each subsection in the array
+by name uppon reception.
+
+> 
+> I've added Dave Gilbert to the already long cc list since this
+> is migration related.
+> 
 >> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 >> ---
->>  hw/core/qdev-vmstate.c | 15 ++++++++++
->>  hw/core/qdev.c         | 65 ++++++++++++++++++++++++++++++++++++++++++
->>  include/hw/qdev-core.h | 57 ++++++++++++++++++++++++++++++++++++
->>  3 files changed, 137 insertions(+)
+>>  hw/core/qdev-vmstate.c | 41 +++++++++++++++++++++++++++++++++++++++++
+>>  hw/core/qdev.c         | 12 +++++++++++-
+>>  include/hw/qdev-core.h |  3 +++
+>>  stubs/Makefile.objs    |  1 +
+>>  stubs/device.c         |  7 +++++++
+>>  5 files changed, 63 insertions(+), 1 deletion(-)
+>>  create mode 100644 stubs/device.c
 >>
 >> diff --git a/hw/core/qdev-vmstate.c b/hw/core/qdev-vmstate.c
->> index 24f8465c61..72f84c6cee 100644
+>> index 07b010811f..24f8465c61 100644
 >> --- a/hw/core/qdev-vmstate.c
 >> +++ b/hw/core/qdev-vmstate.c
->> @@ -24,10 +24,23 @@ static int device_vmstate_reset_post_load(void *opaque, int version_id)
->>  {
->>      DeviceState *dev = (DeviceState *) opaque;
->>      BusState *bus;
->> +    uint32_t io_count = 0;
->> +
->>      QLIST_FOREACH(bus, &dev->child_bus, sibling) {
->>          bus->resetting = dev->resetting;
->>          bus->reset_is_cold = dev->reset_is_cold;
->>      }
->> +
->> +    if (dev->cold_reset_input.state) {
->> +        io_count += 1;
->> +    }
->> +    if (dev->warm_reset_input.state) {
->> +        io_count += 1;
->> +    }
->> +    /* ensure resetting count is coherent with io states */
->> +    if (dev->resetting < io_count) {
->> +        return -1;
->> +    }
->>      return 0;
->>  }
->>
->> @@ -40,6 +53,8 @@ const struct VMStateDescription device_vmstate_reset = {
->>      .fields = (VMStateField[]) {
->>          VMSTATE_UINT32(resetting, DeviceState),
->>          VMSTATE_BOOL(reset_is_cold, DeviceState),
->> +        VMSTATE_BOOL(cold_reset_input.state, DeviceState),
->> +        VMSTATE_BOOL(warm_reset_input.state, DeviceState),
-> 
-> If we're just adding these fields to this VMStateDescription
-> then this patch should come earlier in the series than the
-> patch where we create and start using the fields. Otherwise
-> there's a migration compat break between a QEMU just
-> before this patch and a QEMU with it. I think the simplest
-> fix is to put this patch before patches 6/7 and have a note
-> in the commit message that this functionality can't be used
-> until after the patch which adds the migration support.
-
-Independently of the compat break you mention, maybe it is better to
-have 'conditional' subsection for each input ?
-
-> 
+>> @@ -43,3 +43,44 @@ const struct VMStateDescription device_vmstate_reset = {
 >>          VMSTATE_END_OF_LIST()
 >>      },
 >>  };
+>> +
+>> +static VMStateDescription *vmsd_duplicate_and_append(
+>> +        const VMStateDescription *old_vmsd,
+>> +        const VMStateDescription *new_subsection)
+>> +{
+>> +    VMStateDescription *vmsd;
+>> +    int n = 0;
+>> +
+>> +    assert(old_vmsd && new_subsection);
+>> +
+>> +    vmsd = (VMStateDescription *) g_memdup(old_vmsd, sizeof(*vmsd));
+>> +
+>> +    if (old_vmsd->subsections) {
+>> +        while (old_vmsd->subsections[n]) {
+>> +            n += 1;
+>> +        }
+>> +    }
+>> +    vmsd->subsections = g_new(const VMStateDescription *, n + 2);
+>> +
+>> +    if (old_vmsd->subsections) {
+>> +        memcpy(vmsd->subsections, old_vmsd->subsections,
+>> +               sizeof(VMStateDescription *) * n);
+>> +    }
+>> +    vmsd->subsections[n] = new_subsection;
+>> +    vmsd->subsections[n + 1] = NULL;
+>> +
+>> +    return vmsd;
+>> +}
+>> +
+>> +void device_class_build_extended_vmsd(DeviceClass *dc)
+>> +{
+>> +    assert(dc->vmsd);
+>> +    assert(!dc->vmsd_ext);
+>> +
+>> +    /* forge a subsection with proper name */
+>> +    VMStateDescription *reset;
+>> +    reset = g_memdup(&device_vmstate_reset, sizeof(*reset));
+>> +    reset->name = g_strdup_printf("%s/device_reset", dc->vmsd->name);
+>> +
+>> +    dc->vmsd_ext = vmsd_duplicate_and_append(dc->vmsd, reset);
+>> +}
+> 
+> This will allocate memory, but there is no corresponding
+> code which frees it. This means you'll have a memory leak
+> across device realize->unrealize for hotplug devices.
+
+Right. I'll handle this along with the existing vmsd_unregister
+in realize/unrealize method.
+
+> 
 >> diff --git a/hw/core/qdev.c b/hw/core/qdev.c
->> index 88387d3743..11a4de55ea 100644
+>> index e9e5f2d5f9..88387d3743 100644
 >> --- a/hw/core/qdev.c
 >> +++ b/hw/core/qdev.c
->> @@ -450,6 +450,67 @@ void qdev_init_gpio_in(DeviceState *dev, qemu_irq_handler handler, int n)
->>      qdev_init_gpio_in_named(dev, handler, NULL, n);
+>> @@ -45,7 +45,17 @@ bool qdev_hot_removed = false;
+>>  const VMStateDescription *qdev_get_vmsd(DeviceState *dev)
+>>  {
+>>      DeviceClass *dc = DEVICE_GET_CLASS(dev);
+>> -    return dc->vmsd;
+>> +
+>> +    if (!dc->vmsd) {
+>> +        return NULL;
+>> +    }
+>> +
+>> +    if (!dc->vmsd_ext) {
+>> +        /* build it first time we need it */
+>> +        device_class_build_extended_vmsd(dc);
+>> +    }
+>> +
+>> +    return dc->vmsd_ext;
 >>  }
+> 
+> Unfortunately not everything that wants the VMSD calls
+> this function. migration/savevm.c:dump_vmstate_json_to_file()
+> does a direct access to dc->vmsd, so we need to fix that first.
+> 
+> Devices which don't use dc->vmsd won't get this and so
+> their reset state won't be migrated. That's OK for anything
+> that's still not yet a QOM device, I guess -- it's not possible
+> for them to be in a 'held in reset' state anyway, so the
+> extra subsection would never be needed.
+> 
+> The one I'm less sure about is the 'virtio' devices, which
+> have to do something odd with migration state for backwards
+> compat reasons. At the moment they can't be in a situation
+> where they're being held in reset when we do a migration,
+> but since they're PCI devices they might in future be possible
+> to put into new boards/pci controllers that would let them
+> be in that situation.
+> 
+>>  static void bus_remove_child(BusState *bus, DeviceState *child)
+>> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+>> index 1670ae41bb..926d4bbcb1 100644
+>> --- a/include/hw/qdev-core.h
+>> +++ b/include/hw/qdev-core.h
+>> @@ -120,6 +120,7 @@ typedef struct DeviceClass {
 >>
->> +static DeviceResetInputState *device_get_reset_input_state(DeviceState *dev,
->> +                                                            bool cold)
+>>      /* device state */
+>>      const struct VMStateDescription *vmsd;
+>> +    const struct VMStateDescription *vmsd_ext;
+>>
+>>      /* Private to qdev / bus.  */
+>>      const char *bus_type;
+>> @@ -520,6 +521,8 @@ void device_class_set_parent_unrealize(DeviceClass *dc,
+>>
+>>  const struct VMStateDescription *qdev_get_vmsd(DeviceState *dev);
+>>
+>> +void device_class_build_extended_vmsd(DeviceClass *dc);
+>> +
+>>  const char *qdev_fw_name(DeviceState *dev);
+>>
+>>  Object *qdev_get_machine(void);
+>> diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
+>> index 9c7393b08c..432b56f290 100644
+>> --- a/stubs/Makefile.objs
+>> +++ b/stubs/Makefile.objs
+>> @@ -40,4 +40,5 @@ stub-obj-y += pci-host-piix.o
+>>  stub-obj-y += ram-block.o
+>>  stub-obj-y += ramfb.o
+>>  stub-obj-y += fw_cfg.o
+>> +stub-obj-y += device.o
+>>  stub-obj-$(CONFIG_SOFTMMU) += semihost.o
+>> diff --git a/stubs/device.c b/stubs/device.c
+>> new file mode 100644
+>> index 0000000000..e9b4f57e5f
+>> --- /dev/null
+>> +++ b/stubs/device.c
+>> @@ -0,0 +1,7 @@
+>> +#include "qemu/osdep.h"
+>> +#include "hw/qdev-core.h"
+>> +
+>> +void device_class_build_extended_vmsd(DeviceClass *dc)
 >> +{
->> +    return cold ? &dev->cold_reset_input : &dev->warm_reset_input;
+>> +    return;
 >> +}
->> +
->> +static void device_reset_handler(DeviceState *dev, bool cold, bool level)
->> +{
->> +    DeviceResetInputState *dris = device_get_reset_input_state(dev, cold);
->> +
->> +    if (dris->type == DEVICE_RESET_ACTIVE_LOW) {
->> +        level = !level;
->> +    }
->> +
->> +    if (dris->state == level) {
->> +        /* io state has not changed */
->> +        return;
->> +    }
->> +
->> +    dris->state = level;
->> +
->> +    if (level) {
->> +        resettable_assert_reset(OBJECT(dev), cold);
->> +    } else {
->> +        resettable_deassert_reset(OBJECT(dev));
->> +    }
->> +}
->> +
->> +static void device_cold_reset_handler(void *opaque, int n, int level)
->> +{
->> +    device_reset_handler((DeviceState *) opaque, true, level);
->> +}
->> +
->> +static void device_warm_reset_handler(void *opaque, int n, int level)
->> +{
->> +    device_reset_handler((DeviceState *) opaque, false, level);
->> +}
->> +
->> +void qdev_init_reset_gpio_in_named(DeviceState *dev, const char *name,
->> +                                   bool cold, DeviceResetActiveType type)
->> +{
->> +    DeviceResetInputState *dris = device_get_reset_input_state(dev, cold);
->> +    qemu_irq_handler handler;
->> +
->> +    switch (type) {
->> +    case DEVICE_RESET_ACTIVE_LOW:
->> +    case DEVICE_RESET_ACTIVE_HIGH:
->> +        break;
->> +    default:
->> +        assert(false);
->> +        break;
+>> --
+>> 2.22.0
 > 
-> The usual way to write this is
->     g_assert_not_reached();
-> (and no following 'break').
-> 
-> 
-> But the whole switch statement seems to be a complicated way
-> of writing
->    assert(type == DEVICE_RESET_ACTIVE_LOW || type == DEVICE_RESET_ACTIVE_HIGH);
-> 
->> +    }
->> +
->> +    assert(!dris->exists);
->> +    dris->exists = true;
->> +    dris->type = type;
->> +
->> +    handler = cold ? device_cold_reset_handler : device_warm_reset_handler;
->> +    qdev_init_gpio_in_named(dev, handler, name, 1);
->> +}
 > 
 > thanks
 > -- PMM

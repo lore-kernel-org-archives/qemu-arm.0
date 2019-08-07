@@ -1,99 +1,100 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6370035wrv;
-        Wed, 7 Aug 2019 03:35:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwKYGMEGji0xqayB7YaWHpb7XcdNInZUPYAUr+GdBvmtdyuptbYOX0GEOX6Do+d7LiYNBQ/
-X-Received: by 2002:a37:6f82:: with SMTP id k124mr7413799qkc.463.1565174103244;
-        Wed, 07 Aug 2019 03:35:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565174103; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6373345wrv;
+        Wed, 7 Aug 2019 03:38:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy5a1LZc7YEFQX04Ruh/0IqcfjR285akDrhpt6aGZbovBZMSLVLy18FAof4WA+p/4jZq2Kh
+X-Received: by 2002:a05:620a:15e5:: with SMTP id p5mr7613215qkm.409.1565174296486;
+        Wed, 07 Aug 2019 03:38:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565174296; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ax9+oeNzbJRD32gUxPHA1Qxx6KZ0FZuV4t7wQggiFx6PS8ZVG1Z7gTIlwhI5J8D2mU
-         5wgTfAnTBSVd513+aOpmgs1OXyeBzm2JlV9wCClMDudf+o5UoYOV/lce/YcqpggWaV2F
-         U75sN8hhXKbwgFGBgtzoxzPo6pY4FkVQAywuC4aglO2CSVF82HKVC8rlq34S7tEEANWA
-         D+5yQctmwKmHq948pCb6slRTolIVPGlLGbJJCFc6owHCa7AE/GEyXORQWVkevrL0BsRV
-         yAQ7jA7dq/RpEejWMWhBZSLEkUbE2WJdM33uOusNfVHBBZxVhFQcLknjqm9LgIlS751F
-         tILg==
+        b=ckkYUXkKkOPlPKXJCX65BXskOksADP+MRhE57cR+bbynaOCIR9QiTznFgYQj8MwuXt
+         RZtKqYWFGESROCJrlXCweHw6PEJ0/R+mgZQGzu9mft3qqnzOJLzeP0q0VYtDtk7ccvJw
+         hkSJQFpRxBkwPjq/+h4whxiiMR1Bep6/t45XJSipsl6b6dJ2sjn25d5M7qF/g4dOaSW/
+         5szqetb9r+c/95+B/klO1yL0AAC/uNCg87fxLy4ixvxIwwjAPOJY37OtdBS7KG0Al6GO
+         RP14JriMirxud2Mgp3Zxi5t6t9pmbWsmz7kDR2rp3sri20r9gV67vmASkEZT1Wr6MXK1
+         XbMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=GHi1f+voEbXN8hKlRxap0utKOX1Tjporwl0c9C0XDl4=;
-        b=AUcQnHCwWdiPsJYN0ll/czeNxPialX60xH7+BI5xqofjejlKlvfZh2lRP5Dz0B29YC
-         iGf/m7uHUpnyVUFBmp3aIHKLLaIFy5goXNM0o8LPwv/JLik2mSI97c0TAYQigV7EkwK5
-         oI/mL2rllJxvsnbG9tJc7G1+dpMI0VDbVNIxgCgBgQCrHNj4v1gupEBBnfPtT6eKA6Ch
-         wfv4Ze7bqoaAehxRJ9TxEqogKysoKYbBsgW0r6GqJ6zfHQ6bmOmaNfGHZvITJM8NRr4L
-         N2BIOfOrpRt/Xe9nSWOwD+nXiRKNnVasSCALLYumSZF0bJVCkJwu/SBwYVjDBj9dWKvS
-         /biw==
+        bh=cCgd+I9d8IpQehwZ7OvjxnxlzdVf6lG4aTOJWZX8fHI=;
+        b=04shr2OOQvkuBAnuk+M3IMo+4LgsH7AqSP+0rpyil2fyeis73IkceAPONkY0poPNvK
+         QO9FQcnDkjzCSLQqQMSdrxAr/WXzzCrc+98uS7unoqsmbjMykk2/RZhIONfOqIbq6q/z
+         RftXgyfyonsdkFApSvFsx3C/OpA9J8qf94WT6q0FgjgZLcSU9VQZ3UNYXi4Q8lGKC0Gz
+         IqPGLBM2K76Ihia3PfwYXXp8D0p77XBZ8YeH2np/eJZwinRrt4b0rPDYYsJtZshSG88m
+         ZpyFwwheCgug9RKPvvcCpqukSh/X+kapMxece8a9AzToEU4QcZvhsOeaexT7JlPm6jv2
+         aQAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=cpDKUiw1;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ek65IJ6n;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p10si49782939qkm.345.2019.08.07.03.35.03
+        by mx.google.com with ESMTPS id a18si57743688qvh.48.2019.08.07.03.38.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 03:35:03 -0700 (PDT)
+        Wed, 07 Aug 2019 03:38:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=cpDKUiw1;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ek65IJ6n;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39570 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39588 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvJHa-0002nD-Qg
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 06:35:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45025)
+	id 1hvJKi-0004RR-12
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 06:38:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45679)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hvJHT-0002hT-DC
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 06:34:57 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hvJKW-00045h-7U
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 06:38:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hvJHR-00006X-OC
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 06:34:55 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:45828)
+ (envelope-from <peter.maydell@linaro.org>) id 1hvJKU-0001dz-Vu
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 06:38:04 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:45938)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hvJHR-00005V-He
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 06:34:53 -0400
-Received: by mail-ot1-x342.google.com with SMTP id x21so8983312otq.12
- for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 03:34:52 -0700 (PDT)
+ id 1hvJKU-0001ca-Oj
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 06:38:02 -0400
+Received: by mail-ot1-x343.google.com with SMTP id x21so9013447otq.12
+ for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 03:38:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GHi1f+voEbXN8hKlRxap0utKOX1Tjporwl0c9C0XDl4=;
- b=cpDKUiw1I/jyIsGTm+dDejVGNs94pPIqMuqaOXCMaBHSDS9cchAV+uye19rqEnDQpe
- VHk2UVwa2JadUGiFnUQgMNzlafT+8BTb7mhNUepAHiSQGz0KmM3cB60SdYp6DwBA97LR
- mZPX73Cl3/ZLthzBFgX7tEkMx5ibJVZiKQWPmrlJhx6DhT4T0F2uxefQtlCxhyU2sLQn
- StUMCgnHaygIDZjGAK0RkVvlZOXqUPa5pDbUPbz5jOavbRgABH8HTsp58Hf/aohI63V5
- 49T7/cC69N1HjLFABicgvPhgNsCVQNSOy4NuyjISiQEqpaOZZaejL4OmVtsJx61QvRhZ
- 0H2w==
+ :cc; bh=cCgd+I9d8IpQehwZ7OvjxnxlzdVf6lG4aTOJWZX8fHI=;
+ b=ek65IJ6nU8lmHoMFxQsyW/BlyBr01XeDIqg0JJKXhdFXiplOR898QgCC88xPCZtFoR
+ BEr6MrUyEzJ1Ha8M3cyi7lCsKnJAjrIQ9I/5GIgOStuQF+aCVlVSY43CBNwzz5kXxv7R
+ LGQ/1UHuidItRoquEdm5lNYFy8My3R36Ugn5QR/N3fyjj8DAWl96veRg5icCHBR0RpNX
+ +3d+ijoUnt8Zfdp99crqRgoMkDOverDCTHuxKYTUPPwQDJCrbFh2koZI7BoR1L1r7KF9
+ wn5xu7Vkrrg8dZ3DDjbTIwNleXBS9YLm8OdG5mxH355bvWOsh5uOkYhT3fj9rTHTgzlq
+ NDvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=GHi1f+voEbXN8hKlRxap0utKOX1Tjporwl0c9C0XDl4=;
- b=BH6joIg0Q2jKlbWGiepD4dCSAgSrbARHxsMNCU45ceEbIkMEQepY/52QIxE7Hv2XMa
- XPK+WELPw2udQ/+zJCninYBzYMC0cq+G8OODmsGdxURIWazZV9vS9MG+X3NAWGJosnyF
- ZuJof68lIYmhMpxx44nheu8HRfrAYfQIXrxybdR+oe0fQH5maGaHLsjfJ5EIM3Hx2pku
- UHeS1OeKBzuh+jF7vYDbASUX0EZ+P80d2+uc3BlmtEV/dqOw3qNWeZqL4Oarq7x9Xv0n
- lnH6qnrjAwqi4rLt3k58TDGExVxJdpADKa9ie7iQlgSTm5jVredkZUIunpf/I0KX3MoI
- /dZA==
-X-Gm-Message-State: APjAAAUcH/Y6MNl5hTVbCVCBHvPLX9Flieg1sTQHMujjbKklBAYjlLrO
- hgOVEVV9C6Qkp5lc4hVspmfOvCondJhuXeJtlkIHBw==
-X-Received: by 2002:a9d:711e:: with SMTP id n30mr6609741otj.97.1565174092162; 
- Wed, 07 Aug 2019 03:34:52 -0700 (PDT)
+ bh=cCgd+I9d8IpQehwZ7OvjxnxlzdVf6lG4aTOJWZX8fHI=;
+ b=mPqIxbwoVgYNbncSKXLhOm1icvvEKVK5ifs8X0JilJwVkBp85s0Sq1OPGw6fC621Cc
+ a+yAAhzTnFbDi310Q29IR+Nq+BR+c/RP8KkUwXnH1Y37S8Zpxgb4yT8gFtrEowMY2tpD
+ 2bK7dA+14bUnkpIFNLnh9HyQziXknPWNDOnS68yFBoWLSKkij/SD9P175daNVOUr+8j1
+ wMNcXuF7bj5lmC8F1VtAVV8DGU6srN48YxX4CCvYRyOwqTsHZL+27Ws9aaOLET1Ima6m
+ GVGqoYgk9y9v1fQbGdZttKsXXFGLKg0jf11/pgXnmT3vrqsY9E/9aPxB3vLLB4xhEw9Q
+ Nn5g==
+X-Gm-Message-State: APjAAAVWhwPeiCplyaCcz1wLapWU965hCXmWLpXqgucCa9dwRMkG6F7M
+ OBiGd5SG/W7z+dAih+GJSUAzHChFZ9YT7gR9kJ+t3g==
+X-Received: by 2002:a9d:711e:: with SMTP id n30mr6619569otj.97.1565174281829; 
+ Wed, 07 Aug 2019 03:38:01 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-10-damien.hedde@greensocs.com>
- <20190731063044.GG2032@umbus.fritz.box>
-In-Reply-To: <20190731063044.GG2032@umbus.fritz.box>
+ <20190729145654.14644-9-damien.hedde@greensocs.com>
+ <20190731061108.GF2032@umbus.fritz.box>
+In-Reply-To: <20190731061108.GF2032@umbus.fritz.box>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 7 Aug 2019 11:34:41 +0100
-Message-ID: <CAFEAcA-=rMgKuhtq4AT+QohRXf71biNFDRQaxMctrro7mTV4kQ@mail.gmail.com>
+Date: Wed, 7 Aug 2019 11:37:51 +0100
+Message-ID: <CAFEAcA-dSBpAVfjn7VnCRgnZabBP226ZVuSJYW1bwzEr5mNktw@mail.gmail.com>
 To: David Gibson <david@gibson.dropbear.id.au>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::342
-Subject: Re: [Qemu-arm] [PATCH v3 09/33] add doc about Resettable interface
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-arm] [PATCH v3 08/33] Add function to control reset with
+ gpio inputs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -126,23 +127,30 @@ Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cm0dER3V1clP
+X-TUID: FXuZtP3X4+vL
 
 On Wed, 31 Jul 2019 at 07:33, David Gibson <david@gibson.dropbear.id.au> wrote:
 >
-> On Mon, Jul 29, 2019 at 04:56:30PM +0200, Damien Hedde wrote:
-> > +The function *resettable_reset* is used to trigger a reset on a given
-> > +object.
-> > +void resettable_reset(Object *obj, bool cold)
-> > +
-> > +The parameter *obj* must implement the Resettable interface.
+> On Mon, Jul 29, 2019 at 04:56:29PM +0200, Damien Hedde wrote:
+> > It adds the possibility to add 2 gpios to control the warm and cold reset.
+> > With theses ios, the reset can be maintained during some time.
+> > Each io is associated with a state to detect level changes.
+> >
+> > Vmstate subsections are also added to the existsing device_reset
+> > subsection.
 >
-> And what happens if it doesn't?  This function has no way to report an
-> error.
+> This doesn't seem like a thing that should be present on every single
+> DeviceState.
 
-Trying to reset an object that isn't actually resettable would
-be a programming error -- I think asserting is a reasonable
-response to that.
+It's a facility that's going to be useful to multiple different
+subclasses of DeviceState, so it seems to me cleaner to
+have base class support for the common feature rather than
+to reimplement it entirely from scratch in every subclass
+that wants it.
+
+(The patch as written breaks migration compatibility -- the
+new fields need to go in their own vmstate subsection
+with a suitable 'needed' function -- but that can be fixed.)
 
 thanks
 -- PMM

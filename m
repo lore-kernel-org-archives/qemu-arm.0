@@ -1,140 +1,174 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp5194910wrv;
-        Tue, 6 Aug 2019 05:21:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwJG39BuFBdXZ8YnWQ3QZ/oLhxF+bQSL8CeLiyyMd4/UIJtpUYhXLZGsumyHAxVb9IajGbm
-X-Received: by 2002:a37:484a:: with SMTP id v71mr2876815qka.29.1565094118505;
-        Tue, 06 Aug 2019 05:21:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565094118; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6071973wrv;
+        Tue, 6 Aug 2019 21:54:01 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxHEqnu9s2/MQOhmnDYjKYLA/hIn4U+wiYKFGhS9Ii0dc9Yvzw5bfyVTlqPJiUZCBECovDC
+X-Received: by 2002:ac8:2439:: with SMTP id c54mr6277241qtc.160.1565153641470;
+        Tue, 06 Aug 2019 21:54:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565153641; cv=none;
         d=google.com; s=arc-20160816;
-        b=P17Du/X0EQbYoadS4UrD6zgLmvUGPrfDLjz1sKnGqDu2ELl58jHsuecg4L6e49X4ce
-         NqyvToxJD1xsnG2iRrNhWcu8SJKADHGtiAq9HtiCrKBSMoUHM25o+H+kLc7VGdVh7Ssf
-         Hv7rXK8Lmtnx90pHtnN6YxeMiIh0MbAB06Kj0UDCoB+tRVWhNxEkdjJYxjZLXHKyUhRA
-         FQi1SD0wGZ/Toakju8e0eBg/3oeW12FbGKIBb1tXd4SS+tJjcMd8wLB576WH+ANm4klc
-         412pUo3uyfGaMIz+Rx6AcRihr015tlU2ZVZSFe7y1kEM4GC604pKTtpFJvTywH1Y1v/m
-         1j7A==
+        b=SyBWU9Q5E9qZZhHSl60oVmlAxMS/8A+43iQPf4xWHQwGzTVC6z54xdeENRSyGQL6xK
+         sF9dFPZ5aQYo0HN8tjgZCSqfe7bDkbCm7LSkTtamoXOG016TL3n22BiBeblYHgruqpaX
+         WEAG2xajy384M9Us8hfpHWMCD21LHfVIPnfZzhn4EEy5FM7zr7tXhDpaQsQupVw5nY2k
+         V/AcIsxq8PtbYXcS519hN5FodXHpBHSGk182qdLB+XFjFg2TL2Tv0ng6qUJlEq5rBr1h
+         ofIgFUF/jI5nnMz6wMm+aoBdjbWX7+mfQBWYMXtVTG0w7LOkagYDk8e3+TwQO3vs0uUJ
+         lkVQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=pPTtN5zl5UZd2xkpuCocD1HSt6N3UVBPFz0vaCSbZ5s=;
-        b=kpdxIucbMdGRzRrw5XJnyqTcNfHXQwM9RRtousdb6t0duTeCo6dPdZoLwf3Ra+dciU
-         Vpu1gEnZve6+FzjMV22KXQyriBwdHwsA8uDLWwyrKrOe4jeh+qm1hdRjDPxA+oMcGZca
-         pzMN1vdt+nTaEyp0773AJonZf73W7n0OOtsvcIhhrKtiEDFNpzndh4/0WIiue/q+MIox
-         PWuldWiEjmKVRaR2InJqABpeRtBXTK41RxzxejVjYKkFj/ugNv/TeUR2HMwd84mc/Fd0
-         JEp35V47QkXMNDdUT1jViqMIRqUc83H17lzDk1+RCe66zMcH5mQP9fqNOPpBbRtP0V/e
-         EFfg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=sTmPUIypnziYaVGRFy0ALsWEJTPu9wrCWxAaqC9PPBw=;
+        b=CyhtGvqCWitm3b630z38jepzpcWsfOucogOeKgcqo78infDKZSZRUQahHVxjda0HHA
+         ehAUTaR1yKV5LuJr8D6rNX9GGZB+tWF2dfrR8W2KwF/b1xIjtwPsr72XDkZOwk2/2ZXS
+         HbFBwkCSUcVQTKYvBC/u1nTqVXwgeAAV1PwnU+fLv0KuTINeTnXbQ84tiAheiyUnFrOd
+         xGCdikKgJHzw8/yN5H7VtOGICkRTszRQqVkBPBDMx0n1aSdlBVlXP0kST2EA3GW/42oz
+         AOUTlFjzeRneTNdQtTKKGOITrLZmknwN3dhRhEybgrj2/1JbctQ6qwCP7fCD9hjxZExX
+         021Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id w50si4958174qta.271.2019.08.06.05.21.57
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Aug 2019 05:21:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=fail header.i=@linaro.org header.s=google header.b=a7oeOzFR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o8si23801193qtm.263.2019.08.06.21.54.01
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 06 Aug 2019 21:54:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 526813008954;
-	Tue,  6 Aug 2019 12:21:57 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9783661B65;
-	Tue,  6 Aug 2019 12:21:46 +0000 (UTC)
-Date: Tue, 6 Aug 2019 14:21:44 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	armbru@redhat.com, eric.auger@redhat.com, imammedo@redhat.com,
-	alex.bennee@linaro.org, Dave.Martin@arm.com
-Subject: Re: [Qemu-devel] [PATCH v3 03/15] target/arm/monitor: Introduce
- qmp_query_cpu_model_expansion
-Message-ID: <20190806122144.bb3klk7aaaqdhgwi@kamzik.brq.redhat.com>
-References: <20190802122540.26385-1-drjones@redhat.com>
- <20190802122540.26385-4-drjones@redhat.com>
- <d0983bd5-c1a5-adf6-324d-2b199ca0e23c@linaro.org>
- <ec44ddad-c33c-918b-e94b-a534a2519a9e@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <ec44ddad-c33c-918b-e94b-a534a2519a9e@linaro.org>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.48]); Tue, 06 Aug 2019 12:21:57 +0000 (UTC)
-X-TUID: e3r3eW8PABLq
+       dkim=fail header.i=@linaro.org header.s=google header.b=a7oeOzFR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37188 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hvDxZ-0001Mp-1a
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 00:54:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40541)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <richard.henderson@linaro.org>) id 1hvDxL-00012T-EV
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 00:53:48 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <richard.henderson@linaro.org>) id 1hvDxK-0004iQ-98
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 00:53:47 -0400
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:35818)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1hvDxK-0004hR-37
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 00:53:46 -0400
+Received: by mail-pf1-x441.google.com with SMTP id u14so42781668pfn.2
+ for <qemu-arm@nongnu.org>; Tue, 06 Aug 2019 21:53:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=sTmPUIypnziYaVGRFy0ALsWEJTPu9wrCWxAaqC9PPBw=;
+ b=a7oeOzFRGXtuyzqaFWdbCMWvJXEENm+AagrmWV5f4ziqMOwceC8DCKliWoyOQN/wqK
+ DyEybt0iOtL7E4bl6MgQSonlrbKd1cm9XH8uuFhwzzl3xTRhp5qD8LyV55UlntCMITWQ
+ YGbgzwa+mj+PFWq1NSTnF7+SgWgOsZN8d0ciZs7dqTqxJky2iyvI2+2oHe9liYkjIyPE
+ zvVHMu4gBHN/kjqnwQ65S2p4yniXLuLytHYn8qA8L8XsXtutSALGK9pBxscoCglFvI8e
+ KyUfrk34QknjqIXIgiygCQzilJZssWbEsbm3VIj4GNlXN3ek1k64ZVzz5W3XXLuTQS5b
+ 0u5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=sTmPUIypnziYaVGRFy0ALsWEJTPu9wrCWxAaqC9PPBw=;
+ b=crRgU+CynW2n2H/F/+D9qVJcxOVNs2oFomhS4eY1YXrh1kB3SsQu8MCak/AIt6NZss
+ y8KzrDf7p6kiGC0FsoqKeUJL52xFrFz2Ioz2lb6VdilMDeo8KBqSSM9heI0NTloOVHki
+ ES7ioY+6xEWvKiniK0++AkOCFYLK72bXRLR81YlQ0b8S6BVgwyC4WrZ/zHv3p/M36yWH
+ Eat0+BIpx6TMORifZg2o6MKxKhRtMNyhO3QFmq4EPseTP/ruo6T4f6z0cyX/MTAgWve4
+ Xkw+TI3xvf3bDSRETY3mMxSMy8ZsmssqT+lW25Y8tL8oLa5FYoRpQiWQgTGH2kgUoE1e
+ IpmQ==
+X-Gm-Message-State: APjAAAVquAzoXvThAlxL296nAUT00SweIsR2/oEmz6P7WrPbrpxPO01g
+ kxpu4kB60VpNMZLZVb+xC9p9wg==
+X-Received: by 2002:a17:90a:8d0c:: with SMTP id
+ c12mr6350022pjo.140.1565153624961; 
+ Tue, 06 Aug 2019 21:53:44 -0700 (PDT)
+Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
+ [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id t9sm24347921pji.18.2019.08.06.21.53.43
+ (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+ Tue, 06 Aug 2019 21:53:44 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Date: Tue,  6 Aug 2019 21:53:25 -0700
+Message-Id: <20190807045335.1361-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190807045335.1361-1-richard.henderson@linaro.org>
+References: <20190807045335.1361-1-richard.henderson@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::441
+Subject: [Qemu-arm] [PATCH 01/11] target/arm: Pass in pc to
+ thumb_insn_is_16bit
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: j/keYGyxTsyy
 
-On Fri, Aug 02, 2019 at 06:28:51PM -0700, Richard Henderson wrote:
-> On 8/2/19 9:27 AM, Richard Henderson wrote:
-> > On 8/2/19 5:25 AM, Andrew Jones wrote:
-> >> Note, certainly more features may be added to the list of
-> >> advertised features, e.g. 'vfp' and 'neon'. The only requirement
-> >> is that their property set accessors fail when invalid
-> >> configurations are detected. For vfp we would need something like
-> >>
-> >>  set_vfp()
-> >>  {
-> >>    if (arm_feature(env, ARM_FEATURE_AARCH64) &&
-> >>        cpu->has_vfp != cpu->has_neon)
-> >>        error("AArch64 CPUs must have both VFP and Neon or neither")
-> >>
-> >> in its set accessor, and the same for neon, rather than doing that
-> >> check at realize time, which isn't executed at qmp query time.
-> > 
-> > How could this succeed?  Either set_vfp or set_neon would be called first, at
-> > which point the two features are temporarily out of sync, but the error would
-> > trigger anyway.
-> > 
-> > This would seem to require some separate "qmp validate" step that is processed
-> > after a collection of properties are set.
-> > 
-> > I was about to say something about this being moot until someone actually wants
-> > to be able to disable vfp+neon on aarch64, but then...
-> > 
-> >> +A note about CPU feature dependencies
-> >> +-------------------------------------
-> >> +
-> >> +It's possible for features to have dependencies on other features. I.e.
-> >> +it may be possible to change one feature at a time without error, but
-> >> +when attempting to change all features at once an error could occur
-> >> +depending on the order they are processed.  It's also possible changing
-> >> +all at once doesn't generate an error, because a feature's dependencies
-> >> +are satisfied with other features, but the same feature cannot be changed
-> >> +independently without error.  For these reasons callers should always
-> >> +attempt to make their desired changes all at once in order to ensure the
-> >> +collection is valid.
-> > 
-> > ... this language makes me think that you've already encountered an ordering
-> > problem that might be better solved with a separate validate step?
-> 
-> It appears to me that we can handle both use cases with a single function to
-> handle validation of the cross-dependent properties.
-> 
-> It would need to be called at the beginning of arm_cpu_realizefn, for the case
-> in which we are building a cpu that we wish to instantiate, and
-> 
-> > +        if (!err) {
-> > +            visit_check_struct(visitor, &err);
-> > +        }
-> 
-> here, inside qmp_query_cpu_model_expansion for the query case.
-> 
-> Looking at the validation code scattered across multiple functions, across 4
-> patches, convinces me that the code will be smaller and more readable if we
-> consolidate them into a single validation function.
->
+This function is used in two different contexts, and it will be
+clearer if the function is given the address to which it applies.
 
-That's a reasonable suggestion. I do like having self-contained
-validation, self-contained, but when cross-dependencies arise, then
-it does make sense to have a master validation function, rather
-than interconnecting too much. That said, for this series we only
-enable the qmp query for aarch64, pmu, and sve* properties. aarch64
-and pmu are independent, and thus self-contained, and I consider
-all sve* properties one big entity, so their validation is also
-self-contained. If we add vfp and neon, then indeed I was wrong
-with my suggestion in the commit message. They would need a later
-validation check. Should we just cross that bridge when we get there
-though? Or would you like me to see how that would work within this
-series?
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/translate.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-Thanks,
-drew
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 7853462b21..1f15f14022 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -9261,11 +9261,11 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+     }
+ }
+ 
+-static bool thumb_insn_is_16bit(DisasContext *s, uint32_t insn)
++static bool thumb_insn_is_16bit(DisasContext *s, uint32_t pc, uint32_t insn)
+ {
+-    /* Return true if this is a 16 bit instruction. We must be precise
+-     * about this (matching the decode).  We assume that s->pc still
+-     * points to the first 16 bits of the insn.
++    /*
++     * Return true if this is a 16 bit instruction. We must be precise
++     * about this (matching the decode).
+      */
+     if ((insn >> 11) < 0x1d) {
+         /* Definitely a 16-bit instruction */
+@@ -9285,7 +9285,7 @@ static bool thumb_insn_is_16bit(DisasContext *s, uint32_t insn)
+         return false;
+     }
+ 
+-    if ((insn >> 11) == 0x1e && s->pc - s->page_start < TARGET_PAGE_SIZE - 3) {
++    if ((insn >> 11) == 0x1e && pc - s->page_start < TARGET_PAGE_SIZE - 3) {
+         /* 0b1111_0xxx_xxxx_xxxx : BL/BLX prefix, and the suffix
+          * is not on the next page; we merge this into a 32-bit
+          * insn.
+@@ -11824,7 +11824,7 @@ static bool insn_crosses_page(CPUARMState *env, DisasContext *s)
+      */
+     uint16_t insn = arm_lduw_code(env, s->pc, s->sctlr_b);
+ 
+-    return !thumb_insn_is_16bit(s, insn);
++    return !thumb_insn_is_16bit(s, s->pc, insn);
+ }
+ 
+ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
+@@ -12122,7 +12122,7 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
+     }
+ 
+     insn = arm_lduw_code(env, dc->pc, dc->sctlr_b);
+-    is_16bit = thumb_insn_is_16bit(dc, insn);
++    is_16bit = thumb_insn_is_16bit(dc, dc->pc, insn);
+     dc->pc += 2;
+     if (!is_16bit) {
+         uint32_t insn2 = arm_lduw_code(env, dc->pc, dc->sctlr_b);
+-- 
+2.17.1
+

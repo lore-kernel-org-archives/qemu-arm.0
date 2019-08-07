@@ -1,88 +1,88 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6243470wrv;
-        Wed, 7 Aug 2019 01:19:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx4R+CWvOkG8kEFb71dTI93cWGKMrYcquPC1TXNIO9we272i/S2SB3ads35yexmFOa2VP5h
-X-Received: by 2002:ac8:66c5:: with SMTP id m5mr3116768qtp.71.1565165978416;
-        Wed, 07 Aug 2019 01:19:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565165978; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6246641wrv;
+        Wed, 7 Aug 2019 01:23:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzZeGu10D6WH+Hh/M4B6NabJh7YBFBDYzSB3qRh4L4vuN8lQgyk4UeWNx2m0Uj8LV2wGIrj
+X-Received: by 2002:a37:6858:: with SMTP id d85mr6960448qkc.126.1565166227045;
+        Wed, 07 Aug 2019 01:23:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565166227; cv=none;
         d=google.com; s=arc-20160816;
-        b=uGCYvY2ddjY1OspRJ1kpE0auzECQlKUyCDllPS4cyZOP6y+lt57sQY+f/M1SWIBXrK
-         xx6yHhaEo1FGDsX3bj/rmzqiWmJLIdyMNyGeo11zq6s2WRmzFiCwdQ+BqxupKxiKzG2q
-         38lmwQF+EMQ4tmoBeDZFAb1zVRMNjR8uXCM1fbk3+UIdTu2/ypoC2S/AQLcn2pcBT8VK
-         zNN2zQncFiIugxVH3ddMtZCnvTJfJhQ152QGKn+NhpeIadfk9vxiQNfL7mwDb5eNH/nW
-         GPDIcU83MclnJJJyILM7NeVGLfhtiohI2Pk/Tv9uCbhNGf0mWHms3Ue1qJnItXuoRSo8
-         8TKA==
+        b=AJa9pwU5tNuaB9SA65QDAKq9OXT06Kr3XySgA+28564g4jna9ENoWPglk4q4EJwXaz
+         Gd5PfK8qeAe9CSm16zlzB27GJsk9MfHqxYD8oS5124zqQd724GS8MfaY/Twxe8Jim3r8
+         diiqe9T96QAKu1rzwgAodbLjXnbreUYxNl4udzggAbovR+13CL3thtWYfQb4SXybREhx
+         /ZsQgnR30qW7zwgiPpyBDv1oHi6iJW4M0wp8lEFkNMowp8/z7RbaqK8hcKWZd4WdboSx
+         ZOQVJrd94PywGPycYhSkEvmuWEyX3gFbI1XjaEW4vt7BRvThKIKIaKi1ul7iDLshI5d/
+         rP3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
-         :from;
-        bh=SD5bRsd7W4ayml0/yKU+yH1ql1rFpAq2CG0UXTij2rw=;
-        b=s3AeU0TRBnmmaZ+dVC+4i1FgGRvUUwkz48jeXnrshTSOVPSrB9gKDusVtGM5jBKOG5
-         VHYLpHw24k2hbDdTmWaIY3vdI5yfvi58IUXtfBGHbIVfNIDg+smbLX99M0LZCei/7f3N
-         Zyg7VHmMMTV/Hq/KmMCE9+qkHtyxiSSU5FgaH/tlBy/FqoVMOghietgAVaETBW4u0ioT
-         LIYRg00nxr7byzIfiITcOjacfOORiTErAH+E2bTYCTbUsw7Yn4PsDr1Adny7OLPucgpE
-         yc+TJ1PrXsIkyow1liyK9hcDrQtPXqL1g1rKveap/8kilTepSmbama+3mVtAT7uDd4Qf
-         aG5Q==
+         :message-id:date:thread-index:thread-topic:to:from;
+        bh=ZR7s8mdgGJlxxoCXfBY7hTAGiHjCKu5ezI3xjwP67as=;
+        b=NFdL+D5mOvVj9tjeU9Oz2cRnv3F2PU1M2oYZuIQmh0L6vh//O7ph29Ytcus0LTzcOg
+         b6VPCgYUko/H1dSkXCMUp/yO9+Nj11Cmyl8d9l2PbzJms4MgsEU3oWcxi1E1mMknzt+N
+         +nVQe3GEqHcmVa9w4sHTSl8Rjylsqao/TWAsxVzgKD7ILQ6mFa10aNNNuod6MH1oClGG
+         aZNyhxbT7oR46VqyLsyKV6uqYYywY2pqPReNrOlOXRo3sdb9/paoRbFRBhBKG+FX8chQ
+         004f+z3Bi6SmwBHwhUW5EirSYYNKGCaB3/XwjmPQ1Xmf/r24CulVGy9Gzxz8c+tL9u+7
+         ltzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k17si55262128qvf.122.2019.08.07.01.19.38
+        by mx.google.com with ESMTPS id 18si52262418qtt.39.2019.08.07.01.23.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 01:19:38 -0700 (PDT)
+        Wed, 07 Aug 2019 01:23:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38164 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
+Received: from localhost ([::1]:38194 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvHAY-0001h1-03
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 04:19:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42390)
+	id 1hvHEY-00041O-Jv
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 04:23:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42871)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hvHAR-0001gn-Kk
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 04:19:33 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hvHEP-00040A-9B
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 04:23:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hvHAP-0004ev-St
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 04:19:31 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:45431 helo=huawei.com)
+ (envelope-from <tony.nguyen@bt.com>) id 1hvHEK-0006RO-Ns
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 04:23:37 -0400
+Received: from smtpe1.intersmtp.com ([62.239.224.234]:54283)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hvHAP-0004dY-KC; Wed, 07 Aug 2019 04:19:29 -0400
-Received: from lhreml704-cah.china.huawei.com (unknown [172.18.7.106])
- by Forcepoint Email with ESMTP id 2D21074BF81C43DD61CA;
- Wed,  7 Aug 2019 09:19:24 +0100 (IST)
-Received: from LHREML524-MBS.china.huawei.com ([169.254.2.132]) by
- lhreml704-cah.china.huawei.com ([10.201.108.45]) with mapi id 14.03.0415.000; 
- Wed, 7 Aug 2019 09:19:16 +0100
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Thread-Topic: [Qemu-devel] [PATCH-for-4.2 v8 6/9] hw/arm/virt: Enable device
- memory cold/hot plug with ACPI boot
-Thread-Index: AQHVTFgcgZAsgDGlxk2I68tSjBvK8KbvVrTQ
-Date: Wed, 7 Aug 2019 08:19:16 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA83F347054@lhreml524-mbs.china.huawei.com>
-References: <20190726104519.23812-1-shameerali.kolothum.thodi@huawei.com>
- <20190726104519.23812-7-shameerali.kolothum.thodi@huawei.com>
- <20190806150839.350a5add@redhat.com>
-In-Reply-To: <20190806150839.350a5add@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
+ (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
+ id 1hvHEK-0006QP-7G; Wed, 07 Aug 2019 04:23:32 -0400
+Received: from tpw09926dag18f.domain1.systemhost.net (10.9.212.26) by
+ RDW083A012ED68.bt.com (10.187.98.38) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Wed, 7 Aug 2019 09:23:06 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
+ tpw09926dag18f.domain1.systemhost.net (10.9.212.26) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Wed, 7 Aug 2019 09:23:28 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net
+ ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
+ ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Wed, 7 Aug 2019
+ 09:23:28 +0100
+From: <tony.nguyen@bt.com>
+To: <qemu-devel@nongnu.org>
+Thread-Topic: [Qemu-devel] [PATCH v6 00/26] Invert Endian bit in SPARCv9 MMU
+ TTE
+Thread-Index: AQHVTPljpfwTk/sMkk++4xOSHxskcw==
+Date: Wed, 7 Aug 2019 08:23:27 +0000
+Message-ID: <45ec4924e0b34a3d9124e2db06af75b4@tpw09926dag18e.domain1.systemhost.net>
+Accept-Language: en-AU, en-GB, en-US
+Content-Language: en-AU
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="us-ascii"
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.187.101.44]
+Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 185.176.76.210
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH-for-4.2 v8 6/9] hw/arm/virt:
- Enable device memory cold/hot plug with ACPI boot
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 62.239.224.234
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v6 00/26] Invert Endian bit in
+ SPARCv9 MMU TTE
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -94,207 +94,765 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "sameo@linux.intel.com" <sameo@linux.intel.com>,
- "ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
- "sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
- "lersek@redhat.com" <lersek@redhat.com>
+Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
+ arikalo@wavecomp.com, pasic@linux.ibm.com, hpoussin@reactos.org,
+ anthony.perard@citrix.com, xen-devel@lists.xenproject.org, lersek@redhat.com,
+ jasowang@redhat.com, jiri@resnulli.us, ehabkost@redhat.com,
+ b.galvani@gmail.com, eric.auger@redhat.com, alex.williamson@redhat.com,
+ stefanha@redhat.com, jsnow@redhat.com, rth@twiddle.net, kwolf@redhat.com,
+ andrew@aj.id.au, crwulff@gmail.com, laurent@vivier.eu, sundeep.lkml@gmail.com,
+ michael@walle.cc, qemu-ppc@nongnu.org, kbastian@mail.uni-paderborn.de,
+ imammedo@redhat.com, fam@euphon.net, peter.maydell@linaro.org,
+ david@redhat.com, palmer@sifive.com, balaton@eik.bme.hu, keith.busch@intel.com,
+ jcmvbkbc@gmail.com, hare@suse.com, sstabellini@kernel.org,
+ andrew.smirnov@gmail.com, deller@gmx.de, magnus.damm@gmail.com,
+ marcel.apfelbaum@gmail.com, atar4qemu@gmail.com, minyard@acm.org,
+ sw@weilnetz.de, yuval.shaia@oracle.com, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, jan.kiszka@web.de, clg@kaod.org, shorne@gmail.com,
+ qemu-riscv@nongnu.org, i.mitsyanko@gmail.com, cohuck@redhat.com,
+ philmd@redhat.com, amarkovic@wavecomp.com, peter.chubb@nicta.com.au,
+ aurelien@aurel32.net, pburton@wavecomp.com, sagark@eecs.berkeley.edu,
+ green@moxielogic.com, kraxel@redhat.com, gxt@mprc.pku.edu.cn, robh@kernel.org,
+ borntraeger@de.ibm.com, joel@jms.id.au, antonynpavlov@gmail.com,
+ chouteau@adacore.com, balrogg@gmail.com, Andrew.Baumann@microsoft.com,
+ mreitz@redhat.com, walling@linux.ibm.com, dmitry.fleytman@gmail.com,
+ mst@redhat.com, mark.cave-ayland@ilande.co.uk, jslaby@suse.cz, marex@denx.de,
+ proljc@gmail.com, marcandre.lureau@redhat.com, alistair@alistair23.me,
+ paul.durrant@citrix.com, david@gibson.dropbear.id.au,
+ xiaoguangrong.eric@gmail.com, huth@tuxfamily.org, jcd@tribudubois.net,
+ pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LjOunsuzr53t
+X-TUID: cxzcvfruEbEl
 
-Hi Igor,
-
-> -----Original Message-----
-> From: Igor Mammedov [mailto:imammedo@redhat.com]
-> Sent: 06 August 2019 14:09
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
-> eric.auger@redhat.com; peter.maydell@linaro.org; sameo@linux.intel.com;
-> ard.biesheuvel@linaro.org; Linuxarm <linuxarm@huawei.com>; xuwei (O)
-> <xuwei5@huawei.com>; shannon.zhaosl@gmail.com;
-> sebastien.boeuf@intel.com; lersek@redhat.com
-> Subject: Re: [Qemu-devel] [PATCH-for-4.2 v8 6/9] hw/arm/virt: Enable devi=
-ce
-> memory cold/hot plug with ACPI boot
-=20
-[...]
-
-> > +static inline DeviceState *create_acpi_ged(VirtMachineState *vms,
-> qemu_irq *pic)
-> > +{
-> > +    DeviceState *dev;
-> > +    int irq =3D vms->irqmap[VIRT_ACPI_GED];
-> > +    uint32_t event =3D ACPI_GED_MEM_HOTPLUG_EVT;
-> > +
-> > +    dev =3D DEVICE(object_new(TYPE_ACPI_GED));
-> > +    qdev_prop_set_uint64(dev, "memhp-base",
-> > +                         vms->memmap[VIRT_PCDIMM_ACPI].base);
-> > +    qdev_prop_set_uint64(dev, "ged-base",
-> vms->memmap[VIRT_ACPI_GED].base);
-> > +    qdev_prop_set_uint32(dev, "ged-event", event);
-> > +    object_property_add_child(qdev_get_machine(), "acpi-ged",
-> > +                              OBJECT(dev), NULL);
-> > +    qdev_init_nofail(dev);
-> > +    qdev_connect_gpio_out_named(dev, "ged-irq", 0, pic[irq]);
-> > +
-> > +    object_unref(OBJECT(dev));
-> > +
-> > +    return dev;
-> > +}
->=20
-> this function will need changes to accommodate for sysbus device
-> init sequence [3/9].
-
-Yes. I think we are proposing to use sysbus_mmio_map() here for "ged-base".
-But what about " memhp-base"? Is it ok to invoke
-acpi_memory_hotplug_init(get_system_memoty(), ...) from ged device?
-
-Or go with _set_link() function to pass the address space ?
-
-Thanks,
-Shameer
-
-=20
-> > +
-> >  static void create_its(VirtMachineState *vms, DeviceState *gicdev)
-> >  {
-> >      const char *itsclass =3D its_class_name();
-> > @@ -1483,6 +1508,7 @@ static void machvirt_init(MachineState *machine)
-> >      MemoryRegion *ram =3D g_new(MemoryRegion, 1);
-> >      bool firmware_loaded;
-> >      bool aarch64 =3D true;
-> > +    bool has_ged =3D !vmc->no_ged;
-> >      unsigned int smp_cpus =3D machine->smp.cpus;
-> >      unsigned int max_cpus =3D machine->smp.max_cpus;
-> >
-> > @@ -1697,6 +1723,10 @@ static void machvirt_init(MachineState
-> *machine)
-> >
-> >      create_gpio(vms, pic);
-> >
-> > +    if (has_ged && aarch64 && firmware_loaded && acpi_enabled) {
-> > +        vms->acpi_dev =3D create_acpi_ged(vms, pic);
-> > +    }
-> > +
-> >      /* Create mmio transports, so the user can create virtio backends
-> >       * (which will be automatically plugged in to the transports). If
-> >       * no backend is created the transport will just sit harmlessly id=
-le.
-> > @@ -1876,27 +1906,34 @@ static const CPUArchIdList
-> *virt_possible_cpu_arch_ids(MachineState *ms)
-> >  static void virt_memory_pre_plug(HotplugHandler *hotplug_dev,
-> DeviceState *dev,
-> >                                   Error **errp)
-> >  {
-> > +    VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
-> > +    const bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev),
-> TYPE_NVDIMM);
-> >
-> > -    /*
-> > -     * The device memory is not yet exposed to the Guest either throug=
-h
-> > -     * DT or ACPI and hence both cold/hot plug of memory is explicitly
-> > -     * disabled for now.
-> > -     */
-> > -    if (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM)) {
-> > -        error_setg(errp, "memory cold/hot plug is not yet supported");
-> > +    if (is_nvdimm) {
-> > +        error_setg(errp, "nvdimm is not yet supported");
-> >          return;
-> >      }
-> >
-> > +    if (!vms->acpi_dev) {
-> > +        error_setg(errp, "memory hotplug is not enabled: missing acpi
-> device");
-> > +        return;
-> > +    }
-> > +
-> > +    hotplug_handler_pre_plug(HOTPLUG_HANDLER(vms->acpi_dev), dev,
-> errp);
-> use local_error and check for error condition here. see pc_memory_pre_plu=
-g()
->=20
-> > +
-> >      pc_dimm_pre_plug(PC_DIMM(dev), MACHINE(hotplug_dev), NULL,
-> errp);
-> >  }
-> >
-> >  static void virt_memory_plug(HotplugHandler *hotplug_dev,
-> >                               DeviceState *dev, Error **errp)
-> >  {
-> > +    HotplugHandlerClass *hhc;
-> >      VirtMachineState *vms =3D VIRT_MACHINE(hotplug_dev);
-> >
-> >      pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), NULL);
->                                                 ^^^^
-> >
-> > +    hhc =3D HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
-> > +    hhc->plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, NULL);
->                                                       ^^^^
-> why errors are ignored here, pls check for errors and propagate
-> them to the caller.
->=20
-> >  }
-> >
-> >  static void virt_machine_device_pre_plug_cb(HotplugHandler
-> *hotplug_dev,
-> > @@ -2102,8 +2139,11 @@ DEFINE_VIRT_MACHINE_AS_LATEST(4, 2)
-> >
-> >  static void virt_machine_4_1_options(MachineClass *mc)
-> >  {
-> > +    VirtMachineClass *vmc =3D VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-> > +
-> >      virt_machine_4_2_options(mc);
-> >      compat_props_add(mc->compat_props, hw_compat_4_1,
-> hw_compat_4_1_len);
-> > +    vmc->no_ged =3D true;
-> >  }
-> >  DEFINE_VIRT_MACHINE(4, 1)
-> >
-> > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> > index a72094204e..577ee49b4b 100644
-> > --- a/include/hw/arm/virt.h
-> > +++ b/include/hw/arm/virt.h
-> > @@ -77,6 +77,8 @@ enum {
-> >      VIRT_GPIO,
-> >      VIRT_SECURE_UART,
-> >      VIRT_SECURE_MEM,
-> > +    VIRT_PCDIMM_ACPI,
-> > +    VIRT_ACPI_GED,
-> >      VIRT_LOWMEMMAP_LAST,
-> >  };
-> >
-> > @@ -106,6 +108,7 @@ typedef struct {
-> >      bool claim_edge_triggered_timers;
-> >      bool smbios_old_sys_ver;
-> >      bool no_highmem_ecam;
-> > +    bool no_ged;   /* Machines < 4.2 has no support for ACPI GED devic=
-e
-> */
-> >  } VirtMachineClass;
-> >
-> >  typedef struct {
-> > @@ -133,6 +136,7 @@ typedef struct {
-> >      uint32_t iommu_phandle;
-> >      int psci_conduit;
-> >      hwaddr highest_gpa;
-> > +    DeviceState *acpi_dev;
-> >  } VirtMachineState;
-> >
-> >  #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM :
-> VIRT_PCIE_ECAM)
-> > diff --git a/tests/bios-tables-test-allowed-diff.h
-> b/tests/bios-tables-test-allowed-diff.h
-> > index dfb8523c8b..7b4adbc822 100644
-> > --- a/tests/bios-tables-test-allowed-diff.h
-> > +++ b/tests/bios-tables-test-allowed-diff.h
-> > @@ -1 +1,2 @@
-> >  /* List of comma-separated changed AML files to ignore */
-> > +"tests/data/acpi/virt/DSDT",
-
+This patchset implements the IE (Invert Endian) bit in SPARCv9 MMU TTE.=0A=
+=0A=
+It is an attempt of the instructions outlined by Richard Henderson to Mark=
+=0A=
+Cave-Ayland.=0A=
+=0A=
+Tested with OpenBSD on sun4u. Solaris 10 is my actual goal, but unfortunate=
+ly a=0A=
+separate keyboard issue remains in the way.=0A=
+=0A=
+On 01/11/17 19:15, Mark Cave-Ayland wrote:=0A=
+=0A=
+>On 15/08/17 19:10, Richard Henderson wrote:=0A=
+>=0A=
+>> [CC Peter re MemTxAttrs below]=0A=
+>>=0A=
+>> On 08/15/2017 09:38 AM, Mark Cave-Ayland wrote:=0A=
+>>> Working through an incorrect endian issue on qemu-system-sparc64, it ha=
+s=0A=
+>>> become apparent that at least one OS makes use of the IE (Invert Endian=
+)=0A=
+>>> bit in the SPARCv9 MMU TTE to map PCI memory space without the=0A=
+>>> programmer having to manually endian-swap accesses.=0A=
+>>>=0A=
+>>> In other words, to quote the UltraSPARC specification: "if this bit is=
+=0A=
+>>> set, accesses to the associated page are processed with inverse=0A=
+>>> endianness from what is specified by the instruction (big-for-little an=
+d=0A=
+>>> little-for-big)".=0A=
+=0A=
+A good explanation by Mark why the IE bit is required.=0A=
+=0A=
+>>>=0A=
+>>> Looking through various bits of code, I'm trying to get a feel for the=
+=0A=
+>>> best way to implement this in an efficient manner. From what I can see=
+=0A=
+>>> this could be solved using an additional MMU index, however I'm not=0A=
+>>> overly familiar with the memory and softmmu subsystems.=0A=
+>>=0A=
+>> No, it can't be solved with an MMU index.=0A=
+>>=0A=
+>>> Can anyone point me in the right direction as to what would be the best=
+=0A=
+>>> way to implement this feature within QEMU?=0A=
+>>=0A=
+>> It's definitely tricky.=0A=
+>>=0A=
+>> We definitely need some TLB_FLAGS_MASK bit set so that we're forced thro=
+ugh=0A=
+>> the=0A=
+>> memory slow path.  There is no other way to bypass the endianness that w=
+e've=0A=
+>> already encoded from the target instruction.=0A=
+>>=0A=
+>> Given the tlb_set_page_with_attrs interface, I would think that we need =
+a new=0A=
+>> bit in MemTxAttrs, so that the target/sparc tlb_fill (and subroutines) c=
+an=0A=
+>> pass=0A=
+>> along the TTE bit for the given page.=0A=
+>>=0A=
+>> We have an existing problem in softmmu_template.h,=0A=
+>>=0A=
+>>     /* ??? Note that the io helpers always read data in the target=0A=
+>>        byte ordering.  We should push the LE/BE request down into io.  *=
+/=0A=
+>>     res =3D glue(io_read, SUFFIX)(env, mmu_idx, index, addr, retaddr);=
+=0A=
+>>     res =3D TGT_BE(res);=0A=
+>>=0A=
+>> We do not want to add a third(!) byte swap along the i/o path.  We need =
+to=0A=
+>> collapse the two that we have already before considering this one.=0A=
+>>=0A=
+>> This probably takes the form of:=0A=
+>>=0A=
+>> (1) Replacing the "int size" argument with "TCGMemOp memop" for=0A=
+>>       a) io_{read,write}x in accel/tcg/cputlb.c,=0A=
+>>       b) memory_region_dispatch_{read,write} in memory.c,=0A=
+>>       c) adjust_endianness in memory.c.=0A=
+>>     This carries size+sign+endianness down to the next level.=0A=
+>>=0A=
+>> (2) In memory.c, adjust_endianness,=0A=
+>>=0A=
+>>      if (memory_region_wrong_endianness(mr)) {=0A=
+>> -        switch (size) {=0A=
+>> +        memop ^=3D MO_BSWAP;=0A=
+>> +    }=0A=
+>> +    if (memop & MO_BSWAP) {=0A=
+>>=0A=
+>>     For extra credit, re-arrange memory_region_wrong_endianness=0A=
+>>     to something more explicit -- "wrong" isn't helpful.=0A=
+>=0A=
+>Finally I've had a bit of spare time to experiment with this approach,=0A=
+>and from what I can see there are currently 2 issues:=0A=
+>=0A=
+>=0A=
+>1) Using TCGMemOp in memory.c means it is no longer accelerator agnostic=
+=0A=
+>=0A=
+>For the moment I've defined a separate MemOp in memory.h and provided a=0A=
+>mapping function in io_{read,write}x to map from TCGMemOp to MemOp and=0A=
+>then pass that into memory_region_dispatch_{read,write}.=0A=
+>=0A=
+>Other than not referencing TCGMemOp in the memory API, another reason=0A=
+>for doing this was that I wasn't convinced that all the MO_ attributes=0A=
+>were valid outside of TCG. I do, of course, strongly defer to other=0A=
+>people's knowledge in this area though.=0A=
+>=0A=
+>=0A=
+>2) The above changes to adjust_endianness() fail when=0A=
+>memory_region_dispatch_{read,write} are called recursively=0A=
+>=0A=
+>Whilst booting qemu-system-sparc64 I see that=0A=
+>memory_region_dispatch_{read,write} get called recursively - once via=0A=
+>io_{read,write}x and then again via flatview_read_continue() in exec.c.=0A=
+>=0A=
+>The net effect of this is that we perform the bswap correctly at the=0A=
+>tail of the recursion, but then as we travel back up the stack we hit=0A=
+>memory_region_dispatch_{read,write} once again causing a second bswap=0A=
+>which means the value is returned with the incorrect endian again.=0A=
+>=0A=
+>=0A=
+>My understanding from your softmmu_template.h comment above is that the=0A=
+>memory API should do the endian swapping internally allowing the removal=
+=0A=
+>of the final TGT_BE/TGT_LE applied to the result, or did I get this wrong?=
+=0A=
+>=0A=
+>> (3) In tlb_set_page_with_attrs, notice attrs.byte_swap and set=0A=
+>>     a new TLB_FORCE_SLOW bit within TLB_FLAGS_MASK.=0A=
+>>=0A=
+>> (4) In io_{read,write}x, if iotlbentry->attrs.byte_swap is set,=0A=
+>>     then memop ^=3D MO_BSWAP.=0A=
+=0A=
+Thanks all for the feedback. Learnt a lot =3D)=0A=
+=0A=
+v2:=0A=
+- Moved size+sign+endianness attributes from TCGMemOp into MemOp.=0A=
+  In v1 TCGMemOp was re-purposed entirely into MemOp.=0A=
+- Replaced MemOp MO_{8|16|32|64} with TCGMemOp MO_{UB|UW|UL|UQ} alias.=0A=
+  This is to avoid warnings on comparing and coercing different enums.=0A=
+- Renamed get_memop to get_tcgmemop for clarity.=0A=
+- MEMOP is now SIZE_MEMOP, which is just ctzl(size).=0A=
+- Split patch 3/4 so one memory_region_dispatch_{read|write} interface=0A=
+  is converted per patch.=0A=
+- Do not reuse TLB_RECHECK, use new TLB_FORCE_SLOW instead.=0A=
+- Split patch 4/4 so adding the MemTxAddrs parameters and converting=0A=
+  tlb_set_page() to tlb_set_page_with_attrs() is separate from usage.=0A=
+- CC'd maintainers.=0A=
+=0A=
+v3:=0A=
+- Like v1, the entire TCGMemOp enum is now MemOp.=0A=
+- MemOp target dependant attributes are conditional upon NEED_CPU_H=0A=
+=0A=
+v4:=0A=
+- Added Paolo Bonzini as include/exec/memop.h maintainer=0A=
+=0A=
+v5:=0A=
+- Improved commit messages to clarify how interface to access=0A=
+  MemoryRegion will be converted from "unsigned size" to "MemOp op".=0A=
+- Moved cpu_transaction_failed() MemOp conversion from patch #11 to #9=0A=
+  to make review easier.=0A=
+=0A=
+v6:=0A=
+- Improved commit messages.=0A=
+- Include as patch #1 an earlier posted TARGET_ALIGNED_ONLY configure patch=
+.=0A=
+- Typeless macro SIZE_MEMOP is now inline.=0A=
+- size_memop now includes CONFIG_DEBUG_TCG code.=0A=
+- size_memop now also encodes endianness via MO_TE.=0A=
+- Reverted size_memop operand "unsigned long" back to "unsigned".=0A=
+- Second pass of size_memop to replace no-op place holder with MO_{8|16|32|=
+64}.=0A=
+- Delay memory_region_dispatch_{read,write} operand conversion until no-op=
+=0A=
+  size_memop is implemented so we have proper typing at all points in betwe=
+en.=0A=
+- Fixed bug where not all memory_region_dispatch_{read,write} callers where=
+=0A=
+  encoding endianness into the MemOp operand, see patch #20.=0A=
+- Fixed bug where not all memory_region_dispatch_{read,write} callers were=
+=0A=
+  collapsing their byte swap into adjust_endianness, see patch #20 and #22.=
+=0A=
+- Split byte swap collapsing patch (v5 #11) into #21 and #22.=0A=
+- Corrected non-common *-common-obj to *-obj.=0A=
+- Replaced enum device_endian with MemOp to simplify endianness checks. A=
+=0A=
+  straight forward sed but touched *alot* of files. See patch #16 and #17.=
+=0A=
+- Deleted enum device_endian.=0A=
+- Deleted DEVICE_HOST_ENDIAN definition.=0A=
+- Generalized the description of introduced MemTxAttrs attribute byte_swap.=
+=0A=
+=0A=
+Tony Nguyen (26):=0A=
+  configure: Define TARGET_ALIGNED_ONLY in configure=0A=
+  tcg: TCGMemOp is now accelerator independent MemOp=0A=
+  memory: Introduce size_memop=0A=
+  target/mips: Access MemoryRegion with MemOp=0A=
+  hw/s390x: Access MemoryRegion with MemOp=0A=
+  hw/intc/armv7m_nic: Access MemoryRegion with MemOp=0A=
+  hw/virtio: Access MemoryRegion with MemOp=0A=
+  hw/vfio: Access MemoryRegion with MemOp=0A=
+  exec: Access MemoryRegion with MemOp=0A=
+  cputlb: Access MemoryRegion with MemOp=0A=
+  memory: Access MemoryRegion with MemOp=0A=
+  hw/s390x: Hard code size with MO_{8|16|32|64}=0A=
+  target/mips: Hard code size with MO_{8|16|32|64}=0A=
+  exec: Hard code size with MO_{8|16|32|64}=0A=
+  build: Correct non-common common-obj-* to obj-*=0A=
+  exec: Map device_endian onto MemOp=0A=
+  exec: Replace device_endian with MemOp=0A=
+  exec: Delete device_endian=0A=
+  exec: Delete DEVICE_HOST_ENDIAN=0A=
+  memory: Access MemoryRegion with endianness=0A=
+  cputlb: Replace size and endian operands for MemOp=0A=
+  memory: Single byte swap along the I/O path=0A=
+  cpu: TLB_FLAGS_MASK bit to force memory slow path=0A=
+  cputlb: Byte swap memory transaction attribute=0A=
+  target/sparc: Add TLB entry with attributes=0A=
+  target/sparc: sun4u Invert Endian TTE bit=0A=
+=0A=
+ MAINTAINERS                             |   1 +=0A=
+ accel/tcg/cputlb.c                      | 197 ++++++++++++++--------------=
+----=0A=
+ configure                               |  10 +-=0A=
+ exec.c                                  |  14 ++-=0A=
+ hw/acpi/core.c                          |   6 +-=0A=
+ hw/acpi/cpu.c                           |   2 +-=0A=
+ hw/acpi/cpu_hotplug.c                   |   2 +-=0A=
+ hw/acpi/ich9.c                          |   4 +-=0A=
+ hw/acpi/memory_hotplug.c                |   2 +-=0A=
+ hw/acpi/nvdimm.c                        |   2 +-=0A=
+ hw/acpi/pcihp.c                         |   2 +-=0A=
+ hw/acpi/piix4.c                         |   2 +-=0A=
+ hw/acpi/tco.c                           |   2 +-=0A=
+ hw/adc/stm32f2xx_adc.c                  |   2 +-=0A=
+ hw/alpha/pci.c                          |   6 +-=0A=
+ hw/alpha/typhoon.c                      |   6 +-=0A=
+ hw/arm/allwinner-a10.c                  |   2 +-=0A=
+ hw/arm/armv7m.c                         |   2 +-=0A=
+ hw/arm/aspeed.c                         |   2 +-=0A=
+ hw/arm/aspeed_soc.c                     |   2 +-=0A=
+ hw/arm/exynos4210.c                     |   2 +-=0A=
+ hw/arm/highbank.c                       |   2 +-=0A=
+ hw/arm/integratorcp.c                   |   6 +-=0A=
+ hw/arm/kzm.c                            |   2 +-=0A=
+ hw/arm/msf2-soc.c                       |   2 +-=0A=
+ hw/arm/musicpal.c                       |  20 ++--=0A=
+ hw/arm/omap1.c                          |  40 +++----=0A=
+ hw/arm/omap2.c                          |  10 +-=0A=
+ hw/arm/omap_sx1.c                       |   2 +-=0A=
+ hw/arm/palm.c                           |   2 +-=0A=
+ hw/arm/pxa2xx.c                         |  22 ++--=0A=
+ hw/arm/pxa2xx_gpio.c                    |   2 +-=0A=
+ hw/arm/pxa2xx_pic.c                     |   2 +-=0A=
+ hw/arm/smmuv3.c                         |   2 +-=0A=
+ hw/arm/spitz.c                          |   2 +-=0A=
+ hw/arm/stellaris.c                      |   8 +-=0A=
+ hw/arm/strongarm.c                      |  12 +-=0A=
+ hw/arm/versatilepb.c                    |   2 +-=0A=
+ hw/audio/Makefile.objs                  |  11 +-=0A=
+ hw/audio/ac97.c                         |   4 +-=0A=
+ hw/audio/cs4231.c                       |   2 +-=0A=
+ hw/audio/es1370.c                       |   2 +-=0A=
+ hw/audio/intel-hda.c                    |   2 +-=0A=
+ hw/audio/marvell_88w8618.c              |   2 +-=0A=
+ hw/audio/milkymist-ac97.c               |   2 +-=0A=
+ hw/audio/pl041.c                        |   2 +-=0A=
+ hw/block/Makefile.objs                  |   8 +-=0A=
+ hw/block/fdc.c                          |   4 +-=0A=
+ hw/block/nvme.c                         |   4 +-=0A=
+ hw/block/onenand.c                      |   2 +-=0A=
+ hw/block/pflash_cfi01.c                 |   2 +-=0A=
+ hw/block/pflash_cfi02.c                 |   2 +-=0A=
+ hw/char/Makefile.objs                   |  22 ++--=0A=
+ hw/char/bcm2835_aux.c                   |   2 +-=0A=
+ hw/char/cadence_uart.c                  |   2 +-=0A=
+ hw/char/cmsdk-apb-uart.c                |   2 +-=0A=
+ hw/char/debugcon.c                      |   2 +-=0A=
+ hw/char/digic-uart.c                    |   2 +-=0A=
+ hw/char/escc.c                          |   2 +-=0A=
+ hw/char/etraxfs_ser.c                   |   2 +-=0A=
+ hw/char/exynos4210_uart.c               |   2 +-=0A=
+ hw/char/grlib_apbuart.c                 |   2 +-=0A=
+ hw/char/imx_serial.c                    |   2 +-=0A=
+ hw/char/lm32_uart.c                     |   2 +-=0A=
+ hw/char/mcf_uart.c                      |   2 +-=0A=
+ hw/char/milkymist-uart.c                |   2 +-=0A=
+ hw/char/nrf51_uart.c                    |   2 +-=0A=
+ hw/char/omap_uart.c                     |   6 +-=0A=
+ hw/char/parallel.c                      |   2 +-=0A=
+ hw/char/pl011.c                         |   2 +-=0A=
+ hw/char/serial.c                        |  26 ++---=0A=
+ hw/char/sh_serial.c                     |   2 +-=0A=
+ hw/char/stm32f2xx_usart.c               |   2 +-=0A=
+ hw/char/xilinx_uartlite.c               |   2 +-=0A=
+ hw/core/Makefile.objs                   |   2 +-=0A=
+ hw/core/empty_slot.c                    |   2 +-=0A=
+ hw/cris/axis_dev88.c                    |   4 +-=0A=
+ hw/display/Makefile.objs                |  10 +-=0A=
+ hw/display/ati.c                        |   2 +-=0A=
+ hw/display/bcm2835_fb.c                 |   2 +-=0A=
+ hw/display/bochs-display.c              |   4 +-=0A=
+ hw/display/cg3.c                        |   2 +-=0A=
+ hw/display/cirrus_vga.c                 |  10 +-=0A=
+ hw/display/edid-region.c                |   2 +-=0A=
+ hw/display/exynos4210_fimd.c            |   2 +-=0A=
+ hw/display/g364fb.c                     |   2 +-=0A=
+ hw/display/jazz_led.c                   |   2 +-=0A=
+ hw/display/milkymist-tmu2.c             |   2 +-=0A=
+ hw/display/milkymist-vgafb.c            |   2 +-=0A=
+ hw/display/omap_dss.c                   |  10 +-=0A=
+ hw/display/omap_lcdc.c                  |   2 +-=0A=
+ hw/display/pl110.c                      |   2 +-=0A=
+ hw/display/pxa2xx_lcd.c                 |   2 +-=0A=
+ hw/display/sm501.c                      |  10 +-=0A=
+ hw/display/tc6393xb.c                   |   2 +-=0A=
+ hw/display/tcx.c                        |  14 +--=0A=
+ hw/display/vga-isa-mm.c                 |   2 +-=0A=
+ hw/display/vga-pci.c                    |   6 +-=0A=
+ hw/display/vga.c                        |   2 +-=0A=
+ hw/display/vmware_vga.c                 |   2 +-=0A=
+ hw/display/xlnx_dp.c                    |   8 +-=0A=
+ hw/dma/Makefile.objs                    |  18 +--=0A=
+ hw/dma/bcm2835_dma.c                    |   4 +-=0A=
+ hw/dma/etraxfs_dma.c                    |   2 +-=0A=
+ hw/dma/i8257.c                          |   4 +-=0A=
+ hw/dma/omap_dma.c                       |   4 +-=0A=
+ hw/dma/pl080.c                          |   2 +-=0A=
+ hw/dma/pl330.c                          |   2 +-=0A=
+ hw/dma/puv3_dma.c                       |   2 +-=0A=
+ hw/dma/pxa2xx_dma.c                     |   2 +-=0A=
+ hw/dma/rc4030.c                         |   4 +-=0A=
+ hw/dma/sparc32_dma.c                    |   2 +-=0A=
+ hw/dma/xilinx_axidma.c                  |   2 +-=0A=
+ hw/dma/xlnx-zdma.c                      |   2 +-=0A=
+ hw/dma/xlnx-zynq-devcfg.c               |   2 +-=0A=
+ hw/dma/xlnx_dpdma.c                     |   2 +-=0A=
+ hw/gpio/Makefile.objs                   |   6 +-=0A=
+ hw/gpio/bcm2835_gpio.c                  |   2 +-=0A=
+ hw/gpio/imx_gpio.c                      |   2 +-=0A=
+ hw/gpio/mpc8xxx.c                       |   2 +-=0A=
+ hw/gpio/nrf51_gpio.c                    |   2 +-=0A=
+ hw/gpio/omap_gpio.c                     |   6 +-=0A=
+ hw/gpio/pl061.c                         |   2 +-=0A=
+ hw/gpio/puv3_gpio.c                     |   2 +-=0A=
+ hw/gpio/zaurus.c                        |   2 +-=0A=
+ hw/hppa/dino.c                          |   6 +-=0A=
+ hw/hppa/machine.c                       |   2 +-=0A=
+ hw/hppa/pci.c                           |   6 +-=0A=
+ hw/hyperv/hyperv_testdev.c              |   2 +-=0A=
+ hw/i2c/Makefile.objs                    |   8 +-=0A=
+ hw/i2c/aspeed_i2c.c                     |   4 +-=0A=
+ hw/i2c/exynos4210_i2c.c                 |   2 +-=0A=
+ hw/i2c/imx_i2c.c                        |   2 +-=0A=
+ hw/i2c/microbit_i2c.c                   |   2 +-=0A=
+ hw/i2c/mpc_i2c.c                        |   2 +-=0A=
+ hw/i2c/omap_i2c.c                       |   2 +-=0A=
+ hw/i2c/pm_smbus.c                       |   2 +-=0A=
+ hw/i2c/ppc4xx_i2c.c                     |   2 +-=0A=
+ hw/i2c/versatile_i2c.c                  |   2 +-=0A=
+ hw/i386/amd_iommu.c                     |   4 +-=0A=
+ hw/i386/intel_iommu.c                   |   4 +-=0A=
+ hw/i386/kvm/apic.c                      |   2 +-=0A=
+ hw/i386/kvmvapic.c                      |   2 +-=0A=
+ hw/i386/pc.c                            |   6 +-=0A=
+ hw/i386/vmport.c                        |   2 +-=0A=
+ hw/i386/xen/xen_apic.c                  |   2 +-=0A=
+ hw/i386/xen/xen_platform.c              |   4 +-=0A=
+ hw/i386/xen/xen_pvdevice.c              |   2 +-=0A=
+ hw/ide/ahci-allwinner.c                 |   2 +-=0A=
+ hw/ide/ahci.c                           |   4 +-=0A=
+ hw/ide/macio.c                          |   2 +-=0A=
+ hw/ide/mmio.c                           |   4 +-=0A=
+ hw/ide/pci.c                            |   6 +-=0A=
+ hw/ide/sii3112.c                        |   2 +-=0A=
+ hw/input/Makefile.objs                  |   4 +-=0A=
+ hw/input/milkymist-softusb.c            |   2 +-=0A=
+ hw/input/pckbd.c                        |   6 +-=0A=
+ hw/input/pl050.c                        |   2 +-=0A=
+ hw/input/pxa2xx_keypad.c                |   2 +-=0A=
+ hw/intc/Makefile.objs                   |  19 +--=0A=
+ hw/intc/allwinner-a10-pic.c             |   2 +-=0A=
+ hw/intc/apic.c                          |   2 +-=0A=
+ hw/intc/arm_gic.c                       |  12 +-=0A=
+ hw/intc/arm_gicv2m.c                    |   2 +-=0A=
+ hw/intc/arm_gicv3.c                     |   4 +-=0A=
+ hw/intc/arm_gicv3_its_common.c          |   2 +-=0A=
+ hw/intc/armv7m_nvic.c                   |  18 +--=0A=
+ hw/intc/aspeed_vic.c                    |   2 +-=0A=
+ hw/intc/bcm2835_ic.c                    |   2 +-=0A=
+ hw/intc/bcm2836_control.c               |   2 +-=0A=
+ hw/intc/etraxfs_pic.c                   |   2 +-=0A=
+ hw/intc/exynos4210_combiner.c           |   2 +-=0A=
+ hw/intc/grlib_irqmp.c                   |   2 +-=0A=
+ hw/intc/heathrow_pic.c                  |   2 +-=0A=
+ hw/intc/imx_avic.c                      |   2 +-=0A=
+ hw/intc/imx_gpcv2.c                     |   2 +-=0A=
+ hw/intc/ioapic.c                        |   2 +-=0A=
+ hw/intc/mips_gic.c                      |   2 +-=0A=
+ hw/intc/omap_intc.c                     |   4 +-=0A=
+ hw/intc/ompic.c                         |   2 +-=0A=
+ hw/intc/openpic.c                       |  20 ++--=0A=
+ hw/intc/openpic_kvm.c                   |   2 +-=0A=
+ hw/intc/pl190.c                         |   2 +-=0A=
+ hw/intc/pnv_xive.c                      |  14 +--=0A=
+ hw/intc/puv3_intc.c                     |   2 +-=0A=
+ hw/intc/sh_intc.c                       |   2 +-=0A=
+ hw/intc/slavio_intctl.c                 |   4 +-=0A=
+ hw/intc/xics_pnv.c                      |   2 +-=0A=
+ hw/intc/xilinx_intc.c                   |   2 +-=0A=
+ hw/intc/xive.c                          |   6 +-=0A=
+ hw/intc/xlnx-pmu-iomod-intc.c           |   2 +-=0A=
+ hw/intc/xlnx-zynqmp-ipi.c               |   2 +-=0A=
+ hw/ipack/Makefile.objs                  |   2 +-=0A=
+ hw/ipack/tpci200.c                      |  10 +-=0A=
+ hw/ipmi/isa_ipmi_bt.c                   |   2 +-=0A=
+ hw/ipmi/isa_ipmi_kcs.c                  |   2 +-=0A=
+ hw/isa/Makefile.objs                    |   2 +-=0A=
+ hw/isa/lpc_ich9.c                       |   4 +-=0A=
+ hw/isa/pc87312.c                        |   2 +-=0A=
+ hw/isa/vt82c686.c                       |   2 +-=0A=
+ hw/m68k/mcf5206.c                       |   2 +-=0A=
+ hw/m68k/mcf5208.c                       |   4 +-=0A=
+ hw/m68k/mcf_intc.c                      |   2 +-=0A=
+ hw/microblaze/petalogix_ml605_mmu.c     |   2 +-=0A=
+ hw/mips/boston.c                        |   6 +-=0A=
+ hw/mips/gt64xxx_pci.c                   |   2 +-=0A=
+ hw/mips/mips_jazz.c                     |   8 +-=0A=
+ hw/mips/mips_malta.c                    |   4 +-=0A=
+ hw/mips/mips_r4k.c                      |   2 +-=0A=
+ hw/misc/Makefile.objs                   |  18 +--=0A=
+ hw/misc/a9scu.c                         |   2 +-=0A=
+ hw/misc/applesmc.c                      |   6 +-=0A=
+ hw/misc/arm11scu.c                      |   2 +-=0A=
+ hw/misc/arm_integrator_debug.c          |   2 +-=0A=
+ hw/misc/arm_l2x0.c                      |   2 +-=0A=
+ hw/misc/arm_sysctl.c                    |   2 +-=0A=
+ hw/misc/armsse-cpuid.c                  |   2 +-=0A=
+ hw/misc/armsse-mhu.c                    |   2 +-=0A=
+ hw/misc/aspeed_scu.c                    |   2 +-=0A=
+ hw/misc/aspeed_sdmc.c                   |   2 +-=0A=
+ hw/misc/aspeed_xdma.c                   |   2 +-=0A=
+ hw/misc/bcm2835_mbox.c                  |   2 +-=0A=
+ hw/misc/bcm2835_property.c              |   2 +-=0A=
+ hw/misc/bcm2835_rng.c                   |   2 +-=0A=
+ hw/misc/debugexit.c                     |   2 +-=0A=
+ hw/misc/eccmemctl.c                     |   4 +-=0A=
+ hw/misc/edu.c                           |   2 +-=0A=
+ hw/misc/exynos4210_clk.c                |   2 +-=0A=
+ hw/misc/exynos4210_pmu.c                |   2 +-=0A=
+ hw/misc/exynos4210_rng.c                |   2 +-=0A=
+ hw/misc/grlib_ahb_apb_pnp.c             |   4 +-=0A=
+ hw/misc/imx25_ccm.c                     |   2 +-=0A=
+ hw/misc/imx2_wdt.c                      |   2 +-=0A=
+ hw/misc/imx31_ccm.c                     |   2 +-=0A=
+ hw/misc/imx6_ccm.c                      |   4 +-=0A=
+ hw/misc/imx6_src.c                      |   2 +-=0A=
+ hw/misc/imx6ul_ccm.c                    |   4 +-=0A=
+ hw/misc/imx7_ccm.c                      |   4 +-=0A=
+ hw/misc/imx7_gpr.c                      |   2 +-=0A=
+ hw/misc/imx7_snvs.c                     |   2 +-=0A=
+ hw/misc/iotkit-secctl.c                 |   4 +-=0A=
+ hw/misc/iotkit-sysctl.c                 |   2 +-=0A=
+ hw/misc/iotkit-sysinfo.c                |   2 +-=0A=
+ hw/misc/ivshmem.c                       |   2 +-=0A=
+ hw/misc/macio/cuda.c                    |   2 +-=0A=
+ hw/misc/macio/gpio.c                    |   2 +-=0A=
+ hw/misc/macio/mac_dbdma.c               |   2 +-=0A=
+ hw/misc/macio/macio.c                   |   2 +-=0A=
+ hw/misc/macio/pmu.c                     |   2 +-=0A=
+ hw/misc/milkymist-hpdmc.c               |   2 +-=0A=
+ hw/misc/milkymist-pfpu.c                |   2 +-=0A=
+ hw/misc/mips_cmgcr.c                    |   2 +-=0A=
+ hw/misc/mips_cpc.c                      |   2 +-=0A=
+ hw/misc/mips_itu.c                      |   4 +-=0A=
+ hw/misc/mos6522.c                       |   2 +-=0A=
+ hw/misc/mps2-fpgaio.c                   |   2 +-=0A=
+ hw/misc/mps2-scc.c                      |   2 +-=0A=
+ hw/misc/msf2-sysreg.c                   |   2 +-=0A=
+ hw/misc/mst_fpga.c                      |   2 +-=0A=
+ hw/misc/nrf51_rng.c                     |   2 +-=0A=
+ hw/misc/omap_gpmc.c                     |   6 +-=0A=
+ hw/misc/omap_l4.c                       |   2 +-=0A=
+ hw/misc/omap_sdrc.c                     |   2 +-=0A=
+ hw/misc/omap_tap.c                      |   2 +-=0A=
+ hw/misc/pc-testdev.c                    |  10 +-=0A=
+ hw/misc/pci-testdev.c                   |   4 +-=0A=
+ hw/misc/puv3_pm.c                       |   2 +-=0A=
+ hw/misc/slavio_misc.c                   |  16 +--=0A=
+ hw/misc/stm32f2xx_syscfg.c              |   2 +-=0A=
+ hw/misc/tz-mpc.c                        |   4 +-=0A=
+ hw/misc/tz-msc.c                        |   2 +-=0A=
+ hw/misc/tz-ppc.c                        |   2 +-=0A=
+ hw/misc/unimp.c                         |   2 +-=0A=
+ hw/misc/zynq-xadc.c                     |   2 +-=0A=
+ hw/misc/zynq_slcr.c                     |   2 +-=0A=
+ hw/moxie/moxiesim.c                     |   2 +-=0A=
+ hw/net/Makefile.objs                    |  14 +--=0A=
+ hw/net/allwinner_emac.c                 |   2 +-=0A=
+ hw/net/cadence_gem.c                    |   2 +-=0A=
+ hw/net/can/can_kvaser_pci.c             |   6 +-=0A=
+ hw/net/can/can_mioe3680_pci.c           |   4 +-=0A=
+ hw/net/can/can_pcm3680_pci.c            |   4 +-=0A=
+ hw/net/dp8393x.c                        |   2 +-=0A=
+ hw/net/e1000.c                          |   4 +-=0A=
+ hw/net/e1000e.c                         |   4 +-=0A=
+ hw/net/eepro100.c                       |   2 +-=0A=
+ hw/net/etraxfs_eth.c                    |   2 +-=0A=
+ hw/net/fsl_etsec/etsec.c                |   2 +-=0A=
+ hw/net/ftgmac100.c                      |   2 +-=0A=
+ hw/net/imx_fec.c                        |   2 +-=0A=
+ hw/net/lan9118.c                        |   4 +-=0A=
+ hw/net/lance.c                          |   2 +-=0A=
+ hw/net/mcf_fec.c                        |   2 +-=0A=
+ hw/net/milkymist-minimac2.c             |   2 +-=0A=
+ hw/net/ne2000.c                         |   2 +-=0A=
+ hw/net/pcnet-pci.c                      |   4 +-=0A=
+ hw/net/rocker/rocker.c                  |   2 +-=0A=
+ hw/net/rtl8139.c                        |   2 +-=0A=
+ hw/net/smc91c111.c                      |   2 +-=0A=
+ hw/net/stellaris_enet.c                 |   2 +-=0A=
+ hw/net/sungem.c                         |  12 +-=0A=
+ hw/net/sunhme.c                         |  10 +-=0A=
+ hw/net/vmxnet3.c                        |   4 +-=0A=
+ hw/net/xgmac.c                          |   2 +-=0A=
+ hw/net/xilinx_axienet.c                 |   2 +-=0A=
+ hw/net/xilinx_ethlite.c                 |   2 +-=0A=
+ hw/nios2/10m50_devboard.c               |   2 +-=0A=
+ hw/nvram/ds1225y.c                      |   2 +-=0A=
+ hw/nvram/fw_cfg.c                       |   8 +-=0A=
+ hw/nvram/mac_nvram.c                    |   2 +-=0A=
+ hw/nvram/nrf51_nvm.c                    |   8 +-=0A=
+ hw/openrisc/openrisc_sim.c              |   2 +-=0A=
+ hw/pci-host/Makefile.objs               |   6 +-=0A=
+ hw/pci-host/bonito.c                    |  10 +-=0A=
+ hw/pci-host/designware.c                |   6 +-=0A=
+ hw/pci-host/piix.c                      |   2 +-=0A=
+ hw/pci-host/ppce500.c                   |   2 +-=0A=
+ hw/pci-host/prep.c                      |   4 +-=0A=
+ hw/pci-host/q35.c                       |   4 +-=0A=
+ hw/pci-host/sabre.c                     |   4 +-=0A=
+ hw/pci-host/uninorth.c                  |   4 +-=0A=
+ hw/pci-host/versatile.c                 |   4 +-=0A=
+ hw/pci/msix.c                           |   4 +-=0A=
+ hw/pci/pci_host.c                       |   8 +-=0A=
+ hw/pci/pcie_host.c                      |   2 +-=0A=
+ hw/pci/shpc.c                           |   2 +-=0A=
+ hw/pcmcia/pxa2xx.c                      |   6 +-=0A=
+ hw/ppc/e500.c                           |   4 +-=0A=
+ hw/ppc/mpc8544_guts.c                   |   2 +-=0A=
+ hw/ppc/pnv_core.c                       |   6 +-=0A=
+ hw/ppc/pnv_lpc.c                        |   8 +-=0A=
+ hw/ppc/pnv_occ.c                        |   4 +-=0A=
+ hw/ppc/pnv_psi.c                        |   8 +-=0A=
+ hw/ppc/pnv_xscom.c                      |   2 +-=0A=
+ hw/ppc/ppc405_boards.c                  |   4 +-=0A=
+ hw/ppc/ppc405_uc.c                      |  14 +--=0A=
+ hw/ppc/ppc440_bamboo.c                  |   4 +-=0A=
+ hw/ppc/ppc440_pcix.c                    |   4 +-=0A=
+ hw/ppc/ppc4xx_pci.c                     |   2 +-=0A=
+ hw/ppc/ppce500_spin.c                   |   2 +-=0A=
+ hw/ppc/sam460ex.c                       |   4 +-=0A=
+ hw/ppc/spapr_pci.c                      |   2 +-=0A=
+ hw/ppc/virtex_ml507.c                   |   2 +-=0A=
+ hw/rdma/vmw/pvrdma_main.c               |   4 +-=0A=
+ hw/riscv/sifive_clint.c                 |   2 +-=0A=
+ hw/riscv/sifive_gpio.c                  |   2 +-=0A=
+ hw/riscv/sifive_plic.c                  |   2 +-=0A=
+ hw/riscv/sifive_prci.c                  |   2 +-=0A=
+ hw/riscv/sifive_test.c                  |   2 +-=0A=
+ hw/riscv/sifive_uart.c                  |   2 +-=0A=
+ hw/riscv/virt.c                         |   2 +-=0A=
+ hw/s390x/s390-pci-bus.c                 |   2 +-=0A=
+ hw/s390x/s390-pci-inst.c                |   8 +-=0A=
+ hw/scsi/Makefile.objs                   |   2 +-=0A=
+ hw/scsi/esp-pci.c                       |   2 +-=0A=
+ hw/scsi/esp.c                           |   2 +-=0A=
+ hw/scsi/lsi53c895a.c                    |   6 +-=0A=
+ hw/scsi/megasas.c                       |   6 +-=0A=
+ hw/scsi/mptsas.c                        |   6 +-=0A=
+ hw/scsi/vmw_pvscsi.c                    |   2 +-=0A=
+ hw/sd/Makefile.objs                     |   2 +-=0A=
+ hw/sd/bcm2835_sdhost.c                  |   2 +-=0A=
+ hw/sd/milkymist-memcard.c               |   2 +-=0A=
+ hw/sd/omap_mmc.c                        |   2 +-=0A=
+ hw/sd/pl181.c                           |   2 +-=0A=
+ hw/sd/pxa2xx_mmci.c                     |   2 +-=0A=
+ hw/sd/sdhci.c                           |   4 +-=0A=
+ hw/sh4/r2d.c                            |   2 +-=0A=
+ hw/sh4/sh7750.c                         |   4 +-=0A=
+ hw/sh4/sh_pci.c                         |   2 +-=0A=
+ hw/sparc/sun4m_iommu.c                  |   2 +-=0A=
+ hw/sparc64/niagara.c                    |   2 +-=0A=
+ hw/sparc64/sun4u.c                      |   4 +-=0A=
+ hw/sparc64/sun4u_iommu.c                |   2 +-=0A=
+ hw/ssi/Makefile.objs                    |  10 +-=0A=
+ hw/ssi/aspeed_smc.c                     |   6 +-=0A=
+ hw/ssi/imx_spi.c                        |   2 +-=0A=
+ hw/ssi/mss-spi.c                        |   2 +-=0A=
+ hw/ssi/omap_spi.c                       |   2 +-=0A=
+ hw/ssi/pl022.c                          |   2 +-=0A=
+ hw/ssi/stm32f2xx_spi.c                  |   2 +-=0A=
+ hw/ssi/xilinx_spi.c                     |   2 +-=0A=
+ hw/ssi/xilinx_spips.c                   |   8 +-=0A=
+ hw/timer/Makefile.objs                  |  39 ++++---=0A=
+ hw/timer/a9gtimer.c                     |   4 +-=0A=
+ hw/timer/allwinner-a10-pit.c            |   2 +-=0A=
+ hw/timer/altera_timer.c                 |   2 +-=0A=
+ hw/timer/arm_mptimer.c                  |   4 +-=0A=
+ hw/timer/arm_timer.c                    |   4 +-=0A=
+ hw/timer/armv7m_systick.c               |   2 +-=0A=
+ hw/timer/aspeed_rtc.c                   |   2 +-=0A=
+ hw/timer/aspeed_timer.c                 |   2 +-=0A=
+ hw/timer/cadence_ttc.c                  |   2 +-=0A=
+ hw/timer/cmsdk-apb-dualtimer.c          |   2 +-=0A=
+ hw/timer/cmsdk-apb-timer.c              |   2 +-=0A=
+ hw/timer/digic-timer.c                  |   2 +-=0A=
+ hw/timer/etraxfs_timer.c                |   2 +-=0A=
+ hw/timer/exynos4210_mct.c               |   2 +-=0A=
+ hw/timer/exynos4210_pwm.c               |   2 +-=0A=
+ hw/timer/exynos4210_rtc.c               |   2 +-=0A=
+ hw/timer/grlib_gptimer.c                |   2 +-=0A=
+ hw/timer/hpet.c                         |   2 +-=0A=
+ hw/timer/i8254.c                        |   2 +-=0A=
+ hw/timer/imx_epit.c                     |   2 +-=0A=
+ hw/timer/imx_gpt.c                      |   2 +-=0A=
+ hw/timer/lm32_timer.c                   |   2 +-=0A=
+ hw/timer/m48t59.c                       |   4 +-=0A=
+ hw/timer/mc146818rtc.c                  |   2 +-=0A=
+ hw/timer/milkymist-sysctl.c             |   2 +-=0A=
+ hw/timer/mss-timer.c                    |   2 +-=0A=
+ hw/timer/nrf51_timer.c                  |   2 +-=0A=
+ hw/timer/omap_gptimer.c                 |   2 +-=0A=
+ hw/timer/omap_synctimer.c               |   2 +-=0A=
+ hw/timer/pl031.c                        |   2 +-=0A=
+ hw/timer/puv3_ost.c                     |   2 +-=0A=
+ hw/timer/pxa2xx_timer.c                 |   2 +-=0A=
+ hw/timer/sh_timer.c                     |   2 +-=0A=
+ hw/timer/slavio_timer.c                 |   2 +-=0A=
+ hw/timer/stm32f2xx_timer.c              |   2 +-=0A=
+ hw/timer/sun4v-rtc.c                    |   2 +-=0A=
+ hw/timer/xilinx_timer.c                 |   2 +-=0A=
+ hw/timer/xlnx-zynqmp-rtc.c              |   2 +-=0A=
+ hw/tpm/tpm_crb.c                        |   2 +-=0A=
+ hw/tpm/tpm_tis.c                        |   2 +-=0A=
+ hw/usb/chipidea.c                       |   4 +-=0A=
+ hw/usb/hcd-ehci-sysbus.c                |   2 +-=0A=
+ hw/usb/hcd-ehci.c                       |   6 +-=0A=
+ hw/usb/hcd-ohci.c                       |   2 +-=0A=
+ hw/usb/hcd-uhci.c                       |   2 +-=0A=
+ hw/usb/hcd-xhci.c                       |  10 +-=0A=
+ hw/usb/tusb6010.c                       |   2 +-=0A=
+ hw/vfio/common.c                        |   2 +-=0A=
+ hw/vfio/pci-quirks.c                    |  32 +++---=0A=
+ hw/vfio/pci.c                           |   4 +-=0A=
+ hw/virtio/Makefile.objs                 |   2 +-=0A=
+ hw/virtio/virtio-mmio.c                 |   2 +-=0A=
+ hw/virtio/virtio-pci.c                  |  27 +++--=0A=
+ hw/watchdog/cmsdk-apb-watchdog.c        |   2 +-=0A=
+ hw/watchdog/wdt_aspeed.c                |   2 +-=0A=
+ hw/watchdog/wdt_i6300esb.c              |   2 +-=0A=
+ hw/xen/xen_pt.c                         |   2 +-=0A=
+ hw/xen/xen_pt_msi.c                     |   2 +-=0A=
+ hw/xtensa/mx_pic.c                      |   2 +-=0A=
+ hw/xtensa/xtfpga.c                      |   6 +-=0A=
+ include/exec/cpu-all.h                  |  10 +-=0A=
+ include/exec/cpu-common.h               |  12 --=0A=
+ include/exec/memattrs.h                 |   2 +=0A=
+ include/exec/memop.h                    | 138 ++++++++++++++++++++++=0A=
+ include/exec/memory.h                   |  11 +-=0A=
+ include/exec/poison.h                   |   1 +=0A=
+ include/hw/char/serial.h                |   2 +-=0A=
+ include/qom/cpu.h                       |   2 +-=0A=
+ ioport.c                                |   4 +-=0A=
+ memory.c                                |  59 ++++------=0A=
+ memory_ldst.inc.c                       | 151 ++++++++----------------=0A=
+ target/alpha/cpu.h                      |   2 -=0A=
+ target/alpha/translate.c                |   2 +-=0A=
+ target/arm/translate-a64.c              |  48 ++++----=0A=
+ target/arm/translate-a64.h              |   2 +-=0A=
+ target/arm/translate-sve.c              |   2 +-=0A=
+ target/arm/translate.c                  |  32 +++---=0A=
+ target/arm/translate.h                  |   2 +-=0A=
+ target/hppa/cpu.h                       |   1 -=0A=
+ target/hppa/translate.c                 |  14 +--=0A=
+ target/i386/translate.c                 | 132 ++++++++++-----------=0A=
+ target/m68k/translate.c                 |   2 +-=0A=
+ target/microblaze/translate.c           |   4 +-=0A=
+ target/mips/cpu.h                       |   2 -=0A=
+ target/mips/op_helper.c                 |   5 +-=0A=
+ target/mips/translate.c                 |   8 +-=0A=
+ target/openrisc/translate.c             |   4 +-=0A=
+ target/ppc/translate.c                  |  12 +-=0A=
+ target/riscv/insn_trans/trans_rva.inc.c |   8 +-=0A=
+ target/riscv/insn_trans/trans_rvi.inc.c |   4 +-=0A=
+ target/s390x/translate.c                |   6 +-=0A=
+ target/s390x/translate_vx.inc.c         |  10 +-=0A=
+ target/sh4/cpu.h                        |   2 -=0A=
+ target/sparc/cpu.h                      |   4 +-=0A=
+ target/sparc/mmu_helper.c               |  40 ++++---=0A=
+ target/sparc/translate.c                |  14 +--=0A=
+ target/tilegx/translate.c               |  10 +-=0A=
+ target/tricore/translate.c              |   8 +-=0A=
+ target/xtensa/cpu.h                     |   2 -=0A=
+ tcg/README                              |   2 +-=0A=
+ tcg/aarch64/tcg-target.inc.c            |  26 ++---=0A=
+ tcg/arm/tcg-target.inc.c                |  26 ++---=0A=
+ tcg/i386/tcg-target.inc.c               |  24 ++--=0A=
+ tcg/mips/tcg-target.inc.c               |  16 +--=0A=
+ tcg/optimize.c                          |   2 +-=0A=
+ tcg/ppc/tcg-target.inc.c                |  12 +-=0A=
+ tcg/riscv/tcg-target.inc.c              |  20 ++--=0A=
+ tcg/s390/tcg-target.inc.c               |  14 +--=0A=
+ tcg/sparc/tcg-target.inc.c              |   6 +-=0A=
+ tcg/tcg-op.c                            |  38 +++---=0A=
+ tcg/tcg-op.h                            |  86 +++++++-------=0A=
+ tcg/tcg.c                               |   4 +-=0A=
+ tcg/tcg.h                               |  99 +---------------=0A=
+ trace/mem-internal.h                    |   4 +-=0A=
+ trace/mem.h                             |   4 +-=0A=
+ 499 files changed, 1508 insertions(+), 1541 deletions(-)=0A=
+ create mode 100644 include/exec/memop.h=0A=
+=0A=
+-- =0A=
+1.8.3.1=0A=

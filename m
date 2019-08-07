@@ -1,254 +1,190 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6224356wrv;
-        Wed, 7 Aug 2019 00:55:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxyX+0eXREfYbYvJRwY5ihNJsxQmtMuvv8Z46uIxyXdZjaAsyQrwvMOIZ38LdY5KIFrwiQ3
-X-Received: by 2002:aa7:d6d3:: with SMTP id x19mr8103114edr.119.1565164530352;
-        Wed, 07 Aug 2019 00:55:30 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m32si32106740edm.415.2019.08.07.00.55.30
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 00:55:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b="KH/BTfDg";
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37932 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvGnB-00059K-Ej
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 03:55:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38463)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <damien.hedde@greensocs.com>) id 1hvGn1-00050r-MM
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 03:55:21 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1hvGn0-0003ej-EY
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 03:55:19 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:39954)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1hvGmz-0003dh-Q1; Wed, 07 Aug 2019 03:55:18 -0400
-Received: from [172.16.11.117] (unknown [172.16.11.117])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 2D8F496F50;
- Wed,  7 Aug 2019 07:55:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1565164515;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Cmr5cHNGizkApLgOIIl0Cz/28sApj9LgWJnIN9Hcs0U=;
- b=KH/BTfDgUA7tkbzJE676oOOKArxWsr7DVZa5KASk8k8AcBK1c0C1NUF2lOjah9OOtGiEna
- J6xCU3SvonYOTuhAZWM68lbYym303mnfgElc7hPTVOnMrACVj8Vg0Oax6I2TpO70X9Pt97
- DVCWEdG49umCNkZGZKFm1XSj/1BM85U=
-To: David Gibson <david@gibson.dropbear.id.au>
-References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-5-damien.hedde@greensocs.com>
- <20190731055640.GC2032@umbus.fritz.box>
- <98250dc3-c2db-844d-f9f5-46a27488e94f@greensocs.com>
- <20190806003504.GC14494@umbus.fritz.box>
-From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <5da257a8-6d35-8618-2fa2-38cb2ed19fb4@greensocs.com>
-Date: Wed, 7 Aug 2019 09:55:13 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id h133sm96782343wme.28.2019.08.07.02.17.14
+        (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
+        Wed, 07 Aug 2019 02:17:14 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 2F5201FF87;
+	Wed,  7 Aug 2019 10:17:14 +0100 (BST)
+References: <20190805130952.4415-1-peter.maydell@linaro.org>
+ <20190805130952.4415-2-peter.maydell@linaro.org>
+User-agent: mu4e 1.3.4; emacs 27.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH 1/2] target/arm: Factor out 'generate
+ singlestep exception' function
+In-reply-to: <20190805130952.4415-2-peter.maydell@linaro.org>
+Date: Wed, 07 Aug 2019 10:17:14 +0100
+Message-ID: <87tvatibc5.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20190806003504.GC14494@umbus.fritz.box>
-Content-Type: text/plain; charset=windows-1252
-Content-Language: en-US-large
-Content-Transfer-Encoding: 7bit
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1565164515;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Cmr5cHNGizkApLgOIIl0Cz/28sApj9LgWJnIN9Hcs0U=;
- b=2mIwbpJJwiz8i72AkpAHsOISbiNXRJhNrDapqiT5W7ttEWqEKSKFFFlPK3h0wmxrwTmbKp
- gndkz08mP2CLp6OIk0ZfPxxZNKwb2TOWDty02HgtbB6G97ANLeTKpumG9yWN7TnbOGMT7s
- rQnP5h9exOKdPmKzEmnVit3pRGltgA4=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1565164515; a=rsa-sha256; cv=none;
- b=3Yzo68Sz/Iyb+Myf9gfVkoIUdyJi+fylI+FsGXcTUEYlNtjKMXZQJZE4c13CJ8oNdaJLEO
- 3x9Q/LCRK70ufZiwN3/md+6ErO0gGDYOKekqSz73Yd2brFkMDfBe+FS5HjXhC+Hp9YQfgh
- a0xFLT+7TGTuc/AxCZuEK42EqXiMWao=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 5.135.226.135
-Subject: Re: [Qemu-arm] [PATCH v3 04/33] make Device and Bus Resettable
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
- dmitry.fleytman@gmail.com, mst@redhat.com, mark.cave-ayland@ilande.co.uk,
- qemu-devel@nongnu.org, kraxel@redhat.com, edgar.iglesias@xilinx.com,
- hare@suse.com, qemu-block@nongnu.org, david@redhat.com, pasic@linux.ibm.com,
- borntraeger@de.ibm.com, marcel.apfelbaum@gmail.com,
- marcandre.lureau@redhat.com, thuth@redhat.com, ehabkost@redhat.com,
- alistair@alistair23.me, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- clg@kaod.org, jsnow@redhat.com, rth@twiddle.net, berrange@redhat.com,
- cohuck@redhat.com, mark.burton@greensocs.com, qemu-ppc@nongnu.org,
- pbonzini@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ncCTYqPy4PXR
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: YqjslTAdhEY1
 
 
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-On 8/6/19 2:35 AM, David Gibson wrote:
-> On Wed, Jul 31, 2019 at 11:09:05AM +0200, Damien Hedde wrote:
->>
->>
->> On 7/31/19 7:56 AM, David Gibson wrote:
->>> On Mon, Jul 29, 2019 at 04:56:25PM +0200, Damien Hedde wrote:
->>>> This add Resettable interface implementation for both Bus and Device.
->>>>
->>>> *resetting* counter and *reset_is_cold* flag are added in DeviceState
->>>> and BusState.
->>>>
->>>> Compatibility with existing code base is ensured.
->>>> The legacy bus or device reset method is called in the new exit phase
->>>> and the other 2 phases are let empty. Using the exit phase guarantee that
->>>> legacy resets are called in the "post" order (ie: children then parent)
->>>> in hierarchical reset. That is the same order as legacy qdev_reset_all
->>>> or qbus_reset_all were using.
->>>>
->>>> New *device_reset* and *bus_reset* function are proposed with an
->>>> additional boolean argument telling whether the reset is cold or warm.
->>>> Helper functions *device_reset_[warm|cold]* and *bus_reset_[warm|cold]*
->>>> are defined also as helpers.
->>>>
->>>> Also add a [device|bus]_is_resetting and [device|bus]_is_reset_cold
->>>> functions telling respectively whether the object is currently under reset and
->>>> if the current reset is cold or not.
->>>>
->>>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
->>>> ---
->>>>  hw/core/bus.c          | 85 ++++++++++++++++++++++++++++++++++++++++++
->>>>  hw/core/qdev.c         | 82 ++++++++++++++++++++++++++++++++++++++++
->>>>  include/hw/qdev-core.h | 84 ++++++++++++++++++++++++++++++++++++++---
->>>>  tests/Makefile.include |  1 +
->>>>  4 files changed, 247 insertions(+), 5 deletions(-)
->>>>
->>>> diff --git a/hw/core/bus.c b/hw/core/bus.c
->>>> index 17bc1edcde..08a97addb6 100644
->>>> --- a/hw/core/bus.c
->>>> +++ b/hw/core/bus.c
->>>> @@ -22,6 +22,7 @@
->>>>  #include "qemu/module.h"
->>>>  #include "hw/qdev.h"
->>>>  #include "qapi/error.h"
->>>> +#include "hw/resettable.h"
->>>>  
->>>>  void qbus_set_hotplug_handler(BusState *bus, Object *handler, Error **errp)
->>>>  {
->>>> @@ -68,6 +69,75 @@ int qbus_walk_children(BusState *bus,
->>>>      return 0;
->>>>  }
->>>>  
->>>> +void bus_reset(BusState *bus, bool cold)
->>>> +{
->>>> +    resettable_reset(OBJECT(bus), cold);
->>>> +}
->>>> +
->>>> +bool bus_is_resetting(BusState *bus)
->>>> +{
->>>> +    return (bus->resetting != 0);
->>>> +}
->>>> +
->>>> +bool bus_is_reset_cold(BusState *bus)
->>>> +{
->>>> +    return bus->reset_is_cold;
->>>> +}
->>>> +
->>>> +static uint32_t bus_get_reset_count(Object *obj)
->>>> +{
->>>> +    BusState *bus = BUS(obj);
->>>> +    return bus->resetting;
->>>> +}
->>>> +
->>>> +static uint32_t bus_increment_reset_count(Object *obj)
->>>> +{
->>>> +    BusState *bus = BUS(obj);
->>>> +    return ++bus->resetting;
->>>> +}
->>>> +
->>>> +static uint32_t bus_decrement_reset_count(Object *obj)
->>>> +{
->>>> +    BusState *bus = BUS(obj);
->>>> +    return --bus->resetting;
->>>> +}
->>>> +
->>>> +static bool bus_set_reset_cold(Object *obj, bool cold)
->>>> +{
->>>> +    BusState *bus = BUS(obj);
->>>> +    bool old = bus->reset_is_cold;
->>>> +    bus->reset_is_cold = cold;
->>>> +    return old;
->>>> +}
->>>> +
->>>> +static bool bus_set_hold_needed(Object *obj, bool hold_needed)
->>>> +{
->>>> +    BusState *bus = BUS(obj);
->>>> +    bool old = bus->reset_hold_needed;
->>>> +    bus->reset_hold_needed = hold_needed;
->>>> +    return old;
->>>> +}
->>>> +
->>>> +static void bus_foreach_reset_child(Object *obj, void (*func)(Object *))
->>>> +{
->>>> +    BusState *bus = BUS(obj);
->>>> +    BusChild *kid;
->>>> +
->>>> +    QTAILQ_FOREACH(kid, &bus->children, sibling) {
->>>> +        func(OBJECT(kid->child));
->>>> +    }
->>>> +}
->>>
->>> IIUC, every resettable class would need more or less identical
->>> implementations of the above.  That seems like an awful lot of
->>> boilerplate.
->>
->> Do you mean the get/increment_count/decrement_count, set_cold/hold part ?
->> True, but it's limited to the base classes.
->> Since Resettable is an interface, we have no state there to store what
->> we need. Only alternative is to have some kind of single
->> get_resettable_state method returning a pointer to the state (allowing
->> us to keep the functions in the interface code).
->> Beyond Device and Bus, which are done here, there is probably not so
->> many class candidates for the Resettable interface.
-> 
-> Right.  I can't immediately see a better way to handle this, but it
-> still seems like a mild code smell.
-> 
+> Factor out code to 'generate a singlestep exception', which is
+> currently repeated in four places.
+>
+> To do this we need to also pull the identical copies of the
+> gen-exception() function out of translate-a64.c and translate.c
+> into translate.h.
+>
+> (There is a bug in the code: we're taking the exception to the wrong
+> target EL.  This will be simpler to fix if there's only one place to
+> do it.)
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Only definitive solution to this would be to make DeviceClass and
-BusClass inherit from a common Resettable object.
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-Would it be better if I use a common struct (eg: ResettableState)
-holding the different fields ?
-Then I can have a single implementation of the method and do for example:
-static uint32_t bus_decrement_reset_count(Object *obj)
-{
-     return decrement_reset_count(&(BUS(obj))->reset_state);
-}
-static uint32_t device_decrement_reset_count(Object *obj)
-{
-     return decrement_reset_count(&(DEV(dev))->reset_state);
-}
+> ---
+>  target/arm/translate.h     | 23 +++++++++++++++++++++++
+>  target/arm/translate-a64.c | 19 ++-----------------
+>  target/arm/translate.c     | 20 ++------------------
+>  3 files changed, 27 insertions(+), 35 deletions(-)
+>
+> diff --git a/target/arm/translate.h b/target/arm/translate.h
+> index a20f6e20568..45053190baa 100644
+> --- a/target/arm/translate.h
+> +++ b/target/arm/translate.h
+> @@ -2,6 +2,7 @@
+>  #define TARGET_ARM_TRANSLATE_H
+>
+>  #include "exec/translator.h"
+> +#include "internals.h"
+>
+>
+>  /* internal defines */
+> @@ -232,6 +233,28 @@ static inline void gen_ss_advance(DisasContext *s)
+>      }
+>  }
+>
+> +static inline void gen_exception(int excp, uint32_t syndrome,
+> +                                 uint32_t target_el)
+> +{
+> +    TCGv_i32 tcg_excp =3D tcg_const_i32(excp);
+> +    TCGv_i32 tcg_syn =3D tcg_const_i32(syndrome);
+> +    TCGv_i32 tcg_el =3D tcg_const_i32(target_el);
+> +
+> +    gen_helper_exception_with_syndrome(cpu_env, tcg_excp,
+> +                                       tcg_syn, tcg_el);
+> +
+> +    tcg_temp_free_i32(tcg_el);
+> +    tcg_temp_free_i32(tcg_syn);
+> +    tcg_temp_free_i32(tcg_excp);
+> +}
+> +
+> +/* Generate an architectural singlestep exception */
+> +static inline void gen_swstep_exception(DisasContext *s, int isv, int ex)
+> +{
+> +    gen_exception(EXCP_UDEF, syn_swstep(s->ss_same_el, isv, ex),
+> +                  default_exception_el(s));
+> +}
+> +
+>  /*
+>   * Given a VFP floating point constant encoded into an 8 bit immediate i=
+n an
+>   * instruction, expand it to the actual constant value of the specified
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index d3231477a27..f6729b96fd0 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -253,19 +253,6 @@ static void gen_exception_internal(int excp)
+>      tcg_temp_free_i32(tcg_excp);
+>  }
+>
+> -static void gen_exception(int excp, uint32_t syndrome, uint32_t target_e=
+l)
+> -{
+> -    TCGv_i32 tcg_excp =3D tcg_const_i32(excp);
+> -    TCGv_i32 tcg_syn =3D tcg_const_i32(syndrome);
+> -    TCGv_i32 tcg_el =3D tcg_const_i32(target_el);
+> -
+> -    gen_helper_exception_with_syndrome(cpu_env, tcg_excp,
+> -                                       tcg_syn, tcg_el);
+> -    tcg_temp_free_i32(tcg_el);
+> -    tcg_temp_free_i32(tcg_syn);
+> -    tcg_temp_free_i32(tcg_excp);
+> -}
+> -
+>  static void gen_exception_internal_insn(DisasContext *s, int offset, int=
+ excp)
+>  {
+>      gen_a64_set_pc_im(s->pc - offset);
+> @@ -305,8 +292,7 @@ static void gen_step_complete_exception(DisasContext =
+*s)
+>       * of the exception, and our syndrome information is always correct.
+>       */
+>      gen_ss_advance(s);
+> -    gen_exception(EXCP_UDEF, syn_swstep(s->ss_same_el, 1, s->is_ldex),
+> -                  default_exception_el(s));
+> +    gen_swstep_exception(s, 1, s->is_ldex);
+>      s->base.is_jmp =3D DISAS_NORETURN;
+>  }
+>
+> @@ -14261,8 +14247,7 @@ static void aarch64_tr_translate_insn(DisasContex=
+tBase *dcbase, CPUState *cpu)
+>           * bits should be zero.
+>           */
+>          assert(dc->base.num_insns =3D=3D 1);
+> -        gen_exception(EXCP_UDEF, syn_swstep(dc->ss_same_el, 0, 0),
+> -                      default_exception_el(dc));
+> +        gen_swstep_exception(dc, 0, 0);
+>          dc->base.is_jmp =3D DISAS_NORETURN;
+>      } else {
+>          disas_a64_insn(env, dc);
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 7853462b21b..19b9d8f2725 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -282,20 +282,6 @@ static void gen_exception_internal(int excp)
+>      tcg_temp_free_i32(tcg_excp);
+>  }
+>
+> -static void gen_exception(int excp, uint32_t syndrome, uint32_t target_e=
+l)
+> -{
+> -    TCGv_i32 tcg_excp =3D tcg_const_i32(excp);
+> -    TCGv_i32 tcg_syn =3D tcg_const_i32(syndrome);
+> -    TCGv_i32 tcg_el =3D tcg_const_i32(target_el);
+> -
+> -    gen_helper_exception_with_syndrome(cpu_env, tcg_excp,
+> -                                       tcg_syn, tcg_el);
+> -
+> -    tcg_temp_free_i32(tcg_el);
+> -    tcg_temp_free_i32(tcg_syn);
+> -    tcg_temp_free_i32(tcg_excp);
+> -}
+> -
+>  static void gen_step_complete_exception(DisasContext *s)
+>  {
+>      /* We just completed step of an insn. Move from Active-not-pending
+> @@ -308,8 +294,7 @@ static void gen_step_complete_exception(DisasContext =
+*s)
+>       * of the exception, and our syndrome information is always correct.
+>       */
+>      gen_ss_advance(s);
+> -    gen_exception(EXCP_UDEF, syn_swstep(s->ss_same_el, 1, s->is_ldex),
+> -                  default_exception_el(s));
+> +    gen_swstep_exception(s, 1, s->is_ldex);
+>      s->base.is_jmp =3D DISAS_NORETURN;
+>  }
+>
+> @@ -12024,8 +12009,7 @@ static bool arm_pre_translate_insn(DisasContext *=
+dc)
+>           * bits should be zero.
+>           */
+>          assert(dc->base.num_insns =3D=3D 1);
+> -        gen_exception(EXCP_UDEF, syn_swstep(dc->ss_same_el, 0, 0),
+> -                      default_exception_el(dc));
+> +        gen_swstep_exception(dc, 0, 0);
+>          dc->base.is_jmp =3D DISAS_NORETURN;
+>          return true;
+>      }
 
-I can also merge the 3 count related method into one if it helps.
 
 --
-Damien
-
+Alex Benn=C3=A9e

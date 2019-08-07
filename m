@@ -1,112 +1,113 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6827385wrv;
-        Wed, 7 Aug 2019 10:38:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyBAw4XhsSJbtchtCgXhdvzkLrUQNputiEUZvr+PkRhtO8JarvSWoMO36sfj7IvKE7TQgrl
-X-Received: by 2002:ac8:3118:: with SMTP id g24mr9271646qtb.390.1565199536391;
-        Wed, 07 Aug 2019 10:38:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565199536; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6836840wrv;
+        Wed, 7 Aug 2019 10:49:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwUR7EtwCI6c5zJnw4xmsebO1UIc+dqhNjWSHhHtRWf9MOfQaywxyA8U+mE7CQsAUX1yFNj
+X-Received: by 2002:a50:ed07:: with SMTP id j7mr11386835eds.107.1565200194236;
+        Wed, 07 Aug 2019 10:49:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565200194; cv=none;
         d=google.com; s=arc-20160816;
-        b=nwLk/fShe79FjOORQo7x/OUnHRoq66QpUy9lsRVPH8KlRrTxSIBqG098WI9/sxGMis
-         iEsKgD2hYgoVTwlCDRsWAqItLECNTNaXa6tHKTMsfOtDvIUgoIQXoMxGOFZQBnbMJEmq
-         lWlvzQ3w4MaJTZZwxxwnlotQwOc0CXk0Q4tQvNw2pg85XmT8vv9KeyjqbYpXnoSW7ZvF
-         T5eS1whDlak6QRxBADFIpF1Lc2eXCmDGhSYcoZF4oOcmAs13/UWwLNl4/JqKVD62elAj
-         7H56JkkTflqhOdi035dZ+e2sKzF+jmnQSfTwK4r/4vrZ8MD+iaKMlr69kUtkgyzNwM3/
-         dfIg==
+        b=lU4lVLAJbSVPp/02PejADolBCKztd3+T3ORRmHr5KP9ZwjeFqW7S8WxQQVgooIAm00
+         xTK3DKVveX5wVRQfjWEfNJoDQELWR6QyKj3iJBLDXT373GZ58XxdF4kAD/qulB6EFsRV
+         8U0FZnYQtOpoQ18jnVe6tPzZO9LxxvBIQZ0ppeBlk4OjJVEr3hNBYt5IHGlfkhiIChR6
+         5ZAY1OoGjfcgQE1aeYt4tYViKxAidZGU7Rm0mfMiXDIFAMqD149zXGpJDCciXHOM664K
+         5r9FZQQtEpoica/Y3FmvOMLpzW4X8f61X/rCZKZMNSM66W4OvR2d7kKhGnzIbLPSJDVB
+         HTzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature;
-        bh=EA88qvAzozVrUA6CGxNTtnZOOxPhbdBbqz6cQni2U8I=;
-        b=T/TmNqIkR5XmJh4RY5BCee1YRK7CCEbRxHx6RUg/MJjH5xfKQmz1rJZaujCAqjCZ8g
-         2qq0n+A1ee+r/X5bXoss13MkYJvuC1eT6PEnGlIvW2DGxE2UW7kYRyCLbDkzbPyYJPo2
-         q5M3xAl9EE/oXTRWbHwa0CL6vUcurmJRzIkLdJLks6DNz1xyHolCl87EZZ/8fOt3D+5J
-         O1zahHgD/ZEJlBe9rZB+L+T9f8Yl0/U+oZuj3ZrM/M32iZi/EyRNPrunlwpN1Cyq+4fQ
-         qwiNPIv6DHGEnwX4Sv/7wi1oXsVUmODjZHfHCPHlAGcfGD1A30LZctiExxuWa8nmj+bi
-         NLiA==
+        bh=rwTIbhxoEl+9L5Abc76IchYk4TetqSvunhUmVSOtMWo=;
+        b=jXepP2H+H7wIYAGSjPMnIU8XGnFs47IwK8NLPlezYaM/bvs8JGrGmQ/LR2vy5dlPVL
+         jtaaSllVs4KU6Nd/99f/cJ2CTdvW0bewrW52Bf2Nq/RYreZXDhF6hBWz+bUJj4495FSl
+         XpTVVw77RABoOZp3LHmBhEJPS3sM4ELkj0CLVCKgl7QjB+DghLGVa+od4fYrzUTj4Ucm
+         M0OhqEcemkEezWQvzqurXCq6k0st+k1OZkoyy+OfrhpvUDrNa+WPTyw/W1o57ZQpfDfZ
+         H94gpqe+c7vVkvDz7TIbEvqdGQVh5UaS5G8vmNQmomQJxbfnuUV2vORfZtclHYDVxZGY
+         2DSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qKntDSdM;
+       dkim=fail header.i=@linaro.org header.s=google header.b=YSd01dq4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n53si58158429qtb.209.2019.08.07.10.38.56
+        by mx.google.com with ESMTPS id q25si30796076ejs.275.2019.08.07.10.49.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 10:38:56 -0700 (PDT)
+        Wed, 07 Aug 2019 10:49:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qKntDSdM;
+       dkim=fail header.i=@linaro.org header.s=google header.b=YSd01dq4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43922 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44064 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvPtn-0005hJ-Vm
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 13:38:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56627)
+	id 1hvQ4P-0001OK-Cc
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 13:49:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59036)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <richard.henderson@linaro.org>) id 1hvPtg-0005fI-Qw
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:38:49 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1hvQ48-0001BE-1P
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:49:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1hvPtf-0000EX-K9
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:38:48 -0400
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:42818)
+ (envelope-from <richard.henderson@linaro.org>) id 1hvQ47-00085H-2J
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:49:35 -0400
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:40701)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1hvPtf-0000BC-BX
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:38:47 -0400
-Received: by mail-pl1-x641.google.com with SMTP id ay6so41896855plb.9
- for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 10:38:47 -0700 (PDT)
+ id 1hvQ46-000832-ME
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 13:49:34 -0400
+Received: by mail-pl1-x644.google.com with SMTP id a93so41827968pla.7
+ for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 10:49:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=EA88qvAzozVrUA6CGxNTtnZOOxPhbdBbqz6cQni2U8I=;
- b=qKntDSdMHrPkk+J4UwBLYb43bMqF9cNsmBdbtO0FK8JganyV7uyTQ8or9BAogOmaro
- pga5jjzH1qGtSpHdpxvq2oB7RYGMiyslKp9kHAEBGErVqDVqocpyhVv2Nod0voV8ff84
- SY6MT11IbZ8/SpjtnTg2+3ZNywYLl3+vIRChQpDQBiw06QLyYmw/eC896UH9umWOpX6y
- oEFGMIHkr8kBjvr8aD9hoV2T/yCNdY5AEwcNv4DO/tnu+C9k8jy9YydwN/nL1Vd9Is8g
- qg1v7NJsMJGWr4eOTVKqHjvcZvF/04lucLcGFb9Oc8o1N84TJxpua/YiYrAU54tVwKKk
- majA==
+ bh=rwTIbhxoEl+9L5Abc76IchYk4TetqSvunhUmVSOtMWo=;
+ b=YSd01dq4KtF6aeZkw5hkDHENoAmzJOdch2P9Xl6k7iJhJOozBH08Xd6X8MdTgN8uFL
+ dayMMbNyz7ZSR+VFJ605dDSnaIApm2E3utOwDPHFZ38Ww0Yq2hW49lnxsZfbp4yn6FDL
+ WbwqPP7yVik0d0cAAsPPdv9U+Jm1KuDYmSkVnREqiqvjtBwIcUnH5Xc/gl9O6lnkIiYk
+ VhL9l6TrN+DQt2wAGnIhc0ENdijp3rUv/YraMyGDu6wMe9x+ZMo7AjxGpCB5GwWDzR8S
+ 4mEFZrxsfoOHb2BNG7md9SL+3ARxa9EvmllUIzDfD4ZcsqQgw4KkThE7J5q6hLkKOjqW
+ ercg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=EA88qvAzozVrUA6CGxNTtnZOOxPhbdBbqz6cQni2U8I=;
- b=Xm6cw3XhWrnWK7EaQB6x3cg4VL/oEPxD1rnWzR+AEZeg1bbEMD/Z1sCAoUJhucRLp+
- MSGMtz1lPOiW2Kst2zkhdlEOn2CtVX9qJSJoORcrGx0y4EPILEZmcQ2xqoQy0sZ1kKsN
- uiHMzzqEeMWonZsYEFydQgSGpRDbhDcxH57+SAnDpM/iCYMIdhdvH08k0VhpYjEZXTal
- OUVPQRFrig4lq5+ISHOmPx67tCIDCeKU+GYoAhY32mCz95q71uRYeXXEH3W4zyMXs6vQ
- W8CSXkDoeB49H655wrmm87NY5seVs6VdOx9sGf1Zbiuo33sC90aqaV0BP1G7nP3CQcNm
- LgxA==
-X-Gm-Message-State: APjAAAXhSZjrBzdSDN968hwigjFwFgrsO0Ns667ATXRlku4jpSjlVNDR
- EMEs73HdHcqC0pqGeXIJlLKlHw==
-X-Received: by 2002:aa7:8555:: with SMTP id y21mr10575549pfn.104.1565199525861; 
- Wed, 07 Aug 2019 10:38:45 -0700 (PDT)
+ bh=rwTIbhxoEl+9L5Abc76IchYk4TetqSvunhUmVSOtMWo=;
+ b=p3rhKHx+wbd7QLjxf6X79bMbpTTRD5dsIIL99vHk+bTbQB5R5IcY/xLRZ81pN350X4
+ 4o0MeljWhDnmlPMvKP0uDJgaKYsSs98ZrGR1TSG1Vw3QGYiP3a6rrUldl57kvNePYPv/
+ QXWDlpiwuN7ryp2j3wFWtaky5UruXHCDCyfOyLgzUlfbHd+EqwqHIJOw41swIdhvxuqp
+ +O7rWIIhoyaA1AI5FsVCXlKEyWim2oIW78O5+Kw3v7P9Ja8HQIZSfWqoIUqxRG/IvGml
+ EtQPVBmzSpmfNPPQKaqmMw7b9wXuzoQSfqQtR9z3ZczJmQP9oOR2lE95kxKIZoUC8PrA
+ 52Yg==
+X-Gm-Message-State: APjAAAVTAcfWr4IcxXA2CiSAkX3Vvj9eYHS9VScgpbut2PRv+30Ez+Kv
+ lQrAYezXmmNGvsr4il6+ASN2jA==
+X-Received: by 2002:a17:902:6b02:: with SMTP id
+ o2mr8483559plk.99.1565200173396; 
+ Wed, 07 Aug 2019 10:49:33 -0700 (PDT)
 Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id q7sm105394539pff.2.2019.08.07.10.38.43
+ by smtp.gmail.com with ESMTPSA id w1sm489442pjt.30.2019.08.07.10.49.31
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 07 Aug 2019 10:38:44 -0700 (PDT)
+ Wed, 07 Aug 2019 10:49:32 -0700 (PDT)
 To: tony.nguyen@bt.com, qemu-devel@nongnu.org
 References: <45ec4924e0b34a3d9124e2db06af75b4@tpw09926dag18e.domain1.systemhost.net>
- <1565166819111.14515@bt.com>
+ <1565166794966.57397@bt.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <d2f24c92-d210-7e0e-b787-3986123824d4@linaro.org>
-Date: Wed, 7 Aug 2019 10:38:41 -0700
+Message-ID: <27c692bf-45af-afbe-27ba-1e8f7f936121@linaro.org>
+Date: Wed, 7 Aug 2019 10:49:29 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <1565166819111.14515@bt.com>
+In-Reply-To: <1565166794966.57397@bt.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::641
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 21/26] cputlb: Replace size
- and endian operands for MemOp
+X-Received-From: 2607:f8b0:4864:20::644
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v6 20/26] memory: Access
+ MemoryRegion with endianness
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -146,42 +147,41 @@ Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
  clg@kaod.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rhYc3cnNG99T
+X-TUID: v5+Cx1VpEPIA
 
 On 8/7/19 1:33 AM, tony.nguyen@bt.com wrote:
-> @@ -1246,7 +1246,7 @@ typedef uint64_t FullLoadHelper(CPUArchState *env, target_ulong addr,
-> 
->  static inline uint64_t __attribute__((always_inline))
->  load_helper(CPUArchState *env, target_ulong addr, TCGMemOpIdx oi,
-> -            uintptr_t retaddr, size_t size, bool big_endian, bool code_read,
-> +            uintptr_t retaddr, MemOp op, bool code_read,
+> @@ -551,6 +551,7 @@ void virtio_address_space_write(VirtIOPCIProxy *proxy, hwaddr addr,
+>          /* As length is under guest control, handle illegal values. */
+>          return;
+>      }
+> +    /* FIXME: memory_region_dispatch_write ignores MO_BSWAP.  */
+>      memory_region_dispatch_write(mr, addr, val, size_memop(len),
+>                                   MEMTXATTRS_UNSPECIFIED);
+>  }
 
-I assume the code generation is the same, or nearly so, for these functions?
-It seems like it should be, since we're replacing one set of constant arguments
-with another, and the compiler should be able to fold away the same set of tests.
+Here is an example of where Paolo is quite right -- you cannot simply add MO_TE
+via size_memop().  In patch 22 we see
 
-But we should at least have a look...
-
-> +    switch (op) {
-> +    case MO_8:
->          res = ldub_p(haddr);
+> @@ -542,16 +542,15 @@ void virtio_address_space_write(VirtIOPCIProxy *proxy, hwaddr addr,
+>          val = pci_get_byte(buf);
 >          break;
-> +    case MO_BEUW:
-> +        res = lduw_be_p(haddr);
+>      case 2:
+> -        val = cpu_to_le16(pci_get_word(buf));
+> +        val = pci_get_word(buf);
+>          break;
+>      case 4:
+> -        val = cpu_to_le32(pci_get_long(buf));
+> +        val = pci_get_long(buf);
+>          break;
+>      default:
+>          /* As length is under guest control, handle illegal values. */
+>          return;
+>      }
+> -    /* FIXME: memory_region_dispatch_write ignores MO_BSWAP.  */
+>      memory_region_dispatch_write(mr, addr, val, size_memop(len),
+>                                   MEMTXATTRS_UNSPECIFIED);
 
-I don't like mixing a bare size with size+sign+endian.
-I think you should go ahead and pass MO_UB.
-
-> @@ -1605,30 +1605,27 @@ store_helper(CPUArchState *env, target_ulong addr, uint64_t val,
-> 
->   do_aligned_access:
->      haddr = (void *)((uintptr_t)addr + entry->addend);
-> -    switch (size) {
-> -    case 1:
-> +    switch (op) {
-> +    case MO_8:
-
-Likewise.
+This is a little-endian store -- MO_LE not MO_TE.
 
 
 r~

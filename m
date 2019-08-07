@@ -1,100 +1,81 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6649044wrv;
-        Wed, 7 Aug 2019 07:54:41 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxQCNdH+joRumVxq1bM6BPsFvnAwp9YJ4dVqjl6CgYjuEheA0k3e1DrgdPokS+og0lLU8BF
-X-Received: by 2002:a37:9c88:: with SMTP id f130mr6804809qke.494.1565189681464;
-        Wed, 07 Aug 2019 07:54:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565189681; cv=none;
-        d=google.com; s=arc-20160816;
-        b=iYVZX5d7AaMBQCJxNFonjQXZqRkn26N1JmLVDqYrejfFw+9NwnW/Ylr17UHjfKXrpw
-         JBkJ5ntpa1LzqIRfZcGY0qwN7bxjzrtAkQtZ1CWCYmhBAEXAa1+o63ue7wgCfZyVrvu+
-         eHqgODQ+BPWr+CLpfzg8epwP8bOn+aLsJJMylforCD03tYLN4ki6dnH+0up2vhTl5MLr
-         UrTSomEqxJWNjtWOOhwsUSQ1KiqMlHPvFpyWpKOKun+gg7Cj/JQeoI4qQ98R+KTOgf34
-         TK2dPENbzVZFKojH4TjIF/h547dWZXD+BBaKavjLHDbL8o96VL04i+mkqbeWpBD4wGKw
-         v1Dw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=GQlSHR/U9j1ba3vM8/+lHn5288KTWqRCzbe8FSYgNqI=;
-        b=W/4Ve9vWsTeG0vPRrTOWMHCvKyHichG3hgHDSyVeQnS3FGfRetGoHCT4159bnKxtzO
-         8P5sBVxcTYnuZgmdj2xBZhKwzKRm4GI0SJHXeQnWDDZ5vVG2VwpLuEhwtDwTH4hw6SvQ
-         SgNYFQFSMZa13+NhGfu2lSnH6fuUyjLkE/nR3aczd1Lw6LVGsMurPBQNErstPOqRXGGh
-         OK6SM87mfHIp4GqrM4SelmIThLPvnpuF+XV41b9tEukVH/R363NNnYPf+d4hGNOCdc6d
-         IWx1/Ac6t24J9B+OVD7jFjVmtaOURUJ4Kc5rbUv9KPV8+N2NaUTZl5WXMPl0T/DI9jDF
-         MbWw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OLa1kq5U;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6659145wrv;
+        Wed, 7 Aug 2019 08:03:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwQn3EDSk+v8gC14fslvRif+GV8jos8WMGt1RWw0Kht+92QBSjEvtwsXGX8LLpoMZdjmkWX
+X-Received: by 2002:a50:9468:: with SMTP id q37mr10145499eda.163.1565190228530;
+        Wed, 07 Aug 2019 08:03:48 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i7si49009306qkg.11.2019.08.07.07.54.41
+        by mx.google.com with ESMTPS id j26si35640099ede.86.2019.08.07.08.03.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 07:54:41 -0700 (PDT)
+        Wed, 07 Aug 2019 08:03:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OLa1kq5U;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42136 helo=lists1p.gnu.org)
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=M633u7g6;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42228 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvNKq-00064m-WA
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 10:54:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45929)
+	id 1hvNTf-0004vi-Hh
+	for alex.bennee@linaro.org; Wed, 07 Aug 2019 11:03:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48111)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hvNKf-0005oL-IG
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 10:54:30 -0400
+ (envelope-from <damien.hedde@greensocs.com>) id 1hvNTV-0004oe-QF
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 11:03:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hvNKe-0002LV-IA
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 10:54:29 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:36942)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hvNKe-0002L6-Cp
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 10:54:28 -0400
-Received: by mail-ot1-x341.google.com with SMTP id s20so39893037otp.4
- for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 07:54:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GQlSHR/U9j1ba3vM8/+lHn5288KTWqRCzbe8FSYgNqI=;
- b=OLa1kq5UQPM+B7AynEJLkel/GGLoRaxLCe35doii/kF6gsPcV1FUZkY46N0FGLd6F+
- Jjdw1srkzFJ+Hh6SBWimnPNYQrHq6YaWYoEnJbLSlmtwuBeCtOckXUMyNwcmbStPxp+t
- RAI63y5dJmYlAzpYVuW6MtgefB7YuysoiOsAaCu1IrtBxjJdApBHGTOsw9uRzm/4pgaE
- H6CtGwyVGR0p9C/hug1Mf7zHmCXMHmoclRSoBra2nG0PvIxfUjs9yX2c4LqNQmJ/kcgP
- asHcxUq9gU6BS3tNjs2dEoXf2VXiNvferauevg19M3vxpzd5l9HiWvRLo94cuadBcdHq
- 3J9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=GQlSHR/U9j1ba3vM8/+lHn5288KTWqRCzbe8FSYgNqI=;
- b=WmLg0EZ/j+81hy+LhGWXGB7XnpqoFD3v8dyxP84tR6UnWwKW/Vl74z2aCQ2/OONydP
- msNoklxFJnrkkq3ba3++c7mZU1dcTYQXDMlpJcN5qMH1oA9G9v+KSKOISu8Rv3fbFfxM
- DyZEXTj/y0xL18ZswtKKHbtx+O95+AoG5wAeBxj/ATkrtkH0vQNM8faIWZBu4EyX810V
- 7xyRSAC2iPGxOlAubSieu8b9+yifiDnrsyjC7BpAl50Y/eFGCACK0tCoW9+k46eowsqd
- 1f1tH2DrolZvCeG2WXfp5k2Xe0usTWuKQhOnZZ05F1+W8Xq11sk7ML/llfRYtNBUila6
- bKqA==
-X-Gm-Message-State: APjAAAX3pEaszAwpwZO566uHYg4YzzxmMgYiCqitYqmtv5UeV5JKJ7Iu
- TEdbBqEUt78/y9VtDUwMFBlUwW6rpE5w00eaphEY/Q==
-X-Received: by 2002:a05:6830:1653:: with SMTP id
- h19mr8591931otr.232.1565189667703; 
- Wed, 07 Aug 2019 07:54:27 -0700 (PDT)
-MIME-Version: 1.0
+ (envelope-from <damien.hedde@greensocs.com>) id 1hvNTS-0007Yh-Qf
+ for qemu-arm@nongnu.org; Wed, 07 Aug 2019 11:03:37 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:57530)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1hvNTS-0007Xy-8v; Wed, 07 Aug 2019 11:03:34 -0400
+Received: from [172.16.11.117] (unknown [172.16.11.117])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 6FA5096F50;
+ Wed,  7 Aug 2019 15:03:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1565190210;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=tGgPSo8OASV2B9s03xYYtNSRmIW0lRXCTKHtweM9hEk=;
+ b=M633u7g6RN3t9GiF8KkzPZ7zr64M1AulCQl8u8lBBwU4nr9/uIqJCwRbIQEW+KwEIbQxlQ
+ x+USxArCaW1ngiNxbCPpUkQr4buPP6VKkVVuqIFkXhyI6yK1undMMdNkmYHDO8ijxrEo2+
+ I8LvsRFQfcIptM4g++1OZtS5JV3obuY=
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-7-damien.hedde@greensocs.com>
-In-Reply-To: <20190729145654.14644-7-damien.hedde@greensocs.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 7 Aug 2019 15:54:16 +0100
-Message-ID: <CAFEAcA_PdOUTFAHBWxEvWLa1oP0BCMNs1zBJo-DV3OjrMLpPkA@mail.gmail.com>
-To: Damien Hedde <damien.hedde@greensocs.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::341
-Subject: Re: [Qemu-arm] [PATCH v3 06/33] add the vmstate description for
- device reset state
+ <20190729145654.14644-2-damien.hedde@greensocs.com>
+ <CAFEAcA8y0+shxbRD0Fp4LF4+yeLvr02zpBT2anyhj+i_EhfmiQ@mail.gmail.com>
+From: Damien Hedde <damien.hedde@greensocs.com>
+Message-ID: <2467a694-08cc-f260-5fbb-b7cbcbd4ceee@greensocs.com>
+Date: Wed, 7 Aug 2019 17:03:28 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8y0+shxbRD0Fp4LF4+yeLvr02zpBT2anyhj+i_EhfmiQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US-large
+Content-Transfer-Encoding: 7bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1565190210;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=tGgPSo8OASV2B9s03xYYtNSRmIW0lRXCTKHtweM9hEk=;
+ b=n3VkgNmUwi8CH+ziTNdjZvjhpyxAclrxTQTf/G7c+rXm42F1Q4zLavBCjQ3HaAs/DARS/R
+ 1FaFjuDlXJ1mMZ8/1krAShdJ9pjeZCWV69GiQ09YScReIIS+FgvOIBzGzuVd0uz4NlmUcj
+ XW7Z6/kILdHCvtY3D8HBK1NNC7Rwg5g=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1565190210; a=rsa-sha256; cv=none;
+ b=DnGFX9uDUuAfyJdS4R1mbEeVIxP1ZPxOjmfhQEkPcunffLHVzD+iTSpEYi8b4fOpZKzEWt
+ Z8OLZ9JhKZ9RUSpZgwMMHiooA7aUWUSB1A7+kzI9KbCUiYFMTnKKqvo6zhFCkYXmdkXEjf
+ 9d80fniGf1ywIkq1MLJ8TBk5d0dFqIA=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 5.135.226.135
+Subject: Re: [Qemu-arm] [PATCH v3 01/33] Create Resettable QOM interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -116,54 +97,654 @@ Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
  Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
  Richard Henderson <rth@twiddle.net>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>, qemu-s390x <qemu-s390x@nongnu.org>,
  qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, John Snow <jsnow@redhat.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, John Snow <jsnow@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>,
  "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
  Mark Burton <mark.burton@greensocs.com>, qemu-ppc <qemu-ppc@nongnu.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lB1H11PXVDsK
-
-On Mon, 29 Jul 2019 at 15:58, Damien Hedde <damien.hedde@greensocs.com> wrote:
->
-> It contains the resetting counter and cold flag status.
->
-> At this point, migration of bus reset related state (counter and cold/warm
-> flag) is handled by parent device. This done using the post_load
-> function in the vmsd subsection.
->
-> This is last point allow to add an initial support of migration with part of
-> qdev/qbus tree in reset state under the following condition:
-> + time-lasting reset are asserted on Device only
->
-> Note that if this condition is not respected, migration will succeed and
-> no failure will occurs. The only impact is that the resetting counter
-> of a bus may lower afer a migration.
->
-> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+X-TUID: mErxB4doRM11
 
 
-> +const struct VMStateDescription device_vmstate_reset = {
-> +    .name = "device_reset",
-> +    .version_id = 0,
-> +    .minimum_version_id = 0,
-> +    .needed = device_vmstate_reset_needed,
-> +    .post_load = device_vmstate_reset_post_load,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_UINT32(resetting, DeviceState),
-> +        VMSTATE_BOOL(reset_is_cold, DeviceState),
-> +        VMSTATE_END_OF_LIST()
-> +    },
-> +};
-> -
 
-Forgot to ask -- why don't we migrate the hold_needed flags?
+On 8/7/19 4:20 PM, Peter Maydell wrote:
+> On Mon, 29 Jul 2019 at 15:58, Damien Hedde <damien.hedde@greensocs.com> wrote:
+>>
+>> This commit defines an interface allowing multi-phase reset.
+>> The phases are INIT, HOLD and EXIT. Each phase has an associated method
+>> in the class.
+>>
+>> The reset of a Resettable is controlled with 2 functions:
+>>   - resettable_assert_reset which starts the reset operation.
+>>   - resettable_deassert_reset which ends the reset operation.
+>>
+>> There is also a `resettable_reset` helper function which does assert then
+>> deassert allowing to do a proper reset in one call.
+>>
+>> In addition, two functions, *resettable_reset_cold_fn* and
+>> *resettable_reset_warm_fn*, are defined. They take only an opaque argument
+>> (for the Resettable object) and can be used as callbacks.
+>>
+>> The Resettable interface is "reentrant", _assert_ can be called several
+>> times and _deasert_ must be called the same number of times so that the
+> 
+> deassert
+> 
+>> Resettable leave reset state. It is supported by keeping a counter of
+>> the current number of _assert_ calls. The counter maintainance is done
+>> though 3 methods get/increment/decrement_count. A method set_cold is used
+>> to set the cold flag of the reset. Another method set_host_needed is used
+>> to ensure hold phase is executed only if required.
+>>
+>> Reset hierarchy is also supported. Each Resettable may have
+>> sub-Resettable objects. When resetting a Resettable, it is propagated to
+>> its children using the foreach_child method.
+>>
+>> When entering reset, init phases are executed parent-to-child order then
+>> hold phases are executed child-parent order.
+> 
+> Why do we execute the hold phase in child-to-parent order? I would
+> have expected this to follow the same order as the init phase.
 
-thanks
--- PMM
+No particular reason, I just thought it was better that way. But I don't
+have a use case where it matters.
+
+If we do only an assert_reset, then top-level phases are
+called first and last:
+parent's init
+  child A's init
+  child_B's init
+  child_A's hold
+  child_B's hold
+parent's hold
+
+I can switch it.
+
+> 
+>> When leaving reset, exit phases are executed in child-to-parent order.
+>> This will allow to replace current qdev_reset mechanism by this interface
+>> without side-effects on reset order.
+> 
+> It makes sense that the exit phase is child-to-parent.
+> 
+>> Note: I used an uint32 for the count. This match the type already used
+>> in the existing resetting counter in hw/scsi/vmw_pvscsi.c for the
+>> PVSCSIState.
+>>
+>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+>> ---
+>>  Makefile.objs           |   1 +
+>>  hw/core/Makefile.objs   |   1 +
+>>  hw/core/resettable.c    | 220 ++++++++++++++++++++++++++++++++++++++++
+>>  hw/core/trace-events    |  39 +++++++
+>>  include/hw/resettable.h | 126 +++++++++++++++++++++++
+>>  5 files changed, 387 insertions(+)
+>>  create mode 100644 hw/core/resettable.c
+>>  create mode 100644 hw/core/trace-events
+>>  create mode 100644 include/hw/resettable.h
+>>
+>> diff --git a/Makefile.objs b/Makefile.objs
+>> index 6a143dcd57..a723a47e14 100644
+>> --- a/Makefile.objs
+>> +++ b/Makefile.objs
+>> @@ -191,6 +191,7 @@ trace-events-subdirs += migration
+>>  trace-events-subdirs += net
+>>  trace-events-subdirs += ui
+>>  endif
+>> +trace-events-subdirs += hw/core
+>>  trace-events-subdirs += hw/display
+>>  trace-events-subdirs += qapi
+>>  trace-events-subdirs += qom
+>> diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+>> index f8481d959f..d9234aa98a 100644
+>> --- a/hw/core/Makefile.objs
+>> +++ b/hw/core/Makefile.objs
+>> @@ -1,6 +1,7 @@
+>>  # core qdev-related obj files, also used by *-user:
+>>  common-obj-y += qdev.o qdev-properties.o
+>>  common-obj-y += bus.o reset.o
+>> +common-obj-y += resettable.o
+>>  common-obj-$(CONFIG_SOFTMMU) += qdev-fw.o
+>>  common-obj-$(CONFIG_SOFTMMU) += fw-path-provider.o
+>>  # irq.o needed for qdev GPIO handling:
+>> diff --git a/hw/core/resettable.c b/hw/core/resettable.c
+>> new file mode 100644
+>> index 0000000000..d7d631ce8b
+>> --- /dev/null
+>> +++ b/hw/core/resettable.c
+>> @@ -0,0 +1,220 @@
+>> +/*
+>> + * Resettable interface.
+>> + *
+>> + * Copyright (c) 2019 GreenSocs SAS
+>> + *
+>> + * Authors:
+>> + *   Damien Hedde
+>> + *
+>> + * This work is licensed under the terms of the GNU GPL, version 2 or later.
+>> + * See the COPYING file in the top-level directory.
+>> + */
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "qemu/module.h"
+>> +#include "hw/resettable.h"
+>> +#include "trace.h"
+>> +
+>> +#define RESETTABLE_MAX_COUNT 50
+>> +
+>> +#define RESETTABLE_GET_CLASS(obj) \
+>> +    OBJECT_GET_CLASS(ResettableClass, (obj), TYPE_RESETTABLE)
+> 
+> Since this is an interface and not a complete class,
+> we should name it TYPE_RESETTABLE_INTERFACE. We're rather
+> inconsistent about naming of interfaces (in the codebase you
+> can find "_INTERFACE suffix", "_IF suffix" and "no suffix").
+> I think _INTERFACE suffix is best of these.
+> (There's some discussion of this in this mailing list thread:
+> https://lists.gnu.org/archive/html/qemu-devel/2019-03/msg03840.html
+>  -- the idea is that it avoids confusion between whether an
+> implementation of the type needs to be a subclass of it or
+> if it has to be added as an interface to some other type.)
+> 
+>> +
+>> +static void resettable_init_reset(Object *obj, bool cold);
+>> +
+>> +static bool resettable_class_check(ResettableClass *rc)
+>> +{
+>> +    if (!rc->set_cold) {
+>> +        return false;
+>> +    }
+>> +    if (!rc->set_hold_needed) {
+>> +        return false;
+>> +    }
+>> +    if (!rc->increment_count) {
+>> +        return false;
+>> +    }
+>> +    if (!rc->decrement_count) {
+>> +        return false;
+>> +    }
+>> +    if (!rc->get_count) {
+>> +        return false;
+>> +    }
+>> +    return true;
+>> +}
+> 
+> I don't think we really need to do this -- this is only used
+> as an assert(), and the code is in any case going to exercise
+> all the methods. Plus we only implement these methods in a couple
+> of classes and we don't expect a lot of new implementations of them.
+> 
+>> +
+>> +static void resettable_foreach_child(ResettableClass *rc,
+>> +                                     Object *obj,
+>> +                                     void (*func)(Object *))
+>> +{
+>> +    if (rc->foreach_child) {
+>> +        rc->foreach_child(obj, func);
+>> +    }
+>> +}
+>> +
+>> +static void resettable_init_cold_reset(Object *obj)
+>> +{
+>> +    resettable_init_reset(obj, true);
+>> +}
+>> +
+>> +static void resettable_init_warm_reset(Object *obj)
+>> +{
+>> +    resettable_init_reset(obj, false);
+>> +}
+>> +
+>> +static void resettable_init_reset(Object *obj, bool cold)
+>> +{
+>> +    void (*func)(Object *);
+>> +    ResettableClass *rc = RESETTABLE_GET_CLASS(obj);
+>> +    uint32_t count;
+>> +    bool action_needed = false;
+>> +    bool prev_cold;
+>> +
+>> +    assert(resettable_class_check(rc));
+>> +
+>> +    count = rc->increment_count(obj);
+>> +    /* this assert is here to catch an eventual reset loop */
+>> +    assert(count <= RESETTABLE_MAX_COUNT);
+> 
+> I think I understand what this assert is for, but a slightly
+> expanded comment would help.
+
+is this better ?
+/*
+ * We limit the count to an arbitrary "big" value. The value is big
+ * enough not to be triggered nominally.
+ * The assert will catch a cycle in the reset tree which triggers
+ * an infinite loop.
+ */
+
+Maybe I should drop the macro here, it will be more explicit.
+
+> 
+>> +
+>> +    /*
+>> +     * only take action if:
+>> +     * + we really enter reset for the 1st time
+>> +     * + or we are in warm reset and start a cold one
+>> +     */
+>> +    prev_cold = rc->set_cold(obj, cold);
+>> +    if (count == 1) {
+>> +        action_needed = true;
+>> +    } else if (cold && !prev_cold) {
+>> +        action_needed = true;
+>> +    }
+>> +    trace_resettable_phase_init(obj, object_get_typename(obj), cold, count,
+>> +                                action_needed);
+>> +
+>> +    /* exec init phase */
+>> +    if (action_needed) {
+>> +        rc->set_hold_needed(obj, true);
+>> +        if (rc->phases.init) {
+>> +            rc->phases.init(obj);
+>> +        }
+>> +    }
+>> +
+>> +    /*
+>> +     * handle the children even if action_needed is at false so that
+>> +     * children counts are incremented too
+>> +     */
+>> +    func = cold ? resettable_init_cold_reset : resettable_init_warm_reset;
+>> +    resettable_foreach_child(rc, obj, func);
+>> +    trace_resettable_phase_init_end(obj);
+>> +}
+>> +
+>> +static void resettable_hold_reset(Object *obj)
+>> +{
+>> +    ResettableClass *rc = RESETTABLE_GET_CLASS(obj);
+>> +    bool hold_needed;
+>> +
+>> +    assert(resettable_class_check(rc));
+>> +    trace_resettable_phase_hold(obj, object_get_typename(obj));
+>> +
+>> +    /* handle children first */
+>> +    resettable_foreach_child(rc, obj, resettable_hold_reset);
+>> +
+>> +    /* exec hold phase */
+>> +    hold_needed = rc->set_hold_needed(obj, false);
+>> +    if (hold_needed) {
+>> +        if (rc->phases.hold) {
+>> +            rc->phases.hold(obj);
+>> +        }
+>> +    }
+>> +    trace_resettable_phase_hold_end(obj, hold_needed);
+>> +}
+>> +
+>> +static void resettable_exit_reset(Object *obj)
+>> +{
+>> +    uint32_t count;
+>> +    ResettableClass *rc = RESETTABLE_GET_CLASS(obj);
+>> +
+>> +    assert(resettable_class_check(rc));
+>> +    trace_resettable_phase_exit(obj, object_get_typename(obj));
+>> +
+>> +    resettable_foreach_child(rc, obj, resettable_deassert_reset);
+>> +
+>> +    count = rc->get_count(obj);
+>> +    /*
+>> +     * we could assert that count > 0 but there are some corner cases
+>> +     * where we prefer to let it go as it is probably harmless.
+>> +     * For example: if there is reset support addition between
+>> +     * hosts when doing a migration. We may do such things as
+>> +     * deassert a non-existing reset.
+>> +     */
+>> +    if (count > 0) {
+>> +        count = rc->decrement_count(obj);
+>> +    } else {
+>> +        trace_resettable_count_underflow(obj);
+>> +    }
+>> +    if (count == 0) {
+>> +        if (rc->phases.exit) {
+>> +            rc->phases.exit(obj);
+>> +        }
+>> +    }
+>> +    trace_resettable_phase_exit_end(obj, count);
+>> +}
+>> +
+>> +void resettable_assert_reset(Object *obj, bool cold)
+>> +{
+>> +    trace_resettable_reset_assert(obj, object_get_typename(obj), cold);
+>> +    resettable_init_reset(obj, cold);
+>> +    resettable_hold_reset(obj);
+>> +}
+>> +
+>> +void resettable_deassert_reset(Object *obj)
+>> +{
+>> +    trace_resettable_reset_deassert(obj, object_get_typename(obj));
+>> +    resettable_exit_reset(obj);
+>> +}
+>> +
+>> +void resettable_reset(Object *obj, bool cold)
+>> +{
+>> +    trace_resettable_reset(obj, object_get_typename(obj), cold);
+>> +    resettable_assert_reset(obj, cold);
+>> +    resettable_deassert_reset(obj);
+>> +}
+>> +
+>> +void resettable_reset_warm_fn(void *opaque)
+>> +{
+>> +    resettable_reset((Object *) opaque, false);
+>> +}
+>> +
+>> +void resettable_reset_cold_fn(void *opaque)
+>> +{
+>> +    resettable_reset((Object *) opaque, true);
+>> +}
+>> +
+>> +void resettable_class_set_parent_reset_phases(ResettableClass *rc,
+>> +                                              ResettableInitPhase init,
+>> +                                              ResettableHoldPhase hold,
+>> +                                              ResettableExitPhase exit,
+>> +                                              ResettablePhases *parent_phases)
+>> +{
+>> +    *parent_phases = rc->phases;
+>> +    if (init) {
+>> +        rc->phases.init = init;
+>> +    }
+>> +    if (hold) {
+>> +        rc->phases.hold = hold;
+>> +    }
+>> +    if (exit) {
+>> +        rc->phases.exit = exit;
+>> +    }
+>> +}
+>> +
+>> +static const TypeInfo resettable_interface_info = {
+>> +    .name       = TYPE_RESETTABLE,
+>> +    .parent     = TYPE_INTERFACE,
+>> +    .class_size = sizeof(ResettableClass),
+>> +};
+>> +
+>> +static void reset_register_types(void)
+>> +{
+>> +    type_register_static(&resettable_interface_info);
+>> +}
+>> +
+>> +type_init(reset_register_types)
+>> diff --git a/hw/core/trace-events b/hw/core/trace-events
+>> new file mode 100644
+>> index 0000000000..489d96d445
+>> --- /dev/null
+>> +++ b/hw/core/trace-events
+>> @@ -0,0 +1,39 @@
+>> +# See docs/devel/tracing.txt for syntax documentation.
+>> +#
+>> +# This file is processed by the tracetool script during the build.
+>> +#
+>> +# To add a new trace event:
+>> +#
+>> +# 1. Choose a name for the trace event.  Declare its arguments and format
+>> +#    string.
+>> +#
+>> +# 2. Call the trace event from code using trace_##name, e.g. multiwrite_cb() ->
+>> +#    trace_multiwrite_cb().  The source file must #include "trace.h".
+>> +#
+>> +# Format of a trace event:
+>> +#
+>> +# [disable] <name>(<type1> <arg1>[, <type2> <arg2>] ...) "<format-string>"
+>> +#
+>> +# Example: g_malloc(size_t size) "size %zu"
+>> +#
+>> +# The "disable" keyword will build without the trace event.
+>> +#
+>> +# The <name> must be a valid as a C function name.
+>> +#
+>> +# Types should be standard C types.  Use void * for pointers because the trace
+>> +# system may not have the necessary headers included.
+>> +#
+>> +# The <format-string> should be a sprintf()-compatible format string.
+>> +
+>> +# resettable.c
+>> +resettable_reset(void *obj, const char *type, int cold) "obj=%p(%s) cold=%d"
+>> +resettable_reset_assert(void *obj, const char *type, int cold) "obj=%p(%s) cold=%d"
+>> +resettable_reset_deassert(void *obj, const char *type) "obj=%p(%s)"
+>> +resettable_reset_deassert_end(void *obj) "obj=%p"
+>> +resettable_phase_init(void *obj, const char *type, int cold, uint32_t count, int needed) "obj=%p(%s) cold=%d count=%" PRIu32 " needed=%d"
+>> +resettable_phase_init_end(void *obj) "obj=%p"
+>> +resettable_phase_hold(void *obj, const char *type) "obj=%p(%s)"
+>> +resettable_phase_hold_end(void *obj, int needed) "obj=%p needed=%d"
+>> +resettable_phase_exit(void *obj, const char *type) "obj=%p(%s)"
+>> +resettable_phase_exit_end(void *obj, uint32_t count) "obj=%p count=%" PRIu32
+>> +resettable_count_underflow(void *obj) "obj=%p"
+>> diff --git a/include/hw/resettable.h b/include/hw/resettable.h
+>> new file mode 100644
+>> index 0000000000..e617a8e875
+>> --- /dev/null
+>> +++ b/include/hw/resettable.h
+>> @@ -0,0 +1,126 @@
+>> +#ifndef HW_RESETTABLE_H
+>> +#define HW_RESETTABLE_H
+>> +
+>> +#include "qom/object.h"
+>> +
+>> +#define TYPE_RESETTABLE "resettable"
+>> +
+>> +#define RESETTABLE_CLASS(class) \
+>> +    OBJECT_CLASS_CHECK(ResettableClass, (class), TYPE_RESETTABLE)
+>> +
+>> +/*
+>> + * ResettableClass:
+>> + * Interface for resettable objects.
+>> + *
+>> + * The reset operation is divided in several phases each represented by a
+>> + * method.
+>> + *
+>> + * Each Ressetable must maintain a reset counter in its state, 3 methods allows
+> 
+> "resettable"
+> 
+>> + * to interact with it.
+> 
+> I think we could improve this comment to be a bit clearer about
+> who we expect to implement which methods. Something like:
+> 
+> /*
+>  * ResettableClass:
+>  * Interface for resettable objects.
+>  *
+>  * See docs/devel/reset.rst for more detailed information about
+>  * how QEMU models reset.
+>  *
+>  * All objects which can be reset must implement this interface;
+>  * it is usually provided by a base class such as DeviceClass or BusClass.
+>  * Every Resettable object must maintain some state tracking the
+>  * progress of a reset operation:
+>  *  - a reset count, which is incremented when the reset operation
+>  *    starts and decremented when it finishes
+>  *  - a 'cold' flag, which tracks whether the in-progress reset is
+>  *    a warm reset or a cold reset
+>  *  - a 'hold_needed' flag, which indicates that we need to
+>  *    invoke the 'hold' phase handler for this object
+>  * The base class implementation of the interface provides this
+>  * state and implements the associated methods: set_cold,
+>  * set_hold_needed, get_count, increment_count and decrement_count.
+>  *
+>  * Concrete object implementations (typically specific devices
+>  * such as a UART model) should provide the functions
+>  * for the phases.init, phases.hold and phases.exit methods, which
+>  * they can set in their class init function, either directly or
+>  * by calling resettable_class_set_parent_reset_phases().
+>  * The phase methods are guaranteed to only only ever be called once
+>  * for any reset event, in the order 'init', 'hold', 'exit'.
+>  * An object will always move quickly from 'init' to 'hold'
+>  * but might remain in 'hold' for an arbitrary period of time
+>  * before eventually reset is deasserted and the 'exit' phase is called.
+>  * Object implementations should be prepared for functions handling
+>  * inbound connections from other devices (such as qemu_irq handler
+>  * functions) to be called at any point during reset after their
+>  * 'init' method has been called.
+>  *
+>  * Users of a resettable object should not call these methods
+>  * directly, but instead use the functions resettable_assert_reset(),
+>  * resettable_deassert_reset() or resettable_reset().
+> 
+> 
+>> + *
+>> + * @phases.init: should reset local state only. Takes a bool @cold argument
+>> + * specifying whether the reset is cold or warm. It must not do side-effect
+>> + * on others objects.
+> 
+> This says that phases.init takes a 'cold' argument, but the prototype
+> doesn't have one.
+
+I finally removed the argument and forgot to change this bit.
+
+> 
+> "This phase is called when the object enters reset. It should reset
+> local state of the object, but it must not do anything that has a
+> side-effect on other objects, such as raising or lowering a qemu_irq line
+> or reading or writing guest memory."
+> 
+>> + *
+>> + * @phases.hold: side-effects action on others objects due to staying in a
+>> + * resetting state.
+> 
+> "This phase is called for entry into reset, once every object in the
+> system which is being reset has had its @phases.init method called.
+> At this point devices can do actions that affect other objects."
+> 
+> 
+>> + *
+>> + * @phases.exit: leave the reset state, may do side-effects action on others
+>> + * objects.
+> 
+> "This phase is called when the object leaves the reset state. Actions
+> affecting other objects are permitted."
+> 
+>> + *
+>> + * @set_cold: Set whether the current reset is cold or warm. Return the
+>> + * previous flag value. Return value has no meaning if @get_count returns
+>> + * a zero value.
+>> + *
+>> + * @set_hold_needed: Set hold_needed flag. Return the previous flag value.
+>> + *
+>> + * @get_count: Get the current reset count
+>> + * @increment_count: Increment the reset count, returns the new count
+>> + * @decrement_count: decrement the reset count, returns the new count
+>> + *
+>> + * @foreach_child: Executes a given function on every Resettable child.
+>> + * A child is not a QOM child, but a child a reset meaning.
+> 
+> "Child in this context means a child in the qbus tree, so the
+> children of a qbus are the devices on it, and the children of
+> a device are all the buses it owns. This is not the same as the
+> QOM object hierarchy."
+> 
+>> + */
+>> +typedef void (*ResettableInitPhase)(Object *obj);
+>> +typedef void (*ResettableHoldPhase)(Object *obj);
+>> +typedef void (*ResettableExitPhase)(Object *obj);
+>> +typedef bool (*ResettableSetCold)(Object *obj, bool cold);
+>> +typedef bool (*ResettableSetHoldNeeded)(Object *obj, bool hold_needed);
+>> +typedef uint32_t (*ResettableGetCount)(Object *obj);
+>> +typedef uint32_t (*ResettableIncrementCount)(Object *obj);
+>> +typedef uint32_t (*ResettableDecrementCount)(Object *obj);
+>> +typedef void (*ResettableForeachChild)(Object *obj, void (*visitor)(Object *));
+>> +typedef struct ResettableClass {
+>> +    InterfaceClass parent_class;
+>> +
+>> +    struct ResettablePhases {
+>> +        ResettableInitPhase init;
+>> +        ResettableHoldPhase hold;
+>> +        ResettableExitPhase exit;
+>> +    } phases;
+>> +
+>> +    ResettableSetCold set_cold;
+>> +    ResettableSetHoldNeeded set_hold_needed;
+>> +    ResettableGetCount get_count;
+>> +    ResettableIncrementCount increment_count;
+>> +    ResettableDecrementCount decrement_count;
+>> +    ResettableForeachChild foreach_child;
+>> +} ResettableClass;
+>> +typedef struct ResettablePhases ResettablePhases;
+>> +
+>> +/**
+>> + * resettable_assert_reset:
+> 
+> "Put the object into reset, and hold it there until
+> the caller later calls resettable_deassert_reset()."
+> 
+>> + * Increments the reset count and executes the init and hold phases.
+>> + * Each time resettable_assert_reset is called, resettable_deassert_reset
+>> + * must eventually be called once.
+>> + * It will also impact reset children.
+> 
+> "This will reset the specified object and all of its reset children."
+> 
+>> + *
+>> + * @obj object to reset, must implement Resettable interface.
+>> + * @cold boolean indicating the type of reset (cold or warm)
+>> + */
+>> +void resettable_assert_reset(Object *obj, bool cold);
+>> +
+>> +/**
+>> + * resettable_deassert_reset:
+> 
+> "Take the object out of reset."
+> 
+>> + * Decrements the reset count by one and executes the exit phase if it hits
+>> + * zero.
+>> + * It will also impact reset children.
+>> + *
+>> + * @obj object to reset, must implement Resettable interface.
+>> + */
+>> +void resettable_deassert_reset(Object *obj);
+>> +
+>> +/**
+>> + * resettable_reset:
+>> + * Calling this function is equivalent to call @assert_reset then
+> 
+> "to calling"
+> 
+>> + * @deassert_reset.
+>> + */
+>> +void resettable_reset(Object *obj, bool cold);
+>> +
+>> +/**
+>> + * resettable_reset_warm_fn:
+>> + * Helper to call resettable_reset(opaque, false)
+>> + */
+>> +void resettable_reset_warm_fn(void *opaque);
+>> +
+>> +/**
+>> + * resettable_reset_cold_fn:
+>> + * Helper to call resettable_reset(opaque, true)
+>> + */
+>> +void resettable_reset_cold_fn(void *opaque);
+>> +
+>> +/**
+>> + * resettable_class_set_parent_reset_phases:
+>> + *
+>> + * Save @rc current reset phases into @parent_phases and override @rc phases
+>> + * by the given new methods (@init, @hold and @exit).
+>> + * Each phase is overriden only if the new one is not NULL allowing to
+> 
+> "overridden"
+> 
+>> + * override a subset of phases.
+>> + */
+>> +void resettable_class_set_parent_reset_phases(ResettableClass *rc,
+>> +                                              ResettableInitPhase init,
+>> +                                              ResettableHoldPhase hold,
+>> +                                              ResettableExitPhase exit,
+>> +                                              ResettablePhases *parent_phases);
+>> +
+>> +#endif
+> 
+> This function name is quite long -- I think we could reasonably
+> call it resettable_class_set_parent_phases().
+> 
+> thanks
+> -- PMM
+> 

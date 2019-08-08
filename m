@@ -1,114 +1,106 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp6872150wrv;
-        Wed, 7 Aug 2019 11:26:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyOWEp8dJwYZVTratlcUvbrKqJ7kFgb9GUSJo7m3LJPsQKEKNm8wOSU0xk9dlO2aWOpCxVt
-X-Received: by 2002:a37:61c3:: with SMTP id v186mr9190268qkb.158.1565202381078;
-        Wed, 07 Aug 2019 11:26:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565202381; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7369856wrv;
+        Wed, 7 Aug 2019 21:45:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy7DATsXX7pob15BAIrcHwMntubD+MGQ6UghaW9EAZ/lOwGo2C9vLGwEQf/Q/gsd8/IwGki
+X-Received: by 2002:a05:6214:10c6:: with SMTP id r6mr11604267qvs.22.1565239539141;
+        Wed, 07 Aug 2019 21:45:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565239539; cv=none;
         d=google.com; s=arc-20160816;
-        b=rIkkF2s2I4KYteWfeMVmdb5Hcp98bu1nIyEH9WIb/7U0sV8eX8Ho2EpQSYRTwr6uvs
-         ZSznhQEBAk/2Uo1UN0GmlArcYL5ncT0JEBBHizrbmU/HM/wcOxxcBa5e2/5lyTNNawC6
-         b2bqJJQWpbmhlWXThcFWGl2nnJrZhz35BIKva7BGe5O51aHtfjJOI0TpRKr/jv8nxKB4
-         8dm5HVctB0+AtgiNRn0JHSy2XBp4Wcko4KBlJTASObtNUjRqzhYN9SO9RuoV3EGwTOWD
-         UXPYzl/ohCGbD69TnppJJJZKWWHsDzj5GK1k/moVqHQmsMPngaILg7YYpAtUK2QkoWR5
-         qSvA==
+        b=Du2sBSN1V7T6PB3QzQgRWe0R1KbJ5nvy3/ADhh8jhbbwg7sv9svDFd27hPhukExXNR
+         NblEoGJgSqkun17rjPmJSJhMT6+CjmbOEqT0elBMlOphVhzKhiF36ooF1YnfC+5qzd2S
+         9JFPmRmNvU8tgzq9N0bE6yqTTYqh/hxO9xEz3ec0IqRerOpCB1nsrlY+UK0H1e7c1iH9
+         eufor65WV2KoWwkoznKhvwu3t5cn+ouf1vElKt/6EWB8PTwROgghxIS7vc79ErJtFZkH
+         8ODbt4YmYDwpTN5lE2iiaw8UIo/+fmbVzNv+CfOP3IetcOuuqkH/T3ymvy8qfNOY2NYi
+         dIvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature;
-        bh=O6ZVVVnFK8gMP42dZaFj7U87HAGu+ffS7XGWfusThcY=;
-        b=kBFTyk426PETn3xcUcfwcdYiJ1jLA2OrfX5rZGzbYLkmTcqiUuuJERlZnD2yF38XGE
-         cSJAciWK2aycycyWqqeHrtBzQws58g9vChQx+4AZ96kjEft3YbHP9xarqRhgf1zvTClQ
-         smA8hkdIbQCcNdai9InRZpxFmUMtWjNXPugxCHOQyEbEl7h1Qit5jcmdXR4+C4x6K/wI
-         Yb1if9CC8J8gl8EiXIhSR2xiE7Ei0x3GoJ1WUlxkRCndJOTVKK5+3s7k9V1dcP7RyxJL
-         3ac5pf14xuch6gHijV4vrk2fxISjFyBQWzNCVcUfMR+GqwtEePhqizAVYbDZOnHhkr2z
-         +wWQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=E6yxnr+XaLfykr9binetZruI0I2aHRyZR2ZqXqM16+Q=;
+        b=QncM0+q/PkuowQmP/s2dBOetWMJcKP5dzZxkaKpOXwcmFrHaCunbAZM2yEO2oxT6uJ
+         tMDK1vifcUCswVDxT3R4OLenOhGqbQ0DNN+BIbwlfEEIZKiZotGZSnwDS0Khjej4qOi3
+         QvvgiIxQ2B5TEPnfXFxnwfrStVJ+1MnIdvnt7qv+tFiKI/1sNVipqTaWeAU/HAnDZ2j2
+         sfEzbABWsNi4E0tA6CHkYBZagP70mPU/CtzudxTJbsGrBWT8oSZxivwQ3aqo6pWa7+M/
+         5iIJfPqKps+Qe+FOvPOHZST7StpzGs6IaMSk+DiRRC+O4GIAzdL3CKOe5apJLoPLQM74
+         lkPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kqHzF1HB;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hUON9jRV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j22si55073247qtc.232.2019.08.07.11.26.20
+        by mx.google.com with ESMTPS id b9si54461651qvq.20.2019.08.07.21.45.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Aug 2019 11:26:21 -0700 (PDT)
+        Wed, 07 Aug 2019 21:45:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kqHzF1HB;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hUON9jRV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44322 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:46896 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvQdg-00005E-Lw
-	for alex.bennee@linaro.org; Wed, 07 Aug 2019 14:26:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38823)
+	id 1hvaJ0-0001om-LL
+	for alex.bennee@linaro.org; Thu, 08 Aug 2019 00:45:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52067)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <richard.henderson@linaro.org>) id 1hvQdS-0008WT-4c
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 14:26:07 -0400
+ (envelope-from <bmeng.cn@gmail.com>) id 1hvaIt-0001j7-PX
+ for qemu-arm@nongnu.org; Thu, 08 Aug 2019 00:45:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1hvQdR-0000k3-6J
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 14:26:06 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:38724)
+ (envelope-from <bmeng.cn@gmail.com>) id 1hvaIs-00058Y-TP
+ for qemu-arm@nongnu.org; Thu, 08 Aug 2019 00:45:31 -0400
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:41238)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1hvQdQ-0000d9-VS
- for qemu-arm@nongnu.org; Wed, 07 Aug 2019 14:26:05 -0400
-Received: by mail-pl1-x643.google.com with SMTP id m12so3417888plt.5
- for <qemu-arm@nongnu.org>; Wed, 07 Aug 2019 11:26:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=O6ZVVVnFK8gMP42dZaFj7U87HAGu+ffS7XGWfusThcY=;
- b=kqHzF1HB/XqXehEyAGwHuWapyLBzqxoUwslq9VHFHjepNTexylmqXBrOrsDI0j8R+q
- MhDVlTqbMcNZMwOdM9cThzY1WIDKKbNDN/nDAoM75sUjnIEMhJMjrUeZLcok/qE4qzDs
- 5a746AGfupRavS08skbNZZxSwywYJnCg6MW3o1BO8RtSo8rxhYn1ozye3G1lLBErFdYo
- jPFxn0fMcK4r1Wl/RZQh/eH4a4nf7a0kJPkza1jNnLb1ZTqJt2S4ztABGqVnbfxIT8C1
- uEqHYGpvGg9fg7w+UVe4acEmbsGXyMBe/5z7WU4s/kPi44IOTtyrIvloef3RSr9K7JJg
- 0xzQ==
+ (Exim 4.71) (envelope-from <bmeng.cn@gmail.com>)
+ id 1hvaIq-00057B-O0; Thu, 08 Aug 2019 00:45:28 -0400
+Received: by mail-pl1-x641.google.com with SMTP id m9so42825644pls.8;
+ Wed, 07 Aug 2019 21:45:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:subject:date:message-id:in-reply-to:references;
+ bh=E6yxnr+XaLfykr9binetZruI0I2aHRyZR2ZqXqM16+Q=;
+ b=hUON9jRVNF7N/A24B0IPUEFT28l8jnaBbCe5NxkH6Ul/h8+XxuLBlhXnjki8xVcquw
+ zxrQ0yp0ywDQCwjutT7YOgpQSiOTbe/VFujGo5OdnbQMq1H3srkdDc8yRtRlk5IggUWm
+ 0AmESPv3m7T+duoVP2Rd1OF6dDV1Jp+387GHVgLqNTRWtSmNVAyuRDAUtbUpv+jiV9M5
+ hgS3PIpvAj+jVSZdI850JvEGGWGSyd+VKATwjDKqQqdFXcQUq8DXNSJikHaN4841nC5K
+ lSViqGmiahEDc6DQaZvewY1lquNwZ8pxQsbzkuMU3hlPlbdjrRwPWRJKH79Nmp9VpdtX
+ GKeg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=O6ZVVVnFK8gMP42dZaFj7U87HAGu+ffS7XGWfusThcY=;
- b=lGgeHfFR0m6MUw+Wg8iObcaJt+ipAVKpKDjGK+8w8GOh0aR6FWXvvnpLfic9S2G8gc
- R9FPLR6E1Eu3ByJs/lhznQUA8dqqEfzbxE18phe6kK5E9kmilTEoSt2bBD4hlFe7wi3a
- hGZ6z3x9kZkcH7vbO3tl6Opg6XdPaRthxfq9/m2/hdjtUCU2CrRi9fyTYBxhpouQtsL5
- yPgaq0qQBUHWmDeggq49IRKqu2Exr5k1ZqolcfgMaf+wY9ij6CsaqHX730UpNFqAxQf4
- qFajEI8m0w7Gfzrm/k5+dBg45LOzDmdbBLIPx9aT0bI5mQeJp6PzyyOI1UdTwA/srOV2
- z44A==
-X-Gm-Message-State: APjAAAUnQyxZmuFUKT5syqUbSh1AjALPhrqjiy0kI88Yxdxzlz2XCBgW
- zdhGHjPEyV45Ykch1GuvSH1/CBtOPr0=
-X-Received: by 2002:a63:4a04:: with SMTP id x4mr1628068pga.411.1565202361099; 
- Wed, 07 Aug 2019 11:26:01 -0700 (PDT)
-Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id b68sm113296790pfb.149.2019.08.07.11.26.00
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 07 Aug 2019 11:26:00 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20190807045335.1361-1-richard.henderson@linaro.org>
- <20190807045335.1361-4-richard.henderson@linaro.org>
- <CAFEAcA_MFg1_gpaT5+X71s8r5SYZFTizdXs2vQ_6mLooP7E+kg@mail.gmail.com>
- <061145be-4cd4-b8e6-ae5c-562a59e8088f@linaro.org>
- <CAFEAcA8fCL4VTJYdWGbDySzT9zkgmjcMGqBj0fo9gN4x4B-WcQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <5bcd1a92-d8a7-0dac-bc25-a0db23bb2eaf@linaro.org>
-Date: Wed, 7 Aug 2019 11:25:58 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8fCL4VTJYdWGbDySzT9zkgmjcMGqBj0fo9gN4x4B-WcQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references;
+ bh=E6yxnr+XaLfykr9binetZruI0I2aHRyZR2ZqXqM16+Q=;
+ b=lbp8o+Gn5yGT6M+Oi4GBRkTfmWDtSdfZAaWI8svK1X9QBmgidAu2gPZFpBOpTtT1j8
+ pmW1jPjB5TF7r6JPj21mCWW7obX7fcw2G5f6NSVCJJh/vIsmuraKbdG6btQAeQs8WSoN
+ 4S7MgP9N+EwqnyXjkVedsvEfbKp1I90yzzK4pURkgFCYn3zEBtv1VcXkRnzK8Tpa01aU
+ W2FTO3hXIwXSLOZwiIsarH7fthpb4ocICHPHFIjfRA/wWSwYB5u7Q02SlXb2FXzQFPLY
+ K0DerqHafc4ELZKEuo5eA/aAfJeOZTBfdRGm2zU+3VHqsK7bXsdG/ikz6wzsZal7kPzq
+ JUkA==
+X-Gm-Message-State: APjAAAUwB3Qyd/zZgGcAlyzOXQyt26mDvGpZn744VmoMrgl/J9Kugrjq
+ aPJF1X7KOJ2gUczH2etgfdE=
+X-Received: by 2002:a17:902:b949:: with SMTP id
+ h9mr10738694pls.120.1565239527351; 
+ Wed, 07 Aug 2019 21:45:27 -0700 (PDT)
+Received: from localhost.localdomain (unknown-224-80.windriver.com.
+ [147.11.224.80])
+ by smtp.gmail.com with ESMTPSA id h26sm98458499pfq.64.2019.08.07.21.45.26
+ (version=TLS1 cipher=AES128-SHA bits=128/128);
+ Wed, 07 Aug 2019 21:45:26 -0700 (PDT)
+From: Bin Meng <bmeng.cn@gmail.com>
+To: Alistair Francis <Alistair.Francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Jason Wang <jasowang@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Stefano Garzarella <sgarzare@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Date: Wed,  7 Aug 2019 21:44:39 -0700
+Message-Id: <1565239479-2130-1-git-send-email-bmeng.cn@gmail.com>
+X-Mailer: git-send-email 1.7.1
+In-Reply-To: <1565020374-23888-1-git-send-email-bmeng.cn@gmail.com>
+References: <1565020374-23888-1-git-send-email-bmeng.cn@gmail.com>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::643
-Subject: Re: [Qemu-arm] [PATCH 03/11] target/arm: Introduce read_pc
+X-Received-From: 2607:f8b0:4864:20::641
+Subject: [Qemu-arm] [PATCH v2] hw: net: cadence_gem: Fix build errors in
+ DB_PRINT()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -120,25 +112,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fMWtbz0eZvsO
+X-TUID: sIbHVjQqSNTd
 
-On 8/7/19 11:16 AM, Peter Maydell wrote:
-> How about we add this to the commit message?
-> 
-> This changes the behaviour for load_reg() and load_reg_var()
-> when called with reg==15 from a 32-bit Thumb instruction:
-> previously they would have returned the incorrect value
-> of pc_curr + 6, and now they will return the architecturally
-> correct value of PC, which is pc_curr + 4. This will not
-> affect well-behaved guest software, because all of the places
-> we call these functions from T32 code are instructions where
-> using r15 is UNPREDICTABLE. Using the architectural PC value
-> here is more consistent with the T16 and A32 behaviour.
+When CADENCE_GEM_ERR_DEBUG is turned on, there are several
+compilation errors in DB_PRINT(). Fix them.
 
-Looks good to me.
+Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
 
+---
 
-r~
+Changes in v2:
+- use HWADDR_PRIx instead of TARGET_FMT_plx for consistency
+- use 'z' modifier to print sizeof(..)
+
+ hw/net/cadence_gem.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index d412085..b6ff2c1 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -983,8 +983,9 @@ static ssize_t gem_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+             return -1;
+         }
+ 
+-        DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy, rxbufsize),
+-                rx_desc_get_buffer(s->rx_desc[q]));
++        DB_PRINT("copy %d bytes to 0x%" HWADDR_PRIx "\n",
++                 MIN(bytes_to_copy, rxbufsize),
++                 rx_desc_get_buffer(s, s->rx_desc[q]));
+ 
+         /* Copy packet data to emulated DMA buffer */
+         address_space_write(&s->dma_as, rx_desc_get_buffer(s, s->rx_desc[q]) +
+@@ -1157,7 +1158,7 @@ static void gem_transmit(CadenceGEMState *s)
+             if (tx_desc_get_length(desc) > sizeof(tx_packet) -
+                                                (p - tx_packet)) {
+                 DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x space " \
+-                         "0x%x\n", (unsigned)packet_desc_addr,
++                         "0x%zx\n", (unsigned)packet_desc_addr,
+                          (unsigned)tx_desc_get_length(desc),
+                          sizeof(tx_packet) - (p - tx_packet));
+                 break;
+-- 
+2.7.4
+

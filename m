@@ -1,113 +1,95 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7583102wrv;
-        Thu, 8 Aug 2019 01:50:19 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwZoyjUHFLF94JMKtQrkFaY2bGU8lgoVZbPuBEu9bbcX0F1PuFQqiyOsxzbuOHr4wm6c+BG
-X-Received: by 2002:a37:7d1:: with SMTP id 200mr11985588qkh.96.1565254219858;
-        Thu, 08 Aug 2019 01:50:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565254219; cv=none;
-        d=google.com; s=arc-20160816;
-        b=MQQGXJ8fDFSDfYDwDgJvXTcrSQEIDJg/vEMjxriyhgAzWrKdh6IKJ6y3YtRTgTUAnI
-         mW5wRZxPKE/0Qcw6Pg+DlPoYFJDokSMmSZHVN0wVJpdIXq1O3F7nE2ibhfJ/5nJ53uLO
-         mZr26/d8Q3Qt+loN0p3atWCi7RE2k4jKLSxh6jJ9x0ZLtjOqcI/Vpu1EzkcA4tTQ47EY
-         fpGmaMAPtbjn2pijDNRDyg+BQHXRa3xewzX9WyNRb4I36jm7X4EF7l2duHabmSuCfesQ
-         8M04HKbA78NQxuowfAnCa9RzyK9qbzabyLaSluE0kuj1UuvvP+aFxbmtYqLdBy/JlV+I
-         AMAQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=b9QZ0kiKa8QRXeVOE+rSFZlm2jwqskJ81hKAawXSGd4=;
-        b=kUW3zab81dE+GkYkfYT656sk4C1Sb1Wqpe+zIGXgLaT4KlUgLdux0PT3Z+IuGwFKMP
-         S7pr6VQlb+aCnPpcXeYokPp5mqRACmmXHbXEiSaCnJGImx/esyC3rVMltWb8C1G75nqA
-         3k+naeEh9Dm2fx0WCoVhhCXv/suIMsVwylI8w9BIQHfNx1LLzr2b65GWGKxoxT7duLmB
-         AjkDe+Vla+C4Muvji7w2/+yZ8HBt7pThrVGBKqOteXXEsnUvSMYawtrYZ3g5yzPgROrr
-         +wTokCz4rNRbm5ExfEPTozjuGyxx24tfG/GkGaoqXqW5k63emOi5LYOEIQ6IhOwpVcy/
-         IygA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id z42si12238449qve.206.2019.08.08.01.50.19
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 08 Aug 2019 01:50:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B0DD0C00A168;
-	Thu,  8 Aug 2019 08:50:18 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 826365C226;
-	Thu,  8 Aug 2019 08:50:14 +0000 (UTC)
-Date: Thu, 8 Aug 2019 10:50:12 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, armbru@redhat.com,
-	eric.auger@redhat.com, qemu-arm@nongnu.org, imammedo@redhat.com,
-	alex.bennee@linaro.org, Dave.Martin@arm.com
-Subject: Re: [Qemu-devel] [PATCH v3 03/15] target/arm/monitor: Introduce
- qmp_query_cpu_model_expansion
-Message-ID: <20190808085012.23aokly34zo4wxbk@kamzik.brq.redhat.com>
-References: <20190802122540.26385-1-drjones@redhat.com>
- <20190802122540.26385-4-drjones@redhat.com>
- <d0983bd5-c1a5-adf6-324d-2b199ca0e23c@linaro.org>
- <ec44ddad-c33c-918b-e94b-a534a2519a9e@linaro.org>
- <20190806122144.bb3klk7aaaqdhgwi@kamzik.brq.redhat.com>
- <39a4d205-d291-8962-2693-6bbcce89c332@linaro.org>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([81.128.185.34])
+        by smtp.gmail.com with ESMTPSA id z6sm1550389wmz.46.2019.08.08.02.08.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 08 Aug 2019 02:09:00 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id A85111FF87;
+	Thu,  8 Aug 2019 10:08:59 +0100 (BST)
+References: <1565020374-23888-1-git-send-email-bmeng.cn@gmail.com>
+ <1565239479-2130-1-git-send-email-bmeng.cn@gmail.com>
+User-agent: mu4e 1.3.4; emacs 27.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-arm@nongnu.org
+Cc: Alistair Francis <Alistair.Francis@wdc.com>, "Edgar E. Iglesias"
+ <edgar.iglesias@gmail.com>, Jason Wang <jasowang@redhat.com>, Peter
+ Maydell <peter.maydell@linaro.org>, Stefano Garzarella
+ <sgarzare@redhat.com>, qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [PATCH v2] hw: net: cadence_gem: Fix build errors in
+ DB_PRINT()
+In-reply-to: <1565239479-2130-1-git-send-email-bmeng.cn@gmail.com>
+Date: Thu, 08 Aug 2019 10:08:59 +0100
+Message-ID: <877e7ohvmc.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <39a4d205-d291-8962-2693-6bbcce89c332@linaro.org>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.32]); Thu, 08 Aug 2019 08:50:18 +0000 (UTC)
-X-TUID: UAJpfXdBfKuM
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 1TxGyUQWFmIb
 
-On Wed, Aug 07, 2019 at 08:22:07AM -0700, Richard Henderson wrote:
-> On 8/6/19 5:21 AM, Andrew Jones wrote:
-> > That's a reasonable suggestion. I do like having self-contained
-> > validation, self-contained, but when cross-dependencies arise, then
-> > it does make sense to have a master validation function, rather
-> > than interconnecting too much. That said, for this series we only
-> > enable the qmp query for aarch64, pmu, and sve* properties. aarch64
-> > and pmu are independent, and thus self-contained...
-> 
-> Agreed.
-> 
-> > and I consider
-> > all sve* properties one big entity, so their validation is also
-> > self-contained. If we add vfp and neon, then indeed I was wrong
-> > with my suggestion in the commit message. They would need a later
-> > validation check. Should we just cross that bridge when we get there
-> > though? Or would you like me to see how that would work within this
-> > series?
-> 
-> While the sve* properties are handled by one function, they are not handled as
-> "one big entity".  You examine then apply or diagnose the effects of sve384=on
-> before you separately examine the effects of sve512=on.
-> 
-> I think it would be easiest to merely record facts while processing sve<N> and
-> sve-max-vq, with no side effects.  Then in the common validation function see
-> the required side effects and diagnose errors all at once.
+
+Bin Meng <bmeng.cn@gmail.com> writes:
+
+> When CADENCE_GEM_ERR_DEBUG is turned on, there are several
+> compilation errors in DB_PRINT(). Fix them.
+
+The first fix should be to ensure the format strings are validated in
+normal compilation. This can be achieved by allowing the compiler to
+optimise away debug strings with constant folding... for example:
+
+  #define tlb_debug(fmt, ...) do { \
+      if (DEBUG_TLB_LOG_GATE) { \
+          qemu_log_mask(CPU_LOG_MMU, "%s: " fmt, __func__, \
+                        ## __VA_ARGS__); \
+      } else if (DEBUG_TLB_GATE) { \
+          fprintf(stderr, "%s: " fmt, __func__, ## __VA_ARGS__); \
+      } \
+  } while (0)
+
+However ultimately most debug printfs are either a) stale leftovers from
+original development or b) could be considered for conversion to
+tracepoints.
+
 >
+> Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
+>
+> ---
+>
+> Changes in v2:
+> - use HWADDR_PRIx instead of TARGET_FMT_plx for consistency
+> - use 'z' modifier to print sizeof(..)
+>
+>  hw/net/cadence_gem.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+> index d412085..b6ff2c1 100644
+> --- a/hw/net/cadence_gem.c
+> +++ b/hw/net/cadence_gem.c
+> @@ -983,8 +983,9 @@ static ssize_t gem_receive(NetClientState *nc, const =
+uint8_t *buf, size_t size)
+>              return -1;
+>          }
+>
+> -        DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy, rxbufsize=
+),
+> -                rx_desc_get_buffer(s->rx_desc[q]));
+> +        DB_PRINT("copy %d bytes to 0x%" HWADDR_PRIx "\n",
+> +                 MIN(bytes_to_copy, rxbufsize),
+> +                 rx_desc_get_buffer(s, s->rx_desc[q]));
+>
+>          /* Copy packet data to emulated DMA buffer */
+>          address_space_write(&s->dma_as, rx_desc_get_buffer(s, s->rx_desc=
+[q]) +
+> @@ -1157,7 +1158,7 @@ static void gem_transmit(CadenceGEMState *s)
+>              if (tx_desc_get_length(desc) > sizeof(tx_packet) -
+>                                                 (p - tx_packet)) {
+>                  DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x spac=
+e " \
+> -                         "0x%x\n", (unsigned)packet_desc_addr,
+> +                         "0x%zx\n", (unsigned)packet_desc_addr,
+>                           (unsigned)tx_desc_get_length(desc),
+>                           sizeof(tx_packet) - (p - tx_packet));
+>                  break;
 
-I'm not sure. Of course I'd need to experiment with it to be sure, but
-I'm reluctant to go through that exercise, because I believe that a
-deferred validation will result in less specific errors messages. For
-example, how would the validator know in which order the sve<N> properties
-were provided? Which is necessary to complain that one length is not
-allowed when another has already been disabled, or vice versa.
 
-Also with deferred validation I think I'd need more vq states, at least
-for when KVM is enabled. For example, if 384-bit vector lengths are not
-supported on the KVM host, but the user does sve384=on, and all we do
-is record that, then we've lost the KVM unsupported information and won't
-find out until we attempt to enable it later at kvm vcpu init time. We'd
-need a kvm-unsupported-user-enabled state to track that, which also means
-we're not blindly recording user input in cpu_arm_set_sve_vq() anymore,
-but are instead applying logic to decide which state we transition to.
-
-Thanks,
-drew
+--
+Alex Benn=C3=A9e

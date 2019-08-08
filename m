@@ -1,113 +1,84 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp702042wrs;
-        Mon, 12 Aug 2019 08:37:25 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwcjUY4E6tKqxbsnfUQp1ue6wZSykxuo10Vnd65FF+4wJEdu3sY3gEvDG9nkcb80+o8eEjK
-X-Received: by 2002:ac8:23cf:: with SMTP id r15mr1918809qtr.97.1565624245696;
-        Mon, 12 Aug 2019 08:37:25 -0700 (PDT)
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp8518555wrv;
+        Thu, 8 Aug 2019 17:11:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwpa3O2oDQU2SABgod7f0EtYlHceT02MNeXq+sruVex4204upFwWewLTLFoRfzSJZZBrv9G
+X-Received: by 2002:a50:bb23:: with SMTP id y32mr664131ede.145.1565309463023;
+        Thu, 08 Aug 2019 17:11:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565309463; cv=none;
+        d=google.com; s=arc-20160816;
+        b=mPsQAPNVEvMX78pDYKfoJUBfPK6JbbE4ECh6hGCRvBzjZxstKxgWuESMjv1oJkPhXg
+         yj8hCgOltA3QN+dY31KEdRZIUlILSkxaxjIFq4bPNppu37Bi3wcM2Im13XClxZeLZfC3
+         t/G9fB1XunRUd6GifO8r4IpTTLRyc/kxaRWCQlURkbkgq3ygfnpNSv13KEgfakxRWnxy
+         Nf7YnWbaduHbaDUCB36CW0JGHIzzU2lMN8rEMwFTM9guIVdSPOlWr1rWhCDiA7soGB1A
+         qxBQltALvjni9CTfSZSDZSScs/jRbhTAWm10ZndZ7vrpPXUe6JP1HXNQAvueMfk12Bfv
+         udow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature;
+        bh=iDC/a+5cuQyt/Hl7baUJ1PLb7nUY2cDUKtAcUFJXi9k=;
+        b=jvBtMvEKV7Jfs6Hm2wsMwye1ZUagw3o5nO2ftkxmCX+iB7NsPeF6w0hgafzJsnDNsq
+         IUElEZbavgQxVf6qxVxzuisFFPI3mbQg4fNLaGZ0y37KK7SAREYmGKgUsZKDRt1bdgEY
+         b8I8g9wkUoEs3bm3dKy25fv8vRDLfyIx2CdJ1rUknz5Rl7dXKtZbgmYWVFFRjPw+AEY+
+         YsxEWhR5C6tcmKWVFYXWlaUSTkTJBTaUR20LbtSB9O+FEZo0497PmOF9ri5aZcisHOM6
+         mitv6azmqVnId+X+D6TgZJxz62LUx0HmkZchYMenbpmibAY22Vc5XgnDu91+bDXa1f6w
+         tOOQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=T5tpqLuR;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s27si19801049qvc.161.2019.08.12.08.37.25
+        by mx.google.com with ESMTPS id qh1si30951999ejb.11.2019.08.08.17.11.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Aug 2019 08:37:25 -0700 (PDT)
+        Thu, 08 Aug 2019 17:11:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@os.amperecomputing.com header.s=selector2 header.b=ZtV2EpEP;
-       arc=fail (signature failed);
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=T5tpqLuR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46611 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55692 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hxCNx-0006Oi-9W
-	for alex.bennee@linaro.org; Mon, 12 Aug 2019 11:37:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45847)
+	id 1hvsUo-0005R7-41
+	for alex.bennee@linaro.org; Thu, 08 Aug 2019 20:11:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56510)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <aaron@os.amperecomputing.com>) id 1hxCNp-0006JQ-Bt
- for qemu-arm@nongnu.org; Mon, 12 Aug 2019 11:37:18 -0400
+ (envelope-from <dgibson@ozlabs.org>) id 1hvsUg-0005Pe-01
+ for qemu-arm@nongnu.org; Thu, 08 Aug 2019 20:10:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <aaron@os.amperecomputing.com>) id 1hxCNn-0007BE-CM
- for qemu-arm@nongnu.org; Mon, 12 Aug 2019 11:37:17 -0400
-Received: from mail-eopbgr730129.outbound.protection.outlook.com
- ([40.107.73.129]:16016 helo=NAM05-DM3-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <aaron@os.amperecomputing.com>)
- id 1hxCNm-0007Ah-44; Mon, 12 Aug 2019 11:37:15 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=gwwxrpiMYxziRMbuiu/oOt7OJjHUd+hQAbUoHlD28xZZdDZ9CCdkRH+LW/L3TOMyiVjTqDa8747DTa2BM4WvBF9s1dIogWdelYPBAZBXwfrcRttov7Rr4V2XB40bf6d3pfnnQgAhadx5+y9NkeJQYLxHQrXqNr4BneSEL1i3pEVEEoC27c3BVv/auOjFsWO8wHb3Fa1Vm3pskpKlVkadOXPMRZej9ZSb+68fUQGGwqBaGFfZk7wq7Xh7JF7tL75OQvzsix6Id6BaWEXJyjQp9DSuFUJfZhvPKKEzJkZ4EiQ975PtRzFvUtyqJ8doQiT+iP7CC00nCTfdGW5TDF/VUg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nS9UJDpirTTMgw9hAyYl+ARumctOorqJTcoJ0lc7eU0=;
- b=klfDSaJwhlVkO9SkjNJzupYqHEySVhVnKHwnBV7kxiK3II3+xqit39FLGOze1KFBv+0jPSJtq5NWiHGiN3DrEAWU2zC1vZ5tl1so480MhtIIY0HaqIr5lsaJBFrxASXBGLe7A7hxUf9YNKU5IyPQ0gcpa+raA8g2ded7+vfY2DCRVyyt8szggM8XCiwRenw5ub33goWNTzkoMOZvv5fVSsHRh+C/MNEIx16ISF5jYnBgZghydwuuV6H1++l1a7a0E3bBVY/vN6b20u4JzRMaI4ZTWoEKw3e504x3pSxf/uyORdWfMZn7LktiWlN7WxWf4rRygfzACv1QrpqIcdiyqQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
- header.from=os.amperecomputing.com; dkim=pass
- header.d=os.amperecomputing.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=os.amperecomputing.com; s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nS9UJDpirTTMgw9hAyYl+ARumctOorqJTcoJ0lc7eU0=;
- b=ZtV2EpEPPIb3z6oulyI4V5OQvSOtxMdFFAaKYvy+bRay8VdLZCgIgKFsZVjs6gyFpYyx1JZGWegUVZhuIKreIwDUWudReZMTt3tkrgxMnXzZlsIfIUWZOP5rOBTpaK+cxRc3SJr/0cFZSfNTPYZ9hu6l+x43oko1SYNIF5qBYYE=
-Received: from DM6PR01MB4825.prod.exchangelabs.com (20.177.218.222) by
- DM6PR01MB3737.prod.exchangelabs.com (20.176.67.142) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2157.21; Mon, 12 Aug 2019 15:37:11 +0000
-Received: from DM6PR01MB4825.prod.exchangelabs.com
- ([fe80::4943:2b46:af24:e807]) by DM6PR01MB4825.prod.exchangelabs.com
- ([fe80::4943:2b46:af24:e807%7]) with mapi id 15.20.2157.020; Mon, 12 Aug 2019
- 15:37:11 +0000
+ (envelope-from <dgibson@ozlabs.org>) id 1hvsUf-0004ly-7y
+ for qemu-arm@nongnu.org; Thu, 08 Aug 2019 20:10:53 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:43839)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+ id 1hvsUe-0004kO-At; Thu, 08 Aug 2019 20:10:53 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 464Qcl1CVXz9sNk; Fri,  9 Aug 2019 10:10:46 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1565309447;
+ bh=Tjc1rsLFxvnigdY6TR4w2cXqyiKtMIv+nlBNFfBtMAQ=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=T5tpqLuR/+h1P0MOQVzgAPJ+1Z+n8ySmnRg2iS956+X/Wc1mresEljR5nzNOIwg13
+ U1JY4K8tkO8ob1+XD6R3i2teiL/B8/MF7FtqtJMCARUo8CkZg48sCWfdL4oOmEDjBp
+ 5rQAPD693ojSOjcJ/+PX65Nuus0457apUsdShvVk=
+Date: Thu, 8 Aug 2019 16:49:57 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
 To: Peter Maydell <peter.maydell@linaro.org>
-Thread-Topic: [Qemu-arm] [PATCH] elf: Allow loading AArch64 ELF files
-Thread-Index: AQHVURy4yDbUMFtoS0GmsVnUb69OAqb3m9CAgAAJkAA=
-Date: Mon, 12 Aug 2019 15:37:11 +0000
-Message-ID: <20190812153708.GB9200@quinoa.localdomain>
-References: <20190812144442.30027-1-aaron@os.amperecomputing.com>
- <CAFEAcA-GnPAL41MQouLxs_7y9Xj_E30k4Agx20eWObau2p02AA@mail.gmail.com>
-In-Reply-To: <CAFEAcA-GnPAL41MQouLxs_7y9Xj_E30k4Agx20eWObau2p02AA@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: CY4PR03CA0023.namprd03.prod.outlook.com
- (2603:10b6:903:33::33) To DM6PR01MB4825.prod.exchangelabs.com
- (2603:10b6:5:6b::30)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=aaron@os.amperecomputing.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [108.169.132.82]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: aef91c47-f670-4c26-3992-08d71f3af16f
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(2017052603328)(7193020);
- SRVR:DM6PR01MB3737; 
-x-ms-traffictypediagnostic: DM6PR01MB3737:
-x-microsoft-antispam-prvs: <DM6PR01MB3737222555CE7416D69474108AD30@DM6PR01MB3737.prod.exchangelabs.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-forefront-prvs: 012792EC17
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(136003)(366004)(39840400004)(346002)(396003)(376002)(189003)(199004)(31014005)(52314003)(54906003)(14454004)(6916009)(478600001)(33656002)(99286004)(316002)(6436002)(6486002)(229853002)(6512007)(9686003)(8936002)(486006)(11346002)(446003)(66556008)(66476007)(66946007)(64756008)(476003)(76176011)(52116002)(66446008)(102836004)(256004)(14444005)(6506007)(386003)(26005)(186003)(66066001)(81156014)(305945005)(81166006)(71200400001)(71190400001)(8676002)(5660300002)(7736002)(53936002)(25786009)(86362001)(4326008)(3846002)(2906002)(6116002)(1076003)(6246003);
- DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR01MB3737;
- H:DM6PR01MB4825.prod.exchangelabs.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:0; 
-received-spf: None (protection.outlook.com: os.amperecomputing.com does not
- designate permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: UHv8pYbHe/GU8/CsyNxrvPJGYJrng+re6NIQ9TRE6SPDIC7QGrRzkgI8xPs17qzsxNevgM9vzp4vmVyRL5nrg95UlCu0ccUYLgvuoqlROF3CoW8KhJ2/odjSGi/nM1cpAv135Cyu1U47uPp9pXeYuXSKW9mvgNwhWPfBtEGfXURgtJqqNKdthNYhAf/eB1NTbK5+U2LLYgUEgRTTqflbLxz3c6/8e/JCpzbMH91cQtKVG+7TgvE/xK3NF1SXiVMRYUUaEwVJHB/31JB0uMO0djAom8RDlj0fEM1Yaqi4HgcJWA8DIIWpt44xe4N036zrV8scgw/Os/VV/LFNx9JEtN3n/FEgKtulaSLvYzwaDhNknp7lOhSSKO0xPcJRKR9bye5rJJVlTj2SUxzYLDcGyQ42sfSw91DjYa34KBZ9Kto=
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="us-ascii"
-Content-ID: <4C61CF139CA4B3409EDC75EF9F370C48@prod.exchangelabs.com>
-Content-Transfer-Encoding: quoted-printable
+Message-ID: <20190808064957.GF5465@umbus.fritz.box>
+References: <20190729145654.14644-1-damien.hedde@greensocs.com>
+ <20190729145654.14644-10-damien.hedde@greensocs.com>
+ <20190731063044.GG2032@umbus.fritz.box>
+ <CAFEAcA-=rMgKuhtq4AT+QohRXf71biNFDRQaxMctrro7mTV4kQ@mail.gmail.com>
 MIME-Version: 1.0
-X-OriginatorOrg: os.amperecomputing.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: aef91c47-f670-4c26-3992-08d71f3af16f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Aug 2019 15:37:11.6944 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: DfV3okvnnVWgQTGxQG0ow5wXY53QA1/s4Xr4lQnuapX+lla1BvBagRP722lBYFCyNJty/OUurGO7PvFz5iuJUtfy7/drcSc+37o/UJrcxuw=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR01MB3737
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.73.129
-Subject: Re: [Qemu-arm] [PATCH] elf: Allow loading AArch64 ELF files
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="9ADF8FXzFeE7X4jE"
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-=rMgKuhtq4AT+QohRXf71biNFDRQaxMctrro7mTV4kQ@mail.gmail.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2401:3900:2:1::2
+Subject: Re: [Qemu-arm] [PATCH v3 09/33] add doc about Resettable interface
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -119,84 +90,80 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-From: Aaron Lindsay OS via Qemu-arm <qemu-arm@nongnu.org>
-Reply-To: Aaron Lindsay OS <aaron@os.amperecomputing.com>
-Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Alistair Francis <alistair.francis@xilinx.com>
+Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
+ Edgar Iglesias <edgar.iglesias@xilinx.com>, Hannes Reinecke <hare@suse.com>,
+ Qemu-block <qemu-block@nongnu.org>, David Hildenbrand <david@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-s390x <qemu-s390x@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Damien Hedde <damien.hedde@greensocs.com>,
+ "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ Mark Burton <mark.burton@greensocs.com>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GkfVGeIh5/Nl
+X-TUID: tKAA5No1/Vpg
 
-On Aug 12 16:02, Peter Maydell wrote:
-> On Mon, 12 Aug 2019 at 15:46, Aaron Lindsay OS via Qemu-arm
-> <qemu-arm@nongnu.org> wrote:
+
+--9ADF8FXzFeE7X4jE
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Wed, Aug 07, 2019 at 11:34:41AM +0100, Peter Maydell wrote:
+> On Wed, 31 Jul 2019 at 07:33, David Gibson <david@gibson.dropbear.id.au> =
+wrote:
 > >
-> > Treat EM_AARCH64 as a valid value when checking the ELF's machine-type
-> > header.
+> > On Mon, Jul 29, 2019 at 04:56:30PM +0200, Damien Hedde wrote:
+> > > +The function *resettable_reset* is used to trigger a reset on a given
+> > > +object.
+> > > +void resettable_reset(Object *obj, bool cold)
+> > > +
+> > > +The parameter *obj* must implement the Resettable interface.
 > >
-> > Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
-> > ---
-> >  include/hw/elf_ops.h | 6 ++++++
-> >  1 file changed, 6 insertions(+)
-> >
-> > diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
-> > index 690f9238c8..f12faa90a1 100644
-> > --- a/include/hw/elf_ops.h
-> > +++ b/include/hw/elf_ops.h
-> > @@ -381,6 +381,12 @@ static int glue(load_elf, SZ)(const char *name, in=
-t fd,
-> >                  goto fail;
-> >              }
-> >              break;
-> > +        case EM_AARCH64:
-> > +            if (ehdr.e_machine !=3D EM_AARCH64) {
-> > +                ret =3D ELF_LOAD_WRONG_ARCH;
-> > +                goto fail;
-> > +            }
-> > +            break;
-> >          default:
-> >              if (elf_machine !=3D ehdr.e_machine) {
-> >                  ret =3D ELF_LOAD_WRONG_ARCH;
-> > --
-> > 2.17.1
+> > And what happens if it doesn't?  This function has no way to report an
+> > error.
 >=20
-> What problem are we trying to solve here ? If I'm reading your patch
-> correctly then it makes no difference to execution, because we're
-> switching on 'elf_machine', and so this extra case is saying
-> "if elf_machine is EM_AARCH64, insist that ehdr.e_machine
-> is also EM_AARCH64", which is exactly what the default
-> case would do anyway. The only reason to add extra cases in
-> this switch is to handle the situation where a target's board/loader
-> code says "I can handle elf files of type X" but actually this
-> implicitly means it can handle both X and Y (so for EM_X86_64 we
-> need to accept both EM_X86_64 and EM_386, for EM_PPC64 we need to
-> accept both EM_PPC64 and EM_PPC, and so on). We don't have a
-> case like that for aarch64/arm because the boot loader code has
-> to deal with the 32 bit and 64 bit code separately anyway, so
-> we can pass in the correct value depending on whether the CPU
-> is 32-bit or 64-bit.
->=20
-> The code in hw/arm/boot.c passes in an elf_machine value of
-> EM_AARCH64 when it wants to load an AArch64 ELF file, so
-> for that the default case is OK. The code in hw/core/generic-loader.c
-> passes in 0 (EM_NONE) which will be handled by the check just
-> before this switch statement, so the default case should
-> work there too. Presumably there's some other code path
-> for ELF file loading that doesn't work that you're trying to fix?
+> Trying to reset an object that isn't actually resettable would
+> be a programming error -- I think asserting is a reasonable
+> response to that.
 
-Please disregard this patch.
+Yeah, fair enough.
 
-I'm sorry, upon closer inspection you are obviously correct... and I
-have no earthly idea what happened here. I hit the "goto fail" in the
-"default" case when debugging why I couldn't load an ELF on AArch64 last
-week. I was in a hurry and saw that there were other architectures in
-the switch/case and threw this code in there quickly without much
-thought, and after re-compiling, it worked!
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
-...But after your email this morning, I'm completely unable to reproduce
-the failure case. I must have had another local issue which was
-coincidentally resolved at the same time, unbeknownst to me.
+--9ADF8FXzFeE7X4jE
+Content-Type: application/pgp-signature; name="signature.asc"
 
--Aaron
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl1LxhQACgkQbDjKyiDZ
+s5LebxAAxnSJ9AE47v34dtt5dflWEB4N5f26kCPmDp7FRA2nj7CaY1IhX0IX3OyR
+VnE8QoKB7agSx+MbVBX8c1ByPEEVMYy/qgcQPVBzNMqaJNczltPCbKhQOCMRWxJr
+3XTmqeGHv1U1OuN0aX58KmHV7kKa0cyYtkPyIOIowdyzgyK1QQrsWoS5OUVMuqKm
+J9sC/wn9I9VT4xbC0JLaLs7qU3Mr8Kl9DPr6viwUHvoWOEq2tVV9u29Zu5mcnvmN
+oRhTighFwmis1adpQ3wDDEfQYik/b0SDsoZEjc227bD5l4hoVhXCP9SnTIpv1cXD
+0n6JyWIyl8nAshDY0Oc7DStiQ2VO8ozJLBbT+jOtL8cpH6tpgG1u5Qj+sYKyV1W4
+39TLyKjXIesOUYKhiblThO0hTmAiA25kGvQ+DcERPTj6+vU2SVpZEcNbGMW37Hpf
+DGp5hN3MZ6gHFcEadE2XDX2k94xKE4dmipebGI+SJ4Itv+FZRr4HHbl8GZATTpdj
+ZMn46K75A3yxHG8UNUTKJFl82vFqEz+CQnuG99CEAtr3kQWZ4ezeRKk94JwQlZuO
+RbxHKt5/i+r9mY3FKb388kxCyxW3SP1g48lYRCFrqPIGK3oLdXe53+QXh0rkBkxy
+Z+XX75m38VK1tRxJy52KbSMHh8eF7G61Aobr9/rKbWz+/KE6b6k=
+=DAR/
+-----END PGP SIGNATURE-----
+
+--9ADF8FXzFeE7X4jE--

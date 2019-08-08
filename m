@@ -1,606 +1,301 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7753584wrv;
-        Thu, 8 Aug 2019 04:42:08 -0700 (PDT)
-X-Received: by 2002:a05:6808:144:: with SMTP id h4mr2059358oie.20.1565264528048;
-        Thu, 08 Aug 2019 04:42:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565264528; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp8031048wrv;
+        Thu, 8 Aug 2019 08:42:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzF6P0VAuR+0u+jBcuhk2KZ79dxFjWfPmA4SD4LphSS7pYyDjdmoyBoSi/z/fLAJD9wpr9b
+X-Received: by 2002:a50:b34a:: with SMTP id r10mr16593995edd.84.1565278972037;
+        Thu, 08 Aug 2019 08:42:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565278972; cv=none;
         d=google.com; s=arc-20160816;
-        b=IQpLzsyXVDjM+xOkbuqyovHBpy66Jea9ovIJ0nmKQrTen5XDN+izvVfozqDKX3D6Ym
-         kpjfzx5oz8Tep8obmcEGArSDty+LyyJYo04vvNDxjP4yuentg9TKBtxnPBW+1hPDxIYW
-         vHWeU7PSTq/dKSoX7nbr94pezzJj6+Bsa/uqIrXUIvUk7oLHnXTiC0fACBBfGe8JT68v
-         58F3ta0gI4hFbYqE7gq6o7LUXZzaLsjVid5OwBadqAttlEY8TJbvdnWJSbwbsxX9Pf83
-         le1mbDEEvDLc1Z19HCkaTl0QA+9J2nABlfbYcx29JTb+r9J89P8VWTnZ/jKs5lt3x62n
-         qThg==
+        b=iZEVTAlJgxaSavxl72TeNcXLIuX6e6y2D+Ly1fvhMuANpmSM9c4GNMDV9AoyNO/upv
+         /bTVG2Rz1iGrQ/CpP3Xto45WKd1Nt5c2J46R7i7/twvMoNBOPZ8XXxQRpv9N1qQ+K5S6
+         5QtDJt/cJtk3F+JoUy94POdIaldg709Dzk0VBCyOgfsksSz49QCrrMYTH85sQK8WZu3z
+         ByGIPFjvnpBOxi86nvqR0sVjvJtIK10HWlCv1s0R1yXIaPtNZstmyWaS3OkHtRyXwOpi
+         3xPGwJvrzBACVhJeZNB256JCVz1ckJwftXT29w8pigMAj2kpKE+tEwex9T3VY9wuDOA5
+         9h+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=CKno2DapZpYQu3Z86w+Y/66MwzpYCKih6dsAa+KGQMM=;
-        b=IoghgWxGTxSgMUVOOHqGur9NIyjJPbfEfECDw9daWuFYKdaYSN77p8gWEk10ObqFOh
-         fDFkFM7/Igki23rYMuCip7ZmUITa0hOjiXa7TAYiOA/p3HFEPEebbukTN+FKnzGsVgjH
-         bnh43SmvRd/y/6ozv5EGT1P9faHz60S94w4orglyfV1zQu8h5PdJBeLI4/jWsuaBfg2u
-         i5i3UWQZL2SFJrq1GtrNK7X2kdDTUSXEdt8MclUvVncsSyt0sWKQU7MZhlZZZxskbJ34
-         qmI8QiKsFGV3Ad446Qnt0KIqazzYstse8Rwv4+UQ/q6JOd5xPV6BMdoWlXYWPSFzUKPf
-         w2fA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=6nEoBCew+hlkihs3UjM4G4yTYqG6RdehbNBnbf10HpY=;
+        b=H6hZM2YKvp+BMco7GJXCbL8aEfIyMPnQ5raznWryl+s030eJBL0qE7xnm1x9vnO0BV
+         EnWzhUEO8Z8EYXeQ6mrmB/tpEjiLxJgf7V21jNGTwziTxYCV3DDkZ2qxrZ+lakS8ls0S
+         zwCYPeVs2+1S082MbPbo0htONE0fzSIljNNrD7dVOkKkPkHHLFLP/xsLGN1QFKtfZsUW
+         U94QIpZw/JmfcckhHh2A0LGkyJ3e9AXnJz61S0FfiZ/eOKE0pdb5bcB+YkVaycx24SjJ
+         dv9eAQpXg7wviZaGx+s8zgsFZ8KaA7MV3VwCAjCjdM2Ke4k4NTPtDnUIPbB3YVB3p4V1
+         8wbw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Nvfew2mL;
-       spf=pass (google.com: domain of aleksandar.m.mail@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=aleksandar.m.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <aleksandar.m.mail@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id v16sor42209204oie.59.2019.08.08.04.42.07
-        (Google Transport Security);
-        Thu, 08 Aug 2019 04:42:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aleksandar.m.mail@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g4si38010450edg.234.2019.08.08.08.42.51
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 08 Aug 2019 08:42:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Nvfew2mL;
-       spf=pass (google.com: domain of aleksandar.m.mail@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=aleksandar.m.mail@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=CKno2DapZpYQu3Z86w+Y/66MwzpYCKih6dsAa+KGQMM=;
-        b=Nvfew2mLDamU8cFkBhiE2CiDDCVnotyr+hOUtAfW7/+xfmWZotY5HkD7FutbawFQ9l
-         p7pAhxypd2PXJ+z9YPgCXnPbBEh7sDUoXhdVZCj60t9MahN5LtisHl6E9nNkobIZz+gQ
-         bOuDc9Aop7eiPF9pA+Mx6sjWYGQcl0rtso+y/N4L83NUGiLtivmOsxVEIm3Wpkfo38qp
-         Ly/uFN9ZQ0OeE9ksxZHyyjeV76xwUAqZOyIuYkl5m9SP4DNkvXCC/EO7IvQsKQquzUgH
-         da9CJYAuYwheKzLkSOZVLiTE1s5BW5qRZrQsnz28ivc8lh3Ik5FtaJVGkk1tcrTOIMg1
-         6tjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=CKno2DapZpYQu3Z86w+Y/66MwzpYCKih6dsAa+KGQMM=;
-        b=US+Hma4kG+VOBmH91IZY32zvZJvMTxi8pNpNtWBBtkIhRYQO7UyFboKaHbsH57vhH1
-         MLG7jTD2KYS6yR11QZ3kHF09ah/A90R3ha4Scf94wbDitSLfHUGYqjygWs9ItYG+EouU
-         eX6J7NJtlYrs1rLE9EuRkMNC4MK1Rubxeg5BScmd+9lElcR9jGWPfYzCYUcLPlZgnAsc
-         RSlzSOJ+LopDxqhIR8LgvNIljddEisBnbBRGu/zzhwAspY98HvgZYwz/wsQdfWB7Txci
-         aJhi8WB7IhafoA5VHaPGWH08Bc/KRRl2MCz0DR1PGtMiOFBwPh7voxIxeyrsyz4bmXHL
-         d8kA==
-X-Gm-Message-State: APjAAAUQ+UqJNvDDOOhzPQGO2++7t7yUIVuYe2AxHJgWw2rRLDxA3Glr
-	CwXsKvC0I2WmYNDWlLwsav0wSbD/Vcgi8/t5nr80WPZ1
-X-Google-Smtp-Source: APXvYqycvW8qLjEFI1IdB++gfO6awBOibqkHotUF7WIlQxSpl0A8fDc5jIFe4oIeNwCNK3/oTRDkW6QyAfPQQwrNuLw=
-X-Received: by 2002:a54:4619:: with SMTP id p25mr2464756oip.62.1565264527449;
- Thu, 08 Aug 2019 04:42:07 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52906 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hvkZ1-00019N-6M
+	for alex.bennee@linaro.org; Thu, 08 Aug 2019 11:42:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40744)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <dgilbert@redhat.com>) id 1hvkYv-00019D-JN
+ for qemu-arm@nongnu.org; Thu, 08 Aug 2019 11:42:47 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <dgilbert@redhat.com>) id 1hvkYu-00005O-3d
+ for qemu-arm@nongnu.org; Thu, 08 Aug 2019 11:42:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:56548)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dgilbert@redhat.com>)
+ id 1hvkYt-0008WA-Pj; Thu, 08 Aug 2019 11:42:44 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id E7904309BF04;
+ Thu,  8 Aug 2019 15:42:41 +0000 (UTC)
+Received: from work-vm (ovpn-117-208.ams2.redhat.com [10.36.117.208])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5DE365D772;
+ Thu,  8 Aug 2019 15:42:22 +0000 (UTC)
+Date: Thu, 8 Aug 2019 16:42:19 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20190808154219.GK2852@work-vm>
+References: <20190729145654.14644-1-damien.hedde@greensocs.com>
+ <20190729145654.14644-8-damien.hedde@greensocs.com>
+ <CAFEAcA-W0SaaGbUnGZ0b61ngxKY8R9xjwGXeN+=MaUi4bMDgNg@mail.gmail.com>
 MIME-Version: 1.0
-References: <20190726175032.6769-1-richard.henderson@linaro.org> <20190726175032.6769-12-richard.henderson@linaro.org>
-In-Reply-To: <20190726175032.6769-12-richard.henderson@linaro.org>
-From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Thu, 8 Aug 2019 13:41:56 +0200
-Message-ID: <CAL1e-=gwyGB4ibo_B5W1MpFy-9bB7=5juqTJVBdD9N6XFOOsSQ@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH 11/67] target/arm: Add stubs for aa32 decodetree
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
-	"open list:Stellaris" <qemu-arm@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000236167058f998c62"
-X-TUID: zDKXoo9T9HEZ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-W0SaaGbUnGZ0b61ngxKY8R9xjwGXeN+=MaUi4bMDgNg@mail.gmail.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.45]); Thu, 08 Aug 2019 15:42:42 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v3 07/33] automatically add vmstate for reset
+ support in devices
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
+ Edgar Iglesias <edgar.iglesias@xilinx.com>, Hannes Reinecke <hare@suse.com>,
+ Qemu-block <qemu-block@nongnu.org>, quintela@redhat.com,
+ David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-s390x <qemu-s390x@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ John Snow <jsnow@redhat.com>, David Gibson <david@gibson.dropbear.id.au>,
+ Damien Hedde <damien.hedde@greensocs.com>,
+ "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ Mark Burton <mark.burton@greensocs.com>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oJdUvXmARah1
 
---000000000000236167058f998c62
-Content-Type: text/plain; charset="UTF-8"
+* Peter Maydell (peter.maydell@linaro.org) wrote:
+> On Mon, 29 Jul 2019 at 15:59, Damien Hedde <damien.hedde@greensocs.com> wrote:
+> >
+> > This add the reset related sections for every QOM
+> > device.
+> 
+> A bit more detail in the commit message would help, I think --
+> this is adding extra machinery which has to copy and modify
+> the VMStateDescription passed in by the device in order to
+> add the subsection that handles reset.
+> 
+> I've added Dave Gilbert to the already long cc list since this
+> is migration related.
 
-On Fri, Jul 26, 2019 at 8:05 PM Richard Henderson <
-richard.henderson@linaro.org> wrote:
+I don't like dynamically modifying all the vmsds.
+Aren't you going to have to understand each devices reset behaviour
+and make sure it does something sane? e.g. it might have a postload
+that registers a timer or something that you wouldn't want to do if it's
+in reset.
 
-> Add the infrastructure that will become the new decoder.
-> No instructions adjusted so far.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/translate.c       | 45 +++++++++++++++++++++++++++++++++++-
->  target/arm/Makefile.objs     | 18 +++++++++++++++
->  target/arm/a32-uncond.decode | 23 ++++++++++++++++++
->  target/arm/a32.decode        | 23 ++++++++++++++++++
->  target/arm/t32.decode        | 20 ++++++++++++++++
->  5 files changed, 128 insertions(+), 1 deletion(-)
->  create mode 100644 target/arm/a32-uncond.decode
->  create mode 100644 target/arm/a32.decode
->  create mode 100644 target/arm/t32.decode
->
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index 36419025db..4738b91957 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -7715,6 +7715,33 @@ static void arm_skip_unless(DisasContext *s,
-> uint32_t cond)
->      }
->  }
->
-> +/*
-> + * Include the generated decoders.
-> + * Note that the T32 decoder reuses some of the trans_* functions
-> + * initially declared by the A32 decoder, which results in duplicate
-> + * declaration warnings.  Suppress them.
-> + */
-> +
-> +#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
-> +# pragma GCC diagnostic push
-> +# pragma GCC diagnostic ignored "-Wredundant-decls"
-> +# ifdef __clang__
-> +#  pragma GCC diagnostic ignored "-Wtypedef-redefinition"
-> +# endif
-> +#endif
-> +
->
+The easiest way is to write a macro that you can easily add to devices
+you've checked subsection list (like the way we have a
+VMSTATE_USB_DEVICE).
 
-This looks more like a "band aid" solution rather than the right one.
+Dave
 
-I find it surprising that in spite of ever-growing complexity and numerous
-refinements of the decodetree module, it still generates code that causes
-these complaints of the compiler.
-
-Regards,
-Aleksandar
-
-
-
-> +#include "decode-a32.inc.c"
-> +#include "decode-a32-uncond.inc.c"
-> +#include "decode-t32.inc.c"
-> +
-> +#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
-> +# pragma GCC diagnostic pop
-> +#endif
-> +
-> +/*
-> + * Legacy decoder.
-> + */
-> +
->  static void disas_arm_insn(DisasContext *s, unsigned int insn)
->  {
->      unsigned int cond, val, op1, i, shift, rm, rs, rn, rd, sh;
-> @@ -7733,7 +7760,8 @@ static void disas_arm_insn(DisasContext *s, unsigned
-> int insn)
->          return;
->      }
->      cond = insn >> 28;
-> -    if (cond == 0xf){
-> +
-> +    if (cond == 0xf) {
->          /* In ARMv3 and v4 the NV condition is UNPREDICTABLE; we
->           * choose to UNDEF. In ARMv5 and above the space is used
->           * for miscellaneous unconditional instructions.
-> @@ -7741,6 +7769,11 @@ static void disas_arm_insn(DisasContext *s,
-> unsigned int insn)
->          ARCH(5);
->
->          /* Unconditional instructions.  */
-> +        if (disas_a32_uncond(s, insn)) {
-> +            return;
-> +        }
-> +        /* fall back to legacy decoder */
-> +
->          if (((insn >> 25) & 7) == 1) {
->              /* NEON Data processing.  */
->              if (!arm_dc_feature(s, ARM_FEATURE_NEON)) {
-> @@ -7953,6 +7986,11 @@ static void disas_arm_insn(DisasContext *s,
-> unsigned int insn)
->
->      arm_skip_unless(s, cond);
->
-> +    if (disas_a32(s, insn)) {
-> +        return;
-> +    }
-> +    /* fall back to legacy decoder */
-> +
->      if ((insn & 0x0f900000) == 0x03000000) {
->          if ((insn & (1 << 21)) == 0) {
->              ARCH(6T2);
-> @@ -9440,6 +9478,11 @@ static void disas_thumb2_insn(DisasContext *s,
-> uint32_t insn)
->          ARCH(6T2);
->      }
->
-> +    if (disas_t32(s, insn)) {
-> +        return;
-> +    }
-> +    /* fall back to legacy decoder */
-> +
->      rn = (insn >> 16) & 0xf;
->      rs = (insn >> 12) & 0xf;
->      rd = (insn >> 8) & 0xf;
-> diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
-> index 5cafc1eb6c..7806b4dac0 100644
-> --- a/target/arm/Makefile.objs
-> +++ b/target/arm/Makefile.objs
-> @@ -28,9 +28,27 @@ target/arm/decode-vfp-uncond.inc.c:
-> $(SRC_PATH)/target/arm/vfp-uncond.decode $(D
->           $(PYTHON) $(DECODETREE) --static-decode disas_vfp_uncond -o $@
-> $<,\
->           "GEN", $(TARGET_DIR)$@)
->
-> +target/arm/decode-a32.inc.c: $(SRC_PATH)/target/arm/a32.decode
-> $(DECODETREE)
-> +       $(call quiet-command,\
-> +         $(PYTHON) $(DECODETREE) --static-decode disas_a32 -o $@ $<,\
-> +         "GEN", $(TARGET_DIR)$@)
-> +
-> +target/arm/decode-a32-uncond.inc.c:
-> $(SRC_PATH)/target/arm/a32-uncond.decode $(DECODETREE)
-> +       $(call quiet-command,\
-> +         $(PYTHON) $(DECODETREE) --static-decode disas_a32_uncond -o $@
-> $<,\
-> +         "GEN", $(TARGET_DIR)$@)
-> +
-> +target/arm/decode-t32.inc.c: $(SRC_PATH)/target/arm/t32.decode
-> $(DECODETREE)
-> +       $(call quiet-command,\
-> +         $(PYTHON) $(DECODETREE) --static-decode disas_t32 -o $@ $<,\
-> +         "GEN", $(TARGET_DIR)$@)
-> +
->  target/arm/translate-sve.o: target/arm/decode-sve.inc.c
->  target/arm/translate.o: target/arm/decode-vfp.inc.c
->  target/arm/translate.o: target/arm/decode-vfp-uncond.inc.c
-> +target/arm/translate.o: target/arm/decode-a32.inc.c
-> +target/arm/translate.o: target/arm/decode-a32-uncond.inc.c
-> +target/arm/translate.o: target/arm/decode-t32.inc.c
->
->  obj-y += tlb_helper.o debug_helper.o
->  obj-y += translate.o op_helper.o
-> diff --git a/target/arm/a32-uncond.decode b/target/arm/a32-uncond.decode
-> new file mode 100644
-> index 0000000000..8dee26d3b6
-> --- /dev/null
-> +++ b/target/arm/a32-uncond.decode
-> @@ -0,0 +1,23 @@
-> +# A32 unconditional instructions
-> +#
-> +#  Copyright (c) 2019 Linaro, Ltd
-> +#
-> +# This library is free software; you can redistribute it and/or
-> +# modify it under the terms of the GNU Lesser General Public
-> +# License as published by the Free Software Foundation; either
-> +# version 2 of the License, or (at your option) any later version.
-> +#
-> +# This library is distributed in the hope that it will be useful,
-> +# but WITHOUT ANY WARRANTY; without even the implied warranty of
-> +# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> +# Lesser General Public License for more details.
-> +#
-> +# You should have received a copy of the GNU Lesser General Public
-> +# License along with this library; if not, see <
-> http://www.gnu.org/licenses/>.
-> +
-> +#
-> +# This file is processed by scripts/decodetree.py
-> +#
-> +# All insns that have 0xf in insn[31:28] are decoded here.
-> +# All of those that have a COND field in insn[31:28] are in a32.decode
-> +#
-> diff --git a/target/arm/a32.decode b/target/arm/a32.decode
-> new file mode 100644
-> index 0000000000..2d84a02861
-> --- /dev/null
-> +++ b/target/arm/a32.decode
-> @@ -0,0 +1,23 @@
-> +# A32 conditional instructions
-> +#
-> +#  Copyright (c) 2019 Linaro, Ltd
-> +#
-> +# This library is free software; you can redistribute it and/or
-> +# modify it under the terms of the GNU Lesser General Public
-> +# License as published by the Free Software Foundation; either
-> +# version 2 of the License, or (at your option) any later version.
-> +#
-> +# This library is distributed in the hope that it will be useful,
-> +# but WITHOUT ANY WARRANTY; without even the implied warranty of
-> +# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> +# Lesser General Public License for more details.
-> +#
-> +# You should have received a copy of the GNU Lesser General Public
-> +# License along with this library; if not, see <
-> http://www.gnu.org/licenses/>.
-> +
-> +#
-> +# This file is processed by scripts/decodetree.py
-> +#
-> +# All of the insn that have a COND field in insn[31:28] are here.
-> +# All insns that have 0xf in insn[31:28] are in a32u.decode.
-> +#
-> diff --git a/target/arm/t32.decode b/target/arm/t32.decode
-> new file mode 100644
-> index 0000000000..ac01fb6958
-> --- /dev/null
-> +++ b/target/arm/t32.decode
-> @@ -0,0 +1,20 @@
-> +# Thumb2 instructions
-> +#
-> +#  Copyright (c) 2019 Linaro, Ltd
-> +#
-> +# This library is free software; you can redistribute it and/or
-> +# modify it under the terms of the GNU Lesser General Public
-> +# License as published by the Free Software Foundation; either
-> +# version 2 of the License, or (at your option) any later version.
-> +#
-> +# This library is distributed in the hope that it will be useful,
-> +# but WITHOUT ANY WARRANTY; without even the implied warranty of
-> +# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> +# Lesser General Public License for more details.
-> +#
-> +# You should have received a copy of the GNU Lesser General Public
-> +# License along with this library; if not, see <
-> http://www.gnu.org/licenses/>.
-> +
-> +#
-> +# This file is processed by scripts/decodetree.py
-> +#
-> --
-> 2.17.1
->
->
->
-
---000000000000236167058f998c62
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Fri, Jul 26, 2019 at 8:05 PM Richa=
-rd Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org">richard.he=
-nderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
-padding-left:1ex">Add the infrastructure that will become the new decoder.<=
-br>
-No instructions adjusted so far.<br>
-<br>
-Signed-off-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson@li=
-naro.org" target=3D"_blank">richard.henderson@linaro.org</a>&gt;<br>
----<br>
-=C2=A0target/arm/translate.c=C2=A0 =C2=A0 =C2=A0 =C2=A0| 45 +++++++++++++++=
-++++++++++++++++++++-<br>
-=C2=A0target/arm/Makefile.objs=C2=A0 =C2=A0 =C2=A0| 18 +++++++++++++++<br>
-=C2=A0target/arm/a32-uncond.decode | 23 ++++++++++++++++++<br>
-=C2=A0target/arm/a32.decode=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 23 +++++++++++++++=
-+++<br>
-=C2=A0target/arm/t32.decode=C2=A0 =C2=A0 =C2=A0 =C2=A0 | 20 +++++++++++++++=
-+<br>
-=C2=A05 files changed, 128 insertions(+), 1 deletion(-)<br>
-=C2=A0create mode 100644 target/arm/a32-uncond.decode<br>
-=C2=A0create mode 100644 target/arm/a32.decode<br>
-=C2=A0create mode 100644 target/arm/t32.decode<br>
-<br>
-diff --git a/target/arm/translate.c b/target/arm/translate.c<br>
-index 36419025db..4738b91957 100644<br>
---- a/target/arm/translate.c<br>
-+++ b/target/arm/translate.c<br>
-@@ -7715,6 +7715,33 @@ static void arm_skip_unless(DisasContext *s, uint32_=
-t cond)<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-=C2=A0}<br>
-<br>
-+/*<br>
-+ * Include the generated decoders.<br>
-+ * Note that the T32 decoder reuses some of the trans_* functions<br>
-+ * initially declared by the A32 decoder, which results in duplicate<br>
-+ * declaration warnings.=C2=A0 Suppress them.<br>
-+ */<br>
-+<br>
-+#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE<br>
-+# pragma GCC diagnostic push<br>
-+# pragma GCC diagnostic ignored &quot;-Wredundant-decls&quot;<br>
-+# ifdef __clang__<br>
-+#=C2=A0 pragma GCC diagnostic ignored &quot;-Wtypedef-redefinition&quot;<b=
-r>
-+# endif<br>
-+#endif<br>
-+<br></blockquote><div><br></div><div>This looks more like a &quot;band aid=
-&quot; solution rather than the right one.</div><div><br></div><div>I find =
-it surprising that in spite of ever-growing complexity and numerous refinem=
-ents of the decodetree module, it still generates code that causes these co=
-mplaints of the compiler.</div><div><br></div><div>Regards,</div><div>Aleks=
-andar</div><div><br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
-padding-left:1ex">
-+#include &quot;decode-a32.inc.c&quot;<br>
-+#include &quot;decode-a32-uncond.inc.c&quot;<br>
-+#include &quot;decode-t32.inc.c&quot;<br>
-+<br>
-+#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE<br>
-+# pragma GCC diagnostic pop<br>
-+#endif<br>
-+<br>
-+/*<br>
-+ * Legacy decoder.<br>
-+ */<br>
-+<br>
-=C2=A0static void disas_arm_insn(DisasContext *s, unsigned int insn)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0unsigned int cond, val, op1, i, shift, rm, rs, rn, rd, =
-sh;<br>
-@@ -7733,7 +7760,8 @@ static void disas_arm_insn(DisasContext *s, unsigned =
-int insn)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return;<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-=C2=A0 =C2=A0 =C2=A0cond =3D insn &gt;&gt; 28;<br>
--=C2=A0 =C2=A0 if (cond =3D=3D 0xf){<br>
-+<br>
-+=C2=A0 =C2=A0 if (cond =3D=3D 0xf) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* In ARMv3 and v4 the NV condition is UN=
-PREDICTABLE; we<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * choose to UNDEF. In ARMv5 and above th=
-e space is used<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 * for miscellaneous unconditional instru=
-ctions.<br>
-@@ -7741,6 +7769,11 @@ static void disas_arm_insn(DisasContext *s, unsigned=
- int insn)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ARCH(5);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Unconditional instructions.=C2=A0 */<b=
-r>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (disas_a32_uncond(s, insn)) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* fall back to legacy decoder */<br>
-+<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (((insn &gt;&gt; 25) &amp; 7) =3D=3D 1=
-) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* NEON Data processing.=C2=
-=A0 */<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (!arm_dc_feature(s, ARM_=
-FEATURE_NEON)) {<br>
-@@ -7953,6 +7986,11 @@ static void disas_arm_insn(DisasContext *s, unsigned=
- int insn)<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0arm_skip_unless(s, cond);<br>
-<br>
-+=C2=A0 =C2=A0 if (disas_a32(s, insn)) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-+=C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 /* fall back to legacy decoder */<br>
-+<br>
-=C2=A0 =C2=A0 =C2=A0if ((insn &amp; 0x0f900000) =3D=3D 0x03000000) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if ((insn &amp; (1 &lt;&lt; 21)) =3D=3D 0=
-) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ARCH(6T2);<br>
-@@ -9440,6 +9478,11 @@ static void disas_thumb2_insn(DisasContext *s, uint3=
-2_t insn)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ARCH(6T2);<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-<br>
-+=C2=A0 =C2=A0 if (disas_t32(s, insn)) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-+=C2=A0 =C2=A0 }<br>
-+=C2=A0 =C2=A0 /* fall back to legacy decoder */<br>
-+<br>
-=C2=A0 =C2=A0 =C2=A0rn =3D (insn &gt;&gt; 16) &amp; 0xf;<br>
-=C2=A0 =C2=A0 =C2=A0rs =3D (insn &gt;&gt; 12) &amp; 0xf;<br>
-=C2=A0 =C2=A0 =C2=A0rd =3D (insn &gt;&gt; 8) &amp; 0xf;<br>
-diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs<br>
-index 5cafc1eb6c..7806b4dac0 100644<br>
---- a/target/arm/Makefile.objs<br>
-+++ b/target/arm/Makefile.objs<br>
-@@ -28,9 +28,27 @@ target/arm/decode-vfp-uncond.inc.c: $(SRC_PATH)/target/a=
-rm/vfp-uncond.decode $(D<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 $(PYTHON) $(DECODETREE) --static-decode =
-disas_vfp_uncond -o $@ $&lt;,\<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &quot;GEN&quot;, $(TARGET_DIR)$@)<br>
-<br>
-+target/arm/decode-a32.inc.c: $(SRC_PATH)/target/arm/a32.decode $(DECODETRE=
-E)<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0$(call quiet-command,\<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0$(PYTHON) $(DECODETREE) --static-decode =
-disas_a32 -o $@ $&lt;,\<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;GEN&quot;, $(TARGET_DIR)$@)<br>
-+<br>
-+target/arm/decode-a32-uncond.inc.c: $(SRC_PATH)/target/arm/a32-uncond.deco=
-de $(DECODETREE)<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0$(call quiet-command,\<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0$(PYTHON) $(DECODETREE) --static-decode =
-disas_a32_uncond -o $@ $&lt;,\<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;GEN&quot;, $(TARGET_DIR)$@)<br>
-+<br>
-+target/arm/decode-t32.inc.c: $(SRC_PATH)/target/arm/t32.decode $(DECODETRE=
-E)<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0$(call quiet-command,\<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0$(PYTHON) $(DECODETREE) --static-decode =
-disas_t32 -o $@ $&lt;,\<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot;GEN&quot;, $(TARGET_DIR)$@)<br>
-+<br>
-=C2=A0target/arm/translate-sve.o: target/arm/decode-sve.inc.c<br>
-=C2=A0target/arm/translate.o: target/arm/decode-vfp.inc.c<br>
-=C2=A0target/arm/translate.o: target/arm/decode-vfp-uncond.inc.c<br>
-+target/arm/translate.o: target/arm/decode-a32.inc.c<br>
-+target/arm/translate.o: target/arm/decode-a32-uncond.inc.c<br>
-+target/arm/translate.o: target/arm/decode-t32.inc.c<br>
-<br>
-=C2=A0obj-y +=3D tlb_helper.o debug_helper.o<br>
-=C2=A0obj-y +=3D translate.o op_helper.o<br>
-diff --git a/target/arm/a32-uncond.decode b/target/arm/a32-uncond.decode<br=
->
-new file mode 100644<br>
-index 0000000000..8dee26d3b6<br>
---- /dev/null<br>
-+++ b/target/arm/a32-uncond.decode<br>
-@@ -0,0 +1,23 @@<br>
-+# A32 unconditional instructions<br>
-+#<br>
-+#=C2=A0 Copyright (c) 2019 Linaro, Ltd<br>
-+#<br>
-+# This library is free software; you can redistribute it and/or<br>
-+# modify it under the terms of the GNU Lesser General Public<br>
-+# License as published by the Free Software Foundation; either<br>
-+# version 2 of the License, or (at your option) any later version.<br>
-+#<br>
-+# This library is distributed in the hope that it will be useful,<br>
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.=C2=A0 See the GNU<b=
-r>
-+# Lesser General Public License for more details.<br>
-+#<br>
-+# You should have received a copy of the GNU Lesser General Public<br>
-+# License along with this library; if not, see &lt;<a href=3D"http://www.g=
-nu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.org/l=
-icenses/</a>&gt;.<br>
-+<br>
-+#<br>
-+# This file is processed by scripts/decodetree.py<br>
-+#<br>
-+# All insns that have 0xf in insn[31:28] are decoded here.<br>
-+# All of those that have a COND field in insn[31:28] are in a32.decode<br>
-+#<br>
-diff --git a/target/arm/a32.decode b/target/arm/a32.decode<br>
-new file mode 100644<br>
-index 0000000000..2d84a02861<br>
---- /dev/null<br>
-+++ b/target/arm/a32.decode<br>
-@@ -0,0 +1,23 @@<br>
-+# A32 conditional instructions<br>
-+#<br>
-+#=C2=A0 Copyright (c) 2019 Linaro, Ltd<br>
-+#<br>
-+# This library is free software; you can redistribute it and/or<br>
-+# modify it under the terms of the GNU Lesser General Public<br>
-+# License as published by the Free Software Foundation; either<br>
-+# version 2 of the License, or (at your option) any later version.<br>
-+#<br>
-+# This library is distributed in the hope that it will be useful,<br>
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.=C2=A0 See the GNU<b=
-r>
-+# Lesser General Public License for more details.<br>
-+#<br>
-+# You should have received a copy of the GNU Lesser General Public<br>
-+# License along with this library; if not, see &lt;<a href=3D"http://www.g=
-nu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.org/l=
-icenses/</a>&gt;.<br>
-+<br>
-+#<br>
-+# This file is processed by scripts/decodetree.py<br>
-+#<br>
-+# All of the insn that have a COND field in insn[31:28] are here.<br>
-+# All insns that have 0xf in insn[31:28] are in a32u.decode.<br>
-+#<br>
-diff --git a/target/arm/t32.decode b/target/arm/t32.decode<br>
-new file mode 100644<br>
-index 0000000000..ac01fb6958<br>
---- /dev/null<br>
-+++ b/target/arm/t32.decode<br>
-@@ -0,0 +1,20 @@<br>
-+# Thumb2 instructions<br>
-+#<br>
-+#=C2=A0 Copyright (c) 2019 Linaro, Ltd<br>
-+#<br>
-+# This library is free software; you can redistribute it and/or<br>
-+# modify it under the terms of the GNU Lesser General Public<br>
-+# License as published by the Free Software Foundation; either<br>
-+# version 2 of the License, or (at your option) any later version.<br>
-+#<br>
-+# This library is distributed in the hope that it will be useful,<br>
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.=C2=A0 See the GNU<b=
-r>
-+# Lesser General Public License for more details.<br>
-+#<br>
-+# You should have received a copy of the GNU Lesser General Public<br>
-+# License along with this library; if not, see &lt;<a href=3D"http://www.g=
-nu.org/licenses/" rel=3D"noreferrer" target=3D"_blank">http://www.gnu.org/l=
-icenses/</a>&gt;.<br>
-+<br>
-+#<br>
-+# This file is processed by scripts/decodetree.py<br>
-+#<br>
--- <br>
-2.17.1<br>
-<br>
-<br>
-</blockquote></div></div>
-
---000000000000236167058f998c62--
+> 
+> > Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+> > ---
+> >  hw/core/qdev-vmstate.c | 41 +++++++++++++++++++++++++++++++++++++++++
+> >  hw/core/qdev.c         | 12 +++++++++++-
+> >  include/hw/qdev-core.h |  3 +++
+> >  stubs/Makefile.objs    |  1 +
+> >  stubs/device.c         |  7 +++++++
+> >  5 files changed, 63 insertions(+), 1 deletion(-)
+> >  create mode 100644 stubs/device.c
+> >
+> > diff --git a/hw/core/qdev-vmstate.c b/hw/core/qdev-vmstate.c
+> > index 07b010811f..24f8465c61 100644
+> > --- a/hw/core/qdev-vmstate.c
+> > +++ b/hw/core/qdev-vmstate.c
+> > @@ -43,3 +43,44 @@ const struct VMStateDescription device_vmstate_reset = {
+> >          VMSTATE_END_OF_LIST()
+> >      },
+> >  };
+> > +
+> > +static VMStateDescription *vmsd_duplicate_and_append(
+> > +        const VMStateDescription *old_vmsd,
+> > +        const VMStateDescription *new_subsection)
+> > +{
+> > +    VMStateDescription *vmsd;
+> > +    int n = 0;
+> > +
+> > +    assert(old_vmsd && new_subsection);
+> > +
+> > +    vmsd = (VMStateDescription *) g_memdup(old_vmsd, sizeof(*vmsd));
+> > +
+> > +    if (old_vmsd->subsections) {
+> > +        while (old_vmsd->subsections[n]) {
+> > +            n += 1;
+> > +        }
+> > +    }
+> > +    vmsd->subsections = g_new(const VMStateDescription *, n + 2);
+> > +
+> > +    if (old_vmsd->subsections) {
+> > +        memcpy(vmsd->subsections, old_vmsd->subsections,
+> > +               sizeof(VMStateDescription *) * n);
+> > +    }
+> > +    vmsd->subsections[n] = new_subsection;
+> > +    vmsd->subsections[n + 1] = NULL;
+> > +
+> > +    return vmsd;
+> > +}
+> > +
+> > +void device_class_build_extended_vmsd(DeviceClass *dc)
+> > +{
+> > +    assert(dc->vmsd);
+> > +    assert(!dc->vmsd_ext);
+> > +
+> > +    /* forge a subsection with proper name */
+> > +    VMStateDescription *reset;
+> > +    reset = g_memdup(&device_vmstate_reset, sizeof(*reset));
+> > +    reset->name = g_strdup_printf("%s/device_reset", dc->vmsd->name);
+> > +
+> > +    dc->vmsd_ext = vmsd_duplicate_and_append(dc->vmsd, reset);
+> > +}
+> 
+> This will allocate memory, but there is no corresponding
+> code which frees it. This means you'll have a memory leak
+> across device realize->unrealize for hotplug devices.
+> 
+> > diff --git a/hw/core/qdev.c b/hw/core/qdev.c
+> > index e9e5f2d5f9..88387d3743 100644
+> > --- a/hw/core/qdev.c
+> > +++ b/hw/core/qdev.c
+> > @@ -45,7 +45,17 @@ bool qdev_hot_removed = false;
+> >  const VMStateDescription *qdev_get_vmsd(DeviceState *dev)
+> >  {
+> >      DeviceClass *dc = DEVICE_GET_CLASS(dev);
+> > -    return dc->vmsd;
+> > +
+> > +    if (!dc->vmsd) {
+> > +        return NULL;
+> > +    }
+> > +
+> > +    if (!dc->vmsd_ext) {
+> > +        /* build it first time we need it */
+> > +        device_class_build_extended_vmsd(dc);
+> > +    }
+> > +
+> > +    return dc->vmsd_ext;
+> >  }
+> 
+> Unfortunately not everything that wants the VMSD calls
+> this function. migration/savevm.c:dump_vmstate_json_to_file()
+> does a direct access to dc->vmsd, so we need to fix that first.
+> 
+> Devices which don't use dc->vmsd won't get this and so
+> their reset state won't be migrated. That's OK for anything
+> that's still not yet a QOM device, I guess -- it's not possible
+> for them to be in a 'held in reset' state anyway, so the
+> extra subsection would never be needed.
+> 
+> The one I'm less sure about is the 'virtio' devices, which
+> have to do something odd with migration state for backwards
+> compat reasons. At the moment they can't be in a situation
+> where they're being held in reset when we do a migration,
+> but since they're PCI devices they might in future be possible
+> to put into new boards/pci controllers that would let them
+> be in that situation.
+> 
+> >  static void bus_remove_child(BusState *bus, DeviceState *child)
+> > diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+> > index 1670ae41bb..926d4bbcb1 100644
+> > --- a/include/hw/qdev-core.h
+> > +++ b/include/hw/qdev-core.h
+> > @@ -120,6 +120,7 @@ typedef struct DeviceClass {
+> >
+> >      /* device state */
+> >      const struct VMStateDescription *vmsd;
+> > +    const struct VMStateDescription *vmsd_ext;
+> >
+> >      /* Private to qdev / bus.  */
+> >      const char *bus_type;
+> > @@ -520,6 +521,8 @@ void device_class_set_parent_unrealize(DeviceClass *dc,
+> >
+> >  const struct VMStateDescription *qdev_get_vmsd(DeviceState *dev);
+> >
+> > +void device_class_build_extended_vmsd(DeviceClass *dc);
+> > +
+> >  const char *qdev_fw_name(DeviceState *dev);
+> >
+> >  Object *qdev_get_machine(void);
+> > diff --git a/stubs/Makefile.objs b/stubs/Makefile.objs
+> > index 9c7393b08c..432b56f290 100644
+> > --- a/stubs/Makefile.objs
+> > +++ b/stubs/Makefile.objs
+> > @@ -40,4 +40,5 @@ stub-obj-y += pci-host-piix.o
+> >  stub-obj-y += ram-block.o
+> >  stub-obj-y += ramfb.o
+> >  stub-obj-y += fw_cfg.o
+> > +stub-obj-y += device.o
+> >  stub-obj-$(CONFIG_SOFTMMU) += semihost.o
+> > diff --git a/stubs/device.c b/stubs/device.c
+> > new file mode 100644
+> > index 0000000000..e9b4f57e5f
+> > --- /dev/null
+> > +++ b/stubs/device.c
+> > @@ -0,0 +1,7 @@
+> > +#include "qemu/osdep.h"
+> > +#include "hw/qdev-core.h"
+> > +
+> > +void device_class_build_extended_vmsd(DeviceClass *dc)
+> > +{
+> > +    return;
+> > +}
+> > --
+> > 2.22.0
+> 
+> 
+> thanks
+> -- PMM
+--
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK

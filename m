@@ -1,220 +1,113 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7501599wrv;
-        Thu, 8 Aug 2019 00:19:00 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxwEupkgh8pa70xi3Zwwn0xe+QKVAgrpW3dGWo7qa5ON9tbCpPNTwMGc4LA4R6+y3mqScBe
-X-Received: by 2002:a50:eb8b:: with SMTP id y11mr14153930edr.154.1565248740505;
-        Thu, 08 Aug 2019 00:19:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565248740; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp7583102wrv;
+        Thu, 8 Aug 2019 01:50:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwZoyjUHFLF94JMKtQrkFaY2bGU8lgoVZbPuBEu9bbcX0F1PuFQqiyOsxzbuOHr4wm6c+BG
+X-Received: by 2002:a37:7d1:: with SMTP id 200mr11985588qkh.96.1565254219858;
+        Thu, 08 Aug 2019 01:50:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565254219; cv=none;
         d=google.com; s=arc-20160816;
-        b=fOgT1ZplDEIX5DoyuZlBXPW85x9oHxi7uUjYbA46YaE/KkHkzGKaaspev/L1LX1FCT
-         4tv5x0qOJMUcUcULjYgvB0iS2uTPlVgRUPm1D4LuuguQwkZtadQ06yuRnKI8qH7MF0c2
-         pntF6zVxjU/SrIIEJxFGz3mL5JxHBzuMXYlknoZlTsGFsp5i5Cf9YCSaLANUMguvD8tj
-         HDLt9X6bILZLHPLKImfA7pAoMuLMuY8APv0UfQEl/AEDviZt47MCG2fmmgisht3nAZF2
-         Yo/2YWNZHDZF3butINUB0mHKrXdN8qGgat4DklTnA5rXJXilQS1PWUTy+enuyso1PsHg
-         Xtig==
+        b=MQQGXJ8fDFSDfYDwDgJvXTcrSQEIDJg/vEMjxriyhgAzWrKdh6IKJ6y3YtRTgTUAnI
+         mW5wRZxPKE/0Qcw6Pg+DlPoYFJDokSMmSZHVN0wVJpdIXq1O3F7nE2ibhfJ/5nJ53uLO
+         mZr26/d8Q3Qt+loN0p3atWCi7RE2k4jKLSxh6jJ9x0ZLtjOqcI/Vpu1EzkcA4tTQ47EY
+         fpGmaMAPtbjn2pijDNRDyg+BQHXRa3xewzX9WyNRb4I36jm7X4EF7l2duHabmSuCfesQ
+         8M04HKbA78NQxuowfAnCa9RzyK9qbzabyLaSluE0kuj1UuvvP+aFxbmtYqLdBy/JlV+I
+         AMAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=ZcGDwA8WEMKjLeZ88L4frOeRmu3KrKH/8jsIm4GocKY=;
-        b=F6d+Wuwrn885MN0tEbJfaJ5emxex8VP5V815wQKddqYG8wZn5Y3FJpjRP71JLJkSNA
-         waOTybTwBTFbvUay4Lgmhn8jheU6u55+qlezVo/A5MOqTTGx0m12vtcoDx8D8XH79/As
-         KZdi2CcnRNsPSRaQ+nTBHEH99p99UkYPHdgIy6sqTmjR9adIVfFhOvle/ZtBgNUKrcSL
-         LbbboA/m+KDd4tMPjsAb8YicUFSZWigMT62iMbWikcVMB0YpV860cnaFVbNIBBZBztqo
-         c4QDpGWQjXku2bgCCovwT8VXZtd6lFE47P3hHbFBO8SF4x0L60jrzN+iFuyKGb4B47y1
-         75ig==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=b9QZ0kiKa8QRXeVOE+rSFZlm2jwqskJ81hKAawXSGd4=;
+        b=kUW3zab81dE+GkYkfYT656sk4C1Sb1Wqpe+zIGXgLaT4KlUgLdux0PT3Z+IuGwFKMP
+         S7pr6VQlb+aCnPpcXeYokPp5mqRACmmXHbXEiSaCnJGImx/esyC3rVMltWb8C1G75nqA
+         3k+naeEh9Dm2fx0WCoVhhCXv/suIMsVwylI8w9BIQHfNx1LLzr2b65GWGKxoxT7duLmB
+         AjkDe+Vla+C4Muvji7w2/+yZ8HBt7pThrVGBKqOteXXEsnUvSMYawtrYZ3g5yzPgROrr
+         +wTokCz4rNRbm5ExfEPTozjuGyxx24tfG/GkGaoqXqW5k63emOi5LYOEIQ6IhOwpVcy/
+         IygA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fhbBijbl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 2si666726ejm.63.2019.08.08.00.19.00
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Aug 2019 00:19:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id z42si12238449qve.206.2019.08.08.01.50.19
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 08 Aug 2019 01:50:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fhbBijbl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:47314 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvchP-0008P2-L4
-	for alex.bennee@linaro.org; Thu, 08 Aug 2019 03:18:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53865)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <bmeng.cn@gmail.com>) id 1hvcgs-0007yA-18
- for qemu-devel@nongnu.org; Thu, 08 Aug 2019 03:18:27 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <bmeng.cn@gmail.com>) id 1hvcgq-0004u5-QC
- for qemu-devel@nongnu.org; Thu, 08 Aug 2019 03:18:25 -0400
-Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:38230)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <bmeng.cn@gmail.com>)
- id 1hvcgq-0004tU-FM; Thu, 08 Aug 2019 03:18:24 -0400
-Received: by mail-ed1-x543.google.com with SMTP id r12so54703130edo.5;
- Thu, 08 Aug 2019 00:18:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=ZcGDwA8WEMKjLeZ88L4frOeRmu3KrKH/8jsIm4GocKY=;
- b=fhbBijbllxNcSWdBOGcJeePJLzixVIM9BKioQ3bcHoyRTN5cEnyJcWDfO6vzJeMLZt
- 0ls6ZKuWfE7sPg4Did+IEt+Bh8gHlNWgLj4P0qksAE6wdV3dTcHnYP2qbpFJP2ZKtjr1
- WKHwfXGwebYNKyLd3ITF5r/THTEJ2cGK31K7MKwCFG0ACpzhqIpZ7YM/lN64TCIy5IwZ
- obdUEiXE6FtYZ4hy86ZE0U0MsEcPf3LlV9966fB6bQJDx1rqIKEy2v5/T9jLBfbok4D6
- qzv7QgLcxZO2LOAwu+ljwRetV8eiYzqj45vn3ZaxokwlRGHkoNUDbYlIwWNHC3EYUTMc
- yApg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=ZcGDwA8WEMKjLeZ88L4frOeRmu3KrKH/8jsIm4GocKY=;
- b=LaWcBQNgE2I/jdQVrRJtFiNtZrojqOwzT95YY9/f2/e0RF3MKTp0BylFHoPC5I7eY8
- FrH8c3/j/fp9sy71UeYsaoHgp7CsJhKUbRhWiYtQ7iTI135t/Wq786UlVLpLM8crlGtb
- OCtb+YstDUgf2s457JP9YugGDbSEcaDnKyomz81jJMAT79zhPnBjLEta0WkVlsRrJ4Vy
- YV+Lblox5CjiTKXyLYyKxwHFpljXlpu+PgZDpy+x0y4qXOYDF0WKzfrdiVku3VxtX5Rb
- wafVMqfiZ96qbgyLDzvM2ESnW6tRsiB197NSnjr6Zi7MIerZleCp3aAVLpUQkr/sFRFj
- 9QSA==
-X-Gm-Message-State: APjAAAXRDE6NvDRCv1HtNFmHf+W+XG72vklGaOkbs8bvp6HbeTu89L/E
- tCA2v5zu9zFT3TNFVS1gm+YxGJZfYV0XdTx3jMY=
-X-Received: by 2002:a17:906:fc5:: with SMTP id
- c5mr12029089ejk.129.1565248703116; 
- Thu, 08 Aug 2019 00:18:23 -0700 (PDT)
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id B0DD0C00A168;
+	Thu,  8 Aug 2019 08:50:18 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 826365C226;
+	Thu,  8 Aug 2019 08:50:14 +0000 (UTC)
+Date: Thu, 8 Aug 2019 10:50:12 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, armbru@redhat.com,
+	eric.auger@redhat.com, qemu-arm@nongnu.org, imammedo@redhat.com,
+	alex.bennee@linaro.org, Dave.Martin@arm.com
+Subject: Re: [Qemu-devel] [PATCH v3 03/15] target/arm/monitor: Introduce
+ qmp_query_cpu_model_expansion
+Message-ID: <20190808085012.23aokly34zo4wxbk@kamzik.brq.redhat.com>
+References: <20190802122540.26385-1-drjones@redhat.com>
+ <20190802122540.26385-4-drjones@redhat.com>
+ <d0983bd5-c1a5-adf6-324d-2b199ca0e23c@linaro.org>
+ <ec44ddad-c33c-918b-e94b-a534a2519a9e@linaro.org>
+ <20190806122144.bb3klk7aaaqdhgwi@kamzik.brq.redhat.com>
+ <39a4d205-d291-8962-2693-6bbcce89c332@linaro.org>
 MIME-Version: 1.0
-References: <1565020374-23888-1-git-send-email-bmeng.cn@gmail.com>
- <1565239479-2130-1-git-send-email-bmeng.cn@gmail.com>
- <d0ca78ec-c5d4-bc80-6f2e-3e933013b5f4@redhat.com>
- <CAEUhbmVKnUkJ66A-mULpkqZppb=2c8NVAFJhZhOMpOdyRRxSQQ@mail.gmail.com>
- <1070f952-68d2-8849-bac8-4b58ab10ed9b@redhat.com>
-In-Reply-To: <1070f952-68d2-8849-bac8-4b58ab10ed9b@redhat.com>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Thu, 8 Aug 2019 15:18:12 +0800
-Message-ID: <CAEUhbmWadx1W66F1g8OWJK6mrB-0F7iWQO0hN9tw2eg1w+JDTg@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::543
-Subject: Re: [Qemu-devel] [PATCH v2] hw: net: cadence_gem: Fix build errors
- in DB_PRINT()
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm@nongnu.org, Alistair Francis <Alistair.Francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Stefano Garzarella <sgarzare@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6ueb7ZpjvKG3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <39a4d205-d291-8962-2693-6bbcce89c332@linaro.org>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.32]); Thu, 08 Aug 2019 08:50:18 +0000 (UTC)
+X-TUID: UAJpfXdBfKuM
 
-On Thu, Aug 8, 2019 at 3:01 PM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om> wrote:
->
-> On 8/8/19 8:36 AM, Bin Meng wrote:
-> > On Thu, Aug 8, 2019 at 1:21 PM Philippe Mathieu-Daud=C3=A9 <philmd@redh=
-at.com> wrote:
-> >>
-> >> Hi,
-> >>
-> >> On 8/8/19 6:44 AM, Bin Meng wrote:
-> >>> When CADENCE_GEM_ERR_DEBUG is turned on, there are several
-> >>> compilation errors in DB_PRINT(). Fix them.
-> >>>
-> >>> Signed-off-by: Bin Meng <bmeng.cn@gmail.com>
-> >>>
-> >>> ---
-> >>>
-> >>> Changes in v2:
-> >>
-> >> Please don't reply to previous version, post as a new thread (it is
-> >> harder to notice your new versions in a emails threaded view).
-> >>
-> >
-> > OK.
-> >
-> >>> - use HWADDR_PRIx instead of TARGET_FMT_plx for consistency
-> >>> - use 'z' modifier to print sizeof(..)
-> >>>
-> >>>  hw/net/cadence_gem.c | 7 ++++---
-> >>>  1 file changed, 4 insertions(+), 3 deletions(-)
-> >>>
-> >>> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> >>> index d412085..b6ff2c1 100644
-> >>> --- a/hw/net/cadence_gem.c
-> >>> +++ b/hw/net/cadence_gem.c
-> >>> @@ -983,8 +983,9 @@ static ssize_t gem_receive(NetClientState *nc, co=
-nst uint8_t *buf, size_t size)
-> >>>              return -1;
-> >>>          }
-> >>>
-> >>> -        DB_PRINT("copy %d bytes to 0x%x\n", MIN(bytes_to_copy, rxbuf=
-size),
-> >>> -                rx_desc_get_buffer(s->rx_desc[q]));
-> >>> +        DB_PRINT("copy %d bytes to 0x%" HWADDR_PRIx "\n",
-> >>
-> >> rx_desc_get_buffer() returns a uint64_t, shouldn't you use a PRIx64
-> >> format here?
-> >
-> > HWADDR_PRIx expands to PRIx64. I got your point that since it does not
-> > return hwaddr, so we should use PRIx64 directly. Correct?
-> >
-> >>
-> >>> +                 MIN(bytes_to_copy, rxbufsize),
-> >>
-> >> Nitpick #1: since you are cleaning this file up, bytes_to_copy and
-> >> rxbufsize are both unsigned, so the first format should be %u instead =
-of %d.
-> >
-> > Sure, will do in v3.
-> >
-> >>
-> >>> +                 rx_desc_get_buffer(s, s->rx_desc[q]));
-> >>>
-> >>>          /* Copy packet data to emulated DMA buffer */
-> >>>          address_space_write(&s->dma_as, rx_desc_get_buffer(s, s->rx_=
-desc[q]) +
-> >>> @@ -1157,7 +1158,7 @@ static void gem_transmit(CadenceGEMState *s)
-> >>>              if (tx_desc_get_length(desc) > sizeof(tx_packet) -
-> >>>                                                 (p - tx_packet)) {
-> >>>                  DB_PRINT("TX descriptor @ 0x%x too large: size 0x%x =
-space " \
-> >>> -                         "0x%x\n", (unsigned)packet_desc_addr,
-> >>> +                         "0x%zx\n", (unsigned)packet_desc_addr,
-> >>
-> >> Nitpick #2: packet_desc_addr is of type hwaddr, so removing the cast t=
-he
-> >> 1st format is HWADDR_PRIx, also removing the 2nd cast the 2nd format i=
-s
-> >> PRIx64.
-> >
-> > packet_desc_addr() return unsigned, so %x should be OK.
->
-> 'packet_desc_addr' is of type hwaddr,
-
-Ah, a typo! I meant to say: tx_desc_get_length() returns unsigned, so
-just removing the 2nd cast is correct. But you wanted to change to
-PRIx64 which I don't understand.
-
-> '(unsigned)packet_desc_addr' is casted to type unsigned.
->
-> Anyhow I now remember I already reviewed this patch:
-> https://lists.gnu.org/archive/html/qemu-devel/2019-06/msg03263.html
+On Wed, Aug 07, 2019 at 08:22:07AM -0700, Richard Henderson wrote:
+> On 8/6/19 5:21 AM, Andrew Jones wrote:
+> > That's a reasonable suggestion. I do like having self-contained
+> > validation, self-contained, but when cross-dependencies arise, then
+> > it does make sense to have a master validation function, rather
+> > than interconnecting too much. That said, for this series we only
+> > enable the qmp query for aarch64, pmu, and sve* properties. aarch64
+> > and pmu are independent, and thus self-contained...
+> 
+> Agreed.
+> 
+> > and I consider
+> > all sve* properties one big entity, so their validation is also
+> > self-contained. If we add vfp and neon, then indeed I was wrong
+> > with my suggestion in the commit message. They would need a later
+> > validation check. Should we just cross that bridge when we get there
+> > though? Or would you like me to see how that would work within this
+> > series?
+> 
+> While the sve* properties are handled by one function, they are not handled as
+> "one big entity".  You examine then apply or diagnose the effects of sve384=on
+> before you separately examine the effects of sve512=on.
+> 
+> I think it would be easiest to merely record facts while processing sve<N> and
+> sve-max-vq, with no side effects.  Then in the common validation function see
+> the required side effects and diagnose errors all at once.
 >
 
-OK, looks the same issue was discovered by someone else :)
+I'm not sure. Of course I'd need to experiment with it to be sure, but
+I'm reluctant to go through that exercise, because I believe that a
+deferred validation will result in less specific errors messages. For
+example, how would the validator know in which order the sve<N> properties
+were provided? Which is necessary to complain that one length is not
+allowed when another has already been disabled, or vice versa.
 
-Regards,
-Bin
+Also with deferred validation I think I'd need more vq states, at least
+for when KVM is enabled. For example, if 384-bit vector lengths are not
+supported on the KVM host, but the user does sve384=on, and all we do
+is record that, then we've lost the KVM unsupported information and won't
+find out until we attempt to enable it later at kvm vcpu init time. We'd
+need a kvm-unsupported-user-enabled state to track that, which also means
+we're not blindly recording user input in cpu_arm_set_sve_vq() anymore,
+but are instead applying logic to decide which state we transition to.
+
+Thanks,
+drew

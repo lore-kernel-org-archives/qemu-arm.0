@@ -1,103 +1,103 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp9357367wrv;
-        Fri, 9 Aug 2019 08:42:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyA844H1OxyTlA9Il3sVs+Vi10BOQ1Ib7CU7hYfVyvi+jzthjF0w/tMvNM2L7GVIS5t4XtW
-X-Received: by 2002:a17:906:ece1:: with SMTP id qt1mr19546448ejb.171.1565365334993;
-        Fri, 09 Aug 2019 08:42:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565365334; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp9357488wrv;
+        Fri, 9 Aug 2019 08:42:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxgxRLYshGc9wNhsqoySQzux3qTCCoVGxN4Ym/2K6TfluTYZynogz3Xqm391fPeEb9y60hR
+X-Received: by 2002:a17:906:724a:: with SMTP id n10mr18720760ejk.54.1565365341377;
+        Fri, 09 Aug 2019 08:42:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565365341; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q4+dcK9Phwukkuy5YilhuTzfzmvO3t1N6igE4Lg3H4vyk/nlh0MUpZFv472+qAkGAm
-         ywJREDC7i4/DCNAh/0p4WYRNIZ5l6JLLzbAidr22FAt5CHRIMQdpaN3JtmASOhGe9Si3
-         sYIFOJ4YjTtBml2L85V1U9ziQYPHKJ8Jj0jg/L4SWiFDWgXgfEm/uwl8iGeSVAKCad1+
-         jcZoZI8IQnNaJctrzv71eRbHj0di0k0AJuxD+WSS9U/O0DzNvt+z36xfy1kujTJE7tpT
-         MdSRYcmuaue3Hc+SgX38M9yYNEsfgJ6GxLmIjIEXYs6iRtbeIcwCOEC1l6FaDgpyyJGG
-         2Vlg==
+        b=hsjq0978UyFte+WRMUNjS5sZ5flNonuZj5AFnjxbTeDPd88Og5VD0PshOQtOZUaYAn
+         wReRfdraLc5CykM4fYrQfZ83GZdRjbsA8iKtaHlGmxlM7Bu58iAsFwtckcKgSDswaqBK
+         Q5DYMDaZkK4IYR05NqIQTxCaxgEdzeapTz56aKTeeTSYufOKpv80CSIx93/UOVnS+0KU
+         6CoXKG71g1nX8O/2jKqAdzd6oCIVUjui4HKo9XabGKefFjDMHVyvIT4PH0Z9xyLdP/ZW
+         ErR7JNTXaTllbRJNcrvgn2Fc7V/nuyDfwx9MyJH/2vK98Vb3pFyuLcBXCSFNA1cz/sn5
+         tsuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=UcR6femN4PMRW3W5bwCjDWWwUNOlmVUXp07Zv3cBZyQ=;
-        b=CEsBzGZgNVYKulkpgi3gve3S88wKAeW0lhaZNtlSdsCNdY5s7PexzwgGsTNBeHhMe6
-         1aYp/Zp1zsepO6GtgVbVH31KfE3K9NelxCBXfGw1xt4fUxM3aOqlOIh/vKyn+ERMKYmr
-         MBJTbC5L4v5sUhMRQzSAy++cG3Ina2nwOK3VqNfC3F4qY1TZto1OtOv+qitdH5j28tuZ
-         G/JrMSue+vtsv138Xcbf4F5pewbFB/OCBccsyyTqwkrWLnNc+xihixYdBIiRs5o3wrWp
-         xVlfL0sjgVsqotNAPGhZFysaBntBTqE873Ler/UbgDq4KXYnJCzH1YusRjFM5vFyKHOq
-         brZA==
+        bh=x8MCVdcm8N9Wdyzx80ABjmXcKcOIg3c8JF8kLGEmqDw=;
+        b=lt8hqKXmk80eaCjj+p5ApJQqR4NjiSBg8r07H4zhLaKZ8jXii2FZfuIgvMu1na1pI5
+         QuESR/3KCoFyMo8Vsft7/NbW47m4JFVVXX9h5D3C7kE13pkQ8Ef6bDtXgPog/VY8PGms
+         7SEkGDmU1alroPN4Go1DJUj/b2EiE5x45ESZ3XLT9fwAk0qeq0zBqD3CNMLeo0V9wGey
+         1V4y8jKPOKTQO15zQsqTXDbHAPpjGBluCMmGp9q8bPqhHjNzRvcZ/XXDvEi2Bf0Rzdb/
+         PwIP9F2Bw/IEcXqeUqqmEP2E4+AO4FvAKFnS63pR2X+XaYxqPshVPspTev+ZB8y7L0gj
+         l+Sw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uxEZ9enm;
+       dkim=fail header.i=@linaro.org header.s=google header.b=loVYDKjB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1si33984577eju.202.2019.08.09.08.42.14
+        by mx.google.com with ESMTPS id l23si3400835eda.394.2019.08.09.08.42.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Aug 2019 08:42:14 -0700 (PDT)
+        Fri, 09 Aug 2019 08:42:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=uxEZ9enm;
+       dkim=fail header.i=@linaro.org header.s=google header.b=loVYDKjB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60274 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60276 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hw71x-0000q5-Ty
-	for alex.bennee@linaro.org; Fri, 09 Aug 2019 11:42:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50764)
+	id 1hw724-0001El-FQ
+	for alex.bennee@linaro.org; Fri, 09 Aug 2019 11:42:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50795)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <richard.henderson@linaro.org>) id 1hw71n-0000aZ-Kz
+ (envelope-from <richard.henderson@linaro.org>) id 1hw71o-0000dH-O4
  for qemu-arm@nongnu.org; Fri, 09 Aug 2019 11:42:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1hw71l-0008Sl-NF
- for qemu-arm@nongnu.org; Fri, 09 Aug 2019 11:42:03 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634]:43894)
+ (envelope-from <richard.henderson@linaro.org>) id 1hw71n-0008Uv-Lt
+ for qemu-arm@nongnu.org; Fri, 09 Aug 2019 11:42:04 -0400
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:42311)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1hw71k-0008Pz-Rj
- for qemu-arm@nongnu.org; Fri, 09 Aug 2019 11:42:01 -0400
-Received: by mail-pl1-x634.google.com with SMTP id 4so38113152pld.10
- for <qemu-arm@nongnu.org>; Fri, 09 Aug 2019 08:41:58 -0700 (PDT)
+ id 1hw71l-0008S6-Mr
+ for qemu-arm@nongnu.org; Fri, 09 Aug 2019 11:42:03 -0400
+Received: by mail-pg1-x543.google.com with SMTP id t132so46042765pgb.9
+ for <qemu-arm@nongnu.org>; Fri, 09 Aug 2019 08:42:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=UcR6femN4PMRW3W5bwCjDWWwUNOlmVUXp07Zv3cBZyQ=;
- b=uxEZ9enmcTxPqmNgKJswZzmoH9lBzoCHXrZjIOPyzmeT30scIFiZNvQH13MytafGZf
- aXODqG3aPGdhY1jrtriJ3SsaXitIxVVSgV0xf+sdb/0v6wg1Fh835sjOjJ1CQWQUhfZ+
- tcsmX/l353DyrFySOJjSC8SBANxDdSxilHEEvi8TZnkjcBJifpCGB4ulNDs0pVD+nPjK
- TqfFhaKpdkWKsLo5xirMRuUIQL/9oW3yYcwPzoKWymYJ1PejVG0zvI+g7xr9FL7EgqZ5
- Qh4ZhZnazPf2VlMZzznCnHD5GL23pkvbjSm98lNYSWmrwqcSYep6h3qEEci+LCECNrpk
- YlIw==
+ bh=x8MCVdcm8N9Wdyzx80ABjmXcKcOIg3c8JF8kLGEmqDw=;
+ b=loVYDKjBaQT2QJuvWNv441HJ4opYXwOlNGJtXF7TcgVjOtY/Q5TxH1B3gcaIIE10s8
+ 4m/5mFet2d2doJgS+C7NHkl71dKMhvcKFXA9Cr53VFJN+bVv4Vo27vSxAGBbL9PRYb9R
+ 9F6ljy04E0bDeWuXq1sfdNfwEMZLm9tyB7Ex4sQOJhsOvB7M4VSNPYK+djHYFg7VojU0
+ MtuBefnWTW4Co+HtG0+4tUDiJto32DH8EbT6YlEY56i3H8I9otXAc6YMStZIMkGMzd0b
+ G0IIyIQ1nPIUoYGART9l/srPZAUjoKTxhODqXrdGJIPuaE7XzdtI5niKqJo4YbJAeSUR
+ uRTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=UcR6femN4PMRW3W5bwCjDWWwUNOlmVUXp07Zv3cBZyQ=;
- b=gVht5iGJoXETF3vrXLLvZPtw1klLmEMQLmSfsKv5dhi5d6D6CpSLYb24w4HTwLkipe
- 7P0626H7WeFKqKWKnTdfAxkEYTR2w+jYRb89Vou3NA25Adf0kGkcY760G27c3jZXu5WM
- eNvCAj5Ea2rIUwQqBjxlXplpaDwm9OAKoXrJO+E37O/PRn2F05IepCF33RbUXx54rktt
- JFOecs6TEN/SU6UpdvwBOmxNMUqg6XG+rrkGLhFOPS5zEdO4ygoNy5Gg4kIq4myPoSkA
- 7WWniJkShVBpRqCvw9jIvbqIOen7RwfZHG7xJGH0qvNLJGqZjgyMz/zxC7mOGxgttMZM
- jQ6A==
-X-Gm-Message-State: APjAAAUF8EugGFi37kvQAzcRLXqv4zj5ghcgOcWD5/kHongDn8UnXcdP
- o4b8xIbFQ4UY/y2ZacMllJVKGHtgOSQ=
-X-Received: by 2002:a17:902:8bc1:: with SMTP id
- r1mr19714697plo.42.1565365317334; 
- Fri, 09 Aug 2019 08:41:57 -0700 (PDT)
+ bh=x8MCVdcm8N9Wdyzx80ABjmXcKcOIg3c8JF8kLGEmqDw=;
+ b=qTQLozvkNRg1twBXq3Xa3HQ86dF1gu5WcmACh1aXcLaxHmeY8Ynl0MwBu2IKp5ZFyQ
+ Sq2abwBQIiKbl94bCKXEtd8zGO3wQoDdcJZQsT2w9ZPoaUzIErvudVOMH1cHSVK9zz4m
+ DUixwktSUAFG+rju0AK6uGELyJXt7PhgswLSJ8xvGrHRJATOfAw/R0w8f+TqxZwaS4yz
+ KgqKfRD1vc4Je0nnZUmvC5aIxig9pTArYVc0vLpBlzHJRgHbwJOHkHJ1XNE/OqYnL1Ev
+ MsHsWA8WHTx/VvRb8o9Y40/goPJN/pPhtau8kkYRBsbOn6AQpugdWu6vQpQkhi23ZkO3
+ OsCQ==
+X-Gm-Message-State: APjAAAWkl394xxrc/b4QqAQpUAVXxslA94DdAxjGcfQuABOqMc7b8pKG
+ 8qU+QqEW7NYDEUlm7n1TuRoPvw==
+X-Received: by 2002:a17:90a:360b:: with SMTP id
+ s11mr9919689pjb.51.1565365320410; 
+ Fri, 09 Aug 2019 08:42:00 -0700 (PDT)
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
  [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id 67sm80452179pfd.177.2019.08.09.08.41.56
+ by smtp.gmail.com with ESMTPSA id 67sm80452179pfd.177.2019.08.09.08.41.58
  (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
- Fri, 09 Aug 2019 08:41:56 -0700 (PDT)
+ Fri, 09 Aug 2019 08:41:59 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Fri,  9 Aug 2019 08:41:51 -0700
-Message-Id: <20190809154153.31763-2-richard.henderson@linaro.org>
+Date: Fri,  9 Aug 2019 08:41:53 -0700
+Message-Id: <20190809154153.31763-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190809154153.31763-1-richard.henderson@linaro.org>
 References: <20190809154153.31763-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::634
-Subject: [Qemu-arm] [PATCH 1/3] decodetree: Allow !function with no input
- bits
+X-Received-From: 2607:f8b0:4864:20::543
+Subject: [Qemu-arm] [PATCH 3/3] target/riscv: Remove redundant declaration
+ pragmas
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -113,157 +113,47 @@ Cc: peter.maydell@linaro.org, Alistair.Francis@wdc.com, qemu-arm@nongnu.org,
  qemu-riscv@nongnu.org, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KrMOzlFu69ro
+X-TUID: b1u+OHjUs5VU
 
-Call this form a "parameter", returning a value extracted
-from the DisasContext.
+These are now generated by decodetree itself.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- docs/devel/decodetree.rst         |  8 ++++-
- scripts/decodetree.py             | 54 ++++++++++++++++++++++++-------
- tests/decode/err_field6.decode    |  5 +++
- tests/decode/succ_function.decode |  6 ++++
- 4 files changed, 60 insertions(+), 13 deletions(-)
- create mode 100644 tests/decode/err_field6.decode
- create mode 100644 tests/decode/succ_function.decode
+ target/riscv/translate.c | 19 +------------------
+ 1 file changed, 1 insertion(+), 18 deletions(-)
 
-diff --git a/docs/devel/decodetree.rst b/docs/devel/decodetree.rst
-index 44ac621ea8..ce7f52308f 100644
---- a/docs/devel/decodetree.rst
-+++ b/docs/devel/decodetree.rst
-@@ -23,7 +23,7 @@ Fields
+diff --git a/target/riscv/translate.c b/target/riscv/translate.c
+index 8d6ab73258..adeddb85f6 100644
+--- a/target/riscv/translate.c
++++ b/target/riscv/translate.c
+@@ -708,26 +708,9 @@ static bool gen_shift(DisasContext *ctx, arg_r *a,
+ #include "insn_trans/trans_rvd.inc.c"
+ #include "insn_trans/trans_privileged.inc.c"
  
- Syntax::
+-/*
+- * Auto-generated decoder.
+- * Note that the 16-bit decoder reuses some of the trans_* functions
+- * initially declared by the 32-bit decoder, which results in duplicate
+- * declaration warnings.  Suppress them.
+- */
+-#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
+-# pragma GCC diagnostic push
+-# pragma GCC diagnostic ignored "-Wredundant-decls"
+-# ifdef __clang__
+-#  pragma GCC diagnostic ignored "-Wtypedef-redefinition"
+-# endif
+-#endif
+-
++/* Include the auto-generated decoder for 16 bit insn */
+ #include "decode_insn16.inc.c"
  
--  field_def     := '%' identifier ( unnamed_field )+ ( !function=identifier )?
-+  field_def     := '%' identifier ( unnamed_field )* ( !function=identifier )?
-   unnamed_field := number ':' ( 's' ) number
- 
- For *unnamed_field*, the first number is the least-significant bit position
-@@ -34,6 +34,12 @@ present, they are concatenated.  In this way one can define disjoint fields.
- If ``!function`` is specified, the concatenated result is passed through the
- named function, taking and returning an integral value.
- 
-+One may use ``!function`` with zero ``unnamed_fields``.  This case is called
-+a *parameter*, and the named function is only passed the ``DisasContext``
-+and returns an integral value extracted from there.
-+
-+A field with no ``unnamed_fields`` and no ``!function`` is in error.
-+
- FIXME: the fields of the structure into which this result will be stored
- is restricted to ``int``.  Which means that we cannot expand 64-bit items.
- 
-diff --git a/scripts/decodetree.py b/scripts/decodetree.py
-index d7a59d63ac..a2490aeb74 100755
---- a/scripts/decodetree.py
-+++ b/scripts/decodetree.py
-@@ -195,7 +195,10 @@ class MultiField:
-     """Class representing a compound instruction field"""
-     def __init__(self, subs, mask):
-         self.subs = subs
--        self.sign = subs[0].sign
-+        if len(subs):
-+            self.sign = subs[0].sign
-+        else:
-+            self.sign = 0
-         self.mask = mask
- 
-     def __str__(self):
-@@ -245,7 +248,7 @@ class ConstField:
- 
- 
- class FunctionField:
--    """Class representing a field passed through an expander"""
-+    """Class representing a field passed through a function"""
-     def __init__(self, func, base):
-         self.mask = base.mask
-         self.sign = base.sign
-@@ -266,6 +269,27 @@ class FunctionField:
- # end FunctionField
- 
- 
-+class ParameterField:
-+    """Class representing a psuedo-field read from a function"""
-+    def __init__(self, func):
-+        self.mask = 0
-+        self.sign = 0
-+        self.func = func
-+
-+    def __str__(self):
-+        return self.func
-+
-+    def str_extract(self):
-+        return self.func + '(ctx)'
-+
-+    def __eq__(self, other):
-+        return self.func == other.func
-+
-+    def __ne__(self, other):
-+        return not self.__eq__(other)
-+# end FunctionField
-+
-+
- class Arguments:
-     """Class representing the extracted fields of a format"""
-     def __init__(self, nm, flds, extern):
-@@ -433,17 +457,23 @@ def parse_field(lineno, name, toks):
- 
-     if width > insnwidth:
-         error(lineno, 'field too large')
--    if len(subs) == 1:
--        f = subs[0]
-+    if len(subs) == 0:
-+        if func:
-+            f = ParameterField(func)
-+        else:
-+            error(lineno, 'field with no value')
-     else:
--        mask = 0
--        for s in subs:
--            if mask & s.mask:
--                error(lineno, 'field components overlap')
--            mask |= s.mask
--        f = MultiField(subs, mask)
--    if func:
--        f = FunctionField(func, f)
-+        if len(subs) == 1:
-+            f = subs[0]
-+        else:
-+            mask = 0
-+            for s in subs:
-+                if mask & s.mask:
-+                    error(lineno, 'field components overlap')
-+                mask |= s.mask
-+            f = MultiField(subs, mask)
-+        if func:
-+            f = FunctionField(func, f)
- 
-     if name in fields:
-         error(lineno, 'duplicate field', name)
-diff --git a/tests/decode/err_field6.decode b/tests/decode/err_field6.decode
-new file mode 100644
-index 0000000000..a719884572
---- /dev/null
-+++ b/tests/decode/err_field6.decode
-@@ -0,0 +1,5 @@
-+# This work is licensed under the terms of the GNU LGPL, version 2 or later.
-+# See the COPYING.LIB file in the top-level directory.
-+
-+# Diagnose no bits in field
-+%field
-diff --git a/tests/decode/succ_function.decode b/tests/decode/succ_function.decode
-new file mode 100644
-index 0000000000..7751b1784e
---- /dev/null
-+++ b/tests/decode/succ_function.decode
-@@ -0,0 +1,6 @@
-+# This work is licensed under the terms of the GNU LGPL, version 2 or later.
-+# See the COPYING.LIB file in the top-level directory.
-+
-+# "Field" as parameter pulled from DisasContext.
-+%foo  !function=foo
-+foo   00000000000000000000000000000000 %foo
+-#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
+-# pragma GCC diagnostic pop
+-#endif
+-
+ static void decode_opc(DisasContext *ctx)
+ {
+     /* check for compressed insn */
 -- 
 2.17.1
 

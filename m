@@ -1,64 +1,115 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp8687670wrv;
-        Thu, 8 Aug 2019 21:05:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyu5RpmjH0Eoa/1Bmp9yhf05RGoARjE1JM+icFfaMHtqywpdE9KGAKWFFaEVk1ApO1Lt4Ey
-X-Received: by 2002:a17:906:1b0d:: with SMTP id o13mr16459165ejg.96.1565323545122;
-        Thu, 08 Aug 2019 21:05:45 -0700 (PDT)
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp8726190wrv;
+        Thu, 8 Aug 2019 21:56:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwzYQx6r+y8pwHiINT/7yDLN22Y+Tewj7at34Ua+B9/+WVWO/5mjGrHH69NeC+TWj/m1mxk
+X-Received: by 2002:a05:620a:1183:: with SMTP id b3mr10111706qkk.312.1565326611719;
+        Thu, 08 Aug 2019 21:56:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565326611; cv=none;
+        d=google.com; s=arc-20160816;
+        b=E7/pXrfVM8+oWhNCYuOx95hCQLiv2whdkfxqA2OyUL5YOQNkNJF730RkEph/5otrMj
+         6LIuUIAdIlfYqyloq8VC49jL7zFVHpS69Chn3PYpJFQq25URUT1Q8QxN+CbNaFx/ocQj
+         ZRBx9zby159bpubhTixmSKCQSEw+R2DKnK+Aj+OvUUnYJDH/7+IWkXLcIJPvDBAWCfOz
+         wLO8kHEeOeXVn913Tj1jrRxZM8IvfSbMTkYOilViTVLMrSNF9J0IpKHMQJ2V0c2vGSAE
+         eftnt4jdODdTdp9ZziRwQM3kHp10vgT6ve/5/YSdA3I/nB8ySBr6NbuE2RkO8uDIfJvk
+         IypQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:to:from:date:references:in-reply-to
+         :message-id:mime-version:user-agent:dkim-signature:dkim-signature;
+        bh=97PQ0ONohDjicXDGQPseSUNahm4RV3a90jPYWmyNsdc=;
+        b=OTvYxrGMjrJjxaH4sbgYEgu+m6AR+rUYsWx3eWU2LgkNUEDfDuwyWxoudxd9/yQIHa
+         lkll4ZixTVo2IRkCuAU5wCU0vsjQ1eNdrVVhP/ndAblbUNxpkpn1/9gHFT3oaPx/egfI
+         OpJxo+OjLhwrleCwbQle446cv63MRW9lc0hdvuGArJyElcIwdGnGiyvgXIOzjiZXoMhR
+         EdCkzhr2SBYLGDvYTRmIIB9AdOclGScyuW4LSgohlLQ85+mMzgAXwTiVWZFFsaDpENBa
+         HgAcygTJFhtZBv1YvVmorzwzb5mWsTCsZjd8YhKjpx1fgjuGaXvt32VIQmzo+1OsrEaq
+         Rhsw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=gNMW0dWm;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=ldUL5X2a;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z37si2549346edz.99.2019.08.08.21.05.44
+        by mx.google.com with ESMTPS id i7si1439400qvv.135.2019.08.08.21.56.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Aug 2019 21:05:45 -0700 (PDT)
+        Thu, 08 Aug 2019 21:56:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=gNMW0dWm;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=ldUL5X2a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56242 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56420 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvw9w-0003fF-7Q
-	for alex.bennee@linaro.org; Fri, 09 Aug 2019 00:05:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53410)
+	id 1hvwxP-0006OI-AA
+	for alex.bennee@linaro.org; Fri, 09 Aug 2019 00:56:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59398)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <no-reply@patchew.org>) id 1hvw9p-0003er-7H
- for qemu-arm@nongnu.org; Fri, 09 Aug 2019 00:05:38 -0400
+ (envelope-from <andrew@aj.id.au>) id 1hvwxJ-0006Nz-TP
+ for qemu-arm@nongnu.org; Fri, 09 Aug 2019 00:56:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1hvw9n-0001DU-Ug
- for qemu-arm@nongnu.org; Fri, 09 Aug 2019 00:05:37 -0400
-Resent-Date: Fri, 09 Aug 2019 00:05:37 -0400
-Resent-Message-Id: <E1hvw9n-0001DU-Ug@eggs.gnu.org>
-Received: from sender4-of-o59.zoho.com ([136.143.188.59]:21957)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1hvw9n-0001D2-M0; Fri, 09 Aug 2019 00:05:35 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1565323516; cv=none; d=zoho.com; s=zohoarc; 
- b=b59rF0lBEMUSgDCZ6KLIC6af0+yvIdUurgomXK8h6PtkVbjT4ICV10gthz6ifwq40x5mwtCy/Fppm9EAMVImcPe+GVqCW31X+8DlQ+nsPW93ifXWGkgcmcgF4pGJ3ahuClyohJ03z0egtR0nXKnu9xGK329p/8TZlRVUzLSsVYg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
- s=zohoarc; t=1565323516;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
- bh=RXZP4r0Zt6moYcZejD2zJtloY2Zh227fIx1GRBrYlJ4=; 
- b=CMkITvSIFZLpuqE28OIpJ7Vx/k/xI5H82upp6O+HF1zV1jGg2n2uINoh4Qw4UPVqeR0CA2qrtJK7RkioxfmAXXsf//5rL+QV8GzOIel4UgufNKwq2h1h5tlExbtCV7xnEj08WJnj4Ymi3/XkIuRZhQEST0gx1SrWd0bP4qEbcFQ=
-ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1565323513823279.0885523840261;
- Thu, 8 Aug 2019 21:05:13 -0700 (PDT)
-In-Reply-To: <20190809031321.14760-1-andrew@aj.id.au>
-Message-ID: <156532351253.12874.1201096794967354035@b08f24806b7e>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: andrew@aj.id.au
-Date: Thu, 8 Aug 2019 21:05:13 -0700 (PDT)
-X-ZohoMailClient: External
+ (envelope-from <andrew@aj.id.au>) id 1hvwxI-0005kL-Jt
+ for qemu-arm@nongnu.org; Fri, 09 Aug 2019 00:56:45 -0400
+Received: from out2-smtp.messagingengine.com ([66.111.4.26]:41337)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <andrew@aj.id.au>)
+ id 1hvwxI-0005jk-0s; Fri, 09 Aug 2019 00:56:44 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id 6432B21C28;
+ Fri,  9 Aug 2019 00:56:43 -0400 (EDT)
+Received: from imap2 ([10.202.2.52])
+ by compute4.internal (MEProxy); Fri, 09 Aug 2019 00:56:43 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
+ mime-version:message-id:in-reply-to:references:date:from:to:cc
+ :subject:content-type:content-transfer-encoding; s=fm3; bh=97PQ0
+ ONohDjicXDGQPseSUNahm4RV3a90jPYWmyNsdc=; b=gNMW0dWmsCtlaR/ImTvKA
+ BeunRlQ6XMdUKquvDBKgYhG82g+REdHoBrIqmC6zgMaXN956pEVpcquCrcCo8+K4
+ YT5RA2JPZOQcpiU5PPznC3rfLu5FwH0+8v5xQeBTS4IH9NQzvpphoh7rtZc3PP2j
+ Il4fjNxl88dLXowJrKq+NQw9TYo71ak+nAGrOa9HJ5Adet9CKqJpuP5ANu7L2ZdZ
+ 2se7mngxc37sEym8qsMhe9kk9WT6N7SESSWuCc+uHHwV6nws+TBoVoba49GxK45p
+ t4iaCPIzDlkS4j+RVRuTRjirwEz3dvBLN34ByflhuYSvZ78pkXX8CA/62NarmZE8
+ w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:content-type
+ :date:from:in-reply-to:message-id:mime-version:references
+ :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm3; bh=97PQ0ONohDjicXDGQPseSUNahm4RV3a90jPYWmyNs
+ dc=; b=ldUL5X2a1QLBtQ+5Ljq60oTsQdwjdwD4IT8DSHpbVFUOBRFhVDaqMG5mA
+ JZP00w96Wu1sxgp1nieJRDfQGG/9p5pCfcX+0JzUwOpG//cIQlIeZDnqAlad3Obo
+ /sX17O8CRM7gUlrotNvNqAJV24AFxGbTsSIlsAkegoem5m4UO1Wd7URUWE4znpbU
+ Bc8X2ObY/XxdP3L5BSg8xW/pPDjhtmZ6qfEpQFOYFItoR4mfHZ7v97oWuO28HAP4
+ TY+rJ/LiH1gwiY/BgZ7wRsV6FHTkfPw9QGdf2VfoJjAklRmh5qviVQDToywU4LTW
+ usB70qxqWCJawRkKZeBRIoJ9KhePg==
+X-ME-Sender: <xms:Cv1MXTycp7nLz1hw6Cqbr_ocCfNmRuWbz7Fl70T61X-YMc9Nhs9hbg>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduvddrudduiedgkeejucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepofgfggfkjghffffhvffutgfgsehtqhertderreejnecuhfhrohhmpedftehn
+ ughrvgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucffoh
+ hmrghinhepphgrthgthhgvfidrohhrghenucfrrghrrghmpehmrghilhhfrhhomheprghn
+ ughrvgifsegrjhdrihgurdgruhenucevlhhushhtvghrufhiiigvpedt
+X-ME-Proxy: <xmx:Cv1MXcjh4F21OcBwKRHttFh974mPCH47rsxcS8_PPepOCK9G6pvb_g>
+ <xmx:Cv1MXaYvDDOZNuj0XjBNmBwlQFK3Kc043tuRfb9qUAndeKpm10EvVg>
+ <xmx:Cv1MXQhwK2Ne2nj0Ia_kEghXVa_mqNo_zJ1YQ3I6mA1Lep-LlBfhVA>
+ <xmx:C_1MXQHzffGMWLHazCFVnO9CYNhdH6xlgrNO2yURjx5LV1Wtb0zeUA>
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id 0A079E00A2; Fri,  9 Aug 2019 00:56:42 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.1.6-808-g930a1a1-fmstable-20190805v2
+Mime-Version: 1.0
+Message-Id: <84d76bb7-b5b5-488b-ac14-db0e1c009f7d@www.fastmail.com>
+In-Reply-To: <156532351253.12874.1201096794967354035@b08f24806b7e>
+References: <156532351253.12874.1201096794967354035@b08f24806b7e>
+Date: Fri, 09 Aug 2019 14:27:08 +0930
+From: "Andrew Jeffery" <andrew@aj.id.au>
+To: no-reply@patchew.org, qemu-devel@nongnu.org
+Content-Type: text/plain;charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 136.143.188.59
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH] target-arm: Make the counter
- tick relative to cntfrq
+X-Received-From: 66.111.4.26
+Subject: Re: [Qemu-arm] 
+ =?utf-8?q?=5BQemu-devel=5D_=5BPATCH=5D_target-arm=3A_?=
+ =?utf-8?q?Make_the_counter_tick_relative_to_cntfrq?=
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -70,42 +121,83 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, andrew@aj.id.au, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, joel@jms.id.au, clg@kaod.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 54KdYXfr4t5A
+X-TUID: OSOo9R5L9pQK
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDgwOTAzMTMyMS4xNDc2
-MC0xLWFuZHJld0Bhai5pZC5hdS8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgYnVpbGQgdGVz
-dCBvbiBzMzkweCBob3N0LiBQbGVhc2UgZmluZCB0aGUgZGV0YWlscyBiZWxvdy4KCj09PSBURVNU
-IFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKIyBUZXN0aW5nIHNjcmlwdCB3aWxsIGJlIGlu
-dm9rZWQgdW5kZXIgdGhlIGdpdCBjaGVja291dCB3aXRoCiMgSEVBRCBwb2ludGluZyB0byBhIGNv
-bW1pdCB0aGF0IGhhcyB0aGUgcGF0Y2hlcyBhcHBsaWVkIG9uIHRvcCBvZiAiYmFzZSIKIyBicmFu
-Y2gKc2V0IC1lCgplY2hvCmVjaG8gIj09PSBFTlYgPT09IgplbnYKCmVjaG8KZWNobyAiPT09IFBB
-Q0tBR0VTID09PSIKcnBtIC1xYQoKZWNobwplY2hvICI9PT0gVU5BTUUgPT09Igp1bmFtZSAtYQoK
-Q0M9JEhPTUUvYmluL2NjCklOU1RBTEw9JFBXRC9pbnN0YWxsCkJVSUxEPSRQV0QvYnVpbGQKbWtk
-aXIgLXAgJEJVSUxEICRJTlNUQUxMClNSQz0kUFdECmNkICRCVUlMRAokU1JDL2NvbmZpZ3VyZSAt
-LWNjPSRDQyAtLXByZWZpeD0kSU5TVEFMTAptYWtlIC1qNAojIFhYWDogd2UgbmVlZCByZWxpYWJs
-ZSBjbGVhbiB1cAojIG1ha2UgY2hlY2sgLWo0IFY9MQptYWtlIGluc3RhbGwKPT09IFRFU1QgU0NS
-SVBUIEVORCA9PT0KCiAgQ0MgICAgICBhYXJjaDY0X2JlLWxpbnV4LXVzZXIvdGFyZ2V0L2FybS9h
-cm0tc2VtaS5vCiAgQ0MgICAgICBhYXJjaDY0X2JlLWxpbnV4LXVzZXIvdGFyZ2V0L2FybS9oZWxw
-ZXIubwovdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtaGtkN3VhMW4vc3JjL3RhcmdldC9hcm0v
-aGVscGVyLmM6IEluIGZ1bmN0aW9uIOKAmGd0X3ZpcnRfY250X3JlYWTigJk6Ci92YXIvdG1wL3Bh
-dGNoZXctdGVzdGVyLXRtcC1oa2Q3dWExbi9zcmMvdGFyZ2V0L2FybS9oZWxwZXIuYzoyOTIxOjEy
-OiBlcnJvcjogaW1wbGljaXQgZGVjbGFyYXRpb24gb2YgZnVuY3Rpb24g4oCYZ3RfY2FsY190aWNr
-4oCZIFstV2Vycm9yPWltcGxpY2l0LWZ1bmN0aW9uLWRlY2xhcmF0aW9uXQogMjkyMSB8ICAgICBy
-ZXR1cm4gZ3RfY2FsY190aWNrKGVudiwgY3B1X2dldF9jbG9jaygpKTsKICAgICAgfCAgICAgICAg
-ICAgIF5+fn5+fn5+fn5+fgovdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtaGtkN3VhMW4vc3Jj
-L3RhcmdldC9hcm0vaGVscGVyLmM6MjkyMToxMjogZXJyb3I6IG5lc3RlZCBleHRlcm4gZGVjbGFy
-YXRpb24gb2Yg4oCYZ3RfY2FsY190aWNr4oCZIFstV2Vycm9yPW5lc3RlZC1leHRlcm5zXQpjYzE6
-IGFsbCB3YXJuaW5ncyBiZWluZyB0cmVhdGVkIGFzIGVycm9ycwptYWtlWzFdOiAqKiogWy92YXIv
-dG1wL3BhdGNoZXctdGVzdGVyLXRtcC1oa2Q3dWExbi9zcmMvcnVsZXMubWFrOjY5OiB0YXJnZXQv
-YXJtL2hlbHBlci5vXSBFcnJvciAxCm1ha2U6ICoqKiBbTWFrZWZpbGU6NDcyOiBhYXJjaDY0X2Jl
-LWxpbnV4LXVzZXIvYWxsXSBFcnJvciAyCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApo
-dHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDE5MDgwOTAzMTMyMS4xNDc2MC0xLWFuZHJld0Bhai5p
-ZC5hdS90ZXN0aW5nLnMzOTB4Lz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0
-b21hdGljYWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5k
-IHlvdXIgZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
 
+
+On Fri, 9 Aug 2019, at 13:36, no-reply@patchew.org wrote:
+> Patchew URL: https://patchew.org/QEMU/20190809031321.14760-1-andrew@aj=
+.id.au/
+>=20
+>=20
+>=20
+> Hi,
+>=20
+> This series failed build test on s390x host. Please find the details b=
+elow.
+>=20
+> =3D=3D=3D TEST SCRIPT BEGIN =3D=3D=3D
+> #!/bin/bash
+> # Testing script will be invoked under the git checkout with
+> # HEAD pointing to a commit that has the patches applied on top of "ba=
+se"
+> # branch
+> set -e
+>=20
+> echo
+> echo "=3D=3D=3D ENV =3D=3D=3D"
+> env
+>=20
+> echo
+> echo "=3D=3D=3D PACKAGES =3D=3D=3D"
+> rpm -qa
+>=20
+> echo
+> echo "=3D=3D=3D UNAME =3D=3D=3D"
+> uname -a
+>=20
+> CC=3D$HOME/bin/cc
+> INSTALL=3D$PWD/install
+> BUILD=3D$PWD/build
+> mkdir -p $BUILD $INSTALL
+> SRC=3D$PWD
+> cd $BUILD
+> $SRC/configure --cc=3D$CC --prefix=3D$INSTALL
+> make -j4
+> # XXX: we need reliable clean up
+> # make check -j4 V=3D1
+> make install
+> =3D=3D=3D TEST SCRIPT END =3D=3D=3D
+>=20
+>   CC      aarch64_be-linux-user/target/arm/arm-semi.o
+>   CC      aarch64_be-linux-user/target/arm/helper.o
+> /var/tmp/patchew-tester-tmp-hkd7ua1n/src/target/arm/helper.c: In=20
+> function =E2=80=98gt_virt_cnt_read=E2=80=99:
+> /var/tmp/patchew-tester-tmp-hkd7ua1n/src/target/arm/helper.c:2921:12:=20=
+
+> error: implicit declaration of function =E2=80=98gt_calc_tick=E2=80=99=
+=20
+> [-Werror=3Dimplicit-function-declaration]
+>  2921 |     return gt_calc_tick(env, cpu_get_clock());
+>       |            ^~~~~~~~~~~~
+> /var/tmp/patchew-tester-tmp-hkd7ua1n/src/target/arm/helper.c:2921:12:=20=
+
+> error: nested extern declaration of =E2=80=98gt_calc_tick=E2=80=99=20
+> [-Werror=3Dnested-externs]
+> cc1: all warnings being treated as errors
+> make[1]: *** [/var/tmp/patchew-tester-tmp-hkd7ua1n/src/rules.mak:69:=20=
+
+> target/arm/helper.o] Error 1
+> make: *** [Makefile:472: aarch64_be-linux-user/all] Error 2
+>=20
+
+Ah, I missed that I put the implementation inside the
+#ifndef CONFIG_USER_ONLY` block. Maybe we can just not do the scaling
+for userspace anyway?
+
+Andrew

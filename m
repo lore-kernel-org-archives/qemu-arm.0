@@ -1,96 +1,93 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp8916781wrv;
-        Fri, 9 Aug 2019 01:45:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyGVGUN4fo+fl4lyZ7JiohpjucJbewA5Lu84OMachiXi9pASAVPCzSyjcb6ScJwdm7LyeoY
-X-Received: by 2002:a37:4804:: with SMTP id v4mr13698966qka.60.1565340355098;
-        Fri, 09 Aug 2019 01:45:55 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp8949672wrv;
+        Fri, 9 Aug 2019 02:21:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyKUzY5f5Ma+YFnAr0Ve5Xpg7NbvGv+MGYiiiFxwkn7zNwU8mu1zRQSTcKLeZJ7Xzu0WvDZ
+X-Received: by 2002:a05:6214:1191:: with SMTP id t17mr16478588qvv.98.1565342513910;
+        Fri, 09 Aug 2019 02:21:53 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a62si54675559qkf.114.2019.08.09.01.45.54
+        by mx.google.com with ESMTPS id y15si3249410qvh.52.2019.08.09.02.21.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Aug 2019 01:45:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 09 Aug 2019 02:21:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=pRtTP7ZV;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=x5PP0XNe;
        arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57354 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57576 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hw0X4-0002kE-LS
-	for alex.bennee@linaro.org; Fri, 09 Aug 2019 04:45:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41442)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hw15t-0002bV-F7
+	for alex.bennee@linaro.org; Fri, 09 Aug 2019 05:21:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48307)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <damien.hedde@greensocs.com>) id 1hw0Wy-0002k5-No
- for qemu-arm@nongnu.org; Fri, 09 Aug 2019 04:45:49 -0400
+ (envelope-from <damien.hedde@greensocs.com>) id 1hw14v-000155-R1
+ for qemu-devel@nongnu.org; Fri, 09 Aug 2019 05:20:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1hw0Wx-0000DQ-Fh
- for qemu-arm@nongnu.org; Fri, 09 Aug 2019 04:45:48 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:48248)
+ (envelope-from <damien.hedde@greensocs.com>) id 1hw14u-0000dn-Qc
+ for qemu-devel@nongnu.org; Fri, 09 Aug 2019 05:20:53 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:49316)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1hw0Wx-0000C5-5l; Fri, 09 Aug 2019 04:45:47 -0400
+ id 1hw14p-0000Xi-P5; Fri, 09 Aug 2019 05:20:48 -0400
 Received: from [172.16.11.117] (unknown [172.16.11.117])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 9209796F50;
- Fri,  9 Aug 2019 08:45:43 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id BBAE896F50;
+ Fri,  9 Aug 2019 09:20:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1565340344;
+ s=mail; t=1565342446;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=zH2GCR90nlrb6642sacXGWJuMxDwtb/WWQmlYkgUsPs=;
- b=pRtTP7ZVaFLc80fvNDaR1uQicQgNBqo50aVhFBdSSNugLCx6bBDyZMAun870loHgYzP34q
- mMWDMhga9VLlFgzLdAHG5f3pF8ztbmH7g4+Ds8mqSBhB6nyGfu2yuNrz5QHf0z5mUjCGSo
- gEJl9BRk/Jnztq2+mfJmQVJ0qiMnrB4=
-To: David Gibson <david@gibson.dropbear.id.au>,
- Peter Maydell <peter.maydell@linaro.org>
+ bh=I6RC9WtmbZhhCHopOjtYEaLOC3+Z0AX+8u6YSjXVUks=;
+ b=x5PP0XNebUzuh6czPgO9LSIVbY1JApCkPF3OblOZo5dbF74ePcsaTVrCmD2/8nsGJN0EKb
+ 9NthaO8G4w3bD/08vrBhbPpJ1B9R+y4txd4PfqnUzp8hVC5J1EwD6NKRJ1pQgHMkuX6taM
+ wkoiQxVO4p/Gul2O584BNPKPamvyDFw=
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-9-damien.hedde@greensocs.com>
- <20190731061108.GF2032@umbus.fritz.box>
- <CAFEAcA-dSBpAVfjn7VnCRgnZabBP226ZVuSJYW1bwzEr5mNktw@mail.gmail.com>
- <20190809055132.GT5465@umbus.fritz.box>
+ <20190729145654.14644-3-damien.hedde@greensocs.com>
+ <CAFEAcA9puHxUvxbSBsFrEQ6QN=fq3GJH4SgzcpQWQB60PTVR=g@mail.gmail.com>
 From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <5ba72330-dbbc-fdae-d003-9f7d08ba4600@greensocs.com>
-Date: Fri, 9 Aug 2019 10:45:43 +0200
+Message-ID: <b5d20c72-2254-7055-a93b-252ca3887f85@greensocs.com>
+Date: Fri, 9 Aug 2019 11:20:44 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190809055132.GT5465@umbus.fritz.box>
-Content-Type: text/plain; charset=windows-1252
+In-Reply-To: <CAFEAcA9puHxUvxbSBsFrEQ6QN=fq3GJH4SgzcpQWQB60PTVR=g@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US-large
 Content-Transfer-Encoding: 7bit
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1565340344;
+ s=mail; t=1565342446;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=zH2GCR90nlrb6642sacXGWJuMxDwtb/WWQmlYkgUsPs=;
- b=YQCtrTT3PydaKnal38MASFwn5Hwr2MMPCBKOBxqsh9FNShjL5ZhVSl0U4j6tpW0aaCrI7n
- qW0BS7W/02tMMLudSEQPTiIpsX3GTGh+9XxKJ/xcLogtFVgZ946Yr06M6GcZCIY//vk98R
- FptUpJqoMIBe4FLOw2CiqmjWyO0nzY4=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1565340344; a=rsa-sha256; cv=none;
- b=XllIP/eq0D/WO1uh+oMOpikYU03kJTp8GkJvVL8xjQ12T4ga5+tDZu+1llLAHrjj09Xupo
- Z7CWtmV9alj+6q2vjORG11VDtmqmTphkVveKA9CYxqzCcsPS+N0lM+juJMmeYM/ZWxkmOT
- bcgzyWIl+hjXSeNDyljehOxIzhUBCZk=
+ bh=I6RC9WtmbZhhCHopOjtYEaLOC3+Z0AX+8u6YSjXVUks=;
+ b=C46GEBXeX/5vzjiq0r5e3hG2LnjQeCWxh/hBG3lKx6hjwieY1ZwLvXNnLhX/VddcvDadrm
+ Pxap8lmGyiJHdxqGbvHI456jmvsfQU2CxGQX5kITCAGbB7Y+HA996A6aeaMndBS2Va78iR
+ SCDa56+dqwSeXSBsUbZ/8BwkdqasWl0=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1565342446; a=rsa-sha256; cv=none;
+ b=I+y2CakCVbr4TjFgW4TvXKA9Ljebkm3ljBgMqF9lyMf0aDvcShpt/awXVjlp8mK1FaWGqK
+ 9qUzawMndsZQ2WOvXxnK335FAh/MGe6qpO3Obt2rG2U1FBZAt0Qzrtx3KEl7a3sCJx9wrW
+ Twgve5G2+a28NYudGElWotWrAGvfBWI=
 ARC-Authentication-Results: i=1; ORIGINATING;
  auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 5.135.226.135
-Subject: Re: [Qemu-arm] [PATCH v3 08/33] Add function to control reset with
- gpio inputs
-X-BeenThere: qemu-arm@nongnu.org
+Subject: Re: [Qemu-devel] [PATCH v3 02/33] add temporary device_legacy_reset
+ function to replace device_reset
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
  Dmitry Fleytman <dmitry.fleytman@gmail.com>,
  "Michael S. Tsirkin" <mst@redhat.com>,
@@ -100,9 +97,9 @@ Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
  Qemu-block <qemu-block@nongnu.org>, David Hildenbrand <david@redhat.com>,
  Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>, qemu-s390x <qemu-s390x@nongnu.org>,
  qemu-arm <qemu-arm@nongnu.org>,
  =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, John Snow <jsnow@redhat.com>,
@@ -110,47 +107,48 @@ Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
  "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
  Mark Burton <mark.burton@greensocs.com>, qemu-ppc <qemu-ppc@nongnu.org>,
  Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YMCRPf3f/nkA
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fOmPgbEMmE5m
 
 
-
-On 8/9/19 7:51 AM, David Gibson wrote:
-> On Wed, Aug 07, 2019 at 11:37:51AM +0100, Peter Maydell wrote:
->> On Wed, 31 Jul 2019 at 07:33, David Gibson <david@gibson.dropbear.id.au> wrote:
->>>
->>> On Mon, Jul 29, 2019 at 04:56:29PM +0200, Damien Hedde wrote:
->>>> It adds the possibility to add 2 gpios to control the warm and cold reset.
->>>> With theses ios, the reset can be maintained during some time.
->>>> Each io is associated with a state to detect level changes.
->>>>
->>>> Vmstate subsections are also added to the existsing device_reset
->>>> subsection.
->>>
->>> This doesn't seem like a thing that should be present on every single
->>> DeviceState.
+On 8/7/19 4:27 PM, Peter Maydell wrote:
+> On Mon, 29 Jul 2019 at 15:58, Damien Hedde <damien.hedde@greensocs.com> wrote:
 >>
->> It's a facility that's going to be useful to multiple different
->> subclasses of DeviceState, so it seems to me cleaner to
->> have base class support for the common feature rather than
->> to reimplement it entirely from scratch in every subclass
->> that wants it.
+>> Provide a temporary function doing what device_reset does to do the
+>> transition with Resettable API which will trigger a prototype change
+>> of device_reset.
 > 
-> Hm, I suppose so.  Would it really have to be from scratch, though?
-> Couldn't some suitable helper functions make adding such GPIOs to a
-> device pretty straightforward?
+> The other point here is that device_legacy_reset() resets
+> only that device, not any of its qbus children, right?
+> So the new function which we eventually replace the callsites
+> with also has different semantics, which is why we do the
+> changes one by one in patches 10-28.
+
+Yes, for device_reset there is a change of scope.
+
 > 
+> So you could add:
+> 
+> The new resettable API function also has different semantics
+> (resetting child buses as well as the specified device).
+> Subsequent commits will make the changeover for each callsite
+> individually; once that is complete device_legacy_reset() will be
+> removed.
 
-This patch does that. A device does have to use the helper to add the
-gpio. Either qdev_init_warm_reset_gpio(...) or
-qdev_init_cold_reset_gpio(...) , like any another gpio.
+sure
 
-The mechanics to control the reset with gpio change is done in the base
-class and there is some state pre-allocated (and associated vmstate
-description) to it.
+> 
+>> Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+> 
+> I agree with David that patch 3 could be squashed into this one.
 
-If that's a problem I can only provide helpers and let devices handle
-state allocation and vmstate addition.
+ok
 
-Damien
+> 
+> If you do that and tweak the commit message you can have
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> 
+> thanks
+> -- PMM
+> 

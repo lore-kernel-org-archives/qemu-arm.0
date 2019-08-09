@@ -1,111 +1,84 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp8763034wrv;
-        Thu, 8 Aug 2019 22:43:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzB4whIBBctlXwbJmqrZIt9JiRG2PkLjJmuyZZO84vpyx7BsI7aU45ZANnNx0mgm+eH/UIQ
-X-Received: by 2002:a50:9116:: with SMTP id e22mr20045635eda.161.1565329438327;
-        Thu, 08 Aug 2019 22:43:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565329438; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp8784236wrv;
+        Thu, 8 Aug 2019 23:09:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxezRKZx0xwhxb5bqU1J/m2wCdM2LQEyJ+5zWOc4IzwSB34NU+W+QhH6SBSN9SB949rnMlI
+X-Received: by 2002:a50:f4b6:: with SMTP id s51mr8329359edm.204.1565330961669;
+        Thu, 08 Aug 2019 23:09:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565330961; cv=none;
         d=google.com; s=arc-20160816;
-        b=zTn+7a0kW0hY3mEFaEXAGQOlb+kc+L5rrd/Hb/tkqpyAx/q+v+NYy4xH1kwShwIDUw
-         UTGTfwnO3637nebxJ5MrJ5mz8chCgva4bfEYqL0irtlizN6xVlwYVxqGU2+nLewA7zOm
-         vydPmfw47yqh3jpzcK5eJfnSNEhMxQ+zOQyrZnYcpaoj7lMyG52fCok9bH0XRLvWztqy
-         nL6u5frTnJA6IJigoukSIVt7s0Og9yTzQyX3gEsnu1RCgCkOI2ccGb9nW4FWT+cug5gH
-         mjtbB8lMihSEjgpCILGh0xkOt3xOKWmAbFkS6yfeY78YcyfwYCXXkBf5aiWsjUEQOKDX
-         wBQA==
+        b=OU8F5Fz+L9HnRjkjY2OYh7zBYZiwH4nOGVtKib99eO+IcPSRo6B8/hsX9y78HhY2vL
+         xsk9XQ6pdAQn24HKuekDECU5P2pw11/iMU/EyD3bCBhZGpIxWfo0EkX4C/0pE+P/OxnX
+         rK93A6uB1C8iUZPJs14NivOcU3J0U7XS2fAgB/Wwi0VgHEzXaAnghOmrrCmV7F/IlwdO
+         81rG8jbINikCpz1PnbvX16a2WcBZqgodT8NyHXJvV/D1n9fBBZEc1k5f+gJX5fFPihvk
+         q24g5m8x7HWKwCtOBZ8oHHtDisDySz6Ij6RUFuNgKx+EJyiwqiWmkPWmdHfcxX09t2zd
+         iUaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature:dkim-signature;
-        bh=caEbH9eB9pyP5p77goifr2wWJQ78fwxTcp7BPCt1nYQ=;
-        b=Qr/F15HKkIql8w9k8aU5jCeXAlbXyHO5C+1pt2wU2EkcP7fcye/PyZqp00pJ/hxMYG
-         MzOXqA+XR7GoXBOv2fv7o87qBLMprD8gxNqmVyVB3Kg8YEoxqzfCL8QLsGLQ1PTks79P
-         gKyHHFbt2lVuzJNCpXiiXeR1+fNI2oufBOZnrL8hXb4uQ7LbDzDPL1NIlC2qP2phTfrw
-         wTbUW9u4sK7x6wPIyLoa0mJWlr9+Cv8TmBrwz82cJvmjQLNxoI0fdzoxTAnXTdiaqiRY
-         PHQ5zlNI+ZLHzwL7gXw41O4a+DbjdM3Dgwo+G1PSx8DPxdoZe5/59DMDYfF9oenboid1
-         oyNQ==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date
+         :dkim-signature;
+        bh=JLyIlnbXxeKYP1oan7i361QQ1LhGrGkBDNohrzOrYZo=;
+        b=Ab8R4HUkvm2Nyl8+WJ+jyUxl/8m4JUrt2Db1BRrUPYKNqC4ZL9dnEjUksVbWNRadQX
+         OnI77QL+VZyyRPXtlrq3CrEhKVUt0F4ipEu16Btl40ix8TlYXxtV2yTqOvSd6KjF1Xq8
+         I2H90eOq72zV0w8V1F7gbf396uRC+Kv2zm/OuXaHnWThNu20KeLNEl/Liaft4DhjZw7p
+         0y7zNVCrtELCxeiBY5iHS2LUslzDEMitGsRf2pBjULYi6TxljJyPJvwxU0WSZhH1DXaQ
+         /Qu7YF7OKOHmIQS75sHqkiQTMl1taqASlPs0WDh6CEBFafwluivvsVChj0LJObCaFTEP
+         xXAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=FKoWeXEH;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=BWnOg5N2;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=QiGJa6ET;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m2si2256369edm.272.2019.08.08.22.43.58
+        by mx.google.com with ESMTPS id p7si31145751ejj.70.2019.08.08.23.09.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Aug 2019 22:43:58 -0700 (PDT)
+        Thu, 08 Aug 2019 23:09:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=FKoWeXEH;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=BWnOg5N2;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=QiGJa6ET;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56494 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56550 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hvxgz-0002q0-FF
-	for alex.bennee@linaro.org; Fri, 09 Aug 2019 01:43:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36603)
+	id 1hvy5Y-0002Ee-PX
+	for alex.bennee@linaro.org; Fri, 09 Aug 2019 02:09:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39720)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <andrew@aj.id.au>) id 1hvxgu-0002lX-7M
- for qemu-arm@nongnu.org; Fri, 09 Aug 2019 01:43:53 -0400
+ (envelope-from <dgibson@ozlabs.org>) id 1hvy5S-0002EX-U4
+ for qemu-arm@nongnu.org; Fri, 09 Aug 2019 02:09:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <andrew@aj.id.au>) id 1hvxgt-0001M7-1P
- for qemu-arm@nongnu.org; Fri, 09 Aug 2019 01:43:52 -0400
-Received: from out2-smtp.messagingengine.com ([66.111.4.26]:55929)
+ (envelope-from <dgibson@ozlabs.org>) id 1hvy5R-00049X-Q6
+ for qemu-arm@nongnu.org; Fri, 09 Aug 2019 02:09:14 -0400
+Received: from bilbo.ozlabs.org ([203.11.71.1]:58483 helo=ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <andrew@aj.id.au>)
- id 1hvxgs-0001JJ-17; Fri, 09 Aug 2019 01:43:50 -0400
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id 904CF21540;
- Fri,  9 Aug 2019 01:43:49 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute4.internal (MEProxy); Fri, 09 Aug 2019 01:43:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=from
- :to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding; s=fm3; bh=caEbH9eB9pyP5p77goifr2wWJQ
- 78fwxTcp7BPCt1nYQ=; b=FKoWeXEHKszI4Z4WygqHaM9FJ+bisXWZALJlsgo/rZ
- JE9vMwUHwpVaPRr464O8B9abcNeHsLBf6Dq/vbripcHPqlsbtEDayiNh7vabUrlU
- ATPEqhhAIk6RXrUi4o9PbSqwheYTu9k+YV9nETpCjHi1rVxQTYDoEg2pw2rda1qB
- QCExprtiFH4hd9QySVc7JCvH6goe1LlJKA7M2vM/G9OqB+wT6ajhUc0E4l3CciO1
- bCA3pPMnFcXVCUtkxSCxd9fFRNGCGogEIAOIe+rR+2ReZNBXL63Bf9FxavmiF4ms
- 7yNbFQxQm0gv2HKObkLqBuW9nyetNtd5xRgBt6kL6lfQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:date:from
- :message-id:mime-version:subject:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=caEbH9eB9pyP5p77g
- oifr2wWJQ78fwxTcp7BPCt1nYQ=; b=BWnOg5N2GOUhEIWoct85GGW63nxOGNIts
- WU6Yp/QIDBvFD7aXaqOlkBOgD0RZIAyZ9BQO5sddawRJviJeCx4ZK4rLhaRKj3wh
- 3svFaC1WFFnyULPiVnzjiyh/PUqusw+RnXVUCr2K9TNY8cX/7yIlxljIEumqvNKS
- lz6VhwyksRaxOhRMr6f1l49FtJWpd32DQ/j9xNfTIskJ/IhIC9NsEmkJQWvf934y
- PGo+mOSc5ZQQD42eONIniNaTKCRUi0UTEpflzdQuRlTucPS7oCy/OQUZ5aXeliz9
- s2M1v/w2JW9hChnbrSEjTQ+EzO/aGhpjAuUSD8YMzJVtdBJh5I/ww==
-X-ME-Sender: <xms:EwhNXdWOROtGffvce2uRQTGiNaj8lqA1LAx-H1KSBTwczsOHFH3vkg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduvddrudduiedgleejucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpefhvffufffkofgggfestdekredtre
- dttdenucfhrhhomheptehnughrvgifucflvghffhgvrhihuceorghnughrvgifsegrjhdr
- ihgurdgruheqnecukfhppeduudekrddvuddtrddugeefrdduvdehnecurfgrrhgrmhepmh
- grihhlfhhrohhmpegrnhgurhgvfiesrghjrdhiugdrrghunecuvehluhhsthgvrhfuihii
- vgeptd
-X-ME-Proxy: <xmx:EwhNXZBAKSYxKBU3KEvKPEy4GVs0CzRKpgQ5NNphc0Ue0hJDQrzSmg>
- <xmx:EwhNXYEDQwTfLly1ZampSxYESBleWWCN3aJ-O8wCF4OSSUo0eoFndQ>
- <xmx:EwhNXdeSPHcdnF5GtrtgSmBCc1vWkXO4jJIIvZJlLo81IsgEvjp2EQ>
- <xmx:FQhNXT93x0mc4g8zNHCV2Agqw54adsiGmf1ms7yc-7xVlD_XK0ZyCQ>
-Received: from localhost.localdomain
- (ppp118-210-143-125.adl-adc-lon-bras33.tpg.internode.on.net
- [118.210.143.125])
- by mail.messagingengine.com (Postfix) with ESMTPA id 6A9F0380075;
- Fri,  9 Aug 2019 01:43:45 -0400 (EDT)
-From: Andrew Jeffery <andrew@aj.id.au>
-To: qemu-arm@nongnu.org
-Date: Fri,  9 Aug 2019 15:13:41 +0930
-Message-Id: <20190809054341.24728-1-andrew@aj.id.au>
-X-Mailer: git-send-email 2.20.1
+ (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
+ id 1hvy5Q-00045H-Lg; Fri, 09 Aug 2019 02:09:13 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 464ZZD0P3Cz9sBF; Fri,  9 Aug 2019 16:09:08 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1565330948;
+ bh=BJnhFgwWjf7MPkKsmVjfo3l7uUOX+9Duc5sGDkStrDA=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=QiGJa6ETG8j/OljNoX8SgJkVVEq+KDaCpXxezE+wcpPhODb2yPYm8ZV1v8dY9Reul
+ nr7HymWW0uNPUoGnYl+IDpPRXB7N0CzKQZpy265hCbxdAz4DJpxjNNvH6LYJdZk3GH
+ xtOxfwRZ0WxUekAB/ZLf7ehb1ZO4I0N371h+rj74=
+Date: Fri, 9 Aug 2019 15:51:32 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20190809055132.GT5465@umbus.fritz.box>
+References: <20190729145654.14644-1-damien.hedde@greensocs.com>
+ <20190729145654.14644-9-damien.hedde@greensocs.com>
+ <20190731061108.GF2032@umbus.fritz.box>
+ <CAFEAcA-dSBpAVfjn7VnCRgnZabBP226ZVuSJYW1bwzEr5mNktw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="nDmTXYS4kVhtHHfR"
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA-dSBpAVfjn7VnCRgnZabBP226ZVuSJYW1bwzEr5mNktw@mail.gmail.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 66.111.4.26
-Subject: [Qemu-arm] [PATCH v2] target-arm: Make the counter tick relative to
- cntfrq
+X-Received-From: 203.11.71.1
+Subject: Re: [Qemu-arm] [PATCH v3 08/33] Add function to control reset with
+ gpio inputs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,124 +90,86 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, peter.maydell@linaro.org, clg@kaod.org,
- qemu-devel@nongnu.org, joel@jms.id.au
+Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
+ Edgar Iglesias <edgar.iglesias@xilinx.com>, Hannes Reinecke <hare@suse.com>,
+ Qemu-block <qemu-block@nongnu.org>, David Hildenbrand <david@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-s390x <qemu-s390x@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Damien Hedde <damien.hedde@greensocs.com>,
+ "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ Mark Burton <mark.burton@greensocs.com>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AWe2erFuIsWj
+X-TUID: iW51apvn1KlN
 
-The use of GTIMER_SCALE assumes the clock feeding the generic timer is
-62.5MHz for all platforms. This is untrue in general, for example the
-ASPEED AST2600 feeds the counter with either an 800 or 1200MHz clock,
-and CNTFRQ is configured appropriately by u-boot.
 
-To cope with these values we need to take care of the quantization
-caused by the clock scaling in terms of nanoseconds per clock by
-calculating an effective frequency such that NANOSECONDS_PER_SECOND is
-an integer multiple of the effective frequency. Failing to account for
-the quantisation leads to sticky behaviour in the VM as the guest timer
-subsystems account for the difference between delay time and the counter
-value.
+--nDmTXYS4kVhtHHfR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
----
-v2:
-1. Removed the user-mode change that broke v1
-2. Rearranged the implementation as a consequence of 1.
+On Wed, Aug 07, 2019 at 11:37:51AM +0100, Peter Maydell wrote:
+> On Wed, 31 Jul 2019 at 07:33, David Gibson <david@gibson.dropbear.id.au> =
+wrote:
+> >
+> > On Mon, Jul 29, 2019 at 04:56:29PM +0200, Damien Hedde wrote:
+> > > It adds the possibility to add 2 gpios to control the warm and cold r=
+eset.
+> > > With theses ios, the reset can be maintained during some time.
+> > > Each io is associated with a state to detect level changes.
+> > >
+> > > Vmstate subsections are also added to the existsing device_reset
+> > > subsection.
+> >
+> > This doesn't seem like a thing that should be present on every single
+> > DeviceState.
+>=20
+> It's a facility that's going to be useful to multiple different
+> subclasses of DeviceState, so it seems to me cleaner to
+> have base class support for the common feature rather than
+> to reimplement it entirely from scratch in every subclass
+> that wants it.
 
- target/arm/helper.c | 51 ++++++++++++++++++++++++++++++++++++++++++---
- 1 file changed, 48 insertions(+), 3 deletions(-)
+Hm, I suppose so.  Would it really have to be from scratch, though?
+Couldn't some suitable helper functions make adding such GPIOs to a
+device pretty straightforward?
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index b74c23a9bc08..166a54daf278 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -2277,6 +2277,34 @@ static const ARMCPRegInfo v6k_cp_reginfo[] = {
- 
- #ifndef CONFIG_USER_ONLY
- 
-+static void gt_recalc_timer(ARMCPU *cpu, int timeridx);
-+static void gt_cntfrq_write(CPUARMState *env, const ARMCPRegInfo *ri,
-+                            uint64_t value)
-+{
-+    uint64_t scale;
-+    ARMCPU *cpu;
-+    int i;
-+
-+    raw_write(env, ri, value);
-+
-+    /* Fix up the timer scaling */
-+    cpu = env_archcpu(env);
-+    scale = MAX(1, NANOSECONDS_PER_SECOND / value);
-+    for (i = 0; i < NUM_GTIMERS; i++) {
-+        if (!cpu->gt_timer[i]) {
-+            continue;
-+        }
-+
-+        cpu->gt_timer[i]->scale = scale;
-+        gt_recalc_timer(cpu, i);
-+    }
-+}
-+
-+static void gt_cntfrq_reset(CPUARMState *env, const ARMCPRegInfo *opaque)
-+{
-+    gt_cntfrq_write(env, opaque, opaque->resetvalue);
-+}
-+
- static CPAccessResult gt_cntfrq_access(CPUARMState *env, const ARMCPRegInfo *ri,
-                                        bool isread)
- {
-@@ -2407,7 +2435,21 @@ static CPAccessResult gt_stimer_access(CPUARMState *env,
- 
- static uint64_t gt_get_countervalue(CPUARMState *env)
- {
--    return qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) / GTIMER_SCALE;
-+    uint64_t effective;
-+
-+    /*
-+     * Deal with quantized clock scaling by calculating the effective frequency
-+     * in terms of the timer scale.
-+     */
-+    if (env->cp15.c14_cntfrq <= NANOSECONDS_PER_SECOND) {
-+        uint32_t scale = NANOSECONDS_PER_SECOND / env->cp15.c14_cntfrq;
-+        effective = NANOSECONDS_PER_SECOND / scale;
-+    } else {
-+        effective = NANOSECONDS_PER_SECOND;
-+    }
-+
-+    return muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), effective,
-+                    NANOSECONDS_PER_SECOND);
- }
- 
- static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
-@@ -2443,8 +2485,8 @@ static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
-          * set the timer for as far in the future as possible. When the
-          * timer expires we will reset the timer for any remaining period.
-          */
--        if (nexttick > INT64_MAX / GTIMER_SCALE) {
--            nexttick = INT64_MAX / GTIMER_SCALE;
-+        if (nexttick > INT64_MAX / cpu->gt_timer[timeridx]->scale) {
-+            nexttick = INT64_MAX / cpu->gt_timer[timeridx]->scale;
-         }
-         timer_mod(cpu->gt_timer[timeridx], nexttick);
-         trace_arm_gt_recalc(timeridx, irqstate, nexttick);
-@@ -2686,13 +2728,16 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     { .name = "CNTFRQ", .cp = 15, .crn = 14, .crm = 0, .opc1 = 0, .opc2 = 0,
-       .type = ARM_CP_ALIAS,
-       .access = PL1_RW | PL0_R, .accessfn = gt_cntfrq_access,
-+      .writefn = gt_cntfrq_write,
-       .fieldoffset = offsetoflow32(CPUARMState, cp15.c14_cntfrq),
-     },
-     { .name = "CNTFRQ_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 0,
-       .access = PL1_RW | PL0_R, .accessfn = gt_cntfrq_access,
-+      .writefn = gt_cntfrq_write,
-       .fieldoffset = offsetof(CPUARMState, cp15.c14_cntfrq),
-       .resetvalue = (1000 * 1000 * 1000) / GTIMER_SCALE,
-+      .resetfn = gt_cntfrq_reset,
-     },
-     /* overall control: mostly access permissions */
-     { .name = "CNTKCTL", .state = ARM_CP_STATE_BOTH,
--- 
-2.20.1
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
+--nDmTXYS4kVhtHHfR
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl1NCeQACgkQbDjKyiDZ
+s5LALQ/9GC9HcolEmg7IRCZUguKfriab9vtzEkNKxO/k00LBjcGWnMp/hdA1kVBS
+a/gexj5zW4F+/7CmGVkau4YMKXw9t5RFlCHAlTy4zjk3ayTBsU65E9M7T9Wl0hcW
+uHG4MO2/5VVedLmC3PJ1+jtXl70e+eVUXzNixH2gYjijfIzCRCWIPuP1YSH8nFLW
+o/7VvsIpI42BOgGwfLowGH6m30Yi+C6Mj9rdJHMxKSnECqHj7e80k3EzfHf1qtA7
+4KJEgs6oFn1aHnlBbquT2MZKD60cXyFXWhXz62bZmK80B7sVGe0kRYZn1AGqGm9b
+XZdso+pOinz8X+/RxR/8/WYCx3Waeh5+pgc3xJ7XnCMabIOUAEvtj/IFOMRDzCiS
+Fzlh0YIbGprNuO/tXXFMNJ3cbOzZvLH3rENl9H66AeZf6Jt/R56dlLhfpAJAOy4L
+CpX0nqIgvnezS7kyjvnOLzbilKonDbv/95Wp6GZ9smwC+F73/laSc8WXoM990tfo
+1/0z5ZaB7d1Dchiw2lAiqTxShLAKLzWupvOWO0vzqOhi4nW82Eni4cpysxGFOu9u
+8KXmZsmlttIVIbK1BgXHmF+4b22AN27f8Up9oPioJO96jfXoSP3ICGM0SNGSssLE
+gMGH5wwNGkpR5HP0B1Z86pezpu1/NvxaNqtJ8MS9h/Cil/f5l64=
+=/2DK
+-----END PGP SIGNATURE-----
+
+--nDmTXYS4kVhtHHfR--

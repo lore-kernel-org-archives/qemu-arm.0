@@ -1,202 +1,154 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp9379935wrv;
-        Fri, 9 Aug 2019 09:03:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwO8v4csNogfpee7/ETmiOA288ItjuukNLY8Hf/MyQ1O6/IvUwaChubGsvmhjUi5gz4uLU5
-X-Received: by 2002:a17:906:5859:: with SMTP id h25mr19280331ejs.202.1565366595837;
-        Fri, 09 Aug 2019 09:03:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565366595; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp9387829wrv;
+        Fri, 9 Aug 2019 09:09:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyEvccRKBfOEgwUEFES9VQJWTcnaJQTAzsL5zKmc/606627FwLS3fMSXZ0241cH0hjEBqKE
+X-Received: by 2002:ae9:f707:: with SMTP id s7mr2047460qkg.0.1565366973042;
+        Fri, 09 Aug 2019 09:09:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565366973; cv=none;
         d=google.com; s=arc-20160816;
-        b=OuL6A8Hqzq2oqdCXFsPzk4qDRj2ggL/P555FR9KlELTDPWUvkp1+Qa7FDAHLMxERlH
-         efaTHVq+DXV0vti+7cFPcRkq7NwI5dqStApOljiBa1werTZIQ6rF9QRmFOqc70bK/PCU
-         21CCxJ1gmqRaLchH3GyNMWlSBaV0Z16na1QOYJjfWxPNp6kBHfKIAAI9v4eiFA/4DA8a
-         OJFvrQPe6ygeStqkzdZvYD6FFunCF2ssLbOg4q/e4XqWS73Cxb8e2X7KlX0Z0LLIPzpn
-         /UzWz/9ngX0HhcEbHO4ROtSOzLfQNjAxY3im+BX/d+gjOmz9BJ4YlpeenSDFrYcwwvIP
-         8Ccw==
+        b=zLx032equb+TRgIo6a94L9eMZBv3esT2IzlWlxr/miozJ8gu2jREghVuzO/cHrwSQH
+         RMQBuxt4QOtELDzdmRqFdCFx98gWa/MFBuL7hM+ylsRKwCQf7ZI7J/DW9KoblcNmqUSe
+         gwmA+3vVBCPbVAnn6Dz+eQdP2e37PZkInLb0JN07TKHgFgN7tN05BSpd1gxgotckh1P+
+         ICTU4F3yiDl4uOotdpSNxQvZnwh6nKRoFLRNVfHykcJQPinukFQl9piyhHT+afawQOO6
+         UDjdngp7WMmSIE5KxZKyIj0u6rf6l+tAzum8qUNt72R5khgZfhSv4raM24/Tuhfr2Tw8
+         ubwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
-         :from;
-        bh=XLeDDirrk24Yz4cG2C4ANkKTwQoJ1r+w8usG64ptrzg=;
-        b=T6Vkhf00TbCK6172JcOFzGfh5vony9uDjHMBu0VgukjmAxPOSh2BrFPSleNx6G2pof
-         FgrDHmmY6nG2FbkcIYSgRSByWKh9VIdD9100cwY8ND12bnXngrEKmnsfpLHGACrKRvM9
-         LUzKkRoElf/ILcZGRIPExgif/AFlU5ZxMTe6q5Gy4QLAvTY5Wiw4nhmaZeOIyPuqCH0t
-         412wnwc8m/d/S9OUXseWwf+u2+fm/XeDkzZStW4HpvYAzpafN2TYGd/3PngNlMrDGUkA
-         zZk8w3B0q+tBqqBscQZwz4gUa0ofn5kNyZJkFkIo7sNn/h4YD5yYa8wqokHSo4QAnCXA
-         LzWA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=RTMkiEB2kfdQYO/Qqd+nCus9w/bWOvwjRm7eP19GkAk=;
+        b=D05fvrNF6poN1kSiacb5h1LrDUB6XZaFE8MokCxpdurZzW+/g2aZ8K41Y4AwhHod2/
+         g8C/GzAZvASaVthu/0Vd3ToFQSPeyBauwrRDGyGU0BYiWIk3DGD+VT7MEdlDc99lcZa0
+         Fqi2SqbLAZUqI0I7lomqmlYjazBxUUFlMWhJJc81k8tiQX5Bvu+GhNkNtIVDY0pVEaQd
+         YVroqpuZF7nWUn+3CqBcYPvFn4gVX0qqwVcVxbyp705gCSt5/61Tv8yU2Pk2RDB3FuG6
+         3AkJhueLVsdn7u+aTTNgdg/pA9ttZaYUPBuIMWUk9j4DfrmzhPwSczdBljsfvM2i491/
+         w/Ww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h11si34071730ejb.137.2019.08.09.09.03.15
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Aug 2019 09:03:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id t54si56726929qth.352.2019.08.09.09.09.32
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 09 Aug 2019 09:09:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60692 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hw7MI-0007Tn-Sk
-	for alex.bennee@linaro.org; Fri, 09 Aug 2019 12:03:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54921)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hw7M4-0007NI-U1
- for qemu-arm@nongnu.org; Fri, 09 Aug 2019 12:03:02 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hw7M3-00068M-Im
- for qemu-arm@nongnu.org; Fri, 09 Aug 2019 12:03:00 -0400
-Received: from lhrrgout.huawei.com ([185.176.76.210]:45433 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hw7M3-00062v-C2; Fri, 09 Aug 2019 12:02:59 -0400
-Received: from lhreml707-cah.china.huawei.com (unknown [172.18.7.106])
- by Forcepoint Email with ESMTP id EB33D49403AA34C5652D;
- Fri,  9 Aug 2019 17:02:51 +0100 (IST)
-Received: from LHREML524-MBS.china.huawei.com ([169.254.2.132]) by
- lhreml707-cah.china.huawei.com ([10.201.108.48]) with mapi id 14.03.0415.000; 
- Fri, 9 Aug 2019 17:02:39 +0100
-From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Thread-Topic: [Qemu-devel] [PATCH-for-4.2 v8 7/9] hw/arm/virt-acpi-build:
- Add PC-DIMM in SRAT
-Thread-Index: AQHVQ5+cfqB1e2O8jUOXpcKQKko1GKbuG7sAgATsqLA=
-Date: Fri, 9 Aug 2019 16:02:39 +0000
-Message-ID: <5FC3163CFD30C246ABAA99954A238FA83F34B396@lhreml524-mbs.china.huawei.com>
-References: <20190726104519.23812-1-shameerali.kolothum.thodi@huawei.com>
- <20190726104519.23812-8-shameerali.kolothum.thodi@huawei.com>
- <20190806152136.3afbfb4b@redhat.com>
-In-Reply-To: <20190806152136.3afbfb4b@redhat.com>
-Accept-Language: en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.227.237]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 322D5308421A;
+	Fri,  9 Aug 2019 16:09:32 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id E519760933;
+	Fri,  9 Aug 2019 16:09:22 +0000 (UTC)
+Date: Fri, 9 Aug 2019 18:09:20 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, armbru@redhat.com,
+	eric.auger@redhat.com, qemu-arm@nongnu.org, imammedo@redhat.com,
+	alex.bennee@linaro.org, Dave.Martin@arm.com
+Subject: Re: [Qemu-devel] [PATCH v3 03/15] target/arm/monitor: Introduce
+ qmp_query_cpu_model_expansion
+Message-ID: <20190809160920.f4sz72irkuj4pqr7@kamzik.brq.redhat.com>
+References: <20190802122540.26385-1-drjones@redhat.com>
+ <20190802122540.26385-4-drjones@redhat.com>
+ <d0983bd5-c1a5-adf6-324d-2b199ca0e23c@linaro.org>
+ <ec44ddad-c33c-918b-e94b-a534a2519a9e@linaro.org>
+ <20190806122144.bb3klk7aaaqdhgwi@kamzik.brq.redhat.com>
+ <39a4d205-d291-8962-2693-6bbcce89c332@linaro.org>
+ <20190808085012.23aokly34zo4wxbk@kamzik.brq.redhat.com>
+ <bb477706-e09a-c992-38f0-d3f8725bb4c5@linaro.org>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 185.176.76.210
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH-for-4.2 v8 7/9]
- hw/arm/virt-acpi-build: Add PC-DIMM in SRAT
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "sameo@linux.intel.com" <sameo@linux.intel.com>,
- "ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Linuxarm <linuxarm@huawei.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
- "sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
- "lersek@redhat.com" <lersek@redhat.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 05qnJpZir5Cu
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <bb477706-e09a-c992-38f0-d3f8725bb4c5@linaro.org>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.40]); Fri, 09 Aug 2019 16:09:32 +0000 (UTC)
+X-TUID: OezvSVQuJRA2
 
-Hi Igor,
+On Thu, Aug 08, 2019 at 11:37:01AM -0700, Richard Henderson wrote:
+> On 8/8/19 1:50 AM, Andrew Jones wrote:
+> > I'm not sure. Of course I'd need to experiment with it to be sure, but
+> > I'm reluctant to go through that exercise, because I believe that a
+> > deferred validation will result in less specific errors messages. For
+> > example, how would the validator know in which order the sve<N> properties
+> > were provided? Which is necessary to complain that one length is not
+> > allowed when another has already been disabled, or vice versa.
+> 
+> My point is that we would not *need* to know in which order the properties are
+> provided, and do not care.  Indeed, removing this ordering malarkey is a
+> feature not a bug.
+> 
+> The error message would simply state, e.g., that sve256 may not be disabled
+> while sve512 is enabled.  The error message does not need to reference the
+> order in which they appeared.
 
-> -----Original Message-----
-> From: Qemu-devel
-> [mailto:qemu-devel-bounces+shameerali.kolothum.thodi=3Dhuawei.com@nongn
-> u.org] On Behalf Of Igor Mammedov
-> Sent: 06 August 2019 14:22
-> To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
-> Cc: peter.maydell@linaro.org; sameo@linux.intel.com;
-> ard.biesheuvel@linaro.org; shannon.zhaosl@gmail.com;
-> qemu-devel@nongnu.org; xuwei (O) <xuwei5@huawei.com>; Linuxarm
-> <linuxarm@huawei.com>; eric.auger@redhat.com; qemu-arm@nongnu.org;
-> sebastien.boeuf@intel.com; lersek@redhat.com
-> Subject: Re: [Qemu-devel] [PATCH-for-4.2 v8 7/9] hw/arm/virt-acpi-build: =
-Add
-> PC-DIMM in SRAT
->=20
-> On Fri, 26 Jul 2019 11:45:17 +0100
-> Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
->=20
-> > Generate Memory Affinity Structures for PC-DIMM ranges.
-> >
-> > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> > Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> > Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-> > ---
-> >  hw/arm/virt-acpi-build.c | 9 +++++++++
-> >  1 file changed, 9 insertions(+)
-> >
-> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > index 018b1e326d..75657caa36 100644
-> > --- a/hw/arm/virt-acpi-build.c
-> > +++ b/hw/arm/virt-acpi-build.c
-> > @@ -518,6 +518,7 @@ build_srat(GArray *table_data, BIOSLinker *linker,
-> VirtMachineState *vms)
-> >      int i, srat_start;
-> >      uint64_t mem_base;
-> >      MachineClass *mc =3D MACHINE_GET_CLASS(vms);
-> > +    MachineState *ms =3D MACHINE(vms);
-> >      const CPUArchIdList *cpu_list =3D
-> mc->possible_cpu_arch_ids(MACHINE(vms));
-> >
-> >      srat_start =3D table_data->len;
-> > @@ -543,6 +544,14 @@ build_srat(GArray *table_data, BIOSLinker *linker,
-> VirtMachineState *vms)
-> >          }
-> >      }
-> >
-> > +    if (ms->device_memory) {
-> > +        numamem =3D acpi_data_push(table_data, sizeof *numamem);
-> > +        build_srat_memory(numamem, ms->device_memory->base,
-> > +
-> memory_region_size(&ms->device_memory->mr),
-> > +                          nb_numa_nodes - 1,
-> > +                          MEM_AFFINITY_HOTPLUGGABLE |
-> MEM_AFFINITY_ENABLED);
-> > +    }
-> > +
-> >      build_header(linker, table_data, (void *)(table_data->data +
-> srat_start),
-> >                   "SRAT", table_data->len - srat_start, 3, NULL, NULL);
-> >  }
->=20
-> missing entry in
->   tests/bios-tables-test-allowed-diff.h
+OK, I agree it doesn't make much difference to the user whether the error
+hint is the generic "sve256 required with sve512" verse
 
-I can't find any SRAT file in tests/data/acpi/virt. Arm/virt doesn't have m=
-uch
-tests in bios-tables-test.c. So does it make any difference?
+ sve256=off,sve512=on  "cannot enable sve512 with sve256 disabled"
 
-> PS:
-> I don't really know what ARM guest kernel expects but on x86 we had to en=
-able
-> numa
-> for guest to figure out max_possible_pfn
-> (see: in linux.git: 8dd330300197 / ec941c5ffede).
+or
 
-From whatever I can find, doesn't look like there is any special handling o=
-f
-max_possible_pfn in ARM64 world. The variable seems to be only updated
-in acpi_numa_memory_affinity_init()
+ sve512=on,sve256=off  "cannot disable sve256 with sve512 enabled"
 
-https://elixir.bootlin.com/linux/v5.3-rc3/source/drivers/acpi/numa.c#L298
+> 
+> > Also with deferred validation I think I'd need more vq states, at least
+> > for when KVM is enabled. For example, if 384-bit vector lengths are not
+> > supported on the KVM host, but the user does sve384=on, and all we do
+> > is record that, then we've lost the KVM unsupported information and won't
+> > find out until we attempt to enable it later at kvm vcpu init time. We'd
+> > need a kvm-unsupported-user-enabled state to track that, which also means
+> > we're not blindly recording user input in cpu_arm_set_sve_vq() anymore,
+> > but are instead applying logic to decide which state we transition to.
+> 
+> Or perhaps, less vq states.  You do not need to compute kvm states early.  You
+> can wait to collect those until validation time and keep them in their own
+> local bitmap.
+> 
+> bool validate_sve_properties(...)
+> {
+>     // Populate uninitialized bits in sve_vq_map from sve_max_vq.
+>     // Populate uninitialized bits in sve_vq_map from on bits in sve_vq_map.
 
-Is there any way to test this in Guest to see whether this is actually a pr=
-oblem?
+And disable uninitialized bits in sve_vq_map from OFF bits: auto-disabling
+
+Also we can't do these populate uninitialized bits from on/off steps when
+KVM is enabled without first getting the kvm-supported map.
+
+>     // All remaining uninitialized bits are set to off.
+>     // Reset sve_max_vq to the maximum bit set in sve_vq_map, plus 1.
+
+I wouldn't always do this. If the user explicitly sets a maximum with
+sve-max-vq, then we should generate errors when other inputs would change
+that maximum. I would only assert they're the same when both input types
+are provided. Of course we do the above when only map input is provided
+though.
+
+>     // Diagnose off bits in sve_vq_map from on bits in sve_vq_map.
+> 
+>     if (kvm_enabled()) {
+>         DECLARE_BITMAP(test, ARM_MAX_VQ);
+>         kvm_arm_sve_get_vls(CPU(cpu), test);
+>         if (!bitmap_equal(test, s->sve_vq_map, s->sve_max_vq))  {
+>             bitmap_xor(test, test, s->sve_vq_map, s->sve_max_vq);
+>             // Diagnose the differences in TEST:
+>             // test[i] & s->sve_vq_map[i] -> i is unsupported by kvm
+>             // test[i] & !s->sve_vq_map[i] -> i is required by kvm
+>         }
+>     }
+> }
+> 
+> If you prefer not to experiment with this, then I will.
+>
+
+Ah, the ol' I'll do it if you don't motivator... I do see some
+potential for a reduction in complexity with this approach, but
+I'm not sure we'll save many lines of code. I could do a quick
+hack on top of this series, just to see how well the validator
+function looks and works, but I can't get to it until midweek
+next week. I won't complain if you beat me to it :-)
 
 Thanks,
-Shameer
-
-> It's worth to check if we might need a patch for turning on NUMA
-> (how to do it in QEMU see: auto_enable_numa_with_memhp)
+drew

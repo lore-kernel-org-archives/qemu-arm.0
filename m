@@ -1,86 +1,89 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp9086795wrv;
-        Fri, 9 Aug 2019 04:40:54 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzLB/LgsmGu92D+zI1+gzIsoYjdJyXDh5EQWW2dtHXA5eL/Q/A1WYjWtQ56s6nbdohGH/vG
-X-Received: by 2002:a17:906:4e0e:: with SMTP id z14mr8216583eju.109.1565350854143;
-        Fri, 09 Aug 2019 04:40:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565350854; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp9171617wrv;
+        Fri, 9 Aug 2019 06:01:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxdE1Ig2C7c4NlcMQ+mfVfx+0BPbvlTVHk+MdG3osuzAlR0iu94ALWFRBD/wLF/9ZnnC0uk
+X-Received: by 2002:ad4:4562:: with SMTP id o2mr17945030qvu.116.1565355708030;
+        Fri, 09 Aug 2019 06:01:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565355708; cv=none;
         d=google.com; s=arc-20160816;
-        b=m/PfY836dIpsP8+5d7A2dWqkypv0Cq360j99mYChuyyBSqoucsKDVHCWs0S2Advb/3
-         27nKtmsdZ8+pZEbZioRCkQXbMObqVBktNum18/xg/1QHJtf/S5alKsumLMaFGXvCxtg2
-         xqMHqgBxRLM13i5xHGEeacsSBmaW+aluLIk5hZd2egDwdkd4ij1K4hW9Mb8i9JOJ3f3D
-         cmmaVJ61S4UfDr+RXhPNfWJOV7bBRxuxRE72nJZmdWJtPrjRLqGvE/t/bFgxMDvl/yz8
-         B7Vpe8VQCFMmwpuPjg4PxjSLxqyPIORzdn0T+WaNsu2eWj0lGjIGe79Njp+bhmFskYdr
-         q21A==
+        b=ba25o/4/WDPtC73vW5lFQyJXOz4xRG9bBdpnUlS8D19TzQEYH3mLIvbpkYZIdFkxu3
+         +oVITd3bBZFl7Qi5rKilGXdvJyFVswK0m3akfKzVuzf/hN77o5jT8NrEoxxUQIxmJLci
+         bexd/Sjc2KruUXWYsHnjhC4gEKDemJy/Lb1GobcxnVb7YAc6WkKFh7av8tT/CRfV49cC
+         SRICDBAE9KydVurdHh3Oybvs4a7pEobbS7khX0hjt3WBcGzOyypF22wC3iHeK7DByI7n
+         zSlEhKMeciUDLqezO5+ICOZqSy1jYYxuQcBRC5JcGYeCjfqNnP1tcPFQWbH8n1rgzOjC
+         W4pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=6ujltMDZvMN28bIbGQfa245iAujTdhkgLzGy7qUnPyc=;
-        b=gNCOHkBBEvJBFf5ZAPIb1lGvEE0AA9MMtGMgKKXd+GFHdgD7V5JlBsfYn78C2aCKyX
-         /urpoRLEWslSZldtd2Xo2VSfcO8z7QCiaY93fBz/X0jhWwg4uIItUDHENO/ypcP8sDLD
-         Oaj/lOzQNdAj2FzAnundcy/BucbqKN/V4rXBHSFmdz6x2JLgDSGx66dn+7zUJNhp6wOX
-         4w63wza4q7Us0QiDy2vW7RT+xPUiST2dK3znwAyvy//I++SuoXa4d9WSO+Ht6y6V+AS1
-         delGENTHZcrvKQZt57cPeoXzFkflLmDnowXnRgO+wiF4eOiYHVQFY4cgcPGhUUXmkAEv
-         ae/g==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:subject
+         :mime-version:message-id:date:user-agent:references:in-reply-to:to
+         :from;
+        bh=Nf/VpEjm8NvJZPO2w/RQ8ekLvwk31AoOPF2yZ8dLNpE=;
+        b=0jdo0tABmMASHmTClRMfY/yIovnqqKP6GEthXu3w6TpIyEglOgB7477ECDS5Qeo+Fd
+         yPwSfLJi638Cfmlz15ummUaelPGCT3dnF3HfXSDNTFVUVmIKw8v173FdMbcBvUb4IixF
+         eulmz+54AUjUjkgKikFM49FaDdikpEn5D7Z2NQ1XJ5UHXQedF6ZNeKPV6uvXpYsvJYi9
+         lB08MfvQbOz7m6+v3L6k1FzU5t1BEprOcduoT0bVHaDZfJYdyA/58gkRFY7eIysmloeX
+         D2VydLc0zNguUijhhnKxlEWXDUIFCGt0RKq57uMdKYChf7y2Et6X3msq3Vf6m1jxyZu9
+         eIBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p6si11963105ejg.75.2019.08.09.04.40.53
+        by mx.google.com with ESMTPS id e64si36480483qtb.388.2019.08.09.06.01.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Aug 2019 04:40:54 -0700 (PDT)
+        Fri, 09 Aug 2019 06:01:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58382 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59218 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hw3GP-0001eE-7O
-	for alex.bennee@linaro.org; Fri, 09 Aug 2019 07:40:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43350)
+	id 1hw4Wg-00032P-Hn
+	for alex.bennee@linaro.org; Fri, 09 Aug 2019 09:01:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54960)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <clg@kaod.org>) id 1hw3GD-0001dc-RH
- for qemu-arm@nongnu.org; Fri, 09 Aug 2019 07:40:42 -0400
+ (envelope-from <quintela@redhat.com>) id 1hw4WZ-0002zV-If
+ for qemu-arm@nongnu.org; Fri, 09 Aug 2019 09:01:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1hw3GC-0003HL-MJ
- for qemu-arm@nongnu.org; Fri, 09 Aug 2019 07:40:41 -0400
-Received: from 4.mo3.mail-out.ovh.net ([178.33.46.10]:57876)
+ (envelope-from <quintela@redhat.com>) id 1hw4WY-0001Pv-IX
+ for qemu-arm@nongnu.org; Fri, 09 Aug 2019 09:01:39 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49210)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1hw3GC-00035i-Fk
- for qemu-arm@nongnu.org; Fri, 09 Aug 2019 07:40:40 -0400
-Received: from player778.ha.ovh.net (unknown [10.108.42.202])
- by mo3.mail-out.ovh.net (Postfix) with ESMTP id 7D53D223010
- for <qemu-arm@nongnu.org>; Fri,  9 Aug 2019 13:40:26 +0200 (CEST)
-Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
- (Authenticated sender: clg@kaod.org)
- by player778.ha.ovh.net (Postfix) with ESMTPSA id 5443D8AE3458;
- Fri,  9 Aug 2019 11:39:49 +0000 (UTC)
-To: David Gibson <david@gibson.dropbear.id.au>,
- Damien Hedde <damien.hedde@greensocs.com>
+ (Exim 4.71) (envelope-from <quintela@redhat.com>)
+ id 1hw4WY-0001OX-D0; Fri, 09 Aug 2019 09:01:38 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 0D63730BEBEE;
+ Fri,  9 Aug 2019 13:01:36 +0000 (UTC)
+Received: from redhat.com (ovpn-116-49.ams2.redhat.com [10.36.116.49])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2CDEC19C70;
+ Fri,  9 Aug 2019 13:01:34 +0000 (UTC)
+From: Juan Quintela <quintela@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+In-Reply-To: <CAFEAcA-YjLA25wPBgWOB_c2fV2o7C8n=1-uUVe6xgiP=j5+Fgw@mail.gmail.com>
+ (Peter Maydell's message of "Fri, 9 Aug 2019 11:32:51 +0100")
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-6-damien.hedde@greensocs.com>
- <20190731060533.GD2032@umbus.fritz.box>
- <51aa7e6d-3568-8485-4b67-a598a24a1f3d@greensocs.com>
- <20190808064810.GE5465@umbus.fritz.box>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <4fa2ecbe-d81e-5285-822e-28f984aed77c@kaod.org>
-Date: Fri, 9 Aug 2019 13:39:46 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ <20190729145654.14644-8-damien.hedde@greensocs.com>
+ <CAFEAcA-W0SaaGbUnGZ0b61ngxKY8R9xjwGXeN+=MaUi4bMDgNg@mail.gmail.com>
+ <20190808154219.GK2852@work-vm>
+ <CAFEAcA8L2YVMCu3Gb+eQTDfCpgVwA_WwVPrqPLV2iQ9rZ4HuTA@mail.gmail.com>
+ <f400248f-7a3b-83e9-3355-77de359e3f43@greensocs.com>
+ <CAFEAcA-YjLA25wPBgWOB_c2fV2o7C8n=1-uUVe6xgiP=j5+Fgw@mail.gmail.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
+Date: Fri, 09 Aug 2019 15:01:30 +0200
+Message-ID: <87imr6332t.fsf@trasno.org>
 MIME-Version: 1.0
-In-Reply-To: <20190808064810.GE5465@umbus.fritz.box>
-Content-Type: text/plain; charset=windows-1252
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 6604810331389201207
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddruddujedggeegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.44]); Fri, 09 Aug 2019 13:01:36 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 178.33.46.10
-Subject: Re: [Qemu-arm] [PATCH v3 05/33] Switch to new api in qdev/bus
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v3 07/33] automatically add vmstate for reset
+ support in devices
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -92,46 +95,51 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
- dmitry.fleytman@gmail.com, mst@redhat.com, mark.cave-ayland@ilande.co.uk,
- qemu-devel@nongnu.org, kraxel@redhat.com, edgar.iglesias@xilinx.com,
- hare@suse.com, qemu-block@nongnu.org, david@redhat.com, pasic@linux.ibm.com,
- borntraeger@de.ibm.com, marcel.apfelbaum@gmail.com,
- marcandre.lureau@redhat.com, thuth@redhat.com, ehabkost@redhat.com,
- alistair@alistair23.me, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- jsnow@redhat.com, rth@twiddle.net, berrange@redhat.com, cohuck@redhat.com,
- mark.burton@greensocs.com, qemu-ppc@nongnu.org, pbonzini@redhat.com
+Reply-To: quintela@redhat.com
+Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>, "Michael S.
+ Tsirkin" <mst@redhat.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
+ Edgar Iglesias <edgar.iglesias@xilinx.com>, Hannes Reinecke <hare@suse.com>,
+ Qemu-block <qemu-block@nongnu.org>, David Hildenbrand <david@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ qemu-s390x <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, John Snow <jsnow@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Damien Hedde <damien.hedde@greensocs.com>,
+ "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ Mark Burton <mark.burton@greensocs.com>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oJOozdXtXBB/
+X-TUID: I7ac2qmjedro
 
-
->>> So.. is this change in the device_reset() signature really necessary?
->>> Even if there are compelling reasons to handle warm reset in the new
->>> API, that doesn't been you need to change device_reset() itself from
->>> its established meaning of a cold (i.e. as per power cycle) reset.
->>> Warm resets are generally called in rather more specific circumstances
->>> (often under guest software direction) so it seems likely that users
->>> would want to engage with the new reset API directly.  Or we could
->>> just create a device_warm_reset() wrapper.  That would also avoid the
->>> bare boolean parameter, which is not great for readability (you have
->>> to look up the signature to have any idea what it means).
+Peter Maydell <peter.maydell@linaro.org> wrote:
+> On Fri, 9 Aug 2019 at 11:29, Damien Hedde <damien.hedde@greensocs.com> wrote:
 >>
->> I've added device_reset_cold/warm wrapper functions to avoid having to
->> pass the boolean parameter. it seems I forgot to use them in qdev.c
->> I suppose, like you said, we could live with
->> + no function with the boolean parameter
->> + device_reset doing cold reset
->> + device_reset_warm (or device_warm_reset) for the warm version
-> 
-> Ok, good.
-> 
-> I'm afraid the whole series still makes me pretty uncomfortable,
-> though, since the whole "warm reset" concept still seems way to vague
-> to me.
+>> One way to keep the feature without copy-pasting vmsd would be to add
+>> a new vmstate_register with an additional argument to pass the base
+>> class vmsd section and handle the whole thing there.
+>
+> If we have a vmstate section which contains no actual data,
+> only subsections with 'needed' functions, is it migration
+> compatible with previous versions in the same way that
+> tacking a subsection onto an existing function is?
 
-Isn't the reset after the CAS negotiation sequence between the hypervisor
-and the pseries machine some sort of warm reset driven by SW ? 
+Not now, but we can make it happen.
 
+Right now, we first send the VMSD "header", and then we sent whatever
+data is in it.
 
-C.  
+We can it make work the way you want.  Not sure if that is the best way,
+though.  Sections that can(or can't) be there make just reasoning about
+the stream more difficult.
+
+Later, Juan.

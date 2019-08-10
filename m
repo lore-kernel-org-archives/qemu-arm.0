@@ -1,98 +1,94 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp9909042wrv;
-        Fri, 9 Aug 2019 19:03:54 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz31G7tphEyJS7px75lJKqbj6ID12BOVuN5ooiHdDza4vpwaY6toyAYNhLL+SW5D1TxKjue
-X-Received: by 2002:a50:84e2:: with SMTP id 89mr25271725edq.218.1565402634149;
-        Fri, 09 Aug 2019 19:03:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565402634; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp9974439wrv;
+        Fri, 9 Aug 2019 20:39:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzJLXlL/5VPO9YPQE5qPaZMcD5fuAaou0XJmBnPazf4hM2uSiE1a0ReUPutU6FZUkZyv26k
+X-Received: by 2002:a05:6214:1254:: with SMTP id q20mr10482431qvv.164.1565408342594;
+        Fri, 09 Aug 2019 20:39:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565408342; cv=none;
         d=google.com; s=arc-20160816;
-        b=sX0qUZmBShxlGa1f4+eg79JxRrINca8Grv1eUJ067vp9bYGsBEVXW3Wq0Zxv4HfUgp
-         EYyZX0YLCw8MSEuk+XQkmRc59PG8Tv9wovNKvcOqy4A93dQkydDEmuEyNIAjIFas1oeE
-         Up+fLYQWhwLQMLlQAcCZSOuZ54wQN4GA3F5QILuHIANCj8EHzmDX90gLa8cjOhKli/Lv
-         no138gKLlCXqBdK5W4/Zt4p6ccoDIzMpJFUk2GWxVrjnX+7XTlZmx5n0qJ2rmhN5wEe/
-         J3cr1F50gd9w2M4tJmQkeCLicNuhqztYkpfJ9cA7pzvijTD7JdokR/W6Hkwo+7udK+x6
-         RIBg==
+        b=OSUc6gaz8Bmx20UOe4cljv818AuvHb/2xOcjiSG1lAdTiFfXwrKl6QDD9/jRKxb5CI
+         DK1z7gM/AZK4Iw2licXQdwA8fnfYV7+TuO7FTu32ISrcUaKOnS+jVGx2i2wj5iYNL5p8
+         BrcZdKT1oyEDHIPDDC6QxF8MTCdvVvVy1ePtBC6Qem6UXJa4cAH/vQ3wudGza6TvLgJs
+         Vlh2+VX7lC1RGi4xGWerfVqW7ixUwZnhGTcibZ+QfvU0Y3oqQKwTBsBk2iX/l5kwhzDs
+         9aiNzVV86ManltHyeXLtgJhtK6Sa67l4YNF6a9UtZWIy/HN11+nQVmjFOx/4kjWxpc08
+         0p0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=G+duk7zj6MtgC/aAwGWmgTHU09nMOBNrTdfA+ShMYzQ=;
-        b=HXhJTMpV+Y4k7Ac7iNxCBLjtU4ATcHyTMBrxSNhFHRNIbepbLQY4S53pvBEjLY00ZH
-         QAmLJqOsUExDFtJ9eCMFe8C2QdJ0NMk4o2/3Lj/kYbwfbGBkBWOCsT3mNe+Jyqf+5wRC
-         pwS6bES/0CxO2rVKxN+U5SdmB1Ju1rNxKMi2gwMRVwy6D8NWEdD6fx4gzTLqzB/MAH83
-         mLRyiXF/Bc43BuulB6VazIOZ1Re7awy7zif9+jkg4Oq3zzzErzST4Gdi3bCzDSjWAxGS
-         td30uNlSXB7k60Mi4mF7s37wJskA/iJzUb7i/WTDwaoS4rrS3i2Wsd1lzhUEaewqMiD5
-         gvOA==
+         :mime-version:dkim-signature;
+        bh=NYYfnDPDKe7HhMJeGbGiBZbd7S1he31CSCw15ZyXz8U=;
+        b=rQbfJLlcgmOX2wePubmt0VnL260xOGyBBpswuVYp0sNIapqSrqBWqmpOM1xItQvXvK
+         atSjo+e8co4nLMLc48Ge3v28w3afpLSK/c/wKxgPz4jZyiDr4X+sgnctb+eehHWGRh60
+         c3l7UfB47lvXU++4/P8UwsXNiM8VIDIwX+276YH+ElSCHNOKaAGS/KqmCLPyyB39ix04
+         jcY6GqHFzOe5p2/CPviGhuwHJQE0IWabVjcM2IBhPDdeAuHjtF40S9CYC74G/4gaXEPW
+         40hCFiEtPoFjpP7Om2vO9FCExS8ZzJ8gqtuhaYc4AWgaprEDgggMroVoqV/PlG9ri7HN
+         LFPw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ivjwWNzk;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dRNwFAUP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g18si40646145eda.145.2019.08.09.19.03.54
+        by mx.google.com with ESMTPS id w194si55722604qka.122.2019.08.09.20.39.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Aug 2019 19:03:54 -0700 (PDT)
+        Fri, 09 Aug 2019 20:39:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ivjwWNzk;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dRNwFAUP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:34508 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34718 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hwGjZ-0005pK-95
-	for alex.bennee@linaro.org; Fri, 09 Aug 2019 22:03:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49639)
+	id 1hwIDe-0006Di-6H
+	for alex.bennee@linaro.org; Fri, 09 Aug 2019 23:39:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59739)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <alistair23@gmail.com>) id 1hwGjJ-0005jx-3D
- for qemu-arm@nongnu.org; Fri, 09 Aug 2019 22:03:38 -0400
+ (envelope-from <estebanbosse@gmail.com>) id 1hwIDZ-0006Dc-Fz
+ for qemu-arm@nongnu.org; Fri, 09 Aug 2019 23:38:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1hwGjH-0005Vc-Ui
- for qemu-arm@nongnu.org; Fri, 09 Aug 2019 22:03:37 -0400
-Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:43533)
+ (envelope-from <estebanbosse@gmail.com>) id 1hwIDY-000779-Jz
+ for qemu-arm@nongnu.org; Fri, 09 Aug 2019 23:38:57 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b]:35568)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1hwGjF-0005UM-E9; Fri, 09 Aug 2019 22:03:33 -0400
-Received: by mail-lf1-x142.google.com with SMTP id c19so70820110lfm.10;
- Fri, 09 Aug 2019 19:03:33 -0700 (PDT)
+ (Exim 4.71) (envelope-from <estebanbosse@gmail.com>)
+ id 1hwIDY-00076L-Bn
+ for qemu-arm@nongnu.org; Fri, 09 Aug 2019 23:38:56 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id w20so97211699edd.2
+ for <qemu-arm@nongnu.org>; Fri, 09 Aug 2019 20:38:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=G+duk7zj6MtgC/aAwGWmgTHU09nMOBNrTdfA+ShMYzQ=;
- b=ivjwWNzk8ipDxC3VQYTvmMt+zfdmN0iS+KPv8c9iEJ2HTt6ck7wYgnFelZwwqH+u/e
- TbFLrONgrU+pKmcTgT+ipVp6Oq8sXKZIRAs7n4N2HXi7yABvBcoZApzvHE4LXBQ3mkp8
- TuhJoczaH5cxEyFMavgSr4MEl3bxpEG0dKk9KZ5Gw77lmjTevD+ts8XODOlhgxbuZVea
- 04R2AlZkU2a0RPfiz3e9KGo1MLQXE2SdxrRlrGhV5LpsgLMEwGxIz5jkw0/v/rrR+ZNO
- Rr11DEAGuW0kbnMY5ydq/lb6xN103BncbyeL2OObkJukycpmWf8fNEjYs4J3Y8kQ+OYv
- sERQ==
+ h=mime-version:from:date:message-id:subject:to;
+ bh=NYYfnDPDKe7HhMJeGbGiBZbd7S1he31CSCw15ZyXz8U=;
+ b=dRNwFAUP2ZCQHBlWw49td3kXimvcVSK0TLkslyw0ycVhS0VGCneyVsT5+k9cPW1/ph
+ zZM5A8T03bivH+imtmm/EBD/VHkbUPkjtWp61u/B53jJ2CH9ns5ZvUmTLt3e4IS3wtlW
+ +fVgXCGkl1KP6Lyp2XBboIYkUY14UDZFgjwkXfXcPZ46PhGkwtOt7hZdS2haxw6hm+7p
+ Zuiep4DhaSy/i/thecDzHp58yCmYg/VE4x+mJUP9H0HWKzfy2rAp9I7or6OvNuuqHZjY
+ 2BQWXIPJJX7XIZl29EUGx+QemkyDFO7G3P6zCL1nr/lwZ/vujepA2/FAJtDnCHG9VRHe
+ BIsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=G+duk7zj6MtgC/aAwGWmgTHU09nMOBNrTdfA+ShMYzQ=;
- b=lJ+EiJPq955CBnzX0pq/0JkmGCoOx/sFSOa0+D2QD9X6pVOxBvmzE236CxHu8hLYCk
- zZm2Zqh3EUBv1XhHskCkaSz0ydvhgDpb7CrGFCmbCOQk+XOVLd13D8BqyUlP7qTrDEf9
- i1HJhmTAKS7++8dTXosJG/mQzbYL0BTpixoQO9e0srxxobut/W14I7Yq9ziqYnLQbBcp
- aI1QdTPoL/oGBq+dinA3s2Y1nN3n1HjQuCbwl3nQ1uhx1f8fguJScYwBFZRtjTPl9llI
- hVz9hYSw6T7brfL/hkSmFtT7MKsc8ppuWFaKJcdOfSWREsQRA+WW0z9hp6NBpWN+nRqL
- qXmg==
-X-Gm-Message-State: APjAAAVddYoYPgh92dO5+e5EH3fHchtF/rHF3yNv7LxomRhkYO14GnIM
- QJi/Ap83uD9XwOJlSoBMCRxxuz1k0CwLm3Qbad4=
-X-Received: by 2002:a19:ed11:: with SMTP id y17mr14331811lfy.141.1565402612044; 
- Fri, 09 Aug 2019 19:03:32 -0700 (PDT)
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=NYYfnDPDKe7HhMJeGbGiBZbd7S1he31CSCw15ZyXz8U=;
+ b=meu8Pox+pk/nDLKxHx7T0WfSSj9o51F7dFguM/WAbHdP3aJYn3O8Jm/IwHPmlugYRw
+ e22c1X5sstqoJY+/Gi+vdcTVeS9yGb3PdIIIpwlHUnw6/phl+LsQ2h1UobaKuJCTiWDJ
+ 7Ax8V6rZ5yPAeGm3+oyeY1dqOTERUUd/x6LdpyXhl8dyJDrAZ5wxCHGuNIM2NhLL1YVh
+ OPtyEGdCfmRMcxz28R54DRZ/XLZAXOgPKxCJKbcu6HeNOY4hgT62ohJoi4OJFQq0ZalT
+ VRWrp5W1Fisjddr4J4eO1fc5XV6bSZBFDJEU3gDC4whEB8s0TrJvG4bumqYhDsbW587x
+ Ry4w==
+X-Gm-Message-State: APjAAAU+BQkNniuAJeLm4YEZVNOsuxgANkTMUbAc20GQvMC7M4CsGjuc
+ ryAlHz2RJJMg4Lf7KoOqEhIJWdaAlN5eHHIyUU9Q+JEz
+X-Received: by 2002:a50:8752:: with SMTP id 18mr13399409edv.96.1565408334531; 
+ Fri, 09 Aug 2019 20:38:54 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190809154153.31763-1-richard.henderson@linaro.org>
- <20190809154153.31763-4-richard.henderson@linaro.org>
-In-Reply-To: <20190809154153.31763-4-richard.henderson@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 9 Aug 2019 19:03:05 -0700
-Message-ID: <CAKmqyKP7DU0ZAB9ruOxVQxCLevw0XO8378oZc+diQAxpmqifWg@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+From: Esteban Bosse <estebanbosse@gmail.com>
+Date: Sat, 10 Aug 2019 05:38:43 +0200
+Message-ID: <CAGbAg_ANKR9zyAp3+pNRo6eVydQPaWrny62xk5NWr0DOD-7Jxg@mail.gmail.com>
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000b55173058fbb0760"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::142
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 3/3] target/riscv: Remove
- redundant declaration pragmas
+X-Received-From: 2a00:1450:4864:20::52b
+Subject: [Qemu-arm] Beagle Board support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,63 +100,23 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <Alistair.Francis@wdc.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e7fOPZ2RGGBL
+X-TUID: a4TvGWb5dUm+
 
-On Fri, Aug 9, 2019 at 8:43 AM Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> These are now generated by decodetree itself.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+--000000000000b55173058fbb0760
+Content-Type: text/plain; charset="UTF-8"
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Hi,
 
-Alistair
+I am new in this world, but I want to port the old beagle support for
+qemu-linaro to mainstream.
 
-> ---
->  target/riscv/translate.c | 19 +------------------
->  1 file changed, 1 insertion(+), 18 deletions(-)
->
-> diff --git a/target/riscv/translate.c b/target/riscv/translate.c
-> index 8d6ab73258..adeddb85f6 100644
-> --- a/target/riscv/translate.c
-> +++ b/target/riscv/translate.c
-> @@ -708,26 +708,9 @@ static bool gen_shift(DisasContext *ctx, arg_r *a,
->  #include "insn_trans/trans_rvd.inc.c"
->  #include "insn_trans/trans_privileged.inc.c"
->
-> -/*
-> - * Auto-generated decoder.
-> - * Note that the 16-bit decoder reuses some of the trans_* functions
-> - * initially declared by the 32-bit decoder, which results in duplicate
-> - * declaration warnings.  Suppress them.
-> - */
-> -#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
-> -# pragma GCC diagnostic push
-> -# pragma GCC diagnostic ignored "-Wredundant-decls"
-> -# ifdef __clang__
-> -#  pragma GCC diagnostic ignored "-Wtypedef-redefinition"
-> -# endif
-> -#endif
-> -
-> +/* Include the auto-generated decoder for 16 bit insn */
->  #include "decode_insn16.inc.c"
->
-> -#ifdef CONFIG_PRAGMA_DIAGNOSTIC_AVAILABLE
-> -# pragma GCC diagnostic pop
-> -#endif
-> -
->  static void decode_opc(DisasContext *ctx)
->  {
->      /* check for compressed insn */
-> --
-> 2.17.1
->
->
+Someone is actually working on it or is interested?
+
+--000000000000b55173058fbb0760
+Content-Type: text/html; charset="UTF-8"
+
+<div dir="ltr">Hi,<div><br></div><div>I am new in this world, but I want to port the old beagle support for qemu-linaro to mainstream.<br><br>Someone is actually working on it or is interested?<br><br></div></div>
+
+--000000000000b55173058fbb0760--

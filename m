@@ -1,127 +1,158 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10476937wrv;
-        Sat, 10 Aug 2019 07:02:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzvVB6Rutlzwa5L8M7fJU7LdHJPR+zWP1hSTs31BQQGAIq7vtX93n8zzLTp9Od7IF1vF/2j
-X-Received: by 2002:ac8:689a:: with SMTP id m26mr22590388qtq.192.1565445724140;
-        Sat, 10 Aug 2019 07:02:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565445724; cv=none;
+Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10533406wrv;
+        Sat, 10 Aug 2019 08:02:38 -0700 (PDT)
+X-Received: by 2002:a50:a48a:: with SMTP id w10mr28038933edb.1.1565449358864;
+        Sat, 10 Aug 2019 08:02:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565449358; cv=none;
         d=google.com; s=arc-20160816;
-        b=AZTvnYifLtPHlgU1BSISPEkR7HEeGSD/mlzu0V3Fe4xHFz7AXqdnByO8ahqHoHB/96
-         JEtKjnS91a3FasfN7DrLBL0E2sHlRd7sgcwwQ8ynQj8/9AfXfekTHyxyWQYlLFxv6hVO
-         A7OXb2quKKO+IAON+UqWhKxfuaV+dB+HG0nHXZwl8cnHvLDeZcjbH9Eveq0yZD8MvVeP
-         HLYpBHa5J6v403Iu24m8O2gnyZP4xsDvkZ3PBWpCVY/mGfJgWz+k9jOWG5xTFZy1b9Mu
-         WQ62Dr6TnqvyEihrFVzUJ6amtkoeTUonsNMfg7sNKjE3xgndi3Z5Jc1dLbt6203+bMcO
-         kKHQ==
+        b=I0XlKJmOmTzx67NhjGyR3yS3nG2szOaMY4TojjFygtvKfXGlv96qEUijdCPKmuCK2h
+         InKW5rHXwl2E0CrycMy1bM4Zwu2XNBaxhNBGRavPDC3A4nW8DpuVanMDoGKedUeTkhxS
+         Un505iDAjogTjRNRa0Tna8VFxBLuzZ+Wc04lw2qrzXtY1fY7CJI5DPNQTtxDpDnnxPhJ
+         MmQn3xYMzhy6Bb2LTGy+I0ldwUuC2CtFBbgvJsmFSWVKXxuLF5EORMe2Kd08v4b++KTi
+         p+RW754mHzt4VtOMQpVorA4/JTkygAignEIwVbim69/8SvuIkKKsIIQ0+exiR/498W0k
+         lFqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=PPYv0iX/gZ679yNJSyL7o1U/g5Zvio970XEQGheyHuA=;
-        b=kuB6OHuV60hR95WWqpOTevhq+WhqlGS/47ybksIBtkoS+W/B6ak580Hac/2XR7+6W5
-         eIVNmxJXccHe/ovv62d5fnBPxiY7GycM+mfIM4rimdoZkhawoBXulHQn6Ri/N/UizQl2
-         Wk6mx9MCRe4upWreCCvMguQkdvaLQj5p2n90GKpAXPVcuT9vTT2WlXNB6ViKdQAyqyN+
-         3pDJrX3bU/CfULaLVDslLQ/UpE4u9iIHXLAxve352q0SlmPQxzod6+3JlXCVzjHWuq3i
-         4dXhKGDq204HXvvyMleu7Dj3IdLzsQykh8Oakknz0qK5teGhF/Fbb4GleAUV+B3TFvMB
-         xVzg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=fDnsth2h1POiujYrGxb25pD2xpHYZG7FBZyBA3aoEiU=;
+        b=rgGgY8VKFBie/PMALJIqPuJopas/kmd81zuGgEVNdHU+IQAceJoTZ36eyAbzocXKlJ
+         iGhroQM3m3b4jDjt+rUlAqtog4lT58xXAfX7U4vkAs588rT4o/BWPrBy1moSXxNlDoQL
+         UDgA7s2TINURizVliJHnzLN0rtCvWdiYe50aEdQPnVRUHBmsJSc67djv3fi4EI7LuDgJ
+         yPnF+VOUR951hKXYm1tKjsZK59MB9Z/cDKcstwysJivgJ678CyP+zQes0ymjC3tVqCtQ
+         IT45bZYLQ0wrZMvGoNvCEF15DC8lGTQJ8o4YBKTnmaU4l/BtkzA1Nf3V4LA1jTifkcYK
+         2WqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uxj2uJIR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w11si3271250qtb.285.2019.08.10.07.02.03
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OLhSs9pa;
+       spf=pass (google.com: domain of estebanbosse@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=estebanbosse@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <estebanbosse@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id m20sor37928345ejk.32.2019.08.10.08.02.38
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 10 Aug 2019 07:02:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Sat, 10 Aug 2019 08:02:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of estebanbosse@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uxj2uJIR;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36746 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hwRwZ-0000T2-Np
-	for alex.bennee@linaro.org; Sat, 10 Aug 2019 10:02:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35462)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <peter.maydell@linaro.org>) id 1hwRwO-0000Su-TY
- for qemu-arm@nongnu.org; Sat, 10 Aug 2019 10:01:53 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hwRwN-0006Wv-Rg
- for qemu-arm@nongnu.org; Sat, 10 Aug 2019 10:01:52 -0400
-Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330]:38119)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hwRwN-0006We-MK
- for qemu-arm@nongnu.org; Sat, 10 Aug 2019 10:01:51 -0400
-Received: by mail-ot1-x330.google.com with SMTP id d17so143701839oth.5
- for <qemu-arm@nongnu.org>; Sat, 10 Aug 2019 07:01:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=PPYv0iX/gZ679yNJSyL7o1U/g5Zvio970XEQGheyHuA=;
- b=uxj2uJIRGGUqiH9zcH9htTBfVqEdGMeTwaiXCl2P/+Z6udsZqKxt6I/pZGZvJ3IiU2
- O+CLKcDbSkQ2VClBwiL01EeGNCsUxdUnstWXlLR2p81RE3a+dVw4/5edzmrbVQmfwJ9E
- 44hVLstL7oPmdNg3qeWYSzE7++6XKngDpZEds7JnZrKE4yuvsgVRs3fSoTf47MTINnUW
- SRXc8Jpf6Bo/X9RkVoZ7j7JuCLWgbVye0GK81ktTnVRo4VM5j5DBwSh+517fRdhLY7JZ
- CV2v6NBDVRPWjrDyDZfGiOb+LCuwAmQlnT6m+6VuMLvmj51tJv/LY56/9uZhpJthSgt9
- 0NNw==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OLhSs9pa;
+       spf=pass (google.com: domain of estebanbosse@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=estebanbosse@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=fDnsth2h1POiujYrGxb25pD2xpHYZG7FBZyBA3aoEiU=;
+        b=OLhSs9paRV1N7GfdzkeMUKnw6D7oJbJx4mfacmRkzcKj2DDUfczONCgHmyTSOTQkKm
+         pRKJ1T59dpYohd47hpJj6RkW/frZjjNn5RKL/jWADnkt4t4UBtDM0JJZHJN8uL74+NTP
+         l4FFHIi//1Gt3qOIx6Dcb5dLjm2xvxWf0MI/nTIX978Pn2cdvtk0+YO1phfy+Z22yIPW
+         rNn/KhKYMYYzRJb/pk+WI23KhoFDr+rRjo8g1n3GvyA8EwyhNr4ZL0YIpjqhJHkHeGS6
+         7MISB5wPnjaAH0PYvWOD4+RykUFz63C2c7NROXd/n21lgm5NJI5eSKsp+6AaT4rg9xZi
+         n+sg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=PPYv0iX/gZ679yNJSyL7o1U/g5Zvio970XEQGheyHuA=;
- b=dV15liK8TDHwUhKM+QGD1inkXX4SAUhDlorIrKRoMp+nmwh5dKR7uKYKyTrOpfyQM5
- XLEjFh7cvr2Bwcwb8PFXoeh9G57X0BVtoseFC2tO+mI/PpOHrfao6Gx1Y05vJoilCSdW
- wMpi3KBtn4zFU+2WRHXX9vo99797V/zRqpaBsjjwlJuS4mZlDaJIHPf3ZD55jUtORYrX
- wrweeJCIngtF9qbSz+1tstdvIVQ6acBK2xiPg6orDqaUfY+ZUfuOdmFURsrDiuHUkNbf
- HK3fHSXwgsJ0EFrzP8KbSqzKGpNDOJTvVWQwlbw8KXnISSrBwFfgyzN6Qfu1F4LxRUr3
- yw7A==
-X-Gm-Message-State: APjAAAWS9adbJ/1whD16u+wqCdRppHo1DaBw7y9paTnCc/p6JVtWOq61
- KlD6N5FBEDEN7c5oGApYyO6QnB3s/xVfQUwxOg9QJw==
-X-Received: by 2002:a9d:5f1a:: with SMTP id f26mr23366748oti.91.1565445710144; 
- Sat, 10 Aug 2019 07:01:50 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=fDnsth2h1POiujYrGxb25pD2xpHYZG7FBZyBA3aoEiU=;
+        b=QZJxgu8m7+MZX1lDwEaK5AJaYItv/I8PK0hMQmjOK8We5YfwnYc60MVQsxvVxXyY+T
+         mA7A1Sef8lfVJQwPC/yQqPigXCdW1L/2gxnFkKk0/TzbZWuKd3XzhO8Q4V0g0Q4E1XQU
+         fSVZN555qUaoeOKHCzpG169n6EmsZTAuHuyeRtiiIEM/93aqMYnpGFsPzqYs2GxL4OJe
+         KWkGMxloX7bkFuNaUC1CwoSFqHaDqFNcWR9tpStu6eVrUPje4paYHS1TeayHUSkRDhM8
+         RTZESMeUeb9tkgk1rN/O33ZxScggmJDkvLhQGIbbdwcZrx6Hw31k3IEE7VJxZA1oaOSH
+         +MfA==
+X-Gm-Message-State: APjAAAWQj4vr/23bg/DQxvGAdPf0Lqel3qxh6NWI3tcTfHHS/Vt258TL
+	0LEykd1KfoXznrX8GOxcnma8I5mTVt8ID7aSb+qJjg==
+X-Google-Smtp-Source: APXvYqwnLqTUdhD/zCPsL2ZpID0cRT+wS+tqbiMaTYT3Gx0DF6ryPJ/sgwluqhLH+yCAZT0SRQ3AbXK3E5euCyshAXw=
+X-Received: by 2002:a17:906:838a:: with SMTP id p10mr22692985ejx.237.1565449358384;
+ Sat, 10 Aug 2019 08:02:38 -0700 (PDT)
 MIME-Version: 1.0
 References: <CAGbAg_ANKR9zyAp3+pNRo6eVydQPaWrny62xk5NWr0DOD-7Jxg@mail.gmail.com>
-In-Reply-To: <CAGbAg_ANKR9zyAp3+pNRo6eVydQPaWrny62xk5NWr0DOD-7Jxg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 10 Aug 2019 15:01:38 +0100
-Message-ID: <CAFEAcA8jh7zxb02Yv-R4h-x99bsGjAg9zQMNgiSc=SQcthnyXw@mail.gmail.com>
-To: Esteban Bosse <estebanbosse@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::330
+ <87imr5uydx.fsf@linaro.org>
+In-Reply-To: <87imr5uydx.fsf@linaro.org>
+From: Esteban Bosse <estebanbosse@gmail.com>
+Date: Sun, 11 Aug 2019 00:02:31 +0900
+Message-ID: <CAGbAg_A5sWjJrOPniuUycY5cM+35D5qijCDNkhj90weWNyfKxQ@mail.gmail.com>
 Subject: Re: [Qemu-arm] Beagle Board support
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KE8Jv3lSvgZ6
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000eba260058fc49445"
+X-TUID: s8OE4LInt95j
 
-On Sat, 10 Aug 2019 at 04:39, Esteban Bosse <estebanbosse@gmail.com> wrote:
-> I am new in this world, but I want to port the old beagle support for qemu-linaro to mainstream.
+--000000000000eba260058fc49445
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-That would certainly be nice. The major issue is that the
-patchset in that tree is (a) often in an older style
-of API that would need to be updated to use the current
-recommended-practice APIs to go upstream, and (b) in
-some places still has multiple changes tangled together
-that would need to be disentangled to form a clean
-reviewable patchset.
+El s=C3=A1b., 10 ago. 2019 19:07, Alex Benn=C3=A9e <alex.bennee@linaro.org>=
+ escribi=C3=B3:
 
-I'm happy to provide advice and code review if you're
-interested in doing this work and helping to maintain
-it in the upstream tree.
+>
+> Esteban Bosse <estebanbosse@gmail.com> writes:
+>
+> > Hi,
+> >
+> > I am new in this world, but I want to port the old beagle support for
+> > qemu-linaro to mainstream.
+>
+> I think the main problem is the chip is no longer supported by TI and I
+> guess less likely to be supported in upstream OSes in the future.
+>
+:/
 
-thanks
--- PMM
+>
+> > Someone is actually working on it or is interested?
+>
+> Not that I'm aware of. If you want to do the port and are willing to be
+> a maintainer of it going forward then I guess it would be doable. Is
+> there any particular reason you want it in upstream rather than just
+> using the old qemu-linaro branch for your use case?
+>
+There is no big reason, I just want to learn and I believe that is a good
+project  to start beacouse it "works" (with the old api) and I can use it
+as base.
+
+>
+> --
+> Alex Benn=C3=A9e
+>
+>
+
+--000000000000eba260058fc49445
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">El s=C3=A1b., 10 ago. 2019 19:07, Alex Benn=C3=A9e &lt=
+;<a href=3D"mailto:alex.bennee@linaro.org">alex.bennee@linaro.org</a>&gt; e=
+scribi=C3=B3:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 =
+0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><br>
+Esteban Bosse &lt;<a href=3D"mailto:estebanbosse@gmail.com" target=3D"_blan=
+k" rel=3D"noreferrer">estebanbosse@gmail.com</a>&gt; writes:<br>
+<br>
+&gt; Hi,<br>
+&gt;<br>
+&gt; I am new in this world, but I want to port the old beagle support for<=
+br>
+&gt; qemu-linaro to mainstream.<br>
+<br>
+I think the main problem is the chip is no longer supported by TI and I<br>
+guess less likely to be supported in upstream OSes in the future.<br></bloc=
+kquote></div></div><div dir=3D"auto">:/</div><div dir=3D"auto"><div class=
+=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8=
+ex;border-left:1px #ccc solid;padding-left:1ex">
+<br>
+&gt; Someone is actually working on it or is interested?<br>
+<br>
+Not that I&#39;m aware of. If you want to do the port and are willing to be=
+<br>
+a maintainer of it going forward then I guess it would be doable. Is<br>
+there any particular reason you want it in upstream rather than just<br>
+using the old qemu-linaro branch for your use case?<br></blockquote></div><=
+/div><div dir=3D"auto">There is no big reason, I just want to learn and I b=
+elieve that is a good project=C2=A0 to start beacouse it &quot;works&quot; =
+(with the old api) and I can use it as base.=C2=A0</div><div dir=3D"auto"><=
+div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin=
+:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+<br>
+--<br>
+Alex Benn=C3=A9e<br>
+<br>
+</blockquote></div></div></div>
+
+--000000000000eba260058fc49445--

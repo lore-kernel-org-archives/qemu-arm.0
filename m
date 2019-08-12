@@ -1,90 +1,86 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp587376wrs;
-        Mon, 12 Aug 2019 06:55:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyjPZHyWKgUeAksQkEw85aShfa+VjeCTfx8toOfTnN88npBVxW7doDiE0b0VOXGN9IQn87T
-X-Received: by 2002:a0c:d851:: with SMTP id i17mr30275199qvj.243.1565618123036;
-        Mon, 12 Aug 2019 06:55:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565618123; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp588226wrs;
+        Mon, 12 Aug 2019 06:56:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzuPsVG7oUDQtPuAw4C+eeuywj1sXdxuljnWceFy19W+0ec65C2rkqMNvjiaYIb7B6jWPbK
+X-Received: by 2002:aa7:d30b:: with SMTP id p11mr37592591edq.23.1565618178040;
+        Mon, 12 Aug 2019 06:56:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565618178; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q4UPhW6Gp/AFidM8pL5g8Qog6QvP1X8L8xfJnQlj2Yedgsl479R9VjbSY5j1dmxvcf
-         HFnKHkBcOyEI8RnsuoYmg1jmXBVqgeuKW2ZBIX3G7hHRrqeKSpKGWB+oZwVD24n3J3i1
-         Ioi2rTguPBGnN27Z0KSrhTQITURoSF8iFyLxhSqgdwNyNT4DR9pfebNKUkpkZEVyrVxg
-         6NPvwukebwuBa+TB9bjZjewiOPNbBRVBZJ6Wyqdo13oTOJTBzTz9hCLUqlhuuW5e8Lj7
-         f84HwTRg4y6Fu2q+tc5P0SAMn8DBJEk5uWiq3aXqCGlzh7wkKXzPNezWqc3DqlX9uuGr
-         6slQ==
+        b=zj2mSdeD3dxL5ZdfShh9yy+xj2KKsFptzwEIMjc9rgg8yX11sOwuEjPbPHCUNHHc3w
+         Zm+k2Nwdpc4qQ9cuQwBcRL4Pd2UwQGDU5K8+hAZe8ZAsFzZAGUkY9jVfCzPFoPi8hw63
+         YShsXJiTSMh27yFempl0BYORBCR1bhzQn+yLPafVHJjGYGD3zzE6YY4qo44ZK9v2ztIJ
+         GAayCCtxieIim0qSrRuH/dzS12oh6ZgA6juX9YuyZPenxf77ro2oDZc7ZnItCpwsPIki
+         Je2WtwYSDt0hwbivu5gUuQ9v/kWh+WGPxi2yQhzq1Bmefs0QSD7gHU2IIFmsMDVkW3vh
+         Jd9g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date
          :dkim-signature;
-        bh=IVxEPIYAxWE8MpGQEy/KAZsOrYSXwBmIaNM01FAtPVk=;
-        b=LqGrey99czcNl7309VPlszC21JjpXFqDLwSKVfu7WQwtDNjcBfroiZUmA9LyYihpoz
-         g8GaYlYRmjfeVGhdD89673l/z9A1bwW5Oa3BzUK94aeAX1ijMYXcdJKGx9YHhYnwFZ5X
-         SKrnh6vUjay3jdqmA/Ye9YknLHQJdlEPf2Odfs9xWRAGuRyk8hseLTQDxiw9/VIiFj0b
-         H5v2T6Ypdb76mpsWB9JZPBO1rmpV9DHjCt81ZhbZiA1ISkBwJnb6eMLZz6pKIkZAGIaK
-         BMnvT37qRjw4ntQsll4LbixaT02VWr78fTzn9iTFs0By2SSbaQJAu+EFxZB2pAJnQGNQ
-         JXcw==
+        bh=S7pg5G5dudc/z9BM8u6qrmf34WJenPrugxTzqzZrOns=;
+        b=YqilAqsMXmeRCE2vlWQfgQI30S4IROAG50Ns7o8vLCK9HuyaVZafXdfpnX9rcQzb1Z
+         3RKWxn69TSAkXrZb6VS5qiXZEtmb0NwCNVLYTYDcUfS85/YKKmHzWHkydDyzvNP/2L/K
+         +fPUyIjGJZ3J4yF5dMpV35tsD1COtgoRkHlYU6S/Fa5UrOjk+xt6kwnKmwYr6C3S5nDd
+         8rOpiUNTMFdCyPjk+OpjmeMhmEI8xvJboYFDBn7Qy9EinYseyNqqFY5hy4VFiy0sToIM
+         cSpaRCL4Me2LUJJTH3n6t8Kp0ZzIdKtymJtAuZxvdangRQFM7m+9s+UkhvmQ78JXWWH6
+         K2wQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=mnb59zpw;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=I9ja2WfO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d45si22581406qtc.29.2019.08.12.06.55.22
+        by mx.google.com with ESMTPS id fk23si1396566ejb.138.2019.08.12.06.56.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Aug 2019 06:55:23 -0700 (PDT)
+        Mon, 12 Aug 2019 06:56:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=mnb59zpw;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=I9ja2WfO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45732 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45748 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hxAnC-0007Pf-I4
-	for alex.bennee@linaro.org; Mon, 12 Aug 2019 09:55:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57784)
+	id 1hxAo5-0001SQ-2g
+	for alex.bennee@linaro.org; Mon, 12 Aug 2019 09:56:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57700)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <dgibson@ozlabs.org>) id 1hxAmN-0006OH-Aa
- for qemu-arm@nongnu.org; Mon, 12 Aug 2019 09:54:32 -0400
+ (envelope-from <dgibson@ozlabs.org>) id 1hxAmJ-0006MO-Og
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2019 09:54:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1hxAmL-0008Sd-QN
- for qemu-arm@nongnu.org; Mon, 12 Aug 2019 09:54:31 -0400
-Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:53605 helo=ozlabs.org)
+ (envelope-from <dgibson@ozlabs.org>) id 1hxAmI-0008QC-Dp
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2019 09:54:27 -0400
+Received: from bilbo.ozlabs.org ([203.11.71.1]:47597 helo=ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1hxAmL-0008N4-40; Mon, 12 Aug 2019 09:54:29 -0400
+ id 1hxAmH-0008N3-8f; Mon, 12 Aug 2019 09:54:26 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
- id 466cld0gM0z9sNC; Mon, 12 Aug 2019 23:54:20 +1000 (AEST)
+ id 466cld4J7Lz9sNp; Mon, 12 Aug 2019 23:54:21 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=gibson.dropbear.id.au; s=201602; t=1565618061;
- bh=zVrGQfrCusMEUgGiMyIBZus2dtg+PPa8r7mC6nWLRFg=;
+ bh=qytLL0vxyRiLP/+oym4HdH86cFiEx779GD6u63ggFbA=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=mnb59zpwLqSWGH4HHAoH6rR53pgWwpNrrJcjB2K1aju3XMzQvfHYw+QCpMujzEMjF
- n1ZD0zRrUtmQvSbgLI6ZdTCRTcXPTj4Iju5vKC1d54UyLN3tK3Q/TjtInwRZnH0M0F
- AWcaoXpyy1GVGAfeEuCmHJuERlxf172yb/rR4NJA=
-Date: Mon, 12 Aug 2019 20:27:24 +1000
+ b=I9ja2WfO6cGDy61oVkeBXYf1udNV8UJTZPZKKBNXfgM94x+VQ+zqq+HLHwRioEahB
+ u/JRiShyztzjGGfPkCNbkJnZqg4lXY2h+o94hVovIoSWq1yF5yZ8+3RM3t0zpseg5A
+ arP5aXq6qFkOE0ztRLLU1Q+0+bwvKmG25UYb9Gyo=
+Date: Mon, 12 Aug 2019 20:29:35 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <20190812102724.GH3947@umbus.fritz.box>
+Message-ID: <20190812102935.GJ3947@umbus.fritz.box>
 References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-2-damien.hedde@greensocs.com>
- <20190730154209.2049f10a.cohuck@redhat.com>
- <CAFEAcA-rwBiXkDEDuT-=KQVJ2A2ob16=P0obbZBPUfZeYXy+dQ@mail.gmail.com>
- <20190730155547.7b201f5e.cohuck@redhat.com>
- <CAFEAcA_BU3DECLVv2QD_RshR0OL3=GqGwsm0YAmEAE6_SpW=HA@mail.gmail.com>
- <34a216b0-0067-8627-599c-6a67622c4bd2@greensocs.com>
- <20190731054612.GA2032@umbus.fritz.box>
- <1ed75cda-805e-af0b-77f5-62b9bc489e95@greensocs.com>
+ <20190729145654.14644-9-damien.hedde@greensocs.com>
+ <20190731061108.GF2032@umbus.fritz.box>
+ <CAFEAcA-dSBpAVfjn7VnCRgnZabBP226ZVuSJYW1bwzEr5mNktw@mail.gmail.com>
+ <20190809055132.GT5465@umbus.fritz.box>
+ <5ba72330-dbbc-fdae-d003-9f7d08ba4600@greensocs.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="BXr400anF0jyguTS"
+ protocol="application/pgp-signature"; boundary="GlnCQLZWzqLRJED8"
 Content-Disposition: inline
-In-Reply-To: <1ed75cda-805e-af0b-77f5-62b9bc489e95@greensocs.com>
+In-Reply-To: <5ba72330-dbbc-fdae-d003-9f7d08ba4600@greensocs.com>
 User-Agent: Mutt/1.12.1 (2019-06-15)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 01/33] Create Resettable QOM
- interface
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 203.11.71.1
+Subject: Re: [Qemu-arm] [PATCH v3 08/33] Add function to control reset with
+ gpio inputs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -106,6 +102,7 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Qemu-block <qemu-block@nongnu.org>, David Hildenbrand <david@redhat.com>,
  Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
  Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>, qemu-s390x <qemu-s390x@nongnu.org>,
@@ -117,110 +114,63 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e96osBFGrtb1
+X-TUID: d2iRLSKMHBbf
 
 
---BXr400anF0jyguTS
+--GlnCQLZWzqLRJED8
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Aug 01, 2019 at 11:35:20AM +0200, Damien Hedde wrote:
+On Fri, Aug 09, 2019 at 10:45:43AM +0200, Damien Hedde wrote:
 >=20
 >=20
-> On 7/31/19 7:46 AM, David Gibson wrote:
-> > On Tue, Jul 30, 2019 at 04:08:59PM +0200, Damien Hedde wrote:
-> >>
-> >> On 7/30/19 3:59 PM, Peter Maydell wrote:
-> >>> On Tue, 30 Jul 2019 at 14:56, Cornelia Huck <cohuck@redhat.com> wrote:
-> >>>>
-> >>>> On Tue, 30 Jul 2019 14:44:21 +0100
-> >>>> Peter Maydell <peter.maydell@linaro.org> wrote:
-> >>>>
-> >>>>> On Tue, 30 Jul 2019 at 14:42, Cornelia Huck <cohuck@redhat.com> wro=
-te:
-> >>>>>> I'm having a hard time figuring out what a 'cold' or a 'warm' rese=
-t is
-> >>>>>> supposed to be... can you add a definition/guideline somewhere?
-> >>>>>
-> >>>>> Generally "cold" reset is "power on" and "warm" is "we were already
-> >>>>> powered-on, but somebody flipped a reset line somewhere".
-> >>>>
-> >>>> Ok, that makes sense... my main concern is to distinguish that in a
-> >>>> generic way, as it is a generic interface. What about adding somethi=
-ng
-> >>>> like:
-> >>>>
-> >>>> "A 'cold' reset means that the object to be reset is initially reset=
-; a 'warm'
-> >>>> reset means that the object to be reset has already been initialized=
-=2E"
-> >>>>
-> >>>> Or is that again too generic?
+> On 8/9/19 7:51 AM, David Gibson wrote:
+> > On Wed, Aug 07, 2019 at 11:37:51AM +0100, Peter Maydell wrote:
+> >> On Wed, 31 Jul 2019 at 07:33, David Gibson <david@gibson.dropbear.id.a=
+u> wrote:
 > >>>
-> >>> I think it doesn't quite capture the idea -- an object can have alrea=
-dy
-> >>> been reset and then get a 'cold' reset: this is like having a powered=
--on
-> >>> machine and then power-cycling it.
+> >>> On Mon, Jul 29, 2019 at 04:56:29PM +0200, Damien Hedde wrote:
+> >>>> It adds the possibility to add 2 gpios to control the warm and cold =
+reset.
+> >>>> With theses ios, the reset can be maintained during some time.
+> >>>> Each io is associated with a state to detect level changes.
+> >>>>
+> >>>> Vmstate subsections are also added to the existsing device_reset
+> >>>> subsection.
 > >>>
-> >>> The 'warm' reset is the vaguer one, because the specific behaviour
-> >>> is somewhat device-dependent (many devices might not have any
-> >>> difference from 'cold' reset, for those that do the exact detail
-> >>> of what doesn't get reset on warm-reset will vary). But every
-> >>> device should have some kind of "as if you power-cycled it" (or
-> >>> for QEMU, "go back to the same state as if you just started QEMU on t=
-he
-> >>> command line"). Our current "reset" method is really cold-reset.
-> >>>
+> >>> This doesn't seem like a thing that should be present on every single
+> >>> DeviceState.
 > >>
-> >> Exactly. In the following patches, I've tried to replace existing reset
-> >> calls by cold or warm reset depending on whether:
-> >> + it is called through the main system reset -> cold
-> >> + it is called during normal life-time       -> warm
-> >>
-> >> But I definitely can add some docs/comments to better explain that.
+> >> It's a facility that's going to be useful to multiple different
+> >> subclasses of DeviceState, so it seems to me cleaner to
+> >> have base class support for the common feature rather than
+> >> to reimplement it entirely from scratch in every subclass
+> >> that wants it.
 > >=20
-> > Hrm, that helps, but it still seems pretty vague to me.
-> >=20
-> > It's not really my call, but building the concept of warm versus cold
-> > resets into such a generic interface seems pretty dubios to me.  While
-> > it's moderately common for things to have a notion of warm versus cold
-> > reset it's certainly not universal.  There are many devices where
-> > there's no meaningful difference between the two.  There are some
-> > devices where there are > 2 different types of reset suitable for
-> > various different situations.
-> >=20
-> > Is there any way this could work with it usually just presenting the
-> > cold reset (which is the closest to a universal concept), and any warm
-> > or additional resets are handled buy a different instance of the
-> > Resettable interface?
+> > Hm, I suppose so.  Would it really have to be from scratch, though?
+> > Couldn't some suitable helper functions make adding such GPIOs to a
+> > device pretty straightforward?
 > >=20
 >=20
-> In my current implementation, cold/warm is only a question of setting a
-> flag before calling the reset methods. I rely and the reset methods to
-> check that flag if necessary. The feature can be added/removed without
-> pain (if we stick with device_reset to do a cold one). So if it's
-> better, I can put it aside for now.
+> This patch does that. A device does have to use the helper to add the
+> gpio. Either qdev_init_warm_reset_gpio(...) or
+> qdev_init_cold_reset_gpio(...) , like any another gpio.
+
+Ah, sorry, I misunderstood.
+
+That seems ok then.
+
 >=20
-> IMO handling warm reset with another interface is probably not a good
-> idea because it will need another load of methods.
-
-I was thinking of a different instance of the same interface, not a
-new interface.  But on consideration that probably means dummy objects
-so that's also ugly.
-
-
-Here's another way to look at things though: I can see why a common
-interface for cold resets is useful; we use it during system resets
-and bus resets and so forth.  But AIUI, in order to do a warm reset
-whatever is initiating it is going to need to know what a warm reset
-means for this device - in which case it doesn't really need a uniform
-interface for it.
-
-So, would we be better off with helper functions to make implementing
-a multi-phase reset easy for devices that do have one or more notions
-of a warm reset.
+> The mechanics to control the reset with gpio change is done in the base
+> class and there is some state pre-allocated (and associated vmstate
+> description) to it.
+>=20
+> If that's a problem I can only provide helpers and let devices handle
+> state allocation and vmstate addition.
+>=20
+> Damien
+>=20
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -228,24 +178,24 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---BXr400anF0jyguTS
+--GlnCQLZWzqLRJED8
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl1RPwUACgkQbDjKyiDZ
-s5IgqA//UNXUdn3882RBsc4XyGEVSeOa0Jpu3ByS7yP8vKpwnzAL8uDhGTzZ8b+n
-MdZFdH5DKx5BnEh6g6a6SSvYXF7Yx43MfR4SyLJDO2hC87Xg0yAdgYFQ5fWCltzH
-iEF1RDZDqY3RPazdJrnPifTcEnCAuPRcob1hFsZX9w2YJXvmJDzI/P+NLNg7aymT
-CPGhsRSJTMQwL+6cabDnYsSJwxYNtyPsocsU+Sj4VvB9zYNGSDWaB8JDKE7RtAg9
-87TE8HIymCbTTDM3I0hl6HiDQcoi4U2Q3ItUHjgiZ5SoYX32uFpE85k9PDuYnmVU
-Zxf/KwBT4twlgEWbMgWvlqx0akTzouUbwNRAHXtINtkdI00tI9ttsEfJDrJrR0v/
-xcaE2QJEs0EhKRUCLrezDr57wfRUbRgsYHfOOnJZUzCEBJuhwlzZzSrm6VuffgBo
-z0gJqrW5rrpemzZJr2eP5StYOCpwsdTn5gw9FbTMrntzdXbaw2ySDDuDm7sHdZjU
-j2qxtBc7VIYs0oqmYc119Cy/OiXJDiHwHxizN1PlU6kwpKHfknW529N7h0G/KWvz
-JEtbvMcJs69H3RKWjMNkhIxd4v8wX2tYAJNKEXNb6AczTJ0Id7mRQJC7OzopJV8r
-Ul+BtxGVo6usa7WWBuLXDkGfV0/hZlE3/m9c2Hr9TH9abS88qlg=
-=HdH0
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl1RP48ACgkQbDjKyiDZ
+s5I4uxAAuusYQL2ECKMDcmeQef6DRKKopUNpbEkJqNYlsxneveDDbkaH2VRVpVMe
+hja+wWm+pT1tAdPlMKJM6nUwyOpUvsCBI2FhTn90MST9bT31lhHeozOnoj6TMWnY
+OYtMyP9RPHS3ZvW3V1BeAj/xAOXmo9cTvd+WSD1KX639dTz1ZfiIUD1Q6qEC/P0g
+t9tO82dUV09nQyCcteb2jWfnHReVeoOwIL1Oc5mZApIhKQ+rUILZ0vAXuhW0BlKu
+27arS2IhGcCadra8nApvoo36KfwsfSziLQsYj0RjQxrN85bR1BsyyopResyK+FFX
+MkgoK3W/zc4DeXnbCocA6AAkOyocilgdPFwwJ6UYQRJMx9KIljqcdUdPL8DpTDke
+5aXKETbE0scojk4lCWgL02YgBzv+XFBk3SMPiZwfe1l8TMQQD+nIEpyyD3fBnm5m
+RGzE3sD5hBKIzodpjx12fo+RMQvs/HJAH5e9YEMShldGNi64FKw1BIWOK3wkwJY3
+BVfjlfh7VyXv1sPoigdZd/n+1lNDw+s5dNPg8F3BCfPIo4GpJ5Am8aSvGXvJ3Qnw
+q50CCfZe4gLIsFyAnzODPt9nyHwjmTYpVIrqx3g9MNZg3boBrrKqPejHsI5WfR6S
+n0yJfcSgXSpPw+BhLi4CJO6nsEOxs0hPe21r96d6S2bcPkM9VXE=
+=GVlJ
 -----END PGP SIGNATURE-----
 
---BXr400anF0jyguTS--
+--GlnCQLZWzqLRJED8--

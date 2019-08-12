@@ -1,154 +1,161 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp9387829wrv;
-        Fri, 9 Aug 2019 09:09:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyEvccRKBfOEgwUEFES9VQJWTcnaJQTAzsL5zKmc/606627FwLS3fMSXZ0241cH0hjEBqKE
-X-Received: by 2002:ae9:f707:: with SMTP id s7mr2047460qkg.0.1565366973042;
-        Fri, 09 Aug 2019 09:09:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565366973; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp482796wrs;
+        Mon, 12 Aug 2019 05:14:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw8eqY1YiYksyFPlpaRUQJ1AP7gi5ZhP6eq8H78Bn5LwLvWXgjWJvZ+npLROByas8oUSfn5
+X-Received: by 2002:a37:3d7:: with SMTP id 206mr29720018qkd.252.1565612064375;
+        Mon, 12 Aug 2019 05:14:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565612064; cv=none;
         d=google.com; s=arc-20160816;
-        b=zLx032equb+TRgIo6a94L9eMZBv3esT2IzlWlxr/miozJ8gu2jREghVuzO/cHrwSQH
-         RMQBuxt4QOtELDzdmRqFdCFx98gWa/MFBuL7hM+ylsRKwCQf7ZI7J/DW9KoblcNmqUSe
-         gwmA+3vVBCPbVAnn6Dz+eQdP2e37PZkInLb0JN07TKHgFgN7tN05BSpd1gxgotckh1P+
-         ICTU4F3yiDl4uOotdpSNxQvZnwh6nKRoFLRNVfHykcJQPinukFQl9piyhHT+afawQOO6
-         UDjdngp7WMmSIE5KxZKyIj0u6rf6l+tAzum8qUNt72R5khgZfhSv4raM24/Tuhfr2Tw8
-         ubwA==
+        b=UG83uIC8gR1V4e8K6zdRWR03odCXGMcscHrhvxORKaQAICHTIwPH/wi+spty58zCT8
+         8Be3Y95AFy4uCZ5BPR3uKmMR87zQhnMNQgVpBGRMEC1CV7FRGn25Rdm4TMvg/uAerAZn
+         gfy1RfgrYu0cEK+tBjBEfxg83AEQkWoojaR9soArBCKQ5ldOm/3XVyxVewQ1ERDikt1P
+         cll/ur/oWyCW8notIfhnOfUQsYNtw3ztQu3V+dA6Xaa9I0omKb8n+929RBHpC2CRqGpA
+         GmfKFbaCTRy5rz0GwINtliC+1tTq3ybOJxWU7uDj4zBAjCwhMXmeQ90AYrjiJI1LTmzj
+         dwsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=RTMkiEB2kfdQYO/Qqd+nCus9w/bWOvwjRm7eP19GkAk=;
-        b=D05fvrNF6poN1kSiacb5h1LrDUB6XZaFE8MokCxpdurZzW+/g2aZ8K41Y4AwhHod2/
-         g8C/GzAZvASaVthu/0Vd3ToFQSPeyBauwrRDGyGU0BYiWIk3DGD+VT7MEdlDc99lcZa0
-         Fqi2SqbLAZUqI0I7lomqmlYjazBxUUFlMWhJJc81k8tiQX5Bvu+GhNkNtIVDY0pVEaQd
-         YVroqpuZF7nWUn+3CqBcYPvFn4gVX0qqwVcVxbyp705gCSt5/61Tv8yU2Pk2RDB3FuG6
-         3AkJhueLVsdn7u+aTTNgdg/pA9ttZaYUPBuIMWUk9j4DfrmzhPwSczdBljsfvM2i491/
-         w/Ww==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=IBLr+u7Omhe4cYbWFp9NEZ+Iwp7fVpbeVHlbGLeo4+Y=;
+        b=0Akot4sXTo4b7L4fWE0K8wfes+Vw1xwAOLaLpa3oieeJv02Bdv2SiGaDejD/sj7CGb
+         dDOKHMhmXEz0HKxyQWVa+bz1hG+PJNg9RO2RIId1tsWSReMqIp54aF8R0ZvUxkaCHgMu
+         aQ7UhU6tMC2SwjcJfXUR97HjUe+K6Mtuw58Irpyig7Moj5vzp3BqwTJcY10C0LrtcstM
+         Y9TNpWA7rxFD19lp4x2RlS7XY7FekyYVHAuAPgvYYZuKq/fPC3D8JM6NxtL++nVlLp9W
+         aflmk79lomeSlXyl9SkCADEya2Wc62NpgwjLcHsDtBcq9Qrv+CBwetUFHZ4hRx2TgqFo
+         VQhA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id t54si56726929qth.352.2019.08.09.09.09.32
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 09 Aug 2019 09:09:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m46si65517483qtb.87.2019.08.12.05.14.24
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 12 Aug 2019 05:14:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 322D5308421A;
-	Fri,  9 Aug 2019 16:09:32 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id E519760933;
-	Fri,  9 Aug 2019 16:09:22 +0000 (UTC)
-Date: Fri, 9 Aug 2019 18:09:20 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, armbru@redhat.com,
-	eric.auger@redhat.com, qemu-arm@nongnu.org, imammedo@redhat.com,
-	alex.bennee@linaro.org, Dave.Martin@arm.com
-Subject: Re: [Qemu-devel] [PATCH v3 03/15] target/arm/monitor: Introduce
- qmp_query_cpu_model_expansion
-Message-ID: <20190809160920.f4sz72irkuj4pqr7@kamzik.brq.redhat.com>
-References: <20190802122540.26385-1-drjones@redhat.com>
- <20190802122540.26385-4-drjones@redhat.com>
- <d0983bd5-c1a5-adf6-324d-2b199ca0e23c@linaro.org>
- <ec44ddad-c33c-918b-e94b-a534a2519a9e@linaro.org>
- <20190806122144.bb3klk7aaaqdhgwi@kamzik.brq.redhat.com>
- <39a4d205-d291-8962-2693-6bbcce89c332@linaro.org>
- <20190808085012.23aokly34zo4wxbk@kamzik.brq.redhat.com>
- <bb477706-e09a-c992-38f0-d3f8725bb4c5@linaro.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44998 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.86_2)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hx9DT-0000Lb-Sw
+	for alex.bennee@linaro.org; Mon, 12 Aug 2019 08:14:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40753)
+ by lists.gnu.org with esmtp (Exim 4.86_2)
+ (envelope-from <philmd@redhat.com>) id 1hx9DM-0000GD-07
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2019 08:14:16 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1hx9DL-0000zn-24
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2019 08:14:15 -0400
+Received: from mail-wm1-f68.google.com ([209.85.128.68]:50901)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hx9DK-0000zN-Sz
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2019 08:14:15 -0400
+Received: by mail-wm1-f68.google.com with SMTP id v15so11945812wml.0
+ for <qemu-arm@nongnu.org>; Mon, 12 Aug 2019 05:14:14 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=IBLr+u7Omhe4cYbWFp9NEZ+Iwp7fVpbeVHlbGLeo4+Y=;
+ b=NeStEl2Q56W/NGQmFmdt1eOh1tsm0XktqYDXDQiRsex7nqDmkeTR0gDca5G1sVw7Hx
+ qEiaLjUEzurI0D/GaydIa4qFSwb+l/BPNAU0Phcv2B/XcQ4PdyRGJq0leGYMZYgoje2q
+ Qj+7xRgXy0+H4nrPlgjxi364devxA4IyHeUsmogTjvFGFrhLsS6rjCh8jHmznQiz0azx
+ GPuHafwHW5BWlvrQGQN+G6R1WRKy6apaGwMo2RMQVtU2CJxJTYQEIqVG8xUR8rsol70p
+ zXPdR6rrUM2iK8zE0FKe4hVU96xvNhM78gNgOvwo/CbEAhFNt5WtGfMWJSDhokxX8jKw
+ Vfhg==
+X-Gm-Message-State: APjAAAXbkw/kpww6yNbQTxfus/cIXbE5lbN/3z/RWiacNGisV7K5jx4o
+ J5yqi6W4NibkSLhKVkELFxBt1g==
+X-Received: by 2002:a1c:2582:: with SMTP id
+ l124mr29082968wml.153.1565612053827; 
+ Mon, 12 Aug 2019 05:14:13 -0700 (PDT)
+Received: from [192.168.1.37] (225.red-83-53-161.dynamicip.rima-tde.net.
+ [83.53.161.225])
+ by smtp.gmail.com with ESMTPSA id j16sm60733178wrp.62.2019.08.12.05.14.12
+ (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+ Mon, 12 Aug 2019 05:14:12 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20190701123108.12493-1-philmd@redhat.com>
+ <20190701123108.12493-4-philmd@redhat.com>
+ <CAFEAcA_m3LiLQqL8y6rT=HGeoa7B5XAQH9Wuo=Hg-94PaV3Zsg@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <b2a83b98-3e20-4f62-d442-6ab6e26ab60b@redhat.com>
+Date: Mon, 12 Aug 2019 14:14:11 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <bb477706-e09a-c992-38f0-d3f8725bb4c5@linaro.org>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.40]); Fri, 09 Aug 2019 16:09:32 +0000 (UTC)
-X-TUID: OezvSVQuJRA2
+In-Reply-To: <CAFEAcA_m3LiLQqL8y6rT=HGeoa7B5XAQH9Wuo=Hg-94PaV3Zsg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.128.68
+Subject: Re: [Qemu-arm] [PATCH 3/6] hw/arm: Use sysbus_init_child_obj for
+ correct reference counting
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Jason Wang <jasowang@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ Antony Pavlov <antonynpavlov@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nvRjTqKIfLET
 
-On Thu, Aug 08, 2019 at 11:37:01AM -0700, Richard Henderson wrote:
-> On 8/8/19 1:50 AM, Andrew Jones wrote:
-> > I'm not sure. Of course I'd need to experiment with it to be sure, but
-> > I'm reluctant to go through that exercise, because I believe that a
-> > deferred validation will result in less specific errors messages. For
-> > example, how would the validator know in which order the sve<N> properties
-> > were provided? Which is necessary to complain that one length is not
-> > allowed when another has already been disabled, or vice versa.
+On 7/29/19 3:03 PM, Peter Maydell wrote:
+> On Mon, 1 Jul 2019 at 13:31, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
+>>
+>> As explained in commit aff39be0ed97:
+>>
+>>   Both functions, object_initialize() and object_property_add_child()
+>>   increase the reference counter of the new object, so one of the
+>>   references has to be dropped afterwards to get the reference
+>>   counting right. Otherwise the child object will not be properly
+>>   cleaned up when the parent gets destroyed.
+>>   Thus let's use now object_initialize_child() instead to get the
+>>   reference counting here right.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  hw/arm/exynos4_boards.c | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
+>> index ac0b0dc2a9..5dd53d2a23 100644
+>> --- a/hw/arm/exynos4_boards.c
+>> +++ b/hw/arm/exynos4_boards.c
+>> @@ -129,8 +129,8 @@ exynos4_boards_init_common(MachineState *machine,
+>>      exynos4_boards_init_ram(s, get_system_memory(),
+>>                              exynos4_board_ram_size[board_type]);
+>>
+>> -    object_initialize(&s->soc, sizeof(s->soc), TYPE_EXYNOS4210_SOC);
+>> -    qdev_set_parent_bus(DEVICE(&s->soc), sysbus_get_default());
+>> +    sysbus_init_child_obj(OBJECT(machine), "soc",
+>> +                          &s->soc, sizeof(s->soc), TYPE_EXYNOS4210_SOC);
+>>      object_property_set_bool(OBJECT(&s->soc), true, "realized",
+>>                               &error_fatal);
 > 
-> My point is that we would not *need* to know in which order the properties are
-> provided, and do not care.  Indeed, removing this ordering malarkey is a
-> feature not a bug.
-> 
-> The error message would simply state, e.g., that sve256 may not be disabled
-> while sve512 is enabled.  The error message does not need to reference the
-> order in which they appeared.
+> I suspect the code change here is correct but it doesn't seem
+> to match the commit message -- the old code is not calling
+> object_property_add_child() at all, and the new code does not
+> call object_initialize_child()...
 
-OK, I agree it doesn't make much difference to the user whether the error
-hint is the generic "sve256 required with sve512" verse
-
- sve256=off,sve512=on  "cannot enable sve512 with sve256 disabled"
-
-or
-
- sve512=on,sve256=off  "cannot disable sve256 with sve512 enabled"
-
-> 
-> > Also with deferred validation I think I'd need more vq states, at least
-> > for when KVM is enabled. For example, if 384-bit vector lengths are not
-> > supported on the KVM host, but the user does sve384=on, and all we do
-> > is record that, then we've lost the KVM unsupported information and won't
-> > find out until we attempt to enable it later at kvm vcpu init time. We'd
-> > need a kvm-unsupported-user-enabled state to track that, which also means
-> > we're not blindly recording user input in cpu_arm_set_sve_vq() anymore,
-> > but are instead applying logic to decide which state we transition to.
-> 
-> Or perhaps, less vq states.  You do not need to compute kvm states early.  You
-> can wait to collect those until validation time and keep them in their own
-> local bitmap.
-> 
-> bool validate_sve_properties(...)
-> {
->     // Populate uninitialized bits in sve_vq_map from sve_max_vq.
->     // Populate uninitialized bits in sve_vq_map from on bits in sve_vq_map.
-
-And disable uninitialized bits in sve_vq_map from OFF bits: auto-disabling
-
-Also we can't do these populate uninitialized bits from on/off steps when
-KVM is enabled without first getting the kvm-supported map.
-
->     // All remaining uninitialized bits are set to off.
->     // Reset sve_max_vq to the maximum bit set in sve_vq_map, plus 1.
-
-I wouldn't always do this. If the user explicitly sets a maximum with
-sve-max-vq, then we should generate errors when other inputs would change
-that maximum. I would only assert they're the same when both input types
-are provided. Of course we do the above when only map input is provided
-though.
-
->     // Diagnose off bits in sve_vq_map from on bits in sve_vq_map.
-> 
->     if (kvm_enabled()) {
->         DECLARE_BITMAP(test, ARM_MAX_VQ);
->         kvm_arm_sve_get_vls(CPU(cpu), test);
->         if (!bitmap_equal(test, s->sve_vq_map, s->sve_max_vq))  {
->             bitmap_xor(test, test, s->sve_vq_map, s->sve_max_vq);
->             // Diagnose the differences in TEST:
->             // test[i] & s->sve_vq_map[i] -> i is unsupported by kvm
->             // test[i] & !s->sve_vq_map[i] -> i is required by kvm
->         }
->     }
-> }
-> 
-> If you prefer not to experiment with this, then I will.
->
-
-Ah, the ol' I'll do it if you don't motivator... I do see some
-potential for a reduction in complexity with this approach, but
-I'm not sure we'll save many lines of code. I could do a quick
-hack on top of this series, just to see how well the validator
-function looks and works, but I can't get to it until midweek
-next week. I won't complain if you beat me to it :-)
-
-Thanks,
-drew
+OK, will improve, thanks!

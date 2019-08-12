@@ -1,98 +1,98 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp10556045wrv;
-        Sat, 10 Aug 2019 08:24:12 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxsUunc8tvhw9+VD47f1Iky2CjwiMr8aL4Rt9c78aOROergebaW6Fh9TOiHNIMvPKuvh+JN
-X-Received: by 2002:a17:906:b211:: with SMTP id p17mr23247143ejz.11.1565450652361;
-        Sat, 10 Aug 2019 08:24:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565450652; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp662803wrs;
+        Mon, 12 Aug 2019 08:03:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyNjlYtYkuZyvkd2HhkeESJpUH0HdyvjsdYrwlyT+d+rKBXvasrv6o3olyhVOhoDqDGiaWb
+X-Received: by 2002:ac8:1a36:: with SMTP id v51mr30298688qtj.201.1565622197711;
+        Mon, 12 Aug 2019 08:03:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565622197; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZA+ITJl+zuHBhPovtL1hBwDe5kcsGYR/Gw+yb/B43OubDcE9QGAk2S9gDFETUtACJr
-         mQnEvIKu5TRfRM+908zY3XUwdI1sVaQPjgesXyRwJVSBIQ8oXODj4ThMcA3mL4O+ADNu
-         xlKweXmHS8OHdQcm/Wu0FddzbnsyBxeRSw8sTpD2krQVk/pevZWpeO1j0BaQzU8a03wb
-         j5Y8RaAjVAtncoCZFEwsJmOTY/rwVdiN/eY2vc9GPjMlPOXqEDg+mVln1L9kN7B6UM4Q
-         fc7F1JWbKk8WoTJI7xoVSBHEG0a/aRsOLJA9bkZyNXt/EsJi4yRkgkCGghdlu5433dTL
-         tyFw==
+        b=xBA7eJdRtW9pZ+evS5JEPum8Um4zyVs0GXPHpDFJmwMuv4KC2dvLaj4qAM1pDqBc1N
+         2NjJWYeZGzVDh6vGRWvbZtqglvMkF3Fv/26mNIx/YMjANfdyMIdHxaCAWIyB50pvYTN9
+         4/1Y1B72Ruf7oBaRc7dZ/+l2ASSusZAXkR+b7pCWet5npV2+KKPJQp4zb5U1nGbbdcWM
+         EjYHmo1d2XIz20Fa5HqE4ECjPjHZD2tn3PQwdLTMfNiMXhwBmDKFXRHrr8uPdypf5MAG
+         qRdSLnWaJlp6jXNmp+Ftkj90WXpnZ7PZv2104A5Oq81/U82kw9+LjV14J584JHznUGW1
+         fg/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=pUvlgD/rAn2NA2f9BZ++ceLelMbRk4xjT6RD5kRiGUc=;
-        b=dFnh4PKuig4AwJPy7Bi3z5x+o6aTe0wBLyvr4szmMD71SucS+1O7vFv55Hf12ZBaH2
-         4tpNx74ldxNxJnK0JvPLo06FY9tHpuO5lY2Xdu5cijIXrg/rQ49pQxccQBi0+6sAKq1r
-         wmbTEwmsainbaYH8jU8w22pyzmaC64Mq5u4zpQmioBd/MybIchPrRrBvAd4er7SVs2W2
-         BtE/rziIUchaPPKEF3xkXWES58uvHMrVuAUwJZSBcxfY0J9xzBq438Wome+ChrMXC4aP
-         mOvESY670VqGJ5a3NJ+Ii8v2wMNOWZAwH5tMrLD+1ToB9q15KhyduRPT+C/S176ymHsA
-         POqQ==
+        bh=tC6Srj74zjvGWIhfZf4qft75KEFoF39M0w32NpsseYk=;
+        b=w1RNWtYCWYNSsbqMyApzr+motHPiP7L5yEjuuTkVagRTEvyGu6dP+DddtgTf/SlacC
+         5W1tjyzgcDrWhuknc3x9XkEUm5ZfDnAB6whMzzXsNBcT8x+PDfZ6Pfd8qBb/UrPtiEmk
+         pwP+Ns/eNYme/oHbUVw4csedgp5zioAkXqBgSDdhJdG2iZRhDeOY+ETVQu5/W0FHRM9M
+         djg7jmGy09hbjcMDBptpH/8vf0sBFCjEFITYf+zYrJvWmi883w57ldLMVv0vQGTPJ2ge
+         MJgZ456eRlYiQGYcVtICmWpb3Fo0G+5jDNBijaM3sKv9gckBfbpgBYTIX/aVIUnC7Hva
+         XK7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Z9XzFR8q;
+       dkim=fail header.i=@linaro.org header.s=google header.b=IbtJ8Ha+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s8si4521057ejq.204.2019.08.10.08.24.12
+        by mx.google.com with ESMTPS id q14si4525461qvf.154.2019.08.12.08.03.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 10 Aug 2019 08:24:12 -0700 (PDT)
+        Mon, 12 Aug 2019 08:03:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Z9XzFR8q;
+       dkim=fail header.i=@linaro.org header.s=google header.b=IbtJ8Ha+;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37060 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:46266 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hwTE3-0002hU-Fq
-	for alex.bennee@linaro.org; Sat, 10 Aug 2019 11:24:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44572)
+	id 1hxBqv-0007ve-9P
+	for alex.bennee@linaro.org; Mon, 12 Aug 2019 11:03:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39779)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <estebanbosse@gmail.com>) id 1hwTDy-0002bv-6L
- for qemu-arm@nongnu.org; Sat, 10 Aug 2019 11:24:07 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hxBqn-0007tS-Cr
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2019 11:03:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <estebanbosse@gmail.com>) id 1hwTDx-00056b-2z
- for qemu-arm@nongnu.org; Sat, 10 Aug 2019 11:24:06 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:33899)
+ (envelope-from <peter.maydell@linaro.org>) id 1hxBqm-0002o1-9a
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2019 11:03:09 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:35912)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <estebanbosse@gmail.com>)
- id 1hwTDw-00055f-Rx
- for qemu-arm@nongnu.org; Sat, 10 Aug 2019 11:24:05 -0400
-Received: by mail-ed1-x535.google.com with SMTP id s49so64180300edb.1
- for <qemu-arm@nongnu.org>; Sat, 10 Aug 2019 08:24:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hxBqm-0002nk-3s
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2019 11:03:08 -0400
+Received: by mail-ot1-x344.google.com with SMTP id k18so27781202otr.3
+ for <qemu-arm@nongnu.org>; Mon, 12 Aug 2019 08:03:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=pUvlgD/rAn2NA2f9BZ++ceLelMbRk4xjT6RD5kRiGUc=;
- b=Z9XzFR8qxAZ85B9W/5zfzSJzZrMOvUWkf0m8RKV8i1XUMob5A5tjvbl5jw5y0fMJAI
- 9U95NvLU94dbh9Pj1A0fj9Ws9OviGS0l/ku+mpWT5kF7hNFXCmBt6dXP/P0XOlGMChD7
- Tpehw2k5aIKPoRzIJmzFHVpC4jQTXFPfSu6yv4+K6uSEdZFi6YrgceEQFYKaHrWDvp6C
- lrp5JOGOOIkIpu9kkaei+ab8n6Gh0aPi7gJQjnPfZzJFquTc8GaqmzjNnksUpK/g1ASP
- 38MMCp/VbFBufrP/pXAIbIDMEEOAPiB5W17xsLIJy7TTFIB64t0RvgHTLW/qt3EHrPng
- vc2g==
+ :cc; bh=tC6Srj74zjvGWIhfZf4qft75KEFoF39M0w32NpsseYk=;
+ b=IbtJ8Ha+oIhXenXWNMHwttWMaA/Q4Y0Fe/oXENFY30UHKM7nMDx/VnVqTk5T5JAILZ
+ sAp+8Jwhht1mwAeZu5pn7ph7lQRJvqJCakrOQmqE9ZQxjsVRC2NIM5EqQi2eJKMqKAG7
+ LsvGrgy2qoa75+Q34M8xkBcVmr/DNR7uwcCsGU2nLR+5pu1LOv5WnLypd8SFgr2ipEva
+ ym4AXYBbvzjT4FrYND719C/CCdLXvWcapwLXCZZfLQW9aejIufjhwN0uF4nELA8TKwJu
+ lAWXqjCzJ+FlPaoFprTHpNQlVDKTDR7RwRHaXThucI2yk+J7EN+PjatrbsJJAi5W5ZSI
+ wuvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=pUvlgD/rAn2NA2f9BZ++ceLelMbRk4xjT6RD5kRiGUc=;
- b=entvriaLsHXYitygXwGRoECzrkmtDga8MUdKgV9m6K+dJOc4PXARo+1IVGsDyrU+Ro
- y2t2fJEUJ9Fh0YjMDl5XYEGo+9dPxgRtsHuz+vBLG7teC2JIFUJNbs14dH7XFkYx0ukU
- Qt22wOWa8H+rcjjZkOrtTyZeWpos+Oqmxt5JTWIyE+yaTqyGpGtg6sbqBxH+0qLeqn3d
- GSe37O+J/kSlwHZrJCUmQUEY8ADCGcNnFb3hbEsEZ858E7s7B9rjWDDpoPEKU3XZSUr+
- 8qXvILmn3Laz6nqslqYSV6d6evFhZWglJg7n4LrzvEbrd6MedbcV2rdy0mcekFa+Pleh
- k9zQ==
-X-Gm-Message-State: APjAAAU4pjuZJrpn4IF7gKaAxvo1+tSxttwwClSEOcVEHTvVL4PFy0cl
- ZhRYURhJkG3tp4ev9BuFcnGzl0019+jjbCoLDQU=
-X-Received: by 2002:a50:8752:: with SMTP id 18mr15858617edv.96.1565450643713; 
- Sat, 10 Aug 2019 08:24:03 -0700 (PDT)
+ bh=tC6Srj74zjvGWIhfZf4qft75KEFoF39M0w32NpsseYk=;
+ b=SSuFaKPttKhH7zBdMYIPmbPYoyG51dMr6kC0N2Hvhq6lUaY0hjXjDUxzV/1ETWhbK0
+ i08bXjQITOz9sgjOB+ZYZroIvroRopOnVrQi63pRFaBxZKPwPS1cMO4WQaZH4E7798rF
+ Oz0iHyqd7qSntp29Fyg06t/5R/18hR0L1znlLjcw7NRi1+kSj5StKdTlPV16F3RGY8uO
+ SKoDEimOvkr9DeUrq0+Ek9CCtPzKPzWyANOL3/z2ewy9VzLQlX3OmZctl790fwtwvxcw
+ qwv7Dqk9LlCAQkZGkGheX69/HpfKHxFXbjH5TDZmr+8IwvQPJlpKZ8W3UIQURBa/C+9M
+ 0RKA==
+X-Gm-Message-State: APjAAAVW34YmFM2sHa2sHTsRFqBrVX9CE2c9sjVvNnbeswoLiCmWz0Wz
+ ZUIRs9sGW09h9E7NwVUOnWhs1m2y9gVhX7P87gHmGXUu
+X-Received: by 2002:aca:6185:: with SMTP id
+ v127mr15868637oib.163.1565622187184; 
+ Mon, 12 Aug 2019 08:03:07 -0700 (PDT)
 MIME-Version: 1.0
-References: <CAGbAg_ANKR9zyAp3+pNRo6eVydQPaWrny62xk5NWr0DOD-7Jxg@mail.gmail.com>
- <CAFEAcA8jh7zxb02Yv-R4h-x99bsGjAg9zQMNgiSc=SQcthnyXw@mail.gmail.com>
-In-Reply-To: <CAFEAcA8jh7zxb02Yv-R4h-x99bsGjAg9zQMNgiSc=SQcthnyXw@mail.gmail.com>
-From: Esteban Bosse <estebanbosse@gmail.com>
-Date: Sun, 11 Aug 2019 00:23:57 +0900
-Message-ID: <CAGbAg_C002NyTSesdAj5iqWo07pP03EBbVx7OBkqZgqvRZ8J7Q@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="00000000000088337d058fc4e142"
+References: <20190812144442.30027-1-aaron@os.amperecomputing.com>
+In-Reply-To: <20190812144442.30027-1-aaron@os.amperecomputing.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 12 Aug 2019 16:02:55 +0100
+Message-ID: <CAFEAcA-GnPAL41MQouLxs_7y9Xj_E30k4Agx20eWObau2p02AA@mail.gmail.com>
+To: Aaron Lindsay OS <aaron@os.amperecomputing.com>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::535
-Subject: Re: [Qemu-arm] Beagle Board support
+X-Received-From: 2607:f8b0:4864:20::344
+Subject: Re: [Qemu-arm] [PATCH] elf: Allow loading AArch64 ELF files
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,115 +104,68 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>
+Cc: Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Alistair Francis <alistair.francis@xilinx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5YX4TmJWZbgz
+X-TUID: HkJx/xU5T+KK
 
---00000000000088337d058fc4e142
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-El s=C3=A1b., 10 ago. 2019 23:01, Peter Maydell <peter.maydell@linaro.org>
-escribi=C3=B3:
-
-> On Sat, 10 Aug 2019 at 04:39, Esteban Bosse <estebanbosse@gmail.com>
-> wrote:
-> > I am new in this world, but I want to port the old beagle support for
-> qemu-linaro to mainstream.
+On Mon, 12 Aug 2019 at 15:46, Aaron Lindsay OS via Qemu-arm
+<qemu-arm@nongnu.org> wrote:
 >
-> That would certainly be nice. The major issue is that the
-> patchset in that tree is (a) often in an older style
-> of API that would need to be updated to use the current
-> recommended-practice APIs to go upstream, and (b) in
-> some places still has multiple changes tangled together
-> that would need to be disentangled to form a clean
-> reviewable patchset.
+> Treat EM_AARCH64 as a valid value when checking the ELF's machine-type
+> header.
 >
-(a) Sounds "not impossible" then for a beginer, hahaha.
-I am looking other boards like Musca to use it as example
-
-(b) I don't know yet how to make the patches I have to learn everything.
-
-
-> I'm happy to provide advice and code review if you're
-> interested in doing this work and helping to maintain
-> it in the upstream tree.
+> Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
+> ---
+>  include/hw/elf_ops.h | 6 ++++++
+>  1 file changed, 6 insertions(+)
 >
+> diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
+> index 690f9238c8..f12faa90a1 100644
+> --- a/include/hw/elf_ops.h
+> +++ b/include/hw/elf_ops.h
+> @@ -381,6 +381,12 @@ static int glue(load_elf, SZ)(const char *name, int fd,
+>                  goto fail;
+>              }
+>              break;
+> +        case EM_AARCH64:
+> +            if (ehdr.e_machine != EM_AARCH64) {
+> +                ret = ELF_LOAD_WRONG_ARCH;
+> +                goto fail;
+> +            }
+> +            break;
+>          default:
+>              if (elf_machine != ehdr.e_machine) {
+>                  ret = ELF_LOAD_WRONG_ARCH;
+> --
+> 2.17.1
 
-Yes! I am interested, I have a repo where I am doing my firsts trys to
-understand how qemu and the beagle are.
+What problem are we trying to solve here ? If I'm reading your patch
+correctly then it makes no difference to execution, because we're
+switching on 'elf_machine', and so this extra case is saying
+"if elf_machine is EM_AARCH64, insist that ehdr.e_machine
+is also EM_AARCH64", which is exactly what the default
+case would do anyway. The only reason to add extra cases in
+this switch is to handle the situation where a target's board/loader
+code says "I can handle elf files of type X" but actually this
+implicitly means it can handle both X and Y (so for EM_X86_64 we
+need to accept both EM_X86_64 and EM_386, for EM_PPC64 we need to
+accept both EM_PPC64 and EM_PPC, and so on). We don't have a
+case like that for aarch64/arm because the boot loader code has
+to deal with the 32 bit and 64 bit code separately anyway, so
+we can pass in the correct value depending on whether the CPU
+is 32-bit or 64-bit.
 
-How do you recommend to start?
-I think that I can understand some things in the old beagle.c file but the
-omap3.c it's more heavy.
-Maybe I can start with de omap3.c trying to refactor and split it in more
-files styled for the new API.
+The code in hw/arm/boot.c passes in an elf_machine value of
+EM_AARCH64 when it wants to load an AArch64 ELF file, so
+for that the default case is OK. The code in hw/core/generic-loader.c
+passes in 0 (EM_NONE) which will be handled by the check just
+before this switch statement, so the default case should
+work there too. Presumably there's some other code path
+for ELF file loading that doesn't work that you're trying to fix?
 
-What files do you recommend to read to try to understand more about the CPU
-model?
-
-
-> thanks
-> -- PMM
->
-Thank you!
-
->
-
---00000000000088337d058fc4e142
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">El s=C3=A1b., 10 ago. 2019 23:01, Peter Maydell &lt;<a=
- href=3D"mailto:peter.maydell@linaro.org" target=3D"_blank" rel=3D"noreferr=
-er">peter.maydell@linaro.org</a>&gt; escribi=C3=B3:<br></div><blockquote cl=
-ass=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;p=
-adding-left:1ex">On Sat, 10 Aug 2019 at 04:39, Esteban Bosse &lt;<a href=3D=
-"mailto:estebanbosse@gmail.com" rel=3D"noreferrer noreferrer" target=3D"_bl=
-ank">estebanbosse@gmail.com</a>&gt; wrote:<br>
-&gt; I am new in this world, but I want to port the old beagle support for =
-qemu-linaro to mainstream.<br>
-<br>
-That would certainly be nice. The major issue is that the<br>
-patchset in that tree is (a) often in an older style<br>
-of API that would need to be updated to use the current<br>
-recommended-practice APIs to go upstream, and (b) in<br>
-some places still has multiple changes tangled together<br>
-that would need to be disentangled to form a clean<br>
-reviewable patchset.<br></blockquote></div></div><div dir=3D"auto">(a) Soun=
-ds &quot;not impossible&quot; then for a beginer, hahaha.=C2=A0</div><div d=
-ir=3D"auto">I am looking other boards like Musca to use it as example</div>=
-<div dir=3D"auto"><br></div><div dir=3D"auto">(b) I don&#39;t know yet how =
-to make the patches I have to learn everything.=C2=A0</div><div dir=3D"auto=
-"><br></div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=
-=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padd=
-ing-left:1ex">
-<br>
-I&#39;m happy to provide advice and code review if you&#39;re<br>
-interested in doing this work and helping to maintain<br>
-it in the upstream tree.<br></blockquote></div></div><div dir=3D"auto"><br>=
-</div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gma=
-il_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-lef=
-t:1ex"></blockquote></div></div><div dir=3D"auto">Yes! I am interested, I h=
-ave a repo where I am doing my firsts trys to understand how qemu and the b=
-eagle are.=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D"auto">How do =
-you recommend to start?</div><div dir=3D"auto">I think that I can understan=
-d some things in the old beagle.c file but the omap3.c it&#39;s more heavy.=
-=C2=A0</div><div dir=3D"auto">Maybe I can start with de omap3.c trying to r=
-efactor and split it in more files styled for the new API.</div><div dir=3D=
-"auto"><br></div><div dir=3D"auto">What files do you recommend to read to t=
-ry to understand more about the CPU model?=C2=A0</div><div dir=3D"auto"><br=
-></div><div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gm=
-ail_quote" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-le=
-ft:1ex">
-<br>
-thanks<br>
--- PMM<br></blockquote></div></div><div dir=3D"auto">Thank you!=C2=A0</div>=
-<div dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quo=
-te" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"=
->
-</blockquote></div></div></div>
-
---00000000000088337d058fc4e142--
+thanks
+-- PMM

@@ -1,102 +1,85 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp482796wrs;
-        Mon, 12 Aug 2019 05:14:24 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw8eqY1YiYksyFPlpaRUQJ1AP7gi5ZhP6eq8H78Bn5LwLvWXgjWJvZ+npLROByas8oUSfn5
-X-Received: by 2002:a37:3d7:: with SMTP id 206mr29720018qkd.252.1565612064375;
-        Mon, 12 Aug 2019 05:14:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565612064; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp580009wrs;
+        Mon, 12 Aug 2019 06:47:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxSB2oFrhgpDqp77D70TzJjQ1g1Qql5ynNBV0awv9KP0I6EiwWsUiKqbxiTOjNUjuAK7ceQ
+X-Received: by 2002:aa7:da97:: with SMTP id q23mr625186eds.132.1565617652264;
+        Mon, 12 Aug 2019 06:47:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565617652; cv=none;
         d=google.com; s=arc-20160816;
-        b=UG83uIC8gR1V4e8K6zdRWR03odCXGMcscHrhvxORKaQAICHTIwPH/wi+spty58zCT8
-         8Be3Y95AFy4uCZ5BPR3uKmMR87zQhnMNQgVpBGRMEC1CV7FRGn25Rdm4TMvg/uAerAZn
-         gfy1RfgrYu0cEK+tBjBEfxg83AEQkWoojaR9soArBCKQ5ldOm/3XVyxVewQ1ERDikt1P
-         cll/ur/oWyCW8notIfhnOfUQsYNtw3ztQu3V+dA6Xaa9I0omKb8n+929RBHpC2CRqGpA
-         GmfKFbaCTRy5rz0GwINtliC+1tTq3ybOJxWU7uDj4zBAjCwhMXmeQ90AYrjiJI1LTmzj
-         dwsQ==
+        b=Wi2cRoxqFGJwgPZG88Ya6l346yWQ2qJrrwoOAcwQxZGDQlTXRrR57sU38nqOY/4mNk
+         CRyFcpXzr27QqQYnCuUyAD716SuzHZTjOecHLVi3HF8mQdsE8HTbPtDdTq+r5THNiIgg
+         g4MSZ2Auci12WazInUqlNXxfifAGgYj0N/9oPq3g6z6AkCVjyusGTDxUWVcx6WeZSC2D
+         7uRCNZrBj82kitNG4eWFVDLFXqjw2y6i0ZMv30ZJG469fbOs8b9IZD3Nj3iCegldODfV
+         t9D9lbRMu98Km9YpaYEdnvPXyeAnQpR15fsv0YrkV9YKD0P87hrbyC1BTOLKsDOSRXUz
+         RegQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=IBLr+u7Omhe4cYbWFp9NEZ+Iwp7fVpbeVHlbGLeo4+Y=;
-        b=0Akot4sXTo4b7L4fWE0K8wfes+Vw1xwAOLaLpa3oieeJv02Bdv2SiGaDejD/sj7CGb
-         dDOKHMhmXEz0HKxyQWVa+bz1hG+PJNg9RO2RIId1tsWSReMqIp54aF8R0ZvUxkaCHgMu
-         aQ7UhU6tMC2SwjcJfXUR97HjUe+K6Mtuw58Irpyig7Moj5vzp3BqwTJcY10C0LrtcstM
-         Y9TNpWA7rxFD19lp4x2RlS7XY7FekyYVHAuAPgvYYZuKq/fPC3D8JM6NxtL++nVlLp9W
-         aflmk79lomeSlXyl9SkCADEya2Wc62NpgwjLcHsDtBcq9Qrv+CBwetUFHZ4hRx2TgqFo
-         VQhA==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=bb4d5WbdnWONjtol8lkYZz2L/g3Q1JuGIc246+q2Up0=;
+        b=ax97rRQu2xNsYTGnhUkxHk5EnJEj7TiNn1a073tYvuaE8gd2997rRS+5gJc0nITkzl
+         xMQggJCiaXs5FSwd46+8lIc9n9eUTU8bH5nw7eNx2Wf5Flwihd7sci56MeSqr6YQmU3/
+         rRdTPHblU22qJVgX/HbY9GkabiTJRCBs0YYoQpUFb9LuoMc5lwbAA1UaXOcEr5p4HULq
+         Kw83g05dQEESH/oWCRfc78qx0mMZ8iWu23hreb6SWKX3gnMRsOvqOnqsZ++zUsjBz4Rb
+         MV6sTWhGLI/Qw74tmg5DWlkzMp0YxidKBnEEzVJECixEGIgomRZYKvXHP6BXLoty36vt
+         gMlg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m46si65517483qtb.87.2019.08.12.05.14.24
+        by mx.google.com with ESMTPS id q19si35995930eju.347.2019.08.12.06.47.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Aug 2019 05:14:24 -0700 (PDT)
+        Mon, 12 Aug 2019 06:47:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44998 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45692 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hx9DT-0000Lb-Sw
-	for alex.bennee@linaro.org; Mon, 12 Aug 2019 08:14:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40753)
+	id 1hxAfb-0004cq-CY
+	for alex.bennee@linaro.org; Mon, 12 Aug 2019 09:47:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56914)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <philmd@redhat.com>) id 1hx9DM-0000GD-07
- for qemu-arm@nongnu.org; Mon, 12 Aug 2019 08:14:16 -0400
+ (envelope-from <imammedo@redhat.com>) id 1hxAfV-0004ck-29
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2019 09:47:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hx9DL-0000zn-24
- for qemu-arm@nongnu.org; Mon, 12 Aug 2019 08:14:15 -0400
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:50901)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hx9DK-0000zN-Sz
- for qemu-arm@nongnu.org; Mon, 12 Aug 2019 08:14:15 -0400
-Received: by mail-wm1-f68.google.com with SMTP id v15so11945812wml.0
- for <qemu-arm@nongnu.org>; Mon, 12 Aug 2019 05:14:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=IBLr+u7Omhe4cYbWFp9NEZ+Iwp7fVpbeVHlbGLeo4+Y=;
- b=NeStEl2Q56W/NGQmFmdt1eOh1tsm0XktqYDXDQiRsex7nqDmkeTR0gDca5G1sVw7Hx
- qEiaLjUEzurI0D/GaydIa4qFSwb+l/BPNAU0Phcv2B/XcQ4PdyRGJq0leGYMZYgoje2q
- Qj+7xRgXy0+H4nrPlgjxi364devxA4IyHeUsmogTjvFGFrhLsS6rjCh8jHmznQiz0azx
- GPuHafwHW5BWlvrQGQN+G6R1WRKy6apaGwMo2RMQVtU2CJxJTYQEIqVG8xUR8rsol70p
- zXPdR6rrUM2iK8zE0FKe4hVU96xvNhM78gNgOvwo/CbEAhFNt5WtGfMWJSDhokxX8jKw
- Vfhg==
-X-Gm-Message-State: APjAAAXbkw/kpww6yNbQTxfus/cIXbE5lbN/3z/RWiacNGisV7K5jx4o
- J5yqi6W4NibkSLhKVkELFxBt1g==
-X-Received: by 2002:a1c:2582:: with SMTP id
- l124mr29082968wml.153.1565612053827; 
- Mon, 12 Aug 2019 05:14:13 -0700 (PDT)
-Received: from [192.168.1.37] (225.red-83-53-161.dynamicip.rima-tde.net.
- [83.53.161.225])
- by smtp.gmail.com with ESMTPSA id j16sm60733178wrp.62.2019.08.12.05.14.12
- (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
- Mon, 12 Aug 2019 05:14:12 -0700 (PDT)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20190701123108.12493-1-philmd@redhat.com>
- <20190701123108.12493-4-philmd@redhat.com>
- <CAFEAcA_m3LiLQqL8y6rT=HGeoa7B5XAQH9Wuo=Hg-94PaV3Zsg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <b2a83b98-3e20-4f62-d442-6ab6e26ab60b@redhat.com>
-Date: Mon, 12 Aug 2019 14:14:11 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ (envelope-from <imammedo@redhat.com>) id 1hxAfT-0005Kx-Kg
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2019 09:47:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35892)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>)
+ id 1hxAfT-0005Kg-Bt; Mon, 12 Aug 2019 09:47:23 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id E90EA307F5E4;
+ Mon, 12 Aug 2019 13:47:21 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7C7F75C1D4;
+ Mon, 12 Aug 2019 13:47:17 +0000 (UTC)
+Date: Mon, 12 Aug 2019 15:47:16 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+Message-ID: <20190812154716.44a6aff8@redhat.com>
+In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA83F34B396@lhreml524-mbs.china.huawei.com>
+References: <20190726104519.23812-1-shameerali.kolothum.thodi@huawei.com>
+ <20190726104519.23812-8-shameerali.kolothum.thodi@huawei.com>
+ <20190806152136.3afbfb4b@redhat.com>
+ <5FC3163CFD30C246ABAA99954A238FA83F34B396@lhreml524-mbs.china.huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_m3LiLQqL8y6rT=HGeoa7B5XAQH9Wuo=Hg-94PaV3Zsg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.44]); Mon, 12 Aug 2019 13:47:22 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-arm] [PATCH 3/6] hw/arm: Use sysbus_init_child_obj for
- correct reference counting
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH-for-4.2 v8 7/9]
+ hw/arm/virt-acpi-build: Add PC-DIMM in SRAT
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,54 +91,133 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrey Smirnov <andrew.smirnov@gmail.com>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>,
- Antony Pavlov <antonynpavlov@gmail.com>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "sameo@linux.intel.com" <sameo@linux.intel.com>,
+ "ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ "sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
+ "lersek@redhat.com" <lersek@redhat.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nvRjTqKIfLET
+X-TUID: tNDnR7K/+7oZ
 
-On 7/29/19 3:03 PM, Peter Maydell wrote:
-> On Mon, 1 Jul 2019 at 13:31, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
->>
->> As explained in commit aff39be0ed97:
->>
->>   Both functions, object_initialize() and object_property_add_child()
->>   increase the reference counter of the new object, so one of the
->>   references has to be dropped afterwards to get the reference
->>   counting right. Otherwise the child object will not be properly
->>   cleaned up when the parent gets destroyed.
->>   Thus let's use now object_initialize_child() instead to get the
->>   reference counting here right.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->>  hw/arm/exynos4_boards.c | 4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
->> index ac0b0dc2a9..5dd53d2a23 100644
->> --- a/hw/arm/exynos4_boards.c
->> +++ b/hw/arm/exynos4_boards.c
->> @@ -129,8 +129,8 @@ exynos4_boards_init_common(MachineState *machine,
->>      exynos4_boards_init_ram(s, get_system_memory(),
->>                              exynos4_board_ram_size[board_type]);
->>
->> -    object_initialize(&s->soc, sizeof(s->soc), TYPE_EXYNOS4210_SOC);
->> -    qdev_set_parent_bus(DEVICE(&s->soc), sysbus_get_default());
->> +    sysbus_init_child_obj(OBJECT(machine), "soc",
->> +                          &s->soc, sizeof(s->soc), TYPE_EXYNOS4210_SOC);
->>      object_property_set_bool(OBJECT(&s->soc), true, "realized",
->>                               &error_fatal);
+On Fri, 9 Aug 2019 16:02:39 +0000
+Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
+
+> Hi Igor,
 > 
-> I suspect the code change here is correct but it doesn't seem
-> to match the commit message -- the old code is not calling
-> object_property_add_child() at all, and the new code does not
-> call object_initialize_child()...
+> > -----Original Message-----
+> > From: Qemu-devel
+> > [mailto:qemu-devel-bounces+shameerali.kolothum.thodi=huawei.com@nongn
+> > u.org] On Behalf Of Igor Mammedov
+> > Sent: 06 August 2019 14:22
+> > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> > Cc: peter.maydell@linaro.org; sameo@linux.intel.com;
+> > ard.biesheuvel@linaro.org; shannon.zhaosl@gmail.com;
+> > qemu-devel@nongnu.org; xuwei (O) <xuwei5@huawei.com>; Linuxarm
+> > <linuxarm@huawei.com>; eric.auger@redhat.com; qemu-arm@nongnu.org;
+> > sebastien.boeuf@intel.com; lersek@redhat.com
+> > Subject: Re: [Qemu-devel] [PATCH-for-4.2 v8 7/9] hw/arm/virt-acpi-build: Add
+> > PC-DIMM in SRAT
+> > 
+> > On Fri, 26 Jul 2019 11:45:17 +0100
+> > Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+> >   
+> > > Generate Memory Affinity Structures for PC-DIMM ranges.
+> > >
+> > > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> > > Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> > > Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> > > ---
+> > >  hw/arm/virt-acpi-build.c | 9 +++++++++
+> > >  1 file changed, 9 insertions(+)
+> > >
+> > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > > index 018b1e326d..75657caa36 100644
+> > > --- a/hw/arm/virt-acpi-build.c
+> > > +++ b/hw/arm/virt-acpi-build.c
+> > > @@ -518,6 +518,7 @@ build_srat(GArray *table_data, BIOSLinker *linker,  
+> > VirtMachineState *vms)  
+> > >      int i, srat_start;
+> > >      uint64_t mem_base;
+> > >      MachineClass *mc = MACHINE_GET_CLASS(vms);
+> > > +    MachineState *ms = MACHINE(vms);
+> > >      const CPUArchIdList *cpu_list =  
+> > mc->possible_cpu_arch_ids(MACHINE(vms));  
+> > >
+> > >      srat_start = table_data->len;
+> > > @@ -543,6 +544,14 @@ build_srat(GArray *table_data, BIOSLinker *linker,  
+> > VirtMachineState *vms)  
+> > >          }
+> > >      }
+> > >
+> > > +    if (ms->device_memory) {
+> > > +        numamem = acpi_data_push(table_data, sizeof *numamem);
+> > > +        build_srat_memory(numamem, ms->device_memory->base,
+> > > +  
+> > memory_region_size(&ms->device_memory->mr),  
+> > > +                          nb_numa_nodes - 1,
+> > > +                          MEM_AFFINITY_HOTPLUGGABLE |  
+> > MEM_AFFINITY_ENABLED);  
+> > > +    }
+> > > +
+> > >      build_header(linker, table_data, (void *)(table_data->data +  
+> > srat_start),  
+> > >                   "SRAT", table_data->len - srat_start, 3, NULL, NULL);
+> > >  }  
+> > 
+> > missing entry in
+> >   tests/bios-tables-test-allowed-diff.h  
+> 
+> I can't find any SRAT file in tests/data/acpi/virt. Arm/virt doesn't have much
+> tests in bios-tables-test.c. So does it make any difference?
+acpi tests for arm/virt are new and are enabled only since 4.1,
+now it should be trivial to add extra cases for code you are adding.
+Since you're touching her SRAT, I'd suggest to enable 'numamem' and 'memhp'
+tests with this series (for example see: test_acpi_piix4_tcg_numamem/test_acpi_piix4_tcg_memhp).
 
-OK, will improve, thanks!
+> > PS:
+> > I don't really know what ARM guest kernel expects but on x86 we had to enable
+> > numa
+> > for guest to figure out max_possible_pfn
+> > (see: in linux.git: 8dd330300197 / ec941c5ffede).  
+> 
+> From whatever I can find, doesn't look like there is any special handling of
+> max_possible_pfn in ARM64 world. The variable seems to be only updated
+> in acpi_numa_memory_affinity_init()
+> 
+> https://elixir.bootlin.com/linux/v5.3-rc3/source/drivers/acpi/numa.c#L298
+
+problem was that drivers (stub dma ops) (guest booted with RAM below 4Gb)
+were breaking when they received RAM buffers above 4Gb. To fix it we needed
+to turn on swiotlb if possible max PFN could be above 4Gb.
+That's where SRAT played its role to let guest know what possible max PFN
+could be.
+
+> Is there any way to test this in Guest to see whether this is actually a problem?
+from my x86 experience:
+1. for linux:
+  * start guest with RAM that not goes over 4Gb PFN mark (for example with -m 1Gb)
+     and native drivers (not virtio ones see linux.git commit message ec941c5ffede4)
+  * hotplug RAM to go over 4Gb boundary
+  * stress test drivers (that should trigger various issues)
+    (on x64 it were ATA and various usb drivers leading to data corruption and not
+     working mouse in guests)
+
+2. for Windows guests memory hotplug doesn't work at all unless NUMA is enabled. 
+
+Based on above I'd assume, we need to turn on numa for ARM as well if
+memhp is enabled since SRAT is the only way of describing max possible RAM end
+to the guest OS.
+
+> Thanks,
+> Shameer
+> 
+> > It's worth to check if we might need a patch for turning on NUMA
+> > (how to do it in QEMU see: auto_enable_numa_with_memhp)  
+> 
+

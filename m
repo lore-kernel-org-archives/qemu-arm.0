@@ -1,199 +1,119 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp551206lfq;
-        Wed, 23 Sep 2020 08:13:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJytK0udbyncGT+iirMlbOSEw0BmEVGPrNBgIUI1fWDwYUtq5URI6hf5ZD6Wx+JvjuHcje8J
-X-Received: by 2002:a17:907:2055:: with SMTP id pg21mr77978ejb.501.1600874036333;
-        Wed, 23 Sep 2020 08:13:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600874036; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp307080wrs;
+        Mon, 12 Aug 2019 02:06:48 -0700 (PDT)
+X-Received: by 2002:a7b:c632:: with SMTP id p18mr27081221wmk.114.1565600808925;
+        Mon, 12 Aug 2019 02:06:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565600808; cv=none;
         d=google.com; s=arc-20160816;
-        b=F2kCXjEIIEsr8aQYzWwH8VyKqe3iIaU9Nat14s7frx/j6R9lFa3fwYmrHU6Boc1D8P
-         A5VvdSGvLZPSTh3zlgE533mKz2ilBWoCnRLYJqSE/w8ZL/IEvdsZGuJqHNI6t5u0pF1k
-         G9t/A3XG2FTs21s8LDABa2UsG8sOCBM8DKOtuJRUjuJXImnkIaNZqV4qZW4q8S+iE387
-         dvOpzCWCKWyjaHCPnzheItp3QbWD6ICCCJLUKCJx77RrcusWrQSGAI64pBVXJiRHAEa1
-         OZ3wJjnbg7jw19FhgSth4GgJbYIweb+RcNsITtpoI/kDn1XL/5uTwGxQEYeyQiGJBtYy
-         EGBQ==
+        b=xIg5HUrfE1z0jG28Mq8sfRPbjioOM+z/CDql6BixqAgEpJ270DqanfnxddBsjH54Q8
+         mbi/0XcgWraYi4BcjM55MaRDcJOamDEdkyTrO1lO6bCySVd6S9H+YvH+PgScgQpBco28
+         TrPFtgM8/vNa2PsNwsC8wpBo2LCpDRf+R17mKcO6CgfU/6m30pR3j+qjhXUiP5xaw7lR
+         /a5QYc0j6MMlfq9CWPOahE4tSMCYlYFd0HRzaUGV2+UBLBfS7RiJRB6bXneqabwTG8R/
+         tN5yenxvZ9tD+r3PDY4kAbQcDzQ7izgzbRZ7kF+BDmRbp8Gux/YMcQSSnziVKNu2hCcG
+         1KWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-disposition:in-reply-to:mime-version
-         :references:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=FlU/OKWGsUcXAWijq0uSnuWl+UgM4drfHtrzAcT8ML8=;
-        b=tawOo6BeQxDAbZIbTi8SX2vP30dshYkYnbrT1EkoP9+lfhYkayNgFbSnYZNkvj6ubc
-         ZXuGQHL6dgPB/aKsK2ic8YJYP1hr3sXFplWVl9hQSJDeIl6P+xIkVl7Z96rW9GpD8PX3
-         fcqy69ei2D2zPUuh/EdsoJaIm3Uv17ZAiq4p0XOyQzmsfs3YWf3QUyeHUPCHdI5EzP0i
-         /lZYfvjzQVuX4Z155ngjaDCcnrWNMCW6bEEN+AAMhQTQ4Cj9wnASrct0ZVvRP0Y7gIMx
-         53x/f13ZdmqCX4uDXRG6pNUgngs1pxi40P83+mzuZduHbAJNwuNt3CkWZIiJzkrUnHZM
-         A6OQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:references:cc:to:from:subject;
+        bh=wKqdeSy5cdJsAd0+kNh6JU5posSCQfpFR60EsLy/x8Q=;
+        b=akQEP7W5QxwWCmPuPfXLMK0k448alWbuhcbsNM2Oekz7QnsSHVIWjRKmCzvSvYrBL+
+         61Pv+TunZOIrLR4z1r/MyTgOsuh7mMg+hFLpcoioH/X4sdU3jGSPzCaBstvSGtv5xjUC
+         XhgSorGJXshdthuFIN9DHOkZd9MsBeIP1mQoloXurmtSl2e3riQChNYbMAydXEwRClcn
+         ZOhfYgl9VOsDi8o8yKMuRiedO237oWXlO7eHtm2pLc0LbM0wAgm+01qGJGQwEvZuJRJr
+         gXSh/v6IOI9amjjUktJpT7aARSzY+XbfuJuwuoAjOt71zIEUjkFE1jRZ6t8ZEzOi+eQm
+         Byyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="C/TVv0i8";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id jr15si141624ejb.183.2020.09.23.08.13.55;
-        Wed, 23 Sep 2020 08:13:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+Return-Path: <philmd@redhat.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id n10sor10397510wrm.42.2019.08.12.02.06.48
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Mon, 12 Aug 2019 02:06:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="C/TVv0i8";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       spf=pass (google.com: domain of philmd@redhat.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726460AbgIWPNy (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Wed, 23 Sep 2020 11:13:54 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:54378 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1726130AbgIWPNy (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Wed, 23 Sep 2020 11:13:54 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1600874032;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         in-reply-to:in-reply-to:references:references;
-        bh=FlU/OKWGsUcXAWijq0uSnuWl+UgM4drfHtrzAcT8ML8=;
-        b=C/TVv0i8TMYwhy+te31R+kpLGRKrj6/T0wb6B8fNZfnUilxx9QWcCGHcpfN47nVE95Q4Kk
-        6VZ3LnDu6+bYNkjZxdN1PwSx0d74EJdW4tvNsLYzPyuT4oGaab32kfO+CE04lUQpZbnw8f
-        ces3SMmmEP7LBBwuIzP4O1VYy13Vy/I=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-513-BSnw5gicMoaqzycugApOAQ-1; Wed, 23 Sep 2020 11:13:35 -0400
-X-MC-Unique: BSnw5gicMoaqzycugApOAQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7C763186DD29;
-        Wed, 23 Sep 2020 15:13:30 +0000 (UTC)
-Received: from localhost (ovpn-113-77.ams2.redhat.com [10.36.113.77])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id 48F7F19D7D;
-        Wed, 23 Sep 2020 15:13:18 +0000 (UTC)
-Date:   Wed, 23 Sep 2020 16:13:17 +0100
-From:   Stefan Hajnoczi <stefanha@redhat.com>
-To:     qemu-devel@nongnu.org
-Cc:     Michael Roth <mdroth@linux.vnet.ibm.com>,
-        John Snow <jsnow@redhat.com>,
-        Alistair Francis <Alistair.Francis@wdc.com>,
-        Halil Pasic <pasic@linux.ibm.com>,
-        Matthew Rosato <mjrosato@linux.ibm.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Eric Blake <eblake@redhat.com>,
-        Markus Armbruster <armbru@redhat.com>,
-        Gerd Hoffmann <kraxel@redhat.com>, sheepdog@lists.wpkg.org,
-        Yoshinori Sato <ysato@users.sourceforge.jp>,
-        Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
-        Thomas Huth <thuth@redhat.com>, kvm@vger.kernel.org,
-        Paul Durrant <paul@xen.org>, qemu-s390x@nongnu.org,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-        Aurelien Jarno <aurelien@aurel32.net>,
-        Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
-        Stefan Weil <sw@weilnetz.de>, qemu-riscv@nongnu.org,
-        qemu-block@nongnu.org,
-        Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
-        Max Filippov <jcmvbkbc@gmail.com>,
-        Christian Borntraeger <borntraeger@de.ibm.com>,
-        Alberto Garcia <berto@igalia.com>,
-        Kevin Wolf <kwolf@redhat.com>, Peter Lieven <pl@kamp.de>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        =?iso-8859-1?Q?Marc-Andr=E9?= Lureau 
-        <marcandre.lureau@redhat.com>,
-        Jiaxun Yang <jiaxun.yang@flygoat.com>,
-        Laurent Vivier <laurent@vivier.eu>,
-        Anthony Perard <anthony.perard@citrix.com>,
-        Yuval Shaia <yuval.shaia.ml@gmail.com>,
-        xen-devel@lists.xenproject.org, Huacai Chen <chenhc@lemote.com>,
-        Sunil Muthuswamy <sunilmut@microsoft.com>,
-        Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-        Juan Quintela <quintela@redhat.com>,
-        Cornelia Huck <cohuck@redhat.com>,
-        Max Reitz <mreitz@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Jiri Slaby <jslaby@suse.cz>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        Sagar Karandikar <sagark@eecs.berkeley.edu>,
-        Liu Yuan <namei.unix@gmail.com>,
-        Jason Wang <jasowang@redhat.com>,
-        Palmer Dabbelt <palmer@dabbelt.com>,
-        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-        Stefano Stabellini <sstabellini@kernel.org>,
-        Fam Zheng <fam@euphon.net>,
-        David Hildenbrand <david@redhat.com>,
-        Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org
-Subject: Re: [PATCH v3] qemu/atomic.h: rename atomic_ to qatomic_
-Message-ID: <20200923151317.GA65166@stefanha-x1.localdomain>
-References: <20200923105646.47864-1-stefanha@redhat.com>
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:from:to:cc:references:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=wKqdeSy5cdJsAd0+kNh6JU5posSCQfpFR60EsLy/x8Q=;
+        b=l3ajxFBwTNnux95PDrHDjuVwzQPUhPC61EWd0wpibrIQEsqt6pP/7yhNkmkiZxRmlb
+         BF8UEU8I2rf7pI9pPPCC9K1bv6GhDXBEJdNZPBXgzOak6t7GeUaIlcl113qq5Vi3JPs1
+         p5rdsVIW16VM6QcYOxG6iuU5Pv/swff+aBtMMHL0O5OmUHe7lbXb86BK4CaBsxpo8gPs
+         akRxoVVTwz3pGGoNh7kQDVH1wsLg0Jz1uVwjM8/R/QjrA8h7WjsK3eftWpLoVo9FeDJL
+         UOrL99LXfb8w/anDq9TzGwxcGt5msdpQW7YBXDp3qoIwyDFcwGoRKPSmZyi0HViuufkM
+         Nahg==
+X-Gm-Message-State: APjAAAU1WdDVJbG1cDMCzmkoBTNIXL+B0E9u5B9VTtpYPe8rDbKRa8ci
+	cz904LpKzjqP97rGHgtcN+GjIw==
+X-Google-Smtp-Source: APXvYqwAZ+N+qMbIdr3nvwt3VQkXcX5P+GGUcqUBOg7s/jBWCpBwPlYvraK2v9gE7Ba5T17EOCFFSA==
+X-Received: by 2002:a5d:4589:: with SMTP id p9mr30281115wrq.276.1565600808708;
+        Mon, 12 Aug 2019 02:06:48 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.37] (225.red-83-53-161.dynamicip.rima-tde.net. [83.53.161.225])
+        by smtp.gmail.com with ESMTPSA id e10sm27592952wrn.33.2019.08.12.02.06.47
+        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
+        Mon, 12 Aug 2019 02:06:48 -0700 (PDT)
+Subject: Re: [PATCH v4 0/8] Support disabling TCG on ARM
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Samuel Ortiz <sameo@linux.intel.com>,
+ Rob Bradford <robert.bradford@intel.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Andrew Jones <drjones@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Yang Zhong <yang.zhong@intel.com>, Thomas Huth <thuth@redhat.com>
+References: <20190701194942.10092-1-philmd@redhat.com>
+ <CAFEAcA_bWHAe_aoaN1+1RFm3zEvAxmzQtVm1zbatJHG_+CgqmA@mail.gmail.com>
+ <07662a67-b4cf-e681-fffa-98a03a26e0fb@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <f410698e-7f8f-f81b-50f7-40b401d76ac1@redhat.com>
+Date: Mon, 12 Aug 2019 11:06:46 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200923105646.47864-1-stefanha@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
-        auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
-        protocol="application/pgp-signature"; boundary="HlL+5n6rz5pIUxbD"
-Content-Disposition: inline
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: qhmD90Tko3kO
+In-Reply-To: <07662a67-b4cf-e681-fffa-98a03a26e0fb@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: eDsAVYBAjjp3
 
---HlL+5n6rz5pIUxbD
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 8/9/19 10:22 PM, Philippe Mathieu-Daudé wrote:
+> Hi Peter, Paolo, Alex, Thomas :)
+> 
+> On 7/2/19 4:08 PM, Peter Maydell wrote:
+>> On Mon, 1 Jul 2019 at 20:49, Philippe Mathieu-Daudé <philmd@redhat.com> wrote:
+> [...]
+>>> $ git backport-diff -u v3 -r target-arm.next..v4
+>>> Key:
+>>> [----] : patches are identical
+>>> [####] : number of functional differences between upstream/downstream patch
+>>> [down] : patch is downstream-only
+>>> The flags [FC] indicate (F)unctional and (C)ontextual differences, respectively
+>>>
+> [skipping patches already applied...]
+> 
+>>> 004/8:[----] [--] 'RFC target/arm: Restrict pre-ARMv7 cpus to TCG'
+>>> 005/8:[----] [--] 'RFC target/arm: Do not build pre-ARMv7 cpus when using KVM'
+>>> 006/8:[----] [--] 'RFC target/arm: Restrict R and M profiles to TCG'
+>>> 007/8:[----] [--] 'RFC target/arm: Do not build A/M-profile cpus when using KVM'
+>>> 008/8:[----] [--] 'target/arm: Do not build TCG objects when TCG is off'
+>>
+>> I'm going to apply patches 1 and 2 to target-arm.next for rc0 (since
+>> 2 is helpful to redhat downstream and taking 1 now reduces the
+>> amount of code-movement patches you'll need to rebase). Patch 3
+>> doesn't compile and 4-8 are rfc.
+> 
+> The remaining patches can be applied without conflict, so no need to
+> respin (yet) IMO.
+> 
+> Paolo/Thomas, do you mind reviewing patches 5 and 7? They are kconfig
+> related.
+> 
+> Peter/Alex, do you mind reviewing patches 4 and 6 first, then 5 and 7 (5
+> and 7 can wait for Paolo/Thomas' review first).
 
-On Wed, Sep 23, 2020 at 11:56:46AM +0100, Stefan Hajnoczi wrote:
-> clang's C11 atomic_fetch_*() functions only take a C11 atomic type
-> pointer argument. QEMU uses direct types (int, etc) and this causes a
-> compiler error when a QEMU code calls these functions in a source file
-> that also included <stdatomic.h> via a system header file:
->=20
->   $ CC=3Dclang CXX=3Dclang++ ./configure ... && make
->   ../util/async.c:79:17: error: address argument to atomic operation must=
- be a pointer to _Atomic type ('unsigned int *' invalid)
->=20
-> Avoid using atomic_*() names in QEMU's atomic.h since that namespace is
-> used by <stdatomic.h>. Prefix QEMU's APIs with 'q' so that atomic.h
-> and <stdatomic.h> can co-exist. I checked /usr/include on my machine and
-> searched GitHub for existing "qatomic_" users but there seem to be none.
->=20
-> This patch was generated using:
->=20
->   $ git grep -h -o '\<atomic\(64\)\?_[a-z0-9_]\+' include/qemu/atomic.h |=
- \
->     sort -u >/tmp/changed_identifiers
->   $ for identifier in $(</tmp/changed_identifiers); do
->         sed -i "s%\<$identifier\>%q$identifier%g" \
->             $(git grep -I -l "\<$identifier\>")
->     done
->=20
-> I manually fixed line-wrap issues and misaligned rST tables.
->=20
-> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
-> ---
-> v3:
->  * Use qatomic_ instead of atomic_ [Paolo]
->  * The diff of my manual fixups is available here:
->    https://vmsplice.net/~stefan/atomic-namespace-pre-fixups-v3.diff
->    - Dropping #ifndef qatomic_fetch_add in atomic.h
->    - atomic_##X(haddr, val) glue macros not caught by grep
->    - Keep atomic_add-bench name
->    - C preprocessor backslash-newline ('\') column alignment
->    - Line wrapping
-
-Thanks, applied quickly due to high risk of conflicts:
-https://github.com/stefanha/qemu/commits/block
-
-Stefan
-
---HlL+5n6rz5pIUxbD
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl9rZg0ACgkQnKSrs4Gr
-c8hgKAgAgMxkkgpOvyrKNVjow73folqKA0ZhroVDQHEUsTa2UYiwbbbbNRLcYq0F
-vaMQDzh9lx3hrohttFIS/rehi66qH4XW/k+tD6M4ACJbKA3QpL7N50aGEbrgTIRC
-23cIU2FHbnqNoNraQw9xU3e1A5Ux7m/1hbNaK2uIFguwU6xo9X2CvUfQsEOcSUS6
-afb0Krf0sN5LMMjGGnBuA7b6Fg9rrDNzBZvmZQkoFPkQEBoZWj4BGTyY76OhVnGg
-Po6uwJZYi5xyX9wr4ESopGboCs7ZkDF2uLGNwTbC5kkDYurysefdfclYPotW5Jxr
-kUPXGqzNlp5YT7HHoqpjtPu6bX44Wg==
-=+ZBo
------END PGP SIGNATURE-----
-
---HlL+5n6rz5pIUxbD--
+Patches 4/6 were tagged 'RFC' for late 4.1 inclusion, so can be
+considered normal patches once 4.2 dev cycle opens.

@@ -1,88 +1,110 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp588545wrs;
-        Mon, 12 Aug 2019 06:56:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzeg83SSW+LKs13boewjnyrNmlr1OQ1M8pZZh2xSufri3PbmcbXD2fDtwA8LwjYo9nAmwln
-X-Received: by 2002:a05:6402:12d1:: with SMTP id k17mr16598843edx.214.1565618195363;
-        Mon, 12 Aug 2019 06:56:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565618195; cv=none;
-        d=google.com; s=arc-20160816;
-        b=RmaZoP7stzwIcNukmEWmsQTqsa6Xi4H5+Kz9HN6cEGnyFp8C+Tbuzp4kuVen5LOLJU
-         t6VnyIqjm196N+1Ek0uXOGdphQS4U+XxV/SerTU3t+ombnwlbV95lB+M+0OFdzeLTmu4
-         k7O+zSeidnuxJICwHEZafYjdvn6qrOAXxIoamksJyxBj49iEMqDCPAKnhvV8BGKZVa9G
-         HLg9M4PwRW1lp6Yq8xwdDnpGZMI54JmHFsPRNCpYZ4t94LvytPOQ4+eDc9AOJTBU7FST
-         XQguiIVezu2REe5Ex9Je8jZxPkH8jKoUfu0VxrkSKiNYpdyXwbp3KPHRmr40yl1xLaoP
-         WEUg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
-         :dkim-signature;
-        bh=0SsvlQmKeoYxInMSPFpD04Q9/Z0kLdghUvEYhRWdhzQ=;
-        b=uj/ohSEfZW1nUgmY2E0Pq64SviKSIeHON0U6blUYG1q2ziDSJ2F4z6CsIvaiJ1jS7K
-         zIYBDihFfyg4vvLJQBAhA1O1uVUY0EPsnvABxg9Rm1QSVYvd+f97dl0ay8MvmaBJuGgO
-         QZvSmues+Vao9pNppTEQR18/csUJ/Qn527eDO9BpJPrEk7NmdWhxXqZf/rhCNbuoubRb
-         e0meZ8brTDvIkq8V7FJaqwncbQpKuU1tLbrO9p4u43uOKjoYtdxReHVvcIjM+YK9Fcg7
-         UULNhkIDQFpib9tQ9aH+dc83y8dD8au/N+5GqIfxJ4tPI3mzinWwlKbMAUo6DRD7wMKb
-         WJ4Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=JkJnkQPo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp645104wrs;
+        Mon, 12 Aug 2019 07:46:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwtGmWOrvqsNu1TmzsExWnlScfSPyybLz79CWgsw9EvmlSTOmDosbnYtaSaxtjaofjpMRRP
+X-Received: by 2002:a50:bb2f:: with SMTP id y44mr24728259ede.159.1565621210991;
+        Mon, 12 Aug 2019 07:46:50 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b41si646535edc.166.2019.08.12.06.56.35
+        by mx.google.com with ESMTPS id l24si919189eda.438.2019.08.12.07.46.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Aug 2019 06:56:35 -0700 (PDT)
+        Mon, 12 Aug 2019 07:46:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=JkJnkQPo;
+       dkim=fail header.i=@os.amperecomputing.com header.s=selector2 header.b=sdYqZtE+;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45768 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46114 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hxAoM-0002VP-G1
-	for alex.bennee@linaro.org; Mon, 12 Aug 2019 09:56:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57791)
+	id 1hxBb0-0006AN-30
+	for alex.bennee@linaro.org; Mon, 12 Aug 2019 10:46:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36812)
  by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <dgibson@ozlabs.org>) id 1hxAmN-0006PF-KV
- for qemu-arm@nongnu.org; Mon, 12 Aug 2019 09:54:33 -0400
+ (envelope-from <aaron@os.amperecomputing.com>) id 1hxBak-00069p-Id
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2019 10:46:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1hxAmM-0008Sr-0z
- for qemu-arm@nongnu.org; Mon, 12 Aug 2019 09:54:31 -0400
-Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:42879 helo=ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1hxAmL-0008Qe-Ai; Mon, 12 Aug 2019 09:54:29 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 466cld6Gltz9sPT; Mon, 12 Aug 2019 23:54:21 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1565618061;
- bh=tKnTgyRCBNKAnh8b/kQeMf1LC/KBplYmexfkIol1Q18=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=JkJnkQPozU6oKm591JMGPmTO5p1NnFQ1IGJtym+rC9oGhkTq1g0Z5Y6imujmQX/Fk
- /GBwwVH6LYhzfq2qWVUC/wxrVU9MPteIiplXHgGSX7J9DuMHl/SIKl/evKqAydEcmb
- mZYGYA6l6yhjN/P2zr/9RGM2S7xo13np1WlgupAI=
-Date: Mon, 12 Aug 2019 20:34:19 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20190812103419.GK3947@umbus.fritz.box>
-References: <20190729145654.14644-1-damien.hedde@greensocs.com>
- <20190729145654.14644-6-damien.hedde@greensocs.com>
- <20190731060533.GD2032@umbus.fritz.box>
- <51aa7e6d-3568-8485-4b67-a598a24a1f3d@greensocs.com>
- <e7b05c24-ecd1-a437-7d97-07d69ab759ec@redhat.com>
- <20190808064712.GD5465@umbus.fritz.box>
- <CAFEAcA-6GfpYPpafai1XX3u7d3RdTweEUqVwafcX+p6PvQJQpw@mail.gmail.com>
+ (envelope-from <aaron@os.amperecomputing.com>) id 1hxBaj-0005To-IR
+ for qemu-arm@nongnu.org; Mon, 12 Aug 2019 10:46:34 -0400
+Received: from mail-eopbgr720101.outbound.protection.outlook.com
+ ([40.107.72.101]:31302 helo=NAM05-CO1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <aaron@os.amperecomputing.com>)
+ id 1hxBai-0005SV-Ds; Mon, 12 Aug 2019 10:46:33 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=LCJ+DEGL5wG7qoyHTFqqDLr2h4Ll5yxtwMxLpNin5oQEeW3diyJjRUMVXosPFdg5iwnmDOTNCyvgIjAMX6SvDn8BjIk0RBeWAiqGPfvYnMB+HaONdu9afPTbTVTI9dQhHxoWV24+eUbzDwKj+SdMVZwKWw1zJuUs2be7s03G7WmvaIrDUIHgjxtPsSYOZ1daDYxoCQL+OKOLPDH0gU6ZHBGLPewgQ3CBgG4kAJE9cW8+ME2FMZQnXwoEIxrbND/Zf9/Ddpdpn3YM5p9GFAweRGFgIYXR5W37Qvae89OKokufnzNmaXNnagZde6/NbmdK4cF4bzD9yCb1jkacOch2Zw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=IfI+c2yoHWTzULGfcjcaKFZTGtqofoJyun34NgOH2y0=;
+ b=BqBFxd4uASzjK7rUSb70sRlK7DuI4XVCs0NJFIHfa4WITp+G5DPCi/qZzbKukC7RsJoeNzrxAiHssdWm62n+lPg9Y4MAgDx19JG0zlgBMXCuHaRFmqXtHEx4olU1oDtixEuZmM/30av2xrBPD2KdH1y1gCT2HrJvsD6R8TVf+IW8e77O+9xVZMcLdDqMhNAAz7/fcaiESoHV2YTczQf1Az39PfJbAa/x+OqCOxyDi2SvI19bm8BXTA+GCfyfnqh9xS2iij1cuIsHPpNmZ3eNL8VkdWnAVKMx4tksnqxgfeCJkgCFbmI3xgMYz1pwyzQ5xXjTdgLAKDeepj3h9k8paQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=os.amperecomputing.com; dmarc=pass action=none
+ header.from=os.amperecomputing.com; dkim=pass
+ header.d=os.amperecomputing.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=os.amperecomputing.com; s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=IfI+c2yoHWTzULGfcjcaKFZTGtqofoJyun34NgOH2y0=;
+ b=sdYqZtE+OArks1LmNUkE90ijraBpJWi0VGZE3mZopZ01PKYnO+Ums2DE0iYjVdsuqoTSFDFDbB91yqOnDUM7wLO25aZRs2zeAT9LepX9YhCPkr8zKNhLFdHEFz8R+JVLus1o6CtxA7Ls1KpAe+juIC9/NBpS6USpeGejUy+go10=
+Received: from DM6PR01MB4825.prod.exchangelabs.com (20.177.218.222) by
+ DM6PR01MB3945.prod.exchangelabs.com (20.176.66.24) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2157.20; Mon, 12 Aug 2019 14:46:27 +0000
+Received: from DM6PR01MB4825.prod.exchangelabs.com
+ ([fe80::4943:2b46:af24:e807]) by DM6PR01MB4825.prod.exchangelabs.com
+ ([fe80::4943:2b46:af24:e807%7]) with mapi id 15.20.2157.020; Mon, 12 Aug 2019
+ 14:46:27 +0000
+To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Thread-Topic: [PATCH] elf: Allow loading AArch64 ELF files
+Thread-Index: AQHVURy4yDbUMFtoS0GmsVnUb69OAg==
+Date: Mon, 12 Aug 2019 14:46:26 +0000
+Message-ID: <20190812144442.30027-1-aaron@os.amperecomputing.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: CY4PR14CA0035.namprd14.prod.outlook.com
+ (2603:10b6:903:101::21) To DM6PR01MB4825.prod.exchangelabs.com
+ (2603:10b6:5:6b::30)
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=aaron@os.amperecomputing.com; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-mailer: git-send-email 2.22.0
+x-originating-ip: [108.169.132.82]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: cbadcf1b-682a-4463-27e0-08d71f33daa0
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600148)(711020)(4605104)(1401327)(2017052603328)(7193020);
+ SRVR:DM6PR01MB3945; 
+x-ms-traffictypediagnostic: DM6PR01MB3945:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <DM6PR01MB394542832EC6119988848EB88AD30@DM6PR01MB3945.prod.exchangelabs.com>
+x-ms-oob-tlc-oobclassifiers: OLM:983;
+x-forefront-prvs: 012792EC17
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(4636009)(39830400003)(396003)(136003)(376002)(366004)(346002)(199004)(189003)(6916009)(8936002)(6512007)(107886003)(2351001)(6436002)(186003)(386003)(52116002)(4326008)(6506007)(54906003)(6486002)(5640700003)(316002)(102836004)(25786009)(14454004)(53936002)(50226002)(478600001)(26005)(2906002)(1076003)(256004)(6116002)(8676002)(81156014)(66066001)(81166006)(4744005)(66446008)(66946007)(66476007)(64756008)(305945005)(66556008)(5660300002)(3846002)(7736002)(99286004)(2616005)(71190400001)(71200400001)(2501003)(86362001)(486006)(476003);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:DM6PR01MB3945;
+ H:DM6PR01MB4825.prod.exchangelabs.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:0; MX:1; 
+received-spf: None (protection.outlook.com: os.amperecomputing.com does not
+ designate permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: yoTweD1lsfyQYQ4mwZ7CFyTPUYOP4MaogWXfh9A1jG/onqmTHnJCoHEQUFX7y8N/P9XL8Gbv/C4vmkf67lU0AmmR67GEs23Gk3I2CByUPScxULbpACXWHAoiqpno6YvCj1yght2yv9pHHMdbYu2+Z236PhJt1joh0+CFWW8uOrQ0ny5oe1GFQByXJrUwRu9EqpOo3+u2KmCJv3nMOlpvx06XVgjDxWcA9RP7kPTETqI9dlq6SvZWhstxXqkg6VFRgwkoJwkPNqzuqE40onXkOQlXiJ35pVGFCTN+WR7q+rXmuma7SVLTS/PhofytoW3isMFKF8d1L2b04DT9QyPPfKd2UCZiLFaaScVeXNL73JY97XZzLYxvUMDeFztvPVi+3KS3pMbhmucBi2UsDN3IY5ZrfCqwn9fXQqtDpteygdE=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="2feizKym29CxAecD"
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-6GfpYPpafai1XX3u7d3RdTweEUqVwafcX+p6PvQJQpw@mail.gmail.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 05/33] Switch to new api in
- qdev/bus
+X-OriginatorOrg: os.amperecomputing.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: cbadcf1b-682a-4463-27e0-08d71f33daa0
+X-MS-Exchange-CrossTenant-originalarrivaltime: 12 Aug 2019 14:46:27.1155 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 3bc2b170-fd94-476d-b0ce-4229bdc904a7
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: gJfeHgrUmQnJYtGepDpW/huIUyFuP0O+DkS/XJqZcqoQTgaXOYqyHA/jUNWnDl349nlZO+v7w6rZ7f6EjHMwtiIREphhwaO3vYQ1FB22id0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR01MB3945
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 40.107.72.101
+Subject: [Qemu-arm] [PATCH] elf: Allow loading AArch64 ELF files
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -94,143 +116,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Collin Walling <walling@linux.ibm.com>,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
- Edgar Iglesias <edgar.iglesias@xilinx.com>, Hannes Reinecke <hare@suse.com>,
- Qemu-block <qemu-block@nongnu.org>, David Hildenbrand <david@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-s390x <qemu-s390x@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Damien Hedde <damien.hedde@greensocs.com>,
- "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Mark Burton <mark.burton@greensocs.com>, qemu-ppc <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
+From: Aaron Lindsay OS via Qemu-arm <qemu-arm@nongnu.org>
+Reply-To: Aaron Lindsay OS <aaron@os.amperecomputing.com>
+Cc: Aaron Lindsay OS <aaron@os.amperecomputing.com>,
+ Peter Crosthwaite <crosthwaitepeter@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Alistair Francis <alistair.francis@xilinx.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Hcf5yF2FgRNX
+X-TUID: kEc95hudMNJn
 
+Treat EM_AARCH64 as a valid value when checking the ELF's machine-type
+header.
 
---2feizKym29CxAecD
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Aaron Lindsay <aaron@os.amperecomputing.com>
+---
+ include/hw/elf_ops.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-On Fri, Aug 09, 2019 at 12:08:43PM +0100, Peter Maydell wrote:
-> On Fri, 9 Aug 2019 at 01:10, David Gibson <david@gibson.dropbear.id.au> w=
-rote:
-> >
-> > On Wed, Jul 31, 2019 at 01:31:28PM +0200, Philippe Mathieu-Daud=E9 wrot=
-e:
-> > > On 7/31/19 11:29 AM, Damien Hedde wrote:
-> > > > On 7/31/19 8:05 AM, David Gibson wrote:
-> > > >> On Mon, Jul 29, 2019 at 04:56:26PM +0200, Damien Hedde wrote:
-> > > >>> @@ -922,7 +906,7 @@ static void device_set_realized(Object *obj, =
-bool value, Error **errp)
-> > > >>>              }
-> > > >>>          }
-> > > >>>          if (dev->hotplugged) {
-> > > >>> -            device_legacy_reset(dev);
-> > > >>> +            device_reset(dev, true);
-> > > >>
-> > > >> So.. is this change in the device_reset() signature really necessa=
-ry?
-> > > >> Even if there are compelling reasons to handle warm reset in the n=
-ew
-> > > >> API, that doesn't been you need to change device_reset() itself fr=
-om
-> > > >> its established meaning of a cold (i.e. as per power cycle) reset.
->=20
-> So, I don't think that actually is the established meaning of
-> device_reset(). I think our current semantics for this function are
-> "reset of some sort, probably cold, but in practice called in
-> lots of places which really wanted some other kind of reset,
-> because our current reset semantics are not well-defined".
->=20
-> For instance in s390-pci-inst.c the handling of CLP_SET_DISABLE_PCI_FN
-> calls device_reset() on a device. I bet that's not really intentionally
-> trying to model "we powered it off and on again".
-> hw/scsi/vmw_pvscsi.c uses device_reset() in its handling of
-> the guest "reset the SCSI bus" command. I know that isn't literally
-> powering off the SCSI disks and powering them on again.
->=20
-> The advantage of an actual API change here is that it means we go
-> and look at all the call sites and find out what the semantics
-> they actually wanted were, and hopefully that then feeds into the
-> design of the new API and we make sure we can handle those
-> semantics in a non-confused way.
-
-That's a fair point.
-
-> > > >> Warm resets are generally called in rather more specific circumsta=
-nces
-> > > >> (often under guest software direction) so it seems likely that use=
-rs
-> > > >> would want to engage with the new reset API directly.  Or we could
-> > > >> just create a device_warm_reset() wrapper.  That would also avoid =
-the
-> > > >> bare boolean parameter, which is not great for readability (you ha=
-ve
-> > > >> to look up the signature to have any idea what it means).
-> > >
-> > > If the boolean is not meaningful, we can use an enum...
-> >
-> > That's certainly better, but I'm not seeing a compelling reason not to
-> > have separate function names.  It's just as clear and means less churn.
->=20
-> One advantage of an enum is that we have an extendable API,
-> so we could say something like "all devices support reset types
-> 'cold' and 'warm', but individual devices or families of devices
-> can also support other kinds of reset". So the relevant s390
-> devices could directly support the kinds of reset currently
-> enumerated by the enum s390_reset, and then if you know you're
-> dealing with an s390 device you can ask it to reset with the
-> right semantics rather than fudging it with one of the generic ones.
-> Or devices with "if I'm reset by the guest writing to a register then
-> I reset less stuff than a reset via external reset line" have a
-> way to model that.
-
-Ok, I can see the value in that.  I guess the way I'd prefer to
-approach it though, is to start out with just a single-value enum for
-(roughly) a cold reset.  Then when we find a subset of devices for
-which we can consistently define a warm reset of some type, we add an
-enum value for it.
-
-I guess we'd also need some way of introspecting what reset types are
-supported by a device.
-
+diff --git a/include/hw/elf_ops.h b/include/hw/elf_ops.h
+index 690f9238c8..f12faa90a1 100644
+--- a/include/hw/elf_ops.h
++++ b/include/hw/elf_ops.h
+@@ -381,6 +381,12 @@ static int glue(load_elf, SZ)(const char *name, int fd=
+,
+                 goto fail;
+             }
+             break;
++        case EM_AARCH64:
++            if (ehdr.e_machine !=3D EM_AARCH64) {
++                ret =3D ELF_LOAD_WRONG_ARCH;
++                goto fail;
++            }
++            break;
+         default:
+             if (elf_machine !=3D ehdr.e_machine) {
+                 ret =3D ELF_LOAD_WRONG_ARCH;
 --=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+2.17.1
 
---2feizKym29CxAecD
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl1RQKoACgkQbDjKyiDZ
-s5IaYA/+ObLrZrONrkHDDwV2qNfslLhBNVDM0aO7u1wp1M9oUUwxcTsqKq44wVAU
-GfFox0WIjUCRiKRo+wVo85s2pfn7JnBq0Bro09QczDLJSWcImb4rPvJDmDkppZ/x
-gakLSOiONlth7Ku8tbvduDcfUmMAHk78YMf+UcfBuB5aBZ28TRbgZvaqWzwjMkpo
-OQOUyMNTqtRRZzjzqNOXKXZ5z8nNBUSOrEUZ7uXyQDTgthFNMYeoTFoXP76yY+xY
-dtcMGEnH5ZaPioS0n2W+h+s/7kwhrE8Cg1nNtQhnQA+q0jgGMftQg1SFVID6bOVs
-hqyn1BjB1SC0POgaeoOdoEaXJD0emRnIG2VWgkrLT7H8Dww9k/TkBGIoB+UYBNqj
-2AQ4DlYSbsgBrkDbOnLk1Wi6En10f3VImGQz1p2TsUVfX7PnakEj72dLZVha8Gzu
-6tBtukEX5BwhdXJ+QHairZ9Gtc9lt9jHyoEGzLDdyVm77CzINbaeeDPWVM1b+slY
-lUw3VUUbUYsFzoLOuQqtYGUBrfmvFz/wLMFz9WgcJF7pixZZhP1pVeOaNHj3MYLV
-0gfu0pIzwOwBx0aPF3mr6EuSrirFYw7ySSaREixCewoLGJMmVU5VA+EV1eLCbO0w
-4svUEbCt9nZwojrULjVqp/uoC3veExgQz+pJzBrpWj0pzvmFq70=
-=VoXt
------END PGP SIGNATURE-----
-
---2feizKym29CxAecD--

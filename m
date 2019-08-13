@@ -1,134 +1,237 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp684893wrs;
-        Tue, 13 Aug 2019 01:52:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwQPESzoJBXvAVp0aAuNeQtgbwtHeO1JNXKihsnZHzKIBEiNkEdtLl8yDzERu4g21LpWs7X
-X-Received: by 2002:aa7:9edc:: with SMTP id r28mr7387563pfq.219.1565686379868;
-        Tue, 13 Aug 2019 01:52:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565686379; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1022812wrs;
+        Tue, 13 Aug 2019 07:17:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyDnf/KnM4cyA2WWBSgAIh+HzwWd2cHCy8AuwTIK5wFe3XkPZzc4hpAPUtkugnqZuJvmPEP
+X-Received: by 2002:a0c:8dc7:: with SMTP id u7mr34224969qvb.41.1565705851726;
+        Tue, 13 Aug 2019 07:17:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565705851; cv=none;
         d=google.com; s=arc-20160816;
-        b=cvNT/tm0OsFyr9Bb0BqA+h80iKJ71IWtZo2iX3iDV7p40EfHgQTE65QSxclq8fllxj
-         X+VaSxpu/rCmJGG7nXUpzAzFTbnv6Qqr+0NgE+U1u7RFj9iZOFGwWGbCfaOxNCfFptod
-         T5abb7FvLHtP5sA9uQpSA0tMpczrm8i30H5DXRRlaa8HeueBgI06/dkDQYvD8M71aoxB
-         4N+ZuPkANiFuxwOBWG9V+T/eqNj+R+nq+DRKxxLy3CK/ZibCNuuzzoIaP2lODx2wNUfG
-         TbsVej7C613Bwb08lIflbEk/EbcjBEW/cTdUxZmwhD4VEoeSdMKqJTTBsfo7I1G80756
-         XWqA==
+        b=WXN9B/MKMiyRB8SWNQxQ9ysHIf+lA7SBX4S7y2bhW/XHZ0N2DWs29peUtBmyTevBYI
+         qpXWOB0Iz/o1zxlAhSsMRolqck7pURq9F09dbNwtQWqdn7HQj50jvnZohkc2B5yHVkFO
+         a1JG0QPibcuNOXEPESKqo16PUno/FAfph/9FsKuBVEjmI49SE2Cn1m/isatkH/Ir23X8
+         vIGGMGlqCkDAy+lzGyzrjEN0+r+Mu8TE4+vL/wma8bILm1pQX6WdIHX/hUBKqivv9V7e
+         o1zpVbiHCXGziP7K/+i8fJqdjjCLrgDyGb/+j+FYvw3H4X6VNTtjl4ExYEkIqIzQgRsU
+         FbVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:mime-version:user-agent:date:message-id:subject:cc
-         :to:from;
-        bh=5A/L+Vkv7alHgURz/ckl5JD+YVAJ+HVE3O4ACNKrfNQ=;
-        b=HCIxJFMAK1iR8ULF+8Ud6dTCZiWbH/zW/J6VqlbnYO3qdM4C7kAF4YLe5VfDDexoQv
-         qnIPxCigymTD5vpUT+XHbf0qiB469iqu6j3mjZRGUG0mtaRNFeJjtGyY4k0cx0jM+Si3
-         oXwJ9XrZ57xht/FdUBifl6LeOTw2xHjih0BsAs6rKTHC7Tal5Q31Fv9lK4sFPQx+VTBR
-         vHW0UZj35D0uMAtptnBzvORfUEs5KXZeYltVYKxLR4cM2pSCbT/18lhQKaiL4u6b0EzC
-         J81csgWkIozNuGVdJLvnjeZcq+u9YefbShAKWGegjKSnXLplF2xoaxI7uz4jq5Y/zmpk
-         7tJw==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :mime-version:user-agent:references:in-reply-to:subject:to:from
+         :message-id:date;
+        bh=kFNIkq102/YDJHOpv0ZgyOairSJuuWAAgh22YNemGj0=;
+        b=uKIAhXnl77Au2YAT64x9CrlpX+vrJG1psxuctQZMM1+Kg6eWfMz52LkapNLV1esASl
+         2fRaQrLIAashWuWeienp6RMsbJDL1vv1eMHZMmfuVVTqNRDgYTgQKlnCkZQ27fIS0i1o
+         lkwHxniyafl1Ui0TASUifm46SB+7KBhXcAgr3fe8emNVAuFvdKtK+MOZn/wvUwBmwq+t
+         I1QEra0K8D/NO5B46KRTD7vs6VkLCQv+SYbi0l4kBbur/qVJ1uSMa8D8OPuxOQ6VXKTE
+         Ue1bpsbx7ETdYzTL5MB8aqyqqSHni0x36/mbgFG18POYTLhIfaFIa8/MztmLmv1rwCGP
+         iBxA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id q13si573469pjb.13.2019.08.13.01.52.59;
-        Tue, 13 Aug 2019 01:52:59 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id d141si5833858qkb.60.2019.08.13.07.17.31;
+        Tue, 13 Aug 2019 07:17:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727639AbfHMIw6 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Tue, 13 Aug 2019 04:52:58 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:4239 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726890AbfHMIw6 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 13 Aug 2019 04:52:58 -0400
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 124E0E3933AC374F08C4;
-        Tue, 13 Aug 2019 16:52:57 +0800 (CST)
-Received: from [127.0.0.1] (10.184.12.158) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Tue, 13 Aug 2019
- 16:52:48 +0800
-From:   Zenghui Yu <yuzenghui@huawei.com>
-To:     <kvmarm@lists.cs.columbia.edu>, <qemu-arm@nongnu.org>
-CC:     Marc Zyngier <maz@kernel.org>, Eric Auger <eric.auger@redhat.com>,
-        "James Morse" <james.morse@arm.com>,
-        Julien Thierry <julien.thierry.kdev@gmail.com>,
-        <suzuki.poulose@arm.com>, <peter.maydell@linaro.org>,
-        <kvm@vger.kernel.org>,
-        "Wanghaibin (D)" <wanghaibin.wang@huawei.com>,
-        <zhang.zhanghailiang@huawei.com>
-Subject: Can we boot a 512U kvm guest?
-Message-ID: <86aa9609-7dc9-1461-ae47-f50897cd0875@huawei.com>
-Date:   Tue, 13 Aug 2019 16:50:27 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:64.0) Gecko/20100101
- Thunderbird/64.0
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 55F254A55C;
+	Tue, 13 Aug 2019 10:17:31 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.799
+X-Spam-Level: 
+X-Spam-Status: No, score=0.799 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699] autolearn=no
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id JBM0sYvtHQkQ; Tue, 13 Aug 2019 10:17:29 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id DE5DB4A4A0;
+	Tue, 13 Aug 2019 10:17:29 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 1F4124A4A0
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 13 Aug 2019 10:17:28 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id vCog51VfD6TB for <kvmarm@lists.cs.columbia.edu>;
+ Tue, 13 Aug 2019 10:17:26 -0400 (EDT)
+Received: from foss.arm.com (foss.arm.com [217.140.110.172])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 9AA594A32E
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 13 Aug 2019 10:17:26 -0400 (EDT)
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 0204D344;
+ Tue, 13 Aug 2019 07:17:26 -0700 (PDT)
+Received: from big-swifty.misterjones.org (unknown [172.31.20.19])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 125613F706;
+ Tue, 13 Aug 2019 07:17:19 -0700 (PDT)
+Date: Tue, 13 Aug 2019 15:17:12 +0100
+Message-ID: <86d0h9no9j.wl-marc.zyngier@arm.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
+To: Zenghui Yu <yuzenghui@huawei.com>
+Subject: Re: Can we boot a 512U kvm guest?
+In-Reply-To: <86aa9609-7dc9-1461-ae47-f50897cd0875@huawei.com>
+References: <86aa9609-7dc9-1461-ae47-f50897cd0875@huawei.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL/10.8 EasyPG/1.0.0 Emacs/26
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Cc: zhang.zhanghailiang@huawei.com, kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ kvmarm@lists.cs.columbia.edu
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.184.12.158]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: dBbLWwXs5cAW
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: +Fuaulk/6xvH
 
-Hi folks,
+On Tue, 13 Aug 2019 09:50:27 +0100,
+Zenghui Yu <yuzenghui@huawei.com> wrote:
 
-Since commit e25028c8ded0 ("KVM: arm/arm64: Bump VGIC_V3_MAX_CPUS to
-512"), we seemed to be allowed to boot a 512U guest.  But I failed to
-start it up with the latest QEMU.  I guess there are at least *two*
-reasons (limitations).
+Hi Zenghui,
 
-First I got a QEMU abort:
-	"kvm_set_irq: Invalid argument"
+> 
+> Hi folks,
+> 
+> Since commit e25028c8ded0 ("KVM: arm/arm64: Bump VGIC_V3_MAX_CPUS to
+> 512"), we seemed to be allowed to boot a 512U guest.  But I failed to
+> start it up with the latest QEMU.  I guess there are at least *two*
+> reasons (limitations).
+> 
+> First I got a QEMU abort:
+> 	"kvm_set_irq: Invalid argument"
+> 
+> Enable the trace_kvm_irq_line() under debugfs, when it comed with
+> vcpu-256, I got:
+> 	"Inject UNKNOWN interrupt (3), vcpu->idx: 0, num: 23, level: 0"
+> and kvm_vm_ioctl_irq_line() returns -EINVAL to user-space...
+> 
+> So the thing is that we only have 8 bits for vcpu_index field ([23:16])
+> in KVM_IRQ_LINE ioctl.  irq_type field will be corrupted if we inject a
+> PPI to vcpu-256, whose vcpu_index will take 9 bits.
 
-Enable the trace_kvm_irq_line() under debugfs, when it comed with
-vcpu-256, I got:
-	"Inject UNKNOWN interrupt (3), vcpu->idx: 0, num: 23, level: 0"
-and kvm_vm_ioctl_irq_line() returns -EINVAL to user-space...
+Irk. Not great indeed. Clearly, we have a couple of holes in the way
+we test these ABI changes (/me eyes Eric...).
 
-So the thing is that we only have 8 bits for vcpu_index field ([23:16])
-in KVM_IRQ_LINE ioctl.  irq_type field will be corrupted if we inject a
-PPI to vcpu-256, whose vcpu_index will take 9 bits.
+> 
+> I temporarily patched the KVM and QEMU with the following diff:
+> 
+> ---8<---
+> diff --git a/arch/arm64/include/uapi/asm/kvm.h
+> b/arch/arm64/include/uapi/asm/kvm.h
+> index 95516a4..39a0fb1 100644
+> --- a/arch/arm64/include/uapi/asm/kvm.h
+> +++ b/arch/arm64/include/uapi/asm/kvm.h
+> @@ -325,10 +325,10 @@ struct kvm_vcpu_events {
+>  #define   KVM_ARM_VCPU_TIMER_IRQ_PTIMER		1
+> 
+>  /* KVM_IRQ_LINE irq field index values */
+> -#define KVM_ARM_IRQ_TYPE_SHIFT		24
+> -#define KVM_ARM_IRQ_TYPE_MASK		0xff
+> +#define KVM_ARM_IRQ_TYPE_SHIFT		28
+> +#define KVM_ARM_IRQ_TYPE_MASK		0xf
+>  #define KVM_ARM_IRQ_VCPU_SHIFT		16
+> -#define KVM_ARM_IRQ_VCPU_MASK		0xff
+> +#define KVM_ARM_IRQ_VCPU_MASK		0xfff
+>  #define KVM_ARM_IRQ_NUM_SHIFT		0
+>  #define KVM_ARM_IRQ_NUM_MASK		0xffff
+> 
+> ---8<---
+> 
+> It makes things a bit better, it also immediately BREAKs the api with
+> old versions.
 
-I temporarily patched the KVM and QEMU with the following diff:
+Yes, and we can't have that (specially if you consider that this API
+is shared between 32 and 64bit). One "get out of jail card" is to
+steal a few bits from the top of the word, and encode things there:
 
----8<---
-diff --git a/arch/arm64/include/uapi/asm/kvm.h 
-b/arch/arm64/include/uapi/asm/kvm.h
-index 95516a4..39a0fb1 100644
+diff --git a/arch/arm/include/uapi/asm/kvm.h b/arch/arm/include/uapi/asm/kvm.h
+index 4602464ebdfb..86db092e4c2f 100644
+--- a/arch/arm/include/uapi/asm/kvm.h
++++ b/arch/arm/include/uapi/asm/kvm.h
+@@ -254,8 +254,10 @@ struct kvm_vcpu_events {
+ #define   KVM_DEV_ARM_ITS_CTRL_RESET		4
+ 
+ /* KVM_IRQ_LINE irq field index values */
++#define KVM_ARM_IRQ_VCPU2_SHIFT		28
++#define KVM_ARM_IRQ_VCPU2_MASK		0xf
+ #define KVM_ARM_IRQ_TYPE_SHIFT		24
+-#define KVM_ARM_IRQ_TYPE_MASK		0xff
++#define KVM_ARM_IRQ_TYPE_MASK		0xf
+ #define KVM_ARM_IRQ_VCPU_SHIFT		16
+ #define KVM_ARM_IRQ_VCPU_MASK		0xff
+ #define KVM_ARM_IRQ_NUM_SHIFT		0
+diff --git a/arch/arm64/include/uapi/asm/kvm.h b/arch/arm64/include/uapi/asm/kvm.h
+index 7b7ac0f6cec9..44cb25bfc95e 100644
 --- a/arch/arm64/include/uapi/asm/kvm.h
 +++ b/arch/arm64/include/uapi/asm/kvm.h
-@@ -325,10 +325,10 @@ struct kvm_vcpu_events {
-  #define   KVM_ARM_VCPU_TIMER_IRQ_PTIMER		1
-
-  /* KVM_IRQ_LINE irq field index values */
--#define KVM_ARM_IRQ_TYPE_SHIFT		24
+@@ -308,8 +308,10 @@ struct kvm_vcpu_events {
+ #define   KVM_ARM_VCPU_TIMER_IRQ_PTIMER		1
+ 
+ /* KVM_IRQ_LINE irq field index values */
++#define KVM_ARM_IRQ_VCPU2_SHIFT		28
++#define KVM_ARM_IRQ_VCPU2_MASK		0xf
+ #define KVM_ARM_IRQ_TYPE_SHIFT		24
 -#define KVM_ARM_IRQ_TYPE_MASK		0xff
-+#define KVM_ARM_IRQ_TYPE_SHIFT		28
 +#define KVM_ARM_IRQ_TYPE_MASK		0xf
-  #define KVM_ARM_IRQ_VCPU_SHIFT		16
--#define KVM_ARM_IRQ_VCPU_MASK		0xff
-+#define KVM_ARM_IRQ_VCPU_MASK		0xfff
-  #define KVM_ARM_IRQ_NUM_SHIFT		0
-  #define KVM_ARM_IRQ_NUM_MASK		0xffff
+ #define KVM_ARM_IRQ_VCPU_SHIFT		16
+ #define KVM_ARM_IRQ_VCPU_MASK		0xff
+ #define KVM_ARM_IRQ_NUM_SHIFT		0
+diff --git a/virt/kvm/arm/arm.c b/virt/kvm/arm/arm.c
+index 90cedebaeb94..fb685c1c0514 100644
+--- a/virt/kvm/arm/arm.c
++++ b/virt/kvm/arm/arm.c
+@@ -889,6 +889,7 @@ int kvm_vm_ioctl_irq_line(struct kvm *kvm, struct kvm_irq_level *irq_level,
+ 
+ 	irq_type = (irq >> KVM_ARM_IRQ_TYPE_SHIFT) & KVM_ARM_IRQ_TYPE_MASK;
+ 	vcpu_idx = (irq >> KVM_ARM_IRQ_VCPU_SHIFT) & KVM_ARM_IRQ_VCPU_MASK;
++	vcpu_idx += ((irq >> KVM_ARM_IRQ_VCPU2_SHIFT) & KVM_ARM_IRQ_VCPU2_MASK) * (KVM_ARM_IRQ_VCPU_MASK + 1);
+ 	irq_num = (irq >> KVM_ARM_IRQ_NUM_SHIFT) & KVM_ARM_IRQ_NUM_MASK;
+ 
+ 	trace_kvm_irq_line(irq_type, vcpu_idx, irq_num, irq_level->level);
 
----8<---
+It should work because we've been careful not to allow value outside
+of {0, 1, 2} for irq_type. I don't like it, but I really don't feel
+like adding another IRQ related ioctl. We still have 16 irq types
+(which is already a waste of space), and we can go up to 4096 vcpu.
 
-It makes things a bit better, it also immediately BREAKs the api with
-old versions.
+Peter, what do you think?
 
+> Next comes one more QEMU abort (with the "fix" above):
+> 	"Failed to set device address: No space left on device"
+> 
+> We register two io devices (rd_dev and sgi_dev) on KVM_MMIO_BUS for
+> each redistributor. 512 vcpus take 1024 io devices, which is beyond the
+> maximum limitation of the current kernel - NR_IOBUS_DEVS (1000).
+> So we get a ENOSPC error here.
 
-Next comes one more QEMU abort (with the "fix" above):
-	"Failed to set device address: No space left on device"
+I can reproduce that issue here ("499 vcpus on my Chromebook,
+baby"). Not an ABI problem though, and we can bump it up if that's
+needed.
 
-We register two io devices (rd_dev and sgi_dev) on KVM_MMIO_BUS for
-each redistributor. 512 vcpus take 1024 io devices, which is beyond the
-maximum limitation of the current kernel - NR_IOBUS_DEVS (1000).
-So we get a ENOSPC error here.
+> I don't know if the similar problems have been discussed before in ML.
+> Is it time to really support the 512U guest?
 
-
-I don't know if the similar problems have been discussed before in ML.
-Is it time to really support the 512U guest?
-
+The real question is "why the hell would you want to do that?" ;-)
+Seriously, I'm very interested in finding out what is the use case for
+these gigantic VMs, other than debugging the kernel for big machines.
 
 Thanks,
-zenghui
+
+	M.
+
+-- 
+Jazz is not dead, it just smells funny.
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

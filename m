@@ -1,67 +1,67 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp34949wrs;
-        Tue, 13 Aug 2019 14:12:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz7TN47wA08J+ZqV6oU7OhRf5N+O6eJEG4kLPIsV6Hn9wqUMbQsafhST66coXnf1HPoteNp
-X-Received: by 2002:ac8:7b56:: with SMTP id m22mr21317503qtu.390.1565730749835;
-        Tue, 13 Aug 2019 14:12:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565730749; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp35119wrs;
+        Tue, 13 Aug 2019 14:12:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwgrCDC1XBLv/DsWjDfALSOJy9Dxg9LR1t7V1Cx1OdnF/UEJLpHR2JFNhavnNSnhKwPYTy1
+X-Received: by 2002:a37:a492:: with SMTP id n140mr32515614qke.137.1565730761378;
+        Tue, 13 Aug 2019 14:12:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565730761; cv=none;
         d=google.com; s=arc-20160816;
-        b=xYsr66I2cDZxt5hhT3jamK4RaFTBPKhBk1rDdLo+EEA9Idl8hoeOdNdisBePsC8ehT
-         bMDRaf5l/ackzMyLdfiKy17eDqJUBgAx6pK4hWm7I5lMrTH3Ut+QcAq+Ib/OLFAyVOYb
-         fNMaDPoHdiCnZ017kJkRej7eAMLOk1xnqkSnSyzIUTSHI5FJW0Ak6F4xJfTycKoeADwA
-         XYBbiz/IN4PFwAKr1hCezgRpeFvs9/pq3r/eFSBStBryQ/hMZhK+nrC33WpcQPnPe6qE
-         e47jNC6O8gNycR3X7BaRn1pvsEqMoMM4AWitUqPl3ccC3urMKAkfsEyZuBfDoP0xNJce
-         7Hwg==
+        b=0R9wv8yUgwcpBcthRCRo4dK579HSDf2pRTYE0A4M4i24Fv0xuSdGmA1/GuWhE5PBc1
+         t+gZS5wu636QnO6u3BFE/F1nNs7UFDWi5yHsapoq4KXpflv7PZWNp6LXo0/s56oQiKQ9
+         hIFGV6jZP2AA6e7UPyBVwcDtIbgNJj7Hg9U9n1TeEHSc1IikYpmuKkNjSfDfSgllZBZw
+         lU5jZkbu7APRKzmAqxI+mZ+1/gNNO/h1T7HDxe8SpDH3BMgJRFo3zKN8hgyM09PU1LNh
+         m1xTUJluZk9u77pNAkROSb04bg8DMUYtcQ87Xk0YJhnZKdbKEsngBIxo3w0mI994qa7W
+         /FCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version:references
          :in-reply-to:message-id:date:to:from;
-        bh=902FfrCE18fMMDnbH1AbjewyJewJhlr780PGsmnk3K4=;
-        b=RI1imfyxqexL0rU1QlrGXa3xDJpps7OMVjWRsWfi8Rz8WUamlruiu+RfsiV2o+zH41
-         1C799J1v2ovWNPpH7o5h2aiJmPQrYJ6egklapmvFqfOVhXVwfn0O/TvljGeU48OgeYww
-         OuJfyI2gQLT7rygDMs16ND4i8XXh7i8WJ/eVUtT3da1rQ986svyiylOs2x+7gT4zrjGf
-         2zt772+McSMqtbI8Fx21mBNX2I9m9m1G9OvX+1tBWs5vws7rYh6sg6GGygXQ+Vu+kSbb
-         3mhIDqoWGn8AUu1GfvgcK1/tIkFzwW974VaFyIPl6i6jqGaX7Sz6jC3HXj0dGC+F3iyQ
-         moeA==
+        bh=hKHHY1cJw7n5+GwvXCIspcDe8BTV9o7Z2jROMlC41XQ=;
+        b=U71d7vzpXjUXTIBn8vasiFRxG5q/Co7bgcZRfTCp/YON4bMH6z+yTFa119gqnM8Cw2
+         0n3E9NXryR5X3N7ZcitefFnsnLZfz6OREhrLawQE7kMQsiYJKwRa8K1xXratTdPUZz/j
+         +AcjtX9Agibkm/J7lsW7DgzTZ0HUry6+Bgl9xnVlS+6iK4xYmkwypM9v0/JjFwaEe4Qg
+         jLC2qJfjQ7YdpTdUxMo4OTaSWEPY1pBMgGb+VGkyGJGcvmQ9QJHmJHFOs3Ay9gpf6JJS
+         cksf1jnxSdGvVbdQyZcKvCH3Kgr8/ODVwT2TdDdy6eBg7xNqk1F6uRhI+rHwPWXJU5Ni
+         fIeA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 10si5442423qvq.134.2019.08.13.14.12.29
+        by mx.google.com with ESMTPS id g54si8489891qta.267.2019.08.13.14.12.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Aug 2019 14:12:29 -0700 (PDT)
+        Tue, 13 Aug 2019 14:12:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55516 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55528 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hxe5l-0003cO-BO
-	for alex.bennee@linaro.org; Tue, 13 Aug 2019 17:12:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41695)
+	id 1hxe5w-0004Dz-Q0
+	for alex.bennee@linaro.org; Tue, 13 Aug 2019 17:12:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41852)
  by lists.gnu.org with esmtp (Exim 4.86_2)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hxe11-0004td-J7
- for qemu-arm@nongnu.org; Tue, 13 Aug 2019 17:07:38 -0400
+ id 1hxe1G-00051L-Nm
+ for qemu-arm@nongnu.org; Tue, 13 Aug 2019 17:07:52 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hxe10-0001Dx-5z
- for qemu-arm@nongnu.org; Tue, 13 Aug 2019 17:07:35 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:33576 helo=huawei.com)
+ id 1hxe1F-0001UQ-C8
+ for qemu-arm@nongnu.org; Tue, 13 Aug 2019 17:07:50 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:33914 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hxe0z-0001CJ-Lm; Tue, 13 Aug 2019 17:07:34 -0400
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id B3D2A16FBA25251D182D;
- Wed, 14 Aug 2019 05:07:31 +0800 (CST)
+ id 1hxe1F-0001RE-0b; Tue, 13 Aug 2019 17:07:49 -0400
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id E8FD7FB4E9428B21955B;
+ Wed, 14 Aug 2019 05:07:46 +0800 (CST)
 Received: from S00345302A-PC.china.huawei.com (10.47.94.0) by
  DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.439.0; Wed, 14 Aug 2019 05:07:21 +0800
+ 14.3.439.0; Wed, 14 Aug 2019 05:07:36 +0800
 From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
  <imammedo@redhat.com>
-Date: Tue, 13 Aug 2019 22:05:32 +0100
-Message-ID: <20190813210539.31164-6-shameerali.kolothum.thodi@huawei.com>
+Date: Tue, 13 Aug 2019 22:05:36 +0100
+Message-ID: <20190813210539.31164-10-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20190813210539.31164-1-shameerali.kolothum.thodi@huawei.com>
 References: <20190813210539.31164-1-shameerali.kolothum.thodi@huawei.com>
@@ -71,8 +71,8 @@ X-Originating-IP: [10.47.94.0]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 45.249.212.32
-Subject: [Qemu-arm] [PATCH-for-4.2 v9 05/12] hw/arm/virt: Add 4.2 machine
- type
+Subject: [Qemu-arm] [PATCH-for-4.2 v9 09/12] hw/arm: Use GED for
+ system_powerdown event
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -89,70 +89,167 @@ Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
  sebastien.boeuf@intel.com, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0bygrxvRjCyd
+X-TUID: fMOTzP8ZUlOj
 
-This is in preparation to create ACPI GED device as we
-need to disable it for <4.2 for migration to work.
+For machines 4.2 or higher with ACPI boot use GED for system_powerdown
+event instead of GPIO. Guest boot with DT still uses GPIO.
 
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
- hw/arm/virt.c       | 9 ++++++++-
- hw/core/machine.c   | 3 +++
- include/hw/boards.h | 3 +++
- 3 files changed, 14 insertions(+), 1 deletion(-)
+v8 --> v9
+ -Re-arranged patches 8 & 9 from v8 based on Igor's comments.
 
+v7 --> v8
+ -Retained gpio based system_powerdown support for machines < 4.2.
+ -Reuse of virt_powerdown_req() for ACPI GED use.
+ -Dropped Eric's R-by for now because of above.
+
+---
+ hw/acpi/generic_event_device.c         |  8 ++++++++
+ hw/arm/virt-acpi-build.c               |  6 +++---
+ hw/arm/virt.c                          | 16 +++++++++++-----
+ include/hw/acpi/acpi_dev_interface.h   |  1 +
+ include/hw/acpi/generic_event_device.h |  3 +++
+ 5 files changed, 26 insertions(+), 8 deletions(-)
+
+diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
+index f4c23470c2..d6d7b28cfd 100644
+--- a/hw/acpi/generic_event_device.c
++++ b/hw/acpi/generic_event_device.c
+@@ -19,6 +19,7 @@
+ 
+ static const uint32_t ged_supported_events[] = {
+     ACPI_GED_MEM_HOTPLUG_EVT,
++    ACPI_GED_PWR_DOWN_EVT,
+ };
+ 
+ /*
+@@ -103,6 +104,11 @@ void build_ged_aml(Aml *table, const char *name, HotplugHandler *hotplug_dev,
+                 aml_append(if_ctx, aml_call0(MEMORY_DEVICES_CONTAINER "."
+                                              MEMORY_SLOT_SCAN_METHOD));
+                 break;
++            case ACPI_GED_PWR_DOWN_EVT:
++                aml_append(if_ctx,
++                           aml_notify(aml_name(ACPI_POWER_BUTTON_DEVICE),
++                                      aml_int(0x80)));
++                break;
+             default:
+                 /*
+                  * Please make sure all the events in ged_supported_events[]
+@@ -189,6 +195,8 @@ static void acpi_ged_send_event(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+ 
+     if (ev & ACPI_MEMORY_HOTPLUG_STATUS) {
+         sel = ACPI_GED_MEM_HOTPLUG_EVT;
++    } else if (ev & ACPI_POWER_DOWN_STATUS) {
++        sel = ACPI_GED_PWR_DOWN_EVT;
+     } else {
+         /* Unknown event. Return without generating interrupt. */
+         warn_report("GED: Unsupported event %d. No irq injected", ev);
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 6d697af2df..61b399dc58 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -49,7 +49,6 @@
+ #include "kvm_arm.h"
+ 
+ #define ARM_SPI_BASE 32
+-#define ACPI_POWER_BUTTON_DEVICE "PWRB"
+ 
+ static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
+ {
+@@ -739,13 +738,14 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+                     (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
+     acpi_dsdt_add_pci(scope, memmap, (irqmap[VIRT_PCIE] + ARM_SPI_BASE),
+                       vms->highmem, vms->highmem_ecam);
+-    acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
+-                       (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
+     if (vms->acpi_dev) {
+         build_ged_aml(scope, "\\_SB."GED_DEVICE,
+                       HOTPLUG_HANDLER(vms->acpi_dev),
+                       irqmap[VIRT_ACPI_GED] + ARM_SPI_BASE, AML_SYSTEM_MEMORY,
+                       memmap[VIRT_ACPI_GED].base);
++    } else {
++        acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
++                           (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
+     }
+ 
+     if (vms->acpi_dev && ms->ram_slots) {
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 72cde9deba..ef65e721d2 100644
+index 0e75213b44..d49e1a583c 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -2097,10 +2097,17 @@ static void machvirt_machine_init(void)
- }
- type_init(machvirt_machine_init);
- 
-+static void virt_machine_4_2_options(MachineClass *mc)
-+{
-+}
-+DEFINE_VIRT_MACHINE_AS_LATEST(4, 2)
-+
- static void virt_machine_4_1_options(MachineClass *mc)
+@@ -528,7 +528,7 @@ static inline DeviceState *create_acpi_ged(VirtMachineState *vms, qemu_irq *pic)
  {
-+    virt_machine_4_2_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_4_1, hw_compat_4_1_len);
- }
--DEFINE_VIRT_MACHINE_AS_LATEST(4, 1)
-+DEFINE_VIRT_MACHINE(4, 1)
+     DeviceState *dev;
+     int irq = vms->irqmap[VIRT_ACPI_GED];
+-    uint32_t event = ACPI_GED_MEM_HOTPLUG_EVT;
++    uint32_t event = ACPI_GED_MEM_HOTPLUG_EVT | ACPI_GED_PWR_DOWN_EVT;
  
- static void virt_machine_4_0_options(MachineClass *mc)
+     dev = qdev_create(NULL, TYPE_ACPI_GED);
+     qdev_prop_set_uint32(dev, "ged-event", event);
+@@ -783,8 +783,14 @@ static void create_rtc(const VirtMachineState *vms, qemu_irq *pic)
+ static DeviceState *gpio_key_dev;
+ static void virt_powerdown_req(Notifier *n, void *opaque)
  {
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 32d1ca9abc..83cd1bfeec 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -27,6 +27,9 @@
- #include "hw/pci/pci.h"
- #include "hw/mem/nvdimm.h"
- 
-+GlobalProperty hw_compat_4_1[] = {};
-+const size_t hw_compat_4_1_len = G_N_ELEMENTS(hw_compat_4_1);
+-    /* use gpio Pin 3 for power button event */
+-    qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);
++    VirtMachineState *s = container_of(n, VirtMachineState, powerdown_notifier);
 +
- GlobalProperty hw_compat_4_0[] = {
-     { "VGA",            "edid", "false" },
-     { "secondary-vga",  "edid", "false" },
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index a71d1a53a5..d9ec37d807 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -317,6 +317,9 @@ struct MachineState {
-     } \
-     type_init(machine_initfn##_register_types)
++    if (s->acpi_dev) {
++        acpi_send_event(s->acpi_dev, ACPI_POWER_DOWN_STATUS);
++    } else {
++        /* use gpio Pin 3 for power button event */
++        qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);
++    }
+ }
  
-+extern GlobalProperty hw_compat_4_1[];
-+extern const size_t hw_compat_4_1_len;
+ static void create_gpio(const VirtMachineState *vms, qemu_irq *pic)
+@@ -1712,10 +1718,10 @@ static void machvirt_init(MachineState *machine)
+ 
+     create_pcie(vms, pic);
+ 
+-    create_gpio(vms, pic);
+-
+     if (has_ged && aarch64 && firmware_loaded && acpi_enabled) {
+         vms->acpi_dev = create_acpi_ged(vms, pic);
++    } else {
++        create_gpio(vms, pic);
+     }
+ 
+      /* connect powerdown request */
+diff --git a/include/hw/acpi/acpi_dev_interface.h b/include/hw/acpi/acpi_dev_interface.h
+index 43ff119179..adcb3a816c 100644
+--- a/include/hw/acpi/acpi_dev_interface.h
++++ b/include/hw/acpi/acpi_dev_interface.h
+@@ -11,6 +11,7 @@ typedef enum {
+     ACPI_MEMORY_HOTPLUG_STATUS = 8,
+     ACPI_NVDIMM_HOTPLUG_STATUS = 16,
+     ACPI_VMGENID_CHANGE_STATUS = 32,
++    ACPI_POWER_DOWN_STATUS = 64,
+ } AcpiEventStatusBits;
+ 
+ #define TYPE_ACPI_DEVICE_IF "acpi-device-interface"
+diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
+index 2049e8d873..d157eac088 100644
+--- a/include/hw/acpi/generic_event_device.h
++++ b/include/hw/acpi/generic_event_device.h
+@@ -62,6 +62,8 @@
+ #include "hw/sysbus.h"
+ #include "hw/acpi/memory_hotplug.h"
+ 
++#define ACPI_POWER_BUTTON_DEVICE "PWRB"
 +
- extern GlobalProperty hw_compat_4_0[];
- extern const size_t hw_compat_4_0_len;
+ #define TYPE_ACPI_GED "acpi-ged"
+ #define ACPI_GED(obj) \
+     OBJECT_CHECK(AcpiGedState, (obj), TYPE_ACPI_GED)
+@@ -79,6 +81,7 @@
+  * through GED.
+  */
+ #define ACPI_GED_MEM_HOTPLUG_EVT   0x1
++#define ACPI_GED_PWR_DOWN_EVT      0x2
  
+ typedef struct GEDState {
+     MemoryRegion io;
 -- 
 2.17.1
 

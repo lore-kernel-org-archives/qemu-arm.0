@@ -1,67 +1,67 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp33740wrs;
-        Tue, 13 Aug 2019 14:11:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx6HsSFd5OsWSEoCH9o3r7Ag2lQo1UidyLTCVMLHZ8nXKkWPJ8pqc1YJuIoSR6S7FZVbfmS
-X-Received: by 2002:a37:9ac9:: with SMTP id c192mr13899912qke.334.1565730662838;
-        Tue, 13 Aug 2019 14:11:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565730662; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp34758wrs;
+        Tue, 13 Aug 2019 14:12:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwsmaHLkW/OpNgQnW6f5X1KGiIajm0WVVCYLHMJ6Oo0ne9qei5FApLF+5O4kQDO4hlvsRDW
+X-Received: by 2002:a17:906:3b47:: with SMTP id h7mr27773731ejf.30.1565730735624;
+        Tue, 13 Aug 2019 14:12:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565730735; cv=none;
         d=google.com; s=arc-20160816;
-        b=0MNrpYkSAxa4cmrAeaH4jCNoVYap5JqQ0MCUr8czUDn7OKZwnG+irr+OJswR3dDjY/
-         1vqBIw9gBhQd9TWvsraQwOhxQQFWPcLAJ9iztycWAazi2YXGqSuuYNbGweFtHLAOVFZV
-         rHs0RNtfyNmz7RKPuq1uyHeGTR/ahGip73Lck3m/P5TN/L8m+0jsyGMsr4vp9IcsoIS5
-         TdUoXUmvHUDco6zRB1YP4IDTvMjLcWAabr/Kb0BPd7+fHciSApA6aB6+Kw2dPeJeGB+B
-         YDgiI3+DX2xuqHm9lydWwUKiO7o3ymSMcL0n2rfnCuHdjMteUCGP/wo9MyGEiFYHEmI6
-         PodQ==
+        b=sm7Izmm+w3zLf2xLZMMORrCaXQxRMDbLN7GneJB3Yn7K16WK/ApOxhgkmVfno7ydvl
+         EZZAnaI7UnOWrxcY/EpTdcPA4nW4cqGrJBQ3U8Q8XYvK6Fba7jmu9x6aYVcgo5p2GN0a
+         KE8WImz2gcidbFwYvxEpCzzwoDc/OTllWfJ6zSI5BEE4iYq0HSMqtuwBYldHuzQBsC/P
+         DT/EEmMGebCSJso/x2gIB9yyOWfUo+Pj4t79F7vjkRVNEN/FTn7uLCiSSWaiwfLqgxnb
+         V+rwT9YFrh8cr/Iw9R16V+2i1BaLXki/5WfdIkl0fB6UT85VK1UprGSitde7IDyrbIf1
+         sXQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version:references
          :in-reply-to:message-id:date:to:from;
-        bh=4AA/f4hAnUvuMcxTGXjpVMnrEDmO5xa+XaS0cP7GV3g=;
-        b=FwsCHq7rZMIzDkqCzrN4zJuh4T5m5NgKIlEMbWnlQsbTC14D+VQ+nzLF6v4nIiM6E9
-         3EdqAQcN2cToJkw/zSpQNJy/i14eCfdhqWGSmJNOIh9/II5qpIba9ixo6CAlofy3Yqpj
-         b6juPC2tlKxp9SEzyk/PJIBT03GfLJ24c4cWMTFMP8zRfrMduFfVd6UOHM/JPKTeitRu
-         9IdODta85hm0hpo1LQNxtITAl8DhEgwqNorjnprilGs13MNyIcH6JyiBi6i7DSqg6bSl
-         MqhMBC3udTAj0J+zc0R38VXk2o9/TtEtUJO+1AMqsURLaL9Seq3vcyApZmKb0lbIJdrA
-         kjkg==
+        bh=FsLpo8JpdiLXdKuXzSpP/A/dAc8J0CbYIS3Cl6WOb28=;
+        b=wTuWZHnIL9R/BMre2nKt8XSao9J0HPTzmlos+XFGE8FYOwLobYRqc0egAbbBErF5WU
+         H5h/9q0qpGlA3Tji0bsMHhYjUWSb+3QO11xRBdG4gUEI2vqylWocxh1p2gyhyqaUsgjW
+         pmWsTwO/sVIDIoeFPWckh7ll8VIGifoPdcSAeQ1GTDv8WD1FdOrLFncOVE+C4KCKNTxU
+         ahjPU+6HDMIXRWrW2zcdDn/tuZIvZk/nml/WPnQ/S7MO4QH3X2UNS/kFOJUXW72xmpRT
+         jy+6PL0uoybMX3rP2ea0Si8lTHR69oyWVkqyapXnpR6XPE/2fRtopwRp9dMNG0vBbLpl
+         vV+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h67si62956863qke.108.2019.08.13.14.11.02
+        by mx.google.com with ESMTPS id s37si43770846edd.430.2019.08.13.14.12.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Aug 2019 14:11:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 13 Aug 2019 14:12:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55502 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55510 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hxe4M-000120-E2
-	for alex.bennee@linaro.org; Tue, 13 Aug 2019 17:11:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41796)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hxe5W-0002Iy-Mf
+	for alex.bennee@linaro.org; Tue, 13 Aug 2019 17:12:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41899)
  by lists.gnu.org with esmtp (Exim 4.86_2)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hxe1E-0004zj-QU
- for qemu-arm@nongnu.org; Tue, 13 Aug 2019 17:07:50 -0400
+ id 1hxe1J-00053C-JA
+ for qemu-devel@nongnu.org; Tue, 13 Aug 2019 17:07:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hxe1B-0001Og-2U
- for qemu-arm@nongnu.org; Tue, 13 Aug 2019 17:07:47 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:60828 helo=huawei.com)
+ id 1hxe1I-0001YF-Fh
+ for qemu-devel@nongnu.org; Tue, 13 Aug 2019 17:07:53 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:33788 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1hxe1A-0001H0-K9; Tue, 13 Aug 2019 17:07:45 -0400
+ id 1hxe1A-0001LH-Kq; Tue, 13 Aug 2019 17:07:44 -0400
 Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id BEB44CF41561ABA8969A;
- Wed, 14 Aug 2019 05:07:36 +0800 (CST)
+ by Forcepoint Email with ESMTP id CF7AED25FCFDA0750D96;
+ Wed, 14 Aug 2019 05:07:41 +0800 (CST)
 Received: from S00345302A-PC.china.huawei.com (10.47.94.0) by
  DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.439.0; Wed, 14 Aug 2019 05:07:28 +0800
+ 14.3.439.0; Wed, 14 Aug 2019 05:07:32 +0800
 From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
  <imammedo@redhat.com>
-Date: Tue, 13 Aug 2019 22:05:34 +0100
-Message-ID: <20190813210539.31164-8-shameerali.kolothum.thodi@huawei.com>
+Date: Tue, 13 Aug 2019 22:05:35 +0100
+Message-ID: <20190813210539.31164-9-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20190813210539.31164-1-shameerali.kolothum.thodi@huawei.com>
 References: <20190813210539.31164-1-shameerali.kolothum.thodi@huawei.com>
@@ -70,95 +70,86 @@ Content-Type: text/plain
 X-Originating-IP: [10.47.94.0]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 45.249.212.35
-Subject: [Qemu-arm] [PATCH-for-4.2 v9 07/12] hw/arm/virt-acpi-build: Add
- PC-DIMM in SRAT
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 45.249.212.32
+Subject: [Qemu-devel] [PATCH-for-4.2 v9 08/12] hw/arm: Factor out powerdown
+ notifier from GPIO
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
  linuxarm@huawei.com, xuwei5@hisilicon.com, shannon.zhaosl@gmail.com,
  sebastien.boeuf@intel.com, lersek@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oLSOm7R20RAH
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Irx29TJR7y3N
 
-Generate Memory Affinity Structures for PC-DIMM ranges.
-
-Also, Linux and Windows need ACPI SRAT table to make memory hotplug
-work properly, however currently QEMU doesn't create SRAT table if
-numa options aren't present on CLI. Hence add support(>=4.2) to
-create numa node automatically (auto_enable_numa_with_memhp) when
-QEMU is started with memory hotplug enabled but without '-numa'
-options on CLI.
+This is in preparation of using GED device for
+system_powerdown event. Make the powerdown notifier
+registration independent of create_gpio() fn.
 
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
-v8 --> v9
- - Added auto_enable_numa_with_memhp support.
+ hw/arm/virt.c         | 12 ++++--------
+ include/hw/arm/virt.h |  1 +
+ 2 files changed, 5 insertions(+), 8 deletions(-)
 
----
- hw/arm/virt-acpi-build.c | 9 +++++++++
- hw/arm/virt.c            | 2 ++
- 2 files changed, 11 insertions(+)
-
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 63fa845076..6d697af2df 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -518,6 +518,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     int i, srat_start;
-     uint64_t mem_base;
-     MachineClass *mc = MACHINE_GET_CLASS(vms);
-+    MachineState *ms = MACHINE(vms);
-     const CPUArchIdList *cpu_list = mc->possible_cpu_arch_ids(MACHINE(vms));
- 
-     srat_start = table_data->len;
-@@ -543,6 +544,14 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         }
-     }
- 
-+    if (ms->device_memory) {
-+        numamem = acpi_data_push(table_data, sizeof *numamem);
-+        build_srat_memory(numamem, ms->device_memory->base,
-+                          memory_region_size(&ms->device_memory->mr),
-+                          nb_numa_nodes - 1,
-+                          MEM_AFFINITY_HOTPLUGGABLE | MEM_AFFINITY_ENABLED);
-+    }
-+
-     build_header(linker, table_data, (void *)(table_data->data + srat_start),
-                  "SRAT", table_data->len - srat_start, 3, NULL, NULL);
- }
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 0949a227a9..56d64fc0a9 100644
+index 56d64fc0a9..0e75213b44 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -2049,6 +2049,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     hc->plug = virt_machine_device_plug_cb;
-     hc->unplug_request = virt_machine_device_unplug_request_cb;
-     mc->numa_mem_supported = true;
-+    mc->auto_enable_numa_with_memhp = true;
+@@ -787,10 +787,6 @@ static void virt_powerdown_req(Notifier *n, void *opaque)
+     qemu_set_irq(qdev_get_gpio_in(gpio_key_dev, 0), 1);
  }
  
- static void virt_instance_init(Object *obj)
-@@ -2154,6 +2155,7 @@ static void virt_machine_4_1_options(MachineClass *mc)
-     virt_machine_4_2_options(mc);
-     compat_props_add(mc->compat_props, hw_compat_4_1, hw_compat_4_1_len);
-     vmc->no_ged = true;
-+    mc->auto_enable_numa_with_memhp = false;
+-static Notifier virt_system_powerdown_notifier = {
+-    .notify = virt_powerdown_req
+-};
+-
+ static void create_gpio(const VirtMachineState *vms, qemu_irq *pic)
+ {
+     char *nodename;
+@@ -831,10 +827,6 @@ static void create_gpio(const VirtMachineState *vms, qemu_irq *pic)
+                           KEY_POWER);
+     qemu_fdt_setprop_cells(vms->fdt, "/gpio-keys/poweroff",
+                            "gpios", phandle, 3, 0);
+-
+-    /* connect powerdown request */
+-    qemu_register_powerdown_notifier(&virt_system_powerdown_notifier);
+-
+     g_free(nodename);
  }
- DEFINE_VIRT_MACHINE(4, 1)
  
+@@ -1726,6 +1718,10 @@ static void machvirt_init(MachineState *machine)
+         vms->acpi_dev = create_acpi_ged(vms, pic);
+     }
+ 
++     /* connect powerdown request */
++     vms->powerdown_notifier.notify = virt_powerdown_req;
++     qemu_register_powerdown_notifier(&vms->powerdown_notifier);
++
+     /* Create mmio transports, so the user can create virtio backends
+      * (which will be automatically plugged in to the transports). If
+      * no backend is created the transport will just sit harmlessly idle.
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 577ee49b4b..0b41083e9d 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -137,6 +137,7 @@ typedef struct {
+     int psci_conduit;
+     hwaddr highest_gpa;
+     DeviceState *acpi_dev;
++    Notifier powerdown_notifier;
+ } VirtMachineState;
+ 
+ #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
 -- 
 2.17.1
 

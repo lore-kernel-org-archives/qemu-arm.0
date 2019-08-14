@@ -1,85 +1,80 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp59591wrs;
-        Tue, 13 Aug 2019 14:45:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwirqIIF8WVH/xBl3aV6PjWJLYhutx0F59Ze/RRLZLLGkWt44FkN9tWtu746f9t4ZfIcZ5g
-X-Received: by 2002:a65:514c:: with SMTP id g12mr36233849pgq.76.1565732733436;
-        Tue, 13 Aug 2019 14:45:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565732733; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp456686wrs;
+        Tue, 13 Aug 2019 23:54:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzx4cI1hj2+sHErgd2PaGkp16h3l9Jf2lCKLLKhlS5pMhHI4dpW5LZkoOhnL21vgQIgrrRM
+X-Received: by 2002:a17:90a:bf03:: with SMTP id c3mr5467544pjs.112.1565765660554;
+        Tue, 13 Aug 2019 23:54:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565765660; cv=none;
         d=google.com; s=arc-20160816;
-        b=wYgvVFhMeqi9oiVi8SRKjn3ysMzLK5aedVYimK0TLuy6rdJMUH0OgpI6G9AQTy1ySd
-         lNEvheAFzUl+aFeW6rJGwMfAvcY56p+O38BGtMm/XJBE95cSDZBkWyGXS2NorkOhZQcU
-         1JPuZ3uLbiIT6JawkoDT/hcN5xHWO7vFSfvM4zbVFk7J4+Nl/U9BUaS6gD8pyTU09DHO
-         56g5meNaQZ/irQ2/X6O7iRC3jtl3exNS+2HRe/E0TSyafFPBHB6J2AKxxJu12TNRFCQm
-         qB7sGwjUTvR1BIvtMoCl3Jyoj2zY0Zvt5GlR6Sfw9rgxbdhBy6sWk1WGml2CZzH/FZm5
-         bYPw==
+        b=im2CL0QI9gKy4/UHFsbBj34YQ8k9IWFEdAmMv2DUve8Uc9V6ITUH+YUG5Lh86IgRIS
+         J3fGgoTnVpeXh0jKn5D4LG2IZswEwkfW3NJ6wG1BH3rdgBDiIbqgicwredIFGbyzv3uA
+         C/awvfjkT8I1kQSt0WVa4MGB6jPJMuTRfhMWGvLX0ykpqypRKdGYPHEqE+AX6dz+qB3L
+         fc2mmAUDr6RZDVQ0AzqVLdSlW7lf0HhnIIfc6QlXxUYoP7A/wCNaZHLq86VPh0AIeNjI
+         uSmtkQEkdN1UZdO1hAS5Xi7p6sqKleCQirkshncMu9qXl8WGiplYd+QQqiw0MZ8IWk/f
+         35IA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:cc:to:subject;
-        bh=1qzB4AaZKPwCV929JEvg6OCqhfgc5njpSc7EnYsnUrc=;
-        b=ZkI8UYwA68ha7x4FPHOLoEosawZWyH5RY+384wIi34CY7B413gz1cpypxFT/TzYzlQ
-         HCzzNHxm/VncOKcvXj7/4RLHQVUkJM538Kg3/vIKRtmZx5EiWRuGSvvfiVonq55JHYfH
-         La6805aRG5amc2i459Onw1xEmbuhLYr8n5SQtGwD0q9/eL1iUUXffRWkWG6ded6IHlM8
-         sXopD26+v3SC+OLVR8rJs6SUdtCjgX8bplz4XWczyFqJT0OTJaIonYXugEZEEi4Y0z6k
-         deV817wwv0h/CWa6phkjq8S14N+Bzz29wqTYgpL/eSJLIMocrNkb47c4ldJod1O0595w
-         MpYQ==
+        bh=L20KtPVNSNM1Ggd2NrqhGbmeWmuHx/CXEJB+6+BuO2M=;
+        b=VenDhM2vv7/y7yCv+ZvVcK1AcFXFk/cdR6BkfTANM3kWZuN5Zylxe8ZtPzektG40ZS
+         5UJp+JYFxYcb6oWYkrMS20Y/mhKwpRwAYxjhguQDXMxOVc9MorbzvFGXqABsGFwm8s0G
+         Gf0/QnQur970xGsHP/dH4l8w2QIyRxDKIIMIFUOxsnGf7AqheuiGaiXVTmhO7yx6SeBo
+         sWYXUalmyb9u1KazHt7a/9sHH14Bg6nFN+5v0nQz2GUWN6MxQoGTBZJiZ2UQ1DafL527
+         flPX3HL6JTvY1l5GrE6XhsX0ZX49QEqIhUVYKRIl952UZIUniTdaw2DYkmH7K+lMSNnC
+         4XRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id e62si68813346pfh.254.2019.08.13.14.45.32;
-        Tue, 13 Aug 2019 14:45:33 -0700 (PDT)
+        by mx.google.com with ESMTP id o1si15257668pld.73.2019.08.13.23.54.20;
+        Tue, 13 Aug 2019 23:54:20 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726347AbfHMVpb (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Tue, 13 Aug 2019 17:45:31 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50948 "EHLO mx1.redhat.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1726275AbfHMVpb (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 13 Aug 2019 17:45:31 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id 9449C44BCF;
-        Tue, 13 Aug 2019 21:45:30 +0000 (UTC)
-Received: from [10.36.116.22] (ovpn-116-22.ams2.redhat.com [10.36.116.22])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id B26D382AEF;
-        Tue, 13 Aug 2019 21:45:12 +0000 (UTC)
+        id S1727185AbfHNGyT (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Wed, 14 Aug 2019 02:54:19 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:4257 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1727100AbfHNGyS (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Wed, 14 Aug 2019 02:54:18 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.58])
+        by Forcepoint Email with ESMTP id 90E81FB5E09DDF8FBDBD;
+        Wed, 14 Aug 2019 14:54:16 +0800 (CST)
+Received: from [127.0.0.1] (10.184.12.158) by DGGEMS406-HUB.china.huawei.com
+ (10.3.19.206) with Microsoft SMTP Server id 14.3.439.0; Wed, 14 Aug 2019
+ 14:54:06 +0800
 Subject: Re: Can we boot a 512U kvm guest?
-To:     Marc Zyngier <marc.zyngier@arm.com>,
-        Zenghui Yu <yuzenghui@huawei.com>
-Cc:     kvmarm@lists.cs.columbia.edu, qemu-arm@nongnu.org,
+To:     Marc Zyngier <marc.zyngier@arm.com>
+CC:     <kvmarm@lists.cs.columbia.edu>, <qemu-arm@nongnu.org>,
+        Eric Auger <eric.auger@redhat.com>,
         James Morse <james.morse@arm.com>,
         Julien Thierry <julien.thierry.kdev@gmail.com>,
-        suzuki.poulose@arm.com, peter.maydell@linaro.org,
-        kvm@vger.kernel.org, "Wanghaibin (D)" <wanghaibin.wang@huawei.com>,
-        zhang.zhanghailiang@huawei.com
+        <suzuki.poulose@arm.com>, <peter.maydell@linaro.org>,
+        <kvm@vger.kernel.org>,
+        "Wanghaibin (D)" <wanghaibin.wang@huawei.com>,
+        <zhang.zhanghailiang@huawei.com>
 References: <86aa9609-7dc9-1461-ae47-f50897cd0875@huawei.com>
  <86d0h9no9j.wl-marc.zyngier@arm.com>
-From:   Auger Eric <eric.auger@redhat.com>
-Message-ID: <a2b12b81-29a8-4ef4-b3ec-e4635e93dc7b@redhat.com>
-Date:   Tue, 13 Aug 2019 23:44:54 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+From:   Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <1685337f-fc4e-c783-638c-a764270b8006@huawei.com>
+Date:   Wed, 14 Aug 2019 14:51:03 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:64.0) Gecko/20100101
+ Thunderbird/64.0
 MIME-Version: 1.0
 In-Reply-To: <86d0h9no9j.wl-marc.zyngier@arm.com>
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.30]); Tue, 13 Aug 2019 21:45:30 +0000 (UTC)
+X-Originating-IP: [10.184.12.158]
+X-CFilter-Loop: Reflected
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: qOxTqXhDDbi5
+X-TUID: 2VbqT25GSmJZ
 
-Hi,
-
-On 8/13/19 4:17 PM, Marc Zyngier wrote:
+On 2019/8/13 22:17, Marc Zyngier wrote:
 > On Tue, 13 Aug 2019 09:50:27 +0100,
 > Zenghui Yu <yuzenghui@huawei.com> wrote:
 > 
@@ -107,11 +102,6 @@ On 8/13/19 4:17 PM, Marc Zyngier wrote:
 > 
 > Irk. Not great indeed. Clearly, we have a couple of holes in the way
 > we test these ABI changes (/me eyes Eric...).
-
-My bad. At that time I was able to test with 224 vcpus with QEMU (256
-vcpus were tested as well) and I failed to see those other limitations,
-thinking the only limitation left was the number of redistributor
-regions we could register.
 > 
 >>
 >> I temporarily patched the KVM and QEMU with the following diff:
@@ -123,18 +113,18 @@ regions we could register.
 >> --- a/arch/arm64/include/uapi/asm/kvm.h
 >> +++ b/arch/arm64/include/uapi/asm/kvm.h
 >> @@ -325,10 +325,10 @@ struct kvm_vcpu_events {
->>  #define   KVM_ARM_VCPU_TIMER_IRQ_PTIMER		1
+>>   #define   KVM_ARM_VCPU_TIMER_IRQ_PTIMER		1
 >>
->>  /* KVM_IRQ_LINE irq field index values */
+>>   /* KVM_IRQ_LINE irq field index values */
 >> -#define KVM_ARM_IRQ_TYPE_SHIFT		24
 >> -#define KVM_ARM_IRQ_TYPE_MASK		0xff
 >> +#define KVM_ARM_IRQ_TYPE_SHIFT		28
 >> +#define KVM_ARM_IRQ_TYPE_MASK		0xf
->>  #define KVM_ARM_IRQ_VCPU_SHIFT		16
+>>   #define KVM_ARM_IRQ_VCPU_SHIFT		16
 >> -#define KVM_ARM_IRQ_VCPU_MASK		0xff
 >> +#define KVM_ARM_IRQ_VCPU_MASK		0xfff
->>  #define KVM_ARM_IRQ_NUM_SHIFT		0
->>  #define KVM_ARM_IRQ_NUM_MASK		0xffff
+>>   #define KVM_ARM_IRQ_NUM_SHIFT		0
+>>   #define KVM_ARM_IRQ_NUM_MASK		0xffff
 >>
 >> ---8<---
 >>
@@ -150,52 +140,56 @@ regions we could register.
 > --- a/arch/arm/include/uapi/asm/kvm.h
 > +++ b/arch/arm/include/uapi/asm/kvm.h
 > @@ -254,8 +254,10 @@ struct kvm_vcpu_events {
->  #define   KVM_DEV_ARM_ITS_CTRL_RESET		4
->  
->  /* KVM_IRQ_LINE irq field index values */
+>   #define   KVM_DEV_ARM_ITS_CTRL_RESET		4
+>   
+>   /* KVM_IRQ_LINE irq field index values */
 > +#define KVM_ARM_IRQ_VCPU2_SHIFT		28
 > +#define KVM_ARM_IRQ_VCPU2_MASK		0xf
->  #define KVM_ARM_IRQ_TYPE_SHIFT		24
+>   #define KVM_ARM_IRQ_TYPE_SHIFT		24
 > -#define KVM_ARM_IRQ_TYPE_MASK		0xff
 > +#define KVM_ARM_IRQ_TYPE_MASK		0xf
->  #define KVM_ARM_IRQ_VCPU_SHIFT		16
->  #define KVM_ARM_IRQ_VCPU_MASK		0xff
->  #define KVM_ARM_IRQ_NUM_SHIFT		0
+>   #define KVM_ARM_IRQ_VCPU_SHIFT		16
+>   #define KVM_ARM_IRQ_VCPU_MASK		0xff
+>   #define KVM_ARM_IRQ_NUM_SHIFT		0
 > diff --git a/arch/arm64/include/uapi/asm/kvm.h b/arch/arm64/include/uapi/asm/kvm.h
 > index 7b7ac0f6cec9..44cb25bfc95e 100644
 > --- a/arch/arm64/include/uapi/asm/kvm.h
 > +++ b/arch/arm64/include/uapi/asm/kvm.h
 > @@ -308,8 +308,10 @@ struct kvm_vcpu_events {
->  #define   KVM_ARM_VCPU_TIMER_IRQ_PTIMER		1
->  
->  /* KVM_IRQ_LINE irq field index values */
+>   #define   KVM_ARM_VCPU_TIMER_IRQ_PTIMER		1
+>   
+>   /* KVM_IRQ_LINE irq field index values */
 > +#define KVM_ARM_IRQ_VCPU2_SHIFT		28
 > +#define KVM_ARM_IRQ_VCPU2_MASK		0xf
->  #define KVM_ARM_IRQ_TYPE_SHIFT		24
+>   #define KVM_ARM_IRQ_TYPE_SHIFT		24
 > -#define KVM_ARM_IRQ_TYPE_MASK		0xff
 > +#define KVM_ARM_IRQ_TYPE_MASK		0xf
->  #define KVM_ARM_IRQ_VCPU_SHIFT		16
->  #define KVM_ARM_IRQ_VCPU_MASK		0xff
->  #define KVM_ARM_IRQ_NUM_SHIFT		0
+>   #define KVM_ARM_IRQ_VCPU_SHIFT		16
+>   #define KVM_ARM_IRQ_VCPU_MASK		0xff
+>   #define KVM_ARM_IRQ_NUM_SHIFT		0
 > diff --git a/virt/kvm/arm/arm.c b/virt/kvm/arm/arm.c
 > index 90cedebaeb94..fb685c1c0514 100644
 > --- a/virt/kvm/arm/arm.c
 > +++ b/virt/kvm/arm/arm.c
 > @@ -889,6 +889,7 @@ int kvm_vm_ioctl_irq_line(struct kvm *kvm, struct kvm_irq_level *irq_level,
->  
->  	irq_type = (irq >> KVM_ARM_IRQ_TYPE_SHIFT) & KVM_ARM_IRQ_TYPE_MASK;
->  	vcpu_idx = (irq >> KVM_ARM_IRQ_VCPU_SHIFT) & KVM_ARM_IRQ_VCPU_MASK;
+>   
+>   	irq_type = (irq >> KVM_ARM_IRQ_TYPE_SHIFT) & KVM_ARM_IRQ_TYPE_MASK;
+>   	vcpu_idx = (irq >> KVM_ARM_IRQ_VCPU_SHIFT) & KVM_ARM_IRQ_VCPU_MASK;
 > +	vcpu_idx += ((irq >> KVM_ARM_IRQ_VCPU2_SHIFT) & KVM_ARM_IRQ_VCPU2_MASK) * (KVM_ARM_IRQ_VCPU_MASK + 1);
->  	irq_num = (irq >> KVM_ARM_IRQ_NUM_SHIFT) & KVM_ARM_IRQ_NUM_MASK;
->  
->  	trace_kvm_irq_line(irq_type, vcpu_idx, irq_num, irq_level->level);
+>   	irq_num = (irq >> KVM_ARM_IRQ_NUM_SHIFT) & KVM_ARM_IRQ_NUM_MASK;
+>   
+>   	trace_kvm_irq_line(irq_type, vcpu_idx, irq_num, irq_level->level);
 > 
 > It should work because we've been careful not to allow value outside
 > of {0, 1, 2} for irq_type. I don't like it, but I really don't feel
 > like adding another IRQ related ioctl. We still have 16 irq types
 > (which is already a waste of space), and we can go up to 4096 vcpu.
 
-> 
+Hi Marc,
+
+Thanks for this. I can test it on my machine once user-space agrees with
+this change.
+
 > Peter, what do you think?
 > 
 >> Next comes one more QEMU abort (with the "fix" above):
@@ -217,15 +211,13 @@ regions we could register.
 > Seriously, I'm very interested in finding out what is the use case for
 > these gigantic VMs, other than debugging the kernel for big machines.
 
-The initial goal was to keep up with the HPC physical cpu count increase
-and allow similar numbers as x86 supports.
+To be honest, I haven't seen any use case yet. In a typical production
+environment, *I think* we will not let the guest to have more CPUs than
+the host (and currently the maximum we have for host is 128).
 
-Thanks
+(It's just that someone complained that "why can't I start a VM with the
+  max supported number of vcpus", and I started investigating yesterday.)
 
-Eric (with limited internet access atm)
 
-> 
-> Thanks,
-> 
-> 	M.
-> 
+Thanks,
+Zenghui

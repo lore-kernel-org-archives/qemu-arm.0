@@ -1,113 +1,337 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1780557wrs;
-        Thu, 15 Aug 2019 01:31:46 -0700 (PDT)
-X-Received: by 2002:a05:6830:200e:: with SMTP id e14mr2357211otp.245.1565857906861;
-        Thu, 15 Aug 2019 01:31:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565857906; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1788920wrs;
+        Thu, 15 Aug 2019 01:43:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxf5Pzc5+iUk0QUBAjlY8s3HpwCG8jaaUzbD8r+ZFYHHRmZYc5sSuLtbdKcKQgGyARBRIKg
+X-Received: by 2002:a50:f74d:: with SMTP id j13mr4148125edn.254.1565858594682;
+        Thu, 15 Aug 2019 01:43:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565858594; cv=none;
         d=google.com; s=arc-20160816;
-        b=d0wYAvSYkp59R7Yzyok44Nvc9nY8+5buYak8I3Lm+L7d1LoBr6fOsrv6U8BbeKB/om
-         PthM8v/dXwJSFIqVWQlhsZJGfN2adpk4kzCStyJxFc28frEieh4Kkb47xWfojsaITXVq
-         3+HH83ndSJFoata7YnnOUWXynPAIA9Wli9ScMyazeym62ubfnNXDJV4nfbs12gLx997t
-         ZF0IOvj8KEQeLSTa27I56UBaRKQX1EUx/X5BV96mkYNU/KCMNbdN5TSQJPeoj9v2rp0C
-         fsZcHzo1LYp3U5D0tk5atrSAa7WImZVs4ThAZREa5TPuYF9kIAQTzB/m0FiRHY207EDp
-         zctg==
+        b=aU4+LfqwuRHb1847NgQD3ZX3BmO+cqvFhLxcvx1wckZYRQa+WC7dT716BLWWU7fveh
+         ynUmhe7ESygAOdV0XYOnqYY9XAgDaUVJtxxAbyhaKfHUx1jrYOJExo1Fiee5s2UvgclX
+         e963I8OcYQ0yKMLn5qKb1Bj9v5RDsEeZJy1b+QvFYA1lHctI/xuLfoMk2xNn7R6PRBOQ
+         aiyOn9M4QZ/QfQ7YbjhRGcXAaZY3UQxXUhUMKeCkZ6pO/Tt6pMqYbn9uDlyVuHhhOBqz
+         QFp280im0aMZLPOeQCVp1ni9g9Ixn0ZMkP48folmViHzNinRiezIk6mgXFT2TdHpbKSw
+         783Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=Rdgu4khboK/PEIYNJv3Ay/3DVdC2zV7k910eXnLQ8J8=;
-        b=eW9TbYpHYXMitqBHxJa5ekQwT4+0C8EregQxUF4A+JAQYMX3HHzcSv9lsVFC8gXEq7
-         fe70WIl7MdFh7FHIg9LexhvSiVg03OsrasRewNiZZTAcjH5hF9jCly6CoEAlD3HJbDnL
-         3FHmjdPtVDLBM9Uw94znD3kOW/7X2duj/os9+LFsLKTlDtsIdAi+nQy9iIez7uPvXTfG
-         LGd+V2T4Iyz7HUACV+k8aJW8kpDda6JwBNfpZcStU8abdB0wSOv2foI+OCAQn4Y8l2rX
-         7KG+m776nNoHVYAbVcB8CGcS5qzjAH47IYaM3duCLyqElvaR667ZUYkWNx1vpsdPuc7S
-         hl2g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic:to
+         :from;
+        bh=sLlT1oSmA/MgZiG1yc0VKQr8PNHgyGYQFE+4g9YzCFo=;
+        b=AKqC0H8Aiyt4PxMyiPpyt7xXLzSpcs3cih2cx34nm7JslzCr/OnoDS7qzYW3mvGnNE
+         +gtOY3YO2c+/45au4nSmUIKgtolRNSQxwnrLtPrVXxJcbYpyr+VCXzDE4kbDI3+y/ur+
+         VfyVa67pQM+Q3LGdcagO1et52QM63Za28GwWGVE5jvO1oSJcHMN7yhFwWFrT+UTUWBng
+         lxwklJaSPMnIRJBR2P4LBkt+gnC680hPf3zYOCfc6zjp2LpPBjn8gE0DIpkQE/8bHNqG
+         KkTmD7gbDbFrHiubOY50a7whvcSn2UY0hKLGDhcCGCG7vA5zP7elX9HoXaGacolt0ovB
+         4YLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=c8kuiqad;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id y27sor1248682ote.102.2019.08.15.01.31.46
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id ha20si1041550ejb.252.2019.08.15.01.43.14
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 15 Aug 2019 01:31:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 15 Aug 2019 01:43:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=c8kuiqad;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=Rdgu4khboK/PEIYNJv3Ay/3DVdC2zV7k910eXnLQ8J8=;
-        b=c8kuiqadEIWEgX8dJ5e6YVYvCyrGXKu4eUixVD8S+eKqaX8FideyXVgwirL6pa4bw6
-         sPJgIC5urqkPR4Fem2+Xscb/zGUrwgcNZr25TNZcZJ4t72e8KQDAgTR4UO7taQG6c7+s
-         mVbHm9CWvANIj3UaffAqNOBZeWS0dTdVKqk3cHhrHKxlxLtCFrZPWEjg6x7AwZvEAvfg
-         00Qlf2pkJQsN+lEDq6MWsJ+8VQFLhTzWq6w0JGvA4y9Nn0PZ8ygWPGHXevd/4mIu5uwo
-         wz5NrRpEc2k5drqv0Wtggs68F9DA8GXC4xqAMcOxG0lynaLdt6hwb7iBZ+X3DwMoYtV4
-         su0A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=Rdgu4khboK/PEIYNJv3Ay/3DVdC2zV7k910eXnLQ8J8=;
-        b=Ol4jONZODM/eqzzToZasHWdJ3eYGBTgaLLuaXhrFZHcn2K/fnxCtaX/JlVgUhuKcb7
-         Gf6F97gp4/UypaDugsHBw1JwJtSDnA2ZjwVjzbwbM1jH+ySJiIOUXZim8Xcn6gG83Rxh
-         enzIIZNeehscFJC2kAoTs6BP2hy20R4UCgW4Nn8NMzdCnyMY0dEJ8PHheq78gZt3rsLj
-         BfxJPf7ACDjZWEmZIenWPN5AdswNJETkoDyCsYNF2EP574IlcZdBb0MAmUBWxjBpyuYy
-         PmZk1hfOrntVqeujG00hKYHY1rfMlsjr28fsTk0b0PNAmY7vaYjpO3VBPSBkf/A11DGV
-         AruA==
-X-Gm-Message-State: APjAAAXktxP5b6Lx5Rlb9uhzdvUbThArfhyV7G8BpiGNFFEBMyBbCLaG
-	E86Q0Hs7HvHsKKY/nhUIAF2YDf5sIFBpZZw3lX9x4KqJxgMcKg==
-X-Google-Smtp-Source: APXvYqx/GJHWgvbPx/ffXlExl0umDTzIeN44CnsEzUH9S8rQDsTzsZofixl8s/dJsGOwxqwPLnN3ZiOhhpLemITi1rg=
-X-Received: by 2002:a05:6830:1653:: with SMTP id h19mr2729831otr.232.1565857906406;
- Thu, 15 Aug 2019 01:31:46 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39550 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hyBLl-00068E-LJ
+	for alex.bennee@linaro.org; Thu, 15 Aug 2019 04:43:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39648)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1hyBLc-00067v-Pd
+ for qemu-arm@nongnu.org; Thu, 15 Aug 2019 04:43:06 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1hyBLa-0000rm-Vn
+ for qemu-arm@nongnu.org; Thu, 15 Aug 2019 04:43:04 -0400
+Received: from lhrrgout.huawei.com ([185.176.76.210]:45434 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1hyBLa-0000p1-N3; Thu, 15 Aug 2019 04:43:02 -0400
+Received: from lhreml708-cah.china.huawei.com (unknown [172.18.7.106])
+ by Forcepoint Email with ESMTP id 9B17652D7327F24699D7;
+ Thu, 15 Aug 2019 09:42:54 +0100 (IST)
+Received: from LHREML524-MBS.china.huawei.com ([169.254.2.44]) by
+ lhreml708-cah.china.huawei.com ([10.201.108.49]) with mapi id 14.03.0415.000; 
+ Thu, 15 Aug 2019 09:42:48 +0100
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "imammedo@redhat.com" <imammedo@redhat.com>
+Thread-Topic: [PATCH-for-4.2 v9 01/12] hw/acpi: Make ACPI IO address space
+ configurable
+Thread-Index: AQHVUhsepJ6BzbHQTUih0D7/qq9SU6b74kAA
+Date: Thu, 15 Aug 2019 08:42:48 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA83F36E598@lhreml524-mbs.china.huawei.com>
+References: <20190813210539.31164-1-shameerali.kolothum.thodi@huawei.com>
+ <20190813210539.31164-2-shameerali.kolothum.thodi@huawei.com>
+In-Reply-To: <20190813210539.31164-2-shameerali.kolothum.thodi@huawei.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.237]
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-References: <20190802122540.26385-1-drjones@redhat.com>
-In-Reply-To: <20190802122540.26385-1-drjones@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 15 Aug 2019 09:31:35 +0100
-Message-ID: <CAFEAcA_Tq-DLQuH2-+NtYOE0m4ki_CfEfWpHG+UM4rGhdK3q-w@mail.gmail.com>
-Subject: Re: [PATCH v3 00/15] target/arm/kvm: enable SVE in guests
-To: Andrew Jones <drjones@redhat.com>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, 
-	Dave P Martin <Dave.Martin@arm.com>, Eric Auger <eric.auger@redhat.com>, 
-	Igor Mammedov <imammedo@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: DGFJh4J1TnxZ
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 185.176.76.210
+Subject: Re: [Qemu-arm] [PATCH-for-4.2 v9 01/12] hw/acpi: Make ACPI IO
+	address space	configurable
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "sameo@linux.intel.com" <sameo@linux.intel.com>,
+ "ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
+ Linuxarm <linuxarm@huawei.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
+ "lersek@redhat.com" <lersek@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Gm44sDRJHfsh
 
-On Fri, 2 Aug 2019 at 13:25, Andrew Jones <drjones@redhat.com> wrote:
->
-> Since Linux kernel v5.2-rc1 KVM has support for enabling SVE in guests.
-> This series provides the QEMU bits for that enablement. First, we
-> select existing CPU properties representing features we want to
-> advertise in addition to the SVE vector lengths and prepare
-> them for a qmp query. Then we introduce the qmp query, applying
-> it immediately to those selected features. We also document ARM CPU
-> features at this time. We next add a qtest for the selected CPU
-> features that uses the qmp query for its tests - and we continue to
-> add tests as we add CPU features with the following patches. So then,
-> once we have the support we need for CPU feature querying and testing,
-> we add our first SVE CPU feature property, 'sve', which just allows
-> SVE to be completely enabled/disabled. Following that feature property,
-> we add all 16 vector length properties along with the input validation
-> they need and tests to prove the validation works. At this point the
-> SVE features are still only for TCG, so we provide some patches to
-> prepare for KVM and then a patch that allows the 'max' CPU type to
-> enable SVE with KVM, but at first without vector length properties.
-> After a bit more preparation we add the SVE vector length properties
-> to the KVM-enabled 'max' CPU type along with the additional input
-> validation and tests that that needs.  Finally we allow the 'host'
-> CPU type to also enjoy these properties by simply sharing them with it.
 
-Hi -- I see there have been some review comments on these patches
-that mean there'll be a v4. In the meantime, patches 1, 2, 5, 6, 9, 10
-seem to me to be independent bugfixes/cleanups that have been reviewed.
-Would you like me to take those into target-arm.next to reduce the
-size of the patchset for v4, or is that going to make rebasing
-painful on your end?
 
-thanks
--- PMM
+> -----Original Message-----
+> From: Linuxarm [mailto:linuxarm-bounces@huawei.com] On Behalf Of Shameer
+> Kolothum
+> Sent: 13 August 2019 22:05
+> To: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
+> eric.auger@redhat.com; imammedo@redhat.com
+> Cc: peter.maydell@linaro.org; sameo@linux.intel.com;
+> ard.biesheuvel@linaro.org; Linuxarm <linuxarm@huawei.com>;
+> shannon.zhaosl@gmail.com; sebastien.boeuf@intel.com; lersek@redhat.com
+> Subject: [PATCH-for-4.2 v9 01/12] hw/acpi: Make ACPI IO address space
+> configurable
+>=20
+> This is in preparation for adding support for ARM64 platforms
+> where it doesn't use port mapped IO for ACPI IO space. We are
+> making changes so that MMIO region can be accommodated
+> and board can pass the base address into the aml build function.
+
+Looks like, this now breaks the "make check" on x86_64 and needs
+updating bios-tables-test-allowed-diff.h with DSDT entries. But I am=20
+not sure what changed now compared to v8(and older ones) that makes
+it to complain now!.=20
+
+Patchew URL: https://patchew.org/QEMU/20190813210539.31164-1-shameerali.kol=
+othum.thodi@huawei.com/
+
+ERROR:/tmp/qemu-test/src/tests/bios-tables-test.c:447:test_acpi_asl: assert=
+ion failed: (all_tables_match)
+
+Thanks,
+Shameer
+
+> Also move few MEMORY_* definitions to header so that other memory
+> hotplug event signalling mechanisms (eg. Generic Event Device on
+> HW-reduced acpi platforms) can use the same from their respective
+> event handler code.
+>=20
+> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> ---
+> v8 --> v9
+>   -base address is an input into build_memory_hotplug_aml()
+>   -Removed R-by tags from Igor and Eric for now.
+> ---
+>  hw/acpi/memory_hotplug.c         | 29 ++++++++++++++---------------
+>  hw/i386/acpi-build.c             |  4 +++-
+>  hw/i386/pc.c                     |  3 +++
+>  include/hw/acpi/memory_hotplug.h |  9 +++++++--
+>  include/hw/i386/pc.h             |  3 +++
+>  5 files changed, 30 insertions(+), 18 deletions(-)
+>=20
+> diff --git a/hw/acpi/memory_hotplug.c b/hw/acpi/memory_hotplug.c
+> index 297812d5f7..1734d4b44f 100644
+> --- a/hw/acpi/memory_hotplug.c
+> +++ b/hw/acpi/memory_hotplug.c
+> @@ -29,12 +29,7 @@
+>  #define MEMORY_SLOT_PROXIMITY_METHOD "MPXM"
+>  #define MEMORY_SLOT_EJECT_METHOD     "MEJ0"
+>  #define MEMORY_SLOT_NOTIFY_METHOD    "MTFY"
+> -#define MEMORY_SLOT_SCAN_METHOD      "MSCN"
+>  #define MEMORY_HOTPLUG_DEVICE        "MHPD"
+> -#define MEMORY_HOTPLUG_IO_LEN         24
+> -#define MEMORY_DEVICES_CONTAINER     "\\_SB.MHPC"
+> -
+> -static uint16_t memhp_io_base;
+>=20
+>  static ACPIOSTInfo *acpi_memory_device_status(int slot, MemStatus *mdev)
+>  {
+> @@ -209,7 +204,7 @@ static const MemoryRegionOps
+> acpi_memory_hotplug_ops =3D {
+>  };
+>=20
+>  void acpi_memory_hotplug_init(MemoryRegion *as, Object *owner,
+> -                              MemHotplugState *state, uint16_t
+> io_base)
+> +                              MemHotplugState *state, hwaddr
+> io_base)
+>  {
+>      MachineState *machine =3D MACHINE(qdev_get_machine());
+>=20
+> @@ -218,12 +213,10 @@ void acpi_memory_hotplug_init(MemoryRegion *as,
+> Object *owner,
+>          return;
+>      }
+>=20
+> -    assert(!memhp_io_base);
+> -    memhp_io_base =3D io_base;
+>      state->devs =3D g_malloc0(sizeof(*state->devs) * state->dev_count);
+>      memory_region_init_io(&state->io, owner, &acpi_memory_hotplug_ops,
+> state,
+>                            "acpi-mem-hotplug",
+> MEMORY_HOTPLUG_IO_LEN);
+> -    memory_region_add_subregion(as, memhp_io_base, &state->io);
+> +    memory_region_add_subregion(as, io_base, &state->io);
+>  }
+>=20
+>  /**
+> @@ -342,7 +335,8 @@ const VMStateDescription vmstate_memory_hotplug
+> =3D {
+>=20
+>  void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
+>                                const char *res_root,
+> -                              const char *event_handler_method)
+> +                              const char *event_handler_method,
+> +                              AmlRegionSpace rs, hwaddr
+> memhp_io_base)
+>  {
+>      int i;
+>      Aml *ifctx;
+> @@ -365,14 +359,19 @@ void build_memory_hotplug_aml(Aml *table,
+> uint32_t nr_mem,
+>              aml_name_decl("_UID", aml_string("Memory hotplug
+> resources")));
+>=20
+>          crs =3D aml_resource_template();
+> -        aml_append(crs,
+> -            aml_io(AML_DECODE16, memhp_io_base, memhp_io_base, 0,
+> -                   MEMORY_HOTPLUG_IO_LEN)
+> -        );
+> +        if (rs =3D=3D AML_SYSTEM_IO) {
+> +            aml_append(crs,
+> +                aml_io(AML_DECODE16, memhp_io_base,
+> memhp_io_base, 0,
+> +                       MEMORY_HOTPLUG_IO_LEN)
+> +            );
+> +        } else {
+> +            aml_append(crs, aml_memory32_fixed(memhp_io_base,
+> +                            MEMORY_HOTPLUG_IO_LEN,
+> AML_READ_WRITE));
+> +        }
+>          aml_append(mem_ctrl_dev, aml_name_decl("_CRS", crs));
+>=20
+>          aml_append(mem_ctrl_dev, aml_operation_region(
+> -            MEMORY_HOTPLUG_IO_REGION, AML_SYSTEM_IO,
+> +            MEMORY_HOTPLUG_IO_REGION, rs,
+>              aml_int(memhp_io_base), MEMORY_HOTPLUG_IO_LEN)
+>          );
+>=20
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index f3fdfefcd5..e76d6631ea 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -1871,7 +1871,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+>          build_cpus_aml(dsdt, machine, opts, pm->cpu_hp_io_base,
+>                         "\\_SB.PCI0", "\\_GPE._E02");
+>      }
+> -    build_memory_hotplug_aml(dsdt, nr_mem, "\\_SB.PCI0",
+> "\\_GPE._E03");
+> +    build_memory_hotplug_aml(dsdt, nr_mem, "\\_SB.PCI0",
+> +                             "\\_GPE._E03", AML_SYSTEM_IO,
+> +                             pcms->memhp_io_base);
+>=20
+>      scope =3D  aml_scope("_GPE");
+>      {
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index 549c437050..be973cea99 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -1936,6 +1936,9 @@ void pc_memory_init(PCMachineState *pcms,
+>=20
+>      /* Init default IOAPIC address space */
+>      pcms->ioapic_as =3D &address_space_memory;
+> +
+> +    /* Init ACPI memory hotplug IO base address */
+> +    pcms->memhp_io_base =3D ACPI_MEMORY_HOTPLUG_BASE;
+>  }
+>=20
+>  /*
+> diff --git a/include/hw/acpi/memory_hotplug.h
+> b/include/hw/acpi/memory_hotplug.h
+> index 77c65765d6..dfe9cf3fde 100644
+> --- a/include/hw/acpi/memory_hotplug.h
+> +++ b/include/hw/acpi/memory_hotplug.h
+> @@ -5,6 +5,10 @@
+>  #include "hw/acpi/acpi.h"
+>  #include "hw/acpi/aml-build.h"
+>=20
+> +#define MEMORY_SLOT_SCAN_METHOD      "MSCN"
+> +#define MEMORY_DEVICES_CONTAINER     "\\_SB.MHPC"
+> +#define MEMORY_HOTPLUG_IO_LEN         24
+> +
+>  /**
+>   * MemStatus:
+>   * @is_removing: the memory device in slot has been requested to be
+> ejected.
+> @@ -29,7 +33,7 @@ typedef struct MemHotplugState {
+>  } MemHotplugState;
+>=20
+>  void acpi_memory_hotplug_init(MemoryRegion *as, Object *owner,
+> -                              MemHotplugState *state, uint16_t
+> io_base);
+> +                              MemHotplugState *state, hwaddr
+> io_base);
+>=20
+>  void acpi_memory_plug_cb(HotplugHandler *hotplug_dev, MemHotplugState
+> *mem_st,
+>                           DeviceState *dev, Error **errp);
+> @@ -48,5 +52,6 @@ void acpi_memory_ospm_status(MemHotplugState
+> *mem_st, ACPIOSTInfoList ***list);
+>=20
+>  void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
+>                                const char *res_root,
+> -                              const char *event_handler_method);
+> +                              const char *event_handler_method,
+> +                              AmlRegionSpace rs, hwaddr
+> memhp_io_base);
+>  #endif
+> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> index 859b64c51d..49b47535cf 100644
+> --- a/include/hw/i386/pc.h
+> +++ b/include/hw/i386/pc.h
+> @@ -69,6 +69,9 @@ struct PCMachineState {
+>      /* Address space used by IOAPIC device. All IOAPIC interrupts
+>       * will be translated to MSI messages in the address space. */
+>      AddressSpace *ioapic_as;
+> +
+> +    /* ACPI Memory hotplug IO base address */
+> +    hwaddr memhp_io_base;
+>  };
+>=20
+>  #define PC_MACHINE_ACPI_DEVICE_PROP "acpi-device"
+> --
+> 2.17.1
+>=20
+>=20
+> _______________________________________________
+> Linuxarm mailing list
+> Linuxarm@huawei.com
+> http://hulk.huawei.com/mailman/listinfo/linuxarm

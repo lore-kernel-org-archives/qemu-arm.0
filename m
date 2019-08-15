@@ -1,108 +1,147 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1790521wrs;
-        Thu, 15 Aug 2019 01:45:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxe75QM8p6TsxidCRxAUzORV37/JAhtSSU7+V6AMM0ZOwI6irTu8orBc1qET8QogSbIlY9j
-X-Received: by 2002:aed:2c84:: with SMTP id g4mr3079229qtd.344.1565858733881;
-        Thu, 15 Aug 2019 01:45:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565858733; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1868402wrs;
+        Thu, 15 Aug 2019 03:17:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxDWHpCyP6KZfF3IdP28MCDLXGTM/I2gllPGt0fguem81HC3jV9ixgPSP02P++k+q67lmLa
+X-Received: by 2002:a37:6392:: with SMTP id x140mr3356099qkb.114.1565864231496;
+        Thu, 15 Aug 2019 03:17:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565864231; cv=none;
         d=google.com; s=arc-20160816;
-        b=FOTB6X2UtfnhrceGIJiOFH3Ui0uFtvybFlSUl+5zb4L7srnb6O/jxcu5uGaJI1HJEH
-         uLj1FXUpYx5Y5e0tp3WetkUy82j3LRzTbjnH6FStb641yb285t1rqGZmJ2WRjyd7fnI+
-         l/R7e98lpy5pSNHRN0h/QgsRJFyHhttWKDM33OX1+MtUdNPjHCJ6TSl/Ul7alOtnQhKn
-         XCTZppAlXeh1Jcr/YdWvnMCDkjYk+2rTpfIhJXr7CHtRq98x5NETYQMg23rRgqScKpzJ
-         P7217mFeUUjX0ruKVefCy8BeOmREAtFoRVtYNphncrc4cjvWUXFCqXAc+kFqpBacfmOw
-         IHWw==
+        b=zc67XyXQdZkyS9dPSFlJ8x33mFQ5i5Yz6/G84LCsrowWSintllY6V+5biO4hODUyWD
+         l7jnUTNvkuKzimdSKb3SnMJ4SPzXIEqjZqU1Hwvsha2lkjzPyoDb1S4s2RY02S+gUlWQ
+         +XfBtk8zs+0AHbHhEpLSGyOSZEcZSCyULFc4q80AxkLJlz7D0d280soN18gtAFEyX5EP
+         iwUXD38Oehx82UelxwZoZhJNPTpMLfiOOi24Kxb3GnD7q+xsfd0QqPkAGd3ErzEI8FLW
+         n4g5ara96YbV0ND6k4q80pNX/I4MJ2tbkWuovR2j6OowMzpjnxkSvZKvp+zjKaTS1/B3
+         anSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=AZDMUWqTNe5Y/unQE6vuGEUhnn17HNJVmrr2bhp/C6s=;
-        b=tCr1x6sPSa3WeTjgNVrzde7YALDD+H3AKMVWNyb/NJ3Tka0+/L3T3gRIVKGnSGVoCy
-         sx8DtwyNySBIHiDF8MLuavVa4WK8d+CtcjQZ0T0EU5y1igFL4keBjQQJWeepImLIj1Ap
-         kzkRN7fCITzbXlvsJf7myF5R5ciOCo+ofc+4HaR8G/x6LXFaBCOkcSFLxOqvyUrfjw8Q
-         0bn2XlnO2t3e/coIX97ZHjU8sHsflSVFaaFcI9b1oCxqvyBKvaw8+rvh5SyWQELJ6f/n
-         lq4kLaykXjLxaO5oSGzsn3jKGMUu2G3tv+pcdk39zUm3yDhxsWL89uT65ZnREh1Y/sZn
-         +UyQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=YTBGy8hY8j2dBBvtOvP3BdhLLmRMvjqHIRqhjQwRHow=;
+        b=NDh+131QN7BFs3TRyvj4GTHvv9Wu9lkjq2EdGjpJvTecKmNvh2+A7P+U49COJaZbM6
+         8vv6wtDFoa6ad69iurMidtRzpK0scjqIJ/D7DVKSSH8QmCbtcgBrSeNIsM87SATiL2X/
+         50KyVejHvMOKkrcG5yX3+/QkhNW/3ePU3nEIAe5nuYR6EGU+iQ3iHWM9QpKt1AlEs2MH
+         qbebrrw/JHsRX114/GmVGIdur+D5/h3bzPxyglvu6xsivbnnd3uHCf8EBMWTC6CGMygX
+         /CbrgARKqmMqY2VrZxBmm2W/2Nu/SVsAk8LHw9JSGgetrpyckjT0DrLoTS5Luh+y1lNm
+         sKDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id d47si1217939qte.90.2019.08.15.01.45.33
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 15 Aug 2019 01:45:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=fail header.i=@linaro.org header.s=google header.b=XGtitOTC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g33si1264322qta.377.2019.08.15.03.17.11
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 15 Aug 2019 03:17:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 17F5759455;
-	Thu, 15 Aug 2019 08:45:33 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (ovpn-204-82.brq.redhat.com [10.40.204.82])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id ADF1B429AA;
-	Thu, 15 Aug 2019 08:45:28 +0000 (UTC)
-Date: Thu, 15 Aug 2019 10:45:26 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Richard Henderson <richard.henderson@linaro.org>,
-	QEMU Developers <qemu-devel@nongnu.org>,
-	Markus Armbruster <armbru@redhat.com>,
-	Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
-	Igor Mammedov <imammedo@redhat.com>,
-	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Dave P Martin <Dave.Martin@arm.com>
-Subject: Re: [Qemu-devel] [PATCH v3 00/15] target/arm/kvm: enable SVE in
- guests
-Message-ID: <20190815084526.e335iqjyvif3ecqr@kamzik.brq.redhat.com>
-References: <20190802122540.26385-1-drjones@redhat.com>
- <CAFEAcA_Tq-DLQuH2-+NtYOE0m4ki_CfEfWpHG+UM4rGhdK3q-w@mail.gmail.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=XGtitOTC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:40208 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hyCog-00040b-Qa
+	for alex.bennee@linaro.org; Thu, 15 Aug 2019 06:17:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51247)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1hyCoW-00040I-Bs
+ for qemu-arm@nongnu.org; Thu, 15 Aug 2019 06:17:01 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1hyCoV-0004bn-8N
+ for qemu-arm@nongnu.org; Thu, 15 Aug 2019 06:17:00 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:42065)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hyCoV-0004al-26
+ for qemu-arm@nongnu.org; Thu, 15 Aug 2019 06:16:59 -0400
+Received: by mail-ot1-x343.google.com with SMTP id j7so4733016ota.9
+ for <qemu-arm@nongnu.org>; Thu, 15 Aug 2019 03:16:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=YTBGy8hY8j2dBBvtOvP3BdhLLmRMvjqHIRqhjQwRHow=;
+ b=XGtitOTCY/4NTLjMx54tzmTquH+yFUJgii3uDqYduwZAu4DvVXWUXpdU2HMiMaxLVG
+ Qx9eI0N1lnbwZPrAKxRqeIssEym2dCBfeiiIr3EOnVvYMtEzacGkaWQ5eeIplrNsfg4w
+ ipk+rMs/QIghqNrrY8oqzcaH/dOnoge14irFVTPREjSfsBEpyRuJ2ijsSXpDrCfIsBPP
+ IaSxLmDuIgbNL/TrpwehIWH+QX0zyCogVPpIuZ86CxJlxrkBhRNzzBcbnxBdTKUDC+jp
+ EjbggW0n7FuoUNQWZOq5WRHVyYxy/ZhmNqeB7VOVBlSs8UaHnuGvfa3+SZUFyJ5BXGOu
+ DthQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=YTBGy8hY8j2dBBvtOvP3BdhLLmRMvjqHIRqhjQwRHow=;
+ b=c2nER7GOaCLxl4VEcUT6g2YqVE1QyKrr4oE9/trbRytkEveifZlOE6Hgl0P8vvzuuX
+ MCDn/SHdGZ8uXcb18LfXlmB4LGsu8umKENvj291FBbJff1rcpLsQ54nR5l0iWnrftMBJ
+ vJHhyLtWJAiYfdkPYsBFjm5RRusiIIKPWSBD9NjQ4p5oxy2p1TmFx0ARkFmofzgoNZ7k
+ 6sHPEwZUf5btQRCECQStunJZxmGJyoFwPEjPFb7I9Df7KG5sEAMBu37dtu1NwnDdSfMu
+ ME1h3Jv/YwqPxnKKhIK3SbIBvUBLEZ6pn68mpvzgRMBKaMnR7L7ROfpILWA8mzV9tmA2
+ uEGw==
+X-Gm-Message-State: APjAAAU03gbP307lyV1wvC1fbRhUVfedNd8S2OckIMvCvwTLD2Aq9yP3
+ sz/xElRSFpAg55JdavXQLveKnbrLiIZymg/7JyuVvA==
+X-Received: by 2002:a05:6830:2103:: with SMTP id
+ i3mr3006080otc.135.1565864218040; 
+ Thu, 15 Aug 2019 03:16:58 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_Tq-DLQuH2-+NtYOE0m4ki_CfEfWpHG+UM4rGhdK3q-w@mail.gmail.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.39]); Thu, 15 Aug 2019 08:45:33 +0000 (UTC)
-X-TUID: 2iEIWqcUW3tr
+References: <20190808202616.13782-1-richard.henderson@linaro.org>
+ <20190808202616.13782-8-richard.henderson@linaro.org>
+In-Reply-To: <20190808202616.13782-8-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 15 Aug 2019 11:16:46 +0100
+Message-ID: <CAFEAcA8exvd3khkNhw2JnJWHdkFH5O=ut7LvN9Tz5H0ZTg95Sw@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-arm] [PATCH 7/7] target/arm: Use tcg_gen_extrh_i64_i32 to
+ extract the high word
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: z0NfBEfT5SAs
 
-On Thu, Aug 15, 2019 at 09:31:35AM +0100, Peter Maydell wrote:
-> On Fri, 2 Aug 2019 at 13:25, Andrew Jones <drjones@redhat.com> wrote:
-> >
-> > Since Linux kernel v5.2-rc1 KVM has support for enabling SVE in guests.
-> > This series provides the QEMU bits for that enablement. First, we
-> > select existing CPU properties representing features we want to
-> > advertise in addition to the SVE vector lengths and prepare
-> > them for a qmp query. Then we introduce the qmp query, applying
-> > it immediately to those selected features. We also document ARM CPU
-> > features at this time. We next add a qtest for the selected CPU
-> > features that uses the qmp query for its tests - and we continue to
-> > add tests as we add CPU features with the following patches. So then,
-> > once we have the support we need for CPU feature querying and testing,
-> > we add our first SVE CPU feature property, 'sve', which just allows
-> > SVE to be completely enabled/disabled. Following that feature property,
-> > we add all 16 vector length properties along with the input validation
-> > they need and tests to prove the validation works. At this point the
-> > SVE features are still only for TCG, so we provide some patches to
-> > prepare for KVM and then a patch that allows the 'max' CPU type to
-> > enable SVE with KVM, but at first without vector length properties.
-> > After a bit more preparation we add the SVE vector length properties
-> > to the KVM-enabled 'max' CPU type along with the additional input
-> > validation and tests that that needs.  Finally we allow the 'host'
-> > CPU type to also enjoy these properties by simply sharing them with it.
-> 
-> Hi -- I see there have been some review comments on these patches
-> that mean there'll be a v4. In the meantime, patches 1, 2, 5, 6, 9, 10
-> seem to me to be independent bugfixes/cleanups that have been reviewed.
-> Would you like me to take those into target-arm.next to reduce the
-> size of the patchset for v4, or is that going to make rebasing
-> painful on your end?
+On Thu, 8 Aug 2019 at 21:26, Richard Henderson
+<richard.henderson@linaro.org> wrote:
 >
+> Separate shift + extract low will result in one extra insn
+> for hosts like RISC-V, MIPS, and Sparc.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/translate.c | 18 ++++++------------
+>  1 file changed, 6 insertions(+), 12 deletions(-)
+>
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 77154be743..9e103e4fad 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -1761,8 +1761,7 @@ static int disas_iwmmxt_insn(DisasContext *s, uint32_t insn)
+>              if (insn & ARM_CP_RW_BIT) {                         /* TMRRC */
+>                  iwmmxt_load_reg(cpu_V0, wrd);
+>                  tcg_gen_extrl_i64_i32(cpu_R[rdlo], cpu_V0);
+> -                tcg_gen_shri_i64(cpu_V0, cpu_V0, 32);
+> -                tcg_gen_extrl_i64_i32(cpu_R[rdhi], cpu_V0);
+> +                tcg_gen_extrh_i64_i32(cpu_R[rdhi], cpu_V0);
+>              } else {                                    /* TMCRR */
+>                  tcg_gen_concat_i32_i64(cpu_V0, cpu_R[rdlo], cpu_R[rdhi]);
+>                  iwmmxt_store_reg(cpu_V0, wrd);
 
-Hi Peter,
+This patch is fine, but I noticed while reviewing it that tcg/README
+labels both the extrl_i64_i32 and extrh_i64_i32 operations as
+"for 64-bit hosts only". Presumably that's a documentation error,
+since we're not guarding the existing uses of the extrl_i64_i32
+here with any kind of ifdeffery to restrict them to 64-bit hosts ?
 
-Please do take the fixups. I think the rebasing should go fine, and indeed
-reducing the number of patches in the patchset should reduce some of my
-maintenance and also some reviewer strain for v4.
-
-Thanks,
-drew
+thanks
+-- PMM

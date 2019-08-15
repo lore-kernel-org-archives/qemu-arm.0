@@ -1,84 +1,81 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp774265wrs;
-        Wed, 14 Aug 2019 05:38:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzxObaY2FJ7GMpknKi6KMC+WtKBVhC1cNtxjshK2cpD6NP5Zm99VdHDKX+TlbG/7PS1dA8h
-X-Received: by 2002:a17:906:489a:: with SMTP id v26mr40663575ejq.234.1565786289329;
-        Wed, 14 Aug 2019 05:38:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565786289; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1761024wrs;
+        Thu, 15 Aug 2019 01:05:46 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwb1njAgb+/uJ32pgUQO3f0umCp+im9bj/btKWVdfXN+FeVqhOmlc7/Uw+90eG7NvN+Y96W
+X-Received: by 2002:a05:620a:745:: with SMTP id i5mr2911196qki.39.1565856346734;
+        Thu, 15 Aug 2019 01:05:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565856346; cv=none;
         d=google.com; s=arc-20160816;
-        b=S84CzeU+N0Grdur0BbGEuzwI/ozTTJtCwn9FHr07i87txtuTsiho8u5Y/tquAqJVWt
-         hr6h1E5rrDZ5Rmg6U3A4hO5htl35la+OvCvsyUGn5c2GUZtGdhXtYwXtTKH0iCDZ776/
-         M1fSP7HgpeXjs+DqdxXsqcazcsQV0e1WI1Hi7jrzJ0ElG+fYAjze74R050Bg7Xs7sJWo
-         LwMt8y5Gkvvq1r/ogNn4/h7EG4AEvoxa4yenhHOeZ9V6NHTvhBmiu6HS1VhPxUe5Ox/y
-         Ki/AQ4WL1Srl2vDSv8KysxpRtJDij79l+W8l9IWwCRsuUCgYx6WU97Pzr2xJqUIezsdh
-         jxSw==
+        b=hXvldx910avT6Ul2Oq6PvlncwNYow//oGkpIfx/Rn//AsA4FOHta1xyMVskC5+8yfV
+         blsCzXKFAqUWukY+IZTxsQvy7gK2CBITo8YoblNnB8XjAiqRVQe/nN2lYBTvFv2zEprd
+         D2xzDwHqj8guPDgNvaGX1WC9WSVFbB3vvUM3bKzP+wMLaJuQC+gNpnA+dwQVJAx80tiG
+         rRPhmU0I66aTXBEFtM+E/FlQVAEJgr+Ony9q90CsJeLpZ/g/Wj+z7B/LEMZgTVJV9c3O
+         8OlP1J74CxvOHAJtKA4Izp3Q+SjWPXrZLCaQdkF5dktdaLKors367nm9Z5jPlMR1gRBZ
+         V1OQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=xPVfldzxbRYtYCNTwBpQ0B0GbHywTD0CBw7+Fx14oDI=;
-        b=WHwXojqoidqhMjFlCW9aiBCu3s3hQUjFwnzMbA/d1uPbGApyJRR0f4bPZGbVVIFysV
-         x9eAwPqb8i11b8wcLrsOL24PO6IBcz6ygjn/f9vRK0C8ZmS7BAONG9c6M6hfL0hbq2jr
-         7rrX4QihWbEhoy85bKBuKwk9l7bTPI4ImUIRSqEUJeRi6JaOKlbPk0TxNS36Y6kMK90b
-         QaA7QDytjQFIeI5tv+/2UAq2VQNPpoJop7Q9gSjjdGVOjVWJTFJYtIDkhe0WVW0cDZZK
-         UR56+HoqGAzvZCAz9FYSzdGT7V0eDAnyaiQKIrYbeVAM8AERrUA1FOEHIxkwbicXAyz2
-         QLQg==
+        bh=MOEeOweaePdqt5w0BPJqxrzgKwrc6X2pAuRUXynx5ck=;
+        b=MjdPF/xjEQG7xBdW7+WNWAX/8wMz+0TYAKVjuBiWAFioDw3AY2iL+HV0EJQGI36x0l
+         r14yQhDCUTd8oqO9MLFJ9jIB/eSyvJmrTAyrnpXOFfl6usqOxp/MHu/qWQSrTrPq3rhA
+         nWiAZD2PLhgogorTQdkzGSCA1BeFSj85EVrjQ+WxqFx91AfkkH0T/QlwpdMummpcvz0X
+         3y8IOVBCT7qN2cr8K1m92lZHEPohia4Nkr4aWYnMk35N3I38oOmxq1IfZegFfJZfRfoy
+         bwi4vByk6FbxRFK1HeH5pCoxiZm39afJCOPd1agO4CdpTGZS/lIB68oqSC6z/bjo54j5
+         ulCg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gh10si3035965ejb.91.2019.08.14.05.38.09
+        by mx.google.com with ESMTPS id g36si1326960qve.76.2019.08.15.01.05.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 Aug 2019 05:38:09 -0700 (PDT)
+        Thu, 15 Aug 2019 01:05:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60258 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39222 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hxsXY-0004Nc-7c
-	for alex.bennee@linaro.org; Wed, 14 Aug 2019 08:38:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45528)
+	id 1hyAlW-0007jp-5p
+	for alex.bennee@linaro.org; Thu, 15 Aug 2019 04:05:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34531)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1hxsXN-0004KW-Kh
- for qemu-arm@nongnu.org; Wed, 14 Aug 2019 08:37:59 -0400
+ (envelope-from <clg@kaod.org>) id 1hyAlL-0007iO-JK
+ for qemu-arm@nongnu.org; Thu, 15 Aug 2019 04:05:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1hxsXL-0002sG-Mm
- for qemu-arm@nongnu.org; Wed, 14 Aug 2019 08:37:57 -0400
-Received: from 19.mo5.mail-out.ovh.net ([46.105.35.78]:60854)
+ (envelope-from <clg@kaod.org>) id 1hyAlJ-00048c-94
+ for qemu-arm@nongnu.org; Thu, 15 Aug 2019 04:05:35 -0400
+Received: from 17.mo1.mail-out.ovh.net ([87.98.179.142]:33928)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1hxsXL-0002rO-DW
- for qemu-arm@nongnu.org; Wed, 14 Aug 2019 08:37:55 -0400
-Received: from player159.ha.ovh.net (unknown [10.109.143.175])
- by mo5.mail-out.ovh.net (Postfix) with ESMTP id 51CA6249997
- for <qemu-arm@nongnu.org>; Wed, 14 Aug 2019 14:37:53 +0200 (CEST)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1hyAlI-00046V-VR
+ for qemu-arm@nongnu.org; Thu, 15 Aug 2019 04:05:33 -0400
+Received: from player695.ha.ovh.net (unknown [10.109.159.139])
+ by mo1.mail-out.ovh.net (Postfix) with ESMTP id AFB0618A984
+ for <qemu-arm@nongnu.org>; Thu, 15 Aug 2019 10:05:30 +0200 (CEST)
 Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
  (Authenticated sender: clg@kaod.org)
- by player159.ha.ovh.net (Postfix) with ESMTPSA id 8B58C8C29C0B;
- Wed, 14 Aug 2019 12:37:44 +0000 (UTC)
-To: Rashmica Gupta <rashmica.g@gmail.com>, peter.maydell@linaro.org,
- qemu-arm@nongnu.org
-References: <20190814071433.22243-1-rashmica.g@gmail.com>
- <20190814071433.22243-4-rashmica.g@gmail.com>
+ by player695.ha.ovh.net (Postfix) with ESMTPSA id B096A8C2D286;
+ Thu, 15 Aug 2019 08:05:22 +0000 (UTC)
+To: Eddie James <eajames@linux.ibm.com>, qemu-devel@nongnu.org
+References: <1565814456-1264-1-git-send-email-eajames@linux.ibm.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <88221198-9699-6ec4-14f7-ee3c375a57e4@kaod.org>
-Date: Wed, 14 Aug 2019 14:37:44 +0200
+Message-ID: <ca560d31-25ca-5d48-a16a-4fdf74f4779b@kaod.org>
+Date: Thu, 15 Aug 2019 10:05:21 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190814071433.22243-4-rashmica.g@gmail.com>
+In-Reply-To: <1565814456-1264-1-git-send-email-eajames@linux.ibm.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 45035996301659125
+X-Ovh-Tracer-Id: 1317865841822960401
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddruddvkedghedtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrudefudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.35.78
-Subject: Re: [Qemu-arm] [PATCH v4 3/3] hw/gpio: Add in AST2600 specific
- implementation
+X-Received-From: 87.98.179.142
+Subject: Re: [Qemu-arm] [RFC v2] hw/sd/aspeed_sdhci: New device
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,305 +87,489 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: andrew@aj.id.au, aik@ozlabs.ru, qemu-devel@nongnu.org, joel@jms.id.au
+Cc: andrew@aj.id.au, peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ joel@jms.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d7ujTB+FlTyw
+X-TUID: UaZag3RqWGz3
 
-On 14/08/2019 09:14, Rashmica Gupta wrote:
-> The AST2600 has the same sets of 3.6v gpios as the AST2400 plus an
-> addtional two sets of 1.8V gpios.
+Hello Eddie,
+
+On 14/08/2019 22:27, Eddie James wrote:
+> The Aspeed SOCs have two SD/MMC controllers. Add a device that
+> encapsulates both of these controllers and models the Aspeed-specific
+> registers and behavior.
 > 
-> Signed-off-by: Rashmica Gupta <rashmica.g@gmail.com>
+> Tested by reading from mmcblk0 in Linux:
+> qemu-system-arm -machine romulus-bmc -nographic -serial mon:stdio \
+>  -drive file=_tmp/flash-romulus,format=raw,if=mtd \
+>  -device sd-card,drive=sd0 -drive file=_tmp/kernel,format=raw,if=sd
+> 
+> Signed-off-by: Eddie James <eajames@linux.ibm.com>
 > ---
->  hw/gpio/aspeed_gpio.c | 188 ++++++++++++++++++++++++++++++++++++++++--
->  slirp                 |   2 +-
->  2 files changed, 184 insertions(+), 6 deletions(-)
+> This patch applies on top of Cedric's set of recent Aspeed changes. Therefore,
+> I'm sending as an RFC rather than a patch.
+
+yes. we can worked that out when the patch is reviewed. You can base on
+mainline when ready. My tree serves as an overall test base.
+
+> Changes since v1:
+>  - Move slot realize code into the Aspeed SDHCI realize function
+>  - Fix interrupt handling by creating input irqs and connecting them to the
+>    slot irqs.
+>  - Removed card device creation code
+
+I think all the code is here but it needs some more reshuffling :) 
+ 
+The raspi machine is a good source for modelling pratices. 
+
+>  hw/arm/aspeed.c              |   1 -
+>  hw/arm/aspeed_soc.c          |  24 ++++++
+>  hw/sd/Makefile.objs          |   1 +
+>  hw/sd/aspeed_sdhci.c         | 190 +++++++++++++++++++++++++++++++++++++++++++
+>  include/hw/arm/aspeed_soc.h  |   3 +
+>  include/hw/sd/aspeed_sdhci.h |  35 ++++++++
+>  6 files changed, 253 insertions(+), 1 deletion(-)
+>  create mode 100644 hw/sd/aspeed_sdhci.c
+>  create mode 100644 include/hw/sd/aspeed_sdhci.h
 > 
-> diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-> index bd5af81336..f781fbb6dc 100644
-> --- a/hw/gpio/aspeed_gpio.c
-> +++ b/hw/gpio/aspeed_gpio.c
-> @@ -167,6 +167,49 @@
->  #define GPIO_3_6V_MEM_SIZE         0x1F0
->  #define GPIO_3_6V_REG_ARRAY_SIZE   (GPIO_3_6V_MEM_SIZE >> 2)
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index 2574425..aeed5b6 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -480,7 +480,6 @@ static void aspeed_machine_class_init(ObjectClass *oc, void *data)
+>      mc->desc = board->desc;
+>      mc->init = aspeed_machine_init;
+>      mc->max_cpus = ASPEED_CPUS_NUM;
+> -    mc->no_sdcard = 1;
+>      mc->no_floppy = 1;
+>      mc->no_cdrom = 1;
+>      mc->no_parallel = 1;
+> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+> index 8df96f2..a12f14a 100644
+> --- a/hw/arm/aspeed_soc.c
+> +++ b/hw/arm/aspeed_soc.c
+> @@ -22,6 +22,7 @@
+>  #include "qemu/error-report.h"
+>  #include "hw/i2c/aspeed_i2c.h"
+>  #include "net/net.h"
+> +#include "sysemu/blockdev.h"
+
+I would expect block devices to be handled at the machine level in 
+aspeed.c, like the flash devices are. Something like :
+
+    /* Create and plug in the SD cards */
+    for (i = 0; i < ASPEED_SDHCI_NUM_SLOTS; i++) {
+        BusState *bus;
+        DriveInfo *di = drive_get_next(IF_SD);
+        BlockBackend *blk = di ? blk_by_legacy_dinfo(di) : NULL;
+        DeviceState *carddev;
+
+        bus = qdev_get_child_bus(DEVICE(&s->soc), "sd-bus");
+        if (!bus) {
+            error_report("No SD bus found for SD card %d", i);
+            exit(1);
+        }
+        carddev = qdev_create(bus, TYPE_SD_CARD);
+        qdev_prop_set_drive(carddev, "drive", blk, &error_fatal);
+        object_property_set_bool(OBJECT(carddev), true, "realized",
+                                 &error_fatal);
+    }
+
 >  
-> +/* AST2600 only - 1.8V gpios */
+>  #define ASPEED_SOC_IOMEM_SIZE       0x00200000
+>  
+> @@ -62,6 +63,7 @@ static const hwaddr aspeed_soc_ast2500_memmap[] = {
+>      [ASPEED_XDMA]   = 0x1E6E7000,
+>      [ASPEED_ADC]    = 0x1E6E9000,
+>      [ASPEED_SRAM]   = 0x1E720000,
+> +    [ASPEED_SDHCI]  = 0x1E740000,
+>      [ASPEED_GPIO]   = 0x1E780000,
+>      [ASPEED_RTC]    = 0x1E781000,
+>      [ASPEED_TIMER1] = 0x1E782000,
+> @@ -100,6 +102,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
+>      [ASPEED_XDMA]   = 0x1E6E7000,
+>      [ASPEED_ADC]    = 0x1E6E9000,
+>      [ASPEED_VIDEO]  = 0x1E700000,
+> +    [ASPEED_SDHCI]  = 0x1E740000,
+>      [ASPEED_GPIO]   = 0x1E780000,
+>      [ASPEED_RTC]    = 0x1E781000,
+>      [ASPEED_TIMER1] = 0x1E782000,
+> @@ -146,6 +149,7 @@ static const int aspeed_soc_ast2400_irqmap[] = {
+>      [ASPEED_ETH1]   = 2,
+>      [ASPEED_ETH2]   = 3,
+>      [ASPEED_XDMA]   = 6,
+> +    [ASPEED_SDHCI]  = 26,
+>  };
+>  
+>  #define aspeed_soc_ast2500_irqmap aspeed_soc_ast2400_irqmap
+> @@ -163,6 +167,7 @@ static const int aspeed_soc_ast2600_irqmap[] = {
+>      [ASPEED_SDMC]   = 0,
+>      [ASPEED_SCU]    = 12,
+>      [ASPEED_XDMA]   = 6,
+> +    [ASPEED_SDHCI]  = 43,
+>      [ASPEED_ADC]    = 46,
+>      [ASPEED_GPIO]   = 40,
+>      [ASPEED_RTC]    = 13,
+> @@ -350,6 +355,15 @@ static void aspeed_soc_init(Object *obj)
+>          sysbus_init_child_obj(obj, "fsi[*]", OBJECT(&s->fsi[0]),
+>                                sizeof(s->fsi[0]), TYPE_ASPEED_FSI);
+>      }
+> +
+> +    sysbus_init_child_obj(obj, "sdhci", OBJECT(&s->sdhci), sizeof(s->sdhci),
+> +                          TYPE_ASPEED_SDHCI);
+
+This is the Aspeed SD host interface. May be we should call it sdhost ? 
+
+I suppose this is our "sd-bus" device ? 
+
+> +    /* Init sd card slot class here so that they're under the correct parent */
+> +    for (i = 0; i < ASPEED_SDHCI_NUM_SLOTS; ++i) {
+
+and these are the slots, I would put them at the SoC level.
+
+> +        sysbus_init_child_obj(obj, "sdhci_slot[*]", OBJECT(&s->sdhci.slots[i]),
+> +                              sizeof(s->sdhci.slots[i]), TYPE_SYSBUS_SDHCI);
+> +    }
+>  }
+>  
+>  /*
+> @@ -680,6 +694,16 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->fsi[0]), 0,
+>                             aspeed_soc_get_irq(s, ASPEED_FSI1));
+>      }
+> +
+> +    /* SD/SDIO - set the reg address so slot memory mapping can be set up */
+> +    s->sdhci.ioaddr = sc->info->memmap[ASPEED_SDHCI];
+
+That's weird. We do all mappings in the SoC. 
+
+I think you should be realizing the slots here also. See the other SoCs, 
+XlnxZynqMPState for instance.
+
+> +    object_property_set_bool(OBJECT(&s->sdhci), true, "realized", &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->sdhci), 0,
+> +                       aspeed_soc_get_irq(s, ASPEED_SDHCI));
+>
+>  }
+>  static Property aspeed_soc_properties[] = {
+>      DEFINE_PROP_UINT32("num-cpus", AspeedSoCState, num_cpus, 0),
+> diff --git a/hw/sd/Makefile.objs b/hw/sd/Makefile.objs
+> index 0665727..a884c23 100644
+> --- a/hw/sd/Makefile.objs
+> +++ b/hw/sd/Makefile.objs
+> @@ -8,3 +8,4 @@ obj-$(CONFIG_MILKYMIST) += milkymist-memcard.o
+>  obj-$(CONFIG_OMAP) += omap_mmc.o
+>  obj-$(CONFIG_PXA2XX) += pxa2xx_mmci.o
+>  obj-$(CONFIG_RASPI) += bcm2835_sdhost.o
+> +obj-$(CONFIG_ASPEED_SOC) += aspeed_sdhci.o
+> diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
+> new file mode 100644
+> index 0000000..d1a05e9
+> --- /dev/null
+> +++ b/hw/sd/aspeed_sdhci.c
+> @@ -0,0 +1,190 @@
 > +/*
-> + * The AST2600 has same 3.6V gpios as the AST2400 (memory offsets 0x0-0x198)
-> + * and addtional 1.8V gpios (memory offsets 0x800-0x9D4). We create one
-> + * GPIOState for the 3.6V gpios mapped at 0x0 and another GPIOState for the
-> + * 1.8V gpios mapped at 0x800.
+> + * Aspeed SD Host Controller
+> + * Eddie James <eajames@linux.ibm.com>
+> + *
+> + * Copyright (C) 2019 IBM Corp
+> + * SPDX-License-Identifer: GPL-2.0-or-later
 > + */
-> +#define GPIO_1_8V_REG_OFFSET          0x800
-> +#define GPIO_1_8V_ABCD_DATA_VALUE     ((0x800 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_ABCD_DIRECTION      ((0x804 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_ABCD_INT_ENABLE     ((0x808 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_ABCD_INT_SENS_0     ((0x80C - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_ABCD_INT_SENS_1     ((0x810 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_ABCD_INT_SENS_2     ((0x814 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_ABCD_INT_STATUS     ((0x818 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_ABCD_RESET_TOLERANT ((0x81C - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_E_DATA_VALUE        ((0x820 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_E_DIRECTION         ((0x824 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_E_INT_ENABLE        ((0x828 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_E_INT_SENS_0        ((0x82C - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_E_INT_SENS_1        ((0x830 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_E_INT_SENS_2        ((0x834 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_E_INT_STATUS        ((0x838 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_E_RESET_TOLERANT    ((0x83C - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_ABCD_DEBOUNCE_1     ((0x840 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_ABCD_DEBOUNCE_2     ((0x844 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_E_DEBOUNCE_1        ((0x848 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_E_DEBOUNCE_2        ((0x84C - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_DEBOUNCE_TIME_1     ((0x850 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_DEBOUNCE_TIME_2     ((0x854 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_DEBOUNCE_TIME_3     ((0x858 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_ABCD_COMMAND_SRC_0  ((0x860 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_ABCD_COMMAND_SRC_1  ((0x864 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_E_COMMAND_SRC_0     ((0x868 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_E_COMMAND_SRC_1     ((0x86C - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_ABCD_DATA_READ      ((0x8C0 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_E_DATA_READ         ((0x8C4 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_ABCD_INPUT_MASK     ((0x9D0 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_E_INPUT_MASK        ((0x9D4 - GPIO_1_8V_REG_OFFSET) >> 2)
-> +#define GPIO_1_8V_MEM_SIZE            0x9D8
-> +#define GPIO_1_8V_REG_ARRAY_SIZE      ((GPIO_1_8V_MEM_SIZE - \
-> +                                      GPIO_1_8V_REG_OFFSET) >> 2)
 > +
->  static int aspeed_evaluate_irq(GPIOSets *regs, int gpio_prev_high, int gpio)
->  {
->      uint32_t falling_edge = 0, rising_edge = 0;
-> @@ -465,6 +508,39 @@ static const AspeedGPIOReg aspeed_3_6v_gpios[GPIO_3_6V_REG_ARRAY_SIZE] = {
->      [GPIO_AC_INPUT_MASK] =         { 7, gpio_reg_input_mask },
->  };
->  
-> +static const AspeedGPIOReg aspeed_1_8v_gpios[GPIO_1_8V_REG_ARRAY_SIZE] = {
-> +    /* 1.8V Set ABCD */
-> +    [GPIO_1_8V_ABCD_DATA_VALUE] =     {0, gpio_reg_data_value},
-> +    [GPIO_1_8V_ABCD_DIRECTION] =      {0, gpio_reg_direction},
-> +    [GPIO_1_8V_ABCD_INT_ENABLE] =     {0, gpio_reg_int_enable},
-> +    [GPIO_1_8V_ABCD_INT_SENS_0] =     {0, gpio_reg_int_sens_0},
-> +    [GPIO_1_8V_ABCD_INT_SENS_1] =     {0, gpio_reg_int_sens_1},
-> +    [GPIO_1_8V_ABCD_INT_SENS_2] =     {0, gpio_reg_int_sens_2},
-> +    [GPIO_1_8V_ABCD_INT_STATUS] =     {0, gpio_reg_int_status},
-> +    [GPIO_1_8V_ABCD_RESET_TOLERANT] = {0, gpio_reg_reset_tolerant},
-> +    [GPIO_1_8V_ABCD_DEBOUNCE_1] =     {0, gpio_reg_debounce_1},
-> +    [GPIO_1_8V_ABCD_DEBOUNCE_2] =     {0, gpio_reg_debounce_2},
-> +    [GPIO_1_8V_ABCD_COMMAND_SRC_0] =  {0, gpio_reg_cmd_source_0},
-> +    [GPIO_1_8V_ABCD_COMMAND_SRC_1] =  {0, gpio_reg_cmd_source_1},
-> +    [GPIO_1_8V_ABCD_DATA_READ] =      {0, gpio_reg_data_read},
-> +    [GPIO_1_8V_ABCD_INPUT_MASK] =     {0, gpio_reg_input_mask},
-> +    /* 1.8V Set E */
-> +    [GPIO_1_8V_E_DATA_VALUE] =     {1, gpio_reg_data_value},
-> +    [GPIO_1_8V_E_DIRECTION] =      {1, gpio_reg_direction},
-> +    [GPIO_1_8V_E_INT_ENABLE] =     {1, gpio_reg_int_enable},
-> +    [GPIO_1_8V_E_INT_SENS_0] =     {1, gpio_reg_int_sens_0},
-> +    [GPIO_1_8V_E_INT_SENS_1] =     {1, gpio_reg_int_sens_1},
-> +    [GPIO_1_8V_E_INT_SENS_2] =     {1, gpio_reg_int_sens_2},
-> +    [GPIO_1_8V_E_INT_STATUS] =     {1, gpio_reg_int_status},
-> +    [GPIO_1_8V_E_RESET_TOLERANT] = {1, gpio_reg_reset_tolerant},
-> +    [GPIO_1_8V_E_DEBOUNCE_1] =     {1, gpio_reg_debounce_1},
-> +    [GPIO_1_8V_E_DEBOUNCE_2] =     {1, gpio_reg_debounce_2},
-> +    [GPIO_1_8V_E_COMMAND_SRC_0] =  {1, gpio_reg_cmd_source_0},
-> +    [GPIO_1_8V_E_COMMAND_SRC_1] =  {1, gpio_reg_cmd_source_1},
-> +    [GPIO_1_8V_E_DATA_READ] =      {1, gpio_reg_data_read},
-> +    [GPIO_1_8V_E_INPUT_MASK] =     {1, gpio_reg_input_mask},
-> +};
+> +#include "qemu/osdep.h"
+> +#include "qemu/log.h"
+> +#include "qemu/error-report.h"
+> +#include "hw/sd/aspeed_sdhci.h"
+> +#include "qapi/error.h"
 > +
->  static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
->  {
->      AspeedGPIOState *s = ASPEED_GPIO(opaque);
-> @@ -660,9 +736,12 @@ static void aspeed_gpio_get_pin(Object *obj, Visitor *v, const char *name,
->      int set_idx, group_idx = 0;
->  
->      if (sscanf(name, "gpio%2[A-Z]%1d", group, &pin) != 2) {
-> -        qemu_log_mask(LOG_GUEST_ERROR, "%s: error reading %s\n",
-> +        /* 1.8V gpio */
-> +        if (sscanf(name, "gpio%3s%1d", group, &pin) != 2) {
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: error reading %s\n",
->                        __func__, name);
-> -        return;
-> +            return;
-> +        }
->      }
->      set_idx = get_set_idx(s, group, &group_idx);
->      if (set_idx == -1) {
-> @@ -685,9 +764,12 @@ static void aspeed_gpio_set_pin(Object *obj, Visitor *v, const char *name,
->  
->      visit_type_bool(v, name, &level, &local_err);
->      if (sscanf(name, "gpio%2[A-Z]%1d", group, &pin) != 2) {
-> -        qemu_log_mask(LOG_GUEST_ERROR, "%s: error reading %s\n",
-> +        /* 1.8V gpio */
-> +        if (sscanf(name, "gpio%3s%1d", group, &pin) != 2) {
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: error reading %s\n",
->                        __func__, name);
-> -        return;
-> +            return;
-> +        }
->      }
->      set_idx = get_set_idx(s, group, &group_idx);
->      if (set_idx == -1) {
-> @@ -719,6 +801,21 @@ static const GPIOSetProperties ast2500_set_props[] = {
->      [7] = {0x000000ff,  0x000000ff,  {"AC"} },
->  };
->  
-> +static GPIOSetProperties ast2600_3_6v_set_props[] = {
-> +    [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-> +    [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-> +    [2] = {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
-> +    [3] = {0xffffffff,  0xffffffff,  {"M", "N", "O", "P"} },
-> +    [4] = {0xffffffff,  0xffffffff,  {"Q", "R", "S", "T"} },
-> +    [5] = {0xffffffff,  0x0000ffff,  {"U", "V", "W", "X"} },
-> +    [6] = {0xffff0000,  0x0fff0000,  {"Y", "Z", "", ""} },
-> +};
+> +#define ASPEED_SDHCI_INFO            0x00
+> +#define  ASPEED_SDHCI_INFO_RESET     0x00030000
+> +#define ASPEED_SDHCI_DEBOUNCE        0x04
+> +#define  ASPEED_SDHCI_DEBOUNCE_RESET 0x00000005
+> +#define ASPEED_SDHCI_BUS             0x08
+> +#define ASPEED_SDHCI_SDIO_140        0x10
+> +#define ASPEED_SDHCI_SDIO_148        0x18
+> +#define ASPEED_SDHCI_SDIO_240        0x20
+> +#define ASPEED_SDHCI_SDIO_248        0x28
+> +#define ASPEED_SDHCI_WP_POL          0xec
+> +#define ASPEED_SDHCI_CARD_DET        0xf0
+> +#define ASPEED_SDHCI_IRQ_STAT        0xfc
 > +
-> +static GPIOSetProperties ast2600_1_8v_set_props[] = {
-> +    [0] = {0xffffffff,  0xffffffff,  {"18A", "18B", "18C", "18D"} },
-> +    [1] = {0x0000000f,  0x0000000f,  {"18E"} },
-> +};
+> +#define TO_REG(addr) ((addr) / sizeof(uint32_t))
 > +
->  static const AspeedGPIOController aspeed_gpio_ast2400_controller = {
->      .props          = ast2400_set_props,
->      .nr_gpio_pins   = 216,
-> @@ -733,6 +830,20 @@ static const AspeedGPIOController aspeed_gpio_ast2500_controller = {
->      .gap            = 220,
->  };
->  
-> +static const AspeedGPIOController aspeed_gpio_ast2600_3_6v_controller = {
-> +    .props          = ast2600_3_6v_set_props,
-> +    .nr_gpio_pins   = 208,
-> +    .nr_gpio_sets   = 7,
-> +    .mem_size       = GPIO_3_6V_MEM_SIZE,
-> +};
-> +
-> +static const AspeedGPIOController aspeed_gpio_ast2600_1_8v_controller = {
-> +    .props          = ast2600_1_8v_set_props,
-> +    .nr_gpio_pins   = 36,
-> +    .nr_gpio_sets   = 2,
-> +    .mem_size       = GPIO_1_8V_MEM_SIZE,
-> +};
-> +
->  static const MemoryRegionOps aspeed_gpio_ops = {
->      .read       = aspeed_gpio_read,
->      .write      = aspeed_gpio_write,
-> @@ -768,7 +879,6 @@ static void aspeed_gpio_realize(DeviceState *dev, Error **errp)
->              TYPE_ASPEED_GPIO, GPIO_3_6V_MEM_SIZE);
->      s->lookup = aspeed_3_6v_gpios;
->  
-> -
->      sysbus_init_mmio(sbd, &s->iomem);
->  }
->  
-> @@ -794,6 +904,57 @@ static void aspeed_gpio_init(Object *obj)
->      }
->  }
->  
-> +static void aspeed_2600_gpio_realize(DeviceState *dev, Error **errp)
+> +static uint64_t aspeed_sdhci_read(void *opaque, hwaddr addr, unsigned int size)
 > +{
-> +    AspeedGPIOState *s = ASPEED_GPIO(dev);
-> +    AspeedGPIOState *s_1_8, *s_3_6;
-> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-> +    AspeedGPIOClass *agc, *agc2;
-> +    int pin;
-> +    void *obj;
+> +    uint32_t val = 0;
+> +    AspeedSDHCIState *sdhci = opaque;
 > +
-> +    /* Create and setup the 1.8V gpio state/class */
-> +    obj = object_new(TYPE_ASPEED_GPIO "-ast2600");
-> +    s_1_8 = ASPEED_GPIO(obj);
-> +    object_property_add_child(OBJECT(dev), TYPE_ASPEED_GPIO "-ast2600-1.8v",
-> +                              obj, errp);
-> +    if (error_abort) {
-> +        error_propagate(errp, error_abort);
+> +    switch (addr) {
+> +    case ASPEED_SDHCI_SDIO_140:
+> +        val = (uint32_t)sdhci->slots[0].capareg;
+> +        break;
+> +    case ASPEED_SDHCI_SDIO_148:
+> +        val = (uint32_t)sdhci->slots[0].maxcurr;
+> +        break;
+> +    case ASPEED_SDHCI_SDIO_240:
+> +        val = (uint32_t)sdhci->slots[1].capareg;
+> +        break;
+> +    case ASPEED_SDHCI_SDIO_248:
+> +        val = (uint32_t)sdhci->slots[1].maxcurr;
+> +        break;
+
+We could mirror the 16bytes segment for [ SDHC_CAPAB ...  SDHC_MAXCURR + 4 ]  
+of each slot under the MMIO region of the Aspeed SD controller at offset: 
+(slot + 1) * 0x10. If that worked, we wouldn't need these redirections.
+
+I think you need alias regions.
+
+> +    default:
+> +        if (addr < ASPEED_SDHCI_REG_SIZE) {
+> +            val = sdhci->regs[TO_REG(addr)];
+> +        }
+
+we could return some errors for not implemented registers.
+ 
+> +    }
+> +
+> +    return (uint64_t)val;
+> +}
+> +
+> +static void aspeed_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
+> +                               unsigned int size)
+> +{
+> +    AspeedSDHCIState *sdhci = opaque;
+> +
+> +    switch (addr) {
+> +    case ASPEED_SDHCI_SDIO_140:
+> +        sdhci->slots[0].capareg = (uint64_t)(uint32_t)val;
+> +        break;
+> +    case ASPEED_SDHCI_SDIO_148:
+> +        sdhci->slots[0].maxcurr = (uint64_t)(uint32_t)val;
+> +        break;
+> +    case ASPEED_SDHCI_SDIO_240:
+> +        sdhci->slots[1].capareg = (uint64_t)(uint32_t)val;
+> +        break;
+> +    case ASPEED_SDHCI_SDIO_248:
+> +        sdhci->slots[1].maxcurr = (uint64_t)(uint32_t)val;
+> +        break;
+
+I think these regs are readonly.
+
+> +    default:
+> +        if (addr < ASPEED_SDHCI_REG_SIZE) {
+> +            sdhci->regs[TO_REG(addr)] = (uint32_t)val;
+> +        }
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps aspeed_sdhci_ops = {
+> +    .read = aspeed_sdhci_read,
+> +    .write = aspeed_sdhci_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +    .valid.min_access_size = 4,
+> +    .valid.max_access_size = 4,
+> +};
+> +
+> +static void aspeed_sdhci_set_irq(void *opaque, int n, int level)
+> +{
+> +    AspeedSDHCIState *sdhci = opaque;
+> +
+> +    if (level) {
+> +        sdhci->regs[TO_REG(ASPEED_SDHCI_IRQ_STAT)] |= BIT(n);
+> +
+> +        qemu_irq_raise(sdhci->irq);
+> +    } else {
+> +        sdhci->regs[TO_REG(ASPEED_SDHCI_IRQ_STAT)] &= ~BIT(n);
+> +
+> +        qemu_irq_lower(sdhci->irq);
 > +    }
 
-This looks wrong. 
+Doesn't that work the other way around ? 
 
-Shouldn't we instantiate 2 GPIOs devices under the AST2600 SoC with different
-types ? 
+The SDHCI objects trigger their IRQ which call the irq_notify() handler 
+in which we need to deduce the slot number to update ASPEED_SDHCI_IRQ_STAT 
+and raise/lower the Aspeed SD host IRQ. I think that's how it should work.
+
+
+> +}
+> +
+> +static void aspeed_sdhci_realize(DeviceState *dev, Error **errp)
+> +{
+> +    Error *err = NULL;
+> +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+> +    AspeedSDHCIState *sdhci = ASPEED_SDHCI(dev);
+> +
+> +    /* Create input irqs for the slots */
+> +    qdev_init_gpio_in_named_with_opaque(DEVICE(sbd), aspeed_sdhci_set_irq,
+> +                                        sdhci, NULL, ASPEED_SDHCI_NUM_SLOTS);
+> +
+> +    for (int i = 0; i < ASPEED_SDHCI_NUM_SLOTS; ++i) {
+> +        hwaddr slot_addr = sdhci->ioaddr + (0x100 * (i + 1));
+> +        Object *sdhci_slot = OBJECT(&sdhci->slots[i]);
+> +        SysBusDevice *sbd_slot = SYS_BUS_DEVICE(&sdhci->slots[i]);
+> +
+> +        object_property_set_int(sdhci_slot, 2, "sd-spec-version", &err);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+> +
+> +        object_property_set_uint(sdhci_slot, ASPEED_SDHCI_CAPABILITIES,
+> +                                 "capareg", &err);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+> +
+> +        object_property_set_bool(sdhci_slot, true, "realized", &err);
+> +        if (err) {
+> +            error_propagate(errp, err);
+> +            return;
+> +        }
+> +
+> +        sysbus_mmio_map(sbd_slot, 0, slot_addr);
+
+We should do the mapping at the SoC level and I would also put the slots 
+at the SoC level.
+
+> +        sysbus_connect_irq(sbd_slot, 0, qdev_get_gpio_in(DEVICE(sbd), i));
+> +    }
+> +
+> +    sysbus_init_irq(sbd, &sdhci->irq);
+> +    memory_region_init_io(&sdhci->iomem, OBJECT(sdhci), &aspeed_sdhci_ops,
+> +                          sdhci, TYPE_ASPEED_SDHCI, ASPEED_SDHCI_REG_SIZE);
+> +    sysbus_init_mmio(sbd, &sdhci->iomem);
+> +    sysbus_mmio_map(sbd, 0, sdhci->ioaddr);
+
+Here also.
+
+> +}
+> +
+> +static void aspeed_sdhci_reset(DeviceState *dev)
+> +{
+> +    AspeedSDHCIState *sdhci = ASPEED_SDHCI(dev);
+> +
+> +    memset(sdhci->regs, 0, ASPEED_SDHCI_REG_SIZE);
+> +    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] = ASPEED_SDHCI_INFO_RESET;
+> +    sdhci->regs[TO_REG(ASPEED_SDHCI_DEBOUNCE)] = ASPEED_SDHCI_DEBOUNCE_RESET;
+> +}
+> +
+> +static const VMStateDescription vmstate_aspeed_sdhci = {
+> +    .name = TYPE_ASPEED_SDHCI,
+> +    .version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT32_ARRAY(regs, AspeedSDHCIState, ASPEED_SDHCI_NUM_REGS),
+> +        VMSTATE_END_OF_LIST(),
+> +    },
+> +};
+> +
+> +static void aspeed_sdhci_class_init(ObjectClass *classp, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(classp);
+> +
+> +    dc->realize = aspeed_sdhci_realize;
+> +    dc->reset = aspeed_sdhci_reset;
+> +    dc->vmsd = &vmstate_aspeed_sdhci;
+> +}
+> +
+> +static TypeInfo aspeed_sdhci_info = {
+> +    .name          = TYPE_ASPEED_SDHCI,
+> +    .parent        = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(AspeedSDHCIState),
+> +    .class_init    = aspeed_sdhci_class_init,
+> +};
+> +
+> +static void aspeed_sdhci_register_types(void)
+> +{
+> +    type_register_static(&aspeed_sdhci_info);
+> +}
+> +
+> +type_init(aspeed_sdhci_register_types)
+> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+> index 429d7e7..3ddba3a 100644
+> --- a/include/hw/arm/aspeed_soc.h
+> +++ b/include/hw/arm/aspeed_soc.h
+> @@ -29,6 +29,7 @@
+>  #include "hw/misc/aspeed_pwm.h"
+>  #include "hw/misc/aspeed_lpc.h"
+>  #include "hw/misc/aspeed_fsi.h"
+> +#include "hw/sd/aspeed_sdhci.h"
+>  
+>  #define ASPEED_SPIS_NUM  2
+>  #define ASPEED_WDTS_NUM  4
+> @@ -62,6 +63,7 @@ typedef struct AspeedSoCState {
+>      AspeedPWMState pwm;
+>      AspeedLPCState lpc;
+>      AspeedFsiState fsi[2];
+> +    AspeedSDHCIState sdhci;
+>  } AspeedSoCState;
+>  
+>  #define TYPE_ASPEED_SOC "aspeed-soc"
+> @@ -107,6 +109,7 @@ enum {
+>      ASPEED_ADC,
+>      ASPEED_VIDEO,
+>      ASPEED_SRAM,
+> +    ASPEED_SDHCI,
+>      ASPEED_GPIO,
+>      ASPEED_RTC,
+>      ASPEED_TIMER1,
+> diff --git a/include/hw/sd/aspeed_sdhci.h b/include/hw/sd/aspeed_sdhci.h
+> new file mode 100644
+> index 0000000..ac5482f
+> --- /dev/null
+> +++ b/include/hw/sd/aspeed_sdhci.h
+> @@ -0,0 +1,35 @@
+> +/*
+> + * Aspeed SD Host Controller
+> + * Eddie James <eajames@linux.ibm.com>
+> + *
+> + * Copyright (C) 2019 IBM Corp
+> + * SPDX-License-Identifer: GPL-2.0-or-later
+> + */
+> +
+> +#ifndef ASPEED_SDHCI_H
+> +#define ASPEED_SDHCI_H
+> +
+> +#include "hw/sd/sdhci.h"
+> +
+> +#define TYPE_ASPEED_SDHCI "aspeed.sdhci"
+> +#define ASPEED_SDHCI(obj) OBJECT_CHECK(AspeedSDHCIState, (obj), \
+> +                                       TYPE_ASPEED_SDHCI)
+> +
+> +#define ASPEED_SDHCI_CAPABILITIES 0x01E80080
+> +#define ASPEED_SDHCI_NUM_SLOTS    2
+> +#define ASPEED_SDHCI_NUM_REGS     (ASPEED_SDHCI_REG_SIZE / sizeof(uint32_t))
+> +#define ASPEED_SDHCI_REG_SIZE     0x100
+> +
+> +typedef struct AspeedSDHCIState {
+
+AspeedSDHost may be ? It's the SoC SD controller.
+
+> +    SysBusDevice parent;
+> +
+> +    SDHCIState slots[ASPEED_SDHCI_NUM_SLOTS];
+
+I think the SoC should own the SD slots. 
+
+> +
+> +    hwaddr ioaddr;
+
+not needed.
+
+> +    MemoryRegion iomem;
+> +    qemu_irq irq;
+> +
+> +    uint32_t regs[ASPEED_SDHCI_NUM_REGS];
+> +} AspeedSDHCIState;
+> +
+> +#endif /* ASPEED_SDHCI_H */
+> 
+
+Thanks,
 
 C.
-
-
-> +    agc = ASPEED_GPIO_GET_CLASS(s_1_8);
-> +    agc->ctrl = (void *)&aspeed_gpio_ast2600_1_8v_controller;
-> +    aspeed_gpio_init(obj);
-> +
-> +    /* Create and setup the 3.6V gpio state/class */
-> +    obj = object_new(TYPE_ASPEED_GPIO "-ast2600");
-> +    s_3_6 = ASPEED_GPIO(obj);
-> +    object_property_add_child(OBJECT(dev), TYPE_ASPEED_GPIO "-ast2600-3.6v",
-> +                              obj, errp);
-> +    if (error_abort) {
-> +        error_propagate(errp, error_abort);
-> +    }
-> +    agc2 = ASPEED_GPIO_GET_CLASS(s_3_6);
-> +    agc2->ctrl = (void *)&aspeed_gpio_ast2600_3_6v_controller;
-> +    aspeed_gpio_init(obj);
-> +
-> +    for (pin = 0; pin < agc->ctrl->nr_gpio_pins; pin++) {
-> +        sysbus_init_irq(sbd, &s->gpios[pin]);
-> +    }
-> +
-> +    memory_region_init_io(&s_3_6->iomem, OBJECT(s_3_6), &aspeed_gpio_ops, s_3_6,
-> +            TYPE_ASPEED_GPIO, GPIO_3_6V_MEM_SIZE + GPIO_1_8V_MEM_SIZE);
-> +    s_3_6->lookup = aspeed_3_6v_gpios;
-> +
-> +    memory_region_init_io(&s_1_8->iomem, OBJECT(s_1_8), &aspeed_gpio_ops, s_1_8,
-> +            TYPE_ASPEED_GPIO, GPIO_1_8V_MEM_SIZE);
-> +    memory_region_add_subregion(&s_3_6->iomem, GPIO_1_8V_REG_OFFSET,
-> +                                &s_1_8->iomem);
-> +    s_1_8->lookup = aspeed_1_8v_gpios;
-> +
-> +    sysbus_init_mmio(sbd, &s_3_6->iomem);
-> +    sysbus_init_mmio(sbd, &s_1_8->iomem);
-> +}
-> +
->  static const VMStateDescription vmstate_gpio_regs = {
->      .name = TYPE_ASPEED_GPIO"/regs",
->      .version_id = 1,
-> @@ -830,6 +991,16 @@ static const VMStateDescription vmstate_aspeed_gpio = {
->     }
->  };
->  
-> +static void aspeed_gpio_ast2600_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
-> +
-> +    dc->realize = aspeed_2600_gpio_realize;
-> +    dc->reset = aspeed_gpio_reset;
-> +    dc->desc = "Aspeed GPIO Controller";
-> +    dc->vmsd = &vmstate_aspeed_gpio;
-> +}
-> +
->  static void aspeed_gpio_class_init(ObjectClass *klass, void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(klass);
-> @@ -866,11 +1037,18 @@ static const TypeInfo aspeed_gpio_ast2500_info = {
->      .class_data     = (void *)&aspeed_gpio_ast2500_controller,
->  };
->  
-> +static const TypeInfo aspeed_gpio_ast2600_info = {
-> +    .name           = TYPE_ASPEED_GPIO "-ast2600",
-> +    .parent         = TYPE_ASPEED_GPIO,
-> +    .class_init     = aspeed_gpio_ast2600_class_init,
-> +};
-> +
->  static void aspeed_gpio_register_types(void)
->  {
->      type_register_static(&aspeed_gpio_info);
->      type_register_static(&aspeed_gpio_ast2400_info);
->      type_register_static(&aspeed_gpio_ast2500_info);
-> +    type_register_static(&aspeed_gpio_ast2600_info);
->  }
->  
->  type_init(aspeed_gpio_register_types);
-> diff --git a/slirp b/slirp
-> index f0da672620..126c04acba 160000
-> --- a/slirp
-> +++ b/slirp
-> @@ -1 +1 @@
-> -Subproject commit f0da6726207b740f6101028b2992f918477a4b08
-> +Subproject commit 126c04acbabd7ad32c2b018fe10dfac2a3bc1210
-> 
-

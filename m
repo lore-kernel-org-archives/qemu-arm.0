@@ -1,74 +1,76 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp491945wrs;
-        Fri, 16 Aug 2019 00:57:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzxfBklZ+GoB628JseCjF7esy+UYBKPJiOAfIWeADw3j1KgOP8hZv4MvpPxasM6eFs0HCRo
-X-Received: by 2002:a17:906:3b47:: with SMTP id h7mr8057124ejf.30.1565942247351;
-        Fri, 16 Aug 2019 00:57:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565942247; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp492118wrs;
+        Fri, 16 Aug 2019 00:57:42 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxyAMjvqYK10VCjIVg35G60LjwYAiK39dq4PJ84D6WmSLXxzu2aPuaTyXvldxnIrBKwJOSh
+X-Received: by 2002:a37:9f07:: with SMTP id i7mr5272688qke.485.1565942262738;
+        Fri, 16 Aug 2019 00:57:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565942262; cv=none;
         d=google.com; s=arc-20160816;
-        b=hCS9gZNyQD1fkFXYVJbM7tWrXASdMI1621qn7i/PwCdWSyDiRW67yMG97dQXOf3Irr
-         4uZcyLSA4LE5olTgmGUKieBiza4mDydd33CFz/H5nWAG2yXx79jSiaPEJm9CdOZVwKGB
-         Rv+2M3QJyhl1VekFv6rGa5mLJ3+i95WN4EALd6i123+ZWLgK5ibBeNmL/czYRlq40lJv
-         fkuzFijV5O0/uz30cl+ftEYSgrIk/U2w41htn4+iibGJy4truJ3k8IfykbKBVHoCBWL4
-         aUsAea/kH81Du8rEijmBA3gaBqrqVHLCHm8+wMUJ7b1nxNSEhFOmkPgMlP0+IwBFcaAV
-         T5GA==
+        b=cAjZw250lTjAczGAx9r1s/2xxDXKL8Z51HfFYua0CGHlM3Y9bGiX4JiXqoLf7whKvA
+         tYy9SaXPfAtnBLCbtltmoD4vMraNatPif/qWGnxHVn+ctxvHntq3Z8Wd3Y2DPrf6Y8IT
+         /+EVV1rPJXRY0aSOj8fnLUo8cz0upmbR905eNqlX/zv6gpbb3oD91f/ouCErrXGJbPWu
+         obJ/lOMOHuVe8a3LhLpWweckD+drr2cZdJ/+ga614yGJ8CD7hXGhgqcD7HH6yxum2CKz
+         asWD9D5bnhgo0Vl56lrJU77M4ZM0GAaH3ZtRMphAtqe8MEco6mjb0tqOLYc2NFEOslyU
+         wJ/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:to:from;
-        bh=EU9FbHl7Fm4jXaRXtixdnCQy51JDl+XB4K9X0QP4gNE=;
-        b=qEZJBRTcEEilBraGiN9wjWjSVGB6bKu/xMmSDQwR0fCinsV3DSXhsuaul3ZVW3b59X
-         UjPiMbhllJw2UNRVwv4Rq4sBJF2XuoiP4GYVi3Y7hW2FrcNZc41L3P+V3rkV+P93Mwuz
-         k/2Y0gfD1Z5SZLf2ieCXAoW0u963RhZuj/sdp1sPuCqiYMWZWk3Tlj6+v+VGYB3Rm9Eq
-         RdTUsqH8wMUN9L0KIYLlq/CyCrHkz7bLCGZHPPZbWxRrW85PDuMvYmImgnqt27VIXRLT
-         mIlXRaO89cYGbTf1FHY6BEWJLRzkigW74tnfqwOqkvpU2OqxHOnnjS2nHo74XlQ3S0Jw
-         fsPQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:to:from;
+        bh=lOnSFqEeG4GUamHV4Bo/KIiEbK0Xr4qNwTpu1NdfVtM=;
+        b=zaVimHQR6qtMkSoikRi+RikgDdJItj0AlE3U3pZA8rsBCZcWoZWqNZ5hUJHBZDWTzW
+         5N70E4GSHksI7jsyoaAOJW9K7wYWzNYAp4VDQGBXUDgGFYxToFAE3zM0x2i7E0WfE8jm
+         a+4kcS0vI50NIde62l1YA37dQZG/UK3zrrHJIIgNC2D/P4cq4IsABqcmcnfnjOOcl3Wk
+         HLIK86k9ghFU4dvOaztg2geBJCYQNlXXzmgKLFRK0Y1pg+Qj3fL4+njC79Um6FfloZbA
+         5SgXSF4ylufLVWV5+jiMzaGPjRLlIeZqWReWn05xqFhS6jVfxhUo7uMYO1omPh2tWkuX
+         lKSQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id os13si2672145ejb.114.2019.08.16.00.57.27
+        by mx.google.com with ESMTPS id k23si17745qkg.138.2019.08.16.00.57.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2019 00:57:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 16 Aug 2019 00:57:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:51092 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51084 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyX6z-0002Lt-T9
-	for alex.bennee@linaro.org; Fri, 16 Aug 2019 03:57:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39636)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hyX7F-00026E-Qo
+	for alex.bennee@linaro.org; Fri, 16 Aug 2019 03:57:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41600)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tony.nguyen@bt.com>) id 1hyWlA-00088P-2T
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:34:55 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hyWqY-00069W-Pb
+ for qemu-devel@nongnu.org; Fri, 16 Aug 2019 03:40:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hyWl6-00014n-9h
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:34:51 -0400
-Received: from smtpe1.intersmtp.com ([62.239.224.234]:14775)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (envelope-from <tony.nguyen@bt.com>) id 1hyWqU-0004I0-Qm
+ for qemu-devel@nongnu.org; Fri, 16 Aug 2019 03:40:26 -0400
+Received: from smtpe1.intersmtp.com ([213.121.35.79]:36484)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hyWl5-000142-SP; Fri, 16 Aug 2019 03:34:48 -0400
-Received: from tpw09926dag18g.domain1.systemhost.net (10.9.212.34) by
- RDW083A012ED68.bt.com (10.187.98.38) with Microsoft SMTP Server (TLS) id
- 14.3.439.0; Fri, 16 Aug 2019 08:34:34 +0100
+ id 1hyWpo-0003xR-FG; Fri, 16 Aug 2019 03:39:40 -0400
+Received: from tpw09926dag18f.domain1.systemhost.net (10.9.212.26) by
+ BWP09926084.bt.com (10.36.82.115) with Microsoft SMTP Server (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Fri, 16
+ Aug 2019 08:39:17 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18g.domain1.systemhost.net (10.9.212.34) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Fri, 16 Aug 2019 08:34:45 +0100
+ tpw09926dag18f.domain1.systemhost.net (10.9.212.26) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Fri, 16 Aug 2019 08:39:38 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Fri, 16 Aug
- 2019 08:34:45 +0100
+ 2019 08:39:38 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v7 25/42] hw/misc: Declare device little or
- big endian
-Thread-Index: AQHVVAUT1axlSjXNWEqoCGdR6qt9zw==
-Date: Fri, 16 Aug 2019 07:34:45 +0000
-Message-ID: <1565940884636.2215@bt.com>
+Thread-Topic: [Qemu-devel] [PATCH v7 41/42] target/sparc: Add TLB entry with
+ attributes
+Thread-Index: AQHVVAXCWvmw8IlXtEyhXVZLY/cOBA==
+Date: Fri, 16 Aug 2019 07:39:38 +0000
+Message-ID: <1565941177600.7672@bt.com>
 References: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
 In-Reply-To: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
 Accept-Language: en-AU, en-GB, en-US
@@ -78,24 +80,25 @@ X-MS-TNEF-Correlator:
 x-ms-exchange-messagesentrepresentingtype: 1
 x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.40]
-Content-Type: multipart/alternative; boundary="_000_15659408846362215btcom_"
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 62.239.224.234
-Subject: [Qemu-arm] [Qemu-devel] [PATCH v7 25/42] hw/misc: Declare device
- little or big endian
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 213.121.35.79
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-Content-Filtered-By: Mailman/MimeDel 2.1.23
+Subject: [Qemu-devel] [PATCH v7 41/42] target/sparc: Add TLB entry with
+ attributes
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
  arikalo@wavecomp.com, pasic@linux.ibm.com, hpoussin@reactos.org,
  anthony.perard@citrix.com, xen-devel@lists.xenproject.org, lersek@redhat.com,
@@ -106,301 +109,166 @@ Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
  laurent@vivier.eu, sundeep.lkml@gmail.com, michael@walle.cc,
  qemu-ppc@nongnu.org, kbastian@mail.uni-paderborn.de, imammedo@redhat.com,
  fam@euphon.net, peter.maydell@linaro.org, david@redhat.com, palmer@sifive.com,
- balaton@eik.bme.hu, keith.busch@intel.com, jcmvbkbc@gmail.com, hare@suse.com,
+ keith.busch@intel.com, jcmvbkbc@gmail.com, hare@suse.com,
  sstabellini@kernel.org, andrew.smirnov@gmail.com, deller@gmx.de,
- magnus.damm@gmail.com, marcel.apfelbaum@gmail.com, atar4qemu@gmail.com,
- minyard@acm.org, sw@weilnetz.de, yuval.shaia@oracle.com, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, jan.kiszka@web.de, clg@kaod.org, shorne@gmail.com,
- qemu-riscv@nongnu.org, i.mitsyanko@gmail.com, cohuck@redhat.com,
- philmd@redhat.com, amarkovic@wavecomp.com, peter.chubb@nicta.com.au,
- aurelien@aurel32.net, pburton@wavecomp.com, sagark@eecs.berkeley.edu,
- green@moxielogic.com, kraxel@redhat.com, gxt@mprc.pku.edu.cn, robh@kernel.org,
- borntraeger@de.ibm.com, joel@jms.id.au, antonynpavlov@gmail.com,
- chouteau@adacore.com, balrogg@gmail.com, Andrew.Baumann@microsoft.com,
+ magnus.damm@gmail.com, atar4qemu@gmail.com, minyard@acm.org, sw@weilnetz.de,
+ yuval.shaia@oracle.com, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ jan.kiszka@web.de, clg@kaod.org, shorne@gmail.com, qemu-riscv@nongnu.org,
+ i.mitsyanko@gmail.com, cohuck@redhat.com, philmd@redhat.com,
+ amarkovic@wavecomp.com, peter.chubb@nicta.com.au, aurelien@aurel32.net,
+ pburton@wavecomp.com, sagark@eecs.berkeley.edu, green@moxielogic.com,
+ kraxel@redhat.com, edgar.iglesias@gmail.com, gxt@mprc.pku.edu.cn,
+ robh@kernel.org, borntraeger@de.ibm.com, joel@jms.id.au,
+ antonynpavlov@gmail.com, chouteau@adacore.com, Andrew.Baumann@microsoft.com,
  mreitz@redhat.com, walling@linux.ibm.com, dmitry.fleytman@gmail.com,
  mst@redhat.com, mark.cave-ayland@ilande.co.uk, jslaby@suse.cz, marex@denx.de,
  proljc@gmail.com, marcandre.lureau@redhat.com, alistair@alistair23.me,
  paul.durrant@citrix.com, david@gibson.dropbear.id.au,
  xiaoguangrong.eric@gmail.com, huth@tuxfamily.org, jcd@tribudubois.net,
  pbonzini@redhat.com, stefanb@linux.ibm.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9pRjxQ5nVzs9
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: z4hU2qY/tLSx
 
---_000_15659408846362215btcom_
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-For each device declared with DEVICE_NATIVE_ENDIAN, find the set of
-targets from the set of target/hw/*/device.o.
-
-If the set of targets are all little or all big endian, re-declare
-the device endianness as DEVICE_LITTLE_ENDIAN or DEVICE_BIG_ENDIAN
-respectively.
-
-This *naive* deduction may result in genuinely native endian devices
-being incorrectly declared as little or big endian, but should not
-introduce regressions for current targets.
-
-These devices should be re-declared as DEVICE_NATIVE_ENDIAN if 1) it
-has a new target with an opposite endian or 2) someone informed knows
-better =3D)
+Append MemTxAttrs to interfaces so we can pass along up coming Invert
+Endian TTE bit on SPARC64.
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/misc/a9scu.c    | 2 +-
- hw/misc/applesmc.c | 6 +++---
- hw/misc/arm11scu.c | 2 +-
- hw/misc/arm_l2x0.c | 2 +-
- hw/misc/puv3_pm.c  | 2 +-
- 5 files changed, 7 insertions(+), 7 deletions(-)
+ target/sparc/mmu_helper.c | 32 ++++++++++++++++++--------------
+ 1 file changed, 18 insertions(+), 14 deletions(-)
 
-diff --git a/hw/misc/a9scu.c b/hw/misc/a9scu.c
-index 4307f00..3de8cd3 100644
---- a/hw/misc/a9scu.c
-+++ b/hw/misc/a9scu.c
-@@ -94,7 +94,7 @@ static void a9_scu_write(void *opaque, hwaddr offset,
- static const MemoryRegionOps a9_scu_ops =3D {
-     .read =3D a9_scu_read,
-     .write =3D a9_scu_write,
--    .endianness =3D DEVICE_NATIVE_ENDIAN,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
+diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c
+index cbd1e91..826e14b 100644
+--- a/target/sparc/mmu_helper.c
++++ b/target/sparc/mmu_helper.c
+@@ -88,7 +88,7 @@ static const int perm_table[2][8] =3D {
  };
 
- static void a9_scu_reset(DeviceState *dev)
-diff --git a/hw/misc/applesmc.c b/hw/misc/applesmc.c
-index 2d7eb3c..6c91f29 100644
---- a/hw/misc/applesmc.c
-+++ b/hw/misc/applesmc.c
-@@ -285,7 +285,7 @@ static void qdev_applesmc_isa_reset(DeviceState *dev)
- static const MemoryRegionOps applesmc_data_io_ops =3D {
-     .write =3D applesmc_io_data_write,
-     .read =3D applesmc_io_data_read,
--    .endianness =3D DEVICE_NATIVE_ENDIAN,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
-     .impl =3D {
-         .min_access_size =3D 1,
-         .max_access_size =3D 1,
-@@ -295,7 +295,7 @@ static const MemoryRegionOps applesmc_data_io_ops =3D {
- static const MemoryRegionOps applesmc_cmd_io_ops =3D {
-     .write =3D applesmc_io_cmd_write,
-     .read =3D applesmc_io_cmd_read,
--    .endianness =3D DEVICE_NATIVE_ENDIAN,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
-     .impl =3D {
-         .min_access_size =3D 1,
-         .max_access_size =3D 1,
-@@ -305,7 +305,7 @@ static const MemoryRegionOps applesmc_cmd_io_ops =3D {
- static const MemoryRegionOps applesmc_err_io_ops =3D {
-     .write =3D applesmc_io_err_write,
-     .read =3D applesmc_io_err_read,
--    .endianness =3D DEVICE_NATIVE_ENDIAN,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
-     .impl =3D {
-         .min_access_size =3D 1,
-         .max_access_size =3D 1,
-diff --git a/hw/misc/arm11scu.c b/hw/misc/arm11scu.c
-index 84275df..59fd7c0 100644
---- a/hw/misc/arm11scu.c
-+++ b/hw/misc/arm11scu.c
-@@ -57,7 +57,7 @@ static void mpcore_scu_write(void *opaque, hwaddr offset,
- static const MemoryRegionOps mpcore_scu_ops =3D {
-     .read =3D mpcore_scu_read,
-     .write =3D mpcore_scu_write,
--    .endianness =3D DEVICE_NATIVE_ENDIAN,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
- };
+ static int get_physical_address(CPUSPARCState *env, hwaddr *physical,
+-                                int *prot, int *access_index,
++                                int *prot, int *access_index, MemTxAttrs *=
+attrs,
+                                 target_ulong address, int rw, int mmu_idx,
+                                 target_ulong *page_size)
+ {
+@@ -219,6 +219,7 @@ bool sparc_cpu_tlb_fill(CPUState *cs, vaddr address, in=
+t size,
+     target_ulong vaddr;
+     target_ulong page_size;
+     int error_code =3D 0, prot, access_index;
++    MemTxAttrs attrs =3D {};
 
- static void arm11_scu_realize(DeviceState *dev, Error **errp)
-diff --git a/hw/misc/arm_l2x0.c b/hw/misc/arm_l2x0.c
-index b88f40a..72ecf46 100644
---- a/hw/misc/arm_l2x0.c
-+++ b/hw/misc/arm_l2x0.c
-@@ -157,7 +157,7 @@ static void l2x0_priv_reset(DeviceState *dev)
- static const MemoryRegionOps l2x0_mem_ops =3D {
-     .read =3D l2x0_priv_read,
-     .write =3D l2x0_priv_write,
--    .endianness =3D DEVICE_NATIVE_ENDIAN,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
-  };
+     /*
+      * TODO: If we ever need tlb_vaddr_to_host for this target,
+@@ -229,7 +230,7 @@ bool sparc_cpu_tlb_fill(CPUState *cs, vaddr address, in=
+t size,
+     assert(!probe);
 
- static void l2x0_priv_init(Object *obj)
-diff --git a/hw/misc/puv3_pm.c b/hw/misc/puv3_pm.c
-index b538b4a..cd82b69 100644
---- a/hw/misc/puv3_pm.c
-+++ b/hw/misc/puv3_pm.c
-@@ -118,7 +118,7 @@ static const MemoryRegionOps puv3_pm_ops =3D {
-         .min_access_size =3D 4,
-         .max_access_size =3D 4,
-     },
--    .endianness =3D DEVICE_NATIVE_ENDIAN,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
- };
+     address &=3D TARGET_PAGE_MASK;
+-    error_code =3D get_physical_address(env, &paddr, &prot, &access_index,
++    error_code =3D get_physical_address(env, &paddr, &prot, &access_index,=
+ &attrs,
+                                       address, access_type,
+                                       mmu_idx, &page_size);
+     vaddr =3D address;
+@@ -490,8 +491,8 @@ static inline int ultrasparc_tag_match(SparcTLBEntry *t=
+lb,
+     return 0;
+ }
 
- static void puv3_pm_realize(DeviceState *dev, Error **errp)
+-static int get_physical_address_data(CPUSPARCState *env,
+-                                     hwaddr *physical, int *prot,
++static int get_physical_address_data(CPUSPARCState *env, hwaddr *physical,
++                                     int *prot, MemTxAttrs *attrs,
+                                      target_ulong address, int rw, int mmu=
+_idx)
+ {
+     CPUState *cs =3D env_cpu(env);
+@@ -608,8 +609,8 @@ static int get_physical_address_data(CPUSPARCState *env=
+,
+     return 1;
+ }
+
+-static int get_physical_address_code(CPUSPARCState *env,
+-                                     hwaddr *physical, int *prot,
++static int get_physical_address_code(CPUSPARCState *env, hwaddr *physical,
++                                     int *prot, MemTxAttrs *attrs,
+                                      target_ulong address, int mmu_idx)
+ {
+     CPUState *cs =3D env_cpu(env);
+@@ -686,7 +687,7 @@ static int get_physical_address_code(CPUSPARCState *env=
+,
+ }
+
+ static int get_physical_address(CPUSPARCState *env, hwaddr *physical,
+-                                int *prot, int *access_index,
++                                int *prot, int *access_index, MemTxAttrs *=
+attrs,
+                                 target_ulong address, int rw, int mmu_idx,
+                                 target_ulong *page_size)
+ {
+@@ -716,11 +717,11 @@ static int get_physical_address(CPUSPARCState *env, h=
+waddr *physical,
+     }
+
+     if (rw =3D=3D 2) {
+-        return get_physical_address_code(env, physical, prot, address,
++        return get_physical_address_code(env, physical, prot, attrs, addre=
+ss,
+                                          mmu_idx);
+     } else {
+-        return get_physical_address_data(env, physical, prot, address, rw,
+-                                         mmu_idx);
++        return get_physical_address_data(env, physical, prot, attrs, addre=
+ss,
++                                         rw, mmu_idx);
+     }
+ }
+
+@@ -734,10 +735,11 @@ bool sparc_cpu_tlb_fill(CPUState *cs, vaddr address, =
+int size,
+     target_ulong vaddr;
+     hwaddr paddr;
+     target_ulong page_size;
++    MemTxAttrs attrs =3D {};
+     int error_code =3D 0, prot, access_index;
+
+     address &=3D TARGET_PAGE_MASK;
+-    error_code =3D get_physical_address(env, &paddr, &prot, &access_index,
++    error_code =3D get_physical_address(env, &paddr, &prot, &access_index,=
+ &attrs,
+                                       address, access_type,
+                                       mmu_idx, &page_size);
+     if (likely(error_code =3D=3D 0)) {
+@@ -747,7 +749,8 @@ bool sparc_cpu_tlb_fill(CPUState *cs, vaddr address, in=
+t size,
+                                    env->dmmu.mmu_primary_context,
+                                    env->dmmu.mmu_secondary_context);
+
+-        tlb_set_page(cs, vaddr, paddr, prot, mmu_idx, page_size);
++        tlb_set_page_with_attrs(cs, vaddr, paddr, attrs, prot, mmu_idx,
++                                page_size);
+         return true;
+     }
+     if (probe) {
+@@ -849,9 +852,10 @@ static int cpu_sparc_get_phys_page(CPUSPARCState *env,=
+ hwaddr *phys,
+ {
+     target_ulong page_size;
+     int prot, access_index;
++    MemTxAttrs attrs =3D {};
+
+-    return get_physical_address(env, phys, &prot, &access_index, addr, rw,
+-                                mmu_idx, &page_size);
++    return get_physical_address(env, phys, &prot, &access_index, &attrs, a=
+ddr,
++                                rw, mmu_idx, &page_size);
+ }
+
+ #if defined(TARGET_SPARC64)
 --
 1.8.3.1
 
 ?
-
-
---_000_15659408846362215btcom_
-Content-Type: text/html; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<style type=3D"text/css" style=3D"display:none"><!-- P { margin-top: 0px; m=
-argin-bottom: 0px; } .EmailQuote { margin-left: 1pt; padding-left: 4pt; bor=
-der-left-width: 2px; border-left-style: solid; border-left-color: rgb(128, =
-0, 0); }--></style>
-</head>
-<body dir=3D"ltr" style=3D"font-size:12pt;color:#000000;background-color:#F=
-FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
-<p></p>
-<div style=3D"color: rgb(33, 33, 33);"><font size=3D"2"><span style=3D"font=
--size:10pt;">
-<div class=3D"PlainText">
-<div><span style=3D"font-size: 10pt;">For each device declared with DEVICE_=
-NATIVE_ENDIAN, find the set of</span><br>
-</div>
-<div>targets from the set of target/hw/*/device.o.</div>
-<div><br>
-</div>
-<div>If the set of targets are all little or all big endian, re-declare</di=
-v>
-<div>the device endianness as DEVICE_LITTLE_ENDIAN or DEVICE_BIG_ENDIAN</di=
-v>
-<div>respectively.</div>
-<div><br>
-</div>
-<div>This *naive* deduction may result in genuinely native endian devices</=
-div>
-<div>being incorrectly declared as little or big endian, but should not</di=
-v>
-<div>introduce regressions for current targets.</div>
-<div><br>
-</div>
-<div>These devices should be re-declared as DEVICE_NATIVE_ENDIAN if 1) it</=
-div>
-<div>has a new target with an opposite endian or 2) someone informed knows<=
-/div>
-<div>better =3D)</div>
-<div><br>
-</div>
-<div>Signed-off-by: Tony Nguyen &lt;tony.nguyen@bt.com&gt;</div>
-<div>---</div>
-<div>&nbsp;hw/misc/a9scu.c &nbsp; &nbsp;| 2 &#43;-</div>
-<div>&nbsp;hw/misc/applesmc.c | 6 &#43;&#43;&#43;---</div>
-<div>&nbsp;hw/misc/arm11scu.c | 2 &#43;-</div>
-<div>&nbsp;hw/misc/arm_l2x0.c | 2 &#43;-</div>
-<div>&nbsp;hw/misc/puv3_pm.c &nbsp;| 2 &#43;-</div>
-<div>&nbsp;5 files changed, 7 insertions(&#43;), 7 deletions(-)</div>
-<div><br>
-</div>
-<div>diff --git a/hw/misc/a9scu.c b/hw/misc/a9scu.c</div>
-<div>index 4307f00..3de8cd3 100644</div>
-<div>--- a/hw/misc/a9scu.c</div>
-<div>&#43;&#43;&#43; b/hw/misc/a9scu.c</div>
-<div>@@ -94,7 &#43;94,7 @@ static void a9_scu_write(void *opaque, hwaddr of=
-fset,</div>
-<div>&nbsp;static const MemoryRegionOps a9_scu_ops =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;.read =3D a9_scu_read,</div>
-<div>&nbsp; &nbsp; &nbsp;.write =3D a9_scu_write,</div>
-<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
-<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
-<div>&nbsp;};</div>
-<div>&nbsp;</div>
-<div>&nbsp;static void a9_scu_reset(DeviceState *dev)</div>
-<div>diff --git a/hw/misc/applesmc.c b/hw/misc/applesmc.c</div>
-<div>index 2d7eb3c..6c91f29 100644</div>
-<div>--- a/hw/misc/applesmc.c</div>
-<div>&#43;&#43;&#43; b/hw/misc/applesmc.c</div>
-<div>@@ -285,7 &#43;285,7 @@ static void qdev_applesmc_isa_reset(DeviceStat=
-e *dev)</div>
-<div>&nbsp;static const MemoryRegionOps applesmc_data_io_ops =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;.write =3D applesmc_io_data_write,</div>
-<div>&nbsp; &nbsp; &nbsp;.read =3D applesmc_io_data_read,</div>
-<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
-<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
-<div>&nbsp; &nbsp; &nbsp;.impl =3D {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 1,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 1,</div>
-<div>@@ -295,7 &#43;295,7 @@ static const MemoryRegionOps applesmc_data_io_=
-ops =3D {</div>
-<div>&nbsp;static const MemoryRegionOps applesmc_cmd_io_ops =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;.write =3D applesmc_io_cmd_write,</div>
-<div>&nbsp; &nbsp; &nbsp;.read =3D applesmc_io_cmd_read,</div>
-<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
-<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
-<div>&nbsp; &nbsp; &nbsp;.impl =3D {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 1,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 1,</div>
-<div>@@ -305,7 &#43;305,7 @@ static const MemoryRegionOps applesmc_cmd_io_o=
-ps =3D {</div>
-<div>&nbsp;static const MemoryRegionOps applesmc_err_io_ops =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;.write =3D applesmc_io_err_write,</div>
-<div>&nbsp; &nbsp; &nbsp;.read =3D applesmc_io_err_read,</div>
-<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
-<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
-<div>&nbsp; &nbsp; &nbsp;.impl =3D {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 1,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 1,</div>
-<div>diff --git a/hw/misc/arm11scu.c b/hw/misc/arm11scu.c</div>
-<div>index 84275df..59fd7c0 100644</div>
-<div>--- a/hw/misc/arm11scu.c</div>
-<div>&#43;&#43;&#43; b/hw/misc/arm11scu.c</div>
-<div>@@ -57,7 &#43;57,7 @@ static void mpcore_scu_write(void *opaque, hwadd=
-r offset,</div>
-<div>&nbsp;static const MemoryRegionOps mpcore_scu_ops =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;.read =3D mpcore_scu_read,</div>
-<div>&nbsp; &nbsp; &nbsp;.write =3D mpcore_scu_write,</div>
-<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
-<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
-<div>&nbsp;};</div>
-<div>&nbsp;</div>
-<div>&nbsp;static void arm11_scu_realize(DeviceState *dev, Error **errp)</d=
-iv>
-<div>diff --git a/hw/misc/arm_l2x0.c b/hw/misc/arm_l2x0.c</div>
-<div>index b88f40a..72ecf46 100644</div>
-<div>--- a/hw/misc/arm_l2x0.c</div>
-<div>&#43;&#43;&#43; b/hw/misc/arm_l2x0.c</div>
-<div>@@ -157,7 &#43;157,7 @@ static void l2x0_priv_reset(DeviceState *dev)<=
-/div>
-<div>&nbsp;static const MemoryRegionOps l2x0_mem_ops =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;.read =3D l2x0_priv_read,</div>
-<div>&nbsp; &nbsp; &nbsp;.write =3D l2x0_priv_write,</div>
-<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
-<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
-<div>&nbsp; };</div>
-<div>&nbsp;</div>
-<div>&nbsp;static void l2x0_priv_init(Object *obj)</div>
-<div>diff --git a/hw/misc/puv3_pm.c b/hw/misc/puv3_pm.c</div>
-<div>index b538b4a..cd82b69 100644</div>
-<div>--- a/hw/misc/puv3_pm.c</div>
-<div>&#43;&#43;&#43; b/hw/misc/puv3_pm.c</div>
-<div>@@ -118,7 &#43;118,7 @@ static const MemoryRegionOps puv3_pm_ops =3D {=
-</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 4,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 4,</div>
-<div>&nbsp; &nbsp; &nbsp;},</div>
-<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
-<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
-<div>&nbsp;};</div>
-<div>&nbsp;</div>
-<div>&nbsp;static void puv3_pm_realize(DeviceState *dev, Error **errp)</div=
->
-<div>--&nbsp;</div>
-<div>1.8.3.1</div>
-<div><br>
-&#8203;<br>
-</div>
-<br>
-</div>
-</span></font></div>
-</body>
-</html>
-
---_000_15659408846362215btcom_--

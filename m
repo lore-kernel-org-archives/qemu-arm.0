@@ -1,99 +1,99 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp599710wrs;
-        Fri, 16 Aug 2019 03:04:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwECkrUn3y05tu329uFTq8OV4AUyKH1ABsKxI4n3AlispJkIVKO3RkxN0BnSVmxJ6CgNVqm
-X-Received: by 2002:ac8:41d7:: with SMTP id o23mr7944458qtm.268.1565949875456;
-        Fri, 16 Aug 2019 03:04:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565949875; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp602079wrs;
+        Fri, 16 Aug 2019 03:06:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwDAN1fHg6yM8Jz2bz56APCYQL0TKNZHRfCZSs0h8lPRsN8FjzKQjrb9fsfcriqm7SZHljF
+X-Received: by 2002:a37:a58a:: with SMTP id o132mr8188378qke.86.1565949993556;
+        Fri, 16 Aug 2019 03:06:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565949993; cv=none;
         d=google.com; s=arc-20160816;
-        b=wDSvE+fO+vMq5ldcW4kfYizGiJCfTeV2dlEi3/f8ejL9zi5eRZcF5eKJViI+J/j3tu
-         EIfjLnN/umYXbcE9nfZu+sl5zvFI+a9G1n54Y6guJsIQnIQHMVmO/QopNc6u4EPa1xln
-         4WDlfYp1Jzx/bjw0FV0fbECQsm7LPhmzN1xXZB6OeovjU95+DZ0v3FNoiNKxpN5pb5eo
-         FaFykuY0VY+d23w8UxoXLXFvKNMK6N0CZ5B5DRtL3ySeeOFBHfQQvl6Q2qAfnTxkA3C9
-         wdJFe8HgR3yjtk00SQOe9fNhFRwECLtDK8TodqoxTVj1y50ZZ1NKmsaAY7QvFoGIhS4b
-         gObg==
+        b=i02rNHkSPxhC7MDnC99VHLW2g7xOGyBnComW6HSRzPr/Rdeyo5nSFWBdE1sECffQaA
+         +tdcyWrsceY7WF8FoVE+BNAB4AH0z1JE1tyVBEyaiIr5lSm5UfAD3QAJwB7JXihMAeCO
+         P2ANI3piTX4dTbKebKSL+yF9ihCikN5Pf2v+gTnGUW6ssd438tbmelZ1T6I0c4ajYPcU
+         EUiPbZzsrM9BVXx9bU6y5XkI6rPkzVoOag+gOAyL0cZ4KQWbdC4NJYb0GRnEZxjp1WCS
+         3cERJ77IYgQKMFaeJ48CaQGgZs+6tjKfV7reRIn624xclERFWoFOCFukSCjwhrH7+2T2
+         47oQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to;
-        bh=aT2ZNqO8zTsrWM08AT1iJSt0ruEVkb9Rhd643qEZv5I=;
-        b=TtQ1dBtPnU0lwcV4viGB1PTUUE914anpWyh6mm117DAmZ/iIoVYvCriVZg+6mitQeZ
-         rrnsa2oEIEo1QKEMir/j8sicqgRFtb8X7TuXKf6AePDAUFh/lGlmw3uaAxHKV80s562i
-         wzD5EUDOTLOiQ1zPZ2LdffLRAvl6SuD+A3pTuAOIiTxbTt5tiQaexk71bVj+t8U/n20r
-         Csoy367XDnbXuUzdOi4CxGhCihdZ4k4oq+QaMYYJv0z+uRq5dIqIsj/kzQFEG/C7K5X2
-         Zr28S3xu8wuKrQ3eZZmc1j8tfpdGdhv1DQfDHjggbiWQdnh16pZzHYm48yoaZf1Jk1yC
-         ByJw==
+        bh=4nmllPcEhYaEJs68tgHuQ5qqmn++ZDafoOXvJZcokHk=;
+        b=NxK+l0low+22u495KTb3EVdVDcXwAB9DX28rWqJjnLimf4KQbQU0jlYe1ySDEfsZY8
+         +aZgCGcYX4XZVFe8gHjrWOHDyh0uSS6Jxxv8JaQz8t7wtBsPjtZ91g/pQ1q0vQrVvl8J
+         5GpOQCpJCspAk+9bem8DNO2J9KFXROdUVuluiXZvOeouBKFKnQR2vu+Ku6l3C9Qegz+N
+         PVNKzKmHJGNf/FFIER/PBYWqXjGDu2BLxFDwEsf7XzUc4tkrrVBFArwE6q48cyBa7dK3
+         vsSlc/M18nMrq2kU3lcWDONgr2VOfbeZGfbH1z/Otvuz7RKjShSFzrCTsXdmmE0ahVkd
+         833A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c14si3421550qvh.94.2019.08.16.03.04.35
+        by mx.google.com with ESMTPS id u18si3255361qvg.137.2019.08.16.03.06.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2019 03:04:35 -0700 (PDT)
+        Fri, 16 Aug 2019 03:06:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52868 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52942 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyZ62-0006XU-Ku
-	for alex.bennee@linaro.org; Fri, 16 Aug 2019 06:04:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35125)
+	id 1hyZ7x-00008n-04
+	for alex.bennee@linaro.org; Fri, 16 Aug 2019 06:06:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35431)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1hyZ5s-0006WI-Mm
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 06:04:26 -0400
+ (envelope-from <philmd@redhat.com>) id 1hyZ7a-0008Am-2U
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 06:06:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hyZ5r-0002Gz-CO
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 06:04:24 -0400
-Received: from mail-wm1-f68.google.com ([209.85.128.68]:37999)
+ (envelope-from <philmd@redhat.com>) id 1hyZ7Y-0003CI-Fg
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 06:06:09 -0400
+Received: from mail-wr1-f65.google.com ([209.85.221.65]:35811)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hyZ5r-0002GD-5y
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 06:04:23 -0400
-Received: by mail-wm1-f68.google.com with SMTP id m125so3596350wmm.3
- for <qemu-arm@nongnu.org>; Fri, 16 Aug 2019 03:04:22 -0700 (PDT)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hyZ7Y-0003BE-8g
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 06:06:08 -0400
+Received: by mail-wr1-f65.google.com with SMTP id k2so1012996wrq.2
+ for <qemu-arm@nongnu.org>; Fri, 16 Aug 2019 03:06:08 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=aT2ZNqO8zTsrWM08AT1iJSt0ruEVkb9Rhd643qEZv5I=;
- b=jQCG5y3/2+5v+nCd1yfZwJ4Uzf+QNDFaPCKNq7D2Hg0qhZgIqFINLmEerjeluMi48v
- 2OysCwX2q63w3lCezVdWWkIEzJXGhxJgh5K9mWxzEqaXkoC3tYkodPQ3bjTgsMorSF9w
- Xzx/dmZD4+lSk0ljSpkQnZjqx2N0zOs1CNey4P1tOK6ClKYcmWR0PMxjRWvkkzIygma8
- +uCEj0kYsqYWNIv09Lq0K2nv74PCPzFRZJF6aRwSHyCH3xwr5eNi8M/IAxQlE//HW86D
- DqoDyS4CSpqEY6leUBcFKLb18JWnTZCUPbWuuNTf54JGKw9Ot9D+eE4u7SkNJ8JEqxk9
- MHTQ==
-X-Gm-Message-State: APjAAAXSUFoV6IBiEG6eP06PpN9T9wBF/uczGRUxifTZDEaG/+IzLx+J
- Z2YSkgDlP776F7kOZkYzVEVWBQ==
-X-Received: by 2002:a1c:a101:: with SMTP id k1mr6684861wme.98.1565949861986;
- Fri, 16 Aug 2019 03:04:21 -0700 (PDT)
+ bh=4nmllPcEhYaEJs68tgHuQ5qqmn++ZDafoOXvJZcokHk=;
+ b=hfWWCJd7runNr3KpDCmTbN8nA5oZoptUmEVVX0sKxCuiHXQEKNQ+mR93qlJeF71rEx
+ wfC/FvhFbUmwAoaB0473Jb6jg+7dvxgT6S9e5rdo3KaFkEq6aQQy8pDawGxhOYiupq4b
+ LcKQQeckz0QjEE8sHShsAN/92PbpiLeNmZvbrYUa8QJYqlJDcQm7cWpz+tg3ywNE1TVV
+ /RNcQIBTyLXCk937Q0YLM/wVWuz9MV3QZbS6lYQcjW5+0D1w8mTeXw68rEjlAfMBgtKu
+ N5v9zJHDQwPZ0Y86OQbXRrW1JRVugQaT7pQSYukt5/F8shtp64v+EU6pf4OZZF7PX4bD
+ NrWA==
+X-Gm-Message-State: APjAAAU6m0Dsr/YTrwwF5HqnJKkfjJ9rhg4x7LTbjYUvMxSGeQOXFDDL
+ YDYeCwUpvXFOM5Kdn6ObqPi/yw==
+X-Received: by 2002:adf:dd01:: with SMTP id a1mr9597279wrm.12.1565949967319;
+ Fri, 16 Aug 2019 03:06:07 -0700 (PDT)
 Received: from [192.168.1.39] (251.red-88-10-102.dynamicip.rima-tde.net.
  [88.10.102.251])
- by smtp.gmail.com with ESMTPSA id r190sm5336299wmf.0.2019.08.16.03.04.18
+ by smtp.gmail.com with ESMTPSA id u130sm8566224wmg.28.2019.08.16.03.06.03
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Aug 2019 03:04:21 -0700 (PDT)
+ Fri, 16 Aug 2019 03:06:06 -0700 (PDT)
 To: tony.nguyen@bt.com, qemu-devel@nongnu.org
 References: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
- <1565940884636.2215@bt.com>
+ <1565940916012.8169@bt.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
  url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <989277a4-7f07-aaaf-f963-ee769e0efd00@redhat.com>
-Date: Fri, 16 Aug 2019 12:04:17 +0200
+Message-ID: <22d6f51c-c734-3976-2fc1-34c9c74a075e@redhat.com>
+Date: Fri, 16 Aug 2019 12:06:02 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <1565940884636.2215@bt.com>
+In-Reply-To: <1565940916012.8169@bt.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.85.128.68
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 25/42] hw/misc: Declare
+X-Received-From: 209.85.221.65
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 27/42] hw/pci-host: Declare
  device little or big endian
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -135,9 +135,9 @@ Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
  pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: O+X8XnoAfQUC
+X-TUID: jtMjPViZ7ewH
 
-On 8/16/19 9:34 AM, tony.nguyen@bt.com wrote:
+On 8/16/19 9:35 AM, tony.nguyen@bt.com wrote:
 > For each device declared with DEVICE_NATIVE_ENDIAN, find the set of
 > targets from the set of target/hw/*/device.o.
 > 
@@ -155,113 +155,57 @@ On 8/16/19 9:34 AM, tony.nguyen@bt.com wrote:
 > 
 > Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
 > ---
->  hw/misc/a9scu.c    | 2 +-
->  hw/misc/applesmc.c | 6 +++---
->  hw/misc/arm11scu.c | 2 +-
->  hw/misc/arm_l2x0.c | 2 +-
->  hw/misc/puv3_pm.c  | 2 +-
->  5 files changed, 7 insertions(+), 7 deletions(-)
+>  hw/pci-host/q35.c       | 2 +-
+>  hw/pci-host/versatile.c | 4 ++--
+>  2 files changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/hw/misc/a9scu.c b/hw/misc/a9scu.c
-> index 4307f00..3de8cd3 100644
-> --- a/hw/misc/a9scu.c
-> +++ b/hw/misc/a9scu.c
-> @@ -94,7 +94,7 @@ static void a9_scu_write(void *opaque, hwaddr offset,
->  static const MemoryRegionOps a9_scu_ops = {
->      .read = a9_scu_read,
->      .write = a9_scu_write,
+> diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
+> index 0a010be..fd20f72 100644
+> --- a/hw/pci-host/q35.c
+> +++ b/hw/pci-host/q35.c
+> @@ -288,7 +288,7 @@ static void tseg_blackhole_write(void *opaque,
+> hwaddr addr, uint64_t val,
+>  static const MemoryRegionOps tseg_blackhole_ops = {
+>      .read = tseg_blackhole_read,
+>      .write = tseg_blackhole_write,
 > -    .endianness = DEVICE_NATIVE_ENDIAN,
 > +    .endianness = DEVICE_LITTLE_ENDIAN,
 
-Uh, I doubt that.
+OK.
 
->  };
->  
->  static void a9_scu_reset(DeviceState *dev)
-> diff --git a/hw/misc/applesmc.c b/hw/misc/applesmc.c
-> index 2d7eb3c..6c91f29 100644
-> --- a/hw/misc/applesmc.c
-> +++ b/hw/misc/applesmc.c
-> @@ -285,7 +285,7 @@ static void qdev_applesmc_isa_reset(DeviceState *dev)
->  static const MemoryRegionOps applesmc_data_io_ops = {
->      .write = applesmc_io_data_write,
->      .read = applesmc_io_data_read,
+>      .valid.min_access_size = 1,
+>      .valid.max_access_size = 4,
+>      .impl.min_access_size = 4,
+> diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
+> index 791b321..e7017f3 100644
+> --- a/hw/pci-host/versatile.c
+> +++ b/hw/pci-host/versatile.c
+> @@ -240,7 +240,7 @@ static uint64_t pci_vpb_reg_read(void *opaque,
+> hwaddr addr,
+>  static const MemoryRegionOps pci_vpb_reg_ops = {
+>      .read = pci_vpb_reg_read,
+>      .write = pci_vpb_reg_write,
 > -    .endianness = DEVICE_NATIVE_ENDIAN,
 > +    .endianness = DEVICE_LITTLE_ENDIAN,
->      .impl = {
->          .min_access_size = 1,
->          .max_access_size = 1,
-> @@ -295,7 +295,7 @@ static const MemoryRegionOps applesmc_data_io_ops = {
->  static const MemoryRegionOps applesmc_cmd_io_ops = {
->      .write = applesmc_io_cmd_write,
->      .read = applesmc_io_cmd_read,
-> -    .endianness = DEVICE_NATIVE_ENDIAN,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
->      .impl = {
->          .min_access_size = 1,
->          .max_access_size = 1,
-> @@ -305,7 +305,7 @@ static const MemoryRegionOps applesmc_cmd_io_ops = {
->  static const MemoryRegionOps applesmc_err_io_ops = {
->      .write = applesmc_io_err_write,
->      .read = applesmc_io_err_read,
-> -    .endianness = DEVICE_NATIVE_ENDIAN,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
->      .impl = {
->          .min_access_size = 1,
->          .max_access_size = 1,
-
-Being ioport, this one might be OK.
-
-> diff --git a/hw/misc/arm11scu.c b/hw/misc/arm11scu.c
-> index 84275df..59fd7c0 100644
-> --- a/hw/misc/arm11scu.c
-> +++ b/hw/misc/arm11scu.c
-> @@ -57,7 +57,7 @@ static void mpcore_scu_write(void *opaque, hwaddr offset,
->  static const MemoryRegionOps mpcore_scu_ops = {
->      .read = mpcore_scu_read,
->      .write = mpcore_scu_write,
-> -    .endianness = DEVICE_NATIVE_ENDIAN,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
-
-I don't think so,
-
->  };
->  
->  static void arm11_scu_realize(DeviceState *dev, Error **errp)
-> diff --git a/hw/misc/arm_l2x0.c b/hw/misc/arm_l2x0.c
-> index b88f40a..72ecf46 100644
-> --- a/hw/misc/arm_l2x0.c
-> +++ b/hw/misc/arm_l2x0.c
-> @@ -157,7 +157,7 @@ static void l2x0_priv_reset(DeviceState *dev)
->  static const MemoryRegionOps l2x0_mem_ops = {
->      .read = l2x0_priv_read,
->      .write = l2x0_priv_write,
-> -    .endianness = DEVICE_NATIVE_ENDIAN,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
-
-neither here, but Peter will confirm.
-
->   };
->  
->  static void l2x0_priv_init(Object *obj)
-> diff --git a/hw/misc/puv3_pm.c b/hw/misc/puv3_pm.c
-> index b538b4a..cd82b69 100644
-> --- a/hw/misc/puv3_pm.c
-> +++ b/hw/misc/puv3_pm.c
-> @@ -118,7 +118,7 @@ static const MemoryRegionOps puv3_pm_ops = {
+>      .valid = {
 >          .min_access_size = 4,
 >          .max_access_size = 4,
->      },
+> @@ -306,7 +306,7 @@ static uint64_t pci_vpb_config_read(void *opaque,
+> hwaddr addr,
+>  static const MemoryRegionOps pci_vpb_config_ops = {
+>      .read = pci_vpb_config_read,
+>      .write = pci_vpb_config_write,
 > -    .endianness = DEVICE_NATIVE_ENDIAN,
 > +    .endianness = DEVICE_LITTLE_ENDIAN,
 
-This one I can't tell.
+Eh hard to say, PCI is not clear about endianess...
 
 >  };
 >  
->  static void puv3_pm_realize(DeviceState *dev, Error **errp)
+>  static int pci_vpb_map_irq(PCIDevice *d, int irq_num)
 > -- 
 > 1.8.3.1
 > 
 > ​
+> 
 > 

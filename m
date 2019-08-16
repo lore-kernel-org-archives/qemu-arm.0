@@ -1,105 +1,90 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp481193wrs;
-        Fri, 16 Aug 2019 00:41:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwLnaGjf74omf2ZuDcx/NCP7TSyE0OPDWw73QZ6XpncSi0FRTyGAlckOyv2qKNPSw7MJseO
-X-Received: by 2002:a50:9736:: with SMTP id c51mr9475220edb.160.1565941266208;
-        Fri, 16 Aug 2019 00:41:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565941266; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp481220wrs;
+        Fri, 16 Aug 2019 00:41:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzdWJfAOXLyEY+rLsN/Qr7ftoHAqolN/EeD4GVpE6rmMBMbStDotlLbl5r5e1hwg8bcoI6Q
+X-Received: by 2002:a17:906:718:: with SMTP id y24mr7977180ejb.71.1565941269484;
+        Fri, 16 Aug 2019 00:41:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565941269; cv=none;
         d=google.com; s=arc-20160816;
-        b=SXsz89nRZ6dtSyncG0wtE+NCgzT/sEuPypdzDaNNTHh2I2BrvCtXGOMIUyvAyxayPd
-         THQgJPsELc9KV76gD4aJ0/7GuT68uUfMt/MTcUVfUTJxf3+6zs4f6YI516ygIOq7LQCr
-         QPQfGMtpJ8Eg/Y2yBnE7j4qM6vL9adRdL/pnbKanLJxNmd1ZJ2tRqXhlels/UwI2DTil
-         cTDknJNcSOoVVbAbAKvEzzZy8d4WzJUXprvycVFFU83hagjH8IhsVm1d5aSsyUnwJIdH
-         sjp2cHdlt8T8GKS8u1mhRogWlh5crOVDwiTMnlMfcNwerPq8vd4VsktnYPA/HuPKKaG1
-         phSA==
+        b=qvyZxbJM2Cg6iAkZTsFjP1o/3Pg3nUZ5552YsrlgJSItTTNWJdxLS/x9+scGxywPHD
+         8gWwzFniC0RGFgFs09Ltb4fqVPMFedL7WI+f7tyduyf2R0zgkmBdmU4LDyZL+exuDbeG
+         QSeNTF3i+4Z6BKpdGMe3uQxCBnvxCIVBwfCmRrxFiMWVe+Kik6LXrsMKDVUsXnfHkVFd
+         Yx9dmdaw23zD1VOZTO6cCUF4xjRYKsuNT4Fi+IIkZSFi0uUeB8A+s9p+G6/zMXb0CJPS
+         UNCd7CyD1MII1YqSrMHHv0l0IEf0dfXEuo3ADzFbB8Jo7flfDIj1T6Hxb0/PhDDEZLpu
+         n49Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=YqZpHm5NeehX+S2H/qilEl8bdvwxq3GaiopzNC2K4vA=;
-        b=gMJBGzjT1JCx/Alf7Pr673Jy5SvlSezFkoKI95Ca8VyUxes2EK+beZaEFfPO67llCH
-         6LQrwFtzNZn1cZYV24Dnu0F7JSgWXsm9Ehz7t7B3g0rXINEWuzPgtruAsoggK+BqC0Uq
-         cP85gsdntaozJdQjf1Hg1IkRhVPRcu2DCVLwN9gWv2Je/vosWJ/+aTsjUYEwMautSfwD
-         XGMpjc6wrj1hx9ZG7jZ/49+GrSem2NU2O+004lfdP2otSxeT87oMJSrRHUYQnHynq7Mi
-         Ym4DiAg4w/bPFLh4yx9OIcQkuIBfoLGw3XyGGu4GtF9nX8pkgQZfM/0UewhcCYuw2aGo
-         okJA==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-language:accept-language:in-reply-to:references:message-id
+         :date:thread-index:thread-topic:to:from;
+        bh=aY/tYky8xrtrKCY9L5LtuL2yXGVyyf8kKsFcBuhBJWY=;
+        b=lLdx/ii1CX3T29j9xm7JVOgilAXSp8AdGOYJLZaLGp982EiVzPT/e+wXJ2GAqtXXXP
+         vZ6jUJ4SOr5M3x6lnGv/3vIhGoxB3L4lD5bWw6Aa/vzRRTE2VrYP8jC01nMCiif/tVzG
+         3JnNPBRXihUnW50IhdxqLKhrO49nD51R21QybUHUM5tQ6o/aDlSPYFg3VyuhUAv/0rU8
+         9d4H/ybTDeHy2S++TzQ4KipgsgSUcY1B9kjfmPa23dV+lhxo+2C8oJGMsvdl6poM4ukY
+         ZEOZZsVR0UfkTWCs8/bex/gsmzXuClbx67NL4Hx9uBgRJDSJPFJEaHay9TEoDOZ74tSJ
+         33vw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XTIEHpyT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z37si3037882edc.30.2019.08.16.00.41.06
+        by mx.google.com with ESMTPS id t35si2225034eda.160.2019.08.16.00.41.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2019 00:41:06 -0700 (PDT)
+        Fri, 16 Aug 2019 00:41:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XTIEHpyT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:50738 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
+Received: from localhost ([::1]:50742 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyWrB-0006fR-0V
-	for alex.bennee@linaro.org; Fri, 16 Aug 2019 03:41:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39212)
+	id 1hyWrD-0006ks-VO
+	for alex.bennee@linaro.org; Fri, 16 Aug 2019 03:41:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38259)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <rashmica.g@gmail.com>) id 1hyWk8-0007BQ-PH
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:33:50 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hyWhe-0004xX-HF
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:31:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <rashmica.g@gmail.com>) id 1hyWk6-0000XV-U8
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:33:48 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:39309)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <rashmica.g@gmail.com>)
- id 1hyWk6-0000WC-Ky; Fri, 16 Aug 2019 03:33:46 -0400
-Received: by mail-pg1-x542.google.com with SMTP id u17so2519250pgi.6;
- Fri, 16 Aug 2019 00:33:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=YqZpHm5NeehX+S2H/qilEl8bdvwxq3GaiopzNC2K4vA=;
- b=XTIEHpyTY9ImSiXc5kfUbxdb7ZLN3uU+zvWctEz3deJZzkLt8ocF48gAozo9jSKr5Y
- 6obRCpBPzckmf5PHvLuHXIviVmy/FeudxuxDQ3mkFiDFSgUiMY5T4E10LWP1VJDJrkYC
- Cza0owTMWq3buuV32ekcV5SFst/fi+Bp+H3rwujMraa+anZPkA2HBMdLCykefJJr0ise
- Uzx/MZ2gjw1R6JgEvzY9LR20ymZNn3P0mb4P4ghcf3ijGYgqCKpWRYRjjwQ9+nQ+46Jc
- 66nD2+4h4kX8w9rRBJ8SjCF1nDyIjH4MSlkM/UZFrmp/lzfml76n9y8Al4FvZNbWxGUL
- KabA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=YqZpHm5NeehX+S2H/qilEl8bdvwxq3GaiopzNC2K4vA=;
- b=b6JD5G8yZVtK88z5PH4NLasvgx3aoyrMoLA+lZYVzmIwPlpkNBgoovjGOUnWi1nw+D
- t9p1Z5SIRSmD9ki3heTnSv2VFC4U31WAcKP7uQrNdKiX4N7Y6/a8eR15s5QTe6XO67sC
- 8zKCOXQd2IFmPI6psKWKSYMaE9luGDD/cbuwUCBg9z9xbT3rpWyYBWBA3uSqfVb7+8EL
- R1A3kK5U8HI8oqUm+idaibwlBDSpy61J2G0k/ZL5ZNra009/wU2LX1bzF9QCxG9EQmTz
- XqOYRj80Q/7cWsye/38M9DgvjqE6kEBx7U2S66hdcYTSF8VXTQxfJdLfdr75B5Fshcrn
- IXZg==
-X-Gm-Message-State: APjAAAUNDJORFl0oZju7nyQkDpdW/VHNen2hwkdjHdIevhK/aBKgkGrw
- +xjSLIgQ8BhS96F/GJatuKE=
-X-Received: by 2002:a62:fb18:: with SMTP id x24mr9195953pfm.231.1565940825637; 
- Fri, 16 Aug 2019 00:33:45 -0700 (PDT)
-Received: from rashmica.ozlabs.ibm.com ([122.99.82.10])
- by smtp.gmail.com with ESMTPSA id w129sm5638589pfd.89.2019.08.16.00.33.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Aug 2019 00:33:45 -0700 (PDT)
-From: Rashmica Gupta <rashmica.g@gmail.com>
-To: peter.maydell@linaro.org,
-	qemu-arm@nongnu.org
-Date: Fri, 16 Aug 2019 17:32:29 +1000
-Message-Id: <20190816073229.22787-4-rashmica.g@gmail.com>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190816073229.22787-1-rashmica.g@gmail.com>
-References: <20190816073229.22787-1-rashmica.g@gmail.com>
+ (envelope-from <tony.nguyen@bt.com>) id 1hyWhc-0007qZ-A2
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:31:14 -0400
+Received: from smtpe1.intersmtp.com ([213.121.35.77]:34134)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
+ id 1hyWhO-0007ix-0g; Fri, 16 Aug 2019 03:30:58 -0400
+Received: from tpw09926dag18g.domain1.systemhost.net (10.9.212.34) by
+ BWP09926082.bt.com (10.36.82.113) with Microsoft SMTP Server (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Fri, 16
+ Aug 2019 08:30:32 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
+ tpw09926dag18g.domain1.systemhost.net (10.9.212.34) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Fri, 16 Aug 2019 08:30:52 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net
+ ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
+ ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Fri, 16 Aug
+ 2019 08:30:53 +0100
+From: <tony.nguyen@bt.com>
+To: <qemu-devel@nongnu.org>
+Thread-Topic: [Qemu-devel] [PATCH v7 12/42] hw/s390x: Hard code size with
+ MO_{8|16|32|64}
+Thread-Index: AQHVVASIHvIgAu/PqkGPDWK31G+Lhw==
+Date: Fri, 16 Aug 2019 07:30:52 +0000
+Message-ID: <1565940651997.54048@bt.com>
+References: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
+In-Reply-To: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
+Accept-Language: en-AU, en-GB, en-US
+Content-Language: en-AU
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-ms-exchange-transport-fromentityheader: Hosted
+x-originating-ip: [10.187.101.40]
+Content-Type: multipart/alternative; boundary="_000_156594065199754048btcom_"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::542
-Subject: [Qemu-arm] [PATCH v5 3/3] hw/gpio: Add in AST2600 specific
- implementation
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 213.121.35.77
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v7 12/42] hw/s390x: Hard code size
+ with MO_{8|16|32|64}
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,227 +96,152 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: andrew@aj.id.au, qemu-devel@nongnu.org, aik@ozlabs.ru, joel@jms.id.au,
- Rashmica Gupta <rashmica.g@gmail.com>, clg@kaod.org
+Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
+ arikalo@wavecomp.com, pasic@linux.ibm.com, hpoussin@reactos.org,
+ anthony.perard@citrix.com, xen-devel@lists.xenproject.org, lersek@redhat.com,
+ jasowang@redhat.com, jiri@resnulli.us, ehabkost@redhat.com,
+ b.galvani@gmail.com, eric.auger@redhat.com, alex.williamson@redhat.com,
+ stefanha@redhat.com, jsnow@redhat.com, rth@twiddle.net, kwolf@redhat.com,
+ andrew@aj.id.au, claudio.fontana@suse.com, crwulff@gmail.com,
+ laurent@vivier.eu, sundeep.lkml@gmail.com, michael@walle.cc,
+ qemu-ppc@nongnu.org, kbastian@mail.uni-paderborn.de, imammedo@redhat.com,
+ fam@euphon.net, peter.maydell@linaro.org, david@redhat.com, palmer@sifive.com,
+ balaton@eik.bme.hu, keith.busch@intel.com, jcmvbkbc@gmail.com, hare@suse.com,
+ sstabellini@kernel.org, andrew.smirnov@gmail.com, deller@gmx.de,
+ magnus.damm@gmail.com, marcel.apfelbaum@gmail.com, atar4qemu@gmail.com,
+ minyard@acm.org, sw@weilnetz.de, yuval.shaia@oracle.com, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, jan.kiszka@web.de, clg@kaod.org, shorne@gmail.com,
+ qemu-riscv@nongnu.org, i.mitsyanko@gmail.com, cohuck@redhat.com,
+ philmd@redhat.com, amarkovic@wavecomp.com, peter.chubb@nicta.com.au,
+ aurelien@aurel32.net, pburton@wavecomp.com, sagark@eecs.berkeley.edu,
+ green@moxielogic.com, kraxel@redhat.com, gxt@mprc.pku.edu.cn, robh@kernel.org,
+ borntraeger@de.ibm.com, joel@jms.id.au, antonynpavlov@gmail.com,
+ chouteau@adacore.com, balrogg@gmail.com, Andrew.Baumann@microsoft.com,
+ mreitz@redhat.com, walling@linux.ibm.com, dmitry.fleytman@gmail.com,
+ mst@redhat.com, mark.cave-ayland@ilande.co.uk, jslaby@suse.cz, marex@denx.de,
+ proljc@gmail.com, marcandre.lureau@redhat.com, alistair@alistair23.me,
+ paul.durrant@citrix.com, david@gibson.dropbear.id.au,
+ xiaoguangrong.eric@gmail.com, huth@tuxfamily.org, jcd@tribudubois.net,
+ pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uXF7oWBNBuUU
+X-TUID: awAvu24N9y2N
 
-The AST2600 has the same sets of 3.6v gpios as the AST2400 plus an
-addtional two sets of 1.8V gpios.
+--_000_156594065199754048btcom_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Rashmica Gupta <rashmica.g@gmail.com>
+Temporarily no-op size_memop was introduced to aid the conversion of
+memory_region_dispatch_{read|write} operand "unsigned size" into
+"MemOp op".
+
+Now size_memop is implemented, again hard coded size but with
+MO_{8|16|32|64}. This is more expressive and avoids size_memop calls.
+
+Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 ---
- hw/gpio/aspeed_gpio.c | 142 ++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 137 insertions(+), 5 deletions(-)
+ hw/s390x/s390-pci-inst.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/gpio/aspeed_gpio.c b/hw/gpio/aspeed_gpio.c
-index d6a4c0c757..a3306a8f32 100644
---- a/hw/gpio/aspeed_gpio.c
-+++ b/hw/gpio/aspeed_gpio.c
-@@ -167,6 +167,48 @@
- #define GPIO_3_6V_MEM_SIZE         0x1F0
- #define GPIO_3_6V_REG_ARRAY_SIZE   (GPIO_3_6V_MEM_SIZE >> 2)
- 
-+/* AST2600 only - 1.8V gpios */
-+/*
-+ * The AST2600 has same 3.6V gpios as the AST2400 (memory offsets 0x0-0x198)
-+ * and addtional 1.8V gpios (memory offsets 0x800-0x9D4).
-+ */
-+#define GPIO_1_8V_REG_OFFSET          0x800
-+#define GPIO_1_8V_ABCD_DATA_VALUE     ((0x800 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_ABCD_DIRECTION      ((0x804 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_ABCD_INT_ENABLE     ((0x808 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_ABCD_INT_SENS_0     ((0x80C - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_ABCD_INT_SENS_1     ((0x810 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_ABCD_INT_SENS_2     ((0x814 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_ABCD_INT_STATUS     ((0x818 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_ABCD_RESET_TOLERANT ((0x81C - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_E_DATA_VALUE        ((0x820 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_E_DIRECTION         ((0x824 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_E_INT_ENABLE        ((0x828 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_E_INT_SENS_0        ((0x82C - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_E_INT_SENS_1        ((0x830 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_E_INT_SENS_2        ((0x834 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_E_INT_STATUS        ((0x838 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_E_RESET_TOLERANT    ((0x83C - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_ABCD_DEBOUNCE_1     ((0x840 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_ABCD_DEBOUNCE_2     ((0x844 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_E_DEBOUNCE_1        ((0x848 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_E_DEBOUNCE_2        ((0x84C - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_DEBOUNCE_TIME_1     ((0x850 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_DEBOUNCE_TIME_2     ((0x854 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_DEBOUNCE_TIME_3     ((0x858 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_ABCD_COMMAND_SRC_0  ((0x860 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_ABCD_COMMAND_SRC_1  ((0x864 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_E_COMMAND_SRC_0     ((0x868 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_E_COMMAND_SRC_1     ((0x86C - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_ABCD_DATA_READ      ((0x8C0 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_E_DATA_READ         ((0x8C4 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_ABCD_INPUT_MASK     ((0x9D0 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_E_INPUT_MASK        ((0x9D4 - GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_1_8V_MEM_SIZE            0x9D8
-+#define GPIO_1_8V_REG_ARRAY_SIZE      ((GPIO_1_8V_MEM_SIZE - \
-+                                      GPIO_1_8V_REG_OFFSET) >> 2)
-+#define GPIO_MAX_MEM_SIZE           MAX(GPIO_3_6V_MEM_SIZE, GPIO_1_8V_MEM_SIZE)
-+
- static int aspeed_evaluate_irq(GPIOSets *regs, int gpio_prev_high, int gpio)
- {
-     uint32_t falling_edge = 0, rising_edge = 0;
-@@ -461,6 +503,39 @@ static const AspeedGPIOReg aspeed_3_6v_gpios[GPIO_3_6V_REG_ARRAY_SIZE] = {
-     [GPIO_AC_INPUT_MASK] =         { 7, gpio_reg_input_mask },
- };
- 
-+static const AspeedGPIOReg aspeed_1_8v_gpios[GPIO_1_8V_REG_ARRAY_SIZE] = {
-+    /* 1.8V Set ABCD */
-+    [GPIO_1_8V_ABCD_DATA_VALUE] =     {0, gpio_reg_data_value},
-+    [GPIO_1_8V_ABCD_DIRECTION] =      {0, gpio_reg_direction},
-+    [GPIO_1_8V_ABCD_INT_ENABLE] =     {0, gpio_reg_int_enable},
-+    [GPIO_1_8V_ABCD_INT_SENS_0] =     {0, gpio_reg_int_sens_0},
-+    [GPIO_1_8V_ABCD_INT_SENS_1] =     {0, gpio_reg_int_sens_1},
-+    [GPIO_1_8V_ABCD_INT_SENS_2] =     {0, gpio_reg_int_sens_2},
-+    [GPIO_1_8V_ABCD_INT_STATUS] =     {0, gpio_reg_int_status},
-+    [GPIO_1_8V_ABCD_RESET_TOLERANT] = {0, gpio_reg_reset_tolerant},
-+    [GPIO_1_8V_ABCD_DEBOUNCE_1] =     {0, gpio_reg_debounce_1},
-+    [GPIO_1_8V_ABCD_DEBOUNCE_2] =     {0, gpio_reg_debounce_2},
-+    [GPIO_1_8V_ABCD_COMMAND_SRC_0] =  {0, gpio_reg_cmd_source_0},
-+    [GPIO_1_8V_ABCD_COMMAND_SRC_1] =  {0, gpio_reg_cmd_source_1},
-+    [GPIO_1_8V_ABCD_DATA_READ] =      {0, gpio_reg_data_read},
-+    [GPIO_1_8V_ABCD_INPUT_MASK] =     {0, gpio_reg_input_mask},
-+    /* 1.8V Set E */
-+    [GPIO_1_8V_E_DATA_VALUE] =     {1, gpio_reg_data_value},
-+    [GPIO_1_8V_E_DIRECTION] =      {1, gpio_reg_direction},
-+    [GPIO_1_8V_E_INT_ENABLE] =     {1, gpio_reg_int_enable},
-+    [GPIO_1_8V_E_INT_SENS_0] =     {1, gpio_reg_int_sens_0},
-+    [GPIO_1_8V_E_INT_SENS_1] =     {1, gpio_reg_int_sens_1},
-+    [GPIO_1_8V_E_INT_SENS_2] =     {1, gpio_reg_int_sens_2},
-+    [GPIO_1_8V_E_INT_STATUS] =     {1, gpio_reg_int_status},
-+    [GPIO_1_8V_E_RESET_TOLERANT] = {1, gpio_reg_reset_tolerant},
-+    [GPIO_1_8V_E_DEBOUNCE_1] =     {1, gpio_reg_debounce_1},
-+    [GPIO_1_8V_E_DEBOUNCE_2] =     {1, gpio_reg_debounce_2},
-+    [GPIO_1_8V_E_COMMAND_SRC_0] =  {1, gpio_reg_cmd_source_0},
-+    [GPIO_1_8V_E_COMMAND_SRC_1] =  {1, gpio_reg_cmd_source_1},
-+    [GPIO_1_8V_E_DATA_READ] =      {1, gpio_reg_data_read},
-+    [GPIO_1_8V_E_INPUT_MASK] =     {1, gpio_reg_input_mask},
-+};
-+
- static uint64_t aspeed_gpio_read(void *opaque, hwaddr offset, uint32_t size)
- {
-     AspeedGPIOState *s = ASPEED_GPIO(opaque);
-@@ -659,8 +734,11 @@ static void aspeed_gpio_get_pin(Object *obj, Visitor *v, const char *name,
-     int set_idx, group_idx = 0;
- 
-     if (sscanf(name, "gpio%2[A-Z]%1d", group, &pin) != 2) {
--        error_setg(errp, "%s: error reading %s", __func__, name);
--        return;
-+        /* 1.8V gpio */
-+        if (sscanf(name, "gpio%3s%1d", group, &pin) != 2) {
-+            error_setg(errp, "%s: error reading %s", __func__, name);
-+            return;
-+        }
-     }
-     set_idx = get_set_idx(s, group, &group_idx);
-     if (set_idx == -1) {
-@@ -683,8 +761,11 @@ static void aspeed_gpio_set_pin(Object *obj, Visitor *v, const char *name,
- 
-     visit_type_bool(v, name, &level, &local_err);
-     if (sscanf(name, "gpio%2[A-Z]%1d", group, &pin) != 2) {
--        error_setg(errp, "%s: error reading %s", __func__, name);
--        return;
-+        /* 1.8V gpio */
-+        if (sscanf(name, "gpio%3s%1d", group, &pin) != 2) {
-+            error_setg(errp, "%s: error reading %s", __func__, name);
-+            return;
-+        }
-     }
-     set_idx = get_set_idx(s, group, &group_idx);
-     if (set_idx == -1) {
-@@ -716,6 +797,21 @@ static const GPIOSetProperties ast2500_set_props[] = {
-     [7] = {0x000000ff,  0x000000ff,  {"AC"} },
- };
- 
-+static GPIOSetProperties ast2600_3_6v_set_props[] = {
-+    [0] = {0xffffffff,  0xffffffff,  {"A", "B", "C", "D"} },
-+    [1] = {0xffffffff,  0xffffffff,  {"E", "F", "G", "H"} },
-+    [2] = {0xffffffff,  0xffffffff,  {"I", "J", "K", "L"} },
-+    [3] = {0xffffffff,  0xffffffff,  {"M", "N", "O", "P"} },
-+    [4] = {0xffffffff,  0xffffffff,  {"Q", "R", "S", "T"} },
-+    [5] = {0xffffffff,  0x0000ffff,  {"U", "V", "W", "X"} },
-+    [6] = {0xffff0000,  0x0fff0000,  {"Y", "Z", "", ""} },
-+};
-+
-+static GPIOSetProperties ast2600_1_8v_set_props[] = {
-+    [0] = {0xffffffff,  0xffffffff,  {"18A", "18B", "18C", "18D"} },
-+    [1] = {0x0000000f,  0x0000000f,  {"18E"} },
-+};
-+
- static const MemoryRegionOps aspeed_gpio_ops = {
-     .read       = aspeed_gpio_read,
-     .write      = aspeed_gpio_write,
-@@ -748,7 +844,7 @@ static void aspeed_gpio_realize(DeviceState *dev, Error **errp)
-     }
- 
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_gpio_ops, s,
--            TYPE_ASPEED_GPIO, GPIO_3_6V_MEM_SIZE);
-+            TYPE_ASPEED_GPIO, GPIO_MAX_MEM_SIZE);
- 
-     sysbus_init_mmio(sbd, &s->iomem);
- }
-@@ -841,6 +937,26 @@ static void aspeed_gpio_2500_class_init(ObjectClass *klass, void *data)
-     agc->reg_table = aspeed_3_6v_gpios;
- }
- 
-+static void aspeed_gpio_ast2600_3_6v_class_init(ObjectClass *klass, void *data)
-+{
-+    AspeedGPIOClass *agc = ASPEED_GPIO_CLASS(klass);
-+
-+    agc->props = ast2600_3_6v_set_props;
-+    agc->nr_gpio_pins = 208;
-+    agc->nr_gpio_sets = 7;
-+    agc->reg_table = aspeed_3_6v_gpios;
-+}
-+
-+static void aspeed_gpio_ast2600_1_8v_class_init(ObjectClass *klass, void *data)
-+{
-+    AspeedGPIOClass *agc = ASPEED_GPIO_CLASS(klass);
-+
-+    agc->props = ast2600_1_8v_set_props;
-+    agc->nr_gpio_pins = 36;
-+    agc->nr_gpio_sets = 2;
-+    agc->reg_table = aspeed_1_8v_gpios;
-+}
-+
- static const TypeInfo aspeed_gpio_info = {
-     .name           = TYPE_ASPEED_GPIO,
-     .parent         = TYPE_SYS_BUS_DEVICE,
-@@ -864,11 +980,27 @@ static const TypeInfo aspeed_gpio_ast2500_info = {
-     .instance_init  = aspeed_gpio_init,
- };
- 
-+static const TypeInfo aspeed_gpio_ast2600_3_6v_info = {
-+    .name           = TYPE_ASPEED_GPIO "0-ast2600",
-+    .parent         = TYPE_ASPEED_GPIO,
-+    .class_init     = aspeed_gpio_ast2600_3_6v_class_init,
-+    .instance_init  = aspeed_gpio_init,
-+};
-+
-+static const TypeInfo aspeed_gpio_ast2600_1_8v_info = {
-+    .name           = TYPE_ASPEED_GPIO "1-ast2600",
-+    .parent         = TYPE_ASPEED_GPIO,
-+    .class_init     = aspeed_gpio_ast2600_1_8v_class_init,
-+    .instance_init  = aspeed_gpio_init,
-+};
-+
- static void aspeed_gpio_register_types(void)
- {
-     type_register_static(&aspeed_gpio_info);
-     type_register_static(&aspeed_gpio_ast2400_info);
-     type_register_static(&aspeed_gpio_ast2500_info);
-+    type_register_static(&aspeed_gpio_ast2600_3_6v_info);
-+    type_register_static(&aspeed_gpio_ast2600_1_8v_info);
- }
- 
- type_init(aspeed_gpio_register_types);
--- 
-2.20.1
+diff --git a/hw/s390x/s390-pci-inst.c b/hw/s390x/s390-pci-inst.c
+index 0c958fc..0e92a37 100644
+--- a/hw/s390x/s390-pci-inst.c
++++ b/hw/s390x/s390-pci-inst.c
+@@ -782,8 +782,7 @@ int pcistb_service_call(S390CPU *cpu, uint8_t r1, uint8=
+_t r3, uint64_t gaddr,
+     for (i =3D 0; i < len / 8; i++) {
+         result =3D memory_region_dispatch_write(mr, offset + i * 8,
+                                               ldq_p(buffer + i * 8),
+-                                              size_memop(8),
+-                                              MEMTXATTRS_UNSPECIFIED);
++                                              MO_64, MEMTXATTRS_UNSPECIFIE=
+D);
+         if (result !=3D MEMTX_OK) {
+             s390_program_interrupt(env, PGM_OPERAND, 6, ra);
+             return 0;
+--
+1.8.3.1
 
+?
+
+
+--_000_156594065199754048btcom_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none"><!-- P { margin-top: 0px; m=
+argin-bottom: 0px; } .EmailQuote { margin-left: 1pt; padding-left: 4pt; bor=
+der-left-width: 2px; border-left-style: solid; border-left-color: rgb(128, =
+0, 0); }--></style>
+</head>
+<body dir=3D"ltr" style=3D"font-size:12pt;color:#000000;background-color:#F=
+FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
+<p></p>
+<div style=3D"color: rgb(33, 33, 33);"><font size=3D"2"><span style=3D"font=
+-size:10pt;">
+<div class=3D"PlainText">
+<div><span style=3D"font-size: 10pt;">Temporarily no-op size_memop was intr=
+oduced to aid the conversion of</span><br>
+</div>
+<div>memory_region_dispatch_{read|write} operand &quot;unsigned size&quot; =
+into</div>
+<div>&quot;MemOp op&quot;.</div>
+<div><br>
+</div>
+<div>Now size_memop is implemented, again hard coded size but with</div>
+<div>MO_{8|16|32|64}. This is more expressive and avoids size_memop calls.<=
+/div>
+<div><br>
+</div>
+<div>Signed-off-by: Tony Nguyen &lt;tony.nguyen@bt.com&gt;</div>
+<div>Reviewed-by: Richard Henderson &lt;richard.henderson@linaro.org&gt;</d=
+iv>
+<div>Reviewed-by: Cornelia Huck &lt;cohuck@redhat.com&gt;</div>
+<div>---</div>
+<div>&nbsp;hw/s390x/s390-pci-inst.c | 3 &#43;--</div>
+<div>&nbsp;1 file changed, 1 insertion(&#43;), 2 deletions(-)</div>
+<div><br>
+</div>
+<div>diff --git a/hw/s390x/s390-pci-inst.c b/hw/s390x/s390-pci-inst.c</div>
+<div>index 0c958fc..0e92a37 100644</div>
+<div>--- a/hw/s390x/s390-pci-inst.c</div>
+<div>&#43;&#43;&#43; b/hw/s390x/s390-pci-inst.c</div>
+<div>@@ -782,8 &#43;782,7 @@ int pcistb_service_call(S390CPU *cpu, uint8_t =
+r1, uint8_t r3, uint64_t gaddr,</div>
+<div>&nbsp; &nbsp; &nbsp;for (i =3D 0; i &lt; len / 8; i&#43;&#43;) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;result =3D memory_region_dispatch_wr=
+ite(mr, offset &#43; i * 8,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp;ldq_p(buffer &#43; i * 8),</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp;size_memop(8),</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
+sp; &nbsp; &nbsp;MEMTXATTRS_UNSPECIFIED);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
+ &nbsp; &nbsp; &nbsp;MO_64, MEMTXATTRS_UNSPECIFIED);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;if (result !=3D MEMTX_OK) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;s390_program_interrupt=
+(env, PGM_OPERAND, 6, ra);</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;return 0;</div>
+<div>--&nbsp;</div>
+<div>1.8.3.1</div>
+<div><br>
+&#8203;<br>
+</div>
+<br>
+</div>
+</span></font></div>
+</body>
+</html>
+
+--_000_156594065199754048btcom_--

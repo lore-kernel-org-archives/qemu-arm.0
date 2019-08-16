@@ -1,74 +1,75 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp497723wrs;
-        Fri, 16 Aug 2019 01:04:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwwmMn4XTQ+THZ9O2KdEkwrp4ss9WPCbIQ9VQ/Std4ePXLlnuhTEiljMFKn0YCDgXIicTl1
-X-Received: by 2002:a37:9e81:: with SMTP id h123mr7502563qke.347.1565942653270;
-        Fri, 16 Aug 2019 01:04:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565942653; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp499520wrs;
+        Fri, 16 Aug 2019 01:06:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxGDiFS/oUQGs0lDVRUyZvoNGA5fVs5EFktJGKgcJnRQhju+VMxNwh/f1nK1MsA3eWmhqaF
+X-Received: by 2002:a37:97c5:: with SMTP id z188mr8025655qkd.5.1565942769157;
+        Fri, 16 Aug 2019 01:06:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565942769; cv=none;
         d=google.com; s=arc-20160816;
-        b=hlC/OBJj++eQjQCGQlZtD9ZoBsIlrMKIU/8Ng2h/6LzwmJgjZJYWA7EKN/9skxrFsZ
-         9QpKQ4IMpTqMe0V/jLv6xGBXQaBBl3J1U07SIQ+hRHtYgrCm50pq262BdZ+CXdVSha0b
-         FhiqwRNC4B4agFQNt9Ma8rDCc2BRG1o26JYW0PLi4fNHPBuigeLjGUhRyvXzH366S3cX
-         2nAOHEvLbKCQt3sy+9Xn/lq+TZ03Dcun5F6yNt2IIosRTBAT5JB8PkA25/WnvhSLBsDg
-         DjoXPGJJ04iPtMl7m+4dfFdXvF0Hgilda609PUiz4JQqKLzxq6qLv7evOvL28Tdmxhig
-         ExJg==
+        b=j//mKp8Y3DSLqs+QDdYAreqrQR5Y1sJQHjckXFtoGvVcdohfz09eLwiFAACVh9Caq6
+         IJnVbW30Khg1sGQ0aF+DhofMR4cKmZzf66RWwiRSrEVdEMfxf9wRgIRlKtBvsIj5ULQ5
+         qzG/++4Man5jtsda4mdbpXTmA/iKnm0TIVn/CFMNoFkVeim9bCjaXbP79S1QvkitwPy6
+         Yq8U/ovoDVk+cRiw4krPoPIH5EvhITLSoHUB7q5fuqHm/q9rRQ1uEwZJtdqzcNdPj4LG
+         ZELFoX0dzrEk/PR5QAIDIctIf0PqyUsVHulhHj4V6o3ED6yuQ51YpwqGSODO4bd+R1QS
+         muaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-language:accept-language:in-reply-to:references:message-id
          :date:thread-index:thread-topic:to:from;
-        bh=hMB7B2ks3YjAYe5a8FsxKvHF/dnsmOA5lNyX4cwOKQI=;
-        b=F0TyMuuWnhSupiVVLPjUFAqigHMjsHHyUNsId7eb0MGsXTwF/7bFE1/s0u4gY1Zlg6
-         vuqoC1aK5IMjkh7FopX4aMB/UYve62L6SVfaH6rT2XIqn1Wx0QP4AppFWGajyS6mFDjV
-         VSKRLpH/fYj2LxccsZ8Giqw6aCVvUwMp2ZXDetiggwy9zbHbvzEt9MyO4OZuwfKnimVZ
-         vqjFmJ+MsJilJsaMvxS81uDfT7b9DoTnyRT6E0CNnLiZD8UZPB0siVhyqEdpowfEjtxn
-         biO5242MIwO7MUfene8eFfCJVuO0anlY0HOtdEbTp9LDLqa10FQ8VsZ6RYryRz1lpTyH
-         5xwA==
+        bh=bSZOKDmzci/CRmQp6V64WUwZJdd/asnwEPBKHFZrBf0=;
+        b=Zv2x+a1ERj/MxaMrNXoEMDcBSua21c4MDDOQpFO2764DDsch2mJfmRF76I8J4KmIew
+         9Xjj8mveblm7446E37Q8P+txCjiokVkOCuiubFslHkQlv4MALaHzn5eysInw9q+lUnr4
+         8JkgstBflz7EhlIoAoDOq6BUq07KkW+n+91cQyyJ/ldxFd+mtJ5OEI+ebIGp2MOqsqQK
+         bV9OhR1uoHDSbB+s8708rK+3GR7r+CWwwtqjpTfv0lO4T0OJs/bnhIx1loCvzYEdTwuc
+         SFp4MD4og3iHiqOIe7aUWhUQhmwUxwG+K9TjCLNj+EtD1imWTEbGocaI1/QwZ9yfCZSG
+         0AxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v20si3001382qtk.88.2019.08.16.01.04.13
+        by mx.google.com with ESMTPS id e15si2835983qkm.46.2019.08.16.01.06.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2019 01:04:13 -0700 (PDT)
+        Fri, 16 Aug 2019 01:06:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:51217 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51280 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyXDY-0003Ei-BA
-	for alex.bennee@linaro.org; Fri, 16 Aug 2019 04:04:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40694)
+	id 1hyXFQ-0005Zs-FB
+	for alex.bennee@linaro.org; Fri, 16 Aug 2019 04:06:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40498)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tony.nguyen@bt.com>) id 1hyWnw-0003Jy-LY
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:37:46 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hyWnM-00025s-7L
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:37:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hyWnv-00034t-0l
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:37:44 -0400
-Received: from smtpe1.intersmtp.com ([213.121.35.74]:25481)
+ (envelope-from <tony.nguyen@bt.com>) id 1hyWnF-0002mV-0X
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:37:08 -0400
+Received: from smtpe1.intersmtp.com ([213.121.35.75]:44508)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hyWnl-0002y2-5L; Fri, 16 Aug 2019 03:37:33 -0400
-Received: from tpw09926dag18h.domain1.systemhost.net (10.9.212.42) by
- BWP09926079.bt.com (10.36.82.110) with Microsoft SMTP Server (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Fri, 16
- Aug 2019 08:37:08 +0100
+ id 1hyWmW-0002Lb-Uz; Fri, 16 Aug 2019 03:36:17 -0400
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18h.domain1.systemhost.net (10.9.212.42) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Fri, 16 Aug 2019 08:37:31 +0100
+ BWP09926080.bt.com (10.36.82.111) with Microsoft SMTP Server (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Fri, 16
+ Aug 2019 08:35:47 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
+ tpw09926dag18e.domain1.systemhost.net (10.9.212.18) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Fri, 16 Aug 2019 08:36:13 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Fri, 16 Aug
- 2019 08:37:31 +0100
+ 2019 08:36:13 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v7 34/42] exec: Delete device_endian
-Thread-Index: AQHVVAV23bjkeyMUpEO6mGcxTLNfZg==
-Date: Fri, 16 Aug 2019 07:37:31 +0000
-Message-ID: <1565941050197.81674@bt.com>
+Thread-Topic: [Qemu-devel] [PATCH v7 30/42] hw/timer: Declare device little or
+ big endian
+Thread-Index: AQHVVAVHJHteuAQjY06hANVhOnIhew==
+Date: Fri, 16 Aug 2019 07:36:13 +0000
+Message-ID: <1565940972287.31476@bt.com>
 References: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
 In-Reply-To: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
 Accept-Language: en-AU, en-GB, en-US
@@ -78,11 +79,12 @@ X-MS-TNEF-Correlator:
 x-ms-exchange-messagesentrepresentingtype: 1
 x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.40]
-Content-Type: multipart/alternative; boundary="_000_156594105019781674btcom_"
+Content-Type: multipart/alternative; boundary="_000_156594097228731476btcom_"
 MIME-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 213.121.35.74
-Subject: [Qemu-arm] [Qemu-devel] [PATCH v7 34/42] exec: Delete device_endian
+X-Received-From: 213.121.35.75
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v7 30/42] hw/timer: Declare device
+ little or big endian
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,46 +125,293 @@ Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
  pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tXiXYNVvcnhd
+X-TUID: nBQhCmG+6/1+
 
---_000_156594105019781674btcom_
+--_000_156594097228731476btcom_
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
-device_endian has been made redundant by MemOp.
+For each device declared with DEVICE_NATIVE_ENDIAN, find the set of
+targets from the set of target/hw/*/device.o.
+
+If the set of targets are all little or all big endian, re-declare
+the device endianness as DEVICE_LITTLE_ENDIAN or DEVICE_BIG_ENDIAN
+respectively.
+
+This *naive* deduction may result in genuinely native endian devices
+being incorrectly declared as little or big endian, but should not
+introduce regressions for current targets.
+
+These devices should be re-declared as DEVICE_NATIVE_ENDIAN if 1) it
+has a new target with an opposite endian or 2) someone informed knows
+better =3D)
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/cpu-common.h | 8 --------
- 1 file changed, 8 deletions(-)
+ hw/timer/a9gtimer.c         | 4 ++--
+ hw/timer/arm_mptimer.c      | 4 ++--
+ hw/timer/arm_timer.c        | 4 ++--
+ hw/timer/armv7m_systick.c   | 2 +-
+ hw/timer/aspeed_rtc.c       | 2 +-
+ hw/timer/cadence_ttc.c      | 2 +-
+ hw/timer/grlib_gptimer.c    | 2 +-
+ hw/timer/hpet.c             | 2 +-
+ hw/timer/imx_epit.c         | 2 +-
+ hw/timer/imx_gpt.c          | 2 +-
+ hw/timer/lm32_timer.c       | 2 +-
+ hw/timer/milkymist-sysctl.c | 2 +-
+ hw/timer/mss-timer.c        | 2 +-
+ hw/timer/pl031.c            | 2 +-
+ hw/timer/stm32f2xx_timer.c  | 2 +-
+ hw/timer/sun4v-rtc.c        | 2 +-
+ 16 files changed, 19 insertions(+), 19 deletions(-)
 
-diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h
-index 01a29ba..7eeb78c 100644
---- a/include/exec/cpu-common.h
-+++ b/include/exec/cpu-common.h
-@@ -18,14 +18,6 @@ void tcg_flush_softmmu_tlb(CPUState *cs);
+diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
+index 09e2a7b..8bb5f6e 100644
+--- a/hw/timer/a9gtimer.c
++++ b/hw/timer/a9gtimer.c
+@@ -254,7 +254,7 @@ static const MemoryRegionOps a9_gtimer_this_ops =3D {
+         .min_access_size =3D 4,
+         .max_access_size =3D 4,
+     },
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+ };
 
- #include "exec/memop.h"
+ static const MemoryRegionOps a9_gtimer_ops =3D {
+@@ -264,7 +264,7 @@ static const MemoryRegionOps a9_gtimer_ops =3D {
+         .min_access_size =3D 4,
+         .max_access_size =3D 4,
+     },
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+ };
 
--enum device_endian {
--#ifdef NEED_CPU_H
--    DEVICE_NATIVE_ENDIAN =3D MO_TE,
--#endif
--    DEVICE_BIG_ENDIAN =3D MO_BE,
--    DEVICE_LITTLE_ENDIAN =3D MO_LE,
--};
--
- #if defined(HOST_WORDS_BIGENDIAN)
- #define DEVICE_HOST_ENDIAN MO_BE
- #else
+ static void a9_gtimer_reset(DeviceState *dev)
+diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
+index 93044aa..9397218 100644
+--- a/hw/timer/arm_mptimer.c
++++ b/hw/timer/arm_mptimer.c
+@@ -190,7 +190,7 @@ static const MemoryRegionOps arm_thistimer_ops =3D {
+         .min_access_size =3D 4,
+         .max_access_size =3D 4,
+     },
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+ };
+
+ static const MemoryRegionOps timerblock_ops =3D {
+@@ -200,7 +200,7 @@ static const MemoryRegionOps timerblock_ops =3D {
+         .min_access_size =3D 4,
+         .max_access_size =3D 4,
+     },
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+ };
+
+ static void timerblock_reset(TimerBlock *tb)
+diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
+index f0a7534..22ce3ff 100644
+--- a/hw/timer/arm_timer.c
++++ b/hw/timer/arm_timer.c
+@@ -265,7 +265,7 @@ static void sp804_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps sp804_ops =3D {
+     .read =3D sp804_read,
+     .write =3D sp804_write,
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+ };
+
+ static const VMStateDescription vmstate_sp804 =3D {
+@@ -346,7 +346,7 @@ static void icp_pit_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps icp_pit_ops =3D {
+     .read =3D icp_pit_read,
+     .write =3D icp_pit_write,
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+ };
+
+ static void icp_pit_init(Object *obj)
+diff --git a/hw/timer/armv7m_systick.c b/hw/timer/armv7m_systick.c
+index 9464074..3c34fd0 100644
+--- a/hw/timer/armv7m_systick.c
++++ b/hw/timer/armv7m_systick.c
+@@ -191,7 +191,7 @@ static MemTxResult systick_write(void *opaque, hwaddr a=
+ddr,
+ static const MemoryRegionOps systick_ops =3D {
+     .read_with_attrs =3D systick_read,
+     .write_with_attrs =3D systick_write,
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+     .valid.min_access_size =3D 4,
+     .valid.max_access_size =3D 4,
+ };
+diff --git a/hw/timer/aspeed_rtc.c b/hw/timer/aspeed_rtc.c
+index 19f061c..c528e47 100644
+--- a/hw/timer/aspeed_rtc.c
++++ b/hw/timer/aspeed_rtc.c
+@@ -130,7 +130,7 @@ static void aspeed_rtc_reset(DeviceState *d)
+ static const MemoryRegionOps aspeed_rtc_ops =3D {
+     .read =3D aspeed_rtc_read,
+     .write =3D aspeed_rtc_write,
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+ };
+
+ static const VMStateDescription vmstate_aspeed_rtc =3D {
+diff --git a/hw/timer/cadence_ttc.c b/hw/timer/cadence_ttc.c
+index 115d935..d422efe 100644
+--- a/hw/timer/cadence_ttc.c
++++ b/hw/timer/cadence_ttc.c
+@@ -389,7 +389,7 @@ static void cadence_ttc_write(void *opaque, hwaddr offs=
+et,
+ static const MemoryRegionOps cadence_ttc_ops =3D {
+     .read =3D cadence_ttc_read,
+     .write =3D cadence_ttc_write,
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+ };
+
+ static void cadence_timer_reset(CadenceTimerState *s)
+diff --git a/hw/timer/grlib_gptimer.c b/hw/timer/grlib_gptimer.c
+index e45a490..dc3b028 100644
+--- a/hw/timer/grlib_gptimer.c
++++ b/hw/timer/grlib_gptimer.c
+@@ -313,7 +313,7 @@ static void grlib_gptimer_write(void *opaque, hwaddr ad=
+dr,
+ static const MemoryRegionOps grlib_gptimer_ops =3D {
+     .read =3D grlib_gptimer_read,
+     .write =3D grlib_gptimer_write,
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_BIG_ENDIAN,
+     .valid =3D {
+         .min_access_size =3D 4,
+         .max_access_size =3D 4,
+diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
+index 41024f3..8268b24 100644
+--- a/hw/timer/hpet.c
++++ b/hw/timer/hpet.c
+@@ -675,7 +675,7 @@ static const MemoryRegionOps hpet_ram_ops =3D {
+         .min_access_size =3D 4,
+         .max_access_size =3D 4,
+     },
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+ };
+
+ static void hpet_reset(DeviceState *d)
+diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
+index 7a88316..a87dc06 100644
+--- a/hw/timer/imx_epit.c
++++ b/hw/timer/imx_epit.c
+@@ -282,7 +282,7 @@ static void imx_epit_cmp(void *opaque)
+ static const MemoryRegionOps imx_epit_ops =3D {
+     .read =3D imx_epit_read,
+     .write =3D imx_epit_write,
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+ };
+
+ static const VMStateDescription vmstate_imx_timer_epit =3D {
+diff --git a/hw/timer/imx_gpt.c b/hw/timer/imx_gpt.c
+index 3086c03..4eca249 100644
+--- a/hw/timer/imx_gpt.c
++++ b/hw/timer/imx_gpt.c
+@@ -474,7 +474,7 @@ static void imx_gpt_timeout(void *opaque)
+ static const MemoryRegionOps imx_gpt_ops =3D {
+     .read =3D imx_gpt_read,
+     .write =3D imx_gpt_write,
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+ };
+
+
+diff --git a/hw/timer/lm32_timer.c b/hw/timer/lm32_timer.c
+index 6ce876c..88d2ee0 100644
+--- a/hw/timer/lm32_timer.c
++++ b/hw/timer/lm32_timer.c
+@@ -144,7 +144,7 @@ static void timer_write(void *opaque, hwaddr addr,
+ static const MemoryRegionOps timer_ops =3D {
+     .read =3D timer_read,
+     .write =3D timer_write,
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_BIG_ENDIAN,
+     .valid =3D {
+         .min_access_size =3D 4,
+         .max_access_size =3D 4,
+diff --git a/hw/timer/milkymist-sysctl.c b/hw/timer/milkymist-sysctl.c
+index a9d2508..c1d715f 100644
+--- a/hw/timer/milkymist-sysctl.c
++++ b/hw/timer/milkymist-sysctl.c
+@@ -220,7 +220,7 @@ static const MemoryRegionOps sysctl_mmio_ops =3D {
+         .min_access_size =3D 4,
+         .max_access_size =3D 4,
+     },
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_BIG_ENDIAN,
+ };
+
+ static void timer0_hit(void *opaque)
+diff --git a/hw/timer/mss-timer.c b/hw/timer/mss-timer.c
+index 6add47a..26a51f1 100644
+--- a/hw/timer/mss-timer.c
++++ b/hw/timer/mss-timer.c
+@@ -197,7 +197,7 @@ timer_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps timer_ops =3D {
+     .read =3D timer_read,
+     .write =3D timer_write,
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+     .valid =3D {
+         .min_access_size =3D 1,
+         .max_access_size =3D 4
+diff --git a/hw/timer/pl031.c b/hw/timer/pl031.c
+index 1a7e2ee..62b0fab 100644
+--- a/hw/timer/pl031.c
++++ b/hw/timer/pl031.c
+@@ -175,7 +175,7 @@ static void pl031_write(void * opaque, hwaddr offset,
+ static const MemoryRegionOps pl031_ops =3D {
+     .read =3D pl031_read,
+     .write =3D pl031_write,
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+ };
+
+ static void pl031_init(Object *obj)
+diff --git a/hw/timer/stm32f2xx_timer.c b/hw/timer/stm32f2xx_timer.c
+index 4c49dc4..ecfcdad 100644
+--- a/hw/timer/stm32f2xx_timer.c
++++ b/hw/timer/stm32f2xx_timer.c
+@@ -265,7 +265,7 @@ static void stm32f2xx_timer_write(void *opaque, hwaddr =
+offset,
+ static const MemoryRegionOps stm32f2xx_timer_ops =3D {
+     .read =3D stm32f2xx_timer_read,
+     .write =3D stm32f2xx_timer_write,
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+ };
+
+ static const VMStateDescription vmstate_stm32f2xx_timer =3D {
+diff --git a/hw/timer/sun4v-rtc.c b/hw/timer/sun4v-rtc.c
+index ba62adc..6b7ca75 100644
+--- a/hw/timer/sun4v-rtc.c
++++ b/hw/timer/sun4v-rtc.c
+@@ -48,7 +48,7 @@ static void sun4v_rtc_write(void *opaque, hwaddr addr,
+ static const MemoryRegionOps sun4v_rtc_ops =3D {
+     .read =3D sun4v_rtc_read,
+     .write =3D sun4v_rtc_write,
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_BIG_ENDIAN,
+ };
+
+ void sun4v_rtc_init(hwaddr addr)
 --
 1.8.3.1
 
 ?
 
 
---_000_156594105019781674btcom_
+--_000_156594097228731476btcom_
 Content-Type: text/html; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
@@ -181,39 +430,317 @@ FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
 <div style=3D"color: rgb(33, 33, 33);"><font size=3D"2"><span style=3D"font=
 -size:10pt;">
 <div class=3D"PlainText">
-<div><span style=3D"font-size: 10pt;">device_endian has been made redundant=
- by MemOp.</span><br>
+<div><span style=3D"font-size: 10pt;">For each device declared with DEVICE_=
+NATIVE_ENDIAN, find the set of</span><br>
 </div>
+<div>targets from the set of target/hw/*/device.o.</div>
+<div><br>
+</div>
+<div>If the set of targets are all little or all big endian, re-declare</di=
+v>
+<div>the device endianness as DEVICE_LITTLE_ENDIAN or DEVICE_BIG_ENDIAN</di=
+v>
+<div>respectively.</div>
+<div><br>
+</div>
+<div>This *naive* deduction may result in genuinely native endian devices</=
+div>
+<div>being incorrectly declared as little or big endian, but should not</di=
+v>
+<div>introduce regressions for current targets.</div>
+<div><br>
+</div>
+<div>These devices should be re-declared as DEVICE_NATIVE_ENDIAN if 1) it</=
+div>
+<div>has a new target with an opposite endian or 2) someone informed knows<=
+/div>
+<div>better =3D)</div>
 <div><br>
 </div>
 <div>Signed-off-by: Tony Nguyen &lt;tony.nguyen@bt.com&gt;</div>
-<div>Reviewed-by: Richard Henderson &lt;richard.henderson@linaro.org&gt;</d=
-iv>
 <div>---</div>
-<div>&nbsp;include/exec/cpu-common.h | 8 --------</div>
-<div>&nbsp;1 file changed, 8 deletions(-)</div>
+<div>&nbsp;hw/timer/a9gtimer.c &nbsp; &nbsp; &nbsp; &nbsp; | 4 &#43;&#43;--=
+</div>
+<div>&nbsp;hw/timer/arm_mptimer.c &nbsp; &nbsp; &nbsp;| 4 &#43;&#43;--</div=
+>
+<div>&nbsp;hw/timer/arm_timer.c &nbsp; &nbsp; &nbsp; &nbsp;| 4 &#43;&#43;--=
+</div>
+<div>&nbsp;hw/timer/armv7m_systick.c &nbsp; | 2 &#43;-</div>
+<div>&nbsp;hw/timer/aspeed_rtc.c &nbsp; &nbsp; &nbsp; | 2 &#43;-</div>
+<div>&nbsp;hw/timer/cadence_ttc.c &nbsp; &nbsp; &nbsp;| 2 &#43;-</div>
+<div>&nbsp;hw/timer/grlib_gptimer.c &nbsp; &nbsp;| 2 &#43;-</div>
+<div>&nbsp;hw/timer/hpet.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | 2 &#=
+43;-</div>
+<div>&nbsp;hw/timer/imx_epit.c &nbsp; &nbsp; &nbsp; &nbsp; | 2 &#43;-</div>
+<div>&nbsp;hw/timer/imx_gpt.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| 2 &#43;-<=
+/div>
+<div>&nbsp;hw/timer/lm32_timer.c &nbsp; &nbsp; &nbsp; | 2 &#43;-</div>
+<div>&nbsp;hw/timer/milkymist-sysctl.c | 2 &#43;-</div>
+<div>&nbsp;hw/timer/mss-timer.c &nbsp; &nbsp; &nbsp; &nbsp;| 2 &#43;-</div>
+<div>&nbsp;hw/timer/pl031.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;| 2 &#=
+43;-</div>
+<div>&nbsp;hw/timer/stm32f2xx_timer.c &nbsp;| 2 &#43;-</div>
+<div>&nbsp;hw/timer/sun4v-rtc.c &nbsp; &nbsp; &nbsp; &nbsp;| 2 &#43;-</div>
+<div>&nbsp;16 files changed, 19 insertions(&#43;), 19 deletions(-)</div>
 <div><br>
 </div>
-<div>diff --git a/include/exec/cpu-common.h b/include/exec/cpu-common.h</di=
+<div>diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c</div>
+<div>index 09e2a7b..8bb5f6e 100644</div>
+<div>--- a/hw/timer/a9gtimer.c</div>
+<div>&#43;&#43;&#43; b/hw/timer/a9gtimer.c</div>
+<div>@@ -254,7 &#43;254,7 @@ static const MemoryRegionOps a9_gtimer_this_op=
+s =3D {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 4,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 4,</div>
+<div>&nbsp; &nbsp; &nbsp;},</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp;};</div>
+<div>&nbsp;</div>
+<div>&nbsp;static const MemoryRegionOps a9_gtimer_ops =3D {</div>
+<div>@@ -264,7 &#43;264,7 @@ static const MemoryRegionOps a9_gtimer_ops =3D=
+ {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 4,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 4,</div>
+<div>&nbsp; &nbsp; &nbsp;},</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp;};</div>
+<div>&nbsp;</div>
+<div>&nbsp;static void a9_gtimer_reset(DeviceState *dev)</div>
+<div>diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c</div>
+<div>index 93044aa..9397218 100644</div>
+<div>--- a/hw/timer/arm_mptimer.c</div>
+<div>&#43;&#43;&#43; b/hw/timer/arm_mptimer.c</div>
+<div>@@ -190,7 &#43;190,7 @@ static const MemoryRegionOps arm_thistimer_ops=
+ =3D {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 4,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 4,</div>
+<div>&nbsp; &nbsp; &nbsp;},</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp;};</div>
+<div>&nbsp;</div>
+<div>&nbsp;static const MemoryRegionOps timerblock_ops =3D {</div>
+<div>@@ -200,7 &#43;200,7 @@ static const MemoryRegionOps timerblock_ops =
+=3D {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 4,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 4,</div>
+<div>&nbsp; &nbsp; &nbsp;},</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp;};</div>
+<div>&nbsp;</div>
+<div>&nbsp;static void timerblock_reset(TimerBlock *tb)</div>
+<div>diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c</div>
+<div>index f0a7534..22ce3ff 100644</div>
+<div>--- a/hw/timer/arm_timer.c</div>
+<div>&#43;&#43;&#43; b/hw/timer/arm_timer.c</div>
+<div>@@ -265,7 &#43;265,7 @@ static void sp804_write(void *opaque, hwaddr o=
+ffset,</div>
+<div>&nbsp;static const MemoryRegionOps sp804_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D sp804_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D sp804_write,</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp;};</div>
+<div>&nbsp;</div>
+<div>&nbsp;static const VMStateDescription vmstate_sp804 =3D {</div>
+<div>@@ -346,7 &#43;346,7 @@ static void icp_pit_write(void *opaque, hwaddr=
+ offset,</div>
+<div>&nbsp;static const MemoryRegionOps icp_pit_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D icp_pit_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D icp_pit_write,</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp;};</div>
+<div>&nbsp;</div>
+<div>&nbsp;static void icp_pit_init(Object *obj)</div>
+<div>diff --git a/hw/timer/armv7m_systick.c b/hw/timer/armv7m_systick.c</di=
 v>
-<div>index 01a29ba..7eeb78c 100644</div>
-<div>--- a/include/exec/cpu-common.h</div>
-<div>&#43;&#43;&#43; b/include/exec/cpu-common.h</div>
-<div>@@ -18,14 &#43;18,6 @@ void tcg_flush_softmmu_tlb(CPUState *cs);</div>
+<div>index 9464074..3c34fd0 100644</div>
+<div>--- a/hw/timer/armv7m_systick.c</div>
+<div>&#43;&#43;&#43; b/hw/timer/armv7m_systick.c</div>
+<div>@@ -191,7 &#43;191,7 @@ static MemTxResult systick_write(void *opaque,=
+ hwaddr addr,</div>
+<div>&nbsp;static const MemoryRegionOps systick_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read_with_attrs =3D systick_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write_with_attrs =3D systick_write,</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp; &nbsp; &nbsp;.valid.min_access_size =3D 4,</div>
+<div>&nbsp; &nbsp; &nbsp;.valid.max_access_size =3D 4,</div>
+<div>&nbsp;};</div>
+<div>diff --git a/hw/timer/aspeed_rtc.c b/hw/timer/aspeed_rtc.c</div>
+<div>index 19f061c..c528e47 100644</div>
+<div>--- a/hw/timer/aspeed_rtc.c</div>
+<div>&#43;&#43;&#43; b/hw/timer/aspeed_rtc.c</div>
+<div>@@ -130,7 &#43;130,7 @@ static void aspeed_rtc_reset(DeviceState *d)</=
+div>
+<div>&nbsp;static const MemoryRegionOps aspeed_rtc_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D aspeed_rtc_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D aspeed_rtc_write,</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp;};</div>
 <div>&nbsp;</div>
-<div>&nbsp;#include &quot;exec/memop.h&quot;</div>
+<div>&nbsp;static const VMStateDescription vmstate_aspeed_rtc =3D {</div>
+<div>diff --git a/hw/timer/cadence_ttc.c b/hw/timer/cadence_ttc.c</div>
+<div>index 115d935..d422efe 100644</div>
+<div>--- a/hw/timer/cadence_ttc.c</div>
+<div>&#43;&#43;&#43; b/hw/timer/cadence_ttc.c</div>
+<div>@@ -389,7 &#43;389,7 @@ static void cadence_ttc_write(void *opaque, hw=
+addr offset,</div>
+<div>&nbsp;static const MemoryRegionOps cadence_ttc_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D cadence_ttc_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D cadence_ttc_write,</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp;};</div>
 <div>&nbsp;</div>
-<div>-enum device_endian {</div>
-<div>-#ifdef NEED_CPU_H</div>
-<div>- &nbsp; &nbsp;DEVICE_NATIVE_ENDIAN =3D MO_TE,</div>
-<div>-#endif</div>
-<div>- &nbsp; &nbsp;DEVICE_BIG_ENDIAN =3D MO_BE,</div>
-<div>- &nbsp; &nbsp;DEVICE_LITTLE_ENDIAN =3D MO_LE,</div>
-<div>-};</div>
-<div>-</div>
-<div>&nbsp;#if defined(HOST_WORDS_BIGENDIAN)</div>
-<div>&nbsp;#define DEVICE_HOST_ENDIAN MO_BE</div>
-<div>&nbsp;#else</div>
+<div>&nbsp;static void cadence_timer_reset(CadenceTimerState *s)</div>
+<div>diff --git a/hw/timer/grlib_gptimer.c b/hw/timer/grlib_gptimer.c</div>
+<div>index e45a490..dc3b028 100644</div>
+<div>--- a/hw/timer/grlib_gptimer.c</div>
+<div>&#43;&#43;&#43; b/hw/timer/grlib_gptimer.c</div>
+<div>@@ -313,7 &#43;313,7 @@ static void grlib_gptimer_write(void *opaque, =
+hwaddr addr,</div>
+<div>&nbsp;static const MemoryRegionOps grlib_gptimer_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D grlib_gptimer_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D grlib_gptimer_write,</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_BIG_ENDIAN,</div>
+<div>&nbsp; &nbsp; &nbsp;.valid =3D {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 4,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 4,</div>
+<div>diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c</div>
+<div>index 41024f3..8268b24 100644</div>
+<div>--- a/hw/timer/hpet.c</div>
+<div>&#43;&#43;&#43; b/hw/timer/hpet.c</div>
+<div>@@ -675,7 &#43;675,7 @@ static const MemoryRegionOps hpet_ram_ops =3D =
+{</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 4,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 4,</div>
+<div>&nbsp; &nbsp; &nbsp;},</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp;};</div>
+<div>&nbsp;</div>
+<div>&nbsp;static void hpet_reset(DeviceState *d)</div>
+<div>diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c</div>
+<div>index 7a88316..a87dc06 100644</div>
+<div>--- a/hw/timer/imx_epit.c</div>
+<div>&#43;&#43;&#43; b/hw/timer/imx_epit.c</div>
+<div>@@ -282,7 &#43;282,7 @@ static void imx_epit_cmp(void *opaque)</div>
+<div>&nbsp;static const MemoryRegionOps imx_epit_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D imx_epit_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D imx_epit_write,</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp;};</div>
+<div>&nbsp;</div>
+<div>&nbsp;static const VMStateDescription vmstate_imx_timer_epit =3D {</di=
+v>
+<div>diff --git a/hw/timer/imx_gpt.c b/hw/timer/imx_gpt.c</div>
+<div>index 3086c03..4eca249 100644</div>
+<div>--- a/hw/timer/imx_gpt.c</div>
+<div>&#43;&#43;&#43; b/hw/timer/imx_gpt.c</div>
+<div>@@ -474,7 &#43;474,7 @@ static void imx_gpt_timeout(void *opaque)</div=
+>
+<div>&nbsp;static const MemoryRegionOps imx_gpt_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D imx_gpt_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D imx_gpt_write,</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp;};</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>diff --git a/hw/timer/lm32_timer.c b/hw/timer/lm32_timer.c</div>
+<div>index 6ce876c..88d2ee0 100644</div>
+<div>--- a/hw/timer/lm32_timer.c</div>
+<div>&#43;&#43;&#43; b/hw/timer/lm32_timer.c</div>
+<div>@@ -144,7 &#43;144,7 @@ static void timer_write(void *opaque, hwaddr a=
+ddr,</div>
+<div>&nbsp;static const MemoryRegionOps timer_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D timer_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D timer_write,</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_BIG_ENDIAN,</div>
+<div>&nbsp; &nbsp; &nbsp;.valid =3D {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 4,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 4,</div>
+<div>diff --git a/hw/timer/milkymist-sysctl.c b/hw/timer/milkymist-sysctl.c=
+</div>
+<div>index a9d2508..c1d715f 100644</div>
+<div>--- a/hw/timer/milkymist-sysctl.c</div>
+<div>&#43;&#43;&#43; b/hw/timer/milkymist-sysctl.c</div>
+<div>@@ -220,7 &#43;220,7 @@ static const MemoryRegionOps sysctl_mmio_ops =
+=3D {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 4,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 4,</div>
+<div>&nbsp; &nbsp; &nbsp;},</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_BIG_ENDIAN,</div>
+<div>&nbsp;};</div>
+<div>&nbsp;</div>
+<div>&nbsp;static void timer0_hit(void *opaque)</div>
+<div>diff --git a/hw/timer/mss-timer.c b/hw/timer/mss-timer.c</div>
+<div>index 6add47a..26a51f1 100644</div>
+<div>--- a/hw/timer/mss-timer.c</div>
+<div>&#43;&#43;&#43; b/hw/timer/mss-timer.c</div>
+<div>@@ -197,7 &#43;197,7 @@ timer_write(void *opaque, hwaddr offset,</div>
+<div>&nbsp;static const MemoryRegionOps timer_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D timer_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D timer_write,</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp; &nbsp; &nbsp;.valid =3D {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 1,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 4</div>
+<div>diff --git a/hw/timer/pl031.c b/hw/timer/pl031.c</div>
+<div>index 1a7e2ee..62b0fab 100644</div>
+<div>--- a/hw/timer/pl031.c</div>
+<div>&#43;&#43;&#43; b/hw/timer/pl031.c</div>
+<div>@@ -175,7 &#43;175,7 @@ static void pl031_write(void * opaque, hwaddr =
+offset,</div>
+<div>&nbsp;static const MemoryRegionOps pl031_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D pl031_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D pl031_write,</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp;};</div>
+<div>&nbsp;</div>
+<div>&nbsp;static void pl031_init(Object *obj)</div>
+<div>diff --git a/hw/timer/stm32f2xx_timer.c b/hw/timer/stm32f2xx_timer.c</=
+div>
+<div>index 4c49dc4..ecfcdad 100644</div>
+<div>--- a/hw/timer/stm32f2xx_timer.c</div>
+<div>&#43;&#43;&#43; b/hw/timer/stm32f2xx_timer.c</div>
+<div>@@ -265,7 &#43;265,7 @@ static void stm32f2xx_timer_write(void *opaque=
+, hwaddr offset,</div>
+<div>&nbsp;static const MemoryRegionOps stm32f2xx_timer_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D stm32f2xx_timer_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D stm32f2xx_timer_write,</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp;};</div>
+<div>&nbsp;</div>
+<div>&nbsp;static const VMStateDescription vmstate_stm32f2xx_timer =3D {</d=
+iv>
+<div>diff --git a/hw/timer/sun4v-rtc.c b/hw/timer/sun4v-rtc.c</div>
+<div>index ba62adc..6b7ca75 100644</div>
+<div>--- a/hw/timer/sun4v-rtc.c</div>
+<div>&#43;&#43;&#43; b/hw/timer/sun4v-rtc.c</div>
+<div>@@ -48,7 &#43;48,7 @@ static void sun4v_rtc_write(void *opaque, hwaddr=
+ addr,</div>
+<div>&nbsp;static const MemoryRegionOps sun4v_rtc_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D sun4v_rtc_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D sun4v_rtc_write,</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_BIG_ENDIAN,</div>
+<div>&nbsp;};</div>
+<div>&nbsp;</div>
+<div>&nbsp;void sun4v_rtc_init(hwaddr addr)</div>
 <div>--&nbsp;</div>
 <div>1.8.3.1</div>
 <div><br>
@@ -225,4 +752,4 @@ v>
 </body>
 </html>
 
---_000_156594105019781674btcom_--
+--_000_156594097228731476btcom_--

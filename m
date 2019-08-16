@@ -1,74 +1,75 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp487447wrs;
-        Fri, 16 Aug 2019 00:50:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw4eo7LwViVynGTjfQ2lW/n/Os92j8Ntt3ZpElb01PJWBAKLu0JCdBI5RdWZAxkiis5ItW5
-X-Received: by 2002:aed:3b9d:: with SMTP id r29mr7590024qte.122.1565941816584;
-        Fri, 16 Aug 2019 00:50:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565941816; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp487772wrs;
+        Fri, 16 Aug 2019 00:50:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzHPuRVjJFoXN4pUN7Ayx/Q9SerQ8b9jb9dcI6vopzB+oWywjkuxu8Io+K+klhgTa/4s1eK
+X-Received: by 2002:a17:906:af82:: with SMTP id mj2mr7818943ejb.25.1565941848135;
+        Fri, 16 Aug 2019 00:50:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565941848; cv=none;
         d=google.com; s=arc-20160816;
-        b=jt3SNb8ALnabczi0P4t29WBcyd7It/3r3HIvKm/JwmXrkEJbQojbvSYH4sQcEk1hYE
-         XcEirwfS29kjkfL9Fc3u7vPoDAo2YY2ZeXFD8L448Xi9HIKpQ43hssDlE8s/6Xc+Xthc
-         1DIf8YOYK7ozV//Y0R9NK36Jl3Ogaf+1C70YhRuoYnTdfX/+0kKRj61X/u/SHQwuX96Q
-         yq3+jFMTPdeqv4kwK87t/7fHrGV8Xh0ePWu7/Ahvy1kXJJ35n/YU2qGPKSpKHk0/AAq8
-         hvOYBioNoy7fgS4/jHECWzYbDFrrF6j+iLLEmdyAoxTyb0vw9ZJYqpXW7l52fXh2WZGA
-         WRlw==
+        b=xj1S4L4+Fa79KBghK1IKOBgQAexiqPYlx6cNw5Vvgxa4T/DjJwjWJqPWeNVQ2EIjDE
+         KaoTwjMnRqZZzHgVgeaVYuJJ48QKNGt+K1ubzD/IJ2xP1/iCQSkEhG81gPPr8lKnfp91
+         dEL7/jvFWPwflW2QQESLmC2x4BaD+tSOiHZ/JE8FASIF6wf2v4lnFnWvYVwqV4TOQXfX
+         o1ft6nvIhk2lAldaa+4ZWWrNmTqgti3Md6C8LRVyQ+eu4IfWlHLt/CsOKSDakivWX/mB
+         eWh9tIE/gMsuPLFrDP4IcIsd9JGjrcDiYft2vEsj2lTyJOyX1NE7XEm4my3TtY05hudk
+         57YA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-language:accept-language:in-reply-to:references:message-id
          :date:thread-index:thread-topic:to:from;
-        bh=t2dy4AZPdnF5nZqgHSAsifEMK5eF2kG5ayVqNP7C12I=;
-        b=NFtxOy3ZHst4o7FNW9i9bxyFBOCDsB6zEsjgkOTeCFkMudpr6QHKIhG+luLZ+gvXc1
-         ntsT48M2F563eS/6ZzKTk07D243czXI0wYAc9/A8hgYmkpttuMFapBGqjp7jvM5u2zl5
-         88gA3j7hAGlTTipQlzmJNB3Pbww+1Vri/8BPNWk+LRI+hsn0QyFnocmT6FNzcJKHNDEs
-         u+cO2/4WAH6L/OVRGpVwc0jgRaSd2FC2KRpZzogW6WUzK27wePqeEvFdqAYPaYFQMHOi
-         6QL4KbihfjBfitJsctXh+r1n2QeqfPhMfeUA218dPuOrx6rMVQ44pDz8fSE/R99r7PIF
-         iVJQ==
+        bh=TKB7Clzh5nt+6XSEEyJsyWfnuPqQyzc79cIo0264dRM=;
+        b=pTOyB1AamAAmoGD481UmvL+yzQAcWBiSsxduuDx5kUhUwNk9EhZgfytokNPTPtaALg
+         tmmtps+gTnw4ALzOr4TeGRERs6M7H8LL5aQ+gokgVHNZdqG/ZB2bCCNKLgc7jVxHBBjh
+         xd0icOz7kYJvkOYoJ63yN6Z9Cok8xaFWXXNy6Qu8AXSAIiL8ts7xGz07/MV6VnAanan7
+         gSwEbS1aWbM8ezUViS8bCA/hmYUxVxBemG7tX/3hCl0+iCMUOlUPgYjDkxOCpXSY1nD6
+         nKPl2IKAISw+I6uS+PHxdWrWTT4GvO4Og6OgXjixaesLoOgLMXB/otIzr6TetatLzRI6
+         NK5g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x9si2941228qkf.294.2019.08.16.00.50.16
+        by mx.google.com with ESMTPS id a22si2447821eje.295.2019.08.16.00.50.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2019 00:50:16 -0700 (PDT)
+        Fri, 16 Aug 2019 00:50:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:50906 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50926 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyX03-0008QD-EI
-	for alex.bennee@linaro.org; Fri, 16 Aug 2019 03:50:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38635)
+	id 1hyX0Y-0000nl-Fw
+	for alex.bennee@linaro.org; Fri, 16 Aug 2019 03:50:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40052)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tony.nguyen@bt.com>) id 1hyWia-0005w4-Kb
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:32:15 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hyWm5-0000gX-Ih
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:35:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hyWiY-0008DV-FL
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:32:12 -0400
-Received: from smtpe1.intersmtp.com ([62.239.224.235]:24536)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (envelope-from <tony.nguyen@bt.com>) id 1hyWm3-00024K-ML
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:35:49 -0400
+Received: from smtpe1.intersmtp.com ([213.121.35.74]:18152)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hyWiY-0008D9-3X; Fri, 16 Aug 2019 03:32:10 -0400
+ id 1hyWlp-0001aL-Sc; Fri, 16 Aug 2019 03:35:34 -0400
 Received: from tpw09926dag18h.domain1.systemhost.net (10.9.212.42) by
- RDW083A011ED67.bt.com (10.187.98.37) with Microsoft SMTP Server (TLS) id
- 14.3.439.0; Fri, 16 Aug 2019 08:38:04 +0100
+ BWP09926079.bt.com (10.36.82.110) with Microsoft SMTP Server (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Fri, 16
+ Aug 2019 08:35:09 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
  tpw09926dag18h.domain1.systemhost.net (10.9.212.42) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Fri, 16 Aug 2019 08:32:08 +0100
+ Server (TLS) id 15.0.1395.4; Fri, 16 Aug 2019 08:35:32 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Fri, 16 Aug
- 2019 08:32:07 +0100
+ 2019 08:35:32 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v7 16/42] hw/block: Declare device little or
+Thread-Topic: [Qemu-devel] [PATCH v7 28/42] hw/sd: Declare device little or
  big endian
-Thread-Index: AQHVVAS1mlCetuz0Fk22qyLvVwHGDQ==
-Date: Fri, 16 Aug 2019 07:32:07 +0000
-Message-ID: <1565940726874.70853@bt.com>
+Thread-Index: AQHVVAUvP5PxM0NZ6Eazlk4TnnbK6w==
+Date: Fri, 16 Aug 2019 07:35:32 +0000
+Message-ID: <1565940931091.42373@bt.com>
 References: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
 In-Reply-To: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
 Accept-Language: en-AU, en-GB, en-US
@@ -78,12 +79,11 @@ X-MS-TNEF-Correlator:
 x-ms-exchange-messagesentrepresentingtype: 1
 x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.40]
-Content-Type: multipart/alternative; boundary="_000_156594072687470853btcom_"
+Content-Type: multipart/alternative; boundary="_000_156594093109142373btcom_"
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 62.239.224.235
-Subject: [Qemu-arm] [Qemu-devel] [PATCH v7 16/42] hw/block: Declare device
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 213.121.35.74
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v7 28/42] hw/sd: Declare device
  little or big endian
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -125,9 +125,9 @@ Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
  pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k/y4ft9sS1BH
+X-TUID: 9mysk0rI5ele
 
---_000_156594072687470853btcom_
+--_000_156594093109142373btcom_
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
@@ -148,29 +148,29 @@ better =3D)
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
 ---
- hw/block/onenand.c | 2 +-
+ hw/sd/pl181.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/block/onenand.c b/hw/block/onenand.c
-index b3644f7..66152e7 100644
---- a/hw/block/onenand.c
-+++ b/hw/block/onenand.c
-@@ -769,7 +769,7 @@ static void onenand_write(void *opaque, hwaddr addr,
- static const MemoryRegionOps onenand_ops =3D {
-     .read =3D onenand_read,
-     .write =3D onenand_write,
+diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
+index 81b406d..f2027aa 100644
+--- a/hw/sd/pl181.c
++++ b/hw/sd/pl181.c
+@@ -449,7 +449,7 @@ static void pl181_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps pl181_ops =3D {
+     .read =3D pl181_read,
+     .write =3D pl181_write,
 -    .endianness =3D DEVICE_NATIVE_ENDIAN,
 +    .endianness =3D DEVICE_LITTLE_ENDIAN,
  };
 
- static void onenand_realize(DeviceState *dev, Error **errp)
+ static void pl181_reset(DeviceState *d)
 --
 1.8.3.1
 
 ?
 
 
---_000_156594072687470853btcom_
+--_000_156594093109142373btcom_
 Content-Type: text/html; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
@@ -186,10 +186,7 @@ der-left-width: 2px; border-left-style: solid; border-left-color: rgb(128, =
 <body dir=3D"ltr" style=3D"font-size:12pt;color:#000000;background-color:#F=
 FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
 <p></p>
-<div style=3D"color: rgb(33, 33, 33);"><font size=3D"2"><span style=3D"font=
--size:10pt;">
-<div class=3D"PlainText">
-<div><span style=3D"font-size: 10pt;">For each device declared with DEVICE_=
+<div><span style=3D"font-size: 12pt;">For each device declared with DEVICE_=
 NATIVE_ENDIAN, find the set of</span><br>
 </div>
 <div>targets from the set of target/hw/*/device.o.</div>
@@ -218,34 +215,32 @@ div>
 </div>
 <div>Signed-off-by: Tony Nguyen &lt;tony.nguyen@bt.com&gt;</div>
 <div>---</div>
-<div>&nbsp;hw/block/onenand.c | 2 &#43;-</div>
+<div>&nbsp;hw/sd/pl181.c | 2 &#43;-</div>
 <div>&nbsp;1 file changed, 1 insertion(&#43;), 1 deletion(-)</div>
 <div><br>
 </div>
-<div>diff --git a/hw/block/onenand.c b/hw/block/onenand.c</div>
-<div>index b3644f7..66152e7 100644</div>
-<div>--- a/hw/block/onenand.c</div>
-<div>&#43;&#43;&#43; b/hw/block/onenand.c</div>
-<div>@@ -769,7 &#43;769,7 @@ static void onenand_write(void *opaque, hwaddr=
- addr,</div>
-<div>&nbsp;static const MemoryRegionOps onenand_ops =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;.read =3D onenand_read,</div>
-<div>&nbsp; &nbsp; &nbsp;.write =3D onenand_write,</div>
+<div>diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c</div>
+<div>index 81b406d..f2027aa 100644</div>
+<div>--- a/hw/sd/pl181.c</div>
+<div>&#43;&#43;&#43; b/hw/sd/pl181.c</div>
+<div>@@ -449,7 &#43;449,7 @@ static void pl181_write(void *opaque, hwaddr o=
+ffset,</div>
+<div>&nbsp;static const MemoryRegionOps pl181_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D pl181_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D pl181_write,</div>
 <div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
 <div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
 <div>&nbsp;};</div>
 <div>&nbsp;</div>
-<div>&nbsp;static void onenand_realize(DeviceState *dev, Error **errp)</div=
->
+<div>&nbsp;static void pl181_reset(DeviceState *d)</div>
 <div>--&nbsp;</div>
 <div>1.8.3.1</div>
 <div><br>
 &#8203;<br>
 </div>
-<br>
-</div>
-</span></font></div>
+<p><br>
+</p>
 </body>
 </html>
 
---_000_156594072687470853btcom_--
+--_000_156594093109142373btcom_--

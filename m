@@ -1,76 +1,75 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp505249wrs;
-        Fri, 16 Aug 2019 01:13:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxNNcL3ZwTfWVvz+z0LWPOPWOXFZrYy80qnYpUfUbKq+JjhGbC/Q4p0w56o84LHe8bZiigu
-X-Received: by 2002:ac8:3378:: with SMTP id u53mr7293009qta.318.1565943192968;
-        Fri, 16 Aug 2019 01:13:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565943192; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp506678wrs;
+        Fri, 16 Aug 2019 01:15:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxk5riwFWLuHI6E6Q4ZjxI3WmTZWwEdYq9GZLK5KBiPuIelbRcOnOk4YLtE+6c6mqBdkmE6
+X-Received: by 2002:a17:906:3518:: with SMTP id r24mr8036979eja.133.1565943311352;
+        Fri, 16 Aug 2019 01:15:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565943311; cv=none;
         d=google.com; s=arc-20160816;
-        b=ETQ+rXuLz9j93QFQN6nLlyJDwDasIchHfHEvH/2JKcCtbUTcMJuB3VvR4EeHPCKdKR
-         GfIB0uok1pe0xalryLubEnH9DpL0PgoWNu3rCjcwzECUaH3iy+aCaypduejGLEvjLKf4
-         hbPmmzZNrLk5XkXV+o9pXxaSeRzpIFCKctbE9/bC2HFrA3ihZhf/zaejqxGEOKb7jyx+
-         YhZ6dqU/TgkohBb5bEXrrm0e9luSFTti84DspMmVdu0YHPhJYMwz5UNEE3uNY9OcfeXK
-         XzVUTMBF34Wp2hJTODVhGC9uZlJK+fDaf2HAnH+xy2EyGbwBAZ9LcNAFjLrdqxyla3Qs
-         wrlQ==
+        b=OIrtoc9UGEGFbu1XTH08k9RSanGTUIxC/Hp7D2A0bu+WzDt4lEk15hIp8TPVFEf362
+         nzDfSGfkV21gPNaf7Tyug7cfSpGP4Myazp0MaW3Y7CtQzBXl5jCEQWeFghrhRaLGx20P
+         s3MAL+2vBEZ9/Vkw0lGTtC1DLroccv//Fy/t+s8/Sh1VdZLd2U4NJR2gxFHJOfIRkPHy
+         +LQStowb6bJm45teGabWWB7IzyKHEwVxQtAbX2gvp3JfMb+JTYVU47GDPo2xGmxkds6i
+         MZOrYIORydWPf9eVMHBNGa9A+1Vrd6dtbEYcqLO1d1jLNr6G6QQPfXKRFuEdogd+ugte
+         q0QA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:to:from;
-        bh=bOkqyqun4u6j9ZSN29iUm6kx6Kwi0xfePXqnesBerB4=;
-        b=psjQj9ZkMD4z2IGPVHmqNkfB9dvuMNM7vEIRrQ5YaG7rPHOEXZg+VcILWI/1pS3++B
-         aA1dto5nQ93GvbliWxG+oFytd3IgxkG0qzu2upPM0ZQ7CpSq73LUQTEKvL8atXL1wGnG
-         lHkxwL155xhClBvG9BIohHY59/IB+CaUL4N4RC7VoPC5KVBPVX5NKPUhBzEqo2NLk6Dj
-         nsdBOwUb2LIDoyz506/1aY16w83VAmELntEMnFv5rbCM8f9LQaw2HNQLgJA2KyotATPe
-         mkptc9tQnDqJSn7hcla2ZfpeQCdSAmd0+zjYQ/Ss/CDuMCJ9M9nRcHjynv6rMTseeVlb
-         6/sw==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-language:accept-language:in-reply-to:references:message-id
+         :date:thread-index:thread-topic:to:from;
+        bh=MeF9rARXE0bU16APZ9SFfuRfOeiP6XP7iM9i4Z1o4aU=;
+        b=sGg8TRVHoGXPePZIKwNN9Hh82AWQ07pgpEaENNG6lyjqN9hZyTR2Kav2BiozON4obK
+         ppkwjRLaDKBS075o/d6fiF0VdHr1yiZld0iKXDzBIvIt4oIr3ekP7QvzTfUsVYQh1S/L
+         WJa32affF+xVHxOkMbZvwoLPs4DE3wJOV4AVoMXQCAe5JCLjIjwKpI7LXoot9vVkejtC
+         Zm2Oyr7lQZolS4fGMUnkxqpmngbqrL5g/Wzx6uic82tyyQ/FbH4HQyMUAHaOqyHqYucR
+         EcO9sOpnQ5j14Zsfb5IZy61K50OmCqEEKGjDR2UYSrRK6aLJPy6I+EyNXExGHoussIpR
+         z/dw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r31si3425895qvj.172.2019.08.16.01.13.12
+        by mx.google.com with ESMTPS id q34si3168031edd.242.2019.08.16.01.15.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2019 01:13:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 16 Aug 2019 01:15:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:51464 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51522 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyXMG-0006ac-54
-	for alex.bennee@linaro.org; Fri, 16 Aug 2019 04:13:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41660)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hyXOA-00018g-8M
+	for alex.bennee@linaro.org; Fri, 16 Aug 2019 04:15:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41223)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tony.nguyen@bt.com>) id 1hyWqg-0006If-Fa
- for qemu-devel@nongnu.org; Fri, 16 Aug 2019 03:40:38 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hyWpn-000580-QM
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:39:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hyWqc-0004Kv-IK
- for qemu-devel@nongnu.org; Fri, 16 Aug 2019 03:40:34 -0400
-Received: from smtpe1.intersmtp.com ([213.121.35.71]:11218)
+ (envelope-from <tony.nguyen@bt.com>) id 1hyWpl-0003wT-9t
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:39:39 -0400
+Received: from smtpe1.intersmtp.com ([213.121.35.73]:57038)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hyWq6-00045I-V1; Fri, 16 Aug 2019 03:39:59 -0400
-Received: from tpw09926dag18g.domain1.systemhost.net (10.9.212.34) by
- BWP09926076.bt.com (10.36.82.107) with Microsoft SMTP Server (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Fri, 16
- Aug 2019 08:39:33 +0100
+ id 1hyWpH-0003kD-Uf; Fri, 16 Aug 2019 03:39:09 -0400
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18g.domain1.systemhost.net (10.9.212.34) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Fri, 16 Aug 2019 08:39:56 +0100
+ BWP09926078.bt.com (10.36.82.109) with Microsoft SMTP Server (version=TLS1_2, 
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Fri, 16
+ Aug 2019 08:38:24 +0100
+Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
+ tpw09926dag18e.domain1.systemhost.net (10.9.212.18) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Fri, 16 Aug 2019 08:39:03 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Fri, 16 Aug
- 2019 08:39:57 +0100
+ 2019 08:39:02 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v7 42/42] target/sparc: sun4u Invert Endian
- TTE bit
-Thread-Index: AQHVVAXNVmglh/lbAUq8ZFx4atJssA==
-Date: Fri, 16 Aug 2019 07:39:56 +0000
-Message-ID: <1565941195999.79315@bt.com>
+Thread-Topic: [Qemu-devel] [PATCH v7 39/42] cpu: TLB_FLAGS_MASK bit to force
+ memory slow path
+Thread-Index: AQHVVAWsMfsKVzhS+Ue77pCSWfbQRg==
+Date: Fri, 16 Aug 2019 07:39:02 +0000
+Message-ID: <1565941141889.65814@bt.com>
 References: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
 In-Reply-To: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
 Accept-Language: en-AU, en-GB, en-US
@@ -80,25 +79,23 @@ X-MS-TNEF-Correlator:
 x-ms-exchange-messagesentrepresentingtype: 1
 x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.40]
+Content-Type: multipart/alternative; boundary="_000_156594114188965814btcom_"
 MIME-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 213.121.35.71
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-X-Content-Filtered-By: Mailman/MimeDel 2.1.23
-Subject: [Qemu-devel] [PATCH v7 42/42] target/sparc: sun4u Invert Endian TTE
- bit
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 213.121.35.73
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v7 39/42] cpu: TLB_FLAGS_MASK bit to
+ force memory slow path
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
  arikalo@wavecomp.com, pasic@linux.ibm.com, hpoussin@reactos.org,
  anthony.perard@citrix.com, xen-devel@lists.xenproject.org, lersek@redhat.com,
@@ -109,100 +106,154 @@ Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
  laurent@vivier.eu, sundeep.lkml@gmail.com, michael@walle.cc,
  qemu-ppc@nongnu.org, kbastian@mail.uni-paderborn.de, imammedo@redhat.com,
  fam@euphon.net, peter.maydell@linaro.org, david@redhat.com, palmer@sifive.com,
- keith.busch@intel.com, jcmvbkbc@gmail.com, hare@suse.com,
+ balaton@eik.bme.hu, keith.busch@intel.com, jcmvbkbc@gmail.com, hare@suse.com,
  sstabellini@kernel.org, andrew.smirnov@gmail.com, deller@gmx.de,
- magnus.damm@gmail.com, atar4qemu@gmail.com, minyard@acm.org, sw@weilnetz.de,
- yuval.shaia@oracle.com, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- jan.kiszka@web.de, clg@kaod.org, shorne@gmail.com, qemu-riscv@nongnu.org,
- i.mitsyanko@gmail.com, cohuck@redhat.com, philmd@redhat.com,
- amarkovic@wavecomp.com, peter.chubb@nicta.com.au, aurelien@aurel32.net,
- pburton@wavecomp.com, sagark@eecs.berkeley.edu, green@moxielogic.com,
- kraxel@redhat.com, edgar.iglesias@gmail.com, gxt@mprc.pku.edu.cn,
- robh@kernel.org, borntraeger@de.ibm.com, joel@jms.id.au,
- antonynpavlov@gmail.com, chouteau@adacore.com, Andrew.Baumann@microsoft.com,
+ magnus.damm@gmail.com, marcel.apfelbaum@gmail.com, atar4qemu@gmail.com,
+ minyard@acm.org, sw@weilnetz.de, yuval.shaia@oracle.com, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, jan.kiszka@web.de, clg@kaod.org, shorne@gmail.com,
+ qemu-riscv@nongnu.org, i.mitsyanko@gmail.com, cohuck@redhat.com,
+ philmd@redhat.com, amarkovic@wavecomp.com, peter.chubb@nicta.com.au,
+ aurelien@aurel32.net, pburton@wavecomp.com, sagark@eecs.berkeley.edu,
+ green@moxielogic.com, kraxel@redhat.com, gxt@mprc.pku.edu.cn, robh@kernel.org,
+ borntraeger@de.ibm.com, joel@jms.id.au, antonynpavlov@gmail.com,
+ chouteau@adacore.com, balrogg@gmail.com, Andrew.Baumann@microsoft.com,
  mreitz@redhat.com, walling@linux.ibm.com, dmitry.fleytman@gmail.com,
  mst@redhat.com, mark.cave-ayland@ilande.co.uk, jslaby@suse.cz, marex@denx.de,
  proljc@gmail.com, marcandre.lureau@redhat.com, alistair@alistair23.me,
  paul.durrant@citrix.com, david@gibson.dropbear.id.au,
  xiaoguangrong.eric@gmail.com, huth@tuxfamily.org, jcd@tribudubois.net,
  pbonzini@redhat.com, stefanb@linux.ibm.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AyDBkXKmsvPG
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LhiiuC7yqppf
 
-This bit configures endianness of PCI MMIO devices. It is used by
-Solaris and OpenBSD sunhme drivers.
+--_000_156594114188965814btcom_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-Tested working on OpenBSD.
+The fast path is taken when TLB_FLAGS_MASK is all zero.
 
-Unfortunately Solaris 10 had a unrelated keyboard issue blocking
-testing... another inch towards Solaris 10 on SPARC64 =3D)
+TLB_FORCE_SLOW is simply a TLB_FLAGS_MASK bit to force the slow path,
+there are no other side effects.
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Tested-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 ---
- target/sparc/cpu.h        | 2 ++
- target/sparc/mmu_helper.c | 8 +++++++-
- 2 files changed, 9 insertions(+), 1 deletion(-)
+ include/exec/cpu-all.h | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-index 1406f0b..c6bafa8 100644
---- a/target/sparc/cpu.h
-+++ b/target/sparc/cpu.h
-@@ -275,6 +275,7 @@ enum {
+diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
+index 536ea58..e496f99 100644
+--- a/include/exec/cpu-all.h
++++ b/include/exec/cpu-all.h
+@@ -331,12 +331,18 @@ CPUArchState *cpu_copy(CPUArchState *env);
+ #define TLB_MMIO            (1 << (TARGET_PAGE_BITS - 3))
+ /* Set if TLB entry must have MMU lookup repeated for every access */
+ #define TLB_RECHECK         (1 << (TARGET_PAGE_BITS - 4))
++/* Set if TLB entry must take the slow path.  */
++#define TLB_FORCE_SLOW      (1 << (TARGET_PAGE_BITS - 5))
 
- #define TTE_VALID_BIT       (1ULL << 63)
- #define TTE_NFO_BIT         (1ULL << 60)
-+#define TTE_IE_BIT          (1ULL << 59)
- #define TTE_USED_BIT        (1ULL << 41)
- #define TTE_LOCKED_BIT      (1ULL <<  6)
- #define TTE_SIDEEFFECT_BIT  (1ULL <<  3)
-@@ -291,6 +292,7 @@ enum {
+ /* Use this mask to check interception with an alignment mask
+  * in a TCG backend.
+  */
+-#define TLB_FLAGS_MASK  (TLB_INVALID_MASK | TLB_NOTDIRTY | TLB_MMIO \
+-                         | TLB_RECHECK)
++#define TLB_FLAGS_MASK \
++    (TLB_INVALID_MASK  \
++     | TLB_NOTDIRTY    \
++     | TLB_MMIO        \
++     | TLB_RECHECK     \
++     | TLB_FORCE_SLOW)
 
- #define TTE_IS_VALID(tte)   ((tte) & TTE_VALID_BIT)
- #define TTE_IS_NFO(tte)     ((tte) & TTE_NFO_BIT)
-+#define TTE_IS_IE(tte)      ((tte) & TTE_IE_BIT)
- #define TTE_IS_USED(tte)    ((tte) & TTE_USED_BIT)
- #define TTE_IS_LOCKED(tte)  ((tte) & TTE_LOCKED_BIT)
- #define TTE_IS_SIDEEFFECT(tte) ((tte) & TTE_SIDEEFFECT_BIT)
-diff --git a/target/sparc/mmu_helper.c b/target/sparc/mmu_helper.c
-index 826e14b..77dc86a 100644
---- a/target/sparc/mmu_helper.c
-+++ b/target/sparc/mmu_helper.c
-@@ -537,6 +537,10 @@ static int get_physical_address_data(CPUSPARCState *en=
-v, hwaddr *physical,
-         if (ultrasparc_tag_match(&env->dtlb[i], address, context, physical=
-)) {
-             int do_fault =3D 0;
-
-+            if (TTE_IS_IE(env->dtlb[i].tte)) {
-+                attrs->byte_swap =3D true;
-+            }
-+
-             /* access ok? */
-             /* multiple bits in SFSR.FT may be set on TT_DFAULT */
-             if (TTE_IS_PRIV(env->dtlb[i].tte) && is_user) {
-@@ -792,7 +796,7 @@ void dump_mmu(CPUSPARCState *env)
-             }
-             if (TTE_IS_VALID(env->dtlb[i].tte)) {
-                 qemu_printf("[%02u] VA: %" PRIx64 ", PA: %llx"
--                            ", %s, %s, %s, %s, ctx %" PRId64 " %s\n",
-+                            ", %s, %s, %s, %s, ie %s, ctx %" PRId64 " %s\n=
-",
-                             i,
-                             env->dtlb[i].tag & (uint64_t)~0x1fffULL,
-                             TTE_PA(env->dtlb[i].tte),
-@@ -801,6 +805,8 @@ void dump_mmu(CPUSPARCState *env)
-                             TTE_IS_W_OK(env->dtlb[i].tte) ? "RW" : "RO",
-                             TTE_IS_LOCKED(env->dtlb[i].tte) ?
-                             "locked" : "unlocked",
-+                            TTE_IS_IE(env->dtlb[i].tte) ?
-+                            "yes" : "no",
-                             env->dtlb[i].tag & (uint64_t)0x1fffULL,
-                             TTE_IS_GLOBAL(env->dtlb[i].tte) ?
-                             "global" : "local");
+ /**
+  * tlb_hit_page: return true if page aligned @addr is a hit against the
 --
 1.8.3.1
 
 ?
+
+
+--_000_156594114188965814btcom_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none"><!-- P { margin-top: 0px; m=
+argin-bottom: 0px; } .EmailQuote { margin-left: 1pt; padding-left: 4pt; bor=
+der-left-width: 2px; border-left-style: solid; border-left-color: rgb(128, =
+0, 0); }--></style>
+</head>
+<body dir=3D"ltr" style=3D"font-size:12pt;color:#000000;background-color:#F=
+FFFFF;font-family:Calibri,Arial,Helvetica,sans-serif;">
+<p></p>
+<div style=3D"color: rgb(33, 33, 33);"><font size=3D"2"><span style=3D"font=
+-size:10pt;">
+<div class=3D"PlainText">
+<div><span style=3D"font-size: 10pt;">The fast path is taken when TLB_FLAGS=
+_MASK is all zero.</span><br>
+</div>
+<div><br>
+</div>
+<div>TLB_FORCE_SLOW is simply a TLB_FLAGS_MASK bit to force the slow path,<=
+/div>
+<div>there are no other side effects.</div>
+<div><br>
+</div>
+<div>Signed-off-by: Tony Nguyen &lt;tony.nguyen@bt.com&gt;</div>
+<div>Reviewed-by: Richard Henderson &lt;richard.henderson@linaro.org&gt;</d=
+iv>
+<div>---</div>
+<div>&nbsp;include/exec/cpu-all.h | 10 &#43;&#43;&#43;&#43;&#43;&#43;&#43;&=
+#43;--</div>
+<div>&nbsp;1 file changed, 8 insertions(&#43;), 2 deletions(-)</div>
+<div><br>
+</div>
+<div>diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h</div>
+<div>index 536ea58..e496f99 100644</div>
+<div>--- a/include/exec/cpu-all.h</div>
+<div>&#43;&#43;&#43; b/include/exec/cpu-all.h</div>
+<div>@@ -331,12 &#43;331,18 @@ CPUArchState *cpu_copy(CPUArchState *env);</=
+div>
+<div>&nbsp;#define TLB_MMIO &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;(1 &lt=
+;&lt; (TARGET_PAGE_BITS - 3))</div>
+<div>&nbsp;/* Set if TLB entry must have MMU lookup repeated for every acce=
+ss */</div>
+<div>&nbsp;#define TLB_RECHECK &nbsp; &nbsp; &nbsp; &nbsp; (1 &lt;&lt; (TAR=
+GET_PAGE_BITS - 4))</div>
+<div>&#43;/* Set if TLB entry must take the slow path. &nbsp;*/</div>
+<div>&#43;#define TLB_FORCE_SLOW &nbsp; &nbsp; &nbsp;(1 &lt;&lt; (TARGET_PA=
+GE_BITS - 5))</div>
+<div>&nbsp;</div>
+<div>&nbsp;/* Use this mask to check interception with an alignment mask</d=
+iv>
+<div>&nbsp; * in a TCG backend.</div>
+<div>&nbsp; */</div>
+<div>-#define TLB_FLAGS_MASK &nbsp;(TLB_INVALID_MASK | TLB_NOTDIRTY | TLB_M=
+MIO \</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; | TLB_RECHECK)</div>
+<div>&#43;#define TLB_FLAGS_MASK \</div>
+<div>&#43; &nbsp; &nbsp;(TLB_INVALID_MASK &nbsp;\</div>
+<div>&#43; &nbsp; &nbsp; | TLB_NOTDIRTY &nbsp; &nbsp;\</div>
+<div>&#43; &nbsp; &nbsp; | TLB_MMIO &nbsp; &nbsp; &nbsp; &nbsp;\</div>
+<div>&#43; &nbsp; &nbsp; | TLB_RECHECK &nbsp; &nbsp; \</div>
+<div>&#43; &nbsp; &nbsp; | TLB_FORCE_SLOW)</div>
+<div>&nbsp;</div>
+<div>&nbsp;/**</div>
+<div>&nbsp; * tlb_hit_page: return true if page aligned @addr is a hit agai=
+nst the</div>
+<div>--&nbsp;</div>
+<div>1.8.3.1</div>
+<div><br>
+&#8203;<br>
+</div>
+<br>
+</div>
+</span></font></div>
+</body>
+</html>
+
+--_000_156594114188965814btcom_--

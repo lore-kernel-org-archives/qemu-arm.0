@@ -1,482 +1,216 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp502034wrs;
-        Fri, 16 Aug 2019 01:09:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy+7BV5KB1zTaOA7AEVTmgL1gn0GmiHK19LI7M5J3txVCD4VaLCfadxQQTEScfZMt+pUe0p
-X-Received: by 2002:a05:620a:1345:: with SMTP id c5mr7496799qkl.109.1565942960192;
-        Fri, 16 Aug 2019 01:09:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565942960; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp769609wrs;
+        Fri, 16 Aug 2019 05:58:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw4TDDXQDZllsMKamQYczmlhvfYO3vxOanPQDBmdLxZru6b1oRuHZBjhzhUnPdXa8VPAbSc
+X-Received: by 2002:a17:906:e10b:: with SMTP id gj11mr9107942ejb.138.1565960321603;
+        Fri, 16 Aug 2019 05:58:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565960321; cv=none;
         d=google.com; s=arc-20160816;
-        b=SJnjXJa9mikImj4WudSX+1PywT1jFVASdV5aUTCAspWw3BIOazDJyCdRSqqUxT8Rvn
-         n2CTFll0URTw1wJsMFsWZl6s3pDWEezv5qIIKbPQWUYWlHLFf8UTfAN68vgL/cU4iCQR
-         B4aT2rOhftkvZplx21vP6JSOET/W77OL89Z2wS3FqlSxEE9Q4iuxazlnGPe6uobUSF70
-         qBIQ/rTYJBAK/1r15pYXIJqoYJEHeZ5wZdfvjWvnxULOTrCHUke3MIZNEnA1qpT4/ggE
-         q8FI3aLnuDYINKXYNG8SlkqO6Jf0w1CvCuJFoB7L72Qfe7DYcFYS1flA70m/Puk77616
-         tIiA==
+        b=s+eqxEY3YeAVaSKCdyzQZsi/HRuAtdMVLg7rzqVfs2TIesb9sG6lnymHh6IyVa+9jT
+         ewEHl+OqenmPEXviLO50cybRpXMIGL3XCqJgyc5VTxmniQrbnVdZ5m++CBIa8E6EmC5v
+         BgJi/8w7ykuMVO8YVmIRPXNboS+SZBZsQsJu2ltI79o8wRV5sFKsgLFwjRcsOkmpHxS2
+         TXF0/6ylxh0TKdFdaAGyvotyVtXnDKqaZ98AZ2RuP5s+s4V5s9dzjOD9O6T4KMUAYvxL
+         vPmlt2RzuXRrYxAv4f/pV/fEujK0BCNXD0cGHAPnQC3BNXB233DoNRKLjJ7vFVLIKuFZ
+         YNBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:to:from;
-        bh=Go3WxvV7asGo32Copwc6GH+hKkEmzK3tpZicOboUJYw=;
-        b=J1t+kmEQS5kRQZ+A5BX7+dDjMBzwON2bHiNyyG1mdtibPRGPuGCNPhp+xGkVzU7BTn
-         RYD0I3k0/D3XUEfaTQDooNXgmh7CZsNCw7BexTeigTcPVLpfBojmBas6Q/cSR1lL9qcf
-         JT0ftzUvq6Gq2TLUKZTU21dT1gVQKoTfwpU/z3gVZ0mZGLb8xSWKJt7RNtCmFUaaRctS
-         dsjKM0nJgvk9PDSAMGCejr5BQjB0AJUzylPZyHLsjofyHmlq+7MJceSJP8UiUMfBFKhZ
-         4zkL7lW31GbYxOjaxB/xzq5EGg0xPli1FMv66OX+VmsXiWse5cRpsZCZvhx2tbWnz0gr
-         7s6A==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=kiHYxixAH+hnIg9DQ+VKLaTdfWcHEjePhgVIqnM4T2g=;
+        b=tYDqZ7aESb88eHe/pW2+1itc36l4BWTkGVRMUgh5n8Z3dPS06jr0dYtmjsEseHvqnA
+         KWjQJODUbliaGKxIR4gQBh1Mp12k89TvarqW77fh2HiyFbxUpN1aluR2xHjuHKopQ6jA
+         3+xZWCR+Ch/Tqke5ANER/1A2pG9Q98aATdywNxCnxESfLEXyiYubkNXrta0CeIzEGrM4
+         uPaVdsg9jYre7TftfD/Pd07qFiX/7BD9hUx17gUVj4zC/szXLVJE4fouWhhjaLN2KvP5
+         h33zaGd25EyzSCJbdStMwrEZCqA9B6BwFeMZqSHedifqHXkLh3+eJxaQSTX/qdK41976
+         zxpw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=cK6JxAMP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x28si2962972qtk.81.2019.08.16.01.09.20
+        by mx.google.com with ESMTPS id f4si3397924edf.366.2019.08.16.05.58.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2019 01:09:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 16 Aug 2019 05:58:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:51382 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=cK6JxAMP;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55410 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyXIV-0001TH-FM
-	for alex.bennee@linaro.org; Fri, 16 Aug 2019 04:09:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41336)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hyboW-0006PB-66
+	for alex.bennee@linaro.org; Fri, 16 Aug 2019 08:58:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60924)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tony.nguyen@bt.com>) id 1hyWpz-0005M7-Qy
- for qemu-devel@nongnu.org; Fri, 16 Aug 2019 03:39:59 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hybo1-0005yO-2l
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 08:58:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hyWpr-0003zG-VZ
- for qemu-devel@nongnu.org; Fri, 16 Aug 2019 03:39:51 -0400
-Received: from smtpe1.intersmtp.com ([62.239.224.235]:15094)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hyWow-0003bx-FU; Fri, 16 Aug 2019 03:38:46 -0400
-Received: from tpw09926dag18h.domain1.systemhost.net (10.9.212.42) by
- RDW083A011ED67.bt.com (10.187.98.37) with Microsoft SMTP Server (TLS) id
- 14.3.439.0; Fri, 16 Aug 2019 08:44:40 +0100
-Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18h.domain1.systemhost.net (10.9.212.42) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Fri, 16 Aug 2019 08:38:43 +0100
-Received: from tpw09926dag18e.domain1.systemhost.net
- ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
- ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Fri, 16 Aug
- 2019 08:38:43 +0100
-From: <tony.nguyen@bt.com>
-To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v7 38/42] memory: Single byte swap along the
- I/O path
-Thread-Index: AQHVVAWh4SrE1xJVHUGCBVtvjA+sLA==
-Date: Fri, 16 Aug 2019 07:38:43 +0000
-Message-ID: <1565941122698.46462@bt.com>
-References: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
-In-Reply-To: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
-Accept-Language: en-AU, en-GB, en-US
-Content-Language: en-AU
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-ms-exchange-transport-fromentityheader: Hosted
-x-originating-ip: [10.187.101.40]
+ (envelope-from <peter.maydell@linaro.org>) id 1hybnz-0000Ln-Iq
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 08:58:08 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:45552)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hybnz-0000Kt-D0
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 08:58:07 -0400
+Received: by mail-wr1-x444.google.com with SMTP id q12so1445193wrj.12
+ for <qemu-arm@nongnu.org>; Fri, 16 Aug 2019 05:58:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+ :content-transfer-encoding;
+ bh=kiHYxixAH+hnIg9DQ+VKLaTdfWcHEjePhgVIqnM4T2g=;
+ b=cK6JxAMPmhtLCGGXFI5/HleR0DoMx/pe8kfq3ZVwcrXmxKpJjFW7FnoRoqDIgbCd7D
+ 0R3o/IkUbIrhdxmE4qzXHdgnYKxPyp6hueC23cAVx+dr+lDUbUbxEsF8wc6Cd+tiaH+5
+ tsWTqGkRjk4Go9rG3NH6RhDnrG1AKGSDADHZAm31NYAMQLcov/Qviof6jZdwrUF6ZKYv
+ YWQQE8mhyoZDKCkXNs/IuqN3+D4AS/rw1QXupeBbESymC9zLbi8NkY1EvhYzwJZa04EO
+ WpXHAenQv60qr2GsHEbnM6Mw3feR71C1AEjnbMfYSucao5YxBfFAmVsmX9WqujOBj1yf
+ 670g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=kiHYxixAH+hnIg9DQ+VKLaTdfWcHEjePhgVIqnM4T2g=;
+ b=roWyQGDZXkOLgGQvvnByFAJiDAN3ZxEZz71PzkOZ0OWNACORRh3QFZYtXcPwdieezh
+ uXpmzBPdw5g667WEM4r4ytbhrmABthSEX1vp6iJjD9a0ZRpnEQYWFIzaQ5CgXZ5oe2lH
+ pRWy47NZ6BvBOwJ7wa3dM+x383iNHtY5O09VjsC10YzGzO4aIB0uQ7q2pVlP7IU/4qJn
+ LSVkdqyS2A9frzu7OO3Jb1PEjpDSznFgTobCzpLymTUzO+2+fgtEd44aJzooZhqTBBas
+ 4yS7nW/GXoZyUAVYRsIw8rZ7VonDZ5kLfNrnpYbjRPlHo2dt/uDaZ7ejwN0smiqY+L1t
+ heJQ==
+X-Gm-Message-State: APjAAAWT70Qg1Mng1DnQuBtik6+3VFU1MwnG/WsVkz0JgpPaJ/wDafh0
+ lEps1/SjiQtC39X4PqE3R3qk2C6ryhtACA==
+X-Received: by 2002:adf:e708:: with SMTP id c8mr11046060wrm.25.1565960286137; 
+ Fri, 16 Aug 2019 05:58:06 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id a19sm17594348wra.2.2019.08.16.05.58.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 16 Aug 2019 05:58:05 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Fri, 16 Aug 2019 13:58:01 +0100
+Message-Id: <20190816125802.25877-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190816125802.25877-1-peter.maydell@linaro.org>
+References: <20190816125802.25877-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 62.239.224.235
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
-X-Content-Filtered-By: Mailman/MimeDel 2.1.23
-Subject: [Qemu-devel] [PATCH v7 38/42] memory: Single byte swap along the
- I/O path
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::444
+Subject: [Qemu-arm] [PATCH 1/2] target/arm: Allow ARMCPRegInfo read/write
+ functions to throw exceptions
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
- arikalo@wavecomp.com, pasic@linux.ibm.com, hpoussin@reactos.org,
- anthony.perard@citrix.com, xen-devel@lists.xenproject.org, lersek@redhat.com,
- jasowang@redhat.com, jiri@resnulli.us, ehabkost@redhat.com,
- b.galvani@gmail.com, eric.auger@redhat.com, alex.williamson@redhat.com,
- stefanha@redhat.com, jsnow@redhat.com, rth@twiddle.net, kwolf@redhat.com,
- andrew@aj.id.au, claudio.fontana@suse.com, crwulff@gmail.com,
- laurent@vivier.eu, sundeep.lkml@gmail.com, michael@walle.cc,
- qemu-ppc@nongnu.org, kbastian@mail.uni-paderborn.de, imammedo@redhat.com,
- fam@euphon.net, peter.maydell@linaro.org, david@redhat.com, palmer@sifive.com,
- keith.busch@intel.com, jcmvbkbc@gmail.com, hare@suse.com,
- sstabellini@kernel.org, andrew.smirnov@gmail.com, deller@gmx.de,
- magnus.damm@gmail.com, atar4qemu@gmail.com, minyard@acm.org, sw@weilnetz.de,
- yuval.shaia@oracle.com, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- jan.kiszka@web.de, clg@kaod.org, shorne@gmail.com, qemu-riscv@nongnu.org,
- i.mitsyanko@gmail.com, cohuck@redhat.com, philmd@redhat.com,
- amarkovic@wavecomp.com, peter.chubb@nicta.com.au, aurelien@aurel32.net,
- pburton@wavecomp.com, sagark@eecs.berkeley.edu, green@moxielogic.com,
- kraxel@redhat.com, edgar.iglesias@gmail.com, gxt@mprc.pku.edu.cn,
- robh@kernel.org, borntraeger@de.ibm.com, joel@jms.id.au,
- antonynpavlov@gmail.com, chouteau@adacore.com, Andrew.Baumann@microsoft.com,
- mreitz@redhat.com, walling@linux.ibm.com, dmitry.fleytman@gmail.com,
- mst@redhat.com, mark.cave-ayland@ilande.co.uk, jslaby@suse.cz, marex@denx.de,
- proljc@gmail.com, marcandre.lureau@redhat.com, alistair@alistair23.me,
- paul.durrant@citrix.com, david@gibson.dropbear.id.au,
- xiaoguangrong.eric@gmail.com, huth@tuxfamily.org, jcd@tribudubois.net,
- pbonzini@redhat.com, stefanb@linux.ibm.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fq4TF7D2MyDI
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: igJvpy5WSFBs
 
-Now that MemOp has been pushed down into the memory API, and
-callers are encoding endianness, we can collapse byte swaps
-along the I/O path into the accelerator and target independent
-adjust_endianness.
+Currently the only part of an ARMCPRegInfo which is allowed to cause
+a CPU exception is the access function, which returns a value indicating
+that some flavour of UNDEF should be generated.
 
-Collapsing byte swaps along the I/O path enables additional endian
-inversion logic, e.g. SPARC64 Invert Endian TTE bit, with redundant
-byte swaps cancelling out.
+For the ATS system instructions, we would like to conditionally
+generate exceptions as part of the writefn, because some faults
+during the page table walk (like external aborts) should cause
+an exception to be raised rather than returning a value.
 
-Suggested-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
+There are several ways we could do this:
+ * plumb the GETPC() value from the top level set_cp_reg/get_cp_reg
+   helper functions through into the readfn and writefn hooks
+ * add extra readfn_with_ra/writefn_with_ra hooks that take the GETPC()
+   value
+ * require the ATS instructions to provide a dummy accessfn,
+   which serves no purpose except to cause the code generation
+   to emit TCG ops to sync the CPU state
+ * add an ARM_CP_ flag to mark the ARMCPRegInfo as possibly
+   throwing an exception in its read/write hooks, and make the
+   codegen sync the CPU state before calling the hooks if the
+   flag is set
+
+This patch opts for the last of these, as it is fairly simple
+to implement and doesn't require invasive changes like updating
+the readfn/writefn hook function prototype signature.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- accel/tcg/cputlb.c     | 42 +++------------------------------
- hw/virtio/virtio-pci.c | 10 ++++----
- memory.c               | 33 ++++++++++----------------
- memory_ldst.inc.c      | 63 ----------------------------------------------=
-----
- 4 files changed, 19 insertions(+), 129 deletions(-)
+ target/arm/cpu.h           | 6 +++++-
+ target/arm/translate-a64.c | 6 ++++++
+ target/arm/translate.c     | 7 +++++++
+ 3 files changed, 18 insertions(+), 1 deletion(-)
 
-diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index 8022c81..bb2f55d 100644
---- a/accel/tcg/cputlb.c
-+++ b/accel/tcg/cputlb.c
-@@ -1200,38 +1200,6 @@ static void *atomic_mmu_lookup(CPUArchState *env, ta=
-rget_ulong addr,
-     cpu_loop_exit_atomic(env_cpu(env), retaddr);
- }
-
--#ifdef TARGET_WORDS_BIGENDIAN
--#define NEED_BE_BSWAP 0
--#define NEED_LE_BSWAP 1
--#else
--#define NEED_BE_BSWAP 1
--#define NEED_LE_BSWAP 0
--#endif
--
--/*
-- * Byte Swap Helper
-- *
-- * This should all dead code away depending on the build host and
-- * access type.
-- */
--
--static inline uint64_t handle_bswap(uint64_t val, MemOp op)
--{
--    if ((memop_big_endian(op) && NEED_BE_BSWAP) ||
--        (!memop_big_endian(op) && NEED_LE_BSWAP)) {
--        switch (op & MO_SIZE) {
--        case MO_8: return val;
--        case MO_16: return bswap16(val);
--        case MO_32: return bswap32(val);
--        case MO_64: return bswap64(val);
--        default:
--            g_assert_not_reached();
--        }
--    } else {
--        return val;
--    }
--}
--
- /*
-  * Load Helpers
-  *
-@@ -1306,10 +1274,8 @@ load_helper(CPUArchState *env, target_ulong addr, TC=
-GMemOpIdx oi,
-             }
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 94c990cddbd..021b552334b 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2206,6 +2206,9 @@ static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
+  * IO indicates that this register does I/O and therefore its accesses
+  * need to be surrounded by gen_io_start()/gen_io_end(). In particular,
+  * registers which implement clocks or timers require this.
++ * RAISES_EXC is for when the read or write hook might raise an exception;
++ * the generated code will synchronize the CPU state before calling the hook
++ * so that it is safe for the hook to call raise_exception().
+  */
+ #define ARM_CP_SPECIAL           0x0001
+ #define ARM_CP_CONST             0x0002
+@@ -2224,10 +2227,11 @@ static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
+ #define ARM_CP_FPU               0x1000
+ #define ARM_CP_SVE               0x2000
+ #define ARM_CP_NO_GDB            0x4000
++#define ARM_CP_RAISES_EXC        0x8000
+ /* Used only as a terminator for ARMCPRegInfo lists */
+ #define ARM_CP_SENTINEL          0xffff
+ /* Mask of only the flag bits in a type field */
+-#define ARM_CP_FLAG_MASK         0x70ff
++#define ARM_CP_FLAG_MASK         0xf0ff
+ 
+ /* Valid values for ARMCPRegInfo state field, indicating which of
+  * the AArch32 and AArch64 execution states this register is visible in.
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index d3231477a27..908a186bfec 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -1729,6 +1729,12 @@ static void handle_sys(DisasContext *s, uint32_t insn, bool isread,
+         tcg_temp_free_ptr(tmpptr);
+         tcg_temp_free_i32(tcg_syn);
+         tcg_temp_free_i32(tcg_isread);
++    } else if (ri->type & ARM_CP_RAISES_EXC) {
++        /*
++         * The readfn or writefn might raise an exception;
++         * synchronize the CPU state in case it does.
++         */
++        gen_a64_set_pc_im(s->pc - 4);
+     }
+ 
+     /* Handle special cases first */
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 7853462b21b..da38e15be8d 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -7228,6 +7228,13 @@ static int disas_coproc_insn(DisasContext *s, uint32_t insn)
+             tcg_temp_free_ptr(tmpptr);
+             tcg_temp_free_i32(tcg_syn);
+             tcg_temp_free_i32(tcg_isread);
++        } else if (ri->type & ARM_CP_RAISES_EXC) {
++            /*
++             * The readfn or writefn might raise an exception;
++             * synchronize the CPU state in case it does.
++             */
++            gen_set_condexec(s);
++            gen_set_pc_im(s, s->pc - 4);
          }
+ 
+         /* Handle special cases first */
+-- 
+2.20.1
 
--        /* FIXME: io_readx ignores MO_BSWAP.  */
--        res =3D io_readx(env, &env_tlb(env)->d[mmu_idx].iotlb[index],
--                       mmu_idx, addr, retaddr, access_type, op);
--        return handle_bswap(res, op);
-+        return io_readx(env, &env_tlb(env)->d[mmu_idx].iotlb[index],
-+                        mmu_idx, addr, retaddr, access_type, op);
-     }
-
-     /* Handle slow unaligned access (it spans two pages or IO).  */
-@@ -1552,10 +1518,8 @@ store_helper(CPUArchState *env, target_ulong addr, u=
-int64_t val,
-             }
-         }
-
--        /* FIXME: io_writex ignores MO_BSWAP.  */
-         io_writex(env, &env_tlb(env)->d[mmu_idx].iotlb[index], mmu_idx,
--                  handle_bswap(val, op),
--                  addr, retaddr, op);
-+                  val, addr, retaddr, op);
-         return;
-     }
-
-diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
-index ad06c12..84f820d 100644
---- a/hw/virtio/virtio-pci.c
-+++ b/hw/virtio/virtio-pci.c
-@@ -542,16 +542,15 @@ void virtio_address_space_write(VirtIOPCIProxy *proxy=
-, hwaddr addr,
-         val =3D pci_get_byte(buf);
-         break;
-     case 2:
--        val =3D cpu_to_le16(pci_get_word(buf));
-+        val =3D pci_get_word(buf);
-         break;
-     case 4:
--        val =3D cpu_to_le32(pci_get_long(buf));
-+        val =3D pci_get_long(buf);
-         break;
-     default:
-         /* As length is under guest control, handle illegal values. */
-         return;
-     }
--    /* FIXME: memory_region_dispatch_write ignores MO_BSWAP.  */
-     memory_region_dispatch_write(mr, addr, val, size_memop(len) | MO_LE,
-                                  MEMTXATTRS_UNSPECIFIED);
- }
-@@ -576,7 +575,6 @@ virtio_address_space_read(VirtIOPCIProxy *proxy, hwaddr=
- addr,
-     /* Make sure caller aligned buf properly */
-     assert(!(((uintptr_t)buf) & (len - 1)));
-
--    /* FIXME: memory_region_dispatch_read ignores MO_BSWAP.  */
-     memory_region_dispatch_read(mr, addr, &val, size_memop(len) | MO_LE,
-                                 MEMTXATTRS_UNSPECIFIED);
-     switch (len) {
-@@ -584,10 +582,10 @@ virtio_address_space_read(VirtIOPCIProxy *proxy, hwad=
-dr addr,
-         pci_set_byte(buf, val);
-         break;
-     case 2:
--        pci_set_word(buf, le16_to_cpu(val));
-+        pci_set_word(buf, val);
-         break;
-     case 4:
--        pci_set_long(buf, le32_to_cpu(val));
-+        pci_set_long(buf, val);
-         break;
-     default:
-         /* As length is under guest control, handle illegal values. */
-diff --git a/memory.c b/memory.c
-index 01fd29d..ebe0066 100644
---- a/memory.c
-+++ b/memory.c
-@@ -343,32 +343,23 @@ static void flatview_simplify(FlatView *view)
-     }
- }
-
--static bool memory_region_wrong_endianness(MemoryRegion *mr)
-+static void adjust_endianness(MemoryRegion *mr, uint64_t *data, MemOp op)
- {
--#ifdef TARGET_WORDS_BIGENDIAN
--    return mr->ops->endianness =3D=3D MO_LE;
--#else
--    return mr->ops->endianness =3D=3D MO_BE;
--#endif
--}
--
--static void adjust_endianness(MemoryRegion *mr, uint64_t *data, unsigned s=
-ize)
--{
--    if (memory_region_wrong_endianness(mr)) {
--        switch (size) {
--        case 1:
-+    if ((op & MO_BSWAP) !=3D mr->ops->endianness) {
-+        switch (op & MO_SIZE) {
-+        case MO_8:
-             break;
--        case 2:
-+        case MO_16:
-             *data =3D bswap16(*data);
-             break;
--        case 4:
-+        case MO_32:
-             *data =3D bswap32(*data);
-             break;
--        case 8:
-+        case MO_64:
-             *data =3D bswap64(*data);
-             break;
-         default:
--            abort();
-+            g_assert_not_reached();
-         }
-     }
- }
-@@ -1442,7 +1433,7 @@ MemTxResult memory_region_dispatch_read(MemoryRegion =
-*mr,
-     }
-
-     r =3D memory_region_dispatch_read1(mr, addr, pval, size, attrs);
--    adjust_endianness(mr, pval, size);
-+    adjust_endianness(mr, pval, op);
-     return r;
- }
-
-@@ -1485,7 +1476,7 @@ MemTxResult memory_region_dispatch_write(MemoryRegion=
- *mr,
-         return MEMTX_DECODE_ERROR;
-     }
-
--    adjust_endianness(mr, &data, size);
-+    adjust_endianness(mr, &data, op);
-
-     if ((!kvm_eventfds_enabled()) &&
-         memory_region_dispatch_write_eventfds(mr, addr, data, size, attrs)=
-) {
-@@ -2331,7 +2322,7 @@ void memory_region_add_eventfd(MemoryRegion *mr,
-     }
-
-     if (size) {
--        adjust_endianness(mr, &mrfd.data, size);
-+        adjust_endianness(mr, &mrfd.data, size_memop(size));
-     }
-     memory_region_transaction_begin();
-     for (i =3D 0; i < mr->ioeventfd_nb; ++i) {
-@@ -2366,7 +2357,7 @@ void memory_region_del_eventfd(MemoryRegion *mr,
-     unsigned i;
-
-     if (size) {
--        adjust_endianness(mr, &mrfd.data, size);
-+        adjust_endianness(mr, &mrfd.data, size_memop(size));
-     }
-     memory_region_transaction_begin();
-     for (i =3D 0; i < mr->ioeventfd_nb; ++i) {
-diff --git a/memory_ldst.inc.c b/memory_ldst.inc.c
-index 482e4b3..7b7f0c0 100644
---- a/memory_ldst.inc.c
-+++ b/memory_ldst.inc.c
-@@ -37,17 +37,7 @@ static inline uint32_t glue(address_space_ldl_internal, =
-SUFFIX)(ARG1_DECL,
-         release_lock |=3D prepare_mmio_access(mr);
-
-         /* I/O case */
--        /* FIXME: memory_region_dispatch_read ignores MO_BSWAP.  */
-         r =3D memory_region_dispatch_read(mr, addr1, &val, MO_32 | endian,=
- attrs);
--#if defined(TARGET_WORDS_BIGENDIAN)
--        if (endian =3D=3D MO_LE) {
--            val =3D bswap32(val);
--        }
--#else
--        if (endian =3D=3D MO_BE) {
--            val =3D bswap32(val);
--        }
--#endif
-     } else {
-         /* RAM case */
-         ptr =3D qemu_map_ram_ptr(mr->ram_block, addr1);
-@@ -113,17 +103,7 @@ static inline uint64_t glue(address_space_ldq_internal=
-, SUFFIX)(ARG1_DECL,
-         release_lock |=3D prepare_mmio_access(mr);
-
-         /* I/O case */
--        /* FIXME: memory_region_dispatch_read ignores MO_BSWAP.  */
-         r =3D memory_region_dispatch_read(mr, addr1, &val, MO_64 | endian,=
- attrs);
--#if defined(TARGET_WORDS_BIGENDIAN)
--        if (endian =3D=3D MO_LE) {
--            val =3D bswap64(val);
--        }
--#else
--        if (endian =3D=3D MO_BE) {
--            val =3D bswap64(val);
--        }
--#endif
-     } else {
-         /* RAM case */
-         ptr =3D qemu_map_ram_ptr(mr->ram_block, addr1);
-@@ -223,17 +203,7 @@ static inline uint32_t glue(address_space_lduw_interna=
-l, SUFFIX)(ARG1_DECL,
-         release_lock |=3D prepare_mmio_access(mr);
-
-         /* I/O case */
--        /* FIXME: memory_region_dispatch_read ignores MO_BSWAP.  */
-         r =3D memory_region_dispatch_read(mr, addr1, &val, MO_16 | endian,=
- attrs);
--#if defined(TARGET_WORDS_BIGENDIAN)
--        if (endian =3D=3D MO_LE) {
--            val =3D bswap16(val);
--        }
--#else
--        if (endian =3D=3D MO_BE) {
--            val =3D bswap16(val);
--        }
--#endif
-     } else {
-         /* RAM case */
-         ptr =3D qemu_map_ram_ptr(mr->ram_block, addr1);
-@@ -335,17 +305,6 @@ static inline void glue(address_space_stl_internal, SU=
-FFIX)(ARG1_DECL,
-     mr =3D TRANSLATE(addr, &addr1, &l, true, attrs);
-     if (l < 4 || !memory_access_is_direct(mr, true)) {
-         release_lock |=3D prepare_mmio_access(mr);
--
--#if defined(TARGET_WORDS_BIGENDIAN)
--        if (endian =3D=3D MO_LE) {
--            val =3D bswap32(val);
--        }
--#else
--        if (endian =3D=3D MO_BE) {
--            val =3D bswap32(val);
--        }
--#endif
--        /* FIXME: memory_region_dispatch_write ignores MO_BSWAP.  */
-         r =3D memory_region_dispatch_write(mr, addr1, val, MO_32 | endian,=
- attrs);
-     } else {
-         /* RAM case */
-@@ -441,17 +400,6 @@ static inline void glue(address_space_stw_internal, SU=
-FFIX)(ARG1_DECL,
-     mr =3D TRANSLATE(addr, &addr1, &l, true, attrs);
-     if (l < 2 || !memory_access_is_direct(mr, true)) {
-         release_lock |=3D prepare_mmio_access(mr);
--
--#if defined(TARGET_WORDS_BIGENDIAN)
--        if (endian =3D=3D MO_LE) {
--            val =3D bswap16(val);
--        }
--#else
--        if (endian =3D=3D MO_BE) {
--            val =3D bswap16(val);
--        }
--#endif
--        /* FIXME: memory_region_dispatch_write ignores MO_BSWAP.  */
-         r =3D memory_region_dispatch_write(mr, addr1, val, MO_16 | endian,=
- attrs);
-     } else {
-         /* RAM case */
-@@ -515,17 +463,6 @@ static void glue(address_space_stq_internal, SUFFIX)(A=
-RG1_DECL,
-     mr =3D TRANSLATE(addr, &addr1, &l, true, attrs);
-     if (l < 8 || !memory_access_is_direct(mr, true)) {
-         release_lock |=3D prepare_mmio_access(mr);
--
--#if defined(TARGET_WORDS_BIGENDIAN)
--        if (endian =3D=3D MO_LE) {
--            val =3D bswap64(val);
--        }
--#else
--        if (endian =3D=3D MO_BE) {
--            val =3D bswap64(val);
--        }
--#endif
--        /* FIXME: memory_region_dispatch_write ignores MO_BSWAP.  */
-         r =3D memory_region_dispatch_write(mr, addr1, val, MO_64 | endian,=
- attrs);
-     } else {
-         /* RAM case */
---
-1.8.3.1
-
-?

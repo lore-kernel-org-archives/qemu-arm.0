@@ -1,83 +1,105 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp715819wrs;
-        Fri, 16 Aug 2019 05:05:12 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxsPswUEYHNtBf9vnxFdaKfb8y0s0c1SE26ztN3DlFx+/ixygzHKldeGJ2eDKoN7Lk3LI1S
-X-Received: by 2002:aa7:d981:: with SMTP id u1mr10321903eds.150.1565957112061;
-        Fri, 16 Aug 2019 05:05:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565957112; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp769387wrs;
+        Fri, 16 Aug 2019 05:58:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwWbbO4hKNueg9dflqyA41oxodcEEIpomGkCfDRpE5MPUjvfKptCtHIggnfhDSmG27gMffB
+X-Received: by 2002:a17:906:a449:: with SMTP id cb9mr8985791ejb.162.1565960306773;
+        Fri, 16 Aug 2019 05:58:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565960306; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mp2h333bLxViPXZcdXIk18rtNR0JBBziEAmQyp+UfO0bIar7gBF20mzJoxyEULqQGh
-         ZsJA3P5lBR5uXsyQ1/0jCD1gLD2Iz6sRDaYki/0DCtflePd75/h0wSCATHtYgcZrRyT+
-         YJn085YW6RLlUaEw7aXuCEOXfZ2iZLAuEfHRXmMQjClncMAtY59/t/9zO4eEKvw7Op8x
-         zMu/wHl/JsHqIZyCVIJekhKZIzd4JhsUHYwRtN/CiNiwX/KIUeMSVhyTK/dH6G1Wj+JM
-         9zRjunb6mNWJHq9BSOaeEOHxXLdnnWEInHbopIbyn0NSV6qDuezpz57Qib0SuwV7eZoM
-         LjwQ==
+        b=FDqaEnwh1EM8Gcyn489Ydyl/wJG8pZf/KJ8513iXfPyg5XWUEPIZayeWokhzU0h0Sg
+         d6+X8b9vJYGQ05u3mLzfSY7S4V5vytR8wOfOYxxNURi0nMw8ks43UlRVUT4tjxFt8bN8
+         GeMkRr3kspYDM1gQ847m2R4PEobdtFNrYLVTufWvDAjvEwvbxwJXv7HRS6QHdcCFaFrB
+         UETeS/AVEbh4svNe1oXvc0vfunFCia95/4vjubivzsn2uLdukGILwdNqPic8USisXocS
+         MAihSgS+c89vL0AtTYKVdS1p0p5+sYviyapmO6BdYvl5l7unVxx4Ay9Z0wsLwHUnTTgL
+         UNLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
          :dkim-signature;
-        bh=SFrsvsI3LrysVr80r/6NEg4VAbfVEIOfTeYwsys+avc=;
-        b=lyQKLPMgATmzLKVQznE4Ne6SBMU7ZgOhHeeBNpG1jeXHJthsQ96l5zIpMWYoWIpYDK
-         gw6MUFH9+vCSPvrMWvzWrztg6DaL8jWJFqL+Gx5a/HQmY4B88gg1nX59HUDhHNlnu1Bo
-         CL71aQz9sDlxBDxQNcC65tC0AS6pI81NhLgy1uAjCYCdAJeI7J1poAgLH/R9kZu1F6lI
-         yvBR1v2Vfyc4xpO/znPFWTapsh+z//Nsid4uAt7W1czLZSRfR943O214OMJiKf5XDpHs
-         z42LamyptJo8yxl8yOuCMU+OI+UqbCK2B+VDmFGPVgSlTq6NOVIfhgDLkVtf2uAC/Iy2
-         p+1Q==
+        bh=0TNU1qcTPKOb8ebj7Oqy+tAPM4gs6EGYteC/gAYplT4=;
+        b=Tsfi9CPhGNw5VXU/70UKBBrQ+FxxU3LhP5CF8AMdFo9tPrmv+A8aFCJLrq+zwVxIRM
+         sI6SUdiqxs8tR6W7xKKWk/VO5hTmZW5a7AKiMXPj+JbodWxeuW8x3CDkLFLZAnQruIuR
+         DLRQ8xSIbKn64RCWG30jhUfxQB9ISkzg8nDVKFQQAdfPYCZLvI7an1M5ATlysJfm4ZBK
+         NFAq3prakADlFbZc7Uib1lpuvQuQJOv1IUIMXmpOte6HX6gA4clTzeaD526yJCVPScAL
+         fYRyKlIIgQI7VB4a+BzS71Wc5RpX+yln4qsNdRtBYEWIyKzpSAFqFla8MXZtwJTJral8
+         f9mw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=Wekzw6zx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=RpSPBOla;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c3si2716628ejr.125.2019.08.16.05.05.12
+        by mx.google.com with ESMTPS id s47si3413955edm.38.2019.08.16.05.58.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2019 05:05:12 -0700 (PDT)
+        Fri, 16 Aug 2019 05:58:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=Wekzw6zx;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54958 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=RpSPBOla;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55398 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyayk-0004RA-TH
-	for alex.bennee@linaro.org; Fri, 16 Aug 2019 08:05:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54222)
+	id 1hyboH-000613-9E
+	for alex.bennee@linaro.org; Fri, 16 Aug 2019 08:58:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60917)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgibson@ozlabs.org>) id 1hyayX-0004GM-Vg
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 08:04:59 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hybo0-0005yJ-O5
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 08:58:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1hyayW-0004ag-JR
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 08:04:57 -0400
-Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:45421 helo=ozlabs.org)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1hyayV-0004XL-9N; Fri, 16 Aug 2019 08:04:56 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 46927M0thdz9sML; Fri, 16 Aug 2019 22:04:47 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1565957087;
- bh=1OQXK0o9OvoNPapWpbimPbhqPrE5Qa0PGQHKlRYcMkI=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Wekzw6zxxq4IvC7+Zbnwqdia1xVqewDn7eX7Ht9Y83gQasjzBhjYu5PoAd/WiLpW0
- 0PKntAaqTZcpID4Z8EVVQ0BYFf4MjOJ+3toNPAxMyQTRRcgQcAbv4eU/EBfCSgFmWB
- Crykn4dJVY56dnF3V1Dz6Ofl/uRZ25H6HxZL3I/0=
-Date: Fri, 16 Aug 2019 21:43:05 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Message-ID: <20190816114305.GB2259@umbus.fritz.box>
-References: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
- <a7d6eede-b152-4c06-8945-9607c663b99c@redhat.com>
+ (envelope-from <peter.maydell@linaro.org>) id 1hybnz-0000La-Ff
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 08:58:08 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:36479)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1hybnz-0000KF-66
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 08:58:07 -0400
+Received: by mail-wm1-x342.google.com with SMTP id g67so4004232wme.1
+ for <qemu-arm@nongnu.org>; Fri, 16 Aug 2019 05:58:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=0TNU1qcTPKOb8ebj7Oqy+tAPM4gs6EGYteC/gAYplT4=;
+ b=RpSPBOlaO06ZNuwYCGTQ8rB2RaIOBhTaTNxoY1UY3UWOx1D9PGVCjjTY36mA2pfwid
+ duINFA7JTRVIAr1Qhi8/dJgnQBnhcg/SlGXPn2q+2mPILoentEFRshlvoed2V4MtHSTp
+ i8y7z0MNhUcPvkzAH3Lza+MN1tM0X2mmmaYPGwptLP8lEzz6SswQa4dmGxsnOLckV6pN
+ O4/1qkcPDrLoeeUlgHk1ND7jprs53Wbq3Mu69O+KmxtnChr9ICChwHRHtvSHQtMBaArC
+ EphmvNHmjffbye269A0a0jQxVTO9kQLQU88YJPWrAZZji1dkGORAUz9/xBFKCEftruGz
+ tB9A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=0TNU1qcTPKOb8ebj7Oqy+tAPM4gs6EGYteC/gAYplT4=;
+ b=K6k5qTnh1dV8iur+G3s1+gM2CSa4eOB4LYuSzh75N+ZCt4MvPxqTtpnvRlu/GxkjOH
+ /sDU/k7MyY2vin+AN99zOsIcW66yfbpL4bparpJvND+r5cQ/QzoJWPPeHrk6hU2li576
+ hRn3KVAB8BGQq0z9aful46j7uFGDB0O8ZodUTFuz4KvkTRvXQpv540LXoP/sBzqHL9Q8
+ y/mViUCwiX0nYOg8EZD339KSnBvrAo6ARiJz01At7U8tMw3p14UseclOH2krRorE8eE8
+ gbPr3s0R9U/Fq2hAlJqgcNRcMWtoxLOjCF/V5N7OCRmBBwE8DJFOfTY6Y41uQpYizWQT
+ 9NKg==
+X-Gm-Message-State: APjAAAVF+90Os1YnPrckSochVZPxOg4FEE8GhV7SE7r9SAXea8eiNkHs
+ oVzpGcZykjxy8aq5fg2Qp7rG6BaA9Rvlag==
+X-Received: by 2002:a05:600c:204:: with SMTP id
+ 4mr7733968wmi.167.1565960285180; 
+ Fri, 16 Aug 2019 05:58:05 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id a19sm17594348wra.2.2019.08.16.05.58.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 16 Aug 2019 05:58:04 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Fri, 16 Aug 2019 13:58:00 +0100
+Message-Id: <20190816125802.25877-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="DKU6Jbt7q3WqK7+M"
-Content-Disposition: inline
-In-Reply-To: <a7d6eede-b152-4c06-8945-9607c663b99c@redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2401:3900:2:1::2
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 00/42] Invert Endian bit in
- SPARCv9 MMU TTE
+X-Received-From: 2a00:1450:4864:20::342
+Subject: [Qemu-arm] [PATCH 0/2] target/arm: Take exceptions on ATS
+ instructions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -89,103 +111,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
- arikalo@wavecomp.com, pasic@linux.ibm.com, hpoussin@reactos.org,
- anthony.perard@citrix.com, xen-devel@lists.xenproject.org, balrogg@gmail.com,
- jasowang@redhat.com, jiri@resnulli.us, ehabkost@redhat.com,
- b.galvani@gmail.com, eric.auger@redhat.com, alex.williamson@redhat.com,
- stefanha@redhat.com, jsnow@redhat.com, rth@twiddle.net, kwolf@redhat.com,
- andrew@aj.id.au, claudio.fontana@suse.com, crwulff@gmail.com,
- laurent@vivier.eu, sundeep.lkml@gmail.com, michael@walle.cc,
- qemu-ppc@nongnu.org, kbastian@mail.uni-paderborn.de, imammedo@redhat.com,
- fam@euphon.net, peter.maydell@linaro.org, david@redhat.com, palmer@sifive.com,
- balaton@eik.bme.hu, keith.busch@intel.com, jcmvbkbc@gmail.com, hare@suse.com,
- sstabellini@kernel.org, andrew.smirnov@gmail.com, deller@gmx.de,
- magnus.damm@gmail.com, marcel.apfelbaum@gmail.com, atar4qemu@gmail.com,
- minyard@acm.org, sw@weilnetz.de, yuval.shaia@oracle.com, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, peter.chubb@nicta.com.au, clg@kaod.org, shorne@gmail.com,
- qemu-riscv@nongnu.org, i.mitsyanko@gmail.com, cohuck@redhat.com,
- amarkovic@wavecomp.com, jan.kiszka@web.de, aurelien@aurel32.net,
- pburton@wavecomp.com, sagark@eecs.berkeley.edu, green@moxielogic.com,
- kraxel@redhat.com, gxt@mprc.pku.edu.cn, robh@kernel.org,
- borntraeger@de.ibm.com, joel@jms.id.au, antonynpavlov@gmail.com,
- chouteau@adacore.com, lersek@redhat.com, Andrew.Baumann@microsoft.com,
- mreitz@redhat.com, walling@linux.ibm.com, dmitry.fleytman@gmail.com,
- mst@redhat.com, mark.cave-ayland@ilande.co.uk, qemu-devel@nongnu.org,
- jslaby@suse.cz, marex@denx.de, proljc@gmail.com, marcandre.lureau@redhat.com,
- alistair@alistair23.me, paul.durrant@citrix.com, tony.nguyen@bt.com,
- xiaoguangrong.eric@gmail.com, huth@tuxfamily.org, jcd@tribudubois.net,
- pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kaVc0SVo72+I
+X-TUID: Xbl5a1nohUJJ
 
+The translation table walk for an ATS instruction can result in
+various faults.  In general these are just reported back via the
+PAR_EL1 fault status fields, but in some cases the architecture
+requires that the fault is turned into an exception:
+ * synchronous stage 2 faults of any kind during AT S1E0* and
+   AT S1E1* instructions executed from NS EL1 fault to EL2 or EL3
+ * synchronous external aborts are taken as Data Abort exceptions
+    
+(This is documented in the v8A Arm ARM DDI0487A.e D5.2.11 and G5.13.4.)
 
---DKU6Jbt7q3WqK7+M
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+I noticed this by code inspection back last year sometime when
+I was investigating a guest boot failure that turned out to be
+due to an entirely different cause. I got about halfway through
+trying to code up a fix before I realised it was irrelevant to
+that bug. This patchset is just tidying up and completing that
+work so it doesn't get lost.
 
-On Fri, Aug 16, 2019 at 11:58:05AM +0200, Philippe Mathieu-Daud=E9 wrote:
-> Hi Tony,
->=20
-> On 8/16/19 8:28 AM, tony.nguyen@bt.com wrote:
-> > This patchset implements the IE (Invert Endian) bit in SPARCv9 MMU TTE.
-> >=20
-> > v7:
-> [...]
-> > - Re-declared many native endian devices as little or big endian. This =
-is why
-> >   v7 has +16 patches.
->=20
-> Why are you doing that? What is the rational?
->=20
-> Anyhow if this not required by your series, you should split it out of
-> it, and send it on your principal changes are merged.
-> I'm worried because this these new patches involve many subsystems (thus
-> maintainers) and reviewing them will now take a fair amount of time.
->=20
-> > For each device declared with DEVICE_NATIVE_ENDIAN, find the set of
-> > targets from the set of target/hw/*/device.o.
-> >
-> > If the set of targets are all little or all big endian, re-declare
-> > the device endianness as DEVICE_LITTLE_ENDIAN or DEVICE_BIG_ENDIAN
-> > respectively.
->=20
-> If only little endian targets use a device, that doesn't mean the device
-> is designed in little endian...
->=20
-> Then if a big endian target plan to use this device, it will require
-> more work and you might have introduced regressions...
+Use of ATS insns in the cases where they might actually fault
+is quite rare (obviously nobody sets up page tables where there's
+no memory and they'll take external aborts, and even for the
+"take a hyp trap for a stage 2 fault" case you need a setup
+with a hypervisor and a guest that uses ATS insns, and Linux as
+a guest doesn't use ATS at all. So my testing of this patchset
+has been more "check it doesn't break things" rather than
+actively finding and testing a use of the throw-an-exception path...
 
-Uh.. only if they make the version of the device on a big endian
-target big endian.  Which is a terrible idea - if you know a hardware
-designer planning to do this, please slap them.
+thanks
+-- PMM
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+Peter Maydell (2):
+  target/arm: Allow ARMCPRegInfo read/write functions to throw
+    exceptions
+  target/arm: Take exceptions on ATS instructions when needed
 
---DKU6Jbt7q3WqK7+M
-Content-Type: application/pgp-signature; name="signature.asc"
+ target/arm/cpu.h           |   6 ++-
+ target/arm/helper.c        | 107 +++++++++++++++++++++++++++++++------
+ target/arm/translate-a64.c |   6 +++
+ target/arm/translate.c     |   7 +++
+ 4 files changed, 110 insertions(+), 16 deletions(-)
 
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl1WlskACgkQbDjKyiDZ
-s5K9oQ//Uuo9cWWmd396i/MdQyddqKELOko009vf2k8wlEaysKrMpuKkkj7EV4Lz
-x+MQYyqEBAZMLC5KoTeSRYHynyRTPSBOURxhQNkH4Nqj3Skxr9buvX4pqhNLhmLE
-A8tSn3paa4N5GKXbgt4fOiNwBXxnrcAQgmruCbyvO7NKXPmZyTSQxJkR8VHE/qxK
-LWKEgA/bjyloFI7OwpWW0rc0LdqmDljy4NKmfHsFxlZdc+TlcM2PgkYPBdRMf5SH
-Nlj3YvXrsxa1gfrGLou/tlS9WHyKxl7K1DSbh42ObtrBKtc6z9aPY9+mi1moAJLi
-/CpHM3SbdY4j1mGPk5/TZBul+m7spkoJfDB0A/mwb5pTLsZKO0fIOThUkjlCD32D
-It90f2Y2I+omAnGOs8nX52SOoNfUwB6vtA4ThBEXzKSOOepPuL5dgSmJ8sGUn1GY
-eckRx2z4Emap23L0WavytQ+oaQW8PrhfMFUBWS1DSh/uPVUs1m4Zcs2Q8siBRXZJ
-J70alEhGvbhch2+S5q69iYIvljVoMcA1DjHc06WTwZOatjUdjJAQpMLidpH03+UC
-AKeSvwpEA5yvuxCfLuThYD+6MeEGyVtH/IEKqSLE7IFVp2VBeqZ4tNKN41Fw/aQH
-t3Q5LKmwmLKiyzHZSFM5JmNuyjmdwG56N4INLGlLEAPy9F40PR0=
-=nw08
------END PGP SIGNATURE-----
-
---DKU6Jbt7q3WqK7+M--
+-- 
+2.20.1

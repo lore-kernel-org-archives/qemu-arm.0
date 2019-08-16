@@ -1,75 +1,74 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp491831wrs;
-        Fri, 16 Aug 2019 00:57:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw7aChtj8HJuRPp/ctO7sdvW5Y+viEnHE4BEeTt672LZRn39Z25wNxEjIU90qiPt+ia2Kuh
-X-Received: by 2002:a50:97ea:: with SMTP id f39mr9440986edb.279.1565942238269;
-        Fri, 16 Aug 2019 00:57:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565942238; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp491945wrs;
+        Fri, 16 Aug 2019 00:57:27 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzxfBklZ+GoB628JseCjF7esy+UYBKPJiOAfIWeADw3j1KgOP8hZv4MvpPxasM6eFs0HCRo
+X-Received: by 2002:a17:906:3b47:: with SMTP id h7mr8057124ejf.30.1565942247351;
+        Fri, 16 Aug 2019 00:57:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565942247; cv=none;
         d=google.com; s=arc-20160816;
-        b=AugcxV6owUR0O4YnJHzc3n70BJUnLqJi6tV0Tkp0MLBsPy/IfKaqKXD0pyTLvMdIx/
-         SGp4MyM5dq7ONQ8eMtXagglXaZiCYmTkLx0ar7a+LC0w/7sfErwu3GNNDl32qoIgofY+
-         ztmtHjfF4tfPgYcQoqU4g4Zjj8pdvwtLnXni5ehN/MGRWfolZHpQEeOLAUXxgZM/AaXC
-         CDEQEt1jABFy/a9yWQ2EMYKZZMz4myd9mixxdZX23pDvZVty5BWtPNLdInxkG/Rx+CdF
-         SXz8D3IFhtPfhbDoyAl4IUoc67YDX+DUs4f7CTA6ouA3db5LeGgzAmuS/AK8MbD/TerH
-         yh8g==
+        b=hCS9gZNyQD1fkFXYVJbM7tWrXASdMI1621qn7i/PwCdWSyDiRW67yMG97dQXOf3Irr
+         4uZcyLSA4LE5olTgmGUKieBiza4mDydd33CFz/H5nWAG2yXx79jSiaPEJm9CdOZVwKGB
+         Rv+2M3QJyhl1VekFv6rGa5mLJ3+i95WN4EALd6i123+ZWLgK5ibBeNmL/czYRlq40lJv
+         fkuzFijV5O0/uz30cl+ftEYSgrIk/U2w41htn4+iibGJy4truJ3k8IfykbKBVHoCBWL4
+         aUsAea/kH81Du8rEijmBA3gaBqrqVHLCHm8+wMUJ7b1nxNSEhFOmkPgMlP0+IwBFcaAV
+         T5GA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-language:accept-language:in-reply-to:references:message-id
          :date:thread-index:thread-topic:to:from;
-        bh=JSfUiU31DpiNncusDuhPTnxKGpwQJPiG4+IdP5gnW6A=;
-        b=fkpLv9nss0LuM00bpKRBbTJBGtOD/UeyoxLKQVsWH8Sxp6hNpv6MxcBTCTTNnTV45M
-         9ECPf3Yy6Mvc9DN8tC7aZ9d7FxEQjwCtnjcdpD18CiRmDHRqH+eyHMFSCMtFDKE3YE4A
-         dxMczgh75y01bc8wvjnsHawjtqE9nDoXILvPEFx7aNaf0DhkBUMmSH2eFXsjJPNLz7Lq
-         e8NdhAQtl2lnRfFiDEAh6WWZL/ZiRgaDTCobFhNUm66tX017NOHqV6dZ6ORpPj34KESr
-         5Vrs1FlmPeQSWJRiwABVivhTe3t04fIQLCGe1QGdHrgh6hUvIhw9OmcGIkDzZY6EyAij
-         757g==
+        bh=EU9FbHl7Fm4jXaRXtixdnCQy51JDl+XB4K9X0QP4gNE=;
+        b=qEZJBRTcEEilBraGiN9wjWjSVGB6bKu/xMmSDQwR0fCinsV3DSXhsuaul3ZVW3b59X
+         UjPiMbhllJw2UNRVwv4Rq4sBJF2XuoiP4GYVi3Y7hW2FrcNZc41L3P+V3rkV+P93Mwuz
+         k/2Y0gfD1Z5SZLf2ieCXAoW0u963RhZuj/sdp1sPuCqiYMWZWk3Tlj6+v+VGYB3Rm9Eq
+         RdTUsqH8wMUN9L0KIYLlq/CyCrHkz7bLCGZHPPZbWxRrW85PDuMvYmImgnqt27VIXRLT
+         mIlXRaO89cYGbTf1FHY6BEWJLRzkigW74tnfqwOqkvpU2OqxHOnnjS2nHo74XlQ3S0Jw
+         fsPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c5si3055759ede.282.2019.08.16.00.57.18
+        by mx.google.com with ESMTPS id os13si2672145ejb.114.2019.08.16.00.57.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2019 00:57:18 -0700 (PDT)
+        Fri, 16 Aug 2019 00:57:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:51078 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51092 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyX6q-0001we-Nm
-	for alex.bennee@linaro.org; Fri, 16 Aug 2019 03:57:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39641)
+	id 1hyX6z-0002Lt-T9
+	for alex.bennee@linaro.org; Fri, 16 Aug 2019 03:57:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39636)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tony.nguyen@bt.com>) id 1hyWlA-00088f-7n
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:34:56 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hyWlA-00088P-2T
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:34:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hyWl5-00014I-Oa
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:34:52 -0400
-Received: from smtpe1.intersmtp.com ([213.121.35.74]:54791)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (envelope-from <tony.nguyen@bt.com>) id 1hyWl6-00014n-9h
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:34:51 -0400
+Received: from smtpe1.intersmtp.com ([62.239.224.234]:14775)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hyWka-0000nh-Du; Fri, 16 Aug 2019 03:34:18 -0400
-Received: from tpw09926dag18f.domain1.systemhost.net (10.9.212.26) by
- BWP09926079.bt.com (10.36.82.110) with Microsoft SMTP Server (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Fri, 16
- Aug 2019 08:33:51 +0100
+ id 1hyWl5-000142-SP; Fri, 16 Aug 2019 03:34:48 -0400
+Received: from tpw09926dag18g.domain1.systemhost.net (10.9.212.34) by
+ RDW083A012ED68.bt.com (10.187.98.38) with Microsoft SMTP Server (TLS) id
+ 14.3.439.0; Fri, 16 Aug 2019 08:34:34 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18f.domain1.systemhost.net (10.9.212.26) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Fri, 16 Aug 2019 08:34:13 +0100
+ tpw09926dag18g.domain1.systemhost.net (10.9.212.34) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Fri, 16 Aug 2019 08:34:45 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Fri, 16 Aug
- 2019 08:34:13 +0100
+ 2019 08:34:45 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v7 23/42] hw/intc: Declare device little or
+Thread-Topic: [Qemu-devel] [PATCH v7 25/42] hw/misc: Declare device little or
  big endian
-Thread-Index: AQHVVAUArrlrR1Zn3E+pnWujKo/uiQ==
-Date: Fri, 16 Aug 2019 07:34:13 +0000
-Message-ID: <1565940852602.49352@bt.com>
+Thread-Index: AQHVVAUT1axlSjXNWEqoCGdR6qt9zw==
+Date: Fri, 16 Aug 2019 07:34:45 +0000
+Message-ID: <1565940884636.2215@bt.com>
 References: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
 In-Reply-To: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
 Accept-Language: en-AU, en-GB, en-US
@@ -79,11 +78,12 @@ X-MS-TNEF-Correlator:
 x-ms-exchange-messagesentrepresentingtype: 1
 x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.40]
-Content-Type: multipart/alternative; boundary="_000_156594085260249352btcom_"
+Content-Type: multipart/alternative; boundary="_000_15659408846362215btcom_"
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 213.121.35.74
-Subject: [Qemu-arm] [Qemu-devel] [PATCH v7 23/42] hw/intc: Declare device
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 62.239.224.234
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v7 25/42] hw/misc: Declare device
  little or big endian
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -125,9 +125,9 @@ Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
  pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OUC2hYtw1Go1
+X-TUID: 9pRjxQ5nVzs9
 
---_000_156594085260249352btcom_
+--_000_15659408846362215btcom_
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
@@ -148,140 +148,88 @@ better =3D)
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
 ---
- hw/intc/arm_gic.c     | 12 ++++++------
- hw/intc/arm_gicv3.c   |  4 ++--
- hw/intc/etraxfs_pic.c |  2 +-
- hw/intc/imx_avic.c    |  2 +-
- hw/intc/imx_gpcv2.c   |  2 +-
- hw/intc/pl190.c       |  2 +-
- hw/intc/puv3_intc.c   |  2 +-
- 7 files changed, 13 insertions(+), 13 deletions(-)
+ hw/misc/a9scu.c    | 2 +-
+ hw/misc/applesmc.c | 6 +++---
+ hw/misc/arm11scu.c | 2 +-
+ hw/misc/arm_l2x0.c | 2 +-
+ hw/misc/puv3_pm.c  | 2 +-
+ 5 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c
-index 77427a4..283a63a 100644
---- a/hw/intc/arm_gic.c
-+++ b/hw/intc/arm_gic.c
-@@ -1999,38 +1999,38 @@ static const MemoryRegionOps gic_ops[2] =3D {
-     {
-         .read_with_attrs =3D gic_dist_read,
-         .write_with_attrs =3D gic_dist_write,
--        .endianness =3D DEVICE_NATIVE_ENDIAN,
-+        .endianness =3D DEVICE_LITTLE_ENDIAN,
-     },
-     {
-         .read_with_attrs =3D gic_thiscpu_read,
-         .write_with_attrs =3D gic_thiscpu_write,
--        .endianness =3D DEVICE_NATIVE_ENDIAN,
-+        .endianness =3D DEVICE_LITTLE_ENDIAN,
-     }
- };
-
- static const MemoryRegionOps gic_cpu_ops =3D {
-     .read_with_attrs =3D gic_do_cpu_read,
-     .write_with_attrs =3D gic_do_cpu_write,
+diff --git a/hw/misc/a9scu.c b/hw/misc/a9scu.c
+index 4307f00..3de8cd3 100644
+--- a/hw/misc/a9scu.c
++++ b/hw/misc/a9scu.c
+@@ -94,7 +94,7 @@ static void a9_scu_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps a9_scu_ops =3D {
+     .read =3D a9_scu_read,
+     .write =3D a9_scu_write,
 -    .endianness =3D DEVICE_NATIVE_ENDIAN,
 +    .endianness =3D DEVICE_LITTLE_ENDIAN,
  };
 
- static const MemoryRegionOps gic_virt_ops[2] =3D {
-     {
-         .read_with_attrs =3D gic_thiscpu_hyp_read,
-         .write_with_attrs =3D gic_thiscpu_hyp_write,
--        .endianness =3D DEVICE_NATIVE_ENDIAN,
-+        .endianness =3D DEVICE_LITTLE_ENDIAN,
-     },
-     {
-         .read_with_attrs =3D gic_thisvcpu_read,
-         .write_with_attrs =3D gic_thisvcpu_write,
--        .endianness =3D DEVICE_NATIVE_ENDIAN,
-+        .endianness =3D DEVICE_LITTLE_ENDIAN,
-     }
- };
-
- static const MemoryRegionOps gic_viface_ops =3D {
-     .read_with_attrs =3D gic_do_hyp_read,
-     .write_with_attrs =3D gic_do_hyp_write,
--    .endianness =3D DEVICE_NATIVE_ENDIAN,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
- };
-
- static void arm_gic_realize(DeviceState *dev, Error **errp)
-diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c
-index 66eaa97..9b4d5ba 100644
---- a/hw/intc/arm_gicv3.c
-+++ b/hw/intc/arm_gicv3.c
-@@ -352,12 +352,12 @@ static const MemoryRegionOps gic_ops[] =3D {
-     {
-         .read_with_attrs =3D gicv3_dist_read,
-         .write_with_attrs =3D gicv3_dist_write,
--        .endianness =3D DEVICE_NATIVE_ENDIAN,
-+        .endianness =3D DEVICE_LITTLE_ENDIAN,
-     },
-     {
-         .read_with_attrs =3D gicv3_redist_read,
-         .write_with_attrs =3D gicv3_redist_write,
--        .endianness =3D DEVICE_NATIVE_ENDIAN,
-+        .endianness =3D DEVICE_LITTLE_ENDIAN,
-     }
- };
-
-diff --git a/hw/intc/etraxfs_pic.c b/hw/intc/etraxfs_pic.c
-index 20e1391..d4a27d1 100644
---- a/hw/intc/etraxfs_pic.c
-+++ b/hw/intc/etraxfs_pic.c
-@@ -111,7 +111,7 @@ static void pic_write(void *opaque, hwaddr addr,
- static const MemoryRegionOps pic_ops =3D {
-     .read =3D pic_read,
-     .write =3D pic_write,
--    .endianness =3D DEVICE_NATIVE_ENDIAN,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
-     .valid =3D {
-         .min_access_size =3D 4,
-         .max_access_size =3D 4
-diff --git a/hw/intc/imx_avic.c b/hw/intc/imx_avic.c
-index 83a4101..4bef842 100644
---- a/hw/intc/imx_avic.c
-+++ b/hw/intc/imx_avic.c
-@@ -308,7 +308,7 @@ static void imx_avic_write(void *opaque, hwaddr offset,
- static const MemoryRegionOps imx_avic_ops =3D {
-     .read =3D imx_avic_read,
-     .write =3D imx_avic_write,
--    .endianness =3D DEVICE_NATIVE_ENDIAN,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
- };
-
- static void imx_avic_reset(DeviceState *dev)
-diff --git a/hw/intc/imx_gpcv2.c b/hw/intc/imx_gpcv2.c
-index a83333b..f37e6b5 100644
---- a/hw/intc/imx_gpcv2.c
-+++ b/hw/intc/imx_gpcv2.c
-@@ -64,7 +64,7 @@ static void imx_gpcv2_write(void *opaque, hwaddr offset,
- static const struct MemoryRegionOps imx_gpcv2_ops =3D {
-     .read =3D imx_gpcv2_read,
-     .write =3D imx_gpcv2_write,
+ static void a9_scu_reset(DeviceState *dev)
+diff --git a/hw/misc/applesmc.c b/hw/misc/applesmc.c
+index 2d7eb3c..6c91f29 100644
+--- a/hw/misc/applesmc.c
++++ b/hw/misc/applesmc.c
+@@ -285,7 +285,7 @@ static void qdev_applesmc_isa_reset(DeviceState *dev)
+ static const MemoryRegionOps applesmc_data_io_ops =3D {
+     .write =3D applesmc_io_data_write,
+     .read =3D applesmc_io_data_read,
 -    .endianness =3D DEVICE_NATIVE_ENDIAN,
 +    .endianness =3D DEVICE_LITTLE_ENDIAN,
      .impl =3D {
-         /*
-          * Our device would not work correctly if the guest was doing
-diff --git a/hw/intc/pl190.c b/hw/intc/pl190.c
-index b4f31ef..e6eab1e 100644
---- a/hw/intc/pl190.c
-+++ b/hw/intc/pl190.c
-@@ -220,7 +220,7 @@ static void pl190_write(void *opaque, hwaddr offset,
- static const MemoryRegionOps pl190_ops =3D {
-     .read =3D pl190_read,
-     .write =3D pl190_write,
+         .min_access_size =3D 1,
+         .max_access_size =3D 1,
+@@ -295,7 +295,7 @@ static const MemoryRegionOps applesmc_data_io_ops =3D {
+ static const MemoryRegionOps applesmc_cmd_io_ops =3D {
+     .write =3D applesmc_io_cmd_write,
+     .read =3D applesmc_io_cmd_read,
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+     .impl =3D {
+         .min_access_size =3D 1,
+         .max_access_size =3D 1,
+@@ -305,7 +305,7 @@ static const MemoryRegionOps applesmc_cmd_io_ops =3D {
+ static const MemoryRegionOps applesmc_err_io_ops =3D {
+     .write =3D applesmc_io_err_write,
+     .read =3D applesmc_io_err_read,
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+     .impl =3D {
+         .min_access_size =3D 1,
+         .max_access_size =3D 1,
+diff --git a/hw/misc/arm11scu.c b/hw/misc/arm11scu.c
+index 84275df..59fd7c0 100644
+--- a/hw/misc/arm11scu.c
++++ b/hw/misc/arm11scu.c
+@@ -57,7 +57,7 @@ static void mpcore_scu_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps mpcore_scu_ops =3D {
+     .read =3D mpcore_scu_read,
+     .write =3D mpcore_scu_write,
 -    .endianness =3D DEVICE_NATIVE_ENDIAN,
 +    .endianness =3D DEVICE_LITTLE_ENDIAN,
  };
 
- static void pl190_reset(DeviceState *d)
-diff --git a/hw/intc/puv3_intc.c b/hw/intc/puv3_intc.c
-index e2f6d98..97999cc 100644
---- a/hw/intc/puv3_intc.c
-+++ b/hw/intc/puv3_intc.c
-@@ -100,7 +100,7 @@ static const MemoryRegionOps puv3_intc_ops =3D {
+ static void arm11_scu_realize(DeviceState *dev, Error **errp)
+diff --git a/hw/misc/arm_l2x0.c b/hw/misc/arm_l2x0.c
+index b88f40a..72ecf46 100644
+--- a/hw/misc/arm_l2x0.c
++++ b/hw/misc/arm_l2x0.c
+@@ -157,7 +157,7 @@ static void l2x0_priv_reset(DeviceState *dev)
+ static const MemoryRegionOps l2x0_mem_ops =3D {
+     .read =3D l2x0_priv_read,
+     .write =3D l2x0_priv_write,
+-    .endianness =3D DEVICE_NATIVE_ENDIAN,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
+  };
+
+ static void l2x0_priv_init(Object *obj)
+diff --git a/hw/misc/puv3_pm.c b/hw/misc/puv3_pm.c
+index b538b4a..cd82b69 100644
+--- a/hw/misc/puv3_pm.c
++++ b/hw/misc/puv3_pm.c
+@@ -118,7 +118,7 @@ static const MemoryRegionOps puv3_pm_ops =3D {
          .min_access_size =3D 4,
          .max_access_size =3D 4,
      },
@@ -289,14 +237,14 @@ index e2f6d98..97999cc 100644
 +    .endianness =3D DEVICE_LITTLE_ENDIAN,
  };
 
- static void puv3_intc_realize(DeviceState *dev, Error **errp)
+ static void puv3_pm_realize(DeviceState *dev, Error **errp)
 --
 1.8.3.1
 
 ?
 
 
---_000_156594085260249352btcom_
+--_000_15659408846362215btcom_
 Content-Type: text/html; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
@@ -344,175 +292,97 @@ div>
 </div>
 <div>Signed-off-by: Tony Nguyen &lt;tony.nguyen@bt.com&gt;</div>
 <div>---</div>
-<div>&nbsp;hw/intc/arm_gic.c &nbsp; &nbsp; | 12 &#43;&#43;&#43;&#43;&#43;&#=
-43;------</div>
-<div>&nbsp;hw/intc/arm_gicv3.c &nbsp; | &nbsp;4 &#43;&#43;--</div>
-<div>&nbsp;hw/intc/etraxfs_pic.c | &nbsp;2 &#43;-</div>
-<div>&nbsp;hw/intc/imx_avic.c &nbsp; &nbsp;| &nbsp;2 &#43;-</div>
-<div>&nbsp;hw/intc/imx_gpcv2.c &nbsp; | &nbsp;2 &#43;-</div>
-<div>&nbsp;hw/intc/pl190.c &nbsp; &nbsp; &nbsp; | &nbsp;2 &#43;-</div>
-<div>&nbsp;hw/intc/puv3_intc.c &nbsp; | &nbsp;2 &#43;-</div>
-<div>&nbsp;7 files changed, 13 insertions(&#43;), 13 deletions(-)</div>
+<div>&nbsp;hw/misc/a9scu.c &nbsp; &nbsp;| 2 &#43;-</div>
+<div>&nbsp;hw/misc/applesmc.c | 6 &#43;&#43;&#43;---</div>
+<div>&nbsp;hw/misc/arm11scu.c | 2 &#43;-</div>
+<div>&nbsp;hw/misc/arm_l2x0.c | 2 &#43;-</div>
+<div>&nbsp;hw/misc/puv3_pm.c &nbsp;| 2 &#43;-</div>
+<div>&nbsp;5 files changed, 7 insertions(&#43;), 7 deletions(-)</div>
 <div><br>
 </div>
-<div>diff --git a/hw/intc/arm_gic.c b/hw/intc/arm_gic.c</div>
-<div>index 77427a4..283a63a 100644</div>
-<div>--- a/hw/intc/arm_gic.c</div>
-<div>&#43;&#43;&#43; b/hw/intc/arm_gic.c</div>
-<div>@@ -1999,38 &#43;1999,38 @@ static const MemoryRegionOps gic_ops[2] =
-=3D {</div>
-<div>&nbsp; &nbsp; &nbsp;{</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.read_with_attrs =3D gic_dist_read,<=
-/div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.write_with_attrs =3D gic_dist_write=
-,</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</di=
-v>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,=
-</div>
-<div>&nbsp; &nbsp; &nbsp;},</div>
-<div>&nbsp; &nbsp; &nbsp;{</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.read_with_attrs =3D gic_thiscpu_rea=
-d,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.write_with_attrs =3D gic_thiscpu_wr=
-ite,</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</di=
-v>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,=
-</div>
-<div>&nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp;};</div>
-<div>&nbsp;</div>
-<div>&nbsp;static const MemoryRegionOps gic_cpu_ops =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;.read_with_attrs =3D gic_do_cpu_read,</div>
-<div>&nbsp; &nbsp; &nbsp;.write_with_attrs =3D gic_do_cpu_write,</div>
+<div>diff --git a/hw/misc/a9scu.c b/hw/misc/a9scu.c</div>
+<div>index 4307f00..3de8cd3 100644</div>
+<div>--- a/hw/misc/a9scu.c</div>
+<div>&#43;&#43;&#43; b/hw/misc/a9scu.c</div>
+<div>@@ -94,7 &#43;94,7 @@ static void a9_scu_write(void *opaque, hwaddr of=
+fset,</div>
+<div>&nbsp;static const MemoryRegionOps a9_scu_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D a9_scu_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D a9_scu_write,</div>
 <div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
 <div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
 <div>&nbsp;};</div>
 <div>&nbsp;</div>
-<div>&nbsp;static const MemoryRegionOps gic_virt_ops[2] =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;{</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.read_with_attrs =3D gic_thiscpu_hyp=
-_read,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.write_with_attrs =3D gic_thiscpu_hy=
-p_write,</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</di=
-v>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,=
-</div>
-<div>&nbsp; &nbsp; &nbsp;},</div>
-<div>&nbsp; &nbsp; &nbsp;{</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.read_with_attrs =3D gic_thisvcpu_re=
-ad,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.write_with_attrs =3D gic_thisvcpu_w=
-rite,</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</di=
-v>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,=
-</div>
-<div>&nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp;};</div>
-<div>&nbsp;</div>
-<div>&nbsp;static const MemoryRegionOps gic_viface_ops =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;.read_with_attrs =3D gic_do_hyp_read,</div>
-<div>&nbsp; &nbsp; &nbsp;.write_with_attrs =3D gic_do_hyp_write,</div>
-<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
-<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
-<div>&nbsp;};</div>
-<div>&nbsp;</div>
-<div>&nbsp;static void arm_gic_realize(DeviceState *dev, Error **errp)</div=
->
-<div>diff --git a/hw/intc/arm_gicv3.c b/hw/intc/arm_gicv3.c</div>
-<div>index 66eaa97..9b4d5ba 100644</div>
-<div>--- a/hw/intc/arm_gicv3.c</div>
-<div>&#43;&#43;&#43; b/hw/intc/arm_gicv3.c</div>
-<div>@@ -352,12 &#43;352,12 @@ static const MemoryRegionOps gic_ops[] =3D {=
-</div>
-<div>&nbsp; &nbsp; &nbsp;{</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.read_with_attrs =3D gicv3_dist_read=
-,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.write_with_attrs =3D gicv3_dist_wri=
-te,</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</di=
-v>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,=
-</div>
-<div>&nbsp; &nbsp; &nbsp;},</div>
-<div>&nbsp; &nbsp; &nbsp;{</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.read_with_attrs =3D gicv3_redist_re=
-ad,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.write_with_attrs =3D gicv3_redist_w=
-rite,</div>
-<div>- &nbsp; &nbsp; &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</di=
-v>
-<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,=
-</div>
-<div>&nbsp; &nbsp; &nbsp;}</div>
-<div>&nbsp;};</div>
-<div>&nbsp;</div>
-<div>diff --git a/hw/intc/etraxfs_pic.c b/hw/intc/etraxfs_pic.c</div>
-<div>index 20e1391..d4a27d1 100644</div>
-<div>--- a/hw/intc/etraxfs_pic.c</div>
-<div>&#43;&#43;&#43; b/hw/intc/etraxfs_pic.c</div>
-<div>@@ -111,7 &#43;111,7 @@ static void pic_write(void *opaque, hwaddr add=
-r,</div>
-<div>&nbsp;static const MemoryRegionOps pic_ops =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;.read =3D pic_read,</div>
-<div>&nbsp; &nbsp; &nbsp;.write =3D pic_write,</div>
-<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
-<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
-<div>&nbsp; &nbsp; &nbsp;.valid =3D {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 4,</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 4</div>
-<div>diff --git a/hw/intc/imx_avic.c b/hw/intc/imx_avic.c</div>
-<div>index 83a4101..4bef842 100644</div>
-<div>--- a/hw/intc/imx_avic.c</div>
-<div>&#43;&#43;&#43; b/hw/intc/imx_avic.c</div>
-<div>@@ -308,7 &#43;308,7 @@ static void imx_avic_write(void *opaque, hwadd=
-r offset,</div>
-<div>&nbsp;static const MemoryRegionOps imx_avic_ops =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;.read =3D imx_avic_read,</div>
-<div>&nbsp; &nbsp; &nbsp;.write =3D imx_avic_write,</div>
-<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
-<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
-<div>&nbsp;};</div>
-<div>&nbsp;</div>
-<div>&nbsp;static void imx_avic_reset(DeviceState *dev)</div>
-<div>diff --git a/hw/intc/imx_gpcv2.c b/hw/intc/imx_gpcv2.c</div>
-<div>index a83333b..f37e6b5 100644</div>
-<div>--- a/hw/intc/imx_gpcv2.c</div>
-<div>&#43;&#43;&#43; b/hw/intc/imx_gpcv2.c</div>
-<div>@@ -64,7 &#43;64,7 @@ static void imx_gpcv2_write(void *opaque, hwaddr=
- offset,</div>
-<div>&nbsp;static const struct MemoryRegionOps imx_gpcv2_ops =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;.read =3D imx_gpcv2_read,</div>
-<div>&nbsp; &nbsp; &nbsp;.write =3D imx_gpcv2_write,</div>
+<div>&nbsp;static void a9_scu_reset(DeviceState *dev)</div>
+<div>diff --git a/hw/misc/applesmc.c b/hw/misc/applesmc.c</div>
+<div>index 2d7eb3c..6c91f29 100644</div>
+<div>--- a/hw/misc/applesmc.c</div>
+<div>&#43;&#43;&#43; b/hw/misc/applesmc.c</div>
+<div>@@ -285,7 &#43;285,7 @@ static void qdev_applesmc_isa_reset(DeviceStat=
+e *dev)</div>
+<div>&nbsp;static const MemoryRegionOps applesmc_data_io_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D applesmc_io_data_write,</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D applesmc_io_data_read,</div>
 <div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
 <div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
 <div>&nbsp; &nbsp; &nbsp;.impl =3D {</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/*</div>
-<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; * Our device would not work correct=
-ly if the guest was doing</div>
-<div>diff --git a/hw/intc/pl190.c b/hw/intc/pl190.c</div>
-<div>index b4f31ef..e6eab1e 100644</div>
-<div>--- a/hw/intc/pl190.c</div>
-<div>&#43;&#43;&#43; b/hw/intc/pl190.c</div>
-<div>@@ -220,7 &#43;220,7 @@ static void pl190_write(void *opaque, hwaddr o=
-ffset,</div>
-<div>&nbsp;static const MemoryRegionOps pl190_ops =3D {</div>
-<div>&nbsp; &nbsp; &nbsp;.read =3D pl190_read,</div>
-<div>&nbsp; &nbsp; &nbsp;.write =3D pl190_write,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 1,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 1,</div>
+<div>@@ -295,7 &#43;295,7 @@ static const MemoryRegionOps applesmc_data_io_=
+ops =3D {</div>
+<div>&nbsp;static const MemoryRegionOps applesmc_cmd_io_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D applesmc_io_cmd_write,</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D applesmc_io_cmd_read,</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp; &nbsp; &nbsp;.impl =3D {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 1,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 1,</div>
+<div>@@ -305,7 &#43;305,7 @@ static const MemoryRegionOps applesmc_cmd_io_o=
+ps =3D {</div>
+<div>&nbsp;static const MemoryRegionOps applesmc_err_io_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D applesmc_io_err_write,</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D applesmc_io_err_read,</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp; &nbsp; &nbsp;.impl =3D {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 1,</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 1,</div>
+<div>diff --git a/hw/misc/arm11scu.c b/hw/misc/arm11scu.c</div>
+<div>index 84275df..59fd7c0 100644</div>
+<div>--- a/hw/misc/arm11scu.c</div>
+<div>&#43;&#43;&#43; b/hw/misc/arm11scu.c</div>
+<div>@@ -57,7 &#43;57,7 @@ static void mpcore_scu_write(void *opaque, hwadd=
+r offset,</div>
+<div>&nbsp;static const MemoryRegionOps mpcore_scu_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D mpcore_scu_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D mpcore_scu_write,</div>
 <div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
 <div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
 <div>&nbsp;};</div>
 <div>&nbsp;</div>
-<div>&nbsp;static void pl190_reset(DeviceState *d)</div>
-<div>diff --git a/hw/intc/puv3_intc.c b/hw/intc/puv3_intc.c</div>
-<div>index e2f6d98..97999cc 100644</div>
-<div>--- a/hw/intc/puv3_intc.c</div>
-<div>&#43;&#43;&#43; b/hw/intc/puv3_intc.c</div>
-<div>@@ -100,7 &#43;100,7 @@ static const MemoryRegionOps puv3_intc_ops =3D=
- {</div>
+<div>&nbsp;static void arm11_scu_realize(DeviceState *dev, Error **errp)</d=
+iv>
+<div>diff --git a/hw/misc/arm_l2x0.c b/hw/misc/arm_l2x0.c</div>
+<div>index b88f40a..72ecf46 100644</div>
+<div>--- a/hw/misc/arm_l2x0.c</div>
+<div>&#43;&#43;&#43; b/hw/misc/arm_l2x0.c</div>
+<div>@@ -157,7 &#43;157,7 @@ static void l2x0_priv_reset(DeviceState *dev)<=
+/div>
+<div>&nbsp;static const MemoryRegionOps l2x0_mem_ops =3D {</div>
+<div>&nbsp; &nbsp; &nbsp;.read =3D l2x0_priv_read,</div>
+<div>&nbsp; &nbsp; &nbsp;.write =3D l2x0_priv_write,</div>
+<div>- &nbsp; &nbsp;.endianness =3D DEVICE_NATIVE_ENDIAN,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
+<div>&nbsp; };</div>
+<div>&nbsp;</div>
+<div>&nbsp;static void l2x0_priv_init(Object *obj)</div>
+<div>diff --git a/hw/misc/puv3_pm.c b/hw/misc/puv3_pm.c</div>
+<div>index b538b4a..cd82b69 100644</div>
+<div>--- a/hw/misc/puv3_pm.c</div>
+<div>&#43;&#43;&#43; b/hw/misc/puv3_pm.c</div>
+<div>@@ -118,7 &#43;118,7 @@ static const MemoryRegionOps puv3_pm_ops =3D {=
+</div>
 <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.min_access_size =3D 4,</div>
 <div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;.max_access_size =3D 4,</div>
 <div>&nbsp; &nbsp; &nbsp;},</div>
@@ -520,8 +390,8 @@ ffset,</div>
 <div>&#43; &nbsp; &nbsp;.endianness =3D DEVICE_LITTLE_ENDIAN,</div>
 <div>&nbsp;};</div>
 <div>&nbsp;</div>
-<div>&nbsp;static void puv3_intc_realize(DeviceState *dev, Error **errp)</d=
-iv>
+<div>&nbsp;static void puv3_pm_realize(DeviceState *dev, Error **errp)</div=
+>
 <div>--&nbsp;</div>
 <div>1.8.3.1</div>
 <div><br>
@@ -533,4 +403,4 @@ iv>
 </body>
 </html>
 
---_000_156594085260249352btcom_--
+--_000_15659408846362215btcom_--

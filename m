@@ -1,82 +1,64 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1001669wrs;
-        Fri, 16 Aug 2019 09:22:07 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx3qyRe00CmqXvYB3dhtI4/RyCEwvr9h2gTHrYaRDACAkf8vrfHWCf8Gqkkw+0FKI11wbtV
-X-Received: by 2002:a37:881:: with SMTP id 123mr9495394qki.145.1565972527585;
-        Fri, 16 Aug 2019 09:22:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565972527; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Zmr+LC+79hM7ACYGG9UjCahvPprfDaTgDWjCrn+1mkUrEuWC9p6MkYQnbScHjWZqvl
-         kuWaUE8slT98VtiDzNxuCF9m/KQEmWDaRKJ9+891rL7b/AfwfT38sK7MEHPvOUvXwtKz
-         QfsDXhctvEe10xhTn4XLGOPQs5r1KG9jRRjCydqA5bRxEQbYOi4wazJLuSf3ChTCSUcn
-         nzptpZfoejmoIrqxuwXUW1N4FR9E8kX6Z9rIVAiWZnC0Jaq8gPlnHYfAwDNv0f+/tkvm
-         RuVnnFQL+mVtJzDN8STG07MxbFSCOdajrvyOm5T2lLjErrC8eE+ZS+j/3CWN5D9bk0AO
-         hc8Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=55y1Y3LlxOcFd9xjBLfNutZe0HvFGiJZd+y1CUPzaf8=;
-        b=RijQ+h8PkAHpjZFZBL+VNDG+DY2D4aWhgllEEG8cyVckiaaTBBOemwxEQboDLDa7NL
-         PuXwfcePimlqO1Bsh8DJ98Ht0qpJV1ycM9oEjQfh4hSKeHc9cFrv3r1+P9WDWI8iYLXF
-         U2egZe0bxhFpmy4xRqYrNR0k9sloBHfIf8tvFnY+3lBshf2g3gZodGX5Ra2+d0U3U6gH
-         YJ1ls0wEx7tUhgceBbl7QCVuf8NdQ52cu/3gNIb6B2HWRSISSnjYyjWL8D/+pT/inAeI
-         d8PNmF4Pul6fsY++23TNhUY2fGYC5tZDv3C5b4/aJrEqDk6vuxnlib4dQAf/1n6oIM5N
-         xXHA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1106265wrs;
+        Fri, 16 Aug 2019 11:13:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx4O7eGwLZ9mDXhqg2jzyHIphVmgKd57qQTA0bCeIa1EdpYr2zI7wiyds6P2ZqGkIqU0ByT
+X-Received: by 2002:a37:a0c2:: with SMTP id j185mr10004998qke.123.1565979202530;
+        Fri, 16 Aug 2019 11:13:22 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w8si3951110qta.357.2019.08.16.09.22.07
+        by mx.google.com with ESMTPS id c17si3836151qkk.197.2019.08.16.11.13.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2019 09:22:07 -0700 (PDT)
+        Fri, 16 Aug 2019 11:13:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58394 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59010 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyezP-0005Kd-2e
-	for alex.bennee@linaro.org; Fri, 16 Aug 2019 12:22:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39488)
+	id 1hygj3-0003YD-VF
+	for alex.bennee@linaro.org; Fri, 16 Aug 2019 14:13:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36426)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1hyez4-0005JK-DT
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 12:21:47 -0400
+ (envelope-from <no-reply@patchew.org>) id 1hygiv-0003Y2-UW
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 14:13:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1hyez3-0000aw-B1
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 12:21:46 -0400
-Received: from 4.mo177.mail-out.ovh.net ([46.105.37.72]:49941)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1hyez3-0000Xp-5i
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 12:21:45 -0400
-Received: from player728.ha.ovh.net (unknown [10.108.42.168])
- by mo177.mail-out.ovh.net (Postfix) with ESMTP id D705A10804E
- for <qemu-arm@nongnu.org>; Fri, 16 Aug 2019 18:21:41 +0200 (CEST)
-Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
- (Authenticated sender: clg@kaod.org)
- by player728.ha.ovh.net (Postfix) with ESMTPSA id D4EDD8D05A76;
- Fri, 16 Aug 2019 16:21:34 +0000 (UTC)
-To: Rashmica Gupta <rashmica.g@gmail.com>, peter.maydell@linaro.org,
- qemu-arm@nongnu.org
-References: <20190816073229.22787-1-rashmica.g@gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <120fa848-808f-b918-14f3-ab9d1f06532e@kaod.org>
-Date: Fri, 16 Aug 2019 18:21:34 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ (envelope-from <no-reply@patchew.org>) id 1hygiu-0005gu-8p
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 14:13:13 -0400
+Resent-Date: Fri, 16 Aug 2019 14:13:13 -0400
+Resent-Message-Id: <E1hygiu-0005gu-8p@eggs.gnu.org>
+Received: from sender4-of-o59.zoho.com ([136.143.188.59]:21928)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1hygiu-0005gI-1g; Fri, 16 Aug 2019 14:13:12 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1565979184; cv=none; d=zoho.com; s=zohoarc; 
+ b=Yxo0LVKbIGXEJbqjAyeNgYEBOj8RHKWpN2/oSts1Il3LRPP9BtF0yKmMt3NqD19a0hP0oIQWm8Gm6RBO0PPfw5tr0Qs79yAy9Ucx45/d+IRKFW5ckaUM/eewSFWP4tTHvQaRsad1GApkNHgoQ/+YnlJnobh8unLenK4Fu6krbc0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+ s=zohoarc; t=1565979184;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+ bh=IaGT54kZbzOjSd3CRI794MsPy/X9i9kR0FbdXgHoWjw=; 
+ b=OLmTuvsQ0Ii+MFDtXapKMf/6ovW054ILT/IYD14uxCFfLUczYLDJ7yHE2pAJr3h7zf6/onuGTdgkNDT4hmFIbRkFWTM20uPuuVhuZHLS84veU4rI9EC+9JY7xkWEqpzwmklSzVokxaQbwLgLYzWCKlt8o0NPsz8Vaq3vA3SXZzw=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1565979183452526.6729052566353;
+ Fri, 16 Aug 2019 11:13:03 -0700 (PDT)
+In-Reply-To: <20190816125802.25877-1-peter.maydell@linaro.org>
+Message-ID: <156597918248.21161.13741702560701675516@5dec9699b7de>
 MIME-Version: 1.0
-In-Reply-To: <20190816073229.22787-1-rashmica.g@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 15570351288807361525
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrudeffedgleejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: peter.maydell@linaro.org
+Date: Fri, 16 Aug 2019 11:13:03 -0700 (PDT)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.37.72
-Subject: Re: [Qemu-arm] [PATCH v4 0/3] Add Aspeed GPIO controller model
+X-Received-From: 136.143.188.59
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 0/2] target/arm: Take exceptions
+ on ATS instructions
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -88,61 +70,27 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: andrew@aj.id.au, aik@ozlabs.ru, qemu-devel@nongnu.org, joel@jms.id.au
+Reply-To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oQp8Ouy5+9oA
+X-TUID: RyLd5UcA2LMa
 
-On 16/08/2019 09:32, Rashmica Gupta wrote:
-> v5:
-> - integrated AspeedGPIOController fields into AspeedGPIOClass
-> - separated ast2600_3_6v and ast2600_1_8v into two classes
-
-Rashmica,
-
-This looks much nicer !  
-
-Please take a look at branch aspeed-4.2 in which I have merged your
-v5 and modified slightly the ast2600 part. 
-
-  https://github.com/legoater/qemu/commit/02b3df3f1a380eec4df7c49e88fa7ba27f75a610
-
-I introduced a gpio_1_8v controller with its specific MMIO and IRQ
-definitions. Tell me what you think of it. The principal motivation
-behind these adjustments is that I don't know yet how we are going 
-to instantiate/realize the specific models of the AST2600 SoC. the 
-GPIO 1.8v is one of these extra controllers. 
-
-Thanks,
-
-C.
-
-> v4:
-> - proper interupt handling thanks to Andrew
-> - switch statements for reading and writing suggested by Peter
-> - some small cleanups suggested by Alexey
-> 
-> v3:
-> - didn't have each gpio set up as an irq 
-> - now can't access set AC on ast2400 (only exists on ast2500)
-> - added ast2600 implementation (patch 3)
-> - renamed a couple of variables for clarity
-> 
-> v2: Addressed Andrew's feedback, added debounce regs, renamed get/set to
-> read/write to minimise confusion with a 'set' of registers.
-> 
-> Rashmica Gupta (3):
->   hw/gpio: Add basic Aspeed GPIO model for AST2400 and AST2500
->   aspeed: add a GPIO controller to the SoC
->   hw/gpio: Add in AST2600 specific implementation
-> 
->  include/hw/arm/aspeed_soc.h   |    3 +
->  include/hw/gpio/aspeed_gpio.h |  100 ++++
->  hw/arm/aspeed_soc.c           |   17 +
->  hw/gpio/aspeed_gpio.c         | 1006 +++++++++++++++++++++++++++++++++
->  hw/gpio/Makefile.objs         |    1 +
->  5 files changed, 1127 insertions(+)
->  create mode 100644 include/hw/gpio/aspeed_gpio.h
->  create mode 100644 hw/gpio/aspeed_gpio.c
-> 
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDgxNjEyNTgwMi4yNTg3
+Ny0xLXBldGVyLm1heWRlbGxAbGluYXJvLm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQg
+YnVpbGQgdGVzdCBvbiBzMzkweCBob3N0LiBQbGVhc2UgZmluZCB0aGUgZGV0YWlscyBiZWxvdy4K
+Cj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKIyBUZXN0aW5nIHNjcmlwdCB3
+aWxsIGJlIGludm9rZWQgdW5kZXIgdGhlIGdpdCBjaGVja291dCB3aXRoCiMgSEVBRCBwb2ludGlu
+ZyB0byBhIGNvbW1pdCB0aGF0IGhhcyB0aGUgcGF0Y2hlcyBhcHBsaWVkIG9uIHRvcCBvZiAiYmFz
+ZSIKIyBicmFuY2gKc2V0IC1lCgplY2hvCmVjaG8gIj09PSBFTlYgPT09IgplbnYKCmVjaG8KZWNo
+byAiPT09IFBBQ0tBR0VTID09PSIKcnBtIC1xYQoKZWNobwplY2hvICI9PT0gVU5BTUUgPT09Igp1
+bmFtZSAtYQoKQ0M9JEhPTUUvYmluL2NjCklOU1RBTEw9JFBXRC9pbnN0YWxsCkJVSUxEPSRQV0Qv
+YnVpbGQKbWtkaXIgLXAgJEJVSUxEICRJTlNUQUxMClNSQz0kUFdECmNkICRCVUlMRAokU1JDL2Nv
+bmZpZ3VyZSAtLWNjPSRDQyAtLXByZWZpeD0kSU5TVEFMTAptYWtlIC1qNAojIFhYWDogd2UgbmVl
+ZCByZWxpYWJsZSBjbGVhbiB1cAojIG1ha2UgY2hlY2sgLWo0IFY9MQptYWtlIGluc3RhbGwKPT09
+IFRFU1QgU0NSSVBUIEVORCA9PT0KCgoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0
+cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAxOTA4MTYxMjU4MDIuMjU4NzctMS1wZXRlci5tYXlkZWxs
+QGxpbmFyby5vcmcvdGVzdGluZy5zMzkweC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJh
+dGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVh
+c2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
 

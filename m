@@ -1,74 +1,75 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp471564wrs;
-        Fri, 16 Aug 2019 00:27:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxNtEm/HK0iF4iRMXxQbHa6UaIqCNMONIbN5GfvDAWmh2zUbG2IZeu2dJUdb13E7sCUXkZq
-X-Received: by 2002:a50:a4ad:: with SMTP id w42mr9208786edb.230.1565940466575;
-        Fri, 16 Aug 2019 00:27:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565940466; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp472141wrs;
+        Fri, 16 Aug 2019 00:28:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxUeuhBFfQpktp9I/gcZALEsMbCLLTzpSw6dIvkL0yqNtfKpYY6L0g4AWnESjY7mJkWmuZg
+X-Received: by 2002:a17:906:7c4d:: with SMTP id g13mr6808213ejp.188.1565940518632;
+        Fri, 16 Aug 2019 00:28:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565940518; cv=none;
         d=google.com; s=arc-20160816;
-        b=ghLAQNI2H/PzFpP8G+uOpMttWMPPhtt0hP86gLwTdkoTlGF+nz2SSuEE15zvtD3BhL
-         y9btunnsjSqVbZN62uZ004xt0c3xJPm//FEVPCz1wsYOWmw7fYivJNwpxI37gyi38lWv
-         oekAzqmKDiB56iWbsY5o08inTwedLCs+MfOD/IqvMT02Bgvt1tWkrMztZ/+tDCfttGvT
-         aUFeqbzfkhfBRZ8d49/FlxzFqC2ZYPH1N9OhkLzusIly942Qf3u3eF3/L5gU0XBoHBVr
-         4+k4I8hdMUF7oDXHNfW78csXVqDUp2pstevXJxR8wxBuzKQvZfqSLYv3izGgFewOIRKp
-         0yHQ==
+        b=SKilJii2fHQEIDDOZGdORnDbKWtUi5z7gNLxWZE4aw2iIZttA1teO9DURjOULdSwdk
+         YxcfoelGQNkobIYiGWELbBDGDvYvvCooyIicpYSskY3pLkO4ZpGbiqKqg4xkJXtaVqZZ
+         NyCsu41fDc03c/lhRU/DpfR0wPOlnXbdludpwY9tlZ0JsOQFH8ACnBMT0N7D659uK1UM
+         Z+aDGlQCp8A6rWYYE7P4PSP0LpjUNjb9f03v0HXCFv1X9tX8YOXP0kxcH+60TsXx0VKi
+         M6IIiFCo6JD6u84uxh00DddtXkq7Qyk+YWFPwhpq3Jbiz1yP3DT3d2UXtPDDV7tBVdtf
+         9u9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-language:accept-language:in-reply-to:references:message-id
          :date:thread-index:thread-topic:to:from;
-        bh=zuDu1DTHRFb+kqvyrV895C5f7qwzOC2CBx/rZFVu8M4=;
-        b=YP+y3zuo1Dze2Ntp5GBTYsE+jWB9EBJUARA1IdZrnBgPLSdjO3RcUhgZs0NRNhVNV1
-         J4xULBe947pq0CPFt2kcAh99QxAgfWx7e75I62Bh4Agwe0oFmhHtZ8uCWpn8MkDD1xml
-         gTpqLY+o4tktqj0wSshKazU5FaVFhx1udKAnsYCPcJOBi3BetIsQkMVDuoO4V1jarMUJ
-         DCY9+Cnrzu3kWa0vGAxMJdAyv1Xc0h+HTISvoS/rV6eQ47DQTcc1u0ENmjp1n+3t2G//
-         NHc2Az3AiDJRQxQIC4ezRSSlwcHcvBfAniT36riqjNC9m9fYjC/AqsS9zMWcHEMiwU9H
-         zRvg==
+        bh=YHBNM4UhK00PNvioCRkHZFhE+HizX5DQk7xWsK0B+5E=;
+        b=Qi082n63xLJjhYqjvOVNpN5CTCgvBxToysTbM1M3g4WEgWPKx+jccSzMOT9EjaFfY5
+         eNC0gKbN7scTfx5GmHoVy4i2LtrONzA/ExfuhXnezVqQ8ygv0UeDpD5Z17ZheTQmvjC3
+         HGbyrNNp1Eo9WafalzlFpdo8+D9lFLAUe82gdgDd1fK2W22bYU1dh0cOvez/UEsQZNLp
+         75h/GJO5gS53npWGvNROfy5dP799zYvOAsm9SqevXVdrf5dQaRZ+zkfC2BFQTzg56PM+
+         IhJmSmMZ7+g8IPC7m+b/rQ4wIhQIHhvbBdVn5XK6CnrINxc3YTtfLwpqIbagR4kpw4FL
+         E7Mg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qq1si2586473ejb.172.2019.08.16.00.27.46
+        by mx.google.com with ESMTPS id q14si3004935edd.22.2019.08.16.00.28.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2019 00:27:46 -0700 (PDT)
+        Fri, 16 Aug 2019 00:28:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:50032 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50072 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyWeH-0000WS-I5
-	for alex.bennee@linaro.org; Fri, 16 Aug 2019 03:27:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37067)
+	id 1hyWf7-0001GS-Am
+	for alex.bennee@linaro.org; Fri, 16 Aug 2019 03:28:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37203)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tony.nguyen@bt.com>) id 1hyWe7-0000Qh-A6
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:27:36 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hyWeX-0000yo-CM
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:28:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hyWe5-0006b2-GH
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:27:35 -0400
-Received: from smtpe1.intersmtp.com ([213.121.35.79]:1532)
+ (envelope-from <tony.nguyen@bt.com>) id 1hyWeU-0006iv-Qt
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 03:28:01 -0400
+Received: from smtpe1.intersmtp.com ([213.121.35.78]:32509)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hyWdv-0006YT-DV; Fri, 16 Aug 2019 03:27:23 -0400
+ id 1hyWeH-0006fn-H2; Fri, 16 Aug 2019 03:27:45 -0400
 Received: from tpw09926dag18h.domain1.systemhost.net (10.9.212.42) by
- BWP09926084.bt.com (10.36.82.115) with Microsoft SMTP Server (version=TLS1_2, 
+ BWP09926083.bt.com (10.36.82.114) with Microsoft SMTP Server (version=TLS1_2, 
  cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Fri, 16
- Aug 2019 08:27:00 +0100
+ Aug 2019 08:27:22 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
  tpw09926dag18h.domain1.systemhost.net (10.9.212.42) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Fri, 16 Aug 2019 08:27:21 +0100
+ Server (TLS) id 15.0.1395.4; Fri, 16 Aug 2019 08:27:43 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Fri, 16 Aug
- 2019 08:27:21 +0100
+ 2019 08:27:43 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
-Thread-Topic: [Qemu-devel] [PATCH v7 03/42] memory: Introduce size_memop
-Thread-Index: AQHVVAQKaBCA2VrA2kWD20s00rLafg==
-Date: Fri, 16 Aug 2019 07:27:21 +0000
-Message-ID: <1565940440547.47375@bt.com>
+Thread-Topic: [Qemu-devel] [PATCH v7 04/42] target/mips: Access MemoryRegion
+ with MemOp
+Thread-Index: AQHVVAQXgdDGsPFhD0WOP1A9ybepgA==
+Date: Fri, 16 Aug 2019 07:27:43 +0000
+Message-ID: <1565940462507.85555@bt.com>
 References: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
 In-Reply-To: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
 Accept-Language: en-AU, en-GB, en-US
@@ -78,12 +79,12 @@ X-MS-TNEF-Correlator:
 x-ms-exchange-messagesentrepresentingtype: 1
 x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.40]
-Content-Type: multipart/alternative; boundary="_000_156594044054747375btcom_"
+Content-Type: multipart/alternative; boundary="_000_156594046250785555btcom_"
 MIME-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 213.121.35.79
-Subject: [Qemu-arm] [Qemu-devel] [PATCH v7 03/42] memory: Introduce
- size_memop
+X-Received-From: 213.121.35.78
+Subject: [Qemu-arm] [Qemu-devel] [PATCH v7 04/42] target/mips: Access
+ MemoryRegion with MemOp
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,54 +125,67 @@ Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
  pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vXK5fRCjdtg8
+X-TUID: N/i3osfeqLBn
 
---_000_156594044054747375btcom_
+--_000_156594046250785555btcom_
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
 The memory_region_dispatch_{read|write} operand "unsigned size" is
 being converted into a "MemOp op".
 
-Introduce no-op size_memop to aid preparatory conversion of
-interfaces.
+Convert interfaces by using no-op size_memop.
 
-Once interfaces are converted, size_memop will be implemented to
-return a MemOp from size in bytes.
+After all interfaces are converted, size_memop will be implemented
+and the memory_region_dispatch_{read|write} operand "unsigned size"
+will be converted into a "MemOp op".
+
+As size_memop is a no-op, this patch does not change any behaviour.
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
+Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/exec/memop.h | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ target/mips/op_helper.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/include/exec/memop.h b/include/exec/memop.h
-index 7262ca3..dfd76a1 100644
---- a/include/exec/memop.h
-+++ b/include/exec/memop.h
-@@ -107,4 +107,14 @@ typedef enum MemOp {
-     MO_SSIZE =3D MO_SIZE | MO_SIGN,
- } MemOp;
+diff --git a/target/mips/op_helper.c b/target/mips/op_helper.c
+index 9e2e02f..1c72a00 100644
+--- a/target/mips/op_helper.c
++++ b/target/mips/op_helper.c
+@@ -24,6 +24,7 @@
+ #include "exec/helper-proto.h"
+ #include "exec/exec-all.h"
+ #include "exec/cpu_ldst.h"
++#include "exec/memop.h"
+ #include "sysemu/kvm.h"
 
-+/* Size in bytes to MemOp.  */
-+static inline unsigned size_memop(unsigned size)
-+{
-+    /*
-+     * FIXME: No-op to aid conversion of memory_region_dispatch_{read|writ=
-e}
-+     * "unsigned size" operand into a "MemOp op".
-+     */
-+    return size;
-+}
-+
+ /*************************************************************************=
+****/
+@@ -4740,11 +4741,11 @@ void helper_cache(CPUMIPSState *env, target_ulong a=
+ddr, uint32_t op)
+     if (op =3D=3D 9) {
+         /* Index Store Tag */
+         memory_region_dispatch_write(env->itc_tag, index, env->CP0_TagLo,
+-                                     8, MEMTXATTRS_UNSPECIFIED);
++                                     size_memop(8), MEMTXATTRS_UNSPECIFIED=
+);
+     } else if (op =3D=3D 5) {
+         /* Index Load Tag */
+         memory_region_dispatch_read(env->itc_tag, index, &env->CP0_TagLo,
+-                                    8, MEMTXATTRS_UNSPECIFIED);
++                                    size_memop(8), MEMTXATTRS_UNSPECIFIED)=
+;
+     }
  #endif
+ }
 --
 1.8.3.1
 
 ?
 
 
---_000_156594044054747375btcom_
+--_000_156594046250785555btcom_
 Content-Type: text/html; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
@@ -193,44 +207,67 @@ e} operand &quot;unsigned size&quot; is</span><br>
 <div>being converted into a &quot;MemOp op&quot;.</div>
 <div><br>
 </div>
-<div>Introduce no-op size_memop to aid preparatory conversion of</div>
-<div>interfaces.</div>
+<div>Convert interfaces by using no-op size_memop.</div>
 <div><br>
 </div>
-<div>Once interfaces are converted, size_memop will be implemented to</div>
-<div>return a MemOp from size in bytes.</div>
+<div>After all interfaces are converted, size_memop will be implemented</di=
+v>
+<div>and the memory_region_dispatch_{read|write} operand &quot;unsigned siz=
+e&quot;</div>
+<div>will be converted into a &quot;MemOp op&quot;.</div>
+<div><br>
+</div>
+<div>As size_memop is a no-op, this patch does not change any behaviour.</d=
+iv>
 <div><br>
 </div>
 <div>Signed-off-by: Tony Nguyen &lt;tony.nguyen@bt.com&gt;</div>
+<div>Reviewed-by: Philippe Mathieu-Daud=E9 &lt;philmd@redhat.com&gt;</div>
 <div>Reviewed-by: Richard Henderson &lt;richard.henderson@linaro.org&gt;</d=
 iv>
 <div>---</div>
-<div>&nbsp;include/exec/memop.h | 10 &#43;&#43;&#43;&#43;&#43;&#43;&#43;&#4=
-3;&#43;&#43;</div>
-<div>&nbsp;1 file changed, 10 insertions(&#43;)</div>
+<div>&nbsp;target/mips/op_helper.c | 5 &#43;&#43;&#43;--</div>
+<div>&nbsp;1 file changed, 3 insertions(&#43;), 2 deletions(-)</div>
 <div><br>
 </div>
-<div>diff --git a/include/exec/memop.h b/include/exec/memop.h</div>
-<div>index 7262ca3..dfd76a1 100644</div>
-<div>--- a/include/exec/memop.h</div>
-<div>&#43;&#43;&#43; b/include/exec/memop.h</div>
-<div>@@ -107,4 &#43;107,14 @@ typedef enum MemOp {</div>
-<div>&nbsp; &nbsp; &nbsp;MO_SSIZE =3D MO_SIZE | MO_SIGN,</div>
-<div>&nbsp;} MemOp;</div>
+<div>diff --git a/target/mips/op_helper.c b/target/mips/op_helper.c</div>
+<div>index 9e2e02f..1c72a00 100644</div>
+<div>--- a/target/mips/op_helper.c</div>
+<div>&#43;&#43;&#43; b/target/mips/op_helper.c</div>
+<div>@@ -24,6 &#43;24,7 @@</div>
+<div>&nbsp;#include &quot;exec/helper-proto.h&quot;</div>
+<div>&nbsp;#include &quot;exec/exec-all.h&quot;</div>
+<div>&nbsp;#include &quot;exec/cpu_ldst.h&quot;</div>
+<div>&#43;#include &quot;exec/memop.h&quot;</div>
+<div>&nbsp;#include &quot;sysemu/kvm.h&quot;</div>
 <div>&nbsp;</div>
-<div>&#43;/* Size in bytes to MemOp. &nbsp;*/</div>
-<div>&#43;static inline unsigned size_memop(unsigned size)</div>
-<div>&#43;{</div>
-<div>&#43; &nbsp; &nbsp;/*</div>
-<div>&#43; &nbsp; &nbsp; * FIXME: No-op to aid conversion of memory_region_=
-dispatch_{read|write}</div>
-<div>&#43; &nbsp; &nbsp; * &quot;unsigned size&quot; operand into a &quot;M=
-emOp op&quot;.</div>
-<div>&#43; &nbsp; &nbsp; */</div>
-<div>&#43; &nbsp; &nbsp;return size;</div>
-<div>&#43;}</div>
-<div>&#43;</div>
+<div>&nbsp;/***************************************************************=
+**************/</div>
+<div>@@ -4740,11 &#43;4741,11 @@ void helper_cache(CPUMIPSState *env, targe=
+t_ulong addr, uint32_t op)</div>
+<div>&nbsp; &nbsp; &nbsp;if (op =3D=3D 9) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* Index Store Tag */</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;memory_region_dispatch_write(env-&gt=
+;itc_tag, index, env-&gt;CP0_TagLo,</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 8, MEMTXATTRS_UNS=
+PECIFIED);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; size_memop(8)=
+, MEMTXATTRS_UNSPECIFIED);</div>
+<div>&nbsp; &nbsp; &nbsp;} else if (op =3D=3D 5) {</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/* Index Load Tag */</div>
+<div>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;memory_region_dispatch_read(env-&gt;=
+itc_tag, index, &amp;env-&gt;CP0_TagLo,</div>
+<div>- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp=
+; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;8, MEMTXATTRS_UNSP=
+ECIFIED);</div>
+<div>&#43; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
+nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;size_memop(8),=
+ MEMTXATTRS_UNSPECIFIED);</div>
+<div>&nbsp; &nbsp; &nbsp;}</div>
 <div>&nbsp;#endif</div>
+<div>&nbsp;}</div>
 <div>--&nbsp;</div>
 <div>1.8.3.1</div>
 <div><br>
@@ -241,4 +278,4 @@ emOp op&quot;.</div>
 </body>
 </html>
 
---_000_156594044054747375btcom_--
+--_000_156594046250785555btcom_--

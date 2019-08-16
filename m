@@ -1,84 +1,82 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp986712wrs;
-        Fri, 16 Aug 2019 09:08:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxOP5GLIzmjjWZJ7+LzyGUX/9TfIpNDe3qtCLfOnMTrZ9ZOJ5B/MUExEfnQfWip5mwMnuDH
-X-Received: by 2002:aa7:c6c3:: with SMTP id b3mr12013064eds.149.1565971688736;
-        Fri, 16 Aug 2019 09:08:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565971688; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1001669wrs;
+        Fri, 16 Aug 2019 09:22:07 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx3qyRe00CmqXvYB3dhtI4/RyCEwvr9h2gTHrYaRDACAkf8vrfHWCf8Gqkkw+0FKI11wbtV
+X-Received: by 2002:a37:881:: with SMTP id 123mr9495394qki.145.1565972527585;
+        Fri, 16 Aug 2019 09:22:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565972527; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yors/k8I/0Rlvu/1+1iiUF8BIYOIUZ/kbsU5Hp2b9GI/0U/S8wcVvY8bWzI4Fd8yC+
-         5T3MMfzIyiBFRTlTLt96VSBAcN87kyStDRkd7JSZEq2qrYDAL0QIcBEGm54LnuUfGFLg
-         cCOMuaC6hDm4Wu+dpZY978Gkr/tKj29QZhWZcU+0sjsJL+P8s1uarhbOcFWLw9+ekyCg
-         PiE6a93vkYhwpLsGatTmXMcd70IxoAdu82uw70McitegxoJ5RQLREdsQP6xc9FgsJPFA
-         IwKQ03booHmX9xJm54kY2BHFz1aWd+2TVfUUt2ePk1g9jzFw52gVltb70TjvTzk7XSOC
-         y78Q==
+        b=Zmr+LC+79hM7ACYGG9UjCahvPprfDaTgDWjCrn+1mkUrEuWC9p6MkYQnbScHjWZqvl
+         kuWaUE8slT98VtiDzNxuCF9m/KQEmWDaRKJ9+891rL7b/AfwfT38sK7MEHPvOUvXwtKz
+         QfsDXhctvEe10xhTn4XLGOPQs5r1KG9jRRjCydqA5bRxEQbYOi4wazJLuSf3ChTCSUcn
+         nzptpZfoejmoIrqxuwXUW1N4FR9E8kX6Z9rIVAiWZnC0Jaq8gPlnHYfAwDNv0f+/tkvm
+         RuVnnFQL+mVtJzDN8STG07MxbFSCOdajrvyOm5T2lLjErrC8eE+ZS+j/3CWN5D9bk0AO
+         hc8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:to;
-        bh=JGRQXOHSlXi9e+9jRjU+WQdbxkrxm6mXXIkT1Ayh8R4=;
-        b=CnRz6iKk+DUfkYN6CdZ4UGLOrYDLbzEvgSrqqOP6lTMYdrw02fmCuezWpAM2iCc7aB
-         tSZbV26DZcWmi3K/pcNDKj3RJuHytcERrrDm0P5jS3iB31ueDwgnsRIVtoP+LEFaTNn5
-         UDoc3wvqqTLtcxEWRTMCHWAnJ/qwB8D1CUQqpSYB1JNaz4z/QKrxmMjt9xhHJmo1lY2d
-         8xslrt2QARQ+qTK5/BCktk3wqFjofJ41d6k2GU5kvIsf3+O55d0X7GYydX+LzeNTIbwI
-         4Dz6swqkivkvrEsmL9qBtavRkgfFRp0GQndlb6t9Sk1KsOFaXhfHUHHvDQqfDJEKBM6O
-         sG4w==
+        bh=55y1Y3LlxOcFd9xjBLfNutZe0HvFGiJZd+y1CUPzaf8=;
+        b=RijQ+h8PkAHpjZFZBL+VNDG+DY2D4aWhgllEEG8cyVckiaaTBBOemwxEQboDLDa7NL
+         PuXwfcePimlqO1Bsh8DJ98Ht0qpJV1ycM9oEjQfh4hSKeHc9cFrv3r1+P9WDWI8iYLXF
+         U2egZe0bxhFpmy4xRqYrNR0k9sloBHfIf8tvFnY+3lBshf2g3gZodGX5Ra2+d0U3U6gH
+         YJ1ls0wEx7tUhgceBbl7QCVuf8NdQ52cu/3gNIb6B2HWRSISSnjYyjWL8D/+pT/inAeI
+         d8PNmF4Pul6fsY++23TNhUY2fGYC5tZDv3C5b4/aJrEqDk6vuxnlib4dQAf/1n6oIM5N
+         xXHA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i18si3090542ejy.393.2019.08.16.09.08.08
+        by mx.google.com with ESMTPS id w8si3951110qta.357.2019.08.16.09.22.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2019 09:08:08 -0700 (PDT)
+        Fri, 16 Aug 2019 09:22:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58256 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58394 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyelr-0000XZ-NR
-	for alex.bennee@linaro.org; Fri, 16 Aug 2019 12:08:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37441)
+	id 1hyezP-0005Kd-2e
+	for alex.bennee@linaro.org; Fri, 16 Aug 2019 12:22:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39488)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1hyelj-0000Ud-45
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 12:08:00 -0400
+ (envelope-from <clg@kaod.org>) id 1hyez4-0005JK-DT
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 12:21:47 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1hyelh-0006z2-Ni
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 12:07:58 -0400
-Received: from 3.mo2.mail-out.ovh.net ([46.105.58.226]:47554)
+ (envelope-from <clg@kaod.org>) id 1hyez3-0000aw-B1
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 12:21:46 -0400
+Received: from 4.mo177.mail-out.ovh.net ([46.105.37.72]:49941)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1hyelh-0006xb-He
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 12:07:57 -0400
-Received: from player771.ha.ovh.net (unknown [10.108.42.184])
- by mo2.mail-out.ovh.net (Postfix) with ESMTP id 80F4D1AA35D
- for <qemu-arm@nongnu.org>; Fri, 16 Aug 2019 18:07:55 +0200 (CEST)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1hyez3-0000Xp-5i
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 12:21:45 -0400
+Received: from player728.ha.ovh.net (unknown [10.108.42.168])
+ by mo177.mail-out.ovh.net (Postfix) with ESMTP id D705A10804E
+ for <qemu-arm@nongnu.org>; Fri, 16 Aug 2019 18:21:41 +0200 (CEST)
 Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
  (Authenticated sender: clg@kaod.org)
- by player771.ha.ovh.net (Postfix) with ESMTPSA id A38588E3EAEF;
- Fri, 16 Aug 2019 16:07:48 +0000 (UTC)
-To: Rashmica Gupta <rashmica.g@gmail.com>
+ by player728.ha.ovh.net (Postfix) with ESMTPSA id D4EDD8D05A76;
+ Fri, 16 Aug 2019 16:21:34 +0000 (UTC)
+To: Rashmica Gupta <rashmica.g@gmail.com>, peter.maydell@linaro.org,
+ qemu-arm@nongnu.org
 References: <20190816073229.22787-1-rashmica.g@gmail.com>
- <20190816073229.22787-3-rashmica.g@gmail.com>
- <4d0aad7fa699a82bcbecb532551827c30c4c0f3d.camel@gmail.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <216d4828-580f-4aae-f400-e90f8db0d360@kaod.org>
-Date: Fri, 16 Aug 2019 18:07:48 +0200
+Message-ID: <120fa848-808f-b918-14f3-ab9d1f06532e@kaod.org>
+Date: Fri, 16 Aug 2019 18:21:34 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <4d0aad7fa699a82bcbecb532551827c30c4c0f3d.camel@gmail.com>
+In-Reply-To: <20190816073229.22787-1-rashmica.g@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Ovh-Tracer-Id: 15337852956821851056
+Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 15570351288807361525
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrudeffedgleegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
-Content-Transfer-Encoding: quoted-printable
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrudeffedgleejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.58.226
-Subject: Re: [Qemu-arm] [PATCH v5 2/3] aspeed: add a GPIO controller to the
- SoC
+X-Received-From: 46.105.37.72
+Subject: Re: [Qemu-arm] [PATCH v4 0/3] Add Aspeed GPIO controller model
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,147 +88,61 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, andrew@aj.id.au, qemu-devel@nongnu.org,
- aik@ozlabs.ru, qemu-arm@nongnu.org, joel@jms.id.au
+Cc: andrew@aj.id.au, aik@ozlabs.ru, qemu-devel@nongnu.org, joel@jms.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 13mfGc5N1Ooc
+X-TUID: oQp8Ouy5+9oA
 
-On 16/08/2019 09:40, Rashmica Gupta wrote:
-> C=C3=A9dric, this is how I thought changes to the SOC for your aspeed-4=
-.1
-> branch would look
+On 16/08/2019 09:32, Rashmica Gupta wrote:
+> v5:
+> - integrated AspeedGPIOController fields into AspeedGPIOClass
+> - separated ast2600_3_6v and ast2600_1_8v into two classes
 
-Some comments,=20
- =20
-> From 13a07834476fa266c352d9a075b341c483b2edf9 Mon Sep 17 00:00:00 2001
-> From: Rashmica Gupta <rashmica.g@gmail.com>
-> Date: Fri, 16 Aug 2019 15:18:22 +1000
-> Subject: [PATCH] Aspeed SOC changes
->=20
-> ---
->  include/hw/arm/aspeed_soc.h |  4 +++-
->  hw/arm/aspeed_soc.c         | 32 ++++++++++++++++++++++----------
->  2 files changed, 25 insertions(+), 11 deletions(-)
->=20
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index 8673661de8..f375271d5a 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -28,6 +28,7 @@
->  #define ASPEED_WDTS_NUM  3
->  #define ASPEED_CPUS_NUM  2
->  #define ASPEED_MACS_NUM  2
-> +#define ASPEED_GPIOS_NUM  2
->
-> =20
->  typedef struct AspeedSoCState {
->      /*< private >*/
-> @@ -48,7 +49,7 @@ typedef struct AspeedSoCState {
->      AspeedSDMCState sdmc;
->      AspeedWDTState wdt[ASPEED_WDTS_NUM];
->      FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
-> -    AspeedGPIOState gpio;
-> +    AspeedGPIOState gpio[ASPEED_GPIOS_NUM];
+Rashmica,
 
-Even if they look the same, I think these are two different controllers=20
-and not multiple instances of the same. So I would rather introduce a new=
-=20
-field 'gpio_1_8v' for the AST2600.=20
+This looks much nicer !  
 
->  } AspeedSoCState;
-> =20
->  #define TYPE_ASPEED_SOC "aspeed-soc"
-> @@ -61,6 +62,7 @@ typedef struct AspeedSoCInfo {
->      uint64_t sram_size;
->      int spis_num;
->      int wdts_num;
-> +    int gpios_num;
->      const int *irqmap;
->      const hwaddr *memmap;
->      uint32_t num_cpus;
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index 7d47647016..414b99c4f3 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -119,6 +119,7 @@ static const AspeedSoCInfo aspeed_socs[] =3D {
->          .sram_size    =3D 0x8000,
->          .spis_num     =3D 1,
->          .wdts_num     =3D 2,
-> +        .gpios_num    =3D 1,
->          .irqmap       =3D aspeed_soc_ast2400_irqmap,
->          .memmap       =3D aspeed_soc_ast2400_memmap,
->          .num_cpus     =3D 1,
-> @@ -132,6 +133,7 @@ static const AspeedSoCInfo aspeed_socs[] =3D {
->          .irqmap       =3D aspeed_soc_ast2500_irqmap,
->          .memmap       =3D aspeed_soc_ast2500_memmap,
->          .num_cpus     =3D 1,
-> +        .gpios_num    =3D 1,
->      },
->  };
-> =20
-> @@ -226,9 +228,15 @@ static void aspeed_soc_init(Object *obj)
->      sysbus_init_child_obj(obj, "xdma", OBJECT(&s->xdma), sizeof(s-
->> xdma),
->                            TYPE_ASPEED_XDMA);
-> =20
-> -    snprintf(typename, sizeof(typename), "aspeed.gpio-%s", socname);
-> -    sysbus_init_child_obj(obj, "gpio", OBJECT(&s->gpio), sizeof(s-
->> gpio),
-> -                          typename);
-> +    for (i =3D 0; i < sc->info->gpios_num; i++) {
-> +        if (ASPEED_IS_AST2600(sc->info->silicon_rev)) {
-> +            snprintf(typename, sizeof(typename), "aspeed.gpio%d-%s",
-> i, socname);
-> +        } else {
-> +            snprintf(typename, sizeof(typename), "aspeed.gpio-%s",
-> socname);
-> +        }
-> +        sysbus_init_child_obj(obj, "gpio[*]", OBJECT(&s->gpio[i]),
-> sizeof(s->gpio[i]),
-> +                               typename);
-> +    }
->  }
-> =20
->  static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-> @@ -410,15 +418,19 @@ static void aspeed_soc_realize(DeviceState *dev,
-> Error **errp)
->                         aspeed_soc_get_irq(s, ASPEED_XDMA));
-> =20
->      /* GPIO */
-> -    object_property_set_bool(OBJECT(&s->gpio), true, "realized",
-> &err);
-> -    if (err) {
-> -        error_propagate(errp, err);
-> -        return;
-> +    for (i =3D 0; i < sc->info->gpios_num; i++) {
-> +        hwaddr addr =3D  sc->info->memmap[ASPEED_GPIO] + i * 0x800;
+Please take a look at branch aspeed-4.2 in which I have merged your
+v5 and modified slightly the ast2600 part. 
 
-I would introduce ASPEED_GPIO_V1_8V instead.=20
+  https://github.com/legoater/qemu/commit/02b3df3f1a380eec4df7c49e88fa7ba27f75a610
 
-> +        object_property_set_bool(OBJECT(&s->gpio[i]), true,
-> "realized", &err);
-> +        if (err) {
-> +            error_propagate(errp, err);
-> +            return;
-> +        }
-> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio[i]), 0, addr);
-> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio[i]), 0,
-> +                           aspeed_soc_get_irq(s, ASPEED_GPIO));
+I introduced a gpio_1_8v controller with its specific MMIO and IRQ
+definitions. Tell me what you think of it. The principal motivation
+behind these adjustments is that I don't know yet how we are going 
+to instantiate/realize the specific models of the AST2600 SoC. the 
+GPIO 1.8v is one of these extra controllers. 
 
-The interrupt is different.
+Thanks,
 
-C.=20
+C.
 
->      }
-> -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio), 0, sc->info-
->> memmap[ASPEED_GPIO]);
-> -    sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
-> -                       aspeed_soc_get_irq(s, ASPEED_GPIO));
->  }
-> +
->  static Property aspeed_soc_properties[] =3D {
->      DEFINE_PROP_UINT32("num-cpus", AspeedSoCState, num_cpus, 0),
->      DEFINE_PROP_END_OF_LIST(),
->=20
+> v4:
+> - proper interupt handling thanks to Andrew
+> - switch statements for reading and writing suggested by Peter
+> - some small cleanups suggested by Alexey
+> 
+> v3:
+> - didn't have each gpio set up as an irq 
+> - now can't access set AC on ast2400 (only exists on ast2500)
+> - added ast2600 implementation (patch 3)
+> - renamed a couple of variables for clarity
+> 
+> v2: Addressed Andrew's feedback, added debounce regs, renamed get/set to
+> read/write to minimise confusion with a 'set' of registers.
+> 
+> Rashmica Gupta (3):
+>   hw/gpio: Add basic Aspeed GPIO model for AST2400 and AST2500
+>   aspeed: add a GPIO controller to the SoC
+>   hw/gpio: Add in AST2600 specific implementation
+> 
+>  include/hw/arm/aspeed_soc.h   |    3 +
+>  include/hw/gpio/aspeed_gpio.h |  100 ++++
+>  hw/arm/aspeed_soc.c           |   17 +
+>  hw/gpio/aspeed_gpio.c         | 1006 +++++++++++++++++++++++++++++++++
+>  hw/gpio/Makefile.objs         |    1 +
+>  5 files changed, 1127 insertions(+)
+>  create mode 100644 include/hw/gpio/aspeed_gpio.h
+>  create mode 100644 hw/gpio/aspeed_gpio.c
+> 
 

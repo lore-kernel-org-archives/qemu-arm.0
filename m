@@ -1,75 +1,75 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp510652wrs;
-        Fri, 16 Aug 2019 01:20:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyfFJANesdvQ7JWTmkRZD0EBQqSL12ZsrqI5Q2alnJcfh6ApMYG8t3LJBeq/YY2R2kymz57
-X-Received: by 2002:a37:61d4:: with SMTP id v203mr7661304qkb.458.1565943651614;
-        Fri, 16 Aug 2019 01:20:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565943651; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp573926wrs;
+        Fri, 16 Aug 2019 02:35:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx8qTVeVCt7DXFl35mozLTvTTUg1v/m3pkQH3UstxWOZ1ksjwAtzma+jKWKGsIN/dTwROZV
+X-Received: by 2002:a05:620a:1465:: with SMTP id j5mr7851631qkl.500.1565948148001;
+        Fri, 16 Aug 2019 02:35:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565948147; cv=none;
         d=google.com; s=arc-20160816;
-        b=Cy2qFSEQrkKvcviR/n4Oe+TZ3A8a0zi7CA3pvWw4qhDY6uxySENfGK9GbVx2tjzXAZ
-         kBn4VMkK2sdXTF6PmccdL8vTrKLcBV/kclNCZZmdm8BMhjVX2J6QigGWbj+hnOdlA2YW
-         nRv0vF3WbqPjPM/QurrXu2VYWgCYzAu6T5Wep2AKrDob7jj8wHYE7fGW9YoeGGHsHSjK
-         Il6M0ne9dPQ+wr32G+EY4RZdaD/IC/8080WnB08hJGkpa/R6FVLeFzWAr48D+UUP28TD
-         UoiDtgZ/wc6HP8QuDAl1afWvQWQI2V8KrKgNPYwlMOBYSEtR3RNN2lH7eW8qNu0ar5oy
-         Wi3w==
+        b=Jy8S0me6q5CD3szSJ7fxxk03Jb79raamQxSvlEd4BDmvF4x2DBfdGS6j11W0/naRwB
+         k/usU3rakwtAomu3oc1PCBZt8pjId7WGmAcAf5dMeZqk34byOOhvYK/Xwhxd6TFedxNh
+         rfRlsPid6hRI76NVSTn7nuFEwGyDRUaF9ubaPm491CVw00fjUkvdch/WGNJrgHL6g0mE
+         LIMHV8uMQCb2UWDYh5Ulas0adYMZWdTfQAmA7JiXtAGVShMTY0n8dCyPOwKzCuG0o3uy
+         gJaRV/0M/Uo/bvFUewHez1CaotXjibmFwc61cu6E+xGlhzjqF9vlQqjqpY9lJG/rCBUB
+         GnVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version
          :content-language:accept-language:in-reply-to:references:message-id
          :date:thread-index:thread-topic:to:from;
-        bh=MzZqyD+vI7zZLiGH+E8bJTG4oFwiyxHuCbFTpFCzDjk=;
-        b=gVZ2azwacNmQh+oW69i8sbdJs+EQT3ZHJk8+DR0a1D/za8KgK2xCrX1uE5L11wTwOR
-         i9ZRCAR4t34jY93FCQSuiMKeNbg0tA3LEL3e1VwtBTgW8zwLAtt6oczNQuYZfJzSlUU+
-         tjjGjGXgdZfRKsdwjASDoEfeFt8nTj2LaiCOcZQuxHCx5jvn/USu9c1VM/x2QhXj1Ek2
-         JFblAlw/cRQTlnhthveKjZczcAp0oHEPJ5Pm+egzbFFie7Ge0lNrzoPRcyGGfHpi31hn
-         1BgeiwFWPOvoE+mAdrTVvWzTYuQTF5+U5cnxeatzhi9pXx80/hBcSz922oIdGq/pAPw3
-         ezwg==
+        bh=smXdGwve58C0BOaK0ZlIMAOAvPsBrjVPp8VU2SICvuU=;
+        b=vAoy/Ik00GFa3tuetnVXT8I3/LIThMgTAxx8UbxrKANIHjENwcLDEEs4PBAHEAQHvO
+         iL7RsfoabEonI2tog/A1vXCEBvgEXX5sR+hb2NsuCbGnqR+nR8PzHHZnO89RR1Naa7nL
+         Zhfpvxs7NfjN+Up2aGDLXMhLFXcrkFNTm2yW5zDwIRwpgCSmGnyLlfViFXohoBf9gf05
+         v8GvulalA1XeLS+V5UK2XhS8GzddMHyTrmZ50mmEiHZG6dn7+nG+OffLHm0FkUBsjnwG
+         5ulWR8BzLn6D5u1oB0s6gSH0AV4s9wlY+aom6HVH2dtDkRmG4mAk8K7BFQneZeEw8Xoh
+         E1tg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g72si2904346qke.361.2019.08.16.01.20.51
+        by mx.google.com with ESMTPS id q133si3049029qke.319.2019.08.16.02.35.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2019 01:20:51 -0700 (PDT)
+        Fri, 16 Aug 2019 02:35:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:51620 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52440 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyXTe-0007To-O5
-	for alex.bennee@linaro.org; Fri, 16 Aug 2019 04:20:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45678)
+	id 1hyYeA-0000HM-KF
+	for alex.bennee@linaro.org; Fri, 16 Aug 2019 05:35:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59255)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tony.nguyen@bt.com>) id 1hyXEV-0004tX-Qc
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 04:05:24 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1hyYcy-0008BI-UM
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 05:34:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1hyXEL-00018B-AY
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 04:05:11 -0400
-Received: from smtpe1.intersmtp.com ([213.121.35.77]:1144)
+ (envelope-from <tony.nguyen@bt.com>) id 1hyYco-0002sd-LZ
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 05:34:32 -0400
+Received: from smtpe1.intersmtp.com ([213.121.35.73]:27588)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1hyXDH-0000Dx-HI; Fri, 16 Aug 2019 04:03:57 -0400
-Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- BWP09926082.bt.com (10.36.82.113) with Microsoft SMTP Server (version=TLS1_2, 
+ id 1hyYbg-0001xN-8I; Fri, 16 Aug 2019 05:33:14 -0400
+Received: from tpw09926dag18g.domain1.systemhost.net (10.9.212.34) by
+ BWP09926078.bt.com (10.36.82.109) with Microsoft SMTP Server (version=TLS1_2, 
  cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256) id 15.1.1713.5; Fri, 16
- Aug 2019 09:03:27 +0100
+ Aug 2019 10:32:26 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net (10.9.212.18) by
- tpw09926dag18e.domain1.systemhost.net (10.9.212.18) with Microsoft SMTP
- Server (TLS) id 15.0.1395.4; Fri, 16 Aug 2019 09:03:50 +0100
+ tpw09926dag18g.domain1.systemhost.net (10.9.212.34) with Microsoft SMTP
+ Server (TLS) id 15.0.1395.4; Fri, 16 Aug 2019 10:33:05 +0100
 Received: from tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c]) by tpw09926dag18e.domain1.systemhost.net
  ([fe80::a946:6348:ccf4:fa6c%12]) with mapi id 15.00.1395.000; Fri, 16 Aug
- 2019 09:03:50 +0100
+ 2019 10:33:04 +0100
 From: <tony.nguyen@bt.com>
 To: <qemu-devel@nongnu.org>
 Thread-Topic: [Qemu-devel] [PATCH v7 33/42] exec: Replace device_endian with
  MemOp
-Thread-Index: AQHVVAkjZtKLBgYtKUOwPfTO3b+n3w==
-Date: Fri, 16 Aug 2019 08:03:50 +0000
-Message-ID: <1565942626361.65540@bt.com>
+Thread-Index: AQHVVBWaFVF+f9qANUCvvyD/694zuw==
+Date: Fri, 16 Aug 2019 09:33:04 +0000
+Message-ID: <1565947981050.26795@bt.com>
 References: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
 In-Reply-To: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
 Accept-Language: en-AU, en-GB, en-US
@@ -79,10 +79,10 @@ X-MS-TNEF-Correlator:
 x-ms-exchange-messagesentrepresentingtype: 1
 x-ms-exchange-transport-fromentityheader: Hosted
 x-originating-ip: [10.187.101.40]
-Content-Type: multipart/alternative; boundary="_000_156594262636165540btcom_"
+Content-Type: multipart/alternative; boundary="_000_156594798105026795btcom_"
 MIME-Version: 1.0
 X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 213.121.35.77
+X-Received-From: 213.121.35.73
 Subject: [Qemu-arm] [Qemu-devel] [PATCH v7 33/42] exec: Replace
  device_endian with MemOp
 X-BeenThere: qemu-arm@nongnu.org
@@ -125,9 +125,9 @@ Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
  pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7U1WlzxIHmNd
+X-TUID: lBpS15UOLyJ0
 
---_000_156594262636165540btcom_
+--_000_156594798105026795btcom_
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
@@ -233,7 +233,7 @@ Acked-by: David Gibson <david@gibson.dropbear.id.au>
  hw/display/vmware_vga.c             |   2 +-
  hw/display/xlnx_dp.c                |   8 +--
  hw/dma/bcm2835_dma.c                |   4 +-
- hw/dma/etraxfs_dma.c                |   2 +-
+ hw/dma/etraxfs_dma.c                |   8 +--
  hw/dma/i8257.c                      |   4 +-
  hw/dma/omap_dma.c                   |   4 +-
  hw/dma/pl080.c                      |   2 +-
@@ -381,7 +381,7 @@ Acked-by: David Gibson <david@gibson.dropbear.id.au>
  hw/misc/mps2-fpgaio.c               |   2 +-
  hw/misc/mps2-scc.c                  |   2 +-
  hw/misc/msf2-sysreg.c               |   2 +-
- hw/misc/mst_fpga.c                  |   2 +-
+ hw/misc/mst_fpga.c                  |   6 +--
  hw/misc/nrf51_rng.c                 |   2 +-
  hw/misc/omap_gpmc.c                 |   6 +--
  hw/misc/omap_l4.c                   |   2 +-
@@ -566,7 +566,7 @@ Acked-by: David Gibson <david@gibson.dropbear.id.au>
  memory.c                            |  10 ++--
  memory_ldst.inc.c                   | 103 +++++++++++++++++---------------=
 ----
- 426 files changed, 768 insertions(+), 771 deletions(-)
+ 426 files changed, 773 insertions(+), 776 deletions(-)
 
 diff --git a/exec.c b/exec.c
 index 9f69197..303f9a7 100644
@@ -2745,18 +2745,24 @@ fset, uint64_t value,
      .valid.max_access_size =3D 4,
  };
 diff --git a/hw/dma/etraxfs_dma.c b/hw/dma/etraxfs_dma.c
-index df3ba09..b36a7df 100644
+index df3ba09..61f7200 100644
 --- a/hw/dma/etraxfs_dma.c
 +++ b/hw/dma/etraxfs_dma.c
-@@ -697,7 +697,7 @@ dma_write(void *opaque, hwaddr addr,
+@@ -695,10 +695,10 @@ dma_write(void *opaque, hwaddr addr,
+ }
+
  static const MemoryRegionOps dma_ops =3D {
-  .read =3D dma_read,
-  .write =3D dma_write,
+- .read =3D dma_read,
+- .write =3D dma_write,
 - .endianness =3D DEVICE_LITTLE_ENDIAN,
-+ .endianness =3D MO_LE,
-  .valid =3D {
+- .valid =3D {
++    .read =3D dma_read,
++    .write =3D dma_write,
++    .endianness =3D MO_LE,
++    .valid =3D {
   .min_access_size =3D 1,
   .max_access_size =3D 4
+  }
 diff --git a/hw/dma/i8257.c b/hw/dma/i8257.c
 index 30a3442..cf71c47 100644
 --- a/hw/dma/i8257.c
@@ -5389,16 +5395,20 @@ index 21a2863..33282dc 100644
 
  static void msf2_sysreg_init(Object *obj)
 diff --git a/hw/misc/mst_fpga.c b/hw/misc/mst_fpga.c
-index fd18303..43ff7a5 100644
+index fd18303..d339380 100644
 --- a/hw/misc/mst_fpga.c
 +++ b/hw/misc/mst_fpga.c
-@@ -191,7 +191,7 @@ mst_fpga_writeb(void *opaque, hwaddr addr, uint64_t val=
+@@ -189,9 +189,9 @@ mst_fpga_writeb(void *opaque, hwaddr addr, uint64_t val=
 ue,
+ }
+
  static const MemoryRegionOps mst_fpga_ops =3D {
-  .read =3D mst_fpga_readb,
-  .write =3D mst_fpga_writeb,
+- .read =3D mst_fpga_readb,
+- .write =3D mst_fpga_writeb,
 - .endianness =3D DEVICE_NATIVE_ENDIAN,
-+ .endianness =3D MO_TE,
++    .read =3D mst_fpga_readb,
++    .write =3D mst_fpga_writeb,
++    .endianness =3D MO_TE,
  };
 
  static int mst_fpga_post_load(void *opaque, int version_id)
@@ -9443,7 +9453,7 @@ t,
 
 
 
---_000_156594262636165540btcom_
+--_000_156594798105026795btcom_
 Content-Type: text/html; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 
@@ -9665,7 +9675,7 @@ nbsp; &nbsp;| &nbsp; 8 &#43;--</div>
 <div>&nbsp;hw/dma/bcm2835_dma.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
 nbsp; &nbsp;| &nbsp; 4 &#43;-</div>
 <div>&nbsp;hw/dma/etraxfs_dma.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &=
-nbsp; &nbsp;| &nbsp; 2 &#43;-</div>
+nbsp; &nbsp;| &nbsp; 8 &#43;--</div>
 <div>&nbsp;hw/dma/i8257.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
 &nbsp; &nbsp; &nbsp; &nbsp;| &nbsp; 4 &#43;-</div>
 <div>&nbsp;hw/dma/omap_dma.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
@@ -9960,7 +9970,7 @@ sp; &nbsp; &nbsp;| &nbsp; 2 &#43;-</div>
 <div>&nbsp;hw/misc/msf2-sysreg.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
 &nbsp; | &nbsp; 2 &#43;-</div>
 <div>&nbsp;hw/misc/mst_fpga.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nb=
-sp; &nbsp; &nbsp;| &nbsp; 2 &#43;-</div>
+sp; &nbsp; &nbsp;| &nbsp; 6 &#43;--</div>
 <div>&nbsp;hw/misc/nrf51_rng.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
 bsp; &nbsp; | &nbsp; 2 &#43;-</div>
 <div>&nbsp;hw/misc/omap_gpmc.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &n=
@@ -10328,7 +10338,7 @@ p;| &nbsp; 2 &#43;-</div>
 <div>&nbsp;memory_ldst.inc.c &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbs=
 p; &nbsp; &nbsp; | 103 &#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#43;&#=
 43;&#43;&#43;&#43;&#43;&#43;&#43;-------------------</div>
-<div>&nbsp;426 files changed, 768 insertions(&#43;), 771 deletions(-)</div>
+<div>&nbsp;426 files changed, 773 insertions(&#43;), 776 deletions(-)</div>
 <div><br>
 </div>
 <div>diff --git a/exec.c b/exec.c</div>
@@ -12726,25 +12736,31 @@ hwaddr offset, uint64_t value,</div>
 <div>&nbsp; &nbsp; &nbsp;.valid.max_access_size =3D 4,</div>
 <div>&nbsp;};</div>
 <div>diff --git a/hw/dma/etraxfs_dma.c b/hw/dma/etraxfs_dma.c</div>
-<div>index df3ba09..b36a7df 100644</div>
+<div>index df3ba09..61f7200 100644</div>
 <div>--- a/hw/dma/etraxfs_dma.c</div>
 <div>&#43;&#43;&#43; b/hw/dma/etraxfs_dma.c</div>
-<div>@@ -697,7 &#43;697,7 @@ dma_write(void *opaque, hwaddr addr,</div>
+<div>@@ -695,10 &#43;695,10 @@ dma_write(void *opaque, hwaddr addr,</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
 <div>&nbsp;static const MemoryRegionOps dma_ops =3D {</div>
-<div>&nbsp;<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span=
->.read =3D dma_read,</div>
-<div>&nbsp;<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span=
->.write =3D dma_write,</div>
+<div>-<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span>.rea=
+d =3D dma_read,</div>
+<div>-<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span>.wri=
+te =3D dma_write,</div>
 <div>-<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span>.end=
 ianness =3D DEVICE_LITTLE_ENDIAN,</div>
-<div>&#43;<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span>=
-.endianness =3D MO_LE,</div>
-<div>&nbsp;<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span=
->.valid =3D {</div>
+<div>-<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span>.val=
+id =3D {</div>
+<div>&#43; &nbsp; &nbsp;.read =3D dma_read,</div>
+<div>&#43; &nbsp; &nbsp;.write =3D dma_write,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D MO_LE,</div>
+<div>&#43; &nbsp; &nbsp;.valid =3D {</div>
 <div>&nbsp;<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span=
 >.min_access_size =3D 1,</div>
 <div>&nbsp;<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span=
 >.max_access_size =3D 4</div>
+<div>&nbsp;<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span=
+>}</div>
 <div>diff --git a/hw/dma/i8257.c b/hw/dma/i8257.c</div>
 <div>index 30a3442..cf71c47 100644</div>
 <div>--- a/hw/dma/i8257.c</div>
@@ -15594,20 +15610,23 @@ dr offset,</div>
 <div>&nbsp;</div>
 <div>&nbsp;static void msf2_sysreg_init(Object *obj)</div>
 <div>diff --git a/hw/misc/mst_fpga.c b/hw/misc/mst_fpga.c</div>
-<div>index fd18303..43ff7a5 100644</div>
+<div>index fd18303..d339380 100644</div>
 <div>--- a/hw/misc/mst_fpga.c</div>
 <div>&#43;&#43;&#43; b/hw/misc/mst_fpga.c</div>
-<div>@@ -191,7 &#43;191,7 @@ mst_fpga_writeb(void *opaque, hwaddr addr, uin=
+<div>@@ -189,9 &#43;189,9 @@ mst_fpga_writeb(void *opaque, hwaddr addr, uin=
 t64_t value,</div>
+<div>&nbsp;}</div>
+<div>&nbsp;</div>
 <div>&nbsp;static const MemoryRegionOps mst_fpga_ops =3D {</div>
-<div>&nbsp;<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span=
->.read =3D mst_fpga_readb,</div>
-<div>&nbsp;<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span=
->.write =3D mst_fpga_writeb,</div>
+<div>-<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span>.rea=
+d =3D mst_fpga_readb,</div>
+<div>-<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span>.wri=
+te =3D mst_fpga_writeb,</div>
 <div>-<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span>.end=
 ianness =3D DEVICE_NATIVE_ENDIAN,</div>
-<div>&#43;<span class=3D"Apple-tab-span" style=3D"white-space:pre"> </span>=
-.endianness =3D MO_TE,</div>
+<div>&#43; &nbsp; &nbsp;.read =3D mst_fpga_readb,</div>
+<div>&#43; &nbsp; &nbsp;.write =3D mst_fpga_writeb,</div>
+<div>&#43; &nbsp; &nbsp;.endianness =3D MO_TE,</div>
 <div>&nbsp;};</div>
 <div>&nbsp;</div>
 <div>&nbsp;static int mst_fpga_post_load(void *opaque, int version_id)</div=
@@ -20155,4 +20174,4 @@ nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;=
 </body>
 </html>
 
---_000_156594262636165540btcom_--
+--_000_156594798105026795btcom_--

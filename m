@@ -1,100 +1,131 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp602079wrs;
-        Fri, 16 Aug 2019 03:06:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwDAN1fHg6yM8Jz2bz56APCYQL0TKNZHRfCZSs0h8lPRsN8FjzKQjrb9fsfcriqm7SZHljF
-X-Received: by 2002:a37:a58a:: with SMTP id o132mr8188378qke.86.1565949993556;
-        Fri, 16 Aug 2019 03:06:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565949993; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp613271wrs;
+        Fri, 16 Aug 2019 03:16:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxh9p5flVnGw82+3UPyVLvN8HR8mu4h46cuhtrQV1EiIlFLoOX4a3ncHnOhILwHcrWz5G8o
+X-Received: by 2002:a17:906:30d8:: with SMTP id b24mr6385300ejb.33.1565950614043;
+        Fri, 16 Aug 2019 03:16:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565950614; cv=none;
         d=google.com; s=arc-20160816;
-        b=i02rNHkSPxhC7MDnC99VHLW2g7xOGyBnComW6HSRzPr/Rdeyo5nSFWBdE1sECffQaA
-         +tdcyWrsceY7WF8FoVE+BNAB4AH0z1JE1tyVBEyaiIr5lSm5UfAD3QAJwB7JXihMAeCO
-         P2ANI3piTX4dTbKebKSL+yF9ihCikN5Pf2v+gTnGUW6ssd438tbmelZ1T6I0c4ajYPcU
-         EUiPbZzsrM9BVXx9bU6y5XkI6rPkzVoOag+gOAyL0cZ4KQWbdC4NJYb0GRnEZxjp1WCS
-         3cERJ77IYgQKMFaeJ48CaQGgZs+6tjKfV7reRIn624xclERFWoFOCFukSCjwhrH7+2T2
-         47oQ==
+        b=bRbvk10IIztKlKqBGHNby/ecI12kjzacCkpI+LlOgHWymz6gCfc0PgXemXbtPh57Ya
+         z6nQS6ndmHSf8EG52Z33oSCL73neKfj0DXGZ53GJVzVie9zrV2qIWSlFlJLLFXESymU1
+         ujUOLQhj9YbZZs+sYpI6lfmr8PNEBY8GmB6YCrplyxEFHteaRumq7qNGNX+QIOcd1jh9
+         4pqGWd1lq5Iy/5PUYYB6t5W64xriAYPWKZcyggJ+bCk3pLmWSiKOkZmskyT4IIayRl9W
+         sv85iNGv/Y3tccGCeWUfOZTxWpAKGK/JeC/ntGq8YbdhG7gnzT2NA2k0cyaBk0C/iBuQ
+         Msmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=4nmllPcEhYaEJs68tgHuQ5qqmn++ZDafoOXvJZcokHk=;
-        b=NxK+l0low+22u495KTb3EVdVDcXwAB9DX28rWqJjnLimf4KQbQU0jlYe1ySDEfsZY8
-         +aZgCGcYX4XZVFe8gHjrWOHDyh0uSS6Jxxv8JaQz8t7wtBsPjtZ91g/pQ1q0vQrVvl8J
-         5GpOQCpJCspAk+9bem8DNO2J9KFXROdUVuluiXZvOeouBKFKnQR2vu+Ku6l3C9Qegz+N
-         PVNKzKmHJGNf/FFIER/PBYWqXjGDu2BLxFDwEsf7XzUc4tkrrVBFArwE6q48cyBa7dK3
-         vsSlc/M18nMrq2kU3lcWDONgr2VOfbeZGfbH1z/Otvuz7RKjShSFzrCTsXdmmE0ahVkd
-         833A==
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=At9EyvD5d1cgI9h7m93ehC4/VGItKyPz9dc/HUcgR48=;
+        b=gBWCIMRSTfq7OuhVnOZhDbwdsFlc/Ev8oj4eSVx9wUFuOumF0HCvUiRzbYp9Y+vjY7
+         h1ChS3kTJYJ239z+rYnJFjFqTw3Q9S43wy28bPrlhNZVuMxy0jj3IUQrhAcLElMlYC7p
+         IhUtsOl8JR/lBdobhVU4uqRUqjcTN+/p6ZJQLRABs4/ZJ0eXDF7pbg5ASv48tkedDnZl
+         LMRMpXvk7VjH4ZdfFsbn/S+Y5zEyDI5x0st/zaete0hPKH5x3ET9PTHhe6bUnEK1HR8l
+         Nmw5j7zVo+z8GipUyK/M5W00F9Y4tEGpI3vv4L/F7xBYHaOb4tDfwkAZ+126d3SJJbgn
+         ZpwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u18si3255361qvg.137.2019.08.16.03.06.33
+        by mx.google.com with ESMTPS id z29si3341095edd.263.2019.08.16.03.16.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2019 03:06:33 -0700 (PDT)
+        Fri, 16 Aug 2019 03:16:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52942 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53328 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyZ7x-00008n-04
-	for alex.bennee@linaro.org; Fri, 16 Aug 2019 06:06:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35431)
+	id 1hyZHw-0003ly-GR
+	for alex.bennee@linaro.org; Fri, 16 Aug 2019 06:16:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37144)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1hyZ7a-0008Am-2U
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 06:06:11 -0400
+ (envelope-from <thuth@redhat.com>) id 1hyZH8-0003kb-I1
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 06:16:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1hyZ7Y-0003CI-Fg
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 06:06:09 -0400
-Received: from mail-wr1-f65.google.com ([209.85.221.65]:35811)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hyZ7Y-0003BE-8g
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 06:06:08 -0400
-Received: by mail-wr1-f65.google.com with SMTP id k2so1012996wrq.2
- for <qemu-arm@nongnu.org>; Fri, 16 Aug 2019 03:06:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=4nmllPcEhYaEJs68tgHuQ5qqmn++ZDafoOXvJZcokHk=;
- b=hfWWCJd7runNr3KpDCmTbN8nA5oZoptUmEVVX0sKxCuiHXQEKNQ+mR93qlJeF71rEx
- wfC/FvhFbUmwAoaB0473Jb6jg+7dvxgT6S9e5rdo3KaFkEq6aQQy8pDawGxhOYiupq4b
- LcKQQeckz0QjEE8sHShsAN/92PbpiLeNmZvbrYUa8QJYqlJDcQm7cWpz+tg3ywNE1TVV
- /RNcQIBTyLXCk937Q0YLM/wVWuz9MV3QZbS6lYQcjW5+0D1w8mTeXw68rEjlAfMBgtKu
- N5v9zJHDQwPZ0Y86OQbXRrW1JRVugQaT7pQSYukt5/F8shtp64v+EU6pf4OZZF7PX4bD
- NrWA==
-X-Gm-Message-State: APjAAAU6m0Dsr/YTrwwF5HqnJKkfjJ9rhg4x7LTbjYUvMxSGeQOXFDDL
- YDYeCwUpvXFOM5Kdn6ObqPi/yw==
-X-Received: by 2002:adf:dd01:: with SMTP id a1mr9597279wrm.12.1565949967319;
- Fri, 16 Aug 2019 03:06:07 -0700 (PDT)
-Received: from [192.168.1.39] (251.red-88-10-102.dynamicip.rima-tde.net.
- [88.10.102.251])
- by smtp.gmail.com with ESMTPSA id u130sm8566224wmg.28.2019.08.16.03.06.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Aug 2019 03:06:06 -0700 (PDT)
+ (envelope-from <thuth@redhat.com>) id 1hyZGz-0000a6-MU
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 06:15:57 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52000)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <thuth@redhat.com>) id 1hyZEu-0007dG-LG
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 06:15:46 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 4A0CE81F0E;
+ Fri, 16 Aug 2019 10:13:41 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-74.ams2.redhat.com [10.36.116.74])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AAC845D9DC;
+ Fri, 16 Aug 2019 10:12:51 +0000 (UTC)
 To: tony.nguyen@bt.com, qemu-devel@nongnu.org
 References: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
- <1565940916012.8169@bt.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <22d6f51c-c734-3976-2fc1-34c9c74a075e@redhat.com>
-Date: Fri, 16 Aug 2019 12:06:02 +0200
+ <1565941032362.60179@bt.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat
+Message-ID: <1b5f5a92-1b75-f0d9-d7bc-4605094ad8e7@redhat.com>
+Date: Fri, 16 Aug 2019 12:12:50 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <1565940916012.8169@bt.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <1565941032362.60179@bt.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.27]); Fri, 16 Aug 2019 10:13:43 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.221.65
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 27/42] hw/pci-host: Declare
- device little or big endian
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [qemu-s390x] [Qemu-devel] [PATCH v7 33/42] exec:
+ Replace device_endian with MemOp
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,8 +139,8 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
  arikalo@wavecomp.com, pasic@linux.ibm.com, hpoussin@reactos.org,
- anthony.perard@citrix.com, xen-devel@lists.xenproject.org, balrogg@gmail.com,
- jasowang@redhat.com, jiri@resnulli.us, ehabkost@redhat.com,
+ anthony.perard@citrix.com, xen-devel@lists.xenproject.org, philmd@redhat.com,
+ green@moxielogic.com, jiri@resnulli.us, ehabkost@redhat.com,
  b.galvani@gmail.com, eric.auger@redhat.com, alex.williamson@redhat.com,
  stefanha@redhat.com, jsnow@redhat.com, rth@twiddle.net, kwolf@redhat.com,
  andrew@aj.id.au, claudio.fontana@suse.com, crwulff@gmail.com,
@@ -120,13 +151,13 @@ Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
  sstabellini@kernel.org, andrew.smirnov@gmail.com, deller@gmx.de,
  magnus.damm@gmail.com, marcel.apfelbaum@gmail.com, atar4qemu@gmail.com,
  minyard@acm.org, sw@weilnetz.de, yuval.shaia@oracle.com, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, jan.kiszka@web.de, clg@kaod.org, shorne@gmail.com,
+ qemu-arm@nongnu.org, peter.chubb@nicta.com.au, clg@kaod.org, shorne@gmail.com,
  qemu-riscv@nongnu.org, i.mitsyanko@gmail.com, cohuck@redhat.com,
- amarkovic@wavecomp.com, peter.chubb@nicta.com.au, aurelien@aurel32.net,
- pburton@wavecomp.com, sagark@eecs.berkeley.edu, green@moxielogic.com,
- kraxel@redhat.com, gxt@mprc.pku.edu.cn, robh@kernel.org,
+ amarkovic@wavecomp.com, jan.kiszka@web.de, aurelien@aurel32.net,
+ pburton@wavecomp.com, sagark@eecs.berkeley.edu, jasowang@redhat.com,
+ kraxel@redhat.com, gxt@mprc.pku.edu.cn, robh@kernel.org, lersek@redhat.com,
  borntraeger@de.ibm.com, joel@jms.id.au, antonynpavlov@gmail.com,
- chouteau@adacore.com, lersek@redhat.com, Andrew.Baumann@microsoft.com,
+ chouteau@adacore.com, balrogg@gmail.com, Andrew.Baumann@microsoft.com,
  mreitz@redhat.com, walling@linux.ibm.com, dmitry.fleytman@gmail.com,
  mst@redhat.com, mark.cave-ayland@ilande.co.uk, jslaby@suse.cz, marex@denx.de,
  proljc@gmail.com, marcandre.lureau@redhat.com, alistair@alistair23.me,
@@ -135,77 +166,25 @@ Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
  pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jtMjPViZ7ewH
+X-TUID: F4sr6xW1zxe5
 
-On 8/16/19 9:35 AM, tony.nguyen@bt.com wrote:
-> For each device declared with DEVICE_NATIVE_ENDIAN, find the set of
-> targets from the set of target/hw/*/device.o.
+On 8/16/19 9:37 AM, tony.nguyen@bt.com wrote:
+> Simplify endianness comparisons with consistent use of the more
+> expressive MemOp.
 > 
-> If the set of targets are all little or all big endian, re-declare
-> the device endianness as DEVICE_LITTLE_ENDIAN or DEVICE_BIG_ENDIAN
-> respectively.
-> 
-> This *naive* deduction may result in genuinely native endian devices
-> being incorrectly declared as little or big endian, but should not
-> introduce regressions for current targets.
-> 
-> These devices should be re-declared as DEVICE_NATIVE_ENDIAN if 1) it
-> has a new target with an opposite endian or 2) someone informed knows
-> better =)
-> 
+> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
 > Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
-> ---
->  hw/pci-host/q35.c       | 2 +-
->  hw/pci-host/versatile.c | 4 ++--
->  2 files changed, 3 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
-> index 0a010be..fd20f72 100644
-> --- a/hw/pci-host/q35.c
-> +++ b/hw/pci-host/q35.c
-> @@ -288,7 +288,7 @@ static void tseg_blackhole_write(void *opaque,
-> hwaddr addr, uint64_t val,
->  static const MemoryRegionOps tseg_blackhole_ops = {
->      .read = tseg_blackhole_read,
->      .write = tseg_blackhole_write,
-> -    .endianness = DEVICE_NATIVE_ENDIAN,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
-OK.
+This patch is *huge*, more than 800kB. It keeps being stuck in the the
+filter of the qemu-s390x list each time you send it. Please:
 
->      .valid.min_access_size = 1,
->      .valid.max_access_size = 4,
->      .impl.min_access_size = 4,
-> diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
-> index 791b321..e7017f3 100644
-> --- a/hw/pci-host/versatile.c
-> +++ b/hw/pci-host/versatile.c
-> @@ -240,7 +240,7 @@ static uint64_t pci_vpb_reg_read(void *opaque,
-> hwaddr addr,
->  static const MemoryRegionOps pci_vpb_reg_ops = {
->      .read = pci_vpb_reg_read,
->      .write = pci_vpb_reg_write,
-> -    .endianness = DEVICE_NATIVE_ENDIAN,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
->      .valid = {
->          .min_access_size = 4,
->          .max_access_size = 4,
-> @@ -306,7 +306,7 @@ static uint64_t pci_vpb_config_read(void *opaque,
-> hwaddr addr,
->  static const MemoryRegionOps pci_vpb_config_ops = {
->      .read = pci_vpb_config_read,
->      .write = pci_vpb_config_write,
-> -    .endianness = DEVICE_NATIVE_ENDIAN,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
+1) Try to break it up in more digestible pieces, e.g. change only one
+subsystem at a time (this is also better reviewable by people who are
+interested in one area)
 
-Eh hard to say, PCI is not clear about endianess...
+2) Do not send HTML emails to the mailing list.
 
->  };
->  
->  static int pci_vpb_map_irq(PCIDevice *d, int irq_num)
-> -- 
-> 1.8.3.1
-> 
-> ​
-> 
-> 
+ Thanks,
+  Thomas

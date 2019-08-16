@@ -1,105 +1,106 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp769387wrs;
-        Fri, 16 Aug 2019 05:58:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwWbbO4hKNueg9dflqyA41oxodcEEIpomGkCfDRpE5MPUjvfKptCtHIggnfhDSmG27gMffB
-X-Received: by 2002:a17:906:a449:: with SMTP id cb9mr8985791ejb.162.1565960306773;
-        Fri, 16 Aug 2019 05:58:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565960306; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp769429wrs;
+        Fri, 16 Aug 2019 05:58:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy26nvdfvd8pLU/DJqOFkVcp+XRKFyr1zfKWQd78t2rjfXYm8qy0ZUDl/PGTnCApLMd/Yo2
+X-Received: by 2002:a17:906:5391:: with SMTP id g17mr9199351ejo.61.1565960309108;
+        Fri, 16 Aug 2019 05:58:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1565960309; cv=none;
         d=google.com; s=arc-20160816;
-        b=FDqaEnwh1EM8Gcyn489Ydyl/wJG8pZf/KJ8513iXfPyg5XWUEPIZayeWokhzU0h0Sg
-         d6+X8b9vJYGQ05u3mLzfSY7S4V5vytR8wOfOYxxNURi0nMw8ks43UlRVUT4tjxFt8bN8
-         GeMkRr3kspYDM1gQ847m2R4PEobdtFNrYLVTufWvDAjvEwvbxwJXv7HRS6QHdcCFaFrB
-         UETeS/AVEbh4svNe1oXvc0vfunFCia95/4vjubivzsn2uLdukGILwdNqPic8USisXocS
-         MAihSgS+c89vL0AtTYKVdS1p0p5+sYviyapmO6BdYvl5l7unVxx4Ay9Z0wsLwHUnTTgL
-         UNLA==
+        b=rW/FPA1MsfHihMqcElpEsMLDxUxpaRpnM0Aulstlx8idF/gHOpnjg+jyicM8oeE4Sy
+         BFkVJ076vbz82c3IitUu8ZhPs3ZeMShBsdps6B93M8u/iQQsBDqi+wtTV1l48XW6oX6j
+         ZPsh2L5u/f9/XZkQ3sDWLl0rCtPhAGSJ3B6zerA+UnZp/zJdUgyEUgVa/9YFulanehfB
+         BSqe5Z2deV6gqcTq+ux1aK+IuzQaMCEK7h9ChZNasRKVTO4+QtYl/YJ1EP6Bk++kDQin
+         axnS2pm3kKSj6HVR6PBbM3EcVwcdLQ3/x0MqTchOiLo40HpVXUQNbBBePP/gDhpSOmUi
+         W6gQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature;
-        bh=0TNU1qcTPKOb8ebj7Oqy+tAPM4gs6EGYteC/gAYplT4=;
-        b=Tsfi9CPhGNw5VXU/70UKBBrQ+FxxU3LhP5CF8AMdFo9tPrmv+A8aFCJLrq+zwVxIRM
-         sI6SUdiqxs8tR6W7xKKWk/VO5hTmZW5a7AKiMXPj+JbodWxeuW8x3CDkLFLZAnQruIuR
-         DLRQ8xSIbKn64RCWG30jhUfxQB9ISkzg8nDVKFQQAdfPYCZLvI7an1M5ATlysJfm4ZBK
-         NFAq3prakADlFbZc7Uib1lpuvQuQJOv1IUIMXmpOte6HX6gA4clTzeaD526yJCVPScAL
-         fYRyKlIIgQI7VB4a+BzS71Wc5RpX+yln4qsNdRtBYEWIyKzpSAFqFla8MXZtwJTJral8
-         f9mw==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=S06e1VfvOBe61kYvY2y9FUBi/HO5B2t1bBJm4qCLKnk=;
+        b=PcXR0bbyzzkMIw37g46lLm5x8eBX4x89VNz+9csjekr6Rv5HZJ06Yvb1LfkHqs94WN
+         ENDsrrHlNLciV4Pznbqsfh7LcQbfcc9wWMQuLfYDL5ORLPLMMQyoZmokmJJr/wkfjsaV
+         hh+Am1R39GXRdqD/lsztiU740XpnqpC5ytqpq6jf1oVrKCK+iVJVvoZBbtQERZVTlXik
+         IBO16Mas0gC4ouJXxAxHV8AMVA+Hk+rMjgo/QBQoqP0tS+eX2PLxmuWp7IgotOlvpdIb
+         no9CUR38L31DlBPt0PKas6ABM2rrQ5AlyXPdYgvwP8Gi0W0cjqEFpk3xqRnmB1wVaHdv
+         cOow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RpSPBOla;
+       dkim=fail header.i=@linaro.org header.s=google header.b=C4i1YYjy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s47si3413955edm.38.2019.08.16.05.58.26
+        by mx.google.com with ESMTPS id b4si2852048ejk.375.2019.08.16.05.58.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Aug 2019 05:58:26 -0700 (PDT)
+        Fri, 16 Aug 2019 05:58:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RpSPBOla;
+       dkim=fail header.i=@linaro.org header.s=google header.b=C4i1YYjy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55398 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55406 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyboH-000613-9E
-	for alex.bennee@linaro.org; Fri, 16 Aug 2019 08:58:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60917)
+	id 1hyboJ-00065Y-OT
+	for alex.bennee@linaro.org; Fri, 16 Aug 2019 08:58:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60957)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1hybo0-0005yJ-O5
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 08:58:10 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1hybo2-0005zJ-Ca
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 08:58:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1hybnz-0000La-Ff
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 08:58:08 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:36479)
+ (envelope-from <peter.maydell@linaro.org>) id 1hybo0-0000Me-Ge
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 08:58:10 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:39440)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1hybnz-0000KF-66
- for qemu-arm@nongnu.org; Fri, 16 Aug 2019 08:58:07 -0400
-Received: by mail-wm1-x342.google.com with SMTP id g67so4004232wme.1
- for <qemu-arm@nongnu.org>; Fri, 16 Aug 2019 05:58:06 -0700 (PDT)
+ id 1hybo0-0000Lw-A5
+ for qemu-arm@nongnu.org; Fri, 16 Aug 2019 08:58:08 -0400
+Received: by mail-wr1-x441.google.com with SMTP id t16so1459724wra.6
+ for <qemu-arm@nongnu.org>; Fri, 16 Aug 2019 05:58:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=0TNU1qcTPKOb8ebj7Oqy+tAPM4gs6EGYteC/gAYplT4=;
- b=RpSPBOlaO06ZNuwYCGTQ8rB2RaIOBhTaTNxoY1UY3UWOx1D9PGVCjjTY36mA2pfwid
- duINFA7JTRVIAr1Qhi8/dJgnQBnhcg/SlGXPn2q+2mPILoentEFRshlvoed2V4MtHSTp
- i8y7z0MNhUcPvkzAH3Lza+MN1tM0X2mmmaYPGwptLP8lEzz6SswQa4dmGxsnOLckV6pN
- O4/1qkcPDrLoeeUlgHk1ND7jprs53Wbq3Mu69O+KmxtnChr9ICChwHRHtvSHQtMBaArC
- EphmvNHmjffbye269A0a0jQxVTO9kQLQU88YJPWrAZZji1dkGORAUz9/xBFKCEftruGz
- tB9A==
+ bh=S06e1VfvOBe61kYvY2y9FUBi/HO5B2t1bBJm4qCLKnk=;
+ b=C4i1YYjyQq2XVPVYy6fAnfLcjKQ1HAEdh/FCygAmi3FMwSfJeEWL/0Pe+iTK2xe+1g
+ HLLxTVeY56Pmrzk3MOiwxhH9uWEsvNPRX30nM+xrwocUBoG3emO9pxMULHTxYAciTYnx
+ id+nmuGrbSWSLYwO6xw6Iq9dQYGKvB9AOfFRswNApx0NtXV7P+SNdyc0pCo9V6SlGZ2w
+ yVwyhzDuKue+TBkUb+EDp/90qINWSPHV2peJWEO1EsrwYjDRzrBFbj8XOMM2ai/wUuTH
+ Q8P/pumQyoPhyiEpg1zVnf2lf7YBw1NkDIvRscQ3ZfC/l1Kd1RLr0hVXmzzdKCek1Pbs
+ XWZQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=0TNU1qcTPKOb8ebj7Oqy+tAPM4gs6EGYteC/gAYplT4=;
- b=K6k5qTnh1dV8iur+G3s1+gM2CSa4eOB4LYuSzh75N+ZCt4MvPxqTtpnvRlu/GxkjOH
- /sDU/k7MyY2vin+AN99zOsIcW66yfbpL4bparpJvND+r5cQ/QzoJWPPeHrk6hU2li576
- hRn3KVAB8BGQq0z9aful46j7uFGDB0O8ZodUTFuz4KvkTRvXQpv540LXoP/sBzqHL9Q8
- y/mViUCwiX0nYOg8EZD339KSnBvrAo6ARiJz01At7U8tMw3p14UseclOH2krRorE8eE8
- gbPr3s0R9U/Fq2hAlJqgcNRcMWtoxLOjCF/V5N7OCRmBBwE8DJFOfTY6Y41uQpYizWQT
- 9NKg==
-X-Gm-Message-State: APjAAAVF+90Os1YnPrckSochVZPxOg4FEE8GhV7SE7r9SAXea8eiNkHs
- oVzpGcZykjxy8aq5fg2Qp7rG6BaA9Rvlag==
-X-Received: by 2002:a05:600c:204:: with SMTP id
- 4mr7733968wmi.167.1565960285180; 
- Fri, 16 Aug 2019 05:58:05 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=S06e1VfvOBe61kYvY2y9FUBi/HO5B2t1bBJm4qCLKnk=;
+ b=ZqH6fqaEvjXB5SshAneVjqvhXUavbEAdsWU3oOof1CXoDtDLU6s1WazIiP0dTOEDM2
+ 4ZZVYiJbJKDfGqE8steL93rYqAjhBIMBEnaIl+Md2x7GkTPgif32rfk/ujmnslAUl9so
+ CiZRUDVC1t4MgcjD2EOiWo5lmfzZbfbv8myHJ87kMPjOrkz72yJ1/F6DWz2BiJbvuOWc
+ PfK1FJUZOJVqU9tfomlZgUPAdVo3zAoABcQ6/UjUzBb1jSJKutK6uE07hrs32Qa9JKe+
+ pO0McEkStabQUpnhO5zsrwK52OpVZ++bi+tdyZvAGKxSEj90fWQ/Z2YKb/Yw40h3WU7k
+ bbEA==
+X-Gm-Message-State: APjAAAXSK0uPb1bN4Sdux/SSEWMwK8mfxXwpWGo/9cijakfA/6DMPkOp
+ /lMW8Z8g1sFV7E2hnlN83LDp12XAx0JPpg==
+X-Received: by 2002:adf:d1b4:: with SMTP id w20mr10958421wrc.301.1565960287126; 
+ Fri, 16 Aug 2019 05:58:07 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id a19sm17594348wra.2.2019.08.16.05.58.04
+ by smtp.gmail.com with ESMTPSA id a19sm17594348wra.2.2019.08.16.05.58.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Aug 2019 05:58:04 -0700 (PDT)
+ Fri, 16 Aug 2019 05:58:06 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Fri, 16 Aug 2019 13:58:00 +0100
-Message-Id: <20190816125802.25877-1-peter.maydell@linaro.org>
+Date: Fri, 16 Aug 2019 13:58:02 +0100
+Message-Id: <20190816125802.25877-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190816125802.25877-1-peter.maydell@linaro.org>
+References: <20190816125802.25877-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::342
-Subject: [Qemu-arm] [PATCH 0/2] target/arm: Take exceptions on ATS
- instructions
+X-Received-From: 2a00:1450:4864:20::441
+Subject: [Qemu-arm] [PATCH 2/2] target/arm: Take exceptions on ATS
+ instructions when needed
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -113,7 +114,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Xbl5a1nohUJJ
+X-TUID: VanwwZT3fetf
 
 The translation table walk for an ATS instruction can result in
 various faults.  In general these are just reported back via the
@@ -122,38 +123,185 @@ requires that the fault is turned into an exception:
  * synchronous stage 2 faults of any kind during AT S1E0* and
    AT S1E1* instructions executed from NS EL1 fault to EL2 or EL3
  * synchronous external aborts are taken as Data Abort exceptions
-    
-(This is documented in the v8A Arm ARM DDI0487A.e D5.2.11 and G5.13.4.)
 
-I noticed this by code inspection back last year sometime when
-I was investigating a guest boot failure that turned out to be
-due to an entirely different cause. I got about halfway through
-trying to code up a fix before I realised it was irrelevant to
-that bug. This patchset is just tidying up and completing that
-work so it doesn't get lost.
+(This is documented in the v8A Arm ARM DDI0487A.e D5.2.11 and
+G5.13.4.)
 
-Use of ATS insns in the cases where they might actually fault
-is quite rare (obviously nobody sets up page tables where there's
-no memory and they'll take external aborts, and even for the
-"take a hyp trap for a stage 2 fault" case you need a setup
-with a hypervisor and a guest that uses ATS insns, and Linux as
-a guest doesn't use ATS at all. So my testing of this patchset
-has been more "check it doesn't break things" rather than
-actively finding and testing a use of the throw-an-exception path...
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper.c | 107 +++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 92 insertions(+), 15 deletions(-)
 
-thanks
--- PMM
-
-Peter Maydell (2):
-  target/arm: Allow ARMCPRegInfo read/write functions to throw
-    exceptions
-  target/arm: Take exceptions on ATS instructions when needed
-
- target/arm/cpu.h           |   6 ++-
- target/arm/helper.c        | 107 +++++++++++++++++++++++++++++++------
- target/arm/translate-a64.c |   6 +++
- target/arm/translate.c     |   7 +++
- 4 files changed, 110 insertions(+), 16 deletions(-)
-
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index b74c23a9bc0..7d82195c960 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -2944,6 +2944,73 @@ static uint64_t do_ats_write(CPUARMState *env, uint64_t value,
+     ret = get_phys_addr(env, value, access_type, mmu_idx, &phys_addr, &attrs,
+                         &prot, &page_size, &fi, &cacheattrs);
+ 
++    if (ret) {
++        /*
++         * Some kinds of translation fault must cause exceptions rather
++         * than being reported in the PAR.
++         */
++        int current_el = arm_current_el(env);
++        int target_el;
++        uint32_t syn, fsr, fsc;
++        bool take_exc = false;
++
++        if (fi.s1ptw && current_el == 1 && !arm_is_secure(env)
++            && (mmu_idx == ARMMMUIdx_S1NSE1 || mmu_idx == ARMMMUIdx_S1NSE0)) {
++            /*
++             * Synchronous stage 2 fault on an access made as part of the
++             * translation table walk for AT S1E0* or AT S1E1* insn
++             * executed from NS EL1. If this is a synchronous external abort
++             * and SCR_EL3.EA == 1, then we take a synchronous external abort
++             * to EL3. Otherwise the fault is taken as an exception to EL2,
++             * and HPFAR_EL2 holds the faulting IPA.
++             */
++            if (fi.type == ARMFault_SyncExternalOnWalk &&
++                (env->cp15.scr_el3 & SCR_EA)) {
++                target_el = 3;
++            } else {
++                env->cp15.hpfar_el2 = extract64(fi.s2addr, 12, 47) << 4;
++                target_el = 2;
++            }
++            take_exc = true;
++        } else if (fi.type == ARMFault_SyncExternalOnWalk) {
++            /*
++             * Synchronous external aborts during a translation table walk
++             * are taken as Data Abort exceptions.
++             */
++            if (fi.stage2) {
++                if (current_el == 3) {
++                    target_el = 3;
++                } else {
++                    target_el = 2;
++                }
++            } else {
++                target_el = exception_target_el(env);
++            }
++            take_exc = true;
++        }
++
++        if (take_exc) {
++            /* Construct FSR and FSC using same logic as arm_deliver_fault() */
++            if (target_el == 2 || arm_el_is_aa64(env, target_el) ||
++                arm_s1_regime_using_lpae_format(env, mmu_idx)) {
++                fsr = arm_fi_to_lfsc(&fi);
++                fsc = extract32(fsr, 0, 6);
++            } else {
++                fsr = arm_fi_to_sfsc(&fi);
++                fsc = 0x3f;
++            }
++            /*
++             * Report exception with ESR indicating a fault due to a
++             * translation table walk for a cache maintenance instruction.
++             */
++            syn = syn_data_abort_no_iss(current_el == target_el,
++                                        fi.ea, 1, fi.s1ptw, 1, fsc);
++            env->exception.vaddress = value;
++            env->exception.fsr = fsr;
++            raise_exception(env, EXCP_DATA_ABORT, syn, target_el);
++        }
++    }
++
+     if (is_a64(env)) {
+         format64 = true;
+     } else if (arm_feature(env, ARM_FEATURE_LPAE)) {
+@@ -3148,7 +3215,7 @@ static const ARMCPRegInfo vapa_cp_reginfo[] = {
+     /* This underdecoding is safe because the reginfo is NO_RAW. */
+     { .name = "ATS", .cp = 15, .crn = 7, .crm = 8, .opc1 = 0, .opc2 = CP_ANY,
+       .access = PL1_W, .accessfn = ats_access,
+-      .writefn = ats_write, .type = ARM_CP_NO_RAW },
++      .writefn = ats_write, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC },
+ #endif
+     REGINFO_SENTINEL
+ };
+@@ -4281,35 +4348,45 @@ static const ARMCPRegInfo v8_cp_reginfo[] = {
+     /* 64 bit address translation operations */
+     { .name = "AT_S1E1R", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 8, .opc2 = 0,
+-      .access = PL1_W, .type = ARM_CP_NO_RAW, .writefn = ats_write64 },
++      .access = PL1_W, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC,
++      .writefn = ats_write64 },
+     { .name = "AT_S1E1W", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 8, .opc2 = 1,
+-      .access = PL1_W, .type = ARM_CP_NO_RAW, .writefn = ats_write64 },
++      .access = PL1_W, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC,
++      .writefn = ats_write64 },
+     { .name = "AT_S1E0R", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 8, .opc2 = 2,
+-      .access = PL1_W, .type = ARM_CP_NO_RAW, .writefn = ats_write64 },
++      .access = PL1_W, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC,
++      .writefn = ats_write64 },
+     { .name = "AT_S1E0W", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 0, .crn = 7, .crm = 8, .opc2 = 3,
+-      .access = PL1_W, .type = ARM_CP_NO_RAW, .writefn = ats_write64 },
++      .access = PL1_W, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC,
++      .writefn = ats_write64 },
+     { .name = "AT_S12E1R", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 8, .opc2 = 4,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW, .writefn = ats_write64 },
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC,
++      .writefn = ats_write64 },
+     { .name = "AT_S12E1W", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 8, .opc2 = 5,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW, .writefn = ats_write64 },
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC,
++      .writefn = ats_write64 },
+     { .name = "AT_S12E0R", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 8, .opc2 = 6,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW, .writefn = ats_write64 },
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC,
++      .writefn = ats_write64 },
+     { .name = "AT_S12E0W", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 8, .opc2 = 7,
+-      .access = PL2_W, .type = ARM_CP_NO_RAW, .writefn = ats_write64 },
++      .access = PL2_W, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC,
++      .writefn = ats_write64 },
+     /* AT S1E2* are elsewhere as they UNDEF from EL3 if EL2 is not present */
+     { .name = "AT_S1E3R", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 6, .crn = 7, .crm = 8, .opc2 = 0,
+-      .access = PL3_W, .type = ARM_CP_NO_RAW, .writefn = ats_write64 },
++      .access = PL3_W, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC,
++      .writefn = ats_write64 },
+     { .name = "AT_S1E3W", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 6, .crn = 7, .crm = 8, .opc2 = 1,
+-      .access = PL3_W, .type = ARM_CP_NO_RAW, .writefn = ats_write64 },
++      .access = PL3_W, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC,
++      .writefn = ats_write64 },
+     { .name = "PAR_EL1", .state = ARM_CP_STATE_AA64,
+       .type = ARM_CP_ALIAS,
+       .opc0 = 3, .opc1 = 0, .crn = 7, .crm = 4, .opc2 = 0,
+@@ -4891,11 +4968,11 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+     { .name = "AT_S1E2R", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 8, .opc2 = 0,
+       .access = PL2_W, .accessfn = at_s1e2_access,
+-      .type = ARM_CP_NO_RAW, .writefn = ats_write64 },
++      .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC, .writefn = ats_write64 },
+     { .name = "AT_S1E2W", .state = ARM_CP_STATE_AA64,
+       .opc0 = 1, .opc1 = 4, .crn = 7, .crm = 8, .opc2 = 1,
+       .access = PL2_W, .accessfn = at_s1e2_access,
+-      .type = ARM_CP_NO_RAW, .writefn = ats_write64 },
++      .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC, .writefn = ats_write64 },
+     /* The AArch32 ATS1H* operations are CONSTRAINED UNPREDICTABLE
+      * if EL2 is not implemented; we choose to UNDEF. Behaviour at EL3
+      * with SCR.NS == 0 outside Monitor mode is UNPREDICTABLE; we choose
+@@ -4903,10 +4980,10 @@ static const ARMCPRegInfo el2_cp_reginfo[] = {
+      */
+     { .name = "ATS1HR", .cp = 15, .opc1 = 4, .crn = 7, .crm = 8, .opc2 = 0,
+       .access = PL2_W,
+-      .writefn = ats1h_write, .type = ARM_CP_NO_RAW },
++      .writefn = ats1h_write, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC },
+     { .name = "ATS1HW", .cp = 15, .opc1 = 4, .crn = 7, .crm = 8, .opc2 = 1,
+       .access = PL2_W,
+-      .writefn = ats1h_write, .type = ARM_CP_NO_RAW },
++      .writefn = ats1h_write, .type = ARM_CP_NO_RAW | ARM_CP_RAISES_EXC },
+     { .name = "CNTHCTL_EL2", .state = ARM_CP_STATE_BOTH,
+       .opc0 = 3, .opc1 = 4, .crn = 14, .crm = 1, .opc2 = 0,
+       /* ARMv7 requires bit 0 and 1 to reset to 1. ARMv8 defines the
 -- 
 2.20.1
+

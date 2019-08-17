@@ -1,130 +1,186 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp452757wrs;
-        Sat, 17 Aug 2019 03:20:19 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyBuk4OSLk6qiMZWhzK/L4jKGqLJUTjpxdpfI/dbE5nmBAlLQYiOBf+WOXYbip57ceuDM7i
-X-Received: by 2002:ac8:548c:: with SMTP id h12mr12359889qtq.273.1566037219839;
-        Sat, 17 Aug 2019 03:20:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566037219; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp454073wrs;
+        Sat, 17 Aug 2019 03:22:12 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw5hya+WUxXRSvhqfgOV9QyVbjhaQfhQyiAQ0qUgoQbHfXsa9CZt6LxzFraI7NRBeYCpH5T
+X-Received: by 2002:a17:906:7386:: with SMTP id f6mr12988045ejl.116.1566037332113;
+        Sat, 17 Aug 2019 03:22:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566037332; cv=none;
         d=google.com; s=arc-20160816;
-        b=ObosRTbRrW+O+VTSTCGSp9Qf8mhyX9rYi8g99tWMHi+dz7iUqAMtVLOrgOjTOqHri3
-         Is0NPvZFtXX6lPfyA4wlI/HmlWdiHpAdGYysk1dDz0grr8H0XKIctGhopKgCwkIl+dfn
-         mWN2szG5LodX1BOsis0b3vzr2v1DnuDY4BBYrq+Ct/SlD4q6eH72e/Irc/Eu7DfEXgl2
-         11J/nbw4SQBvHwnz+yBKIvdmn+8wnILwCXx1tLBGajHlqahW3kEqveMpJqy3WHQiY4DM
-         HrrfOAY+UWDfUxZ1IoT0WFkKqWAXW7KSIXbdgIQdxuRM4GR5QcE80rFVXSH0PM63WKLv
-         wk0w==
+        b=BrzpSenDXy2pVxGz4WbdmKQvbRJHprT/HnLGEREdtXhBMDy+fGf6Jjj47zA9i3vS0a
+         A9TvUoIOCs9EKdozaiy6GfbOd1X+0u7INpswhhVK+iIWqIaaHlY5vrnBWkoGBvtuFfi0
+         RPtyCCTz+IACL7VMSTL+ViBCMZ67hVIyXA8J13cz7bx4WWf4PDTiw6do9jIx/f1tBY9q
+         DNFGAc7zbhjJ9k4pPWGGXMR8KvLK8xF3F+NxchgOoyWJ6nzEyRlbNEQ6W4cZjoqab/D8
+         IcB0rYOVkKkFDB6REpHSN+MgyLs8IosTKtLgnsd7tNDNT51vk6obpg8N6Z0mwj1XvXeO
+         8nog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=amGg9fJJ2NoJvoMI470j7Cebxl7Guqw0ZeW0TJW2D1Q=;
-        b=nky3q+xAEENYMbHvQYF126nkrYXchyfr/azWKsf8qBm7mydJ+1FW33uai9I5aRtd/X
-         ZzWq7mvHoSEBY7iG3ekwpDDPYDYi0deYGtLXOb53HMPmBQhEh6Ac4zx7mNAdxAoXeP2N
-         K63fyXjr4ae1gHCye+wJDHdEZ74M9hssL3dY0TH95qX751yRF9SZpvW/zU5ZEHX58fTk
-         WSzl/iP6+oBeot3a4VyMamydPsqC8enPKLNmjOIYKdAzefhDbvCzrcjtyLF86Na9C5uY
-         utcJ/StJbyjYpzx22AfnkU/nls76Bo1s3QGoC9RFKmrKbxfW/2+RL0tKwatMw5gnEMBk
-         4+Hg==
+        bh=ltxSlA/KnHeV5P4EyEDJNzeQvUa7zXrH52aHRfdV8Tk=;
+        b=XCrx5q8DNlu18CkAb0TYyLmLSOXh8Jqq1ww52j+p/tW3niEHMXTFuIWqzr0qS4VtTX
+         BIUZPvC7yavtZJIheqqUAieYR3cAYbzDqf0/kALfuaURDnxuerYNtpccyqSSLh5PZG+0
+         GbtXsn24SjodEPc2xr8jzCrw30Vqe95QGnwWmJIJm1/y2+aedfZ4MGRXuy1Ni1KbNnCs
+         wv4ydEsGVpcp/EzIcWmN6DxX0su2RSvR77Ls+TQXk0omfF2xL35rMpOgU9aKI6iM5UwE
+         rdx4eYf3Zwvhs6jRGPTAe+rFlkgeYAZxDNRdNP1jORC8Naxm9HBS8D2TEctl4o93soMG
+         xzNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l29si5010082qtk.192.2019.08.17.03.20.19
+        by mx.google.com with ESMTPS id y62si4984016eda.287.2019.08.17.03.22.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 17 Aug 2019 03:20:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 17 Aug 2019 03:22:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35364 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35394 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyvoo-00014c-PP
-	for alex.bennee@linaro.org; Sat, 17 Aug 2019 06:20:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58060)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hyvqc-0003Cd-Pt
+	for alex.bennee@linaro.org; Sat, 17 Aug 2019 06:22:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58164)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1hyvoK-0000kF-TU
- for qemu-arm@nongnu.org; Sat, 17 Aug 2019 06:19:50 -0400
+ (envelope-from <thuth@redhat.com>) id 1hyvoU-0000r0-2z
+ for qemu-devel@nongnu.org; Sat, 17 Aug 2019 06:19:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1hyvoJ-0004Qa-6Y
- for qemu-arm@nongnu.org; Sat, 17 Aug 2019 06:19:48 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59776)
+ (envelope-from <thuth@redhat.com>) id 1hyvoT-0004ZU-12
+ for qemu-devel@nongnu.org; Sat, 17 Aug 2019 06:19:58 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48544)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1hyvoJ-0004PQ-1c; Sat, 17 Aug 2019 06:19:47 -0400
+ id 1hyvoQ-0004W2-Fl; Sat, 17 Aug 2019 06:19:54 -0400
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B3E7C1951D54;
- Sat, 17 Aug 2019 10:19:45 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id B1587800DD4;
+ Sat, 17 Aug 2019 10:19:53 +0000 (UTC)
 Received: from thuth.com (ovpn-116-52.ams2.redhat.com [10.36.116.52])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 703ADD1E5;
- Sat, 17 Aug 2019 10:19:43 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6D16583BA9;
+ Sat, 17 Aug 2019 10:19:51 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: Paolo Bonzini <pbonzini@redhat.com>, Yang Zhong <yang.zhong@intel.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-Date: Sat, 17 Aug 2019 12:19:25 +0200
-Message-Id: <20190817101931.28386-3-thuth@redhat.com>
+Date: Sat, 17 Aug 2019 12:19:28 +0200
+Message-Id: <20190817101931.28386-6-thuth@redhat.com>
 In-Reply-To: <20190817101931.28386-1-thuth@redhat.com>
 References: <20190817101931.28386-1-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.62]); Sat, 17 Aug 2019 10:19:45 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.67]); Sat, 17 Aug 2019 10:19:53 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v3 2/8] hw/intc: Only build the xlnx-iomod-intc
- device for the MicroBlaze PMU
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [PATCH v3 5/8] hw/core: Add a config switch for the
+ "or-irq" device
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-arm@nongnu.org,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Artyom Tarasenko <atar4qemu@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FnTSoslWPYs1
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: C9tnOBH6OEFY
 
-From: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+The "or-irq" device is only used by certain machines. Let's add
+a proper config switch for it so that it only gets compiled when we
+really need it.
 
-The Xilinx I/O Module Interrupt Controller is only used by the
-MicroBlaze PMU, not by the AArch64 machine.
-Move it from the generic ZynqMP object list to the PMU specific.
-
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-Message-Id: <20190427141459.19728-3-philmd@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/intc/Makefile.objs | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/Kconfig        | 3 +++
+ hw/core/Kconfig       | 3 +++
+ hw/core/Makefile.objs | 2 +-
+ hw/pci-host/Kconfig   | 3 ++-
+ 4 files changed, 9 insertions(+), 2 deletions(-)
 
-diff --git a/hw/intc/Makefile.objs b/hw/intc/Makefile.objs
-index 03019b9a03..f726d87532 100644
---- a/hw/intc/Makefile.objs
-+++ b/hw/intc/Makefile.objs
-@@ -3,7 +3,7 @@ common-obj-$(CONFIG_I8259) +=3D i8259_common.o i8259.o
- common-obj-$(CONFIG_PL190) +=3D pl190.o
- common-obj-$(CONFIG_PUV3) +=3D puv3_intc.o
- common-obj-$(CONFIG_XILINX) +=3D xilinx_intc.o
--common-obj-$(CONFIG_XLNX_ZYNQMP) +=3D xlnx-pmu-iomod-intc.o
-+common-obj-$(CONFIG_XLNX_ZYNQMP_PMU) +=3D xlnx-pmu-iomod-intc.o
- common-obj-$(CONFIG_XLNX_ZYNQMP) +=3D xlnx-zynqmp-ipi.o
- common-obj-$(CONFIG_ETRAXFS) +=3D etraxfs_pic.o
- common-obj-$(CONFIG_IMX) +=3D imx_avic.o imx_gpcv2.o
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index ab65ecd216..849195c3f6 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -292,6 +292,7 @@ config RASPI
+ config STM32F205_SOC
+     bool
+     select ARM_V7M
++    select OR_IRQ
+     select STM32F2XX_TIMER
+     select STM32F2XX_USART
+     select STM32F2XX_SYSCFG
+@@ -360,6 +361,7 @@ config MPS2
+     select LAN9118
+     select MPS2_FPGAIO
+     select MPS2_SCC
++    select OR_IRQ
+     select PL022    # Serial port
+     select PL080    # DMA controller
+=20
+@@ -439,6 +441,7 @@ config ARMSSE
+     select IOTKIT_SECCTL
+     select IOTKIT_SYSCTL
+     select IOTKIT_SYSINFO
++    select OR_IRQ
+     select TZ_MPC
+     select TZ_MSC
+     select TZ_PPC
+diff --git a/hw/core/Kconfig b/hw/core/Kconfig
+index d11920fcb3..984143456a 100644
+--- a/hw/core/Kconfig
++++ b/hw/core/Kconfig
+@@ -7,6 +7,9 @@ config PTIMER
+ config FITLOADER
+     bool
+=20
++config OR_IRQ
++    bool
++
+ config PLATFORM_BUS
+     bool
+=20
+diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+index d6cfb2a81b..ce337bd7c9 100644
+--- a/hw/core/Makefile.objs
++++ b/hw/core/Makefile.objs
+@@ -18,7 +18,7 @@ common-obj-$(CONFIG_SOFTMMU) +=3D loader.o
+ common-obj-$(CONFIG_FITLOADER) +=3D loader-fit.o
+ common-obj-$(CONFIG_SOFTMMU) +=3D qdev-properties-system.o
+ common-obj-$(CONFIG_REGISTER) +=3D register.o
+-common-obj-$(CONFIG_SOFTMMU) +=3D or-irq.o
++common-obj-$(CONFIG_OR_IRQ) +=3D or-irq.o
+ common-obj-$(CONFIG_SOFTMMU) +=3D split-irq.o
+ common-obj-$(CONFIG_PLATFORM_BUS) +=3D platform-bus.o
+ common-obj-$(CONFIG_SOFTMMU) +=3D generic-loader.o
+diff --git a/hw/pci-host/Kconfig b/hw/pci-host/Kconfig
+index 8c16d96b3f..1edc1a31d4 100644
+--- a/hw/pci-host/Kconfig
++++ b/hw/pci-host/Kconfig
+@@ -2,8 +2,9 @@ config PAM
+     bool
+=20
+ config PREP_PCI
+-    select PCI
+     bool
++    select PCI
++    select OR_IRQ
+=20
+ config GRACKLE_PCI
+     select PCI
 --=20
 2.18.1
 

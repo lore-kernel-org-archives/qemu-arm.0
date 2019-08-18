@@ -1,112 +1,108 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1546142wrs;
-        Sun, 18 Aug 2019 05:46:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyKpzxUrHg8BKEMdUMlHhKa/CtoLQGFa9r5LivfggELWJXhbo4FXgSWdlu5wUk0KZLtGaRW
-X-Received: by 2002:a50:c908:: with SMTP id o8mr20399167edh.187.1566132416654;
-        Sun, 18 Aug 2019 05:46:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566132416; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1932625wrs;
+        Sun, 18 Aug 2019 14:44:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzVv9LFFVkE+lwaaz9wz7jpJu4TI7hNOyVx0+Op1ALUFWGu9ZGcgAzsi7jr/pygpw4yZDBD
+X-Received: by 2002:a50:86bb:: with SMTP id r56mr21817735eda.217.1566164694865;
+        Sun, 18 Aug 2019 14:44:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566164694; cv=none;
         d=google.com; s=arc-20160816;
-        b=0HtBpiSYP0YdB0IPOrYYwzgUTTFu/vlBayAdQZ9rLkndEnMUhg9ywYgW7IUq3aUtKJ
-         LJtk4gtcnGvcz8Q+KkMUdnwr7JFA/Uxg/c+jxj/Af9RMWILf5mi378qp13olw9J+JEU1
-         0gcwl61QBfzxajNMfNGn2Nw76pj/bzQ7yLifOS6i0+tK9K7EHMf11ITp1lkktWoMbM5h
-         C9Pss6neqqQ59hTrzxcZZT3460hUG7bKR3d2bTgzGVPR5vFrI5X+jutZsfuTVrACw3gE
-         gZIx0Nh0MaOCYmkobGBuADJqoAGBHYWiyQKGZGeP1/IGPs1abvG/sPl1kvBS7xazeOn+
-         ZmgQ==
+        b=I4CgV9maEs0LPUT+ZL0JhAyQ0kosAbm8VtV20BE+TjQNXUafXGdRH/8nLjzZpllus4
+         BlPps6dYcjhQLXdZlQFwz+nXnxuna/quzqe2XjZKM/MBqNTCnxE8TLrmbtRCnka00cvo
+         Pil8wC+TJkIPpTmOLcN7HOw7UvyjVNWgj5Q4Ay7P+aGCR4KHeJCeRbZBICC5k6NAcbax
+         Pq7E68QxYVSIOZtowYURe3DUdmQrPXudx9T7aBysgaFRYtEYk181UhkR/+nh8WwS94Wp
+         QO7L5SvpcUdyQsG+bxxQN5+WvqtWfM0zpcyq7d85PWq1DRC87Qc5h79vto1sVMdRYvpk
+         xF5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature;
-        bh=1pPjYBqSfFQg89Ld6dVuKQx+pLvJBdztHR4jr4QNGzI=;
-        b=qnGa1TJgzoWIHH25XuqsYeuzTi8Kofp4wfF25vB0Veh1Cik9hJKKESZvuuIybppqJH
-         cJqPy3eeg4Zxa5pvXAaIIFVEQJdPwvh7MOwkM/Z5pnwK45i/H+Y2U5lmKHBsob4WWMoW
-         BpJuhLeeoafw/fobcUu4tGpNVXchYcu+pgHjpeEDJUgsZJsXBbwKLeIXY07VxbXnxOL8
-         9d/j3s+9lDxM9mC2kVGWdfmxdhNBuhb2il5+SELvPlEWXjXarVmO9mP3WSEwR5t/j4tB
-         v3maED1VWAZiemAgvhX2GK7eonjC1DF306WIrYq3Iyh+0s6wbwRi0y9ytjJV+YGCfRkk
-         /e9A==
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=1L5WpEZ7bZ0amyUDFMRC9OgGOx++Aizaen6GPvdVI8w=;
+        b=qobYBmKefpM44K62OwW27x/zvplhSsItepYswlZwpImk1E3ebWp7tEdTGsjGMrncKK
+         RydCWufKTGf/iY5xDKumCuczzB9C5VD3nMrr9gHv2LbCj1z2l4M8BEqhGr5/ysieZAFI
+         lZD8Uv5EtwtaJKz2FHL8ENp094x79y8Ngdc5oIjmrHNC31/v6/XZMmfpa3k74rUxxpfS
+         zeUeXZwjP8WV1OcrphPzX2aa/pr6plKd1zsVyBWpZLUlBDglR4Q40Ym7oqAbpdyO/K51
+         DQYSrMAd7cZXi6yOaoiNG7ZtkJJ27oixjV2PzHJC/OWY8v/TlbOstekrT0P5eI1PqmEb
+         GSrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NFdyZjYe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l7si7333405eda.29.2019.08.18.05.46.56
+        by mx.google.com with ESMTPS id k40si7528436edb.14.2019.08.18.14.44.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Aug 2019 05:46:56 -0700 (PDT)
+        Sun, 18 Aug 2019 14:44:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NFdyZjYe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41022 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43086 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hzKaF-0000oD-OA
-	for alex.bennee@linaro.org; Sun, 18 Aug 2019 08:46:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46534)
+	id 1hzSyr-0004HZ-RM
+	for alex.bennee@linaro.org; Sun, 18 Aug 2019 17:44:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40754)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1hzKa5-0000nf-KR
- for qemu-arm@nongnu.org; Sun, 18 Aug 2019 08:46:46 -0400
+ (envelope-from <philmd@redhat.com>) id 1hzSyX-0004Gb-QV
+ for qemu-arm@nongnu.org; Sun, 18 Aug 2019 17:44:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1hzKa4-0003Rz-BS
- for qemu-arm@nongnu.org; Sun, 18 Aug 2019 08:46:45 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:44781)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1hzKa4-0003QO-0o
- for qemu-arm@nongnu.org; Sun, 18 Aug 2019 08:46:44 -0400
-Received: by mail-wr1-x430.google.com with SMTP id p17so5890252wrf.11
- for <qemu-arm@nongnu.org>; Sun, 18 Aug 2019 05:46:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=1pPjYBqSfFQg89Ld6dVuKQx+pLvJBdztHR4jr4QNGzI=;
- b=NFdyZjYeAZNqNaLC48b0zxqT4ew0cYYqgiA7yrp97QLfmtvO+ZgMF10JEnSzxPt27n
- 2gTEmdztH2Z2nIfQrAkbPMNuVh1fIWw9RCjeFBkdCdquJik5n8PLsyHocdtWCV27JyVQ
- QX9hzgFLel3K5xlO29rrs0/AnLhkf1tkhEiNMcC6IJ+uHdc1AHkK4VAfGxoH270aoFiW
- jhPmktd1panEyPf1lhzi30D5LtUGZkTzN5K9ND0UGMARBYZKgYMda93vbqZyFk62bHGC
- 6VyaP9AJ0HTezxkZgWUZ8C1eitZedl/FAJbdS4/uRxX4kDPgbeWwcccZjtnmQKty3WVJ
- PLmQ==
+ (envelope-from <philmd@redhat.com>) id 1hzSyW-0008Fl-AR
+ for qemu-arm@nongnu.org; Sun, 18 Aug 2019 17:44:33 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45096)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1hzSyW-0008Ep-3L
+ for qemu-arm@nongnu.org; Sun, 18 Aug 2019 17:44:32 -0400
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 2C2C919CF92
+ for <qemu-arm@nongnu.org>; Sun, 18 Aug 2019 21:44:31 +0000 (UTC)
+Received: by mail-wr1-f70.google.com with SMTP id h8so4200327wrb.11
+ for <qemu-arm@nongnu.org>; Sun, 18 Aug 2019 14:44:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=1pPjYBqSfFQg89Ld6dVuKQx+pLvJBdztHR4jr4QNGzI=;
- b=L5cqDtPF+pqfBwu7KVI7kcA5L901B6gJoiqQz75tRQZoNfVe4ettIxSR2ovdiXtVlf
- qgdirMKL0kL+6r+0p5YR9ENS5D8ui0x00Wfq/KDsLtS3jWDPbarzZ25bnkidqyNA2AyF
- s0JasPEo5CDKIX3a0BtnJB7R4IerovdkxD8aKgLTXKbW3QfztlTHW4xciZLbW/f9PBe2
- 0AxDQC92LhxGl0CvMXFsUPDSLOPZgbY41oNJeST1ENk029Z992RcziegWmqGmun+ZAwK
- lw8Q8A5myJwq5gySN9DjiccEOHHXvk6vzfkmrHOjCFQW9H0SuZu8uSgtucD3lev/YBt3
- cjPg==
-X-Gm-Message-State: APjAAAWbZZ9mxZP24Cj7tYFEEee//WdZ+KWeTjstJTLeU9hF/trHqXLC
- eiKLNf+2TcUJFhFSmiWjGYf1QA==
-X-Received: by 2002:adf:ce05:: with SMTP id p5mr21186547wrn.197.1566132402599; 
- Sun, 18 Aug 2019 05:46:42 -0700 (PDT)
-Received: from [172.16.53.135] ([82.3.55.76])
- by smtp.gmail.com with ESMTPSA id o16sm13231720wrp.23.2019.08.18.05.46.25
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 18 Aug 2019 05:46:41 -0700 (PDT)
+ bh=h2xzjSFZNTWlCffgvGmqesSJuEHPH52iwk5nP49KPQY=;
+ b=NFB7y/iHY2c7DuFQvmg5DSVSPibLOT4iI+qoeGrQGGeI4kBUcuuRIWuuR5YciTeGef
+ o3sr3Czuf6UVnTdWIt6pPZo0ODsl+ov+jjDhostp8PbJtZ7judHkzBxNi4B8kHr5PeYO
+ glJSL3J7XQexmHbtLficvo36O2qeg7pO2njYuXPzfYVzAtbvirLGvJ/IguqBeZTTpied
+ TXFxF13PyeADnPA5TUI7fbgNAyrd6Mmr8eQGD9VZiqm218BcMt7z+1lqFCrblAnkt6R5
+ dGCp4a1+Yn7omY9lggsPZZ54TRZEFIYkFICmxDO8QmUmKUY4kZq68poTFNkCmxZQjTkw
+ udEw==
+X-Gm-Message-State: APjAAAXL+Ac9dq5d5n00xqmX/aGIwZe4F5Lrygm74gPkeqkV17GQPQF/
+ WmUCDwtvKkG7AT3Ohr3a0Uyr4nebu4hnC0aIt9VtWrwer4O0+5fYuerZjpyzGKCPOKH/dun0FX9
+ 5ZxYAcXQxnvpb
+X-Received: by 2002:adf:edc9:: with SMTP id v9mr22550666wro.125.1566164669524; 
+ Sun, 18 Aug 2019 14:44:29 -0700 (PDT)
+X-Received: by 2002:adf:edc9:: with SMTP id v9mr22550609wro.125.1566164669299; 
+ Sun, 18 Aug 2019 14:44:29 -0700 (PDT)
+Received: from [192.168.1.39] (251.red-88-10-102.dynamicip.rima-tde.net.
+ [88.10.102.251])
+ by smtp.gmail.com with ESMTPSA id f18sm13122174wrx.85.2019.08.18.14.44.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 18 Aug 2019 14:44:28 -0700 (PDT)
 To: tony.nguyen@bt.com, qemu-devel@nongnu.org
 References: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
- <1565941122698.46462@bt.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <0a8ecb15-e03d-c6fd-e9bd-38b4abc7b316@linaro.org>
-Date: Sun, 18 Aug 2019 13:46:16 +0100
+ <1565940633026.69822@bt.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <3872a5ec-ccf1-2978-34b5-b0b5478d2b86@redhat.com>
+Date: Sun, 18 Aug 2019 23:44:24 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <1565941122698.46462@bt.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <1565940633026.69822@bt.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::430
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 38/42] memory: Single byte
- swap along the I/O path
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 11/42] memory: Access
+ MemoryRegion with MemOp
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -118,64 +114,223 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
- cohuck@redhat.com, sagark@eecs.berkeley.edu, david@redhat.com,
- jasowang@redhat.com, palmer@sifive.com, mark.cave-ayland@ilande.co.uk,
- i.mitsyanko@gmail.com, keith.busch@intel.com, jcmvbkbc@gmail.com,
- frederic.konrad@adacore.com, dmitry.fleytman@gmail.com, kraxel@redhat.com,
- gxt@mprc.pku.edu.cn, pburton@wavecomp.com, xiaoguangrong.eric@gmail.com,
- peter.chubb@nicta.com.au, philmd@redhat.com, robh@kernel.org, hare@suse.com,
- sstabellini@kernel.org, berto@igalia.com, chouteau@adacore.com,
- qemu-block@nongnu.org, arikalo@wavecomp.com, jslaby@suse.cz, deller@gmx.de,
- mst@redhat.com, magnus.damm@gmail.com, jcd@tribudubois.net,
- pasic@linux.ibm.com, borntraeger@de.ibm.com, mreitz@redhat.com,
- hpoussin@reactos.org, joel@jms.id.au, anthony.perard@citrix.com,
- xen-devel@lists.xenproject.org, david@gibson.dropbear.id.au, lersek@redhat.com,
- green@moxielogic.com, atar4qemu@gmail.com, antonynpavlov@gmail.com,
- marex@denx.de, jiri@resnulli.us, ehabkost@redhat.com, minyard@acm.org,
- qemu-s390x@nongnu.org, sw@weilnetz.de, alistair@alistair23.me,
- yuval.shaia@oracle.com, b.galvani@gmail.com, eric.auger@redhat.com,
- alex.williamson@redhat.com, qemu-arm@nongnu.org, jan.kiszka@web.de,
- clg@kaod.org, stefanha@redhat.com, marcandre.lureau@redhat.com,
- shorne@gmail.com, jsnow@redhat.com, rth@twiddle.net, kwolf@redhat.com,
- qemu-riscv@nongnu.org, proljc@gmail.com, pbonzini@redhat.com, andrew@aj.id.au,
- claudio.fontana@suse.com, crwulff@gmail.com, laurent@vivier.eu,
- Andrew.Baumann@microsoft.com, sundeep.lkml@gmail.com, andrew.smirnov@gmail.com,
- michael@walle.cc, paul.durrant@citrix.com, qemu-ppc@nongnu.org,
- huth@tuxfamily.org, amarkovic@wavecomp.com, kbastian@mail.uni-paderborn.de,
- imammedo@redhat.com, aurelien@aurel32.net, stefanb@linux.ibm.com
+Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
+ arikalo@wavecomp.com, pasic@linux.ibm.com, hpoussin@reactos.org,
+ anthony.perard@citrix.com, xen-devel@lists.xenproject.org, balrogg@gmail.com,
+ jasowang@redhat.com, jiri@resnulli.us, ehabkost@redhat.com,
+ b.galvani@gmail.com, eric.auger@redhat.com, alex.williamson@redhat.com,
+ stefanha@redhat.com, jsnow@redhat.com, rth@twiddle.net, kwolf@redhat.com,
+ andrew@aj.id.au, claudio.fontana@suse.com, crwulff@gmail.com,
+ laurent@vivier.eu, sundeep.lkml@gmail.com, michael@walle.cc,
+ qemu-ppc@nongnu.org, kbastian@mail.uni-paderborn.de, imammedo@redhat.com,
+ fam@euphon.net, peter.maydell@linaro.org, david@redhat.com, palmer@sifive.com,
+ balaton@eik.bme.hu, keith.busch@intel.com, jcmvbkbc@gmail.com, hare@suse.com,
+ sstabellini@kernel.org, andrew.smirnov@gmail.com, deller@gmx.de,
+ magnus.damm@gmail.com, marcel.apfelbaum@gmail.com, atar4qemu@gmail.com,
+ minyard@acm.org, sw@weilnetz.de, yuval.shaia@oracle.com, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, jan.kiszka@web.de, clg@kaod.org, shorne@gmail.com,
+ qemu-riscv@nongnu.org, i.mitsyanko@gmail.com, cohuck@redhat.com,
+ amarkovic@wavecomp.com, peter.chubb@nicta.com.au, aurelien@aurel32.net,
+ pburton@wavecomp.com, sagark@eecs.berkeley.edu, green@moxielogic.com,
+ kraxel@redhat.com, gxt@mprc.pku.edu.cn, robh@kernel.org,
+ borntraeger@de.ibm.com, joel@jms.id.au, antonynpavlov@gmail.com,
+ chouteau@adacore.com, lersek@redhat.com, Andrew.Baumann@microsoft.com,
+ mreitz@redhat.com, walling@linux.ibm.com, dmitry.fleytman@gmail.com,
+ mst@redhat.com, mark.cave-ayland@ilande.co.uk, jslaby@suse.cz, marex@denx.de,
+ proljc@gmail.com, marcandre.lureau@redhat.com, alistair@alistair23.me,
+ paul.durrant@citrix.com, david@gibson.dropbear.id.au,
+ xiaoguangrong.eric@gmail.com, huth@tuxfamily.org, jcd@tribudubois.net,
+ pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wRA5iqN3enue
+X-TUID: z+sUdDsvfUht
 
-On 8/16/19 8:38 AM, tony.nguyen@bt.com wrote:
-> +static void adjust_endianness(MemoryRegion *mr, uint64_t *data, MemOp op)
->  {
-> +    if ((op & MO_BSWAP) != mr->ops->endianness) {
-> +        switch (op & MO_SIZE) {
+On 8/16/19 9:30 AM, tony.nguyen@bt.com wrote:
+> Convert memory_region_dispatch_{read|write} operand "unsigned size"
+> into a "MemOp op".
+>=20
+> Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+> =C2=A0include/exec/memop.h =C2=A0| 20 ++++++++++++++------
+> =C2=A0include/exec/memory.h | =C2=A09 +++++----
+> =C2=A0memory.c =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| =C2=A0=
+7 +++++--
+> =C2=A03 files changed, 24 insertions(+), 12 deletions(-)
+>=20
+> diff --git a/include/exec/memop.h b/include/exec/memop.h
+> index dfd76a1..0a610b7 100644
+> --- a/include/exec/memop.h
+> +++ b/include/exec/memop.h
+> @@ -12,6 +12,8 @@
+> =C2=A0#ifndef MEMOP_H
+> =C2=A0#define MEMOP_H
+> =C2=A0
+> +#include "qemu/host-utils.h"
+> +
+> =C2=A0typedef enum MemOp {
+> =C2=A0 =C2=A0 =C2=A0MO_8 =C2=A0 =C2=A0 =3D 0,
+> =C2=A0 =C2=A0 =C2=A0MO_16 =C2=A0 =C2=A0=3D 1,
+> @@ -107,14 +109,20 @@ typedef enum MemOp {
+> =C2=A0 =C2=A0 =C2=A0MO_SSIZE =3D MO_SIZE | MO_SIGN,
+> =C2=A0} MemOp;
+> =C2=A0
+> +/* MemOp to size in bytes. =C2=A0*/
+> +static inline unsigned memop_size(MemOp op)
+> +{
+> + =C2=A0 =C2=A0return 1 << (op & MO_SIZE);
+> +}
+> +
+> =C2=A0/* Size in bytes to MemOp. =C2=A0*/
+> -static inline unsigned size_memop(unsigned size)
+> +static inline MemOp size_memop(unsigned size)
+> =C2=A0{
+> - =C2=A0 =C2=A0/*
+> - =C2=A0 =C2=A0 * FIXME: No-op to aid conversion of
+> memory_region_dispatch_{read|write}
+> - =C2=A0 =C2=A0 * "unsigned size" operand into a "MemOp op".
+> - =C2=A0 =C2=A0 */
+> - =C2=A0 =C2=A0return size;
+> +#ifdef CONFIG_DEBUG_TCG
+> + =C2=A0 =C2=A0/* Power of 2 up to 8. =C2=A0*/
+> + =C2=A0 =C2=A0assert((size & (size - 1)) =3D=3D 0 && size >=3D 1 && si=
+ze <=3D 8);
 
-You'll want to use devend_memop() here, as previously discussed.
+Easier to review as:
 
-> @@ -2331,7 +2322,7 @@ void memory_region_add_eventfd(MemoryRegion *mr,
->      }
-> 
->      if (size) {
-> -        adjust_endianness(mr, &mrfd.data, size);
-> +        adjust_endianness(mr, &mrfd.data, size_memop(size));
->      }
->      memory_region_transaction_begin();
->      for (i = 0; i < mr->ioeventfd_nb; ++i) {
-> @@ -2366,7 +2357,7 @@ void memory_region_del_eventfd(MemoryRegion *mr,
->      unsigned i;
-> 
->      if (size) {
-> -        adjust_endianness(mr, &mrfd.data, size);
-> +        adjust_endianness(mr, &mrfd.data, size_memop(size));
->      }
->      memory_region_transaction_begin();
->      for (i = 0; i < mr->ioeventfd_nb; ++i) {
+       assert(is_power_of_2(size) && size <=3D 8);
 
-To preserve behaviour it would appear that these need MO_TE.
+(This can be cleaned later).
 
-
-r~
+> +#endif
+> + =C2=A0 =C2=A0return ctz32(size);
+> =C2=A0}
+> =C2=A0
+> =C2=A0#endif
+> diff --git a/include/exec/memory.h b/include/exec/memory.h
+> index bb0961d..975b86a 100644
+> --- a/include/exec/memory.h
+> +++ b/include/exec/memory.h
+> @@ -19,6 +19,7 @@
+> =C2=A0#include "exec/cpu-common.h"
+> =C2=A0#include "exec/hwaddr.h"
+> =C2=A0#include "exec/memattrs.h"
+> +#include "exec/memop.h"
+> =C2=A0#include "exec/ramlist.h"
+> =C2=A0#include "qemu/queue.h"
+> =C2=A0#include "qemu/int128.h"
+> @@ -1731,13 +1732,13 @@ void mtree_info(bool flatview, bool
+> dispatch_tree, bool owner);
+> =C2=A0 * @mr: #MemoryRegion to access
+> =C2=A0 * @addr: address within that region
+> =C2=A0 * @pval: pointer to uint64_t which the data is written to
+> - * @size: size of the access in bytes
+> + * @op: size, sign, and endianness of the memory operation
+> =C2=A0 * @attrs: memory transaction attributes to use for the access
+> =C2=A0 */
+> =C2=A0MemTxResult memory_region_dispatch_read(MemoryRegion *mr,
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+hwaddr addr,
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+uint64_t *pval,
+> - =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0uns=
+igned size,
+> + =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Mem=
+Op op,
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+MemTxAttrs attrs);
+> =C2=A0/**
+> =C2=A0 * memory_region_dispatch_write: perform a write directly to the =
+specified
+> @@ -1746,13 +1747,13 @@ MemTxResult
+> memory_region_dispatch_read(MemoryRegion *mr,
+> =C2=A0 * @mr: #MemoryRegion to access
+> =C2=A0 * @addr: address within that region
+> =C2=A0 * @data: data to write
+> - * @size: size of the access in bytes
+> + * @op: size, sign, and endianness of the memory operation
+> =C2=A0 * @attrs: memory transaction attributes to use for the access
+> =C2=A0 */
+> =C2=A0MemTxResult memory_region_dispatch_write(MemoryRegion *mr,
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ hwaddr addr,
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ uint64_t data,
+> - =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 un=
+signed size,
+> + =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Me=
+mOp op,
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ MemTxAttrs attrs);
+> =C2=A0
+> =C2=A0/**
+> diff --git a/memory.c b/memory.c
+> index 5d8c9a9..89ea4fb 100644
+> --- a/memory.c
+> +++ b/memory.c
+> @@ -1439,9 +1439,10 @@ static MemTxResult
+> memory_region_dispatch_read1(MemoryRegion *mr,
+> =C2=A0MemTxResult memory_region_dispatch_read(MemoryRegion *mr,
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+hwaddr addr,
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+uint64_t *pval,
+> - =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0uns=
+igned size,
+> + =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0Mem=
+Op op,
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+MemTxAttrs attrs)
+> =C2=A0{
+> + =C2=A0 =C2=A0unsigned size =3D memop_size(op);
+> =C2=A0 =C2=A0 =C2=A0MemTxResult r;
+> =C2=A0
+> =C2=A0 =C2=A0 =C2=A0if (!memory_region_access_valid(mr, addr, size, fal=
+se, attrs)) {
+> @@ -1483,9 +1484,11 @@ static bool
+> memory_region_dispatch_write_eventfds(MemoryRegion *mr,
+> =C2=A0MemTxResult memory_region_dispatch_write(MemoryRegion *mr,
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ hwaddr addr,
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ uint64_t data,
+> - =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 un=
+signed size,
+> + =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 Me=
+mOp op,
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ MemTxAttrs attrs)
+> =C2=A0{
+> + =C2=A0 =C2=A0unsigned size =3D memop_size(op);
+> +
+> =C2=A0 =C2=A0 =C2=A0if (!memory_region_access_valid(mr, addr, size, tru=
+e, attrs)) {
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0unassigned_mem_write(mr, addr, data, =
+size);
+> =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return MEMTX_DECODE_ERROR;
+> --=C2=A0
+> 1.8.3.1
+>=20
+> =E2=80=8B
+>=20
+>=20

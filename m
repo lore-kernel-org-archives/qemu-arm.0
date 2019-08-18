@@ -1,183 +1,189 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1381395wrs;
-        Sun, 18 Aug 2019 02:14:11 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzXWrgQhWACPWyqZE2Vv9EmvelKeqYTVicyORSefk6y5ZmD+6RaB2lN+uqD2NzorV5gZJWY
-X-Received: by 2002:a05:6402:1450:: with SMTP id d16mr19582722edx.198.1566119651468;
-        Sun, 18 Aug 2019 02:14:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566119651; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1616954wrs;
+        Sun, 18 Aug 2019 07:07:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxBnLPJk+1fVID8T2PBWXu/68rkZmPA19FV/EuBON41n9D38jzW+0cQrSAYvmlBFZJPv5To
+X-Received: by 2002:a17:902:7c12:: with SMTP id x18mr18445447pll.123.1566137249481;
+        Sun, 18 Aug 2019 07:07:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566137249; cv=none;
         d=google.com; s=arc-20160816;
-        b=0sgbKyZcxfDytnJZ71g3UhU600BkwzKDO/KHum1lSpNAiakOfp5PbZOXf84paJXlH/
-         oGz/e1DUOw5xEma9l7EA2B+tzsPjjeHbl3tioRpwECQa3mWv/J1PR5Heum6dR3CvE7uX
-         AyzJwarHIxKewwSIjT+dCM5fmuZhwA75TRObfPscuMKfxBN87G9qRcQLsqqnB9iqi1ps
-         Qh3Ld46LVs8rruNKdPCJjwvio17Tb5ZIyZd1QhLuYxC+ew+TY86E+c5GUyXSt9bQ4yBw
-         eMiUwXhbtv93CKVmGjip5PHhaOb78g6KUEHNpP7zDnFPRQaLJPmuPAZbZjqqz3/1XoHD
-         FdTQ==
+        b=h5UrXsV7QiBfdgPAUiuZq6rBJW5/YUMSRxK8CXbqp1yl+UC8eStad5f/TSCJ3ZsPMR
+         w+46uXY8FLT4nahEjJVWcjU43o9TDXf/wy+4LAqfqIJtjAkUut9UaIvtYkwEAr3Ym1gX
+         EDEmcAjmYE7k1L2h2IV58DxHkk0pCihDKPbjbvbPeXbNwpkSTnKBHT3OwUu1hlMwJj5S
+         rLWRXWlRulDctJhMYSqz4PX0BcyG88i+NQdaoTVuu113QmND2oWjiXln5hdHpKzntNDz
+         3lKxMJtOrGvQfU4J3V17T32ZAQGep/FtyLJPSSdnyR+hkMZVIHfrVjoNOoREuQaeLlWc
+         kmTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
-         :dkim-signature;
-        bh=08ykHv62/kAXNcraKtHpxP/q/+jI+lbPhBDJ0nAr1BU=;
-        b=jbRKrQpL60Bhg+yQWulmT9tqE7aY9JB/QJMfU6PQ5VHe0mAW6oq67zmBxs2vgd56Uv
-         oIWINy8n+dZ1JSVIb9B6D0twsKGtIPmYMblM7ZYF+V1dMWP4WAuegmC/7VxzyK2e6Hd9
-         OrK9Gjg7fR2IaAOXYwi3IXPTBOa9uF4A1VXFYjrLv2fNnTA3Vnr0eCwwzJWJS+hF/nZb
-         yVbTq8vGJzaV21ZLdgJYFV7lqCMoCmLK9cFKu17jMfvroD0DKS9KctdkgjD4MjXN0e0r
-         rrb7zpogHPic8OBG3hee78oOi7AktDAbLJAHx/81+shiAuPDqgSFMbzqddtfRBTE2Ic8
-         E6KQ==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from;
+        bh=CS9i6pE7QiBiUis1XxGyIebh6K8D3Ypyrbda+leOGvU=;
+        b=H8gYudcd+INh0l4ScRq6alfjw10NTSbuufLL9c3QUp93T1WVEeOE5kunEOqJzBGLKB
+         /1WD8U8FomZjA78Jjg4z6SVPrdQoiFYW0NwF7d3Ucr4LY+AKSBT/JyLfaiuhqKztagYm
+         lZe5aPLjZB2qs1cfn4SaPbrQXdoUg7UhLQB2giP7ZwQP01ghDZYN/e31o8TEDjaHQlYC
+         kAlNVT520FjhYfwcq8BBKF3j9xTsXe3E7e+wPlmTyDxpA+WWg0GiG/D2IlQIaETKb1tp
+         65Sj6zX9EUOGhpWkncAr7n8uU4jST+GlubbwXJzs9QUIXD0ALPypnQ2qwi2Im6IeGMAp
+         zsSg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=c4moUhMk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h22si5455489eja.344.2019.08.18.02.14.11
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 18 Aug 2019 02:14:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id g13si7868341pgp.405.2019.08.18.07.07.28;
+        Sun, 18 Aug 2019 07:07:29 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=c4moUhMk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39880 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hzHGM-00081o-CH
-	for alex.bennee@linaro.org; Sun, 18 Aug 2019 05:14:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53612)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1hzHFs-00081B-Vn
- for qemu-arm@nongnu.org; Sun, 18 Aug 2019 05:13:42 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1hzHFo-0003n5-Lz
- for qemu-arm@nongnu.org; Sun, 18 Aug 2019 05:13:40 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:46098)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1hzHFo-0003lw-A0
- for qemu-arm@nongnu.org; Sun, 18 Aug 2019 05:13:36 -0400
-Received: by mail-wr1-x441.google.com with SMTP id z1so5591172wru.13
- for <qemu-arm@nongnu.org>; Sun, 18 Aug 2019 02:13:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=08ykHv62/kAXNcraKtHpxP/q/+jI+lbPhBDJ0nAr1BU=;
- b=c4moUhMktTQM2REJR3Kcvd9R3Y3KbtNUkR2Xkmm19hB5a7iUHB9KfzaHvOOwR7fOQ4
- PdCVC/1lHi09tEPQJN52Tj3oxl4vtX6SFjQHt51h5dQQLuNOsivYsti+z4orzwNOUXZe
- T+WEI3E1iPcWB4sOHtD1K7IReWiE3Oc/KfYqFaLuUck5j8jnHRsLcdGXn9/0XoV6K8sD
- 9p1wj8n4iSAV+rOGUX5RBK7kMAD/HVgDjrIQRUBc16/ADf2e52ozi9QrVChaun7K/Z15
- 7mVZz5iifK7lius9LzxXoBM3OUa1tsFtsyMKjrLbC4CxDliOx8150Jy9eq4+/XEteiFM
- XsRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=08ykHv62/kAXNcraKtHpxP/q/+jI+lbPhBDJ0nAr1BU=;
- b=X3ZTHyU93n1HCk2loeHExKIWcCWNAt+93ERZJq9QHtxNdy1I0VUuSDQ3X86A7kywCx
- n+5IeD/1v4Kro2KO9GrWTzzJjpf1/B3KzywbFPWKcDDmLkS531gu13oCE6G7LrsRZv2m
- SCV1Jt8aKZ+PrJ672DMnnZi/1Rbb9HxFyizEywKwin62/IeTg2DkL0i97ryHH7h3gYBN
- CM77InabjuhgYAVjYcKtI83UuXWX2If3eDjp/WEBfO1r7g6SPxWRTHkH/AcNXb6ymS2K
- 8pKlTdj+fdSJUM1ErGSN7sFMAdAcJXvQuLZljYnCwFSl4RmWLgU2J8zFc8M0QEtgSoaY
- C71w==
-X-Gm-Message-State: APjAAAXHH7esu4jL/mRjiF6JSQQkHgC1Sj5i50VJhksE0SgENMXtOzal
- WrEBFyJwa8+Ulm5/Jvfknx81Yg==
-X-Received: by 2002:adf:e2cb:: with SMTP id d11mr20563632wrj.66.1566119614901; 
- Sun, 18 Aug 2019 02:13:34 -0700 (PDT)
-Received: from ?IPv6:2a02:c7f:a69:1700:8897:9507:94c2:b98d?
- ([2a02:c7f:a69:1700:8897:9507:94c2:b98d])
- by smtp.gmail.com with ESMTPSA id k9sm9410852wrq.15.2019.08.18.02.13.31
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sun, 18 Aug 2019 02:13:33 -0700 (PDT)
-To: tony.nguyen@bt.com, qemu-devel@nongnu.org
-References: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <b53bdb6b-278e-7359-8cfb-48d8d07adc1f@linaro.org>
-Date: Sun, 18 Aug 2019 10:13:29 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726798AbfHROH1 (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Sun, 18 Aug 2019 10:07:27 -0400
+Received: from foss.arm.com ([217.140.110.172]:45798 "EHLO foss.arm.com"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S1726608AbfHROH1 (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Sun, 18 Aug 2019 10:07:27 -0400
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+        by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id CC8F7337;
+        Sun, 18 Aug 2019 07:07:26 -0700 (PDT)
+Received: from big-swifty.lan (unknown [172.31.20.19])
+        by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8AAF13F246;
+        Sun, 18 Aug 2019 07:07:24 -0700 (PDT)
+From:   Marc Zyngier <maz@kernel.org>
+To:     Peter Maydell <peter.maydell@linaro.org>,
+        James Morse <james.morse@arm.com>,
+        Julien Thierry <julien.thierry.kdev@gmail.com>,
+        Suzuki K Poulose <suzuki.poulose@arm.com>,
+        Zenghui Yu <yuzenghui@huawei.com>
+Cc:     linux-arm-kernel@lists.infradead.org, kvmarm@lists.cs.columbia.edu,
+        kvm@vger.kernel.org, qemu-arm@nongnu.org
+Subject: [PATCH] KVM: arm/arm64: vgic: Allow more than 256 vcpus for KVM_IRQ_LINE
+Date:   Sun, 18 Aug 2019 15:07:10 +0100
+Message-Id: <20190818140710.23920-1-maz@kernel.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::441
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v7 00/42] Invert Endian bit in
- SPARCv9 MMU TTE
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
- cohuck@redhat.com, sagark@eecs.berkeley.edu, david@redhat.com,
- jasowang@redhat.com, palmer@sifive.com, mark.cave-ayland@ilande.co.uk,
- i.mitsyanko@gmail.com, keith.busch@intel.com, jcmvbkbc@gmail.com,
- frederic.konrad@adacore.com, dmitry.fleytman@gmail.com, kraxel@redhat.com,
- gxt@mprc.pku.edu.cn, pburton@wavecomp.com, xiaoguangrong.eric@gmail.com,
- peter.chubb@nicta.com.au, philmd@redhat.com, robh@kernel.org, hare@suse.com,
- sstabellini@kernel.org, berto@igalia.com, chouteau@adacore.com,
- qemu-block@nongnu.org, arikalo@wavecomp.com, jslaby@suse.cz, deller@gmx.de,
- mst@redhat.com, magnus.damm@gmail.com, jcd@tribudubois.net,
- pasic@linux.ibm.com, borntraeger@de.ibm.com, mreitz@redhat.com,
- hpoussin@reactos.org, joel@jms.id.au, anthony.perard@citrix.com,
- xen-devel@lists.xenproject.org, david@gibson.dropbear.id.au, lersek@redhat.com,
- green@moxielogic.com, atar4qemu@gmail.com, antonynpavlov@gmail.com,
- marex@denx.de, jiri@resnulli.us, ehabkost@redhat.com, minyard@acm.org,
- qemu-s390x@nongnu.org, sw@weilnetz.de, alistair@alistair23.me,
- yuval.shaia@oracle.com, b.galvani@gmail.com, eric.auger@redhat.com,
- alex.williamson@redhat.com, qemu-arm@nongnu.org, jan.kiszka@web.de,
- clg@kaod.org, stefanha@redhat.com, marcandre.lureau@redhat.com,
- shorne@gmail.com, jsnow@redhat.com, rth@twiddle.net, kwolf@redhat.com,
- qemu-riscv@nongnu.org, proljc@gmail.com, pbonzini@redhat.com, andrew@aj.id.au,
- claudio.fontana@suse.com, crwulff@gmail.com, laurent@vivier.eu,
- Andrew.Baumann@microsoft.com, sundeep.lkml@gmail.com, andrew.smirnov@gmail.com,
- michael@walle.cc, paul.durrant@citrix.com, qemu-ppc@nongnu.org,
- huth@tuxfamily.org, amarkovic@wavecomp.com, kbastian@mail.uni-paderborn.de,
- imammedo@redhat.com, aurelien@aurel32.net, stefanb@linux.ibm.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N0KFPRfhJlJG
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: ZMy29tfRCd/q
 
-On 8/16/19 7:28 AM, tony.nguyen@bt.com wrote:
-> Tony Nguyen (42):
->   configure: Define TARGET_ALIGNED_ONLY in configure
->   tcg: TCGMemOp is now accelerator independent MemOp
->   memory: Introduce size_memop
->   target/mips: Access MemoryRegion with MemOp
->   hw/s390x: Access MemoryRegion with MemOp
->   hw/intc/armv7m_nic: Access MemoryRegion with MemOp
->   hw/virtio: Access MemoryRegion with MemOp
->   hw/vfio: Access MemoryRegion with MemOp
->   exec: Access MemoryRegion with MemOp
->   cputlb: Access MemoryRegion with MemOp
->   memory: Access MemoryRegion with MemOp
->   hw/s390x: Hard code size with MO_{8|16|32|64}
->   target/mips: Hard code size with MO_{8|16|32|64}
->   exec: Hard code size with MO_{8|16|32|64}
+While parts of the VGIC support a large number of vcpus (we
+bravely allow up to 512), other parts are more limited.
 
-I have queued these 14 patches to tcg-next:
+One of these limits is visible in the KVM_IRQ_LINE ioctl, which
+only allows 256 vcpus to be signalled when using the CPU or PPI
+types. Unfortunately, we've cornered ourselves badly by allocating
+all the bits in the irq field.
 
-  https://github.com/rth7680/qemu/tree/tcg-next
+Since the irq_type subfield (8 bit wide) is currently only taking
+the values 0, 1 and 2 (and we have been careful not to allow anything
+else), let's reduce this field to only 4 bits, and allocate the
+remaining 4 bits to a vcpu2_index, which acts as a multiplier:
 
-I agree with the downthread conversation with Phil that the middle device
-patches should be split out to a different series.
+  vcpu_id = 256 * vcpu2_index + vcpu_index
 
-I have some questions on some of the last few patches, and I don't know how
-they would interact cherry-picking from those, so I've left them for now.
+With that, and a new capability (KVM_CAP_ARM_IRQ_LINE_LAYOUT_2)
+allowing this to be discovered, it becomes possible to inject
+PPIs to up to 4096 vcpus. But please just don't.
 
-I had some trouble applying your patches, as they're encoded quoted-printable,
-and "git am" doesn't like that.  If possible, please use "git send-email" to
-post your next patch set.
+Reported-by: Zenghui Yu <yuzenghui@huawei.com>
+Signed-off-by: Marc Zyngier <maz@kernel.org>
+---
+ Documentation/virt/kvm/api.txt    | 8 ++++++--
+ arch/arm/include/uapi/asm/kvm.h   | 4 +++-
+ arch/arm64/include/uapi/asm/kvm.h | 4 +++-
+ include/uapi/linux/kvm.h          | 1 +
+ virt/kvm/arm/arm.c                | 2 ++
+ 5 files changed, 15 insertions(+), 4 deletions(-)
 
-
-r~
+diff --git a/Documentation/virt/kvm/api.txt b/Documentation/virt/kvm/api.txt
+index 2d067767b617..85518bfb2a99 100644
+--- a/Documentation/virt/kvm/api.txt
++++ b/Documentation/virt/kvm/api.txt
+@@ -753,8 +753,8 @@ in-kernel irqchip (GIC), and for in-kernel irqchip can tell the GIC to
+ use PPIs designated for specific cpus.  The irq field is interpreted
+ like this:
+ 
+-  bits:  | 31 ... 24 | 23  ... 16 | 15    ...    0 |
+-  field: | irq_type  | vcpu_index |     irq_id     |
++  bits:  |  31 ... 28  | 27 ... 24 | 23  ... 16 | 15 ... 0 |
++  field: | vcpu2_index | irq_type  | vcpu_index |  irq_id  |
+ 
+ The irq_type field has the following values:
+ - irq_type[0]: out-of-kernel GIC: irq_id 0 is IRQ, irq_id 1 is FIQ
+@@ -766,6 +766,10 @@ The irq_type field has the following values:
+ 
+ In both cases, level is used to assert/deassert the line.
+ 
++When KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 is supported, the target vcpu is
++identified as (256 * vcpu2_index + vcpu_index). Otherwise, vcpu2_index
++must be zero.
++
+ struct kvm_irq_level {
+ 	union {
+ 		__u32 irq;     /* GSI */
+diff --git a/arch/arm/include/uapi/asm/kvm.h b/arch/arm/include/uapi/asm/kvm.h
+index a4217c1a5d01..2769360f195c 100644
+--- a/arch/arm/include/uapi/asm/kvm.h
++++ b/arch/arm/include/uapi/asm/kvm.h
+@@ -266,8 +266,10 @@ struct kvm_vcpu_events {
+ #define   KVM_DEV_ARM_ITS_CTRL_RESET		4
+ 
+ /* KVM_IRQ_LINE irq field index values */
++#define KVM_ARM_IRQ_VCPU2_SHIFT		28
++#define KVM_ARM_IRQ_VCPU2_MASK		0xf
+ #define KVM_ARM_IRQ_TYPE_SHIFT		24
+-#define KVM_ARM_IRQ_TYPE_MASK		0xff
++#define KVM_ARM_IRQ_TYPE_MASK		0xf
+ #define KVM_ARM_IRQ_VCPU_SHIFT		16
+ #define KVM_ARM_IRQ_VCPU_MASK		0xff
+ #define KVM_ARM_IRQ_NUM_SHIFT		0
+diff --git a/arch/arm64/include/uapi/asm/kvm.h b/arch/arm64/include/uapi/asm/kvm.h
+index 9a507716ae2f..67c21f9bdbad 100644
+--- a/arch/arm64/include/uapi/asm/kvm.h
++++ b/arch/arm64/include/uapi/asm/kvm.h
+@@ -325,8 +325,10 @@ struct kvm_vcpu_events {
+ #define   KVM_ARM_VCPU_TIMER_IRQ_PTIMER		1
+ 
+ /* KVM_IRQ_LINE irq field index values */
++#define KVM_ARM_IRQ_VCPU2_SHIFT		28
++#define KVM_ARM_IRQ_VCPU2_MASK		0xf
+ #define KVM_ARM_IRQ_TYPE_SHIFT		24
+-#define KVM_ARM_IRQ_TYPE_MASK		0xff
++#define KVM_ARM_IRQ_TYPE_MASK		0xf
+ #define KVM_ARM_IRQ_VCPU_SHIFT		16
+ #define KVM_ARM_IRQ_VCPU_MASK		0xff
+ #define KVM_ARM_IRQ_NUM_SHIFT		0
+diff --git a/include/uapi/linux/kvm.h b/include/uapi/linux/kvm.h
+index 5e3f12d5359e..5414b6588fbb 100644
+--- a/include/uapi/linux/kvm.h
++++ b/include/uapi/linux/kvm.h
+@@ -996,6 +996,7 @@ struct kvm_ppc_resize_hpt {
+ #define KVM_CAP_ARM_PTRAUTH_ADDRESS 171
+ #define KVM_CAP_ARM_PTRAUTH_GENERIC 172
+ #define KVM_CAP_PMU_EVENT_FILTER 173
++#define KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 174
+ 
+ #ifdef KVM_CAP_IRQ_ROUTING
+ 
+diff --git a/virt/kvm/arm/arm.c b/virt/kvm/arm/arm.c
+index 35a069815baf..c1385911de69 100644
+--- a/virt/kvm/arm/arm.c
++++ b/virt/kvm/arm/arm.c
+@@ -182,6 +182,7 @@ int kvm_vm_ioctl_check_extension(struct kvm *kvm, long ext)
+ 	int r;
+ 	switch (ext) {
+ 	case KVM_CAP_IRQCHIP:
++	case KVM_CAP_ARM_IRQ_LINE_LAYOUT_2:
+ 		r = vgic_present;
+ 		break;
+ 	case KVM_CAP_IOEVENTFD:
+@@ -888,6 +889,7 @@ int kvm_vm_ioctl_irq_line(struct kvm *kvm, struct kvm_irq_level *irq_level,
+ 
+ 	irq_type = (irq >> KVM_ARM_IRQ_TYPE_SHIFT) & KVM_ARM_IRQ_TYPE_MASK;
+ 	vcpu_idx = (irq >> KVM_ARM_IRQ_VCPU_SHIFT) & KVM_ARM_IRQ_VCPU_MASK;
++	vcpu_idx += ((irq >> KVM_ARM_IRQ_VCPU2_SHIFT) & KVM_ARM_IRQ_VCPU2_MASK) * (KVM_ARM_IRQ_VCPU_MASK + 1);
+ 	irq_num = (irq >> KVM_ARM_IRQ_NUM_SHIFT) & KVM_ARM_IRQ_NUM_MASK;
+ 
+ 	trace_kvm_irq_line(irq_type, vcpu_idx, irq_num, irq_level->level);
+-- 
+2.20.1

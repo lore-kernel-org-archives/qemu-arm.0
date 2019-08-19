@@ -1,116 +1,99 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp3142590wrs;
-        Mon, 19 Aug 2019 14:02:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy1fsU+6fFstEzVCBwtPtNWWd9I2mieHPkh3QZueAURQ04Vz82GfEA8UOcoZAMneqGcDRa6
-X-Received: by 2002:a17:906:64cc:: with SMTP id p12mr22611678ejn.176.1566248529131;
-        Mon, 19 Aug 2019 14:02:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566248529; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp3170399wrs;
+        Mon, 19 Aug 2019 14:38:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyHcegxB3ZP5LsgtvrTWwhlEzrmgJ0yA4ZipbWpBEzLfLf0HgnQiLHU4isG4DwY9f9kdeEI
+X-Received: by 2002:a05:620a:16c8:: with SMTP id a8mr19419881qkn.234.1566250699092;
+        Mon, 19 Aug 2019 14:38:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566250699; cv=none;
         d=google.com; s=arc-20160816;
-        b=o2iFT41cLByHC7wUxSiT5cNjsZA8Q9yf7FgwhbleDP2Pqx+HWCBxmhyt6o0iDJF69z
-         3EtJF047xp89J85bG9s3WbWv834pNuZq61VASz/98uwPQYsb/cSF3owg1EfNDZiCehm+
-         RclPQlrLU2sR4xQI91d5K/WZjztbG9OUHQw9Vo5MAy9ClA1srswyuc6UmZYR6+vwii5t
-         1/iCs7xYuN0yaaQqTTJdV1JjhYCD3K9Ufx0ddC5bY74PMNxVPzgrM5xsOuCu0sqV4Ong
-         +wLFh9r4iyzz2V9fRxePZQV8xFK532qWE18kyPd7zfH7qjwoJes7+t+ZvGTABF1wSu7/
-         uygQ==
+        b=Ok0OLNJhWamIvyCU8+iIhdNQdgcFXj/MdA8s9Esf9WwVT+ECwDhXDs55+IS9rv0aOy
+         aijpyerJfJI1CoD1od7tKqjrb3R2CIKOdVAeLnMc8nuVhIh759/eH9jejdYwFnLra6F/
+         rEcCsKdEnZFXgqJBVgFP5r5WyyrDyxgFmUrCHX3WdVmef8NYEG1YPMgOlfxQE2ijYWmC
+         aFE4vFt88xNZZPQmORU9tlShHl44Er2nI+v2Lxovg02nWS3kXR9DtXNuYmiZhaqgyOm+
+         0M71k/+VAZI6ChT21ovDyH6k18GzO7zPGNjkPyawMmx9YQaOka+ywcaec3NbIH2YD3y0
+         NufA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from
          :dkim-signature;
-        bh=vGBzrXO7KGpJ/NUWc/Wz8OhRnfw9xF17a3ctMtsK7KU=;
-        b=jwlDg/F2Q9E9WdTAMvlvFYWVSiRAiA37aAXc+U20aUhzXuUzc7+C1QOU+IIbvILVOR
-         P14UMwVMCRCH2ltC5oGVwBYuK6VFHs4xM8czAS1W+HPvOtlJaTUSQJrOAq29PpwccF2o
-         /bdxATekfGUm25facbaZgDdSpHLyaqKMDTN1tkK7B3fX9EKufq0nTLWuv463Sp7bRm/E
-         +ifc3n7vu3nd2xcwbD8HCbSUanMcPexY578G/aAyjL/QBSX/y58wLU2vs+sZ/BSGG+eY
-         H8zqO1YZunbZ9ZJ4/qFLIPy2tyR6PRuX7QuOBn1ULV1tBlYa4FS/PyesnT75ni/AMlpT
-         YjCQ==
+        bh=UAuI24ypugSOADw/ZQRUxs1qwCQQ7Fi3EwXHwPu9388=;
+        b=s8CWDy4ERs8W3XfPkxVmKo2VWLCqk5QCijzDPzC150sE3UZNZLazLRyFyzU6/p+zDR
+         ZKcR3AJgl0k7zdMARJ8RICzAnY+w93AaVd7sdTUh/U80zd4ZhEZ3GN0MSqvCT6sDAARY
+         U8PayFeTqafwF1JoXHihHu/UbCouH3xaRkdOSgE7ZmlAfKpeY3LvPWhH+7AS/XeR7cKt
+         GCeyKT+/slaJ7K5ds9AL6mU/lHga5TUzxmlGl+eTljatyd6AuQPlM2LVWFFGlDAMzjIh
+         bZL4Dp4x4aocZdchN70fnxelECE/u1B1VhZBqEuIMqLBD54e5d1jFMbOWsqHw6luYf0J
+         x3vg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="FxoL/ygN";
+       dkim=fail header.i=@linaro.org header.s=google header.b=T+fYGM2c;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m29si9049880edd.46.2019.08.19.14.02.09
+        by mx.google.com with ESMTPS id f10si9249640qtc.16.2019.08.19.14.38.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Aug 2019 14:02:09 -0700 (PDT)
+        Mon, 19 Aug 2019 14:38:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="FxoL/ygN";
+       dkim=fail header.i=@linaro.org header.s=google header.b=T+fYGM2c;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57852 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58060 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hzon1-0006S8-S3
-	for alex.bennee@linaro.org; Mon, 19 Aug 2019 17:02:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52890)
+	id 1hzpM2-0001Ax-1W
+	for alex.bennee@linaro.org; Mon, 19 Aug 2019 17:38:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58400)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1hzomS-0006EK-Jm
- for qemu-arm@nongnu.org; Mon, 19 Aug 2019 17:01:33 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1hzpLk-00019o-FT
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2019 17:38:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1hzomR-00073F-Bm
- for qemu-arm@nongnu.org; Mon, 19 Aug 2019 17:01:32 -0400
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:36848)
+ (envelope-from <richard.henderson@linaro.org>) id 1hzpLi-0005vp-Ur
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2019 17:38:00 -0400
+Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:46039)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1hzomR-00072B-3T
- for qemu-arm@nongnu.org; Mon, 19 Aug 2019 17:01:31 -0400
-Received: by mail-pf1-x444.google.com with SMTP id w2so1896414pfi.3
- for <qemu-arm@nongnu.org>; Mon, 19 Aug 2019 14:01:29 -0700 (PDT)
+ id 1hzpLi-0005vE-M5
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2019 17:37:58 -0400
+Received: by mail-pg1-x542.google.com with SMTP id o13so1919940pgp.12
+ for <qemu-arm@nongnu.org>; Mon, 19 Aug 2019 14:37:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=vGBzrXO7KGpJ/NUWc/Wz8OhRnfw9xF17a3ctMtsK7KU=;
- b=FxoL/ygNz+Ksftm1RuYm/hG7E+xUwHOeXleAvU5RKlIsyWRQv8RINw3kW0ZJByEwo0
- qguqHCPMGOnOa+JMyt2Xwlv2pqzilmdFTcReSsfN6Ms8DIzBRqW1zByU3jMKV6A8MKUd
- Ey3Co++zv2CtWWhtWKSWRA06PcwxEPwJijUHnQXpmVIriIaWqnF3XwHYCWss8+xa440m
- W+qxDOjbHZpamKwURVa1T4q7BTMqMydWd9i8NzVovYN2blADLG3kJVQBic4LQgyy3vlX
- Z06lyjJsf5W39pmQ8zid0Tq07PX/wgluHJ4U9/nidce7U2v5Uo8AzFvmwrpT/uSsFgmQ
- aH4Q==
+ h=from:to:cc:subject:date:message-id;
+ bh=UAuI24ypugSOADw/ZQRUxs1qwCQQ7Fi3EwXHwPu9388=;
+ b=T+fYGM2c7huxQqMYjJE4FCDtBu1AjZR8/FPJa3mwgqc2uxzV6kOtA6SqJzFt0zij9W
+ XKOPKbIgZMoV69o155ysDGSrU2XjesEz0IyUeuz1LGp2Y+2s+g0sHuWtQMM0CjJjbFMy
+ mRCC37toz03sOpxGrq7qqsuL1+aDjEp6/iMTIc37Sr2FPwh/gnJoSLxDt7X9b1GfchuU
+ uqeYTg469JA1vkgDZII5JbUKm+5j3cvEuAA8ihoSRuniD8gz5tWn5a+HU7otemnhkQEd
+ gpgfnpyRd9Z9yv9lKumrUMbLfsICZiKW0dFWtJ2EGr/RwKvMmjHZ0/vs0IsATuyxVGN1
+ EGDg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=vGBzrXO7KGpJ/NUWc/Wz8OhRnfw9xF17a3ctMtsK7KU=;
- b=nGjWMbf6lm/hGAuH5ovHpedwYBZZCHLdN+UatmTu44ULJRUWCa1x083FMTNploY5Lq
- etAP+PPLxylhVMI6UAhj7ZaghK6pnC55DolMPrKLW1A1bOXb4h93W6ONVhR5BjOO4R4s
- n8G3QIUztRkve2ECxhApqj75Pk3lKmgqkbnzpIicF/1KrV5EHAfMxbJ4hVYKRoswAfuf
- U75BT7K++lxAS1MVgxQwzOYg4JMNKoclcKPQk6lyIW+bkK2uss4CWeaA5tYwsOL8IWRF
- 182lxtOxQlspP2D0Ouo1j4dUveEaOIDjeTPgIdq3W1If3eT+p6CpCbGnwVFCi0KX3s8E
- HTkA==
-X-Gm-Message-State: APjAAAU6AAhNUgPCjxe5KR1LnPt+Kz1KyzS6NSr728hZV+GRqde1bHZx
- BXtLnnuUDWYRSAQ5rMEhQzX8xQ==
-X-Received: by 2002:a65:6104:: with SMTP id z4mr21186266pgu.27.1566248488612; 
- Mon, 19 Aug 2019 14:01:28 -0700 (PDT)
-Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id c2sm7562265pjs.13.2019.08.19.14.01.23
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 19 Aug 2019 14:01:27 -0700 (PDT)
-To: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- tony.nguyen@bt.com, qemu-devel@nongnu.org
-References: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
- <1565941032362.60179@bt.com>
- <1b5f5a92-1b75-f0d9-d7bc-4605094ad8e7@redhat.com>
- <8d8b37c9-3daf-d241-df92-1a5467bca451@redhat.com>
- <3b983f77-8503-3fcd-7c42-45d0121845e6@redhat.com>
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=UAuI24ypugSOADw/ZQRUxs1qwCQQ7Fi3EwXHwPu9388=;
+ b=DZTLSIQ3AqwK5ZXIfaUVsSFZDD8OEDz6cAWwu20gifqO2U5bWY7K+psdN3cigTKEHx
+ DPMo/PgSIOV49LyXREZHrhYn5hDbpBGiKaTB8Vv69ktPUQN486oHQ4KZyytM6d9xkl28
+ 2V+hqFEL8ETGjIn2Tp/qadunyG63uu3wqAUxCmpWysYMaQBaznN60ffbp2/HKZW2rGhd
+ CO8QPxNVsMnubLS9V6KOjCbX7MT+5R2VIRC1goSW0RWIZe2Ut3DJGPLTIenD94wRoWHr
+ qPdVBRJd9Mz082YnQdZEM2wC0tWfhlw8QNqpK8J8BE/vRV9WPc8SsBC9h7odRf5DzUsk
+ f+SQ==
+X-Gm-Message-State: APjAAAUOpYBVWZCh5TYEgvfQNQZ3yrKj8CjkkxGzTkd220pIUl9Srp2U
+ SxWG0qA2PTBPCAWxg7hzrDhL4g==
+X-Received: by 2002:a63:9e43:: with SMTP id r3mr22269709pgo.148.1566250677506; 
+ Mon, 19 Aug 2019 14:37:57 -0700 (PDT)
+Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
+ [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id d2sm13446951pjs.21.2019.08.19.14.37.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 19 Aug 2019 14:37:56 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <b79a173d-a682-21da-6e7f-489ce06c8f7a@linaro.org>
-Date: Mon, 19 Aug 2019 14:01:19 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <3b983f77-8503-3fcd-7c42-45d0121845e6@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+To: qemu-devel@nongnu.org
+Date: Mon, 19 Aug 2019 14:36:47 -0700
+Message-Id: <20190819213755.26175-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.1
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::444
-Subject: Re: [Qemu-arm] [Qemu-devel] [qemu-s390x] [PATCH v7 33/42] exec:
- Replace device_endian with MemOp
+X-Received-From: 2607:f8b0:4864:20::542
+Subject: [Qemu-arm] [PATCH v2 00/68] target/arm: Convert aa32 base isa to
+ decodetree
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -122,56 +105,119 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: fam@euphon.net, peter.maydell@linaro.org, walling@linux.ibm.com,
- cohuck@redhat.com, jan.kiszka@web.de, sagark@eecs.berkeley.edu,
- david@redhat.com, green@moxielogic.com, palmer@sifive.com,
- mark.cave-ayland@ilande.co.uk, i.mitsyanko@gmail.com, keith.busch@intel.com,
- jcmvbkbc@gmail.com, frederic.konrad@adacore.com, dmitry.fleytman@gmail.com,
- kraxel@redhat.com, gxt@mprc.pku.edu.cn, pburton@wavecomp.com,
- xiaoguangrong.eric@gmail.com, marex@denx.de, robh@kernel.org, hare@suse.com,
- sstabellini@kernel.org, berto@igalia.com, chouteau@adacore.com,
- qemu-block@nongnu.org, arikalo@wavecomp.com, jslaby@suse.cz, deller@gmx.de,
- mst@redhat.com, magnus.damm@gmail.com, lersek@redhat.com, pasic@linux.ibm.com,
- borntraeger@de.ibm.com, mreitz@redhat.com, hpoussin@reactos.org,
- joel@jms.id.au, anthony.perard@citrix.com, xen-devel@lists.xenproject.org,
- david@gibson.dropbear.id.au, philmd@redhat.com, jasowang@redhat.com,
- atar4qemu@gmail.com, antonynpavlov@gmail.com, jiri@resnulli.us,
- ehabkost@redhat.com, minyard@acm.org, qemu-s390x@nongnu.org, sw@weilnetz.de,
- alistair@alistair23.me, yuval.shaia@oracle.com, b.galvani@gmail.com,
- eric.auger@redhat.com, alex.williamson@redhat.com, qemu-arm@nongnu.org,
- peter.chubb@nicta.com.au, clg@kaod.org, stefanha@redhat.com,
- marcandre.lureau@redhat.com, shorne@gmail.com, jsnow@redhat.com,
- rth@twiddle.net, kwolf@redhat.com, qemu-riscv@nongnu.org, proljc@gmail.com,
- andrew@aj.id.au, claudio.fontana@suse.com, crwulff@gmail.com,
- laurent@vivier.eu, Andrew.Baumann@microsoft.com, sundeep.lkml@gmail.com,
- andrew.smirnov@gmail.com, michael@walle.cc, paul.durrant@citrix.com,
- qemu-ppc@nongnu.org, huth@tuxfamily.org, amarkovic@wavecomp.com,
- kbastian@mail.uni-paderborn.de, imammedo@redhat.com, jcd@tribudubois.net,
- aurelien@aurel32.net, stefanb@linux.ibm.com
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s/0ICsGt7alk
+X-TUID: 4ORGWGjml546
 
-On 8/19/19 11:29 AM, Paolo Bonzini wrote:
-> On 19/08/19 20:28, Paolo Bonzini wrote:
->> On 16/08/19 12:12, Thomas Huth wrote:
->>> This patch is *huge*, more than 800kB. It keeps being stuck in the the
->>> filter of the qemu-s390x list each time you send it. Please:
->>>
->>> 1) Try to break it up in more digestible pieces, e.g. change only one
->>> subsystem at a time (this is also better reviewable by people who are
->>> interested in one area)
->>
->> This is not really possible, since the patch is basically a
->> search-and-replace.  You could perhaps use some magic
->> ("DEVICE_MEMOP_ENDIAN" or something like that) to allow a split, but it
->> would introduce more complication than anything else.
-> 
-> I'm stupid, at this point of the series it _would_ be possible to split
-> the patch by subsystem.  Still not sure it would be actually an advantage.
+This unifies the implementation of the actual instructions for
+a32, t32, and t16.
 
-It might be easier to review if we split by symbol, one rename per patch over
-the entire code base.
+This has been tested by running the debian 9 armhf installer,
+which does a far amount of switching between arm and thumb modes.
+I've also run Peter's ARM TFM image, and all of the existing
+RISU tests that we have.  (Our RISU test cases are nowhere near
+complete for 32-bit mode, but it did find 3 bugs, so not useless.)
+
+Based-on: 20190819151743.17267-1-richard.henderson@linaro.org
+"[PULL 0/3] decodetree improvements"
+
+Changes from v1:
+  * Lots of prep patches merged.
+  * Lots of patches split into smaller bits.
+    Which is why this patch set is larger than v1 despite the merge.
+  * Do not use STREG_EXC_RET in Hyp mode (patch 3).
+  * Map more UNPREDICTABLE to UNDEF in LDM/STM (patches 28-30).
+  * Split gen_nop_hint (patch 59).
+  * Do not move single-step check to gen_goto_tb, but do simplify
+    gen_jmp by inlining gen_bx_im (patch 68).
 
 
 r~
+
+
+Richard Henderson (68):
+  target/arm: Use store_reg_from_load in thumb2 code
+  target/arm: Add stubs for aa32 decodetree
+  target/arm: Convert Data Processing (register)
+  target/arm: Convert Data Processing (reg-shifted-reg)
+  target/arm: Convert Data Processing (immediate)
+  target/arm: Convert multiply and multiply accumulate
+  target/arm: Simplify UMAAL
+  target/arm: Convert Saturating addition and subtraction
+  target/arm: Convert Halfword multiply and multiply accumulate
+  target/arm: Simplify op_smlaxxx for SMLAL*
+  target/arm: Simplify op_smlawx for SMLAW*
+  target/arm: Convert MSR (immediate) and hints
+  target/arm: Convert MRS/MSR (banked, register)
+  target/arm: Convert Cyclic Redundancy Check
+  target/arm: Convert BX, BXJ, BLX (register)
+  target/arm: Convert CLZ
+  target/arm: Convert ERET
+  target/arm: Convert the rest of A32 Miscelaneous instructions
+  target/arm: Convert T32 ADDW/SUBW
+  target/arm: Convert load/store (register, immediate, literal)
+  target/arm: Convert Synchronization primitives
+  target/arm: Convert USAD8, USADA8, SBFX, UBFX, BFC, BFI, UDF
+  target/arm: Convert Parallel addition and subtraction
+  target/arm: Convert Packing, unpacking, saturation, and reversal
+  target/arm: Convert Signed multiply, signed and unsigned divide
+  target/arm: Convert MOVW, MOVT
+  target/arm: Convert LDM, STM
+  target/arm: Diagnose writeback register in list for LDM for v7
+  target/arm: Diagnose too few registers in list for LDM/STM
+  target/arm: Diagnose base == pc for LDM/STM
+  target/arm: Convert B, BL, BLX (immediate)
+  target/arm: Convert SVC
+  target/arm: Convert RFE and SRS
+  target/arm: Convert Clear-Exclusive, Barriers
+  target/arm: Convert CPS (privileged)
+  target/arm: Convert SETEND
+  target/arm: Convert PLI, PLD, PLDW
+  target/arm: Convert Unallocated memory hint
+  target/arm: Convert Table Branch
+  target/arm: Convert SG
+  target/arm: Convert TT
+  target/arm: Simplify disas_thumb2_insn
+  target/arm: Simplify disas_arm_insn
+  target/arm: Add skeleton for T16 decodetree
+  target/arm: Convert T16 data-processing (two low regs)
+  target/arm: Convert T16 load/store (register offset)
+  target/arm: Convert T16 load/store (immediate offset)
+  target/arm: Convert T16 add pc/sp (immediate)
+  target/arm: Convert T16 load/store multiple
+  target/arm: Convert T16 add/sub (3 low, 2 low and imm)
+  target/arm: Convert T16 one low register and immediate
+  target/arm: Convert T16 branch and exchange
+  target/arm: Convert T16 add, compare, move (two high registers)
+  target/arm: Convert T16 adjust sp (immediate)
+  target/arm: Convert T16, extract
+  target/arm: Convert T16, Change processor state
+  target/arm: Convert T16, Reverse bytes
+  target/arm: Convert T16, nop hints
+  target/arm: Split gen_nop_hint
+  target/arm: Convert T16, push and pop
+  target/arm: Convert T16, Conditional branches, Supervisor call
+  target/arm: Convert T16, Miscellaneous 16-bit instructions
+  target/arm: Convert T16, shift immediate
+  target/arm: Convert T16, load (literal)
+  target/arm: Convert T16, Unconditional branch
+  target/arm: Convert T16, long branches
+  target/arm: Clean up disas_thumb_insn
+  target/arm: Inline gen_bx_im into callers
+
+ target/arm/translate.c       | 7068 ++++++++++++++--------------------
+ target/arm/Makefile.objs     |   24 +
+ target/arm/a32-uncond.decode |   74 +
+ target/arm/a32.decode        |  534 +++
+ target/arm/t16.decode        |  279 ++
+ target/arm/t32.decode        |  629 +++
+ 6 files changed, 4536 insertions(+), 4072 deletions(-)
+ create mode 100644 target/arm/a32-uncond.decode
+ create mode 100644 target/arm/a32.decode
+ create mode 100644 target/arm/t16.decode
+ create mode 100644 target/arm/t32.decode
+
+-- 
+2.17.1
+

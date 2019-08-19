@@ -1,132 +1,98 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp3063715wrs;
-        Mon, 19 Aug 2019 12:30:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwOHaVRmVSWYV78XTbGdyC5LG+TxIS7BuE/W51xiOEjADkLz+YrE55Oacig4yMk8dy0+C2R
-X-Received: by 2002:ac8:e45:: with SMTP id j5mr22866035qti.149.1566243013215;
-        Mon, 19 Aug 2019 12:30:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566243013; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp3101891wrs;
+        Mon, 19 Aug 2019 13:12:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz1e0h8+Qew+WRQEsniAx5mvIbBMU2QcLH17Mp0DmnGgygSa+zihU01YT1dr+L5AnjppqTw
+X-Received: by 2002:a17:906:7f91:: with SMTP id f17mr22112319ejr.250.1566245526271;
+        Mon, 19 Aug 2019 13:12:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566245526; cv=none;
         d=google.com; s=arc-20160816;
-        b=gisQj6Bmh3KFh3LVqKKQxIIBab+Vo2wLCQKQbqxPsNpmsfcnhdPHZENo5VkJoZ8vjD
-         sv9YDtPQZl9bQtGvcxXACEGJq14ynPh+FSqdEOYqhhz3SEs0w5I7m70vy0zgwXgNwEG3
-         H8iNzr+dVCs2glgUn+9rtrUjSGKTdDgILZmI/yBrfdIs3ZdQkc+EJJsvx1nlHjE8vuPR
-         EWR/MADw79wljyUpJi2S74jcsPJThoQz+1y322VVRua7oo6ZmNGVU8JKHi/0J/O92UnY
-         6AxRHHDz8vaUIAgz8YN56r1TT6QKNzb9D0l0bkbGH7qkQ5aa61puHPX7q+kyaYfzT8r6
-         wh4w==
+        b=FKOjNe9eLNm8nliRIZU1Ti8cTGHD+unD5NuWlouxPcV87BFeaEFIh128JQ458VXTW9
+         f89gICYmv0jAqPiIydnsqK4lNrCGC0di/Y7nvnTTZWplYbzTZjuRy9qB4uCSwKUP3OBs
+         j+m6tGmSSVFrD+2jdUCtGjmD1KElIKw2taaMmWsGCoi/LNu18YcxpOjIj6fUA3DrqoJj
+         w9usCAX5g1H0bJFMraBUXfkiuyWTGS6btTCWre+QIjueWzD5iCeLHUanIl9sxm6IbozE
+         g0iaehXAR8WwLx+TSNCuLeko+BExK1VbXvWVJHMGXxkKLIAP48pujDsrzgYOxbya9Hdi
+         yPIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to;
-        bh=JTW5L0Bou6XW09p2BhyIPk2s5qLFh2Yi7SDX7nbCkJE=;
-        b=YffdEj+H8QVV0UkvJzpNkV5tofIFuNT5MyuHHO3LzMWxIbuT4lZ9aaXOe8EE4RfN2p
-         INQDSJiLB+hQHbbP/3GwmH5zaWs7ezTUI37pVi1syPnK1THojsrZDeEmFMFAg6vIm/AG
-         TmWGrsSReTpcgpbOCIIOzXnvpN6wpeizIKdTJz05lKp7+grMmJ/WyXCQan4Ax5lERgDK
-         ge5QLsw2w94CaF0SCeh/Sm4eWl7KLE5jL1oZIqSqIUoYq3BSP0Jn7AvA9ckyotzl1gbi
-         4VWYujlPN6jsckvYCIF6jRG0QdxXC1Z2wAnxPr/pUQ+naG4bKsHXB+eTCCaNtPqqUDYq
-         9ubw==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=vz1QfNHZvV4l7jIAawaglagw5PWlIGcW8gQ+ud4/D50=;
+        b=QgPUkLSvOs+jAXEvaxlU2tJ7cCSJ56vZu1CHI2GNfmfnGuHCnwSetVyYbkTeD/O9i+
+         eUfmBZmYLnPsVa4P1KKv7+imnDXeCvGfvie4+6Y4KspXOrxk6SlZfG+SyTbV0SY2+nt6
+         QDcS2L0TGrBL86VeLY3Dhfl/m/Y0gsxgIsKCSyvPvUMdlzS3AvvmjJ1/Wiv7ZQrBB6lO
+         j/UxEVQ+4EtCZRJbRVSgQN/bNJlYMf8df07qGpp5xtLmf/u/vNe7WUNjr3dLUrIuS+1P
+         LOI9VwMwc2wqCdH7uVE8TVI4wX3hUpM/jisomh6Ih2U4ivMjvGUZ4/ORX65yZc7cORQT
+         gOfw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="lnQ/197V";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b28si9307072qkk.203.2019.08.19.12.30.13
+        by mx.google.com with ESMTPS id y25si7539140eju.251.2019.08.19.13.12.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Aug 2019 12:30:13 -0700 (PDT)
+        Mon, 19 Aug 2019 13:12:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="lnQ/197V";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56910 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:57164 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hznM4-0005tP-O9
-	for alex.bennee@linaro.org; Mon, 19 Aug 2019 15:30:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37430)
+	id 1hzo0b-0004Uw-7Y
+	for alex.bennee@linaro.org; Mon, 19 Aug 2019 16:12:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44623)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1hznLx-0005rq-B3
- for qemu-arm@nongnu.org; Mon, 19 Aug 2019 15:30:06 -0400
+ (envelope-from <alistair23@gmail.com>) id 1hzo0F-0004Ts-CT
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2019 16:11:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1hznLw-00032f-9D
- for qemu-arm@nongnu.org; Mon, 19 Aug 2019 15:30:05 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34688)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1hznLw-00032A-1S; Mon, 19 Aug 2019 15:30:04 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id EBB1F308FF23;
- Mon, 19 Aug 2019 19:30:02 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-95.ams2.redhat.com [10.36.116.95])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 079AB1EC;
- Mon, 19 Aug 2019 19:29:57 +0000 (UTC)
-To: Paolo Bonzini <pbonzini@redhat.com>, Yang Zhong <yang.zhong@intel.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-References: <20190817101931.28386-1-thuth@redhat.com>
- <1cbbb720-2ee7-18b3-dd7b-e03c485db6de@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat
-Message-ID: <52dad01d-9ba8-d1ff-a579-ff5c207fd38f@redhat.com>
-Date: Mon, 19 Aug 2019 21:29:56 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ (envelope-from <alistair23@gmail.com>) id 1hzo0E-0000P7-Ds
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2019 16:11:43 -0400
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:35961)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1hzo0B-0000NP-Su; Mon, 19 Aug 2019 16:11:40 -0400
+Received: by mail-lf1-x142.google.com with SMTP id j17so2324485lfp.3;
+ Mon, 19 Aug 2019 13:11:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=vz1QfNHZvV4l7jIAawaglagw5PWlIGcW8gQ+ud4/D50=;
+ b=lnQ/197VkoJx2KGpOH7fpcQGB9E7gDeIlomPfNeRp6K6UQnPnjQYnhPtkoh9CWFs9z
+ knLaO20VWAduOamo+UEhQgVEP+0QGuS3w9XMfrFi+2921Zp3lrcgWC/nAPpN2d7FkN/L
+ U3g6Digh7G5h79ySh5X0S3g1HzBTr8EPWDQ3Y26PiHMlaRLncYwzhFRPik8ueax5f+kl
+ xmmOaXyinY+7Q+pBAS63mYIJZXr84dyDNKQ4HECVhFuz3BNCRce8HwSLTjpjyGCaBkon
+ CjIEvTEwZO1hbpaCYWiImHvN9Vnos6nSwh92bFYJuiXEVd1VKYeX7/XhGCWufcRYZG+8
+ 4cLw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=vz1QfNHZvV4l7jIAawaglagw5PWlIGcW8gQ+ud4/D50=;
+ b=Z5XtotDNz8yBStyDq+/zguRyAlGwVaxfb/g8jBm6n0v76bOqpEofunrYFWhzFpxNgv
+ qT08FLr//QsMQto/pGNqXX1Ig+lg12XFSF69IqdcRLMPb4XnvX/Dyyrvhf+72xUidPKg
+ kSJMsNlKUyVzOZi3zM3ZXZkTGttc0Wz1f+0gPleVY7XYmFDACzyF8r+PRnIDb5ZxThen
+ NIosDavy6pbMy21ypwb09HIA1H9hnjhkOmi414hrZVF4U4GGbT7DP9cTxaK8ZtcbFVyo
+ lfgzDnXBdaQzpO78Cz/JHn1Le0TQz1/GjV4zxp8ixvG0ggmCH+TyprBfjJGfomgmapDL
+ fb+w==
+X-Gm-Message-State: APjAAAXiKwxjs/eu/IZyAU0svY5a7iqL0P8RSS67/sz/QL/cLli0DEb7
+ vf7z160dqiTl3CVPQWz7EKzFjVME5btgOB0UHxg=
+X-Received: by 2002:a19:ed11:: with SMTP id y17mr13061789lfy.141.1566245498446; 
+ Mon, 19 Aug 2019 13:11:38 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1cbbb720-2ee7-18b3-dd7b-e03c485db6de@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.49]); Mon, 19 Aug 2019 19:30:03 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v3 0/8] Kconfig switches
+References: <20190817101931.28386-1-thuth@redhat.com>
+ <20190817101931.28386-5-thuth@redhat.com>
+In-Reply-To: <20190817101931.28386-5-thuth@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 19 Aug 2019 13:07:37 -0700
+Message-ID: <CAKmqyKPY-JmZZmgYjbWgBggN+nE+uOgzBg8UE8_53ztO4+YsXg@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::142
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v3 4/8] hw/core: Add a config
+ switch for the "register" device
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -138,22 +104,81 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: Yang Zhong <yang.zhong@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BUOd7I4spWwi
+X-TUID: KIxgMELJ5WQU
 
-On 8/19/19 7:47 PM, Paolo Bonzini wrote:
-> On 17/08/19 12:19, Thomas Huth wrote:
->> Here are some more Kconfig patches that clean up the switches of
->> existing devices and introduce proper config switches for some
->> other devices that were always enabled before.
-> 
-> Thomas, you can go ahead and send a pull request as I will be on
-> vacation soon.
+On Sat, Aug 17, 2019 at 3:24 AM Thomas Huth <thuth@redhat.com> wrote:
+>
+> The "register" device is only used by certain machines. Let's add
+> a proper config switch for it so that it only gets compiled when we
+> really need it.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Ok, I'm going to prepare one.
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
- Thomas
+Alistair
+
+> ---
+>  hw/Kconfig            | 1 +
+>  hw/core/Kconfig       | 3 +++
+>  hw/core/Makefile.objs | 2 +-
+>  hw/dma/Kconfig        | 1 +
+>  4 files changed, 6 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/Kconfig b/hw/Kconfig
+> index dbae1c0852..b45db3c813 100644
+> --- a/hw/Kconfig
+> +++ b/hw/Kconfig
+> @@ -76,3 +76,4 @@ config XILINX_AXI
+>
+>  config XLNX_ZYNQMP
+>      bool
+> +    select REGISTER
+> diff --git a/hw/core/Kconfig b/hw/core/Kconfig
+> index c2a1ae8122..d11920fcb3 100644
+> --- a/hw/core/Kconfig
+> +++ b/hw/core/Kconfig
+> @@ -9,3 +9,6 @@ config FITLOADER
+>
+>  config PLATFORM_BUS
+>      bool
+> +
+> +config REGISTER
+> +    bool
+> diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+> index f8481d959f..d6cfb2a81b 100644
+> --- a/hw/core/Makefile.objs
+> +++ b/hw/core/Makefile.objs
+> @@ -17,7 +17,7 @@ common-obj-$(CONFIG_SOFTMMU) += machine.o
+>  common-obj-$(CONFIG_SOFTMMU) += loader.o
+>  common-obj-$(CONFIG_FITLOADER) += loader-fit.o
+>  common-obj-$(CONFIG_SOFTMMU) += qdev-properties-system.o
+> -common-obj-$(CONFIG_SOFTMMU) += register.o
+> +common-obj-$(CONFIG_REGISTER) += register.o
+>  common-obj-$(CONFIG_SOFTMMU) += or-irq.o
+>  common-obj-$(CONFIG_SOFTMMU) += split-irq.o
+>  common-obj-$(CONFIG_PLATFORM_BUS) += platform-bus.o
+> diff --git a/hw/dma/Kconfig b/hw/dma/Kconfig
+> index 751dec5426..5c61b67bc0 100644
+> --- a/hw/dma/Kconfig
+> +++ b/hw/dma/Kconfig
+> @@ -16,6 +16,7 @@ config I8257
+>
+>  config ZYNQ_DEVCFG
+>      bool
+> +    select REGISTER
+>
+>  config STP2000
+>      bool
+> --
+> 2.18.1
+>
+>

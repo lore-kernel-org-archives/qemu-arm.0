@@ -1,113 +1,136 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp2382528wrs;
-        Mon, 19 Aug 2019 01:46:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzX7P0uEVAeBpxXbIWA9cOI/qyQFg69nOPAkllgamO/tylKkQiOTvVi0WfVlLWalO7ZMvqu
-X-Received: by 2002:a17:902:29e9:: with SMTP id h96mr21252097plb.110.1566204387393;
-        Mon, 19 Aug 2019 01:46:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566204387; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp2434565wrs;
+        Mon, 19 Aug 2019 02:48:28 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxSRI3JCjtB4pUTzFrd9TVONJ0QtXFxyUnI35WXcwFKJbd73CCw16AwpuYaulsNmnGz2J6Y
+X-Received: by 2002:a0c:c24d:: with SMTP id w13mr9842783qvh.26.1566208108543;
+        Mon, 19 Aug 2019 02:48:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566208108; cv=none;
         d=google.com; s=arc-20160816;
-        b=inIdprowXwgHXwN/wJHi5ox78AwDutIYbUXxEcK8q0T7jz0faHEre4TS4TnD+MIvrc
-         rsO7WGHyFsVYPoo0lx1PaTldRIhqulHvRnEdrlC0tiIEgVaeUH9pOh3ERrQjj5hrDt+S
-         DbtnGxk9s7LT4XTgmWPiOdVTJTBbbAPUWqfQDpAdJomMiYm4kgT6k27T1yc9E9SYuS1J
-         3tpyWFkqMqgqpBUKQhp4qLTB7hLtfQLHIHQGQkzqZhQHxepRvCwbPG42G5PBVm8s7o3r
-         eQBgabGaDDyY1Oq5hUU6xIRZ3JDg1y2A/egubM81dC7eWKrnPJT/FWaVfZCYoT7XSCEK
-         b5GA==
+        b=f6j+vQxhYDKp22eECnRGQK5IkajKZqCaqs1sBhjQzMJge2RQ0bY0C8IClBJjMF/D8j
+         lk2RYTaPSan5vciAw+Ach3rAy3qA60dfsJFQ4STL9Giig0ZnhElOmLX3T+raaqEZl+wH
+         i4k2gFl/ezgb4BMoGiTJ8ngJ7hcob6+ciL4Z8PlE52jjpGLv6tg/aWCssTDDn3xSxoEL
+         X0OmeTOzrx4vWtOZJPHyCS7JD5JFOETCQOol07toZoNI4Al4ysC+TKsRa0WAVy7PXcAM
+         Ye5MMIhWi/BWhETBlOl1rS3kEQK3+JA/qFjn4DoHGN7aKOR1B/6qMooLZxRrLPBAgzuh
+         294g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:from:references:cc:to:subject;
-        bh=I0L9pf/BQoXLAjLcScM4pNZ7Yl9llsMPxzrly5yR0hU=;
-        b=Q14wj3LmjjLvJF3vxCoDfB46zAgtZKGhrLIcm/aNDsn0D/VsQCgsPNysVvhHes+Gk0
-         aBYCHCUtStJk0h9rmNHseCH+LpT6nEyTMIBkp4kZ0tbMi+UmPPBrs40Cg1gvRyUTJZz2
-         Or6pd3jUngJWL9F3KZpEgszjC+cCs9cbvH4A0b6A9UrW3r+Kwzi8vlqg/3kCljUqwrDG
-         5UG9zCtJqQyz6HVD4sC9UzLzxzt6vQYMpLIHmajDLE8P3sprpW1/NV59ruO3sOPOY3po
-         fzYR0RkvhD0b4csjsoEPhEiR839Gy0ukT2JNEnkATkCjBsfs4bTMrAILDprDSekfgilx
-         ECTg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:to:from:date;
+        bh=AtFRpG34icXrf951d19yWDRelAKOVYPbBx3xCeh0Sbs=;
+        b=tOOGFrvPYiv9GICCLPixLV07xygDTX7HYnEFvA4Y3UFP+j14BHhcRiKkS90cn8Obf9
+         tkIwJ0JJEXfWXfzhA9uziIuNCXd3zBlPVzIMNxrcKAK+QgFAk/eA7/Opo9AmuwM9frv7
+         sIHmDArDRH/0Hmmu/x2Xf+L5qXpCBEE2Bc4fIzT5+MoK4xUBkxUu5oKKhPq5d1Cinw0z
+         qHfu8Oul2pAbNWkERqCFeJjKR/s4BHtUAu7a1abBOrFCEj0Trl2bDfdAuKDrxr4Ngu+S
+         5sE9iXyu3rIi/39NMjWtcQreS+WYUg7vwOtXhmTjSyvtXgrsLs/IxCWBxwsLAwmGP4Z9
+         qRkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id cp2si9378705plb.437.2019.08.19.01.46.27;
-        Mon, 19 Aug 2019 01:46:27 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n26si1626970qkg.202.2019.08.19.02.48.28
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 19 Aug 2019 02:48:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727216AbfHSIq0 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Mon, 19 Aug 2019 04:46:26 -0400
-Received: from foss.arm.com ([217.140.110.172]:51080 "EHLO foss.arm.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1725768AbfHSIq0 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Mon, 19 Aug 2019 04:46:26 -0400
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-        by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id BDFE3344;
-        Mon, 19 Aug 2019 01:46:25 -0700 (PDT)
-Received: from [10.1.197.61] (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
-        by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8352C3F718;
-        Mon, 19 Aug 2019 01:46:24 -0700 (PDT)
-Subject: Re: [PATCH] KVM: arm/arm64: vgic: Allow more than 256 vcpus for
- KVM_IRQ_LINE
-To:     Will Deacon <will@kernel.org>
-Cc:     Peter Maydell <peter.maydell@linaro.org>,
-        James Morse <james.morse@arm.com>,
-        Julien Thierry <julien.thierry.kdev@gmail.com>,
-        Suzuki K Poulose <suzuki.poulose@arm.com>,
-        Zenghui Yu <yuzenghui@huawei.com>, qemu-arm@nongnu.org,
-        kvmarm@lists.cs.columbia.edu, linux-arm-kernel@lists.infradead.org,
-        kvm@vger.kernel.org
-References: <20190818140710.23920-1-maz@kernel.org>
- <20190819074150.jv3dyyxqazoawgds@willie-the-truck>
-From:   Marc Zyngier <maz@kernel.org>
-Organization: Approximate
-Message-ID: <a7573176-6375-a7df-6fae-ab93155a824c@kernel.org>
-Date:   Mon, 19 Aug 2019 09:46:23 +0100
-User-Agent: Mozilla/5.0 (X11; Linux aarch64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46756 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hzeH5-00086b-HR
+	for alex.bennee@linaro.org; Mon, 19 Aug 2019 05:48:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35689)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <jonathan.cameron@huawei.com>) id 1hzeGj-00085m-Lx
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2019 05:48:07 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <jonathan.cameron@huawei.com>) id 1hzeGe-0001sV-Ay
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2019 05:48:02 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2255 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1hzeGd-0001oJ-No; Mon, 19 Aug 2019 05:48:00 -0400
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 87C8F8D8563844FDA1F3;
+ Mon, 19 Aug 2019 17:47:52 +0800 (CST)
+Received: from localhost (10.202.226.61) by DGGEMS410-HUB.china.huawei.com
+ (10.3.19.210) with Microsoft SMTP Server id 14.3.439.0; Mon, 19 Aug 2019
+ 17:47:46 +0800
+Date: Mon, 19 Aug 2019 10:47:30 +0100
+From: Jonathan Cameron <jonathan.cameron@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20190819104730.0000234a@huawei.com>
+In-Reply-To: <CAFEAcA8cLy+QfswCD6iGHcQywDA6hHYaBdxT9Zfa2zAzSotm_w@mail.gmail.com>
+References: <20190625112752.83188-1-Jonathan.Cameron@huawei.com>
+ <CAFEAcA8cLy+QfswCD6iGHcQywDA6hHYaBdxT9Zfa2zAzSotm_w@mail.gmail.com>
+Organization: Huawei
+X-Mailer: Claws Mail 3.17.3 (GTK+ 2.24.32; i686-w64-mingw32)
 MIME-Version: 1.0
-In-Reply-To: <20190819074150.jv3dyyxqazoawgds@willie-the-truck>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: ILM0B80anK8T
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.202.226.61]
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 45.249.212.191
+Subject: Re: [Qemu-arm] [RFC PATCH 0/7] qemu: CCIX pcie config space
+ emulation
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Auger Eric <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ Jon Masters <jcm@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: oZHQslagA7qT
 
-On 19/08/2019 08:41, Will Deacon wrote:
-> On Sun, Aug 18, 2019 at 03:07:10PM +0100, Marc Zyngier wrote:
->> While parts of the VGIC support a large number of vcpus (we
->> bravely allow up to 512), other parts are more limited.
->>
->> One of these limits is visible in the KVM_IRQ_LINE ioctl, which
->> only allows 256 vcpus to be signalled when using the CPU or PPI
->> types. Unfortunately, we've cornered ourselves badly by allocating
->> all the bits in the irq field.
->>
->> Since the irq_type subfield (8 bit wide) is currently only taking
->> the values 0, 1 and 2 (and we have been careful not to allow anything
->> else), let's reduce this field to only 4 bits, and allocate the
->> remaining 4 bits to a vcpu2_index, which acts as a multiplier:
->>
->>   vcpu_id = 256 * vcpu2_index + vcpu_index
->>
->> With that, and a new capability (KVM_CAP_ARM_IRQ_LINE_LAYOUT_2)
->> allowing this to be discovered, it becomes possible to inject
->> PPIs to up to 4096 vcpus. But please just don't.
-> 
-> Do you actually need a new capability for this? Older kernels reject
-> non-zero upper bits in the 'irq_type', so isn't that enough to probe
-> for this directly?
+On Fri, 16 Aug 2019 13:59:02 +0100
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-'Probing' is a bit of an overstatement. You'll get an error back when
-userspace will try to inject a PPI into a vcpu whose ID is in the new
-range. But nothing at VM creation time will indicate the interrupt
-injection API supports more than 256 vcpus.
+> On Tue, 25 Jun 2019 at 12:28, Jonathan Cameron
+> <Jonathan.Cameron@huawei.com> wrote:
+> >
+> > CCIX topologies are 'layered' on top of PCIe tree topologies.
+> > This is done primarily by allowing a single CCIX device to appear as
+> > multiple disjoint nodes in the PCIe tree. =20
+>=20
+> > This patch is being distributed by the CCIX Consortium, Inc. (CCIX) to
+> > you and other parties that are paticipating (the "participants") in
+> > qemu with the understanding that the participants will use CCIX's
+> > name and trademark only when this patch is used in association with
+> > qemu.
+> >
+> > CCIX is also distributing this patch to these participants with the
+> > understanding that if any portion of the CCIX specification will be
+> > used or referenced in qemu, the participants will not modify the cited
+> > portion of the CCIX specification and will give CCIX propery copyright
+> > attribution by including the following copyright notice with
+> > the cited part of the CCIX specification:
+> > "=A9 2019 CCIX CONSORTIUM, INC. ALL RIGHTS RESERVED." =20
+>=20
+> (Apologies for replying to this now quite old email, but your
+> more recent followup email drew it to my attention.)
+>=20
+> I think that as a project, QEMU can't take patches which come
+> with this kind of additional constraint on top of the GPL. Could
+> you drop these extra legal clauses, please?
 
-I think userspace should be able to fail the creation of such large VM
-immediately, before actually running it.
+Jon, if you could raise this with CCIX legal that would be great.
 
-	M.
--- 
-Jazz is not dead, it just smells funny...
+Thanks,
+
+Jonathan
+=20
+>=20
+> thanks
+> -- PMM
+
+

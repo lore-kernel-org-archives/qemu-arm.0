@@ -1,93 +1,101 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp2073886wrs;
-        Thu, 15 Aug 2019 06:54:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwjo1vsM2k7qJjYx/SLpOo5aPA+YTqkE8bDcc15XlzPUN9ptq3bf/xICp5iPNi0TfJIzC8k
-X-Received: by 2002:ac8:53cd:: with SMTP id c13mr3939886qtq.361.1565877268061;
-        Thu, 15 Aug 2019 06:54:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565877268; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp2569048wrs;
+        Mon, 19 Aug 2019 05:08:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxOLOUyz57o6r90cM4WP5MJl01lkmX9nWBKX4adAPsjG24nbbjjwu1AFA8522lA5j+H0EPv
+X-Received: by 2002:a17:907:207a:: with SMTP id qp26mr20631311ejb.12.1566216519844;
+        Mon, 19 Aug 2019 05:08:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566216519; cv=none;
         d=google.com; s=arc-20160816;
-        b=VhddOhHzT13PIV/NyD5ZH1G9rlffGjE/osUJQf0bVBHaImFgkNA7vN3p7z2C37vkgg
-         wkjK6T8LUKCPvipQjP6iKZB4T5XhkdZ8w26/OTMxqfcpTWCLxU83ph/vvuet1V2MlW2U
-         Wpm2KU5CRzNe6qwK0kCnJfehm9dbw5f4OK7aqGo57kIZSHVCIanSPQt+S65Vtq7YZeMO
-         rd3lm25XDGxHMfMukCoj7clwfHFzlDFzcPW6PZl2/NmhYQnz64zGpvVhl6uZtOJqnw+b
-         r6moVHC5bTriplyCVkH7H0z8RbvVoo39ALoBPqrUVXYtY85H5FNhNUo2V44kGSmBv2Po
-         tscg==
+        b=txezFk3MvipNm0IrFXvURBEYXdXxiEBBME375Lgg3mWMGYYhIl8aiejUjEckbyIJRW
+         td6pBvUo5fT6HvDR4bw3ufV6qkzFOiGUuFsmzw47ifJ5mA6NpAnXCnT9lcBrMcWiJdlx
+         OFG0ouXecs93pUwwgdAg11PnE3Ss0nzK4W8MCAUsnlSJdyUYdyd67noKhHIH9+sdy0ug
+         f7KATr93T5tOQMzHr+cEFh25s6jE9UqVDiqlXHEAOpcJ1tjf953oPaqcS1sugdCizXVL
+         g/4/a9irINotMHGNvzoCOPkPCZsF38JWw3F7w0r5/c/eYYXxJjJHvCx/JyINsQUlUdaP
+         8+jA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
          :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=D5d7UKjZK1DIN4VHoZOYfjri0arMQikd3DYAbT6818w=;
-        b=dJKCku/NMa7XPQKotdDEr66ZoGVHRiJrNnEAWw0UnKpwO881IhZH7UJ3m5tizzVwLA
-         39LiS3CgVz+UR4b3g312lwlrQxYXAhBZeVMhaysTmgLC2LtekfXJwR66YmWa2flu2CiV
-         HIMU95tP03lHa03RAMj0skiAFh+px+o7EWhXTRWgbkryGiGWM6BJ/IA+CQbIqI3osPF+
-         VIVsLV+FtuETmy1mGWFS7YcDs4Nvti6KiWEYDV7RK+ii+bNbzrnZi9FPg+wDYDjQGRJy
-         5lv4cJegk7hSJy2sPoF+VPpIzMOvj5Nn6evNhDiZFep0JDfx3H+pb5JmrulWFZmew0Gr
-         sIIA==
+        bh=WAswI7IvJsamoUX+PIF1wVLMxOBTG1uRKswJMWAJkx8=;
+        b=0a+lyXNs1pYw3MdS4is42rkMUHA8bz8u6O8bEJjgDYRgnN05+rlz9s7ZccOaURADt2
+         EveZJMQaXhe0CK63L7Vd+uhJnlK8XHREYL9OUYOwWJi0eOEsusObfiVzjTSUFcHew8Wa
+         vH58WiLnSC8En8/MkJErHf0e8cSww4rWspUfqsw8XjUH4V77lfjYlFy7ZEgvPw8MFw/+
+         bOqsDn7eiOurXP1/7Kb6fbafdENDxLqj90yCUh9wTCkGy5k8FTmIO49jT0uZhiSz5oZL
+         LC/QW0hEfdwNeGiB+jMI20gVq5qpwD/QStgntqXLvc6giL25Iiy6t/ucrP7BfDH7Ue60
+         D75Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w41si1515489qtw.315.2019.08.15.06.54.27
+        by mx.google.com with ESMTPS id l6si8227291edb.241.2019.08.19.05.08.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Aug 2019 06:54:28 -0700 (PDT)
+        Mon, 19 Aug 2019 05:08:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42094 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48916 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hyGCx-0005ut-Iy
-	for alex.bennee@linaro.org; Thu, 15 Aug 2019 09:54:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50088)
+	id 1hzgSk-0000eQ-UP
+	for alex.bennee@linaro.org; Mon, 19 Aug 2019 08:08:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35897)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peterx@redhat.com>) id 1hyGCn-0005qC-KX
- for qemu-arm@nongnu.org; Thu, 15 Aug 2019 09:54:20 -0400
+ (envelope-from <peterx@redhat.com>) id 1hzgSd-0000e1-3d
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2019 08:08:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peterx@redhat.com>) id 1hyGCk-0000a9-UU
- for qemu-arm@nongnu.org; Thu, 15 Aug 2019 09:54:17 -0400
-Received: from mail-pl1-f195.google.com ([209.85.214.195]:46830)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1hyGCk-0000Vk-OI
- for qemu-arm@nongnu.org; Thu, 15 Aug 2019 09:54:14 -0400
-Received: by mail-pl1-f195.google.com with SMTP id c2so1090055plz.13
- for <qemu-arm@nongnu.org>; Thu, 15 Aug 2019 06:54:13 -0700 (PDT)
+ (envelope-from <peterx@redhat.com>) id 1hzgSb-0001gw-RD
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2019 08:08:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51046)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1hzgSb-0001fS-IT
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2019 08:08:29 -0400
+Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
+ [209.85.214.199])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 98FA37E425
+ for <qemu-arm@nongnu.org>; Mon, 19 Aug 2019 12:08:28 +0000 (UTC)
+Received: by mail-pl1-f199.google.com with SMTP id v4so1906492plp.23
+ for <qemu-arm@nongnu.org>; Mon, 19 Aug 2019 05:08:28 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:in-reply-to:user-agent;
- bh=D5d7UKjZK1DIN4VHoZOYfjri0arMQikd3DYAbT6818w=;
- b=reqHWyYwqk/WHwA8/amHdxzj514iQ7HAfwkOd8pSpM5Vgaqkj8NyOi08a198JMshza
- 5a/elKkyqlAmrc9a5pJfQk1AW6E7QvC+b/eGugQBxyijPEDF5G4v/+Wqq+eOd0HSTZ8O
- tPhWKjuaf0DQNpBK5/cL7c3tPviI5GNFr5xniQsGpa0Qdjv5JAf1/3iYj39MCWEdSUuH
- /9eHJNoJQ8hKyMw8PToAchmxWJIz+PDa0HmLtGTN8Ltpn0FYPHOs+Unp5A1PeaBsebn3
- RvXD8BlkhMlh3C0g1KWpjn0/k1B9g9/FK3dKEGT5PxQBwo0sz8fa7n2flvobIkv3tTTq
- y6tw==
-X-Gm-Message-State: APjAAAUa3uEIjaxybmJ8dmLlYHIxDWdNAo6wvj0QjI3N2OkDDqVDc+BC
- aTAZ7JvtfWKFmVMon+HqI2POsg==
-X-Received: by 2002:a17:902:b084:: with SMTP id
- p4mr4352728plr.309.1565877252870; 
- Thu, 15 Aug 2019 06:54:12 -0700 (PDT)
+ bh=WAswI7IvJsamoUX+PIF1wVLMxOBTG1uRKswJMWAJkx8=;
+ b=mrGa/BEKlFGnocDechhmo7Mrks+nFrCHLJGs8pg8O27Y8E6oHgrbR81ZePYk8H0+L9
+ ddPq+bCSt2+CUv4EuasPgHUKJcrC7AGR88xILOFOcEUKWX4azizYuQ1lVOHz3E/9mRn2
+ waO9j6/uXfeSFxglKfJ/FeDMOjv9/tEkVshuND4vrBQgLpeFgMGMXgcLwLL0KTE7bxwM
+ 8M3DF9Yt3hHsY8YgGc/YLbooLzecdFbYd+lUTC237vJae4C1HmtofKup35rI4JS3HkJp
+ VJ8dIFbk6XZO4t7O7C9zRr6R4OJOY5l/VscE2kANww81j+aulfpIGNO81nC3WarLTubJ
+ wAog==
+X-Gm-Message-State: APjAAAXpMYx2jXtyp2GtdJoLZGhjVq5BO69WS/iF9tUal2Fr+cOugicc
+ zYMEoABt9QrdELOtB0qAwJs3TXFuonQ+zkuuvDju9yMkmhRjcohaOguqY4MbD025XusxPR8dU8y
+ J8ONvX7N7FX6G
+X-Received: by 2002:a65:6552:: with SMTP id a18mr20080139pgw.208.1566216508081; 
+ Mon, 19 Aug 2019 05:08:28 -0700 (PDT)
+X-Received: by 2002:a65:6552:: with SMTP id a18mr20080071pgw.208.1566216507259; 
+ Mon, 19 Aug 2019 05:08:27 -0700 (PDT)
 Received: from xz-x1 ([209.132.188.80])
- by smtp.gmail.com with ESMTPSA id c26sm2626103pfr.172.2019.08.15.06.54.07
+ by smtp.gmail.com with ESMTPSA id u74sm18616232pjb.26.2019.08.19.05.08.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Aug 2019 06:54:12 -0700 (PDT)
-Date: Thu, 15 Aug 2019 21:54:00 +0800
+ Mon, 19 Aug 2019 05:08:26 -0700 (PDT)
+Date: Mon, 19 Aug 2019 20:08:15 +0800
 From: Peter Xu <peterx@redhat.com>
 To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20190815135400.GC8463@xz-x1>
+Message-ID: <20190819120815.GD13560@xz-x1>
 References: <20190730172137.23114-1-eric.auger@redhat.com>
- <20190730172137.23114-4-eric.auger@redhat.com>
+ <20190730172137.23114-11-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20190730172137.23114-4-eric.auger@redhat.com>
+In-Reply-To: <20190730172137.23114-11-eric.auger@redhat.com>
 User-Agent: Mutt/1.11.4 (2019-03-13)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.214.195
-Subject: Re: [Qemu-arm] [PATCH for-4.2 v10 03/15] virtio-iommu: Add skeleton
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH for-4.2 v10 10/15] virtio-iommu: Implement
+ probe request
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,131 +113,58 @@ Cc: peter.maydell@linaro.org, kevin.tian@intel.com, mst@redhat.com,
  eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QYGGFWS89EP2
+X-TUID: sBdk3OhQnhiT
 
-On Tue, Jul 30, 2019 at 07:21:25PM +0200, Eric Auger wrote:
-> +static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
-> +{
-> +    VirtIOIOMMU *s = VIRTIO_IOMMU(vdev);
-> +    struct virtio_iommu_req_head head;
-> +    struct virtio_iommu_req_tail tail;
-
-[1]
-
-> +    VirtQueueElement *elem;
-> +    unsigned int iov_cnt;
-> +    struct iovec *iov;
-> +    size_t sz;
-> +
-> +    for (;;) {
-> +        elem = virtqueue_pop(vq, sizeof(VirtQueueElement));
-> +        if (!elem) {
-> +            return;
-> +        }
-> +
-> +        if (iov_size(elem->in_sg, elem->in_num) < sizeof(tail) ||
-> +            iov_size(elem->out_sg, elem->out_num) < sizeof(head)) {
-> +            virtio_error(vdev, "virtio-iommu bad head/tail size");
-> +            virtqueue_detach_element(vq, elem, 0);
-> +            g_free(elem);
-> +            break;
-> +        }
-> +
-> +        iov_cnt = elem->out_num;
-> +        iov = g_memdup(elem->out_sg, sizeof(struct iovec) * elem->out_num);
-
-Could I ask why memdup is needed here?
-
-> +        sz = iov_to_buf(iov, iov_cnt, 0, &head, sizeof(head));
-> +        if (unlikely(sz != sizeof(head))) {
-> +            tail.status = VIRTIO_IOMMU_S_DEVERR;
-
-Do you need to zero the reserved bits to make sure it won't contain
-garbage?  Same question to below uses of tail.
-
-> +            goto out;
-> +        }
-> +        qemu_mutex_lock(&s->mutex);
-> +        switch (head.type) {
-> +        case VIRTIO_IOMMU_T_ATTACH:
-> +            tail.status = virtio_iommu_handle_attach(s, iov, iov_cnt);
-> +            break;
-> +        case VIRTIO_IOMMU_T_DETACH:
-> +            tail.status = virtio_iommu_handle_detach(s, iov, iov_cnt);
-> +            break;
-> +        case VIRTIO_IOMMU_T_MAP:
-> +            tail.status = virtio_iommu_handle_map(s, iov, iov_cnt);
-> +            break;
-> +        case VIRTIO_IOMMU_T_UNMAP:
-> +            tail.status = virtio_iommu_handle_unmap(s, iov, iov_cnt);
-> +            break;
-> +        default:
-> +            tail.status = VIRTIO_IOMMU_S_UNSUPP;
-> +        }
-> +        qemu_mutex_unlock(&s->mutex);
-> +
-> +out:
-> +        sz = iov_from_buf(elem->in_sg, elem->in_num, 0,
-> +                          &tail, sizeof(tail));
-> +        assert(sz == sizeof(tail));
-> +
-> +        virtqueue_push(vq, elem, sizeof(tail));
-
-s/tail/head/ (though they are the same size)?
-
-> +        virtio_notify(vdev, vq);
-> +        g_free(elem);
-> +    }
-> +}
+On Tue, Jul 30, 2019 at 07:21:32PM +0200, Eric Auger wrote:
 
 [...]
 
-> +static void virtio_iommu_set_features(VirtIODevice *vdev, uint64_t val)
+> +/* Fill the properties[] buffer with properties of type @type */
+> +static int virtio_iommu_fill_property(int type,
+> +                                      viommu_property_buffer *bufstate)
 > +{
-> +    VirtIOIOMMU *dev = VIRTIO_IOMMU(vdev);
+> +    int ret = -ENOSPC;
 > +
-> +    dev->acked_features = val;
-> +    trace_virtio_iommu_set_features(dev->acked_features);
-> +}
+> +    if (bufstate->filled + sizeof(struct virtio_iommu_probe_property)
+> +            >= VIOMMU_PROBE_SIZE) {
+> +        /* no space left for the header */
+> +        bufstate->error = true;
+> +        goto out;
+> +    }
 > +
-> +static const VMStateDescription vmstate_virtio_iommu_device = {
-> +    .name = "virtio-iommu-device",
-> +    .unmigratable = 1,
+> +    switch (type) {
+> +    case VIRTIO_IOMMU_PROBE_T_NONE:
+> +        ret = virtio_iommu_fill_none_prop(bufstate);
+> +        break;
+> +    case VIRTIO_IOMMU_PROBE_T_RESV_MEM:
+> +    {
+> +        viommu_endpoint *ep = bufstate->endpoint;
+> +
+> +        g_tree_foreach(ep->reserved_regions,
+> +                       virtio_iommu_fill_resv_mem_prop,
+> +                       bufstate);
+> +        if (!bufstate->error) {
+> +            ret = 0;
+> +        }
+> +        break;
+> +    }
+> +    default:
+> +        ret = -ENOENT;
+> +        break;
+> +    }
+> +out:
+> +    if (ret) {
+> +        error_report("%s property of type=%d could not be filled (%d),"
+> +                     " remaining size = 0x%lx",
+> +                     __func__, type, ret, bufstate->filled);
 
-Curious, is there explicit reason to not support migration from the
-first version? :)
+Nit: If this can really be triggered then we might still change it to
+error_report_once()?  If it's not (which it seems to), maybe assert
+directly?
 
-> +};
-> +
-> +static void virtio_iommu_device_realize(DeviceState *dev, Error **errp)
-> +{
-> +    VirtIODevice *vdev = VIRTIO_DEVICE(dev);
-> +    VirtIOIOMMU *s = VIRTIO_IOMMU(dev);
-> +
-> +    virtio_init(vdev, "virtio-iommu", VIRTIO_ID_IOMMU,
-> +                sizeof(struct virtio_iommu_config));
-> +
-> +    s->req_vq = virtio_add_queue(vdev, VIOMMU_DEFAULT_QUEUE_SIZE,
-> +                             virtio_iommu_handle_command);
-> +    s->event_vq = virtio_add_queue(vdev, VIOMMU_DEFAULT_QUEUE_SIZE, NULL);
-> +
-> +    s->config.page_size_mask = TARGET_PAGE_MASK;
-> +    s->config.input_range.end = -1UL;
-> +    s->config.domain_range.start = 0;
+Other than that it looks good to me:
 
-Zero input_range.start = 0?  After all domain_range.start is zeroed.
-
-> +    s->config.domain_range.end = 32;
-> +
-> +    virtio_add_feature(&s->features, VIRTIO_RING_F_EVENT_IDX);
-> +    virtio_add_feature(&s->features, VIRTIO_RING_F_INDIRECT_DESC);
-> +    virtio_add_feature(&s->features, VIRTIO_F_VERSION_1);
-> +    virtio_add_feature(&s->features, VIRTIO_IOMMU_F_INPUT_RANGE);
-> +    virtio_add_feature(&s->features, VIRTIO_IOMMU_F_DOMAIN_RANGE);
-> +    virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MAP_UNMAP);
-> +    virtio_add_feature(&s->features, VIRTIO_IOMMU_F_BYPASS);
-> +    virtio_add_feature(&s->features, VIRTIO_IOMMU_F_MMIO);
-> +}
+Reviewed-by: Peter Xu <peterx@redhat.com>
 
 Regards,
 

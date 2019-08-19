@@ -1,524 +1,319 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1258762wrs;
-        Wed, 14 Aug 2019 13:38:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy8tfaZVrxiFDxI9WK6fiwTbWOpz6dB1wJdjdRZuQ9zjBUpAZXgcbdIfcvgtt29lE4H0RPY
-X-Received: by 2002:a37:8a86:: with SMTP id m128mr1143024qkd.327.1565815107693;
-        Wed, 14 Aug 2019 13:38:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565815107; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp3195855wrs;
+        Mon, 19 Aug 2019 15:11:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwflr/N5AkuLcKuHx+WXbNvZffhsLDb3U8bqvdsODbqOuS7LIHVOih5IrLNtgiJfqxbCufx
+X-Received: by 2002:a17:906:8392:: with SMTP id p18mr23224088ejx.17.1566252681096;
+        Mon, 19 Aug 2019 15:11:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566252681; cv=none;
         d=google.com; s=arc-20160816;
-        b=S5rXAuFNt4oaCaZWRzHPQmFRF4ATQQtrO1X8KtBf7wn48R0MXCsCBIyENZLVsSYJSC
-         P3H+nNBKhuYcFXFDnFF5Npe4/RF9FqsOzf7LbLoHKN9wBdLMped8dIUfaUt5NgG/KwCn
-         Xk9AmOExdK/BMDDVD2x2MACoGTdxrKuw6AQmozeJh6FosoVRjWR1CVVPUYtg9N7hCkL2
-         8aR8M/FL44dlzo8Xt29kmEDMioIKoVfwBntZrDCNzqCPhr8nu7ftI2+tzqcZoGAIH1P1
-         +OwEWcwLebrt6KS3vFf72amhxRUUdNEH8O43EpGqNTMYExL0mxJcvOMt30k7ZAw1o3tk
-         O6pg==
+        b=tiM/v2gQ+xCELSuK5D6WZqzlUSL9BBPmGQRJiTusEJK1x/Z/bytryrQYA1XxXxeOUU
+         CGVU+zk8R2QNokf5LTEJVa7e5gaUKkVstaNsTQojaAaA+tGUYPQecrspOlu+WaDBCKcf
+         P+j+eGYP6z6cQX7Q/Nt92y2aXk7J/aTRt0RA3zGj3FgyTA5srkJh1r2ifOzefEOgqcNJ
+         OaPQ1htPAeBPKuoQUHbOuFstkSMLtk/11vReaWsT3HmKeHTNMOhgOKwuV/QazOuTARk/
+         8XWWjOvCh280kw3e5NYm0B0L2yBBnVyIZKR06/uvWut+dxkzBGP8TWzXY9JBcsFyv24y
+         tVbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from;
-        bh=jJWF+4Otek4tkrzPRW6s6Nq+BrjFVnxkrmOOLBc5DBU=;
-        b=iSCvbmK3ScsyvAaB+4xhlvEfhyA9qCl3/VotFzFZP9cp+ZL+osXGR3HcL2FA74Row2
-         ruvXPSinAOvoeWsLqRTbrPy2HcsziIxIkRKfehsvAsVfms5pd5btHddiDUNhhcatImWt
-         PMJhWOO2KEF/0ytL5ewnQU7bJ+wWf1Ij0oLCVzt74GGkBy4kG1WYN0DtLqbKhK3l7vlj
-         ZR/1bxush3+c4Q7265y9i0E6pcVMBnNIcjby8f0/oFblnV6CLMpnOS/MaLhWlnJCBovB
-         VUKhR0UIumi4/gi5h8nYD2QLybdLZ189GUwBTreSm9eMGJ7E7842Ug/Jgs/72Aiy/soq
-         QbXQ==
+         :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=MYM8dYqYPl4eqxjsUKYjeBmOOKaa2+t2xb+fej5q23g=;
+        b=tZoTIo6HppNU1+nfMA1b43qepdw+ac9BY7QSuRCxTW31cxjVF/Ajm4lXgh9yVjnSf9
+         sJ4EOMvWt0nizcJRg41/OfNnp3BMnqHIvY2G1z2IGRisy7+X6k9qZu6lxnAZHWNsuXln
+         fBCdCP/YrACHmMRvk9ki/Z6hVpidA/OBaXVE4TOLieo6/bTgYkMbYsyV6U2yeZf/4XV5
+         mFbBe1IfYQdCihPp+gy07RKCFJiZOHu9Oj8XjRCyFxjGtr3IP+xPbO7babReCdeWgeZs
+         tjA9Hb3xT+T6avQn2pbjTl4ECtw8jYjRqE0exRQxnnMIM/WaJRV5aiO8yMua70tb0Dxs
+         X3NA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=uubnh2nn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u68si313427qkf.221.2019.08.14.13.38.27
+        by mx.google.com with ESMTPS id y13si8909695edd.412.2019.08.19.15.11.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 Aug 2019 13:38:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 19 Aug 2019 15:11:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:35882 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=uubnh2nn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59626 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hy02N-0003Cw-61
-	for alex.bennee@linaro.org; Wed, 14 Aug 2019 16:38:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34084)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1hzprz-0004BG-OB
+	for alex.bennee@linaro.org; Mon, 19 Aug 2019 18:11:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59322)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eajames@linux.ibm.com>) id 1hxzs7-0000qL-3v
- for qemu-devel@nongnu.org; Wed, 14 Aug 2019 16:27:52 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1hzpMP-0002FO-Rp
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2019 17:38:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eajames@linux.ibm.com>) id 1hxzs4-0007FX-L4
- for qemu-devel@nongnu.org; Wed, 14 Aug 2019 16:27:50 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:57518)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eajames@linux.ibm.com>)
- id 1hxzs4-0007EC-29
- for qemu-devel@nongnu.org; Wed, 14 Aug 2019 16:27:48 -0400
-Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x7EKRC9C037566
- for <qemu-devel@nongnu.org>; Wed, 14 Aug 2019 16:27:45 -0400
-Received: from e33.co.us.ibm.com (e33.co.us.ibm.com [32.97.110.151])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2ucp1hyaqy-1
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
- for <qemu-devel@nongnu.org>; Wed, 14 Aug 2019 16:27:44 -0400
-Received: from localhost
- by e33.co.us.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
- Violators will be prosecuted
- for <qemu-devel@nongnu.org> from <eajames@linux.ibm.com>;
- Wed, 14 Aug 2019 21:27:44 +0100
-Received: from b03cxnp07028.gho.boulder.ibm.com (9.17.130.15)
- by e33.co.us.ibm.com (192.168.1.133) with IBM ESMTP SMTP Gateway: Authorized
- Use Only! Violators will be prosecuted; 
- (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
- Wed, 14 Aug 2019 21:27:39 +0100
-Received: from b03ledav003.gho.boulder.ibm.com
- (b03ledav003.gho.boulder.ibm.com [9.17.130.234])
- by b03cxnp07028.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- x7EKRd2n41287950
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 14 Aug 2019 20:27:39 GMT
-Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id EDED76A04F;
- Wed, 14 Aug 2019 20:27:38 +0000 (GMT)
-Received: from b03ledav003.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 666AA6A047;
- Wed, 14 Aug 2019 20:27:38 +0000 (GMT)
-Received: from talon7.ibm.com (unknown [9.41.179.222])
- by b03ledav003.gho.boulder.ibm.com (Postfix) with ESMTP;
- Wed, 14 Aug 2019 20:27:38 +0000 (GMT)
-From: Eddie James <eajames@linux.ibm.com>
+ (envelope-from <richard.henderson@linaro.org>) id 1hzpMO-0006RI-Ba
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2019 17:38:41 -0400
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:42601)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1hzpMO-0006Qy-4w
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2019 17:38:40 -0400
+Received: by mail-pg1-x543.google.com with SMTP id p3so1924765pgb.9
+ for <qemu-arm@nongnu.org>; Mon, 19 Aug 2019 14:38:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=MYM8dYqYPl4eqxjsUKYjeBmOOKaa2+t2xb+fej5q23g=;
+ b=uubnh2nnslDD4Dn/VjckXQhvv20xcu4vVoTR0Rl15Vf1QQPPLibQOk5/FCa4PFZ5lI
+ AXoHtsVsKRtjaQ3816MGgTBIgPc9sispVcSN4LL2k+dY8hJ8iE2IYzLuJN+Cvxl9cXW7
+ hbQxWW63KjDfbZTvZhCxCVoaHoZa82nFClbtbIVFwzk+zALie1YIdKOMvGdwTUSdpD7y
+ +L8Pk9VV/9r9bwNeA95XzK5K8zHVf1TXmN221+j0xEoB8+H7tH/vtrfkbI3VrsU3SIYS
+ OquS4eY7tMCSVbIOhWeb/XbHBo65DovhA2D3iYIagJnET0Kf/Xg42h5ycZFS4XCTOxmr
+ qz8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=MYM8dYqYPl4eqxjsUKYjeBmOOKaa2+t2xb+fej5q23g=;
+ b=AtMm9MawcDnHWBE/0IixRH5/MptxVEPNn0mnSuG2QvdkIyybm66vTRfJv/50eZR/f/
+ cD0H9NW11TqqiMzmYseC78AiCID+7jp20b5ob19SR3GBlNild+Ly50GpezH/6+5BAcSa
+ w/zdxDfSV1BNx2h8yihIfPxMYuLs7IYFp2Z0gW4kvJLEyQBeLlmJiDcfctW7YmHmV9CH
+ xU5yKP5wvZWed7JitzSAMEBXA1yYZ0n3+e7QMe780GAoVfibcyfHmyxhHet8A2WH7HQE
+ ZServyxzSt+IrBdTm9zHqeKwrAlrAjeZM66BJcVRvEWSVRqSANYhlksP0aMovtusQTR7
+ lRPQ==
+X-Gm-Message-State: APjAAAW9ONO+MWY5jMDkZDf+X9ocR8KDJe+YPYzrtFHCJQszr1cRSBrZ
+ T0XJbn/H71LkEGf2/uoJ7SmY+GqBzhs=
+X-Received: by 2002:a62:4ed1:: with SMTP id
+ c200mr26227581pfb.218.1566250719254; 
+ Mon, 19 Aug 2019 14:38:39 -0700 (PDT)
+Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
+ [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id d2sm13446951pjs.21.2019.08.19.14.38.38
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 19 Aug 2019 14:38:38 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Wed, 14 Aug 2019 15:27:36 -0500
-X-Mailer: git-send-email 1.8.3.1
-X-TM-AS-GCONF: 00
-x-cbid: 19081420-0036-0000-0000-00000AE4EA4E
-X-IBM-SpamModules-Scores: 
-X-IBM-SpamModules-Versions: BY=3.00011590; HX=3.00000242; KW=3.00000007;
- PH=3.00000004; SC=3.00000287; SDB=6.01246845; UDB=6.00658004; IPR=6.01028352; 
- MB=3.00028175; MTD=3.00000008; XFM=3.00000015; UTC=2019-08-14 20:27:42
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 19081420-0037-0000-0000-00004D02F95A
-Message-Id: <1565814456-1264-1-git-send-email-eajames@linux.ibm.com>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-08-14_07:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=1 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1906280000 definitions=main-1908140186
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 148.163.156.1
-Subject: [Qemu-devel] [RFC v2] hw/sd/aspeed_sdhci: New device
-X-BeenThere: qemu-devel@nongnu.org
+Date: Mon, 19 Aug 2019 14:37:21 -0700
+Message-Id: <20190819213755.26175-35-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20190819213755.26175-1-richard.henderson@linaro.org>
+References: <20190819213755.26175-1-richard.henderson@linaro.org>
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::543
+Subject: [Qemu-arm] [PATCH v2 34/68] target/arm: Convert Clear-Exclusive,
+ Barriers
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, andrew@aj.id.au,
- Eddie James <eajames@linux.ibm.com>, qemu-arm@nongnu.org, joel@jms.id.au,
- clg@kaod.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oTkNSJDlRrwi
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LnCPrb6J6VxG
 
-The Aspeed SOCs have two SD/MMC controllers. Add a device that
-encapsulates both of these controllers and models the Aspeed-specific
-registers and behavior.
-
-Tested by reading from mmcblk0 in Linux:
-qemu-system-arm -machine romulus-bmc -nographic -serial mon:stdio \
- -drive file=_tmp/flash-romulus,format=raw,if=mtd \
- -device sd-card,drive=sd0 -drive file=_tmp/kernel,format=raw,if=sd
-
-Signed-off-by: Eddie James <eajames@linux.ibm.com>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-This patch applies on top of Cedric's set of recent Aspeed changes. Therefore,
-I'm sending as an RFC rather than a patch.
+ target/arm/translate.c       | 122 +++++++++++++++--------------------
+ target/arm/a32-uncond.decode |  10 +++
+ target/arm/t32.decode        |  10 +++
+ 3 files changed, 73 insertions(+), 69 deletions(-)
 
-Changes since v1:
- - Move slot realize code into the Aspeed SDHCI realize function
- - Fix interrupt handling by creating input irqs and connecting them to the
-   slot irqs.
- - Removed card device creation code
-
- hw/arm/aspeed.c              |   1 -
- hw/arm/aspeed_soc.c          |  24 ++++++
- hw/sd/Makefile.objs          |   1 +
- hw/sd/aspeed_sdhci.c         | 190 +++++++++++++++++++++++++++++++++++++++++++
- include/hw/arm/aspeed_soc.h  |   3 +
- include/hw/sd/aspeed_sdhci.h |  35 ++++++++
- 6 files changed, 253 insertions(+), 1 deletion(-)
- create mode 100644 hw/sd/aspeed_sdhci.c
- create mode 100644 include/hw/sd/aspeed_sdhci.h
-
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 2574425..aeed5b6 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -480,7 +480,6 @@ static void aspeed_machine_class_init(ObjectClass *oc, void *data)
-     mc->desc = board->desc;
-     mc->init = aspeed_machine_init;
-     mc->max_cpus = ASPEED_CPUS_NUM;
--    mc->no_sdcard = 1;
-     mc->no_floppy = 1;
-     mc->no_cdrom = 1;
-     mc->no_parallel = 1;
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 8df96f2..a12f14a 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -22,6 +22,7 @@
- #include "qemu/error-report.h"
- #include "hw/i2c/aspeed_i2c.h"
- #include "net/net.h"
-+#include "sysemu/blockdev.h"
- 
- #define ASPEED_SOC_IOMEM_SIZE       0x00200000
- 
-@@ -62,6 +63,7 @@ static const hwaddr aspeed_soc_ast2500_memmap[] = {
-     [ASPEED_XDMA]   = 0x1E6E7000,
-     [ASPEED_ADC]    = 0x1E6E9000,
-     [ASPEED_SRAM]   = 0x1E720000,
-+    [ASPEED_SDHCI]  = 0x1E740000,
-     [ASPEED_GPIO]   = 0x1E780000,
-     [ASPEED_RTC]    = 0x1E781000,
-     [ASPEED_TIMER1] = 0x1E782000,
-@@ -100,6 +102,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
-     [ASPEED_XDMA]   = 0x1E6E7000,
-     [ASPEED_ADC]    = 0x1E6E9000,
-     [ASPEED_VIDEO]  = 0x1E700000,
-+    [ASPEED_SDHCI]  = 0x1E740000,
-     [ASPEED_GPIO]   = 0x1E780000,
-     [ASPEED_RTC]    = 0x1E781000,
-     [ASPEED_TIMER1] = 0x1E782000,
-@@ -146,6 +149,7 @@ static const int aspeed_soc_ast2400_irqmap[] = {
-     [ASPEED_ETH1]   = 2,
-     [ASPEED_ETH2]   = 3,
-     [ASPEED_XDMA]   = 6,
-+    [ASPEED_SDHCI]  = 26,
- };
- 
- #define aspeed_soc_ast2500_irqmap aspeed_soc_ast2400_irqmap
-@@ -163,6 +167,7 @@ static const int aspeed_soc_ast2600_irqmap[] = {
-     [ASPEED_SDMC]   = 0,
-     [ASPEED_SCU]    = 12,
-     [ASPEED_XDMA]   = 6,
-+    [ASPEED_SDHCI]  = 43,
-     [ASPEED_ADC]    = 46,
-     [ASPEED_GPIO]   = 40,
-     [ASPEED_RTC]    = 13,
-@@ -350,6 +355,15 @@ static void aspeed_soc_init(Object *obj)
-         sysbus_init_child_obj(obj, "fsi[*]", OBJECT(&s->fsi[0]),
-                               sizeof(s->fsi[0]), TYPE_ASPEED_FSI);
-     }
-+
-+    sysbus_init_child_obj(obj, "sdhci", OBJECT(&s->sdhci), sizeof(s->sdhci),
-+                          TYPE_ASPEED_SDHCI);
-+
-+    /* Init sd card slot class here so that they're under the correct parent */
-+    for (i = 0; i < ASPEED_SDHCI_NUM_SLOTS; ++i) {
-+        sysbus_init_child_obj(obj, "sdhci_slot[*]", OBJECT(&s->sdhci.slots[i]),
-+                              sizeof(s->sdhci.slots[i]), TYPE_SYSBUS_SDHCI);
-+    }
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index e268c5168d..6489bbc09c 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -10038,6 +10038,58 @@ static bool trans_SRS(DisasContext *s, arg_SRS *a)
+     return true;
  }
  
++/*
++ * Clear-Exclusive, Barriers
++ */
++
++static bool trans_CLREX(DisasContext *s, arg_CLREX *a)
++{
++    if (!ENABLE_ARCH_6K) {
++        return false;
++    }
++    gen_clrex(s);
++    return true;
++}
++
++static bool trans_DSB(DisasContext *s, arg_DSB *a)
++{
++    if (!s->thumb && !ENABLE_ARCH_7) {
++        return false;
++    }
++    tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
++    return true;
++}
++
++static bool trans_DMB(DisasContext *s, arg_DMB *a)
++{
++    return trans_DSB(s, NULL);
++}
++
++static bool trans_ISB(DisasContext *s, arg_ISB *a)
++{
++    /*
++     * We need to break the TB after this insn to execute
++     * self-modifying code correctly and also to take
++     * any pending interrupts immediately.
++     */
++    gen_goto_tb(s, 0, s->base.pc_next);
++    return true;
++}
++
++static bool trans_SB(DisasContext *s, arg_SB *a)
++{
++    if (!dc_isar_feature(aa32_sb, s)) {
++        return false;
++    }
++    /*
++     * TODO: There is no speculation barrier opcode
++     * for TCG; MB and end the TB instead.
++     */
++    tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
++    gen_goto_tb(s, 0, s->base.pc_next);
++    return true;
++}
++
  /*
-@@ -680,6 +694,16 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->fsi[0]), 0,
-                            aspeed_soc_get_irq(s, ASPEED_FSI1));
+  * Legacy decoder.
+  */
+@@ -10131,38 +10183,6 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                 s->base.is_jmp = DISAS_UPDATE;
+             }
+             return;
+-        } else if ((insn & 0x0fffff00) == 0x057ff000) {
+-            switch ((insn >> 4) & 0xf) {
+-            case 1: /* clrex */
+-                ARCH(6K);
+-                gen_clrex(s);
+-                return;
+-            case 4: /* dsb */
+-            case 5: /* dmb */
+-                ARCH(7);
+-                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
+-                return;
+-            case 6: /* isb */
+-                /* We need to break the TB after this insn to execute
+-                 * self-modifying code correctly and also to take
+-                 * any pending interrupts immediately.
+-                 */
+-                gen_goto_tb(s, 0, s->base.pc_next);
+-                return;
+-            case 7: /* sb */
+-                if ((insn & 0xf) || !dc_isar_feature(aa32_sb, s)) {
+-                    goto illegal_op;
+-                }
+-                /*
+-                 * TODO: There is no speculation barrier opcode
+-                 * for TCG; MB and end the TB instead.
+-                 */
+-                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
+-                gen_goto_tb(s, 0, s->base.pc_next);
+-                return;
+-            default:
+-                goto illegal_op;
+-            }
+         } else if ((insn & 0x0e000f00) == 0x0c000100) {
+             if (arm_dc_feature(s, ARM_FEATURE_IWMMXT)) {
+                 /* iWMMXt register transfer.  */
+@@ -10623,43 +10643,7 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
+                             gen_set_psr_im(s, offset, 0, imm);
+                         }
+                         break;
+-                    case 3: /* Special control operations.  */
+-                        if (!arm_dc_feature(s, ARM_FEATURE_V7) &&
+-                            !arm_dc_feature(s, ARM_FEATURE_M)) {
+-                            goto illegal_op;
+-                        }
+-                        op = (insn >> 4) & 0xf;
+-                        switch (op) {
+-                        case 2: /* clrex */
+-                            gen_clrex(s);
+-                            break;
+-                        case 4: /* dsb */
+-                        case 5: /* dmb */
+-                            tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
+-                            break;
+-                        case 6: /* isb */
+-                            /* We need to break the TB after this insn
+-                             * to execute self-modifying code correctly
+-                             * and also to take any pending interrupts
+-                             * immediately.
+-                             */
+-                            gen_goto_tb(s, 0, s->base.pc_next);
+-                            break;
+-                        case 7: /* sb */
+-                            if ((insn & 0xf) || !dc_isar_feature(aa32_sb, s)) {
+-                                goto illegal_op;
+-                            }
+-                            /*
+-                             * TODO: There is no speculation barrier opcode
+-                             * for TCG; MB and end the TB instead.
+-                             */
+-                            tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
+-                            gen_goto_tb(s, 0, s->base.pc_next);
+-                            break;
+-                        default:
+-                            goto illegal_op;
+-                        }
+-                        break;
++                    case 3: /* Special control operations, in decodetree */
+                     case 4: /* bxj, in decodetree */
+                         goto illegal_op;
+                     case 5: /* Exception return.  */
+diff --git a/target/arm/a32-uncond.decode b/target/arm/a32-uncond.decode
+index 3b961233e5..b077958cec 100644
+--- a/target/arm/a32-uncond.decode
++++ b/target/arm/a32-uncond.decode
+@@ -22,6 +22,7 @@
+ # All of those that have a COND field in insn[31:28] are in a32.decode
+ #
+ 
++&empty           !extern
+ &i               !extern imm
+ 
+ # Branch with Link and Exchange
+@@ -37,3 +38,12 @@ BLX_i            1111 101 . ........................          &i imm=%imm24h
+ 
+ RFE              1111 100 pu:2 0 w:1 1 rn:4 0000 1010 0000 0000   &rfe
+ SRS              1111 110 pu:2 1 w:1 0 1101 0000 0101 000 mode:5  &srs
++
++# Clear-Exclusive, Barriers
++
++# QEMU does not require the option field for the barriers.
++CLREX            1111 0101 0111 1111 1111 0000 0001 1111
++DSB              1111 0101 0111 1111 1111 0000 0100 ----
++DMB              1111 0101 0111 1111 1111 0000 0101 ----
++ISB              1111 0101 0111 1111 1111 0000 0110 ----
++SB               1111 0101 0111 1111 1111 0000 0111 0000
+diff --git a/target/arm/t32.decode b/target/arm/t32.decode
+index c8a8aeceee..18c268e712 100644
+--- a/target/arm/t32.decode
++++ b/target/arm/t32.decode
+@@ -305,6 +305,16 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 ....      @rdm
+       # of the space is "reserved hint, behaves as nop".
+       NOP        1111 0011 1010 1111 1000 0000 ---- ----
      }
 +
-+    /* SD/SDIO - set the reg address so slot memory mapping can be set up */
-+    s->sdhci.ioaddr = sc->info->memmap[ASPEED_SDHCI];
-+    object_property_set_bool(OBJECT(&s->sdhci), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
-+    }
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->sdhci), 0,
-+                       aspeed_soc_get_irq(s, ASPEED_SDHCI));
- }
- static Property aspeed_soc_properties[] = {
-     DEFINE_PROP_UINT32("num-cpus", AspeedSoCState, num_cpus, 0),
-diff --git a/hw/sd/Makefile.objs b/hw/sd/Makefile.objs
-index 0665727..a884c23 100644
---- a/hw/sd/Makefile.objs
-+++ b/hw/sd/Makefile.objs
-@@ -8,3 +8,4 @@ obj-$(CONFIG_MILKYMIST) += milkymist-memcard.o
- obj-$(CONFIG_OMAP) += omap_mmc.o
- obj-$(CONFIG_PXA2XX) += pxa2xx_mmci.o
- obj-$(CONFIG_RASPI) += bcm2835_sdhost.o
-+obj-$(CONFIG_ASPEED_SOC) += aspeed_sdhci.o
-diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
-new file mode 100644
-index 0000000..d1a05e9
---- /dev/null
-+++ b/hw/sd/aspeed_sdhci.c
-@@ -0,0 +1,190 @@
-+/*
-+ * Aspeed SD Host Controller
-+ * Eddie James <eajames@linux.ibm.com>
-+ *
-+ * Copyright (C) 2019 IBM Corp
-+ * SPDX-License-Identifer: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/error-report.h"
-+#include "hw/sd/aspeed_sdhci.h"
-+#include "qapi/error.h"
-+
-+#define ASPEED_SDHCI_INFO            0x00
-+#define  ASPEED_SDHCI_INFO_RESET     0x00030000
-+#define ASPEED_SDHCI_DEBOUNCE        0x04
-+#define  ASPEED_SDHCI_DEBOUNCE_RESET 0x00000005
-+#define ASPEED_SDHCI_BUS             0x08
-+#define ASPEED_SDHCI_SDIO_140        0x10
-+#define ASPEED_SDHCI_SDIO_148        0x18
-+#define ASPEED_SDHCI_SDIO_240        0x20
-+#define ASPEED_SDHCI_SDIO_248        0x28
-+#define ASPEED_SDHCI_WP_POL          0xec
-+#define ASPEED_SDHCI_CARD_DET        0xf0
-+#define ASPEED_SDHCI_IRQ_STAT        0xfc
-+
-+#define TO_REG(addr) ((addr) / sizeof(uint32_t))
-+
-+static uint64_t aspeed_sdhci_read(void *opaque, hwaddr addr, unsigned int size)
-+{
-+    uint32_t val = 0;
-+    AspeedSDHCIState *sdhci = opaque;
-+
-+    switch (addr) {
-+    case ASPEED_SDHCI_SDIO_140:
-+        val = (uint32_t)sdhci->slots[0].capareg;
-+        break;
-+    case ASPEED_SDHCI_SDIO_148:
-+        val = (uint32_t)sdhci->slots[0].maxcurr;
-+        break;
-+    case ASPEED_SDHCI_SDIO_240:
-+        val = (uint32_t)sdhci->slots[1].capareg;
-+        break;
-+    case ASPEED_SDHCI_SDIO_248:
-+        val = (uint32_t)sdhci->slots[1].maxcurr;
-+        break;
-+    default:
-+        if (addr < ASPEED_SDHCI_REG_SIZE) {
-+            val = sdhci->regs[TO_REG(addr)];
-+        }
++    # Miscelaneous control
++    {
++      CLREX      1111 0011 1011 1111 1000 1111 0010 1111
++      DSB        1111 0011 1011 1111 1000 1111 0100 ----
++      DMB        1111 0011 1011 1111 1000 1111 0101 ----
++      ISB        1111 0011 1011 1111 1000 1111 0110 ----
++      SB         1111 0011 1011 1111 1000 1111 0111 0000
 +    }
 +
-+    return (uint64_t)val;
-+}
-+
-+static void aspeed_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
-+                               unsigned int size)
-+{
-+    AspeedSDHCIState *sdhci = opaque;
-+
-+    switch (addr) {
-+    case ASPEED_SDHCI_SDIO_140:
-+        sdhci->slots[0].capareg = (uint64_t)(uint32_t)val;
-+        break;
-+    case ASPEED_SDHCI_SDIO_148:
-+        sdhci->slots[0].maxcurr = (uint64_t)(uint32_t)val;
-+        break;
-+    case ASPEED_SDHCI_SDIO_240:
-+        sdhci->slots[1].capareg = (uint64_t)(uint32_t)val;
-+        break;
-+    case ASPEED_SDHCI_SDIO_248:
-+        sdhci->slots[1].maxcurr = (uint64_t)(uint32_t)val;
-+        break;
-+    default:
-+        if (addr < ASPEED_SDHCI_REG_SIZE) {
-+            sdhci->regs[TO_REG(addr)] = (uint32_t)val;
-+        }
-+    }
-+}
-+
-+static const MemoryRegionOps aspeed_sdhci_ops = {
-+    .read = aspeed_sdhci_read,
-+    .write = aspeed_sdhci_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid.min_access_size = 4,
-+    .valid.max_access_size = 4,
-+};
-+
-+static void aspeed_sdhci_set_irq(void *opaque, int n, int level)
-+{
-+    AspeedSDHCIState *sdhci = opaque;
-+
-+    if (level) {
-+        sdhci->regs[TO_REG(ASPEED_SDHCI_IRQ_STAT)] |= BIT(n);
-+
-+        qemu_irq_raise(sdhci->irq);
-+    } else {
-+        sdhci->regs[TO_REG(ASPEED_SDHCI_IRQ_STAT)] &= ~BIT(n);
-+
-+        qemu_irq_lower(sdhci->irq);
-+    }
-+}
-+
-+static void aspeed_sdhci_realize(DeviceState *dev, Error **errp)
-+{
-+    Error *err = NULL;
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    AspeedSDHCIState *sdhci = ASPEED_SDHCI(dev);
-+
-+    /* Create input irqs for the slots */
-+    qdev_init_gpio_in_named_with_opaque(DEVICE(sbd), aspeed_sdhci_set_irq,
-+                                        sdhci, NULL, ASPEED_SDHCI_NUM_SLOTS);
-+
-+    for (int i = 0; i < ASPEED_SDHCI_NUM_SLOTS; ++i) {
-+        hwaddr slot_addr = sdhci->ioaddr + (0x100 * (i + 1));
-+        Object *sdhci_slot = OBJECT(&sdhci->slots[i]);
-+        SysBusDevice *sbd_slot = SYS_BUS_DEVICE(&sdhci->slots[i]);
-+
-+        object_property_set_int(sdhci_slot, 2, "sd-spec-version", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+
-+        object_property_set_uint(sdhci_slot, ASPEED_SDHCI_CAPABILITIES,
-+                                 "capareg", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+
-+        object_property_set_bool(sdhci_slot, true, "realized", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+
-+        sysbus_mmio_map(sbd_slot, 0, slot_addr);
-+
-+        sysbus_connect_irq(sbd_slot, 0, qdev_get_gpio_in(DEVICE(sbd), i));
-+    }
-+
-+    sysbus_init_irq(sbd, &sdhci->irq);
-+    memory_region_init_io(&sdhci->iomem, OBJECT(sdhci), &aspeed_sdhci_ops,
-+                          sdhci, TYPE_ASPEED_SDHCI, ASPEED_SDHCI_REG_SIZE);
-+    sysbus_init_mmio(sbd, &sdhci->iomem);
-+    sysbus_mmio_map(sbd, 0, sdhci->ioaddr);
-+}
-+
-+static void aspeed_sdhci_reset(DeviceState *dev)
-+{
-+    AspeedSDHCIState *sdhci = ASPEED_SDHCI(dev);
-+
-+    memset(sdhci->regs, 0, ASPEED_SDHCI_REG_SIZE);
-+    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] = ASPEED_SDHCI_INFO_RESET;
-+    sdhci->regs[TO_REG(ASPEED_SDHCI_DEBOUNCE)] = ASPEED_SDHCI_DEBOUNCE_RESET;
-+}
-+
-+static const VMStateDescription vmstate_aspeed_sdhci = {
-+    .name = TYPE_ASPEED_SDHCI,
-+    .version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, AspeedSDHCIState, ASPEED_SDHCI_NUM_REGS),
-+        VMSTATE_END_OF_LIST(),
-+    },
-+};
-+
-+static void aspeed_sdhci_class_init(ObjectClass *classp, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(classp);
-+
-+    dc->realize = aspeed_sdhci_realize;
-+    dc->reset = aspeed_sdhci_reset;
-+    dc->vmsd = &vmstate_aspeed_sdhci;
-+}
-+
-+static TypeInfo aspeed_sdhci_info = {
-+    .name          = TYPE_ASPEED_SDHCI,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(AspeedSDHCIState),
-+    .class_init    = aspeed_sdhci_class_init,
-+};
-+
-+static void aspeed_sdhci_register_types(void)
-+{
-+    type_register_static(&aspeed_sdhci_info);
-+}
-+
-+type_init(aspeed_sdhci_register_types)
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 429d7e7..3ddba3a 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -29,6 +29,7 @@
- #include "hw/misc/aspeed_pwm.h"
- #include "hw/misc/aspeed_lpc.h"
- #include "hw/misc/aspeed_fsi.h"
-+#include "hw/sd/aspeed_sdhci.h"
- 
- #define ASPEED_SPIS_NUM  2
- #define ASPEED_WDTS_NUM  4
-@@ -62,6 +63,7 @@ typedef struct AspeedSoCState {
-     AspeedPWMState pwm;
-     AspeedLPCState lpc;
-     AspeedFsiState fsi[2];
-+    AspeedSDHCIState sdhci;
- } AspeedSoCState;
- 
- #define TYPE_ASPEED_SOC "aspeed-soc"
-@@ -107,6 +109,7 @@ enum {
-     ASPEED_ADC,
-     ASPEED_VIDEO,
-     ASPEED_SRAM,
-+    ASPEED_SDHCI,
-     ASPEED_GPIO,
-     ASPEED_RTC,
-     ASPEED_TIMER1,
-diff --git a/include/hw/sd/aspeed_sdhci.h b/include/hw/sd/aspeed_sdhci.h
-new file mode 100644
-index 0000000..ac5482f
---- /dev/null
-+++ b/include/hw/sd/aspeed_sdhci.h
-@@ -0,0 +1,35 @@
-+/*
-+ * Aspeed SD Host Controller
-+ * Eddie James <eajames@linux.ibm.com>
-+ *
-+ * Copyright (C) 2019 IBM Corp
-+ * SPDX-License-Identifer: GPL-2.0-or-later
-+ */
-+
-+#ifndef ASPEED_SDHCI_H
-+#define ASPEED_SDHCI_H
-+
-+#include "hw/sd/sdhci.h"
-+
-+#define TYPE_ASPEED_SDHCI "aspeed.sdhci"
-+#define ASPEED_SDHCI(obj) OBJECT_CHECK(AspeedSDHCIState, (obj), \
-+                                       TYPE_ASPEED_SDHCI)
-+
-+#define ASPEED_SDHCI_CAPABILITIES 0x01E80080
-+#define ASPEED_SDHCI_NUM_SLOTS    2
-+#define ASPEED_SDHCI_NUM_REGS     (ASPEED_SDHCI_REG_SIZE / sizeof(uint32_t))
-+#define ASPEED_SDHCI_REG_SIZE     0x100
-+
-+typedef struct AspeedSDHCIState {
-+    SysBusDevice parent;
-+
-+    SDHCIState slots[ASPEED_SDHCI_NUM_SLOTS];
-+
-+    hwaddr ioaddr;
-+    MemoryRegion iomem;
-+    qemu_irq irq;
-+
-+    uint32_t regs[ASPEED_SDHCI_NUM_REGS];
-+} AspeedSDHCIState;
-+
-+#endif /* ASPEED_SDHCI_H */
+     # Note that the v7m insn overlaps both the normal and banked insn.
+     {
+       MRS_bank   1111 0011 111 r:1 .... 1000 rd:4   001. 0000  \
 -- 
-1.8.3.1
+2.17.1
 

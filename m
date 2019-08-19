@@ -1,103 +1,103 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp3177776wrs;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp3177778wrs;
         Mon, 19 Aug 2019 14:48:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwoPd/F+Fvnaoc41QhiDsDZNxHQw7pX6HXLbjnbThc4UEa0sxJt+7hbsWxIuv3sGCJrneoK
-X-Received: by 2002:a37:a20f:: with SMTP id l15mr23459653qke.212.1566251310215;
+X-Google-Smtp-Source: APXvYqz7Y01VDEktN/Cn2V9wBVS1vdsV9OaJEwOLOQ+f2Nh1alUOR9Shgr3es8EHqnTymJPufoiT
+X-Received: by 2002:ac8:33a6:: with SMTP id c35mr23499855qtb.34.1566251310254;
         Mon, 19 Aug 2019 14:48:30 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1566251310; cv=none;
         d=google.com; s=arc-20160816;
-        b=NtM4sIfjDULBypsX4j2Moe4vDrYj2qsoqrWHan5lAAErC+mIUCdvGzFXFmYj4YbcWI
-         B2TWYv0RNl2phK1EvKa6SE5J0xvw0TWGv3TB8VLT7BOM8+Tzj+fNQ/80rOCH6c8gARDJ
-         LtvT/Vwpjer4lZmXdvk0LYbxqHT+BlP9RX4NXv2JoPl2N+rw+R3OkpVzkSu/u2RQXGyu
-         sy+HSuIXLEHV7w3cvTL1Vp6cwrWpo1jXOSE0nWnF+8zHS6LY8BwO+iq3wE4ZRIWG1tS3
-         VaPjMbyw/fE0Gng4vCOcGArh9XF+paYy/p9Le7zBvGNA+DCbfcy48//JK3rSPAQyH06c
-         B6Rg==
+        b=dC32eOaR/aZUGY49e3b/6EnXYS7J9FbjwBMFNunLA0aRoY12TRses9hK6ZliT56bMg
+         sAZNFq6vvNggEh1y2dO+9z5Wq8mGgS2tlAm9icV+z8rn5jDb3RDWDWxpaxcB2nxqYMZv
+         +RXMyxlqL/LJWKUXpLiXO4iARSZl8eq7KZGgicj3EjIrcoD4fhFZuA6jD9AKaPhASizw
+         z2WenWYX4XkiWt2UPA1yin+PYnwl1HCpyNh3x2GDdEYP8etOmInkcuDYaVuTLhWShNFC
+         oaQ1N4ndyWlycCS99XVAjCG4enptvn+9r0sJba055suZoLqAoRvLLpSwuWpLntF0DryT
+         CkIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=z6bTZIJUuD2Rb2udZZO8tN325lpohcam+cQYkXY7q0k=;
-        b=k2dL5Rh7URc9f1YvO36N2bAw9Z5J8bY+KDNEtFIl5YJpH3LWvR1KY3+0kMZoFmwL8/
-         mKFmRFRjamZWZygWM23Jp6kjTCnuauGa+0yuYpIPcOmBKTenvEY7452lJfrMkuhUdsus
-         pNV3iiLUC5iHRIihgyX3HCRbyQ6oj09Bgpl2S0kJZksHXAzzXico0bEzK2eCbZ+Z9HD+
-         gCd3zzcqUwv+lE8GBb+XiEcsWY7KLDLqp1D1yLT0I0X6ERBOu1TvqCvAtJsp/yVAHhLn
-         w/u+2HOsEPFAYI9whesUb2+1s5eXyLfYZNedsIqylUy37uQscWGw+R3kLCO2Y7KiIgfZ
-         M/QQ==
+        bh=yWfqa8TMTPmEVG2X5BVZWSeiOaOglB2RvcOmLd9+7CM=;
+        b=emnkczBwEhSOV09aFdEJ7nbh+rDS41i4phkhBXFArVMGUvu/RA7VcB1O9pp0KmVVGl
+         boy1BnoK8OnKJRok4AbHMpMd1JlnQVnRQDKZd6ZrkP4HVdnfPyxB1+BiBzYqy0AbTeH6
+         LbLiblrFXtF5rdSzudyCnYmG7ShPI6LeOSEmmdJyVHQVn5AT/BGZW2q1gVwyUm42DbF9
+         HWDgcoYNIAZhEaGSdD4j/5fAL2MBi+2gOdDuXGOnjajtnBPTClWdosz+HH68koxHc3PH
+         rCOodYmzlXzpZwCsthtBHw6RJJT31wJDhDXX0sdi3LI/BeNqeeeCBY3rjZAxTwaK3Drn
+         HCFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YZ0YyngK;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Q8fnc6mW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u18si9349827qkk.194.2019.08.19.14.48.30
+        by mx.google.com with ESMTPS id z65si9099253qkd.207.2019.08.19.14.48.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 19 Aug 2019 14:48:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YZ0YyngK;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Q8fnc6mW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59080 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59078 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hzpVt-0005FM-MR
+	id 1hzpVs-0005FL-Mi
 	for alex.bennee@linaro.org; Mon, 19 Aug 2019 17:48:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58694)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58971)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1hzpLx-0001S2-A7
- for qemu-arm@nongnu.org; Mon, 19 Aug 2019 17:38:14 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1hzpMB-0001sK-Un
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2019 17:38:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1hzpLw-00065F-8M
- for qemu-arm@nongnu.org; Mon, 19 Aug 2019 17:38:13 -0400
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:38311)
+ (envelope-from <richard.henderson@linaro.org>) id 1hzpM9-0006EF-90
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2019 17:38:27 -0400
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:35167)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1hzpLw-00064Y-2Y
- for qemu-arm@nongnu.org; Mon, 19 Aug 2019 17:38:12 -0400
-Received: by mail-pl1-x642.google.com with SMTP id m12so1590222plt.5
- for <qemu-arm@nongnu.org>; Mon, 19 Aug 2019 14:38:12 -0700 (PDT)
+ id 1hzpM8-0006DQ-UY
+ for qemu-arm@nongnu.org; Mon, 19 Aug 2019 17:38:25 -0400
+Received: by mail-pl1-x642.google.com with SMTP id gn20so1589270plb.2
+ for <qemu-arm@nongnu.org>; Mon, 19 Aug 2019 14:38:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=z6bTZIJUuD2Rb2udZZO8tN325lpohcam+cQYkXY7q0k=;
- b=YZ0YyngK2P7R9z4uAceUFNeutCFwqq8i7vHldiAteQsa2asCHVcg48IqB0ep869q68
- WLkmJMH3d9AIM/6t3LdqVsLoNan6DkrZ5bP5w0oWMU9dNJPzn0NceZRiJkn4fA0W7t9O
- VqGnq6tJFsJS8yAZTutn/9id0o2UvV7gLg5w24eEoXo/Jaw2B3RUlETz/b3mgkiUIkxg
- Pv5V2nc0CJZfig4FPjVa19zF7nxIaNayil+c2ucKqFf2SsqmklGyNSqj/u31Vw2DtjFt
- /YBMIXkSMJbhGIqqXP9cCMh7cdqcTG+K4swU2m2hb3JeyKUGvsFG18f0v96DbKCu8d0d
- DOEg==
+ bh=yWfqa8TMTPmEVG2X5BVZWSeiOaOglB2RvcOmLd9+7CM=;
+ b=Q8fnc6mWNsvzafvHuRRiH7WRGnGgNMAkY2hGaWhPbytlfZ3F3ykJuBopZzHWh81CIF
+ VdbWIYqlDIoRhoDo44B4chLFKH5VurFI2/0gxYy7PfFPvJjaDsi/Y+n/QFr9pkH+CaIZ
+ iYrYBMdob+9m2Iu4p8i6QXai11Nd8Niy/vLspXgX1rqmE/xdBht/Mn4qitA4zffvAZUX
+ W+fcvlg7GJqsYR3Zp+XZ5uUxPYV8dncnDh0d4OQ+awdJoiYvNWpQhGAjz4WUEi0F6g7c
+ pZLMDEcCCYU/GSSV5UweNaPFstDEzAXU3vt27D6OICreJc4J51fngPIgAe2cIFQ7X4tD
+ e11Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=z6bTZIJUuD2Rb2udZZO8tN325lpohcam+cQYkXY7q0k=;
- b=hv4kfn3aZb3gHDaIIPzORGBGg4gNh1uDDD800i1cwXbMMr/YwFsKgjLyz/fHFfmPGD
- rCjRoQF+7zcviUzyID84xjJnn65R82gbMWoF2hWLGVWaafHzulyWaPfauBnI/yL2h6/y
- WzVe/RzFMh9peWbBVjMePa++dOKbo0EOByzsNI2/KuMXVKEZz7hnkFpJ6L7VAu0UKD9Y
- /Lz4yIKecNniE5cCfVxzD6brWN7sE8t8YclzEMXmQ/svIHGXjXyek9M7OYOWRgA2D7AE
- KaOJ0KplDnTDaiwuryIytoiNONa+OCn43AKn7csE0nnFgJmE09JJ4tE5HX072nHYbuWo
- cjeA==
-X-Gm-Message-State: APjAAAVJ9mArPkxnlau4WJeMZU7m4u3J+CX+aY0fIx6AxpyOjXMPbBcM
- lzcTLow5vbf4PqZNXyysaptgGQ==
-X-Received: by 2002:a17:902:3003:: with SMTP id
- u3mr10413251plb.161.1566250691131; 
- Mon, 19 Aug 2019 14:38:11 -0700 (PDT)
+ bh=yWfqa8TMTPmEVG2X5BVZWSeiOaOglB2RvcOmLd9+7CM=;
+ b=SrdtUlMXqAH1ucpfzYcyoyDKiZ9u1Ayyw83bfH93a/cl5EYDzM8uSROOiD9pio4lk8
+ X/KWcQ0g7w4nyUijBpK+8fB0yv2L/olUFDFbtWqgJ5jl8Ole6ALPDinCkkGwYgpE4qPe
+ yHubiJYZg1X82kkuYnntwgZ3RryZYxeIlovFbVLc2923MCGbCugbQxwmAmNfvvM5yKKd
+ rDYFCEUFKEwnANj3BAHjbaFEVEoERVoROIgVqjSuNIOrsuDypE89J6zH0tccR5PxO2aH
+ 7vO08OtcEZOgyh3N3mcFjMc/lpeQ6vFid3Sz23dFlxuqjDp1iA7W0m+0U7/m0Cf2x5tt
+ xXmQ==
+X-Gm-Message-State: APjAAAVSHtYfK2U7Q2SmpVtj8J3/N80b3YWOax/lYfU3+1D5chj/qxqi
+ BmFyKHdiQ+t6LzqdDcw/q+MYR4kKqhs=
+X-Received: by 2002:a17:902:bb81:: with SMTP id
+ m1mr25107582pls.125.1566250703839; 
+ Mon, 19 Aug 2019 14:38:23 -0700 (PDT)
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
  [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id d2sm13446951pjs.21.2019.08.19.14.38.09
+ by smtp.gmail.com with ESMTPSA id d2sm13446951pjs.21.2019.08.19.14.38.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Aug 2019 14:38:10 -0700 (PDT)
+ Mon, 19 Aug 2019 14:38:23 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Mon, 19 Aug 2019 14:36:58 -0700
-Message-Id: <20190819213755.26175-12-richard.henderson@linaro.org>
+Date: Mon, 19 Aug 2019 14:37:08 -0700
+Message-Id: <20190819213755.26175-22-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190819213755.26175-1-richard.henderson@linaro.org>
 References: <20190819213755.26175-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 2607:f8b0:4864:20::642
-Subject: [Qemu-arm] [PATCH v2 11/68] target/arm: Simplify op_smlawx for
- SMLAW*
+Subject: [Qemu-arm] [PATCH v2 21/68] target/arm: Convert Synchronization
+ primitives
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,53 +112,731 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CtWFc8lK0Hip
-
-By shifting the 16-bit input left by 16, we can align the desired
-portion of the 48-bit product and use tcg_gen_muls2_i32.
+X-TUID: g1Yb+GeyTQ0v
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ target/arm/translate.c | 560 ++++++++++++++++++++++-------------------
+ target/arm/a32.decode  |  48 ++++
+ target/arm/t32.decode  |  46 ++++
+ 3 files changed, 396 insertions(+), 258 deletions(-)
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 8557ef831f..9a2fb7d3aa 100644
+index f7c4db872c..3b0998444d 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -8213,7 +8213,6 @@ DO_SMLAX(SMLALTT, 2, 1, 1)
- static bool op_smlawx(DisasContext *s, arg_rrrr *a, bool add, bool mt)
- {
-     TCGv_i32 t0, t1;
--    TCGv_i64 t64;
+@@ -8823,6 +8823,302 @@ DO_LDST(STRH, store, MO_UW)
  
-     if (!ENABLE_ARCH_5TE) {
-         return false;
-@@ -8221,16 +8220,17 @@ static bool op_smlawx(DisasContext *s, arg_rrrr *a, bool add, bool mt)
+ #undef DO_LDST
  
-     t0 = load_reg(s, a->rn);
-     t1 = load_reg(s, a->rm);
-+    /*
-+     * Since the nominal result is product<47:16>, shift the 16-bit
-+     * input up by 16 bits, so that the result is at product<63:32>.
-+     */
-     if (mt) {
--        tcg_gen_sari_i32(t1, t1, 16);
-+        tcg_gen_andi_i32(t1, t1, 0xffff0000);
-     } else {
--        gen_sxth(t1);
-+        tcg_gen_shli_i32(t1, t1, 16);
-     }
--    t64 = gen_muls_i64_i32(t0, t1);
--    tcg_gen_shri_i64(t64, t64, 16);
--    t1 = tcg_temp_new_i32();
--    tcg_gen_extrl_i64_i32(t1, t64);
--    tcg_temp_free_i64(t64);
-+    tcg_gen_muls2_i32(t0, t1, t0, t1);
-+    tcg_temp_free_i32(t0);
-     if (add) {
-         t0 = load_reg(s, a->ra);
-         gen_helper_add_setq(t1, cpu_env, t1, t0);
++/*
++ * Synchronization primitives
++ */
++
++static bool op_swp(DisasContext *s, arg_SWP *a, TCGMemOp opc)
++{
++    TCGv_i32 addr, tmp;
++    TCGv taddr;
++
++    opc |= s->be_data;
++    addr = load_reg(s, a->rn);
++    taddr = gen_aa32_addr(s, addr, opc);
++    tcg_temp_free_i32(addr);
++
++    tmp = load_reg(s, a->rt2);
++    tcg_gen_atomic_xchg_i32(tmp, taddr, tmp, get_mem_index(s), opc);
++    tcg_temp_free(taddr);
++
++    store_reg(s, a->rt, tmp);
++    return true;
++}
++
++static bool trans_SWP(DisasContext *s, arg_SWP *a)
++{
++    return op_swp(s, a, MO_UL | MO_ALIGN);
++}
++
++static bool trans_SWPB(DisasContext *s, arg_SWP *a)
++{
++    return op_swp(s, a, MO_UB);
++}
++
++/*
++ * Load/Store Exclusive and Load-Acquire/Store-Release
++ */
++
++static bool op_strex(DisasContext *s, arg_STREX *a, TCGMemOp mop, bool rel)
++{
++    TCGv_i32 addr;
++
++    if (rel) {
++        tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
++    }
++
++    addr = tcg_temp_local_new_i32();
++    load_reg_var(s, addr, a->rn);
++    tcg_gen_addi_i32(addr, addr, a->imm);
++
++    gen_store_exclusive(s, a->rd, a->rt, a->rt2, addr, mop);
++    tcg_temp_free_i32(addr);
++    return true;
++}
++
++static bool trans_STREX(DisasContext *s, arg_STREX *a)
++{
++    if (!ENABLE_ARCH_6) {
++        return false;
++    }
++    return op_strex(s, a, MO_32, false);
++}
++
++static bool trans_STREXD_a32(DisasContext *s, arg_STREX *a)
++{
++    if (!ENABLE_ARCH_6K || (a->rt & 1)) {
++        return false;
++    }
++    a->rt2 = a->rt + 1;
++    return op_strex(s, a, MO_64, false);
++}
++
++static bool trans_STREXD_t32(DisasContext *s, arg_STREX *a)
++{
++    return op_strex(s, a, MO_64, false);
++}
++
++static bool trans_STREXB(DisasContext *s, arg_STREX *a)
++{
++    if (!ENABLE_ARCH_6K) {
++        return false;
++    }
++    return op_strex(s, a, MO_8, false);
++}
++
++static bool trans_STREXH(DisasContext *s, arg_STREX *a)
++{
++    if (!ENABLE_ARCH_6K) {
++        return false;
++    }
++    return op_strex(s, a, MO_16, false);
++}
++
++static bool trans_STLEX(DisasContext *s, arg_STREX *a)
++{
++    if (!ENABLE_ARCH_8) {
++        return false;
++    }
++    return op_strex(s, a, MO_32, true);
++}
++
++static bool trans_STLEXD_a32(DisasContext *s, arg_STREX *a)
++{
++    if (!ENABLE_ARCH_8 || (a->rt & 1)) {
++        return false;
++    }
++    a->rt2 = a->rt + 1;
++    return op_strex(s, a, MO_64, true);
++}
++
++static bool trans_STLEXD_t32(DisasContext *s, arg_STREX *a)
++{
++    if (!ENABLE_ARCH_8) {
++        return false;
++    }
++    return op_strex(s, a, MO_64, true);
++}
++
++static bool trans_STLEXB(DisasContext *s, arg_STREX *a)
++{
++    if (!ENABLE_ARCH_8) {
++        return false;
++    }
++    return op_strex(s, a, MO_8, true);
++}
++
++static bool trans_STLEXH(DisasContext *s, arg_STREX *a)
++{
++    if (!ENABLE_ARCH_8) {
++        return false;
++    }
++    return op_strex(s, a, MO_16, true);
++}
++
++static bool op_stl(DisasContext *s, arg_STL *a, TCGMemOp mop)
++{
++    TCGv_i32 addr, tmp;
++
++    if (!ENABLE_ARCH_8) {
++        return false;
++    }
++    addr = load_reg(s, a->rn);
++
++    tmp = load_reg(s, a->rt);
++    tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
++    gen_aa32_st_i32(s, tmp, addr, get_mem_index(s), mop | s->be_data);
++    disas_set_da_iss(s, mop, a->rt | ISSIsAcqRel | ISSIsWrite);
++
++    tcg_temp_free_i32(tmp);
++    tcg_temp_free_i32(addr);
++    return true;
++}
++
++static bool trans_STL(DisasContext *s, arg_STL *a)
++{
++    return op_stl(s, a, MO_UL);
++}
++
++static bool trans_STLB(DisasContext *s, arg_STL *a)
++{
++    return op_stl(s, a, MO_UB);
++}
++
++static bool trans_STLH(DisasContext *s, arg_STL *a)
++{
++    return op_stl(s, a, MO_UW);
++}
++
++static bool op_ldrex(DisasContext *s, arg_LDREX *a, TCGMemOp mop, bool acq)
++{
++    TCGv_i32 addr;
++
++    addr = tcg_temp_local_new_i32();
++    load_reg_var(s, addr, a->rn);
++    tcg_gen_addi_i32(addr, addr, a->imm);
++
++    gen_load_exclusive(s, a->rt, a->rt2, addr, mop);
++    tcg_temp_free_i32(addr);
++
++    if (acq) {
++        tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
++    }
++    return true;
++}
++
++static bool trans_LDREX(DisasContext *s, arg_LDREX *a)
++{
++    if (!ENABLE_ARCH_6) {
++        return false;
++    }
++    return op_ldrex(s, a, MO_32, false);
++}
++
++static bool trans_LDREXD_a32(DisasContext *s, arg_LDREX *a)
++{
++    if (!ENABLE_ARCH_6K || (a->rt & 1)) {
++        return false;
++    }
++    a->rt2 = a->rt + 1;
++    return op_ldrex(s, a, MO_64, false);
++}
++
++static bool trans_LDREXD_t32(DisasContext *s, arg_LDREX *a)
++{
++    return op_ldrex(s, a, MO_64, false);
++}
++
++static bool trans_LDREXB(DisasContext *s, arg_LDREX *a)
++{
++    if (!ENABLE_ARCH_6K) {
++        return false;
++    }
++    return op_ldrex(s, a, MO_8, false);
++}
++
++static bool trans_LDREXH(DisasContext *s, arg_LDREX *a)
++{
++    if (!ENABLE_ARCH_6K) {
++        return false;
++    }
++    return op_ldrex(s, a, MO_16, false);
++}
++
++static bool trans_LDAEX(DisasContext *s, arg_LDREX *a)
++{
++    if (!ENABLE_ARCH_8) {
++        return false;
++    }
++    return op_ldrex(s, a, MO_32, true);
++}
++
++static bool trans_LDAEXD_a32(DisasContext *s, arg_LDREX *a)
++{
++    if (!ENABLE_ARCH_8 || (a->rt & 1)) {
++        return false;
++    }
++    a->rt2 = a->rt + 1;
++    return op_ldrex(s, a, MO_64, true);
++}
++
++static bool trans_LDAEXD_t32(DisasContext *s, arg_LDREX *a)
++{
++    if (!ENABLE_ARCH_8) {
++        return false;
++    }
++    return op_ldrex(s, a, MO_64, true);
++}
++
++static bool trans_LDAEXB(DisasContext *s, arg_LDREX *a)
++{
++    if (!ENABLE_ARCH_8) {
++        return false;
++    }
++    return op_ldrex(s, a, MO_8, true);
++}
++
++static bool trans_LDAEXH(DisasContext *s, arg_LDREX *a)
++{
++    if (!ENABLE_ARCH_8) {
++        return false;
++    }
++    return op_ldrex(s, a, MO_16, true);
++}
++
++static bool op_lda(DisasContext *s, arg_LDA *a, TCGMemOp mop)
++{
++    TCGv_i32 addr, tmp;
++
++    if (!ENABLE_ARCH_8) {
++        return false;
++    }
++    addr = load_reg(s, a->rn);
++
++    tmp = tcg_temp_new_i32();
++    gen_aa32_ld_i32(s, tmp, addr, get_mem_index(s), mop | s->be_data);
++    disas_set_da_iss(s, mop, a->rt | ISSIsAcqRel);
++    tcg_temp_free_i32(addr);
++
++    store_reg(s, a->rt, tmp);
++    tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
++    return true;
++}
++
++static bool trans_LDA(DisasContext *s, arg_LDA *a)
++{
++    return op_lda(s, a, MO_UL);
++}
++
++static bool trans_LDAB(DisasContext *s, arg_LDA *a)
++{
++    return op_lda(s, a, MO_UB);
++}
++
++static bool trans_LDAH(DisasContext *s, arg_LDA *a)
++{
++    return op_lda(s, a, MO_UW);
++}
++
+ /*
+  * Legacy decoder.
+  */
+@@ -9118,172 +9414,8 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+         case 0x0:
+         case 0x1:
+             /* multiplies, extra load/stores */
+-            sh = (insn >> 5) & 3;
+-            if (sh == 0) {
+-                if (op1 == 0x0) {
+-                    /* Multiply and multiply accumulate.  */
+-                    /* All done in decodetree.  Reach here for illegal ops.  */
+-                    goto illegal_op;
+-                } else {
+-                    rn = (insn >> 16) & 0xf;
+-                    rd = (insn >> 12) & 0xf;
+-                    if (insn & (1 << 23)) {
+-                        /* load/store exclusive */
+-                        bool is_ld = extract32(insn, 20, 1);
+-                        bool is_lasr = !extract32(insn, 8, 1);
+-                        int op2 = (insn >> 8) & 3;
+-                        op1 = (insn >> 21) & 0x3;
+-
+-                        switch (op2) {
+-                        case 0: /* lda/stl */
+-                            if (op1 == 1) {
+-                                goto illegal_op;
+-                            }
+-                            ARCH(8);
+-                            break;
+-                        case 1: /* reserved */
+-                            goto illegal_op;
+-                        case 2: /* ldaex/stlex */
+-                            ARCH(8);
+-                            break;
+-                        case 3: /* ldrex/strex */
+-                            if (op1) {
+-                                ARCH(6K);
+-                            } else {
+-                                ARCH(6);
+-                            }
+-                            break;
+-                        }
+-
+-                        addr = tcg_temp_local_new_i32();
+-                        load_reg_var(s, addr, rn);
+-
+-                        if (is_lasr && !is_ld) {
+-                            tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
+-                        }
+-
+-                        if (op2 == 0) {
+-                            if (is_ld) {
+-                                tmp = tcg_temp_new_i32();
+-                                switch (op1) {
+-                                case 0: /* lda */
+-                                    gen_aa32_ld32u_iss(s, tmp, addr,
+-                                                       get_mem_index(s),
+-                                                       rd | ISSIsAcqRel);
+-                                    break;
+-                                case 2: /* ldab */
+-                                    gen_aa32_ld8u_iss(s, tmp, addr,
+-                                                      get_mem_index(s),
+-                                                      rd | ISSIsAcqRel);
+-                                    break;
+-                                case 3: /* ldah */
+-                                    gen_aa32_ld16u_iss(s, tmp, addr,
+-                                                       get_mem_index(s),
+-                                                       rd | ISSIsAcqRel);
+-                                    break;
+-                                default:
+-                                    abort();
+-                                }
+-                                store_reg(s, rd, tmp);
+-                            } else {
+-                                rm = insn & 0xf;
+-                                tmp = load_reg(s, rm);
+-                                switch (op1) {
+-                                case 0: /* stl */
+-                                    gen_aa32_st32_iss(s, tmp, addr,
+-                                                      get_mem_index(s),
+-                                                      rm | ISSIsAcqRel);
+-                                    break;
+-                                case 2: /* stlb */
+-                                    gen_aa32_st8_iss(s, tmp, addr,
+-                                                     get_mem_index(s),
+-                                                     rm | ISSIsAcqRel);
+-                                    break;
+-                                case 3: /* stlh */
+-                                    gen_aa32_st16_iss(s, tmp, addr,
+-                                                      get_mem_index(s),
+-                                                      rm | ISSIsAcqRel);
+-                                    break;
+-                                default:
+-                                    abort();
+-                                }
+-                                tcg_temp_free_i32(tmp);
+-                            }
+-                        } else if (is_ld) {
+-                            switch (op1) {
+-                            case 0: /* ldrex */
+-                                gen_load_exclusive(s, rd, 15, addr, 2);
+-                                break;
+-                            case 1: /* ldrexd */
+-                                gen_load_exclusive(s, rd, rd + 1, addr, 3);
+-                                break;
+-                            case 2: /* ldrexb */
+-                                gen_load_exclusive(s, rd, 15, addr, 0);
+-                                break;
+-                            case 3: /* ldrexh */
+-                                gen_load_exclusive(s, rd, 15, addr, 1);
+-                                break;
+-                            default:
+-                                abort();
+-                            }
+-                        } else {
+-                            rm = insn & 0xf;
+-                            switch (op1) {
+-                            case 0:  /*  strex */
+-                                gen_store_exclusive(s, rd, rm, 15, addr, 2);
+-                                break;
+-                            case 1: /*  strexd */
+-                                gen_store_exclusive(s, rd, rm, rm + 1, addr, 3);
+-                                break;
+-                            case 2: /*  strexb */
+-                                gen_store_exclusive(s, rd, rm, 15, addr, 0);
+-                                break;
+-                            case 3: /* strexh */
+-                                gen_store_exclusive(s, rd, rm, 15, addr, 1);
+-                                break;
+-                            default:
+-                                abort();
+-                            }
+-                        }
+-                        tcg_temp_free_i32(addr);
+-
+-                        if (is_lasr && is_ld) {
+-                            tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
+-                        }
+-                    } else if ((insn & 0x00300f00) == 0) {
+-                        /* 0bcccc_0001_0x00_xxxx_xxxx_0000_1001_xxxx
+-                        *  - SWP, SWPB
+-                        */
+-
+-                        TCGv taddr;
+-                        TCGMemOp opc = s->be_data;
+-
+-                        rm = (insn) & 0xf;
+-
+-                        if (insn & (1 << 22)) {
+-                            opc |= MO_UB;
+-                        } else {
+-                            opc |= MO_UL | MO_ALIGN;
+-                        }
+-
+-                        addr = load_reg(s, rn);
+-                        taddr = gen_aa32_addr(s, addr, opc);
+-                        tcg_temp_free_i32(addr);
+-
+-                        tmp = load_reg(s, rm);
+-                        tcg_gen_atomic_xchg_i32(tmp, taddr, tmp,
+-                                                get_mem_index(s), opc);
+-                        tcg_temp_free(taddr);
+-                        store_reg(s, rd, tmp);
+-                    } else {
+-                        goto illegal_op;
+-                    }
+-                }
+-            } else {
+-                /* Extra load/store (register) instructions */
+-                /* All done in decodetree.  Reach here for illegal ops.  */
+-                goto illegal_op;
+-            }
++            /* All done in decodetree.  Reach here for illegal ops.  */
++            goto illegal_op;
+             break;
+         case 0x4:
+         case 0x5:
+@@ -9932,15 +10064,8 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
+                     }
+                     goto illegal_op;
+                 }
+-                addr = tcg_temp_local_new_i32();
+-                load_reg_var(s, addr, rn);
+-                tcg_gen_addi_i32(addr, addr, (insn & 0xff) << 2);
+-                if (insn & (1 << 20)) {
+-                    gen_load_exclusive(s, rs, 15, addr, 2);
+-                } else {
+-                    gen_store_exclusive(s, rd, rs, 15, addr, 2);
+-                }
+-                tcg_temp_free_i32(addr);
++                /* Load/store exclusive, in decodetree */
++                goto illegal_op;
+             } else if ((insn & (7 << 5)) == 0) {
+                 /* Table Branch.  */
+                 addr = load_reg(s, rn);
+@@ -9962,89 +10087,8 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
+                 tcg_gen_addi_i32(tmp, tmp, read_pc(s));
+                 store_reg(s, 15, tmp);
+             } else {
+-                bool is_lasr = false;
+-                bool is_ld = extract32(insn, 20, 1);
+-                int op2 = (insn >> 6) & 0x3;
+-                op = (insn >> 4) & 0x3;
+-                switch (op2) {
+-                case 0:
+-                    goto illegal_op;
+-                case 1:
+-                    /* Load/store exclusive byte/halfword/doubleword */
+-                    if (op == 2) {
+-                        goto illegal_op;
+-                    }
+-                    ARCH(7);
+-                    break;
+-                case 2:
+-                    /* Load-acquire/store-release */
+-                    if (op == 3) {
+-                        goto illegal_op;
+-                    }
+-                    /* Fall through */
+-                case 3:
+-                    /* Load-acquire/store-release exclusive */
+-                    ARCH(8);
+-                    is_lasr = true;
+-                    break;
+-                }
+-
+-                if (is_lasr && !is_ld) {
+-                    tcg_gen_mb(TCG_MO_ALL | TCG_BAR_STRL);
+-                }
+-
+-                addr = tcg_temp_local_new_i32();
+-                load_reg_var(s, addr, rn);
+-                if (!(op2 & 1)) {
+-                    if (is_ld) {
+-                        tmp = tcg_temp_new_i32();
+-                        switch (op) {
+-                        case 0: /* ldab */
+-                            gen_aa32_ld8u_iss(s, tmp, addr, get_mem_index(s),
+-                                              rs | ISSIsAcqRel);
+-                            break;
+-                        case 1: /* ldah */
+-                            gen_aa32_ld16u_iss(s, tmp, addr, get_mem_index(s),
+-                                               rs | ISSIsAcqRel);
+-                            break;
+-                        case 2: /* lda */
+-                            gen_aa32_ld32u_iss(s, tmp, addr, get_mem_index(s),
+-                                               rs | ISSIsAcqRel);
+-                            break;
+-                        default:
+-                            abort();
+-                        }
+-                        store_reg(s, rs, tmp);
+-                    } else {
+-                        tmp = load_reg(s, rs);
+-                        switch (op) {
+-                        case 0: /* stlb */
+-                            gen_aa32_st8_iss(s, tmp, addr, get_mem_index(s),
+-                                             rs | ISSIsAcqRel);
+-                            break;
+-                        case 1: /* stlh */
+-                            gen_aa32_st16_iss(s, tmp, addr, get_mem_index(s),
+-                                              rs | ISSIsAcqRel);
+-                            break;
+-                        case 2: /* stl */
+-                            gen_aa32_st32_iss(s, tmp, addr, get_mem_index(s),
+-                                              rs | ISSIsAcqRel);
+-                            break;
+-                        default:
+-                            abort();
+-                        }
+-                        tcg_temp_free_i32(tmp);
+-                    }
+-                } else if (is_ld) {
+-                    gen_load_exclusive(s, rs, rd, addr, op);
+-                } else {
+-                    gen_store_exclusive(s, rm, rs, rd, addr, op);
+-                }
+-                tcg_temp_free_i32(addr);
+-
+-                if (is_lasr && is_ld) {
+-                    tcg_gen_mb(TCG_MO_ALL | TCG_BAR_LDAQ);
+-                }
++                /* Load/store exclusive, load-acq/store-rel, in decodetree */
++                goto illegal_op;
+             }
+         } else {
+             /* Load/store multiple, RFE, SRS.  */
+diff --git a/target/arm/a32.decode b/target/arm/a32.decode
+index f7742deaee..c76cbad569 100644
+--- a/target/arm/a32.decode
++++ b/target/arm/a32.decode
+@@ -39,6 +39,8 @@
+ &mrs_bank        rd r sysm
+ &ldst_rr         p w u rn rt rm shimm shtype
+ &ldst_ri         p w u rn rt imm
++&strex           rn rd rt rt2 imm
++&ldrex           rn rt rt2 imm
+ 
+ # Data-processing (register)
+ 
+@@ -342,3 +344,49 @@ STRT_ri          .... 010. .0.0 .... .... ............        @ldst_ri12_p0w1
+ STRBT_ri         .... 010. .1.0 .... .... ............        @ldst_ri12_p0w1
+ LDRT_ri          .... 010. .0.1 .... .... ............        @ldst_ri12_p0w1
+ LDRBT_ri         .... 010. .1.1 .... .... ............        @ldst_ri12_p0w1
++
++# Synchronization primitives
++
++@swp             ---- .... .... rn:4 rt:4 .... .... rt2:4
++
++SWP              .... 0001 0000 .... .... 0000 1001 ....      @swp
++SWPB             .... 0001 0100 .... .... 0000 1001 ....      @swp
++
++# Load/Store Exclusive and Load-Acquire/Store-Release
++#
++# Note rt2 for STREXD/LDREXD is set by the helper after checking rt is even.
++
++@strex           ---- .... .... rn:4 rd:4 .... .... rt:4 \
++                 &strex imm=0 rt2=15
++@ldrex           ---- .... .... rn:4 rt:4 .... .... .... \
++                 &ldrex imm=0 rt2=15
++@stl             ---- .... .... rn:4 .... .... .... rt:4 \
++                 &ldrex imm=0 rt2=15
++
++STREX            .... 0001 1000 .... .... 1111 1001 ....      @strex
++STREXD_a32       .... 0001 1010 .... .... 1111 1001 ....      @strex
++STREXB           .... 0001 1100 .... .... 1111 1001 ....      @strex
++STREXH           .... 0001 1110 .... .... 1111 1001 ....      @strex
++
++STLEX            .... 0001 1000 .... .... 1110 1001 ....      @strex
++STLEXD_a32       .... 0001 1010 .... .... 1110 1001 ....      @strex
++STLEXB           .... 0001 1100 .... .... 1110 1001 ....      @strex
++STLEXH           .... 0001 1110 .... .... 1110 1001 ....      @strex
++
++STL              .... 0001 1000 .... 1111 1100 1001 ....      @stl
++STLB             .... 0001 1100 .... 1111 1100 1001 ....      @stl
++STLH             .... 0001 1110 .... 1111 1100 1001 ....      @stl
++
++LDREX            .... 0001 1001 .... .... 1111 1001 1111      @ldrex
++LDREXD_a32       .... 0001 1011 .... .... 1111 1001 1111      @ldrex
++LDREXB           .... 0001 1101 .... .... 1111 1001 1111      @ldrex
++LDREXH           .... 0001 1111 .... .... 1111 1001 1111      @ldrex
++
++LDAEX            .... 0001 1001 .... .... 1110 1001 1111      @ldrex
++LDAEXD_a32       .... 0001 1011 .... .... 1110 1001 1111      @ldrex
++LDAEXB           .... 0001 1101 .... .... 1110 1001 1111      @ldrex
++LDAEXH           .... 0001 1111 .... .... 1110 1001 1111      @ldrex
++
++LDA              .... 0001 1001 .... .... 1100 1001 1111      @ldrex
++LDAB             .... 0001 1101 .... .... 1100 1001 1111      @ldrex
++LDAH             .... 0001 1111 .... .... 1100 1001 1111      @ldrex
+diff --git a/target/arm/t32.decode b/target/arm/t32.decode
+index a86597562b..70cf8039d7 100644
+--- a/target/arm/t32.decode
++++ b/target/arm/t32.decode
+@@ -36,6 +36,8 @@
+ &mrs_bank        !extern rd r sysm
+ &ldst_rr         !extern p w u rn rt rm shimm shtype
+ &ldst_ri         !extern p w u rn rt imm
++&strex           !extern rn rd rt rt2 imm
++&ldrex           !extern rn rt rt2 imm
+ 
+ # Data-processing (register)
+ 
+@@ -392,3 +394,47 @@ LDRD_ri_t32      1110 1001 .101 .... .... .... ........    @ldstd_ri8 w=0 p=1
+ 
+ STRD_ri_t32      1110 1001 .110 .... .... .... ........    @ldstd_ri8 w=1 p=1
+ LDRD_ri_t32      1110 1001 .111 .... .... .... ........    @ldstd_ri8 w=1 p=1
++
++# Load/Store Exclusive and Load-Acquire/Store-Release
++
++@strex_i         .... .... .... rn:4 rt:4 rd:4 .... .... \
++                 &strex rt2=15 imm=%imm8x4
++@strex_0         .... .... .... rn:4 rt:4 .... .... rd:4 \
++                 &strex rt2=15 imm=0
++@strex_d         .... .... .... rn:4 rt:4 rt2:4 .... rd:4 \
++                 &strex imm=0
++
++@ldrex_i         .... .... .... rn:4 rt:4 .... .... .... \
++                 &ldrex rt2=15 imm=%imm8x4
++@ldrex_0         .... .... .... rn:4 rt:4 .... .... .... \
++                 &ldrex rt2=15 imm=0
++@ldrex_d         .... .... .... rn:4 rt:4 rt2:4 .... .... \
++                 &ldrex imm=0
++
++STREX            1110 1000 0100 .... .... .... .... ....      @strex_i
++STREXB           1110 1000 1100 .... .... 1111 0100 ....      @strex_0
++STREXH           1110 1000 1100 .... .... 1111 0101 ....      @strex_0
++STREXD_t32       1110 1000 1100 .... .... .... 0111 ....      @strex_d
++
++STLEX            1110 1000 1100 .... .... 1111 1110 ....      @strex_0
++STLEXB           1110 1000 1100 .... .... 1111 1100 ....      @strex_0
++STLEXH           1110 1000 1100 .... .... 1111 1101 ....      @strex_0
++STLEXD_t32       1110 1000 1100 .... .... .... 1111 ....      @strex_d
++
++STL              1110 1000 1100 .... .... 1111 1010 1111      @ldrex_0
++STLB             1110 1000 1100 .... .... 1111 1000 1111      @ldrex_0
++STLH             1110 1000 1100 .... .... 1111 1001 1111      @ldrex_0
++
++LDREX            1110 1000 0101 .... .... 1111 .... ....      @ldrex_i
++LDREXB           1110 1000 1101 .... .... 1111 0100 1111      @ldrex_0
++LDREXH           1110 1000 1101 .... .... 1111 0101 1111      @ldrex_0
++LDREXD_t32       1110 1000 1101 .... .... .... 0111 1111      @ldrex_d
++
++LDAEX            1110 1000 1101 .... .... 1111 1110 1111      @ldrex_0
++LDAEXB           1110 1000 1101 .... .... 1111 1100 1111      @ldrex_0
++LDAEXH           1110 1000 1101 .... .... 1111 1101 1111      @ldrex_0
++LDAEXD_t32       1110 1000 1101 .... .... .... 1111 1111      @ldrex_d
++
++LDA              1110 1000 1101 .... .... 1111 1010 1111      @ldrex_0
++LDAB             1110 1000 1101 .... .... 1111 1000 1111      @ldrex_0
++LDAH             1110 1000 1101 .... .... 1111 1001 1111      @ldrex_0
 -- 
 2.17.1
 

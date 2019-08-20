@@ -1,82 +1,79 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp3910490wrs;
-        Tue, 20 Aug 2019 05:35:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyARI3wwRyMy7tAExdeVMJ1Z1SKwfspVP17r5XnJoV4JsIeYf3sfvLrB91ZyW+jFANiQhwS
-X-Received: by 2002:a17:906:948a:: with SMTP id t10mr25610010ejx.111.1566304509112;
-        Tue, 20 Aug 2019 05:35:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566304509; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp3910522wrs;
+        Tue, 20 Aug 2019 05:35:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzDoLN2KRZT0/ddiaybzTmdfAV16K8vV9nN+1DwX0WOJTJ+XdOloe1QzrKRIgC64zClHycP
+X-Received: by 2002:a17:906:6bd4:: with SMTP id t20mr24709452ejs.294.1566304511209;
+        Tue, 20 Aug 2019 05:35:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566304511; cv=none;
         d=google.com; s=arc-20160816;
-        b=XU3t796ZpK/6X0u/X13rdVnofTjvSTMsk+0VuEElJLt4TYUz8Z5ARqH1Ms0I1v6rW3
-         Cr73U1sphx3BElSt7/SBWKhoFu+BiliAbYk7e3Ru073q1oyuR0M4q3kWSEcxMHRpn/8P
-         K8zGtP9qmCUrg1HsIpHxI18+gGWjDEgyvfROhzhieFslVW9TfjUVYDVDxIbKPijdWTwW
-         FRRoVHfVfUqm1Pz9qexxvh9e3J03QO2gT/PcEf9JlsVl9Q88EQzCJJXEG5NAYdainKMl
-         DFrnXo9OH7n8aR1NwyaoYLK4w2Ji2Jqv3mh4D9WHgVAdUqoLQG/VOrOEmI/+1DCOSfBN
-         6Z1Q==
+        b=G9/7024PMu9sI4C0cdBOTSubJL5qL+0sK8ub2WL/MmDR7kOYdnBiYWcizIbb/jr+h5
+         EB9J0pZji0aqotRUXL9Hw6QxIPjflMGfxVKkS3wfpqCw8mou/fvsENkR9GTv0d4TKOQd
+         JIPF5grY7uRZdVZqaUOeJHVsDqz1E3yGxp2E4NWoGL1WAIREAjDNcS5ChiOhPwxHGFvZ
+         iatpXrjkNnz5YZXZ9TcBinZpm/TFWsat2pVfYI6AfOeRnUPc8JjThtsS8kytmbqpiVS0
+         QFvD8VWTZfW94oMEmoCAz6pN0rP5CgpsMCMj0SHWptLYPt6RwhrQfxDIixGATEWcr2wI
+         I21w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=IcHRtU8j5UjBsD5HZGR2ATlFu3cbetgICUnsM5712ko=;
-        b=F51o7x+U7bzCfzpzY9284ZCqXa23SY4o3G7krt/YjCIneRHjGcDqCbeHWqOVBUoycT
-         GXsCKkYeU/QbmvRzYR1VPHt7Md6UaZ3P1ETXYoLjvtFwqXrN3kNywKHSRGancxavDMbO
-         rNIW7lIgvdwDDwoNUCAhnnmuU2HL0gAVyfMOAxk4rSewmj46wHtBytx/1O/ARP1OCzxg
-         9TC0QYsSwomoPEcsnVSenO2Uo3HYiLY6BsAd5xLvJ45XKcs+BQkcBP7DeHRGAc0KbdGF
-         sZxWrmW/tc438PdqgCGyYMVHwwh78vrcTkgMnR5ZE+cEiJfJ14oATWyolcuVWGXCKUTs
-         7m4w==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=vYjJXJQiD+02Xc5xuppdWvASExJ09L+FDUGh1CKECnw=;
+        b=YmclkV36M5On+LJR/0yqy+x2ZXrYmCkFlyM6aCSeT8wtIZJFUOyRYr+DLDycL9sKXV
+         99D0D7m8c0Z1R/r9jGUguVCMv8ApvkoCrvGf9zOaulZxHTh+PvACawwsCt3ed93OMK23
+         btGg9+T1qL/QfNzHN/pSJlL22U7CnXtNa6CiLZxMMN1eXyWcGb4rI5bFBbCt55btrgIq
+         nLIdwTUQne+XZYfftp3bB0mPa2mlPcs2ejhuBq9jVDtha7PaSDKT1+QCaW4kbv51c0Xn
+         WKjdPKlE5mHVH2l7FA3SiFjnQAfufuj8FAIwDbPgvf7GGM8taYaS9D5rEwgDOJoTaDSU
+         iWWA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l48si9771996edb.254.2019.08.20.05.35.09
+        by mx.google.com with ESMTPS id n2si8146532ejy.35.2019.08.20.05.35.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Aug 2019 05:35:09 -0700 (PDT)
+        Tue, 20 Aug 2019 05:35:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37048 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37026 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i03Lv-0005sh-AB
-	for alex.bennee@linaro.org; Tue, 20 Aug 2019 08:35:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35916)
+	id 1i03Lx-0005rX-6h
+	for alex.bennee@linaro.org; Tue, 20 Aug 2019 08:35:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35877)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1i03LW-0005s2-84
- for qemu-arm@nongnu.org; Tue, 20 Aug 2019 08:34:44 -0400
+ (envelope-from <philmd@redhat.com>) id 1i03LO-0005rJ-Ty
+ for qemu-arm@nongnu.org; Tue, 20 Aug 2019 08:34:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1i03LV-0002HV-6o
- for qemu-arm@nongnu.org; Tue, 20 Aug 2019 08:34:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36156)
+ (envelope-from <philmd@redhat.com>) id 1i03LM-0001qP-QN
+ for qemu-arm@nongnu.org; Tue, 20 Aug 2019 08:34:34 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57808)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1i03LU-0002Bq-W8; Tue, 20 Aug 2019 08:34:41 -0400
+ id 1i03LM-0001mP-Ib; Tue, 20 Aug 2019 08:34:32 -0400
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 1679789AC2;
- Tue, 20 Aug 2019 12:34:39 +0000 (UTC)
-Received: from x1w.redhat.com (unknown [10.40.205.209])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B23CA5C21F;
+ by mx1.redhat.com (Postfix) with ESMTPS id 1131918C890D;
  Tue, 20 Aug 2019 12:34:31 +0000 (UTC)
+Received: from x1w.redhat.com (unknown [10.40.205.209])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 45BC95C21F;
+ Tue, 20 Aug 2019 12:34:19 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 20 Aug 2019 14:34:16 +0200
-Message-Id: <20190820123417.27930-2-philmd@redhat.com>
-In-Reply-To: <20190820123417.27930-1-philmd@redhat.com>
-References: <20190820123417.27930-1-philmd@redhat.com>
+Date: Tue, 20 Aug 2019 14:34:15 +0200
+Message-Id: <20190820123417.27930-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.26]); Tue, 20 Aug 2019 12:34:39 +0000 (UTC)
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.70]); Tue, 20 Aug 2019 12:34:31 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH 1/2] hw/char/serial: Add a helper to set the
- divisor register
+Subject: [Qemu-arm] [RFC PATCH 0/2] hw/char/bcm2835_aux: Provide full 16550
+ UART support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -98,50 +95,216 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ao0CotYEnqD0
+X-TUID: +PebVti6Yxza
 
-Some chipsets provide 16650 compatible UART with exhanced
-features. The BCM2835 provides a register to directly set
-the baudrate divisor register without having to use the
-LABD bit.
+Hi,
 
-Add a helper to allow models to directly set the divisor.
+Since there has been some activity on the list asking about
+Rasberry PI USB support, I had a look a some previous unfinished
+work and rebased it to share, in case it helps hobbyist interested
+in improving these machines.
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/char/serial.c         | 6 ++++++
- include/hw/char/serial.h | 1 +
- 2 files changed, 7 insertions(+)
+This series is some proof-of-concept on improving the AUX UART
+support. See the commit description for various TODO/questions.
 
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index b4aa250950..12eb93705d 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -191,6 +191,12 @@ static void serial_update_parameters(SerialState *s)
-            speed, parity, data_bits, stop_bits);
- }
-=20
-+void serial_set_divider(SerialState *s, uint16_t divider)
-+{
-+    s->divider =3D divider;
-+    serial_update_parameters(s);
-+}
-+
- static void serial_update_msl(SerialState *s)
- {
-     uint8_t omsr;
-diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
-index 8be3d8a4f9..ef211f695d 100644
---- a/include/hw/char/serial.h
-+++ b/include/hw/char/serial.h
-@@ -83,6 +83,7 @@ extern const MemoryRegionOps serial_io_ops;
- void serial_realize_core(SerialState *s, Error **errp);
- void serial_exit_core(SerialState *s);
- void serial_set_frequency(SerialState *s, uint32_t frequency);
-+void serial_set_divider(SerialState *s, uint16_t divider);
-=20
- /* legacy pre qom */
- SerialState *serial_init(int base, qemu_irq irq, int baudbase,
+This can be tested using files documented by Peter Maydell in
+his blog post:
+https://translatedcode.wordpress.com/2018/04/25/debian-on-qemus-raspberry=
+-pi-3-model/
+
+And using the kernel command line arguments suggested by Guenter Roeck:
+
+qemu-system-aarch64 -M raspi3 -m 1024 \
+  -kernel raspi3/bootpart/vmlinuz-4.14.0-3-arm64 \
+  -initrd raspi3/bootpart/initrd.img-4.14.0-3-arm64 \
+  -dtb raspi3/bootpart/bcm2837-rpi-3-b.dtb \
+  -append 'earlycon=3Duart8250,mmio32,0x3f215040 rdinit=3D/sbin/init pani=
+c=3D-1 console=3DttyS1,115200' \
+  -drive file=3Draspi3/2018-01-08-raspberry-pi-3-buster-PREVIEW.img,forma=
+t=3Draw,if=3Dsd \
+  -serial null -serial stdio \
+  -d unimp,guest_errors -trace bcm283\*
+27459@1566304158.228297:bcm2835_sdhost_edm_change (device reset) EDM now =
+0xc60f
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 4.14.0-3-arm64 (debian-kernel@lists.debian.o=
+rg) (gcc version 7.2.0 (Debian 7.2.0-18)) #1 SMP Debian 4.14.12-2 (2018-0=
+1-06)
+[    0.000000] Boot CPU: AArch64 Processor [410fd034]
+[    0.000000] Machine model: Raspberry Pi 3 Model B
+[    0.000000] earlycon: uart8250 at MMIO32 0x000000003f215040 (options '=
+')
+[    0.000000] bootconsole [uart8250] enabled
+[    0.000000] efi: Getting EFI parameters from FDT:
+[    0.000000] efi: UEFI not found.
+[    0.000000] cma: Reserved 64 MiB at 0x0000000038000000
+[    0.000000] NUMA: No NUMA configuration found
+[    0.000000] NUMA: Faking a node at [mem 0x0000000000000000-0x000000003=
+bffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0x37fdf180-0x37fe0c7f]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000000000000-0x000000003bffffff]
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000000000-0x000000003bffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000000000-0x000000003bf=
+fffff]
+[    0.000000] random: fast init done
+[    0.000000] percpu: Embedded 22 pages/cpu @ffff800037f74000 s51608 r81=
+92 d30312 u90112
+[    0.000000] Detected VIPT I-cache on CPU0
+[    0.000000] CPU features: enabling workaround for ARM erratum 845719
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 241=
+920
+[    0.000000] Policy zone: DMA
+[    0.000000] Kernel command line: earlycon=3Duart8250,mmio32,0x3f215040=
+ rdinit=3D/sbin/init panic=3D-1 console=3DttyS1,115200
+[    0.000000] PID hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.000000] Memory: 864772K/983040K available (8252K kernel code, 1448=
+K rwdata, 2692K rodata, 4480K init, 601K bss, 52732K reserved, 65536K cma=
+-reserved)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     modules : 0xffff000000000000 - 0xffff000008000000   ( =
+  128 MB)
+[    0.000000]     vmalloc : 0xffff000008000000 - 0xffff7dffbfff0000   (1=
+29022 GB)
+[    0.000000]       .text : 0xffff000008080000 - 0xffff000008890000   ( =
+ 8256 KB)
+[    0.000000]     .rodata : 0xffff000008890000 - 0xffff000008b40000   ( =
+ 2752 KB)
+[    0.000000]       .init : 0xffff000008b40000 - 0xffff000008fa0000   ( =
+ 4480 KB)
+[    0.000000]       .data : 0xffff000008fa0000 - 0xffff00000910a200   ( =
+ 1449 KB)
+[    0.000000]        .bss : 0xffff00000910a200 - 0xffff0000091a0910   ( =
+  602 KB)
+[    0.000000]     fixed   : 0xffff7dfffe7fd000 - 0xffff7dfffec00000   ( =
+ 4108 KB)
+[    0.000000]     PCI I/O : 0xffff7dfffee00000 - 0xffff7dffffe00000   ( =
+   16 MB)
+[    0.000000]     vmemmap : 0xffff7e0000000000 - 0xffff800000000000   ( =
+ 2048 GB maximum)
+[    0.000000]               0xffff7e0000000000 - 0xffff7e0000f00000   ( =
+   15 MB actual)
+[    0.000000]     memory  : 0xffff800000000000 - 0xffff80003c000000   ( =
+  960 MB)
+[    0.000000] ftrace: allocating 30760 entries in 121 pages
+[    0.000000] Hierarchical RCU implementation.
+[    0.000000]  RCU restricting CPUs from NR_CPUS=3D256 to nr_cpu_ids=3D4=
+.
+[    0.000000] RCU: Adjusting geometry for rcu_fanout_leaf=3D16, nr_cpu_i=
+ds=3D4
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+bcm2836_control_write: Bad offset 0
+bcm2836_control_write: Bad offset 8
+[    0.000000] arch_timer: WARNING: Invalid trigger for IRQ2, assuming le=
+vel low
+[    0.000000] arch_timer: WARNING: Please fix your firmware
+[    0.000000] arch_timer: cp15 timer(s) running at 62.50MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_=
+cycles: 0x1cd42e208c, max_idle_ns: 881590405314 ns
+[    0.001154] sched_clock: 56 bits at 62MHz, resolution 16ns, wraps ever=
+y 4398046511096ns
+[    0.068563] Console: colour dummy device 80x25
+[    0.081268] Calibrating delay loop (skipped), value calculated using t=
+imer frequency.. 125.00 BogoMIPS (lpj=3D250000)
+[    0.083225] pid_max: default: 32768 minimum: 301
+[    0.094763] Security Framework initialized
+[    0.096254] Yama: disabled by default; enable with sysctl kernel.yama.=
+*
+[    0.113385] AppArmor: AppArmor initialized
+[    0.127602] Dentry cache hash table entries: 131072 (order: 8, 1048576=
+ bytes)
+[    0.135573] Inode-cache hash table entries: 65536 (order: 7, 524288 by=
+tes)
+[    0.137705] Mount-cache hash table entries: 2048 (order: 2, 16384 byte=
+s)
+[    0.138861] Mountpoint-cache hash table entries: 2048 (order: 2, 16384=
+ bytes)
+[    0.369415] ASID allocator initialised with 65536 entries
+[    0.376083] Hierarchical SRCU implementation.
+[    0.437838] EFI services will not be available.
+[    0.462860] smp: Bringing up secondary CPUs ...
+[    0.487588] Detected VIPT I-cache on CPU1
+[    0.490893] arch_timer: WARNING: Invalid trigger for IRQ2, assuming le=
+vel low
+[    0.490944] arch_timer: WARNING: Please fix your firmware
+[    0.491388] CPU1: Booted secondary processor [410fd034]
+[    0.546624] Detected VIPT I-cache on CPU2
+[    0.547535] arch_timer: WARNING: Invalid trigger for IRQ2, assuming le=
+vel low
+[    0.547632] arch_timer: WARNING: Please fix your firmware
+[    0.548032] CPU2: Booted secondary processor [410fd034]
+[    0.574539] Detected VIPT I-cache on CPU3
+[    0.575101] arch_timer: WARNING: Invalid trigger for IRQ2, assuming le=
+vel low
+[    0.575150] arch_timer: WARNING: Please fix your firmware
+[    0.575367] CPU3: Booted secondary processor [410fd034]
+[    0.578684] smp: Brought up 1 node, 4 CPUs
+[    0.584515] SMP: Total of 4 processors activated.
+[    0.585656] CPU features: detected feature: 32-bit EL0 Support
+[    0.603653] CPU: All CPU(s) started at EL2
+[    0.607831] alternatives: patching kernel code
+[    0.695440] devtmpfs: initialized
+[    0.806025] Registered cp15_barrier emulation handler
+[    0.806837] Registered setend emulation handler
+[    0.816246] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xfffff=
+fff, max_idle_ns: 7645041785100000 ns
+[    0.818294] futex hash table entries: 1024 (order: 5, 131072 bytes)
+[    0.864640] pinctrl core: initialized pinctrl subsystem
+[    0.929209] DMI not present or invalid.
+[    0.955714] NET: Registered protocol family 16
+[    1.063727] cpuidle: using governor ladder
+[    1.068747] cpuidle: using governor menu
+[    1.079439] vdso: 2 pages (1 code @ ffff000008896000, 1 data @ ffff000=
+008fa5000)
+[    1.081031] hw-breakpoint: found 6 breakpoint and 4 watchpoint registe=
+rs.
+[    1.127784] DMA: preallocated 256 KiB pool for atomic allocations
+[    1.137470] Serial: AMBA PL011 UART driver
+[    1.195277] uart-pl011 3f201000.serial: could not find pctldev for nod=
+e /soc/gpio@7e200000/uart0_gpio32, deferring probe
+[    1.398312] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pag=
+es
+[    1.436505] ACPI: Interpreter disabled.
+[    1.461028] vgaarb: loaded
+[    1.473307] EDAC MC: Ver: 3.0.0
+[    1.481644] dmi: Firmware registration failed.
+[    1.543428] clocksource: Switched to clocksource arch_sys_counter
+[    2.815434] VFS: Disk quotas dquot_6.6.0
+[    2.817156] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 by=
+tes)
+[    2.850332] AppArmor: AppArmor Filesystem Enabled
+[    2.854670] pnp: PnP ACPI: disabled
+[    3.035675] NET: Registered protocol family 2
+[    3.071712] TCP established hash table entries: 8192 (order: 4, 65536 =
+bytes)
+[    3.073599] TCP bind hash table entries: 8192 (order: 5, 131072 bytes)
+[    3.075011] TCP: Hash tables configured (established 8192 bind 8192)
+[    3.082515] UDP hash table entries: 512 (order: 2, 16384 bytes)
+[    3.083954] UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
+[    3.094971] NET: Registered protocol family 1
+[    3.123313] Unpacking initramfs...
+
+Here it hangs, even with CPRMAN patch from Guenter:
+https://lists.gnu.org/archive/html/qemu-devel/2018-07/msg03153.html
+
+Regards,
+
+Phil.
+
+Philippe Mathieu-Daud=C3=A9 (2):
+  hw/char/serial: Add a helper to set the divisor register
+  hw/char/bcm2835_aux: Provide full 16550 UART support
+
+ hw/arm/bcm2835_peripherals.c  |   2 -
+ hw/char/bcm2835_aux.c         | 211 +++-------------------------------
+ hw/char/serial.c              |   6 +
+ include/hw/char/bcm2835_aux.h |   7 +-
+ include/hw/char/serial.h      |   1 +
+ 5 files changed, 27 insertions(+), 200 deletions(-)
+
 --=20
 2.20.1
 

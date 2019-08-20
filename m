@@ -1,119 +1,520 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp4190444wrs;
-        Tue, 20 Aug 2019 09:34:21 -0700 (PDT)
-X-Received: by 2002:a63:c64b:: with SMTP id x11mr25310397pgg.319.1566318861518;
-        Tue, 20 Aug 2019 09:34:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566318861; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp4351866wrs;
+        Tue, 20 Aug 2019 12:09:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxL/OXQQ/WoXAtv6QNyJ9v2nEJ7SIRVQe4NAP4QJaaeLw3Uq2J8WRbvIXZGHmhTqU+lg90E
+X-Received: by 2002:a0c:f193:: with SMTP id m19mr15803799qvl.20.1566328190544;
+        Tue, 20 Aug 2019 12:09:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566328190; cv=none;
         d=google.com; s=arc-20160816;
-        b=0Ww7UA8YDOwkDXhwO3ACfVRtKr6kCE6nJmNNX/HiJ8T2nGPCxPp0RnY/xwtnkMNP3M
-         XD022Le5EoR/rZ0xL8lMuKoO6b/NroCztKp20/prSSwrsMyarkdRn9KTpEJ5YZ/VHiYD
-         7aCO5bQPJbk8ekrrsWWNhvOL6WuU3k3R0hPfZBzUFP4Ncw873eNbdhHo8/nx4+1lmObc
-         QhiTIGue0Yx0g1bkpsuJkRI5BgT1Qd3zfLibwKgyeyryIAr4838qcC98L4bZox2oKyFD
-         YbZtJWynhgMd/cGcjnYaLx3HoEyz3eiD0mIkMkD0CwV0GysCTzQYmKRAI59ohzvVCKkh
-         PoWQ==
+        b=yUj58lIihTsJCz6CsG1QdhMhnbNDbn7vQfD9OhSeGV4mcS3ZZS9rFDI4N64gKJWvsj
+         cmkrJe8WILZyo3UB0JU4Lgorr4Pm8yQws06eXKwPBxNb1pTLkTzB0T2nNxDRJiwWfrVL
+         DeuBM069GCNL+zq73fM92YPhNt4DXccjVTaxG2EzSixcsDKrbUcbgAJzeTg5JdHngCtf
+         0YQRDb4kXxh43QTKL/7I3v5KhiJCBgYO4ovCU4mH290bLojNRE05qe5d1uplpWa93QyO
+         6J76kLqKusi4iPOTRrMcq4OuappnLswIzPnoOt00dVpSipwU/a9m+Ha8igPuBXsLSs27
+         vZzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=oEbrwXqTk1zOUa32Or96uUF3IfzXUKK8OjQz21po6lE=;
-        b=CgyKZkqjwojTiTvcB+FBIM3OY6PWwKnagyFlkChXJ19wQ2ZqQm4imLn1OTBrXaQYps
-         UnX5AHjAKdTEqDW/VhfGUG8zdYY9UZcYSkqnSTpeqHy82fGjGunZKcKav4WVDI8ol0rI
-         W64RatiJqlr/6ZKqXTVbyOLNHfgrzSKw9YkYyk4bR6QDMNI46mRDlIXbVOTkEbFx7KUr
-         FxrKd6BCcIbmwHhTUqUYMGSgqHfq5avbrD1FwMdgAcWiaWujSuV3R8e5abc1olKKSdZR
-         LHMPm8tibYrxmd/tDXGSxQCXs7VKej193jW37QnC50JAep1Dry3sQecrhZAv6xjUCfTF
-         JSTg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:message-id:date:to:from;
+        bh=8nNtf1ZP3bL2jvcFDmOLN0ORXLQcqf0i574lDxBiS7A=;
+        b=Fyxcr7D3QcyVszz5kxJhHZbIPhxt6JUP7opJie4YOUmH7cxr6x3G8zOQWaOiJafo4C
+         7C7dgvEf1qkJ9Gmrs5PUHiE0bqzaUD6GIw+b7B/rr8XXdaGmcI+KnvMcAyGR4ZfJL6ol
+         cNG+e1wSMrrgdM6bG8m+xj/2dq0KKu9O6s7HHd6HwRZjoIAbhdYyTatjWR0nYWSzMcqL
+         vehpISpj3dW0do7FBFfZlQWIbfGWJMLIX9sx5G356Q5IupjrD5amAqpYdAjJ9F+hdYC+
+         yUbimlLEgq0+XUC3SORC5vFqMTjcPik1LcD68iO9t5e007vF/jxrOi6ptSdmcdT2oE4f
+         eewg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Dwub0VIJ;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id a94sor5554682pla.29.2019.08.20.09.34.21
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y9si11342592qvf.188.2019.08.20.12.09.50
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 20 Aug 2019 09:34:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 20 Aug 2019 12:09:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Dwub0VIJ;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=oEbrwXqTk1zOUa32Or96uUF3IfzXUKK8OjQz21po6lE=;
-        b=Dwub0VIJ84REu03BMtkb0NR8KouOzvWR9auwfY2nGh+8bswav1sz6s5BL9PoJtmDyL
-         0d75bMsHQ0fFScXo3bQgCo51pFvmQrjgzRGOqjp+quvphraa/0fSb3ieTow6ujxbYm9I
-         GALP83fB36J08hTkOCuJQydxtVZbX+f/HY8zMOOQvxxREcARN8Q0hjThTX7NDYFRUWBZ
-         O3AVQPbEnZy3l1D8iUo1Ibh29VV7ObECg/2/FVis/CYFYsPwNdMY5CqbCARzs9Ml9nIo
-         GKhIVgGVMrVk6361Je+JgpYM1aHOd5R38pdVRvLib6rq6wPZAkWxzRghSFKEwusOPYjt
-         VOdQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=oEbrwXqTk1zOUa32Or96uUF3IfzXUKK8OjQz21po6lE=;
-        b=qU/6sLkiKw2uvR9WHX+7AbtFm0DnmyuOl/AduEsWY9tt0kXkhC3e5d907U455Bqhq6
-         MZAuvHdO+idrBfXitfKZjYGADJv45GoGCzWHPv34/ri+W3dZeG378zBGDXHNSdtNKjg9
-         UsjwwfWfWaFVGgYEa5XQmV1VSgAlm0uAlM9m/bSlbgM7Xjl9rH7OtH6W3v4kUJ81aOim
-         /ve7WBSS+ySy8rCPby/0bZzP7j8v5MQ5C3Wk16kJn2JEDyNTrumuWV5VjHjjx7FNTrQa
-         oK7AAJEXUpXwwz5SWxO/s7cXPrxpWOHTXtaHoUX6N3PyQ3CUoBAZnuUw/5SJil9INfQ7
-         t7ig==
-X-Gm-Message-State: APjAAAW0WFM4UY3PJNWlDlmocGVZ8XdESnzhjMuj6spB+wUOCjt+4IiS
-	AzZRwyCqKDCziBIypXiIkwZWHP3x
-X-Google-Smtp-Source: APXvYqweW6m2wdyS4S8m+EiPY75uAQOcnWZbn80PfKzYm3fvy6F+gRTQ6kxu6iJc0q9rJTmE8AVjOA==
-X-Received: by 2002:a17:902:4ac2:: with SMTP id q2mr26744888plh.81.1566318860980;
-        Tue, 20 Aug 2019 09:34:20 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id z16sm19417442pgi.8.2019.08.20.09.34.19
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 20 Aug 2019 09:34:20 -0700 (PDT)
-Subject: Re: [PATCH v7 6/6] tests/tcg/aarch64: Add bti smoke test
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Dave P Martin <Dave.Martin@arm.com>
-References: <20190803210803.5701-1-richard.henderson@linaro.org>
- <20190803210803.5701-7-richard.henderson@linaro.org>
- <CAFEAcA-cFi8BLBhh3vPdT4d=ps_pmP5gNz1W00mskVhhzN175w@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <88c745f9-b923-2303-18fe-4d5b855539ad@linaro.org>
-Date: Tue, 20 Aug 2019 09:34:17 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-cFi8BLBhh3vPdT4d=ps_pmP5gNz1W00mskVhhzN175w@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: VNY3WNm0Alma
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:40574 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i09Vt-0004tu-K4
+	for alex.bennee@linaro.org; Tue, 20 Aug 2019 15:09:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36326)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <eajames@linux.ibm.com>) id 1i09R2-0003ES-0S
+ for qemu-arm@nongnu.org; Tue, 20 Aug 2019 15:04:50 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <eajames@linux.ibm.com>) id 1i09Qv-0005NP-Mn
+ for qemu-arm@nongnu.org; Tue, 20 Aug 2019 15:04:45 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:39276
+ helo=mx0a-001b2d01.pphosted.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eajames@linux.ibm.com>)
+ id 1i09QE-0004gE-08; Tue, 20 Aug 2019 15:04:01 -0400
+Received: from pps.filterd (m0098421.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
+ x7KJ2FWN045506; Tue, 20 Aug 2019 15:02:53 -0400
+Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.26])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2ugnukjatj-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 20 Aug 2019 15:02:52 -0400
+Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
+ by ppma04wdc.us.ibm.com (8.16.0.27/8.16.0.27) with SMTP id x7KIn9XS012051;
+ Tue, 20 Aug 2019 19:02:52 GMT
+Received: from b03cxnp08028.gho.boulder.ibm.com
+ (b03cxnp08028.gho.boulder.ibm.com [9.17.130.20])
+ by ppma04wdc.us.ibm.com with ESMTP id 2ufye068sv-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 20 Aug 2019 19:02:52 +0000
+Received: from b03ledav004.gho.boulder.ibm.com
+ (b03ledav004.gho.boulder.ibm.com [9.17.130.235])
+ by b03cxnp08028.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ x7KJ2pit64291082
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 20 Aug 2019 19:02:51 GMT
+Received: from b03ledav004.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 4A7F978064;
+ Tue, 20 Aug 2019 19:02:51 +0000 (GMT)
+Received: from b03ledav004.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id BAC6278063;
+ Tue, 20 Aug 2019 19:02:50 +0000 (GMT)
+Received: from talon7.ibm.com (unknown [9.41.179.222])
+ by b03ledav004.gho.boulder.ibm.com (Postfix) with ESMTP;
+ Tue, 20 Aug 2019 19:02:50 +0000 (GMT)
+From: Eddie James <eajames@linux.ibm.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 20 Aug 2019 14:02:45 -0500
+Message-Id: <1566327765-2003-1-git-send-email-eajames@linux.ibm.com>
+X-Mailer: git-send-email 1.8.3.1
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
+ definitions=2019-08-20_08:, , signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501
+ malwarescore=0 suspectscore=1 phishscore=0 bulkscore=0 spamscore=0
+ clxscore=1015 lowpriorityscore=0 mlxscore=0 impostorscore=0
+ mlxlogscore=980 adultscore=0 classifier=spam adjust=0 reason=mlx
+ scancount=1 engine=8.0.1-1906280000 definitions=main-1908200168
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 148.163.158.5
+Subject: [Qemu-arm] [RFC v3] hw/sd/aspeed_sdhci: New device
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, andrew@aj.id.au,
+ Eddie James <eajames@linux.ibm.com>, qemu-arm@nongnu.org, joel@jms.id.au,
+ clg@kaod.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0584Q4jKrZqu
 
-On 8/20/19 8:31 AM, Peter Maydell wrote:
-> Is there some way to suppress these warnings ? 'make check-tcg'
-> output includes
-> 
->   BUILD   TCG tests for aarch64-linux-user
->   BUILD   aarch64 guest-tests with aarch64-linux-gnu-gcc
-> /usr/lib/gcc-cross/aarch64-linux-gnu/7/../../../../aarch64-linux-gnu/bin/ld:
-> warning: /tmp/cccZ8Fk7.o: unsupported GNU_PROPERTY_TYPE (5) type:
-> 0xc0000000
-> /usr/lib/gcc-cross/aarch64-linux-gnu/7/../../../../aarch64-linux-gnu/bin/ld:
-> warning: .note.gnu.build-id section discarded, --build-id ignored.
->   RUN     TCG tests for aarch64-linux-user
-> 
-> and these are going to come up in the merge-testing search
-> for warnings in the build logs...
+The Aspeed SOCs have two SD/MMC controllers. Add a device that
+encapsulates both of these controllers and models the Aspeed-specific
+registers and behavior.
 
-The only way is to use a newer ld.
+Tested by reading from mmcblk0 in Linux:
+qemu-system-arm -machine romulus-bmc -nographic \
+ -drive file=flash-romulus,format=raw,if=mtd \
+ -device sd-card,drive=sd0 -drive file=_tmp/kernel,format=raw,if=sd
 
-Sadly, bfd doesn't really distinguish between warnings and errors when it comes
-to printing, so there's no "-w" flag as for gcc.
+Signed-off-by: Eddie James <eajames@linux.ibm.com>
+---
+This patch applies on top of Cedric's set of recent Aspeed changes.
+Therefore, I'm sending as an RFC rather than a patch for review.
 
-I suppose we should just disable this test by default for now.  I'll note that
-despite the warnings, you got a binary that runs as expected.
+Changes since v2:
+ - Do the memory mapping at the SOC level
+ - Add guest errors for out-of-bounds access to the SDHCI regs
+ - Remove unnecessary blockdev include in aspeed_soc.c
+ - Better naming for SDHCI objects.
 
+Changes since v1:
+ - Move slot realize code into the Aspeed SDHCI realize function
+ - Fix interrupt handling by creating input irqs and connecting them to the
+   slot irqs.
+ - Removed card device creation code
+ hw/arm/aspeed.c              |   1 -
+ hw/arm/aspeed_soc.c          |  28 +++++++
+ hw/sd/Makefile.objs          |   1 +
+ hw/sd/aspeed_sdhci.c         | 194 +++++++++++++++++++++++++++++++++++++++++++
+ include/hw/arm/aspeed_soc.h  |   3 +
+ include/hw/sd/aspeed_sdhci.h |  34 ++++++++
+ 6 files changed, 260 insertions(+), 1 deletion(-)
+ create mode 100644 hw/sd/aspeed_sdhci.c
+ create mode 100644 include/hw/sd/aspeed_sdhci.h
 
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 2574425..aeed5b6 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -480,7 +480,6 @@ static void aspeed_machine_class_init(ObjectClass *oc, void *data)
+     mc->desc = board->desc;
+     mc->init = aspeed_machine_init;
+     mc->max_cpus = ASPEED_CPUS_NUM;
+-    mc->no_sdcard = 1;
+     mc->no_floppy = 1;
+     mc->no_cdrom = 1;
+     mc->no_parallel = 1;
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index c9f6e01..292751e 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -62,6 +62,7 @@ static const hwaddr aspeed_soc_ast2500_memmap[] = {
+     [ASPEED_XDMA]   = 0x1E6E7000,
+     [ASPEED_ADC]    = 0x1E6E9000,
+     [ASPEED_SRAM]   = 0x1E720000,
++    [ASPEED_SDHCI]  = 0x1E740000,
+     [ASPEED_GPIO]   = 0x1E780000,
+     [ASPEED_RTC]    = 0x1E781000,
+     [ASPEED_TIMER1] = 0x1E782000,
+@@ -102,6 +103,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
+     [ASPEED_XDMA]      = 0x1E6E7000,
+     [ASPEED_ADC]       = 0x1E6E9000,
+     [ASPEED_VIDEO]     = 0x1E700000,
++    [ASPEED_SDHCI]     = 0x1E740000,
+     [ASPEED_GPIO]      = 0x1E780000,
+     [ASPEED_GPIO_1_8V] = 0x1E780800,
+     [ASPEED_RTC]       = 0x1E781000,
+@@ -147,6 +149,7 @@ static const int aspeed_soc_ast2400_irqmap[] = {
+     [ASPEED_ETH1]   = 2,
+     [ASPEED_ETH2]   = 3,
+     [ASPEED_XDMA]   = 6,
++    [ASPEED_SDHCI]  = 26,
+ };
+ 
+ #define aspeed_soc_ast2500_irqmap aspeed_soc_ast2400_irqmap
+@@ -185,6 +188,7 @@ static const int aspeed_soc_ast2600_irqmap[] = {
+     [ASPEED_ETH2]      = 3,
+     [ASPEED_FSI1]      = 100,
+     [ASPEED_FSI2]      = 101,
++    [ASPEED_SDHCI]     = 43,
+ };
+ 
+ static const AspeedSoCInfo aspeed_socs[] = {
+@@ -357,6 +361,15 @@ static void aspeed_soc_init(Object *obj)
+         sysbus_init_child_obj(obj, "fsi[*]", OBJECT(&s->fsi[0]),
+                               sizeof(s->fsi[0]), TYPE_ASPEED_FSI);
+     }
++
++    sysbus_init_child_obj(obj, "sdc", OBJECT(&s->sdhci), sizeof(s->sdhci),
++                          TYPE_ASPEED_SDHCI);
++
++    /* Init sd card slot class here so that they're under the correct parent */
++    for (i = 0; i < ASPEED_SDHCI_NUM_SLOTS; ++i) {
++        sysbus_init_child_obj(obj, "sdhci[*]", OBJECT(&s->sdhci.slots[i]),
++                              sizeof(s->sdhci.slots[i]), TYPE_SYSBUS_SDHCI);
++    }
+ }
+ 
+ /*
+@@ -698,6 +711,21 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->fsi[0]), 0,
+                            aspeed_soc_get_irq(s, ASPEED_FSI1));
+     }
++
++    /* SDHCI */
++    object_property_set_bool(OBJECT(&s->sdhci), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    for (i = 0; i < ASPEED_SDHCI_NUM_SLOTS; ++i) {
++        sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdhci.slots[i]), 0,
++                        sc->info->memmap[ASPEED_SDHCI] + ((i + 1) * 0x100));
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sdhci), 0,
++                    sc->info->memmap[ASPEED_SDHCI]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->sdhci), 0,
++                       aspeed_soc_get_irq(s, ASPEED_SDHCI));
+ }
+ static Property aspeed_soc_properties[] = {
+     DEFINE_PROP_UINT32("num-cpus", AspeedSoCState, num_cpus, 0),
+diff --git a/hw/sd/Makefile.objs b/hw/sd/Makefile.objs
+index 0665727..a884c23 100644
+--- a/hw/sd/Makefile.objs
++++ b/hw/sd/Makefile.objs
+@@ -8,3 +8,4 @@ obj-$(CONFIG_MILKYMIST) += milkymist-memcard.o
+ obj-$(CONFIG_OMAP) += omap_mmc.o
+ obj-$(CONFIG_PXA2XX) += pxa2xx_mmci.o
+ obj-$(CONFIG_RASPI) += bcm2835_sdhost.o
++obj-$(CONFIG_ASPEED_SOC) += aspeed_sdhci.o
+diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
+new file mode 100644
+index 0000000..6e99a9d
+--- /dev/null
++++ b/hw/sd/aspeed_sdhci.c
+@@ -0,0 +1,194 @@
++/*
++ * Aspeed SD Host Controller
++ * Eddie James <eajames@linux.ibm.com>
++ *
++ * Copyright (C) 2019 IBM Corp
++ * SPDX-License-Identifer: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qemu/error-report.h"
++#include "hw/sd/aspeed_sdhci.h"
++#include "qapi/error.h"
++
++#define ASPEED_SDHCI_INFO            0x00
++#define  ASPEED_SDHCI_INFO_RESET     0x00030000
++#define ASPEED_SDHCI_DEBOUNCE        0x04
++#define  ASPEED_SDHCI_DEBOUNCE_RESET 0x00000005
++#define ASPEED_SDHCI_BUS             0x08
++#define ASPEED_SDHCI_SDIO_140        0x10
++#define ASPEED_SDHCI_SDIO_148        0x18
++#define ASPEED_SDHCI_SDIO_240        0x20
++#define ASPEED_SDHCI_SDIO_248        0x28
++#define ASPEED_SDHCI_WP_POL          0xec
++#define ASPEED_SDHCI_CARD_DET        0xf0
++#define ASPEED_SDHCI_IRQ_STAT        0xfc
++
++#define TO_REG(addr) ((addr) / sizeof(uint32_t))
++
++static uint64_t aspeed_sdhci_read(void *opaque, hwaddr addr, unsigned int size)
++{
++    uint32_t val = 0;
++    AspeedSDHCIState *sdhci = opaque;
++
++    switch (addr) {
++    case ASPEED_SDHCI_SDIO_140:
++        val = (uint32_t)sdhci->slots[0].capareg;
++        break;
++    case ASPEED_SDHCI_SDIO_148:
++        val = (uint32_t)sdhci->slots[0].maxcurr;
++        break;
++    case ASPEED_SDHCI_SDIO_240:
++        val = (uint32_t)sdhci->slots[1].capareg;
++        break;
++    case ASPEED_SDHCI_SDIO_248:
++        val = (uint32_t)sdhci->slots[1].maxcurr;
++        break;
++    default:
++        if (addr < ASPEED_SDHCI_REG_SIZE) {
++            val = sdhci->regs[TO_REG(addr)];
++        } else {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: Out-of-bounds read at 0x%" HWADDR_PRIx "\n",
++                          __func__, addr);
++        }
++    }
++
++    return (uint64_t)val;
++}
++
++static void aspeed_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
++                               unsigned int size)
++{
++    AspeedSDHCIState *sdhci = opaque;
++
++    switch (addr) {
++    case ASPEED_SDHCI_SDIO_140:
++        sdhci->slots[0].capareg = (uint64_t)(uint32_t)val;
++        break;
++    case ASPEED_SDHCI_SDIO_148:
++        sdhci->slots[0].maxcurr = (uint64_t)(uint32_t)val;
++        break;
++    case ASPEED_SDHCI_SDIO_240:
++        sdhci->slots[1].capareg = (uint64_t)(uint32_t)val;
++        break;
++    case ASPEED_SDHCI_SDIO_248:
++        sdhci->slots[1].maxcurr = (uint64_t)(uint32_t)val;
++        break;
++    default:
++        if (addr < ASPEED_SDHCI_REG_SIZE) {
++            sdhci->regs[TO_REG(addr)] = (uint32_t)val;
++        } else {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: Out-of-bounds write at 0x%" HWADDR_PRIx "\n",
++                          __func__, addr);
++        }
++    }
++}
++
++static const MemoryRegionOps aspeed_sdhci_ops = {
++    .read = aspeed_sdhci_read,
++    .write = aspeed_sdhci_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++    .valid.min_access_size = 4,
++    .valid.max_access_size = 4,
++};
++
++static void aspeed_sdhci_set_irq(void *opaque, int n, int level)
++{
++    AspeedSDHCIState *sdhci = opaque;
++
++    if (level) {
++        sdhci->regs[TO_REG(ASPEED_SDHCI_IRQ_STAT)] |= BIT(n);
++
++        qemu_irq_raise(sdhci->irq);
++    } else {
++        sdhci->regs[TO_REG(ASPEED_SDHCI_IRQ_STAT)] &= ~BIT(n);
++
++        qemu_irq_lower(sdhci->irq);
++    }
++}
++
++static void aspeed_sdhci_realize(DeviceState *dev, Error **errp)
++{
++    Error *err = NULL;
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++    AspeedSDHCIState *sdhci = ASPEED_SDHCI(dev);
++
++    /* Create input irqs for the slots */
++    qdev_init_gpio_in_named_with_opaque(DEVICE(sbd), aspeed_sdhci_set_irq,
++                                        sdhci, NULL, ASPEED_SDHCI_NUM_SLOTS);
++
++    for (int i = 0; i < ASPEED_SDHCI_NUM_SLOTS; ++i) {
++        Object *sdhci_slot = OBJECT(&sdhci->slots[i]);
++        SysBusDevice *sbd_slot = SYS_BUS_DEVICE(&sdhci->slots[i]);
++
++        object_property_set_int(sdhci_slot, 2, "sd-spec-version", &err);
++        if (err) {
++            error_propagate(errp, err);
++            return;
++        }
++
++        object_property_set_uint(sdhci_slot, ASPEED_SDHCI_CAPABILITIES,
++                                 "capareg", &err);
++        if (err) {
++            error_propagate(errp, err);
++            return;
++        }
++
++        object_property_set_bool(sdhci_slot, true, "realized", &err);
++        if (err) {
++            error_propagate(errp, err);
++            return;
++        }
++
++        sysbus_connect_irq(sbd_slot, 0, qdev_get_gpio_in(DEVICE(sbd), i));
++    }
++
++    sysbus_init_irq(sbd, &sdhci->irq);
++    memory_region_init_io(&sdhci->iomem, OBJECT(sdhci), &aspeed_sdhci_ops,
++                          sdhci, TYPE_ASPEED_SDHCI, ASPEED_SDHCI_REG_SIZE);
++    sysbus_init_mmio(sbd, &sdhci->iomem);
++}
++
++static void aspeed_sdhci_reset(DeviceState *dev)
++{
++    AspeedSDHCIState *sdhci = ASPEED_SDHCI(dev);
++
++    memset(sdhci->regs, 0, ASPEED_SDHCI_REG_SIZE);
++    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] = ASPEED_SDHCI_INFO_RESET;
++    sdhci->regs[TO_REG(ASPEED_SDHCI_DEBOUNCE)] = ASPEED_SDHCI_DEBOUNCE_RESET;
++}
++
++static const VMStateDescription vmstate_aspeed_sdhci = {
++    .name = TYPE_ASPEED_SDHCI,
++    .version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(regs, AspeedSDHCIState, ASPEED_SDHCI_NUM_REGS),
++        VMSTATE_END_OF_LIST(),
++    },
++};
++
++static void aspeed_sdhci_class_init(ObjectClass *classp, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(classp);
++
++    dc->realize = aspeed_sdhci_realize;
++    dc->reset = aspeed_sdhci_reset;
++    dc->vmsd = &vmstate_aspeed_sdhci;
++}
++
++static TypeInfo aspeed_sdhci_info = {
++    .name          = TYPE_ASPEED_SDHCI,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(AspeedSDHCIState),
++    .class_init    = aspeed_sdhci_class_init,
++};
++
++static void aspeed_sdhci_register_types(void)
++{
++    type_register_static(&aspeed_sdhci_info);
++}
++
++type_init(aspeed_sdhci_register_types)
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 3f6c6c5..60e0fb2 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -29,6 +29,7 @@
+ #include "hw/misc/aspeed_pwm.h"
+ #include "hw/misc/aspeed_lpc.h"
+ #include "hw/misc/aspeed_fsi.h"
++#include "hw/sd/aspeed_sdhci.h"
+ 
+ #define ASPEED_SPIS_NUM  2
+ #define ASPEED_WDTS_NUM  4
+@@ -63,6 +64,7 @@ typedef struct AspeedSoCState {
+     AspeedPWMState pwm;
+     AspeedLPCState lpc;
+     AspeedFsiState fsi[2];
++    AspeedSDHCIState sdhci;
+ } AspeedSoCState;
+ 
+ #define TYPE_ASPEED_SOC "aspeed-soc"
+@@ -108,6 +110,7 @@ enum {
+     ASPEED_ADC,
+     ASPEED_VIDEO,
+     ASPEED_SRAM,
++    ASPEED_SDHCI,
+     ASPEED_GPIO,
+     ASPEED_GPIO_1_8V,
+     ASPEED_RTC,
+diff --git a/include/hw/sd/aspeed_sdhci.h b/include/hw/sd/aspeed_sdhci.h
+new file mode 100644
+index 0000000..dfdab43
+--- /dev/null
++++ b/include/hw/sd/aspeed_sdhci.h
+@@ -0,0 +1,34 @@
++/*
++ * Aspeed SD Host Controller
++ * Eddie James <eajames@linux.ibm.com>
++ *
++ * Copyright (C) 2019 IBM Corp
++ * SPDX-License-Identifer: GPL-2.0-or-later
++ */
++
++#ifndef ASPEED_SDHCI_H
++#define ASPEED_SDHCI_H
++
++#include "hw/sd/sdhci.h"
++
++#define TYPE_ASPEED_SDHCI "aspeed.sdhci"
++#define ASPEED_SDHCI(obj) OBJECT_CHECK(AspeedSDHCIState, (obj), \
++                                       TYPE_ASPEED_SDHCI)
++
++#define ASPEED_SDHCI_CAPABILITIES 0x01E80080
++#define ASPEED_SDHCI_NUM_SLOTS    2
++#define ASPEED_SDHCI_NUM_REGS     (ASPEED_SDHCI_REG_SIZE / sizeof(uint32_t))
++#define ASPEED_SDHCI_REG_SIZE     0x100
++
++typedef struct AspeedSDHCIState {
++    SysBusDevice parent;
++
++    SDHCIState slots[ASPEED_SDHCI_NUM_SLOTS];
++
++    MemoryRegion iomem;
++    qemu_irq irq;
++
++    uint32_t regs[ASPEED_SDHCI_NUM_REGS];
++} AspeedSDHCIState;
++
++#endif /* ASPEED_SDHCI_H */
+-- 
+1.8.3.1
 
-r~

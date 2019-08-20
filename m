@@ -1,101 +1,82 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp3421052wrs;
-        Mon, 19 Aug 2019 20:12:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwov9iNAWr8SmILMxFTxXoES8P5sackwFyi24EdZC4awmgG0XCh4f9FCjmQNOaWDkG1F61a
-X-Received: by 2002:ad4:55a9:: with SMTP id f9mr13066503qvx.133.1566270741730;
-        Mon, 19 Aug 2019 20:12:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566270741; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp3910490wrs;
+        Tue, 20 Aug 2019 05:35:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyARI3wwRyMy7tAExdeVMJ1Z1SKwfspVP17r5XnJoV4JsIeYf3sfvLrB91ZyW+jFANiQhwS
+X-Received: by 2002:a17:906:948a:: with SMTP id t10mr25610010ejx.111.1566304509112;
+        Tue, 20 Aug 2019 05:35:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566304509; cv=none;
         d=google.com; s=arc-20160816;
-        b=hhaSTBlbsHgklOz5D0ghZ4X9KyRByt2sJGo14j/UejEEhnAZe/vIn0172UMxI+80Qw
-         Uz3BDZp8cFxL+grLbX2OnkNwcU+I5kTbDRxVVfExcJ5F1P3caM1Ow+bpk8q5Q2ILfnGm
-         iNb6xdTw79EAMTj6lMZBpexGoYnFWmTIeUf1oZKZQFipxNpKZiySYcfLEwsDak30zqu6
-         fRde6oVZPXw55/We5Db0++tMNuM6JiDTgA/YPgWqqfwYJSukXj3NJuW6esIHnGY6U1BW
-         ehhynB8C2b4fc6+ojNW+dSJ/9LueFOxJ5F2t/NHrvRaSaBMSGs0M15M5ALpCjVCubE4c
-         KL+g==
+        b=XU3t796ZpK/6X0u/X13rdVnofTjvSTMsk+0VuEElJLt4TYUz8Z5ARqH1Ms0I1v6rW3
+         Cr73U1sphx3BElSt7/SBWKhoFu+BiliAbYk7e3Ru073q1oyuR0M4q3kWSEcxMHRpn/8P
+         K8zGtP9qmCUrg1HsIpHxI18+gGWjDEgyvfROhzhieFslVW9TfjUVYDVDxIbKPijdWTwW
+         FRRoVHfVfUqm1Pz9qexxvh9e3J03QO2gT/PcEf9JlsVl9Q88EQzCJJXEG5NAYdainKMl
+         DFrnXo9OH7n8aR1NwyaoYLK4w2Ji2Jqv3mh4D9WHgVAdUqoLQG/VOrOEmI/+1DCOSfBN
+         6Z1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=opF2Kjd4xhjet2Ok9MagWcGdoiR+78PtkQz6eXk5xsk=;
-        b=uC7R3TgYh2sha1uVOOX2ReUV9MHuuWCCShq73RLtGj9UXrxfQYxgFxelLzfItKMFbj
-         ddpvyL2yuwF1Ny5ZbPX4bj8Ufy1u3yKp5J8qBMGy69D/NumpmtEWPkRWhrJzAtH8GS4S
-         WFk1DwhxXRl+FH6Lth4rsx2La7u5T2O1beq/0M3G6ErqTWG8z2dm9eHqdw/IBQvdNbLD
-         QbMTqobBJ/6Ml0MUUQI806YDVps6Yktg7FS8Nb47kxkOmbDFAYbkbqPgh42YEkXzo5Qa
-         nEW9OuLvcPDiSrpzauwjR1DRGIWHjdd7n3TQ+pds/jyqNYIWR1TV78PPXP+vYAX+TYa6
-         Ol+g==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=IcHRtU8j5UjBsD5HZGR2ATlFu3cbetgICUnsM5712ko=;
+        b=F51o7x+U7bzCfzpzY9284ZCqXa23SY4o3G7krt/YjCIneRHjGcDqCbeHWqOVBUoycT
+         GXsCKkYeU/QbmvRzYR1VPHt7Md6UaZ3P1ETXYoLjvtFwqXrN3kNywKHSRGancxavDMbO
+         rNIW7lIgvdwDDwoNUCAhnnmuU2HL0gAVyfMOAxk4rSewmj46wHtBytx/1O/ARP1OCzxg
+         9TC0QYsSwomoPEcsnVSenO2Uo3HYiLY6BsAd5xLvJ45XKcs+BQkcBP7DeHRGAc0KbdGF
+         sZxWrmW/tc438PdqgCGyYMVHwwh78vrcTkgMnR5ZE+cEiJfJ14oATWyolcuVWGXCKUTs
+         7m4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pvwuH6x4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 34si11277354qvi.151.2019.08.19.20.12.21
+        by mx.google.com with ESMTPS id l48si9771996edb.254.2019.08.20.05.35.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Aug 2019 20:12:21 -0700 (PDT)
+        Tue, 20 Aug 2019 05:35:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pvwuH6x4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60970 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37048 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hzuZJ-0006Vq-5f
-	for alex.bennee@linaro.org; Mon, 19 Aug 2019 23:12:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45366)
+	id 1i03Lv-0005sh-AB
+	for alex.bennee@linaro.org; Tue, 20 Aug 2019 08:35:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35916)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <edgar.iglesias@gmail.com>) id 1hzuZ7-0006SN-Kk
- for qemu-arm@nongnu.org; Mon, 19 Aug 2019 23:12:10 -0400
+ (envelope-from <philmd@redhat.com>) id 1i03LW-0005s2-84
+ for qemu-arm@nongnu.org; Tue, 20 Aug 2019 08:34:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <edgar.iglesias@gmail.com>) id 1hzuZ6-0005aF-GA
- for qemu-arm@nongnu.org; Mon, 19 Aug 2019 23:12:09 -0400
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:36948)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <edgar.iglesias@gmail.com>)
- id 1hzuYw-0005TH-EZ; Mon, 19 Aug 2019 23:11:58 -0400
-Received: by mail-lj1-x241.google.com with SMTP id t14so3682860lji.4;
- Mon, 19 Aug 2019 20:11:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=opF2Kjd4xhjet2Ok9MagWcGdoiR+78PtkQz6eXk5xsk=;
- b=pvwuH6x4g2RD618z9nkWleyIT+6+twBUIvVz2ZiuSW7t4OUC4ypUZILRbI5tzpPlXM
- 01ZuAi7rMVbJ/luuKM7/OU8+CfxDwOxM6yahhJ3FIi819g+J3mXGhXnFSX/T1hMbQ6Mc
- NpAZHDg0y+faC9iil7yD+b4B2CydMwJ86lVkBLi4tvsx16pbw924ZQId/jkaGPvOa+Ks
- WFXC5CDoUf8lUcDbksineCbDwMOgbIHsZA57FmmrbSrozZKk3KLX+nRSQrFq4epUkdWZ
- 6Fuf4XDh5PVWVOzVjPB1MGcakGK3z8A6DUeUD15puLgREEMw0VyMuXJS7dIKmU9Zb9OS
- kNQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=opF2Kjd4xhjet2Ok9MagWcGdoiR+78PtkQz6eXk5xsk=;
- b=Qm1aHZ5yrKlnl563+JmeO4G+G2lpmm0eDzkZuwkxmB2yAabcLxpc0t1FIjayC42THw
- DqmMZQaGRanCkJ8W2g6FNscLJA1JBAsPi1+RwWgsVDuW/ke7CAbwTeKA43LQ3tyoTiEv
- n2ISmt4GLzK0hclwHW9NpGDuS/I1jFG4IvhZINPrTKSCACaUTSXBGD5qNqsJQcQBhJJJ
- 6UycYKkoG1tx8MCo5Av37IShSETwx0xlfqvYI/iGBv+fWDQBbZa2G37eWZEXuLNUkjRd
- hrsS7/K6SLBNOw5YEqPelLiu0BYOgf+MIWisjA2s7SmZOa136XG0W5PUdsp9ppEDuX9W
- 5Z3w==
-X-Gm-Message-State: APjAAAV5RVR+ey9+7B2Gqqz+KJmJheX29InimYupNSckMlFWnsDQtgV0
- tVrGwuMhdgC9Ncr+jwSwak9zHcwrrPcC98vXUG4=
-X-Received: by 2002:a2e:9a84:: with SMTP id p4mr2611284lji.52.1566270716435;
- Mon, 19 Aug 2019 20:11:56 -0700 (PDT)
+ (envelope-from <philmd@redhat.com>) id 1i03LV-0002HV-6o
+ for qemu-arm@nongnu.org; Tue, 20 Aug 2019 08:34:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36156)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1i03LU-0002Bq-W8; Tue, 20 Aug 2019 08:34:41 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 1679789AC2;
+ Tue, 20 Aug 2019 12:34:39 +0000 (UTC)
+Received: from x1w.redhat.com (unknown [10.40.205.209])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B23CA5C21F;
+ Tue, 20 Aug 2019 12:34:31 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue, 20 Aug 2019 14:34:16 +0200
+Message-Id: <20190820123417.27930-2-philmd@redhat.com>
+In-Reply-To: <20190820123417.27930-1-philmd@redhat.com>
+References: <20190820123417.27930-1-philmd@redhat.com>
 MIME-Version: 1.0
-References: <43bc5e07ac614d0e8e740bf6007ff77b@tpw09926dag18e.domain1.systemhost.net>
- <1565941032362.60179@bt.com> <1b5f5a92-1b75-f0d9-d7bc-4605094ad8e7@redhat.com>
- <8d8b37c9-3daf-d241-df92-1a5467bca451@redhat.com>
- <3b983f77-8503-3fcd-7c42-45d0121845e6@redhat.com>
- <b79a173d-a682-21da-6e7f-489ce06c8f7a@linaro.org>
-In-Reply-To: <b79a173d-a682-21da-6e7f-489ce06c8f7a@linaro.org>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Tue, 20 Aug 2019 05:11:46 +0200
-Message-ID: <CAJy5ezpXMNnMTWh67cY1xOrWQEySsjv8uuTkd3VS5pyMKM9FAQ@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: multipart/alternative; boundary="000000000000ace486059083d1f5"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::241
-Subject: Re: [Qemu-arm] [Qemu-devel] [qemu-s390x] [PATCH v7 33/42] exec:
- Replace device_endian with MemOp
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.26]); Tue, 20 Aug 2019 12:34:39 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH 1/2] hw/char/serial: Add a helper to set the
+ divisor register
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,125 +88,60 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: frederic.konrad@adacore.com, berto@igalia.com, qemu-block@nongnu.org,
- arikalo@wavecomp.com, pasic@linux.ibm.com, hpoussin@reactos.org,
- anthony.perard@citrix.com, xen-devel@lists.xenproject.org, lersek@redhat.com,
- jasowang@redhat.com, jiri@resnulli.us, ehabkost@redhat.com,
- b.galvani@gmail.com, eric.auger@redhat.com, alex.williamson@redhat.com,
- stefanha@redhat.com, jsnow@redhat.com, rth@twiddle.net, kwolf@redhat.com,
- andrew@aj.id.au, claudio.fontana@suse.com, crwulff@gmail.com,
- laurent@vivier.eu, sundeep.lkml@gmail.com, michael@walle.cc,
- qemu-ppc@nongnu.org, kbastian@mail.uni-paderborn.de, imammedo@redhat.com,
- fam@euphon.net, peter.maydell@linaro.org, david@redhat.com, palmer@sifive.com,
- keith.busch@intel.com, jcmvbkbc@gmail.com, hare@suse.com,
- sstabellini@kernel.org, andrew.smirnov@gmail.com, deller@gmx.de,
- magnus.damm@gmail.com, atar4qemu@gmail.com, Thomas Huth <thuth@redhat.com>,
- minyard@acm.org, sw@weilnetz.de, yuval.shaia@oracle.com, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, jan.kiszka@web.de, clg@kaod.org, shorne@gmail.com,
- qemu-riscv@nongnu.org, i.mitsyanko@gmail.com, cohuck@redhat.com,
- amarkovic@wavecomp.com, peter.chubb@nicta.com.au, aurelien@aurel32.net,
- pburton@wavecomp.com, sagark@eecs.berkeley.edu, green@moxielogic.com,
- kraxel@redhat.com, gxt@mprc.pku.edu.cn, robh@kernel.org,
- borntraeger@de.ibm.com, joel@jms.id.au, antonynpavlov@gmail.com,
- chouteau@adacore.com, philmd@redhat.com, Andrew.Baumann@microsoft.com,
- mreitz@redhat.com, walling@linux.ibm.com, dmitry.fleytman@gmail.com,
- mst@redhat.com, mark.cave-ayland@ilande.co.uk, qemu-devel@nongnu.org,
- jslaby@suse.cz, marex@denx.de, proljc@gmail.com, marcandre.lureau@redhat.com,
- alistair@alistair23.me, paul.durrant@citrix.com, david@gibson.dropbear.id.au,
- tony.nguyen@bt.com, xiaoguangrong.eric@gmail.com, huth@tuxfamily.org,
- jcd@tribudubois.net, Paolo Bonzini <pbonzini@redhat.com>,
- stefanb@linux.ibm.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0nXtJrK1c1cA
+X-TUID: ao0CotYEnqD0
 
---000000000000ace486059083d1f5
-Content-Type: text/plain; charset="UTF-8"
+Some chipsets provide 16650 compatible UART with exhanced
+features. The BCM2835 provides a register to directly set
+the baudrate divisor register without having to use the
+LABD bit.
 
-On Mon, 19 Aug. 2019, 23:01 Richard Henderson, <richard.henderson@linaro.org>
-wrote:
+Add a helper to allow models to directly set the divisor.
 
-> On 8/19/19 11:29 AM, Paolo Bonzini wrote:
-> > On 19/08/19 20:28, Paolo Bonzini wrote:
-> >> On 16/08/19 12:12, Thomas Huth wrote:
-> >>> This patch is *huge*, more than 800kB. It keeps being stuck in the the
-> >>> filter of the qemu-s390x list each time you send it. Please:
-> >>>
-> >>> 1) Try to break it up in more digestible pieces, e.g. change only one
-> >>> subsystem at a time (this is also better reviewable by people who are
-> >>> interested in one area)
-> >>
-> >> This is not really possible, since the patch is basically a
-> >> search-and-replace.  You could perhaps use some magic
-> >> ("DEVICE_MEMOP_ENDIAN" or something like that) to allow a split, but it
-> >> would introduce more complication than anything else.
-> >
-> > I'm stupid, at this point of the series it _would_ be possible to split
-> > the patch by subsystem.  Still not sure it would be actually an
-> advantage.
->
-> It might be easier to review if we split by symbol, one rename per patch
-> over
-> the entire code base.
->
->
-> r~
->
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ hw/char/serial.c         | 6 ++++++
+ include/hw/char/serial.h | 1 +
+ 2 files changed, 7 insertions(+)
 
-Or if we review your script (I assume this wasn't a manual change). I'm not
-sure it's realistic to have review on the entire patch or patches.
+diff --git a/hw/char/serial.c b/hw/char/serial.c
+index b4aa250950..12eb93705d 100644
+--- a/hw/char/serial.c
++++ b/hw/char/serial.c
+@@ -191,6 +191,12 @@ static void serial_update_parameters(SerialState *s)
+            speed, parity, data_bits, stop_bits);
+ }
+=20
++void serial_set_divider(SerialState *s, uint16_t divider)
++{
++    s->divider =3D divider;
++    serial_update_parameters(s);
++}
++
+ static void serial_update_msl(SerialState *s)
+ {
+     uint8_t omsr;
+diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
+index 8be3d8a4f9..ef211f695d 100644
+--- a/include/hw/char/serial.h
++++ b/include/hw/char/serial.h
+@@ -83,6 +83,7 @@ extern const MemoryRegionOps serial_io_ops;
+ void serial_realize_core(SerialState *s, Error **errp);
+ void serial_exit_core(SerialState *s);
+ void serial_set_frequency(SerialState *s, uint32_t frequency);
++void serial_set_divider(SerialState *s, uint16_t divider);
+=20
+ /* legacy pre qom */
+ SerialState *serial_init(int base, qemu_irq irq, int baudbase,
+--=20
+2.20.1
 
-Best regards,
-Edgar
-
->
-
---000000000000ace486059083d1f5
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">On Mon, 19 Aug. 2019, 23:01 Richard Henderson, &lt;<a =
-href=3D"mailto:richard.henderson@linaro.org">richard.henderson@linaro.org</=
-a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 =
-0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">On 8/19/19 11:29 AM, =
-Paolo Bonzini wrote:<br>
-&gt; On 19/08/19 20:28, Paolo Bonzini wrote:<br>
-&gt;&gt; On 16/08/19 12:12, Thomas Huth wrote:<br>
-&gt;&gt;&gt; This patch is *huge*, more than 800kB. It keeps being stuck in=
- the the<br>
-&gt;&gt;&gt; filter of the qemu-s390x list each time you send it. Please:<b=
-r>
-&gt;&gt;&gt;<br>
-&gt;&gt;&gt; 1) Try to break it up in more digestible pieces, e.g. change o=
-nly one<br>
-&gt;&gt;&gt; subsystem at a time (this is also better reviewable by people =
-who are<br>
-&gt;&gt;&gt; interested in one area)<br>
-&gt;&gt;<br>
-&gt;&gt; This is not really possible, since the patch is basically a<br>
-&gt;&gt; search-and-replace.=C2=A0 You could perhaps use some magic<br>
-&gt;&gt; (&quot;DEVICE_MEMOP_ENDIAN&quot; or something like that) to allow =
-a split, but it<br>
-&gt;&gt; would introduce more complication than anything else.<br>
-&gt; <br>
-&gt; I&#39;m stupid, at this point of the series it _would_ be possible to =
-split<br>
-&gt; the patch by subsystem.=C2=A0 Still not sure it would be actually an a=
-dvantage.<br>
-<br>
-It might be easier to review if we split by symbol, one rename per patch ov=
-er<br>
-the entire code base.<br>
-<br>
-<br>
-r~<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"auto=
-">Or if we review your script (I assume this wasn&#39;t a manual change). I=
-&#39;m not sure it&#39;s realistic to have review on the entire patch or pa=
-tches.</div><div dir=3D"auto"><br></div><div dir=3D"auto">Best regards,</di=
-v><div dir=3D"auto">Edgar=C2=A0</div><div dir=3D"auto"><div class=3D"gmail_=
-quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-=
-left:1px #ccc solid;padding-left:1ex">
-</blockquote></div></div></div>
-
---000000000000ace486059083d1f5--

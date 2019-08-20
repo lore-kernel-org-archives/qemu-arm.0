@@ -1,199 +1,192 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp3934987wrs;
-        Tue, 20 Aug 2019 06:00:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwV3reer04TYC6xv2ahgCNoRFTlloPlfy9hKnYAIjrSH72oPuuG8C3VU6i4Y7xArX295waI
-X-Received: by 2002:a17:906:30d1:: with SMTP id b17mr19134098ejb.9.1566306037321;
-        Tue, 20 Aug 2019 06:00:37 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp4045720wrs;
+        Tue, 20 Aug 2019 07:31:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxb+am30SWtnCtaPOHF4gV0eMaVl79cR2mIXCXrNHUZwGfrK1JPaHvAJfmZs+dEEqZak194
+X-Received: by 2002:a50:90c5:: with SMTP id d5mr31820674eda.28.1566311483915;
+        Tue, 20 Aug 2019 07:31:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566311483; cv=none;
+        d=google.com; s=arc-20160816;
+        b=C31crDbtVB45tSbQnLU7ugXJa/UAbAyCV5FOIumkgq7FrRrGpyfJNfHVZXylJnH/tG
+         6bjt5zNqPmrG8DDIHdvpliTe/czut35BLufROU5J+q6Cpb64fwgdpN3jM9RUWYDAhu8l
+         AkC3XpiSaGFImhJpFnZkXrItR6v9hLmV1Z5aYiGeHFwDHw0EkAl2jIfw0aWP6b1JVCNA
+         QfSbRAMHKxo+MlpA/LAi63TbCVfHY0FY5oQjXiISAKfOGLsVKI17ZETQtej6f0LkONab
+         r2lFTjNuR85EcHLdwDn8qiXDPAFaJXlGX132FbGvjlagKBhV/B+aOKJmRj8QZO3H9psi
+         xjog==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:dkim-signature;
+        bh=TjKlcReLpXlh05Iw2h9/M1+xRcBBUqLQ42/Ni8tXUE4=;
+        b=gKaswoVqEPSXY+xZp+lWYrSaWYXSC/wnawuYTyd2XvJIjInzNL1cec4sRHiqkN9xW6
+         Xk4AyMvDTnPYr3Ip3c+5JhjrUcqDoOl51m4fl8/qR610ZclW0d2FnWGuRp7R30ouI9Kb
+         Vf60SIHOdHqofELWYREzIQLuQKNXgUBsTW43H9bsfrp5jyy9MakNpd4vfmzggFYIygaZ
+         Sjpa3YtkIlH3qbOXsAIStr0HF+mr9uorUwazXwh1qVxv8HuvENhbazBmeCHAuJ8PEJjB
+         p4z/3Dxz0LFcHeUw4QVDIVvNiRJtjJ7SrYmf+q8ymhwBAqcED3O0OeM50+nrPuitEBwD
+         F+Pw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="F2lI6F/c";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w52si9425400edc.184.2019.08.20.06.00.37
+        by mx.google.com with ESMTPS id v8si8013996ejh.248.2019.08.20.07.31.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Aug 2019 06:00:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 20 Aug 2019 07:31:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=PYuucx7z;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37208 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="F2lI6F/c";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37998 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i03ka-0008J2-8B
-	for alex.bennee@linaro.org; Tue, 20 Aug 2019 09:00:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39136)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i05AQ-0002Iz-SJ
+	for alex.bennee@linaro.org; Tue, 20 Aug 2019 10:31:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54438)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <edgar@xilinx.com>) id 1i03jL-0007jM-TG
- for qemu-devel@nongnu.org; Tue, 20 Aug 2019 08:59:21 -0400
+ (envelope-from <groeck7@gmail.com>) id 1i05AH-0002Ic-5L
+ for qemu-arm@nongnu.org; Tue, 20 Aug 2019 10:31:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <edgar@xilinx.com>) id 1i03jK-0006GC-Bq
- for qemu-devel@nongnu.org; Tue, 20 Aug 2019 08:59:19 -0400
-Received: from mail-eopbgr800072.outbound.protection.outlook.com
- ([40.107.80.72]:48784 helo=NAM03-DM3-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <edgar@xilinx.com>)
- id 1i03jK-0006Fd-28; Tue, 20 Aug 2019 08:59:18 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=FgJ2p1lYEZDXmh6/VHdQY6YioO2E2HNMDK+FdmiLtZ5ywvvzrBE9JYSi/TBMZGA5e5xaPpW4mM3erEN5r4yNWA2ALEGjeNWxwiP7ZuXSrYMKrxlnZV56v52V8SduAZkobRyHxgfIacU8Hnzp7x0gzBk4sQsyIyjGmPCqrrmADp3qXz4KId2cyN2JQvVCx05EPu1RB0HRVfbPYiSpiI3CURvjFZqhq82Kv/N6x90lM+iOyML65gnbmKfCsuUslhfvJHbRGldgbpheUZxu+6N8RjEFBpCYW6oHH6XJdLcTD6WdwBrDHQNOazXFsc6Old2Qf8ZLp/AwXKaHlVmjANc6cg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2LLSbik/3FYSuyvcX5Y2DH3baCFtWhk+gmn5FveY+vk=;
- b=ByOlirNw65w2Fzk61bZ6ayzL6FHWUD4RFGOcQG9W5k//r6pCxNHfR3g3DXtvjlnONDh882nPrJmsAGGZEw5lA17UvSYcCG2NLJBOqdB5z1vbVqb1uRGemzzchNcuii3b6AM2bz9GgG5pErImh/L+sd8WPtRn/R7y/5OVuPrCNgKmaPTCIVuG05on2Dnbll/TknEBZfkp40Y6OW2aRl+STH1yJJWZDPyYiD9wdOviAVbguHODLraeU28EGRPRu9Fy48reKhGgDeCFaj/RVPTenbMUPA/0tdG0oCBkil7s12dPqxJQKsEAEAIoOFwskV4UcWEOjuV0eY05eQVQK4zMCw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.60.83) smtp.rcpttodomain=citrix.com smtp.mailfrom=xilinx.com;
- dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
- not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2LLSbik/3FYSuyvcX5Y2DH3baCFtWhk+gmn5FveY+vk=;
- b=PYuucx7z0nb8gKUnI74rRMJ1ulsHd5GRFVCE9v820IT+W2WFfCk3g49zdltSAro9Nfqa1g8MdjTdEIlIe0s0XgVIjj0LPG7FgTNZg6ouBXC2gSj5GHdLiCOmiXDskMUjgQf9kidKKm49i3hlOoRr+eso+ScE02WtQ02qjxca8Y8=
-Received: from BN6PR02CA0034.namprd02.prod.outlook.com (2603:10b6:404:5f::20)
- by BN7PR02MB5299.namprd02.prod.outlook.com (2603:10b6:408:2b::21)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2178.18; Tue, 20 Aug
- 2019 12:59:16 +0000
-Received: from CY1NAM02FT058.eop-nam02.prod.protection.outlook.com
- (2a01:111:f400:7e45::205) by BN6PR02CA0034.outlook.office365.com
- (2603:10b6:404:5f::20) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2178.16 via Frontend
- Transport; Tue, 20 Aug 2019 12:59:16 +0000
-Authentication-Results: spf=pass (sender IP is 149.199.60.83)
- smtp.mailfrom=xilinx.com; citrix.com; dkim=none (message not signed)
- header.d=none;citrix.com; dmarc=bestguesspass action=none
- header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
-Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
- CY1NAM02FT058.mail.protection.outlook.com (10.152.74.149) with Microsoft SMTP
- Server (version=TLS1_0, cipher=TLS_RSA_WITH_AES_256_CBC_SHA) id 15.20.2178.16
- via Frontend Transport; Tue, 20 Aug 2019 12:59:15 +0000
-Received: from unknown-38-66.xilinx.com ([149.199.38.66] helo=xsj-pvapsmtp01)
- by xsj-pvapsmtpgw01 with esmtp (Exim 4.63)
- (envelope-from <edgar@xilinx.com>)
- id 1i03jG-0004MO-Rw; Tue, 20 Aug 2019 05:59:14 -0700
-Received: from [127.0.0.1] (helo=xsj-smtp-dlp2.xlnx.xilinx.com)
- by xsj-pvapsmtp01 with esmtp (Exim 4.63)
- (envelope-from <edgar@xilinx.com>)
- id 1i03jB-0004US-OF; Tue, 20 Aug 2019 05:59:09 -0700
-Received: from xsj-pvapsmtp01 (mailman.xilinx.com [149.199.38.66])
- by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id x7KCx9Hl032457; 
- Tue, 20 Aug 2019 05:59:09 -0700
-Received: from [10.71.117.108] (helo=localhost)
- by xsj-pvapsmtp01 with esmtp (Exim 4.63)
- (envelope-from <edgar@xilinx.com>)
- id 1i03jA-0004UP-RH; Tue, 20 Aug 2019 05:59:09 -0700
-Date: Tue, 20 Aug 2019 14:59:08 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Message-ID: <20190820125908.GQ17732@toto>
-References: <20190816125802.25877-1-peter.maydell@linaro.org>
- <CAFEAcA-7Lr0nUD3g=C7S1Obgaa0E0p794XLhuBZRW_+fC5YjcQ@mail.gmail.com>
+ (envelope-from <groeck7@gmail.com>) id 1i05AF-0002nu-Sq
+ for qemu-arm@nongnu.org; Tue, 20 Aug 2019 10:31:13 -0400
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:42508)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <groeck7@gmail.com>)
+ id 1i05AF-0002mw-NA; Tue, 20 Aug 2019 10:31:11 -0400
+Received: by mail-pf1-x443.google.com with SMTP id i30so3495391pfk.9;
+ Tue, 20 Aug 2019 07:31:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=TjKlcReLpXlh05Iw2h9/M1+xRcBBUqLQ42/Ni8tXUE4=;
+ b=F2lI6F/cZRER26JlzzNhSMSLlWa4hkfpA2x2x/ATPMby5dDloMYTFav06T5D+aWU0D
+ RNRyLCKDLQgSVMEdoc2wPH16SX/cJAr6RszFJ6zFIgL7rBryHIGt3VzMnSx1f9SZvAND
+ fLyP+InrAEkRaQkI14uccmILO5gXL3JizU47Mf2laMjrn86sRR9eHpTiMprumIK13EmJ
+ iSWHgpUwyuKHT5L+QY9TwEG3+rpqmlPzDbuwfgFA0W2j044LDSEYCe3FRUbhVjE6bQmJ
+ fCJDe3uoQpeYWQxvaOJyAlRsLDptNbqdCXLMVzoz9Ka0t3/q8qYvZiQZ0pqFUN7dm2vP
+ tv5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=TjKlcReLpXlh05Iw2h9/M1+xRcBBUqLQ42/Ni8tXUE4=;
+ b=UvjL+l1aF6jGMm9Mcv8HM2Fltr6pK1px3FncB/+Hv2ho95KWmmE2ARNLTuPspQ9/hf
+ 2+J3dedbKQhGdIhJdKVwdxxqS0lxzV3lzqeO2rO/OOnwu6hmmgKXwpU2TEzU7qKiMC0A
+ qgqFb7BL78xE4Dd/2dTI5n38d3xRNLgNVcdYxhNvKb5FYE7wQPtcy/2LdPJ7eINkKk2h
+ pUQ8iVb78muGCImWFOhbtMK7XRzlv13gz9sJgXFBuSyph6+pCY9UlxqPWeOGIFJZPULq
+ SCPp5W2HVHzzwe31i8OCK32+37mDLtHfw8JufQg7/AGlOmFV3qx782+d2+dc/0QMArMb
+ MORw==
+X-Gm-Message-State: APjAAAUZUY2/n/xpj+qD69LPTvDhMm8gfkVAumBGCGFE8HTNN+ym5Rov
+ AkrJuBhd2iAE885FRL44WbA=
+X-Received: by 2002:aa7:8f2e:: with SMTP id y14mr30446880pfr.113.1566311470241; 
+ Tue, 20 Aug 2019 07:31:10 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
+ by smtp.gmail.com with ESMTPSA id
+ b19sm10936832pgs.10.2019.08.20.07.31.08
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 20 Aug 2019 07:31:09 -0700 (PDT)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20190820123417.27930-1-philmd@redhat.com>
+From: Guenter Roeck <linux@roeck-us.net>
+Message-ID: <3e3fcb30-1e12-eaf4-07a2-47d09aea2511@roeck-us.net>
+Date: Tue, 20 Aug 2019 07:31:08 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA-7Lr0nUD3g=C7S1Obgaa0E0p794XLhuBZRW_+fC5YjcQ@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-RCIS-Action: ALLOW
-X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
-X-TM-AS-User-Approved-Sender: Yes;Yes
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-Forefront-Antispam-Report: CIP:149.199.60.83; IPV:NLI; CTRY:US; EFV:NLI;
- SFV:NSPM;
- SFS:(10009020)(7916004)(4636009)(376002)(346002)(136003)(396003)(39860400002)(2980300002)(199004)(189003)(9786002)(106002)(70206006)(76506006)(33656002)(76176011)(70586007)(478600001)(1076003)(9686003)(5660300002)(6246003)(54906003)(26005)(47776003)(50466002)(58126008)(8676002)(81166006)(486006)(305945005)(23726003)(336012)(6916009)(81156014)(316002)(33716001)(126002)(356004)(4326008)(16586007)(476003)(11346002)(57986006)(186003)(63266004)(14444005)(8936002)(446003)(2906002)(229853002)(426003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:BN7PR02MB5299; H:xsj-pvapsmtpgw01; FPR:;
- SPF:Pass; LANG:en; PTR:unknown-60-83.xilinx.com; A:1; MX:1; 
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 4ea83ea3-4fef-427b-21d2-08d7256e34b2
-X-Microsoft-Antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(5600148)(711020)(4605104)(4709080)(1401327)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(2017052603328);
- SRVR:BN7PR02MB5299; 
-X-MS-TrafficTypeDiagnostic: BN7PR02MB5299:
-X-Microsoft-Antispam-PRVS: <BN7PR02MB5299AF3CDC21C42A2B18FB6BC2AB0@BN7PR02MB5299.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
-X-Forefront-PRVS: 013568035E
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam-Message-Info: g26IG7ZZAqDSE61MYrWw8p+BEv5PhCLmENePJ75MoHOoH1JJUwORGb/fWQMTMiVuKiZ3LuUJkQ1G9PiuljC5+IY86ggusHsIQz6wCMh8JC/ZeAhwOh3SdW5xVuhbcKLUUCYX1iNQbhIocHmFPmveht0pCkGaIJ3sXz60vdOQWJRKjn79Zwq1zVdVSIpBAlIRbntvvR2RI3aZ2esx513HMNiDaXXkZxWEnaeQCqsviwW8Yje3OpZiKI2SLJxyP0tjeNHOhUap+ySM7pI15e0rkIoVGJWqCGj18aCZRKOhPQQVOdCSrae6LrEi4levJCOORUr2arxZSOI+QodpMO7YbgiVW0HhrJXhqXnU8nmbHYg1i4fWkVEIPwZ3RW/11Uvj0GzDqN500bkyHHWaDGKp99xSHQcOYdk9UH5w3mM2h+c=
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Aug 2019 12:59:15.4051 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4ea83ea3-4fef-427b-21d2-08d7256e34b2
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
- Helo=[xsj-pvapsmtpgw01]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PR02MB5299
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.80.72
-Subject: Re: [Qemu-devel] [PATCH 0/2] target/arm: Take exceptions on ATS
- instructions
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <20190820123417.27930-1-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::443
+Subject: Re: [Qemu-arm] [RFC PATCH 0/2] hw/char/bcm2835_aux: Provide full
+ 16550 UART support
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Anthony PERARD <anthony.perard@citrix.com>, qemu-arm <qemu-arm@nongnu.org>,
- Stefano Stabellini <sstabellini@kernel.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: VthGVWMEymTH
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0ziBYTDAiD0h
 
-On Mon, Aug 19, 2019 at 01:44:37PM +0100, Peter Maydell wrote:
-> On Fri, 16 Aug 2019 at 13:58, Peter Maydell <peter.maydell@linaro.org> wrote:
-> >
-> > The translation table walk for an ATS instruction can result in
-> > various faults.  In general these are just reported back via the
-> > PAR_EL1 fault status fields, but in some cases the architecture
-> > requires that the fault is turned into an exception:
-> >  * synchronous stage 2 faults of any kind during AT S1E0* and
-> >    AT S1E1* instructions executed from NS EL1 fault to EL2 or EL3
-> >  * synchronous external aborts are taken as Data Abort exceptions
-> >
-> > (This is documented in the v8A Arm ARM DDI0487A.e D5.2.11 and G5.13.4.)
-> >
-> > I noticed this by code inspection back last year sometime when
-> > I was investigating a guest boot failure that turned out to be
-> > due to an entirely different cause. I got about halfway through
-> > trying to code up a fix before I realised it was irrelevant to
-> > that bug. This patchset is just tidying up and completing that
-> > work so it doesn't get lost.
-> >
-> > Use of ATS insns in the cases where they might actually fault
-> > is quite rare (obviously nobody sets up page tables where there's
-> > no memory and they'll take external aborts, and even for the
-> > "take a hyp trap for a stage 2 fault" case you need a setup
-> > with a hypervisor and a guest that uses ATS insns, and Linux as
-> > a guest doesn't use ATS at all. So my testing of this patchset
-> > has been more "check it doesn't break things" rather than
-> > actively finding and testing a use of the throw-an-exception path...
+On 8/20/19 5:34 AM, Philippe Mathieu-Daudé wrote:
+> Hi,
 > 
-> I'm told that Xen for Arm makes more active use of ATS
-> instructions, so I've cc'd a few Xen people -- do any
-> of you have handy testing setups to try running Xen in
-> emulation under QEMU? Configs where the guest (EL1) actually
-> uses ATS instructions are the particularly interesting point
-> for this patchset.
+> Since there has been some activity on the list asking about
+> Rasberry PI USB support, I had a look a some previous unfinished
+> work and rebased it to share, in case it helps hobbyist interested
+> in improving these machines.
 > 
-> (if there's a good set of instructions for creating a test
-> image I could probably add it to the ad-hoc set of things
-> I sometimes test with.)
+> This series is some proof-of-concept on improving the AUX UART
+> support. See the commit description for various TODO/questions.
+> 
+> This can be tested using files documented by Peter Maydell in
+> his blog post:
+> https://translatedcode.wordpress.com/2018/04/25/debian-on-qemus-raspberry-pi-3-model/
+> 
+> And using the kernel command line arguments suggested by Guenter Roeck:
+> 
+> qemu-system-aarch64 -M raspi3 -m 1024 \
+>    -kernel raspi3/bootpart/vmlinuz-4.14.0-3-arm64 \
+>    -initrd raspi3/bootpart/initrd.img-4.14.0-3-arm64 \
+>    -dtb raspi3/bootpart/bcm2837-rpi-3-b.dtb \
+>    -append 'earlycon=uart8250,mmio32,0x3f215040 rdinit=/sbin/init panic=-1 console=ttyS1,115200' \
+>    -drive file=raspi3/2018-01-08-raspberry-pi-3-buster-PREVIEW.img,format=raw,if=sd \
+>    -serial null -serial stdio \
+>    -d unimp,guest_errors -trace bcm283\*
 
+[ ... ]
 
-Hi,
+> [    3.123313] Unpacking initramfs...
+> 
+> Here it hangs, even with CPRMAN patch from Guenter:
+> https://lists.gnu.org/archive/html/qemu-devel/2018-07/msg03153.html
+> 
 
-All tests passed.
+This command line works for me:
 
-Tested-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+qemu-system-aarch64 -M raspi3 -kernel arch/arm64/boot/Image -no-reboot \
+	-nographic -snapshot -smp 4 -m 1G \
+	-drive file=rootfs.ext2,format=raw,if=sd \
+	-serial null -serial stdio -monitor none -no-reboot \
+	--append 'panic=-1 slub_debug=FZPUA root=/dev/mmcblk0 rootwait earlycon=uart8250,mmio32,0x3f215040 console=ttyS1,115200' \
+	-dtb arch/arm64/boot/dts/broadcom/bcm2837-rpi-3-b.dtb
 
-Cheers,
-Edgar
+or, with initrd:
 
+qemu-system-aarch64 -M raspi3 -kernel arch/arm64/boot/Image -no-reboot \
+	-nographic \
+	-initrd rootfs.cpio \
+	-m 1G -serial null -serial stdio -monitor none -no-reboot \
+	--append 'panic=-1 slub_debug=FZPUA rdinit=/sbin/init earlycon=uart8250,mmio32,0x3f215040 console=ttyS1,115200' \
+	-dtb arch/arm64/boot/dts/broadcom/bcm2837-rpi-3-b.dtb
 
+This is with the mainline kernel.
+
+I don't see a significant difference to your patch series.
+
+I tested with qemu 4.0, 4.1, and mainline (with my patch series applied on top of each).
+One problem I do see is that booting mainline (as of right now) is _slow_ compared
+to released versions of qemu. It takes some 35 seconds to get to "Unpacking initramfs",
+compared to ~8 seconds for v4.1 and earlier. Otherwise it works.
+
+One possibility might be that your initrd has a problem. Can you boot without your patch
+series, or is it always stuck ?
+
+Thanks,
+Guenter

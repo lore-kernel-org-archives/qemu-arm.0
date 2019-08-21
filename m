@@ -1,108 +1,108 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp796414wrs;
-        Wed, 21 Aug 2019 06:26:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzQ0vjdBDd/wR4XI8TSGeznMv/LkL2A6YqoSW8pKlAUZopctYDPbHcRW3w5LsUxEFVSfZXQ
-X-Received: by 2002:a37:a358:: with SMTP id m85mr31794269qke.190.1566393997648;
-        Wed, 21 Aug 2019 06:26:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566393997; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp796561wrs;
+        Wed, 21 Aug 2019 06:26:46 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzsW/Z2zJLcvP+nMgbq+WpFpcPWJ8nXPyFWrZYfmv4TjCUUUsY/vu45QiRzALVFRYIL1kUP
+X-Received: by 2002:ac8:6bd0:: with SMTP id b16mr31165311qtt.178.1566394006228;
+        Wed, 21 Aug 2019 06:26:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566394006; cv=none;
         d=google.com; s=arc-20160816;
-        b=Jn5+Rf7RIlNK80Nb6PxIZ1RarZdHrmgeDUz8LiCwFZKby67j0qU2v5TnyIkZtXJpxo
-         OiZ7crarILkL3P0UHi6OtAWYbmyiMYWFFurDeUeazF1Ty4Yv8ECtaotneNcy1uPCOvst
-         qvna2YXxbNbezRm/iDVNGyZA4j4jAAsuFkyzdrmDhN2Vp0M8m5ZY2Bh7EBUL9MarxdMf
-         eFNEBBlqi7kJfSFC7rVtN9CmM4+6OAaJiKndP6LGUClgO1GC1htZF0MzkLmRXj+q9pqQ
-         teGynR5z4Bu0P0aj7iRkEao6TPC5CacCuE8SOHXJGtXcRv8BJbeBeCGH/bT6IoOqXxm4
-         2AHA==
+        b=NrHyYWSbYmj9/Exhv7vX+4YGRsHQUyNjB6eUOtDKgWaa+74g6Rw3qHCJvz0oiCSKrZ
+         5On6URYoiJVqyGPOqcot9JnFWBi8NJc3+yG6atk1imzMpIRcAbbQYgW9zUgTPteyeZLR
+         wLfUXfgSPBVprKxKtT5NLSw6qRZ0VsqhqC1gzzZMjZFS1UeLEskdYoTcYq0TQzcLjFbA
+         oJ/6DcXp5KdDiJFvrGP97TohVUPeMw/v9oyuczn7HrWghfMpYU6BaKNQm6rwVCFeFo0+
+         bhd3GyzpB5gLX0YietGvR4bmsdPGVENrh4EPDxud4Z8bJKA82MSU8tyu4BfhCts2LAik
+         odLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to;
-        bh=egB0z17PYG3HO62Gt+o/sY6b9gFbZWilQtcofyOj9gc=;
-        b=Skj6Gy2rzo8BVUwhHaH6mcBS9RqpeEzjWAnXazdNwPY7uoV48jP+hxpB//vYo9pWZU
-         FNT1nRgLG5BmjJ+W+hO1DhLIpLUeAodZ9KZBZ3FV0a2B9cR6WHsv5vTjZkVflCcvv19W
-         lwVC8ko0MElWvxFv9R1J8HM/XdiKVjihmcMQ/tVsqmxMVUHHqIdmtrdHLg0Got16KG5f
-         Cfel8IZEyd7365hpORIx8RIuiNRSUr3mtckzAtrYvBp5UynjH/ep6Nf77DDt8qspN5A6
-         gqFCpXBgI7EExoOEwgTvRktS2/OvTarnkelnZQ/tsulNLhwpYLJIC7ohFeYaArVGD983
-         ZYeQ==
+        bh=D0pF6UG0Rcn4AQLmuiW/4rFWNQAm4ng4PETR/XuXhrs=;
+        b=m7j5pGcxPEKQJH+U3qmXX/ZTNuaJy3EU5Z8WUMPkP+7raH5pFtOCOjTqaa5cPONbQd
+         Uxpj3HtzAL9Uc/nTdXL/20bzOKUVDcX/Aqc+SyMB7uudRuoJ1SasOmq46bwtCDYj0tnn
+         XWocQEFRwpOPEB3ysPa8tkdLadBNNm4DxfFYeEqba4vYRh8D+PJ9BAfmzpyXbOVXKnvZ
+         hkUfpvIOBTCpYe8Lz8OmoALBiegnpuIXM9ekIdeh+4mmMVKYZhRG38MMawR0HdNB1kfj
+         yK420SFWIct7AENBbrmiVKMwgeDL+Ewa344rkCSwQDRF6hSHx8FO3ylGJ8I/9lXQeu0Z
+         wclA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d9si12109310qkc.377.2019.08.21.06.26.37
+        by mx.google.com with ESMTPS id 67si12747201qki.250.2019.08.21.06.26.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Aug 2019 06:26:37 -0700 (PDT)
+        Wed, 21 Aug 2019 06:26:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48514 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48518 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i0QdI-0008Ok-RA
-	for alex.bennee@linaro.org; Wed, 21 Aug 2019 09:26:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45636)
+	id 1i0QdR-0000GE-Jx
+	for alex.bennee@linaro.org; Wed, 21 Aug 2019 09:26:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45329)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1i0Qcj-0007fq-3J
- for qemu-arm@nongnu.org; Wed, 21 Aug 2019 09:26:02 -0400
+ (envelope-from <philmd@redhat.com>) id 1i0QaZ-0003lP-5c
+ for qemu-arm@nongnu.org; Wed, 21 Aug 2019 09:23:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1i0Qch-0001bE-Ll
- for qemu-arm@nongnu.org; Wed, 21 Aug 2019 09:26:01 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39272)
+ (envelope-from <philmd@redhat.com>) id 1i0QaY-0000ig-18
+ for qemu-arm@nongnu.org; Wed, 21 Aug 2019 09:23:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38488)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1i0Qch-0001am-Ex
- for qemu-arm@nongnu.org; Wed, 21 Aug 2019 09:25:59 -0400
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69])
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1i0QaX-0000iO-QV
+ for qemu-arm@nongnu.org; Wed, 21 Aug 2019 09:23:45 -0400
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 817B72CE955
- for <qemu-arm@nongnu.org>; Wed, 21 Aug 2019 13:25:58 +0000 (UTC)
-Received: by mail-wm1-f69.google.com with SMTP id 19so1196045wmk.0
- for <qemu-arm@nongnu.org>; Wed, 21 Aug 2019 06:25:58 -0700 (PDT)
+ by mx1.redhat.com (Postfix) with ESMTPS id DB0D2C04959F
+ for <qemu-arm@nongnu.org>; Wed, 21 Aug 2019 13:23:44 +0000 (UTC)
+Received: by mail-wm1-f70.google.com with SMTP id g2so844814wmk.5
+ for <qemu-arm@nongnu.org>; Wed, 21 Aug 2019 06:23:44 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=GqKn29SWMbJRkwcj2D71PwBa39tuXlL9JMmgWiJEmVA=;
- b=MXdcc/jr/g0OmNbPhEiBF2eKhCHkUO51YjMBC9fK+VSe8vj8ExI246J/HyMx3bUPHB
- B3bUeeKQHehj6SoSKI8FyoDW/v4Z7fIg2jFEfcIFnuVY/5AqXuJiub/zQYoo7MfKQ8PZ
- ytNI3fgX8MTuhwZR/yEl119QFt3CblVN7oOywx3uUNWKmNE6E2U+9O6zXzSyWnlO95xo
- QJrMgMby68VPABqZTI/1/qzn25HV+ToHUeVKaP7lleNmlENwJuvw1Rug3d8yM8dDe6oF
- H3aTE/xeGRNZbbQnG1Y/mFF+omt2EIJULEooQaSiWhkhgAbPF3aSNdYOhP/ZTY3RL7JF
- PyfQ==
-X-Gm-Message-State: APjAAAWJEUeSEAb8E0AdK/inpAlmAJ88N6YVuVlkGWj+6J0fUu3u+kKo
- iUrL1dIZY3K9cj6yl9pybcV5l4Qa6EDyzTlSqpQglJkvVTm+LpgQW7pOl10ZVTJn2CMFHJnePek
- 43cQ7tfzY1T1d
-X-Received: by 2002:a7b:c019:: with SMTP id c25mr3647wmb.116.1566393957085;
- Wed, 21 Aug 2019 06:25:57 -0700 (PDT)
-X-Received: by 2002:a7b:c019:: with SMTP id c25mr3623wmb.116.1566393956860;
- Wed, 21 Aug 2019 06:25:56 -0700 (PDT)
+ bh=vem4joSo6UR4KhAT7SKjnG8yccKTpq+jyZZ5CDqA2gs=;
+ b=p1K3pBLzqAS/A+aLuxiQE0BSLRsPOJo9YBqN2B2dLY5Qbjt+ang7yMfSiAtH1LcN6k
+ nxRMj348QxyKpCn0CDw1dZvUWMl6hYCUUzCaTuWFR6/jIZ3+4PD9uU3xAPVJXC/hUiRC
+ fu89ghyv8iWTj3kvwy/T0xcvovcTb0WR8Yv9olqew5qtEXNh8Dt2gO3FAhdqg9DUpwCo
+ o9uKuYCtvL7jbU0RvbAUv2c0O26zeSlRPy5BY0VmGIE9TYh8AhqgmbMCnd2q4AQy8qEL
+ 7a6WU+UOVBNvTWeYEwFRtYnGhb1UKNUvJGDy4ozNyRgEweqfVbCMsJ8sYnFsukrstsh7
+ q+qA==
+X-Gm-Message-State: APjAAAVFv0+KMyXavP5DCCLyQVLRFSz5XiY6dmLDR/dmJFKfG6osOGgg
+ YItDaSjCoaQMPRG9im8VxIOaaI65ZNMB0Qq/juor3C3fhpqxONNbEpnW4PgOJK8cAHhO5W2gwoM
+ Pm80b9RadlCAe
+X-Received: by 2002:a1c:a008:: with SMTP id j8mr6211142wme.57.1566393823419;
+ Wed, 21 Aug 2019 06:23:43 -0700 (PDT)
+X-Received: by 2002:a1c:a008:: with SMTP id j8mr6211128wme.57.1566393823198;
+ Wed, 21 Aug 2019 06:23:43 -0700 (PDT)
 Received: from [192.168.1.39] (251.red-88-10-102.dynamicip.rima-tde.net.
  [88.10.102.251])
- by smtp.gmail.com with ESMTPSA id p9sm21430447wru.61.2019.08.21.06.25.55
+ by smtp.gmail.com with ESMTPSA id e15sm14282248wrj.74.2019.08.21.06.23.42
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 21 Aug 2019 06:25:56 -0700 (PDT)
+ Wed, 21 Aug 2019 06:23:42 -0700 (PDT)
 To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 References: <20190819213755.26175-1-richard.henderson@linaro.org>
- <20190819213755.26175-45-richard.henderson@linaro.org>
+ <20190819213755.26175-38-richard.henderson@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
  url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <ca8d024c-c9c8-dc0d-d025-3a3cf50bf155@redhat.com>
-Date: Wed, 21 Aug 2019 15:25:55 +0200
+Message-ID: <b1993f41-d193-b858-efe0-372df3b65b0d@redhat.com>
+Date: Wed, 21 Aug 2019 15:23:42 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <20190819213755.26175-45-richard.henderson@linaro.org>
+In-Reply-To: <20190819213755.26175-38-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 44/68] target/arm: Add
- skeleton for T16 decodetree
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 37/68] target/arm: Convert
+ PLI, PLD, PLDW
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,95 +117,101 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9rAlveEZpqPG
+X-TUID: o6A4FFa6Rqrl
 
 On 8/19/19 11:37 PM, Richard Henderson wrote:
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/translate.c       | 37 +++++++++++++++++++-----------------
+>  target/arm/a32-uncond.decode | 10 ++++++++++
+>  2 files changed, 30 insertions(+), 17 deletions(-)
+>=20
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index 46e88d1d17..a30a9bb4e0 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -10136,6 +10136,26 @@ static bool trans_SETEND(DisasContext *s, arg_=
+SETEND *a)
+>      return true;
+>  }
+> =20
+> +/*
+> + * Preload instructions
+> + * All are nops, contingent on the appropriate arch level.
+> + */
+> +
+> +static bool trans_PLD(DisasContext *s, arg_PLD *a)
+> +{
+> +    return ENABLE_ARCH_5TE;
+
+Excellent :)
 
 Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-> ---
->  target/arm/translate.c   |  6 ++++++
->  target/arm/Makefile.objs |  6 ++++++
->  target/arm/t16.decode    | 20 ++++++++++++++++++++
->  3 files changed, 32 insertions(+)
->  create mode 100644 target/arm/t16.decode
->=20
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index 49bab7d863..90d608a2d2 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -7538,6 +7538,7 @@ static int t32_branch24(DisasContext *s, int x)
->  #include "decode-a32.inc.c"
->  #include "decode-a32-uncond.inc.c"
->  #include "decode-t32.inc.c"
-> +#include "decode-t16.inc.c"
-> =20
->  /* Helpers to swap operands for reverse-subtract.  */
->  static void gen_rsb(TCGv_i32 dst, TCGv_i32 a, TCGv_i32 b)
-> @@ -10550,6 +10551,11 @@ static void disas_thumb_insn(DisasContext *s, =
-uint32_t insn)
->      TCGv_i32 tmp2;
->      TCGv_i32 addr;
-> =20
-> +    if (disas_t16(s, insn)) {
-> +        return;
-> +    }
-> +    /* fall back to legacy decoder */
+> +}
 > +
->      switch (insn >> 12) {
->      case 0: case 1:
-> =20
-> diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
-> index 7806b4dac0..cf26c16f5f 100644
-> --- a/target/arm/Makefile.objs
-> +++ b/target/arm/Makefile.objs
-> @@ -43,12 +43,18 @@ target/arm/decode-t32.inc.c: $(SRC_PATH)/target/arm=
-/t32.decode $(DECODETREE)
->  	  $(PYTHON) $(DECODETREE) --static-decode disas_t32 -o $@ $<,\
->  	  "GEN", $(TARGET_DIR)$@)
-> =20
-> +target/arm/decode-t16.inc.c: $(SRC_PATH)/target/arm/t16.decode $(DECOD=
-ETREE)
-> +	$(call quiet-command,\
-> +	  $(PYTHON) $(DECODETREE) -w 16 --static-decode disas_t16 -o $@ $<,\
-> +	  "GEN", $(TARGET_DIR)$@)
+> +static bool trans_PLDW(DisasContext *s, arg_PLD *a)
+> +{
+> +    return arm_dc_feature(s, ARM_FEATURE_V7MP);
+> +}
 > +
->  target/arm/translate-sve.o: target/arm/decode-sve.inc.c
->  target/arm/translate.o: target/arm/decode-vfp.inc.c
->  target/arm/translate.o: target/arm/decode-vfp-uncond.inc.c
->  target/arm/translate.o: target/arm/decode-a32.inc.c
->  target/arm/translate.o: target/arm/decode-a32-uncond.inc.c
->  target/arm/translate.o: target/arm/decode-t32.inc.c
-> +target/arm/translate.o: target/arm/decode-t16.inc.c
-> =20
->  obj-y +=3D tlb_helper.o debug_helper.o
->  obj-y +=3D translate.o op_helper.o
-> diff --git a/target/arm/t16.decode b/target/arm/t16.decode
-> new file mode 100644
-> index 0000000000..e954f61fe4
-> --- /dev/null
-> +++ b/target/arm/t16.decode
-> @@ -0,0 +1,20 @@
-> +# Thumb1 instructions
-> +#
-> +#  Copyright (c) 2019 Linaro, Ltd
-> +#
-> +# This library is free software; you can redistribute it and/or
-> +# modify it under the terms of the GNU Lesser General Public
-> +# License as published by the Free Software Foundation; either
-> +# version 2 of the License, or (at your option) any later version.
-> +#
-> +# This library is distributed in the hope that it will be useful,
-> +# but WITHOUT ANY WARRANTY; without even the implied warranty of
-> +# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-> +# Lesser General Public License for more details.
-> +#
-> +# You should have received a copy of the GNU Lesser General Public
-> +# License along with this library; if not, see <http://www.gnu.org/lic=
-enses/>.
+> +static bool trans_PLI(DisasContext *s, arg_PLD *a)
+> +{
+> +    return ENABLE_ARCH_7;
+> +}
 > +
-> +#
-> +# This file is processed by scripts/decodetree.py
-> +#
+>  /*
+>   * Legacy decoder.
+>   */
+> @@ -10196,23 +10216,6 @@ static void disas_arm_insn(DisasContext *s, un=
+signed int insn)
+>              }
+>              return;
+>          }
+> -        if (((insn & 0x0f30f000) =3D=3D 0x0510f000) ||
+> -            ((insn & 0x0f30f010) =3D=3D 0x0710f000)) {
+> -            if ((insn & (1 << 22)) =3D=3D 0) {
+> -                /* PLDW; v7MP */
+> -                if (!arm_dc_feature(s, ARM_FEATURE_V7MP)) {
+> -                    goto illegal_op;
+> -                }
+> -            }
+> -            /* Otherwise PLD; v5TE+ */
+> -            ARCH(5TE);
+> -            return;
+> -        }
+> -        if (((insn & 0x0f70f000) =3D=3D 0x0450f000) ||
+> -            ((insn & 0x0f70f010) =3D=3D 0x0650f000)) {
+> -            ARCH(7);
+> -            return; /* PLI; V7 */
+> -        }
+>          if (((insn & 0x0f700000) =3D=3D 0x04100000) ||
+>              ((insn & 0x0f700010) =3D=3D 0x06100000)) {
+>              if (!arm_dc_feature(s, ARM_FEATURE_V7MP)) {
+> diff --git a/target/arm/a32-uncond.decode b/target/arm/a32-uncond.decod=
+e
+> index d5ed48f0fd..aed381cb8e 100644
+> --- a/target/arm/a32-uncond.decode
+> +++ b/target/arm/a32-uncond.decode
+> @@ -54,3 +54,13 @@ SB               1111 0101 0111 1111 1111 0000 0111 =
+0000
+> =20
+>  # Set Endianness
+>  SETEND           1111 0001 0000 0001 0000 00 E:1 0 0000 0000  &setend
+> +
+> +# Preload instructions
+> +
+> +PLD              1111 0101 -101 ---- 1111 ---- ---- ----    # (imm, li=
+t) 5te
+> +PLDW             1111 0101 -001 ---- 1111 ---- ---- ----    # (imm, li=
+t) 7mp
+> +PLI              1111 0100 -101 ---- 1111 ---- ---- ----    # (imm, li=
+t) 7
+> +
+> +PLD              1111 0111 -101 ---- 1111 ----- -- 0 ----   # (registe=
+r) 5te
+> +PLDW             1111 0111 -001 ---- 1111 ----- -- 0 ----   # (registe=
+r) 7mp
+> +PLI              1111 0110 -101 ---- 1111 ----- -- 0 ----   # (registe=
+r) 7
 >=20

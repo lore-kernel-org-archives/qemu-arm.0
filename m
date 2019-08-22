@@ -1,208 +1,154 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp505443wrs;
-        Thu, 22 Aug 2019 02:00:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx+W2qdTejX7/CJFftWEu5gNzL8w8zFDumgmOBxZ/OkFWv5agPbsvQcVgGm7NrlyIi7L6ke
-X-Received: by 2002:a63:2744:: with SMTP id n65mr32483449pgn.277.1566464428743;
-        Thu, 22 Aug 2019 02:00:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566464428; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp514602wrs;
+        Thu, 22 Aug 2019 02:08:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxn07wrnv3RCpoVay4PeuluYK0K+yy6QTxVEbdH9SF++36ZjcuOnOoSxGIRbrKZ22izupc7
+X-Received: by 2002:aa7:8705:: with SMTP id b5mr40884987pfo.205.1566464930339;
+        Thu, 22 Aug 2019 02:08:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566464930; cv=none;
         d=google.com; s=arc-20160816;
-        b=cpvKDVMkQI0hPqo5O4OafzVcf/K2ao8mEnZoZe4bV6kkcsvsAXLpjq444L9HZi2KjQ
-         cb2y4Xrmtpk+nqbgiklH0nJQprHSf7I0p1bNIQh2/mF/7xFMGjTojzabKwoVMBc7aCSb
-         oW4SDY8lY2CYp/Nz9VmUY5X71ZXvLINnoJ2U7jzpG7a4QRo1ZiKkoGgshiYm3e5s54et
-         GwAOOms7dmgyv5n5yjEv9xjGE8z6C4j6waNhQnKZluVKH7YxS/YGl8MZgepK3sbSGKVf
-         zvhqtfuBSN4Eko2TAX9CLhd8xh9r77zmP9ZtGQyOWlA1LWNpdw65ducQadpdgeuQ2SYO
-         BFpQ==
+        b=zM4FNavOC+JEkU4vy+gAeMxWDvQlTaMW7UWbUDEEe0NVjTZ1o4bXV3aDqA/ZAoV7Jd
+         vXGZhH1gOn5xETWd4mFhgK+zAVRU25VbPwwInFYSJuE8uvTlUWBSSu3deflVFyepJQOW
+         tfIKowdyTmWB1qk5a0bInCsYLfhSVW4+YJTL49ae86jNKY6W/zZDXlzxwHiwULlWtxdp
+         C/BhyFdquRlAH8U6iGztGJqA9Proas1IfLq0Z8rCvkBu2WLmFzogaywPQt/t8tAVV6hb
+         oi9v4cCFKlq8kDE90VBxlftZyob7HxZVT2xypE6oqm8ImOs6BXmNCVwJ0a9O9D6MPphN
+         XQAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:cc:to:subject;
-        bh=Uu0L2gnjO0dOYunMT/Gyo/eQQ8L1u+tUowrBArf2Yh4=;
-        b=Dx0j4+LWYGNJB2umXWsMlL6qUE3WHJGceGhYwr527y3oiRDy3LYIbtcFyhAOKCOBjQ
-         AdQUf5behz0gWQW3ncYZeKA/7LFP3YcSCU7V6KJiNiZ6ztRniVbknsd6JMqhkWrqx5bO
-         6gk3FjsEnlq0ZN/2gfoL2KBM+JTA+HMPxwiUB5u0F0rAlHWxYCFiaEWsWcjMQ95nKMOy
-         VwaOOJi2jlRQCxctzbQePjmgJ3txBwisnZ8j+cajbUYepV8sFAZSNyfFUNTFCH2fK6V9
-         uB/vItuTRMZeQKHoTK/WAJqA3iQspMsSqubajq4dZdbVgyoKIl+r0jQRt4jpjoRdg350
-         mdFA==
+        bh=lzh3UBQOw/OBoabhJ/V3Q6vKib6lUPSzN7SVI19eQR4=;
+        b=j9w3KfONZfqNMuoQVt0mcFD7mFlCdl4ejq7IDo2hKszgxae3B9vlbFnH8PKIp710Rm
+         ZTP/VOBYacjmCrcpmKV9ikprFYheQPzSB8/6U4gw5BpE4h2Z+fO7Ju2+jlQN3Q+7cp8F
+         +B6gqiBFKEFabOYZTi2O6wHxOulLp/gN0hg6rMbt3JvCjaktmIB/QKOWQ98QCUo9b58L
+         XpLpU/M8QSL+SvLatAIzVRX6NVvG6EhLIVGcVkwbR0Iu3evPlS5QKaLT9wgfs3alQSuv
+         tI+JIZNxSsROu8UntZA/fUjMuuWxr1U/P9YZLqUp35z1j9IGnica1zliATsifTxQ9bk0
+         tfUA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id l185si16230661pgd.379.2019.08.22.02.00.28;
-        Thu, 22 Aug 2019 02:00:28 -0700 (PDT)
+        by mx.google.com with ESMTP id 1si15977356pga.260.2019.08.22.02.08.50;
+        Thu, 22 Aug 2019 02:08:50 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1732866AbfHVJA1 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Thu, 22 Aug 2019 05:00:27 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:49640 "EHLO mx1.redhat.com"
+        id S1730371AbfHVJIt (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Thu, 22 Aug 2019 05:08:49 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50228 "EHLO mx1.redhat.com"
         rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1732842AbfHVJA1 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 22 Aug 2019 05:00:27 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+        id S1729284AbfHVJIs (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 22 Aug 2019 05:08:48 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
         (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
         (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id 55D6E10F23E1;
-        Thu, 22 Aug 2019 09:00:26 +0000 (UTC)
+        by mx1.redhat.com (Postfix) with ESMTPS id 77D0E308403B;
+        Thu, 22 Aug 2019 09:08:48 +0000 (UTC)
 Received: from [10.36.116.105] (ovpn-116-105.ams2.redhat.com [10.36.116.105])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 3830F5DC1E;
-        Thu, 22 Aug 2019 09:00:23 +0000 (UTC)
-Subject: Re: [PATCH] KVM: arm/arm64: vgic: Allow more than 256 vcpus for
- KVM_IRQ_LINE
-To:     Marc Zyngier <maz@kernel.org>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        James Morse <james.morse@arm.com>,
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id 9F88210016F3;
+        Thu, 22 Aug 2019 09:08:45 +0000 (UTC)
+Subject: Re: Can we boot a 512U kvm guest?
+To:     Zenghui Yu <yuzenghui@huawei.com>, kvmarm@lists.cs.columbia.edu,
+        qemu-arm@nongnu.org
+Cc:     Marc Zyngier <maz@kernel.org>, James Morse <james.morse@arm.com>,
         Julien Thierry <julien.thierry.kdev@gmail.com>,
-        Suzuki K Poulose <suzuki.poulose@arm.com>,
-        Zenghui Yu <yuzenghui@huawei.com>
-Cc:     qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu,
-        linux-arm-kernel@lists.infradead.org, kvm@vger.kernel.org
-References: <20190818140710.23920-1-maz@kernel.org>
+        suzuki.poulose@arm.com, peter.maydell@linaro.org,
+        kvm@vger.kernel.org, "Wanghaibin (D)" <wanghaibin.wang@huawei.com>,
+        zhang.zhanghailiang@huawei.com
+References: <86aa9609-7dc9-1461-ae47-f50897cd0875@huawei.com>
 From:   Auger Eric <eric.auger@redhat.com>
-Message-ID: <e37a2b72-5027-b553-377c-8ec06a988fb6@redhat.com>
-Date:   Thu, 22 Aug 2019 11:00:21 +0200
+Message-ID: <da5c87d6-8b66-75f9-e720-9f1d80a76d7d@redhat.com>
+Date:   Thu, 22 Aug 2019 11:08:44 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20190818140710.23920-1-maz@kernel.org>
+In-Reply-To: <86aa9609-7dc9-1461-ae47-f50897cd0875@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2 (mx1.redhat.com [10.5.110.66]); Thu, 22 Aug 2019 09:00:26 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.40]); Thu, 22 Aug 2019 09:08:48 +0000 (UTC)
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: anHsJaD+VPEo
+X-TUID: B9X8LJHqKrI8
 
-Hi Marc,
+Hi Zenghui,
 
-On 8/18/19 4:07 PM, Marc Zyngier wrote:
-> While parts of the VGIC support a large number of vcpus (we
-> bravely allow up to 512), other parts are more limited.
+On 8/13/19 10:50 AM, Zenghui Yu wrote:
+> Hi folks,
 > 
-> One of these limits is visible in the KVM_IRQ_LINE ioctl, which
-> only allows 256 vcpus to be signalled when using the CPU or PPI
-> types. Unfortunately, we've cornered ourselves badly by allocating
-> all the bits in the irq field.
+> Since commit e25028c8ded0 ("KVM: arm/arm64: Bump VGIC_V3_MAX_CPUS to
+> 512"), we seemed to be allowed to boot a 512U guest.  But I failed to
+> start it up with the latest QEMU.  I guess there are at least *two*
+> reasons (limitations).
 > 
-> Since the irq_type subfield (8 bit wide) is currently only taking
-> the values 0, 1 and 2 (and we have been careful not to allow anything
-> else), let's reduce this field to only 4 bits, and allocate the
-> remaining 4 bits to a vcpu2_index, which acts as a multiplier:
+> First I got a QEMU abort:
+>     "kvm_set_irq: Invalid argument"
 > 
->   vcpu_id = 256 * vcpu2_index + vcpu_index
+> Enable the trace_kvm_irq_line() under debugfs, when it comed with
+> vcpu-256, I got:
+>     "Inject UNKNOWN interrupt (3), vcpu->idx: 0, num: 23, level: 0"
+> and kvm_vm_ioctl_irq_line() returns -EINVAL to user-space...
 > 
-> With that, and a new capability (KVM_CAP_ARM_IRQ_LINE_LAYOUT_2)
-> allowing this to be discovered, it becomes possible to inject
-> PPIs to up to 4096 vcpus. But please just don't.
+> So the thing is that we only have 8 bits for vcpu_index field ([23:16])
+> in KVM_IRQ_LINE ioctl.  irq_type field will be corrupted if we inject a
+> PPI to vcpu-256, whose vcpu_index will take 9 bits.
 > 
-> Reported-by: Zenghui Yu <yuzenghui@huawei.com>
-> Signed-off-by: Marc Zyngier <maz@kernel.org>
-> ---
->  Documentation/virt/kvm/api.txt    | 8 ++++++--
->  arch/arm/include/uapi/asm/kvm.h   | 4 +++-
->  arch/arm64/include/uapi/asm/kvm.h | 4 +++-
->  include/uapi/linux/kvm.h          | 1 +
->  virt/kvm/arm/arm.c                | 2 ++
->  5 files changed, 15 insertions(+), 4 deletions(-)
+> I temporarily patched the KVM and QEMU with the following diff:
 > 
-> diff --git a/Documentation/virt/kvm/api.txt b/Documentation/virt/kvm/api.txt
-> index 2d067767b617..85518bfb2a99 100644
-> --- a/Documentation/virt/kvm/api.txt
-> +++ b/Documentation/virt/kvm/api.txt
-> @@ -753,8 +753,8 @@ in-kernel irqchip (GIC), and for in-kernel irqchip can tell the GIC to
->  use PPIs designated for specific cpus.  The irq field is interpreted
->  like this:
->  
-> -  bits:  | 31 ... 24 | 23  ... 16 | 15    ...    0 |
-> -  field: | irq_type  | vcpu_index |     irq_id     |
-> +  bits:  |  31 ... 28  | 27 ... 24 | 23  ... 16 | 15 ... 0 |
-> +  field: | vcpu2_index | irq_type  | vcpu_index |  irq_id  |
->  
->  The irq_type field has the following values:
->  - irq_type[0]: out-of-kernel GIC: irq_id 0 is IRQ, irq_id 1 is FIQ
-> @@ -766,6 +766,10 @@ The irq_type field has the following values:
->  
->  In both cases, level is used to assert/deassert the line.
->  
-> +When KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 is supported, the target vcpu is
-> +identified as (256 * vcpu2_index + vcpu_index). Otherwise, vcpu2_index
-> +must be zero.
-> +
->  struct kvm_irq_level {
->  	union {
->  		__u32 irq;     /* GSI */
-> diff --git a/arch/arm/include/uapi/asm/kvm.h b/arch/arm/include/uapi/asm/kvm.h
-> index a4217c1a5d01..2769360f195c 100644
-> --- a/arch/arm/include/uapi/asm/kvm.h
-> +++ b/arch/arm/include/uapi/asm/kvm.h
-> @@ -266,8 +266,10 @@ struct kvm_vcpu_events {
->  #define   KVM_DEV_ARM_ITS_CTRL_RESET		4
->  
->  /* KVM_IRQ_LINE irq field index values */
-> +#define KVM_ARM_IRQ_VCPU2_SHIFT		28
-> +#define KVM_ARM_IRQ_VCPU2_MASK		0xf
->  #define KVM_ARM_IRQ_TYPE_SHIFT		24
-> -#define KVM_ARM_IRQ_TYPE_MASK		0xff
-> +#define KVM_ARM_IRQ_TYPE_MASK		0xf
->  #define KVM_ARM_IRQ_VCPU_SHIFT		16
->  #define KVM_ARM_IRQ_VCPU_MASK		0xff
->  #define KVM_ARM_IRQ_NUM_SHIFT		0
-> diff --git a/arch/arm64/include/uapi/asm/kvm.h b/arch/arm64/include/uapi/asm/kvm.h
-> index 9a507716ae2f..67c21f9bdbad 100644
+> ---8<---
+> diff --git a/arch/arm64/include/uapi/asm/kvm.h
+> b/arch/arm64/include/uapi/asm/kvm.h
+> index 95516a4..39a0fb1 100644
 > --- a/arch/arm64/include/uapi/asm/kvm.h
 > +++ b/arch/arm64/include/uapi/asm/kvm.h
-> @@ -325,8 +325,10 @@ struct kvm_vcpu_events {
->  #define   KVM_ARM_VCPU_TIMER_IRQ_PTIMER		1
->  
->  /* KVM_IRQ_LINE irq field index values */
-> +#define KVM_ARM_IRQ_VCPU2_SHIFT		28
-> +#define KVM_ARM_IRQ_VCPU2_MASK		0xf
->  #define KVM_ARM_IRQ_TYPE_SHIFT		24
-> -#define KVM_ARM_IRQ_TYPE_MASK		0xff
-> +#define KVM_ARM_IRQ_TYPE_MASK		0xf
->  #define KVM_ARM_IRQ_VCPU_SHIFT		16
->  #define KVM_ARM_IRQ_VCPU_MASK		0xff
->  #define KVM_ARM_IRQ_NUM_SHIFT		0
-> diff --git a/include/uapi/linux/kvm.h b/include/uapi/linux/kvm.h
-> index 5e3f12d5359e..5414b6588fbb 100644
-> --- a/include/uapi/linux/kvm.h
-> +++ b/include/uapi/linux/kvm.h
-> @@ -996,6 +996,7 @@ struct kvm_ppc_resize_hpt {
->  #define KVM_CAP_ARM_PTRAUTH_ADDRESS 171
->  #define KVM_CAP_ARM_PTRAUTH_GENERIC 172
->  #define KVM_CAP_PMU_EVENT_FILTER 173
-> +#define KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 174
->  
->  #ifdef KVM_CAP_IRQ_ROUTING
->  
-> diff --git a/virt/kvm/arm/arm.c b/virt/kvm/arm/arm.c
-> index 35a069815baf..c1385911de69 100644
-> --- a/virt/kvm/arm/arm.c
-> +++ b/virt/kvm/arm/arm.c
-> @@ -182,6 +182,7 @@ int kvm_vm_ioctl_check_extension(struct kvm *kvm, long ext)
->  	int r;
->  	switch (ext) {
->  	case KVM_CAP_IRQCHIP:
-> +	case KVM_CAP_ARM_IRQ_LINE_LAYOUT_2:
->  		r = vgic_present;
->  		break;
->  	case KVM_CAP_IOEVENTFD:
-> @@ -888,6 +889,7 @@ int kvm_vm_ioctl_irq_line(struct kvm *kvm, struct kvm_irq_level *irq_level,
->  
->  	irq_type = (irq >> KVM_ARM_IRQ_TYPE_SHIFT) & KVM_ARM_IRQ_TYPE_MASK;
->  	vcpu_idx = (irq >> KVM_ARM_IRQ_VCPU_SHIFT) & KVM_ARM_IRQ_VCPU_MASK;
-> +	vcpu_idx += ((irq >> KVM_ARM_IRQ_VCPU2_SHIFT) & KVM_ARM_IRQ_VCPU2_MASK) * (KVM_ARM_IRQ_VCPU_MASK + 1);
->  	irq_num = (irq >> KVM_ARM_IRQ_NUM_SHIFT) & KVM_ARM_IRQ_NUM_MASK;
->  
->  	trace_kvm_irq_line(irq_type, vcpu_idx, irq_num, irq_level->level);
+> @@ -325,10 +325,10 @@ struct kvm_vcpu_events {
+>  #define   KVM_ARM_VCPU_TIMER_IRQ_PTIMER        1
 > 
+>  /* KVM_IRQ_LINE irq field index values */
+> -#define KVM_ARM_IRQ_TYPE_SHIFT        24
+> -#define KVM_ARM_IRQ_TYPE_MASK        0xff
+> +#define KVM_ARM_IRQ_TYPE_SHIFT        28
+> +#define KVM_ARM_IRQ_TYPE_MASK        0xf
+>  #define KVM_ARM_IRQ_VCPU_SHIFT        16
+> -#define KVM_ARM_IRQ_VCPU_MASK        0xff
+> +#define KVM_ARM_IRQ_VCPU_MASK        0xfff
+>  #define KVM_ARM_IRQ_NUM_SHIFT        0
+>  #define KVM_ARM_IRQ_NUM_MASK        0xffff
+> 
+> ---8<---
+> 
+> It makes things a bit better, it also immediately BREAKs the api with
+> old versions.
+> 
+> 
+> Next comes one more QEMU abort (with the "fix" above):
+>     "Failed to set device address: No space left on device"
+> 
+> We register two io devices (rd_dev and sgi_dev) on KVM_MMIO_BUS for
+> each redistributor. 512 vcpus take 1024 io devices, which is beyond the
+> maximum limitation of the current kernel - NR_IOBUS_DEVS (1000).
+> So we get a ENOSPC error here.
 
-Thank you for the patch!
+Do you plan to send a patch for increasing the NR_IOBUS_DEVS? Otherwise
+I can do it.
 
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+You mentioned you started working on the QEMU fix. Do you plan to submit
+patches to the ML or do you want me to attempt to fix the situation on
+userspace?
+
+Thanks
 
 Eric
+> 
+> 
+> I don't know if the similar problems have been discussed before in ML.
+> Is it time to really support the 512U guest?
+> 
+> 
+> Thanks,
+> zenghui
+> 

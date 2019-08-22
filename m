@@ -1,189 +1,165 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp915157wrs;
-        Thu, 22 Aug 2019 08:21:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy2TZUxriYFAM2273Z2+Z9M2wq/ls/BZSLwsuto/UY+yMUecWrj/INKazwS7iDRNKiNw9QA
-X-Received: by 2002:a05:620a:1376:: with SMTP id d22mr36445747qkl.486.1566487275225;
-        Thu, 22 Aug 2019 08:21:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566487275; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp961973wrs;
+        Thu, 22 Aug 2019 09:02:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzWamInxxxl1EKYfD6WD8mzs2zXQiRTovF2p02kwGXITEP+kE6Rp60vgMnjhJtgckindWLH
+X-Received: by 2002:adf:e452:: with SMTP id t18mr9005500wrm.0.1566489724031;
+        Thu, 22 Aug 2019 09:02:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566489724; cv=none;
         d=google.com; s=arc-20160816;
-        b=aw1qo2aS0pPVNj/lveEsWM9bYeCm33Zm4P+t55isWlQwfyHoA9ozEr5QmWLYiiv2eV
-         /ByLn+WLqoNL4niIe4UpM3LxkCsJE7a90ZuK8fW+fl42LxDxsXZl0oSyZcjeXGO8UcEl
-         weafXajip4suhMsDmnJqzmtsuNuKNt0XzFCGcAB5Pf4DrTP+o5wYHF4AB7EbAsfNdZrN
-         3aYOqkz/jo4ONTu/MdntrzntR94JGGXxc7O6cOHMsXEUJv2AT2vV4LNNUSXIvsVgXDXr
-         YQlgaZwbL5ebV7zipfmlpROgT69Xr/7h+LgTnmmohDtWHTHInTKqxWKPw6cVZpI26irH
-         JB1A==
+        b=RtU8oGpLOK1YhFu48YpMCoZPesgS3DfcsKt4i3DJfygx2C1WMgyW64XCeBa56OEdQ6
+         Zf9tWckt7a+2x+OT0/0oSFulZvdWDRT1GZgiL7O8DCf4sq6cg0BhuLWOznfxrnoi8K5O
+         taFOH2L+5Gc+0wN1LsTFdPN7HSeXGzmPijl4VnMSvBdfTmzltazOVl6jAhz6UkAgPgfQ
+         Ui8V6yiFR+yNeOqbfqfoDXFzHYBaDY6rKj432DdrQZk42LGRYudwNyO5tk5oaYnFTScx
+         cBhPu/rd3kWY+gY/wyLLquWyL83i9/wgye70S7VB9CcFFnICGDEK+52hf6T8prApqfYT
+         VM7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=q107GNnZu42tsmok8pAR3Pv4Ngg96Lj8nggGsjCHu4o=;
-        b=ZaQNR+k9cgQzgom6P9t7tTtnU/77WU1nDaVMGUAOnR0FsV36VxrUXdDpq8/b0znD0n
-         PLDLoWiREh6V+/X5lWXGeL7BO/ERzVmy4j9JBdlwwswef8MU2iphGKwF095bG4cm8bQ+
-         47kPT5Kydy8qbyAfcGlytXdWbLL3tSSl3+qLHNzF/NH+g2tUQZ0A7woMXVyR8iDSPcDw
-         a+G/WoPRGhFi7bIKrSl8/BeeQLW2u22gRsAwm6EkdnB5XRKJ1RwJdFoZwRNkEaBU/eqG
-         cx++tkAbWm6nr0WNxT1OgdCI+HodFZjdfMCH5mMfOUEBhCvyHGl0+5onmPxAbO0tyMRG
-         9B2w==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=7B3CvyEYOu+pNQ8AYNCbT+h5aS1c7aM+mXvf9WiQoR8=;
+        b=bO+okHEsCrsF+p/KvD9pJBq0Rbs7/+3O9swW+ld9bbGxTPcDzyKNAxE/oPvyDLojCF
+         TGo8s18rwhxAUCfk9ITa3JRXTkLQSdk8JzIbcudseKDEDjWjM5xiGpBRpWWMOo0bkMY2
+         6DaulP1vFUvAtFzG3hxi1LFMEj0waQBNilSs6A3TvPXFlDeapDFiuwVin1Z+ZUUqWKcN
+         8edYmsFOa7CMxrCnoGIOg34MpUBmr93PU8wnt+OWoBe19Oq6YClge/B6TD2eK3Z9EmHi
+         BiSRCenCSrvpy2Hjf2/pgtpysGer1Qilrx4je+YtBtXgUFssLKO1rJcviA2vd3TUZ727
+         NC5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=wVnYSTU+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i58si15000947qtc.356.2019.08.22.08.21.15
+        by mx.google.com with ESMTPS id b17si53126edb.341.2019.08.22.09.02.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Aug 2019 08:21:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 22 Aug 2019 09:02:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44406 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=wVnYSTU+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44962 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i0otk-0008Nm-W9
-	for alex.bennee@linaro.org; Thu, 22 Aug 2019 11:21:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44026)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i0pXG-0001AK-6U
+	for alex.bennee@linaro.org; Thu, 22 Aug 2019 12:02:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60177)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1i0ooQ-0005mR-Gf
- for qemu-devel@nongnu.org; Thu, 22 Aug 2019 11:15:43 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1i0pVt-0000d4-Gz
+ for qemu-arm@nongnu.org; Thu, 22 Aug 2019 12:00:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1i0ooP-0007Hg-CQ
- for qemu-devel@nongnu.org; Thu, 22 Aug 2019 11:15:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57976)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1i0ooL-0007C9-Bj; Thu, 22 Aug 2019 11:15:37 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id A041010F23E0;
- Thu, 22 Aug 2019 15:15:36 +0000 (UTC)
-Received: from [10.36.116.105] (ovpn-116-105.ams2.redhat.com [10.36.116.105])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7E2435D6A7;
- Thu, 22 Aug 2019 15:15:30 +0000 (UTC)
-To: Alex Williamson <alex.williamson@redhat.com>
-References: <20190711061857.13086-1-eric.auger@redhat.com>
- <20190711061857.13086-3-eric.auger@redhat.com>
- <20190807210736.7703cdfd@x1.home>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <98b29df1-ddf0-dcb8-8f56-0efdd5760f2e@redhat.com>
-Date: Thu, 22 Aug 2019 17:15:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ (envelope-from <peter.maydell@linaro.org>) id 1i0pVq-0008CZ-87
+ for qemu-arm@nongnu.org; Thu, 22 Aug 2019 12:00:35 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:42427)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1i0pVp-0008BN-Ed
+ for qemu-arm@nongnu.org; Thu, 22 Aug 2019 12:00:34 -0400
+Received: by mail-ot1-x341.google.com with SMTP id j7so5909163ota.9
+ for <qemu-arm@nongnu.org>; Thu, 22 Aug 2019 09:00:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=7B3CvyEYOu+pNQ8AYNCbT+h5aS1c7aM+mXvf9WiQoR8=;
+ b=wVnYSTU+VhYQHl9PmxnSBtDOTPBiHcxzCix/rjiLflA5oYCtlJ5wIEPoO3XJU1muby
+ NBNDoJwTFWMflaIceXXKoM/94akMYlmKHIBDSKz8skV5Igk0Yug4JHzggcJTzwaHkoxf
+ 1DBZNJfct9VVe9nlwFwZ/EV/spEyEZqbzxEG3xpgeltsbf5ljy0O1PRe0XKJYAZhlY1B
+ RLBb3h1vaxi6E0H8CyVBCv7WP7RgFMs68HsNy/f9cLiACOqUexfaIt2+uqJY7xm3loKN
+ FDw1JPsnE/ICffSIWdmBnj3s+jjW0TuCNOmCajdDo6xXibUgFKn3HpxaBlXffYA44WFG
+ YkvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=7B3CvyEYOu+pNQ8AYNCbT+h5aS1c7aM+mXvf9WiQoR8=;
+ b=eropcxZJKXm2OGnLjh3sdLIOLXOqRT/7h8MwO/odSKvw1CNwRWnWiv/gLjwiKmzUVy
+ GrD025jGPdQeRN80aBVmwdFCQwo9Gqe45FMQxkPx2ACGuCKKbZYAc0IwHvBCJz2m60ya
+ 8rGTNBJb+cppDrKAZpInAuPvb5NFLte9weZblVk1PebBzGfPEO6Z5NZjYH0YiCXYE9v7
+ pSS7BCVyg32l4rG1O949/P9biwMGsuwKuGnzOgrT1ltd0BSel0gihD3RKRP4Pbzl37mS
+ gPtx6BT0xW8RHcE+JwEaiCQtq4Jl7z0Y7B0KYYBRG7E8Ol4Hkr6jJzw0fRyjJq5I4reZ
+ VUgw==
+X-Gm-Message-State: APjAAAXNmvkX9eujf0KDYOjUdl3MHdRQ/ySEF+JLmgNkysQ/s4FP0gnp
+ 9PIgXcTKa87+FCPSIvFoehdKYvfySVjO5pTMrY5tlQ==
+X-Received: by 2002:a9d:6a94:: with SMTP id l20mr208768otq.221.1566489630622; 
+ Thu, 22 Aug 2019 09:00:30 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190807210736.7703cdfd@x1.home>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.66]); Thu, 22 Aug 2019 15:15:36 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH-for-4.2 v3 2/5] memory: Add
- IOMMU_ATTR_VFIO_NESTED IOMMU memory region attribute
-X-BeenThere: qemu-devel@nongnu.org
+References: <20190819213755.26175-1-richard.henderson@linaro.org>
+ <20190819213755.26175-4-richard.henderson@linaro.org>
+In-Reply-To: <20190819213755.26175-4-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 22 Aug 2019 17:00:19 +0100
+Message-ID: <CAFEAcA9abuRJXTXkEE+2M4tHQuKc+VwsqfJqEmw-w_+Fcwh0rw@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+Subject: Re: [Qemu-arm] [PATCH v2 03/68] target/arm: Convert Data Processing
+ (register)
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org, peterx@redhat.com,
- qemu-arm@nongnu.org, pbonzini@redhat.com, eric.auger.pro@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oTdeOmL2Pc71
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gn3Ve/eoPkt3
 
-Hi Alex, Peter,
-
-On 8/8/19 5:07 AM, Alex Williamson wrote:
-> On Thu, 11 Jul 2019 08:18:54 +0200
-> Eric Auger <eric.auger@redhat.com> wrote:
-> 
->> We introduce a new IOMMU Memory Region attribute,
->> IOMMU_ATTR_VFIO_NESTED that tells whether the virtual IOMMU
->> requires HW nested paging for VFIO integration.
->>
->> Current Intel virtual IOMMU device supports "Caching
->> Mode" and does not require 2 stages at physical level to be
->> integrated with VFIO. However SMMUv3 does not implement such
->> "caching mode" and requires to use HW nested paging.
->>
->> As such SMMUv3 is the first IOMMU device to advertise this
->> attribute.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>  hw/arm/smmuv3.c       | 12 ++++++++++++
->>  include/exec/memory.h |  3 ++-
->>  2 files changed, 14 insertions(+), 1 deletion(-)
->>
->> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->> index e96d5beb9a..384c02cb91 100644
->> --- a/hw/arm/smmuv3.c
->> +++ b/hw/arm/smmuv3.c
->> @@ -1490,6 +1490,17 @@ static void smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
->>      }
->>  }
->>  
->> +static int smmuv3_get_attr(IOMMUMemoryRegion *iommu,
->> +                           enum IOMMUMemoryRegionAttr attr,
->> +                           void *data)
->> +{
->> +    if (attr == IOMMU_ATTR_VFIO_NESTED) {
->> +        *(bool *) data = true;
->> +        return 0;
->> +    }
->> +    return -EINVAL;
->> +}
->> +
->>  static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
->>                                                    void *data)
->>  {
->> @@ -1497,6 +1508,7 @@ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
->>  
->>      imrc->translate = smmuv3_translate;
->>      imrc->notify_flag_changed = smmuv3_notify_flag_changed;
->> +    imrc->get_attr = smmuv3_get_attr;
->>  }
->>  
->>  static const TypeInfo smmuv3_type_info = {
->> diff --git a/include/exec/memory.h b/include/exec/memory.h
->> index a078cd033f..e477a630a8 100644
->> --- a/include/exec/memory.h
->> +++ b/include/exec/memory.h
->> @@ -204,7 +204,8 @@ struct MemoryRegionOps {
->>  };
->>  
->>  enum IOMMUMemoryRegionAttr {
->> -    IOMMU_ATTR_SPAPR_TCE_FD
->> +    IOMMU_ATTR_SPAPR_TCE_FD,
->> +    IOMMU_ATTR_VFIO_NESTED,
->>  };
->>  
->>  /**
-> 
-> Why VFIO_NESTED vs simply NESTED?  I figure any time we need to include
-> "VFIO" in the descriptions of something, we're probably not describing
-> the requirement correctly and it just becomes a meaningless tag that
-> gets ignored outside of VFIO related things.  If we're trying to
-> describe an IOMMU MemoryRegion that supports dynamic faulting rather
-> than requiring a replay to pre-populate it, then simply define that
-> semantic rather than hand waving some vfio specific interaction.
-> Thanks,
-
-I replaced it by IOMMU_ATTR_HW_NESTED_PAGING instead.
-
-Thanks
-
-Eric
+On Mon, 19 Aug 2019 at 22:38, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Convert the register shifted by immediate form of the data
+> processing insns.  For A32, we cannot yet remove any code
+> because the legacy decoder intertwines the reg-shifted-reg
+> and immediate forms.
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/translate.c | 229 ++++++++++++++++++++++++++++++++++-------
+>  target/arm/a32.decode  |  28 +++++
+>  target/arm/t32.decode  |  43 ++++++++
+>  3 files changed, 264 insertions(+), 36 deletions(-)
 
 
-> 
-> Alex
-> 
+> +#define DO_ANY3(NAME, OP, L, K)                                         \
+> +    static bool trans_##NAME##_rrri(DisasContext *s, arg_s_rrr_shi *a)  \
+> +    { StoreRegKind k = (K); return op_s_rrr_shi(s, a, OP, L, k); }
+
+It's a bit non-obvious that we can return early via the expression K
+here (for the "trying to do an old-style exception return in usermode"
+case for SUB and MOV), but it does put the check early where we need it.
+
+> +DO_ANY3(SUB, a->s ? gen_sub_CC : tcg_gen_sub_i32, false,
+> +        ({
+> +            StoreRegKind ret = STREG_NORMAL;
+> +            if (a->rd == 15 && a->s) {
+> +                /*
+> +                 * See ALUExceptionReturn:
+> +                 * In User mode, UNPREDICTABLE; we choose UNDEF.
+> +                 * In Hyp mode, UNDEFINED.
+> +                 */
+> +                if (IS_USER(s) || s->current_el == 2) {
+> +                    return false;
+> +                }
+> +                /* There is no writeback of nzcv to PSTATE.  */
+> +                a->s = 0;
+> +                ret = STREG_EXC_RET;
+> +            } else if (a->rd == 13 && a->rn == 13) {
+> +                ret = STREG_SP_CHECK;
+> +            }
+> +            ret;
+> +        }))
+
+It turns out that the decode for Thumb means that we don't
+need to specifically check that this is Arm mode before allowing
+the ALUExceptionReturn handling.
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

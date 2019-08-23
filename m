@@ -1,97 +1,113 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp768073wrs;
-        Fri, 23 Aug 2019 09:10:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyfi+Xw0VjFe94yiq8iSCBuk49eqST8n2vRGEdFZYAI+wazC/7qr197ZzYtTUGfWS6iDrmm
-X-Received: by 2002:a37:a48e:: with SMTP id n136mr4877086qke.223.1566576628217;
-        Fri, 23 Aug 2019 09:10:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566576628; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp783610wrs;
+        Fri, 23 Aug 2019 09:24:27 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwtuGp+ReNU+1/CeR1hqlgM3eBjs16iOoxSnyIen7xXq9Nmd7PFxrb5XNvNEkj4pD5GWJhl
+X-Received: by 2002:a17:906:c2c9:: with SMTP id ch9mr5126736ejb.167.1566577467873;
+        Fri, 23 Aug 2019 09:24:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566577467; cv=none;
         d=google.com; s=arc-20160816;
-        b=QPajb3NYiaec3UpcYod+4toxFOH2zJQ3mtn8R0sI806/AER+jBCbOSf/kQKQuZlUFP
-         hSd5l5DBqgPVJu++P9VLxcNq9RHZuBel+gSi1kgzhBOymcpCXlgpBqu46AHylXHex7qf
-         uVRaHUdmt6AyJzKIVctT/vR1GbIfdv6AZfkRxtQk/4oXNUiDVh8J49VGFMnLXkevcmfG
-         t0fVswFvLS3dmOtCfMBfnaMhl3xJrAiBEyTU+onaUX/uaPQUzl/Nv1Mea5ureap7Vn+o
-         gYpYUfhe7V3vfXnNe6FY4/Zcpz9hnleeGkeBazWC3bnZi8vAgBqsU8RuUp/fGNqoUKUP
-         yl/A==
+        b=bG+ys+tpFU5yPxlrznpoqlItwqDeqeWm+aFe6wI4ZGpxuZXM7o2MLNU4HXkb8bxOUc
+         dd0jQ3UwdD6mp7uLNVZVbfsNj4R6+/rCZEvI5ydyOmoWQ2ZNtqJchd+lp/3rduVIHdRr
+         DxDYt7tF7nl/fHEx2HdwaYUC9evMsc0mZq/h/M9vpoGqeEw8/eeK7cOHtpYkRRBcXUdP
+         x2LKCusR6rVIIr8ZbXFZQE51n6Vsgz1QETu+VA8JP6R973PuUAprIAJG4xhBCOXVyEoF
+         ZnSMLq2dLQES+nUIEPtuUp6qdqcwV13VGe4lqV4wgGW7I0GbLW7CYMs5MUIpHrVIufc1
+         8q7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=vJN13Og6DN9PUForrtTLS5vI8rP5ub7uU0ZHUkx6x1s=;
-        b=DnH7FckpQcW5n9XKMv/r4HXUzlaDoBD+z7arfhoPPZSTxn0SEnPs+teww0G4nuS4nl
-         jRqYTr8xTJdGtBctSuz9yDDW5XYdajPMI1QK9faL5Sfc/xovkjYAJlPOQyO0ITRioX0l
-         qrkBr2qPnLS9J18Ntfij7MLV8KoAoyJW6YftRDek7LJI02gMzB/IWATRtco1VVxKgPEm
-         ayhguKaPtUPIJG4xqaY+aUgtDmEoZJjRlTGRnAScG8wwgG9kHya+ZaS7ZIer3MsbgHCu
-         pPrKAy6WQOJ6zsk1HgUr+3Q2TIQccebEHjnXawDsSaB/TCvAHGKfRxK2VAPMLx3egzwi
-         KRUQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature;
+        bh=l32KsYCTK7OT6MliknFHrDHpd8O4OI/S2wX0MFNBUPk=;
+        b=0PoxU+CHLvsSSGLB/muj8oLk3fqJw05+mpApkqV85FkROsxPJOft5xTmxumg/6MWt9
+         6TlHDXbFADukJjbvzIYSXBKZ3Jo9Gf9ycZzc02Rsr2VF91D3NnDdGJ+F6yzszRg7Qfo+
+         51iAK1UA95Uc/tBsITCXZ/ALkc99bC0Rpl16l7+9HTRirl1SrI7T6hKh6IugME8G8vkv
+         Lb8Nch43qWU/ufaUMtMoCAEtinhBK8kOokcRL6DS16bhdYmFL8aSLyiTGTEdzU2oQ0zJ
+         RgHrSdHSIVbWsNWJF7RIfJjdgJEQFUly19+7rstV9oBzJOuc2rKTIFHwspAnn41SKj9i
+         Bs4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YaGATZQs;
+       dkim=fail header.i=@linaro.org header.s=google header.b=YsdgFsPA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x35si2262395qta.154.2019.08.23.09.10.28
+        by mx.google.com with ESMTPS id s5si1660577eji.260.2019.08.23.09.24.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Aug 2019 09:10:28 -0700 (PDT)
+        Fri, 23 Aug 2019 09:24:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YaGATZQs;
+       dkim=fail header.i=@linaro.org header.s=google header.b=YsdgFsPA;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58978 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59182 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i1C8x-0006G5-5p
-	for alex.bennee@linaro.org; Fri, 23 Aug 2019 12:10:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41618)
+	id 1i1CMU-00062M-Kh
+	for alex.bennee@linaro.org; Fri, 23 Aug 2019 12:24:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44736)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1i1C72-0004MV-IO
- for qemu-arm@nongnu.org; Fri, 23 Aug 2019 12:08:30 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1i1CMG-00060U-Im
+ for qemu-arm@nongnu.org; Fri, 23 Aug 2019 12:24:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1i1C70-0007FF-Ua
- for qemu-arm@nongnu.org; Fri, 23 Aug 2019 12:08:28 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:41288)
+ (envelope-from <richard.henderson@linaro.org>) id 1i1CMF-0003O9-Hj
+ for qemu-arm@nongnu.org; Fri, 23 Aug 2019 12:24:12 -0400
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:46327)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1i1C70-0007Be-Lz
- for qemu-arm@nongnu.org; Fri, 23 Aug 2019 12:08:26 -0400
-Received: by mail-oi1-x244.google.com with SMTP id g7so7393532oia.8
- for <qemu-arm@nongnu.org>; Fri, 23 Aug 2019 09:08:26 -0700 (PDT)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1i1CMF-0003NH-BT
+ for qemu-arm@nongnu.org; Fri, 23 Aug 2019 12:24:11 -0400
+Received: by mail-pf1-x444.google.com with SMTP id q139so6746483pfc.13
+ for <qemu-arm@nongnu.org>; Fri, 23 Aug 2019 09:24:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=vJN13Og6DN9PUForrtTLS5vI8rP5ub7uU0ZHUkx6x1s=;
- b=YaGATZQsmivVFJe1C5VkG9cL/JPCHgSJoZeG0HEH/+I3RDMvRjfvTd8+rqd9IN0bGj
- UDmh3sNdzFrZJWA6+qlpemmPbOswBkUvBCI/mpe2pvB1i2va4DXj44jJNXjKmKfGAx7R
- cemUui97qmtKvkW7Cy6GDKofPog7o9rjwJWnupsAI22f8j7/Qbtq3wQgAZTdqX2+cSXk
- vu0nC6x13QUtoXsAzKmPzrxbIM8cEZHMxd352jXYIalHVzEDqDffBP/YrALKl7ymPDtz
- 11V/PuQfzBj96GhC7Q1jVO9YaQ++yiCa4T5oDEOgbUecQ/w1jmt8QvBSW+7+h2iXRH2+
- 5ZLQ==
+ h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=l32KsYCTK7OT6MliknFHrDHpd8O4OI/S2wX0MFNBUPk=;
+ b=YsdgFsPAYjJlZsgydT3yIu1TFjrYprsxPBuF4K1DwhsvY27FsKOfmo+b0LENs9O3d4
+ EZbjTvXXagu0Gtq6znjL1lvoeoL3kaSqX691d02hJ2zuqGm/eY969gY5K1a38pOwuepL
+ Ndo4F3u3WHZdOr0EvTyEx3IAmUUxOJQbHe6kty73G/Sb4GCCB44myrZQPp1tci6RbDCu
+ 4yOWIeNLvNNt0MPtx5k0Dr87/BkN3zUmy1U78scM+p7rYSIbkskQrwcRwIKLkOai/38S
+ 5hAyhtiVQ/Kk1ZKKTlBV5Jy1pUBvgxdv4SwqpGOMZ333F6TXIIqaQxGkLL6G8uaTPiKT
+ od4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=vJN13Og6DN9PUForrtTLS5vI8rP5ub7uU0ZHUkx6x1s=;
- b=oYqwR+QG3zbZrO13OA5MtLJ3e3HYiDR21Ijcg+ocuSrry2ETnW6mr6bKmpnFvsqoXq
- ZUCGqKQ3CaPgVO3xtfDZe4FRvcYsgGhS4wGr7o59D8X4qU1xmcbmTR8cY5TZ1lE6udma
- 3zx+gaw5pPEBebD81YMj9pX0hp/118G2pbny/JYnUelAK/v4Y+Zk0zjVZR1JU0CAFKr9
- GH7rZPVrLDakhxM/eCniClNXhlpN45qHRhmyN3I36tJfud0PsaCiHiSaFxrNN0JzWsFX
- T7LqzJLWGyT0DALUcxvP0wxhc8SL8AeLrBKYaLEbSMZPjI92SEphZWqlx5bYnuK5rRSB
- OWww==
-X-Gm-Message-State: APjAAAVxpbYhJPGax0XU0LEs4c6AdAKgxEKDbazcpBfbg2rbRDMTI2Fa
- Jch7ciWAhyNHuMlF7O/cbHBrrEmgPE8kPNmQmG87eQ==
-X-Received: by 2002:aca:4814:: with SMTP id v20mr3798918oia.98.1566576505486; 
- Fri, 23 Aug 2019 09:08:25 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=l32KsYCTK7OT6MliknFHrDHpd8O4OI/S2wX0MFNBUPk=;
+ b=h1xRJ6KehQKmQ41kcecSPX3IFzyw36BT45TnoEo1G1nETxo1ZIDku9YgT8FTGIQxW7
+ aFOYISZ6sORQAL/CCjuxUW4zjVNyB6a3yCeozherqhsuaDuHpSuOaesjYDXzagIllPsS
+ BbHyzypCHE3WDTUMIUCLXhPKyJrLSF+Y+lx10HwDxmCWnYHV4hWpjkIFureQHu1V+P9H
+ cTz+DF2Wl4vG/VNA42qhOT/j/QRrq29uDnf1BE/a7C/xytAU0LUx8duLzNai4MT4KwKt
+ c/5c1Ctn2LfwmIWpTVzru0VX1yin91EHfcSNrjzRec6SO/MWDejitf+ImaBbdgDRLfUd
+ LbOA==
+X-Gm-Message-State: APjAAAWAia6cSkwGiceka8lQLaiesWUtQGq/ZQX9Mwik9J+b1yfppmnR
+ qN1Qq0qxIz/XgkGX4tokU0CvRNpJPVk=
+X-Received: by 2002:a65:6259:: with SMTP id q25mr4797652pgv.145.1566577449727; 
+ Fri, 23 Aug 2019 09:24:09 -0700 (PDT)
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id x1sm3229097pfj.182.2019.08.23.09.24.08
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 23 Aug 2019 09:24:08 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20190819213755.26175-1-richard.henderson@linaro.org>
+ <20190819213755.26175-21-richard.henderson@linaro.org>
+ <CAFEAcA85Ojy2u_G6frO_KL-kmTVCfpcOxsW5CCuKr=eKPcm+KQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <1766ac0b-5bc5-d01e-7314-9366d2238292@linaro.org>
+Date: Fri, 23 Aug 2019 09:24:07 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-References: <04703275-47e1-90c0-1b64-d2373ab48970@here.com>
-In-Reply-To: <04703275-47e1-90c0-1b64-d2373ab48970@here.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Aug 2019 17:08:14 +0100
-Message-ID: <CAFEAcA-Zc3zz8p8YnxTskkUizuEXCTRA6ejO_0VbtvGXYwjZRw@mail.gmail.com>
-To: "Bonnans, Laurent" <laurent.bonnans@here.com>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <CAFEAcA85Ojy2u_G6frO_KL-kmTVCfpcOxsW5CCuKr=eKPcm+KQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-Subject: Re: [Qemu-arm] [Qemu-devel] Running u-boot on raspi2
+X-Received-From: 2607:f8b0:4864:20::444
+Subject: Re: [Qemu-arm] [PATCH v2 20/68] target/arm: Convert load/store
+ (register, immediate, literal)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -103,61 +119,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Xiang, Cheng" <ext-cheng.xiang@here.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5dle+a3tqkmK
+X-TUID: 0oHOsozEcLit
 
-On Fri, 23 Aug 2019 at 16:54, Bonnans, Laurent <laurent.bonnans@here.com> wrote:
->
-> Hi,
->
-> We (mostly Cheng Xiang's work) have been trying to use the raspi2
-> machine to boot an image through u-boot.
-> It seems, however, that there are some missing pieces:
->
-> The first problem is that it trips very early if we keep the cpus count
-> at 4 but will continue if we hard-patch it to be a single core.
-> Symptom is that it seems all cores are running and trying to execute
-> something, while u-boot probably has not intention of doing something
-> with SMP.
-> Our guess is that it's something related to the asm spin routine in
-> raspi.c, which is maybe awoken too soon by some event in the mbox?
+On 8/23/19 7:54 AM, Peter Maydell wrote:
+> On Mon, 19 Aug 2019 at 22:38, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>  target/arm/translate.c | 797 ++++++++++++++++++-----------------------
+>>  target/arm/a32.decode  | 120 +++++++
+>>  target/arm/t32.decode  | 141 ++++++++
+>>  3 files changed, 615 insertions(+), 443 deletions(-)
+> 
+> This one is brutal to review. I got through review of all the
+> decode file patterns but got bogged down when I started looking
+> at the .c file changes... I might come back to it alter.
 
-This is probably because your binary is not expecting to be
-run the way that QEMU is running it. QEMU supports two
-ways of starting guest code on Arm:
- (1) Linux kernels; these boot with whatever the expected
- boot protocol for the kernel on this board is. For raspi
- that will be "start the primary CPU, but put the secondaries in
- the pen waiting on the mbox". Effectively, QEMU emulates a
- very minimal bit of the firmware, just enough to boot Linux.
- (2) Not Linux kernels; these are booted as if they were the
- first thing to execute on the raw hardware, which is to say
- that all CPUs start executing at once, and it is the job of
- the guest code to provide whatever penning of secondary CPUs
- it wants to do. That is, your guest code has to do the work
- of the firmware here, because it effectively is the firmware.
+I'm not sure how to make it any easier.
 
-We assume that you're a Linux kernel if you're a raw image,
-or a suitable uImage. If you're an ELF image we assume you're
-not a Linux kernel. (This is not exactly ideal but we're to
-some extent lumbered with it for backwards-compatibility reasons.)
+In the old code, we pass around insn and extract bits where needed, including
+subroutines.  In the new code we pass around a structure that has the bits
+extracted.  I don't see how to make intermediate steps.
 
-> Second problem is that u-boot relies on some SoC timer for the
-> raspberrypi 2, "System Timer" in
-> https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
-> It has not been added to qemu, to our knowledge but it looks like it
-> should be pretty easy to emulate.
+It might be easier to review the new code from first principles, since that's
+pretty much how I wrote it.
 
-Yeah, our emulation for this SoC's devices is still missing
-pieces. Contributions of device models are welcome. (You
-might want to check the list archives, etc -- I know there
-are some bcm283x device models floating around which haven't
-yet made it into mainline, which might be a workable base
-for cleanup and contribution.)
+Unless you have a better suggestion?
 
-thanks
--- PMM
+
+r~

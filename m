@@ -1,93 +1,93 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp663220wrs;
-        Fri, 23 Aug 2019 07:41:11 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyr6IvwOfmDI8vQcwvm2fsF8AOQGd0TSGtaUIHZk26l0xm79XxUAScOEXJvFvn6C8o3obvc
-X-Received: by 2002:a17:906:58f:: with SMTP id 15mr4571912ejn.19.1566571271803;
-        Fri, 23 Aug 2019 07:41:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566571271; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp663362wrs;
+        Fri, 23 Aug 2019 07:41:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyq8BnDQkXN66QOvotFj9CczqmEgCOQnpenIG+AdSYWN2XcOXZtn9Qbv7VknodVp9p5EyyL
+X-Received: by 2002:a50:c19a:: with SMTP id m26mr4808443edf.184.1566571278695;
+        Fri, 23 Aug 2019 07:41:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566571278; cv=none;
         d=google.com; s=arc-20160816;
-        b=wUUeCf3ZE2aXv9fGDOm5/PHQz7LchvoTmwatmhXZZ5KYmqn4WC5LO398VY9gS6Stty
-         sFG2lvSFkVlx+num2t6lMtTrJuYg2ZM6AymrQNYWcv1UNIIqVpDvBZWCFlKwwtozIAie
-         5UurDB7//h6CCavv9/eLVVnShAGxPeQ8TGPJclGbnIuMUigm+xbhzY3BBPfreu53q9nd
-         /GkFX1gLfpL6ZJ5XX90DrJASO5AR3iv0mVshxTorSjHKqRw4+Psb2zrw8ZFCwlhvt/bD
-         9wUEEIkz0EUig9KKI0y7tCF/vlQ9DVb4H4QTd0YSJdDuBCk2u8pa1DQZDCb/F/w/HLXS
-         kHVg==
+        b=UmlhEGjqXxptkxHehidgF8izsBN3jGlliRhTdrV4ZMCD+k+GXo8LYXzGK9ngd6/rvJ
+         zAPZA3Ej1/kxwlSV+TxPr7p6mpuhtIB7+IuTR0Vwa2mc/YLvHphYejZja1uFYUpJRJl4
+         xaIWlBAU3YcG77/xu++XD3Lyrx+PmMowD4R0Mls6cnX/oMRMSmpEYiBOOKkgB3S9R1zo
+         Gu9l2SNIKH//E1lmDGcA29jvXu6kF2zBAHeyErMm2BUDJhATjnZXVZUgkzDz49PzxUrO
+         8jkaP0p7YmNZWknOjch93A5R0VLG+UvRzWlHI/8Zax2SZUkn3i0W4KtPwFnuqpKhjuMT
+         CDow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=aZP19L+pcxVH2AbRP0FfTlSg46SEG5chIz084mRLMl0=;
-        b=lfJfdiEhn8bZFrACjES/BKjS9iVpgIUBA6HWYReTrglf07jBEDZDzIgh0Xjpuxhelu
-         M9dT0HrHZsyFSjnhxGbsvJl7dLvmOsrWxMGSKazGY2ZfuTRfz0Vl7+pXW0KgsbTi1pD/
-         Ir0byRbcmDwM63peQEqCF2E6K9WVW+ujtyg2P2Rt+DuxG90/skt3Vfqy2VB+/DgXQqx8
-         wFVLv7Lt+tym2V6Ma285Gcoh0DJLYMk7UzpNCIBBvrAH2v+5XDkVzMeXZ9p7ESnH2FW2
-         mt72rC4HYFV0qxYttu4F0r57KMTM0HMfiWhiz53Ael9aKHgRMEn6bMKFgXIjMyI+C39Y
-         AZCw==
+        bh=47bDrkGEjm3OL8HpKIVSmdv3BZMtTMBdelfns0dB9oI=;
+        b=UH7H09MRJ+nw4R+U7DYLgjy6YAm8Gj48VT9+x1D8zou9QvWOFFmnUXLBG8EasG2ziA
+         dP+h3eTRnxPGbkTqrtpFGTsNXG0Wo5hRSlGhw/LoC6rVB+vS/VQXHUyQBYmHfoj4k2HA
+         rvx2RriaIEpVHfseYbXvBoMNagSpPa8MDs2twQRxpSzA4/pm+Ewmu8IFwMKB0Wctr1Rd
+         gItsfVOiL5hRJxWUsyGbnxYN7dMDIFqnPbJEW4kQ6XM/PYFF4QqRToBXmgGKxmXKpSlw
+         3GHYSmB5m04i3gA5NgQPfW39R8ON7PQ2GTbyjJujZ8ar9vpsTI63EMyiPv6ORDOgX+Ob
+         t6yg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h6si1590566ejc.230.2019.08.23.07.41.11
+        by mx.google.com with ESMTPS id e4si1973763eda.93.2019.08.23.07.41.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Aug 2019 07:41:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 23 Aug 2019 07:41:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57114 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57126 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i1AkX-0007BS-Jk
-	for alex.bennee@linaro.org; Fri, 23 Aug 2019 10:41:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50566)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i1Ake-0007sX-QE
+	for alex.bennee@linaro.org; Fri, 23 Aug 2019 10:41:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50282)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1i1Ada-0000iK-Oz
- for qemu-devel@nongnu.org; Fri, 23 Aug 2019 10:33:59 -0400
+ (envelope-from <philmd@redhat.com>) id 1i1Ad5-000098-Pb
+ for qemu-arm@nongnu.org; Fri, 23 Aug 2019 10:33:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1i1AdZ-0002CN-Ji
- for qemu-devel@nongnu.org; Fri, 23 Aug 2019 10:33:58 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41026)
+ (envelope-from <philmd@redhat.com>) id 1i1Ad3-0001eN-Fx
+ for qemu-arm@nongnu.org; Fri, 23 Aug 2019 10:33:27 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52326)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1i1AdV-00023V-4b; Fri, 23 Aug 2019 10:33:54 -0400
+ id 1i1Ad3-0001dd-8V; Fri, 23 Aug 2019 10:33:25 -0400
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
  [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 699737F776;
- Fri, 23 Aug 2019 14:33:52 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 8C0B330001EE;
+ Fri, 23 Aug 2019 14:33:24 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-118.brq.redhat.com [10.40.204.118])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6DD465D9CA;
- Fri, 23 Aug 2019 14:33:46 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 16E4A5D9CA;
+ Fri, 23 Aug 2019 14:33:13 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Date: Fri, 23 Aug 2019 16:32:49 +0200
-Message-Id: <20190823143249.8096-7-philmd@redhat.com>
+Date: Fri, 23 Aug 2019 16:32:45 +0200
+Message-Id: <20190823143249.8096-3-philmd@redhat.com>
 In-Reply-To: <20190823143249.8096-1-philmd@redhat.com>
 References: <20190823143249.8096-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.71]); Fri, 23 Aug 2019 14:33:52 +0000 (UTC)
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.42]); Fri, 23 Aug 2019 14:33:24 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH v2 6/6] hw/net/xilinx_axi: Use
- object_initialize_child for correct ref. counting
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [PATCH v2 2/6] hw/arm: Use object_initialize_child for
+ correct reference counting
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Andrey Smirnov <andrew.smirnov@gmail.com>, Jason Wang <jasowang@redhat.com>,
@@ -97,12 +97,10 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
  Peter Chubb <peter.chubb@nicta.com.au>,
  Antony Pavlov <antonynpavlov@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Vo1fDIzZVTla
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VjWUcOsKqZdv
 
 As explained in commit aff39be0ed97:
 
@@ -114,47 +112,110 @@ As explained in commit aff39be0ed97:
   Thus let's use now object_initialize_child() instead to get the
   reference counting here right.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/net/xilinx_axienet.c | 17 ++++++++---------
- 1 file changed, 8 insertions(+), 9 deletions(-)
+ hw/arm/mcimx7d-sabre.c |  9 ++++-----
+ hw/arm/mps2-tz.c       | 15 +++++++--------
+ hw/arm/musca.c         |  9 +++++----
+ 3 files changed, 16 insertions(+), 17 deletions(-)
 
-diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-index d8716a1f73..2c8c065401 100644
---- a/hw/net/xilinx_axienet.c
-+++ b/hw/net/xilinx_axienet.c
-@@ -994,15 +994,14 @@ static void xilinx_enet_init(Object *obj)
-     XilinxAXIEnet *s =3D XILINX_AXI_ENET(obj);
-     SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
+diff --git a/hw/arm/mcimx7d-sabre.c b/hw/arm/mcimx7d-sabre.c
+index 97b8bb788a..78b87c502f 100644
+--- a/hw/arm/mcimx7d-sabre.c
++++ b/hw/arm/mcimx7d-sabre.c
+@@ -30,7 +30,6 @@ static void mcimx7d_sabre_init(MachineState *machine)
+ {
+     static struct arm_boot_info boot_info;
+     MCIMX7Sabre *s =3D g_new0(MCIMX7Sabre, 1);
+-    Object *soc;
+     int i;
 =20
--    object_initialize(&s->rx_data_dev, sizeof(s->rx_data_dev),
--                      TYPE_XILINX_AXI_ENET_DATA_STREAM);
--    object_initialize(&s->rx_control_dev, sizeof(s->rx_control_dev),
--                      TYPE_XILINX_AXI_ENET_CONTROL_STREAM);
--    object_property_add_child(OBJECT(s), "axistream-connected-target",
--                              (Object *)&s->rx_data_dev, &error_abort);
--    object_property_add_child(OBJECT(s), "axistream-control-connected-ta=
-rget",
--                              (Object *)&s->rx_control_dev, &error_abort=
-);
--
-+    object_initialize_child(OBJECT(s), "axistream-connected-target",
-+                            &s->rx_data_dev, sizeof(s->rx_data_dev),
-+                            TYPE_XILINX_AXI_ENET_DATA_STREAM, &error_abo=
-rt,
-+                            NULL);
-+    object_initialize_child(OBJECT(s), "axistream-control-connected-targ=
-et",
-+                            &s->rx_control_dev, sizeof(s->rx_control_dev=
+     if (machine->ram_size > FSL_IMX7_MMDC_SIZE) {
+@@ -49,10 +48,10 @@ static void mcimx7d_sabre_init(MachineState *machine)
+         .nb_cpus =3D machine->smp.cpus,
+     };
+=20
+-    object_initialize(&s->soc, sizeof(s->soc), TYPE_FSL_IMX7);
+-    soc =3D OBJECT(&s->soc);
+-    object_property_add_child(OBJECT(machine), "soc", soc, &error_fatal)=
+;
+-    object_property_set_bool(soc, true, "realized", &error_fatal);
++    object_initialize_child(OBJECT(machine), "soc",
++                            &s->soc, sizeof(s->soc),
++                            TYPE_FSL_IMX7, &error_fatal, NULL);
++    object_property_set_bool(OBJECT(&s->soc), true, "realized", &error_f=
+atal);
+=20
+     memory_region_allocate_system_memory(&s->ram, NULL, "mcimx7d-sabre.r=
+am",
+                                          machine->ram_size);
+diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+index d85dc2c4bd..6b24aaacde 100644
+--- a/hw/arm/mps2-tz.c
++++ b/hw/arm/mps2-tz.c
+@@ -427,10 +427,10 @@ static void mps2tz_common_init(MachineState *machin=
+e)
+     /* The sec_resp_cfg output from the IoTKit must be split into multip=
+le
+      * lines, one for each of the PPCs we create here, plus one per MSC.
+      */
+-    object_initialize(&mms->sec_resp_splitter, sizeof(mms->sec_resp_spli=
+tter),
+-                      TYPE_SPLIT_IRQ);
+-    object_property_add_child(OBJECT(machine), "sec-resp-splitter",
+-                              OBJECT(&mms->sec_resp_splitter), &error_ab=
+ort);
++    object_initialize_child(OBJECT(machine), "sec-resp-splitter",
++                            &mms->sec_resp_splitter,
++                            sizeof(mms->sec_resp_splitter),
++                            TYPE_SPLIT_IRQ, &error_abort, NULL);
+     object_property_set_int(OBJECT(&mms->sec_resp_splitter),
+                             ARRAY_SIZE(mms->ppc) + ARRAY_SIZE(mms->msc),
+                             "num-lines", &error_fatal);
+@@ -465,10 +465,9 @@ static void mps2tz_common_init(MachineState *machine=
+)
+      * Tx, Rx and "combined" IRQs are sent to the NVIC separately.
+      * Create the OR gate for this.
+      */
+-    object_initialize(&mms->uart_irq_orgate, sizeof(mms->uart_irq_orgate=
 ),
-+                            TYPE_XILINX_AXI_ENET_CONTROL_STREAM, &error_=
-abort,
-+                            NULL);
-     sysbus_init_irq(sbd, &s->irq);
-=20
-     memory_region_init_io(&s->iomem, OBJECT(s), &enet_ops, s, "enet", 0x=
-40000);
+-                      TYPE_OR_IRQ);
+-    object_property_add_child(OBJECT(mms), "uart-irq-orgate",
+-                              OBJECT(&mms->uart_irq_orgate), &error_abor=
+t);
++    object_initialize_child(OBJECT(mms), "uart-irq-orgate",
++                            &mms->uart_irq_orgate, sizeof(mms->uart_irq_=
+orgate),
++                            TYPE_OR_IRQ, &error_abort, NULL);
+     object_property_set_int(OBJECT(&mms->uart_irq_orgate), 10, "num-line=
+s",
+                             &error_fatal);
+     object_property_set_bool(OBJECT(&mms->uart_irq_orgate), true,
+diff --git a/hw/arm/musca.c b/hw/arm/musca.c
+index ddd8842732..68db4b5b38 100644
+--- a/hw/arm/musca.c
++++ b/hw/arm/musca.c
+@@ -424,10 +424,11 @@ static void musca_init(MachineState *machine)
+      * The sec_resp_cfg output from the SSE-200 must be split into multi=
+ple
+      * lines, one for each of the PPCs we create here.
+      */
+-    object_initialize(&mms->sec_resp_splitter, sizeof(mms->sec_resp_spli=
+tter),
+-                      TYPE_SPLIT_IRQ);
+-    object_property_add_child(OBJECT(machine), "sec-resp-splitter",
+-                              OBJECT(&mms->sec_resp_splitter), &error_fa=
+tal);
++    object_initialize_child(OBJECT(machine), "sec-resp-splitter",
++                            &mms->sec_resp_splitter,
++                            sizeof(mms->sec_resp_splitter),
++                            TYPE_SPLIT_IRQ, &error_fatal, NULL);
++
+     object_property_set_int(OBJECT(&mms->sec_resp_splitter),
+                             ARRAY_SIZE(mms->ppc), "num-lines", &error_fa=
+tal);
+     object_property_set_bool(OBJECT(&mms->sec_resp_splitter), true,
 --=20
 2.20.1
 

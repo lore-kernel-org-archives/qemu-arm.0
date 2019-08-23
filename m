@@ -1,98 +1,78 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp547782wrs;
-        Fri, 23 Aug 2019 06:05:43 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwQv5WupAAzEe0TDudS3Zkf2g0EQuV4hUmK1qDKSFCVZz+zEumTIxH+hLmEdwqDYaPI8KEU
-X-Received: by 2002:a7b:c954:: with SMTP id i20mr5271811wml.169.1566565543033;
-        Fri, 23 Aug 2019 06:05:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566565543; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp610089wrs;
+        Fri, 23 Aug 2019 06:58:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzDHZ3rBooOR1yRiJ+ygQJwEjyVPxjF8cZZMyrEorz44umL2BcdRdRF8aD9rmH6a+HkAaIc
+X-Received: by 2002:a37:a851:: with SMTP id r78mr4232535qke.120.1566568717775;
+        Fri, 23 Aug 2019 06:58:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566568717; cv=none;
         d=google.com; s=arc-20160816;
-        b=Y9rNk/odtZoGvhT/AbhufpX4XZCjm233KEh7iG3OLpsRSZ7DNXRtI8tPyZ1cirTNZR
-         g25eW+Sy1MX0cnaWeyn1cRXtPLZYu83h0k+4lj33wFYOe1ob40wXgZRVqQQyZ0N1/4wg
-         xo5hKjfbx8TR+OfsPbo9Hso4EW+jFxN/054A2zmFZdU7zEQYDMCwVuK19qnJ+EM4rIru
-         sKb/CAtXtKJHf6lJkNNbAUuXIgfwyzHcNZ9j+a4sDDh0fbDCG0x5hmYR6TJSSUK7zC6t
-         4HWknjBfA91HFfnqv14V5vRmOJVUlpQPcv48DaVJrM5BCPa10yJuKLzLB5Fxa2ApfhJJ
-         dHOw==
+        b=U21Km13H7h/g7YOS7wrj3Q3Jw3PrGTwODkz4HYal3h7M0c1IAE3ha+dGuo721wRDdZ
+         zay1ZEUoEeohR3DUyKauOIklcAEXYDJTpkOmOzr2Jv5PvFQmFMqhogXgK+Waj6OIhUfm
+         DqqO2wisxkmpYaqHESNAbgJO5E/1nrp3e5rCq+14F9hmr5VY+doFTpDtb6SLvLYenuvE
+         HUIR/NkDX5Q0Acfa0dXIFAMf9Mr3YW0huIsz/UWLNG8vEr/szm6v+L1amKC5udqqabKS
+         DHbLKh4YgtoM2DzQEdxPiCyzG4QEMh1MNL1wEj8ruSR2hwGoJyavJ9vPejRcyuH/LfCc
+         XqaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=3V5IMwDRdJxEHaCpGw2y6KqCjyfmiyL4t/7PUYITS3c=;
-        b=Q6LOOuFthfvSEXBcM9rh/z8TwO1Smw6Rh8e/RwEtL/OLJ2Dt5wW+FVmg/SqJ21EIxj
-         Rg75w+9t3nDU3K1++w6XvN40fq17dWm1WMK8Wjg50saHV5kgV+F1cpe1Lmn+orZSboEs
-         7yjpztNDKl1oHXCsqs1L8rTHP3qKzCllRyYr/2CcUrZEJdadZc9WepDcWLnEaImR6usl
-         Qe9E7HA2jVe+t3eMpGPICx80ZRxI6MT635wgqXPcGJ3QGmkRsS/u+eHdFPBnhtkDNXLK
-         xstS+VDxRfmnUw1pe3QPna4bnIs34KyMQbBtcRAZ6GolarqlYvwHwgcRH6EGRFQJU1cG
-         Ilaw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=aSpi3oLY7UpF1OiY53cepm+LHftOEJMAZOCCJIZTYQ8=;
+        b=buYUq0N3bEWJPPjrvutdyqtjF/3FSFLgwEdj1qpK12f0GVmIWBYu3+J34s+tc686VL
+         olEK721B/GXEoqvE0UJju/5+DPAZ9LN0wuvRXBiZ2AA4BSphrwZZNIplYIZwCBiDyvfp
+         e/UcF5v+V42XSE3p+l2xO+Q3IjZRdwKVMVhwH/cfNh5vje4GbkJN5MRX5SqkT74MegX/
+         odKg79GoxmgM+30ILtnK2WxLf5KEblHs24Iv+acHG5MBbs6P96XPfAZu1GBhz9z7Xfjd
+         eLDPzyGMy78vaMeDsp3ugqpumd2ZEvUHncnxg0ybK8gofbOwGuW/HgPX7BMv6IaBrDvB
+         TK6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dJK4Hwo7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a32si1723836edd.382.2019.08.23.06.05.42
+        by mx.google.com with ESMTPS id k23si1778657qkj.235.2019.08.23.06.58.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Aug 2019 06:05:43 -0700 (PDT)
+        Fri, 23 Aug 2019 06:58:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=dJK4Hwo7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55936 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56322 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i19G9-0001f1-TZ
-	for alex.bennee@linaro.org; Fri, 23 Aug 2019 09:05:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36752)
+	id 1i1A5M-0001OW-UJ
+	for alex.bennee@linaro.org; Fri, 23 Aug 2019 09:58:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44767)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1i19Fc-0001RO-I6
- for qemu-arm@nongnu.org; Fri, 23 Aug 2019 09:05:09 -0400
+ (envelope-from <philmd@redhat.com>) id 1i1A56-0001MR-FZ
+ for qemu-arm@nongnu.org; Fri, 23 Aug 2019 09:58:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1i19Fb-0004bF-7c
- for qemu-arm@nongnu.org; Fri, 23 Aug 2019 09:05:08 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:41606)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1i19Fb-0004aU-21
- for qemu-arm@nongnu.org; Fri, 23 Aug 2019 09:05:07 -0400
-Received: by mail-ot1-x344.google.com with SMTP id o101so8652213ota.8
- for <qemu-arm@nongnu.org>; Fri, 23 Aug 2019 06:05:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=3V5IMwDRdJxEHaCpGw2y6KqCjyfmiyL4t/7PUYITS3c=;
- b=dJK4Hwo7sT7nUFxqN8b/r6F2b21//5H/pTet9eMpEIiJ2OnsB6kAG+IiypGE/ZHOS1
- 3irTdV/pS9+w2Zt+ONRr36iVuiFQrlk7d6wIoZxp73sUjoyR0rul2H6LfoDUSWZUhhRR
- NOqigikV2t8hVeHOLsNKc8UWPaSUVmRyxEsnwly1ezKgAoGf676J0vP06c8Hl0xm8E5+
- WqEIx5qMzh4L/1cqNxFM5B9dttJLpmFvpJJ2Kd4UNW8N5T/T7j5sbrRKAgmqrhsdZiz5
- 7+pGil+2BT1tI/HntGv7V9vaMn479yv+fmIhfwhLB9tUb6aqjWJBx2dpfWFTAsj2fTUp
- pSnQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=3V5IMwDRdJxEHaCpGw2y6KqCjyfmiyL4t/7PUYITS3c=;
- b=lVeMHmqIsFOzt7SNZ2yvhTqQaJ84UEL1lgo+seXPfgZTfU8wB2mhEgLsMjDhIB7xtk
- ROZDfuSIbA9tQEQdN4p9gI1H6N+jxHeeMBHH6sg2LB3oQp7LCCsiBrqz5WC8e/LH6Ntl
- 7qSAmeVX+mBCXlAAhJPDjV3lcl5bNJggoB8RPRzYVaBQDPUHDS6hD7s2mlKg3jg6ld6l
- aErZY/JpZzde6bQ7hxfelZ+JtE2eyICsoQyAMqD+4TZXB/I7hw5sUTICsO+ccB+B7Yi5
- E1ua/B1GVWdU4G677CEGdh8zlcu/pL/qK2q+/1p2JA+1P68Bbp3qwIELTAxBnyNVsU2L
- 4xOQ==
-X-Gm-Message-State: APjAAAUtlh9MxygR3f6kl7o5DuXzLxT6AY1FaA+l7xPOVPNzkYhtRXq8
- OJCFCZCpxlXqruTuqi5dzHdUZIw8PtCmror1hUCOuQ==
-X-Received: by 2002:a9d:5f1a:: with SMTP id f26mr4198136oti.91.1566565505695; 
- Fri, 23 Aug 2019 06:05:05 -0700 (PDT)
+ (envelope-from <philmd@redhat.com>) id 1i1A55-0007Gz-DR
+ for qemu-arm@nongnu.org; Fri, 23 Aug 2019 09:58:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39514)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1i1A55-0007GO-8j; Fri, 23 Aug 2019 09:58:19 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 759DDA2F867;
+ Fri, 23 Aug 2019 13:58:18 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-118.brq.redhat.com [10.40.204.118])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2436B2636D;
+ Fri, 23 Aug 2019 13:58:13 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Fri, 23 Aug 2019 15:58:07 +0200
+Message-Id: <20190823135811.13883-1-philmd@redhat.com>
 MIME-Version: 1.0
-References: <20190819213755.26175-1-richard.henderson@linaro.org>
- <20190819213755.26175-20-richard.henderson@linaro.org>
-In-Reply-To: <20190819213755.26175-20-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Aug 2019 14:04:54 +0100
-Message-ID: <CAFEAcA8Q3ujQFtZfLXTsbKBxUQAHCPo0i_TpdX9KcmnNUY04Eg@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::344
-Subject: Re: [Qemu-arm] [PATCH v2 19/68] target/arm: Convert T32 ADDW/SUBW
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.68]); Fri, 23 Aug 2019 13:58:18 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH 0/4] Support disabling TCG on ARM (part 2)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,128 +84,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eg+3VzfQ1Qm9
+X-TUID: DAuqmZMkZErN
 
-On Mon, 19 Aug 2019 at 22:38, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/translate.c | 24 +++++++++++++-----------
->  target/arm/a32.decode  |  1 +
->  target/arm/t32.decode  | 19 +++++++++++++++++++
->  3 files changed, 33 insertions(+), 11 deletions(-)
->
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index cb6296dc12..0e51289928 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -7626,6 +7626,11 @@ static void arm_skip_unless(DisasContext *s, uint32_t cond)
->   * Constant expanders for the decoders.
->   */
->
-> +static int negate(DisasContext *s, int x)
-> +{
-> +    return -x;
-> +}
-> +
->  static int times_2(DisasContext *s, int x)
->  {
->      return x * 2;
-> @@ -7975,6 +7980,12 @@ static bool trans_ORN_rri(DisasContext *s, arg_s_rri_rot *a)
->  #undef DO_ANY2
->  #undef DO_CMP2
->
-> +static bool trans_ADR(DisasContext *s, arg_ri *a)
-> +{
-> +    store_reg_bx(s, a->rd, add_reg_for_lit(s, 15, a->imm));
-> +    return true;
-> +}
-> +
->  /*
->   * Multiply and multiply accumulate
->   */
-> @@ -10670,17 +10681,8 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
->                          }
->                          store_reg(s, rd, tmp);
->                      } else {
-> -                        /* Add/sub 12-bit immediate.  */
-> -                        if (insn & (1 << 23)) {
-> -                            imm = -imm;
-> -                        }
-> -                        tmp = add_reg_for_lit(s, rn, imm);
-> -                        if (rn == 13 && rd == 13) {
-> -                            /* ADD SP, SP, imm or SUB SP, SP, imm */
-> -                            store_sp_checked(s, tmp);
-> -                        } else {
-> -                            store_reg(s, rd, tmp);
-> -                        }
-> +                        /* Add/sub 12-bit immediate, in decodetree */
-> +                        goto illegal_op;
+Cover from Samuel Ortiz from (part 1) [1]:
 
-We seem to have lost the store_sp_checked() handling ?
+  This patchset allows for building and running ARM targets with TCG
+  disabled. [...]
 
->                      }
->                  }
->              } else {
-> diff --git a/target/arm/a32.decode b/target/arm/a32.decode
-> index c7f156be6d..aac991664d 100644
-> --- a/target/arm/a32.decode
-> +++ b/target/arm/a32.decode
-> @@ -30,6 +30,7 @@
->  &rrrr            rd rn rm ra
->  &rrr             rd rn rm
->  &rr              rd rm
-> +&ri              rd imm
->  &r               rm
->  &i               imm
->  &msr_reg         rn r mask
+  The rationale behind this work comes from the NEMU project where we're
+  trying to only support x86 and ARM 64-bit architectures, without
+  including the TCG code base. We can only do so if we can build and run
+  ARM binaries with TCG disabled.
 
-Should this change be in some other patch ?
+The first 2 patches disable non-KVM compatible cpus to the KVM build,
+then the last 2 remove the boards using these cpus from this build.
 
-> diff --git a/target/arm/t32.decode b/target/arm/t32.decode
-> index 5116c6165a..be4e5f087c 100644
-> --- a/target/arm/t32.decode
-> +++ b/target/arm/t32.decode
-> @@ -27,6 +27,7 @@
->  &rrrr            !extern rd rn rm ra
->  &rrr             !extern rd rn rm
->  &rr              !extern rd rm
-> +&ri              !extern rd imm
->  &r               !extern rm
->  &i               !extern imm
->  &msr_reg         !extern rn r mask
-> @@ -121,6 +122,24 @@ SBC_rri          1111 0.0 1011 . .... 0 ... .... ........     @s_rri_rot
->  }
->  RSB_rri          1111 0.0 1110 . .... 0 ... .... ........     @s_rri_rot
->
-> +# Data processing (plain binary immediate)
-> +
-> +%imm12_26_12_0   26:1 12:3 0:8
-> +%neg12_26_12_0   26:1 12:3 0:8 !function=negate
-> +@s0_rri_12       .... ... .... . rn:4 . ... rd:4 ........ \
-> +                 &s_rri_rot imm=%imm12_26_12_0 rot=0 s=0
-> +
-> +{
-> +  ADR            1111 0.1 0000 0 1111 0 ... rd:4 ........ \
-> +                 &ri imm=%imm12_26_12_0
-> +  ADD_rri        1111 0.1 0000 0 .... 0 ... .... ........     @s0_rri_12
-> +}
-> +{
-> +  ADR            1111 0.1 0101 0 1111 0 ... rd:4 ........ \
-> +                 &ri imm=%neg12_26_12_0
-> +  SUB_rri        1111 0.1 0101 0 .... 0 ... .... ........     @s0_rri_12
-> +}
-> +
->  # Multiply and multiply accumulate
->
->  @s0_rnadm        .... .... .... rn:4 ra:4 rd:4 .... rm:4      &s_rrrr s=0
-> --
-> 2.17.1
+This is a resend (no changes) of patches from part 1 v4 from [2].
 
+Regards,
 
-thanks
--- PMM
+Phil.
+
+[1]: https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg02451.html
+[2]: https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg00312.html
+
+Philippe Mathieu-Daud=C3=A9 (4):
+  target/arm: Restrict pre-ARMv7 cpus to TCG
+  target/arm: Restrict R and M profiles to TCG
+  RFC target/arm: Do not build pre-ARMv7 cpus when using KVM
+  RFC target/arm: Do not build A/M-profile cpus when using KVM
+
+ default-configs/arm-softmmu.mak | 47 +++++++++++++++------------------
+ hw/arm/Kconfig                  | 42 ++++++++++++++++++++++++++---
+ target/arm/cpu.c                | 16 ++++++++++-
+ 3 files changed, 76 insertions(+), 29 deletions(-)
+
+--=20
+2.20.1
+

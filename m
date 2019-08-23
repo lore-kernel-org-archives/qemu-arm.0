@@ -1,185 +1,289 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2795752lfq;
-        Mon, 14 Sep 2020 20:12:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwPz9VZzapVTKfqALhtcuRmHiuRebzyKqIndfqUZk2pUnMzKAjjxzu4x11Po/eGrDdPSdKD
-X-Received: by 2002:a5b:904:: with SMTP id a4mr25406499ybq.59.1600139563836;
-        Mon, 14 Sep 2020 20:12:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600139563; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp854511wrs;
+        Fri, 23 Aug 2019 10:33:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyS83maVp2XNa7M5s8F3SFcfE06ipS8PAhU+onPB+0GIYnYv7zEW2T9ZHmVrNhk6mzEBg81
+X-Received: by 2002:aa7:90d4:: with SMTP id k20mr6385369pfk.78.1566581632060;
+        Fri, 23 Aug 2019 10:33:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566581632; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dy5t9YpWgKkiu6IN0luuapz0rj3HiirJLwGS6MheUn83hHpFpsf1d9IqRMi0xkYLvY
-         iAQFE+K/1YmkqIWKbX0IB7Jg0fBBpvVdcYSnScKPoiUkzTLNX7mMEmX/wFr8hjqXB3+5
-         K5FssiIDpXWAVTBee8bChoHXXS3WFf3b+nVdNVuh07i8IF4IcsO2lMRA/Co9OZzBnTZZ
-         CIaLMWnxl24DYi+BEWy0O0tSN3X/WIsx/mviZBWSEtzGo6yeeoginqKHPHtn751XAuAK
-         vu7Ysre8rasQnvXXyebhnhVK6v7XQeZMAEOA8Z9kz/pT5DgyTXgog+JSptSkP83H4xdd
-         fvqw==
+        b=0H+pokpoLXvX2hlhFSxlVdyluGzrcL+7Rit9XiSygsjB0Cmm+NzjBbnUENHm4Wc7uQ
+         wM6493+o1DiCkf/r2FpIrB7ManT3LE9HRmNpcDzpXkFCSVhTHiugbOwD37NKlUL8iUQ/
+         USQN8Kmht0GpPHNrfkTRcm7yWQhtr00rizzY8fNQTBuo8fs+ErHWmGgYxbcWQi9e/BCu
+         DHrv/lGwF/6mtMPnucmQml5eEYrvh1lt1YDK8r1TqY6gSgOG4IWeX5Sgm1avsJdY/ARC
+         ii4nhUi/sqY8W6iZgax/k2XVqz8cp++xH00eWMn6olpOIOzHElQZmeD0IHECKQwre7Cy
+         tM9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=fLJn3KGoDv4U0zm6QvQGS4S6fFA4pWWn06jbXE+Tvuk=;
-        b=HTXo9CplV7dDFsybVVRojWtWxJgtUZg16zyjGrMEPdY1A6rwoOfl7dpzmtMIVMl75E
-         KDiH2GGV0ysPQABuVVnBo8Y0Lof/JdJq/xNRA3qk5higyC0vgzO3t0LT+mQr1LYTNlJq
-         mwyRoxtI5gZEYlWVz4eYLfqJqQhwZgjPvd21uO1xww0UgsDNuo9WrsC8Fw+YqWVWE5r6
-         fmDPPkt8+XKvWR4Spoz5UdFbyyKqswJmid4ghyTy5Wk69ksFgOVx129bbwO36RizPvMu
-         Y4m3b2QWor02dcSB8Xd7x7gP+P9zEQADusFgxm/WdWma7/6jc09OS9flKu/Olc15/Yul
-         kotw==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :message-id:date:subject:cc:to:from;
+        bh=tZLxyo+2Ba7LAWmSi2MTaa6sQtMt3zvtJ80mGY/hoWM=;
+        b=Lhq6M8prWjnjCegBZ4s8RZJuWHPbUWqO4omlRCEa2MHRpZKRyjqwDlbkOFoOQZW7hZ
+         o54GIlcay2obtZ6cqMdnXCLoLw4SHuordkjdTMNRFMolDJzz17Dnuje1B7Lm6rl8iiYg
+         8WkEGSnYHEX0ik3GBF/fCoxfjdmH8lLOxdztGwR5nlgyrj7kikeCet7KFy7mdqxeGEH6
+         ZnZ47oJaaXfVCbGUOEHhYXUTKgHxZbjAn4Vm/hl7KVF7aIcwKiQ7wF8vi9BefiRESWYp
+         +QxFP3hTs2Wmg+8/lNNNoDc6R5nFGNoAcmr7/E6lF86EIUzFXR8e+QQ0eHdX/vPb9rUD
+         zu/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=wridOrpG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r18si12269823ybb.384.2020.09.14.20.12.43
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Sep 2020 20:12:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <linux-kernel-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id z9si3042326plo.66.2019.08.23.10.33.51;
+        Fri, 23 Aug 2019 10:33:52 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=wridOrpG;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45494 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kI1Od-0000mC-7C
-	for alex.bennee@linaro.org; Mon, 14 Sep 2020 23:12:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47996)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1kI1O7-0000Et-CO
- for qemu-arm@nongnu.org; Mon, 14 Sep 2020 23:12:11 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:35397)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1kI1O3-0001fl-LA
- for qemu-arm@nongnu.org; Mon, 14 Sep 2020 23:12:11 -0400
-Received: by mail-pg1-x542.google.com with SMTP id g29so1243034pgl.2
- for <qemu-arm@nongnu.org>; Mon, 14 Sep 2020 20:12:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=fLJn3KGoDv4U0zm6QvQGS4S6fFA4pWWn06jbXE+Tvuk=;
- b=wridOrpG5CScKhmqwIxVFGd3J5VE6XNpo8HYGuvrk0FXgI0Z7wJXOCIUwexMCAfh5h
- xM8RAk+ObbXIZDY/MjfGaqPksQE7S8w+62/6DXBcygOlnKp79q8bPn7EgY6eV27Y4cwU
- 2xfIJWFymvYSzuw8eHQBbdFp/JCKrnz4a3Km9BSsfeInn1Q7vAayZW+yS8ewMg3vL/1q
- JHq5f4AO9mXeOcWrLPO4koLC0hUexM96RpTs6GEkAXGsJeudV6u2I9G3DBq+a53w8N0p
- 1r07yf0FLknjnwajCNM6st1Z9Xhtf8XScHm8LsGIUWhwYthyyjTfMr4TkhvO9QefR4j3
- +xKg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=fLJn3KGoDv4U0zm6QvQGS4S6fFA4pWWn06jbXE+Tvuk=;
- b=J6ZpCg882KhIN2s+QfSgz827gKxbtNL2Qf8vUj5d4fiAPzoHaEfU15E7QLHRjWsVEn
- dV6VmfIhs7FnfxL5Q2ac/tEYPvyUYRQtc48p25wd/dkRpXGAyvjiq0kpwGLtc2oRsmle
- q+/p0MSa1hUhf1GYjsvIKZYadQ1ysaipp1pEydllNhfGsC8uf53HCo49132VBeVbH3z9
- s6NsiQ34qf1ND2RJ+JuQCqwyiu6bdqRJ6Awv4jvlVuaaGG8UzUeTQBGcW7uXzflPwSGj
- c4979x1gVQ9y7KggF34NfXbpn3fnPjEuo2qv9jsXemfDijtr76ypYMWGwJ9t3k6uMY73
- QWTg==
-X-Gm-Message-State: AOAM533uI61hgxXcbPbue5Fnr01HbbMqpx6vh2R/p7In1t8XPYXdwntg
- My3orw1y1ZsuUM1I/iB1P5vS
-X-Received: by 2002:a62:17c5:: with SMTP id 188mr15658196pfx.148.1600139526235; 
- Mon, 14 Sep 2020 20:12:06 -0700 (PDT)
-Received: from localhost.localdomain ([147.75.106.138])
- by smtp.gmail.com with ESMTPSA id g23sm11551776pfh.133.2020.09.14.20.12.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Sep 2020 20:12:05 -0700 (PDT)
-From: Haibo Xu <haibo.xu@linaro.org>
-To: drjones@redhat.com,
-	richard.henderson@linaro.org
-Subject: [PATCH v3 02/12] target/arm/kvm: spe: Add helper to detect SPE when
- using KVM
-Date: Tue, 15 Sep 2020 03:11:38 +0000
-Message-Id: <c32b0afe693c158115499da7b32321011deeedd9.1600135462.git.haibo.xu@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1600135462.git.haibo.xu@linaro.org>
-References: <cover.1600135462.git.haibo.xu@linaro.org>
+       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S2403944AbfHWRdt (ORCPT <rfc822;mike.holmes@linaro.org>
+        + 28 others); Fri, 23 Aug 2019 13:33:49 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38602 "EHLO mx1.redhat.com"
+        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
+        id S2403837AbfHWRds (ORCPT <rfc822;linux-kernel@vger.kernel.org>);
+        Fri, 23 Aug 2019 13:33:48 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mx1.redhat.com (Postfix) with ESMTPS id C7002308624A;
+        Fri, 23 Aug 2019 17:33:47 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-105.ams2.redhat.com [10.36.116.105])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id BD8255D9CA;
+        Fri, 23 Aug 2019 17:33:41 +0000 (UTC)
+From:   Eric Auger <eric.auger@redhat.com>
+To:     eric.auger.pro@gmail.com, eric.auger@redhat.com, maz@kernel.org,
+        linux-kernel@vger.kernel.org, kvm@vger.kernel.org,
+        kvmarm@lists.cs.columbia.edu
+Cc:     yuzenghui@huawei.com, zhang.zhanghailiang@huawei.com,
+        wanghaibin.wang@huawei.com, james.morse@arm.com,
+        qemu-arm@nongnu.org, julien.thierry.kdev@gmail.com,
+        suzuki.poulose@arm.com, peter.maydell@linaro.org,
+        andre.przywara@arm.com
+Subject: [PATCH] KVM: arm/arm64: vgic: Use a single IO device per redistributor
+Date:   Fri, 23 Aug 2019 19:33:30 +0200
+Message-Id: <20190823173330.23342-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::542;
- envelope-from=haibo.xu@linaro.org; helo=mail-pg1-x542.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
- qemu-devel@nongnu.org, Haibo Xu <haibo.xu@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iBHYjQTW6xIY
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.49]); Fri, 23 Aug 2019 17:33:48 +0000 (UTC)
+Sender: linux-kernel-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <linux-kernel.vger.kernel.org>
+X-Mailing-List: linux-kernel@vger.kernel.org
+X-TUID: GV64mmJe5pwc
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+At the moment we use 2 IO devices per GICv3 redistributor: one
+one for the RD_base frame and one for the SGI_base frame.
+
+Instead we can use a single IO device per redistributor (the 2
+frames are contiguous). This saves slots on the KVM_MMIO_BUS
+which is currently limited to NR_IOBUS_DEVS (1000).
+
+This change allows to instantiate up to 512 redistributors and may
+speed the guest boot with a large number of VCPUs.
+
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- target/arm/kvm.c     |  5 +++++
- target/arm/kvm_arm.h | 13 +++++++++++++
- 2 files changed, 18 insertions(+)
+ include/kvm/arm_vgic.h           |  1 -
+ virt/kvm/arm/vgic/vgic-init.c    |  1 -
+ virt/kvm/arm/vgic/vgic-mmio-v3.c | 81 ++++++++++----------------------
+ 3 files changed, 24 insertions(+), 59 deletions(-)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 8bb7318378..58f991e890 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -214,6 +214,11 @@ bool kvm_arm_pmu_supported(void)
-     return kvm_check_extension(kvm_state, KVM_CAP_ARM_PMU_V3);
+diff --git a/include/kvm/arm_vgic.h b/include/kvm/arm_vgic.h
+index 7a30524a80ee..004f6e9d3b05 100644
+--- a/include/kvm/arm_vgic.h
++++ b/include/kvm/arm_vgic.h
+@@ -311,7 +311,6 @@ struct vgic_cpu {
+ 	 * parts of the redistributor.
+ 	 */
+ 	struct vgic_io_device	rd_iodev;
+-	struct vgic_io_device	sgi_iodev;
+ 	struct vgic_redist_region *rdreg;
+ 
+ 	/* Contains the attributes and gpa of the LPI pending tables. */
+diff --git a/virt/kvm/arm/vgic/vgic-init.c b/virt/kvm/arm/vgic/vgic-init.c
+index bdbc297d06fb..eaff7031a089 100644
+--- a/virt/kvm/arm/vgic/vgic-init.c
++++ b/virt/kvm/arm/vgic/vgic-init.c
+@@ -192,7 +192,6 @@ int kvm_vgic_vcpu_init(struct kvm_vcpu *vcpu)
+ 	int i;
+ 
+ 	vgic_cpu->rd_iodev.base_addr = VGIC_ADDR_UNDEF;
+-	vgic_cpu->sgi_iodev.base_addr = VGIC_ADDR_UNDEF;
+ 
+ 	INIT_LIST_HEAD(&vgic_cpu->ap_list_head);
+ 	raw_spin_lock_init(&vgic_cpu->ap_list_lock);
+diff --git a/virt/kvm/arm/vgic/vgic-mmio-v3.c b/virt/kvm/arm/vgic/vgic-mmio-v3.c
+index c45e2d7e942f..400067085cab 100644
+--- a/virt/kvm/arm/vgic/vgic-mmio-v3.c
++++ b/virt/kvm/arm/vgic/vgic-mmio-v3.c
+@@ -515,7 +515,8 @@ static const struct vgic_register_region vgic_v3_dist_registers[] = {
+ 		VGIC_ACCESS_32bit),
+ };
+ 
+-static const struct vgic_register_region vgic_v3_rdbase_registers[] = {
++static const struct vgic_register_region vgic_v3_rd_registers[] = {
++	/* RD_base registers */
+ 	REGISTER_DESC_WITH_LENGTH(GICR_CTLR,
+ 		vgic_mmio_read_v3r_ctlr, vgic_mmio_write_v3r_ctlr, 4,
+ 		VGIC_ACCESS_32bit),
+@@ -540,44 +541,42 @@ static const struct vgic_register_region vgic_v3_rdbase_registers[] = {
+ 	REGISTER_DESC_WITH_LENGTH(GICR_IDREGS,
+ 		vgic_mmio_read_v3_idregs, vgic_mmio_write_wi, 48,
+ 		VGIC_ACCESS_32bit),
+-};
+-
+-static const struct vgic_register_region vgic_v3_sgibase_registers[] = {
+-	REGISTER_DESC_WITH_LENGTH(GICR_IGROUPR0,
++	/* SGI_base registers */
++	REGISTER_DESC_WITH_LENGTH(SZ_64K + GICR_IGROUPR0,
+ 		vgic_mmio_read_group, vgic_mmio_write_group, 4,
+ 		VGIC_ACCESS_32bit),
+-	REGISTER_DESC_WITH_LENGTH(GICR_ISENABLER0,
++	REGISTER_DESC_WITH_LENGTH(SZ_64K + GICR_ISENABLER0,
+ 		vgic_mmio_read_enable, vgic_mmio_write_senable, 4,
+ 		VGIC_ACCESS_32bit),
+-	REGISTER_DESC_WITH_LENGTH(GICR_ICENABLER0,
++	REGISTER_DESC_WITH_LENGTH(SZ_64K + GICR_ICENABLER0,
+ 		vgic_mmio_read_enable, vgic_mmio_write_cenable, 4,
+ 		VGIC_ACCESS_32bit),
+-	REGISTER_DESC_WITH_LENGTH_UACCESS(GICR_ISPENDR0,
++	REGISTER_DESC_WITH_LENGTH_UACCESS(SZ_64K + GICR_ISPENDR0,
+ 		vgic_mmio_read_pending, vgic_mmio_write_spending,
+ 		vgic_v3_uaccess_read_pending, vgic_v3_uaccess_write_pending, 4,
+ 		VGIC_ACCESS_32bit),
+-	REGISTER_DESC_WITH_LENGTH_UACCESS(GICR_ICPENDR0,
++	REGISTER_DESC_WITH_LENGTH_UACCESS(SZ_64K + GICR_ICPENDR0,
+ 		vgic_mmio_read_pending, vgic_mmio_write_cpending,
+ 		vgic_mmio_read_raz, vgic_mmio_uaccess_write_wi, 4,
+ 		VGIC_ACCESS_32bit),
+-	REGISTER_DESC_WITH_LENGTH_UACCESS(GICR_ISACTIVER0,
++	REGISTER_DESC_WITH_LENGTH_UACCESS(SZ_64K + GICR_ISACTIVER0,
+ 		vgic_mmio_read_active, vgic_mmio_write_sactive,
+ 		NULL, vgic_mmio_uaccess_write_sactive,
+ 		4, VGIC_ACCESS_32bit),
+-	REGISTER_DESC_WITH_LENGTH_UACCESS(GICR_ICACTIVER0,
++	REGISTER_DESC_WITH_LENGTH_UACCESS(SZ_64K + GICR_ICACTIVER0,
+ 		vgic_mmio_read_active, vgic_mmio_write_cactive,
+ 		NULL, vgic_mmio_uaccess_write_cactive,
+ 		4, VGIC_ACCESS_32bit),
+-	REGISTER_DESC_WITH_LENGTH(GICR_IPRIORITYR0,
++	REGISTER_DESC_WITH_LENGTH(SZ_64K + GICR_IPRIORITYR0,
+ 		vgic_mmio_read_priority, vgic_mmio_write_priority, 32,
+ 		VGIC_ACCESS_32bit | VGIC_ACCESS_8bit),
+-	REGISTER_DESC_WITH_LENGTH(GICR_ICFGR0,
++	REGISTER_DESC_WITH_LENGTH(SZ_64K + GICR_ICFGR0,
+ 		vgic_mmio_read_config, vgic_mmio_write_config, 8,
+ 		VGIC_ACCESS_32bit),
+-	REGISTER_DESC_WITH_LENGTH(GICR_IGRPMODR0,
++	REGISTER_DESC_WITH_LENGTH(SZ_64K + GICR_IGRPMODR0,
+ 		vgic_mmio_read_raz, vgic_mmio_write_wi, 4,
+ 		VGIC_ACCESS_32bit),
+-	REGISTER_DESC_WITH_LENGTH(GICR_NSACR,
++	REGISTER_DESC_WITH_LENGTH(SZ_64K + GICR_NSACR,
+ 		vgic_mmio_read_raz, vgic_mmio_write_wi, 4,
+ 		VGIC_ACCESS_32bit),
+ };
+@@ -607,9 +606,8 @@ int vgic_register_redist_iodev(struct kvm_vcpu *vcpu)
+ 	struct vgic_dist *vgic = &kvm->arch.vgic;
+ 	struct vgic_cpu *vgic_cpu = &vcpu->arch.vgic_cpu;
+ 	struct vgic_io_device *rd_dev = &vcpu->arch.vgic_cpu.rd_iodev;
+-	struct vgic_io_device *sgi_dev = &vcpu->arch.vgic_cpu.sgi_iodev;
+ 	struct vgic_redist_region *rdreg;
+-	gpa_t rd_base, sgi_base;
++	gpa_t rd_base;
+ 	int ret;
+ 
+ 	if (!IS_VGIC_ADDR_UNDEF(vgic_cpu->rd_iodev.base_addr))
+@@ -631,52 +629,31 @@ int vgic_register_redist_iodev(struct kvm_vcpu *vcpu)
+ 	vgic_cpu->rdreg = rdreg;
+ 
+ 	rd_base = rdreg->base + rdreg->free_index * KVM_VGIC_V3_REDIST_SIZE;
+-	sgi_base = rd_base + SZ_64K;
+ 
+ 	kvm_iodevice_init(&rd_dev->dev, &kvm_io_gic_ops);
+ 	rd_dev->base_addr = rd_base;
+ 	rd_dev->iodev_type = IODEV_REDIST;
+-	rd_dev->regions = vgic_v3_rdbase_registers;
+-	rd_dev->nr_regions = ARRAY_SIZE(vgic_v3_rdbase_registers);
++	rd_dev->regions = vgic_v3_rd_registers;
++	rd_dev->nr_regions = ARRAY_SIZE(vgic_v3_rd_registers);
+ 	rd_dev->redist_vcpu = vcpu;
+ 
+ 	mutex_lock(&kvm->slots_lock);
+ 	ret = kvm_io_bus_register_dev(kvm, KVM_MMIO_BUS, rd_base,
+-				      SZ_64K, &rd_dev->dev);
++				      2 * SZ_64K, &rd_dev->dev);
+ 	mutex_unlock(&kvm->slots_lock);
+ 
+ 	if (ret)
+ 		return ret;
+ 
+-	kvm_iodevice_init(&sgi_dev->dev, &kvm_io_gic_ops);
+-	sgi_dev->base_addr = sgi_base;
+-	sgi_dev->iodev_type = IODEV_REDIST;
+-	sgi_dev->regions = vgic_v3_sgibase_registers;
+-	sgi_dev->nr_regions = ARRAY_SIZE(vgic_v3_sgibase_registers);
+-	sgi_dev->redist_vcpu = vcpu;
+-
+-	mutex_lock(&kvm->slots_lock);
+-	ret = kvm_io_bus_register_dev(kvm, KVM_MMIO_BUS, sgi_base,
+-				      SZ_64K, &sgi_dev->dev);
+-	if (ret) {
+-		kvm_io_bus_unregister_dev(kvm, KVM_MMIO_BUS,
+-					  &rd_dev->dev);
+-		goto out;
+-	}
+-
+ 	rdreg->free_index++;
+-out:
+-	mutex_unlock(&kvm->slots_lock);
+-	return ret;
++	return 0;
  }
  
-+bool kvm_arm_spe_supported(void)
-+{
-+    return kvm_check_extension(kvm_state, KVM_CAP_ARM_SPE_V1);
-+}
-+
- int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
+ static void vgic_unregister_redist_iodev(struct kvm_vcpu *vcpu)
  {
-     KVMState *s = KVM_STATE(ms->accelerator);
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index adb38514bf..f79655674e 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -283,6 +283,14 @@ bool kvm_arm_aarch32_supported(void);
-  */
- bool kvm_arm_pmu_supported(void);
+ 	struct vgic_io_device *rd_dev = &vcpu->arch.vgic_cpu.rd_iodev;
+-	struct vgic_io_device *sgi_dev = &vcpu->arch.vgic_cpu.sgi_iodev;
  
-+/**
-+ * kvm_arm_spe_supported:
-+ *
-+ * Returns: true if the KVM VCPU can enable its SPE
-+ * and false otherwise.
-+ */
-+bool kvm_arm_spe_supported(void);
-+
- /**
-  * kvm_arm_sve_supported:
-  *
-@@ -366,6 +374,11 @@ static inline bool kvm_arm_pmu_supported(void)
-     return false;
+ 	kvm_io_bus_unregister_dev(vcpu->kvm, KVM_MMIO_BUS, &rd_dev->dev);
+-	kvm_io_bus_unregister_dev(vcpu->kvm, KVM_MMIO_BUS, &sgi_dev->dev);
  }
  
-+static inline bool kvm_arm_spe_supported(void)
-+{
-+    return false;
-+}
-+
- static inline bool kvm_arm_sve_supported(void)
+ static int vgic_register_all_redist_iodevs(struct kvm *kvm)
+@@ -826,8 +803,8 @@ int vgic_v3_has_attr_regs(struct kvm_device *dev, struct kvm_device_attr *attr)
+ 		iodev.base_addr = 0;
+ 		break;
+ 	case KVM_DEV_ARM_VGIC_GRP_REDIST_REGS:{
+-		iodev.regions = vgic_v3_rdbase_registers;
+-		iodev.nr_regions = ARRAY_SIZE(vgic_v3_rdbase_registers);
++		iodev.regions = vgic_v3_rd_registers;
++		iodev.nr_regions = ARRAY_SIZE(vgic_v3_rd_registers);
+ 		iodev.base_addr = 0;
+ 		break;
+ 	}
+@@ -985,21 +962,11 @@ int vgic_v3_redist_uaccess(struct kvm_vcpu *vcpu, bool is_write,
+ 			   int offset, u32 *val)
  {
-     return false;
+ 	struct vgic_io_device rd_dev = {
+-		.regions = vgic_v3_rdbase_registers,
+-		.nr_regions = ARRAY_SIZE(vgic_v3_rdbase_registers),
++		.regions = vgic_v3_rd_registers,
++		.nr_regions = ARRAY_SIZE(vgic_v3_rd_registers),
+ 	};
+ 
+-	struct vgic_io_device sgi_dev = {
+-		.regions = vgic_v3_sgibase_registers,
+-		.nr_regions = ARRAY_SIZE(vgic_v3_sgibase_registers),
+-	};
+-
+-	/* SGI_base is the next 64K frame after RD_base */
+-	if (offset >= SZ_64K)
+-		return vgic_uaccess(vcpu, &sgi_dev, is_write, offset - SZ_64K,
+-				    val);
+-	else
+-		return vgic_uaccess(vcpu, &rd_dev, is_write, offset, val);
++	return vgic_uaccess(vcpu, &rd_dev, is_write, offset, val);
+ }
+ 
+ int vgic_v3_line_level_info_uaccess(struct kvm_vcpu *vcpu, bool is_write,
 -- 
-2.17.1
-
+2.20.1

@@ -1,82 +1,114 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp619766wrs;
-        Fri, 23 Aug 2019 07:05:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqycMYIKXltB7rmA0F/aCCHCkEfQiEVeAvBZ2e2h5i/hB1HyR3zu/ALra7CJw0Q5zqYPqDPt
-X-Received: by 2002:a50:8981:: with SMTP id g1mr4751617edg.53.1566569148449;
-        Fri, 23 Aug 2019 07:05:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566569148; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp644039wrs;
+        Fri, 23 Aug 2019 07:24:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqysF1R7Sxw7TDRalznsMS+BPRYF6tD5A6NBrGVqHlVoOmd2oVtmprzAFaxNJUZSxAZVdzpG
+X-Received: by 2002:ac8:30cf:: with SMTP id w15mr5010835qta.16.1566570296491;
+        Fri, 23 Aug 2019 07:24:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566570296; cv=none;
         d=google.com; s=arc-20160816;
-        b=gQtfq27wbxMn7GXeR/GQjyIHqc8hfHuS0CCipMnDpNBoULGSoHKFWiGLQri5hOIBSa
-         w+ShHh0WG2s+VYeknBhHt0sDJAWi4lSCnN/xG1wjSXkXLQAPmu9cTSprkWI5nf0QocAU
-         B26daqqc7zMU/H7WbTbYaB5xPWHHwrmM5GEscsBOZ39Nq0CJMSvK759gv1hbxOlZlutf
-         rL+D/YoE4xtSdWoXsgNMj77+Ob23yech0u6ej+kL4usWFYm1mWqQeIFoefnnPaTN2jRH
-         /ALvRWAK+4iW3aX4n2BwUbUtIbaxEqQek5pZ9hQQydD2MvUGoNUnz0mjt6GG/vHmwzVN
-         k7pQ==
+        b=piwMtTajTj30O9fgP+Iz4NhkaxTpoSOd/v81sUHW331tzCtEKADNUuTkLHTn6/mpu4
+         SSncPgvgekkdkN0xUuCCbOklRf9W7oJd59We0mVX7njjJROq2Gc/4h9tT4Ny4Km0bRRQ
+         C6NGlYbNcQZQnPn8fniwAtrs2neZwNPcfx09TDVjoF4p6hgXmyGLAdqygbm9a3Gfocc6
+         5MANtebDpDOiuCLJ5nyHbf4fNBp1S6pyqoXUFukkjS9S5uPlMJqbeg2V1boU6qtoeEFH
+         KPfBE/kTwAxWPmvugOjgWuuBYyAGa44lD/QHZa+G+JWvBVzUvZINPhx71uzpRhhdmvoX
+         qGWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=0458cFGGj+YP3EgSF0ybtk1RwFlRBgY5QRKw905cO9Y=;
-        b=uehjzz+TxM8okXhxgIbSyIfwBBfU3i4yJbb7rKTWBKPhRe+KMrGhxPcZ4aES+4H8GD
-         4wAal69fHRduhCXz/j/pIkcKoNSXPhyGyvUsilJEquXnAeK+EyUNeJt+R+5ExropKYJy
-         XVsfDbbkL6f+pBq9wiDqpvaBzcsweI0q6Q0LQKBYldYrYyIbomAoVSFl2qEBz4YI5B0l
-         +tuxVgM/lTUE/qBeQgVz9Tw+uULaYGleI+ERybYlnwtEW7Q7JzdCIskEyvMhHV+3IgyQ
-         sVeR9w6yTq82pKSjcr65NiPiroNG9wcJflFA4mhGDisE4NdIOQ5WMFV5uoDtVxRL42sj
-         oksA==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature;
+        bh=66p1y4OA4qvXcxScLC8OUgkRGDTJQaJ/jKO13ndKLMQ=;
+        b=n6Th5w8k0BlmVEstAKN4qmpYoA0AsRALilTmhI8k+qeXUxYxqxqlGk/1OY8/Z4YjYA
+         UaS/MHFmEIT/5JYQ2Wrxe/c7LJOZ/C4EPkUnL9OfctSH9F3w0zwxO8WakIiVxrAffxLi
+         H0pJrtFJkJAxqa16n82USDt5uWfDT2WoDm3KTWHV3BtDsO8bdetI6ft/71HKZtFqnQuK
+         I9zS2e5IM6YL0TQ4wl8tllnv29ZD+zZH2PeVN2P07r4iwQmT9kt4RdHjpKJ6rus6MYsF
+         y8Q5iJ4oGub7yOMYyShiqcDCrBH7/uNP1kk63L0g5qToaLho7AHkKUJbH5KQp+25pQbs
+         k/Tw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dH7enH3x;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k29si1811637eda.408.2019.08.23.07.05.48
+        by mx.google.com with ESMTPS id g126si1804951qkb.231.2019.08.23.07.24.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Aug 2019 07:05:48 -0700 (PDT)
+        Fri, 23 Aug 2019 07:24:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dH7enH3x;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56440 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56678 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i1ACJ-0007Z7-CY
-	for alex.bennee@linaro.org; Fri, 23 Aug 2019 10:05:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44906)
+	id 1i1AUp-0000L1-9X
+	for alex.bennee@linaro.org; Fri, 23 Aug 2019 10:24:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48421)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1i1A5M-0001bY-5O
- for qemu-devel@nongnu.org; Fri, 23 Aug 2019 09:58:37 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1i1ASd-000789-6l
+ for qemu-devel@nongnu.org; Fri, 23 Aug 2019 10:22:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1i1A5K-0007NC-WD
- for qemu-devel@nongnu.org; Fri, 23 Aug 2019 09:58:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41926)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1i1A5I-0007KZ-Jt; Fri, 23 Aug 2019 09:58:32 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id D2D39300BEB4;
- Fri, 23 Aug 2019 13:58:28 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-118.brq.redhat.com [10.40.204.118])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DF59F19C77;
- Fri, 23 Aug 2019 13:58:26 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Fri, 23 Aug 2019 15:58:11 +0200
-Message-Id: <20190823135811.13883-5-philmd@redhat.com>
-In-Reply-To: <20190823135811.13883-1-philmd@redhat.com>
-References: <20190823135811.13883-1-philmd@redhat.com>
+ (envelope-from <richard.henderson@linaro.org>) id 1i1ASb-0001SX-S6
+ for qemu-devel@nongnu.org; Fri, 23 Aug 2019 10:22:38 -0400
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:43720)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1i1ASb-0001RZ-Ki
+ for qemu-devel@nongnu.org; Fri, 23 Aug 2019 10:22:37 -0400
+Received: by mail-pl1-x641.google.com with SMTP id 4so5662093pld.10
+ for <qemu-devel@nongnu.org>; Fri, 23 Aug 2019 07:22:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=66p1y4OA4qvXcxScLC8OUgkRGDTJQaJ/jKO13ndKLMQ=;
+ b=dH7enH3xjNk0ntRIUz9Flaw+o66k5EGgPG/e2ARtkOPBTOnUvX4CgFusyktaWnvjC5
+ DQC+VhRcfu86XfIBCK8AlBVNZi8xVlT1gn8RHqqtZUlYqlQ17eSAH31TU3dt43zX7S1k
+ HwCb8Nm/I5u8ozD6UWANz6N2BHcAYAgbYa1gJloxVJo05skCTdr7RVnNIxA1gBpvxzV/
+ y77iMi/BKEDx5ynOxg/aTW29Pwfc5BeuHMysUOKMhdvvtSaAlNY148t5N58ayFm1TYmJ
+ j2ZtxEHUa4MnPhquhna7otJyEqjhzhG+KmipcubGUmkLmce9z0OI0q8H6Sa4lbLl9RhH
+ /Zdw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=66p1y4OA4qvXcxScLC8OUgkRGDTJQaJ/jKO13ndKLMQ=;
+ b=mZ4kA/Gk9aR+6kJHB0Xjqjt3MajrCOQ0yX4YOGn/tpMkiTMfKET5ISE67BzI5yG4k+
+ YFRsJHKpuHMGKP48A0Nriu/hQWWZFkUIcxQ8dQl7CGioorfFWxcEriThXhnWWgQ1bylZ
+ VDHiUycqvz/1KgW2GbguiqzyQVyA3iyyV2ZK+y7AVWwD52PxcOn2xMmSeswdzORAbNUT
+ JPC4w9SfoIfAw1Np0c7w3eZ0C3uvnh5/UlrLhJisAg4ZcNAokMIKRNLGTs8LTKTDLgOb
+ Iz9QeQ2NlsJdG47sewpvfgPMVh01ZVe+cRdtDYlUxpeQE6XAwfE8mEew/s9lLe7ivBtF
+ Imug==
+X-Gm-Message-State: APjAAAX+086fStL4yyw8/iPvT+BQcg3XPtqiG/vLz6fNWRWDq/dTCble
+ 8QJl+uqajy7KoLyb5mGliXOWqw==
+X-Received: by 2002:a17:902:aa03:: with SMTP id
+ be3mr5142817plb.240.1566570156217; 
+ Fri, 23 Aug 2019 07:22:36 -0700 (PDT)
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id a18sm2093410pgl.44.2019.08.23.07.22.34
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 23 Aug 2019 07:22:35 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20190819213755.26175-1-richard.henderson@linaro.org>
+ <20190819213755.26175-16-richard.henderson@linaro.org>
+ <CAFEAcA9r3LvFAfu5WWD71ETyhEOzWmsZTUjid2nfGEMu1tOnTg@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <69cf4f6e-7453-c858-75fb-ae8bedd9dde1@linaro.org>
+Date: Fri, 23 Aug 2019 07:22:32 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.40]); Fri, 23 Aug 2019 13:58:28 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [PATCH 4/4] RFC target/arm: Do not build A/M-profile
- cpus when using KVM
+In-Reply-To: <CAFEAcA9r3LvFAfu5WWD71ETyhEOzWmsZTUjid2nfGEMu1tOnTg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::641
+Subject: Re: [Qemu-devel] [PATCH v2 15/68] target/arm: Convert BX, BXJ,
+ BLX (register)
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -88,110 +120,53 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: b/VutgBLgDaB
+X-TUID: oUAHTnht2D10
 
-A KVM-only build won't be able to run A or M-profile cpus,
-disable them.
+On 8/23/19 4:49 AM, Peter Maydell wrote:
+> On Mon, 19 Aug 2019 at 22:38, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>  target/arm/translate.c | 78 ++++++++++++++++++++----------------------
+>>  target/arm/a32.decode  |  7 ++++
+>>  target/arm/t32.decode  |  2 ++
+>>  3 files changed, 47 insertions(+), 40 deletions(-)
+> 
+>> @@ -195,8 +196,14 @@ CRC32CW          .... 0001 0100 .... .... 0010 0100 ....      @rndm
+>>
+>>  %sysm            8:1 16:4
+>>
+>> +@rm              ---- .... .... .... .... .... .... rm:4      &r
+>> +
+>>  MRS_bank         ---- 0001 0 r:1 00 .... rd:4 001. 0000 0000  &mrs_bank %sysm
+>>  MSR_bank         ---- 0001 0 r:1 10 .... 1111 001. 0000 rn:4  &msr_bank %sysm
+>>
+>>  MRS_reg          ---- 0001 0 r:1 00 1111   rd:4 0000 0000 0000  &mrs_reg
+>>  MSR_reg          ---- 0001 0 r:1 10 mask:4 1111 0000 0000 rn:4  &msr_reg
+>> +
+>> +BX               .... 0001 0010 1111 1111 1111 0001 ....      @rm
+>> +BXJ              .... 0001 0010 1111 1111 1111 0010 ....      @rm
+>> +BLX_r            .... 0001 0010 1111 1111 1111 0011 ....      @rm
+> 
+> Why do the decode patterns for these use '....' in the cond field
+> rather than '----' like the other patterns ?
 
-If KVM is not enabled, they are enabled by default.
+As much as possible I've tried to put the "----" in the format, so that it'll
+be easier in future to add a cond:4 field.  Except that the MRS/MSR insns are
+all one-offs so I didn't bother creating a separate format.
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
-Sadly this does not work with --enable-tcg --enable-kvm dual config.
----
- default-configs/arm-softmmu.mak | 14 ++++++--------
- hw/arm/Kconfig                  | 16 +++++++++++++---
- 2 files changed, 19 insertions(+), 11 deletions(-)
 
-diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmm=
-u.mak
-index 081d507c87..3995c4bb65 100644
---- a/default-configs/arm-softmmu.mak
-+++ b/default-configs/arm-softmmu.mak
-@@ -1,25 +1,18 @@
- # Default configuration for arm-softmmu
-=20
--# TODO: ARM_V7M is currently always required - make this more flexible!
--CONFIG_ARM_V7M=3Dy
--
- # CONFIG_PCI_DEVICES=3Dn
- # CONFIG_TEST_DEVICES=3Dn
-+CONFIG_ARM_V7M=3Dn
-=20
- CONFIG_ARM_VIRT=3Dy
- CONFIG_CUBIEBOARD=3Dy
- CONFIG_EXYNOS4=3Dy
- CONFIG_FSL_IMX31=3Dy
--CONFIG_MUSCA=3Dy
--CONFIG_STELLARIS=3Dy
- CONFIG_REALVIEW=3Dy
- CONFIG_VEXPRESS=3Dy
- CONFIG_ZYNQ=3Dy
--CONFIG_NETDUINO2=3Dy
--CONFIG_MPS2=3Dy
- CONFIG_RASPI=3Dy
- CONFIG_SABRELITE=3Dy
--CONFIG_EMCRAFT_SF2=3Dy
- CONFIG_FSL_IMX7=3Dy
- CONFIG_FSL_IMX6UL=3Dy
- CONFIG_SEMIHOSTING=3Dy
-@@ -38,4 +31,9 @@ CONFIG_SEMIHOSTING=3Dy
- #CONFIG_ASPEED_SOC=3Dy
- #CONFIG_NSERIES=3Dy
- #CONFIG_HIGHBANK=3Dn
-+#CONFIG_MUSCA=3Dn
-+#CONFIG_STELLARIS=3Dn
-+#CONFIG_NETDUINO2=3Dn
-+#CONFIG_MPS2=3Dn
-+#CONFIG_EMCRAFT_SF2=3Dn
- #CONFIG_MICROBIT=3Dn
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 902cceca7e..9b16dfaa5f 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -13,6 +13,18 @@ config ARM_V6
-     depends on !KVM
-     bool
-=20
-+# ARM Microcontroller profile
-+config ARM_V7M
-+    default y
-+    depends on !KVM
-+    bool
-+
-+# ARM Realtime profile
-+config ARM_V7R
-+    default y
-+    depends on !KVM
-+    bool
-+
- config ARM_VIRT
-     bool
-     imply PCI_DEVICES
-@@ -298,9 +310,6 @@ config ZYNQ
-     select XILINX_SPIPS
-     select ZYNQ_DEVCFG
-=20
--config ARM_V7M
--    bool
--
- config ALLWINNER_A10
-     bool
-     select AHCI
-@@ -328,6 +337,7 @@ config STM32F205_SOC
-=20
- config XLNX_ZYNQMP_ARM
-     bool
-+    select ARM_V7R
-     select AHCI
-     select ARM_GIC
-     select CADENCE
---=20
-2.20.1
+r~
+
+> 
+> Otherwise
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> 
+> thanks
+> -- PMM
+> 
 

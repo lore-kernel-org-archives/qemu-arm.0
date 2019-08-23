@@ -1,114 +1,113 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp840524wrs;
-        Fri, 23 Aug 2019 10:19:34 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxs/qONR75/lvrGUKWtA7tbcYAJXtIfmJjpR2NH74eWCnK8XWGIy/gC8w6M8wS/pD8NGDP3
-X-Received: by 2002:ac8:43d1:: with SMTP id w17mr5602383qtn.171.1566580774090;
-        Fri, 23 Aug 2019 10:19:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566580774; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp842928wrs;
+        Fri, 23 Aug 2019 10:21:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw7rseYY0ACL/yrX2YxLa98fHpp3a8iu2naHOqKT52v8ipDx+Dv2+6WC2T6l3Kb5xEiOIl5
+X-Received: by 2002:a17:906:318d:: with SMTP id 13mr5146438ejy.281.1566580919574;
+        Fri, 23 Aug 2019 10:21:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566580919; cv=none;
         d=google.com; s=arc-20160816;
-        b=ylRq+VbB7kQtumhbIIt4sLaTussUjAZcmCl0GzCQ8S2FojgVaW98MvowRLGgu7W/z2
-         50GLJjVEqzxswigsZ6DmSKG4QeiFewkyIFir/Y1ulQ6SBXPTW2zAjTVFOO4r802FGUcb
-         tR9AJVPwQ2IgIcfEc+i72EkcaDYtsz3zYxj6czmdk1AVsl0BK3qW7XtEGVigo0KtRsp2
-         lTsvtpkI2yHApO4WJ+gt0vpNa5CGFBZ2Law98cQDFRzRZHf9KnkOd/ptodGjb9c2lPeH
-         xqTFNrATL3Yheb+F2utVgyWFqWdm2HrB1iWLziV/8Rq2eBwL/FRNFnaI9wbw5sDAbGrM
-         Z/aQ==
+        b=NWEbvT5WTk8R9rZ3TxDTB/o9JygXZ1Sb/JmdH+L+I5mlOfq40TbLH5y8Iroo9vYKBC
+         UUACYvJu6tJLKOGa2EjDU73g3mJuRm9Lo7/AVkkB5JZYlLNiIzC3cKjPEoB+6zrPX4WA
+         xkM4ZvpwXDkHNTL6bMo/N1sDqvFUJm0Yqe316ccj5cb2Cc9E1Ll0hIajQUcDDiv5DpHI
+         WcYddkg3HV8E2oS51mhqJyGRdUGweXTRS32Vz/ROaonyBdLGo4QCdr0En7MZLtkwF378
+         N5mJa65zGgKJMdlGbq2qu63fkFBY0ngrPEZ+b5q55ct5+WNn5Fo7DIHQT9lmh7/TClYK
+         NI1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature;
-        bh=Z2x0jFIlNL76Uaj2LvW0TIgjYOb8Ha7i6oGNV0+efUY=;
-        b=U1oknyrZZ+B8xW0DFNxy1CgjNUXqqY7n30TEMJuYXYCrWlRxCVQE3RjUZNKPBOB0Lg
-         jbHHAGoT6xEIuKD2hLqlhfXdL5eS0PwTEHDV5LxqkOGA0af3yinfgOszWMXVUVDsN0qJ
-         G4AMCQfNbkZDWdsHCKri1F4gvi2plnilEzQc3ycTGiEL7qTjh3J3rydke/fuIxY4+Z70
-         PTIdUOX/lsOJhWCl/wPxUcnCbUmUBGjqDF7iVEM6T3c7luWGcjK43lbGLeWNB6SfP+4o
-         b0/BAy1GR9WXIp3oLv/sFtMyZu7REe1wsOdah/Sa5O1fELupoWI/p5wdhdO1Y1WyU/J4
-         eKBA==
+        bh=GjxqU995+mgVYP/D/PQvEgIjIycH7neC4TN5rf+9wRA=;
+        b=vErX+xWD/lUo2t7AGZECGXXn4xcy+xkpaCDDnzulrl3rWeowzjBcuGFuQIrlLG2Vqi
+         hNw1WpbkNZb5leXSUeXzGwlDowv//r4WFXDkYLJVt0Ax6LA56VviIgdgFQ78C+JsQRJr
+         85uW4+AoNpEP94VuSuQ8O2mjpfVlN3AH74/dzbxJFJ4cgKSdoi3idvN6FYX18ZMvYcEN
+         PupOSlvKlbVc1Ejl7bqsPxoNZibaoD4IlolZW/LLITeVMSj6V3HEIYhkYHyJJqZAY6pg
+         R8spKT2D6QKbGjWFHAYs4T47KlP3XgrSxnMrUz4ZbfFoqcTCr1DT7N9L8lMFjIYfOpFp
+         N5Zw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Zsr3Ogkh;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dzjgBTQL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c18si2402800qtc.8.2019.08.23.10.19.33
+        by mx.google.com with ESMTPS id 44si2229001eds.305.2019.08.23.10.21.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Aug 2019 10:19:34 -0700 (PDT)
+        Fri, 23 Aug 2019 10:21:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Zsr3Ogkh;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dzjgBTQL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59938 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59996 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i1DDp-000662-IO
-	for alex.bennee@linaro.org; Fri, 23 Aug 2019 13:19:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57063)
+	id 1i1DGA-0007sN-NB
+	for alex.bennee@linaro.org; Fri, 23 Aug 2019 13:21:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57507)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1i1DDh-00065a-SD
- for qemu-arm@nongnu.org; Fri, 23 Aug 2019 13:19:26 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1i1DG3-0007rl-2t
+ for qemu-arm@nongnu.org; Fri, 23 Aug 2019 13:21:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1i1DDg-0001fB-VZ
- for qemu-arm@nongnu.org; Fri, 23 Aug 2019 13:19:25 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:33863)
+ (envelope-from <richard.henderson@linaro.org>) id 1i1DG2-0002VQ-7l
+ for qemu-arm@nongnu.org; Fri, 23 Aug 2019 13:21:51 -0400
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:33148)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1i1DDg-0001eX-OS
- for qemu-arm@nongnu.org; Fri, 23 Aug 2019 13:19:24 -0400
-Received: by mail-pl1-x643.google.com with SMTP id d3so5935220plr.1
- for <qemu-arm@nongnu.org>; Fri, 23 Aug 2019 10:19:24 -0700 (PDT)
+ id 1i1DG2-0002Ux-0H
+ for qemu-arm@nongnu.org; Fri, 23 Aug 2019 13:21:50 -0400
+Received: by mail-pg1-x544.google.com with SMTP id n190so6130013pgn.0
+ for <qemu-arm@nongnu.org>; Fri, 23 Aug 2019 10:21:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Z2x0jFIlNL76Uaj2LvW0TIgjYOb8Ha7i6oGNV0+efUY=;
- b=Zsr3OgkhCYAl7nknzayeh5HWZ69VAi9UaGnGvfoehqqBKpFNZCREazGz9A9YH/uS0v
- 6seM3mZKAivOgrBIDFzYrEPnhwFXYDTAfBPjl52jLyJ7A1MPxr+abIfjzjecqp+6tkQw
- d+jAP2gQNU96hokkbo3Y/XQ7XkdgTRdKisGzilTunKu5M/gPqgZ5+jPeoJynF6746a0g
- FJEEMxVmu8J+LUu5ImNbnUGSYcK1x1MW0TqiS+ITbKaDMbPJJhcBMLrRKPOg5McoPGCt
- w4hzM6t3OISJhky5s0XvlhL2MMkdhX0Rt7VbbUk9A8m8TFrufx3xr793N/1ch04zjhvA
- 6fjg==
+ bh=GjxqU995+mgVYP/D/PQvEgIjIycH7neC4TN5rf+9wRA=;
+ b=dzjgBTQLSsNxDghtavmUoWpVjxfQasfilMidz6Kx+fzpJFJ3gTS9CGlYwCXdwwZHrO
+ wBUyd9yFUksR/XT5wGqo80M696DzDKJPZTv4z1/3XRlKjFffdStyz2AB79VktnriNsOE
+ 0+mIRpKjtNp6q3b1HqQy4mTgzBA5kd4fq3+qVOjgsGgbXVces5E4ZIKiy2aDjfhLrJgE
+ RozioY+3Cg7JrANXY/e7brpy8D8jXInvogm2ZbxHHl3nQ5syJESfHWzmOR7GroEvNVWx
+ 030ImehtAznn2Ya8Ik0C4T/hzN0p1JdytATzElbAmIZdMFx7uiQOUrYPh4GFHZ+Yqcc0
+ 7AdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Z2x0jFIlNL76Uaj2LvW0TIgjYOb8Ha7i6oGNV0+efUY=;
- b=ndkSc0jRyy720rj1QYaGiuSnY44C0fkhhEEnCBqSPfcLX7fB2lQObnBuDF6X5jlldV
- UPvRtrnDfnSwBCIIdnDv97LPfLoRNK5kAM7woMLm9zEMV0ZuaIG+8+Y8F8iG/n++BGQb
- Ah8Tp/ngM0fKsXUGnhTtOYYE1bTvCf51mEWGupezuVVKo64DGrNrP4nWkboURI7YazQ+
- AQt4OobwStW9u9/iUIyFtcKnb4uHsALXTCWPLKE42IsubrXs9DImrUxt3GSg1q8HKPRO
- qeFF1+mEG+6mi3KwESP0qcGmN5y+yVRV0jWQIHX0fXIN4iL1LKv7KgKhahpKFKU9jQm6
- p+OA==
-X-Gm-Message-State: APjAAAXx6ijAhXxQRdc3kOgQ1Gsbj9UJy6zXlMGrTaL4903rEx8WQ2QB
- xSkEtLlvsg0WzQaWb3HYkJtf3A==
-X-Received: by 2002:a17:902:20c2:: with SMTP id
- v2mr5523918plg.209.1566580763504; 
- Fri, 23 Aug 2019 10:19:23 -0700 (PDT)
+ bh=GjxqU995+mgVYP/D/PQvEgIjIycH7neC4TN5rf+9wRA=;
+ b=Dr3+NCr14MS87KlpWCPjoz+eaoQG70gBTjxhdpLLfK5iHzE1FsrpRMZ0QgiIZXmFMw
+ XisA4IWVXqQfVL9w9Qvj/61I4ctM2P5y0FxZ75QleeZQdMQ2AFACpRh5020bnFePlU+N
+ KHMKm1ttT8PtyNBIbldduUvfkeI8tba+MSt273qUdgRBMAAJXsBzfxUjK/ofBqEsi4rM
+ b59DeMX3G9FGAl0UlkpWGPSyoySkg9OLmVqQf3GVyjs4xg8U4deYW1UX/uFKlP7a2ydi
+ uFbn5LaxHmcNF8aZDhQENsy74qllHTvf5TmXfhL7c377ZR06wYJwLu2gA3e4v2H7tG72
+ ZSjQ==
+X-Gm-Message-State: APjAAAWyps+XemOMfChUzoLnGRdMrfvToNd7yfgna6wTgZjhrM37BYOS
+ pIyStgfa17l/sH+grHzDfK98hg==
+X-Received: by 2002:a62:ed10:: with SMTP id u16mr6448724pfh.179.1566580908253; 
+ Fri, 23 Aug 2019 10:21:48 -0700 (PDT)
 Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id t4sm3572917pfd.109.2019.08.23.10.19.21
+ by smtp.gmail.com with ESMTPSA id z16sm2707496pgi.8.2019.08.23.10.21.46
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 23 Aug 2019 10:19:22 -0700 (PDT)
+ Fri, 23 Aug 2019 10:21:47 -0700 (PDT)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 References: <20190823143249.8096-1-philmd@redhat.com>
- <20190823143249.8096-2-philmd@redhat.com>
+ <20190823143249.8096-3-philmd@redhat.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <7032b17b-148a-47c4-7347-8b954ae1dc52@linaro.org>
-Date: Fri, 23 Aug 2019 10:19:20 -0700
+Message-ID: <c084a635-f043-06bf-6226-9832978ca003@linaro.org>
+Date: Fri, 23 Aug 2019 10:21:45 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190823143249.8096-2-philmd@redhat.com>
+In-Reply-To: <20190823143249.8096-3-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::643
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 1/6] hw/arm: Use
- ARM_CPU_TYPE_NAME() macro when appropriate
+X-Received-From: 2607:f8b0:4864:20::544
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 2/6] hw/arm: Use
+ object_initialize_child for correct reference counting
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -128,32 +127,32 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Beniamino Galvani <b.galvani@gmail.com>,
  Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
  Peter Chubb <peter.chubb@nicta.com.au>,
- Antony Pavlov <antonynpavlov@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>
+ Antony Pavlov <antonynpavlov@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: y59NcCyK37g/
+X-TUID: jRAXP1mcDmrm
 
 On 8/23/19 7:32 AM, Philippe Mathieu-Daudé wrote:
-> Commit ba1ba5cca introduce the ARM_CPU_TYPE_NAME() macro.
-> Unify the code base by use it in all places.
+> As explained in commit aff39be0ed97:
 > 
-> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+>   Both functions, object_initialize() and object_property_add_child()
+>   increase the reference counter of the new object, so one of the
+>   references has to be dropped afterwards to get the reference
+>   counting right. Otherwise the child object will not be properly
+>   cleaned up when the parent gets destroyed.
+>   Thus let's use now object_initialize_child() instead to get the
+>   reference counting here right.
+> 
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
-> v2: rebased, use in imx25/31 (pm215)
-> ---
->  hw/arm/allwinner-a10.c | 3 ++-
->  hw/arm/cubieboard.c    | 3 ++-
->  hw/arm/digic.c         | 3 ++-
->  hw/arm/fsl-imx25.c     | 2 +-
->  hw/arm/fsl-imx31.c     | 2 +-
->  hw/arm/fsl-imx6.c      | 3 ++-
->  hw/arm/fsl-imx6ul.c    | 2 +-
->  hw/arm/xlnx-zynqmp.c   | 8 ++++----
->  8 files changed, 15 insertions(+), 11 deletions(-)
+>  hw/arm/mcimx7d-sabre.c |  9 ++++-----
+>  hw/arm/mps2-tz.c       | 15 +++++++--------
+>  hw/arm/musca.c         |  9 +++++----
+>  3 files changed, 16 insertions(+), 17 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
 r~
+

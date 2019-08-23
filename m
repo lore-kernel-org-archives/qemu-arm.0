@@ -1,165 +1,147 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp227063wrs;
-        Fri, 23 Aug 2019 00:37:24 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyNJ+WiqyAyZ6SxXCr208ZnuLLccSWXdHqQk+Eb39b6EEvyPpPj7ZAphpNE8DuO/UwTV5N2
-X-Received: by 2002:a63:36cc:: with SMTP id d195mr2702780pga.157.1566545844061;
-        Fri, 23 Aug 2019 00:37:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566545844; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp466896wrs;
+        Fri, 23 Aug 2019 04:50:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwyGJcAPY8d7K//oxLuOjCc0DYQiltbC4Ns+H8hGqnureawAeOs3x4yo8JsEmSPoJDkBbVW
+X-Received: by 2002:a50:f4c1:: with SMTP id v1mr3820326edm.282.1566561054427;
+        Fri, 23 Aug 2019 04:50:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566561054; cv=none;
         d=google.com; s=arc-20160816;
-        b=FZ+qKrRldsKzjkLQrXmXBhdOTxj1ghuESBk4mQYrJO8/nxQJWm7wOc5gnryOxVoP1d
-         O7/OxZxJjBBkJfgejah4SnIR3AyjqIP69TNWaqgDyQH6wJ0EQM2KTaITo3ixgP8WVYpI
-         HTb0PRiKKiu/RIkBxWQhPAb9fTHnQIE3o6t4iN+hARFBhxbF3weWXXGrcYbyBC9wdhsT
-         CmREh+ieR0lsTQVy7jViMWPxiI8eSp6QRpJvT+HO7EZakH8wgEq0LEzZ7EWVObUzsghD
-         xDKKKnHIWG0N6WiGJopCnyE3vC+/yzFyyoowvfD+p1QFd5HPCzdFZ+3LgzsKXYyKWzlY
-         rd2g==
+        b=b4Oc5DnrMIQKoNLc6rQTfgocGBp/I7A3CkCiSB4zSJlIGHvb20wV+38EaSCw0wNDHP
+         +0ODbeCUZ7ukqzYlxJeJQEs11nqfCZvN1NRkP9dtbCAsFUl2F5GK+aXXPDngrNvUqZpf
+         L+VdQkz0poR3z7ckgDb0Jpj6iOHiQov2dYAzt7ogFSVAgcPJaLoVIK0UCocIh20Guxbq
+         Rezb+SxhrE19b7b6KFqZtmxCR0bxCoc9HUao9ivQeYUhSgdd/D6GitJAtBUydG+pKjLA
+         6dL16rA5kZ7lNp7sje9BYZDWb/PquM0alg/9O/VHST/cX9QOE1VHOHZ4dxZr/MlzxsCK
+         gh3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=3zYsi5JinOMmAj47HN6jC8noBqy6aOUffSX2Ggntp5g=;
-        b=LHwFjOqEgJ5e3AEzAs/UHI9oizDelzXF3qviy6mhHY3oEIjZ+aiSRWiEWiJnCjvq9J
-         nPA2i4wmfwIXZJZbm9VqlnpTnEjeN9GiGN+MLqA6zyD/w9huNYYJN9r9yw+My1C3nVbw
-         H1POv4ZiRbxmS4WQAdfaSjKBOxilWlcTyhveR3G/sVf5WMLOwJ6Mhc8NbJ3X2J5v79e5
-         xzUJfrr1JyTEltg2m/OH/392dytupbSmTPXWRudt+r6P7AH988l7B2vW8GYHFpM4EccF
-         4r7RArONHJiQR7BPsFqjNOqCs3d1Wfv+Ry+7qh5MgDQ6A6MhQAoIttn9G9vlQjw70EXa
-         2/IQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=17GbqNkvn9kVUqQ/GFMX9z2K9mZuN/tNdVtqhH2SHxg=;
+        b=A0HTvewiHW7XTxb2Ooj2cU/JaEP9oUzOuw7/foQVb4zo++a3CBQwqoRk3w4opGn9X0
+         oN8F543P/pZGI7A2Lgq8KUr1sb/L6w97flj9/RJA0gGXs9F/KFiCgf8nBM0RdiAimzC/
+         iTLiKCk7y/Fm+aBLwyz88TZz+tjJ3j/q1QeaGopPhkBHEoTXvilKo56tTV+nKHcU29wI
+         sLQeNRITKGRmYVQu4QmfDhCsAaiCNs+sETgDrHoehA7pR5e4zlX4go/ras4QOyNdlDdl
+         sTgQbgEY9T2Gq8TXz41rJRGF+QhoReMbuCKJFhewbTy2pf9okbc0gXU1nl+blq5t/Qkd
+         +J9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id y15si1849958pfb.28.2019.08.23.00.37.23;
-        Fri, 23 Aug 2019 00:37:24 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b=IN3MtHT7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t16si1583959edd.313.2019.08.23.04.50.54
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 23 Aug 2019 04:50:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1732559AbfHWHhX (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Fri, 23 Aug 2019 03:37:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38182 "EHLO mx1.redhat.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1731748AbfHWHhW (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 23 Aug 2019 03:37:22 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id 31A7C308427C;
-        Fri, 23 Aug 2019 07:37:22 +0000 (UTC)
-Received: from [10.36.116.105] (ovpn-116-105.ams2.redhat.com [10.36.116.105])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id 5D6E4100194E;
-        Fri, 23 Aug 2019 07:37:19 +0000 (UTC)
-Subject: Re: Can we boot a 512U kvm guest?
-To:     Zenghui Yu <yuzenghui@huawei.com>, kvmarm@lists.cs.columbia.edu,
-        qemu-arm@nongnu.org
-Cc:     Marc Zyngier <maz@kernel.org>, James Morse <james.morse@arm.com>,
-        Julien Thierry <julien.thierry.kdev@gmail.com>,
-        suzuki.poulose@arm.com, peter.maydell@linaro.org,
-        kvm@vger.kernel.org, "Wanghaibin (D)" <wanghaibin.wang@huawei.com>,
-        zhang.zhanghailiang@huawei.com
-References: <86aa9609-7dc9-1461-ae47-f50897cd0875@huawei.com>
- <da5c87d6-8b66-75f9-e720-9f1d80a76d7d@redhat.com>
- <d248e304-9004-02e6-d535-c69bc15d2b41@huawei.com>
-From:   Auger Eric <eric.auger@redhat.com>
-Message-ID: <ad819f5c-e8b9-de10-8e88-946397c16716@redhat.com>
-Date:   Fri, 23 Aug 2019 09:37:17 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       dkim=fail header.i=@linaro.org header.s=google header.b=IN3MtHT7;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54277 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i185l-0000Cl-G6
+	for alex.bennee@linaro.org; Fri, 23 Aug 2019 07:50:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52657)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1i184n-0007fl-C5
+ for qemu-devel@nongnu.org; Fri, 23 Aug 2019 07:49:54 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1i184m-0004lf-7X
+ for qemu-devel@nongnu.org; Fri, 23 Aug 2019 07:49:53 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:46673)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1i184m-0004lM-2F
+ for qemu-devel@nongnu.org; Fri, 23 Aug 2019 07:49:52 -0400
+Received: by mail-ot1-x341.google.com with SMTP id z17so8433606otk.13
+ for <qemu-devel@nongnu.org>; Fri, 23 Aug 2019 04:49:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=17GbqNkvn9kVUqQ/GFMX9z2K9mZuN/tNdVtqhH2SHxg=;
+ b=IN3MtHT73qtntKcVAMS2bO58t/AtNHuY+BCiZ2T1XCx5gvVJnHEte8H4ODIzzGahWI
+ SF3fXOoSRPzZxc9zNKeKjlQtP23ceNbhg0TzVaF7VYOZOMfk9fX7I2VcRskBj22d1i3f
+ bWIdk+TxDcfxqQEc4HQG3nCmC9aHgQOxsrN47nHJHdLmxRT3i8Q5Xx1bxLE0tD4+EqDa
+ VZUNm20HwXllGbNXfXpw6GwY6pOlxyJbLAsvdc4Z5kYbgfV029Z+iM1C6MXizYbTPZTa
+ vvIAcCqIIFxuMzQ7hWS8nen1mCEa3zmjxONh7qjBA7/+5SVhKBmDw88eY89rx5bfLSIu
+ FpHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=17GbqNkvn9kVUqQ/GFMX9z2K9mZuN/tNdVtqhH2SHxg=;
+ b=Xh/ygIoX4ytSl9JPv9PRin9+8m4G5okqErlOJBybH1H8iy6pTx2V9VtprbLa3q8X9B
+ HdS9k0FDuRfUiHi0VCbWnCefSPPXiAfQmLcanF27eJdbrvNy/PPfUus2D63zxJyyWbKf
+ CeTRzA8COtY6MnqaS/QLw/Tkn3qfHcOepxaOSOHeY08OmfW+Bn5yOa/oj5IsPz0qiqKe
+ DRg61xjJLIliilT+GEbpkfazKfwPxMEL2e7sFi7cHIldolWu5i+qfB6aXK0ElgWFMEd0
+ X/9Npzf47EE37lhZeAp3aFWHCbMxQqNJbvtL05Zjr+JfGqwQfgIUwq71UzItLpf20uzO
+ 14iA==
+X-Gm-Message-State: APjAAAUBJxoKDssyr15dAKCqSpXp65sLWPGbzSlEOsPQtun1x5FZpeBV
+ pA1m49uARMUsA99wXKwYhdO2fy0OEIqs7eaDnI/8gw==
+X-Received: by 2002:a05:6830:1015:: with SMTP id
+ a21mr3936938otp.232.1566560991181; 
+ Fri, 23 Aug 2019 04:49:51 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <d248e304-9004-02e6-d535-c69bc15d2b41@huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.40]); Fri, 23 Aug 2019 07:37:22 +0000 (UTC)
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: k6+Wc8XmmYhB
+References: <20190819213755.26175-1-richard.henderson@linaro.org>
+ <20190819213755.26175-16-richard.henderson@linaro.org>
+In-Reply-To: <20190819213755.26175-16-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 23 Aug 2019 12:49:40 +0100
+Message-ID: <CAFEAcA9r3LvFAfu5WWD71ETyhEOzWmsZTUjid2nfGEMu1tOnTg@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+Subject: Re: [Qemu-devel] [PATCH v2 15/68] target/arm: Convert BX, BXJ,
+ BLX (register)
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +QT/HAjcV3jV
 
-Hi Zenghui,
-On 8/23/19 4:21 AM, Zenghui Yu wrote:
-> Hi Eric,
-> 
-> On 2019/8/22 17:08, Auger Eric wrote:
->> Hi Zenghui,
->>
->> On 8/13/19 10:50 AM, Zenghui Yu wrote:
->>> Hi folks,
->>>
->>> Since commit e25028c8ded0 ("KVM: arm/arm64: Bump VGIC_V3_MAX_CPUS to
->>> 512"), we seemed to be allowed to boot a 512U guest.  But I failed to
->>> start it up with the latest QEMU.  I guess there are at least *two*
->>> reasons (limitations).
->>>
->>> First I got a QEMU abort:
->>>      "kvm_set_irq: Invalid argument"
->>>
->>> Enable the trace_kvm_irq_line() under debugfs, when it comed with
->>> vcpu-256, I got:
->>>      "Inject UNKNOWN interrupt (3), vcpu->idx: 0, num: 23, level: 0"
->>> and kvm_vm_ioctl_irq_line() returns -EINVAL to user-space...
->>>
->>> So the thing is that we only have 8 bits for vcpu_index field ([23:16])
->>> in KVM_IRQ_LINE ioctl.  irq_type field will be corrupted if we inject a
->>> PPI to vcpu-256, whose vcpu_index will take 9 bits.
->>>
->>> I temporarily patched the KVM and QEMU with the following diff:
->>>
->>> ---8<---
->>> diff --git a/arch/arm64/include/uapi/asm/kvm.h
->>> b/arch/arm64/include/uapi/asm/kvm.h
->>> index 95516a4..39a0fb1 100644
->>> --- a/arch/arm64/include/uapi/asm/kvm.h
->>> +++ b/arch/arm64/include/uapi/asm/kvm.h
->>> @@ -325,10 +325,10 @@ struct kvm_vcpu_events {
->>>   #define   KVM_ARM_VCPU_TIMER_IRQ_PTIMER        1
->>>
->>>   /* KVM_IRQ_LINE irq field index values */
->>> -#define KVM_ARM_IRQ_TYPE_SHIFT        24
->>> -#define KVM_ARM_IRQ_TYPE_MASK        0xff
->>> +#define KVM_ARM_IRQ_TYPE_SHIFT        28
->>> +#define KVM_ARM_IRQ_TYPE_MASK        0xf
->>>   #define KVM_ARM_IRQ_VCPU_SHIFT        16
->>> -#define KVM_ARM_IRQ_VCPU_MASK        0xff
->>> +#define KVM_ARM_IRQ_VCPU_MASK        0xfff
->>>   #define KVM_ARM_IRQ_NUM_SHIFT        0
->>>   #define KVM_ARM_IRQ_NUM_MASK        0xffff
->>>
->>> ---8<---
->>>
->>> It makes things a bit better, it also immediately BREAKs the api with
->>> old versions.
->>>
->>>
->>> Next comes one more QEMU abort (with the "fix" above):
->>>      "Failed to set device address: No space left on device"
->>>
->>> We register two io devices (rd_dev and sgi_dev) on KVM_MMIO_BUS for
->>> each redistributor. 512 vcpus take 1024 io devices, which is beyond the
->>> maximum limitation of the current kernel - NR_IOBUS_DEVS (1000).
->>> So we get a ENOSPC error here.
->>
->> Do you plan to send a patch for increasing the NR_IOBUS_DEVS? Otherwise
->> I can do it.
-> 
-> [...]
-> 
->> You mentioned you started working on the QEMU fix. Do you plan to submit
->> patches to the ML or do you want me to attempt to fix the situation on
->> userspace?
-> Actually, I haven't started anything yet.  It would be great if you can
-> help to fix this in QEMU.  Yes, please help. :)
-> 
-> And please cc me when you send the patch so that I can do some tests in
-> the free time.
-Sure, I will work on this.
+On Mon, 19 Aug 2019 at 22:38, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/translate.c | 78 ++++++++++++++++++++----------------------
+>  target/arm/a32.decode  |  7 ++++
+>  target/arm/t32.decode  |  2 ++
+>  3 files changed, 47 insertions(+), 40 deletions(-)
 
-Thanks
+> @@ -195,8 +196,14 @@ CRC32CW          .... 0001 0100 .... .... 0010 0100 ....      @rndm
+>
+>  %sysm            8:1 16:4
+>
+> +@rm              ---- .... .... .... .... .... .... rm:4      &r
+> +
+>  MRS_bank         ---- 0001 0 r:1 00 .... rd:4 001. 0000 0000  &mrs_bank %sysm
+>  MSR_bank         ---- 0001 0 r:1 10 .... 1111 001. 0000 rn:4  &msr_bank %sysm
+>
+>  MRS_reg          ---- 0001 0 r:1 00 1111   rd:4 0000 0000 0000  &mrs_reg
+>  MSR_reg          ---- 0001 0 r:1 10 mask:4 1111 0000 0000 rn:4  &msr_reg
+> +
+> +BX               .... 0001 0010 1111 1111 1111 0001 ....      @rm
+> +BXJ              .... 0001 0010 1111 1111 1111 0010 ....      @rm
+> +BLX_r            .... 0001 0010 1111 1111 1111 0011 ....      @rm
 
-Eric
-> 
-> 
-> Many thanks,
-> zenghui
-> 
+Why do the decode patterns for these use '....' in the cond field
+rather than '----' like the other patterns ?
+
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

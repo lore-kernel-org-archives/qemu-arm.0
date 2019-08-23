@@ -1,99 +1,132 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp856743wrs;
-        Fri, 23 Aug 2019 10:35:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw6ElXJlWKR5EXJRbVUAmJ/j2nlIpSFEJisuyEhzqy/KucBg/MtBV4tcm8wsopchdy3Muia
-X-Received: by 2002:aa7:ca02:: with SMTP id y2mr5715982eds.205.1566581758620;
-        Fri, 23 Aug 2019 10:35:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566581758; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp858141wrs;
+        Fri, 23 Aug 2019 10:37:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqycXq4YOlqLW/bBa4onUMYDGHMPR2oa4EK1veddOb25bQA4rl8QAsCmquVRGjuAN03DPbAj
+X-Received: by 2002:a50:b885:: with SMTP id l5mr5650982ede.190.1566581840730;
+        Fri, 23 Aug 2019 10:37:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566581840; cv=none;
         d=google.com; s=arc-20160816;
-        b=H4GE0xUuxs8vy4PR7OG3EqUNcLWfYA5Hzr/iXreTm/16qKvsm9wtSEBe2aKTyQKQOz
-         TD3bHpSdQHCAe1Qnyxapm4N/dZ4z+B3RT1DI22ajVj7Le+TtdrNqWpCjViGQd4yuQwxk
-         aHZCYsBddCjFa7/1P+UcJj+sRbdIZrM4gGj1o8Z8m4QdT8UXA0ugX2gav7GNgB0qXhy2
-         rXAeRjYDFOq62Lu6l8L3/cg79z5Y3/CjyZUMbV/ftjC3AMD2W84dB7sInYgkB52PaCFO
-         lDbI/M+egQIjB8mqi5Xjz+F669exQo4xumKv1lrjGszE/2NVr0HsbDvIvPDiVDDhwxP3
-         NLvA==
+        b=zghzE8Cme5fh19oOVIQKc/r3zokNF4jSaU8SOv/om5nf0Lesi8X2UwFcpY8qOZ9vtj
+         mwqtUWC/UkzGhYC+MNbjT/235/gX+TS5QzKN8vA/6CVs8vd3JOlcPWCgOH5qlhD96Gvl
+         1j7h345nCseEdkPmF3uwt1QJPNKNYGhWkVjXJju+vBvxSM1g1SVhh2ngkvykm7SRHKtj
+         6bceMs2s3bxwRmUSWq3PMDxzFfgmd/9ta+TeMPYMW2cuIv5WOPc7yV55/tJzzqPaqg0t
+         HbVV3u9WNRZjWcjiFa6ZElQzapzyRDaVSO6sb8MBgNDMG2aX97HOj0/pQCWS8bdtqdp/
+         rfsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=1WwUpIyiIJfVQIp4aZAQTCnturoa3nri/sQ8XonAXU8=;
-        b=lxMTyAk1apYr5MbMKBkEStBjBXGb3LSqzGJrrwY/k5k0UB0/S33cmyoVV7Ayo0MX5U
-         18ygENdduQecG49T/W6zh8+5w3SX7+n+UAY1B4mqVVq9tyRwpqP8UGqfpYwwe1ZKPCJ8
-         64rRZaROw1OOXKVw1ql0DXvSSx2qI63D/eYgRiVZTXWkCquHVQ5Zp1h0yx8UOszL8htD
-         3OHa3LdOkzDGV8sxaYZoiRSQdJaBM95oGdNXY2unrVtbafhTOVStQm+OwblOGFiNjtso
-         MNX9Pw5DAnZECZrVZmlO7uS+XvEZHtZCm0BuXMy1Dv1QfheLOjHQ4U2S7B42yFuyvgpj
-         INgQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=KTl7twtT29xBeE+oQP32o+q2i5abQGpOy9dUUKKtPRE=;
+        b=bV8HPK+Ovg9unCoai4+Tp/x8czvc467OWJZxRxp9qIOpbjfr65rdQqZEiIelVsrp7l
+         sAPE9OXfr8FBhecMYi8T8Tm+KBij/fWin6qjQ1N1XI5MELk8R21JCHr64bN8ekTMfzMb
+         1/NLBDL33IfLf755b46rRyEthjeEhqWP3dBZq9onFOBnb45vCOO+atjk/WlXD4EkPO8p
+         F4YE/1GwEi45G6Q6cpLEkWkZ7O0uSmbmUpds4XXRgCsMQEjwifFcXN3GYc3r71pe0QuS
+         /oajo7guT/nVOjsK/Phy5+wz3sCPGqf2yb0U3cm1ZdkKquPuowW2lDluWYUiXp6vlgMc
+         Vftw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=nAgojLgS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p50si2152546eda.338.2019.08.23.10.35.58
+        by mx.google.com with ESMTPS id s6si2240565edm.417.2019.08.23.10.37.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Aug 2019 10:35:58 -0700 (PDT)
+        Fri, 23 Aug 2019 10:37:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=nAgojLgS;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60296 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60322 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i1DTh-0002Lz-4X
-	for alex.bennee@linaro.org; Fri, 23 Aug 2019 13:35:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58920)
+	id 1i1DV1-00043X-97
+	for alex.bennee@linaro.org; Fri, 23 Aug 2019 13:37:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59658)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1i1DPh-0007Vn-Oa
- for qemu-arm@nongnu.org; Fri, 23 Aug 2019 13:31:50 -0400
+ (envelope-from <thuth@redhat.com>) id 1i1DUl-0003zi-Pn
+ for qemu-arm@nongnu.org; Fri, 23 Aug 2019 13:37:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1i1DPg-0005k1-LK
- for qemu-arm@nongnu.org; Fri, 23 Aug 2019 13:31:49 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:40996)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1i1DPg-0005jY-Fz
- for qemu-arm@nongnu.org; Fri, 23 Aug 2019 13:31:48 -0400
-Received: by mail-oi1-x244.google.com with SMTP id g7so7596050oia.8
- for <qemu-arm@nongnu.org>; Fri, 23 Aug 2019 10:31:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=1WwUpIyiIJfVQIp4aZAQTCnturoa3nri/sQ8XonAXU8=;
- b=nAgojLgSwMLqL4BP4tkh5A8dW4tJSYpWPqXoKHrrI9cJK4oH8VPONoW7hK7UMg8LTO
- CNMFTIL2S+NAOMFOhnzq/RnNcQg+tWFqK9iL1JZ4Cql53m0X5LqvDjDnD9MpRRFLeu1R
- 5wpFqt9qgJfuxA6wJh6H/uBHhlZOmoAISYMFBZ+rThM+Xpi00MxkUZYmsjmS6xZm+T8s
- k8hWOc/ETDe2jU9kVUMtOT7Tj1zz6h8vmrhtrfY14btguR8ZPnerypVQJi3i2L1LSVMQ
- 4W8gcOdMntEw6Q1stslm9mFCbsXF0AikRZlfBqVHZQSaaugDvm6clqnFi3CTO+pHZWI1
- A1Eg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=1WwUpIyiIJfVQIp4aZAQTCnturoa3nri/sQ8XonAXU8=;
- b=NFvvaJ+/3OizbvQxnE89BUl+wxbz5ySIQRN5JEnp9GWl3oj5uzQQoGFaTqtHdtZh0b
- x5qDGlrspRruaJFuaSg5+5EF1OBqa0FmeUDvLxdJXY+R1kCNOWiYVEsvHRLXNaQRUr/Y
- jtQOhGmK3AnYNq8N09BOZ+EkHrS+N+bhAjfwRjRND2sn9cC1dZEyqmCqSxIHg4XEoEfU
- 75YJZ3Tv26Z1k3YZ3bye/PqsJ6hiuWKwt/fTSS5SKLmqDuFxkpMYPnws6yZuZApq+ZBI
- PbGLHEMnn+fFkrI2aMJw/IyC5IRoZ+hcyvs+E0joH++3V9gXjgVEMLHFkIx1mQxUiuYa
- 0lqQ==
-X-Gm-Message-State: APjAAAXoGDFfemwHnWc+gL9+J6Q2lT8mOSqezP/BEH+FIXFtB1RAPyo+
- Nj7mlbkOI+oauFpGimu0fR8eAZsk8Xyj3PG9mRjCmA==
-X-Received: by 2002:aca:4b86:: with SMTP id y128mr3968587oia.163.1566581507620; 
- Fri, 23 Aug 2019 10:31:47 -0700 (PDT)
+ (envelope-from <thuth@redhat.com>) id 1i1DUk-0007IS-Np
+ for qemu-arm@nongnu.org; Fri, 23 Aug 2019 13:37:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52974)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1i1DUk-0007IL-Gv; Fri, 23 Aug 2019 13:37:02 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id A068E8A004;
+ Fri, 23 Aug 2019 17:37:01 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-83.ams2.redhat.com [10.36.116.83])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6B851608C2;
+ Fri, 23 Aug 2019 17:36:55 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20190823143249.8096-1-philmd@redhat.com>
+ <20190823143249.8096-6-philmd@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat
+Message-ID: <35b4d238-ea7d-f719-2a61-0e420844e7ae@redhat.com>
+Date: Fri, 23 Aug 2019 19:36:54 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-References: <20190819213755.26175-1-richard.henderson@linaro.org>
- <20190819213755.26175-31-richard.henderson@linaro.org>
-In-Reply-To: <20190819213755.26175-31-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 23 Aug 2019 18:31:36 +0100
-Message-ID: <CAFEAcA_NqFk9Xpmxk_rG8KxUYQeV7gSVp2JAwHRt4Q4h1jJe4g@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-Subject: Re: [Qemu-arm] [PATCH v2 30/68] target/arm: Diagnose base == pc for
- LDM/STM
+In-Reply-To: <20190823143249.8096-6-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.26]); Fri, 23 Aug 2019 17:37:01 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH v2 5/6] hw/dma/xilinx_axi: Use
+ object_initialize_child for correct ref. counting
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,22 +138,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Jason Wang <jasowang@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ Antony Pavlov <antonynpavlov@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 223JTAH5S+qx
+X-TUID: xiuqNnX2bvbF
 
-On Mon, 19 Aug 2019 at 22:38, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> We have been using store_reg and not store_reg_for_load when writing
-> back a loaded value into the base register.  At first glance this is
-> incorrect when base == pc, however that case is UNPREDICTABLE.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+On 8/23/19 4:32 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> As explained in commit aff39be0ed97:
+>=20
+>   Both functions, object_initialize() and object_property_add_child()
+>   increase the reference counter of the new object, so one of the
+>   references has to be dropped afterwards to get the reference
+>   counting right. Otherwise the child object will not be properly
+>   cleaned up when the parent gets destroyed.
+>   Thus let's use now object_initialize_child() instead to get the
+>   reference counting here right.
+>=20
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
+> v2: fix typo ENET -> DMA in TYPE macro name
+> ---
+>  hw/dma/xilinx_axidma.c | 16 ++++++++--------
+>  1 file changed, 8 insertions(+), 8 deletions(-)
+>=20
+> diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
+> index d176df6d44..a254275b64 100644
+> --- a/hw/dma/xilinx_axidma.c
+> +++ b/hw/dma/xilinx_axidma.c
+> @@ -566,14 +566,14 @@ static void xilinx_axidma_init(Object *obj)
+>      XilinxAXIDMA *s =3D XILINX_AXI_DMA(obj);
+>      SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
+> =20
+> -    object_initialize(&s->rx_data_dev, sizeof(s->rx_data_dev),
+> -                      TYPE_XILINX_AXI_DMA_DATA_STREAM);
+> -    object_initialize(&s->rx_control_dev, sizeof(s->rx_control_dev),
+> -                      TYPE_XILINX_AXI_DMA_CONTROL_STREAM);
+> -    object_property_add_child(OBJECT(s), "axistream-connected-target",
+> -                              (Object *)&s->rx_data_dev, &error_abort)=
+;
+> -    object_property_add_child(OBJECT(s), "axistream-control-connected-=
+target",
+> -                              (Object *)&s->rx_control_dev, &error_abo=
+rt);
+> +    object_initialize_child(OBJECT(s), "axistream-connected-target",
+> +                            &s->rx_data_dev, sizeof(s->rx_data_dev),
+> +                            TYPE_XILINX_AXI_DMA_DATA_STREAM, &error_ab=
+ort,
+> +                            NULL);
+> +    object_initialize_child(OBJECT(s), "axistream-control-connected-ta=
+rget",
+> +                            &s->rx_control_dev, sizeof(s->rx_control_d=
+ev),
+> +                            TYPE_XILINX_AXI_DMA_CONTROL_STREAM, &error=
+_abort,
+> +                            NULL);
+> =20
+>      sysbus_init_irq(sbd, &s->streams[0].irq);
+>      sysbus_init_irq(sbd, &s->streams[1].irq);
+>=20
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
+Reviewed-by: Thomas Huth <thuth@redhat.com>

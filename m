@@ -1,85 +1,104 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp873671wrs;
-        Fri, 23 Aug 2019 10:52:41 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzCJSKRpC9N9Qk7Dzh1eYUIEmDlhVYXKEFUXaMcUff82n//OQ9mb78s/q6KiOYWuOQ5AseD
-X-Received: by 2002:a17:90a:d793:: with SMTP id z19mr6401088pju.36.1566582761368;
-        Fri, 23 Aug 2019 10:52:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566582761; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp2640464wrs;
+        Sun, 25 Aug 2019 03:04:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwjaI5s3xps13GLiLjhX6ucZbawtxBqGDgSml3MHCKBCL6z4O023skxY7fbulhzvX/NVtWQ
+X-Received: by 2002:ae9:e413:: with SMTP id q19mr11949955qkc.227.1566727485779;
+        Sun, 25 Aug 2019 03:04:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566727485; cv=none;
         d=google.com; s=arc-20160816;
-        b=N9uFXF9IRtLRE96DCDi4nQZDB4g4v9SleHuCvO2qANgQbqdAMViy0Y51y0S/nyolxk
-         KRHCj2DdJ2uJ8K3mC6+49M4IrqbtoFRdjBPW2NJGV3N4Y/F5hWV+WXjT25GYXENkNNCJ
-         4TL5B9ii9C9HEZ8ecRyyIUderZ+J4Y2ZsofBN2x65Iu3XdQKBFe1ST0EOMmPJaXEXyM/
-         E9AjvNOxrelsUuaqKm1QPv2bq7qM0Rxo+sLRYAlF6CVO7cl9SFHb6cxwj/hHT51P1hBO
-         ardLfLCHgei713/QqweDxed+CdBf3k5P5tnJ+sUQ2Yc1ouPKv+q9w6GgWQoPWGzhXIY1
-         MXJA==
+        b=0pbxrQGUYhQYcG0VCrt4mgLBtkFyCuERnzjhPW1Nc9JAToCP185hUrlvhO/ybLFAA2
+         4bEWCPqrvnptM5EJVEVFjruVMgOW8h6Rgl4r4tk16SK3BL+fonce3ZhjkUAsrc4NyRb2
+         MpE1PoCIjIOxLg00jGUpdQCOQyo9brfz0GvrbfFyejjxMmqlSCsdJeYtr6hQarVYN7/N
+         mT2Y90hccpAdKHsQ2Dc3ljTnJvHlQwFaPVPy7Y27sr3xsJI4B0vjc8+tPRKCVH1Hjc5o
+         CrU5h2jGBuL5/7EsfK+EI67kj3z8l77sMo8k4ayJsP69gDr9FFmVE5mOEjB/CzqZAioP
+         2lKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=mZ1YiCNOYlkfvqi9u/j4VuIZrK/PHba9mHI5XxfO9K4=;
-        b=Af3hAmCqq+CGZJMs9IRfDSgPQLSDM2GPZ12FAmktqOlpmjlqMMNEF3pTnJMfXDzZ0D
-         yRYICJyMD5/MG5v91Xv9u/+93jb5VnzNXFXVK7PX658XbMLKtQtnl09TuEKhJOYKGP9N
-         Mvj9TSc7wPb0fDXRVjItbJV/beeJpFzVKUlBEt23dR31Y08opCrQGrXV2rB7opD6ti2b
-         QRBvP5mQy53KnXYbGbhXl/wevZ+ApgxASQy7Y/RnpnJnHg1Z/q7MkHEz7E2pOtFgwhCX
-         SNnH+a9D5tv8IgOKDHbCynH59JJgy55UbyHiZj0n0m7JyvtL7E9n7XHZq9IhA7XP8BGI
-         QiJg==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :mime-version:user-agent:references:in-reply-to:subject:to:from
+         :message-id:date;
+        bh=Y2SaJVh0MWt4mu+holcLlZOvPHL5nxoJn0g0HxkRPeU=;
+        b=Y5lPjzUIPaI2Aljtl12ib105di1j+3/ExQWOg81LNlRleXLY8j8PCtAvOu8vU+wN79
+         U1bl18Qc2k0xLnpWAKrEDyPMfPr4bbzn+Jhrd6QiSqW/fvrfm+ulGJhgjEFaEATZOJlX
+         ikQ/Eycp4yWPVa1vdn28BnrGYueCqq0VlVOVF8BVcdXZv2HUzOVYzgx4hauCZ6rdpU1A
+         2ve4u4+3jS0S/CgMDGExJOt3oKq80F0Uw6eD2bupCYq6ITsJemNLEPyNidjCNcBga8fi
+         lK4wj3M2ZiFoNiWfw7BcRXPjrFjbNQPC3j45FntGCNY15jSrlm78wYAW7XGyrkC/9UIR
+         WoPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <linux-kernel-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b15si2514919pgj.141.2019.08.23.10.52.41;
-        Fri, 23 Aug 2019 10:52:41 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id y2si6038411qtb.137.2019.08.25.03.04.45;
+        Sun, 25 Aug 2019 03:04:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S2404766AbfHWRwk (ORCPT <rfc822;mike.holmes@linaro.org>
-        + 28 others); Fri, 23 Aug 2019 13:52:40 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47584 "EHLO mx1.redhat.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S2404579AbfHWRwj (ORCPT <rfc822;linux-kernel@vger.kernel.org>);
-        Fri, 23 Aug 2019 13:52:39 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mx1.redhat.com (Postfix) with ESMTPS id CB2FE793C4;
-        Fri, 23 Aug 2019 17:52:38 +0000 (UTC)
-Received: from [10.36.116.105] (ovpn-116-105.ams2.redhat.com [10.36.116.105])
-        by smtp.corp.redhat.com (Postfix) with ESMTPS id CF20D600C1;
-        Fri, 23 Aug 2019 17:52:34 +0000 (UTC)
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 0D9E34A59B;
+	Sun, 25 Aug 2019 06:04:45 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: 0.799
+X-Spam-Level: 
+X-Spam-Status: No, score=0.799 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699] autolearn=no
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 1MoAIKZetqNh; Sun, 25 Aug 2019 06:04:43 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id E07A24A645;
+	Sun, 25 Aug 2019 06:04:43 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id C203E4A59B
+ for <kvmarm@lists.cs.columbia.edu>; Sun, 25 Aug 2019 06:04:42 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id iFkae0vLy1jL for <kvmarm@lists.cs.columbia.edu>;
+ Sun, 25 Aug 2019 06:04:41 -0400 (EDT)
+Received: from foss.arm.com (foss.arm.com [217.140.110.172])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 593554A580
+ for <kvmarm@lists.cs.columbia.edu>; Sun, 25 Aug 2019 06:04:41 -0400 (EDT)
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DCEDD344;
+ Sun, 25 Aug 2019 03:04:40 -0700 (PDT)
+Received: from big-swifty.misterjones.org (unknown [172.31.20.19])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 95DCF3F246;
+ Sun, 25 Aug 2019 03:04:37 -0700 (PDT)
+Date: Sun, 25 Aug 2019 11:04:35 +0100
+Message-ID: <86y2zhmuh8.wl-marc.zyngier@arm.com>
+From: Marc Zyngier <marc.zyngier@arm.com>
+To: Eric Auger <eric.auger@redhat.com>
 Subject: Re: [PATCH] KVM: arm/arm64: vgic: Use a single IO device per
  redistributor
-To:     eric.auger.pro@gmail.com, maz@kernel.org,
-        linux-kernel@vger.kernel.org, kvm@vger.kernel.org,
-        kvmarm@lists.cs.columbia.edu
-Cc:     yuzenghui@huawei.com, zhang.zhanghailiang@huawei.com,
-        wanghaibin.wang@huawei.com, james.morse@arm.com,
-        qemu-arm@nongnu.org, julien.thierry.kdev@gmail.com,
-        suzuki.poulose@arm.com, peter.maydell@linaro.org,
-        andre.przywara@arm.com
-References: <20190823173330.23342-1-eric.auger@redhat.com>
-From:   Auger Eric <eric.auger@redhat.com>
-Message-ID: <f5b47614-de48-f3cb-0e6f-8a667cb951c0@redhat.com>
-Date:   Fri, 23 Aug 2019 19:52:32 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
-MIME-Version: 1.0
 In-Reply-To: <20190823173330.23342-1-eric.auger@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+References: <20190823173330.23342-1-eric.auger@redhat.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL/10.8 EasyPG/1.0.0 Emacs/26
+ (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Cc: zhang.zhanghailiang@huawei.com, kvm@vger.kernel.org, andre.przywara@arm.com,
+ linux-kernel@vger.kernel.org, qemu-arm@nongnu.org,
+ kvmarm@lists.cs.columbia.edu, eric.auger.pro@gmail.com
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.25]); Fri, 23 Aug 2019 17:52:38 +0000 (UTC)
-Sender: linux-kernel-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <linux-kernel.vger.kernel.org>
-X-Mailing-List: linux-kernel@vger.kernel.org
-X-TUID: SOCEHWXVto13
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: KAEY5dXJOMqm
 
-Hi Zenghui, Marc,
-
-On 8/23/19 7:33 PM, Eric Auger wrote:
+On Fri, 23 Aug 2019 18:33:30 +0100,
+Eric Auger <eric.auger@redhat.com> wrote:
+> 
 > At the moment we use 2 IO devices per GICv3 redistributor: one
 > one for the RD_base frame and one for the SGI_base frame.
 > 
@@ -92,238 +111,18 @@ On 8/23/19 7:33 PM, Eric Auger wrote:
 > 
 > Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-I tested this patch with below kernel and QEMU branches:
-kernel: https://github.com/eauger/linux/tree/256fix-v1
-(Marc's patch + this patch)
-https://github.com/eauger/qemu/tree/v4.1.0-256fix-rfc1-rc0
-(header update + kvm_arm_gic_set_irq modification)
+Yup, that's exactly what I was hoping for. A very nice cleanup, and no
+need to increase NR_IOBUS_DEVS for the foreseeable future.
 
-On a machine with 224 pcpus, I was able to boot a 512 vcpu guest.
+I've applied this to -next.
 
-As expected, qemu outputs warnings:
+Thanks,
 
-qemu-system-aarch64: warning: Number of SMP cpus requested (512) exceeds
-the recommended cpus supported by KVM (224)
-qemu-system-aarch64: warning: Number of hotpluggable cpus requested
-(512) exceeds the recommended cpus supported by KVM (224)
+	M.
 
-on the guest: getconf _NPROCESSORS_ONLN returns 512
-
-Then I have no clue about what can be expected of such overcommit config
-and I have not further exercised the guest at the moment. But at least
-it seems to boot properly. I also tested without overcommit and it seems
-to behave as before (boot, migration).
-
-I still need to look at the migration of > 256vcpu guest at qemu level.
-
-Thanks
-
-Eric
-
-
-> ---
->  include/kvm/arm_vgic.h           |  1 -
->  virt/kvm/arm/vgic/vgic-init.c    |  1 -
->  virt/kvm/arm/vgic/vgic-mmio-v3.c | 81 ++++++++++----------------------
->  3 files changed, 24 insertions(+), 59 deletions(-)
-> 
-> diff --git a/include/kvm/arm_vgic.h b/include/kvm/arm_vgic.h
-> index 7a30524a80ee..004f6e9d3b05 100644
-> --- a/include/kvm/arm_vgic.h
-> +++ b/include/kvm/arm_vgic.h
-> @@ -311,7 +311,6 @@ struct vgic_cpu {
->  	 * parts of the redistributor.
->  	 */
->  	struct vgic_io_device	rd_iodev;
-> -	struct vgic_io_device	sgi_iodev;
->  	struct vgic_redist_region *rdreg;
->  
->  	/* Contains the attributes and gpa of the LPI pending tables. */
-> diff --git a/virt/kvm/arm/vgic/vgic-init.c b/virt/kvm/arm/vgic/vgic-init.c
-> index bdbc297d06fb..eaff7031a089 100644
-> --- a/virt/kvm/arm/vgic/vgic-init.c
-> +++ b/virt/kvm/arm/vgic/vgic-init.c
-> @@ -192,7 +192,6 @@ int kvm_vgic_vcpu_init(struct kvm_vcpu *vcpu)
->  	int i;
->  
->  	vgic_cpu->rd_iodev.base_addr = VGIC_ADDR_UNDEF;
-> -	vgic_cpu->sgi_iodev.base_addr = VGIC_ADDR_UNDEF;
->  
->  	INIT_LIST_HEAD(&vgic_cpu->ap_list_head);
->  	raw_spin_lock_init(&vgic_cpu->ap_list_lock);
-> diff --git a/virt/kvm/arm/vgic/vgic-mmio-v3.c b/virt/kvm/arm/vgic/vgic-mmio-v3.c
-> index c45e2d7e942f..400067085cab 100644
-> --- a/virt/kvm/arm/vgic/vgic-mmio-v3.c
-> +++ b/virt/kvm/arm/vgic/vgic-mmio-v3.c
-> @@ -515,7 +515,8 @@ static const struct vgic_register_region vgic_v3_dist_registers[] = {
->  		VGIC_ACCESS_32bit),
->  };
->  
-> -static const struct vgic_register_region vgic_v3_rdbase_registers[] = {
-> +static const struct vgic_register_region vgic_v3_rd_registers[] = {
-> +	/* RD_base registers */
->  	REGISTER_DESC_WITH_LENGTH(GICR_CTLR,
->  		vgic_mmio_read_v3r_ctlr, vgic_mmio_write_v3r_ctlr, 4,
->  		VGIC_ACCESS_32bit),
-> @@ -540,44 +541,42 @@ static const struct vgic_register_region vgic_v3_rdbase_registers[] = {
->  	REGISTER_DESC_WITH_LENGTH(GICR_IDREGS,
->  		vgic_mmio_read_v3_idregs, vgic_mmio_write_wi, 48,
->  		VGIC_ACCESS_32bit),
-> -};
-> -
-> -static const struct vgic_register_region vgic_v3_sgibase_registers[] = {
-> -	REGISTER_DESC_WITH_LENGTH(GICR_IGROUPR0,
-> +	/* SGI_base registers */
-> +	REGISTER_DESC_WITH_LENGTH(SZ_64K + GICR_IGROUPR0,
->  		vgic_mmio_read_group, vgic_mmio_write_group, 4,
->  		VGIC_ACCESS_32bit),
-> -	REGISTER_DESC_WITH_LENGTH(GICR_ISENABLER0,
-> +	REGISTER_DESC_WITH_LENGTH(SZ_64K + GICR_ISENABLER0,
->  		vgic_mmio_read_enable, vgic_mmio_write_senable, 4,
->  		VGIC_ACCESS_32bit),
-> -	REGISTER_DESC_WITH_LENGTH(GICR_ICENABLER0,
-> +	REGISTER_DESC_WITH_LENGTH(SZ_64K + GICR_ICENABLER0,
->  		vgic_mmio_read_enable, vgic_mmio_write_cenable, 4,
->  		VGIC_ACCESS_32bit),
-> -	REGISTER_DESC_WITH_LENGTH_UACCESS(GICR_ISPENDR0,
-> +	REGISTER_DESC_WITH_LENGTH_UACCESS(SZ_64K + GICR_ISPENDR0,
->  		vgic_mmio_read_pending, vgic_mmio_write_spending,
->  		vgic_v3_uaccess_read_pending, vgic_v3_uaccess_write_pending, 4,
->  		VGIC_ACCESS_32bit),
-> -	REGISTER_DESC_WITH_LENGTH_UACCESS(GICR_ICPENDR0,
-> +	REGISTER_DESC_WITH_LENGTH_UACCESS(SZ_64K + GICR_ICPENDR0,
->  		vgic_mmio_read_pending, vgic_mmio_write_cpending,
->  		vgic_mmio_read_raz, vgic_mmio_uaccess_write_wi, 4,
->  		VGIC_ACCESS_32bit),
-> -	REGISTER_DESC_WITH_LENGTH_UACCESS(GICR_ISACTIVER0,
-> +	REGISTER_DESC_WITH_LENGTH_UACCESS(SZ_64K + GICR_ISACTIVER0,
->  		vgic_mmio_read_active, vgic_mmio_write_sactive,
->  		NULL, vgic_mmio_uaccess_write_sactive,
->  		4, VGIC_ACCESS_32bit),
-> -	REGISTER_DESC_WITH_LENGTH_UACCESS(GICR_ICACTIVER0,
-> +	REGISTER_DESC_WITH_LENGTH_UACCESS(SZ_64K + GICR_ICACTIVER0,
->  		vgic_mmio_read_active, vgic_mmio_write_cactive,
->  		NULL, vgic_mmio_uaccess_write_cactive,
->  		4, VGIC_ACCESS_32bit),
-> -	REGISTER_DESC_WITH_LENGTH(GICR_IPRIORITYR0,
-> +	REGISTER_DESC_WITH_LENGTH(SZ_64K + GICR_IPRIORITYR0,
->  		vgic_mmio_read_priority, vgic_mmio_write_priority, 32,
->  		VGIC_ACCESS_32bit | VGIC_ACCESS_8bit),
-> -	REGISTER_DESC_WITH_LENGTH(GICR_ICFGR0,
-> +	REGISTER_DESC_WITH_LENGTH(SZ_64K + GICR_ICFGR0,
->  		vgic_mmio_read_config, vgic_mmio_write_config, 8,
->  		VGIC_ACCESS_32bit),
-> -	REGISTER_DESC_WITH_LENGTH(GICR_IGRPMODR0,
-> +	REGISTER_DESC_WITH_LENGTH(SZ_64K + GICR_IGRPMODR0,
->  		vgic_mmio_read_raz, vgic_mmio_write_wi, 4,
->  		VGIC_ACCESS_32bit),
-> -	REGISTER_DESC_WITH_LENGTH(GICR_NSACR,
-> +	REGISTER_DESC_WITH_LENGTH(SZ_64K + GICR_NSACR,
->  		vgic_mmio_read_raz, vgic_mmio_write_wi, 4,
->  		VGIC_ACCESS_32bit),
->  };
-> @@ -607,9 +606,8 @@ int vgic_register_redist_iodev(struct kvm_vcpu *vcpu)
->  	struct vgic_dist *vgic = &kvm->arch.vgic;
->  	struct vgic_cpu *vgic_cpu = &vcpu->arch.vgic_cpu;
->  	struct vgic_io_device *rd_dev = &vcpu->arch.vgic_cpu.rd_iodev;
-> -	struct vgic_io_device *sgi_dev = &vcpu->arch.vgic_cpu.sgi_iodev;
->  	struct vgic_redist_region *rdreg;
-> -	gpa_t rd_base, sgi_base;
-> +	gpa_t rd_base;
->  	int ret;
->  
->  	if (!IS_VGIC_ADDR_UNDEF(vgic_cpu->rd_iodev.base_addr))
-> @@ -631,52 +629,31 @@ int vgic_register_redist_iodev(struct kvm_vcpu *vcpu)
->  	vgic_cpu->rdreg = rdreg;
->  
->  	rd_base = rdreg->base + rdreg->free_index * KVM_VGIC_V3_REDIST_SIZE;
-> -	sgi_base = rd_base + SZ_64K;
->  
->  	kvm_iodevice_init(&rd_dev->dev, &kvm_io_gic_ops);
->  	rd_dev->base_addr = rd_base;
->  	rd_dev->iodev_type = IODEV_REDIST;
-> -	rd_dev->regions = vgic_v3_rdbase_registers;
-> -	rd_dev->nr_regions = ARRAY_SIZE(vgic_v3_rdbase_registers);
-> +	rd_dev->regions = vgic_v3_rd_registers;
-> +	rd_dev->nr_regions = ARRAY_SIZE(vgic_v3_rd_registers);
->  	rd_dev->redist_vcpu = vcpu;
->  
->  	mutex_lock(&kvm->slots_lock);
->  	ret = kvm_io_bus_register_dev(kvm, KVM_MMIO_BUS, rd_base,
-> -				      SZ_64K, &rd_dev->dev);
-> +				      2 * SZ_64K, &rd_dev->dev);
->  	mutex_unlock(&kvm->slots_lock);
->  
->  	if (ret)
->  		return ret;
->  
-> -	kvm_iodevice_init(&sgi_dev->dev, &kvm_io_gic_ops);
-> -	sgi_dev->base_addr = sgi_base;
-> -	sgi_dev->iodev_type = IODEV_REDIST;
-> -	sgi_dev->regions = vgic_v3_sgibase_registers;
-> -	sgi_dev->nr_regions = ARRAY_SIZE(vgic_v3_sgibase_registers);
-> -	sgi_dev->redist_vcpu = vcpu;
-> -
-> -	mutex_lock(&kvm->slots_lock);
-> -	ret = kvm_io_bus_register_dev(kvm, KVM_MMIO_BUS, sgi_base,
-> -				      SZ_64K, &sgi_dev->dev);
-> -	if (ret) {
-> -		kvm_io_bus_unregister_dev(kvm, KVM_MMIO_BUS,
-> -					  &rd_dev->dev);
-> -		goto out;
-> -	}
-> -
->  	rdreg->free_index++;
-> -out:
-> -	mutex_unlock(&kvm->slots_lock);
-> -	return ret;
-> +	return 0;
->  }
->  
->  static void vgic_unregister_redist_iodev(struct kvm_vcpu *vcpu)
->  {
->  	struct vgic_io_device *rd_dev = &vcpu->arch.vgic_cpu.rd_iodev;
-> -	struct vgic_io_device *sgi_dev = &vcpu->arch.vgic_cpu.sgi_iodev;
->  
->  	kvm_io_bus_unregister_dev(vcpu->kvm, KVM_MMIO_BUS, &rd_dev->dev);
-> -	kvm_io_bus_unregister_dev(vcpu->kvm, KVM_MMIO_BUS, &sgi_dev->dev);
->  }
->  
->  static int vgic_register_all_redist_iodevs(struct kvm *kvm)
-> @@ -826,8 +803,8 @@ int vgic_v3_has_attr_regs(struct kvm_device *dev, struct kvm_device_attr *attr)
->  		iodev.base_addr = 0;
->  		break;
->  	case KVM_DEV_ARM_VGIC_GRP_REDIST_REGS:{
-> -		iodev.regions = vgic_v3_rdbase_registers;
-> -		iodev.nr_regions = ARRAY_SIZE(vgic_v3_rdbase_registers);
-> +		iodev.regions = vgic_v3_rd_registers;
-> +		iodev.nr_regions = ARRAY_SIZE(vgic_v3_rd_registers);
->  		iodev.base_addr = 0;
->  		break;
->  	}
-> @@ -985,21 +962,11 @@ int vgic_v3_redist_uaccess(struct kvm_vcpu *vcpu, bool is_write,
->  			   int offset, u32 *val)
->  {
->  	struct vgic_io_device rd_dev = {
-> -		.regions = vgic_v3_rdbase_registers,
-> -		.nr_regions = ARRAY_SIZE(vgic_v3_rdbase_registers),
-> +		.regions = vgic_v3_rd_registers,
-> +		.nr_regions = ARRAY_SIZE(vgic_v3_rd_registers),
->  	};
->  
-> -	struct vgic_io_device sgi_dev = {
-> -		.regions = vgic_v3_sgibase_registers,
-> -		.nr_regions = ARRAY_SIZE(vgic_v3_sgibase_registers),
-> -	};
-> -
-> -	/* SGI_base is the next 64K frame after RD_base */
-> -	if (offset >= SZ_64K)
-> -		return vgic_uaccess(vcpu, &sgi_dev, is_write, offset - SZ_64K,
-> -				    val);
-> -	else
-> -		return vgic_uaccess(vcpu, &rd_dev, is_write, offset, val);
-> +	return vgic_uaccess(vcpu, &rd_dev, is_write, offset, val);
->  }
->  
->  int vgic_v3_line_level_info_uaccess(struct kvm_vcpu *vcpu, bool is_write,
-> 
+-- 
+Jazz is not dead, it just smells funny.
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

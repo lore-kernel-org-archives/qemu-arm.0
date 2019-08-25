@@ -1,40 +1,42 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp2640464wrs;
-        Sun, 25 Aug 2019 03:04:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwjaI5s3xps13GLiLjhX6ucZbawtxBqGDgSml3MHCKBCL6z4O023skxY7fbulhzvX/NVtWQ
-X-Received: by 2002:ae9:e413:: with SMTP id q19mr11949955qkc.227.1566727485779;
-        Sun, 25 Aug 2019 03:04:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566727485; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp2652568wrs;
+        Sun, 25 Aug 2019 03:20:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw7zdO6Ig91JdBWrQowrN59rgpZpmeK/XwKk93BFazS+mUs9q3qoFIJ4eUe3VSX4yJAIOIO
+X-Received: by 2002:ae9:ec1a:: with SMTP id h26mr12012850qkg.80.1566728409875;
+        Sun, 25 Aug 2019 03:20:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566728409; cv=none;
         d=google.com; s=arc-20160816;
-        b=0pbxrQGUYhQYcG0VCrt4mgLBtkFyCuERnzjhPW1Nc9JAToCP185hUrlvhO/ybLFAA2
-         4bEWCPqrvnptM5EJVEVFjruVMgOW8h6Rgl4r4tk16SK3BL+fonce3ZhjkUAsrc4NyRb2
-         MpE1PoCIjIOxLg00jGUpdQCOQyo9brfz0GvrbfFyejjxMmqlSCsdJeYtr6hQarVYN7/N
-         mT2Y90hccpAdKHsQ2Dc3ljTnJvHlQwFaPVPy7Y27sr3xsJI4B0vjc8+tPRKCVH1Hjc5o
-         CrU5h2jGBuL5/7EsfK+EI67kj3z8l77sMo8k4ayJsP69gDr9FFmVE5mOEjB/CzqZAioP
-         2lKQ==
+        b=EDXW1iSxSFiGFZrus2RYU9OFRKZbQ4pWiH9GWyGb9TrEL4ZO6CokvHuOSvwPSkv32U
+         2zTCummCapkKGXMElSX4LXgOoIN1dsXBbXqUUkkVLy8TCXGH4flQUnX/6/zcUvUXc79i
+         DlV6nXGx33/kQMgts5+/D1ZtjTPdohE3EWiw1l7mK2waMJMNu1bSPmvIBchLZFNI2zgh
+         emU6eUtf2i6h80o5g0sM1LL5u+DHzRV6nFk1Ul5O9JXxIhYuhQ+SeWyldodZnZ5P3TQ9
+         dUslu7tKw6wHbG7xIt4jnKOZhJdiQqDVrwqYGIVpieTdvjGXlNWlXWtvVGNBREVWhShS
+         cOUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
          :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :mime-version:user-agent:references:in-reply-to:subject:to:from
-         :message-id:date;
-        bh=Y2SaJVh0MWt4mu+holcLlZOvPHL5nxoJn0g0HxkRPeU=;
-        b=Y5lPjzUIPaI2Aljtl12ib105di1j+3/ExQWOg81LNlRleXLY8j8PCtAvOu8vU+wN79
-         U1bl18Qc2k0xLnpWAKrEDyPMfPr4bbzn+Jhrd6QiSqW/fvrfm+ulGJhgjEFaEATZOJlX
-         ikQ/Eycp4yWPVa1vdn28BnrGYueCqq0VlVOVF8BVcdXZv2HUzOVYzgx4hauCZ6rdpU1A
-         2ve4u4+3jS0S/CgMDGExJOt3oKq80F0Uw6eD2bupCYq6ITsJemNLEPyNidjCNcBga8fi
-         lK4wj3M2ZiFoNiWfw7BcRXPjrFjbNQPC3j45FntGCNY15jSrlm78wYAW7XGyrkC/9UIR
-         WoPg==
+         :mime-version:organization:user-agent:references:in-reply-to:subject
+         :to:from:message-id:date;
+        bh=TBZHU8PnWh21rlddPSprsbtddEqw93ZjyGnjfRf37IA=;
+        b=uImb/ARXd5KCBdGZI+cjCMhmnQnbxVBpODXeN7FWDR/zP1FMqrA6ouMsMyazX9GVQb
+         nHOMsMF+38mFB6l1ZB92gxPoU+kwBwjJLDcxCFh+QXCkxj4pUcIV9zCS1Hf9djkTQdej
+         12TnXqogeY6+nv/fCz+yDBYZFQFdSnrK9HKKXdOjJU7HddZekFNGRfg85/UMKDeCZnig
+         qme0mt6YDAlXz8g7bMgw9rJO/b2d2cUcqq0m46nO1TxoiA1lSAx2W8QkZLNc3HPloxs1
+         zTEYQJZqYqyEys6g5T3o+2panLmsN2ybpx+K9SYQTE3uUzcV+dYB9DH/EUcwJcAVpKV1
+         OBAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id y2si6038411qtb.137.2019.08.25.03.04.45;
-        Sun, 25 Aug 2019 03:04:45 -0700 (PDT)
+        by mx.google.com with ESMTP id v10si5718845qkf.93.2019.08.25.03.20.09;
+        Sun, 25 Aug 2019 03:20:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 0D9E34A59B;
-	Sun, 25 Aug 2019 06:04:45 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 816AA4A5A0;
+	Sun, 25 Aug 2019 06:20:09 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
 X-Spam-Score: 0.799
@@ -43,38 +45,40 @@ X-Spam-Status: No, score=0.799 required=6.1 tests=[BAYES_00=-1.9,
 	DNS_FROM_AHBL_RHSBL=2.699] autolearn=no
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 1MoAIKZetqNh; Sun, 25 Aug 2019 06:04:43 -0400 (EDT)
+	with ESMTP id jvHqUg+xK03s; Sun, 25 Aug 2019 06:20:08 -0400 (EDT)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id E07A24A645;
-	Sun, 25 Aug 2019 06:04:43 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 5F2304A5A8;
+	Sun, 25 Aug 2019 06:20:08 -0400 (EDT)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id C203E4A59B
- for <kvmarm@lists.cs.columbia.edu>; Sun, 25 Aug 2019 06:04:42 -0400 (EDT)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 190394A5A0
+ for <kvmarm@lists.cs.columbia.edu>; Sun, 25 Aug 2019 06:20:08 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id iFkae0vLy1jL for <kvmarm@lists.cs.columbia.edu>;
- Sun, 25 Aug 2019 06:04:41 -0400 (EDT)
+ with ESMTP id QkEuie4zo7JU for <kvmarm@lists.cs.columbia.edu>;
+ Sun, 25 Aug 2019 06:20:06 -0400 (EDT)
 Received: from foss.arm.com (foss.arm.com [217.140.110.172])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 593554A580
- for <kvmarm@lists.cs.columbia.edu>; Sun, 25 Aug 2019 06:04:41 -0400 (EDT)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id BD9B54A4DF
+ for <kvmarm@lists.cs.columbia.edu>; Sun, 25 Aug 2019 06:20:06 -0400 (EDT)
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
- by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id DCEDD344;
- Sun, 25 Aug 2019 03:04:40 -0700 (PDT)
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 62E03344;
+ Sun, 25 Aug 2019 03:20:06 -0700 (PDT)
 Received: from big-swifty.misterjones.org (unknown [172.31.20.19])
- by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 95DCF3F246;
- Sun, 25 Aug 2019 03:04:37 -0700 (PDT)
-Date: Sun, 25 Aug 2019 11:04:35 +0100
-Message-ID: <86y2zhmuh8.wl-marc.zyngier@arm.com>
-From: Marc Zyngier <marc.zyngier@arm.com>
-To: Eric Auger <eric.auger@redhat.com>
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DBC403F246;
+ Sun, 25 Aug 2019 03:20:02 -0700 (PDT)
+Date: Sun, 25 Aug 2019 11:20:00 +0100
+Message-ID: <86wof1mtrj.wl-maz@kernel.org>
+From: Marc Zyngier <maz@kernel.org>
+To: Auger Eric <eric.auger@redhat.com>
 Subject: Re: [PATCH] KVM: arm/arm64: vgic: Use a single IO device per
  redistributor
-In-Reply-To: <20190823173330.23342-1-eric.auger@redhat.com>
+In-Reply-To: <f5b47614-de48-f3cb-0e6f-8a667cb951c0@redhat.com>
 References: <20190823173330.23342-1-eric.auger@redhat.com>
+ <f5b47614-de48-f3cb-0e6f-8a667cb951c0@redhat.com>
 User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
  FLIM/1.14.9 (=?UTF-8?B?R29qxY0=?=) APEL/10.8 EasyPG/1.0.0 Emacs/26
  (aarch64-unknown-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+Organization: Approximate
 MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
 Cc: zhang.zhanghailiang@huawei.com, kvm@vger.kernel.org, andre.przywara@arm.com,
  linux-kernel@vger.kernel.org, qemu-arm@nongnu.org,
@@ -94,27 +98,63 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: KAEY5dXJOMqm
+X-TUID: yfVPhIKOfZUj
 
-On Fri, 23 Aug 2019 18:33:30 +0100,
-Eric Auger <eric.auger@redhat.com> wrote:
+On Fri, 23 Aug 2019 18:52:32 +0100,
+Auger Eric <eric.auger@redhat.com> wrote:
 > 
-> At the moment we use 2 IO devices per GICv3 redistributor: one
-> one for the RD_base frame and one for the SGI_base frame.
+> Hi Zenghui, Marc,
 > 
-> Instead we can use a single IO device per redistributor (the 2
-> frames are contiguous). This saves slots on the KVM_MMIO_BUS
-> which is currently limited to NR_IOBUS_DEVS (1000).
+> On 8/23/19 7:33 PM, Eric Auger wrote:
+> > At the moment we use 2 IO devices per GICv3 redistributor: one
+> > one for the RD_base frame and one for the SGI_base frame.
+> > 
+> > Instead we can use a single IO device per redistributor (the 2
+> > frames are contiguous). This saves slots on the KVM_MMIO_BUS
+> > which is currently limited to NR_IOBUS_DEVS (1000).
+> > 
+> > This change allows to instantiate up to 512 redistributors and may
+> > speed the guest boot with a large number of VCPUs.
+> > 
+> > Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > 
-> This change allows to instantiate up to 512 redistributors and may
-> speed the guest boot with a large number of VCPUs.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> I tested this patch with below kernel and QEMU branches:
+> kernel: https://github.com/eauger/linux/tree/256fix-v1
+> (Marc's patch + this patch)
+> https://github.com/eauger/qemu/tree/v4.1.0-256fix-rfc1-rc0
+> (header update + kvm_arm_gic_set_irq modification)
 
-Yup, that's exactly what I was hoping for. A very nice cleanup, and no
-need to increase NR_IOBUS_DEVS for the foreseeable future.
+A small comment on this: you don't seem to check that
+KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 is available before allowing more than
+256 vcpus. It'd be worth doing that before allowing a guest to start.
 
-I've applied this to -next.
+> 
+> On a machine with 224 pcpus, I was able to boot a 512 vcpu guest.
+> 
+> As expected, qemu outputs warnings:
+> 
+> qemu-system-aarch64: warning: Number of SMP cpus requested (512) exceeds
+> the recommended cpus supported by KVM (224)
+> qemu-system-aarch64: warning: Number of hotpluggable cpus requested
+> (512) exceeds the recommended cpus supported by KVM (224)
+> 
+> on the guest: getconf _NPROCESSORS_ONLN returns 512
+> 
+> Then I have no clue about what can be expected of such overcommit config
+> and I have not further exercised the guest at the moment.
+
+It will just work, albeit slowly. I often boot 64 vcpu guests on 4 or
+8 core systems, just to check that we don't regress too much.
+
+> But at least
+> it seems to boot properly. I also tested without overcommit and it seems
+> to behave as before (boot, migration).
+> 
+> I still need to look at the migration of > 256vcpu guest at qemu level.
+
+OK, please let us know how it goes. I'd like some more reviewing on
+the userspace ABI change before merging it though. Peter, your input
+would be very good to have.
 
 Thanks,
 

@@ -1,83 +1,82 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp3988133wrs;
-        Mon, 26 Aug 2019 07:40:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxKDMPirzFE/siUsKC+gyNeDMxbIMuoXPxfHsuC24noJ4ljj7+YRnQeJ1v0lvKo0g5xRQ1c
-X-Received: by 2002:ad4:4974:: with SMTP id p20mr15064334qvy.29.1566830457952;
-        Mon, 26 Aug 2019 07:40:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566830457; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp3989650wrs;
+        Mon, 26 Aug 2019 07:42:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzbAYNLAuTa6ljKdzzu8/lTe4W89EUMarxGF35GKcVclYcYtYeNKnPJFMK9fsSQds8k3to8
+X-Received: by 2002:a0c:f945:: with SMTP id i5mr15182468qvo.221.1566830550956;
+        Mon, 26 Aug 2019 07:42:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566830550; cv=none;
         d=google.com; s=arc-20160816;
-        b=YB52+Dnuqk/Yd9JFHHuiY9nbcnitlB97y12lq8Q8hy2TBPmYNmqYpIgrDglapmRPfG
-         x5ZesWX8nVhAWtZZl3h7rHH48g/AgVs5QQq8ZfsGpsE6rb7G4h/jR9WD9x6i2kC1WeXm
-         MZzFZAn0aEvTNriwbc2vN9e9/3BjMTurKcHpdM78f+Deom1xBbIyddb+g1J0W5M7r6Lv
-         6VzT/2Umb8xwLd8bhhxz9nmMZXLtY3k2fElOP4/o+RlUca7Rs9Thl69AYDXCZGUIxkyY
-         YPvHMeRvY5HYrPHi0u2DkOYdcRAHUggnaWNAG93/vz2zte5v14otsWFDHRaLti73XoST
-         4ctg==
+        b=XsUoXwb7ZwMOGzbsncnGtFANzJNPgz5nHHg7tQPFxdNcpGhBVkeRDboRxlU9/H6i6W
+         ZLsZZuxu4TdTI1gmgMwk3187qrPuTLFobnXxMME7qA6DmiinWfkHonjq+kMU02UFhvT9
+         9Alhh0okKsRJUmSeN60uOr4fftdPH1FiFt/TehCBz4yvlHpdsamnRlLEhPDiInBT0jNh
+         fgexmZez4IismnW64rD2x79i82rO7JfDza0c52BcPLBFBJetiPOb22tdt6XMPpGEgEAZ
+         b77hirw9hkaLhnlaWWOtw0zz9ttr+xaIXPZE7ooQUGm4f1Dwm+jhKtc6wkF25gQnc8b+
+         E0vQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=rPVZ5MeIxTfJh+Uc05pxrh83igNcai2WjfgKqzj/MfA=;
-        b=HtMD4c8PC+jmGEqoCD/wZ5LtnvY6QjZ8d7M3ccC5ayxFxlrPfUBNt55dLpHIkaJF8t
-         x35PCQIt8wSCZUCFM2q0YhWRncXkVAI4fRTptg7pAeJovcCDSkzEc7v1EeR2XPGytBgo
-         X011mpDvSqiLBMtzaR4BueQrlmlDP4R6g/5XRBppDVcDfZCuy4fYETsiWIhV64kt2UZf
-         8MBv6PcLbPhWIPMc/2d63J0LplHWlA7c8gQ5objMrRC+9GHJ4ow+Y7BYv+OjUenrRE/w
-         7dYSQQHE/jc0QfZO2XMB2OWIXZt6p/m2hpMjkZ0q8XbANXWZDN+gnFQwv/xvTS/r2FuQ
-         m9yw==
+        bh=cfQJeIOIBOgSAkMg0KG1Um3QEVRdipF/3hs04jF+2Qg=;
+        b=FlHqH/N2a5Cnk4EZwoyNNDOPFrAiEEet+pFHk61D5Bsxkn27GkYwkUk+GHWOAWJBJH
+         yJh6rulCKD2iEILA+KiN6SXgS2MLfL27nGggu8/QDSM0Ge7v/hP1nNY4MHVqs2HkUEzK
+         LHucE4tt5d4R3Qay93DAPbbBsj77G0ncnlqHxTjtlRcSFL/GxrbvN9i32a9UUxi/ZQlo
+         vkcSC9I0dl7JEmAwSRQQA1Pc7TTZv3xKwspasdPxXYkdLUruHJgu3U3ru5XDkGwXt+Cd
+         YWVM1zAX9+uGW9s+CI0Mb5tCon9CwQdpXMQbh4DgO43cGiMEcN+ddwtDGdCRpk0ZaTQ6
+         yHAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z29si7866470qvc.87.2019.08.26.07.40.57
+        by mx.google.com with ESMTPS id k54si7763567qtb.314.2019.08.26.07.42.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Aug 2019 07:40:57 -0700 (PDT)
+        Mon, 26 Aug 2019 07:42:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:53866 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53896 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i2GAy-0005Ok-Sy
-	for alex.bennee@linaro.org; Mon, 26 Aug 2019 10:40:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42846)
+	id 1i2GCT-0006up-HK
+	for alex.bennee@linaro.org; Mon, 26 Aug 2019 10:42:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46408)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tony.nguyen@bt.com>) id 1i2Fq3-0004bH-Av
- for qemu-devel@nongnu.org; Mon, 26 Aug 2019 10:19:21 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1i2G3R-0008Hm-Ki
+ for qemu-devel@nongnu.org; Mon, 26 Aug 2019 10:33:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1i2Fq1-0000fW-El
- for qemu-devel@nongnu.org; Mon, 26 Aug 2019 10:19:19 -0400
-Received: from nsstlmta28p.bpe.bigpond.com ([203.38.21.28]:44188)
+ (envelope-from <tony.nguyen@bt.com>) id 1i2G3P-0001Vh-AV
+ for qemu-devel@nongnu.org; Mon, 26 Aug 2019 10:33:09 -0400
+Received: from nsstlmta09p.bpe.bigpond.com ([203.38.21.9]:53381)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1i2Fpx-0000OX-Mv; Mon, 26 Aug 2019 10:19:15 -0400
+ id 1i2G3N-0001PS-Gj; Mon, 26 Aug 2019 10:33:07 -0400
 Received: from smtp.telstra.com ([10.10.24.4])
- by nsstlfep28p-svc.bpe.nexus.telstra.com.au with ESMTP id
- <20190826141905.LAPZ9614.nsstlfep28p-svc.bpe.nexus.telstra.com.au@smtp.telstra.com>;
- Tue, 27 Aug 2019 00:19:05 +1000
+ by nsstlfep21p-svc.bpe.nexus.telstra.com.au with ESMTP id
+ <20190826141907.VWVI15045.nsstlfep21p-svc.bpe.nexus.telstra.com.au@smtp.telstra.com>;
+ Tue, 27 Aug 2019 00:19:07 +1000
 X-RG-Spam: Unknown
-X-RazorGate-Vade: gggruggvucftvghtrhhoucdtuddrgeduvddrudehgedgjeegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuuffpveftpgfvgffnuffvtfetpdfqfgfvnecuuegrihhlohhuthemucegtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhgggfestdekredtredttdenucfhrhhomhepvfhonhihucfpghhuhigvnhcuoehtohhnhidrnhhguhihvghnsegsthdrtghomheqnecukfhppeehkedrudejfedrleekrdeikeenucfrrghrrghmpehhvghlohepuggsiidrthgvlhhsthhrrgdrtghomhdrrghupdhinhgvthepheekrddujeefrdelkedrieekpdhmrghilhhfrhhomhepoehtohhnhidrnhhguhihvghnsegsthdrtghomheqpdhrtghpthhtohepoegurghvihgusehgihgsshhonhdrughrohhpsggvrghrrdhiugdrrghuqedprhgtphhtthhopeeofhegsghughesrghmshgrthdrohhrgheqpdhrtghpthhtohepoehggihtsehmphhrtgdrphhkuhdrvgguuhdrtghnqedprhgtphhtthhopeeojhhslhgrsgihsehsuhhsvgdrtgiiqedprhgtphhtthhopeeomhgrrhhkrdgtrghvvgdqrgihlhgrnhgusehilhgrnhguvgdrtghordhukheqpdhrtghpthhtohepoehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrgheqpdhrtghpthhtohepoehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgqedprhgtphhtthhopeeoqhgvmhhuqdguvghv
- vghlsehnohhnghhnuhdrohhrgheqpdhrtghpthhtohepoehqvghmuhdqphhptgesnhhonhhgnhhurdhorhhgqedprhgtphhtthhopeeothhonhihrdhnghhuhigvnhessghtrdgtohhmqeenucevlhhushhtvghrufhiiigvpedv
+X-RazorGate-Vade: gggruggvucftvghtrhhoucdtuddrgeduvddrudehgedgjeegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuuffpveftpgfvgffnuffvtfetpdfqfgfvnecuuegrihhlohhuthemucegtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhgggfestdekredtredttdenucfhrhhomhepvfhonhihucfpghhuhigvnhcuoehtohhnhidrnhhguhihvghnsegsthdrtghomheqnecukfhppeehkedrudejfedrleekrdeikeenucfrrghrrghmpehhvghlohepuggsiidrthgvlhhsthhrrgdrtghomhdrrghupdhinhgvthepheekrddujeefrdelkedrieekpdhmrghilhhfrhhomhepoehtohhnhidrnhhguhihvghnsegsthdrtghomheqpdhrtghpthhtohepoegsrdhgrghlvhgrnhhisehgmhgrihhlrdgtohhmqedprhgtphhtthhopeeojhgrshhofigrnhhgsehrvgguhhgrthdrtghomheqpdhrtghpthhtohepoehpvghtvghrrdgthhhusggssehnihgtthgrrdgtohhmrdgruheqpdhrtghpthhtohepoehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrgheqpdhrtghpthhtohepoehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgqedprhgtphhtthhopeeoqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrgheqpdhrtghpthhtohepoehtohhnhidrnhhguhihvghnsegsthdrtghomheqnecuvehluhhsthgvrhfuihiivgepvd
 X-RazorGate-Vade-Verdict: clean 0
 X-RazorGate-Vade-Classification: clean
 X-RG-VS-CLASS: clean
 X-Authentication-Info: Submitted using ID tony.nguyen.git@bigpond.com
 Received: from dbz.telstra.com.au (58.173.98.68) by smtp.telstra.com (5.8.335)
  (authenticated as tony.nguyen.git@bigpond.com)
- id 5D3581440DDB1246; Tue, 27 Aug 2019 00:19:05 +1000
+ id 5D3581440DDB12BF; Tue, 27 Aug 2019 00:19:06 +1000
 From: Tony Nguyen <tony.nguyen@bt.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 27 Aug 2019 00:21:39 +1000
-Message-Id: <98939505e0aede2a4c907301b21d1f348e29b9d2.1566829168.git.tony.nguyen@bt.com>
+Date: Tue, 27 Aug 2019 00:21:40 +1000
+Message-Id: <452af9f741f5fdb467ad5da2c97d1e010a6d3987.1566829168.git.tony.nguyen@bt.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <cover.1566829168.git.tony.nguyen@bt.com>
 References: <cover.1566829168.git.tony.nguyen@bt.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 203.38.21.28
-Subject: [Qemu-devel] [PATCH 13/19] hw/misc: Declare device little or big
+X-Received-From: 203.38.21.9
+Subject: [Qemu-devel] [PATCH 14/19] hw/net: Declare device little or big
  endian
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -91,13 +90,11 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Tony Nguyen <tony.nguyen@bt.com>, Peter Maydell <peter.maydell@linaro.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Guan Xuetao <gxt@mprc.pku.edu.cn>,
- Jiri Slaby <jslaby@suse.cz>, David Gibson <david@gibson.dropbear.id.au>
+ Jason Wang <jasowang@redhat.com>, Beniamino Galvani <b.galvani@gmail.com>,
+ qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IO8E1ytRn0+Y
+X-TUID: zlEoQtMb7KFR
 
 For each device declared with DEVICE_NATIVE_ENDIAN, find the set of
 targets from the set of target/hw/*/device.o.
@@ -115,152 +112,99 @@ Then, on inspection:
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
 ---
- hw/misc/a9scu.c                | 2 +-
- hw/misc/applesmc.c             | 6 +++---
- hw/misc/arm11scu.c             | 2 +-
- hw/misc/arm_integrator_debug.c | 2 +-
- hw/misc/arm_l2x0.c             | 2 +-
- hw/misc/edu.c                  | 2 +-
- hw/misc/mos6522.c              | 2 +-
- hw/misc/puv3_pm.c              | 2 +-
- hw/misc/unimp.c                | 2 +-
- 9 files changed, 11 insertions(+), 11 deletions(-)
+ hw/net/allwinner_emac.c | 2 +-
+ hw/net/imx_fec.c        | 2 +-
+ hw/net/lan9118.c        | 4 ++--
+ hw/net/lance.c          | 2 +-
+ hw/net/smc91c111.c      | 2 +-
+ hw/net/stellaris_enet.c | 2 +-
+ 6 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/hw/misc/a9scu.c b/hw/misc/a9scu.c
-index 45c91db303..59335ca72f 100644
---- a/hw/misc/a9scu.c
-+++ b/hw/misc/a9scu.c
-@@ -96,7 +96,7 @@ static void a9_scu_write(void *opaque, hwaddr offset,
- static const MemoryRegionOps a9_scu_ops = {
-     .read = a9_scu_read,
-     .write = a9_scu_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
- static void a9_scu_reset(DeviceState *dev)
-diff --git a/hw/misc/applesmc.c b/hw/misc/applesmc.c
-index 24d57e8677..cd60f458de 100644
---- a/hw/misc/applesmc.c
-+++ b/hw/misc/applesmc.c
-@@ -285,7 +285,7 @@ static void qdev_applesmc_isa_reset(DeviceState *dev)
- static const MemoryRegionOps applesmc_data_io_ops = {
-     .write = applesmc_io_data_write,
-     .read = applesmc_io_data_read,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_HOST_ENDIAN,
-     .impl = {
-         .min_access_size = 1,
-         .max_access_size = 1,
-@@ -295,7 +295,7 @@ static const MemoryRegionOps applesmc_data_io_ops = {
- static const MemoryRegionOps applesmc_cmd_io_ops = {
-     .write = applesmc_io_cmd_write,
-     .read = applesmc_io_cmd_read,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_HOST_ENDIAN,
-     .impl = {
-         .min_access_size = 1,
-         .max_access_size = 1,
-@@ -305,7 +305,7 @@ static const MemoryRegionOps applesmc_cmd_io_ops = {
- static const MemoryRegionOps applesmc_err_io_ops = {
-     .write = applesmc_io_err_write,
-     .read = applesmc_io_err_read,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_HOST_ENDIAN,
-     .impl = {
-         .min_access_size = 1,
-         .max_access_size = 1,
-diff --git a/hw/misc/arm11scu.c b/hw/misc/arm11scu.c
-index 3023284d6f..dd690dc985 100644
---- a/hw/misc/arm11scu.c
-+++ b/hw/misc/arm11scu.c
-@@ -58,7 +58,7 @@ static void mpcore_scu_write(void *opaque, hwaddr offset,
- static const MemoryRegionOps mpcore_scu_ops = {
-     .read = mpcore_scu_read,
-     .write = mpcore_scu_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
- static void arm11_scu_realize(DeviceState *dev, Error **errp)
-diff --git a/hw/misc/arm_integrator_debug.c b/hw/misc/arm_integrator_debug.c
-index 3e23201ae6..c392067332 100644
---- a/hw/misc/arm_integrator_debug.c
-+++ b/hw/misc/arm_integrator_debug.c
-@@ -72,7 +72,7 @@ static void intdbg_control_write(void *opaque, hwaddr offset,
- static const MemoryRegionOps intdbg_control_ops = {
-     .read = intdbg_control_read,
-     .write = intdbg_control_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
- static void intdbg_control_init(Object *obj)
-diff --git a/hw/misc/arm_l2x0.c b/hw/misc/arm_l2x0.c
-index af2c7af4a0..cd1747b7a1 100644
---- a/hw/misc/arm_l2x0.c
-+++ b/hw/misc/arm_l2x0.c
-@@ -159,7 +159,7 @@ static void l2x0_priv_reset(DeviceState *dev)
- static const MemoryRegionOps l2x0_mem_ops = {
-     .read = l2x0_priv_read,
-     .write = l2x0_priv_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-  };
- 
- static void l2x0_priv_init(Object *obj)
-diff --git a/hw/misc/edu.c b/hw/misc/edu.c
-index d5e2bdbb57..c014ea2443 100644
---- a/hw/misc/edu.c
-+++ b/hw/misc/edu.c
-@@ -295,7 +295,7 @@ static void edu_mmio_write(void *opaque, hwaddr addr, uint64_t val,
- static const MemoryRegionOps edu_mmio_ops = {
-     .read = edu_mmio_read,
-     .write = edu_mmio_write,
+diff --git a/hw/net/allwinner_emac.c b/hw/net/allwinner_emac.c
+index e055a661c4..84b48b1774 100644
+--- a/hw/net/allwinner_emac.c
++++ b/hw/net/allwinner_emac.c
+@@ -421,7 +421,7 @@ static void aw_emac_set_link(NetClientState *nc)
+ static const MemoryRegionOps aw_emac_mem_ops = {
+     .read = aw_emac_read,
+     .write = aw_emac_write,
 -    .endianness = DEVICE_NATIVE_ENDIAN,
 +    .endianness = DEVICE_LITTLE_ENDIAN,
      .valid = {
-         .min_access_size = 4,
-         .max_access_size = 8,
-diff --git a/hw/misc/mos6522.c b/hw/misc/mos6522.c
-index 57f13db266..7831fa60f9 100644
---- a/hw/misc/mos6522.c
-+++ b/hw/misc/mos6522.c
-@@ -365,7 +365,7 @@ void mos6522_write(void *opaque, hwaddr addr, uint64_t val, unsigned size)
- static const MemoryRegionOps mos6522_ops = {
-     .read = mos6522_read,
-     .write = mos6522_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_HOST_ENDIAN,
-     .valid = {
-         .min_access_size = 1,
-         .max_access_size = 1,
-diff --git a/hw/misc/puv3_pm.c b/hw/misc/puv3_pm.c
-index c213500d9c..b04950ecb9 100644
---- a/hw/misc/puv3_pm.c
-+++ b/hw/misc/puv3_pm.c
-@@ -117,7 +117,7 @@ static const MemoryRegionOps puv3_pm_ops = {
          .min_access_size = 4,
          .max_access_size = 4,
-     },
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index bd99236864..0f3dd7e8e4 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -1285,7 +1285,7 @@ static const MemoryRegionOps imx_eth_ops = {
+     .write                 = imx_eth_write,
+     .valid.min_access_size = 4,
+     .valid.max_access_size = 4,
+-    .endianness            = DEVICE_NATIVE_ENDIAN,
++    .endianness            = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+ static void imx_eth_cleanup(NetClientState *nc)
+diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
+index 8bba2a8056..498a6acfe9 100644
+--- a/hw/net/lan9118.c
++++ b/hw/net/lan9118.c
+@@ -1308,13 +1308,13 @@ static uint64_t lan9118_16bit_mode_read(void *opaque, hwaddr offset,
+ static const MemoryRegionOps lan9118_mem_ops = {
+     .read = lan9118_readl,
+     .write = lan9118_writel,
 -    .endianness = DEVICE_NATIVE_ENDIAN,
 +    .endianness = DEVICE_LITTLE_ENDIAN,
  };
  
- static void puv3_pm_realize(DeviceState *dev, Error **errp)
-diff --git a/hw/misc/unimp.c b/hw/misc/unimp.c
-index 0e1cb24629..4aca34ff45 100644
---- a/hw/misc/unimp.c
-+++ b/hw/misc/unimp.c
-@@ -46,7 +46,7 @@ static const MemoryRegionOps unimp_ops = {
-     .impl.max_access_size = 8,
-     .valid.min_access_size = 1,
-     .valid.max_access_size = 8,
+ static const MemoryRegionOps lan9118_16bit_mem_ops = {
+     .read = lan9118_16bit_mode_read,
+     .write = lan9118_16bit_mode_write,
 -    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_HOST_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
  };
  
- static void unimp_realize(DeviceState *dev, Error **errp)
+ static NetClientInfo net_lan9118_info = {
+diff --git a/hw/net/lance.c b/hw/net/lance.c
+index 6631e2a4e0..27dfa3a688 100644
+--- a/hw/net/lance.c
++++ b/hw/net/lance.c
+@@ -76,7 +76,7 @@ static uint64_t lance_mem_read(void *opaque, hwaddr addr,
+ static const MemoryRegionOps lance_mem_ops = {
+     .read = lance_mem_read,
+     .write = lance_mem_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_BIG_ENDIAN,
+     .valid = {
+         .min_access_size = 2,
+         .max_access_size = 2,
+diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
+index e574635969..50cd6fc140 100644
+--- a/hw/net/smc91c111.c
++++ b/hw/net/smc91c111.c
+@@ -760,7 +760,7 @@ static const MemoryRegionOps smc91c111_mem_ops = {
+     .write = smc91c111_writefn,
+     .valid.min_access_size = 1,
+     .valid.max_access_size = 4,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+ static NetClientInfo net_smc91c111_info = {
+diff --git a/hw/net/stellaris_enet.c b/hw/net/stellaris_enet.c
+index 3aca2a09f3..5dfd43b3f2 100644
+--- a/hw/net/stellaris_enet.c
++++ b/hw/net/stellaris_enet.c
+@@ -459,7 +459,7 @@ static void stellaris_enet_write(void *opaque, hwaddr offset,
+ static const MemoryRegionOps stellaris_enet_ops = {
+     .read = stellaris_enet_read,
+     .write = stellaris_enet_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+ static void stellaris_enet_reset(DeviceState *dev)
 -- 
 2.23.0
 

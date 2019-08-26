@@ -1,109 +1,99 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp3974000wrs;
-        Mon, 26 Aug 2019 07:28:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwFmfbWa/oAW5iwNtoMMmgPC9LvzlD4lutRLLrOOyRbeJcroNdj3jRwPtb7znfy+P41KXp7
-X-Received: by 2002:a05:620a:130d:: with SMTP id o13mr16887234qkj.285.1566829739119;
-        Mon, 26 Aug 2019 07:28:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566829739; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp3974623wrs;
+        Mon, 26 Aug 2019 07:29:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwJOwnLewdP1L4cIDfH5fexbFHEJmonmOEC94jJHNQpsWkAteayscYcA935dLFeVWsYzK2g
+X-Received: by 2002:a37:6905:: with SMTP id e5mr16434611qkc.121.1566829778527;
+        Mon, 26 Aug 2019 07:29:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566829778; cv=none;
         d=google.com; s=arc-20160816;
-        b=s2TU+NRjH25mHhUMYNbf8roFH4TTGh+R457Q/uUO4b8lczfq6yBbPuB3m096TZDDDs
-         Cnin3XeaB2zHNo+yG/K/KPSjrl2EL/OpT8g2ICFqrpfBFhGJe4fEhCmPT8fuwvAc4aX/
-         /YOJVwJNwQHfIJoyKrxkauzGlJPTewILkb5uWzEltJzGDD4U6olnFng/SJYVKAKZWW0Y
-         craGzVMbz/uD+Tvpo3aDx48WLyuOR8UsScGN3BKSZS3lwGlOvcwz0zFWzXaxKbwVEDLj
-         Nqu1hOy4tjw1evE5AVQU7OFnw+4hX2Br6RKFNMoKvecnzUoExFIDdAxL1Wzq/BIzbeob
-         foDQ==
+        b=Ae8DTrLH8xaqkpgCaLrgn+4IGGdfE3yvCIgXDbW3Wn+AoD7DwnFuoZ96z2za4cIO3F
+         9LmwJV58UC1gWyFzm89StDGnCSSro7Jj+/1+9t9AKCVcn2KQF4ulm7BiCnm4DnvixBq6
+         UgkxO/mBv5Dx4gap1UhHshISEcGHgQ/7/VrWrhr+PhF6Jt8qRZUF5lIGvkhh2NxAGi8M
+         R6tLrwlesyuvYaz0L9mzDeOJcCKl1BsO8h2DhqGCFAcN2ys5g7+kVSN1kk7474FdF1FV
+         y8+Gavr9g43BNs/VpLXaM0CQeC1RY+FmNsW1cICE0USy7NExfx4taZqCt3SQkAM2OW5S
+         9WlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=WDhyUFadOFe0GyQODxeB4vhDKXnnF8pjPafFaQv1gEc=;
-        b=QXuW3hPN9Lyr1yj3XS+JEQveo8Fm2rZb/qcQw+n0ANoO6uHwpYXutX2Xi0N6PFR3OW
-         CuE7HLwUuzNvRE3+N9KoflNZYGED0cHMYwfU0nKOPUp0lKjsOygDe7QVv5x+Y/ZB56FZ
-         wyQyzG1TbztZNCblrksHhXVGvEdSFTdvPSLMeA1sxisI+IPsvId4XhEAk3G6kAA1mpn5
-         Eemf177WUgjlQnDObK5EpiDIYTfEftf1XbtFhmwki0BS1PjKdA8f3jPQcsG0QlPQ91G+
-         UVv1emPA7ZLcJl0H0K+oysisWG9s35/mQBnFMAd+AUH+fTnKQT3apGXtARRh+Tc+obQM
-         3zag==
+        bh=vA7UptjpJLeLSWnnDkWj6yRqsWVVzVrT3uQ/5tlpUWA=;
+        b=IcL2Ez5Z+UrCCUxgLPg0lVh5JG0FiBTJuk3G98cP5SYKm6oXyNGdtgAo72hnDRYbPN
+         mJMPnIcmAFhJR/rc93kETmrYGHEAseg/dbAvGruh1MncWHzSvjKZg0Sb4KgkY2b4o5DZ
+         tINUYhNgU0GjADGH/2c/vBR6E3XvKn1NiK97AXhW+VU44yPz3b4LHFFMUmcpVgheVo58
+         SXSgdSc+Z8SSc2DUx3yrltvkGn/h3VaWsw+5iA4Vfg21QDq6ieQIs+toFHgdP758uSB0
+         6X3dgJJutTRuMqE6l95NmsOdhzEGaLu8JRwWLPvDO9526u2h9ymp61SPM870m39VpCC2
+         vVQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 124si7101217qkh.244.2019.08.26.07.28.58
+        by mx.google.com with ESMTPS id n187si7172025qkb.156.2019.08.26.07.29.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Aug 2019 07:28:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 26 Aug 2019 07:29:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bt.com
-Received: from localhost ([::1]:53638 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53644 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i2FzO-0004X0-7m
-	for alex.bennee@linaro.org; Mon, 26 Aug 2019 10:28:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43012)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i2G01-0004jI-Q6
+	for alex.bennee@linaro.org; Mon, 26 Aug 2019 10:29:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42633)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tony.nguyen@bt.com>) id 1i2FqP-0004p4-Jz
- for qemu-arm@nongnu.org; Mon, 26 Aug 2019 10:19:43 -0400
+ (envelope-from <tony.nguyen@bt.com>) id 1i2FpZ-0004P3-Qh
+ for qemu-devel@nongnu.org; Mon, 26 Aug 2019 10:18:50 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <tony.nguyen@bt.com>) id 1i2FqN-0000z9-Nh
- for qemu-arm@nongnu.org; Mon, 26 Aug 2019 10:19:41 -0400
-Received: from nsstlmta13p.bpe.bigpond.com ([203.38.21.13]:44603)
+ (envelope-from <tony.nguyen@bt.com>) id 1i2FpX-0008NG-NY
+ for qemu-devel@nongnu.org; Mon, 26 Aug 2019 10:18:49 -0400
+Received: from nsstlmta40p.bpe.bigpond.com ([203.38.21.40]:46336)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <tony.nguyen@bt.com>)
- id 1i2FqI-0000p8-AM; Mon, 26 Aug 2019 10:19:35 -0400
+ id 1i2FpV-0008IQ-2S; Mon, 26 Aug 2019 10:18:46 -0400
 Received: from smtp.telstra.com ([10.10.24.4])
- by nsstlfep13p-svc.bpe.nexus.telstra.com.au with ESMTP id
- <20190826141929.HJBK22385.nsstlfep13p-svc.bpe.nexus.telstra.com.au@smtp.telstra.com>;
- Tue, 27 Aug 2019 00:19:29 +1000
+ by nsstlfep40p-svc.bpe.nexus.telstra.com.au with ESMTP id
+ <20190826141840.EPFV32345.nsstlfep40p-svc.bpe.nexus.telstra.com.au@smtp.telstra.com>;
+ Tue, 27 Aug 2019 00:18:40 +1000
 X-RG-Spam: Unknown
-X-RazorGate-Vade: gggruggvucftvghtrhhoucdtuddrgeduvddrudehgedgjeegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuuffpveftpgfvgffnuffvtfetpdfqfgfvnecuuegrihhlohhuthemucegtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhgggfestdekredtredttdenucfhrhhomhepvfhonhihucfpghhuhigvnhcuoehtohhnhidrnhhguhihvghnsegsthdrtghomheqnecukfhppeehkedrudejfedrleekrdeikeenucfrrghrrghmpehhvghlohepuggsiidrthgvlhhsthhrrgdrtghomhdrrghupdhinhgvthepheekrddujeefrdelkedrieekpdhmrghilhhfrhhomhepoehtohhnhidrnhhguhihvghnsegsthdrtghomheqpdhrtghpthhtohepoegrlhhishhtrghirhesrghlihhsthgrihhrvdefrdhmvgeqpdhrtghpthhtohepoegrnhgurhgvfiesrghjrdhiugdrrghuqedprhgtphhtthhopeeorghtrghrgehqvghmuhesghhmrghilhdrtghomheqpdhrtghpthhtohepoegthhhouhhtvggruhesrggurggtohhrvgdrtghomheqpdhrtghpthhtohepoegtlhhgsehkrghougdrohhrgheqpdhrtghpthhtohepoegvughgrghrrdhighhlvghsihgrshesghhmrghilhdrtghomheqpdhrtghpthhtohepoehfrhgvuggvrhhitgdrkhhonhhrrggusegruggrtghorhgvrdgtohhmqedprhgtphhtthhopeeoghigthesmhhprhgtrdhpkhhurdgvughu
- rdgtnheqpdhrtghpthhtohepoehjohgvlhesjhhmshdrihgurdgruheqpdhrtghpthhtohepoehmrghrkhdrtggrvhgvqdgrhihlrghnugesihhlrghnuggvrdgtohdruhhkqedprhgtphhtthhopeeomhhitghhrggvlhesfigrlhhlvgdrtggtqedprhgtphhtthhopeeomhhsthesrhgvughhrghtrdgtohhmqedprhgtphhtthhopeeophgsohhniihinhhisehrvgguhhgrthdrtghomheqpdhrtghpthhtohepoehpvghtvghrrdgthhhusggssehnihgtthgrrdgtohhmrdgruheqpdhrtghpthhtohepoehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrgheqpdhrtghpthhtohepoehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgqedprhgtphhtthhopeeoqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrgheqpdhrtghpthhtohepoehsuhhnuggvvghprdhlkhhmlhesghhmrghilhdrtghomheqpdhrtghpthhtohepoehtohhnhidrnhhguhihvghnsegsthdrtghomheqnecuvehluhhsthgvrhfuihiivgepfe
+X-RazorGate-Vade: gggruggvucftvghtrhhoucdtuddrgeduvddrudehgedgjeegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuuffpveftpgfvgffnuffvtfetpdfqfgfvnecuuegrihhlohhuthemucegtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhgggfestdekredtredttdenucfhrhhomhepvfhonhihucfpghhuhigvnhcuoehtohhnhidrnhhguhihvghnsegsthdrtghomheqnecukfhppeehkedrudejfedrleekrdeikeenucfrrghrrghmpehhvghlohepuggsiidrthgvlhhsthhrrgdrtghomhdrrghupdhinhgvthepheekrddujeefrdelkedrieekpdhmrghilhhfrhhomhepoehtohhnhidrnhhguhihvghnsegsthdrtghomheqpdhrtghpthhtohepoegsrghlrhhoghhgsehgmhgrihhlrdgtohhmqedprhgtphhtthhopeeoghigthesmhhprhgtrdhpkhhurdgvughurdgtnheqpdhrtghpthhtohepoehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrgheqpdhrtghpthhtohepoehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhgqedprhgtphhtthhopeeoqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrgheqpdhrtghpthhtohepoehtohhnhidrnhhguhihvghnsegsthdrtghomheqnecuvehluhhsthgvrhfuihiivgeptd
 X-RazorGate-Vade-Verdict: clean 0
 X-RazorGate-Vade-Classification: clean
 X-RG-VS-CLASS: clean
 X-Authentication-Info: Submitted using ID tony.nguyen.git@bigpond.com
 Received: from dbz.telstra.com.au (58.173.98.68) by smtp.telstra.com (5.8.335)
  (authenticated as tony.nguyen.git@bigpond.com)
- id 5D3692920D8AE4A5; Tue, 27 Aug 2019 00:19:28 +1000
+ id 5D2D117510588EE7; Tue, 27 Aug 2019 00:18:40 +1000
 From: Tony Nguyen <tony.nguyen@bt.com>
 To: qemu-devel@nongnu.org
-Date: Tue, 27 Aug 2019 00:21:44 +1000
-Message-Id: <9fde52f9085bd7ad607bf2372931178e4a01fabd.1566829168.git.tony.nguyen@bt.com>
+Date: Tue, 27 Aug 2019 00:21:33 +1000
+Message-Id: <70bf44892612398a5ab32bbcd42a7fa022490bf0.1566829168.git.tony.nguyen@bt.com>
 X-Mailer: git-send-email 2.23.0
 In-Reply-To: <cover.1566829168.git.tony.nguyen@bt.com>
 References: <cover.1566829168.git.tony.nguyen@bt.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
-X-Received-From: 203.38.21.13
-Subject: [Qemu-arm] [Qemu-devel] [PATCH 18/19] hw/timer: Declare device
- little or big endian
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 203.38.21.40
+Subject: [Qemu-devel] [PATCH 07/19] hw/gpio: Declare device little or big
+ endian
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Tony Nguyen <tony.nguyen@bt.com>, Peter Maydell <peter.maydell@linaro.org>,
- Andrew Jeffery <andrew@aj.id.au>, Alistair Francis <alistair@alistair23.me>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Michael Walle <michael@walle.cc>, Fabien Chouteau <chouteau@adacore.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Peter Chubb <peter.chubb@nicta.com.au>,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Joel Stanley <joel@jms.id.au>,
- Paolo Bonzini <pbonzini@redhat.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1X25DaHhaCde
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Tony Nguyen <tony.nguyen@bt.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+ qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: E0fhQxFz3jYn
 
 For each device declared with DEVICE_NATIVE_ENDIAN, find the set of
 targets from the set of target/hw/*/device.o.
@@ -121,31 +111,29 @@ Then, on inspection:
 
 Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
 ---
- hw/timer/a9gtimer.c         | 4 ++--
- hw/timer/arm_mptimer.c      | 4 ++--
- hw/timer/arm_timer.c        | 4 ++--
- hw/timer/armv7m_systick.c   | 2 +-
- hw/timer/aspeed_rtc.c       | 2 +-
- hw/timer/cadence_ttc.c      | 2 +-
- hw/timer/grlib_gptimer.c    | 2 +-
- hw/timer/hpet.c             | 2 +-
- hw/timer/imx_epit.c         | 2 +-
- hw/timer/imx_gpt.c          | 2 +-
- hw/timer/lm32_timer.c       | 2 +-
- hw/timer/milkymist-sysctl.c | 2 +-
- hw/timer/mss-timer.c        | 2 +-
- hw/timer/pl031.c            | 2 +-
- hw/timer/puv3_ost.c         | 2 +-
- hw/timer/slavio_timer.c     | 2 +-
- hw/timer/stm32f2xx_timer.c  | 2 +-
- hw/timer/sun4v-rtc.c        | 2 +-
- 18 files changed, 21 insertions(+), 21 deletions(-)
+ hw/gpio/pl061.c     | 2 +-
+ hw/gpio/puv3_gpio.c | 2 +-
+ hw/gpio/zaurus.c    | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/timer/a9gtimer.c b/hw/timer/a9gtimer.c
-index 4c634c83b1..475f01323f 100644
---- a/hw/timer/a9gtimer.c
-+++ b/hw/timer/a9gtimer.c
-@@ -258,7 +258,7 @@ static const MemoryRegionOps a9_gtimer_this_ops = {
+diff --git a/hw/gpio/pl061.c b/hw/gpio/pl061.c
+index 2a828260bd..25371d6c5a 100644
+--- a/hw/gpio/pl061.c
++++ b/hw/gpio/pl061.c
+@@ -341,7 +341,7 @@ static void pl061_set_irq(void * opaque, int irq, int level)
+ static const MemoryRegionOps pl061_ops = {
+     .read = pl061_read,
+     .write = pl061_write,
+-    .endianness = DEVICE_NATIVE_ENDIAN,
++    .endianness = DEVICE_LITTLE_ENDIAN,
+ };
+ 
+ static void pl061_luminary_init(Object *obj)
+diff --git a/hw/gpio/puv3_gpio.c b/hw/gpio/puv3_gpio.c
+index d19e342514..46ab3b80be 100644
+--- a/hw/gpio/puv3_gpio.c
++++ b/hw/gpio/puv3_gpio.c
+@@ -97,7 +97,7 @@ static const MemoryRegionOps puv3_gpio_ops = {
          .min_access_size = 4,
          .max_access_size = 4,
      },
@@ -153,255 +141,20 @@ index 4c634c83b1..475f01323f 100644
 +    .endianness = DEVICE_LITTLE_ENDIAN,
  };
  
- static const MemoryRegionOps a9_gtimer_ops = {
-@@ -268,7 +268,7 @@ static const MemoryRegionOps a9_gtimer_ops = {
-         .min_access_size = 4,
-         .max_access_size = 4,
-     },
+ static void puv3_gpio_realize(DeviceState *dev, Error **errp)
+diff --git a/hw/gpio/zaurus.c b/hw/gpio/zaurus.c
+index 9a12c68342..60bbbb8564 100644
+--- a/hw/gpio/zaurus.c
++++ b/hw/gpio/zaurus.c
+@@ -157,7 +157,7 @@ static void scoop_write(void *opaque, hwaddr addr,
+ static const MemoryRegionOps scoop_ops = {
+     .read = scoop_read,
+     .write = scoop_write,
 -    .endianness = DEVICE_NATIVE_ENDIAN,
 +    .endianness = DEVICE_LITTLE_ENDIAN,
  };
  
- static void a9_gtimer_reset(DeviceState *dev)
-diff --git a/hw/timer/arm_mptimer.c b/hw/timer/arm_mptimer.c
-index 9f63abef10..cced899640 100644
---- a/hw/timer/arm_mptimer.c
-+++ b/hw/timer/arm_mptimer.c
-@@ -194,7 +194,7 @@ static const MemoryRegionOps arm_thistimer_ops = {
-         .min_access_size = 4,
-         .max_access_size = 4,
-     },
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
- static const MemoryRegionOps timerblock_ops = {
-@@ -204,7 +204,7 @@ static const MemoryRegionOps timerblock_ops = {
-         .min_access_size = 4,
-         .max_access_size = 4,
-     },
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
- static void timerblock_reset(TimerBlock *tb)
-diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
-index c2e6211188..f95c897d05 100644
---- a/hw/timer/arm_timer.c
-+++ b/hw/timer/arm_timer.c
-@@ -267,7 +267,7 @@ static void sp804_write(void *opaque, hwaddr offset,
- static const MemoryRegionOps sp804_ops = {
-     .read = sp804_read,
-     .write = sp804_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
- static const VMStateDescription vmstate_sp804 = {
-@@ -348,7 +348,7 @@ static void icp_pit_write(void *opaque, hwaddr offset,
- static const MemoryRegionOps icp_pit_ops = {
-     .read = icp_pit_read,
-     .write = icp_pit_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
- static void icp_pit_init(Object *obj)
-diff --git a/hw/timer/armv7m_systick.c b/hw/timer/armv7m_systick.c
-index 85d122dbcb..b8003e2962 100644
---- a/hw/timer/armv7m_systick.c
-+++ b/hw/timer/armv7m_systick.c
-@@ -193,7 +193,7 @@ static MemTxResult systick_write(void *opaque, hwaddr addr,
- static const MemoryRegionOps systick_ops = {
-     .read_with_attrs = systick_read,
-     .write_with_attrs = systick_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-     .valid.min_access_size = 4,
-     .valid.max_access_size = 4,
- };
-diff --git a/hw/timer/aspeed_rtc.c b/hw/timer/aspeed_rtc.c
-index 5313017353..e3bd196dc0 100644
---- a/hw/timer/aspeed_rtc.c
-+++ b/hw/timer/aspeed_rtc.c
-@@ -131,7 +131,7 @@ static void aspeed_rtc_reset(DeviceState *d)
- static const MemoryRegionOps aspeed_rtc_ops = {
-     .read = aspeed_rtc_read,
-     .write = aspeed_rtc_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
- static const VMStateDescription vmstate_aspeed_rtc = {
-diff --git a/hw/timer/cadence_ttc.c b/hw/timer/cadence_ttc.c
-index 5e3128c1e3..6155d0055f 100644
---- a/hw/timer/cadence_ttc.c
-+++ b/hw/timer/cadence_ttc.c
-@@ -391,7 +391,7 @@ static void cadence_ttc_write(void *opaque, hwaddr offset,
- static const MemoryRegionOps cadence_ttc_ops = {
-     .read = cadence_ttc_read,
-     .write = cadence_ttc_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
- static void cadence_timer_reset(CadenceTimerState *s)
-diff --git a/hw/timer/grlib_gptimer.c b/hw/timer/grlib_gptimer.c
-index 32dbf870d4..df84735197 100644
---- a/hw/timer/grlib_gptimer.c
-+++ b/hw/timer/grlib_gptimer.c
-@@ -315,7 +315,7 @@ static void grlib_gptimer_write(void *opaque, hwaddr addr,
- static const MemoryRegionOps grlib_gptimer_ops = {
-     .read = grlib_gptimer_read,
-     .write = grlib_gptimer_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_BIG_ENDIAN,
-     .valid = {
-         .min_access_size = 4,
-         .max_access_size = 4,
-diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
-index 1ddae4e7d7..380abeb709 100644
---- a/hw/timer/hpet.c
-+++ b/hw/timer/hpet.c
-@@ -676,7 +676,7 @@ static const MemoryRegionOps hpet_ram_ops = {
-         .min_access_size = 4,
-         .max_access_size = 4,
-     },
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
- static void hpet_reset(DeviceState *d)
-diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
-index f54e059910..7e605d29c7 100644
---- a/hw/timer/imx_epit.c
-+++ b/hw/timer/imx_epit.c
-@@ -284,7 +284,7 @@ static void imx_epit_cmp(void *opaque)
- static const MemoryRegionOps imx_epit_ops = {
-     .read = imx_epit_read,
-     .write = imx_epit_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
- static const VMStateDescription vmstate_imx_timer_epit = {
-diff --git a/hw/timer/imx_gpt.c b/hw/timer/imx_gpt.c
-index 49a441f451..27bacdb758 100644
---- a/hw/timer/imx_gpt.c
-+++ b/hw/timer/imx_gpt.c
-@@ -476,7 +476,7 @@ static void imx_gpt_timeout(void *opaque)
- static const MemoryRegionOps imx_gpt_ops = {
-     .read = imx_gpt_read,
-     .write = imx_gpt_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
- 
-diff --git a/hw/timer/lm32_timer.c b/hw/timer/lm32_timer.c
-index ac3edaff4f..4c0d3275e7 100644
---- a/hw/timer/lm32_timer.c
-+++ b/hw/timer/lm32_timer.c
-@@ -146,7 +146,7 @@ static void timer_write(void *opaque, hwaddr addr,
- static const MemoryRegionOps timer_ops = {
-     .read = timer_read,
-     .write = timer_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_BIG_ENDIAN,
-     .valid = {
-         .min_access_size = 4,
-         .max_access_size = 4,
-diff --git a/hw/timer/milkymist-sysctl.c b/hw/timer/milkymist-sysctl.c
-index 958350767a..cb117f944e 100644
---- a/hw/timer/milkymist-sysctl.c
-+++ b/hw/timer/milkymist-sysctl.c
-@@ -223,7 +223,7 @@ static const MemoryRegionOps sysctl_mmio_ops = {
-         .min_access_size = 4,
-         .max_access_size = 4,
-     },
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_BIG_ENDIAN,
- };
- 
- static void timer0_hit(void *opaque)
-diff --git a/hw/timer/mss-timer.c b/hw/timer/mss-timer.c
-index 45f1cf42f9..b9edb39837 100644
---- a/hw/timer/mss-timer.c
-+++ b/hw/timer/mss-timer.c
-@@ -200,7 +200,7 @@ timer_write(void *opaque, hwaddr offset,
- static const MemoryRegionOps timer_ops = {
-     .read = timer_read,
-     .write = timer_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-     .valid = {
-         .min_access_size = 1,
-         .max_access_size = 4
-diff --git a/hw/timer/pl031.c b/hw/timer/pl031.c
-index 2b3e261006..7ac2a0ca37 100644
---- a/hw/timer/pl031.c
-+++ b/hw/timer/pl031.c
-@@ -178,7 +178,7 @@ static void pl031_write(void * opaque, hwaddr offset,
- static const MemoryRegionOps pl031_ops = {
-     .read = pl031_read,
-     .write = pl031_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
- static void pl031_init(Object *obj)
-diff --git a/hw/timer/puv3_ost.c b/hw/timer/puv3_ost.c
-index 6fe370049b..3af7d5be37 100644
---- a/hw/timer/puv3_ost.c
-+++ b/hw/timer/puv3_ost.c
-@@ -99,7 +99,7 @@ static const MemoryRegionOps puv3_ost_ops = {
-         .min_access_size = 4,
-         .max_access_size = 4,
-     },
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
- static void puv3_ost_tick(void *opaque)
-diff --git a/hw/timer/slavio_timer.c b/hw/timer/slavio_timer.c
-index 38fd32b62a..dbe796a3dc 100644
---- a/hw/timer/slavio_timer.c
-+++ b/hw/timer/slavio_timer.c
-@@ -322,7 +322,7 @@ static void slavio_timer_mem_writel(void *opaque, hwaddr addr,
- static const MemoryRegionOps slavio_timer_mem_ops = {
-     .read = slavio_timer_mem_readl,
-     .write = slavio_timer_mem_writel,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_BIG_ENDIAN,
-     .valid = {
-         .min_access_size = 4,
-         .max_access_size = 4,
-diff --git a/hw/timer/stm32f2xx_timer.c b/hw/timer/stm32f2xx_timer.c
-index edc557a4b9..88ae286b14 100644
---- a/hw/timer/stm32f2xx_timer.c
-+++ b/hw/timer/stm32f2xx_timer.c
-@@ -268,7 +268,7 @@ static void stm32f2xx_timer_write(void *opaque, hwaddr offset,
- static const MemoryRegionOps stm32f2xx_timer_ops = {
-     .read = stm32f2xx_timer_read,
-     .write = stm32f2xx_timer_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
- };
- 
- static const VMStateDescription vmstate_stm32f2xx_timer = {
-diff --git a/hw/timer/sun4v-rtc.c b/hw/timer/sun4v-rtc.c
-index 54272a822f..0e831c91b1 100644
---- a/hw/timer/sun4v-rtc.c
-+++ b/hw/timer/sun4v-rtc.c
-@@ -47,7 +47,7 @@ static void sun4v_rtc_write(void *opaque, hwaddr addr,
- static const MemoryRegionOps sun4v_rtc_ops = {
-     .read = sun4v_rtc_read,
-     .write = sun4v_rtc_write,
--    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .endianness = DEVICE_BIG_ENDIAN,
- };
- 
- void sun4v_rtc_init(hwaddr addr)
+ static void scoop_gpio_set(void *opaque, int line, int level)
 -- 
 2.23.0
 

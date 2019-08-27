@@ -1,176 +1,138 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp5051909wrs;
-        Tue, 27 Aug 2019 03:33:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyLdOFXBwz0GmzJmMsg8AF0wD8BROuHvM2idvKUs8GpPlABgcFrMMRD4xYVB924AVT/lP8+
-X-Received: by 2002:aed:2a86:: with SMTP id t6mr21730614qtd.391.1566902033772;
-        Tue, 27 Aug 2019 03:33:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566902033; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp5061492wrs;
+        Tue, 27 Aug 2019 03:44:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyCYsL8FNCQtOOBV7V9DbJY1IEvgwR+xadIZ14lTHYIHIeuRAPIffVc/pmPBgelJ+dPz462
+X-Received: by 2002:a17:906:cecb:: with SMTP id si11mr21077006ejb.178.1566902688834;
+        Tue, 27 Aug 2019 03:44:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566902688; cv=none;
         d=google.com; s=arc-20160816;
-        b=A+KTdfTwoeJSm1/N5MqO4GaGfnUmG4O44GMREah2Snngj/jbfegyJ1n1Ho8IHNvR0W
-         greLNrA7PBgLpu9WAmtL7VCsC/XjSMLPKTaZ3BFT/NntqkdRsIigH/RTGyJ8MVTMZkF0
-         LO9QsXrQH+TRoBDtYbszShMa1YsfBtbW8lICwGjQ2458/akYRht5CuvcIiCinSrvpf12
-         LXbl+TT5jBjvBpSCgy14Ec6IivXz1wTSHSP99v97NKFgi52stgrDlsfn7MjCujfLaXGp
-         1kHBaKJvKuFElowZPlRwd6tWlXYc85Prdjeox4x4XK+KDrKcbTnCiV7tU+gJGIh4uDhM
-         IC2A==
+        b=GM07FExAnb+kbtsv4Z2yag84NwUKRoXq9inK6+hvKcncMnoU/a6K0SfFQSPNsVAxBe
+         5AciX4ySYhstS1JRTI36xuxKVOLRBSdcU8HV9S4OwZPxZCcYSJiCWJYSNIvp/l997w+B
+         HSC7h2yS/O8f5Vcx/fcnZv2zE8bg//tYdsH7JWNRC4rfhKYs00nLjTmqq8hDSz9N9PGM
+         3PNwQ0dToZWGCRqSxu2E+eEqjmPp5okSfIW50TV4SeV9TY7nX/pS0gXarcgwOz66PEGg
+         W2RnSSz5jku0UxY6S79qIen/S6pzWSYBzl+TxJ1SnuyeYQZj40jkf+q/WQUZPl8iA5Rk
+         7FpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=vT3d7AuVTTfgsWgJoaC/s1PMk9aEkWdIuX/gBrUMJIc=;
-        b=NBUez1D7vSAMphN3i0cgdk51r7hy6uhEUag3MGfedmQ9BdXu5AnymsU07N7I6cL4Q8
-         ylTF22BjawAIA+bbDiMWBXJ5YcMXE4wXQO6eYt42KiRCIk6u7kmHbfS0cVKol67Wu2fO
-         GJVYFQDQtCDXOJZqmn7yS7GCFOHEH33jIfYmmSjvWb2FrGqDBK9ErxImRbKt4mFDZatz
-         VSvJWM6U8cW/Af48IHCAFWevmmo6YAq3OlvLH8q+Akf/iytZmn6I/GfLdkpLJIYWxvdv
-         rU6qBk4NNJPafxJzI2Gv2szRGffxeOcmXJGCHzkoO9aAHa+FF+PUtQb5LLchGUdkyhnO
-         5Fvw==
+        bh=SL1+Vu/Pp9flDd+Z7wud1TjEBXU7Ib14lQRu6iN4wkU=;
+        b=hktmOZ0fCGrD1B66oACjLHAiR0t5IIH+YJYaxkVLSkc6KT2bDNxd5ubdlGUJApPRmX
+         h5r8jO1ABxNCyi5U8T63f3wUR5S5TC22bv1WsvaUtewqYTjraBcuRM6PSrCOppwqimbM
+         FGtCNxB5CdQO77mIEOn6I/IlDxH3A8T70yTemhWsaVIYG2WnwydfYjsPF/CseYBeLo1H
+         vKZ+rk4YrlDq33kUhG2xL7jWtiQ7lrEvqB349vzjtYqda8/d8nv6NquA9HNEQVgF9UaX
+         sJyraOlyMoJSUXg338s5iOiTe1A6bOkgIxuVLw4azuNkkLY5EKg7QyEfqfAaMomksv8y
+         nZ5g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="zNL2fWc/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=QiECRMHp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z66si9514872qke.307.2019.08.27.03.33.53
+        by mx.google.com with ESMTPS id s47si8390215edm.38.2019.08.27.03.44.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Aug 2019 03:33:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 27 Aug 2019 03:44:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="zNL2fWc/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=QiECRMHp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49274 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49396 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i2YnR-0004ZE-7P
-	for alex.bennee@linaro.org; Tue, 27 Aug 2019 06:33:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60501)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i2Yxz-0000pa-SN
+	for alex.bennee@linaro.org; Tue, 27 Aug 2019 06:44:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34110)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1i2Ym8-00040R-UM
- for qemu-devel@nongnu.org; Tue, 27 Aug 2019 06:32:33 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1i2Yxp-0000pD-WA
+ for qemu-arm@nongnu.org; Tue, 27 Aug 2019 06:44:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1i2Ym7-0005yc-EN
- for qemu-devel@nongnu.org; Tue, 27 Aug 2019 06:32:32 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:46978)
+ (envelope-from <peter.maydell@linaro.org>) id 1i2Yxo-000123-Q7
+ for qemu-arm@nongnu.org; Tue, 27 Aug 2019 06:44:37 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:36055)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1i2Ym7-0005yL-7e
- for qemu-devel@nongnu.org; Tue, 27 Aug 2019 06:32:31 -0400
-Received: by mail-oi1-x244.google.com with SMTP id t24so14498410oij.13
- for <qemu-devel@nongnu.org>; Tue, 27 Aug 2019 03:32:31 -0700 (PDT)
+ id 1i2Yxo-00011q-Hz
+ for qemu-arm@nongnu.org; Tue, 27 Aug 2019 06:44:36 -0400
+Received: by mail-oi1-x243.google.com with SMTP id n1so14557427oic.3
+ for <qemu-arm@nongnu.org>; Tue, 27 Aug 2019 03:44:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=vT3d7AuVTTfgsWgJoaC/s1PMk9aEkWdIuX/gBrUMJIc=;
- b=zNL2fWc/b4bySUqp6yqzsYVAL2jRKMGzJ60vtkfrtHsSJ03Fv8x9nMrEW/CZ0+FN6q
- 8ODuWUcyUhAnLlOtWPm2qnVb8JIg9rGe+JfI3uAg4z3wENTvYEqXHmE4oKurowmywbgR
- cMePVp77sBfnuFdOTLXyUjuy4J1A1Rs1ul6j2g4fNG+lO/iND71ujT/B2s7qAzWcZpkD
- UxMLyffw6SMQWjs6n+XXi8A4zfswZDBTd4y8DvOaOVZxRgOSi9cr0whBzQJtqFmlKXt+
- teM9vnFO6upNJmv0xP4fYpPqRw0g2z7YpvcI3RGdD6YOr8zBi+Jng9YC4NMEB5Qp9sE/
- /GjQ==
+ :cc; bh=SL1+Vu/Pp9flDd+Z7wud1TjEBXU7Ib14lQRu6iN4wkU=;
+ b=QiECRMHpaozHmzMyKVKQQLDLvbZy94Dv2uBnAKEASQx5LsZbYwwoIrUgBor+hCH4Qm
+ JXEQcVDR29wjL+G8sFcBRlvc/WLMThwepsUZsK/asqZYXfE76yLj1nbXDRhH2ieTqVPD
+ 4tTjeWK6tt9+1yB16QDEDNdHYPI6UoIpAPe4yF4S3FTJJglQqKE3cpd1RkR87Edti+Dt
+ 2t5KNkuHSQYx8jowKOYh7x0GPGexc6xeRDHnIeUnfdDDZ1jQSU1qXgdwXb+znILCWNiC
+ kmVP/laBMGp4aJ0v8QL2qTQPyTLteORutv3NsAuehwzBLU6TefSt0ls37XryrGFBE60T
+ xCCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=vT3d7AuVTTfgsWgJoaC/s1PMk9aEkWdIuX/gBrUMJIc=;
- b=As/vQ9peCLRTybAZMkNURk7XI8xsxpExdfETlOuoQbqZgiSrqdAJu6iGwOsblFkJRV
- ZrZMugQCFvEPG396AIqgaDGDPtZETzQ+zNaQERX1ek+zcemfNIVwb2D7K8AOLYzM0tv9
- DQZ2+TPlJpB2b2R0VscHwnfdloZIRZLDZDyEThkVOELl3SS5IGlifG3djKd5TCcQpmfX
- 9eKXRDK4CVCd6YrPyWEhsg+h/1xPteFlj2oQ7iZwBfAZQ1kr2ZD6Mkal4LhvfFbHXSAY
- 6tzgOv1ycUFBCs2nHhXrcCBmJHYaTafWS39IIhaPnMeridZmhGn6Th2paP1nvYzwIpvt
- KKRw==
-X-Gm-Message-State: APjAAAXZ54dw5jjfm3mloqwKHZrwajC3sPseiK0T5WUbNEeADN3EXx7z
- rMA4R48iO8NXVLBJ4pdIRqVrPoL9YAfwx2TxUygPEQ==
-X-Received: by 2002:a54:4718:: with SMTP id k24mr220746oik.146.1566901950375; 
- Tue, 27 Aug 2019 03:32:30 -0700 (PDT)
+ bh=SL1+Vu/Pp9flDd+Z7wud1TjEBXU7Ib14lQRu6iN4wkU=;
+ b=tROGnZSLKW5f5auzVo8EQ0DLfbSwv6RhxFJcYm7wEhzLtuVgnQlDBbZvVlELNoW1L9
+ VUuw+Btfb+WV1WKphxLDURoOJZByAhueCyybKEO7c34Eik2AbtHup04NRFc6NGswYCD4
+ 6xc368wR8eWTfyxneQP1whIkkHLjxo4vaZm+xF5o56QP4OlxEjFIdcJAuoIybdRzmOpq
+ j8PGgMqX5fvymviniU2JFkKsgSo2gH3arjG4A0FIAnuj+c8TwUOsg7fZ7UWhJwkHSkSi
+ g2s9TI0HFI+QlMlH2qXdd4zwUA/3UTmd7olT+yT92h2/uixtki+MArgA8asw4Fw8uZm0
+ 9zLg==
+X-Gm-Message-State: APjAAAXXkmAG2V8Z+sA0SWBNwKYOJk0ZJn1L3xicAA+k+OV8q00PDjBO
+ S53vuAq5fcXkMjgLj052npNoKu9JABC8BXDRcTZOpw==
+X-Received: by 2002:aca:50cb:: with SMTP id e194mr14495155oib.48.1566902675469; 
+ Tue, 27 Aug 2019 03:44:35 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190819213755.26175-1-richard.henderson@linaro.org>
- <20190819213755.26175-19-richard.henderson@linaro.org>
-In-Reply-To: <20190819213755.26175-19-richard.henderson@linaro.org>
+ <20190819213755.26175-22-richard.henderson@linaro.org>
+In-Reply-To: <20190819213755.26175-22-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Aug 2019 11:32:19 +0100
-Message-ID: <CAFEAcA9qN47t8zXJ7X3TmhkigSEjf+esxVNwQ0m9X=qa2KF_bg@mail.gmail.com>
+Date: Tue, 27 Aug 2019 11:44:24 +0100
+Message-ID: <CAFEAcA8saD6zkOA7-6nF5jQBMgKPLv0L3WXV2m0Y4WtHwVqWgw@mail.gmail.com>
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-Subject: Re: [Qemu-devel] [PATCH v2 18/68] target/arm: Convert the rest of
- A32 Miscelaneous instructions
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::243
+Subject: Re: [Qemu-arm] [PATCH v2 21/68] target/arm: Convert Synchronization
+ primitives
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GYC2cv4Dqmd7
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /MfHPGmfzrSm
 
 On Mon, 19 Aug 2019 at 22:38, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> This fixes an exiting bug with the T5 encoding of SUBS PC, LR, #IMM,
-> in that it may be executed from user mode as with any other encoding
-> of SUBS, not as ERET.
->
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 > ---
->  target/arm/translate.c | 119 +++++++++++++----------------------------
->  target/arm/a32.decode  |   8 +++
->  target/arm/t32.decode  |   5 ++
->  3 files changed, 50 insertions(+), 82 deletions(-)
+>  target/arm/translate.c | 560 ++++++++++++++++++++++-------------------
+>  target/arm/a32.decode  |  48 ++++
+>  target/arm/t32.decode  |  46 ++++
+>  3 files changed, 396 insertions(+), 258 deletions(-)
 
-
-> +static bool trans_HVC(DisasContext *s, arg_HVC *a)
+> +static bool trans_STREXD_a32(DisasContext *s, arg_STREX *a)
 > +{
-> +    if (!ENABLE_ARCH_7 || IS_USER(s) || arm_dc_feature(s, ARM_FEATURE_M)) {
+> +    if (!ENABLE_ARCH_6K || (a->rt & 1)) {
 > +        return false;
 > +    }
-> +    gen_hvc(s, a->imm);
-> +    return true;
+> +    a->rt2 = a->rt + 1;
+> +    return op_strex(s, a, MO_64, false);
 > +}
 
-I was wondering about for these trans_ functions the
-difference between returning 'false' and calling
-unallocated_encoding() and then returning 'true'.
-If I understand the decodetree right this will only
-make a difference when the pattern is inside a {} group.
-So for instance here we have
-
-{
-  [...]
-  {
-    HVC          1111 0111 1110 ....  1000 .... .... ....     \
-                 &i imm=%imm16_16_0
-    CPS          1111 0011 1010 1111 1000 0 imod:2 M:1 A:1 I:1 F:1 mode:5 \
-                 &cps
-    UDF          1111 0111 1111 ----  1010 ---- ---- ----
-  }
-  B_cond_thumb   1111 0. cond:4 ...... 10.0 ............      &ci imm=%imm21
-}
-
-which means that if the HVC returns 'false' we'll end up
-trying the insn as a B_cond_thumb. In this case the
-trans function for the B_cond_thumb pattern will correctly
-return false itself for a->cond >= 0xe, so it makes no
-difference. But maybe it would be more robust for a pattern
-like HVC to be self-contained so it doesn't fall through
-for cases that really do belong to it but happen to be
-required to UNDEF (like IS_USER() == true) ?
-
-OTOH I suppose you could say that when you're writing patterns
-like the B_cond_thumb one you know you've underdecoded and must
-catch all the theoretical overlaps by writing checks in the trans
-function, so as long as you do that correctly you're fine.
-
-I guess this isn't a request for a change, just wondering
-if there is a general principle for how we should structure
-this sort of thing. I didn't run into it with the VFP stuff
-because none of the decode needed groups.
+I've just noticed that there's a bug in these checks -- the
+M-profile CPUs don't have the V6K feature, but they should
+still have STREXB/STREXH/STREXD, and with this test they'll
+incorrectly UNDEF them.
 
 thanks
 -- PMM

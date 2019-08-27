@@ -1,151 +1,734 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp5430296wrs;
-        Tue, 27 Aug 2019 09:07:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyVXbm5Q4g+ervYqWfpBgIflx033oDbXnJcR3CTwXeyS/sGgH1Fp6nwdFPjIOCr2L0Yzhzg
-X-Received: by 2002:a17:906:b20c:: with SMTP id p12mr21065902ejz.207.1566922077383;
-        Tue, 27 Aug 2019 09:07:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566922077; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp5431362wrs;
+        Tue, 27 Aug 2019 09:08:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwDl6TXLUi9/9/7otxmEViJahEtIVOXXrf1CWt+go86+Nf5oAIxDBABQWDlc/us7hkEuJ2v
+X-Received: by 2002:a17:906:94d3:: with SMTP id d19mr22405163ejy.298.1566922121582;
+        Tue, 27 Aug 2019 09:08:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566922121; cv=none;
         d=google.com; s=arc-20160816;
-        b=1GgwfjYO6ScckQU5Hnc92N0tYSU2IgHhcvhk3BQuRZAWllhytwqshRD6yO7MSkLEhs
-         R0+nkEsh5/MUTjiyRqXS7iRwZJd7UTQUzsBdkPwRu5qLcfvoFITgxnjFkhS0UEHaG0T2
-         Cpla3i4d9Qly5Lv5wCa/YTt13C1w+fFWWjPrUF6CSQKsE3+Ypryi2Fku9K73KiZAImn4
-         Ok9B6IZNTjFurKfh6udsD3Uet5HXm7JfvqseQ1qKUYr2dacuoT8TIPZ+UuHZ09c0gKxw
-         jCsZ1mOBQNFrKiOPIHAIQfLc55dhxGQDcxafeDqIG7cvJpceb5YVBVApNPA3POgqAO8t
-         /acQ==
+        b=HJEM72Y+7P0c51pIspaGdK6yNruEVcz1GFmKc6h4TzQUrhy6fXNVgzpzJ6LnL7Jsvn
+         TcQu90vjWZX25LxPRGxx9wfHoFYDigoofkIFXZ7lfEwqvUpYWr1MBbck1DMLiKcCwxU5
+         6GcJY2nCiMyCJfZiIY2cl/rhMTDabTfa3z24GwEXZ5aB7m+AmhRia7MbsUuDiJ26kU1H
+         g8AHr8En0bzxwcWG/wTDqsGkykum8nLvXTAXj0QpJAfDRb2gubNnljG/MBM8KnaWPDhk
+         HPXMraKUDFkLV7XV2YIc0k01fOgMw2VlgZ+qhPHn/1EhRSOVItYElGkdzpwRvr9CS9fX
+         JQXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=Z3r+7Q2U/cKRp/go2L0coLIYv/3h3JP/vMhwCxihiXA=;
-        b=fV++zijKMXslgQ4VQE/K7JcrHekOpXWXGA1uhhQsY4AWRFXTZmxvt+qAmorLdjkavN
-         bURSEK4O9B+NBjbe6KRDlC9f/a+MhPuQ4C0+MhbzXy/wGj5L8WNxjU0UhuaoHI6SpWhK
-         lWbcwTJw0k1gJwm64u2cPHEcpIxPWRfmUIhZX57oPTBq7zcVPwRS1kVOm2W89N4g/4zF
-         NSCwKo1DelWzl7Tq6/xQf0TnsUXlM8gfZXbkiOUeYK9cUqfv/kfNWeCXhmJzx0iC70Z2
-         owiyJSrpraHkOx9MF0giBMsKJQF2+LnM08P0Xf+3Auoa4QsrkuzUuLB9d1Q5akEB2hCu
-         Uv3w==
+        bh=xiVSl5n7w2Ki39raDGt/GMw1/UQl3yJ29TKcLIwxNWA=;
+        b=pJe2AcGTshLVJPSYg6v3djdMYqqUDSaUEgga0NMV5qKFvb6Sd8JIqK1sXPessQSjEx
+         F8S3E4yy6Qy6gE8vlaOqVoqR6CaT8dEJjznDwcXRC0QW0RDhnv2/NwEJzb8BF942dR2Y
+         xRRl0Xw3qG7rISPeG65Q2070YT3NcFPPXvIYdxf2heEwenAU95XsiNnm5TuEDuI1JKK7
+         LvMBV5RYXxyy6EELoi8V2vdev/Tnyb47cg76Zj/yzmPc+KPv+FGWPQMLUet8EdGr6S2T
+         1YWWF8ObuKQdTemHCdtpoUsMQrMXLF7iCOCOHaqQn/eVtJImEQ9pOjcmsmBsrzGECaou
+         DSkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k14si7443185ejx.353.2019.08.27.09.07.57
+        by mx.google.com with ESMTPS id l22si7446249ejr.16.2019.08.27.09.08.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Aug 2019 09:07:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 27 Aug 2019 09:08:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53596 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53618 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i2e0i-0004Ri-9Z
-	for alex.bennee@linaro.org; Tue, 27 Aug 2019 12:07:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58474)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i2e1Q-0005mF-6b
+	for alex.bennee@linaro.org; Tue, 27 Aug 2019 12:08:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58455)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1i2dz1-0003Bf-SW
- for qemu-devel@nongnu.org; Tue, 27 Aug 2019 12:06:12 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1i2dyz-00038E-H9
+ for qemu-arm@nongnu.org; Tue, 27 Aug 2019 12:06:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1i2dz0-0002Dn-NK
- for qemu-devel@nongnu.org; Tue, 27 Aug 2019 12:06:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36380)
+ (envelope-from <eric.auger@redhat.com>) id 1i2dyu-0002AT-Q3
+ for qemu-arm@nongnu.org; Tue, 27 Aug 2019 12:06:09 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37654)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1i2dyx-0002Cj-WE; Tue, 27 Aug 2019 12:06:08 -0400
+ id 1i2dyu-0002AD-Hf; Tue, 27 Aug 2019 12:06:04 -0400
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 425D57BDB0;
- Tue, 27 Aug 2019 16:06:07 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-116-105.ams2.redhat.com [10.36.116.105])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2A4541001B17;
+ by mx1.redhat.com (Postfix) with ESMTPS id C30AA308FC22;
  Tue, 27 Aug 2019 16:06:03 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-105.ams2.redhat.com [10.36.116.105])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 634C11001B36;
+ Tue, 27 Aug 2019 16:06:00 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org
-Date: Tue, 27 Aug 2019 18:05:53 +0200
-Message-Id: <20190827160554.30995-3-eric.auger@redhat.com>
+Date: Tue, 27 Aug 2019 18:05:52 +0200
+Message-Id: <20190827160554.30995-2-eric.auger@redhat.com>
 In-Reply-To: <20190827160554.30995-1-eric.auger@redhat.com>
 References: <20190827160554.30995-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.26]); Tue, 27 Aug 2019 16:06:07 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.43]); Tue, 27 Aug 2019 16:06:03 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-devel] [RFC 2/3] intc/arm_gic: Support PPI injection for more
- than 256 vpus
-X-BeenThere: qemu-devel@nongnu.org
+Subject: [Qemu-arm] [RFC 1/3] linux headers: update for
+ KVM_CAP_ARM_IRQ_LINE_LAYOUT_2
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: yuzenghui@huawei.com, maz@kernel.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TBv0UBZoQAua
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xGqI5Ku/+idc
 
-Host kernels that expose the KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 capability
-allow injection of PPIs along with vcpu ids larger than 255. Let's
-encode the vpcu id on 12 bits according to the upgraded KVM_IRQ_LINE
-ABI when needed.
-
-Without that patch qemu exits with "kvm_set_irq: Invalid argument"
-message.
+Temporary header update against 5.3-rc5 + Marc's patch:
+"[PATCH] KVM: arm/arm64: vgic: Allow more than 256 vcpus for
+KVM_IRQ_LINE"
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reported-by: Zenghui Yu <yuzenghui@huawei.com>
 ---
- hw/intc/arm_gic_kvm.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ include/standard-headers/asm-x86/bootparam.h |  2 ++
+ include/standard-headers/asm-x86/kvm_para.h  |  1 +
+ include/standard-headers/linux/ethtool.h     |  2 ++
+ include/standard-headers/linux/pci_regs.h    |  4 +++
+ include/standard-headers/linux/virtio_ids.h  |  1 +
+ include/standard-headers/linux/virtio_pmem.h |  6 ++---
+ linux-headers/asm-arm/kvm.h                  | 16 ++++++++++-
+ linux-headers/asm-arm/unistd-common.h        |  2 ++
+ linux-headers/asm-arm64/kvm.h                | 21 ++++++++++++++-
+ linux-headers/asm-generic/mman-common.h      | 15 ++++++-----
+ linux-headers/asm-generic/mman.h             | 10 +++----
+ linux-headers/asm-generic/unistd.h           |  8 +++++-
+ linux-headers/asm-mips/unistd_n32.h          |  1 +
+ linux-headers/asm-mips/unistd_n64.h          |  1 +
+ linux-headers/asm-mips/unistd_o32.h          |  1 +
+ linux-headers/asm-powerpc/mman.h             |  6 +----
+ linux-headers/asm-powerpc/unistd_32.h        |  2 ++
+ linux-headers/asm-powerpc/unistd_64.h        |  2 ++
+ linux-headers/asm-s390/unistd_32.h           |  2 ++
+ linux-headers/asm-s390/unistd_64.h           |  2 ++
+ linux-headers/asm-x86/kvm.h                  | 28 +++++++++++++++-----
+ linux-headers/asm-x86/unistd_32.h            |  2 ++
+ linux-headers/asm-x86/unistd_64.h            |  2 ++
+ linux-headers/asm-x86/unistd_x32.h           |  2 ++
+ linux-headers/linux/kvm.h                    | 12 ++++++---
+ linux-headers/linux/psp-sev.h                |  5 +---
+ 26 files changed, 119 insertions(+), 37 deletions(-)
 
-diff --git a/hw/intc/arm_gic_kvm.c b/hw/intc/arm_gic_kvm.c
-index b56fda144f..889293e97f 100644
---- a/hw/intc/arm_gic_kvm.c
-+++ b/hw/intc/arm_gic_kvm.c
-@@ -56,6 +56,7 @@ void kvm_arm_gic_set_irq(uint32_t num_irq, int irq, int=
- level)
-      * CPU number and interrupt number.
-      */
-     int kvm_irq, irqtype, cpu;
-+    int cpu_idx1 =3D 0, cpu_idx2 =3D 0;
+diff --git a/include/standard-headers/asm-x86/bootparam.h b/include/stand=
+ard-headers/asm-x86/bootparam.h
+index 67d4f0119f..a6f7cf535e 100644
+--- a/include/standard-headers/asm-x86/bootparam.h
++++ b/include/standard-headers/asm-x86/bootparam.h
+@@ -29,6 +29,8 @@
+ #define XLF_EFI_HANDOVER_32		(1<<2)
+ #define XLF_EFI_HANDOVER_64		(1<<3)
+ #define XLF_EFI_KEXEC			(1<<4)
++#define XLF_5LEVEL			(1<<5)
++#define XLF_5LEVEL_ENABLED		(1<<6)
 =20
-     if (irq < (num_irq - GIC_INTERNAL)) {
-         /* External interrupt. The kernel numbers these like the GIC
-@@ -63,17 +64,20 @@ void kvm_arm_gic_set_irq(uint32_t num_irq, int irq, i=
-nt level)
-          * internal ones.
-          */
-         irqtype =3D KVM_ARM_IRQ_TYPE_SPI;
--        cpu =3D 0;
-         irq +=3D GIC_INTERNAL;
-     } else {
-         /* Internal interrupt: decode into (cpu, interrupt id) */
-         irqtype =3D KVM_ARM_IRQ_TYPE_PPI;
-         irq -=3D (num_irq - GIC_INTERNAL);
-         cpu =3D irq / GIC_INTERNAL;
-+        cpu_idx2 =3D cpu / 256;
-+        cpu_idx1 =3D cpu % 256;
-         irq %=3D GIC_INTERNAL;
-     }
--    kvm_irq =3D (irqtype << KVM_ARM_IRQ_TYPE_SHIFT)
--        | (cpu << KVM_ARM_IRQ_VCPU_SHIFT) | irq;
-+    kvm_irq =3D (irqtype << KVM_ARM_IRQ_TYPE_SHIFT) |
-+              (cpu_idx1 << KVM_ARM_IRQ_VCPU_SHIFT) |
-+              ((cpu_idx2 & KVM_ARM_IRQ_VCPU2_MASK) << KVM_ARM_IRQ_VCPU2_=
-SHIFT) |
-+              irq;
 =20
-     kvm_set_irq(kvm_state, kvm_irq, !!level);
- }
+ #endif /* _ASM_X86_BOOTPARAM_H */
+diff --git a/include/standard-headers/asm-x86/kvm_para.h b/include/standa=
+rd-headers/asm-x86/kvm_para.h
+index e1715143fd..90604a8fb7 100644
+--- a/include/standard-headers/asm-x86/kvm_para.h
++++ b/include/standard-headers/asm-x86/kvm_para.h
+@@ -30,6 +30,7 @@
+ #define KVM_FEATURE_ASYNC_PF_VMEXIT	10
+ #define KVM_FEATURE_PV_SEND_IPI	11
+ #define KVM_FEATURE_POLL_CONTROL	12
++#define KVM_FEATURE_PV_SCHED_YIELD	13
+=20
+ #define KVM_HINTS_REALTIME      0
+=20
+diff --git a/include/standard-headers/linux/ethtool.h b/include/standard-=
+headers/linux/ethtool.h
+index 9b9919a8f6..16d0eeea86 100644
+--- a/include/standard-headers/linux/ethtool.h
++++ b/include/standard-headers/linux/ethtool.h
+@@ -1483,6 +1483,8 @@ enum ethtool_link_mode_bit_indices {
+ 	ETHTOOL_LINK_MODE_200000baseLR4_ER4_FR4_Full_BIT =3D 64,
+ 	ETHTOOL_LINK_MODE_200000baseDR4_Full_BIT	 =3D 65,
+ 	ETHTOOL_LINK_MODE_200000baseCR4_Full_BIT	 =3D 66,
++	ETHTOOL_LINK_MODE_100baseT1_Full_BIT		 =3D 67,
++	ETHTOOL_LINK_MODE_1000baseT1_Full_BIT		 =3D 68,
+=20
+ 	/* must be last entry */
+ 	__ETHTOOL_LINK_MODE_MASK_NBITS
+diff --git a/include/standard-headers/linux/pci_regs.h b/include/standard=
+-headers/linux/pci_regs.h
+index 27164769d1..f28e562d7c 100644
+--- a/include/standard-headers/linux/pci_regs.h
++++ b/include/standard-headers/linux/pci_regs.h
+@@ -528,6 +528,7 @@
+ #define  PCI_EXP_LNKCAP_SLS_5_0GB 0x00000002 /* LNKCAP2 SLS Vector bit 1=
+ */
+ #define  PCI_EXP_LNKCAP_SLS_8_0GB 0x00000003 /* LNKCAP2 SLS Vector bit 2=
+ */
+ #define  PCI_EXP_LNKCAP_SLS_16_0GB 0x00000004 /* LNKCAP2 SLS Vector bit =
+3 */
++#define  PCI_EXP_LNKCAP_SLS_32_0GB 0x00000005 /* LNKCAP2 SLS Vector bit =
+4 */
+ #define  PCI_EXP_LNKCAP_MLW	0x000003f0 /* Maximum Link Width */
+ #define  PCI_EXP_LNKCAP_ASPMS	0x00000c00 /* ASPM Support */
+ #define  PCI_EXP_LNKCAP_L0SEL	0x00007000 /* L0s Exit Latency */
+@@ -556,6 +557,7 @@
+ #define  PCI_EXP_LNKSTA_CLS_5_0GB 0x0002 /* Current Link Speed 5.0GT/s *=
+/
+ #define  PCI_EXP_LNKSTA_CLS_8_0GB 0x0003 /* Current Link Speed 8.0GT/s *=
+/
+ #define  PCI_EXP_LNKSTA_CLS_16_0GB 0x0004 /* Current Link Speed 16.0GT/s=
+ */
++#define  PCI_EXP_LNKSTA_CLS_32_0GB 0x0005 /* Current Link Speed 32.0GT/s=
+ */
+ #define  PCI_EXP_LNKSTA_NLW	0x03f0	/* Negotiated Link Width */
+ #define  PCI_EXP_LNKSTA_NLW_X1	0x0010	/* Current Link Width x1 */
+ #define  PCI_EXP_LNKSTA_NLW_X2	0x0020	/* Current Link Width x2 */
+@@ -661,6 +663,7 @@
+ #define  PCI_EXP_LNKCAP2_SLS_5_0GB	0x00000004 /* Supported Speed 5GT/s *=
+/
+ #define  PCI_EXP_LNKCAP2_SLS_8_0GB	0x00000008 /* Supported Speed 8GT/s *=
+/
+ #define  PCI_EXP_LNKCAP2_SLS_16_0GB	0x00000010 /* Supported Speed 16GT/s=
+ */
++#define  PCI_EXP_LNKCAP2_SLS_32_0GB	0x00000020 /* Supported Speed 32GT/s=
+ */
+ #define  PCI_EXP_LNKCAP2_CROSSLINK	0x00000100 /* Crosslink supported */
+ #define PCI_EXP_LNKCTL2		48	/* Link Control 2 */
+ #define  PCI_EXP_LNKCTL2_TLS		0x000f
+@@ -668,6 +671,7 @@
+ #define  PCI_EXP_LNKCTL2_TLS_5_0GT	0x0002 /* Supported Speed 5GT/s */
+ #define  PCI_EXP_LNKCTL2_TLS_8_0GT	0x0003 /* Supported Speed 8GT/s */
+ #define  PCI_EXP_LNKCTL2_TLS_16_0GT	0x0004 /* Supported Speed 16GT/s */
++#define  PCI_EXP_LNKCTL2_TLS_32_0GT	0x0005 /* Supported Speed 32GT/s */
+ #define PCI_EXP_LNKSTA2		50	/* Link Status 2 */
+ #define PCI_CAP_EXP_ENDPOINT_SIZEOF_V2	52	/* v2 endpoints with link end =
+here */
+ #define PCI_EXP_SLTCAP2		52	/* Slot Capabilities 2 */
+diff --git a/include/standard-headers/linux/virtio_ids.h b/include/standa=
+rd-headers/linux/virtio_ids.h
+index 32b2f94d1f..348fd0176f 100644
+--- a/include/standard-headers/linux/virtio_ids.h
++++ b/include/standard-headers/linux/virtio_ids.h
+@@ -43,6 +43,7 @@
+ #define VIRTIO_ID_INPUT        18 /* virtio input */
+ #define VIRTIO_ID_VSOCK        19 /* virtio vsock transport */
+ #define VIRTIO_ID_CRYPTO       20 /* virtio crypto */
++#define VIRTIO_ID_IOMMU        23 /* virtio IOMMU */
+ #define VIRTIO_ID_PMEM         27 /* virtio pmem */
+=20
+ #endif /* _LINUX_VIRTIO_IDS_H */
+diff --git a/include/standard-headers/linux/virtio_pmem.h b/include/stand=
+ard-headers/linux/virtio_pmem.h
+index 7e3d43b121..fc029de798 100644
+--- a/include/standard-headers/linux/virtio_pmem.h
++++ b/include/standard-headers/linux/virtio_pmem.h
+@@ -1,4 +1,4 @@
+-/* SPDX-License-Identifier: GPL-2.0 OR BSD-3-Clause */
++/* SPDX-License-Identifier: (GPL-2.0 WITH Linux-syscall-note) OR BSD-3-C=
+lause */
+ /*
+  * Definitions for virtio-pmem devices.
+  *
+@@ -7,8 +7,8 @@
+  * Author(s): Pankaj Gupta <pagupta@redhat.com>
+  */
+=20
+-#ifndef _UAPI_LINUX_VIRTIO_PMEM_H
+-#define _UAPI_LINUX_VIRTIO_PMEM_H
++#ifndef _LINUX_VIRTIO_PMEM_H
++#define _LINUX_VIRTIO_PMEM_H
+=20
+ #include "standard-headers/linux/types.h"
+ #include "standard-headers/linux/virtio_ids.h"
+diff --git a/linux-headers/asm-arm/kvm.h b/linux-headers/asm-arm/kvm.h
+index e1f8b74558..9d379d3372 100644
+--- a/linux-headers/asm-arm/kvm.h
++++ b/linux-headers/asm-arm/kvm.h
+@@ -214,6 +214,18 @@ struct kvm_vcpu_events {
+ #define KVM_REG_ARM_FW_REG(r)		(KVM_REG_ARM | KVM_REG_SIZE_U64 | \
+ 					 KVM_REG_ARM_FW | ((r) & 0xffff))
+ #define KVM_REG_ARM_PSCI_VERSION	KVM_REG_ARM_FW_REG(0)
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_1	KVM_REG_ARM_FW_REG(1)
++	/* Higher values mean better protection. */
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_1_NOT_AVAIL		0
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_1_AVAIL		1
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_1_NOT_REQUIRED	2
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_2	KVM_REG_ARM_FW_REG(2)
++	/* Higher values mean better protection. */
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_2_NOT_AVAIL		0
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_2_UNKNOWN		1
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_2_AVAIL		2
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_2_NOT_REQUIRED	3
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_2_ENABLED	(1U << 4)
+=20
+ /* Device Control API: ARM VGIC */
+ #define KVM_DEV_ARM_VGIC_GRP_ADDR	0
+@@ -254,8 +266,10 @@ struct kvm_vcpu_events {
+ #define   KVM_DEV_ARM_ITS_CTRL_RESET		4
+=20
+ /* KVM_IRQ_LINE irq field index values */
++#define KVM_ARM_IRQ_VCPU2_SHIFT		28
++#define KVM_ARM_IRQ_VCPU2_MASK		0xf
+ #define KVM_ARM_IRQ_TYPE_SHIFT		24
+-#define KVM_ARM_IRQ_TYPE_MASK		0xff
++#define KVM_ARM_IRQ_TYPE_MASK		0xf
+ #define KVM_ARM_IRQ_VCPU_SHIFT		16
+ #define KVM_ARM_IRQ_VCPU_MASK		0xff
+ #define KVM_ARM_IRQ_NUM_SHIFT		0
+diff --git a/linux-headers/asm-arm/unistd-common.h b/linux-headers/asm-ar=
+m/unistd-common.h
+index 27a9b6da27..eb5d361b11 100644
+--- a/linux-headers/asm-arm/unistd-common.h
++++ b/linux-headers/asm-arm/unistd-common.h
+@@ -388,5 +388,7 @@
+ #define __NR_fsconfig (__NR_SYSCALL_BASE + 431)
+ #define __NR_fsmount (__NR_SYSCALL_BASE + 432)
+ #define __NR_fspick (__NR_SYSCALL_BASE + 433)
++#define __NR_pidfd_open (__NR_SYSCALL_BASE + 434)
++#define __NR_clone3 (__NR_SYSCALL_BASE + 435)
+=20
+ #endif /* _ASM_ARM_UNISTD_COMMON_H */
+diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.=
+h
+index 2431ec35a9..0ce6e49f3a 100644
+--- a/linux-headers/asm-arm64/kvm.h
++++ b/linux-headers/asm-arm64/kvm.h
+@@ -229,6 +229,16 @@ struct kvm_vcpu_events {
+ #define KVM_REG_ARM_FW_REG(r)		(KVM_REG_ARM64 | KVM_REG_SIZE_U64 | \
+ 					 KVM_REG_ARM_FW | ((r) & 0xffff))
+ #define KVM_REG_ARM_PSCI_VERSION	KVM_REG_ARM_FW_REG(0)
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_1	KVM_REG_ARM_FW_REG(1)
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_1_NOT_AVAIL		0
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_1_AVAIL		1
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_1_NOT_REQUIRED	2
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_2	KVM_REG_ARM_FW_REG(2)
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_2_NOT_AVAIL		0
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_2_UNKNOWN		1
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_2_AVAIL		2
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_2_NOT_REQUIRED	3
++#define KVM_REG_ARM_SMCCC_ARCH_WORKAROUND_2_ENABLED     	(1U << 4)
+=20
+ /* SVE registers */
+ #define KVM_REG_ARM64_SVE		(0x15 << KVM_REG_ARM_COPROC_SHIFT)
+@@ -260,6 +270,13 @@ struct kvm_vcpu_events {
+ 	 KVM_REG_SIZE_U256 |						\
+ 	 ((i) & (KVM_ARM64_SVE_MAX_SLICES - 1)))
+=20
++/*
++ * Register values for KVM_REG_ARM64_SVE_ZREG(), KVM_REG_ARM64_SVE_PREG(=
+) and
++ * KVM_REG_ARM64_SVE_FFR() are represented in memory in an endianness-
++ * invariant layout which differs from the layout used for the FPSIMD
++ * V-registers on big-endian systems: see sigcontext.h for more explanat=
+ion.
++ */
++
+ #define KVM_ARM64_SVE_VQ_MIN __SVE_VQ_MIN
+ #define KVM_ARM64_SVE_VQ_MAX __SVE_VQ_MAX
+=20
+@@ -308,8 +325,10 @@ struct kvm_vcpu_events {
+ #define   KVM_ARM_VCPU_TIMER_IRQ_PTIMER		1
+=20
+ /* KVM_IRQ_LINE irq field index values */
++#define KVM_ARM_IRQ_VCPU2_SHIFT		28
++#define KVM_ARM_IRQ_VCPU2_MASK		0xf
+ #define KVM_ARM_IRQ_TYPE_SHIFT		24
+-#define KVM_ARM_IRQ_TYPE_MASK		0xff
++#define KVM_ARM_IRQ_TYPE_MASK		0xf
+ #define KVM_ARM_IRQ_VCPU_SHIFT		16
+ #define KVM_ARM_IRQ_VCPU_MASK		0xff
+ #define KVM_ARM_IRQ_NUM_SHIFT		0
+diff --git a/linux-headers/asm-generic/mman-common.h b/linux-headers/asm-=
+generic/mman-common.h
+index abd238d0f7..63b1f506ea 100644
+--- a/linux-headers/asm-generic/mman-common.h
++++ b/linux-headers/asm-generic/mman-common.h
+@@ -19,15 +19,18 @@
+ #define MAP_TYPE	0x0f		/* Mask for type of mapping */
+ #define MAP_FIXED	0x10		/* Interpret addr exactly */
+ #define MAP_ANONYMOUS	0x20		/* don't use a file */
+-#ifdef CONFIG_MMAP_ALLOW_UNINITIALIZED
+-# define MAP_UNINITIALIZED 0x4000000	/* For anonymous mmap, memory could=
+ be uninitialized */
+-#else
+-# define MAP_UNINITIALIZED 0x0		/* Don't support this flag */
+-#endif
+=20
+-/* 0x0100 - 0x80000 flags are defined in asm-generic/mman.h */
++/* 0x0100 - 0x4000 flags are defined in asm-generic/mman.h */
++#define MAP_POPULATE		0x008000	/* populate (prefault) pagetables */
++#define MAP_NONBLOCK		0x010000	/* do not block on IO */
++#define MAP_STACK		0x020000	/* give out an address that is best suited f=
+or process/thread stacks */
++#define MAP_HUGETLB		0x040000	/* create a huge page mapping */
++#define MAP_SYNC		0x080000 /* perform synchronous page faults for the ma=
+pping */
+ #define MAP_FIXED_NOREPLACE	0x100000	/* MAP_FIXED which doesn't unmap un=
+derlying mapping */
+=20
++#define MAP_UNINITIALIZED 0x4000000	/* For anonymous mmap, memory could =
+be
++					 * uninitialized */
++
+ /*
+  * Flags for mlock
+  */
+diff --git a/linux-headers/asm-generic/mman.h b/linux-headers/asm-generic=
+/mman.h
+index 653687d977..57e8195d0b 100644
+--- a/linux-headers/asm-generic/mman.h
++++ b/linux-headers/asm-generic/mman.h
+@@ -9,13 +9,11 @@
+ #define MAP_EXECUTABLE	0x1000		/* mark it as an executable */
+ #define MAP_LOCKED	0x2000		/* pages are locked */
+ #define MAP_NORESERVE	0x4000		/* don't check for reservations */
+-#define MAP_POPULATE	0x8000		/* populate (prefault) pagetables */
+-#define MAP_NONBLOCK	0x10000		/* do not block on IO */
+-#define MAP_STACK	0x20000		/* give out an address that is best suited fo=
+r process/thread stacks */
+-#define MAP_HUGETLB	0x40000		/* create a huge page mapping */
+-#define MAP_SYNC	0x80000		/* perform synchronous page faults for the map=
+ping */
+=20
+-/* Bits [26:31] are reserved, see mman-common.h for MAP_HUGETLB usage */
++/*
++ * Bits [26:31] are reserved, see asm-generic/hugetlb_encode.h
++ * for MAP_HUGETLB usage
++ */
+=20
+ #define MCL_CURRENT	1		/* lock all current mappings */
+ #define MCL_FUTURE	2		/* lock all future mappings */
+diff --git a/linux-headers/asm-generic/unistd.h b/linux-headers/asm-gener=
+ic/unistd.h
+index a87904daf1..1be0e798e3 100644
+--- a/linux-headers/asm-generic/unistd.h
++++ b/linux-headers/asm-generic/unistd.h
+@@ -844,9 +844,15 @@ __SYSCALL(__NR_fsconfig, sys_fsconfig)
+ __SYSCALL(__NR_fsmount, sys_fsmount)
+ #define __NR_fspick 433
+ __SYSCALL(__NR_fspick, sys_fspick)
++#define __NR_pidfd_open 434
++__SYSCALL(__NR_pidfd_open, sys_pidfd_open)
++#ifdef __ARCH_WANT_SYS_CLONE3
++#define __NR_clone3 435
++__SYSCALL(__NR_clone3, sys_clone3)
++#endif
+=20
+ #undef __NR_syscalls
+-#define __NR_syscalls 434
++#define __NR_syscalls 436
+=20
+ /*
+  * 32 bit systems traditionally used different
+diff --git a/linux-headers/asm-mips/unistd_n32.h b/linux-headers/asm-mips=
+/unistd_n32.h
+index fb988de900..7dffe8e34e 100644
+--- a/linux-headers/asm-mips/unistd_n32.h
++++ b/linux-headers/asm-mips/unistd_n32.h
+@@ -363,6 +363,7 @@
+ #define __NR_fsconfig	(__NR_Linux + 431)
+ #define __NR_fsmount	(__NR_Linux + 432)
+ #define __NR_fspick	(__NR_Linux + 433)
++#define __NR_pidfd_open	(__NR_Linux + 434)
+=20
+=20
+ #endif /* _ASM_MIPS_UNISTD_N32_H */
+diff --git a/linux-headers/asm-mips/unistd_n64.h b/linux-headers/asm-mips=
+/unistd_n64.h
+index 17359163c9..f4592d6fc5 100644
+--- a/linux-headers/asm-mips/unistd_n64.h
++++ b/linux-headers/asm-mips/unistd_n64.h
+@@ -339,6 +339,7 @@
+ #define __NR_fsconfig	(__NR_Linux + 431)
+ #define __NR_fsmount	(__NR_Linux + 432)
+ #define __NR_fspick	(__NR_Linux + 433)
++#define __NR_pidfd_open	(__NR_Linux + 434)
+=20
+=20
+ #endif /* _ASM_MIPS_UNISTD_N64_H */
+diff --git a/linux-headers/asm-mips/unistd_o32.h b/linux-headers/asm-mips=
+/unistd_o32.h
+index 83c8d8fb83..04c6728352 100644
+--- a/linux-headers/asm-mips/unistd_o32.h
++++ b/linux-headers/asm-mips/unistd_o32.h
+@@ -409,6 +409,7 @@
+ #define __NR_fsconfig	(__NR_Linux + 431)
+ #define __NR_fsmount	(__NR_Linux + 432)
+ #define __NR_fspick	(__NR_Linux + 433)
++#define __NR_pidfd_open	(__NR_Linux + 434)
+=20
+=20
+ #endif /* _ASM_MIPS_UNISTD_O32_H */
+diff --git a/linux-headers/asm-powerpc/mman.h b/linux-headers/asm-powerpc=
+/mman.h
+index 1c2b3fca05..8db7c2a3be 100644
+--- a/linux-headers/asm-powerpc/mman.h
++++ b/linux-headers/asm-powerpc/mman.h
+@@ -21,15 +21,11 @@
+ #define MAP_DENYWRITE	0x0800		/* ETXTBSY */
+ #define MAP_EXECUTABLE	0x1000		/* mark it as an executable */
+=20
++
+ #define MCL_CURRENT     0x2000          /* lock all currently mapped pag=
+es */
+ #define MCL_FUTURE      0x4000          /* lock all additions to address=
+ space */
+ #define MCL_ONFAULT	0x8000		/* lock all pages that are faulted in */
+=20
+-#define MAP_POPULATE	0x8000		/* populate (prefault) pagetables */
+-#define MAP_NONBLOCK	0x10000		/* do not block on IO */
+-#define MAP_STACK	0x20000		/* give out an address that is best suited fo=
+r process/thread stacks */
+-#define MAP_HUGETLB	0x40000		/* create a huge page mapping */
+-
+ /* Override any generic PKEY permission defines */
+ #define PKEY_DISABLE_EXECUTE   0x4
+ #undef PKEY_ACCESS_MASK
+diff --git a/linux-headers/asm-powerpc/unistd_32.h b/linux-headers/asm-po=
+werpc/unistd_32.h
+index 04cb2d3e61..5584cc1b4f 100644
+--- a/linux-headers/asm-powerpc/unistd_32.h
++++ b/linux-headers/asm-powerpc/unistd_32.h
+@@ -416,6 +416,8 @@
+ #define __NR_fsconfig	431
+ #define __NR_fsmount	432
+ #define __NR_fspick	433
++#define __NR_pidfd_open	434
++#define __NR_clone3	435
+=20
+=20
+ #endif /* _ASM_POWERPC_UNISTD_32_H */
+diff --git a/linux-headers/asm-powerpc/unistd_64.h b/linux-headers/asm-po=
+werpc/unistd_64.h
+index b1e6921490..251bcff77e 100644
+--- a/linux-headers/asm-powerpc/unistd_64.h
++++ b/linux-headers/asm-powerpc/unistd_64.h
+@@ -388,6 +388,8 @@
+ #define __NR_fsconfig	431
+ #define __NR_fsmount	432
+ #define __NR_fspick	433
++#define __NR_pidfd_open	434
++#define __NR_clone3	435
+=20
+=20
+ #endif /* _ASM_POWERPC_UNISTD_64_H */
+diff --git a/linux-headers/asm-s390/unistd_32.h b/linux-headers/asm-s390/=
+unistd_32.h
+index 941853f3e9..7cce3ee296 100644
+--- a/linux-headers/asm-s390/unistd_32.h
++++ b/linux-headers/asm-s390/unistd_32.h
+@@ -406,5 +406,7 @@
+ #define __NR_fsconfig 431
+ #define __NR_fsmount 432
+ #define __NR_fspick 433
++#define __NR_pidfd_open 434
++#define __NR_clone3 435
+=20
+ #endif /* _ASM_S390_UNISTD_32_H */
+diff --git a/linux-headers/asm-s390/unistd_64.h b/linux-headers/asm-s390/=
+unistd_64.h
+index 90271d7f82..2371ff1e7a 100644
+--- a/linux-headers/asm-s390/unistd_64.h
++++ b/linux-headers/asm-s390/unistd_64.h
+@@ -354,5 +354,7 @@
+ #define __NR_fsconfig 431
+ #define __NR_fsmount 432
+ #define __NR_fspick 433
++#define __NR_pidfd_open 434
++#define __NR_clone3 435
+=20
+ #endif /* _ASM_S390_UNISTD_64_H */
+diff --git a/linux-headers/asm-x86/kvm.h b/linux-headers/asm-x86/kvm.h
+index 6e7dd792e4..503d3f42da 100644
+--- a/linux-headers/asm-x86/kvm.h
++++ b/linux-headers/asm-x86/kvm.h
+@@ -378,23 +378,24 @@ struct kvm_sync_regs {
+ 	struct kvm_vcpu_events events;
+ };
+=20
+-#define KVM_X86_QUIRK_LINT0_REENABLED	(1 << 0)
+-#define KVM_X86_QUIRK_CD_NW_CLEARED	(1 << 1)
+-#define KVM_X86_QUIRK_LAPIC_MMIO_HOLE	(1 << 2)
+-#define KVM_X86_QUIRK_OUT_7E_INC_RIP	(1 << 3)
++#define KVM_X86_QUIRK_LINT0_REENABLED	   (1 << 0)
++#define KVM_X86_QUIRK_CD_NW_CLEARED	   (1 << 1)
++#define KVM_X86_QUIRK_LAPIC_MMIO_HOLE	   (1 << 2)
++#define KVM_X86_QUIRK_OUT_7E_INC_RIP	   (1 << 3)
++#define KVM_X86_QUIRK_MISC_ENABLE_NO_MWAIT (1 << 4)
+=20
+ #define KVM_STATE_NESTED_FORMAT_VMX	0
+-#define KVM_STATE_NESTED_FORMAT_SVM	1
++#define KVM_STATE_NESTED_FORMAT_SVM	1	/* unused */
+=20
+ #define KVM_STATE_NESTED_GUEST_MODE	0x00000001
+ #define KVM_STATE_NESTED_RUN_PENDING	0x00000002
+ #define KVM_STATE_NESTED_EVMCS		0x00000004
+=20
+-#define KVM_STATE_NESTED_VMX_VMCS_SIZE	0x1000
+-
+ #define KVM_STATE_NESTED_SMM_GUEST_MODE	0x00000001
+ #define KVM_STATE_NESTED_SMM_VMXON	0x00000002
+=20
++#define KVM_STATE_NESTED_VMX_VMCS_SIZE	0x1000
++
+ struct kvm_vmx_nested_state_data {
+ 	__u8 vmcs12[KVM_STATE_NESTED_VMX_VMCS_SIZE];
+ 	__u8 shadow_vmcs12[KVM_STATE_NESTED_VMX_VMCS_SIZE];
+@@ -432,4 +433,17 @@ struct kvm_nested_state {
+ 	} data;
+ };
+=20
++/* for KVM_CAP_PMU_EVENT_FILTER */
++struct kvm_pmu_event_filter {
++	__u32 action;
++	__u32 nevents;
++	__u32 fixed_counter_bitmap;
++	__u32 flags;
++	__u32 pad[4];
++	__u64 events[0];
++};
++
++#define KVM_PMU_EVENT_ALLOW 0
++#define KVM_PMU_EVENT_DENY 1
++
+ #endif /* _ASM_X86_KVM_H */
+diff --git a/linux-headers/asm-x86/unistd_32.h b/linux-headers/asm-x86/un=
+istd_32.h
+index 57bb48854c..e8ebec1cdc 100644
+--- a/linux-headers/asm-x86/unistd_32.h
++++ b/linux-headers/asm-x86/unistd_32.h
+@@ -424,5 +424,7 @@
+ #define __NR_fsconfig 431
+ #define __NR_fsmount 432
+ #define __NR_fspick 433
++#define __NR_pidfd_open 434
++#define __NR_clone3 435
+=20
+ #endif /* _ASM_X86_UNISTD_32_H */
+diff --git a/linux-headers/asm-x86/unistd_64.h b/linux-headers/asm-x86/un=
+istd_64.h
+index fe6aa0688a..a2f863d549 100644
+--- a/linux-headers/asm-x86/unistd_64.h
++++ b/linux-headers/asm-x86/unistd_64.h
+@@ -346,5 +346,7 @@
+ #define __NR_fsconfig 431
+ #define __NR_fsmount 432
+ #define __NR_fspick 433
++#define __NR_pidfd_open 434
++#define __NR_clone3 435
+=20
+ #endif /* _ASM_X86_UNISTD_64_H */
+diff --git a/linux-headers/asm-x86/unistd_x32.h b/linux-headers/asm-x86/u=
+nistd_x32.h
+index 09cca49ba7..4cdc67d848 100644
+--- a/linux-headers/asm-x86/unistd_x32.h
++++ b/linux-headers/asm-x86/unistd_x32.h
+@@ -299,6 +299,8 @@
+ #define __NR_fsconfig (__X32_SYSCALL_BIT + 431)
+ #define __NR_fsmount (__X32_SYSCALL_BIT + 432)
+ #define __NR_fspick (__X32_SYSCALL_BIT + 433)
++#define __NR_pidfd_open (__X32_SYSCALL_BIT + 434)
++#define __NR_clone3 (__X32_SYSCALL_BIT + 435)
+ #define __NR_rt_sigaction (__X32_SYSCALL_BIT + 512)
+ #define __NR_rt_sigreturn (__X32_SYSCALL_BIT + 513)
+ #define __NR_ioctl (__X32_SYSCALL_BIT + 514)
+diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
+index c8423e760c..a6a65ace2c 100644
+--- a/linux-headers/linux/kvm.h
++++ b/linux-headers/linux/kvm.h
+@@ -116,7 +116,7 @@ struct kvm_irq_level {
+ 	 * ACPI gsi notion of irq.
+ 	 * For IA-64 (APIC model) IOAPIC0: irq 0-23; IOAPIC1: irq 24-47..
+ 	 * For X86 (standard AT mode) PIC0/1: irq 0-15. IOAPIC0: 0-23..
+-	 * For ARM: See Documentation/virtual/kvm/api.txt
++	 * For ARM: See Documentation/virt/kvm/api.txt
+ 	 */
+ 	union {
+ 		__u32 irq;
+@@ -696,9 +696,11 @@ struct kvm_ioeventfd {
+ #define KVM_X86_DISABLE_EXITS_MWAIT          (1 << 0)
+ #define KVM_X86_DISABLE_EXITS_HLT            (1 << 1)
+ #define KVM_X86_DISABLE_EXITS_PAUSE          (1 << 2)
++#define KVM_X86_DISABLE_EXITS_CSTATE         (1 << 3)
+ #define KVM_X86_DISABLE_VALID_EXITS          (KVM_X86_DISABLE_EXITS_MWAI=
+T | \
+                                               KVM_X86_DISABLE_EXITS_HLT =
+| \
+-                                              KVM_X86_DISABLE_EXITS_PAUS=
+E)
++                                              KVM_X86_DISABLE_EXITS_PAUS=
+E | \
++                                              KVM_X86_DISABLE_EXITS_CSTA=
+TE)
+=20
+ /* for KVM_ENABLE_CAP */
+ struct kvm_enable_cap {
+@@ -993,6 +995,8 @@ struct kvm_ppc_resize_hpt {
+ #define KVM_CAP_ARM_SVE 170
+ #define KVM_CAP_ARM_PTRAUTH_ADDRESS 171
+ #define KVM_CAP_ARM_PTRAUTH_GENERIC 172
++#define KVM_CAP_PMU_EVENT_FILTER 173
++#define KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 174
+=20
+ #ifdef KVM_CAP_IRQ_ROUTING
+=20
+@@ -1083,7 +1087,7 @@ struct kvm_xen_hvm_config {
+  *
+  * KVM_IRQFD_FLAG_RESAMPLE indicates resamplefd is valid and specifies
+  * the irqfd to operate in resampling mode for level triggered interrupt
+- * emulation.  See Documentation/virtual/kvm/api.txt.
++ * emulation.  See Documentation/virt/kvm/api.txt.
+  */
+ #define KVM_IRQFD_FLAG_RESAMPLE (1 << 1)
+=20
+@@ -1327,6 +1331,8 @@ struct kvm_s390_ucas_mapping {
+ #define KVM_PPC_GET_RMMU_INFO	  _IOW(KVMIO,  0xb0, struct kvm_ppc_rmmu_i=
+nfo)
+ /* Available with KVM_CAP_PPC_GET_CPU_CHAR */
+ #define KVM_PPC_GET_CPU_CHAR	  _IOR(KVMIO,  0xb1, struct kvm_ppc_cpu_cha=
+r)
++/* Available with KVM_CAP_PMU_EVENT_FILTER */
++#define KVM_SET_PMU_EVENT_FILTER  _IOW(KVMIO,  0xb2, struct kvm_pmu_even=
+t_filter)
+=20
+ /* ioctl for vm fd */
+ #define KVM_CREATE_DEVICE	  _IOWR(KVMIO,  0xe0, struct kvm_create_device=
+)
+diff --git a/linux-headers/linux/psp-sev.h b/linux-headers/linux/psp-sev.=
+h
+index 36bbe17d8f..34c39690c0 100644
+--- a/linux-headers/linux/psp-sev.h
++++ b/linux-headers/linux/psp-sev.h
+@@ -1,3 +1,4 @@
++/* SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note */
+ /*
+  * Userspace interface for AMD Secure Encrypted Virtualization (SEV)
+  * platform management commands.
+@@ -7,10 +8,6 @@
+  * Author: Brijesh Singh <brijesh.singh@amd.com>
+  *
+  * SEV API specification is available at: https://developer.amd.com/sev/
+- *
+- * This program is free software; you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License version 2 as
+- * published by the Free Software Foundation.
+  */
+=20
+ #ifndef __PSP_SEV_USER_H__
 --=20
 2.20.1
 

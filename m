@@ -1,115 +1,113 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp5836437wrs;
-        Tue, 27 Aug 2019 15:29:19 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxeA4MrTRIaPIJNHjeqM6gh+zDYXYmFtyMW39sksbTm8WY5oanTOORRiEgJ8yCLncjtSDJA
-X-Received: by 2002:aed:2e07:: with SMTP id j7mr1222884qtd.379.1566944959695;
-        Tue, 27 Aug 2019 15:29:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566944959; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp39428wrs;
+        Tue, 27 Aug 2019 17:07:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwjrQ9idNSztfFU2ALyl+wfbf9j4VrUFVJ4xDzYQsAY3q3WmIaSw8fZjdgirFpji4VqIls5
+X-Received: by 2002:ad4:47c3:: with SMTP id p3mr1078544qvw.120.1566950861630;
+        Tue, 27 Aug 2019 17:07:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566950861; cv=none;
         d=google.com; s=arc-20160816;
-        b=sR6rD4XfwZo0aaKvFjEAn5H7VJlM8us+F4iLr67U60EOQUPvjALjKWcQKr3G3hEkRO
-         /BAHTmTp2atT2NFDW0MWCKB2PDYKz9KZyfpWfS1X/e1eaEWMoa4RM4M9eM+ZNPNQk2p1
-         lAmPfodJtZ2eIo7mzgtukv04kcOGAvQipmtI7pcPXmMgbthgUorjjEkBxSyjxHPPa0PN
-         07lPprCWRqNami5/gn0JByMISAXuQlc5lHVApxJNCDv8seWeusiMs5jn/FVbXZWOh07a
-         N46jy86gXojval9RceQCmkuVg2fHBn28VCcJ8hXy3RzhgORwVO2qqHgUSycLrZxP/Wsa
-         pAIw==
+        b=DpY9zeCyDRmb+XxLzi/hZ52nAiNEAotXC2CyLpFyircrQUM9ceaTP2uuiJA3ZKJdx+
+         rPo8BaZ+5biCQcZr+OuEqCl0wZU0PJnjGJbiOEAykPZL9bdvUgeMLsF1W4w2q4f15Jha
+         1puGbsVaz4l+bx5lOrCF+DEpuQGZQhVk4wVrWUPKIGhQsMaZuZdCNzoxr+nphL0yLLmx
+         5ock/2B6qNjI/Rcm/SW9DIdSf+EcQ1pcSq49DrDyqI7LbGBZEVhRkOV2ZgzWQidIbECz
+         5chB2vZHP7EWWKxWOgjlDwzLNFTuXH6y64wUuJnIyx/6fafMNrt/W4E7j7+oNntqBMmQ
+         X3xA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:references:to:from
+         :user-agent:date:message-id:openpgp:from:references:to
          :dkim-signature;
-        bh=IF9fJL+VeAQcEJG2C6t3bkzt138oQ5+LBv8tEkVKhEg=;
-        b=JXwqKPmOdamBIHjyhhT2fC3Wyzt66FR3NDbldsXOkhbVoqijlgLvbTJQuu7VZ+61OT
-         OYm8jmOED83D5ZHmQszCArybOJ7gYfk4hzwA4DV3VkJ8LdSBt5+VHEhFGczmHdLOmP0n
-         I6ycG/8oRPo0OOB7vNE+JyWQQG8uFxO9oc3LIqR2Z+d/WzW6GFX4vOIQaPm5tvpt9/zF
-         zHc8WPdyZmT4qVZUidJ+uWeu/fO8rKkToeqJp4knSvWFP7dp8eBqaMULyKB3nO68GNFn
-         nfCWO0moQO3m1Tg68bP39hO2fTIEbAomfIBkMNHEmMwMrKrwstMd41sSbJelFAdlkn5e
-         qbEw==
+        bh=n8q8YNKPvXrkleM20QsMvRxgJbJG7dT0flX7RMl6O6U=;
+        b=oMdmCHzZxRowiD+LTJ0Xhx6NuCGC/00HAdyjPrWFQnjJe0BlRHgq4RIZnBttgOqzgo
+         ZffkaBe/q+QOAPBvVTzvSeDoEpz8dUwCEp9zFs58b/IU7qCTvyh5bmqhysXB3AeTySkV
+         v3T53oKpx1VVm9ozOb3RKr+NbFWxNOigR7kUo7eSBdmJ7hKgjvr/F9IhtQ0U0KJsX/pK
+         PV6RONQosttfCXymThoLFE3I2ndCdtdfmsbPwyEDFi2l0Eykh6Xdw2B6Ny5ef1W4bCVi
+         mHYqDvniqJzYipVWlFzMbHBdL2qq03FGz4Fkd/zSNt3KXH9FWdS2mzlgrWX+zXhTcezy
+         wJ/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="BYENM0/d";
+       dkim=fail header.i=@linaro.org header.s=google header.b=TXDjcjWc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u40si429258qvh.217.2019.08.27.15.29.19
+        by mx.google.com with ESMTPS id m14si504055qke.35.2019.08.27.17.07.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Aug 2019 15:29:19 -0700 (PDT)
+        Tue, 27 Aug 2019 17:07:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="BYENM0/d";
+       dkim=fail header.i=@linaro.org header.s=google header.b=TXDjcjWc;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59350 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59818 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i2jxn-0000cU-6G
-	for alex.bennee@linaro.org; Tue, 27 Aug 2019 18:29:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43145)
+	id 1i2lUz-0005LC-2H
+	for alex.bennee@linaro.org; Tue, 27 Aug 2019 20:07:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55269)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1i2jxd-0000bu-O7
- for qemu-arm@nongnu.org; Tue, 27 Aug 2019 18:29:10 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1i2lUf-0005KG-7N
+ for qemu-arm@nongnu.org; Tue, 27 Aug 2019 20:07:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1i2jxc-00071G-K5
- for qemu-arm@nongnu.org; Tue, 27 Aug 2019 18:29:09 -0400
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:43373)
+ (envelope-from <richard.henderson@linaro.org>) id 1i2lUe-0005sO-0B
+ for qemu-arm@nongnu.org; Tue, 27 Aug 2019 20:07:20 -0400
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:40446)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1i2jxc-00070x-Aj
- for qemu-arm@nongnu.org; Tue, 27 Aug 2019 18:29:08 -0400
-Received: by mail-pf1-x444.google.com with SMTP id v12so295666pfn.10
- for <qemu-arm@nongnu.org>; Tue, 27 Aug 2019 15:29:08 -0700 (PDT)
+ id 1i2lUd-0005r9-P4
+ for qemu-arm@nongnu.org; Tue, 27 Aug 2019 20:07:19 -0400
+Received: by mail-pf1-x442.google.com with SMTP id w16so438039pfn.7
+ for <qemu-arm@nongnu.org>; Tue, 27 Aug 2019 17:07:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:from:to:cc:references:openpgp:message-id:date:user-agent
+ h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=IF9fJL+VeAQcEJG2C6t3bkzt138oQ5+LBv8tEkVKhEg=;
- b=BYENM0/dJhnEo3c0Bn4KsfpDPgGdNc4wZXr3+PQGxSNThfVU07uAAXQvtjVEZHdlCU
- O79Qtj+xMx20VNCFipXK09dlVY4gEjyMOBsJuxi5cOv1HqVsz1ei1izIfSj430kUr3Cr
- AzbF6daKxI3OJXPNGPad2iuqk6+N8JkfOYGXs9OfVb7b+TDIGwLCYGlPRdfGMxdK+awB
- fxhSRSfvGOEowYeGbptF91KdnFGXlLnvp9+UGYNBBjf2sOBluw1e9IC/mYvtkZbPqyL0
- mFAJmU+s4bz2m8Bdaj1fpqekrM9VOvj5eSIQ/I5u5TV+bo41vbhFsFOsX7blBWrbIsOx
- Wxfg==
+ bh=n8q8YNKPvXrkleM20QsMvRxgJbJG7dT0flX7RMl6O6U=;
+ b=TXDjcjWcQzT67pb+dJ85bq2u/1CP2jnNTZHp8mkDlOzvBsbz9NIx8PvDvfHS6OjuII
+ xCV45R8UvVbkcZJoRln5JR+PSbceGaGrfcUGStU0oetrcTHJLkU4XfFb0st5GGDGBd24
+ TjSwcAUdLJTyyJ9M2dFuV0LPOddtT4Q3iTQd4Dy5FCPZBT3o9pnGEBIa4Jq3G4hHGITB
+ GdyhBdiifpGg1DL+6hlm2Imo2pGyGpxtRz6xdMM2hBrzfMr4tuopuI0AtwZzTaV0mWJo
+ /cTuotmJTtZLL65GjsJ8bTtINfSMpIlNb+2stlU8V/7JKdcKFD2XmQ+ozJOzC5yg5BSm
+ Sx6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:references:openpgp:message-id
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=IF9fJL+VeAQcEJG2C6t3bkzt138oQ5+LBv8tEkVKhEg=;
- b=dc/FpYybM9xI2/fxbjbU7A5F7o0UR0ovXvXZcv1lH34j1YPe4vWDG/U65UY684Kqk1
- voAOA/b3l2wXGZ2vtQHONzOjxgzyuiCY589q0tmyg9G4ixhZ0czxRT9wgFx6AW/oSIIi
- Z4Q60ftZ2bzBFNeBY7ljQDDAsiFlwnVa0o5hA5JCRiuPP07qDxlDr8UoODqM6udLP6kE
- RLRBxY+iehqZwAlKMas0fIzc0rfbOhZQebovBBvWUhBbfJtFSLuDXd4esNxdaNI7IzUH
- ExoQtmKUVlSdLnvJQLQDPlCvdNY4kBW6VRzYLZ1v/WfPPkGxArDTlp+MmIaNqr/koh9r
- 80iQ==
-X-Gm-Message-State: APjAAAXYSLiZrzSV02lJKs+a3HU9repOJ+sKVy/ZkeVQAwWGXkvvoKGy
- impdQhmva5J8o2lTt737nK8CbYojKEY=
-X-Received: by 2002:a17:90a:be06:: with SMTP id
- a6mr1066370pjs.92.1566944946939; 
- Tue, 27 Aug 2019 15:29:06 -0700 (PDT)
+ bh=n8q8YNKPvXrkleM20QsMvRxgJbJG7dT0flX7RMl6O6U=;
+ b=l9qoG1jwR+9+D6A7p1T0BzSznWy9chbuB6WJvA73oIt0M3QyGZ8/H2nCxi7LerRfJx
+ uPqR9s4gaTztYS+towp9IYRtqMcQHNivLLqFitxGpo/NQjGskTZFlQSy21k/OqZvfYDv
+ uOzw5Kdoz6sS9ngJXxxrttVg+lZ9rNlXYg8qvbTtySpqeUs1b08nvKrXYv3gLJm6/YcC
+ dU59Vy97lyhQTWf4sjdyEn4vOoFamEo++hxeK1ZLGVKMnjFxY98XmSn0jaTgYLrk2A89
+ 0EIbI7GvWp2tboPo1Z9YvWfgQp7f1gL7SpWk/4YmgPlHgfnypuXxLqqXiiUk2N/d2Z4f
+ 7KHw==
+X-Gm-Message-State: APjAAAXVyg2Kp/tuoVegsT5VDePQOSFP3dMafPrY4VALjrrEG47PEKi3
+ tSa11lPXtKAaeRgNdxC2NxV7MV8TkEk=
+X-Received: by 2002:a63:7e17:: with SMTP id z23mr1025474pgc.14.1566950836668; 
+ Tue, 27 Aug 2019 17:07:16 -0700 (PDT)
 Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id n24sm226694pjq.21.2019.08.27.15.29.05
+ by smtp.gmail.com with ESMTPSA id a16sm477679pfk.5.2019.08.27.17.07.14
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 27 Aug 2019 15:29:05 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
+ Tue, 27 Aug 2019 17:07:15 -0700 (PDT)
 To: Peter Maydell <peter.maydell@linaro.org>
 References: <20190819213755.26175-1-richard.henderson@linaro.org>
- <20190819213755.26175-19-richard.henderson@linaro.org>
- <CAFEAcA9qN47t8zXJ7X3TmhkigSEjf+esxVNwQ0m9X=qa2KF_bg@mail.gmail.com>
- <9fe4184f-7483-4207-2536-16ee798f3747@linaro.org>
+ <20190819213755.26175-67-richard.henderson@linaro.org>
+ <CAFEAcA9AbEzR97-2gvpPAbGrGHx_AxGgVhh4-BDufTQUX0gM1w@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <573345b1-5ea2-b88c-b07e-0281d2ea6f79@linaro.org>
-Date: Tue, 27 Aug 2019 15:29:03 -0700
+Message-ID: <7f4eac6e-486a-3d99-b533-5fd4ac41864d@linaro.org>
+Date: Tue, 27 Aug 2019 17:07:13 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <9fe4184f-7483-4207-2536-16ee798f3747@linaro.org>
+In-Reply-To: <CAFEAcA9AbEzR97-2gvpPAbGrGHx_AxGgVhh4-BDufTQUX0gM1w@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::444
-Subject: Re: [Qemu-arm] [PATCH v2 18/68] target/arm: Convert the rest of A32
- Miscelaneous instructions
+X-Received-From: 2607:f8b0:4864:20::442
+Subject: Re: [Qemu-arm] [PATCH v2 66/68] target/arm: Convert T16,
+ long branches
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,26 +122,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nXBWcPzA5r7c
+X-TUID: Jm/1KVzYgaHF
 
-On 8/27/19 1:01 PM, Richard Henderson wrote:
-> Other constraints, such as rd != 15 or imod != 0, should continue to return
-> false so that a (potential) grouped insn can match.
+On 8/27/19 2:34 AM, Peter Maydell wrote:
+>> +    tcg_gen_andi_i32(tmp, tmp, -4);
+> 
+> Minor nit, but can we use 0xfffffffc like the old code did,
+> to avoid the reader having to do 2s-complement arithmetic
+> in their head to figure out that we're clearing the low 2 bits?
 
-Eh.  This is not the answer that the TT example suggests.
+I always preferred "x & -c" for exactly the same reason:
+to avoid the reader having to do 2s compliment arithmetic
+in their head to figure out that we're aligning to c.
 
-So far we are able to order the grouped insns such that
-decoding directives like
+But, sure, if you like.
 
-    if t == 15 then SEE "TT";
+> This would be a good place to put a comment equivalent to that
+> in the old decoder:
+> 
+> # thumb_insn_is_16bit() ensures we won't be decoding these as
+> # T16 instructions for a Thumb2 CPU, so these patterns must be
+> # a Thumb1 split BL/BLX.
+> 
+>> +BLX_suffix      11101 imm:11                    &i
+>> +BL_BLX_prefix   11110 imm:s11                   &i
+>> +BL_suffix       11111 imm:11                    &i
 
-are respected.  Since we do not generally do a very good
-job of diagnosing all of the UNPREDICTABLE behavior, we
-should not rely on getting all of it, e.g. by requiring
-that if TT diagnoses some UNPRED that STREX also diagnoses
-similar UNPRED.
-
-I'm going to walk through the patch set and fix these.
+I had placed that with trans_BL_BLX_prefix, but I suppose this
+is a better place.
 
 
 r~

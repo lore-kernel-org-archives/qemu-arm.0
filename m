@@ -1,103 +1,102 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1153172wrs;
-        Wed, 28 Aug 2019 12:10:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxebpTNVUN1AFCfcpB0npSZDd1HqTBoVoUqpqbgaO4LkiA8HWzs+kQnf6yla/Q/x+OyMG3g
-X-Received: by 2002:ae9:f447:: with SMTP id z7mr5362713qkl.468.1567019433487;
-        Wed, 28 Aug 2019 12:10:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567019433; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1157030wrs;
+        Wed, 28 Aug 2019 12:13:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzx/ONAT0xF4fXcE35OB87H/Nd7aCM/sUZy3m4GQy3crRxiDFKb0lcZifgUWdaUn5noVnXo
+X-Received: by 2002:aed:3745:: with SMTP id i63mr5935933qtb.20.1567019625521;
+        Wed, 28 Aug 2019 12:13:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567019625; cv=none;
         d=google.com; s=arc-20160816;
-        b=UBpJNN7IGsZpeaU1s+syBljUamU2seoKYH+F6v7XpcIX76V3+NZU+WD/ibhU5dVwtE
-         p42M7MgJLoTtSGihnvITPfdEc6qao3+cRGL05yxxbNgTy80S9x8xcbeD/z3/wc2aZA3n
-         fD+5DjbN0DZnFf5VoImyoV+/rlnBayMgapG6QPmA2w7Z3uQPzTWbwzW5SukyEC6XiJZS
-         bJAmCRNjRvrwbx4NsrY2ProCkG1Nl76JP3IuGDNBN2mGxTXYLqcWSGXndGoNhhR1wsQJ
-         lsJtQ4W0Uhd22jAXb5zzLdsLnquqESHKpkNO6awtbtf4XgzKTjWdpSTz4aa+duIKe3iX
-         rsqg==
+        b=PX9+RdccWS+wMjE8shjZJACKU1nzz0cCJ5Fx+5cnIVJTsEj4Ydnk+Y1igH+WH0TJ44
+         nVu5gFbO8nyWbMv0IHpiaKTYWnAkdwM+8grkdkfqmhU6EEPnGQDSzF9nDcOEY8SsrCHj
+         Z/v+HKe9GsWaOhUznWsbfXfqNhhb58H84m8hoEr9jGgKGlrDD1DD1JWMGKFwy4dNe+Jk
+         u8XTpFPgA0uK1ln+QLnZ3HOm5MEdeEsGc2+vrdmBOXoMHMRdDRkj2NWhLHYfne22Lspa
+         3crHh4D6qDpH0Yuu32vJuXlROc9XHvkNmHSCi0b+3ioDKSaZAA5juvlTbAKi/qdb+SMz
+         3H+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=B2A6/wpXJBux6uYypYFk2UWEy4WHVhRgcH9FGKQ+apQ=;
-        b=C06n4SDIkShwuoG04kh+SGdbNIF6/gQ2UUjkzvhg5o/n8qJH4XlDt81y351+17+yYA
-         MZYzH1k0nXTqxPjm75WtBboDVQLRJPk/zA4Y8NHDb94blf+aAu6i/pvqk6b6TIxoE/g2
-         Rw4DLOWB+OhnAgvcyf3f9pTlMY/cbRSJzGheBzzbJ76B2bnPLVreBGd3bPbxppC/50XV
-         JlD/wNquU6U0I01UJqkz5jlnVxSfvJ70/tbqSjfH1NS6pZddcEkwxz6hAR9IElY7rp2S
-         NtZSVHIABWh1U7mSb1xh9/AITJalEuc8kPr8+QrGJMvq9Z/XAhJ84XCaNem+pl84p03K
-         EsYw==
+        bh=VO3W9DH8N43psEbK5DhPL38cP8IqwAsRisCTRHkRmo0=;
+        b=0IIawDaMkF6XqEjtQrUwPQDupNz/oqRoyYvx+Bt0MDfSC4n94vTLmQDJXzNJ/3OVwX
+         1XHwFyQdKoYiQevtwCJoYrCJiAqPjC8KY6Wqmf0N9Vdw48Lw0xM9K+4TLXx+Zq+yO2C1
+         B7QEnWUFpX12qzhi921p0zfPNHSUgROjKIlC7ZpTk/EUhymjmhKSY43jP9NHV+ZKXbiz
+         Lxm33Gf3g4frNAqThFhDVtmILQhLp+gUOesoRK9x0D4W1bXwELyanGxmIKA6ENuJ8Wf4
+         RB+Ys44li2oDAa+KCmcPiTJkOMLdf9IlrjnUdTbBd4AFMrtbS7wHgZutIpjGBOgpe2Fe
+         +CLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="j4xM/CNZ";
+       dkim=fail header.i=@linaro.org header.s=google header.b=KjA6QUR6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c32si21016qtb.224.2019.08.28.12.10.33
+        by mx.google.com with ESMTPS id a2si137538qkk.305.2019.08.28.12.13.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Aug 2019 12:10:33 -0700 (PDT)
+        Wed, 28 Aug 2019 12:13:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="j4xM/CNZ";
+       dkim=fail header.i=@linaro.org header.s=google header.b=KjA6QUR6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40924 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40976 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i33Ky-0008Gj-EC
-	for alex.bennee@linaro.org; Wed, 28 Aug 2019 15:10:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37448)
+	id 1i33O4-0002qM-RH
+	for alex.bennee@linaro.org; Wed, 28 Aug 2019 15:13:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37555)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1i33Fm-00032l-10
- for qemu-arm@nongnu.org; Wed, 28 Aug 2019 15:05:14 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1i33Fr-000386-Iv
+ for qemu-arm@nongnu.org; Wed, 28 Aug 2019 15:05:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1i33Fi-00087m-Gk
- for qemu-arm@nongnu.org; Wed, 28 Aug 2019 15:05:09 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:41375)
+ (envelope-from <richard.henderson@linaro.org>) id 1i33Fp-0008Iu-FW
+ for qemu-arm@nongnu.org; Wed, 28 Aug 2019 15:05:15 -0400
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:41812)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1i33Fi-00087H-61
- for qemu-arm@nongnu.org; Wed, 28 Aug 2019 15:05:06 -0400
-Received: by mail-pl1-x643.google.com with SMTP id m9so390193pls.8
- for <qemu-arm@nongnu.org>; Wed, 28 Aug 2019 12:05:06 -0700 (PDT)
+ id 1i33Fo-0008H7-V0
+ for qemu-arm@nongnu.org; Wed, 28 Aug 2019 15:05:13 -0400
+Received: by mail-pf1-x444.google.com with SMTP id 196so382145pfz.8
+ for <qemu-arm@nongnu.org>; Wed, 28 Aug 2019 12:05:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=B2A6/wpXJBux6uYypYFk2UWEy4WHVhRgcH9FGKQ+apQ=;
- b=j4xM/CNZTJpa80Nt7N0KtZ8+BGrCGhb5yUKc7dRqfcxyitTWYn86bha5ULcKsQdXdH
- APfD13V+l9wUM6H7VTxJkLjBTv3VVIpH378eMV0zB5+HTQ1+TdBJCXM/yg+ueKnSQqh4
- 9XwFHUtjIsXhnzBv/ulOH4Zbd+7pN4zcpTRYo7QBgg/P1Q/9W/WrRpwagOZi6QP1saGC
- w8NvwHQRKM9BDsZHAR5I3wWLP4tHZ3osQltnezVvFR/Z5Gs77Sz8JKVDGDcw48eUn0R/
- PHur3Npu9pkbw0DqWlCuvJ05JeHpNjETi9WamKcKgbTEdgsCsXYpETVumnrD49PlKKpg
- oD2w==
+ bh=VO3W9DH8N43psEbK5DhPL38cP8IqwAsRisCTRHkRmo0=;
+ b=KjA6QUR6nHRZf6I+bVkPcfociKyMauAjE0flKOHl0ZsKmjwS76Ihi0WhkoTM4CYjYk
+ 3ahHSdxrIHvLVvuV+l/u17TJNj51OW6px917/Bt4bVz3WL6Ka5A9OQPBe4psgOahx6xW
+ 6yI3uhnq04Db+XW7ja/dqvpUias5pPPCn5hHK8p8e7qI1pwsLpBI/4h/HN+ECiYkMU7E
+ RM7EzIrR4z6C0WHvB+vOy6kocsNgWCzMSNCgW/tYtMGIg7ltlx7/dS4vwef7YogVUdmJ
+ SIxnka9OdTGl792W6/KEvKmHv5Z2hXPIDWK4gjLwE2j2tBj3bhsCPkPJg6WMg+rd2jd5
+ pVbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=B2A6/wpXJBux6uYypYFk2UWEy4WHVhRgcH9FGKQ+apQ=;
- b=b6NK4qzNH6hDdE53l32zSv1AZlwz1Tt/qhJ4PBRZabOFpBBpjXMC+Him7iLifryvVU
- vgau6UVDQQBz1cq8KtSujlZeAVa+aUBYSb0p0JwetwqyznHAvzIiD8R+HQ5FhJ58XWpY
- 7kRholQRJoyWCVjXzX4/B+sG5hLkYc55pamtUAgrEGhrMjDE41l4oV0zBcy85wNkt661
- rZ+kHW4+5wmVoHFtm/ZiKHU8fw4AGsSzwBJzFMLjd9XJY7QnaMb7FPl3VN7UTJL7XVEe
- nJzrbFluEb1aR4QyYVvebCBBgUohDj4nB5nZ+yYEUbSp58q3nAZ72Zh09ZbIP5kkWKs0
- yABg==
-X-Gm-Message-State: APjAAAX9Ni9fEofiJ5ATn+3kERdNUjOHehJpkqRN8c9jkM80MuAnRrLm
- r6uB4Ot6yK6wMe9+FLk6aGub/Xx0GX8=
-X-Received: by 2002:a17:902:2f24:: with SMTP id
- s33mr5610012plb.314.1567019104969; 
- Wed, 28 Aug 2019 12:05:04 -0700 (PDT)
+ bh=VO3W9DH8N43psEbK5DhPL38cP8IqwAsRisCTRHkRmo0=;
+ b=CfgU9sUVVumordkgR5v/1a/cR0Yj5zFjAtBiPGzTDlKudRFCLZFRZ2Ep9xoRljlv1j
+ 3cphaevsaQIKEqv5PheiIKthafFolj58lc6DEOFz3YN/U1k27VfIjgtuUpieITRQQKxC
+ x4E6LXWQg9OvP8rNOxiHoeeKV8mtJ2W/XMzqsKQXr1j2r8tDKdgvXryicEmTZGzA+sY1
+ ewCZW3vol4m0TsEOjMGFy3ADcy6J2Hdf/E2Hka7zy/FnDyAVZBZUAyF+cwaZ+XAu6xGZ
+ CvraqNsSey5GANNHhFCcYMeVyv1iFR12eCIntnDSdQ5wu+WI/HkbzCyt8BtjZgGKg4Mk
+ 0pmw==
+X-Gm-Message-State: APjAAAUIfzvA4oC2Kg1xSWfleKiXvMPbPOQM2xLsgAfHbVsGH1KU+noE
+ ZN9c63gl6a4lp8IaNYi56saoSQ==
+X-Received: by 2002:a65:5b09:: with SMTP id y9mr4889095pgq.345.1567019111704; 
+ Wed, 28 Aug 2019 12:05:11 -0700 (PDT)
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
  [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id f27sm2967944pgm.60.2019.08.28.12.05.03
+ by smtp.gmail.com with ESMTPSA id f27sm2967944pgm.60.2019.08.28.12.05.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Aug 2019 12:05:04 -0700 (PDT)
+ Wed, 28 Aug 2019 12:05:10 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Wed, 28 Aug 2019 12:03:52 -0700
-Message-Id: <20190828190456.30315-6-richard.henderson@linaro.org>
+Date: Wed, 28 Aug 2019 12:03:57 -0700
+Message-Id: <20190828190456.30315-11-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190828190456.30315-1-richard.henderson@linaro.org>
 References: <20190828190456.30315-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::643
-Subject: [Qemu-arm] [PATCH v3 05/69] target/arm: Convert Data Processing
- (immediate)
+X-Received-From: 2607:f8b0:4864:20::444
+Subject: [Qemu-arm] [PATCH v3 10/69] target/arm: Simplify op_smlaxxx for
+ SMLAL*
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,644 +111,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sjj1mW755W1X
+X-TUID: Gmbzo98J2Jo2
 
-Convert the modified immediate form of the data processing insns.
-For A32, we can finally remove any code that was intertwined with
-the register and register-shifted-register forms.
+Since all of the inputs and outputs are i32, dispense with
+the intermediate promotion to i64 and use tcg_gen_add2_i32.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate.c | 449 +++++++++++------------------------------
- target/arm/a32.decode  |  29 +++
- target/arm/t32.decode  |  42 ++++
- 3 files changed, 186 insertions(+), 334 deletions(-)
+ target/arm/translate.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index d8a341203b..d5689a16e2 100644
+index 58983ccf88..8813d40a2c 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -439,12 +439,6 @@ static void gen_add16(TCGv_i32 t0, TCGv_i32 t1)
-     tcg_temp_free_i32(t1);
- }
- 
--/* Set CF to the top bit of var.  */
--static void gen_set_CF_bit31(TCGv_i32 var)
--{
--    tcg_gen_shri_i32(cpu_CF, var, 31);
--}
--
- /* Set N and Z flags from var.  */
- static inline void gen_logic_CC(TCGv_i32 var)
+@@ -8151,8 +8151,7 @@ DO_QADDSUB(QDSUB, false, true)
+ static bool op_smlaxxx(DisasContext *s, arg_rrrr *a,
+                        int add_long, bool nt, bool mt)
  {
-@@ -857,25 +851,6 @@ void arm_gen_test_cc(int cc, TCGLabel *label)
-     arm_free_cc(&cmp);
- }
+-    TCGv_i32 t0, t1;
+-    TCGv_i64 t64;
++    TCGv_i32 t0, t1, tl, th;
  
--static const uint8_t table_logic_cc[16] = {
--    1, /* and */
--    1, /* xor */
--    0, /* sub */
--    0, /* rsb */
--    0, /* add */
--    0, /* adc */
--    0, /* sbc */
--    0, /* rsc */
--    1, /* andl */
--    1, /* xorl */
--    0, /* cmp */
--    0, /* cmn */
--    1, /* orr */
--    1, /* mov */
--    1, /* bic */
--    1, /* mvn */
--};
--
- static inline void gen_set_condexec(DisasContext *s)
- {
-     if (s->condexec_mask) {
-@@ -7657,6 +7632,48 @@ static void arm_skip_unless(DisasContext *s, uint32_t cond)
-     arm_gen_test_cc(cond ^ 1, s->condlabel);
- }
- 
-+
-+/*
-+ * Constant expanders for the decoders.
-+ */
-+
-+static int times_2(DisasContext *s, int x)
-+{
-+    return x * 2;
-+}
-+
-+/* Return only the rotation part of T32ExpandImm.  */
-+static int t32_expandimm_rot(DisasContext *s, int x)
-+{
-+    return x & 0xc00 ? extract32(x, 7, 5) : 0;
-+}
-+
-+/* Return the unrotated immediate from T32ExpandImm.  */
-+static int t32_expandimm_imm(DisasContext *s, int x)
-+{
-+    int imm = extract32(x, 0, 8);
-+
-+    switch (extract32(x, 8, 4)) {
-+    case 0: /* XY */
-+        /* Nothing to do.  */
-+        break;
-+    case 1: /* 00XY00XY */
-+        imm *= 0x00010001;
-+        break;
-+    case 2: /* XY00XY00 */
-+        imm *= 0x01000100;
-+        break;
-+    case 3: /* XYXYXYXY */
-+        imm *= 0x01010101;
-+        break;
-+    default:
-+        /* Rotated constant.  */
-+        imm |= 0x80;
-+        break;
-+    }
-+    return imm;
-+}
-+
- /*
-  * Include the generated decoders.
-  */
-@@ -7812,23 +7829,82 @@ static bool op_s_rxr_shr(DisasContext *s, arg_s_rrr_shr *a,
-     return store_reg_kind(s, a->rd, tmp2, kind);
- }
- 
-+/*
-+ * Data-processing (immediate)
-+ *
-+ * Operate, with set flags, one register source,
-+ * one rotated immediate, and a destination.
-+ *
-+ * Note that logic_cc && a->rot setting CF based on the msb of the
-+ * immediate is the reason why we must pass in the unrotated form
-+ * of the immediate.
-+ */
-+static bool op_s_rri_rot(DisasContext *s, arg_s_rri_rot *a,
-+                         void (*gen)(TCGv_i32, TCGv_i32, TCGv_i32),
-+                         int logic_cc, StoreRegKind kind)
-+{
-+    TCGv_i32 tmp1, tmp2;
-+    uint32_t imm;
-+
-+    imm = ror32(a->imm, a->rot);
-+    if (logic_cc && a->rot) {
-+        tcg_gen_movi_i32(cpu_CF, imm >> 31);
-+    }
-+    tmp2 = tcg_const_i32(imm);
-+    tmp1 = load_reg(s, a->rn);
-+
-+    gen(tmp1, tmp1, tmp2);
-+    tcg_temp_free_i32(tmp2);
-+
-+    if (logic_cc) {
-+        gen_logic_CC(tmp1);
-+    }
-+    return store_reg_kind(s, a->rd, tmp1, kind);
-+}
-+
-+static bool op_s_rxi_rot(DisasContext *s, arg_s_rri_rot *a,
-+                         void (*gen)(TCGv_i32, TCGv_i32),
-+                         int logic_cc, StoreRegKind kind)
-+{
-+    TCGv_i32 tmp;
-+    uint32_t imm;
-+
-+    imm = ror32(a->imm, a->rot);
-+    if (logic_cc && a->rot) {
-+        tcg_gen_movi_i32(cpu_CF, imm >> 31);
-+    }
-+    tmp = tcg_const_i32(imm);
-+
-+    gen(tmp, tmp);
-+    if (logic_cc) {
-+        gen_logic_CC(tmp);
-+    }
-+    return store_reg_kind(s, a->rd, tmp, kind);
-+}
-+
- #define DO_ANY3(NAME, OP, L, K)                                         \
-     static bool trans_##NAME##_rrri(DisasContext *s, arg_s_rrr_shi *a)  \
-     { StoreRegKind k = (K); return op_s_rrr_shi(s, a, OP, L, k); }      \
-     static bool trans_##NAME##_rrrr(DisasContext *s, arg_s_rrr_shr *a)  \
--    { StoreRegKind k = (K); return op_s_rrr_shr(s, a, OP, L, k); }
-+    { StoreRegKind k = (K); return op_s_rrr_shr(s, a, OP, L, k); }      \
-+    static bool trans_##NAME##_rri(DisasContext *s, arg_s_rri_rot *a)   \
-+    { StoreRegKind k = (K); return op_s_rri_rot(s, a, OP, L, k); }
- 
- #define DO_ANY2(NAME, OP, L, K)                                         \
-     static bool trans_##NAME##_rxri(DisasContext *s, arg_s_rrr_shi *a)  \
-     { StoreRegKind k = (K); return op_s_rxr_shi(s, a, OP, L, k); }      \
-     static bool trans_##NAME##_rxrr(DisasContext *s, arg_s_rrr_shr *a)  \
--    { StoreRegKind k = (K); return op_s_rxr_shr(s, a, OP, L, k); }
-+    { StoreRegKind k = (K); return op_s_rxr_shr(s, a, OP, L, k); }      \
-+    static bool trans_##NAME##_rxi(DisasContext *s, arg_s_rri_rot *a)   \
-+    { StoreRegKind k = (K); return op_s_rxi_rot(s, a, OP, L, k); }
- 
- #define DO_CMP2(NAME, OP, L)                                            \
-     static bool trans_##NAME##_xrri(DisasContext *s, arg_s_rrr_shi *a)  \
-     { return op_s_rrr_shi(s, a, OP, L, STREG_NONE); }                   \
-     static bool trans_##NAME##_xrrr(DisasContext *s, arg_s_rrr_shr *a)  \
--    { return op_s_rrr_shr(s, a, OP, L, STREG_NONE); }
-+    { return op_s_rrr_shr(s, a, OP, L, STREG_NONE); }                   \
-+    static bool trans_##NAME##_xri(DisasContext *s, arg_s_rri_rot *a)   \
-+    { return op_s_rri_rot(s, a, OP, L, STREG_NONE); }
- 
- DO_ANY3(AND, tcg_gen_and_i32, a->s, STREG_NORMAL)
- DO_ANY3(EOR, tcg_gen_xor_i32, a->s, STREG_NORMAL)
-@@ -7908,6 +7984,11 @@ static bool trans_ORN_rrri(DisasContext *s, arg_s_rrr_shi *a)
-     return op_s_rrr_shi(s, a, tcg_gen_orc_i32, a->s, STREG_NORMAL);
- }
- 
-+static bool trans_ORN_rri(DisasContext *s, arg_s_rri_rot *a)
-+{
-+    return op_s_rri_rot(s, a, tcg_gen_orc_i32, a->s, STREG_NORMAL);
-+}
-+
- #undef DO_ANY3
- #undef DO_ANY2
- #undef DO_CMP2
-@@ -8445,182 +8526,9 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-     } else if (((insn & 0x0e000000) == 0 &&
-                 (insn & 0x00000090) != 0x90) ||
-                ((insn & 0x0e000000) == (1 << 25))) {
--        int set_cc, logic_cc, shiftop;
--
--        op1 = (insn >> 21) & 0xf;
--        set_cc = (insn >> 20) & 1;
--        logic_cc = table_logic_cc[op1] & set_cc;
--
--        /* data processing instruction */
--        if (insn & (1 << 25)) {
--            /* immediate operand */
--            val = insn & 0xff;
--            shift = ((insn >> 8) & 0xf) * 2;
--            val = ror32(val, shift);
--            tmp2 = tcg_temp_new_i32();
--            tcg_gen_movi_i32(tmp2, val);
--            if (logic_cc && shift) {
--                gen_set_CF_bit31(tmp2);
--            }
--        } else {
--            /* register */
--            rm = (insn) & 0xf;
--            tmp2 = load_reg(s, rm);
--            shiftop = (insn >> 5) & 3;
--            if (!(insn & (1 << 4))) {
--                shift = (insn >> 7) & 0x1f;
--                gen_arm_shift_im(tmp2, shiftop, shift, logic_cc);
--            } else {
--                rs = (insn >> 8) & 0xf;
--                tmp = load_reg(s, rs);
--                gen_arm_shift_reg(tmp2, shiftop, tmp, logic_cc);
--            }
--        }
--        if (op1 != 0x0f && op1 != 0x0d) {
--            rn = (insn >> 16) & 0xf;
--            tmp = load_reg(s, rn);
--        } else {
--            tmp = NULL;
--        }
--        rd = (insn >> 12) & 0xf;
--        switch(op1) {
--        case 0x00:
--            tcg_gen_and_i32(tmp, tmp, tmp2);
--            if (logic_cc) {
--                gen_logic_CC(tmp);
--            }
--            store_reg_bx(s, rd, tmp);
--            break;
--        case 0x01:
--            tcg_gen_xor_i32(tmp, tmp, tmp2);
--            if (logic_cc) {
--                gen_logic_CC(tmp);
--            }
--            store_reg_bx(s, rd, tmp);
--            break;
--        case 0x02:
--            if (set_cc && rd == 15) {
--                /* SUBS r15, ... is used for exception return.  */
--                if (IS_USER(s)) {
--                    goto illegal_op;
--                }
--                gen_sub_CC(tmp, tmp, tmp2);
--                gen_exception_return(s, tmp);
--            } else {
--                if (set_cc) {
--                    gen_sub_CC(tmp, tmp, tmp2);
--                } else {
--                    tcg_gen_sub_i32(tmp, tmp, tmp2);
--                }
--                store_reg_bx(s, rd, tmp);
--            }
--            break;
--        case 0x03:
--            if (set_cc) {
--                gen_sub_CC(tmp, tmp2, tmp);
--            } else {
--                tcg_gen_sub_i32(tmp, tmp2, tmp);
--            }
--            store_reg_bx(s, rd, tmp);
--            break;
--        case 0x04:
--            if (set_cc) {
--                gen_add_CC(tmp, tmp, tmp2);
--            } else {
--                tcg_gen_add_i32(tmp, tmp, tmp2);
--            }
--            store_reg_bx(s, rd, tmp);
--            break;
--        case 0x05:
--            if (set_cc) {
--                gen_adc_CC(tmp, tmp, tmp2);
--            } else {
--                gen_add_carry(tmp, tmp, tmp2);
--            }
--            store_reg_bx(s, rd, tmp);
--            break;
--        case 0x06:
--            if (set_cc) {
--                gen_sbc_CC(tmp, tmp, tmp2);
--            } else {
--                gen_sub_carry(tmp, tmp, tmp2);
--            }
--            store_reg_bx(s, rd, tmp);
--            break;
--        case 0x07:
--            if (set_cc) {
--                gen_sbc_CC(tmp, tmp2, tmp);
--            } else {
--                gen_sub_carry(tmp, tmp2, tmp);
--            }
--            store_reg_bx(s, rd, tmp);
--            break;
--        case 0x08:
--            if (set_cc) {
--                tcg_gen_and_i32(tmp, tmp, tmp2);
--                gen_logic_CC(tmp);
--            }
--            tcg_temp_free_i32(tmp);
--            break;
--        case 0x09:
--            if (set_cc) {
--                tcg_gen_xor_i32(tmp, tmp, tmp2);
--                gen_logic_CC(tmp);
--            }
--            tcg_temp_free_i32(tmp);
--            break;
--        case 0x0a:
--            if (set_cc) {
--                gen_sub_CC(tmp, tmp, tmp2);
--            }
--            tcg_temp_free_i32(tmp);
--            break;
--        case 0x0b:
--            if (set_cc) {
--                gen_add_CC(tmp, tmp, tmp2);
--            }
--            tcg_temp_free_i32(tmp);
--            break;
--        case 0x0c:
--            tcg_gen_or_i32(tmp, tmp, tmp2);
--            if (logic_cc) {
--                gen_logic_CC(tmp);
--            }
--            store_reg_bx(s, rd, tmp);
--            break;
--        case 0x0d:
--            if (logic_cc && rd == 15) {
--                /* MOVS r15, ... is used for exception return.  */
--                if (IS_USER(s)) {
--                    goto illegal_op;
--                }
--                gen_exception_return(s, tmp2);
--            } else {
--                if (logic_cc) {
--                    gen_logic_CC(tmp2);
--                }
--                store_reg_bx(s, rd, tmp2);
--            }
--            break;
--        case 0x0e:
--            tcg_gen_andc_i32(tmp, tmp, tmp2);
--            if (logic_cc) {
--                gen_logic_CC(tmp);
--            }
--            store_reg_bx(s, rd, tmp);
--            break;
--        default:
--        case 0x0f:
--            tcg_gen_not_i32(tmp2, tmp2);
--            if (logic_cc) {
--                gen_logic_CC(tmp2);
--            }
--            store_reg_bx(s, rd, tmp2);
--            break;
--        }
--        if (op1 != 0x0f && op1 != 0x0d) {
--            tcg_temp_free_i32(tmp2);
--        }
-+        /* Data-processing (reg, reg-shift-reg, imm).  */
-+        /* All done in decodetree.  Reach here for illegal ops.  */
-+        goto illegal_op;
-     } else {
-         /* other instructions */
-         op1 = (insn >> 24) & 0xf;
-@@ -9517,82 +9425,6 @@ static bool thumb_insn_is_16bit(DisasContext *s, uint32_t pc, uint32_t insn)
-     return true;
- }
- 
--/* Generate code for a Thumb-2 data processing operation.  If CONDS is nonzero
--   then set condition code flags based on the result of the operation.
--   If SHIFTER_OUT is nonzero then set the carry flag for logical operations
--   to the high bit of T1.
--   Returns zero if the opcode is valid.  */
--
--static int
--gen_thumb2_data_op(DisasContext *s, int op, int conds, uint32_t shifter_out,
--                   TCGv_i32 t0, TCGv_i32 t1)
--{
--    int logic_cc;
--
--    logic_cc = 0;
--    switch (op) {
--    case 0: /* and */
--        tcg_gen_and_i32(t0, t0, t1);
--        logic_cc = conds;
--        break;
--    case 1: /* bic */
--        tcg_gen_andc_i32(t0, t0, t1);
--        logic_cc = conds;
--        break;
--    case 2: /* orr */
--        tcg_gen_or_i32(t0, t0, t1);
--        logic_cc = conds;
--        break;
--    case 3: /* orn */
--        tcg_gen_orc_i32(t0, t0, t1);
--        logic_cc = conds;
--        break;
--    case 4: /* eor */
--        tcg_gen_xor_i32(t0, t0, t1);
--        logic_cc = conds;
--        break;
--    case 8: /* add */
--        if (conds)
--            gen_add_CC(t0, t0, t1);
--        else
--            tcg_gen_add_i32(t0, t0, t1);
--        break;
--    case 10: /* adc */
--        if (conds)
--            gen_adc_CC(t0, t0, t1);
--        else
--            gen_adc(t0, t1);
--        break;
--    case 11: /* sbc */
--        if (conds) {
--            gen_sbc_CC(t0, t0, t1);
--        } else {
--            gen_sub_carry(t0, t0, t1);
--        }
--        break;
--    case 13: /* sub */
--        if (conds)
--            gen_sub_CC(t0, t0, t1);
--        else
--            tcg_gen_sub_i32(t0, t0, t1);
--        break;
--    case 14: /* rsb */
--        if (conds)
--            gen_sub_CC(t0, t1, t0);
--        else
--            tcg_gen_sub_i32(t0, t1, t0);
--        break;
--    default: /* 5, 6, 7, 9, 12, 15. */
--        return 1;
--    }
--    if (logic_cc) {
--        gen_logic_CC(t0);
--        if (shifter_out)
--            gen_set_CF_bit31(t1);
--    }
--    return 0;
--}
--
- /* Translate a 32-bit thumb instruction. */
- static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
- {
-@@ -10867,60 +10699,9 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
-                     }
-                 }
-             } else {
--                /*
--                 * 0b1111_0x0x_xxxx_0xxx_xxxx_xxxx
--                 *  - Data-processing (modified immediate)
--                 */
--                int shifter_out = 0;
--                /* modified 12-bit immediate.  */
--                shift = ((insn & 0x04000000) >> 23) | ((insn & 0x7000) >> 12);
--                imm = (insn & 0xff);
--                switch (shift) {
--                case 0: /* XY */
--                    /* Nothing to do.  */
--                    break;
--                case 1: /* 00XY00XY */
--                    imm |= imm << 16;
--                    break;
--                case 2: /* XY00XY00 */
--                    imm |= imm << 16;
--                    imm <<= 8;
--                    break;
--                case 3: /* XYXYXYXY */
--                    imm |= imm << 16;
--                    imm |= imm << 8;
--                    break;
--                default: /* Rotated constant.  */
--                    shift = (shift << 1) | (imm >> 7);
--                    imm |= 0x80;
--                    imm = imm << (32 - shift);
--                    shifter_out = 1;
--                    break;
--                }
--                tmp2 = tcg_temp_new_i32();
--                tcg_gen_movi_i32(tmp2, imm);
--                rn = (insn >> 16) & 0xf;
--                if (rn == 15) {
--                    tmp = tcg_temp_new_i32();
--                    tcg_gen_movi_i32(tmp, 0);
--                } else {
--                    tmp = load_reg(s, rn);
--                }
--                op = (insn >> 21) & 0xf;
--                if (gen_thumb2_data_op(s, op, (insn & (1 << 20)) != 0,
--                                       shifter_out, tmp, tmp2))
--                    goto illegal_op;
--                tcg_temp_free_i32(tmp2);
--                rd = (insn >> 8) & 0xf;
--                if (rd == 13 && rn == 13
--                    && (op == 8 || op == 13)) {
--                    /* ADD(S) SP, SP, imm or SUB(S) SP, SP, imm */
--                    store_sp_checked(s, tmp);
--                } else if (rd != 15) {
--                    store_reg(s, rd, tmp);
--                } else {
--                    tcg_temp_free_i32(tmp);
--                }
-+                /* Data-processing (modified immediate) */
-+                /* All done in decodetree.  Reach here for illegal ops.  */
-+                goto illegal_op;
-             }
-         }
+     if (s->thumb
+         ? !arm_dc_feature(s, ARM_FEATURE_THUMB_DSP)
+@@ -8176,12 +8175,14 @@ static bool op_smlaxxx(DisasContext *s, arg_rrrr *a,
+         store_reg(s, a->rd, t0);
          break;
-diff --git a/target/arm/a32.decode b/target/arm/a32.decode
-index 8e0fb06d05..286adcbf89 100644
---- a/target/arm/a32.decode
-+++ b/target/arm/a32.decode
-@@ -24,6 +24,7 @@
- 
- &s_rrr_shi       s rd rn rm shim shty
- &s_rrr_shr       s rn rd rm rs shty
-+&s_rri_rot       s rn rd imm rot
- 
- # Data-processing (register)
- 
-@@ -76,3 +77,31 @@ ORR_rrrr         .... 000 1100 . .... .... .... 0 .. 1 ....   @s_rrr_shr
- MOV_rxrr         .... 000 1101 . 0000 .... .... 0 .. 1 ....   @s_rxr_shr
- BIC_rrrr         .... 000 1110 . .... .... .... 0 .. 1 ....   @s_rrr_shr
- MVN_rxrr         .... 000 1111 . 0000 .... .... 0 .. 1 ....   @s_rxr_shr
-+
-+# Data-processing (immediate)
-+
-+%a32extrot       8:4 !function=times_2
-+
-+@s_rri_rot       ---- ... .... s:1 rn:4 rd:4 .... imm:8 \
-+                 &s_rri_rot rot=%a32extrot
-+@s_rxi_rot       ---- ... .... s:1 .... rd:4 .... imm:8 \
-+                 &s_rri_rot rot=%a32extrot rn=0
-+@S_xri_rot       ---- ... .... .   rn:4 .... .... imm:8 \
-+                 &s_rri_rot rot=%a32extrot rd=0 s=1
-+
-+AND_rri          .... 001 0000 . .... .... ............       @s_rri_rot
-+EOR_rri          .... 001 0001 . .... .... ............       @s_rri_rot
-+SUB_rri          .... 001 0010 . .... .... ............       @s_rri_rot
-+RSB_rri          .... 001 0011 . .... .... ............       @s_rri_rot
-+ADD_rri          .... 001 0100 . .... .... ............       @s_rri_rot
-+ADC_rri          .... 001 0101 . .... .... ............       @s_rri_rot
-+SBC_rri          .... 001 0110 . .... .... ............       @s_rri_rot
-+RSC_rri          .... 001 0111 . .... .... ............       @s_rri_rot
-+TST_xri          .... 001 1000 1 .... 0000 ............       @S_xri_rot
-+TEQ_xri          .... 001 1001 1 .... 0000 ............       @S_xri_rot
-+CMP_xri          .... 001 1010 1 .... 0000 ............       @S_xri_rot
-+CMN_xri          .... 001 1011 1 .... 0000 ............       @S_xri_rot
-+ORR_rri          .... 001 1100 . .... .... ............       @s_rri_rot
-+MOV_rxi          .... 001 1101 . 0000 .... ............       @s_rxi_rot
-+BIC_rri          .... 001 1110 . .... .... ............       @s_rri_rot
-+MVN_rxi          .... 001 1111 . 0000 .... ............       @s_rxi_rot
-diff --git a/target/arm/t32.decode b/target/arm/t32.decode
-index f0a73fa003..50cbe48cc8 100644
---- a/target/arm/t32.decode
-+++ b/target/arm/t32.decode
-@@ -21,6 +21,7 @@
- 
- &s_rrr_shi       !extern s rd rn rm shim shty
- &s_rrr_shr       !extern s rn rd rm rs shty
-+&s_rri_rot       !extern s rn rd imm rot
- 
- # Data-processing (register)
- 
-@@ -67,3 +68,44 @@ RSB_rrri         1110101 1110 . .... 0 ... .... .... ....     @s_rrr_shi
- 
- MOV_rxrr         1111 1010 0 shty:2 s:1 rm:4 1111 rd:4 0000 rs:4 \
-                  &s_rrr_shr rn=0
-+
-+# Data-processing (immediate)
-+
-+%t32extrot       26:1 12:3 0:8  !function=t32_expandimm_rot
-+%t32extimm       26:1 12:3 0:8  !function=t32_expandimm_imm
-+
-+@s_rri_rot       ....... .... s:1 rn:4 . ... rd:4 ........ \
-+                 &s_rri_rot imm=%t32extimm rot=%t32extrot
-+@s_rxi_rot       ....... .... s:1 .... . ... rd:4 ........ \
-+                 &s_rri_rot imm=%t32extimm rot=%t32extrot rn=0
-+@S_xri_rot       ....... .... .   rn:4 . ... .... ........ \
-+                 &s_rri_rot imm=%t32extimm rot=%t32extrot s=1 rd=0
-+
-+{
-+  TST_xri        1111 0.0 0000 1 .... 0 ... 1111 ........     @S_xri_rot
-+  AND_rri        1111 0.0 0000 . .... 0 ... .... ........     @s_rri_rot
-+}
-+BIC_rri          1111 0.0 0001 . .... 0 ... .... ........     @s_rri_rot
-+{
-+  MOV_rxi        1111 0.0 0010 . 1111 0 ... .... ........     @s_rxi_rot
-+  ORR_rri        1111 0.0 0010 . .... 0 ... .... ........     @s_rri_rot
-+}
-+{
-+  MVN_rxi        1111 0.0 0011 . 1111 0 ... .... ........     @s_rxi_rot
-+  ORN_rri        1111 0.0 0011 . .... 0 ... .... ........     @s_rri_rot
-+}
-+{
-+  TEQ_xri        1111 0.0 0100 1 .... 0 ... 1111 ........     @S_xri_rot
-+  EOR_rri        1111 0.0 0100 . .... 0 ... .... ........     @s_rri_rot
-+}
-+{
-+  CMN_xri        1111 0.0 1000 1 .... 0 ... 1111 ........     @S_xri_rot
-+  ADD_rri        1111 0.0 1000 . .... 0 ... .... ........     @s_rri_rot
-+}
-+ADC_rri          1111 0.0 1010 . .... 0 ... .... ........     @s_rri_rot
-+SBC_rri          1111 0.0 1011 . .... 0 ... .... ........     @s_rri_rot
-+{
-+  CMP_xri        1111 0.0 1101 1 .... 0 ... 1111 ........     @S_xri_rot
-+  SUB_rri        1111 0.0 1101 . .... 0 ... .... ........     @s_rri_rot
-+}
-+RSB_rri          1111 0.0 1110 . .... 0 ... .... ........     @s_rri_rot
+     case 2:
+-        t64 = tcg_temp_new_i64();
+-        tcg_gen_ext_i32_i64(t64, t0);
++        tl = load_reg(s, a->ra);
++        th = load_reg(s, a->rd);
++        t1 = tcg_const_i32(0);
++        tcg_gen_add2_i32(tl, th, tl, th, t0, t1);
+         tcg_temp_free_i32(t0);
+-        gen_addq(s, t64, a->ra, a->rd);
+-        gen_storeq_reg(s, a->ra, a->rd, t64);
+-        tcg_temp_free_i64(t64);
++        tcg_temp_free_i32(t1);
++        store_reg(s, a->ra, tl);
++        store_reg(s, a->rd, th);
+         break;
+     default:
+         g_assert_not_reached();
 -- 
 2.17.1
 

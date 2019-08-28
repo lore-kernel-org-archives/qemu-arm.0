@@ -1,103 +1,103 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1189544wrs;
-        Wed, 28 Aug 2019 12:44:00 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzBvICsUbDffp2GEKpdpvIlxMegkecRYpizR1AVLHYiGkPfMYyUrxsgHGt8pvnxnRKc4dgc
-X-Received: by 2002:a37:4a88:: with SMTP id x130mr5878046qka.501.1567021440147;
-        Wed, 28 Aug 2019 12:44:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567021440; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1189894wrs;
+        Wed, 28 Aug 2019 12:44:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyxiqyF6qhPORUggbEuYv02Vb0wDnjJJVjmMZWUXqBb/vuJ1d1+RnLjSYLg9krSNw+MAPQe
+X-Received: by 2002:a37:4d16:: with SMTP id a22mr5908382qkb.482.1567021460045;
+        Wed, 28 Aug 2019 12:44:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567021460; cv=none;
         d=google.com; s=arc-20160816;
-        b=nnTfEDfoZMKtf7vMKZczRPijdrawnfDLwwabEpePwxMe/lcJUZMXLY+7/6/UBoAURP
-         Zc/SvMI8VwLHz60cbJeDY+Vaeu4IBttdi5n/Ze6K2AHYkqR5THrqvrkCcfxsGN0uyeS8
-         x6oYXIjUee565ueMC0Z/esd5LXuDZCsBTZIh7UBtyoO0lpidckD7riedZcwtfrAsxhuG
-         M89EDJwmIefE27skKCaDGe1EfX29E8+KkxHRDGNIR/qcyifj5ByrWnglDbMn1qjiray/
-         tgZQZYe0PWzx2PfMRmBYzkproBgtO7OoqirE2B3ZFxPnH+041doqQNPeoLweIdT4S3xi
-         KPiA==
+        b=Rm/XBVCzm394TEzv/iW7N4t6kN8PqpNWe2ToryPSgOGJS2g6o1zSYyvC8rYcJ+akkm
+         LPUnqAzsSy2DqB9TuI1NgY/s7Tpxf69qWw09ZpDzvPrG5C743Wh65j/htgpE91rvcIMD
+         +7X9Y/8VlGSMUpZ+jZeDOpmjZsRx7kvfGq+8hZZZhocoLegMdPMT30Jck0xx7pFmyDu4
+         LYqG2YdSLGHHBeCnfUghkiRwCboD5hWKOyEF2oqxDwj7g87FzEmFubSIPdRFu/EPjP9N
+         OBgOaRiFgfaygI/x3SDYmWMGoH2jXMzHHEmKmyJpGsT6eKwLz4jzEWNzlw+u1w/hq5oM
+         lBlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=kwRo4zZzHNj2f8dsvm1cnawVi86AhDJJQQALYH4bbvo=;
-        b=tgOgNMjFY5lcftg4r7itm2yD0NMowl1kYm/6PFekaaM5vR6YJ4lI20dAoQJPAn4wCb
-         R5uJNQou5OKbCG40xYpbxEFKJgAgmVUXNfLQel7ccJoTjNIs4avA+43SDOEGlOdeOkUC
-         qu+hPw8N/wH0E3qynNvNO9zhycY5vNmVka21dRTbvovNdAdnKyBb6YD4Z0SS8nrI1m1Z
-         4XNT4TmFq368BJ77ZEar4TnDdjlh6QiLLyiWPanwk+CrXYGlRd2ZVLlnjTDEeX2f+55+
-         8CYO2YjCWXYZu6LNb2yrLaKs9b+rIHKMlBJfoPhS5gxoOpR0jeVpCvJTCNdV88TJkdLH
-         C45A==
+        bh=x7zkDeuRWBqPgbu0Uw/jBwIGlLUUfHJ8yMWyeY3L4GI=;
+        b=cWUWdvCqPY9/TtjOglq55/xfmzoVeJzpIuHFOThTy0qpapdC0XjzPW6Gy8fBu7Bz+V
+         dd5avut1k0ViSZcGANPHPOAURiJJtFC+B7yl68LZipADLXcoakf+AkZA6Q6Z/CRQlt72
+         Cck0IPSnhMqUipxxZmn0T6l1xUtnlu9r5Y54s5FaM77he3k87J2QW99UmEIteTULAemZ
+         0aYex0TKSNgBhPIcUMpw/FWQLpNq8Yxb6MboawOVfZMMHkCTSpJAi28NmmECgGRBcxki
+         /JlykfeMncWSEjLTGdPUwDHqEpUyRUrnUV3ps7HPOau5kwyD2KB0rLyqcTxIjZSBZxHY
+         /DBg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RxbwHwda;
+       dkim=fail header.i=@linaro.org header.s=google header.b=axcs5CpE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i1si79026qtj.361.2019.08.28.12.44.00
+        by mx.google.com with ESMTPS id 29si223200qvv.33.2019.08.28.12.44.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Aug 2019 12:44:00 -0700 (PDT)
+        Wed, 28 Aug 2019 12:44:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RxbwHwda;
+       dkim=fail header.i=@linaro.org header.s=google header.b=axcs5CpE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41547 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41556 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i33rL-00075r-1w
-	for alex.bennee@linaro.org; Wed, 28 Aug 2019 15:43:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38554)
+	id 1i33rf-0007SP-3F
+	for alex.bennee@linaro.org; Wed, 28 Aug 2019 15:44:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38710)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1i33Gi-0003t8-Qc
- for qemu-arm@nongnu.org; Wed, 28 Aug 2019 15:06:10 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1i33Gp-0003wL-01
+ for qemu-arm@nongnu.org; Wed, 28 Aug 2019 15:06:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1i33Gg-0000YT-4C
- for qemu-arm@nongnu.org; Wed, 28 Aug 2019 15:06:07 -0400
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:40507)
+ (envelope-from <richard.henderson@linaro.org>) id 1i33Gm-0000ef-J0
+ for qemu-arm@nongnu.org; Wed, 28 Aug 2019 15:06:14 -0400
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:38384)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1i33Ge-0000WA-SP
- for qemu-arm@nongnu.org; Wed, 28 Aug 2019 15:06:05 -0400
-Received: by mail-pl1-x644.google.com with SMTP id h3so393783pls.7
- for <qemu-arm@nongnu.org>; Wed, 28 Aug 2019 12:06:01 -0700 (PDT)
+ id 1i33Gl-0000bQ-QF
+ for qemu-arm@nongnu.org; Wed, 28 Aug 2019 15:06:12 -0400
+Received: by mail-pl1-x643.google.com with SMTP id w11so400818plp.5
+ for <qemu-arm@nongnu.org>; Wed, 28 Aug 2019 12:06:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=kwRo4zZzHNj2f8dsvm1cnawVi86AhDJJQQALYH4bbvo=;
- b=RxbwHwdaNXVghcwQxxv2AhEAgUCdq06Zam78cjeGv2zovSoZTyCduTZGZyddgatOxY
- VZ6kGBKtsdCi44JXVAjf87ZODnUcyCX2wQ/pxR5aDWWWiApvgdDnfy+GZlqrbDzyWMrE
- dMl/VpkBOEkNNpma9HfeRWofcBWkJ9aaqTpcz1xkN0Ym/OP6e+1PykGBbfJ/H/17uFSn
- fAWBbadEzT3QI1rifD48scQMgVQQjiixIUsaKYw1dHWE4eKoGJXfuRQisKf3s+UfblYC
- lGUMThWP4Diwkrl1ZjIMdjQHz0IAJH5YluVfJ3wNrG8I7T7g/JHcl7dKWPYL4hB6iOXZ
- 1qGQ==
+ bh=x7zkDeuRWBqPgbu0Uw/jBwIGlLUUfHJ8yMWyeY3L4GI=;
+ b=axcs5CpEI8yuoqlwGkqd94L5BMP4ASAOkiNXDU6hWnvu0S83Cg1jOCz6Muv7zNLMMj
+ MfacYvCjljRRbZ4FM9E3NxO5haSKLTn5TleGwN1JEoaBt4t2Q0ZtWTuPNbtH03rv3A8X
+ Fdf8VOsZ8ZxUmeX4SI3MTmHiXVy9FWXqO17a5nNO0diqdwoDBsdqC4b/W0+DO2PA8aGO
+ 3hh3daIdiTPXjj1Voen45MBovK7++mwyjyNfQ+lIz54FyWH4mP3aYcexiW1ypfpWOKGW
+ 5D/JHNgLCFwixKEbKRR2WTKgRTYDSIgpKs9+iCQ/QbgwO3hcakFSnOX9npr4UUGI6Pg7
+ AngQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=kwRo4zZzHNj2f8dsvm1cnawVi86AhDJJQQALYH4bbvo=;
- b=qNU7vFRJsHICcfdktbZ/XngUwNLAbVx9FZRuPgpzN5dVprJjB16bDp5f1BPsCGue0c
- W0zoVAU5pObhwNk6+FVSA6P2arILLZR07EEziEbdgcdYedU/ZaFkCuAMBIsKctCoOsQA
- LNaZ5YoNgGwJXqYBVioxcv9fQcBX0s+iQl5fCr/Vp2uA9OqrbA8u+lozdv0MhBNAPhkx
- 9cjN3zwabO0HLQdFGeM3zXbbP3/Vgf2e+le8+mMtV9Sj5Xu2puySUJbD/iR4TQmqfUD0
- WzRPaE6zEQLpE8xjzzyaIM17C0QWH0l4gujprXk6QW8NLft3Sscb6bOw5HtoM4CzjW0G
- 3v1g==
-X-Gm-Message-State: APjAAAVJOzP5zirpXUOOScbG++OY1CQ/NasSQqqOXjNcsRtt0wX6oYdF
- 6Pe3qwqIzhaK5gnvPvYDprdYxBoateM=
-X-Received: by 2002:a17:902:e407:: with SMTP id
- ci7mr5967774plb.326.1567019161183; 
- Wed, 28 Aug 2019 12:06:01 -0700 (PDT)
+ bh=x7zkDeuRWBqPgbu0Uw/jBwIGlLUUfHJ8yMWyeY3L4GI=;
+ b=bspYT1FhVyC7HmszgHESshGw7E3wjClQ8XeJfTnkQPkKDCa900O8FI4qatZQ24RGkT
+ jEAk8DgdGkAUePhWCbl/rUgs9H/5hZbYD0hZar3wPPFNMYiC+iRgLK/bQeK8GwITeRhC
+ qydWcFhaDzeoTC/FKwjiGPYDuMG6fKLam4jbJ8MSAkawdmLDOrf4fTsDpHNVSGBM0DSc
+ wzyVnEU0UatPA/iUYJ6HjqoPaF5bqRJ7V/LWyNk4mey9Me+SGqPcXYR8jySUeHnvgEox
+ jGT6WpGA0uVqbmQxksISqemYjxUbFda0G3NNWty8iR8YsXfwFnXCt63+9yZmO8g7RGuT
+ hgYw==
+X-Gm-Message-State: APjAAAX09p/KH+OVPYpnwcD2114aoIJuUfywqe4my0Gvc+Gayc0ThOvv
+ p6POnIog6nXlLFapvZfQZ5yObQ==
+X-Received: by 2002:a17:902:e489:: with SMTP id
+ cj9mr5926759plb.327.1567019168623; 
+ Wed, 28 Aug 2019 12:06:08 -0700 (PDT)
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
  [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id f27sm2967944pgm.60.2019.08.28.12.05.59
+ by smtp.gmail.com with ESMTPSA id f27sm2967944pgm.60.2019.08.28.12.06.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Aug 2019 12:06:00 -0700 (PDT)
+ Wed, 28 Aug 2019 12:06:08 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Wed, 28 Aug 2019 12:04:35 -0700
-Message-Id: <20190828190456.30315-49-richard.henderson@linaro.org>
+Date: Wed, 28 Aug 2019 12:04:41 -0700
+Message-Id: <20190828190456.30315-55-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190828190456.30315-1-richard.henderson@linaro.org>
 References: <20190828190456.30315-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::644
-Subject: [Qemu-arm] [PATCH v3 48/69] target/arm: Convert T16 load/store
- (immediate offset)
+X-Received-From: 2607:f8b0:4864:20::643
+Subject: [Qemu-arm] [PATCH v3 54/69] target/arm: Convert T16 add, compare,
+ move (two high registers)
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,170 +112,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EDfLZ4cKXVE+
+X-TUID: wKMBbk2LkddY
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate.c | 94 +++---------------------------------------
- target/arm/t16.decode  | 33 +++++++++++++++
- 2 files changed, 38 insertions(+), 89 deletions(-)
+ target/arm/translate.c | 49 ++----------------------------------------
+ target/arm/t16.decode  | 10 +++++++++
+ 2 files changed, 12 insertions(+), 47 deletions(-)
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 73b4ac8efb..8e182f338c 100644
+index cd39329e5c..cf19f1f777 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -10840,97 +10840,13 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
+@@ -10722,55 +10722,10 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
+             store_reg(s, rd, tmp);
+             break;
+         }
+-        if (insn & (1 << 10)) {
+-            /* 0b0100_01xx_xxxx_xxxx
+-             * - data processing extended, branch and exchange
+-             */
+-            rd = (insn & 7) | ((insn >> 4) & 8);
+-            rm = (insn >> 3) & 0xf;
+-            op = (insn >> 8) & 3;
+-            switch (op) {
+-            case 0: /* add */
+-                tmp = load_reg(s, rd);
+-                tmp2 = load_reg(s, rm);
+-                tcg_gen_add_i32(tmp, tmp, tmp2);
+-                tcg_temp_free_i32(tmp2);
+-                if (rd == 13) {
+-                    /* ADD SP, SP, reg */
+-                    store_sp_checked(s, tmp);
+-                } else {
+-                    store_reg(s, rd, tmp);
+-                }
+-                break;
+-            case 1: /* cmp */
+-                tmp = load_reg(s, rd);
+-                tmp2 = load_reg(s, rm);
+-                gen_sub_CC(tmp, tmp, tmp2);
+-                tcg_temp_free_i32(tmp2);
+-                tcg_temp_free_i32(tmp);
+-                break;
+-            case 2: /* mov/cpy */
+-                tmp = load_reg(s, rm);
+-                if (rd == 13) {
+-                    /* MOV SP, reg */
+-                    store_sp_checked(s, tmp);
+-                } else {
+-                    store_reg(s, rd, tmp);
+-                }
+-                break;
+-            case 3:
+-                /* 0b0100_0111_xxxx_xxxx
+-                 * - branch [and link] exchange thumb register
+-                 * In decodetree
+-                 */
+-                goto illegal_op;
+-            }
+-            break;
+-        }
+ 
+         /*
+-         * 0b0100_00xx_xxxx_xxxx
+-         *  - Data-processing (two low registers), in decodetree
++         * - Data-processing (two low registers), in decodetree
++         * - data processing extended, branch and exchange, in decodetree
           */
          goto illegal_op;
  
--    case 5:
--        /* load/store register offset, in decodetree */
-+    case 5: /* load/store register offset, in decodetree */
-+    case 6: /* load/store word immediate offset, in decodetree */
-+    case 7: /* load/store byte immediate offset, in decodetree */
-+    case 8: /* load/store halfword immediate offset, in decodetree */
-+    case 9: /* load/store from stack, in decodetree */
-         goto illegal_op;
- 
--    case 6:
--        /* load/store word immediate offset */
--        rd = insn & 7;
--        rn = (insn >> 3) & 7;
--        addr = load_reg(s, rn);
--        val = (insn >> 4) & 0x7c;
--        tcg_gen_addi_i32(addr, addr, val);
--
--        if (insn & (1 << 11)) {
--            /* load */
--            tmp = tcg_temp_new_i32();
--            gen_aa32_ld32u(s, tmp, addr, get_mem_index(s));
--            store_reg(s, rd, tmp);
--        } else {
--            /* store */
--            tmp = load_reg(s, rd);
--            gen_aa32_st32(s, tmp, addr, get_mem_index(s));
--            tcg_temp_free_i32(tmp);
--        }
--        tcg_temp_free_i32(addr);
--        break;
--
--    case 7:
--        /* load/store byte immediate offset */
--        rd = insn & 7;
--        rn = (insn >> 3) & 7;
--        addr = load_reg(s, rn);
--        val = (insn >> 6) & 0x1f;
--        tcg_gen_addi_i32(addr, addr, val);
--
--        if (insn & (1 << 11)) {
--            /* load */
--            tmp = tcg_temp_new_i32();
--            gen_aa32_ld8u_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
--            store_reg(s, rd, tmp);
--        } else {
--            /* store */
--            tmp = load_reg(s, rd);
--            gen_aa32_st8_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
--            tcg_temp_free_i32(tmp);
--        }
--        tcg_temp_free_i32(addr);
--        break;
--
--    case 8:
--        /* load/store halfword immediate offset */
--        rd = insn & 7;
--        rn = (insn >> 3) & 7;
--        addr = load_reg(s, rn);
--        val = (insn >> 5) & 0x3e;
--        tcg_gen_addi_i32(addr, addr, val);
--
--        if (insn & (1 << 11)) {
--            /* load */
--            tmp = tcg_temp_new_i32();
--            gen_aa32_ld16u_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
--            store_reg(s, rd, tmp);
--        } else {
--            /* store */
--            tmp = load_reg(s, rd);
--            gen_aa32_st16_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
--            tcg_temp_free_i32(tmp);
--        }
--        tcg_temp_free_i32(addr);
--        break;
--
--    case 9:
--        /* load/store from stack */
--        rd = (insn >> 8) & 7;
--        addr = load_reg(s, 13);
--        val = (insn & 0xff) * 4;
--        tcg_gen_addi_i32(addr, addr, val);
--
--        if (insn & (1 << 11)) {
--            /* load */
--            tmp = tcg_temp_new_i32();
--            gen_aa32_ld32u_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
--            store_reg(s, rd, tmp);
--        } else {
--            /* store */
--            tmp = load_reg(s, rd);
--            gen_aa32_st32_iss(s, tmp, addr, get_mem_index(s), rd | ISSIs16Bit);
--            tcg_temp_free_i32(tmp);
--        }
--        tcg_temp_free_i32(addr);
--        break;
--
-     case 10:
-         /*
-          * 0b1010_xxxx_xxxx_xxxx
 diff --git a/target/arm/t16.decode b/target/arm/t16.decode
-index 83fe4363c7..1cf79789ac 100644
+index edddbfb9b8..5a570484e3 100644
 --- a/target/arm/t16.decode
 +++ b/target/arm/t16.decode
-@@ -24,6 +24,7 @@
- &s_rri_rot       !extern s rn rd imm rot
- &s_rrrr          !extern s rd rn rm ra
- &ldst_rr         !extern p w u rn rt rm shimm shtype
-+&ldst_ri         !extern p w u rn rt imm
+@@ -146,6 +146,16 @@ CMP_xri         00101 ... ........              @arith_1i s=1
+ ADD_rri         00110 ... ........              @arith_1i %s
+ SUB_rri         00111 ... ........              @arith_1i %s
  
- # Set S if the instruction is outside of an IT block.
- %s               !function=t16_setflags
-@@ -69,3 +70,35 @@ LDR_rr           0101 100 ... ... ...           @ldst_rr
- LDRH_rr          0101 101 ... ... ...           @ldst_rr
- LDRB_rr          0101 110 ... ... ...           @ldst_rr
- LDRSH_rr         0101 111 ... ... ...           @ldst_rr
++# Add, compare, move (two high registers)
 +
-+# Load/store word/byte (immediate offset)
++%reg_0_7        7:1 0:3
++@addsub_2h      .... .... . rm:4 ... \
++                &s_rrr_shi rd=%reg_0_7 rn=%reg_0_7 shim=0 shty=0
 +
-+%imm5_6x4       6:5 !function=times_4
++ADD_rrri        0100 0100 . .... ...            @addsub_2h s=0
++CMP_xrri        0100 0101 . .... ...            @addsub_2h s=1
++MOV_rxri        0100 0110 . .... ...            @addsub_2h s=0
 +
-+@ldst_ri_1      ..... imm:5 rn:3 rt:3 \
-+                &ldst_ri p=1 w=0 u=1
-+@ldst_ri_4      ..... ..... rn:3 rt:3 \
-+                &ldst_ri p=1 w=0 u=1 imm=%imm5_6x4
-+
-+STR_ri          01100 ..... ... ...             @ldst_ri_4
-+LDR_ri          01101 ..... ... ...             @ldst_ri_4
-+STRB_ri         01110 ..... ... ...             @ldst_ri_1
-+LDRB_ri         01111 ..... ... ...             @ldst_ri_1
-+
-+# Load/store halfword (immediate offset)
-+
-+%imm5_6x2       6:5 !function=times_2
-+@ldst_ri_2      ..... ..... rn:3 rt:3 \
-+                &ldst_ri p=1 w=0 u=1 imm=%imm5_6x2
-+
-+STRH_ri         10000 ..... ... ...             @ldst_ri_2
-+LDRH_ri         10001 ..... ... ...             @ldst_ri_2
-+
-+# Load/store (SP-relative)
-+
-+%imm8_0x4       0:8 !function=times_4
-+@ldst_spec_i    ..... rt:3 ........ \
-+                &ldst_ri p=1 w=0 u=1 imm=%imm8_0x4
-+
-+STR_ri          10010 ... ........              @ldst_spec_i rn=13
-+LDR_ri          10011 ... ........              @ldst_spec_i rn=13
+ # Branch and exchange
+ 
+ @branchr        .... .... . rm:4 ...            &r
 -- 
 2.17.1
 

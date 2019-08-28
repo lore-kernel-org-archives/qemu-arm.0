@@ -1,98 +1,80 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp372676wrs;
-        Wed, 28 Aug 2019 00:22:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyjG+KX9/Mo1IqCWbT1Ww11e/qyP3R+waQsrZZ7UUBdI6bqxecigzOW3x6BO8VmxhF+SH7y
-X-Received: by 2002:a17:906:c669:: with SMTP id ew9mr1871926ejb.217.1566976962575;
-        Wed, 28 Aug 2019 00:22:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566976962; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp567177wrs;
+        Wed, 28 Aug 2019 03:51:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxV6m1JTreVuT7L4HfUfrcB5lQPtdZTV9dxH0L6eJGUXFYab4ySvkgsmvv6Xych0doX01Z+
+X-Received: by 2002:ac8:425a:: with SMTP id r26mr3383237qtm.309.1566989505852;
+        Wed, 28 Aug 2019 03:51:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566989505; cv=none;
         d=google.com; s=arc-20160816;
-        b=aNj3f+PeYE3fftFABJLi2n/WJ0d2sHC9ePUuQSgYBlSOz+hkQcD04lsRSCmG8S/t0t
-         Ko6DPvmVxSohq0eJD8L6/2OuelKrFIwvfc5hEtSWMrc6ha9IxT53+0kQDWEn082D2foK
-         D1D4tLZlJGBBjT0o3HqsnbgrftBMOVbmO6lJTm51i/tE7LtGV05lsIKs74WZQJxhCWCM
-         49ub0OVR+w/uEn/NwZCVi45kLsYfV8kIKl06neJVAmWhKT4wNn4mvtGvPMC5THcndpK/
-         33g2LjdJTI4vEvDdqhhnEaV13NaW0RupVFZ8171c58VhsG4QpRwNTvTNhBhZ2FDSQwsq
-         /d9w==
+        b=I3m01pUgW4iXNI8r44+GBOvY+DbdpvH+iJuhoGsN6wdwccxiZ1LMK2O/YWbvhOBq1v
+         94ZAu61sUFImH/CTtWI5Wc0RUtWjbdDXNKSCTd2wCzX5mSZKk98efmJD312VgpGgX3ex
+         /rxTkqp/uknxhuyPftJkbJgoirWQsQSrQ05oc9k4BZL1jiPqavQ3THB9FDbSzE5roXv4
+         4XPkvERpVPuz6AByk7MQj9Dw+PC3mKMoAiWgvgfZwi5LQMizwWAzQIQjf2nbaLfgRGiA
+         2aDHS0QKLh91r3wOzw0mcgpDFPrFXDKsZo553M13N6fBPtZIP6Cy59HakovqYF4f7Ocb
+         by1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=2S5dxWQpGt9cRZtnrFqZQMNRJhoJBe5zlvTj3e53eAk=;
-        b=TQCLqy+glEMI7iBX7mK+9giiwDQGblvc3CTVyJUS8KNM6P3DHecKLSebJCM50qHMsM
-         23QvGgU7Jr7WbBYUM/R18E1txhJtmD9z3CTOc2FCg+mnumgFzdI4XmZEEIWkVBuBct+k
-         TaB34u7asX8AZeXQ+NbY4qQqwK+wM1r60TLrw01UFrlLUTIwxxmuOQjqtD4gPWTaykim
-         bEOWk4umHc9E4Ypx7+T3OflktlDwbh7VXOqm3sbIcCgtJhHMqDXKv8E6e0LIbSVOZx/j
-         xzbTwQ3nxtqRT7aUtLFGdAx6YKRtIYoBnS6ThU/HVfpOZH/rUvfH+xDQkwSNYbMbMyg3
-         eXDw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=WPL+qnA37thQmimqqq0DhjiToyo7xb6ZVGQAhzEbED0=;
+        b=J5hCkhZA9Eh7NILuBnpdRQpQK7gJUosS/mZJ4pLlYsFuPtF5puALbwTYArWOQVzADH
+         7NpZi+OM4YLzr8hFnNMOztWNU5dsJhIBgBgW+gFD9m3UPc4BnbwZ55X6zGtPLCTkA9FZ
+         0VD6eYNSLtG0i39k5m8iItTXJqj8LD1ikfYNU2qYMuCaynGUPNCIzpGXnnGe0lfIkzQ0
+         /+RIW9mND9aytGSYF2XkzVSwquewa9WOqnBlF6dXFet80y0i9ZMGuUv/pynYn1mA7G54
+         i83HclskYb/pvf99yW9OkxkA0sttjuCP7SLvDLvLEKvZt2gV5EwmcmvXA90kIA5lzelq
+         eIvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TAOa4ti6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f13si694661eje.197.2019.08.28.00.22.42
+        by mx.google.com with ESMTPS id w14si1461094qvc.110.2019.08.28.03.51.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Aug 2019 00:22:42 -0700 (PDT)
+        Wed, 28 Aug 2019 03:51:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TAOa4ti6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33342 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34740 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i2sHx-0007kL-F1
-	for alex.bennee@linaro.org; Wed, 28 Aug 2019 03:22:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49388)
+	id 1i2vYG-0007rg-6y
+	for alex.bennee@linaro.org; Wed, 28 Aug 2019 06:51:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58607)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent.desnogues@gmail.com>) id 1i2sHk-0007ek-SU
- for qemu-arm@nongnu.org; Wed, 28 Aug 2019 03:22:30 -0400
+ (envelope-from <gengdongjiu@huawei.com>) id 1i2vXy-0007rV-0C
+ for qemu-arm@nongnu.org; Wed, 28 Aug 2019 06:51:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent.desnogues@gmail.com>) id 1i2sHj-0007NF-Mx
- for qemu-arm@nongnu.org; Wed, 28 Aug 2019 03:22:28 -0400
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:35573)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent.desnogues@gmail.com>)
- id 1i2sHh-0007Lx-4s; Wed, 28 Aug 2019 03:22:25 -0400
-Received: by mail-io1-xd41.google.com with SMTP id b10so3975028ioj.2;
- Wed, 28 Aug 2019 00:22:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=2S5dxWQpGt9cRZtnrFqZQMNRJhoJBe5zlvTj3e53eAk=;
- b=TAOa4ti6MGQMCQVyxbOpnEfMr+q+pn64jwigkq3Akm0tg6pC9eFtJsHziElTibxBBZ
- hAWh+ZHEvl63VYotycKds2MCZmsUJRR6TjjFWmNzezt78snBaoA1NyRJ1iEafPUsRozK
- 6xRbLoGpbTv0xBgA2I1gLWCWcHDKu65zGGXONPcaeYDkw8j5KdUzrfYhO5aepZb0wHHN
- K3j8/h6XPRBOs5cCDkHJ0NgeV4TdnK59afFnVcTK04UZYdCXyH+EgcCduglU4quM+5St
- gaQTsVBAL3epSs/29I7cyvycNvFT40pLJ7iCS1TDQxKO7rR+Lqf7onz5gaCLdS7i3rox
- WMjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=2S5dxWQpGt9cRZtnrFqZQMNRJhoJBe5zlvTj3e53eAk=;
- b=PAm2apV6x9joFgCBPn0GfQ/NSWdLy7pER8WugnbvePRKamxmj9tVkwShlFQ5usu/6t
- CKI90kNl0OaQ5wGMkVS1XGmgITFlHWlUHIwC6z8KFR6KShn8Vp26PNtwx6POSbWY4GPD
- VAH/lyDPBfuM+7iBTee6msRJOy3BeTyfuV5HVs6Oym7pbsdhp0rZlrLEeTHz3uiJ3v2C
- 0sRHx29dgWy8AjE+0pUGwuqGYdpJOvAdHiWLsvj+JBOO68iAdq4fzM3l07Bp9L4fZqLW
- e6+ufeW2kHg4o1wlUv9BWx21HY8ZR65USIvLJzFphCjL8I89KMEWfgkuoXNJl6wkxdBe
- K32Q==
-X-Gm-Message-State: APjAAAV+3yGTOn9gB0J/q+OHjx1SXD3w2H6sgMG9Y8rtVZ8K3gNKnBKT
- ofey7vTuEuwWzssAlUUJevYPOYRcVeEBLR/vpjo=
-X-Received: by 2002:a5e:8301:: with SMTP id x1mr339844iom.84.1566976944254;
- Wed, 28 Aug 2019 00:22:24 -0700 (PDT)
+ (envelope-from <gengdongjiu@huawei.com>) id 1i2vXw-0005z3-Vu
+ for qemu-arm@nongnu.org; Wed, 28 Aug 2019 06:51:25 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:44906 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <gengdongjiu@huawei.com>)
+ id 1i2vXw-0005V3-Kt; Wed, 28 Aug 2019 06:51:24 -0400
+Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id DA7BB340A07922D05D6B;
+ Wed, 28 Aug 2019 18:51:14 +0800 (CST)
+Received: from [127.0.0.1] (10.142.68.147) by DGGEMS412-HUB.china.huawei.com
+ (10.3.19.212) with Microsoft SMTP Server id 14.3.439.0; Wed, 28 Aug 2019
+ 18:51:09 +0800
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1566898915-3129-1-git-send-email-gengdongjiu@huawei.com>
+ <CAFEAcA-QunKkEW1BUXrEZVt+QP_Wc=dd0JJpnE+ypkPrca9TXw@mail.gmail.com>
+From: gengdongjiu <gengdongjiu@huawei.com>
+Message-ID: <d42acb0d-5acf-f289-a55f-6257d1231fdf@huawei.com>
+Date: Wed, 28 Aug 2019 18:50:56 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
+ Thunderbird/52.3.0
 MIME-Version: 1.0
-References: <20190808202616.13782-1-richard.henderson@linaro.org>
- <20190808202616.13782-7-richard.henderson@linaro.org>
-In-Reply-To: <20190808202616.13782-7-richard.henderson@linaro.org>
-From: Laurent Desnogues <laurent.desnogues@gmail.com>
-Date: Wed, 28 Aug 2019 09:22:14 +0200
-Message-ID: <CABoDooPO37bEjDF77_mU6Z57boRzuYaDP8DcTqtAOJxCjvBkRw@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::d41
-Subject: Re: [Qemu-arm] [PATCH 6/7] target/arm: Simplify SMMLA, SMMLAR, SMMLS,
- SMMLSR
+In-Reply-To: <CAFEAcA-QunKkEW1BUXrEZVt+QP_Wc=dd0JJpnE+ypkPrca9TXw@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+X-Originating-IP: [10.142.68.147]
+X-CFilter-Loop: Reflected
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 45.249.212.32
+Subject: Re: [Qemu-arm] [PATCH] hw/arm/boot: Load the Non Linux initrd to
+ the memory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,153 +86,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uhKhhEIPL7hQ
+X-TUID: Ah8hrGgrsae9
 
-Hi Richard,
 
-On Thu, Aug 8, 2019 at 10:28 PM Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> All of the inputs to these instructions are 32-bits.  Rather than
-> extend each input to 64-bits and then extract the high 32-bits of
-> the output, use tcg_gen_muls2_i32 and other 32-bit generator functions.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/translate.c | 72 +++++++++++++++---------------------------
->  1 file changed, 26 insertions(+), 46 deletions(-)
->
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index ddc54e77e4..77154be743 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -391,34 +391,6 @@ static void gen_revsh(TCGv_i32 var)
->      tcg_gen_ext16s_i32(var, var);
->  }
->
-> -/* Return (b << 32) + a. Mark inputs as dead */
-> -static TCGv_i64 gen_addq_msw(TCGv_i64 a, TCGv_i32 b)
-> -{
-> -    TCGv_i64 tmp64 = tcg_temp_new_i64();
-> -
-> -    tcg_gen_extu_i32_i64(tmp64, b);
-> -    tcg_temp_free_i32(b);
-> -    tcg_gen_shli_i64(tmp64, tmp64, 32);
-> -    tcg_gen_add_i64(a, tmp64, a);
-> -
-> -    tcg_temp_free_i64(tmp64);
-> -    return a;
-> -}
-> -
-> -/* Return (b << 32) - a. Mark inputs as dead. */
-> -static TCGv_i64 gen_subq_msw(TCGv_i64 a, TCGv_i32 b)
-> -{
-> -    TCGv_i64 tmp64 = tcg_temp_new_i64();
-> -
-> -    tcg_gen_extu_i32_i64(tmp64, b);
-> -    tcg_temp_free_i32(b);
-> -    tcg_gen_shli_i64(tmp64, tmp64, 32);
-> -    tcg_gen_sub_i64(a, tmp64, a);
-> -
-> -    tcg_temp_free_i64(tmp64);
-> -    return a;
-> -}
-> -
->  /* 32x32->64 multiply.  Marks inputs as dead.  */
->  static TCGv_i64 gen_mulu_i64_i32(TCGv_i32 a, TCGv_i32 b)
->  {
-> @@ -8872,23 +8844,27 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
->                             (SMMUL, SMMLA, SMMLS) */
->                          tmp = load_reg(s, rm);
->                          tmp2 = load_reg(s, rs);
-> -                        tmp64 = gen_muls_i64_i32(tmp, tmp2);
-> +                        tcg_gen_muls2_i32(tmp2, tmp, tmp, tmp2);
->
->                          if (rd != 15) {
-> -                            tmp = load_reg(s, rd);
-> +                            tmp3 = load_reg(s, rd);
->                              if (insn & (1 << 6)) {
-> -                                tmp64 = gen_subq_msw(tmp64, tmp);
-> +                                tcg_gen_sub_i32(tmp, tmp, tmp3);
 
-Shouldn't you subtract tmp from tmp3?
+On 2019/8/27 17:47, Peter Maydell wrote:
+> On Tue, 27 Aug 2019 at 10:42, Dongjiu Geng <gengdongjiu@huawei.com> wro=
+te:
+>>
+>> Except support linux operation system, qemu also supports other
+>> operation system which is non linux, such as microkernel system.
+>>
+>> But now Qemu only load linux initrd, so change it to load both
+>> linux and Non-linux initrd Image.
+>=20
+> We currently support two methods of booting:
+>  (1) using the boot protocol defined by the Linux kernel
+>      (which includes how to find the DTB, initrd, what the
+>      secondary CPUs do, and so on)
+>  (2) you're a 'bare-metal' image, in which case you get
+>      complete control of all the CPUs at once in the same
+>      way the hardware does. Raw hardware doesn't provide
+>      initrd files, and nor does QEMU.
+>=20
+> This patch seems to be trying to introduce a third hybrid
+> thing. Is there a specification for whatever this boot
+> protocol is? How many guest OSes use it? Are they common?
+>=20
+> If you want an initrd, you can always wrap your guest OS in
+> a shim which complies with the Linux kernel boot protocol.
+> I think that would be a better approach than this patch.
 
->                              } else {
-> -                                tmp64 = gen_addq_msw(tmp64, tmp);
-> +                                tcg_gen_add_i32(tmp, tmp, tmp3);
->                              }
-> +                            tcg_temp_free_i32(tmp3);
->                          }
->                          if (insn & (1 << 5)) {
-> -                            tcg_gen_addi_i64(tmp64, tmp64, 0x80000000u);
-> +                            /*
-> +                             * Adding 0x80000000 to the 64-bit quantity
-> +                             * means that we have carry in to the high
-> +                             * word when the low word has the high bit set.
-> +                             */
-> +                            tcg_gen_shri_i32(tmp2, tmp2, 31);
-> +                            tcg_gen_add_i32(tmp, tmp, tmp2);
->                          }
-> -                        tcg_gen_shri_i64(tmp64, tmp64, 32);
-> -                        tmp = tcg_temp_new_i32();
-> -                        tcg_gen_extrl_i64_i32(tmp, tmp64);
-> -                        tcg_temp_free_i64(tmp64);
-> +                        tcg_temp_free_i32(tmp2);
->                          store_reg(s, rn, tmp);
->                          break;
->                      case 0:
-> @@ -10114,22 +10090,26 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
->                    }
->                  break;
->              case 5: case 6: /* 32 * 32 -> 32msb (SMMUL, SMMLA, SMMLS) */
-> -                tmp64 = gen_muls_i64_i32(tmp, tmp2);
-> +                tcg_gen_muls2_i32(tmp2, tmp, tmp, tmp2);
->                  if (rs != 15) {
-> -                    tmp = load_reg(s, rs);
-> +                    tmp3 = load_reg(s, rs);
->                      if (insn & (1 << 20)) {
-> -                        tmp64 = gen_addq_msw(tmp64, tmp);
-> +                        tcg_gen_add_i32(tmp, tmp, tmp3);
->                      } else {
-> -                        tmp64 = gen_subq_msw(tmp64, tmp);
-> +                        tcg_gen_sub_i32(tmp, tmp, tmp3);
+OK=EF=BC=8C thanks for the suggestion, I will use your suggested method.
 
-Same here.
+>=20
+> thanks
+> -- PMM
+> .
+>=20
 
-Also the way you do the computation means you don't propagate the
-borrow from the lower 32-bit of the 64-bit product when doing the
-subtraction.
-
-Thanks,
-
-Laurent
-
->                      }
-> +                    tcg_temp_free_i32(tmp3);
->                  }
->                  if (insn & (1 << 4)) {
-> -                    tcg_gen_addi_i64(tmp64, tmp64, 0x80000000u);
-> +                    /*
-> +                     * Adding 0x80000000 to the 64-bit quantity
-> +                     * means that we have carry in to the high
-> +                     * word when the low word has the high bit set.
-> +                     */
-> +                    tcg_gen_shri_i32(tmp2, tmp2, 31);
-> +                    tcg_gen_add_i32(tmp, tmp, tmp2);
->                  }
-> -                tcg_gen_shri_i64(tmp64, tmp64, 32);
-> -                tmp = tcg_temp_new_i32();
-> -                tcg_gen_extrl_i64_i32(tmp, tmp64);
-> -                tcg_temp_free_i64(tmp64);
-> +                tcg_temp_free_i32(tmp2);
->                  break;
->              case 7: /* Unsigned sum of absolute differences.  */
->                  gen_helper_usad8(tmp, tmp, tmp2);
-> --
-> 2.17.1
->
->

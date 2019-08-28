@@ -1,102 +1,102 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1167515wrs;
-        Wed, 28 Aug 2019 12:22:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxm6zH+rFez6zBFv3YubGK6xbz5stYJWvd9mFEVp/RUWVI0F34TJ5KaXXbGAWoo69ZyPm4Z
-X-Received: by 2002:a05:6214:1447:: with SMTP id b7mr4066618qvy.89.1567020167177;
-        Wed, 28 Aug 2019 12:22:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567020167; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1170721wrs;
+        Wed, 28 Aug 2019 12:25:55 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxuhWSNhTtRSM/2+1ppnCaH+zVYDcgeI8Gx8bnEU2zL6iayDMCiZPVTMxhXA3ZgzdK08aAr
+X-Received: by 2002:ac8:149a:: with SMTP id l26mr6009296qtj.267.1567020355353;
+        Wed, 28 Aug 2019 12:25:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567020355; cv=none;
         d=google.com; s=arc-20160816;
-        b=0FGr3h15N/XDUD4wAROBBqh2yRHiABVPk459a0E+72sgA1ZDFadU4ekYP0Esx5H0Lv
-         U5TugkbIaPa4HHCOEbGvdNSl18e4KvGsdS8IxlJtIYUY8wfz6ymyezBrXTjSCXlXzR5N
-         Dckn61eMhtvE2cZhJI3vebkM9fltYwH6bVQKIW52VIZ56EaFqlLiLm0kJRi51/vPdUBt
-         ozMXOAnEO8QI05JIciqTE0Kt/M1t3nYfiX7pvvoNWktuXOlpdvdCuamcz7HzGqe74zJT
-         0pN8jhbLoaAVYIZY8IzkDTPTsIEQqCagXTlIFMqDOyR3F1GdC3C4mwhTcDOHy+h/eZ0r
-         Q9Mg==
+        b=sCvnEmD8Efz4PB0o3lCfSZjSfFoRLv6eq6gY6jL699Udcq54438CPH3gJhppbn1/lf
+         MRXMiOjS3IhuA995j1/6mqXQmmmRJhhFBLF8tJjD1z6lPCdl9DfJ4M24kT7rxVuvg0+7
+         17mznNi/+AdcmmNvw7okH1V1ip77hNaJTDBrOQ5P3EUk1JBT6aQh9ElBKKfTZ+7IMqsR
+         mMdaufIJ/44wTq8jovfFWH6jaQ5RyTh6TzIZPe9yU5QanP2jn8ZLE4HS0o9P+L3sr7b3
+         dUfmAy8UqJiifOUJD9KyVbrveEVTQ2hEpsDA9XJB9YBkMur2MlC+g6aYl7Zt6fJokp6c
+         TGww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=LP98tMkuEY1Am6pgEun6YWYPwcU15PtWb8SPF+FrpSw=;
-        b=doITUXUGZR1qbikrA2XKd21zfUBoLTwTBJLQtWQrnDb4w011E2d9Ac+moPt6ZXF+/F
-         r0TbP8hloO+3yF4+MIsgN/+5f37lXJIJ3OhA3OJ4lf+jg4PNM3cF1iiEdhE5Pz/gsw/J
-         yCRiopFOMJw2X226q+GSHoCLu03j0rOVh9IJkUE0J86QuWpya7NDnt6rYcTuAKjQ9ZM8
-         Q01oC/O11G7oDdhle1VvjYcCGDG29w9X2hYFVcm5IERhQ7cJjGaVrQfMLlk6aymVKRm1
-         guw3z2QFWcMFxoOBJQbFZcu1wt8Blv86CejeU0e/xYFeH5KEKghcpULyUfjiBVFsto8f
-         XI6A==
+        bh=4BlHSKKgCoxdyyhEVII1opm34EFeT9rrl5mK0jjuq2M=;
+        b=1Cs1Zlt2tpufaedYluvM71CqA4UpoDbAeORrMyYlEdN+gM+9uvIAhyNteM8nW4mxUQ
+         raBLOctc/4tI79Wybzuxbo4aqLoAuhVvBZsRC9XNJXMCMoIUlhU11bg1WUuPkE3yK4JZ
+         0GGPJDtLdcC3ahQpTMzq4y78rCCGFU1M9hijztHUoUCS6SiCq1I93ewib775tIUIhcjz
+         +hwTDyKCInlvzPMHKOYHa1holXPJ/3QRoRkeQ3e71/U72uL2wRGXmsZ8/+S17VFaAhzO
+         TXRWDDC71QxVjeh/WSiGrUA3KFK5iI56aIf8XX6gkFp0Fi1JhvXfuitlRRkSIHqXqoRm
+         sIfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YVuwxS6X;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dIZQrwjT;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b37si43157qtb.269.2019.08.28.12.22.47
+        by mx.google.com with ESMTPS id q28si53948qtk.230.2019.08.28.12.25.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Aug 2019 12:22:47 -0700 (PDT)
+        Wed, 28 Aug 2019 12:25:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=YVuwxS6X;
+       dkim=fail header.i=@linaro.org header.s=google header.b=dIZQrwjT;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41158 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41220 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i33Wo-0002OB-3v
-	for alex.bennee@linaro.org; Wed, 28 Aug 2019 15:22:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37982)
+	id 1i33Zq-0006G1-8U
+	for alex.bennee@linaro.org; Wed, 28 Aug 2019 15:25:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37693)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1i33GF-0003fK-RK
- for qemu-devel@nongnu.org; Wed, 28 Aug 2019 15:05:43 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1i33Fy-0003H6-7r
+ for qemu-devel@nongnu.org; Wed, 28 Aug 2019 15:05:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1i33GD-0000Em-5B
- for qemu-devel@nongnu.org; Wed, 28 Aug 2019 15:05:39 -0400
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:36093)
+ (envelope-from <richard.henderson@linaro.org>) id 1i33Fw-0008RD-Jv
+ for qemu-devel@nongnu.org; Wed, 28 Aug 2019 15:05:22 -0400
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:40932)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1i33GC-0000E3-CF
- for qemu-devel@nongnu.org; Wed, 28 Aug 2019 15:05:36 -0400
-Received: by mail-pf1-x443.google.com with SMTP id w2so399214pfi.3
- for <qemu-devel@nongnu.org>; Wed, 28 Aug 2019 12:05:36 -0700 (PDT)
+ id 1i33Fw-0008Qf-DJ
+ for qemu-devel@nongnu.org; Wed, 28 Aug 2019 15:05:20 -0400
+Received: by mail-pg1-x543.google.com with SMTP id w10so216880pgj.7
+ for <qemu-devel@nongnu.org>; Wed, 28 Aug 2019 12:05:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=LP98tMkuEY1Am6pgEun6YWYPwcU15PtWb8SPF+FrpSw=;
- b=YVuwxS6X4hRvLJ7uZxos4XDF5x3AYjKrLl+zni7Bcc5SaiwVv0Wh0C2l+YOHf3F3o1
- dI+kPad05p7rPWoEnCQoyywZblETJZnGjSCwu6K9NmaG/LXy5CXvsbz/kQ2jt6AoLLk0
- dlbLYW6+/Im6hnA0xPa1UFqDaOyHyV8Vvj2w8tEB1Ljs00gjU3vyb62IC+rlTdHhM66G
- MKcDYSh+c9tlAflv/wcyvdoR1vo7TgSiUQlo5GpJfFx9alJTDtzpcbXRK0KFZqWsqrHN
- zlZfT7tUT1tjJ/p5K0Y7tLCmwnLNUmhPdlmPN/zP81zwXUl4Z7qmNIgkp9u3zFOuyHMg
- 8xEA==
+ bh=4BlHSKKgCoxdyyhEVII1opm34EFeT9rrl5mK0jjuq2M=;
+ b=dIZQrwjTiTx3SgRVTJH6mdPA656tRn1XAECyK8OETWjgX/qUooFw5ZDQuExf4DWy+Q
+ O7uAlZBLKivbgGj12tFuvEEIqt0QVWTAwtsrs0Jgb5ZyE6zXf6MeznN6BXUIcJshBRcU
+ 6WbL5Z5hTMXfBodpynZUp6xN8zoWPoy1Y7OP97YkL1EmM5nYmibpZ2X3XAwprHZPj5Eq
+ GXOWs2wH81oviaF6/DFlrkWv50t9XGQPA50Lq60X3sd5NuPK02uxwDi9Bu8bCPF9hNrw
+ jaZOaW9npr3/lR2lDwLRVN7Vs9Hkmwu0fq70/qATGN8Zp/riTWFQRJYZRN1ficm5IpoZ
+ pozw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=LP98tMkuEY1Am6pgEun6YWYPwcU15PtWb8SPF+FrpSw=;
- b=iK8Xy7IX0A94y1kOI7Y5z58x1lGvBkscjQXqOIOTl8yEmXOV1IN/iU3okUpaTGpIbb
- JiT0PtYwnQxz0eIosKWm7avYzOV0QP7VBWqKvC8vswl9bpVErC4eowac3bSuBYtEtMCj
- kIX3rOaO5cAZQqnmrPB12M14razjrER/RWVPdL4vCqtGX25rWkc1ey1aY9HsZ9Pg0Yyl
- U2hKbzH8PYmhWH3h98UQS0ZQNBQNWv7iMmYeBETPVQsd8aZLxSdizuBWZuNxjkN9ltpz
- xQuYwAKued/h377bSNDyOr1zFYKZXOC85UMb+OhCOEI3Ep7JdP+tKQ7fiRiX/WkxXgbD
- +HDQ==
-X-Gm-Message-State: APjAAAV6UN7IsUgwtqOee6lzMg2WrLxUCQe71hEk6Cw1s9/PJafYSFwV
- ywmJgpGEKHfi//h1nHG79B6Sy1fqlv0=
-X-Received: by 2002:a17:90a:7783:: with SMTP id
- v3mr5583940pjk.109.1567019134967; 
- Wed, 28 Aug 2019 12:05:34 -0700 (PDT)
+ bh=4BlHSKKgCoxdyyhEVII1opm34EFeT9rrl5mK0jjuq2M=;
+ b=Cvl6QCXTX3qJjQ20gsyTM96qGsqtMvxzVyEHpdO6UQXcG2kVz/t+BB6/ab2un2t62w
+ ArJcEO2WJZVx+fx9oSb/flHNs4czliohW/BWojIWy3D/56Rfk1pHHzfINHMcFj/8r4cT
+ eHiLTJ9//w7TlZIGk8MZ4euWo/14iKcJKX3pgHVFFa1DR7UWEvKz6vSrq182jijxTvH1
+ WBf1BDVSYVtniNT8NJk5Y9NIZIeT1bbbXQf9uSol9R7ykbD9f9odsu/ds3qvE9Vo8tDA
+ iMCzBODAiuBG12r8Qrmvp7G8Y8oTN9rJYBTettMiTLhgfLfedfgl3VfTgxivLYKtKFoH
+ eLpQ==
+X-Gm-Message-State: APjAAAVGS2KbLRC53sjbH90pf05OeAOw26QmcRx8I9FvTwWNl3kQxkoP
+ FbZeMQr3DFvnLF10R2AAI/VaaA2uspM=
+X-Received: by 2002:aa7:908b:: with SMTP id i11mr4165351pfa.199.1567019119118; 
+ Wed, 28 Aug 2019 12:05:19 -0700 (PDT)
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
  [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id f27sm2967944pgm.60.2019.08.28.12.05.33
+ by smtp.gmail.com with ESMTPSA id f27sm2967944pgm.60.2019.08.28.12.05.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Aug 2019 12:05:34 -0700 (PDT)
+ Wed, 28 Aug 2019 12:05:18 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Wed, 28 Aug 2019 12:04:14 -0700
-Message-Id: <20190828190456.30315-28-richard.henderson@linaro.org>
+Date: Wed, 28 Aug 2019 12:04:02 -0700
+Message-Id: <20190828190456.30315-16-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190828190456.30315-1-richard.henderson@linaro.org>
 References: <20190828190456.30315-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::443
-Subject: [Qemu-devel] [PATCH v3 27/69] target/arm: Convert MOVW, MOVT
+X-Received-From: 2607:f8b0:4864:20::543
+Subject: [Qemu-devel] [PATCH v3 15/69] target/arm: Convert BX, BXJ,
+ BLX (register)
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,175 +111,171 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 41Wkhn+Mpeh5
+X-TUID: bfL6qehSBcRK
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate.c | 89 ++++++++++++++++--------------------------
- target/arm/a32.decode  |  6 +++
- target/arm/t32.decode  |  9 +++++
- 3 files changed, 48 insertions(+), 56 deletions(-)
+ target/arm/translate.c | 78 ++++++++++++++++++++----------------------
+ target/arm/a32.decode  |  7 ++++
+ target/arm/t32.decode  |  2 ++
+ 3 files changed, 47 insertions(+), 40 deletions(-)
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 9e47c2e0c4..6cbf34b424 100644
+index c2420ff45e..d60e859624 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -7844,6 +7844,34 @@ static bool trans_ADR(DisasContext *s, arg_ri *a)
+@@ -8432,6 +8432,38 @@ static bool trans_MSR_v7m(DisasContext *s, arg_MSR_v7m *a)
      return true;
  }
  
-+static bool trans_MOVW(DisasContext *s, arg_MOVW *a)
++static bool trans_BX(DisasContext *s, arg_BX *a)
 +{
-+    TCGv_i32 tmp;
-+
-+    if (!ENABLE_ARCH_6T2) {
++    if (!ENABLE_ARCH_4T) {
 +        return false;
 +    }
-+
-+    tmp = tcg_const_i32(a->imm);
-+    store_reg(s, a->rd, tmp);
++    gen_bx(s, load_reg(s, a->rm));
 +    return true;
 +}
 +
-+static bool trans_MOVT(DisasContext *s, arg_MOVW *a)
++static bool trans_BXJ(DisasContext *s, arg_BXJ *a)
++{
++    if (!ENABLE_ARCH_5J || arm_dc_feature(s, ARM_FEATURE_M)) {
++        return false;
++    }
++    /* Trivial implementation equivalent to bx.  */
++    gen_bx(s, load_reg(s, a->rm));
++    return true;
++}
++
++static bool trans_BLX_r(DisasContext *s, arg_BLX_r *a)
 +{
 +    TCGv_i32 tmp;
 +
-+    if (!ENABLE_ARCH_6T2) {
++    if (!ENABLE_ARCH_5) {
 +        return false;
 +    }
-+
-+    tmp = load_reg(s, a->rd);
-+    tcg_gen_ext16u_i32(tmp, tmp);
-+    tcg_gen_ori_i32(tmp, tmp, a->imm << 16);
-+    store_reg(s, a->rd, tmp);
++    tmp = load_reg(s, a->rm);
++    tcg_gen_movi_i32(cpu_R[14], s->base.pc_next | s->thumb);
++    gen_bx(s, tmp);
 +    return true;
 +}
 +
  /*
-  * Multiply and multiply accumulate
+  * Legacy decoder.
   */
-@@ -9729,7 +9757,7 @@ static bool trans_UDIV(DisasContext *s, arg_rrr *a)
- 
- static void disas_arm_insn(DisasContext *s, unsigned int insn)
- {
--    unsigned int cond, val, op1, i, rn, rd;
-+    unsigned int cond, val, op1, i, rn;
-     TCGv_i32 tmp;
-     TCGv_i32 tmp2;
-     TCGv_i32 addr;
-@@ -9978,26 +10006,8 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-     /* fall back to legacy decoder */
- 
-     if ((insn & 0x0f900000) == 0x03000000) {
--        if ((insn & (1 << 21)) == 0) {
--            ARCH(6T2);
--            rd = (insn >> 12) & 0xf;
--            val = ((insn >> 4) & 0xf000) | (insn & 0xfff);
--            if ((insn & (1 << 22)) == 0) {
--                /* MOVW */
--                tmp = tcg_temp_new_i32();
--                tcg_gen_movi_i32(tmp, val);
+@@ -8721,12 +8753,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+             /* All done in decodetree.  Illegal ops already signalled.  */
+             g_assert_not_reached();
+         case 0x1:
+-            if (op1 == 1) {
+-                /* branch/exchange thumb (bx).  */
+-                ARCH(4T);
+-                tmp = load_reg(s, rm);
+-                gen_bx(s, tmp);
+-            } else if (op1 == 3) {
++            if (op1 == 3) {
+                 /* clz */
+                 ARCH(5);
+                 rd = (insn >> 12) & 0xf;
+@@ -8737,30 +8764,9 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                 goto illegal_op;
+             }
+             break;
+-        case 0x2:
+-            if (op1 == 1) {
+-                ARCH(5J); /* bxj */
+-                /* Trivial implementation equivalent to bx.  */
+-                tmp = load_reg(s, rm);
+-                gen_bx(s, tmp);
 -            } else {
--                /* MOVT */
--                tmp = load_reg(s, rd);
--                tcg_gen_ext16u_i32(tmp, tmp);
--                tcg_gen_ori_i32(tmp, tmp, val << 16);
--            }
--            store_reg(s, rd, tmp);
--        } else {
--            /* MSR (immediate) and hints */
--            /* All done in decodetree.  Illegal ops already signalled.  */
--            g_assert_not_reached();
--        }
-+        /* All done in decodetree.  Illegal ops reach here.  */
-+        goto illegal_op;
-     } else if ((insn & 0x0f900000) == 0x01000000
-                && (insn & 0x00000090) != 0x00000090) {
-         /* miscellaneous instructions */
-@@ -10732,42 +10742,9 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
-             /*
-              * 0b1111_0xxx_xxxx_0xxx_xxxx_xxxx
-              *  - Data-processing (modified immediate, plain binary immediate)
-+             * All in decodetree.
-              */
--            if (insn & (1 << 25)) {
--                /*
--                 * 0b1111_0x1x_xxxx_0xxx_xxxx_xxxx
--                 *  - Data-processing (plain binary immediate)
--                 */
--                if (insn & (1 << 24)) {
--                    /* Bitfield/Saturate, in decodetree */
--                    goto illegal_op;
--                } else {
--                    imm = ((insn & 0x04000000) >> 15)
--                          | ((insn & 0x7000) >> 4) | (insn & 0xff);
--                    if (insn & (1 << 22)) {
--                        /* 16-bit immediate.  */
--                        imm |= (insn >> 4) & 0xf000;
--                        if (insn & (1 << 23)) {
--                            /* movt */
--                            tmp = load_reg(s, rd);
--                            tcg_gen_ext16u_i32(tmp, tmp);
--                            tcg_gen_ori_i32(tmp, tmp, imm << 16);
--                        } else {
--                            /* movw */
--                            tmp = tcg_temp_new_i32();
--                            tcg_gen_movi_i32(tmp, imm);
--                        }
--                        store_reg(s, rd, tmp);
--                    } else {
--                        /* Add/sub 12-bit immediate, in decodetree */
--                        goto illegal_op;
--                    }
--                }
--            } else {
--                /* Data-processing (modified immediate) */
--                /* All done in decodetree.  Reach here for illegal ops.  */
 -                goto illegal_op;
 -            }
-+            goto illegal_op;
-         }
-         break;
-     case 12:
+-            break;
+-        case 0x3:
+-            if (op1 != 1)
+-              goto illegal_op;
+-
+-            ARCH(5);
+-            /* branch link/exchange thumb (blx) */
+-            tmp = load_reg(s, rm);
+-            tmp2 = tcg_temp_new_i32();
+-            tcg_gen_movi_i32(tmp2, s->base.pc_next);
+-            store_reg(s, 14, tmp2);
+-            gen_bx(s, tmp);
+-            break;
+-        case 0x4:
+-            /* crc32 */
++        case 0x2: /* bxj */
++        case 0x3: /* blx */
++        case 0x4: /* crc32 */
+             /* All done in decodetree.  Illegal ops reach here.  */
+             goto illegal_op;
+         case 0x5:
+@@ -10578,16 +10584,8 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
+                             goto illegal_op;
+                         }
+                         break;
+-                    case 4: /* bxj */
+-                        /* Trivial implementation equivalent to bx.
+-                         * This instruction doesn't exist at all for M-profile.
+-                         */
+-                        if (arm_dc_feature(s, ARM_FEATURE_M)) {
+-                            goto illegal_op;
+-                        }
+-                        tmp = load_reg(s, rn);
+-                        gen_bx(s, tmp);
+-                        break;
++                    case 4: /* bxj, in decodetree */
++                        goto illegal_op;
+                     case 5: /* Exception return.  */
+                         if (IS_USER(s)) {
+                             goto illegal_op;
 diff --git a/target/arm/a32.decode b/target/arm/a32.decode
-index d7a333b90b..341882e637 100644
+index a8ef435b15..6cb9c16e2f 100644
 --- a/target/arm/a32.decode
 +++ b/target/arm/a32.decode
-@@ -73,6 +73,12 @@ MOV_rxri         .... 000 1101 . 0000 .... ..... .. 0 ....    @s_rxr_shi
- BIC_rrri         .... 000 1110 . .... .... ..... .. 0 ....    @s_rrr_shi
- MVN_rxri         .... 000 1111 . 0000 .... ..... .. 0 ....    @s_rxr_shi
+@@ -29,6 +29,7 @@
+ &s_rrrr          s rd rn rm ra
+ &rrrr            rd rn rm ra
+ &rrr             rd rn rm
++&r               rm
+ &msr_reg         rn r mask
+ &mrs_reg         rd r
+ &msr_bank        rn r sysm
+@@ -195,8 +196,14 @@ CRC32CW          .... 0001 0100 .... .... 0010 0100 ....      @rndm
  
-+%imm16           16:4 0:12
-+@mov16           ---- .... .... .... rd:4 ............        &ri imm=%imm16
-+
-+MOVW             .... 0011 0000 .... .... ............        @mov16
-+MOVT             .... 0011 0100 .... .... ............        @mov16
-+
- # Data-processing (register-shifted register)
+ %sysm            8:1 16:4
  
- @s_rrr_shr       ---- ... .... s:1 rn:4 rd:4 rs:4 . shty:2 . rm:4 \
++@rm              ---- .... .... .... .... .... .... rm:4      &r
++
+ MRS_bank         ---- 0001 0 r:1 00 .... rd:4 001. 0000 0000  &mrs_bank %sysm
+ MSR_bank         ---- 0001 0 r:1 10 .... 1111 001. 0000 rn:4  &msr_bank %sysm
+ 
+ MRS_reg          ---- 0001 0 r:1 00 1111   rd:4 0000 0000 0000  &mrs_reg
+ MSR_reg          ---- 0001 0 r:1 10 mask:4 1111 0000 0000 rn:4  &msr_reg
++
++BX               .... 0001 0010 1111 1111 1111 0001 ....      @rm
++BXJ              .... 0001 0010 1111 1111 1111 0010 ....      @rm
++BLX_r            .... 0001 0010 1111 1111 1111 0011 ....      @rm
 diff --git a/target/arm/t32.decode b/target/arm/t32.decode
-index 677acb698d..f315fde0f4 100644
+index 261db100ff..337706ebbe 100644
 --- a/target/arm/t32.decode
 +++ b/target/arm/t32.decode
-@@ -150,6 +150,15 @@ RSB_rri          1111 0.0 1110 . .... 0 ... .... ........     @s_rri_rot
-   SUB_rri        1111 0.1 0101 0 .... 0 ... .... ........     @s0_rri_12
+@@ -26,6 +26,7 @@
+ &s_rrrr          !extern s rd rn rm ra
+ &rrrr            !extern rd rn rm ra
+ &rrr             !extern rd rn rm
++&r               !extern rm
+ &msr_reg         !extern rn r mask
+ &mrs_reg         !extern rd r
+ &msr_bank        !extern rn r sysm
+@@ -211,4 +212,5 @@ CRC32CW          1111 1010 1101 .... 1111 .... 1010 ....      @rndm
+     MSR_reg      1111 0011 100 r:1 rn:4 1000 mask:4 0000 0000  &msr_reg
+     MSR_v7m      1111 0011 100 0   rn:4 1000 mask:2 00 sysm:8
+   }
++  BXJ            1111 0011 1100 rm:4 1000 1111 0000 0000      &r
  }
- 
-+# Move Wide
-+
-+%imm16_26_16_12_0 16:4 26:1 12:3 0:8
-+@mov16           .... .... .... .... .... rd:4 .... .... \
-+                 &ri imm=%imm16_26_16_12_0
-+
-+MOVW             1111 0.10 0100 .... 0 ... .... ........      @mov16
-+MOVT             1111 0.10 1100 .... 0 ... .... ........      @mov16
-+
- # Saturate, bitfield
- 
- @sat             .... .... .. sh:1 . rn:4 . ... rd:4 .. . satimm:5 \
 -- 
 2.17.1
 

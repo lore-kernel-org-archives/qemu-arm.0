@@ -1,83 +1,83 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1856772wrs;
-        Thu, 29 Aug 2019 02:02:22 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwo7BvV2YYYmYpWsirShFAilm3j89QMLwP75l4N5L6ylwNI6JiFM/pTjHTVtoRMsXUt/14r
-X-Received: by 2002:ae9:e88a:: with SMTP id a132mr6372357qkg.120.1567069342444;
-        Thu, 29 Aug 2019 02:02:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567069342; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1857121wrs;
+        Thu, 29 Aug 2019 02:02:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzYKRdtJMsFc9ys7guOIM0F7agKZWonAeekA8TQUWsi12Z97OZ8nva+J5P0lXmRWzyK6zED
+X-Received: by 2002:a37:6715:: with SMTP id b21mr8074312qkc.397.1567069361272;
+        Thu, 29 Aug 2019 02:02:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567069361; cv=none;
         d=google.com; s=arc-20160816;
-        b=AM5oj+ulyZUZ9WoxPoisUtyB+4SIaH/Z4htj8qNSGGZ/TL8AG6nk8145s1R6rrTsh5
-         XcMBP4Pia1LQRWGgxLNyVg6TXHnPVePY6SXJS5PUL/LDypGNrTCcITrlyNnFzkTfN/UI
-         tuuzfwZSYUBApQydaYav7d4JnNGQmis1GuuQxC9OAClFuklFXWd5M3rN+K3iO+noDCqW
-         DCb3iJKVzL8s3E03WAZ6kGVKNITZD+O57QrvvCaQW4hSgYI7F4B1+toZudhVun/8GRgj
-         8k2ODMNTmnn/dmF7PTuTYTz4lPKsAiio8JEG0J5c+rZwUDyvUsQjIE8u0xFSAhy2XaNP
-         GJlQ==
+        b=PYA4WqQNyPAX9ZwyAfg81DwvRnL31J4fHrRIBq68rc37ToKlsZblr1gN8RsE39vkRu
+         43HTqoBa5UkvoMhFshEWR2ikj7ttVYrd9VF9v4o/OLyUYEqtRWjeYVsbmYHvOGYvhw21
+         fkf+F69e2ikxziGx5vdlgUIiMW0jnp2Wl+Zx9d0MSRFwZJqGgrCHndErftcVBT4DX8iy
+         0B+G/dnYnlB73Zl518u3bwX87Vr6EW7jSHWEuez1HhCwEY+vfgvLV/drPRNymriGBndR
+         agKBElchQ868bDW+Jiyw5rayzTpI5ZoQyU2MpdCUOPAdyc9tsOeAgkuxG8uteUtatwvm
+         2ZaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=SZTRuEGNKbxalB/SilabisIHYFKrXD61B8uh9s3yebE=;
-        b=f+HPf6SGBn3TGrS07tAWne9Pz3Mv0H/Y3Hmm+YVBi75tM1GOQZ+F9EXJV/8CpAZyzi
-         uTAAXypuRTQ3kRPEnwGYSbOu4jshIysdXSbbP2I386wDD+X2Ru5aJbjDDXTteAyud5sJ
-         YMB4OY7lUAXASrLgEO+DQHMQybXK/BV/fBuS1BuYJg2iUDA1QJmuVevw61cEy6TRHJJz
-         IoGkQtiLG72GB83RY2jAiN94xL09eSz8Lrw0eyzdXpF74UlleXa8GXNDMP6AWlXB6+qc
-         Tfj8j2UAGirdRUChX01Coev61r7odHk+sEvMxZpm5gvPMQQXYhEM7lDsrVkdJhJXVI+L
-         huFw==
+        bh=YVBuGdqVPEfy6yZBRFP/r4odQo3nzL2TwJuN5O5An2k=;
+        b=C9w5zJPS0qov4y/xIq/5X+KPwXIzGH/KIBFaddFcIzlD4xXifbtVMsZXqatnx3hZJS
+         gEAfHJp1Ac0yUfIVxxXwjWdNv7i+OwRPqPTN9zUg75t/1jQbRvsSpxOYiuI0maNHLOTG
+         MmtJI4DVZWcSnaBuWeO2ggiTdVdjMNXmyNC+p/3lDXJtxUMz7RZ8folOGy9XyR8x14Qj
+         V8AR1kMz3YQ4QcRKiBhhWHyFDMFiMJq4emfGcAMcXyXRVzuMtiyOQM19WlAJhRvrYYjs
+         ZiM8WR2mXbmp692HnyvrbUjmzjtEU6Ikrz3jh3kizpv7JRpbQaAZoZUu8KqM8i9OJyqr
+         c7Qg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q5si1404345qkm.185.2019.08.29.02.02.22
+        by mx.google.com with ESMTPS id n36si1278916qvg.97.2019.08.29.02.02.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Aug 2019 02:02:22 -0700 (PDT)
+        Thu, 29 Aug 2019 02:02:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47034 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47054 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i3GJx-0001r2-2E
-	for alex.bennee@linaro.org; Thu, 29 Aug 2019 05:02:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33166)
+	id 1i3GKG-0002D5-0s
+	for alex.bennee@linaro.org; Thu, 29 Aug 2019 05:02:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33200)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1i3GJa-0001p0-Hv
- for qemu-arm@nongnu.org; Thu, 29 Aug 2019 05:01:59 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1i3GJf-0001uR-KD
+ for qemu-arm@nongnu.org; Thu, 29 Aug 2019 05:02:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1i3GJZ-0000yn-7x
- for qemu-arm@nongnu.org; Thu, 29 Aug 2019 05:01:58 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47510)
+ (envelope-from <eric.auger@redhat.com>) id 1i3GJe-00014F-8x
+ for qemu-arm@nongnu.org; Thu, 29 Aug 2019 05:02:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36693)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1i3GJZ-0000xx-13; Thu, 29 Aug 2019 05:01:57 -0400
+ id 1i3GJe-00013M-0m; Thu, 29 Aug 2019 05:02:02 -0400
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 4ED8186E86F;
- Thu, 29 Aug 2019 09:01:56 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 3C47F106E28D;
+ Thu, 29 Aug 2019 09:02:01 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-105.ams2.redhat.com [10.36.116.105])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2505D1001938;
- Thu, 29 Aug 2019 09:01:53 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A3A3B1001938;
+ Thu, 29 Aug 2019 09:01:56 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, pbonzini@redhat.com,
  alex.williamson@redhat.com
-Date: Thu, 29 Aug 2019 11:01:40 +0200
-Message-Id: <20190829090141.21821-2-eric.auger@redhat.com>
+Date: Thu, 29 Aug 2019 11:01:41 +0200
+Message-Id: <20190829090141.21821-3-eric.auger@redhat.com>
 In-Reply-To: <20190829090141.21821-1-eric.auger@redhat.com>
 References: <20190829090141.21821-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.68]); Thu, 29 Aug 2019 09:01:56 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.64]); Thu, 29 Aug 2019 09:02:01 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v5 1/2] memory: Add
- IOMMU_ATTR_NEED_HW_NESTED_PAGING IOMMU memory region attribute
+Subject: [Qemu-arm] [PATCH v5 2/2] hw/vfio/common: Fail on VFIO/HW nested
+ paging detection
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -92,94 +92,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: aik@ozlabs.ru, peterx@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wtweJS08fxUX
+X-TUID: jceh6k4xbAhs
 
-We introduce a new IOMMU Memory Region attribute,
-IOMMU_ATTR_NEED_HW_NESTED_PAGING that tells whether the
-virtual IOMMU relies on physical IOMMU HW nested paging
-capability when protecting host assigned devices.
+As of today, VFIO only works along with vIOMMU supporting
+caching mode. The SMMUv3 does not support this mode and
+requires HW nested paging to work properly with VFIO.
 
-Current Intel virtual IOMMU device supports "Caching
-Mode" and does not require 2 stages at physical level to be
-integrated with VFIO. However SMMUv3 does not implement such
-"caching mode" and requires HW nested paging.
+So any attempt to run a VFIO device protected by such IOMMU
+would prevent the assigned device from working and at the
+moment the guest does not even boot as the default
+memory_region_iommu_replay() implementation attempts to
+translate the whole address space and completely stalls
+the guest.
 
-As such SMMUv3 is the first IOMMU device to advertise this
-attribute.
-
-This new attribute will allow the VFIO code to specialize
-its handling.
+So let's fail on that case.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
 ---
 
-v4 -> v5:
-- patches 1, 4, 5 were upstreamed separately
-- s/IOMMU_ATTR_HW_NESTED_PAGING/IOMMU_ATTR_NEED_HW_NESTED_PAGING
-
 v3 -> v4:
-- s/IOMMU_ATTR_VFIO_NESTED/IOMMU_ATTR_HW_NESTED_PAGING
-- add comments related to the existing attributes
-- fix space after the cast
+- use IOMMU_ATTR_HW_NESTED_PAGING
+- do not abort anymore but jump to fail
 ---
- hw/arm/smmuv3.c       | 12 ++++++++++++
- include/exec/memory.h |  8 +++++++-
- 2 files changed, 19 insertions(+), 1 deletion(-)
+ hw/vfio/common.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 2eaf07fb5f..a932bf7136 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -1490,6 +1490,17 @@ static void smmuv3_notify_flag_changed(IOMMUMemory=
-Region *iommu,
-     }
- }
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index 3e03c495d8..e8c009d019 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -606,9 +606,19 @@ static void vfio_listener_region_add(MemoryListener =
+*listener,
+     if (memory_region_is_iommu(section->mr)) {
+         VFIOGuestIOMMU *giommu;
+         IOMMUMemoryRegion *iommu_mr =3D IOMMU_MEMORY_REGION(section->mr)=
+;
++        bool nested;
+         int iommu_idx;
 =20
-+static int smmuv3_get_attr(IOMMUMemoryRegion *iommu,
-+                           enum IOMMUMemoryRegionAttr attr,
-+                           void *data)
-+{
-+    if (attr =3D=3D IOMMU_ATTR_NEED_HW_NESTED_PAGING) {
-+        *(bool *)data =3D true;
-+        return 0;
-+    }
-+    return -EINVAL;
-+}
+         trace_vfio_listener_region_add_iommu(iova, end);
 +
- static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
-                                                   void *data)
- {
-@@ -1497,6 +1508,7 @@ static void smmuv3_iommu_memory_region_class_init(O=
-bjectClass *klass,
-=20
-     imrc->translate =3D smmuv3_translate;
-     imrc->notify_flag_changed =3D smmuv3_notify_flag_changed;
-+    imrc->get_attr =3D smmuv3_get_attr;
- }
-=20
- static const TypeInfo smmuv3_type_info =3D {
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index fddc2ff48a..61493633fa 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -212,7 +212,13 @@ typedef struct MemoryRegionClass {
-=20
-=20
- enum IOMMUMemoryRegionAttr {
--    IOMMU_ATTR_SPAPR_TCE_FD
-+    /* Retrieve an integer corresponding to the TCE file descriptor */
-+    IOMMU_ATTR_SPAPR_TCE_FD,
-+    /*
-+     * Retrieve a boolean that indicates whether the virtual IOMMU relie=
-s
-+     * on physical IOMMU HW nested paging to protect host assigned devic=
-es
-+     */
-+    IOMMU_ATTR_NEED_HW_NESTED_PAGING,
- };
-=20
- /**
++        if (!memory_region_iommu_get_attr(iommu_mr,
++                                          IOMMU_ATTR_NEED_HW_NESTED_PAGI=
+NG,
++                                          (void *)&nested) && nested) {
++            error_report("VFIO/vIOMMU integration based on HW nested pag=
+ing "
++                         "is not yet supported");
++            ret =3D -EINVAL;
++            goto fail;
++        }
+         /*
+          * FIXME: For VFIO iommu types which have KVM acceleration to
+          * avoid bouncing all map/unmaps through qemu this way, this
 --=20
 2.20.1
 

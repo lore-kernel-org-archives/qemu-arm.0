@@ -1,114 +1,79 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1510663wrs;
-        Wed, 28 Aug 2019 18:41:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzU4R3MFe3UFBto/iiiMaZLB4SI8Cwh8DDsM/dlZ0B2Me2k7v00KyEFJ2v9dneziYf+L+ax
-X-Received: by 2002:a50:fb82:: with SMTP id e2mr7033647edq.15.1567042865094;
-        Wed, 28 Aug 2019 18:41:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567042865; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp1532985wrs;
+        Wed, 28 Aug 2019 19:11:25 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwnARVg+/6QaDCmjOrZ75uz9iGaYfkBFO139sq9tdpmqXSo+fIrj1Mz+/B/NKL3kM4yS7Ss
+X-Received: by 2002:ae9:edd3:: with SMTP id c202mr7177708qkg.347.1567044685184;
+        Wed, 28 Aug 2019 19:11:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567044685; cv=none;
         d=google.com; s=arc-20160816;
-        b=BsMRtszUmv7HIYz36X1spSzVtHQiXBl6n6KP5A+btugjEd1DuuWlMYUZDTtOBuKIVt
-         gwbi3vY3y6feXyY5iXQE7A0CwqzSoGcmk4yVHWkp8BjBM7l7AYFZbLMrEmxc/vP71gmb
-         a5NKf5riqRB3ZoDjG8z31JoHxVnXMO94MXkokozzCFqTnfQrVyqFpz9PBs6p9tCfAvzi
-         fby2l29+nvJDOBgSzszJB0+HgzmA9yKUQ8H4gRKVsKazRuIu9PiQlS9x7P77jsvuzQAc
-         Owk+ILBuOdbnL7lKnzhs8Avqpb7uu6bymRtcuXYo3TIkzx7nqdZ+T/Izv75isEC01DOL
-         vLPg==
+        b=JkhYhSaFYZ6xzvj/7m3PelqacqjnbvYZdtT90Vh6iMAB4g0+jsIePTYQrxEO5Ok5aX
+         L4mQn6+yrBB/xAbV1VtNVyqD5aTCFSv8AvTApQjiR4ABZaonXIxjJ93hltQzfOwhos24
+         bJZUdsxTyzzD1f+ukHNx1XQ8r6ItF8+hcyl6DEi6tNXe6jxHxjPIl2YI5HLlZCbU8ZmX
+         4GBoLusw/esDZohmX5ZWRY85FgQbfckJEIcTorJHKM8qdyjALmvSIEU52N8TYaG2k15u
+         uMLhCgr2RCOJVWcyAcxCyU19YI8VZu+bDY7vDx31t8vATXuNL7Kt3LgtIv9A0aQ9gjVF
+         kUXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:from:date:references
-         :in-reply-to:message-id:mime-version:user-agent:dkim-signature
-         :dkim-signature;
-        bh=ShfIbLfI8AI5s/PHeWY2YywrjtllFmT6P69tTyvhcwc=;
-        b=RWgrlA75Vr0ayiSjZY8eHwaZLU3rViaLQtQymJhCRU43EFQMrKntko4899/GL4AFXT
-         Cg0tyyoOHBkK2tQ+QGGCvnKiMuT4ZAanys98neU+m6Tasnog7lvfCb0udoBFzu8gq8oM
-         QOkSMqEGA4XbYCLoTWUfhsfu44gpdHCEkoI9AkLaC9y3iOXV6RxHuz9Oo6MrmcJ6Egi0
-         oTs2g3fz9H32ODQhCI3+CKeb8GYy4Y6ksUrNmC8OHK5T3FEOrYGBGHYrAL9hcISHae3D
-         4h5W0adGa9wrhH3YNgpz1itkkBR2LtylNKVnw4galybeXKAcI8GatQFDebSLfI7lZgUO
-         3Gcw==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=LHmw0UQAEeFEscsH3z4oXZNOXA61tO0MP2zqSM88APM=;
+        b=EF0S5HQkd7uljjNp4H6TC9An4gfAdAp/7LZlxjDBPVS7/MCz9b6eYR7eAXRiS4p5FJ
+         HgQ5pCB4lqo4vPlit4k6ZDbfZyqWnCmaMzhH0bwaa+9qT9I/Do756z64Moxj5DoabaJq
+         /96fm6sUTeAzRKA4FRpte9Co+r/EIaXn1ot1O+1J0l0+bkj8h5xgV3wb6I6et60sBVIZ
+         /W/QkZzn9eF44GYK1WSVg5ia9IKY/fWg4PBPPnaIfWzxNYDLNitgeBGyYPJ81RvuyBPm
+         JDk0mVSnIjJkqbqbGeQlh/gugKzWljBEkB2YgzzLHYLGyNyW1TTj4xUZVEHW+VpgwZS0
+         wxkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=iUZQ7Y+S;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=XZ+weQuU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x38si381490eda.45.2019.08.28.18.41.04
+        by mx.google.com with ESMTPS id w31si870249qvf.189.2019.08.28.19.11.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Aug 2019 18:41:05 -0700 (PDT)
+        Wed, 28 Aug 2019 19:11:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=iUZQ7Y+S;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=XZ+weQuU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44394 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44546 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i39Qu-00027u-3X
-	for alex.bennee@linaro.org; Wed, 28 Aug 2019 21:41:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49801)
+	id 1i39uG-0000aD-Ke
+	for alex.bennee@linaro.org; Wed, 28 Aug 2019 22:11:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57181)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <andrew@aj.id.au>) id 1i39Qm-00027X-Ii
- for qemu-arm@nongnu.org; Wed, 28 Aug 2019 21:40:57 -0400
+ (envelope-from <yuzenghui@huawei.com>) id 1i39u6-0000Wq-9m
+ for qemu-arm@nongnu.org; Wed, 28 Aug 2019 22:11:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <andrew@aj.id.au>) id 1i39Ql-0000j5-Il
- for qemu-arm@nongnu.org; Wed, 28 Aug 2019 21:40:56 -0400
-Received: from wout1-smtp.messagingengine.com ([64.147.123.24]:58261)
+ (envelope-from <yuzenghui@huawei.com>) id 1i39u5-00078G-4h
+ for qemu-arm@nongnu.org; Wed, 28 Aug 2019 22:11:14 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2257 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <andrew@aj.id.au>)
- id 1i39Ql-0000ix-BG; Wed, 28 Aug 2019 21:40:55 -0400
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.west.internal (Postfix) with ESMTP id 1B9966A3;
- Wed, 28 Aug 2019 21:40:54 -0400 (EDT)
-Received: from imap2 ([10.202.2.52])
- by compute4.internal (MEProxy); Wed, 28 Aug 2019 21:40:54 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
- mime-version:message-id:in-reply-to:references:date:from:to:cc
- :subject:content-type; s=fm3; bh=ShfIbLfI8AI5s/PHeWY2YywrjtllFmT
- 6P69tTyvhcwc=; b=iUZQ7Y+S29XOkpKCHSKFlyXpNbdJJUWSznlkhpGZFIUoJsp
- dDlVhbl1YN/WXu0oIyKcLfSqd5gIwDhSnV/1BFp6kAuSkMW+B2FzvQQ8Im6CSExm
- uYNPcBIpoqwze0RwqCauaP8Wg4/liht27Nu+Fukr2qcWy6ExDicQJb+9GKlR+sdI
- u1JU2U9zLVJkKowaQK9BHy7aWqBkwpEqJpcWCImAfC407vqeblIheWESj+5yPVz5
- fDc827LhcAIWuxFUPg8YBlc6QyluOkQ8xxY6MaFKZjVLoiD8InLQWpoolwteOE0f
- ul7+1i9Gz0jwLWOb9VZA0lpTlCy2XxtVdKiDSwQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to:x-me-proxy
- :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=ShfIbL
- fI8AI5s/PHeWY2YywrjtllFmT6P69tTyvhcwc=; b=XZ+weQuUC1EUiRIOcOabfB
- Wm8WG4JH/pmiFW8N9uekc7yo6e+YZ/StJ4MApCRHSOZxJNzOrv5qE0aNRJE+Z3/o
- RPY68uleTzMnSIX4gJY5rUd6kmVn+niAcgrXMumovNCpcgEsafZeyjr9WmSmAqYO
- ewfaCxJ7MlTzL5pw0Pn93yQNwLbX7llENmiaEZ3PpOxRsaF4pkxNURY+c3Z8rCPu
- Ih90loOPGW1LkcsBc8XOOVITp99pYPnj125EBtSY9r3v0XQxoItKOb2VH4EvsPGa
- snN2lmf1/Ej07SK0w9YmBetfuA4sfsJW0zih2isl8DdCm/jtOhP1zn8wvfEh75Ww
- ==
-X-ME-Sender: <xms:JC1nXc9ZizH9tu6Y-B2GjDm7hFL78X2VWQ-3L1fR63VZoMokOyw1cg>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeduvddrudeiuddghedtucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
- cujfgurhepofgfggfkjghffffhvffutgesthdtredtreertdenucfhrhhomhepfdetnhgu
- rhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecurfgrrh
- grmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhiugdrrghunecuvehluhhsthgv
- rhfuihiivgeptd
-X-ME-Proxy: <xmx:JC1nXdU1qzpzfM5ofYwBrou97DfVlZi-eTunuhf_PRbdlClY__SAdg>
- <xmx:JC1nXWcf4T1xfzo17Ype2pI-NecELLXzSIF1lCWcSFVu032qAgs3Zg>
- <xmx:JC1nXf8T1HS-W19igIP50y5RtL3oikcrseZlpO0v5OFLEIAPqgERdQ>
- <xmx:JS1nXdorRIIP8NE4JXeZ2zYh_QaNdsF3qg6CnrolOVC63EGBZlTpXQ>
-Received: by mailuser.nyi.internal (Postfix, from userid 501)
- id 9286CE00A3; Wed, 28 Aug 2019 21:40:52 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
-User-Agent: Cyrus-JMAP/3.1.7-139-g73fcb67-fmstable-20190826v1
-Mime-Version: 1.0
-Message-Id: <453779dd-e66a-41e5-95e2-5268d799903e@www.fastmail.com>
-In-Reply-To: <4fd7e761-65e1-47f7-b7b4-ed90eafaae41@www.fastmail.com>
-References: <20190809054341.24728-1-andrew@aj.id.au>
- <CAFEAcA9dEKLneH5GJJsX84LTW_p9qBrGmr6yMxAYcNo-2EzHZg@mail.gmail.com>
- <4fd7e761-65e1-47f7-b7b4-ed90eafaae41@www.fastmail.com>
-Date: Thu, 29 Aug 2019 11:11:14 +0930
-From: "Andrew Jeffery" <andrew@aj.id.au>
-To: "Peter Maydell" <peter.maydell@linaro.org>
-Content-Type: text/plain
+ (Exim 4.71) (envelope-from <yuzenghui@huawei.com>)
+ id 1i39u4-00074q-R6; Wed, 28 Aug 2019 22:11:13 -0400
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 9E8565E696147CB115BC;
+ Thu, 29 Aug 2019 10:11:05 +0800 (CST)
+Received: from [127.0.0.1] (10.184.12.158) by DGGEMS414-HUB.china.huawei.com
+ (10.3.19.214) with Microsoft SMTP Server id 14.3.439.0; Thu, 29 Aug 2019
+ 10:10:59 +0800
+To: Eric Auger <eric.auger@redhat.com>, <eric.auger.pro@gmail.com>,
+ <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <peter.maydell@linaro.org>
+References: <20190827160554.30995-1-eric.auger@redhat.com>
+From: Zenghui Yu <yuzenghui@huawei.com>
+Message-ID: <2b9f6028-117b-f3da-e40b-3e5e217ad826@huawei.com>
+Date: Thu, 29 Aug 2019 10:06:32 +0800
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:64.0) Gecko/20100101
+ Thunderbird/64.0
+MIME-Version: 1.0
+In-Reply-To: <20190827160554.30995-1-eric.auger@redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.184.12.158]
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 64.147.123.24
-Subject: Re: [Qemu-arm] [PATCH v2] target-arm: Make the counter tick
- relative to cntfrq
+X-Received-From: 45.249.212.191
+Subject: Re: [Qemu-arm] [RFC 0/3] KVM/ARM: Fix >256 vcpus
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -120,80 +85,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Joel Stanley <joel@jms.id.au>
+Cc: maz@kernel.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9x1OXmqUkqIN
+X-TUID: 2tdew6VgTIUk
 
+Hi Eric,
 
-
-On Thu, 29 Aug 2019, at 11:08, Andrew Jeffery wrote:
+On 2019/8/28 0:05, Eric Auger wrote:
+> Since 4.18, KVM/ARM exposes a KVM_MAX_VCPUS equal to 512. However it was
+> reported [1] that a VM with more than 256 vcpus cannot be launched. 5.4
+> is about to fix the situation with 2 patches:
+> - one upgrade of the KVM_IRQ_LINE API [2] supporting a vcpu id encoded
+>    on 12 bits,
+> - the reduction of KVM IO devices consumed by each GICv3 redistributor [3]
 > 
+> This series uses the new KVM_IRQ_LINE API and also checks the associated
+> capability (KVM_CAP_ARM_IRQ_LINE_LAYOUT_2) in machvirt.
 > 
-> On Wed, 28 Aug 2019, at 01:39, Peter Maydell wrote:
-> > On Fri, 9 Aug 2019 at 06:43, Andrew Jeffery <andrew@aj.id.au> wrote:
-> > >
-> > > The use of GTIMER_SCALE assumes the clock feeding the generic timer is
-> > > 62.5MHz for all platforms. This is untrue in general, for example the
-> > > ASPEED AST2600 feeds the counter with either an 800 or 1200MHz clock,
-> > > and CNTFRQ is configured appropriately by u-boot.
-> > >
-> > > To cope with these values we need to take care of the quantization
-> > > caused by the clock scaling in terms of nanoseconds per clock by
-> > > calculating an effective frequency such that NANOSECONDS_PER_SECOND is
-> > > an integer multiple of the effective frequency. Failing to account for
-> > > the quantisation leads to sticky behaviour in the VM as the guest timer
-> > > subsystems account for the difference between delay time and the counter
-> > > value.
-> > >
-> > > Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-> > > ---
-> > > v2:
-> > > 1. Removed the user-mode change that broke v1
-> > > 2. Rearranged the implementation as a consequence of 1.
-> > >
-> > >  target/arm/helper.c | 51 ++++++++++++++++++++++++++++++++++++++++++---
-> > >  1 file changed, 48 insertions(+), 3 deletions(-)
-> > >
-> > > diff --git a/target/arm/helper.c b/target/arm/helper.c
-> > > index b74c23a9bc08..166a54daf278 100644
-> > > --- a/target/arm/helper.c
-> > > +++ b/target/arm/helper.c
-> > > @@ -2277,6 +2277,34 @@ static const ARMCPRegInfo v6k_cp_reginfo[] = {
-> > >
-> > >  #ifndef CONFIG_USER_ONLY
-> > >
-> > > +static void gt_recalc_timer(ARMCPU *cpu, int timeridx);
-> > > +static void gt_cntfrq_write(CPUARMState *env, const ARMCPRegInfo *ri,
-> > > +                            uint64_t value)
-> > > +{
-> > > +    uint64_t scale;
-> > > +    ARMCPU *cpu;
-> > > +    int i;
-> > > +
-> > > +    raw_write(env, ri, value);
-> > > +
-> > > +    /* Fix up the timer scaling */
-> > > +    cpu = env_archcpu(env);
-> > > +    scale = MAX(1, NANOSECONDS_PER_SECOND / value);
-> > > +    for (i = 0; i < NUM_GTIMERS; i++) {
-> > > +        if (!cpu->gt_timer[i]) {
-> > > +            continue;
-> > > +        }
-> > > +
-> > > +        cpu->gt_timer[i]->scale = scale;
-> > 
-> > Reaching into the internals of a QEMUTimer and changing
-> > the 'scale' value seems like a bad idea. If QEMUTimer doesn't
-> > have a facility for changing the frequency and we need one
-> > then we should add one at that API layer.
+> Without the series, as soon as the -smp arguments exceeds 256, QEMU exits
+> with "kvm_set_irq: Invalid argument".
+
+For the series:
+
+Tested-by: Zenghui Yu <yuzenghui@huawei.com>
+
+together with [2], [3].
+
 > 
-> Yeah, fair point. It is an RFC patch
+> Best Regards
+> 
+> Eric
+> 
+> References:
+> [1] Can we boot a 512U kvm guest?
+>      https://patchwork.kernel.org/patch/11091501/
+> [2] [PATCH] KVM: arm/arm64: vgic: Allow more than 256 vcpus for KVM_IRQ_LINE
+>      https://patchwork.kernel.org/patch/11099609/
+> [3] [PATCH] KVM: arm/arm64: vgic: Use a single IO device per redistributor
+>      https://patchwork.kernel.org/patch/11112141/
+> 
+> This series can be found at:
+> https://github.com/eauger/qemu/tree/v4.1.0-256fix-rfc-v1
+> 
+> Eric Auger (3):
+>    linux headers: update for KVM_CAP_ARM_IRQ_LINE_LAYOUT_2
+>    intc/arm_gic: Support PPI injection for more than 256 vpus
+>    virt: Check KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 for smp_cpus > 256
 
-Ugh, I just looked at the subject and realised I hadn't added "RFC".
+Thanks,
+zenghui
 
-Too many things going on :/
-
-Andrew

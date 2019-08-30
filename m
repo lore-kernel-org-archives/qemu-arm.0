@@ -1,109 +1,102 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp2525912wrs;
-        Thu, 29 Aug 2019 11:21:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy/nsn9LMZ6WsIr4gd0W48hW/ZftzxJ7LLEjB9VlBUg9FOiO3gvwW6bkK5LQE+m4k1A9pMQ
-X-Received: by 2002:a17:907:39a:: with SMTP id ss26mr9687643ejb.278.1567102870405;
-        Thu, 29 Aug 2019 11:21:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567102870; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp39953wrs;
+        Thu, 29 Aug 2019 18:27:07 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzBOxeH9Gy1reQANIdaXCVacKuU5Je6/f6OwIRwfItCUC6Uc37wztww2q/Knte4y5skg9Jg
+X-Received: by 2002:a17:906:512:: with SMTP id j18mr10619275eja.28.1567128427533;
+        Thu, 29 Aug 2019 18:27:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567128427; cv=none;
         d=google.com; s=arc-20160816;
-        b=GTC80TkQJhXCMzI9MTr9QCyTHbeYHZEsEugnAuWW528z8tBaFhDy2jiUaK+HGWLF7x
-         jpsc5/D5gAusf6j3q//VZEdVVb3Bl0/+54pMzuE1+2nCP8ChNM3RTNUzZi8TNbH8AM4o
-         r0Avj7ImuSw9p3GnJlSbIWl3XbM0Uaw4opxumsAF467d6VJDqxl5hur1slBGoV49+Qao
-         OhobCZOG57BSJlZCPh7Uv1mRJkQuVnApei8pj2hv1hfy3kwsLLI5JM3PPzCwyRA54CEv
-         FE5m4XPFHJzmL+sxFQRrXm+RXk5FrOaIKLKu0Aow0dISU2yZgJGB13cokOAFx/ZHhid0
-         ob9g==
+        b=WXJ1OO1yac+5wGXCs2AqIB3C85DtwLuKZpDj6fsjdfcQMyhs39R9pzuGkCgP2OwuPA
+         MfPEP4v/oHziFAoqXy4zOVuOwZJnVzZv7SlWu4iWmdCijjWQV03QxmuJYDGqG3wncHHZ
+         sKC+oHLgHX0TaVFMj43DzMRg0szLJxF0xRIPUIrJuMIhnkdqZG9zpqKe39HP1H5NyAOW
+         yGTvPQ78okMTt2RmSeX7gmZ84JsXTH35b9B+unZvG5r5jnE7M2ltMLhksg0Qii5FikIB
+         CA/ov20MZ86x1ccmNx3d3JFnsq66CKg2uGsGHboIDEyp7+QQWyzKsIDNsLU6KKDdFhCy
+         amXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=cxpybPJrkEvgHevJ3oDOrkMAVzTMBQR2ivG0w3aY10c=;
-        b=LKBuMx2KEEb1lI9xLqmwg1D9k7qQ2cUABJMUxfClZmnYDmglTOgFkRF/prlbTGeC+Q
-         IOafO+aXXd3k2eWS71re+MghX1Y6kz2Uwg9pkJtVpAJx3fS02h4ggUitxFJh5MxH253H
-         eDqbTXPdGhL8zpmJaE7ZhOredcR+rOG+XQKEU+YJ/Tnkz2eVflVK7cNKyx0CyR+Qflhf
-         GwDmzMIZohoBV3XYSu3sfB7uDT0Rj3grvw9JGgqlzMFYlq4NRFQEq9f/B8jKJoHnROek
-         AV/U1O/AU60bMs/20DxFmZQIhEMk2SxXW0+nB7samp7oUwzPnMyLQkxtdKKJ/DtRn/Cn
-         G8DQ==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=J8xs6JgARHOvC0h7SUc+Rl1pD46T03MbPQ7996XjJiU=;
+        b=oM6kOrPdz287jCkW3QDPk71RikiuWDpKz/LbeZMEp7lbFILxaz+aTrDJXFzOKPGjGE
+         NCaeCinM5a6FbSJJ8FG8C98aq/3qKuB8k5iVdgtyRY9IS/zzgWGpCVYBjp4KAVRd5Eky
+         C0wefoOvfT7hpINfrV6Nvn4BE/dpG+9lsjYJPLyGzKisuDenXUvGKLUXnGgAvyIXqByT
+         +gGIkuWlRExKLhc0i/fsplnD1y8qT487fHA0+wRYAjCptbuD1gTalFG1LGkyVxfIEPHZ
+         S9Gx5phsx6LQ97z5qNM0DJHQpZxJYpbG3NQAuYWAs89oF4XnN4FN9EnTXt13EgsdJcXY
+         ayQw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s1si17256ejq.220.2019.08.29.11.21.10
+        by mx.google.com with ESMTPS id s1si2539623edd.112.2019.08.29.18.27.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Aug 2019 11:21:10 -0700 (PDT)
+        Thu, 29 Aug 2019 18:27:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53238 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55726 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i3P2j-0000Rb-7J
-	for alex.bennee@linaro.org; Thu, 29 Aug 2019 14:21:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43408)
+	id 1i3Vgv-0001HV-EY
+	for alex.bennee@linaro.org; Thu, 29 Aug 2019 21:27:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45879)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1i3P1G-0007cb-IL
- for qemu-arm@nongnu.org; Thu, 29 Aug 2019 14:19:39 -0400
+ (envelope-from <peterx@redhat.com>) id 1i3VgU-0001HH-7s
+ for qemu-arm@nongnu.org; Thu, 29 Aug 2019 21:26:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1i3P1C-0000Aq-6i
- for qemu-arm@nongnu.org; Thu, 29 Aug 2019 14:19:38 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37998)
+ (envelope-from <peterx@redhat.com>) id 1i3VgQ-0001Ok-8a
+ for qemu-arm@nongnu.org; Thu, 29 Aug 2019 21:26:35 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:60590)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1i3P1B-0000AE-Ua
- for qemu-arm@nongnu.org; Thu, 29 Aug 2019 14:19:34 -0400
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72])
+ (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1i3VgP-00012a-VZ
+ for qemu-arm@nongnu.org; Thu, 29 Aug 2019 21:26:34 -0400
+Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
+ [209.85.215.197])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 01A423C928
- for <qemu-arm@nongnu.org>; Thu, 29 Aug 2019 18:19:33 +0000 (UTC)
-Received: by mail-wr1-f72.google.com with SMTP id j10so2507137wrb.16
- for <qemu-arm@nongnu.org>; Thu, 29 Aug 2019 11:19:32 -0700 (PDT)
+ by mx1.redhat.com (Postfix) with ESMTPS id 33AD28831C
+ for <qemu-arm@nongnu.org>; Fri, 30 Aug 2019 01:26:28 +0000 (UTC)
+Received: by mail-pg1-f197.google.com with SMTP id k20so3002830pgg.15
+ for <qemu-arm@nongnu.org>; Thu, 29 Aug 2019 18:26:28 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ft41ontdbYJfOC6ya31P4ldTQo622VBKEw+p0mV3ByI=;
- b=N7FJpvRklj7xjDsLVL0CVAVX3ARj3FNhRpE77nbHo6NKza/7B326l5+xcgDY+yIv6g
- sEFrJSvbswcLTP3oBfy7SbYr6LP4wJGlqakkUIjAoyHha2DUHeY2Ql3tXSxmFtdSODRj
- rmGxHkqKcN4z1p/xFvuupHXm7TpN+5zh15YRq7eiW9TJ/dVH4zqy82aUWxxtnncEm0GK
- AS3Nb5wHTvvzGRkIuvK2ltuatH42ABNWl875Sqaq2PuMpiymUN+kMQlFfRQLKhIPTNFY
- 2jvk7ui3RTap/bO8p2YIszG3sOZTEPE4SDacQK9mI05zL7lpnEfnoN/+RJFYuSO5gPuk
- fJ3Q==
-X-Gm-Message-State: APjAAAXqZY+GvpqQed3KgG+KJXE1GlXNaJMQ866RkoZn91DymBpwSDbP
- K5CXKZMnGaNwZ9CdOKju737rKB0LC9ENVja5qrJT16YdcP5KP7WnTPixM3mAAovOhxD9yzgDlac
- +fR9GsgWBv6sI
-X-Received: by 2002:a1c:96c6:: with SMTP id y189mr6826261wmd.160.1567102771752; 
- Thu, 29 Aug 2019 11:19:31 -0700 (PDT)
-X-Received: by 2002:a1c:96c6:: with SMTP id y189mr6826245wmd.160.1567102771530; 
- Thu, 29 Aug 2019 11:19:31 -0700 (PDT)
-Received: from [192.168.1.41] (251.red-88-10-102.dynamicip.rima-tde.net.
- [88.10.102.251])
- by smtp.gmail.com with ESMTPSA id w15sm523972wru.53.2019.08.29.11.19.30
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 29 Aug 2019 11:19:30 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-References: <20190823135811.13883-1-philmd@redhat.com>
- <20190823135811.13883-4-philmd@redhat.com>
- <98da7855-40eb-2d58-8f0a-b75a041aba4c@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <91b9cdcd-fe85-5283-8d03-c0e948f72f45@redhat.com>
-Date: Thu, 29 Aug 2019 20:19:30 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=J8xs6JgARHOvC0h7SUc+Rl1pD46T03MbPQ7996XjJiU=;
+ b=UIe+SYeGaR7OS0t6MKZTVHKrTLCBPGgtQlcdaSyiC+fKP9Z4GdH1+/f59gKSDTLIwk
+ hGCaxYAlQcXvJULOQM/Bv8ozqygyQsSfmG7IHKr6a/Xchp6A+jILz7XygqcklxZeuyG2
+ PerwZ0Zy+tKGTnmB72imMcX8YWoUc9bVYPDWtevfVGL14wGeELFt2yi7WTmT+LVqc4yf
+ Ue8+Vd7XmjQq7UlsTYJS/AH9eZUELaDshbdMNSgX0NbJ5wmhmxDg9qv/pfcB54QSEC3h
+ N0/1pinpArL8ieNTQGXjQMsE8e5HQI5mpqLmObC1P8cPO/QKubA8NWLJvKZYnBMzeAMa
+ O/sg==
+X-Gm-Message-State: APjAAAU4ZWrqqZnZcRTtdBPa51ng/DspWHSybmEJzOcZ9mz8g6UI7svV
+ a9Vz5jpIg8WWK37N4bspKmnDSGI5sa5GhMgsGiGnP+iXBo8sGIwfW+YSc4IQ8L5QOHbHgB0cvjr
+ kFLrethP5WcL3
+X-Received: by 2002:a63:7a06:: with SMTP id v6mr11074370pgc.115.1567128387615; 
+ Thu, 29 Aug 2019 18:26:27 -0700 (PDT)
+X-Received: by 2002:a63:7a06:: with SMTP id v6mr11074355pgc.115.1567128387242; 
+ Thu, 29 Aug 2019 18:26:27 -0700 (PDT)
+Received: from xz-x1 ([209.132.188.80])
+ by smtp.gmail.com with ESMTPSA id 19sm3339072pjc.25.2019.08.29.18.26.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 29 Aug 2019 18:26:26 -0700 (PDT)
+Date: Fri, 30 Aug 2019 09:26:14 +0800
+From: Peter Xu <peterx@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Message-ID: <20190830012614.GK8729@xz-x1>
+References: <20190730172137.23114-1-eric.auger@redhat.com>
+ <20190730172137.23114-4-eric.auger@redhat.com>
+ <20190815135400.GC8463@xz-x1>
+ <f6a3b750-8439-7934-565b-37e1001f84d4@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <98da7855-40eb-2d58-8f0a-b75a041aba4c@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+In-Reply-To: <f6a3b750-8439-7934-565b-37e1001f84d4@redhat.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 3/4] RFC target/arm: Do not build pre-ARMv7
- cpus when using KVM
+Subject: Re: [Qemu-arm] [PATCH for-4.2 v10 03/15] virtio-iommu: Add skeleton
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -115,145 +108,151 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: peter.maydell@linaro.org, kevin.tian@intel.com, mst@redhat.com,
+ tn@semihalf.com, qemu-devel@nongnu.org, alex.williamson@redhat.com,
+ qemu-arm@nongnu.org, jean-philippe@linaro.org, bharat.bhushan@nxp.com,
+ eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oM1rYJ57NyDM
+X-TUID: J5xGh0htKEE7
 
-Hi Thomas,
+On Thu, Aug 29, 2019 at 02:18:42PM +0200, Auger Eric wrote:
+> Hi Peter,
+> 
+> First of all, please forgive me for the delay.
+> On 8/15/19 3:54 PM, Peter Xu wrote:
+> > On Tue, Jul 30, 2019 at 07:21:25PM +0200, Eric Auger wrote:
+> >> +static void virtio_iommu_handle_command(VirtIODevice *vdev, VirtQueue *vq)
+> >> +{
+> >> +    VirtIOIOMMU *s = VIRTIO_IOMMU(vdev);
+> >> +    struct virtio_iommu_req_head head;
+> >> +    struct virtio_iommu_req_tail tail;
+> > 
+> > [1]
+> > 
+> >> +    VirtQueueElement *elem;
+> >> +    unsigned int iov_cnt;
+> >> +    struct iovec *iov;
+> >> +    size_t sz;
+> >> +
+> >> +    for (;;) {
+> >> +        elem = virtqueue_pop(vq, sizeof(VirtQueueElement));
+> >> +        if (!elem) {
+> >> +            return;
+> >> +        }
+> >> +
+> >> +        if (iov_size(elem->in_sg, elem->in_num) < sizeof(tail) ||
+> >> +            iov_size(elem->out_sg, elem->out_num) < sizeof(head)) {
+> >> +            virtio_error(vdev, "virtio-iommu bad head/tail size");
+> >> +            virtqueue_detach_element(vq, elem, 0);
+> >> +            g_free(elem);
+> >> +            break;
+> >> +        }
+> >> +
+> >> +        iov_cnt = elem->out_num;
+> >> +        iov = g_memdup(elem->out_sg, sizeof(struct iovec) * elem->out_num);
+> > 
+> > Could I ask why memdup is needed here?
+> Indeed I don't think it is needed and besides iov is not freed!
+> 
+> I got inspired from hw/net/virtio-net.c. To be honest I don't get why
+> the g_memdup is needed there either. The out_sg gets duplicated and
+> commands work on the duplicated data and not in place.
 
-On 8/23/19 4:28 PM, Thomas Huth wrote:
-> On 8/23/19 3:58 PM, Philippe Mathieu-Daud=C3=A9 wrote:
->> A KVM-only build won't be able to run pre-ARMv7 cpus, disable them.
->>
->> If KVM is not enabled, they are enabled by default.
-> [...]
->>  config CHEETAH
->>      bool
->> +    select ARM_V4
->>      select OMAP
->>      select TSC210X
->=20
-> Are you sure about the "enabled by default" ? There is not "default y"
-> here, is it?
+Oh true, I found that it's because of calling of iov_discard_front().
+Please have a look at 771b6ed37e3.  Though it seems to me that
+virtio-iommu does not truncate iovs so it should not be needed.
 
-What I mean is if you build with --disable-kvm, this selects
---enable-tcg which provides the pre-ARMv7 cpus. So to make no changes, I
-also added:
+> > 
+> >> +        sz = iov_to_buf(iov, iov_cnt, 0, &head, sizeof(head));
+> >> +        if (unlikely(sz != sizeof(head))) {
+> >> +            tail.status = VIRTIO_IOMMU_S_DEVERR;
+> > 
+> > Do you need to zero the reserved bits to make sure it won't contain
+> > garbage?  Same question to below uses of tail.
+> yes. I initialized tail.
+> > 
+> >> +            goto out;
+> >> +        }
+> >> +        qemu_mutex_lock(&s->mutex);
+> >> +        switch (head.type) {
+> >> +        case VIRTIO_IOMMU_T_ATTACH:
+> >> +            tail.status = virtio_iommu_handle_attach(s, iov, iov_cnt);
+> >> +            break;
+> >> +        case VIRTIO_IOMMU_T_DETACH:
+> >> +            tail.status = virtio_iommu_handle_detach(s, iov, iov_cnt);
+> >> +            break;
+> >> +        case VIRTIO_IOMMU_T_MAP:
+> >> +            tail.status = virtio_iommu_handle_map(s, iov, iov_cnt);
+> >> +            break;
+> >> +        case VIRTIO_IOMMU_T_UNMAP:
+> >> +            tail.status = virtio_iommu_handle_unmap(s, iov, iov_cnt);
+> >> +            break;
+> >> +        default:
+> >> +            tail.status = VIRTIO_IOMMU_S_UNSUPP;
+> >> +        }
+> >> +        qemu_mutex_unlock(&s->mutex);
+> >> +
+> >> +out:
+> >> +        sz = iov_from_buf(elem->in_sg, elem->in_num, 0,
+> >> +                          &tail, sizeof(tail));
+> >> +        assert(sz == sizeof(tail));
+> >> +
+> >> +        virtqueue_push(vq, elem, sizeof(tail));
+> > 
+> > s/tail/head/ (though they are the same size)?
+> That's unclear to me. Similarly when checking against virtio-net.c, the
+> element is pushed back to the used ring and len is set to the size of
+> the status with:
+> 
+> /*
+>  * Control virtqueue data structures
+>  *
+>  * The control virtqueue expects a header in the first sg entry
+>  * and an ack/status response in the last entry.  Data for the
+>  * command goes in between.
+>  */
 
-  config ARM_V4
-      default y
+I was referencing the balloon code when reading the patch, e.g.,
+virtio_balloon_handle_output().  Though after I read more carefully I
+see that other places are using it as you described.  Now I tend to
+agree with you, because virtqueue_push() who calls
+virtqueue_unmap_sg() used the len to unmap in_sg[] rather than
+out_sg[].  So please ignore my previous comment.
 
-Which include the "default y".
+(then I'm not sure whether the usage in the balloon code was correct
+ now...)
 
->=20
-> Also I'm not sure whether it's such a good idea to always disable the
-> config switches in default-configs/arm-softmmu.mak ... if somebody want=
-s
-> to build such a restricted QEMU, don't they have to maintain their own
-> set of config files anyway?
+> > 
+> >> +        virtio_notify(vdev, vq);
+> >> +        g_free(elem);
+> >> +    }
+> >> +}
+> > 
+> > [...]
+> > 
+> >> +static void virtio_iommu_set_features(VirtIODevice *vdev, uint64_t val)
+> >> +{
+> >> +    VirtIOIOMMU *dev = VIRTIO_IOMMU(vdev);
+> >> +
+> >> +    dev->acked_features = val;
+> >> +    trace_virtio_iommu_set_features(dev->acked_features);
+> >> +}
+> >> +
+> >> +static const VMStateDescription vmstate_virtio_iommu_device = {
+> >> +    .name = "virtio-iommu-device",
+> >> +    .unmigratable = 1,
+> > 
+> > Curious, is there explicit reason to not support migration from the
+> > first version? :)
+> The state is made of red black trees, lists. For the former there is no
+> VMSTATE* ready. I am working on it but I think this should be handled
+> separately
 
-Ah... I followed your example:
-
-$ git show 9e5c2056d1e
-commit 9e5c2056d1e80f344a0c412d7a3d847db1f4e034
-Author: Thomas Huth <thuth@redhat.com>
-Date:   Tue Jan 29 10:42:14 2019 +0100
-
-    s390x: express dependencies with Kconfig
-
-    Instead of hard-coding all config switches in the config file
-    default-configs/s390x-softmmu.mak, let's use the new Kconfig files
-    to express the necessary dependencies: The S390_CCW_VIRTIO config swi=
-tch
-    for the "s390-ccw-virtio" machine now selects all non-optional device=
-s.
-
-    And since we already have the VIRTIO_PCI and VIRTIO_MMIO config switc=
-hes
-    for the other two virtio transports, this patch also introduces a new
-    config switch VIRTIO_CCW for the third, s390x-specific virtio transpo=
-rt,
-    so that all three virtio transports are now handled in the same way.
-
-diff --git a/default-configs/s390x-softmmu.mak
-b/default-configs/s390x-softmmu.mak
-@@ -1,9 +1,13 @@
--CONFIG_PCI=3Dy
--CONFIG_VIRTIO_PCI=3Dy
--CONFIG_SCLPCONSOLE=3Dy
--CONFIG_TERMINAL3270=3Dy
--CONFIG_S390_FLIC=3Dy
--CONFIG_WDT_DIAG288=3Dy
-+# Default configuration for s390x-softmmu
-+
-+# Uncomment the following lines to disable these optional devices:
-+#
-+#CONFIG_TERMINAL3270=3Dn
-+#CONFIG_VFIO_AP=3Dn
-+#CONFIG_VFIO_CCW=3Dn
-+#CONFIG_VIRTIO_PCI=3Dn
-+#CONFIG_WDT_DIAG288=3Dn
-+
-+# Boards:
-+#
- CONFIG_S390_CCW_VIRTIO=3Dy
--CONFIG_VFIO_CCW=3Dy
--CONFIG_VFIO_AP=3Dy
-
-OK now I see, I should have added your comment and use the opposite form
-(because now these boards are all enabled) so 's/=3Dy/=3Dn' in my patch.
-
-> I think we should maybe rather rework the default-configs directory:
-> Rename the default to "config/default/" instead and then we can add
-> other subfolders with such special configurations, e.g. config/nemu/ or
-> config/lean-kvm/ or however you want to call it. Then add a new switch
-> to the configure script to be able to use the configs from such a
-> different folder.
-
-OK so if someone wants a special config, he'd know the config values to
-select, so it is pointless/confusing to keep them commented.
-Are you suggesting to simply remove the default entries? Such:
-
--- >8 --
-@@ -9,34 +9,33 @@ CONFIG_ARM_V7M=3Dy
- CONFIG_ARM_VIRT=3Dy
- CONFIG_CUBIEBOARD=3Dy
- CONFIG_EXYNOS4=3Dy
--CONFIG_HIGHBANK=3Dy
--CONFIG_INTEGRATOR=3Dy
- CONFIG_FSL_IMX31=3Dy
--CONFIG_MUSICPAL=3Dy
- CONFIG_MUSCA=3Dy
--CONFIG_CHEETAH=3Dy
--CONFIG_SX1=3Dy
--CONFIG_NSERIES=3Dy
- CONFIG_STELLARIS=3Dy
- CONFIG_REALVIEW=3Dy
--CONFIG_VERSATILE=3Dy
- CONFIG_VEXPRESS=3Dy
- CONFIG_ZYNQ=3Dy
--CONFIG_MAINSTONE=3Dy
--CONFIG_GUMSTIX=3Dy
--CONFIG_SPITZ=3Dy
--CONFIG_TOSA=3Dy
--CONFIG_Z2=3Dy
--CONFIG_COLLIE=3Dy
--CONFIG_ASPEED_SOC=3Dy
- CONFIG_NETDUINO2=3Dy
- CONFIG_MPS2=3Dy
- CONFIG_RASPI=3Dy
--CONFIG_DIGIC=3Dy
- CONFIG_SABRELITE=3Dy
- CONFIG_EMCRAFT_SF2=3Dy
--CONFIG_MICROBIT=3Dy
--CONFIG_FSL_IMX25=3Dy
- CONFIG_FSL_IMX7=3Dy
- CONFIG_FSL_IMX6UL=3Dy
- CONFIG_SEMIHOSTING=3Dy
----
+Fair enough.  Would you mind to add a similar comment above
+unmigratable?
 
 Thanks,
 
-Phil.
+-- 
+Peter Xu

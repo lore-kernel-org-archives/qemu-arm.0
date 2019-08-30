@@ -1,124 +1,223 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp726408wrs;
-        Fri, 30 Aug 2019 06:53:25 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwB7YlmstsKtO2AZBUG1ZxNlPofzcV7W0qYyieU8DtozTAKPheX3Kwn7LSkH+HrtE4htpnC
-X-Received: by 2002:ac8:40cc:: with SMTP id f12mr15215820qtm.256.1567173205288;
-        Fri, 30 Aug 2019 06:53:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567173205; cv=none;
+Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp963363wrs;
+        Fri, 30 Aug 2019 10:23:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwEgC8GVucvYmsexyupObQE8tpl2G/bCORxdu/L0vTwS7BIptM37sBAoYhAIkeWqHzNVAi9
+X-Received: by 2002:a50:9223:: with SMTP id i32mr16858279eda.40.1567185797656;
+        Fri, 30 Aug 2019 10:23:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567185797; cv=none;
         d=google.com; s=arc-20160816;
-        b=iTmsLWFecXkSzlN9NH29beuzI7QiTheO4gnsrZupwjevDaeKh74qUcw/NtBZpvGO/V
-         6sOh0dESEp7zzMrsgebf2BX6ayk3Ok8ayck6LMxgKS5ZZQx7hSH75KJhN6gLT35Onvha
-         SZoW0Sy4pcJ2rNSQsQcLkYzIQb64vydSOfQTE/sIeoio8TipkKn+9AIadEcTE7ldK3aH
-         PEB/RUX6V3JUHO6eX3HERutFYExIqSw8badUkqF+qTdIBLiNFhBNf85sJa+0kMzZ5GM4
-         5R8VDj/HtrgF4snrj5pKt3MQHSXx2ALVkEU5ShWV1pJZz4LlVD1iTdOmbks7J4jYmOKm
-         zbiQ==
+        b=wltP0j4eWkHagNHEpgZ89jv3H3ciEs1Bxvdj0tkUf/9eIYW1r7a4OqXuM15VeUN91R
+         N3ftHkwTwvK4HBPVdCld44kral6ltnCBdTsV/sh5Ts/YeejjKRGw/f5CZWbhq2LegkWK
+         6bvVSPpRtey6Z5tKneRQ0KfhI8rY9Y6EQAT4c4JFJFQdNlW98I9rjO92QsX7socP7scA
+         DAgYP8dQTTnXfQDGzlEPotwtRjB8tmnl6xi8Rk9L5TBrLqXdJUB3hIKTvZ+h4u8N5Jwb
+         HlGRyHb92XhlJlcHtcokDGGW80gDIF5zGXCiq7OXjfGdAO4t9cMUQqy9x42en5Kh8Ckd
+         vrFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=RytwMufpF4ef9cQPla/jhO90qoZAPX8QrxFcmYZHtkM=;
-        b=MHLKpspcrXLVpPst24pnJEW/nQu/RB1G8p448JGh0+drOhVXk864R2lexB0i+tZSco
-         KlLrtpOWkdDteCpBVcvgu4HD/FvBAUycORDX46EnPwGIqaazLl4m9Qsor5eFa8TpZWA5
-         u0O8xxRn6SM7ahse+oGb4FJpjIxXpMRpd5NUovjiKJqB8SM4JQQkBnb+b7yXwpcK9FRT
-         udbVyhY4Re2ZeXVrf9XwWVrEW84SshWT6PjgUOZDUVhuoc+bnJKOMek+rrA0SEvqZ62F
-         e6r5YbNT6JP6ydyebxaF7uwKGPZECbWCPnEYctbnjb4Uqh/Ujz1fFr1XfS0mPHdOAzoe
-         xTOg==
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:to:from:date;
+        bh=cJuIIIIWo8sWQu4WIfGP5wEj5exkdB8VrtBEsAlDXdo=;
+        b=xhn3R8h3V6cMMWWsdAPQkq713ZJsPtXTGEUmj4gubR3jbqoq8l2UG/AOTQQMubiVJM
+         Mi5hp9QPQKYKUcOGEPl4kDJvFZJUws9wr5zbJwu7n9nUbvKs7OP+Mb9KHvPUAfJ59y/z
+         1BDZvYcB0xwYJVb9AhO2sV4Gyd8vuLEH+BsI50fbmdi+7oBweMXrGZCqWMFkTI6Jrfg8
+         7KH3GvmG8Ee5A6ernIN0JjuBmJV1MC2dY7W5pqYwf/bKNyJ+cAW9TxIOGJJiB7n4Ow0j
+         jtyWJDuIL4eARLSzpQ64kyzQi/2qIkzrX0OOq3JNBGnsok6VvZrw+8Q1TbiVLT6O63Xm
+         c7ZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r62si4275071qke.12.2019.08.30.06.53.25
+        by mx.google.com with ESMTPS id g50si1343207edb.47.2019.08.30.10.23.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Aug 2019 06:53:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 30 Aug 2019 10:23:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59252 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38146 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i3hL8-0007qv-MV
-	for alex.bennee@linaro.org; Fri, 30 Aug 2019 09:53:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50418)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i3kcE-0002n3-Mo
+	for alex.bennee@linaro.org; Fri, 30 Aug 2019 13:23:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49915)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1i3hGK-0004I2-Bz
- for qemu-devel@nongnu.org; Fri, 30 Aug 2019 09:48:25 -0400
+ (envelope-from <alex.williamson@redhat.com>) id 1i3kby-0002mC-OG
+ for qemu-arm@nongnu.org; Fri, 30 Aug 2019 13:23:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1i3hGF-0007ym-DM
- for qemu-devel@nongnu.org; Fri, 30 Aug 2019 09:48:21 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52378)
+ (envelope-from <alex.williamson@redhat.com>) id 1i3kbu-0007pD-HV
+ for qemu-arm@nongnu.org; Fri, 30 Aug 2019 13:22:56 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52298)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1i3hG8-0007fh-F1; Fri, 30 Aug 2019 09:48:12 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ (Exim 4.71) (envelope-from <alex.williamson@redhat.com>)
+ id 1i3kbu-0007lI-7a; Fri, 30 Aug 2019 13:22:54 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 1922C307D84B;
- Fri, 30 Aug 2019 13:48:11 +0000 (UTC)
-Received: from [10.36.116.105] (ovpn-116-105.ams2.redhat.com [10.36.116.105])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id ACC81600F8;
- Fri, 30 Aug 2019 13:48:05 +0000 (UTC)
-To: peng.hao2@zte.com.cn, drjones@redhat.com
-References: <201812120954362374357@zte.com.cn>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <704db664-bc2e-7814-e8af-424b7d8aad14@redhat.com>
-Date: Fri, 30 Aug 2019 15:48:04 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by mx1.redhat.com (Postfix) with ESMTPS id 9BA31309BDA2;
+ Fri, 30 Aug 2019 17:22:52 +0000 (UTC)
+Received: from x1.home (ovpn-118-102.phx2.redhat.com [10.3.118.102])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 407EE60852;
+ Fri, 30 Aug 2019 17:22:46 +0000 (UTC)
+Date: Fri, 30 Aug 2019 11:22:45 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Message-ID: <20190830112245.7e98d32d@x1.home>
+In-Reply-To: <979ca496-3401-0d53-e42d-8e04922ece52@redhat.com>
+References: <20190829090141.21821-1-eric.auger@redhat.com>
+ <20190829090141.21821-3-eric.auger@redhat.com>
+ <20190829121449.5c42073e@x1.home>
+ <979ca496-3401-0d53-e42d-8e04922ece52@redhat.com>
+Organization: Red Hat
 MIME-Version: 1.0
-In-Reply-To: <201812120954362374357@zte.com.cn>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.48]); Fri, 30 Aug 2019 13:48:11 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.45]); Fri, 30 Aug 2019 17:22:52 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH V12 0/5] add pvpanic mmio support
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5 2/2] hw/vfio/common: Fail on
+ VFIO/HW nested paging detection
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
- qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uRzbZuQjJlx6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, aik@ozlabs.ru, qemu-devel@nongnu.org,
+ peterx@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
+ eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BYTBA5gn2F22
 
-Hi Peng,
+On Fri, 30 Aug 2019 10:06:56 +0200
+Auger Eric <eric.auger@redhat.com> wrote:
 
-On 12/12/18 2:54 AM, peng.hao2@zte.com.cn wrote:
->>> v11 --> v12
->>>      realize pvpanic as a pci device and use the mmio of pci device.
->>
->> Do you have a pointer to the kernel patches?
->>
->> Thanks,
->>> drew
->>
-> I'm still sorting out the code for the kernel part, and I haven't submitted a patch yet.
+> Hi Alex,
 > 
+> On 8/29/19 8:14 PM, Alex Williamson wrote:
+> > On Thu, 29 Aug 2019 11:01:41 +0200
+> > Eric Auger <eric.auger@redhat.com> wrote:
+> >   
+> >> As of today, VFIO only works along with vIOMMU supporting
+> >> caching mode. The SMMUv3 does not support this mode and
+> >> requires HW nested paging to work properly with VFIO.
+> >>
+> >> So any attempt to run a VFIO device protected by such IOMMU
+> >> would prevent the assigned device from working and at the
+> >> moment the guest does not even boot as the default
+> >> memory_region_iommu_replay() implementation attempts to
+> >> translate the whole address space and completely stalls
+> >> the guest.  
+> > 
+> > Why doesn't this stall an x86 guest?  
+> it does not stall on x86 since intel_iommu implements a custom replay
+> (see vtd_iommu_replay) and you do not execute the dummy default one.
+> This function performs a full page table walk, scanning all the valid
+> entries and calling the MAP notifier on those. Although this operation
+> is tedious it has nothing to compare against the dummy default replay
+> function which calls translate() on the whole address range (on a page
+> basis).
 
-What is the status of the effort to get this PCI PVPANIC device available?
+Ah right.  OTOH, what are the arguments against smmuv3 providing a
+replay function?
 
-I am unsure about the kernel driver status. I found
+> > I'm a bit confused about what this provides versus the flag_changed
+> > notifier looking for IOMMU_NOTIFIER_MAP, which AIUI is the common
+> > deficiency between VT-d w/o caching-mode and SMMUv3 w/o nested mode.
+> > The iommu notifier is registered prior to calling iommu_replay, so it
+> > seems we already have an opportunity to do something there.  Help me
+> > understand why this is needed.  Thanks,  
+> 
+> At the moment the smmuv3 notify_flag_changed callback implementation
+> (smmuv3_notify_flag_changed) emits a warning when it detects a MAP
+> notifier gets registered:
+> 
+> warn_report("SMMUv3 does not support notification on MAP: "
+>             "device %s will not function properly", pcidev->name);
+> 
+> and then the replay gets executed, looping forever.
+> 
+> I could exit instead of emitting a warning but the drawback is that on
+> vfio hotplug, it will also exit whereas we would rather simply reject
+> the hotplug.
 
-[PATCH V6 0/4] add pvpanic driver framework
-https://lwn.net/Articles/780193/
+There are solutions to the above by modifying the existing framework
+rather than creating a parallel solution though.  For instance, could
+memory_region_register_iommu_notifier() reject the notifier if the flag
+change is incompatible, allowing the fault to propagate back to vfio
+and taking a similar exit path as provided here.
+ 
+> I think the solution based on the IOMMU MR attribute handles both the
+> static and hotplug solutions. Also looking further, I will need this
+> IOMMU MR attribute for 2stage SMMU integration (see [RFC v5 14/29]
+> vfio: Force nested if iommu requires it). I know that it is standing
+> for a while and it is still hypothetical but setting up 2stage will
+> require specific treatments in the vfio common.c code, opt-in the
+> 2stage mode, register specific iommu mr notifiers. Using the IOMMU MR
+> attribute allows me to detect which kind of VFIO/IOMMU integration I
+> need to setup.
 
-Thank you in advance
+Hmm, I'm certainly more on board with that use case.  I guess the
+question is whether the problem statement presented here justifies what
+seems to be a parallel solution to what we have today, or could have
+with some enhancements.  Thanks,
 
-Best Regards
+Alex
 
-Eric
+> >>
+> >> So let's fail on that case.
+> >>
+> >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> >>
+> >> ---
+> >>
+> >> v3 -> v4:
+> >> - use IOMMU_ATTR_HW_NESTED_PAGING
+> >> - do not abort anymore but jump to fail
+> >> ---
+> >>  hw/vfio/common.c | 10 ++++++++++
+> >>  1 file changed, 10 insertions(+)
+> >>
+> >> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+> >> index 3e03c495d8..e8c009d019 100644
+> >> --- a/hw/vfio/common.c
+> >> +++ b/hw/vfio/common.c
+> >> @@ -606,9 +606,19 @@ static void
+> >> vfio_listener_region_add(MemoryListener *listener, if
+> >> (memory_region_is_iommu(section->mr)) { VFIOGuestIOMMU *giommu;
+> >>          IOMMUMemoryRegion *iommu_mr =
+> >> IOMMU_MEMORY_REGION(section->mr);
+> >> +        bool nested;
+> >>          int iommu_idx;
+> >>  
+> >>          trace_vfio_listener_region_add_iommu(iova, end);
+> >> +
+> >> +        if (!memory_region_iommu_get_attr(iommu_mr,
+> >> +
+> >> IOMMU_ATTR_NEED_HW_NESTED_PAGING,
+> >> +                                          (void *)&nested) &&
+> >> nested) {
+> >> +            error_report("VFIO/vIOMMU integration based on HW
+> >> nested paging "
+> >> +                         "is not yet supported");
+> >> +            ret = -EINVAL;
+> >> +            goto fail;
+> >> +        }
+> >>          /*
+> >>           * FIXME: For VFIO iommu types which have KVM
+> >> acceleration to
+> >>           * avoid bouncing all map/unmaps through qemu this way,
+> >> this  
+> > 
+> >   
+

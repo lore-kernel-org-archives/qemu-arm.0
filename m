@@ -1,104 +1,129 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp486917wrp;
-        Tue, 3 Sep 2019 06:56:44 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyOqQXlmcNwIKgZUa1a+u9MMMMidQSDZVt9dMZw1tjxcBQKhIiPXWsCEVTh9F1/C5oUqtlT
-X-Received: by 2002:a17:906:b6cb:: with SMTP id ec11mr29424123ejb.27.1567519004852;
-        Tue, 03 Sep 2019 06:56:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567519004; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp514335wrp;
+        Tue, 3 Sep 2019 07:16:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzT4SUG3GAUVCHscDxOAqrmXkgHrenB8X500bPEQ9qp3yhCMes1gbmJf2hQFRvNzd0oE997
+X-Received: by 2002:a17:906:4e12:: with SMTP id z18mr29182253eju.161.1567520214135;
+        Tue, 03 Sep 2019 07:16:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567520214; cv=none;
         d=google.com; s=arc-20160816;
-        b=MvGh5OGacNohkpvMb/kxxrTwHhfrMHTwuqZ+yM2Uo1NZE41HlT8JKoGUVTMlZylSQk
-         x+L3zHLrwbaYZ/PaW/BcKtZYBWQ1xHLNSDvnoVJ2k4lI5Puysns9VCLjrvqkz7B6LPSz
-         SFxUZ3RUvyW8SpWPvD/ZbX/FHwSsnMq01EBrQ8U1oxYOvwFygfSN6zUlY47QWii9DKhd
-         fQNRyThcMWVNlz0dNrrdQKtXvugX0bqAQpAkp4pv4IViweMW5r8awmLXgwbEuDQ7iwf4
-         07/S+N+7cQ1BHT0+FuSQqa85rCIs0+/MvqJXa1cyJm9maANbRpkgL9p09sSr5V++Mc3t
-         09XQ==
+        b=Fvbo/1UFNfd6nWqOrlOmLN28P35s26Y1LWR1gDfnrzqZoBwUghd1+bA5zkWP7lUu8v
+         XdWRynGi9y15CsjdSYwExVPUQYFcAjNCM3jBtZDEqpEHZbfNLm1WvdLCl5ECqzcQfNw6
+         sHXyjErmncQe7ZLz5aL7pHnRFEYuTEObftdNOFdTC5PcgM8e498c/qMLBLNbr28sXrTk
+         vi6xUF1qHQ6u9WdKh3Vhw4GvFrSVAsUIIZTJPZHqfMkn7+F0dl+X0CVRyd2O0XUyame/
+         zqkBJkdOZ5fv2UTlPTrPHPqX8VIVFHAGzuCGw52GQ9Miyhg4BAjFJbAD1z5UHNqW/sAa
+         O9JA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=m7A3D1o43l4wfGLTAv+XlpdSLX42FjXYKMcJkNkEOdc=;
-        b=ReD7NzzoluEvNk24/iftMhr/Sn40a8//+TXE2F+tNObr4kbcD8EMnHMiecTF/sbNLN
-         J+CQmM2ArG6dA0IdLTPI7RY+AjerSE1nDWYw5IrcllAJGeO0qU9/7kJzXb/9YLtPyElS
-         ESte6nX1VZ9CSAxKT/0FTRPK+foyeLHEbrYEH0eOkAS7Z8IN9VXsLWqYqT7/9bKV+uyI
-         /KuAx39rng1JY8spVO6MixC8FjRRe+HkQhN+WgkdI5CcTA3AWBl3BTt5DFjXrb5gyv97
-         tZHHFa7O6/8FqpEo6yXTTTKBJbBKYt6rd2J5rMVRDaGENsavxJz5vl+gCW5EEeMXXZGI
-         /0vA==
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=WfS8/7xG+PsQhYUv1KvkczpfKRG/6vxG+l5MTDaIsjM=;
+        b=xZdBOiVsXakqyVB6xuSULuUqhlGkBdLg8meAlKGvovHjIA2eetgs/jUv7NnOjc1m+r
+         PQTlfKMtsybNd5yRaQclSuyQ8UfTrUK4vbZO/GqmpKHUWGf65SOyI/KcCRWtNbz3mPuM
+         hUo/qX9ZhkwxZKqW+hjSgfoo9t/wc2gZAxm4uExLk45+doM15UQz3heNug0KTAwiNqd0
+         3QXhz5esS3ppZL95PQkgzIGfyLyeE1VrpDVh/qf83MYC6Lkp/jVSUOB0l+elbw8rXmQf
+         xKo0MwH6t55MmcYe3BgIXsJ3xcCeMTgFhU+z/KZw7ZSr9riJqmFX9O3F4c+MMT3KI5rb
+         ytvg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o56si11042534edc.349.2019.09.03.06.56.44
+        by mx.google.com with ESMTPS id w55si4513320eda.15.2019.09.03.07.16.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2019 06:56:44 -0700 (PDT)
+        Tue, 03 Sep 2019 07:16:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46508 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46816 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i59IZ-0002Gj-3T
-	for alex.bennee@linaro.org; Tue, 03 Sep 2019 09:56:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56608)
+	id 1i59c5-0002RN-02
+	for alex.bennee@linaro.org; Tue, 03 Sep 2019 10:16:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38294)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1i5906-0003m7-MJ
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 09:37:39 -0400
+ (envelope-from <thuth@redhat.com>) id 1i59bt-0002Qf-8Z
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 10:16:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1i5905-0007MV-EB
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 09:37:38 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46118)
+ (envelope-from <thuth@redhat.com>) id 1i59bs-0001do-5m
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 10:16:41 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38554)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1i5905-0007M8-6s
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 09:37:37 -0400
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1i59bo-0001ch-Fe; Tue, 03 Sep 2019 10:16:38 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 485B02A09CE
- for <qemu-arm@nongnu.org>; Tue,  3 Sep 2019 13:37:36 +0000 (UTC)
-Received: by mail-wm1-f69.google.com with SMTP id m6so3122898wmf.2
- for <qemu-arm@nongnu.org>; Tue, 03 Sep 2019 06:37:36 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=DfP94qPAkTZ+gSxr/ofdQYrTK1iKl3TWo1iVnl2DcE8=;
- b=oC95h62dq4Ng1u9NvML38RG6jGFMPx5kSwgNa8jer/EsxcqhNZgooScnb9qSAMH6ug
- sz1ImoungU+xSs1IEV8RjPoRMSNAdjjusf2S4dtCrwUhLTwDazNixxSG8deQLLYn6sNJ
- VRuOGP44Bq78Zu/teIM+pRGPxv9i35B+4Xaz3C5iq2o96wC7to2D2pf9koRT5ysefaTt
- 33vtYVUvHrVN8SkRwiEHL+iTTgA67NSfFyeLYJshx/7ku2UBcR7vJ9vEoGqMjz+lv8+S
- hdU8RTrCfqW8MP6keo9YQoFzTZe8esCszRn/1chT1IlEkU3MKJQGFPJ0a4TI34dRAvdw
- EPPA==
-X-Gm-Message-State: APjAAAVXNTch8BWaGbbUP6P7Bnt1TZjo8osWTMjTHnxJ9JYwCGtX15m6
- ENgCh3j/qhszD5Bh8YsRQ949PIg1P0Wp9aiP0YDse0Odto/aej1UF9Tr/puAGVFMtKwGXnr5+d1
- Q6HTS527SKZzR
-X-Received: by 2002:a05:600c:2047:: with SMTP id p7mr58676wmg.13.1567517854726; 
- Tue, 03 Sep 2019 06:37:34 -0700 (PDT)
-X-Received: by 2002:a05:600c:2047:: with SMTP id p7mr58653wmg.13.1567517854471; 
- Tue, 03 Sep 2019 06:37:34 -0700 (PDT)
-Received: from [192.168.1.41] (251.red-88-10-102.dynamicip.rima-tde.net.
- [88.10.102.251])
- by smtp.gmail.com with ESMTPSA id w13sm40406932wre.44.2019.09.03.06.37.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Sep 2019 06:37:33 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+ by mx1.redhat.com (Postfix) with ESMTPS id 6BDBB882F2;
+ Tue,  3 Sep 2019 14:16:34 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-117-51.ams2.redhat.com [10.36.117.51])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 17FBE19C78;
+ Tue,  3 Sep 2019 14:16:29 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
 References: <20190903114729.3400-1-philmd@redhat.com>
  <20190903114729.3400-3-philmd@redhat.com>
  <a035e876-6f38-b80f-9a8f-1f88472fc7d7@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <3684dbbe-3aaf-6206-3943-fd883f8f7c2a@redhat.com>
-Date: Tue, 3 Sep 2019 15:37:32 +0200
+ <3684dbbe-3aaf-6206-3943-fd883f8f7c2a@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat
+Message-ID: <97065eb7-04a3-258d-4a28-85eb46fbfac7@redhat.com>
+Date: Tue, 3 Sep 2019 16:16:29 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <a035e876-6f38-b80f-9a8f-1f88472fc7d7@redhat.com>
+In-Reply-To: <3684dbbe-3aaf-6206-3943-fd883f8f7c2a@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.28]); Tue, 03 Sep 2019 14:16:34 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
@@ -120,137 +145,25 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 532Q75QdZxkB
+X-TUID: fehkximZMxRz
 
-On 9/3/19 2:10 PM, Thomas Huth wrote:
-> On 03/09/2019 13.47, Philippe Mathieu-Daud=C3=A9 wrote:
->> KVM requires a cpu based on (at least) the ARMv7 architecture.
->>
->> The following CPUs are disabled:
->>
->> * ARMv4
->>
->>   - StrongARM (SA1100/1110)
->>   - OMAP1510 (TI925T)
->>
->> * ARMv5
->>
->>   - ARM926
->>   - ARM946
->>   - ARM1026
->>   - XScale (PXA250/255/260/261/262/270)
->>
->> * ARMv6
->>
->>   - ARM1136
->>   - ARM1176
->>   - ARM11MPCore
->>   - Cortex-M0
->>
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->> ---
->> v2: fixed misplaced #endif (rth), list cpus
->> ---
->>  target/arm/cpu.c | 12 ++++++++++++
->>  1 file changed, 12 insertions(+)
->>
->> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->> index 2399c14471..f69780147c 100644
->> --- a/target/arm/cpu.c
->> +++ b/target/arm/cpu.c
->> @@ -1678,6 +1678,8 @@ static ObjectClass *arm_cpu_class_by_name(const =
-char *cpu_model)
->>  /* CPU models. These are not needed for the AArch64 linux-user build.=
- */
->>  #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
->> =20
->> +#ifdef CONFIG_TCG
->> +
->>  static void arm926_initfn(Object *obj)
->>  {
->>      ARMCPU *cpu =3D ARM_CPU(obj);
->> @@ -1900,6 +1902,8 @@ static void cortex_m0_initfn(Object *obj)
->>      cpu->midr =3D 0x410cc200;
->>  }
->> =20
->> +#endif
->> +
->>  static void cortex_m3_initfn(Object *obj)
->>  {
->>      ARMCPU *cpu =3D ARM_CPU(obj);
->> @@ -2283,6 +2287,8 @@ static void cortex_a15_initfn(Object *obj)
->>      define_arm_cp_regs(cpu, cortexa15_cp_reginfo);
->>  }
->> =20
->> +#ifdef CONFIG_TCG
->> +
->>  static void ti925t_initfn(Object *obj)
->>  {
->>      ARMCPU *cpu =3D ARM_CPU(obj);
->> @@ -2451,6 +2457,8 @@ static void pxa270c5_initfn(Object *obj)
->>      cpu->reset_sctlr =3D 0x00000078;
->>  }
->> =20
->> +#endif
->> +
->>  #ifndef TARGET_AARCH64
->>  /* -cpu max: if KVM is enabled, like -cpu host (best possible with th=
-is host);
->>   * otherwise, a CPU with as many features enabled as our emulation su=
-pports.
->> @@ -2523,6 +2531,7 @@ struct ARMCPUInfo {
->> =20
->>  static const ARMCPUInfo arm_cpus[] =3D {
->>  #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
->> +#ifdef CONFIG_TCG
->>      { .name =3D "arm926",      .initfn =3D arm926_initfn },
->>      { .name =3D "arm946",      .initfn =3D arm946_initfn },
->>      { .name =3D "arm1026",     .initfn =3D arm1026_initfn },
->> @@ -2536,6 +2545,7 @@ static const ARMCPUInfo arm_cpus[] =3D {
->>      { .name =3D "arm11mpcore", .initfn =3D arm11mpcore_initfn },
->>      { .name =3D "cortex-m0",   .initfn =3D cortex_m0_initfn,
->>                               .class_init =3D arm_v7m_class_init },
->> +#endif
->>      { .name =3D "cortex-m3",   .initfn =3D cortex_m3_initfn,
->>                               .class_init =3D arm_v7m_class_init },
->>      { .name =3D "cortex-m4",   .initfn =3D cortex_m4_initfn,
->> @@ -2548,6 +2558,7 @@ static const ARMCPUInfo arm_cpus[] =3D {
->>      { .name =3D "cortex-a8",   .initfn =3D cortex_a8_initfn },
->>      { .name =3D "cortex-a9",   .initfn =3D cortex_a9_initfn },
->>      { .name =3D "cortex-a15",  .initfn =3D cortex_a15_initfn },
->> +#ifdef CONFIG_TCG
->>      { .name =3D "ti925t",      .initfn =3D ti925t_initfn },
->>      { .name =3D "sa1100",      .initfn =3D sa1100_initfn },
->>      { .name =3D "sa1110",      .initfn =3D sa1110_initfn },
->> @@ -2564,6 +2575,7 @@ static const ARMCPUInfo arm_cpus[] =3D {
->>      { .name =3D "pxa270-b1",   .initfn =3D pxa270b1_initfn },
->>      { .name =3D "pxa270-c0",   .initfn =3D pxa270c0_initfn },
->>      { .name =3D "pxa270-c5",   .initfn =3D pxa270c5_initfn },
->> +#endif
->>  #ifndef TARGET_AARCH64
->>      { .name =3D "max",         .initfn =3D arm_max_initfn },
->>  #endif
->>
+On 03/09/2019 15.37, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 9/3/19 2:10 PM, Thomas Huth wrote:
+>> On 03/09/2019 13.47, Philippe Mathieu-Daud=C3=A9 wrote:
+[...]
+>> That reminds me of a patch series of mine where I tried to make the co=
+de
+>> compilable without CONFIG_ARM_V7M ... unfortunately, I never found
+>> enough spare time to finish and publish it... I'll have a try to see
+>> whether I can rebase it and send it as an RFC or so.
 >=20
-> All that #ifdeffery is a little bit ugly. I wonder whether we could
-> solve this by moving the CPU registrations to separate files which then
-> only get compiled if the corresponding CONFIG_ARM_Vx switch is set.
+> Well, this is the same goal of this series... So regarding on Peter's
+> comments I might wait on your work.
 
-I tried splitting arm_cpus[] and move the ifdef in
-arm_cpu_register_types(), but the resulting diff is much bigger and it
-only reduces from 4 '#ifdef CONFIG_TCG' to 2...
+I noticed that you did most work of my old series with the new
+m_helper.c file already :-) ... so I'll check whether I can re-do my
+other work around these changes...
 
-I'll see what thinks Peter first.
+ Thomas
 
-> That reminds me of a patch series of mine where I tried to make the cod=
-e
-> compilable without CONFIG_ARM_V7M ... unfortunately, I never found
-> enough spare time to finish and publish it... I'll have a try to see
-> whether I can rebase it and send it as an RFC or so.
 
-Well, this is the same goal of this series... So regarding on Peter's
-comments I might wait on your work.
-
-Regards,
-
-Phil.

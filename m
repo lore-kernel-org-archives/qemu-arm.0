@@ -1,71 +1,71 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp348526wrp;
-        Tue, 3 Sep 2019 04:58:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzB8aGkMRQ3OseZ/5v2lW1Hln+acUK8uuIAmloXVPoH55ld832vG6MhaRyx8gSa3JUiiO/c
-X-Received: by 2002:a17:906:6bd0:: with SMTP id t16mr1354280ejs.189.1567511913100;
-        Tue, 03 Sep 2019 04:58:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567511913; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp364344wrp;
+        Tue, 3 Sep 2019 05:11:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxerEd++mNrTd6prHaHvGT/lTGsJxoAKDA9cZx6GWq9BneUFqg09ZNlPEvm/g3GRwFF3ykp
+X-Received: by 2002:ac8:1488:: with SMTP id l8mr33930631qtj.50.1567512673819;
+        Tue, 03 Sep 2019 05:11:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567512673; cv=none;
         d=google.com; s=arc-20160816;
-        b=OSMokak/cRleivzrCOl0C56dc9WfjeWE1augF2dltGkbd52c4eeHr74NsvNzuGJILV
-         4/lwDNhG86qJt1yVDDs9rl/sM26AkZPmitRWYRQz5ceZfDjrjphi5fMB83kbGzOye5zd
-         09k5B4EiwXVa72spWZnQb3JAvCtXzE33TAnizbP4o5R2ea7BgcVMYgNRa5GVlBohf4vN
-         fzIUWOk4hgix1adZB0R4d4ZjqeIG81bB1WEdB5eNchIEvbXCHzIXkmaDgBDafTZiPBtk
-         nW+o7FCMC2W/cc8gZDfmH/jQ5979I+3y5cLYRBdOdtcvPVcGbQhPC9TqxwSIwB3ABHDI
-         vyfg==
+        b=etRsiAhIh5wbMantZjHUdvB/+shavM/qwmJaPkwNGszMoG8mB8YxREgFXRYttxgQyw
+         N81we4KF2HDM4jVGzaN8pnMowAVCfBqttEjoHkHXvivr2Ruhs16wsKPDUVEKqNuDWTn6
+         3ssKL0GqYAwC/DvN08fMpFdUdPRneLpt715NbIK8Dw+EHZCRiSKe2RqklSOoA8g/dCmf
+         rbXp/4Um0qpOZjxuXtpdOX68AYbfcfPiGh9Qn0kqNV4++GF72L8pDbYs4pqhw4Ll/fav
+         hplf7cdAmvDgCXAEUGnblyCGPkg4kIWu99t+b8jZH9fMpIIOmwPUr/wephy3nxfcSBm5
+         0NQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:organization:autocrypt:openpgp:from
          :references:to;
-        bh=cxW0FZpsfaDiq2uLq4p5GBGf4S5IXcLDv/ACk4oe4lM=;
-        b=xEkSu63LaK/4RT4VfBfqxboY2qlDHxQ8Oor1gmnZ3EubWTFqC/QLTIH42NUfTL1MZG
-         JaIo4jM/Xl837hVPvN0Z7fUjgR3pt8EqBsAqZxDuCdYK14b++6D3gMUr5df/UwMBdx4z
-         srsLp/Yh4JZL7oa7v+INC2FO0Xlnb1NIjySQryc5xXgGSBj+gzbw4GvRNLFB+NZJp0TV
-         vSD/bCrevCnLd2ex9N6f5NtK4Z5A1sAaF1GvYi6U7BZXHDPt2cDziY8QoT4hI2E4UNYv
-         YEYzMCpsJI3s8zvhS6qWVuzl069glWlvDHe0RsyFQwUpuTFTWZYwfVp1phhD9wzwvbNc
-         8PcQ==
+        bh=DvyHeADj9VVmDZRFoogL6be1fr2dsJ52SKsZagEOyn8=;
+        b=ILEXjz1hksXCnce4/K2rXOSGl8l7ebn2tgeb1GClXHlkbJXBUt0LobzljBpkU07avM
+         yxV7bBQFiRGDPXld2tM6b9ild6qJzIJ8KhXfdFEB90678SXaP+4k7wKl3g6K3lgiexqq
+         5VjB3W97+fkS+zaBbWjF259PNfPwC8QEQdRQWpIgFlPGuo1kjhif7IYYcKrlXlNzDRVD
+         GRS2LOH0mbgXPpcX9rh+nAVtJT06jCjsV+cM0qT4//PVqwhXr7VCrjBZTdq4M3ORygU9
+         L8uZaEimZ45XIfYQ/20wMa+W3k8UoBalfLVm8HMXdBTfcXQwzyv5jaKjLJKruYjO9X8c
+         ERAw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 15si2484590edu.185.2019.09.03.04.58.33
+        by mx.google.com with ESMTPS id 9si4759126qts.206.2019.09.03.05.11.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2019 04:58:33 -0700 (PDT)
+        Tue, 03 Sep 2019 05:11:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44524 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45062 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i57SC-00052r-2k
-	for alex.bennee@linaro.org; Tue, 03 Sep 2019 07:58:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56956)
+	id 1i57eT-0000kd-5m
+	for alex.bennee@linaro.org; Tue, 03 Sep 2019 08:11:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59412)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1i57RT-00052k-Ky
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 07:57:48 -0400
+ (envelope-from <thuth@redhat.com>) id 1i57eJ-0000jH-3z
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 08:11:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1i57RS-0006dr-4l
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 07:57:47 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:32930)
+ (envelope-from <thuth@redhat.com>) id 1i57eH-0000JL-HG
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 08:11:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:48154)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1i57RR-0006cJ-ST; Tue, 03 Sep 2019 07:57:46 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ id 1i57eH-0000If-9v; Tue, 03 Sep 2019 08:11:01 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id E0C873082A49;
- Tue,  3 Sep 2019 11:57:43 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 25280308213F;
+ Tue,  3 Sep 2019 12:11:00 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-117-51.ams2.redhat.com [10.36.117.51])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B7CF660A35;
- Tue,  3 Sep 2019 11:57:39 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 41EA35C1B5;
+ Tue,  3 Sep 2019 12:10:56 +0000 (UTC)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 References: <20190903114729.3400-1-philmd@redhat.com>
- <20190903114729.3400-2-philmd@redhat.com>
+ <20190903114729.3400-3-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -111,22 +111,22 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
 Organization: Red Hat
-Message-ID: <8c70f728-4d20-92e6-b8a7-fb58caab4d61@redhat.com>
-Date: Tue, 3 Sep 2019 13:57:38 +0200
+Message-ID: <a035e876-6f38-b80f-9a8f-1f88472fc7d7@redhat.com>
+Date: Tue, 3 Sep 2019 14:10:55 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190903114729.3400-2-philmd@redhat.com>
+In-Reply-To: <20190903114729.3400-3-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.45]); Tue, 03 Sep 2019 11:57:43 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.42]); Tue, 03 Sep 2019 12:11:00 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 1/5] Kconfig: Expose CONFIG_TCG to
- minikconf.py
+Subject: Re: [Qemu-arm] [PATCH v2 2/5] target/arm: Restrict pre-ARMv7 cpus
+ to TCG
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -143,34 +143,124 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: b3P6zaDt3AGq
+X-TUID: XDiBT4bRAUD0
 
 On 03/09/2019 13.47, Philippe Mathieu-Daud=C3=A9 wrote:
-> Expose the CONFIG_TCG selector to let minikconf.py uses it.
+> KVM requires a cpu based on (at least) the ARMv7 architecture.
 >=20
-> This is useful with the --disable-tcg build, to deselect
-> devices that are TCG-dependent.
+> The following CPUs are disabled:
+>=20
+> * ARMv4
+>=20
+>   - StrongARM (SA1100/1110)
+>   - OMAP1510 (TI925T)
+>=20
+> * ARMv5
+>=20
+>   - ARM926
+>   - ARM946
+>   - ARM1026
+>   - XScale (PXA250/255/260/261/262/270)
+>=20
+> * ARMv6
+>=20
+>   - ARM1136
+>   - ARM1176
+>   - ARM11MPCore
+>   - Cortex-M0
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 > ---
->  Kconfig.host | 4 ++++
->  1 file changed, 4 insertions(+)
+> v2: fixed misplaced #endif (rth), list cpus
+> ---
+>  target/arm/cpu.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
 >=20
-> diff --git a/Kconfig.host b/Kconfig.host
-> index bb6e116e2a..c7caa47dfb 100644
-> --- a/Kconfig.host
-> +++ b/Kconfig.host
-> @@ -2,6 +2,10 @@
->  # down to Kconfig.  See also MINIKCONF_ARGS in the Makefile:
->  # these two need to be kept in sync.
-
-Don't you also have to update ----^ MINIKCONF_ARGS in the Makefile?
-
-> +config TCG
-> +    bool
-> +    default y
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 2399c14471..f69780147c 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -1678,6 +1678,8 @@ static ObjectClass *arm_cpu_class_by_name(const c=
+har *cpu_model)
+>  /* CPU models. These are not needed for the AArch64 linux-user build. =
+*/
+>  #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
+> =20
+> +#ifdef CONFIG_TCG
 > +
->  config KVM
->      bool
+>  static void arm926_initfn(Object *obj)
+>  {
+>      ARMCPU *cpu =3D ARM_CPU(obj);
+> @@ -1900,6 +1902,8 @@ static void cortex_m0_initfn(Object *obj)
+>      cpu->midr =3D 0x410cc200;
+>  }
+> =20
+> +#endif
+> +
+>  static void cortex_m3_initfn(Object *obj)
+>  {
+>      ARMCPU *cpu =3D ARM_CPU(obj);
+> @@ -2283,6 +2287,8 @@ static void cortex_a15_initfn(Object *obj)
+>      define_arm_cp_regs(cpu, cortexa15_cp_reginfo);
+>  }
+> =20
+> +#ifdef CONFIG_TCG
+> +
+>  static void ti925t_initfn(Object *obj)
+>  {
+>      ARMCPU *cpu =3D ARM_CPU(obj);
+> @@ -2451,6 +2457,8 @@ static void pxa270c5_initfn(Object *obj)
+>      cpu->reset_sctlr =3D 0x00000078;
+>  }
+> =20
+> +#endif
+> +
+>  #ifndef TARGET_AARCH64
+>  /* -cpu max: if KVM is enabled, like -cpu host (best possible with thi=
+s host);
+>   * otherwise, a CPU with as many features enabled as our emulation sup=
+ports.
+> @@ -2523,6 +2531,7 @@ struct ARMCPUInfo {
+> =20
+>  static const ARMCPUInfo arm_cpus[] =3D {
+>  #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
+> +#ifdef CONFIG_TCG
+>      { .name =3D "arm926",      .initfn =3D arm926_initfn },
+>      { .name =3D "arm946",      .initfn =3D arm946_initfn },
+>      { .name =3D "arm1026",     .initfn =3D arm1026_initfn },
+> @@ -2536,6 +2545,7 @@ static const ARMCPUInfo arm_cpus[] =3D {
+>      { .name =3D "arm11mpcore", .initfn =3D arm11mpcore_initfn },
+>      { .name =3D "cortex-m0",   .initfn =3D cortex_m0_initfn,
+>                               .class_init =3D arm_v7m_class_init },
+> +#endif
+>      { .name =3D "cortex-m3",   .initfn =3D cortex_m3_initfn,
+>                               .class_init =3D arm_v7m_class_init },
+>      { .name =3D "cortex-m4",   .initfn =3D cortex_m4_initfn,
+> @@ -2548,6 +2558,7 @@ static const ARMCPUInfo arm_cpus[] =3D {
+>      { .name =3D "cortex-a8",   .initfn =3D cortex_a8_initfn },
+>      { .name =3D "cortex-a9",   .initfn =3D cortex_a9_initfn },
+>      { .name =3D "cortex-a15",  .initfn =3D cortex_a15_initfn },
+> +#ifdef CONFIG_TCG
+>      { .name =3D "ti925t",      .initfn =3D ti925t_initfn },
+>      { .name =3D "sa1100",      .initfn =3D sa1100_initfn },
+>      { .name =3D "sa1110",      .initfn =3D sa1110_initfn },
+> @@ -2564,6 +2575,7 @@ static const ARMCPUInfo arm_cpus[] =3D {
+>      { .name =3D "pxa270-b1",   .initfn =3D pxa270b1_initfn },
+>      { .name =3D "pxa270-c0",   .initfn =3D pxa270c0_initfn },
+>      { .name =3D "pxa270-c5",   .initfn =3D pxa270c5_initfn },
+> +#endif
+>  #ifndef TARGET_AARCH64
+>      { .name =3D "max",         .initfn =3D arm_max_initfn },
+>  #endif
+>=20
+
+All that #ifdeffery is a little bit ugly. I wonder whether we could
+solve this by moving the CPU registrations to separate files which then
+only get compiled if the corresponding CONFIG_ARM_Vx switch is set.
+
+That reminds me of a patch series of mine where I tried to make the code
+compilable without CONFIG_ARM_V7M ... unfortunately, I never found
+enough spare time to finish and publish it... I'll have a try to see
+whether I can rebase it and send it as an RFC or so.
 
  Thomas

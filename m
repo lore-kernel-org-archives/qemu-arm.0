@@ -1,99 +1,87 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp141536wrp;
-        Tue, 3 Sep 2019 01:30:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxLcNETYOJY6jHCAO/nO8rvjjXgOwBFtRKQzXpde0S2dgvdxwoxM8CfCaqzt5XcVnukeyS5
-X-Received: by 2002:a37:a7c5:: with SMTP id q188mr8412959qke.445.1567499418061;
-        Tue, 03 Sep 2019 01:30:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567499418; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp150941wrp;
+        Tue, 3 Sep 2019 01:40:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw33hyqPqxeFR6+n21nc0uT8x9Bbt69w4QOSQNRnRruGWtHId/bESRD189oabLPy3TaFTdH
+X-Received: by 2002:a17:906:6618:: with SMTP id b24mr22094327ejp.215.1567500038140;
+        Tue, 03 Sep 2019 01:40:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567500038; cv=none;
         d=google.com; s=arc-20160816;
-        b=LU3J5KShf5/QBIbDBaFqI3yscx2pUB5TBy8xxq3PZNpVJfVmj0AQb2tle73TfMlCUf
-         B2FUOdZcTDovLJiqkoXAttpNx++by3vl9uAjviibmil4Zs6fLPpQi9nOb1wcpPnVN7zO
-         iu/L3YcbcAG9Av6v810F0klrz5El/5uC+amO75QMcpx3Ay7M55F2iRLBKq5a2TgYINlP
-         WQ7Hoss2oj9IRslsMYlwP0AFq8LSxxEwcVfrCyPhvJxe5AofuB0gjpNU51bc/SilWTf2
-         MZYmc+EILLUdpyKg1mJDRJNIgfneKjzN+C5Pp5p4gdwWkLIKceUG+gsSVKnXRFXfeAic
-         +wYQ==
+        b=vwQ/0xRnpos+o+aVcX5bYHpykzqUj3Z/swkx21OMnRWma9WBeJ5RqKUqyhH4rmtadF
+         E65M+jLkyzNsYGOHDbwsnw9WLTOpfX+CHnu0N7EDqU/xGvj2Ss3F6PsKjEgOHReeYU5/
+         0l0xc0hTSMaDrK2fcki/id7ZD6P4jxZatLpphZmIIYmAZqk/8cRxbzJ3r5wVtpDUVpnh
+         aCF7lWhauXytkkj/Z/xy4fumZbXSdlpU2QI/t6gayQ4cnRHTC73JEgLOpJF9si7g7pm3
+         sxiGoFyuq3EhyOifqsVEWAy0MPKKYWixnUM/Hj+X9oWMIUX+E5+w7corPSNb7u31xFJU
+         WXAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=35gUwPiCbqr3w52IQk5/eO65UJg93NKnZPYG1t/cNHw=;
-        b=tNg614NxgBro3JGs1mTdoIRwuOWlcoZ1JqmWSA3Lgoq7ZE0cuxUccz67au80qxg8+X
-         5696CouZR+/AIovQU/X4wzjsAEXDdAks1BmLZAaQgYVmNxTZUnEso4pi+U82nuOetbmD
-         N02x/1fG/r6Hy21IpsIwCsmjg46KrxD0E1IufmXXYmBFBmsP7N17kePHOM+HZ8ai/rDN
-         GfYNfX3cmPzaDAhcOHHmIN5WR0Q+bNwPV/BFETmN0Hr3zHzdNLtVL/MFzE338EeMYYtr
-         PSKiYCPQv1VeojoG2D/tzBFoprkQALAOU59vo0XbggXydaOHLbZqUjEK8dGNCSdl+hik
-         YrXQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to;
+        bh=6JW9PuRgunkD/oEs4RZjg3BA29DnqIOs696kfSNheuk=;
+        b=VOAAELk0bWnFJ4Re0afAR1Ugt6SqCj8wdmQdc75aIiKItTWyRe/CHgDmXxGOY1hrHt
+         FdeWwni3Y84bXrngpTyBVLQVa/jPpyIaIKHWe6DRrL6EJBPq4umroeLZveqyZv7/dyZp
+         n1lpo32wzdAH7gl999nmx2d4swtiev7aHjPP88vx0WWuj4875QTS28t1Djbms9yQQzQK
+         6lNIuhkpo5YiO8ajPA7fMFT2HKeU7tFVWeisHO52KzfQrM+WSCgPKyPax+DN9jUlOAzQ
+         0VGI5hYGVT58Duq56ISxhlyTxoe9LBHMi4IBafD2eDoJyB33HPbtRuPzzRqkmf6ug70g
+         0UIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="o63xXl4/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q33si9897683qtf.126.2019.09.03.01.30.17
+        by mx.google.com with ESMTPS id mj10si8094692ejb.281.2019.09.03.01.40.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2019 01:30:18 -0700 (PDT)
+        Tue, 03 Sep 2019 01:40:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="o63xXl4/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42820 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42930 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i54Ce-0001H1-QY
-	for alex.bennee@linaro.org; Tue, 03 Sep 2019 04:30:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50888)
+	id 1i54Me-0005pe-41
+	for alex.bennee@linaro.org; Tue, 03 Sep 2019 04:40:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53181)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1i54CN-0001DT-4B
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 04:30:01 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1i54MP-0005mT-9S
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 04:40:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1i54CL-00047l-O4
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 04:29:58 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:34092)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1i54CL-00046S-HY
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 04:29:57 -0400
-Received: by mail-oi1-x244.google.com with SMTP id g128so12168554oib.1
- for <qemu-arm@nongnu.org>; Tue, 03 Sep 2019 01:29:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=35gUwPiCbqr3w52IQk5/eO65UJg93NKnZPYG1t/cNHw=;
- b=o63xXl4/nuDpsRUyVXxke/qjYchpwqTar2e/MzJaTOCZXDlkEFe43v9YUNkE5mTKVh
- iv2FOLpX9QzBEDueh/bfyt7ccHF8AzxYf3hgsMiTMI5mDnjlhxcyGH65Jwb5qefv1TAs
- LVPxKeTyDyARAXHKwGszT86U0t2GZr0s7Hy4tZzn50MXX4dPA8Dpt14k11qBwr6FTkFm
- BkcINRvK7IDdvFKwyuOZhbQhlj2fSWu/P88FMnugF25/qvX2GaXqp3DS9y7RFTPMITMC
- rgSPD8webzUHgnQVJCsHVeiD6hgopUrDdyFbkjfMXI8FjQCvGkSdJGjVicBp3VWuI9UY
- FgYw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=35gUwPiCbqr3w52IQk5/eO65UJg93NKnZPYG1t/cNHw=;
- b=H0HfJLEpbDr/cf2Vnti5UPlTk1xcoW7JKH+1XM4WiJSbhy/YyZX9mP5A387ErMP8U0
- Wjl4zSpmuJn2zfi6g7ZmI74D2CamguY5WCixphsf0xDvOvEWH3LS7cbin7UEzIj11JdN
- 5ErF9+19PHynEDi51eEm1v7BlhNnZGQTOqOeHUBhhJFAoARGha+q343JR+C8pUmToShS
- 7Nubu+IfoXVAZnXO1r/wWXKDQt52Ct4jGrMNFOl7gZuZOEs6Qqpsac2PolFdhhm9xWSR
- qnvygcCqGd7uDL3C6xDFvs5e+t8T7E+HwCsKXwbOYER9Y18tSo88yg6+PFc5/3QYoL+Q
- 4Clw==
-X-Gm-Message-State: APjAAAVvTRnQAhjulpjNpREJTVMDkfd5r6Tx4XpmkjXKI53wUf9HEVux
- N+yqXn5C23i6M7eQ1KPB1T3vfEjOcJpRNP3ZPvQkCg==
-X-Received: by 2002:aca:f54d:: with SMTP id t74mr13513879oih.170.1567499394582; 
- Tue, 03 Sep 2019 01:29:54 -0700 (PDT)
-MIME-Version: 1.0
+ (envelope-from <eric.auger@redhat.com>) id 1i54MO-000609-4O
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 04:40:21 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34058)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1i54MN-0005wF-TE; Tue, 03 Sep 2019 04:40:20 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 587ADA36F04;
+ Tue,  3 Sep 2019 08:40:17 +0000 (UTC)
+Received: from [10.36.116.67] (ovpn-116-67.ams2.redhat.com [10.36.116.67])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D5FBA19C78;
+ Tue,  3 Sep 2019 08:40:15 +0000 (UTC)
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20190827160554.30995-1-eric.auger@redhat.com>
  <20190827160554.30995-3-eric.auger@redhat.com>
  <29520007-f3fd-ed8d-f52b-2839f991556a@huawei.com>
  <0dd3bc89-8f91-0f8e-8908-18712240a115@redhat.com>
-In-Reply-To: <0dd3bc89-8f91-0f8e-8908-18712240a115@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Sep 2019 09:29:43 +0100
-Message-ID: <CAFEAcA8u3Qe9zx=4QxW_Bb8a=JQ7kUmiAO5H-cwAU4i3R+Nf8w@mail.gmail.com>
-To: Auger Eric <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::244
+ <CAFEAcA8u3Qe9zx=4QxW_Bb8a=JQ7kUmiAO5H-cwAU4i3R+Nf8w@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <9bd0a5b8-ad15-d19f-2bcc-8b605afb5b78@redhat.com>
+Date: Tue, 3 Sep 2019 10:40:13 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8u3Qe9zx=4QxW_Bb8a=JQ7kUmiAO5H-cwAU4i3R+Nf8w@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.68]); Tue, 03 Sep 2019 08:40:17 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 2/3] intc/arm_gic: Support PPI
  injection for more than 256 vpus
 X-BeenThere: qemu-arm@nongnu.org
@@ -112,30 +100,47 @@ Cc: Zenghui Yu <yuzenghui@huawei.com>, maz@kernel.org,
  Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tEnamXxwcdka
+X-TUID: fhmxHSr7KWO3
 
-On Thu, 29 Aug 2019 at 08:58, Auger Eric <eric.auger@redhat.com> wrote:
->
-> Hi Zenghui,
->
-> On 8/29/19 4:53 AM, Zenghui Yu wrote:
-> > For confirmation, should we also adjust the vcpu_index in
-> > arm_cpu_kvm_set_irq(), just like above?
->
-> I am not familiar with this path. in arm_cpu_initfn(), there is a
-> comment saying "VIRQ and VFIQ are unused with KVM but we add them to
-> maintain the same interface as non-KVM CPUs." So I don't know when that
-> code gets executed.
+Hi Peter,
 
-That comment is saying that all KVM guest CPUs are
-EL1-only (since we don't handle nested virt), and therefore
-they logically don't have an inbound VIRQ or VFIQ line.
-But we provide the qemu_irqs for them anyway, so that
-board code doesn't have to have tedious conditionals
-saying "if this CPU has EL2 then wire up VIRQ and VFIQ
-to the GIC". If you ever try to actually assert the VIRQ
-or VFIQ lines you will hit the g_assert_not_reached() in
-arm_cpu_kvm_set_irq().
+On 9/3/19 10:29 AM, Peter Maydell wrote:
+> On Thu, 29 Aug 2019 at 08:58, Auger Eric <eric.auger@redhat.com> wrote:
+>>
+>> Hi Zenghui,
+>>
+>> On 8/29/19 4:53 AM, Zenghui Yu wrote:
+>>> For confirmation, should we also adjust the vcpu_index in
+>>> arm_cpu_kvm_set_irq(), just like above?
+>>
+>> I am not familiar with this path. in arm_cpu_initfn(), there is a
+>> comment saying "VIRQ and VFIQ are unused with KVM but we add them to
+>> maintain the same interface as non-KVM CPUs." So I don't know when that
+>> code gets executed.
+> 
+> That comment is saying that all KVM guest CPUs are
+> EL1-only (since we don't handle nested virt), and therefore
+> they logically don't have an inbound VIRQ or VFIQ line.
+> But we provide the qemu_irqs for them anyway, so that
+> board code doesn't have to have tedious conditionals
+> saying "if this CPU has EL2 then wire up VIRQ and VFIQ
+> to the GIC". If you ever try to actually assert the VIRQ
+> or VFIQ lines you will hit the g_assert_not_reached() in
+> arm_cpu_kvm_set_irq().
 
-thanks
--- PMM
+OK thanks for the clarification. I mixed things up.
+
+I guess arm_cpu_kvm_set_irq attempting to inject IRQ/FIQ into KVM is
+used with userspace GIC emulation, which is not supported along with
+GICv3. But anyway, I guess it does not hurt to set vcpu_index2 in
+arm_cpu_kvm_set_irq?
+
+Thanks
+
+Eric
+
+
+> 
+> thanks
+> -- PMM
+> 

@@ -1,99 +1,108 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp679852wrp;
-        Tue, 3 Sep 2019 09:35:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzMGF3bDXugpSUhyLB9q4JBKf+eO0rMf0EMG1bEnZm3Xx7hUvYZNKUo+Ywyhx/Ybwa546Mm
-X-Received: by 2002:a37:47d8:: with SMTP id u207mr34285937qka.255.1567528528615;
-        Tue, 03 Sep 2019 09:35:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567528528; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp696422wrp;
+        Tue, 3 Sep 2019 09:50:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxTG+ZnP0NZqGYy6ueKvF0+tQQgGfU+/5l1Lz1YTSx8NGWtEtF/rsrnsfumRs/9BoAx8Yyh
+X-Received: by 2002:ac8:25b1:: with SMTP id e46mr14962301qte.51.1567529452371;
+        Tue, 03 Sep 2019 09:50:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567529452; cv=none;
         d=google.com; s=arc-20160816;
-        b=o2FYwNhNGA+6EbfVQfQsSynR9Dl/U1QY95cA0OEbbPFgNmBwrJZNn9ZRurpZj+qECA
-         aXp6LJdwjU3FIM0QSEz5ExJ5loWETfSVL43V2WW7+AbQAYBVaAYs0ry8B9uI2isJL/Tq
-         MUpj9Gxly2KOXZHBBeQWsfZo6BTv+7yYWx4xxi5QDNtf+k7J4oGzuZoTDThAgxtmVdHI
-         s47Tm4n4SlT2AY4IHhNunTL58vQ2DhpuzqbxwNg70grCJJxb6CjlpsbpzoViVZei/30H
-         pi2ICCxdNOv3G8mqM3B243SsxPVxmMx92f9W/YRuET8tq8pLwMvvkZguCv0sLGrzEHmA
-         WWPQ==
+        b=VAHU+z9EjMT5/RlYY3p30qk1+8ICJIwZlJgVl2TkY4CKHXJJAJ2s+BeZNJNJHc2ZQe
+         pa54fB3ic0DqA8bmkmUvfaZ8aacNVHIYB23VDzHPdb8HNZ1xbCYuOOv7HG2dljgd6cxd
+         0On8H52Yw0OHCDqyi36f95afrJ0B77Jh+Nnp/VLeWuODmZoDrRxltM8VdK6osZJeJlZy
+         SK/2gKvQBqS79XLFZ9VOccPjjpn9nvaSxTdiYit3ioisEHtYR3eqL3l2DXV9OHEz3Tqt
+         63+L4e+uTlApyuQbHRQ7yVQ0Qqv6At0dbFgwGRBErVVt478ERZJx71ghJZ8b5PozwSAL
+         4bcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=BQiQNF8dhJP8ox+hPSxrVvY+j3aOupN7cxNiycpUbKY=;
-        b=uPRMdGew2+rrYohwuXqrEyO18Tb+ra3dTIXVECBsoxpcMm9iXpXh9zH0bEeQpMPXT9
-         OX3gcMyxas1JKRXpmxg8l3FidNGPJvgdY3TJSkhNyS/jSmTpfEPnyBJ/O5o2ACNztQJZ
-         dUrHGYjw08bixCKnz33dbq+rz2ThhhGuFKHhdoaJPnvsInOJtA2FBjctGMYjfWeOkpPR
-         xkVAKcDl+93n7frWVUvxhvgmOem3o5uu/4IXPHyRhJLSBh8SfC3LJm/ApEUMIdgUsMia
-         Cp5nM93XvyEBsOJ2DwPhXR9SuqQ8CEQPusDiU8mb2tTbIYL5XdXOx+uoar08AlsTSLnt
-         un7Q==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=hw27mxT6ObZtqvKoETGQ5lY6IQyW7gki2ry6rOYqd9E=;
+        b=K/oMWnXvX108aTn79w8mYLIPC5fvtxkTGz+xfzU3z0PnpxHWlhM8E/GPOuh9WbPbsc
+         BSYbrUH0tO1Cq1KDd9O1whZKAAzx6yxSctnq7xvdPy4euui33ZwXjVzQS8qX1zUktbnF
+         Yb9Qgilc20gFDweY/7Y9ZswwE2wb5tAb6voC2pjv2KcfbNhuu5yGWjUFMh0SQEuTxjic
+         DzSBC/UVaEJmKkKGNflDEt5Nk5El3iRbfHjb2V2dEfIZYs1pkoC9VdAltOJJJmzpkV4M
+         WBE51XqvHWDLrd/QiChxfa7QpkTh522Oz6FGma7Jmp5agTG5rlzU3JZHBIk9+WhUqSK+
+         ls7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Rxpv7pGc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 45si11352398qvv.89.2019.09.03.09.35.28
+        by mx.google.com with ESMTPS id o3si12665090qkk.270.2019.09.03.09.50.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2019 09:35:28 -0700 (PDT)
+        Tue, 03 Sep 2019 09:50:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Rxpv7pGc;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49034 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49304 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5BmC-0003Rg-0r
-	for alex.bennee@linaro.org; Tue, 03 Sep 2019 12:35:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36848)
+	id 1i5C15-0006Nf-RV
+	for alex.bennee@linaro.org; Tue, 03 Sep 2019 12:50:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39232)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1i5BKz-0007gt-S5
- for qemu-devel@nongnu.org; Tue, 03 Sep 2019 12:07:22 -0400
+ (envelope-from <philmd@redhat.com>) id 1i5BXI-0003W4-7Q
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2019 12:20:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1i5BKy-0002xK-HQ
- for qemu-devel@nongnu.org; Tue, 03 Sep 2019 12:07:21 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:45930)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1i5BKy-0002ww-Bq
- for qemu-devel@nongnu.org; Tue, 03 Sep 2019 12:07:20 -0400
-Received: by mail-ot1-x341.google.com with SMTP id g16so5437449otp.12
- for <qemu-devel@nongnu.org>; Tue, 03 Sep 2019 09:07:20 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=BQiQNF8dhJP8ox+hPSxrVvY+j3aOupN7cxNiycpUbKY=;
- b=Rxpv7pGcWDNK+CdEuWb268IZZHigB1Eyk/td3dKpdFgZbUxuJUyowoMvfxQYOnCoRY
- pH7u0x1oeK5zW3YJhWsHMF5PZKAjY7KBIc98UD6iM+/pWR7DAFze7kvIb9jZ4gpfgXtj
- nRXYNzGl/96XbMtXiggWG8aAIPzD1O7ZPreuObTNPF3CLaiUjrXMe90FmolysjI47duP
- HO5Qz5p3niL0vtcoVsYBz3gp1r1Dj7Q/ijwyXw8vZovFJEofo5IuysyJRzo3Ym+bakbM
- 54DGR2H0TdPmlIPYhaLQg+lrMxaEuCw6cubH0mM13Jj6IiUfEcEI0cqCgoN7NohZ7P+u
- ITfw==
+ (envelope-from <philmd@redhat.com>) id 1i5BXF-0000fu-Qv
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2019 12:20:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44392)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1i5BXF-0000fU-JP
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2019 12:20:01 -0400
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 2D5EEC04D293
+ for <qemu-devel@nongnu.org>; Tue,  3 Sep 2019 16:20:00 +0000 (UTC)
+Received: by mail-wm1-f71.google.com with SMTP id f10so20126wmh.8
+ for <qemu-devel@nongnu.org>; Tue, 03 Sep 2019 09:20:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=BQiQNF8dhJP8ox+hPSxrVvY+j3aOupN7cxNiycpUbKY=;
- b=PqrGTe9lk+/wQCRL0NaK4rrxmRkSiEUkOIBPY/BHMT9oWviKxNYow8meerki4lAZJb
- VWjPPr7Xwk6uoW0TyBK+Zb8bmPy+BYx77J+KqxK2sWPo5tVSn3RDMBCkd75OowSzz0D5
- kgClFXKSvewgXbVBMID4pgqz5HwNCoSgNPqRN7A6r8BcrZJBOku8g8OMYvOOSONIezMP
- eT91/yiJELPBdrelB8t+bS3fpEFb58c0Z4KDXql3ODI6hEc24t2V7iAJ24HxI8G5T+Xp
- xwlXn6XlQIec+DIn6gYOqgzNhIUgMEpgwYIn6mKQB4BuXirF6FyED3ZgQYU0YF31GnjN
- V+3w==
-X-Gm-Message-State: APjAAAXswkBriKNXtxP0JSt4ndzscoxFaQs7lSMk3MOgGeJhCuMQKCIy
- NYl15pvlKAXnj1fFwP9iwqXSbs49mO/oXMG/cHBHRw==
-X-Received: by 2002:a9d:5e10:: with SMTP id d16mr29562669oti.91.1567526839521; 
- Tue, 03 Sep 2019 09:07:19 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=hw27mxT6ObZtqvKoETGQ5lY6IQyW7gki2ry6rOYqd9E=;
+ b=A9t7vZR3tdC+KZFQ58/hnqPdDQBzQ0vUeks0gOdWwuysQM9SjAyVshI2xxwq5BKYef
+ swOmns8DIuRMILkz8C4FTzLihtrrskDiho8IDM/XT1nnSQBnbdtNrADqzmK7ui+AqWmW
+ ufoOY5HUgXoI0kY8ZmkEOtpVGSfvIEgcGcaIxdXVHbkJJAqJtq1saCF7/KVoo2bYRVrv
+ g5MmiGaMvbeSTKtynWS9l2LawdMqLkrlXBIU72OJyvBZNjHi/6qvez4i2r2cI/iJN2Gs
+ Zy1bMov3NYEF90Mypp97P9yNN+b3w9M60FF62dnALzXLGpcBwJxQ/BHiPh1pwHfOhS/m
+ A/Rg==
+X-Gm-Message-State: APjAAAVYbdXZ+cN06rbz4eUC4TI+KncHzzW8YbYedxuBJ4gINPsUsBlS
+ 89ziSqJhYzGkzZSDFx6UPhmhyfwPf3La/wV0dzdt4op4EVmRgfTYIz9vCiaKNEQh4PtwZINqjD+
+ Qsn/rkP2+eHHWcsA=
+X-Received: by 2002:adf:9083:: with SMTP id i3mr998825wri.310.1567527598979;
+ Tue, 03 Sep 2019 09:19:58 -0700 (PDT)
+X-Received: by 2002:adf:9083:: with SMTP id i3mr998793wri.310.1567527598716;
+ Tue, 03 Sep 2019 09:19:58 -0700 (PDT)
+Received: from [192.168.1.41] (251.red-88-10-102.dynamicip.rima-tde.net.
+ [88.10.102.251])
+ by smtp.gmail.com with ESMTPSA id h32sm24187879wrh.62.2019.09.03.09.19.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 03 Sep 2019 09:19:58 -0700 (PDT)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
 References: <20190903154810.27365-1-thuth@redhat.com>
- <20190903154810.27365-2-thuth@redhat.com>
-In-Reply-To: <20190903154810.27365-2-thuth@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 3 Sep 2019 17:07:08 +0100
-Message-ID: <CAFEAcA-HyrDKoW0ja8NNQURu46eY-vN1RNMpC1R8U2Th=qPB-Q@mail.gmail.com>
-To: Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::341
-Subject: Re: [Qemu-devel] [RFC PATCH 1/3] target/arm: Make cpu_register()
- and set_feature() available for other files
+ <20190903154810.27365-4-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <bb6eb994-532e-7afc-bb27-aa5d56080b50@redhat.com>
+Date: Tue, 3 Sep 2019 18:19:38 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
+MIME-Version: 1.0
+In-Reply-To: <20190903154810.27365-4-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-devel] [RFC PATCH 3/3] target/arm: Make m_helper.c
+ optional via CONFIG_ARM_V7M
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,54 +114,106 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DyfLgW1SUPn4
+X-TUID: Cg5CKG0ksajG
 
-On Tue, 3 Sep 2019 at 16:54, Thomas Huth <thuth@redhat.com> wrote:
->
-> Move the common set_feature() and unset_feature() functions from cpu.c and
-> cpu64.c to cpu.h, and make cpu_register() (renamed to arm_cpu_register())
-> available from there, too, so we can register CPUs also from other files
-> in the future.
->
+On 9/3/19 5:48 PM, Thomas Huth wrote:
+> We've already got the CONFIG_ARM_V7M switch, but it currently can
+> not be disabled yet. The m_helper.c code should not be compiled
+> into the binary if the switch is not enabled. We also have to
+> provide some stubs in a separate file to make sure that we still
+> can link the other code without CONFIG_ARM_V7M.
+
+If there is no M support, the translate code shouldn't even generate M
+calls, so the stub shouldn't be necessary.
+Anyhow I guess this code will be simplified by the ongoing decodetree
+conversion from Richard.
+
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  target/arm/cpu.c   | 20 ++------------------
->  target/arm/cpu.h   | 18 ++++++++++++++++++
->  target/arm/cpu64.c | 16 ----------------
->  3 files changed, 20 insertions(+), 34 deletions(-)
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 0981303170..c5007edf1f 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -3600,4 +3600,22 @@ static inline bool isar_feature_aa64_bti(const ARMISARegisters *id)
->  #define cpu_isar_feature(name, cpu) \
->      ({ ARMCPU *cpu_ = (cpu); isar_feature_##name(&cpu_->isar); })
->
-> +static inline void set_feature(CPUARMState *env, int feature)
+>  target/arm/Makefile.objs   |  3 +-
+>  target/arm/m_helper-stub.c | 58 ++++++++++++++++++++++++++++++++++++++
+>  2 files changed, 60 insertions(+), 1 deletion(-)
+>  create mode 100644 target/arm/m_helper-stub.c
+> 
+> diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+> index 5cafc1eb6c..225e7a70a9 100644
+> --- a/target/arm/Makefile.objs
+> +++ b/target/arm/Makefile.objs
+> @@ -36,7 +36,8 @@ obj-y += tlb_helper.o debug_helper.o
+>  obj-y += translate.o op_helper.o
+>  obj-y += crypto_helper.o
+>  obj-y += iwmmxt_helper.o vec_helper.o neon_helper.o
+> -obj-y += m_helper.o
+> +obj-$(CONFIG_ARM_V7M) += m_helper.o
+> +obj-$(call lnot,$(CONFIG_ARM_V7M)) += m_helper-stub.o
+>  
+>  obj-$(CONFIG_SOFTMMU) += psci.o
+>  
+> diff --git a/target/arm/m_helper-stub.c b/target/arm/m_helper-stub.c
+> new file mode 100644
+> index 0000000000..8ec9de0fb6
+> --- /dev/null
+> +++ b/target/arm/m_helper-stub.c
+> @@ -0,0 +1,58 @@
+> +/*
+> + * ARM V7M related stubs.
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +#include "qemu/osdep.h"
+> +#include "cpu.h"
+> +#include "exec/helper-proto.h"
+> +
+> +void HELPER(v7m_bxns)(CPUARMState *env, uint32_t dest)
 > +{
-> +    env->features |= 1ULL << feature;
+> +    abort();
 > +}
 > +
-> +static inline void unset_feature(CPUARMState *env, int feature)
+> +void HELPER(v7m_blxns)(CPUARMState *env, uint32_t dest)
 > +{
-> +    env->features &= ~(1ULL << feature);
+> +    abort();
 > +}
-
-I think these function names are too generic to have in a header
-like cpu.h which is used all across the codebase. (For instance
-target/arm/kvm64.c now has both a local set_feature() function
-and this one from the header.)
-
-Can they go in target/arm/internals.h instead?
-The set of code that should be caring about setting
-feature bits should be pretty small.
-
-Maybe also they should be renamed.
-
-thanks
--- PMM
+> +
+> +uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
+> +{
+> +    abort();
+> +}
+> +
+> +void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
+> +{
+> +    abort();
+> +}
+> +
+> +uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
+> +{
+> +    abort();
+> +}
+> +
+> +void HELPER(v7m_preserve_fp_state)(CPUARMState *env)
+> +{
+> +    abort();
+> +}
+> +
+> +void write_v7m_exception(CPUARMState *env, uint32_t new_exc)
+> +{
+> +    abort();
+> +}
+> +
+> +void HELPER(v7m_vlldm)(CPUARMState *env, uint32_t fptr)
+> +{
+> +    abort();
+> +}
+> +
+> +void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
+> +{
+> +    abort();
+> +}
+> +
+> +ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
+> +{
+> +    abort();
+> +}
+> 

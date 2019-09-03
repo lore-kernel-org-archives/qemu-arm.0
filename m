@@ -1,89 +1,104 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp150941wrp;
-        Tue, 3 Sep 2019 01:40:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw33hyqPqxeFR6+n21nc0uT8x9Bbt69w4QOSQNRnRruGWtHId/bESRD189oabLPy3TaFTdH
-X-Received: by 2002:a17:906:6618:: with SMTP id b24mr22094327ejp.215.1567500038140;
-        Tue, 03 Sep 2019 01:40:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567500038; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp208647wrp;
+        Tue, 3 Sep 2019 02:41:01 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwOSBp0h6gciVwfDDXWhALHGYArnhE9jf+jT/SyGBsoVue2gF1w860kmi1sBMCEPxViuZUT
+X-Received: by 2002:a05:6402:686:: with SMTP id f6mr22552392edy.89.1567503661651;
+        Tue, 03 Sep 2019 02:41:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567503661; cv=none;
         d=google.com; s=arc-20160816;
-        b=vwQ/0xRnpos+o+aVcX5bYHpykzqUj3Z/swkx21OMnRWma9WBeJ5RqKUqyhH4rmtadF
-         E65M+jLkyzNsYGOHDbwsnw9WLTOpfX+CHnu0N7EDqU/xGvj2Ss3F6PsKjEgOHReeYU5/
-         0l0xc0hTSMaDrK2fcki/id7ZD6P4jxZatLpphZmIIYmAZqk/8cRxbzJ3r5wVtpDUVpnh
-         aCF7lWhauXytkkj/Z/xy4fumZbXSdlpU2QI/t6gayQ4cnRHTC73JEgLOpJF9si7g7pm3
-         sxiGoFyuq3EhyOifqsVEWAy0MPKKYWixnUM/Hj+X9oWMIUX+E5+w7corPSNb7u31xFJU
-         WXAg==
+        b=mtsUQ/NEGayDUejgnoBWU/ZhafyxGOYr3AvgX5OR09Zih3OlBzbUPzX0naq2FAg1zW
+         jJ1FvCfTS8q3pQYLmOmjzN9u4NReaey5GHdlL0SQrfFDKEirhIZSDwCJqQqJakFmExbB
+         ouVYVX5tSLVTRGUk9znqHCi2y0tNK7K7QfwxjHMtVxG3l/LbbdupoiZTHLMBW15DMquC
+         YuLTftcTjiwDlpAW7oEAgtPFotQcWReFxn6VH959Z8hDpNyX4WtUNA6e39qaydBsKuUQ
+         EieLEBO9sCQNBEJ4601LT++XPq3YP3J+EGK5/6Ta2cwiOvc+W6OYzEVlTN+hGh4iVqvW
+         ibnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=6JW9PuRgunkD/oEs4RZjg3BA29DnqIOs696kfSNheuk=;
-        b=VOAAELk0bWnFJ4Re0afAR1Ugt6SqCj8wdmQdc75aIiKItTWyRe/CHgDmXxGOY1hrHt
-         FdeWwni3Y84bXrngpTyBVLQVa/jPpyIaIKHWe6DRrL6EJBPq4umroeLZveqyZv7/dyZp
-         n1lpo32wzdAH7gl999nmx2d4swtiev7aHjPP88vx0WWuj4875QTS28t1Djbms9yQQzQK
-         6lNIuhkpo5YiO8ajPA7fMFT2HKeU7tFVWeisHO52KzfQrM+WSCgPKyPax+DN9jUlOAzQ
-         0VGI5hYGVT58Duq56ISxhlyTxoe9LBHMi4IBafD2eDoJyB33HPbtRuPzzRqkmf6ug70g
-         0UIQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :references:in-reply-to:mime-version:dkim-signature;
+        bh=o8zYjDpvENOIZHwfDTtymFY4TStnbN4syd3UC15nX4k=;
+        b=DzW7TAlp/g2KUcgeiy+mVdR+ItOyF0Q16uvW9j5krT6iXdtbpj6/b9N6qtLzkrjGnv
+         8dtpDTQUatlRtAi7Qvl8cLyL/0GlD8q+G9j9WtMsvnPL9a+2pkLorJnCBYu9WgfxTjrx
+         wFErXmXShf6tMrjmI1nCeFb7z5NxYDVNsnswBZZV9iAVczm5ii1qPbSElUycHu/erIOr
+         qysNCEEoggB09M/LdN3Zn+eX3qbA6NFrAN9i1qznTf55iOsqRm6C4EpqVgjqf2/1WkZC
+         YbMRo1obqZJ1M2US+X1DjMYo7ldDCL468XXJr3BbTjrGUiy12PraBcvWPFOodT2vXS53
+         +GeA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bwJKsSji;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id mj10si8094692ejb.281.2019.09.03.01.40.38
+        by mx.google.com with ESMTPS id c18si10940500ede.348.2019.09.03.02.41.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2019 01:40:38 -0700 (PDT)
+        Tue, 03 Sep 2019 02:41:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bwJKsSji;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42930 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:43376 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i54Me-0005pe-41
-	for alex.bennee@linaro.org; Tue, 03 Sep 2019 04:40:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53181)
+	id 1i55J6-0000Xm-L9
+	for alex.bennee@linaro.org; Tue, 03 Sep 2019 05:41:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36614)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1i54MP-0005mT-9S
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 04:40:22 -0400
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1i55Iw-0000Vj-HH
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 05:40:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1i54MO-000609-4O
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 04:40:21 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34058)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1i54MN-0005wF-TE; Tue, 03 Sep 2019 04:40:20 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 587ADA36F04;
- Tue,  3 Sep 2019 08:40:17 +0000 (UTC)
-Received: from [10.36.116.67] (ovpn-116-67.ams2.redhat.com [10.36.116.67])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D5FBA19C78;
- Tue,  3 Sep 2019 08:40:15 +0000 (UTC)
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20190827160554.30995-1-eric.auger@redhat.com>
- <20190827160554.30995-3-eric.auger@redhat.com>
- <29520007-f3fd-ed8d-f52b-2839f991556a@huawei.com>
- <0dd3bc89-8f91-0f8e-8908-18712240a115@redhat.com>
- <CAFEAcA8u3Qe9zx=4QxW_Bb8a=JQ7kUmiAO5H-cwAU4i3R+Nf8w@mail.gmail.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <9bd0a5b8-ad15-d19f-2bcc-8b605afb5b78@redhat.com>
-Date: Tue, 3 Sep 2019 10:40:13 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ (envelope-from <aleksandar.m.mail@gmail.com>) id 1i55Iv-0002td-FL
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 05:40:50 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:40375)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <aleksandar.m.mail@gmail.com>)
+ id 1i55It-0002sE-1Y; Tue, 03 Sep 2019 05:40:47 -0400
+Received: by mail-ot1-x343.google.com with SMTP id y39so6048379ota.7;
+ Tue, 03 Sep 2019 02:40:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc; bh=o8zYjDpvENOIZHwfDTtymFY4TStnbN4syd3UC15nX4k=;
+ b=bwJKsSjiM6N8ff8R1RtFHyI39ThZvsVBx9mZ0VAhR6En6LUgw1Hwxd+gbNSrgR5NNw
+ dfR+nXVsl5y/3WfhNPRZGMF1BEoks4WxhfphRYTToWKpMSwmczh+CvmJw1HS8X2SY7CY
+ b408VD/EpNrkYef/nidjWc6+lj/AdKUXzayHfsVhYjG8bh8sXGthkKNQ7HwEcy4MFAEs
+ WqkMiI1qgueL02ul5fRxaIzSgFRaNODLKepYQLQ9xIBPX0bK0947ja+n1EtzUR9DU2ad
+ rxR6C05+trllEhGa4Jw51JdMSYC7DsNMCdRGZ3powbGy0AJLmtZ294nk4JaBH4OkNNS9
+ OHEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc;
+ bh=o8zYjDpvENOIZHwfDTtymFY4TStnbN4syd3UC15nX4k=;
+ b=EWYc1hTLxY/Tx7Brc3SCdj4O9zjrHcq8M7eYCno4gojyq+xPoUASwGQmZaO/vmkbGv
+ Ze1bb/jsvAzeLGSvPYXY/axOEVmPvJj7Wu0AGJRdShyi1g5nMJTBm6hJWTgez0fWIdHV
+ sPztFhCL4zbhnZYDk3k/BN/zB/NoqlfOWwZncyE/mdOuZK2Cbm5l/WLsEuxhBUIJUZzt
+ ODj7qcQoWR81Fx4EYJwjGWvaftOIls6GkplN4TNlWIZ9lojGRvgspahSoZcLx3sLAugJ
+ LaNVI1mNpxpnbD59PMaXcOvfK3Kj3/CfUh7TfTE29CJSzW1OUNpPBJ2c/FUpQ9x1rqzy
+ D1+Q==
+X-Gm-Message-State: APjAAAXhabvP7YiVO9KEx19RxtnZUMkaGvRw+unDC8qK4QUHj069I80x
+ HNCTLYklZgC7zDIQLAbTCsNmTVTOkE5BAUcmzxE=
+X-Received: by 2002:a9d:4912:: with SMTP id e18mr25152892otf.341.1567503646079; 
+ Tue, 03 Sep 2019 02:40:46 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8u3Qe9zx=4QxW_Bb8a=JQ7kUmiAO5H-cwAU4i3R+Nf8w@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.68]); Tue, 03 Sep 2019 08:40:17 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC 2/3] intc/arm_gic: Support PPI
- injection for more than 256 vpus
+Received: by 2002:a9d:340a:0:0:0:0:0 with HTTP;
+ Tue, 3 Sep 2019 02:40:45 -0700 (PDT)
+Received: by 2002:a9d:340a:0:0:0:0:0 with HTTP;
+ Tue, 3 Sep 2019 02:40:45 -0700 (PDT)
+In-Reply-To: <7f4eac6e-486a-3d99-b533-5fd4ac41864d@linaro.org>
+References: <20190819213755.26175-1-richard.henderson@linaro.org>
+ <20190819213755.26175-67-richard.henderson@linaro.org>
+ <CAFEAcA9AbEzR97-2gvpPAbGrGHx_AxGgVhh4-BDufTQUX0gM1w@mail.gmail.com>
+ <7f4eac6e-486a-3d99-b533-5fd4ac41864d@linaro.org>
+From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
+Date: Tue, 3 Sep 2019 11:40:45 +0200
+Message-ID: <CAL1e-=grS02UTTMQ41iMWFCSrUsbE0X7B8GfnLLgjdpD9cOkLw@mail.gmail.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: multipart/alternative; boundary="000000000000023da70591a2e23e"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 66/68] target/arm: Convert
+ T16, long branches
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -95,52 +110,105 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Zenghui Yu <yuzenghui@huawei.com>, maz@kernel.org,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Eric Auger <eric.auger.pro@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fhmxHSr7KWO3
+X-TUID: E1OHdKzgHtfK
 
-Hi Peter,
+--000000000000023da70591a2e23e
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 9/3/19 10:29 AM, Peter Maydell wrote:
-> On Thu, 29 Aug 2019 at 08:58, Auger Eric <eric.auger@redhat.com> wrote:
->>
->> Hi Zenghui,
->>
->> On 8/29/19 4:53 AM, Zenghui Yu wrote:
->>> For confirmation, should we also adjust the vcpu_index in
->>> arm_cpu_kvm_set_irq(), just like above?
->>
->> I am not familiar with this path. in arm_cpu_initfn(), there is a
->> comment saying "VIRQ and VFIQ are unused with KVM but we add them to
->> maintain the same interface as non-KVM CPUs." So I don't know when that
->> code gets executed.
-> 
-> That comment is saying that all KVM guest CPUs are
-> EL1-only (since we don't handle nested virt), and therefore
-> they logically don't have an inbound VIRQ or VFIQ line.
-> But we provide the qemu_irqs for them anyway, so that
-> board code doesn't have to have tedious conditionals
-> saying "if this CPU has EL2 then wire up VIRQ and VFIQ
-> to the GIC". If you ever try to actually assert the VIRQ
-> or VFIQ lines you will hit the g_assert_not_reached() in
-> arm_cpu_kvm_set_irq().
+28.08.2019. 02.07, "Richard Henderson" <richard.henderson@linaro.org> =D1=
+=98=D0=B5
+=D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
+>
+> On 8/27/19 2:34 AM, Peter Maydell wrote:
+> >> +    tcg_gen_andi_i32(tmp, tmp, -4);
+> >
+> > Minor nit, but can we use 0xfffffffc like the old code did,
+> > to avoid the reader having to do 2s-complement arithmetic
+> > in their head to figure out that we're clearing the low 2 bits?
+>
+> I always preferred "x & -c" for exactly the same reason:
+> to avoid the reader having to do 2s compliment arithmetic
+> in their head to figure out that we're aligning to c.
+>
+> But, sure, if you like.
+>
 
-OK thanks for the clarification. I mixed things up.
+I vote for 0xfffffffc.
 
-I guess arm_cpu_kvm_set_irq attempting to inject IRQ/FIQ into KVM is
-used with userspace GIC emulation, which is not supported along with
-GICv3. But anyway, I guess it does not hurt to set vcpu_index2 in
-arm_cpu_kvm_set_irq?
+Aleksandar
 
-Thanks
+> > This would be a good place to put a comment equivalent to that
+> > in the old decoder:
+> >
+> > # thumb_insn_is_16bit() ensures we won't be decoding these as
+> > # T16 instructions for a Thumb2 CPU, so these patterns must be
+> > # a Thumb1 split BL/BLX.
+> >
+> >> +BLX_suffix      11101 imm:11                    &i
+> >> +BL_BLX_prefix   11110 imm:s11                   &i
+> >> +BL_suffix       11111 imm:11                    &i
+>
+> I had placed that with trans_BL_BLX_prefix, but I suppose this
+> is a better place.
+>
+>
+> r~
+>
 
-Eric
+--000000000000023da70591a2e23e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+<p dir=3D"ltr"><br>
+28.08.2019. 02.07, &quot;Richard Henderson&quot; &lt;<a href=3D"mailto:rich=
+ard.henderson@linaro.org">richard.henderson@linaro.org</a>&gt; =D1=98=D0=B5=
+ =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:<br>
+&gt;<br>
+&gt; On 8/27/19 2:34 AM, Peter Maydell wrote:<br>
+&gt; &gt;&gt; +=C2=A0 =C2=A0 tcg_gen_andi_i32(tmp, tmp, -4);<br>
+&gt; &gt; <br>
+&gt; &gt; Minor nit, but can we use 0xfffffffc like the old code did,<br>
+&gt; &gt; to avoid the reader having to do 2s-complement arithmetic<br>
+&gt; &gt; in their head to figure out that we&#39;re clearing the low 2 bit=
+s?<br>
+&gt;<br>
+&gt; I always preferred &quot;x &amp; -c&quot; for exactly the same reason:=
+<br>
+&gt; to avoid the reader having to do 2s compliment arithmetic<br>
+&gt; in their head to figure out that we&#39;re aligning to c.<br>
+&gt;<br>
+&gt; But, sure, if you like.<br>
+&gt;</p>
+<p dir=3D"ltr">I vote for 0xfffffffc.</p>
+<p dir=3D"ltr">Aleksandar</p>
+<p dir=3D"ltr">&gt; &gt; This would be a good place to put a comment equiva=
+lent to that<br>
+&gt; &gt; in the old decoder:<br>
+&gt; &gt; <br>
+&gt; &gt; # thumb_insn_is_16bit() ensures we won&#39;t be decoding these as=
+<br>
+&gt; &gt; # T16 instructions for a Thumb2 CPU, so these patterns must be<br=
+>
+&gt; &gt; # a Thumb1 split BL/BLX.<br>
+&gt; &gt; <br>
+&gt; &gt;&gt; +BLX_suffix=C2=A0 =C2=A0 =C2=A0 11101 imm:11=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;i<br>
+&gt; &gt;&gt; +BL_BLX_prefix=C2=A0 =C2=A011110 imm:s11=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&amp;i<br>
+&gt; &gt;&gt; +BL_suffix=C2=A0 =C2=A0 =C2=A0 =C2=A011111 imm:11=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;i<br>
+&gt;<br>
+&gt; I had placed that with trans_BL_BLX_prefix, but I suppose this<br>
+&gt; is a better place.<br>
+&gt;<br>
+&gt;<br>
+&gt; r~<br>
+&gt;<br>
+</p>
 
-> 
-> thanks
-> -- PMM
-> 
+--000000000000023da70591a2e23e--

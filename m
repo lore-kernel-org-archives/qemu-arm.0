@@ -1,90 +1,104 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp400077wrp;
-        Tue, 3 Sep 2019 05:43:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxNsfIpr1QGJ1s7ThkzKwnFfVS6cudkU+r/dkomCBfSBr2byAbl/be6SujwWr+UUWvLTONq
-X-Received: by 2002:a37:89c4:: with SMTP id l187mr6207966qkd.286.1567514589295;
-        Tue, 03 Sep 2019 05:43:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567514589; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp411168wrp;
+        Tue, 3 Sep 2019 05:54:28 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz2KPsXV2dmCZWXYvDOGVd6Koh1ZpM4PeTbvQBie0I49bDu9m5eiiro8IvxotRaN/0NSLBa
+X-Received: by 2002:ae9:ec06:: with SMTP id h6mr31120384qkg.221.1567515268846;
+        Tue, 03 Sep 2019 05:54:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567515268; cv=none;
         d=google.com; s=arc-20160816;
-        b=ISK6yoHh35I5RBdKHAQoef2/YWUY+LCL5RKvmDNNqzhNLx+qktxUgE+7F/lRPm0xs8
-         iOywOyVd6FZNRQcwbcMRYW8Qako0aLMIsCvqnJSrxk2+aY2tteZkpF048JElUlauh2nI
-         Xx/FldqH6Fd2vjz4J202qLlXIfZTF/vyx0za2KoA7k2NotncilhNS10qtzgzxSpVP9M/
-         Cvpibu3yZWtgGon83TOdLtYaprBkDlPPxEbMPDWk61k6a/qTBOZfKSM4PC2DYT+WQWd9
-         oE5W6NQyogaJpa5rJXr6TGPRa/e2DMFUqSaSUZsEkK6NUtteR4EqF+NdQdwahpwuQXao
-         viSA==
+        b=Tp/S30Z5TCnyfT7cpqqZo+prn3bzuPbTKetIG8mNk5Hauk4CH4LSGNaHkU40/Z4pvS
+         9LswQbb4g3LG7LjKHVf5JqLoi+oR6/UII3cxB1ungpQQoA9qe413+UKmjnhW9VrH4SFm
+         PBXDTexd46nQohgL0oO1zwejiGu0L0c5yIsLMEW/i4ZhJvvPXHrebLY+O0rO+EUEBQv7
+         O7+1MaYz5284jsZqQFwmYWMNrJMxyeNBIseLVkmq3aL3VBgnUYFoO0cY4klY/VjO5+91
+         BxR/oUBefdILsvgMwgh+cKell18UkckSmMOQJTc25DTe+x0qPcdSSMo/DRwEdcNyoIKt
+         6TXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version;
-        bh=8/io0aF14kRtFPrIzN+Bf+i4azHZocjXaM3gxSbPLo0=;
-        b=PBr8C3niKNX9ba11VWLGDjRj1V17HpeteziDrPVpJXgqaBO/5LgjoVqp/W33ZalIM5
-         YNiG14pW1BkkUqUif2Z9lq4y0LwPPaToxdJp2o+cfxaRbI3NOfZjlx5q98MF1oC/Q8sZ
-         kSw2mKdl5G4XHEj0bk4WaXUiQQiWkD545mHDBAPqSmDIQW82V9Q6KAJ3ct3M+hzk+mew
-         k7m95D9KXqBvBh3TdDppVSfzGZ6cjS8A0iEmV1k9Dz10tnuHxkRrrvs4tentfLty6J+U
-         UE3+ohlooN91F7V/Nwbw26FH3qHHoJAKnYR+aBWkBbPUghm3NFiFxVK7d+/rOLP5gAir
-         5Lnw==
+         :references:mime-version:dkim-signature;
+        bh=5xd3EaRn2/q47I0oNhUyeFQqlRFbIiY9Dujex2TLBtE=;
+        b=S+F+pX0LRVDvZW6g+N9dEQxAidYA0VLUXjKdYWud1F6qCAyliKOFVSK0CYYYAGJRgT
+         9wPgxEfwcsqCNr708MPiRahF3Tx8uD8qC1GMuaCua49rGt90sIPYih60RC65AfssRJzm
+         HZcZcbK4NLwn5OhnCRIoFrTP/Uj6+0hZK1WmUVlM0dyBA5QFCZxaA54EScSmXu+g74Qu
+         G7XQwecFK54byFTawhX38naPH2V1MqxPGa642q8e+AXEkhV1hxSkjskKikvel8ya7YTe
+         jLB3tnxETJtL7dB81s5cOYzgv62Jc8adRSFWB837wW3NtmQ9l7ye0lOZy9IDdj9anAtl
+         +IxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b="MUTil/mW";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j5si11212595qte.76.2019.09.03.05.43.09
+        by mx.google.com with ESMTPS id z6si11171650qkl.107.2019.09.03.05.54.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2019 05:43:09 -0700 (PDT)
+        Tue, 03 Sep 2019 05:54:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45386 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="MUTil/mW";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45506 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i589M-0006j0-EO
-	for alex.bennee@linaro.org; Tue, 03 Sep 2019 08:43:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38165)
+	id 1i58KK-0002DB-7k
+	for alex.bennee@linaro.org; Tue, 03 Sep 2019 08:54:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44296)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1i589C-0006gc-Sy
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 08:43:00 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1i58KA-0002CV-6r
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 08:54:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1i589B-0003bW-Jq
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 08:42:58 -0400
-Received: from mail-yw1-f66.google.com ([209.85.161.66]:43193)
+ (envelope-from <peter.maydell@linaro.org>) id 1i58K9-00053W-0q
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 08:54:18 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:33795)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1i5897-0003XJ-S3; Tue, 03 Sep 2019 08:42:53 -0400
-Received: by mail-yw1-f66.google.com with SMTP id n205so5716088ywb.10;
- Tue, 03 Sep 2019 05:42:53 -0700 (PDT)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1i58K8-00053E-MI
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 08:54:16 -0400
+Received: by mail-ot1-x341.google.com with SMTP id c7so16635731otp.1
+ for <qemu-arm@nongnu.org>; Tue, 03 Sep 2019 05:54:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=5xd3EaRn2/q47I0oNhUyeFQqlRFbIiY9Dujex2TLBtE=;
+ b=MUTil/mWWKOPRn6ZshL2JxTs0dGLnHI1Gtko++MOKsNzgFnn3GjPb4Mwa+qjn+3QgU
+ SuE1gqIuSiFLZDEknNuHr7rXM2JCrs6f/0oo8m79U68DnbfL9EOqKQs6fE57KyliXVro
+ +Wq8lLXuPVFFXw5njKbu+T55O29HHhijETIIWRxQ3z6kCslsWO7TRY6RC4KNFshQzuEK
+ FLsfvfXRZ24Z7tAgFnA3zTPXvHHsGh2a/5HBgPtpF5rbcYlGzyTWpjG1AvOAP2GpgRbX
+ kyE8JEouyLqZE6RCubN1sCvu2CYh+1uutaq4R5Lf21N4IH6K4AxtapXyVE3p32qWFC2i
+ NkfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=8/io0aF14kRtFPrIzN+Bf+i4azHZocjXaM3gxSbPLo0=;
- b=b/SCxntfnLfibm/13ZWsLfkS+E1dS/pnOUqAdhharr09fE2/JGik7Ylkz80JHb1ptK
- T0AT34T00tvnSbg/COBbhdVpIltR2RmTcdQOuVq6gdOCr4Pemfc7Octt4p1N7mpE6GNH
- G+zj3yaEuQDOrdNGuAnT5odNp34pJJd5Ya153HqCOEpXbNED52MOL9DOumpkXEpbRbS2
- 650D22EKKTlEOnajlMUi+Yby5agX6UPLLryGif8Oc4/W5RQ7NO9B/qGGZ3GM6juVBOM+
- yvfPL7+qsE4EMPpVbrZTUWWYhqT3XZEt9hVWRyaX1gBiCPisDsoozD/HPKQeKE/K5fe7
- W4Lw==
-X-Gm-Message-State: APjAAAVSf3h5aGbcUbBpY97+uk/TnVq0Eg2O3ORN7QiStp6XUKQvG4gd
- Sxo8rNWKxOBzs62vVwYumfOdjQotv8XqkbBmryQ=
-X-Received: by 2002:a81:b40a:: with SMTP id h10mr10925279ywi.368.1567514572963; 
- Tue, 03 Sep 2019 05:42:52 -0700 (PDT)
+ bh=5xd3EaRn2/q47I0oNhUyeFQqlRFbIiY9Dujex2TLBtE=;
+ b=NCQ5JTaxzN3FdPLnw1K3J1raKVRCwPOBfyjenimufW4jgqWMkTb5MOZP+pbkslT0d/
+ b5mTKa4UUpiuNTuVPn43TIxPaxqWvYlUEHoLi75F+c4zm/5ESLxWJIRjR78RHyUf31xJ
+ 0auseqYs1LqskypPYLaclUf64nF3cG24bRgFo9b9I5Sv/AGv+28YpkrbhKq5d5mZo/3u
+ Zovjf9tNxVysktU9gOXG/oajxVlWAUJUtHh9rHAZeo+x10Uao855fiXqpSL5mARPqXsX
+ w43pb9DBNZfG2zRihJpOBhD0OpQ3fjnibMCCVYoigFicY03kvAzMw5hUlaJJ1vDAv7Ah
+ s76w==
+X-Gm-Message-State: APjAAAURiZMOFiEWpzXVdeSxrOudycikTLIbId/ILtEaizaI1OhdbZrb
+ oUXI9gSWZxmg7oztWC8zg6IvOKxxMNVsZyLBvYhXqw==
+X-Received: by 2002:a05:6830:1015:: with SMTP id
+ a21mr28991001otp.232.1567515255849; 
+ Tue, 03 Sep 2019 05:54:15 -0700 (PDT)
 MIME-Version: 1.0
-References: <20180216070201.4271-1-penberg@iki.fi>
- <20180216070201.4271-3-penberg@iki.fi>
-In-Reply-To: <20180216070201.4271-3-penberg@iki.fi>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Tue, 3 Sep 2019 14:42:41 +0200
-Message-ID: <CAAdtpL7ZRxLS=wbKKQrxQ_Ob8sLJFGvsqPWXmgtCGWKdJ-Ga9g@mail.gmail.com>
-To: Pekka Enberg <penberg@iki.fi>,
- =?UTF-8?Q?Zolt=C3=A1n_Baldaszti?= <bztemail@gmail.com>
+References: <20190823143249.8096-1-philmd@redhat.com>
+ <20190823143249.8096-4-philmd@redhat.com>
+ <da63a29a-c60d-7f85-aa4d-27d750f4d33c@redhat.com>
+In-Reply-To: <da63a29a-c60d-7f85-aa4d-27d750f4d33c@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 3 Sep 2019 13:54:04 +0100
+Message-ID: <CAFEAcA8xJCBKWYwEd4vhDoFcZCKyzFgaZxv5i=D=h40LLoG9FA@mail.gmail.com>
+To: Thomas Huth <thuth@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.161.66
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 2/3] raspi: Raspberry Pi 3
- support
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+Subject: Re: [Qemu-arm] [PATCH v2 3/6] hw/arm: Use sysbus_init_child_obj for
+ correct reference counting
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -96,85 +110,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: Eduardo Habkost <ehabkost@redhat.com>,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Jason Wang <jasowang@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gqRm3dNIThRk
+X-TUID: h5T5MsAINvy5
 
-Hi Pekka and Zolt=C3=A1n,
+On Fri, 23 Aug 2019 at 16:26, Thomas Huth <thuth@redhat.com> wrote:
+>
+> On 8/23/19 4:32 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> > As explained in commit aff39be0ed97:
+> >
+> >   Both functions, object_initialize() and qdev_set_parent_bus()
+>
+> Commit aff39be0ed97 was not about qdev_set_parent_bus(), so the first
+> sentence sounds somewhat misleading here. Maybe rephrase the commit
+> message without that reference to aff39be0ed97 ?
+>
+> >   increase the reference counter of the new object, so one of the
+> >   references has to be dropped afterwards to get the reference
+> >   counting right. Otherwise the child object will not be properly
+> >   cleaned up when the parent gets destroyed.
+>
+> Well, the parent here (the machine) currently never gets destroyed ...
+> so unless you've got a patch in your pipe to fix that, too, you should
+> maybe also rephrase this part of the commit message.
 
-On Fri, Feb 16, 2018 at 8:04 AM Pekka Enberg <penberg@iki.fi> wrote:
->
-> This patch adds Raspberry Pi 3 support to hw/arm/raspi.c. The
-> differences to Pi 2 are:
->
->  - Firmware address
->  - Board ID
->  - Board revision
->
-> The CPU is different too, but that's going to be configured as part of
-> the machine default CPU when we introduce a new machine type.
->
-> The patch was written from scratch by me but the logic is similar to
-> Zolt=C3=A1n Baldaszti's previous work, which I used as a reference (with
-> permission from the author):
->
->   https://github.com/bztsrc/qemu-raspi3
->
-> Signed-off-by: Pekka Enberg <penberg@iki.fi>
-> ---
->  hw/arm/raspi.c | 31 +++++++++++++++++++++----------
->  1 file changed, 21 insertions(+), 10 deletions(-)
->
-> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> index c24a4a1b14..66fe10e376 100644
-> --- a/hw/arm/raspi.c
-> +++ b/hw/arm/raspi.c
-> @@ -5,6 +5,9 @@
->   * Rasperry Pi 2 emulation Copyright (c) 2015, Microsoft
->   * Written by Andrew Baumann
->   *
-> + * Raspberry Pi 3 emulation Copyright (c) 2018 Zolt=C3=A1n Baldaszti
-> + * Upstream code cleanup (c) 2018 Pekka Enberg
-> + *
->   * This code is licensed under the GNU GPLv2 and later.
->   */
->
-> @@ -22,10 +25,11 @@
->  #define SMPBOOT_ADDR    0x300 /* this should leave enough space for ATAG=
-S */
->  #define MVBAR_ADDR      0x400 /* secure vectors */
->  #define BOARDSETUP_ADDR (MVBAR_ADDR + 0x20) /* board setup code */
-> -#define FIRMWARE_ADDR   0x8000 /* Pi loads kernel.img here by default */
-> +#define FIRMWARE_ADDR_2 0x8000 /* Pi 2 loads kernel.img here by default =
-*/
-> +#define FIRMWARE_ADDR_3 0x80000 /* Pi 3 loads kernel.img here by default=
- */
->
->  /* Table of Linux board IDs for different Pi versions */
-> -static const int raspi_boardid[] =3D {[1] =3D 0xc42, [2] =3D 0xc43};
-> +static const int raspi_boardid[] =3D {[1] =3D 0xc42, [2] =3D 0xc43, [3] =
-=3D 0xc44};
+How about just making the commit message:
 
-Where does the value 0xc44 comes from?
+Both object_initialize() and qdev_set_parent_bus() increase the
+reference counter of the new object, so one of the references has
+to be dropped afterwards to get the reference counting right.
+In machine model code this refcount leak is not particularly
+problematic because (unlike devices) machines will never be
+created on demand via QMP, and they are never destroyed.
+But in any case let's use the new sysbus_init_child_obj() instead
+to get the reference counting here right.
 
-I can only find 0xc42/0xc43 defined:
-https://github.com/raspberrypi/linux/blob/rpi-3.18.y/arch/arm/tools/mach-ty=
-pes#L525
+?
 
-0xc43 seems controversial, see
-http://lists.infradead.org/pipermail/linux-rpi-kernel/2015-February/001268.=
-html
-addition: https://github.com/raspberrypi/linux/commit/d9fac63adac#diff-6722=
-037d79570df5b392a49e0e006573R526
-
-Looking at the firmware source, the r1 register is always set to the
-BCM2708 machine id before calling the kernel:
-https://github.com/raspberrypi/tools/blob/920c7ed2ee/armstubs/armstub7.S#L1=
-33
-
-Thanks,
-
-Phil.
+thanks
+-- PMM

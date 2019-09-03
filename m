@@ -1,450 +1,186 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp644695wrp;
-        Tue, 3 Sep 2019 09:06:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy1O0BQPTaw2WTtltlOPkVxD6VKvYfBCjU1l9HWjiuRwwv5JUDk/dSkZ1sm/WBBARqgroem
-X-Received: by 2002:a05:6402:332:: with SMTP id q18mr20323191edw.149.1567526797849;
-        Tue, 03 Sep 2019 09:06:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567526797; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp645523wrp;
+        Tue, 3 Sep 2019 09:07:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx0ihN7P5ZuQ1s63zzrXQnKcU7zbQNr9M6KNKRC+/Z1sj2UOz7Ho7TM+OJvxPEz5ZamTIEW
+X-Received: by 2002:aa7:df81:: with SMTP id b1mr13576379edy.281.1567526833202;
+        Tue, 03 Sep 2019 09:07:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567526833; cv=none;
         d=google.com; s=arc-20160816;
-        b=kBoVfpwcnX7gqxexLULuNikTb7jKbfc6vti2oXcUKLp/kYynMsy2Zs8g4Q11cLDfZY
-         kPk/Bk3Bq1gu3QJwI2yLQ2IHi1qAdVaBf0kwXzyZ5TclVKZE13uePJfb3laDSQvHPtkP
-         z6SiYAp+7zyLafZF7a7OFC18dbt8tXPq833bkaodMETvyCLA8hpRbQJdGtuRVWAdieC+
-         CxJvfKDUcqeoO5vJ2BZgDPeR/K3Ih+iiOmlifi7soLCBJxxzd/iToLs0kiTDj2hAZS9w
-         6dArWNdNcSVrpU8YTxAKaSi3rXPtwcuB8jrxPwke16uZ6P4AvOdD8v0GCeaxwo6Ri1nP
-         a2qA==
+        b=kWshDI6GoDfRatoI9iBDXk37jARpBYiknw0+jv+fspU2T7vGlYnmJqBu3rCEhOkas6
+         QJ9MLNq0fEeMwISSJWhTpnlhUSgdG1gwdpmuUiYIsyjwq3yCOzxgR3m07sce/xGkfxVk
+         gEZjrTUOnI6KN5vEtksJPfuC/vWFpbf5t/cBvzjSazYgly+tPFo4D0Tls6g38NT0K2Y9
+         q/XQfZ7kig4jhkVDtmSAAHC4pjpYsyWbLFOtcmUAQS3j/3gXX7IgxnUp0gLpbq04GnnP
+         5FUHKllskxDPRRkE0DMVzXaTbfII8HMKLph2sE8VFWEnLT6nhr9wAeF7q43OqYW52PBf
+         k/6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from;
-        bh=kXQEkMNsr/CCGEbSUvdLX/4N2OYrAitXJ1K5ottZGSQ=;
-        b=jSMdEtWrsbOm2JwMEro7NN3SaykvsdVRw0EF866bPAyl2iEPJFeDMJodfdlgoywOoN
-         Jnleug2x3hlxt+RWqNt+WwstPhCrJmAK37SieIsxiyaew/CdpNXdL9EJwYnBio3QP7he
-         aZxcxgwj5d8p6Q2Xm9VX6Dd0OgyzjI4EBVhHAdmPfrlvpBO38dFCBAcmufukG4UcpnTt
-         iuFjgUucUoaN537jP8DFHtS0kErvQ9/Gct5wTEp7gxs4JX1uAwSL+rvi3I2qwI5DcGnc
-         C3RKTLmntG89P3uOzq2ZTMUatL82rhcjikUJBAill11hxesJJBa5ladCqxGUM77OJ8Hv
-         hPcA==
+        bh=mRQmaveSSpg3djm51GIrbMfvZ6RK5hq+k14nbPzgoMk=;
+        b=BwH79oouRSh8MlbKyoI31L3dwtJFFp6v53tdBAeJDgmyDmXJMaukKzQXDoMyEwuQKY
+         KpLuCFB2WYcQuk3+qJ/xN4d4iNayRaeW/VvU1OPGyfc/80CAoK6I0ru9WU9Xq7nLseCE
+         i5QuhRIC3bD6Sd0oID2t7qrLaSiJ2F1ERA4d4UYnFoqLyR6J1GVFng8pXBIfcD42rjw5
+         rf+Gii7LRmID2Kou7OarXtiKXHhqo4gwDfog2/RPwUJfhJNrWhnsvOxXyWOyWO8RaOMg
+         b9Fjdzys0VwhSC9Xi8puPpIKytIantIJSy2MZ4n8cSdEPBYuPiGLAlDWNY3EpklnZOmw
+         ZB+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b9si6319825eda.129.2019.09.03.09.06.37
+        by mx.google.com with ESMTPS id pj15si3947225ejb.284.2019.09.03.09.07.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2019 09:06:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Sep 2019 09:07:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48190 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48216 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5BKG-0006Lk-DA
-	for alex.bennee@linaro.org; Tue, 03 Sep 2019 12:06:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33000)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i5BKp-0006ib-So
+	for alex.bennee@linaro.org; Tue, 03 Sep 2019 12:07:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33047)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1i5B2g-0004rz-Qy
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 11:48:28 -0400
+ (envelope-from <thuth@redhat.com>) id 1i5B2i-0004uI-Nk
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2019 11:48:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1i5B2e-0005TX-AC
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 11:48:26 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:19210)
+ (envelope-from <thuth@redhat.com>) id 1i5B2h-0005Y1-E4
+ for qemu-devel@nongnu.org; Tue, 03 Sep 2019 11:48:28 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40734)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1i5B2c-0005Qg-A9; Tue, 03 Sep 2019 11:48:24 -0400
+ id 1i5B2e-0005Ra-6j; Tue, 03 Sep 2019 11:48:24 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 02822308FC4B;
- Tue,  3 Sep 2019 15:48:20 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 6BDCE3083394;
+ Tue,  3 Sep 2019 15:48:21 +0000 (UTC)
 Received: from thuth.com (ovpn-117-51.ams2.redhat.com [10.36.117.51])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B714419D7A;
- Tue,  3 Sep 2019 15:48:18 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5F315194B2;
+ Tue,  3 Sep 2019 15:48:20 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Date: Tue,  3 Sep 2019 17:48:09 +0200
-Message-Id: <20190903154810.27365-3-thuth@redhat.com>
+Date: Tue,  3 Sep 2019 17:48:10 +0200
+Message-Id: <20190903154810.27365-4-thuth@redhat.com>
 In-Reply-To: <20190903154810.27365-1-thuth@redhat.com>
 References: <20190903154810.27365-1-thuth@redhat.com>
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.43]); Tue, 03 Sep 2019 15:48:20 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.44]); Tue, 03 Sep 2019 15:48:21 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [RFC PATCH 2/3] target/arm: Move cortex-m related
- functions to m_helper.c
-X-BeenThere: qemu-arm@nongnu.org
+Subject: [Qemu-devel] [RFC PATCH 3/3] target/arm: Make m_helper.c optional
+ via CONFIG_ARM_V7M
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ce67ceh5O9bp
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OnOXR1s08Yvd
 
-The next patch is going to make m_helper.c depend on CONFIG_ARM_V7M,
-so the cortex-m related CPUs won't be usable anymore if CONFIG_ARM_V7M
-is not enabled. Thus move the functions that create those CPUs into
-this file, too, so that we do not have unusable CPUs in the binary
-anymore.
+We've already got the CONFIG_ARM_V7M switch, but it currently can
+not be disabled yet. The m_helper.c code should not be compiled
+into the binary if the switch is not enabled. We also have to
+provide some stubs in a separate file to make sure that we still
+can link the other code without CONFIG_ARM_V7M.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- target/arm/cpu.c      | 146 -------------------------------------
- target/arm/m_helper.c | 164 ++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 164 insertions(+), 146 deletions(-)
+ target/arm/Makefile.objs   |  3 +-
+ target/arm/m_helper-stub.c | 58 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 60 insertions(+), 1 deletion(-)
+ create mode 100644 target/arm/m_helper-stub.c
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index f1f9eecdc8..d5f0d4af61 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -462,31 +462,6 @@ bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
-     return ret;
- }
+diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+index 5cafc1eb6c..225e7a70a9 100644
+--- a/target/arm/Makefile.objs
++++ b/target/arm/Makefile.objs
+@@ -36,7 +36,8 @@ obj-y += tlb_helper.o debug_helper.o
+ obj-y += translate.o op_helper.o
+ obj-y += crypto_helper.o
+ obj-y += iwmmxt_helper.o vec_helper.o neon_helper.o
+-obj-y += m_helper.o
++obj-$(CONFIG_ARM_V7M) += m_helper.o
++obj-$(call lnot,$(CONFIG_ARM_V7M)) += m_helper-stub.o
  
--#if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
--static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
--{
--    CPUClass *cc = CPU_GET_CLASS(cs);
--    ARMCPU *cpu = ARM_CPU(cs);
--    CPUARMState *env = &cpu->env;
--    bool ret = false;
--
--    /* ARMv7-M interrupt masking works differently than -A or -R.
--     * There is no FIQ/IRQ distinction. Instead of I and F bits
--     * masking FIQ and IRQ interrupts, an exception is taken only
--     * if it is higher priority than the current execution priority
--     * (which depends on state like BASEPRI, FAULTMASK and the
--     * currently active exception).
--     */
--    if (interrupt_request & CPU_INTERRUPT_HARD
--        && (armv7m_nvic_can_take_pending_exception(env->nvic))) {
--        cs->exception_index = EXCP_IRQ;
--        cc->do_interrupt(cs);
--        ret = true;
--    }
--    return ret;
--}
--#endif
--
- void arm_cpu_update_virq(ARMCPU *cpu)
- {
-     /*
-@@ -1881,119 +1856,6 @@ static void arm11mpcore_initfn(Object *obj)
-     cpu->reset_auxcr = 1;
- }
+ obj-$(CONFIG_SOFTMMU) += psci.o
  
--static void cortex_m0_initfn(Object *obj)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--    set_feature(&cpu->env, ARM_FEATURE_V6);
--    set_feature(&cpu->env, ARM_FEATURE_M);
--
--    cpu->midr = 0x410cc200;
--}
--
--static void cortex_m3_initfn(Object *obj)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--    set_feature(&cpu->env, ARM_FEATURE_V7);
--    set_feature(&cpu->env, ARM_FEATURE_M);
--    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
--    cpu->midr = 0x410fc231;
--    cpu->pmsav7_dregion = 8;
--    cpu->id_pfr0 = 0x00000030;
--    cpu->id_pfr1 = 0x00000200;
--    cpu->id_dfr0 = 0x00100000;
--    cpu->id_afr0 = 0x00000000;
--    cpu->id_mmfr0 = 0x00000030;
--    cpu->id_mmfr1 = 0x00000000;
--    cpu->id_mmfr2 = 0x00000000;
--    cpu->id_mmfr3 = 0x00000000;
--    cpu->isar.id_isar0 = 0x01141110;
--    cpu->isar.id_isar1 = 0x02111000;
--    cpu->isar.id_isar2 = 0x21112231;
--    cpu->isar.id_isar3 = 0x01111110;
--    cpu->isar.id_isar4 = 0x01310102;
--    cpu->isar.id_isar5 = 0x00000000;
--    cpu->isar.id_isar6 = 0x00000000;
--}
--
--static void cortex_m4_initfn(Object *obj)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--
--    set_feature(&cpu->env, ARM_FEATURE_V7);
--    set_feature(&cpu->env, ARM_FEATURE_M);
--    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
--    set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
--    set_feature(&cpu->env, ARM_FEATURE_VFP4);
--    cpu->midr = 0x410fc240; /* r0p0 */
--    cpu->pmsav7_dregion = 8;
--    cpu->isar.mvfr0 = 0x10110021;
--    cpu->isar.mvfr1 = 0x11000011;
--    cpu->isar.mvfr2 = 0x00000000;
--    cpu->id_pfr0 = 0x00000030;
--    cpu->id_pfr1 = 0x00000200;
--    cpu->id_dfr0 = 0x00100000;
--    cpu->id_afr0 = 0x00000000;
--    cpu->id_mmfr0 = 0x00000030;
--    cpu->id_mmfr1 = 0x00000000;
--    cpu->id_mmfr2 = 0x00000000;
--    cpu->id_mmfr3 = 0x00000000;
--    cpu->isar.id_isar0 = 0x01141110;
--    cpu->isar.id_isar1 = 0x02111000;
--    cpu->isar.id_isar2 = 0x21112231;
--    cpu->isar.id_isar3 = 0x01111110;
--    cpu->isar.id_isar4 = 0x01310102;
--    cpu->isar.id_isar5 = 0x00000000;
--    cpu->isar.id_isar6 = 0x00000000;
--}
--
--static void cortex_m33_initfn(Object *obj)
--{
--    ARMCPU *cpu = ARM_CPU(obj);
--
--    set_feature(&cpu->env, ARM_FEATURE_V8);
--    set_feature(&cpu->env, ARM_FEATURE_M);
--    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
--    set_feature(&cpu->env, ARM_FEATURE_M_SECURITY);
--    set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
--    set_feature(&cpu->env, ARM_FEATURE_VFP4);
--    cpu->midr = 0x410fd213; /* r0p3 */
--    cpu->pmsav7_dregion = 16;
--    cpu->sau_sregion = 8;
--    cpu->isar.mvfr0 = 0x10110021;
--    cpu->isar.mvfr1 = 0x11000011;
--    cpu->isar.mvfr2 = 0x00000040;
--    cpu->id_pfr0 = 0x00000030;
--    cpu->id_pfr1 = 0x00000210;
--    cpu->id_dfr0 = 0x00200000;
--    cpu->id_afr0 = 0x00000000;
--    cpu->id_mmfr0 = 0x00101F40;
--    cpu->id_mmfr1 = 0x00000000;
--    cpu->id_mmfr2 = 0x01000000;
--    cpu->id_mmfr3 = 0x00000000;
--    cpu->isar.id_isar0 = 0x01101110;
--    cpu->isar.id_isar1 = 0x02212000;
--    cpu->isar.id_isar2 = 0x20232232;
--    cpu->isar.id_isar3 = 0x01111131;
--    cpu->isar.id_isar4 = 0x01310132;
--    cpu->isar.id_isar5 = 0x00000000;
--    cpu->isar.id_isar6 = 0x00000000;
--    cpu->clidr = 0x00000000;
--    cpu->ctr = 0x8000c000;
--}
--
--static void arm_v7m_class_init(ObjectClass *oc, void *data)
--{
--    ARMCPUClass *acc = ARM_CPU_CLASS(oc);
--    CPUClass *cc = CPU_CLASS(oc);
--
--    acc->info = data;
--#ifndef CONFIG_USER_ONLY
--    cc->do_interrupt = arm_v7m_cpu_do_interrupt;
--#endif
--
--    cc->cpu_exec_interrupt = arm_v7m_cpu_exec_interrupt;
--}
--
- static const ARMCPRegInfo cortexr5_cp_reginfo[] = {
-     /* Dummy the TCM region regs for the moment */
-     { .name = "ATCM", .cp = 15, .opc1 = 0, .crn = 9, .crm = 1, .opc2 = 0,
-@@ -2518,14 +2380,6 @@ static const ARMCPUInfo arm_cpus[] = {
-     { .name = "arm1136",     .initfn = arm1136_initfn },
-     { .name = "arm1176",     .initfn = arm1176_initfn },
-     { .name = "arm11mpcore", .initfn = arm11mpcore_initfn },
--    { .name = "cortex-m0",   .initfn = cortex_m0_initfn,
--                             .class_init = arm_v7m_class_init },
--    { .name = "cortex-m3",   .initfn = cortex_m3_initfn,
--                             .class_init = arm_v7m_class_init },
--    { .name = "cortex-m4",   .initfn = cortex_m4_initfn,
--                             .class_init = arm_v7m_class_init },
--    { .name = "cortex-m33",  .initfn = cortex_m33_initfn,
--                             .class_init = arm_v7m_class_init },
-     { .name = "cortex-r5",   .initfn = cortex_r5_initfn },
-     { .name = "cortex-r5f",  .initfn = cortex_r5f_initfn },
-     { .name = "cortex-a7",   .initfn = cortex_a7_initfn },
-diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
-index 884d35d2b0..9fd675b437 100644
---- a/target/arm/m_helper.c
-+++ b/target/arm/m_helper.c
-@@ -2691,3 +2691,167 @@ ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
- 
-     return arm_v7m_mmu_idx_for_secstate_and_priv(env, secstate, priv);
- }
+diff --git a/target/arm/m_helper-stub.c b/target/arm/m_helper-stub.c
+new file mode 100644
+index 0000000000..8ec9de0fb6
+--- /dev/null
++++ b/target/arm/m_helper-stub.c
+@@ -0,0 +1,58 @@
++/*
++ * ARM V7M related stubs.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++#include "cpu.h"
++#include "exec/helper-proto.h"
 +
-+#if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
-+
-+static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
++void HELPER(v7m_bxns)(CPUARMState *env, uint32_t dest)
 +{
-+    CPUClass *cc = CPU_GET_CLASS(cs);
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-+    bool ret = false;
-+
-+    /* ARMv7-M interrupt masking works differently than -A or -R.
-+     * There is no FIQ/IRQ distinction. Instead of I and F bits
-+     * masking FIQ and IRQ interrupts, an exception is taken only
-+     * if it is higher priority than the current execution priority
-+     * (which depends on state like BASEPRI, FAULTMASK and the
-+     * currently active exception).
-+     */
-+    if (interrupt_request & CPU_INTERRUPT_HARD
-+        && (armv7m_nvic_can_take_pending_exception(env->nvic))) {
-+        cs->exception_index = EXCP_IRQ;
-+        cc->do_interrupt(cs);
-+        ret = true;
-+    }
-+    return ret;
++    abort();
 +}
 +
-+static void cortex_m0_initfn(Object *obj)
++void HELPER(v7m_blxns)(CPUARMState *env, uint32_t dest)
 +{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    set_feature(&cpu->env, ARM_FEATURE_V6);
-+    set_feature(&cpu->env, ARM_FEATURE_M);
-+
-+    cpu->midr = 0x410cc200;
++    abort();
 +}
 +
-+static void cortex_m3_initfn(Object *obj)
++uint32_t HELPER(v7m_mrs)(CPUARMState *env, uint32_t reg)
 +{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    set_feature(&cpu->env, ARM_FEATURE_V7);
-+    set_feature(&cpu->env, ARM_FEATURE_M);
-+    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-+    cpu->midr = 0x410fc231;
-+    cpu->pmsav7_dregion = 8;
-+    cpu->id_pfr0 = 0x00000030;
-+    cpu->id_pfr1 = 0x00000200;
-+    cpu->id_dfr0 = 0x00100000;
-+    cpu->id_afr0 = 0x00000000;
-+    cpu->id_mmfr0 = 0x00000030;
-+    cpu->id_mmfr1 = 0x00000000;
-+    cpu->id_mmfr2 = 0x00000000;
-+    cpu->id_mmfr3 = 0x00000000;
-+    cpu->isar.id_isar0 = 0x01141110;
-+    cpu->isar.id_isar1 = 0x02111000;
-+    cpu->isar.id_isar2 = 0x21112231;
-+    cpu->isar.id_isar3 = 0x01111110;
-+    cpu->isar.id_isar4 = 0x01310102;
-+    cpu->isar.id_isar5 = 0x00000000;
-+    cpu->isar.id_isar6 = 0x00000000;
++    abort();
 +}
 +
-+static void cortex_m4_initfn(Object *obj)
++void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
 +{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    set_feature(&cpu->env, ARM_FEATURE_V7);
-+    set_feature(&cpu->env, ARM_FEATURE_M);
-+    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-+    set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
-+    set_feature(&cpu->env, ARM_FEATURE_VFP4);
-+    cpu->midr = 0x410fc240; /* r0p0 */
-+    cpu->pmsav7_dregion = 8;
-+    cpu->isar.mvfr0 = 0x10110021;
-+    cpu->isar.mvfr1 = 0x11000011;
-+    cpu->isar.mvfr2 = 0x00000000;
-+    cpu->id_pfr0 = 0x00000030;
-+    cpu->id_pfr1 = 0x00000200;
-+    cpu->id_dfr0 = 0x00100000;
-+    cpu->id_afr0 = 0x00000000;
-+    cpu->id_mmfr0 = 0x00000030;
-+    cpu->id_mmfr1 = 0x00000000;
-+    cpu->id_mmfr2 = 0x00000000;
-+    cpu->id_mmfr3 = 0x00000000;
-+    cpu->isar.id_isar0 = 0x01141110;
-+    cpu->isar.id_isar1 = 0x02111000;
-+    cpu->isar.id_isar2 = 0x21112231;
-+    cpu->isar.id_isar3 = 0x01111110;
-+    cpu->isar.id_isar4 = 0x01310102;
-+    cpu->isar.id_isar5 = 0x00000000;
-+    cpu->isar.id_isar6 = 0x00000000;
++    abort();
 +}
 +
-+static void cortex_m33_initfn(Object *obj)
++uint32_t HELPER(v7m_tt)(CPUARMState *env, uint32_t addr, uint32_t op)
 +{
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    set_feature(&cpu->env, ARM_FEATURE_V8);
-+    set_feature(&cpu->env, ARM_FEATURE_M);
-+    set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-+    set_feature(&cpu->env, ARM_FEATURE_M_SECURITY);
-+    set_feature(&cpu->env, ARM_FEATURE_THUMB_DSP);
-+    set_feature(&cpu->env, ARM_FEATURE_VFP4);
-+    cpu->midr = 0x410fd213; /* r0p3 */
-+    cpu->pmsav7_dregion = 16;
-+    cpu->sau_sregion = 8;
-+    cpu->isar.mvfr0 = 0x10110021;
-+    cpu->isar.mvfr1 = 0x11000011;
-+    cpu->isar.mvfr2 = 0x00000040;
-+    cpu->id_pfr0 = 0x00000030;
-+    cpu->id_pfr1 = 0x00000210;
-+    cpu->id_dfr0 = 0x00200000;
-+    cpu->id_afr0 = 0x00000000;
-+    cpu->id_mmfr0 = 0x00101F40;
-+    cpu->id_mmfr1 = 0x00000000;
-+    cpu->id_mmfr2 = 0x01000000;
-+    cpu->id_mmfr3 = 0x00000000;
-+    cpu->isar.id_isar0 = 0x01101110;
-+    cpu->isar.id_isar1 = 0x02212000;
-+    cpu->isar.id_isar2 = 0x20232232;
-+    cpu->isar.id_isar3 = 0x01111131;
-+    cpu->isar.id_isar4 = 0x01310132;
-+    cpu->isar.id_isar5 = 0x00000000;
-+    cpu->isar.id_isar6 = 0x00000000;
-+    cpu->clidr = 0x00000000;
-+    cpu->ctr = 0x8000c000;
++    abort();
 +}
 +
-+static void arm_v7m_class_init(ObjectClass *oc, void *data)
++void HELPER(v7m_preserve_fp_state)(CPUARMState *env)
 +{
-+    ARMCPUClass *acc = ARM_CPU_CLASS(oc);
-+    CPUClass *cc = CPU_CLASS(oc);
-+
-+    acc->info = data;
-+#ifndef CONFIG_USER_ONLY
-+    cc->do_interrupt = arm_v7m_cpu_do_interrupt;
-+#endif
-+
-+    cc->cpu_exec_interrupt = arm_v7m_cpu_exec_interrupt;
++    abort();
 +}
 +
-+static const ARMCPUInfo arm_v7m_cpus[] = {
-+    { .name = "cortex-m0",   .initfn = cortex_m0_initfn,
-+                             .class_init = arm_v7m_class_init },
-+    { .name = "cortex-m3",   .initfn = cortex_m3_initfn,
-+                             .class_init = arm_v7m_class_init },
-+    { .name = "cortex-m4",   .initfn = cortex_m4_initfn,
-+                             .class_init = arm_v7m_class_init },
-+    { .name = "cortex-m33",  .initfn = cortex_m33_initfn,
-+                             .class_init = arm_v7m_class_init },
-+    { .name = NULL }
-+};
-+
-+static void arm_v7m_cpu_register_types(void)
++void write_v7m_exception(CPUARMState *env, uint32_t new_exc)
 +{
-+    const ARMCPUInfo *info = arm_v7m_cpus;
-+
-+    while (info->name) {
-+        arm_cpu_register(info);
-+        info++;
-+    }
++    abort();
 +}
 +
-+type_init(arm_v7m_cpu_register_types)
++void HELPER(v7m_vlldm)(CPUARMState *env, uint32_t fptr)
++{
++    abort();
++}
 +
-+#endif
++void HELPER(v7m_vlstm)(CPUARMState *env, uint32_t fptr)
++{
++    abort();
++}
++
++ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
++{
++    abort();
++}
 -- 
 2.18.1
 

@@ -1,87 +1,81 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp336417wrp;
-        Tue, 3 Sep 2019 04:45:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzscIbgOXyvwDuaarJGjKQsUhI9Zs4L43SjFIFB7ERAD6lsxLD6Zxi2qSBat+iiQbzTP/gI
-X-Received: by 2002:a0c:d7ce:: with SMTP id g14mr21132319qvj.2.1567511151084;
-        Tue, 03 Sep 2019 04:45:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567511151; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp338665wrp;
+        Tue, 3 Sep 2019 04:48:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqydOT0hTj0+8NR7fsd1+SlTeNtq+koti+ItVt3i9S87RJBR9gIFIvkM5cJyBpft4Csl73Y2
+X-Received: by 2002:ac8:c01:: with SMTP id k1mr1501214qti.59.1567511289479;
+        Tue, 03 Sep 2019 04:48:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567511289; cv=none;
         d=google.com; s=arc-20160816;
-        b=OqvdifYvo19XQDW5OHcYInLNlupvnCvt6vyGRBBPE1/MvVS7MLOeJ7XGSecwqTHoUt
-         nBLMIvQVP1Q6655KJJaKa6EBBVhWXT9gyg+guF/ay5GAPIPGtv0cYnsPCttde66pCj5M
-         FoszYll44vz76cAmkuk7mC5nTlK8QvsR7A8ybHLcr7pzOWFY3AvnmSChhSnEW7GaeZ0x
-         cOkKOPCkVhrmNONSyYJ+gOIBEbCSvNAJfewpW8HveTtGiww6KMwXwuHzNjfPHn+a8pFy
-         8eC04TBhneZo3HhNFWNosTIzoPyxE0hZ09/DPaGlSKTvUsJEkgtH37b9JmrQkbyOpkKw
-         S2ig==
+        b=IGfD1K6XYG2BD6HuHrj0pMrji3likp2jMs3c2tDAFzdwp//S9GpmperwriFrMqOQi0
+         Z823lZkWkbVUrd0wjXQBtDDhVfhtY/8/yHXyDi2gWNmk0BF5equK1+6bP6rQoBL7v0az
+         0IxSBwbG/W8hPVG2pr8k3UkdFsAZNa5S578tm2GKefWguhzjTPHQHDU80IYclDZiGqKa
+         HbPfNfK69DOWOwNLQDSqj4fwTJK/cRP8rV0z6rKlG05Ay4v8ywwQEhNyRnTBbuBj+COY
+         pwBlCz9XS5PIOYrdt4CDuqdfRFQYm4uvbo9Y14EttpYE20jJVacKw5ZCk4Xx7ifXsMvz
+         Fnqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=KLhW8jyqhyqCZAS53wUWe2QdQVKJG7NCYXZVjx6KG40=;
-        b=mkX7oKjVEvnbcPbHFgtZgeJ6ItLcmvUi5T2Cc4kMCGIWDEGKV9ZKLquKEDXrARjnHH
-         QSKLgbmd1dFL+SXOZCTLVH33x+M8jPC4X6QVti6lrNc8HajN2Lcja5VkHuy7YXqeOoBF
-         2+pkFrzgQis3wTmMTtOVMX2Q8j/RpV9wOkhx6ZDV2tO3sRwS9Yn0BVXv+oPx8CM8zreX
-         YmznwvjqPk7n5B4lGzMj8Ic/w2lc4Kn2+mVJCg8E0GPJTwfra617LWNnj3eQ/jQK1nbl
-         r7Keb608N1qSZdrV+Yxs/IFTtpJOtkpE7lp7NH6COplo+MswvpdvVd073nuYX+r8QmOI
-         DtXA==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=tCLeVpbzcwj7JOaHQloyX+K6EcgVYwv+zhudsMAKWsk=;
+        b=wFjEm0Pqld3EoXojRK+vqAFz0NeP8JY5gQlPtkvVdPLHMjabCQsKKF1SPl47bRphAw
+         lEl2hnYRs8mi2p4E7iASYhhoAg1SJB5KBBUTWEc8ZsH0f/XEg71wbGRR6HwxS2IB61gk
+         cMuMgEr9osRYSi0u/K+VrruL/7Sj6i3LfxTsGUUCN8wBSvT1qKRTKJbxf+S1ePMFxwiW
+         O26Nh2tBVRIUWgpUlS68tbktoqtvmFyQRqeamlHQS2PqdQDnrNCDfxVl80OTBcWjzSAr
+         KRWWtCGqNmwCqDAXDISsjWO72gHWSYA4eHPRvQjiIwFXZ8pxrEcsRDH4pXgfRCdxusWe
+         EcQg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 3si9693096qkj.256.2019.09.03.04.45.50
+        by mx.google.com with ESMTPS id a136si6469028qkc.304.2019.09.03.04.48.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2019 04:45:51 -0700 (PDT)
+        Tue, 03 Sep 2019 04:48:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44358 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44396 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i57Fr-000376-UZ
-	for alex.bennee@linaro.org; Tue, 03 Sep 2019 07:45:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54720)
+	id 1i57I8-00053c-8N
+	for alex.bennee@linaro.org; Tue, 03 Sep 2019 07:48:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55080)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1i57Fg-00035x-HL
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 07:45:37 -0400
+ (envelope-from <philmd@redhat.com>) id 1i57Hl-00050U-CB
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 07:47:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1i57Fe-0004a8-Rd
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 07:45:35 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53730)
+ (envelope-from <philmd@redhat.com>) id 1i57Hk-0005vG-5e
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 07:47:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45190)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1i57Fe-0004ZX-KC; Tue, 03 Sep 2019 07:45:34 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1i57Hj-0005uh-UT; Tue, 03 Sep 2019 07:47:44 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 710561E2E6;
- Tue,  3 Sep 2019 11:45:33 +0000 (UTC)
-Received: from [10.36.116.67] (ovpn-116-67.ams2.redhat.com [10.36.116.67])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 0497E60A35;
- Tue,  3 Sep 2019 11:45:23 +0000 (UTC)
-To: Peter Xu <peterx@redhat.com>
-References: <20190730172137.23114-1-eric.auger@redhat.com>
- <20190730172137.23114-10-eric.auger@redhat.com>
- <20190819082424.GB13560@xz-x1>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <d3759ba2-6ae6-2ae4-a71e-69965285f3f4@redhat.com>
-Date: Tue, 3 Sep 2019 13:45:22 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by mx1.redhat.com (Postfix) with ESMTPS id 3F17830603AA;
+ Tue,  3 Sep 2019 11:47:43 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-102.brq.redhat.com [10.40.204.102])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 038345DAAC;
+ Tue,  3 Sep 2019 11:47:40 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Tue,  3 Sep 2019 13:47:26 +0200
+Message-Id: <20190903114729.3400-3-philmd@redhat.com>
+In-Reply-To: <20190903114729.3400-1-philmd@redhat.com>
+References: <20190903114729.3400-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190819082424.GB13560@xz-x1>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.30]); Tue, 03 Sep 2019 11:45:33 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.41]); Tue, 03 Sep 2019 11:47:43 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH for-4.2 v10 09/15] virtio-iommu: Implement
- translate
+Subject: [Qemu-arm] [PATCH v2 2/5] target/arm: Restrict pre-ARMv7 cpus to TCG
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -93,115 +87,119 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, kevin.tian@intel.com, mst@redhat.com,
- tn@semihalf.com, qemu-devel@nongnu.org, alex.williamson@redhat.com,
- qemu-arm@nongnu.org, jean-philippe@linaro.org, bharat.bhushan@nxp.com,
- eric.auger.pro@gmail.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PaYkOjLuvEOX
+X-TUID: mJDmIOI86kdp
 
-Hi Peter,
+KVM requires a cpu based on (at least) the ARMv7 architecture.
 
-On 8/19/19 10:24 AM, Peter Xu wrote:
-> On Tue, Jul 30, 2019 at 07:21:31PM +0200, Eric Auger wrote:
->> @@ -464,19 +464,75 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
->>                                              int iommu_idx)
->>  {
->>      IOMMUDevice *sdev = container_of(mr, IOMMUDevice, iommu_mr);
->> +    VirtIOIOMMU *s = sdev->viommu;
->>      uint32_t sid;
->> +    viommu_endpoint *ep;
->> +    viommu_mapping *mapping;
->> +    viommu_interval interval;
->> +    bool bypass_allowed;
->> +
->> +    interval.low = addr;
->> +    interval.high = addr + 1;
->>  
->>      IOMMUTLBEntry entry = {
->>          .target_as = &address_space_memory,
->>          .iova = addr,
->>          .translated_addr = addr,
->> -        .addr_mask = ~(hwaddr)0,
->> +        .addr_mask = (1 << ctz32(s->config.page_size_mask)) - 1,
->>          .perm = IOMMU_NONE,
->>      };
->>  
->> +    bypass_allowed = virtio_has_feature(s->acked_features,
->> +                                        VIRTIO_IOMMU_F_BYPASS);
->> +
->>      sid = virtio_iommu_get_sid(sdev);
->>  
->>      trace_virtio_iommu_translate(mr->parent_obj.name, sid, addr, flag);
->> +    qemu_mutex_lock(&s->mutex);
->> +
->> +    ep = g_tree_lookup(s->endpoints, GUINT_TO_POINTER(sid));
->> +    if (!ep) {
->> +        if (!bypass_allowed) {
->> +            error_report("%s sid=%d is not known!!", __func__, sid);
-> 
-> Maybe use error_report_once() to avoid DOS attack?  Also would it be
-> good to unify the debug prints?  I see both error_report() and
-> qemu_log_mask() are used in the whole patchset.  Or is that attempted?
+The following CPUs are disabled:
 
-I switched to error_report_once()
+* ARMv4
 
-I understand that qemu_log_mask() should be used whenever the root cause
-is a bad action of the guest OS (in below case, the EP was not attached
-to any domain). Above, there is an EP that attempts to talk through the
-IOMMU and this was not expected (rather a platform description issue or
-a qemu bug).
+  - StrongARM (SA1100/1110)
+  - OMAP1510 (TI925T)
 
-Thanks
+* ARMv5
 
-Eric
-> 
->> +        } else {
->> +            entry.perm = flag;
->> +        }
->> +        goto unlock;
->> +    }
->> +
->> +    if (!ep->domain) {
->> +        if (!bypass_allowed) {
->> +            qemu_log_mask(LOG_GUEST_ERROR,
->> +                          "%s %02x:%02x.%01x not attached to any domain\n",
->> +                          __func__, PCI_BUS_NUM(sid),
->> +                          PCI_SLOT(sid), PCI_FUNC(sid));
->> +        } else {
->> +            entry.perm = flag;
->> +        }
->> +        goto unlock;
->> +    }
->> +
->> +    mapping = g_tree_lookup(ep->domain->mappings, (gpointer)(&interval));
->> +    if (!mapping) {
->> +        qemu_log_mask(LOG_GUEST_ERROR,
->> +                      "%s no mapping for 0x%"PRIx64" for sid=%d\n",
->> +                      __func__, addr, sid);
->> +        goto unlock;
->> +    }
->> +
->> +    if (((flag & IOMMU_RO) && !(mapping->flags & VIRTIO_IOMMU_MAP_F_READ)) ||
->> +        ((flag & IOMMU_WO) && !(mapping->flags & VIRTIO_IOMMU_MAP_F_WRITE))) {
->> +        qemu_log_mask(LOG_GUEST_ERROR,
->> +                      "Permission error on 0x%"PRIx64"(%d): allowed=%d\n",
->> +                      addr, flag, mapping->flags);
->> +        goto unlock;
->> +    }
->> +    entry.translated_addr = addr - mapping->virt_addr + mapping->phys_addr;
->> +    entry.perm = flag;
->> +    trace_virtio_iommu_translate_out(addr, entry.translated_addr, sid);
->> +
->> +unlock:
->> +    qemu_mutex_unlock(&s->mutex);
->>      return entry;
->>  }
->>  
->> -- 
->> 2.20.1
->>
-> 
-> Regards,
-> 
+  - ARM926
+  - ARM946
+  - ARM1026
+  - XScale (PXA250/255/260/261/262/270)
+
+* ARMv6
+
+  - ARM1136
+  - ARM1176
+  - ARM11MPCore
+  - Cortex-M0
+
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+v2: fixed misplaced #endif (rth), list cpus
+---
+ target/arm/cpu.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 2399c14471..f69780147c 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1678,6 +1678,8 @@ static ObjectClass *arm_cpu_class_by_name(const cha=
+r *cpu_model)
+ /* CPU models. These are not needed for the AArch64 linux-user build. */
+ #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
+=20
++#ifdef CONFIG_TCG
++
+ static void arm926_initfn(Object *obj)
+ {
+     ARMCPU *cpu =3D ARM_CPU(obj);
+@@ -1900,6 +1902,8 @@ static void cortex_m0_initfn(Object *obj)
+     cpu->midr =3D 0x410cc200;
+ }
+=20
++#endif
++
+ static void cortex_m3_initfn(Object *obj)
+ {
+     ARMCPU *cpu =3D ARM_CPU(obj);
+@@ -2283,6 +2287,8 @@ static void cortex_a15_initfn(Object *obj)
+     define_arm_cp_regs(cpu, cortexa15_cp_reginfo);
+ }
+=20
++#ifdef CONFIG_TCG
++
+ static void ti925t_initfn(Object *obj)
+ {
+     ARMCPU *cpu =3D ARM_CPU(obj);
+@@ -2451,6 +2457,8 @@ static void pxa270c5_initfn(Object *obj)
+     cpu->reset_sctlr =3D 0x00000078;
+ }
+=20
++#endif
++
+ #ifndef TARGET_AARCH64
+ /* -cpu max: if KVM is enabled, like -cpu host (best possible with this =
+host);
+  * otherwise, a CPU with as many features enabled as our emulation suppo=
+rts.
+@@ -2523,6 +2531,7 @@ struct ARMCPUInfo {
+=20
+ static const ARMCPUInfo arm_cpus[] =3D {
+ #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
++#ifdef CONFIG_TCG
+     { .name =3D "arm926",      .initfn =3D arm926_initfn },
+     { .name =3D "arm946",      .initfn =3D arm946_initfn },
+     { .name =3D "arm1026",     .initfn =3D arm1026_initfn },
+@@ -2536,6 +2545,7 @@ static const ARMCPUInfo arm_cpus[] =3D {
+     { .name =3D "arm11mpcore", .initfn =3D arm11mpcore_initfn },
+     { .name =3D "cortex-m0",   .initfn =3D cortex_m0_initfn,
+                              .class_init =3D arm_v7m_class_init },
++#endif
+     { .name =3D "cortex-m3",   .initfn =3D cortex_m3_initfn,
+                              .class_init =3D arm_v7m_class_init },
+     { .name =3D "cortex-m4",   .initfn =3D cortex_m4_initfn,
+@@ -2548,6 +2558,7 @@ static const ARMCPUInfo arm_cpus[] =3D {
+     { .name =3D "cortex-a8",   .initfn =3D cortex_a8_initfn },
+     { .name =3D "cortex-a9",   .initfn =3D cortex_a9_initfn },
+     { .name =3D "cortex-a15",  .initfn =3D cortex_a15_initfn },
++#ifdef CONFIG_TCG
+     { .name =3D "ti925t",      .initfn =3D ti925t_initfn },
+     { .name =3D "sa1100",      .initfn =3D sa1100_initfn },
+     { .name =3D "sa1110",      .initfn =3D sa1110_initfn },
+@@ -2564,6 +2575,7 @@ static const ARMCPUInfo arm_cpus[] =3D {
+     { .name =3D "pxa270-b1",   .initfn =3D pxa270b1_initfn },
+     { .name =3D "pxa270-c0",   .initfn =3D pxa270c0_initfn },
+     { .name =3D "pxa270-c5",   .initfn =3D pxa270c5_initfn },
++#endif
+ #ifndef TARGET_AARCH64
+     { .name =3D "max",         .initfn =3D arm_max_initfn },
+ #endif
+--=20
+2.20.1
+

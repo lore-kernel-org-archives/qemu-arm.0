@@ -1,81 +1,132 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp341329wrp;
-        Tue, 3 Sep 2019 04:50:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyVYvx292JUpCGj7mwDkNHEjcNbu5G0wrX3wNebppu5rpb/B4rzOuL3UX+l02JOPQ8MV0zg
-X-Received: by 2002:ac8:342a:: with SMTP id u39mr10668107qtb.7.1567511456297;
-        Tue, 03 Sep 2019 04:50:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567511456; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp348526wrp;
+        Tue, 3 Sep 2019 04:58:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzB8aGkMRQ3OseZ/5v2lW1Hln+acUK8uuIAmloXVPoH55ld832vG6MhaRyx8gSa3JUiiO/c
+X-Received: by 2002:a17:906:6bd0:: with SMTP id t16mr1354280ejs.189.1567511913100;
+        Tue, 03 Sep 2019 04:58:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567511913; cv=none;
         d=google.com; s=arc-20160816;
-        b=cPW3T3ZBulIbjxvyqI3Q7fp9huHsyXFYjyYrswo81Fi6fdUJcORipybDtj9I/5JLaW
-         ldsxXl9yAwAr5DswtyGNdGWp8y8fBRuIRIGaArDgIwmE5+jXGKtBNOT5XHyAUN+OmKwN
-         BK6bFlKkG+dhnzvsN8l8SRg+/+hWpy4B8dNLo5LR8Pfwle1qG09toI8WsuCZLz0/HcuV
-         8UAh2krng9NjQ0m8JDcthbk1yPLgYlVB3tBYaeOcN8BvJuAxMDzX3r4HyqRpM3wNZF9h
-         4WAO4N7XnaWpva/pHpgjQwD1Rphnm1NLbBsIl0kRuVozKlZWiwx1iWTsIbRjhzbBgil4
-         bbhw==
+        b=OSMokak/cRleivzrCOl0C56dc9WfjeWE1augF2dltGkbd52c4eeHr74NsvNzuGJILV
+         4/lwDNhG86qJt1yVDDs9rl/sM26AkZPmitRWYRQz5ceZfDjrjphi5fMB83kbGzOye5zd
+         09k5B4EiwXVa72spWZnQb3JAvCtXzE33TAnizbP4o5R2ea7BgcVMYgNRa5GVlBohf4vN
+         fzIUWOk4hgix1adZB0R4d4ZjqeIG81bB1WEdB5eNchIEvbXCHzIXkmaDgBDafTZiPBtk
+         nW+o7FCMC2W/cc8gZDfmH/jQ5979I+3y5cLYRBdOdtcvPVcGbQhPC9TqxwSIwB3ABHDI
+         vyfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=q/JybXqDHZy19qGpVrVJ05xNka2RSFVw+qbHXzCFxVg=;
-        b=HD6u574/c+UPifW16KdvOfNiztpYmWqsU0z2IRGd+Z8v0AKhgEFBwkj2zUrkoYI5Y1
-         jL1u7eyvmGorCYB8Bf8Ax78yZ3QYFFNFf3BKdGHXb/RqaHzdQ75hLJl5XZJj+5kdykCR
-         QorvbA3kDRdLTB5MEZ9YmrbgMPsBXw6kMYTrZ6zkIPMYIriRXNfp7yEfU5hcLsxeMTK3
-         cKk1EfkLEOReZ/Vx76eHFoYNYRBOADmn9AaFXeqir9ofHqLn3xYhty7X5qKNmziMuouR
-         NY7k7qQyxpm+fFtlOZwrCDrQJ7UYpJ95/RJvjqvqnMC4D+yx5sVWgUOT1fGdkkuG2RmT
-         Dg3A==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=cxW0FZpsfaDiq2uLq4p5GBGf4S5IXcLDv/ACk4oe4lM=;
+        b=xEkSu63LaK/4RT4VfBfqxboY2qlDHxQ8Oor1gmnZ3EubWTFqC/QLTIH42NUfTL1MZG
+         JaIo4jM/Xl837hVPvN0Z7fUjgR3pt8EqBsAqZxDuCdYK14b++6D3gMUr5df/UwMBdx4z
+         srsLp/Yh4JZL7oa7v+INC2FO0Xlnb1NIjySQryc5xXgGSBj+gzbw4GvRNLFB+NZJp0TV
+         vSD/bCrevCnLd2ex9N6f5NtK4Z5A1sAaF1GvYi6U7BZXHDPt2cDziY8QoT4hI2E4UNYv
+         YEYzMCpsJI3s8zvhS6qWVuzl069glWlvDHe0RsyFQwUpuTFTWZYwfVp1phhD9wzwvbNc
+         8PcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i28si13964819qkh.321.2019.09.03.04.50.56
+        by mx.google.com with ESMTPS id 15si2484590edu.185.2019.09.03.04.58.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2019 04:50:56 -0700 (PDT)
+        Tue, 03 Sep 2019 04:58:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44438 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44524 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i57Kp-0000Qp-QC
-	for alex.bennee@linaro.org; Tue, 03 Sep 2019 07:50:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55197)
+	id 1i57SC-00052r-2k
+	for alex.bennee@linaro.org; Tue, 03 Sep 2019 07:58:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56956)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1i57Hx-0005EV-CP
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 07:47:58 -0400
+ (envelope-from <thuth@redhat.com>) id 1i57RT-00052k-Ky
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 07:57:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1i57Hw-00064U-Eu
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 07:47:57 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39388)
+ (envelope-from <thuth@redhat.com>) id 1i57RS-0006dr-4l
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 07:57:47 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:32930)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1i57Hw-000642-AB; Tue, 03 Sep 2019 07:47:56 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1i57RR-0006cJ-ST; Tue, 03 Sep 2019 07:57:46 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id A20CF85365;
- Tue,  3 Sep 2019 11:47:55 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-102.brq.redhat.com [10.40.204.102])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 444585DA5B;
- Tue,  3 Sep 2019 11:47:49 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Date: Tue,  3 Sep 2019 13:47:29 +0200
-Message-Id: <20190903114729.3400-6-philmd@redhat.com>
-In-Reply-To: <20190903114729.3400-1-philmd@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id E0C873082A49;
+ Tue,  3 Sep 2019 11:57:43 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-117-51.ams2.redhat.com [10.36.117.51])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B7CF660A35;
+ Tue,  3 Sep 2019 11:57:39 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
 References: <20190903114729.3400-1-philmd@redhat.com>
+ <20190903114729.3400-2-philmd@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+ mQINBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
+ yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
+ 4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
+ tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
+ 0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
+ O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
+ 0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
+ gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
+ 3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
+ zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABtB5UaG9tYXMgSHV0
+ aCA8dGh1dGhAcmVkaGF0LmNvbT6JAjgEEwECACIFAlVgX6oCGwMGCwkIBwMCBhUIAgkKCwQW
+ AgMBAh4BAheAAAoJEC7Z13T+cC21EbIP/ii9cvT2HHGbFRl8HqGT6+7Wkb+XLMqJBMAIGiQK
+ QIP3xk1HPTsLfVG0ao4hy/oYkGNOP8+ubLnZen6Yq3zAFiMhQ44lvgigDYJo3Ve59gfe99KX
+ EbtB+X95ODARkq0McR6OAsPNJ7gpEUzfkQUUJTXRDQXfG/FX303Gvk+YU0spm2tsIKPl6AmV
+ 1CegDljzjycyfJbk418MQmMu2T82kjrkEofUO2a24ed3VGC0/Uz//XCR2ZTo+vBoBUQl41BD
+ eFFtoCSrzo3yPFS+w5fkH9NT8ChdpSlbNS32NhYQhJtr9zjWyFRf0Zk+T/1P7ECn6gTEkp5k
+ ofFIA4MFBc/fXbaDRtBmPB0N9pqTFApIUI4vuFPPO0JDrII9dLwZ6lO9EKiwuVlvr1wwzsgq
+ zJTPBU3qHaUO4d/8G+gD7AL/6T4zi8Jo/GmjBsnYaTzbm94lf0CjXjsOX3seMhaE6WAZOQQG
+ tZHAO1kAPWpaxne+wtgMKthyPLNwelLf+xzGvrIKvLX6QuLoWMnWldu22z2ICVnLQChlR9d6
+ WW8QFEpo/FK7omuS8KvvopFcOOdlbFMM8Y/8vBgVMSsK6fsYUhruny/PahprPbYGiNIhKqz7
+ UvgyZVl4pBFjTaz/SbimTk210vIlkDyy1WuS8Zsn0htv4+jQPgo9rqFE4mipJjy/iboDuQIN
+ BFH7eUwBEAC2nzfUeeI8dv0C4qrfCPze6NkryUflEut9WwHhfXCLjtvCjnoGqFelH/PE9NF4
+ 4VPSCdvD1SSmFVzu6T9qWdcwMSaC+e7G/z0/AhBfqTeosAF5XvKQlAb9ZPkdDr7YN0a1XDfa
+ +NgA+JZB4ROyBZFFAwNHT+HCnyzy0v9Sh3BgJJwfpXHH2l3LfncvV8rgFv0bvdr70U+On2XH
+ 5bApOyW1WpIG5KPJlDdzcQTyptOJ1dnEHfwnABEfzI3dNf63rlxsGouX/NFRRRNqkdClQR3K
+ gCwciaXfZ7ir7fF0u1N2UuLsWA8Ei1JrNypk+MRxhbvdQC4tyZCZ8mVDk+QOK6pyK2f4rMf/
+ WmqxNTtAVmNuZIwnJdjRMMSs4W4w6N/bRvpqtykSqx7VXcgqtv6eqoDZrNuhGbekQA0sAnCJ
+ VPArerAZGArm63o39me/bRUQeQVSxEBmg66yshF9HkcUPGVeC4B0TPwz+HFcVhheo6hoJjLq
+ knFOPLRj+0h+ZL+D0GenyqD3CyuyeTT5dGcNU9qT74bdSr20k/CklvI7S9yoQje8BeQAHtdV
+ cvO8XCLrpGuw9SgOS7OP5oI26a0548M4KldAY+kqX6XVphEw3/6U1KTf7WxW5zYLTtadjISB
+ X9xsRWSU+Yqs3C7oN5TIPSoj9tXMoxZkCIHWvnqGwZ7JhwARAQABiQIfBBgBAgAJBQJR+3lM
+ AhsMAAoJEC7Z13T+cC21hPAQAIsBL9MdGpdEpvXs9CYrBkd6tS9mbaSWj6XBDfA1AEdQkBOn
+ ZH1Qt7HJesk+qNSnLv6+jP4VwqK5AFMrKJ6IjE7jqgzGxtcZnvSjeDGPF1h2CKZQPpTw890k
+ fy18AvgFHkVk2Oylyexw3aOBsXg6ukN44vIFqPoc+YSU0+0QIdYJp/XFsgWxnFIMYwDpxSHS
+ 5fdDxUjsk3UBHZx+IhFjs2siVZi5wnHIqM7eK9abr2cK2weInTBwXwqVWjsXZ4tq5+jQrwDK
+ cvxIcwXdUTLGxc4/Z/VRH1PZSvfQxdxMGmNTGaXVNfdFZjm4fz0mz+OUi6AHC4CZpwnsliGV
+ ODqwX8Y1zic9viSTbKS01ZNp175POyWViUk9qisPZB7ypfSIVSEULrL347qY/hm9ahhqmn17
+ Ng255syASv3ehvX7iwWDfzXbA0/TVaqwa1YIkec+/8miicV0zMP9siRcYQkyTqSzaTFBBmqD
+ oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
+ IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
+ yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
+Organization: Red Hat
+Message-ID: <8c70f728-4d20-92e6-b8a7-fb58caab4d61@redhat.com>
+Date: Tue, 3 Sep 2019 13:57:38 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+In-Reply-To: <20190903114729.3400-2-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.25]); Tue, 03 Sep 2019 11:47:55 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.45]); Tue, 03 Sep 2019 11:57:43 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: [Qemu-arm] [PATCH v2 5/5] hw/arm: Restrict R and M profiles to TCG
+Subject: Re: [Qemu-arm] [PATCH v2 1/5] Kconfig: Expose CONFIG_TCG to
+ minikconf.py
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,64 +138,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UXX4+jhAPgzx
+X-TUID: b3P6zaDt3AGq
 
-A KVM-only build won't be able to run A or M-profile cpus,
-disable them.
+On 03/09/2019 13.47, Philippe Mathieu-Daud=C3=A9 wrote:
+> Expose the CONFIG_TCG selector to let minikconf.py uses it.
+>=20
+> This is useful with the --disable-tcg build, to deselect
+> devices that are TCG-dependent.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  Kconfig.host | 4 ++++
+>  1 file changed, 4 insertions(+)
+>=20
+> diff --git a/Kconfig.host b/Kconfig.host
+> index bb6e116e2a..c7caa47dfb 100644
+> --- a/Kconfig.host
+> +++ b/Kconfig.host
+> @@ -2,6 +2,10 @@
+>  # down to Kconfig.  See also MINIKCONF_ARGS in the Makefile:
+>  # these two need to be kept in sync.
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
-v2: - "depends on !KVM" -> "depends on TCG" (rth)
-    - do not modify default-configs/arm-softmmu.mak (thuth)
----
- hw/arm/Kconfig | 14 +++++++++++---
- 1 file changed, 11 insertions(+), 3 deletions(-)
+Don't you also have to update ----^ MINIKCONF_ARGS in the Makefile?
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 1c359a6f47..8368666f5a 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -10,6 +10,16 @@ config ARM_V6
-     depends on TCG
-     bool
-=20
-+# ARM Microcontroller profile
-+config ARM_V7M
-+    depends on TCG
-+    bool
-+
-+# ARM Realtime profile
-+config ARM_V7R
-+    depends on TCG
-+    bool
-+
- config ARM_VIRT
-     bool
-     imply PCI_DEVICES
-@@ -295,9 +305,6 @@ config ZYNQ
-     select XILINX_SPIPS
-     select ZYNQ_DEVCFG
-=20
--config ARM_V7M
--    bool
--
- config ALLWINNER_A10
-     bool
-     select AHCI
-@@ -325,6 +332,7 @@ config STM32F205_SOC
-=20
- config XLNX_ZYNQMP_ARM
-     bool
-+    select ARM_V7R
-     select AHCI
-     select ARM_GIC
-     select CADENCE
---=20
-2.20.1
+> +config TCG
+> +    bool
+> +    default y
+> +
+>  config KVM
+>      bool
 
+ Thomas

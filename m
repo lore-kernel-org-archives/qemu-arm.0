@@ -1,132 +1,87 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp364344wrp;
-        Tue, 3 Sep 2019 05:11:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxerEd++mNrTd6prHaHvGT/lTGsJxoAKDA9cZx6GWq9BneUFqg09ZNlPEvm/g3GRwFF3ykp
-X-Received: by 2002:ac8:1488:: with SMTP id l8mr33930631qtj.50.1567512673819;
-        Tue, 03 Sep 2019 05:11:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567512673; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp379299wrp;
+        Tue, 3 Sep 2019 05:24:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw0W4tboqPeT2BC+AWl3AFP7gxzLVZOslqQL/ni7U3c+6vandWryOpEDuFIR9+DW8kai683
+X-Received: by 2002:ac8:2d09:: with SMTP id n9mr9351456qta.10.1567513445941;
+        Tue, 03 Sep 2019 05:24:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567513445; cv=none;
         d=google.com; s=arc-20160816;
-        b=etRsiAhIh5wbMantZjHUdvB/+shavM/qwmJaPkwNGszMoG8mB8YxREgFXRYttxgQyw
-         N81we4KF2HDM4jVGzaN8pnMowAVCfBqttEjoHkHXvivr2Ruhs16wsKPDUVEKqNuDWTn6
-         3ssKL0GqYAwC/DvN08fMpFdUdPRneLpt715NbIK8Dw+EHZCRiSKe2RqklSOoA8g/dCmf
-         rbXp/4Um0qpOZjxuXtpdOX68AYbfcfPiGh9Qn0kqNV4++GF72L8pDbYs4pqhw4Ll/fav
-         hplf7cdAmvDgCXAEUGnblyCGPkg4kIWu99t+b8jZH9fMpIIOmwPUr/wephy3nxfcSBm5
-         0NQQ==
+        b=TWC4Da3X3dJ1e+xwSBpEDCzTZ783clZgPZed/9SZZ5PG6SYsaLZPLRnurujzKs91Id
+         GR0+ykOZTegmpFK76pfbF4GNvtA2yWWZlDbX84i9zXBTyhiR8Do6gn0LqoG52JLcjcUy
+         HuLQqXXNuPWdMCtZsLg6bbfkbhTkuaA9z2opWmsq/TRq32r/tW+HvL6YYx5qFXdh/GRm
+         6iHWF8yFDE5G1CqzYVjzIWOWkd9Le8jw5lUUwkYHuTsW3Fy7Iahbre9HxFx9f8AMOtrT
+         Ncnt12q5fxKZjDaZOZhKqcZs4do4oytKXXgns7R4ly3zppEnP0TTY888NaK5hn0LM7rQ
+         kSFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to;
-        bh=DvyHeADj9VVmDZRFoogL6be1fr2dsJ52SKsZagEOyn8=;
-        b=ILEXjz1hksXCnce4/K2rXOSGl8l7ebn2tgeb1GClXHlkbJXBUt0LobzljBpkU07avM
-         yxV7bBQFiRGDPXld2tM6b9ild6qJzIJ8KhXfdFEB90678SXaP+4k7wKl3g6K3lgiexqq
-         5VjB3W97+fkS+zaBbWjF259PNfPwC8QEQdRQWpIgFlPGuo1kjhif7IYYcKrlXlNzDRVD
-         GRS2LOH0mbgXPpcX9rh+nAVtJT06jCjsV+cM0qT4//PVqwhXr7VCrjBZTdq4M3ORygU9
-         L8uZaEimZ45XIfYQ/20wMa+W3k8UoBalfLVm8HMXdBTfcXQwzyv5jaKjLJKruYjO9X8c
-         ERAw==
+         :user-agent:date:message-id:from:references:to;
+        bh=hSQu4YVtTb5TKfICtcxqJbjuokJGQk3sjmWRNefNymY=;
+        b=VVbeuEaVnYOi4yg1h3jLA5uwH1TnrIRXhsbQc1OcIKTACkZgUAZ4x30hsHtgsxYTvw
+         OIGPOBg1lYUqnZP6zsHMsVjjmnxMlz9fpvEbE42RKLu9sOxVeTFAyMtoFO2FUQNtYXW7
+         hQDXMSsyOGa5wF+3jp3Bucoqe/CKULExmXY79h7qHKResgcY7pdNvEd5ez4104U/RrCl
+         K+m39DOF6KIbKBKjbZ9OB5hsMNfbsEy9IP+jrfwp8vEYXrDNS1lqaHB537AvRA563cAY
+         ChSaMemm2t+nD3RPA5RQZNljGn3jw2AF5NbmQqgrd7ATPEGv4Z5qX8Xyu86P50ngBYRd
+         lcPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 9si4759126qts.206.2019.09.03.05.11.13
+        by mx.google.com with ESMTPS id g17si6131896qto.208.2019.09.03.05.24.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2019 05:11:13 -0700 (PDT)
+        Tue, 03 Sep 2019 05:24:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45062 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45172 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i57eT-0000kd-5m
-	for alex.bennee@linaro.org; Tue, 03 Sep 2019 08:11:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59412)
+	id 1i57qv-0000BG-D2
+	for alex.bennee@linaro.org; Tue, 03 Sep 2019 08:24:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33422)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1i57eJ-0000jH-3z
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 08:11:04 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1i57qn-0000B8-NN
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 08:23:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1i57eH-0000JL-HG
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 08:11:02 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48154)
+ (envelope-from <eric.auger@redhat.com>) id 1i57ql-0007lU-5v
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 08:23:56 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57174)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1i57eH-0000If-9v; Tue, 03 Sep 2019 08:11:01 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1i57qk-0007lC-W3; Tue, 03 Sep 2019 08:23:55 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 25280308213F;
- Tue,  3 Sep 2019 12:11:00 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-117-51.ams2.redhat.com [10.36.117.51])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 41EA35C1B5;
- Tue,  3 Sep 2019 12:10:56 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-References: <20190903114729.3400-1-philmd@redhat.com>
- <20190903114729.3400-3-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat
-Message-ID: <a035e876-6f38-b80f-9a8f-1f88472fc7d7@redhat.com>
-Date: Tue, 3 Sep 2019 14:10:55 +0200
+ by mx1.redhat.com (Postfix) with ESMTPS id A566FC057F88;
+ Tue,  3 Sep 2019 12:23:53 +0000 (UTC)
+Received: from [10.36.116.67] (ovpn-116-67.ams2.redhat.com [10.36.116.67])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1B0D25D6B7;
+ Tue,  3 Sep 2019 12:23:43 +0000 (UTC)
+To: Peter Xu <peterx@redhat.com>
+References: <20190730172137.23114-1-eric.auger@redhat.com>
+ <20190730172137.23114-11-eric.auger@redhat.com>
+ <20190819120815.GD13560@xz-x1>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <96d99b72-0b6b-f9f5-e62a-03e1edf62d11@redhat.com>
+Date: Tue, 3 Sep 2019 14:23:42 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20190903114729.3400-3-philmd@redhat.com>
+In-Reply-To: <20190819120815.GD13560@xz-x1>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.42]); Tue, 03 Sep 2019 12:11:00 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+ (mx1.redhat.com [10.5.110.32]); Tue, 03 Sep 2019 12:23:53 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH v2 2/5] target/arm: Restrict pre-ARMv7 cpus
- to TCG
+Subject: Re: [Qemu-arm] [PATCH for-4.2 v10 10/15] virtio-iommu: Implement
+ probe request
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -138,129 +93,78 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: peter.maydell@linaro.org, kevin.tian@intel.com, mst@redhat.com,
+ tn@semihalf.com, qemu-devel@nongnu.org, alex.williamson@redhat.com,
+ qemu-arm@nongnu.org, jean-philippe@linaro.org, bharat.bhushan@nxp.com,
+ eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XDiBT4bRAUD0
+X-TUID: CMaONJAR7j15
 
-On 03/09/2019 13.47, Philippe Mathieu-Daud=C3=A9 wrote:
-> KVM requires a cpu based on (at least) the ARMv7 architecture.
->=20
-> The following CPUs are disabled:
->=20
-> * ARMv4
->=20
->   - StrongARM (SA1100/1110)
->   - OMAP1510 (TI925T)
->=20
-> * ARMv5
->=20
->   - ARM926
->   - ARM946
->   - ARM1026
->   - XScale (PXA250/255/260/261/262/270)
->=20
-> * ARMv6
->=20
->   - ARM1136
->   - ARM1176
->   - ARM11MPCore
->   - Cortex-M0
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
-> v2: fixed misplaced #endif (rth), list cpus
-> ---
->  target/arm/cpu.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
->=20
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 2399c14471..f69780147c 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1678,6 +1678,8 @@ static ObjectClass *arm_cpu_class_by_name(const c=
-har *cpu_model)
->  /* CPU models. These are not needed for the AArch64 linux-user build. =
-*/
->  #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
-> =20
-> +#ifdef CONFIG_TCG
-> +
->  static void arm926_initfn(Object *obj)
->  {
->      ARMCPU *cpu =3D ARM_CPU(obj);
-> @@ -1900,6 +1902,8 @@ static void cortex_m0_initfn(Object *obj)
->      cpu->midr =3D 0x410cc200;
->  }
-> =20
-> +#endif
-> +
->  static void cortex_m3_initfn(Object *obj)
->  {
->      ARMCPU *cpu =3D ARM_CPU(obj);
-> @@ -2283,6 +2287,8 @@ static void cortex_a15_initfn(Object *obj)
->      define_arm_cp_regs(cpu, cortexa15_cp_reginfo);
->  }
-> =20
-> +#ifdef CONFIG_TCG
-> +
->  static void ti925t_initfn(Object *obj)
->  {
->      ARMCPU *cpu =3D ARM_CPU(obj);
-> @@ -2451,6 +2457,8 @@ static void pxa270c5_initfn(Object *obj)
->      cpu->reset_sctlr =3D 0x00000078;
->  }
-> =20
-> +#endif
-> +
->  #ifndef TARGET_AARCH64
->  /* -cpu max: if KVM is enabled, like -cpu host (best possible with thi=
-s host);
->   * otherwise, a CPU with as many features enabled as our emulation sup=
-ports.
-> @@ -2523,6 +2531,7 @@ struct ARMCPUInfo {
-> =20
->  static const ARMCPUInfo arm_cpus[] =3D {
->  #if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
-> +#ifdef CONFIG_TCG
->      { .name =3D "arm926",      .initfn =3D arm926_initfn },
->      { .name =3D "arm946",      .initfn =3D arm946_initfn },
->      { .name =3D "arm1026",     .initfn =3D arm1026_initfn },
-> @@ -2536,6 +2545,7 @@ static const ARMCPUInfo arm_cpus[] =3D {
->      { .name =3D "arm11mpcore", .initfn =3D arm11mpcore_initfn },
->      { .name =3D "cortex-m0",   .initfn =3D cortex_m0_initfn,
->                               .class_init =3D arm_v7m_class_init },
-> +#endif
->      { .name =3D "cortex-m3",   .initfn =3D cortex_m3_initfn,
->                               .class_init =3D arm_v7m_class_init },
->      { .name =3D "cortex-m4",   .initfn =3D cortex_m4_initfn,
-> @@ -2548,6 +2558,7 @@ static const ARMCPUInfo arm_cpus[] =3D {
->      { .name =3D "cortex-a8",   .initfn =3D cortex_a8_initfn },
->      { .name =3D "cortex-a9",   .initfn =3D cortex_a9_initfn },
->      { .name =3D "cortex-a15",  .initfn =3D cortex_a15_initfn },
-> +#ifdef CONFIG_TCG
->      { .name =3D "ti925t",      .initfn =3D ti925t_initfn },
->      { .name =3D "sa1100",      .initfn =3D sa1100_initfn },
->      { .name =3D "sa1110",      .initfn =3D sa1110_initfn },
-> @@ -2564,6 +2575,7 @@ static const ARMCPUInfo arm_cpus[] =3D {
->      { .name =3D "pxa270-b1",   .initfn =3D pxa270b1_initfn },
->      { .name =3D "pxa270-c0",   .initfn =3D pxa270c0_initfn },
->      { .name =3D "pxa270-c5",   .initfn =3D pxa270c5_initfn },
-> +#endif
->  #ifndef TARGET_AARCH64
->      { .name =3D "max",         .initfn =3D arm_max_initfn },
->  #endif
->=20
+Hi Peter,
 
-All that #ifdeffery is a little bit ugly. I wonder whether we could
-solve this by moving the CPU registrations to separate files which then
-only get compiled if the corresponding CONFIG_ARM_Vx switch is set.
+On 8/19/19 2:08 PM, Peter Xu wrote:
+> On Tue, Jul 30, 2019 at 07:21:32PM +0200, Eric Auger wrote:
+> 
+> [...]
+> 
+>> +/* Fill the properties[] buffer with properties of type @type */
+>> +static int virtio_iommu_fill_property(int type,
+>> +                                      viommu_property_buffer *bufstate)
+>> +{
+>> +    int ret = -ENOSPC;
+>> +
+>> +    if (bufstate->filled + sizeof(struct virtio_iommu_probe_property)
+>> +            >= VIOMMU_PROBE_SIZE) {
+>> +        /* no space left for the header */
+>> +        bufstate->error = true;
+>> +        goto out;
+>> +    }
+>> +
+>> +    switch (type) {
+>> +    case VIRTIO_IOMMU_PROBE_T_NONE:
+>> +        ret = virtio_iommu_fill_none_prop(bufstate);
+>> +        break;
+>> +    case VIRTIO_IOMMU_PROBE_T_RESV_MEM:
+>> +    {
+>> +        viommu_endpoint *ep = bufstate->endpoint;
+>> +
+>> +        g_tree_foreach(ep->reserved_regions,
+>> +                       virtio_iommu_fill_resv_mem_prop,
+>> +                       bufstate);
+>> +        if (!bufstate->error) {
+>> +            ret = 0;
+>> +        }
+>> +        break;
+>> +    }
+>> +    default:
+>> +        ret = -ENOENT;
+>> +        break;
+>> +    }
+>> +out:
+>> +    if (ret) {
+>> +        error_report("%s property of type=%d could not be filled (%d),"
+>> +                     " remaining size = 0x%lx",
+>> +                     __func__, type, ret, bufstate->filled);
+> 
+> Nit: If this can really be triggered then we might still change it to
+> error_report_once()?  If it's not (which it seems to), maybe assert
+> directly?
+I put error_report_once() at the moment. The reserved regions may be
+passed through cfg or device properties. I think it may happen that
+their size get larger than the size set in the device config.
 
-That reminds me of a patch series of mine where I tried to make the code
-compilable without CONFIG_ARM_V7M ... unfortunately, I never found
-enough spare time to finish and publish it... I'll have a try to see
-whether I can rebase it and send it as an RFC or so.
 
- Thomas
+> 
+> Other than that it looks good to me:
+> 
+> Reviewed-by: Peter Xu <peterx@redhat.com>
+
+Thank you for the review!
+
+Best Regards
+
+Eric
+> 
+> Regards,
+> 

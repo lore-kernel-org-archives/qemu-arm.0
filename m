@@ -1,425 +1,231 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp779836wrp;
-        Wed, 4 Sep 2019 07:20:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqygXqtyLsEsDFrxbkOebHkovaYvMCL4IDzMcJFAR93w5wtLPMP38hhtKa8+R5StostclH8M
-X-Received: by 2002:ac8:51d3:: with SMTP id d19mr40253556qtn.251.1567606827880;
-        Wed, 04 Sep 2019 07:20:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567606827; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp798403wrp;
+        Wed, 4 Sep 2019 07:35:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwlmdP1fjlJ8HGB5k4Q7ZDZTF4H5QNzU/PMaSf0Y6r96udioeGep4LaqIsDHpDSQnX3sXw3
+X-Received: by 2002:a37:682:: with SMTP id 124mr38863772qkg.393.1567607752809;
+        Wed, 04 Sep 2019 07:35:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567607752; cv=none;
         d=google.com; s=arc-20160816;
-        b=poAFqu6+R9cK6j18lPTVYTxlMGQbACVhYtOJbq3D+yNgoXje/sdcagG6/PBwVbdWmq
-         E5ehygm0+EsbfeJdMFXxN39pRzhBb7Ktu7WAcWPko7zyPXAyaGca/aYy+N9NxMMoAs2r
-         24iKeixJL3ZkobqVOimhhOrZitddWFWJpPZ6wBRd0T0jCRquwXlYIy8hbLH27mIfwgcg
-         V8CL7oW5brZ8feNiel40vg5HOxRBkvQAghQKR3SftN582r7YPR9w7w4B7cDsD+AxhfQq
-         LkpCcD3VbED9/HbaO8E6aTA9rNB4sFxJqkp6T2opDqqdU/Ii75WJYOOaKqFVJYJWoufZ
-         pYww==
+        b=bBfVWMYblMF2JD8n6K+18LjksvHoDvTop8EX3eExRbaJB4Vv1rBp+Ek9A1E9gRD3sM
+         FbGCmvWvPRl/vBo0h6/qT4J21XZx9N4W8hvZUD0mjtdMl32b+rxn3HGiOTjzNUUX/Jqt
+         UGTd4fbIchJ29B0zuFQ4Cx3jEeYby1f83f2Pv2stvpr+K1wKvK8G09/gzkWJCmA6o/dG
+         tE/L2yArTvueBqYCjAZH8biR/cJi9khTy7stueZd7SeRdTPktKFnR90oPhk6JtqQGuuW
+         r+t+zICZIiuZu08u2dRmQdKJ0jOSa49sU/2TlwtsmK5cSIhkU6tgKzSkM96+JqFcgl52
+         GDKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=3/OsUK13eAm/uAJ3FdsOY0XDx59T5KBlC6CVjG2/Cwc=;
-        b=WH4udzwsNkPsZ0ekHtIjPnOt/Fgu1P7RqAqlACU7qpQd5di8XiFI56K98Hhu5CKiac
-         UIUdpTfymMzrgGMHpLjNXKkvTWw8XCay3VDg9YeJ0fZo0HIJaFZ5CpijuauQ808rd9FG
-         nmCQj1muI8YufLlNJZ6vJR7uOdtbhuDzXSSsVjiY9j7lFVc/x65ZCgGByeu8Go+ifXg7
-         W2wrD4KYnRUmmyae2gzRiy1JsQ1jUkDQys3zaNZEwhp8ZMNKBSIXmwBa7TgJFjHR3axA
-         1/khcT/RQResBdx9pzsynJFBqT780MjSrPpfxxxL/x7N6ANhuK/ZIJa7OA4vl8XBKjH/
-         Kt6g==
+         :content-transfer-encoding:to:message-id:date:from:references
+         :in-reply-to:mime-version:dkim-signature;
+        bh=BmEPdb1oB0u36r/ovuXbG9rGaeZqBa/uC6Qz3sXBV34=;
+        b=XfRdQPzCa3BvT4dRNCVtrqoc83RVm+LAHyDTmf+jV8ZYuMea0GN/54yM0tmBn8OFu3
+         S9z+rSyDLkd6Qybicxf2cmTqgMbkArv4Nuk4ZmyLFabJj07nhWo8GMC49Ys+dJBg/UL3
+         R+iVZEg/vcX+uIUgsX4SHMVWvJWlRdET3N/0C3A9rsu7g4rO2Cd4hy3iYGpQxPRIq31x
+         29V6HG27XHnNyJalc1GE+4RfK8DNiQvZCqae4/wcLOFnmgHExNq+PC3S06pThDP0cesQ
+         X7PteWxrgIyQMhGMXnVqkflk4AON3ZIBKgIyyqxVCFQ90OibwO+tUsRbKiTErnyrSNyx
+         cwRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nPXPfFE/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n11si1945718qtr.234.2019.09.04.07.20.27
+        by mx.google.com with ESMTPS id e18si12160586qta.136.2019.09.04.07.35.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2019 07:20:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Sep 2019 07:35:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33228 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nPXPfFE/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:33870 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5W95-0005dh-5d
-	for alex.bennee@linaro.org; Wed, 04 Sep 2019 10:20:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47382)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i5WO0-0004nS-6a
+	for alex.bennee@linaro.org; Wed, 04 Sep 2019 10:35:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50824)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1i5W8X-0005az-1S
- for qemu-devel@nongnu.org; Wed, 04 Sep 2019 10:19:55 -0400
+ (envelope-from <bztemail@gmail.com>) id 1i5WNr-0004l6-3h
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 10:35:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1i5W8U-00024h-Tj
- for qemu-devel@nongnu.org; Wed, 04 Sep 2019 10:19:52 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60282)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1i5W8Q-00022E-Ft; Wed, 04 Sep 2019 10:19:46 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 1966610F23F6;
- Wed,  4 Sep 2019 14:19:45 +0000 (UTC)
-Received: from [10.36.116.67] (ovpn-116-67.ams2.redhat.com [10.36.116.67])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8546B1001958;
- Wed,  4 Sep 2019 14:19:35 +0000 (UTC)
-To: "Michael S. Tsirkin" <mst@redhat.com>
-References: <20190730172137.23114-1-eric.auger@redhat.com>
- <20190730172137.23114-15-eric.auger@redhat.com>
- <20190730153305-mutt-send-email-mst@kernel.org>
- <a0e88a60-083b-2730-5db8-7bba0299974b@redhat.com>
- <20190801090027-mutt-send-email-mst@kernel.org>
- <ff726b89-a1b1-9b9e-a767-ef72da520053@redhat.com>
- <20190901023827-mutt-send-email-mst@kernel.org>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <8dd239b8-6d0b-3795-76d0-e8ead4b847ef@redhat.com>
-Date: Wed, 4 Sep 2019 16:19:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ (envelope-from <bztemail@gmail.com>) id 1i5WNp-0002G4-PS
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 10:35:43 -0400
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:41952)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <bztemail@gmail.com>)
+ id 1i5WNm-0002CM-Iq; Wed, 04 Sep 2019 10:35:38 -0400
+Received: by mail-lf1-x142.google.com with SMTP id j4so16133172lfh.8;
+ Wed, 04 Sep 2019 07:35:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:in-reply-to:references:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=BmEPdb1oB0u36r/ovuXbG9rGaeZqBa/uC6Qz3sXBV34=;
+ b=nPXPfFE/Kv6gqoQyM2OofGr5Oj0DM/f6S17Lj7FTqBo0saEk8L+0FooNAQwXN9yph1
+ A6VtFGXA4/cK3F8jEvBFBOMZL0hRI4VrLjtfdEeLzMF42tp6W7tkKsv35B/AUTQLAoaM
+ bH9LGJ7TNx8BMtvbWCTx64rYyHaLtuPo5JMmed/vk3FW4fKH0xsRGXAEGTNOrMKv/Ww0
+ PwR0claPcGDvbDvMaEAV1LLTlVbJI2dHmXY5J6ZYqXVEm7MBRk3stANzP3TJstoQbtBh
+ +WiZM2h59mAOEwV8zHsIR54WZF8v9YYeJMZpxfG8UGc4hRz8v11GslzQq9m5RsXMEqGS
+ HN8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:in-reply-to:references:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=BmEPdb1oB0u36r/ovuXbG9rGaeZqBa/uC6Qz3sXBV34=;
+ b=tT+nRgpouJrNq6JT/kaF2JJJ3fr8ZkjykZ2XMDy5Toc9UjGKGTf5Vip3X1uImxCcpK
+ 5qde5xza3nEd3q2m+t8cFfoMvYes1F1NICNkTb43ipYu73l931bz4JYJ1TNVRyrnZQOp
+ L2DEqW2vWumCEFY/QOfrmQS1fQf4GTocIzjk12DGPTtf3oGsEi6wr5p84LcO6naqECFt
+ o0L0H4Bd41ZgnQg7jbvnwFp4PwPWfXGVHEoEmF2NMXIEm2fM/SW53qK9JNg3E+K/Sy7M
+ Kk2pQTPnF4t45YsGp50syrQa+4KHsSpM8ciA/sikhu06rKgUiPeemL9PlfNbA7q24FG9
+ KSQQ==
+X-Gm-Message-State: APjAAAUYhlikjtfT0m9uMvpm05M20sWc5ye83C5vWwt5aK2SWWvUOfKA
+ 6X/qma2qjj67dvlxjiaf2Gg6TYPBztzeTUrMw4I=
+X-Received: by 2002:a19:5d53:: with SMTP id p19mr23458836lfj.109.1567607736499; 
+ Wed, 04 Sep 2019 07:35:36 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190901023827-mutt-send-email-mst@kernel.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.66]); Wed, 04 Sep 2019 14:19:45 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH for-4.2 v10 14/15] virtio-iommu-pci: Add
- virtio iommu pci support
-X-BeenThere: qemu-devel@nongnu.org
+Received: by 2002:a2e:3e1a:0:0:0:0:0 with HTTP;
+ Wed, 4 Sep 2019 07:35:35 -0700 (PDT)
+In-Reply-To: <CAAdtpL7ZRxLS=wbKKQrxQ_Ob8sLJFGvsqPWXmgtCGWKdJ-Ga9g@mail.gmail.com>
+References: <20180216070201.4271-1-penberg@iki.fi>
+ <20180216070201.4271-3-penberg@iki.fi>
+ <CAAdtpL7ZRxLS=wbKKQrxQ_Ob8sLJFGvsqPWXmgtCGWKdJ-Ga9g@mail.gmail.com>
+From: bzt <bztemail@gmail.com>
+Date: Wed, 4 Sep 2019 16:35:35 +0200
+Message-ID: <CADYoBw39KN6dzgJO2yG5hCTxNR2_R1175oqaFbdOdQ-oQeyo1A@mail.gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::142
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 2/3] raspi: Raspberry Pi 3
+ support
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: jean-philippe@linaro.org, kevin.tian@intel.com, peter.maydell@linaro.org,
- tn@semihalf.com, qemu-devel@nongnu.org, peterx@redhat.com,
- alex.williamson@redhat.com, qemu-arm@nongnu.org, bharat.bhushan@nxp.com,
- eric.auger.pro@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Jos3yi4AJ5fh
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Pekka Enberg <penberg@iki.fi>, Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RtAirYAHk4fW
 
-Hi Michael,
+Dear Phil,
 
-On 9/1/19 8:40 AM, Michael S. Tsirkin wrote:
-> On Thu, Aug 01, 2019 at 03:49:37PM +0200, Auger Eric wrote:
->> Hi Michael,
+As you can see, the board ids are quite controversial, and bcm2837 is
+not listed at all. Therefore 0xc44 is just a constant to identify qemu
+"board". Feel free to change the id if you'd like.
+
+About the r1 register, you've liked the wrong firmware. That's for
+AArch32 mode, not for AArch64 mode which the raspi3 machine type uses.
+In AArch64 mode, the firmware
+https://github.com/raspberrypi/tools/blob/920c7ed2ee/armstubs/armstub8.S
+passes only the device tree pointer in x0 and only for the primary
+CPU, no board id of any kind.
+
+Yes I know that the real firmware can start a hw raspi3 board in 32
+bit mode, but it's better to have 64 bit as default, as raspi2 is 32
+bit only anyway. Unfortunately there's no way to autodetect if the
+image passed to the -kernel argument was compiled for AArch32 or
+AArch64 mode, the instructions are way to similarly encoded and
+there's no magic in raw binaries. Real hw board differentiates by
+checking the file name of the kernel file on the boot partition (named
+kernel7.img vs. kernel8.img) and parsing config.txt for arm specific
+options. This is not an option for qemu as it does not emulate VC GPU
+bootcode nor does it receive an entire boot partition with the -kernel
+argument. Another reason to use AArch64 for raspi3 machine is if a
+real board finds both kernel7.img and kernel8.img on the boot
+partition, then it will load the AArch64 kernel.
+
+Cheers,
+bzt
+
+On 9/3/19, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+> Hi Pekka and Zolt=C3=A1n,
+>
+> On Fri, Feb 16, 2018 at 8:04 AM Pekka Enberg <penberg@iki.fi> wrote:
 >>
->> On 8/1/19 3:06 PM, Michael S. Tsirkin wrote:
->>> On Thu, Aug 01, 2019 at 02:15:03PM +0200, Auger Eric wrote:
->>>> Hi Michael,
->>>>
->>>> On 7/30/19 9:35 PM, Michael S. Tsirkin wrote:
->>>>> On Tue, Jul 30, 2019 at 07:21:36PM +0200, Eric Auger wrote:
->>>>>> This patch adds virtio-iommu-pci, which is the pci proxy for
->>>>>> the virtio-iommu device.
->>>>>>
->>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>>>
->>>>> This part I'm not sure we should merge just yet.  The reason being I
->>>>> think we should limit it to mmio where DT can be used to describe iommu
->>>>> topology. For PCI I don't see why we shouldn't always expose this
->>>>> in the config space, and I think it's preferable not to
->>>>> need to support a mix of DT,ACPI and PCI as options.
->>>>
->>>> For context, some discussion related to this topic already arose on v7
->>>> revision of the driver:
->>>>
->>>> [1] Re: [PATCH v7 0/7] Add virtio-iommu driver
->>>> https://lore.kernel.org/linux-pci/87a7ioby9u.fsf@morokweng.localdomain/
->>>>
->>>> Some additional thoughts.
->>>>
->>>> First considering DT boot.
->>>>
->>>> THE DT description features an iommu-map property in the
->>>> pci-host-ecam-generic node that describes which RIDs are handled by the
->>>> virtio-iommu and a possible offset/mask to be applied inbetween the RID
->>>> and the streamID at the input of the IOMMU
->>>> (Documentation/devicetree/bindings/pci/pci-iommu.txt)
->>>>
->>>> As far as I understand when a DMA capable device is setup, its DMA
->>>> configuration is built using that call chain:
->>>>
->>>> pci_dma_configure
->>>> |_ of_dma_configure
->>>>    |_ of_iommu_configure
->>>>       |_ of_pci_iommu_init
->>>>          |_ of_map_rid
->>>>
->>>> I understand you would like the iommu-map/iommu-map-mask info to be
->>>> exposed directly into the config space of the device instead of inside
->>>> the DT or IORT table. Assuming a module is initialized sufficiently
->>>> early to retrieve this info, we would need the resulting info to be
->>>> consolidated to allow pci_dma_configure chain to work seemlessly. This
->>>> sounds a significant impact on above kernel infrastructure.
->>>
->>> I don't really know what consolidated means.
->>> It is pretty common for IOMMUs to expose config through
->>> PCI registers. This typically happens as a fixup.
->> I meant: instead of retrieving the info through the of_* code you need
->> to interoperate with the module to retrieve the same info and detect
->> when you need to take that path instead of the of one.
-> 
-> The way to do it would be with a quirk,
-> and the quirk would not be part of the
-> virtio module - it can poke at the device using
-> virtio_pci_cfg_cap.
-
-I got this preliminary quirk function working. However it only works for
-a DECLARE_PCI_FIXUP_ENABLE quirk. In an EARLY quirk, the guest crashes
-on the first ioread that attempts to read the BAR as mem accesses are
-not enabled yet I guess.
-
-So assuming I get the proper system config data in the device
-configuration, the iommu bindings will be set up late.
-
-By the way I have not yet attempted to generate iommu bindings from the
-quirk function (job done in drivers/acpi/arm64/iort.c) which does not
-sound to be straightforward.
-> 
->>>
->>> I would write a tiny driver to do exactly that,
->>> and run it from the fixup.
->>>
->>>
->>>> This comes in addition to the development of the "small module that
->>>> loads early and pokes at the IOMMU sufficiently to get the data about
->>>> which devices use the IOMMU out of it using standard virtio config
->>>> space" evoked in [1] + the definition of the data formats to be put in
->>>> the very cfg space.
->>>
->>> That last part is true but that's exactly why I propose we
->>> wait on this patch a bit.
->>>
->>>> With ACPI I understand we have the same kind of infrastructure:
->>>> drivers/acpi/arm64/iort.c currently extracts the mapping between RC RIDs
->>>> and IOMMU streamids
->>>>
->>>> pci_dma_configure(
->>>> |_ acpi_dma_configure
->>>>    |_ iort_iommu_configure
->>>>       |_ iort_pci_iommu_init
->>>>          |_ iort_node_map_id
->>>>             |_ iort_id_map
->>>>
->>>> Maybe I fail to see the easy and right way to do the integration at
->>>> kernel level but I am a bit frightened by the efforts that would be
->>>> requested to follow your suggestion, whereas the DT infra is ready and
->>>> fully upstreamed to accept the use case.
->>>
->>> Did you take a look at drivers/pci/quirks.c and how these run?
->>> I think it's just a question of adding DECLARE_PCI_FIXUP_CLASS_EARLY
->>> and running your hook from there.
->> I will do and trace the code.
->>>
->>>
->>>> For ACPI I agree AFAIK IORT was primarily defined by ARM, for ARM but we
->>>> prototyped IORT integration with x86 and it worked for pc machine
->>>> without major trouble.
->>>>
->>>> I sent the kernel and qemu patches prototyping this IORT integration:
->>>>
->>>> https://github.com/eauger/linux/tree/virtio-iommu-v0.9-iort-x86
->>>> https://github.com/eauger/qemu/tree/v3.1.0-rc3-virtio-iommu-v0.9-x86
->>>>
->>>> There ACPI IORT was built for PC machine and the integration effort at
->>>> both kernel and QEMU level was low. This work would need to be rebased
->>>> and depends on kernel ACPI related patches that are not yet upstreamed
->>>> though.
->>>>
->>>> Thanks
->>>>
->>>> Eric
->>>
->>> In the end it might turn out you are right.  But it does us no harm to
->>> delay this just a bit, and for now limit things to ARM where it's
->>> already used and where alternatives exist.
->> So if my understanding is correct, at the moment you would accept a DT
->> integration using MMIO. Is that correct? Meanwhile we can prototype your
->> suggestion.
+>> This patch adds Raspberry Pi 3 support to hw/arm/raspi.c. The
+>> differences to Pi 2 are:
 >>
->> Thanks
+>>  - Firmware address
+>>  - Board ID
+>>  - Board revision
 >>
->> Eric
-> 
-> Right.
-
-Thank you for the confirmation. However I am not sure Peter will accept
-to get the device integrated as a virtio-mmio device and then deprecated
-in favor of a virtio-pci device, all the more so work was prepared to
-get a PCI integration. Peter?
-
-Thanks
-
-Eric
-> 
->>>
->>>
->>>>>
->>>>>> ---
->>>>>>
->>>>>> v8 -> v9:
->>>>>> - add the msi-bypass property
->>>>>> - create virtio-iommu-pci.c
->>>>>> ---
->>>>>>  hw/virtio/Makefile.objs          |  1 +
->>>>>>  hw/virtio/virtio-iommu-pci.c     | 88 ++++++++++++++++++++++++++++++++
->>>>>>  include/hw/pci/pci.h             |  1 +
->>>>>>  include/hw/virtio/virtio-iommu.h |  1 +
->>>>>>  qdev-monitor.c                   |  1 +
->>>>>>  5 files changed, 92 insertions(+)
->>>>>>  create mode 100644 hw/virtio/virtio-iommu-pci.c
->>>>>>
->>>>>> diff --git a/hw/virtio/Makefile.objs b/hw/virtio/Makefile.objs
->>>>>> index f42e4dd94f..80ca719f1c 100644
->>>>>> --- a/hw/virtio/Makefile.objs
->>>>>> +++ b/hw/virtio/Makefile.objs
->>>>>> @@ -27,6 +27,7 @@ obj-$(CONFIG_VIRTIO_INPUT_HOST) += virtio-input-host-pci.o
->>>>>>  obj-$(CONFIG_VIRTIO_INPUT) += virtio-input-pci.o
->>>>>>  obj-$(CONFIG_VIRTIO_RNG) += virtio-rng-pci.o
->>>>>>  obj-$(CONFIG_VIRTIO_BALLOON) += virtio-balloon-pci.o
->>>>>> +obj-$(CONFIG_VIRTIO_IOMMU) += virtio-iommu-pci.o
->>>>>>  obj-$(CONFIG_VIRTIO_9P) += virtio-9p-pci.o
->>>>>>  obj-$(CONFIG_VIRTIO_SCSI) += virtio-scsi-pci.o
->>>>>>  obj-$(CONFIG_VIRTIO_BLK) += virtio-blk-pci.o
->>>>>> diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
->>>>>> new file mode 100644
->>>>>> index 0000000000..f9977096bd
->>>>>> --- /dev/null
->>>>>> +++ b/hw/virtio/virtio-iommu-pci.c
->>>>>> @@ -0,0 +1,88 @@
->>>>>> +/*
->>>>>> + * Virtio IOMMU PCI Bindings
->>>>>> + *
->>>>>> + * Copyright (c) 2019 Red Hat, Inc.
->>>>>> + * Written by Eric Auger
->>>>>> + *
->>>>>> + *  This program is free software; you can redistribute it and/or modify
->>>>>> + *  it under the terms of the GNU General Public License version 2 or
->>>>>> + *  (at your option) any later version.
->>>>>> + */
->>>>>> +
->>>>>> +#include "qemu/osdep.h"
->>>>>> +
->>>>>> +#include "virtio-pci.h"
->>>>>> +#include "hw/virtio/virtio-iommu.h"
->>>>>> +
->>>>>> +typedef struct VirtIOIOMMUPCI VirtIOIOMMUPCI;
->>>>>> +
->>>>>> +/*
->>>>>> + * virtio-iommu-pci: This extends VirtioPCIProxy.
->>>>>> + *
->>>>>> + */
->>>>>> +#define VIRTIO_IOMMU_PCI(obj) \
->>>>>> +        OBJECT_CHECK(VirtIOIOMMUPCI, (obj), TYPE_VIRTIO_IOMMU_PCI)
->>>>>> +
->>>>>> +struct VirtIOIOMMUPCI {
->>>>>> +    VirtIOPCIProxy parent_obj;
->>>>>> +    VirtIOIOMMU vdev;
->>>>>> +};
->>>>>> +
->>>>>> +static Property virtio_iommu_pci_properties[] = {
->>>>>> +    DEFINE_PROP_UINT32("class", VirtIOPCIProxy, class_code, 0),
->>>>>> +    DEFINE_PROP_BOOL("msi-bypass", VirtIOIOMMUPCI, vdev.msi_bypass, true),
->>>>>> +    DEFINE_PROP_END_OF_LIST(),
->>>>>> +};
->>>>>> +
->>>>>> +static void virtio_iommu_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
->>>>>> +{
->>>>>> +    VirtIOIOMMUPCI *dev = VIRTIO_IOMMU_PCI(vpci_dev);
->>>>>> +    DeviceState *vdev = DEVICE(&dev->vdev);
->>>>>> +
->>>>>> +    qdev_set_parent_bus(vdev, BUS(&vpci_dev->bus));
->>>>>> +    object_property_set_link(OBJECT(dev),
->>>>>> +                             OBJECT(pci_get_bus(&vpci_dev->pci_dev)),
->>>>>> +                             "primary-bus", errp);
->>>>>> +    object_property_set_bool(OBJECT(vdev), true, "realized", errp);
->>>>>> +}
->>>>>> +
->>>>>> +static void virtio_iommu_pci_class_init(ObjectClass *klass, void *data)
->>>>>> +{
->>>>>> +    DeviceClass *dc = DEVICE_CLASS(klass);
->>>>>> +    VirtioPCIClass *k = VIRTIO_PCI_CLASS(klass);
->>>>>> +    PCIDeviceClass *pcidev_k = PCI_DEVICE_CLASS(klass);
->>>>>> +    k->realize = virtio_iommu_pci_realize;
->>>>>> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
->>>>>> +    dc->props = virtio_iommu_pci_properties;
->>>>>> +    pcidev_k->vendor_id = PCI_VENDOR_ID_REDHAT_QUMRANET;
->>>>>> +    pcidev_k->device_id = PCI_DEVICE_ID_VIRTIO_IOMMU;
->>>>>> +    pcidev_k->revision = VIRTIO_PCI_ABI_VERSION;
->>>>>> +    pcidev_k->class_id = PCI_CLASS_OTHERS;
->>>>>> +}
->>>>>> +
->>>>>> +static void virtio_iommu_pci_instance_init(Object *obj)
->>>>>> +{
->>>>>> +    VirtIOIOMMUPCI *dev = VIRTIO_IOMMU_PCI(obj);
->>>>>> +
->>>>>> +    virtio_instance_init_common(obj, &dev->vdev, sizeof(dev->vdev),
->>>>>> +                                TYPE_VIRTIO_IOMMU);
->>>>>> +}
->>>>>> +
->>>>>> +static const VirtioPCIDeviceTypeInfo virtio_iommu_pci_info = {
->>>>>> +    .base_name             = TYPE_VIRTIO_IOMMU_PCI,
->>>>>> +    .generic_name          = "virtio-iommu-pci",
->>>>>> +    .transitional_name     = "virtio-iommu-pci-transitional",
->>>>>> +    .non_transitional_name = "virtio-iommu-pci-non-transitional",
->>>>>> +    .instance_size = sizeof(VirtIOIOMMUPCI),
->>>>>> +    .instance_init = virtio_iommu_pci_instance_init,
->>>>>> +    .class_init    = virtio_iommu_pci_class_init,
->>>>>> +};
->>>>>> +
->>>>>> +static void virtio_iommu_pci_register(void)
->>>>>> +{
->>>>>> +    virtio_pci_types_register(&virtio_iommu_pci_info);
->>>>>> +}
->>>>>> +
->>>>>> +type_init(virtio_iommu_pci_register)
->>>>>> +
->>>>>> +
->>>>>> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
->>>>>> index aaf1b9f70d..492ea7e68d 100644
->>>>>> --- a/include/hw/pci/pci.h
->>>>>> +++ b/include/hw/pci/pci.h
->>>>>> @@ -86,6 +86,7 @@ extern bool pci_available;
->>>>>>  #define PCI_DEVICE_ID_VIRTIO_9P          0x1009
->>>>>>  #define PCI_DEVICE_ID_VIRTIO_VSOCK       0x1012
->>>>>>  #define PCI_DEVICE_ID_VIRTIO_PMEM        0x1013
->>>>>> +#define PCI_DEVICE_ID_VIRTIO_IOMMU       0x1014
->>>>>>  
->>>>>>  #define PCI_VENDOR_ID_REDHAT             0x1b36
->>>>>>  #define PCI_DEVICE_ID_REDHAT_BRIDGE      0x0001
->>>>>> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
->>>>>> index 56c8b4e57f..893ac65c0b 100644
->>>>>> --- a/include/hw/virtio/virtio-iommu.h
->>>>>> +++ b/include/hw/virtio/virtio-iommu.h
->>>>>> @@ -25,6 +25,7 @@
->>>>>>  #include "hw/pci/pci.h"
->>>>>>  
->>>>>>  #define TYPE_VIRTIO_IOMMU "virtio-iommu-device"
->>>>>> +#define TYPE_VIRTIO_IOMMU_PCI "virtio-iommu-device-base"
->>>>>>  #define VIRTIO_IOMMU(obj) \
->>>>>>          OBJECT_CHECK(VirtIOIOMMU, (obj), TYPE_VIRTIO_IOMMU)
->>>>>>  
->>>>>> diff --git a/qdev-monitor.c b/qdev-monitor.c
->>>>>> index 58222c2211..74cf090c61 100644
->>>>>> --- a/qdev-monitor.c
->>>>>> +++ b/qdev-monitor.c
->>>>>> @@ -63,6 +63,7 @@ static const QDevAlias qdev_alias_table[] = {
->>>>>>      { "virtio-input-host-ccw", "virtio-input-host", QEMU_ARCH_S390X },
->>>>>>      { "virtio-input-host-pci", "virtio-input-host",
->>>>>>              QEMU_ARCH_ALL & ~QEMU_ARCH_S390X },
->>>>>> +    { "virtio-iommu-pci", "virtio-iommu", QEMU_ARCH_ALL & ~QEMU_ARCH_S390X },
->>>>>>      { "virtio-keyboard-ccw", "virtio-keyboard", QEMU_ARCH_S390X },
->>>>>>      { "virtio-keyboard-pci", "virtio-keyboard",
->>>>>>              QEMU_ARCH_ALL & ~QEMU_ARCH_S390X },
->>>>>> -- 
->>>>>> 2.20.1
->>>>>
->>>
+>> The CPU is different too, but that's going to be configured as part of
+>> the machine default CPU when we introduce a new machine type.
+>>
+>> The patch was written from scratch by me but the logic is similar to
+>> Zolt=C3=A1n Baldaszti's previous work, which I used as a reference (with
+>> permission from the author):
+>>
+>>   https://github.com/bztsrc/qemu-raspi3
+>>
+>> Signed-off-by: Pekka Enberg <penberg@iki.fi>
+>> ---
+>>  hw/arm/raspi.c | 31 +++++++++++++++++++++----------
+>>  1 file changed, 21 insertions(+), 10 deletions(-)
+>>
+>> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+>> index c24a4a1b14..66fe10e376 100644
+>> --- a/hw/arm/raspi.c
+>> +++ b/hw/arm/raspi.c
+>> @@ -5,6 +5,9 @@
+>>   * Rasperry Pi 2 emulation Copyright (c) 2015, Microsoft
+>>   * Written by Andrew Baumann
+>>   *
+>> + * Raspberry Pi 3 emulation Copyright (c) 2018 Zolt=C3=A1n Baldaszti
+>> + * Upstream code cleanup (c) 2018 Pekka Enberg
+>> + *
+>>   * This code is licensed under the GNU GPLv2 and later.
+>>   */
+>>
+>> @@ -22,10 +25,11 @@
+>>  #define SMPBOOT_ADDR    0x300 /* this should leave enough space for ATA=
+GS
+>> */
+>>  #define MVBAR_ADDR      0x400 /* secure vectors */
+>>  #define BOARDSETUP_ADDR (MVBAR_ADDR + 0x20) /* board setup code */
+>> -#define FIRMWARE_ADDR   0x8000 /* Pi loads kernel.img here by default *=
+/
+>> +#define FIRMWARE_ADDR_2 0x8000 /* Pi 2 loads kernel.img here by default
+>> */
+>> +#define FIRMWARE_ADDR_3 0x80000 /* Pi 3 loads kernel.img here by defaul=
+t
+>> */
+>>
+>>  /* Table of Linux board IDs for different Pi versions */
+>> -static const int raspi_boardid[] =3D {[1] =3D 0xc42, [2] =3D 0xc43};
+>> +static const int raspi_boardid[] =3D {[1] =3D 0xc42, [2] =3D 0xc43, [3]=
+ =3D
+>> 0xc44};
+>
+> Where does the value 0xc44 comes from?
+>
+> I can only find 0xc42/0xc43 defined:
+> https://github.com/raspberrypi/linux/blob/rpi-3.18.y/arch/arm/tools/mach-=
+types#L525
+>
+> 0xc43 seems controversial, see
+> http://lists.infradead.org/pipermail/linux-rpi-kernel/2015-February/00126=
+8.html
+> addition:
+> https://github.com/raspberrypi/linux/commit/d9fac63adac#diff-6722037d7957=
+0df5b392a49e0e006573R526
+>
+> Looking at the firmware source, the r1 register is always set to the
+> BCM2708 machine id before calling the kernel:
+> https://github.com/raspberrypi/tools/blob/920c7ed2ee/armstubs/armstub7.S#=
+L133
+>
+> Thanks,
+>
+> Phil.
+>

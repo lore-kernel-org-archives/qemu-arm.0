@@ -1,215 +1,102 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp924782wrp;
-        Wed, 4 Sep 2019 09:24:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz6l4QzDMq6r6ses8Nu3bU/FTLZiF+5BAYhSm6rmoQIPRWWdUH7ZkIdl8kwjPQzRM4eshgN
-X-Received: by 2002:a37:95c6:: with SMTP id x189mr39350842qkd.323.1567614293588;
-        Wed, 04 Sep 2019 09:24:53 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n58si14814407qtk.371.2019.09.04.09.24.53
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp981433wrp;
+        Wed, 4 Sep 2019 10:17:15 -0700 (PDT)
+X-Received: by 2002:a62:1747:: with SMTP id 68mr22870012pfx.63.1567617435250;
+        Wed, 04 Sep 2019 10:17:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567617435; cv=none;
+        d=google.com; s=arc-20160816;
+        b=AIyk1am/ISWUroMgicnVhRNHebASGt4+R8fgLUGBzc1DKx8eu/SEjDkKJzcsi5Wn+z
+         us64EEX6UmMPfrlFOUeH7GC/A9vLssewk/+u4O1nuf5+CxLFyFW2nz97CY8rYFX24Mtn
+         Lifiqpd2bfrTGcH21dsDl5yOtH2B+vKZ4+wo9fmnPvU4lMJhDNmO424Z3uOEkw9OAb16
+         Xee9XHDiw02VbFaK3/c5H8h9DO3+JM4dEY4esjreRnJmY2wzdazwBRPK6appnEOpsxg1
+         RpB9aUFRua6WV9ZM7nZmsMhFncAMyPeY/VmXsKnW5wmOOSLXueybOig7vRxehMGKkQQl
+         9QsA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=LqfvCooUecTcAvY3I97IQS0lczVLAEae8uSNHnFIF2o=;
+        b=glbDdLdHAvA2RMyTBOXcala3UXp4JyJMdwTQVhzokjd4t5hvNK+Motj52yLg+u6/Sk
+         4G2KtRU+YeOVI85kfO+ZhYThlrs8nkNrK2Ic0VV6+R8Riw58lBcPmR6NZwrS46GNxV3v
+         bvBFVFVtAajuu3btKiFGC/0wk3Kspz5uh7c4w8v9w7DJ6sDJaAP2IbRznp4BCZpoQfPQ
+         5skg2T1dX7+iby66MKql8wXnlH76t2vQd9EX+k/6lx8rpODuu1QqcOAcw7D9KpN1Eb4I
+         0wfD/K5+oQlC33/0dKNCxqoI/JyH+8yZyGCbyG1Ylc3tEzuS5AL+2CatVSmcE78TGQUc
+         ie2w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=eT+fF16H;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id g31sor26949422plg.39.2019.09.04.10.17.15
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2019 09:24:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 04 Sep 2019 10:17:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=pmeZXDRE;
-       arc=fail (body hash mismatch);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35216 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5Y5U-0004p6-Uq
-	for alex.bennee@linaro.org; Wed, 04 Sep 2019 12:24:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40999)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1i5Y3m-0004K8-4v
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 12:23:07 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1i5Y3k-0004jS-GG
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 12:23:05 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:52468)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1i5Y3k-0004j0-07; Wed, 04 Sep 2019 12:23:04 -0400
-Received: from crumble.bar.greensocs.com (crumble.bar.greensocs.com
- [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPS id AE6B096F65;
- Wed,  4 Sep 2019 16:23:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1567614182;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=rcVMLpC6xOMKCz5Bixxm42D7b9+MZ27ZtTCp7nDstqY=;
- b=pmeZXDREXbdjrzGPyxl3mMUQx4iq7DqJ1ipk5RKwU4wymD7J2V9/5gXuvNeC/4pA8d522P
- ymI4zqMMGY9AQh6YQcMqueOOU2OlWzcYen3lD+GdVgGsJH9viFH3+TrnNcKtaQqN6fPi4P
- J7ClqwGFbMmSmdO7fVpk5kzU6gifhd4=
-From: Damien Hedde <damien.hedde@greensocs.com>
-To: qemu-devel@nongnu.org
-Date: Wed,  4 Sep 2019 18:22:47 +0200
-Message-Id: <20190904162247.24095-1-damien.hedde@greensocs.com>
-X-Mailer: git-send-email 2.22.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=eT+fF16H;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=LqfvCooUecTcAvY3I97IQS0lczVLAEae8uSNHnFIF2o=;
+        b=eT+fF16Hu+H61ByhBofnafkbT0vrygmlfMN1mIumFvXJOsv/jHDGwo3LCSntLQNoEZ
+         Sj73TG5pmrh8eo15buBubV/MmKvF6mDwb9PdutpJaKW3iY/UI6Tv2swyf+Ip3VFl9E54
+         wzc9AFy6O88B6z+bTov8g/MG60Czs6c4aeqBUtC5d2DVfcTa3Vcl6XSf5IzoKr5TNWSi
+         Y1P869O85P8xeLwgqbzMvuLH5hJQ0cLyQRNa7qum/UI6dMo8w+hIIhvxtqk8Bo7SAt0A
+         nGWW0/yaVBmD0tg7tJ5pWsyJDf+VCZBPH7wXNSe5tcfYf5WPzzcJhG3kDKoRdfLjmSj2
+         G7DQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=LqfvCooUecTcAvY3I97IQS0lczVLAEae8uSNHnFIF2o=;
+        b=gY43USkMe49vtMxVCJInxaRI+LrXxaR/NrD6RQNJNIKHJSNETsm5AfelyEw6ufPWvc
+         rwcBrXEJJlkMVT/3c0X28a8XTG0e43NXcjckxV1jGnZmA74Tcym4z6MqEV7GvX/b4tED
+         s25pEL5yi7waHF9CV7WKe3xeX3lF7segIbgt1UtSr5goka3A06UjHRksV47nDczvj8NK
+         JYA433fnYVpu/dq3UUGN1tIPlaJs2Inhk4jKLacehRDXhA6iEyXzEipZMJYYaLFXdZgm
+         L8lPQd7fVRmvEbTfnbOFB0ciDZhCFaSkXvA5RW3JDjfpw/bO71qaR7/GSMX2r1ePhBBw
+         pPTQ==
+X-Gm-Message-State: APjAAAUQtuu1w+CwZRdtjIWBg876GSKsTDLhgBDiIRF/oDjphZtGP3x/
+	8PUqqrqParBuVwX5Cg5Z9ew2ps1+
+X-Google-Smtp-Source: APXvYqw3ekoIyNs3yjKqa/ffWJLc8hXJev7ip5jdWCSqsTHnoxKIL+ItX1INdVC5wtcILCzBcVystQ==
+X-Received: by 2002:a17:902:fe0f:: with SMTP id g15mr19168537plj.2.1567617434713;
+        Wed, 04 Sep 2019 10:17:14 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+        by smtp.gmail.com with ESMTPSA id e192sm22825379pfh.83.2019.09.04.10.17.13
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 04 Sep 2019 10:17:13 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH] HACK: Centralize sve property checks
+To: Andrew Jones <drjones@redhat.com>
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, armbru@redhat.com,
+ eric.auger@redhat.com, qemu-arm@nongnu.org, imammedo@redhat.com,
+ alex.bennee@linaro.org, Dave.Martin@arm.com
+References: <20190802122540.26385-1-drjones@redhat.com>
+ <20190810013112.28732-1-richard.henderson@linaro.org>
+ <20190904083252.7pmmjvbynik7dk33@kamzik.brq.redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <63d5994b-3834-a011-3853-a76986f8e6c5@linaro.org>
+Date: Wed, 4 Sep 2019 10:17:12 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1567614182;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=rcVMLpC6xOMKCz5Bixxm42D7b9+MZ27ZtTCp7nDstqY=;
- b=QYI+5qgETDB1GPxwXYCRtKbX19Oycdu7ls9Dti64gG3HWsYqoUcMuiOA2NbXE2XmZhIduh
- YOtF6PThxuua3WBkimmenHFdrky7Rn532bxi3ebSOGmt94c77grM2T0oXMt60iKDVklGy3
- DcQawa1mukgy3NhjD2zKr5hnbQM17bk=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1567614182; a=rsa-sha256; cv=none;
- b=A+T2eN69i1V1m0qxLTfmqceV+q3rMDsqIIT3+hQM2fO8rl0VT2kNtLtu4oSF8LHVStqlkB
- QPxODdadVLdGWENxekPWpm6WgxTY4CQ96WeX8CYyCgeJxTR5U306TP9uajVzt8bPCW9ZsW
- WLuCyb++nxGxEnhAMU7ZmU72dv5yUww=
-ARC-Authentication-Results: i=1;
-	beetle.greensocs.com;
-	none
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 5.135.226.135
-Subject: [Qemu-arm] [PATCH] hw/arm/raspi: avoid reparenting the sd card
- during qbus tree reset
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>, peter.maydell@linaro.org,
- qemu-arm@nongnu.org, philmd@redhat.com, Andrew.Baumann@microsoft.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5tQo7aFxAyXO
+In-Reply-To: <20190904083252.7pmmjvbynik7dk33@kamzik.brq.redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: T63mlIYOI44W
 
-In the raspi machine, the sd card can be on several sd bus (in reality
-there is one bus but several controllers). It is initially created in
-the "sd-bus" child in the gpio peripheral. Then is moved (parent bus
-changes) during machine reset in the "sdhci-bus". It can be moved again
-by software between the "sdhci-bus" and another bus ("bcm2835-sdhost-bus"=
-).
-Here's the corresponding qbus tree of the raspi machine:
- + sysbus
-   * bcm2835_gpio
-     + sd-bus
-       * sd-card
-   * bcm2835-sdhost
-     + bcm2835-sdhost-bus
-   * generic-sdhci
-     + sdhci-bus
+On 9/4/19 1:32 AM, Andrew Jones wrote:
+> How would you suggest
+> I apply credit for it? I can give you authorship for any patches that
+> mainly contain your code. Or I can keep authorship and add mentions of
+> your contributions in the commit messages. Just let me know your
+> preference.
 
-During the initial machine reset, the sd card is moved. Since reset is
-based on qbus tree, moving the card during the reset seems odd (it change=
-s
-the qbus tree). In this case, because of the order the qbus tree is
-walked, the sd card ends up being reset twice; the effective reset order =
-call
-follows:
- 1 sd-card
- 2 sd-bus
- 3 bcm2835_gpio        -> move the sd-card to sdhci_bus
- 4 bcm2835-sdhost-bus
- 5 bcm2835-sdhost
- 6 sd-card             (again)
- 7 sdhci-bus
- 8 generic-sdhci
+I don't mind either way.  The latter sounds easier.
 
-This patch adds a raspi machine reset method which moves the sd card
-to the sdhci-bus before doing the whole reset (which will try to do the
-move too). By anticipating the move we avoid changing the qdev tree while
-resetting it.
-
-In consequence the step 1 is skipped in the previous list: when reset sta=
-rts
-the sd-card is already not a child of bcm2835_gpio.
-
-Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
----
-This is a follow-up of this discussion
-https://lists.gnu.org/archive/html/qemu-devel/2019-07/msg06954.html
-
-I did not have much comments about my last proposal so I thought I'd fina=
-lize
-a corresponding patch since it is small instead of doing a ping.
-
-Feel free to comment,
-Damien
----
- hw/arm/raspi.c | 29 +++++++++++++++++++++++++++++
- 1 file changed, 29 insertions(+)
-
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 74c062d05e..19b032546b 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -21,6 +21,7 @@
- #include "hw/loader.h"
- #include "hw/arm/boot.h"
- #include "sysemu/sysemu.h"
-+#include "sysemu/reset.h"
-=20
- #define SMPBOOT_ADDR    0x300 /* this should leave enough space for ATAG=
-S */
- #define MVBAR_ADDR      0x400 /* secure vectors */
-@@ -214,6 +215,32 @@ static void raspi_init(MachineState *machine, int ve=
-rsion)
-     setup_boot(machine, version, machine->ram_size - vcram_size);
- }
-=20
-+static void raspi_reset(MachineState *machine)
-+{
-+    BCM2835GpioState *gpio;
-+
-+    gpio =3D BCM2835_GPIO(object_resolve_path("gpio", NULL));
-+
-+    /*
-+     * Put the sd-card on sdhci bus as the bcm2835_gpio's reset
-+     * procedure will do during qemu_devices_reset().
-+     *
-+     * Note: we do this here to avoid doing it during following
-+     * qemu_devices_reset() so that we don't modify the qbus tree during=
- the
-+     * reset (which is based on it).
-+     *
-+     * Note: sd-card can be on sdbus, sdbus_sdhci or sdbus_sdhost. So at=
- least
-+     * one of the following sdbus_reparent_card is useless. This is not =
-a
-+     * problem because sdbus_reparent_card is a no-op if the source does=
- not
-+     * has a card.
-+     */
-+    sdbus_reparent_card(&gpio->sdbus, gpio->sdbus_sdhci);
-+    sdbus_reparent_card(gpio->sdbus_sdhost, gpio->sdbus_sdhci);
-+
-+    /* then do the classical reset */
-+    qemu_devices_reset();
-+}
-+
- static void raspi2_init(MachineState *machine)
- {
-     raspi_init(machine, 2);
-@@ -223,6 +250,7 @@ static void raspi2_machine_init(MachineClass *mc)
- {
-     mc->desc =3D "Raspberry Pi 2";
-     mc->init =3D raspi2_init;
-+    mc->reset =3D raspi_reset;
-     mc->block_default_type =3D IF_SD;
-     mc->no_parallel =3D 1;
-     mc->no_floppy =3D 1;
-@@ -245,6 +273,7 @@ static void raspi3_machine_init(MachineClass *mc)
- {
-     mc->desc =3D "Raspberry Pi 3";
-     mc->init =3D raspi3_init;
-+    mc->reset =3D raspi_reset;
-     mc->block_default_type =3D IF_SD;
-     mc->no_parallel =3D 1;
-     mc->no_floppy =3D 1;
---=20
-2.22.0
-
+r~

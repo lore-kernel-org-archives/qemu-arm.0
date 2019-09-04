@@ -1,99 +1,98 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp989234wrp;
-        Wed, 4 Sep 2019 10:24:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzC4ItZe7XeTH78vAqSmYdZNfwvziLed+uaFyYp1GwupuwjDAcZsBkw2T1Jqahidkgz8u4s
-X-Received: by 2002:a17:906:529a:: with SMTP id c26mr2897194ejm.232.1567617886758;
-        Wed, 04 Sep 2019 10:24:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567617886; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp989698wrp;
+        Wed, 4 Sep 2019 10:25:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw76BxqW+te39+lYvce11o5p1DjGyO2DNQg9hk00OhPLS66wAKuGa/mrQzjb5o1WMgfPWDy
+X-Received: by 2002:aed:33e5:: with SMTP id v92mr20287907qtd.147.1567617917936;
+        Wed, 04 Sep 2019 10:25:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567617917; cv=none;
         d=google.com; s=arc-20160816;
-        b=TJG1YLrYYO1olEn8JZhO9GqEqyfy8zd9VmQTS7no3i6Mn+UpCkny+xJcIP3r7cyNSS
-         c/4WpFAn3k265Mc3HMVjhdOv7udvymoXoqKZtLneW6hxvY5Qe2cinAH3Nf0DPyAnAHI8
-         1cNmHZvXFz2AffvXekDD3L19pfQiwKdCEs1thN88AE724APKJ6IygoinsW+1cVz6eqAt
-         6kmIqBQzu/0L645nLNaTK1TOZlyQFjfRK1E2tMZ+9M4Bpa4jF03Ge48MOqspb3ERNUse
-         x76Iwrzp+Sp5ZzRsn7Pxh9+epHG3QadJH0YyZlKTjxEstfj2ga8PPTolmrmehorEXiwC
-         mzfQ==
+        b=E6EoVYTXgCeNDP41XzQdyee/mKLVmWZmcdGSBj4WNx4X6EPffZYNycBktCfsR+ZFJB
+         9GE+js8PZTbZbhbpuYk5104y99jHezBLC1lLg5zdYvpy5SUMcCRVGFwHUaY0AiftRONn
+         QMQHP3jzXF0UKKyo7kKZeA0iTIXM6P2t/fZdzI+QHR6uCb/ubweXld6W1c/VqYDhxhSl
+         0jE2xxTjzkkt0QqID1s3tAYRzvtBM6gzURAMjkyf4HWXK9jv1oscl1eztPvrXaPGrlp/
+         Z9SKtAryGAauf9FbZyGnXEbyEuEIwxybCyqOuoQyGJflhRa8pVBB+sckuLMj34yWnlwU
+         5XbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=ELAbj/wA1Xj60eRjG4YFXEUkK6OU0pIolX6z3Dq1NCw=;
-        b=UnhELFfbuzynKEiYNyM+INfvTe/K2Ba980LEt6U85ZvmssthmeR1fLHtKyV0+JqpSL
-         oRLvmqgLEywvz/fsKoYo4WP9a6a2cGdX3r/2IwY1ReX2PBFVB8pJDj6bXGPsIOIvgIFi
-         TuhD0OR98VKVYBcXbuHzHE9XT2Iaf43si1hbPnBuSleXZEy24p2zBnAvp6KY6tPt4idV
-         B76o2xZ9QAakfpVAEj6hQlhJHV/ZBHyFqg+2HiiV/DuUTzsROMOkgsvMjNS76urTFuJG
-         SOuKDf9uyzfhMlhW9YpOry947Nnv/qKXO4FgxjcZZEaLJp5l9LAMMqwG2RVGuXGdYCew
-         4r+g==
+        bh=fquUmVkncxEMfeAsRc3/6BsqyJ3/ccTKHRFzefWvbc4=;
+        b=nq0BbuQIEfqGUkjkJ5yqOEJB9tGA5dNVpziCDgQ7Ph24d1iodEHyCDm1ucoJgM3oaX
+         VUC6Es3USBGY0C068szLYbT6GRzPr0JNyIzN32Oxx4bXVQmGxCp1UFpJGm/liwxGOF3E
+         n0hCSw0hyPQ6YNupG8ZQNMdqVOkAmfSo6fZNV2CK1cdfKv+cg5xQjLlZ6L8hJE8Mczo7
+         BHG5h1xes4313eeYkPImARHtToFSG4lb5pSUUXAYwrXA3R1FXjT78IL1ZA7qTGO3oYIw
+         EScVterDLD9uXTx/AYPQ4cdvYgSTXCZFc22AKPSg+s01kOO1/8WNIFDzoKYyKaOUrAPQ
+         vTbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nwKwH1ef;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pDrdlb2r;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w39si13492037edb.60.2019.09.04.10.24.46
+        by mx.google.com with ESMTPS id k7si5837518qtd.144.2019.09.04.10.25.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2019 10:24:46 -0700 (PDT)
+        Wed, 04 Sep 2019 10:25:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nwKwH1ef;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pDrdlb2r;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35782 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35784 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5Z1R-0002b1-CG
-	for alex.bennee@linaro.org; Wed, 04 Sep 2019 13:24:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48417)
+	id 1i5Z1w-0003Dz-VX
+	for alex.bennee@linaro.org; Wed, 04 Sep 2019 13:25:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48608)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1i5YqX-0001PF-Gc
- for qemu-devel@nongnu.org; Wed, 04 Sep 2019 13:13:30 -0400
+ id 1i5Yql-0001jg-SE
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 13:13:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1i5YqW-00071w-0s
- for qemu-devel@nongnu.org; Wed, 04 Sep 2019 13:13:29 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:38761)
+ id 1i5Yqk-0007AW-Jw
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 13:13:43 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:51644)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1i5YqV-00071Y-Pi; Wed, 04 Sep 2019 13:13:27 -0400
-Received: by mail-wm1-x344.google.com with SMTP id o184so4695504wme.3;
- Wed, 04 Sep 2019 10:13:27 -0700 (PDT)
+ id 1i5Yqj-0007A1-MG; Wed, 04 Sep 2019 13:13:41 -0400
+Received: by mail-wm1-x344.google.com with SMTP id k1so4154652wmi.1;
+ Wed, 04 Sep 2019 10:13:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ELAbj/wA1Xj60eRjG4YFXEUkK6OU0pIolX6z3Dq1NCw=;
- b=nwKwH1efKkXbYgo8Eru3f23GBHkTNejzA+XTuYBSjrKYDl9b2zMugd8Eu7+5Wt/QwK
- DZNRmD6mvrTIevcuoVfqlPJn9Mf56eG5dkDt/GhI2oMdzr88nhlMg/58vgE0sfPNz1EY
- 25btbWkoWUF+sUPGqm98pUqIYqJGqjWINZMf1e5sLR5DZWpYDHfryYwuzcodZh79KinP
- E6sXHoDghvXQzS25O4QMEYnk1WRiOph+DMOcomxoxx9rlSFdauCCOhDw5EmJGQpzBtMw
- PSElOzQXTpTeWHqfFaANauJwneyEfCR5Qk4xytpAZANO80UAuxbltLIg72ejsdqr3pFH
- SdDQ==
+ bh=fquUmVkncxEMfeAsRc3/6BsqyJ3/ccTKHRFzefWvbc4=;
+ b=pDrdlb2rH6HXIVh5RptUMn3al7DtlWvRcvKpBaPq53spQUKpEKQ8tu2amFuF36KcB1
+ m0xhE9u/BWG35kTr/duYfN+6ZpnvRO3m8IqMnljYOymenAdTX22gVSG3Y5HVn4hx+wuN
+ 4TY4rPvOUVTYpQV5MliBprE8tdGbsVkF67cHWQ6/dPredUf+NkOePIQ1iGd6dGT0e4lD
+ IlRtNNsbGvFz9SAxxV/YyURoh7b0iNsTslvE5mVaAkOxu5TUGJxHSVLFTSvvS4W+ta/M
+ WF74ijiw1jQpfVBvvERdwQZ7WKDth9Sf5SbO3O63n0PgA8mHsGBUEZR78lpgPnRCADw0
+ 1Lig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=ELAbj/wA1Xj60eRjG4YFXEUkK6OU0pIolX6z3Dq1NCw=;
- b=kKLM6ctoQ4a61KhMjYYyYsz82V6NwMEy16rJ3WnNq3M6l9Y0aVzLrDF/7TZBdB0B5B
- OEJeeSVRekKSeFKo3u90dCwumVzi7dz6sSUk9/i/4urknUw1SHRxZowdbn3VlyD16EdS
- IitOyc35rm7uWfZ20UGF0UMEavbUE4QULDiRFsf3HsQ9g5Pz39/J+IfZOBBQJ7IY8Y1g
- GBNWpnDS0nzN8JLEXAxOU53snDcv5LtejyjXQRLigR7bXjJEieZhmIrWsi4sEiNZhAwa
- cVb4GcSwSKrd5QluSXA54STK3mj0EdGBVKvakTLYuy3cvKxnor7XvgyCGXSzbm1ss51z
- ckWw==
-X-Gm-Message-State: APjAAAXygmmqiMlTYnNdbquhgMJEQy7aPvc9Vs5W5o7JptBCs3WzAS3+
- icQUkqKcy7xTY7t1vI7bNzM=
-X-Received: by 2002:a05:600c:12:: with SMTP id
- g18mr5461628wmc.95.1567617206828; 
- Wed, 04 Sep 2019 10:13:26 -0700 (PDT)
+ bh=fquUmVkncxEMfeAsRc3/6BsqyJ3/ccTKHRFzefWvbc4=;
+ b=DdaWThf8lTQCei+iygxqZAK+wqD+WHjl+5xdahGNFuSBCHB6Jfnyn2HVliB5s7GPAR
+ EEZLXQmbJvftXYKkm7Uu0x9GJPPEeJ4XYjG7Dcy+N6KyKQ+xUWnJ5LuNAxMSmjeVMBA8
+ 87um/BbMVmgNNknJLfIb6AIabNRmGoYBQqJYl9IcGCl00h8atg3567GJuf5656vFBroK
+ msFmro1JJfw0oBxesYz0DqgfPG/WDiNv/r6wBSb/TPOXkFjrp7tpm2vlAGCqBEYcRZA1
+ xchYn01mUR5ro8BnZpwwQTmsyivBKkBe365EVESQjEOHnjFAamPMkpA8yYXED7t6OVJh
+ NVkQ==
+X-Gm-Message-State: APjAAAU9N8u+YqbMXv5ceFAR3Rb+/uGFx3VDLWc76z2Qs68O7m0SorAF
+ hyIiJiQ1kGuh157sXqkaDsQ=
+X-Received: by 2002:a7b:cb93:: with SMTP id m19mr224180wmi.157.1567617220721; 
+ Wed, 04 Sep 2019 10:13:40 -0700 (PDT)
 Received: from x1w.redhat.com ([195.166.127.210])
- by smtp.gmail.com with ESMTPSA id p19sm2339512wmg.31.2019.09.04.10.13.25
+ by smtp.gmail.com with ESMTPSA id p19sm2339512wmg.31.2019.09.04.10.13.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Sep 2019 10:13:26 -0700 (PDT)
+ Wed, 04 Sep 2019 10:13:40 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Peter Maydell <peter.maydell@linaro.org>,
  Esteban Bosse <estebanbosse@gmail.com>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-devel@nongnu.org,
  Pekka Enberg <penberg@iki.fi>,
  =?UTF-8?q?Zolt=C3=A1n=20Baldaszti?= <bztemail@gmail.com>
-Date: Wed,  4 Sep 2019 19:13:06 +0200
-Message-Id: <20190904171315.8354-6-f4bug@amsat.org>
+Date: Wed,  4 Sep 2019 19:13:14 +0200
+Message-Id: <20190904171315.8354-14-f4bug@amsat.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190904171315.8354-1-f4bug@amsat.org>
 References: <20190904171315.8354-1-f4bug@amsat.org>
@@ -104,8 +103,8 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 2a00:1450:4864:20::344
-Subject: [Qemu-devel] [PATCH 05/14] hw/arm/bcm2835_peripherals: Name various
- address spaces
+Subject: [Qemu-devel] [RFC PATCH 13/14] hw/arm/bcm2838: Map the PCIe memory
+ space
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -125,122 +124,53 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 42AOwe6zGqFA
+X-TUID: XHrIxZ2EMT+o
 
-Various address spaces from the BCM2835 are reported as
-'anonymous' in memory tree:
-
-  (qemu) info mtree
-
-  address-space: anonymous
-    0000000000000000-000000000000008f (prio 0, i/o): bcm2835-mbox
-      0000000000000010-000000000000001f (prio 0, i/o): bcm2835-fb
-      0000000000000080-000000000000008f (prio 0, i/o): bcm2835-property
-
-  address-space: anonymous
-    0000000000000000-00000000ffffffff (prio 0, i/o): bcm2835-gpu
-      0000000000000000-000000003fffffff (prio 0, i/o): alias bcm2835-gpu-ram-alias[*] @ram 0000000000000000-000000003fffffff
-      0000000040000000-000000007fffffff (prio 0, i/o): alias bcm2835-gpu-ram-alias[*] @ram 0000000000000000-000000003fffffff
-      000000007e000000-000000007effffff (prio 1, i/o): alias bcm2835-peripherals @bcm2835-peripherals 0000000000000000-0000000000ffffff
-      0000000080000000-00000000bfffffff (prio 0, i/o): alias bcm2835-gpu-ram-alias[*] @ram 0000000000000000-000000003fffffff
-      00000000c0000000-00000000ffffffff (prio 0, i/o): alias bcm2835-gpu-ram-alias[*] @ram 0000000000000000-000000003fffffff
-
-  [...]
-
-Since the address_space_init() function takes a 'name' argument,
-set it to correctly describe each address space:
-
-  (qemu) info mtree
-
-  address-space: bcm2835-mbox-memory
-    0000000000000000-000000000000008f (prio 0, i/o): bcm2835-mbox
-      0000000000000010-000000000000001f (prio 0, i/o): bcm2835-fb
-      0000000000000080-000000000000008f (prio 0, i/o): bcm2835-property
-
-  address-space: bcm2835-fb-memory
-    0000000000000000-00000000ffffffff (prio 0, i/o): bcm2835-gpu
-      0000000000000000-000000003fffffff (prio 0, i/o): alias bcm2835-gpu-ram-alias[*] @ram 0000000000000000-000000003fffffff
-      0000000040000000-000000007fffffff (prio 0, i/o): alias bcm2835-gpu-ram-alias[*] @ram 0000000000000000-000000003fffffff
-      000000007e000000-000000007effffff (prio 1, i/o): alias bcm2835-peripherals @bcm2835-peripherals 0000000000000000-0000000000ffffff
-      0000000080000000-00000000bfffffff (prio 0, i/o): alias bcm2835-gpu-ram-alias[*] @ram 0000000000000000-000000003fffffff
-      00000000c0000000-00000000ffffffff (prio 0, i/o): alias bcm2835-gpu-ram-alias[*] @ram 0000000000000000-000000003fffffff
-
-  address-space: bcm2835-property-memory
-    0000000000000000-00000000ffffffff (prio 0, i/o): bcm2835-gpu
-      0000000000000000-000000003fffffff (prio 0, i/o): alias bcm2835-gpu-ram-alias[*] @ram 0000000000000000-000000003fffffff
-      0000000040000000-000000007fffffff (prio 0, i/o): alias bcm2835-gpu-ram-alias[*] @ram 0000000000000000-000000003fffffff
-      000000007e000000-000000007effffff (prio 1, i/o): alias bcm2835-peripherals @bcm2835-peripherals 0000000000000000-0000000000ffffff
-      0000000080000000-00000000bfffffff (prio 0, i/o): alias bcm2835-gpu-ram-alias[*] @ram 0000000000000000-000000003fffffff
-      00000000c0000000-00000000ffffffff (prio 0, i/o): alias bcm2835-gpu-ram-alias[*] @ram 0000000000000000-000000003fffffff
-
-  address-space: bcm2835-dma-memory
-    0000000000000000-00000000ffffffff (prio 0, i/o): bcm2835-gpu
-      0000000000000000-000000003fffffff (prio 0, i/o): alias bcm2835-gpu-ram-alias[*] @ram 0000000000000000-000000003fffffff
-      0000000040000000-000000007fffffff (prio 0, i/o): alias bcm2835-gpu-ram-alias[*] @ram 0000000000000000-000000003fffffff
-      000000007e000000-000000007effffff (prio 1, i/o): alias bcm2835-peripherals @bcm2835-peripherals 0000000000000000-0000000000ffffff
-      0000000080000000-00000000bfffffff (prio 0, i/o): alias bcm2835-gpu-ram-alias[*] @ram 0000000000000000-000000003fffffff
-      00000000c0000000-00000000ffffffff (prio 0, i/o): alias bcm2835-gpu-ram-alias[*] @ram 0000000000000000-000000003fffffff
+The BCM2711 has a BCM54213 Gigabit Ethernet block mapped
+in the PCIe range.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/display/bcm2835_fb.c    | 2 +-
- hw/dma/bcm2835_dma.c       | 2 +-
- hw/misc/bcm2835_mbox.c     | 2 +-
- hw/misc/bcm2835_property.c | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+FIXME: create the bcm54213-geth in raspi.c?
+---
+ hw/arm/bcm2836.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
-index 8f856878cd..85aaa54330 100644
---- a/hw/display/bcm2835_fb.c
-+++ b/hw/display/bcm2835_fb.c
-@@ -425,7 +425,7 @@ static void bcm2835_fb_realize(DeviceState *dev, Error **errp)
-     s->initial_config.base = s->vcram_base + BCM2835_FB_OFFSET;
+diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+index d89d7cd71d..39190a108f 100644
+--- a/hw/arm/bcm2836.c
++++ b/hw/arm/bcm2836.c
+@@ -15,6 +15,7 @@
+ #include "hw/arm/bcm2836.h"
+ #include "hw/arm/raspi_platform.h"
+ #include "hw/sysbus.h"
++#include "hw/misc/unimp.h"
  
-     s->dma_mr = MEMORY_REGION(obj);
--    address_space_init(&s->dma_as, s->dma_mr, NULL);
-+    address_space_init(&s->dma_as, s->dma_mr, TYPE_BCM2835_FB "-memory");
+ struct BCM283XInfo {
+     const char *name;
+@@ -60,6 +61,8 @@ static const BCM283XInfo bcm283x_socs[] = {
+ #define GIC_VIFACE_OTHER_OFS(cpu)  (0x5000 + (cpu) * 0x200)
+ #define GIC_VCPU_OFS                0x6000
  
-     bcm2835_fb_reset(dev);
- 
-diff --git a/hw/dma/bcm2835_dma.c b/hw/dma/bcm2835_dma.c
-index 6acc2b644e..1e458d7fba 100644
---- a/hw/dma/bcm2835_dma.c
-+++ b/hw/dma/bcm2835_dma.c
-@@ -383,7 +383,7 @@ static void bcm2835_dma_realize(DeviceState *dev, Error **errp)
++#define PCIE_BASE                   0x7d500000
++
+ static void bcm2836_init(Object *obj)
+ {
+     BCM283XState *s = BCM283X(obj);
+@@ -238,6 +241,13 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
+         qdev_connect_gpio_out(DEVICE(&s->cpus[n]), GTIMER_SEC,
+                 qdev_get_gpio_in_named(DEVICE(&s->control), "cntpsirq", n));
      }
- 
-     s->dma_mr = MEMORY_REGION(obj);
--    address_space_init(&s->dma_as, s->dma_mr, NULL);
-+    address_space_init(&s->dma_as, s->dma_mr, TYPE_BCM2835_DMA "-memory");
- 
-     bcm2835_dma_reset(dev);
- }
-diff --git a/hw/misc/bcm2835_mbox.c b/hw/misc/bcm2835_mbox.c
-index 7690b9afaf..77285624c9 100644
---- a/hw/misc/bcm2835_mbox.c
-+++ b/hw/misc/bcm2835_mbox.c
-@@ -311,7 +311,7 @@ static void bcm2835_mbox_realize(DeviceState *dev, Error **errp)
-     }
- 
-     s->mbox_mr = MEMORY_REGION(obj);
--    address_space_init(&s->mbox_as, s->mbox_mr, NULL);
-+    address_space_init(&s->mbox_as, s->mbox_mr, TYPE_BCM2835_MBOX "-memory");
-     bcm2835_mbox_reset(dev);
++
++    /* bcm2838 kludge to easily create PCIe */
++    if (info->gic_base) {
++        create_unimplemented_device("bcm2838-pcie", PCIE_BASE, 0x100000);
++        create_unimplemented_device("bcm54213-geth",
++                                    PCIE_BASE + 0x80000, 0x10000);
++    }
  }
  
-diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-index ab66d3572e..3dff5a7157 100644
---- a/hw/misc/bcm2835_property.c
-+++ b/hw/misc/bcm2835_property.c
-@@ -417,7 +417,7 @@ static void bcm2835_property_realize(DeviceState *dev, Error **errp)
-     }
- 
-     s->dma_mr = MEMORY_REGION(obj);
--    address_space_init(&s->dma_as, s->dma_mr, NULL);
-+    address_space_init(&s->dma_as, s->dma_mr, TYPE_BCM2835_PROPERTY "-memory");
- 
-     /* TODO: connect to MAC address of USB NIC device, once we emulate it */
-     qemu_macaddr_default_if_unset(&s->macaddr);
+ static Property bcm2836_props[] = {
 -- 
 2.20.1
 

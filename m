@@ -1,67 +1,67 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp439906wrp;
-        Wed, 4 Sep 2019 01:59:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx+8LJ04pQT2rStUL7f86MWSEG4bDamvLjJ34pY6YuPVIpA48xEOStNOBoYu5oPQpLQIfMj
-X-Received: by 2002:ac8:368b:: with SMTP id a11mr20742611qtc.47.1567587558237;
-        Wed, 04 Sep 2019 01:59:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567587558; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp442181wrp;
+        Wed, 4 Sep 2019 02:01:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwsgmwuXLhYu9Ez9wSTSmr8P2nxiP0fQlG2nL+cv84L3wJNi5jwDq/lrdngJp734I+NVo2y
+X-Received: by 2002:a17:906:cccc:: with SMTP id ot12mr827644ejb.210.1567587698359;
+        Wed, 04 Sep 2019 02:01:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567587698; cv=none;
         d=google.com; s=arc-20160816;
-        b=jsOS56aEPWJvkGR7enySJK2wcF/q4dYehcwHukXZHIq3BmUFRzzwSSnnbRt04Tdc2x
-         K7lVyPv4fUqFvm2lOn5g2FLowNm2on7MGTQp/AWt+3ubVblsfmrzkfQRWM8as/i5cQC4
-         If6EFUEWoYXApVZY8eNuv8NN5sREMHpIs4zw46sPhHN6kbs7mEwmOb9RWOR24vROmqgs
-         /v2HJAlpoQnlRNE+GYCwuilTWfaMm/sCJe28fGNrWUm8J9ZWXQxi9ZLiARtFpDcdo0OG
-         gGATD6ycEWa8gENupVoMj7VD1iblsNwnrVdXpz4H6D0HCLZsdJ8TQ8BFur0OXFm6Ela4
-         oiGA==
+        b=OKiEgDgpqsL/GXDz/qT2pTObpz8jLba9TcEv5xpu9+KCQPoQQK26OtfEtxqC5ESZd1
+         G7UxEAG1lNhgstSA6p24GlMJ9ptEJpfsi6zuEVanfEbYctd4Xd5cr0SomQ7CVYjDm+XQ
+         +E5BhzaqHzHc+sfDAGUSuz32ClQfKIBvvbSCbg61kq5FIF2L2Q1eHorB2NTVIEeGeXkc
+         zdj5w8jsI4KmSUlHCUf6Xbj5e2n6hmaa0pfU9EHFqa834EgrYzJF2B/j9MqQE4jK9f36
+         dTgTTPbkgmK9e3EZRyvAObtEQ5lgEjObhD2Ua3Tl4w7NhLMqhSveZ0Uge+I8FHD/a/iS
+         xt2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version:references
          :in-reply-to:message-id:date:to:from;
-        bh=baRvW1oCGVZkVk4Dgfg2Qxz+MISC/NzNUi8xulrSLos=;
-        b=ixUQpwdEL0sACGjIZanvfA44vpxCPemLrlh8VbdyIl74Xxm9f/5l9L5npwE/Gtzo13
-         sUv23x+7YFkUGYRXnabnkY/BfPy2AqzZ+tI7LbNcBUaoBmynobssI5yc9gixvtfCgEiT
-         vpEpaxBDtHq2aJLXzqmGU30NQJbBOLgENIzcFS6Y9jn9rD6ePaxNnD33l0gkqSOe75om
-         7UACpwQpCbb3yiEIgWESsX1On7+qhaouZh7STWkz8JsME1qP/XsPHM2DNYdUSneIoJMx
-         u7L9LlDyvvdwAUHdVCzc+DOEX6fwlw1s1Wn6aA1a03zgIdjuU6yom0MpBmh3tfzIbua2
-         JmNg==
+        bh=f8D/tQdT+Jv9daEw0/qh5r6hCDPHdJrh65qK9xGVIUo=;
+        b=CPX1pzLMbJZTTIjpb6lJWcA5L6E+Ip5LKJCUIIFQALaI1s5G8JqOVKfJNrWEODduGF
+         IbhfJirYteFUmIi11lZjlWcYsXgWbSB9G3B5mB+IQQ6yDR/tAeK2kBcv8+pBeQalTBdS
+         IWFyxseS1TPIyMYYMTWsYWVcm8y80k5W8p3aIKxv2dkZySWFezgD8+OHOhVk1TVjrxfs
+         snqL+YP6usBKO6oYZmH8CMdBbIl9spEYqynf3Ck6UyWjVFBo1nEs49nByk2JY9K+PlqP
+         ZvMYXW+eFWdJawHZutlqTnljePKYQgSHzM6P+qsy4ZnsXx/nF+UdDZELILWm4vjcymZB
+         QYDA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g3si3620651qth.95.2019.09.04.01.59.18
+        by mx.google.com with ESMTPS id qo28si6377212ejb.378.2019.09.04.02.01.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2019 01:59:18 -0700 (PDT)
+        Wed, 04 Sep 2019 02:01:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54702 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54732 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5R8H-0000Bh-4d
-	for alex.bennee@linaro.org; Wed, 04 Sep 2019 04:59:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38431)
+	id 1i5RAW-0002Pv-H9
+	for alex.bennee@linaro.org; Wed, 04 Sep 2019 05:01:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38640)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1i5R6p-00072F-Hr
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 04:57:48 -0400
+ id 1i5R79-0007TP-V7
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 04:58:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1i5R6o-000776-71
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 04:57:47 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:54312 helo=huawei.com)
+ id 1i5R78-0007Gj-CV
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 04:58:07 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2261 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1i5R6n-000765-Pc; Wed, 04 Sep 2019 04:57:46 -0400
+ id 1i5R78-0007Fw-0n; Wed, 04 Sep 2019 04:58:06 -0400
 Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id C94F367E587719552E02;
- Wed,  4 Sep 2019 16:57:43 +0800 (CST)
+ by Forcepoint Email with ESMTP id 1D9BD3FCE8CBABA5053F;
+ Wed,  4 Sep 2019 16:58:04 +0800 (CST)
 Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
  DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
- 14.3.439.0; Wed, 4 Sep 2019 16:57:33 +0800
+ 14.3.439.0; Wed, 4 Sep 2019 16:57:56 +0800
 From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
  <imammedo@redhat.com>
-Date: Wed, 4 Sep 2019 09:56:20 +0100
-Message-ID: <20190904085629.13872-3-shameerali.kolothum.thodi@huawei.com>
+Date: Wed, 4 Sep 2019 09:56:27 +0100
+Message-ID: <20190904085629.13872-10-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20190904085629.13872-1-shameerali.kolothum.thodi@huawei.com>
 References: <20190904085629.13872-1-shameerali.kolothum.thodi@huawei.com>
@@ -70,9 +70,9 @@ Content-Type: text/plain
 X-Originating-IP: [10.202.227.237]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 45.249.212.32
-Subject: [Qemu-arm] [PATCH-for-4.2 v10 02/11] hw/acpi: Do not create memory
- hotplug method when handler is not defined
+X-Received-From: 45.249.212.191
+Subject: [Qemu-arm] [PATCH-for-4.2 v10 09/11] docs/specs: Add ACPI GED
+ documentation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -89,44 +89,84 @@ Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
  sebastien.boeuf@intel.com, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YEYKEq3slzZX
+X-TUID: zGWdao3tXSmE
 
-From: Samuel Ortiz <sameo@linux.intel.com>
+Documents basic concepts of ACPI Generic Event device(GED)
+and interface between QEMU and the ACPI BIOS.
 
-With Hardware-reduced ACPI, the GED device will manage ACPI
-hotplug entirely. As a consequence, make the memory specific
-events AML generation optional. The code will only be added
-when the method name is not NULL.
-
-Signed-off-by: Samuel Ortiz <sameo@linux.intel.com>
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
- hw/acpi/memory_hotplug.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ docs/specs/acpi_hw_reduced_hotplug.txt | 60 ++++++++++++++++++++++++++
+ 1 file changed, 60 insertions(+)
+ create mode 100644 docs/specs/acpi_hw_reduced_hotplug.txt
 
-diff --git a/hw/acpi/memory_hotplug.c b/hw/acpi/memory_hotplug.c
-index 9b0b150f4f..8d2e82240f 100644
---- a/hw/acpi/memory_hotplug.c
-+++ b/hw/acpi/memory_hotplug.c
-@@ -712,10 +712,12 @@ void build_memory_hotplug_aml(Aml *table, uint32_t nr_mem,
-     }
-     aml_append(table, dev_container);
- 
--    method = aml_method(event_handler_method, 0, AML_NOTSERIALIZED);
--    aml_append(method,
--        aml_call0(MEMORY_DEVICES_CONTAINER "." MEMORY_SLOT_SCAN_METHOD));
--    aml_append(table, method);
-+    if (event_handler_method) {
-+        method = aml_method(event_handler_method, 0, AML_NOTSERIALIZED);
-+        aml_append(method, aml_call0(MEMORY_DEVICES_CONTAINER "."
-+                                     MEMORY_SLOT_SCAN_METHOD));
-+        aml_append(table, method);
+diff --git a/docs/specs/acpi_hw_reduced_hotplug.txt b/docs/specs/acpi_hw_reduced_hotplug.txt
+new file mode 100644
+index 0000000000..2d78c40d6a
+--- /dev/null
++++ b/docs/specs/acpi_hw_reduced_hotplug.txt
+@@ -0,0 +1,60 @@
++QEMU<->ACPI BIOS Generic Event Device interface
++
++The ACPI Generic Event Device (GED) is a HW reduced platform
++specific device introduced in ACPI v6.1 that handles all platform
++events, including the hotplug ones. GED is modelled as a device
++in the namespace with a _HID defined to be ACPI0013. This document
++describes the interface between QEMU and the ACPI BIOS.
++
++GED allows HW reduced platforms to handle interrupts in ACPI ASL
++statements. It follows a very similar approach like the _EVT method
++from GPIO events. All interrupts are listed in  _CRS and the handler
++is written in _EVT method. However, Qemu implementation uses a single
++interrupt for the GED device, relying on IO memory region to communicate
++the type of device affected by the interrupt. This way, we can support
++up to 32 events with a unique interrupt.
++
++Here is an example.
++
++Device (\_SB.GED)
++{
++    Name (_HID, "ACPI0013")
++    Name (_UID, Zero)
++    Name (_CRS, ResourceTemplate ()
++    {
++        Interrupt (ResourceConsumer, Edge, ActiveHigh, Exclusive, ,, )
++        {
++            0x00000029,
++        }
++    })
++    OperationRegion (EREG, SystemMemory, 0x09080000, 0x04)
++    Field (EREG, DWordAcc, NoLock, WriteAsZeros)
++    {
++        ESEL,   32
 +    }
- 
-     g_free(mhp_res_path);
- }
++    Method (_EVT, 1, Serialized)
++    {
++        Local0 = ESEL // ESEL = IO memory region which specifies the
++                      // device type.
++        If (((Local0 & One) == One))
++        {
++            MethodEvent1()
++        }
++        If ((Local0 & 0x2) == 0x2)
++        {
++            MethodEvent2()
++        }
++        ...
++    }
++}
++
++GED IO interface (4 byte access):
++read access:
++    [0x0-0x3] Event selector bit field(32 bit) set by Qemu.
++    bits:
++        0:  Memory hotplug event
++        1:  System power down event
++     2-31:  Reserved
++
++write_access:
++    Nothing is expected to be written into GED IO memory
 -- 
 2.17.1
 

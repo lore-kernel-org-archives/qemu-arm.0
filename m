@@ -1,98 +1,98 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp990527wrp;
-        Wed, 4 Sep 2019 10:26:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwPfTerClMdNTDF3hzvLrms6VR1WWWlJlnyIkDGWQzSfGjphSn88bV6yhJVRNMBThmiiGLT
-X-Received: by 2002:ac8:92d:: with SMTP id t42mr13382435qth.206.1567617969461;
-        Wed, 04 Sep 2019 10:26:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567617969; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp993656wrp;
+        Wed, 4 Sep 2019 10:29:12 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyFLIWxrBOvUcRP4A+LUxe9KNUupmtW7Pb0ngz+maLbUlMGrJwr6z9yJ0dRMsuXEwYt/Z/V
+X-Received: by 2002:a17:906:1e8c:: with SMTP id e12mr13172040ejj.135.1567618152787;
+        Wed, 04 Sep 2019 10:29:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567618152; cv=none;
         d=google.com; s=arc-20160816;
-        b=M11Bgslr2xFK5o38zdheSm+xl6CHkSn+v6oCQ/liB/F9rHdvIWIruOZMUXHU6VmmQE
-         uhHQ6eLkz774lts0WwI/3QOwY0fG0WaFqqUoslUhyuYCNuI8mOq+RKPqHCVxLB21GTZE
-         AJMORqdXndLdGef/fEFGn2c+9IcqlIw5hxW6fxk0PkEyqsRtqXIunjUNuEfcHFUIUX7S
-         zUCz694A6INB8KNUkyPPx1MCWwDFLsAgskRGvcCHJx5r6+t0KA1EWTg0m0pC3dsvEgB6
-         pjCdcXnY3WILoKKMsFo/mXkzNvIb8kf9MyT6bS4UmcsGbhSs7PVtaUs5G4y/tsoLiGFw
-         fVVw==
+        b=UrCfl9tKXL/9lneMNCFG1LHJ6AeBV9hNa68kpfnTsrVGnoyMfLV/WRJFB0kmkhBSP1
+         K0Oci69XheibkH83TbrXUQCXidJN+EBq+1clAG4y46Iepo7OH1nhMKemYEOoHnmp+pFw
+         wmQ82lOANmRk2opVAhQ8KJeMa18GldlM9AlmT5NKwniinzzLUiiB2IhsjeuD6hVt08dz
+         1ENvvNvKVK3/LXexrb4gN4WpofoN1EuX57n8V7woe2FqIS33IJVVik9rtB/QZ5hGrmlf
+         3aDcsJgDcljm1gC/6n+3L/NWTefDF92qwbZFLWOSznm+6us6GFnO7PqCcfMfyaxnqyQV
+         OHSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=ykU8gHuJpolHJspGCXGN29S68B/lyOH0ZSECMmtfWFc=;
-        b=WbqwknibF8BCWZdaFUocdUWNrfTWLATeHJuJr+vnhU8cLHyqK9/KYJzP6q5b3KMfCF
-         dgMGkV/n1h8fjicA7v3ltwVOvVVaaTMXzJhaKzn/Fd2ODSgsZlZ/nGENa+NuO8tin8+M
-         jUkNWouD7DCESXkWaIvXC0Jdn9bWNwVrj8jw0Q2473wwfpzWkh5JmDrbwzjLqgD2pCJw
-         E1LpzElpdwvzXXUpUGH+Okw2FAT4RwiuWWdruwqWERYu6/2IMhQC/UnV+iLBOjF7lkL9
-         Hf5LINb77QBxqrn4PAdwfIz5TcntBeKVtLGVOy6CR3mkPmlTh3m2/0oI90fhIQ/BU6rV
-         dpqg==
+        bh=NE6SSY/l1bK6cwQa5Wl0c6DT5cjmpSFoKjbT7RMOdm4=;
+        b=DRmXgI4wOJkKF/jbpzMMpJaNZ6gfMEHpMf7FCo9gN5g273tyaNMoUD4qkOwc+RiMHr
+         PKeKav7O21FPSNMQL+fSVmn81qw8hJ1HJwkTdy24nhYaxh8M9cre93jLQ2uD7V+pY/Hs
+         5kShRla/Z3uC6Yu8UU/V4y+B/u4zTFej32WwUZO/5n/lIIEBRVOdoBIbsxqZy1NG+xxn
+         KieJAD88eViQdkBwefc15uxNysYaqsDFipJ3Lk/Xy4AMhvZCRO+JjkhBdO2Y17NPT77H
+         q+awiE9Y/8io/+LbUlchsh3NpMnm08r27PatK3ogO7JfBty2qe+pSHIBZKkM17/3bkel
+         2ytQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nwAHdrV/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tf+OuKsy;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f12si7765526qvh.101.2019.09.04.10.26.09
+        by mx.google.com with ESMTPS id k5si13573252edl.392.2019.09.04.10.29.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2019 10:26:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Sep 2019 10:29:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nwAHdrV/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35868 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tf+OuKsy;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35918 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5Z2m-0005Lm-If
-	for alex.bennee@linaro.org; Wed, 04 Sep 2019 13:26:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48667)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i5Z5j-0007mC-3D
+	for alex.bennee@linaro.org; Wed, 04 Sep 2019 13:29:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48568)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1i5Yqs-0001p8-S8
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 13:13:53 -0400
+ id 1i5Yqi-0001gu-MK
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 13:13:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1i5Yqo-0007CP-1w
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 13:13:49 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:37646)
+ id 1i5Yqg-00078Z-6o
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 13:13:40 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:54459)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1i5Yqi-00079F-61; Wed, 04 Sep 2019 13:13:40 -0400
-Received: by mail-wm1-x343.google.com with SMTP id r195so4718355wme.2;
- Wed, 04 Sep 2019 10:13:39 -0700 (PDT)
+ id 1i5Yqf-00078D-Ue; Wed, 04 Sep 2019 13:13:38 -0400
+Received: by mail-wm1-x342.google.com with SMTP id k2so4122546wmj.4;
+ Wed, 04 Sep 2019 10:13:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ykU8gHuJpolHJspGCXGN29S68B/lyOH0ZSECMmtfWFc=;
- b=nwAHdrV/F312+N2AYbJx6mKzV27iers+camiq0oFZq6n1KozJ0fJanVtuGG9z4OBcV
- KcR/IZI5QcRUTDBGpR0ismGy1gPDFidpNqFvlLFyytxpDBN9MN6t20RfZ0k4yqeEmALE
- S1WJzlcRsPddON2EjlvO+YOLjsoB3Py27ok8CqYJ2mYJzXG0oSzveTHEamoTlfjRQ+24
- GC4J7DbIudF4F7FpFo0/8+csN6uOTUQuEhD0Hdy3myG0VAM21fm/iMCpNEFlZxarylY9
- bFT7SzqNdJv6USHZWWawIjCbfW72d4VcuT7CxaP+f0pa/+m6idqMuoBluSU4vswRJr37
- iOzQ==
+ bh=NE6SSY/l1bK6cwQa5Wl0c6DT5cjmpSFoKjbT7RMOdm4=;
+ b=tf+OuKsye8v2L5UnAN3fHr9YkveMzJ6mLlvXQ2pCwp4wh14jbwJ0jf9Hk/JpTEcQb+
+ L6KiTFqhg/HS82Jf6wQqK2pDKhAsXFb48k85HubQWf/WIG2qRwH03piaU/BpUQHBD0nj
+ l+6RjDP59uAqrgZlOvT95F0Vs30c8FVWGD8HOOM0bIgB/7ByGnHnSFwxX3F+u/mtnDyd
+ +zIJWaR4AKQ34bksY0xVEMFt4Z51UuvBonpS2BQGre1oAmZvd9+LSiv6AFGy5M8LZOVt
+ biuP2QufVrfB3Z8jMwG28EAiSTTo4bzCEHoKr4mqZ3IGF4jR5OjWYyJwckNnb4PqIwUX
+ BzqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=ykU8gHuJpolHJspGCXGN29S68B/lyOH0ZSECMmtfWFc=;
- b=SPBR01v9AzQTqbbkyWPHbkOh66OXXZ+tpr/Z3ZTAvD9YF5pIHvuWCLZ60aVcUqsQJj
- wkZ+G34MQdYa5FUMUqCnmLs+G5zOH8Gj3wn0LjFaLKq+SltUq4/b7E0esALNcNql6bMw
- k/43DSpJv55z6GpMEt3/ibDZ3jd/BqK1HcrWlSQchpfKQzbknw+Q7eQFyN451QPCtK9S
- 5zfYgnIi5TmCkb0FT6hbNumoyu877SuGKu+RRtZPareg1M5f9gyHAWZyovDk0Ika5XZ7
- pMDog/nY5ZUiXOhUgwhqN7OOwhp9UBK5WVXcNO0MkiZ9eTdN0SrZ9fm1plrdV0S6dsuf
- IUsw==
-X-Gm-Message-State: APjAAAXhwo12l29Xw9pfV4eatzyuV08HZs+GejLxAiiMaSZOC2XX8L8T
- 1n6JIELekhhPHL59zCOY0sQ=
-X-Received: by 2002:a1c:b745:: with SMTP id h66mr5243020wmf.70.1567617219090; 
- Wed, 04 Sep 2019 10:13:39 -0700 (PDT)
+ bh=NE6SSY/l1bK6cwQa5Wl0c6DT5cjmpSFoKjbT7RMOdm4=;
+ b=n56k98BerMwwtwuH2nOoq/NO/PjKqvZt8ra2hHVbCmO4U6rOb9Ev6RSBYRzsPLycIg
+ l3eFiEVOUtBZh4HZ+sfM++zBA9d6reHm+BmJpaGLFYBbjGtfuriKUMph3OVmECe0nuiV
+ ShCNGtznzapKNxhpAXVFoHZGydlvQF2n8s/Ax5l/IzPRKEMw8Kv4ny/iGBdZnRAfePU2
+ uB065oPSSOt2g8CEc6t74xUWollxeRWvjGAnpql9hJtx8K6ygPC5COkmqOfY/j0ReReg
+ nzske1Fw+4hXS0em/Nb0B3Z098VKhMC2+n5YcnQJeFR83JOGreQspdif2m1YjFPuILJn
+ ZcTw==
+X-Gm-Message-State: APjAAAWoIjLpSoA0lFfPU7yU8Wf3J+fjJOw42+lIhUUixTGztwYIsgAw
+ whqUIqegfldXNydrveKyNLU=
+X-Received: by 2002:a1c:a003:: with SMTP id j3mr5284778wme.42.1567617216983;
+ Wed, 04 Sep 2019 10:13:36 -0700 (PDT)
 Received: from x1w.redhat.com ([195.166.127.210])
- by smtp.gmail.com with ESMTPSA id p19sm2339512wmg.31.2019.09.04.10.13.37
+ by smtp.gmail.com with ESMTPSA id p19sm2339512wmg.31.2019.09.04.10.13.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Sep 2019 10:13:38 -0700 (PDT)
+ Wed, 04 Sep 2019 10:13:36 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Peter Maydell <peter.maydell@linaro.org>,
  Esteban Bosse <estebanbosse@gmail.com>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-devel@nongnu.org,
  Pekka Enberg <penberg@iki.fi>,
  =?UTF-8?q?Zolt=C3=A1n=20Baldaszti?= <bztemail@gmail.com>
-Date: Wed,  4 Sep 2019 19:13:13 +0200
-Message-Id: <20190904171315.8354-13-f4bug@amsat.org>
+Date: Wed,  4 Sep 2019 19:13:12 +0200
+Message-Id: <20190904171315.8354-12-f4bug@amsat.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190904171315.8354-1-f4bug@amsat.org>
 References: <20190904171315.8354-1-f4bug@amsat.org>
@@ -102,267 +102,167 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::343
-Subject: [Qemu-arm] [RFC PATCH 12/14] hw/arm/bcm2836: Add the BCM2838 which
- uses a GICv2
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::342
+Subject: [Qemu-devel] [PATCH 11/14] hw/arm/bcm2835_peripherals: Map various
+ BCM2838 blocks
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  qemu-arm@nongnu.org, Clement Deschamps <clement.deschamps@antfield.fr>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: F+xE/kZJDHnF
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6rcxOuJlT/AM
 
-The BCM2838 is improvement of the BCM2837:
-- Cortex-A72 instead of the A53
-- peripheral block and local soc controller are mapped differently,
-- GICv2
-- PCIe block
-- exhanced MMU to address over 4GiB of SDRAM
+The BCM2838 provides more peripherals.
+Add them as 'unimplemented' so we can track when/how firmware
+and kernel access them.
 
-See https://www.raspberrypi.org/forums/viewtopic.php?t=244479&start=25
-and https://patchwork.kernel.org/patch/11053097/
+Based on various sources:
 
-This patch starts mapping the GICv2 but interrupt lines are NOT
-wired (yet).
+* U-boot: https://github.com/raspberrypi/firmware/tree/next/boot
 
-This is enough to start running the Ubuntu kernel8.img from [1].
+  - arch/arm/dts/bcm283x.dtsi
+  - arch/arm/dts/bcm2838.dtsi
+  - arch/arm/dts/bcm2838-rpi-4-b.dts
 
-Extract the kernel with:
+* Arnd Bergmann analysis: https://www.cnx-software.com/2019/06/24/raspberry-pi-4-features-broadcom-bcm2711-processor-up-to-4gb-ram/#comment-563948
 
-  $ mkdir bootpart
-  $ guestfish \
-      --ro \
-      -a ubuntu-18.04.3-preinstalled-server-arm64+raspi4.img \
-      -m /dev/sda1
-  Welcome to guestfish, the guest filesystem shell for
-  editing virtual machine filesystems and disk images.
+* Linux: https://patchwork.kernel.org/patch/11053097/
 
-  ><fs> ls /
-  COPYING.linux
-  LICENCE.broadcom
-  System.map
-  armstub8-gic.bin
-  bcm2710-rpi-3-b-plus.dtb
-  bcm2710-rpi-3-b.dtb
-  bcm2710-rpi-cm3.dtb
-  bcm2711-rpi-4-b.dtb
-  bcm2837-rpi-3-b-plus.dtb
-  bcm2837-rpi-3-b.dtb
-  cmdline.txt
-  config.txt
-  fixup4.dat
-  fixup4cd.dat
-  fixup4db.dat
-  fixup4x.dat
-  kernel8.img
-  overlays
-  start4.elf
-  start4cd.elf
-  start4db.elf
-  start4x.elf
-  ><fs> copy-out / bootpart/
-  ><fs> q
-
-Then some progress can be noticed running:
-
-  $ qemu-system-aarch64 -d unimp,guest_errors,int,in_asm \
-      -M raspi4 \
-      -kernel bootpart/kernel8.img \
-      -dtb bootpart/bcm2711-rpi-4-b.dtb \
-      -initrd bootpart/boot/initrd.img \
-      -append \
-         "earlycon=pl011,0xfe201000 console=ttyAMA0 console=tty1 loglevel=8"
-
-Not very interesting, but it runs until configuring the GIC.
-(remove 'in_asm' if too verbose).
-
-TODO:
-
-- wire IRQs to the GIC :)
-
-- map the SPI bootrom from [3] (boot sequence: [4])
-
-- per [2] we could try booting without using the GIC, adding "enable_gic=0"
-  in config.txt. this variable is parsed by the firmware:
-
-  $ fgrep -r enable_gic bootpart
-  Binary file bootpart/start4x.elf matches
-  Binary file bootpart/start4.elf matches
-  Binary file bootpart/start4db.elf matches
-  Binary file bootpart/start4cd.elf matches
-  bootpart/config.txt:enable_gic=1
-
-  the stub [5] doesn't seem to check a register for it.
-  maybe it falls back to kernel7l?
-
-- decompile start4.elf to check how 'enable_gic' is used
-  using vc4 toolchain from [6]
-
-[1] https://github.com/TheRemote/Ubuntu-Server-raspi4-unofficial/releases
-[2] https://jamesachambers.com/raspberry-pi-ubuntu-server-18-04-2-installation-guide/
-[3] https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md
-[4] https://raspberrypi.stackexchange.com/questions/10442/what-is-the-boot-sequence
-[5] https://github.com/raspberrypi/tools/commit/7f4a937e1bacbc111a22552169bc890b4bb26a94#diff-8c41083e9fa0c98f1c3015e11b897444
-[6] https://github.com/christinaa/rpi-open-firmware
+  - arch/arm/boot/dts/bcm283x.dtsi
+  - arch/arm/boot/dts/bcm283x-rpi-usb-peripheral.dtsi
+  - arch/arm/boot/dts/bcm2711.dtsi
+  - arch/arm/boot/dts/bcm2711-rpi-4-b.dts
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/bcm2836.c         | 75 ++++++++++++++++++++++++++++++++++++++++
- include/hw/arm/bcm2836.h |  3 ++
- 2 files changed, 78 insertions(+)
+TODO: At least use proper pl011[2] and pl011[3]
+---
+ hw/arm/bcm2835_peripherals.c         | 23 +++++++++++++++++++----
+ include/hw/arm/bcm2835_peripherals.h |  8 ++++++--
+ include/hw/arm/raspi_platform.h      | 14 ++++++++++++++
+ 3 files changed, 39 insertions(+), 6 deletions(-)
 
-diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index 019e67b906..d89d7cd71d 100644
---- a/hw/arm/bcm2836.c
-+++ b/hw/arm/bcm2836.c
-@@ -21,6 +21,7 @@ struct BCM283XInfo {
-     const char *cpu_type;
-     hwaddr peri_base; /* Peripheral base address seen by the CPU */
-     hwaddr ctrl_base; /* Interrupt controller and mailboxes etc. */
-+    hwaddr gic_base;
-     int clusterid;
- };
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index be6270b8ef..72287d5921 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -342,15 +342,30 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+     create_unimp(s, &s->a2w, "bcm2835-a2w", 0x102000, 0x1000);
+     create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
+     create_unimp(s, &s->smi, "bcm2835-smi", SMI_OFFSET, 0x100);
+-    create_unimp(s, &s->spi0, "bcm2835-spi0", SPI0_OFFSET, 0x20);
++    create_unimp(s, &s->uartu[2], "!pl011[2]", UART2_OFFSET, 0x100);
++    create_unimp(s, &s->uartu[3], "!pl011[3]", UART3_OFFSET, 0x100);
++    create_unimp(s, &s->uartu[4], "!pl011[4]", UART4_OFFSET, 0x100);
++    create_unimp(s, &s->uartu[5], "!pl011[5]", UART5_OFFSET, 0x100);
++    create_unimp(s, &s->spi[0], "bcm2835-spi[0]", SPI0_OFFSET, 0x20);
++    create_unimp(s, &s->spi[3], "bcm2835-spi[3]", SPI3_OFFSET, 0x20);
++    create_unimp(s, &s->spi[4], "bcm2835-spi[4]", SPI4_OFFSET, 0x20);
++    create_unimp(s, &s->spi[5], "bcm2835-spi[5]", SPI5_OFFSET, 0x20);
++    create_unimp(s, &s->spi[6], "bcm2835-spi[6]", SPI6_OFFSET, 0x20);
+     create_unimp(s, &s->bscsl, "bcm2835-spis", BSC_SL_OFFSET, 0x100);
+-    create_unimp(s, &s->i2c[0], "bcm2835-i2c0", BSC0_OFFSET, 0x20);
+-    create_unimp(s, &s->i2c[1], "bcm2835-i2c1", BSC1_OFFSET, 0x20);
+-    create_unimp(s, &s->i2c[2], "bcm2835-i2c2", BSC2_OFFSET, 0x20);
++    create_unimp(s, &s->i2c[0], "bcm2835-i2c[0]", BSC0_OFFSET, 0x20);
++    create_unimp(s, &s->i2c[1], "bcm2835-i2c[1]", BSC1_OFFSET, 0x20);
++    create_unimp(s, &s->i2c[2], "bcm2835-i2c[2]", BSC2_OFFSET, 0x20);
++    create_unimp(s, &s->i2c[3], "bcm2835-i2c[3]", BSC3_OFFSET, 0x20);
++    create_unimp(s, &s->i2c[4], "bcm2835-i2c[4]", BSC4_OFFSET, 0x20);
++    create_unimp(s, &s->i2c[5], "bcm2835-i2c[5]", BSC5_OFFSET, 0x20);
++    create_unimp(s, &s->i2c[6], "bcm2835-i2c[6]", BSC6_OFFSET, 0x20);
+     create_unimp(s, &s->otp, "bcm2835-otp", OTP_OFFSET, 0x80);
+     create_unimp(s, &s->dbus, "bcm2835-dbus", DBUS_OFFSET, 0x8000);
+     create_unimp(s, &s->ave0, "bcm2835-ave0", AVE0_OFFSET, 0x8000);
+     create_unimp(s, &s->dwc2, "dwc-usb2", USB_OTG_OFFSET, 0x100);
++    create_unimp(s, &s->xhci, "bcm2838-xhci", USB_XHCI_OFFSET, 0x100000);
++    create_unimp(s, &s->argon, "bcm2838-argon", ARGON_OFFSET, 4 * 0x10000);
++    create_unimp(s, &s->v3d, "bcm2835-v3d", V3D_OFFSET, 0x10000);
+     create_unimp(s, &s->sdramc, "bcm2835-sdramc", SDRAMC_OFFSET, 0x100);
+ }
  
-@@ -40,9 +41,25 @@ static const BCM283XInfo bcm283x_socs[] = {
-         .ctrl_base = 0x40000000,
-         .clusterid = 0x0,
-     },
-+    {
-+        .name = TYPE_BCM2838,
-+        .cpu_type = ARM_CPU_TYPE_NAME("cortex-a72"),
-+        .peri_base = 0xfe000000,
-+        .ctrl_base = 0xff800000,
-+        .gic_base = 0x40000,
-+    },
- #endif
- };
+diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
+index 44a182b399..2e5f243b39 100644
+--- a/include/hw/arm/bcm2835_peripherals.h
++++ b/include/hw/arm/bcm2835_peripherals.h
+@@ -42,6 +42,7 @@ typedef struct BCM2835PeripheralState {
+     UnimplementedDeviceState cprman;
+     UnimplementedDeviceState a2w;
+     PL011State uart0;
++    UnimplementedDeviceState uartu[6];
+     BCM2835AuxState aux;
+     BCM2835FBState fb;
+     BCM2835DMAState dma;
+@@ -53,14 +54,17 @@ typedef struct BCM2835PeripheralState {
+     BCM2835SDHostState sdhost;
+     BCM2835GpioState gpio;
+     UnimplementedDeviceState i2s;
+-    UnimplementedDeviceState spi0;
+-    UnimplementedDeviceState i2c[3];
++    UnimplementedDeviceState spi[7];
++    UnimplementedDeviceState i2c[7];
+     UnimplementedDeviceState otp;
+     UnimplementedDeviceState dbus;
+     UnimplementedDeviceState ave0;
+     UnimplementedDeviceState bscsl;
+     UnimplementedDeviceState smi;
+     UnimplementedDeviceState dwc2;
++    UnimplementedDeviceState xhci;
++    UnimplementedDeviceState argon;
++    UnimplementedDeviceState v3d;
+     UnimplementedDeviceState sdramc;
+ } BCM2835PeripheralState;
  
-+#define GIC_NUM_IRQS                256
-+
-+#define GIC_BASE_OFS                0x0000
-+#define GIC_DIST_OFS                0x1000
-+#define GIC_CPU_OFS                 0x2000
-+#define GIC_VIFACE_THIS_OFS         0x4000
-+#define GIC_VIFACE_OTHER_OFS(cpu)  (0x5000 + (cpu) * 0x200)
-+#define GIC_VCPU_OFS                0x6000
-+
- static void bcm2836_init(Object *obj)
- {
-     BCM283XState *s = BCM283X(obj);
-@@ -55,6 +72,11 @@ static void bcm2836_init(Object *obj)
-                                 info->cpu_type, &error_abort, NULL);
-     }
- 
-+    if (info->gic_base) {
-+        sysbus_init_child_obj(obj, "gic", &s->gic, sizeof(s->gic),
-+                              TYPE_ARM_GIC);
-+    }
-+
-     sysbus_init_child_obj(obj, "control", &s->control, sizeof(s->control),
-                           TYPE_BCM2836_CONTROL);
- 
-@@ -115,6 +137,59 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
- 
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->control), 0, info->ctrl_base);
- 
-+    /* bcm2838 GICv2 */
-+    if (info->gic_base) {
-+        object_property_set_uint(OBJECT(&s->gic), 2, "revision", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+
-+        object_property_set_uint(OBJECT(&s->gic),
-+                                 BCM283X_NCPUS, "num-cpu", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+
-+        object_property_set_uint(OBJECT(&s->gic),
-+                                 32 + GIC_NUM_IRQS, "num-irq", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+
-+        object_property_set_bool(OBJECT(&s->gic),
-+                                 true, "has-virtualization-extensions", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+
-+        object_property_set_bool(OBJECT(&s->gic), true, "realized", &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 0,
-+                        info->ctrl_base + info->gic_base + GIC_DIST_OFS);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 1,
-+                        info->ctrl_base + info->gic_base + GIC_CPU_OFS);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 2,
-+                        info->ctrl_base + info->gic_base + GIC_VIFACE_THIS_OFS);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 3,
-+                        info->ctrl_base + info->gic_base + GIC_VCPU_OFS);
-+
-+        for (n = 0; n < BCM283X_NCPUS; n++) {
-+            sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 4 + n,
-+                            info->ctrl_base + info->gic_base
-+                            + GIC_VIFACE_OTHER_OFS(n));
-+        }
-+
-+        /* TODO wire IRQs!!! */
-+    }
-+
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 0,
-         qdev_get_gpio_in_named(DEVICE(&s->control), "gpu-irq", 0));
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 1,
-diff --git a/include/hw/arm/bcm2836.h b/include/hw/arm/bcm2836.h
-index 97187f72be..31c8fb90bd 100644
---- a/include/hw/arm/bcm2836.h
-+++ b/include/hw/arm/bcm2836.h
-@@ -13,6 +13,7 @@
- 
- #include "hw/arm/bcm2835_peripherals.h"
- #include "hw/intc/bcm2836_control.h"
-+#include "hw/intc/arm_gic.h"
- #include "target/arm/cpu.h"
- 
- #define TYPE_BCM283X "bcm283x"
-@@ -26,6 +27,7 @@
-  */
- #define TYPE_BCM2836 "bcm2836"
- #define TYPE_BCM2837 "bcm2837"
-+#define TYPE_BCM2838 "bcm2838"
- 
- typedef struct BCM283XState {
-     /*< private >*/
-@@ -36,6 +38,7 @@ typedef struct BCM283XState {
-     uint32_t enabled_cpus;
- 
-     ARMCPU cpus[BCM283X_NCPUS];
-+    GICState gic;
-     BCM2836ControlState control;
-     BCM2835PeripheralState peripherals;
- } BCM283XState;
+diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
+index c6f4985522..0ea547669f 100644
+--- a/include/hw/arm/raspi_platform.h
++++ b/include/hw/arm/raspi_platform.h
+@@ -49,10 +49,22 @@
+ #define RNG_OFFSET              0x104000
+ #define GPIO_OFFSET             0x200000
+ #define UART0_OFFSET            0x201000 /* PL011 */
++#define UART2_OFFSET            0x201400 /* PL011 */
++#define UART3_OFFSET            0x201600 /* PL011 */
++#define UART4_OFFSET            0x201800 /* PL011 */
++#define UART5_OFFSET            0x201a00 /* PL011 */
+ #define MMCI0_OFFSET            0x202000 /* Legacy MMC */
+ #define I2S_OFFSET              0x203000 /* PCM */
+ #define SPI0_OFFSET             0x204000 /* SPI master */
++#define SPI3_OFFSET             0x204600
++#define SPI4_OFFSET             0x204800
++#define SPI5_OFFSET             0x204a00
++#define SPI6_OFFSET             0x204c00
+ #define BSC0_OFFSET             0x205000 /* BSC0 I2C/TWI */
++#define BSC3_OFFSET             0x205600
++#define BSC4_OFFSET             0x205800
++#define BSC5_OFFSET             0x205a00
++#define BSC6_OFFSET             0x205c00
+ #define PIXV0_OFFSET            0x206000
+ #define PIXV1_OFFSET            0x207000
+ #define DPI_OFFSET              0x208000
+@@ -84,6 +96,8 @@
+ #define DBUS_OFFSET             0x900000
+ #define AVE0_OFFSET             0x910000
+ #define USB_OTG_OFFSET          0x980000 /* DTC_OTG USB controller */
++#define USB_XHCI_OFFSET         0x9c0000 /* generic-xhci controller */
++#define ARGON_OFFSET            0xb00000
+ #define V3D_OFFSET              0xc00000
+ #define SDRAMC_OFFSET           0xe00000
+ #define L2CC_OFFSET             0xe01000 /* Level 2 Cache controller */
 -- 
 2.20.1
 

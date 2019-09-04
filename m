@@ -1,108 +1,76 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp421154wrp;
-        Wed, 4 Sep 2019 01:33:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyb/CDVHcoe2YIm2Ne1JlKCiPahf1b/hZubra7fjHb4+qpEAWPB4UKJKKBAOcoWiipx5Te6
-X-Received: by 2002:a05:6402:148c:: with SMTP id e12mr13666438edv.62.1567586016803;
-        Wed, 04 Sep 2019 01:33:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567586016; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp439030wrp;
+        Wed, 4 Sep 2019 01:57:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqydp32ly8QfuYqGrMiFX7NSGoq1vS2yD18POCyYc5RRSKhRmk7LydMBYjYYzg0Qy0dFhTnE
+X-Received: by 2002:a05:620a:7ca:: with SMTP id 10mr10809835qkb.410.1567587478436;
+        Wed, 04 Sep 2019 01:57:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567587478; cv=none;
         d=google.com; s=arc-20160816;
-        b=j9WM7UuQM5oDPvE1JkTc9h6M3IdUkR6ZD3bCeStWO79Xky8E9HVjrCZxoCf27B95Mi
-         RugHqUyvzcniBq5FlZzkyJBDV4sKPHiCPFdQlG6SRH1jQJ4oYep0RqplFZnwkzAQnDep
-         FjXbM2nVeolaEXMCB789ISUZdNegbcMVHWs1Xo6q0KJ+ll51IUDbusGAzwfbho61odcT
-         gFKPGNoJpsXhSOK5k5GDAQtLkolBMQj2hqTodSGt234C3V6OUtetSn563LREgbWHi7Vx
-         44pO4JxKEy/vStbv05UQs7wkTGsxIh+9Onvnb/dj+rG7Gs/eW9TzU+BuqKEbtDTowlZV
-         DR4w==
+        b=IOo6gvCb7hgMSxy6kF2VD2AW3BBUAK9f9zEH+GFK3Pe98di3KbA3IgzcaJ004MW0/J
+         mIT1uAZnd/+HvhHuXuwAEJF4QVNCxnmrVG/RA75I1AxH0P3Tklj+ayOdVlL2dhgfrKy5
+         kWWdzhiIE4k5aYiAKVLxnRbAC+/GWydFb6EzGDYQwpPcMwX6QvaVM88qoorej4FT415k
+         q5tiB4IphlNTQ9p7mwAsaBq788lFfUMvIORu/G8ItF0nZwDWiNgpUO5ptiDMatKE5GT+
+         vB4VN7l2CmOYvSxtIKyfueI64s6OvWCJj0c4nYV4FDwnena6Ses7kp0bTk0nLS6uNZUT
+         MOOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=0ptA+kKm/dj2CUxK+n6Ih9FrB6Z2Eg7sZG2KmhKzrkw=;
-        b=y8G9r+fVqUZkk+ScS30c96vvP6AzWQkHj3KvzsQrsFq7HtGn80rjHWBfbnHJ4s8GN1
-         xUnMbBT1z6zS3EHSYWvz2mz/I0aaDbabKbqV6sDMlb6dS7+Xdc/EJnS54VzfqgwJZsRT
-         4z1DDJS/n8PhtWM9iXFE8XcawX1E9JAbPD06Wl28XSt+nyTblsL78mQzTmABBWLDllfX
-         oz8VoP8FaTMCIOvtQR2OEQ5gxcFJgfhHhWd1fxdbC29dBu4vwvtc4lfDt9Ih+ND/HVit
-         IDQVLhnJlnYy+LLJoRge+DCUTGbOVjfc/U6bwDp4RiVdBLQfV4tbmc1WuxvrX3A8TE3x
-         x2iA==
+         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
+         :date:to:from;
+        bh=PWS9OkRAwEXTnkNyZWk0KEKaN8/B1Hao8Wr3rFcOQ+I=;
+        b=RSK4Kp7O4KUUIkiGZNidPEgPCxhzlwB70sXVx8sqeLjYzsHRsoTDuj4R5ZdvQ4yCjy
+         wbP4j28tJd3tLjKm6jPlqa/f/ml5n+5XH+9ycb6/py8JkkVicMQHHoPvVeqVt4WTgBQl
+         tcgzau/p3cgXGQzcXv4PPvAUA3INYwAN1mFPlOLGPZDVKBTdjsfVWfAULoMVDJ72gzX6
+         sVqKDSOlm7VPXhDJ9Yc6AXWGk/QX3igQHkfF7uV4PLp1JHq4age/lVHLypBSkg7eesZI
+         ATEx7pZIwBkdxmPCVlaNon6exUptdZpRoWn2K+5wRFLnMq48gcLM+bbPNJ72wgYvNm8y
+         hobA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s56si4993905eda.145.2019.09.04.01.33.36
+        by mx.google.com with ESMTPS id n58si14020064qtk.371.2019.09.04.01.57.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2019 01:33:36 -0700 (PDT)
+        Wed, 04 Sep 2019 01:57:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54538 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54644 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5QjP-0006yk-Ia
-	for alex.bennee@linaro.org; Wed, 04 Sep 2019 04:33:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34273)
+	id 1i5R6y-00070p-UR
+	for alex.bennee@linaro.org; Wed, 04 Sep 2019 04:57:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38374)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peterx@redhat.com>) id 1i5Qim-0006yQ-D6
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 04:32:58 -0400
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1i5R6k-0006xU-WF
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 04:57:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peterx@redhat.com>) id 1i5Qik-0005uK-K1
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 04:32:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37996)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1i5R6i-00074A-GU
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 04:57:42 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:54046 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1i5Qik-0005tt-BN
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 04:32:54 -0400
-Received: from mail-pf1-f200.google.com (mail-pf1-f200.google.com
- [209.85.210.200])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 4BE3E85542
- for <qemu-arm@nongnu.org>; Wed,  4 Sep 2019 08:32:53 +0000 (UTC)
-Received: by mail-pf1-f200.google.com with SMTP id b8so16141858pfd.5
- for <qemu-arm@nongnu.org>; Wed, 04 Sep 2019 01:32:53 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=0ptA+kKm/dj2CUxK+n6Ih9FrB6Z2Eg7sZG2KmhKzrkw=;
- b=kdsTjbCO9Z+HrrWiOjiql/721L+yvH+CSznXtJ5vEp+rJqpHfkTTmG1ZjrSJkYCXsX
- XnyWUAROolySChZ4ZOkXRgyNZdBfbjN3ZxuExq6EaW46X4q1wqumOWtGMW0rv692SkLL
- Io5Idc55ABsQQAXwm1oGccwpv7vnhspaN34eTE2dt1LavDKK5JQhrXnnYomM+Gi6OdIG
- 0sF5HP65nLfCBzonRi5/5zbW+SWM7aDGA8hRRKILZ7csq2AjHothWPnr3Ar62B4YrFpC
- oqc8pz3xqY4sPCdps+0HXn3uPDs463JL72CfxwujkxN0lRZW8PwGbf24phTWj+uWzhe3
- ijZA==
-X-Gm-Message-State: APjAAAXBHIIde7OkFhPUl6M2OB3OGxicXvdpMXAbRPTG3cRIpKhwDAgp
- o6GvEey1/Uq1xBJz/q5BFztsx9nkKzD5DhPeP15tEGIarx6ZMIX3ji6wn1Acxy7q+7XbziRa+VY
- 5eMR1Me70NRNd
-X-Received: by 2002:a62:3145:: with SMTP id x66mr45521051pfx.186.1567585972685; 
- Wed, 04 Sep 2019 01:32:52 -0700 (PDT)
-X-Received: by 2002:a62:3145:: with SMTP id x66mr45521017pfx.186.1567585972384; 
- Wed, 04 Sep 2019 01:32:52 -0700 (PDT)
-Received: from xz-x1 ([209.132.188.80])
- by smtp.gmail.com with ESMTPSA id q20sm22311269pfg.85.2019.09.04.01.32.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Sep 2019 01:32:51 -0700 (PDT)
-Date: Wed, 4 Sep 2019 16:32:39 +0800
-From: Peter Xu <peterx@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Message-ID: <20190904083239.GI30402@xz-x1>
-References: <20190730172137.23114-1-eric.auger@redhat.com>
- <20190730172137.23114-9-eric.auger@redhat.com>
- <20190819081143.GA13560@xz-x1>
- <b5e2ff32-eed8-829e-ffd4-2b62ed6b2fda@redhat.com>
- <20190904014416.GB30402@xz-x1>
- <AADFC41AFE54684AB9EE6CBC0274A5D19D561F28@SHSMSX104.ccr.corp.intel.com>
- <20190904053720.GG30402@xz-x1>
- <AADFC41AFE54684AB9EE6CBC0274A5D19D562270@SHSMSX104.ccr.corp.intel.com>
- <c8b8e80d-0b66-1a7c-28b8-0bd3b013a9e8@redhat.com>
+ (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1i5R6i-00070w-2w; Wed, 04 Sep 2019 04:57:40 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 954CD6E498024F3CC967;
+ Wed,  4 Sep 2019 16:57:33 +0800 (CST)
+Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
+ DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
+ 14.3.439.0; Wed, 4 Sep 2019 16:57:26 +0800
+From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
+ <imammedo@redhat.com>
+Date: Wed, 4 Sep 2019 09:56:18 +0100
+Message-ID: <20190904085629.13872-1-shameerali.kolothum.thodi@huawei.com>
+X-Mailer: git-send-email 2.12.0.windows.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <c8b8e80d-0b66-1a7c-28b8-0bd3b013a9e8@redhat.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
+Content-Type: text/plain
+X-Originating-IP: [10.202.227.237]
+X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-4.2 v10 08/15] virtio-iommu:
- Implement map/unmap
+X-Received-From: 45.249.212.32
+Subject: [Qemu-arm] [PATCH-for-4.2 v10 00/11] ARM virt: ACPI memory hotplug
+ support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,175 +82,157 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, "Tian,
- Kevin" <kevin.tian@intel.com>, "mst@redhat.com" <mst@redhat.com>,
- "tn@semihalf.com" <tn@semihalf.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
- "bharat.bhushan@nxp.com" <bharat.bhushan@nxp.com>,
- "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
+Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
+ linuxarm@huawei.com, xuwei5@hisilicon.com, shannon.zhaosl@gmail.com,
+ sebastien.boeuf@intel.com, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: USTyP9OTlyW4
+X-TUID: ulOjZCeEZ/QZ
 
-On Wed, Sep 04, 2019 at 09:54:12AM +0200, Auger Eric wrote:
-> Hi,
-> 
-> On 9/4/19 7:46 AM, Tian, Kevin wrote:
-> >> From: Peter Xu [mailto:peterx@redhat.com]
-> >> Sent: Wednesday, September 4, 2019 1:37 PM
-> >>
-> >> On Wed, Sep 04, 2019 at 04:23:50AM +0000, Tian, Kevin wrote:
-> >>>> From: Peter Xu [mailto:peterx@redhat.com]
-> >>>> Sent: Wednesday, September 4, 2019 9:44 AM
-> >>>>
-> >>>> On Tue, Sep 03, 2019 at 01:37:11PM +0200, Auger Eric wrote:
-> >>>>> Hi Peter,
-> >>>>>
-> >>>>> On 8/19/19 10:11 AM, Peter Xu wrote:
-> >>>>>> On Tue, Jul 30, 2019 at 07:21:30PM +0200, Eric Auger wrote:
-> >>>>>>
-> >>>>>> [...]
-> >>>>>>
-> >>>>>>> +    mapping = g_tree_lookup(domain->mappings,
-> >> (gpointer)(&interval));
-> >>>>>>> +
-> >>>>>>> +    while (mapping) {
-> >>>>>>> +        viommu_interval current;
-> >>>>>>> +        uint64_t low  = mapping->virt_addr;
-> >>>>>>> +        uint64_t high = mapping->virt_addr + mapping->size - 1;
-> >>>>>>> +
-> >>>>>>> +        current.low = low;
-> >>>>>>> +        current.high = high;
-> >>>>>>> +
-> >>>>>>> +        if (low == interval.low && size >= mapping->size) {
-> >>>>>>> +            g_tree_remove(domain->mappings, (gpointer)(&current));
-> >>>>>>> +            interval.low = high + 1;
-> >>>>>>> +            trace_virtio_iommu_unmap_left_interval(current.low,
-> >>>> current.high,
-> >>>>>>> +                interval.low, interval.high);
-> >>>>>>> +        } else if (high == interval.high && size >= mapping->size) {
-> >>>>>>> +            trace_virtio_iommu_unmap_right_interval(current.low,
-> >>>> current.high,
-> >>>>>>> +                interval.low, interval.high);
-> >>>>>>> +            g_tree_remove(domain->mappings, (gpointer)(&current));
-> >>>>>>> +            interval.high = low - 1;
-> >>>>>>> +        } else if (low > interval.low && high < interval.high) {
-> >>>>>>> +            trace_virtio_iommu_unmap_inc_interval(current.low,
-> >>>> current.high);
-> >>>>>>> +            g_tree_remove(domain->mappings, (gpointer)(&current));
-> >>>>>>> +        } else {
-> >>>>>>> +            break;
-> >>>>>>> +        }
-> >>>>>>> +        if (interval.low >= interval.high) {
-> >>>>>>> +            return VIRTIO_IOMMU_S_OK;
-> >>>>>>> +        } else {
-> >>>>>>> +            mapping = g_tree_lookup(domain->mappings,
-> >>>> (gpointer)(&interval));
-> >>>>>>> +        }
-> >>>>>>> +    }
-> >>>>>>> +
-> >>>>>>> +    if (mapping) {
-> >>>>>>> +        qemu_log_mask(LOG_GUEST_ERROR,
-> >>>>>>> +                      "****** %s: Unmap 0x%"PRIx64" size=0x%"PRIx64
-> >>>>>>> +                     " from 0x%"PRIx64" size=0x%"PRIx64" is not supported\n",
-> >>>>>>> +                     __func__, interval.low, size,
-> >>>>>>> +                     mapping->virt_addr, mapping->size);
-> >>>>>>> +    } else {
-> >>>>>>> +        return VIRTIO_IOMMU_S_OK;
-> >>>>>>> +    }
-> >>>>>>> +
-> >>>>>>> +    return VIRTIO_IOMMU_S_INVAL;
-> >>>>>>
-> >>>>>> Could the above chunk be simplified as something like below?
-> >>>>>>
-> >>>>>>   while ((mapping = g_tree_lookup(domain->mappings, &interval))) {
-> >>>>>>     g_tree_remove(domain->mappings, mapping);
-> >>>>>>   }
-> >>>>> Indeed the code could be simplified. I only need to make sure I don't
-> >>>>> split an existing mapping.
-> >>>>
-> >>>> Hmm... Do we need to still split an existing mapping if necessary?
-> >>>> For example when with this mapping:
-> >>>>
-> >>>>   iova=0x1000, size=0x2000, phys=ADDR1, flags=FLAGS1
-> >>>>
-> >>>> And if we want to unmap the range (iova=0, size=0x2000), then we
-> >>>> should split the existing mappping and leave this one:
-> >>>>
-> >>>>   iova=0x2000, size=0x1000, phys=(ADDR1+0x1000), flags=FLAGS1
-> >>>>
-> >>>> Right?
-> >>>>
-> >>>
-> >>> virtio-iommu spec explicitly disallows partial unmap.
-> >>>
-> >>> 5.11.6.6.1 Driver Requirements: UNMAP request
-> >>>
-> >>> The first address of a range MUST either be the first address of a
-> >>> mapping or be outside any mapping. The last address of a range
-> >>> MUST either be the last address of a mapping or be outside any
-> >>> mapping.
-> >>>
-> >>> 5.11.6.6.2 Device Requirements: UNMAP request
-> >>>
-> >>> If a mapping affected by the range is not covered in its entirety
-> >>> by the range (the UNMAP request would split the mapping),
-> >>> then the device SHOULD set the request status to VIRTIO_IOMMU
-> >>> _S_RANGE, and SHOULD NOT remove any mapping.
-> >>
-> >> I see, thanks Kevin.
-> >>
-> >> Though why so strict?  (Sorry if I missed some discussions
-> >> ... pointers welcomed...)
-> >>
-> >> What I'm thinking is when we want to allocate a bunch of buffers
-> >> (e.g., 1M) while we will also need to be able to free them with
-> >> smaller chunks (e.g., 4K), then it would be even better that we allow
-> >> to allocate a whole 1M buffer within the guest and map it as a whole,
-> >> then we can selectively unmap the pages after used.  If with the
-> >> strict rule, we'll need to map one by one, that can be a total of
-> >> 1M/4K roundtrips.
-> >>
-> > 
-> > Sorry I forgot the original discussion. Need Jean to respond. :-)
-> > 
-> > A possible reason is that no such usage exists today, thus simplification
-> > was made? 
-> 
-> In
-> https://virtualization.linux-foundation.narkive.com/q6XOkO76/rfc-0-3-virtio-iommu-a-paravirtualized-iommu
-> 
-> I found
-> 
-> "
-> (Note: the semantics of unmap are chosen to be compatible with VFIO's
-> type1 v2 IOMMU API. This way a device serving as intermediary between
-> guest and VFIO doesn't have to keep an internal tree of mappings. They are
-> a bit tighter than VFIO, in that they don't allow unmap spilling outside
-> mapped regions. Spilling is 'undefined' at the moment, because it should
-> work in most cases but I don't know if it's worth the added complexity in
-> devices that are not simply transmitting requests to VFIO. Splitting
-> mappings won't ever be allowed, but see the relaxed proposal in 3/3 for
-> more lenient semantics)
-> "
+This series is an attempt to provide device memory hotplug support 
+on ARM virt platform. This is based on Eric's recent works here[1]
+and carries some of the pc-dimm related patches dropped from his
+series.
 
-Yes it makes sense to follow vfio type1v2 here.  Though I'm not sure
-whether the maintainance of "an internal tree of mappings" could be
-avoided by this, at least if using current QEMU IOMMU notifier
-framework.  The problem is currently the IOMMU notifiers cannot fail
-(e.g., the VFIO_IOMMU_MAP_DMA ioctl from vfio-pci device will assume
-the messages delivered from vIOMMUs are always valid), so AFAICT the
-vIOMMU needs to tell which mapping request from the guest driver is
-valid before delivering the request to vfio.  It seems impossible to
-do that if without the internal tree of mapping.  But that seems to be
-another story.
+The kernel support for arm64 memory hot add was added recently by
+Robin and hence the guest kernel should be => 5.0-rc1.
 
-In all cases, I think I'm fine with the approach for this patch.
+NVDIM support is not included currently as we still have an unresolved
+issue while hot adding NVDIMM[2]. However NVDIMM cold plug patches
+can be included, but not done for now, for keeping it simple.
 
-Thanks!
+This makes use of GED device to sent hotplug ACPI events to the
+Guest. GED code is based on Nemu. Thanks to the efforts of Samuel and
+Sebastien to add the hardware-reduced support to Nemu using GED
+device[3]. (Please shout if I got the author/signed-off wrong for
+those patches or missed any names).
+
+This is sanity tested on a HiSilicon ARM64 platform and appreciate
+any further testing.
+
+Note:
+Attempted adding dimm_pxm test case to bios-tables-test for arm/virt.
+But noticed the issue decribed here[5]. This is under investigation 
+now.
+
+Thanks,
+Shameer
+
+[1] https://patchwork.kernel.org/cover/10837565/
+[2] https://patchwork.kernel.org/cover/10783589/
+[3] https://github.com/intel/nemu/blob/topic/virt-x86/hw/acpi/ged.c
+[4] http://lists.infradead.org/pipermail/linux-arm-kernel/2019-May/651763.html
+[5] https://www.mail-archive.com/qemu-devel@nongnu.org/msg632651.html
+
+v9 --> v10
+ -Fix for "make check" failure on x86_64(Patch #1).
+ -Minor updates based on Eric's comments.
+ -Dropped patch "hw/arm/virt: Add 4.2 machine type" as this is already
+  in master now.
+ -Added R-by tags by Eric.
+
+v8 --> v9
+ -Changes related to GED being a TYPE_SYS_BUS_DEVICE now.
+ -Re-arranged patches 8 and 9.
+ -Added GED ABI documentation(patch #10).
+ -Added numamem and memhp tests to arm/virt(#11 and #12)
+ -Dropped few R-by tags as code has changed a bit.
+ -Please see Individual patch history for details.
+ 
+v7 --> v8
+ -Addressed comments from Igor.Please see individual patches.
+ -Updated bios-tables-test-allowed-diff.h to avoid "make check"
+  failure (patch #6) and dropped patch #10
+ -Added Igor's R-by to patches 4 & 5.
+ -Dropped Erics's R-by from patch #9 for now.
+
+v6 --> v7
+- Added 4.2 machine support and restricted GED creation for < 4.2
+  This is to address the migration test fail reported by Eric.
+- Included "tests: Update DSDT ACPI table.." patch(#10) from Eric
+  to fix the "make check" bios-tables-test failure.
+  
+v5 --> v6
+
+-Addressed comments from Eric.
+-Added R-by from Eric and Igor.
+
+v4 --> v5
+-Removed gsi/ged-irq routing in virt.
+-Added Migration support.
+-Dropped support for DT coldplug case based on the discussions
+ here[4]
+-Added system_powerdown support through GED.
+
+v3 --> v4
+Addressed comments from Igor and Eric,
+-Renamed "virt-acpi" to "acpi-ged".
+-Changed ged device parent to TYPE_DEVICE.
+-Introduced DT memory node property "hotpluggable" to resolve device
+ memory being treated as early boot memory issue(patch #7).
+-Combined patches #3 and #9 from v3 into #3.
+
+v2 --> v3
+
+Addressed comments from Igor and Eric,
+-Made virt acpi device platform independent and moved
+ to hw/acpi/generic_event_device.c
+-Moved ged specific code into hw/acpi/generic_event_device.c
+-Introduced an opt-in feature "fdt" to resolve device-memory being
+ treated as early boot memory.
+-Dropped patch #1 from v2.
+
+RFC --> v2
+
+-Use GED device instead of GPIO for ACPI hotplug events.
+-Removed NVDIMM support for now.
+-Includes dropped patches from Eric's v9 series.
+
+Eric Auger (1):
+  hw/arm/virt: Add memory hotplug framework
+
+Samuel Ortiz (2):
+  hw/acpi: Do not create memory hotplug method when handler is not
+    defined
+  hw/acpi: Add ACPI Generic Event Device Support
+
+Shameer Kolothum (8):
+  hw/acpi: Make ACPI IO address space configurable
+  hw/arm/virt: Enable device memory cold/hot plug with ACPI boot
+  hw/arm/virt-acpi-build: Add PC-DIMM in SRAT
+  hw/arm: Factor out powerdown notifier from GPIO
+  hw/arm: Use GED for system_powerdown event
+  docs/specs: Add ACPI GED documentation
+  tests: add dummy ACPI tables for arm/virt board
+  tests: Add bios tests to arm/virt
+
+ docs/specs/acpi_hw_reduced_hotplug.txt |  60 +++++
+ hw/acpi/Kconfig                        |   4 +
+ hw/acpi/Makefile.objs                  |   1 +
+ hw/acpi/generic_event_device.c         | 325 +++++++++++++++++++++++++
+ hw/acpi/memory_hotplug.c               |  43 ++--
+ hw/arm/Kconfig                         |   4 +
+ hw/arm/virt-acpi-build.c               |  31 ++-
+ hw/arm/virt.c                          | 127 +++++++++-
+ hw/i386/acpi-build.c                   |   7 +-
+ hw/i386/pc.c                           |   3 +
+ include/hw/acpi/acpi_dev_interface.h   |   1 +
+ include/hw/acpi/generic_event_device.h | 103 ++++++++
+ include/hw/acpi/memory_hotplug.h       |   9 +-
+ include/hw/arm/virt.h                  |   5 +
+ include/hw/i386/pc.h                   |   3 +
+ tests/bios-tables-test-allowed-diff.h  |   2 +
+ tests/bios-tables-test.c               |  49 ++++
+ tests/data/acpi/virt/SLIT              | Bin 0 -> 48 bytes
+ tests/data/acpi/virt/SRAT              | Bin 0 -> 224 bytes
+ 19 files changed, 736 insertions(+), 41 deletions(-)
+ create mode 100644 docs/specs/acpi_hw_reduced_hotplug.txt
+ create mode 100644 hw/acpi/generic_event_device.c
+ create mode 100644 include/hw/acpi/generic_event_device.h
+ create mode 100644 tests/data/acpi/virt/SLIT
+ create mode 100644 tests/data/acpi/virt/SRAT
 
 -- 
-Peter Xu
+2.17.1
+
+

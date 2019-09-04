@@ -1,97 +1,96 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1136943wrp;
-        Wed, 4 Sep 2019 12:59:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzD9CPUja4p8zgHIf3+eNE2qw9tKaPgkWeYEItvfzbkirUn38NaphpjnGt+A4Oa3R7Pm5oY
-X-Received: by 2002:a37:9804:: with SMTP id a4mr42450378qke.149.1567627170958;
-        Wed, 04 Sep 2019 12:59:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567627170; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1137136wrp;
+        Wed, 4 Sep 2019 12:59:44 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxPeSOd2nnEoJbIGE1QQ8bOrJhf2CQRg/mDc7hT1tMjvArWoTNhY0niycVZ0mLptNn1g7SS
+X-Received: by 2002:a05:620a:14af:: with SMTP id x15mr29117656qkj.139.1567627184715;
+        Wed, 04 Sep 2019 12:59:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567627184; cv=none;
         d=google.com; s=arc-20160816;
-        b=NGL+5bXV2Rcz/2BhqlnX/VZTuuapkk+qyExPAPaYoB2/1bIRtVUNG/6WH9i5Y9Erc7
-         xDbRqgDQl867dgZgsygL9K0DollF8QFtZVz1noWS/P5EQczGJv9LDkC4GkjHAtG/sZmH
-         0PrpV3N/G1xhLL69DewAQGHwPMw1V1Sg43NQxZTelwxe5SoKcl0DGm2nJPIEh9x+Nsv4
-         mGgvd4qxYQTkDPcpBBPn//gQC/nRKblwfWfpU226gMPv29HN5/9xQMm9waK560lU8vub
-         h0sZbY+ULmbwtcqeBDYUzs9ICUql4bs+L2bP5tMS3vpKJ9F+rUBhexp63aKlos/NyE/u
-         cWTg==
+        b=HpioeXpVfelt4FWcYW76P58hXouSCTd38n2PBT/hconkyZwVNsdLgh75s3ZJenTJ/2
+         H6xKKLbwHG+hXJH56U/rrPuwZO6bwDHEOwE9T/nGRcup+biABJ/kVtIh3ETjE2Kg6Ptl
+         FR9EHjUN+eSbAY15CfNOaWxWA6oCCy8rpVcXfQBq8X3E2BI3ROhF6EwMIWZcXsALlNCw
+         +wP40qge1IROGr0IstXWbk9lLwCijerWKbxUA4/qJnIy1s2IJZdAerNosdltgsjWqExD
+         FF6HMYSv3yD6hahCzL4YP8XTBY4weMzCl7fz5TZE/Cg/i0axBWa2Hu3sySCyn9irQ6O2
+         Kk2A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=uBQvYz8IHxhp6JSRYx+eAJLbYd/WxV5+vKoQFHwhKKE=;
-        b=axZDU+6NPpMVaemqyydhufsgd2nnR7jj+lw1xokpwoXB1AclTpXOoKrfVPE+AHCY5q
-         YMHvTh2d+QtYKUOifh9PKGNDU61jgc6FHxRSM3pvoBgLyvyXxr6fvzvNxbopMMtOxiqM
-         e5zLAzS2E9wsqTWcvjeF/x0+8tcMG9FSomIax3cBSz7ec4apAKq//4x/i1AzLtPqE6G0
-         d5Lnnmun125Ba4Z2hInyE9KJ3gLDRaN5+KNcir2QcTWgQk2Gn9a5PBisuC/bcmnmlKaa
-         3gS4iwce/UlMYo/SCGc+Jfp8msLlwpM1bmPTE7+cCsVQoqrpAmsHh1LQ1Go8GmteBkSX
-         LcbQ==
+        bh=M4Erk2+6lG2j0nHNnlb8vKxLu6BsAo4xgf3Pb8Z6zRA=;
+        b=VPi48EvZyH7VlQOELlns33wu5fTs8Ku0HrnTU8gCPu+gJ3NxJgDw0xEo2c1jYNbB9E
+         VgqEs72LYQ5K9vfcZjfvpnHYeYq9X8J+6CzXWla88TXxwshu/0iJB0tohoDCRknIpNH6
+         aC27jShUMjG8gJ/ITRHpnn3MlrUQomhZFpASgi74WtwAJ9LIM71wy/5HBQ+447/rJNao
+         82pj4bNKEirFqY5wKtUO22tg3N96P5kYXopBV8QxH3WF4J4QrgYxoBzWVcMSor5Uz03c
+         a34hmSTgH1no++Yf3ICNAGeF5oUmhAFklR/+YzYeVB0uWoFMXUaPV0EEVOwLB2gTOJjh
+         qytQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=nP0gy5CA;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GYNMcUZR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u188si16013qka.97.2019.09.04.12.59.30
+        by mx.google.com with ESMTPS id h8si15556747qkg.359.2019.09.04.12.59.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2019 12:59:30 -0700 (PDT)
+        Wed, 04 Sep 2019 12:59:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=nP0gy5CA;
+       dkim=fail header.i=@linaro.org header.s=google header.b=GYNMcUZR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38096 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38108 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5bRB-0001u8-RV
-	for alex.bennee@linaro.org; Wed, 04 Sep 2019 15:59:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40682)
+	id 1i5bRP-0002F2-FR
+	for alex.bennee@linaro.org; Wed, 04 Sep 2019 15:59:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40640)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1i5b0U-00058G-9w
+ (envelope-from <richard.henderson@linaro.org>) id 1i5b0S-00056G-QJ
  for qemu-arm@nongnu.org; Wed, 04 Sep 2019 15:31:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1i5b0R-0002k3-1S
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 15:31:54 -0400
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:42825)
+ (envelope-from <richard.henderson@linaro.org>) id 1i5b0O-0002hG-BN
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 15:31:52 -0400
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532]:45490)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1i5b0Q-0002ie-En
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 15:31:50 -0400
-Received: by mail-pf1-x441.google.com with SMTP id w22so5464522pfi.9
- for <qemu-arm@nongnu.org>; Wed, 04 Sep 2019 12:31:50 -0700 (PDT)
+ id 1i5b0N-0002fp-RK
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 15:31:48 -0400
+Received: by mail-pg1-x532.google.com with SMTP id 4so8228638pgm.12
+ for <qemu-arm@nongnu.org>; Wed, 04 Sep 2019 12:31:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=uBQvYz8IHxhp6JSRYx+eAJLbYd/WxV5+vKoQFHwhKKE=;
- b=nP0gy5CA8F+hMVqR1RfqRCtQOYZtv4ByApFNWYu5Y7QSKSC84dP0ezc6vrzChPerie
- Qtvl0whj6iiKAoO2qPoOOv/F0M/kX5kHKwDKSw3Yrr5HZGXs006i5s1UsZh2oKdHNrTq
- sYNJcGaRKkWlY4NR7xiVn5Y9W2HvQFBzdr5Nbf+GTa+wory0Ud6cTdKFpISgDG2WYM1y
- FTXYewj4ikPmdcS1fc2OnwM5z/UMC1KA10K2RcNQhbIpDTntUoCgS0aUbm2MwbCSuojY
- yguEVQBlmL4KnPkpcG1yZ1c0CRI/TsRDBt19uulMMZLC6klP1nCaFEDl5Al88k8oS7Df
- YeNQ==
+ bh=M4Erk2+6lG2j0nHNnlb8vKxLu6BsAo4xgf3Pb8Z6zRA=;
+ b=GYNMcUZRLtjVXYbKNahv9TJRKOxR3l6UVXD+vWWBYBrbpZTY4Zdy2dgZN7/nsi9J8S
+ DCQDc62T14yl0ZPdz9kNZVSnmd8BMgDsAvgR7x+aL6pjmTCT7O1aSuzUsBApn12F4Qgb
+ H0AYl7Wy9Ptn9iCmWP18l4oY5sJYbXgnvOiJaRyN8vGdmYx7LtIsm4oT1BMEfhdNo3yV
+ E3vj/eWlHhGodESkiPfVDio1qQRF9pmLjIxeb/fSnqJFl3/ud5Ffrd0MdEUCwTn1LAr2
+ Vnzbzy26CqNtyfBJOw553cdOylsm6YgDGmq3jEYWn38jD/moYsx43vfc6YVCYV7DlZ+M
+ U82A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=uBQvYz8IHxhp6JSRYx+eAJLbYd/WxV5+vKoQFHwhKKE=;
- b=cVuGdscEy9gUqiKYJNfrmETVImmniifMLNOzfXxFuL+k+0p3EfNJwzGarNVRBQHz7n
- hcdOmFhbsEibZwBtMcKlmBRIT5AsEdJQZ4VpzMNxSFMQz6LahlKuLSiJ9Yxs36JeG1AI
- hBb7MXRMQQlY/DtMfgOHIz6rPilUmDQVkwdg039OfYs9VCuph+Ju8KSM4Duw9pCfcguC
- ol0eguhfoOp4Dc/zBLVO88HgchKCHGw7fQiFLMpVDJZ/wLdrK2cBzUJa/xTi0tL5cP3N
- Z1H7xvZZyfuVznxuXNsEEXVOp3FWtRBGMwfQjAkb8/C+rQGEP1RS0VNysnyyK7Nu74Bb
- 091w==
-X-Gm-Message-State: APjAAAW6OsrxxO8w5EmJjWMrOpje/LGX33nV6j/HH97NA/lO0t/pfcDU
- qpN/+JlQZxNoD2R1KHI2xVY1AQ==
-X-Received: by 2002:a17:90a:a40e:: with SMTP id
- y14mr6414114pjp.83.1567625509182; 
- Wed, 04 Sep 2019 12:31:49 -0700 (PDT)
+ bh=M4Erk2+6lG2j0nHNnlb8vKxLu6BsAo4xgf3Pb8Z6zRA=;
+ b=IXqySzdbzO7qyWjRiPLX7znY+OAMphN28Em0Vts9rNf04I8byAJgVA8RvCNSxKyetd
+ mBy6KmoCRI53k+kTuTvhr8QZ+w5EgYtIQ74iUbEqfSowLs2LRU28tn8TL5JH174pYNM7
+ HGpxDcxfX0A7r7t8+YNaWMtXHtoxEZpcIbTTgLtT+EqkcBRjHi62mPiDG08jqmINmdJ0
+ L/I4yKBS87mTsiijvjZWtyEwrvXedsudLv6Bmj+x5lAUEJQVdFBvTdYL9pSbCcXgaJ38
+ nMNY2TvOm9rlUWm1PkRDRTu6zXG2fQ/PnEGiJx8teUBfHJcFXrWPQB6bGg09AHKkmOBJ
+ ou2g==
+X-Gm-Message-State: APjAAAU8JGn0XMM/2l7nUdOD0AyjKg/YLCEwfSXkj+oUorXGkNwTFMiC
+ CWrj3FBdIl6lybiCib+BJYDG2g==
+X-Received: by 2002:aa7:998f:: with SMTP id k15mr34497360pfh.203.1567625506689; 
+ Wed, 04 Sep 2019 12:31:46 -0700 (PDT)
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
  [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id f6sm18999174pga.50.2019.09.04.12.31.48
+ by smtp.gmail.com with ESMTPSA id f6sm18999174pga.50.2019.09.04.12.31.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Sep 2019 12:31:48 -0700 (PDT)
+ Wed, 04 Sep 2019 12:31:45 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Wed,  4 Sep 2019 12:30:27 -0700
-Message-Id: <20190904193059.26202-38-richard.henderson@linaro.org>
+Date: Wed,  4 Sep 2019 12:30:25 -0700
+Message-Id: <20190904193059.26202-36-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190904193059.26202-1-richard.henderson@linaro.org>
 References: <20190904193059.26202-1-richard.henderson@linaro.org>
@@ -100,8 +99,9 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::441
-Subject: [Qemu-arm] [PATCH v4 37/69] target/arm: Convert SETEND
+X-Received-From: 2607:f8b0:4864:20::532
+Subject: [Qemu-arm] [PATCH v4 35/69] target/arm: Convert Clear-Exclusive,
+ Barriers
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -116,74 +116,217 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IYBMFxwLK1hX
+X-TUID: CUgiYL/d25mT
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate.c       | 22 +++++++++++++---------
- target/arm/a32-uncond.decode |  4 ++++
- 2 files changed, 17 insertions(+), 9 deletions(-)
+v3: Check m-profile for all; fix missing isa check for ISB;
+fix thumb isa check for CLREX and DSB.
+---
+ target/arm/translate.c       | 127 ++++++++++++++++-------------------
+ target/arm/a32-uncond.decode |  10 +++
+ target/arm/t32.decode        |  10 +++
+ 3 files changed, 78 insertions(+), 69 deletions(-)
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 664ea281f8..a599da96e1 100644
+index ca4873e514..364b51c2a6 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -10240,6 +10240,18 @@ static bool trans_SB(DisasContext *s, arg_SB *a)
+@@ -10145,6 +10145,63 @@ static bool trans_SRS(DisasContext *s, arg_SRS *a)
      return true;
  }
  
-+static bool trans_SETEND(DisasContext *s, arg_SETEND *a)
++/*
++ * Clear-Exclusive, Barriers
++ */
++
++static bool trans_CLREX(DisasContext *s, arg_CLREX *a)
 +{
-+    if (!ENABLE_ARCH_6) {
++    if (s->thumb
++        ? !ENABLE_ARCH_7 && !arm_dc_feature(s, ARM_FEATURE_M)
++        : !ENABLE_ARCH_6K) {
 +        return false;
 +    }
-+    if (a->E != (s->be_data == MO_BE)) {
-+        gen_helper_setend(cpu_env);
-+        s->base.is_jmp = DISAS_UPDATE;
++    gen_clrex(s);
++    return true;
++}
++
++static bool trans_DSB(DisasContext *s, arg_DSB *a)
++{
++    if (!ENABLE_ARCH_7 && !arm_dc_feature(s, ARM_FEATURE_M)) {
++        return false;
 +    }
++    tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
++    return true;
++}
++
++static bool trans_DMB(DisasContext *s, arg_DMB *a)
++{
++    return trans_DSB(s, NULL);
++}
++
++static bool trans_ISB(DisasContext *s, arg_ISB *a)
++{
++    if (!ENABLE_ARCH_7 && !arm_dc_feature(s, ARM_FEATURE_M)) {
++        return false;
++    }
++    /*
++     * We need to break the TB after this insn to execute
++     * self-modifying code correctly and also to take
++     * any pending interrupts immediately.
++     */
++    gen_goto_tb(s, 0, s->base.pc_next);
++    return true;
++}
++
++static bool trans_SB(DisasContext *s, arg_SB *a)
++{
++    if (!dc_isar_feature(aa32_sb, s)) {
++        return false;
++    }
++    /*
++     * TODO: There is no speculation barrier opcode
++     * for TCG; MB and end the TB instead.
++     */
++    tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
++    gen_goto_tb(s, 0, s->base.pc_next);
 +    return true;
 +}
 +
  /*
   * Legacy decoder.
   */
-@@ -10325,15 +10337,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-             return; /* v7MP: Unallocated memory hint: must NOP */
-         }
- 
--        if ((insn & 0x0ffffdff) == 0x01010000) {
--            ARCH(6);
--            /* setend */
--            if (((insn >> 9) & 1) != !!(s->be_data == MO_BE)) {
--                gen_helper_setend(cpu_env);
--                s->base.is_jmp = DISAS_UPDATE;
+@@ -10238,38 +10295,6 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+                 s->base.is_jmp = DISAS_UPDATE;
+             }
+             return;
+-        } else if ((insn & 0x0fffff00) == 0x057ff000) {
+-            switch ((insn >> 4) & 0xf) {
+-            case 1: /* clrex */
+-                ARCH(6K);
+-                gen_clrex(s);
+-                return;
+-            case 4: /* dsb */
+-            case 5: /* dmb */
+-                ARCH(7);
+-                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
+-                return;
+-            case 6: /* isb */
+-                /* We need to break the TB after this insn to execute
+-                 * self-modifying code correctly and also to take
+-                 * any pending interrupts immediately.
+-                 */
+-                gen_goto_tb(s, 0, s->base.pc_next);
+-                return;
+-            case 7: /* sb */
+-                if ((insn & 0xf) || !dc_isar_feature(aa32_sb, s)) {
+-                    goto illegal_op;
+-                }
+-                /*
+-                 * TODO: There is no speculation barrier opcode
+-                 * for TCG; MB and end the TB instead.
+-                 */
+-                tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
+-                gen_goto_tb(s, 0, s->base.pc_next);
+-                return;
+-            default:
+-                goto illegal_op;
 -            }
--            return;
--        } else if ((insn & 0x0e000f00) == 0x0c000100) {
-+        if ((insn & 0x0e000f00) == 0x0c000100) {
+         } else if ((insn & 0x0e000f00) == 0x0c000100) {
              if (arm_dc_feature(s, ARM_FEATURE_IWMMXT)) {
                  /* iWMMXt register transfer.  */
-                 if (extract32(s->c15_cpar, 1, 1)) {
+@@ -10730,43 +10755,7 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
+                             gen_set_psr_im(s, offset, 0, imm);
+                         }
+                         break;
+-                    case 3: /* Special control operations.  */
+-                        if (!arm_dc_feature(s, ARM_FEATURE_V7) &&
+-                            !arm_dc_feature(s, ARM_FEATURE_M)) {
+-                            goto illegal_op;
+-                        }
+-                        op = (insn >> 4) & 0xf;
+-                        switch (op) {
+-                        case 2: /* clrex */
+-                            gen_clrex(s);
+-                            break;
+-                        case 4: /* dsb */
+-                        case 5: /* dmb */
+-                            tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
+-                            break;
+-                        case 6: /* isb */
+-                            /* We need to break the TB after this insn
+-                             * to execute self-modifying code correctly
+-                             * and also to take any pending interrupts
+-                             * immediately.
+-                             */
+-                            gen_goto_tb(s, 0, s->base.pc_next);
+-                            break;
+-                        case 7: /* sb */
+-                            if ((insn & 0xf) || !dc_isar_feature(aa32_sb, s)) {
+-                                goto illegal_op;
+-                            }
+-                            /*
+-                             * TODO: There is no speculation barrier opcode
+-                             * for TCG; MB and end the TB instead.
+-                             */
+-                            tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
+-                            gen_goto_tb(s, 0, s->base.pc_next);
+-                            break;
+-                        default:
+-                            goto illegal_op;
+-                        }
+-                        break;
++                    case 3: /* Special control operations, in decodetree */
+                     case 4: /* bxj, in decodetree */
+                         goto illegal_op;
+                     case 5: /* Exception return.  */
 diff --git a/target/arm/a32-uncond.decode b/target/arm/a32-uncond.decode
-index de611e8aff..32253b4f9a 100644
+index 64548a93e2..c7e9df8030 100644
 --- a/target/arm/a32-uncond.decode
 +++ b/target/arm/a32-uncond.decode
-@@ -24,6 +24,7 @@
+@@ -22,6 +22,7 @@
+ # All of those that have a COND field in insn[31:28] are in a32.decode
+ #
  
- &empty           !extern
++&empty           !extern
  &i               !extern imm
-+&setend          E
  
  # Branch with Link and Exchange
+@@ -37,3 +38,12 @@ BLX_i            1111 101 . ........................          &i imm=%imm24h
  
-@@ -50,3 +51,6 @@ DSB              1111 0101 0111 1111 1111 0000 0100 ----
- DMB              1111 0101 0111 1111 1111 0000 0101 ----
- ISB              1111 0101 0111 1111 1111 0000 0110 ----
- SB               1111 0101 0111 1111 1111 0000 0111 0000
+ RFE              1111 100 pu:2 0 w:1 1 rn:4 0000 1010 0000 0000   &rfe
+ SRS              1111 100 pu:2 1 w:1 0 1101 0000 0101 000 mode:5  &srs
 +
-+# Set Endianness
-+SETEND           1111 0001 0000 0001 0000 00 E:1 0 0000 0000  &setend
++# Clear-Exclusive, Barriers
++
++# QEMU does not require the option field for the barriers.
++CLREX            1111 0101 0111 1111 1111 0000 0001 1111
++DSB              1111 0101 0111 1111 1111 0000 0100 ----
++DMB              1111 0101 0111 1111 1111 0000 0101 ----
++ISB              1111 0101 0111 1111 1111 0000 0110 ----
++SB               1111 0101 0111 1111 1111 0000 0111 0000
+diff --git a/target/arm/t32.decode b/target/arm/t32.decode
+index c8a8aeceee..63bca82575 100644
+--- a/target/arm/t32.decode
++++ b/target/arm/t32.decode
+@@ -305,6 +305,16 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 ....      @rdm
+       # of the space is "reserved hint, behaves as nop".
+       NOP        1111 0011 1010 1111 1000 0000 ---- ----
+     }
++
++    # Miscellaneous control
++    {
++      CLREX      1111 0011 1011 1111 1000 1111 0010 1111
++      DSB        1111 0011 1011 1111 1000 1111 0100 ----
++      DMB        1111 0011 1011 1111 1000 1111 0101 ----
++      ISB        1111 0011 1011 1111 1000 1111 0110 ----
++      SB         1111 0011 1011 1111 1000 1111 0111 0000
++    }
++
+     # Note that the v7m insn overlaps both the normal and banked insn.
+     {
+       MRS_bank   1111 0011 111 r:1 .... 1000 rd:4   001. 0000  \
 -- 
 2.17.1
 

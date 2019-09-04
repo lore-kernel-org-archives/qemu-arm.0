@@ -1,102 +1,103 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1044461wrp;
-        Tue, 3 Sep 2019 15:55:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzf9wC4KMA6Il3Vtkc9P0L1NzfHNA5MiR2UqT/eHt4949t2sfVHkQXVQit/OUm5QvjjWnc8
-X-Received: by 2002:a05:620a:118c:: with SMTP id b12mr183379qkk.336.1567551347742;
-        Tue, 03 Sep 2019 15:55:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567551347; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp134393wrp;
+        Tue, 3 Sep 2019 18:44:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzB+eY9EmCuojq1XsKmZYuBXGwVMcjreEcmP846g1C77x+RtTaEGNF49rgMIDWh0LrzWr3e
+X-Received: by 2002:aa7:d8cf:: with SMTP id k15mr10158512eds.195.1567561485668;
+        Tue, 03 Sep 2019 18:44:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567561485; cv=none;
         d=google.com; s=arc-20160816;
-        b=YJzwSLpMTmf7OgAVKQxOX+IMBQs0yNXBfRxlMv9l48icnThXlWtSaUL8xvAXZd0Mvy
-         qVj4RkVrBnAx9Aaa79R9Z6RZrc6Q7+5+qx5S2MUVXBbx+pAQxP0bpNASCnGStHfgMTk3
-         60jx2WnxF64xJ8hiu9rDawoeOZOPhBdRvuxzREQDWlVoUuBuBxVzKgd76IBu/lQFIeOZ
-         3g835/ysEEbM5HgGev/zLR0LnJ2ut0ShW4ItzR3stRYqeZz8aUozTcfWGcMO6PjPgEgT
-         RAAhPQKkMrrh6BRXmkbHBz+2YnSJCItoAEeNMUjSTZIlRjo+zT/o3g7Gux5RlgdOyngH
-         alLw==
+        b=OSXmKBTntKGStfpvXrpGU8w22idgjLpFMWKCJsZaaJM9PmEooIBi1h6PQUijwfvwLJ
+         zcMqACLxDrIp1++qPNIOfeezR2akpMoZ6bS4LG7vNpzmJ0LSLVZTrbpd757nInCLrNrC
+         F1oeuWGprduRbNkd+XxNl5MpkL3QaiDpwQ60cwQUjeB4fB45iQEU1gtriKDr906RI3h+
+         1qIqkpVy1oI+hF7jJf2AnlqcGSM4y+DVVIeJjKd26c4LCS0NVuK1Enc4qsaPlRG+CW2y
+         jXFIBnFSZlWXIWvHt5XIZhWOVhmeISyUk6fioKNrfOZqmKN/4Sc6bJOwTr3zcA37sQrU
+         pAJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=+8Z7lgG57vQ2/yBLQqx76xo0fBYpHJQthGArthUlr+w=;
-        b=Q1oy4O8GiN9dEPXPgbTbfqlq2zaQXh3tD/xk2Squlc74kuU/6h6shXke9vrPPn0zAp
-         FUSHZ+haOas1SXRW/Sk9rMWiV1kGoNoXCv8EpZQWDTlUQlH6hcmpvdbBWXIIA6fgh93/
-         +E0NXiTSsv+fWXIXz2mt2cJhBVJDhgQ56d9JPdJZil1g/rnWnc5n6rHo+qKT0xvBlO+7
-         5PYHH7VSEZ+hYgXcsOVvH18smc3F1lloc+fPYR0tciugqGz5w0WC+2p6WHlGCmhhCsDG
-         FbqblIrrfqyrLPPN93gqM23hCd+luv+lBNQR8d7AP4dWr8eNEh6SPl9a+dtzavaB3xYD
-         dMpw==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=4o8FHxgaqFbS/PgjXmIAyIKGNCQJb6xAwRHqIacJmR4=;
+        b=qHrdScVXPE8g7EwXl5S5tQggo3XnbvKjhWKvsXDetI1YM3DInDf4qqMUp4ay5GPjWo
+         AjjQLdP4R417vSrXnaHeG3P4d4jlmjK1P1lQuvK/BpJzs+hZjpx8Ln+JezlCuQJpIqet
+         yNYOidcXVuILdlaTPgzb7qm9bdWQrIAiAxjgyMkK2Vv1ArnszhDEt8amO8S2hmhXGEzi
+         lAg1vAtCpSr5a58L/XjTrq5CqQgBt6od98xyN0zTHZAzxLKTwdNaZ0Yy8meBADzpvITv
+         faJ9HJBXVsloGkmdVbnhPqBEblu42PvELq5vG5mEamXGiKvnwh4V6uBtwQSpTETSbLrN
+         vIhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ownyjE0r;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c9si10760316qtm.230.2019.09.03.15.55.47
+        by mx.google.com with ESMTPS id n3si4227993ejx.53.2019.09.03.18.44.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2019 15:55:47 -0700 (PDT)
+        Tue, 03 Sep 2019 18:44:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ownyjE0r;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:52224 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52604 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5HiF-0008Cr-5H
-	for alex.bennee@linaro.org; Tue, 03 Sep 2019 18:55:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44909)
+	id 1i5KLk-0007qR-IV
+	for alex.bennee@linaro.org; Tue, 03 Sep 2019 21:44:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36774)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1i5Hhu-0007vL-D9
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 18:55:27 -0400
+ (envelope-from <peterx@redhat.com>) id 1i5KLa-0007nj-1n
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 21:44:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1i5Hht-0008FA-AL
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 18:55:26 -0400
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:46962)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1i5Hhq-0008Bh-Rz; Tue, 03 Sep 2019 18:55:23 -0400
-Received: by mail-lj1-x244.google.com with SMTP id e17so6695156ljf.13;
- Tue, 03 Sep 2019 15:55:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=+8Z7lgG57vQ2/yBLQqx76xo0fBYpHJQthGArthUlr+w=;
- b=ownyjE0r+JBG92A1Qf1f0GxvHa9KhgFOhwhe3OAm9OqCOVowc/T2iTHorzJB47pXNt
- AjuTpd+ShfRN2dB0QNwWLIIwe7DMzLvmvvZiP108Jg6xfhm95DsG/YVtMbbuIqcEIIOP
- vAlFPzA3vuu0C/I4y+i7mSGKnaa8dYZQbj20IpWFiDOL0x4uHwqgpWBGmHyc28Xe3aqm
- 0h6DENZfw4CMc85icZeR+dz8hDaT0Dr9wdr5UrExlWNdSin+Fx5ePCnUNBzOPM2CAi8h
- 47i12YGvGaC14hjjox4ZhRxjhaQYHZfgytoVew8nSUdVy3k9LD0YKVoJqHEmiGzFRAqe
- WUXg==
+ (envelope-from <peterx@redhat.com>) id 1i5KLX-00067x-F7
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 21:44:32 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33070)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1i5KLX-00067T-7e
+ for qemu-arm@nongnu.org; Tue, 03 Sep 2019 21:44:31 -0400
+Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com
+ [209.85.215.198])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id DF25C811D8
+ for <qemu-arm@nongnu.org>; Wed,  4 Sep 2019 01:44:29 +0000 (UTC)
+Received: by mail-pg1-f198.google.com with SMTP id j9so12139694pgk.20
+ for <qemu-arm@nongnu.org>; Tue, 03 Sep 2019 18:44:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=+8Z7lgG57vQ2/yBLQqx76xo0fBYpHJQthGArthUlr+w=;
- b=NFwWU8zqwc3W3r1iIZ6T3q9KUSU48pnXZ2GJ9GgKoTdqAWA5XCeCW2On6AkzGgfSbn
- 3a9Kw/mekEt8wJryHQ8xV0ymIYWSoEPtc+FCbfEYy+JP4jF6+lImkAC9DxQJBKbbF6na
- sWA4DNQoLm17h77tmcqwPwjDVCsLp5m8xz4FQxCIGGfY38uoL5VzZctDIxgeC/fhHxQG
- cLooo++h/1cKr6IxN2HsImy9BN2semxYuctNAO8wYhibaM0uKLebbUNgciEr2M3MY2wS
- F9G0NMLuNBz9TEj3xp2n/Y0kLELfKkd3SM94WFUDUx7ttiLzzNZxCd/ld59xFFe5WXQP
- ekWw==
-X-Gm-Message-State: APjAAAWT/nTX45lILJU8DcDGNJi69Pdr0n3xUyDi1kKOD7WH0uvZ7EC7
- qAMHoALC2Z0TUIEaifI413bnn2Z869gHW+xCYStT1dX5Ya8=
-X-Received: by 2002:a05:651c:109:: with SMTP id
- a9mr21100413ljb.33.1567551320702; 
- Tue, 03 Sep 2019 15:55:20 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=4o8FHxgaqFbS/PgjXmIAyIKGNCQJb6xAwRHqIacJmR4=;
+ b=SA6/oJvncS9bDTqdDPUg479+4stnfaikN7AilZzOF9kqxN8iAQZRNalDJJ7/2p2kqH
+ sM75s169GwwSRaateAxChnTiWn5FQqtztwn2vvBgi0CkoxgUZN058faSj/7z/efXxh+D
+ aSv7ZHaWXn9GRr36jnuuYv4g7gzTJLffBvE2SOvHqpfkucOsE5fyt5KkpJV+bBpLj1WB
+ hzxT/Tj4L7quNQBKk84T38pXtHrwlWbDzMee7AgV4nGwbHS63oD05a3076OQsV7eaTqP
+ imn1nSyjGQuTqOOoz1wAr0GoNTHOvYAa/ahyW80tyjUACa7iQOI3vpToDq3Tjw7iru8Y
+ 4kjQ==
+X-Gm-Message-State: APjAAAXMFcveTPclP3hO1NQ7tslClQzLfC3cd+XAiSRt5GhObySVVHGd
+ tjUtCV+wxWIGzH6fun7Y1ydGZGh19Qfhy+ox++KM8X3qLA8rVa0Ajkv7YY5ASdNxXyZ/13ebiF5
+ nRGv7rSJw7rFJ
+X-Received: by 2002:aa7:908b:: with SMTP id i11mr41686332pfa.199.1567561469304; 
+ Tue, 03 Sep 2019 18:44:29 -0700 (PDT)
+X-Received: by 2002:aa7:908b:: with SMTP id i11mr41686315pfa.199.1567561469099; 
+ Tue, 03 Sep 2019 18:44:29 -0700 (PDT)
+Received: from xz-x1 ([209.132.188.80])
+ by smtp.gmail.com with ESMTPSA id c138sm394749pfc.80.2019.09.03.18.44.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 03 Sep 2019 18:44:28 -0700 (PDT)
+Date: Wed, 4 Sep 2019 09:44:16 +0800
+From: Peter Xu <peterx@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Message-ID: <20190904014416.GB30402@xz-x1>
+References: <20190730172137.23114-1-eric.auger@redhat.com>
+ <20190730172137.23114-9-eric.auger@redhat.com>
+ <20190819081143.GA13560@xz-x1>
+ <b5e2ff32-eed8-829e-ffd4-2b62ed6b2fda@redhat.com>
 MIME-Version: 1.0
-References: <20190903114729.3400-1-philmd@redhat.com>
- <20190903114729.3400-4-philmd@redhat.com>
-In-Reply-To: <20190903114729.3400-4-philmd@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 3 Sep 2019 15:54:54 -0700
-Message-ID: <CAKmqyKNdbbhc+knpetPvsHxHV=tNvNsvvzBCkijgSsGju1QSgw@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::244
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v2 3/5] hw/arm: Restrict
- pre-ARMv7 cpus to TCG
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <b5e2ff32-eed8-829e-ffd4-2b62ed6b2fda@redhat.com>
+User-Agent: Mutt/1.11.4 (2019-03-13)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH for-4.2 v10 08/15] virtio-iommu: Implement
+ map/unmap
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,138 +109,94 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: peter.maydell@linaro.org, kevin.tian@intel.com, mst@redhat.com,
+ tn@semihalf.com, qemu-devel@nongnu.org, alex.williamson@redhat.com,
+ qemu-arm@nongnu.org, jean-philippe@linaro.org, bharat.bhushan@nxp.com,
+ eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JGzYiZTrjNBS
+X-TUID: aK2JjFvNX+cI
 
-On Tue, Sep 3, 2019 at 4:48 AM Philippe Mathieu-Daud=C3=A9 <philmd@redhat.c=
-om> wrote:
->
-> A KVM-only build won't be able to run pre-ARMv7 cpus, disable them.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+On Tue, Sep 03, 2019 at 01:37:11PM +0200, Auger Eric wrote:
+> Hi Peter,
+> 
+> On 8/19/19 10:11 AM, Peter Xu wrote:
+> > On Tue, Jul 30, 2019 at 07:21:30PM +0200, Eric Auger wrote:
+> > 
+> > [...]
+> > 
+> >> +    mapping = g_tree_lookup(domain->mappings, (gpointer)(&interval));
+> >> +
+> >> +    while (mapping) {
+> >> +        viommu_interval current;
+> >> +        uint64_t low  = mapping->virt_addr;
+> >> +        uint64_t high = mapping->virt_addr + mapping->size - 1;
+> >> +
+> >> +        current.low = low;
+> >> +        current.high = high;
+> >> +
+> >> +        if (low == interval.low && size >= mapping->size) {
+> >> +            g_tree_remove(domain->mappings, (gpointer)(&current));
+> >> +            interval.low = high + 1;
+> >> +            trace_virtio_iommu_unmap_left_interval(current.low, current.high,
+> >> +                interval.low, interval.high);
+> >> +        } else if (high == interval.high && size >= mapping->size) {
+> >> +            trace_virtio_iommu_unmap_right_interval(current.low, current.high,
+> >> +                interval.low, interval.high);
+> >> +            g_tree_remove(domain->mappings, (gpointer)(&current));
+> >> +            interval.high = low - 1;
+> >> +        } else if (low > interval.low && high < interval.high) {
+> >> +            trace_virtio_iommu_unmap_inc_interval(current.low, current.high);
+> >> +            g_tree_remove(domain->mappings, (gpointer)(&current));
+> >> +        } else {
+> >> +            break;
+> >> +        }
+> >> +        if (interval.low >= interval.high) {
+> >> +            return VIRTIO_IOMMU_S_OK;
+> >> +        } else {
+> >> +            mapping = g_tree_lookup(domain->mappings, (gpointer)(&interval));
+> >> +        }
+> >> +    }
+> >> +
+> >> +    if (mapping) {
+> >> +        qemu_log_mask(LOG_GUEST_ERROR,
+> >> +                      "****** %s: Unmap 0x%"PRIx64" size=0x%"PRIx64
+> >> +                     " from 0x%"PRIx64" size=0x%"PRIx64" is not supported\n",
+> >> +                     __func__, interval.low, size,
+> >> +                     mapping->virt_addr, mapping->size);
+> >> +    } else {
+> >> +        return VIRTIO_IOMMU_S_OK;
+> >> +    }
+> >> +
+> >> +    return VIRTIO_IOMMU_S_INVAL;
+> > 
+> > Could the above chunk be simplified as something like below?
+> > 
+> >   while ((mapping = g_tree_lookup(domain->mappings, &interval))) {
+> >     g_tree_remove(domain->mappings, mapping);
+> >   }
+> Indeed the code could be simplified. I only need to make sure I don't
+> split an existing mapping.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Hmm... Do we need to still split an existing mapping if necessary?
+For example when with this mapping:
 
-Alistair
+  iova=0x1000, size=0x2000, phys=ADDR1, flags=FLAGS1
 
-> ---
-> v2: - "depends on !KVM" -> "depends on TCG" (rth)
->     - do not modify default-configs/arm-softmmu.mak (thuth)
-> ---
->  hw/arm/Kconfig | 23 +++++++++++++++++++++++
->  1 file changed, 23 insertions(+)
->
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 76a2a6bcbf..1c359a6f47 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -1,3 +1,15 @@
-> +config ARM_V4
-> +    depends on TCG
-> +    bool
-> +
-> +config ARM_V5
-> +    depends on TCG
-> +    bool
-> +
-> +config ARM_V6
-> +    depends on TCG
-> +    bool
-> +
->  config ARM_VIRT
->      bool
->      imply PCI_DEVICES
-> @@ -23,6 +35,7 @@ config ARM_VIRT
->
->  config CHEETAH
->      bool
-> +    select ARM_V4
->      select OMAP
->      select TSC210X
->
-> @@ -32,6 +45,7 @@ config CUBIEBOARD
->
->  config DIGIC
->      bool
-> +    select ARM_V5
->      select PTIMER
->      select PFLASH_CFI02
->
-> @@ -61,6 +75,7 @@ config HIGHBANK
->
->  config INTEGRATOR
->      bool
-> +    select ARM_V5
->      select ARM_TIMER
->      select INTEGRATOR_DEBUG
->      select PL011 # UART
-> @@ -86,6 +101,7 @@ config MUSCA
->
->  config MUSICPAL
->      bool
-> +    select ARM_V5
->      select BITBANG_I2C
->      select MARVELL_88W8618
->      select PTIMER
-> @@ -99,6 +115,7 @@ config NETDUINO2
->
->  config NSERIES
->      bool
-> +    select ARM_V6
->      select OMAP
->      select TMP105   # tempature sensor
->      select BLIZZARD # LCD/TV controller
-> @@ -121,6 +138,7 @@ config OMAP
->
->  config PXA2XX
->      bool
-> +    select ARM_V5
->      select FRAMEBUFFER
->      select I2C
->      select SERIAL
-> @@ -232,10 +250,12 @@ config COLLIE
->
->  config SX1
->      bool
-> +    select ARM_V4
->      select OMAP
->
->  config VERSATILE
->      bool
-> +    select ARM_V5
->      select ARM_TIMER # sp804
->      select PFLASH_CFI01
->      select LSI_SCSI_PCI
-> @@ -327,6 +347,7 @@ config XLNX_VERSAL
->
->  config FSL_IMX25
->      bool
-> +    select ARM_V5
->      select IMX
->      select IMX_FEC
->      select IMX_I2C
-> @@ -334,6 +355,7 @@ config FSL_IMX25
->
->  config FSL_IMX31
->      bool
-> +    select ARM_V6
->      select SERIAL
->      select IMX
->      select IMX_I2C
-> @@ -349,6 +371,7 @@ config FSL_IMX6
->
->  config ASPEED_SOC
->      bool
-> +    select ARM_V5
->      select DS1338
->      select FTGMAC100
->      select I2C
-> --
-> 2.20.1
->
->
+And if we want to unmap the range (iova=0, size=0x2000), then we
+should split the existing mappping and leave this one:
+
+  iova=0x2000, size=0x1000, phys=(ADDR1+0x1000), flags=FLAGS1
+
+Right?
+
+> 
+> Also I needed to use g_tree_lookup_extended to retrieve the actual key
+> to remove. The usage of g_tree_lookup_extended() allows me to remove the
+> virt_addr and size fields from the mapping value value struct as those
+> info can be retrieved from the key.
+
+True.  Thanks,
+
+-- 
+Peter Xu

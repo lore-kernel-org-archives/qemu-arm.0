@@ -1,187 +1,190 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp142769wrp;
-        Tue, 3 Sep 2019 18:59:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx3K4/7QIzn3iATj7EDkl8o+M82m7vC+YFy5TTgkm1P3zcmoIXiSetQUiji2f83NE6xyIdD
-X-Received: by 2002:a0c:afa1:: with SMTP id s30mr7111615qvc.23.1567562341632;
-        Tue, 03 Sep 2019 18:59:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567562341; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp236638wrp;
+        Tue, 3 Sep 2019 21:24:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwcnVIIDK0DMeXYa4QW1XV98DwurwcWcuQLfQary+A2h7A17TUzMN4mWmFIfV2FHriKt/fo
+X-Received: by 2002:a17:906:405b:: with SMTP id y27mr11959185ejj.18.1567571066653;
+        Tue, 03 Sep 2019 21:24:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567571066; cv=none;
         d=google.com; s=arc-20160816;
-        b=nfR7DjsDln3lFzoh6mIsZ2cbrWvPDxStDmHi3M+rZgVAeVoI4BvsoiG0OoiQynDSZF
-         9gTWae0AjhLy70LzGoOOZ5PNmwcnyw6MW/hYvLTbpXUvuaGCJmhfniZ1xpFmZO5BRTkz
-         rn8v0wXv/6apXYjplZHpl+l8HeKQvi7tLrFhY98e29kgQO50cniFo8TXffQSikV0Av+6
-         nmXuZB3hs/RezOyjzlVdy6EHiIm6t/bHJe6sTQ0JkufPBowjUHXyizYpw11oIWSxpRit
-         jAMHSyMqtl0s3pJJlva9hJFG4fqpJLFRNUQbbFnS9Kqn2Mf4h66zsAPgzqfU+/SFIcd9
-         WSqA==
+        b=MpoVNH73y4l4dmogVfZhADuJA6VflWWnnE2l+/7i2Fxez9sVa34TyQgh4erVtAySsD
+         03TWnQAPuUyTNppt67w5IVJek3Frusw4rDHXL5WdRulDUq7eHugKP2HY6Q++Sr+woOPg
+         FsaOkCSE1sOPY9XiRQEj/1FoKR2DixSqHAsD/AasOCSsU324ONA77VyqdoCPvpa/llJH
+         az+IBmBF5pZudLGu/W7wyu6Gq6UvMFx4j4rv2nwafEg7deNlmd3lVfC3eXlBjOomaYzV
+         QAo2322O3m6PGPFDVcceos/Zcx6DIDZUSKEpou2cQktRShKL1ot93J4/LqBWJ1iwCJvM
+         HBBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=A7PjX/SXFR8o/059W3/K/OOcmKUuFkR+MHHL591vpNM=;
-        b=ioNwDKS0383uwPWvtwhoz10qHtd8BsdrHwJozKBHjKNuszd1leJQdWG1nbJsczhddo
-         EibekHrcQ+2LPEDFpsw9Az2FgoCOBYnJ18GSrnchhPDcnmE7a1GcNI9xqF9y+5DP581r
-         JQCswRTrOXQq4PkbdEwnozymsx00K/slZiQd4F1AxOMf+4TcyW+Et/4Rub7uLkYTzzln
-         Z29xh3KGeOERingD9xaRduqGUmAVKdTzKdg6EWTxmswBSYuN5iI+/tMtM/634tObD4mr
-         zDIAowyIlmt/N+/Urw608YKe6Ay8t3ZyRYfAgajKtQZoRn0n309qg1I0vzBvROqmpg59
-         K++w==
+         :list-unsubscribe:list-id:precedence:subject:mime-version
+         :content-transfer-encoding:dlp-reaction:dlp-version:dlp-product
+         :content-language:accept-language:in-reply-to:references:message-id
+         :date:thread-index:thread-topic:to:from;
+        bh=0uDFqYCYecvtWsCPvLEKLhQVzj2ks63y4IkfqZV4Al0=;
+        b=PboU1eV8vTJbdc0sh5opNlyYGMugWMWzb2XtZXKSTYdPtiYn9dtKIpBkj+I9595nRM
+         zBAnw1fwZgfivJfV84fmTXcl/51WVTPCYvlGe5hVPIPk+tftp93V7j6CTP/zn7rztKIk
+         1MhLDfmM95ba5HSjZIoeiMvF7fbvnD+JmUmB2oUATPn8XOVyxmFhJTmghSn1HeD3zsiV
+         i8EjkPPySoqnU5R5m4gPCRVtNh5KrTAu2GBCQ9w3OpR7i7Qln2H5px24/vw+OZm4ryfU
+         P/vhSijSQZbJ3LsW5lu5dvgIV86lR3+3s9i4v1h3Ud2PuOlvyjG+KY4xagTYpcA5AK8u
+         c99A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n16si1980889qke.225.2019.09.03.18.59.01
+        by mx.google.com with ESMTPS id r21si8787421eda.368.2019.09.03.21.24.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Sep 2019 18:59:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 03 Sep 2019 21:24:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52646 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1]:53156 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5KZZ-0002Iq-0K
-	for alex.bennee@linaro.org; Tue, 03 Sep 2019 21:59:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38488)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i5MqH-000585-MT
+	for alex.bennee@linaro.org; Wed, 04 Sep 2019 00:24:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56165)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peterx@redhat.com>) id 1i5KZP-0002IL-3x
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 21:58:52 -0400
+ (envelope-from <kevin.tian@intel.com>) id 1i5Mpr-00057w-PT
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 00:24:00 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peterx@redhat.com>) id 1i5KZN-0007B3-4Q
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 21:58:50 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45244)
+ (envelope-from <kevin.tian@intel.com>) id 1i5Mpp-000758-Ue
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 00:23:59 -0400
+Received: from mga12.intel.com ([192.55.52.136]:56596)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1i5KZM-0007AV-T9
- for qemu-arm@nongnu.org; Tue, 03 Sep 2019 21:58:49 -0400
-Received: from mail-pf1-f200.google.com (mail-pf1-f200.google.com
- [209.85.210.200])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id E0C5A64127
- for <qemu-arm@nongnu.org>; Wed,  4 Sep 2019 01:58:47 +0000 (UTC)
-Received: by mail-pf1-f200.google.com with SMTP id f2so11238886pfk.13
- for <qemu-arm@nongnu.org>; Tue, 03 Sep 2019 18:58:47 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=A7PjX/SXFR8o/059W3/K/OOcmKUuFkR+MHHL591vpNM=;
- b=XBe6YiDqso6V4XRQHL2QoqIENVyfY7gQGS4KV3vTM5JXIlhFD9Ec1khfrzxVPkETPi
- hkL8+hgAgU2b5hCb/G3VABvfOchGcRtOCJNSTareYaetESH4Z3duIVkB7EtDnAdeGJ6b
- phj9hn3Ek7h/YY2MVl1CCOigpTF9muhs/RC1LYeG5gKqe2VgtrreSJpWyGo2aAHnl6W+
- lVZcaWy0g5yLc9kKiLrOTvA9eQfSAUq0kVJrevrUY3VB76cz+z3CwfkX5kWhj4XtMdEH
- UCGTu53bQjHAaGKQQIZC9ghDSJvK8O/wrUe6pegdspXzxF+XzbWnlBiQTaWRnNbMANAm
- DReg==
-X-Gm-Message-State: APjAAAVXDDyfBRBBmnv9Q1LrbXFb5GmU9d6tu+zZ/S4oLkY7pNM3afN9
- rWRCW6sX7jCeMuCMfZT7i7W7dkXAc0tJ2MMY65ipO4+mC11t5xPYTPSW8Lb5e2XpXbN3HedgN/w
- rj7PNsCkdppBa
-X-Received: by 2002:a17:90a:ec12:: with SMTP id
- l18mr2387367pjy.6.1567562327363; 
- Tue, 03 Sep 2019 18:58:47 -0700 (PDT)
-X-Received: by 2002:a17:90a:ec12:: with SMTP id
- l18mr2387347pjy.6.1567562327152; 
- Tue, 03 Sep 2019 18:58:47 -0700 (PDT)
-Received: from xz-x1 ([209.132.188.80])
- by smtp.gmail.com with ESMTPSA id s19sm4929268pfe.86.2019.09.03.18.58.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Sep 2019 18:58:46 -0700 (PDT)
-Date: Wed, 4 Sep 2019 09:58:34 +0800
-From: Peter Xu <peterx@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Message-ID: <20190904015834.GC30402@xz-x1>
+ (Exim 4.71) (envelope-from <kevin.tian@intel.com>)
+ id 1i5Mpp-00073i-Hi; Wed, 04 Sep 2019 00:23:57 -0400
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 03 Sep 2019 21:23:54 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.64,465,1559545200"; d="scan'208";a="194584313"
+Received: from fmsmsx107.amr.corp.intel.com ([10.18.124.205])
+ by orsmga002.jf.intel.com with ESMTP; 03 Sep 2019 21:23:53 -0700
+Received: from shsmsx106.ccr.corp.intel.com (10.239.4.159) by
+ fmsmsx107.amr.corp.intel.com (10.18.124.205) with Microsoft SMTP Server (TLS)
+ id 14.3.439.0; Tue, 3 Sep 2019 21:23:53 -0700
+Received: from shsmsx104.ccr.corp.intel.com ([169.254.5.32]) by
+ SHSMSX106.ccr.corp.intel.com ([169.254.10.86]) with mapi id 14.03.0439.000;
+ Wed, 4 Sep 2019 12:23:51 +0800
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Peter Xu <peterx@redhat.com>, Auger Eric <eric.auger@redhat.com>
+Thread-Topic: [PATCH for-4.2 v10 08/15] virtio-iommu: Implement map/unmap
+Thread-Index: AQHVRvt45mqYxba1WEGcL7R8WepU8acBt2WAgBfMYYCAAOysAIAAsfiA
+Date: Wed, 4 Sep 2019 04:23:50 +0000
+Message-ID: <AADFC41AFE54684AB9EE6CBC0274A5D19D561F28@SHSMSX104.ccr.corp.intel.com>
 References: <20190730172137.23114-1-eric.auger@redhat.com>
- <20190730172137.23114-10-eric.auger@redhat.com>
- <20190819082424.GB13560@xz-x1>
- <d3759ba2-6ae6-2ae4-a71e-69965285f3f4@redhat.com>
+ <20190730172137.23114-9-eric.auger@redhat.com>
+ <20190819081143.GA13560@xz-x1>
+ <b5e2ff32-eed8-829e-ffd4-2b62ed6b2fda@redhat.com>
+ <20190904014416.GB30402@xz-x1>
+In-Reply-To: <20190904014416.GB30402@xz-x1>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ctpclassification: CTP_NT
+x-titus-metadata-40: eyJDYXRlZ29yeUxhYmVscyI6IiIsIk1ldGFkYXRhIjp7Im5zIjoiaHR0cDpcL1wvd3d3LnRpdHVzLmNvbVwvbnNcL0ludGVsMyIsImlkIjoiZDhjZDkxNTAtNTkwYS00Y2VhLTg3YzMtOTVkYzUzMjkzYWRhIiwicHJvcHMiOlt7Im4iOiJDVFBDbGFzc2lmaWNhdGlvbiIsInZhbHMiOlt7InZhbHVlIjoiQ1RQX05UIn1dfV19LCJTdWJqZWN0TGFiZWxzIjpbXSwiVE1DVmVyc2lvbiI6IjE3LjEwLjE4MDQuNDkiLCJUcnVzdGVkTGFiZWxIYXNoIjoiXC9lTUUxcU5lQ0toNkU4N2dBNEp6c0Fwdjc5VjFrc2xSanhFSFJXazdWYnhsMHdlbkNlTURnV0pCWVUrNDNJRFgifQ==
+dlp-product: dlpe-windows
+dlp-version: 11.0.400.15
+dlp-reaction: no-action
+x-originating-ip: [10.239.127.40]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <d3759ba2-6ae6-2ae4-a71e-69965285f3f4@redhat.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH for-4.2 v10 09/15] virtio-iommu: Implement
- translate
-X-BeenThere: qemu-arm@nongnu.org
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 192.55.52.136
+Subject: Re: [Qemu-devel] [PATCH for-4.2 v10 08/15] virtio-iommu: Implement
+ map/unmap
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, kevin.tian@intel.com, mst@redhat.com,
- tn@semihalf.com, qemu-devel@nongnu.org, alex.williamson@redhat.com,
- qemu-arm@nongnu.org, jean-philippe@linaro.org, bharat.bhushan@nxp.com,
- eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QhYW47DLpFO9
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "mst@redhat.com" <mst@redhat.com>, "tn@semihalf.com" <tn@semihalf.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "jean-philippe@linaro.org" <jean-philippe@linaro.org>,
+ "bharat.bhushan@nxp.com" <bharat.bhushan@nxp.com>,
+ "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8wtw4pluGgWQ
 
-On Tue, Sep 03, 2019 at 01:45:22PM +0200, Auger Eric wrote:
-> Hi Peter,
-> 
-> On 8/19/19 10:24 AM, Peter Xu wrote:
-> > On Tue, Jul 30, 2019 at 07:21:31PM +0200, Eric Auger wrote:
-> >> @@ -464,19 +464,75 @@ static IOMMUTLBEntry virtio_iommu_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-> >>                                              int iommu_idx)
-> >>  {
-> >>      IOMMUDevice *sdev = container_of(mr, IOMMUDevice, iommu_mr);
-> >> +    VirtIOIOMMU *s = sdev->viommu;
-> >>      uint32_t sid;
-> >> +    viommu_endpoint *ep;
-> >> +    viommu_mapping *mapping;
-> >> +    viommu_interval interval;
-> >> +    bool bypass_allowed;
-> >> +
-> >> +    interval.low = addr;
-> >> +    interval.high = addr + 1;
-> >>  
-> >>      IOMMUTLBEntry entry = {
-> >>          .target_as = &address_space_memory,
-> >>          .iova = addr,
-> >>          .translated_addr = addr,
-> >> -        .addr_mask = ~(hwaddr)0,
-> >> +        .addr_mask = (1 << ctz32(s->config.page_size_mask)) - 1,
-> >>          .perm = IOMMU_NONE,
-> >>      };
-> >>  
-> >> +    bypass_allowed = virtio_has_feature(s->acked_features,
-> >> +                                        VIRTIO_IOMMU_F_BYPASS);
-> >> +
-> >>      sid = virtio_iommu_get_sid(sdev);
-> >>  
-> >>      trace_virtio_iommu_translate(mr->parent_obj.name, sid, addr, flag);
-> >> +    qemu_mutex_lock(&s->mutex);
-> >> +
-> >> +    ep = g_tree_lookup(s->endpoints, GUINT_TO_POINTER(sid));
-> >> +    if (!ep) {
-> >> +        if (!bypass_allowed) {
-> >> +            error_report("%s sid=%d is not known!!", __func__, sid);
-> > 
-> > Maybe use error_report_once() to avoid DOS attack?  Also would it be
-> > good to unify the debug prints?  I see both error_report() and
-> > qemu_log_mask() are used in the whole patchset.  Or is that attempted?
-> 
-> I switched to error_report_once()
-> 
-> I understand that qemu_log_mask() should be used whenever the root cause
-> is a bad action of the guest OS (in below case, the EP was not attached
-> to any domain). Above, there is an EP that attempts to talk through the
-> IOMMU and this was not expected (rather a platform description issue or
-> a qemu bug).
-
-I see. It's a bit unclear at least to me on how to use these.  I have
-seen, and used error_report*() to report guest misbehaves as well just
-for the debugging and triaging simply because error_report*() will
-always be there even without "-d" (because when issue happens most
-users are without it...).  Then with these information captured by
-either libvirt or direct QEMU users we can triage guest bugs easier.
-I hope I'm not severly wrong, and please feel free to use
-qemu_log_mask() no matter what.
-
-Regards,
-
--- 
-Peter Xu
+PiBGcm9tOiBQZXRlciBYdSBbbWFpbHRvOnBldGVyeEByZWRoYXQuY29tXQ0KPiBTZW50OiBXZWRu
+ZXNkYXksIFNlcHRlbWJlciA0LCAyMDE5IDk6NDQgQU0NCj4gDQo+IE9uIFR1ZSwgU2VwIDAzLCAy
+MDE5IGF0IDAxOjM3OjExUE0gKzAyMDAsIEF1Z2VyIEVyaWMgd3JvdGU6DQo+ID4gSGkgUGV0ZXIs
+DQo+ID4NCj4gPiBPbiA4LzE5LzE5IDEwOjExIEFNLCBQZXRlciBYdSB3cm90ZToNCj4gPiA+IE9u
+IFR1ZSwgSnVsIDMwLCAyMDE5IGF0IDA3OjIxOjMwUE0gKzAyMDAsIEVyaWMgQXVnZXIgd3JvdGU6
+DQo+ID4gPg0KPiA+ID4gWy4uLl0NCj4gPiA+DQo+ID4gPj4gKyAgICBtYXBwaW5nID0gZ190cmVl
+X2xvb2t1cChkb21haW4tPm1hcHBpbmdzLCAoZ3BvaW50ZXIpKCZpbnRlcnZhbCkpOw0KPiA+ID4+
+ICsNCj4gPiA+PiArICAgIHdoaWxlIChtYXBwaW5nKSB7DQo+ID4gPj4gKyAgICAgICAgdmlvbW11
+X2ludGVydmFsIGN1cnJlbnQ7DQo+ID4gPj4gKyAgICAgICAgdWludDY0X3QgbG93ICA9IG1hcHBp
+bmctPnZpcnRfYWRkcjsNCj4gPiA+PiArICAgICAgICB1aW50NjRfdCBoaWdoID0gbWFwcGluZy0+
+dmlydF9hZGRyICsgbWFwcGluZy0+c2l6ZSAtIDE7DQo+ID4gPj4gKw0KPiA+ID4+ICsgICAgICAg
+IGN1cnJlbnQubG93ID0gbG93Ow0KPiA+ID4+ICsgICAgICAgIGN1cnJlbnQuaGlnaCA9IGhpZ2g7
+DQo+ID4gPj4gKw0KPiA+ID4+ICsgICAgICAgIGlmIChsb3cgPT0gaW50ZXJ2YWwubG93ICYmIHNp
+emUgPj0gbWFwcGluZy0+c2l6ZSkgew0KPiA+ID4+ICsgICAgICAgICAgICBnX3RyZWVfcmVtb3Zl
+KGRvbWFpbi0+bWFwcGluZ3MsIChncG9pbnRlcikoJmN1cnJlbnQpKTsNCj4gPiA+PiArICAgICAg
+ICAgICAgaW50ZXJ2YWwubG93ID0gaGlnaCArIDE7DQo+ID4gPj4gKyAgICAgICAgICAgIHRyYWNl
+X3ZpcnRpb19pb21tdV91bm1hcF9sZWZ0X2ludGVydmFsKGN1cnJlbnQubG93LA0KPiBjdXJyZW50
+LmhpZ2gsDQo+ID4gPj4gKyAgICAgICAgICAgICAgICBpbnRlcnZhbC5sb3csIGludGVydmFsLmhp
+Z2gpOw0KPiA+ID4+ICsgICAgICAgIH0gZWxzZSBpZiAoaGlnaCA9PSBpbnRlcnZhbC5oaWdoICYm
+IHNpemUgPj0gbWFwcGluZy0+c2l6ZSkgew0KPiA+ID4+ICsgICAgICAgICAgICB0cmFjZV92aXJ0
+aW9faW9tbXVfdW5tYXBfcmlnaHRfaW50ZXJ2YWwoY3VycmVudC5sb3csDQo+IGN1cnJlbnQuaGln
+aCwNCj4gPiA+PiArICAgICAgICAgICAgICAgIGludGVydmFsLmxvdywgaW50ZXJ2YWwuaGlnaCk7
+DQo+ID4gPj4gKyAgICAgICAgICAgIGdfdHJlZV9yZW1vdmUoZG9tYWluLT5tYXBwaW5ncywgKGdw
+b2ludGVyKSgmY3VycmVudCkpOw0KPiA+ID4+ICsgICAgICAgICAgICBpbnRlcnZhbC5oaWdoID0g
+bG93IC0gMTsNCj4gPiA+PiArICAgICAgICB9IGVsc2UgaWYgKGxvdyA+IGludGVydmFsLmxvdyAm
+JiBoaWdoIDwgaW50ZXJ2YWwuaGlnaCkgew0KPiA+ID4+ICsgICAgICAgICAgICB0cmFjZV92aXJ0
+aW9faW9tbXVfdW5tYXBfaW5jX2ludGVydmFsKGN1cnJlbnQubG93LA0KPiBjdXJyZW50LmhpZ2gp
+Ow0KPiA+ID4+ICsgICAgICAgICAgICBnX3RyZWVfcmVtb3ZlKGRvbWFpbi0+bWFwcGluZ3MsIChn
+cG9pbnRlcikoJmN1cnJlbnQpKTsNCj4gPiA+PiArICAgICAgICB9IGVsc2Ugew0KPiA+ID4+ICsg
+ICAgICAgICAgICBicmVhazsNCj4gPiA+PiArICAgICAgICB9DQo+ID4gPj4gKyAgICAgICAgaWYg
+KGludGVydmFsLmxvdyA+PSBpbnRlcnZhbC5oaWdoKSB7DQo+ID4gPj4gKyAgICAgICAgICAgIHJl
+dHVybiBWSVJUSU9fSU9NTVVfU19PSzsNCj4gPiA+PiArICAgICAgICB9IGVsc2Ugew0KPiA+ID4+
+ICsgICAgICAgICAgICBtYXBwaW5nID0gZ190cmVlX2xvb2t1cChkb21haW4tPm1hcHBpbmdzLA0K
+PiAoZ3BvaW50ZXIpKCZpbnRlcnZhbCkpOw0KPiA+ID4+ICsgICAgICAgIH0NCj4gPiA+PiArICAg
+IH0NCj4gPiA+PiArDQo+ID4gPj4gKyAgICBpZiAobWFwcGluZykgew0KPiA+ID4+ICsgICAgICAg
+IHFlbXVfbG9nX21hc2soTE9HX0dVRVNUX0VSUk9SLA0KPiA+ID4+ICsgICAgICAgICAgICAgICAg
+ICAgICAgIioqKioqKiAlczogVW5tYXAgMHglIlBSSXg2NCIgc2l6ZT0weCUiUFJJeDY0DQo+ID4g
+Pj4gKyAgICAgICAgICAgICAgICAgICAgICIgZnJvbSAweCUiUFJJeDY0IiBzaXplPTB4JSJQUkl4
+NjQiIGlzIG5vdCBzdXBwb3J0ZWRcbiIsDQo+ID4gPj4gKyAgICAgICAgICAgICAgICAgICAgIF9f
+ZnVuY19fLCBpbnRlcnZhbC5sb3csIHNpemUsDQo+ID4gPj4gKyAgICAgICAgICAgICAgICAgICAg
+IG1hcHBpbmctPnZpcnRfYWRkciwgbWFwcGluZy0+c2l6ZSk7DQo+ID4gPj4gKyAgICB9IGVsc2Ug
+ew0KPiA+ID4+ICsgICAgICAgIHJldHVybiBWSVJUSU9fSU9NTVVfU19PSzsNCj4gPiA+PiArICAg
+IH0NCj4gPiA+PiArDQo+ID4gPj4gKyAgICByZXR1cm4gVklSVElPX0lPTU1VX1NfSU5WQUw7DQo+
+ID4gPg0KPiA+ID4gQ291bGQgdGhlIGFib3ZlIGNodW5rIGJlIHNpbXBsaWZpZWQgYXMgc29tZXRo
+aW5nIGxpa2UgYmVsb3c/DQo+ID4gPg0KPiA+ID4gICB3aGlsZSAoKG1hcHBpbmcgPSBnX3RyZWVf
+bG9va3VwKGRvbWFpbi0+bWFwcGluZ3MsICZpbnRlcnZhbCkpKSB7DQo+ID4gPiAgICAgZ190cmVl
+X3JlbW92ZShkb21haW4tPm1hcHBpbmdzLCBtYXBwaW5nKTsNCj4gPiA+ICAgfQ0KPiA+IEluZGVl
+ZCB0aGUgY29kZSBjb3VsZCBiZSBzaW1wbGlmaWVkLiBJIG9ubHkgbmVlZCB0byBtYWtlIHN1cmUg
+SSBkb24ndA0KPiA+IHNwbGl0IGFuIGV4aXN0aW5nIG1hcHBpbmcuDQo+IA0KPiBIbW0uLi4gRG8g
+d2UgbmVlZCB0byBzdGlsbCBzcGxpdCBhbiBleGlzdGluZyBtYXBwaW5nIGlmIG5lY2Vzc2FyeT8N
+Cj4gRm9yIGV4YW1wbGUgd2hlbiB3aXRoIHRoaXMgbWFwcGluZzoNCj4gDQo+ICAgaW92YT0weDEw
+MDAsIHNpemU9MHgyMDAwLCBwaHlzPUFERFIxLCBmbGFncz1GTEFHUzENCj4gDQo+IEFuZCBpZiB3
+ZSB3YW50IHRvIHVubWFwIHRoZSByYW5nZSAoaW92YT0wLCBzaXplPTB4MjAwMCksIHRoZW4gd2UN
+Cj4gc2hvdWxkIHNwbGl0IHRoZSBleGlzdGluZyBtYXBwcGluZyBhbmQgbGVhdmUgdGhpcyBvbmU6
+DQo+IA0KPiAgIGlvdmE9MHgyMDAwLCBzaXplPTB4MTAwMCwgcGh5cz0oQUREUjErMHgxMDAwKSwg
+ZmxhZ3M9RkxBR1MxDQo+IA0KPiBSaWdodD8NCj4gDQoNCnZpcnRpby1pb21tdSBzcGVjIGV4cGxp
+Y2l0bHkgZGlzYWxsb3dzIHBhcnRpYWwgdW5tYXAuDQoNCjUuMTEuNi42LjEgRHJpdmVyIFJlcXVp
+cmVtZW50czogVU5NQVAgcmVxdWVzdA0KDQpUaGUgZmlyc3QgYWRkcmVzcyBvZiBhIHJhbmdlIE1V
+U1QgZWl0aGVyIGJlIHRoZSBmaXJzdCBhZGRyZXNzIG9mIGEgDQptYXBwaW5nIG9yIGJlIG91dHNp
+ZGUgYW55IG1hcHBpbmcuIFRoZSBsYXN0IGFkZHJlc3Mgb2YgYSByYW5nZSANCk1VU1QgZWl0aGVy
+IGJlIHRoZSBsYXN0IGFkZHJlc3Mgb2YgYSBtYXBwaW5nIG9yIGJlIG91dHNpZGUgYW55IA0KbWFw
+cGluZy4NCg0KNS4xMS42LjYuMiBEZXZpY2UgUmVxdWlyZW1lbnRzOiBVTk1BUCByZXF1ZXN0DQoN
+CklmIGEgbWFwcGluZyBhZmZlY3RlZCBieSB0aGUgcmFuZ2UgaXMgbm90IGNvdmVyZWQgaW4gaXRz
+IGVudGlyZXR5IA0KYnkgdGhlIHJhbmdlICh0aGUgVU5NQVAgcmVxdWVzdCB3b3VsZCBzcGxpdCB0
+aGUgbWFwcGluZyksIA0KdGhlbiB0aGUgZGV2aWNlIFNIT1VMRCBzZXQgdGhlIHJlcXVlc3Qgc3Rh
+dHVzIHRvIFZJUlRJT19JT01NVQ0KX1NfUkFOR0UsIGFuZCBTSE9VTEQgTk9UIHJlbW92ZSBhbnkg
+bWFwcGluZy4NCg0KVGhhbmtzDQpLZXZpbg0K

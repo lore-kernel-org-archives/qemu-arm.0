@@ -1,399 +1,448 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp37374wrp;
-        Wed, 4 Sep 2019 14:54:40 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwY6KQ9KLt5WgNH6u4KOAP6VhyewG8eMStJZdFSplXAg92oyXCx9FTTpicjaQLlw6JufGpE
-X-Received: by 2002:ad4:4208:: with SMTP id k8mr70150qvp.17.1567634080689;
-        Wed, 04 Sep 2019 14:54:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567634080; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp41454wrp;
+        Wed, 4 Sep 2019 15:00:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz2XEfJcQRG6WjLBMOwOvNCaZaKSlrNZ1Nm9m2sk9U0x+h+f1Ht6tLr6Dk0phm7ua9jeRwO
+X-Received: by 2002:a37:4c4d:: with SMTP id z74mr14763910qka.459.1567634430768;
+        Wed, 04 Sep 2019 15:00:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567634430; cv=none;
         d=google.com; s=arc-20160816;
-        b=aBUcEEP9xrzslZ0NAc1uCfCFYs93XQfZyWvEJKqWEN4cURkrKrJ5aQPT9PTxuRSlj+
-         iYsEKqcLZQvaC9nkugru4nXSVJTY1jlNg/igeEfos3SfOjb+sP0m+NEtFonx5VYvEhft
-         DJzxDDZu9phU6yz5TfcU/J6pjlA8h6LB/JFAJEv6ZJwYX1VBqGwfbQgFGlPWBAu/LFR3
-         K96iwH/GNn3Ci4JJQNzWQxFVpfqhF1dqRI2i7CWr7jxp0iY1aYaFx6SUPg/H1/DRnfXz
-         RVpM9lh6uJP5BLyJYU5uDEk/QP7uVZ9immPelHCBXNr0gaihHfafX6M6lmg/UQJv/Bwf
-         iAyg==
+        b=BR/C9x5sbtGoqI4wTXAvgo2NR6m9/Q7kZyKM4om0kPKLpYE6P7NMdo43sip8GiTx0l
+         UOISdByIVEbc2glkBCeqFbhbLcMJWijgfyENS0vUrmATWJh65E/YkmAe3kxdwl/vbNAg
+         XHPFLl9xqIW47uy4WHbHhaSk5Zwh44Qb1XVqfh3vUpQ1ABrm7DIPa968FUmEXdh96CX4
+         aY741I7gtsYiO2stv8+lMKgYhN9t4loz0lFiIEGtrMoC47mjkr8P5QyYmgVi0hvlfhAX
+         Lm3/U/aZ7A91irXjhWIj6AluNIGbtjoIRH9rqO+OVQZJ/Y7EZLWyQJIUOqah/5Zc3Xs9
+         PPrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=64SYxC4DAJluD7/trrMMeg9wpUggJtHSmYyooF6y34A=;
-        b=neWrUehlxeg0YjSs3HCaDBSoGwsUUDa/WT8D+uO4ag8gkANkEyq6olb4PalPDX/Fp2
-         ZcCpcrMOYAuUya9zIQuEniRYSq+CTZAQivUL9MVt6XnyVCvNVThlvtNFWfzKcxRCrrMu
-         lmUr1M0nfbJLcm80BMPfz8rRtiXkojpMZUW+Sp1FNQcRLiFUI/eArDw3EwTWkT/BbqEP
-         FiwrGwiWPCCU8OcACQM/VuPzTRtUjcyxOLqoaYsQe4DPJIBfkIqVFYnflEyZcytUR6KJ
-         LAknRyy/IBXNkYHZAzeIdz95us1pYwnT/xFOZV7V6QTYVrrSu4hxC7vE/sQ/A4tmE6Bm
-         Kpjw==
+         :list-unsubscribe:list-id:precedence:subject:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=G/GDuOLnVngEBHwGh++uLS5RwJ2iJCA1po9Ku89opVQ=;
+        b=Qv3iKfSPuFBIyWBMUcWHwfXFKRw67uhsFsYRCZp6KhxGaCQ49/KP2TaPIgnxkp5chI
+         /toFc30WYMOol6ApBVmWJc62GvOmlaz8tMSZEtYwKC1ohqaI2PLsRCA0SChYelELyCC8
+         Nn6sXfp2t/mnv7/YaHng7nFXXsBfyQ6gn1k6Oxk3gBwaeCDr87dGBrhUqHgeL8Cg9g1p
+         GDKMzT72DPU71X93YInk0JmxkIOCSVYgpHkP9L46e+UgGDclIc07gBQzdOK2YJlbQQ1J
+         9Tk6JLaXzxLgKxgooa/AzFDS3ZJ8NFXnODANmPfwkOFQy/jWUw8ad9riUrLq2recSxrl
+         R5Jg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n94si15247945qte.60.2019.09.04.14.54.40
+        by mx.google.com with ESMTPS id a12si16761211qte.312.2019.09.04.15.00.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2019 14:54:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Sep 2019 15:00:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40582 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40684 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5dEd-0005SE-Qb
-	for alex.bennee@linaro.org; Wed, 04 Sep 2019 17:54:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53922)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i5dKH-00033E-Ea
+	for alex.bennee@linaro.org; Wed, 04 Sep 2019 18:00:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34086)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1i5cCy-0001GA-Gt
- for qemu-devel@nongnu.org; Wed, 04 Sep 2019 16:48:54 -0400
+ (envelope-from <mst@redhat.com>) id 1i5cxc-0003d5-Vc
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 17:37:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1i5cCw-00026K-TF
- for qemu-devel@nongnu.org; Wed, 04 Sep 2019 16:48:52 -0400
-Received: from 20.mo5.mail-out.ovh.net ([91.121.55.239]:40134)
+ (envelope-from <mst@redhat.com>) id 1i5cxZ-0003UX-OK
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 17:37:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38510)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1i5cCw-00024j-8F
- for qemu-devel@nongnu.org; Wed, 04 Sep 2019 16:48:50 -0400
-Received: from player691.ha.ovh.net (unknown [10.108.54.36])
- by mo5.mail-out.ovh.net (Postfix) with ESMTP id 9303C24A244
- for <qemu-devel@nongnu.org>; Wed,  4 Sep 2019 22:48:48 +0200 (CEST)
-Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
- (Authenticated sender: clg@kaod.org)
- by player691.ha.ovh.net (Postfix) with ESMTPSA id 09A7998B29E0;
- Wed,  4 Sep 2019 20:48:42 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed,  4 Sep 2019 22:46:58 +0200
-Message-Id: <20190904204659.13878-15-clg@kaod.org>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20190904204659.13878-1-clg@kaod.org>
-References: <20190904204659.13878-1-clg@kaod.org>
+ (Exim 4.71) (envelope-from <mst@redhat.com>) id 1i5cxZ-0003UB-Fo
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 17:37:01 -0400
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 4E9CD3CA16
+ for <qemu-arm@nongnu.org>; Wed,  4 Sep 2019 21:37:00 +0000 (UTC)
+Received: by mail-wr1-f72.google.com with SMTP id t16so35754wro.3
+ for <qemu-arm@nongnu.org>; Wed, 04 Sep 2019 14:37:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=G/GDuOLnVngEBHwGh++uLS5RwJ2iJCA1po9Ku89opVQ=;
+ b=XC45pQ49sdkiJ8FpbP7CESDtZH3EmkKxSB7BiKZ8oXs2F9v605xFm8EqakJU7gbqcy
+ JpEOQ9GeyciulXz241xXYcP/Lwk0rtFY02+PLbsZGrIpe8Xw7THWhHFAAOWgRlAfoZBQ
+ Le6929dXgJbaSw/CZ1Fjjgshk4flt1jdlFGXpLX+RJRUr/DOVBcLlUOuhfEQeQxskcCZ
+ BFX8lGIfoqXMVr20NhYq6LL5Gu7NyUGI/lv7wwkRIoPjYvB/dSfWM+qVQNNE0/hCS+1I
+ vtxi2/Gm5NzDLLyThOPXPrVZRhz22G4HiCXW7nWv4k4hRYegz10z3LvOV1t9c/6SAVdj
+ 26XA==
+X-Gm-Message-State: APjAAAU48BfMxGg6U7cLMu6PswOWBeuW/2g9GYS/YV/r40PGuEmPNHQT
+ 0yI3aRItDUECwifMipvYjkuBlycF9FvgglvQa0OLdG7xpvB7rKOxG8hYt2dgGf3GhrY7Ll/8JPd
+ VFk602xoeMHZI
+X-Received: by 2002:a5d:6691:: with SMTP id l17mr22258968wru.262.1567633019016; 
+ Wed, 04 Sep 2019 14:36:59 -0700 (PDT)
+X-Received: by 2002:a5d:6691:: with SMTP id l17mr22258954wru.262.1567633018724; 
+ Wed, 04 Sep 2019 14:36:58 -0700 (PDT)
+Received: from redhat.com (bzq-79-176-40-226.red.bezeqint.net. [79.176.40.226])
+ by smtp.gmail.com with ESMTPSA id j22sm151199wre.45.2019.09.04.14.36.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Sep 2019 14:36:57 -0700 (PDT)
+Date: Wed, 4 Sep 2019 17:36:48 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Message-ID: <20190904171550-mutt-send-email-mst@kernel.org>
+References: <20190730172137.23114-1-eric.auger@redhat.com>
+ <20190730172137.23114-15-eric.auger@redhat.com>
+ <20190730153305-mutt-send-email-mst@kernel.org>
+ <a0e88a60-083b-2730-5db8-7bba0299974b@redhat.com>
+ <20190801090027-mutt-send-email-mst@kernel.org>
+ <ff726b89-a1b1-9b9e-a767-ef72da520053@redhat.com>
+ <20190901023827-mutt-send-email-mst@kernel.org>
+ <8dd239b8-6d0b-3795-76d0-e8ead4b847ef@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 2535526593377962769
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrudejhedgudehudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <8dd239b8-6d0b-3795-76d0-e8ead4b847ef@redhat.com>
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 91.121.55.239
-Subject: [Qemu-devel] [RFC PATCH 14/15] aspeed: add support for the Aspeed
- MII controller of the AST2600
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH for-4.2 v10 14/15]
+ virtio-iommu-pci: Add virtio iommu pci support
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OZKfwV7G1MaF
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: jean-philippe@linaro.org, kevin.tian@intel.com, peter.maydell@linaro.org,
+ tn@semihalf.com, qemu-devel@nongnu.org, peterx@redhat.com,
+ alex.williamson@redhat.com, qemu-arm@nongnu.org, bharat.bhushan@nxp.com,
+ eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: G+jFPit2Ls+k
 
-The AST2600 SoC has an extra controller to set the PHY registers.
+On Wed, Sep 04, 2019 at 04:19:33PM +0200, Auger Eric wrote:
+> Hi Michael,
+> 
+> On 9/1/19 8:40 AM, Michael S. Tsirkin wrote:
+> > On Thu, Aug 01, 2019 at 03:49:37PM +0200, Auger Eric wrote:
+> >> Hi Michael,
+> >>
+> >> On 8/1/19 3:06 PM, Michael S. Tsirkin wrote:
+> >>> On Thu, Aug 01, 2019 at 02:15:03PM +0200, Auger Eric wrote:
+> >>>> Hi Michael,
+> >>>>
+> >>>> On 7/30/19 9:35 PM, Michael S. Tsirkin wrote:
+> >>>>> On Tue, Jul 30, 2019 at 07:21:36PM +0200, Eric Auger wrote:
+> >>>>>> This patch adds virtio-iommu-pci, which is the pci proxy for
+> >>>>>> the virtio-iommu device.
+> >>>>>>
+> >>>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> >>>>>
+> >>>>> This part I'm not sure we should merge just yet.  The reason being I
+> >>>>> think we should limit it to mmio where DT can be used to describe iommu
+> >>>>> topology. For PCI I don't see why we shouldn't always expose this
+> >>>>> in the config space, and I think it's preferable not to
+> >>>>> need to support a mix of DT,ACPI and PCI as options.
+> >>>>
+> >>>> For context, some discussion related to this topic already arose on v7
+> >>>> revision of the driver:
+> >>>>
+> >>>> [1] Re: [PATCH v7 0/7] Add virtio-iommu driver
+> >>>> https://lore.kernel.org/linux-pci/87a7ioby9u.fsf@morokweng.localdomain/
+> >>>>
+> >>>> Some additional thoughts.
+> >>>>
+> >>>> First considering DT boot.
+> >>>>
+> >>>> THE DT description features an iommu-map property in the
+> >>>> pci-host-ecam-generic node that describes which RIDs are handled by the
+> >>>> virtio-iommu and a possible offset/mask to be applied inbetween the RID
+> >>>> and the streamID at the input of the IOMMU
+> >>>> (Documentation/devicetree/bindings/pci/pci-iommu.txt)
+> >>>>
+> >>>> As far as I understand when a DMA capable device is setup, its DMA
+> >>>> configuration is built using that call chain:
+> >>>>
+> >>>> pci_dma_configure
+> >>>> |_ of_dma_configure
+> >>>>    |_ of_iommu_configure
+> >>>>       |_ of_pci_iommu_init
+> >>>>          |_ of_map_rid
+> >>>>
+> >>>> I understand you would like the iommu-map/iommu-map-mask info to be
+> >>>> exposed directly into the config space of the device instead of inside
+> >>>> the DT or IORT table. Assuming a module is initialized sufficiently
+> >>>> early to retrieve this info, we would need the resulting info to be
+> >>>> consolidated to allow pci_dma_configure chain to work seemlessly. This
+> >>>> sounds a significant impact on above kernel infrastructure.
+> >>>
+> >>> I don't really know what consolidated means.
+> >>> It is pretty common for IOMMUs to expose config through
+> >>> PCI registers. This typically happens as a fixup.
+> >> I meant: instead of retrieving the info through the of_* code you need
+> >> to interoperate with the module to retrieve the same info and detect
+> >> when you need to take that path instead of the of one.
+> > 
+> > The way to do it would be with a quirk,
+> > and the quirk would not be part of the
+> > virtio module - it can poke at the device using
+> > virtio_pci_cfg_cap.
+> 
+> I got this preliminary quirk function working. However it only works for
+> a DECLARE_PCI_FIXUP_ENABLE quirk. In an EARLY quirk, the guest crashes
+> on the first ioread that attempts to read the BAR as mem accesses are
+> not enabled yet I guess.
 
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- include/hw/arm/aspeed_soc.h |   5 ++
- include/hw/net/ftgmac100.h  |  17 ++++
- hw/arm/aspeed_soc.c         |  25 ++++++
- hw/net/ftgmac100.c          | 162 ++++++++++++++++++++++++++++++++++++
- 4 files changed, 209 insertions(+)
+This is why I suggested using virtio_pci_cfg_cap.
+This allows bar access when mem accesses are disabled.
+ 
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 30b67a09f13c..9e06a6ad4fbd 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -52,6 +52,7 @@ typedef struct AspeedSoCState {
-     AspeedSDMCState sdmc;
-     AspeedWDTState wdt[ASPEED_WDTS_NUM];
-     FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
-+    AspeedMiiState mii[ASPEED_MACS_NUM];
-     AspeedGPIOState gpio;
-     AspeedGPIOState gpio_1_8v;
-     AspeedSDHCIState sdhci;
-@@ -120,6 +121,10 @@ enum {
-     ASPEED_ETH2,
-     ASPEED_ETH3,
-     ASPEED_ETH4,
-+    ASPEED_MII1,
-+    ASPEED_MII2,
-+    ASPEED_MII3,
-+    ASPEED_MII4,
-     ASPEED_SDRAM,
-     ASPEED_XDMA,
- };
-diff --git a/include/hw/net/ftgmac100.h b/include/hw/net/ftgmac100.h
-index 94cfe0533297..ab37e7b2b8ae 100644
---- a/include/hw/net/ftgmac100.h
-+++ b/include/hw/net/ftgmac100.h
-@@ -66,4 +66,21 @@ typedef struct FTGMAC100State {
-     uint32_t rxdes0_edorr;
- } FTGMAC100State;
-=20
-+#define TYPE_ASPEED_MII "aspeed-mmi"
-+#define ASPEED_MII(obj) OBJECT_CHECK(AspeedMiiState, (obj), TYPE_ASPEED_=
-MII)
-+
-+/*
-+ * AST2600 MII controller
-+ */
-+typedef struct AspeedMiiState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+
-+    FTGMAC100State *nic;
-+
-+    MemoryRegion iomem;
-+    uint32_t phycr;
-+    uint32_t phydata;
-+} AspeedMiiState;
-+
- #endif
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 8069de8d5a36..c3f99849b7f0 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -89,6 +89,10 @@ static const hwaddr aspeed_soc_ast2600_memmap[] =3D {
-     [ASPEED_FMC]       =3D 0x1E620000,
-     [ASPEED_SPI1]      =3D 0x1E630000,
-     [ASPEED_SPI2]      =3D 0x1E641000,
-+    [ASPEED_MII1]      =3D 0x1E650000,
-+    [ASPEED_MII2]      =3D 0x1E650008,
-+    [ASPEED_MII3]      =3D 0x1E650010,
-+    [ASPEED_MII4]      =3D 0x1E650018,
-     [ASPEED_ETH1]      =3D 0x1E660000,
-     [ASPEED_ETH3]      =3D 0x1E670000,
-     [ASPEED_ETH2]      =3D 0x1E680000,
-@@ -313,6 +317,14 @@ static void aspeed_soc_init(Object *obj)
-     for (i =3D 0; i < sc->info->macs_num; i++) {
-         sysbus_init_child_obj(obj, "ftgmac100[*]", OBJECT(&s->ftgmac100[=
-i]),
-                               sizeof(s->ftgmac100[i]), TYPE_FTGMAC100);
-+
-+        if (ASPEED_IS_AST2600(sc->info->silicon_rev)) {
-+            sysbus_init_child_obj(obj, "mii[*]", &s->mii[i], sizeof(s->m=
-ii[i]),
-+                                  TYPE_ASPEED_MII);
-+            object_property_add_const_link(OBJECT(&s->mii[i]), "nic",
-+                                           OBJECT(&s->ftgmac100[i]),
-+                                           &error_abort);
-+        }
-     }
-=20
-     sysbus_init_child_obj(obj, "xdma", OBJECT(&s->xdma), sizeof(s->xdma)=
-,
-@@ -562,6 +574,19 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
-or **errp)
-                         sc->info->memmap[ASPEED_ETH1 + i]);
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100[i]), 0,
-                            aspeed_soc_get_irq(s, ASPEED_ETH1 + i));
-+
-+
-+        if (ASPEED_IS_AST2600(sc->info->silicon_rev)) {
-+            object_property_set_bool(OBJECT(&s->mii[i]), true, "realized=
-",
-+                                     &err);
-+            if (err) {
-+                error_propagate(errp, err);
-+                return;
-+            }
-+
-+            sysbus_mmio_map(SYS_BUS_DEVICE(&s->mii[i]), 0,
-+                            sc->info->memmap[ASPEED_MII1 + i]);
-+        }
-     }
-=20
-     /* XDMA */
-diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-index 04c78e85170b..eb8b441461a1 100644
---- a/hw/net/ftgmac100.c
-+++ b/hw/net/ftgmac100.c
-@@ -15,6 +15,7 @@
- #include "hw/irq.h"
- #include "hw/net/ftgmac100.h"
- #include "sysemu/dma.h"
-+#include "qapi/error.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "net/checksum.h"
-@@ -1087,9 +1088,170 @@ static const TypeInfo ftgmac100_info =3D {
-     .class_init =3D ftgmac100_class_init,
- };
-=20
-+/*
-+ * AST2600 MII controller
-+ */
-+#define ASPEED_MII_PHYCR_FIRE        BIT(31)
-+#define ASPEED_MII_PHYCR_ST_22       BIT(28)
-+#define ASPEED_MII_PHYCR_OP(x)       ((x) & (ASPEED_MII_PHYCR_OP_WRITE |=
- \
-+                                             ASPEED_MII_PHYCR_OP_READ))
-+#define ASPEED_MII_PHYCR_OP_WRITE    BIT(26)
-+#define ASPEED_MII_PHYCR_OP_READ     BIT(27)
-+#define ASPEED_MII_PHYCR_DATA(x)     (x & 0xffff)
-+#define ASPEED_MII_PHYCR_PHY(x)      (((x) >> 21) & 0x1f)
-+#define ASPEED_MII_PHYCR_REG(x)      (((x) >> 16) & 0x1f)
-+
-+#define ASPEED_MII_PHYDATA_IDLE      BIT(16)
-+
-+static void aspeed_mii_transition(AspeedMiiState *s, bool fire)
-+{
-+    if (fire) {
-+        s->phycr |=3D ASPEED_MII_PHYCR_FIRE;
-+        s->phydata &=3D ~ASPEED_MII_PHYDATA_IDLE;
-+    } else {
-+        s->phycr &=3D ~ASPEED_MII_PHYCR_FIRE;
-+        s->phydata |=3D ASPEED_MII_PHYDATA_IDLE;
-+    }
-+}
-+
-+static void aspeed_mii_do_phy_ctl(AspeedMiiState *s)
-+{
-+    uint8_t reg;
-+    uint16_t data;
-+
-+    if (!(s->phycr & ASPEED_MII_PHYCR_ST_22)) {
-+        aspeed_mii_transition(s, !ASPEED_MII_PHYCR_FIRE);
-+        qemu_log_mask(LOG_UNIMP, "%s: unsupported ST code\n", __func__);
-+        return;
-+    }
-+
-+    /* Nothing to do */
-+    if (!(s->phycr & ASPEED_MII_PHYCR_FIRE)) {
-+        return;
-+    }
-+
-+    reg =3D ASPEED_MII_PHYCR_REG(s->phycr);
-+    data =3D ASPEED_MII_PHYCR_DATA(s->phycr);
-+
-+    switch (ASPEED_MII_PHYCR_OP(s->phycr)) {
-+    case ASPEED_MII_PHYCR_OP_WRITE:
-+        do_phy_write(s->nic, reg, data);
-+        break;
-+    case ASPEED_MII_PHYCR_OP_READ:
-+        s->phydata =3D (s->phydata & ~0xffff) | do_phy_read(s->nic, reg)=
-;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid OP code %08x\n",
-+                      __func__, s->phycr);
-+    }
-+
-+    aspeed_mii_transition(s, !ASPEED_MII_PHYCR_FIRE);
-+}
-+
-+static uint64_t aspeed_mii_read(void *opaque, hwaddr addr, unsigned size=
-)
-+{
-+    AspeedMiiState *s =3D ASPEED_MII(opaque);
-+
-+    switch (addr) {
-+    case 0x0:
-+        return s->phycr;
-+    case 0x4:
-+        return s->phydata;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static void aspeed_mii_write(void *opaque, hwaddr addr,
-+                             uint64_t value, unsigned size)
-+{
-+    AspeedMiiState *s =3D ASPEED_MII(opaque);
-+
-+    switch (addr) {
-+    case 0x0:
-+        s->phycr =3D value & ~(s->phycr & ASPEED_MII_PHYCR_FIRE);
-+        break;
-+    case 0x4:
-+        s->phydata =3D value & ~(0xffff | ASPEED_MII_PHYDATA_IDLE);
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+
-+    aspeed_mii_transition(s, !!(s->phycr & ASPEED_MII_PHYCR_FIRE));
-+    aspeed_mii_do_phy_ctl(s);
-+}
-+
-+static const MemoryRegionOps aspeed_mii_ops =3D {
-+    .read =3D aspeed_mii_read,
-+    .write =3D aspeed_mii_write,
-+    .valid.min_access_size =3D 4,
-+    .valid.max_access_size =3D 4,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
-+};
-+
-+static void aspeed_mii_reset(DeviceState *dev)
-+{
-+    AspeedMiiState *s =3D ASPEED_MII(dev);
-+
-+    s->phycr =3D 0;
-+    s->phydata =3D 0;
-+
-+    aspeed_mii_transition(s, !!(s->phycr & ASPEED_MII_PHYCR_FIRE));
-+};
-+
-+static void aspeed_mii_realize(DeviceState *dev, Error **errp)
-+{
-+    AspeedMiiState *s =3D ASPEED_MII(dev);
-+    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-+    Object *obj;
-+    Error *local_err =3D NULL;
-+
-+    obj =3D object_property_get_link(OBJECT(dev), "nic", &local_err);
-+    if (!obj) {
-+        error_propagate(errp, local_err);
-+        error_prepend(errp, "required link 'nic' not found: ");
-+        return;
-+    }
-+
-+    s->nic =3D FTGMAC100(obj);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(dev), &aspeed_mii_ops, s,
-+                          TYPE_ASPEED_MII, 0x8);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static const VMStateDescription vmstate_aspeed_mii =3D {
-+    .name =3D TYPE_ASPEED_MII,
-+    .version_id =3D 1,
-+    .minimum_version_id =3D 1,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_UINT32(phycr, FTGMAC100State),
-+        VMSTATE_UINT32(phydata, FTGMAC100State),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+static void aspeed_mii_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+
-+    dc->vmsd =3D &vmstate_aspeed_mii;
-+    dc->reset =3D aspeed_mii_reset;
-+    dc->realize =3D aspeed_mii_realize;
-+    dc->desc =3D "Aspeed MII controller";
-+}
-+
-+static const TypeInfo aspeed_mii_info =3D {
-+    .name =3D TYPE_ASPEED_MII,
-+    .parent =3D TYPE_SYS_BUS_DEVICE,
-+    .instance_size =3D sizeof(AspeedMiiState),
-+    .class_init =3D aspeed_mii_class_init,
-+};
-+
- static void ftgmac100_register_types(void)
- {
-     type_register_static(&ftgmac100_info);
-+    type_register_static(&aspeed_mii_info);
- }
-=20
- type_init(ftgmac100_register_types)
---=20
-2.21.0
+> So assuming I get the proper system config data in the device
+> configuration, the iommu bindings will be set up late.
 
+If it all works with a late quirk, then great.
+If not we can fall back to config cycles.
+
+> By the way I have not yet attempted to generate iommu bindings from the
+> quirk function (job done in drivers/acpi/arm64/iort.c) which does not
+> sound to be straightforward.
+> > 
+> >>>
+> >>> I would write a tiny driver to do exactly that,
+> >>> and run it from the fixup.
+> >>>
+> >>>
+> >>>> This comes in addition to the development of the "small module that
+> >>>> loads early and pokes at the IOMMU sufficiently to get the data about
+> >>>> which devices use the IOMMU out of it using standard virtio config
+> >>>> space" evoked in [1] + the definition of the data formats to be put in
+> >>>> the very cfg space.
+> >>>
+> >>> That last part is true but that's exactly why I propose we
+> >>> wait on this patch a bit.
+> >>>
+> >>>> With ACPI I understand we have the same kind of infrastructure:
+> >>>> drivers/acpi/arm64/iort.c currently extracts the mapping between RC RIDs
+> >>>> and IOMMU streamids
+> >>>>
+> >>>> pci_dma_configure(
+> >>>> |_ acpi_dma_configure
+> >>>>    |_ iort_iommu_configure
+> >>>>       |_ iort_pci_iommu_init
+> >>>>          |_ iort_node_map_id
+> >>>>             |_ iort_id_map
+> >>>>
+> >>>> Maybe I fail to see the easy and right way to do the integration at
+> >>>> kernel level but I am a bit frightened by the efforts that would be
+> >>>> requested to follow your suggestion, whereas the DT infra is ready and
+> >>>> fully upstreamed to accept the use case.
+> >>>
+> >>> Did you take a look at drivers/pci/quirks.c and how these run?
+> >>> I think it's just a question of adding DECLARE_PCI_FIXUP_CLASS_EARLY
+> >>> and running your hook from there.
+> >> I will do and trace the code.
+> >>>
+> >>>
+> >>>> For ACPI I agree AFAIK IORT was primarily defined by ARM, for ARM but we
+> >>>> prototyped IORT integration with x86 and it worked for pc machine
+> >>>> without major trouble.
+> >>>>
+> >>>> I sent the kernel and qemu patches prototyping this IORT integration:
+> >>>>
+> >>>> https://github.com/eauger/linux/tree/virtio-iommu-v0.9-iort-x86
+> >>>> https://github.com/eauger/qemu/tree/v3.1.0-rc3-virtio-iommu-v0.9-x86
+> >>>>
+> >>>> There ACPI IORT was built for PC machine and the integration effort at
+> >>>> both kernel and QEMU level was low. This work would need to be rebased
+> >>>> and depends on kernel ACPI related patches that are not yet upstreamed
+> >>>> though.
+> >>>>
+> >>>> Thanks
+> >>>>
+> >>>> Eric
+> >>>
+> >>> In the end it might turn out you are right.  But it does us no harm to
+> >>> delay this just a bit, and for now limit things to ARM where it's
+> >>> already used and where alternatives exist.
+> >> So if my understanding is correct, at the moment you would accept a DT
+> >> integration using MMIO. Is that correct? Meanwhile we can prototype your
+> >> suggestion.
+> >>
+> >> Thanks
+> >>
+> >> Eric
+> > 
+> > Right.
+> 
+> Thank you for the confirmation. However I am not sure Peter will accept
+> to get the device integrated as a virtio-mmio device and then deprecated
+> in favor of a virtio-pci device, all the more so work was prepared to
+> get a PCI integration. Peter?
+> 
+> Thanks
+> 
+> Eric
+> > 
+> >>>
+> >>>
+> >>>>>
+> >>>>>> ---
+> >>>>>>
+> >>>>>> v8 -> v9:
+> >>>>>> - add the msi-bypass property
+> >>>>>> - create virtio-iommu-pci.c
+> >>>>>> ---
+> >>>>>>  hw/virtio/Makefile.objs          |  1 +
+> >>>>>>  hw/virtio/virtio-iommu-pci.c     | 88 ++++++++++++++++++++++++++++++++
+> >>>>>>  include/hw/pci/pci.h             |  1 +
+> >>>>>>  include/hw/virtio/virtio-iommu.h |  1 +
+> >>>>>>  qdev-monitor.c                   |  1 +
+> >>>>>>  5 files changed, 92 insertions(+)
+> >>>>>>  create mode 100644 hw/virtio/virtio-iommu-pci.c
+> >>>>>>
+> >>>>>> diff --git a/hw/virtio/Makefile.objs b/hw/virtio/Makefile.objs
+> >>>>>> index f42e4dd94f..80ca719f1c 100644
+> >>>>>> --- a/hw/virtio/Makefile.objs
+> >>>>>> +++ b/hw/virtio/Makefile.objs
+> >>>>>> @@ -27,6 +27,7 @@ obj-$(CONFIG_VIRTIO_INPUT_HOST) += virtio-input-host-pci.o
+> >>>>>>  obj-$(CONFIG_VIRTIO_INPUT) += virtio-input-pci.o
+> >>>>>>  obj-$(CONFIG_VIRTIO_RNG) += virtio-rng-pci.o
+> >>>>>>  obj-$(CONFIG_VIRTIO_BALLOON) += virtio-balloon-pci.o
+> >>>>>> +obj-$(CONFIG_VIRTIO_IOMMU) += virtio-iommu-pci.o
+> >>>>>>  obj-$(CONFIG_VIRTIO_9P) += virtio-9p-pci.o
+> >>>>>>  obj-$(CONFIG_VIRTIO_SCSI) += virtio-scsi-pci.o
+> >>>>>>  obj-$(CONFIG_VIRTIO_BLK) += virtio-blk-pci.o
+> >>>>>> diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
+> >>>>>> new file mode 100644
+> >>>>>> index 0000000000..f9977096bd
+> >>>>>> --- /dev/null
+> >>>>>> +++ b/hw/virtio/virtio-iommu-pci.c
+> >>>>>> @@ -0,0 +1,88 @@
+> >>>>>> +/*
+> >>>>>> + * Virtio IOMMU PCI Bindings
+> >>>>>> + *
+> >>>>>> + * Copyright (c) 2019 Red Hat, Inc.
+> >>>>>> + * Written by Eric Auger
+> >>>>>> + *
+> >>>>>> + *  This program is free software; you can redistribute it and/or modify
+> >>>>>> + *  it under the terms of the GNU General Public License version 2 or
+> >>>>>> + *  (at your option) any later version.
+> >>>>>> + */
+> >>>>>> +
+> >>>>>> +#include "qemu/osdep.h"
+> >>>>>> +
+> >>>>>> +#include "virtio-pci.h"
+> >>>>>> +#include "hw/virtio/virtio-iommu.h"
+> >>>>>> +
+> >>>>>> +typedef struct VirtIOIOMMUPCI VirtIOIOMMUPCI;
+> >>>>>> +
+> >>>>>> +/*
+> >>>>>> + * virtio-iommu-pci: This extends VirtioPCIProxy.
+> >>>>>> + *
+> >>>>>> + */
+> >>>>>> +#define VIRTIO_IOMMU_PCI(obj) \
+> >>>>>> +        OBJECT_CHECK(VirtIOIOMMUPCI, (obj), TYPE_VIRTIO_IOMMU_PCI)
+> >>>>>> +
+> >>>>>> +struct VirtIOIOMMUPCI {
+> >>>>>> +    VirtIOPCIProxy parent_obj;
+> >>>>>> +    VirtIOIOMMU vdev;
+> >>>>>> +};
+> >>>>>> +
+> >>>>>> +static Property virtio_iommu_pci_properties[] = {
+> >>>>>> +    DEFINE_PROP_UINT32("class", VirtIOPCIProxy, class_code, 0),
+> >>>>>> +    DEFINE_PROP_BOOL("msi-bypass", VirtIOIOMMUPCI, vdev.msi_bypass, true),
+> >>>>>> +    DEFINE_PROP_END_OF_LIST(),
+> >>>>>> +};
+> >>>>>> +
+> >>>>>> +static void virtio_iommu_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
+> >>>>>> +{
+> >>>>>> +    VirtIOIOMMUPCI *dev = VIRTIO_IOMMU_PCI(vpci_dev);
+> >>>>>> +    DeviceState *vdev = DEVICE(&dev->vdev);
+> >>>>>> +
+> >>>>>> +    qdev_set_parent_bus(vdev, BUS(&vpci_dev->bus));
+> >>>>>> +    object_property_set_link(OBJECT(dev),
+> >>>>>> +                             OBJECT(pci_get_bus(&vpci_dev->pci_dev)),
+> >>>>>> +                             "primary-bus", errp);
+> >>>>>> +    object_property_set_bool(OBJECT(vdev), true, "realized", errp);
+> >>>>>> +}
+> >>>>>> +
+> >>>>>> +static void virtio_iommu_pci_class_init(ObjectClass *klass, void *data)
+> >>>>>> +{
+> >>>>>> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> >>>>>> +    VirtioPCIClass *k = VIRTIO_PCI_CLASS(klass);
+> >>>>>> +    PCIDeviceClass *pcidev_k = PCI_DEVICE_CLASS(klass);
+> >>>>>> +    k->realize = virtio_iommu_pci_realize;
+> >>>>>> +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
+> >>>>>> +    dc->props = virtio_iommu_pci_properties;
+> >>>>>> +    pcidev_k->vendor_id = PCI_VENDOR_ID_REDHAT_QUMRANET;
+> >>>>>> +    pcidev_k->device_id = PCI_DEVICE_ID_VIRTIO_IOMMU;
+> >>>>>> +    pcidev_k->revision = VIRTIO_PCI_ABI_VERSION;
+> >>>>>> +    pcidev_k->class_id = PCI_CLASS_OTHERS;
+> >>>>>> +}
+> >>>>>> +
+> >>>>>> +static void virtio_iommu_pci_instance_init(Object *obj)
+> >>>>>> +{
+> >>>>>> +    VirtIOIOMMUPCI *dev = VIRTIO_IOMMU_PCI(obj);
+> >>>>>> +
+> >>>>>> +    virtio_instance_init_common(obj, &dev->vdev, sizeof(dev->vdev),
+> >>>>>> +                                TYPE_VIRTIO_IOMMU);
+> >>>>>> +}
+> >>>>>> +
+> >>>>>> +static const VirtioPCIDeviceTypeInfo virtio_iommu_pci_info = {
+> >>>>>> +    .base_name             = TYPE_VIRTIO_IOMMU_PCI,
+> >>>>>> +    .generic_name          = "virtio-iommu-pci",
+> >>>>>> +    .transitional_name     = "virtio-iommu-pci-transitional",
+> >>>>>> +    .non_transitional_name = "virtio-iommu-pci-non-transitional",
+> >>>>>> +    .instance_size = sizeof(VirtIOIOMMUPCI),
+> >>>>>> +    .instance_init = virtio_iommu_pci_instance_init,
+> >>>>>> +    .class_init    = virtio_iommu_pci_class_init,
+> >>>>>> +};
+> >>>>>> +
+> >>>>>> +static void virtio_iommu_pci_register(void)
+> >>>>>> +{
+> >>>>>> +    virtio_pci_types_register(&virtio_iommu_pci_info);
+> >>>>>> +}
+> >>>>>> +
+> >>>>>> +type_init(virtio_iommu_pci_register)
+> >>>>>> +
+> >>>>>> +
+> >>>>>> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+> >>>>>> index aaf1b9f70d..492ea7e68d 100644
+> >>>>>> --- a/include/hw/pci/pci.h
+> >>>>>> +++ b/include/hw/pci/pci.h
+> >>>>>> @@ -86,6 +86,7 @@ extern bool pci_available;
+> >>>>>>  #define PCI_DEVICE_ID_VIRTIO_9P          0x1009
+> >>>>>>  #define PCI_DEVICE_ID_VIRTIO_VSOCK       0x1012
+> >>>>>>  #define PCI_DEVICE_ID_VIRTIO_PMEM        0x1013
+> >>>>>> +#define PCI_DEVICE_ID_VIRTIO_IOMMU       0x1014
+> >>>>>>  
+> >>>>>>  #define PCI_VENDOR_ID_REDHAT             0x1b36
+> >>>>>>  #define PCI_DEVICE_ID_REDHAT_BRIDGE      0x0001
+> >>>>>> diff --git a/include/hw/virtio/virtio-iommu.h b/include/hw/virtio/virtio-iommu.h
+> >>>>>> index 56c8b4e57f..893ac65c0b 100644
+> >>>>>> --- a/include/hw/virtio/virtio-iommu.h
+> >>>>>> +++ b/include/hw/virtio/virtio-iommu.h
+> >>>>>> @@ -25,6 +25,7 @@
+> >>>>>>  #include "hw/pci/pci.h"
+> >>>>>>  
+> >>>>>>  #define TYPE_VIRTIO_IOMMU "virtio-iommu-device"
+> >>>>>> +#define TYPE_VIRTIO_IOMMU_PCI "virtio-iommu-device-base"
+> >>>>>>  #define VIRTIO_IOMMU(obj) \
+> >>>>>>          OBJECT_CHECK(VirtIOIOMMU, (obj), TYPE_VIRTIO_IOMMU)
+> >>>>>>  
+> >>>>>> diff --git a/qdev-monitor.c b/qdev-monitor.c
+> >>>>>> index 58222c2211..74cf090c61 100644
+> >>>>>> --- a/qdev-monitor.c
+> >>>>>> +++ b/qdev-monitor.c
+> >>>>>> @@ -63,6 +63,7 @@ static const QDevAlias qdev_alias_table[] = {
+> >>>>>>      { "virtio-input-host-ccw", "virtio-input-host", QEMU_ARCH_S390X },
+> >>>>>>      { "virtio-input-host-pci", "virtio-input-host",
+> >>>>>>              QEMU_ARCH_ALL & ~QEMU_ARCH_S390X },
+> >>>>>> +    { "virtio-iommu-pci", "virtio-iommu", QEMU_ARCH_ALL & ~QEMU_ARCH_S390X },
+> >>>>>>      { "virtio-keyboard-ccw", "virtio-keyboard", QEMU_ARCH_S390X },
+> >>>>>>      { "virtio-keyboard-pci", "virtio-keyboard",
+> >>>>>>              QEMU_ARCH_ALL & ~QEMU_ARCH_S390X },
+> >>>>>> -- 
+> >>>>>> 2.20.1
+> >>>>>
+> >>>

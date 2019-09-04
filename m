@@ -1,102 +1,102 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1156756wrp;
-        Wed, 4 Sep 2019 13:19:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzNT4t5qkop9ADvNicrRzU9VzP0onHbcIanA4LVDAQB9g4g6yAWFCI1SG/xX3NVRkxw856f
-X-Received: by 2002:a50:d089:: with SMTP id v9mr148531edd.54.1567628396932;
-        Wed, 04 Sep 2019 13:19:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567628396; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1157468wrp;
+        Wed, 4 Sep 2019 13:20:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy+g1EPtwVnbEJ+697GqZLu79pQlxsFhoVd+PI9+xGGompAlTCLeQCIyEllXrYk19AJq4SD
+X-Received: by 2002:a50:d090:: with SMTP id v16mr128732edd.176.1567628443517;
+        Wed, 04 Sep 2019 13:20:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567628443; cv=none;
         d=google.com; s=arc-20160816;
-        b=01/qU4ErPLvq6qbEEkBzvCHVbl8/2H5PO8yCqn2Yu+iPbIAnFD//9OBzmE+/lpGUXz
-         CxlwUY2TrkT3eKV2GumGaJv5w6c2rxWJwfYbz3saYXtjpCveyy91muvduoT/fFjDDqgu
-         fPDXRcbESEJAQ7nLd+y8FelYZGnNLrZbde1Z3nBeYUWfZT1sFQr3YkVVB2jht1CLPHmx
-         Fk3j72/E9TuC6+wvk8L23taxX6NME5UxhxkYP51iBppZoBzkrywSJWLSR8DOOxpE6+CB
-         ZzogsILta7n3gZdPbxVe3Y0gs4/LNLfSgxabb9AZHjU9+IDaTVfBCBqD3JvOD+aMR20e
-         7yIg==
+        b=gObkzIKSVgkNM8RXnFwtg693TukHEtZP7D9m+fDf13E0NvgzwvzykME0MDw5izm+RX
+         g6xbQWz9nT9BnzAST0xkLxjzgHcSL7B4YPePXDJK2X6iOnqqgLPFb5PYPd/TfZhoeRRU
+         JSwWbTXAJvPwJHHOXj4B01QVEhNal9URCMIfTqiE7B0kMT+HiG4Fe6QVFJrgCiqSNzYN
+         fFpUWlM6DMn2oAukcziP6UIIZwDlX1To6TSSXmH+LWvqlvrD4y3dh0DIzQVkMYjLy+fg
+         FKhRE58NbREgrE6TasTDxepCgeh1mvCpAbkzdiXy2To2sdoyt67f38taEx+a/E5+R6Ac
+         TtZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=kYh+jTzMtTJhUz3xyrw306VQI42LXaHYhBmdbXyrNe4=;
-        b=xxhxDxZISvEmopCSY15kJAx8SPtwL/RXs+JlRvI8YhZj3uERN7+Y5g0nY1xnFrXqnc
-         YPRSUfi44GP82c1GsGQUfI3rXYY7lnXWY79NCUAnuTImhzKriX7UHWVQFTY3nyJNIpKR
-         w7Cmi+Jt5qsDXTQ3HrxD3nqikj71I7u9Tcl7WW/W+dt9LZfq8u2p1InLLu4/Rq1a9/HC
-         Qs0LTNdE2v/rmlUNoYdmouKzriHJHGonqfpKFlqJMDtl5QX3Lq0od9m/o2O8zUXA9ytP
-         5CFNMkDU/xkDVj+s9/YLk0eO4B60RskC5JePXtVFegz7C6/+uQd5TgVTXUarm2XvA8eu
-         wtaA==
+        bh=QO3IBs61SUEB1dyssLo6yzRJXGICvl8lJuuHe5SABa4=;
+        b=jXYuRClnEQ3FZ/PDzi8an00gs87RnTKtSFn0GgPtvMz09J5386d3EVPdRpQL+xAz+A
+         moYGPpVKl9P4hJIWnw3QeM21+M0xKxmyu8RwHR0EcAfzEdrpRyi9SRJMplbK6Qh67RUE
+         CWLL3AP1yDH27SC6qsB2KG+BGXb3d+g8Bgi32xceulnant0YBVgHs00f8qAmN3p3vOrQ
+         KKPA/0FK7hjnIJsqeR8TQP8jR45L2xC/2KQ8NpWunWyMh9WFOUn2Lxx2hggsS0unt54r
+         AGDFYXbymgsXmHTzQfGvhcnOLLRlc1R8i54uhR0d6xr4HjDXpf6f76UmuTgaqMGC0Z+j
+         BylA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=j8z0f6M1;
+       dkim=fail header.i=@linaro.org header.s=google header.b=nKLxRsbD;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a32si12653997edd.382.2019.09.04.13.19.56
+        by mx.google.com with ESMTPS id x29si8134225edx.16.2019.09.04.13.20.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2019 13:19:56 -0700 (PDT)
+        Wed, 04 Sep 2019 13:20:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=j8z0f6M1;
+       dkim=fail header.i=@linaro.org header.s=google header.b=nKLxRsbD;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38602 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38640 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5bkx-0004Q5-91
-	for alex.bennee@linaro.org; Wed, 04 Sep 2019 16:19:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41189)
+	id 1i5blh-0005d1-TQ
+	for alex.bennee@linaro.org; Wed, 04 Sep 2019 16:20:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41299)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1i5b0u-0005Vw-Ap
- for qemu-devel@nongnu.org; Wed, 04 Sep 2019 15:32:24 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1i5b0x-0005Ys-5p
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 15:32:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1i5b0r-000396-Ni
- for qemu-devel@nongnu.org; Wed, 04 Sep 2019 15:32:19 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:40829)
+ (envelope-from <richard.henderson@linaro.org>) id 1i5b0t-0003B8-15
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 15:32:22 -0400
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:39060)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1i5b0r-00031c-Bx
- for qemu-devel@nongnu.org; Wed, 04 Sep 2019 15:32:17 -0400
-Received: by mail-pg1-x542.google.com with SMTP id w10so11781623pgj.7
- for <qemu-devel@nongnu.org>; Wed, 04 Sep 2019 12:32:09 -0700 (PDT)
+ id 1i5b0s-00039G-GB
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 15:32:18 -0400
+Received: by mail-pl1-x641.google.com with SMTP id bd8so3713619plb.6
+ for <qemu-devel@nongnu.org>; Wed, 04 Sep 2019 12:32:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=kYh+jTzMtTJhUz3xyrw306VQI42LXaHYhBmdbXyrNe4=;
- b=j8z0f6M1DbmESvbrLP6Ai+6mNPVjcfyALCXzvJ+N1/hv/9xQp9JCdpBI7SVBvIu9us
- dql2/jSKMRgHEIJBT87Y18/fvO5kg236IRb0R6mNAp2s1BM/dQKOcDh4pkLRj3KxyMpW
- EYZGWPeNCf9hKbhr6k4RyaFinT6JUsL+kAwurUYhd+1lj8qnzdATs5bJUuhVPbbD+UrR
- bqXrYY6XG3HezqMhic337kD9dUddbDt/XAQOUB1UWeleSsVnEyZqvmHLHg7MzbSvMbNa
- +9N/TZRp5aOclAy048u5yLVwIrFvs6xlm1lnoGCiBZseVztVV+3fwL3JNt69ZyotcQf4
- r52g==
+ bh=QO3IBs61SUEB1dyssLo6yzRJXGICvl8lJuuHe5SABa4=;
+ b=nKLxRsbD9qVwU7AV2bUR2h5Flog47pBDBLggJR/s4mautgkbdP7gh3jngNlkJDF4I0
+ gK3CB9GvbaAvnfHoujqVwMEEU63KNcI50Ty9Q+Dwy4ismaU9WbL4erabtcjtzjbrHRLW
+ TLBVQvPuYH/oDnAsOoa8ARU8jBak+bSmQbJiPbLx70mw8QN0qBJUwYQ1MVvHxUESGhrR
+ 0FzL6WYcBAnq6d73Ypc+kkkYV5ASNqPg4JyuEcS7V+QJ3ePgTlNjVzd45QskXg80uq2x
+ m1q8kQ45CYcOxmNhoRqsX/xyTOYLhqVhu9e1C5vbyUOLlM/YDQW4WHEAdRm3Opd3/k1Q
+ sl6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=kYh+jTzMtTJhUz3xyrw306VQI42LXaHYhBmdbXyrNe4=;
- b=n3yyG6y8kjaaKr3jKUFgjzxfktwYPPiz/rSwEA3oT4u4KOXURRi7M1e958TQok+/2j
- U+8jbsLQtefGud4h/dEO6qUiosQ2hUKelMaEGYdfnVKOU558ZApkD8XsiCBc2Qu0hTlf
- VU4PnXBrq1qA+so6tyU9xnmb+XrnegQEltSviUFp436fMu1VRJNnmavn4WybY2cRvcMy
- c6Sm7U0J9PW0Sk661M+mxnFkV5q4pdng3DcKidrdsRJ1qMj0g+8bQucnSi+V9fiKkqUK
- yliTavkrBw4+0TXHOeh0Men1G06NYoAbHmN8Li58iUiOhtznd56us2R7q0aBoF/U3RAO
- Sn4Q==
-X-Gm-Message-State: APjAAAV3HWK6+LzopqlRk9bMaBs73uCequIM76QeGsVsPfdVykx0Dn0n
- p6hJPTiNtd/th/xI5B9afU4/8ZfK5Ms=
-X-Received: by 2002:a65:4c4d:: with SMTP id l13mr35822424pgr.156.1567625528338; 
- Wed, 04 Sep 2019 12:32:08 -0700 (PDT)
+ bh=QO3IBs61SUEB1dyssLo6yzRJXGICvl8lJuuHe5SABa4=;
+ b=Q5JKsnQAUIF3xjsuSJZERf38u2GpvfszVne+raByBuHQKlZHE0l667+CPrq3g8pLHE
+ 72VT/D0IE8aqDcP4DuKIPqNyZwOVvlUaUKbbe79EueD2SlN6Xcv1pF1A3vu10/PDaSqV
+ 3lKb/of5WlualTIVRFInprV/DjS4mDsjyWbQ/U5K8gpJZPQ3PPla9UpD9mnHOQ6YFiB0
+ 76woEypkZRn4RQbIXaxOLHQckSllrd9+7DApdU0soiFgU9Zo3zRmMv6ECpmjJtU2iIPu
+ exvSjf4OnGuV48PHjwwH+VouoO9/4QYAtFcHlRyfNRmSN1M9KYIuM+bhZAPIOZkqL3cg
+ uC6w==
+X-Gm-Message-State: APjAAAU9+VITpgR6lYK4LUqwM7gTq6BQ3KTDXgYz1BXNroxvTlIlz2QF
+ p0b5j1m8+Map2vw/q0RP/X7Ms/kd2is=
+X-Received: by 2002:a17:902:848c:: with SMTP id
+ c12mr42247324plo.47.1567625537068; 
+ Wed, 04 Sep 2019 12:32:17 -0700 (PDT)
 Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
  [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id f6sm18999174pga.50.2019.09.04.12.32.07
+ by smtp.gmail.com with ESMTPSA id f6sm18999174pga.50.2019.09.04.12.32.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Sep 2019 12:32:07 -0700 (PDT)
+ Wed, 04 Sep 2019 12:32:16 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Date: Wed,  4 Sep 2019 12:30:43 -0700
-Message-Id: <20190904193059.26202-54-richard.henderson@linaro.org>
+Date: Wed,  4 Sep 2019 12:30:50 -0700
+Message-Id: <20190904193059.26202-61-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190904193059.26202-1-richard.henderson@linaro.org>
 References: <20190904193059.26202-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::542
-Subject: [Qemu-devel] [PATCH v4 53/69] target/arm: Convert T16 branch and
- exchange
+X-Received-From: 2607:f8b0:4864:20::641
+Subject: [Qemu-devel] [PATCH v4 60/69] target/arm: Split gen_nop_hint
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,138 +111,112 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Mi9mn4C9fQpy
+X-TUID: 60HCxC2p9OTg
+
+Now that all callers pass a constant value, split the switch
+statement into the individual trans_* functions.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/translate.c | 70 +++++++++++++++++-------------------------
- target/arm/t16.decode  | 10 ++++++
- 2 files changed, 39 insertions(+), 41 deletions(-)
+ target/arm/translate.c | 67 +++++++++++++++---------------------------
+ 1 file changed, 24 insertions(+), 43 deletions(-)
 
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 405176527c..e6ef935247 100644
+index 69092c12c3..d076c962ea 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -8364,7 +8364,7 @@ static bool trans_BX(DisasContext *s, arg_BX *a)
-     if (!ENABLE_ARCH_4T) {
-         return false;
-     }
--    gen_bx(s, load_reg(s, a->rm));
-+    gen_bx_excret(s, load_reg(s, a->rm));
-     return true;
+@@ -3061,46 +3061,6 @@ static void gen_exception_return(DisasContext *s, TCGv_i32 pc)
+     gen_rfe(s, pc, load_cpu_field(spsr));
  }
  
-@@ -8391,6 +8391,32 @@ static bool trans_BLX_r(DisasContext *s, arg_BLX_r *a)
-     return true;
- }
- 
-+/*
-+ * BXNS/BLXNS: only exist for v8M with the security extensions,
-+ * and always UNDEF if NonSecure.  We don't implement these in
-+ * the user-only mode either (in theory you can use them from
-+ * Secure User mode but they are too tied in to system emulation).
-+ */
-+static bool trans_BXNS(DisasContext *s, arg_BXNS *a)
-+{
-+    if (!s->v8m_secure || IS_USER_ONLY) {
-+        unallocated_encoding(s);
-+    } else {
-+        gen_bxns(s, a->rm);
-+    }
-+    return true;
-+}
-+
-+static bool trans_BLXNS(DisasContext *s, arg_BLXNS *a)
-+{
-+    if (!s->v8m_secure || IS_USER_ONLY) {
-+        unallocated_encoding(s);
-+    } else {
-+        gen_blxns(s, a->rm);
-+    }
-+    return true;
-+}
-+
- static bool trans_CLZ(DisasContext *s, arg_CLZ *a)
- {
-     TCGv_i32 tmp;
-@@ -10756,49 +10782,11 @@ static void disas_thumb_insn(DisasContext *s, uint32_t insn)
-                 }
-                 break;
-             case 3:
--            {
-                 /* 0b0100_0111_xxxx_xxxx
-                  * - branch [and link] exchange thumb register
-+                 * In decodetree
-                  */
--                bool link = insn & (1 << 7);
+-/*
+- * For WFI we will halt the vCPU until an IRQ. For WFE and YIELD we
+- * only call the helper when running single threaded TCG code to ensure
+- * the next round-robin scheduled vCPU gets a crack. In MTTCG mode we
+- * just skip this instruction. Currently the SEV/SEVL instructions
+- * which are *one* of many ways to wake the CPU from WFE are not
+- * implemented so we can't sleep like WFI does.
+- */
+-static void gen_nop_hint(DisasContext *s, int val)
+-{
+-    switch (val) {
+-        /* When running in MTTCG we don't generate jumps to the yield and
+-         * WFE helpers as it won't affect the scheduling of other vCPUs.
+-         * If we wanted to more completely model WFE/SEV so we don't busy
+-         * spin unnecessarily we would need to do something more involved.
+-         */
+-    case 1: /* yield */
+-        if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
+-            gen_set_pc_im(s, s->base.pc_next);
+-            s->base.is_jmp = DISAS_YIELD;
+-        }
+-        break;
+-    case 3: /* wfi */
+-        gen_set_pc_im(s, s->base.pc_next);
+-        s->base.is_jmp = DISAS_WFI;
+-        break;
+-    case 2: /* wfe */
+-        if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
+-            gen_set_pc_im(s, s->base.pc_next);
+-            s->base.is_jmp = DISAS_WFE;
+-        }
+-        break;
+-    case 4: /* sev */
+-    case 5: /* sevl */
+-        /* TODO: Implement SEV, SEVL and WFE.  May help SMP performance.  */
+-    default: /* nop */
+-        break;
+-    }
+-}
 -
--                if (insn & 3) {
--                    goto undef;
--                }
--                if (link) {
--                    ARCH(5);
--                }
--                if ((insn & 4)) {
--                    /* BXNS/BLXNS: only exists for v8M with the
--                     * security extensions, and always UNDEF if NonSecure.
--                     * We don't implement these in the user-only mode
--                     * either (in theory you can use them from Secure User
--                     * mode but they are too tied in to system emulation.)
--                     */
--                    if (!s->v8m_secure || IS_USER_ONLY) {
--                        goto undef;
--                    }
--                    if (link) {
--                        gen_blxns(s, rm);
--                    } else {
--                        gen_bxns(s, rm);
--                    }
--                    break;
--                }
--                /* BLX/BX */
--                tmp = load_reg(s, rm);
--                if (link) {
--                    val = (uint32_t)s->base.pc_next | 1;
--                    tmp2 = tcg_temp_new_i32();
--                    tcg_gen_movi_i32(tmp2, val);
--                    store_reg(s, 14, tmp2);
--                    gen_bx(s, tmp);
--                } else {
--                    /* Only BX works as exception-return, not BLX */
--                    gen_bx_excret(s, tmp);
--                }
--                break;
--            }
-+                goto illegal_op;
-             }
-             break;
-         }
-diff --git a/target/arm/t16.decode b/target/arm/t16.decode
-index 0654275e68..edddbfb9b8 100644
---- a/target/arm/t16.decode
-+++ b/target/arm/t16.decode
-@@ -24,6 +24,7 @@
- &s_rri_rot       !extern s rn rd imm rot
- &s_rrrr          !extern s rd rn rm ra
- &ri              !extern rd imm
-+&r               !extern rm
- &ldst_rr         !extern p w u rn rt rm shimm shtype
- &ldst_ri         !extern p w u rn rt imm
- &ldst_block      !extern rn i b u w list
-@@ -144,3 +145,12 @@ MOV_rxi         00100 ... ........              @arith_1i %s
- CMP_xri         00101 ... ........              @arith_1i s=1
- ADD_rri         00110 ... ........              @arith_1i %s
- SUB_rri         00111 ... ........              @arith_1i %s
-+
-+# Branch and exchange
-+
-+@branchr        .... .... . rm:4 ...            &r
-+
-+BX              0100 0111 0 .... 000            @branchr
-+BLX_r           0100 0111 1 .... 000            @branchr
-+BXNS            0100 0111 0 .... 100            @branchr
-+BLXNS           0100 0111 1 .... 100            @branchr
+ #define CPU_V001 cpu_V0, cpu_V0, cpu_V1
+ 
+ static inline void gen_neon_add(int size, TCGv_i32 t0, TCGv_i32 t1)
+@@ -8194,19 +8154,40 @@ DO_SMLAWX(SMLAWT, 1, 1)
+ 
+ static bool trans_YIELD(DisasContext *s, arg_YIELD *a)
+ {
+-    gen_nop_hint(s, 1);
++    /*
++     * When running single-threaded TCG code, use the helper to ensure that
++     * the next round-robin scheduled vCPU gets a crack.  When running in
++     * MTTCG we don't generate jumps to the helper as it won't affect the
++     * scheduling of other vCPUs.
++     */
++    if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
++        gen_set_pc_im(s, s->base.pc_next);
++        s->base.is_jmp = DISAS_YIELD;
++    }
+     return true;
+ }
+ 
+ static bool trans_WFE(DisasContext *s, arg_WFE *a)
+ {
+-    gen_nop_hint(s, 2);
++    /*
++     * When running single-threaded TCG code, use the helper to ensure that
++     * the next round-robin scheduled vCPU gets a crack.  In MTTCG mode we
++     * just skip this instruction.  Currently the SEV/SEVL instructions,
++     * which are *one* of many ways to wake the CPU from WFE, are not
++     * implemented so we can't sleep like WFI does.
++     */
++    if (!(tb_cflags(s->base.tb) & CF_PARALLEL)) {
++        gen_set_pc_im(s, s->base.pc_next);
++        s->base.is_jmp = DISAS_WFE;
++    }
+     return true;
+ }
+ 
+ static bool trans_WFI(DisasContext *s, arg_WFI *a)
+ {
+-    gen_nop_hint(s, 3);
++    /* For WFI, halt the vCPU until an IRQ. */
++    gen_set_pc_im(s, s->base.pc_next);
++    s->base.is_jmp = DISAS_WFI;
+     return true;
+ }
+ 
 -- 
 2.17.1
 

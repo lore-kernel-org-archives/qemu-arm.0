@@ -1,67 +1,67 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp443637wrp;
-        Wed, 4 Sep 2019 02:02:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw+AxaoJ/upnM659BcMbZXvVeg8B4fr7aErlOLVrfcxjTzlrEIWqGzf9s6o564SsoCNMnln
-X-Received: by 2002:a37:6dc7:: with SMTP id i190mr39111917qkc.12.1567587776814;
-        Wed, 04 Sep 2019 02:02:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567587776; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp443932wrp;
+        Wed, 4 Sep 2019 02:03:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxdiUdTS/uCj/EUplaOTmt8BAkzCmRLs7UJy0n0W0tm5l7qsGx0FStOUoPU+ia/dwWjZRNT
+X-Received: by 2002:ae9:e40c:: with SMTP id q12mr19452742qkc.455.1567587792954;
+        Wed, 04 Sep 2019 02:03:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567587792; cv=none;
         d=google.com; s=arc-20160816;
-        b=FZfnlItR8lwYAEBoJtAQBlqHkgiemNge6CTn7jBBn/eVUu0ZxYnnvPCERLJKEZBxx5
-         lBQ5U41faKR94TN6GDJizaa+frk3BCPBMAlWsbN4CdXUclAlOIzhDwzSHrcmkzbIuHqo
-         Wj3PMArOBJpM/4PGy5EP+N4E/spFWUtqbAtmN2ZLO1KXEvb3Xme54sw3u/mhfCHRbjdV
-         8f08zyjDT28R6yHdV7KfBj9At1FXAlSRLfaQuMGtZLt30dLoBwbmSaoQXrnQOD/ARla2
-         fcfSmsXH8I/cZ3i1Hwm0GTSz+bf5Ysd5MjThlxlT8Nn9MMseZWoJEPpluR3zmp0UHOUe
-         U5fQ==
+        b=DuGdvLSMfcLK/OoeOG4VnGzavCrOiN6uGisWZRMVuNM/ip1K48SeHZj0cH4ykOjh8Y
+         5kvsTnfX3xD7155ECXmiTGVsgwYDVSbCL6Av0JBjTW25LDEImCEa9WEYRczQ9j71D3fI
+         q21z1wY8+ptRLRq2DHhIarBHvGKkn5CiOENy6qrfmCGD5q/r0rGWiEtLh8FqGq5pZFuw
+         LjzfsVKkuAE///SnpSYX/YS9St3rl0ask3IdYhluGkJ0bn811kZRNyi/OA83CNDEom+O
+         IwY7olc5iFK5nXFC/x2aEZVeVQ1Q5JX2z4JPif+gU5enXw4VIDeS2LQd2SDo9PKJEvgz
+         ubkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:mime-version:references
          :in-reply-to:message-id:date:to:from;
-        bh=gzZP6fj4OMJOhAgrqkQc84hO7+jjCQFROQ+6U8qxrhA=;
-        b=l4ZP/IAS1qN8z2/EWoh5K5qrZ1SapDWkEF3Zz4GS7X2FBsY5fUEFcwJ8E6XWPtk5D+
-         6WC1UL7595HCLHBwKuhG5g+fRyQAXLYY5JIJvOEcBt3S88lTcmF1KE8574unO4PIgHdN
-         iaKXF3i/zE4BbdZcnQA5EsmTgykYzSpw0B8H4gPnuxg3WJnwvojZqcHVN01UfpAr8amg
-         qp8WX7sUoDQcl3esXYKBA7o2mJqk9XSU++2yOc4Dsb05wU4NokpoFFhDOMFGDIxMBtJR
-         KHfaSX9ttmH5j0bUFnCyGWo57VAoz3zp9U/ad5rdylb+lOWkUzIziLtjwA51UxJO3Eqn
-         2dRQ==
+        bh=Mso2iKF+ryqsxuXQ7jqBseMQg87RrAqeDDEM5MdTdPA=;
+        b=yvfgGD+i6HxkPp7/taZ2uQPEAkuydeG88TozLMbHt0EG3HAZ0IoM9gxE5ZS+bHtgE0
+         SYXEoRka1LPLN1NTqA6FD1qMxF4h5Cu0J/wkyTJBa3ZRJods8WU47Wu7dpr8A12Fw0VA
+         4Zj5NaIpwntShpp8VbRz6lR9C4IqwX6TMFWKmoW7RFyLC1c16jih+vfxBughlAnQPt/8
+         MjH5tT65lVWeyOFUmRczq+p+BIbMXSeerK8yonVjdi7CMf3UjkTE4UOFu1i+uZbETwWE
+         zJ5w+Y2yarjSpN7scijggLiHyd6x84M7ETkorJQ6q7Y4EPL/KoRs5ym8gZnZbM3U/9ow
+         /KJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m17si8027316qke.21.2019.09.04.02.02.56
+        by mx.google.com with ESMTPS id k5si13952300qkb.66.2019.09.04.02.03.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2019 02:02:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Sep 2019 02:03:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54760 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54748 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5RBn-0003je-HJ
-	for alex.bennee@linaro.org; Wed, 04 Sep 2019 05:02:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38679)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i5RC3-00035H-93
+	for alex.bennee@linaro.org; Wed, 04 Sep 2019 05:03:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38567)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1i5R7E-0007Yd-DJ
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 04:58:13 -0400
+ id 1i5R72-0007Ij-14
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 04:58:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1i5R7D-0007Ig-AG
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 04:58:12 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2262 helo=huawei.com)
+ id 1i5R70-0007DL-J8
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 04:57:59 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2193 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1i5R7C-0007I4-VM; Wed, 04 Sep 2019 04:58:11 -0400
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 21A5910B831C766D1A0C;
- Wed,  4 Sep 2019 16:58:09 +0800 (CST)
+ id 1i5R6x-0007BB-Pt; Wed, 04 Sep 2019 04:57:56 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id E2FED7AAAF89D396940F;
+ Wed,  4 Sep 2019 16:57:53 +0800 (CST)
 Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
  DGGEMS411-HUB.china.huawei.com (10.3.19.211) with Microsoft SMTP Server id
- 14.3.439.0; Wed, 4 Sep 2019 16:58:00 +0800
+ 14.3.439.0; Wed, 4 Sep 2019 16:57:46 +0800
 From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
  <imammedo@redhat.com>
-Date: Wed, 4 Sep 2019 09:56:28 +0100
-Message-ID: <20190904085629.13872-11-shameerali.kolothum.thodi@huawei.com>
+Date: Wed, 4 Sep 2019 09:56:24 +0100
+Message-ID: <20190904085629.13872-7-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
 In-Reply-To: <20190904085629.13872-1-shameerali.kolothum.thodi@huawei.com>
 References: <20190904085629.13872-1-shameerali.kolothum.thodi@huawei.com>
@@ -70,70 +70,94 @@ Content-Type: text/plain
 X-Originating-IP: [10.202.227.237]
 X-CFilter-Loop: Reflected
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 45.249.212.191
-Subject: [Qemu-arm] [PATCH-for-4.2 v10 10/11] tests: add dummy ACPI tables
- for arm/virt board
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 45.249.212.190
+Subject: [Qemu-devel] [PATCH-for-4.2 v10 06/11] hw/arm/virt-acpi-build: Add
+ PC-DIMM in SRAT
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
  linuxarm@huawei.com, xuwei5@hisilicon.com, shannon.zhaosl@gmail.com,
  sebastien.boeuf@intel.com, lersek@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lDaLlX+ecGFs
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Pp06H+eGXtQr
 
-This patch is in preparation for adding numamem and memhp tests
-to arm/virt board so that 'make check' is happy. This may not
-be required once the scripts are run and new tables are
-generated with ".numamem" and ".memhp" extensions.
+Generate Memory Affinity Structures for PC-DIMM ranges.
+
+Also, Linux and Windows need ACPI SRAT table to make memory hotplug
+work properly, however currently QEMU doesn't create SRAT table if
+numa options aren't present on CLI. Hence add support(>=4.2) to
+create numa node automatically (auto_enable_numa_with_memhp) when
+QEMU is started with memory hotplug enabled but without '-numa'
+options on CLI.
 
 Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
-I am not sure this is the right way to do this. But without this, when
-the numamem and memhp tests are added, you will get,
-
-Looking for expected file 'tests/data/acpi/virt/SRAT.numamem'
-Looking for expected file 'tests/data/acpi/virt/SRAT'
-**
-ERROR:tests/bios-tables-test.c:327:load_expected_aml: assertion failed: (exp_sdt.aml_file)
-
+v8 --> v9
+ - Added auto_enable_numa_with_memhp support.
 ---
- tests/data/acpi/virt/SLIT | Bin 0 -> 48 bytes
- tests/data/acpi/virt/SRAT | Bin 0 -> 224 bytes
- 2 files changed, 0 insertions(+), 0 deletions(-)
- create mode 100644 tests/data/acpi/virt/SLIT
- create mode 100644 tests/data/acpi/virt/SRAT
+ hw/arm/virt-acpi-build.c | 9 +++++++++
+ hw/arm/virt.c            | 2 ++
+ 2 files changed, 11 insertions(+)
 
-diff --git a/tests/data/acpi/virt/SLIT b/tests/data/acpi/virt/SLIT
-new file mode 100644
-index 0000000000000000000000000000000000000000..74ec3b4b461ffecca36d8537975c202a5f011185
-GIT binary patch
-literal 48
-scmWIc@eDCwU|?X>aq@Te2v%^42yhMtiZKGkKx`1r1jHb~B`V4V0NaKK0RR91
-
-literal 0
-HcmV?d00001
-
-diff --git a/tests/data/acpi/virt/SRAT b/tests/data/acpi/virt/SRAT
-new file mode 100644
-index 0000000000000000000000000000000000000000..119922f4973f621602047d1dc160519f810922a3
-GIT binary patch
-literal 224
-zcmWFzatwLEz`(%x)yd!4BUr&HBEUHqD8>jB1F=Cg2*ZH@DxXmUMHZ-x3$7Gd2B8jU
-X02q8=hbcr=2NT6lGiu<Mhsgo}c|r;S
-
-literal 0
-HcmV?d00001
-
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 5063f28812..a4872a0b00 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -519,6 +519,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     int i, srat_start;
+     uint64_t mem_base;
+     MachineClass *mc = MACHINE_GET_CLASS(vms);
++    MachineState *ms = MACHINE(vms);
+     const CPUArchIdList *cpu_list = mc->possible_cpu_arch_ids(MACHINE(vms));
+ 
+     srat_start = table_data->len;
+@@ -544,6 +545,14 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         }
+     }
+ 
++    if (ms->device_memory) {
++        numamem = acpi_data_push(table_data, sizeof *numamem);
++        build_srat_memory(numamem, ms->device_memory->base,
++                          memory_region_size(&ms->device_memory->mr),
++                          nb_numa_nodes - 1,
++                          MEM_AFFINITY_HOTPLUGGABLE | MEM_AFFINITY_ENABLED);
++    }
++
+     build_header(linker, table_data, (void *)(table_data->data + srat_start),
+                  "SRAT", table_data->len - srat_start, 3, NULL, NULL);
+ }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 29bc2837ce..95accc28f1 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2053,6 +2053,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     hc->plug = virt_machine_device_plug_cb;
+     hc->unplug_request = virt_machine_device_unplug_request_cb;
+     mc->numa_mem_supported = true;
++    mc->auto_enable_numa_with_memhp = true;
+ }
+ 
+ static void virt_instance_init(Object *obj)
+@@ -2158,6 +2159,7 @@ static void virt_machine_4_1_options(MachineClass *mc)
+     virt_machine_4_2_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_4_1, hw_compat_4_1_len);
+     vmc->no_ged = true;
++    mc->auto_enable_numa_with_memhp = false;
+ }
+ DEFINE_VIRT_MACHINE(4, 1)
+ 
 -- 
 2.17.1
 

@@ -1,501 +1,399 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp34666wrp;
-        Wed, 4 Sep 2019 14:50:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx4B0aGD0+k2MM0FuQ6t6hTwqiD1gyWfubt323G6RbLmXm93JfzXE7vy01ioHcDn9nnqkKs
-X-Received: by 2002:a50:9fe5:: with SMTP id c92mr469684edf.280.1567633848974;
-        Wed, 04 Sep 2019 14:50:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567633848; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp37374wrp;
+        Wed, 4 Sep 2019 14:54:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwY6KQ9KLt5WgNH6u4KOAP6VhyewG8eMStJZdFSplXAg92oyXCx9FTTpicjaQLlw6JufGpE
+X-Received: by 2002:ad4:4208:: with SMTP id k8mr70150qvp.17.1567634080689;
+        Wed, 04 Sep 2019 14:54:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567634080; cv=none;
         d=google.com; s=arc-20160816;
-        b=pvtjTi158XXN6sOPK5xWSCtkg2v/F3Ey/7lAVvh2l483Ubv1CER9SMOVq0n7umwBVT
-         WZmiPVX3xdX9BY6hbzb6tJFH5H24Md3D/2oIsbSqoOU9WB6C3efVIPrZg4ghFaUhISHK
-         pw31Axkm0n19kH97vLjRPwVWfxNR1omJn9s6zLp/0Bfs3nd/T19n1PtOf4WtUcjzz+OZ
-         xh8QmHfYFY9ETljwHjTWRKiqo5VTddl7A7EKZL24SbUnWRW89N3q1+Svdr5VUal+m3ZN
-         /YyObE5hbAlfKeV/dUZpQ2Y93kEDaDKAfMWl+YtlUHdWNmABA+dy/vIwN8Hg09u6e4ym
-         s1Qw==
+        b=aBUcEEP9xrzslZ0NAc1uCfCFYs93XQfZyWvEJKqWEN4cURkrKrJ5aQPT9PTxuRSlj+
+         iYsEKqcLZQvaC9nkugru4nXSVJTY1jlNg/igeEfos3SfOjb+sP0m+NEtFonx5VYvEhft
+         DJzxDDZu9phU6yz5TfcU/J6pjlA8h6LB/JFAJEv6ZJwYX1VBqGwfbQgFGlPWBAu/LFR3
+         K96iwH/GNn3Ci4JJQNzWQxFVpfqhF1dqRI2i7CWr7jxp0iY1aYaFx6SUPg/H1/DRnfXz
+         RVpM9lh6uJP5BLyJYU5uDEk/QP7uVZ9immPelHCBXNr0gaihHfafX6M6lmg/UQJv/Bwf
+         iAyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=LZt4O4Z64s6XHnNBXhr0A5df6Swtld+esn1etKkP7QU=;
-        b=fdQsgm6Dsw5LuBs1lMZZW8OFdzRvDTXs1GaCWMRJn9w+RHAMfqnE20on+1ZYzyV/je
-         sR2/JZBn5OjtVaiJQCvFEQtBAKw1vIs4riy7tE4Ha0qUaHMYmYcahw7x5b8nQIZtBWK3
-         hCqCJ1dRharxfCUuTPupZyRZCz86DV67uTgxjq6Z8AmKkA0D7tr1o/dh/ypBSwgmkd5P
-         74DSJOQU4zAaG+v4oTzbg9o0Tq6Jr6zSgOWN0GbpqOBkHQJC+7YEEDZtf/ge+uadWvF0
-         N0hODU5qoVpmVWKguC9UcM3Z3jg658JIQN+WPsqeiu62TGVqHlBrkyKzRC+rGX8a5/wQ
-         M4Xw==
+        bh=64SYxC4DAJluD7/trrMMeg9wpUggJtHSmYyooF6y34A=;
+        b=neWrUehlxeg0YjSs3HCaDBSoGwsUUDa/WT8D+uO4ag8gkANkEyq6olb4PalPDX/Fp2
+         ZcCpcrMOYAuUya9zIQuEniRYSq+CTZAQivUL9MVt6XnyVCvNVThlvtNFWfzKcxRCrrMu
+         lmUr1M0nfbJLcm80BMPfz8rRtiXkojpMZUW+Sp1FNQcRLiFUI/eArDw3EwTWkT/BbqEP
+         FiwrGwiWPCCU8OcACQM/VuPzTRtUjcyxOLqoaYsQe4DPJIBfkIqVFYnflEyZcytUR6KJ
+         LAknRyy/IBXNkYHZAzeIdz95us1pYwnT/xFOZV7V6QTYVrrSu4hxC7vE/sQ/A4tmE6Bm
+         Kpjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g10si167432ejk.250.2019.09.04.14.50.48
+        by mx.google.com with ESMTPS id n94si15247945qte.60.2019.09.04.14.54.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2019 14:50:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Sep 2019 14:54:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40530 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40582 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5dAt-0001RS-PT
-	for alex.bennee@linaro.org; Wed, 04 Sep 2019 17:50:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53782)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i5dEd-0005SE-Qb
+	for alex.bennee@linaro.org; Wed, 04 Sep 2019 17:54:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53922)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1i5cCm-0001Aj-3m
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 16:48:44 -0400
+ (envelope-from <clg@kaod.org>) id 1i5cCy-0001GA-Gt
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 16:48:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1i5cCj-0001xt-A1
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 16:48:39 -0400
-Received: from 16.mo6.mail-out.ovh.net ([87.98.139.208]:51569)
+ (envelope-from <clg@kaod.org>) id 1i5cCw-00026K-TF
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 16:48:52 -0400
+Received: from 20.mo5.mail-out.ovh.net ([91.121.55.239]:40134)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1i5cCi-0001w7-Nm
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 16:48:37 -0400
-Received: from player691.ha.ovh.net (unknown [10.109.159.20])
- by mo6.mail-out.ovh.net (Postfix) with ESMTP id D2ED91D5BC9
- for <qemu-arm@nongnu.org>; Wed,  4 Sep 2019 22:48:34 +0200 (CEST)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1i5cCw-00024j-8F
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 16:48:50 -0400
+Received: from player691.ha.ovh.net (unknown [10.108.54.36])
+ by mo5.mail-out.ovh.net (Postfix) with ESMTP id 9303C24A244
+ for <qemu-devel@nongnu.org>; Wed,  4 Sep 2019 22:48:48 +0200 (CEST)
 Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
  (Authenticated sender: clg@kaod.org)
- by player691.ha.ovh.net (Postfix) with ESMTPSA id 4955A98B2950;
- Wed,  4 Sep 2019 20:48:28 +0000 (UTC)
+ by player691.ha.ovh.net (Postfix) with ESMTPSA id 09A7998B29E0;
+ Wed,  4 Sep 2019 20:48:42 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed,  4 Sep 2019 22:46:56 +0200
-Message-Id: <20190904204659.13878-13-clg@kaod.org>
+Date: Wed,  4 Sep 2019 22:46:58 +0200
+Message-Id: <20190904204659.13878-15-clg@kaod.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190904204659.13878-1-clg@kaod.org>
 References: <20190904204659.13878-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 2531585941748615953
+X-Ovh-Tracer-Id: 2535526593377962769
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrudejhedgudehudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 87.98.139.208
-Subject: [Qemu-arm] [RFC PATCH 12/15] aspeed: add support for the AST2600
- eval board
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 91.121.55.239
+Subject: [Qemu-devel] [RFC PATCH 14/15] aspeed: add support for the Aspeed
+ MII controller of the AST2600
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jsHmilycrGlF
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OZKfwV7G1MaF
 
-Initial definitions for a simple machine using an AST2600 SoC (Cortex
-CPU).
-
-Differences with the AST2400 and the AST2500 SoCs are handled using
-the ASPEED_IS_AST2600() macro. This is not optimal but it is not too
-invasive either. We could modify the model to add custom instance_init
-and realize handlers in the future.
+The AST2600 SoC has an extra controller to set the PHY registers.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- include/hw/arm/aspeed_soc.h  |   4 +
- include/hw/misc/aspeed_scu.h |   1 +
- hw/arm/aspeed.c              |  18 ++++
- hw/arm/aspeed_soc.c          | 189 ++++++++++++++++++++++++++++++++---
- 4 files changed, 197 insertions(+), 15 deletions(-)
+ include/hw/arm/aspeed_soc.h |   5 ++
+ include/hw/net/ftgmac100.h  |  17 ++++
+ hw/arm/aspeed_soc.c         |  25 ++++++
+ hw/net/ftgmac100.c          | 162 ++++++++++++++++++++++++++++++++++++
+ 4 files changed, 209 insertions(+)
 
 diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index b427f2668a8a..74db48374531 100644
+index 30b67a09f13c..9e06a6ad4fbd 100644
 --- a/include/hw/arm/aspeed_soc.h
 +++ b/include/hw/arm/aspeed_soc.h
-@@ -12,6 +12,7 @@
- #ifndef ASPEED_SOC_H
- #define ASPEED_SOC_H
-=20
-+#include "hw/cpu/a15mpcore.h"
- #include "hw/intc/aspeed_vic.h"
- #include "hw/misc/aspeed_scu.h"
- #include "hw/misc/aspeed_sdmc.h"
-@@ -38,6 +39,7 @@ typedef struct AspeedSoCState {
-     /*< public >*/
-     ARMCPU cpu[ASPEED_CPUS_NUM];
-     uint32_t num_cpus;
-+    A15MPPrivState     a7mpcore;
-     MemoryRegion sram;
-     AspeedVICState vic;
-     AspeedRtcState rtc;
-@@ -51,6 +53,7 @@ typedef struct AspeedSoCState {
+@@ -52,6 +52,7 @@ typedef struct AspeedSoCState {
+     AspeedSDMCState sdmc;
      AspeedWDTState wdt[ASPEED_WDTS_NUM];
      FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
++    AspeedMiiState mii[ASPEED_MACS_NUM];
      AspeedGPIOState gpio;
-+    AspeedGPIOState gpio_1_8v;
+     AspeedGPIOState gpio_1_8v;
      AspeedSDHCIState sdhci;
- } AspeedSoCState;
-=20
-@@ -97,6 +100,7 @@ enum {
-     ASPEED_SRAM,
-     ASPEED_SDHCI,
-     ASPEED_GPIO,
-+    ASPEED_GPIO_1_8V,
-     ASPEED_RTC,
-     ASPEED_TIMER1,
-     ASPEED_TIMER2,
-diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
-index 1d7f7ffc1598..670804e85f28 100644
---- a/include/hw/misc/aspeed_scu.h
-+++ b/include/hw/misc/aspeed_scu.h
-@@ -43,6 +43,7 @@ typedef struct AspeedSCUState {
- #define AST2600_A0_SILICON_REV   0x05000303U
-=20
- #define ASPEED_IS_AST2500(si_rev)     ((((si_rev) >> 24) & 0xff) =3D=3D =
-0x04)
-+#define ASPEED_IS_AST2600(si_rev)     ((((si_rev) >> 24) & 0xff) =3D=3D =
-0x05)
-=20
- extern bool is_supported_silicon_rev(uint32_t silicon_rev);
-=20
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 03cc0952e8f3..f4f1dd29b011 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -88,6 +88,9 @@ struct AspeedBoardState {
- /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) *=
-/
- #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
-=20
-+/* AST2600 evb hardware value: (QEMU prototype) */
-+#define AST2600_EVB_HW_STRAP1 AST2500_EVB_HW_STRAP1
-+
- /*
-  * The max ram region is for firmwares that scan the address space
-  * with load/store to guess how much RAM the SoC has.
-@@ -294,6 +297,12 @@ static void ast2500_evb_i2c_init(AspeedBoardState *b=
-mc)
-     i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338"=
-, 0x32);
- }
-=20
-+static void ast2600_evb_i2c_init(AspeedBoardState *bmc)
-+{
-+    /* Start with some devices on our I2C busses */
-+    ast2500_evb_i2c_init(bmc);
-+}
-+
- static void romulus_bmc_i2c_init(AspeedBoardState *bmc)
- {
-     AspeedSoCState *soc =3D &bmc->soc;
-@@ -441,6 +450,15 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
-         .num_cs    =3D 2,
-         .i2c_init  =3D witherspoon_bmc_i2c_init,
-         .ram       =3D 512 * MiB,
-+    }, {
-+        .name      =3D MACHINE_TYPE_NAME("ast2600-evb"),
-+        .desc      =3D "Aspeed AST2600 EVB (Cortex A7)",
-+        .soc_name  =3D "ast2600-a0",
-+        .hw_strap1 =3D AST2600_EVB_HW_STRAP1,
-+        .fmc_model =3D "mx25l25635e",
-+        .spi_model =3D "mx25l25635e",
-+        .num_cs    =3D 1,
-+        .i2c_init  =3D ast2600_evb_i2c_init,
-     },
+@@ -120,6 +121,10 @@ enum {
+     ASPEED_ETH2,
+     ASPEED_ETH3,
+     ASPEED_ETH4,
++    ASPEED_MII1,
++    ASPEED_MII2,
++    ASPEED_MII3,
++    ASPEED_MII4,
+     ASPEED_SDRAM,
+     ASPEED_XDMA,
  };
+diff --git a/include/hw/net/ftgmac100.h b/include/hw/net/ftgmac100.h
+index 94cfe0533297..ab37e7b2b8ae 100644
+--- a/include/hw/net/ftgmac100.h
++++ b/include/hw/net/ftgmac100.h
+@@ -66,4 +66,21 @@ typedef struct FTGMAC100State {
+     uint32_t rxdes0_edorr;
+ } FTGMAC100State;
 =20
++#define TYPE_ASPEED_MII "aspeed-mmi"
++#define ASPEED_MII(obj) OBJECT_CHECK(AspeedMiiState, (obj), TYPE_ASPEED_=
+MII)
++
++/*
++ * AST2600 MII controller
++ */
++typedef struct AspeedMiiState {
++    /*< private >*/
++    SysBusDevice parent_obj;
++
++    FTGMAC100State *nic;
++
++    MemoryRegion iomem;
++    uint32_t phycr;
++    uint32_t phydata;
++} AspeedMiiState;
++
+ #endif
 diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 5c5fcb810944..80d7f206004c 100644
+index 8069de8d5a36..c3f99849b7f0 100644
 --- a/hw/arm/aspeed_soc.c
 +++ b/hw/arm/aspeed_soc.c
-@@ -81,6 +81,38 @@ static const hwaddr aspeed_soc_ast2500_memmap[] =3D {
-     [ASPEED_SDRAM]  =3D 0x80000000,
- };
-=20
-+static const hwaddr aspeed_soc_ast2600_memmap[] =3D {
-+    [ASPEED_SRAM]      =3D 0x10000000,
-+    /* 0x16000000     0x17FFFFFF : AHB BUS do LPC Bus bridge */
-+    [ASPEED_IOMEM]     =3D 0x1E600000,
-+    [ASPEED_PWM]       =3D 0x1E610000,
-+    [ASPEED_FMC]       =3D 0x1E620000,
-+    [ASPEED_SPI1]      =3D 0x1E630000,
-+    [ASPEED_SPI2]      =3D 0x1E641000,
-+    [ASPEED_ETH1]      =3D 0x1E660000,
-+    [ASPEED_ETH2]      =3D 0x1E680000,
-+    [ASPEED_VIC]       =3D 0x1E6C0000,
-+    [ASPEED_SDMC]      =3D 0x1E6E0000,
-+    [ASPEED_SCU]       =3D 0x1E6E2000,
-+    [ASPEED_XDMA]      =3D 0x1E6E7000,
-+    [ASPEED_ADC]       =3D 0x1E6E9000,
-+    [ASPEED_SDHCI]     =3D 0x1E740000,
-+    [ASPEED_GPIO]      =3D 0x1E780000,
-+    [ASPEED_GPIO_1_8V] =3D 0x1E780800,
-+    [ASPEED_RTC]       =3D 0x1E781000,
-+    [ASPEED_TIMER1]    =3D 0x1E782000,
-+    [ASPEED_WDT]       =3D 0x1E785000,
-+    [ASPEED_LPC]       =3D 0x1E789000,
-+    [ASPEED_IBT]       =3D 0x1E789140,
-+    [ASPEED_I2C]       =3D 0x1E78A000,
-+    [ASPEED_UART1]     =3D 0x1E783000,
-+    [ASPEED_UART5]     =3D 0x1E784000,
-+    [ASPEED_VUART]     =3D 0x1E787000,
-+    [ASPEED_SDRAM]     =3D 0x80000000,
-+};
+@@ -89,6 +89,10 @@ static const hwaddr aspeed_soc_ast2600_memmap[] =3D {
+     [ASPEED_FMC]       =3D 0x1E620000,
+     [ASPEED_SPI1]      =3D 0x1E630000,
+     [ASPEED_SPI2]      =3D 0x1E641000,
++    [ASPEED_MII1]      =3D 0x1E650000,
++    [ASPEED_MII2]      =3D 0x1E650008,
++    [ASPEED_MII3]      =3D 0x1E650010,
++    [ASPEED_MII4]      =3D 0x1E650018,
+     [ASPEED_ETH1]      =3D 0x1E660000,
+     [ASPEED_ETH3]      =3D 0x1E670000,
+     [ASPEED_ETH2]      =3D 0x1E680000,
+@@ -313,6 +317,14 @@ static void aspeed_soc_init(Object *obj)
+     for (i =3D 0; i < sc->info->macs_num; i++) {
+         sysbus_init_child_obj(obj, "ftgmac100[*]", OBJECT(&s->ftgmac100[=
+i]),
+                               sizeof(s->ftgmac100[i]), TYPE_FTGMAC100);
 +
-+#define ASPEED_A7MPCORE_ADDR 0x40460000
-+
- static const int aspeed_soc_ast2400_irqmap[] =3D {
-     [ASPEED_UART1]  =3D 9,
-     [ASPEED_UART2]  =3D 32,
-@@ -115,6 +147,41 @@ static const int aspeed_soc_ast2400_irqmap[] =3D {
-=20
- #define aspeed_soc_ast2500_irqmap aspeed_soc_ast2400_irqmap
-=20
-+#define ASPEED_SOC_AST2600_MAX_IRQ 128
-+
-+static const int aspeed_soc_ast2600_irqmap[] =3D {
-+    [ASPEED_UART1]     =3D 47,
-+    [ASPEED_UART2]     =3D 48,
-+    [ASPEED_UART3]     =3D 49,
-+    [ASPEED_UART4]     =3D 50,
-+    [ASPEED_UART5]     =3D 8,
-+    [ASPEED_VUART]     =3D 8,
-+    [ASPEED_FMC]       =3D 39,
-+    [ASPEED_SDMC]      =3D 0,
-+    [ASPEED_SCU]       =3D 12,
-+    [ASPEED_XDMA]      =3D 6,
-+    [ASPEED_ADC]       =3D 46,
-+    [ASPEED_SDHCI]     =3D 43,
-+    [ASPEED_GPIO]      =3D 40,
-+    [ASPEED_GPIO_1_8V] =3D 11,
-+    [ASPEED_RTC]       =3D 13,
-+    [ASPEED_TIMER1]    =3D 16,
-+    [ASPEED_TIMER2]    =3D 17,
-+    [ASPEED_TIMER3]    =3D 18,
-+    [ASPEED_TIMER4]    =3D 19,
-+    [ASPEED_TIMER5]    =3D 20,
-+    [ASPEED_TIMER6]    =3D 21,
-+    [ASPEED_TIMER7]    =3D 22,
-+    [ASPEED_TIMER8]    =3D 23,
-+    [ASPEED_WDT]       =3D 24,
-+    [ASPEED_PWM]       =3D 44,
-+    [ASPEED_LPC]       =3D 35,
-+    [ASPEED_IBT]       =3D 35,    /* LPC */
-+    [ASPEED_I2C]       =3D 110,   /* 110 -> 125 */
-+    [ASPEED_ETH1]      =3D 2,
-+    [ASPEED_ETH2]      =3D 3,
-+};
-+
- static const AspeedSoCInfo aspeed_socs[] =3D {
-     {
-         .name         =3D "ast2400-a1",
-@@ -136,14 +203,26 @@ static const AspeedSoCInfo aspeed_socs[] =3D {
-         .irqmap       =3D aspeed_soc_ast2500_irqmap,
-         .memmap       =3D aspeed_soc_ast2500_memmap,
-         .num_cpus     =3D 1,
-+    }, {
-+        .name         =3D "ast2600-a0",
-+        .cpu_type     =3D ARM_CPU_TYPE_NAME("cortex-a7"),
-+        .silicon_rev  =3D AST2600_A0_SILICON_REV,
-+        .sram_size    =3D 0x10000,
-+        .spis_num     =3D 2,
-+        .wdts_num     =3D 4,
-+        .irqmap       =3D aspeed_soc_ast2600_irqmap,
-+        .memmap       =3D aspeed_soc_ast2600_memmap,
-+        .num_cpus     =3D 2,
-     },
- };
-=20
- static qemu_irq aspeed_soc_get_irq(AspeedSoCState *s, int ctrl)
- {
-     AspeedSoCClass *sc =3D ASPEED_SOC_GET_CLASS(s);
-+    DeviceState *intc =3D ASPEED_IS_AST2600(sc->info->silicon_rev) ?
-+        DEVICE(&s->a7mpcore) : DEVICE(&s->vic);
-=20
--    return qdev_get_gpio_in(DEVICE(&s->vic), sc->info->irqmap[ctrl]);
-+    return qdev_get_gpio_in(intc, sc->info->irqmap[ctrl]);
- }
-=20
- static void aspeed_soc_init(Object *obj)
-@@ -176,8 +255,13 @@ static void aspeed_soc_init(Object *obj)
-     object_property_add_alias(obj, "hw-prot-key", OBJECT(&s->scu),
-                               "hw-prot-key", &error_abort);
-=20
--    sysbus_init_child_obj(obj, "vic", OBJECT(&s->vic), sizeof(s->vic),
--                          TYPE_ASPEED_VIC);
-+    if (ASPEED_IS_AST2600(sc->info->silicon_rev)) {
-+        sysbus_init_child_obj(obj, "a7mpcore", &s->a7mpcore,
-+                              sizeof(s->a7mpcore), TYPE_A15MPCORE_PRIV);
-+    } else {
-+        sysbus_init_child_obj(obj, "vic", OBJECT(&s->vic), sizeof(s->vic=
-),
-+                              TYPE_ASPEED_VIC);
-+    }
-=20
-     sysbus_init_child_obj(obj, "rtc", OBJECT(&s->rtc), sizeof(s->rtc),
-                           TYPE_ASPEED_RTC);
-@@ -233,6 +317,12 @@ static void aspeed_soc_init(Object *obj)
-     sysbus_init_child_obj(obj, "gpio", OBJECT(&s->gpio), sizeof(s->gpio)=
-,
-                           typename);
-=20
-+    if (ASPEED_IS_AST2600(sc->info->silicon_rev)) {
-+        snprintf(typename, sizeof(typename), "aspeed.gpio-%s-1_8v", socn=
-ame);
-+        sysbus_init_child_obj(obj, "gpio_1_8v", OBJECT(&s->gpio_1_8v),
-+                              sizeof(s->gpio_1_8v), typename);
-+    }
-+
-     sysbus_init_child_obj(obj, "sdc", OBJECT(&s->sdhci), sizeof(s->sdhci=
-),
-                           TYPE_ASPEED_SDHCI);
-=20
-@@ -243,6 +333,16 @@ static void aspeed_soc_init(Object *obj)
++        if (ASPEED_IS_AST2600(sc->info->silicon_rev)) {
++            sysbus_init_child_obj(obj, "mii[*]", &s->mii[i], sizeof(s->m=
+ii[i]),
++                                  TYPE_ASPEED_MII);
++            object_property_add_const_link(OBJECT(&s->mii[i]), "nic",
++                                           OBJECT(&s->ftgmac100[i]),
++                                           &error_abort);
++        }
      }
- }
+=20
+     sysbus_init_child_obj(obj, "xdma", OBJECT(&s->xdma), sizeof(s->xdma)=
+,
+@@ -562,6 +574,19 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
+or **errp)
+                         sc->info->memmap[ASPEED_ETH1 + i]);
+         sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100[i]), 0,
+                            aspeed_soc_get_irq(s, ASPEED_ETH1 + i));
++
++
++        if (ASPEED_IS_AST2600(sc->info->silicon_rev)) {
++            object_property_set_bool(OBJECT(&s->mii[i]), true, "realized=
+",
++                                     &err);
++            if (err) {
++                error_propagate(errp, err);
++                return;
++            }
++
++            sysbus_mmio_map(SYS_BUS_DEVICE(&s->mii[i]), 0,
++                            sc->info->memmap[ASPEED_MII1 + i]);
++        }
+     }
+=20
+     /* XDMA */
+diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+index 04c78e85170b..eb8b441461a1 100644
+--- a/hw/net/ftgmac100.c
++++ b/hw/net/ftgmac100.c
+@@ -15,6 +15,7 @@
+ #include "hw/irq.h"
+ #include "hw/net/ftgmac100.h"
+ #include "sysemu/dma.h"
++#include "qapi/error.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "net/checksum.h"
+@@ -1087,9 +1088,170 @@ static const TypeInfo ftgmac100_info =3D {
+     .class_init =3D ftgmac100_class_init,
+ };
 =20
 +/*
-+ * ASPEED ast2600 has 0xf as cluster ID
-+ *
-+ * http://infocenter.arm.com/help/index.jsp?topic=3D/com.arm.doc.ddi0388=
-e/CIHEBGFG.html
++ * AST2600 MII controller
 + */
-+static uint64_t aspeed_calc_affinity(int cpu)
++#define ASPEED_MII_PHYCR_FIRE        BIT(31)
++#define ASPEED_MII_PHYCR_ST_22       BIT(28)
++#define ASPEED_MII_PHYCR_OP(x)       ((x) & (ASPEED_MII_PHYCR_OP_WRITE |=
+ \
++                                             ASPEED_MII_PHYCR_OP_READ))
++#define ASPEED_MII_PHYCR_OP_WRITE    BIT(26)
++#define ASPEED_MII_PHYCR_OP_READ     BIT(27)
++#define ASPEED_MII_PHYCR_DATA(x)     (x & 0xffff)
++#define ASPEED_MII_PHYCR_PHY(x)      (((x) >> 21) & 0x1f)
++#define ASPEED_MII_PHYCR_REG(x)      (((x) >> 16) & 0x1f)
++
++#define ASPEED_MII_PHYDATA_IDLE      BIT(16)
++
++static void aspeed_mii_transition(AspeedMiiState *s, bool fire)
 +{
-+    return (0xf << ARM_AFF1_SHIFT) | cpu;
++    if (fire) {
++        s->phycr |=3D ASPEED_MII_PHYCR_FIRE;
++        s->phydata &=3D ~ASPEED_MII_PHYDATA_IDLE;
++    } else {
++        s->phycr &=3D ~ASPEED_MII_PHYCR_FIRE;
++        s->phydata |=3D ASPEED_MII_PHYDATA_IDLE;
++    }
 +}
 +
- static void aspeed_soc_realize(DeviceState *dev, Error **errp)
++static void aspeed_mii_do_phy_ctl(AspeedMiiState *s)
++{
++    uint8_t reg;
++    uint16_t data;
++
++    if (!(s->phycr & ASPEED_MII_PHYCR_ST_22)) {
++        aspeed_mii_transition(s, !ASPEED_MII_PHYCR_FIRE);
++        qemu_log_mask(LOG_UNIMP, "%s: unsupported ST code\n", __func__);
++        return;
++    }
++
++    /* Nothing to do */
++    if (!(s->phycr & ASPEED_MII_PHYCR_FIRE)) {
++        return;
++    }
++
++    reg =3D ASPEED_MII_PHYCR_REG(s->phycr);
++    data =3D ASPEED_MII_PHYCR_DATA(s->phycr);
++
++    switch (ASPEED_MII_PHYCR_OP(s->phycr)) {
++    case ASPEED_MII_PHYCR_OP_WRITE:
++        do_phy_write(s->nic, reg, data);
++        break;
++    case ASPEED_MII_PHYCR_OP_READ:
++        s->phydata =3D (s->phydata & ~0xffff) | do_phy_read(s->nic, reg)=
+;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid OP code %08x\n",
++                      __func__, s->phycr);
++    }
++
++    aspeed_mii_transition(s, !ASPEED_MII_PHYCR_FIRE);
++}
++
++static uint64_t aspeed_mii_read(void *opaque, hwaddr addr, unsigned size=
+)
++{
++    AspeedMiiState *s =3D ASPEED_MII(opaque);
++
++    switch (addr) {
++    case 0x0:
++        return s->phycr;
++    case 0x4:
++        return s->phydata;
++    default:
++        g_assert_not_reached();
++    }
++}
++
++static void aspeed_mii_write(void *opaque, hwaddr addr,
++                             uint64_t value, unsigned size)
++{
++    AspeedMiiState *s =3D ASPEED_MII(opaque);
++
++    switch (addr) {
++    case 0x0:
++        s->phycr =3D value & ~(s->phycr & ASPEED_MII_PHYCR_FIRE);
++        break;
++    case 0x4:
++        s->phydata =3D value & ~(0xffff | ASPEED_MII_PHYDATA_IDLE);
++        break;
++    default:
++        g_assert_not_reached();
++    }
++
++    aspeed_mii_transition(s, !!(s->phycr & ASPEED_MII_PHYCR_FIRE));
++    aspeed_mii_do_phy_ctl(s);
++}
++
++static const MemoryRegionOps aspeed_mii_ops =3D {
++    .read =3D aspeed_mii_read,
++    .write =3D aspeed_mii_write,
++    .valid.min_access_size =3D 4,
++    .valid.max_access_size =3D 4,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
++};
++
++static void aspeed_mii_reset(DeviceState *dev)
++{
++    AspeedMiiState *s =3D ASPEED_MII(dev);
++
++    s->phycr =3D 0;
++    s->phydata =3D 0;
++
++    aspeed_mii_transition(s, !!(s->phycr & ASPEED_MII_PHYCR_FIRE));
++};
++
++static void aspeed_mii_realize(DeviceState *dev, Error **errp)
++{
++    AspeedMiiState *s =3D ASPEED_MII(dev);
++    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
++    Object *obj;
++    Error *local_err =3D NULL;
++
++    obj =3D object_property_get_link(OBJECT(dev), "nic", &local_err);
++    if (!obj) {
++        error_propagate(errp, local_err);
++        error_prepend(errp, "required link 'nic' not found: ");
++        return;
++    }
++
++    s->nic =3D FTGMAC100(obj);
++
++    memory_region_init_io(&s->iomem, OBJECT(dev), &aspeed_mii_ops, s,
++                          TYPE_ASPEED_MII, 0x8);
++    sysbus_init_mmio(sbd, &s->iomem);
++}
++
++static const VMStateDescription vmstate_aspeed_mii =3D {
++    .name =3D TYPE_ASPEED_MII,
++    .version_id =3D 1,
++    .minimum_version_id =3D 1,
++    .fields =3D (VMStateField[]) {
++        VMSTATE_UINT32(phycr, FTGMAC100State),
++        VMSTATE_UINT32(phydata, FTGMAC100State),
++        VMSTATE_END_OF_LIST()
++    }
++};
++static void aspeed_mii_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++
++    dc->vmsd =3D &vmstate_aspeed_mii;
++    dc->reset =3D aspeed_mii_reset;
++    dc->realize =3D aspeed_mii_realize;
++    dc->desc =3D "Aspeed MII controller";
++}
++
++static const TypeInfo aspeed_mii_info =3D {
++    .name =3D TYPE_ASPEED_MII,
++    .parent =3D TYPE_SYS_BUS_DEVICE,
++    .instance_size =3D sizeof(AspeedMiiState),
++    .class_init =3D aspeed_mii_class_init,
++};
++
+ static void ftgmac100_register_types(void)
  {
-     int i;
-@@ -262,6 +362,23 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
-or **errp)
+     type_register_static(&ftgmac100_info);
++    type_register_static(&aspeed_mii_info);
+ }
 =20
-     /* CPU */
-     for (i =3D 0; i < s->num_cpus; i++) {
-+        if (ASPEED_IS_AST2600(sc->info->silicon_rev)) {
-+            object_property_set_int(OBJECT(&s->cpu[i]), QEMU_PSCI_CONDUI=
-T_SMC,
-+                                    "psci-conduit", &error_abort);
-+            if (s->num_cpus > 1) {
-+                object_property_set_int(OBJECT(&s->cpu[i]),
-+                                        ASPEED_A7MPCORE_ADDR,
-+                                        "reset-cbar", &error_abort);
-+            }
-+            object_property_set_int(OBJECT(&s->cpu[i]), aspeed_calc_affi=
-nity(i),
-+                                    "mp-affinity", &error_abort);
-+
-+            /*
-+             * TODO: the secondary CPUs are started and a boot helper
-+             * is needed when using -kernel
-+             */
-+        }
-+
-         object_property_set_bool(OBJECT(&s->cpu[i]), true, "realized", &=
-err);
-         if (err) {
-             error_propagate(errp, err);
-@@ -269,6 +386,48 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
-or **errp)
-         }
-     }
-=20
-+    /* A7MPCORE */
-+    if (ASPEED_IS_AST2600(sc->info->silicon_rev)) {
-+        qemu_irq irq;
-+
-+        object_property_set_int(OBJECT(&s->a7mpcore), s->num_cpus, "num-=
-cpu",
-+                                &error_abort);
-+        object_property_set_int(OBJECT(&s->a7mpcore),
-+                                ASPEED_SOC_AST2600_MAX_IRQ + GIC_INTERNA=
-L,
-+                                "num-irq", &error_abort);
-+
-+        object_property_set_bool(OBJECT(&s->a7mpcore), true, "realized",
-+                                 &error_abort);
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->a7mpcore), 0, ASPEED_A7MPCORE=
-_ADDR);
-+
-+        for (i =3D 0; i < s->num_cpus; i++) {
-+            SysBusDevice *sbd =3D SYS_BUS_DEVICE(&s->a7mpcore);
-+            DeviceState  *d   =3D DEVICE(qemu_get_cpu(i));
-+
-+            irq =3D qdev_get_gpio_in(d, ARM_CPU_IRQ);
-+            sysbus_connect_irq(sbd, i, irq);
-+            irq =3D qdev_get_gpio_in(d, ARM_CPU_FIQ);
-+            sysbus_connect_irq(sbd, i + s->num_cpus, irq);
-+            irq =3D qdev_get_gpio_in(d, ARM_CPU_VIRQ);
-+            sysbus_connect_irq(sbd, i + 2 * s->num_cpus, irq);
-+            irq =3D qdev_get_gpio_in(d, ARM_CPU_VFIQ);
-+            sysbus_connect_irq(sbd, i + 3 * s->num_cpus, irq);
-+        }
-+    } else {
-+        /* VIC */
-+        object_property_set_bool(OBJECT(&s->vic), true, "realized", &err=
-);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->vic), 0,
-+                        sc->info->memmap[ASPEED_VIC]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 0,
-+                           qdev_get_gpio_in(DEVICE(&s->cpu), ARM_CPU_IRQ=
-));
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 1,
-+                           qdev_get_gpio_in(DEVICE(&s->cpu), ARM_CPU_FIQ=
-));
-+    }
-+
-     /* SRAM */
-     memory_region_init_ram(&s->sram, OBJECT(dev), "aspeed.sram",
-                            sc->info->sram_size, &err);
-@@ -287,18 +446,6 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
-or **errp)
-     }
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->scu), 0, sc->info->memmap[ASPEED_=
-SCU]);
-=20
--    /* VIC */
--    object_property_set_bool(OBJECT(&s->vic), true, "realized", &err);
--    if (err) {
--        error_propagate(errp, err);
--        return;
--    }
--    sysbus_mmio_map(SYS_BUS_DEVICE(&s->vic), 0, sc->info->memmap[ASPEED_=
-VIC]);
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 0,
--                       qdev_get_gpio_in(DEVICE(&s->cpu), ARM_CPU_IRQ));
--    sysbus_connect_irq(SYS_BUS_DEVICE(&s->vic), 1,
--                       qdev_get_gpio_in(DEVICE(&s->cpu), ARM_CPU_FIQ));
--
-     /* RTC */
-     object_property_set_bool(OBJECT(&s->rtc), true, "realized", &err);
-     if (err) {
-@@ -433,6 +580,18 @@ static void aspeed_soc_realize(DeviceState *dev, Err=
-or **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,
-                        aspeed_soc_get_irq(s, ASPEED_GPIO));
-=20
-+    if (ASPEED_IS_AST2600(sc->info->silicon_rev)) {
-+        object_property_set_bool(OBJECT(&s->gpio_1_8v), true, "realized"=
-, &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio_1_8v), 0,
-+                        sc->info->memmap[ASPEED_GPIO_1_8V]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio_1_8v), 0,
-+                           aspeed_soc_get_irq(s, ASPEED_GPIO_1_8V));
-+    }
-+
-     /* SDHCI */
-     object_property_set_bool(OBJECT(&s->sdhci), true, "realized", &err);
-     if (err) {
+ type_init(ftgmac100_register_types)
 --=20
 2.21.0
 

@@ -1,74 +1,79 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp668370wrp;
-        Wed, 4 Sep 2019 05:53:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzJSV2WVChFYPA4MrsGDWkFmDHrJ7DQNQm0chHaNP9ELVngouhJu7fdjZV7+KB20Qr4yo17
-X-Received: by 2002:a05:620a:302:: with SMTP id s2mr14011729qkm.497.1567601610776;
-        Wed, 04 Sep 2019 05:53:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567601610; cv=none;
-        d=google.com; s=arc-20160816;
-        b=sCblaDexTHNO3I6UhjpBIIPJ57R5qhNwUH4hsnXdlMZr5z912m4TAUKn6Gaaw80RNU
-         C/retOeLQv2hfUoOA0GhM9Z4Ar3VGO2EhvrG0gdHJOwnFnSVAFBmNChGNsA3smjCVTeB
-         iWYyTeun57EEOi92JLN47+pUkM9KpvrDHbEzchq0G7pNO9OwQyy5Ih3DDx/29Zl5vp3r
-         mLDhvbLjc88+WknaL97vo4lG5sCOtLwNKtZw6D9YJEfsSjEqeyeiwZpjDzlUTyD0ZbfW
-         utepazK2QsrC37RmjJaFIg/jY6G2pDqGn82mFutc5+FcZ8RtJ+d0vlRkT3RTld1zDBEK
-         6/qg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=B2qpNUM0UIdVBTGHk13qBYgOVUtStMiLkWgHVhvBQx4=;
-        b=lNrPXt1s7RsC19Kq+q0ErqpJKRl58q051vIEFDD6FN3l9QLIGM3etpoJLHI7PP/e4F
-         OMEqiOxO4wwa+dR8s7HhEMQ/INB83EJyBTgPWyMf3PzvlCkV9A3tZavBlZ3izkgA30Rt
-         6uUUDGDFqwgK/qhdLXKOkCQIYNwcWIYfyEzew1m7HwuWfRF2hYn3+alpS7FKSYvRL7vp
-         A+m7RzZlAiOyGs6f3vV59tMyZb2/Gp+JMzQFIvxmXsgo7ZTpOCMJt4sjSt5kjPKtvQJp
-         jhRc0/kDi7Xej0amibcwTgrHp7e2R8LKtuOelvqTiL6I504vkcjZBRXOvQ5X9PB28ODh
-         RX0w==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp672091wrp;
+        Wed, 4 Sep 2019 05:56:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwCNral+ZneIb+5gKlEGDedr/5Yyw0gLHZdiJfa8UUv24W8VDUOSeOxS70c7oDWdY1xeor4
+X-Received: by 2002:aa7:c508:: with SMTP id o8mr41398085edq.123.1567601800246;
+        Wed, 04 Sep 2019 05:56:40 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p48si15007985qtb.61.2019.09.04.05.53.30
+        by mx.google.com with ESMTPS id q19si5209573eja.191.2019.09.04.05.56.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2019 05:53:30 -0700 (PDT)
+        Wed, 04 Sep 2019 05:56:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=ksg8tQpW;
+       arc=fail (body hash mismatch);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57426 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57462 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5Umv-0003SS-Od
-	for alex.bennee@linaro.org; Wed, 04 Sep 2019 08:53:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47748)
+	id 1i5Upz-0006Ut-2L
+	for alex.bennee@linaro.org; Wed, 04 Sep 2019 08:56:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53563)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.con>) id 1i5Rqn-0004pv-K7
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 05:45:19 -0400
+ (envelope-from <damien.hedde@greensocs.com>) id 1i5UpY-0006RR-Cn
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 08:56:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.con>) id 1i5Rql-0008PU-SV
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 05:45:17 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:40538)
+ (envelope-from <damien.hedde@greensocs.com>) id 1i5UpW-0005WZ-Hu
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 08:56:12 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:45880)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <damien.hedde@greensocs.con>)
- id 1i5Rql-0008Mw-HZ; Wed, 04 Sep 2019 05:45:15 -0400
+ (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
+ id 1i5UpW-0005Vg-8m; Wed, 04 Sep 2019 08:56:10 -0400
 Received: from crumble.bar.greensocs.com (crumble.bar.greensocs.com
  [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPS id 3147996F59;
- Wed,  4 Sep 2019 09:38:53 +0000 (UTC)
-From: damien.hedde@greensocs.con
+ by beetle.greensocs.com (Postfix) with ESMTPS id 91A1896F66;
+ Wed,  4 Sep 2019 12:56:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1567601769;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=R8mQ/VeYnnaf29gnx/Elu5cV5iT7NOOhQ80ID/ERnPg=;
+ b=ksg8tQpWiq7xHwurYJxFTtVkiM7df8UYu99r14IsehsbTwxYlv+M0FZK6BBn32jMJkLaNY
+ mHOqvFJpLZ8Zj3l9iPT1EzqNXicWxrXV2PAApBIk02e5e8cP8fm3h6+GZzz5ztcl0cXUrK
+ tkEwAUAZLBQYHZa054jTI497kK1RePQ=
+From: Damien Hedde <damien.hedde@greensocs.com>
 To: qemu-devel@nongnu.org
-Date: Wed,  4 Sep 2019 11:38:39 +0200
-Message-Id: <20190904093843.8765-6-damien.hedde@greensocs.con>
+Date: Wed,  4 Sep 2019 14:55:23 +0200
+Message-Id: <20190904125531.27545-2-damien.hedde@greensocs.com>
 X-Mailer: git-send-email 2.22.0
-In-Reply-To: <20190904093843.8765-1-damien.hedde@greensocs.con>
-References: <20190904093843.8765-1-damien.hedde@greensocs.con>
+In-Reply-To: <20190904125531.27545-1-damien.hedde@greensocs.com>
+References: <20190904125531.27545-1-damien.hedde@greensocs.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1567601769;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=R8mQ/VeYnnaf29gnx/Elu5cV5iT7NOOhQ80ID/ERnPg=;
+ b=MdaUthTJ02mlLLZ4/3Z09FkAWPmxhzrMpFT2eO4RgdVhpZZd8rdRpLOEcppOqDVHZEEX9r
+ QRX8Lt8CxHVkH4CidoINfpJEs8eKl0X3eFrb0LvMIZ4RjzClmhf/SNGNyC6akwMZ71Makm
+ 7QX4nZma05aQQnaCPCvil+zpQ2SaQjY=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1567601769; a=rsa-sha256; cv=none;
+ b=TRpWwC/1uL0RwdJtTxGfeb3GRoSbuXh9GPNcCQ5hJeMUaoilwN36+yQ7b2uCLLXLXQzlHX
+ YQ0ij+f540uMzu90QZIqWJ47Vvxk0bQvS/e5EDXHoefJBDI9P6EoF8YkD5loPnrpz3TsUv
+ 2Whns+vFFQrIzTQixfJdnbmlqgU3bH8=
+ARC-Authentication-Results: i=1;
+	beetle.greensocs.com;
+	none
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 5.135.226.135
-X-Mailman-Approved-At: Wed, 04 Sep 2019 08:47:13 -0400
-Subject: [Qemu-arm] [PATCH v6 5/9] qdev-clock: introduce an init array to
- ease the device construction
+Subject: [Qemu-arm] [PATCH v6 1/9] hw/core/clock: introduce clock objects
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -86,148 +91,359 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>, peter.maydell@linaro.org,
  marcandre.lureau@redhat.com, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KPk12+7JLXZs
+X-TUID: jHBq1VYe8y4V
 
-From: Damien Hedde <damien.hedde@greensocs.com>
+Introduce clock objects: ClockIn and ClockOut.
 
-Introduce a function and macro helpers to setup several clocks
-in a device from a static array description.
+These objects may be used to distribute clocks from an object to several
+other objects. Each ClockIn object contains the current state of the
+clock: the frequency; it allows an object to migrate its input clock stat=
+e
+independently of other objects.
 
-An element of the array describes the clock (name and direction) as
-well as the related callback and an optional offset to store the
-created object pointer in the device state structure.
-
-The array must be terminated by a special element QDEV_CLOCK_END.
+A ClockIn may be connected to a ClockOut so that it receives update,
+through a callback, whenever the Clockout is updated using the
+ClockOut's set function.
 
 This is based on the original work of Frederic Konrad.
 
 Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
 Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/core/qdev-clock.c    | 26 ++++++++++++++++
- include/hw/qdev-clock.h | 67 +++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 93 insertions(+)
+ Makefile.objs         |   1 +
+ hw/core/Makefile.objs |   1 +
+ hw/core/clock.c       | 144 ++++++++++++++++++++++++++++++++++++++++++
+ hw/core/trace-events  |   6 ++
+ include/hw/clock.h    | 124 ++++++++++++++++++++++++++++++++++++
+ 5 files changed, 276 insertions(+)
+ create mode 100644 hw/core/clock.c
+ create mode 100644 include/hw/clock.h
 
-diff --git a/hw/core/qdev-clock.c b/hw/core/qdev-clock.c
-index bebdd8fa15..32ad45c061 100644
---- a/hw/core/qdev-clock.c
-+++ b/hw/core/qdev-clock.c
-@@ -153,3 +153,29 @@ void qdev_connect_clock_out(DeviceState *dev, const =
-char *name, ClockIn *clk,
+diff --git a/Makefile.objs b/Makefile.objs
+index a723a47e14..4da623c759 100644
+--- a/Makefile.objs
++++ b/Makefile.objs
+@@ -153,6 +153,7 @@ trace-events-subdirs +=3D hw/audio
+ trace-events-subdirs +=3D hw/block
+ trace-events-subdirs +=3D hw/block/dataplane
+ trace-events-subdirs +=3D hw/char
++trace-events-subdirs +=3D hw/core
+ trace-events-subdirs +=3D hw/dma
+ trace-events-subdirs +=3D hw/hppa
+ trace-events-subdirs +=3D hw/i2c
+diff --git a/hw/core/Makefile.objs b/hw/core/Makefile.objs
+index 69b408ad1c..c66a5b2c6b 100644
+--- a/hw/core/Makefile.objs
++++ b/hw/core/Makefile.objs
+@@ -7,6 +7,7 @@ common-obj-$(CONFIG_SOFTMMU) +=3D fw-path-provider.o
+ # irq.o needed for qdev GPIO handling:
+ common-obj-y +=3D irq.o
+ common-obj-y +=3D hotplug.o
++common-obj-y +=3D clock.o
+ common-obj-$(CONFIG_SOFTMMU) +=3D nmi.o
+ common-obj-$(CONFIG_SOFTMMU) +=3D vm-change-state-handler.o
 =20
-     clock_connect(clk, clkout);
- }
+diff --git a/hw/core/clock.c b/hw/core/clock.c
+new file mode 100644
+index 0000000000..888f247f2a
+--- /dev/null
++++ b/hw/core/clock.c
+@@ -0,0 +1,144 @@
++/*
++ * Clock inputs and outputs
++ *
++ * Copyright GreenSocs 2016-2018
++ *
++ * Authors:
++ *  Frederic Konrad <fred.konrad@greensocs.com>
++ *  Damien Hedde <damien.hedde@greensocs.com>
++ *
++ * This work is licensed under the terms of the GNU GPL, version 2 or la=
+ter.
++ * See the COPYING file in the top-level directory.
++ */
 +
-+void qdev_init_clocks(DeviceState *dev, const ClockPortInitArray clocks)
++#include "qemu/osdep.h"
++#include "hw/clock.h"
++#include "trace.h"
++
++#define CLOCK_PATH(_clk) (_clk->canonical_path)
++
++void clock_out_setup_canonical_path(ClockOut *clk)
 +{
-+    const struct ClockPortInitElem *elem;
++    g_free(clk->canonical_path);
++    clk->canonical_path =3D object_get_canonical_path(OBJECT(clk));
++}
 +
-+    assert(dev);
-+    assert(clocks);
++void clock_in_setup_canonical_path(ClockIn *clk)
++{
++    g_free(clk->canonical_path);
++    clk->canonical_path =3D object_get_canonical_path(OBJECT(clk));
++}
 +
-+    for (elem =3D &clocks[0]; elem->name !=3D NULL; elem++) {
-+        /* offset cannot be inside the DeviceState part */
-+        assert(elem->offset =3D=3D 0 || elem->offset > sizeof(DeviceStat=
-e));
-+        if (elem->is_output) {
-+            ClockOut *clk;
-+            clk =3D qdev_init_clock_out(dev, elem->name);
-+            if (elem->offset) {
-+                *(ClockOut **)(((void *) dev) + elem->offset) =3D clk;
-+            }
-+        } else {
-+            ClockIn *clk;
-+            clk =3D qdev_init_clock_in(dev, elem->name, elem->callback, =
-dev);
-+            if (elem->offset) {
-+                *(ClockIn **)(((void *) dev) + elem->offset) =3D clk;
++void clock_set_callback(ClockIn *clk, ClockCallback *cb, void *opaque)
++{
++    assert(clk);
++
++    clk->callback =3D cb;
++    clk->callback_opaque =3D opaque;
++}
++
++void clock_init_frequency(ClockIn *clk, uint64_t freq)
++{
++    assert(clk);
++
++    clk->frequency =3D freq;
++}
++
++void clock_clear_callback(ClockIn *clk)
++{
++    clock_set_callback(clk, NULL, NULL);
++}
++
++void clock_connect(ClockIn *clkin, ClockOut *clkout)
++{
++    assert(clkin && clkin->driver =3D=3D NULL);
++    assert(clkout);
++
++    trace_clock_connect(CLOCK_PATH(clkin), CLOCK_PATH(clkout));
++
++    QLIST_INSERT_HEAD(&clkout->followers, clkin, sibling);
++    clkin->driver =3D clkout;
++}
++
++static void clock_disconnect(ClockIn *clk)
++{
++    if (clk->driver =3D=3D NULL) {
++        return;
++    }
++
++    trace_clock_disconnect(CLOCK_PATH(clk));
++
++    clk->driver =3D NULL;
++    QLIST_REMOVE(clk, sibling);
++}
++
++void clock_set_frequency(ClockOut *clk, uint64_t freq)
++{
++    ClockIn *follower;
++    trace_clock_set_frequency(CLOCK_PATH(clk), freq);
++
++    QLIST_FOREACH(follower, &clk->followers, sibling) {
++        trace_clock_propagate(CLOCK_PATH(clk), CLOCK_PATH(follower));
++        if (follower->frequency !=3D freq) {
++            follower->frequency =3D freq;
++            if (follower->callback) {
++                follower->callback(follower->callback_opaque);
 +            }
 +        }
 +    }
 +}
-diff --git a/include/hw/qdev-clock.h b/include/hw/qdev-clock.h
-index c4ea912fdc..b6edb9421b 100644
---- a/include/hw/qdev-clock.h
-+++ b/include/hw/qdev-clock.h
-@@ -64,4 +64,71 @@ void qdev_connect_clock_out(DeviceState *dev, const ch=
-ar *name, ClockIn *clk,
- void qdev_pass_clock(DeviceState *dev, const char *name,
-                      DeviceState *container, const char *cont_name);
-=20
-+/**
-+ * ClockInitElem:
-+ * @name: name of the clock (can't be NULL)
-+ * @is_output: indicates whether the clock is input or output
-+ * @callback: for inputs, optional callback to be called on clock's upda=
-te
-+ * with device as opaque
-+ * @offset: optional offset to store the ClockIn or ClockOut pointer in =
-device
-+ * state structure (0 means unused)
-+ */
-+struct ClockPortInitElem {
-+    const char *name;
-+    bool is_output;
-+    ClockCallback *callback;
-+    size_t offset;
++
++static void clock_out_initfn(Object *obj)
++{
++    ClockOut *clk =3D CLOCK_OUT(obj);
++
++    QLIST_INIT(&clk->followers);
++}
++
++static void clock_out_finalizefn(Object *obj)
++{
++    ClockOut *clk =3D CLOCK_OUT(obj);
++    ClockIn *follower, *next;
++
++    /* clear our list of followers */
++    QLIST_FOREACH_SAFE(follower, &clk->followers, sibling, next) {
++        clock_disconnect(follower);
++    }
++
++    g_free(clk->canonical_path);
++    clk->canonical_path =3D NULL;
++}
++
++static void clock_in_finalizefn(Object *obj)
++{
++    ClockIn *clk =3D CLOCK_IN(obj);
++
++    /* remove us from driver's followers list */
++    clock_disconnect(clk);
++
++    g_free(clk->canonical_path);
++    clk->canonical_path =3D NULL;
++}
++
++static const TypeInfo clock_out_info =3D {
++    .name              =3D TYPE_CLOCK_OUT,
++    .parent            =3D TYPE_OBJECT,
++    .instance_size     =3D sizeof(ClockOut),
++    .instance_init     =3D clock_out_initfn,
++    .instance_finalize =3D clock_out_finalizefn,
 +};
 +
-+#define clock_offset_value(_type, _devstate, _field) \
-+    (offsetof(_devstate, _field) + \
-+     type_check(_type *, typeof_field(_devstate, _field)))
++static const TypeInfo clock_in_info =3D {
++    .name              =3D TYPE_CLOCK_IN,
++    .parent            =3D TYPE_OBJECT,
++    .instance_size     =3D sizeof(ClockIn),
++    .instance_finalize =3D clock_in_finalizefn,
++};
 +
-+#define QDEV_CLOCK(_is_output, _type, _devstate, _field, _callback) { \
-+    .name =3D (stringify(_field)), \
-+    .is_output =3D _is_output, \
-+    .callback =3D _callback, \
-+    .offset =3D clock_offset_value(_type, _devstate, _field), \
++static void clock_register_types(void)
++{
++    type_register_static(&clock_in_info);
++    type_register_static(&clock_out_info);
 +}
 +
++type_init(clock_register_types)
+diff --git a/hw/core/trace-events b/hw/core/trace-events
+index ecf966c314..aa940e268b 100644
+--- a/hw/core/trace-events
++++ b/hw/core/trace-events
+@@ -34,3 +34,9 @@ resettable_phase_hold_end(void *obj, int needed) "obj=3D=
+%p needed=3D%d"
+ resettable_phase_exit(void *obj, const char *type) "obj=3D%p(%s)"
+ resettable_phase_exit_end(void *obj, uint32_t count) "obj=3D%p count=3D%=
+" PRIu32
+ resettable_count_underflow(void *obj) "obj=3D%p"
++
++# hw/core/clock-port.c
++clock_connect(const char *clk, const char *driver) "'%s' drived-by '%s'"
++clock_disconnect(const char *clk) "'%s'"
++clock_set_frequency(const char *clk, uint64_t freq) "'%s' freq_hz=3D%" P=
+RIu64
++clock_propagate(const char *clko, const char *clki) "'%s' =3D> '%s'"
+diff --git a/include/hw/clock.h b/include/hw/clock.h
+new file mode 100644
+index 0000000000..fd11202ba4
+--- /dev/null
++++ b/include/hw/clock.h
+@@ -0,0 +1,124 @@
++#ifndef QEMU_HW_CLOCK_H
++#define QEMU_HW_CLOCK_H
++
++#include "qom/object.h"
++#include "qemu/queue.h"
++
++#define TYPE_CLOCK_IN "clock-in"
++#define CLOCK_IN(obj) OBJECT_CHECK(ClockIn, (obj), TYPE_CLOCK_IN)
++#define TYPE_CLOCK_OUT "clock-out"
++#define CLOCK_OUT(obj) OBJECT_CHECK(ClockOut, (obj), TYPE_CLOCK_OUT)
++
++typedef void ClockCallback(void *opaque);
++
++typedef struct ClockOut ClockOut;
++typedef struct ClockIn ClockIn;
++
++struct ClockIn {
++    /*< private >*/
++    Object parent_obj;
++    /*< private >*/
++    uint64_t frequency;
++    char *canonical_path; /* clock path cache */
++    ClockOut *driver; /* clock output controlling this clock */
++    ClockCallback *callback; /* local callback */
++    void *callback_opaque; /* opaque argument for the callback */
++    QLIST_ENTRY(ClockIn) sibling;  /* entry in a followers list */
++};
++
++struct ClockOut {
++    /*< private >*/
++    Object parent_obj;
++    /*< private >*/
++    char *canonical_path; /* clock path cache */
++    QLIST_HEAD(, ClockIn) followers; /* list of registered clocks */
++};
++
 +/**
-+ * QDEV_CLOCK_(IN|OUT):
-+ * @_devstate: structure type. @dev argument of qdev_init_clocks below m=
-ust be
-+ * a pointer to that same type.
-+ * @_field: a field in @_devstate (must be ClockIn* or ClockOut*)
-+ * @_callback: (for input only) callback (or NULL) to be called with the=
- device
-+ * state as argument
++ * clock_out_setup_canonical_path:
++ * @clk: clock
 + *
-+ * The name of the clock will be derived from @_field
++ * compute the canonical path of the clock (used by log messages)
 + */
-+#define QDEV_CLOCK_IN(_devstate, _field, _callback) \
-+    QDEV_CLOCK(false, ClockIn, _devstate, _field, _callback)
-+
-+#define QDEV_CLOCK_OUT(_devstate, _field) \
-+    QDEV_CLOCK(true, ClockOut, _devstate, _field, NULL)
++void clock_out_setup_canonical_path(ClockOut *clk);
 +
 +/**
-+ * QDEV_CLOCK_IN_NOFIELD:
-+ * @_name: name of the clock
-+ * @_callback: callback (or NULL) to be called with the device state as =
-argument
++ * clock_in_setup_canonical_path:
++ * @clk: clock
++ *
++ * compute the canonical path of the clock (used by log messages)
 + */
-+#define QDEV_CLOCK_IN_NOFIELD(_name, _callback) { \
-+    .name =3D _name, \
-+    .is_output =3D false, \
-+    .callback =3D _callback, \
-+    .offset =3D 0, \
++void clock_in_setup_canonical_path(ClockIn *clk);
++
++/**
++ * clock_add_callback:
++ * @clk: the clock to register the callback into
++ * @cb: the callback function
++ * @opaque: the argument to the callback
++ *
++ * Register a callback called on every clock update.
++ */
++void clock_set_callback(ClockIn *clk, ClockCallback *cb, void *opaque);
++
++/**
++ * clock_clear_callback:
++ * @clk: the clock to delete the callback from
++ *
++ * Unregister the callback registered with clock_set_callback.
++ */
++void clock_clear_callback(ClockIn *clk);
++
++/**
++ * clock_init_frequency:
++ * @clk: the clock to initialize.
++ * @freq: the clock's frequency in Hz or 0 if unclocked.
++ *
++ * Initialize the local cached frequency value of @clk to @freq.
++ * Note: this function must only be called during device inititializatio=
+n
++ * or migration.
++ */
++void clock_init_frequency(ClockIn *clk, uint64_t freq);
++
++/**
++ * clock_connect:
++ * @clkin: the drived clock.
++ * @clkout: the driving clock.
++ *
++ * Setup @clkout to drive @clkin: Any @clkout update will be propagated
++ * to @clkin.
++ */
++void clock_connect(ClockIn *clkin, ClockOut *clkout);
++
++/**
++ * clock_set_frequency:
++ * @clk: the clock to update.
++ * @freq: the new clock's frequency in Hz or 0 if unclocked.
++ *
++ * Update the @clk to the new @freq.
++ * This change will be propagated through registered clock inputs.
++ */
++void clock_set_frequency(ClockOut *clk, uint64_t freq);
++
++/**
++ * clock_get_frequency:
++ * @clk: the clk to fetch the clock
++ *
++ * @return: the current frequency of @clk in Hz. If @clk is NULL, return=
+ 0.
++ */
++static inline uint64_t clock_get_frequency(const ClockIn *clk)
++{
++    return clk ? clk->frequency : 0;
 +}
 +
-+#define QDEV_CLOCK_END { .name =3D NULL }
-+
-+typedef struct ClockPortInitElem ClockPortInitArray[];
-+
 +/**
-+ * qdev_init_clocks:
-+ * @dev: the device to add clocks
-+ * @clocks: a QDEV_CLOCK_END-terminated array which contains the
-+ * clocks information.
++ * clock_is_enabled:
++ * @clk: a clock state
++ *
++ * @return: true if the clock is running. If @clk is NULL return false.
 + */
-+void qdev_init_clocks(DeviceState *dev, const ClockPortInitArray clocks)=
-;
++static inline bool clock_is_enabled(const ClockIn *clk)
++{
++    return clock_get_frequency(clk) !=3D 0;
++}
 +
- #endif /* QDEV_CLOCK_H */
++#endif /* QEMU_HW_CLOCK_H */
 --=20
 2.22.0
 

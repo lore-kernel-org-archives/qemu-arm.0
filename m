@@ -1,80 +1,79 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp357106wrp;
-        Wed, 4 Sep 2019 00:10:17 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqydiSzEYK3xuBMK2CmhNW8PKb9hAPAyrW093GPkJQCiKhIW8yM7VoGXc5ZrR6m0eLvx2hwG
-X-Received: by 2002:a05:6402:1604:: with SMTP id f4mr35401574edv.59.1567581017580;
-        Wed, 04 Sep 2019 00:10:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567581017; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp357363wrp;
+        Wed, 4 Sep 2019 00:10:34 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzWIWHQ0DO9M0N/cYibekAI20sIvn58zYqOu+aC6Zg/XZdBDNxyIrKHyvsLxN1fF0GEmb3H
+X-Received: by 2002:a17:906:aed8:: with SMTP id me24mr17102723ejb.217.1567581034766;
+        Wed, 04 Sep 2019 00:10:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567581034; cv=none;
         d=google.com; s=arc-20160816;
-        b=yaqlCwLp8EGkxk1EX+4O+/OG4sG34td9spJlxiNeZxY1HUp/oif2nHvYq9rzG7LazD
-         4jaqjaw7VwfSrBwFW6MaDMFE14g3aVDEOiWgdb7flTplVjJWjPxHXulbblyhV09LijbU
-         5hh7GWdvrdPfJfhy6J/tuo2BPZebrRGslVZgUXVLaeRDNYg2ABK5gUsW35X6tInyMEJD
-         kwKOgpGZEqQThTned3EK8FYPvYX2H+oQr6LH08AlJa4L+7nQQ/05HxmM3ghPzUQfe4Xk
-         pqD0LuJFVVd1okZOOiCthZ9U0iGhy0DJ87eW0RdvFXhsilirGc+EbCFcpgDeukBMAQoK
-         aifA==
+        b=IJCUFwR1PNwDQyYIxKMcROjp3MuUzU5fTmeHsahLhTFhyieu1qtSJkJ8jDj2ba5VVr
+         LmAPJLCTbYkQT0CwQfoJF0Bj8DIm+2KFphn8dY3a5G4hUVbSlvKmLTIW7lBL40nm/OWW
+         ohVeQ9r0aYYuCWcnHYm959yarPW+d8iQCX9MuSA0H0fMyjuh9HdNXi9c6WUmyaxKwqLY
+         lukI14rWrpFcIollCDO7rXUpatOQVxQAYnPNDa0l/MvsvGoLD4S3i1oTIgyJb+Ec02ca
+         Nq+fBs2sYoL5q+lDXKf4g+GV6+SylfWOMjAFhPgCdSK9NEsbbihYGWZ9j9IE8B/V5NaT
+         7x2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=o4RlWdYtxqMlHbFVT9ZZ9VE8q8VzUqoXL6uIpokTRqM=;
-        b=lp3aRysMy2sliW8iZR6AFFcP6aNPoSXnegzHQoX1NbOFLUMSH3Ke2n4u3JgiHVFFGI
-         lqG+VzAGLoL18SwJnmzG6Vj8NHnSo9vcxwKXfbNEaXON+D/ATnhw2vLMVRJZDqANRHKM
-         A0b//9hA7GEVMjNMsDMxl3BxrI4u+4Y+4er+RCcyU2x2x1yZp1C0eCQsVeSMSa2c8k5P
-         sCb/Pi0nt4qfLbIoVfdXu0hkOgV5Cfp7KjT2aKIkb6cVHIiOyccitLKpHUxqI98niXFq
-         R6AvzpTQrSyQqNxR/zDxA5mw88PDVCeWKoRmvdXxTarJYvPiOMRpbjDNLNYVkVHkB0Oe
-         bKbQ==
+        bh=YR2hvwzG+M6oGMwNsPS13Cqmu+1cmfFvUOqkqzIcj2A=;
+        b=J5x9AA7Qv1xULmnm1AyT+gALQ5/wmvWauSHA7yADGA4oNlb+Q/WleTJEubb1BZbqUN
+         jctAXBKJzxEXcfgT9ieEGRC3jVlXPeIL/vpw8KkxbwhTTkT08bBkwMXBfkP6H8i9MdiX
+         MNr49Wb2Fuqit4gLqyKWOcqsyLPjpVJLNIT2xOX6JIGJ9VgbnNpF13AGl1tvgt4KZcfo
+         loVnpZNCwL07bix5h66gZ9QZ6CHjqwmagSHZ5t+yN2HpCfsEjF69CZN3RIIPFmnyuEfL
+         A8t6GPF3DIGnr/Mk3OkHy72dJqEFBFYH1ybJkzguksGI4EVpKfckeLUkGlKNJHmEaEGV
+         LPEg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id rv27si3066040ejb.136.2019.09.04.00.10.17
+        by mx.google.com with ESMTPS id ox5si5131592ejb.128.2019.09.04.00.10.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2019 00:10:17 -0700 (PDT)
+        Wed, 04 Sep 2019 00:10:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54036 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54038 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5PQl-0005yc-Ne
-	for alex.bennee@linaro.org; Wed, 04 Sep 2019 03:10:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47949)
+	id 1i5PR2-0006L1-RZ
+	for alex.bennee@linaro.org; Wed, 04 Sep 2019 03:10:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47981)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1i5PN0-0002E8-93
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 03:06:23 -0400
+ (envelope-from <clg@kaod.org>) id 1i5PN7-0002NL-20
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 03:06:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1i5PMz-0006i9-CC
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 03:06:22 -0400
-Received: from 6.mo69.mail-out.ovh.net ([46.105.50.107]:37787)
+ (envelope-from <clg@kaod.org>) id 1i5PN5-0006mw-Hq
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 03:06:28 -0400
+Received: from 7.mo5.mail-out.ovh.net ([178.32.124.100]:50465)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1i5PMz-0006gp-75
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 03:06:21 -0400
-Received: from player690.ha.ovh.net (unknown [10.108.42.73])
- by mo69.mail-out.ovh.net (Postfix) with ESMTP id 294286847C
- for <qemu-arm@nongnu.org>; Wed,  4 Sep 2019 09:06:19 +0200 (CEST)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1i5PN5-0006lk-9c
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 03:06:27 -0400
+Received: from player690.ha.ovh.net (unknown [10.109.146.106])
+ by mo5.mail-out.ovh.net (Postfix) with ESMTP id 81B3F24C342
+ for <qemu-arm@nongnu.org>; Wed,  4 Sep 2019 09:06:25 +0200 (CEST)
 Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
  (Authenticated sender: clg@kaod.org)
- by player690.ha.ovh.net (Postfix) with ESMTPSA id 563E094DCB0A;
- Wed,  4 Sep 2019 07:06:11 +0000 (UTC)
+ by player690.ha.ovh.net (Postfix) with ESMTPSA id E214094DCBEF;
+ Wed,  4 Sep 2019 07:06:18 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed,  4 Sep 2019 09:05:04 +0200
-Message-Id: <20190904070506.1052-9-clg@kaod.org>
+Date: Wed,  4 Sep 2019 09:05:05 +0200
+Message-Id: <20190904070506.1052-10-clg@kaod.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190904070506.1052-1-clg@kaod.org>
 References: <20190904070506.1052-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 7091480566931950353
+X-Ovh-Tracer-Id: 7093450890386901777
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrudejgedgudduvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.50.107
-Subject: [Qemu-arm] [PATCH 08/10] aspeed/smc: Calculate checksum on normal
- DMA
+X-Received-From: 178.32.124.100
+Subject: [Qemu-arm] [PATCH 09/10] aspeed/scu: Introduce per-SoC SCU types
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -86,40 +85,213 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Christian Svensson <bluecmd@google.com>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2koTj4U+osEG
+X-TUID: +n2CCBlGvZww
 
-From: Christian Svensson <bluecmd@google.com>
+and use a class AspeedSCUClass to define each SoC characteristics.
 
-This patch adds the missing checksum calculation on normal DMA transfer.
-According to the datasheet this is how the SMC should behave.
-
-Verified on AST1250 that the hardware matches the behaviour.
-
-Signed-off-by: Christian Svensson <bluecmd@google.com>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- hw/ssi/aspeed_smc.c | 1 +
- 1 file changed, 1 insertion(+)
+ include/hw/misc/aspeed_scu.h | 15 +++++++
+ hw/arm/aspeed_soc.c          |  3 +-
+ hw/misc/aspeed_scu.c         | 83 ++++++++++++++++++++----------------
+ 3 files changed, 64 insertions(+), 37 deletions(-)
 
-diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-index 5c3436db5e8f..9ffc7e01179a 100644
---- a/hw/ssi/aspeed_smc.c
-+++ b/hw/ssi/aspeed_smc.c
-@@ -989,6 +989,7 @@ static void aspeed_smc_dma_rw(AspeedSMCState *s)
-         s->regs[R_DMA_FLASH_ADDR] +=3D 4;
-         s->regs[R_DMA_DRAM_ADDR] +=3D 4;
-         s->regs[R_DMA_LEN] -=3D 4;
-+        s->regs[R_DMA_CHECKSUM] +=3D data;
+diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+index 38996adc59fe..90dd4dadedeb 100644
+--- a/include/hw/misc/aspeed_scu.h
++++ b/include/hw/misc/aspeed_scu.h
+@@ -15,6 +15,8 @@
+=20
+ #define TYPE_ASPEED_SCU "aspeed.scu"
+ #define ASPEED_SCU(obj) OBJECT_CHECK(AspeedSCUState, (obj), TYPE_ASPEED_=
+SCU)
++#define TYPE_ASPEED_2400_SCU TYPE_ASPEED_SCU "-ast2400"
++#define TYPE_ASPEED_2500_SCU TYPE_ASPEED_SCU "-ast2500"
+=20
+ #define ASPEED_SCU_NR_REGS (0x1A8 >> 2)
+=20
+@@ -45,6 +47,19 @@ typedef struct AspeedSCUState {
+=20
+ extern bool is_supported_silicon_rev(uint32_t silicon_rev);
+=20
++#define ASPEED_SCU_CLASS(klass) \
++     OBJECT_CLASS_CHECK(AspeedSCUClass, (klass), TYPE_ASPEED_SCU)
++#define ASPEED_SCU_GET_CLASS(obj) \
++     OBJECT_GET_CLASS(AspeedSCUClass, (obj), TYPE_ASPEED_SCU)
++
++typedef struct  AspeedSCUClass {
++    SysBusDeviceClass parent_class;
++
++    const uint32_t *resets;
++    uint32_t (*calc_hpll)(AspeedSCUState *s);
++    uint32_t apb_divider;
++}  AspeedSCUClass;
++
+ #define ASPEED_SCU_PROT_KEY      0x1688A8A8
+=20
+ /*
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index da508c99c335..cf1d0cf921ba 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -161,8 +161,9 @@ static void aspeed_soc_init(Object *obj)
+                                 &error_abort, NULL);
      }
+=20
++    snprintf(typename, sizeof(typename), "aspeed.scu-%s", socname);
+     sysbus_init_child_obj(obj, "scu", OBJECT(&s->scu), sizeof(s->scu),
+-                          TYPE_ASPEED_SCU);
++                          typename);
+     qdev_prop_set_uint32(DEVICE(&s->scu), "silicon-rev",
+                          sc->info->silicon_rev);
+     object_property_add_alias(obj, "hw-strap1", OBJECT(&s->scu),
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index 268cb24e565c..d284458b9b3d 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -166,23 +166,10 @@ static uint32_t aspeed_scu_get_random(void)
+=20
+ static void aspeed_scu_set_apb_freq(AspeedSCUState *s)
+ {
+-    uint32_t apb_divider;
+-
+-    switch (s->silicon_rev) {
+-    case AST2400_A0_SILICON_REV:
+-    case AST2400_A1_SILICON_REV:
+-        apb_divider =3D 2;
+-        break;
+-    case AST2500_A0_SILICON_REV:
+-    case AST2500_A1_SILICON_REV:
+-        apb_divider =3D 4;
+-        break;
+-    default:
+-        g_assert_not_reached();
+-    }
++    AspeedSCUClass *asc =3D ASPEED_SCU_GET_CLASS(s);
+=20
+     s->apb_freq =3D s->hpll / (SCU_CLK_GET_PCLK_DIV(s->regs[CLK_SEL]) + =
+1)
+-        / apb_divider;
++        / asc->apb_divider;
  }
 =20
+ static uint64_t aspeed_scu_read(void *opaque, hwaddr offset, unsigned si=
+ze)
+@@ -303,7 +290,7 @@ static const uint32_t hpll_ast2400_freqs[][4] =3D {
+     { 400, 375, 350, 425 }, /* 25MHz */
+ };
+=20
+-static uint32_t aspeed_scu_calc_hpll_ast2400(AspeedSCUState *s)
++static uint32_t aspeed_2400_scu_calc_hpll(AspeedSCUState *s)
+ {
+     uint32_t hpll_reg =3D s->regs[HPLL_PARAM];
+     uint8_t freq_select;
+@@ -334,7 +321,7 @@ static uint32_t aspeed_scu_calc_hpll_ast2400(AspeedSC=
+UState *s)
+     return hpll_ast2400_freqs[clk_25m_in][freq_select] * 1000000;
+ }
+=20
+-static uint32_t aspeed_scu_calc_hpll_ast2500(AspeedSCUState *s)
++static uint32_t aspeed_2500_scu_calc_hpll(AspeedSCUState *s)
+ {
+     uint32_t hpll_reg   =3D s->regs[HPLL_PARAM];
+     uint32_t multiplier =3D 1;
+@@ -357,25 +344,9 @@ static uint32_t aspeed_scu_calc_hpll_ast2500(AspeedS=
+CUState *s)
+ static void aspeed_scu_reset(DeviceState *dev)
+ {
+     AspeedSCUState *s =3D ASPEED_SCU(dev);
+-    const uint32_t *reset;
+-    uint32_t (*calc_hpll)(AspeedSCUState *s);
+-
+-    switch (s->silicon_rev) {
+-    case AST2400_A0_SILICON_REV:
+-    case AST2400_A1_SILICON_REV:
+-        reset =3D ast2400_a0_resets;
+-        calc_hpll =3D aspeed_scu_calc_hpll_ast2400;
+-        break;
+-    case AST2500_A0_SILICON_REV:
+-    case AST2500_A1_SILICON_REV:
+-        reset =3D ast2500_a1_resets;
+-        calc_hpll =3D aspeed_scu_calc_hpll_ast2500;
+-        break;
+-    default:
+-        g_assert_not_reached();
+-    }
++    AspeedSCUClass *asc =3D ASPEED_SCU_GET_CLASS(dev);
+=20
+-    memcpy(s->regs, reset, sizeof(s->regs));
++    memcpy(s->regs, asc->resets, sizeof(s->regs));
+     s->regs[SILICON_REV] =3D s->silicon_rev;
+     s->regs[HW_STRAP1] =3D s->hw_strap1;
+     s->regs[HW_STRAP2] =3D s->hw_strap2;
+@@ -385,7 +356,7 @@ static void aspeed_scu_reset(DeviceState *dev)
+      * All registers are set. Now compute the frequencies of the main cl=
+ocks
+      */
+     s->clkin =3D aspeed_scu_get_clkin(s);
+-    s->hpll =3D calc_hpll(s);
++    s->hpll =3D asc->calc_hpll(s);
+     aspeed_scu_set_apb_freq(s);
+ }
+=20
+@@ -459,11 +430,51 @@ static const TypeInfo aspeed_scu_info =3D {
+     .parent =3D TYPE_SYS_BUS_DEVICE,
+     .instance_size =3D sizeof(AspeedSCUState),
+     .class_init =3D aspeed_scu_class_init,
++    .class_size    =3D sizeof(AspeedSCUClass),
++    .abstract      =3D true,
++};
++
++static void aspeed_2400_scu_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++    AspeedSCUClass *asc =3D ASPEED_SCU_CLASS(klass);
++
++    dc->desc =3D "ASPEED 2400 System Control Unit";
++    asc->resets =3D ast2400_a0_resets;
++    asc->calc_hpll =3D aspeed_2400_scu_calc_hpll;
++    asc->apb_divider =3D 2;
++}
++
++static const TypeInfo aspeed_2400_scu_info =3D {
++    .name =3D TYPE_ASPEED_2400_SCU,
++    .parent =3D TYPE_ASPEED_SCU,
++    .instance_size =3D sizeof(AspeedSCUState),
++    .class_init =3D aspeed_2400_scu_class_init,
++};
++
++static void aspeed_2500_scu_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++    AspeedSCUClass *asc =3D ASPEED_SCU_CLASS(klass);
++
++    dc->desc =3D "ASPEED 2500 System Control Unit";
++    asc->resets =3D ast2500_a1_resets;
++    asc->calc_hpll =3D aspeed_2500_scu_calc_hpll;
++    asc->apb_divider =3D 4;
++}
++
++static const TypeInfo aspeed_2500_scu_info =3D {
++    .name =3D TYPE_ASPEED_2500_SCU,
++    .parent =3D TYPE_ASPEED_SCU,
++    .instance_size =3D sizeof(AspeedSCUState),
++    .class_init =3D aspeed_2500_scu_class_init,
+ };
+=20
+ static void aspeed_scu_register_types(void)
+ {
+     type_register_static(&aspeed_scu_info);
++    type_register_static(&aspeed_2400_scu_info);
++    type_register_static(&aspeed_2500_scu_info);
+ }
+=20
+ type_init(aspeed_scu_register_types);
 --=20
 2.21.0
 

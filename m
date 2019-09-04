@@ -1,186 +1,315 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp15200wrp;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp15204wrp;
         Wed, 4 Sep 2019 14:27:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxyaUUajsaAyefyVV6H6eH0Omm+3gDOzmHZbmV0z8vBGshjdGrFWxwJtt/x/3H+nBq07/IV
-X-Received: by 2002:aa7:d696:: with SMTP id d22mr361661edr.135.1567632426026;
+X-Google-Smtp-Source: APXvYqxhZDw1CWaTO+zmFeQWcc/KdqklbmDEdCHSCXLuTqNKpbZvcXBksqgAu05XtOl/mwSjwBcw
+X-Received: by 2002:a50:de08:: with SMTP id z8mr360037edk.121.1567632426122;
         Wed, 04 Sep 2019 14:27:06 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1567632426; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xc2oSB32opHkDhoi2F1zW/fjf5/9Mc6GfpTIAt3XUoLytskDQa9VBxgNryS/QX5OqF
-         6I3Z/4VHAtK/CAsTLozLuzdilRsuwrGsRRqNdSbxyTABsfbplQ0MzegznyBoYyc9XswU
-         4wi43B7PL4DewvAj+RPI9jxXu7qPkEkFiW52Af3/zS9cI+DiADbinE4lm6ye1LoFelxZ
-         vgtQsCqGKbgs6D2uZzeo4M4KPflwMhEk0jOkVxBhYeHXWrRvYTX2jhAp4fR5h0ZvbPqd
-         un3BPkHwyCHfbovDgRH/E19FOFXRl0B8JJOj2v/4S6nLLRbjbHQmGMZYF9tSwcmfpujv
-         t7qQ==
+        b=Xx5lXyNXs8iysbACeQuWFzyXGCE5NB4HJ6sLkLPssMMEQgq6fAusIKTN0REWSHVpAh
+         syzClDSBhslNNLUjGiq29Ao9TW4c5KQvb1BFNPb91WTC/deFcWMU6P6G7Aj2nXDco5Kq
+         EuyKIJNbqvxkXAgr8S44hLWxEjTezRRhvRo+xD0cspHI9kW4DWPSkRrlWz7vi3VsTkrX
+         Ib8hqjsd4Jpuxbro0ZnXjgreH+d9rtBLsvGIg9pVAhvbZZphBxlyJul8+eGtQ3dEDRrB
+         8Urt1QsR0BiS50vVl6BUhtoJad70JszwIdsg7fuSUczjmK/57omR72ZnKbTmRzVdGSq3
+         OajA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=8KJnY2++RFxrp0v6CSeygKQ70Fv7FDt+DJT2VlKCOi8=;
-        b=tHDk++hCcX/ArD1lHqqNbTHOcP4BlKbnluR7c7u1azmRpdWfsAtyOI9K2HaMoAykSH
-         kKnqSCUvE4v+AWs8TEroAKkdTHgieCAusA7S0O7vM4V0z2OJhTQKw8NKr7TodBP+5OiR
-         dmd8r8oYsu1ju7Y+miFsg5TyH9FmZTQvpMOXm/8pHjSzOs3mldOH9JufAkCw/9OMeOOi
-         wZq0wBZ6/C3RVQD39jfvHC/57VOspMki4+gaTGVz0465gcVKZJyxYUr6pIQw11svZ0AG
-         RVO2dCcRbu5Nd9klSk+pCFWR8YSm0B7/uFmDOORUCL16Dlbu4etZ2nIMhPIlE2zL6AVr
-         MamA==
+        bh=gqqZjn9YQ2Qn5K/MpM9mhWTeohCnMWIgP1AqQG9tV2M=;
+        b=LXzucir59UqVxG/HgWx3+p4C7VbXVSPCnkltatSOFf0aTXlYkYOMglH8IRZJpv4KwE
+         XnpG/GfHH4QBxSE+o1LVSRZNxa07X8OvHAWuoiXMU4RSJgLyZ/YX6OblousBikb0+iQG
+         I8vwEEsMHK+CVqkXISqfrN51Jtce6NpFHlFfLyz85KOy4cUJMoz0v+CjIYpWfurjcbQH
+         khJpDSK5TdSVvVsWrtdK1WU4jqKjc8QEqZrH6vt/kmtTvZbMksV78JM8JLanOxBEkbbH
+         ELgQOHu84tMXFQsMvcEKT4v34k9J42AHPJpZwZ0lnoVv23R8pPVIUTM5nhG2p++Jrovi
+         Pc4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p29si12768245edc.369.2019.09.04.14.27.05
+        by mx.google.com with ESMTPS id f9si125985ejx.375.2019.09.04.14.27.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 04 Sep 2019 14:27:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40172 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40152 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5cnw-00012B-8I
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i5cnw-0000Dm-E0
 	for alex.bennee@linaro.org; Wed, 04 Sep 2019 17:27:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53358)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53322)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1i5cBl-0008Pu-95
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 16:47:38 -0400
+ (envelope-from <clg@kaod.org>) id 1i5cBd-0008EJ-53
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 16:47:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1i5cBi-0000qf-3J
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 16:47:37 -0400
-Received: from 7.mo1.mail-out.ovh.net ([87.98.158.110]:51385)
+ (envelope-from <clg@kaod.org>) id 1i5cBb-0000lS-KF
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 16:47:29 -0400
+Received: from 15.mo6.mail-out.ovh.net ([188.165.39.161]:56049)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1i5cBh-0000p1-Sn
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 16:47:34 -0400
-Received: from player691.ha.ovh.net (unknown [10.108.57.211])
- by mo1.mail-out.ovh.net (Postfix) with ESMTP id 400DB18D7FA
- for <qemu-arm@nongnu.org>; Wed,  4 Sep 2019 22:47:32 +0200 (CEST)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1i5cBb-0000kY-Cx
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 16:47:27 -0400
+Received: from player691.ha.ovh.net (unknown [10.109.143.246])
+ by mo6.mail-out.ovh.net (Postfix) with ESMTP id A5AE71DE909
+ for <qemu-devel@nongnu.org>; Wed,  4 Sep 2019 22:47:25 +0200 (CEST)
 Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
  (Authenticated sender: clg@kaod.org)
- by player691.ha.ovh.net (Postfix) with ESMTPSA id 763CD98B27EF;
- Wed,  4 Sep 2019 20:47:25 +0000 (UTC)
+ by player691.ha.ovh.net (Postfix) with ESMTPSA id E83EE98B27DC;
+ Wed,  4 Sep 2019 20:47:18 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed,  4 Sep 2019 22:46:47 +0200
-Message-Id: <20190904204659.13878-4-clg@kaod.org>
+Date: Wed,  4 Sep 2019 22:46:46 +0200
+Message-Id: <20190904204659.13878-3-clg@kaod.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190904204659.13878-1-clg@kaod.org>
 References: <20190904204659.13878-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 2513853021181676305
+X-Ovh-Tracer-Id: 2512164171111303953
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrudejhedgudehudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 87.98.158.110
-Subject: [Qemu-arm] [RFC PATCH 03/15] aspeed/timer: Add support for control
- register 3
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 188.165.39.161
+Subject: [Qemu-devel] [RFC PATCH 02/15] aspeed/timer: Introduce an object
+ class per SoC
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WGrZUtcJMCog
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: S20t1n8Qe7Mc
 
-The AST2500 timer has a third control register that is used to
-implement a set-to-clear feature for the main control register.
-
-This models the behaviour expected by the AST2500 while maintaining
-the same behaviour for the AST2400.
-
-Based on previous work from Joel Stanley.
+It prepares ground for register differences between SoCs.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- include/hw/timer/aspeed_timer.h |  1 +
- hw/timer/aspeed_timer.c         | 19 +++++++++++++++++++
- 2 files changed, 20 insertions(+)
+ include/hw/timer/aspeed_timer.h |  15 +++++
+ hw/arm/aspeed_soc.c             |   3 +-
+ hw/timer/aspeed_timer.c         | 107 ++++++++++++++++++++++++++++----
+ 3 files changed, 113 insertions(+), 12 deletions(-)
 
 diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_ti=
 mer.h
-index a791fee276f4..1e0288ebc49f 100644
+index 1fb949e16710..a791fee276f4 100644
 --- a/include/hw/timer/aspeed_timer.h
 +++ b/include/hw/timer/aspeed_timer.h
-@@ -58,6 +58,7 @@ typedef struct AspeedTimerCtrlState {
+@@ -28,6 +28,9 @@
+ #define ASPEED_TIMER(obj) \
+     OBJECT_CHECK(AspeedTimerCtrlState, (obj), TYPE_ASPEED_TIMER);
+ #define TYPE_ASPEED_TIMER "aspeed.timer"
++#define TYPE_ASPEED_2400_TIMER TYPE_ASPEED_TIMER "-ast2400"
++#define TYPE_ASPEED_2500_TIMER TYPE_ASPEED_TIMER "-ast2500"
++
+ #define ASPEED_TIMER_NR_TIMERS 8
 =20
-     uint32_t ctrl;
-     uint32_t ctrl2;
-+    uint32_t ctrl3;
-     AspeedTimer timers[ASPEED_TIMER_NR_TIMERS];
-=20
+ typedef struct AspeedTimer {
+@@ -60,4 +63,16 @@ typedef struct AspeedTimerCtrlState {
      AspeedSCUState *scu;
+ } AspeedTimerCtrlState;
+=20
++#define ASPEED_TIMER_CLASS(klass) \
++     OBJECT_CLASS_CHECK(AspeedTimerClass, (klass), TYPE_ASPEED_TIMER)
++#define ASPEED_TIMER_GET_CLASS(obj) \
++     OBJECT_GET_CLASS(AspeedTimerClass, (obj), TYPE_ASPEED_TIMER)
++
++typedef struct AspeedTimerClass {
++    SysBusDeviceClass parent_class;
++
++    uint64_t (*read)(AspeedTimerCtrlState *s, hwaddr offset);
++    void (*write)(AspeedTimerCtrlState *s, hwaddr offset, uint64_t value=
+);
++} AspeedTimerClass;
++
+ #endif /* ASPEED_TIMER_H */
+diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+index c3821a562733..26e03486f9b7 100644
+--- a/hw/arm/aspeed_soc.c
++++ b/hw/arm/aspeed_soc.c
+@@ -182,8 +182,9 @@ static void aspeed_soc_init(Object *obj)
+     sysbus_init_child_obj(obj, "rtc", OBJECT(&s->rtc), sizeof(s->rtc),
+                           TYPE_ASPEED_RTC);
+=20
++    snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
+     sysbus_init_child_obj(obj, "timerctrl", OBJECT(&s->timerctrl),
+-                          sizeof(s->timerctrl), TYPE_ASPEED_TIMER);
++                          sizeof(s->timerctrl), typename);
+     object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
+                                    OBJECT(&s->scu), &error_abort);
+=20
 diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index c78bc1bd2d25..d70e78a0293e 100644
+index 2bda826882d9..c78bc1bd2d25 100644
 --- a/hw/timer/aspeed_timer.c
 +++ b/hw/timer/aspeed_timer.c
-@@ -498,6 +498,8 @@ static uint64_t aspeed_2500_timer_read(AspeedTimerCtr=
-lState *s, hwaddr offset)
-=20
-     switch (offset) {
-     case 0x38:
-+        value =3D s->ctrl3 & BIT(0);
-+        break;
-     case 0x3C:
+@@ -253,13 +253,8 @@ static uint64_t aspeed_timer_read(void *opaque, hwad=
+dr offset, unsigned size)
+     case 0x40 ... 0x8c: /* Timers 5 - 8 */
+         value =3D aspeed_timer_get_value(&s->timers[(offset >> 4) - 1], =
+reg);
+         break;
+-    /* Illegal */
+-    case 0x38:
+-    case 0x3C:
      default:
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx =
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx =
 "\n",
-@@ -511,9 +513,24 @@ static uint64_t aspeed_2500_timer_read(AspeedTimerCt=
-rlState *s, hwaddr offset)
- static void aspeed_2500_timer_write(AspeedTimerCtrlState *s, hwaddr offs=
-et,
-                                     uint64_t value)
- {
-+    const uint32_t tv =3D (uint32_t)(value & 0xFFFFFFFF);
-+    uint8_t command;
-+
-     switch (offset) {
-     case 0x38:
-+        command =3D (value >> 1) & 0xFF;
-+        if (command =3D=3D 0xAE) {
-+            s->ctrl3 =3D 0x1;
-+        } else if (command =3D=3D 0xEA) {
-+            s->ctrl3 =3D 0x0;
-+        }
-+        break;
-     case 0x3C:
-+        if (s->ctrl3 & BIT(0)) {
-+            aspeed_timer_set_ctrl(s, s->ctrl & ~tv);
-+        }
-+        break;
-+
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx =
-"\n",
-                 __func__, offset);
-@@ -574,6 +591,7 @@ static void aspeed_timer_reset(DeviceState *dev)
+-                __func__, offset);
+-        value =3D 0;
++        value =3D ASPEED_TIMER_GET_CLASS(s)->read(s, offset);
+         break;
      }
-     s->ctrl =3D 0;
-     s->ctrl2 =3D 0;
-+    s->ctrl3 =3D 0;
+     trace_aspeed_timer_read(offset, size, value);
+@@ -453,12 +448,8 @@ static void aspeed_timer_write(void *opaque, hwaddr =
+offset, uint64_t value,
+     case 0x40 ... 0x8c:
+         aspeed_timer_set_value(s, (offset >> TIMER_NR_REGS) - 1, reg, tv=
+);
+         break;
+-    /* Illegal */
+-    case 0x38:
+-    case 0x3C:
+     default:
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx =
+"\n",
+-                __func__, offset);
++        ASPEED_TIMER_GET_CLASS(s)->write(s, offset, value);
+         break;
+     }
+ }
+@@ -472,6 +463,64 @@ static const MemoryRegionOps aspeed_timer_ops =3D {
+     .valid.unaligned =3D false,
+ };
+=20
++static uint64_t aspeed_2400_timer_read(AspeedTimerCtrlState *s, hwaddr o=
+ffset)
++{
++    uint64_t value;
++
++    switch (offset) {
++    case 0x38:
++    case 0x3C:
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx =
+"\n",
++                __func__, offset);
++        value =3D 0;
++        break;
++    }
++    return value;
++}
++
++static void aspeed_2400_timer_write(AspeedTimerCtrlState *s, hwaddr offs=
+et,
++                                    uint64_t value)
++{
++    switch (offset) {
++    case 0x38:
++    case 0x3C:
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx =
+"\n",
++                __func__, offset);
++        break;
++    }
++}
++
++static uint64_t aspeed_2500_timer_read(AspeedTimerCtrlState *s, hwaddr o=
+ffset)
++{
++    uint64_t value;
++
++    switch (offset) {
++    case 0x38:
++    case 0x3C:
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx =
+"\n",
++                __func__, offset);
++        value =3D 0;
++        break;
++    }
++    return value;
++}
++
++static void aspeed_2500_timer_write(AspeedTimerCtrlState *s, hwaddr offs=
+et,
++                                    uint64_t value)
++{
++    switch (offset) {
++    case 0x38:
++    case 0x3C:
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx =
+"\n",
++                __func__, offset);
++        break;
++    }
++}
++
+ static void aspeed_init_one_timer(AspeedTimerCtrlState *s, uint8_t id)
+ {
+     AspeedTimer *t =3D &s->timers[id];
+@@ -570,11 +619,47 @@ static const TypeInfo aspeed_timer_info =3D {
+     .parent =3D TYPE_SYS_BUS_DEVICE,
+     .instance_size =3D sizeof(AspeedTimerCtrlState),
+     .class_init =3D timer_class_init,
++    .class_size =3D sizeof(AspeedTimerClass),
++    .abstract   =3D true,
++};
++
++static void aspeed_2400_timer_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++    AspeedTimerClass *awc =3D ASPEED_TIMER_CLASS(klass);
++
++    dc->desc =3D "ASPEED 2400 Timer";
++    awc->read =3D aspeed_2400_timer_read;
++    awc->write =3D aspeed_2400_timer_write;
++}
++
++static const TypeInfo aspeed_2400_timer_info =3D {
++    .name =3D TYPE_ASPEED_2400_TIMER,
++    .parent =3D TYPE_ASPEED_TIMER,
++    .class_init =3D aspeed_2400_timer_class_init,
++};
++
++static void aspeed_2500_timer_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++    AspeedTimerClass *awc =3D ASPEED_TIMER_CLASS(klass);
++
++    dc->desc =3D "ASPEED 2500 Timer";
++    awc->read =3D aspeed_2500_timer_read;
++    awc->write =3D aspeed_2500_timer_write;
++}
++
++static const TypeInfo aspeed_2500_timer_info =3D {
++    .name =3D TYPE_ASPEED_2500_TIMER,
++    .parent =3D TYPE_ASPEED_TIMER,
++    .class_init =3D aspeed_2500_timer_class_init,
+ };
+=20
+ static void aspeed_timer_register_types(void)
+ {
+     type_register_static(&aspeed_timer_info);
++    type_register_static(&aspeed_2400_timer_info);
++    type_register_static(&aspeed_2500_timer_info);
  }
 =20
- static const VMStateDescription vmstate_aspeed_timer =3D {
-@@ -597,6 +615,7 @@ static const VMStateDescription vmstate_aspeed_timer_=
-state =3D {
-     .fields =3D (VMStateField[]) {
-         VMSTATE_UINT32(ctrl, AspeedTimerCtrlState),
-         VMSTATE_UINT32(ctrl2, AspeedTimerCtrlState),
-+        VMSTATE_UINT32(ctrl3, AspeedTimerCtrlState),
-         VMSTATE_STRUCT_ARRAY(timers, AspeedTimerCtrlState,
-                              ASPEED_TIMER_NR_TIMERS, 1, vmstate_aspeed_t=
-imer,
-                              AspeedTimer),
+ type_init(aspeed_timer_register_types)
 --=20
 2.21.0
 

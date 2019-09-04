@@ -1,70 +1,73 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp662438wrp;
-        Wed, 4 Sep 2019 05:48:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyGMyBm12FpTm+aX13aMrt8bvsJ7VHgHz+wGr9TVPBrWd1MzUXim9v5dDcwWjWcIykiQn0V
-X-Received: by 2002:a17:906:848c:: with SMTP id m12mr29040036ejx.198.1567601306532;
-        Wed, 04 Sep 2019 05:48:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567601306; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp663506wrp;
+        Wed, 4 Sep 2019 05:49:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwKxcCt3aScwbeliTIsVLGlVo4yGXVR0IxVpuSmlo3hesVruKiYF+Jbot0sIiXgFFAD5iyU
+X-Received: by 2002:a37:a089:: with SMTP id j131mr21378037qke.446.1567601354895;
+        Wed, 04 Sep 2019 05:49:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567601354; cv=none;
         d=google.com; s=arc-20160816;
-        b=IxU0cuq8uxzAWC84gMfv2x1t25S+WJwYPsbv+4hr3iWtBFMUkcBAWjT2rGp7tqnzDe
-         yMs08DldfECfKNUMEmWC+hiWYh3jwAzzOWPAFxKgpYGpav1c4y3t2FASomzPp+kZQ2By
-         +uomirN+73nz5IOGo4udiohNgvB1JIrBn0nX0+OFpwNzuzjjteUOcQAnpkihTdEunGSu
-         RMMBMPVxdFeQejBKXDYJkLey7B9DMj4blcWqfoRh30h5tmMtMst9NqtanelAy86+irYv
-         PLhvoDZPVMrUQ43QeHbSPrT2yCuXsX2KA6uM6PHa3TrTrI0R0kAHdz2IOUz6a+eKlh4L
-         9k4w==
+        b=MuUu7hff413psMdk/kBSz/MVMNYJAAJeiUXcRAGawhJIltT9T/wUQpvLlojlpz8URw
+         kx6eo24MKvHyHweO3BQp380n+ys4KFCnHlbeMYlyHBmwFN9gri2xcz++P5w+9hrOguhE
+         1U/GzxRE0RkW2xzdNDxWBN3Ct+sKv7wbcsnXiPkJGBuyT8JkJI+zyNAN1z8YrDD/vhjf
+         CBJa7kvPnmrAfNW7CR027atZE9Zh2UAS/5EjLpG0eOssku8s4lg/kfO4aDVqBS5YKwrX
+         BuHe4JhqiAT12XxeWKx9/umNE0ZihqxjCHAJTzMp+8iSbOB9FhRplKgQ6ExCAp/cuWlq
+         7Lvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from;
-        bh=ET4c4rQYUItnSBiN2eUgy60NsfGrZRnM9/IL1shBocw=;
-        b=sTJw9oFy7KFw8hXaX8tSuLAo0BPATWPySMrrtF9+FyTMyQDlN0+Yx6AGrizH0aBm9C
-         RssNbRD1MtXA+WB23re7AI1GX38z8IbDWGkeERyKOJh4dwiE/PVSStoPq2vBGkr6bgLP
-         j8OSTmb4caHIIx1IG7znm2+191CfxEb3KKKFwvu4+AvtaV7zMKjOlTdBcS293XfVl05M
-         hfAq4muULodk5pADlUqugbVgi91Wb1XoPgltqgtstJiwfUPWitRJ5lQ7azjJhKWGuxhv
-         NK15I/ODlpwrpmqZWthRdvZlgORmM8jYfCAt27QASbga983QurU/OFmdyhYAY2Io8t0X
-         vWFA==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=DlJ1Rf3G+COT9Ng2lgtnWI9SYPrJ9lO5uRsJOIJ67LQ=;
+        b=lyL89+mHZ7FCsQGsFLX8PVg4USFLYx7D6JhP8TTPLvFur0j844PG1/RnNhhxvi6b84
+         cURVpFjxE5ivnUU1Z7WqKkmy1mA1u1JuRgJSVycOncmQDhOYITN6e15pxZVJDpNCcgAp
+         m7OTajsFpnf4WiF56V9LpF2+XFHpWiUt4U/gvmiXW94B7009o3HGrc9VjlFOCgGoo7tm
+         uEoXyt0RZ7CiuWe4cS6y9bvEB1mx39XApDi7Q5fimLicPnhnfrutyUKTgr5AnXhclLB4
+         nBlH9+y96F9roOsBJbozK1icY0z/qRg/SCtR30jE1/IvKTy5YOOUkXoNm/bCwjwJ5OYD
+         /Ckw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m48si5805725edm.256.2019.09.04.05.48.26
+        by mx.google.com with ESMTPS id h7si13864796qve.223.2019.09.04.05.49.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2019 05:48:26 -0700 (PDT)
+        Wed, 04 Sep 2019 05:49:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57374 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57378 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5Uhz-0006yx-RQ
-	for alex.bennee@linaro.org; Wed, 04 Sep 2019 08:48:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47786)
+	id 1i5Uio-0007EO-1w
+	for alex.bennee@linaro.org; Wed, 04 Sep 2019 08:49:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47755)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.con>) id 1i5Rqp-0004qA-Jq
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 05:45:21 -0400
+ (envelope-from <damien.hedde@greensocs.con>) id 1i5Rqn-0004pw-VQ
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 05:45:20 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.con>) id 1i5Rqn-0008RJ-FF
- for qemu-arm@nongnu.org; Wed, 04 Sep 2019 05:45:19 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:40564)
+ (envelope-from <damien.hedde@greensocs.con>) id 1i5Rql-0008Pf-UU
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 05:45:17 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:40542)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <damien.hedde@greensocs.con>)
- id 1i5Rqm-0008Pl-VK; Wed, 04 Sep 2019 05:45:17 -0400
+ id 1i5Rql-0008My-KT; Wed, 04 Sep 2019 05:45:15 -0400
 Received: from crumble.bar.greensocs.com (crumble.bar.greensocs.com
  [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPS id 8219896F50;
- Wed,  4 Sep 2019 09:38:45 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPS id 67D2796F5F;
+ Wed,  4 Sep 2019 09:38:55 +0000 (UTC)
 From: damien.hedde@greensocs.con
 To: qemu-devel@nongnu.org
-Date: Wed,  4 Sep 2019 11:38:34 +0200
-Message-Id: <20190904093843.8765-1-damien.hedde@greensocs.con>
+Date: Wed,  4 Sep 2019 11:38:42 +0200
+Message-Id: <20190904093843.8765-9-damien.hedde@greensocs.con>
 X-Mailer: git-send-email 2.22.0
+In-Reply-To: <20190904093843.8765-1-damien.hedde@greensocs.con>
+References: <20190904093843.8765-1-damien.hedde@greensocs.con>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+X-Spam: Yes
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 5.135.226.135
 X-Mailman-Approved-At: Wed, 04 Sep 2019 08:47:14 -0400
-Subject: [Qemu-arm] [PATCH v6 0/9] Clock framework API
+Subject: [Qemu-arm] [PATCH v6 8/9] hw/char/cadence_uart: add clock support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -82,100 +85,258 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>, peter.maydell@linaro.org,
  marcandre.lureau@redhat.com, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3EtYzcNhFvpw
+X-TUID: eImQ+DxfAGTs
 
 From: Damien Hedde <damien.hedde@greensocs.com>
 
-This series aims to add a way to model clock distribution in qemu. This a=
-llows
-to model the clock tree of a platform allowing us to inspect clock
-configuration and detect problems such as disabled clock or bad configure=
-d
-pll.
+Switch the cadence uart to multi-phase reset and add the
+reference clock input.
 
-The added clock api is very similar the the gpio api for devices. We can =
-add
-input and output and connect them together.
+The input clock frequency is added to the migration structure.
 
-Very few changes since v5 in the core patches: we were waiting for multi =
-phase
-ability to allow proper initialization of the clock tree. So this is almo=
-st a
-simple rebase on top of the current "Multi-phase reset mechanism" series.
-Based-on: <20190821163341.16309-1-damien.hedde@greensocs.com>
+The reference clock controls the baudrate generation. If it disabled,
+any input characters and events are ignored.
 
-Changes since v5:
- - drop the "-port" in file names
- - new patch 2, extracted from patch 1 (to fix some problem with linux-us=
-er builds)
- - patch 3, minor modification to better match gpios api and allow non de=
-vice-related clock
-   (I've dropped the reviewed-by, see the patch message for the details o=
-f what has changed).
- - patch 6, Philippe's comments and various improvement
- - patches 7/8/9, multi-phase reset addition and scope reduced to uart re=
-f clocks
+If this clock remains unconnected, the uart behaves as before
+(it default to a 50MHz ref clock).
 
-The patches are organised as follows:
-+ Patches 1 to 5 adds the clock support in qemu (1, 4 and 5 are already r=
-eviewed and
-  also a big part of the 3)
-+ Patch 6 add some documentation in docs/devel
-+ Patches 7 to 9 adds the uart's clocks to the xilinx_zynq platform as an
-example for this framework. It updates the zynq's slcr clock controller, =
-the=20
-cadence_uart device, and the zynq toplevel platform.
+Signed-off-by: Damien Hedde <damien.hedde@greensocs.com>
+---
+ hw/char/cadence_uart.c         | 85 ++++++++++++++++++++++++++++++----
+ hw/char/trace-events           |  3 ++
+ include/hw/char/cadence_uart.h |  1 +
+ 3 files changed, 79 insertions(+), 10 deletions(-)
 
-I've tested this patchset on the xilinx-zynq-a9 machine with the buildroo=
-t's
-zynq_zc706_defconfig which package the Xilinx's Linux.
-Clocks are correctly updated and we ends up with a configured baudrate of=
- 115601
-on the console uart (for a theoretical 115200) which is nice. "cadence_ua=
-rt*" and
-"clock*" traces can be enabled to see what's going on in this platform.
-
-Any comments and suggestion are welcomed.
-
-Thanks to the Xilinx QEMU team who sponsored this development.
-
-Damien Hedde (9):
-  hw/core/clock: introduce clock objects
-  hw/core/clock-vmstate: define a vmstate entry for clock state
-  qdev: add clock input&output support to devices.
-  qdev-monitor: print the device's clock with info qtree
-  qdev-clock: introduce an init array to ease the device construction
-  docs/clocks: add device's clock documentation
-  hw/misc/zynq_slcr: add clock generation for uarts
-  hw/char/cadence_uart: add clock support
-  hw/arm/xilinx_zynq: connect uart clocks to slcr
-
- Makefile.objs                  |   1 +
- docs/devel/clock.txt           | 246 +++++++++++++++++++++++++++++++++
- hw/arm/xilinx_zynq.c           |  64 +++++++--
- hw/char/cadence_uart.c         |  85 ++++++++++--
- hw/char/trace-events           |   3 +
- hw/core/Makefile.objs          |   4 +-
- hw/core/clock-vmstate.c        |  25 ++++
- hw/core/clock.c                | 144 +++++++++++++++++++
- hw/core/qdev-clock.c           | 181 ++++++++++++++++++++++++
- hw/core/qdev.c                 |  32 +++++
- hw/core/trace-events           |   6 +
- hw/misc/zynq_slcr.c            | 145 ++++++++++++++++++-
- include/hw/char/cadence_uart.h |   1 +
- include/hw/clock.h             | 133 ++++++++++++++++++
- include/hw/qdev-clock.h        | 134 ++++++++++++++++++
- include/hw/qdev-core.h         |  14 ++
- qdev-monitor.c                 |  13 ++
- tests/Makefile.include         |   1 +
- 18 files changed, 1210 insertions(+), 22 deletions(-)
- create mode 100644 docs/devel/clock.txt
- create mode 100644 hw/core/clock-vmstate.c
- create mode 100644 hw/core/clock.c
- create mode 100644 hw/core/qdev-clock.c
- create mode 100644 include/hw/clock.h
- create mode 100644 include/hw/qdev-clock.h
-
+diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+index 0e315b2376..bae43a9679 100644
+--- a/hw/char/cadence_uart.c
++++ b/hw/char/cadence_uart.c
+@@ -31,6 +31,8 @@
+ #include "qemu/module.h"
+ #include "hw/char/cadence_uart.h"
+ #include "hw/irq.h"
++#include "hw/qdev-clock.h"
++#include "trace.h"
+=20
+ #ifdef CADENCE_UART_ERR_DEBUG
+ #define DB_PRINT(...) do { \
+@@ -97,7 +99,7 @@
+ #define LOCAL_LOOPBACK         (0x2 << UART_MR_CHMODE_SH)
+ #define REMOTE_LOOPBACK        (0x3 << UART_MR_CHMODE_SH)
+=20
+-#define UART_INPUT_CLK         50000000
++#define UART_DEFAULT_REF_CLK (50 * 1000 * 1000)
+=20
+ #define R_CR       (0x00/4)
+ #define R_MR       (0x04/4)
+@@ -171,12 +173,15 @@ static void uart_send_breaks(CadenceUARTState *s)
+ static void uart_parameters_setup(CadenceUARTState *s)
+ {
+     QEMUSerialSetParams ssp;
+-    unsigned int baud_rate, packet_size;
++    unsigned int baud_rate, packet_size, input_clk;
++    input_clk =3D clock_get_frequency(s->refclk);
+=20
+-    baud_rate =3D (s->r[R_MR] & UART_MR_CLKS) ?
+-            UART_INPUT_CLK / 8 : UART_INPUT_CLK;
++    baud_rate =3D (s->r[R_MR] & UART_MR_CLKS) ? input_clk / 8 : input_cl=
+k;
++    baud_rate /=3D (s->r[R_BRGR] * (s->r[R_BDIV] + 1));
++    trace_cadence_uart_baudrate(baud_rate);
++
++    ssp.speed =3D baud_rate;
+=20
+-    ssp.speed =3D baud_rate / (s->r[R_BRGR] * (s->r[R_BDIV] + 1));
+     packet_size =3D 1;
+=20
+     switch (s->r[R_MR] & UART_MR_PAR) {
+@@ -215,6 +220,13 @@ static void uart_parameters_setup(CadenceUARTState *=
+s)
+     }
+=20
+     packet_size +=3D ssp.data_bits + ssp.stop_bits;
++    if (ssp.speed =3D=3D 0) {
++        /*
++         * Avoid division-by-zero below.
++         * TODO: find something better
++         */
++        ssp.speed =3D 1;
++    }
+     s->char_tx_time =3D (NANOSECONDS_PER_SECOND / ssp.speed) * packet_si=
+ze;
+     qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_PARAMS, &ssp);
+ }
+@@ -340,6 +352,11 @@ static void uart_receive(void *opaque, const uint8_t=
+ *buf, int size)
+     CadenceUARTState *s =3D opaque;
+     uint32_t ch_mode =3D s->r[R_MR] & UART_MR_CHMODE;
+=20
++    /* ignore characters when unclocked or in reset */
++    if (!clock_is_enabled(s->refclk) || device_is_resetting(DEVICE(s))) =
+{
++        return;
++    }
++
+     if (ch_mode =3D=3D NORMAL_MODE || ch_mode =3D=3D ECHO_MODE) {
+         uart_write_rx_fifo(opaque, buf, size);
+     }
+@@ -353,6 +370,11 @@ static void uart_event(void *opaque, int event)
+     CadenceUARTState *s =3D opaque;
+     uint8_t buf =3D '\0';
+=20
++    /* ignore characters when unclocked or in reset */
++    if (!clock_is_enabled(s->refclk) || device_is_resetting(DEVICE(s))) =
+{
++        return;
++    }
++
+     if (event =3D=3D CHR_EVENT_BREAK) {
+         uart_write_rx_fifo(opaque, &buf, 1);
+     }
+@@ -462,9 +484,9 @@ static const MemoryRegionOps uart_ops =3D {
+     .endianness =3D DEVICE_NATIVE_ENDIAN,
+ };
+=20
+-static void cadence_uart_reset(DeviceState *dev)
++static void cadence_uart_reset_init(Object *obj, ResetType type)
+ {
+-    CadenceUARTState *s =3D CADENCE_UART(dev);
++    CadenceUARTState *s =3D CADENCE_UART(obj);
+=20
+     s->r[R_CR] =3D 0x00000128;
+     s->r[R_IMR] =3D 0;
+@@ -473,6 +495,11 @@ static void cadence_uart_reset(DeviceState *dev)
+     s->r[R_BRGR] =3D 0x0000028B;
+     s->r[R_BDIV] =3D 0x0000000F;
+     s->r[R_TTRIG] =3D 0x00000020;
++}
++
++static void cadence_uart_reset_hold(Object *obj)
++{
++    CadenceUARTState *s =3D CADENCE_UART(obj);
+=20
+     uart_rx_reset(s);
+     uart_tx_reset(s);
+@@ -491,6 +518,14 @@ static void cadence_uart_realize(DeviceState *dev, E=
+rror **errp)
+                              uart_event, NULL, s, NULL, true);
+ }
+=20
++static void cadence_uart_refclk_update(void *opaque)
++{
++    CadenceUARTState *s =3D opaque;
++
++    /* recompute uart's speed on clock change */
++    uart_parameters_setup(s);
++}
++
+ static void cadence_uart_init(Object *obj)
+ {
+     SysBusDevice *sbd =3D SYS_BUS_DEVICE(obj);
+@@ -500,9 +535,23 @@ static void cadence_uart_init(Object *obj)
+     sysbus_init_mmio(sbd, &s->iomem);
+     sysbus_init_irq(sbd, &s->irq);
+=20
++    s->refclk =3D qdev_init_clock_in(DEVICE(obj), "refclk",
++            cadence_uart_refclk_update, s);
++    /* initialize the frequency in case the clock remains unconnected */
++    clock_init_frequency(s->refclk, UART_DEFAULT_REF_CLK);
++
+     s->char_tx_time =3D (NANOSECONDS_PER_SECOND / 9600) * 10;
+ }
+=20
++static int cadence_uart_pre_load(void *opaque)
++{
++    CadenceUARTState *s =3D opaque;
++
++    /* the frequency will be overriden if the subsection is present */
++    clock_init_frequency(s->refclk, UART_DEFAULT_REF_CLK);
++    return 0;
++}
++
+ static int cadence_uart_post_load(void *opaque, int version_id)
+ {
+     CadenceUARTState *s =3D opaque;
+@@ -519,10 +568,21 @@ static int cadence_uart_post_load(void *opaque, int=
+ version_id)
+     return 0;
+ }
+=20
++static const VMStateDescription vmstate_cadence_uart_refclk =3D {
++    .name =3D "cadence_uart_refclk",
++    .version_id =3D 0,
++    .minimum_version_id =3D 0,
++    .fields =3D (VMStateField[]) {
++        VMSTATE_CLOCKIN(refclk, CadenceUARTState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ static const VMStateDescription vmstate_cadence_uart =3D {
+     .name =3D "cadence_uart",
+     .version_id =3D 2,
+     .minimum_version_id =3D 2,
++    .pre_load =3D cadence_uart_pre_load,
+     .post_load =3D cadence_uart_post_load,
+     .fields =3D (VMStateField[]) {
+         VMSTATE_UINT32_ARRAY(r, CadenceUARTState, CADENCE_UART_R_MAX),
+@@ -535,7 +595,10 @@ static const VMStateDescription vmstate_cadence_uart=
+ =3D {
+         VMSTATE_UINT32(rx_wpos, CadenceUARTState),
+         VMSTATE_TIMER_PTR(fifo_trigger_handle, CadenceUARTState),
+         VMSTATE_END_OF_LIST()
+-    }
++    },
++    .subsections =3D (const VMStateDescription * []) {
++        &vmstate_cadence_uart_refclk,
++    },
+ };
+=20
+ static Property cadence_uart_properties[] =3D {
+@@ -546,12 +609,14 @@ static Property cadence_uart_properties[] =3D {
+ static void cadence_uart_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
++    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
+=20
+     dc->realize =3D cadence_uart_realize;
+     dc->vmsd =3D &vmstate_cadence_uart;
+-    dc->reset =3D cadence_uart_reset;
+     dc->props =3D cadence_uart_properties;
+-  }
++    rc->phases.init =3D cadence_uart_reset_init;
++    rc->phases.hold =3D cadence_uart_reset_hold;
++}
+=20
+ static const TypeInfo cadence_uart_info =3D {
+     .name          =3D TYPE_CADENCE_UART,
+diff --git a/hw/char/trace-events b/hw/char/trace-events
+index 2ce7f2f998..502a7d0507 100644
+--- a/hw/char/trace-events
++++ b/hw/char/trace-events
+@@ -77,3 +77,6 @@ cmsdk_apb_uart_set_params(int speed) "CMSDK APB UART: p=
+arams set to %d 8N1"
+ # nrf51_uart.c
+ nrf51_uart_read(uint64_t addr, uint64_t r, unsigned int size) "addr 0x%"=
+ PRIx64 " value 0x%" PRIx64 " size %u"
+ nrf51_uart_write(uint64_t addr, uint64_t value, unsigned int size) "addr=
+ 0x%" PRIx64 " value 0x%" PRIx64 " size %u"
++
++# hw/char/cadence_uart.c
++cadence_uart_baudrate(unsigned baudrate) "baudrate %u"
+diff --git a/include/hw/char/cadence_uart.h b/include/hw/char/cadence_uar=
+t.h
+index 47cec956c4..a09afe4ed5 100644
+--- a/include/hw/char/cadence_uart.h
++++ b/include/hw/char/cadence_uart.h
+@@ -49,6 +49,7 @@ typedef struct {
+     CharBackend chr;
+     qemu_irq irq;
+     QEMUTimer *fifo_trigger_handle;
++    ClockIn *refclk;
+ } CadenceUARTState;
+=20
+ static inline DeviceState *cadence_uart_create(hwaddr addr,
 --=20
 2.22.0
 

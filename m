@@ -1,493 +1,441 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id v11sm39461709wrv.54.2019.09.04.13.30.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Sep 2019 13:30:18 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id DC12F1FF92;
-	Wed,  4 Sep 2019 21:30:13 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: cota@braap.org,
-	fam@euphon.net,
-	berrange@redhat.com,
-	f4bug@amsat.org,
-	richard.henderson@linaro.org,
-	balrogg@gmail.com,
-	aurelien@aurel32.net,
-	pbonzini@redhat.com,
-	stefanha@redhat.com,
-	stefanb@linux.vnet.ibm.com,
-	marcandre.lureau@redhat.com,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <rth@twiddle.net>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v1 05/42] tests/tcg: cleanup Makefile inclusions
-Date: Wed,  4 Sep 2019 21:29:36 +0100
-Message-Id: <20190904203013.9028-6-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190904203013.9028-1-alex.bennee@linaro.org>
-References: <20190904203013.9028-1-alex.bennee@linaro.org>
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp14979wrp;
+        Wed, 4 Sep 2019 14:26:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxnmf8w32oWe6jMwzMqkgOcBdiseVM46Z7Sq5LoPU4YW2ygYXozpsiLyCurju8MHWEiUfDG
+X-Received: by 2002:a17:907:111b:: with SMTP id qu27mr146468ejb.10.1567632410913;
+        Wed, 04 Sep 2019 14:26:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567632410; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ybbRnBmguBLzhld+vVE9ahAgZLe1uyGARUF/k/DusSjItehG7GMzoKpus3V4LuaNE3
+         gMT61MMzt0ZKkZgkYugR9+05++EoTCM6vHoX5a5lhj+ZlyjRTriIswiQ+S4WcaR8Sa03
+         32n3k6PtYh2dJTJyBmKpU5p03RAqz5yMr7AcNjoqe6N/no1CrlV/zwNbSMGIoOxKbMPi
+         QmNjU4WPaKjmDL6vTTqsIpV3oepoQGRES2gKabhQlrXjFpitZsQKxGOe7c8bEj4n3Dnn
+         x9Ta1qEf4ZJRZTAVV4KYQjO2j12WFA5v6Cr/MNlO3CvC8iyTlDcc3GOzyWRY9UpGPpxU
+         0fKQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=HQtnWNrP8D72LbEgXfy17eyXRyD3NwnFC8A9XXKTA4A=;
+        b=wL9FsRhXtn8MnWH5B+mx2jcLh/0Dz1cFbQDeCRq9oyBCYdOad54csKo1QQfZp9Cgd2
+         0rMTlDlBOOJIfiWck7WTwfWgai0UyW0mg853B+Oi5HLWaw2uoqnntYMx3FZLC93Vu37o
+         bfOK018WrDat+Rr0q09yFVvM8f3wqYjEL8hp5VA8R8iLfwLR1Ym51qQth4t8t/aBLHG2
+         6PcO56VVQwSaN7hr0PV61ZlPU+9YFUxg1jZAOrKRdgKQBfxhIR4PIAftwLyfX2CNemiQ
+         Tn9A4db5NEWMp+VaaFoX5x5rrwhbeI0dnWJvA4TNSGCsMs9HsCky4o6605zS8n3nOKb3
+         30/Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id fk4si147149ejb.161.2019.09.04.14.26.50
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 04 Sep 2019 14:26:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40168 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i5cnh-0000f3-82
+	for alex.bennee@linaro.org; Wed, 04 Sep 2019 17:26:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53297)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <clg@kaod.org>) id 1i5cBZ-0008A0-KL
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 16:47:27 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <clg@kaod.org>) id 1i5cBV-0000iV-EQ
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 16:47:25 -0400
+Received: from 12.mo4.mail-out.ovh.net ([178.33.104.253]:38459)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1i5cBU-0000hY-TH
+ for qemu-arm@nongnu.org; Wed, 04 Sep 2019 16:47:21 -0400
+Received: from player691.ha.ovh.net (unknown [10.108.35.210])
+ by mo4.mail-out.ovh.net (Postfix) with ESMTP id F00CA204BCB
+ for <qemu-arm@nongnu.org>; Wed,  4 Sep 2019 22:47:18 +0200 (CEST)
+Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
+ (Authenticated sender: clg@kaod.org)
+ by player691.ha.ovh.net (Postfix) with ESMTPSA id 405CB98B27AC;
+ Wed,  4 Sep 2019 20:47:12 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed,  4 Sep 2019 22:46:45 +0200
+Message-Id: <20190904204659.13878-2-clg@kaod.org>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190904204659.13878-1-clg@kaod.org>
+References: <20190904204659.13878-1-clg@kaod.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TUID: Qx0kwne8ZlNv
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 2510193846439807761
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrudejhedgudehudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 178.33.104.253
+Subject: [Qemu-arm] [RFC PATCH 01/15] hw: aspeed_scu: Add AST2600 support
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: unzf5lUDLLRI
 
-From: Paolo Bonzini <pbonzini@redhat.com>
+From: Joel Stanley <joel@jms.id.au>
 
-Rename Makefile.probe to Makefile.prereqs and make it actually
-define rules for the tests.
+AST2600 has extra registers. Increase the number of regs of the model
+and introduce a new field in the class to customize the MemoryRegion
+operations depending on the SoC model.
 
-Rename Makefile to Makefile.target, since it is not a toplevel
-makefile.
-
-Rename Makefile.include to Makefile.qemu and disentangle it
-from the QEMU Makefile.target, so that it is invoked recursively
-by tests/Makefile.include.  Tests are now placed in
-tests/tcg/$(TARGET).
-
-Drop the usage of TARGET_BASE_ARCH, which is ignored by everything except
-x86_64 and aarch64.  Fix x86 tests by using -cpu max and, while
-at it, standardize on QEMU_OPTS for aarch64 tests too.
-
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-Message-Id: <20190807143523.15917-3-pbonzini@redhat.com>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+[clg: - improved commit log ]
+      - reworked mode integration into new objet class ]
+Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- Makefile.target                               |  3 --
- tests/Makefile.include                        | 23 +++++----
- .../tcg/{Makefile.probe => Makefile.prereqs}  |  5 +-
- tests/tcg/{Makefile.include => Makefile.qemu} | 48 +++++++++++--------
- tests/tcg/{Makefile => Makefile.target}       | 13 ++---
- tests/tcg/aarch64/Makefile.target             | 12 +++--
- tests/tcg/arm/Makefile.softmmu-target         |  4 --
- tests/tcg/i386/Makefile.softmmu-target        |  8 ----
- tests/tcg/i386/Makefile.target                | 13 ++---
- tests/tcg/x86_64/Makefile.softmmu-target      | 36 ++++++++++++++
- tests/tcg/x86_64/Makefile.target              |  7 +--
- 11 files changed, 100 insertions(+), 72 deletions(-)
- rename tests/tcg/{Makefile.probe => Makefile.prereqs} (92%)
- rename tests/tcg/{Makefile.include => Makefile.qemu} (52%)
- rename tests/tcg/{Makefile => Makefile.target} (92%)
- create mode 100644 tests/tcg/x86_64/Makefile.softmmu-target
+ include/hw/misc/aspeed_scu.h |   7 +-
+ hw/misc/aspeed_scu.c         | 184 ++++++++++++++++++++++++++++++++++-
+ 2 files changed, 185 insertions(+), 6 deletions(-)
 
-diff --git a/Makefile.target b/Makefile.target
-index 933b27453a1..5e916230c43 100644
---- a/Makefile.target
-+++ b/Makefile.target
-@@ -39,9 +39,6 @@ endif
- PROGS=$(QEMU_PROG) $(QEMU_PROGW)
- STPFILES=
- 
--# Makefile Tests
--include $(SRC_PATH)/tests/tcg/Makefile.include
--
- config-target.h: config-target.h-timestamp
- config-target.h-timestamp: config-target.mak
- 
-diff --git a/tests/Makefile.include b/tests/Makefile.include
-index f5ac09549ca..8400656b9d3 100644
---- a/tests/Makefile.include
-+++ b/tests/Makefile.include
-@@ -1062,23 +1062,28 @@ RUN_TCG_TARGET_RULES=$(patsubst %,run-tcg-tests-%, $(TARGET_DIRS))
- ifeq ($(HAVE_USER_DOCKER),y)
- # Probe for the Docker Builds needed for each build
- $(foreach PROBE_TARGET,$(TARGET_DIRS), 				\
--	$(eval -include $(SRC_PATH)/tests/tcg/Makefile.probe) 	\
--	$(if $(DOCKER_PREREQ), 					\
--		$(eval build-tcg-tests-$(PROBE_TARGET): $(DOCKER_PREREQ))))
-+	$(eval -include $(SRC_PATH)/tests/tcg/Makefile.prereqs))
- endif
- 
- build-tcg-tests-%:
--	$(call quiet-command,$(MAKE) $(SUBDIR_MAKEFLAGS) -C $* V="$(V)" \
--		SKIP_DOCKER_BUILD=1 TARGET_DIR="$*/" guest-tests, \
-+	$(call quiet-command,$(MAKE) $(SUBDIR_MAKEFLAGS) \
-+		-f $(SRC_PATH)/tests/tcg/Makefile.qemu \
-+		SRC_PATH=$(SRC_PATH) \
-+	       	V="$(V)" TARGET_DIR="$*/" guest-tests, \
- 		"BUILD", "TCG tests for $*")
- 
--run-tcg-tests-%: % build-tcg-tests-%
--	$(call quiet-command,$(MAKE) $(SUBDIR_MAKEFLAGS) -C $* V="$(V)" \
--		SKIP_DOCKER_BUILD=1 TARGET_DIR="$*/" run-guest-tests, \
-+run-tcg-tests-%: build-tcg-tests-% %/all
-+	$(call quiet-command,$(MAKE) $(SUBDIR_MAKEFLAGS) \
-+		-f $(SRC_PATH)/tests/tcg/Makefile.qemu \
-+		SRC_PATH=$(SRC_PATH) SPEED="$(SPEED)" \
-+		V="$(V)" TARGET_DIR="$*/" run-guest-tests, \
- 		"RUN", "TCG tests for $*")
- 
- clean-tcg-tests-%:
--	$(call quiet-command,$(MAKE) $(SUBDIR_MAKEFLAGS) -C $* V="$(V)" TARGET_DIR="$*/" clean-guest-tests,)
-+	$(call quiet-command,$(MAKE) $(SUBDIR_MAKEFLAGS) \
-+		-f $(SRC_PATH)/tests/tcg/Makefile.qemu \
-+		SRC_PATH=$(SRC_PATH) TARGET_DIR="$*/" clean-guest-tests, \
-+		"RUN", "TCG tests for $*")
- 
- .PHONY: build-tcg
- build-tcg: $(BUILD_TCG_TARGET_RULES)
-diff --git a/tests/tcg/Makefile.probe b/tests/tcg/Makefile.prereqs
-similarity index 92%
-rename from tests/tcg/Makefile.probe
-rename to tests/tcg/Makefile.prereqs
-index 9dc654663d6..53b01962e1d 100644
---- a/tests/tcg/Makefile.probe
-+++ b/tests/tcg/Makefile.prereqs
-@@ -8,20 +8,19 @@
- # each target.
- 
- # First we need the target makefile which tells us the target architecture
-+CROSS_CC_GUEST:=
- -include $(BUILD_DIR)/$(PROBE_TARGET)/config-target.mak
- 
- # Then we load up the target architecture makefiles which tell us
- # about the compilers
--CROSS_CC_GUEST:=
- DOCKER_IMAGE:=
--DOCKER_PREREQ:=
- 
- -include $(SRC_PATH)/tests/tcg/$(TARGET_BASE_ARCH)/Makefile.include
- -include $(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.include
- 
- ifndef CROSS_CC_GUEST
- ifneq ($(DOCKER_IMAGE),)
--DOCKER_PREREQ:=docker-image-$(DOCKER_IMAGE)
-+build-tcg-tests-$(PROBE_TARGET): docker-image-$(DOCKER_IMAGE)
- endif
- endif
- 
-diff --git a/tests/tcg/Makefile.include b/tests/tcg/Makefile.qemu
-similarity index 52%
-rename from tests/tcg/Makefile.include
-rename to tests/tcg/Makefile.qemu
-index 210f8428237..7eff11d434e 100644
---- a/tests/tcg/Makefile.include
-+++ b/tests/tcg/Makefile.qemu
-@@ -2,20 +2,23 @@
- #
- # TCG tests (per-target rules)
- #
--# This Makefile fragment is included from the per-target
--# Makefile.target so will be invoked for each linux-user program we
--# build. We have two options for compiling, either using a configured
--# guest compiler or calling one of our docker images to do it for us.
-+# This Makefile fragment is included from the build-tcg target, once
-+# for each target we build. We have two options for compiling, either
-+# using a configured guest compiler or calling one of our docker images
-+# to do it for us.
- #
- 
- # The per ARCH makefile, if it exists, holds extra information about
- # useful docker images or alternative compiler flags.
- 
---include $(SRC_PATH)/tests/tcg/$(TARGET_BASE_ARCH)/Makefile.include
---include $(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.include
-+include $(TARGET_DIR)config-target.mak
-+include $(SRC_PATH)/rules.mak
-+include $(wildcard \
-+	$(SRC_PATH)/tests/tcg/$(TARGET_BASE_ARCH)/Makefile.include \
-+	$(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.include)
- 
- GUEST_BUILD=
--TCG_MAKE=$(SRC_PATH)/tests/tcg/Makefile
-+TCG_MAKE=../Makefile.target
- # Support installed Cross Compilers
- 
- ifdef CROSS_CC_GUEST
-@@ -23,9 +26,9 @@ ifdef CROSS_CC_GUEST
- .PHONY: cross-build-guest-tests
- cross-build-guest-tests:
- 	$(call quiet-command, \
--	   (mkdir -p tests && cd tests && \
--	    $(MAKE) -f $(TCG_MAKE) CC=$(CROSS_CC_GUEST) \
--			BUILD_STATIC=$(CROSS_CC_GUEST_STATIC) \
-+	   (mkdir -p tests/tcg/$(TARGET_DIR) && cd tests/tcg/$(TARGET_DIR) && \
-+	    $(MAKE) -f $(TCG_MAKE) TARGET_DIR="$(TARGET_DIR)" CC="$(CROSS_CC_GUEST)" \
-+			SRC_PATH="$(SRC_PATH)" BUILD_STATIC=$(CROSS_CC_GUEST_STATIC) \
- 			EXTRA_CFLAGS=$(CROSS_CC_GUEST_CFLAGS)), \
- 	"BUILD","$(TARGET_NAME) guest-tests with $(CROSS_CC_GUEST)")
- 
-@@ -39,20 +42,20 @@ ifeq ($(HAVE_USER_DOCKER)$(GUEST_BUILD),y)
- ifneq ($(DOCKER_IMAGE),)
- 
- # We also need the Docker make rules to depend on
-+SKIP_DOCKER_BUILD=1
- include $(SRC_PATH)/tests/docker/Makefile.include
- 
- DOCKER_COMPILE_CMD="$(DOCKER_SCRIPT) cc \
- 		--cc $(DOCKER_CROSS_COMPILER) \
- 		-i qemu:$(DOCKER_IMAGE) \
- 		-s $(SRC_PATH) -- "
--DOCKER_PREREQ=docker-image-$(DOCKER_IMAGE)
- 
- .PHONY: docker-build-guest-tests
--docker-build-guest-tests: $(DOCKER_PREREQ)
-+docker-build-guest-tests: docker-image-$(DOCKER_IMAGE)
- 	$(call quiet-command, \
--	  (mkdir -p tests && cd tests && \
--	   $(MAKE) -f $(TCG_MAKE) CC=$(DOCKER_COMPILE_CMD) \
--			BUILD_STATIC=y \
-+	  (mkdir -p tests/tcg/$(TARGET_DIR) && cd tests/tcg/$(TARGET_DIR) && \
-+	   $(MAKE) -f $(TCG_MAKE) TARGET_DIR="$(TARGET_DIR)" CC=$(DOCKER_COMPILE_CMD) \
-+			SRC_PATH="$(SRC_PATH)" BUILD_STATIC=y \
- 			EXTRA_CFLAGS=$(DOCKER_CROSS_COMPILER_CFLAGS)), \
- 	"BUILD","$(TARGET_NAME) guest-tests with docker qemu:$(DOCKER_IMAGE)")
- 
-@@ -62,27 +65,32 @@ endif
- endif
- 
- # Final targets
-+all:
-+	@echo "Do not invoke this Makefile directly"; exit 1
+diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
+index 239e94fe2c47..1d7f7ffc1598 100644
+--- a/include/hw/misc/aspeed_scu.h
++++ b/include/hw/misc/aspeed_scu.h
+@@ -17,8 +17,10 @@
+ #define ASPEED_SCU(obj) OBJECT_CHECK(AspeedSCUState, (obj), TYPE_ASPEED_=
+SCU)
+ #define TYPE_ASPEED_2400_SCU TYPE_ASPEED_SCU "-ast2400"
+ #define TYPE_ASPEED_2500_SCU TYPE_ASPEED_SCU "-ast2500"
++#define TYPE_ASPEED_2600_SCU TYPE_ASPEED_SCU "-ast2600"
+=20
+ #define ASPEED_SCU_NR_REGS (0x1A8 >> 2)
++#define ASPEED_AST2600_SCU_NR_REGS (0xE20 >> 2)
+=20
+ typedef struct AspeedSCUState {
+     /*< private >*/
+@@ -27,7 +29,7 @@ typedef struct AspeedSCUState {
+     /*< public >*/
+     MemoryRegion iomem;
+=20
+-    uint32_t regs[ASPEED_SCU_NR_REGS];
++    uint32_t regs[ASPEED_AST2600_SCU_NR_REGS];
+     uint32_t silicon_rev;
+     uint32_t hw_strap1;
+     uint32_t hw_strap2;
+@@ -38,6 +40,7 @@ typedef struct AspeedSCUState {
+ #define AST2400_A1_SILICON_REV   0x02010303U
+ #define AST2500_A0_SILICON_REV   0x04000303U
+ #define AST2500_A1_SILICON_REV   0x04010303U
++#define AST2600_A0_SILICON_REV   0x05000303U
+=20
+ #define ASPEED_IS_AST2500(si_rev)     ((((si_rev) >> 24) & 0xff) =3D=3D =
+0x04)
+=20
+@@ -54,6 +57,8 @@ typedef struct  AspeedSCUClass {
+     const uint32_t *resets;
+     uint32_t (*calc_hpll)(AspeedSCUState *s, uint32_t hpll_reg);
+     uint32_t apb_divider;
++    uint32_t nr_regs;
++    const MemoryRegionOps *ops;
+ }  AspeedSCUClass;
+=20
+ #define ASPEED_SCU_PROT_KEY      0x1688A8A8
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index 620b25c20476..4190adab8220 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -88,6 +88,33 @@
+ #define BMC_REV              TO_REG(0x19C)
+ #define BMC_DEV_ID           TO_REG(0x1A4)
+=20
++#define AST2600_PROT_KEY          TO_REG(0x00)
++#define AST2600_SILICON_REV       TO_REG(0x04)
++#define AST2600_SILICON_REV2      TO_REG(0x14)
++#define AST2600_SYS_RST_CTRL      TO_REG(0x40)
++#define AST2600_SYS_RST_CTRL_CLR  TO_REG(0x44)
++#define AST2600_SYS_RST_CTRL2     TO_REG(0x50)
++#define AST2600_SYS_RST_CTRL2_CLR TO_REG(0x54)
++#define AST2600_CLK_STOP_CTRL     TO_REG(0x80)
++#define AST2600_CLK_STOP_CTRL_CLR TO_REG(0x84)
++#define AST2600_CLK_STOP_CTRL2     TO_REG(0x90)
++#define AST2600_CLK_STOP_CTR2L_CLR TO_REG(0x94)
++#define AST2600_MPLL_EXT          TO_REG(0x224)
++#define AST2600_EPLL_EXT          TO_REG(0x244)
++#define AST2600_CLK_SEL           TO_REG(0x300)
++#define AST2600_CLK_SEL2          TO_REG(0x304)
++#define AST2600_CLK_SEL3          TO_REG(0x310)
++#define AST2600_HW_STRAP1         TO_REG(0x500)
++#define AST2600_HW_STRAP1_CLR     TO_REG(0x504)
++#define AST2600_HW_STRAP1_PROT    TO_REG(0x508)
++#define AST2600_HW_STRAP2         TO_REG(0x510)
++#define AST2600_HW_STRAP2_CLR     TO_REG(0x514)
++#define AST2600_HW_STRAP2_PROT    TO_REG(0x518)
++#define AST2600_RNG_CTRL          TO_REG(0x524)
++#define AST2600_RNG_DATA          TO_REG(0x540)
 +
- .PHONY: guest-tests
- 
- ifneq ($(GUEST_BUILD),)
- guest-tests: $(GUEST_BUILD)
- 
--run-guest-tests: guest-tests qemu-$(subst y,system-,$(CONFIG_SOFTMMU))$(TARGET_NAME)
-+run-guest-tests: guest-tests
- 	$(call quiet-command, \
--	(cd tests && $(MAKE) -f $(TCG_MAKE) SPEED=$(SPEED) run), \
-+	(cd tests/tcg/$(TARGET_DIR) && \
-+	 $(MAKE) -f $(TCG_MAKE) TARGET_DIR="$(TARGET_DIR)" \
-+	 		SRC_PATH="$(SRC_PATH)" SPEED=$(SPEED) run), \
- 	"RUN", "tests for $(TARGET_NAME)")
- 
- else
- guest-tests:
- 	$(call quiet-command, /bin/true, "BUILD", \
--		"$(TARGET_NAME) guest-tests SKIPPED")
-+		"$(TARGET_DIR) guest-tests SKIPPED")
- 
- run-guest-tests:
- 	$(call quiet-command, /bin/true, "RUN", \
--		"tests for $(TARGET_NAME) SKIPPED")
-+		"tests for $(TARGET_DIR) SKIPPED")
- endif
- 
- # It doesn't matter if these don't exits
- .PHONY: clean-guest-tests
- clean-guest-tests:
--	rm -rf tests || echo "no $(TARGET_NAME) tests to remove"
-+	rm -rf tests/tcg/$(TARGET_DIR)
-diff --git a/tests/tcg/Makefile b/tests/tcg/Makefile.target
-similarity index 92%
-rename from tests/tcg/Makefile
-rename to tests/tcg/Makefile.target
-index 9f567686240..8dbcba4474f 100644
---- a/tests/tcg/Makefile
-+++ b/tests/tcg/Makefile.target
-@@ -29,8 +29,9 @@
- # We also expect to be in the tests build dir for the FOO-(linux-user|softmmu).
- #
- 
-+all:
- -include ../../config-host.mak
---include ../config-target.mak
-+-include ../../../$(TARGET_DIR)/config-target.mak
- 
- # for including , in command strings
- COMMA := ,
-@@ -64,9 +65,9 @@ LDFLAGS=
- 
- # The QEMU for this TARGET
- ifdef CONFIG_USER_ONLY
--QEMU=../qemu-$(TARGET_NAME)
-+QEMU=../../../$(TARGET_DIR)/qemu-$(TARGET_NAME)
- else
--QEMU=../qemu-system-$(TARGET_NAME)
-+QEMU=../../../$(TARGET_DIR)/qemu-system-$(TARGET_NAME)
- endif
- QEMU_OPTS=
- 
-@@ -82,10 +83,7 @@ ifdef CONFIG_USER_ONLY
- # The order we include is important. We include multiarch, base arch
- # and finally arch if it's not the same as base arch.
- -include $(SRC_PATH)/tests/tcg/multiarch/Makefile.target
---include $(SRC_PATH)/tests/tcg/$(TARGET_BASE_ARCH)/Makefile.target
--ifneq ($(TARGET_BASE_ARCH),$(TARGET_NAME))
- -include $(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.target
--endif
- 
- # Add the common build options
- CFLAGS+=-Wall -O0 -g -fno-strict-aliasing
-@@ -101,10 +99,7 @@ else
- # are expected to provide their own build recipes.
- -include $(SRC_PATH)/tests/tcg/minilib/Makefile.target
- -include $(SRC_PATH)/tests/tcg/multiarch/system/Makefile.softmmu-target
---include $(SRC_PATH)/tests/tcg/$(TARGET_BASE_ARCH)/Makefile.softmmu-target
--ifneq ($(TARGET_BASE_ARCH),$(TARGET_NAME))
- -include $(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.softmmu-target
--endif
- 
- endif
- 
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 31ba9cfcaa1..e763dd9da37 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -2,12 +2,14 @@
- #
- # AArch64 specific tweaks
- 
-+ARM_SRC=$(SRC_PATH)/tests/tcg/arm
-+VPATH 		+= $(ARM_SRC)
++#define AST2600_CLK TO_REG(0x40)
 +
- AARCH64_SRC=$(SRC_PATH)/tests/tcg/aarch64
- VPATH 		+= $(AARCH64_SRC)
- 
--# we don't build any of the ARM tests
--AARCH64_TESTS=$(filter-out $(ARM_TESTS), $(TESTS))
--AARCH64_TESTS+=fcvt
-+# we don't build any other ARM test
-+AARCH64_TESTS=fcvt
- 
- fcvt: LDFLAGS+=-lm
- 
-@@ -16,6 +18,6 @@ run-fcvt: fcvt
- 	$(call diff-out,$<,$(AARCH64_SRC)/fcvt.ref)
- 
- AARCH64_TESTS += pauth-1 pauth-2
--run-pauth-%: QEMU += -cpu max
-+run-pauth-%: QEMU_OPTS += -cpu max
- 
--TESTS:=$(AARCH64_TESTS)
-+TESTS += $(AARCH64_TESTS)
-diff --git a/tests/tcg/arm/Makefile.softmmu-target b/tests/tcg/arm/Makefile.softmmu-target
-index 2deb06e6e46..231e9a57b48 100644
---- a/tests/tcg/arm/Makefile.softmmu-target
-+++ b/tests/tcg/arm/Makefile.softmmu-target
-@@ -3,8 +3,6 @@
- # ARM SoftMMU tests - included from tests/tcg/Makefile
- #
- 
--ifeq ($(TARGET_ABI_DIR),arm)
--
- ARM_SRC=$(SRC_PATH)/tests/tcg/arm
- 
- # Set search path for all sources
-@@ -25,5 +23,3 @@ LDFLAGS+=-nostdlib -N -static
- test-armv6m-undef: EXTRA_CFLAGS+=-mcpu=cortex-m0
- 
- run-test-armv6m-undef: QEMU_OPTS+=-semihosting -M microbit -kernel
--
--endif
-diff --git a/tests/tcg/i386/Makefile.softmmu-target b/tests/tcg/i386/Makefile.softmmu-target
-index cee342017e5..1c8790eecd2 100644
---- a/tests/tcg/i386/Makefile.softmmu-target
-+++ b/tests/tcg/i386/Makefile.softmmu-target
-@@ -12,17 +12,9 @@ X64_SYSTEM_SRC=$(SRC_PATH)/tests/tcg/x86_64/system
- # These objects provide the basic boot code and helper functions for all tests
- CRT_OBJS=boot.o
- 
--ifeq ($(TARGET_X86_64), y)
--CRT_PATH=$(X64_SYSTEM_SRC)
--CFLAGS=-march=x86-64
--LINK_SCRIPT=$(X64_SYSTEM_SRC)/kernel.ld
--LDFLAGS=-Wl,-T$(LINK_SCRIPT) -Wl,-melf_x86_64
--else
- CRT_PATH=$(I386_SYSTEM_SRC)
--CFLAGS+=-m32
- LINK_SCRIPT=$(I386_SYSTEM_SRC)/kernel.ld
- LDFLAGS=-Wl,-T$(LINK_SCRIPT) -Wl,-melf_i386
--endif
- CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
- LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
- 
-diff --git a/tests/tcg/i386/Makefile.target b/tests/tcg/i386/Makefile.target
-index d0eb7023e52..08c5736a4d4 100644
---- a/tests/tcg/i386/Makefile.target
-+++ b/tests/tcg/i386/Makefile.target
-@@ -6,14 +6,11 @@ I386_SRC=$(SRC_PATH)/tests/tcg/i386
- VPATH 		+= $(I386_SRC)
- 
- I386_SRCS=$(notdir $(wildcard $(I386_SRC)/*.c))
--I386_TESTS=$(I386_SRCS:.c=)
--I386_ONLY_TESTS=$(filter-out test-i386-ssse3, $(I386_TESTS))
-+ALL_X86_TESTS=$(I386_SRCS:.c=)
-+I386_TESTS:=$(filter-out test-i386-ssse3, $(ALL_X86_TESTS))
-+X86_64_TESTS:=$(filter test-i386-ssse3, $(ALL_X86_TESTS))
- # Update TESTS
--TESTS+=$(I386_ONLY_TESTS)
--
--ifneq ($(TARGET_NAME),x86_64)
--CFLAGS+=-m32
--endif
-+TESTS=$(MULTIARCH_TESTS) $(I386_TESTS)
- 
- #
- # hello-i386 is a barebones app
-@@ -26,7 +23,7 @@ hello-i386: LDFLAGS+=-nostdlib
- #
- 
- test-i386: test-i386.c test-i386-code16.S test-i386-vm86.S test-i386.h test-i386-shift.h test-i386-muldiv.h
--	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ \
-+	$(CC) $(CFLAGS) $(LDFLAGS) $(EXTRA_CFLAGS) -o $@ \
- 	   $(<D)/test-i386.c $(<D)/test-i386-code16.S $(<D)/test-i386-vm86.S -lm
- 
- ifeq ($(SPEED), slow)
-diff --git a/tests/tcg/x86_64/Makefile.softmmu-target b/tests/tcg/x86_64/Makefile.softmmu-target
-new file mode 100644
-index 00000000000..df252e761cd
---- /dev/null
-+++ b/tests/tcg/x86_64/Makefile.softmmu-target
-@@ -0,0 +1,36 @@
-+#
-+# x86 system tests
-+#
-+# This currently builds only for i386. The common C code is built
-+# with standard compiler flags however so we can support both by
-+# adding additional boot files for x86_64.
-+#
+ #define SCU_IO_REGION_SIZE 0x1000
+=20
+ static const uint32_t ast2400_a0_resets[ASPEED_SCU_NR_REGS] =3D {
+@@ -178,7 +205,7 @@ static uint64_t aspeed_scu_read(void *opaque, hwaddr =
+offset, unsigned size)
+     AspeedSCUState *s =3D ASPEED_SCU(opaque);
+     int reg =3D TO_REG(offset);
+=20
+-    if (reg >=3D ARRAY_SIZE(s->regs)) {
++    if (reg >=3D ASPEED_SCU_NR_REGS) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx=
+ "\n",
+                       __func__, offset);
+@@ -208,7 +235,7 @@ static void aspeed_scu_write(void *opaque, hwaddr off=
+set, uint64_t data,
+     AspeedSCUState *s =3D ASPEED_SCU(opaque);
+     int reg =3D TO_REG(offset);
+=20
+-    if (reg >=3D ARRAY_SIZE(s->regs)) {
++    if (reg >=3D ASPEED_SCU_NR_REGS) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: Out-of-bounds write at offset 0x%" HWADDR_PRI=
+x "\n",
+                       __func__, offset);
+@@ -346,7 +373,7 @@ static void aspeed_scu_reset(DeviceState *dev)
+     AspeedSCUState *s =3D ASPEED_SCU(dev);
+     AspeedSCUClass *asc =3D ASPEED_SCU_GET_CLASS(dev);
+=20
+-    memcpy(s->regs, asc->resets, sizeof(s->regs));
++    memcpy(s->regs, asc->resets, asc->nr_regs * 4);
+     s->regs[SILICON_REV] =3D s->silicon_rev;
+     s->regs[HW_STRAP1] =3D s->hw_strap1;
+     s->regs[HW_STRAP2] =3D s->hw_strap2;
+@@ -358,6 +385,7 @@ static uint32_t aspeed_silicon_revs[] =3D {
+     AST2400_A1_SILICON_REV,
+     AST2500_A0_SILICON_REV,
+     AST2500_A1_SILICON_REV,
++    AST2600_A0_SILICON_REV,
+ };
+=20
+ bool is_supported_silicon_rev(uint32_t silicon_rev)
+@@ -377,6 +405,7 @@ static void aspeed_scu_realize(DeviceState *dev, Erro=
+r **errp)
+ {
+     SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
+     AspeedSCUState *s =3D ASPEED_SCU(dev);
++    AspeedSCUClass *asc =3D ASPEED_SCU_GET_CLASS(dev);
+=20
+     if (!is_supported_silicon_rev(s->silicon_rev)) {
+         error_setg(errp, "Unknown silicon revision: 0x%" PRIx32,
+@@ -384,7 +413,7 @@ static void aspeed_scu_realize(DeviceState *dev, Erro=
+r **errp)
+         return;
+     }
+=20
+-    memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_scu_ops, s,
++    memory_region_init_io(&s->iomem, OBJECT(s), asc->ops, s,
+                           TYPE_ASPEED_SCU, SCU_IO_REGION_SIZE);
+=20
+     sysbus_init_mmio(sbd, &s->iomem);
+@@ -395,7 +424,7 @@ static const VMStateDescription vmstate_aspeed_scu =3D=
+ {
+     .version_id =3D 1,
+     .minimum_version_id =3D 1,
+     .fields =3D (VMStateField[]) {
+-        VMSTATE_UINT32_ARRAY(regs, AspeedSCUState, ASPEED_SCU_NR_REGS),
++        VMSTATE_UINT32_ARRAY(regs, AspeedSCUState, ASPEED_AST2600_SCU_NR=
+_REGS),
+         VMSTATE_END_OF_LIST()
+     }
+ };
+@@ -436,6 +465,8 @@ static void aspeed_2400_scu_class_init(ObjectClass *k=
+lass, void *data)
+     asc->resets =3D ast2400_a0_resets;
+     asc->calc_hpll =3D aspeed_2400_scu_calc_hpll;
+     asc->apb_divider =3D 2;
++    asc->nr_regs =3D ASPEED_SCU_NR_REGS;
++    asc->ops =3D &aspeed_scu_ops;
+ }
+=20
+ static const TypeInfo aspeed_2400_scu_info =3D {
+@@ -454,6 +485,8 @@ static void aspeed_2500_scu_class_init(ObjectClass *k=
+lass, void *data)
+     asc->resets =3D ast2500_a1_resets;
+     asc->calc_hpll =3D aspeed_2500_scu_calc_hpll;
+     asc->apb_divider =3D 4;
++    asc->nr_regs =3D ASPEED_SCU_NR_REGS;
++    asc->ops =3D &aspeed_scu_ops;
+ }
+=20
+ static const TypeInfo aspeed_2500_scu_info =3D {
+@@ -463,11 +496,152 @@ static const TypeInfo aspeed_2500_scu_info =3D {
+     .class_init =3D aspeed_2500_scu_class_init,
+ };
+=20
++static uint64_t aspeed_ast2600_scu_read(void *opaque, hwaddr offset,
++                                        unsigned size)
++{
++    AspeedSCUState *s =3D ASPEED_SCU(opaque);
++    int reg =3D TO_REG(offset);
 +
-+I386_SYSTEM_SRC=$(SRC_PATH)/tests/tcg/i386/system
-+X64_SYSTEM_SRC=$(SRC_PATH)/tests/tcg/x86_64/system
++    if (reg >=3D ASPEED_AST2600_SCU_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx=
+ "\n",
++                      __func__, offset);
++        return 0;
++    }
 +
-+# These objects provide the basic boot code and helper functions for all tests
-+CRT_OBJS=boot.o
++    switch (reg) {
++    case AST2600_EPLL_EXT:
++    case AST2600_MPLL_EXT:
++        /* PLLs are always "locked" */
++        return s->regs[reg] | BIT(31);
++    case AST2600_RNG_DATA:
++        /*
++         * On hardware, RNG_DATA works regardless of the state of the
++         * enable bit in RNG_CTRL
++         *
++         * TODO: Check this is true for ast2600
++         */
++        s->regs[AST2600_RNG_DATA] =3D aspeed_scu_get_random();
++        break;
++    }
 +
-+CRT_PATH=$(X64_SYSTEM_SRC)
-+LINK_SCRIPT=$(X64_SYSTEM_SRC)/kernel.ld
-+LDFLAGS=-Wl,-T$(LINK_SCRIPT) -Wl,-melf_x86_64
-+CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
-+LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
++    return s->regs[reg];
++}
 +
-+TESTS+=$(MULTIARCH_TESTS)
++static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset, uint64=
+_t data,
++                                     unsigned size)
++{
++    AspeedSCUState *s =3D ASPEED_SCU(opaque);
++    int reg =3D TO_REG(offset);
 +
-+# building head blobs
-+.PRECIOUS: $(CRT_OBJS)
++    if (reg >=3D ASPEED_AST2600_SCU_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Out-of-bounds write at offset 0x%" HWADDR_PRI=
+x "\n",
++                      __func__, offset);
++        return;
++    }
 +
-+%.o: $(CRT_PATH)/%.S
-+	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -c $< -o $@
++    if (reg > PROT_KEY && !s->regs[PROT_KEY]) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: SCU is locked!\n", __func__)=
+;
++    }
 +
-+# Build and link the tests
-+%: %.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
-+	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
++    trace_aspeed_scu_write(offset, size, data);
 +
-+memory: CFLAGS+=-DCHECK_UNALIGNED=1
++    switch (reg) {
++    case AST2600_PROT_KEY:
++        s->regs[reg] =3D (data =3D=3D ASPEED_SCU_PROT_KEY) ? 1 : 0;
++        return;
++    case AST2600_HW_STRAP1:
++    case AST2600_HW_STRAP2:
++        if (s->regs[reg + 2]) {
++            return;
++        }
++        /* fall through */
++    case AST2600_SYS_RST_CTRL:
++    case AST2600_SYS_RST_CTRL2:
++        /* W1S (Write 1 to set) registers */
++        s->regs[reg] |=3D data;
++        return;
++    case AST2600_SYS_RST_CTRL_CLR:
++    case AST2600_SYS_RST_CTRL2_CLR:
++    case AST2600_HW_STRAP1_CLR:
++    case AST2600_HW_STRAP2_CLR:
++        /* W1C (Write 1 to clear) registers */
++        s->regs[reg] &=3D ~data;
++        return;
 +
-+# Running
-+QEMU_OPTS+=-device isa-debugcon,chardev=output -device isa-debug-exit,iobase=0xf4,iosize=0x4 -kernel
-diff --git a/tests/tcg/x86_64/Makefile.target b/tests/tcg/x86_64/Makefile.target
-index 74f170b9ede..20bf96202ad 100644
---- a/tests/tcg/x86_64/Makefile.target
-+++ b/tests/tcg/x86_64/Makefile.target
-@@ -6,9 +6,10 @@
- # $(SRC)/tests/tcg/i386/
- #
- 
--X86_64_TESTS=$(filter-out $(I386_ONLY_TESTS), $(TESTS))
--X86_64_TESTS+=test-x86_64
--TESTS:=$(X86_64_TESTS)
-+include $(SRC_PATH)/tests/tcg/i386/Makefile.target
++    case AST2600_RNG_DATA:
++    case AST2600_SILICON_REV:
++    case AST2600_SILICON_REV2:
++        /* Add read only registers here */
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Write to read-only offset 0x%" HWADDR_PRIx "\=
+n",
++                      __func__, offset);
++        return;
++    }
 +
-+TESTS=$(MULTIARCH_TESTS) $(X86_64_TESTS) test-x86_64
-+QEMU_OPTS += -cpu max
- 
- test-x86_64: LDFLAGS+=-lm -lc
- test-x86_64: test-i386.c test-i386.h test-i386-shift.h test-i386-muldiv.h
--- 
-2.20.1
++    s->regs[reg] =3D data;
++}
++
++static const MemoryRegionOps aspeed_ast2600_scu_ops =3D {
++    .read =3D aspeed_ast2600_scu_read,
++    .write =3D aspeed_ast2600_scu_write,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
++    .valid.min_access_size =3D 4,
++    .valid.max_access_size =3D 4,
++    .valid.unaligned =3D false,
++};
++
++static const uint32_t ast2600_a0_resets[ASPEED_AST2600_SCU_NR_REGS] =3D =
+{
++    [AST2600_SILICON_REV]       =3D AST2600_SILICON_REV,
++    [AST2600_SILICON_REV2]      =3D AST2600_SILICON_REV,
++    [AST2600_SYS_RST_CTRL]      =3D 0xF7CFFEDC | 0x100,
++    [AST2600_SYS_RST_CTRL2]     =3D 0xFFFFFFFC,
++    [AST2600_CLK_STOP_CTRL]     =3D 0xEFF43E8B,
++    [AST2600_CLK_STOP_CTRL2]    =3D 0xFFF0FFF0,
++};
++
++static void aspeed_ast2600_scu_reset(DeviceState *dev)
++{
++    AspeedSCUState *s =3D ASPEED_SCU(dev);
++    AspeedSCUClass *asc =3D ASPEED_SCU_GET_CLASS(dev);
++
++    memcpy(s->regs, asc->resets, asc->nr_regs * 4);
++
++    s->regs[AST2600_SILICON_REV] =3D s->silicon_rev;
++    s->regs[AST2600_SILICON_REV2] =3D s->silicon_rev;
++    s->regs[AST2600_HW_STRAP1] =3D s->hw_strap1;
++    s->regs[AST2600_HW_STRAP2] =3D s->hw_strap2;
++    s->regs[PROT_KEY] =3D s->hw_prot_key;
++}
++
++static void aspeed_2600_scu_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++    AspeedSCUClass *asc =3D ASPEED_SCU_CLASS(klass);
++
++    dc->desc =3D "ASPEED 2600 System Control Unit";
++    dc->reset =3D aspeed_ast2600_scu_reset;
++    asc->resets =3D ast2600_a0_resets;
++    asc->calc_hpll =3D aspeed_2500_scu_calc_hpll;
++    asc->apb_divider =3D 4;
++    asc->nr_regs =3D ASPEED_AST2600_SCU_NR_REGS;
++    asc->ops =3D &aspeed_ast2600_scu_ops;
++}
++
++static const TypeInfo aspeed_2600_scu_info =3D {
++    .name =3D TYPE_ASPEED_2600_SCU,
++    .parent =3D TYPE_ASPEED_SCU,
++    .instance_size =3D sizeof(AspeedSCUState),
++    .class_init =3D aspeed_2600_scu_class_init,
++};
++
+ static void aspeed_scu_register_types(void)
+ {
+     type_register_static(&aspeed_scu_info);
+     type_register_static(&aspeed_2400_scu_info);
+     type_register_static(&aspeed_2500_scu_info);
++    type_register_static(&aspeed_2600_scu_info);
+ }
+=20
+ type_init(aspeed_scu_register_types);
+--=20
+2.21.0
+

@@ -1,98 +1,98 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp989698wrp;
-        Wed, 4 Sep 2019 10:25:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw76BxqW+te39+lYvce11o5p1DjGyO2DNQg9hk00OhPLS66wAKuGa/mrQzjb5o1WMgfPWDy
-X-Received: by 2002:aed:33e5:: with SMTP id v92mr20287907qtd.147.1567617917936;
-        Wed, 04 Sep 2019 10:25:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567617917; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp990066wrp;
+        Wed, 4 Sep 2019 10:25:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqww3kPdhw1+Xw9fofGJ8iiEOkRcvZIGZXaIqcAKhKfuO5qF59Um0m2lfgYiBgkydXykG8RV
+X-Received: by 2002:a50:f5f2:: with SMTP id x47mr14621961edm.203.1567617939135;
+        Wed, 04 Sep 2019 10:25:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567617939; cv=none;
         d=google.com; s=arc-20160816;
-        b=E6EoVYTXgCeNDP41XzQdyee/mKLVmWZmcdGSBj4WNx4X6EPffZYNycBktCfsR+ZFJB
-         9GE+js8PZTbZbhbpuYk5104y99jHezBLC1lLg5zdYvpy5SUMcCRVGFwHUaY0AiftRONn
-         QMQHP3jzXF0UKKyo7kKZeA0iTIXM6P2t/fZdzI+QHR6uCb/ubweXld6W1c/VqYDhxhSl
-         0jE2xxTjzkkt0QqID1s3tAYRzvtBM6gzURAMjkyf4HWXK9jv1oscl1eztPvrXaPGrlp/
-         Z9SKtAryGAauf9FbZyGnXEbyEuEIwxybCyqOuoQyGJflhRa8pVBB+sckuLMj34yWnlwU
-         5XbA==
+        b=Jh4K1AeDyImmPUOh0Ymlvpe7J7XR96yVY+Mq0jQYO3Pq5E190LWpc31Dqe5tHsS4/8
+         TbBbewjM5b3+8OsRu+k6puMMXBpnePucGg+M6dO68JNt1wHxgqgs7vv0tR/JiddPmXCw
+         CTCrb7S0/5V5LdufpLtFlAWDhFhcXNl7r9ggiRztRPPbpb3m+BNwhtNz2x1Q6vn6DkH8
+         ENJFIAypney4IffoPtviwvJMvIjvwu1I8uQJ/Yrm2nI//agGIWWdlzSiCcPDA8tU7ZXY
+         BISABQf1RRXLysEmv8wSTIjrQvqbY4Qdl5EuM5xZVAD2zPPZRv/KFjUGUz9GO8N3mvJF
+         pF3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=fquUmVkncxEMfeAsRc3/6BsqyJ3/ccTKHRFzefWvbc4=;
-        b=nq0BbuQIEfqGUkjkJ5yqOEJB9tGA5dNVpziCDgQ7Ph24d1iodEHyCDm1ucoJgM3oaX
-         VUC6Es3USBGY0C068szLYbT6GRzPr0JNyIzN32Oxx4bXVQmGxCp1UFpJGm/liwxGOF3E
-         n0hCSw0hyPQ6YNupG8ZQNMdqVOkAmfSo6fZNV2CK1cdfKv+cg5xQjLlZ6L8hJE8Mczo7
-         BHG5h1xes4313eeYkPImARHtToFSG4lb5pSUUXAYwrXA3R1FXjT78IL1ZA7qTGO3oYIw
-         EScVterDLD9uXTx/AYPQ4cdvYgSTXCZFc22AKPSg+s01kOO1/8WNIFDzoKYyKaOUrAPQ
-         vTbQ==
+        bh=4gzUK0T14zOkKkQ8x5EXERw/Gf3VD/73/5zTDUcL1hE=;
+        b=1GpPJJF5MRbTuG9WMH7D3fd0MBbGZTCkFlijklSbZyuJHozBpyRfXjBJxULrVxe7Ha
+         1kYLrsYbHChLP/Omo7VjPqtEJXh64nohwSUWck3YDP/1YclF5dcfa9IWwOGSysscIhyU
+         NXzhHT+8lSvPuZ/llSnX9mn+puVxT7aCGxAFRt9pvS9me4D5+gxYOz4uCfueHokZ0Ygi
+         zsjk6Gty0f8pfjjNntFIeqGF5NoJf3IxV5YvoTE7Tw+95oMYDD+ham1yJHBtY/qSaIar
+         PrPi9E0Y62DbhHy2aXvkRvAoQCed6CvIduShdlObIvUskg/WRju2X25h6BqI41REwa4o
+         lJFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pDrdlb2r;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BjvILWiF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k7si5837518qtd.144.2019.09.04.10.25.17
+        by mx.google.com with ESMTPS id x15si1787505eda.53.2019.09.04.10.25.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Sep 2019 10:25:17 -0700 (PDT)
+        Wed, 04 Sep 2019 10:25:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pDrdlb2r;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BjvILWiF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35784 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35788 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i5Z1w-0003Dz-VX
-	for alex.bennee@linaro.org; Wed, 04 Sep 2019 13:25:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48608)
+	id 1i5Z2H-0003fT-H1
+	for alex.bennee@linaro.org; Wed, 04 Sep 2019 13:25:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48513)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1i5Yql-0001jg-SE
- for qemu-devel@nongnu.org; Wed, 04 Sep 2019 13:13:45 -0400
+ id 1i5Yqe-0001bJ-Im
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 13:13:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1i5Yqk-0007AW-Jw
- for qemu-devel@nongnu.org; Wed, 04 Sep 2019 13:13:43 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:51644)
+ id 1i5Yqc-00076a-Rd
+ for qemu-devel@nongnu.org; Wed, 04 Sep 2019 13:13:36 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:36702)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1i5Yqj-0007A1-MG; Wed, 04 Sep 2019 13:13:41 -0400
-Received: by mail-wm1-x344.google.com with SMTP id k1so4154652wmi.1;
- Wed, 04 Sep 2019 10:13:41 -0700 (PDT)
+ id 1i5Yqc-00075x-KI; Wed, 04 Sep 2019 13:13:34 -0400
+Received: by mail-wm1-x343.google.com with SMTP id p13so4718393wmh.1;
+ Wed, 04 Sep 2019 10:13:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=fquUmVkncxEMfeAsRc3/6BsqyJ3/ccTKHRFzefWvbc4=;
- b=pDrdlb2rH6HXIVh5RptUMn3al7DtlWvRcvKpBaPq53spQUKpEKQ8tu2amFuF36KcB1
- m0xhE9u/BWG35kTr/duYfN+6ZpnvRO3m8IqMnljYOymenAdTX22gVSG3Y5HVn4hx+wuN
- 4TY4rPvOUVTYpQV5MliBprE8tdGbsVkF67cHWQ6/dPredUf+NkOePIQ1iGd6dGT0e4lD
- IlRtNNsbGvFz9SAxxV/YyURoh7b0iNsTslvE5mVaAkOxu5TUGJxHSVLFTSvvS4W+ta/M
- WF74ijiw1jQpfVBvvERdwQZ7WKDth9Sf5SbO3O63n0PgA8mHsGBUEZR78lpgPnRCADw0
- 1Lig==
+ bh=4gzUK0T14zOkKkQ8x5EXERw/Gf3VD/73/5zTDUcL1hE=;
+ b=BjvILWiF4qLG6ydc7sXZV+b4ENFYfebY0bn/ATMruaE57xjZHcEy1doK+ktwFAzi4y
+ OY3krr0DIOH8ohQnKj9WJ4OFFYu7QeXYP0Z+kRhCbY1JiUs16kd40YcfM8EFvhnLgXti
+ EJKq9UMhxKEIs1phJyIRTsoqdfjiDwMLk/4ky+L59GmsGof3ZHLf7pawxmGwbjDF25a+
+ g1cL52h5CLnVz1p5DYMn49SEhVD1w5upXEFYhQgfVkUt3psHeTKj+nA2jH5FDTce7Nq+
+ zeq3pj+0z55kYnTyQBTQxFId6xYWRtVKVYrGqxXnopVkvYG/glSUwdwmhmwKO4vUWYeV
+ S00A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=fquUmVkncxEMfeAsRc3/6BsqyJ3/ccTKHRFzefWvbc4=;
- b=DdaWThf8lTQCei+iygxqZAK+wqD+WHjl+5xdahGNFuSBCHB6Jfnyn2HVliB5s7GPAR
- EEZLXQmbJvftXYKkm7Uu0x9GJPPEeJ4XYjG7Dcy+N6KyKQ+xUWnJ5LuNAxMSmjeVMBA8
- 87um/BbMVmgNNknJLfIb6AIabNRmGoYBQqJYl9IcGCl00h8atg3567GJuf5656vFBroK
- msFmro1JJfw0oBxesYz0DqgfPG/WDiNv/r6wBSb/TPOXkFjrp7tpm2vlAGCqBEYcRZA1
- xchYn01mUR5ro8BnZpwwQTmsyivBKkBe365EVESQjEOHnjFAamPMkpA8yYXED7t6OVJh
- NVkQ==
-X-Gm-Message-State: APjAAAU9N8u+YqbMXv5ceFAR3Rb+/uGFx3VDLWc76z2Qs68O7m0SorAF
- hyIiJiQ1kGuh157sXqkaDsQ=
-X-Received: by 2002:a7b:cb93:: with SMTP id m19mr224180wmi.157.1567617220721; 
- Wed, 04 Sep 2019 10:13:40 -0700 (PDT)
+ bh=4gzUK0T14zOkKkQ8x5EXERw/Gf3VD/73/5zTDUcL1hE=;
+ b=du1T94+elOrqeVpkZllyL43EqtoMg98qm9+QPnSPsrCrMBs+pKDzuYF0EYpVCRwuEv
+ V2ODIl1xiYHFFxW3gdhAQaw6QX93DC84DSuL4wtbm7OvdpEDwOX9wA0Sseu6++63ZSJj
+ B2FJkdj2SvCdYGvtc8MSqm2tnv5tEymKzzxTscw+vBFYtdsrHE83BjUQ+0VMSXxBCdyM
+ Etz4Rtl14eMYP0C1tGwx4IlmLcWBauAtNzJsQgvoTZcdCwcXCggDKwVpuTgdj+EsjqXZ
+ ct5PQ91uCdDjJ9WECdIK1nGJW+r25SNH3oaWFwuSHA2AB4YJ8xNRJ4k2VXBalI4L21iL
+ BEUg==
+X-Gm-Message-State: APjAAAUiorXQ1vBdJmOWvom8iTKEUrEqGOK+K0Bmach9QjCErw5nHQle
+ 4/Gpdw4O+32esopjR+6Dy3w=
+X-Received: by 2002:a1c:6c11:: with SMTP id h17mr5120240wmc.128.1567617213584; 
+ Wed, 04 Sep 2019 10:13:33 -0700 (PDT)
 Received: from x1w.redhat.com ([195.166.127.210])
- by smtp.gmail.com with ESMTPSA id p19sm2339512wmg.31.2019.09.04.10.13.39
+ by smtp.gmail.com with ESMTPSA id p19sm2339512wmg.31.2019.09.04.10.13.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Sep 2019 10:13:40 -0700 (PDT)
+ Wed, 04 Sep 2019 10:13:32 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: Peter Maydell <peter.maydell@linaro.org>,
  Esteban Bosse <estebanbosse@gmail.com>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-devel@nongnu.org,
  Pekka Enberg <penberg@iki.fi>,
  =?UTF-8?q?Zolt=C3=A1n=20Baldaszti?= <bztemail@gmail.com>
-Date: Wed,  4 Sep 2019 19:13:14 +0200
-Message-Id: <20190904171315.8354-14-f4bug@amsat.org>
+Date: Wed,  4 Sep 2019 19:13:10 +0200
+Message-Id: <20190904171315.8354-10-f4bug@amsat.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190904171315.8354-1-f4bug@amsat.org>
 References: <20190904171315.8354-1-f4bug@amsat.org>
@@ -102,9 +102,8 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::344
-Subject: [Qemu-devel] [RFC PATCH 13/14] hw/arm/bcm2838: Map the PCIe memory
- space
+X-Received-From: 2a00:1450:4864:20::343
+Subject: [Qemu-devel] [PATCH 09/14] hw/arm/raspi: Make the board code modular
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -124,53 +123,197 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XHrIxZ2EMT+o
+X-TUID: +IDR554yZRct
 
-The BCM2711 has a BCM54213 Gigabit Ethernet block mapped
-in the PCIe range.
+Our code currently create the raspi2 (based on the BCM2836)
+and the raspi3 (on the BCM2837). Similarly, the raspi4 is
+based on the BCM2838. To be able to add the new board,
+make the current code more modular:
+
+- Dynamically fills the 'board-rev' value
+- Allow DRAM sizes different than 1 GiB
+
+Rename the board model name as 'B' since this is the one
+encoded in the 'board-rev' tag.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-FIXME: create the bcm54213-geth in raspi.c?
----
- hw/arm/bcm2836.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ hw/arm/raspi.c | 107 +++++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 94 insertions(+), 13 deletions(-)
 
-diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index d89d7cd71d..39190a108f 100644
---- a/hw/arm/bcm2836.c
-+++ b/hw/arm/bcm2836.c
-@@ -15,6 +15,7 @@
+diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+index 615d755879..b4db39661f 100644
+--- a/hw/arm/raspi.c
++++ b/hw/arm/raspi.c
+@@ -13,6 +13,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
++#include "qemu/cutils.h"
+ #include "qapi/error.h"
+ #include "cpu.h"
  #include "hw/arm/bcm2836.h"
- #include "hw/arm/raspi_platform.h"
- #include "hw/sysbus.h"
-+#include "hw/misc/unimp.h"
+@@ -29,8 +30,67 @@
+ #define FIRMWARE_ADDR_3 0x80000 /* Pi 3 loads kernel.img here by default */
+ #define SPINTABLE_ADDR  0xd8 /* Pi 3 bootloader spintable */
  
- struct BCM283XInfo {
-     const char *name;
-@@ -60,6 +61,8 @@ static const BCM283XInfo bcm283x_socs[] = {
- #define GIC_VIFACE_OTHER_OFS(cpu)  (0x5000 + (cpu) * 0x200)
- #define GIC_VCPU_OFS                0x6000
+-/* Table of Linux board IDs for different Pi versions */
+-static const int raspi_boardid[] = {[1] = 0xc42, [2] = 0xc43, [3] = 0xc44};
++enum BoardIdManufacturer {
++    M_SONY_UK = 0,
++    M_EMBEST = 2,
++};
++
++enum BoardIdChip {
++    C_BCM2835 = 0,
++    C_BCM2836 = 1,
++    C_BCM2837 = 2,
++};
++
++enum BoardIdType {
++    T_2B = 0x04,
++    T_3B = 0x08,
++};
++
++enum BoardIdRevision {
++    R_1_0 = 0,
++    R_1_1 = 1,
++    R_1_2 = 2,
++    R_1_3 = 3,
++};
++
++static const char *processor_typename[] = {
++    [C_BCM2836] = TYPE_BCM2836,
++    [C_BCM2837] = TYPE_BCM2837,
++};
++
++typedef struct BoardInfo BoardInfo;
++
++struct BoardInfo {
++    /* Table of Linux board IDs for different Pi versions */
++    int board_id;
++    /*
++     * Board revision codes:
++     * www.raspberrypi.org/documentation/hardware/raspberrypi/revision-codes/
++     */
++    struct {
++        enum BoardIdType type;
++        enum BoardIdRevision revision;
++        enum BoardIdChip chip;
++        enum BoardIdManufacturer manufacturer;
++    } board_rev;
++    uint64_t ram_size_min;
++    uint64_t ram_size_max;
++};
++
++static const BoardInfo bcm283x_boards[] = {
++    [2] = {
++        .board_id = 0xc43,
++        .board_rev = { T_2B, R_1_1, C_BCM2836, M_EMBEST },
++        .ram_size_min = 1 * GiB,
++        .ram_size_max = 1 * GiB,
++    },
++    [3] = {
++        .board_id = 0xc44,
++        .board_rev = { T_3B, R_1_2, C_BCM2837, M_SONY_UK },
++        .ram_size_min = 1 * GiB,
++        .ram_size_max = 1 * GiB,
++    },
++};
  
-+#define PCIE_BASE                   0x7d500000
-+
- static void bcm2836_init(Object *obj)
- {
-     BCM283XState *s = BCM283X(obj);
-@@ -238,6 +241,13 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
-         qdev_connect_gpio_out(DEVICE(&s->cpus[n]), GTIMER_SEC,
-                 qdev_get_gpio_in_named(DEVICE(&s->control), "cntpsirq", n));
-     }
-+
-+    /* bcm2838 kludge to easily create PCIe */
-+    if (info->gic_base) {
-+        create_unimplemented_device("bcm2838-pcie", PCIE_BASE, 0x100000);
-+        create_unimplemented_device("bcm54213-geth",
-+                                    PCIE_BASE + 0x80000, 0x10000);
+ typedef struct RasPiState {
+     BCM283XState soc;
+@@ -114,7 +174,7 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
+     static struct arm_boot_info binfo;
+     int r;
+ 
+-    binfo.board_id = raspi_boardid[version];
++    binfo.board_id = bcm283x_boards[version].board_id;
+     binfo.ram_size = ram_size;
+     binfo.nb_cpus = machine->smp.cpus;
+ 
+@@ -146,7 +206,7 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
+      * the normal Linux boot process
+      */
+     if (machine->firmware) {
+-        hwaddr firmware_addr = version == 3 ? FIRMWARE_ADDR_3 : FIRMWARE_ADDR_2;
++        hwaddr firmware_addr = version >= 3 ? FIRMWARE_ADDR_3 : FIRMWARE_ADDR_2;
+         /* load the firmware image (typically kernel.img) */
+         r = load_image_targphys(machine->firmware, firmware_addr,
+                                 ram_size - firmware_addr);
+@@ -170,16 +230,32 @@ static void raspi_init(MachineState *machine, int version)
+     BlockBackend *blk;
+     BusState *bus;
+     DeviceState *carddev;
++    char *size_str;
++    int board_rev;
++    const char *soc_type;
+ 
+-    if (machine->ram_size > 1 * GiB) {
++    if (machine->ram_size < bcm283x_boards[version].ram_size_min) {
++        size_str = size_to_str(bcm283x_boards[version].ram_size_min);
++        error_report("Requested ram size is too small for this machine: "
++                     "minimum is %s", size_str);
++        g_free(size_str);
++        exit(1);
 +    }
- }
++    if (machine->ram_size > bcm283x_boards[version].ram_size_max) {
++        size_str = size_to_str(bcm283x_boards[version].ram_size_max);
+         error_report("Requested ram size is too large for this machine: "
+-                     "maximum is 1GB");
++                     "maximum is %s", size_str);
++        g_free(size_str);
++        exit(1);
++    }
++    if (!is_power_of_2(machine->ram_size)) {
++        error_report("Requested ram size is not a power of 2");
+         exit(1);
+     }
  
- static Property bcm2836_props[] = {
++    soc_type = processor_typename[bcm283x_boards[version].board_rev.chip];
+     object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->soc),
+-                            version == 3 ? TYPE_BCM2837 : TYPE_BCM2836,
+-                            &error_abort, NULL);
++                            soc_type, &error_abort, NULL);
+ 
+     /* Allocate and map RAM */
+     memory_region_allocate_system_memory(&s->ram, OBJECT(machine), "ram",
+@@ -192,9 +268,14 @@ static void raspi_init(MachineState *machine, int version)
+                                    &error_abort);
+     object_property_set_int(OBJECT(&s->soc), machine->smp.cpus, "enabled-cpus",
+                             &error_abort);
+-    int board_rev = version == 3 ? 0xa02082 : 0xa21041;
+-    object_property_set_int(OBJECT(&s->soc), board_rev, "board-rev",
+-                            &error_abort);
++
++    board_rev = ((63 - clz64(machine->ram_size / MiB)) << 20)
++                | (bcm283x_boards[version].board_rev.manufacturer << 16)
++                | (bcm283x_boards[version].board_rev.chip << 12)
++                | (bcm283x_boards[version].board_rev.type << 4)
++                | (bcm283x_boards[version].board_rev.revision << 0);
++    object_property_set_int(OBJECT(&s->soc), board_rev,
++                            "board-rev", &error_abort);
+     object_property_set_bool(OBJECT(&s->soc), true, "realized", &error_abort);
+ 
+     /* Create and plug in the SD cards */
+@@ -221,7 +302,7 @@ static void raspi2_init(MachineState *machine)
+ 
+ static void raspi2_machine_init(MachineClass *mc)
+ {
+-    mc->desc = "Raspberry Pi 2";
++    mc->desc = "Raspberry Pi 2B";
+     mc->init = raspi2_init;
+     mc->block_default_type = IF_SD;
+     mc->no_parallel = 1;
+@@ -243,7 +324,7 @@ static void raspi3_init(MachineState *machine)
+ 
+ static void raspi3_machine_init(MachineClass *mc)
+ {
+-    mc->desc = "Raspberry Pi 3";
++    mc->desc = "Raspberry Pi 3B";
+     mc->init = raspi3_init;
+     mc->block_default_type = IF_SD;
+     mc->no_parallel = 1;
 -- 
 2.20.1
 

@@ -1,192 +1,127 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id a18sm3894457wrh.25.2019.09.05.06.58.29
+        by smtp.gmail.com with ESMTPSA id i73sm4103667wmg.33.2019.09.05.08.23.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 05 Sep 2019 06:58:29 -0700 (PDT)
+        Thu, 05 Sep 2019 08:23:41 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3B1D31FF87;
-	Thu,  5 Sep 2019 14:58:29 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 6F9671FF87;
+	Thu,  5 Sep 2019 16:23:40 +0100 (BST)
 References: <20190820210720.18976-1-richard.henderson@linaro.org>
- <20190820210720.18976-2-richard.henderson@linaro.org>
+ <20190820210720.18976-18-richard.henderson@linaro.org>
 User-agent: mu4e 1.3.4; emacs 27.0.50
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org
-Subject: Re: [Qemu-arm] [PATCH v5 01/17] target/arm: Split out
- rebuild_hflags_common
-In-reply-to: <20190820210720.18976-2-richard.henderson@linaro.org>
-Date: Thu, 05 Sep 2019 14:58:29 +0100
-Message-ID: <878sr2975m.fsf@linaro.org>
+Subject: Re: [Qemu-arm] [PATCH v5 17/17] target/arm: Rely on hflags correct
+ in cpu_get_tb_cpu_state
+In-reply-to: <20190820210720.18976-18-richard.henderson@linaro.org>
+Date: Thu, 05 Sep 2019 16:23:40 +0100
+Message-ID: <877e6m937n.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: ege6OofNT4Q8
+X-TUID: bW9HHI31W6eW
 
 
 Richard Henderson <richard.henderson@linaro.org> writes:
 
-> Create a function to compute the values of the TBFLAG_ANY bits
-> that will be cached.  For now, the env->hflags variable is not
-> used, and the results are fed back to cpu_get_tb_cpu_state.
+> This is the payoff.
 >
+> From perf record -g data of ubuntu 18 boot and shutdown:
+>
+> BEFORE:
+>
+> -   23.02%     2.82%  qemu-system-aar  [.] helper_lookup_tb_ptr
+>    - 20.22% helper_lookup_tb_ptr
+>       + 10.05% tb_htable_lookup
+>       - 9.13% cpu_get_tb_cpu_state
+>            3.20% aa64_va_parameters_both
+>            0.55% fp_exception_el
+>
+> -   11.66%     4.74%  qemu-system-aar  [.] cpu_get_tb_cpu_state
+>    - 6.96% cpu_get_tb_cpu_state
+>         3.63% aa64_va_parameters_both
+>         0.60% fp_exception_el
+>         0.53% sve_exception_el
+>
+> AFTER:
+>
+> -   16.40%     3.40%  qemu-system-aar  [.] helper_lookup_tb_ptr
+>    - 13.03% helper_lookup_tb_ptr
+>       + 11.19% tb_htable_lookup
+>         0.55% cpu_get_tb_cpu_state
+>
+>      0.98%     0.71%  qemu-system-aar  [.] cpu_get_tb_cpu_state
+>
+>      0.87%     0.24%  qemu-system-aar  [.] rebuild_hflags_a64
+>
+> Before, helper_lookup_tb_ptr is the second hottest function in the
+> application, consuming almost a quarter of the runtime.  Within the
+> entire execution, cpu_get_tb_cpu_state consumes about 12%.
+>
+> After, helper_lookup_tb_ptr has dropped to the fourth hottest function,
+> with consumption dropping to a sixth of the runtime.  Within the
+> entire execution, cpu_get_tb_cpu_state has dropped below 1%, and the
+> supporting function to rebuild hflags also consumes about 1%.
+>
+> Assertions are retained for --enable-debug-tcg.
+>
+> Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+Hmm something must have been missed for M-profile because:
+
+  make run-tcg-tests-arm-softmmu V=3D1
+
+Leads to:
+
+  timeout 15  /home/alex/lsrc/qemu.git/builds/all.debug/arm-softmmu/qemu-sy=
+stem-arm -monitor none -display none -chardev file,path=3Dtest-armv6m-undef=
+.out,id=3Doutput -semihosting -M microbit -kernel test-armv6m-undef
+  qemu: fatal: Lockup: can't escalate 3 to HardFault (current priority -1)
+
+  R00=3D00000000 R01=3D00000000 R02=3D00000000 R03=3D00000000
+  R04=3D00000000 R05=3D00000000 R06=3D00000000 R07=3D00000000
+  R08=3D00000000 R09=3D00000000 R10=3D00000000 R11=3D00000000
+  R12=3D00000000 R13=3D20003fe0 R14=3Dfffffff9 R15=3D000000c0
+  XPSR=3D41000003 -Z-- T handler
+  FPSCR: 00000000
+  timeout: the monitored command dumped core
+
+But annoyingly not shown up by the debug-tcg verification. The commit
+before works fine.
+
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
 > ---
->  target/arm/cpu.h    | 29 ++++++++++++++++++-----------
->  target/arm/helper.c | 26 +++++++++++++++++++-------
->  2 files changed, 37 insertions(+), 18 deletions(-)
+> v2: Retain asserts for future debugging.
+> ---
+>  target/arm/helper.c | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
 >
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 0981303170..3dc52c032b 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -231,6 +231,9 @@ typedef struct CPUARMState {
->      uint32_t pstate;
->      uint32_t aarch64; /* 1 if CPU is in aarch64 state; inverse of PSTATE=
-.nRW */
->
-> +    /* Cached TBFLAGS state.  See below for which bits are included.  */
-> +    uint32_t hflags;
-> +
->      /* Frequently accessed CPSR bits are stored separately for efficienc=
-y.
->         This contains all the other bits.  Use cpsr_{read,write} to access
->         the whole CPSR.  */
-> @@ -3136,15 +3139,18 @@ typedef ARMCPU ArchCPU;
->
->  #include "exec/cpu-all.h"
->
-> -/* Bit usage in the TB flags field: bit 31 indicates whether we are
-> +/*
-> + * Bit usage in the TB flags field: bit 31 indicates whether we are
->   * in 32 or 64 bit mode. The meaning of the other bits depends on that.
->   * We put flags which are shared between 32 and 64 bit mode at the top
->   * of the word, and flags which apply to only one mode at the bottom.
-> + *
-> + * Unless otherwise noted, these bits are cached in env->hflags.
->   */
->  FIELD(TBFLAG_ANY, AARCH64_STATE, 31, 1)
->  FIELD(TBFLAG_ANY, MMUIDX, 28, 3)
->  FIELD(TBFLAG_ANY, SS_ACTIVE, 27, 1)
-> -FIELD(TBFLAG_ANY, PSTATE_SS, 26, 1)
-> +FIELD(TBFLAG_ANY, PSTATE_SS, 26, 1)     /* Not cached. */
->  /* Target EL if we take a floating-point-disabled exception */
->  FIELD(TBFLAG_ANY, FPEXC_EL, 24, 2)
->  FIELD(TBFLAG_ANY, BE_DATA, 23, 1)
-> @@ -3155,13 +3161,14 @@ FIELD(TBFLAG_ANY, BE_DATA, 23, 1)
->  FIELD(TBFLAG_ANY, DEBUG_TARGET_EL, 21, 2)
->
->  /* Bit usage when in AArch32 state: */
-> -FIELD(TBFLAG_A32, THUMB, 0, 1)
-> -FIELD(TBFLAG_A32, VECLEN, 1, 3)
-> -FIELD(TBFLAG_A32, VECSTRIDE, 4, 2)
-> +FIELD(TBFLAG_A32, THUMB, 0, 1)          /* Not cached. */
-> +FIELD(TBFLAG_A32, VECLEN, 1, 3)         /* Not cached. */
-> +FIELD(TBFLAG_A32, VECSTRIDE, 4, 2)      /* Not cached. */
->  /*
->   * We store the bottom two bits of the CPAR as TB flags and handle
->   * checks on the other bits at runtime. This shares the same bits as
->   * VECSTRIDE, which is OK as no XScale CPU has VFP.
-> + * Not cached, because VECLEN+VECSTRIDE are not cached.
->   */
->  FIELD(TBFLAG_A32, XSCALE_CPAR, 4, 2)
->  /*
-> @@ -3170,15 +3177,15 @@ FIELD(TBFLAG_A32, XSCALE_CPAR, 4, 2)
->   * the same thing as the current security state of the processor!
->   */
->  FIELD(TBFLAG_A32, NS, 6, 1)
-> -FIELD(TBFLAG_A32, VFPEN, 7, 1)
-> -FIELD(TBFLAG_A32, CONDEXEC, 8, 8)
-> +FIELD(TBFLAG_A32, VFPEN, 7, 1)          /* Not cached. */
-> +FIELD(TBFLAG_A32, CONDEXEC, 8, 8)       /* Not cached. */
->  FIELD(TBFLAG_A32, SCTLR_B, 16, 1)
->  /* For M profile only, set if FPCCR.LSPACT is set */
-> -FIELD(TBFLAG_A32, LSPACT, 18, 1)
-> +FIELD(TBFLAG_A32, LSPACT, 18, 1)        /* Not cached. */
->  /* For M profile only, set if we must create a new FP context */
-> -FIELD(TBFLAG_A32, NEW_FP_CTXT_NEEDED, 19, 1)
-> +FIELD(TBFLAG_A32, NEW_FP_CTXT_NEEDED, 19, 1) /* Not cached. */
->  /* For M profile only, set if FPCCR.S does not match current security st=
-ate */
-> -FIELD(TBFLAG_A32, FPCCR_S_WRONG, 20, 1)
-> +FIELD(TBFLAG_A32, FPCCR_S_WRONG, 20, 1) /* Not cached. */
->  /* For M profile only, Handler (ie not Thread) mode */
->  FIELD(TBFLAG_A32, HANDLER, 21, 1)
->  /* For M profile only, whether we should generate stack-limit checks */
-> @@ -3190,7 +3197,7 @@ FIELD(TBFLAG_A64, SVEEXC_EL, 2, 2)
->  FIELD(TBFLAG_A64, ZCR_LEN, 4, 4)
->  FIELD(TBFLAG_A64, PAUTH_ACTIVE, 8, 1)
->  FIELD(TBFLAG_A64, BT, 9, 1)
-> -FIELD(TBFLAG_A64, BTYPE, 10, 2)
-> +FIELD(TBFLAG_A64, BTYPE, 10, 2)         /* Not cached. */
->  FIELD(TBFLAG_A64, TBID, 12, 2)
->
->  static inline bool bswap_code(bool sctlr_b)
 > diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 7e0d5398ab..f2c6419369 100644
+> index d1bf71a260..5e4f996882 100644
 > --- a/target/arm/helper.c
 > +++ b/target/arm/helper.c
-> @@ -11016,6 +11016,22 @@ ARMMMUIdx arm_stage1_mmu_idx(CPUARMState *env)
->  }
->  #endif
->
-> +static uint32_t rebuild_hflags_common(CPUARMState *env, int fp_el,
-> +                                      ARMMMUIdx mmu_idx, uint32_t flags)
-> +{
-> +    flags =3D FIELD_DP32(flags, TBFLAG_ANY, FPEXC_EL, fp_el);
-> +    flags =3D FIELD_DP32(flags, TBFLAG_ANY, MMUIDX,
-> +                       arm_to_core_mmu_idx(mmu_idx));
-> +
-> +    if (arm_cpu_data_is_big_endian(env)) {
-> +        flags =3D FIELD_DP32(flags, TBFLAG_ANY, BE_DATA, 1);
-> +    }
-> +    if (arm_singlestep_active(env)) {
-> +        flags =3D FIELD_DP32(flags, TBFLAG_ANY, SS_ACTIVE, 1);
-> +    }
-> +    return flags;
-> +}
-> +
+> @@ -11211,12 +11211,15 @@ void HELPER(rebuild_hflags_a64)(CPUARMState *en=
+v, int el)
 >  void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
 >                            target_ulong *cs_base, uint32_t *pflags)
 >  {
-> @@ -11107,7 +11123,7 @@ void cpu_get_tb_cpu_state(CPUARMState *env, targe=
-t_ulong *pc,
->          }
->      }
+> -    uint32_t flags, pstate_for_ss;
+> +    uint32_t flags =3D env->hflags;
+> +    uint32_t pstate_for_ss;
 >
-> -    flags =3D FIELD_DP32(flags, TBFLAG_ANY, MMUIDX, arm_to_core_mmu_idx(=
-mmu_idx));
-> +    flags =3D rebuild_hflags_common(env, fp_el, mmu_idx, flags);
+>      *cs_base =3D 0;
+> -    flags =3D rebuild_hflags_internal(env);
+> +#ifdef CONFIG_TCG_DEBUG
+> +    assert(flags =3D=3D rebuild_hflags_internal(env));
+> +#endif
 >
->      /* The SS_ACTIVE and PSTATE_SS bits correspond to the state machine
->       * states defined in the ARM ARM for software singlestep:
-> @@ -11115,9 +11131,9 @@ void cpu_get_tb_cpu_state(CPUARMState *env, targe=
-t_ulong *pc,
->       *     0            x       Inactive (the TB flag for SS is always 0)
->       *     1            0       Active-pending
->       *     1            1       Active-not-pending
-> +     * SS_ACTIVE is set in hflags; PSTATE_SS is computed every TB.
->       */
-> -    if (arm_singlestep_active(env)) {
-> -        flags =3D FIELD_DP32(flags, TBFLAG_ANY, SS_ACTIVE, 1);
-> +    if (FIELD_EX32(flags, TBFLAG_ANY, SS_ACTIVE)) {
->          if (is_a64(env)) {
->              if (env->pstate & PSTATE_SS) {
->                  flags =3D FIELD_DP32(flags, TBFLAG_ANY, PSTATE_SS, 1);
-> @@ -11128,10 +11144,6 @@ void cpu_get_tb_cpu_state(CPUARMState *env, targ=
-et_ulong *pc,
->              }
->          }
->      }
-> -    if (arm_cpu_data_is_big_endian(env)) {
-> -        flags =3D FIELD_DP32(flags, TBFLAG_ANY, BE_DATA, 1);
-> -    }
-> -    flags =3D FIELD_DP32(flags, TBFLAG_ANY, FPEXC_EL, fp_el);
->
->      if (arm_v7m_is_handler_mode(env)) {
->          flags =3D FIELD_DP32(flags, TBFLAG_A32, HANDLER, 1);
+> -    if (is_a64(env)) {
+> +    if (FIELD_EX32(flags, TBFLAG_ANY, AARCH64_STATE)) {
+>          *pc =3D env->pc;
+>          if (cpu_isar_feature(aa64_bti, env_archcpu(env))) {
+>              flags =3D FIELD_DP32(flags, TBFLAG_A64, BTYPE, env->btype);
 
 
 --

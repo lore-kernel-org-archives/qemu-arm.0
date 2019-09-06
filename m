@@ -1,198 +1,104 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp945909wrp;
-        Thu, 5 Sep 2019 08:40:36 -0700 (PDT)
-X-Received: by 2002:a5d:8e15:: with SMTP id e21mr3244973iod.296.1567698036075;
-        Thu, 05 Sep 2019 08:40:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567698036; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp175985wrp;
+        Thu, 5 Sep 2019 20:02:49 -0700 (PDT)
+X-Received: by 2002:a5d:8d0b:: with SMTP id p11mr7797800ioj.136.1567738968914;
+        Thu, 05 Sep 2019 20:02:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567738968; cv=none;
         d=google.com; s=arc-20160816;
-        b=kdRq/9yRbqRYBRbfAFpcky1tjJpfeQr/zPFBGgtIf5NJm886YhU9iiiiCalP3ToQlh
-         JCR/Hl4KuuToxeEKwMv4RoRKvFeyYJZYc+gTqgpyrU/LEfdVugefDYVQI99cxVPt6Ae7
-         x2r/nO3C0RQ79+wlhB7DX0XngOd7NPxksJh4ay8iGJsAC+fJHYhM9ybq4RFIuEJqUR6A
-         F8rXY5iZugrYX41izNu9a8n0jQlDios10OB9fl6dGBZdYjOViFJo4UMtwXdKEhYepWye
-         jHJg+ApkhC2CCsdbCT7BSbH8R2EiqPaqKORxmG+fWRR62lmpZujX7qlkxyG+Jwv2pJDs
-         WJMQ==
+        b=lHXxCr7i+9pWUdhZY+7nDhQILeAQW6YeiGx17z0sYwjwSxiTpH1ObCj0oSN3baHqDT
+         kxdTKG7kcrC6+15+s23a9/8j7CrVXuqvGdvB+HCioAivRCcfdtsw6by2p1Dz0moyYHB3
+         QV6zD+AwH6ZAyCJP+hInLwsc9ZJAKv9DjPqj3wZ6LFunQsAipED6d5fc/j9Q+CuCpd9o
+         BErfXQYbqNI65gVQNcMX1lrNlNHfS9sw/IcVwgLnUpNuzZNjdDoDwxYDX5sOV94fj0vc
+         cfZHs6+Xg+qyIGH/cfBe/6wMsymgK468jtp2tzLF78+mo2h9X78ukUpFtGf8d1g7dnn4
+         SyBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ZKkt/SOiKtFSstWvWKFbJtcesPFRXF7UnM8PUDvHq6E=;
-        b=TWsQTrG5win4Y0v7lwz+m9eW72Lfr9RHbbz1kUj94NycZkejdFpHmkAM70HnVXsBDK
-         weNQ3Qo5WqrUUjKXLSJzh1xpAyN69iY6rvSIix+oYYPhZMi7cRBKLR188wJyvw4G8oky
-         FibbNZyn4VL8nw9yj5dhvy1cA6Q+u11q4X+JfCpxsqpgO+J5Bzzt6J5dCiO1+7G6fefE
-         TnhpukwLHMH9fT9ajOZAEl4paMyY5QGa4KGT9pkbw/tIMmo7PqD9CRDCofXB3RR9/1nD
-         64QK0mgC/0e2h+YfKG+s1bjCQKhlQeKB7t0X0WeJWPVsQKYEWHi1DNWmUrzbFGrncdzz
-         +h3A==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=tPjrxSpg0VUXdoD54SOmEG5RPuzf4G6Eimww2PODS4w=;
+        b=aTO1B8MiUxbH333jZVSvEWPDymqSeR6riZuwUXCoMNMF1CS0a5eIIkBUFS0TvG6MbT
+         ls+ZYfCy94YTRwZd9AAJnToemZi61xjhRUJff3vx5Cw2me5p82lzpG1TLvLImYNBLb1I
+         seWUQtT8RUz43myEQwj2gPZ0OTlj5wVLyaOqRcCbMPZmMG+SMiwZlT3Vjyc8poWROh85
+         OeSUukjcEmfu4fpPX5ZWFyGGKsGgd2MYa/Qb0tXVgU4esCspXnvJOAsyelNw3h4ksU6G
+         ITtj2c9MVg+iKYErK3Xbm3Xgc6n1H3fIkPGKDBsimQ3v0Q9/b9B4XCR2JZpYELDUZIt0
+         s1+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=l33OkEEX;
-       spf=pass (google.com: domain of laurent.desnogues@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=laurent.desnogues@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <laurent.desnogues@gmail.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=YYvC0Dmh;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id v13sor2052166ioj.8.2019.09.05.08.40.35
+        by mx.google.com with SMTPS id x21sor3253757iog.130.2019.09.05.20.02.48
+        for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Thu, 05 Sep 2019 08:40:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of laurent.desnogues@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Thu, 05 Sep 2019 20:02:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=l33OkEEX;
-       spf=pass (google.com: domain of laurent.desnogues@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=laurent.desnogues@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=YYvC0Dmh;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=ZKkt/SOiKtFSstWvWKFbJtcesPFRXF7UnM8PUDvHq6E=;
-        b=l33OkEEXX8e5yr0ySsd0fHjq8QrkZl60mdi74dmHRIL2Yf3USK82XGpaS1tgA3UMUt
-         L4CYV3K5XfkcmSboRBLnQAKn9xiZje6ylEN86R5ZjseV0tJJv5or6CkEkyZOzKcTfAFl
-         GNr0Yo+phLpCzLtbUxt9PYIUatkKrznozZRoGeihTzCzOfafdOGVFLiXTNpvPLqhzQsj
-         AMo4cmKoGrynZKZ3ILHhH9tLpPjtiQqtCfish0VMoEAETsYGuUqAazTCqnLLyfHBPaCT
-         QlfdAMJDqTR3lyUYR8Sy2pu5YbaSiqJr4zFOry8Z5GggF08b4NcLZC29CYnTDXA75CF0
-         L+GQ==
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=tPjrxSpg0VUXdoD54SOmEG5RPuzf4G6Eimww2PODS4w=;
+        b=YYvC0DmhRPGBOgtFuUJA1cGbS8QCNF94USz2SNufa4CG3eXYaIQwUuI+TtLkuBSiIc
+         akaHcP/+SyqjEaLrBId5zILue3T053ebWTaI80FNweE3tOZiRmW/t4wocMrkORMmdCDl
+         lUFCqFOFXRE7S0zIqW9uEdapSrCGsCR45PhiY47J8kf2nNE/wsZl3cgv8dVVkhsj4cAI
+         zP3vTGrfTM6SRVhl+dTB8hGUQ7biudwQZcoR9a9oyyAeQBC5sg8JSoNLmFbGmRqAeWPJ
+         m8zqr4Arcks6RSVVrkwlh0NpdHr9KRjHnlojPCvhSTesQ22kxXcQA9+jasHuTioyeBOC
+         wX8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=ZKkt/SOiKtFSstWvWKFbJtcesPFRXF7UnM8PUDvHq6E=;
-        b=DYuM+/SpviYMKg/lrfhpwlpZbFG8ilFKZJ7hwabu8gnAKXXw2oiE5uAdmKaEjHlN9a
-         1gmkNVzUegAb0es2PwDTGXBA0aHm3PgB/iUtg4+xnscSZajEnYPXKB5+Gq/JBrtfF44+
-         99MhoZKBdmmROiHacgJjQXHdK08gFCNzNt2iPjUkRHao1DzmaBJvlTqR7r3wybc7FD+g
-         oirisOeVmVfawF3mFkfSG/5u6a7zEBI4V+4YAhLYaZeatRlBeH0h8qmYAdjMK9TO5AiL
-         O9E4CC/O+ix+a2yN1s0jKq+/7zz4KbEf3Qo31EiYVcjWgMq+0NEOCEIau+vkcMpkCobk
-         K9wQ==
-X-Gm-Message-State: APjAAAWAMLkrqTx4ets2i+Hj2VxP/D/1yFdpWhUviuwb811DokGYpb6w
-	PS1ky2nM+01FlJXekIpEve7GIEpFVYzlZY2Xo05p6e3C
-X-Google-Smtp-Source: APXvYqz4Payq1m8Y6bnhBpex/XOtc9a+Gb9PE3vcfDxlr0N5tIGNglOHITyINaMzXgOaC0Ppbul3sFHpN2Jsm/rmPlo=
-X-Received: by 2002:a5e:8e0c:: with SMTP id a12mr4867148ion.22.1567698035385;
- Thu, 05 Sep 2019 08:40:35 -0700 (PDT)
-MIME-Version: 1.0
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=tPjrxSpg0VUXdoD54SOmEG5RPuzf4G6Eimww2PODS4w=;
+        b=JtX0MoVmeGXXZT/ncUUKoeW3vhbtITUSNWUPi6G6f9DA9zzazBxwdDgFmYdjF6IZ2M
+         g3NKwPJl83m1DSS55EtuYKbdNNMTb5xyCzFutY0KrYuFmZYr8NJbfDxeCJUWvIuZOtOw
+         g3MIGyv6Xpn+fPvBkDki7VPCqhUZrOBNabCcB9rD+/Gg2fVuJWsFS6Qk0l28BnEagyxV
+         1zaJwNznzqrc7wOgOJHfPGyg5m/Q4vvdEXdspTKrBKLa77kuHQYwV8mVcVh1U7T/GsWv
+         19VCHQG+ehxA3X1itX+vHEfefVyh2UUe12V9tvJo3mUpGGarjJf8dFdz4fujftbbVxQY
+         L5Cw==
+X-Gm-Message-State: APjAAAWGNFVL4YSnV48odvrVU41SkRSL6uKJGVsjf2fPUU4WpZUhScEh
+	vF4iW0V+9LbHs5MM+EB7B7vJomWT72E1yLRj
+X-Google-Smtp-Source: APXvYqwXh4nCbnDBGJkSN7UUhfqY/y9KjHZXsAosSATxI/HcrYllj00waLM4U2m+Im+4GfaYh9fBNw==
+X-Received: by 2002:a02:6a56:: with SMTP id m22mr7618815jaf.114.1567738968413;
+        Thu, 05 Sep 2019 20:02:48 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from ?IPv6:2607:fea8:a260:81:78cf:74ad:c2b2:73ef? ([2607:fea8:a260:81:78cf:74ad:c2b2:73ef])
+        by smtp.gmail.com with ESMTPSA id l186sm7993113ioa.54.2019.09.05.20.02.46
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 05 Sep 2019 20:02:47 -0700 (PDT)
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH v5 17/17] target/arm: Rely on
+ hflags correct in cpu_get_tb_cpu_state
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Laurent Desnogues <laurent.desnogues@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 References: <20190820210720.18976-1-richard.henderson@linaro.org>
- <20190820210720.18976-18-richard.henderson@linaro.org> <877e6m937n.fsf@linaro.org>
-In-Reply-To: <877e6m937n.fsf@linaro.org>
-From: Laurent Desnogues <laurent.desnogues@gmail.com>
-Date: Thu, 5 Sep 2019 17:40:21 +0200
-Message-ID: <CABoDooPis6VR-3zw6EcCerwmTfZ_c2gqbCtVDSnpB30q-Oh01A@mail.gmail.com>
-Subject: Re: [Qemu-arm] [PATCH v5 17/17] target/arm: Rely on hflags correct in cpu_get_tb_cpu_state
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
-	"qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: qsT64TEgNg0D
+ <20190820210720.18976-18-richard.henderson@linaro.org>
+ <877e6m937n.fsf@linaro.org>
+ <CABoDooPis6VR-3zw6EcCerwmTfZ_c2gqbCtVDSnpB30q-Oh01A@mail.gmail.com>
+ <874l1q91z7.fsf@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <90c9a537-6786-060a-35cb-ab29dd8c45c3@linaro.org>
+Date: Thu, 5 Sep 2019 23:02:43 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+In-Reply-To: <874l1q91z7.fsf@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: l8rwjxZ6dU8E
 
-On Thu, Sep 5, 2019 at 5:24 PM Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
-ote:
->
->
-> Richard Henderson <richard.henderson@linaro.org> writes:
->
-> > This is the payoff.
-> >
-> > From perf record -g data of ubuntu 18 boot and shutdown:
-> >
-> > BEFORE:
-> >
-> > -   23.02%     2.82%  qemu-system-aar  [.] helper_lookup_tb_ptr
-> >    - 20.22% helper_lookup_tb_ptr
-> >       + 10.05% tb_htable_lookup
-> >       - 9.13% cpu_get_tb_cpu_state
-> >            3.20% aa64_va_parameters_both
-> >            0.55% fp_exception_el
-> >
-> > -   11.66%     4.74%  qemu-system-aar  [.] cpu_get_tb_cpu_state
-> >    - 6.96% cpu_get_tb_cpu_state
-> >         3.63% aa64_va_parameters_both
-> >         0.60% fp_exception_el
-> >         0.53% sve_exception_el
-> >
-> > AFTER:
-> >
-> > -   16.40%     3.40%  qemu-system-aar  [.] helper_lookup_tb_ptr
-> >    - 13.03% helper_lookup_tb_ptr
-> >       + 11.19% tb_htable_lookup
-> >         0.55% cpu_get_tb_cpu_state
-> >
-> >      0.98%     0.71%  qemu-system-aar  [.] cpu_get_tb_cpu_state
-> >
-> >      0.87%     0.24%  qemu-system-aar  [.] rebuild_hflags_a64
-> >
-> > Before, helper_lookup_tb_ptr is the second hottest function in the
-> > application, consuming almost a quarter of the runtime.  Within the
-> > entire execution, cpu_get_tb_cpu_state consumes about 12%.
-> >
-> > After, helper_lookup_tb_ptr has dropped to the fourth hottest function,
-> > with consumption dropping to a sixth of the runtime.  Within the
-> > entire execution, cpu_get_tb_cpu_state has dropped below 1%, and the
-> > supporting function to rebuild hflags also consumes about 1%.
-> >
-> > Assertions are retained for --enable-debug-tcg.
-> >
-> > Tested-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->
-> Hmm something must have been missed for M-profile because:
->
->   make run-tcg-tests-arm-softmmu V=3D1
->
-> Leads to:
->
->   timeout 15  /home/alex/lsrc/qemu.git/builds/all.debug/arm-softmmu/qemu-=
-system-arm -monitor none -display none -chardev file,path=3Dtest-armv6m-und=
-ef.out,id=3Doutput -semihosting -M microbit -kernel test-armv6m-undef
->   qemu: fatal: Lockup: can't escalate 3 to HardFault (current priority -1=
-)
->
->   R00=3D00000000 R01=3D00000000 R02=3D00000000 R03=3D00000000
->   R04=3D00000000 R05=3D00000000 R06=3D00000000 R07=3D00000000
->   R08=3D00000000 R09=3D00000000 R10=3D00000000 R11=3D00000000
->   R12=3D00000000 R13=3D20003fe0 R14=3Dfffffff9 R15=3D000000c0
->   XPSR=3D41000003 -Z-- T handler
->   FPSCR: 00000000
->   timeout: the monitored command dumped core
->
-> But annoyingly not shown up by the debug-tcg verification. The commit
-> before works fine.
+On 9/5/19 11:50 AM, Alex Bennée wrote:
+> I wish there was an assert form that would handily print out the
+> difference between the two values. I wonder if glib has one...
 
-There's a typo in the patch:  that should not be CONFIG_TCG_DEBUG but
-CONFIG_DEBUG_TCG.  With this you should see the assert fire.
+g_assert_cmphex(), but checkpatch.pl flags its use because there's a glib
+environment variable that disables the assert.
 
-I let Richard know that there's an issue with the handling of CPSR E
-flag (BE_DATA in hflags).  I don't know if that applies to your test.
 
-Thanks,
-
-Laurent
-
-> > Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> > ---
-> > v2: Retain asserts for future debugging.
-> > ---
-> >  target/arm/helper.c | 9 ++++++---
-> >  1 file changed, 6 insertions(+), 3 deletions(-)
-> >
-> > diff --git a/target/arm/helper.c b/target/arm/helper.c
-> > index d1bf71a260..5e4f996882 100644
-> > --- a/target/arm/helper.c
-> > +++ b/target/arm/helper.c
-> > @@ -11211,12 +11211,15 @@ void HELPER(rebuild_hflags_a64)(CPUARMState *=
-env, int el)
-> >  void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-> >                            target_ulong *cs_base, uint32_t *pflags)
-> >  {
-> > -    uint32_t flags, pstate_for_ss;
-> > +    uint32_t flags =3D env->hflags;
-> > +    uint32_t pstate_for_ss;
-> >
-> >      *cs_base =3D 0;
-> > -    flags =3D rebuild_hflags_internal(env);
-> > +#ifdef CONFIG_TCG_DEBUG
-> > +    assert(flags =3D=3D rebuild_hflags_internal(env));
-> > +#endif
-> >
-> > -    if (is_a64(env)) {
-> > +    if (FIELD_EX32(flags, TBFLAG_ANY, AARCH64_STATE)) {
-> >          *pc =3D env->pc;
-> >          if (cpu_isar_feature(aa64_bti, env_archcpu(env))) {
-> >              flags =3D FIELD_DP32(flags, TBFLAG_A64, BTYPE, env->btype)=
-;
->
->
-> --
-> Alex Benn=C3=A9e
->
+r~

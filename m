@@ -1,206 +1,143 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp971601wrp;
-        Thu, 5 Sep 2019 09:02:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxobiKyYU9RqWwVpC11mP/UyO51uvbYi0wB4otNGo5uLk1E09dYT9uWzDXvo2XiWIYDla3l
-X-Received: by 2002:a17:902:aa03:: with SMTP id be3mr4376969plb.84.1567699376715;
-        Thu, 05 Sep 2019 09:02:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567699376; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp130176wrp;
+        Thu, 5 Sep 2019 18:53:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwZdNxDr7/wly32e8m602mQ5/pQ4SNi6LYL0OrRVrFzPNRkb6GNtt9XuFlir/SikBrqVpIf
+X-Received: by 2002:a17:906:fcc9:: with SMTP id qx9mr5356460ejb.32.1567734818495;
+        Thu, 05 Sep 2019 18:53:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567734818; cv=none;
         d=google.com; s=arc-20160816;
-        b=vr1qW11pgLs0y1D2wK6pPjSYtgTE34KprXpbKvcPK7hKVSwkkdYvwQikI5eHkwW3tL
-         GbYmqipFE09DDnR6komUKQRvKmSTS4N09odU/MZR6Z0f7lBnuUpPCa88DjEcfH7aVUmh
-         zHTpOYcSH9LZt9z5yw0hp3zOozHLpHxs7/maHlKSkNySJ7mVhcH7NmtRh0DBjYZ8PabE
-         X4lBe+RxyS5RrNxCRn1yLDscfiKZbZuaBD9qBGyxKSx11/POXd9VtdWOW/jRxiEQLqLw
-         77AKdyaaEyyYyQnQEvVPqRDLNplmNFsq35mtEUKHc1Z2GaN3vvnMAKhVeeBuFp9Pzi03
-         RmzA==
+        b=bLEXTaDnIfG4xHeg0C/rXKXazoQVMBD+f0rP1bpKjjmxhoDbrvj/b4M5Wn9rId2wBd
+         RCdDr/JesUmNLD95xcm0ifkg97TtsDhAhAaRoVgU6HGQEBtvvkYNMwGDdNGVgkHFiXNN
+         2J2SiOF0FX4upDtAcSA6n73dg84UlZ6GU28+diqmjFECkAos8+yowyW/sAROmoRGLlWJ
+         gutmv8w1OFdpAyt7JvaQ/zcWaXka5UpsdTuKSdvtnAXWfw5LJlcyCPoVDDhAAAPHYQgW
+         +j2aTXnU/iXIRduQdDVVASlicBMlYufOyU/WjzEIWQ7++ZStBWWIjVhszEb0WtLKhd6S
+         qABw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :message-id:date:subject:cc:to:from;
-        bh=9WM8VHqWVtM10LFCrsab7MjNFb+0+Pk20q6pp+XdwXA=;
-        b=UH5ieBy7OygWliIUKf8YgyD3N8q14s/VrVJ0SzAE1+3AI4JKe4Ij+aMLPjBNmonc/J
-         zh3MccGxqdEyXz9g4u5KpvAVewRdIwgC9PTtIHGr+wPnPx/MqC1CVonwbCvsqBrh3FyL
-         iGwOMbnFV04ldHOTrle2hlVYqF+/nDz5BTyZRPDIQZi/NPNBg7UJ5pHxLpd1U40JA5SP
-         doDw/b0w027DHh4gHhrAF4dhofmEkjpMpD/TO2q61gSVqIc9ALmu3xT15uvopCzRtSar
-         qUSrmX+PUmQfqECKaJtSRGtr/wkJRmZuE9PRCWK/OWoQ51KSyL0t9XIqZ7w7HIVf/7tZ
-         kdFw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
+         :date:smtp-origin-cluster:to:smtp-origin-hostname:from
+         :smtp-origin-hostprefix:dkim-signature;
+        bh=mphrkCK8PHgknx4G4mNf76pijc2fJDXD3SASQAgFHkM=;
+        b=EOLIAMLRkax8QqLxhzY3IaJG99X3IsmqmATM2hUC7CMcXvZxu7KmUhJ40zVJlAW8YL
+         HJyYmmHlxTeIBqRgace+05ZUPf99wG5Eae0me9fBWgxlii0XXPOdS/pmjVi/ciJpKgyK
+         lhf2T2xhpeJa+EeRYkolBWk4J3NkLDv8Ptm5Bu7/u2g6/V/QUmSn8t34SN2Qq93EZPNm
+         lct2UdL0/UcyPdNhzziK+7A6TnhcVd7DWYSDq3whncsIqtdOQpHAjhQsbA7h7DuEuzwH
+         7oYlazGA8iIzbfX8cBWYNm5fiFtUKjeRiUY6I9ueKfynYKvAobm+AloLVVquz/kwqEin
+         CDtA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id 88si2444648plf.39.2019.09.05.09.02.56;
-        Thu, 05 Sep 2019 09:02:56 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@fb.com header.s=facebook header.b=Rl3UlQ6B;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fb.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x54si1665136edb.267.2019.09.05.18.53.38
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 05 Sep 2019 18:53:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S2389437AbfIEQCz (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Thu, 5 Sep 2019 12:02:55 -0400
-Received: from foss.arm.com ([217.140.110.172]:47030 "EHLO foss.arm.com"
-        rhost-flags-OK-OK-OK-OK) by vger.kernel.org with ESMTP
-        id S1730518AbfIEQCz (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 5 Sep 2019 12:02:55 -0400
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-        by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 577AE28;
-        Thu,  5 Sep 2019 09:02:54 -0700 (PDT)
-Received: from filthy-habits.cambridge.arm.com (filthy-habits.cambridge.arm.com [10.1.197.61])
-        by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id DB2923F67D;
-        Thu,  5 Sep 2019 09:02:52 -0700 (PDT)
-From:   Marc Zyngier <maz@kernel.org>
-To:     Peter Maydell <peter.maydell@linaro.org>,
-        James Morse <james.morse@arm.com>,
-        Julien Thierry <julien.thierry.kdev@gmail.com>,
-        Suzuki K Poulose <suzuki.poulose@arm.com>,
-        Zenghui Yu <yuzenghui@huawei.com>,
-        Will Deacon <will@kernel.org>,
-        Eric Auger <eric.auger@redhat.com>
-Cc:     qemu-arm@nongnu.org, kvmarm@lists.cs.columbia.edu,
-        linux-arm-kernel@lists.infradead.org, kvm@vger.kernel.org
-Subject: [PATCH v2] KVM: arm/arm64: vgic: Allow more than 256 vcpus for KVM_IRQ_LINE
-Date:   Thu,  5 Sep 2019 17:02:45 +0100
-Message-Id: <20190905160245.20746-1-maz@kernel.org>
-X-Mailer: git-send-email 2.20.1
+       dkim=fail header.i=@fb.com header.s=facebook header.b=Rl3UlQ6B;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fb.com
+Received: from localhost ([::1]:51298 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i63RR-0000J0-Jt
+	for alex.bennee@linaro.org; Thu, 05 Sep 2019 21:53:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53332)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <prvs=4152e791a2=amithash@fb.com>) id 1i62lf-0002wr-Kn
+ for qemu-arm@nongnu.org; Thu, 05 Sep 2019 21:10:28 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <prvs=4152e791a2=amithash@fb.com>) id 1i62le-00011m-FM
+ for qemu-arm@nongnu.org; Thu, 05 Sep 2019 21:10:27 -0400
+Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:64228)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <prvs=4152e791a2=amithash@fb.com>)
+ id 1i62ld-0000xZ-Tj
+ for qemu-arm@nongnu.org; Thu, 05 Sep 2019 21:10:26 -0400
+Received: from pps.filterd (m0109333.ppops.net [127.0.0.1])
+ by mx0a-00082601.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ x861AJDZ014230
+ for <qemu-arm@nongnu.org>; Thu, 5 Sep 2019 18:10:20 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
+ h=from : to : subject :
+ date : message-id : mime-version : content-type; s=facebook;
+ bh=mphrkCK8PHgknx4G4mNf76pijc2fJDXD3SASQAgFHkM=;
+ b=Rl3UlQ6BHaP8kGuB4LStl4oOQKzQjIOmUNYcsvY5n7aekrl8U3znEZwlTAckRobwrJVz
+ K4MWsHf7DAXhUhInn+lYuSKaG9uX50Mx1pijarVQBrBPJf4pBRowYIKMCK39kdIVwupV
+ 2YcGeEellSMq28Eaz3PbDHbRay0mVgPkvqY= 
+Received: from mail.thefacebook.com (mailout.thefacebook.com [199.201.64.23])
+ by mx0a-00082601.pphosted.com with ESMTP id 2uu8mds8k7-5
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT)
+ for <qemu-arm@nongnu.org>; Thu, 05 Sep 2019 18:10:20 -0700
+Received: from mx-out.facebook.com (2620:10d:c081:10::13) by
+ mail.thefacebook.com (2620:10d:c081:35::126) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id 15.1.1713.5;
+ Thu, 5 Sep 2019 18:10:14 -0700
+Received: by devvm1607.vll1.facebook.com (Postfix, from userid 122613)
+ id F022F2A1CDDE; Thu,  5 Sep 2019 18:10:12 -0700 (PDT)
+Smtp-Origin-Hostprefix: devvm
+From: Amithash Prasad <amithash@fb.com>
+Smtp-Origin-Hostname: devvm1607.vll1.facebook.com
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <amithash@fb.com>,
+ <clg@kaod.org>, <joel@jms.id.au>
+Smtp-Origin-Cluster: vll1c12
+Date: Thu, 5 Sep 2019 18:10:10 -0700
+Message-ID: <20190906011010.1135084-1-amithash@fb.com>
+X-Mailer: git-send-email 2.17.1
+X-FB-Internal: Safe
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: fB16jUSrpq5O
+Content-Type: text/plain
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.70,1.0.8
+ definitions=2019-09-05_11:2019-09-04,2019-09-05 signatures=0
+X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
+ adultscore=0 spamscore=0
+ suspectscore=0 priorityscore=1501 impostorscore=0 bulkscore=0
+ mlxlogscore=790 clxscore=1011 mlxscore=0 lowpriorityscore=0 phishscore=0
+ malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-1906280000 definitions=main-1909060010
+X-FB-Internal: deliver
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
+X-Received-From: 67.231.145.42
+X-Mailman-Approved-At: Thu, 05 Sep 2019 21:53:30 -0400
+Subject: [Qemu-arm] [PATCH] Check correct register for clock source
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: O18/qQsa11tm
 
-While parts of the VGIC support a large number of vcpus (we
-bravely allow up to 512), other parts are more limited.
+When WDT_RESTART is written, the data is not the contents
+of the WDT_CTRL register. Hence ensure we are looking at
+WDT_CTRL to check if bit WDT_CTRL_1MHZ_CLK is set or not.
 
-One of these limits is visible in the KVM_IRQ_LINE ioctl, which
-only allows 256 vcpus to be signalled when using the CPU or PPI
-types. Unfortunately, we've cornered ourselves badly by allocating
-all the bits in the irq field.
-
-Since the irq_type subfield (8 bit wide) is currently only taking
-the values 0, 1 and 2 (and we have been careful not to allow anything
-else), let's reduce this field to only 4 bits, and allocate the
-remaining 4 bits to a vcpu2_index, which acts as a multiplier:
-
-  vcpu_id = 256 * vcpu2_index + vcpu_index
-
-With that, and a new capability (KVM_CAP_ARM_IRQ_LINE_LAYOUT_2)
-allowing this to be discovered, it becomes possible to inject
-PPIs to up to 4096 vcpus. But please just don't.
-
-Whilst we're there, add a clarification about the use of KVM_IRQ_LINE
-on arm, which is not completely conditionned by KVM_CAP_IRQCHIP.
-
-Reported-by: Zenghui Yu <yuzenghui@huawei.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Zenghui Yu <yuzenghui@huawei.com>
-Signed-off-by: Marc Zyngier <maz@kernel.org>
+Signed-off-by: Amithash Prasad <amithash@fb.com>
 ---
-* From v1 (https://lore.kernel.org/r/20190818140710.23920-1-maz@kernel.org)
-  - Always say that we support the new layout, no matter whether
-    we have an in-kernel irqchip or not
-  - Clarify use of KVM_IRQ_LINE wrt KVM_CAP_IRQCHIP
-  - Collected RBs
+ hw/watchdog/wdt_aspeed.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- Documentation/virt/kvm/api.txt    | 12 ++++++++++--
- arch/arm/include/uapi/asm/kvm.h   |  4 +++-
- arch/arm64/include/uapi/asm/kvm.h |  4 +++-
- include/uapi/linux/kvm.h          |  1 +
- virt/kvm/arm/arm.c                |  2 ++
- 5 files changed, 19 insertions(+), 4 deletions(-)
-
-diff --git a/Documentation/virt/kvm/api.txt b/Documentation/virt/kvm/api.txt
-index 2d067767b617..25931ca1cb38 100644
---- a/Documentation/virt/kvm/api.txt
-+++ b/Documentation/virt/kvm/api.txt
-@@ -753,8 +753,8 @@ in-kernel irqchip (GIC), and for in-kernel irqchip can tell the GIC to
- use PPIs designated for specific cpus.  The irq field is interpreted
- like this:
- 
--  bits:  | 31 ... 24 | 23  ... 16 | 15    ...    0 |
--  field: | irq_type  | vcpu_index |     irq_id     |
-+  bits:  |  31 ... 28  | 27 ... 24 | 23  ... 16 | 15 ... 0 |
-+  field: | vcpu2_index | irq_type  | vcpu_index |  irq_id  |
- 
- The irq_type field has the following values:
- - irq_type[0]: out-of-kernel GIC: irq_id 0 is IRQ, irq_id 1 is FIQ
-@@ -766,6 +766,14 @@ The irq_type field has the following values:
- 
- In both cases, level is used to assert/deassert the line.
- 
-+When KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 is supported, the target vcpu is
-+identified as (256 * vcpu2_index + vcpu_index). Otherwise, vcpu2_index
-+must be zero.
-+
-+Note that on arm/arm64, the KVM_CAP_IRQCHIP capability only conditions
-+injection of interrupts for the in-kernel irqchip. KVM_IRQ_LINE can always
-+be used for a userspace interrupt controller.
-+
- struct kvm_irq_level {
- 	union {
- 		__u32 irq;     /* GSI */
-diff --git a/arch/arm/include/uapi/asm/kvm.h b/arch/arm/include/uapi/asm/kvm.h
-index a4217c1a5d01..2769360f195c 100644
---- a/arch/arm/include/uapi/asm/kvm.h
-+++ b/arch/arm/include/uapi/asm/kvm.h
-@@ -266,8 +266,10 @@ struct kvm_vcpu_events {
- #define   KVM_DEV_ARM_ITS_CTRL_RESET		4
- 
- /* KVM_IRQ_LINE irq field index values */
-+#define KVM_ARM_IRQ_VCPU2_SHIFT		28
-+#define KVM_ARM_IRQ_VCPU2_MASK		0xf
- #define KVM_ARM_IRQ_TYPE_SHIFT		24
--#define KVM_ARM_IRQ_TYPE_MASK		0xff
-+#define KVM_ARM_IRQ_TYPE_MASK		0xf
- #define KVM_ARM_IRQ_VCPU_SHIFT		16
- #define KVM_ARM_IRQ_VCPU_MASK		0xff
- #define KVM_ARM_IRQ_NUM_SHIFT		0
-diff --git a/arch/arm64/include/uapi/asm/kvm.h b/arch/arm64/include/uapi/asm/kvm.h
-index 9a507716ae2f..67c21f9bdbad 100644
---- a/arch/arm64/include/uapi/asm/kvm.h
-+++ b/arch/arm64/include/uapi/asm/kvm.h
-@@ -325,8 +325,10 @@ struct kvm_vcpu_events {
- #define   KVM_ARM_VCPU_TIMER_IRQ_PTIMER		1
- 
- /* KVM_IRQ_LINE irq field index values */
-+#define KVM_ARM_IRQ_VCPU2_SHIFT		28
-+#define KVM_ARM_IRQ_VCPU2_MASK		0xf
- #define KVM_ARM_IRQ_TYPE_SHIFT		24
--#define KVM_ARM_IRQ_TYPE_MASK		0xff
-+#define KVM_ARM_IRQ_TYPE_MASK		0xf
- #define KVM_ARM_IRQ_VCPU_SHIFT		16
- #define KVM_ARM_IRQ_VCPU_MASK		0xff
- #define KVM_ARM_IRQ_NUM_SHIFT		0
-diff --git a/include/uapi/linux/kvm.h b/include/uapi/linux/kvm.h
-index 5e3f12d5359e..5414b6588fbb 100644
---- a/include/uapi/linux/kvm.h
-+++ b/include/uapi/linux/kvm.h
-@@ -996,6 +996,7 @@ struct kvm_ppc_resize_hpt {
- #define KVM_CAP_ARM_PTRAUTH_ADDRESS 171
- #define KVM_CAP_ARM_PTRAUTH_GENERIC 172
- #define KVM_CAP_PMU_EVENT_FILTER 173
-+#define KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 174
- 
- #ifdef KVM_CAP_IRQ_ROUTING
- 
-diff --git a/virt/kvm/arm/arm.c b/virt/kvm/arm/arm.c
-index 35a069815baf..86c6aa1cb58e 100644
---- a/virt/kvm/arm/arm.c
-+++ b/virt/kvm/arm/arm.c
-@@ -196,6 +196,7 @@ int kvm_vm_ioctl_check_extension(struct kvm *kvm, long ext)
- 	case KVM_CAP_MP_STATE:
- 	case KVM_CAP_IMMEDIATE_EXIT:
- 	case KVM_CAP_VCPU_EVENTS:
-+	case KVM_CAP_ARM_IRQ_LINE_LAYOUT_2:
- 		r = 1;
- 		break;
- 	case KVM_CAP_ARM_SET_DEVICE_ADDR:
-@@ -888,6 +889,7 @@ int kvm_vm_ioctl_irq_line(struct kvm *kvm, struct kvm_irq_level *irq_level,
- 
- 	irq_type = (irq >> KVM_ARM_IRQ_TYPE_SHIFT) & KVM_ARM_IRQ_TYPE_MASK;
- 	vcpu_idx = (irq >> KVM_ARM_IRQ_VCPU_SHIFT) & KVM_ARM_IRQ_VCPU_MASK;
-+	vcpu_idx += ((irq >> KVM_ARM_IRQ_VCPU2_SHIFT) & KVM_ARM_IRQ_VCPU2_MASK) * (KVM_ARM_IRQ_VCPU_MASK + 1);
- 	irq_num = (irq >> KVM_ARM_IRQ_NUM_SHIFT) & KVM_ARM_IRQ_NUM_MASK;
- 
- 	trace_kvm_irq_line(irq_type, vcpu_idx, irq_num, irq_level->level);
+diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+index 9b93213417..f710036535 100644
+--- a/hw/watchdog/wdt_aspeed.c
++++ b/hw/watchdog/wdt_aspeed.c
+@@ -140,7 +140,7 @@ static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
+     case WDT_RESTART:
+         if ((data & 0xFFFF) == WDT_RESTART_MAGIC) {
+             s->regs[WDT_STATUS] = s->regs[WDT_RELOAD_VALUE];
+-            aspeed_wdt_reload(s, !(data & WDT_CTRL_1MHZ_CLK));
++            aspeed_wdt_reload(s, !(s->regs[WDT_CTRL] & WDT_CTRL_1MHZ_CLK));
+         }
+         break;
+     case WDT_CTRL:
 -- 
-2.20.1
+2.21.0
+

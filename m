@@ -1,92 +1,106 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp494787wrp;
-        Fri, 6 Sep 2019 03:03:14 -0700 (PDT)
-X-Received: by 2002:a9d:198c:: with SMTP id k12mr6960847otk.154.1567764194677;
-        Fri, 06 Sep 2019 03:03:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567764194; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp706718wrp;
+        Fri, 6 Sep 2019 06:33:52 -0700 (PDT)
+X-Received: by 2002:a05:6808:685:: with SMTP id k5mr6643935oig.96.1567776832692;
+        Fri, 06 Sep 2019 06:33:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567776832; cv=none;
         d=google.com; s=arc-20160816;
-        b=dysU0fcL7I96drvmvZ6km1f9oLwbDHLh61mP/+LutLUIXT0zy5IKn+oahrRDoSB0x7
-         dM4jPZf+e7uEUKpSiqE6xztZq+pFdm6SE9+iznDCj21nnWyfhnGJoeQWfEVXXZnUqSIo
-         YzT03KQ3nhJdvxXvBaZBihGWYT0YX2k6elzucAN0Q0x1O0Ozitj+xmlJ73MO6NjzX5IS
-         Gb2ZyclPvPXv8g9Fjtc5Q3m/XVHoJR17w6UkaXBOe7cdSot+TUtUmQl0R9QEoD3vF8Oz
-         p2NK9Qbs2RzH20QDYfI67T97IZ+PyZNT+ZOPeH0evkNvnnzf7hHpAqHGmJj1bx8kyc5K
-         IAfg==
+        b=0T/Y3kjn2a46HOTZ9XscppPwENmK50HYrwQrcWsEGYrlENwhL3OhzMUQiGi1LPDaWH
+         SimOPxsqhzHqIc2z4Jax74Lb5vlAtqjKCmbqY7QpLwH2mhIOfo1ABpWqDYqli/j0bp5o
+         NFxfP+c11yQz+wpRgPkE8uVyMLYnzQCrrvIF7ZQu7Ligjh5Bo6MXNtDC68i8UUFMyG7F
+         peZ0aXry3uAT50iJ7Zsb5K7hP/Lq1viiBahYPhObLH7/yEClFgUIzmu3grT9G9SVFJsz
+         wD9NGdSA8fF35OW13nBEDLcrZ5tVHGh+W+WdaJIssCyXoPIrRpYcK0p2wMkgekaP2gaq
+         blrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=2YapL5VDuz7Vd3BxxuvOuiZc+9cI0DhXmCDbtX68ZI4=;
-        b=TOa4dYMxCJSUFz6Wt4PXl94VMdllKerEdtpAmBHCdYg+PTZ0I7qxbzkPMXuvzAL9BZ
-         FvLt2h0g+LBzuXCJ0ePDQlKH4Lscr88pr1aRtRNJOfolqIzNdLEF7u+hbKWIUGRvjHRy
-         2oMrD94xYKMa2DDqyvH3v2Zh0+2UXc8onRBZcsMs0jBVZRsdNyCRTRfmxUEJtV0JlQge
-         oENzbtnCku1u+oGQbRiPvzafcwKEOFTG4W0fJI9NV2qiIIoU4cO2QPLgBKQJFSVppj8X
-         +ySIhMKru7N9Eoo3izDyvp4DqbwiTLxTUOBRqHOq9yu8lC3P22zB90iGRJWIo65nEo6x
-         u3Hw==
+        bh=NS/1UMTaDY0XCtVgUqxtS3Q4KQf/c0k8Z4z/bVFMdpY=;
+        b=KSgWJEwWwvn24VdeJZ2t7YXlIKUlx+HXvWOIT9FNK7h0tn2+Mjp1PxyClS7aGdg81v
+         Ve8aDjN5SbWwsfemf5F74v9O8XKqdRFQ3+ihx9w62HBC03aQm1VFuCEFy7XbGE1u3enF
+         kVVOULewxJg/y5lYc4KrUWcV5JZvpNofrYF8wGhfvvXistgc3A2zHGzqNs/khxhwr4/E
+         YhWwq0ZnYfqHx0Pw7TIFyYA4bZSxusVFdytm+uP/BCCRcUdnVO+y83tdWE7oHlpImyHe
+         +6DnkdmBTgZ0b3KOqATkLwgek7HYFAY4UVOEJqmjcVwhx8cJJbq6KBsd2EsGmoxpJklm
+         yaNg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YBJOkFya;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FIbqUarH;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id o8sor2642822otl.91.2019.09.06.03.03.14
+        by mx.google.com with SMTPS id z31sor2891367otb.170.2019.09.06.06.33.52
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 06 Sep 2019 03:03:14 -0700 (PDT)
+        Fri, 06 Sep 2019 06:33:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YBJOkFya;
+       dkim=pass header.i=@linaro.org header.s=google header.b=FIbqUarH;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=2YapL5VDuz7Vd3BxxuvOuiZc+9cI0DhXmCDbtX68ZI4=;
-        b=YBJOkFyavVGOHTG/8kVAAX6fWtghUWYj8uvncL97prhyF4BBxq3QTHqmwseOetkuul
-         z3SiiRnNRMQbDMHhJNX1gyeak76vIrfv0Ap+AeXt+/LjRGaVY/ybHMyKrQbDcamdTss0
-         dp0GhqG1oIW0pEN6Fx9GiM8BOdAaVsGX/jNGe06cW7vIU8G4+7Wf6eHTCNGHTGHWgok6
-         gFEuJwkbvffsJFl1OVWLKXsSDSdQqPsrpbj2zHk/x1GQ3YKhyLjKgbZjdHZ//mX4HXIb
-         b8jC0PtalnLUf6RGcB+hB74uqWTGfI4FDJOSQoYvnMPRarGkzEcY+vT2JckB/PsS/PTr
-         O95A==
+        bh=NS/1UMTaDY0XCtVgUqxtS3Q4KQf/c0k8Z4z/bVFMdpY=;
+        b=FIbqUarH52LiwfX+EGgj/r+HqVEIlhJ3rFYeur1IzMmFfBOyv/II4fU2UlNq2cZPMQ
+         kpvqJgSpjK54VA4NOcdjsv7akR1Unl3VrwRJar6JNjwvo8qQws7TrYkV6nSzz31kTu7A
+         /NAnwKxYpFlKd1nSa/QW/FaefhCGqLwePEFwIu+huKWZCo7dsDVYIpRn5bVo6nr7QD8g
+         Gljqx7iEwdyvFSQfQiNNCJNQCjaRWKXHl1bXktaiEH5mj9WI3CGksbQiBzUhUvz9Ml6h
+         L/GinfpptiEtuKS2xyi70KExbX37E4lodYWnxHSmQyCiXbwHYe0ndkDZUiiIUhKR0i0v
+         fGZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=2YapL5VDuz7Vd3BxxuvOuiZc+9cI0DhXmCDbtX68ZI4=;
-        b=APS4p9O3fsbW48ajpCNUhTjwBgC85wvjS7+xWSQ5c3S9YxzA/LYClw7KN47PvWjjtq
-         /e0kzwnmUKjxUPlbyLYbw8OcKe/8gaEIlM8dTXeGRpqP6Mpo2YCu2eikdod0+oyEESqZ
-         7Z/j2gN9gPOK+icuuRV5wKl/mLncfDxqUgplQX5v4gqRk4Mi+sFcBmV6XbXrN06Tu2eB
-         6hsc1kg6PXo1cHfmLqkF9BQl3nk7PuiiWSDqf0OqWznh/ftguCExHz0Y8o8QzMnYzDp1
-         NF0lsbfBb20gTrnmbmE6HVFAM4Ig2/jtFNxmfXzIag95+NJ6Lz9VsTEcufKdpl9omIZz
-         LilQ==
-X-Gm-Message-State: APjAAAWhCrJK/m/7YuJG8rU4JwWzE+KlgRaHVDnjyNhSeEsITgaasIKr
-	DxnnqDHxMBUss9j6wYvDqKddUmkrWbOfnq/5tdeejXHTiL5CrA==
-X-Google-Smtp-Source: APXvYqzWS7dZEbiONKVTQqkysoyUUcNeduzUCFrhtjU6z8tLgIUjMzTL57xoRiAz8cD4+YpFlb/GFlsdBDfeJqSZIII=
-X-Received: by 2002:a9d:5e10:: with SMTP id d16mr6654196oti.91.1567764193761;
- Fri, 06 Sep 2019 03:03:13 -0700 (PDT)
+        bh=NS/1UMTaDY0XCtVgUqxtS3Q4KQf/c0k8Z4z/bVFMdpY=;
+        b=SSrLVQS9NEvuWctXadppQjygYddKUc8GrP+lyasBbROhNU/1vPiC8WdiT7J23tRUK8
+         H73h/ST12qtfwG0lYO9HAUrd7yVHlqzEZvC5/6WIJ2sVx+DweOv1jV5vPIcKE+19+XwM
+         7HUvAgM3RDMmLSsgbsSqbLXB4N2rh7k/WtgpEr66VPtUFeuQ2DnfuZl1+a6ucYQUWqFe
+         /AKAoKx2PmpLvfW02f7wjVsrFywqo1GwYZellOZm0C+9zrVBs9DjaaTB/UjE2W5HSnHo
+         ZXPTBeslgrq5pQIdK5aK6xJc7TxBkhu2K4z+tD9muKQ8Mvgaq2de4qsiRpJcDqcODZZS
+         b9GQ==
+X-Gm-Message-State: APjAAAWM/pdggPEHh0kwbX3ea73w1WsOXHCk6VskB0zklFAcG++d+loH
+	jwEcCHSH71vMTFxAph1A6JpSKdMnaV3sWyZGG1MOJ6bdYych/Q==
+X-Google-Smtp-Source: APXvYqxi8BWFEkSb61Cl0Rx76KJ8dq2sBMjbSlqz/nqd/dSpHIO7nnZNUaxeUWuNl7uClmm6q3/jPdKnTZMy64pGZWM=
+X-Received: by 2002:a9d:7504:: with SMTP id r4mr6913867otk.221.1567776832049;
+ Fri, 06 Sep 2019 06:33:52 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190904112108.2341-1-alex.bennee@linaro.org>
-In-Reply-To: <20190904112108.2341-1-alex.bennee@linaro.org>
+References: <20190906124706.19145-1-alex.bennee@linaro.org>
+ <20190906124706.19145-3-alex.bennee@linaro.org> <CAFEAcA84VXqw+ZGP9Nv=Wy069ZU_C0WkVdv0h28GVbnzyx6w6w@mail.gmail.com>
+ <87a7bhzhsn.fsf@linaro.org>
+In-Reply-To: <87a7bhzhsn.fsf@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 6 Sep 2019 11:03:02 +0100
-Message-ID: <CAFEAcA9gr-vf4VP0oBnHjBwRb1vbD=hE-K7kuzQZjOLH_=TECQ@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH v2 0/5] fixed up semihosting fixups
+Date: Fri, 6 Sep 2019 14:33:41 +0100
+Message-ID: <CAFEAcA-r9D71LoLowae8vm=sp1oojUBhppm0t97sUck4s5tp1Q@mail.gmail.com>
+Subject: Re: [PATCH v3 2/4] target/arm: handle A-profile semihosting at
+ translate time
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 2Nq4TOdnO8zp
+X-TUID: gvj0QLFq9qjm
 
-On Wed, 4 Sep 2019 at 12:22, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+On Fri, 6 Sep 2019 at 14:16, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
 e:
 >
-> Hi Peter,
 >
-> Here is version 2 of the ARM semi-hosting cleanup patches. The re-base
-> had failed due to a change in the gen_exception_internal_insn API
-> which now takes the PC instead of offset from pc_next. There is also
-> the a minor indentation fix.
+> Peter Maydell <peter.maydell@linaro.org> writes:
+>
+> > On Fri, 6 Sep 2019 at 13:47, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
+wrote:
+>
+> >
+> > Doesn't this accidentally enable semihosting via SVC for
+> > M-profile ?
+>
+> We must have done that before then.
 
-Hi -- I'm afraid you'll need to rebase this again, as Richard's
-decodetree refactoring has now landed.
+No, we didn't do it before, because we were handling it in
+arm_cpu_do_interrupt(), which is A/R-profile only. The
+M-profile code goes via arm_v7m_cpu_do_interrupt() which doesn't
+check for semihosting when it sees an EXCP_SWI.
+
+> Just gate it with && !arm_dc_feature(s, ARM_FEATURE_M) then?
+
+Yes, I think that's the right fix.
 
 thanks
 -- PMM

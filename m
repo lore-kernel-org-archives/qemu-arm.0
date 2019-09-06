@@ -1,143 +1,179 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp130176wrp;
-        Thu, 5 Sep 2019 18:53:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwZdNxDr7/wly32e8m602mQ5/pQ4SNi6LYL0OrRVrFzPNRkb6GNtt9XuFlir/SikBrqVpIf
-X-Received: by 2002:a17:906:fcc9:: with SMTP id qx9mr5356460ejb.32.1567734818495;
-        Thu, 05 Sep 2019 18:53:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567734818; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp416943wrp;
+        Fri, 6 Sep 2019 01:33:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwYvDBTP/aYbNxwBgIeT7msTNsQztSXrLX6KRFWYxhT43tohGS+uCg62FzdgB6L81kInRSl
+X-Received: by 2002:a17:902:8546:: with SMTP id d6mr8132489plo.170.1567758799830;
+        Fri, 06 Sep 2019 01:33:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567758799; cv=none;
         d=google.com; s=arc-20160816;
-        b=bLEXTaDnIfG4xHeg0C/rXKXazoQVMBD+f0rP1bpKjjmxhoDbrvj/b4M5Wn9rId2wBd
-         RCdDr/JesUmNLD95xcm0ifkg97TtsDhAhAaRoVgU6HGQEBtvvkYNMwGDdNGVgkHFiXNN
-         2J2SiOF0FX4upDtAcSA6n73dg84UlZ6GU28+diqmjFECkAos8+yowyW/sAROmoRGLlWJ
-         gutmv8w1OFdpAyt7JvaQ/zcWaXka5UpsdTuKSdvtnAXWfw5LJlcyCPoVDDhAAAPHYQgW
-         +j2aTXnU/iXIRduQdDVVASlicBMlYufOyU/WjzEIWQ7++ZStBWWIjVhszEb0WtLKhd6S
-         qABw==
+        b=cbsbGkNLK0Sq/uDSSeI80zrL4QrNUGQP9m60Hy/XBFtfkRPfQI9nOQU75LkgDM5QCV
+         TZEdvrXEvjLvUJHBLzaPHqkGleZwquVB7n/AJEkk+imLpArzeX2jhKAFVZdGx0uZWAO3
+         o7d5aFnmgSYfRqS9l2OTAfE4+S0O7gb/NrJjKzhERCRFzF8f065rDG/suL8Jc7v8Hbbi
+         ZeLgzyQfjF8G2trrhLA+6l5nkI86ZL+UVHAraK+2GCoxYdEl3aOkwdBHuuIycdZBZURp
+         LkjvGPVoMMHhO7u3NCE43ixCSJ0fx6Ff+djaoTrpwYYa/RusKK6k5QKeJOE4h08Ep8y3
+         gAMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:mime-version:message-id
-         :date:smtp-origin-cluster:to:smtp-origin-hostname:from
-         :smtp-origin-hostprefix:dkim-signature;
-        bh=mphrkCK8PHgknx4G4mNf76pijc2fJDXD3SASQAgFHkM=;
-        b=EOLIAMLRkax8QqLxhzY3IaJG99X3IsmqmATM2hUC7CMcXvZxu7KmUhJ40zVJlAW8YL
-         HJyYmmHlxTeIBqRgace+05ZUPf99wG5Eae0me9fBWgxlii0XXPOdS/pmjVi/ciJpKgyK
-         lhf2T2xhpeJa+EeRYkolBWk4J3NkLDv8Ptm5Bu7/u2g6/V/QUmSn8t34SN2Qq93EZPNm
-         lct2UdL0/UcyPdNhzziK+7A6TnhcVd7DWYSDq3whncsIqtdOQpHAjhQsbA7h7DuEuzwH
-         7oYlazGA8iIzbfX8cBWYNm5fiFtUKjeRiUY6I9ueKfynYKvAobm+AloLVVquz/kwqEin
-         CDtA==
+        h=list-id:precedence:sender:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=grZVZ5edtbYP1obi3/tih5tCj0d+ccDeU7NO/SjYew4=;
+        b=juakw+i9O0EyxnemKC0BHdUso3FjUhxg1OuZynbne7EQoP4ED2Wef4Git1+VBi6YIb
+         ejy4HGYAth3Thr80lt8AV+3N/94nHDXAFUseZmcv6OjPdpYob745N3ldgwct7aCO77fa
+         cL352ypjv2zQcNt3me+wRQTPmKpUZtBhvBzV7VV35AmjNaMmZfzut65x0lL/ejg2RPGK
+         5VQpratajqAA5bgC4R18CfPu57g1uzPQMPsZermYoNp/T7vpXhJHk6UjZ5NjUOFddCWw
+         afHi/lxVBWusLd/oqKY1h40DcPySt0Ojn4jEQnXWMqCZXnmvgHD46kWcg2dwnC0TH5Tx
+         177A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@fb.com header.s=facebook header.b=Rl3UlQ6B;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fb.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x54si1665136edb.267.2019.09.05.18.53.38
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 05 Sep 2019 18:53:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id q7si4287305plr.352.2019.09.06.01.33.19;
+        Fri, 06 Sep 2019 01:33:19 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@fb.com header.s=facebook header.b=Rl3UlQ6B;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=fb.com
-Received: from localhost ([::1]:51298 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i63RR-0000J0-Jt
-	for alex.bennee@linaro.org; Thu, 05 Sep 2019 21:53:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53332)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <prvs=4152e791a2=amithash@fb.com>) id 1i62lf-0002wr-Kn
- for qemu-arm@nongnu.org; Thu, 05 Sep 2019 21:10:28 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <prvs=4152e791a2=amithash@fb.com>) id 1i62le-00011m-FM
- for qemu-arm@nongnu.org; Thu, 05 Sep 2019 21:10:27 -0400
-Received: from mx0a-00082601.pphosted.com ([67.231.145.42]:64228)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <prvs=4152e791a2=amithash@fb.com>)
- id 1i62ld-0000xZ-Tj
- for qemu-arm@nongnu.org; Thu, 05 Sep 2019 21:10:26 -0400
-Received: from pps.filterd (m0109333.ppops.net [127.0.0.1])
- by mx0a-00082601.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- x861AJDZ014230
- for <qemu-arm@nongnu.org>; Thu, 5 Sep 2019 18:10:20 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fb.com;
- h=from : to : subject :
- date : message-id : mime-version : content-type; s=facebook;
- bh=mphrkCK8PHgknx4G4mNf76pijc2fJDXD3SASQAgFHkM=;
- b=Rl3UlQ6BHaP8kGuB4LStl4oOQKzQjIOmUNYcsvY5n7aekrl8U3znEZwlTAckRobwrJVz
- K4MWsHf7DAXhUhInn+lYuSKaG9uX50Mx1pijarVQBrBPJf4pBRowYIKMCK39kdIVwupV
- 2YcGeEellSMq28Eaz3PbDHbRay0mVgPkvqY= 
-Received: from mail.thefacebook.com (mailout.thefacebook.com [199.201.64.23])
- by mx0a-00082601.pphosted.com with ESMTP id 2uu8mds8k7-5
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 05 Sep 2019 18:10:20 -0700
-Received: from mx-out.facebook.com (2620:10d:c081:10::13) by
- mail.thefacebook.com (2620:10d:c081:35::126) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id 15.1.1713.5;
- Thu, 5 Sep 2019 18:10:14 -0700
-Received: by devvm1607.vll1.facebook.com (Postfix, from userid 122613)
- id F022F2A1CDDE; Thu,  5 Sep 2019 18:10:12 -0700 (PDT)
-Smtp-Origin-Hostprefix: devvm
-From: Amithash Prasad <amithash@fb.com>
-Smtp-Origin-Hostname: devvm1607.vll1.facebook.com
-To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>, <amithash@fb.com>,
- <clg@kaod.org>, <joel@jms.id.au>
-Smtp-Origin-Cluster: vll1c12
-Date: Thu, 5 Sep 2019 18:10:10 -0700
-Message-ID: <20190906011010.1135084-1-amithash@fb.com>
-X-Mailer: git-send-email 2.17.1
-X-FB-Internal: Safe
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S2387946AbfIFIdS (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 6 Sep 2019 04:33:18 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:46140 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1732224AbfIFIdS (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 6 Sep 2019 04:33:18 -0400
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+        by Forcepoint Email with ESMTP id 9E2F6B0146111930E6C7;
+        Fri,  6 Sep 2019 16:33:15 +0800 (CST)
+Received: from HGHY1z004218071.china.huawei.com (10.177.29.32) by
+ DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
+ 14.3.439.0; Fri, 6 Sep 2019 16:33:09 +0800
+From:   Xiang Zheng <zhengxiang9@huawei.com>
+To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
+        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+        <lersek@redhat.com>, <james.morse@arm.com>,
+        <gengdongjiu@huawei.com>, <mtosatti@redhat.com>, <rth@twiddle.net>,
+        <ehabkost@redhat.com>, <jonathan.cameron@huawei.com>,
+        <xuwei5@huawei.com>, <kvm@vger.kernel.org>,
+        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+        <linuxarm@huawei.com>
+CC:     <zhengxiang9@huawei.com>, <wanghaibin.wang@huawei.com>
+Subject: [PATCH v18 2/6] docs: APEI GHES generation and CPER record description
+Date:   Fri, 6 Sep 2019 16:31:48 +0800
+Message-ID: <20190906083152.25716-3-zhengxiang9@huawei.com>
+X-Mailer: git-send-email 2.15.1.windows.2
+In-Reply-To: <20190906083152.25716-1-zhengxiang9@huawei.com>
+References: <20190906083152.25716-1-zhengxiang9@huawei.com>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.70,1.0.8
- definitions=2019-09-05_11:2019-09-04,2019-09-05 signatures=0
-X-Proofpoint-Spam-Details: rule=fb_default_notspam policy=fb_default score=0
- adultscore=0 spamscore=0
- suspectscore=0 priorityscore=1501 impostorscore=0 bulkscore=0
- mlxlogscore=790 clxscore=1011 mlxscore=0 lowpriorityscore=0 phishscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-1906280000 definitions=main-1909060010
-X-FB-Internal: deliver
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 67.231.145.42
-X-Mailman-Approved-At: Thu, 05 Sep 2019 21:53:30 -0400
-Subject: [Qemu-arm] [PATCH] Check correct register for clock source
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: O18/qQsa11tm
+X-Originating-IP: [10.177.29.32]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 23dWu1uiF0ep
 
-When WDT_RESTART is written, the data is not the contents
-of the WDT_CTRL register. Hence ensure we are looking at
-WDT_CTRL to check if bit WDT_CTRL_1MHZ_CLK is set or not.
+From: Dongjiu Geng <gengdongjiu@huawei.com>
 
-Signed-off-by: Amithash Prasad <amithash@fb.com>
+Add APEI/GHES detailed design document
+
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
 ---
- hw/watchdog/wdt_aspeed.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ docs/specs/acpi_hest_ghes.txt | 88 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 88 insertions(+)
+ create mode 100644 docs/specs/acpi_hest_ghes.txt
 
-diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-index 9b93213417..f710036535 100644
---- a/hw/watchdog/wdt_aspeed.c
-+++ b/hw/watchdog/wdt_aspeed.c
-@@ -140,7 +140,7 @@ static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
-     case WDT_RESTART:
-         if ((data & 0xFFFF) == WDT_RESTART_MAGIC) {
-             s->regs[WDT_STATUS] = s->regs[WDT_RELOAD_VALUE];
--            aspeed_wdt_reload(s, !(data & WDT_CTRL_1MHZ_CLK));
-+            aspeed_wdt_reload(s, !(s->regs[WDT_CTRL] & WDT_CTRL_1MHZ_CLK));
-         }
-         break;
-     case WDT_CTRL:
+diff --git a/docs/specs/acpi_hest_ghes.txt b/docs/specs/acpi_hest_ghes.txt
+new file mode 100644
+index 0000000000..690d4b2bd0
+--- /dev/null
++++ b/docs/specs/acpi_hest_ghes.txt
+@@ -0,0 +1,88 @@
++APEI tables generating and CPER record
++=============================
++
++Copyright (C) 2019 Huawei Corporation.
++
++Design Details:
++-------------------
++
++       etc/acpi/tables                                 etc/hardware_errors
++    ====================                      ==========================================
+++ +--------------------------+            +-----------------------+
++| | HEST                     |            |    address            |            +--------------+
++| +--------------------------+            |    registers          |            | Error Status |
++| | GHES1                    |            | +---------------------+            | Data Block 1 |
++| +--------------------------+ +--------->| |error_block_address1 |----------->| +------------+
++| | .................        | |          | +---------------------+            | |  CPER      |
++| | error_status_address-----+-+ +------->| |error_block_address2 |--------+   | |  CPER      |
++| | .................        |   |        | +---------------------+        |   | |  ....      |
++| | read_ack_register--------+-+ |        | |    ..............   |        |   | |  CPER      |
++| | read_ack_preserve        | | |        +-----------------------+        |   | +------------+
++| | read_ack_write           | | | +----->| |error_block_addressN |------+ |   | Error Status |
+++ +--------------------------+ | | |      | +---------------------+      | |   | Data Block 2 |
++| | GHES2                    | +-+-+----->| |read_ack_register1   |      | +-->| +------------+
+++ +--------------------------+   | |      | +---------------------+      |     | |  CPER      |
++| | .................        |   | | +--->| |read_ack_register2   |      |     | |  CPER      |
++| | error_status_address-----+---+ | |    | +---------------------+      |     | |  ....      |
++| | .................        |     | |    | |  .............      |      |     | |  CPER      |
++| | read_ack_register--------+-----+-+    | +---------------------+      |     +-+------------+
++| | read_ack_preserve        |     |   +->| |read_ack_registerN   |      |     | |..........  |
++| | read_ack_write           |     |   |  | +---------------------+      |     | +------------+
+++ +--------------------------|     |   |                                 |     | Error Status |
++| | ...............          |     |   |                                 |     | Data Block N |
+++ +--------------------------+     |   |                                 +---->| +------------+
++| | GHESN                    |     |   |                                       | |  CPER      |
+++ +--------------------------+     |   |                                       | |  CPER      |
++| | .................        |     |   |                                       | |  ....      |
++| | error_status_address-----+-----+   |                                       | |  CPER      |
++| | .................        |         |                                       +-+------------+
++| | read_ack_register--------+---------+
++| | read_ack_preserve        |
++| | read_ack_write           |
+++ +--------------------------+
++
++(1) QEMU generates the ACPI HEST table. This table goes in the current
++    "etc/acpi/tables" fw_cfg blob. Each error source has different
++    notification types.
++
++(2) A new fw_cfg blob called "etc/hardware_errors" is introduced. QEMU
++    also need to populate this blob. The "etc/hardwre_errors" fw_cfg blob
++    contains an address registers table and an Error Status Data Block table.
++
++(3) The address registers table contains N Error Block Address entries
++    and N Read Ack Register entries, the size for each entry is 8-byte.
++    The Error Status Data Block table contains N Error Status Data Block
++    entries, the size for each entry is 4096(0x1000) bytes. The total size
++    for "etc/hardware_errors" fw_cfg blob is (N * 8 * 2 + N * 4096) bytes.
++    N is the kinds of hardware error sources.
++
++(4) QEMU generates the ACPI linker/loader script for the firmware, the
++    firmware pre-allocates memory for "etc/acpi/tables", "etc/hardware_errors"
++    and copies blobs content there.
++
++(5) QEMU generates N ADD_POINTER commands, which patch address in the
++    "error_status_address" fields of the HEST table with a pointer to the
++    corresponding "address registers" in "etc/hardware_errors" blob.
++
++(6) QEMU generates N ADD_POINTER commands, which patch address in the
++    "read_ack_register" fields of the HEST table with a pointer to the
++    corresponding "address registers" in "etc/hardware_errors" blob.
++
++(7) QEMU generates N ADD_POINTER commands for the firmware, which patch
++    address in the " error_block_address" fields with a pointer to the
++    respective "Error Status Data Block" in "etc/hardware_errors" blob.
++
++(8) QEMU defines a third and write-only fw_cfg blob which is called
++    "etc/hardware_errors_addr". Through that blob, the firmware can send back
++    the guest-side allocation addresses to QEMU. The "etc/hardware_errors_addr"
++    blob contains a 8-byte entry. QEMU generates a single WRITE_POINTER commands
++    for the firmware, the firmware will write back the start address of
++    "etc/hardware_errors" blob to fw_cfg file "etc/hardware_errors_addr".
++
++(9) When QEMU gets SIGBUS from the kernel, QEMU formats the CPER right into
++    guest memory, and then injects whatever interrupt (or assert whatever GPIO
++    line) as a notification which is necessary for notifying the guest.
++
++(10) This notification (in virtual hardware) will be handled by guest kernel,
++    guest APEI driver will read the CPER which is recorded by QEMU and do the
++    recovery.
 -- 
-2.21.0
+2.19.1
 

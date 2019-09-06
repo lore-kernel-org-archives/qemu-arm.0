@@ -1,143 +1,167 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp363899wrp;
-        Fri, 6 Sep 2019 00:27:17 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzpqalPLK3hhQlWTrrbZ9D3uCV1TctuhrTr+eOBJun5c4PaRPrWM5FQUmHNrpAWNQFlKlKC
-X-Received: by 2002:a50:b30f:: with SMTP id q15mr6372776edd.145.1567754837591;
-        Fri, 06 Sep 2019 00:27:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567754837; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp416925wrp;
+        Fri, 6 Sep 2019 01:33:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzujQSAw5GJtbz6RjdafT1awsJ0YZLa1WRI8CvIrU++ViN24vSAgAxlnB0LCp4Ve/rfinlk
+X-Received: by 2002:a17:902:5a89:: with SMTP id r9mr3271000pli.206.1567758798993;
+        Fri, 06 Sep 2019 01:33:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567758798; cv=none;
         d=google.com; s=arc-20160816;
-        b=AYu0Q+uEGH9dpV5mTayOhQR3fV9li9ioZeCxhnp3wClrc37U/iKz2DgMxIpOA1lR1j
-         Q3m5jo762pZWkBbD5MFd8AQiE2h7ZHfrj+azvInv3gDyaF089Ajtz4SaIpnd85WCkLpr
-         iEjlIImab4xOfbIWI3XxVXMbF+nI7RQZNuLKq6DCirfNGeKy2QC460RB6RAvl7A5srNA
-         03iCaohDpQvJNWxEfNhzsiWx6iyZKceVyXjjrwDrYpurGVB5JMRRoT2mCCh9thDU+Kv6
-         Ef3RE1sDtRXCjQd88mjsDdjmy4pGXts1Qb88nLWNi9lUg40fe5F1TqXE3QwzAwvLtAPu
-         45bQ==
+        b=DC52VVNkI4qBbeK6IfBh+ogjiexJiN2xgOrko4qIjN01+WJx5tAkYC8mm5Y6mAenJm
+         wO5jdCydVic+SYDE2YfcajCycdjTdZnui3KGCFmpP0nQ9BSd040Ef8yTgX735F2uXwVx
+         vsMDozHwXt2JzSymPItaFv48sS0mYRddUsfo0D0BNc0+QW4e5N6/GTOYby2Q3xEP5Yzo
+         KwsVfY1k5rWL1gyYLHME6bM4VVXDmJS0ODfSzjnvtpC+zcJMR/RgVIWce7Asfk3rPY8X
+         gRxedRsROq5tbOqNbOoEAJQYfpcF/u1UGC8LY4GTOHuTpeD77aljfwGJhUKxNJW7tJfR
+         Duag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=wahuO7FJklFA2EYqUAwXGpvOkR4cwWpsme1mDdt6NCQ=;
-        b=S38V1YBlTym6Hz0za8IZgLTypaRtknqev33En5YcYXa7dUOy3jSjlvNWhB6q9+nuJT
-         nVkK/T1VAvw807sZDTZv+cpwTZV9CSFw3+Xm2wn8oXIhRPf9TpZvnSeTxwrMVYfaAymO
-         NsobortJ35nVqltaTYFm7E45L9Ld1xzimzpZzg7Ndrd3zaRN5i+iYorZLzicS1f5ex0V
-         TpNSGg7RTu12+YYukmvGR/napY3Z+0bw1iEGrxhA0cmvtjHTXwPdli5eNrSHDK6TW2ND
-         A04OCFmNpO5CeJpwBZqRv24kt2tkM/zU+Ydh6yzlRf2mLoucS2FIof7PZ6VtIQO9+YHT
-         XnKA==
+        h=list-id:precedence:sender:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=0YI69z4I5ze9GMJSLM82NcYINdqbHyPMTuRxqGQMvU4=;
+        b=AvlIBegHpJfLSiJPfZ96TJSSr0h6zkewTpQi2ZBspvYIuiNQBbNtinqiM7kVJ0+jla
+         ZwtS+ezjADEiqzPOd+3qhQQR1cE5/U6hZnd2PEw0z4Yb5hHnfCAcKl/4vQk9j/2SW+Id
+         Rp/eI78xSvE8VQ+baLSssxkMKJUAx8MF5mZvzqpCr8U1h3V9ONNu1LiqaJFR54pRzCQP
+         YjCRPh6Fs8fQPNAJHGag4/OoS7v1hiv6F2USgGW/Uq23pjjvdbWJsosUn1GKV5bFghPi
+         98HOYsugEA6k8xOuKMyoOUha0Bn+Mh5Zn8qez+Yk1YC+JmlR5r08rngiNa9W4m2Bg0JU
+         U0Mw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a54si2602283edc.333.2019.09.06.00.27.17
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 06 Sep 2019 00:27:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id q7si4287305plr.352.2019.09.06.01.33.18;
+        Fri, 06 Sep 2019 01:33:18 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52948 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i68eK-0006XN-A2
-	for alex.bennee@linaro.org; Fri, 06 Sep 2019 03:27:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33644)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1i68e5-0006X8-KI
- for qemu-arm@nongnu.org; Fri, 06 Sep 2019 03:27:03 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1i68e2-0001yJ-V6
- for qemu-arm@nongnu.org; Fri, 06 Sep 2019 03:27:01 -0400
-Received: from 2.mo4.mail-out.ovh.net ([46.105.72.36]:39509)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1i68e2-0001e4-K9
- for qemu-arm@nongnu.org; Fri, 06 Sep 2019 03:26:58 -0400
-Received: from player695.ha.ovh.net (unknown [10.108.35.197])
- by mo4.mail-out.ovh.net (Postfix) with ESMTP id 675F820388E
- for <qemu-arm@nongnu.org>; Fri,  6 Sep 2019 09:26:49 +0200 (CEST)
-Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
- (Authenticated sender: clg@kaod.org)
- by player695.ha.ovh.net (Postfix) with ESMTPSA id 8C72B966DABC;
- Fri,  6 Sep 2019 07:26:44 +0000 (UTC)
-To: Joel Stanley <joel@jms.id.au>, Amithash Prasad <amithash@fb.com>
-References: <20190906011010.1135084-1-amithash@fb.com>
- <CACPK8Xds26gq=e=7D9qtPJ4FOvhHb0Q-_Chj_MFHcWO99EBcwg@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <773184fa-ade7-f1f8-491f-b2c0b16b5a9a@kaod.org>
-Date: Fri, 6 Sep 2019 09:26:42 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S2387580AbfIFIdR (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 6 Sep 2019 04:33:17 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:46198 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1732683AbfIFIdR (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 6 Sep 2019 04:33:17 -0400
+Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
+        by Forcepoint Email with ESMTP id B1284F9680A2F91B9579;
+        Fri,  6 Sep 2019 16:33:15 +0800 (CST)
+Received: from HGHY1z004218071.china.huawei.com (10.177.29.32) by
+ DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
+ 14.3.439.0; Fri, 6 Sep 2019 16:33:08 +0800
+From:   Xiang Zheng <zhengxiang9@huawei.com>
+To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
+        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+        <lersek@redhat.com>, <james.morse@arm.com>,
+        <gengdongjiu@huawei.com>, <mtosatti@redhat.com>, <rth@twiddle.net>,
+        <ehabkost@redhat.com>, <jonathan.cameron@huawei.com>,
+        <xuwei5@huawei.com>, <kvm@vger.kernel.org>,
+        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+        <linuxarm@huawei.com>
+CC:     <zhengxiang9@huawei.com>, <wanghaibin.wang@huawei.com>
+Subject: [PATCH v18 1/6] hw/arm/virt: Introduce RAS platform version and RAS machine option
+Date:   Fri, 6 Sep 2019 16:31:47 +0800
+Message-ID: <20190906083152.25716-2-zhengxiang9@huawei.com>
+X-Mailer: git-send-email 2.15.1.windows.2
+In-Reply-To: <20190906083152.25716-1-zhengxiang9@huawei.com>
+References: <20190906083152.25716-1-zhengxiang9@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <CACPK8Xds26gq=e=7D9qtPJ4FOvhHb0Q-_Chj_MFHcWO99EBcwg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 736338542352173888
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduvddrudejkedgieekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.72.36
-Subject: Re: [Qemu-arm] [PATCH] Check correct register for clock source
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RHDFGx5KKE/I
+Content-Type: text/plain
+X-Originating-IP: [10.177.29.32]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: rDTchO3OcRFQ
 
-On 06/09/2019 03:16, Joel Stanley wrote:
-> On Fri, 6 Sep 2019 at 01:10, Amithash Prasad <amithash@fb.com> wrote:
->>
->> When WDT_RESTART is written, the data is not the contents
->> of the WDT_CTRL register. Hence ensure we are looking at
->> WDT_CTRL to check if bit WDT_CTRL_1MHZ_CLK is set or not.
->>
->> Signed-off-by: Amithash Prasad <amithash@fb.com>
-> 
-> Reviewed-by: Joel Stanley <joel@jms.id.au>
-> 
-> Thanks for the patch!
+From: Dongjiu Geng <gengdongjiu@huawei.com>
 
-yes. I have pushed it on the aspeed-4.2 branch but it can go independently
-as there are no conflicts. I changed the title slightly to reflect the
-area being changed.
+Support RAS Virtualization feature since version 4.2, disable it by
+default in the old versions. Also add a machine option which allows user
+to enable it explicitly.
 
-On the clock topic, we should consider looking at the "Clock framework API" 
-from  Damien Hedde :
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+---
+ hw/arm/virt.c         | 33 +++++++++++++++++++++++++++++++++
+ include/hw/arm/virt.h |  2 ++
+ 2 files changed, 35 insertions(+)
 
-	http://patchwork.ozlabs.org/cover/1157671/
-
-Thanks,
-
-C. 
-
-> 
->> ---
->>  hw/watchdog/wdt_aspeed.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
->> index 9b93213417..f710036535 100644
->> --- a/hw/watchdog/wdt_aspeed.c
->> +++ b/hw/watchdog/wdt_aspeed.c
->> @@ -140,7 +140,7 @@ static void aspeed_wdt_write(void *opaque, hwaddr offset, uint64_t data,
->>      case WDT_RESTART:
->>          if ((data & 0xFFFF) == WDT_RESTART_MAGIC) {
->>              s->regs[WDT_STATUS] = s->regs[WDT_RELOAD_VALUE];
->> -            aspeed_wdt_reload(s, !(data & WDT_CTRL_1MHZ_CLK));
->> +            aspeed_wdt_reload(s, !(s->regs[WDT_CTRL] & WDT_CTRL_1MHZ_CLK));
->>          }
->>          break;
->>      case WDT_CTRL:
->> --
->> 2.21.0
->>
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index d74538b021..e0451433c8 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1783,6 +1783,20 @@ static void virt_set_its(Object *obj, bool value, Error **errp)
+     vms->its = value;
+ }
+ 
++static bool virt_get_ras(Object *obj, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    return vms->ras;
++}
++
++static void virt_set_ras(Object *obj, bool value, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    vms->ras = value;
++}
++
+ static char *virt_get_gic_version(Object *obj, Error **errp)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+@@ -2026,6 +2040,19 @@ static void virt_instance_init(Object *obj)
+                                     "Valid values are none and smmuv3",
+                                     NULL);
+ 
++    if (vmc->no_ras) {
++        vms->ras = false;
++    } else {
++        /* Default disallows RAS instantiation */
++        vms->ras = false;
++        object_property_add_bool(obj, "ras", virt_get_ras,
++                                 virt_set_ras, NULL);
++        object_property_set_description(obj, "ras",
++                                        "Set on/off to enable/disable "
++                                        "RAS instantiation",
++                                        NULL);
++    }
++
+     vms->irqmap = a15irqmap;
+ 
+     virt_flash_create(vms);
+@@ -2058,8 +2085,14 @@ DEFINE_VIRT_MACHINE_AS_LATEST(4, 2)
+ 
+ static void virt_machine_4_1_options(MachineClass *mc)
+ {
++    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
++
+     virt_machine_4_2_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_4_1, hw_compat_4_1_len);
++    /* Disable memory recovery feature for 4.1 as RAS support was
++     * introduced with 4.2.
++     */
++    vmc->no_ras = true;
+ }
+ DEFINE_VIRT_MACHINE(4, 1)
+ 
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index a72094204e..04ab42ca42 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -103,6 +103,7 @@ typedef struct {
+     bool disallow_affinity_adjustment;
+     bool no_its;
+     bool no_pmu;
++    bool no_ras;
+     bool claim_edge_triggered_timers;
+     bool smbios_old_sys_ver;
+     bool no_highmem_ecam;
+@@ -119,6 +120,7 @@ typedef struct {
+     bool highmem_ecam;
+     bool its;
+     bool virt;
++    bool ras;
+     int32_t gic_version;
+     VirtIOMMUType iommu;
+     struct arm_boot_info bootinfo;
+-- 
+2.19.1
 

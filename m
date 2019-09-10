@@ -1,103 +1,106 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5567933wrp;
-        Tue, 10 Sep 2019 07:44:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz+BgHXAXMxbbQBpUQ355crBorZDFAihVaf6zfVw8A9Ts9ZpOzJGk2jXwvsrtd2meALxJeG
-X-Received: by 2002:a37:8f04:: with SMTP id r4mr30227084qkd.244.1568126697797;
-        Tue, 10 Sep 2019 07:44:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568126697; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5567963wrp;
+        Tue, 10 Sep 2019 07:44:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzzxKcmbTQhvtr2kbg8KfOFez4v2By8me/iL2bPHkf+V3CriRroA8xeFPQOylNX0lOtkLRm
+X-Received: by 2002:a37:a943:: with SMTP id s64mr27956106qke.404.1568126698503;
+        Tue, 10 Sep 2019 07:44:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568126698; cv=none;
         d=google.com; s=arc-20160816;
-        b=a7EMsevDIw1/TM0ifoyqZ8oc3YHNRt90tHnR5mDala9mK9cXeHXCxOG9s+t8lSdL20
-         3mdgDq60lbJR9UmnI7UAQUOiCbGPLPG+B7Nh13EZoylim1Q6jaJSuZ9ZhiPWIgreJJL+
-         8yO6G9kSLwyDl7cBtTv+ne3/GUhp43hukS9jwIfHGtZXg6jlYGHs0YJf2tU/xtbvYZc2
-         VowoK7X9/9PRno4O/nRPSAEXFzgihCU0SDbTgI5XrZO8J1STcVl++yEcs0mDJKfKY+kW
-         /KXw3U+uopMPgWypp6EkubzCDY0M/9MgnW/MdcyW3pDdOX/W9BoaWxURnfmjtjcg3Rdu
-         AYWg==
+        b=aOwD7Wl3s1pvfOwRRoGIJZcu8N0+wGYQyNW9+PwwCFattLrqVr6U9NYCQBWnK6lldl
+         gqgDnarw7suOB7PA9+Ii84lkqwf3LKdAZywmBg9C4xh5CH5fusXwveQ7Egb/R17A5ltA
+         UdqUgWairm8OjzVDJBhOlX7TDo7eynPfjeMuszos7fBd5wdwxhtjzN4omyUk8MFL0ft3
+         5D5cM5Swoe58noqZX32Mz2klm0AtiOX422dmUta2C5xafG4HzkH6i5tUhlsQ2n6yCc1c
+         YAomVWaO3QnJ0mwd4nxQ/X84p60Ronj+5O63e/KHqFjyewOG4M3x9OpRbSQvUq3Jy2qY
+         V04A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature;
-        bh=xTjf3hmMk5rbmJgPO5PWGWbjlNL8080SfY7U6rGODTo=;
-        b=ZHKJYlawgezJb6bP4cBXv16lQVa/Yr8WuRmcyZ7JDXIWAp+m1YC0jULC4Zt7OLp9Us
-         afjWcnIrcdlZjSE75uF61BsyStl5lBfGrCHJfCDyVgbC2IR19PbUn0mXGFCiRoJOsLkK
-         ZrRyacuLMJv4d/3Vp+SWgFVJ/BHbgm379tQlMdi50oo4q8axV1/6HSnN40LCCRjE+e9c
-         rY32xAvi/j6Kkpzt4d2gYH0Q9Cy3H3zZH/lECqCIVUPB53ZQ7RW3RyBlr9L8GnEfLps8
-         Mjs+xBmMHRB8GmOY/EpIH6WWWla5GxHuAn7kEmA6BWrGgEJBJHxHMbjib0PeFmyGoyJU
-         COmw==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from:dkim-signature;
+        bh=+93zhnxV6y7awAg0ASSqV7pmnPcURr2F+yzvl9fZsA4=;
+        b=fJ+c6sMBOqEYf6DM9fPcqr/qNP5V3D1U41PCT4ENYNmhx2L1W/rBbOPye10NdiNdTl
+         VReA454w61GklJMbnALKa1HrBKFh70+cILUfqoYNlCEXWr7/v6POj0zJt7LDjTtE8mMQ
+         6vHYNyIEx4Fk9rncX3A08ckHAat6vGnRCDj2ta1kQ6+I+C+5gRIgwgqhRKy/Qgy04GiB
+         RZ0urmoXAtKFlI69pBuCQaPFE8hW70suCePaz1QqXVdxC0KZ+dpMjh6yj3dv8jXeoa1h
+         r94w/Y8kRikF3n3Oq0mn95tA0pGP/9H8E41h9VyJs/W+WFgqkoF+h+arskCZQulcVVEw
+         F9Eg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bUqpQ6K5;
+       dkim=fail header.i=@linaro.org header.s=google header.b=yjlgCfy9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y32si12793031qtc.203.2019.09.10.07.44.57
+        by mx.google.com with ESMTPS id l10si2618596qtr.225.2019.09.10.07.44.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Sep 2019 07:44:57 -0700 (PDT)
+        Tue, 10 Sep 2019 07:44:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=bUqpQ6K5;
+       dkim=fail header.i=@linaro.org header.s=google header.b=yjlgCfy9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40646 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40654 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i7hO4-0005OL-Pn
+	id 1i7hO4-0005PP-Rz
 	for alex.bennee@linaro.org; Tue, 10 Sep 2019 10:44:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53873)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53883)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1i7hNi-0005Ks-C6
+ (envelope-from <peter.maydell@linaro.org>) id 1i7hNi-0005Kv-IO
  for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1i7hNg-0004xF-SF
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:33 -0400
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:36620)
+ (envelope-from <peter.maydell@linaro.org>) id 1i7hNh-0004xf-IV
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:34 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:35238)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1i7hNg-0004wp-Lj
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:32 -0400
-Received: by mail-wr1-x42c.google.com with SMTP id y19so20838277wrd.3
- for <qemu-arm@nongnu.org>; Tue, 10 Sep 2019 07:44:32 -0700 (PDT)
+ id 1i7hNh-0004xA-DB
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:33 -0400
+Received: by mail-wr1-x442.google.com with SMTP id g7so20892634wrx.2
+ for <qemu-arm@nongnu.org>; Tue, 10 Sep 2019 07:44:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=xTjf3hmMk5rbmJgPO5PWGWbjlNL8080SfY7U6rGODTo=;
- b=bUqpQ6K5odLPzxzHikD/LNM/4ehLGw8tz+HBXQ0FQgvStfMhmDKDw6wucYPtuA6b7d
- zGolzHBXoKBxsjjwtTwGFC8Lvp40WGguivRLGy5FLcETEC3s6It/ln/p9jlpORdW7rSP
- uTdudX+i8cuT5qcLNC5MYrneALDOYc943GcHHU/6YrHiVlUZFxD7z340hcyvSJtmETE9
- IK/NRc5hA0Cl3aJXA/2a6WUPAii3gS/VlLJHyxJOZ500ZJ1vpM0fcKyhBfapeEZjtIPh
- z1Cu00+Qi0T5cLrzcNfr8f++HZdLToAvDZeBtVfKXBWdR4YFIyIPaHQ6Y1Sh2xqLQHK+
- ylGA==
+ bh=+93zhnxV6y7awAg0ASSqV7pmnPcURr2F+yzvl9fZsA4=;
+ b=yjlgCfy9He+gTLDKlS4tw4uJ09J7Z4UDlHWsRjtbB+txmHoBkLZCVFMrmmsmTuh2NW
+ rlmUYDsPDLwT6abct4DmFK3w9vnVVOmqK7dNdwZzduuRc7ceYZpHMpN6mYv2VPje1hX8
+ LUv8zHDO6H0C7IbQZ7lKKSWPisdiX9jbI1gx7JtgLDtDYbepW6gzfg8yifKqH7TlyaQn
+ IDFNKgXt9L4uYdzZT3sBGEgSaoH91SkjAjOkSdzm7hUUnSw3fAQcW3V+xj4SBCvTBeaD
+ uwFB2vzUsONxWrPeppaFOLM9bnBAhkckPPCYVh2W1XHxvqGJkv4It126hXq3BPWXRltt
+ rSnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=xTjf3hmMk5rbmJgPO5PWGWbjlNL8080SfY7U6rGODTo=;
- b=AKAqktKRn3HuLr7Pe044s34jZBYvrINj8mMg21XJQn9XsvSqErl9yAzjitcUtJTfiN
- CPX7dM8thhUd9Zx00rxZ2QcJj7bd7ARggREqmRJqaN1Nk0cYmxWeRGjTbO8rZZ5FChLh
- CrLHhIi01Rx32pDcfEH203ukekCuijf9sK+UBOWFaHdaiLAKKZk5f/lF8DuCs+dIrS/p
- LQCXa5gttwSH/+c3b5h+herFsHNUNfS+Wj2JhDaLtaQoG9Ew10H+i73awKmNsiCruEAl
- pWt6EYlpNrSzYJR8v6gerzTV4x3dOEJSuGhmEXoex0zT2vxhTM/K4tGq/WR+vt8Q7gjI
- HDeQ==
-X-Gm-Message-State: APjAAAWCpbHHGCKvlOOGDNWbJcz6PbybhgcGeekYHi/JYicuXi6qJ4fM
- yR2ZOEfUO+65hB4pDyBfEGBscODvAascYw==
-X-Received: by 2002:adf:e2d0:: with SMTP id d16mr15254677wrj.245.1568126671179; 
- Tue, 10 Sep 2019 07:44:31 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=+93zhnxV6y7awAg0ASSqV7pmnPcURr2F+yzvl9fZsA4=;
+ b=IlxDkNEb6nU0KFW81Bmy9Q/FfT063ak7ICqRBy2FctX3PCJOrYSMul8DHaS+rLfrSI
+ AAPw+iQ7Un3erbQcLjBtlbA9lrhzIvUgthd0tzdt/o/3Eya1XFgFsCJHchS0hrgD6CLV
+ nt+3l+okt9HFBgq7qTLAl3RkZdnqhGv76mfKQbw0opMW6VZbkCbJgP9CyV+NpOMTazii
+ 1q9xw/NV7AUfRcURjHa7voij53XdFyU8D/U9AxnvuVpgZwtSovsDo/eAk0tu3VrwNmDY
+ 5y338ca9LxuezxHxI4vfzGnN3p9WZgLGCfpA3n9sE7QI2nQHaqSEz0fo07gBzS/a+56d
+ jJXg==
+X-Gm-Message-State: APjAAAXY9/EZYRU/QxkqfDGCxibzxcSxKVAXKhIBoc4Ob+XtJ6gn1nsY
+ 49ZyzX/rE54wjj50t5nqatJBGpZo7TF/PA==
+X-Received: by 2002:adf:f110:: with SMTP id r16mr4111003wro.152.1568126672093; 
+ Tue, 10 Sep 2019 07:44:32 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id a192sm5703814wma.1.2019.09.10.07.44.30
+ by smtp.gmail.com with ESMTPSA id a192sm5703814wma.1.2019.09.10.07.44.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Sep 2019 07:44:30 -0700 (PDT)
+ Tue, 10 Sep 2019 07:44:31 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 10 Sep 2019 15:44:15 +0100
-Message-Id: <20190910144428.32597-1-peter.maydell@linaro.org>
+Date: Tue, 10 Sep 2019 15:44:16 +0100
+Message-Id: <20190910144428.32597-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190910144428.32597-1-peter.maydell@linaro.org>
+References: <20190910144428.32597-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::42c
-Subject: [Qemu-arm] [PATCH 00/13] target/arm: Implement semihosting v2.0
+X-Received-From: 2a00:1450:4864:20::442
+Subject: [Qemu-arm] [PATCH 01/13] target/arm/arm-semi: Capture errno in
+ softmmu version of set_swi_errno()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -111,69 +114,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: abQeQHLr4gSF
+X-TUID: n2y1FjKKfzjU
 
-This patchset implements support in QEMU for v2.0 of the
-Arm semihosting specification:
- https://developer.arm.com/docs/100863/latest/preface
+The set_swi_errno() function is called to capture the errno
+from a host system call, so that we can return -1 from the
+semihosting function and later allow the guest to get a more
+specific error code with the SYS_ERRNO function. It comes in
+two versions, one for user-only and one for softmmu. We forgot
+to capture the errno in the softmmu version; fix the error.
 
-Specifically, v2.0 has:
- * a mechanism for detection of optional extra features,
-   which works by allowing the guest to open a magic file
-   named ":semihosting-features" and read some feature
-   flags from it
- * two defined extensions:
-  - STDOUT_STDERR lets the guest separately open stdout and
-    stderr via the ":tt" magic filename (v1.0 only allowed
-    access to stdout)
-  - EXIT_EXTENDED lets A32/T32 guests exit with a specified
-    exit status (otherwise only available to A64 guests).
-    This is something that people have been complaining
-    about for a long time.
+(Semihosting calls directed to gdb are unaffected because
+they go through a different code path that captures the
+error return from the gdbstub call in arm_semi_cb() or
+arm_semi_flen_cb().)
 
-(Technically some of the things we already support, like
-having an A64 semihosting interface at all, are also part of
-the v2.0 spec.)
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+NB that a later commit will put in some cleanup of TaskState
+that will let us reduce the duplication between the two
+implementations of this function.
+---
+ target/arm/arm-semi.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-This patchset:
- * fixes some bugs relating to errnos in some cases
- * makes semihosting hand out its own filedescriptors rather
-   than just passing out host fd numbers
- * abstracts out the fd-related semihosting calls so they
-   indirect via a function table based on the type of the fd
- * adds a new type of fd representing the magic file
-   ":semihosting-features" which is used for feature-detection
- * implements both of the extensions defined by the v2.0 spec
-
-I've tested this by improving my semihosting test suite:
- https://git.linaro.org/people/peter.maydell/semihosting-tests.git/
-(if people have other guest binaries that make much use of
-semihosting then testing would certainly be welcome.)
-
-thanks
--- PMM
-
-Peter Maydell (13):
-  target/arm/arm-semi: Capture errno in softmmu version of
-    set_swi_errno()
-  target/arm/arm-semi: Always set some kind of errno for failed calls
-  target/arm/arm-semi: Make semihosting code hand out its own file
-    descriptors
-  target/arm/arm-semi: clean up TaskState* usage in non-user-only code
-  target/arm/arm-semi: Factor out implementation of SYS_CLOSE
-  target/arm/arm-semi: Factor out implementation of SYS_WRITE
-  target/arm/arm-semi: Factor out implementation of SYS_READ
-  target/arm/arm-semi: Factor out implementation of SYS_ISTTY
-  target/arm/arm-semi: Factor out implementation of SYS_SEEK
-  target/arm/arm-semi: Factor out implementation of SYS_FLEN
-  target/arm/arm-semi: Implement support for semihosting feature
-    detection
-  target/arm/arm-semi: Implement SH_EXT_STDOUT_STDERR extension
-  target/arm/arm-semi: Implement SH_EXT_EXIT_EXTENDED extension
-
- target/arm/arm-semi.c | 613 +++++++++++++++++++++++++++++++++++-------
- 1 file changed, 513 insertions(+), 100 deletions(-)
-
+diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
+index 90423a35deb..03e60105c05 100644
+--- a/target/arm/arm-semi.c
++++ b/target/arm/arm-semi.c
+@@ -114,8 +114,13 @@ static inline uint32_t set_swi_errno(TaskState *ts, uint32_t code)
+     return code;
+ }
+ #else
++static target_ulong syscall_err;
++
+ static inline uint32_t set_swi_errno(CPUARMState *env, uint32_t code)
+ {
++    if (code == (uint32_t)-1) {
++        syscall_err = errno;
++    }
+     return code;
+ }
+ 
+@@ -124,10 +129,6 @@ static inline uint32_t set_swi_errno(CPUARMState *env, uint32_t code)
+ 
+ static target_ulong arm_semi_syscall_len;
+ 
+-#if !defined(CONFIG_USER_ONLY)
+-static target_ulong syscall_err;
+-#endif
+-
+ static void arm_semi_cb(CPUState *cs, target_ulong ret, target_ulong err)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
 -- 
 2.20.1
 

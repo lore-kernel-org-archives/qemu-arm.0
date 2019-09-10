@@ -1,96 +1,96 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5567963wrp;
-        Tue, 10 Sep 2019 07:44:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzzxKcmbTQhvtr2kbg8KfOFez4v2By8me/iL2bPHkf+V3CriRroA8xeFPQOylNX0lOtkLRm
-X-Received: by 2002:a37:a943:: with SMTP id s64mr27956106qke.404.1568126698503;
-        Tue, 10 Sep 2019 07:44:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568126698; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5569853wrp;
+        Tue, 10 Sep 2019 07:46:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwAtE5UWMA9GWv6X5f/U9nXnpZh5CsUks2+7x1gz9lVuSnd+mgVc2cEHNmJKm8p2fvBeih8
+X-Received: by 2002:ac8:4a83:: with SMTP id l3mr29943770qtq.157.1568126790963;
+        Tue, 10 Sep 2019 07:46:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568126790; cv=none;
         d=google.com; s=arc-20160816;
-        b=aOwD7Wl3s1pvfOwRRoGIJZcu8N0+wGYQyNW9+PwwCFattLrqVr6U9NYCQBWnK6lldl
-         gqgDnarw7suOB7PA9+Ii84lkqwf3LKdAZywmBg9C4xh5CH5fusXwveQ7Egb/R17A5ltA
-         UdqUgWairm8OjzVDJBhOlX7TDo7eynPfjeMuszos7fBd5wdwxhtjzN4omyUk8MFL0ft3
-         5D5cM5Swoe58noqZX32Mz2klm0AtiOX422dmUta2C5xafG4HzkH6i5tUhlsQ2n6yCc1c
-         YAomVWaO3QnJ0mwd4nxQ/X84p60Ronj+5O63e/KHqFjyewOG4M3x9OpRbSQvUq3Jy2qY
-         V04A==
+        b=R3Qk1ECfXQ1ZYgDIiwe0SNlN2FwfCJ29eDv2MV0EmgGbEz6fmUyJSsLuYVJxNkTAmP
+         jv/Q4FmuhaLI0vANKU1K3VmsXCiHtcf5vKcEkQx6wnC7Bv5yoTpZYHjjl09EObgL7xNI
+         aBmUDduZ98+oy8wWrL76LkHUe5cOZAqz+jMrfgNFvajlQztdAFsuECG47DPGby0BbCZG
+         NQd+B2yznWEo5ajbp/Etqp1fm0e47nf0KmlgNvBBxd5eeebwS43wS06bx5Mu4uSU4UOd
+         VLOqvNDySoZvRU62p2Ctm11OhaMezfFMWWnWKtH3H7ArKQlE9J7BJj9dF/OpObsJ6SnN
+         xfkQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=+93zhnxV6y7awAg0ASSqV7pmnPcURr2F+yzvl9fZsA4=;
-        b=fJ+c6sMBOqEYf6DM9fPcqr/qNP5V3D1U41PCT4ENYNmhx2L1W/rBbOPye10NdiNdTl
-         VReA454w61GklJMbnALKa1HrBKFh70+cILUfqoYNlCEXWr7/v6POj0zJt7LDjTtE8mMQ
-         6vHYNyIEx4Fk9rncX3A08ckHAat6vGnRCDj2ta1kQ6+I+C+5gRIgwgqhRKy/Qgy04GiB
-         RZ0urmoXAtKFlI69pBuCQaPFE8hW70suCePaz1QqXVdxC0KZ+dpMjh6yj3dv8jXeoa1h
-         r94w/Y8kRikF3n3Oq0mn95tA0pGP/9H8E41h9VyJs/W+WFgqkoF+h+arskCZQulcVVEw
-         F9Eg==
+        bh=Z9gxd6ZnA/tu16GX4u76t9CmQTv6s8qenU28wrY9d9Y=;
+        b=ZRNmW2TQ0UchQNNjTgV0mCa0qbiMcBBeVGJl6Kk2JyVBqYAczL/9L332Nh9vrdRTLB
+         H+5ZkA/aKK13DBx2T61RwwkQ09AyzjhH7qM10pW0J2/9HMB84AWXozbT3Dr91hVa+Tx8
+         Zyb4woo2HKcfXZ8fRBWN39JXuButMxMdt9Hfr/XTkwdgi8bP9oY8lYC94o+naA2enz+y
+         RxpdEAkgCl92mGA7mdMdM5UqMOFvm4qLOvgU4AaR7r3HrXlKWQkHTMUXqp0DiFGAhBr0
+         qWwMVF18dABbfkFTO5PthZ+rynT519jrwSCNC8FDtMPZ0zcgnpCVKCkt/Xfyrcw9t4s1
+         ph3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=yjlgCfy9;
+       dkim=fail header.i=@linaro.org header.s=google header.b="WgiYbb/m";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l10si2618596qtr.225.2019.09.10.07.44.58
+        by mx.google.com with ESMTPS id m17si12764477qka.319.2019.09.10.07.46.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Sep 2019 07:44:58 -0700 (PDT)
+        Tue, 10 Sep 2019 07:46:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=yjlgCfy9;
+       dkim=fail header.i=@linaro.org header.s=google header.b="WgiYbb/m";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40654 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40804 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i7hO4-0005PP-Rz
-	for alex.bennee@linaro.org; Tue, 10 Sep 2019 10:44:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53883)
+	id 1i7hPZ-0006zW-KF
+	for alex.bennee@linaro.org; Tue, 10 Sep 2019 10:46:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53917)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1i7hNi-0005Kv-IO
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:35 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1i7hNk-0005Nc-2t
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1i7hNh-0004xf-IV
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:34 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:35238)
+ (envelope-from <peter.maydell@linaro.org>) id 1i7hNi-0004yc-Oq
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:35 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:42180)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1i7hNh-0004xA-DB
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:33 -0400
-Received: by mail-wr1-x442.google.com with SMTP id g7so20892634wrx.2
- for <qemu-arm@nongnu.org>; Tue, 10 Sep 2019 07:44:33 -0700 (PDT)
+ id 1i7hNi-0004xu-Il
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:34 -0400
+Received: by mail-wr1-x444.google.com with SMTP id q14so20807514wrm.9
+ for <qemu-arm@nongnu.org>; Tue, 10 Sep 2019 07:44:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=+93zhnxV6y7awAg0ASSqV7pmnPcURr2F+yzvl9fZsA4=;
- b=yjlgCfy9He+gTLDKlS4tw4uJ09J7Z4UDlHWsRjtbB+txmHoBkLZCVFMrmmsmTuh2NW
- rlmUYDsPDLwT6abct4DmFK3w9vnVVOmqK7dNdwZzduuRc7ceYZpHMpN6mYv2VPje1hX8
- LUv8zHDO6H0C7IbQZ7lKKSWPisdiX9jbI1gx7JtgLDtDYbepW6gzfg8yifKqH7TlyaQn
- IDFNKgXt9L4uYdzZT3sBGEgSaoH91SkjAjOkSdzm7hUUnSw3fAQcW3V+xj4SBCvTBeaD
- uwFB2vzUsONxWrPeppaFOLM9bnBAhkckPPCYVh2W1XHxvqGJkv4It126hXq3BPWXRltt
- rSnw==
+ bh=Z9gxd6ZnA/tu16GX4u76t9CmQTv6s8qenU28wrY9d9Y=;
+ b=WgiYbb/m97Pv6ppe2CbKzjKpvS7dFJb+zzJ+DkMmn9q2TdNEUxLAo4aizxIfdunzfr
+ 0hM9q+hAi3EHbk5AP37qhV8rBEDQkM6YA8JTF8wGv6vqDDeJ5d8esuUTbP0zdkx88l81
+ DvehzHc7ZCldsLYEEUoL5oanNjtjKcJvZatrEjWSa3h+x7/0LsRYm1SD3Zj2+51MI/AP
+ 3pxqFfop6EMdCqsf3OOAjDuyqBgoV8Q+x3CzdML6uhQ0+3FZnP1O+D8rpnA389ezLgpd
+ vWI25Ku1y+Z2Wkrdcwn2ZKBnwonO9MJjzDlOsg0AoGdJcqE5dw4syy4ABW7YJXXDU0u2
+ XRzg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=+93zhnxV6y7awAg0ASSqV7pmnPcURr2F+yzvl9fZsA4=;
- b=IlxDkNEb6nU0KFW81Bmy9Q/FfT063ak7ICqRBy2FctX3PCJOrYSMul8DHaS+rLfrSI
- AAPw+iQ7Un3erbQcLjBtlbA9lrhzIvUgthd0tzdt/o/3Eya1XFgFsCJHchS0hrgD6CLV
- nt+3l+okt9HFBgq7qTLAl3RkZdnqhGv76mfKQbw0opMW6VZbkCbJgP9CyV+NpOMTazii
- 1q9xw/NV7AUfRcURjHa7voij53XdFyU8D/U9AxnvuVpgZwtSovsDo/eAk0tu3VrwNmDY
- 5y338ca9LxuezxHxI4vfzGnN3p9WZgLGCfpA3n9sE7QI2nQHaqSEz0fo07gBzS/a+56d
- jJXg==
-X-Gm-Message-State: APjAAAXY9/EZYRU/QxkqfDGCxibzxcSxKVAXKhIBoc4Ob+XtJ6gn1nsY
- 49ZyzX/rE54wjj50t5nqatJBGpZo7TF/PA==
-X-Received: by 2002:adf:f110:: with SMTP id r16mr4111003wro.152.1568126672093; 
- Tue, 10 Sep 2019 07:44:32 -0700 (PDT)
+ bh=Z9gxd6ZnA/tu16GX4u76t9CmQTv6s8qenU28wrY9d9Y=;
+ b=e9R+iYUQT6MVbS2B+7spZ42kr5kaCjWvcUY/FcUHGJdZvp86aEiHtvBoa7+DF92+IR
+ augafyhWED753auj8d9i2R/1Y5JiYtUK7GaZF3ZW3dKp8Exr9oFTJ1mGQnvK4zouwNSt
+ t+5n2+H29eIbFdUMfUuNwfkjaugohYKCFNpwZ8Nz7r7KGTZOs7GQ+2NlDsEWOelFIcEX
+ kmcUVCJ+py5CCp59o/7x8IRp0PsVXOE5aqK81fEAJCmKJjLM42Tu5V3zsDtCMqYD4m/O
+ BKms+e3W7Mp9RbVFFmFurl7TVLahh5jZI1XR2B3leR0vIThcGC/4pSsn1Q/yXasoIk9f
+ nwig==
+X-Gm-Message-State: APjAAAVzBtNRfYQent0CvHC7L0LMAe1bjq2Lj6iG9/9Q/FbPqdFJ1Dtg
+ k1GtSsGZKq+TfLJ66QUBUIbfn5LYQZOuJw==
+X-Received: by 2002:a5d:6302:: with SMTP id i2mr27913008wru.249.1568126673412; 
+ Tue, 10 Sep 2019 07:44:33 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id a192sm5703814wma.1.2019.09.10.07.44.31
+ by smtp.gmail.com with ESMTPSA id a192sm5703814wma.1.2019.09.10.07.44.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Sep 2019 07:44:31 -0700 (PDT)
+ Tue, 10 Sep 2019 07:44:32 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 10 Sep 2019 15:44:16 +0100
-Message-Id: <20190910144428.32597-2-peter.maydell@linaro.org>
+Date: Tue, 10 Sep 2019 15:44:17 +0100
+Message-Id: <20190910144428.32597-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190910144428.32597-1-peter.maydell@linaro.org>
 References: <20190910144428.32597-1-peter.maydell@linaro.org>
@@ -98,9 +98,9 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::442
-Subject: [Qemu-arm] [PATCH 01/13] target/arm/arm-semi: Capture errno in
- softmmu version of set_swi_errno()
+X-Received-From: 2a00:1450:4864:20::444
+Subject: [Qemu-arm] [PATCH 02/13] target/arm/arm-semi: Always set some kind
+ of errno for failed calls
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,58 +114,139 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n2y1FjKKfzjU
+X-TUID: US5aGYG2W73Q
 
-The set_swi_errno() function is called to capture the errno
-from a host system call, so that we can return -1 from the
-semihosting function and later allow the guest to get a more
-specific error code with the SYS_ERRNO function. It comes in
-two versions, one for user-only and one for softmmu. We forgot
-to capture the errno in the softmmu version; fix the error.
-
-(Semihosting calls directed to gdb are unaffected because
-they go through a different code path that captures the
-error return from the gdbstub call in arm_semi_cb() or
-arm_semi_flen_cb().)
+If we fail a semihosting call we should always set the
+semihosting errno to something; we were failing to do
+this for some of the "check inputs for sanity" cases.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-NB that a later commit will put in some cleanup of TaskState
-that will let us reduce the duplication between the two
-implementations of this function.
----
- target/arm/arm-semi.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+ target/arm/arm-semi.c | 45 ++++++++++++++++++++++++++-----------------
+ 1 file changed, 27 insertions(+), 18 deletions(-)
 
 diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-index 90423a35deb..03e60105c05 100644
+index 03e60105c05..51b55816faf 100644
 --- a/target/arm/arm-semi.c
 +++ b/target/arm/arm-semi.c
-@@ -114,8 +114,13 @@ static inline uint32_t set_swi_errno(TaskState *ts, uint32_t code)
-     return code;
- }
- #else
-+static target_ulong syscall_err;
-+
- static inline uint32_t set_swi_errno(CPUARMState *env, uint32_t code)
- {
-+    if (code == (uint32_t)-1) {
-+        syscall_err = errno;
-+    }
-     return code;
- }
+@@ -232,11 +232,13 @@ static target_ulong arm_gdb_syscall(ARMCPU *cpu, gdb_syscall_complete_cb cb,
+ #define GET_ARG(n) do {                                 \
+     if (is_a64(env)) {                                  \
+         if (get_user_u64(arg ## n, args + (n) * 8)) {   \
+-            return -1;                                  \
++            errno = EFAULT;                             \
++            return set_swi_errno(ts, -1);               \
+         }                                               \
+     } else {                                            \
+         if (get_user_u32(arg ## n, args + (n) * 4)) {   \
+-            return -1;                                  \
++            errno = EFAULT;                             \
++            return set_swi_errno(ts, -1);               \
+         }                                               \
+     }                                                   \
+ } while (0)
+@@ -287,12 +289,13 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+         GET_ARG(2);
+         s = lock_user_string(arg0);
+         if (!s) {
+-            /* FIXME - should this error code be -TARGET_EFAULT ? */
+-            return (uint32_t)-1;
++            errno = EFAULT;
++            return set_swi_errno(ts, -1);
+         }
+         if (arg1 >= 12) {
+             unlock_user(s, arg0, 0);
+-            return (uint32_t)-1;
++            errno = EINVAL;
++            return set_swi_errno(ts, -1);
+         }
+         if (strcmp(s, ":tt") == 0) {
+             int result_fileno = arg1 < 4 ? STDIN_FILENO : STDOUT_FILENO;
+@@ -413,8 +416,8 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+         } else {
+             s = lock_user_string(arg0);
+             if (!s) {
+-                /* FIXME - should this error code be -TARGET_EFAULT ? */
+-                return (uint32_t)-1;
++                errno = EFAULT;
++                return set_swi_errno(ts, -1);
+             }
+             ret =  set_swi_errno(ts, remove(s));
+             unlock_user(s, arg0, 0);
+@@ -432,11 +435,12 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+             char *s2;
+             s = lock_user_string(arg0);
+             s2 = lock_user_string(arg2);
+-            if (!s || !s2)
+-                /* FIXME - should this error code be -TARGET_EFAULT ? */
+-                ret = (uint32_t)-1;
+-            else
++            if (!s || !s2) {
++                errno = EFAULT;
++                ret = set_swi_errno(ts, -1);
++            } else {
+                 ret = set_swi_errno(ts, rename(s, s2));
++            }
+             if (s2)
+                 unlock_user(s2, arg2, 0);
+             if (s)
+@@ -456,8 +460,8 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+         } else {
+             s = lock_user_string(arg0);
+             if (!s) {
+-                /* FIXME - should this error code be -TARGET_EFAULT ? */
+-                return (uint32_t)-1;
++                errno = EFAULT;
++                return set_swi_errno(ts, -1);
+             }
+             ret = set_swi_errno(ts, system(s));
+             unlock_user(s, arg0, 0);
+@@ -517,19 +521,22 @@ target_ulong do_arm_semihosting(CPUARMState *env)
  
-@@ -124,10 +129,6 @@ static inline uint32_t set_swi_errno(CPUARMState *env, uint32_t code)
+             if (output_size > input_size) {
+                 /* Not enough space to store command-line arguments.  */
+-                return -1;
++                errno = E2BIG;
++                return set_swi_errno(ts, -1);
+             }
  
- static target_ulong arm_semi_syscall_len;
+             /* Adjust the command-line length.  */
+             if (SET_ARG(1, output_size - 1)) {
+                 /* Couldn't write back to argument block */
+-                return -1;
++                errno = EFAULT;
++                return set_swi_errno(ts, -1);
+             }
  
--#if !defined(CONFIG_USER_ONLY)
--static target_ulong syscall_err;
--#endif
--
- static void arm_semi_cb(CPUState *cs, target_ulong ret, target_ulong err)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
+             /* Lock the buffer on the ARM side.  */
+             output_buffer = lock_user(VERIFY_WRITE, arg0, output_size, 0);
+             if (!output_buffer) {
+-                return -1;
++                errno = EFAULT;
++                return set_swi_errno(ts, -1);
+             }
+ 
+             /* Copy the command-line arguments.  */
+@@ -544,7 +551,8 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+ 
+             if (copy_from_user(output_buffer, ts->info->arg_start,
+                                output_size)) {
+-                status = -1;
++                errno = EFAULT;
++                status = set_swi_errno(ts, -1);
+                 goto out;
+             }
+ 
+@@ -614,7 +622,8 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+ 
+                 if (fail) {
+                     /* Couldn't write back to argument block */
+-                    return -1;
++                    errno = EFAULT;
++                    return set_swi_errno(ts, -1);
+                 }
+             }
+             return 0;
 -- 
 2.20.1
 

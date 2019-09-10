@@ -1,97 +1,96 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5574264wrp;
-        Tue, 10 Sep 2019 07:50:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw3otQB3EcGL4CGpvT6bHNARx4CePWa3PTxV3sYsMoFKfhnrlewlLthBwmA3sYLLDL1SD5b
-X-Received: by 2002:ac8:728c:: with SMTP id v12mr29716123qto.120.1568127033189;
-        Tue, 10 Sep 2019 07:50:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568127033; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5575959wrp;
+        Tue, 10 Sep 2019 07:52:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx+jRZORGOdXHDctxBCkixE/yeKHVL8JhQMFv6eilIRNLQYhDnchqgMz95YcKs7f8XSIsEO
+X-Received: by 2002:a50:de08:: with SMTP id z8mr30928542edk.121.1568127136271;
+        Tue, 10 Sep 2019 07:52:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568127136; cv=none;
         d=google.com; s=arc-20160816;
-        b=xOhOZNQ0u3ngO9cHhYA2xxoturEnk/mVxF32bsY66Qyw/eEd1NhHhhsmqiAG0eW8tX
-         DouNTfMc0yPjV2tGXovmYmxmWJQfm8rGFroiIg0hhO+BXcnqaZMPbodtahtNgD0Wod2i
-         iBf2q8a6ZVdDlXeoR8lYRtOSkWi9W1Edd0G26mPmEj5XPh3s97mLCi37U/kG2KIjuRnS
-         11zESPZV76XB8bwgi/ZR/NF7dmp3rgKYi5fnc2fEGwSrT/gnNiS4PhgB+o3/t8e0Nx9M
-         1UXgfT7kxT2m8VbZxVEa7IZYiY3FoKxowf/8B5VKciy8zUUIjQuV1gps77u9q3+AIrJc
-         hLIA==
+        b=nsc3amxSPB93kBnRafUy7SnrmCQtn5KzPwWum/D+vBYsM2tuVrnzPTBOMpUe48FCgh
+         Hd604mqB4BIhI2Dj2AlMxXiNOtlezwj3RpQ7vy6eTnH+ARFMwk1M3T1OLqRYqN0PPYvf
+         f0D8ej5QmFTsGI+z7Ld1AVlYKR9tNI753MxH1OQ8Xj9N1JakF02ZdK8D0C1Gh58ah5mV
+         A1eWySzU1lWiOmjsx2knhO6mR3W589hJlwb2chlPEXhlv1CY9oyuARHbP+uTP8D6Tzbk
+         bdLREpHqiNGLNwGmHcfN4tUdoLqlsTeht35TOBxMZ+joJmGwCK77Ebh7NuMXdZDegARG
+         OXdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=zlo9vQHXYMdSRYQxbnaGFzeWoJMkmJsq2rf4IJ1ziW4=;
-        b=KWtGuzI56hDF3EGkFiv6Zo1aYvwZ5DG+u2qbq7/x6QXNTZzHejm4/7zpdKsyIj6Gh1
-         DZJ2hqhzdBUpV7vfPFu2Qwie6OBS54eypeEmR5sBGiswdDuQ6lxIql6WgS/XFH0RmvpY
-         k9qh9dwifpXL4SfAkCSa5/+BOW1zXGeXQmXIkjzy/lFYWTOlI1sexFf8M7xMhrskS+EM
-         jiiijWsjvGlWymEZddHWJrUU78o9q8V+B0k2yYs7kgG4ummXuxD9z8h4DSfs1cSmctky
-         N2vNDeta/ZcovPzxzSPIIhQCW/tmSmBgVY3wI2i65APmbDuMh+MU1X2wgEh13e7I/dAr
-         pjhA==
+        bh=sq8nSzuTSE3z6TeW22Jb/p8ysGSeKIUIld6DHEj34Ck=;
+        b=NhOHBrXan+b2esL9FcPU6sqfxrzJH87ZxQE2ce342FUwI8piNE9Bf2g2QPCa0TuJMe
+         4dxT/aIMgsjl7Vyt7vlviaSgB8Ywap+fhRR4dsxYEH2o6AbPNDteDEqrnIRLON9B6kIj
+         vReNEJxof6GajtK+VSyR34D+H+OkaujbAHvkGQvQHwg5nNItK67pHZ7ipbwEM7rvKXS3
+         Qwv3D1pV5r9KihImK0KpDeATjmMyDf1ir3i8QVuAH2VeZqXG4VkrckWReA173bxgUqzY
+         P5E9BAzkTMAKeunD378q/xD/TzogiCP5ku7BRVh3xgtcIIj5YvuaEX2a3U1eGoueDlq3
+         hhcw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=pun+1zY5;
+       dkim=fail header.i=@linaro.org header.s=google header.b=vJRR4zhM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j34si12998943qtd.391.2019.09.10.07.50.33
+        by mx.google.com with ESMTPS id a30si11691949eda.39.2019.09.10.07.52.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Sep 2019 07:50:33 -0700 (PDT)
+        Tue, 10 Sep 2019 07:52:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=pun+1zY5;
+       dkim=fail header.i=@linaro.org header.s=google header.b=vJRR4zhM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40896 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40924 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i7hTT-0002LM-TB
-	for alex.bennee@linaro.org; Tue, 10 Sep 2019 10:50:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53989)
+	id 1i7hV9-00047N-3d
+	for alex.bennee@linaro.org; Tue, 10 Sep 2019 10:52:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54131)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1i7hNn-0005Rb-GM
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:40 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1i7hNs-0005Zr-U9
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1i7hNm-00050o-34
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:39 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:38281)
+ (envelope-from <peter.maydell@linaro.org>) id 1i7hNr-00054v-NG
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:44 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:39187)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1i7hNl-00050H-Tc
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:38 -0400
-Received: by mail-wr1-x441.google.com with SMTP id l11so20810879wrx.5
- for <qemu-arm@nongnu.org>; Tue, 10 Sep 2019 07:44:37 -0700 (PDT)
+ id 1i7hNr-00054C-H9
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:43 -0400
+Received: by mail-wr1-x444.google.com with SMTP id t16so20833122wra.6
+ for <qemu-arm@nongnu.org>; Tue, 10 Sep 2019 07:44:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=zlo9vQHXYMdSRYQxbnaGFzeWoJMkmJsq2rf4IJ1ziW4=;
- b=pun+1zY5WhN2o0gSnE577xUfjuVDwQhUVEkMW8GsvWdeh82xhKthM9G80PRZ0dZJMB
- GP3hgPkZvtMQujx48UjpE+VuU1MaxhtDM0V7KqsxgDIe3S4hvscuuRMG82ZI/l2UUnM7
- ibzTgjoZtriyYo89qDZ4faNq6B20UfYbFYUH2PdZIv4IHQpRAlMSorG0jxSsqhogCkgy
- 28gtcUnYN6Apll4DQ8kPb6TqVLwRTC85fMQ8JESNfN7yhJMB9gwDyG+hJ1UKlPRXYPrx
- qoMxWzBQB2dSAHvbSKTvpbDta9Xt9beJN2pHPI0vEb2cVavqGbQCoo+4Vh00N6Lct+vX
- cxsg==
+ bh=sq8nSzuTSE3z6TeW22Jb/p8ysGSeKIUIld6DHEj34Ck=;
+ b=vJRR4zhMarIJwOEag+GQp1yXeXT+q/UXt9Xtub70Zzd0iBgHFR+zDca6QkL3KyQrFF
+ d6jtVtMtoVx0jQhhcNC7jmNK1/5GDty5Rk1Lbt04v/3Qg9d7SNU0govHcBdLEL1mawnW
+ /jEdgOl/Fjh/WQ2YyxW8Wvuaus0ak96VghwQvvTVFYD0UUNfdvhFogYqvnXL9ydFz3Dw
+ MHnuvpPut6aHKKU7jvwQEn7vihCg15FIrLr4OVkNUkQcAjgy9uMDn877ZPCHsiyOJ9FA
+ 0U8/NfbaYmKxarb753GB18++ClK8tHper8pHlhsqg8dPa7hCksO/HE/LdgodaFfjNWjB
+ 8Bqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=zlo9vQHXYMdSRYQxbnaGFzeWoJMkmJsq2rf4IJ1ziW4=;
- b=YtF8WY3LEjr5DpDAJfUlwX/xbfmyB9a20REiR4VoQ7IoLKGinGoIQxgk6rOToA37r9
- 8GBUJYBdBGitBOPIFYfzGqOxRiXkwiTfFZXcUKM/fXwd7N9zPdVUgT5I9ahZGpyM5yHQ
- y4FLjfjQvtu2JSNS7mpbFewMAnffh/D/cGuivSFOAFV8CRdggeRzrhwCx6Pb0F0F1c2d
- DiO5TNYEtSSVpzBmE2pyo2wFj3Jm1zUi62iQ6U7D3oQZJcqOHq1jkxMI7g9cC8TZQEgQ
- 1BN410XiaCJoCEEW2uzcSfpRTFSNmOxBxi5QvR30AnvYn4umNryL6xT/d9BBJVt0rJyM
- biBw==
-X-Gm-Message-State: APjAAAU00IxVtDdi0rn5daB1lpQJkVzW+ubq3+yTt5/Lxfeq3lQPsvEQ
- drzQ/uB0udv/dht+GY9ujQMUEDNifnej/w==
-X-Received: by 2002:a05:6000:142:: with SMTP id
- r2mr3251793wrx.212.1568126676765; 
- Tue, 10 Sep 2019 07:44:36 -0700 (PDT)
+ bh=sq8nSzuTSE3z6TeW22Jb/p8ysGSeKIUIld6DHEj34Ck=;
+ b=ng+tD9pKWV4LMNXOBa/rCf8I5vAl0Dpuzuw+KkJN3Cvsrb/kzOm1H/Ucyq3gtV/ITa
+ yEx6N2gvbead/KgjdqJUNezBqDOOY0mT6/JXhHMxHjyczg5yZ48wrHvLZCA+skgFTO5V
+ SK4T0D+ofCv1OF2RHRePPH1UV/UCc4SkI8vwRhzRs0aQKUpFYojzyQ8vnlg4+EvSue3J
+ YirrwwE2vzDBLMdFWVO7eOGyjcUL5KbWaF5ScEoDQ1o9bGu+bNPawQB4aJtlEIO9I2V0
+ grbxgUxkEALMCSXETeI4q+rswNFcQRU6obEysO0jbtVE2cUUG9NT2Qikgvx3UrQLiTlt
+ X9RQ==
+X-Gm-Message-State: APjAAAXaVrI6nrGDvTGtY/hENdcHEG9G0MsPyn2tybHZ25FW9cVOyEuI
+ pxgJOfYIv68XJ5C17AImsFfjRqsTRVwA8g==
+X-Received: by 2002:adf:f812:: with SMTP id s18mr28610093wrp.32.1568126682426; 
+ Tue, 10 Sep 2019 07:44:42 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id a192sm5703814wma.1.2019.09.10.07.44.35
+ by smtp.gmail.com with ESMTPSA id a192sm5703814wma.1.2019.09.10.07.44.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Sep 2019 07:44:36 -0700 (PDT)
+ Tue, 10 Sep 2019 07:44:41 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 10 Sep 2019 15:44:20 +0100
-Message-Id: <20190910144428.32597-6-peter.maydell@linaro.org>
+Date: Tue, 10 Sep 2019 15:44:25 +0100
+Message-Id: <20190910144428.32597-11-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190910144428.32597-1-peter.maydell@linaro.org>
 References: <20190910144428.32597-1-peter.maydell@linaro.org>
@@ -99,9 +98,9 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::441
-Subject: [Qemu-arm] [PATCH 05/13] target/arm/arm-semi: Factor out
- implementation of SYS_CLOSE
+X-Received-From: 2a00:1450:4864:20::444
+Subject: [Qemu-arm] [PATCH 10/13] target/arm/arm-semi: Factor out
+ implementation of SYS_FLEN
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -115,107 +114,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +nFUV641+fzj
+X-TUID: 5MzOi2cjj2eU
 
-Currently for the semihosting calls which take a file descriptor
-(SYS_CLOSE, SYS_WRITE, SYS_READ, SYS_ISTTY, SYS_SEEK, SYS_FLEN)
-we have effectively two implementations, one for real host files
-and one for when we indirect via the gdbstub. We want to add a
-third one to deal with the magic :semihosting-features file.
-
-Instead of having a three-way if statement in each of these
-cases, factor out the implementation of the calls to separate
-functions which we dispatch to via function pointers selected
-via the GuestFDType for the guest fd.
-
-In this commit, we set up the framework for the dispatch,
-and convert the SYS_CLOSE call to use it.
+Factor out the implementation of SYS_FLEN via the new
+function tables.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/arm-semi.c | 42 +++++++++++++++++++++++++++++++++++-------
- 1 file changed, 35 insertions(+), 7 deletions(-)
+ target/arm/arm-semi.c | 31 +++++++++++++++++++++----------
+ 1 file changed, 21 insertions(+), 10 deletions(-)
 
 diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-index ce3ba554bef..f3e0bf77cd3 100644
+index c548ce849e7..f9019b00b8d 100644
 --- a/target/arm/arm-semi.c
 +++ b/target/arm/arm-semi.c
-@@ -116,6 +116,7 @@ static int open_modeflags[12] = {
- typedef enum GuestFDType {
-     GuestFDUnused = 0,
-     GuestFDHost = 1,
-+    GuestFDGDB = 2,
- } GuestFDType;
+@@ -352,6 +352,7 @@ typedef uint32_t sys_readfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf,
+ typedef uint32_t sys_isattyfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf);
+ typedef uint32_t sys_seekfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf,
+                             target_ulong offset);
++typedef uint32_t sys_flenfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf);
  
- /*
-@@ -179,14 +180,14 @@ static GuestFD *do_get_guestfd(int guestfd)
- /*
-  * Associate the specified guest fd (which must have been
-  * allocated via alloc_fd() and not previously used) with
-- * the specified host fd.
-+ * the specified host/gdb fd.
-  */
- static void associate_guestfd(int guestfd, int hostfd)
+ static uint32_t host_closefn(TaskState *ts, ARMCPU *cpu, GuestFD *gf)
  {
-     GuestFD *gf = do_get_guestfd(guestfd);
- 
-     assert(gf);
--    gf->type = GuestFDHost;
-+    gf->type = use_gdb_syscalls() ? GuestFDGDB : GuestFDHost;
-     gf->hostfd = hostfd;
+@@ -417,6 +418,16 @@ static uint32_t host_seekfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf,
+     return 0;
  }
  
-@@ -337,6 +338,37 @@ static target_ulong arm_gdb_syscall(ARMCPU *cpu, gdb_syscall_complete_cb cb,
-     return is_a64(env) ? env->xregs[0] : env->regs[0];
++static uint32_t host_flenfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf)
++{
++    struct stat buf;
++    uint32_t ret = set_swi_errno(ts, fstat(gf->hostfd, &buf));
++    if (ret == (uint32_t)-1) {
++        return -1;
++    }
++    return buf.st_size;
++}
++
+ static uint32_t gdb_closefn(TaskState *ts, ARMCPU *cpu, GuestFD *gf)
+ {
+     return arm_gdb_syscall(cpu, arm_semi_cb, "close,%x", gf->hostfd);
+@@ -450,12 +461,19 @@ static uint32_t gdb_seekfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf,
+                            gf->hostfd, offset);
  }
  
-+/*
-+ * Types for functions implementing various semihosting calls
-+ * for specific types of guest file descriptor. These must all
-+ * do the work and return the required return value for the guest,
-+ * setting the guest errno if appropriate.
-+ */
-+typedef uint32_t sys_closefn(TaskState *ts, ARMCPU *cpu, GuestFD *gf);
-+
-+static uint32_t host_closefn(TaskState *ts, ARMCPU *cpu, GuestFD *gf)
++static uint32_t gdb_flenfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf)
 +{
-+    return set_swi_errno(ts, close(gf->hostfd));
++    return arm_gdb_syscall(cpu, arm_semi_flen_cb, "fstat,%x,%x",
++                           gf->hostfd, arm_flen_buf(cpu));
 +}
 +
-+static uint32_t gdb_closefn(TaskState *ts, ARMCPU *cpu, GuestFD *gf)
-+{
-+    return arm_gdb_syscall(cpu, arm_semi_cb, "close,%x", gf->hostfd);
-+}
-+
-+typedef struct GuestFDFunctions {
-+    sys_closefn *closefn;
-+} GuestFDFunctions;
-+
-+static const GuestFDFunctions guestfd_fns[] = {
-+    [GuestFDHost] = {
-+        .closefn = host_closefn,
-+    },
-+    [GuestFDGDB] = {
-+        .closefn = gdb_closefn,
-+    },
-+};
-+
- /* Read the input value from the argument block; fail the semihosting
-  * call if the memory read fails.
-  */
-@@ -452,11 +484,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+ typedef struct GuestFDFunctions {
+     sys_closefn *closefn;
+     sys_writefn *writefn;
+     sys_readfn *readfn;
+     sys_isattyfn *isattyfn;
+     sys_seekfn *seekfn;
++    sys_flenfn *flenfn;
+ } GuestFDFunctions;
+ 
+ static const GuestFDFunctions guestfd_fns[] = {
+@@ -465,6 +483,7 @@ static const GuestFDFunctions guestfd_fns[] = {
+         .readfn = host_readfn,
+         .isattyfn = host_isattyfn,
+         .seekfn = host_seekfn,
++        .flenfn = host_flenfn,
+     },
+     [GuestFDGDB] = {
+         .closefn = gdb_closefn,
+@@ -472,6 +491,7 @@ static const GuestFDFunctions guestfd_fns[] = {
+         .readfn = gdb_readfn,
+         .isattyfn = gdb_isattyfn,
+         .seekfn = gdb_seekfn,
++        .flenfn = gdb_flenfn,
+     },
+ };
+ 
+@@ -657,16 +677,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
              return set_swi_errno(ts, -1);
          }
  
 -        if (use_gdb_syscalls()) {
--            ret = arm_gdb_syscall(cpu, arm_semi_cb, "close,%x", gf->hostfd);
+-            return arm_gdb_syscall(cpu, arm_semi_flen_cb, "fstat,%x,%x",
+-                                   gf->hostfd, arm_flen_buf(cpu));
 -        } else {
--            ret = set_swi_errno(ts, close(gf->hostfd));
+-            struct stat buf;
+-            ret = set_swi_errno(ts, fstat(gf->hostfd, &buf));
+-            if (ret == (uint32_t)-1)
+-                return -1;
+-            return buf.st_size;
 -        }
-+        ret = guestfd_fns[gf->type].closefn(ts, cpu, gf);
-         dealloc_guestfd(arg0);
-         return ret;
-     case TARGET_SYS_WRITEC:
++        return guestfd_fns[gf->type].flenfn(ts, cpu, gf);
+     case TARGET_SYS_TMPNAM:
+         qemu_log_mask(LOG_UNIMP, "%s: SYS_TMPNAM not implemented", __func__);
+         return -1;
 -- 
 2.20.1
 

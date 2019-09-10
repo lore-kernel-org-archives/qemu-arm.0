@@ -1,177 +1,139 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5578009wrp;
-        Tue, 10 Sep 2019 07:54:17 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzWxBeMi3a16hn5mfk9I4cEyjErt+aQAvxDpKc1ZCzhM90WJP2Q7PX411E+FHYXUClE5Ff1
-X-Received: by 2002:a50:eb88:: with SMTP id y8mr21938284edr.150.1568127257654;
-        Tue, 10 Sep 2019 07:54:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568127257; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5719266wrp;
+        Tue, 10 Sep 2019 10:00:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqymlQvrQlrv8jF2jMc4J02nXDiRPS7gKDdOE6Lb3+lgAO1N8USNJnTsDqvqXwmvSKWDa/hj
+X-Received: by 2002:a37:dcc7:: with SMTP id v190mr30575685qki.125.1568134840891;
+        Tue, 10 Sep 2019 10:00:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568134840; cv=none;
         d=google.com; s=arc-20160816;
-        b=KUrtG6IR/xg9LnyB+rLZ8knw2LULrzuhiBALsHuESQWeMrOjBd+QLdGhb7d57VVxg+
-         jIVXWRHFgnKzIv4TbfVfrU6VLL0LqRbOO+P+QHdJVR/qSh0WIAKWutmDtAJ1yvb9ZLpO
-         vkistZN4oxdqef5Hr2DSTkz6gucIImppNbPhHbsgZdhm2Z3fiksG3HnVPNisuj1zgCR+
-         I4sxYITtcP3TitEwf60Q1CR0OPaclrr8Hy3qFw7orUP/prd3cvnp2XoFaUqkOgfexqAz
-         YSlG6Z/5SOdtGmSqd+OVRm8el+AGZXdWNJs9IbtMPww9+dKrtk0XJ9pcbr5c+kJ/YAEY
-         ftrA==
+        b=fP/DrubLvrFlZQeEBxB7Z/JJOjCQ96/WJlRM9WmI1fsj/n1qrEyluaq6LN7CoeOcr3
+         lZN/+FpnSjkWqAnwU4I3HmQ2shYbwtPy2n/ji9ABlZlpgA8TUA7Y6Za4LwWgtxoEmKUp
+         +uWNWzgpb4qSFWIEX3w0rK0oFzANxIB9OX3qh1jAj+v71eI2L4cXhAWYbQLJVGnNbUWk
+         LG64UNwjtJefcnGlsqy7Z61WO58MFyynpqLvEp/A/hpmyOGXStStaumb4xSyFd9Io9xd
+         FWOA1P/LMRlXFlHPUfJr4VW8tzxdIrwCYzfe+QSmD3m/KU9iy0dfHIP/x72WXMVvwUys
+         kNpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from:dkim-signature;
-        bh=LA9MpYwh3mZJWgj+jicjrA5Nt9K2oC0TJFXiZTBybLY=;
-        b=yFwvXkfWAqS+E53vwa8g5BgihhXZ9zWsIfp7+fQL3y49NdMewEmfFh11Z78toh9Ws+
-         Z+WI+1+QZK1VbIesVt/N5Vcg9+2V+zFDhaEQR2+X8Um9vPjnUv3u/7s6W7JCwvd6Rpuc
-         mUIbOfll+M8UnhUp9ETIBYWF2dM6uYTUIVbD2STtSOUIJT+7u1iS2XVucMkhDFojdvVA
-         9sEXcuyzJQ5O9+i5rxfa0k247fAVYrUTcb/sqilkhi/7wOYeIYCTHfZaWv2EnEEtyain
-         8wziHH8fUqZ9CPecZyjGOpVZcS46BaOTzNq41pNa9CfuwBZv6wEAGJrvZcw0GN6xgqbf
-         uLuQ==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=9NxTTZIkf4Ry49sqeWCLjcClirLTjRg9oXv+toI+LLs=;
+        b=AF/Y+6xOjigeXxIE03PGFZKzVZHKizcetJdlXGRDBuDqEcCSEONt9K+EwmukaL3Z6V
+         W2GvQTQyJ4WDsPVSgryFBtg2ew5o7LACszIZNWx8c4QHodgHlnqG90nZOUjc1I2hfm/b
+         L1u98bZ7mG3j6fihYdpoNdP6IW27vCbIi7awIfpZ1dQyJDzPRMovX54flPHF7qZnMag6
+         UFzlNSYqU6wXC5Y0J7Pi8bC5q1M1PYP9L1wGn/4366i6Zjj1kpUnY50AtGNdR3BUuRml
+         /CDSb2p+ZA5mJ38fICi328gS7GYEQrhdq4G/+xYif/9KEvao/yzzTSkcXeON3/e6IDQ1
+         rcpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=frJtnUdJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=I4JMZtYI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o9si9348782ejb.68.2019.09.10.07.54.17
+        by mx.google.com with ESMTPS id h12si14347395qkh.188.2019.09.10.10.00.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Sep 2019 07:54:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 10 Sep 2019 10:00:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=frJtnUdJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=I4JMZtYI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40956 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43504 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i7hX6-0006BF-1u
-	for alex.bennee@linaro.org; Tue, 10 Sep 2019 10:54:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54170)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i7jVP-0004uw-Oe
+	for alex.bennee@linaro.org; Tue, 10 Sep 2019 13:00:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59927)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1i7hNu-0005cO-NB
- for qemu-devel@nongnu.org; Tue, 10 Sep 2019 10:44:47 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1i7jVB-0004sN-KL
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 13:00:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1i7hNt-00056U-Id
- for qemu-devel@nongnu.org; Tue, 10 Sep 2019 10:44:46 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:38283)
+ (envelope-from <peter.maydell@linaro.org>) id 1i7jVA-0004rm-DI
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 13:00:25 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:41391)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1i7hNt-00055p-Cc
- for qemu-devel@nongnu.org; Tue, 10 Sep 2019 10:44:45 -0400
-Received: by mail-wr1-x441.google.com with SMTP id l11so20811753wrx.5
- for <qemu-devel@nongnu.org>; Tue, 10 Sep 2019 07:44:45 -0700 (PDT)
+ id 1i7jVA-0004r6-69
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 13:00:24 -0400
+Received: by mail-ot1-x344.google.com with SMTP id g16so4486054otp.8
+ for <qemu-arm@nongnu.org>; Tue, 10 Sep 2019 10:00:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=LA9MpYwh3mZJWgj+jicjrA5Nt9K2oC0TJFXiZTBybLY=;
- b=frJtnUdJmrWMbeMlSI4ZaC0DUyjKF0jSF2ar0QTkVt4vqGH414/fh6f4cec6hioWgF
- bVubc+ZbCy4Zo3wNxyPpHzUhpokvzCpCmZqwWqCC5mLxtYx/8FULeoW/FY/nU2iQN8Er
- DuGebK8eZNhACwvJFAoB/FGyYGaeS9Mn3OGNcHR9teG34gNKscxSXh8fHKYz46GrYXVX
- 6K2vRrSfWYqDa8BBT3sQlxmaAWLzAX8sS8nSRduDQaD4hoU9zMA8yMV6/Zp1tyewgaZx
- wOUO5rni+XYUAy7LrGmqcDGyquC9yi8NqaQxRq9I3qZPNDbdsqw36Kq1lYIbQmRxFSJD
- UGEA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
+ bh=9NxTTZIkf4Ry49sqeWCLjcClirLTjRg9oXv+toI+LLs=;
+ b=I4JMZtYIGysbWGYZnD5H9cJRdYh89C5d3ZiKzgw0e9egFam+P7crAT01g998Fudf/B
+ sfTy8jIu/+L45dw8vFz2mV7xjC4ECMYVqeX/guPMXphLEs3YjliGIcKyp5sCEJ731J6w
+ RHvsAyRvMphpRwJp9awGJhQzhyHL/qCkdGnWgEbS83nwKcim+n327myVbdtlljlF/LrQ
+ uCcrcOBa3XpxuSLqKuxvnWKS9AT1fQsddxp2FrF1P84OGQQ8wiFRHsK2M/fB/a34ROn1
+ dTAyL0uEtnU/mpenWoAtA5gPo7zFRmdC1VG/BXQTL03+ttlX8jreGmdFoINVa4CjbfXv
+ u9Yg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=LA9MpYwh3mZJWgj+jicjrA5Nt9K2oC0TJFXiZTBybLY=;
- b=CcjyoUPpwu+Ut9fbSnMPaKtHsVQew+r3HUdODN6HbGP5X/znwaOoVYiC+xUMA3twNE
- 9HDxKNssh9bLjcJ4Lmom/dD6czrYwmj55eEvEfdbfkirEuUZW21nu9uvMgbkqEVGIeGi
- dVlb0A+iiu6AWFOhpH+O4Co7Gb7KPnw/khN8wXK8G1sJexOmk43GCFJ3Nm54zlyDPjC2
- dxcC+NEf/Cnzk4LlEbZRdjo06PAUc56fJhQyxDi0utIHt6061BLT1Oi+7Yf2rUarQxUz
- NzrqOGwLlWAhPjl0/AZotiGlTumYaS+M8dQ4KBLp23JG16CXc2EO2J780zt3/BtltA9/
- 9B5A==
-X-Gm-Message-State: APjAAAV91vJa1869WdwqGgNt/qpWfiIN5Ntz5gx8BVx+0ISoVCLkdOkZ
- XsLyCJhwgvy2TsALG1y6pjT1wg==
-X-Received: by 2002:adf:e392:: with SMTP id e18mr28592507wrm.87.1568126684565; 
- Tue, 10 Sep 2019 07:44:44 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id a192sm5703814wma.1.2019.09.10.07.44.43
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Sep 2019 07:44:43 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Date: Tue, 10 Sep 2019 15:44:27 +0100
-Message-Id: <20190910144428.32597-13-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190910144428.32597-1-peter.maydell@linaro.org>
-References: <20190910144428.32597-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to;
+ bh=9NxTTZIkf4Ry49sqeWCLjcClirLTjRg9oXv+toI+LLs=;
+ b=pFE4Cfx+qdG35COHdifNu16EI+VHG5gxOOh8cTmM7z2hxse7jlFkvGBh+qdS7Pb1lj
+ izQpsIGmxcZ7Hg02e//YdSFwR7r8vMPgjJZjViuK24EIQ+9dsQsMghEVCpm1dOuFJyj/
+ ai6BD3n0WKdOgWxxC8rodUcsv75gPcZZZGeHYtaS6kltewp+ZyTpOKi92wwViGAXoz7A
+ hOspMmMy1K2sona1MreZoIQ3PvoVnoSuORcknSrESWp7iJ12K4/1r08zO7BPERCRkb/y
+ 0xrWqfp11n+hsLDXHWMBXq9v5dCQAaM+HIN24fSVLfUHDHOnUXmtgswAPvvniM/iJgOf
+ MQ2Q==
+X-Gm-Message-State: APjAAAVaYZH7G9n4Cr4thLzB4CcjZlHzLhLrsf0Iglk9yxU8B9znGW2b
+ LeNVJNI76qkhR/xFYbB3W9lghj8SIil4WATCoLO0uB4W4tU=
+X-Received: by 2002:a9d:68d6:: with SMTP id i22mr18309424oto.232.1568134823212; 
+ Tue, 10 Sep 2019 10:00:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20190910144428.32597-1-peter.maydell@linaro.org>
+ <20190910144428.32597-12-peter.maydell@linaro.org>
+In-Reply-To: <20190910144428.32597-12-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 10 Sep 2019 18:00:12 +0100
+Message-ID: <CAFEAcA_iYWMvJF2wy5P7_ddT95kuq9xWVFWcWpCMx6qAZihvig@mail.gmail.com>
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::441
-Subject: [Qemu-devel] [PATCH 12/13] target/arm/arm-semi: Implement
- SH_EXT_STDOUT_STDERR extension
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::344
+Subject: Re: [Qemu-arm] [PATCH 11/13] target/arm/arm-semi: Implement support
+ for semihosting feature detection
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DhmyIsU0KweK
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PqJ994VUsuLV
 
-SH_EXT_STDOUT_STDERR is a v2.0 semihosting extension: the guest
-can open ":tt" with a file mode requesting append access in
-order to open stderr, in addition to the existing "open for
-read for stdin or write for stdout". Implement this and
-report it via the :semihosting-features data.
+On Tue, 10 Sep 2019 at 15:44, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> Version 2.0 of the semihosting specification added support for
+> allowing a guest to detect whether the implementation supported
+> particular features. This works by the guest opening a magic
+> file ":semihosting-features", which contains a fixed set of
+> data with some magic numbers followed by a sequence of bytes
+> with feature flags. The file is expected to behave sensibly
+> for the various semihosting calls which operate on files
+> (SYS_FLEN, SYS_SEEK, etc).
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/arm-semi.c | 22 ++++++++++++++++++++--
- 1 file changed, 20 insertions(+), 2 deletions(-)
+> @@ -586,6 +679,18 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+>              unlock_user(s, arg0, 0);
+>              return guestfd;
+>          }
+> +        if (strcmp(s, ":semihosting-features") == 0) {
+> +            unlock_user(s, arg0, 0);
+> +            /* We must fail opens for modes other than 0 ('r') or 1 ('rb') */
+> +            if (arg1 != 0 && arg1 != 1) {
+> +                dealloc_guestfd(guestfd);
+> +                errno = EINVAL;
 
-diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-index 531084b7799..0df8d4d69d6 100644
---- a/target/arm/arm-semi.c
-+++ b/target/arm/arm-semi.c
-@@ -476,12 +476,16 @@ static uint32_t gdb_flenfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf)
- #define SHFB_MAGIC_2 0x46
- #define SHFB_MAGIC_3 0x42
- 
-+/* Feature bits reportable in feature byte 0 */
-+#define SH_EXT_EXIT_EXTENDED (1 << 0)
-+#define SH_EXT_STDOUT_STDERR (1 << 1)
-+
- static const uint8_t featurefile_data[] = {
-     SHFB_MAGIC_0,
-     SHFB_MAGIC_1,
-     SHFB_MAGIC_2,
-     SHFB_MAGIC_3,
--    0, /* Feature byte 0 */
-+    SH_EXT_STDOUT_STDERR, /* Feature byte 0 */
- };
- 
- static void init_featurefile_guestfd(int guestfd)
-@@ -674,7 +678,21 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-         }
- 
-         if (strcmp(s, ":tt") == 0) {
--            int result_fileno = arg1 < 4 ? STDIN_FILENO : STDOUT_FILENO;
-+            int result_fileno;
-+
-+            /*
-+             * We implement SH_EXT_STDOUT_STDERR, so:
-+             *  open for read == stdin
-+             *  open for write == stdout
-+             *  open for append == stderr
-+             */
-+            if (arg1 < 4) {
-+                result_fileno = STDIN_FILENO;
-+            } else if (arg1 < 8) {
-+                result_fileno = STDOUT_FILENO;
-+            } else {
-+                result_fileno = STDERR_FILENO;
-+            }
-             associate_guestfd(guestfd, result_fileno);
-             unlock_user(s, arg0, 0);
-             return guestfd;
--- 
-2.20.1
+The spec doesn't mandate any particular errno here, but
+EACCES would probably be better, since that's the usual error
+for trying to open a read-only file for writing.
 
+thanks
+-- PMM

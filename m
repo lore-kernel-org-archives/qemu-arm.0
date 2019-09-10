@@ -1,96 +1,96 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5569853wrp;
-        Tue, 10 Sep 2019 07:46:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwAtE5UWMA9GWv6X5f/U9nXnpZh5CsUks2+7x1gz9lVuSnd+mgVc2cEHNmJKm8p2fvBeih8
-X-Received: by 2002:ac8:4a83:: with SMTP id l3mr29943770qtq.157.1568126790963;
-        Tue, 10 Sep 2019 07:46:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568126790; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5570326wrp;
+        Tue, 10 Sep 2019 07:46:55 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxY7o8XLmMebkiQtP/YATa/xrjUgFWhH7UykYe7QZyU4CyBelIXueDn+MQcNVS6zt3hJ+4p
+X-Received: by 2002:ac8:2392:: with SMTP id q18mr30305795qtq.261.1568126815006;
+        Tue, 10 Sep 2019 07:46:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568126815; cv=none;
         d=google.com; s=arc-20160816;
-        b=R3Qk1ECfXQ1ZYgDIiwe0SNlN2FwfCJ29eDv2MV0EmgGbEz6fmUyJSsLuYVJxNkTAmP
-         jv/Q4FmuhaLI0vANKU1K3VmsXCiHtcf5vKcEkQx6wnC7Bv5yoTpZYHjjl09EObgL7xNI
-         aBmUDduZ98+oy8wWrL76LkHUe5cOZAqz+jMrfgNFvajlQztdAFsuECG47DPGby0BbCZG
-         NQd+B2yznWEo5ajbp/Etqp1fm0e47nf0KmlgNvBBxd5eeebwS43wS06bx5Mu4uSU4UOd
-         VLOqvNDySoZvRU62p2Ctm11OhaMezfFMWWnWKtH3H7ArKQlE9J7BJj9dF/OpObsJ6SnN
-         xfkQ==
+        b=boiWbQgOjRN6dlTW8fHI5ThumyNa9sNAcefYlCPFWHFs6EhW7xczTyIkHra/1onT7v
+         mmztv/JHTI/jWHAx9RNpLPZChAq8Fv7d2EbFuVg4jait8iCeSkV4/N+KXARPAPyGzzfy
+         i2QRWIOEvRWdABqkCiNNi+xOqnd7T3Ep/dp3B2MNZ2a+zYgOen+80JNBjnMMSjGjka1D
+         F5p9R+wsOKWsGqtumRENJYKaNpvi1wC3aA9tXYP3j5EGcI32J2Ov2/CxfJswjPsJoeO5
+         DtYbWXqbWOnzouzCSvJ7gead5ANQtajCkBN7ZZMYGGLh+ilgU9+Xwr3srBT9JLZRPaOS
+         p8Dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from:dkim-signature;
-        bh=Z9gxd6ZnA/tu16GX4u76t9CmQTv6s8qenU28wrY9d9Y=;
-        b=ZRNmW2TQ0UchQNNjTgV0mCa0qbiMcBBeVGJl6Kk2JyVBqYAczL/9L332Nh9vrdRTLB
-         H+5ZkA/aKK13DBx2T61RwwkQ09AyzjhH7qM10pW0J2/9HMB84AWXozbT3Dr91hVa+Tx8
-         Zyb4woo2HKcfXZ8fRBWN39JXuButMxMdt9Hfr/XTkwdgi8bP9oY8lYC94o+naA2enz+y
-         RxpdEAkgCl92mGA7mdMdM5UqMOFvm4qLOvgU4AaR7r3HrXlKWQkHTMUXqp0DiFGAhBr0
-         qWwMVF18dABbfkFTO5PthZ+rynT519jrwSCNC8FDtMPZ0zcgnpCVKCkt/Xfyrcw9t4s1
-         ph3Q==
+        bh=7yOOhdKlBIYO8WFMmpn39kOmkjcRHpZcI7p0s8duWdE=;
+        b=P7D2CIo/azey6gE4x6EVt4KEya15QALIGrJ3gffA9XCtAvsP55dIn3tlGxccGEhSg/
+         DVBz3u0PQIBIBGBPu/bbxS2liz23gpFqqe8yjRYGa5fZUf9R9YkdSpSn2ohydsVJ54Xw
+         nk5iSXL0arJtE6UWcgb5r170H0gNMBLpKrL4+8mtNPIIpfu91Aq70x+aT4DVKJhHTLC2
+         x/OUIyuAZqJnrcOhoyXIV+BGTGdLlraE4HYLUxeJ3fqD6JWJbPBEKkBjHJlrrV803qNc
+         fzAVG4m+NB/WRiCOHZNkNSDX1PVx8xiaGOdg/UGJNCdgrQ7ZYVVKbAAyz9hdpBo1BJRw
+         vpvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="WgiYbb/m";
+       dkim=fail header.i=@linaro.org header.s=google header.b=S1W9+GjI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m17si12764477qka.319.2019.09.10.07.46.30
+        by mx.google.com with ESMTPS id b186si12657443qkf.220.2019.09.10.07.46.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Sep 2019 07:46:30 -0700 (PDT)
+        Tue, 10 Sep 2019 07:46:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="WgiYbb/m";
+       dkim=fail header.i=@linaro.org header.s=google header.b=S1W9+GjI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40804 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40808 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i7hPZ-0006zW-KF
-	for alex.bennee@linaro.org; Tue, 10 Sep 2019 10:46:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53917)
+	id 1i7hPx-0007Lr-3A
+	for alex.bennee@linaro.org; Tue, 10 Sep 2019 10:46:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54041)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1i7hNk-0005Nc-2t
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:37 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1i7hNp-0005UW-6T
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1i7hNi-0004yc-Oq
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:35 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:42180)
+ (envelope-from <peter.maydell@linaro.org>) id 1i7hNo-00052B-2P
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:41 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:43944)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1i7hNi-0004xu-Il
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:34 -0400
-Received: by mail-wr1-x444.google.com with SMTP id q14so20807514wrm.9
- for <qemu-arm@nongnu.org>; Tue, 10 Sep 2019 07:44:34 -0700 (PDT)
+ id 1i7hNn-00051f-T0
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:40 -0400
+Received: by mail-wr1-x442.google.com with SMTP id q17so16120221wrx.10
+ for <qemu-arm@nongnu.org>; Tue, 10 Sep 2019 07:44:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=Z9gxd6ZnA/tu16GX4u76t9CmQTv6s8qenU28wrY9d9Y=;
- b=WgiYbb/m97Pv6ppe2CbKzjKpvS7dFJb+zzJ+DkMmn9q2TdNEUxLAo4aizxIfdunzfr
- 0hM9q+hAi3EHbk5AP37qhV8rBEDQkM6YA8JTF8wGv6vqDDeJ5d8esuUTbP0zdkx88l81
- DvehzHc7ZCldsLYEEUoL5oanNjtjKcJvZatrEjWSa3h+x7/0LsRYm1SD3Zj2+51MI/AP
- 3pxqFfop6EMdCqsf3OOAjDuyqBgoV8Q+x3CzdML6uhQ0+3FZnP1O+D8rpnA389ezLgpd
- vWI25Ku1y+Z2Wkrdcwn2ZKBnwonO9MJjzDlOsg0AoGdJcqE5dw4syy4ABW7YJXXDU0u2
- XRzg==
+ bh=7yOOhdKlBIYO8WFMmpn39kOmkjcRHpZcI7p0s8duWdE=;
+ b=S1W9+GjIQ6Q1+v2erJ8a8p45+tj3PFe1rle3T4TYKuUvrNPQ7Kw88ydslBiCo08oJS
+ AnFATCxYou1iuoeTX7wauXIkGk5wQ1hT0f7vKK0Ft8VVHUjTi9YSMz4yyspTLPhT1kv2
+ BmVqnCkOpefUdL5WOHjgRVj04HX5GjBuNJPCq23TvsNGBE0+p71t7L37o411Ad0GimlX
+ OFN+SOpA24d92oo5LwlJdKVX0OtQlrbfZb502feAxRpcKkCnJ9ayL8YEslcX+mN1kt2M
+ Lqz21sYS3zCpmNkXLLVB151z2FPn7UZAyTX8O2TgQWgAT0L0/JpYi4hCGakerpNXA/3+
+ iKrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=Z9gxd6ZnA/tu16GX4u76t9CmQTv6s8qenU28wrY9d9Y=;
- b=e9R+iYUQT6MVbS2B+7spZ42kr5kaCjWvcUY/FcUHGJdZvp86aEiHtvBoa7+DF92+IR
- augafyhWED753auj8d9i2R/1Y5JiYtUK7GaZF3ZW3dKp8Exr9oFTJ1mGQnvK4zouwNSt
- t+5n2+H29eIbFdUMfUuNwfkjaugohYKCFNpwZ8Nz7r7KGTZOs7GQ+2NlDsEWOelFIcEX
- kmcUVCJ+py5CCp59o/7x8IRp0PsVXOE5aqK81fEAJCmKJjLM42Tu5V3zsDtCMqYD4m/O
- BKms+e3W7Mp9RbVFFmFurl7TVLahh5jZI1XR2B3leR0vIThcGC/4pSsn1Q/yXasoIk9f
- nwig==
-X-Gm-Message-State: APjAAAVzBtNRfYQent0CvHC7L0LMAe1bjq2Lj6iG9/9Q/FbPqdFJ1Dtg
- k1GtSsGZKq+TfLJ66QUBUIbfn5LYQZOuJw==
-X-Received: by 2002:a5d:6302:: with SMTP id i2mr27913008wru.249.1568126673412; 
- Tue, 10 Sep 2019 07:44:33 -0700 (PDT)
+ bh=7yOOhdKlBIYO8WFMmpn39kOmkjcRHpZcI7p0s8duWdE=;
+ b=E67M0kroCaOakh8nmyXCBNXT+QWS+ivyyI5C2zyoc4Vc3kYCvlD+T5S+24kaMLGEdC
+ SV74ETIhhLqDHvArC3Kun4kk4lfZF0Zk0DAfb8updSc3ITaZpKThrY460SZxLwjX/qe/
+ WhxWYu+sEAl4q7TxN5b1CKXwTFiedfIc9apjOY+V4u3cNufFbMcOzjXolJQJmbGs/YLc
+ toTmzQiXnLV4oR+0LDPVQKtWHWRDvCnANpe5+Llimaq2hh5dxCPWbH0LdorejH+9DHsI
+ 96CpRHKx56Z1BIzEM0RPB9wQHLl5Nefk7Istdc8CAha1iCZiJkuMseg8B4UmdEKpP535
+ GPNw==
+X-Gm-Message-State: APjAAAWOv2rav0LqAOizNXJiUU6u6vDIOGJOPLq07/peekyUmuK0AJrx
+ 9/OpkQ01yrN4TwujvIP782gVKuU7ZKRtWg==
+X-Received: by 2002:a5d:49c7:: with SMTP id t7mr276133wrs.229.1568126678753;
+ Tue, 10 Sep 2019 07:44:38 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id a192sm5703814wma.1.2019.09.10.07.44.32
+ by smtp.gmail.com with ESMTPSA id a192sm5703814wma.1.2019.09.10.07.44.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 10 Sep 2019 07:44:32 -0700 (PDT)
+ Tue, 10 Sep 2019 07:44:38 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Date: Tue, 10 Sep 2019 15:44:17 +0100
-Message-Id: <20190910144428.32597-3-peter.maydell@linaro.org>
+Date: Tue, 10 Sep 2019 15:44:22 +0100
+Message-Id: <20190910144428.32597-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190910144428.32597-1-peter.maydell@linaro.org>
 References: <20190910144428.32597-1-peter.maydell@linaro.org>
@@ -98,9 +98,9 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::444
-Subject: [Qemu-arm] [PATCH 02/13] target/arm/arm-semi: Always set some kind
- of errno for failed calls
+X-Received-From: 2a00:1450:4864:20::442
+Subject: [Qemu-arm] [PATCH 07/13] target/arm/arm-semi: Factor out
+ implementation of SYS_READ
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,139 +114,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: US5aGYG2W73Q
+X-TUID: Q4wZJlya24Ol
 
-If we fail a semihosting call we should always set the
-semihosting errno to something; we were failing to do
-this for some of the "check inputs for sanity" cases.
+Factor out the implementation of SYS_READ via the
+new function tables.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/arm-semi.c | 45 ++++++++++++++++++++++++++-----------------
- 1 file changed, 27 insertions(+), 18 deletions(-)
+ target/arm/arm-semi.c | 57 ++++++++++++++++++++++++++++---------------
+ 1 file changed, 37 insertions(+), 20 deletions(-)
 
 diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-index 03e60105c05..51b55816faf 100644
+index 0dec4c04e2f..48a10dd3c3a 100644
 --- a/target/arm/arm-semi.c
 +++ b/target/arm/arm-semi.c
-@@ -232,11 +232,13 @@ static target_ulong arm_gdb_syscall(ARMCPU *cpu, gdb_syscall_complete_cb cb,
- #define GET_ARG(n) do {                                 \
-     if (is_a64(env)) {                                  \
-         if (get_user_u64(arg ## n, args + (n) * 8)) {   \
--            return -1;                                  \
-+            errno = EFAULT;                             \
-+            return set_swi_errno(ts, -1);               \
-         }                                               \
-     } else {                                            \
-         if (get_user_u32(arg ## n, args + (n) * 4)) {   \
--            return -1;                                  \
-+            errno = EFAULT;                             \
-+            return set_swi_errno(ts, -1);               \
-         }                                               \
-     }                                                   \
- } while (0)
-@@ -287,12 +289,13 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-         GET_ARG(2);
-         s = lock_user_string(arg0);
-         if (!s) {
--            /* FIXME - should this error code be -TARGET_EFAULT ? */
--            return (uint32_t)-1;
-+            errno = EFAULT;
-+            return set_swi_errno(ts, -1);
+@@ -347,6 +347,8 @@ static target_ulong arm_gdb_syscall(ARMCPU *cpu, gdb_syscall_complete_cb cb,
+ typedef uint32_t sys_closefn(TaskState *ts, ARMCPU *cpu, GuestFD *gf);
+ typedef uint32_t sys_writefn(TaskState *ts, ARMCPU *cpu, GuestFD *gf,
+                              target_ulong buf, uint32_t len);
++typedef uint32_t sys_readfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf,
++                            target_ulong buf, uint32_t len);
+ 
+ static uint32_t host_closefn(TaskState *ts, ARMCPU *cpu, GuestFD *gf)
+ {
+@@ -374,6 +376,29 @@ static uint32_t host_writefn(TaskState *ts, ARMCPU *cpu, GuestFD *gf,
+     return len - ret;
+ }
+ 
++static uint32_t host_readfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf,
++                            target_ulong buf, uint32_t len)
++{
++    uint32_t ret;
++#ifndef CONFIG_USER_ONLY
++    CPUARMState *env = &cpu->env;
++#endif
++    char *s = lock_user(VERIFY_WRITE, buf, len, 0);
++    if (!s) {
++        /* return bytes not read */
++        return len;
++    }
++    do {
++        ret = set_swi_errno(ts, read(gf->hostfd, s, len));
++    } while (ret == -1 && errno == EINTR);
++    unlock_user(s, buf, len);
++    if (ret == (uint32_t)-1) {
++        ret = 0;
++    }
++    /* Return bytes not read */
++    return len - ret;
++}
++
+ static uint32_t gdb_closefn(TaskState *ts, ARMCPU *cpu, GuestFD *gf)
+ {
+     return arm_gdb_syscall(cpu, arm_semi_cb, "close,%x", gf->hostfd);
+@@ -387,19 +412,30 @@ static uint32_t gdb_writefn(TaskState *ts, ARMCPU *cpu, GuestFD *gf,
+                            gf->hostfd, buf, len);
+ }
+ 
++static uint32_t gdb_readfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf,
++                           target_ulong buf, uint32_t len)
++{
++    arm_semi_syscall_len = len;
++    return arm_gdb_syscall(cpu, arm_semi_cb, "read,%x,%x,%x",
++                           gf->hostfd, buf, len);
++}
++
+ typedef struct GuestFDFunctions {
+     sys_closefn *closefn;
+     sys_writefn *writefn;
++    sys_readfn *readfn;
+ } GuestFDFunctions;
+ 
+ static const GuestFDFunctions guestfd_fns[] = {
+     [GuestFDHost] = {
+         .closefn = host_closefn,
+         .writefn = host_writefn,
++        .readfn = host_readfn,
+     },
+     [GuestFDGDB] = {
+         .closefn = gdb_closefn,
+         .writefn = gdb_writefn,
++        .readfn = gdb_readfn,
+     },
+ };
+ 
+@@ -551,26 +587,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+             return set_swi_errno(ts, -1);
          }
-         if (arg1 >= 12) {
-             unlock_user(s, arg0, 0);
--            return (uint32_t)-1;
-+            errno = EINVAL;
-+            return set_swi_errno(ts, -1);
-         }
-         if (strcmp(s, ":tt") == 0) {
-             int result_fileno = arg1 < 4 ? STDIN_FILENO : STDOUT_FILENO;
-@@ -413,8 +416,8 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-         } else {
-             s = lock_user_string(arg0);
-             if (!s) {
--                /* FIXME - should this error code be -TARGET_EFAULT ? */
--                return (uint32_t)-1;
-+                errno = EFAULT;
-+                return set_swi_errno(ts, -1);
-             }
-             ret =  set_swi_errno(ts, remove(s));
-             unlock_user(s, arg0, 0);
-@@ -432,11 +435,12 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-             char *s2;
-             s = lock_user_string(arg0);
-             s2 = lock_user_string(arg2);
--            if (!s || !s2)
--                /* FIXME - should this error code be -TARGET_EFAULT ? */
--                ret = (uint32_t)-1;
--            else
-+            if (!s || !s2) {
-+                errno = EFAULT;
-+                ret = set_swi_errno(ts, -1);
-+            } else {
-                 ret = set_swi_errno(ts, rename(s, s2));
-+            }
-             if (s2)
-                 unlock_user(s2, arg2, 0);
-             if (s)
-@@ -456,8 +460,8 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-         } else {
-             s = lock_user_string(arg0);
-             if (!s) {
--                /* FIXME - should this error code be -TARGET_EFAULT ? */
--                return (uint32_t)-1;
-+                errno = EFAULT;
-+                return set_swi_errno(ts, -1);
-             }
-             ret = set_swi_errno(ts, system(s));
-             unlock_user(s, arg0, 0);
-@@ -517,19 +521,22 @@ target_ulong do_arm_semihosting(CPUARMState *env)
  
-             if (output_size > input_size) {
-                 /* Not enough space to store command-line arguments.  */
--                return -1;
-+                errno = E2BIG;
-+                return set_swi_errno(ts, -1);
-             }
- 
-             /* Adjust the command-line length.  */
-             if (SET_ARG(1, output_size - 1)) {
-                 /* Couldn't write back to argument block */
--                return -1;
-+                errno = EFAULT;
-+                return set_swi_errno(ts, -1);
-             }
- 
-             /* Lock the buffer on the ARM side.  */
-             output_buffer = lock_user(VERIFY_WRITE, arg0, output_size, 0);
-             if (!output_buffer) {
--                return -1;
-+                errno = EFAULT;
-+                return set_swi_errno(ts, -1);
-             }
- 
-             /* Copy the command-line arguments.  */
-@@ -544,7 +551,8 @@ target_ulong do_arm_semihosting(CPUARMState *env)
- 
-             if (copy_from_user(output_buffer, ts->info->arg_start,
-                                output_size)) {
--                status = -1;
-+                errno = EFAULT;
-+                status = set_swi_errno(ts, -1);
-                 goto out;
-             }
- 
-@@ -614,7 +622,8 @@ target_ulong do_arm_semihosting(CPUARMState *env)
- 
-                 if (fail) {
-                     /* Couldn't write back to argument block */
--                    return -1;
-+                    errno = EFAULT;
-+                    return set_swi_errno(ts, -1);
-                 }
-             }
-             return 0;
+-        if (use_gdb_syscalls()) {
+-            arm_semi_syscall_len = len;
+-            return arm_gdb_syscall(cpu, arm_semi_cb, "read,%x,%x,%x",
+-                                   gf->hostfd, arg1, len);
+-        } else {
+-            s = lock_user(VERIFY_WRITE, arg1, len, 0);
+-            if (!s) {
+-                /* return bytes not read */
+-                return len;
+-            }
+-            do {
+-                ret = set_swi_errno(ts, read(gf->hostfd, s, len));
+-            } while (ret == -1 && errno == EINTR);
+-            unlock_user(s, arg1, len);
+-            if (ret == (uint32_t)-1) {
+-                ret = 0;
+-            }
+-            /* Return bytes not read */
+-            return len - ret;
+-        }
++        return guestfd_fns[gf->type].readfn(ts, cpu, gf, arg1, len);
+     case TARGET_SYS_READC:
+         qemu_log_mask(LOG_UNIMP, "%s: SYS_READC not implemented", __func__);
+         return 0;
 -- 
 2.20.1
 

@@ -1,102 +1,103 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5540719wrp;
-        Tue, 10 Sep 2019 07:21:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxcrj+kOFcENXoxg1jlK7OOYQGRLd1yCPofzvSowAYHw2in6cwZ6sbEurTfYon+XV5zbxoa
-X-Received: by 2002:a17:906:6818:: with SMTP id k24mr24609042ejr.271.1568125310432;
-        Tue, 10 Sep 2019 07:21:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568125310; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5567933wrp;
+        Tue, 10 Sep 2019 07:44:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz+BgHXAXMxbbQBpUQ355crBorZDFAihVaf6zfVw8A9Ts9ZpOzJGk2jXwvsrtd2meALxJeG
+X-Received: by 2002:a37:8f04:: with SMTP id r4mr30227084qkd.244.1568126697797;
+        Tue, 10 Sep 2019 07:44:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568126697; cv=none;
         d=google.com; s=arc-20160816;
-        b=zfexUHYuuoOcLpXqvfDH33lBIlm0MzYJ8lzORHoVL+lUe4XvOSgXBjPaMHibm6mNcd
-         ZfTsNwRstelMmw9x2OIkwt2nrPtIIJ8dKrfBewv5xlwCfTFpcU/P2cs01795bMwz4vqd
-         TyXWQjiVuaE7NeX4+YSaMDB3rTwz0wu2/jsKqWdKfsnItp4vnNH4qAkUtLP2QHUSrUft
-         H2B2sJb3QDhsYV4j9VuY3UPoJ7mwJYJfb317SexE0b5+WW3Gp5q+V60Hvk5lpsiwnt1N
-         PZtYw0TivZIMEF0xROYkDSrfziOkYBv7Vu7lcd3qSCkmbm3xyJUK4Wiht+9G6pY1069B
-         xp1g==
+        b=a7EMsevDIw1/TM0ifoyqZ8oc3YHNRt90tHnR5mDala9mK9cXeHXCxOG9s+t8lSdL20
+         3mdgDq60lbJR9UmnI7UAQUOiCbGPLPG+B7Nh13EZoylim1Q6jaJSuZ9ZhiPWIgreJJL+
+         8yO6G9kSLwyDl7cBtTv+ne3/GUhp43hukS9jwIfHGtZXg6jlYGHs0YJf2tU/xtbvYZc2
+         VowoK7X9/9PRno4O/nRPSAEXFzgihCU0SDbTgI5XrZO8J1STcVl++yEcs0mDJKfKY+kW
+         /KXw3U+uopMPgWypp6EkubzCDY0M/9MgnW/MdcyW3pDdOX/W9BoaWxURnfmjtjcg3Rdu
+         AYWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=wfRraz2ruSHapGr6bfmzq/GsC2dcKbWra3/cK+B22II=;
-        b=IOiu3tdhF//j68IPV6Xmub6nvR8wgK3F1Fkhu2Ej/iQq9b2HWVJnz+WePHC9lAMq1/
-         nunxLGXzvXvblEVp+gfQoxot85n24wWhDtD+IGflSmcmDMrBBXFLamqKoDyUHQD+jhne
-         4QocYDjO8BqRgppb4mh9FlmDpXFJLyKKpCaXRvfwFCQyGZxNcCzjDEKO1BfOdb6lgOaT
-         WKc98bMoKHSw+sB0rmBTChAV5y2iZwcvnlDLCtkpHBn+X1zGISGkqgTNsRypkrRrfTLq
-         aRSSMnSJhvbOueI8xS20vA5zMSA5WV0lw1oeYU+TSa1D76b709XI+lqaM/QYjwzwfOwu
-         9M9g==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature;
+        bh=xTjf3hmMk5rbmJgPO5PWGWbjlNL8080SfY7U6rGODTo=;
+        b=ZHKJYlawgezJb6bP4cBXv16lQVa/Yr8WuRmcyZ7JDXIWAp+m1YC0jULC4Zt7OLp9Us
+         afjWcnIrcdlZjSE75uF61BsyStl5lBfGrCHJfCDyVgbC2IR19PbUn0mXGFCiRoJOsLkK
+         ZrRyacuLMJv4d/3Vp+SWgFVJ/BHbgm379tQlMdi50oo4q8axV1/6HSnN40LCCRjE+e9c
+         rY32xAvi/j6Kkpzt4d2gYH0Q9Cy3H3zZH/lECqCIVUPB53ZQ7RW3RyBlr9L8GnEfLps8
+         Mjs+xBmMHRB8GmOY/EpIH6WWWla5GxHuAn7kEmA6BWrGgEJBJHxHMbjib0PeFmyGoyJU
+         COmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ycqOOqAC;
+       dkim=fail header.i=@linaro.org header.s=google header.b=bUqpQ6K5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w1si8254509edr.68.2019.09.10.07.21.50
+        by mx.google.com with ESMTPS id y32si12793031qtc.203.2019.09.10.07.44.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Sep 2019 07:21:50 -0700 (PDT)
+        Tue, 10 Sep 2019 07:44:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ycqOOqAC;
+       dkim=fail header.i=@linaro.org header.s=google header.b=bUqpQ6K5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40356 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40646 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i7h1h-0002bp-DW
-	for alex.bennee@linaro.org; Tue, 10 Sep 2019 10:21:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49414)
+	id 1i7hO4-0005OL-Pn
+	for alex.bennee@linaro.org; Tue, 10 Sep 2019 10:44:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53873)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <beata.michalska@linaro.org>) id 1i7h1W-0002bL-L2
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:21:39 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1i7hNi-0005Ks-C6
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <beata.michalska@linaro.org>) id 1i7h1V-0002QP-70
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:21:38 -0400
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:38078)
+ (envelope-from <peter.maydell@linaro.org>) id 1i7hNg-0004xF-SF
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:33 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c]:36620)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <beata.michalska@linaro.org>)
- id 1i7h1U-0002OM-VZ
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:21:37 -0400
-Received: by mail-io1-xd44.google.com with SMTP id k5so12610568iol.5
- for <qemu-arm@nongnu.org>; Tue, 10 Sep 2019 07:21:36 -0700 (PDT)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1i7hNg-0004wp-Lj
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 10:44:32 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id y19so20838277wrd.3
+ for <qemu-arm@nongnu.org>; Tue, 10 Sep 2019 07:44:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=wfRraz2ruSHapGr6bfmzq/GsC2dcKbWra3/cK+B22II=;
- b=ycqOOqACfAnPjwma5p/hFLiJ9hRtspl83x4g17PdzWEu4Nlu3Zx47AKGg1nyXy2lGd
- pJ6hlpxb58VE260bfd4za4ZBXasiHEw6YBUlzjXqH1W+pJq+zbDYpevVGT8XrpVlwV0y
- VuIIQN96avX3KL64eqd25D2KI6O1ojlEu9hLjB1ybIcsull7NKQttpEh6Tr3/W+nlSyv
- Al9odGL09637Lu/263IRRzsMY4++5c50Y1oQtppJr16x2qahmCLurQnvwZKwvKfVUPFD
- TTIiBHyLN445Vga5jhjn9p02qvhkk9K80VzgW+U7oYW1jczWHCz/3lDQWxLgJ9jWhUZk
- ZO0w==
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=xTjf3hmMk5rbmJgPO5PWGWbjlNL8080SfY7U6rGODTo=;
+ b=bUqpQ6K5odLPzxzHikD/LNM/4ehLGw8tz+HBXQ0FQgvStfMhmDKDw6wucYPtuA6b7d
+ zGolzHBXoKBxsjjwtTwGFC8Lvp40WGguivRLGy5FLcETEC3s6It/ln/p9jlpORdW7rSP
+ uTdudX+i8cuT5qcLNC5MYrneALDOYc943GcHHU/6YrHiVlUZFxD7z340hcyvSJtmETE9
+ IK/NRc5hA0Cl3aJXA/2a6WUPAii3gS/VlLJHyxJOZ500ZJ1vpM0fcKyhBfapeEZjtIPh
+ z1Cu00+Qi0T5cLrzcNfr8f++HZdLToAvDZeBtVfKXBWdR4YFIyIPaHQ6Y1Sh2xqLQHK+
+ ylGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=wfRraz2ruSHapGr6bfmzq/GsC2dcKbWra3/cK+B22II=;
- b=nGujM22ZRULjU7D9FGEc8jiTJgxFxwIAZD0ECsVHakl5G+0KR5F+SmgDWSerr9eTrR
- A6+w/RDFiWo8DAgP7zb+YAVJILqQ4dxS6kHIbvY2RaxhuC6x1c2AhURznOwR4/LU3laG
- oUM0UIoS1iwjx71o/yLbqxrGZtFu8VebDXG7oVOqo6eG0trLQPPH67OTS2HIlvn4dg9W
- otftKvlGqHCeMrl8/Tmo35QWYMFrohGDtJSYPaEOsbbzg2h5RiRNfielrFDOwAQ05zWU
- 5hQc9QTvRwGvQtWmiq23jFRGVuLiO7TvwgX/STqS6djZ/r7V/hNzCmn9JBbRLC7XfxG5
- vhsQ==
-X-Gm-Message-State: APjAAAVHSj6HF5K4u6p2jG2SrF1bAarZDl4WmVyzVL6k/jJ/TGjOKQSl
- KoqGBWh7nvRaUp4SLdOKflijVzSWTKWOVc1jQvlf/A==
-X-Received: by 2002:a6b:7709:: with SMTP id n9mr28108266iom.187.1568125295788; 
- Tue, 10 Sep 2019 07:21:35 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=xTjf3hmMk5rbmJgPO5PWGWbjlNL8080SfY7U6rGODTo=;
+ b=AKAqktKRn3HuLr7Pe044s34jZBYvrINj8mMg21XJQn9XsvSqErl9yAzjitcUtJTfiN
+ CPX7dM8thhUd9Zx00rxZ2QcJj7bd7ARggREqmRJqaN1Nk0cYmxWeRGjTbO8rZZ5FChLh
+ CrLHhIi01Rx32pDcfEH203ukekCuijf9sK+UBOWFaHdaiLAKKZk5f/lF8DuCs+dIrS/p
+ LQCXa5gttwSH/+c3b5h+herFsHNUNfS+Wj2JhDaLtaQoG9Ew10H+i73awKmNsiCruEAl
+ pWt6EYlpNrSzYJR8v6gerzTV4x3dOEJSuGhmEXoex0zT2vxhTM/K4tGq/WR+vt8Q7gjI
+ HDeQ==
+X-Gm-Message-State: APjAAAWCpbHHGCKvlOOGDNWbJcz6PbybhgcGeekYHi/JYicuXi6qJ4fM
+ yR2ZOEfUO+65hB4pDyBfEGBscODvAascYw==
+X-Received: by 2002:adf:e2d0:: with SMTP id d16mr15254677wrj.245.1568126671179; 
+ Tue, 10 Sep 2019 07:44:31 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id a192sm5703814wma.1.2019.09.10.07.44.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 10 Sep 2019 07:44:30 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Date: Tue, 10 Sep 2019 15:44:15 +0100
+Message-Id: <20190910144428.32597-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20190910095610.4546-1-beata.michalska@linaro.org>
- <20190910095610.4546-4-beata.michalska@linaro.org>
- <20190910102601.GA2797@work-vm>
- <CADSWDzs_Cof-L8dGBeYVEY1dNx4Ot6sNcAKtCrvcxZW-3+KUvA@mail.gmail.com>
- <20190910131617.GC2797@work-vm>
-In-Reply-To: <20190910131617.GC2797@work-vm>
-From: Beata Michalska <beata.michalska@linaro.org>
-Date: Tue, 10 Sep 2019 15:21:24 +0100
-Message-ID: <CADSWDzuuWqBF9rP57Zv7jFPKUhFdVLq-O_uqs29i4dAFz+CgUA@mail.gmail.com>
-To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::d44
-Subject: Re: [Qemu-arm] [PATCH 3/4] migration: ram: Switch to ram block
- writeback
+X-Received-From: 2a00:1450:4864:20::42c
+Subject: [Qemu-arm] [PATCH 00/13] target/arm: Implement semihosting v2.0
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -108,98 +109,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, quintela@redhat.com,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- shameerali.kolothum.thodi@huawei.com, eric.auger@redhat.com,
- qemu-arm@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pxVC7qD2gIki
+X-TUID: abQeQHLr4gSF
 
-On Tue, 10 Sep 2019 at 14:16, Dr. David Alan Gilbert
-<dgilbert@redhat.com> wrote:
->
-> * Beata Michalska (beata.michalska@linaro.org) wrote:
-> > On Tue, 10 Sep 2019 at 12:26, Dr. David Alan Gilbert
-> > <dgilbert@redhat.com> wrote:
-> > >
-> > > * Beata Michalska (beata.michalska@linaro.org) wrote:
-> > > > Switch to ram block writeback for pmem migration.
-> > > >
-> > > > Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
-> > > > ---
-> > > >  migration/ram.c | 5 +----
-> > > >  1 file changed, 1 insertion(+), 4 deletions(-)
-> > > >
-> > > > diff --git a/migration/ram.c b/migration/ram.c
-> > > > index b01a37e7ca..8ea0bd63fc 100644
-> > > > --- a/migration/ram.c
-> > > > +++ b/migration/ram.c
-> > > > @@ -33,7 +33,6 @@
-> > > >  #include "qemu/bitops.h"
-> > > >  #include "qemu/bitmap.h"
-> > > >  #include "qemu/main-loop.h"
-> > > > -#include "qemu/pmem.h"
-> > > >  #include "xbzrle.h"
-> > > >  #include "ram.h"
-> > > >  #include "migration.h"
-> > > > @@ -4064,9 +4063,7 @@ static int ram_load_cleanup(void *opaque)
-> > > >      RAMBlock *rb;
-> > > >
-> > > >      RAMBLOCK_FOREACH_NOT_IGNORED(rb) {
-> > > > -        if (ramblock_is_pmem(rb)) {
-> > > > -            pmem_persist(rb->host, rb->used_length);
-> > > > -        }
-> > > > +        qemu_ram_block_writeback(rb);
-> > >
-> > > ACK for migration
-> > >
-> > > Although I do worry that if you really have pmem hardware, is it better
-> > > to fail the migration if you don't have libpmem available?
-> >
-> > According to the PMDG man page, pmem_persist is supposed to be
-> > equivalent for the msync.
->
-> OK, but you do define qemu_ram_block_writeback to fall back to fdatasync;
-> so that would be too little?
+This patchset implements support in QEMU for v2.0 of the
+Arm semihosting specification:
+ https://developer.arm.com/docs/100863/latest/preface
 
-Actually it shouldn't. All will end-up in vfs_fsync_range; msync will
-narrow the range.
-fdatasync will trigger the same call just that with a wider range. At
-least for Linux.
-fdatasync will also fallback to fsync if it is not available.
-So it's going from the best case scenario (as of performance and range of mem
-to be synced) towards the worst case one.
+Specifically, v2.0 has:
+ * a mechanism for detection of optional extra features,
+   which works by allowing the guest to open a magic file
+   named ":semihosting-features" and read some feature
+   flags from it
+ * two defined extensions:
+  - STDOUT_STDERR lets the guest separately open stdout and
+    stderr via the ":tt" magic filename (v1.0 only allowed
+    access to stdout)
+  - EXIT_EXTENDED lets A32/T32 guests exit with a specified
+    exit status (otherwise only available to A64 guests).
+    This is something that people have been complaining
+    about for a long time.
 
-I should probably double-check earlier versions of Linux.
-I'll also try to verify that for other host variants.
+(Technically some of the things we already support, like
+having an A64 semihosting interface at all, are also part of
+the v2.0 spec.)
 
-BTW: Thank you for having a look at the changes.
+This patchset:
+ * fixes some bugs relating to errnos in some cases
+ * makes semihosting hand out its own filedescriptors rather
+   than just passing out host fd numbers
+ * abstracts out the fd-related semihosting calls so they
+   indirect via a function table based on the type of the fd
+ * adds a new type of fd representing the magic file
+   ":semihosting-features" which is used for feature-detection
+ * implements both of the extensions defined by the v2.0 spec
 
-BR
-Beata
+I've tested this by improving my semihosting test suite:
+ https://git.linaro.org/people/peter.maydell/semihosting-tests.git/
+(if people have other guest binaries that make much use of
+semihosting then testing would certainly be welcome.)
 
->
-> > It's just more performant. So in case of real pmem hardware it should
-> > be all good.
-> >
-> > [http://pmem.io/pmdk/manpages/linux/v1.2/libpmem.3.html]
->
-> Dave
->
-> >
-> > BR
-> > Beata
-> > >
-> > > Dave
-> > >
-> > > >      }
-> > > >
-> > > >      xbzrle_load_cleanup();
-> > > > --
-> > > > 2.17.1
-> > > >
-> > > --
-> > > Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
-> --
-> Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+thanks
+-- PMM
+
+Peter Maydell (13):
+  target/arm/arm-semi: Capture errno in softmmu version of
+    set_swi_errno()
+  target/arm/arm-semi: Always set some kind of errno for failed calls
+  target/arm/arm-semi: Make semihosting code hand out its own file
+    descriptors
+  target/arm/arm-semi: clean up TaskState* usage in non-user-only code
+  target/arm/arm-semi: Factor out implementation of SYS_CLOSE
+  target/arm/arm-semi: Factor out implementation of SYS_WRITE
+  target/arm/arm-semi: Factor out implementation of SYS_READ
+  target/arm/arm-semi: Factor out implementation of SYS_ISTTY
+  target/arm/arm-semi: Factor out implementation of SYS_SEEK
+  target/arm/arm-semi: Factor out implementation of SYS_FLEN
+  target/arm/arm-semi: Implement support for semihosting feature
+    detection
+  target/arm/arm-semi: Implement SH_EXT_STDOUT_STDERR extension
+  target/arm/arm-semi: Implement SH_EXT_EXIT_EXTENDED extension
+
+ target/arm/arm-semi.c | 613 +++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 513 insertions(+), 100 deletions(-)
+
+-- 
+2.20.1
+

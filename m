@@ -1,84 +1,84 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp64684wrp;
-        Tue, 10 Sep 2019 14:14:29 -0700 (PDT)
-X-Received: by 2002:a9d:32a1:: with SMTP id u30mr23472756otb.107.1568150069436;
-        Tue, 10 Sep 2019 14:14:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568150069; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp86643wrp;
+        Tue, 10 Sep 2019 14:39:33 -0700 (PDT)
+X-Received: by 2002:aca:882:: with SMTP id 124mr1372635oii.125.1568151573358;
+        Tue, 10 Sep 2019 14:39:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568151573; cv=none;
         d=google.com; s=arc-20160816;
-        b=VYvTB2/EASxGlHbWls3Koi4IIgxoZT8GIPa3NRJXX9IKL73kaWsV56jixECr+aSLwE
-         V1difHO3qgqodtHhpicYNFDXX32MTA0mNcwLq/7jd93o3Ee/EANfIqDCwzSIy/grhb3P
-         8VoMMwRgvwXl+Yil9fjBj6e8ZRTfbbVdD1PSPL2H69WT3Vd1VViFN+PZMnA5AK7MVlwf
-         FQAJPgLc3AYqAKnLWpZ4+T0yT2En3ccOdWYbEqZ7+twb+OJT/Zvdawfd++DMRldYtxQh
-         TWQhQS9SgJe8f7l50jwMgVyynP3pdVrPyKLBfVWrcUBQ4trsbIkY9+Dl+NTHKTWV8uBj
-         7qfg==
+        b=sUasPl+Kl+q0ZZ3SyMvVXgcl7Co7esq5Zw3PSZecU9tqudyvbdPisoveAzhvdH0LP0
+         wEOFrQm0b4HU3l08TkH+C+Wd+HkYZetwqq3k25/iuembMFokDO7IMJDYfdzELGe++gj5
+         qH9qXTCC6J7Ym7VFr7YxtcsbTwZ9awCURIGZsRrLSt17X6TvuNiE/32ygCZu4ue4pUi5
+         gGYJBXnAyNPnmtHfsUlXJi3/a4MuGMQJIdVKdoQT9MBgiHqIWBHYaiy5d2gHc/2wGERc
+         iRZGNQtQRwjVRcDJN2MmNyjN/BYajEpZdoYKPZ1BQbiSnWDI1LqrLAUcXI64C7o12oW8
+         mXHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:references:in-reply-to
          :mime-version:dkim-signature;
-        bh=PK+rLNduPNClxHj/1WeevEDIBPezD0ReUGLrsOQ3jQE=;
-        b=ARrFbJzGR2ukWxxTUa5CoVCQyneDmjLwzxq758XXIHVQ/EApjiPJJmHP0TxlzLDmkS
-         xyhrzmaNaWKIKwiH8EGRbAr5BkPawlWBWI0C3S0GF2pWdiwrOaEzXqaaJk28gTTUaZoF
-         386hUq+DN/sWMwEJSxCSM8MzGm8FJWisVX3B3lq5O1+7bnc5nYCQ32FcJJ6NXbjomR7z
-         2gj9k1/eLxKp6UiCD4igZkn9nSlrizypDuFHR35RFT8HOcMBnm/ydWVFxcthyG6kmWab
-         Y7MuCjSYxFycn0qgwPOJStLz10Kq/DSk1UWd3PPgX3vi25Mi8XW+8cZoRrMgqhqUkNPI
-         EmtQ==
+        bh=d+rJ7NonfXP65izljiZmmU387OX15LnnugJ2LjRtHOY=;
+        b=v7Hpsr98+HmWM6Gp334Hjd3IzGUB65s/fYQqkCgRz0bAzvJT2PLCK0mCbJDOGnlCCz
+         ygD3xPoRRhdcdYsZpkgZEfMKskp1Gi5hENZEzLep7Uuf0V09P+fxgDaKHLVjQoWiftc7
+         76gzfqLZ9+w4B+Z6FYTYy2+QRNNRF6C8zQmvtzZQXzqlYo9Fxi3IqdS7toXHR/PgxqWb
+         kvcLEfVG9Rt0veqDhG9qLY0Fb+9gtXe8zaBt1Co0frIavHRjibTGquBvhGNaO20B658m
+         rUWs84Gk+YsENky3uME1cHRdmm2EHt/Kr9MFST+o1lahlXZk8KqGfcY5MfoBCdl7fqYH
+         cV9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eW5WKwqW;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vIHFggaQ;
        spf=pass (google.com: domain of aleksandar.m.mail@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=aleksandar.m.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <aleksandar.m.mail@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 95sor10479017otr.85.2019.09.10.14.14.28
+        by mx.google.com with SMTPS id 97sor3306321otm.61.2019.09.10.14.39.33
         (Google Transport Security);
-        Tue, 10 Sep 2019 14:14:29 -0700 (PDT)
+        Tue, 10 Sep 2019 14:39:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of aleksandar.m.mail@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eW5WKwqW;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vIHFggaQ;
        spf=pass (google.com: domain of aleksandar.m.mail@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=aleksandar.m.mail@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:in-reply-to:references:from:date:message-id:subject:to
          :cc;
-        bh=PK+rLNduPNClxHj/1WeevEDIBPezD0ReUGLrsOQ3jQE=;
-        b=eW5WKwqWUv0urR+t0kuKSOUd4rhpjvx8IaaAVA5A98dvEvgQx8MMfodEu82SORL058
-         0nB/Kg9H1C356irR3Bbz3oEEiybae/lCxIveHtvqgCHwkB2SEV0CB9qRUQcRWqyXzcja
-         coSK0Ybyl0bsMsi6x5N7i366FmxUkqnBu8XgYWDGdghakSqLDWOBZ1P6qYcI5y1EEslR
-         uBRNaAxfZ1Hv7bNzht/zpuo3UAhZQGVsuwScpLrblzEsbThVLD9x2IwFk4t7TlKPJGnU
-         YgjBl9VlOz5g3j8OCVcvAHcuDibjPmgUov8klTAUNLp61RX5pA981PNGdybDIUaoXUmO
-         boSA==
+        bh=d+rJ7NonfXP65izljiZmmU387OX15LnnugJ2LjRtHOY=;
+        b=vIHFggaQ4z0xHA8exLTX98a1tf4sObKJtbV+9d8q/ovvb6rpa228+xAMthgFFK2Ex2
+         RA9FIqANLdy17evySKwL0mH/xFoewzJpGyJmUJnRhsz0a2SA+DCRL7jaZe+zLElHEv1x
+         +UtdZXIBLHQ0rnvkw6XACoX2nFmlJgWFCVtid4w6xoFyaQlhbPocnmHEZnx7oe7YIqGO
+         yrwghf4dQjPze0emIyLRJxGbbqmG7v3p0rzvVPlS9t0EZQ2JV487AK0i2TllDZ+nZ1WK
+         EnW6//6FiuIF9W76o5f9oUMvKIDYp5bLPjHy62VF7SW8H4dnLg8yz0jM46b6oNV0YEhd
+         Jd7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:in-reply-to:references:from:date
          :message-id:subject:to:cc;
-        bh=PK+rLNduPNClxHj/1WeevEDIBPezD0ReUGLrsOQ3jQE=;
-        b=JNMCn2aJ0JOIScDAGq6PKmgvtyVAP2ju1gVZ0kc939eCE5gJlP7I14jJB2Fq8u9sCc
-         HeFkhqO0iRWANzDDyyeWAsDD+qQ6YAg4y2DnawBY1DjIANPgTwNzUwAj8Wikub9DJ5+7
-         lu8/hFwfsHEJLaw+h4+lajF60kcji20o69WZWYbtapNBfxugbHBAzL8iJ2LQ1VEnctBb
-         P4C5wvGPhw1R2G05HTjiRCg7VrOhoUtAG7gH0MEdVSb8g8tgSHmXN4C+7jP0zNFUr3eF
-         PvpUTPSkcCuL2bqxPNzb6hmPeq3Lb8qLTvrgy4zNzyIxUzXRGHg/zKGtb4H0WThthk9w
-         n2Kg==
-X-Gm-Message-State: APjAAAWPRUPTdH3nLSJBLPVdhmboC0RA8K3hSfYh1eb7WDbJWaxlLLV/
-	LUYQKngSfijAqOVImlQrkXIZnBktR5LDeDDeESOKrA==
-X-Google-Smtp-Source: APXvYqwE5eBNmilYg7S/LHivytqc5wIxbSdphHrzPQrYOgmTWw9sCTESDmoYoX2EtScGdT7qfR+6G3IUWrsuQeVpR1c=
-X-Received: by 2002:a05:6830:4c5:: with SMTP id s5mr26900827otd.121.1568150068529;
- Tue, 10 Sep 2019 14:14:28 -0700 (PDT)
+        bh=d+rJ7NonfXP65izljiZmmU387OX15LnnugJ2LjRtHOY=;
+        b=Vzj9tE2WulTvE+23UfJj95mjLwkkwA07z1lBvi0zQ3m1EfcujApZElRfKT/LEvMua/
+         1Gw6cwKd4jDWbJ4zk4QwO9d3gDdnI3CCBYYEZDgmPZYclekqXcq1Gk0SbOfn9iGXbper
+         7eXaI2iyo17ONGj8XgqtSqBSJLS/39BQyt2P3HKWt9KHBKTdFF2KpChhZOYkW/yFr1Fq
+         EiVraB/ArtR+iKM/E21sAnlGQa/rxXFVKrAVxlG+5I9zWjHjWNjTqBEt5HXBGIjl7JjQ
+         u3wrizN9yEEeKAgYKVPCN+LanFRX5VIPl32NGXEdb6BAFcVLQiib4akfl69NlfZEZjVZ
+         uRDw==
+X-Gm-Message-State: APjAAAUoORVKXk+WQq77I+MenkoAlDEgmFGvije0NVto0M5g250Hv0vh
+	S5LvQ5H6eDw5mHxAuyswm3pZwzElG0AEcWl6n7pzlg==
+X-Google-Smtp-Source: APXvYqyV5VU3/onR7uD72kfbuqwHHZ7GmAKe7npmDofhrDn3mjujD3v6eFdn5T/YGhQDPz/viYBcil6z7UU3ewAkmcI=
+X-Received: by 2002:a9d:127:: with SMTP id 36mr21570669otu.64.1568151572669;
+ Tue, 10 Sep 2019 14:39:32 -0700 (PDT)
 MIME-Version: 1.0
-Received: by 2002:a9d:340a:0:0:0:0:0 with HTTP; Tue, 10 Sep 2019 14:14:27
+Received: by 2002:a9d:340a:0:0:0:0:0 with HTTP; Tue, 10 Sep 2019 14:39:32
  -0700 (PDT)
-Received: by 2002:a9d:340a:0:0:0:0:0 with HTTP; Tue, 10 Sep 2019 14:14:27
+Received: by 2002:a9d:340a:0:0:0:0:0 with HTTP; Tue, 10 Sep 2019 14:39:32
  -0700 (PDT)
 In-Reply-To: <20190910193408.28917-5-alex.bennee@linaro.org>
 References: <20190910193408.28917-1-alex.bennee@linaro.org> <20190910193408.28917-5-alex.bennee@linaro.org>
 From: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Date: Tue, 10 Sep 2019 23:14:27 +0200
-Message-ID: <CAL1e-=giNc1e+kN04KqHFQGkJbP4BKziQyxVd3-RTtL+UOfSoQ@mail.gmail.com>
+Date: Tue, 10 Sep 2019 23:39:32 +0200
+Message-ID: <CAL1e-=gLPs_o0jYB-inWGgWP7yST-k7XzbYgxu110ycGvTzDkg@mail.gmail.com>
 Subject: Re: [Qemu-devel] [PATCH v1 4/4] elf: move ELF_ARCH definition to elf-arch.h
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, Riku Voipio <riku.voipio@iki.fi>, 
 	Laurent Vivier <laurent@vivier.eu>, peter.maydell@linaro.org, qemu-arm@nongnu.org
-Content-Type: multipart/alternative; boundary="000000000000ca1117059239631c"
-X-TUID: QUrz1lB/vYXU
+Content-Type: multipart/alternative; boundary="000000000000716a62059239bd7d"
+X-TUID: vxlYiV4i5F7J
 
---000000000000ca1117059239631c
+--000000000000716a62059239bd7d
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -90,20 +90,19 @@ Content-Transfer-Encoding: quoted-printable
 > loader and into its own header.
 >
 > Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> --
+> ---
 
-Hi, Alex.
+ELF_ARCH is and has been used exclusively locally within elfload.c, and
+some architectures use it in a specific way, which is perfectly legal in
+the current code organization, and I have certain reservations about this
+attempt to suddenly attach additional responsibility to these constants -
+"reporting" to some unspecified plugin. In simpler words, it seems to me
+that you are trying to use a thing for something it was not meant to.
 
-I advice some caution here
-. For example, EM_NANOMIPS, and some other EM_xxx constants are not
-included in the new header. I am not sure what exactly you want to achieve
-with this refactoring. But you may miss your goal, since some EM_xxx will
-be missing from your new header. Is this the right way to achieve what you
-want, and could you unintentionally introduce bugs? Can you outline in more
-details your intentions around the new header? Is this refactoring the only
-way?
+Also, it would be better if you cc-ed corresponding architecture
+submaintainers.
 
-Thanks, Aleksandar
+Yours, Aleksandar
 
 >  bsd-user/elfload.c     |  13 +----
 >  include/elf/elf-arch.h | 109 +++++++++++++++++++++++++++++++++++++++++
@@ -564,7 +563,7 @@ target_pt_regs *regs,
 >
 >
 
---000000000000ca1117059239631c
+--000000000000716a62059239bd7d
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -579,17 +578,17 @@ bennee@linaro.org">alex.bennee@linaro.org</a>&gt; =D1=98=D0=B5 =D0=BD=D0=B0=
 &gt;<br>
 &gt; Signed-off-by: Alex Benn=C3=A9e &lt;<a href=3D"mailto:alex.bennee@lina=
 ro.org">alex.bennee@linaro.org</a>&gt;<br>
-&gt; --</p>
-<p dir=3D"ltr">Hi, Alex.</p>
-<p dir=3D"ltr">I advice some caution here<br>
-. For example, EM_NANOMIPS, and some other EM_xxx constants are not include=
-d in the new header. I am not sure what exactly you want to achieve with th=
-is refactoring. But you may miss your goal, since some EM_xxx will be missi=
-ng from your new header. Is this the right way to achieve what you want, an=
-d could you unintentionally introduce bugs? Can you outline in more details=
- your intentions around the new header? Is this refactoring the only way?</=
-p>
-<p dir=3D"ltr">Thanks, Aleksandar<br></p>
+&gt; ---</p>
+<p dir=3D"ltr">ELF_ARCH is and has been used exclusively locally within elf=
+load.c, and some architectures use it in a specific way, which is perfectly=
+ legal in the current code organization, and I have certain reservations ab=
+out this attempt to suddenly attach additional responsibility to these cons=
+tants - &quot;reporting&quot; to some unspecified plugin. In simpler words,=
+ it seems to me that you are trying to use a thing for something it was not=
+ meant to.</p>
+<p dir=3D"ltr">Also, it would be better if you cc-ed corresponding architec=
+ture submaintainers.</p>
+<p dir=3D"ltr">Yours, Aleksandar</p>
 <p dir=3D"ltr">&gt; =C2=A0bsd-user/elfload.c=C2=A0 =C2=A0 =C2=A0|=C2=A0 13 =
 +----<br>
 &gt; =C2=A0include/elf/elf-arch.h | 109 +++++++++++++++++++++++++++++++++++=
@@ -1068,4 +1067,4 @@ regs *regs,<br>
 &gt;<br>
 </p>
 
---000000000000ca1117059239631c--
+--000000000000716a62059239bd7d--

@@ -1,214 +1,170 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp962015wrp;
-        Wed, 11 Sep 2019 07:50:58 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxFrHYB7e7JyIltV2t/HJhiQJTEymYj/17cKv27o/0Hie4VOuBwEAew1BJL2idmtPcXts35
-X-Received: by 2002:a05:6402:b0d:: with SMTP id bm13mr24439966edb.125.1568213458162;
-        Wed, 11 Sep 2019 07:50:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568213458; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1033080wrp;
+        Wed, 11 Sep 2019 08:52:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzgNNMC0FUWY9pjSZwE1dTnkWmk3gpf6jLa/V78YjZ5HG7sRQjLk3X2T1h4jGQHhAG9cFkd
+X-Received: by 2002:a17:906:32c3:: with SMTP id k3mr2839994ejk.117.1568217155578;
+        Wed, 11 Sep 2019 08:52:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568217155; cv=none;
         d=google.com; s=arc-20160816;
-        b=tjcgliXgPBR/fNnvaHTpcmXXtUCPeSkgkE/52QGXkc4HsvmvAVqxH/aIN3UBJM3kEZ
-         fft1woJHAUY3JL5WpxxJBOi7uilFA4ZtSwjuz2y5rjn46PhDuPlRYNzq9F9Mo+lTX8xP
-         WtoRbZeKgko3MjAQgd2LLiTX+f05zyvNZSz4472y7a8LEO5XmOILOyxqrkjDYins2qF3
-         6K+XJZQaXv39kCm6NlHMZZkASOAx8Ek1gnMWikytKKNiA6TOBTL/F9D799u7GrsNUH1Q
-         4bS+vaQrQWiiFEplJmXAa+hS4ESZnmiz82BHgku6l0QTfLLthj+LyUJ8xRDFCUOr6PTb
-         Q+9w==
+        b=WWxzKVJlFxprJyK7gF92Bhrim4kxlvKqfkluYxP9U8DuHBJ9oPqfV+XosZzEt0kO1b
+         zTGEhT+2yQGauYiTrXrAiVycEQlTp6yDcbSkyVhZgy+fFHki1ruwpqERcgpxmDMzJBnx
+         q/NrkP9VNHz4urOMzfWUH2ZjUZ03xYjP5m9vogUArQBQ9DddUQguxlH2l//q9ySf0ife
+         3ZeZkBUwC3r+8Sc11INZlS/TTj0FTkabnBGYjpq6gpanr3RDLSUh8AOWNtrwKBuDd90W
+         9yYlUc6AuTTgYb9oU/riSon2SSN28p80D4M5Scmd6zbPvVGOVQIxP85Z5fSIFRuiADaK
+         x46A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
-        bh=/ydzx3tlEmRVCb7hSvYj2/nPOl0KK0uS6Z3E9ykG4nQ=;
-        b=rdfJwynbrminFvBzg3dMS03RiCjOSQvbq9461wnZXDQpPzSk5OcYcgbMd/vCafi2oB
-         f5o0n92zwhhS6hnNuZ4X4uK7z5EXAxMglVLn2Yokm5ODHc11tdecf58vRj+3TVF6nzqT
-         n7qs4j5Os8bYj+0aPN3C7REMlUJ+e7uichwH1wFodg/rA7E/2Y9IatD2fDhupF5Mn7TF
-         U6r0EzjyIgzL/oWydQTMC04MB6Egs8ZtMNnvdpa40+JByCNdSu8Xq4E9dHKg0XuZZikU
-         zRwubeUoIMPwPTAGCpIeWakHSGlbNgwzpdroySjaRMYZWCMKEoTbSZJXsndcDg9LLegg
-         bGiw==
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=OU5rgrxiSiwKLp8uxFAnjAPE5s5s1gV8uVfZSHd97Ug=;
+        b=WOxi9rs8h4ugSphdyuQ7DX+yAb6hcyqZLn5ea7OBQSCG7P9l2eWFI3jXMunNntg8yO
+         NmTj5XSqVK8CARAVo1fnPOOEYjO3Mcg0sAVAJxeOEsNHV2NDWtPs+ouJ51BvphEGJcte
+         2eaTeaK1HP7C2uKSmY1TkEVuZX70XUXDQY1HRjbibVRADAFTDlwq5uKcQ900IQWRMklp
+         eGHiZa/EVBM7m06m+cVdRoMpFkjPWwW75a1w/tiNu87oMe9QonjQzBYB8wHIBEBq2YgR
+         eVny9zl+wfb8L2FzSkARqGnkgle8GSu48mqcTeuk7GnhS771P4KlIZ2qgVNlgEZZUMtL
+         As3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id oj20si11233398ejb.58.2019.09.11.07.50.58
+        by mx.google.com with ESMTPS id gr19si5261285ejb.371.2019.09.11.08.52.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Sep 2019 07:50:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 11 Sep 2019 08:52:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51912 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52900 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i83xQ-0006C1-Ik
-	for alex.bennee@linaro.org; Wed, 11 Sep 2019 10:50:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46369)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i84v3-0002HA-Ox
+	for alex.bennee@linaro.org; Wed, 11 Sep 2019 11:52:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59860)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <rafaeldtinoco@kernelpath.com>) id 1i83uq-0004n0-Eo
- for qemu-devel@nongnu.org; Wed, 11 Sep 2019 10:48:17 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1i84uG-0002Go-6a
+ for qemu-arm@nongnu.org; Wed, 11 Sep 2019 11:51:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <rafaeldtinoco@kernelpath.com>) id 1i83uo-0006ow-Sr
- for qemu-devel@nongnu.org; Wed, 11 Sep 2019 10:48:16 -0400
-Received: from mail-qt1-f178.google.com ([209.85.160.178]:32887)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <rafaeldtinoco@kernelpath.com>)
- id 1i83uo-0006oY-Nw
- for qemu-devel@nongnu.org; Wed, 11 Sep 2019 10:48:14 -0400
-Received: by mail-qt1-f178.google.com with SMTP id r5so25585182qtd.0
- for <qemu-devel@nongnu.org>; Wed, 11 Sep 2019 07:48:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=/ydzx3tlEmRVCb7hSvYj2/nPOl0KK0uS6Z3E9ykG4nQ=;
- b=fTZrdWguSFEWoXn5kkG4DPD9lDcEvIMw3B21fmY01hA5G4UzW0ygnkaPldmfjV13CQ
- Qt8f3hwtnRXIdVaqTaA396iwTbzGVYDYmF00+cEy7HS3RvH3RsiK3QrzTQh2DX107o21
- CKzXFWdr7sWJ8Kcc6ly0dcVTomiaCrlcfU3tJgFVU6p8oilcRySILqa5nMvwwZH0Jc79
- b5hA/ybksJQiyID86wd3llcyqQy0XUtFQZQfU58nJzrSiWLV2EX9XoTsD4bkXmAWzelV
- mZDKTDk1ExIeJ+fa8CQGxJnsSsrjymRe2BXCKCV1+HMAWay66EhyX8gqAlEre3sQ2Vdb
- ZwsQ==
-X-Gm-Message-State: APjAAAVGn1tjaBK5sQQsD6jKNw2/AnF1KWxsumuQfqXZ5ya3mznSaUfa
- a+5vKsbPpB5EnBJG/+tkPEaA6w==
-X-Received: by 2002:aed:3687:: with SMTP id f7mr19581087qtb.195.1568213294063; 
- Wed, 11 Sep 2019 07:48:14 -0700 (PDT)
-Received: from [192.168.100.24] ([191.177.180.119])
- by smtp.gmail.com with ESMTPSA id 64sm11110571qkk.63.2019.09.11.07.48.12
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Wed, 11 Sep 2019 07:48:13 -0700 (PDT)
-To: Paolo Bonzini <pbonzini@redhat.com>
-References: <cbe46ad6-ef6c-d155-e79a-672182c725ad@ubuntu.com>
- <d94f18f1-986f-ec19-02c0-e83e5e7af3d0@redhat.com>
-From: Rafael David Tinoco <rafaeldtinoco@ubuntu.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=rafaeldtinoco@ubuntu.com; keydata=
- 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
- m+Bc0IpWoGZLnE2VPg==
-Message-ID: <c6ff1368-a99b-0bee-e240-de043417d555@ubuntu.com>
-Date: Wed, 11 Sep 2019 11:48:09 -0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ (envelope-from <eric.auger@redhat.com>) id 1i84uD-00035I-GC
+ for qemu-arm@nongnu.org; Wed, 11 Sep 2019 11:51:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59034)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1i84u9-00033l-6Q; Wed, 11 Sep 2019 11:51:41 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 3C487301A638;
+ Wed, 11 Sep 2019 15:51:35 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-168.ams2.redhat.com [10.36.116.168])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6A21160852;
+ Wed, 11 Sep 2019 15:51:28 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org
+Date: Wed, 11 Sep 2019 17:51:22 +0200
+Message-Id: <20190911155125.11932-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <d94f18f1-986f-ec19-02c0-e83e5e7af3d0@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.40]); Wed, 11 Sep 2019 15:51:35 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.160.178
-Subject: Re: [Qemu-devel] qemu_futex_wait() lockups in ARM64: 2 possible
- issues
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [RFC v2 0/3] KVM/ARM: Fix >256 vcpus
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: QEMU Developers - ARM <qemu-arm@nongnu.org>,
- lizhengui <lizhengui@huawei.com>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wamEBZUZPVqq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: yuzenghui@huawei.com, maz@kernel.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6VBgP97gaHn5
+
+Since 4.18, KVM/ARM exposes a KVM_MAX_VCPUS equal to 512. However it was
+reported [1] that a VM with more than 256 vcpus cannot be launched. 5.4
+is about to fix the situation with 2 patches:
+- one upgrade of the KVM_IRQ_LINE API [2] supporting a vcpu id encoded
+  on 12 bits,
+- the reduction of KVM IO devices consumed by each GICv3 redistributor [3=
+]
+
+This series uses the new KVM_IRQ_LINE API and also checks the associated
+capability (KVM_CAP_ARM_IRQ_LINE_LAYOUT_2) in machvirt.
+
+Without the series, as soon as the -smp arguments exceeds 256, QEMU exits
+with "kvm_set_irq: Invalid argument".
+
+Best Regards
+
+Eric
+
+References:
+[1] Can we boot a 512U kvm guest?
+    https://patchwork.kernel.org/patch/11091501/
+[2] [PATCH] KVM: arm/arm64: vgic: Allow more than 256 vcpus for KVM_IRQ_L=
+INE
+    https://patchwork.kernel.org/patch/11099609/
+[3] [PATCH] KVM: arm/arm64: vgic: Use a single IO device per redistributo=
+r
+    https://patchwork.kernel.org/patch/11112141/
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/v4.1.0-256fix-rfc-v2
+
+History:
+v1 -> v2:
+- New layout set for kvm_arm_gic_set_irq and
+  arm_cpu_kvm_set_irq through kvm_arm_set_irq
+- Introduced kvm_arm_irq_line_layout_mismatch()
 
 
-> Note that the RCU thread is expected to sit most of the time doing 
-> nothing, so I don't think this matters.
+Eric Auger (3):
+  linux headers: update for KVM_CAP_ARM_IRQ_LINE_LAYOUT_2
+  intc/arm_gic: Support IRQ injection for more than 256 vpus
+  virt: Check KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 for smp_cpus > 256
 
-Agreed.
+ hw/arm/virt.c                                |  4 +++
+ hw/intc/arm_gic_kvm.c                        |  7 ++--
+ include/standard-headers/asm-x86/bootparam.h |  2 ++
+ include/standard-headers/asm-x86/kvm_para.h  |  1 +
+ include/standard-headers/linux/ethtool.h     |  2 ++
+ include/standard-headers/linux/pci_regs.h    |  4 +++
+ include/standard-headers/linux/virtio_ids.h  |  1 +
+ include/standard-headers/linux/virtio_pmem.h |  6 ++--
+ linux-headers/asm-arm/kvm.h                  | 16 ++++++++-
+ linux-headers/asm-arm/unistd-common.h        |  2 ++
+ linux-headers/asm-arm64/kvm.h                | 21 ++++++++++-
+ linux-headers/asm-generic/mman-common.h      | 15 ++++----
+ linux-headers/asm-generic/mman.h             | 10 +++---
+ linux-headers/asm-generic/unistd.h           |  8 ++++-
+ linux-headers/asm-mips/unistd_n32.h          |  1 +
+ linux-headers/asm-mips/unistd_n64.h          |  1 +
+ linux-headers/asm-mips/unistd_o32.h          |  1 +
+ linux-headers/asm-powerpc/mman.h             |  6 +---
+ linux-headers/asm-powerpc/unistd_32.h        |  2 ++
+ linux-headers/asm-powerpc/unistd_64.h        |  2 ++
+ linux-headers/asm-s390/unistd_32.h           |  2 ++
+ linux-headers/asm-s390/unistd_64.h           |  2 ++
+ linux-headers/asm-x86/kvm.h                  | 28 +++++++++++----
+ linux-headers/asm-x86/unistd_32.h            |  2 ++
+ linux-headers/asm-x86/unistd_64.h            |  2 ++
+ linux-headers/asm-x86/unistd_x32.h           |  2 ++
+ linux-headers/linux/kvm.h                    | 12 +++++--
+ linux-headers/linux/psp-sev.h                |  5 +--
+ target/arm/cpu.c                             | 10 +++---
+ target/arm/kvm.c                             | 37 ++++++++++++++++++++
+ target/arm/kvm_arm.h                         | 16 +++++++++
+ 31 files changed, 182 insertions(+), 48 deletions(-)
 
-> Zhengui's theory that notify_me doesn't work properly on ARM is more
-> promising, but he couldn't provide a clear explanation of why he thought
-> notify_me is involved.  In particular, I would have expected notify_me to
-> be wrong if the qemu_poll_ns call came from aio_ctx_dispatch, for example:
-> 
-> 
->     glib_pollfds_fill
->       g_main_context_prepare
->         aio_ctx_prepare
->           atomic_or(&ctx->notify_me, 1)
->     qemu_poll_ns
->     glib_pollfds_poll
->       g_main_context_check
->         aio_ctx_check
->           atomic_and(&ctx->notify_me, ~1)
->       g_main_context_dispatch
->         aio_ctx_dispatch
->           /* do something for event */
->             qemu_poll_ns 
-> 
-
-Yep, will focus there.
-
-> 
-> Can you place somewhere your util/async.o object file for me to look at it?
-
-Sure!
-
-https://send.firefox.com/download/45c26bbe1075eea1/#ZD_e_96imPG2QuDqaX-jhg
-
-Note: this async.o has value as int, EV_BUSY as 3, aborts if any errno
-in qemu_futex() and uses &ev->value as 1st argument to wake/wait (as in
-https://pastebin.ubuntu.com/p/xk8D6H6kgM/).
-
-> 
-> You could change it to 3, but it has to have all the bits in EV_FREE 
-> (see atomic_or(&ev->value, EV_FREE) in qemu_event_reset).
-> 
-> You could also change it to -1u, but I don't see a particular need to do so.
-> 
-
-Yep, it was a dead end on my side.
-
->> - Should qemu_event_set() check return code from
->> qemu_futex_wake()->qemu_futex()->syscall() in order to know if ANY
->> waiter was ever woken up ? Maybe even loop until at least 1 is awaken ?
-> 
-> Why would it need to do so?
-> 
-
-No need, just realized after I saw no tasks waking that thread up. Like
-you said, ctx->notify_me seems more promising, will give it a try.
+--=20
+2.20.1
 

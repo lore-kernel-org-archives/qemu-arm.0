@@ -1,188 +1,148 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp889626wrp;
-        Wed, 11 Sep 2019 06:49:52 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzmBCR5hDutMHZbMDome6Ld7ycSxLHzkK++Rm2SXRvcAIb9XaML34FSMDTUoBf0eyw//wpj
-X-Received: by 2002:a05:620a:15d4:: with SMTP id o20mr35823614qkm.471.1568209792661;
-        Wed, 11 Sep 2019 06:49:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568209792; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp890403wrp;
+        Wed, 11 Sep 2019 06:50:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwm+9e66HmjHA0aU1qzpUEepGZdBXjCn630hli1xeGmGLchFv8Ltwg/0n/rFmm2EcJouMPe
+X-Received: by 2002:a37:8c7:: with SMTP id 190mr35874481qki.130.1568209838133;
+        Wed, 11 Sep 2019 06:50:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568209838; cv=none;
         d=google.com; s=arc-20160816;
-        b=DVgsd+fEuKOzfxzSjtDJ50gCgFSIH/d9tyIxiCJUI5NI5kM91CHUnYC4VkaMUUeSIs
-         VOcB/yl6+WJpav/YvJsRx7d3ogpcb+o/JsiXG+FE5DKtnn5E6SdG2i2Xoh6ringeq/qs
-         YjUJLkHSFs9sxvHqp8caeJcM2svGtnyKLS5YeSxhMLgLN61qo1B35+IF+f/M6+ofr/mt
-         dJCaRF/suMmC52/wv2C4v+enBcknSV/itLwmG2ltzhgoBjw3NwoZkDuJHb2d4eN2X0JN
-         y3OeQpd+MmGm+3Z6jPSAxM5osvL0krgLW/DLJs5Kh2CEfJL9PGEgwjOoMvehvSHjOvYb
-         V1SQ==
+        b=GRDtFibLfeO4WPXFKnX/fD+gHDwJ+cDhNl+ZhjRm8By6jKfBS1Xdvfkx+vpa6RIk/S
+         mR28Tes5m3fX0B6geQSEyEuU6RDXHgHO478HmqBIOlVy1dCgWmYsslAxBiDuZdoiX3HM
+         00oTHvVJy+MQtPRfLcQtRzF8e9Fcv9qQxZ9+9jffkoLjeMS/YaEyQL8DwKMK0IkZdYJD
+         zpZfWxvlSHVvBrjmGOcP3EbLYL8mrMgZrpdsxnqIh0nTWGVrU69Uw0rzBaRkcf1u+9Nb
+         xbifIBusFKEQjAzkSIDRTl3uRKaVM0exZUYqQ9Xk6kXpaNEuHC8OIJAUDvRk5Ldxt1sl
+         ESpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:to:from:date;
-        bh=hAL/nGbfwrhaAkCv5ycID8MfCwyLw9zVJXJ7UIWnPrY=;
-        b=0nvYFBbefee0fqaRsYMqIdZt4c/cJFBjod7wcExuuqZeBRX+zEg2LpLDg2gqjzlOhS
-         na/2Jui1PEJ5VdlfdF3owo5NOdnW/134BpQk9r3kEUGxtrj3PiNVdg3NngkAyxfTu0Gr
-         nqbD4i0BnzbZsf0374D4bcm06mhXCHarSv+o5u1WnZiS5/8tkwPUVMTB7o5chonSYNCW
-         ooGR0tPXTF/+MEURs3sRq6KOmFKUXUrahFHrvmbaa1GU5XmDMpJaQrO42TKYSgn+SUF7
-         k1DA68E0GMzn1tygtwBHAarod2YADMgnuN63laixiJuLlyKwMMOELSlCu7+7cIAABh97
-         orlg==
+        bh=67iStAXPJHc5OsOCzqjMHSfVeWA6t1Sx7h6l0LdxcjU=;
+        b=StycYl5jOPKvjjU3Cue9/clOSs6TUMQOurJGKGECZGxolsH5KtAOq6vupiK8OeBO4+
+         Kn8iQ6C2yN5Ia8/QimFqudxPj8cgdaNZBlYBR4MSaKH0Dv2w4TRXo3AKx5ZjAk8fX1XS
+         Euly3MrLx2iDq9TIruiSxG/BxJwpXHVsy4fWuFLEZ0dDScc3ebUiMg30v/7PFQUd3H8r
+         ciEwQ30D1nNoWd1m5Im6I4Ek034x/AD8XgJLi32X3IhjqavRDrSvY31P18Yi7XgeSDF2
+         rBSYCMtu6oQSjodooXmgiDsdRm2EYiYLYDv8rfrNjDXhGLQc0PgVs1OBNTXJ0l8ge7HK
+         cjNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 128si17142077qkd.55.2019.09.11.06.49.52
+        by mx.google.com with ESMTPS id e12si12757638qti.214.2019.09.11.06.50.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Sep 2019 06:49:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 11 Sep 2019 06:50:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51278 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51308 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i830K-0006iV-4y
-	for alex.bennee@linaro.org; Wed, 11 Sep 2019 09:49:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35090)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i8313-0007np-HT
+	for alex.bennee@linaro.org; Wed, 11 Sep 2019 09:50:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35732)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <imammedo@redhat.com>) id 1i82xY-0004mO-6s
- for qemu-devel@nongnu.org; Wed, 11 Sep 2019 09:47:01 -0400
+ (envelope-from <imammedo@redhat.com>) id 1i830v-0007nS-7i
+ for qemu-arm@nongnu.org; Wed, 11 Sep 2019 09:50:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <imammedo@redhat.com>) id 1i82xX-0000hn-0u
- for qemu-devel@nongnu.org; Wed, 11 Sep 2019 09:47:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59188)
+ (envelope-from <imammedo@redhat.com>) id 1i830u-0002bM-6e
+ for qemu-arm@nongnu.org; Wed, 11 Sep 2019 09:50:29 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54822)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <imammedo@redhat.com>)
- id 1i82xS-0000aG-Tz; Wed, 11 Sep 2019 09:46:55 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ id 1i830u-0002au-1F; Wed, 11 Sep 2019 09:50:28 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 8379118CB908;
- Wed, 11 Sep 2019 13:46:53 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 30259368FF;
+ Wed, 11 Sep 2019 13:50:27 +0000 (UTC)
 Received: from localhost (unknown [10.43.2.182])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6A6F410016EB;
- Wed, 11 Sep 2019 13:46:48 +0000 (UTC)
-Date: Wed, 11 Sep 2019 15:46:46 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A3B705C21E;
+ Wed, 11 Sep 2019 13:50:16 +0000 (UTC)
+Date: Wed, 11 Sep 2019 15:50:15 +0200
 From: Igor Mammedov <imammedo@redhat.com>
-To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Message-ID: <20190911154646.624469f4@redhat.com>
-In-Reply-To: <20190904085629.13872-12-shameerali.kolothum.thodi@huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Message-ID: <20190911155015.3627b072@redhat.com>
+In-Reply-To: <CAFEAcA8sEhgOXnj-DGo04pSnpTObO+EeC94yrdGEikKq0=2QeA@mail.gmail.com>
 References: <20190904085629.13872-1-shameerali.kolothum.thodi@huawei.com>
- <20190904085629.13872-12-shameerali.kolothum.thodi@huawei.com>
+ <20190904085629.13872-11-shameerali.kolothum.thodi@huawei.com>
+ <CAFEAcA8sEhgOXnj-DGo04pSnpTObO+EeC94yrdGEikKq0=2QeA@mail.gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.63]); Wed, 11 Sep 2019 13:46:53 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.30]); Wed, 11 Sep 2019 13:50:27 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH-for-4.2 v10 11/11] tests: Add bios tests to
- arm/virt
-X-BeenThere: qemu-devel@nongnu.org
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH-for-4.2 v10 10/11] tests: add
+ dummy ACPI tables for arm/virt board
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, sameo@linux.intel.com, shannon.zhaosl@gmail.com,
- ard.biesheuvel@linaro.org, qemu-devel@nongnu.org, xuwei5@hisilicon.com,
- linuxarm@huawei.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
- sebastien.boeuf@intel.com, lersek@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DfSmt1O/nTqz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Samuel Ortiz <sameo@linux.intel.com>,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>, mst@redhat.com,
+ QEMU Developers <qemu-devel@nongnu.org>, Xu Wei <xuwei5@hisilicon.com>,
+ Linuxarm <linuxarm@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ Eric Auger <eric.auger@redhat.com>, sebastien.boeuf@intel.com,
+ Laszlo Ersek <lersek@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MqndyvD311Ie
 
-On Wed, 4 Sep 2019 09:56:29 +0100
-Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+On Wed, 11 Sep 2019 13:57:06 +0100
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-> This adds numamem and memhp tests for arm/virt platform
+> On Wed, 4 Sep 2019 at 09:58, Shameer Kolothum
+> <shameerali.kolothum.thodi@huawei.com> wrote:
+> >
+> > This patch is in preparation for adding numamem and memhp tests
+> > to arm/virt board so that 'make check' is happy. This may not
+> > be required once the scripts are run and new tables are
+> > generated with ".numamem" and ".memhp" extensions.
+> >
+> > Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
+> > ---
+> > I am not sure this is the right way to do this. But without this, when
+> > the numamem and memhp tests are added, you will get,
+> >
+> > Looking for expected file 'tests/data/acpi/virt/SRAT.numamem'
+> > Looking for expected file 'tests/data/acpi/virt/SRAT'
+> > **
+> > ERROR:tests/bios-tables-test.c:327:load_expected_aml: assertion failed: (exp_sdt.aml_file)
+> >
+> > ---
+> >  tests/data/acpi/virt/SLIT | Bin 0 -> 48 bytes
+> >  tests/data/acpi/virt/SRAT | Bin 0 -> 224 bytes
+> >  2 files changed, 0 insertions(+), 0 deletions(-)
+> >  create mode 100644 tests/data/acpi/virt/SLIT
+> >  create mode 100644 tests/data/acpi/virt/SRAT  
 > 
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-
-> ---
->  tests/bios-tables-test-allowed-diff.h |  1 +
->  tests/bios-tables-test.c              | 49 +++++++++++++++++++++++++++
->  2 files changed, 50 insertions(+)
+> Do the tests pass with this patch and without the
+> patch that adds the tests? (That is, can we keep the
+> two patches separate without breaking bisection, or
+> do we need to squash them together?)
 > 
-> diff --git a/tests/bios-tables-test-allowed-diff.h b/tests/bios-tables-test-allowed-diff.h
-> index 7b4adbc822..d181a4da4a 100644
-> --- a/tests/bios-tables-test-allowed-diff.h
-> +++ b/tests/bios-tables-test-allowed-diff.h
-> @@ -1,2 +1,3 @@
->  /* List of comma-separated changed AML files to ignore */
->  "tests/data/acpi/virt/DSDT",
-> +"tests/data/acpi/virt/SRAT",
-> diff --git a/tests/bios-tables-test.c b/tests/bios-tables-test.c
-> index a356ac3489..1d6f330d53 100644
-> --- a/tests/bios-tables-test.c
-> +++ b/tests/bios-tables-test.c
-> @@ -871,6 +871,53 @@ static void test_acpi_piix4_tcg_dimm_pxm(void)
->      test_acpi_tcg_dimm_pxm(MACHINE_PC);
->  }
->  
-> +static void test_acpi_virt_tcg_memhp(void)
-> +{
-> +    test_data data = {
-> +        .machine = "virt",
-> +        .accel = "tcg",
-> +        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-> +        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-> +        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
-> +        .ram_start = 0x40000000ULL,
-> +        .scan_len = 256ULL * 1024 * 1024,
-> +    };
-> +
-> +    data.variant = ".memhp";
-> +    test_acpi_one(" -cpu cortex-a57"
-> +                  " -object memory-backend-ram,id=ram0,size=128M"
-> +                  " -object memory-backend-ram,id=ram1,size=128M"
-> +                  " -numa node,memdev=ram0 -numa node,memdev=ram1"
-> +                  " -numa dist,src=0,dst=1,val=21",
-> +                  &data);
-> +
-> +    free_test_data(&data);
-> +
-> +}
-> +
-> +static void test_acpi_virt_tcg_numamem(void)
-> +{
-> +    test_data data = {
-> +        .machine = "virt",
-> +        .accel = "tcg",
-> +        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
-> +        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
-> +        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
-> +        .ram_start = 0x40000000ULL,
-> +        .scan_len = 128ULL * 1024 * 1024,
-> +    };
-> +
-> +    data.variant = ".numamem";
-> +    test_acpi_one(" -cpu cortex-a57"
-> +                  " -object memory-backend-ram,id=ram0,size=128M"
-> +                  " -numa node,memdev=ram0",
-> +                  &data);
-> +
-> +    free_test_data(&data);
-> +
-> +}
-> +
->  static void test_acpi_virt_tcg(void)
->  {
->      test_data data = {
-> @@ -917,6 +964,8 @@ int main(int argc, char *argv[])
->          qtest_add_func("acpi/q35/dimmpxm", test_acpi_q35_tcg_dimm_pxm);
->      } else if (strcmp(arch, "aarch64") == 0) {
->          qtest_add_func("acpi/virt", test_acpi_virt_tcg);
-> +        qtest_add_func("acpi/virt/numamem", test_acpi_virt_tcg_numamem);
-> +        qtest_add_func("acpi/virt/memhp", test_acpi_virt_tcg_memhp);
->      }
->      ret = g_test_run();
->      boot_sector_cleanup(disk);
+> I'll leave it to somebody who understands the ACPI
+> tests stuff to answer whether there's a better way to
+I'd squash this patch into 11/11 test case,
+CCing Michael (since he's the one who applies ACPI patches)
+
+> do this.
+> 
+> thanks
+> -- PMM
+> 
 

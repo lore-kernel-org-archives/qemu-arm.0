@@ -1,531 +1,204 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id y186sm3781432wmd.26.2019.09.11.02.26.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Sep 2019 02:26:37 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 42CB81FF87;
-	Wed, 11 Sep 2019 10:26:37 +0100 (BST)
-References: <20190910193408.28917-1-alex.bennee@linaro.org>
- <20190910193408.28917-5-alex.bennee@linaro.org>
- <CAL1e-=giNc1e+kN04KqHFQGkJbP4BKziQyxVd3-RTtL+UOfSoQ@mail.gmail.com>
-User-agent: mu4e 1.3.4; emacs 27.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Aleksandar Markovic <aleksandar.m.mail@gmail.com>
-Cc: qemu-devel@nongnu.org, Riku Voipio <riku.voipio@iki.fi>, Laurent Vivier
- <laurent@vivier.eu>, peter.maydell@linaro.org, qemu-arm@nongnu.org
-Subject: Re: [Qemu-devel] [PATCH v1 4/4] elf: move ELF_ARCH definition to
- elf-arch.h
-In-reply-to: <CAL1e-=giNc1e+kN04KqHFQGkJbP4BKziQyxVd3-RTtL+UOfSoQ@mail.gmail.com>
-Date: Wed, 11 Sep 2019 10:26:37 +0100
-Message-ID: <874l1j18vm.fsf@linaro.org>
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp689642wrp;
+        Wed, 11 Sep 2019 03:37:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzXa7MuLSFQsIkzubQURKUg8eysJPLrmCF8vmGeThSpP6t4XNgBk8tW8emTE4Ph6C3APjCH
+X-Received: by 2002:a05:6214:46:: with SMTP id c6mr8865975qvr.134.1568198225002;
+        Wed, 11 Sep 2019 03:37:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568198224; cv=none;
+        d=google.com; s=arc-20160816;
+        b=tztskgQg8/GRZXao3UI7hxjhHIB2JOAXtfLArrb9SAps+/yIYQUUVxA57JBjGrIvLi
+         7L6ntyabaWkuUOjzHM7uV+NB2Uxf7lTl76Rhw3UXKXKMTvIqBUFueWleda777Y95DaMb
+         r4F1Ps/KJd2E5F4ROp/1Koa4D+JT1kH+3whhbhUAHFfeN7CnQ+KWVnmxFV1qRsfH9yCB
+         h8j55BajilJ0zybaqb6zkMLBHj6Sm1rpHR7AzsOreZF7+fdtVC57U8FZsYual3Fp6Xuu
+         vZgFIRKTvNRHYTLzeA6D+fGDhPWU0jYKkJGXacfdufoLQ/BP0sjG3BFk71jyKI63Z5t+
+         Lk0A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=dfxGUQa1woKgcZ+GsC1aF6sGG1eiRHzvNhFaNUZtydE=;
+        b=SOS62UNnc00Zdq5IABXg+1TiAA2MQy7OCiCeveb7DQ7vof8a/RWo37VLcfHVjyZTLY
+         We/VPnatKnqO2dE9KtysPpRBigGuvX//5AtLpaBtlY/jzgyRFqnOmR8fn+3uCwMWXfKi
+         2MoXaSWG1GgFmXHVacGIqg2nOU0jhycp9yP5vOUc2X13ER4tGzMytl+zxBeSeHPp7yn5
+         Qfx1+xRwD6hxv8DLpjM5vHGJvGKghaKndYolsfz/OwZnihLi3HVAPdTVJ64J9CKq68yI
+         1w29dQq0AQJWc9ZB0VQAsYwgrhMKpX0vM3C42u6vxiurtrXasbb4odrLVwKuHqXTA/O4
+         cu5w==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g30si12029018qtk.212.2019.09.11.03.37.04
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 11 Sep 2019 03:37:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49330 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i7zzk-0000cW-Dz
+	for alex.bennee@linaro.org; Wed, 11 Sep 2019 06:37:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54820)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <dgilbert@redhat.com>) id 1i7zzb-0000cM-MH
+ for qemu-arm@nongnu.org; Wed, 11 Sep 2019 06:36:56 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <dgilbert@redhat.com>) id 1i7zza-0001fG-Ey
+ for qemu-arm@nongnu.org; Wed, 11 Sep 2019 06:36:55 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:62184)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <dgilbert@redhat.com>)
+ id 1i7zza-0001f1-7S; Wed, 11 Sep 2019 06:36:54 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 2336F30A5408;
+ Wed, 11 Sep 2019 10:36:53 +0000 (UTC)
+Received: from work-vm (ovpn-117-243.ams2.redhat.com [10.36.117.243])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 25BAF6017E;
+ Wed, 11 Sep 2019 10:36:47 +0000 (UTC)
+Date: Wed, 11 Sep 2019 11:36:45 +0100
+From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+To: Beata Michalska <beata.michalska@linaro.org>
+Message-ID: <20190911103645.GF2894@work-vm>
+References: <20190910095610.4546-1-beata.michalska@linaro.org>
+ <20190910095610.4546-4-beata.michalska@linaro.org>
+ <20190910102601.GA2797@work-vm>
+ <CADSWDzs_Cof-L8dGBeYVEY1dNx4Ot6sNcAKtCrvcxZW-3+KUvA@mail.gmail.com>
+ <20190910131617.GC2797@work-vm>
+ <CADSWDzuuWqBF9rP57Zv7jFPKUhFdVLq-O_uqs29i4dAFz+CgUA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: tM6zzsVnDZUK
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CADSWDzuuWqBF9rP57Zv7jFPKUhFdVLq-O_uqs29i4dAFz+CgUA@mail.gmail.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.42]); Wed, 11 Sep 2019 10:36:53 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH 3/4] migration: ram: Switch to ram block
+ writeback
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, quintela@redhat.com,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ shameerali.kolothum.thodi@huawei.com, eric.auger@redhat.com,
+ qemu-arm@nongnu.org, pbonzini@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Jka5NMtPIcfh
 
+* Beata Michalska (beata.michalska@linaro.org) wrote:
+> On Tue, 10 Sep 2019 at 14:16, Dr. David Alan Gilbert
+> <dgilbert@redhat.com> wrote:
+> >
+> > * Beata Michalska (beata.michalska@linaro.org) wrote:
+> > > On Tue, 10 Sep 2019 at 12:26, Dr. David Alan Gilbert
+> > > <dgilbert@redhat.com> wrote:
+> > > >
+> > > > * Beata Michalska (beata.michalska@linaro.org) wrote:
+> > > > > Switch to ram block writeback for pmem migration.
+> > > > >
+> > > > > Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
+> > > > > ---
+> > > > >  migration/ram.c | 5 +----
+> > > > >  1 file changed, 1 insertion(+), 4 deletions(-)
+> > > > >
+> > > > > diff --git a/migration/ram.c b/migration/ram.c
+> > > > > index b01a37e7ca..8ea0bd63fc 100644
+> > > > > --- a/migration/ram.c
+> > > > > +++ b/migration/ram.c
+> > > > > @@ -33,7 +33,6 @@
+> > > > >  #include "qemu/bitops.h"
+> > > > >  #include "qemu/bitmap.h"
+> > > > >  #include "qemu/main-loop.h"
+> > > > > -#include "qemu/pmem.h"
+> > > > >  #include "xbzrle.h"
+> > > > >  #include "ram.h"
+> > > > >  #include "migration.h"
+> > > > > @@ -4064,9 +4063,7 @@ static int ram_load_cleanup(void *opaque)
+> > > > >      RAMBlock *rb;
+> > > > >
+> > > > >      RAMBLOCK_FOREACH_NOT_IGNORED(rb) {
+> > > > > -        if (ramblock_is_pmem(rb)) {
+> > > > > -            pmem_persist(rb->host, rb->used_length);
+> > > > > -        }
+> > > > > +        qemu_ram_block_writeback(rb);
+> > > >
+> > > > ACK for migration
+> > > >
+> > > > Although I do worry that if you really have pmem hardware, is it better
+> > > > to fail the migration if you don't have libpmem available?
+> > >
+> > > According to the PMDG man page, pmem_persist is supposed to be
+> > > equivalent for the msync.
+> >
+> > OK, but you do define qemu_ram_block_writeback to fall back to fdatasync;
+> > so that would be too little?
+> 
+> Actually it shouldn't. All will end-up in vfs_fsync_range; msync will
+> narrow the range.
+> fdatasync will trigger the same call just that with a wider range. At
+> least for Linux.
+> fdatasync will also fallback to fsync if it is not available.
+> So it's going from the best case scenario (as of performance and range of mem
+> to be synced) towards the worst case one.
+> 
+> I should probably double-check earlier versions of Linux.
+> I'll also try to verify that for other host variants.
 
-Aleksandar Markovic <aleksandar.m.mail@gmail.com> writes:
+Well I guess it should probably follow whatever Posix says;  it's OK to
+make Linux specific assumptions for Linux specific bits - but you can't
+do it by code examination to guarantee it'll be right for other
+platforms, especially if this is in code ifdef'd for portability.
+Also it needs commenting to explain why it's safe to avoid someone else
+asking this question.
 
-> 10.09.2019. 21.34, "Alex Benn=C3=A9e" <alex.bennee@linaro.org> =D1=98=D0=
-=B5 =D0=BD=D0=B0=D0=BF=D0=B8=D1=81=D0=B0=D0=BE/=D0=BB=D0=B0:
->>
->> This is preparatory for plugins which will want to report the
->> architecture to plugins. Move the ELF_ARCH definition out of the
->> loader and into its own header.
->>
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> --
->
-> Hi, Alex.
->
-> I advice some caution here
-> . For example, EM_NANOMIPS, and some other EM_xxx constants are not
-> included in the new header.
+> BTW: Thank you for having a look at the changes.
 
-EM_ARCH was never set to EM_NANOMIPS. In fact I can see e_machine is
-checked against it so I guess it is only ever used to checking the
-loading elf directly.
+No problem.
 
-In fact EM_ARCH is only really the default fallback case for checking
-the elf type if there is not a more "forgiving" check done by arch
-specific code (elf_check_arch). The only other cace is the fallback for
-EM_MACHINE unless PPC does something with it.
+Dave
 
-> I am not sure what exactly you want to achieve
-> with this refactoring. But you may miss your goal, since some EM_xxx will
-> be missing from your new header. Is this the right way to achieve what you
-> want, and could you unintentionally introduce bugs? Can you outline in mo=
-re
-> details your intentions around the new header? Is this refactoring the on=
-ly
-> way?
-
-As mentioned in the other reply maybe exposing a value from configure
-into config-target.[mak|h] would be a better approach?
-
->
-> Thanks, Aleksandar
->
->>  bsd-user/elfload.c     |  13 +----
->>  include/elf/elf-arch.h | 109 +++++++++++++++++++++++++++++++++++++++++
->>  linux-user/elfload.c   |  27 ++--------
->>  3 files changed, 115 insertions(+), 34 deletions(-)
->>  create mode 100644 include/elf/elf-arch.h
->>
->> diff --git a/bsd-user/elfload.c b/bsd-user/elfload.c
->> index 321ee98b86b..adaae0e0dca 100644
->> --- a/bsd-user/elfload.c
->> +++ b/bsd-user/elfload.c
->> @@ -5,6 +5,7 @@
->>  #include "qemu.h"
->>  #include "disas/disas.h"
->>  #include "qemu/path.h"
->> +#include "elf/elf-arch.h"
->>
->>  #ifdef _ARCH_PPC64
->>  #undef ARCH_DLINFO
->> @@ -12,7 +13,6 @@
->>  #undef ELF_HWCAP
->>  #undef ELF_CLASS
->>  #undef ELF_DATA
->> -#undef ELF_ARCH
->>  #endif
->>
->>  /* from personality.h */
->> @@ -115,7 +115,6 @@ static uint32_t get_elf_hwcap(void)
->>
->>  #define ELF_CLASS      ELFCLASS64
->>  #define ELF_DATA       ELFDATA2LSB
->> -#define ELF_ARCH       EM_X86_64
->>
->>  static inline void init_thread(struct target_pt_regs *regs, struct
-> image_info *infop)
->>  {
->> @@ -141,7 +140,6 @@ static inline void init_thread(struct target_pt_regs
-> *regs, struct image_info *i
->>   */
->>  #define ELF_CLASS       ELFCLASS32
->>  #define ELF_DATA        ELFDATA2LSB
->> -#define ELF_ARCH        EM_386
->>
->>  static inline void init_thread(struct target_pt_regs *regs, struct
-> image_info *infop)
->>  {
->> @@ -176,7 +174,6 @@ static inline void init_thread(struct target_pt_regs
-> *regs, struct image_info *i
->>  #else
->>  #define ELF_DATA        ELFDATA2LSB
->>  #endif
->> -#define ELF_ARCH        EM_ARM
->>
->>  static inline void init_thread(struct target_pt_regs *regs, struct
-> image_info *infop)
->>  {
->> @@ -231,7 +228,6 @@ enum
->>
->>  #define ELF_CLASS   ELFCLASS64
->>  #define ELF_DATA    ELFDATA2MSB
->> -#define ELF_ARCH    EM_SPARCV9
->>
->>  #define STACK_BIAS              2047
->>
->> @@ -265,7 +261,6 @@ static inline void init_thread(struct target_pt_regs
-> *regs, struct image_info *i
->>
->>  #define ELF_CLASS   ELFCLASS32
->>  #define ELF_DATA    ELFDATA2MSB
->> -#define ELF_ARCH    EM_SPARC
->>
->>  static inline void init_thread(struct target_pt_regs *regs, struct
-> image_info *infop)
->>  {
->> @@ -302,7 +297,6 @@ static inline void init_thread(struct target_pt_regs
-> *regs, struct image_info *i
->>  #else
->>  #define ELF_DATA        ELFDATA2LSB
->>  #endif
->> -#define ELF_ARCH        EM_PPC
->>
->>  /*
->>   * We need to put in some extra aux table entries to tell glibc what
->> @@ -388,7 +382,6 @@ static inline void init_thread(struct target_pt_regs
-> *_regs, struct image_info *
->>  #else
->>  #define ELF_DATA        ELFDATA2LSB
->>  #endif
->> -#define ELF_ARCH    EM_MIPS
->>
->>  static inline void init_thread(struct target_pt_regs *regs, struct
-> image_info *infop)
->>  {
->> @@ -410,7 +403,6 @@ static inline void init_thread(struct target_pt_regs
-> *regs, struct image_info *i
->>
->>  #define ELF_CLASS ELFCLASS32
->>  #define ELF_DATA  ELFDATA2LSB
->> -#define ELF_ARCH  EM_SH
->>
->>  static inline void init_thread(struct target_pt_regs *regs, struct
-> image_info *infop)
->>  {
->> @@ -432,7 +424,6 @@ static inline void init_thread(struct target_pt_regs
-> *regs, struct image_info *i
->>
->>  #define ELF_CLASS ELFCLASS32
->>  #define ELF_DATA  ELFDATA2LSB
->> -#define ELF_ARCH  EM_CRIS
->>
->>  static inline void init_thread(struct target_pt_regs *regs, struct
-> image_info *infop)
->>  {
->> @@ -452,7 +443,6 @@ static inline void init_thread(struct target_pt_regs
-> *regs, struct image_info *i
->>
->>  #define ELF_CLASS       ELFCLASS32
->>  #define ELF_DATA        ELFDATA2MSB
->> -#define ELF_ARCH        EM_68K
->>
->>  /* ??? Does this need to do anything?
->>  #define ELF_PLAT_INIT(_r) */
->> @@ -477,7 +467,6 @@ static inline void init_thread(struct target_pt_regs
-> *regs, struct image_info *i
->>
->>  #define ELF_CLASS      ELFCLASS64
->>  #define ELF_DATA       ELFDATA2MSB
->> -#define ELF_ARCH       EM_ALPHA
->>
->>  static inline void init_thread(struct target_pt_regs *regs, struct
-> image_info *infop)
->>  {
->> diff --git a/include/elf/elf-arch.h b/include/elf/elf-arch.h
->> new file mode 100644
->> index 00000000000..9e052543c51
->> --- /dev/null
->> +++ b/include/elf/elf-arch.h
->> @@ -0,0 +1,109 @@
->> +/*
->> + * Elf Architecture Definition
->> + *
->> + * This is a simple expansion to define common Elf types for the
->> + * various machines for the various places it's needed in the source
->> + * tree.
->> + *
->> + * Copyright (c) 2019 Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> + *
->> + * SPDX-License-Identifier: GPL-2.0-or-later
->> + *
->> + * This work is licensed under the terms of the GNU GPL, version 2 or
-> later.
->> + * See the COPYING file in the top-level directory.
->> + */
->> +
->> +#ifndef _ELF_ARCH_H_
->> +#define _ELF_ARCH_H_
->> +
->> +#include "elf/elf.h"
->> +
->> +#ifndef NEED_CPU_H
->> +#error Needs an target definition
->> +#endif
->> +
->> +#ifdef ELF_ARCH
->> +#error ELF_ARCH should only be defined once in this file
->> +#endif
->> +
->> +#ifdef TARGET_I386
->> +#ifdef TARGET_X86_64
->> +#define ELF_ARCH EM_X86_64
->> +#else
->> +#define ELF_ARCH EM_386
->> +#endif
->> +#endif
->> +
->> +#ifdef TARGET_ARM
->> +#ifndef TARGET_AARCH64
->> +#define ELF_ARCH EM_ARM
->> +#else
->> +#define ELF_ARCH EM_AARCH64
->> +#endif
->> +#endif
->> +
->> +#ifdef TARGET_SPARC
->> +#ifdef TARGET_SPARC64
->> +#define ELF_ARCH EM_SPARCV9
->> +#else
->> +#define ELF_ARCH EM_SPARC
->> +#endif
->> +#endif
->> +
->> +#ifdef TARGET_PPC
->> +#define ELF_ARCH EM_PPC
->> +#endif
->> +
->> +#ifdef TARGET_MIPS
->> +#define ELF_ARCH EM_MIPS
->> +#endif
->> +
->> +#ifdef TARGET_MICROBLAZE
->> +#define ELF_ARCH EM_MICROBLAZE
->> +#endif
->> +
->> +#ifdef TARGET_NIOS2
->> +#define ELF_ARCH EM_ALTERA_NIOS2
->> +#endif
->> +
->> +#ifdef TARGET_OPENRISC
->> +#define ELF_ARCH EM_OPENRISC
->> +#endif
->> +
->> +#ifdef TARGET_SH4
->> +#define ELF_ARCH EM_SH
->> +#endif
->> +
->> +#ifdef TARGET_CRIS
->> +#define ELF_ARCH EM_CRIS
->> +#endif
->> +
->> +#ifdef TARGET_M68K
->> +#define ELF_ARCH EM_68K
->> +#endif
->> +
->> +#ifdef TARGET_ALPHA
->> +#define ELF_ARCH EM_ALPHA
->> +#endif
->> +
->> +#ifdef TARGET_S390X
->> +#define ELF_ARCH EM_S390
->> +#endif
->> +
->> +#ifdef TARGET_TILEGX
->> +#define ELF_ARCH EM_TILEGX
->> +#endif
->> +
->> +#ifdef TARGET_RISCV
->> +#define ELF_ARCH EM_RISCV
->> +#endif
->> +
->> +#ifdef TARGET_HPPA
->> +#define ELF_ARCH EM_PARISC
->> +#endif
->> +
->> +#ifdef TARGET_XTENSA
->> +#define ELF_ARCH EM_XTENSA
->> +#endif
->> +
->> +#endif /* _ELF_ARCH_H_ */
->> diff --git a/linux-user/elfload.c b/linux-user/elfload.c
->> index 59a0d21c6f1..3ac7016a7e3 100644
->> --- a/linux-user/elfload.c
->> +++ b/linux-user/elfload.c
->> @@ -8,10 +8,15 @@
->>  #include "qemu.h"
->>  #include "disas/disas.h"
->>  #include "elf/elf.h"
->> +#include "elf/elf-arch.h"
->>  #include "qemu/path.h"
->>  #include "qemu/queue.h"
->>  #include "qemu/guest-random.h"
->>
->> +#ifndef ELF_ARCH
->> +#error something got missed
->> +#endif
->> +
->>  #ifdef _ARCH_PPC64
->>  #undef ARCH_DLINFO
->>  #undef ELF_PLATFORM
->> @@ -19,7 +24,6 @@
->>  #undef ELF_HWCAP2
->>  #undef ELF_CLASS
->>  #undef ELF_DATA
->> -#undef ELF_ARCH
->>  #endif
->>
->>  #define ELF_OSABI   ELFOSABI_SYSV
->> @@ -148,7 +152,6 @@ static uint32_t get_elf_hwcap(void)
->>  #define ELF_START_MMAP 0x2aaaaab000ULL
->>
->>  #define ELF_CLASS      ELFCLASS64
->> -#define ELF_ARCH       EM_X86_64
->>
->>  static inline void init_thread(struct target_pt_regs *regs, struct
-> image_info *infop)
->>  {
->> @@ -211,7 +214,6 @@ static void elf_core_copy_regs(target_elf_gregset_t
-> *regs, const CPUX86State *en
->>   * These are used to set parameters in the core dumps.
->>   */
->>  #define ELF_CLASS       ELFCLASS32
->> -#define ELF_ARCH        EM_386
->>
->>  static inline void init_thread(struct target_pt_regs *regs,
->>                                 struct image_info *infop)
->> @@ -273,7 +275,6 @@ static void elf_core_copy_regs(target_elf_gregset_t
-> *regs, const CPUX86State *en
->>
->>  #define ELF_START_MMAP 0x80000000
->>
->> -#define ELF_ARCH        EM_ARM
->>  #define ELF_CLASS       ELFCLASS32
->>
->>  static inline void init_thread(struct target_pt_regs *regs,
->> @@ -539,7 +540,6 @@ static const char *get_elf_platform(void)
->>  /* 64 bit ARM definitions */
->>  #define ELF_START_MMAP 0x80000000
->>
->> -#define ELF_ARCH        EM_AARCH64
->>  #define ELF_CLASS       ELFCLASS64
->>  #ifdef TARGET_WORDS_BIGENDIAN
->>  # define ELF_PLATFORM    "aarch64_be"
->> @@ -667,7 +667,6 @@ static uint32_t get_elf_hwcap(void)
->>  #endif
->>
->>  #define ELF_CLASS   ELFCLASS64
->> -#define ELF_ARCH    EM_SPARCV9
->>
->>  #define STACK_BIAS              2047
->>
->> @@ -696,7 +695,6 @@ static inline void init_thread(struct target_pt_regs
-> *regs,
->>                      | HWCAP_SPARC_MULDIV)
->>
->>  #define ELF_CLASS   ELFCLASS32
->> -#define ELF_ARCH    EM_SPARC
->>
->>  static inline void init_thread(struct target_pt_regs *regs,
->>                                 struct image_info *infop)
->> @@ -728,8 +726,6 @@ static inline void init_thread(struct target_pt_regs
-> *regs,
->>
->>  #endif
->>
->> -#define ELF_ARCH        EM_PPC
->> -
->>  /* Feature masks for the Aux Vector Hardware Capabilities (AT_HWCAP).
->>     See arch/powerpc/include/asm/cputable.h.  */
->>  enum {
->> @@ -921,7 +917,6 @@ static void elf_core_copy_regs(target_elf_gregset_t
-> *regs, const CPUPPCState *en
->>  #else
->>  #define ELF_CLASS   ELFCLASS32
->>  #endif
->> -#define ELF_ARCH    EM_MIPS
->>
->>  #define elf_check_arch(x) ((x) =3D=3D EM_MIPS || (x) =3D=3D EM_NANOMIPS)
->>
->> @@ -1014,7 +1009,6 @@ static uint32_t get_elf_hwcap(void)
->>  #define elf_check_arch(x) ( (x) =3D=3D EM_MICROBLAZE || (x) =3D=3D
-> EM_MICROBLAZE_OLD)
->>
->>  #define ELF_CLASS   ELFCLASS32
->> -#define ELF_ARCH    EM_MICROBLAZE
->>
->>  static inline void init_thread(struct target_pt_regs *regs,
->>                                 struct image_info *infop)
->> @@ -1053,7 +1047,6 @@ static void elf_core_copy_regs(target_elf_gregset_t
-> *regs, const CPUMBState *env
->>  #define elf_check_arch(x) ((x) =3D=3D EM_ALTERA_NIOS2)
->>
->>  #define ELF_CLASS   ELFCLASS32
->> -#define ELF_ARCH    EM_ALTERA_NIOS2
->>
->>  static void init_thread(struct target_pt_regs *regs, struct image_info
-> *infop)
->>  {
->> @@ -1107,7 +1100,6 @@ static void elf_core_copy_regs(target_elf_gregset_t
-> *regs,
->>
->>  #define ELF_START_MMAP 0x08000000
->>
->> -#define ELF_ARCH EM_OPENRISC
->>  #define ELF_CLASS ELFCLASS32
->>  #define ELF_DATA  ELFDATA2MSB
->>
->> @@ -1146,7 +1138,6 @@ static void elf_core_copy_regs(target_elf_gregset_t
-> *regs,
->>  #define ELF_START_MMAP 0x80000000
->>
->>  #define ELF_CLASS ELFCLASS32
->> -#define ELF_ARCH  EM_SH
->>
->>  static inline void init_thread(struct target_pt_regs *regs,
->>                                 struct image_info *infop)
->> @@ -1228,7 +1219,6 @@ static uint32_t get_elf_hwcap(void)
->>  #define ELF_START_MMAP 0x80000000
->>
->>  #define ELF_CLASS ELFCLASS32
->> -#define ELF_ARCH  EM_CRIS
->>
->>  static inline void init_thread(struct target_pt_regs *regs,
->>                                 struct image_info *infop)
->> @@ -1245,7 +1235,6 @@ static inline void init_thread(struct
-> target_pt_regs *regs,
->>  #define ELF_START_MMAP 0x80000000
->>
->>  #define ELF_CLASS       ELFCLASS32
->> -#define ELF_ARCH        EM_68K
->>
->>  /* ??? Does this need to do anything?
->>     #define ELF_PLAT_INIT(_r) */
->> @@ -1296,7 +1285,6 @@ static void elf_core_copy_regs(target_elf_gregset_t
-> *regs, const CPUM68KState *e
->>  #define ELF_START_MMAP (0x30000000000ULL)
->>
->>  #define ELF_CLASS      ELFCLASS64
->> -#define ELF_ARCH       EM_ALPHA
->>
->>  static inline void init_thread(struct target_pt_regs *regs,
->>                                 struct image_info *infop)
->> @@ -1316,7 +1304,6 @@ static inline void init_thread(struct
-> target_pt_regs *regs,
->>
->>  #define ELF_CLASS      ELFCLASS64
->>  #define ELF_DATA       ELFDATA2MSB
->> -#define ELF_ARCH       EM_S390
->>
->>  #define ELF_HWCAP get_elf_hwcap()
->>
->> @@ -1362,7 +1349,6 @@ static inline void init_thread(struct
-> target_pt_regs *regs, struct image_info *i
->>
->>  #define ELF_CLASS   ELFCLASS64
->>  #define ELF_DATA    ELFDATA2LSB
->> -#define ELF_ARCH    EM_TILEGX
->>
->>  static inline void init_thread(struct target_pt_regs *regs,
->>                                 struct image_info *infop)
->> @@ -1379,7 +1365,6 @@ static inline void init_thread(struct
-> target_pt_regs *regs,
->>  #ifdef TARGET_RISCV
->>
->>  #define ELF_START_MMAP 0x80000000
->> -#define ELF_ARCH  EM_RISCV
->>
->>  #ifdef TARGET_RISCV32
->>  #define ELF_CLASS ELFCLASS32
->> @@ -1402,7 +1387,6 @@ static inline void init_thread(struct
-> target_pt_regs *regs,
->>
->>  #define ELF_START_MMAP  0x80000000
->>  #define ELF_CLASS       ELFCLASS32
->> -#define ELF_ARCH        EM_PARISC
->>  #define ELF_PLATFORM    "PARISC"
->>  #define STACK_GROWS_DOWN 0
->>  #define STACK_ALIGNMENT  64
->> @@ -1427,7 +1411,6 @@ static inline void init_thread(struct
-> target_pt_regs *regs,
->>  #define ELF_START_MMAP 0x20000000
->>
->>  #define ELF_CLASS       ELFCLASS32
->> -#define ELF_ARCH        EM_XTENSA
->>
->>  static inline void init_thread(struct target_pt_regs *regs,
->>                                 struct image_info *infop)
->> --
->> 2.20.1
->>
->>
-
-
+> BR
+> Beata
+> 
+> >
+> > > It's just more performant. So in case of real pmem hardware it should
+> > > be all good.
+> > >
+> > > [http://pmem.io/pmdk/manpages/linux/v1.2/libpmem.3.html]
+> >
+> > Dave
+> >
+> > >
+> > > BR
+> > > Beata
+> > > >
+> > > > Dave
+> > > >
+> > > > >      }
+> > > > >
+> > > > >      xbzrle_load_cleanup();
+> > > > > --
+> > > > > 2.17.1
+> > > > >
+> > > > --
+> > > > Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+> > --
+> > Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 --
-Alex Benn=C3=A9e
+Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK

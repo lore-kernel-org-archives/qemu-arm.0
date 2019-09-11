@@ -1,54 +1,115 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id p85sm7632122wme.23.2019.09.11.09.50.00
+        by smtp.gmail.com with ESMTPSA id f17sm17979624wru.29.2019.09.11.09.50.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 11 Sep 2019 09:50:00 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id E031C1FF87;
-	Wed, 11 Sep 2019 17:49:59 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id 168511FF8C;
+	Wed, 11 Sep 2019 17:50:00 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: peter.maydell@linaro.org
 Cc: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH  v5 0/5] semihosting cleanups (plus minor tests/tcg tweak)
-Date: Wed, 11 Sep 2019 17:49:54 +0100
-Message-Id: <20190911164959.11003-1-alex.bennee@linaro.org>
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH  v5 1/5] tests/tcg: clean-up some comments after the de-tangling
+Date: Wed, 11 Sep 2019 17:49:55 +0100
+Message-Id: <20190911164959.11003-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190911164959.11003-1-alex.bennee@linaro.org>
+References: <20190911164959.11003-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: lo+68qkiqhYp
+X-TUID: sUKZxiGRVDLl
 
-Hi Peter,
+These were missed in the recent de-tangling so have been updated to be
+more actuate. I've also built up ARM_TESTS in a manner similar to
+AARCH64_TESTS for better consistency.
 
-I've restored the #ifndef CONFIG_USER_ONLY to ensure A-profile
-linux-user still works. I've cleaned up the now unused linux-user code
-and added a simple smoke test to make sure we don't break it my
-accident. There is a tests/tcg patch at the beginning of the series
-which was just fixing some obvious errors in the tests/tcg comments
-which I couldn't leave untouched while I was adding the smoke test. I
-can put it in my next testing PR but I'm happy enough for you to take
-it through your tree if you want.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/tcg/Makefile.target         |  7 +++++--
+ tests/tcg/aarch64/Makefile.target |  3 ++-
+ tests/tcg/arm/Makefile.target     | 15 ++++++++-------
+ 3 files changed, 15 insertions(+), 10 deletions(-)
 
-Alex Bennée (5):
-  tests/tcg: clean-up some comments after the de-tangling
-  target/arm: handle M-profile semihosting at translate time
-  target/arm: handle A-profile semihosting at translate time
-  target/arm: remove run time semihosting checks
-  target/arm: remove run-time semihosting checks for linux-user
-
- linux-user/arm/cpu_loop.c         |  3 -
- linux-user/arm/target_syscall.h   |  3 -
- target/arm/helper.c               | 96 +++++++------------------------
- target/arm/m_helper.c             | 18 ++----
- target/arm/translate.c            | 27 +++++++--
- tests/tcg/Makefile.target         |  7 ++-
- tests/tcg/aarch64/Makefile.target |  8 ++-
- tests/tcg/arm/Makefile.target     | 20 ++++---
- tests/tcg/arm/semihosting.c       | 45 +++++++++++++++
- 9 files changed, 120 insertions(+), 107 deletions(-)
- create mode 100644 tests/tcg/arm/semihosting.c
-
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index 8808beaf74b..679eb56bd37 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -74,8 +74,11 @@ TIMEOUT=15
+ endif
+ 
+ ifdef CONFIG_USER_ONLY
+-# The order we include is important. We include multiarch, base arch
+-# and finally arch if it's not the same as base arch.
++# The order we include is important. We include multiarch first and
++# then the target. If there are common tests shared between
++# sub-targets (e.g. ARM & AArch64) then it is up to
++# $(TARGET_NAME)/Makefile.target to include the common parent
++# architecture in its VPATH.
+ -include $(SRC_PATH)/tests/tcg/multiarch/Makefile.target
+ -include $(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.target
+ 
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index e763dd9da37..9758f89f905 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -8,7 +8,7 @@ VPATH 		+= $(ARM_SRC)
+ AARCH64_SRC=$(SRC_PATH)/tests/tcg/aarch64
+ VPATH 		+= $(AARCH64_SRC)
+ 
+-# we don't build any other ARM test
++# Float-convert Tests
+ AARCH64_TESTS=fcvt
+ 
+ fcvt: LDFLAGS+=-lm
+@@ -17,6 +17,7 @@ run-fcvt: fcvt
+ 	$(call run-test,$<,$(QEMU) $<, "$< on $(TARGET_NAME)")
+ 	$(call diff-out,$<,$(AARCH64_SRC)/fcvt.ref)
+ 
++# Pauth Tests
+ AARCH64_TESTS += pauth-1 pauth-2
+ run-pauth-%: QEMU_OPTS += -cpu max
+ 
+diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+index aa4e4e3782c..7347d3d0adb 100644
+--- a/tests/tcg/arm/Makefile.target
++++ b/tests/tcg/arm/Makefile.target
+@@ -8,25 +8,26 @@ ARM_SRC=$(SRC_PATH)/tests/tcg/arm
+ # Set search path for all sources
+ VPATH 		+= $(ARM_SRC)
+ 
+-ARM_TESTS=hello-arm test-arm-iwmmxt
+-
+-TESTS += $(ARM_TESTS) fcvt
+-
++# Basic Hello World
++ARM_TESTS = hello-arm
+ hello-arm: CFLAGS+=-marm -ffreestanding
+ hello-arm: LDFLAGS+=-nostdlib
+ 
++# IWMXT floating point extensions
++ARM_TESTS += test-arm-iwmmxt
+ test-arm-iwmmxt: CFLAGS+=-marm -march=iwmmxt -mabi=aapcs -mfpu=fpv4-sp-d16
+ test-arm-iwmmxt: test-arm-iwmmxt.S
+ 	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
+ 
+-ifeq ($(TARGET_NAME), arm)
++# Float-convert Tests
++ARM_TESTS += fcvt
+ fcvt: LDFLAGS+=-lm
+ # fcvt: CFLAGS+=-march=armv8.2-a+fp16 -mfpu=neon-fp-armv8
+-
+ run-fcvt: fcvt
+ 	$(call run-test,fcvt,$(QEMU) $<,"$< on $(TARGET_NAME)")
+ 	$(call diff-out,fcvt,$(ARM_SRC)/fcvt.ref)
+-endif
++
++TESTS += $(ARM_TESTS)
+ 
+ # On ARM Linux only supports 4k pages
+ EXTRA_RUNS+=run-test-mmap-4096
 -- 
 2.20.1

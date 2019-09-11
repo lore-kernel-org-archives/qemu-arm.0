@@ -1,137 +1,109 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp304574wrp;
-        Tue, 10 Sep 2019 19:15:22 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqylxlXtQmglPkDFKyJJ0h1w7zZQ0nAOd81CIEj+sMvNBVwM9oDKANwhfw45Ps8IS6SnN7R2
-X-Received: by 2002:a37:30f:: with SMTP id 15mr30236337qkd.240.1568168121977;
-        Tue, 10 Sep 2019 19:15:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568168121; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp363236wrp;
+        Tue, 10 Sep 2019 20:42:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzGu4W4PknlNAGQLFnzaGiXl884j9tk5wSgScXHEJSm0wr/P2u12h5pA3B7FtH152ecQB0p
+X-Received: by 2002:ac8:198b:: with SMTP id u11mr431345qtj.108.1568173372335;
+        Tue, 10 Sep 2019 20:42:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568173372; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vw3vXC6a3oYsNZapSnCwqtcucrtQ8A3eRIhEoYvU3WCFBxK/E70gcz1vDSH7c1nkCl
-         mXYACnxyt61JHDEDoNe0UHdOGwm5gu1LIwfvBDB5uzHeyegtwv5GQ0sKdfIwpuenVSil
-         GaXKwoEDcV8Lpd+zealYnw8sS0b1exjBoBpteUvYGiamMJjLP/mel6fMV+DXVXU0rFLo
-         iJfhkeT6648TLZ1+hAEt6CvHv2DVeBAGBZCC09OZmKH/E3FztnZOFFRxelt6T381ICGQ
-         YHvOKTmkhvBgDyMAKx2wlQoKOgNFV0189ukW80rzZd7qzWS1Ku/TqDqFjov8o8OEbbNI
-         TqBg==
+        b=d1iSF3tjBQd44KobuY6/+I6BKO1X2GqjjIjx9rre+WCIgy52Ux6onKH+MRMJ7h+GIv
+         hYoIsgQtogXH5RFji/eJPoGkG/k1pUmig3wJfPK+28LSu8Ev1DG8pheaJmc6bxWGwAZD
+         Uyp5Zkg7zIka3/y3Nan01SYb2Ng2GhgGNuT+3t457oyG3H8SahXyeta1zHTiajEZL+wT
+         Z7NCROjHVvLv+ScFOqDE17rlFudg0M+sqdd5j8q40Quv5BAm9jYwyWLL40DCacFggKkw
+         +Yl65fLybYIs3oTLpWvwsT08ucfS3flRJFPp6b7U0+4tl4620Jb5vHi0TdnBdfQYMWv+
+         1j0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:mime-version:user-agent
-         :date:message-id:autocrypt:openpgp:from:to;
-        bh=HQTlmn9wtQD8EIDeGMvgIjmJ2z5Xx122P6Q/hnl3H1Y=;
-        b=xVdt7Ybw21w608+5puYRhJO3h/sl9mX4l6eqFXYbpg78o23wjNpFZMzAtDFgRmXLa9
-         L28rq+EInO6e/UWRnpURU4s5LRqa8pd11aycMVyhKkC0MeHFOhPPBuqvil9jAs6o1Tk8
-         gn0I4+Cn7z54QaBcksEukfUGu0+BMGdUmTFCsIlzew0S+CEQrqxWJxdCYJ8+OI+cuRCT
-         76PQEtIdx3Fr6xZcxXRD104JfRbXSwAWDJwSTNMTKd+KfBL44jqi8QYjnPaSGSaUj43i
-         tZUscxP43WXQmEEubuweqIZypOMJm+FZ+rYu4XZuV3ibs1W4W+aWyez5fBlQmeWnkjoA
-         46rQ==
+         :content-transfer-encoding:mime-version:message-id:date:to:from
+         :dkim-signature:dkim-signature;
+        bh=JyW6xA25HDGt7k2em1rU8VchDzUxSHPtjD3hQIROWd0=;
+        b=IeU7hu+7ANsrmH1JS9K5QCosNw2mZh8ChXjjs8M3a2ZFskH+R7CHq1Wc+77Fse5CsU
+         tXbzNviP3LX+nkp0O+1ihZptBvXNu+hE9hHeOcbSYCHuAbb4TNRh3gALvMjfZQHLWs2K
+         VdlcpqIrqgjmGFInF4OEi484rO6J9IXMUcw+ORzfq9bfExtjZBNwRvYT9HLB5dApPg+E
+         6lBUfuH7tYoA6swaEwIin9iGP7a1O5kAIAuTX5fUnuhCVbNpm6zZ6eUixz3Y72Nvbxr9
+         P1oy508LlXz+kygoixD8ThffBcFlwov3M/W3slFo1YvOYSR3o3BJQbSghZcxF4IYlhp0
+         wBuA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=Xcqd2gTe;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=SEUvgoG6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b22si15415865qvd.199.2019.09.10.19.15.21
+        by mx.google.com with ESMTPS id h12si6657423qkj.321.2019.09.10.20.42.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 10 Sep 2019 19:15:21 -0700 (PDT)
+        Tue, 10 Sep 2019 20:42:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=Xcqd2gTe;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=SEUvgoG6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46032 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46290 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i7sAD-0002lD-6r
-	for alex.bennee@linaro.org; Tue, 10 Sep 2019 22:15:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58852)
+	id 1i7tWt-000426-Bg
+	for alex.bennee@linaro.org; Tue, 10 Sep 2019 23:42:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43526)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <rafaeldtinoco@kernelpath.com>) id 1i7s9y-0002hq-Kn
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 22:15:07 -0400
+ (envelope-from <andrew@aj.id.au>) id 1i7tWl-00041v-Bb
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 23:42:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <rafaeldtinoco@kernelpath.com>) id 1i7s9x-0004T8-EN
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 22:15:06 -0400
-Received: from mail-qk1-f193.google.com ([209.85.222.193]:45044)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <rafaeldtinoco@kernelpath.com>)
- id 1i7s9x-0004Sc-A5
- for qemu-arm@nongnu.org; Tue, 10 Sep 2019 22:15:05 -0400
-Received: by mail-qk1-f193.google.com with SMTP id i78so19210633qke.11
- for <qemu-arm@nongnu.org>; Tue, 10 Sep 2019 19:15:04 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:to:cc:from:subject:openpgp:autocrypt:message-id
- :date:user-agent:mime-version:content-language
- :content-transfer-encoding;
- bh=HQTlmn9wtQD8EIDeGMvgIjmJ2z5Xx122P6Q/hnl3H1Y=;
- b=DWGBEFSItLAX4WDYL+WCyPhr5Gb0L++qntMYg/bBSB404BS3k2oSA6NUXSCL9ir/VK
- rCt64Q2T/O6It7z7KKSoTlQCLXGA/i5cRWx90SUE9s7TxkDhbXTCxKbAgmqMStfo02CG
- 8ILYNzeOl/3sdGNMEE0t3ijQSSQbt1C9ZXNX/W3aTvTlW9t6HaIIezB8SWcrhKn378BP
- onXk9lygPZd1pxvP/tSKsGFbxEjYQUIT1+/kf1DPHLMP2NBdD6trDveY7CeHoMH3s/bm
- 2Mtn/liWO6uuaDC6wtihTkAaVm4Jg8zSMUJBsI5nVjTGhd0FIb9gcj8Ww9A9d+3BVR2m
- Cu6A==
-X-Gm-Message-State: APjAAAUaBqacmAfcirKGRSbmU1/JzSpW7N192CzKda7XP4Yunp3YRsWx
- LKFz5/zSncvu+yrw1C63ugQC5A==
-X-Received: by 2002:a37:6713:: with SMTP id b19mr31544675qkc.301.1568168103707; 
- Tue, 10 Sep 2019 19:15:03 -0700 (PDT)
-Received: from [192.168.100.24] ([191.177.180.119])
- by smtp.gmail.com with ESMTPSA id z72sm11195121qka.115.2019.09.10.19.15.02
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 10 Sep 2019 19:15:03 -0700 (PDT)
-To: Paolo Bonzini <pbonzini@redhat.com>
-From: Rafael David Tinoco <rafaeldtinoco@ubuntu.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=rafaeldtinoco@ubuntu.com; keydata=
- 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
- m+Bc0IpWoGZLnE2VPg==
-Message-ID: <cbe46ad6-ef6c-d155-e79a-672182c725ad@ubuntu.com>
-Date: Tue, 10 Sep 2019 23:15:00 -0300
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ (envelope-from <andrew@aj.id.au>) id 1i7tWk-0000Bz-3x
+ for qemu-arm@nongnu.org; Tue, 10 Sep 2019 23:42:43 -0400
+Received: from out5-smtp.messagingengine.com ([66.111.4.29]:37663)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <andrew@aj.id.au>)
+ id 1i7tWj-0000BN-OF; Tue, 10 Sep 2019 23:42:42 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id CB77320D87;
+ Tue, 10 Sep 2019 23:42:39 -0400 (EDT)
+Received: from mailfrontend1 ([10.202.2.162])
+ by compute4.internal (MEProxy); Tue, 10 Sep 2019 23:42:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=from
+ :to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding; s=fm3; bh=JyW6xA25HDGt7k2em1rU8VchDz
+ UxSHPtjD3hQIROWd0=; b=Xcqd2gTe9fO1QQayHKlU8zhznp6/jzscgM9o7Njjmg
+ XzsFmeM4AfBWPjVJ7W3gaQu5JKIu/fobrPkg+rUUAW0MJGGxRWw2jzTIk0lpK46a
+ BAUf2tz0kKfE6S+SpQA2lcFrKfEBq+H/0gXUZqBXw7ze5HiMcMSDdIcR8Yz0dhPs
+ dbmaib548y0zEi9yj/TFc9B8L9OOnzOMG1ivvUm2K1zxwSKX/zDQCc53zM2ZhZbG
+ lkqRkfFKl0PDmpmXbSZv8mVrj9PDKDwUO0pRuTcYXiX8isVnq/H+C2KBfZf4oqWn
+ JwEMkquHSNfsmyoOqfzpJ3x94zMqW/6rMaaAQv6AxMbw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:date:from
+ :message-id:mime-version:subject:to:x-me-proxy:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=JyW6xA25HDGt7k2em
+ 1rU8VchDzUxSHPtjD3hQIROWd0=; b=SEUvgoG6H5SfNlT6WDohAvD8yVEA6lqme
+ STTp9tiVg26N2E/4IbplBqkbZOCDQqtjiuwuaIQsnndZvnuCIKXB97bqQi914acH
+ cbGBkynbqVMFW7BODyVID5F06sk1tMQrDi+DUKxK40kfA4p7MRa7StX9gZee6na7
+ S+AD2SuePSP8x3GN2a7pxmuUSqvkh4zVdynw6P3ZXZeTsSGI3e7bNF7KY+7kBZSi
+ CTdIfsFxtZnH4WAOiHtOBAEvJmJNYDD3exrSB3Xw4qQ/faN6fZztAapdNiNjVYuL
+ vnzSzLlvaO4IMp+kk4tO8hsf2Eh3l5BavMHzNBE5KoQAfhGUY58Cg==
+X-ME-Sender: <xms:L214XehxuZk0YsK6gLJzb2iPuYBGLnZgLiYG8yphKU0gwoLHOVnyKQ>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrtddugdejgecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecunecujfgurhephffvufffkffoggfgsedtkeertdertd
+ dtnecuhfhrohhmpeetnhgurhgvficulfgvfhhfvghrhicuoegrnhgurhgvfiesrghjrdhi
+ ugdrrghuqeenucffohhmrghinhepphgvrhhiohgurddqqddqthgrrhhgvghtnecukfhppe
+ dvtddvrdekuddrudekrdeftdenucfrrghrrghmpehmrghilhhfrhhomheprghnughrvgif
+ segrjhdrihgurdgruhenucevlhhushhtvghrufhiiigvpedt
+X-ME-Proxy: <xmx:L214XfPldHbFBKEjePn390mqO5cefSaMWx43IpfgoaeVKvv2PYjHhg>
+ <xmx:L214XX6DPFQlDe7QilTSKj0ERicFuEDb3VpPyu7DZvH7QcqLnb7uOQ>
+ <xmx:L214XV2u1aFThRoQVbQNMOoF3A9FQuiehbdfnLwE-cSMgqkq6fYFEg>
+ <xmx:L214XQW8_i216cEeAXhRfrH8JKf52-g21g0GbX5OfI3sPZ5MXVLo4g>
+Received: from mistburn.au.ibm.com (bh02i525f01.au.ibm.com [202.81.18.30])
+ by mail.messagingengine.com (Postfix) with ESMTPA id C4F888005A;
+ Tue, 10 Sep 2019 23:42:36 -0400 (EDT)
+From: Andrew Jeffery <andrew@aj.id.au>
+To: qemu-arm@nongnu.org
+Date: Wed, 11 Sep 2019 13:13:02 +0930
+Message-Id: <20190911034302.29108-1-andrew@aj.id.au>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.85.222.193
-Subject: [Qemu-arm] qemu_futex_wait() lockups in ARM64: 2 possible issues
+X-Received-From: 66.111.4.29
+Subject: [Qemu-arm] [PATCH v3] target-arm: Make the counter tick relative to
+ cntfrq
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -143,107 +115,139 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Bug 1805256 <1805256@bugs.launchpad.net>,
- QEMU Developers - ARM <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: Andrew Jeffery <andrew@aj.id.au>, peter.maydell@linaro.org, clg@kaod.org,
+ qemu-devel@nongnu.org, joel@jms.id.au
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8vL+zTrLCAYf
+X-TUID: DNJm8HAa9F0m
 
-Paolo,
+Allow machines to configure CNTFRQ via a property if the ARM core
+supports the generic timer. This is necessary on e.g. the ASPEED AST2600
+SoC where the generic timer clock is run at 800MHz or above.
 
-While debugging hungs in ARM64 while doing a simple:
+CNTFRQ is a read-as-written co-processor register; the property sets the
+register's initial value which is used during realize() to configure the
+QEMUTimers that back the generic timers. Beyond that the firmware can to
+do whatever it sees fit with the CNTFRQ register though changes to the
+value will not be reflected in the timers' rate.
 
-qemu-img convert -f qcow2 -O qcow2 file.qcow2 output.qcow2
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+---
+Peter - I think this addresses most of your feedback. I still reach into
+the QEMUTimer to fetch out scale when adjusting the nexttick
+calculation, but we no longer need to update the scale member and force
+a recalculation of the period.
+---
+ target/arm/cpu.c    | 36 ++++++++++++++++++++++++++++--------
+ target/arm/helper.c | 20 +++++++++++++++++---
+ 2 files changed, 45 insertions(+), 11 deletions(-)
 
-I might have found 2 issues which I'd like you to review, if possible.
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 2399c144718d..7ac422729608 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -40,6 +40,8 @@
+ #include "disas/capstone.h"
+ #include "fpu/softfloat.h"
+ 
++#include <inttypes.h>
++
+ static void arm_cpu_set_pc(CPUState *cs, vaddr value)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
+@@ -976,6 +978,10 @@ static void arm_cpu_initfn(Object *obj)
+     }
+ }
+ 
++static Property arm_cpu_cp_cntfrq_property =
++            DEFINE_PROP_UINT64("cntfrq", ARMCPU, env.cp15.c14_cntfrq,
++                               (1000 * 1000 * 1000) / GTIMER_SCALE);
++
+ static Property arm_cpu_reset_cbar_property =
+             DEFINE_PROP_UINT64("reset-cbar", ARMCPU, reset_cbar, 0);
+ 
+@@ -1172,6 +1178,11 @@ void arm_cpu_post_init(Object *obj)
+ 
+     qdev_property_add_static(DEVICE(obj), &arm_cpu_cfgend_property,
+                              &error_abort);
++
++    if (arm_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER)) {
++        qdev_property_add_static(DEVICE(cpu), &arm_cpu_cp_cntfrq_property,
++                                 &error_abort);
++    }
+ }
+ 
+ static void arm_cpu_finalizefn(Object *obj)
+@@ -1238,14 +1249,23 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+         }
+     }
+ 
+-    cpu->gt_timer[GTIMER_PHYS] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
+-                                           arm_gt_ptimer_cb, cpu);
+-    cpu->gt_timer[GTIMER_VIRT] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
+-                                           arm_gt_vtimer_cb, cpu);
+-    cpu->gt_timer[GTIMER_HYP] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
+-                                          arm_gt_htimer_cb, cpu);
+-    cpu->gt_timer[GTIMER_SEC] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
+-                                          arm_gt_stimer_cb, cpu);
++    if (!env->cp15.c14_cntfrq) {
++        error_setg(errp, "Invalid CNTFRQ: %"PRIx64"Hz", env->cp15.c14_cntfrq);
++        return;
++    }
++
++    {
++        uint64_t scale = MAX(1, NANOSECONDS_PER_SECOND / env->cp15.c14_cntfrq);
++
++        cpu->gt_timer[GTIMER_PHYS] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
++                                               arm_gt_ptimer_cb, cpu);
++        cpu->gt_timer[GTIMER_VIRT] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
++                                               arm_gt_vtimer_cb, cpu);
++        cpu->gt_timer[GTIMER_HYP] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
++                                              arm_gt_htimer_cb, cpu);
++        cpu->gt_timer[GTIMER_SEC] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
++                                              arm_gt_stimer_cb, cpu);
++    }
+ #endif
+ 
+     cpu_exec_realizefn(cs, &local_err);
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 507026c9154b..8783f92c718c 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -2409,7 +2409,21 @@ static CPAccessResult gt_stimer_access(CPUARMState *env,
+ 
+ static uint64_t gt_get_countervalue(CPUARMState *env)
+ {
+-    return qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) / GTIMER_SCALE;
++    uint64_t effective;
++
++    /*
++     * Deal with quantized clock scaling by calculating the effective frequency
++     * in terms of the timer scale.
++     */
++    if (env->cp15.c14_cntfrq <= NANOSECONDS_PER_SECOND) {
++        uint32_t scale = NANOSECONDS_PER_SECOND / env->cp15.c14_cntfrq;
++        effective = NANOSECONDS_PER_SECOND / scale;
++    } else {
++        effective = NANOSECONDS_PER_SECOND;
++    }
++
++    return muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), effective,
++                    NANOSECONDS_PER_SECOND);
+ }
+ 
+ static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
+@@ -2445,8 +2459,8 @@ static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
+          * set the timer for as far in the future as possible. When the
+          * timer expires we will reset the timer for any remaining period.
+          */
+-        if (nexttick > INT64_MAX / GTIMER_SCALE) {
+-            nexttick = INT64_MAX / GTIMER_SCALE;
++        if (nexttick > INT64_MAX / cpu->gt_timer[timeridx]->scale) {
++            nexttick = INT64_MAX / cpu->gt_timer[timeridx]->scale;
+         }
+         timer_mod(cpu->gt_timer[timeridx], nexttick);
+         trace_arm_gt_recalc(timeridx, irqstate, nexttick);
+-- 
+2.20.1
 
-ISSUE #1
-========
-
-I've caught the following stack trace after an HUNG in qemu-img convert:
-
-(gdb) bt
-#0 syscall ()
-#1 0x0000aaaaaabd41cc in qemu_futex_wait
-#2 qemu_event_wait (ev=ev@entry=0xaaaaaac86ce8 <rcu_call_ready_event>)
-#3 0x0000aaaaaabed05c in call_rcu_thread
-#4 0x0000aaaaaabd34c8 in qemu_thread_start
-#5 0x0000ffffbf25c880 in start_thread
-#6 0x0000ffffbf1b6b9c in thread_start ()
-
-(gdb) print rcu_call_ready_event
-$4 = {value = 4294967295, initialized = true}
-
-value INT_MAX (4294967295) seems WRONG for qemu_futex_wait():
-
-- EV_BUSY, being -1, and passed as an argument qemu_futex_wait(void *,
-unsigned), is a two's complement, making argument into a INT_MAX when
-that's not what is expected (unless I missed something).
-
-*** If that is the case, unsure if you, Paolo, prefer declaring
-*(QemuEvent)->value as an integer or changing EV_BUSY to "2" would okay
-here ***
-
-BUG: description:
-https://bugs.launchpad.net/qemu/+bug/1805256/comments/15
-
-========
-ISSUE #2
-========
-
-I found this when debugging lockups while in futex() in a specific ARM64
-server - https://bugs.launchpad.net/qemu/+bug/1805256 - which I'm still
-investigating.
-
-After fixing the issue above, I'm still getting stuck into:
-
-qemu_event_wait() -> qemu_futex_wait()
-
-***
-As if qemu_event_set() has ran before qemu_futex_wait() ever started running
-***
-
-The Other threads are waiting for poll() on a PIPE coming from this
-stuck thread (thread #1), and in sigwait():
-
-(gdb) thread 1
-...
-(gdb) bt
-#0  0x0000ffffbf1ad81c in __GI_ppoll
-#1  0x0000aaaaaabcf73c in ppoll
-#2  qemu_poll_ns
-#3  0x0000aaaaaabd0764 in os_host_main_loop_wait
-#4  main_loop_wait
-...
-
-(gdb) thread 2
-...
-(gdb) bt
-#0 syscall ()
-#1 0x0000aaaaaabd41cc in qemu_futex_wait
-#2 qemu_event_wait (ev=ev@entry=0xaaaaaac86ce8 <rcu_call_ready_event>)
-#3 0x0000aaaaaabed05c in call_rcu_thread
-#4 0x0000aaaaaabd34c8 in qemu_thread_start
-#5 0x0000ffffbf25c880 in start_thread
-#6 0x0000ffffbf1b6b9c in thread_start ()
-
-(gdb) thread 3
-...
-(gdb) bt
-#0  0x0000ffffbf11aa20 in __GI___sigtimedwait
-#1  0x0000ffffbf2671b4 in __sigwait
-#2  0x0000aaaaaabd1ddc in sigwait_compat
-#3  0x0000aaaaaabd34c8 in qemu_thread_start
-#4  0x0000ffffbf25c880 in start_thread
-#5  0x0000ffffbf1b6b9c in thread_start
-
-QUESTION:
-
-- Should qemu_event_set() check return code from
-qemu_futex_wake()->qemu_futex()->syscall() in order to know if ANY
-waiter was ever woken up ? Maybe even loop until at least 1 is awaken ?
-
-Tks in advance,
-
-Rafael D. Tinoco

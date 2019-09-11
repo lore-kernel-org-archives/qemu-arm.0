@@ -1,99 +1,83 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp826745wrp;
-        Wed, 11 Sep 2019 05:57:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxuJdGpCBcn+mhoydQIPgUa0enQFf7JMqQZnS+T+P6oT6CLMcWTgsboi/a8q3CWcg47Hrso
-X-Received: by 2002:ac8:75c8:: with SMTP id z8mr34755627qtq.172.1568206651180;
-        Wed, 11 Sep 2019 05:57:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568206651; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp838992wrp;
+        Wed, 11 Sep 2019 06:07:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxo76tUHvNGVuRIJ/P36VJ5qukPnNxrE1f/kMW/zb23G6ILyYB1v6tO9/uLzsNbDrf0w2ow
+X-Received: by 2002:aed:3c52:: with SMTP id u18mr34452231qte.194.1568207241345;
+        Wed, 11 Sep 2019 06:07:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568207241; cv=none;
         d=google.com; s=arc-20160816;
-        b=DC1wfpR6WIqn63SM7gDFZvxVmEEer2cJzUldvT73mFrsUj5syS1q3dxUhnPajl9Ffa
-         p7hnSX/F5Kgpk3ywY7YNnLJcmNNbghm1f8rvp2YT2G/fbFe+wkkElKW9TAnQ5yudPlTI
-         sOHS4iVgIrxD0HFqiD1hxNitzbck1XDRyLUOt5Gxqf7hLjkK7wyvAfOiNWb8z6KfwP/g
-         qhekPCbFuC5MTweF5o/lyA4oZihcKsfAtqu7jk1PuU9eQ/XqaQncTwuYP/YySro3aHQh
-         ZaBeTykvALWBMZebuPasWok4x4MKBzEQHYAcKyPrTEWZq7Ly/9wzkz/g1ZVI2OKc07oI
-         GnpA==
+        b=QG9BTn1CnlGWUKYvdwXgSYnVDZX7bTo0bIJZal8GH+kYWgGR2z+MD3j3rC0RaBtaEp
+         0vgme1Y9ZNqFwZTEyLLtHwh/Cm5JXOJNo0nfljwUpQGi2IdafgG74i2rZjh0CQ5bOSc2
+         3Gaiu5cPH7yYQhWXVJVWnYiH+m1O5rC+EfT8q860YH72pEEBpZdFvVK4+WC6IFqSo0Q5
+         3lf3rGY5bd9EzoCM5UXsAuzJsbsSyH5fVsCkIBt20HGT25uLE+RPobc9prv/kQk58iyA
+         ILjg6goK4/TBPCobOYokisSccSm+aObtfbnvj8M++Qgh8FMo6t3ZKD3E3l6TGnrQLI2M
+         kinw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=SOap77KTx0gqzhFspEa0CktrrJq9aiwd3k62uwt4J+4=;
-        b=L/19aOkOua4ZHPeuSQPpfIoyVggfSFvW4rJUIOTDW94hWzTXpenPl0bejXTAqgUGkz
-         uNLnte6tSVQOfApFrMzYKGj0B3Y8ZaQb9HRZCpdsg17HqQ5lTmY1xp1R6ywqxBFIYczc
-         6P0CmL4BTkHEQ4CtTThOQP3pcuLnkz38E9puIHmmGpPBIfLO/5SYL0sHZH/HKF3WrKZt
-         MNCUO9RLLyhjRKNfcSjcGSboN2gqQ9moobFo8QW4rnk+1295MzdLsWMsMBw6mSk6Z00T
-         nsbI2RBEJWbOONpX4S6KCVVJ5OAcMx26sGey5QYRW8hyxebFxaAAqUkQISurb/eWDanZ
-         5TLg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=L/aoA2iwFwbnJZn3Jbh5vaVZa1LzjgE9tzxEwK2nxzI=;
+        b=O3QV1PYg/eBbdasHdpNSGa8Hji2wnlretGMDbRQ68BWpUPcVr8qFJUJ4yrxHInJdYr
+         Y5R4vO6BSC15CI3wi0P3uikAttUhqpOgn1fnIklaRe6VJ4sX7H7gwBu6l1GKd+9yVDJi
+         w4fcLqOjkc8HrJYUL9vHDBsGH7BlXnHr3xZqbZFvloQrXUVTSqwJjvYEt1qRWYSUNxz2
+         k5DVE7kHjV5n/WNxXln/a+WeBIOlrlcwtumlsMoc12n4zH0elMZ0xbTeupQl7O6RYkMB
+         9vvRav2FnB4ZRJUTFpM2nXhOvIRx/Tp/U1plX/AzSjkqKn3S4Qu4FUmA5O+ERdkLOpSm
+         wvOA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="OCCba/L0";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l24si15066639qkg.200.2019.09.11.05.57.31
+        by mx.google.com with ESMTPS id d5si15064305qti.118.2019.09.11.06.07.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Sep 2019 05:57:31 -0700 (PDT)
+        Wed, 11 Sep 2019 06:07:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="OCCba/L0";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50654 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50766 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i82Be-0008MF-GO
-	for alex.bennee@linaro.org; Wed, 11 Sep 2019 08:57:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54269)
+	id 1i82LA-0002WO-NO
+	for alex.bennee@linaro.org; Wed, 11 Sep 2019 09:07:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55855)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1i82BT-0008Lw-Ml
- for qemu-arm@nongnu.org; Wed, 11 Sep 2019 08:57:20 -0400
+ (envelope-from <imammedo@redhat.com>) id 1i82Kz-0002Vz-Vv
+ for qemu-arm@nongnu.org; Wed, 11 Sep 2019 09:07:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1i82BS-0004IY-Lk
- for qemu-arm@nongnu.org; Wed, 11 Sep 2019 08:57:19 -0400
-Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b]:40379)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1i82BS-0004Hl-GA
- for qemu-arm@nongnu.org; Wed, 11 Sep 2019 08:57:18 -0400
-Received: by mail-ot1-x32b.google.com with SMTP id y39so22436925ota.7
- for <qemu-arm@nongnu.org>; Wed, 11 Sep 2019 05:57:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=SOap77KTx0gqzhFspEa0CktrrJq9aiwd3k62uwt4J+4=;
- b=OCCba/L0ZL24T6dxZd5QSQX476rGVOL472UigXKLg9WVSZGRjTb27oeZTIszE3kdOP
- WSs5WZS5MpHyLuVwvwKA8D8XMw0xsAKBZoCNVBpQip5GtSaF0Q0nWYNw/h0JUwIs1sWh
- 3liMa/1K+q80tnMVibP2/ehNTU/+4lGbl6v0IAhxBxLB2X8q3yWz7L22DDI8Kbezvunz
- evX61bMExRHbzXcbRTx7dnNdjbOVTnZHuirvjzhIuUyf6mFXhP3i1fyRPpLsgKK8+lBE
- 83jMLX4yzbZPQNVUtmX8igKv1Vj66yMvRYYhPhH2vC/DrXTd5IQewIQNeBUiJIYwhAox
- MaSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=SOap77KTx0gqzhFspEa0CktrrJq9aiwd3k62uwt4J+4=;
- b=tWMPoit9KbAWzrR+24YMwAqrLEsfuowTrKWnoNdrirptzpLcA0cm4dQ7y5jXS6wE7Q
- f8ZLwQgBOAZYh6Doy1us9jsF5rgQgylGV0F6MB9/1zq8EJUi8e+xRbElcZoKl81IrTIX
- f3rrzedQJtb6CNbyjDEKvogX5kb9AS6Zc7umBBcHrf75dPDhLBqauH/O8Rb8FyuzSXyt
- 05u1LzRcasAVORutO26g4TG/l7oV8he1rfvwASZyt4qgiLZnO9771/UpcMHhTuKJKdkE
- fKuemg6axg53WWYqH6Uj53CPtkkzAlgLdSguRVIjPJicSN/dz7hfvFVj+j57/Gsohg/0
- Xv1w==
-X-Gm-Message-State: APjAAAWMfB1bVoSdztQ/aC8kmjGc7nD8tGDUZzRJt/qzteluG6FO0n8h
- KeMWYzWfPBzobWRgG1oHftzoGRS3kYEUsr/ev/w8Kw==
-X-Received: by 2002:a9d:5e10:: with SMTP id d16mr31673472oti.91.1568206637672; 
- Wed, 11 Sep 2019 05:57:17 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190904085629.13872-1-shameerali.kolothum.thodi@huawei.com>
- <20190904085629.13872-11-shameerali.kolothum.thodi@huawei.com>
-In-Reply-To: <20190904085629.13872-11-shameerali.kolothum.thodi@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 11 Sep 2019 13:57:06 +0100
-Message-ID: <CAFEAcA8sEhgOXnj-DGo04pSnpTObO+EeC94yrdGEikKq0=2QeA@mail.gmail.com>
+ (envelope-from <imammedo@redhat.com>) id 1i82Kx-0008Nr-P1
+ for qemu-arm@nongnu.org; Wed, 11 Sep 2019 09:07:08 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46002)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>)
+ id 1i82Kx-0008NZ-Jc; Wed, 11 Sep 2019 09:07:07 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 9445F3082E03;
+ Wed, 11 Sep 2019 13:07:06 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E74AD10018F8;
+ Wed, 11 Sep 2019 13:07:01 +0000 (UTC)
+Date: Wed, 11 Sep 2019 15:07:00 +0200
+From: Igor Mammedov <imammedo@redhat.com>
 To: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::32b
-Subject: Re: [Qemu-arm] [PATCH-for-4.2 v10 10/11] tests: add dummy ACPI
- tables for arm/virt board
+Message-ID: <20190911150700.7a917d14@redhat.com>
+In-Reply-To: <20190904085629.13872-6-shameerali.kolothum.thodi@huawei.com>
+References: <20190904085629.13872-1-shameerali.kolothum.thodi@huawei.com>
+ <20190904085629.13872-6-shameerali.kolothum.thodi@huawei.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.46]); Wed, 11 Sep 2019 13:07:06 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH-for-4.2 v10 05/11] hw/arm/virt: Enable device
+ memory cold/hot plug with ACPI boot
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -105,50 +89,65 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Samuel Ortiz <sameo@linux.intel.com>,
- Shannon Zhao <shannon.zhaosl@gmail.com>,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Xu Wei <xuwei5@hisilicon.com>,
- Linuxarm <linuxarm@huawei.com>, Eric Auger <eric.auger@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Igor Mammedov <imammedo@redhat.com>,
- sebastien.boeuf@intel.com, Laszlo Ersek <lersek@redhat.com>
+Cc: peter.maydell@linaro.org, sameo@linux.intel.com, shannon.zhaosl@gmail.com,
+ ard.biesheuvel@linaro.org, qemu-devel@nongnu.org, xuwei5@hisilicon.com,
+ linuxarm@huawei.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
+ sebastien.boeuf@intel.com, lersek@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9Pl81OTtOBbm
+X-TUID: 4/PIg2teuD8A
 
-On Wed, 4 Sep 2019 at 09:58, Shameer Kolothum
-<shameerali.kolothum.thodi@huawei.com> wrote:
->
-> This patch is in preparation for adding numamem and memhp tests
-> to arm/virt board so that 'make check' is happy. This may not
-> be required once the scripts are run and new tables are
-> generated with ".numamem" and ".memhp" extensions.
->
-> Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
-> ---
-> I am not sure this is the right way to do this. But without this, when
-> the numamem and memhp tests are added, you will get,
->
-> Looking for expected file 'tests/data/acpi/virt/SRAT.numamem'
-> Looking for expected file 'tests/data/acpi/virt/SRAT'
-> **
-> ERROR:tests/bios-tables-test.c:327:load_expected_aml: assertion failed: (exp_sdt.aml_file)
->
-> ---
->  tests/data/acpi/virt/SLIT | Bin 0 -> 48 bytes
->  tests/data/acpi/virt/SRAT | Bin 0 -> 224 bytes
->  2 files changed, 0 insertions(+), 0 deletions(-)
->  create mode 100644 tests/data/acpi/virt/SLIT
->  create mode 100644 tests/data/acpi/virt/SRAT
+On Wed, 4 Sep 2019 09:56:23 +0100
+Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
 
-Do the tests pass with this patch and without the
-patch that adds the tests? (That is, can we keep the
-two patches separate without breaking bisection, or
-do we need to squash them together?)
+[...]
+> @@ -730,6 +733,19 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>                        vms->highmem, vms->highmem_ecam);
+>      acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
+>                         (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
+> +    if (vms->acpi_dev) {
+> +        build_ged_aml(scope, "\\_SB."GED_DEVICE,
+> +                      HOTPLUG_HANDLER(vms->acpi_dev),
+> +                      irqmap[VIRT_ACPI_GED] + ARM_SPI_BASE, AML_SYSTEM_MEMORY,
+> +                      memmap[VIRT_ACPI_GED].base);
+> +    }
+> +
+> +    if (vms->acpi_dev && ms->ram_slots) {
+> +        build_memory_hotplug_aml(scope, ms->ram_slots, "\\_SB", NULL,
+> +                                 AML_SYSTEM_MEMORY,
+> +                                 memmap[VIRT_PCDIMM_ACPI].base);
+> +    }
+one more thing (though non critical), if ms->ram_slots == 0 ^^^^
+makes IASL spew a warning
 
-I'll leave it to somebody who understands the ACPI
-tests stuff to answer whether there's a better way to
-do this.
+    External (_SB_.MHPC.MSCN, MethodObj)    // Warning: Unknown method, guessing 0 arguments
 
-thanks
--- PMM
+In general non-existing references within methods are fine if they aren't ever used.
+however we can be a little bit less sloppy.
+Below you advertise "event = ACPI_GED_MEM_HOTPLUG_EVT", and then here suddenly
+don't generate essential AML part for it here.
+
+For consistency if above is conditioned on ms->ram_slots != 0, probably
+it would be better to move that condition where you set 'event' value and
+check property value above instead of ms->ram_slots
+
+[...]
+> +static inline DeviceState *create_acpi_ged(VirtMachineState *vms, qemu_irq *pic)
+> +{
+> +    DeviceState *dev;
+> +    int irq = vms->irqmap[VIRT_ACPI_GED];
+> +    uint32_t event = ACPI_GED_MEM_HOTPLUG_EVT;
+> +
+> +    dev = qdev_create(NULL, TYPE_ACPI_GED);
+> +    qdev_prop_set_uint32(dev, "ged-event", event);
+> +    qdev_init_nofail(dev);
+> +
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VIRT_ACPI_GED].base);
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 1, vms->memmap[VIRT_PCDIMM_ACPI].base);
+> +
+> +    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[irq]);
+> +
+> +    return dev;
+> +}
+> +
+[...]

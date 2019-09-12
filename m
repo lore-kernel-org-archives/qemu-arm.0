@@ -1,129 +1,90 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id t203sm9516261wmf.42.2019.09.12.04.43.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Sep 2019 04:43:45 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id A19EB1FF87;
-	Thu, 12 Sep 2019 12:43:44 +0100 (BST)
-References: <20190910144428.32597-1-peter.maydell@linaro.org>
- <20190910144428.32597-11-peter.maydell@linaro.org>
-User-agent: mu4e 1.3.4; emacs 27.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org
-Subject: Re: [Qemu-arm] [PATCH 10/13] target/arm/arm-semi: Factor out
- implementation of SYS_FLEN
-In-reply-to: <20190910144428.32597-11-peter.maydell@linaro.org>
-Date: Thu, 12 Sep 2019 12:43:44 +0100
-Message-ID: <87d0g5zqmn.fsf@linaro.org>
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2042367wrp;
+        Thu, 12 Sep 2019 04:50:10 -0700 (PDT)
+X-Received: by 2002:a9d:4d0d:: with SMTP id n13mr8910964otf.351.1568289010207;
+        Thu, 12 Sep 2019 04:50:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568289010; cv=none;
+        d=google.com; s=arc-20160816;
+        b=zmpAXJq/BXSwOkCDGRP/khY5RTvmo36YQ2LfhXypIaQdn1zCqGcBVrfxmS+D0yNUQb
+         Inqfxd/XtqcntvjgJBM1Um/9h7qeIBWOek04HUZvQTJJSCddJZy0ehGOFkhU09e5KoYp
+         0ukyXtTNwUAeOyivU2HXsd9++cyq34Qu+6091sXhgzyWqS9IoRB6tjHiWol7QE4RV8In
+         gFKF50Wr/tEzbmLTs8FN8EN+mOFWnmtdNkg/HkLpT1yaOalrJ12o2KUM8khKKKeKNF7K
+         rrBTZ7u5p7llOCSjIZnC6Lpd1juuTMPsZzFrFf0M9hj3SVpcoeYUnpA/ju1bP4UefK+d
+         6GNQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Q0TALGyqS6vw/07WRSxOGLEF7IH8JmJLM8psL7al33k=;
+        b=H3Na4ynSXKG193WdIUIZRhm7kfNfgHLq/1dRRb2UL2jXwO5ohuMCU3/BDI39UmNf8d
+         YRMYf+K0j9S3W3jS+BrvDUpJ3ODxSP7o2ipS+s1GRVip1KVXii20L/eQts5vkcCnLOqA
+         jTXmHIDBIMsuJK4WM0hzfg1oe3OVmFAkQVtsQGZvuIkKy4+l2vXyfXRnsGnBkh1WpjLY
+         zdXR9rZ/BMhRbGe1kFQqY5+1hAs4og+tDBXDLZ5PfqIzJRGlnTFl/Lkj6VrXRtETzR4i
+         rVORhlYl26ZYzuNf/10vI7W8M3ucakRCrUF6NAnhVfE3N2Qt3fOfQKy26+VTy/5rYeCa
+         k//Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vSB3An+7;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id l28sor12667116oti.122.2019.09.12.04.50.09
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 12 Sep 2019 04:50:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=vSB3An+7;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=Q0TALGyqS6vw/07WRSxOGLEF7IH8JmJLM8psL7al33k=;
+        b=vSB3An+7k1+kJtG0FvtD8kDeYTF+z0YnaPS2Iw8kerN1X4SjQeaAqOrwArWYuZz8st
+         7Ym4o+LVKP/dyc7s/A2pvNU0UfxDwelsEH5O2J+3ve6OTFY7o0tmr2oP0QT49BGe+axP
+         n24ZsH2+KtjAfbAmrmWakctoz6HXYochxTumKE7jBsMZOGi4j7GKGisJnxq7HGnYY+tx
+         J4b2jLN30tr/+VLa8kkpWmYRqbhp6RoqfRUTVS0vGWrs3H+gxZWPTOC39wZp58cTX2vp
+         neEKe+jcLXmo5Z4xjw8BLe8Wx6sOaKYG9sz4PhB8Jzgkx/JJ0ZvLYgmzXj14DMU4gbuf
+         i5Yg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=Q0TALGyqS6vw/07WRSxOGLEF7IH8JmJLM8psL7al33k=;
+        b=EI4wnTWPmDYGCJjtrOzr3LdlZfvmJbIcoFmTX96aFea24pr5/EsqzejkBdB7RCB/kW
+         DJ/z1n9VyFKOjP0XH1UvBRl5XuTCcPrZfB16BnU6vb3sk7TKTM60H0zrQe/nuYwwCPqP
+         Hed78KYMGrMaRoLB1GBgFjo1TzNHo/6b0qGzvQUdGxO0jpDMYIaoFGpchw4a/M4R5M02
+         8MnY8wwUK1/IQklLxW9vCd2vjHrpqSs65EMt+RltTen+4H/01fhZHr2M+qoyFNua6qG8
+         Gk73Ea05Feq8ofJzvyY64wyrZ6Gb56rdlKmGp0WxQIF45ffLu1XXoo1OeBxylVzcIgZu
+         siow==
+X-Gm-Message-State: APjAAAWEJknYeBFrDpJh2un9HpzdNltQdhknazJaa6LcDKGJRnM07F60
+	qMhrVhrP3KQxF3UqRDrobfbgP5FvaYmynXpIqHbbgXU84qBEug==
+X-Google-Smtp-Source: APXvYqxk9aCu3KQ0UFHfhGWOr77qWXEbz2qP4ZZdSIZdx8b0cMFnqotIrdboA4+pNSXzYyTLHsYwj1j/IS2zOCU9/is=
+X-Received: by 2002:a9d:5e11:: with SMTP id d17mr12609896oti.135.1568289009674;
+ Thu, 12 Sep 2019 04:50:09 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20190910144428.32597-1-peter.maydell@linaro.org>
+ <20190910144428.32597-5-peter.maydell@linaro.org> <87ftl1zqo2.fsf@linaro.org>
+In-Reply-To: <87ftl1zqo2.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Sep 2019 12:49:58 +0100
+Message-ID: <CAFEAcA-iaae3+AKv3F5iV=XnqgaVB3BS1dT_ur+1+YopNqxQrw@mail.gmail.com>
+Subject: Re: [Qemu-devel] [Qemu-arm] [PATCH 04/13] target/arm/arm-semi: clean
+ up TaskState* usage in non-user-only code
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: app4pAwV7kCa
+X-TUID: g4LyKokJ5+fK
 
+On Thu, 12 Sep 2019 at 12:44, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+> Why not pass cs to set_swi_errno and deal with all the differences in
+> the helper?
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Mmm, that might be better. I think I was going for
+not changing the existing use of TaskState in the
+code paths that use it.
 
-> Factor out the implementation of SYS_FLEN via the new
-> function tables.
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-> ---
->  target/arm/arm-semi.c | 31 +++++++++++++++++++++----------
->  1 file changed, 21 insertions(+), 10 deletions(-)
->
-> diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-> index c548ce849e7..f9019b00b8d 100644
-> --- a/target/arm/arm-semi.c
-> +++ b/target/arm/arm-semi.c
-> @@ -352,6 +352,7 @@ typedef uint32_t sys_readfn(TaskState *ts, ARMCPU *cp=
-u, GuestFD *gf,
->  typedef uint32_t sys_isattyfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf);
->  typedef uint32_t sys_seekfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf,
->                              target_ulong offset);
-> +typedef uint32_t sys_flenfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf);
->
->  static uint32_t host_closefn(TaskState *ts, ARMCPU *cpu, GuestFD *gf)
->  {
-> @@ -417,6 +418,16 @@ static uint32_t host_seekfn(TaskState *ts, ARMCPU *c=
-pu, GuestFD *gf,
->      return 0;
->  }
->
-> +static uint32_t host_flenfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf)
-> +{
-> +    struct stat buf;
-> +    uint32_t ret =3D set_swi_errno(ts, fstat(gf->hostfd, &buf));
-> +    if (ret =3D=3D (uint32_t)-1) {
-> +        return -1;
-> +    }
-> +    return buf.st_size;
-> +}
-> +
->  static uint32_t gdb_closefn(TaskState *ts, ARMCPU *cpu, GuestFD *gf)
->  {
->      return arm_gdb_syscall(cpu, arm_semi_cb, "close,%x", gf->hostfd);
-> @@ -450,12 +461,19 @@ static uint32_t gdb_seekfn(TaskState *ts, ARMCPU *c=
-pu, GuestFD *gf,
->                             gf->hostfd, offset);
->  }
->
-> +static uint32_t gdb_flenfn(TaskState *ts, ARMCPU *cpu, GuestFD *gf)
-> +{
-> +    return arm_gdb_syscall(cpu, arm_semi_flen_cb, "fstat,%x,%x",
-> +                           gf->hostfd, arm_flen_buf(cpu));
-> +}
-> +
->  typedef struct GuestFDFunctions {
->      sys_closefn *closefn;
->      sys_writefn *writefn;
->      sys_readfn *readfn;
->      sys_isattyfn *isattyfn;
->      sys_seekfn *seekfn;
-> +    sys_flenfn *flenfn;
->  } GuestFDFunctions;
->
->  static const GuestFDFunctions guestfd_fns[] =3D {
-> @@ -465,6 +483,7 @@ static const GuestFDFunctions guestfd_fns[] =3D {
->          .readfn =3D host_readfn,
->          .isattyfn =3D host_isattyfn,
->          .seekfn =3D host_seekfn,
-> +        .flenfn =3D host_flenfn,
->      },
->      [GuestFDGDB] =3D {
->          .closefn =3D gdb_closefn,
-> @@ -472,6 +491,7 @@ static const GuestFDFunctions guestfd_fns[] =3D {
->          .readfn =3D gdb_readfn,
->          .isattyfn =3D gdb_isattyfn,
->          .seekfn =3D gdb_seekfn,
-> +        .flenfn =3D gdb_flenfn,
->      },
->  };
->
-> @@ -657,16 +677,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
->              return set_swi_errno(ts, -1);
->          }
->
-> -        if (use_gdb_syscalls()) {
-> -            return arm_gdb_syscall(cpu, arm_semi_flen_cb, "fstat,%x,%x",
-> -                                   gf->hostfd, arm_flen_buf(cpu));
-> -        } else {
-> -            struct stat buf;
-> -            ret =3D set_swi_errno(ts, fstat(gf->hostfd, &buf));
-> -            if (ret =3D=3D (uint32_t)-1)
-> -                return -1;
-> -            return buf.st_size;
-> -        }
-> +        return guestfd_fns[gf->type].flenfn(ts, cpu, gf);
->      case TARGET_SYS_TMPNAM:
->          qemu_log_mask(LOG_UNIMP, "%s: SYS_TMPNAM not implemented", __fun=
-c__);
->          return -1;
-
-
---
-Alex Benn=C3=A9e
+thanks
+-- PMM

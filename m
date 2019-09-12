@@ -1,121 +1,137 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1982001wrp;
-        Thu, 12 Sep 2019 03:50:59 -0700 (PDT)
-X-Received: by 2002:a05:6830:1587:: with SMTP id i7mr36503675otr.33.1568285458906;
-        Thu, 12 Sep 2019 03:50:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568285458; cv=none;
-        d=google.com; s=arc-20160816;
-        b=UtaAgDrdHqg+aIFgiSnDKfru3kf3XZt7mKH1gNSOk7X+9MbLQNnz1nDLwmIuS82Ryr
-         uugwAL0htEDMI1TGaNz+v05/5bH9lI4ug9W+ZGuTGIy7JU0GsIivXNl0sipqIC4CSfbn
-         yNhbR7tWUXJ/6FDYdy6loBlNlhvaaJor6lrOjf3uie/AvOuJ96yAO4lUeHo/stVBRllA
-         fZ8mRnm+caKyf9wursVMq/mSIBs+BZScDJxO9p/fuQMuZNs8563QsA9w/EZ2a8cnx6AD
-         Vy3rorDaNWxd8yg+3RWpwIN4aH9h/IIyOtKiWxxPuIiMx5Pt38PW11XuxCZO1/Hlpo21
-         GALQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=4VXWTXPZBNfSwhiAsVVlgTszhcEdm6hMqLTDpdFLRHU=;
-        b=AWECGzoIcuHz7y4Jax582rk8uzmjzOZsC/15LSqBikDz0Gs3UF5dr6Xd9RsU9GDl5w
-         MM4pRfR2QOZfuNoTZE0qxgwulWwnQk7OGO3t9FeoMj5h7r+3bE43q7neayXFH0JzxSzK
-         wpcxlL2U6DEknlun9T5F3pZhmPgMyRJTzvIS2a0fPMqildwHsCyIbAqVPDdKxQ4T1Fg9
-         NU9JhmO411zQZOSSEsFZV8fWd4nyeDRQDkYMVFOnjYRiwPTJVDqAyUcmTtJn1wWgFKWd
-         u36vaeYRp6iexoXQJXSWLTOkaOPFPAjsME3ApMjLbUBI3Vm/fSv1oMREZubVpQc+lqJa
-         P7XA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xsAZQWy6;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id g8sor3518066otb.26.2019.09.12.03.50.58
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1991461wrp;
+        Thu, 12 Sep 2019 04:01:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx6eG0E9jhUrSFsCT+u7wVyEeXbeAGYrn9sVEHcC/0cv5aFdB9G72S1IRDW0ONG6U8oL8nP
+X-Received: by 2002:a37:7086:: with SMTP id l128mr22421354qkc.433.1568286113173;
+        Thu, 12 Sep 2019 04:01:53 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id c9si17240923qtm.230.2019.09.12.04.01.53
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 12 Sep 2019 03:50:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 12 Sep 2019 04:01:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xsAZQWy6;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=4VXWTXPZBNfSwhiAsVVlgTszhcEdm6hMqLTDpdFLRHU=;
-        b=xsAZQWy6B2UCaj+PHVuUO1ZlAjXLIb5vmRntH8qz/V8O9P+jYi1wmdQJyossnb6FP3
-         IbNIq0MT9XOuZuM93AlxVzQDDMULhOmFSfLD0tFWCRHq0lD7U0o0Sj7Oph/UBJFoJacv
-         SkT5AT+4TSaD/sQrYFhVHaULGD7yu7HVM5tslf4jjthbvEyHsein13DTvFZDwDxFrxLL
-         i5d5mKhrb/GjRn5JhbF8ypgK6cSGs0ByinGyr6pbpjtNJzCTWRkuze+LJf3q5JZnVpDJ
-         lpvZcvx2hFEQ/H6K0p+JrNtNr0ZQY5zyfFTBuXTJdqjJABovHLOkztjvSbG4jmDDQH7F
-         RNBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=4VXWTXPZBNfSwhiAsVVlgTszhcEdm6hMqLTDpdFLRHU=;
-        b=q6yy/sALh7spZB3G/JXZX0TwRFA1d7pA8eSZQOZuMmHRl95M/+096gsiElucOts34Q
-         CLsRbN2QWVDx/31YnamnB6J5JarDjVxLm3hyaOi4g4ttSqMV3YudGWQBQy7oasdwAzvN
-         bxrtKUGvMY28r/CVY0QrbZVmpAmURjNgoWiH6l6/9tFC82cHhYOwGm1f3FQIGUx0aHXg
-         be04eRhFks61L7G645p80ZDSKNVIul2WZOVTfmikAOI7qM4w7YAmkHpbuJ4/xt50HiGL
-         XdkokyLypGQ5WRUDVdTPSBtWyy0Hj9K7f23Jxr+sB/x+O1niwZ3y6m29bZ2Y3Xlxnobq
-         QVyA==
-X-Gm-Message-State: APjAAAVsFTopPPJcM9XHoASQ85DhcI56/hX56AyOeAVMvvudoC9nWrlh
-	PqB5bVMd5ZVT8sq3JazLermM4iblwDz/Ggp8rY2TPOld50pP1A==
-X-Google-Smtp-Source: APXvYqyUe5yd9CENp7xBletpyzu1tSfvZk4cbqVmedEOFwh/sqraRX5epPmfkrvG6pGROdgNFUL1pja9eskTkVyH2ig=
-X-Received: by 2002:a9d:7504:: with SMTP id r4mr33442349otk.221.1568285458447;
- Thu, 12 Sep 2019 03:50:58 -0700 (PDT)
+       dkim=neutral (body hash did not verify) header.i=@greensocs.com header.s=mail header.b=dD38gU+L;
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60958 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i8MrI-0000W4-CN
+	for alex.bennee@linaro.org; Thu, 12 Sep 2019 07:01:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33677)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <luc.michel@greensocs.com>) id 1i8Mqp-0000Vj-BP
+ for qemu-arm@nongnu.org; Thu, 12 Sep 2019 07:01:28 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <luc.michel@greensocs.com>) id 1i8Mqo-0000K0-2j
+ for qemu-arm@nongnu.org; Thu, 12 Sep 2019 07:01:23 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:60630)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <luc.michel@greensocs.com>)
+ id 1i8Mqn-0000JM-LQ; Thu, 12 Sep 2019 07:01:22 -0400
+Received: from michell-laptop.bar.greensocs.com (tiramisu.bar.greensocs.com
+ [172.16.11.100])
+ by beetle.greensocs.com (Postfix) with ESMTPS id 140C396F52;
+ Thu, 12 Sep 2019 11:01:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1568286079;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=SoGtMzg2JWmal7gE8cNiZ3MQlpnmZ1oJXDY2sW1MAKQ=;
+ b=dD38gU+LrqmHJ3h6WIoBZYd0DLISqDNCuZ22GOwPLTyo8c+svfyaRYqfs9a3SVz2BsbFw0
+ WRb/EkY5HWXvaq6rQ1QwjbGxglPL+3t6W0Wmp+BPHoGsuHzdJm1nbGjpupUpSGw3aXLwwZ
+ 5a7EpojdbRG1L/fp4yKtmL5LcMb0h1U=
+From: Luc Michel <luc.michel@greensocs.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Sep 2019 13:01:03 +0200
+Message-Id: <20190912110103.1417887-1-luc.michel@greensocs.com>
+X-Mailer: git-send-email 2.23.0
 MIME-Version: 1.0
-References: <20190910144428.32597-1-peter.maydell@linaro.org>
- <20190910144428.32597-3-peter.maydell@linaro.org> <87r24lztgq.fsf@linaro.org>
-In-Reply-To: <87r24lztgq.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 12 Sep 2019 11:50:47 +0100
-Message-ID: <CAFEAcA_s1aYO6ZK2pkrrc+YrdCoUww0H_RTOjvaH8z1FOemP0w@mail.gmail.com>
-Subject: Re: [Qemu-arm] [PATCH 02/13] target/arm/arm-semi: Always set some
- kind of errno for failed calls
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1568286079;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=SoGtMzg2JWmal7gE8cNiZ3MQlpnmZ1oJXDY2sW1MAKQ=;
+ b=AGtfQn0/utmegaFxkDJCOmKATRu+cIP82ROdtzTle5cDpSLyFx8andpYMXxLZxsJgSYRQv
+ cga7vF0zGAH64F447FqrQGDH0K8z6YirEvEP44RkC4ZZlBFnnImqeNuwWr45JuIL8Y0CBK
+ 1BmpB2BvTiNmszwQX3h/xfiir4mVtsM=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1568286079; a=rsa-sha256; cv=none;
+ b=KCMuro2cm4jmnt4CRUQpA9VSNw3dsXR/AKnEkNQ3IqgkjPuYmXEjnApXhfGIXnBreyV+iL
+ PWwAMgNekctRdXPjwv/8CNlUPdpZHnKYcLR2m5f3hSI3LWXVAuiwh3EC13xznekm09uOTI
+ 83IwtG5XUVta7iUx8vY8jIy7jckdYUk=
+ARC-Authentication-Results: i=1;
+	beetle.greensocs.com;
+	none
 Content-Transfer-Encoding: quoted-printable
-X-TUID: xnKRpXsy4PDv
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 5.135.226.135
+Subject: [Qemu-arm] [PATCH] target/arm: fix CBAR register for AArch64 CPUs
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Fau6ks+Keapo
 
-On Thu, 12 Sep 2019 at 11:42, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
->
->
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
-> > If we fail a semihosting call we should always set the
-> > semihosting errno to something; we were failing to do
-> > this for some of the "check inputs for sanity" cases.
-> >
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->
-> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->
-> although:
->
-> > ---
-> >  target/arm/arm-semi.c | 45 ++++++++++++++++++++++++++-----------------
-> >  1 file changed, 27 insertions(+), 18 deletions(-)
-> >
-> > diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-> > index 03e60105c05..51b55816faf 100644
-> > --- a/target/arm/arm-semi.c
-> > +++ b/target/arm/arm-semi.c
-> > @@ -232,11 +232,13 @@ static target_ulong arm_gdb_syscall(ARMCPU *cpu, =
-gdb_syscall_complete_cb cb,
-> >  #define GET_ARG(n) do {                                 \
-> >      if (is_a64(env)) {                                  \
-> >          if (get_user_u64(arg ## n, args + (n) * 8)) {   \
-> > -            return -1;                                  \
-> > +            errno =3D EFAULT;                             \
-> > +            return set_swi_errno(ts, -1);               \
->
-> This looks a little queasy given ts is NULL for the softmmu version. I
-> wonder (depending on your approach to -smp for 1/13) if we should just
-> pass the ARMCPU down to the helper?
+For AArch64 CPUs with a CBAR register, we have two views for it:
+  - in AArch64 state, the CBAR_EL1 register (S3_1_C15_C3_0), returns the
+    full 64 bits CBAR value
+  - in AArch32 state, the CBAR register (cp15, opc1=3D1, CRn=3D15, CRm=3D=
+3, opc2=3D0)
+    returns a 32 bits view such that:
+      CBAR =3D CBAR_EL1[31:18] 0..0 CBAR_EL1[43:32]
 
-NULL is fine because the softmmu version of set_swi_errno() doesn't
-do anything with it anyway, right?
+This commit fixes the current implementation where:
+  - CBAR_EL1 was returning the 32 bits view instead of the full 64 bits
+    value,
+  - CBAR was returning a truncated 32 bits version of the full 64 bits
+    one, instead of the 32 bits view
+  - CBAR was declared as cp15, opc1=3D4, CRn=3D15, CRm=3D0, opc2=3D0, whi=
+ch is
+    the CBAR register found in the ARMv7 Cortex-Ax CPUs, but not in
+    ARMv8 CPUs.
 
-thanks
--- PMM
+Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+---
+ target/arm/helper.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 507026c915..755aa18a2d 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6740,12 +6740,12 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+             ARMCPRegInfo cbar_reginfo[] =3D {
+                 { .name =3D "CBAR",
+                   .type =3D ARM_CP_CONST,
+-                  .cp =3D 15, .crn =3D 15, .crm =3D 0, .opc1 =3D 4, .opc=
+2 =3D 0,
+-                  .access =3D PL1_R, .resetvalue =3D cpu->reset_cbar },
++                  .cp =3D 15, .crn =3D 15, .crm =3D 3, .opc1 =3D 1, .opc=
+2 =3D 0,
++                  .access =3D PL1_R, .resetvalue =3D cbar32 },
+                 { .name =3D "CBAR_EL1", .state =3D ARM_CP_STATE_AA64,
+                   .type =3D ARM_CP_CONST,
+                   .opc0 =3D 3, .opc1 =3D 1, .crn =3D 15, .crm =3D 3, .op=
+c2 =3D 0,
+-                  .access =3D PL1_R, .resetvalue =3D cbar32 },
++                  .access =3D PL1_R, .resetvalue =3D cpu->reset_cbar },
+                 REGINFO_SENTINEL
+             };
+             /* We don't implement a r/w 64 bit CBAR currently */
+--=20
+2.23.0
+

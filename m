@@ -1,81 +1,98 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2157796wrp;
-        Thu, 12 Sep 2019 06:34:24 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyYtfwn2jtI5yKLEyoXs5ychwuUVHc2EoiLbHaUhcp1qSVVGLXt7AFhTw26xhysqqmYbJYl
-X-Received: by 2002:aa7:c1c7:: with SMTP id d7mr41845149edp.34.1568295264619;
-        Thu, 12 Sep 2019 06:34:24 -0700 (PDT)
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2342111wrp;
+        Thu, 12 Sep 2019 09:05:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyOG5ADZlIO6ufYWJiW3zEprOj45Jqy+s9RqXszshamHUi4josLRlJTAkaYfWX1MBN3drJ2
+X-Received: by 2002:ac8:2a75:: with SMTP id l50mr42312999qtl.137.1568304309895;
+        Thu, 12 Sep 2019 09:05:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568304309; cv=none;
+        d=google.com; s=arc-20160816;
+        b=QUF2RUnEGIOqYxtK1nrY1oKXKcdzqN6IK91fcXIWQYyYgBcS2QnL0ZJbUfXaj3uKrJ
+         1YzGQGoTcd65R1mtzrInY9ZavkxDoMbUY+KtfJV6hDOG0kyqSrnsUZJ2iCHQOo0c97Q8
+         odOt41hY6zB8OYVOAR/eNv9Z0ILyE7lEZQQcL+uvSGf9jKsTQMhLWUhqLEd2FZt8Um3S
+         KqKi9OLBb3Sq8vLjsvAegkR80uGJqDscXowAwx5PwekbTVypg7RVlQIXtVgGKgEP0YIT
+         vNk0cXWji5PRjFqSURvli7SeiuPX8vugJNZ2SEFxm8aLa05o9jsAi5iHLR2wLnOE9CGD
+         tq2g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=s2Jjte3IicFNSnIdujoo5LTOVDQZOZvERHNYPfd4lRY=;
+        b=y0XTytXc7Iuaog5zNJV5z8CtXnaHLpWR3fuqINe9NhZjR6izeg57rEpl1QMbhhWrwv
+         liPK36m2kU8N6v/BAlRZ4Hjvpy3a7in1nkz/0EVEiobMR73CwMSjoxEJlPI1/VU+s7pO
+         r8vLpxQgTh/q6cRi6uCHDa/9DfaVRb6lOcL3uUIaQsB0L4PTGhyhN8JgJOw4UzC0dIED
+         Siji9C85wlczksCSzYELs7VPlaE6XiIPkSXWkjmyx/RM0jloBcyzdTMlLtXZ0WlhXSEj
+         IrjFO5pV5Wi3+BwhvXOP9vQd2tqjihj+c66ml4R2vphgdPKDSWj/IPC+p/NpRw3kDyyK
+         9QXg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=uIMbAWTr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e47si14923532ede.325.2019.09.12.06.34.24
+        by mx.google.com with ESMTPS id v81si17304775qka.27.2019.09.12.09.05.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Sep 2019 06:34:24 -0700 (PDT)
+        Thu, 12 Sep 2019 09:05:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b="uViZi+I/";
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34448 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=uIMbAWTr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36726 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i8PEt-0006Ri-It
-	for alex.bennee@linaro.org; Thu, 12 Sep 2019 09:34:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36817)
+	id 1i8Ram-0004Xh-SM
+	for alex.bennee@linaro.org; Thu, 12 Sep 2019 12:05:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50682)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <damien.hedde@greensocs.com>) id 1i8PEF-0006RI-DC
- for qemu-arm@nongnu.org; Thu, 12 Sep 2019 09:33:44 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1i8RZp-0003hL-Ob
+ for qemu-arm@nongnu.org; Thu, 12 Sep 2019 12:04:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <damien.hedde@greensocs.com>) id 1i8PED-0004Hk-JA
- for qemu-arm@nongnu.org; Thu, 12 Sep 2019 09:33:42 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:37286)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <damien.hedde@greensocs.com>)
- id 1i8PEC-0004G6-UY; Thu, 12 Sep 2019 09:33:41 -0400
-Received: from [172.16.11.102] (crumble.bar.greensocs.com [172.16.11.102])
- by beetle.greensocs.com (Postfix) with ESMTPSA id BD6DB96F52;
- Thu, 12 Sep 2019 13:33:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1568295218;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=09RLHT4nhLz4EnrC+eDZoEnwmDFz+6ZANyFrhbtUzmE=;
- b=uViZi+I/YKDMTmkhTZhjLjQdRrYLsLe9sdqYZpJqt2K8eGUJ/BgkUIoNHGBLBQwqLFjkZm
- EZPUhesvCsEjHeU1bv0ST5TykZnXNJUD5OZ7dgnomu6Ybod3Vbassf6NNdisAJWe74oX4U
- mtP8qi3qJxn5/fYdPEagC8jAX+NfpbM=
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20190904162247.24095-1-damien.hedde@greensocs.com>
- <CAFEAcA89q8mwNyhivbrCcTP7c208dbwmVBjF2mmOT5s+dyQ4sQ@mail.gmail.com>
-From: Damien Hedde <damien.hedde@greensocs.com>
-Message-ID: <4b100cde-d739-8cf5-4732-0a53d213a623@greensocs.com>
-Date: Thu, 12 Sep 2019 15:33:36 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.0
+ (envelope-from <peter.maydell@linaro.org>) id 1i8RZo-0006rv-Bp
+ for qemu-arm@nongnu.org; Thu, 12 Sep 2019 12:04:09 -0400
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:36573)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1i8RZo-0006qh-7P
+ for qemu-arm@nongnu.org; Thu, 12 Sep 2019 12:04:08 -0400
+Received: by mail-oi1-x244.google.com with SMTP id k20so17563880oih.3
+ for <qemu-arm@nongnu.org>; Thu, 12 Sep 2019 09:04:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=s2Jjte3IicFNSnIdujoo5LTOVDQZOZvERHNYPfd4lRY=;
+ b=uIMbAWTrQTxuSnw2rOysr7njJRDPrVn1Z0zm28mGWX1BxNocTSNqwe0NBResti8bsz
+ 2HOStbJX9TvZbkH/++q82DruL4p+SR/w5hzPSbI9nDpl++OcCtLIEDzTnJgtkS7l7xX0
+ 9g2zJ7XCBudTQpgnS+Xq5bePy14Z0IIrsyCdKGHk17ZMzA5pN4eBn0TYTGGpQiku196z
+ p83m6T/WpU73PRTA87KzY4G/IDHmVMES0q7zfiX6znPKnV51Or46PdpkDyVashfCvKFe
+ ktk3JpuozFgME2Q3WeKU5aJW02qczA5dSNCkM365hzKhi7rjBB6sNbMnf6ZB+4bML4vK
+ jatQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=s2Jjte3IicFNSnIdujoo5LTOVDQZOZvERHNYPfd4lRY=;
+ b=SD6WR22bsQcbLsTLbvaa55AwMj0M6lQKrVnc0nyk9EVjKPAH8YjCXoGs0mY/mHpv61
+ GJlnXrZk9eyGA04yuQu+BVaS+aW6NtOIA0G+hiegkELVoE1FReBQuo8Ic6SWgq2bJDjf
+ SRSoh9/Lm1d+pDt09Q8tgbVSzW5SADrVKilxdAPZxh493klw/Ncq/9yuczlTw1vGXszr
+ hYMfMkPek/t827B6LwR/c2mt/tAfRQDB3rm9TKpokZZ4ypab7Vrv2DiOfgTuPdAGIhyz
+ 1PKOfWi1HimJ1O0GJUmIMukapBziPEw765uKQAqzqXtEs+eB9pwxqt0OP0zjhYOtixDt
+ 2p6w==
+X-Gm-Message-State: APjAAAXiPwKI+miNh/IjUJgK/dvCrYkkN2CcFBoI3EcEycgq+bTyC6yi
+ 71+dE9/QjhumfK3UVtjGqQGO93XBO57lgo4FHd48BSaQXvM=
+X-Received: by 2002:aca:53d4:: with SMTP id h203mr788702oib.146.1568304246638; 
+ Thu, 12 Sep 2019 09:04:06 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA89q8mwNyhivbrCcTP7c208dbwmVBjF2mmOT5s+dyQ4sQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US-large
-Content-Transfer-Encoding: 7bit
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1568295218;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=09RLHT4nhLz4EnrC+eDZoEnwmDFz+6ZANyFrhbtUzmE=;
- b=438SRY3abflE84JlDFpp61irAYQFkFZT8zTE4ccWaY6Hdi+hzCfjpei+FtTXHQXihTDnQC
- E5f1tY+AQKgv/NTXrFH9v6JAi2TMAp+TpDJWvzsDkcrfiloANzBtxGc3TzjuUgJd0VYbnx
- iSk50nl0GRCHEv3UGrIh5znhd6elxY4=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1568295218; a=rsa-sha256; cv=none;
- b=FV5FZjVOWga01pC64HveS8E6NxtaAUaMyp8Aq4BpotfMleSD7s0F5G8CnUEi3jEYML/cHs
- Ac917gThhLhBv40bu7jFd7MTZJb1GUQEJkOa9XXEKSn8SQaqXHxpb4GKTAwGJ5+euFeLhG
- 35ztb3pUNuTmD7u4Vw3Ity43TDJaZBw=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=damien smtp.mailfrom=damien.hedde@greensocs.com
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 5.135.226.135
-Subject: Re: [Qemu-arm] [PATCH] hw/arm/raspi: avoid reparenting the sd card
- during qbus tree reset
+References: <20190912110103.1417887-1-luc.michel@greensocs.com>
+In-Reply-To: <20190912110103.1417887-1-luc.michel@greensocs.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Sep 2019 17:03:55 +0100
+Message-ID: <CAFEAcA-WO=O5zwRDQoNz2zT4sx61j8Jy5px0uFPiWgF_JUpa+A@mail.gmail.com>
+To: Luc Michel <luc.michel@greensocs.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::244
+Subject: Re: [Qemu-arm] [PATCH] target/arm: fix CBAR register for AArch64
+ CPUs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,84 +104,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YMh/vLpovgs5
+X-TUID: wSPUE2T4qwbl
 
+On Thu, 12 Sep 2019 at 12:01, Luc Michel <luc.michel@greensocs.com> wrote:
+>
+> For AArch64 CPUs with a CBAR register, we have two views for it:
+>   - in AArch64 state, the CBAR_EL1 register (S3_1_C15_C3_0), returns the
+>     full 64 bits CBAR value
+>   - in AArch32 state, the CBAR register (cp15, opc1=1, CRn=15, CRm=3, opc2=0)
+>     returns a 32 bits view such that:
+>       CBAR = CBAR_EL1[31:18] 0..0 CBAR_EL1[43:32]
+>
+> This commit fixes the current implementation where:
+>   - CBAR_EL1 was returning the 32 bits view instead of the full 64 bits
+>     value,
+>   - CBAR was returning a truncated 32 bits version of the full 64 bits
+>     one, instead of the 32 bits view
+>   - CBAR was declared as cp15, opc1=4, CRn=15, CRm=0, opc2=0, which is
+>     the CBAR register found in the ARMv7 Cortex-Ax CPUs, but not in
+>     ARMv8 CPUs.
+>
+> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+> ---
+>  target/arm/helper.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 507026c915..755aa18a2d 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -6740,12 +6740,12 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>              ARMCPRegInfo cbar_reginfo[] = {
+>                  { .name = "CBAR",
+>                    .type = ARM_CP_CONST,
+> -                  .cp = 15, .crn = 15, .crm = 0, .opc1 = 4, .opc2 = 0,
+> -                  .access = PL1_R, .resetvalue = cpu->reset_cbar },
+> +                  .cp = 15, .crn = 15, .crm = 3, .opc1 = 1, .opc2 = 0,
+> +                  .access = PL1_R, .resetvalue = cbar32 },
 
+This will break the Cortex-A9 &c which use the 15/0/4/0 encoding
+and the un-rearranged value for this register.
 
-On 9/6/19 12:36 PM, Peter Maydell wrote:
-> On Wed, 4 Sep 2019 at 17:23, Damien Hedde <damien.hedde@greensocs.com> wrote:
->>
->> In the raspi machine, the sd card can be on several sd bus (in reality
->> there is one bus but several controllers). It is initially created in
->> the "sd-bus" child in the gpio peripheral. Then is moved (parent bus
->> changes) during machine reset in the "sdhci-bus". It can be moved again
->> by software between the "sdhci-bus" and another bus ("bcm2835-sdhost-bus").
->> Here's the corresponding qbus tree of the raspi machine:
->>  + sysbus
->>    * bcm2835_gpio
->>      + sd-bus
->>        * sd-card
->>    * bcm2835-sdhost
->>      + bcm2835-sdhost-bus
->>    * generic-sdhci
->>      + sdhci-bus
->>
->> During the initial machine reset, the sd card is moved. Since reset is
->> based on qbus tree, moving the card during the reset seems odd (it changes
->> the qbus tree). In this case, because of the order the qbus tree is
->> walked, the sd card ends up being reset twice; the effective reset order call
->> follows:
->>  1 sd-card
->>  2 sd-bus
->>  3 bcm2835_gpio        -> move the sd-card to sdhci_bus
->>  4 bcm2835-sdhost-bus
->>  5 bcm2835-sdhost
->>  6 sd-card             (again)
->>  7 sdhci-bus
->>  8 generic-sdhci
->>
->> This patch adds a raspi machine reset method which moves the sd card
->> to the sdhci-bus before doing the whole reset (which will try to do the
->> move too). By anticipating the move we avoid changing the qdev tree while
->> resetting it.
->>
->> In consequence the step 1 is skipped in the previous list: when reset starts
->> the sd-card is already not a child of bcm2835_gpio.
-> 
-> The solution proposed in this patch pushes something that should
-> really be the business just of the SoC model out to the machine
-> model level; it would be nice to be able to avoid that.
+I think we need to check through the TRMs to confirm which CPUs use
+which format for the CBAR, and have a different feature bit for the
+newer format/sysreg encoding, so we can provide the right sysregs for
+the right cores.
 
-The problem is sysbus is the only common "reset" ancestor of all
-sd-card-buses. So we don't really have a lot of places to do this.
-
-I could move the proposed code to the reset method of
-bcm2835_peripherals which creates the bcm3825_gpio, bcm2835-sdhost and
-generic-sdhci so we don't have to seek these.
-It will works because the reset of bcm2835_peripherals is called before
-the others.
-But in terms of reset/qdev hiearchy, the 'bcm2835_peripherals' it at the
-same level of bcm2835_gpio.
-
-The reset order would be:
-
-1 bcm2835_peripherals -> move the sd-card to sdhci_bus.
-2   sd-bus
-3 bcm2835_gpio
-4   bcm2835-sdhost-bus
-5 bcm2835-sdhost
-6     sd-card
-7   sdhci-bus
-8 generic-sdhci
-
-Would that be an acceptable solution ?
-
---
-Thanks
-Damien
+thanks
+-- PMM

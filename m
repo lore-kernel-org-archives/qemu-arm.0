@@ -1,99 +1,103 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id z25sm6237470wmk.0.2019.09.12.05.07.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Sep 2019 05:07:59 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 9BDB91FF87;
-	Thu, 12 Sep 2019 13:07:58 +0100 (BST)
-References: <20190910144428.32597-1-peter.maydell@linaro.org>
- <20190910144428.32597-14-peter.maydell@linaro.org>
-User-agent: mu4e 1.3.4; emacs 27.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org
-Subject: Re: [Qemu-arm] [PATCH 13/13] target/arm/arm-semi: Implement
- SH_EXT_EXIT_EXTENDED extension
-In-reply-to: <20190910144428.32597-14-peter.maydell@linaro.org>
-Date: Thu, 12 Sep 2019 13:07:58 +0100
-Message-ID: <878sqtzpi9.fsf@linaro.org>
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2063237wrp;
+        Thu, 12 Sep 2019 05:09:47 -0700 (PDT)
+X-Received: by 2002:aca:b48a:: with SMTP id d132mr8334841oif.98.1568290187004;
+        Thu, 12 Sep 2019 05:09:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568290187; cv=none;
+        d=google.com; s=arc-20160816;
+        b=KsiZKZEf3CSsp5ewic7g8Wb2mSt5seib/NGBIhiXc/4+HdXd+S1+RrrsQOu/oR2l4H
+         uqykkB5K98vwlf3xjmd9LaJ78urMBQSX2dlCXEzxC4R/EcxlpbpaLi7C8ULBfLBZ/6c1
+         xQxYOwjc/rivQkMAoaVQk/ifNYCPHZN72H/onpH9ym+K9HJTC/5I0tP1MMIhtj1wr2ms
+         qc5op3nlpLpKQuUHdkO3H2Avzbl6bFHGQX1XHsPawHURWeVICEMFP0n2lgnkLS9CEdpd
+         EkKYZyTMdu30AjEvebC3wSylXEcNahyUi63qClyVWM6MvVTmooDwxELJ6alqBcGhMyyN
+         urtw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=BvDSlGW/ljIwdifZ8OqpxQdh3CICFSkI/PVi7XKfK1o=;
+        b=l6gwDPFLktFShGsuki7l4KfRy/fmqg2GXPzbeW8mT+hHn6Wu4Xq60vp1Q9AxgFnI42
+         PPrqiTVZpnx8STVLgYy1fs5osiOutvlx7twCDv5jKBvV7Ly2mssqjr8GYssU7DQSDthk
+         nR924OwD1ET6AWUfMKdR/mdcCVai6hrvmd92asaO90kT652faWuE0+i1M93cgWwiw24v
+         bjqM3iHdWAMVGtZMJa0da1oqQpKzy1qzCOngZVk456vC/YFZFbba50s3tBFlL1jLdvP6
+         ZMhQpmIM7mRPX6sMZ7t3/esCqWIltOyjnEbeDfatQ3qaiAPaWBtrbXP6jrpUxcKZO1ya
+         McCQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GLiRQyBe;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id k19sor13144627otr.135.2019.09.12.05.09.46
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 12 Sep 2019 05:09:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=GLiRQyBe;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=BvDSlGW/ljIwdifZ8OqpxQdh3CICFSkI/PVi7XKfK1o=;
+        b=GLiRQyBeV4DzzolsndUHa443wn0jwTMmgacxxetC5zRwKStPItxRx2ErLFcg43mHEU
+         Qar12lD7Vpd+F0yjQQUbeLnDp43IpVyL86CHMNS5YVmWbMGlGknZff7p68fqEPsejXGb
+         oc1K9Ek931XYAo+33xjHoEQHWOOsvV4ekNhkzP7x4e7I4dtBCxS0I1S1M93tYaeop+ca
+         Upv5RA+y++H7wYVms/Aiu8Eer0rmxCY6IxxJiRicXgcTz9DAz8S2HGrfpKEkeReh/BDq
+         UG786GbfFHuN/PZMWmGaWZ8TyOZsX7SwDY55h8EvuhFxCWBqzKrqkPsdZ5Z4SaQxlDj1
+         mBAw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=BvDSlGW/ljIwdifZ8OqpxQdh3CICFSkI/PVi7XKfK1o=;
+        b=Ie2BkrUUeqGXTRSfQtma5QVQbs52KOVTO7yIMgTGPUzdCyiKDQi5vdBqo56dAxplOg
+         2VD3cI0uikhS1BuI25OUtRw7XYhP3AYRHg+zjR7PRd2WCgjUrJa1lfkx2iur1pw9D+0v
+         kbtJ0a9azSvAWXeIcTXj+MP6yubgX7tVP0ITODtDkyAi4ul2mtiiX0CtUP8nLpEs4BFg
+         ImbZ4UH7jOWaGjP3iBAwD8x0PBUi07LG7RZqv6tDc0oh9/1Kyxf9LSBVQJ5dS+PX5JtF
+         2UOM6io/LzxIkyvWbOVpTJyhKZvZERhhGAbFSzHdBILtYmKimzSrp4jcSSMZxTojD/af
+         T18Q==
+X-Gm-Message-State: APjAAAVdYhY43X0uncTKNTNi7m2igbi2azIENLRvOV8uLPWYUA8/Yhem
+	o4RjqhkKccOCUoy7a9fnWyi9vH7SqqNqw5C+MvU2FCsHST2eJg==
+X-Google-Smtp-Source: APXvYqx37i6VSB2VQxGr9a67rh0O28pqtNcxrNxCqACQOjW5sW+wNKDhbLB6TrcJc8XHxwb4KEV6YGXSpBAzY2+cy9A=
+X-Received: by 2002:a9d:68d6:: with SMTP id i22mr26801018oto.232.1568290186464;
+ Thu, 12 Sep 2019 05:09:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20190910144428.32597-1-peter.maydell@linaro.org>
+ <20190910144428.32597-13-peter.maydell@linaro.org> <87a7b9zpmr.fsf@linaro.org>
+In-Reply-To: <87a7b9zpmr.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Sep 2019 13:09:35 +0100
+Message-ID: <CAFEAcA_=s0Ua9S7oB-weoX1z7Vks54h5opWtuKnsNknmvaXg6g@mail.gmail.com>
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 12/13] target/arm/arm-semi:
+ Implement SH_EXT_STDOUT_STDERR extension
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: VABBBII7LRWC
+X-TUID: V9VDSueHYiuZ
 
-
-Peter Maydell <peter.maydell@linaro.org> writes:
-
-> SH_EXT_EXIT_EXTENDED is a v2.0 semihosting extension: it
-> indicates that the implementation supports the SYS_EXIT_EXTENDED
-> function. This function allows both A64 and A32/T32 guests to
-> exit with a specified exit status, unlike the older SYS_EXIT
-> function which only allowed this for A64 guests. Implement
-> this extension.
+On Thu, 12 Sep 2019 at 13:05, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
-Aside from the ordering nit mentioned in the previous commit:
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-> ---
->  target/arm/arm-semi.c | 16 +++++++++++-----
->  1 file changed, 11 insertions(+), 5 deletions(-)
 >
-> diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-> index 0df8d4d69d6..3900bd4e1e6 100644
-> --- a/target/arm/arm-semi.c
-> +++ b/target/arm/arm-semi.c
-> @@ -66,6 +66,7 @@ typedef void TaskState;
->  #define TARGET_SYS_HEAPINFO    0x16
->  #define TARGET_SYS_EXIT        0x18
->  #define TARGET_SYS_SYNCCACHE   0x19
-> +#define TARGET_SYS_EXIT_EXTENDED 0x20
+> Peter Maydell <peter.maydell@linaro.org> writes:
+> > +            /*
+> > +             * We implement SH_EXT_STDOUT_STDERR, so:
+> > +             *  open for read =3D=3D stdin
+> > +             *  open for write =3D=3D stdout
+> > +             *  open for append =3D=3D stderr
+> > +             */
 >
->  /* ADP_Stopped_ApplicationExit is used for exit(0),
->   * anything else is implemented as exit(1) */
-> @@ -485,7 +486,7 @@ static const uint8_t featurefile_data[] =3D {
->      SHFB_MAGIC_1,
->      SHFB_MAGIC_2,
->      SHFB_MAGIC_3,
-> -    SH_EXT_STDOUT_STDERR, /* Feature byte 0 */
-> +    SH_EXT_EXIT_EXTENDED | SH_EXT_STDOUT_STDERR, /* Feature byte 0 */
->  };
->
->  static void init_featurefile_guestfd(int guestfd)
-> @@ -1026,11 +1027,14 @@ target_ulong do_arm_semihosting(CPUARMState *env)
->              return 0;
->          }
->      case TARGET_SYS_EXIT:
-> -        if (is_a64(env)) {
-> +    case TARGET_SYS_EXIT_EXTENDED:
-> +        if (nr =3D=3D TARGET_SYS_EXIT_EXTENDED || is_a64(env)) {
->              /*
-> -             * The A64 version of this call takes a parameter block,
-> +             * The A64 version of SYS_EXIT takes a parameter block,
->               * so the application-exit type can return a subcode which
->               * is the exit status code from the application.
-> +             * SYS_EXIT_EXTENDED is an a new-in-v2.0 optional function
-> +             * which allows A32/T32 guests to also provide a status code.
->               */
->              GET_ARG(0);
->              GET_ARG(1);
-> @@ -1042,8 +1046,10 @@ target_ulong do_arm_semihosting(CPUARMState *env)
->              }
->          } else {
->              /*
-> -             * ARM specifies only Stopped_ApplicationExit as normal
-> -             * exit, everything else is considered an error
-> +             * The A32/T32 version of SYS_EXIT specifies only
-> +             * Stopped_ApplicationExit as normal exit, but does not
-> +             * allow the guest to specify the exit status code.
-> +             * Everything else is considered an error.
->               */
->              ret =3D (args =3D=3D ADP_Stopped_ApplicationExit) ? 0 : 1;
->          }
+> I love the way the spec documents field2 as an ISO C fopen() mode and
+> then an extension literally subverts the meaning to be something else.
+> Where the designers worried about adding a SYS_OPEN_TTY function to the
+> interface?
 
+It's just extending the existing convention of "open ::tt as
+read for stdin and write for stdout" a bit. IIRC some existing
+implementations actually did this as a sort of undocumented
+extra.
 
---
-Alex Benn=C3=A9e
+thanks
+-- PMM

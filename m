@@ -1,109 +1,83 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1779805wrp;
-        Wed, 11 Sep 2019 23:56:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw03l1RfVJ+6B1wdDSwBEEABUGIBl7b8j2EEAMq7Dc063kbbKnKICnib9+1fV68Gd+R31BN
-X-Received: by 2002:a37:a2c3:: with SMTP id l186mr37379043qke.461.1568271407595;
-        Wed, 11 Sep 2019 23:56:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568271407; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1813524wrp;
+        Thu, 12 Sep 2019 00:40:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzbx4XcQ7QurM2YoY/4qrKUk4E4iEDdCQG4325GfTOXSXtPfzGbdesNPVfiWygjzhzN1v/U
+X-Received: by 2002:a37:de14:: with SMTP id h20mr38723378qkj.260.1568274029774;
+        Thu, 12 Sep 2019 00:40:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568274029; cv=none;
         d=google.com; s=arc-20160816;
-        b=C2ji7PNEiLywrgdfHa2NrlVU1Zzix+cFaSN5lJko0Kg5VK49RZchcztwReGoJLh23l
-         NQHkfbm1LJpN7vymbzjfHIJni3hdYoeOiyZ9SVrKFJQnJYTA2UcB31I3hTziuL/+vA7v
-         9loA5P29O3nbBA14NJFsS0/4XWTGggLWT/IFvZrCajnS6NNAapMH1bvMpZpBBQ88rXB7
-         4YEdASFSb5cL5x4R/A3QcvMLOU0pQEhSTF7QBwgvR8uc1Zeld0SSqW44P+OoUlpL0OHx
-         A7r0hb4+yxOPeO3z1R+2nNQAUiiCvweyp52JhJ8gRNsZ2qLdL8XBgNWKoqzlfJGVKFlN
-         l/Rw==
+        b=tFToUlqMf2JGpdPVzU4jadu+o8w0Tk9wYxAMr5E6nMQQTnobaiPeLbb/Tlpb4cN0eu
+         t+hnv/IQhoH9ClpMD+m9/PKys59OsV0ZH4LrMvOtnRTF2KF9Fhgv+RyiZvm/a4j37b0S
+         7CFvKqvQ6wfDFuuQ2g/0O+d13PD3y9SjAC7lurVPaY24n1aGK+k6Y200hKIOj200hAKH
+         NBFFI1Vu1RSaZwUkp8XEYjWyoNThNDW1lVdyneMZrN/hGZXcjc5+3F8SmpcE8bUBC6li
+         IjaqLDVi6mBfxGzt4Bt/7uFH8tlOUwGPyMR4UyoBRkWw0ePpKsM8uqqa2y95W76xxOl9
+         hdIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:message-id:date:to:from
-         :dkim-signature:dkim-signature;
-        bh=Zz4wdxa1IyEFTr3gCC31Xp9YgbM4DnB0s2+ypeZ1K/8=;
-        b=dh8BjT/mFTSNdoErIf2+dKurVGCGU/0Qp2qFBL57kP+8QZ9OY0gvzpJixIDoBdYfXS
-         5C3yiws/mTWG5MNEbWEjR3cdbjJXYf2n01NnzsaREHVH9cp5u5or+ZM6UYiqWgCmsFee
-         AE8z8bTeNq5VQCNK9QhLvje1abEM+TsfdQk8c9GAGvggqhle54IAwVtInjxB6oU2E2Au
-         4LIubneOSUKRcIlwiJULr7yA6qufw0mUMTrppXL923Lufaj1ua7KdfwHDy1YJkcpuHAN
-         QISV6fN1Mn4iGMVyKXT90O5l7i57cCfvBgbLfqsmEdOQ2AwfDJ9VoLemX0oHDyCpz/X3
-         gqGw==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=xlHQqI04ubF2GYWQ9muLns9LHXHGocmy4cNPXMDQaPc=;
+        b=cM04jIPz5N56v6l5J1QlVw9ZLQ4JhtF23UdZB7Pj0A4xDp7/i22bQnd7iq6yoLs89R
+         c5Cz8r/OT87353fRjhmuv7jVvzD4sEBj7/T9oIrrUcPUO6ZVF8Iip+oisSBlpd0WtmjI
+         W+Sld6CqrsZ82KeVtIynTj55UGBgNVCmMYFF8bCJqJ9yF/C2coOz7lGh6XOfMtaTxWoB
+         m5b4+W2bRyjbKaMauxuYkP159HElCoBTgusZ7hqGM+O3YxlC7o0BKp04QeW+kmE/whcR
+         gNVN/8Y/yU0y8CK385JjrQEa2amIcE63Gp5/+YSYWh0Z+8g0AodooTvgZAqWjI6mYXvp
+         8h8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=MNlsoIKa;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=vcB3C3Bk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r77si18487669qke.332.2019.09.11.23.56.47
+        by mx.google.com with ESMTPS id 37si226497qvz.171.2019.09.12.00.40.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Sep 2019 23:56:47 -0700 (PDT)
+        Thu, 12 Sep 2019 00:40:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=MNlsoIKa;
-       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=vcB3C3Bk;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58702 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58890 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i8J26-00044N-RW
-	for alex.bennee@linaro.org; Thu, 12 Sep 2019 02:56:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47200)
+	id 1i8JiO-0002C3-Ni
+	for alex.bennee@linaro.org; Thu, 12 Sep 2019 03:40:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54078)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <andrew@aj.id.au>) id 1i8J1i-00043d-6Z
- for qemu-arm@nongnu.org; Thu, 12 Sep 2019 02:56:23 -0400
+ (envelope-from <drjones@redhat.com>) id 1i8JiE-0002AV-55
+ for qemu-arm@nongnu.org; Thu, 12 Sep 2019 03:40:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <andrew@aj.id.au>) id 1i8J1g-00051c-Ix
- for qemu-arm@nongnu.org; Thu, 12 Sep 2019 02:56:22 -0400
-Received: from out2-smtp.messagingengine.com ([66.111.4.26]:56387)
+ (envelope-from <drjones@redhat.com>) id 1i8JiD-00037Q-1W
+ for qemu-arm@nongnu.org; Thu, 12 Sep 2019 03:40:18 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41984)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <andrew@aj.id.au>)
- id 1i8J1g-00050f-0L; Thu, 12 Sep 2019 02:56:20 -0400
-Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
- by mailout.nyi.internal (Postfix) with ESMTP id DCBB722503;
- Thu, 12 Sep 2019 02:56:18 -0400 (EDT)
-Received: from mailfrontend2 ([10.202.2.163])
- by compute4.internal (MEProxy); Thu, 12 Sep 2019 02:56:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=from
- :to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding; s=fm3; bh=Zz4wdxa1IyEFTr3gCC31Xp9Ygb
- M4DnB0s2+ypeZ1K/8=; b=MNlsoIKasJmLeBsRY3dK8IfZ24j+IESCvYu1bUU81t
- 8pPlOnQuBTIAiCkcbqM14Lsgjj5jqIbdUscrdtax5KFaGpSwqmxMqBnZObVJU9hI
- uT45fWEpabTzuUAfa/as3wVvzfNWJ8o1HqlUZ0I+71A6o17Q66eHsZrV4hMpVPrH
- hICE5S7cpS/bGPIt25e4awOdeF0QLSOsq/TZkjk4E5Rm3ypg22E4W6cNto/zJ3L2
- Z8jzRVrJCOsjyZzHdbwHwj7imqS323pS3B2gxY0iThVwwQXumuNy9iNtBAPg3evi
- FZ5BOqte8MuOBh3HkZlvrLMwV9hHI/DVLaNZp6O67qCA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:content-transfer-encoding:date:from
- :message-id:mime-version:subject:to:x-me-proxy:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=Zz4wdxa1IyEFTr3gC
- C31Xp9YgbM4DnB0s2+ypeZ1K/8=; b=vcB3C3BkH+2IU5oR1F6gCyogPlTXR5dYM
- TxkOIygPp8RLYYYiIW0Cov/kgF6oVvtEvsGpghMe0PJcnFU7FYRGBy8e3HecjueQ
- w/sVoP6vuifp0OTNvzIqMbJyt3OEdF4MKZP7ovcMtCV3RcOP9kMZNxnSZYKTbu2E
- 0Di4g2c0NSGw5mLDuF9twI4eFjablPD3KNGa8O+ZGsbgkPeXy82bpyP5r/5OraIh
- oCJInm4TxZjSBu88J8NAmdBSF9qGQZ1jqy9OQ+OY4gCInIWuynKaHAP5Zwjs2grh
- chp6rFOaxkTBbc0diZegypcFN8xOU6AKx+1bXBRlxT8cOWpmst/eQ==
-X-ME-Sender: <xms:Eux5XTWghfWyuu-zmHoIu3bzwKCxhgo_izYvz-zQztm_ZFwl0H41QQ>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrtdeggdduudegucetufdoteggodetrfdotf
- fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
- uceurghilhhouhhtmecufedttdenucenucfjughrpefhvffufffkofgggfestdekredtre
- dttdenucfhrhhomheptehnughrvgifucflvghffhgvrhihuceorghnughrvgifsegrjhdr
- ihgurdgruheqnecuffhomhgrihhnpehoiihlrggsshdrohhrghenucfkphepvddtvddrke
- durddukedrfedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhi
- ugdrrghunecuvehluhhsthgvrhfuihiivgeptd
-X-ME-Proxy: <xmx:Eux5XdPbeVSdSWliwDLnnxuOsfAO0rV6uURtHJHhfRQW_rZIry-sFA>
- <xmx:Eux5XTcQqHpTu4oXs6zGkOz0immBmm-MH_bB4bnTDnOleJNWc5Ws2w>
- <xmx:Eux5XUz45aLPwnaZM9gHScek5yBku9cImHuZdprxV6PS4LTHhfPUjA>
- <xmx:Eux5XTp85tFNc2Ubq5oZCZoQ7PcRQ0MAFkoyvTP-rgj2hsCxQON71w>
-Received: from mistburn.au.ibm.com (bh02i525f01.au.ibm.com [202.81.18.30])
- by mail.messagingengine.com (Postfix) with ESMTPA id 22B9DD60069;
- Thu, 12 Sep 2019 02:56:15 -0400 (EDT)
-From: Andrew Jeffery <andrew@aj.id.au>
-To: qemu-arm@nongnu.org
-Date: Thu, 12 Sep 2019 16:26:31 +0930
-Message-Id: <20190912065631.12473-1-andrew@aj.id.au>
-X-Mailer: git-send-email 2.20.1
+ (Exim 4.71) (envelope-from <drjones@redhat.com>)
+ id 1i8JiC-00036x-Q5; Thu, 12 Sep 2019 03:40:16 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 99BC8300BE7F;
+ Thu, 12 Sep 2019 07:40:15 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id EF0375D704;
+ Thu, 12 Sep 2019 07:40:11 +0000 (UTC)
+Date: Thu, 12 Sep 2019 09:40:09 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Message-ID: <20190912074009.gkqirjdyvitxwnxw@kamzik.brq.redhat.com>
+References: <20190911155125.11932-1-eric.auger@redhat.com>
+ <20190911155125.11932-4-eric.auger@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190911155125.11932-4-eric.auger@redhat.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.45]); Thu, 12 Sep 2019 07:40:15 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 66.111.4.26
-Subject: [Qemu-arm] [PATCH v5] target-arm: Make the counter tick relative to
- cntfrq
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 3/3] virt: Check
+ KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 for smp_cpus > 256
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -115,200 +89,112 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, peter.maydell@linaro.org, clg@kaod.org,
- qemu-devel@nongnu.org, joel@jms.id.au
+Cc: peter.maydell@linaro.org, maz@kernel.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, yuzenghui@huawei.com, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1+ftBMtD16re
+X-TUID: 0xkR1R4KWPbi
 
-Allow machines to configure CNTFRQ via a property if the ARM core
-supports the generic timer. This is necessary on e.g. the ASPEED AST2600
-SoC where the generic timer clock is run at 800MHz or above. The default
-value for CNTFRQ remains at 62.50MHz (based on GTIMER_SCALE).
+On Wed, Sep 11, 2019 at 05:51:25PM +0200, Eric Auger wrote:
+> Host kernel within [4.18, 5.3] report an erroneous KVM_MAX_VCPUS=512
+> for ARM. The actual capability to instantiate more than 256 vcpus
+> was fixed in 5.4 with the upgrade of the KVM_IRQ_LINE ABI to support
+> vcpu id encoded on 12 bits instead of 8 and a redistributor consuming
+> a single KVM IO device instead of 2.
+> 
+> So let's check this capability when attempting to use more than 256
+> vcpus.
+> 
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> ---
+>  hw/arm/virt.c        |  4 ++++
+>  target/arm/kvm.c     | 21 +++++++++++++++++++++
+>  target/arm/kvm_arm.h | 15 +++++++++++++++
+>  3 files changed, 40 insertions(+)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 0d1629ccb3..465e3140f7 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1575,6 +1575,10 @@ static void machvirt_init(MachineState *machine)
+>          virt_max_cpus = GIC_NCPU;
+>      }
+>  
+> +    if (kvm_arm_irq_line_layout_mismatch(MACHINE(vms), max_cpus)) {
+> +        exit(1);
+> +    }
+> +
+>      if (max_cpus > virt_max_cpus) {
+>          error_report("Number of SMP CPUs requested (%d) exceeds max CPUs "
+>                       "supported by machine 'mach-virt' (%d)",
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 6cdfa2204f..b601e2f35a 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -171,6 +171,27 @@ bool kvm_arm_pmu_supported(CPUState *cpu)
+>      return kvm_check_extension(s, KVM_CAP_ARM_PMU_V3);
+>  }
+>  
+> +bool kvm_arm_irq_line_layout_mismatch(MachineState *ms, int vcpus)
+> +{
+> +    KVMState *s;
+> +    bool ret;
+> +
+> +    if (!kvm_enabled()) {
+> +        return false;
+> +    }
+> +
+> +    s = KVM_STATE(ms->accelerator);
+> +
+> +    ret = vcpus > 256 &&
+> +          !kvm_check_extension(s, KVM_CAP_ARM_IRQ_LINE_LAYOUT_2);
+> +
+> +    if (ret) {
+> +        error_report("Using more than 256 vcpus requires a host kernel "
+> +                     "with KVM_CAP_ARM_IRQ_LINE_LAYOUT_2");
+> +    }
+> +    return ret;
+> +}
+> +
+>  int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
+>  {
+>      KVMState *s = KVM_STATE(ms->accelerator);
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index b4e19457a0..d893d950d8 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -233,6 +233,16 @@ bool kvm_arm_pmu_supported(CPUState *cs);
+>   */
+>  int kvm_arm_get_max_vm_ipa_size(MachineState *ms);
+>  
+> +/**
+> + * kvm_arm_irq_line_layout_mismatch - Returns whether the number of vcpus
+> + * exceeds the limit imposed by the legacy KVM_IRQ_LINE ARM layout
+> + * (without the vcpu2_index field).
+> + *
+> + * @ms: Machine state handle
+> + * @vcpus: number of vcpus
+> + */
+> +bool kvm_arm_irq_line_layout_mismatch(MachineState *ms, int vcpus);
+> +
+>  /**
+>   * kvm_arm_sync_mpstate_to_kvm
+>   * @cpu: ARMCPU
+> @@ -281,6 +291,11 @@ static inline int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
+>      return -ENOENT;
+>  }
+>  
+> +static inline bool kvm_arm_irq_line_layout_mismatch(MachineState *ms, int vcpus)
+> +{
+> +    return false;
+> +}
+> +
+>  static inline int kvm_arm_vgic_probe(void)
+>  {
+>      return 0;
+> -- 
+> 2.20.1
+> 
+>
 
-CNTFRQ is a read-as-written co-processor register; the property sets the
-register's initial value which is used during realize() to configure the
-QEMUTimers that back the generic timers. Beyond that the firmware can to
-do whatever it sees fit with the CNTFRQ register though changes to the
-value will not be reflected in the timers' rate.
-
-I've tested this using an out-of-tree AST2600 SoC model (Cortex-A7) with
-the SDK u-boot that sets CNTFRQ as appropriate, and by starting/running
-machines with assorted ARM CPUs (palmetto-bmc with the ARM926EJ-S,
-romulus-bmc with the ARM1176 and raspi2 with the Cortex-A53).
-
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
----
-v5: Remove unrelated submodule updates that snuck into v4
-
-v4: https://patchwork.ozlabs.org/patch/1161340/
-Fix configuration for cores without a generic timer
-
-v3: https://patchwork.ozlabs.org/patch/1160634/
-Peter - I think this addresses most of your feedback. I still reach into
-the QEMUTimer to fetch out scale when adjusting the nexttick
-calculation, but we no longer need to update the scale member and force
-a recalculation of the period.
-
-v2: https://patchwork.ozlabs.org/patch/1144389/
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
----
- target/arm/cpu.c    | 43 +++++++++++++++++++++++++++++++++++--------
- target/arm/cpu.h    |  3 +++
- target/arm/helper.c | 30 ++++++++++++++++++++++++++----
- 3 files changed, 64 insertions(+), 12 deletions(-)
-
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 2399c144718d..8b63a27761bb 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -40,6 +40,8 @@
- #include "disas/capstone.h"
- #include "fpu/softfloat.h"
- 
-+#include <inttypes.h>
-+
- static void arm_cpu_set_pc(CPUState *cs, vaddr value)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-@@ -976,6 +978,10 @@ static void arm_cpu_initfn(Object *obj)
-     }
- }
- 
-+static Property arm_cpu_gt_cntfrq_property =
-+            DEFINE_PROP_UINT64("cntfrq", ARMCPU, gt_cntfrq,
-+                               (1000 * 1000 * 1000) / GTIMER_SCALE);
-+
- static Property arm_cpu_reset_cbar_property =
-             DEFINE_PROP_UINT64("reset-cbar", ARMCPU, reset_cbar, 0);
- 
-@@ -1172,6 +1178,11 @@ void arm_cpu_post_init(Object *obj)
- 
-     qdev_property_add_static(DEVICE(obj), &arm_cpu_cfgend_property,
-                              &error_abort);
-+
-+    if (arm_feature(&cpu->env, ARM_FEATURE_GENERIC_TIMER)) {
-+        qdev_property_add_static(DEVICE(cpu), &arm_cpu_gt_cntfrq_property,
-+                                 &error_abort);
-+    }
- }
- 
- static void arm_cpu_finalizefn(Object *obj)
-@@ -1238,14 +1249,30 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         }
-     }
- 
--    cpu->gt_timer[GTIMER_PHYS] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
--                                           arm_gt_ptimer_cb, cpu);
--    cpu->gt_timer[GTIMER_VIRT] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
--                                           arm_gt_vtimer_cb, cpu);
--    cpu->gt_timer[GTIMER_HYP] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
--                                          arm_gt_htimer_cb, cpu);
--    cpu->gt_timer[GTIMER_SEC] = timer_new(QEMU_CLOCK_VIRTUAL, GTIMER_SCALE,
--                                          arm_gt_stimer_cb, cpu);
-+
-+    {
-+        uint64_t scale;
-+
-+        if (arm_feature(env, ARM_FEATURE_GENERIC_TIMER)) {
-+            if (!cpu->gt_cntfrq) {
-+                error_setg(errp, "Invalid CNTFRQ: %"PRId64"Hz",
-+                           cpu->gt_cntfrq);
-+                return;
-+            }
-+            scale = MAX(1, NANOSECONDS_PER_SECOND / cpu->gt_cntfrq);
-+        } else {
-+            scale = GTIMER_SCALE;
-+        }
-+
-+        cpu->gt_timer[GTIMER_PHYS] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
-+                                               arm_gt_ptimer_cb, cpu);
-+        cpu->gt_timer[GTIMER_VIRT] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
-+                                               arm_gt_vtimer_cb, cpu);
-+        cpu->gt_timer[GTIMER_HYP] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
-+                                              arm_gt_htimer_cb, cpu);
-+        cpu->gt_timer[GTIMER_SEC] = timer_new(QEMU_CLOCK_VIRTUAL, scale,
-+                                              arm_gt_stimer_cb, cpu);
-+    }
- #endif
- 
-     cpu_exec_realizefn(cs, &local_err);
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 297ad5e47ad8..8bd576f834ba 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -915,6 +915,9 @@ struct ARMCPU {
- 
-     /* Used to set the maximum vector length the cpu will support.  */
-     uint32_t sve_max_vq;
-+
-+    /* Used to configure the generic timer input clock */
-+    uint64_t gt_cntfrq;
- };
- 
- void arm_cpu_post_init(Object *obj);
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 507026c9154b..09975704d47f 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -2409,7 +2409,21 @@ static CPAccessResult gt_stimer_access(CPUARMState *env,
- 
- static uint64_t gt_get_countervalue(CPUARMState *env)
- {
--    return qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) / GTIMER_SCALE;
-+    uint64_t effective;
-+
-+    /*
-+     * Deal with quantized clock scaling by calculating the effective frequency
-+     * in terms of the timer scale.
-+     */
-+    if (env->cp15.c14_cntfrq <= NANOSECONDS_PER_SECOND) {
-+        uint32_t scale = NANOSECONDS_PER_SECOND / env->cp15.c14_cntfrq;
-+        effective = NANOSECONDS_PER_SECOND / scale;
-+    } else {
-+        effective = NANOSECONDS_PER_SECOND;
-+    }
-+
-+    return muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL), effective,
-+                    NANOSECONDS_PER_SECOND);
- }
- 
- static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
-@@ -2445,8 +2459,8 @@ static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
-          * set the timer for as far in the future as possible. When the
-          * timer expires we will reset the timer for any remaining period.
-          */
--        if (nexttick > INT64_MAX / GTIMER_SCALE) {
--            nexttick = INT64_MAX / GTIMER_SCALE;
-+        if (nexttick > INT64_MAX / cpu->gt_timer[timeridx]->scale) {
-+            nexttick = INT64_MAX / cpu->gt_timer[timeridx]->scale;
-         }
-         timer_mod(cpu->gt_timer[timeridx], nexttick);
-         trace_arm_gt_recalc(timeridx, irqstate, nexttick);
-@@ -2680,6 +2694,14 @@ void arm_gt_stimer_cb(void *opaque)
-     gt_recalc_timer(cpu, GTIMER_SEC);
- }
- 
-+static void arm_gt_cntfrq_reset(CPUARMState *env, const ARMCPRegInfo *opaque)
-+{
-+    ARMCPU *cpu = env_archcpu(env);
-+
-+    cpu->env.cp15.c14_cntfrq =
-+        cpu->gt_cntfrq ?: (1000 * 1000 * 1000) / GTIMER_SCALE;
-+}
-+
- static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     /* Note that CNTFRQ is purely reads-as-written for the benefit
-      * of software; writing it doesn't actually change the timer frequency.
-@@ -2694,7 +2716,7 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 0,
-       .access = PL1_RW | PL0_R, .accessfn = gt_cntfrq_access,
-       .fieldoffset = offsetof(CPUARMState, cp15.c14_cntfrq),
--      .resetvalue = (1000 * 1000 * 1000) / GTIMER_SCALE,
-+      .resetfn = arm_gt_cntfrq_reset,
-     },
-     /* overall control: mostly access permissions */
-     { .name = "CNTKCTL", .state = ARM_CP_STATE_BOTH,
--- 
-2.20.1
-
+Reviewed-by: Andrew Jones <drjones@redhat.com>

@@ -1,171 +1,232 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1876954wrp;
-        Thu, 12 Sep 2019 02:02:34 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx4a8hQ6hNtjiCWx3BpEwCkSVzTfM/2HkjaodTZOaqtXUV3/ueIacv0Diub7Q1ZpDV9nshf
-X-Received: by 2002:ae9:ea0c:: with SMTP id f12mr5841429qkg.498.1568278953918;
-        Thu, 12 Sep 2019 02:02:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568278953; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1885554wrp;
+        Thu, 12 Sep 2019 02:11:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxUQjx5XwfpkDzNd4txlu7/SRMHqU8gxTdYO5gF/Yngjps3szGpQ6N2alei8+Nnd5DN876M
+X-Received: by 2002:a37:714:: with SMTP id 20mr39970873qkh.32.1568279479010;
+        Thu, 12 Sep 2019 02:11:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568279479; cv=none;
         d=google.com; s=arc-20160816;
-        b=BHT4hjJLIRGK2jZIrpGFlMS0ZmnenkuyYt1rf5/mmzOyNrbFZmZZAd3tRaGGjdi5kp
-         w0PLGdwTSlCptmf+80aVTRY5q00gm09HPsVnUvOaRzxbaxx3Wo9vYgZ0dy6EfsF8Dia8
-         T8r2y/kd/Imy9FH38MCssoBdYjN2+I2nL1MgvDQrwlG0FGcv8tK75mniu61c/Rc18o4/
-         bi1tqzjhNF/ePHjgiCR9q7dxeAWYAFVRG7ZLC+T10AIeIToLHlB/RzNR/k4GfwzFbARI
-         ZBb8qw/Sz4QdDM9BUCwP7UilzV2TT5D+dw7hQu7mDpB237w9A4ligUgUSs6Su7FueL0Q
-         tvbQ==
+        b=03EiRPmXnY9vknXH4BokZ880Ps5+z90MKZZjxh0xW2RbCWID7qOgr2w5Yz6dBIm+O3
+         xJkW7p+7Fu4jkzXfS8oAyVBXuu28mVbNnB3BpfiF8cph6Eozr2XVU6vmuAAfAedVtEC4
+         hFuuwta3EZtWxO/Rvupf2m+/VmkHp0eyqhNnuyFT7eb6Z6DfPeefMXFcNCQXQpyP8oSc
+         9oEgVxgmELBGimYF1iD5UJdOuGLqYaqFvNgzl1LKcIYfyPsgJhRpr9v3/3hO/fRsFx54
+         YSxWlH3bjP8uFoP/lxBxNRprRYzttrQHNqoACkUVQKPOPnfei3uX2RfnrO/W7F9JN9lN
+         tq/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=NPpL4OpK/yJcKOIDDXKrVIVtNfYCvKqi68M1Uf5NUu4=;
-        b=0TJxNpMwVFfgvlT8Xe1FZTguLWSeiNS15F9uSuW/tSEKVBBgKz7WyW4SZCQCLKrtpz
-         18a+4n6s/B3j1w/YGxKGcLib78+wXj/W0xaE+iORpJbXAQ4WkIKAr7/OfPin0VNwbBKH
-         1mlNDpektml64hijSsY6XK65/Xc6A5QEzxpocgtbV7RL+B1VkQ7M95Ery/KjgRBbsJuV
-         t98t6W1JQ+6gnyzVr5IXnVLorn5t39G9GWrA3qr03pMavNOK05c4YUUZ7q/dtNRj7FM7
-         7VfNgY00kRNoFhCBdTIljlGz6JRT5xOWrRdjQ46FFCF2+4QIZnO+KH43xNsuFAIe6oF6
-         RmbA==
+        bh=fjN5P0wM5n5cAbnTGz8QNFvuTGIcf+TJUZALuen0eKM=;
+        b=n38ktovO/01jENyjpdLLsNYRmFDXhz5GOyxrgXN9C+ktHDiDKDa/OPIJve7KoFE0/P
+         XsjSHfHwB7ESDnjUZXDiYaSlgytZWRFzlETgQYklxPjj+km5ZxOwbZ2sz0H2Ocsp2StQ
+         R9g+6TEGksnVHIr2eqF+OlMQIKJE9dlc6Htur8HztPGfP6L6OjJ2zkA7Y7/TZnMo+BSi
+         jimNeRSKqlA/jcZa+AgxCpIFyPhtZLn1/g5MVmofOlaVFDIeH59JxPPot0VLPRKa7JKJ
+         ItP887LYD2+8EOQQzYy/LFt9PPeBEdlPuYjndAKi9pFTUxLJ5LX7eEe/GBqSWRk6NTmO
+         p39Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="NmD/pBD/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=yKSyTQVI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a6si14043858qkk.292.2019.09.12.02.02.33
+        by mx.google.com with ESMTPS id h25si7401720qkj.177.2019.09.12.02.11.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Sep 2019 02:02:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 12 Sep 2019 02:11:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="NmD/pBD/";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:59420 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=yKSyTQVI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59544 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i8Kzn-0003aL-FX
-	for alex.bennee@linaro.org; Thu, 12 Sep 2019 05:02:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38454)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i8L8I-0008Lu-9v
+	for alex.bennee@linaro.org; Thu, 12 Sep 2019 05:11:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40752)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent.desnogues@gmail.com>) id 1i8Kwx-0001ib-03
- for qemu-devel@nongnu.org; Thu, 12 Sep 2019 04:59:35 -0400
+ (envelope-from <beata.michalska@linaro.org>) id 1i8L88-0008LK-1j
+ for qemu-arm@nongnu.org; Thu, 12 Sep 2019 05:11:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent.desnogues@gmail.com>) id 1i8Kws-0004V3-2E
- for qemu-devel@nongnu.org; Thu, 12 Sep 2019 04:59:34 -0400
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:43529)
+ (envelope-from <beata.michalska@linaro.org>) id 1i8L86-0001w7-41
+ for qemu-arm@nongnu.org; Thu, 12 Sep 2019 05:11:07 -0400
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:40780)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <laurent.desnogues@gmail.com>)
- id 1i8Kwr-0004Ub-UN; Thu, 12 Sep 2019 04:59:30 -0400
-Received: by mail-io1-xd44.google.com with SMTP id r8so27756081iol.10;
- Thu, 12 Sep 2019 01:59:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.71) (envelope-from <beata.michalska@linaro.org>)
+ id 1i8L85-0001vg-PV
+ for qemu-arm@nongnu.org; Thu, 12 Sep 2019 05:11:06 -0400
+Received: by mail-io1-xd41.google.com with SMTP id h144so52716226iof.7
+ for <qemu-arm@nongnu.org>; Thu, 12 Sep 2019 02:11:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=NPpL4OpK/yJcKOIDDXKrVIVtNfYCvKqi68M1Uf5NUu4=;
- b=NmD/pBD/hIyENFX+Jf1Nrh74EHB9TvGrwCAYA4vjiDdS0OU1l8+9P9qSIigO8F2J9C
- J3WJMnsgVQgyCqX9EazqWk7qoUtsDSYZl9Irq6pCbVsn4yUICv+SzN478HbsdgCJQFO7
- 2WMFmo9KqsDfZrxuc1+Up9eQ5ofyebWgIBa6gDrfoxOvGwPvV9mXEUZ1bedXf3b+zP8g
- vtD4qewWUrZ5PjtHLA8DtzV/uuy3G8v3Qj68Vd2MSq8YqDLWgLHbUfJyh8oVZp7k00KZ
- mC8Dn/gFHvNeLCHJcRKZYX+BVe3wu+89/Fp1zEgK3T4pusw3zUgvMaPgt8QNZe+JEMj3
- b39Q==
+ :cc; bh=fjN5P0wM5n5cAbnTGz8QNFvuTGIcf+TJUZALuen0eKM=;
+ b=yKSyTQVIwOlJB/pyXlaLU4BM2G61Bir//KZz/q1/m73pQ3sVrLDLK+zfNEEddBBNpE
+ yah8Dvlhqp1ibsslZMkJQC2Scm21wdK8YqzZCzS9mzpA2eOveubXmNUo6UHWEit/U+hk
+ OHuJSlm5uBT0hHTL6CRk3hJLuY7i2XC3rrdG5Hv9WVcJVpoe3T07jueRVfe+aRRX61DA
+ 0Ie/imUd3OZsobOA7y0uCRBQf7nGVZwncdEvbc93dANuzO1v/LDIUGF9Dl2zKvm8OGDX
+ XwRjU+jw3DFTSKhSjRWTwSbIp/HBGAPupnLusyGD5S+vswbIC7mn/RmygrwULkQ7pKSa
+ bBtA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=NPpL4OpK/yJcKOIDDXKrVIVtNfYCvKqi68M1Uf5NUu4=;
- b=NZKUbIDBNrreb+t2loy8NY9oQAmKw7RwktBmXh2+4O7yWZTSEb+hd9e+kjpz3B88bO
- a3To9Fxq7Vzd/IT0RVYjDXL3+QQAvSe5cxRtecLmrWsS6rU9oTzZs6ROmIiT9FmlEDAd
- IrG8k396giWsMRMZIQIC8+Egc9lHamJ2DkoYmwgRNMTFzMs+ewnsDyTae4ArAZaZ3aC+
- F/kgYKo9lEqa7W0uMVkK2uZezXT4691ahbF265MiuNJvsThCg3LvMerv8/lgKFzXpFIE
- O8Y0yZJxTsunS48btWVu/RQvqQ3Hvovrhon+2wU3h6vwENN3q1zEqm90Hg3CRpRlW5a+
- 9rlw==
-X-Gm-Message-State: APjAAAVaYu91ILfehOc95l0J4HGHVYafidzKePMfp8wKK9qvLTr/UfR+
- zjsP4g40ZTkF29aOkwUVAgz6bCNzeHNELkuJ9YEMlYvUjFU=
-X-Received: by 2002:a6b:8f15:: with SMTP id r21mr3266284iod.259.1568278768300; 
- Thu, 12 Sep 2019 01:59:28 -0700 (PDT)
+ bh=fjN5P0wM5n5cAbnTGz8QNFvuTGIcf+TJUZALuen0eKM=;
+ b=I6Jl5SX7t+uNWjJPWePrOCBVSE2LBOEKQT8FLXLsSKE4zuzaNCHcjJ0FD3Hn38GY10
+ gMHROcay10ths1F0j1Ycsbnt2yuIsLGE46ERvOP+5cAgumBYbz2cFPmbAvESfJabnNpL
+ ma+jswx+hl/VquJazUD/ulBHjTi6IwApecOR4k1lL7nAwVVMmk7P1YkweJ2Qt/lENgfq
+ r7EE/rW1nJronE0iAJrSrO/D6Rzd4vg+rweZOeE1+NtA4ndvF55knQRCKXgt3hAoTK3p
+ +sCtK9ImQSi37CBeG0LGbAWaabKobg5THClIQvkbxobYiVYwNDidK2YVMCZf2rGrQkZR
+ Y5mQ==
+X-Gm-Message-State: APjAAAX4u5XoEcFF/45cb/SMqs7dzF3eWDhNdLQZeGTyEDUspfydaQE+
+ Ar5/zN9QnUVSIIQ/3UEB73gLAwUXws89BZtqhKKfXw==
+X-Received: by 2002:a6b:b714:: with SMTP id h20mr3199503iof.302.1568279463439; 
+ Thu, 12 Sep 2019 02:11:03 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190904193059.26202-1-richard.henderson@linaro.org>
- <20190904193059.26202-11-richard.henderson@linaro.org>
-In-Reply-To: <20190904193059.26202-11-richard.henderson@linaro.org>
-From: Laurent Desnogues <laurent.desnogues@gmail.com>
-Date: Thu, 12 Sep 2019 10:59:26 +0200
-Message-ID: <CABoDooPfrrmAo5UdVmysZYihHDJW2Np74rQ5e112SU6of3LowA@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
+References: <20190910095610.4546-1-beata.michalska@linaro.org>
+ <20190910095610.4546-4-beata.michalska@linaro.org>
+ <20190910102601.GA2797@work-vm>
+ <CADSWDzs_Cof-L8dGBeYVEY1dNx4Ot6sNcAKtCrvcxZW-3+KUvA@mail.gmail.com>
+ <20190910131617.GC2797@work-vm>
+ <CADSWDzuuWqBF9rP57Zv7jFPKUhFdVLq-O_uqs29i4dAFz+CgUA@mail.gmail.com>
+ <20190911103645.GF2894@work-vm>
+In-Reply-To: <20190911103645.GF2894@work-vm>
+From: Beata Michalska <beata.michalska@linaro.org>
+Date: Thu, 12 Sep 2019 10:10:51 +0100
+Message-ID: <CADSWDztimAoz_bjfOUPQH7t8vLuJWaqYFOJvQkc-rBHi8Mnyxw@mail.gmail.com>
+To: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::d44
-Subject: Re: [Qemu-devel] [PATCH v4 10/69] target/arm: Simplify op_smlaxxx
- for SMLAL*
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::d41
+Subject: Re: [Qemu-arm] [PATCH 3/4] migration: ram: Switch to ram block
+ writeback
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: O13yKLYY3mNk
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, quintela@redhat.com,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ shameerali.kolothum.thodi@huawei.com, eric.auger@redhat.com,
+ qemu-arm@nongnu.org, pbonzini@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UERZ+B8Mv4Un
 
-Hi Richard,
-
-On Wed, Sep 4, 2019 at 9:39 PM Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Wed, 11 Sep 2019 at 11:36, Dr. David Alan Gilbert
+<dgilbert@redhat.com> wrote:
 >
-> Since all of the inputs and outputs are i32, dispense with
-> the intermediate promotion to i64 and use tcg_gen_add2_i32.
+> * Beata Michalska (beata.michalska@linaro.org) wrote:
+> > On Tue, 10 Sep 2019 at 14:16, Dr. David Alan Gilbert
+> > <dgilbert@redhat.com> wrote:
+> > >
+> > > * Beata Michalska (beata.michalska@linaro.org) wrote:
+> > > > On Tue, 10 Sep 2019 at 12:26, Dr. David Alan Gilbert
+> > > > <dgilbert@redhat.com> wrote:
+> > > > >
+> > > > > * Beata Michalska (beata.michalska@linaro.org) wrote:
+> > > > > > Switch to ram block writeback for pmem migration.
+> > > > > >
+> > > > > > Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
+> > > > > > ---
+> > > > > >  migration/ram.c | 5 +----
+> > > > > >  1 file changed, 1 insertion(+), 4 deletions(-)
+> > > > > >
+> > > > > > diff --git a/migration/ram.c b/migration/ram.c
+> > > > > > index b01a37e7ca..8ea0bd63fc 100644
+> > > > > > --- a/migration/ram.c
+> > > > > > +++ b/migration/ram.c
+> > > > > > @@ -33,7 +33,6 @@
+> > > > > >  #include "qemu/bitops.h"
+> > > > > >  #include "qemu/bitmap.h"
+> > > > > >  #include "qemu/main-loop.h"
+> > > > > > -#include "qemu/pmem.h"
+> > > > > >  #include "xbzrle.h"
+> > > > > >  #include "ram.h"
+> > > > > >  #include "migration.h"
+> > > > > > @@ -4064,9 +4063,7 @@ static int ram_load_cleanup(void *opaque)
+> > > > > >      RAMBlock *rb;
+> > > > > >
+> > > > > >      RAMBLOCK_FOREACH_NOT_IGNORED(rb) {
+> > > > > > -        if (ramblock_is_pmem(rb)) {
+> > > > > > -            pmem_persist(rb->host, rb->used_length);
+> > > > > > -        }
+> > > > > > +        qemu_ram_block_writeback(rb);
+> > > > >
+> > > > > ACK for migration
+> > > > >
+> > > > > Although I do worry that if you really have pmem hardware, is it better
+> > > > > to fail the migration if you don't have libpmem available?
+> > > >
+> > > > According to the PMDG man page, pmem_persist is supposed to be
+> > > > equivalent for the msync.
+> > >
+> > > OK, but you do define qemu_ram_block_writeback to fall back to fdatasync;
+> > > so that would be too little?
+> >
+> > Actually it shouldn't. All will end-up in vfs_fsync_range; msync will
+> > narrow the range.
+> > fdatasync will trigger the same call just that with a wider range. At
+> > least for Linux.
+> > fdatasync will also fallback to fsync if it is not available.
+> > So it's going from the best case scenario (as of performance and range of mem
+> > to be synced) towards the worst case one.
+> >
+> > I should probably double-check earlier versions of Linux.
+> > I'll also try to verify that for other host variants.
 >
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/translate.c | 15 ++++++++-------
->  1 file changed, 8 insertions(+), 7 deletions(-)
+> Well I guess it should probably follow whatever Posix says;  it's OK to
+> make Linux specific assumptions for Linux specific bits - but you can't
+> do it by code examination to guarantee it'll be right for other
+> platforms, especially if this is in code ifdef'd for portability.
+> Also it needs commenting to explain why it's safe to avoid someone else
+> asking this question.
 >
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index 5306e93470..37aa873e25 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -8177,8 +8177,7 @@ DO_QADDSUB(QDSUB, false, true)
->  static bool op_smlaxxx(DisasContext *s, arg_rrrr *a,
->                         int add_long, bool nt, bool mt)
->  {
-> -    TCGv_i32 t0, t1;
-> -    TCGv_i64 t64;
-> +    TCGv_i32 t0, t1, tl, th;
+I will definitely address that in the next version.
+Will just wait a bit to potentially gather more input
+on the series.
+
+> > BTW: Thank you for having a look at the changes.
 >
->      if (s->thumb
->          ? !arm_dc_feature(s, ARM_FEATURE_THUMB_DSP)
-> @@ -8202,12 +8201,14 @@ static bool op_smlaxxx(DisasContext *s, arg_rrrr *a,
->          store_reg(s, a->rd, t0);
->          break;
->      case 2:
-> -        t64 = tcg_temp_new_i64();
-> -        tcg_gen_ext_i32_i64(t64, t0);
-> +        tl = load_reg(s, a->ra);
-> +        th = load_reg(s, a->rd);
-> +        t1 = tcg_const_i32(0);
+> No problem.
+>
+Thanks again.
 
-The product is sign-extended before the addition so t1 is not always 0.
-
-Thanks,
-
-Laurent
-
-> +        tcg_gen_add2_i32(tl, th, tl, th, t0, t1);
->          tcg_temp_free_i32(t0);
-> -        gen_addq(s, t64, a->ra, a->rd);
-> -        gen_storeq_reg(s, a->ra, a->rd, t64);
-> -        tcg_temp_free_i64(t64);
-> +        tcg_temp_free_i32(t1);
-> +        store_reg(s, a->ra, tl);
-> +        store_reg(s, a->rd, th);
->          break;
->      default:
->          g_assert_not_reached();
+BR
+Beata
+> Dave
+>
+> > BR
+> > Beata
+> >
+> > >
+> > > > It's just more performant. So in case of real pmem hardware it should
+> > > > be all good.
+> > > >
+> > > > [http://pmem.io/pmdk/manpages/linux/v1.2/libpmem.3.html]
+> > >
+> > > Dave
+> > >
+> > > >
+> > > > BR
+> > > > Beata
+> > > > >
+> > > > > Dave
+> > > > >
+> > > > > >      }
+> > > > > >
+> > > > > >      xbzrle_load_cleanup();
+> > > > > > --
+> > > > > > 2.17.1
+> > > > > >
+> > > > > --
+> > > > > Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+> > > --
+> > > Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
 > --
-> 2.17.1
->
->
+> Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK

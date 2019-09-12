@@ -1,200 +1,103 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1813524wrp;
-        Thu, 12 Sep 2019 00:40:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzbx4XcQ7QurM2YoY/4qrKUk4E4iEDdCQG4325GfTOXSXtPfzGbdesNPVfiWygjzhzN1v/U
-X-Received: by 2002:a37:de14:: with SMTP id h20mr38723378qkj.260.1568274029774;
-        Thu, 12 Sep 2019 00:40:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568274029; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1856580wrp;
+        Thu, 12 Sep 2019 01:35:47 -0700 (PDT)
+X-Received: by 2002:a05:6830:4c5:: with SMTP id s5mr33241749otd.121.1568277347235;
+        Thu, 12 Sep 2019 01:35:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568277347; cv=none;
         d=google.com; s=arc-20160816;
-        b=tFToUlqMf2JGpdPVzU4jadu+o8w0Tk9wYxAMr5E6nMQQTnobaiPeLbb/Tlpb4cN0eu
-         t+hnv/IQhoH9ClpMD+m9/PKys59OsV0ZH4LrMvOtnRTF2KF9Fhgv+RyiZvm/a4j37b0S
-         7CFvKqvQ6wfDFuuQ2g/0O+d13PD3y9SjAC7lurVPaY24n1aGK+k6Y200hKIOj200hAKH
-         NBFFI1Vu1RSaZwUkp8XEYjWyoNThNDW1lVdyneMZrN/hGZXcjc5+3F8SmpcE8bUBC6li
-         IjaqLDVi6mBfxGzt4Bt/7uFH8tlOUwGPyMR4UyoBRkWw0ePpKsM8uqqa2y95W76xxOl9
-         hdIg==
+        b=GR/2HCeclDU9qv/v/4+mewxj/BmZ4lfEEmduJ8YH9E1g6YPZMprx7SueociwhRosvH
+         3h7OKXagD+yOfLsXkR040BKO+Kvs/AuvY7N6grFINM09z4YvzJk0icpl6FwXwViu5bTg
+         gd9W4rT0sc4UjqppgYqng6nCgh7HPUSqhof0pyvU2869D1q9MdyPgDRlxXfHegalMibd
+         7YS4seU08bRoaxjCPYO0b3+madzR7b37NtYnLQJfn8awG9JKiWd+PwMXsFghoBygmaKU
+         I6u6C4/HDeMGxWzH8yR+YLJ7AAP02GxpW90u66l3Ct5OSh64mzSiQ4Kg0rmhId5Fv9OI
+         pCZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=xlHQqI04ubF2GYWQ9muLns9LHXHGocmy4cNPXMDQaPc=;
-        b=cM04jIPz5N56v6l5J1QlVw9ZLQ4JhtF23UdZB7Pj0A4xDp7/i22bQnd7iq6yoLs89R
-         c5Cz8r/OT87353fRjhmuv7jVvzD4sEBj7/T9oIrrUcPUO6ZVF8Iip+oisSBlpd0WtmjI
-         W+Sld6CqrsZ82KeVtIynTj55UGBgNVCmMYFF8bCJqJ9yF/C2coOz7lGh6XOfMtaTxWoB
-         m5b4+W2bRyjbKaMauxuYkP159HElCoBTgusZ7hqGM+O3YxlC7o0BKp04QeW+kmE/whcR
-         gNVN/8Y/yU0y8CK385JjrQEa2amIcE63Gp5/+YSYWh0Z+8g0AodooTvgZAqWjI6mYXvp
-         8h8Q==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=pwvb8EPjgAvwsW8+aMq+UytCTWuKggVwjEAniB64G3U=;
+        b=0CBgElgRUTbsCIhGcJl8S3ARZPEwX62JcQGYIU3mMAodbBPXfZaknAfRSIyMyvj+eu
+         qRWhGrivKyxcXLCisSCqC/iu2cWErglnBmIEg05SuWyjn7y3rswVoYwoO70OO92HOe2r
+         dEYkoni3Kh5V8ThCLe4VPZ+mhOzJkdWsJqntBLu3/94ZIlOMQpv7wBDpPBGBNRNmW5wR
+         os95ImJng5bRXJQHK0MPsCNwEXina8rKHHzLZhDMe7KMfDSE3QLXeeiqYRtA2JIbMakr
+         FJxKqMggJRqWLuX2p+OdXicHtPXJGpY5o7GIecv3/3JCm7IvTN2fU+zC0AGmQuMcccFg
+         Tyvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 37si226497qvz.171.2019.09.12.00.40.29
+       dkim=pass header.i=@linaro.org header.s=google header.b=mKuprXUg;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id z15sor7170034oto.29.2019.09.12.01.35.47
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Sep 2019 00:40:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 12 Sep 2019 01:35:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58890 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i8JiO-0002C3-Ni
-	for alex.bennee@linaro.org; Thu, 12 Sep 2019 03:40:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54078)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1i8JiE-0002AV-55
- for qemu-arm@nongnu.org; Thu, 12 Sep 2019 03:40:19 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1i8JiD-00037Q-1W
- for qemu-arm@nongnu.org; Thu, 12 Sep 2019 03:40:18 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:41984)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>)
- id 1i8JiC-00036x-Q5; Thu, 12 Sep 2019 03:40:16 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 99BC8300BE7F;
- Thu, 12 Sep 2019 07:40:15 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id EF0375D704;
- Thu, 12 Sep 2019 07:40:11 +0000 (UTC)
-Date: Thu, 12 Sep 2019 09:40:09 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20190912074009.gkqirjdyvitxwnxw@kamzik.brq.redhat.com>
-References: <20190911155125.11932-1-eric.auger@redhat.com>
- <20190911155125.11932-4-eric.auger@redhat.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=mKuprXUg;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=pwvb8EPjgAvwsW8+aMq+UytCTWuKggVwjEAniB64G3U=;
+        b=mKuprXUgg4MNFXBWt5N8LOLmyafRo2zrcliKqKHen+dgRnXiClmfQhMCrd4tpZoUQt
+         lWi/34/q+CeNShZxnM1T66FC+yWHhXUgIxN5RY80NZi60qhCKUuymv5uJV4FpSGLPBRS
+         gIvLIIADIDC+jaf7KPOnX4KuIRlfy8H70kek+iO1CbgKSnS4e+RW9moCnVYhsFkx7eDd
+         acz5piKW14dEDCSWRlQ67OG6HloBr4Im/U4O7GpMQFBhfevw5OokeOoVzHvCcT5VXZaC
+         XJNcPkqB18+YYTtl2w8gVcXMYeY/6YFQuhc59yiSi5AG9HtyO5DDa05vp9en0pDnrr4V
+         ngHA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=pwvb8EPjgAvwsW8+aMq+UytCTWuKggVwjEAniB64G3U=;
+        b=QZBXC4DLzD4ouS4FDRhrEytWMo6vciIvKbe+/VnGDgUuGxPK8w3JdFQzG8G1pLedFI
+         DQ0iiJODcf2Wtjd4MdAM1zQJu7VBURC4MFPKghZMkDwFPjDolRw7j+XNYR/uikYGuyIF
+         Fw7oWjTDN9OwVzYql1ady2qNPHItrOXsL5EGm88YnoT0EEON/gd6zjGeMNwk/v7U9+8l
+         +is53jajYFDqZEG1z/r6Dnooz6URjEMqv+pdbRmqfKLOeez8L8szs9500lvIYUZQmXIc
+         bEQaD+ZRUbXbUxIGFcP8ASUAO6O04k4HjnEzL/vQwFVRWvLrdtli/hvVpJJ1+62oQH7a
+         Ubsw==
+X-Gm-Message-State: APjAAAVlsxstpYf+cGHr1dNI+ci6zVVQene3mdSc2ENRtWQnjymu1bHn
+	KaeSWiE24cjiEnMwQfSOzdGblQ0Ro3iARXs3YznAlmijVrgS7g==
+X-Google-Smtp-Source: APXvYqzVdrE11tLGLe3zvwcx4a1MbBW9OJ4MT1xNME/OGl1Kux2jaIG6mMwJkWvLhhlegQKFyxLWoFOio4eNFGP9p+s=
+X-Received: by 2002:a9d:538a:: with SMTP id w10mr362835otg.91.1568277346575;
+ Thu, 12 Sep 2019 01:35:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190911155125.11932-4-eric.auger@redhat.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.45]); Thu, 12 Sep 2019 07:40:15 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 3/3] virt: Check
- KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 for smp_cpus > 256
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, maz@kernel.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, yuzenghui@huawei.com, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0xkR1R4KWPbi
+References: <20190906202636.28642-1-alex.bennee@linaro.org>
+ <CAFEAcA-DQ0Zq40Xnw5wkA6ojOUCf67xfX83nMEoKW_UrysJhjQ@mail.gmail.com> <871rwn0yb3.fsf@linaro.org>
+In-Reply-To: <871rwn0yb3.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 12 Sep 2019 09:35:35 +0100
+Message-ID: <CAFEAcA982nm0yFdwy8-jUDRq6Q6d0wT4y+jfFeQ_a3RiYn+bPA@mail.gmail.com>
+Subject: Re: [PATCH v4 0/4] semihosting at translate time fixes
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: CQgCxjsJzICw
 
-On Wed, Sep 11, 2019 at 05:51:25PM +0200, Eric Auger wrote:
-> Host kernel within [4.18, 5.3] report an erroneous KVM_MAX_VCPUS=512
-> for ARM. The actual capability to instantiate more than 256 vcpus
-> was fixed in 5.4 with the upgrade of the KVM_IRQ_LINE ABI to support
-> vcpu id encoded on 12 bits instead of 8 and a redistributor consuming
-> a single KVM IO device instead of 2.
-> 
-> So let's check this capability when attempting to use more than 256
-> vcpus.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  hw/arm/virt.c        |  4 ++++
->  target/arm/kvm.c     | 21 +++++++++++++++++++++
->  target/arm/kvm_arm.h | 15 +++++++++++++++
->  3 files changed, 40 insertions(+)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 0d1629ccb3..465e3140f7 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1575,6 +1575,10 @@ static void machvirt_init(MachineState *machine)
->          virt_max_cpus = GIC_NCPU;
->      }
->  
-> +    if (kvm_arm_irq_line_layout_mismatch(MACHINE(vms), max_cpus)) {
-> +        exit(1);
-> +    }
-> +
->      if (max_cpus > virt_max_cpus) {
->          error_report("Number of SMP CPUs requested (%d) exceeds max CPUs "
->                       "supported by machine 'mach-virt' (%d)",
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 6cdfa2204f..b601e2f35a 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -171,6 +171,27 @@ bool kvm_arm_pmu_supported(CPUState *cpu)
->      return kvm_check_extension(s, KVM_CAP_ARM_PMU_V3);
->  }
->  
-> +bool kvm_arm_irq_line_layout_mismatch(MachineState *ms, int vcpus)
-> +{
-> +    KVMState *s;
-> +    bool ret;
-> +
-> +    if (!kvm_enabled()) {
-> +        return false;
-> +    }
-> +
-> +    s = KVM_STATE(ms->accelerator);
-> +
-> +    ret = vcpus > 256 &&
-> +          !kvm_check_extension(s, KVM_CAP_ARM_IRQ_LINE_LAYOUT_2);
-> +
-> +    if (ret) {
-> +        error_report("Using more than 256 vcpus requires a host kernel "
-> +                     "with KVM_CAP_ARM_IRQ_LINE_LAYOUT_2");
-> +    }
-> +    return ret;
-> +}
-> +
->  int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
->  {
->      KVMState *s = KVM_STATE(ms->accelerator);
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index b4e19457a0..d893d950d8 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -233,6 +233,16 @@ bool kvm_arm_pmu_supported(CPUState *cs);
->   */
->  int kvm_arm_get_max_vm_ipa_size(MachineState *ms);
->  
-> +/**
-> + * kvm_arm_irq_line_layout_mismatch - Returns whether the number of vcpus
-> + * exceeds the limit imposed by the legacy KVM_IRQ_LINE ARM layout
-> + * (without the vcpu2_index field).
-> + *
-> + * @ms: Machine state handle
-> + * @vcpus: number of vcpus
-> + */
-> +bool kvm_arm_irq_line_layout_mismatch(MachineState *ms, int vcpus);
-> +
->  /**
->   * kvm_arm_sync_mpstate_to_kvm
->   * @cpu: ARMCPU
-> @@ -281,6 +291,11 @@ static inline int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
->      return -ENOENT;
->  }
->  
-> +static inline bool kvm_arm_irq_line_layout_mismatch(MachineState *ms, int vcpus)
-> +{
-> +    return false;
-> +}
-> +
->  static inline int kvm_arm_vgic_probe(void)
->  {
->      return 0;
-> -- 
-> 2.20.1
-> 
->
+On Wed, 11 Sep 2019 at 14:14, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+> It does seem a bit weird that userspace linux-user does do semihosting
+> whereas EL0 in softmmu doesn't. Is that because we are effectively
+> short-circuiting what a real ARM kernel would be doing for EL0?
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+It's because the "not for EL0" is a rather bogus attempt
+at 'security' by not allowing userspace in a system emulator
+to access the semihosting API, reserving it instead for
+the guest OS (its EL1). This concept doesn't apply for
+linux-user mode, where there is no guest EL1, and where in any
+case the semihosting API doesn't allow the guest code to do
+anything it couldn't do by directly making host OS syscalls.
+
+I suspect this "not for EL0" thing is not something anybody
+else's semihosting implementation does (though I haven't checked).
+
+One idea I've vaguely thought about is an idea of a more
+'safe' semihosting mode, where we only provide the calls
+which we think are reasonable for a not-really-trusted
+guest: so you could write to stdout but not read/write
+arbitrary files on the filesystem, for instance.
+
+thanks
+-- PMM

@@ -1,87 +1,83 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1873496wrp;
-        Thu, 12 Sep 2019 01:58:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzW2yzpPhFnR+2CrO98WOnSqka4Q/1Ges7u/oGKcHk4p0lMGflq+loobs5QckENeplcCm0H
-X-Received: by 2002:a17:906:361a:: with SMTP id q26mr33407376ejb.43.1568278717838;
-        Thu, 12 Sep 2019 01:58:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568278717; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp478909wrp;
+        Fri, 13 Sep 2019 01:37:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzpD2XE9k/kh5b9+Q/3C+KvYopdGzZv4xkW4lJnxBtDYIap13EUmJqF4vkS1mhVcsgTAa5K
+X-Received: by 2002:a05:620a:15fc:: with SMTP id p28mr14414644qkm.487.1568363824344;
+        Fri, 13 Sep 2019 01:37:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568363824; cv=none;
         d=google.com; s=arc-20160816;
-        b=FlDeERC3LPdxF8Ha/F0hW1YPfaqXZ5BSf/C0qCAJkOFzzyBc7/VPUcsVEaaNbewHKE
-         r/GFMQ7/eeN9O1iX4RgUG843nJLoLnOmE45k6magnABtMu7HovpH3cWWtWtkOj/ERGHK
-         32n07lwEKjRXZLOvFLtqRkmM55T4iPxMhXckBHX9f/HVJkW74KRruqjdzj8AcBjuA5eQ
-         FI2au6h+s9PYH6z+pp4Eum14KJEGstnHKpFfqWetf45NGSZtFyL29FO9iQ3hkJ5e7IWj
-         eZmeKqMdWH6sTa5CIh0JsOCIKosRVqBU+yt9YynRi2J48d8hN4URLpp6m9v9vwb/Q+5B
-         2lZg==
+        b=UXUME3QiZ0vcp4D/KXtI3xxXh4COnr6psfFjEPwUPO5Ipriz2eZz4+ziOAuisURq/O
+         /enqjKbBiKTxDn63tOws2fCAWDe5u7QLpy+rUcFEjbOuhFQnnleFJ5yKfHbYrDLIi3LM
+         mkKvaOxUsyXw8fhZTs9idQGJJiXSPH656Ad9JmXdUDqAiXv5eoth/28dsh4ZrHG8losw
+         uyu90WsnKituR41xnlywDZcHjESgAO278uH4xOgpzLbdYgZM+f5tYyVbQKSdBwltunD1
+         0mjEsQVRom5BmrV31+q8YeZBriniAkcTa9jvc3dgg69gkpPp+jmi670yL5OxN/mn12PN
+         GBCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to;
-        bh=T+tTVL6C0E4T+HbsWh5ENch73IinJYgb2uUjO1yz7K0=;
-        b=QxNWmgNY9vI3UT2I4oLaoR/tZmmxN7vrv5JWeTorXJXOMMM6p/NK6w5zhn59o/Yd2o
-         z1+TKPCQQj2a34rtKs9GnrfWQNfTtWxwhIK0tIU3UYubDbX47oqaPSDz+m6gpWTWFFzW
-         Y29cyYWCo7RYj1+G9Y/aIee+kWBOb4pP/eldmmZzR7cZg6VXmamUsNMy2s55iMxQEtVx
-         ZJyyf4Npjs4ID8dhsfY4zMP2qnqQBqRxTQUinr/dsNQGigMzHG6Pb5vmGKAj56vL+wdY
-         ewTdAZto8W5VF7/ndZvgbh7J401MmKaDXedUOjPq5wsJGh4vTLOpNaJm8HCGFQUjEqoR
-         trXQ==
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=lx3p17+6QK/E3juKa5vIr8sCBz0nltT6if4RMCVjrlg=;
+        b=J6GvsbP/akBFez4XLQS8loI4cNjoJ/yG0gHzCJIA4kFSf+uyk7vYJ4dt4i3HCot/2D
+         srCXvByD5+chAckIyq1/ARsxhWysXe6/vdH2a3kR7Mx6fkQVWxh321/Yd9yYOvCFUhVR
+         8wySVV6tdN6BKNqudp3WT8KupJcRyicwfwVjw/qKlhlZtfrf0tjZgmphhfV/ifBtf9WN
+         3jjX7kVqZJedKwCuYpeXylPY1HL066Gs6C1l5x0WorgqHHZ3hnN+uYIeS9pWkvb1ax5j
+         B23dlzIut/caXIWXHhRSuDu1yUFSh67nH//avSpiKxUUEDz1o73F+DCFqe26VZncGoK5
+         YGTw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d15si1136933ejk.330.2019.09.12.01.58.37
+        by mx.google.com with ESMTPS id f8si8417031qkg.181.2019.09.13.01.37.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 12 Sep 2019 01:58:37 -0700 (PDT)
+        Fri, 13 Sep 2019 01:37:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59380 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41300 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i8Kw0-0000Ug-Mj
-	for alex.bennee@linaro.org; Thu, 12 Sep 2019 04:58:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38108)
+	id 1i8h4g-0005WQ-Sy
+	for alex.bennee@linaro.org; Fri, 13 Sep 2019 04:37:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46256)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1i8Kvq-0000Qn-Hb
- for qemu-arm@nongnu.org; Thu, 12 Sep 2019 04:58:27 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1i8h4H-0005Dx-I3
+ for qemu-arm@nongnu.org; Fri, 13 Sep 2019 04:36:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1i8Kvp-00049R-9G
- for qemu-arm@nongnu.org; Thu, 12 Sep 2019 04:58:26 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:34848)
+ (envelope-from <eric.auger@redhat.com>) id 1i8h4F-0007tm-UY
+ for qemu-arm@nongnu.org; Fri, 13 Sep 2019 04:36:37 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36274)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1i8Kvp-00049C-1M; Thu, 12 Sep 2019 04:58:25 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ id 1i8h4F-0007tN-N3; Fri, 13 Sep 2019 04:36:35 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 5554A3082128;
- Thu, 12 Sep 2019 08:58:24 +0000 (UTC)
-Received: from [10.36.116.238] (ovpn-116-238.ams2.redhat.com [10.36.116.238])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5B22C194B9;
- Thu, 12 Sep 2019 08:58:22 +0000 (UTC)
-To: Andrew Jones <drjones@redhat.com>
-References: <20190911155125.11932-1-eric.auger@redhat.com>
- <20190911155125.11932-3-eric.auger@redhat.com>
- <20190912073641.p5x4gtt2s5rlrhl6@kamzik.brq.redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <9e6a9dfc-8045-7bc4-8070-5de33b362b75@redhat.com>
-Date: Thu, 12 Sep 2019 10:58:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ by mx1.redhat.com (Postfix) with ESMTPS id 0387A307CDFC;
+ Fri, 13 Sep 2019 08:36:35 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-33.ams2.redhat.com [10.36.116.33])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9A5B760E3E;
+ Fri, 13 Sep 2019 08:36:32 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, pbonzini@redhat.com,
+ alex.williamson@redhat.com, peterx@redhat.com
+Date: Fri, 13 Sep 2019 10:36:10 +0200
+Message-Id: <20190913083615.14719-2-eric.auger@redhat.com>
+In-Reply-To: <20190913083615.14719-1-eric.auger@redhat.com>
+References: <20190913083615.14719-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20190912073641.p5x4gtt2s5rlrhl6@kamzik.brq.redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.42]); Thu, 12 Sep 2019 08:58:24 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.49]); Fri, 13 Sep 2019 08:36:35 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v2 2/3] intc/arm_gic: Support IRQ
- injection for more than 256 vpus
+Subject: [Qemu-arm] [PATCH v1 1/6] memory: allow
+ memory_region_register_iommu_notifier() to fail
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -93,161 +89,268 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, maz@kernel.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, yuzenghui@huawei.com, eric.auger.pro@gmail.com
+Cc: mst@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dcPO1cYweNct
+X-TUID: 3wTknVoiUZ+w
 
-Hi Drew,
+Currently, when a notifier is attempted to be registered and its
+flags are not supported (especially the MAP one) by the IOMMU MR,
+we generally abruptly exit in the IOMMU code. The failure could be
+handled more nicely in the caller and especially in the VFIO code.
 
-On 9/12/19 9:36 AM, Andrew Jones wrote:
-> On Wed, Sep 11, 2019 at 05:51:24PM +0200, Eric Auger wrote:
->> Host kernels that expose the KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 capability
->> allow injection of interrupts along with vcpu ids larger than 255.
->> Let's encode the vpcu id on 12 bits according to the upgraded KVM_IRQ_LINE
->> ABI when needed.
->>
->> Given that we have two callsites that need to assemble
->> the value for kvm_set_irq(), a new helper routine, kvm_arm_set_irq
->> is introduced.
->>
->> Without that patch qemu exits with "kvm_set_irq: Invalid argument"
->> message.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Reported-by: Zenghui Yu <yuzenghui@huawei.com>
->> ---
->>  hw/intc/arm_gic_kvm.c |  7 ++-----
->>  target/arm/cpu.c      | 10 ++++------
->>  target/arm/kvm.c      | 16 ++++++++++++++++
->>  target/arm/kvm_arm.h  |  1 +
->>  4 files changed, 23 insertions(+), 11 deletions(-)
->>
->> diff --git a/hw/intc/arm_gic_kvm.c b/hw/intc/arm_gic_kvm.c
->> index b56fda144f..9deb15e7e6 100644
->> --- a/hw/intc/arm_gic_kvm.c
->> +++ b/hw/intc/arm_gic_kvm.c
->> @@ -55,7 +55,7 @@ void kvm_arm_gic_set_irq(uint32_t num_irq, int irq, int level)
->>       * has separate fields in the irq number for type,
->>       * CPU number and interrupt number.
->>       */
->> -    int kvm_irq, irqtype, cpu;
->> +    int irqtype, cpu;
->>  
->>      if (irq < (num_irq - GIC_INTERNAL)) {
->>          /* External interrupt. The kernel numbers these like the GIC
->> @@ -72,10 +72,7 @@ void kvm_arm_gic_set_irq(uint32_t num_irq, int irq, int level)
->>          cpu = irq / GIC_INTERNAL;
->>          irq %= GIC_INTERNAL;
->>      }
->> -    kvm_irq = (irqtype << KVM_ARM_IRQ_TYPE_SHIFT)
->> -        | (cpu << KVM_ARM_IRQ_VCPU_SHIFT) | irq;
->> -
->> -    kvm_set_irq(kvm_state, kvm_irq, !!level);
->> +    kvm_arm_set_irq(cpu, irqtype, irq, !!level);
->>  }
->>  
->>  static void kvm_arm_gicv2_set_irq(void *opaque, int irq, int level)
->> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
->> index 2399c14471..13813fb213 100644
->> --- a/target/arm/cpu.c
->> +++ b/target/arm/cpu.c
->> @@ -576,16 +576,16 @@ static void arm_cpu_kvm_set_irq(void *opaque, int irq, int level)
->>      ARMCPU *cpu = opaque;
->>      CPUARMState *env = &cpu->env;
->>      CPUState *cs = CPU(cpu);
->> -    int kvm_irq = KVM_ARM_IRQ_TYPE_CPU << KVM_ARM_IRQ_TYPE_SHIFT;
->>      uint32_t linestate_bit;
->> +    int irq_id;
->>  
->>      switch (irq) {
->>      case ARM_CPU_IRQ:
->> -        kvm_irq |= KVM_ARM_IRQ_CPU_IRQ;
->> +        irq_id = KVM_ARM_IRQ_CPU_IRQ;
->>          linestate_bit = CPU_INTERRUPT_HARD;
->>          break;
->>      case ARM_CPU_FIQ:
->> -        kvm_irq |= KVM_ARM_IRQ_CPU_FIQ;
->> +        irq_id = KVM_ARM_IRQ_CPU_FIQ;
->>          linestate_bit = CPU_INTERRUPT_FIQ;
->>          break;
->>      default:
->> @@ -597,9 +597,7 @@ static void arm_cpu_kvm_set_irq(void *opaque, int irq, int level)
->>      } else {
->>          env->irq_line_state &= ~linestate_bit;
->>      }
->> -
->> -    kvm_irq |= cs->cpu_index << KVM_ARM_IRQ_VCPU_SHIFT;
->> -    kvm_set_irq(kvm_state, kvm_irq, level ? 1 : 0);
->> +    kvm_arm_set_irq(cs->cpu_index, KVM_ARM_IRQ_TYPE_CPU, irq_id, !!level);
->>  #endif
->>  }
->>  
->> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->> index b2eaa50b8d..6cdfa2204f 100644
->> --- a/target/arm/kvm.c
->> +++ b/target/arm/kvm.c
->> @@ -744,6 +744,22 @@ int kvm_arm_vgic_probe(void)
->>      }
->>  }
->>  
->> +int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level)
->> +{
->> +    int kvm_irq = 0;
-> 
-> No need to init to zero, and could just immediately init with the
-> line below instead.
-> 
->> +
->> +    kvm_irq = (irqtype << KVM_ARM_IRQ_TYPE_SHIFT) | irq;
->> +
->> +    if (cpu != 0) {
-> 
-> No need for this 'if'
-> 
->> +        int cpu_idx2 = cpu / 256;
->> +        int cpu_idx1 = cpu % 256;
->> +
->> +        kvm_irq |= (cpu_idx1 << KVM_ARM_IRQ_VCPU_SHIFT) |
->> +           ((cpu_idx2 & KVM_ARM_IRQ_VCPU2_MASK) << KVM_ARM_IRQ_VCPU2_SHIFT);
-> 
-> Masking should be unnecessary as the only way it'll do anything is if we
-> have vcpus >= 4096, which I imagine will never happen or will be guarded
-> against happening elsewhere. Silently masking doesn't look right anyway,
-> so I'd either add an assert(cpu_idx2 < 16) and drop the masking or just
-> drop the masking.
+So let's allow memory_region_register_iommu_notifier() to fail as
+well as notify_flag_changed() callback.
 
-All that makes sense.
+All sites implementing the callback are updated. This patch does
+not yet remove the exit(1) in the intel_iommu and amd_iommu code.
 
-Thank you for the review.
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+---
+ hw/arm/smmuv3.c       |  8 +++++---
+ hw/i386/amd_iommu.c   |  7 ++++---
+ hw/i386/intel_iommu.c |  7 ++++---
+ hw/ppc/spapr_iommu.c  |  7 ++++---
+ include/exec/memory.h | 18 +++++++++++++-----
+ memory.c              | 28 ++++++++++++++++++----------
+ 6 files changed, 48 insertions(+), 27 deletions(-)
 
-Eric
-> 
->> +    }
->> +    return kvm_set_irq(kvm_state, kvm_irq, !!level);
->> +}
->> +
->>  int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
->>                               uint64_t address, uint32_t data, PCIDevice *dev)
->>  {
->> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
->> index b3106c8600..b4e19457a0 100644
->> --- a/target/arm/kvm_arm.h
->> +++ b/target/arm/kvm_arm.h
->> @@ -253,6 +253,7 @@ int kvm_arm_vgic_probe(void);
->>  
->>  void kvm_arm_pmu_set_irq(CPUState *cs, int irq);
->>  void kvm_arm_pmu_init(CPUState *cs);
->> +int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
->>  
->>  #else
->>  
->> -- 
->> 2.20.1
->>
->>
-> 
-> Thanks,
-> drew 
-> 
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index db051dcac8..d7a86fc505 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -1469,9 +1469,9 @@ static void smmuv3_class_init(ObjectClass *klass, v=
+oid *data)
+     dc->realize =3D smmu_realize;
+ }
+=20
+-static void smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
+-                                       IOMMUNotifierFlag old,
+-                                       IOMMUNotifierFlag new)
++static int smmuv3_notify_flag_changed(IOMMUMemoryRegion *iommu,
++                                      IOMMUNotifierFlag old,
++                                      IOMMUNotifierFlag new)
+ {
+     SMMUDevice *sdev =3D container_of(iommu, SMMUDevice, iommu);
+     SMMUv3State *s3 =3D sdev->smmu;
+@@ -1483,6 +1483,7 @@ static void smmuv3_notify_flag_changed(IOMMUMemoryR=
+egion *iommu,
+=20
+         warn_report("SMMUv3 does not support notification on MAP: "
+                      "device %s will not function properly", pcidev->nam=
+e);
++        return -EINVAL;
+     }
+=20
+     if (old =3D=3D IOMMU_NOTIFIER_NONE) {
+@@ -1492,6 +1493,7 @@ static void smmuv3_notify_flag_changed(IOMMUMemoryR=
+egion *iommu,
+         trace_smmuv3_notify_flag_del(iommu->parent_obj.name);
+         QLIST_REMOVE(sdev, next);
+     }
++    return 0;
+ }
+=20
+ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
+diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
+index 08884523e2..137ba367db 100644
+--- a/hw/i386/amd_iommu.c
++++ b/hw/i386/amd_iommu.c
+@@ -1466,9 +1466,9 @@ static const MemoryRegionOps mmio_mem_ops =3D {
+     }
+ };
+=20
+-static void amdvi_iommu_notify_flag_changed(IOMMUMemoryRegion *iommu,
+-                                            IOMMUNotifierFlag old,
+-                                            IOMMUNotifierFlag new)
++static int amdvi_iommu_notify_flag_changed(IOMMUMemoryRegion *iommu,
++                                           IOMMUNotifierFlag old,
++                                           IOMMUNotifierFlag new)
+ {
+     AMDVIAddressSpace *as =3D container_of(iommu, AMDVIAddressSpace, iom=
+mu);
+=20
+@@ -1478,6 +1478,7 @@ static void amdvi_iommu_notify_flag_changed(IOMMUMe=
+moryRegion *iommu,
+                      PCI_FUNC(as->devfn));
+         exit(1);
+     }
++    return 0;
+ }
+=20
+ static void amdvi_init(AMDVIState *s)
+diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+index 75ca6f9c70..7a89ea9ba1 100644
+--- a/hw/i386/intel_iommu.c
++++ b/hw/i386/intel_iommu.c
+@@ -2921,9 +2921,9 @@ static IOMMUTLBEntry vtd_iommu_translate(IOMMUMemor=
+yRegion *iommu, hwaddr addr,
+     return iotlb;
+ }
+=20
+-static void vtd_iommu_notify_flag_changed(IOMMUMemoryRegion *iommu,
+-                                          IOMMUNotifierFlag old,
+-                                          IOMMUNotifierFlag new)
++static int vtd_iommu_notify_flag_changed(IOMMUMemoryRegion *iommu,
++                                         IOMMUNotifierFlag old,
++                                         IOMMUNotifierFlag new)
+ {
+     VTDAddressSpace *vtd_as =3D container_of(iommu, VTDAddressSpace, iom=
+mu);
+     IntelIOMMUState *s =3D vtd_as->iommu_state;
+@@ -2942,6 +2942,7 @@ static void vtd_iommu_notify_flag_changed(IOMMUMemo=
+ryRegion *iommu,
+     } else if (new =3D=3D IOMMU_NOTIFIER_NONE) {
+         QLIST_REMOVE(vtd_as, next);
+     }
++    return 0;
+ }
+=20
+ static int vtd_post_load(void *opaque, int version_id)
+diff --git a/hw/ppc/spapr_iommu.c b/hw/ppc/spapr_iommu.c
+index e87b3d50f7..8d3b38f90b 100644
+--- a/hw/ppc/spapr_iommu.c
++++ b/hw/ppc/spapr_iommu.c
+@@ -205,9 +205,9 @@ static int spapr_tce_get_attr(IOMMUMemoryRegion *iomm=
+u,
+     return -EINVAL;
+ }
+=20
+-static void spapr_tce_notify_flag_changed(IOMMUMemoryRegion *iommu,
+-                                          IOMMUNotifierFlag old,
+-                                          IOMMUNotifierFlag new)
++static int spapr_tce_notify_flag_changed(IOMMUMemoryRegion *iommu,
++                                         IOMMUNotifierFlag old,
++                                         IOMMUNotifierFlag new)
+ {
+     struct SpaprTceTable *tbl =3D container_of(iommu, SpaprTceTable, iom=
+mu);
+=20
+@@ -216,6 +216,7 @@ static void spapr_tce_notify_flag_changed(IOMMUMemory=
+Region *iommu,
+     } else if (old !=3D IOMMU_NOTIFIER_NONE && new =3D=3D IOMMU_NOTIFIER=
+_NONE) {
+         spapr_tce_set_need_vfio(tbl, false);
+     }
++    return 0;
+ }
+=20
+ static int spapr_tce_table_post_load(void *opaque, int version_id)
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 2dd810259d..504c19ecd9 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -288,10 +288,14 @@ typedef struct IOMMUMemoryRegionClass {
+      * @iommu: the IOMMUMemoryRegion
+      * @old_flags: events which previously needed to be notified
+      * @new_flags: events which now need to be notified
++     *
++     * Returns 0 on success, or a negative errno; in particular
++     * returns -EINVAL if the new flag bitmap is not supported by the
++     * IOMMU memory region.
+      */
+-    void (*notify_flag_changed)(IOMMUMemoryRegion *iommu,
+-                                IOMMUNotifierFlag old_flags,
+-                                IOMMUNotifierFlag new_flags);
++    int (*notify_flag_changed)(IOMMUMemoryRegion *iommu,
++                               IOMMUNotifierFlag old_flags,
++                               IOMMUNotifierFlag new_flags);
+     /* Called to handle memory_region_iommu_replay().
+      *
+      * The default implementation of memory_region_iommu_replay() is to
+@@ -1067,13 +1071,17 @@ void memory_region_notify_one(IOMMUNotifier *noti=
+fier,
+  * memory_region_register_iommu_notifier: register a notifier for change=
+s to
+  * IOMMU translation entries.
+  *
++ * Returns 0 on success, or a negative errno otherwise. In particular,
++ * -EINVAL indicates that at least one of the attributes of the notifier
++ * is not supported (flag/range) by the IOMMU memory region.
++ *
+  * @mr: the memory region to observe
+  * @n: the IOMMUNotifier to be added; the notify callback receives a
+  *     pointer to an #IOMMUTLBEntry as the opaque value; the pointer
+  *     ceases to be valid on exit from the notifier.
+  */
+-void memory_region_register_iommu_notifier(MemoryRegion *mr,
+-                                           IOMMUNotifier *n);
++int memory_region_register_iommu_notifier(MemoryRegion *mr,
++                                          IOMMUNotifier *n);
+=20
+ /**
+  * memory_region_iommu_replay: replay existing IOMMU translations to
+diff --git a/memory.c b/memory.c
+index 61a254c3f9..699a3d61a6 100644
+--- a/memory.c
++++ b/memory.c
+@@ -1837,33 +1837,37 @@ bool memory_region_is_logging(MemoryRegion *mr, u=
+int8_t client)
+     return memory_region_get_dirty_log_mask(mr) & (1 << client);
+ }
+=20
+-static void memory_region_update_iommu_notify_flags(IOMMUMemoryRegion *i=
+ommu_mr)
++static int memory_region_update_iommu_notify_flags(IOMMUMemoryRegion *io=
+mmu_mr)
+ {
+     IOMMUNotifierFlag flags =3D IOMMU_NOTIFIER_NONE;
+     IOMMUNotifier *iommu_notifier;
+     IOMMUMemoryRegionClass *imrc =3D IOMMU_MEMORY_REGION_GET_CLASS(iommu=
+_mr);
++    int ret =3D 0;
+=20
+     IOMMU_NOTIFIER_FOREACH(iommu_notifier, iommu_mr) {
+         flags |=3D iommu_notifier->notifier_flags;
+     }
+=20
+     if (flags !=3D iommu_mr->iommu_notify_flags && imrc->notify_flag_cha=
+nged) {
+-        imrc->notify_flag_changed(iommu_mr,
+-                                  iommu_mr->iommu_notify_flags,
+-                                  flags);
++        ret =3D imrc->notify_flag_changed(iommu_mr,
++                                        iommu_mr->iommu_notify_flags,
++                                        flags);
+     }
+=20
+-    iommu_mr->iommu_notify_flags =3D flags;
++    if (!ret) {
++        iommu_mr->iommu_notify_flags =3D flags;
++    }
++    return ret;
+ }
+=20
+-void memory_region_register_iommu_notifier(MemoryRegion *mr,
+-                                           IOMMUNotifier *n)
++int memory_region_register_iommu_notifier(MemoryRegion *mr,
++                                          IOMMUNotifier *n)
+ {
+     IOMMUMemoryRegion *iommu_mr;
++    int ret;
+=20
+     if (mr->alias) {
+-        memory_region_register_iommu_notifier(mr->alias, n);
+-        return;
++        return memory_region_register_iommu_notifier(mr->alias, n);
+     }
+=20
+     /* We need to register for at least one bitfield */
+@@ -1874,7 +1878,11 @@ void memory_region_register_iommu_notifier(MemoryR=
+egion *mr,
+            n->iommu_idx < memory_region_iommu_num_indexes(iommu_mr));
+=20
+     QLIST_INSERT_HEAD(&iommu_mr->iommu_notify, n, node);
+-    memory_region_update_iommu_notify_flags(iommu_mr);
++    ret =3D memory_region_update_iommu_notify_flags(iommu_mr);
++    if (ret) {
++        QLIST_REMOVE(n, node);
++    }
++    return ret;
+ }
+=20
+ uint64_t memory_region_iommu_get_min_page_size(IOMMUMemoryRegion *iommu_=
+mr)
+--=20
+2.20.1
+

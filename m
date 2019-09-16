@@ -1,177 +1,158 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4068004wrp;
-        Mon, 16 Sep 2019 07:16:01 -0700 (PDT)
-X-Received: by 2002:a1c:be11:: with SMTP id o17mr14702643wmf.93.1568643361909;
-        Mon, 16 Sep 2019 07:16:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568643361; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4068052wrp;
+        Mon, 16 Sep 2019 07:16:04 -0700 (PDT)
+X-Received: by 2002:a1c:7a14:: with SMTP id v20mr15501217wmc.75.1568643364249;
+        Mon, 16 Sep 2019 07:16:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568643364; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qab6nilBDlipDmudwx9nPVTq7kmQw2YGPB0iKR4EhlR5ec4XY3jVJvrkYfNQRCWwCn
-         DiIMFWD1FcrrKHi+Pv007V1KxNIxJKVKOdt31xC1nZYkc5+gVfYzXc1QgKdzUAB0IMNn
-         Tfi9elpWRYKKl6kV6HKGjquK9IrdBxVU1WjaLaXb1D1Q1cMZ9001z67iXF19j6QuSjYk
-         5zJjeD1oU/sqS9mYk2dDz7EIi11mfsiU/wslfhG/bx/CcNK3I6dexRdGBQv2JaosdESm
-         8X5Z5xylCTP8Q6naOJL1aBJOnuThL6qloQzTI/Q0rAyuC+H0OOiAyvjNL+d1/AFJ5kuV
-         irGw==
+        b=Mds/STY6HVVB/rx8+oplj/bt++mV8grvz6w+ewKoUhN0t92XaDVyL9c6OKE6ulB4m5
+         L2B+L8dDHs9VqAqcK+ubz42gq7nRu2+zoT3YXVL5DiJxMNX+xjm9dtWRK2VHZD3XoR+n
+         2xz98t0nqP9K9w8SHVNOCVwClqiX5bkTf6QmsAGsUucRZjD/kKWlHhUhMIyaOhkDEPGO
+         pFLK8Jkf1ftDNoZ5LP42S+NgKsR66U67zBFWseV5nUj8cw8AVQGs/U0khXLthsA3pLP4
+         iH1Tp5v4GXEUAu4eE+ZlUeWFyB7uvNjmWU3f+x2hGizkdl3QsBHlVZCWnV5l+kCpEcen
+         z3TQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=PhdxBnvi4pU80xrRijWpk4YE0MSvzzAfF5L37d1esIU=;
-        b=VpW9IEm1hKotm9g5FRjeoZNx/Nbbk4nxzXIfQpRerjtnZazdqkNHMbUhv3gVKLWDZG
-         Z2WSSytRwLAiIlomvu84CHmypqooYrD5lLZ0JNIJGkpty55km1zIKOLLoRzOBZZI4KhI
-         M/DGbbCIKbfD8qVs2qnjGhGqje1aFltbmAyrGbHHWuHDAjysSPKSJpKbaIKNkjdYidQp
-         EWoiRNvIT3GzDpU3NRDTjvjmyCPqOjFunZp454qrS3UwaBy8I8CxqqxDSwGZZHbG4ZhV
-         jREqLAG6JKDMEhloAIRyqL+Vlc9A/vlRDDH0MizqsT9cteatSD8rJ0Q0Ev4HAkWaysRC
-         5gUw==
+        bh=sbzqVgoyn7pJBiy5hHnuS48Tb76x8key349lTXeYMNs=;
+        b=C5AW08AiLovselQWxay1BktOIV4jHW/zcpclhnznBKho23pXYqwikkGK13/bHjneUb
+         sMgYawQ6rWzs3VYHLHvwBMhgR4YGGQRn2KMdFr2jBmv0NrXsxGTzxZPoIUoHeS1TsrL9
+         DcwWSIwzUzGpq1IFpTEbQKJGcUvifWqpMsu7bnfd2ghoTJ2Z1NUVkLwNOJSGrFPkF7iL
+         yPMguYJRH2GjB11Tm1RN1emMjyFIdm76/3LMUhc5WnwFNKpRcnYBG2s56oOiy9l0Pwf/
+         b4zTWs8iOiQoaY2bxDmLoWFwfp1YiaQLWMSMMG6CjTXwHsJZCAjYLpgzKWfkXIKBNrV2
+         59Gw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZYBVWT0o;
+       dkim=pass header.i=@linaro.org header.s=google header.b=d3FUYGeg;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id g11sor28815640wrs.13.2019.09.16.07.16.01
+        by mx.google.com with SMTPS id i29sor2941004wrc.49.2019.09.16.07.16.04
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 16 Sep 2019 07:16:01 -0700 (PDT)
+        Mon, 16 Sep 2019 07:16:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZYBVWT0o;
+       dkim=pass header.i=@linaro.org header.s=google header.b=d3FUYGeg;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=PhdxBnvi4pU80xrRijWpk4YE0MSvzzAfF5L37d1esIU=;
-        b=ZYBVWT0oCbR554Mraq3xgsjVLom0X451QtcoUP0V55L8vYofSszxGYuG4cN6IjvMyY
-         vjaXDVWCNcNOPwtvDFkRikje0q4JzvmbTlgbB7+XDo1XT6ZfzvMWnmJ0BJ5wGMMR9OsV
-         gfvf6Ver1OKOTntV186Mo8XeRm1eGP4VTjcKXxywbAiETEXS5RsE0pN4lz72yfNgij3/
-         jrE2GKbZuUPujd6CIxyuQduog1ABVhMOop8n2kyAMx2ylQW73fmzMod25q60wGi97PtI
-         iFz4abOaTUr4+WbtJYyF+0v6G8ggwSEPC+2Wg5a4btvSTjXUWmcKl40lHRL3pJqeEeKz
-         GD7w==
+        bh=sbzqVgoyn7pJBiy5hHnuS48Tb76x8key349lTXeYMNs=;
+        b=d3FUYGeg3cqVj9C1S9arYoSDEpD5y9oaeHUyB4LHN+eP+aQeE7wPsQdXQCWHFIl2IW
+         bCxqisg7w+7xxrmXglSgz96bjs8IB6X3MLABMgniAHgWzo0cmAY6+iNbm6+d7ix4VXJH
+         pWovFPiHofeAHLTGED1nyagAPB/Mh1WsBhP1b7KI6u4udpsG0qirNMQnDMgx4PwgKSoN
+         1uImJ22ebqQBIS8WD2VmxWNArhS9gr4hHGXmoSEdgY/He4WMMBldspnX26/OPPMM0TP1
+         jBNsrcdjLO8siKpFK7BK7sWZ7UkYKNPOb1na0kiCLNw8JCFPxAKIDkRqa0DBcSBO8E01
+         NcGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=PhdxBnvi4pU80xrRijWpk4YE0MSvzzAfF5L37d1esIU=;
-        b=JbkTQP9p4B36+/HDbkZ8CNWh0HGeIYXOy7d2RSxp+neg+rIsCKHkjOmahfWnnaYF0U
-         VtxvPir2qINXQcBsN3XKDBI67y7AKNI4xdAKpBubS5k1Ub64xXaNUeoejxJfZK/roRZH
-         L17T49C0zwS/D0Tn8h8kAv/9M2W4VRDFw8cRJcSNaSJk10PNSyQ342LFDXUPzd2SCcgT
-         CveRoJwtve181Otvbj7KzzogSmMjrrcnmbpbGLElfcTEtGICW2ddjUL/lLipKM/JaM2b
-         ygwcs1pL6J0ofIAUBswB9AShJhJIK57EneWFFx2UwPSGercgaa0/QiapAs+P3a0LFxrV
-         abxw==
-X-Gm-Message-State: APjAAAXBGx5zrX/VHdCkITV1cCzEaKrWRQPgrw4qqWFvhKnUOR7eL4k+
-	wpgFCuCFYD5+0LHdziYvn4uStaCT
-X-Google-Smtp-Source: APXvYqxfpfRFab2EHZqCExuA9zAr3DA1LIcKc07IjxrItyWn7ekDJEY4dFVB/YCycqtFLUgcJjbzAQ==
-X-Received: by 2002:adf:ed88:: with SMTP id c8mr7303871wro.329.1568643361657;
-        Mon, 16 Sep 2019 07:16:01 -0700 (PDT)
+        bh=sbzqVgoyn7pJBiy5hHnuS48Tb76x8key349lTXeYMNs=;
+        b=WKlhbzI5wFgueM+UaIlOUpeubOmHYRKWi/Kaj01lQwoJI571w+VhlNq6x38SHDhDLZ
+         7vUcQ2dP8VKKeu634qgKvhmrt5gRNJoyAjZPw9ZaG8uxGsSJj0BG5DKRUmqWruNAV7Rd
+         yt9MBRHKKEv9krM8A4Am8+dUFzvkImT6+BY2+sUjb5hORX8TAvgDZf8JZLUT5mOuDee3
+         IwZ8GwBT+6aI7wlxicSJAH+9LDCxhv3/zu0zlpHKmn/CbyiQOgkXPZiCo2WUkQ4wKkhM
+         9HYmd1Xr1giBWobF3vNx+F3PLVkF7Y7DJIqTlBhE06kVS025S8oGW4VGZpn828BWVqYR
+         dIYw==
+X-Gm-Message-State: APjAAAVoJDrBdnXQWm0GSAojpvoflzlu5+NNZsBkV2xbQdB+UloVdEn5
+	7h1NdeoLBWW4cXIE46WJq6dM0waI78EiMSRY
+X-Google-Smtp-Source: APXvYqypC/XW0HUi9u6xCUFphh2T+ilAYc+6fWlfpFBtC0WpVsqmNHtu6LUfKCQ1YVkhvCVKCSAK7A==
+X-Received: by 2002:a5d:6043:: with SMTP id j3mr9974595wrt.337.1568643363989;
+        Mon, 16 Sep 2019 07:16:03 -0700 (PDT)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-        by smtp.gmail.com with ESMTPSA id s9sm15185884wme.36.2019.09.16.07.16.00
+        by smtp.gmail.com with ESMTPSA id s9sm15185884wme.36.2019.09.16.07.16.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Sep 2019 07:16:01 -0700 (PDT)
+        Mon, 16 Sep 2019 07:16:03 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 12/15] target/arm/arm-semi: Factor out implementation of SYS_FLEN
-Date: Mon, 16 Sep 2019 15:15:41 +0100
-Message-Id: <20190916141544.17540-13-peter.maydell@linaro.org>
+Subject: [PATCH v2 14/15] target/arm/arm-semi: Implement SH_EXT_EXIT_EXTENDED extension
+Date: Mon, 16 Sep 2019 15:15:43 +0100
+Message-Id: <20190916141544.17540-15-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190916141544.17540-1-peter.maydell@linaro.org>
 References: <20190916141544.17540-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: GqAgLUKXMEeW
+X-TUID: f+KiVrMNm+l7
 
-Factor out the implementation of SYS_FLEN via the new
-function tables.
+SH_EXT_EXIT_EXTENDED is a v2.0 semihosting extension: it
+indicates that the implementation supports the SYS_EXIT_EXTENDED
+function. This function allows both A64 and A32/T32 guests to
+exit with a specified exit status, unlike the older SYS_EXIT
+function which only allowed this for A64 guests. Implement
+this extension.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- target/arm/arm-semi.c | 32 ++++++++++++++++++++++----------
- 1 file changed, 22 insertions(+), 10 deletions(-)
+ target/arm/arm-semi.c | 19 ++++++++++++++-----
+ 1 file changed, 14 insertions(+), 5 deletions(-)
 
 diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-index b5e1d73eb80..87c911f0187 100644
+index 57491740d73..f65d8c907e8 100644
 --- a/target/arm/arm-semi.c
 +++ b/target/arm/arm-semi.c
-@@ -391,6 +391,7 @@ typedef uint32_t sys_readfn(ARMCPU *cpu, GuestFD *gf,
- typedef uint32_t sys_isattyfn(ARMCPU *cpu, GuestFD *gf);
- typedef uint32_t sys_seekfn(ARMCPU *cpu, GuestFD *gf,
-                             target_ulong offset);
-+typedef uint32_t sys_flenfn(ARMCPU *cpu, GuestFD *gf);
+@@ -59,6 +59,7 @@
+ #define TARGET_SYS_HEAPINFO    0x16
+ #define TARGET_SYS_EXIT        0x18
+ #define TARGET_SYS_SYNCCACHE   0x19
++#define TARGET_SYS_EXIT_EXTENDED 0x20
  
- static uint32_t host_closefn(ARMCPU *cpu, GuestFD *gf)
- {
-@@ -454,6 +455,17 @@ static uint32_t host_seekfn(ARMCPU *cpu, GuestFD *gf, target_ulong offset)
-     return 0;
- }
+ /* ADP_Stopped_ApplicationExit is used for exit(0),
+  * anything else is implemented as exit(1) */
+@@ -513,12 +514,15 @@ static uint32_t gdb_flenfn(ARMCPU *cpu, GuestFD *gf)
+ #define SHFB_MAGIC_2 0x46
+ #define SHFB_MAGIC_3 0x42
  
-+static uint32_t host_flenfn(ARMCPU *cpu, GuestFD *gf)
-+{
-+    CPUARMState *env = &cpu->env;
-+    struct stat buf;
-+    uint32_t ret = set_swi_errno(env, fstat(gf->hostfd, &buf));
-+    if (ret == (uint32_t)-1) {
-+        return -1;
-+    }
-+    return buf.st_size;
-+}
++/* Feature bits reportable in feature byte 0 */
++#define SH_EXT_EXIT_EXTENDED (1 << 0)
 +
- static uint32_t gdb_closefn(ARMCPU *cpu, GuestFD *gf)
- {
-     return arm_gdb_syscall(cpu, arm_semi_cb, "close,%x", gf->hostfd);
-@@ -486,12 +498,19 @@ static uint32_t gdb_seekfn(ARMCPU *cpu, GuestFD *gf, target_ulong offset)
-                            gf->hostfd, offset);
- }
- 
-+static uint32_t gdb_flenfn(ARMCPU *cpu, GuestFD *gf)
-+{
-+    return arm_gdb_syscall(cpu, arm_semi_flen_cb, "fstat,%x,%x",
-+                           gf->hostfd, arm_flen_buf(cpu));
-+}
-+
- typedef struct GuestFDFunctions {
-     sys_closefn *closefn;
-     sys_writefn *writefn;
-     sys_readfn *readfn;
-     sys_isattyfn *isattyfn;
-     sys_seekfn *seekfn;
-+    sys_flenfn *flenfn;
- } GuestFDFunctions;
- 
- static const GuestFDFunctions guestfd_fns[] = {
-@@ -501,6 +520,7 @@ static const GuestFDFunctions guestfd_fns[] = {
-         .readfn = host_readfn,
-         .isattyfn = host_isattyfn,
-         .seekfn = host_seekfn,
-+        .flenfn = host_flenfn,
-     },
-     [GuestFDGDB] = {
-         .closefn = gdb_closefn,
-@@ -508,6 +528,7 @@ static const GuestFDFunctions guestfd_fns[] = {
-         .readfn = gdb_readfn,
-         .isattyfn = gdb_isattyfn,
-         .seekfn = gdb_seekfn,
-+        .flenfn = gdb_flenfn,
-     },
+ static const uint8_t featurefile_data[] = {
+     SHFB_MAGIC_0,
+     SHFB_MAGIC_1,
+     SHFB_MAGIC_2,
+     SHFB_MAGIC_3,
+-    0, /* Feature byte 0 */
++    SH_EXT_EXIT_EXTENDED, /* Feature byte 0 */
  };
  
-@@ -687,16 +708,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-             return set_swi_errno(env, -1);
+ static void init_featurefile_guestfd(int guestfd)
+@@ -1042,11 +1046,14 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+             return 0;
          }
- 
--        if (use_gdb_syscalls()) {
--            return arm_gdb_syscall(cpu, arm_semi_flen_cb, "fstat,%x,%x",
--                                   gf->hostfd, arm_flen_buf(cpu));
--        } else {
--            struct stat buf;
--            ret = set_swi_errno(env, fstat(gf->hostfd, &buf));
--            if (ret == (uint32_t)-1)
--                return -1;
--            return buf.st_size;
--        }
-+        return guestfd_fns[gf->type].flenfn(cpu, gf);
-     case TARGET_SYS_TMPNAM:
-         qemu_log_mask(LOG_UNIMP, "%s: SYS_TMPNAM not implemented", __func__);
-         return -1;
+     case TARGET_SYS_EXIT:
+-        if (is_a64(env)) {
++    case TARGET_SYS_EXIT_EXTENDED:
++        if (nr == TARGET_SYS_EXIT_EXTENDED || is_a64(env)) {
+             /*
+-             * The A64 version of this call takes a parameter block,
++             * The A64 version of SYS_EXIT takes a parameter block,
+              * so the application-exit type can return a subcode which
+              * is the exit status code from the application.
++             * SYS_EXIT_EXTENDED is an a new-in-v2.0 optional function
++             * which allows A32/T32 guests to also provide a status code.
+              */
+             GET_ARG(0);
+             GET_ARG(1);
+@@ -1058,8 +1065,10 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+             }
+         } else {
+             /*
+-             * ARM specifies only Stopped_ApplicationExit as normal
+-             * exit, everything else is considered an error
++             * The A32/T32 version of SYS_EXIT specifies only
++             * Stopped_ApplicationExit as normal exit, but does not
++             * allow the guest to specify the exit status code.
++             * Everything else is considered an error.
+              */
+             ret = (args == ADP_Stopped_ApplicationExit) ? 0 : 1;
+         }
 -- 
 2.20.1

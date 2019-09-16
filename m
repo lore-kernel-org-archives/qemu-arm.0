@@ -1,154 +1,135 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3527191wrp;
-        Sun, 15 Sep 2019 20:33:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxBUQhB5sQyLW4Kw0plJQmlSkwDwiNo0VS3YNLTy61hi7XXFG5rPHAk/foQSF13//4vFpEI
-X-Received: by 2002:ad4:4712:: with SMTP id k18mr40486197qvz.97.1568604829443;
-        Sun, 15 Sep 2019 20:33:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568604829; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4067727wrp;
+        Mon, 16 Sep 2019 07:15:48 -0700 (PDT)
+X-Received: by 2002:a5d:5692:: with SMTP id f18mr43551wrv.68.1568643348337;
+        Mon, 16 Sep 2019 07:15:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568643348; cv=none;
         d=google.com; s=arc-20160816;
-        b=aTdPjrmzPdGzj143O0pyYxt1h3wfs71ji1LoE3RJ59BmnHOk9LJ2DfcRnuqtZjYNvS
-         9AP3TWHDK02myiWUkC5jdJDqbQvo1TpzZZ/EL4UjlrfWCEm0c4q2ux3a+YrI/XLFZISy
-         JUgzUvHqsaNmweoFUF2AhpLQ6X712N6X0uvkIUmgGpw5kNrce+7CTQsVvjwcQHyX6ljc
-         5UNY597eAa8DPhAThXlQLyHuDO4E8rPuzwaSyZ4UZECPvkgpum4b0RBBZD800PGqASPV
-         U4zf8ubs8U71E/ln2My1srPt89+mHIaBbcS8T4bn2sxwrJR0f0Mu72jF4dlZgB+DtrGh
-         6svQ==
+        b=scQN8jjDxJsQSu3A9KY7N8P8Y11AC2K/ORkpzCD4ggEyOCE8vYWQ8AJoBpFyQj6Zp9
+         gbMehJeRGDPkmp6kHmuBb7P8AD6Bs0SMMnedDXATDXH1eebdHHWkmSvdvx8m1pv36/Pk
+         hI+JboUFhUIVt5qNxCiC60J9J+oC17ja4FdCTaddqfKsjnE9ahbXa1pZqK6ya7VW5ln2
+         9tvl/j61L8UNkMNlm4HT9N5wfIonv5qVcezhxdlfOhMJlOSxkQHjqbW0PIYpff/Ijt3I
+         U3a3eUr/Q/sNWA0NkX6C3A+SIzDHNfzMfqHUyHIxVT32sDiew9YlJMzQ6jWlTdTCoPsf
+         ZSdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=4MI/XiD/cEoNossYaCLoezLIzha76O6A/TVJCv/RTPg=;
-        b=trdqw90jxiIqYG7kTJ38432bHYpGSWXGGBJ5Jv4O6cyd3naionEylUQQ0nWEkfrEaK
-         S0is1BnH6k0rJTTwd/W1eSDMjf3qBeO+XND1sa8z8zyjt7uDlcWKC1TFI0XY98kmLx1C
-         WmRFNiMisc/1oA+hA3f0zXZOXGshYvxxW13jh2lWitQnolLAX0f4xDoWsFUcXCesZd4k
-         h5y5mtoe2cXMdtFshdtGUQHGkcc8qRh7PsSrYXQXxcEk3VB1wrAr8i5H1h6eN22L1XWe
-         mCxfLsdBzoflZJ8d6oNqGrv922Ya48AG7ieppMtxDYGMuj/cp2XVcHT4y6wCL4SPvMjQ
-         /PBw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=+93zhnxV6y7awAg0ASSqV7pmnPcURr2F+yzvl9fZsA4=;
+        b=VMQ+XedDSD5TTCc959mBaWUZE/bKrw2sLgIlRPfvhthg0vCtwOVnKDGtrzn9svT7Zn
+         YU+NEd4BgLMlSkovon1v29xU8WRSO1MY6hR1fErO9BBCUdRVxd7lSX1MvwumQqfspOs2
+         hOc6p67OkKCpFWCQ7oObSLtNB9FSWxVIE4kC7y7Qz948l+Dikax0IZ8z0joIZsp88WKg
+         Pde0/hsV4YSqD+KZ+J0NFkWL5o7q93964tbF20OiE5Pvf2Oy8ppQmbUvjRsWrKLyHyxd
+         wX2V0ZoSgkn2jHiox7u/WyXSWRK8l3HtYgshCRwVS5cng0sW2mFBd44IArKS6Fdpj0yc
+         orxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a199si27134705qkg.247.2019.09.15.20.33.49
+       dkim=pass header.i=@linaro.org header.s=google header.b="i/3gfIPt";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id p30sor6602751wmi.9.2019.09.16.07.15.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 15 Sep 2019 20:33:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 16 Sep 2019 07:15:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58770 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i9hls-0005n3-Tm
-	for alex.bennee@linaro.org; Sun, 15 Sep 2019 23:33:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57078)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peterx@redhat.com>) id 1i9hlU-0005mk-0q
- for qemu-devel@nongnu.org; Sun, 15 Sep 2019 23:33:25 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peterx@redhat.com>) id 1i9hlS-0002se-3m
- for qemu-devel@nongnu.org; Sun, 15 Sep 2019 23:33:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43824)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <peterx@redhat.com>) id 1i9hlQ-0002rq-FN
- for qemu-devel@nongnu.org; Sun, 15 Sep 2019 23:33:21 -0400
-Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
- [209.85.215.197])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 69B69C059758
- for <qemu-devel@nongnu.org>; Mon, 16 Sep 2019 03:33:19 +0000 (UTC)
-Received: by mail-pg1-f197.google.com with SMTP id w5so21334596pgs.5
- for <qemu-devel@nongnu.org>; Sun, 15 Sep 2019 20:33:19 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b="i/3gfIPt";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=+93zhnxV6y7awAg0ASSqV7pmnPcURr2F+yzvl9fZsA4=;
+        b=i/3gfIPtv+A1F40fA1vF7JhDCKPvqU19HuYbWuNBIq3rsJkVqGKmG4pBVer/iaH57j
+         jHccakeMDBkHC23mM6t3xT2eEPloplRUXzLFCAPsoA1HEaydbmROJ1VCBQ3byxpEFkk9
+         7t8I1asM58+Bmb3gKSH5bG0xY2NCmowbCIqCdetFDbStt+8a69mLik+lD6vAd65axGoV
+         8WExTs3XNS3KnyZSUNUzxzts3O32SN/rXk7GkyAnW6VbT3vFWoYWI14/q+1VLIvNMV2/
+         9DvFxU34JTRnYpcvR0OrsGE1E7z9tLIX0gjOztThsH06y8bzGA1OR1wOUiIkpnsT6wud
+         +fAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=4MI/XiD/cEoNossYaCLoezLIzha76O6A/TVJCv/RTPg=;
- b=KVDt9U/47BOpeMUSubDWL18MYPBa3FUATELv6b9rpwkv3eCZP+HCqkMVcmzFlSTmVH
- qpp7M4TDnDVQDQQ3VCKzupKA493/p2k3XgZPiUx0nKqiHJgLxRbn7zEzNew/6IwPU6Gl
- ixpXgs+tdZilgukqOwC6ZBXJFiWJscGZo0Oq9t1oFS7y0UwXFxwosEPQ/u3ayaH6UhpN
- KZxCU5kqESDxUKOOWa5OJcRWC/nskZjAXwVZGS5Nt17eZCttQeXafBeyxdLdTHLGPp8m
- 6uQ2i6YC2gWc5nR5lW6lGoe6sOxxdk2k15b9KH+c5MOlmLaq0cqT9fRj1n5x+9lEloXF
- Qb8g==
-X-Gm-Message-State: APjAAAUOoC/ATm4jI4tJQQDP8WcrDhuPX+LZ/Hjjhn645EJhx0VfFy2I
- VjWEnW+9gKXtegXGsb+7f0dehfcbqdFIDFPDFhUHGMAsaEetoYLoP5Mxvj6L5xVYf1sov5rtBlR
- MiPmxyz5rPr9wLrg=
-X-Received: by 2002:a63:5b23:: with SMTP id p35mr53183808pgb.366.1568604798823; 
- Sun, 15 Sep 2019 20:33:18 -0700 (PDT)
-X-Received: by 2002:a63:5b23:: with SMTP id p35mr53183791pgb.366.1568604798532; 
- Sun, 15 Sep 2019 20:33:18 -0700 (PDT)
-Received: from xz-x1 ([209.132.188.80])
- by smtp.gmail.com with ESMTPSA id z20sm6636599pfj.156.2019.09.15.20.33.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 15 Sep 2019 20:33:17 -0700 (PDT)
-Date: Mon, 16 Sep 2019 11:33:08 +0800
-From: Peter Xu <peterx@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20190916033308.GD14232@xz-x1>
-References: <20190913083615.14719-1-eric.auger@redhat.com>
- <20190913083615.14719-6-eric.auger@redhat.com>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=+93zhnxV6y7awAg0ASSqV7pmnPcURr2F+yzvl9fZsA4=;
+        b=Sdd1syWDbOGGtaEs80HuZRP338Ko/cbZfrG7DWdwReKQ2HHpGJDKv0c8voH3SmZRRD
+         qTI+YFzU6Fi1Kpteof7lCEb5635NJKK/EhhkpRwcJvZs32ndVfPHyHLV/aomU13dxrVj
+         R/spbB1S+FPasF5SPRkaAal/l7jD/QUnwSKz2K/GHrZjzcdecklknCzoXOcr+EDkuNqM
+         bVUJ3LsTSXppec0bEsb1c/gRGH0ALjspmz+jhyOd671RgImXYKblGw1yGmLrxlN2JAl4
+         sftzXTo78NtoAuWLuThhCgI71Z5tFCHzkpzyJmMmD0DrIo+0r+Wt+gFjfJUKdhPjp+vu
+         wl+Q==
+X-Gm-Message-State: APjAAAX0NbJc56t2jSkolbeTq+0vNh37HyqLwFBmaGCZnp6skr/Me1YB
+	OkTAt2SLK3MVyTWcUKulO3wjOIFWachyoaOI
+X-Google-Smtp-Source: APXvYqz6WZG8Uy1Q5GZEl16gZ7AQ138w+KdgGuAFTrtt92KeTjrl70jDCH01ooeHtXppfk2KCQUmWA==
+X-Received: by 2002:a1c:1d85:: with SMTP id d127mr15179087wmd.14.1568643348049;
+        Mon, 16 Sep 2019 07:15:48 -0700 (PDT)
+Return-Path: <peter.maydell@linaro.org>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+        by smtp.gmail.com with ESMTPSA id s9sm15185884wme.36.2019.09.16.07.15.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 16 Sep 2019 07:15:47 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v2 01/15] target/arm/arm-semi: Capture errno in softmmu version of set_swi_errno()
+Date: Mon, 16 Sep 2019 15:15:30 +0100
+Message-Id: <20190916141544.17540-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190916141544.17540-1-peter.maydell@linaro.org>
+References: <20190916141544.17540-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20190913083615.14719-6-eric.auger@redhat.com>
-User-Agent: Mutt/1.11.4 (2019-03-13)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH v1 5/6] intel_iommu: Let
- vtd_iommu_notify_flag_changed() fail
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com, qemu-devel@nongnu.org,
- alex.williamson@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
- eric.auger.pro@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: x6eHWUQT8m0R
+Content-Transfer-Encoding: 8bit
+X-TUID: BswjAmpWBtpu
 
-On Fri, Sep 13, 2019 at 10:36:14AM +0200, Eric Auger wrote:
-> In case a MAP notifier is attempted to be registered without
-> caching mode, let's simply return an error. This latter now is
-> handled in the VFIO code.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  hw/i386/intel_iommu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-> index 7a89ea9ba1..2f66d6882c 100644
-> --- a/hw/i386/intel_iommu.c
-> +++ b/hw/i386/intel_iommu.c
-> @@ -2931,7 +2931,7 @@ static int vtd_iommu_notify_flag_changed(IOMMUMemoryRegion *iommu,
->      if (!s->caching_mode && new & IOMMU_NOTIFIER_MAP) {
->          error_report("We need to set caching-mode=on for intel-iommu to enable "
->                       "device assignment with IOMMU protection.");
-> -        exit(1);
-> +        return -EINVAL;
+The set_swi_errno() function is called to capture the errno
+from a host system call, so that we can return -1 from the
+semihosting function and later allow the guest to get a more
+specific error code with the SYS_ERRNO function. It comes in
+two versions, one for user-only and one for softmmu. We forgot
+to capture the errno in the softmmu version; fix the error.
 
-This might be conflicting with the other series because that's going
-to drop these lines:
+(Semihosting calls directed to gdb are unaffected because
+they go through a different code path that captures the
+error return from the gdbstub call in arm_semi_cb() or
+arm_semi_flen_cb().)
 
-https://lists.gnu.org/archive/html/qemu-devel/2019-08/msg01968.html
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+NB that a later commit will put in some cleanup of TaskState
+that will let us reduce the duplication between the two
+implementations of this function.
+---
+ target/arm/arm-semi.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
 
-Though current change looks ok to me, and I don't even know which one
-will reach master earlier after all so let's see. :)
-
-The rest patches besides patch 1 all look sane to me. If we're going
-to have "Error **" then the rest patches might need trivial touch-ups
-of course.  And, IMHO squashing the whole series into patch 1 could be
-better, but it's a personal preference only.
-
-Thanks,
-
+diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
+index 90423a35deb..03e60105c05 100644
+--- a/target/arm/arm-semi.c
++++ b/target/arm/arm-semi.c
+@@ -114,8 +114,13 @@ static inline uint32_t set_swi_errno(TaskState *ts, uint32_t code)
+     return code;
+ }
+ #else
++static target_ulong syscall_err;
++
+ static inline uint32_t set_swi_errno(CPUARMState *env, uint32_t code)
+ {
++    if (code == (uint32_t)-1) {
++        syscall_err = errno;
++    }
+     return code;
+ }
+ 
+@@ -124,10 +129,6 @@ static inline uint32_t set_swi_errno(CPUARMState *env, uint32_t code)
+ 
+ static target_ulong arm_semi_syscall_len;
+ 
+-#if !defined(CONFIG_USER_ONLY)
+-static target_ulong syscall_err;
+-#endif
+-
+ static void arm_semi_cb(CPUState *cs, target_ulong ret, target_ulong err)
+ {
+     ARMCPU *cpu = ARM_CPU(cs);
 -- 
-Peter Xu
+2.20.1

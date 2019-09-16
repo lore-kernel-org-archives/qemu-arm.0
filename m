@@ -1,193 +1,161 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4067933wrp;
-        Mon, 16 Sep 2019 07:15:58 -0700 (PDT)
-X-Received: by 2002:a5d:49c3:: with SMTP id t3mr1017138wrs.151.1568643358402;
-        Mon, 16 Sep 2019 07:15:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568643358; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4067956wrp;
+        Mon, 16 Sep 2019 07:15:59 -0700 (PDT)
+X-Received: by 2002:a7b:cb0e:: with SMTP id u14mr10564912wmj.115.1568643359436;
+        Mon, 16 Sep 2019 07:15:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568643359; cv=none;
         d=google.com; s=arc-20160816;
-        b=VFKf/WkWTIrFP6N/5RZC28USuu0GcZ/N0230QONNgA7N+YkZnS5ViyVGrW/DpQTr4L
-         3bk5JZLaZdwQSclPpOkUOiUHpLL4t2YQ0759OFoAnIdKt2+ClMKjKKvnG5/h/AKigish
-         ubRn96KDnC+SS4ZeCjNjaLRaKJPay12ig15m2WEejN3wgaK2gNtOqsDs5QdmiHY6irG8
-         wMIPICgCHv6uQJfhahNwDzIFjHc+10PJEF8B72/7rvcg2GrHyNA63+sT21YjasirS1nT
-         GYr+YZ4VwgaTIMgQBq2w1Qxdp6dHrV1zsCjfEkwqS4QSYK18KZuUQWXA41YBMo5InQLw
-         3nAQ==
+        b=ZnwWOD/Y6DjmYnCwr0OEMB5SX4ChhWaa9cu50Z0y1+hmFGWkOK8qWElixecOVK4ogp
+         2WkLtmXFw3S4pQ1uxxOqb+HBP3LGNBytnNZXqV1ZeLBirMqArNLjahWXsEsibJF7deak
+         QdZ4/9r302lyas1dAykw0sgTZ9dmm3ZX57rXDDEb8DOTSvMB3WAAV3oq6m4hqn4pbIN/
+         yASJfbTpRkxOKwnvIydlww/i361RRe6CJ+U7rLxSrJQcpsVqf0DeWx8FAwTnLwYN5G7i
+         /4RHQ6AQATkgZhwCB4cqkUjl+vZhdrQJoYTt6NU8ZG1WuqHlkWtmFGKg0PLYWvdts1Tn
+         OB7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=d79b3/60OcgZi0kSBOpUac2GXUI7BcbnkzcVSckh0N8=;
-        b=BXCidyEX3aQcJva+Cvb/n7RdbS2l9NP4ZgxvWfnf7r8zOJBGQMKFLCn+wCcL/O2yD2
-         gJMvj253gg1EYHSKNPZkrN4r9GZlSeTUZlIFoDVC3hfHnbQKcFPNqf90jItH3hweKHh6
-         VKTQxsqn9FJPd7232dE/MEERqPUG4qqZXPe1eqVyHVEcfiSWl1EJcDZCSlsuUgHEXhVL
-         uJnoyvdJfsIsQWO23j3EclHKgmxm8AemT05mvGU7Sb3gxoa3yPNbEdP0Pqi/kGt/MYnA
-         PnfHpX4Fjb3jfkgs/ePTHLPKo6PQ+9nzbBsvLBt3cIHxnOxML4UXLY4EZjfqdmHkPopx
-         ek+w==
+        bh=Hdx0vcwYVj6aCkAtZySo243cmoqBWwiTTxoZ3UM3eNY=;
+        b=EQF7EY4tg5i7tFPTHbT2cJMiQ+0y+r1porNW1j8NuKHurhwIaYOlRKCFuw/pzqewhc
+         fAB3VCD272boSkcN8HmCK+nn97Z02SO6S6NPWADFuTaLzvgDsFdabhit+m3pxAnq0IHF
+         /5MXp8fGB5c/o3TKUEDz32uVqtNbpOjNh5MwgxMW7/WyX/fj+2Kb1wmFTqyuP7AuERIa
+         BPAJLTqlV2B35/qt6byXW7bazhMsbTYShd7TBsTzVKTN8m9Cizb5BjVlXhdD7GKBzhRA
+         7q+cBBkbmA0e4Ck9PaSCjJrbUeMUWxBui3RZyR6HKUUU0B9tzZX/DD22APwrmp/BFhph
+         ZVjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=z6QiG4cz;
+       dkim=pass header.i=@linaro.org header.s=google header.b="m/arva38";
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id k10sor28118363wrl.4.2019.09.16.07.15.58
+        by mx.google.com with SMTPS id n14sor4184742wrv.47.2019.09.16.07.15.59
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 16 Sep 2019 07:15:58 -0700 (PDT)
+        Mon, 16 Sep 2019 07:15:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=z6QiG4cz;
+       dkim=pass header.i=@linaro.org header.s=google header.b="m/arva38";
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=d79b3/60OcgZi0kSBOpUac2GXUI7BcbnkzcVSckh0N8=;
-        b=z6QiG4cz5z1YPXxxfB10SFsVNe2Z7jRMcRTgkpEbQTpGvVB7zayX0K7NtcuhvWIOvN
-         8oLXTUJh2aGQc+F9+9tX/xBJDbqPV6eqJvGcU5NwWu2jjOhK+QA6AYEKgyR5uh743N3N
-         RaGxXUZiSj9eWhut60RDy22D18jIOqhg4Vjs0syS3wQLxndoCG879Dwaimo2cCrOOqy9
-         O81eJp0zmMLNuZPDx8QYqL0j5e51lcYb9CjNkttaJC0TcwmhSG4n+RXgwlt7siJQF1Ut
-         iR43qwSZNkYUTbhc+V8VWsXLMjB66cIHG5kITHVOdSMoj9hvIrnnz9/ycZ3rw4vqsosY
-         G3fA==
+        bh=Hdx0vcwYVj6aCkAtZySo243cmoqBWwiTTxoZ3UM3eNY=;
+        b=m/arva38FITJPOTEd1+Ic3jYq1nQfefJevnvJ7dNKScoegz3YqC+yK6HDG3Hb7Rkzd
+         /p0wze2EK1k6elFu/ew9w0GXAaBEA+YdTzTXg05U0wTsydna2EOyPz6VMJ2vFAmF5MFH
+         jhyn7IWbxdx612/OOsBZCANrqJap4LuWC9kToVh6pCE8VNRteVhltskRmVtg3C2+v4Ew
+         FUQTbX1qU9LfbJ3y3GlKDMdJwf94PSlnWR3ZhknCNYEQ5XgdhivG3DyKCJgK1lvCzn1q
+         np5RSAiaHKJQB1soTq2KiziL+tw1r7I9porHGbACM2o3aRIDcd4aobe6BeCWY3LL3XsA
+         hoqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=d79b3/60OcgZi0kSBOpUac2GXUI7BcbnkzcVSckh0N8=;
-        b=BV30Hhna3jVTFNIDZrYeneptNuFymt12sYUvNvVey6I7V3H9d+/mHH9G+qD2ako7H3
-         wdfeO2RIK4pBH/Je87FQAO5NkPNRlV+2PuvZFjRkwmlLnbxdBbmPVxHUVOqHVfO8zhMl
-         rSt5Mdx7ru4DyhsIZVfw3G8EM8woJmx1iQ/UXLWDflIwdW2jaaa0WvYSTE7XLvZ7eluX
-         BabSmOIjyxSdRQYmtXUd1ELA8TCw4s0S5DNuoRNJYBMxSg7Lu5rnw9xsKRWcA0HtI2kG
-         o5iVYiR2JS1wHLbRf6FhCm0y1vzxD9maYoIShPPGgrLu2ECUHTlARsUX2AGn8OxJ2L98
-         OLHg==
-X-Gm-Message-State: APjAAAVbBOObbgv/A7lgTVq9o9XLq95seS4o2gUQBzR1pJKTWPFkETVT
-	l/+LPIWK9FOu5PTfJamPD5f0U/pXyhdajZfR
-X-Google-Smtp-Source: APXvYqwtqQC2+RA5oqHQfLvTqxMY9Dozm/yeQNdACN+Z+mpU10ZGibo9mI3z1iVXRghRKplQJL4dEw==
-X-Received: by 2002:a5d:6ac8:: with SMTP id u8mr33141wrw.104.1568643358160;
-        Mon, 16 Sep 2019 07:15:58 -0700 (PDT)
+        bh=Hdx0vcwYVj6aCkAtZySo243cmoqBWwiTTxoZ3UM3eNY=;
+        b=tXN1TwM4h+OBfRmXm3/xFZKALD2aG3+ydRiZbxFQSzMkFJHLXFZrsAYlVp6jh5l+2n
+         qs0GFlEo8v1JfwNuD95jlaPIUNxdCDrYNJ1aiCC1oDCa2vpHtTDlwlluVlAWPcL7w4Vs
+         0YGtCdUD24C+Kf6VsIa+gDdeo40na7axNGBHmWz5BD0OlJmd5SifbhZjRzDU9Nu1VT6O
+         CZInhNWE5m8deAvlvXMWb0nOi7mJGH/BZwnRScPzSaa/C0KoZGRFIfLJa67MiYAVF/1/
+         +pBFzuWRcRS5uOXR2sF9OSgq0TYZrFpsHG0AaD0MIIYQ/Jban0BqbcnrdrSVAF5KWa3A
+         +JIw==
+X-Gm-Message-State: APjAAAUlx/5n+gt77apL2zar496uVeOsL7eh8jdf3v0tBO1I1kNICFoO
+	4jRYY+ePkY4iWAMOsgAgdgXfug1N
+X-Google-Smtp-Source: APXvYqw0kAdbnSQ+zqyxmG6qprWn237V2XIS7sgBpQvKszHmllWC7b/8Ye3aMUYQ7a3zo8Lmx+g0xA==
+X-Received: by 2002:a5d:548d:: with SMTP id h13mr12544924wrv.215.1568643359201;
+        Mon, 16 Sep 2019 07:15:59 -0700 (PDT)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-        by smtp.gmail.com with ESMTPSA id s9sm15185884wme.36.2019.09.16.07.15.57
+        by smtp.gmail.com with ESMTPSA id s9sm15185884wme.36.2019.09.16.07.15.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Sep 2019 07:15:57 -0700 (PDT)
+        Mon, 16 Sep 2019 07:15:58 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 09/15] target/arm/arm-semi: Factor out implementation of SYS_READ
-Date: Mon, 16 Sep 2019 15:15:38 +0100
-Message-Id: <20190916141544.17540-10-peter.maydell@linaro.org>
+Subject: [PATCH v2 10/15] target/arm/arm-semi: Factor out implementation of SYS_ISTTY
+Date: Mon, 16 Sep 2019 15:15:39 +0100
+Message-Id: <20190916141544.17540-11-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190916141544.17540-1-peter.maydell@linaro.org>
 References: <20190916141544.17540-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 53t3jCe6xSXb
+X-TUID: qLJULVoEkjhe
 
-Factor out the implementation of SYS_READ via the
-new function tables.
+Factor out the implementation of SYS_ISTTY via the new function
+tables.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/arm-semi.c | 55 +++++++++++++++++++++++++++----------------
- 1 file changed, 35 insertions(+), 20 deletions(-)
+ target/arm/arm-semi.c | 20 +++++++++++++++-----
+ 1 file changed, 15 insertions(+), 5 deletions(-)
 
 diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-index c21cbb97bc1..958083a105c 100644
+index 958083a105c..ecd51338fd3 100644
 --- a/target/arm/arm-semi.c
 +++ b/target/arm/arm-semi.c
-@@ -386,6 +386,8 @@ static target_ulong arm_gdb_syscall(ARMCPU *cpu, gdb_syscall_complete_cb cb,
- typedef uint32_t sys_closefn(ARMCPU *cpu, GuestFD *gf);
- typedef uint32_t sys_writefn(ARMCPU *cpu, GuestFD *gf,
+@@ -388,6 +388,7 @@ typedef uint32_t sys_writefn(ARMCPU *cpu, GuestFD *gf,
                               target_ulong buf, uint32_t len);
-+typedef uint32_t sys_readfn(ARMCPU *cpu, GuestFD *gf,
-+                            target_ulong buf, uint32_t len);
+ typedef uint32_t sys_readfn(ARMCPU *cpu, GuestFD *gf,
+                             target_ulong buf, uint32_t len);
++typedef uint32_t sys_isattyfn(ARMCPU *cpu, GuestFD *gf);
  
  static uint32_t host_closefn(ARMCPU *cpu, GuestFD *gf)
  {
-@@ -413,6 +415,27 @@ static uint32_t host_writefn(ARMCPU *cpu, GuestFD *gf,
+@@ -436,6 +437,11 @@ static uint32_t host_readfn(ARMCPU *cpu, GuestFD *gf,
      return len - ret;
  }
  
-+static uint32_t host_readfn(ARMCPU *cpu, GuestFD *gf,
-+                            target_ulong buf, uint32_t len)
++static uint32_t host_isattyfn(ARMCPU *cpu, GuestFD *gf)
 +{
-+    uint32_t ret;
-+    CPUARMState *env = &cpu->env;
-+    char *s = lock_user(VERIFY_WRITE, buf, len, 0);
-+    if (!s) {
-+        /* return bytes not read */
-+        return len;
-+    }
-+    do {
-+        ret = set_swi_errno(env, read(gf->hostfd, s, len));
-+    } while (ret == -1 && errno == EINTR);
-+    unlock_user(s, buf, len);
-+    if (ret == (uint32_t)-1) {
-+        ret = 0;
-+    }
-+    /* Return bytes not read */
-+    return len - ret;
++    return isatty(gf->hostfd);
 +}
 +
  static uint32_t gdb_closefn(ARMCPU *cpu, GuestFD *gf)
  {
      return arm_gdb_syscall(cpu, arm_semi_cb, "close,%x", gf->hostfd);
-@@ -426,19 +449,30 @@ static uint32_t gdb_writefn(ARMCPU *cpu, GuestFD *gf,
+@@ -457,10 +463,16 @@ static uint32_t gdb_readfn(ARMCPU *cpu, GuestFD *gf,
                             gf->hostfd, buf, len);
  }
  
-+static uint32_t gdb_readfn(ARMCPU *cpu, GuestFD *gf,
-+                           target_ulong buf, uint32_t len)
++static uint32_t gdb_isattyfn(ARMCPU *cpu, GuestFD *gf)
 +{
-+    arm_semi_syscall_len = len;
-+    return arm_gdb_syscall(cpu, arm_semi_cb, "read,%x,%x,%x",
-+                           gf->hostfd, buf, len);
++    return arm_gdb_syscall(cpu, arm_semi_cb, "isatty,%x", gf->hostfd);
 +}
 +
  typedef struct GuestFDFunctions {
      sys_closefn *closefn;
      sys_writefn *writefn;
-+    sys_readfn *readfn;
+     sys_readfn *readfn;
++    sys_isattyfn *isattyfn;
  } GuestFDFunctions;
  
  static const GuestFDFunctions guestfd_fns[] = {
-     [GuestFDHost] = {
+@@ -468,11 +480,13 @@ static const GuestFDFunctions guestfd_fns[] = {
          .closefn = host_closefn,
          .writefn = host_writefn,
-+        .readfn = host_readfn,
+         .readfn = host_readfn,
++        .isattyfn = host_isattyfn,
      },
      [GuestFDGDB] = {
          .closefn = gdb_closefn,
          .writefn = gdb_writefn,
-+        .readfn = gdb_readfn,
+         .readfn = gdb_readfn,
++        .isattyfn = gdb_isattyfn,
      },
  };
  
-@@ -584,26 +618,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+@@ -631,11 +645,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
              return set_swi_errno(env, -1);
          }
  
 -        if (use_gdb_syscalls()) {
--            arm_semi_syscall_len = len;
--            return arm_gdb_syscall(cpu, arm_semi_cb, "read,%x,%x,%x",
--                                   gf->hostfd, arg1, len);
+-            return arm_gdb_syscall(cpu, arm_semi_cb, "isatty,%x", gf->hostfd);
 -        } else {
--            s = lock_user(VERIFY_WRITE, arg1, len, 0);
--            if (!s) {
--                /* return bytes not read */
--                return len;
--            }
--            do {
--                ret = set_swi_errno(env, read(gf->hostfd, s, len));
--            } while (ret == -1 && errno == EINTR);
--            unlock_user(s, arg1, len);
--            if (ret == (uint32_t)-1) {
--                ret = 0;
--            }
--            /* Return bytes not read */
--            return len - ret;
+-            return isatty(gf->hostfd);
 -        }
-+        return guestfd_fns[gf->type].readfn(cpu, gf, arg1, len);
-     case TARGET_SYS_READC:
-         qemu_log_mask(LOG_UNIMP, "%s: SYS_READC not implemented", __func__);
-         return 0;
++        return guestfd_fns[gf->type].isattyfn(cpu, gf);
+     case TARGET_SYS_SEEK:
+         GET_ARG(0);
+         GET_ARG(1);
 -- 
 2.20.1

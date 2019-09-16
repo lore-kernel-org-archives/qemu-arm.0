@@ -1,253 +1,255 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4068029wrp;
-        Mon, 16 Sep 2019 07:16:03 -0700 (PDT)
-X-Received: by 2002:a7b:c182:: with SMTP id y2mr5420574wmi.156.1568643363076;
-        Mon, 16 Sep 2019 07:16:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568643363; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4172466wrp;
+        Mon, 16 Sep 2019 08:51:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyA17TweTrLeCwXpa0bqcZGEsxedLoj6W3NRd7PIuK4Tf5VPG5f+YbJi2PXvtL4wZy2naoY
+X-Received: by 2002:a50:9e26:: with SMTP id z35mr62094874ede.265.1568649078290;
+        Mon, 16 Sep 2019 08:51:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568649078; cv=none;
         d=google.com; s=arc-20160816;
-        b=aOPhUNZ3wlGAAZ6MXcRR9biKEgwZwfbJ6pSyF6WxMqY7ZD8NBFL9BHzsrpqNs+sqLD
-         QeQKYkGmM2GeXfiLxMFhLYRI19pwSGPG1SpCNWffzNIUizDsq3ec1RVtfaQtJ5XsIGHs
-         FufpLXo5UlM5hmXRh761yctMLdKnMR0zFv4NRyb67D1+nXO1juZqod8WptEbBGlNrrhr
-         NYT0HGTakVtMoAE6FOMdIxjpBPfgMGnFVE4wkSfBFYNP/8e1HA1jwh3wPasSFGLG3aK2
-         EDmNilI/EDjrUq2f2N+qVBWdfBIppci+gs8aPgWwTzdutDNh4wZyusSWIfc8gj2k/z3w
-         CJwQ==
+        b=L+/KCUrydUrA2JyCK892b6LsHtjtChEx0IThsHOHFqq5OaxMQdabRlsttLz894V8Am
+         Aa6cDpKslB7WrsadyJUnDogICNnRm7d8bNbAuF6qpRbKp70VW925YC8n+5zH0KaGNjCP
+         kBmh/zgroEwb/3WYyGvkir6/MeZDfIxSRyhkAtBpY6xQs4PvhIqjqtaVz7Ce92Td+lFG
+         Fkr3HkDPb4iuCdq9niQky2GnAiaD+yvROc9i3NvrcX5HWC7XOTStXqz9SE31c4EAJMrY
+         uOojWRo32/pfVyR89E7/UcDgF18oJxLjAOOzsoLHTW/PRC/XjxivjhRroY0el9LRALEu
+         r1cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=+TLqHbpNEdFdoOs/T99sxVwsEvUGOL0cA+fPHcIpClc=;
-        b=Wba1TKayMWIAi70wu68X+nGL7O+i6Di15VNn3MeaZKmr/qTqyP25GBsFT849WFYr9d
-         S9Bxd5CpoQlfQTuOYmAMZzYBS8XpA/ANz/nzprH3bvTWFzaBMzjgXtBUAJUhVRFFUCPa
-         Nhjc1CDKOZMU3Q08Yhl65QNOemTRFz0X1BgS335pIrQbNr1AjXcTXggo7VGI1ECIF98h
-         cis3pZPg239x4dZdMwSiA6wxpzAGWNo8tvcHYrzbLKUIVaHhWsE3AJ1BlH+u3OjHjmFe
-         DRZzxo0SY630cMj68zfh1m0wqJ1aPPCvXxi/gT6/B1jK2ksye58G/b3r2G9v7CRusaTs
-         orpQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=M64uFAhxlxK1nz4rDzdejKJBqmxpdZ3WM/UTdi1yTFs=;
+        b=M+fDYM4AVFgLSaWtafyrGNPkIHIdHythWkjQCcdymnAtm2xgt0FBCGDkjaT96Z3wrn
+         sv9RzSEaICv17yxrbAbEWnoPjFPeVmyu8aWHl6UfXlsmUey4Rk34epEhJTy+9WlRenif
+         vdCMTWPNMjesAzkXC1bJtI8eKUDNZeJfZbJ5rCGKyq8fE0mi5VaMzMuZ7inbFf2zDv8K
+         6TrwW+ztaqeaxMit8im/jvPsXnwhKJlcC15UAIRmTL7NAn814L0WDTlodsR3I7I4XQk/
+         kWd2Q59BMQYLc31yPmekJkerg2xOpBY9u1bAs5ze4bdGEnerEJk6aQ/W4mPkn0Lbemi+
+         5Adg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sWuRAHJ+;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id r10sor13135094wrx.23.2019.09.16.07.16.03
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id f35si23971144eda.415.2019.09.16.08.51.18
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 16 Sep 2019 07:16:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 16 Sep 2019 08:51:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sWuRAHJ+;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=+TLqHbpNEdFdoOs/T99sxVwsEvUGOL0cA+fPHcIpClc=;
-        b=sWuRAHJ+Lp0Yyv0LksXsbzNARffbqNQ0AtbIl7CvRMLd2hIXjLH8lWE3NXEhuRSd3n
-         6fGAG4M1GfZCk4olMbIJd+8Mdx5UlNXa7NlpGadYbcpBak/Ee+l4bQPE4/ZdmtOjZBrb
-         6ca+S9XAKta6/koGyMJrh94bpkEceDjcLIQ3wA11r4GJkh/flAkckunXEe1OyNY1b5HI
-         iskjSbmUg6XHw5wI1y2cEvCnUwbmRt56MtvsDZ31Mq753n802xbbxMdKRqYGYWDyH+dl
-         G3iKQBfkN6cVy2Ds7PFX659nn0mWc6FmYAdhjjqkih+qAjLfR803adNaPxqwDZN/5rrs
-         BnqQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=+TLqHbpNEdFdoOs/T99sxVwsEvUGOL0cA+fPHcIpClc=;
-        b=IeIoNhjWC0us/dXrLah3YCwzRZplUbNQsNQCc1B4UEP7wBDDZ1dQcdLy13ZV/TInTN
-         WfUMIwBLxFWmvJ960AGBLtlYzDvoHZ5O8Nxp0drOtZVPal+e6HZlzAQJbGDhl756VEE3
-         PlI57MDgpsieAp5eTK+pVkSf5XQLwre0k83yyKo3hHkSJZ8IW4EEks1EYzi/U2u3Z0Nk
-         AQNycr+eGNfprPDd29vb+ITcZBYLtl9I1NSx4L3TL91joWo0d+mopt2gDUysitvv0AhX
-         m5LuNrAyxRPgSUcWtNPX6Z2X8MYVvqoi0xGhYBuCtJkWOqfKCR9GiRwooCeXdhf7yZdI
-         zuHg==
-X-Gm-Message-State: APjAAAULWRqRoMntLZWwzA1L55zg+uCREkakKfxof26cZCU5l1xue2FL
-	dkzSj/m+gbIm60qLa1uUjHzVPkWvQCHGi87w
-X-Google-Smtp-Source: APXvYqxXjV9ACn0RO8JvYa5+5KwRR80QHwJXhZVSaT7RJR/S9Sse7DCQDn/W6/9nOCOwY4SIkfySAg==
-X-Received: by 2002:a5d:55d0:: with SMTP id i16mr32654wrw.108.1568643362808;
-        Mon, 16 Sep 2019 07:16:02 -0700 (PDT)
-Return-Path: <peter.maydell@linaro.org>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-        by smtp.gmail.com with ESMTPSA id s9sm15185884wme.36.2019.09.16.07.16.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Sep 2019 07:16:02 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 13/15] target/arm/arm-semi: Implement support for semihosting feature detection
-Date: Mon, 16 Sep 2019 15:15:42 +0100
-Message-Id: <20190916141544.17540-14-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190916141544.17540-1-peter.maydell@linaro.org>
-References: <20190916141544.17540-1-peter.maydell@linaro.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36200 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i9tHY-0000V1-Lr
+	for alex.bennee@linaro.org; Mon, 16 Sep 2019 11:51:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34949)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philmd@redhat.com>) id 1i9tFc-0007Qp-8N
+ for qemu-devel@nongnu.org; Mon, 16 Sep 2019 11:49:17 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1i9tFa-0001T0-Gp
+ for qemu-devel@nongnu.org; Mon, 16 Sep 2019 11:49:15 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:10705)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1i9tFV-0001QD-CL; Mon, 16 Sep 2019 11:49:09 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id D0FC8A2666F;
+ Mon, 16 Sep 2019 15:49:07 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-115.brq.redhat.com [10.40.204.115])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 678A6194BB;
+ Mon, 16 Sep 2019 15:48:51 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 16 Sep 2019 17:48:34 +0200
+Message-Id: <20190916154847.28936-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: MVQVNjEFso1e
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.68]); Mon, 16 Sep 2019 15:49:08 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-devel] [PATCH 00/13] hw: Split RTC devices from hw/timer/ to
+ hw/rtc/
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Helge Deller <deller@gmx.de>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-ppc@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3T1qVPc7qjXZ
 
-Version 2.0 of the semihosting specification added support for
-allowing a guest to detect whether the implementation supported
-particular features. This works by the guest opening a magic
-file ":semihosting-features", which contains a fixed set of
-data with some magic numbers followed by a sequence of bytes
-with feature flags. The file is expected to behave sensibly
-for the various semihosting calls which operate on files
-(SYS_FLEN, SYS_SEEK, etc).
+When working on timers, I found it confuse to have RTC devices
+mixed in the hw/timer/ directory.
 
-Implement this as another kind of guest FD using our function
-table dispatch mechanism. Initially we report no extended
-features, so we have just one feature flag byte which is zero.
+We can see the models use slighly different APIs:
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
----
- target/arm/arm-semi.c | 109 +++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 108 insertions(+), 1 deletion(-)
+  $ git grep '#include' hw/timer/|cut -d: -f3-|sort|uniq -c|egrep -v '^  =
+    1 '|sort -rn
+     33 #include "qemu/osdep.h"
+     29 #include "hw/irq.h"
+     28 #include "qemu/module.h"
+     23 #include "migration/vmstate.h"
+     21 #include "hw/sysbus.h"
+     20 #include "qemu/timer.h"
+     20 #include "qemu/main-loop.h"
+     17 #include "qemu/log.h"
+     14 #include "hw/qdev-properties.h"
+     14 #include "hw/ptimer.h"
+      9 #include "trace.h"
+      7 #include "qapi/error.h"
+      5 #include "hw/hw.h"
+      3 #include "sysemu/runstate.h"
+      3 #include "qemu/error-report.h"
+      3 #include "hw/timer/i8254.h"
+      2 #include "qemu/bitops.h"
+      2 #include "hw/timer/i8254_internal.h"
+      2 #include "hw/registerfields.h"
+      2 #include "hw/core/cpu.h"
+      2 #include "hw/arm/omap.h"
+      2 #include "hw/arm/exynos4210.h"
 
-diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-index 87c911f0187..57491740d73 100644
---- a/target/arm/arm-semi.c
-+++ b/target/arm/arm-semi.c
-@@ -110,6 +110,7 @@ typedef enum GuestFDType {
-     GuestFDUnused = 0,
-     GuestFDHost = 1,
-     GuestFDGDB = 2,
-+    GuestFDFeatureFile = 3,
- } GuestFDType;
- 
- /*
-@@ -118,7 +119,10 @@ typedef enum GuestFDType {
-  */
- typedef struct GuestFD {
-     GuestFDType type;
--    int hostfd;
-+    union {
-+        int hostfd;
-+        target_ulong featurefile_offset;
-+    };
- } GuestFD;
- 
- static GArray *guestfd_array;
-@@ -504,6 +508,89 @@ static uint32_t gdb_flenfn(ARMCPU *cpu, GuestFD *gf)
-                            gf->hostfd, arm_flen_buf(cpu));
- }
- 
-+#define SHFB_MAGIC_0 0x53
-+#define SHFB_MAGIC_1 0x48
-+#define SHFB_MAGIC_2 0x46
-+#define SHFB_MAGIC_3 0x42
-+
-+static const uint8_t featurefile_data[] = {
-+    SHFB_MAGIC_0,
-+    SHFB_MAGIC_1,
-+    SHFB_MAGIC_2,
-+    SHFB_MAGIC_3,
-+    0, /* Feature byte 0 */
-+};
-+
-+static void init_featurefile_guestfd(int guestfd)
-+{
-+    GuestFD *gf = do_get_guestfd(guestfd);
-+
-+    assert(gf);
-+    gf->type = GuestFDFeatureFile;
-+    gf->featurefile_offset = 0;
-+}
-+
-+static uint32_t featurefile_closefn(ARMCPU *cpu, GuestFD *gf)
-+{
-+    /* Nothing to do */
-+    return 0;
-+}
-+
-+static uint32_t featurefile_writefn(ARMCPU *cpu, GuestFD *gf,
-+                                    target_ulong buf, uint32_t len)
-+{
-+    /* This fd can never be open for writing */
-+    CPUARMState *env = &cpu->env;
-+
-+    errno = EBADF;
-+    return set_swi_errno(env, -1);
-+}
-+
-+static uint32_t featurefile_readfn(ARMCPU *cpu, GuestFD *gf,
-+                                   target_ulong buf, uint32_t len)
-+{
-+    uint32_t i;
-+#ifndef CONFIG_USER_ONLY
-+    CPUARMState *env = &cpu->env;
-+#endif
-+    char *s;
-+
-+    s = lock_user(VERIFY_WRITE, buf, len, 0);
-+    if (!s) {
-+        return len;
-+    }
-+
-+    for (i = 0; i < len; i++) {
-+        if (gf->featurefile_offset >= sizeof(featurefile_data)) {
-+            break;
-+        }
-+        s[i] = featurefile_data[gf->featurefile_offset];
-+        gf->featurefile_offset++;
-+    }
-+
-+    unlock_user(s, buf, len);
-+
-+    /* Return number of bytes not read */
-+    return len - i;
-+}
-+
-+static uint32_t featurefile_isattyfn(ARMCPU *cpu, GuestFD *gf)
-+{
-+    return 0;
-+}
-+
-+static uint32_t featurefile_seekfn(ARMCPU *cpu, GuestFD *gf,
-+                                   target_ulong offset)
-+{
-+    gf->featurefile_offset = offset;
-+    return 0;
-+}
-+
-+static uint32_t featurefile_flenfn(ARMCPU *cpu, GuestFD *gf)
-+{
-+    return sizeof(featurefile_data);
-+}
-+
- typedef struct GuestFDFunctions {
-     sys_closefn *closefn;
-     sys_writefn *writefn;
-@@ -530,6 +617,14 @@ static const GuestFDFunctions guestfd_fns[] = {
-         .seekfn = gdb_seekfn,
-         .flenfn = gdb_flenfn,
-     },
-+    [GuestFDFeatureFile] = {
-+        .closefn = featurefile_closefn,
-+        .writefn = featurefile_writefn,
-+        .readfn = featurefile_readfn,
-+        .isattyfn = featurefile_isattyfn,
-+        .seekfn = featurefile_seekfn,
-+        .flenfn = featurefile_flenfn,
-+    },
- };
- 
- /* Read the input value from the argument block; fail the semihosting
-@@ -616,6 +711,18 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-             unlock_user(s, arg0, 0);
-             return guestfd;
-         }
-+        if (strcmp(s, ":semihosting-features") == 0) {
-+            unlock_user(s, arg0, 0);
-+            /* We must fail opens for modes other than 0 ('r') or 1 ('rb') */
-+            if (arg1 != 0 && arg1 != 1) {
-+                dealloc_guestfd(guestfd);
-+                errno = EACCES;
-+                return set_swi_errno(env, -1);
-+            }
-+            init_featurefile_guestfd(guestfd);
-+            return guestfd;
-+        }
-+
-         if (use_gdb_syscalls()) {
-             arm_semi_open_guestfd = guestfd;
-             ret = arm_gdb_syscall(cpu, arm_semi_open_cb, "open,%s,%x,1a4", arg0,
--- 
+  $ git grep '#include' hw/rtc/|cut -d: -f3-|sort|uniq -c|egrep -v '^    =
+  1 '|sort -rn
+     11 #include "qemu/osdep.h"
+     10 #include "qemu/module.h"
+      9 #include "qemu-common.h"
+      8 #include "qemu/timer.h"
+      8 #include "migration/vmstate.h"
+      6 #include "qemu/bcd.h"
+      6 #include "hw/irq.h"
+      5 #include "sysemu/sysemu.h"
+      5 #include "qemu/log.h"
+      5 #include "hw/sysbus.h"
+      4 #include "trace.h"
+      4 #include "hw/qdev-properties.h"
+      3 #include "qemu/cutils.h"
+      3 #include "hw/i2c/i2c.h"
+      2 #include "sysemu/runstate.h"
+      2 #include "m48t59-internal.h"
+      2 #include "hw/rtc/m48t59.h"
+      2 #include "exec/address-spaces.h"
+
+Split the RTC-related files in the new hw/rtc/ directory.
+
+Philippe Mathieu-Daud=C3=A9 (13):
+  hw/timer: Compile devices not target-dependent as common object
+  hw: Move PL031 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move MC146818 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move M48T59 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move M41T80 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move sun4v hypervisor RTC from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move TWL92230 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move DS1338 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move Xilinx ZynqMP RTC from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move Exynos4210 RTC from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move Aspeed RTC from hw/timer/ to hw/rtc/ subdirectory
+  hw/rtc/mc146818: Include mc146818rtc_regs.h a bit less
+  hw/rtc/xlnx-zynqmp-rtc: Remove unused "ptimer.h" include
+
+ MAINTAINERS                                  | 20 +++----
+ Makefile.objs                                |  1 +
+ hw/Kconfig                                   |  1 +
+ hw/Makefile.objs                             |  1 +
+ hw/alpha/dp264.c                             |  2 +-
+ hw/arm/musca.c                               |  2 +-
+ hw/hppa/machine.c                            |  2 +-
+ hw/i386/acpi-build.c                         |  2 +-
+ hw/i386/pc.c                                 |  2 +-
+ hw/i386/pc_q35.c                             |  2 +-
+ hw/mips/mips_fulong2e.c                      |  2 +-
+ hw/mips/mips_jazz.c                          |  2 +-
+ hw/mips/mips_malta.c                         |  2 +-
+ hw/mips/mips_r4k.c                           |  2 +-
+ hw/ppc/pnv.c                                 |  2 +-
+ hw/ppc/ppc405_boards.c                       |  2 +-
+ hw/ppc/prep.c                                |  4 +-
+ hw/rtc/Kconfig                               | 23 ++++++++
+ hw/rtc/Makefile.objs                         | 13 +++++
+ hw/{timer =3D> rtc}/aspeed_rtc.c               |  2 +-
+ hw/{timer =3D> rtc}/ds1338.c                   |  0
+ hw/{timer =3D> rtc}/exynos4210_rtc.c           |  0
+ hw/{timer =3D> rtc}/m41t80.c                   |  0
+ hw/{timer =3D> rtc}/m48t59-internal.h          |  0
+ hw/{timer =3D> rtc}/m48t59-isa.c               |  4 +-
+ hw/{timer =3D> rtc}/m48t59.c                   |  2 +-
+ hw/{timer =3D> rtc}/mc146818rtc.c              |  3 +-
+ hw/{timer =3D> rtc}/pl031.c                    |  2 +-
+ hw/{timer =3D> rtc}/sun4v-rtc.c                |  2 +-
+ hw/rtc/trace-events                          | 19 +++++++
+ hw/{timer =3D> rtc}/twl92230.c                 |  0
+ hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.c          |  3 +-
+ hw/sparc/sun4m.c                             |  2 +-
+ hw/sparc64/niagara.c                         |  2 +-
+ hw/sparc64/sun4u.c                           |  2 +-
+ hw/timer/Kconfig                             | 24 ---------
+ hw/timer/Makefile.objs                       | 35 ++++--------
+ hw/timer/hpet.c                              |  3 +-
+ hw/timer/trace-events                        | 18 -------
+ include/hw/arm/aspeed_soc.h                  |  2 +-
+ include/hw/arm/xlnx-zynqmp.h                 |  2 +-
+ include/hw/{timer =3D> rtc}/aspeed_rtc.h       |  3 --
+ include/hw/rtc/m48t59.h                      | 57 ++++++++++++++++++++
+ include/hw/rtc/mc146818rtc.h                 | 37 +++++++++++++
+ include/hw/{timer =3D> rtc}/mc146818rtc_regs.h |  1 +
+ include/hw/{timer =3D> rtc}/pl031.h            |  5 +-
+ include/hw/rtc/sun4v-rtc.h                   | 19 +++++++
+ include/hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.h  |  6 +--
+ include/hw/timer/mc146818rtc.h               | 14 -----
+ include/hw/timer/sun4v-rtc.h                 |  1 -
+ tests/rtc-test.c                             |  2 +-
+ 51 files changed, 230 insertions(+), 129 deletions(-)
+ create mode 100644 hw/rtc/Kconfig
+ create mode 100644 hw/rtc/Makefile.objs
+ rename hw/{timer =3D> rtc}/aspeed_rtc.c (99%)
+ rename hw/{timer =3D> rtc}/ds1338.c (100%)
+ rename hw/{timer =3D> rtc}/exynos4210_rtc.c (100%)
+ rename hw/{timer =3D> rtc}/m41t80.c (100%)
+ rename hw/{timer =3D> rtc}/m48t59-internal.h (100%)
+ rename hw/{timer =3D> rtc}/m48t59-isa.c (98%)
+ rename hw/{timer =3D> rtc}/m48t59.c (99%)
+ rename hw/{timer =3D> rtc}/mc146818rtc.c (99%)
+ rename hw/{timer =3D> rtc}/pl031.c (99%)
+ rename hw/{timer =3D> rtc}/sun4v-rtc.c (98%)
+ create mode 100644 hw/rtc/trace-events
+ rename hw/{timer =3D> rtc}/twl92230.c (100%)
+ rename hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.c (99%)
+ rename include/hw/{timer =3D> rtc}/aspeed_rtc.h (92%)
+ create mode 100644 include/hw/rtc/m48t59.h
+ create mode 100644 include/hw/rtc/mc146818rtc.h
+ rename include/hw/{timer =3D> rtc}/mc146818rtc_regs.h (98%)
+ rename include/hw/{timer =3D> rtc}/pl031.h (93%)
+ create mode 100644 include/hw/rtc/sun4v-rtc.h
+ rename include/hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.h (95%)
+ delete mode 100644 include/hw/timer/mc146818rtc.h
+ delete mode 100644 include/hw/timer/sun4v-rtc.h
+
+--=20
 2.20.1
+

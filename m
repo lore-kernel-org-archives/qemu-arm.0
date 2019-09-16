@@ -1,100 +1,100 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4318739wrp;
-        Mon, 16 Sep 2019 11:17:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwkcQvCXaqyTxdrfcavikmg3dJm22hRbIjnTLAWQqH6/Z1cWaanOnuqFfXYwvX/4gmipn5t
-X-Received: by 2002:a37:9782:: with SMTP id z124mr1301173qkd.78.1568657877185;
-        Mon, 16 Sep 2019 11:17:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568657877; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4490191wrp;
+        Mon, 16 Sep 2019 14:27:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzKlhBDGZ/GAkV+WC8b31Xt10PgxaDX6on9UY+T77E/iTeJxVYKCdj2VYO3OiI4fqcg1TJ3
+X-Received: by 2002:ac8:3644:: with SMTP id n4mr515703qtb.92.1568669274084;
+        Mon, 16 Sep 2019 14:27:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568669274; cv=none;
         d=google.com; s=arc-20160816;
-        b=gUAQWmp9uiJ6D5LRp/8MOhbb6bpBP01I+ittaxjBwgCWoWyYRrEyw3mSCJJrKL8qdg
-         RT4Urwn7UauOMWYI3o6Qq8dcK9UhKlcto2yQecO4HWv6yQ//L8bpUkISva0UaV3NE6YU
-         2qDdRatgHnfXvmmM5auE28x9IJOtYeqL0mNXfGBt9/2k//45hiOThHV7k44i1Eid4LxD
-         N+gjHttBrqPDL/ui+fjj922sQcqfM51GEcvy0P9Hc7oZ8vmDPmlw43GgQDsRNpJqly+D
-         8jckMWxr4THod1o+QKIfcXh+2ohXabUXc5LcFB9Lgy9TtBrKSghf1SZuR33X0j2F/oke
-         yoQg==
+        b=uhbcUyrTsibMZNLcEgVUCWOHRaH5O5auwnGGeJMFveve9Yzzs5+q2asjybp621/eYW
+         LwlHb+kPA5Tg+vhnDnQtGt9gBKQFidmqlYJ9Ow1MI7sjFBpFUAFd4/xyRDCHoP8RilSo
+         oVLFCAezpIcLMj8WPqcaZ4ssRvPunJMhfWxKAgWuYQfm4aHnZ0P9ZIUfBpVMr7jzN6v2
+         BE+HYV9VtxVZR2BAERmz9GHH+tUSHeqzRRqPliyGCy3BCULXPhF6yzRIjsT8mXDVtlBi
+         sGUH/43Zpc7+qOhodfndKO8r/kjSZd0lfBdwTwZ5M+7f+lu70EHtL+M3SSzL1S4C52+I
+         qY1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:to:message-id:date:from:in-reply-to
          :references:mime-version:dkim-signature;
-        bh=m/EqfrybCQ4tblX57BkZitZxiHAXWsh9n2Uj8qj4FGk=;
-        b=KPdt1u5GG/muYYN7Enp6p3+OgGXTeQTEj58qF1sBEi5lFFO6L+OWFLEnEVIVyHNMti
-         Cp5p8xtUMRsbAgga78jIQX6rP6ppUITwoNy5G3IdJxFc5UjH/i2FZUy8XO0nHSb1p8ph
-         aDdgwW1jzkCuS9Rqk8XNTs6rs5QsUZt99Oz8AlGWyuRvt7RXvsmYbMq6YXL9BEhTs/VY
-         3f0hpLRjQ1xLhOElr713cnxLJ3WuUEmnEXEI+STjLelg/R5+De5pWcBHu2ycmCD+tnms
-         kfVfDHc14aJT2tksX2gjWfiVTmHzezFQjsKCBxG07WExCAsdxkVmZwzD1RVsfO1BtwJe
-         BjeA==
+        bh=BTOQyzbQ2zzSk/LSkK1aPuLLtX4mpaW87OMJqtfZHl8=;
+        b=XDTF/lHY9Q1wBLShNrRFNkJINT9W6gnclWjk/bkmeGzzgfj+eWnO9so1Xi2hhmoy1R
+         Tb77X+s0wGyl8tRVdB0hyeRXOi+IGyh+Zr4KhsTKLjR63N93Ao8uc4cI0ZkKAD2/9Iau
+         ywlgG11q3bbtliPubYth7PKCJDvxIAV/FBTvDD05Ez4j3t7kSDWgjvWM7SSRMkyoB4Fp
+         ioaKc+WlDRQMKrYEnOfDriikeDy5gDnVFguKf8TaGvCK/HgRalynsavvW322bMagymlr
+         LrQhfX/BSQ3nwel2LPARkbGAaVXI+OlPBAUw/LmpyQXYaBbf4V8ZxK7/dQGSpIxiy6up
+         nSlg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YUFj3gUE;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YPM0oyHB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t3si27795203qto.390.2019.09.16.11.17.57
+        by mx.google.com with ESMTPS id j15si180981qtp.272.2019.09.16.14.27.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Sep 2019 11:17:57 -0700 (PDT)
+        Mon, 16 Sep 2019 14:27:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YUFj3gUE;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YPM0oyHB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38464 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40134 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i9vZU-00025D-MF
-	for alex.bennee@linaro.org; Mon, 16 Sep 2019 14:17:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38887)
+	id 1i9yXJ-0007qB-D6
+	for alex.bennee@linaro.org; Mon, 16 Sep 2019 17:27:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33384)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1i9vYh-00021v-S3
- for qemu-arm@nongnu.org; Mon, 16 Sep 2019 14:17:14 -0400
+ (envelope-from <alistair23@gmail.com>) id 1i9yWn-0007mP-7r
+ for qemu-arm@nongnu.org; Mon, 16 Sep 2019 17:27:23 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1i9vYb-0000X6-F0
- for qemu-arm@nongnu.org; Mon, 16 Sep 2019 14:17:07 -0400
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:44199)
+ (envelope-from <alistair23@gmail.com>) id 1i9yWl-0002jP-4b
+ for qemu-arm@nongnu.org; Mon, 16 Sep 2019 17:27:21 -0400
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:36945)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1i9vYO-0000Ov-Tz; Mon, 16 Sep 2019 14:16:49 -0400
-Received: by mail-lj1-x243.google.com with SMTP id m13so815434ljj.11;
- Mon, 16 Sep 2019 11:16:48 -0700 (PDT)
+ id 1i9yWZ-0002cP-8p; Mon, 16 Sep 2019 17:27:11 -0400
+Received: by mail-lj1-x243.google.com with SMTP id c22so1371935ljj.4;
+ Mon, 16 Sep 2019 14:27:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=m/EqfrybCQ4tblX57BkZitZxiHAXWsh9n2Uj8qj4FGk=;
- b=YUFj3gUECJnH/HvRKyblhmDvePymSxHqdT4o3pZLM83POMEAoQmWDAVlcoW5WABRpS
- 2B4CJgoFncqwLF4cJ6qcjThp7TK+sfov4E5dl42FKJs3ERj5/+NgpKlMlTi9ZEjgWaH9
- thvNa4Quc1sm6/D2oUB32SDp6cYbLlsioW+w+PSTUdrX0GDmVbu0yutup78yl07JZ9qE
- tmvPQRtYTD/tqVMVsP62Bm2dLYXkYIbcc6hJJdRly3oErIuHA6UgM5qZMi1WAKXo/dx3
- lejiTyWB5jG3ZatzKd/QKfQNA2o2Zn5rtzEV2vZgxrsFsKlUFS/qMhld+4FVJDVStBt3
- yRIA==
+ bh=BTOQyzbQ2zzSk/LSkK1aPuLLtX4mpaW87OMJqtfZHl8=;
+ b=YPM0oyHBWXp+6Z/salWitZpDJFgOjN5B9FriLooB+vGdzSZZKMwzT8fHVe+s+DB1Mk
+ /3E2wLG+filgEVHODiXyOCSe6xioBDdi6xjHnwBskZSjbsLnuVhXN/r8z2hrl1eiUN0V
+ 3S2GgY+RiU4wXBIfAxWl8pvjA8vPoGHO9yfi4gjab/E+6lDxB+HI8KmAJpJnmJ0RNHPY
+ ubw8G7L9cpBjz6aWFxMnl1SIwi/OjWZr4vbhyRimkqnuC50O7z0irG+0FWnQLMg6h7iM
+ L9PMpq2WIKzBTyAmCPBzQw7Mg+hmmp06kyo9qJnZsJ8CpB/iSH/hoqYycPiUvmi/yBYi
+ AXcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=m/EqfrybCQ4tblX57BkZitZxiHAXWsh9n2Uj8qj4FGk=;
- b=FQFZENF25lSJcC2ns8s0z7ABjYJal9P4OqX48VfpUobagtyxF+yJ4BWov2hIManyCO
- 8CHEsQFCYg8+vpMCYajPrZCk8xQHmjtuh1SfOPbqaAsEpLbs+ZlWbab3/FKwQdgpWD6w
- 38D/DbCFODE8yBO0RreYNxfzipY/taa6oGtEiUHym2tWCaBC9WNtnT1h6EOQQvNCfUiJ
- e7nXYWhGpG68e7LYqnGVc5sqcq/RZ7f7mTfAjT+4BXCofzhyLs+C3CJQ50j1Aeb5w1Gt
- 7jA4er9EiU0dKVWTJ1a4iuc6ZcJWKd91E2iF+cX8KLFJDfh7vxUfsNAv6kDQ9ybkZKnX
- VZlw==
-X-Gm-Message-State: APjAAAUEQa5A9IJwMzLNgSur2g6L0NCKX1gXKqXXBZVrSRePdtHJ//IM
- iF70zlycDhOSkaDhHd47DTqs2Hz2ne3PcIDEr8M=
-X-Received: by 2002:a2e:3902:: with SMTP id g2mr508404lja.196.1568657806854;
- Mon, 16 Sep 2019 11:16:46 -0700 (PDT)
+ bh=BTOQyzbQ2zzSk/LSkK1aPuLLtX4mpaW87OMJqtfZHl8=;
+ b=KSjTCcwRAzLy421zmmDmbjAFYRNzDLGD9miF2LU1E1yegNKT6gj2FkQlRHCRVo1WXp
+ krC5M5eyZDw/snzWgIyYQhwyLcdwm0dc2qOWwhmxSXxgBbvJxoR3QO8izMs7hlsuS1f5
+ uEd1pab0fATPZr2mAlleoueL+Z+0b3WGa7KiQl7KSJ9XUs3uK6Sm3v8vy8U2TtB+z32M
+ BnY4egOeuPDWIo20cQisPqMWiKHKZfhLMB1KuOXhm+F1vAtU+zP2QuOrmqlGicg9XCTC
+ ifHz55B5DeOCWKpr9Ef2S92bOAJ1gyLztqDFM/EJZ5JR3ERXTp00Gz6iQDATZXWumuMl
+ s3rA==
+X-Gm-Message-State: APjAAAWWbcavhCqrRrzF4BxKHvNj4a3HJIw5QlvIBxm/LT5pl5jO+Krs
+ qf5C9Bnkd8n1+3YZFJUsGLT55a2/agD0fL+9K2U=
+X-Received: by 2002:a2e:780a:: with SMTP id t10mr890315ljc.119.1568669223797; 
+ Mon, 16 Sep 2019 14:27:03 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190916154847.28936-1-philmd@redhat.com>
- <20190916154847.28936-3-philmd@redhat.com>
-In-Reply-To: <20190916154847.28936-3-philmd@redhat.com>
+ <20190916154847.28936-4-philmd@redhat.com>
+In-Reply-To: <20190916154847.28936-4-philmd@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 16 Sep 2019 11:12:15 -0700
-Message-ID: <CAKmqyKNUys2GwiGfQLSnefpNonimiRbHzpowwM9hC7n0K9CROw@mail.gmail.com>
+Date: Mon, 16 Sep 2019 14:22:32 -0700
+Message-ID: <CAKmqyKNC015doC43JnRrqgeoBGu53rDUWsZE6FL-O_b1zC+8eQ@mail.gmail.com>
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 2a00:1450:4864:20::243
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 02/13] hw: Move PL031 device
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 03/13] hw: Move MC146818 device
  from hw/timer/ to hw/rtc/ subdirectory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -124,12 +124,12 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CA5E9O/JoSjM
+X-TUID: eTtUw+e3zL+P
 
-On Mon, Sep 16, 2019 at 9:06 AM Philippe Mathieu-Daud=C3=A9
+On Mon, Sep 16, 2019 at 9:31 AM Philippe Mathieu-Daud=C3=A9
 <philmd@redhat.com> wrote:
 >
-> The PL031 is a Real Time Clock, not a timer.
+> The MC146818 is a Real Time Clock, not a timer.
 > Move it under the hw/rtc/ subdirectory.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
@@ -139,200 +139,377 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  MAINTAINERS                       | 4 ++--
->  Makefile.objs                     | 1 +
->  hw/Kconfig                        | 1 +
->  hw/Makefile.objs                  | 1 +
->  hw/arm/musca.c                    | 2 +-
->  hw/rtc/Kconfig                    | 2 ++
->  hw/rtc/Makefile.objs              | 1 +
->  hw/{timer =3D> rtc}/pl031.c         | 2 +-
->  hw/rtc/trace-events               | 8 ++++++++
->  hw/timer/Kconfig                  | 3 ---
->  hw/timer/Makefile.objs            | 1 -
->  hw/timer/trace-events             | 7 -------
->  include/hw/{timer =3D> rtc}/pl031.h | 5 +++--
->  13 files changed, 21 insertions(+), 17 deletions(-)
->  create mode 100644 hw/rtc/Kconfig
->  create mode 100644 hw/rtc/Makefile.objs
->  rename hw/{timer =3D> rtc}/pl031.c (99%)
->  create mode 100644 hw/rtc/trace-events
->  rename include/hw/{timer =3D> rtc}/pl031.h (93%)
+>  MAINTAINERS                                  |  4 +--
+>  hw/alpha/dp264.c                             |  2 +-
+>  hw/hppa/machine.c                            |  2 +-
+>  hw/i386/acpi-build.c                         |  2 +-
+>  hw/i386/pc.c                                 |  2 +-
+>  hw/i386/pc_q35.c                             |  2 +-
+>  hw/mips/mips_fulong2e.c                      |  2 +-
+>  hw/mips/mips_jazz.c                          |  2 +-
+>  hw/mips/mips_malta.c                         |  2 +-
+>  hw/mips/mips_r4k.c                           |  2 +-
+>  hw/ppc/pnv.c                                 |  2 +-
+>  hw/ppc/prep.c                                |  2 +-
+>  hw/rtc/Kconfig                               |  3 ++
+>  hw/rtc/Makefile.objs                         |  1 +
+>  hw/{timer =3D> rtc}/mc146818rtc.c              |  2 +-
+>  hw/timer/Kconfig                             |  3 --
+>  hw/timer/Makefile.objs                       |  2 --
+>  hw/timer/hpet.c                              |  2 +-
+>  include/hw/rtc/mc146818rtc.h                 | 38 ++++++++++++++++++++
+>  include/hw/{timer =3D> rtc}/mc146818rtc_regs.h |  1 +
+>  include/hw/timer/mc146818rtc.h               | 14 --------
+>  tests/rtc-test.c                             |  2 +-
+>  22 files changed, 59 insertions(+), 35 deletions(-)
+>  rename hw/{timer =3D> rtc}/mc146818rtc.c (99%)
+>  create mode 100644 include/hw/rtc/mc146818rtc.h
+>  rename include/hw/{timer =3D> rtc}/mc146818rtc_regs.h (98%)
+>  delete mode 100644 include/hw/timer/mc146818rtc.h
 >
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index f0e30b5248..5562d2c6d0 100644
+> index 5562d2c6d0..481f2318cb 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -495,8 +495,8 @@ F: hw/intc/pl190.c
->  F: hw/sd/pl181.c
->  F: hw/ssi/pl022.c
->  F: include/hw/ssi/pl022.h
-> -F: hw/timer/pl031.c
-> -F: include/hw/timer/pl031.h
-> +F: hw/rtc/pl031.c
-> +F: include/hw/rtc/pl031.h
->  F: include/hw/arm/primecell.h
->  F: hw/timer/cmsdk-apb-timer.c
->  F: include/hw/timer/cmsdk-apb-timer.h
-> diff --git a/Makefile.objs b/Makefile.objs
-> index 6a143dcd57..1bcde315f7 100644
-> --- a/Makefile.objs
-> +++ b/Makefile.objs
-> @@ -173,6 +173,7 @@ trace-events-subdirs +=3D hw/pci-host
->  trace-events-subdirs +=3D hw/ppc
->  trace-events-subdirs +=3D hw/rdma
->  trace-events-subdirs +=3D hw/rdma/vmw
-> +trace-events-subdirs +=3D hw/rtc
->  trace-events-subdirs +=3D hw/s390x
->  trace-events-subdirs +=3D hw/scsi
->  trace-events-subdirs +=3D hw/sd
-> diff --git a/hw/Kconfig b/hw/Kconfig
-> index b45db3c813..4b53fee4d0 100644
-> --- a/hw/Kconfig
-> +++ b/hw/Kconfig
-> @@ -27,6 +27,7 @@ source pci-host/Kconfig
->  source pcmcia/Kconfig
->  source pci/Kconfig
->  source rdma/Kconfig
-> +source rtc/Kconfig
->  source scsi/Kconfig
->  source sd/Kconfig
->  source semihosting/Kconfig
-> diff --git a/hw/Makefile.objs b/hw/Makefile.objs
-> index ece6cc3755..fd9750e5f2 100644
-> --- a/hw/Makefile.objs
-> +++ b/hw/Makefile.objs
-> @@ -26,6 +26,7 @@ devices-dirs-y +=3D nvram/
->  devices-dirs-y +=3D pci/
->  devices-dirs-$(CONFIG_PCI) +=3D pci-bridge/ pci-host/
->  devices-dirs-y +=3D pcmcia/
-> +devices-dirs-y +=3D rtc/
->  devices-dirs-$(CONFIG_SCSI) +=3D scsi/
->  devices-dirs-y +=3D sd/
->  devices-dirs-y +=3D ssi/
-> diff --git a/hw/arm/musca.c b/hw/arm/musca.c
-> index 68db4b5b38..ba99dd1941 100644
-> --- a/hw/arm/musca.c
-> +++ b/hw/arm/musca.c
-> @@ -32,7 +32,7 @@
->  #include "hw/misc/tz-mpc.h"
->  #include "hw/misc/tz-ppc.h"
->  #include "hw/misc/unimp.h"
-> -#include "hw/timer/pl031.h"
-> +#include "hw/rtc/pl031.h"
+> @@ -1263,7 +1263,7 @@ F: hw/misc/debugexit.c
+>  F: hw/misc/pc-testdev.c
+>  F: hw/timer/hpet*
+>  F: hw/timer/i8254*
+> -F: hw/timer/mc146818rtc*
+> +F: hw/rtc/mc146818rtc*
+>  F: hw/watchdog/wdt_ib700.c
+>  F: hw/watchdog/wdt_i6300esb.c
+>  F: include/hw/display/vga.h
+> @@ -1275,7 +1275,7 @@ F: include/hw/isa/i8259_internal.h
+>  F: include/hw/isa/superio.h
+>  F: include/hw/timer/hpet.h
+>  F: include/hw/timer/i8254*
+> -F: include/hw/timer/mc146818rtc*
+> +F: include/hw/rtc/mc146818rtc*
 >
->  #define MUSCA_NUMIRQ_MAX 96
->  #define MUSCA_PPC_MAX 3
+>  Machine core
+>  M: Eduardo Habkost <ehabkost@redhat.com>
+> diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
+> index 51feee8558..51b3cf7a61 100644
+> --- a/hw/alpha/dp264.c
+> +++ b/hw/alpha/dp264.c
+> @@ -14,7 +14,7 @@
+>  #include "alpha_sys.h"
+>  #include "qemu/error-report.h"
+>  #include "sysemu/sysemu.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/ide.h"
+>  #include "hw/timer/i8254.h"
+>  #include "hw/isa/superio.h"
+> diff --git a/hw/hppa/machine.c b/hw/hppa/machine.c
+> index 2736ce835e..6598e2469d 100644
+> --- a/hw/hppa/machine.c
+> +++ b/hw/hppa/machine.c
+> @@ -12,7 +12,7 @@
+>  #include "qemu/error-report.h"
+>  #include "sysemu/reset.h"
+>  #include "sysemu/sysemu.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/ide.h"
+>  #include "hw/timer/i8254.h"
+>  #include "hw/char/serial.h"
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index e54e571a75..44a8073507 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -45,7 +45,7 @@
+>  #include "hw/acpi/vmgenid.h"
+>  #include "hw/boards.h"
+>  #include "sysemu/tpm_backend.h"
+> -#include "hw/timer/mc146818rtc_regs.h"
+> +#include "hw/rtc/mc146818rtc_regs.h"
+>  #include "migration/vmstate.h"
+>  #include "hw/mem/memory-device.h"
+>  #include "sysemu/numa.h"
+> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> index bad866fe44..beef7a992d 100644
+> --- a/hw/i386/pc.c
+> +++ b/hw/i386/pc.c
+> @@ -42,7 +42,7 @@
+>  #include "elf.h"
+>  #include "migration/vmstate.h"
+>  #include "multiboot.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/dma/i8257.h"
+>  #include "hw/timer/i8254.h"
+>  #include "hw/input/i8042.h"
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index d4e8a1cb9f..a976af9a2a 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -33,7 +33,7 @@
+>  #include "hw/loader.h"
+>  #include "sysemu/arch_init.h"
+>  #include "hw/i2c/smbus_eeprom.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/xen/xen.h"
+>  #include "sysemu/kvm.h"
+>  #include "kvm_i386.h"
+> diff --git a/hw/mips/mips_fulong2e.c b/hw/mips/mips_fulong2e.c
+> index cf537dd7e6..03a27e1767 100644
+> --- a/hw/mips/mips_fulong2e.c
+> +++ b/hw/mips/mips_fulong2e.c
+> @@ -39,7 +39,7 @@
+>  #include "hw/ide.h"
+>  #include "elf.h"
+>  #include "hw/isa/vt82c686.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/timer/i8254.h"
+>  #include "exec/address-spaces.h"
+>  #include "sysemu/qtest.h"
+> diff --git a/hw/mips/mips_jazz.c b/hw/mips/mips_jazz.c
+> index c967b97d80..2811a4bd90 100644
+> --- a/hw/mips/mips_jazz.c
+> +++ b/hw/mips/mips_jazz.c
+> @@ -39,7 +39,7 @@
+>  #include "hw/scsi/esp.h"
+>  #include "hw/mips/bios.h"
+>  #include "hw/loader.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/timer/i8254.h"
+>  #include "hw/display/vga.h"
+>  #include "hw/audio/pcspk.h"
+> diff --git a/hw/mips/mips_malta.c b/hw/mips/mips_malta.c
+> index 4d9c64b36a..c1c8810e71 100644
+> --- a/hw/mips/mips_malta.c
+> +++ b/hw/mips/mips_malta.c
+> @@ -45,7 +45,7 @@
+>  #include "hw/irq.h"
+>  #include "hw/loader.h"
+>  #include "elf.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/timer/i8254.h"
+>  #include "exec/address-spaces.h"
+>  #include "hw/sysbus.h"             /* SysBusDevice */
+> diff --git a/hw/mips/mips_r4k.c b/hw/mips/mips_r4k.c
+> index bc0be26544..70024235ae 100644
+> --- a/hw/mips/mips_r4k.c
+> +++ b/hw/mips/mips_r4k.c
+> @@ -28,7 +28,7 @@
+>  #include "hw/ide.h"
+>  #include "hw/loader.h"
+>  #include "elf.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/input/i8042.h"
+>  #include "hw/timer/i8254.h"
+>  #include "exec/address-spaces.h"
+> diff --git a/hw/ppc/pnv.c b/hw/ppc/pnv.c
+> index 3f08db7b9e..4b2649d95b 100644
+> --- a/hw/ppc/pnv.c
+> +++ b/hw/ppc/pnv.c
+> @@ -48,7 +48,7 @@
+>  #include "hw/isa/isa.h"
+>  #include "hw/boards.h"
+>  #include "hw/char/serial.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>
+>  #include <libfdt.h>
+>
+> diff --git a/hw/ppc/prep.c b/hw/ppc/prep.c
+> index 4f3c6bf190..3a51536e1a 100644
+> --- a/hw/ppc/prep.c
+> +++ b/hw/ppc/prep.c
+> @@ -40,7 +40,7 @@
+>  #include "hw/ide.h"
+>  #include "hw/irq.h"
+>  #include "hw/loader.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "hw/isa/pc87312.h"
+>  #include "hw/net/ne2000-isa.h"
+>  #include "sysemu/arch_init.h"
 > diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
-> new file mode 100644
-> index 0000000000..8a4383bca9
-> --- /dev/null
+> index 8a4383bca9..7ffd702268 100644
+> --- a/hw/rtc/Kconfig
 > +++ b/hw/rtc/Kconfig
-> @@ -0,0 +1,2 @@
-> +config PL031
+> @@ -1,2 +1,5 @@
+>  config PL031
+>      bool
+> +
+> +config MC146818RTC
 > +    bool
 > diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
-> new file mode 100644
-> index 0000000000..3e1eb42563
-> --- /dev/null
+> index 3e1eb42563..3cac0d5a63 100644
+> --- a/hw/rtc/Makefile.objs
 > +++ b/hw/rtc/Makefile.objs
-> @@ -0,0 +1 @@
-> +common-obj-$(CONFIG_PL031) +=3D pl031.o
-> diff --git a/hw/timer/pl031.c b/hw/rtc/pl031.c
+> @@ -1 +1,2 @@
+>  common-obj-$(CONFIG_PL031) +=3D pl031.o
+> +obj-$(CONFIG_MC146818RTC) +=3D mc146818rtc.o
+> diff --git a/hw/timer/mc146818rtc.c b/hw/rtc/mc146818rtc.c
 > similarity index 99%
-> rename from hw/timer/pl031.c
-> rename to hw/rtc/pl031.c
-> index 2b3e261006..3a982752a2 100644
-> --- a/hw/timer/pl031.c
-> +++ b/hw/rtc/pl031.c
-> @@ -13,7 +13,7 @@
->
->  #include "qemu/osdep.h"
->  #include "qemu-common.h"
-> -#include "hw/timer/pl031.h"
-> +#include "hw/rtc/pl031.h"
+> rename from hw/timer/mc146818rtc.c
+> rename to hw/rtc/mc146818rtc.c
+> index 6cb378751b..ced15f764f 100644
+> --- a/hw/timer/mc146818rtc.c
+> +++ b/hw/rtc/mc146818rtc.c
+> @@ -34,7 +34,7 @@
+>  #include "sysemu/replay.h"
+>  #include "sysemu/reset.h"
+>  #include "sysemu/runstate.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
 >  #include "migration/vmstate.h"
->  #include "hw/irq.h"
->  #include "hw/qdev-properties.h"
-> diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
-> new file mode 100644
-> index 0000000000..54c94ac557
-> --- /dev/null
-> +++ b/hw/rtc/trace-events
-> @@ -0,0 +1,8 @@
-> +# See docs/devel/tracing.txt for syntax documentation.
-> +
-> +# pl031.c
-> +pl031_irq_state(int level) "irq state %d"
-> +pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
-> +pl031_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
-> +pl031_alarm_raised(void) "alarm raised"
-> +pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
+>  #include "qapi/error.h"
+>  #include "qapi/qapi-commands-misc-target.h"
 > diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
-> index eefc95f35e..27c5dce09e 100644
+> index 27c5dce09e..af415c8ef8 100644
 > --- a/hw/timer/Kconfig
 > +++ b/hw/timer/Kconfig
-> @@ -27,9 +27,6 @@ config M41T80
->  config M48T59
+> @@ -35,9 +35,6 @@ config ALTERA_TIMER
 >      bool
+>      select PTIMER
 >
-> -config PL031
+> -config MC146818RTC
 > -    bool
 > -
->  config TWL92230
+>  config ALLWINNER_A10_PIT
 >      bool
->      depends on I2C
+>      select PTIMER
 > diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-> index f407523aa4..9f64f6e11e 100644
+> index 9f64f6e11e..b0159189cf 100644
 > --- a/hw/timer/Makefile.objs
 > +++ b/hw/timer/Makefile.objs
-> @@ -11,7 +11,6 @@ common-obj-$(CONFIG_M48T59) +=3D m48t59.o
->  ifeq ($(CONFIG_ISA_BUS),y)
->  common-obj-$(CONFIG_M48T59) +=3D m48t59-isa.o
->  endif
-> -common-obj-$(CONFIG_PL031) +=3D pl031.o
->  common-obj-$(CONFIG_PUV3) +=3D puv3_ost.o
->  common-obj-$(CONFIG_TWL92230) +=3D twl92230.o
->  common-obj-$(CONFIG_XILINX) +=3D xilinx_timer.o
-> diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-> index db02a9142c..6936fe8573 100644
-> --- a/hw/timer/trace-events
-> +++ b/hw/timer/trace-events
-> @@ -80,10 +80,3 @@ xlnx_zynqmp_rtc_gettime(int year, int month, int day, =
-int hour, int min, int sec
->  # nrf51_timer.c
->  nrf51_timer_read(uint64_t addr, uint32_t value, unsigned size) "read add=
-r 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
->  nrf51_timer_write(uint64_t addr, uint32_t value, unsigned size) "write a=
-ddr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
+> @@ -35,8 +35,6 @@ common-obj-$(CONFIG_SH4) +=3D sh_timer.o
+>  common-obj-$(CONFIG_DIGIC) +=3D digic-timer.o
+>  common-obj-$(CONFIG_MIPS_CPS) +=3D mips_gictimer.o
+>
+> -obj-$(CONFIG_MC146818RTC) +=3D mc146818rtc.o
 > -
-> -# pl031.c
-> -pl031_irq_state(int level) "irq state %d"
-> -pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
-> -pl031_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
-> -pl031_alarm_raised(void) "alarm raised"
-> -pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
-> diff --git a/include/hw/timer/pl031.h b/include/hw/rtc/pl031.h
-> similarity index 93%
-> rename from include/hw/timer/pl031.h
-> rename to include/hw/rtc/pl031.h
-> index 8c3f555ee2..e3cb1d646f 100644
-> --- a/include/hw/timer/pl031.h
-> +++ b/include/hw/rtc/pl031.h
-> @@ -11,10 +11,11 @@
->   * GNU GPL, version 2 or (at your option) any later version.
->   */
+>  common-obj-$(CONFIG_ALLWINNER_A10_PIT) +=3D allwinner-a10-pit.o
 >
-> -#ifndef HW_TIMER_PL031_H
-> -#define HW_TIMER_PL031_H
-> +#ifndef HW_RTC_PL031_H
-> +#define HW_RTC_PL031_H
->
+>  common-obj-$(CONFIG_STM32F2XX_TIMER) +=3D stm32f2xx_timer.o
+> diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
+> index 1ddae4e7d7..02bf8a8ce8 100644
+> --- a/hw/timer/hpet.c
+> +++ b/hw/timer/hpet.c
+> @@ -33,7 +33,7 @@
+>  #include "qemu/timer.h"
+>  #include "hw/timer/hpet.h"
 >  #include "hw/sysbus.h"
-> +#include "qemu/timer.h"
+> -#include "hw/timer/mc146818rtc.h"
+> +#include "hw/rtc/mc146818rtc.h"
+>  #include "migration/vmstate.h"
+>  #include "hw/timer/i8254.h"
 >
->  #define TYPE_PL031 "pl031"
->  #define PL031(obj) OBJECT_CHECK(PL031State, (obj), TYPE_PL031)
+> diff --git a/include/hw/rtc/mc146818rtc.h b/include/hw/rtc/mc146818rtc.h
+> new file mode 100644
+> index 0000000000..888e04f9ab
+> --- /dev/null
+> +++ b/include/hw/rtc/mc146818rtc.h
+> @@ -0,0 +1,38 @@
+> +/*
+> + * QEMU MC146818 RTC emulation
+> + *
+> + * Copyright (c) 2003-2004 Fabrice Bellard
+> + *
+> + * Permission is hereby granted, free of charge, to any person obtaining=
+ a copy
+> + * of this software and associated documentation files (the "Software"),=
+ to deal
+> + * in the Software without restriction, including without limitation the=
+ rights
+> + * to use, copy, modify, merge, publish, distribute, sublicense, and/or =
+sell
+> + * copies of the Software, and to permit persons to whom the Software is
+> + * furnished to do so, subject to the following conditions:
+> + *
+> + * The above copyright notice and this permission notice shall be includ=
+ed in
+> + * all copies or substantial portions of the Software.
+> + *
+> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRE=
+SS OR
+> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
+TY,
+> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
+LL
+> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR =
+OTHER
+> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISI=
+NG FROM,
+> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALING=
+S IN
+> + * THE SOFTWARE.
+> + */
+> +
+> +#ifndef MC146818RTC_H
+> +#define MC146818RTC_H
+> +
+> +#include "hw/isa/isa.h"
+> +#include "hw/rtc/mc146818rtc_regs.h"
+> +
+> +#define TYPE_MC146818_RTC "mc146818rtc"
+> +
+> +ISADevice *mc146818_rtc_init(ISABus *bus, int base_year,
+> +                             qemu_irq intercept_irq);
+> +void rtc_set_memory(ISADevice *dev, int addr, int val);
+> +int rtc_get_memory(ISADevice *dev, int addr);
+> +
+> +#endif /* MC146818RTC_H */
+> diff --git a/include/hw/timer/mc146818rtc_regs.h b/include/hw/rtc/mc14681=
+8rtc_regs.h
+> similarity index 98%
+> rename from include/hw/timer/mc146818rtc_regs.h
+> rename to include/hw/rtc/mc146818rtc_regs.h
+> index bfbb57e570..c4c6305473 100644
+> --- a/include/hw/timer/mc146818rtc_regs.h
+> +++ b/include/hw/rtc/mc146818rtc_regs.h
+> @@ -26,6 +26,7 @@
+>  #define MC146818RTC_REGS_H
+>
+>  #include "qemu/timer.h"
+> +#include "qemu/host-utils.h"
+>
+>  #define RTC_ISA_IRQ 8
+>
+> diff --git a/include/hw/timer/mc146818rtc.h b/include/hw/timer/mc146818rt=
+c.h
+> deleted file mode 100644
+> index fe6ed63f71..0000000000
+> --- a/include/hw/timer/mc146818rtc.h
+> +++ /dev/null
+> @@ -1,14 +0,0 @@
+> -#ifndef MC146818RTC_H
+> -#define MC146818RTC_H
+> -
+> -#include "hw/isa/isa.h"
+> -#include "hw/timer/mc146818rtc_regs.h"
+> -
+> -#define TYPE_MC146818_RTC "mc146818rtc"
+> -
+> -ISADevice *mc146818_rtc_init(ISABus *bus, int base_year,
+> -                             qemu_irq intercept_irq);
+> -void rtc_set_memory(ISADevice *dev, int addr, int val);
+> -int rtc_get_memory(ISADevice *dev, int addr);
+> -
+> -#endif /* MC146818RTC_H */
+> diff --git a/tests/rtc-test.c b/tests/rtc-test.c
+> index 6309b0ef6c..79a4ff1ed6 100644
+> --- a/tests/rtc-test.c
+> +++ b/tests/rtc-test.c
+> @@ -15,7 +15,7 @@
+>
+>  #include "libqtest-single.h"
+>  #include "qemu/timer.h"
+> -#include "hw/timer/mc146818rtc_regs.h"
+> +#include "hw/rtc/mc146818rtc_regs.h"
+>
+>  #define UIP_HOLD_LENGTH           (8 * NANOSECONDS_PER_SECOND / 32768)
+>
 > --
 > 2.20.1
 >

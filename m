@@ -1,445 +1,253 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4067846wrp;
-        Mon, 16 Sep 2019 07:15:53 -0700 (PDT)
-X-Received: by 2002:a5d:55d0:: with SMTP id i16mr32114wrw.108.1568643353677;
-        Mon, 16 Sep 2019 07:15:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568643353; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4068029wrp;
+        Mon, 16 Sep 2019 07:16:03 -0700 (PDT)
+X-Received: by 2002:a7b:c182:: with SMTP id y2mr5420574wmi.156.1568643363076;
+        Mon, 16 Sep 2019 07:16:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568643363; cv=none;
         d=google.com; s=arc-20160816;
-        b=itHabl+LtTCTR6YPofPCNoO4upEVWBAvCeGVwtiB5durIPvLvtyEOiHBptyoAz+kkg
-         UjRvxe7ZMaAVDTjmxqjgdnNFZsGgZJ95pwP9aqOELC/EAhOY1D8chMWBwWTQNmf3BVYy
-         8Wa04L/FdfcBe1iDS3oza3ljs6zdjvVHcKWDWU8fj+KDSGayRfZzNPWWkfVe1G+PbDtg
-         Yz51K4adLgHASgCq60TT/IcUHX4sxJAUnCUHZ43Bv4Ti+ageW13SND5HIhWR8Hj51LVJ
-         kcbdicpJ+LVSYOq+ZkimiDNUJPYjdg7mHCCFVqkxogsBHhVoj4W7TrGqQwgIqCNeQb1O
-         CIYw==
+        b=aOPhUNZ3wlGAAZ6MXcRR9biKEgwZwfbJ6pSyF6WxMqY7ZD8NBFL9BHzsrpqNs+sqLD
+         QeQKYkGmM2GeXfiLxMFhLYRI19pwSGPG1SpCNWffzNIUizDsq3ec1RVtfaQtJ5XsIGHs
+         FufpLXo5UlM5hmXRh761yctMLdKnMR0zFv4NRyb67D1+nXO1juZqod8WptEbBGlNrrhr
+         NYT0HGTakVtMoAE6FOMdIxjpBPfgMGnFVE4wkSfBFYNP/8e1HA1jwh3wPasSFGLG3aK2
+         EDmNilI/EDjrUq2f2N+qVBWdfBIppci+gs8aPgWwTzdutDNh4wZyusSWIfc8gj2k/z3w
+         CJwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=JrBf8fxBHvOF8tG3dL8+QUmu7l6sNcvSOAp9ypkMt/s=;
-        b=KD2b32fB4kRANALWzgtLotGnPgsnjOExKGxeO8pD8HL1suZ09Dxwyo3sz8CI8fmnmt
-         pJaZ9jvrGLy/4SwREBne5oaQN7q/qXWuNUrd3v9C6KJZdeN1QVNoKD/+Kb6zeoW2J4JU
-         dCe1pFgnnt7mVyAoKsONrz8diUt0PDSLE1TazAfIBB4Sm1M1Wbz7kmCmpO3UOMIynbLr
-         fAt5WShvHAT66R0dc6iLJ6cLr8Lw+Du9jdYo+mv9ofzRrjJSKUyB0BgnuCGJ4dF/dBbB
-         vbRXWnuieHAci8Hx5qOX/WjXb9or5Rlmh2DRWuSPuOc4xHQMWFACxzcGs5mO5nltMMa1
-         GGeg==
+        bh=+TLqHbpNEdFdoOs/T99sxVwsEvUGOL0cA+fPHcIpClc=;
+        b=Wba1TKayMWIAi70wu68X+nGL7O+i6Di15VNn3MeaZKmr/qTqyP25GBsFT849WFYr9d
+         S9Bxd5CpoQlfQTuOYmAMZzYBS8XpA/ANz/nzprH3bvTWFzaBMzjgXtBUAJUhVRFFUCPa
+         Nhjc1CDKOZMU3Q08Yhl65QNOemTRFz0X1BgS335pIrQbNr1AjXcTXggo7VGI1ECIF98h
+         cis3pZPg239x4dZdMwSiA6wxpzAGWNo8tvcHYrzbLKUIVaHhWsE3AJ1BlH+u3OjHjmFe
+         DRZzxo0SY630cMj68zfh1m0wqJ1aPPCvXxi/gT6/B1jK2ksye58G/b3r2G9v7CRusaTs
+         orpQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P6NHrntb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=sWuRAHJ+;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id i15sor4210023wml.24.2019.09.16.07.15.53
+        by mx.google.com with SMTPS id r10sor13135094wrx.23.2019.09.16.07.16.03
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 16 Sep 2019 07:15:53 -0700 (PDT)
+        Mon, 16 Sep 2019 07:16:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=P6NHrntb;
+       dkim=pass header.i=@linaro.org header.s=google header.b=sWuRAHJ+;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=JrBf8fxBHvOF8tG3dL8+QUmu7l6sNcvSOAp9ypkMt/s=;
-        b=P6NHrntbsaFiirDv0faAxcpSCjv/GPHPWr+QVGUo+ETbfNP39cxRaTDlTNe94IJP+o
-         qgVGiLlO0KJ9JagR58m3nyWKoqcFWX8HZxO4c1Q4J12vzg9EIyhAxGZY0gXW7e1ElsW/
-         LFSYs53c8rKzn0FUMNlTsMprJfZ+mcVRBGAMRGH9immKFs7fm2oxxY8+EXM1qPLWPjdK
-         zuuPqxqm3zWyrchBXqsfif21QoFOD5jAmkB9DBnC09idjkb+4QZlGVf5NPu4X7MnjOr1
-         VVHZobM6ra2dnxQY/sCPtkWjpDGl+prnQRLLnSysYsLpllqB1RhWn+PRdHsl0IR1U4PC
-         6GgQ==
+        bh=+TLqHbpNEdFdoOs/T99sxVwsEvUGOL0cA+fPHcIpClc=;
+        b=sWuRAHJ+Lp0Yyv0LksXsbzNARffbqNQ0AtbIl7CvRMLd2hIXjLH8lWE3NXEhuRSd3n
+         6fGAG4M1GfZCk4olMbIJd+8Mdx5UlNXa7NlpGadYbcpBak/Ee+l4bQPE4/ZdmtOjZBrb
+         6ca+S9XAKta6/koGyMJrh94bpkEceDjcLIQ3wA11r4GJkh/flAkckunXEe1OyNY1b5HI
+         iskjSbmUg6XHw5wI1y2cEvCnUwbmRt56MtvsDZ31Mq753n802xbbxMdKRqYGYWDyH+dl
+         G3iKQBfkN6cVy2Ds7PFX659nn0mWc6FmYAdhjjqkih+qAjLfR803adNaPxqwDZN/5rrs
+         BnqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=JrBf8fxBHvOF8tG3dL8+QUmu7l6sNcvSOAp9ypkMt/s=;
-        b=V5zart+TzXMFPyPN8kBGIn3BC/T7hsDUuc4L25B5XiVmZB2rpC1fvfzgjVqIZe7kui
-         aU9QTznckoagt+gPDnrF7lOQloxjc7ukPY6v2leVcSzf/6wgpGyjwYyjsF/4IuCmHH/F
-         S5H8oEjbbTrSdQPDCCLi0IRKnXmxSAYrua0BfjaCr5cIDPcyXk3iP4qGj/Ju7z1tGRAg
-         tYh7A/ByFgaqhIKjE4ABO68/kB+oLdxfLGpFgbR7S+lLeJLvcv29MhC/CDbSHTvhcpws
-         Ky3O85Zq7fvykm7de16vTA/rRDisYEhVrOK6SU6oIcEZNVOFQTCpZbsiVYxIdnkWUSbE
-         6hzQ==
-X-Gm-Message-State: APjAAAU2wEqKQT3qYzYlOKebJmyl5ifHu1OEOE4u+RZWfY74J4G1GYGc
-	snudpjGGjjxB6PpjBXpPiH+6y1aS
-X-Google-Smtp-Source: APXvYqwm4VQR9MHriuHthUMoHo3m+HOva1UCE/QIzpEdNBB7XNqYt0jJj7JSlPRa4b1PJhGvrU725Q==
-X-Received: by 2002:a7b:ce91:: with SMTP id q17mr8226546wmj.25.1568643353344;
-        Mon, 16 Sep 2019 07:15:53 -0700 (PDT)
+        bh=+TLqHbpNEdFdoOs/T99sxVwsEvUGOL0cA+fPHcIpClc=;
+        b=IeIoNhjWC0us/dXrLah3YCwzRZplUbNQsNQCc1B4UEP7wBDDZ1dQcdLy13ZV/TInTN
+         WfUMIwBLxFWmvJ960AGBLtlYzDvoHZ5O8Nxp0drOtZVPal+e6HZlzAQJbGDhl756VEE3
+         PlI57MDgpsieAp5eTK+pVkSf5XQLwre0k83yyKo3hHkSJZ8IW4EEks1EYzi/U2u3Z0Nk
+         AQNycr+eGNfprPDd29vb+ITcZBYLtl9I1NSx4L3TL91joWo0d+mopt2gDUysitvv0AhX
+         m5LuNrAyxRPgSUcWtNPX6Z2X8MYVvqoi0xGhYBuCtJkWOqfKCR9GiRwooCeXdhf7yZdI
+         zuHg==
+X-Gm-Message-State: APjAAAULWRqRoMntLZWwzA1L55zg+uCREkakKfxof26cZCU5l1xue2FL
+	dkzSj/m+gbIm60qLa1uUjHzVPkWvQCHGi87w
+X-Google-Smtp-Source: APXvYqxXjV9ACn0RO8JvYa5+5KwRR80QHwJXhZVSaT7RJR/S9Sse7DCQDn/W6/9nOCOwY4SIkfySAg==
+X-Received: by 2002:a5d:55d0:: with SMTP id i16mr32654wrw.108.1568643362808;
+        Mon, 16 Sep 2019 07:16:02 -0700 (PDT)
 Return-Path: <peter.maydell@linaro.org>
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-        by smtp.gmail.com with ESMTPSA id s9sm15185884wme.36.2019.09.16.07.15.52
+        by smtp.gmail.com with ESMTPSA id s9sm15185884wme.36.2019.09.16.07.16.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Sep 2019 07:15:52 -0700 (PDT)
+        Mon, 16 Sep 2019 07:16:02 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 05/15] target/arm/arm-semi: Restrict use of TaskState*
-Date: Mon, 16 Sep 2019 15:15:34 +0100
-Message-Id: <20190916141544.17540-6-peter.maydell@linaro.org>
+Subject: [PATCH v2 13/15] target/arm/arm-semi: Implement support for semihosting feature detection
+Date: Mon, 16 Sep 2019 15:15:42 +0100
+Message-Id: <20190916141544.17540-14-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190916141544.17540-1-peter.maydell@linaro.org>
 References: <20190916141544.17540-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: o/QYSVeug5TT
+X-TUID: MVQVNjEFso1e
 
-The semihosting code needs accuss to the linux-user only
-TaskState pointer so it can set the semihosting errno per-thread
-for linux-user mode. At the moment we do this by having some
-ifdefs so that we define a 'ts' local in do_arm_semihosting()
-which is either a real TaskState * or just a CPUARMState *,
-depending on which mode we're compiling for.
+Version 2.0 of the semihosting specification added support for
+allowing a guest to detect whether the implementation supported
+particular features. This works by the guest opening a magic
+file ":semihosting-features", which contains a fixed set of
+data with some magic numbers followed by a sequence of bytes
+with feature flags. The file is expected to behave sensibly
+for the various semihosting calls which operate on files
+(SYS_FLEN, SYS_SEEK, etc).
 
-This is awkward if we want to refactor do_arm_semihosting()
-into other functions which might need to be passed the TaskState.
-Restrict usage of the TaskState local by:
- * making set_swi_errno() always take the CPUARMState pointer
-   and (for the linux-user version) get TaskState from that
- * creating a new get_swi_errno() which reads the errno
- * having the two semihosting calls which need the TaskState
-   for other purposes (SYS_GET_CMDLINE and SYS_HEAPINFO)
-   define a variable with scope restricted to just that code
+Implement this as another kind of guest FD using our function
+table dispatch mechanism. Initially we report no extended
+features, so we have just one feature flag byte which is zero.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
-We use 'CPUARMState *', aka 'env', rather than the other
-options of passing the ARMCPU* or the CPUState *, purely
-because it means that the later refactoring of each SYS_*
-can pass just the CPUARMState * and incidentally avoid
-an ugly ifdef caused by the implicit use of env in the
-softmmu lock_user().
----
- target/arm/arm-semi.c | 111 ++++++++++++++++++++++++------------------
- 1 file changed, 63 insertions(+), 48 deletions(-)
+ target/arm/arm-semi.c | 109 +++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 108 insertions(+), 1 deletion(-)
 
 diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-index a4741d7e11b..2618588076f 100644
+index 87c911f0187..57491740d73 100644
 --- a/target/arm/arm-semi.c
 +++ b/target/arm/arm-semi.c
-@@ -213,26 +213,45 @@ static GuestFD *get_guestfd(int guestfd)
-     return gf;
+@@ -110,6 +110,7 @@ typedef enum GuestFDType {
+     GuestFDUnused = 0,
+     GuestFDHost = 1,
+     GuestFDGDB = 2,
++    GuestFDFeatureFile = 3,
+ } GuestFDType;
+ 
+ /*
+@@ -118,7 +119,10 @@ typedef enum GuestFDType {
+  */
+ typedef struct GuestFD {
+     GuestFDType type;
+-    int hostfd;
++    union {
++        int hostfd;
++        target_ulong featurefile_offset;
++    };
+ } GuestFD;
+ 
+ static GArray *guestfd_array;
+@@ -504,6 +508,89 @@ static uint32_t gdb_flenfn(ARMCPU *cpu, GuestFD *gf)
+                            gf->hostfd, arm_flen_buf(cpu));
  }
  
--#ifdef CONFIG_USER_ONLY
--static inline uint32_t set_swi_errno(TaskState *ts, uint32_t code)
--{
--    if (code == (uint32_t)-1)
--        ts->swi_errno = errno;
--    return code;
--}
--#else
-+/*
-+ * The semihosting API has no concept of its errno being thread-safe,
-+ * as the API design predates SMP CPUs and was intended as a simple
-+ * real-hardware set of debug functionality. For QEMU, we make the
-+ * errno be per-thread in linux-user mode; in softmmu it is a simple
-+ * global, and we assume that the guest takes care of avoiding any races.
-+ */
-+#ifndef CONFIG_USER_ONLY
- static target_ulong syscall_err;
- 
-+#include "exec/softmmu-semi.h"
-+#endif
++#define SHFB_MAGIC_0 0x53
++#define SHFB_MAGIC_1 0x48
++#define SHFB_MAGIC_2 0x46
++#define SHFB_MAGIC_3 0x42
 +
- static inline uint32_t set_swi_errno(CPUARMState *env, uint32_t code)
- {
-     if (code == (uint32_t)-1) {
-+#ifdef CONFIG_USER_ONLY
-+        CPUState *cs = env_cpu(env);
-+        TaskState *ts = cs->opaque;
++static const uint8_t featurefile_data[] = {
++    SHFB_MAGIC_0,
++    SHFB_MAGIC_1,
++    SHFB_MAGIC_2,
++    SHFB_MAGIC_3,
++    0, /* Feature byte 0 */
++};
 +
-+        ts->swi_errno = errno;
-+#else
-         syscall_err = errno;
-+#endif
-     }
-     return code;
- }
- 
--#include "exec/softmmu-semi.h"
-+static inline uint32_t get_swi_errno(CPUARMState *env)
++static void init_featurefile_guestfd(int guestfd)
 +{
-+#ifdef CONFIG_USER_ONLY
-+    CPUState *cs = env_cpu(env);
-+    TaskState *ts = cs->opaque;
++    GuestFD *gf = do_get_guestfd(guestfd);
 +
-+    return ts->swi_errno;
-+#else
-+    return syscall_err;
- #endif
++    assert(gf);
++    gf->type = GuestFDFeatureFile;
++    gf->featurefile_offset = 0;
 +}
- 
- static target_ulong arm_semi_syscall_len;
- 
-@@ -379,12 +398,12 @@ static target_ulong arm_gdb_syscall(ARMCPU *cpu, gdb_syscall_complete_cb cb,
-     if (is_a64(env)) {                                  \
-         if (get_user_u64(arg ## n, args + (n) * 8)) {   \
-             errno = EFAULT;                             \
--            return set_swi_errno(ts, -1);               \
-+            return set_swi_errno(env, -1);              \
-         }                                               \
-     } else {                                            \
-         if (get_user_u32(arg ## n, args + (n) * 4)) {   \
-             errno = EFAULT;                             \
--            return set_swi_errno(ts, -1);               \
-+            return set_swi_errno(env, -1);              \
-         }                                               \
-     }                                                   \
- } while (0)
-@@ -413,11 +432,6 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-     int nr;
-     uint32_t ret;
-     uint32_t len;
--#ifdef CONFIG_USER_ONLY
--    TaskState *ts = cs->opaque;
--#else
--    CPUARMState *ts = env;
--#endif
-     GuestFD *gf;
- 
-     if (is_a64(env)) {
-@@ -440,19 +454,19 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-         s = lock_user_string(arg0);
-         if (!s) {
-             errno = EFAULT;
--            return set_swi_errno(ts, -1);
-+            return set_swi_errno(env, -1);
-         }
-         if (arg1 >= 12) {
-             unlock_user(s, arg0, 0);
-             errno = EINVAL;
--            return set_swi_errno(ts, -1);
-+            return set_swi_errno(env, -1);
-         }
- 
-         guestfd = alloc_guestfd();
-         if (guestfd < 0) {
-             unlock_user(s, arg0, 0);
-             errno = EMFILE;
--            return set_swi_errno(ts, -1);
-+            return set_swi_errno(env, -1);
-         }
- 
-         if (strcmp(s, ":tt") == 0) {
-@@ -466,7 +480,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-             ret = arm_gdb_syscall(cpu, arm_semi_open_cb, "open,%s,%x,1a4", arg0,
-                                   (int)arg2+1, gdb_open_modeflags[arg1]);
-         } else {
--            ret = set_swi_errno(ts, open(s, open_modeflags[arg1], 0644));
-+            ret = set_swi_errno(env, open(s, open_modeflags[arg1], 0644));
-             if (ret == (uint32_t)-1) {
-                 dealloc_guestfd(guestfd);
-             } else {
-@@ -483,13 +497,13 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-         gf = get_guestfd(arg0);
-         if (!gf) {
-             errno = EBADF;
--            return set_swi_errno(ts, -1);
-+            return set_swi_errno(env, -1);
-         }
- 
-         if (use_gdb_syscalls()) {
-             ret = arm_gdb_syscall(cpu, arm_semi_cb, "close,%x", gf->hostfd);
-         } else {
--            ret = set_swi_errno(ts, close(gf->hostfd));
-+            ret = set_swi_errno(env, close(gf->hostfd));
-         }
-         dealloc_guestfd(arg0);
-         return ret;
-@@ -507,7 +521,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-         gf = get_guestfd(arg0);
-         if (!gf) {
-             errno = EBADF;
--            return set_swi_errno(ts, -1);
-+            return set_swi_errno(env, -1);
-         }
- 
-         if (use_gdb_syscalls()) {
-@@ -520,7 +534,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-                 /* Return bytes not written on error */
-                 return len;
-             }
--            ret = set_swi_errno(ts, write(gf->hostfd, s, len));
-+            ret = set_swi_errno(env, write(gf->hostfd, s, len));
-             unlock_user(s, arg1, 0);
-             if (ret == (uint32_t)-1) {
-                 ret = 0;
-@@ -537,7 +551,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-         gf = get_guestfd(arg0);
-         if (!gf) {
-             errno = EBADF;
--            return set_swi_errno(ts, -1);
-+            return set_swi_errno(env, -1);
-         }
- 
-         if (use_gdb_syscalls()) {
-@@ -551,7 +565,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-                 return len;
-             }
-             do {
--                ret = set_swi_errno(ts, read(gf->hostfd, s, len));
-+                ret = set_swi_errno(env, read(gf->hostfd, s, len));
-             } while (ret == -1 && errno == EINTR);
-             unlock_user(s, arg1, len);
-             if (ret == (uint32_t)-1) {
-@@ -569,7 +583,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-         gf = get_guestfd(arg0);
-         if (!gf) {
-             errno = EBADF;
--            return set_swi_errno(ts, -1);
-+            return set_swi_errno(env, -1);
-         }
- 
-         if (use_gdb_syscalls()) {
-@@ -584,14 +598,14 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-         gf = get_guestfd(arg0);
-         if (!gf) {
-             errno = EBADF;
--            return set_swi_errno(ts, -1);
-+            return set_swi_errno(env, -1);
-         }
- 
-         if (use_gdb_syscalls()) {
-             return arm_gdb_syscall(cpu, arm_semi_cb, "lseek,%x,%x,0",
-                                    gf->hostfd, arg1);
-         } else {
--            ret = set_swi_errno(ts, lseek(gf->hostfd, arg1, SEEK_SET));
-+            ret = set_swi_errno(env, lseek(gf->hostfd, arg1, SEEK_SET));
-             if (ret == (uint32_t)-1)
-               return -1;
-             return 0;
-@@ -602,7 +616,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-         gf = get_guestfd(arg0);
-         if (!gf) {
-             errno = EBADF;
--            return set_swi_errno(ts, -1);
-+            return set_swi_errno(env, -1);
-         }
- 
-         if (use_gdb_syscalls()) {
-@@ -610,7 +624,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-                                    gf->hostfd, arm_flen_buf(cpu));
-         } else {
-             struct stat buf;
--            ret = set_swi_errno(ts, fstat(gf->hostfd, &buf));
-+            ret = set_swi_errno(env, fstat(gf->hostfd, &buf));
-             if (ret == (uint32_t)-1)
-                 return -1;
-             return buf.st_size;
-@@ -628,9 +642,9 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-             s = lock_user_string(arg0);
-             if (!s) {
-                 errno = EFAULT;
--                return set_swi_errno(ts, -1);
-+                return set_swi_errno(env, -1);
-             }
--            ret =  set_swi_errno(ts, remove(s));
-+            ret =  set_swi_errno(env, remove(s));
-             unlock_user(s, arg0, 0);
-         }
-         return ret;
-@@ -648,9 +662,9 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-             s2 = lock_user_string(arg2);
-             if (!s || !s2) {
-                 errno = EFAULT;
--                ret = set_swi_errno(ts, -1);
-+                ret = set_swi_errno(env, -1);
-             } else {
--                ret = set_swi_errno(ts, rename(s, s2));
-+                ret = set_swi_errno(env, rename(s, s2));
-             }
-             if (s2)
-                 unlock_user(s2, arg2, 0);
-@@ -661,7 +675,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-     case TARGET_SYS_CLOCK:
-         return clock() / (CLOCKS_PER_SEC / 100);
-     case TARGET_SYS_TIME:
--        return set_swi_errno(ts, time(NULL));
-+        return set_swi_errno(env, time(NULL));
-     case TARGET_SYS_SYSTEM:
-         GET_ARG(0);
-         GET_ARG(1);
-@@ -672,18 +686,14 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-             s = lock_user_string(arg0);
-             if (!s) {
-                 errno = EFAULT;
--                return set_swi_errno(ts, -1);
-+                return set_swi_errno(env, -1);
-             }
--            ret = set_swi_errno(ts, system(s));
-+            ret = set_swi_errno(env, system(s));
-             unlock_user(s, arg0, 0);
-             return ret;
-         }
-     case TARGET_SYS_ERRNO:
--#ifdef CONFIG_USER_ONLY
--        return ts->swi_errno;
--#else
--        return syscall_err;
--#endif
-+        return get_swi_errno(env);
-     case TARGET_SYS_GET_CMDLINE:
-         {
-             /* Build a command-line from the original argv.
-@@ -706,6 +716,8 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-             int status = 0;
- #if !defined(CONFIG_USER_ONLY)
-             const char *cmdline;
-+#else
-+            TaskState *ts = cs->opaque;
- #endif
-             GET_ARG(0);
-             GET_ARG(1);
-@@ -733,21 +745,21 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-             if (output_size > input_size) {
-                 /* Not enough space to store command-line arguments.  */
-                 errno = E2BIG;
--                return set_swi_errno(ts, -1);
-+                return set_swi_errno(env, -1);
-             }
- 
-             /* Adjust the command-line length.  */
-             if (SET_ARG(1, output_size - 1)) {
-                 /* Couldn't write back to argument block */
-                 errno = EFAULT;
--                return set_swi_errno(ts, -1);
-+                return set_swi_errno(env, -1);
-             }
- 
-             /* Lock the buffer on the ARM side.  */
-             output_buffer = lock_user(VERIFY_WRITE, arg0, output_size, 0);
-             if (!output_buffer) {
-                 errno = EFAULT;
--                return set_swi_errno(ts, -1);
-+                return set_swi_errno(env, -1);
-             }
- 
-             /* Copy the command-line arguments.  */
-@@ -763,7 +775,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-             if (copy_from_user(output_buffer, ts->info->arg_start,
-                                output_size)) {
-                 errno = EFAULT;
--                status = set_swi_errno(ts, -1);
-+                status = set_swi_errno(env, -1);
-                 goto out;
-             }
- 
-@@ -785,6 +797,9 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-             target_ulong retvals[4];
-             target_ulong limit;
-             int i;
-+#ifdef CONFIG_USER_ONLY
-+            TaskState *ts = cs->opaque;
++
++static uint32_t featurefile_closefn(ARMCPU *cpu, GuestFD *gf)
++{
++    /* Nothing to do */
++    return 0;
++}
++
++static uint32_t featurefile_writefn(ARMCPU *cpu, GuestFD *gf,
++                                    target_ulong buf, uint32_t len)
++{
++    /* This fd can never be open for writing */
++    CPUARMState *env = &cpu->env;
++
++    errno = EBADF;
++    return set_swi_errno(env, -1);
++}
++
++static uint32_t featurefile_readfn(ARMCPU *cpu, GuestFD *gf,
++                                   target_ulong buf, uint32_t len)
++{
++    uint32_t i;
++#ifndef CONFIG_USER_ONLY
++    CPUARMState *env = &cpu->env;
 +#endif
++    char *s;
++
++    s = lock_user(VERIFY_WRITE, buf, len, 0);
++    if (!s) {
++        return len;
++    }
++
++    for (i = 0; i < len; i++) {
++        if (gf->featurefile_offset >= sizeof(featurefile_data)) {
++            break;
++        }
++        s[i] = featurefile_data[gf->featurefile_offset];
++        gf->featurefile_offset++;
++    }
++
++    unlock_user(s, buf, len);
++
++    /* Return number of bytes not read */
++    return len - i;
++}
++
++static uint32_t featurefile_isattyfn(ARMCPU *cpu, GuestFD *gf)
++{
++    return 0;
++}
++
++static uint32_t featurefile_seekfn(ARMCPU *cpu, GuestFD *gf,
++                                   target_ulong offset)
++{
++    gf->featurefile_offset = offset;
++    return 0;
++}
++
++static uint32_t featurefile_flenfn(ARMCPU *cpu, GuestFD *gf)
++{
++    return sizeof(featurefile_data);
++}
++
+ typedef struct GuestFDFunctions {
+     sys_closefn *closefn;
+     sys_writefn *writefn;
+@@ -530,6 +617,14 @@ static const GuestFDFunctions guestfd_fns[] = {
+         .seekfn = gdb_seekfn,
+         .flenfn = gdb_flenfn,
+     },
++    [GuestFDFeatureFile] = {
++        .closefn = featurefile_closefn,
++        .writefn = featurefile_writefn,
++        .readfn = featurefile_readfn,
++        .isattyfn = featurefile_isattyfn,
++        .seekfn = featurefile_seekfn,
++        .flenfn = featurefile_flenfn,
++    },
+ };
  
-             GET_ARG(0);
- 
-@@ -834,7 +849,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-                 if (fail) {
-                     /* Couldn't write back to argument block */
-                     errno = EFAULT;
--                    return set_swi_errno(ts, -1);
-+                    return set_swi_errno(env, -1);
-                 }
-             }
-             return 0;
+ /* Read the input value from the argument block; fail the semihosting
+@@ -616,6 +711,18 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+             unlock_user(s, arg0, 0);
+             return guestfd;
+         }
++        if (strcmp(s, ":semihosting-features") == 0) {
++            unlock_user(s, arg0, 0);
++            /* We must fail opens for modes other than 0 ('r') or 1 ('rb') */
++            if (arg1 != 0 && arg1 != 1) {
++                dealloc_guestfd(guestfd);
++                errno = EACCES;
++                return set_swi_errno(env, -1);
++            }
++            init_featurefile_guestfd(guestfd);
++            return guestfd;
++        }
++
+         if (use_gdb_syscalls()) {
+             arm_semi_open_guestfd = guestfd;
+             ret = arm_gdb_syscall(cpu, arm_semi_open_cb, "open,%s,%x,1a4", arg0,
 -- 
 2.20.1

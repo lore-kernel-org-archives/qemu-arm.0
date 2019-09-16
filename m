@@ -1,141 +1,192 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4068073wrp;
-        Mon, 16 Sep 2019 07:16:05 -0700 (PDT)
-X-Received: by 2002:a1c:a616:: with SMTP id p22mr13972059wme.3.1568643365314;
-        Mon, 16 Sep 2019 07:16:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568643365; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4175054wrp;
+        Mon, 16 Sep 2019 08:53:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyqxhmflkSAhgB+xnNuG0YC089LGXn8QdCeWuC2tCY87Mk1mF9SmXXlDqJcO6IMcd/XMETo
+X-Received: by 2002:a50:bb22:: with SMTP id y31mr14328ede.58.1568649236750;
+        Mon, 16 Sep 2019 08:53:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568649236; cv=none;
         d=google.com; s=arc-20160816;
-        b=gk8jeJz5Cq79Rn5erYLutiq1COkaLyI/KeeKGb/vj3/3jcs80vak9SLQm5+wRgjJ4S
-         RMKyVQvBOy+7+n9G6eSJnpm4uRb6Tgz5hRFQecHlcjp3duPPoYmJpgD3rO72f/aRGFn6
-         yulX4cclrSicoxtQ0JG082z8VcgxqcdPRRDSkEJCSKQsllywmusElDrqyKLx+l4QJJVa
-         PGaK9zVXTNCXyLUlqWJLNdIb/W99NoE/dNQnST0oEZWtGgTy4bvNjRGOBpuEUhRaq4yT
-         zDEZ9USvmhpNlL+NQshiiE7DEitIwrcYxT3WG0sV7vYQ5waxnwz/Ddp47pV01ZtyZkjw
-         Wimg==
+        b=wutIGjVAF9+bFoaqlXq2lVuku2FTvcV8sRQH8pqUbCW6apusf+2cRrhOp40I8LjFVA
+         zal5Ma8dyL0vwSx7yJDow9s6dm5fYQbQJOa7Gs4BYSke1MuVGaHsvDF8cXCXcszKWhqr
+         pPRMmK7acwd9VIUvzS39ogbro79or9yvLWkIUmmh2n4k+OcoMwAt50Pa3UiyAHqBkWRB
+         Rg77sE0bdM9bsCBEwJSWVZylE1PNMU7dPLfPpIcSfxvwdFQSh0ZQzzjncgoh+kwplswK
+         TUmPI3Tl/eyvA96hVKpPmdlKUqOdEXMdoKGDl38vGm+UU/JAa7Pvyra8hiA+Os0xc3c4
+         ogkA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=SXBAqhquP2Lg4Ybq8pMEcyecszVWdFjmxwIvTxGKiO0=;
-        b=gJCupH/4snmDV/zw4tFGRD8Bl2BoTX7xDy097l/tn8Rna7VHyFo2qwG1T2kTP+D5gP
-         KBlNwMUY46ScAQQdCxYq0LNdDsfLsRogXWtGJ57D4He6PP8GPY5YceS0hWtnMrDaS0Ni
-         wUf+5xZiE5CVcHuuJjA/M7GrYOjIjYyRlfNLQotku9wsjRL0l+UNjv5CM/DgHK/2XEUO
-         QVnhDbAk8csh5ZmJESJT4nObNxe3bbjcCF1/qjRJAAtHco/KjeyHu99a1GnkRJ6G/DmD
-         aCQSmSmIVeUfhozFSt/33+UFXesQIrNzGqm/NQFXJmQmNvxVO1qPFsV2wqgm0kj0QixO
-         n1ng==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:to:from;
+        bh=duVgBbVOCU1iWPq/nRmXNVPJg3MmLYEuCixmD8hqrDk=;
+        b=HrhwN7hBDjg7ryZK/P2us6WF6h1hiOzcjK3xlV4/WR7WYCUOK9FAnTDCwSVf8s9nBV
+         mAbcY3PtrAwCeLgx6BRddbRpd7Q+Hh32Un8XkdRp4fW2+oWOdX7aPXT2ux4ljyMKY9Sn
+         TT+cBmPqEHfMnnuH6QqnWteSbOdnf/eTcJKtF0rFc9tv+2yEckx+Nu3ZMv0kaCYlP7C4
+         CuJeCc+52f58bZuor/dkCFlKfinE7Zfr9VgwDRd8HxIteTIJu9dO4HC20wFCPTiRsomK
+         oIscE46UX37kPdKbOlKGroa3zoC6ymKWRCiZpu/FK1mTsLptgwvWWgBAXR0bOE4QRcEO
+         h3lg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WvqY0DFd;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id m15sor28948546wrj.45.2019.09.16.07.16.05
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y7si3897103ejp.378.2019.09.16.08.53.56
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 16 Sep 2019 07:16:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 16 Sep 2019 08:53:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WvqY0DFd;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=SXBAqhquP2Lg4Ybq8pMEcyecszVWdFjmxwIvTxGKiO0=;
-        b=WvqY0DFd3ahqD6PJc4Eokd0KPmTwnsPDUrgGli1ZJcCrndiQ/uMwDHtK0sdf3eGS5C
-         nYTbZaAdtBA3hgjGz4Nh5apol5XdJuqIw8Nh1UqDZdZz9osomXyL8A/vCgshougEdl1G
-         M/DrmVa6Ch6xN2ldAa1AY7OL0XBUcra2+1pVjbCIbmBE/sX000qN7tUJVBxFxJzwRXMl
-         WpiEY1M8oDhUgu4howcH4ZfEQ9qK5JCMspsYPgL/deMaWoUSMdgSI0/zOMa0KXlE7Sgs
-         XO7PET144AhppOFjte9qO/UGSk8Nvpmzf1uSxvJF60Gb6OOsuSuFBGCOIxOfYbAgEXLt
-         ciyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=SXBAqhquP2Lg4Ybq8pMEcyecszVWdFjmxwIvTxGKiO0=;
-        b=tV+NrmUR/tyEdO+fzmSu3ScMoNFAicApRfuZJScSQ4wjxIZ2SyibVgUL79jHU2Zqqg
-         XSCjgVCRSr+CdV+cNLZSBWw7VjfH/mGXoG+dEd/PDijKaiNHrq+jFuef37hGmBA6TSDP
-         PQbwZW4bvcbImgzTKOqQQsF48/Y0Co+0wvwdtgKAlo4r4tKkh8xJEmwUuvimuYaKcICW
-         pGy7ama4ijRnerdEIRqubmCwXu/f+2AYOww+6TI0K9bpFux+1bwTMMEI9TnvBtaT3bks
-         NLCVmt8ebso3rpxGt/fwDeXJFH+u4spJG+5ox3g8eCFzjQpK2QJzB9a9EG4lk1CJ5KcV
-         GH7g==
-X-Gm-Message-State: APjAAAXFEpr4SGbsBHnSibv+vxilWbDyZfc+DUWP5A9c/JRr8Ppe43GO
-	IdbXqKhxhyUbQoYNpTBZEnLhvLxZ
-X-Google-Smtp-Source: APXvYqw/2Y0ATN8S7+P+F/py2zDH5OqUBFFPXksWf9VBp2G0HIhK/dvtiULlxkR/pr7zM+q/w/fvNQ==
-X-Received: by 2002:adf:de03:: with SMTP id b3mr40938wrm.14.1568643365067;
-        Mon, 16 Sep 2019 07:16:05 -0700 (PDT)
-Return-Path: <peter.maydell@linaro.org>
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
-        by smtp.gmail.com with ESMTPSA id s9sm15185884wme.36.2019.09.16.07.16.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Sep 2019 07:16:04 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH v2 15/15] target/arm/arm-semi: Implement SH_EXT_STDOUT_STDERR extension
-Date: Mon, 16 Sep 2019 15:15:44 +0100
-Message-Id: <20190916141544.17540-16-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190916141544.17540-1-peter.maydell@linaro.org>
-References: <20190916141544.17540-1-peter.maydell@linaro.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36296 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1i9tK7-0004oD-Et
+	for alex.bennee@linaro.org; Mon, 16 Sep 2019 11:53:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35492)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philmd@redhat.com>) id 1i9tGt-0000o7-3g
+ for qemu-arm@nongnu.org; Mon, 16 Sep 2019 11:50:36 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philmd@redhat.com>) id 1i9tGr-00021y-Dr
+ for qemu-arm@nongnu.org; Mon, 16 Sep 2019 11:50:34 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46364)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1i9tGr-00021N-3i; Mon, 16 Sep 2019 11:50:33 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 09FE1302C081;
+ Mon, 16 Sep 2019 15:50:32 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-115.brq.redhat.com [10.40.204.115])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id E296D19C4F;
+ Mon, 16 Sep 2019 15:50:20 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Date: Mon, 16 Sep 2019 17:48:39 +0200
+Message-Id: <20190916154847.28936-6-philmd@redhat.com>
+In-Reply-To: <20190916154847.28936-1-philmd@redhat.com>
+References: <20190916154847.28936-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: 6aZHBiR5MyTO
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.46]); Mon, 16 Sep 2019 15:50:32 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH 05/13] hw: Move M41T80 device from hw/timer/ to
+ hw/rtc/ subdirectory
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Helge Deller <deller@gmx.de>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-ppc@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3Q2L8w3fONNv
 
-SH_EXT_STDOUT_STDERR is a v2.0 semihosting extension: the guest
-can open ":tt" with a file mode requesting append access in
-order to open stderr, in addition to the existing "open for
-read for stdin or write for stdout". Implement this and
-report it via the :semihosting-features data.
+The M41T80 is a Real Time Clock, not a timer.
+Move it under the hw/rtc/ subdirectory.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- target/arm/arm-semi.c | 19 +++++++++++++++++--
- 1 file changed, 17 insertions(+), 2 deletions(-)
+ MAINTAINERS                | 2 +-
+ hw/rtc/Kconfig             | 4 ++++
+ hw/rtc/Makefile.objs       | 1 +
+ hw/{timer =3D> rtc}/m41t80.c | 0
+ hw/timer/Kconfig           | 4 ----
+ hw/timer/Makefile.objs     | 1 -
+ 6 files changed, 6 insertions(+), 6 deletions(-)
+ rename hw/{timer =3D> rtc}/m41t80.c (100%)
 
-diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-index f65d8c907e8..6f7b6d801bf 100644
---- a/target/arm/arm-semi.c
-+++ b/target/arm/arm-semi.c
-@@ -516,13 +516,14 @@ static uint32_t gdb_flenfn(ARMCPU *cpu, GuestFD *gf)
- 
- /* Feature bits reportable in feature byte 0 */
- #define SH_EXT_EXIT_EXTENDED (1 << 0)
-+#define SH_EXT_STDOUT_STDERR (1 << 1)
- 
- static const uint8_t featurefile_data[] = {
-     SHFB_MAGIC_0,
-     SHFB_MAGIC_1,
-     SHFB_MAGIC_2,
-     SHFB_MAGIC_3,
--    SH_EXT_EXIT_EXTENDED, /* Feature byte 0 */
-+    SH_EXT_EXIT_EXTENDED | SH_EXT_STDOUT_STDERR, /* Feature byte 0 */
- };
- 
- static void init_featurefile_guestfd(int guestfd)
-@@ -710,7 +711,21 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-         }
- 
-         if (strcmp(s, ":tt") == 0) {
--            int result_fileno = arg1 < 4 ? STDIN_FILENO : STDOUT_FILENO;
-+            int result_fileno;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 679b026fe0..fd68b2383a 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1113,7 +1113,7 @@ F: hw/ppc/sam460ex.c
+ F: hw/ppc/ppc440_pcix.c
+ F: hw/display/sm501*
+ F: hw/ide/sii3112.c
+-F: hw/timer/m41t80.c
++F: hw/rtc/m41t80.c
+ F: pc-bios/canyonlands.dt[sb]
+ F: pc-bios/u-boot-sam460ex-20100605.bin
+ F: roms/u-boot-sam460ex
+diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
+index 159c233517..434b20b2b1 100644
+--- a/hw/rtc/Kconfig
++++ b/hw/rtc/Kconfig
+@@ -1,3 +1,7 @@
++config M41T80
++    bool
++    depends on I2C
 +
-+            /*
-+             * We implement SH_EXT_STDOUT_STDERR, so:
-+             *  open for read == stdin
-+             *  open for write == stdout
-+             *  open for append == stderr
-+             */
-+            if (arg1 < 4) {
-+                result_fileno = STDIN_FILENO;
-+            } else if (arg1 < 8) {
-+                result_fileno = STDOUT_FILENO;
-+            } else {
-+                result_fileno = STDERR_FILENO;
-+            }
-             associate_guestfd(guestfd, result_fileno);
-             unlock_user(s, arg0, 0);
-             return guestfd;
--- 
+ config M48T59
+     bool
+=20
+diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
+index c87f81405e..89e8e48c64 100644
+--- a/hw/rtc/Makefile.objs
++++ b/hw/rtc/Makefile.objs
+@@ -1,3 +1,4 @@
++common-obj-$(CONFIG_M41T80) +=3D m41t80.o
+ common-obj-$(CONFIG_M48T59) +=3D m48t59.o
+ ifeq ($(CONFIG_ISA_BUS),y)
+ common-obj-$(CONFIG_M48T59) +=3D m48t59-isa.o
+diff --git a/hw/timer/m41t80.c b/hw/rtc/m41t80.c
+similarity index 100%
+rename from hw/timer/m41t80.c
+rename to hw/rtc/m41t80.c
+diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
+index a57e9b59fc..a6b668b255 100644
+--- a/hw/timer/Kconfig
++++ b/hw/timer/Kconfig
+@@ -20,10 +20,6 @@ config HPET
+ config I8254
+     bool
+=20
+-config M41T80
+-    bool
+-    depends on I2C
+-
+ config TWL92230
+     bool
+     depends on I2C
+diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+index fe2d1fbc40..2fb12162a6 100644
+--- a/hw/timer/Makefile.objs
++++ b/hw/timer/Makefile.objs
+@@ -6,7 +6,6 @@ common-obj-$(CONFIG_CADENCE) +=3D cadence_ttc.o
+ common-obj-$(CONFIG_DS1338) +=3D ds1338.o
+ common-obj-$(CONFIG_HPET) +=3D hpet.o
+ common-obj-$(CONFIG_I8254) +=3D i8254_common.o i8254.o
+-common-obj-$(CONFIG_M41T80) +=3D m41t80.o
+ common-obj-$(CONFIG_PUV3) +=3D puv3_ost.o
+ common-obj-$(CONFIG_TWL92230) +=3D twl92230.o
+ common-obj-$(CONFIG_XILINX) +=3D xilinx_timer.o
+--=20
 2.20.1
+

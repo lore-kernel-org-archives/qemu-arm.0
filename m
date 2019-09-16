@@ -1,111 +1,176 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2213519wrp;
-        Sat, 14 Sep 2019 11:19:29 -0700 (PDT)
-X-Received: by 2002:a17:906:318d:: with SMTP id 13mr43327326ejy.281.1568485169707;
-        Sat, 14 Sep 2019 11:19:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568485169; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4067695wrp;
+        Mon, 16 Sep 2019 07:15:47 -0700 (PDT)
+X-Received: by 2002:a05:6000:50:: with SMTP id k16mr15416929wrx.161.1568643347402;
+        Mon, 16 Sep 2019 07:15:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568643347; cv=none;
         d=google.com; s=arc-20160816;
-        b=VDMwvauB8yQ+aL5M7FMADilMfq10S1fuABPyHOOz+wEdnxBsdbKuGlvkOdoNJFNjSV
-         X5FiU6JSbjLn/jFS5dQSU0y009UOn8dyKu4FxUK2cR6gh/ngD6LRjXmEveIqa7rCQbyP
-         rtjtaBDP1VNFnemw/s80eZwPA2XJnpfyYzvutPEoz6T8WX++jbIwbAG5QAdo7p3eJT0x
-         wUxqTlx14buIZuX7i5G5PCY6OVL64B31ZuJDM2MgiYvkauLQ0awFIbtNQvofP5i0mlOR
-         vpuINNODXc1jbjTZNzYg19O1K7F4lINDGasx/cPnxnZJGxY6ELxNub5TXP8SrlfUGpeP
-         E/iw==
+        b=LxAyzrfwSq2OF7SHmRupasLQyN+C233VeXxcX3H6h3L0FPpi4OVssJiD0V7wHEdE6u
+         nhi5RQxzVuEfF0F8zcUCfIow9Fp7py7WgMDTZAI4DiDs4X7A3Mml9BUpezXEoCYdVqk7
+         55Rw+57szKvZwaQmiEa4bLDMKGPd36ZYUFAj+yN1uc49B+7r5OcZhYPIa+TrVnAD5foA
+         qHPycTNkx8hZHDWTpjAp0hhIA3IPZW3s/tjp2XiIVDnXTj2ssTdWjvd4igjRp0g/bo4Q
+         jKXLcIna/mdzmphvGFMzRoWQ0H1x2A4l/c7R1SLJovKg+ajNybpdDhkpddCeLZh8rOkN
+         je5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=4B41yq9zdNdnJksgpIQB+qz5dKo7g8LzE3zX2pNz53Q=;
-        b=nPKSw8mVGo146v5lC7DbXM6nv6omi2NiEiho8LkY1/NcTAQKimYjdcUm1Cd2lQtLKS
-         KDw5xqNlE6sENguRSbWgpXc3lMK+wkIs/BrfIZ35ByyIER1mB17S6512OEcY6K+chHNs
-         YAqc6EYybcasl3RsWsQqiQJ0OLwFWSb/SgV2hFNWkrx5kjdSMtAZaLTi4YM0yHs9pR9k
-         gHTMjVXpkRwwGk0g70dGDurShmcMsaUlOYWzzWZAI2ohChnc6pknpPnp66S00Us8XhBd
-         edZLxOMPiky2+joChT3LlnhXLqQxIDJacuRy8p1eKHzSwySi1uBoDNRFBaWNPshMbSSM
-         y9aw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=trF4PUeQYqIN1FaA3mMgwum5hWySICsncWehaFgqsF0=;
+        b=E4rSyzT5ccw8i4Inkock5eG8RXqtamyqmZQhatRgOWWuafSJRirmQff47MbndnfVx9
+         7jyzynlX4nyt1LsK261b5F2Kxy5VkCuBcOH24uWiePEZLEcQo3U+wxLefcfpCQpEJ0hF
+         kAMLWuxdA9yOONOK010XDlx39b0R0k/2FCjR4mFHWutd2hx1GrAnG1ncOFshckF6Xhj6
+         WRZhS0GLZkKzg6Zb+5b57i0qwO/RUP63YM4y1gyRZX/sJJXrN1FZKobuUOqm6CXTH9wW
+         n0eDytXMSqfXpiBRD60tX/vxCZqi20q+49fRCyc2vhfifrWKgfXmMaoJJFY8wSy0A/5q
+         zcmg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JrVHdwBm;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fe+NE2JR;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id g7sor25937659edp.24.2019.09.14.11.19.29
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id x1sor29478077wro.7.2019.09.16.07.15.47
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 14 Sep 2019 11:19:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Mon, 16 Sep 2019 07:15:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JrVHdwBm;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fe+NE2JR;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=4B41yq9zdNdnJksgpIQB+qz5dKo7g8LzE3zX2pNz53Q=;
-        b=JrVHdwBmRRSZvZEkASmqqTjCTnO2OYmvqk/FM6JO8bUH56R/5bPHFb+sBMBVfcdNKe
-         e5G64RA6Qn2H45CpKsVkPSIqVozQN1sXLhcqKnA62EE4UBXYsT+JchBoOizxGRzM108R
-         odFglAYdft5Kl+vHt55P+A0e83foE7QQW+SkaE0At+R8leQXe4S7wPp7N0dHVeCLo4FQ
-         enpY++M7U/Lnkr2/FCkBdoMdeOWRF7yITFY1trBCRqwMiZKvX4HOUeeT8GHPz3uMLk8W
-         PXwwrf4AWPSorXp/AAa3ay1OVGiSwgkhzgBUpJDtCGZOzZJjkUn4RnOFnZNS/5xzkt5v
-         K6hA==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=trF4PUeQYqIN1FaA3mMgwum5hWySICsncWehaFgqsF0=;
+        b=fe+NE2JRwk7ME04uMCeHLKURUF8VQtDaXScJmfSDYzUIRbXuZDPCNWoPV4znRNN723
+         GXUdkrARL3+SSeTkN0iXY8r5Qu3uZmK+N5PiSbibE07D7TjF5f41Iutumxsnbbl87A+D
+         L+QXPhk5vOfN1qpW8TQmkW5Ut78n2SNR2Eac0TEWbHxF9kXeucT3ank/R3hwM5ZPvGQx
+         oMYjD6VYv6Rh61neHNh3aX7W2sYP3clq1M//Dgedn6JQtQQ4u1ejV7xCO9Ws/j2nMeaO
+         JFxnuBJ/L9yPCZfVKj364fblcfIF4Iab2oYnRTZk0/TLQg8hRzGChN5aZ+rGnkIHUaZt
+         2acA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=4B41yq9zdNdnJksgpIQB+qz5dKo7g8LzE3zX2pNz53Q=;
-        b=WPokNJWPyqB1MwyHsVHfNFRYMjnLM2th14aX/6dcB5UXymwOV/7WtzaYhjVTb48ZrY
-         OqgYYa+8Fyc04CqUbCugEOAo1WQYimPjUd99sfp9spvlR0oS/ipFoc7fzIMSzGvjvT62
-         qTbLapUIg0kmrV8glT4vXRkYHJm7CHWuxjfD30R0W8JLWj1pmbBMTHPUVToFhpTOaCVf
-         oQq19KXDdiqqdamEd3VwnHG8ra74eUE8jRfCnSde2/TICHi30U8IHIYJjgAObwEbwlV1
-         /d46kzZybL17es0f5aT97w3/ZgsWjI7u7OLOVd/I7rYjDvSBTXYUVlzV4OumKE8dN3eE
-         mYsQ==
-X-Gm-Message-State: APjAAAVRe1OvTfTqPCpJ67o1lvRhRsSY6vwwmMPQvPIFOZ8dRXDN6+jF
-	FMxd7pdK6oF1TtfoF+wxoKu+ySDu
-X-Google-Smtp-Source: APXvYqxeEFi5rmHJrJm/1pMQ3VwLVr7ljjOQDjmrK7U1zimD6tUp8Oc7A+BLuC9s2CodyCEUz+/ziQ==
-X-Received: by 2002:a50:8f81:: with SMTP id y1mr53635205edy.181.1568485169421;
-        Sat, 14 Sep 2019 11:19:29 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.44.107] ([185.81.138.21])
-        by smtp.gmail.com with ESMTPSA id y22sm630728eje.42.2019.09.14.11.19.26
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 14 Sep 2019 11:19:28 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH v1 4/4] elf: move ELF_ARCH definition to
- elf-arch.h
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: Aleksandar Markovic <aleksandar.m.mail@gmail.com>,
- peter.maydell@linaro.org, Riku Voipio <riku.voipio@iki.fi>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>
-References: <20190910193408.28917-1-alex.bennee@linaro.org>
- <20190910193408.28917-5-alex.bennee@linaro.org>
- <CAL1e-=giNc1e+kN04KqHFQGkJbP4BKziQyxVd3-RTtL+UOfSoQ@mail.gmail.com>
- <874l1j18vm.fsf@linaro.org> <5880b9c9-969f-fa79-f7f4-a45a6568635e@linaro.org>
- <87woeaahrm.fsf@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <edb400dc-9542-14b0-6eb2-0192c29cc808@linaro.org>
-Date: Sat, 14 Sep 2019 14:19:24 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+        bh=trF4PUeQYqIN1FaA3mMgwum5hWySICsncWehaFgqsF0=;
+        b=T7QCa3x2kngLBCQ/VYxYmWNgUZn7rFC3+mADPmCzhQ6abHzzvMw3g2i5vaVcJwwPDc
+         6zpEctThXajGs+fIKtdLYVYraKAXq6WM9MWXaYy6RiRunwSQQ7jyIZU5oVUzQR/2WxY/
+         H6JuGSo3UF2sH8SFo3WuNgpXwHVBQk8LQxjVsCH7vkZPC/MGJmy6mWI1bhf2TdOk/bSg
+         mpBKKGKHfakQ5ZYnM/pSl9gwdu++fswox4ztA/QplUF7NxiPfTTQjqDvO++xRYUV2+tt
+         dKWxIV0nZIFGsRMfLxXGlq0Q2qo/OXwKtZOQHlJKI/YaPBBF6NIzTg+RLS1BAlqeLwsp
+         wkEg==
+X-Gm-Message-State: APjAAAWCQykC92vCgGkJMEwYQrTvdXUVZk8YR5r38Bn8kKrLFnt/OwHO
+	eE7wUzDtWnMGJumWRcO0tcVOidtlsprksQov
+X-Google-Smtp-Source: APXvYqxXcqmQ0C0cBkjxxg7JJa4GfbhXsKLD60dWAK9lZxZsybh9XArNgJw/YjoLdoucVQPS6v2h3Q==
+X-Received: by 2002:adf:f1d1:: with SMTP id z17mr11580wro.330.1568643346931;
+        Mon, 16 Sep 2019 07:15:46 -0700 (PDT)
+Return-Path: <peter.maydell@linaro.org>
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+        by smtp.gmail.com with ESMTPSA id s9sm15185884wme.36.2019.09.16.07.15.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 16 Sep 2019 07:15:46 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH v2 00/15] target/arm: Implement semihosting v2.0
+Date: Mon, 16 Sep 2019 15:15:29 +0100
+Message-Id: <20190916141544.17540-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <87woeaahrm.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: UWuQvoe0xiZ7
+X-TUID: Wc7po6UpIQ5Z
 
-On 9/14/19 1:51 PM, Alex Bennée wrote:
-> I think I'm going to stick with the gross TARGET for now. It mostly
-> seems a way of avoiding building per-arch plugins. I assume most out of
-> tree plugins will be targeted at a specific machine anyway.
+This patchset implements support in QEMU for v2.0 of the
+Arm semihosting specification:
+ https://developer.arm.com/docs/100863/latest/preface
 
-Ok.
+Specifically, v2.0 has:
+ * a mechanism for detection of optional extra features,
+   which works by allowing the guest to open a magic file
+   named ":semihosting-features" and read some feature
+   flags from it
+ * two defined extensions:
+  - STDOUT_STDERR lets the guest separately open stdout and
+    stderr via the ":tt" magic filename (v1.0 only allowed
+    access to stdout)
+  - EXIT_EXTENDED lets A32/T32 guests exit with a specified
+    exit status (otherwise only available to A64 guests).
+    This is something that people have been complaining
+    about for a long time.
 
-> Anyway I think that means I'll drop this series unless 1-3 are worth
-> keeping as simple clean-ups leaving out 4?
+(Technically some of the things we already support, like
+having an A64 semihosting interface at all, are also part of
+the v2.0 spec.)
 
-Patch 1 was supposed to be in another patch set, right?
-Patch 2, split, is still a good cleanup, I think.
+This patchset:
+ * fixes some bugs relating to errnos in some cases
+ * makes semihosting hand out its own filedescriptors rather
+   than just passing out host fd numbers
+ * abstracts out the fd-related semihosting calls so they
+   indirect via a function table based on the type of the fd
+ * adds a new type of fd representing the magic file
+   ":semihosting-features" which is used for feature-detection
+ * implements both of the extensions defined by the v2.0 spec
+
+I've tested this by improving my semihosting test suite:
+ https://git.linaro.org/people/peter.maydell/semihosting-tests.git/
+(if people have other guest binaries that make much use of
+semihosting then testing would certainly be welcome.)
+
+Changes v1->v2:
+ * Added a patch which corrects misunderstanding in a FIXME
+   comment about the when the callback function is called
+   for arm_gdb_syscall()
+ * in patch 4, if the SYS_open is going via the gdbstub, we
+   must do the associate_guestfd() work in the gdbstub callback
+   function. This is because in softmmu mode the callback will
+   not be called until after do_arm_semihosting() returns.
+   (The v1 series effectively broke SYS_open in the gdbstub
+   + softmmu config)
+ * Pass CPUARMState* to set_swi_errno(), rather than creating
+   an odd local-to-this-file typedef of TaskState for the
+   softmmu compilation
+ * New patch: avoid ifdeffery in gdb callback fns by
+   using set_swi_errno() rather than doing it by-hand
+ * The various 'factor out SYS_foo' patches are basically
+   unchanged, but all the functions no longer need to take
+   a TaskState*. This seemed kind of borderline as to whether
+   to retain Alex's reviewed-by tags, so I dropped them.
+ * Since we need 'env' for set_swi_errno(), we don't need
+   to put the variable declaration inside ifdefs any more
+   in the host_readfn() etc.
+
+I do plan to have a go at fixing the odd FIXME surrounding
+arm_gdb_syscall() which patch 3 clarifies/states in a comment.
+But I thought it better to not tangle that up with this
+patchset, which is already pretty long.
+
+thanks
+-- PMM
 
 
-r~
+Peter Maydell (15):
+  target/arm/arm-semi: Capture errno in softmmu version of
+    set_swi_errno()
+  target/arm/arm-semi: Always set some kind of errno for failed calls
+  target/arm/arm-semi: Correct comment about gdb syscall races
+  target/arm/arm-semi: Make semihosting code hand out its own file
+    descriptors
+  target/arm/arm-semi: Restrict use of TaskState*
+  target/arm/arm-semi: Use set_swi_errno() in gdbstub callback functions
+  target/arm/arm-semi: Factor out implementation of SYS_CLOSE
+  target/arm/arm-semi: Factor out implementation of SYS_WRITE
+  target/arm/arm-semi: Factor out implementation of SYS_READ
+  target/arm/arm-semi: Factor out implementation of SYS_ISTTY
+  target/arm/arm-semi: Factor out implementation of SYS_SEEK
+  target/arm/arm-semi: Factor out implementation of SYS_FLEN
+  target/arm/arm-semi: Implement support for semihosting feature
+    detection
+  target/arm/arm-semi: Implement SH_EXT_EXIT_EXTENDED extension
+  target/arm/arm-semi: Implement SH_EXT_STDOUT_STDERR extension
+
+ target/arm/arm-semi.c | 707 ++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 577 insertions(+), 130 deletions(-)
+
+-- 
+2.20.1

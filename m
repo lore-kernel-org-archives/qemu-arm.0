@@ -1,90 +1,91 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5055677wrp;
-        Tue, 17 Sep 2019 03:28:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwTD4lwW0YJ69GFUmzG6B73voK3rHXi7H+lNprilDE2xTWKJ9OHArITIYvM+GXk7GsL39ii
-X-Received: by 2002:a17:906:3717:: with SMTP id d23mr4045195ejc.266.1568716089023;
-        Tue, 17 Sep 2019 03:28:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568716089; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5055979wrp;
+        Tue, 17 Sep 2019 03:28:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy/VHhCY5x0TpOUMHuqMCE/qHyrSKU087IV3t9tfOxDuOn/R4nBSRwahs7PGnODgsCM7xVm
+X-Received: by 2002:a17:906:7798:: with SMTP id s24mr4054168ejm.211.1568716110932;
+        Tue, 17 Sep 2019 03:28:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568716110; cv=none;
         d=google.com; s=arc-20160816;
-        b=fhp/zWGwdajTPf2HFrLHSyCu2Wbkh3IcAYYW2z2c/whUPhYUhUJXgPppEozdQ0NmGg
-         o8iSm/jYoHmga7h07GtHG24p5vgHB57LoQIvQuJO3GIZ1MzlsbBwL/dlY8d9fmvwgORK
-         rCG5qItTEygbnk3TIHUxxtOJufYk8jRWPmYKLqGl0myV2yv5iWuG6WQYrp3SfJS75MAL
-         eVp9inPIREdPlvixlZwrLLGcQvbDcwwCmrtDs0C+ZR69FC/2YWb88J0pe9YCXBESF0ou
-         nzxYJGW2ggJ7TnYkFvB1W7PB3HZFPH/dKHwibajgvvoRerNbkrcKjR9gW50JRmPxj/9X
-         ZK8g==
+        b=XJc3GAWwKmb5/U+hZSFcFHa5J3nRr+QmUnkVTccXL8cYUrMbwyLW8XFyGsrWQzW4N9
+         K73vU1f1HLUsRwEOrzTqkSQvPuI9RP8Tc6GsM0i1OMO3usSR6mGGfbEz4jinVHWaJZob
+         qS0S3HtrIrVQ/A0cMnTnKflY1awgsr4HO3uzlXyQMXnRZRmv1aiPJT+MXCkhJVY7NA8U
+         mejHIgPO+HQu5tr51/Pt3hU6jWirf5kudv/ip7DP2kI301iWnxZhlaocZrhf303WoSQO
+         V7yFwWLVPGLcaj93aNrLiqmdYFKTnmW2XfVRiYZls8uAwmaZigwk06wG22FOc0ihLK5W
+         TLyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:message-id
          :content-transfer-encoding:mime-version:user-agent:references
          :in-reply-to:date:to:from;
-        bh=gTL2ylAhV3CS37TM1uHZOZhCPa5SRTjU9r31eH2ack0=;
-        b=EaXHijC3W2AF4GhB7n/n098375FfqQRGihapVMwt56E3tCHkv5iJt+hYtGjvQ2T2mr
-         1X0aLAas+PketFqF+AyFl9WTh2GRUD4iIhdD/QZbLhXjhCH9GnkBDuewjoebcJhXbHuI
-         vhgT05Heg1Y5gk4V8GplqbtloZa/7nhnNP5vBThhr18ln+/kLqWsQZGFskgMqaDzlSze
-         zntDXSxPrt7K/FM3YDiY4o2WLtux+6u6SRYqD1abJg7/iwG+7+HvVTivFXkbFAPmeufI
-         VRjAJq14qJN1tZlUqi8zYfhuvy3NuKNb1z0Sknc3AGuN4VxXkFdtnaTskUFzEmOVnYIG
-         YWKg==
+        bh=WkgmMSgokU6L7UJ47wQZmG5/eHlzFJDt62dbhweWFW8=;
+        b=r3uk1SfFoiSu0qQMSC/m5BW+cI7oHJxH5vz2FU2qy0tdiCzZbQRnnKC1ianGdZRg0e
+         5PwaOmeBYWZ/mQkyeFpU/2mYW6FzahYcsS/ATg5sho5q4u4j7samdBDffkLo5K7VIEp3
+         w2qZ36KxPpkrmoifs4mSupCZUKdb9dDvRx85KLLYlQfyvHdg+kaz9rtwc+8lHx+G4Lti
+         F8eQZzKRyrK7UhREoWktaT86t7RrcCE0pE02d8bolc7ZB7X3wdlf/T5W2GPJ7LCyn9is
+         1poVeHS8Y3/ZamdSWDkGbK7lND2zxuh5kqElEgNyF9hAj76d3Xbwbq6mN0xdJhN3Nk7H
+         32rA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qh16si812351ejb.349.2019.09.17.03.28.08
+        by mx.google.com with ESMTPS id i34si1165537ede.37.2019.09.17.03.28.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Sep 2019 03:28:09 -0700 (PDT)
+        Tue, 17 Sep 2019 03:28:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43730 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43732 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAAiN-0003mM-3L
-	for alex.bennee@linaro.org; Tue, 17 Sep 2019 06:28:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43916)
+	id 1iAAij-0004Bq-5Q
+	for alex.bennee@linaro.org; Tue, 17 Sep 2019 06:28:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43788)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groug@kaod.org>) id 1iAAcO-0007b8-Lj
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:21:57 -0400
+ (envelope-from <groug@kaod.org>) id 1iAAby-00077j-Dx
+ for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:21:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groug@kaod.org>) id 1iAAcN-00040t-Ed
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:21:56 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:41276)
+ (envelope-from <groug@kaod.org>) id 1iAAbw-0003pa-Mg
+ for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:21:30 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:8860)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <groug@kaod.org>) id 1iAAcN-00040S-6c
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:21:55 -0400
-Received: from pps.filterd (m0098393.ppops.net [127.0.0.1])
+ (Exim 4.71) (envelope-from <groug@kaod.org>) id 1iAAbw-0003p6-DJ
+ for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:21:28 -0400
+Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x8HAHEck118301
- for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 06:21:54 -0400
-Received: from e06smtp01.uk.ibm.com (e06smtp01.uk.ibm.com [195.75.94.97])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2v2wfs8gc2-1
+ x8HAHFVe070841
+ for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 06:21:27 -0400
+Received: from e06smtp07.uk.ibm.com (e06smtp07.uk.ibm.com [195.75.94.103])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2v2w2ysmnf-1
  (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
- for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 06:21:54 -0400
+ for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 06:21:27 -0400
 Received: from localhost
- by e06smtp01.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ by e06smtp07.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
  Violators will be prosecuted
  for <qemu-devel@nongnu.org> from <groug@kaod.org>;
- Tue, 17 Sep 2019 11:21:51 +0100
-Received: from b06cxnps3074.portsmouth.uk.ibm.com (9.149.109.194)
- by e06smtp01.uk.ibm.com (192.168.101.131) with IBM ESMTP SMTP Gateway:
+ Tue, 17 Sep 2019 11:21:24 +0100
+Received: from b06cxnps4076.portsmouth.uk.ibm.com (9.149.109.198)
+ by e06smtp07.uk.ibm.com (192.168.101.137) with IBM ESMTP SMTP Gateway:
  Authorized Use Only! Violators will be prosecuted; 
  (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
- Tue, 17 Sep 2019 11:21:43 +0100
-Received: from d06av24.portsmouth.uk.ibm.com (mk.ibm.com [9.149.105.60])
- by b06cxnps3074.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- x8HALftR47054914
+ Tue, 17 Sep 2019 11:21:18 +0100
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com
+ (b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
+ by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ x8HALGXt28770498
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 17 Sep 2019 10:21:41 GMT
-Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 9BE1B42047;
- Tue, 17 Sep 2019 10:21:41 +0000 (GMT)
-Received: from d06av24.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id A2B324203F;
- Tue, 17 Sep 2019 10:21:40 +0000 (GMT)
+ Tue, 17 Sep 2019 10:21:16 GMT
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 572B3A405F;
+ Tue, 17 Sep 2019 10:21:16 +0000 (GMT)
+Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 5D1AAA4054;
+ Tue, 17 Sep 2019 10:21:15 +0000 (GMT)
 Received: from bahia.lan (unknown [9.145.22.84])
- by d06av24.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Tue, 17 Sep 2019 10:21:40 +0000 (GMT)
+ by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Tue, 17 Sep 2019 10:21:15 +0000 (GMT)
 From: Greg Kurz <groug@kaod.org>
 To: qemu-devel@nongnu.org
-Date: Tue, 17 Sep 2019 12:21:40 +0200
+Date: Tue, 17 Sep 2019 12:21:15 +0200
 In-Reply-To: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
 References: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
 User-Agent: StGit/unknown-version
@@ -92,22 +93,22 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-TM-AS-GCONF: 00
-x-cbid: 19091710-4275-0000-0000-000003678A50
+x-cbid: 19091710-0028-0000-0000-0000039E0EF0
 X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 19091710-4276-0000-0000-00003879EF83
-Message-Id: <156871570029.196432.9320869242034561567.stgit@bahia.lan>
+x-cbparentid: 19091710-0029-0000-0000-000024608799
+Message-Id: <156871567501.196432.1562118977835800045.stgit@bahia.lan>
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
  definitions=2019-09-17_05:, , signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
  priorityscore=1501
  malwarescore=0 suspectscore=1 phishscore=0 bulkscore=0 spamscore=0
  clxscore=1034 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=656 adultscore=0 classifier=spam adjust=0 reason=mlx
+ mlxlogscore=629 adultscore=0 classifier=spam adjust=0 reason=mlx
  scancount=1 engine=8.0.1-1908290000 definitions=main-1909170106
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
 X-Received-From: 148.163.156.1
-Subject: [Qemu-devel] [PATCH 11/17] scsi: Pass local error object pointer to
- error_append_hint()
+Subject: [Qemu-devel] [PATCH 07/17] virtio-pci: Pass local error object
+ pointer to error_append_hint()
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -128,11 +129,10 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
  =?utf-8?q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
  "Daniel P. =?utf-8?q?Berrang=C3=A9=22?= <berrange@redhat.com>,
  qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org"@d06av24.portsmouth.uk.ibm.com,
- Eric Farman <farman@linux.ibm.com>,
+ qemu-s390x@nongnu.org"@b06wcsmtp001.portsmouth.uk.ibm.com,
+ David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Yuval Shaia <yuval.shaia@oracle.com>,
  Alex Williamson <alex.williamson@redhat.com>, John Snow <jsnow@redhat.com>,
@@ -141,52 +141,48 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zcgf2ZwMjoZM
+X-TUID: fGpf5ZBY531w
 
 Ensure that hints are added even if errp is &error_fatal or &error_abort.
 
 Signed-off-by: Greg Kurz <groug@kaod.org>
 ---
- hw/scsi/scsi-disk.c    |    7 +++++--
- hw/scsi/scsi-generic.c |    7 +++++--
- 2 files changed, 10 insertions(+), 4 deletions(-)
+ hw/virtio/virtio-pci.c |   14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
 
-diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
-index 915641a0f1b4..3d5e257bb66b 100644
---- a/hw/scsi/scsi-disk.c
-+++ b/hw/scsi/scsi-disk.c
-@@ -2619,9 +2619,12 @@ static void scsi_block_realize(SCSIDevice *dev, Error **errp)
-     /* check we are using a driver managing SG_IO (version 3 and after) */
-     rc = blk_ioctl(s->qdev.conf.blk, SG_GET_VERSION_NUM, &sg_version);
-     if (rc < 0) {
--        error_setg_errno(errp, -rc, "cannot get SG_IO version number");
-+        Error *local_err = NULL;
+diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
+index c6b47a9c7385..1e58822ba186 100644
+--- a/hw/virtio/virtio-pci.c
++++ b/hw/virtio/virtio-pci.c
+@@ -1543,9 +1543,12 @@ static void virtio_pci_device_plugged(DeviceState *d, Error **errp)
+         virtio_pci_disable_modern(proxy);
+ 
+         if (!legacy) {
+-            error_setg(errp, "Device doesn't support modern mode, and legacy"
++            Error *local_err = NULL;
 +
-+        error_setg_errno(&local_err, -rc, "cannot get SG_IO version number");
-         if (rc != -EPERM) {
--            error_append_hint(errp, "Is this a SCSI device?\n");
-+            error_append_hint(&local_err, "Is this a SCSI device?\n");
++            error_setg(&local_err, "Device doesn't support modern mode, and legacy"
+                              " mode is disabled");
+-            error_append_hint(errp, "Set disable-legacy to off\n");
++            error_append_hint(&local_err, "Set disable-legacy to off\n");
 +            error_propagate(errp, local_err);
+ 
+             return;
          }
-         goto out;
+@@ -1737,10 +1740,13 @@ static void virtio_pci_realize(PCIDevice *pci_dev, Error **errp)
      }
-diff --git a/hw/scsi/scsi-generic.c b/hw/scsi/scsi-generic.c
-index e7798ebcd0d4..f6a5b538cbcc 100644
---- a/hw/scsi/scsi-generic.c
-+++ b/hw/scsi/scsi-generic.c
-@@ -674,9 +674,12 @@ static void scsi_generic_realize(SCSIDevice *s, Error **errp)
-     /* check we are using a driver managing SG_IO (version 3 and after */
-     rc = blk_ioctl(s->conf.blk, SG_GET_VERSION_NUM, &sg_version);
-     if (rc < 0) {
--        error_setg_errno(errp, -rc, "cannot get SG_IO version number");
+ 
+     if (!virtio_pci_modern(proxy) && !virtio_pci_legacy(proxy)) {
+-        error_setg(errp, "device cannot work as neither modern nor legacy mode"
 +        Error *local_err = NULL;
 +
-+        error_setg_errno(&local_err, -rc, "cannot get SG_IO version number");
-         if (rc != -EPERM) {
--            error_append_hint(errp, "Is this a SCSI device?\n");
-+            error_append_hint(&local_err, "Is this a SCSI device?\n");
-+            error_propagate(errp, local_err);
-         }
++        error_setg(&local_err, "device cannot work as neither modern nor legacy mode"
+                    " is enabled");
+-        error_append_hint(errp, "Set either disable-modern or disable-legacy"
++        error_append_hint(&local_err, "Set either disable-modern or disable-legacy"
+                           " to off\n");
++        error_propagate(errp, local_err);
          return;
      }
+ 
 

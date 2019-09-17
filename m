@@ -1,83 +1,112 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4156821wrp;
-        Mon, 16 Sep 2019 08:36:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzYINJrYyPZS2qINHjxLdetwEVaUj4KKPJCSqFW0FcbLjWreMRd/4gcDWw9Os9uvAaWP1mk
-X-Received: by 2002:ac8:60c3:: with SMTP id i3mr193197qtm.212.1568648198875;
-        Mon, 16 Sep 2019 08:36:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568648198; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5328267wrp;
+        Tue, 17 Sep 2019 07:37:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw+vttYXPWZsO/slsGhEvF3yf25Ri4z3PeSftJz4PIzGAv/aREb2zdAXfqED5k2ShupD878
+X-Received: by 2002:a05:6402:160d:: with SMTP id f13mr5030825edv.227.1568731025230;
+        Tue, 17 Sep 2019 07:37:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568731025; cv=none;
         d=google.com; s=arc-20160816;
-        b=ik9mMpZGp8kPmK+BGglphyZ823O6D/FqQKVD9YVlT/9fC76CTYD+29ZcsSSqwaBiI5
-         AuXNXh5MVKwjkrxqsy3xzzSnkP+RPFmWcGWdemS5/3VhGVuc2+pxoizLckM3/Rl8XHTx
-         rRICUUB+8O6qTKTuQLEXe9dcbk+jywyM0dMEh4lHskYQvji203sKl6Mhhp6SVTM7xTMX
-         hKugV9/0/Ttc3bF/k+HoGv43cs/dFrYTjUbTekzYf3Qlq/BXWT/bSZuELU32edzexvQX
-         yuCns5/hRsGRmobRy2njqveG3AZyh5WEh3GBp1UQYrxM9LfLZ4Y+wIjCMvtA+3sxB7Bz
-         icfg==
+        b=Z63iB2yxwOiI61299VP3fLWbmLyFRhR/pEfhGo2j8gRRunezWBASgiVkbwdb6SKhyt
+         /yPiyAwRvFRX06WfVYgiRLBYv3UDdfjKMGVe1o31k4lsposIPXvglQFTsxYdfYJx3ojc
+         tlF/SCQpEiUEQm+MY0kbQsuFQR4p4yo1Y6ALd8yjmvV2e/Au2N+nWhi029NJa8YHca3L
+         2IvUvMAHiXAZDXdgjKhnHe+28XuJ4rExEptsZUbblspPVbSJP0PLLGcnMD1qIkomHQOH
+         1pLHHKZ+3NA3iYOc19GdcSbjjwgXHH6icE4Qm02jzlYcIwmi95UJt5ZktA2WTgE2OGfk
+         h06g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=0eHq5a+LvYWsetjz8TbM7vK2hEjTvkXpnvyhM9Xv45c=;
-        b=SiP4pI4AMwoLOT2TNmRoNG5gWawPzHYrOhks4QOxoHq5PSj3o9FePwOQH4OA4XqaA2
-         Ts97CWtTuT97EM07SPMCEvgjT7wfATjtNWsAdCGuZLSeTSQ+QIGeU1bUbGQCjRysi0vd
-         14tBOjqUQxdge+8FXVl/2SWzL2n5hjzKneAZ5fZAgr6D9sj1P6jdxOvVP5OAtm7H+Oau
-         uEp+cJTZOvw3uwaiRj/hkuaziaVdM6i53VaFwICHB4OsNgeU2dY6HUZwpJ/DoaW6qXb6
-         Bcc+/GYdGwVjZsVI2CHVdUsBM9wRSOeCpLjxXRt2YmC/o3qr5Ew+eNIuZyeFGP6aMoRb
-         S9Pg==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=2D+X/pYiao7h5lY/UptZ36aEBgZTHvN25VI2VaFqmP8=;
+        b=XPbwCD3ByY82+Uz1yRJ++m4gOHn/cchA4MHMaID/z1kgz6fATKlh/voCuoHh4vsltJ
+         gI+67yUe/qEPzm2ACJ0HcvVrOVuVf/Yrg2VQBpkif3ClU/gi1WgQ+PJ1b98ab0hpyA+X
+         QoRTA4KJ4gT27m2p7u2J2ZU2mFVAZQZJlBfKzbNFBY8utaK9uF+sovZHBd51KL5krnWu
+         cAlFINP22vBQRD0A06evBazC5jj2WhGby6FAsXmeEb1LCdQ7feejd532uoB9r0leYXDV
+         cUlJUF8mqkEHk8wbs1PHKN/cYllRf7hAkPf5ck5CvyI03lgOqrdxklTBI8D9nTH+FMBc
+         pUvw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p5si9248179qtn.234.2019.09.16.08.36.38
+        by mx.google.com with ESMTPS id x14si1412048edq.49.2019.09.17.07.37.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Sep 2019 08:36:38 -0700 (PDT)
+        Tue, 17 Sep 2019 07:37:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35980 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46702 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i9t3N-0001cl-Md
-	for alex.bennee@linaro.org; Mon, 16 Sep 2019 11:36:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55228)
+	id 1iAEbH-00046D-WA
+	for alex.bennee@linaro.org; Tue, 17 Sep 2019 10:37:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53841)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1i9sME-0005lh-BZ
- for qemu-arm@nongnu.org; Mon, 16 Sep 2019 10:52:04 -0400
+ (envelope-from <eblake@redhat.com>) id 1iAEb7-000461-5k
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 10:36:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1i9sMC-0002et-Rn
- for qemu-arm@nongnu.org; Mon, 16 Sep 2019 10:52:02 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57010)
+ (envelope-from <eblake@redhat.com>) id 1iAEb2-0002eR-2s
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 10:36:51 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39936)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>)
- id 1i9sMC-0002eF-BV; Mon, 16 Sep 2019 10:52:00 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ (Exim 4.71) (envelope-from <eblake@redhat.com>)
+ id 1iAEb1-0002by-OY; Tue, 17 Sep 2019 10:36:48 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id F22AB10F2E81;
- Mon, 16 Sep 2019 14:51:58 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 80F2E450C;
- Mon, 16 Sep 2019 14:51:54 +0000 (UTC)
-Date: Mon, 16 Sep 2019 16:51:52 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Message-ID: <20190916145152.c7l7omclx4jf7otl@kamzik.brq.redhat.com>
-References: <20190913095639.25447-1-eric.auger@redhat.com>
- <20190913095639.25447-3-eric.auger@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id 29FF6A3D38C;
+ Tue, 17 Sep 2019 14:36:45 +0000 (UTC)
+Received: from [10.3.116.234] (ovpn-116-234.phx2.redhat.com [10.3.116.234])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 6EFF55C219;
+ Tue, 17 Sep 2019 14:36:23 +0000 (UTC)
+To: Greg Kurz <groug@kaod.org>, qemu-devel@nongnu.org
+References: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
+ <156871563702.196432.5964411202152101367.stgit@bahia.lan>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=eblake@redhat.com; keydata=
+ xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
+ xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
+ TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
+ GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
+ sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
+ AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
+ CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
+ RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
+ wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
+ Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
+ gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
+ pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
+ zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
+ pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
+ 3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
+ NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
+ cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
+ SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
+ I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
+ mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
+ Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
+ 2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
+Organization: Red Hat, Inc.
+Message-ID: <97433fab-aa84-51b7-c6d0-f4abb2f54458@redhat.com>
+Date: Tue, 17 Sep 2019 09:36:18 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20190913095639.25447-3-eric.auger@redhat.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+In-Reply-To: <156871563702.196432.5964411202152101367.stgit@bahia.lan>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.66]); Mon, 16 Sep 2019 14:51:59 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.68]); Tue, 17 Sep 2019 14:36:46 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [RFC v3 2/3] intc/arm_gic: Support IRQ
- injection for more than 256 vpus
+Subject: Re: [Qemu-arm] [PATCH 01/17] error: Update error_append_hint()'s
+ documentation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -89,137 +118,53 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, maz@kernel.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, yuzenghui@huawei.com, eric.auger.pro@gmail.com
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
+ Juan Quintela <quintela@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Yuval Shaia <yuval.shaia@oracle.com>,
+ Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
+ John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Kevin Wolf <kwolf@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zqcHBXT/BDoD
+X-TUID: cuTSEGFoEkjp
 
-On Fri, Sep 13, 2019 at 11:56:38AM +0200, Eric Auger wrote:
-> Host kernels that expose the KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 capability
-> allow injection of interrupts along with vcpu ids larger than 255.
-> Let's encode the vpcu id on 12 bits according to the upgraded KVM_IRQ_LINE
-> ABI when needed.
-> 
-> Given that we have two callsites that need to assemble
-> the value for kvm_set_irq(), a new helper routine, kvm_arm_set_irq
-> is introduced.
-> 
-> Without that patch qemu exits with "kvm_set_irq: Invalid argument"
-> message.
-> 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> Reported-by: Zenghui Yu <yuzenghui@huawei.com>
-> 
-> ---
-> 
-> v2 -> v3:
-> - remove if (cpu !=0), drop mask, as per Drew's suggestions
-> ---
->  hw/intc/arm_gic_kvm.c |  7 ++-----
->  target/arm/cpu.c      | 10 ++++------
->  target/arm/kvm.c      | 12 ++++++++++++
->  target/arm/kvm_arm.h  |  1 +
->  4 files changed, 19 insertions(+), 11 deletions(-)
-> 
-> diff --git a/hw/intc/arm_gic_kvm.c b/hw/intc/arm_gic_kvm.c
-> index b56fda144f..9deb15e7e6 100644
-> --- a/hw/intc/arm_gic_kvm.c
-> +++ b/hw/intc/arm_gic_kvm.c
-> @@ -55,7 +55,7 @@ void kvm_arm_gic_set_irq(uint32_t num_irq, int irq, int level)
->       * has separate fields in the irq number for type,
->       * CPU number and interrupt number.
->       */
-> -    int kvm_irq, irqtype, cpu;
-> +    int irqtype, cpu;
->  
->      if (irq < (num_irq - GIC_INTERNAL)) {
->          /* External interrupt. The kernel numbers these like the GIC
-> @@ -72,10 +72,7 @@ void kvm_arm_gic_set_irq(uint32_t num_irq, int irq, int level)
->          cpu = irq / GIC_INTERNAL;
->          irq %= GIC_INTERNAL;
->      }
-> -    kvm_irq = (irqtype << KVM_ARM_IRQ_TYPE_SHIFT)
-> -        | (cpu << KVM_ARM_IRQ_VCPU_SHIFT) | irq;
-> -
-> -    kvm_set_irq(kvm_state, kvm_irq, !!level);
-> +    kvm_arm_set_irq(cpu, irqtype, irq, !!level);
->  }
->  
->  static void kvm_arm_gicv2_set_irq(void *opaque, int irq, int level)
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 2399c14471..13813fb213 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -576,16 +576,16 @@ static void arm_cpu_kvm_set_irq(void *opaque, int irq, int level)
->      ARMCPU *cpu = opaque;
->      CPUARMState *env = &cpu->env;
->      CPUState *cs = CPU(cpu);
-> -    int kvm_irq = KVM_ARM_IRQ_TYPE_CPU << KVM_ARM_IRQ_TYPE_SHIFT;
->      uint32_t linestate_bit;
-> +    int irq_id;
->  
->      switch (irq) {
->      case ARM_CPU_IRQ:
-> -        kvm_irq |= KVM_ARM_IRQ_CPU_IRQ;
-> +        irq_id = KVM_ARM_IRQ_CPU_IRQ;
->          linestate_bit = CPU_INTERRUPT_HARD;
->          break;
->      case ARM_CPU_FIQ:
-> -        kvm_irq |= KVM_ARM_IRQ_CPU_FIQ;
-> +        irq_id = KVM_ARM_IRQ_CPU_FIQ;
->          linestate_bit = CPU_INTERRUPT_FIQ;
->          break;
->      default:
-> @@ -597,9 +597,7 @@ static void arm_cpu_kvm_set_irq(void *opaque, int irq, int level)
->      } else {
->          env->irq_line_state &= ~linestate_bit;
->      }
-> -
-> -    kvm_irq |= cs->cpu_index << KVM_ARM_IRQ_VCPU_SHIFT;
-> -    kvm_set_irq(kvm_state, kvm_irq, level ? 1 : 0);
-> +    kvm_arm_set_irq(cs->cpu_index, KVM_ARM_IRQ_TYPE_CPU, irq_id, !!level);
->  #endif
->  }
->  
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index b2eaa50b8d..b10581fa06 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -744,6 +744,18 @@ int kvm_arm_vgic_probe(void)
->      }
->  }
->  
-> +int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level)
-> +{
-> +    int kvm_irq = (irqtype << KVM_ARM_IRQ_TYPE_SHIFT) | irq;
-> +    int cpu_idx1 = cpu % 256;
-> +    int cpu_idx2 = cpu / 256;
-> +
-> +    kvm_irq |= (cpu_idx1 << KVM_ARM_IRQ_VCPU_SHIFT) |
-> +               (cpu_idx2 << KVM_ARM_IRQ_VCPU2_SHIFT);
-> +
-> +    return kvm_set_irq(kvm_state, kvm_irq, !!level);
-> +}
-> +
->  int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
->                               uint64_t address, uint32_t data, PCIDevice *dev)
->  {
-> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-> index b3106c8600..b4e19457a0 100644
-> --- a/target/arm/kvm_arm.h
-> +++ b/target/arm/kvm_arm.h
-> @@ -253,6 +253,7 @@ int kvm_arm_vgic_probe(void);
->  
->  void kvm_arm_pmu_set_irq(CPUState *cs, int irq);
->  void kvm_arm_pmu_init(CPUState *cs);
-> +int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
->  
->  #else
->  
-> -- 
-> 2.20.1
-> 
->
+On 9/17/19 5:20 AM, Greg Kurz wrote:
+> error_setg() and error_propagate(), as well as their variants, cause
+> QEMU to terminate when called with &error_fatal or &error_abort. This
+> prevents to add hints since error_append_hint() isn't even called in
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
+s/to add/adding/
+
+> this case.
+> 
+> It means that error_append_hint() should only be used with a local
+> error object, and then propagate this local error to the caller.
+> 
+> Document this in <qapi/error.h> .
+> 
+> Signed-off-by: Greg Kurz <groug@kaod.org>
+> ---
+>  include/qapi/error.h |   11 ++++++++++-
+>  1 file changed, 10 insertions(+), 1 deletion(-)
+> 
+
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org

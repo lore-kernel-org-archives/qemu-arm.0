@@ -1,195 +1,157 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5373915wrp;
-        Tue, 17 Sep 2019 08:16:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzeEqErwBElQrENYh/7BlIiJkx26SLel4DiYcr47jMnqgnGoqcLIqgOnkTFtxTlDLb5Gkh9
-X-Received: by 2002:a0c:e747:: with SMTP id g7mr3658575qvn.244.1568733380413;
-        Tue, 17 Sep 2019 08:16:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568733380; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5384508wrp;
+        Tue, 17 Sep 2019 08:25:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxB3Hrjqdq1iJjSlUIorLAdEVNr21QK3Po0KLKxX2SN3niQ9rwtTFgQm0EChle8Pw1RX++T
+X-Received: by 2002:a05:6214:2b0:: with SMTP id m16mr3672478qvv.45.1568733908460;
+        Tue, 17 Sep 2019 08:25:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568733908; cv=none;
         d=google.com; s=arc-20160816;
-        b=NiR+/+VL7a2zqBvGqCU+plCGIv+4A7eIVzXFIoVSy8baYL8Ev3M01DY8tTkZKyitLl
-         AHGvRDrw5SFITKljtr0ju7yESdbxXFF40kMS216NVHTmfztX1zuzJTi74TSeJnAg0amR
-         PrvnZAOLpiVohUL1CN+SXo+9khVZGW1JHlHAy+4TUkGKz8nlVEk+pRvpaAn010OEeyK0
-         0SbGDJvoZggmliaypO3lfC4fRMkVl+1vZqDNjOO/Lk6fYQTY3vECE7rK04YwnqX7a31s
-         wG5VloU5JHVsb4kDwuipnOX7YfwtSBu0UHHBQbQkMpYg58lVRzoDi5GaJ19JkraJHBGn
-         X8mQ==
+        b=CfN23BHMPXeKzXWMEe35lG3sSYclWghr83GC1A/qItbfAzgKzcuzAkRm4huL68qo69
+         9/RGHttqSJmqivVnjayExvIfsegLqRzPc0W3RCHbWbAadrJHSXfJ56B4yJDyFmTBMpz0
+         p8I9UtKTEHKJeVXEGGevSLsL8KqQ/njGTqebebUAnkibI/fwFn0PbWyYOyLljWOu0NjK
+         DcEhSuPrwWD4Tfzusi/Gf0bKZO7b80dUkaTBkYj3LLbtM+k09S2cSrGorDscMBu1YMCu
+         5hp7mhZkB+5a/4l7d7T5k34IxpV7mEmDhGQ02xYZhzimH5qqTsPYgHnB6c+d1Q0yAw8r
+         fnSg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to;
-        bh=JmDP5+r003J4Vb5L62Ox5EIaGaV6Pfzbt6rdsizwuIo=;
-        b=d5rxFgIvCnqNg43O+M5EhHsAYA/Jgfa1DZfUWnRFjxxQZb6+Nzl7bYgjMdWgF1t/0I
-         Y9oQvuoujlazo6uLFOzJ40w5a6GmjTYiuOLoEZQa7z/lCMOuMGantS68agUwMtpju+6j
-         DWbmejrhnSzXilxCY3ctJtFmfYUV8gFg46PStzYEbSnFCNL9U1pYcdRXHkW8QRfOgr+i
-         J/NCP87AnWqpfckNQgzof1s5BAD2Sz0pIn31XPvMf4+mZClFROUgwnBdK2+d/zRvIUtl
-         NetE6HsnTYjl5KLsqHDLjUCwVsn08o290qBqNr51dkyg/9FYzVWAbOa4MD06k2SvtYCh
-         rRGA==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=84lIvWS/UBsMxXislbD2ODOZlrUK175JaQEXmaCSesM=;
+        b=OyqwXxz7bGSqEU72tnpnWOPHUe4jFcjYkMPTqpSJ6ZYLOtSCAziK6iSUvUyiQxYVDA
+         P463evbnUTFtzaOlAUiNXGzZmY2ZYQLlVVsUQWte83Xd4jFXlAG/Cz7d81wGXX1Gy0y0
+         YhJ6ZcT/QlhC+dbYqOFCTWIl0RunG9AMxmRkGv4FboIlOE8SxmnfPqsFNV252bZ9+LLP
+         /xXUW+jA/qUfzoHbXN3G14oI19cLaD43+NOq7f+yVAFS1+yBmBYnd31yu/GLYCwcQjBG
+         JENUMGHVdQ1uRog4zCv+bhGutQMZaGU5BePSMVul/nB8Jhv6vOkCutAAcMz7wrx1CBiE
+         Knag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=VyuxBYCJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g17si66806qtr.172.2019.09.17.08.16.20
+        by mx.google.com with ESMTPS id c205si1696231qke.54.2019.09.17.08.25.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Sep 2019 08:16:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 Sep 2019 08:25:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47156 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=VyuxBYCJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47270 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAFDH-0006Mf-9E
-	for alex.bennee@linaro.org; Tue, 17 Sep 2019 11:16:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60973)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iAFLn-0005jV-Rg
+	for alex.bennee@linaro.org; Tue, 17 Sep 2019 11:25:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33826)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iAFCj-0006LK-8D
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 11:15:46 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iAFKm-0005h2-BQ
+ for qemu-devel@nongnu.org; Tue, 17 Sep 2019 11:24:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iAFCh-0003Vc-Du
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 11:15:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53728)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iAFCh-0003VF-5g; Tue, 17 Sep 2019 11:15:43 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 26D5610DCC8B;
- Tue, 17 Sep 2019 15:15:42 +0000 (UTC)
-Received: from [10.3.116.234] (ovpn-116-234.phx2.redhat.com [10.3.116.234])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 515AC5D9D5;
- Tue, 17 Sep 2019 15:15:08 +0000 (UTC)
-To: Greg Kurz <groug@kaod.org>, qemu-devel@nongnu.org
-References: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
- <156871571297.196432.545961868971946073.stgit@bahia.lan>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=eblake@redhat.com; keydata=
- xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
- xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
- TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
- GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
- sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
- AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
- CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
- RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
- wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
- Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
- gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
- pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
- zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
- pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
- 3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
- NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
- cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
- SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
- I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
- mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
- Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
- 2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
-Organization: Red Hat, Inc.
-Message-ID: <de1d7856-3c59-0e94-2ba8-d0438e9d0ff6@redhat.com>
-Date: Tue, 17 Sep 2019 10:15:07 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ (envelope-from <peter.maydell@linaro.org>) id 1iAFKl-00060A-5Q
+ for qemu-devel@nongnu.org; Tue, 17 Sep 2019 11:24:04 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:36765)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iAFKk-0005zp-Vd
+ for qemu-devel@nongnu.org; Tue, 17 Sep 2019 11:24:03 -0400
+Received: by mail-oi1-x243.google.com with SMTP id k20so3221978oih.3
+ for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 08:24:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=84lIvWS/UBsMxXislbD2ODOZlrUK175JaQEXmaCSesM=;
+ b=VyuxBYCJ2KNwV12/uG4HZD/u5uLeUGxkr74DYW9oM9d0oDr0wSnqaVN1cActBVuytv
+ vz+KFySUqUs0D49dzeWULto7cLPiqN6m3x+/Gc0kHuMUWjgaao+HHYhMzLFzWNMhpQNF
+ i7+plUpRbQmWPNacm4W0QjL03DAOVqJ6hA/XIm8Wn7rnc4x+lnhSUhazZX562L/T5L3z
+ P8UHrp5ArgxwzMvW445P8qGOc9prH/y/qtsYrBhvbLXKmYdkaioRZWp5yb3x2meUiZOz
+ HDMYAAg2LKVFibJqI2DkqthQvWVo932rNHwXBv/o0bqjSM+Al9loNKJ7PeMAst1Pr+/A
+ TEAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=84lIvWS/UBsMxXislbD2ODOZlrUK175JaQEXmaCSesM=;
+ b=XV/dhf7W3myMNmn9yVxwkqOSsaHdNv5CrD4/jYQHx2tbeIUDybOBH9Ei5a0B5axAel
+ C/w5U007tejhe4Z9cb9Y0ey+74TilmpoGYPfbIwKuXZ0XZNBFmWipG8uAyj6ueqjpjGT
+ Oo1hrQd+ZCE2/q06mcHsy+q8fK+rKrawIfZlASIcfhVvev6JnVBSfUuSmr9qjU4GRTK9
+ Lb6cN1NbzrF/x4gPNAiNKsqR8Jwhd/0hMFb+ZpM5Q+T0mnkf88+ej+3FgkK8OFBnBYcg
+ uHrCG25CEBpOCzR2Oz0v6TtV6BEIMaLGoKQbCfObkODjcVI6/wvNMe4k43+g91nRLqNY
+ TakA==
+X-Gm-Message-State: APjAAAVjGRtDgweo0c+Sa/GTbWTixMEceNvstiEOftonDYWiQR3ycMd9
+ eO11JN9uFIDYtp3/WRkSkiI6g1i1lA/7oGaD+vKNDw==
+X-Received: by 2002:aca:f54d:: with SMTP id t74mr4288531oih.170.1568733841674; 
+ Tue, 17 Sep 2019 08:24:01 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <156871571297.196432.545961868971946073.stgit@bahia.lan>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.64]); Tue, 17 Sep 2019 15:15:42 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 13/17] nbd: Pass local error object pointer
- to error_append_hint()
-X-BeenThere: qemu-arm@nongnu.org
+References: <20190904085629.13872-1-shameerali.kolothum.thodi@huawei.com>
+ <20190904085629.13872-11-shameerali.kolothum.thodi@huawei.com>
+ <CAFEAcA8sEhgOXnj-DGo04pSnpTObO+EeC94yrdGEikKq0=2QeA@mail.gmail.com>
+ <20190911155015.3627b072@redhat.com>
+ <20190911095332-mutt-send-email-mst@kernel.org>
+ <20190917111100-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20190917111100-mutt-send-email-mst@kernel.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 17 Sep 2019 16:23:49 +0100
+Message-ID: <CAFEAcA8S0SE9MtjwmErAfjLACbc8p3sXFPeFLwfOW9czTwDM9g@mail.gmail.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::243
+Subject: Re: [Qemu-devel] [PATCH-for-4.2 v10 10/11] tests: add dummy ACPI
+ tables for arm/virt board
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
- Juan Quintela <quintela@redhat.com>, David Hildenbrand <david@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Yuval Shaia <yuval.shaia@oracle.com>,
- Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
- John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Kevin Wolf <kwolf@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org,
- Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: h6podhlJ/o9X
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Samuel Ortiz <sameo@linux.intel.com>,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
+ Linuxarm <linuxarm@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Xu Wei <xuwei5@hisilicon.com>,
+ Eric Auger <eric.auger@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ sebastien.boeuf@intel.com, Laszlo Ersek <lersek@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PBmLUdTNSX28
 
-On 9/17/19 5:21 AM, Greg Kurz wrote:
-> Ensure that hints are added even if errp is &error_fatal or &error_abort.
-> 
-> Signed-off-by: Greg Kurz <groug@kaod.org>
-> ---
->  nbd/client.c |   24 +++++++++++++-----------
->  nbd/server.c |    7 +++++--
->  2 files changed, 18 insertions(+), 13 deletions(-)
-> 
-> diff --git a/nbd/client.c b/nbd/client.c
-> index b9dc829175f9..c6e6e4046fd5 100644
-> --- a/nbd/client.c
-> +++ b/nbd/client.c
-> @@ -154,6 +154,7 @@ static int nbd_handle_reply_err(QIOChannel *ioc, NBDOptionReply *reply,
->                                  bool strict, Error **errp)
->  {
->      g_autofree char *msg = NULL;
-> +    Error *local_err = NULL;
+On Tue, 17 Sep 2019 at 16:11, Michael S. Tsirkin <mst@redhat.com> wrote:
+>
+> On Wed, Sep 11, 2019 at 09:55:34AM -0400, Michael S. Tsirkin wrote:
+> > On Wed, Sep 11, 2019 at 03:50:15PM +0200, Igor Mammedov wrote:
+> > > On Wed, 11 Sep 2019 13:57:06 +0100
+> > > Peter Maydell <peter.maydell@linaro.org> wrote:
+> > > > Do the tests pass with this patch and without the
+> > > > patch that adds the tests? (That is, can we keep the
+> > > > two patches separate without breaking bisection, or
+> > > > do we need to squash them together?)
+> > > >
+> > > > I'll leave it to somebody who understands the ACPI
+> > > > tests stuff to answer whether there's a better way to
+> > > I'd squash this patch into 11/11 test case,
+> >
+> >
+> > Pls don't - the way to add this is to add the files in question to
+> > tests/bios-tables-test-allowed-diff.h.
+> >
+> > Maintainer will create a separate commit updating
+> > the binaries and removing them from the whitelist.
 
-I'd prefer 'err' here...
+Who is "maintainer" in this part of the process? Why
+can't the submitter just create the patches and send them?
 
->  
->      if (!(reply->type & (1 << 31))) {
->          return 1;
-> @@ -161,14 +162,14 @@ static int nbd_handle_reply_err(QIOChannel *ioc, NBDOptionReply *reply,
->  
->      if (reply->length) {
->          if (reply->length > NBD_MAX_BUFFER_SIZE) {
-> -            error_setg(errp, "server error %" PRIu32
-> +            error_setg(&local_err, "server error %" PRIu32
+> > This way things like rebase work seemlessly.
+>
+>
+> OK?
+>
+> Can you post v11 like this? I'll ack then.
 
-so that &err doesn't change line lengths.
-
->      case NBD_REP_ERR_SHUTDOWN:
-> -        error_setg(errp, "Server shutting down before option %" PRIu32 " (%s)",
-> +        error_setg(&local_err, "Server shutting down before option %" PRIu32 " (%s)",
-
-For example, here, you went beyond 80 columns.
-
-At any rate, I'm assuming this will probably go in through Markus' error
-tree as part of the whole series, rather than me needing to pick just
-this patch through my NBD tree.
-
-Whether or not you shorten the local variable name,
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+thanks
+-- PMM

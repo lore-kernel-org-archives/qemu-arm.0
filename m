@@ -1,350 +1,167 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5051603wrp;
-        Tue, 17 Sep 2019 03:23:22 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxnOPrzSAm6poraNdOg8sE+COdN157SDLXNMp+VIvOtqKUPL4G4zXEDjmi+2caZGRAtYnS+
-X-Received: by 2002:a37:a24d:: with SMTP id l74mr2685628qke.200.1568715802815;
-        Tue, 17 Sep 2019 03:23:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568715802; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5084372wrp;
+        Tue, 17 Sep 2019 03:57:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxcqlqKr56R9f7vh0NzD7P6rEbog6hs5ZNfABfXzz55Sgzj12LY/nIyY0Mk/95QNv8mpaR7
+X-Received: by 2002:a17:906:7798:: with SMTP id s24mr4151274ejm.211.1568717837034;
+        Tue, 17 Sep 2019 03:57:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568717837; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xobj8FxkZIZ4apMEI8h066jfs1GaDhQFap6Ub+DQRV0xtr/A+HJDTsdAt0+geoXYw2
-         /27Ok0NVjaY8sU+rdG8V9SrT05CSvSLtBz0JBEwZ7YTv+38a/kS8XJUMnrCBj13M21hL
-         /upGRJX+K1ZecgacJJVnx6qJcCY+Wo75erj52NGS04y2hrCv6o6gj6oggYdkqp7uQCmp
-         Q8bStMU5VmU0JGc8PhRfX77o4L5qG+KP1O3/smCP1F2iqH4++ZXL84gp1GAZWa/Akji1
-         cc+oy1yYY0j0Bvi6ErOwSPlPRkX+ZiXIHYrxTkRgjnXC1/DTuF6ogJo8rQGGm+6CAJVB
-         Z+Qg==
+        b=AhRU1+C6Rk4MS9ncbrVOKm66WCGOwxn3EEp5NFI31XYKdsIe1u+mFM02060Z3gqnqc
+         h1zSdf2Aa7AIz6QlDp861eJABykp9rxGUFC2u6BCmmvYohFPSWSg0Vf7pX4kHJC4dCYB
+         eNUDK6KPzo96t6ijQJAnvzdgH3fGkQV80cdMwXtWRBy3J5rTjtnL5HNkC0dUXDuosQDR
+         +fyM0oH4cBafo3qpyWw9CZvWXiKR3p4hfF3LWbWt3IqRW2pFwnHb5YSKu21jbc5J9+jT
+         ALLlq8DdFc6SgBcoB2Q7dqlM6GhSOJ+4MZLqpn1PTABpcTWHcFgjBRX/lx5w7+rhHTs2
+         rVeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id
-         :content-transfer-encoding:mime-version:user-agent:date:to:from;
-        bh=bh/r6vIHYGkefMJit5pczkT1hjAyLJJi4Y5lUN+v5O0=;
-        b=QVd/cu7xChLQTFV+YI99CEXlLqQ9nyVVkgBSec6+IuSlhCdxsmWGGcV7VkDidy8Cu/
-         wtoA5XypRibpsK3+lNsiFOM6eCyUgxlWfzoH2pfO0/25Lz1oC1TFmh+mDudzGkoW/70q
-         qbOX2lOnlazz+032e9zM1sLcu80rrPcYA0Tjz7bD6eGQyKN+3FR4zeivQ1eJL2lZHHNR
-         Rj3LzEnOSpFP2CCtZqmaPqtOguy9cZbsIvt2vnD8m/sbK9jCqG9+E5rRCaSTEArcjLyk
-         93CIlZAcoqAzOVXQe4kzx2ycEEDppSO/2jymkr02sCNalNJFjQqweP0Yj7jEdPQnc6H2
-         fGXg==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Lvaj2hnZt+ar6Y5yxpTurTxL2haiZLli/lN4YWHVGQE=;
+        b=rr5nYw5mvqVYjZeCFvA11w6HS6BmRYmYeG9eVejc/WRii3267ZB9VpXXiutahohj4Q
+         SOwF1Ix/lwlbUjErXQzoYriswj67qblBLw46bG5zkBW0c6kizO5MmW22wqS5T3v+AeE4
+         Zik12YH0Aj0QeE3lexsl0JJpBN6CmrDBV9OeDHK8JXi5WouH5q1hBPH/qLjanIxuAmBI
+         +kTFP51nBorHaNp7bxJqfean7IjOZqg0LfH2GVA98zS3W8AAVtQibdIA5HueCWjhgvhG
+         8urbFqg5vC++JgQqLfCDrMZGc71zNdVSMGONhPEvdl6MwiEwOfIDGFIRhZzkLiC7VAEL
+         GfsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=cqkYbBtp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s42si1355865qtb.141.2019.09.17.03.23.22
+        by mx.google.com with ESMTPS id g17si881742ejd.123.2019.09.17.03.57.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Sep 2019 03:23:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 Sep 2019 03:57:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43696 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=cqkYbBtp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44060 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAAdm-0007nV-0o
-	for alex.bennee@linaro.org; Tue, 17 Sep 2019 06:23:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43567)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iABAZ-0006YN-UF
+	for alex.bennee@linaro.org; Tue, 17 Sep 2019 06:57:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50817)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groug@kaod.org>) id 1iAAbJ-0006KX-BR
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:20:50 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iAB9g-0005rb-1P
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 06:56:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groug@kaod.org>) id 1iAAbH-0003X7-F1
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:20:48 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:13780)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <groug@kaod.org>) id 1iAAbH-0003Vs-4x
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:20:47 -0400
-Received: from pps.filterd (m0098404.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x8HAHFDX110657
- for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 06:20:44 -0400
-Received: from e06smtp07.uk.ibm.com (e06smtp07.uk.ibm.com [195.75.94.103])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2v2w62hbgr-1
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
- for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 06:20:43 -0400
-Received: from localhost
- by e06smtp07.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
- Violators will be prosecuted
- for <qemu-devel@nongnu.org> from <groug@kaod.org>;
- Tue, 17 Sep 2019 11:20:40 +0100
-Received: from b06cxnps4076.portsmouth.uk.ibm.com (9.149.109.198)
- by e06smtp07.uk.ibm.com (192.168.101.137) with IBM ESMTP SMTP Gateway:
- Authorized Use Only! Violators will be prosecuted; 
- (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
- Tue, 17 Sep 2019 11:20:33 +0100
-Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
- [9.149.105.58])
- by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- x8HAKWAP45613068
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 17 Sep 2019 10:20:32 GMT
-Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 052274C044;
- Tue, 17 Sep 2019 10:20:32 +0000 (GMT)
-Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 0AB8B4C040;
- Tue, 17 Sep 2019 10:20:31 +0000 (GMT)
-Received: from bahia.lan (unknown [9.145.22.84])
- by d06av22.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Tue, 17 Sep 2019 10:20:30 +0000 (GMT)
-From: Greg Kurz <groug@kaod.org>
-To: qemu-devel@nongnu.org
-Date: Tue, 17 Sep 2019 12:20:30 +0200
-User-Agent: StGit/unknown-version
+ (envelope-from <peter.maydell@linaro.org>) id 1iAB9d-0001OY-OQ
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 06:56:19 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:43517)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iAB9b-0001Ll-3r
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 06:56:16 -0400
+Received: by mail-ot1-x343.google.com with SMTP id b2so2596302otq.10
+ for <qemu-arm@nongnu.org>; Tue, 17 Sep 2019 03:56:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Lvaj2hnZt+ar6Y5yxpTurTxL2haiZLli/lN4YWHVGQE=;
+ b=cqkYbBtpxsoJ4E5zpnjgG1KHc8zzDl0f92IDKgvY0vcjSU3zu/pKUa/IL85CqbbkPa
+ 7Aow9AKDZMGdolgMS7S4Ry2gKQ69WeKcS/iL20pm6k5TtUyiXdaMICPtjMgG5OrHG8vy
+ yRL/sehr2RjfLeAlvRQ5UaLqOe17oSiOCOgnJUrQlPejAAKcRmPYm4TzeFwLXEpbiGhw
+ CWx9F21uW3yZNod88vB+Q5floxWCpgD9CxosHsVgQXmPhmMGuhOPzhDxN6k6nNcp2R/e
+ 2a+l4DaPPPemEgp5/bWHduPXV1Jg0RsJjrsAez5DAzIXTzMvwRy6pbB49RVAMD6U0MaD
+ 5Oxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Lvaj2hnZt+ar6Y5yxpTurTxL2haiZLli/lN4YWHVGQE=;
+ b=slDJciuZ8Xr+9cHJ5KlAX7sI4ILNnccO1qIDktgwD7PBFZicLxvCIbYHwly7i5xQfh
+ 2zI2eL8lkbjsHMhZJkPlvaCgxS4ZsaswqbvVn4yABOFSLkjonxSNL+H1j7YizLb2zlIi
+ S68yi+rf79ZgRifOm5rcSIkXnxoorp/VWehmXftLsGd/c6hFxaEXVohaMgUPvB5lqbX3
+ 922IJiiU2G9bgBEG4AhaYbkBIM4jK8cFgBS1B7W7Pdof5yuc5/3JLPciwrm/nMywzo96
+ beUbpoWz8ucfzbkV5DBASZ3rFIgWhWl+Fn1vLpSkujwEEio235YPuf6fbBrVbeBjGqlz
+ FItA==
+X-Gm-Message-State: APjAAAUyJy3fs0RXpS+LNhqhsaIQ8HSWio5OyDdq43M9EFY8+zQfspxp
+ mgd0MzDi6mjU7EY9sqklXdB4HVS4Yg8DRv2Ku5kUoFcGDjs=
+X-Received: by 2002:a9d:6a8a:: with SMTP id l10mr1951585otq.97.1568717772553; 
+ Tue, 17 Sep 2019 03:56:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-x-cbid: 19091710-0028-0000-0000-0000039E0EDF
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 19091710-0029-0000-0000-000024608785
-Message-Id: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-09-17_05:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=0 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1034 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=999 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1908290000 definitions=main-1909170106
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 148.163.156.1
-Subject: [Qemu-devel] [PATCH 00/17] Fix usage of error_append_hint()
-X-BeenThere: qemu-devel@nongnu.org
+References: <20190912110103.1417887-1-luc.michel@greensocs.com>
+ <CAFEAcA-WO=O5zwRDQoNz2zT4sx61j8Jy5px0uFPiWgF_JUpa+A@mail.gmail.com>
+ <204007b1-1c1e-432b-399f-b3784f812710@greensocs.com>
+ <c3a22836-0435-e09b-6fe0-eff85124c0ca@greensocs.com>
+In-Reply-To: <c3a22836-0435-e09b-6fe0-eff85124c0ca@greensocs.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 17 Sep 2019 11:56:01 +0100
+Message-ID: <CAFEAcA8b1XUpwq-NefVL+BD0bNfDu6Rhxygbb3mfyV1t17NZUQ@mail.gmail.com>
+To: Luc Michel <luc.michel@greensocs.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::343
+Subject: Re: [Qemu-arm] [PATCH] target/arm: fix CBAR register for AArch64
+ CPUs
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Juan Quintela <quintela@redhat.com>, David Hildenbrand <david@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?utf-8?q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Yuval Shaia <yuval.shaia@oracle.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- "Daniel P. =?utf-8?q?Berrang=C3=A9=22?= <berrange@redhat.com>,
- qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org"@d06av22.portsmouth.uk.ibm.com,
- John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Kevin Wolf <kwolf@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Max Reitz <mreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +DqUyB0bOEKE
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: khAx5pFz4JHV
 
-A recent post unveiled a potential problem when passing errp to
-error_append_hint():
+On Tue, 17 Sep 2019 at 09:43, Luc Michel <luc.michel@greensocs.com> wrote:
+>
+> On 9/13/19 9:26 AM, Luc Michel wrote:
+> > Hi Peter,
+> >
+> > On 9/12/19 6:03 PM, Peter Maydell wrote:
+> >> I think we need to check through the TRMs to confirm which CPUs use
+> >> which format for the CBAR, and have a different feature bit for the
+> >> newer format/sysreg encoding, so we can provide the right sysregs for
+> >> the right cores.
+> > I checked all the AArch64 Cortex's TRMs, for those having a PERIPHBASE
+> > signal and CBAR register (namely Cortex-A53, 57, 72, 73), they all match
+> > the mapping I put in this patch, so I think we don't need to split the
+> > CBAR feature further. I believe more recent Cortex's address the GIC
+> > using coprocessor registers, and CBAR does not exist in those ones.
+>
+> Hi Peter,
+>
+> Do you want me to re-roll this patch with some modifications?
 
-https://patchwork.ozlabs.org/patch/1162171/
+No, that's OK. Thanks for checking the TRMs. I think what I'll
+do is squash in this comment to the patch:
 
-The issue is that error_append_hint() may end up not being called
-at all if errp is equal to &error_fatal or &error_abort. It turns
-out that the only way to ensure error_append_hint() can do its job
-regardless of how the error is handled is to use a local error
-object and to propagate it to the caller.
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 755aa18a2dc..bc1130d989d 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6733,6 +6733,19 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+     }
 
-As suggested by Markus Armbruster, this series does:
-(1) update error_append_hint()'s documentation in <qapi/error.h> to
-    spell this out
-(2) fix other misuses of error_append_hint() in the tree
-
-The following command was used to detect candidates for (2), which
-were then manually inspected. It is possible that many of them never
-exhibit the unwanted behaviour in practice because errp happens to
-never be equal to &error_fatal or &error_abort. It isn't trivial to
-assess though, and this is fragile and can be easily broken if the
-code gets rearranged. Also, passing errp directly is a shortcut that
-doesn't bring much, neither for clarity, nor for performance that
-we don't really care for on an error path). Better safe than sorry,
-so fix them all.
-
-I tried to group the changes that are supposed to go through the same
-tree together.
-
-$ git grep -n error_append_hint\(errp | cut -d: -f 1-2
-block/backup.c:608
-block/dirty-bitmap.c:256
-block/file-posix.c:393
-block/file-posix.c:854
-block/file-posix.c:2282
-block/gluster.c:480
-block/gluster.c:483
-block/gluster.c:489
-block/gluster.c:702
-block/gluster.c:711
-block/qcow.c:162
-block/qcow.c:195
-block/qcow2.c:1363
-block/vhdx-log.c:811
-block/vpc.c:1033
-
-=> Patch for block
-
-chardev/spice.c:284
-
-=> Patch for chardev
-
-hw/9pfs/9p-local.c:1474
-hw/9pfs/9p-proxy.c:1119
-
-Already posted https://patchwork.ozlabs.org/patch/1162171/
-
-hw/arm/msf2-soc.c:131
-hw/arm/virt.c:1808
-hw/arm/virt.c:1836
-hw/intc/arm_gicv3_kvm.c:815
-hw/misc/msf2-sysreg.c:135
-
-=> Patch for arm
-
-hw/pci-bridge/pcie_root_port.c:76
-hw/pci-bridge/pcie_root_port.c:90
-
-=> Patch for pci
-
-hw/ppc/mac_newworld.c:622
-hw/ppc/spapr.c:4341
-hw/ppc/spapr_pci.c:1874
-hw/ppc/spapr_pci.c:1876
-hw/ppc/spapr_pci.c:1878
-
-=> Patch for ppc
-
-hw/rdma/vmw/pvrdma_main.c:670
-
-=> Patch for pvrdma
-
-hw/s390x/s390-ccw.c:63
-
-=> Patch for s390
-
-hw/scsi/scsi-disk.c:2624
-hw/scsi/scsi-generic.c:679
-
-=> Patch for scsi
-
-hw/usb/ccid-card-emulated.c:516
-
-=> Patch for usb
-
-hw/vfio/common.c:1473
-hw/vfio/common.c:1536
-hw/vfio/pci.c:2532
-hw/vfio/pci.c:2718
-
-=> Patch for vfio
-
-hw/virtio/virtio-pci.c:1548
-hw/virtio/virtio-pci.c:1742
-
-=> Patch for virtio
-
-migration/migration.c:988
-migration/migration.c:997
-
-=> Patch for migration
-
-nbd/client.c:230
-nbd/server.c:1627
-
-=> Patch for nbd
-
-qdev-monitor.c:334
-qdev-monitor.c:337
-qdev-monitor.c:340
-qdev-monitor.c:348
-qdev-monitor.c:351
-qdev-monitor.c:354
-qdev-monitor.c:358
-
-No misuse here as these aren't preceded by a call to error_setg() or
-error_propagate() that could terminate QEMU.
-
-target/ppc/kvm.c:246
-target/ppc/kvm.c:2089
-target/ppc/kvm.c:2092
-
-=> Patch for kvm
-
-util/qemu-option.c:160
-util/qemu-option.c:669
-
-=> Patch for option
-
-util/qemu-sockets.c:886
-util/qemu-sockets.c:956
-
-=> Patch for sockets
-
-As a bonus, also teach checkpatch to detect that. Since the convention
-of using the errp naming seems to be strictly followed, the check is
-just to detect "error_append_hint(errp" and emit a warning, for the sake
-of simplicity.
-
---
-Greg
-
----
-
-Greg Kurz (17):
-      error: Update error_append_hint()'s documentation
-      block: Pass local error object pointer to error_append_hint()
-      char/spice: Pass local error object pointer to error_append_hint()
-      ppc: Pass local error object pointer to error_append_hint()
-      arm: Pass local error object pointer to error_append_hint()
-      vfio: Pass local error object pointer to error_append_hint()
-      virtio-pci: Pass local error object pointer to error_append_hint()
-      pcie_root_port: Pass local error object pointer to error_append_hint()
-      hw/rdma: Fix missing conversion to rdma_error_report()
-      s390x/css: Pass local error object pointer to error_append_hint()
-      scsi: Pass local error object pointer to error_append_hint()
-      migration: Pass local error object pointer to error_append_hint()
-      nbd: Pass local error object pointer to error_append_hint()
-      ccid-card-emul: Pass local error object pointer to error_append_hint()
-      option: Pass local error object pointer to error_append_hint()
-      socket: Pass local error object pointer to error_append_hint()
-      checkpatch: Warn when errp is passed to error_append_hint()
+     if (arm_feature(env, ARM_FEATURE_CBAR)) {
++        /*
++         * CBAR is IMPDEF, but common on Arm Cortex-A implementations.
++         * There are two flavours:
++         *  (1) older 32-bit only cores have a simple 32-bit CBAR
++         *  (2) 64-bit cores have a 64-bit CBAR visible to AArch64, plus a
++         *      32-bit register visible to AArch32 at a different encoding
++         *      to the "flavour 1" register and with the bits rearranged to
++         *      be able to squash a 64-bit address into the 32-bit view.
++         * We distinguish the two via the ARM_FEATURE_AARCH64 flag, but
++         * in future if we support AArch32-only configs of some of the
++         * AArch64 cores we might need to add a specific feature flag
++         * to indicate cores with "flavour 2" CBAR.
++         */
+         if (arm_feature(env, ARM_FEATURE_AARCH64)) {
+             /* 32 bit view is [31:18] 0...0 [43:32]. */
+             uint32_t cbar32 = (extract64(cpu->reset_cbar, 18, 14) << 18)
 
 
- block/backup.c                 |    7 +++++--
- block/dirty-bitmap.c           |    7 +++++--
- block/file-posix.c             |   20 +++++++++++++-------
- block/gluster.c                |   23 +++++++++++++++--------
- block/qcow.c                   |   10 ++++++----
- block/qcow2.c                  |    7 +++++--
- block/vhdx-log.c               |    7 +++++--
- block/vpc.c                    |    7 +++++--
- chardev/spice.c                |    6 ++++--
- hw/arm/msf2-soc.c              |    5 +++--
- hw/arm/virt.c                  |   14 ++++++++++----
- hw/intc/arm_gicv3_kvm.c        |    5 +++--
- hw/misc/msf2-sysreg.c          |    6 ++++--
- hw/pci-bridge/pcie_root_port.c |   11 +++++++----
- hw/ppc/mac_newworld.c          |    7 +++++--
- hw/ppc/spapr.c                 |    7 +++++--
- hw/ppc/spapr_pci.c             |    9 +++++----
- hw/rdma/vmw/pvrdma_main.c      |    2 +-
- hw/s390x/s390-ccw.c            |    6 ++++--
- hw/scsi/scsi-disk.c            |    7 +++++--
- hw/scsi/scsi-generic.c         |    7 +++++--
- hw/usb/ccid-card-emulated.c    |    7 +++++--
- hw/vfio/common.c               |   14 ++++++++++----
- hw/vfio/pci.c                  |   12 ++++++++----
- hw/virtio/virtio-pci.c         |   14 ++++++++++----
- include/qapi/error.h           |   11 ++++++++++-
- migration/migration.c          |   14 ++++++++++----
- nbd/client.c                   |   24 +++++++++++++-----------
- nbd/server.c                   |    7 +++++--
- scripts/checkpatch.pl          |    4 ++++
- target/ppc/kvm.c               |   13 +++++++++----
- util/qemu-option.c             |   14 ++++++++++----
- util/qemu-sockets.c            |   14 ++++++++++----
- 33 files changed, 224 insertions(+), 104 deletions(-)
+and apply it to target-arm.next, if that's OK with you.
 
+thanks
+-- PMM

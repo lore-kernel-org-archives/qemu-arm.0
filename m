@@ -1,269 +1,324 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5060993wrp;
-        Tue, 17 Sep 2019 03:33:55 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzLra1rHz4UuBVM5md+iqoXIFNaSykyJzWgJ2rAmi1mHGCUjCStaRCWHao77/UkwxkVTwq9
-X-Received: by 2002:a17:906:7709:: with SMTP id q9mr4114328ejm.286.1568716435326;
-        Tue, 17 Sep 2019 03:33:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568716435; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5062915wrp;
+        Tue, 17 Sep 2019 03:35:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwIAd/A/GgwRVaveiiF5qnrL9PByLyfCppF+FPjG5EP7dCPSqPyIAzxXgkE/123EMGSl2rf
+X-Received: by 2002:a37:4a54:: with SMTP id x81mr2923291qka.292.1568716553799;
+        Tue, 17 Sep 2019 03:35:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568716553; cv=none;
         d=google.com; s=arc-20160816;
-        b=X/8JWZ4Hnqqgam2l8UTneETrolWQ5RuEoHngAIT6kYUKDOYNUDyF1hXtvYwHVSEKiC
-         daun26eFoHDkxFGFVo047dUnYcu/+vfh+z7ZlK/c4Wk2/VDU26CnVARzCegxmHoVqLZG
-         2M9u7Bo5Gk5qvFx/boK6eqJxWpZkNqp0RHdW19Vw+DbNTktBK4otPfCpIC/I7DAfxNqJ
-         pOiwJxkI77pfwCdZW/TAR0RqKz4dufUpiJsql1cR9GqQoK6cGBDGqwamZfii7HRXZd8B
-         VD18yBx8pMqXqZqhcdLcb843cvb//hADSVZhtHBLKtdmeHXks2Rteejy//RahGYzVJrx
-         bPvQ==
+        b=Cyrf8/lfbf8Y2rksLYnZ5BcRKk0xKYAZ4Lr1xMKv+WRtUSQQHh/xDuc7N3I/bF3Cno
+         TQdPDk66v74GN4FLOm5YOvHXsCiSoPQswMaCj2mBv1M9+Pj7RRPyt6riaWiTev3qPXSx
+         ojqU+4Xou8Ifba8N7XlfkwVOZ864wXOEHegPqe1huRgja45Xelj3o5ng7/1mrWhtFS6f
+         3U2aXBvZcXOwVEXBZoDkWXgHq4KUV202ufGEuCc5U5Ty0K1CvmzLFeoe7Zw4/9NB3Zdu
+         SMrKkLE6sgU0E6CJ4dNO66XgjisuAt01RjV9dyLV7npAOef8Hsk2ufZRdX1195JdY/FI
+         A7jQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:message-id
-         :content-transfer-encoding:mime-version:user-agent:references
-         :in-reply-to:date:to:from;
-        bh=dkTU84KelgOlqyKEJ6i0pdR0cU06evKbJoL4xu4Phgw=;
-        b=wQwzU1NuuomPltU1tTFlEMIPveBsfhDPNq5ahnzbJV0fradRbqNrHDeAEoqjSvSKb2
-         nUlZYgjMrn+9weiityDbVgAxCl2YUTa4SCCmhnwzFjCOACijXxsTiFw/wx8CHaRUjzUY
-         rh579z5zXbbWPGqMxQxcxRlMjV7wZHndXeyjsE+7sQHnwIf0m1tNDyTBzTPoPG1ab3kW
-         sxOhBs8utUphPcVE+nVAE0N73RR4xVMMwED0gpBowSufDv8lNtHqO9KKy5dDsx4TLcf6
-         4L7AGxNNo0v7xH2zjLdMlTXLhJPjxz3dQtL4Dsuj2JBrOdLkDH30oHf1DmwF4DqREHZ6
-         9pJQ==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=Bh7Off8NQVnfWHhw1jNFFsv/6/Vqyn4VRk4i+NFKAeM=;
+        b=QkVgIdfFZvJkVo7aBewdvhUMpS1hmXVAB4C71wUBPAYE22R9TkB/iaNIszNj+YTTnO
+         A3ndZQXGP/scbzJjucAaRaPAkmZC54WuV9K0KMZftwICDSSCx9HdkElud2Fbt8LIf6oL
+         wKpKQ+/vUYPjCauEOw7l8unpzCmWpqQYSqsmOBqDwVnhJhCfBlCbLomnIlvNGTvAyliM
+         uS4c2KLKsaL3AHQFxrngAGVp82JNUA0yS7eJjwTghu5U2D6zQSSEVslCWkqPioFA6iYp
+         RtWROpLJH6E3sqmV6q0khgLdJ0J1+oKNvfhYV89rhMrDxYn05pSvFPrE85N918qyZgD4
+         tgSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n19si1004077edo.172.2019.09.17.03.33.55
+        by mx.google.com with ESMTPS id f17si1242541qve.122.2019.09.17.03.35.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Sep 2019 03:33:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 Sep 2019 03:35:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43770 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43812 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAAnx-0008Ew-Cy
-	for alex.bennee@linaro.org; Tue, 17 Sep 2019 06:33:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43967)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iAAps-0002SJ-5V
+	for alex.bennee@linaro.org; Tue, 17 Sep 2019 06:35:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45188)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groug@kaod.org>) id 1iAAcf-0007lD-4K
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:22:15 -0400
+ (envelope-from <philmd@redhat.com>) id 1iAAiR-0004xl-8e
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 06:28:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groug@kaod.org>) id 1iAAca-00046H-Hb
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:22:11 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:31458)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <groug@kaod.org>) id 1iAAca-00045Q-9J
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:22:08 -0400
-Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x8HAHDas178933
- for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 06:22:06 -0400
-Received: from e06smtp05.uk.ibm.com (e06smtp05.uk.ibm.com [195.75.94.101])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2v0uutuqf6-1
- (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
- for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 06:22:05 -0400
-Received: from localhost
- by e06smtp05.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
- Violators will be prosecuted
- for <qemu-devel@nongnu.org> from <groug@kaod.org>;
- Tue, 17 Sep 2019 11:22:02 +0100
-Received: from b06avi18626390.portsmouth.uk.ibm.com (9.149.26.192)
- by e06smtp05.uk.ibm.com (192.168.101.135) with IBM ESMTP SMTP Gateway:
- Authorized Use Only! Violators will be prosecuted; 
- (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
- Tue, 17 Sep 2019 11:21:55 +0100
-Received: from d06av26.portsmouth.uk.ibm.com (d06av26.portsmouth.uk.ibm.com
- [9.149.105.62])
- by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id x8HALSI233489272
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 17 Sep 2019 10:21:28 GMT
-Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 4C55FAE053;
- Tue, 17 Sep 2019 10:21:54 +0000 (GMT)
-Received: from d06av26.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 54584AE04D;
- Tue, 17 Sep 2019 10:21:53 +0000 (GMT)
-Received: from bahia.lan (unknown [9.145.22.84])
- by d06av26.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Tue, 17 Sep 2019 10:21:53 +0000 (GMT)
-From: Greg Kurz <groug@kaod.org>
-To: qemu-devel@nongnu.org
-Date: Tue, 17 Sep 2019 12:21:53 +0200
-In-Reply-To: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
-References: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
-User-Agent: StGit/unknown-version
+ (envelope-from <philmd@redhat.com>) id 1iAAiO-00009U-Td
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 06:28:10 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53104)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iAAiO-00008b-Ld
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 06:28:08 -0400
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 1A083368FF
+ for <qemu-arm@nongnu.org>; Tue, 17 Sep 2019 10:28:07 +0000 (UTC)
+Received: by mail-wm1-f72.google.com with SMTP id z205so1053337wmb.7
+ for <qemu-arm@nongnu.org>; Tue, 17 Sep 2019 03:28:07 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=OAIO2nB+ybo/H9XjI3W4Br3K0hK/KnUOApJNbYvZkuQ=;
+ b=Bp5ysfFXfrQQ77Mw9wuCrEvbs7YY6L90JcQcNG+omE9CQrnwpQEV/5f9jkjw2oexQo
+ 4OM8464T3PpywryyWDaxlR1lfL6MmGo43CrE4dU3I4sp3I624svHQyq9kG5WApadyGrj
+ tQFReJ8pHJ5BfC9wqO+JMHhVG0j0I0AJVdwYcZwzk8zJ241YggJNqK0xfN1pNFenu7Yw
+ svJEhg7wULCsXBFC0enGISFO4ieTojLkOsXfsNbgPowQ2XOmN8otnMXvN4naFRTAuxb4
+ HtF7/wKk3+r010uj/4yWM1q2knAvi3/xQN7TDnmmYTVUSIKa/amBBcO6/QMo41CtSzLB
+ WDaw==
+X-Gm-Message-State: APjAAAV/dmEiEWDKExaH8nNahm/pDLefndfLPtQzF9UOhXPGNeVqtgjA
+ tpusVHmj0p5wbCcU1/pNTwu354fsPSOwWicyK6yV6pGk1JJipaagI+kpjbyu+4Ni6cRb0uBieDZ
+ 7RkmOgxqOuvXD
+X-Received: by 2002:adf:ed8f:: with SMTP id c15mr2274881wro.83.1568716085603; 
+ Tue, 17 Sep 2019 03:28:05 -0700 (PDT)
+X-Received: by 2002:adf:ed8f:: with SMTP id c15mr2274845wro.83.1568716085372; 
+ Tue, 17 Sep 2019 03:28:05 -0700 (PDT)
+Received: from [192.168.1.40] (240.red-88-21-68.staticip.rima-tde.net.
+ [88.21.68.240])
+ by smtp.gmail.com with ESMTPSA id a144sm2307006wme.13.2019.09.17.03.28.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 17 Sep 2019 03:28:04 -0700 (PDT)
+To: Alistair Francis <alistair23@gmail.com>, Thomas Huth <thuth@redhat.com>
+References: <20190916154847.28936-1-philmd@redhat.com>
+ <20190916154847.28936-10-philmd@redhat.com>
+ <CAKmqyKPtRbU5X-72+HfNNbaV46LOD6D+JLQoGiBROB+zJczNgA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <7a48ec0e-c386-7022-b7ab-00f0cb53fa82@redhat.com>
+Date: Tue, 17 Sep 2019 12:28:03 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-x-cbid: 19091710-0020-0000-0000-0000036E12C2
-X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 19091710-0021-0000-0000-000021C3B66F
-Message-Id: <156871571297.196432.545961868971946073.stgit@bahia.lan>
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
- definitions=2019-09-17_05:, , signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 suspectscore=1 phishscore=0 bulkscore=0 spamscore=0
- clxscore=1034 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=781 adultscore=0 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.0.1-1908290000 definitions=main-1909170106
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
-X-Received-From: 148.163.156.1
-Subject: [Qemu-devel] [PATCH 13/17] nbd: Pass local error object pointer to
- error_append_hint()
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <CAKmqyKPtRbU5X-72+HfNNbaV46LOD6D+JLQoGiBROB+zJczNgA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 09/13] hw: Move Xilinx ZynqMP
+ RTC from hw/timer/ to hw/rtc/ subdirectory
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Juan Quintela <quintela@redhat.com>, David Hildenbrand <david@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?utf-8?q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Yuval Shaia <yuval.shaia@oracle.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- "Daniel P. =?utf-8?q?Berrang=C3=A9=22?= <berrange@redhat.com>,
- qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org"@d06av26.portsmouth.uk.ibm.com,
- John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Kevin Wolf <kwolf@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Max Reitz <mreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wZ1xUwk55gL8
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Helge Deller <deller@gmx.de>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, David Gibson <david@gibson.dropbear.id.au>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Andrew Jeffery <andrew@aj.id.au>, "open list:New World" <qemu-ppc@nongnu.org>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: TZew51lAp/xI
 
-Ensure that hints are added even if errp is &error_fatal or &error_abort.
+Hi Alistair,
 
-Signed-off-by: Greg Kurz <groug@kaod.org>
----
- nbd/client.c |   24 +++++++++++++-----------
- nbd/server.c |    7 +++++--
- 2 files changed, 18 insertions(+), 13 deletions(-)
+On 9/16/19 11:44 PM, Alistair Francis wrote:
+> On Mon, Sep 16, 2019 at 8:56 AM Philippe Mathieu-Daud=C3=A9
+> <philmd@redhat.com> wrote:
+>>
+>> Move RTC devices under the hw/rtc/ subdirectory.
+>>
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>> ---
+>>  hw/rtc/Makefile.objs                        | 1 +
+>>  hw/rtc/trace-events                         | 3 +++
+>>  hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.c         | 2 +-
+>>  hw/timer/Makefile.objs                      | 1 -
+>>  hw/timer/trace-events                       | 3 ---
+>>  include/hw/arm/xlnx-zynqmp.h                | 2 +-
+>>  include/hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.h | 6 +++---
+>>  7 files changed, 9 insertions(+), 9 deletions(-)
+>>  rename hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.c (99%)
+>>  rename include/hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.h (95%)
+>>
+>> diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
+>> index b195863291..543a550a0f 100644
+>> --- a/hw/rtc/Makefile.objs
+>> +++ b/hw/rtc/Makefile.objs
+>> @@ -6,5 +6,6 @@ common-obj-$(CONFIG_M48T59) +=3D m48t59-isa.o
+>>  endif
+>>  common-obj-$(CONFIG_PL031) +=3D pl031.o
+>>  common-obj-$(CONFIG_TWL92230) +=3D twl92230.o
+>> +common-obj-$(CONFIG_XLNX_ZYNQMP) +=3D xlnx-zynqmp-rtc.o
+>>  obj-$(CONFIG_MC146818RTC) +=3D mc146818rtc.o
+>>  common-obj-$(CONFIG_SUN4V_RTC) +=3D sun4v-rtc.o
+>> diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
+>> index ac9e0e0fba..7f1945ad4c 100644
+>> --- a/hw/rtc/trace-events
+>> +++ b/hw/rtc/trace-events
+>> @@ -4,6 +4,9 @@
+>>  sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64=
+ " value 0x%" PRIx64
+>>  sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx=
+64 " value 0x%" PRIx64
+>>
+>> +# xlnx-zynqmp-rtc.c
+>> +xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int m=
+in, int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
+>> +
+>>  # pl031.c
+>>  pl031_irq_state(int level) "irq state %d"
+>>  pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+>> diff --git a/hw/timer/xlnx-zynqmp-rtc.c b/hw/rtc/xlnx-zynqmp-rtc.c
+>> similarity index 99%
+>> rename from hw/timer/xlnx-zynqmp-rtc.c
+>> rename to hw/rtc/xlnx-zynqmp-rtc.c
+>> index 5692db98c2..f9f09b7296 100644
+>> --- a/hw/timer/xlnx-zynqmp-rtc.c
+>> +++ b/hw/rtc/xlnx-zynqmp-rtc.c
+>> @@ -36,7 +36,7 @@
+>>  #include "qemu/cutils.h"
+>>  #include "sysemu/sysemu.h"
+>>  #include "trace.h"
+>> -#include "hw/timer/xlnx-zynqmp-rtc.h"
+>> +#include "hw/rtc/xlnx-zynqmp-rtc.h"
+>>  #include "migration/vmstate.h"
+>>
+>>  #ifndef XLNX_ZYNQMP_RTC_ERR_DEBUG
+>> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+>> index 70b61b69c7..294465ef47 100644
+>> --- a/hw/timer/Makefile.objs
+>> +++ b/hw/timer/Makefile.objs
+>> @@ -14,7 +14,6 @@ common-obj-$(CONFIG_IMX) +=3D imx_epit.o
+>>  common-obj-$(CONFIG_IMX) +=3D imx_gpt.o
+>>  common-obj-$(CONFIG_LM32) +=3D lm32_timer.o
+>>  common-obj-$(CONFIG_MILKYMIST) +=3D milkymist-sysctl.o
+>> -common-obj-$(CONFIG_XLNX_ZYNQMP) +=3D xlnx-zynqmp-rtc.o
+>>  common-obj-$(CONFIG_NRF51_SOC) +=3D nrf51_timer.o
+>>
+>>  common-obj-$(CONFIG_ALTERA_TIMER) +=3D altera_timer.o
+>> diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+>> index ce34b967db..1459d07237 100644
+>> --- a/hw/timer/trace-events
+>> +++ b/hw/timer/trace-events
+>> @@ -70,9 +70,6 @@ cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer=
+: reset"
+>>  aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " =
+value 0x%08" PRIx64
+>>  aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 "=
+ value 0x%08" PRIx64
+>>
+>> -# xlnx-zynqmp-rtc.c
+>> -xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int m=
+in, int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
+>> -
+>>  # nrf51_timer.c
+>>  nrf51_timer_read(uint64_t addr, uint32_t value, unsigned size) "read =
+addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
+>>  nrf51_timer_write(uint64_t addr, uint32_t value, unsigned size) "writ=
+e addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
+>> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp=
+.h
+>> index d7483c3b42..53076fa29a 100644
+>> --- a/include/hw/arm/xlnx-zynqmp.h
+>> +++ b/include/hw/arm/xlnx-zynqmp.h
+>> @@ -29,7 +29,7 @@
+>>  #include "hw/dma/xlnx-zdma.h"
+>>  #include "hw/display/xlnx_dp.h"
+>>  #include "hw/intc/xlnx-zynqmp-ipi.h"
+>> -#include "hw/timer/xlnx-zynqmp-rtc.h"
+>> +#include "hw/rtc/xlnx-zynqmp-rtc.h"
+>>  #include "hw/cpu/cluster.h"
+>>  #include "target/arm/cpu.h"
+>>
+>> diff --git a/include/hw/timer/xlnx-zynqmp-rtc.h b/include/hw/rtc/xlnx-=
+zynqmp-rtc.h
+>> similarity index 95%
+>> rename from include/hw/timer/xlnx-zynqmp-rtc.h
+>> rename to include/hw/rtc/xlnx-zynqmp-rtc.h
+>> index 97e32322ed..6fa1cb2f43 100644
+>> --- a/include/hw/timer/xlnx-zynqmp-rtc.h
+>> +++ b/include/hw/rtc/xlnx-zynqmp-rtc.h
+>> @@ -3,7 +3,7 @@
+>>   *
+>>   * Copyright (c) 2017 Xilinx Inc.
+>>   *
+>> - * Written-by: Alistair Francis <alistair.francis@xilinx.com>
+>> + * Written-by: Alistair Francis
+>=20
+> Why remove the email address?
 
-diff --git a/nbd/client.c b/nbd/client.c
-index b9dc829175f9..c6e6e4046fd5 100644
---- a/nbd/client.c
-+++ b/nbd/client.c
-@@ -154,6 +154,7 @@ static int nbd_handle_reply_err(QIOChannel *ioc, NBDOptionReply *reply,
-                                 bool strict, Error **errp)
- {
-     g_autofree char *msg = NULL;
-+    Error *local_err = NULL;
- 
-     if (!(reply->type & (1 << 31))) {
-         return 1;
-@@ -161,14 +162,14 @@ static int nbd_handle_reply_err(QIOChannel *ioc, NBDOptionReply *reply,
- 
-     if (reply->length) {
-         if (reply->length > NBD_MAX_BUFFER_SIZE) {
--            error_setg(errp, "server error %" PRIu32
-+            error_setg(&local_err, "server error %" PRIu32
-                        " (%s) message is too long",
-                        reply->type, nbd_rep_lookup(reply->type));
-             goto err;
-         }
-         msg = g_malloc(reply->length + 1);
-         if (nbd_read(ioc, msg, reply->length, NULL, errp) < 0) {
--            error_prepend(errp, "Failed to read option error %" PRIu32
-+            error_prepend(&local_err, "Failed to read option error %" PRIu32
-                           " (%s) message: ",
-                           reply->type, nbd_rep_lookup(reply->type));
-             goto err;
-@@ -187,50 +188,51 @@ static int nbd_handle_reply_err(QIOChannel *ioc, NBDOptionReply *reply,
- 
-     switch (reply->type) {
-     case NBD_REP_ERR_POLICY:
--        error_setg(errp, "Denied by server for option %" PRIu32 " (%s)",
-+        error_setg(&local_err, "Denied by server for option %" PRIu32 " (%s)",
-                    reply->option, nbd_opt_lookup(reply->option));
-         break;
- 
-     case NBD_REP_ERR_INVALID:
--        error_setg(errp, "Invalid parameters for option %" PRIu32 " (%s)",
-+        error_setg(&local_err, "Invalid parameters for option %" PRIu32 " (%s)",
-                    reply->option, nbd_opt_lookup(reply->option));
-         break;
- 
-     case NBD_REP_ERR_PLATFORM:
--        error_setg(errp, "Server lacks support for option %" PRIu32 " (%s)",
-+        error_setg(&local_err, "Server lacks support for option %" PRIu32 " (%s)",
-                    reply->option, nbd_opt_lookup(reply->option));
-         break;
- 
-     case NBD_REP_ERR_TLS_REQD:
--        error_setg(errp, "TLS negotiation required before option %" PRIu32
-+        error_setg(&local_err, "TLS negotiation required before option %" PRIu32
-                    " (%s)", reply->option, nbd_opt_lookup(reply->option));
-         break;
- 
-     case NBD_REP_ERR_UNKNOWN:
--        error_setg(errp, "Requested export not available");
-+        error_setg(&local_err, "Requested export not available");
-         break;
- 
-     case NBD_REP_ERR_SHUTDOWN:
--        error_setg(errp, "Server shutting down before option %" PRIu32 " (%s)",
-+        error_setg(&local_err, "Server shutting down before option %" PRIu32 " (%s)",
-                    reply->option, nbd_opt_lookup(reply->option));
-         break;
- 
-     case NBD_REP_ERR_BLOCK_SIZE_REQD:
--        error_setg(errp, "Server requires INFO_BLOCK_SIZE for option %" PRIu32
-+        error_setg(&local_err, "Server requires INFO_BLOCK_SIZE for option %" PRIu32
-                    " (%s)", reply->option, nbd_opt_lookup(reply->option));
-         break;
- 
-     default:
--        error_setg(errp, "Unknown error code when asking for option %" PRIu32
-+        error_setg(&local_err, "Unknown error code when asking for option %" PRIu32
-                    " (%s)", reply->option, nbd_opt_lookup(reply->option));
-         break;
-     }
- 
-     if (msg) {
--        error_append_hint(errp, "server reported: %s\n", msg);
-+        error_append_hint(&local_err, "server reported: %s\n", msg);
-     }
- 
-  err:
-+    error_propagate(errp, local_err);
-     nbd_send_opt_abort(ioc);
-     return -1;
- }
-diff --git a/nbd/server.c b/nbd/server.c
-index 28c3c8be854c..6d9ca2563cce 100644
---- a/nbd/server.c
-+++ b/nbd/server.c
-@@ -1616,6 +1616,8 @@ void nbd_export_close(NBDExport *exp)
- 
- void nbd_export_remove(NBDExport *exp, NbdServerRemoveMode mode, Error **errp)
- {
-+    Error *local_err = NULL;
-+
-     if (mode == NBD_SERVER_REMOVE_MODE_HARD || QTAILQ_EMPTY(&exp->clients)) {
-         nbd_export_close(exp);
-         return;
-@@ -1623,8 +1625,9 @@ void nbd_export_remove(NBDExport *exp, NbdServerRemoveMode mode, Error **errp)
- 
-     assert(mode == NBD_SERVER_REMOVE_MODE_SAFE);
- 
--    error_setg(errp, "export '%s' still in use", exp->name);
--    error_append_hint(errp, "Use mode='hard' to force client disconnect\n");
-+    error_setg(&local_err, "export '%s' still in use", exp->name);
-+    error_append_hint(&local_err, "Use mode='hard' to force client disconnect\n");
-+    error_propagate(errp, local_err);
- }
- 
- void nbd_export_get(NBDExport *exp)
+In https://lists.gnu.org/archive/html/qemu-devel/2019-01/msg00759.html
+Thomas suggested to remove invalid email addresses:
 
+  I don't think that this e-mail address is still valid since that
+  company has been bought up > 10 years ago... so it likely does not
+  make sense to mention it in new files anymore. So just mention the
+  name?
+
+In your case Xilinx still exists, but you warned us it might bounce:
+
+$ git show c22e580c2ad
+commit c22e580c2ad1cccef582e1490e732f254d4ac064 (tag:
+pull-target-arm-20180301)
+Author: Alistair Francis <alistair.francis@xilinx.com>
+Date:   Thu Mar 1 11:05:58 2018 +0000
+
+    MAINTAINERS: Update my email address
+
+    I am leaving Xilinx, so to avoid having an email address that bounces
+    update my maintainer address to point to my personal email address.
+
+So I stripped your obsolete email.
+
+Since the line is not "(c) Name <email>" but simply "Written by" and the
+(C) remains to Xilinx, we could update the email by your personal one,
+that seems fair (so if someone want to contact you to ask you question
+about your code, he still can).
+
+What do you prefer?
+
+>=20
+> Otherwise:
+>=20
+> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Thanks!
+
+>=20
+> Alistair
+>=20
+>>   *
+>>   * Permission is hereby granted, free of charge, to any person obtain=
+ing a copy
+>>   * of this software and associated documentation files (the "Software=
+"), to deal
+>> @@ -24,8 +24,8 @@
+>>   * THE SOFTWARE.
+>>   */
+>>
+>> -#ifndef HW_TIMER_XLNX_ZYNQMP_RTC_H
+>> -#define HW_TIMER_XLNX_ZYNQMP_RTC_H
+>> +#ifndef HW_RTC_XLNX_ZYNQMP_H
+>> +#define HW_RTC_XLNX_ZYNQMP_H
+>>
+>>  #include "hw/register.h"
+>>  #include "hw/sysbus.h"
+>> --
+>> 2.20.1
+>>
+>>

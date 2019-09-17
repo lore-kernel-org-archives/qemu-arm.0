@@ -1,184 +1,141 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5589530wrp;
-        Tue, 17 Sep 2019 11:43:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzp8gPTZA6V5406hFEBArQUPdWfyRAggoUESIRUdXW+2gm3K5kfqYf0l5lJ73tPgFzaB8hY
-X-Received: by 2002:a37:a1cd:: with SMTP id k196mr5499103qke.189.1568745833207;
-        Tue, 17 Sep 2019 11:43:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568745833; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5632108wrp;
+        Tue, 17 Sep 2019 12:26:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxz45Glqb1Ax/sRIODAYQgRQf6OA4kHlAUbIaWbmi2SYfK6Qfy2O+NTTj1z8AuSaRSTP1qC
+X-Received: by 2002:a37:b704:: with SMTP id h4mr7515qkf.373.1568748367955;
+        Tue, 17 Sep 2019 12:26:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568748367; cv=none;
         d=google.com; s=arc-20160816;
-        b=u9g5YyGvloiI410eif2gsEJQeHtkcT8v++44RRKcI8P7NZSEIdh2WU620UyAfvy4r4
-         GQ27BDi+qLYKog/cD5lkvyq7UoGIdWI9ILVJTalcIQMduHAbmnYE5XvNTYpdsJHYd8x0
-         UUOb6SaxEEb3IL9YRS8ghB7pJj/9VPWV4Vjvu5lyG3h7wNEEKBY+U5wrEc8Ayhg1GH1a
-         5OM/rwtn8HpKTuPlLJ03yS+Mr6GjxggltauH1mhRRD01i6yQeAhz2VjihAZylDKyHvsL
-         rNP0O9/OBb1kkL1aH0qG//YAIzvofH/Lmk7jeHBgZXAhWM+mpsI3TZdio7XE1F07DDu1
-         F2pQ==
+        b=dGP1kHkuFERJ1B9v+g7ZcX4z2QRRhISoV6IIkihvlCm5jK2RfWTGMvaxwKqHYPR30d
+         3xlgp5Np+0Yy1GO3U2PMKxnXWOHPeOAkux4Ya/QkX1V5m+W/sKDGQ6RxBGzXkkaG/9GR
+         1Pt45LiKLSCc2rVDg+qnsGA2zd1ILd3M/ep62WbGIGRrNxSUiUkdx/GvtL2sKcAuBUA5
+         NakasosfLzdo9fQmE3v5aRtq8cdwa763T3R3nDCB5a+4y7qL+6NBXcnw900chDYuL1MZ
+         n6Rtb2TCgGSunqI9+GI+1zxR27px8FY1EMmETJxHdkD5P31KNskLIRgunUCpkSRPtpQK
+         tm2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:cc:to
-         :subject;
-        bh=j8ySeuvG4xWEspBrZUayDmt240txF67U9FOZnb16BPI=;
-        b=rctXpPqURA9vn8vVBi97PdwdtKnBYXV47X0ewI+jNM/hO2TXoyLqQbWeKOjiJQCmZ3
-         5C8owDGMZgN85q47b4gPCPEoqkbvnIKnSt5RA+WzhNTkmV9PAEHeRoGvUB74EwslZqaj
-         hupbtocbN+Liz2AXJlZsijuiFHF1qobFF81UK4lRaM9RvoiZ/ENXyQGfzG/SgqN+uHbe
-         vE5QMKkjudzM9XFf2bmm7mokU0i55GtS8NGCUvYEKYvmMr+nduOAVZFPz+BHHtAMkiQL
-         hOfkGdcUVOKDgBDu/v0UCqKm7aRY66/vdDPPx4/dOYRfaSAt0V8aHwmjeGtbxnWj7FTa
-         /Wkw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature;
+        bh=Yvt3VeLmQWfbl/zRgCN5EnY7/IpEzSBYY1kapUJvzZY=;
+        b=TTjuZR8ZkbiNJkB4OeknzsN/8V94qtUuygMsBAdlGk7pXqGU2sJzP632/lfKm6CIp3
+         QVGQJ/kvlguCndCN2lOsEdWX58MxNLs1eUjJaUClqmVIfbjWVmQr9rVvr1j9a1+bRt78
+         cZIpsaCa5c4HgeuDE7+qVJ3ofzsrVa8Pax9MyiB8ggaVKQ9g1ACHZ+U9arhMLvB0Liss
+         do7cKwiPu90MRYs9KMOXYnxh+JIb9krQ2S1K/pFzooUCKPBJItWtw6yV81MZvhNh+82X
+         U7nZIcBRwDUPp4vCVvjVr96psF2VkUGiWfOwSUEqte+VSDZyo5PLyDHa1eRfzoc3qTUp
+         C/zw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of jsnow@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <jsnow@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id 42si2499101qtp.220.2019.09.17.11.43.52
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Sep 2019 11:43:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of jsnow@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=fail header.i=@linaro.org header.s=google header.b="WrLN/JAr";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n1si2414656qvc.123.2019.09.17.12.26.07
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 17 Sep 2019 12:26:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of jsnow@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=jsnow@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 5356F83F3C;
-	Tue, 17 Sep 2019 18:43:52 +0000 (UTC)
-Received: from [10.18.17.165] (dhcp-17-165.bos.redhat.com [10.18.17.165])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 9F1A95D6A5;
-	Tue, 17 Sep 2019 18:43:48 +0000 (UTC)
-Subject: Re: [PATCH v1 1/9] tests/docker: add sanitizers back to clang build
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- peter.maydell@linaro.org
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Fam Zheng <fam@euphon.net>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-References: <20190917184109.12564-1-alex.bennee@linaro.org>
- <20190917184109.12564-2-alex.bennee@linaro.org>
-From: John Snow <jsnow@redhat.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b="WrLN/JAr";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51544 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iAJ71-00034q-95
+	for alex.bennee@linaro.org; Tue, 17 Sep 2019 15:26:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46321)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <richard.henderson@linaro.org>) id 1iAJ6p-00033T-B9
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 15:25:56 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <richard.henderson@linaro.org>) id 1iAJ6o-0006VE-5l
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 15:25:55 -0400
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:41323)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1iAJ6n-0006Uo-Ph
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 15:25:54 -0400
+Received: by mail-pf1-x443.google.com with SMTP id q7so2720431pfh.8
+ for <qemu-arm@nongnu.org>; Tue, 17 Sep 2019 12:25:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Yvt3VeLmQWfbl/zRgCN5EnY7/IpEzSBYY1kapUJvzZY=;
+ b=WrLN/JArXjsqWROzGe5Lg8uNvvY6a6urcPPh7fdoG0OL9etKmbpJubU2fQ0bcurK6G
+ 3AEQRD913nn5f8QSsQnX409Y9/LPmH6yArxbiLxuc7QIX9if9RyLynkDE378g9M5sKz3
+ AyKfnzEPBCQGQLM6speYtEGMaaifrPcUdyy4Wzf76hG4TwEbfs/3io3621Y4FnKztBEq
+ a8iOmICpB5z9C0NuzLKlCar3MrCWp5ctSL4b2drwzj4PerlvhBCgxWNwK+GWZ70J+Qt+
+ uyvJ95euexd850xViwVNb6AzUFDxxpppCGmBcmoxE8364/6psJPinJ7aL0Dx9D6/Nh8M
+ 4RVw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Yvt3VeLmQWfbl/zRgCN5EnY7/IpEzSBYY1kapUJvzZY=;
+ b=JctWPimFdeM+5qnFbyEeu8a4zFMZqu/sm+NPMujR2sxjC+Pte3ktYav7RctB3GkBLE
+ ijJnNCf/WuefQDuapwgHNc1n6VKuS1+I9MvpAKpaTyO/3AL8wtPmYWjzorFyGRyzuyBw
+ 3NBpXKk+7boSc6O0nH7DfsQgvZUy8o7j7Kx0dlnulJfgBveIap2FdnRWeJewN78yZfew
+ cnofwpQuXP1Dv6qTlI55k/KNTPy1OZlJ1Ocrn5dvQO+rbXP5eAKl1XGSVTTMplk4ASJc
+ LNrr8i7xvwX5PNEUwkkcIKls9qiMIqGB2vp0zUVUt7XHi07Gg5vqm5/RdDrf30tH//zj
+ gUkw==
+X-Gm-Message-State: APjAAAXofHlgqgOeYGzsp/s8Y/nCBrxj8KQlncEozL4BFjRvoIZxn5iD
+ bxAZffFCiyegYKeZN8boTp7I+g==
+X-Received: by 2002:a17:90a:178d:: with SMTP id
+ q13mr6725873pja.134.1568748352605; 
+ Tue, 17 Sep 2019 12:25:52 -0700 (PDT)
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id g1sm2883687pgg.27.2019.09.17.12.25.51
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 17 Sep 2019 12:25:51 -0700 (PDT)
+To: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>
+References: <20190912065631.12473-1-andrew@aj.id.au>
+ <CAFEAcA_h80VQVC0jE7v8kmsuXU=16+KXSKQ-qhuRNTct7X6X7g@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <2a0ea3da-6c24-170e-3af3-24692da1c51d@redhat.com>
-Date: Tue, 17 Sep 2019 14:43:48 -0400
+Message-ID: <c9f58ca3-36ee-e8bb-a350-29729f4f24df@linaro.org>
+Date: Tue, 17 Sep 2019 12:25:49 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190917184109.12564-2-alex.bennee@linaro.org>
+In-Reply-To: <CAFEAcA_h80VQVC0jE7v8kmsuXU=16+KXSKQ-qhuRNTct7X6X7g@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.27]); Tue, 17 Sep 2019 18:43:52 +0000 (UTC)
-X-TUID: Lip+G/0LB5uM
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::443
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH v5] target-arm: Make the counter
+ tick relative to cntfrq
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JmkE6+qG05f1
 
-
-On 9/17/19 2:41 PM, Alex Bennée wrote:
-> From: John Snow <jsnow@redhat.com>
+On 9/17/19 12:14 PM, Peter Maydell wrote:
+>> +static Property arm_cpu_gt_cntfrq_property =
+>> +            DEFINE_PROP_UINT64("cntfrq", ARMCPU, gt_cntfrq,
+>> +                               (1000 * 1000 * 1000) / GTIMER_SCALE);
+> I think it would be helpful to have a comment saynig what units
+> this property is in.
 > 
-> Fedora23 is but a distant twinkle.
-> The sanitizer works again, and even if not,
-> we have --enable-sanitizers now.
-> 
-> Signed-off-by: John Snow <jsnow@redhat.com>
-> Message-Id: <20190912014442.5757-1-jsnow@redhat.com>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-Hi Alex:
+Should this be NANOSECONDS_PER_SECOND?
+It's certainly a suspicious use of 1e9 otherwise.
 
-As a warning, I do believe this *does* produce some sanitizer errors for
-this build which I have not had the time to investigate.
 
-We might be treated to some patchew complaints in response to this
-patch, if it runs clang builds.
-
---js
-
-> ---
->  tests/docker/test-clang | 6 +-----
->  1 file changed, 1 insertion(+), 5 deletions(-)
-> 
-> diff --git a/tests/docker/test-clang b/tests/docker/test-clang
-> index 324e341cea9..db9e6970b78 100755
-> --- a/tests/docker/test-clang
-> +++ b/tests/docker/test-clang
-> @@ -17,11 +17,7 @@ requires clang
->  
->  cd "$BUILD_DIR"
->  
-> -OPTS="--cxx=clang++ --cc=clang --host-cc=clang"
-> -# -fsanitize=undefined is broken on Fedora 23, skip it for now
-> -# See also: https://bugzilla.redhat.com/show_bug.cgi?id=1263834
-> -#OPTS="$OPTS --extra-cflags=-fsanitize=undefined \
-> -    #--extra-cflags=-fno-sanitize=float-divide-by-zero"
-> +OPTS="--cxx=clang++ --cc=clang --host-cc=clang --enable-sanitizers"
->  build_qemu $OPTS
->  check_qemu
->  install_qemu
-> 
+r~

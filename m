@@ -1,132 +1,100 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5649942wrp;
-        Tue, 17 Sep 2019 12:46:07 -0700 (PDT)
-X-Received: by 2002:a17:90a:c383:: with SMTP id h3mr6971442pjt.14.1568749567735;
-        Tue, 17 Sep 2019 12:46:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568749567; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5653270wrp;
+        Tue, 17 Sep 2019 12:49:59 -0700 (PDT)
+X-Received: by 2002:a17:902:76c1:: with SMTP id j1mr382185plt.270.1568749799216;
+        Tue, 17 Sep 2019 12:49:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568749799; cv=none;
         d=google.com; s=arc-20160816;
-        b=0lupDQjeA73C+yRlO2/e8OEzPz7LYzcyZbUO8Mbtf7aY1WQ9To16tMK7lW+4uXV/7O
-         7Ccaz9xDRrIO3zGeud54tETo25f8ZkQ/mIG0c5srN86rtJlzp0Ba9DiJJXi7y87dinx1
-         PWnZk296GJ/ANRz2NqKwBOjDhVBJfZN6/3B2V5uhDK7dExdtMu4fNoVNVBfM2BiVFttx
-         CHHGDKrm6XVGnWPjf7dLimZfQ6KlTAsrg+OsI/Bep+sUZEd9e4tXKGEIN+2AS9fNeY3y
-         cASvE+ztUfGIdaDH5HDV4rgbdLTesCNJjgRlSaQlWkwXbakm12qKM2fvLmWxd8QPDARQ
-         KT8w==
+        b=dRq+P0ououefI1FhImBOIvGdL4UdEb93zZyiap+gnxI1fk2k9o3jdBBJI5eKPzRpce
+         CkAYDGxK8vBipIxzfxnu021J8KvaFHL+A5rBfA5rkNS96v61G7S+C9peOqaItFDpN9JU
+         ScWTxcD2rnaIA7gQ0HXaAXntP2C/YBtw6A2j5jx5Y231TG6bVPUZTlpeWW16yEy8NRR/
+         Vno6UdShSQhvZMtTf+XFZPIbHZjUT+QosdPFhJhlpDITKg6zCkoBFnRs9sD0urfT+vQ4
+         Gn2vjBKbMsXrh8J9kZNBWtR4XegLyr7q3Xsb3T6ChMU9NvviWwmaTeUBj3yn4MRtITJP
+         lRzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject
          :dkim-signature;
-        bh=pCvB+ztKeOZoegWLKI6FHVrttgtkui0XKV3KuK89r9U=;
-        b=uw+3tZ2WqmeoVpmadnHEY9a+h7GXmXnndi8jJ/f4P+yt7CcFaJSbg9SBFuNYUiDUIk
-         bHx3rku4/qOySkbQLq26s6iS/TILeyMDu6IqT8mDIVMfotOWynt2d8YiiZ2UdIJVgNp+
-         q/1QTyIbtPkM6ly5RPTNck+l3mHSu+HKzzGXCt6PWTwMNTghOVCLcRkwQJfQWDAB8X/e
-         Vmq2FOrcwPB6lDJ340ry4Hk/rGs8xpTDP13bojATMm8wHd6Y20WTFQ0RzBz54hohAWmq
-         tT6pmS1kKxjG6hmF8YWAeDRaW+rOGoFawdoevp/Bjxqohs/MUNvkHFLbHcb9H5d11pLr
-         3CFg==
+        bh=nbAmRYOxfA7k1SX2rSFY4zTSP5cyUlaEEmRK84BsP4E=;
+        b=epPq2JG23HRf4v/uSxoy3TYaQokwaZtzHN71YAHmWdTopqAY8chflKQICwkUw9nstt
+         kPbnyCe5o3a6t06ZcyOp2okaZbcSJMLIVCjr/lNtWz/lg4PBdsmxe6gWzA5waoY27UFD
+         Q/HcsvvuM4uxQ5DXdx7agT+EdJbbw0h3t0r/hI7Yvfr6eMTmhmalwOu9sAEptx/B/yVB
+         Zv/gxZNB+KHqYV9xKRoTAJ2zjQLeMBRyh8ZSqgm/SGs23ViBtTumGIyasQXno4LyjS6E
+         mz9dp5ECB7PM+5feH4EUPNoO/gsrvXarrcHoRk7hCckVt6yjrSnf42SFRMgca05mq6tf
+         Nr6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=L2oj1J3Q;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WrMDTfpu;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id f29sor2849243pgb.10.2019.09.17.12.46.07
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id o9sor2855388pgm.15.2019.09.17.12.49.59
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 17 Sep 2019 12:46:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Tue, 17 Sep 2019 12:49:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=L2oj1J3Q;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=WrMDTfpu;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=pCvB+ztKeOZoegWLKI6FHVrttgtkui0XKV3KuK89r9U=;
-        b=L2oj1J3QLPHzj+D8yfPf4nGiOITeqqIXRJ2ZxNJb/0N0LGagu+NwMVaYND2jKGYTn1
-         RJAJ2jjI1wbAstdeT2JIcHj/W7Gp3BO28aeqdWODiYTBzvE/+fzZBM6UD5Wewnu5Y69E
-         P4W/u63ECSjGqA2SKKyO6sfoS8si4xkgpAU+TvRZUySEKDaVGVkn+XaJ+l8idljgBa+E
-         0XIpF/lWadJrA1qd7z7FW5nra+Ffr/VVclKlPckboVSteyxC7yYdQbCWKQQGrXlTxYYP
-         iIZQmpepbyEmANeAJTYyKo6S+FV4zs/22qneRmU46MaY5Nh1dIAPh26Q6d4LQHkQh7zj
-         UuEg==
+        bh=nbAmRYOxfA7k1SX2rSFY4zTSP5cyUlaEEmRK84BsP4E=;
+        b=WrMDTfpuHs4mh0k+11Fgu3FJx4nA/p1vi6Cg7shV0jEInEXle7Y7k1mPbZe/FfUjLo
+         buylNTxlG7lySuFAIp4NQeecF+TZqWwHnA6er8bm053t5TD6uRPJh8Jbg33CbI2a9BxQ
+         MfwTw5GVhNvugvGGdfo1uLGnZbMm1+R+vDj27aECXMJy/7Q7+/WSDpbh64VDNk+OmWwT
+         iZLnM7ZtVTBA2Txk2WsDBFikAvvuvrXH/NerOIIVZQZIJ0quTLnfN7jxmRgiN3epiMBW
+         tmd00/1XhaAIkYS7t5qpYwi3B+eAposW9ADrdaSl/p5IgwrbS4auyECtqgIJjSPcGJmN
+         VmaA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=pCvB+ztKeOZoegWLKI6FHVrttgtkui0XKV3KuK89r9U=;
-        b=pMH/LenOnXJ6rFpzLCXbTEy/DjKT2/c1j1Tay5uaGi4iegGQZq6NYvzqb2o1zGEEWv
-         Ec6ZZARpSlrCePHEPe9QMofGfLfO2yKSnYUriEGYnF+DjHuIY+Exsey0jtUPPKHisoCe
-         M7QI+gDF1UmBJRpN60sW23R04MekmKidgQs9nK7sSrsrm9nwgW9mawLA2qKbVxdW9PBh
-         TGfMOC6VwnOJOPIRwKN0IkY+4V8h/1FC9aQC5+6pRyb+aGx8A4SbaNePWxv/bbaRX/dk
-         elA5bc4IPlecoWFs/H8AjKNIslmp/DEG41+1MPNcTrrFfuEkJHQI7gZnC+01OSm0tevD
-         sdXA==
-X-Gm-Message-State: APjAAAVESc80Xg+/Tr16+nl+m6mDlerRUFY9Ncr566TijS6piewTqVo3
-	a0ieZIcg2FwBqXGeyC+T47LUS1f4
-X-Google-Smtp-Source: APXvYqyA+54f/hQvBsW97e3599EiUGVl7tts2IDt6UPp4NNWtzM107WtYZ/KroExwVTPblC4bN/wTA==
-X-Received: by 2002:a63:ec12:: with SMTP id j18mr476699pgh.327.1568749567190;
-        Tue, 17 Sep 2019 12:46:07 -0700 (PDT)
+        bh=nbAmRYOxfA7k1SX2rSFY4zTSP5cyUlaEEmRK84BsP4E=;
+        b=n+Wb066EFixhoBr+lHBG8sDmCn4yOUUq6ggx7RTovoO+g8NXjlpUh0YYQmUAk300RE
+         9AgzsfdYg8tmwXupK/wuwG2r9lNmgES+QZ6O0qDgWzBh1rM20Uebu8a4pXf1G6rHupKc
+         L8SE0/zQM1DJxqIYn2YyJTWmsdVI4JyN0xwIYi/2Nq+rzqFWL0DMj1/zh1zWyBwkIRYQ
+         Wiw8w9zDxM3dcY8Uf05tLH/A3836z8XhMLLtanIg8gjzPRw6k/OnVhc4hhoOwaF2czpc
+         S8pvX2Vw5Ney3R5Lw+/d82Dt1ch8UPTFQScAplwrYRW+O2+3ELdnA/8hHrIK+pt9I70S
+         tBxw==
+X-Gm-Message-State: APjAAAXvbpZDLi5jkft5mHKTNLsROJyTqE0eN+CnFtMiGc2ApylfsPg0
+	0DdMp/BGJeO9M+FVIv7oDHwqz5Bk
+X-Google-Smtp-Source: APXvYqwtssx0wp1N5RxV+P5a29Zs0r+YFwTyUcWQjVF8JuN+x+YOyEQTh7Zh80AXYEeclkf4LFWD7w==
+X-Received: by 2002:a63:4c5c:: with SMTP id m28mr520915pgl.333.1568749798644;
+        Tue, 17 Sep 2019 12:49:58 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id w11sm5614141pfd.116.2019.09.17.12.46.06
+        by smtp.gmail.com with ESMTPSA id s73sm3261748pjb.15.2019.09.17.12.49.57
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Sep 2019 12:46:06 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH v1 7/9] tests/tcg: add float_madds test to
- multiarch
+        Tue, 17 Sep 2019 12:49:57 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v1 8/9] tests/tcg: add generic version of
+ float_convs
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  peter.maydell@linaro.org
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20190917184109.12564-1-alex.bennee@linaro.org>
- <20190917184109.12564-8-alex.bennee@linaro.org>
+ <20190917184109.12564-9-alex.bennee@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <afd9bc85-9c79-a456-73c1-fc19e97d1acd@linaro.org>
-Date: Tue, 17 Sep 2019 12:46:04 -0700
+Message-ID: <73df6b9e-d096-f58f-dfeb-aad0c8e50d39@linaro.org>
+Date: Tue, 17 Sep 2019 12:49:55 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190917184109.12564-8-alex.bennee@linaro.org>
+In-Reply-To: <20190917184109.12564-9-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: Loi+TdQIzMKO
+X-TUID: aFpyY/o95UCC
 
 On 9/17/19 2:41 PM, Alex Bennée wrote:
-> +    /* From https://bugs.launchpad.net/qemu/+bug/1841491 */
-> +    add_f32_const(0x1.ffffffffffffcp-1022);
-> +    add_f32_const(0x1.0000000000001p-1);
-> +    add_f32_const(0x0.0000000000001p-1022);
+> +    for (i = 0; i < ARRAY_SIZE(round_flags); ++i) {
+> +        fesetround(round_flags[i].flag);
 
-These three constants do not fit in float32.
-
-> +    add_f32_const(0x8p-152);
-> +    add_f32_const(0x8p-152);
-> +    add_f32_const(0x8p-152);
-
-Why are you adding 3 of the same?
-
-> +        for (j = 0; j < nums; j++) {
-> +            for (k = 0; k < 3; k++) {
-> +                a = get_f32(j + ((k)%3));
-> +                b = get_f32(j + ((k+1)%3));
-> +                c = get_f32(j + ((k+2)%3));
-
-How does this not overflow nums?
-There does not appear to be an assert on overflow in get_f<N>.
-
-> +#if defined(__arm__)
-> +                r = __builtin_fmaf(a, b, c);
-> +#else
-> +                r = __builtin_fmaf(a, b, c);
-> +#endif
-
-Eh?
-
-> +/* Number of constants in each table */
-> +int get_num_f16();
-> +int get_num_f32();
-> +int get_num_f64();
-
-This is not c++; you want (void) to indicate no arguments.
+If we're going to make this a generic test, perhaps
+continue if fesetround fails?
 
 
 r~

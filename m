@@ -1,161 +1,98 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5210752wrp;
-        Tue, 17 Sep 2019 05:53:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyDzKhWYGWMAJUHlajWotwiV5XlUAErniZ+HmD+piKTEuWOEIsxZ5kjP2ey0gQ0VzRTGwwu
-X-Received: by 2002:a17:907:4242:: with SMTP id np2mr4689281ejb.102.1568724827570;
-        Tue, 17 Sep 2019 05:53:47 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s42si1209582edm.292.2019.09.17.05.53.47
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5347531wrp;
+        Tue, 17 Sep 2019 07:56:04 -0700 (PDT)
+X-Received: by 2002:a05:6830:457:: with SMTP id d23mr1895109otc.315.1568732164028;
+        Tue, 17 Sep 2019 07:56:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568732164; cv=none;
+        d=google.com; s=arc-20160816;
+        b=rgmDyihv+b6uqqceUYUHaXrgl5YhpKIi1Pa9Wi8HFXsL2F4fzSFkg1ix1B3Nu2/gxQ
+         ciRDfeXCxdbL+GY3c3ve+TamKTX5eiNy8jCocXJrfKlkbW4QUbBqrwvYz51LMsW0Csfk
+         3hjFUELynhJoK6BAnC7ZuBgmhZlbQ+xXMRXAXBdTlyZKDp1imRVR2uB5e23jUhwVk4Yi
+         wr2QbPVP7+zxGGWIiNWUn6MUImBmvZle+/a5qt+gOq8wdFr40SxQSJ+TssVThbKXWdgG
+         rIsRO/WRbkKT+6vKEZv7sRhkYyKpWBR2mKug1yO0HSTe+52pPsj3AWNJPg4koLx1BAGL
+         9M+w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=eLm2QeF1/m+eqwXbDIM7DWhUgryCHkwjXx1QVGlNf+w=;
+        b=ViOkyjjN+mHifMz1yeMpOfVHs++tMbivRB3HxMLXDKfu6Hvmvp0HqVzp1jsSc04mTo
+         egN7pgLc1chjksh5mDeyi0u4a1vrOz0GXoX/j+t8GyNtjLN2VloNoF2a2i1WpLvwACp0
+         IRFG6m3pXbsLcHt6rRG/OuwXtqcbdLjgzvMbbdz/ccLHowJ9hcHXAfF08+Ck5NmzGxYi
+         av5povTOjEEuon0cg223w96AXKEnl4kh7O5hZxvXn86SedoD6RGpy90OVSiiEG4eWba5
+         d+hpl1Tk/xPEJdP9o+0q+0vj6NRQn+VxC5zsQYYJxgNiqDRDAgKa3W21NU6T8mf4aFo6
+         cbGA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b="t9bAAp1/";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id p130sor1257767oig.91.2019.09.17.07.56.03
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Sep 2019 05:53:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 17 Sep 2019 07:56:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=L3lfeq0d;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45794 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iACzK-0001LY-Fx
-	for alex.bennee@linaro.org; Tue, 17 Sep 2019 08:53:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39388)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <luc.michel@greensocs.com>) id 1iACy3-0000Zm-HK
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 08:52:28 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <luc.michel@greensocs.com>) id 1iACy2-0003q6-97
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 08:52:27 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:45054)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <luc.michel@greensocs.com>)
- id 1iACy1-0003pB-P1; Tue, 17 Sep 2019 08:52:26 -0400
-Received: from [172.16.11.100] (tiramisu.bar.greensocs.com [172.16.11.100])
- by beetle.greensocs.com (Postfix) with ESMTPSA id D092E96F50;
- Tue, 17 Sep 2019 12:52:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1568724743;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=82KG3T8RmQqxzA6umtmQhxyhHb4oDgZYrD7nSRrpadM=;
- b=L3lfeq0dgDhj9ITGpVYuiruOwAC3akojCewImp0v/48r94bfO1nICDQgCrPnETNloOp7/s
- ELwksHGIzxDhF221JN7yJL4DB+h0MeYBeAhZdyFcTJ25a1lWAF8CW7Fhg3zQRcaTV1P3Zt
- xJy4w1/cB+F6HNEwjpu7C3pMq58AUtI=
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20190912110103.1417887-1-luc.michel@greensocs.com>
- <CAFEAcA-WO=O5zwRDQoNz2zT4sx61j8Jy5px0uFPiWgF_JUpa+A@mail.gmail.com>
- <204007b1-1c1e-432b-399f-b3784f812710@greensocs.com>
- <c3a22836-0435-e09b-6fe0-eff85124c0ca@greensocs.com>
- <CAFEAcA8b1XUpwq-NefVL+BD0bNfDu6Rhxygbb3mfyV1t17NZUQ@mail.gmail.com>
-From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <10f1309a-f788-7164-bc9e-51f5ecc7e841@greensocs.com>
-Date: Tue, 17 Sep 2019 14:52:23 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.0
+       dkim=pass header.i=@linaro.org header.s=google header.b="t9bAAp1/";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=eLm2QeF1/m+eqwXbDIM7DWhUgryCHkwjXx1QVGlNf+w=;
+        b=t9bAAp1/JUoymdaiQIsYMizHEZQQo0c+ADmtbBVRI7MzR/kxyP+PTa7Tx5PgSqqUyx
+         ym5q5MrmntVW7APL5eQYHRa5ZtB9xfSNXaduAm+Ou/jVqp9KZink+SXQBfcQcQIUH0tn
+         q30oni7h0PjWirZ7Gi69gMqkCROkQQHy9PIM2/0aDfVi8Cl+KA5eW9iY+X8tvgrazh/0
+         WVEH5zWDvXUOzRMho66XfgeUr4/Hg3EscfSg7MNHurTsc+KgScao8RyX3YzLnJZBDZPT
+         /Rl6Hhaom+T261dS4Axrw9cwHjGAQnlpTiWvM8mEbMQwV38AtjKe1h5PssJjEKK87rvd
+         0gTw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=eLm2QeF1/m+eqwXbDIM7DWhUgryCHkwjXx1QVGlNf+w=;
+        b=fsM6oTcY9QeHN4NOLiKc+iDDAn15U2p4DPnb1rgw/PMfVpUual+O6BnffmQawoSsIO
+         8cLHAW30K3j+SgosMCvNIC/KZs6oLEU29QQEwslDTbH0XRJh9hebHInwtLpdQ4jFcWm5
+         QkOCM9tO5RtEb7WeQtG8d3t9bIVN/HrDL5OSASB1cDRUjwoBoIoiIlQ2GFZu+Yv7iZKv
+         lXx08DMbH6LzAiXHOtysWLU28LSsVt66jM5TcsUSv59HhT4GeWIYK1s1eJYxDw5EFaxM
+         VSXqxIZYzx96zXFje2RzWTBnrM8Lyz36pvYQOfv5D33clJuMezyse5T1lE+VovPfqYq4
+         HSKA==
+X-Gm-Message-State: APjAAAVLJwTcMRB7/t/nzVfkMi2x2dHS2ut7h9UjGbZVPekw3+OwTQKm
+	cXqbUoSBSUcpzJaSvPRBDYQnzq9+sjWu4bWm2RHrmq9lEIdwtw==
+X-Google-Smtp-Source: APXvYqycYtym/y/O1Wair0bt+m1kCWcIkgxq+A+RjUXWhMdQyTWnsYZgUCtivZx3hw/g+OkzxcZCUAq+zwlaz040x0c=
+X-Received: by 2002:aca:50d8:: with SMTP id e207mr3800256oib.48.1568732163090;
+ Tue, 17 Sep 2019 07:56:03 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8b1XUpwq-NefVL+BD0bNfDu6Rhxygbb3mfyV1t17NZUQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
- s=mail; t=1568724744;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=82KG3T8RmQqxzA6umtmQhxyhHb4oDgZYrD7nSRrpadM=;
- b=I2yT6SLoa0Hm14BB+NXHq2dAmcNmzvzTF7nPXo9IHsiuLvInH9Kaikl5Muo//bZajEpT8k
- aj+XbL0GH2P/nHJ0ctVCVuMnqCa1YKW39K6TV8fAfmZmdybAMTEfbUZOpUSF1+/Amxvt+p
- X9CnkDDc93sSYQuc4m0Fufrq0WU1tsA=
-ARC-Seal: i=1; s=mail; d=greensocs.com; t=1568724744; a=rsa-sha256; cv=none;
- b=KEIk5SOVjne0j1fH6pW1tCQh5dukDCFhNnwfTBr1sFLKB7cfUaxptYuGcaV4pxuXAPPscP
- tmJUujcgcXH89r/lQBWt7t0PpRRNnqKAUj3ZbKxRYPr/1B0Wlwjmi7vzjqk898I6KK0G5Q
- pxNuNYVvQHeoYtQfZBMV6fZM2djk5ps=
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=luc smtp.mailfrom=luc.michel@greensocs.com
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 5.135.226.135
-Subject: Re: [Qemu-arm] [PATCH] target/arm: fix CBAR register for AArch64
- CPUs
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IEMvP0pprrd/
+References: <20190913151845.12582-1-alex.bennee@linaro.org>
+In-Reply-To: <20190913151845.12582-1-alex.bennee@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 17 Sep 2019 15:55:52 +0100
+Message-ID: <CAFEAcA-bTRJQDRFandUpU4jA8Yw0+SQc35uYPbDHZTn4srczBA@mail.gmail.com>
+Subject: Re: [PATCH v6 0/6] semihosting cleanups (plus minor tests/tcg tweak)
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 5BzKEqva2jzn
+
+On Fri, 13 Sep 2019 at 16:18, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
+> Hi Peter,
+>
+> I've restored the #ifndef CONFIG_USER_ONLY check to M-profile as well
+> and split the linux-user semihosting smoke check into a new commit.
+>
+> Alex Benn=C3=A9e (6):
+>   tests/tcg: clean-up some comments after the de-tangling
+>   target/arm: handle M-profile semihosting at translate time
+>   target/arm: handle A-profile semihosting at translate time
+>   target/arm: remove run time semihosting checks
+>   target/arm: remove run-time semihosting checks for linux-user
+>   tests/tcg: add linux-user semihosting smoke test for ARM
+>
 
 
+Applied to target-arm.next, thanks.
 
-On 9/17/19 12:56 PM, Peter Maydell wrote:
-> On Tue, 17 Sep 2019 at 09:43, Luc Michel <luc.michel@greensocs.com> wrote:
->>
->> On 9/13/19 9:26 AM, Luc Michel wrote:
->>> Hi Peter,
->>>
->>> On 9/12/19 6:03 PM, Peter Maydell wrote:
->>>> I think we need to check through the TRMs to confirm which CPUs use
->>>> which format for the CBAR, and have a different feature bit for the
->>>> newer format/sysreg encoding, so we can provide the right sysregs for
->>>> the right cores.
->>> I checked all the AArch64 Cortex's TRMs, for those having a PERIPHBASE
->>> signal and CBAR register (namely Cortex-A53, 57, 72, 73), they all match
->>> the mapping I put in this patch, so I think we don't need to split the
->>> CBAR feature further. I believe more recent Cortex's address the GIC
->>> using coprocessor registers, and CBAR does not exist in those ones.
->>
->> Hi Peter,
->>
->> Do you want me to re-roll this patch with some modifications?
-> 
-> No, that's OK. Thanks for checking the TRMs. I think what I'll
-> do is squash in this comment to the patch:
-> 
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 755aa18a2dc..bc1130d989d 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -6733,6 +6733,19 @@ void register_cp_regs_for_features(ARMCPU *cpu)
->      }
-> 
->      if (arm_feature(env, ARM_FEATURE_CBAR)) {
-> +        /*
-> +         * CBAR is IMPDEF, but common on Arm Cortex-A implementations.
-> +         * There are two flavours:
-> +         *  (1) older 32-bit only cores have a simple 32-bit CBAR
-> +         *  (2) 64-bit cores have a 64-bit CBAR visible to AArch64, plus a
-> +         *      32-bit register visible to AArch32 at a different encoding
-> +         *      to the "flavour 1" register and with the bits rearranged to
-> +         *      be able to squash a 64-bit address into the 32-bit view.
-> +         * We distinguish the two via the ARM_FEATURE_AARCH64 flag, but
-> +         * in future if we support AArch32-only configs of some of the
-> +         * AArch64 cores we might need to add a specific feature flag
-> +         * to indicate cores with "flavour 2" CBAR.
-> +         */
->          if (arm_feature(env, ARM_FEATURE_AARCH64)) {
->              /* 32 bit view is [31:18] 0...0 [43:32]. */
->              uint32_t cbar32 = (extract64(cpu->reset_cbar, 18, 14) << 18)
-> 
-> 
-> and apply it to target-arm.next, if that's OK with you.
-Yes sure!
-
-Thanks.
-
--- 
-Luc
-
-> 
-> thanks
-> -- PMM
-> 
+-- PMM

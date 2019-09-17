@@ -1,132 +1,82 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4813684wrp;
-        Mon, 16 Sep 2019 22:08:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx0uJ8PjfEbxHvrH+4GhhzzJve9tYlCtEIwVyWT++A481DmZui4LQwK/z5GSHTwwOxHbnIm
-X-Received: by 2002:a17:907:20c1:: with SMTP id qq1mr2986047ejb.87.1568696908465;
-        Mon, 16 Sep 2019 22:08:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568696908; cv=none;
-        d=google.com; s=arc-20160816;
-        b=i3aRHuMdSusKzj25UXxi7UUSVQcb0lpOJJ8ya2wIDyt286fs/JxnivOrb8ir/AxtOx
-         JSoBshyuetIzYidN919jpXQZZ0SKxR+1NZy601+ZPAyGZJzskg1NUWXQj5/vsLaXZO88
-         WmISCflQVIE9ZWW0xhBtVMrbQtXT8ggSxJ/RD0e/J2UwxTLUTeXtzxKEbb7fw8YpOhp9
-         IF1Dz2+MOIUlnbBhC+k5etZvPSKgWEolzCV2eMOtekwGkc/EAfQJlCw19zswOw+NXVgm
-         NR15fidiVGmoff8Rvjxe1kqqnG3SVJp6nPX+RVxRr1UlixPL6RFpvME+JAaBfK1SBzSw
-         QD5A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to;
-        bh=azgUXEaq09/9THULswcPZZqMK+E585Ns3xt35GPNpck=;
-        b=kSQYY1Ddy2+gYNENKY0oK+pCT7T1TkypoAPXSDspIpWACJqx97lfQYvZKKm8vsPN0k
-         qcU4oEr1f3xspqXvMULyrXWWabkPj3JjuB0TxRjviWVFnjBlxKdiZmp0cQbMPJ7FoMfb
-         Tr/nh74qoBarGXI41vhfKIOhUgwsR/i4GJAiZFlVEw9UvaC7xIZ1PG0fYMH6BwRgTmTH
-         lm5kv5JIp6FaYZbTEZQ7fr49K6Y2E4Iil4XLQezwa+kCqSi+o7V5op0QWEFmY2xmdXIW
-         X/trn0ao87bimPxJSLrIlDYsZieu5wuV6o4eGg1Ds4WYJy4YSF+R0L0TxKaRom6BvLWA
-         nxTg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4966791wrp;
+        Tue, 17 Sep 2019 01:44:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxa2gmogCvpj+JyOoQmPtyoTaNfzymUzdhn3Q2yzsYfhCFtvYZLYPLzeeCHZeRQ0HMIMGtu
+X-Received: by 2002:aa7:d816:: with SMTP id v22mr3535427edq.28.1568709855874;
+        Tue, 17 Sep 2019 01:44:15 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m1si712938edb.433.2019.09.16.22.08.28
+        by mx.google.com with ESMTPS id a13si730191ejp.117.2019.09.17.01.44.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Sep 2019 22:08:28 -0700 (PDT)
+        Tue, 17 Sep 2019 01:44:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41930 helo=lists1p.gnu.org)
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=JvpY+bdg;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42778 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iA5j1-00029n-Es
-	for alex.bennee@linaro.org; Tue, 17 Sep 2019 01:08:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59043)
+	id 1iA95q-0003h8-S9
+	for alex.bennee@linaro.org; Tue, 17 Sep 2019 04:44:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56765)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iA5it-00029c-R6
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 01:08:20 -0400
+ (envelope-from <luc.michel@greensocs.com>) id 1iA95Q-0003gy-D3
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 04:43:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iA5is-00011z-7l
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 01:08:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57806)
+ (envelope-from <luc.michel@greensocs.com>) id 1iA95O-00082C-H5
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 04:43:48 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:36490)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1iA5ir-00011c-W6; Tue, 17 Sep 2019 01:08:18 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B13475AFE9;
- Tue, 17 Sep 2019 05:08:16 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-28.ams2.redhat.com [10.36.116.28])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CEC1C5D6A9;
- Tue, 17 Sep 2019 05:07:56 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-References: <20190916154847.28936-1-philmd@redhat.com>
- <20190916154847.28936-4-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat
-Message-ID: <c5caa155-19d3-1b22-ea61-d8c17dca39e7@redhat.com>
-Date: Tue, 17 Sep 2019 07:07:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ (Exim 4.71) (envelope-from <luc.michel@greensocs.com>)
+ id 1iA95N-00081M-W7; Tue, 17 Sep 2019 04:43:46 -0400
+Received: from [172.16.11.100] (tiramisu.bar.greensocs.com [172.16.11.100])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 8E29E96F50;
+ Tue, 17 Sep 2019 08:43:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1568709823;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=VHN5ARYEvEd8sow+DO60Ao3ezWbjVE8SpECORQ8v1vA=;
+ b=JvpY+bdgRe4LI1iwO2XrZlBHsou4n9SRWNYkciOvgJNCdkMtranxL54I4hSF/LlOc5WnHO
+ Pg2Ahg4/MDso3zyrQ1lzu/vaVJpMxKsbHI5ySTIZn6OMu50X1p+9sISyFremsm+hN7m+r2
+ UTLHVUlH6koIgLhZm2jmw1zs5FUbLwg=
+From: Luc Michel <luc.michel@greensocs.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20190912110103.1417887-1-luc.michel@greensocs.com>
+ <CAFEAcA-WO=O5zwRDQoNz2zT4sx61j8Jy5px0uFPiWgF_JUpa+A@mail.gmail.com>
+ <204007b1-1c1e-432b-399f-b3784f812710@greensocs.com>
+Message-ID: <c3a22836-0435-e09b-6fe0-eff85124c0ca@greensocs.com>
+Date: Tue, 17 Sep 2019 10:43:42 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.0
 MIME-Version: 1.0
-In-Reply-To: <20190916154847.28936-4-philmd@redhat.com>
+In-Reply-To: <204007b1-1c1e-432b-399f-b3784f812710@greensocs.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.39]); Tue, 17 Sep 2019 05:08:16 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Language: en-PH
+Content-Transfer-Encoding: 7bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com; 
+ s=mail; t=1568709823;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=VHN5ARYEvEd8sow+DO60Ao3ezWbjVE8SpECORQ8v1vA=;
+ b=IqJ9OKRqkWQT9kO0mEMLXFLAYBLmGfosY1uxJDD5iXSneQYwPrtuyStqMJpNSGK5Gu7rYK
+ DcXJF/jvc8qxJV/hQNR7tVPAeNswCiLLeo2oraDcLG2cVuuB9aiZxctn3mDJOYemIGDYpE
+ qE8k7nvaQ5sY93Djz1foKiKjlRRgJRE=
+ARC-Seal: i=1; s=mail; d=greensocs.com; t=1568709823; a=rsa-sha256; cv=none;
+ b=idfTcU/COTYoc5S8ZGy8TdEuqqiAXhgy7NzH4gesSj2xn73+jy0xT8cuq2QjIerTjdRVPT
+ nFe9P+a2coyEzVJOLsKVsRQ/R0vptPAXYUZ66LtWS+QVTrxTO7C7QntECjh2sT6kFWmdnc
+ 10FnJWiEd4AZ4pDX0kHG06XPFS7LYkA=
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=luc smtp.mailfrom=luc.michel@greensocs.com
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 03/13] hw: Move MC146818 device from
- hw/timer/ to hw/rtc/ subdirectory
+X-Received-From: 5.135.226.135
+Subject: Re: [Qemu-arm] [PATCH] target/arm: fix CBAR register for AArch64
+ CPUs
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -138,81 +88,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Aleksandar Rikalo <arikalo@wavecomp.com>, Helge Deller <deller@gmx.de>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Andrew Jeffery <andrew@aj.id.au>, qemu-ppc@nongnu.org,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k77rOyTKbPPU
+X-TUID: dzrPxZUM4TJ7
 
-On 16/09/2019 17.48, Philippe Mathieu-Daud=C3=A9 wrote:
-> The MC146818 is a Real Time Clock, not a timer.
-> Move it under the hw/rtc/ subdirectory.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-[...]
-> diff --git a/include/hw/rtc/mc146818rtc.h b/include/hw/rtc/mc146818rtc.=
-h
-> new file mode 100644
-> index 0000000000..888e04f9ab
-> --- /dev/null
-> +++ b/include/hw/rtc/mc146818rtc.h
-> @@ -0,0 +1,38 @@
-> +/*
-> + * QEMU MC146818 RTC emulation
-> + *
-> + * Copyright (c) 2003-2004 Fabrice Bellard
-> + *
-> + * Permission is hereby granted, free of charge, to any person obtaini=
-ng a copy
-> + * of this software and associated documentation files (the "Software"=
-), to deal
-> + * in the Software without restriction, including without limitation t=
-he rights
-> + * to use, copy, modify, merge, publish, distribute, sublicense, and/o=
-r sell
-> + * copies of the Software, and to permit persons to whom the Software =
-is
-> + * furnished to do so, subject to the following conditions:
-> + *
-> + * The above copyright notice and this permission notice shall be incl=
-uded in
-> + * all copies or substantial portions of the Software.
-> + *
-> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXP=
-RESS OR
-> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABI=
-LITY,
-> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT S=
-HALL
-> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES O=
-R OTHER
-> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARI=
-SING FROM,
-> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALI=
-NGS IN
-> + * THE SOFTWARE.
-> + */
+On 9/13/19 9:26 AM, Luc Michel wrote:
+> Hi Peter,
+> 
+> On 9/12/19 6:03 PM, Peter Maydell wrote:
+>> On Thu, 12 Sep 2019 at 12:01, Luc Michel <luc.michel@greensocs.com> wrote:
+>>>
+>>> For AArch64 CPUs with a CBAR register, we have two views for it:
+>>>   - in AArch64 state, the CBAR_EL1 register (S3_1_C15_C3_0), returns the
+>>>     full 64 bits CBAR value
+>>>   - in AArch32 state, the CBAR register (cp15, opc1=1, CRn=15, CRm=3, opc2=0)
+>>>     returns a 32 bits view such that:
+>>>       CBAR = CBAR_EL1[31:18] 0..0 CBAR_EL1[43:32]
+>>>
+>>> This commit fixes the current implementation where:
+>>>   - CBAR_EL1 was returning the 32 bits view instead of the full 64 bits
+>>>     value,
+>>>   - CBAR was returning a truncated 32 bits version of the full 64 bits
+>>>     one, instead of the 32 bits view
+>>>   - CBAR was declared as cp15, opc1=4, CRn=15, CRm=0, opc2=0, which is
+>>>     the CBAR register found in the ARMv7 Cortex-Ax CPUs, but not in
+>>>     ARMv8 CPUs.
+>>>
+>>> Signed-off-by: Luc Michel <luc.michel@greensocs.com>
+>>> ---
+>>>  target/arm/helper.c | 6 +++---
+>>>  1 file changed, 3 insertions(+), 3 deletions(-)
+>>>
+>>> diff --git a/target/arm/helper.c b/target/arm/helper.c
+>>> index 507026c915..755aa18a2d 100644
+>>> --- a/target/arm/helper.c
+>>> +++ b/target/arm/helper.c
+>>> @@ -6740,12 +6740,12 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>>>              ARMCPRegInfo cbar_reginfo[] = {
+>>>                  { .name = "CBAR",
+>>>                    .type = ARM_CP_CONST,
+>>> -                  .cp = 15, .crn = 15, .crm = 0, .opc1 = 4, .opc2 = 0,
+>>> -                  .access = PL1_R, .resetvalue = cpu->reset_cbar },
+>>> +                  .cp = 15, .crn = 15, .crm = 3, .opc1 = 1, .opc2 = 0,
+>>> +                  .access = PL1_R, .resetvalue = cbar32 },
+>>
+>> This will break the Cortex-A9 &c which use the 15/0/4/0 encoding
+>> and the un-rearranged value for this register.
+> I don't think so because we are in the "if (arm_feature(env,
+> ARM_FEATURE_AARCH64))" branch of the code. The else branch still maps
+> 15/0/4/0 for non-AArch64 CPUs.
+> 
+>>
+>> I think we need to check through the TRMs to confirm which CPUs use
+>> which format for the CBAR, and have a different feature bit for the
+>> newer format/sysreg encoding, so we can provide the right sysregs for
+>> the right cores.
+> I checked all the AArch64 Cortex's TRMs, for those having a PERIPHBASE
+> signal and CBAR register (namely Cortex-A53, 57, 72, 73), they all match
+> the mapping I put in this patch, so I think we don't need to split the
+> CBAR feature further. I believe more recent Cortex's address the GIC
+> using coprocessor registers, and CBAR does not exist in those ones.
 
-If you run "git blame" on the old header file, it does not seem like
-Fabrice wrote this header, so I'm not sure whether it makes sense to add
-his (c) statement here?
+Hi Peter,
 
-Maybe rather use a one-line "SPDX-License-Identifier: GPL-2.0-or-later"
-here?
+Do you want me to re-roll this patch with some modifications?
+Thanks.
 
- Thomas
-
-
+-- 
+Luc

@@ -1,76 +1,98 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5445013wrp;
-        Tue, 17 Sep 2019 09:17:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzOT2gYxBTbAYLURziaNUplwLJtZCpBAwh5dfo3zcR9ut+p1v/W0LDLm5kuV6awnk3CWy5y
-X-Received: by 2002:a37:498f:: with SMTP id w137mr4600624qka.419.1568737065692;
-        Tue, 17 Sep 2019 09:17:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568737065; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5446329wrp;
+        Tue, 17 Sep 2019 09:18:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxnB0+c4z1cCwErWV6awWTPyGEWGKeZa/FyVNMp+juwU2PRMtrX6eTz5pLZUZ7ikFMFUAUU
+X-Received: by 2002:a17:906:f6d1:: with SMTP id jo17mr5622049ejb.62.1568737128701;
+        Tue, 17 Sep 2019 09:18:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568737128; cv=none;
         d=google.com; s=arc-20160816;
-        b=BefevwPXlp/ubrlYJSkZRL8QzXGPa3O/E8caqYOFMLvI+wpQXlxJ5v3bezsgY+nrcm
-         QTYraDFnsNKK3lM2S/7LoOSLBv0LWReU5U3ff3Gon8aZLcB+7nsJF0dwN74rKj+JCe3t
-         cMpmVZdoac40lZ4WkOOkMOL4lCiLOjQaX5IQQXiGhLkx2Jwn+erLMxcosl/+9oytfXvl
-         +gqA7FX3K9fc3BmOrSdA8Eyniun71lACRCZR+TrnX2Ft7qVTgVJgYYr1/lso1YhMSKR/
-         +/ouy+4KnxpAOkyo1ZKBpxM2CdcuCXjbqlx5cdZBi4dDaocPhf6CxO23zkA2ODR38+2m
-         y/Mg==
+        b=0LeaJL1rztZjWuyeasMJ+MRCQ8ThqdiQoajqBZqwtoY2G9nzlZ/1DmsGK4XRaB1yfZ
+         mfW+cCejMjWDe8b0PZ6oVNGpRtweV9EmUn6He/Zndxx2uyUQ3mJVGC8lxJqE8c/EPP7c
+         STsbz1FfSJuBW+Gcs9xDKB8RkGQfY4WAt3Xi0WRqQiXUaNRKCMNWcFNwoGkYRP6m4R9N
+         PDBmEvs0U83wckEvt3CCPRvQC1ewC+Ewe8Fy/CDjtqWYlfbi2spUdQ6zQOx85HTXM/Nr
+         bSFvhAjOVlQNme0Qe9yB1VohqM9ivBdLCHJYBhC+e9+NK/rgIh0g6MJpPb1+AxARPDqq
+         KZBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:dkim-filter;
-        bh=saCwUdt1RcKO9995J2wNzlFYz43MqeU0bu6xtyWvDBY=;
-        b=rVXmJePgqJgflCCs/XZlsI/7D3dmRGxcKfnPi7cje/KNxUXW+Mh0s1VnLStxREhvlg
-         UE4toFf2q3DwOKV56e90m9xvNNC8C+54HL2TRsaLqd5k34symKWyGWu/T1jRhEYJOoEu
-         aZxJdxH07x49xIvgOTM27fdtLFaE1nILZ1lP4Np4nnnD6oISvZUKY0hfQcchdG2YEplX
-         RWLFAhH5Cg5P6UUX+pSDcA1UDH88uCVWtW8vneEswCmY0aqmTKAO6cdZBUoDmUapy86C
-         TzfjV92dz8ePVwVfWxotCZysBhKmMhE5LRU0S7yN1ycrhC1j+S4tr+naSia4+aoAti02
-         pfng==
+         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=qpCzVRqb9nXEM2nZ6DrUWx1jmVVCaKL+KBof0X1p4xM=;
+        b=UlkMMVEQKZKUDkjWfWHrqFCUXvz2FOd3bcDo3dULKUqRawGOwqo9hHJQ+LZEMZhzbf
+         B7jY37PpWLEvNbGa67JiVdvStQYShkocwoqn/9JI+SUJ0i7G3Z2HaMcadrvYsVPnt/9U
+         tDwWHgBmIOBEsKLznlB1ioCEsgBV5m1vLQgTUGF3G5eFjLCNy5+LO8mQaXaWyovkTHMQ
+         n9wIt61GYvNaT+sPbFaj7faTmhAZ503JxGI/GKdHQKqgGKfrbpAJi7YrzB1FBaE2JcXb
+         CQPG6cypoz0ajU/2Fu2YpfsGtAh7oKPS27/oH5VWS9lGtFsbtQoElmHNtwmrJc1D8LTa
+         rY6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yHKyFVLX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x23si1940164qts.257.2019.09.17.09.17.45
+        by mx.google.com with ESMTPS id d24si1840971ede.119.2019.09.17.09.18.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Sep 2019 09:17:45 -0700 (PDT)
+        Tue, 17 Sep 2019 09:18:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yHKyFVLX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
-Received: from localhost ([::1]:48122 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48158 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAGAh-0005U1-QK
-	for alex.bennee@linaro.org; Tue, 17 Sep 2019 12:17:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40417)
+	id 1iAGBj-0006mP-BC
+	for alex.bennee@linaro.org; Tue, 17 Sep 2019 12:18:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42997)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nramas@linux.microsoft.com>) id 1iAFxw-0001mh-N2
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 12:04:33 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iAGA5-0005Uk-Ef
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 12:17:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nramas@linux.microsoft.com>) id 1iAFxu-000653-Np
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 12:04:32 -0400
-Received: from linux.microsoft.com ([13.77.154.182]:58644)
- by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <nramas@linux.microsoft.com>) id 1iAFxu-00064A-HL
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 12:04:30 -0400
-Received: from [10.200.157.26] (unknown [131.107.147.154])
- by linux.microsoft.com (Postfix) with ESMTPSA id DC5F620B7186;
- Tue, 17 Sep 2019 09:04:26 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com DC5F620B7186
-To: Peter Maydell <peter.maydell@linaro.org>
+ (envelope-from <peter.maydell@linaro.org>) id 1iAGA4-0001r0-6I
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 12:17:05 -0400
+Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230]:43840)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iAGA3-0001qt-Vs
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 12:17:04 -0400
+Received: by mail-oi1-x230.google.com with SMTP id t84so3341448oih.10
+ for <qemu-arm@nongnu.org>; Tue, 17 Sep 2019 09:17:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=qpCzVRqb9nXEM2nZ6DrUWx1jmVVCaKL+KBof0X1p4xM=;
+ b=yHKyFVLXssbinhTkKMTijP7JXZ7jiLbttcVYdFv7WnzJyA3nnLSwlXriUpX9KJUZ02
+ 94ysKZIGVO7e/+klBXYf6BxlSZ2VVcco2qOy92k2SczMofoNweb4TJr2FVlKOLVRQCjE
+ UL1bBHQGAiogGT/T+JyV81/hhY+jpS+rhz2ryavo6aTMnYTn1kkR61eSen5Edcq2CbV0
+ 4UsNsg+07/SyUOh6Vik8W+h68PNwm15J5xnu7dnc4wuVOjfAC2tu2/6WaWDWcangmmKG
+ GXO5iCyeDSROY8kFXauj083xQOFhtj0YF4yeHG9UsnBz0EGm7OXcnS88fT4eXHmOENO/
+ VwHA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=qpCzVRqb9nXEM2nZ6DrUWx1jmVVCaKL+KBof0X1p4xM=;
+ b=ECaMeau1oknDcRgKF09zHRBrCkDaBiipJ+ehtyfb1NGw7De9yvsQJBdF7kT0GYQCgy
+ eY2OPZm64p2PJG/eTU/7qzEYW1NDmyFAhfLqq2Wp88Dfy/w8ySMUU6b8wjVT/0NcmQ+Y
+ OBBldXXPJB74sgxH9dWPYcuNDTXAs+BetBlU+4tPozq0Bhvp/HykXXqIuMh3oL7/JOr+
+ tBST3gTLAWUoGF2f6nqdhjKvmV1QznHdobvJVcPU4oSuePhvINmr9FXi5RnYrWqNY5kX
+ JjovLdm62/VP3VMhjXFt+mrdVc0gjhtvF3t+m5vk3JP2vHquUpao46fcyo4O5aD81XTL
+ KB+Q==
+X-Gm-Message-State: APjAAAXDW3Ku25p0VkcJAIWpKKPE/t+BGUyja6WqvqqoAsKcrAGclE8f
+ j55xX4d+UyPFfhcfLkeJCTVkET8xcS/919vgFSX/YcNC6jY=
+X-Received: by 2002:aca:50d8:: with SMTP id e207mr4197515oib.48.1568737023179; 
+ Tue, 17 Sep 2019 09:17:03 -0700 (PDT)
+MIME-Version: 1.0
 References: <f2c90efa-1412-9c41-ba76-ebad90745f4d@linux.microsoft.com>
  <CAFEAcA9S7Kj5sJVM0Ot6KKpe9z3BfQWyZwUv-Vx_+g5sRbxqmA@mail.gmail.com>
-From: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>
-Message-ID: <8655a3d4-0fcf-1012-5a65-16355651a901@linux.microsoft.com>
-Date: Tue, 17 Sep 2019 09:04:26 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9S7Kj5sJVM0Ot6KKpe9z3BfQWyZwUv-Vx_+g5sRbxqmA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 13.77.154.182
+ <8655a3d4-0fcf-1012-5a65-16355651a901@linux.microsoft.com>
+In-Reply-To: <8655a3d4-0fcf-1012-5a65-16355651a901@linux.microsoft.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 17 Sep 2019 17:16:52 +0100
+Message-ID: <CAFEAcA_+=LvX5-Wiz6roemra9b2jJ4UaRt-fGgA+v_DSgj6dBg@mail.gmail.com>
+To: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::230
 Subject: Re: [Qemu-arm] Adding /dev/tpm0 to qemu-system-aarch64
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -86,38 +108,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SsO90DAXtgUY
+X-TUID: 5YxL7BHM8Lbi
 
-On 9/16/19 10:24 AM, Peter Maydell wrote:
+On Tue, 17 Sep 2019 at 17:04, Lakshmi Ramasubramanian
+<nramas@linux.microsoft.com> wrote:
+> The TPM I am emulating is implemented in firmware (fTPM) that runs in
+> the Trust Zone (emulated in QEMU). There is a kernel module that handles
+> this fTPM.
+>
+> If I add the following entry in the Device Tree that QEMU passes to the
+> boot loader, the fTPM kernel module will load and it should be able to
+> talk to the firmware device.
+>
+>         tpm@0 {
+>             compatible = "myorg,ftpm"
+>         };
+>
+> How do I add such a custom entry in the device tree in QEMU?
 
-Hi Peter,
+If you're running a UEFI blob within QEMU that runs at EL3
+and provides this TPM, then it's the responsibility of that UEFI
+blob to provide device tree or ACPI tables to the guest which
+describe devices which the UEFI blob is providing. QEMU shouldn't
+describe them in the device tree it passes to UEFI, because
+QEMU doesn't implement them.
 
-> This is because QEMU only supports TPM device emulation on x86.
-> To add it to aarch64 somebody would have to investigate what the
-> hardware interface for TPM ought to be on aarch64 hardware, and
-> then implement an emulation of it and add that to the 'virt'
-> board. (It would probably share a lot of the implementation with
-> the current x86 TPM, obviously.)
-> 
-> thanks
-> -- PMM
-
-The TPM I am emulating is implemented in firmware (fTPM) that runs in 
-the Trust Zone (emulated in QEMU). There is a kernel module that handles 
-this fTPM.
-
-If I add the following entry in the Device Tree that QEMU passes to the 
-boot loader, the fTPM kernel module will load and it should be able to 
-talk to the firmware device.
-
-	tpm@0 {
-	    compatible = "myorg,ftpm"
-	};
-
-How do I add such a custom entry in the device tree in QEMU?
-
-Is there a way to do that by, say, "-device" command line argument or 
-such in qemu-system-aarch64?
-
-Thanks,
-  -lakshmi
+thanks
+-- PMM

@@ -1,109 +1,109 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5032980wrp;
-        Tue, 17 Sep 2019 03:05:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyHFt+Jz6qcECIs3NIitY4gSqu9U7fj8U6RHD6iZ6EvAxvDI0nI2FE3VX/7Rmz47Yz2GozL
-X-Received: by 2002:ad4:4b09:: with SMTP id r9mr2259116qvw.121.1568714704229;
-        Tue, 17 Sep 2019 03:05:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568714704; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5036783wrp;
+        Tue, 17 Sep 2019 03:08:44 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzN04KJuHYiNe+6xerTgM3TsAX1B3u87GuTnaBoq84umGLVyBxBEwcSk1rd3irhIoHBbbKx
+X-Received: by 2002:a37:782:: with SMTP id 124mr2857312qkh.10.1568714924232;
+        Tue, 17 Sep 2019 03:08:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568714924; cv=none;
         d=google.com; s=arc-20160816;
-        b=gI3tWL3kSFCrAxWDGEYE97t8WKFH8ie4Y+SLpJwJoPY40OGGCGjOQU9aYnYlTIoyWM
-         GvtxzVXHJAmdJqpJPbaF90dV6wb/v5yfzDLBY1JCB/GvRtobn82Zic207gLCF9Ol8CxK
-         1NvnvE8UEIqWVLoWx+04G7+S8O7yvM/bLlv4SoHB+bwAR10MyTBhx5ycrEX/FSxRsXcT
-         CqWToe5BQvZGPwGlAcI6/Wsvd1NNM6r7arZidj0W0H6y7F27KJm7s+XF++GmigV9X0bZ
-         YVZG5hM2W2vAwcG1Z1VlnCNLSJ+eF+ElJU0MzkvrFVbbsty5NZeNanymbc10SmlfxLOP
-         1JdA==
+        b=v+ZRrOogFOvD7/ELG0Us7y4oUrClAHXdYOR5xVyezr4wMI+qI4mr/7U5OTQ7BsqxZQ
+         8MFYIlvDjcvGMTlEIXJviRrrj59q/5+xh5kZ0XbGr7L9y4INtuOujg0lmLtf1ztvpbNH
+         /J3ip7SEE3HjG2AZ400/BcTyYUDgKIWeD5o4X89YV9Gu5Ndo97IFipCOJgC68A2CiZPF
+         K5L+HK+dZOwYZqx1ViuGHY+NioaGyqKlzTgeGWvFnSjj37sS/ZOKYVLIZL6lSNfIqr5n
+         pDVguMvsj/SE+26+X3XwwPpGKgNGEeq2mpZnMuMGOiUxV5dKYsbuS0HHM7PrpvoA2bxC
+         +yfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:to;
-        bh=R81fY9eTnofShBytYq/782lw4xue98w1TN0/0rrzma0=;
-        b=k+5iqzvlqwq6W4+2cIntf8bJEuhQ2VyB5vyB5Ghy7tZY2M+eSsAtYJ96Tz6lMr3Ko1
-         Di/SCChEMyUyYoYawsxPLunjyanQbeIfYw+v3OhaeYfIAGqkyaQDjcmp5HeOci2KIT2E
-         L9QTckKC9Gx4Hhgzg4LJfzEg8238PDP4JFf16+3DTve4VfdhzIg8C6IPNK2ud3DTkDiv
-         yBvqgbm7tj2tLFElvGOpDGg8nVrjpGlktKctnfrw6AxQoJycVL4soKeKKI4WWvHEah3M
-         PEPicYUd9Q8bQG5qMNON/7Wv/JMoWO6rmjO+9/YKywmD+16r+vsLznIJOQEs7JPY4wIj
-         L1Dw==
+        bh=LciMgDcu229Xu/QozefD4nd8uVq+/9dGr6+tqd2w7wo=;
+        b=OeFfG42H1Zb0MfJwXqt3cq3T12sxIse6h5sgMVSSH235Iy/W9x/qAmWrb/UausN06o
+         dH80SBFLYETTGNvDw8l8MeJ5fJ1S2gPcNHj2cCvzsxwOlLrRgjjgWtwW0dEqw2ZkrMFM
+         KObq4XKNR/x0BpY4QVZZBdKzjGd7PIq9d/AxWRq2QjZVNxyJL2VI8XgBzIU3NJJMyuaz
+         CbPg11CueRC93Ikm8QCWqCedb3HjJG1J/o1nnplGjGWeZr3omIIxWn8n/FtunbFkyHX9
+         PiLaEPy11MSsWZyQwWSQwAhxYF2+IrtyukmwAJq9fZu7fpFYEH8e/PwBRHtCYR2vDCK9
+         t27A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n129si1045748qkn.268.2019.09.17.03.05.04
+        by mx.google.com with ESMTPS id 196si1112299qki.263.2019.09.17.03.08.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Sep 2019 03:05:04 -0700 (PDT)
+        Tue, 17 Sep 2019 03:08:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43528 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43578 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAAM2-0005gJ-N9
-	for alex.bennee@linaro.org; Tue, 17 Sep 2019 06:05:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40865)
+	id 1iAAPb-0000xw-9f
+	for alex.bennee@linaro.org; Tue, 17 Sep 2019 06:08:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41665)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iAAKx-00059r-0y
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 06:03:57 -0400
+ (envelope-from <philmd@redhat.com>) id 1iAAPO-0000tN-KK
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 06:08:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iAAKu-0003Mu-GF
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 06:03:54 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44444)
+ (envelope-from <philmd@redhat.com>) id 1iAAPN-0005yh-B0
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 06:08:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47398)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iAAKu-0003K8-2b
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 06:03:52 -0400
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72])
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iAAPN-0005yP-3A
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 06:08:29 -0400
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id DF80F81F11
- for <qemu-arm@nongnu.org>; Tue, 17 Sep 2019 10:03:50 +0000 (UTC)
-Received: by mail-wm1-f72.google.com with SMTP id n3so1033867wmf.3
- for <qemu-arm@nongnu.org>; Tue, 17 Sep 2019 03:03:50 -0700 (PDT)
+ by mx1.redhat.com (Postfix) with ESMTPS id F3DE0368B3
+ for <qemu-arm@nongnu.org>; Tue, 17 Sep 2019 10:08:27 +0000 (UTC)
+Received: by mail-wm1-f69.google.com with SMTP id 124so575539wmz.1
+ for <qemu-arm@nongnu.org>; Tue, 17 Sep 2019 03:08:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=3+afwFZpDz4drxhEg51Q+8ZlZcQqE592fqIFd+/NFmM=;
- b=grHtOgt9wGWDZCvqwBVeSWlKw1rY+wLnMm9+rDMPGG5YexSn23V66GX7WGeTcC3UiG
- hEm2fedQz5GbkOHSSmM5H26wXU9qap/kfQXXW6TRlVmIRgAeR+iflnfHyOUejqXrM+D4
- HMEOc26Yq9yw6n33+I2ytMHUU+e+FPDEUslMakhoBl3ennx4Uj5HuuR2ei3nnjO2CVUY
- tKqOajznru5o0maeJ7jVrkyw3CecTIwfqhTertJnEciqeAkjipOOVESx9OrQSSVjV6uo
- vUvlaq9vJMv8jVf2yzCgyO+3voIn46znTCJa6tJrSEJqHvFH56Ly27rzzVVgwOre6VGb
- lqhw==
-X-Gm-Message-State: APjAAAV2uoG6RtoRh6/+9Wp6Eyg6qMWxQWtjZBTq5LSNF2K1SJvXU/uA
- atDvXYxpWhu1dWJPnO0CLkKvZywRlhhwnL8l4CevgUYSVLrYrO4O0z/HQQQO30/8CiwNwifLG3O
- nxcq/Aq956l8F
-X-Received: by 2002:a1c:a8cb:: with SMTP id r194mr2736617wme.156.1568714629392; 
- Tue, 17 Sep 2019 03:03:49 -0700 (PDT)
-X-Received: by 2002:a1c:a8cb:: with SMTP id r194mr2736575wme.156.1568714629145; 
- Tue, 17 Sep 2019 03:03:49 -0700 (PDT)
+ bh=Fd6mmlQAZKPTTxeuK9yalfHsfMzT+EjHiGe/wbHjyA0=;
+ b=TL+CCFM0hXwO0I59wAG7o8Vl8Ktst7UCUjc6I9rO1ZreCZLFoBBciM+MX9J9apeSO3
+ +FKqAPu+Rul/wxNDIwUh6ARsDV9vIXY9DtFN8Ska+UF95TaH3EMpySaQ/fNLeIGgDkhF
+ eXFJ6c3cjvJ96zcoqW9FtwBtNhHP61nl9TVASUojFukykQgL6FvKXNSfQypSw7u/5MgG
+ sPMy98ZwUG+nwpX1r0k+IwdIrOPV2snw//y6F9FRwHGe4lG51q8dJHZcbDmeK4DVyo1S
+ ZXSIEdyIaMhaiG8rM2khsdrm0LtuSe8wXh8fMFNF4hqE4ww3yi5KmXPt8EHjqcuOMESX
+ +uoQ==
+X-Gm-Message-State: APjAAAWzA4zQ9vWY8vcxUROxpYtl+uE6pM9RimhwV5E8m/w7jXNg/xfH
+ fMrcTQo0BQEfl+ZXdVBtKd/tr7n5XlbtsfcvKfAe3OBD+iB52ChCFs7BGEMLz2mbOFZ0imSAzuT
+ C3w60ecRUgUoO
+X-Received: by 2002:adf:828d:: with SMTP id 13mr2340440wrc.115.1568714906743; 
+ Tue, 17 Sep 2019 03:08:26 -0700 (PDT)
+X-Received: by 2002:adf:828d:: with SMTP id 13mr2340422wrc.115.1568714906540; 
+ Tue, 17 Sep 2019 03:08:26 -0700 (PDT)
 Received: from [192.168.1.40] (240.red-88-21-68.staticip.rima-tde.net.
  [88.21.68.240])
- by smtp.gmail.com with ESMTPSA id r12sm1655754wrq.88.2019.09.17.03.03.47
+ by smtp.gmail.com with ESMTPSA id j1sm2572597wrg.24.2019.09.17.03.08.24
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Sep 2019 03:03:48 -0700 (PDT)
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+ Tue, 17 Sep 2019 03:08:25 -0700 (PDT)
+To: David Gibson <david@gibson.dropbear.id.au>
 References: <20190916154847.28936-1-philmd@redhat.com>
- <20190916154847.28936-4-philmd@redhat.com>
- <c5caa155-19d3-1b22-ea61-d8c17dca39e7@redhat.com>
+ <20190916154847.28936-5-philmd@redhat.com>
+ <20190917022510.GD8842@umbus.fritz.box>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
  url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <6f9f0932-5420-c67f-b6f7-2a7ceb4e99a4@redhat.com>
-Date: Tue, 17 Sep 2019 12:03:46 +0200
+Message-ID: <790ba518-e906-6c3b-1280-25f005c9768a@redhat.com>
+Date: Tue, 17 Sep 2019 12:08:24 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <c5caa155-19d3-1b22-ea61-d8c17dca39e7@redhat.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20190917022510.GD8842@umbus.fritz.box>
+Content-Type: text/plain; charset=windows-1252
 Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 03/13] hw: Move MC146818 device from
- hw/timer/ to hw/rtc/ subdirectory
+Subject: Re: [Qemu-arm] [PATCH 04/13] hw: Move M48T59 device from hw/timer/
+ to hw/rtc/ subdirectory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,13 +117,12 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
  Aleksandar Rikalo <arikalo@wavecomp.com>, Helge Deller <deller@gmx.de>,
  =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
  Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
  =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
@@ -132,190 +131,60 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: a55n+OE10mZX
+X-TUID: hi7lBzBD/Ffu
 
-On 9/17/19 7:07 AM, Thomas Huth wrote:
-> On 16/09/2019 17.48, Philippe Mathieu-Daud=C3=A9 wrote:
->> The MC146818 is a Real Time Clock, not a timer.
+On 9/17/19 4:25 AM, David Gibson wrote:
+> On Mon, Sep 16, 2019 at 05:48:38PM +0200, Philippe Mathieu-Daud=E9 wrot=
+e:
+>> The M48T59 is a Real Time Clock, not a timer.
 >> Move it under the hw/rtc/ subdirectory.
 >>
->> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> [...]
->> diff --git a/include/hw/rtc/mc146818rtc.h b/include/hw/rtc/mc146818rtc=
-.h
->> new file mode 100644
->> index 0000000000..888e04f9ab
->> --- /dev/null
->> +++ b/include/hw/rtc/mc146818rtc.h
->> @@ -0,0 +1,38 @@
->> +/*
->> + * QEMU MC146818 RTC emulation
->> + *
->> + * Copyright (c) 2003-2004 Fabrice Bellard
->> + *
->> + * Permission is hereby granted, free of charge, to any person obtain=
-ing a copy
->> + * of this software and associated documentation files (the "Software=
-"), to deal
->> + * in the Software without restriction, including without limitation =
-the rights
->> + * to use, copy, modify, merge, publish, distribute, sublicense, and/=
-or sell
->> + * copies of the Software, and to permit persons to whom the Software=
- is
->> + * furnished to do so, subject to the following conditions:
->> + *
->> + * The above copyright notice and this permission notice shall be inc=
-luded in
->> + * all copies or substantial portions of the Software.
->> + *
->> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EX=
-PRESS OR
->> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTAB=
-ILITY,
->> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT =
-SHALL
->> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES =
-OR OTHER
->> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, AR=
-ISING FROM,
->> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL=
-INGS IN
->> + * THE SOFTWARE.
->> + */
+>> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+>> ---
+>>  MAINTAINERS                         |  4 +-
+>>  hw/ppc/ppc405_boards.c              |  2 +-
+>>  hw/ppc/prep.c                       |  2 +-
+>>  hw/rtc/Kconfig                      |  3 ++
+>>  hw/rtc/Makefile.objs                |  4 ++
+>>  hw/{timer =3D> rtc}/m48t59-internal.h |  0
+>>  hw/{timer =3D> rtc}/m48t59-isa.c      |  4 +-
+>>  hw/{timer =3D> rtc}/m48t59.c          |  2 +-
+>>  hw/sparc/sun4m.c                    |  2 +-
+>>  hw/sparc64/sun4u.c                  |  2 +-
+>>  hw/timer/Kconfig                    |  3 --
+>>  hw/timer/Makefile.objs              |  4 --
+>>  include/hw/rtc/m48t59.h             | 57 ++++++++++++++++++++++++++++=
++
 >=20
-> If you run "git blame" on the old header file, it does not seem like
-> Fabrice wrote this header, so I'm not sure whether it makes sense to ad=
-d
-> his (c) statement here?
+> Uh.. this file seems to be coming out of nowhere, which doesn't seem
+> right for a code motion.
+
+Good catch!
+
 >=20
-> Maybe rather use a one-line "SPDX-License-Identifier: GPL-2.0-or-later"
-> here?
-
-It was first added by Fabrice here:
-
-$ git show 80cabfad163
+>>  13 files changed, 73 insertions(+), 16 deletions(-)
+>>  rename hw/{timer =3D> rtc}/m48t59-internal.h (100%)
+>>  rename hw/{timer =3D> rtc}/m48t59-isa.c (98%)
+>>  rename hw/{timer =3D> rtc}/m48t59.c (99%)
+>>  create mode 100644 include/hw/rtc/m48t59.h
+>>
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index 481f2318cb..679b026fe0 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -1064,9 +1064,9 @@ F: hw/pci-host/prep.[hc]
+>>  F: hw/isa/i82378.c
+>>  F: hw/isa/pc87312.c
+>>  F: hw/dma/i82374.c
+>> -F: hw/timer/m48t59-isa.c
+>> +F: hw/rtc/m48t59-isa.c
+>>  F: include/hw/isa/pc87312.h
+>> -F: include/hw/timer/m48t59.h
+>> +F: include/hw/rtc/m48t59.h
 [...]
-> diff --git a/hw/mc146818rtc.c b/hw/mc146818rtc.c
-new file mode 100644
-index 0000000000..cab76cfab2
---- /dev/null
-+++ b/hw/mc146818rtc.c
-@@ -0,0 +1,203 @@
-+/*
-+ * QEMU MC146818 RTC emulation
-+ *
-+ * Copyright (c) 2003-2004 Fabrice Bellard
-+ *
-+ * Permission is hereby granted, free of charge, to any person
-obtaining a copy
-+ * of this software and associated documentation files (the
-"Software"), to deal
-+ * in the Software without restriction, including without limitation
-the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or
-sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be
-included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
-TY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
-LL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
-OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
-ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN
-+ * THE SOFTWARE.
-+ */[...]
-diff --git a/vl.h b/vl.h
-index 35962d1985..026a5dee5a 100644
---- a/vl.h
-+++ b/vl.h
-+/* mc146818rtc.c */
-+
-+typedef struct RTCState {
-+    uint8_t cmos_data[128];
-+    uint8_t cmos_index;
-+    int irq;
-+} RTCState;
-+
-+extern RTCState rtc_state;
-+
-+void rtc_init(int base, int irq);
-+void rtc_timer(void);
 
-Then moved from vl.h to pc.h:
-
-$ git show 87ecb68bdf8
-commit 87ecb68bdf8a3e40ef885ddbb7ca1797dca40ebf
-Author: pbrook <pbrook@c046a42c-6fe2-441c-8c8c-71466251a162>
-Date:   Sat Nov 17 17:14:51 2007 +0000
-
-    Break up vl.h.
-
-Then moved from pc.h to mc146818rtc.h without adding the (c):
-
-$ git show e1460e4707c
-commit e1460e4707cd80982add597f5cb421289db84e4e
-Author: Isaku Yamahata <yamahata@valinux.co.jp>
-Date:   Fri May 14 16:29:16 2010 +0900
-
-    pc: move rtc declarations from pc.h into a dedicated header file.
-
-    Move rtc_xxx declarations from pc.h into mc146818rtc.h.
-
-    Signed-off-by: Isaku Yamahata <yamahata@valinux.co.jp>
-    Acked-by: Gerd Hoffmann <kraxel@redhat.com>
-    Signed-off-by: Blue Swirl <blauwirbel@gmail.com>
-
-diff --git a/hw/mc146818rtc.h b/hw/mc146818rtc.h
-new file mode 100644
-index 0000000000..7211dae37e
---- /dev/null
-+++ b/hw/mc146818rtc.h
-@@ -0,0 +1,10 @@
-+#ifndef MC146818RTC_H
-+#define MC146818RTC_H
-+
-+typedef struct RTCState RTCState;
-+
-+RTCState *rtc_init(int base_year);
-+void rtc_set_memory(RTCState *s, int addr, int val);
-+void rtc_set_date(RTCState *s, const struct tm *tm);
-+
-+#endif /* !MC146818RTC_H */
-diff --git a/hw/pc.h b/hw/pc.h
-index 8cfec6c0dc..e3cc0a58bd 100644
---- a/hw/pc.h
-+++ b/hw/pc.h
-@@ -5,6 +5,7 @@
- #include "ioport.h"
- #include "isa.h"
- #include "fdc.h"
-+#include "mc146818rtc.h"
-
- /* PC-style peripherals (also used by other machines).  */
-
-@@ -76,14 +77,6 @@ void i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_ir=
-q,
-                    target_phys_addr_t base, ram_addr_t size,
-                    target_phys_addr_t mask);
-
--/* mc146818rtc.c */
--
--typedef struct RTCState RTCState;
--
--RTCState *rtc_init(int base_year);
--void rtc_set_memory(RTCState *s, int addr, int val);
--void rtc_set_date(RTCState *s, const struct tm *tm);
-
-So the (c) looks correct to me. Do you still disagree?
+Not sure how I ended not removing include/hw/timer/m48t59.h, since I
+used 'git mv' in all the series. I might have missed a conflict when
+switching between branches...
+Ah I now remember, I had to rebase after Markus big header cleanup, this
+is probably when I messed with this one :)

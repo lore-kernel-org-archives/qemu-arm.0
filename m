@@ -1,88 +1,88 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5064446wrp;
-        Tue, 17 Sep 2019 03:37:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwbD2IPheOKMcp/6p0Yw3h1zmH+zGdgGby3dILj8cpRabaueNP4qLO3lpqdrCOMH3K/3fKO
-X-Received: by 2002:a0c:a241:: with SMTP id f59mr1829069qva.141.1568716647889;
-        Tue, 17 Sep 2019 03:37:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568716647; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5067369wrp;
+        Tue, 17 Sep 2019 03:40:25 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzkDF7Kbmr+I3o3NXFAJx4SHDq5gD5o6wBYaHrEPplJJaXEOYln347GuYaEmrOPkOaXPJlN
+X-Received: by 2002:a17:906:1f03:: with SMTP id w3mr4000545ejj.31.1568716825691;
+        Tue, 17 Sep 2019 03:40:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568716825; cv=none;
         d=google.com; s=arc-20160816;
-        b=V26PaHeNryOag/vcSBl9ydJdFxwaNwztr95LsYT/5kLckYQcioeOTnrMkwOvxz7WI+
-         S6ocbCWDAwGWwJZCHgOgiDR0J44sHhT2GJ5PsMhJDCWpPKOV1LosxPYQHXIgbz+CAOL0
-         n9V2+nRcrsMH9cBrqnCTJVkUVubZbvWWWlw5gNe4IR4c9xuTqHlWZY9WLvjCO8Vx7IqQ
-         q7/oNK9LRZ8p91Tl4SXTrnJeiO9s+twOp2BsLJehJFs6pTu0v1hFA2sDf9xyfMIu9q59
-         ao8aKm9iXud+USXfwzrgw6IP80kf/xaqlQxG+hLdA1NALGX+Z/G5BfD8Xv4UnrrwWZAn
-         TO3w==
+        b=T+uzjwIKvNEK+N+ZCLW/yxETyVXRCuGhlHVuOgLFQ1/k7NbXLPKzAtMWhkTkbGEjG3
+         Pr54B/bFtSDxTg6VdXw7h5DFXyBI0PGVxJV88vdInRQfB2gs5OBo75bKC9pxAR4aeFzu
+         gIOjP4jEeseil1ULkeEgEkSjOcR6ireipS6BRlY/vs+nGuiEbmMOOEvORR9YISgEHNFh
+         cj3EENgOzlul+Wbebt3jQ63ewFSOKT+BcpR8WiEEpxavgwBFEgo5F5J2JlzJFTvkQVX2
+         Rr0Ylq7+1TKHxV4Cd5Wj0bYzPZ3yLKJNXVMJmZjMUV7VpI+CVe3fsc3VSC5haS+ryTrn
+         MCwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:message-id
          :content-transfer-encoding:mime-version:user-agent:references
          :in-reply-to:date:to:from;
-        bh=xNGH33O2kHDBgYQ3AS7N3xGlab/obqIFy9XwOFgUabg=;
-        b=CClxigUl4+WARyVzDm6YVMxmE76ZUGUPBStawDz/awcWjSDviAvi7iv2K+qByV5uVO
-         M/Nw8OPDpLiigjGZ3yfqvnrYMItkwliWLRSRXvv9w1FCk3ZnlgrYR5utdSmTbqoEkb0J
-         GZSppevZI5QSfS6QN0m2uFgE2dQjPA/TSwp+qaoL1EtlBJzWs+hoC0XU5m9krF4IKPe/
-         GzQQK4pcMNtPx9IgzVkfmnkU41p9Us7ej7+xNipXS4tdHq3L00Y+ICP1apzlRuKhn4Qo
-         jhXVISM9DgixAEIotAOynAxw0hmZuIjkxL83P1bVAHmBFp7bLQ+JwquJk55QV1vSrcZ9
-         jpwA==
+        bh=4DCyN1HX5bKaCQ2JXxk+p/Dtf2STfZivY4cgE6TEJ2g=;
+        b=Hj3kgXjvPV6DQv13Yt0KwE/Fi/S8GgEsPcbWptuM2jbO8DSrHFKiLY7zbtXaqtZ5in
+         jYpfTWqaVjkJoSxthxOj9Ai2bwoa/2zwDI+awZ31joQy5JnxFmB/XGbP0btUkiYQQ9De
+         7pXlkHYxC8mePJLoOx1CK3nxuQUT5OOZgoJ7OBNykZXGJe5mF7avSIH+KpS+n7acIuCX
+         HfSQROzgoAUJPXCPL4HsRFhTSuCMHdUmQTYf3dFhSegXvwPexzu1vdfVXmR+6vvhlaFs
+         GEcvtMFedLFQXWxj9/+kIoT2L9mnzEAOX2Zm34XPd3qV5AWdF36XfaYjQB7o0iuEZZsU
+         CqCg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w1si1103670qkc.126.2019.09.17.03.37.27
+        by mx.google.com with ESMTPS id c10si1094863edc.419.2019.09.17.03.40.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Sep 2019 03:37:27 -0700 (PDT)
+        Tue, 17 Sep 2019 03:40:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43824 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43856 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAArP-00037A-3X
-	for alex.bennee@linaro.org; Tue, 17 Sep 2019 06:37:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44003)
+	id 1iAAuF-0006Eg-Si
+	for alex.bennee@linaro.org; Tue, 17 Sep 2019 06:40:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43832)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groug@kaod.org>) id 1iAAcn-0007pS-0g
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:22:22 -0400
+ (envelope-from <groug@kaod.org>) id 1iAAc7-0007Dg-UF
+ for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:21:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groug@kaod.org>) id 1iAAcl-0004Az-Se
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:22:20 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:26926)
+ (envelope-from <groug@kaod.org>) id 1iAAc6-0003uE-PU
+ for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:21:39 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:9136)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <groug@kaod.org>) id 1iAAcl-0004AI-Hd
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:22:19 -0400
-Received: from pps.filterd (m0098409.ppops.net [127.0.0.1])
+ (Exim 4.71) (envelope-from <groug@kaod.org>) id 1iAAc4-0003su-MF
+ for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:21:38 -0400
+Received: from pps.filterd (m0098394.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x8HAI58j035038
- for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 06:22:17 -0400
-Received: from e06smtp07.uk.ibm.com (e06smtp07.uk.ibm.com [195.75.94.103])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2v2v5vv6u0-1
+ x8HAHFZC069302
+ for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 06:21:34 -0400
+Received: from e06smtp03.uk.ibm.com (e06smtp03.uk.ibm.com [195.75.94.99])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2v2vv9t8fp-1
  (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
- for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 06:22:17 -0400
+ for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 06:21:34 -0400
 Received: from localhost
- by e06smtp07.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ by e06smtp03.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
  Violators will be prosecuted
  for <qemu-devel@nongnu.org> from <groug@kaod.org>;
- Tue, 17 Sep 2019 11:22:14 +0100
-Received: from b06avi18626390.portsmouth.uk.ibm.com (9.149.26.192)
- by e06smtp07.uk.ibm.com (192.168.101.137) with IBM ESMTP SMTP Gateway:
+ Tue, 17 Sep 2019 11:21:31 +0100
+Received: from b06cxnps4076.portsmouth.uk.ibm.com (9.149.109.198)
+ by e06smtp03.uk.ibm.com (192.168.101.133) with IBM ESMTP SMTP Gateway:
  Authorized Use Only! Violators will be prosecuted; 
  (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
- Tue, 17 Sep 2019 11:22:08 +0100
+ Tue, 17 Sep 2019 11:21:24 +0100
 Received: from d06av21.portsmouth.uk.ibm.com (d06av21.portsmouth.uk.ibm.com
  [9.149.105.232])
- by b06avi18626390.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
- id x8HALf4Q33489282
+ by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ x8HALM5n28770518
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 17 Sep 2019 10:21:41 GMT
+ Tue, 17 Sep 2019 10:21:22 GMT
 Received: from d06av21.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E09CD52057;
- Tue, 17 Sep 2019 10:22:06 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 94A4052051;
+ Tue, 17 Sep 2019 10:21:22 +0000 (GMT)
 Received: from bahia.lan (unknown [9.145.22.84])
- by d06av21.portsmouth.uk.ibm.com (Postfix) with ESMTP id EFEA15204F;
- Tue, 17 Sep 2019 10:22:05 +0000 (GMT)
+ by d06av21.portsmouth.uk.ibm.com (Postfix) with ESMTP id A42B152054;
+ Tue, 17 Sep 2019 10:21:21 +0000 (GMT)
 From: Greg Kurz <groug@kaod.org>
 To: qemu-devel@nongnu.org
-Date: Tue, 17 Sep 2019 12:22:05 +0200
+Date: Tue, 17 Sep 2019 12:21:21 +0200
 In-Reply-To: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
 References: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
 User-Agent: StGit/unknown-version
@@ -90,22 +90,22 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-TM-AS-GCONF: 00
-x-cbid: 19091710-0028-0000-0000-0000039E0EFB
+x-cbid: 19091710-0012-0000-0000-0000034D13FA
 X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 19091710-0029-0000-0000-0000246087A4
-Message-Id: <156871572566.196432.1432692745517580071.stgit@bahia.lan>
+x-cbparentid: 19091710-0013-0000-0000-000021878DA8
+Message-Id: <156871568135.196432.6958597878926788347.stgit@bahia.lan>
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
  definitions=2019-09-17_05:, , signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
  priorityscore=1501
  malwarescore=0 suspectscore=1 phishscore=0 bulkscore=0 spamscore=0
  clxscore=1034 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=957 adultscore=0 classifier=spam adjust=0 reason=mlx
+ mlxlogscore=991 adultscore=0 classifier=spam adjust=0 reason=mlx
  scancount=1 engine=8.0.1-1908290000 definitions=main-1909170106
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
 X-Received-From: 148.163.156.1
-Subject: [Qemu-devel] [PATCH 15/17] option: Pass local error object pointer
- to error_append_hint()
+Subject: [Qemu-devel] [PATCH 08/17] pcie_root_port: Pass local error object
+ pointer to error_append_hint()
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -139,50 +139,51 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vt9QbIe+BkNU
+X-TUID: qwPMUGc7XPFK
 
 Ensure that hints are added even if errp is &error_fatal or &error_abort.
 
 Signed-off-by: Greg Kurz <groug@kaod.org>
 ---
- util/qemu-option.c |   14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+ hw/pci-bridge/pcie_root_port.c |   11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/util/qemu-option.c b/util/qemu-option.c
-index 97172b5eaa7f..2a45dfa585d4 100644
---- a/util/qemu-option.c
-+++ b/util/qemu-option.c
-@@ -155,11 +155,14 @@ void parse_option_size(const char *name, const char *value,
-         return;
-     }
-     if (err) {
--        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, name,
-+        Error *local_err = NULL;
-+
-+        error_setg(&local_err, QERR_INVALID_PARAMETER_VALUE, name,
-                    "a non-negative number below 2^64");
--        error_append_hint(errp, "Optional suffix k, M, G, T, P or E means"
-+        error_append_hint(&local_err, "Optional suffix k, M, G, T, P or E means"
-                           " kilo-, mega-, giga-, tera-, peta-\n"
-                           "and exabytes, respectively.\n");
-+        error_propagate(errp, local_err);
-         return;
-     }
-     *ret = size;
-@@ -664,10 +667,13 @@ QemuOpts *qemu_opts_create(QemuOptsList *list, const char *id,
+diff --git a/hw/pci-bridge/pcie_root_port.c b/hw/pci-bridge/pcie_root_port.c
+index 012c2cb12c10..086f9c17723d 100644
+--- a/hw/pci-bridge/pcie_root_port.c
++++ b/hw/pci-bridge/pcie_root_port.c
+@@ -65,15 +65,17 @@ static void rp_realize(PCIDevice *d, Error **errp)
+     PCIDeviceClass *dc = PCI_DEVICE_GET_CLASS(d);
+     PCIERootPortClass *rpc = PCIE_ROOT_PORT_GET_CLASS(d);
+     int rc;
++    Error *local_err = NULL;
  
-     if (id) {
-         if (!id_wellformed(id)) {
--            error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "id",
-+            Error *local_err = NULL;
-+
-+            error_setg(&local_err, QERR_INVALID_PARAMETER_VALUE, "id",
-                        "an identifier");
--            error_append_hint(errp, "Identifiers consist of letters, digits, "
-+            error_append_hint(&local_err, "Identifiers consist of letters, digits, "
-                               "'-', '.', '_', starting with a letter.\n");
-+            error_propagate(errp, local_err);
-             return NULL;
-         }
-         opts = qemu_opts_find(list, id);
+     pci_config_set_interrupt_pin(d->config, 1);
+     pci_bridge_initfn(d, TYPE_PCIE_BUS);
+     pcie_port_init_reg(d);
+ 
+     rc = pci_bridge_ssvid_init(d, rpc->ssvid_offset, dc->vendor_id,
+-                               rpc->ssid, errp);
++                               rpc->ssid, &local_err);
+     if (rc < 0) {
+-        error_append_hint(errp, "Can't init SSV ID, error %d\n", rc);
++        error_append_hint(&local_err, "Can't init SSV ID, error %d\n", rc);
++        error_propagate(errp, local_err);
+         goto err_bridge;
+     }
+ 
+@@ -85,10 +87,11 @@ static void rp_realize(PCIDevice *d, Error **errp)
+     }
+ 
+     rc = pcie_cap_init(d, rpc->exp_offset, PCI_EXP_TYPE_ROOT_PORT,
+-                       p->port, errp);
++                       p->port, &local_err);
+     if (rc < 0) {
+-        error_append_hint(errp, "Can't add Root Port capability, "
++        error_append_hint(&local_err, "Can't add Root Port capability, "
+                           "error %d\n", rc);
++        error_propagate(errp, local_err);
+         goto err_int;
+     }
+ 
 

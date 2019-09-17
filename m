@@ -1,124 +1,108 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5740325wrp;
-        Tue, 17 Sep 2019 14:28:35 -0700 (PDT)
-X-Received: by 2002:a63:ff66:: with SMTP id s38mr851212pgk.363.1568755715670;
-        Tue, 17 Sep 2019 14:28:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568755715; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5742608wrp;
+        Tue, 17 Sep 2019 14:31:15 -0700 (PDT)
+X-Received: by 2002:a17:902:7282:: with SMTP id d2mr822539pll.88.1568755875142;
+        Tue, 17 Sep 2019 14:31:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568755875; cv=none;
         d=google.com; s=arc-20160816;
-        b=tU06bJGvmaiMbIZ0mJbwdbcNdm/gA4W2XBW8N1AUcul9tu22/6zus+xXIGvpSCiLQA
-         BF8w73oMWkva9H7vRxBchO0M15/W0boUH7G5xKNxdDUMDZN3DbiHIf4KOM8fJbV+XL2z
-         W+3RqXETnvLZwJSd7POmygBUWSh6Q0Lh+FWopFYeG1taOL2bOc8L2BIwhgRwj7gzMwK5
-         RWdNij9yLJ0oGA4RZ3ZVW7XoVdW5+uZ44YU+q7O3225qgWw2CA3kZ5f2+lJYU1Cqd9KP
-         KOE9Ge8dfHMI7lq9Dbs6ZKQv/1OC086Cylp+B6HfU9TBF9DzJLOqEqtodUSX8Yn2KPXH
-         xvbA==
+        b=x0a2i2G/JXxbdMQSwsLvTNfMrvxAy+YG7aneABJ2YPxg2jnt61Wl6+Ui4GR0wJX3UR
+         UTHVnA7YFfQ9r3q2KfQc0+pVxLlCi/uD9PLKh9LEXbpM/v6qaP384E2zrFrqJhAy7364
+         W+K0KfLmpbT1twIr7HfHeuFdAAQ/+ZyVoo3Hr3t1dMa0wdfUnWzbNSDK8RdNFHyxt/n6
+         yXCfQqCYbByAXbEGEvevNShOnVd+R2Y69CKZv7UrH2cDDIzPDn0KHDMyWje4LvBc1xUN
+         uxxL7kkRx5oXJCG/qHDC16BLcaqERCJoXPWkWpFOZJ5Iz4uFXL5LKxjD9bal01s8u2lI
+         1q+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject
          :dkim-signature;
-        bh=WzMGZXaEOlRXK4dqLeaJHkKEfUJG+DDEAm+9ueoRpZU=;
-        b=uW0RE02MUVX5QL6Fw+eCFQSXyxqJ1Bm6CP294MrNgfO0/4Zv74KRdMkAnhk/mbvALA
-         8iY5FDiyB6pxbYWMjVxnvirGEvZIDdstDqSzoBGTRc+OgmhAr0vDgWwmcv9kxbJSiBdO
-         ro70uu37ZbhzevhObJO3Qkg4/A7GeVY8ZcnCUAHpmGXWLbGxjtHk4I2nYsu4zjMwBvZI
-         wSuX3mrfdw8zvTThkmBxUSGcWa48nk5bODPWc3O290zuv0okXjufsRryOqnHK77qdWH+
-         osKIa6o/edN0zo35mCImQTjmXMe2BMk+f53GqJkFsHW3lcNRjsG76gs1l/CfIC5hJAB/
-         3AYg==
+        bh=qPUmFy7nnfR4BPVnW0Iq/YrfVYfO4gvONfjfSzy1Vk0=;
+        b=y900U1N/dloTp8knXaZi5OAESEz1XlxEZ/o6onHyyr4K1PeWeyQnJxvJKOazDd4zsQ
+         r5dQNQAU1WiiPhFFozWFb5iLVN1cTZzOJ+Ucfc5AXXF+hD6yb5uFTJL1ABpsDycWULAw
+         hB0rZ2DG1kTl5KGm8PyHuQGIM1wK+lnkjjZCe+jIZUHh4CpkMzXsaEEs7nEcH5a5UJ5F
+         2norUgstwMUCj3U4GXhQAbUucFo5cKdPAziqueFQicwxguF8a4lWo0G1t2WIlDZbr2rE
+         qWJamd7s/sKjwV1cJ4vGryFOdUnZ0cLMeUZdnIelP82RPC3CU167lmqof25Is8KcJZwr
+         td2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CR1TLuNw;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dSfrIfCF;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id h8sor141318pje.15.2019.09.17.14.28.35
+        by mx.google.com with SMTPS id s8sor4484195plq.50.2019.09.17.14.31.14
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 17 Sep 2019 14:28:35 -0700 (PDT)
+        Tue, 17 Sep 2019 14:31:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=CR1TLuNw;
+       dkim=pass header.i=@linaro.org header.s=google header.b=dSfrIfCF;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=WzMGZXaEOlRXK4dqLeaJHkKEfUJG+DDEAm+9ueoRpZU=;
-        b=CR1TLuNwwGVBp3QhMk8KFn4851X5vQ4tgkd3scgTOR7U4eZQGjJKZDf0DGgWGx6nPW
-         VSpyifIN/QKkCTE95DMLaaMgDXn5oOHArkClBG0OEl+ZphNOKSZ9vpsV7LTdd/JQ4qnZ
-         N4FdeUeYBAbXWngXqzpE67aRLKgBuuOWK6vvPdCxye/rzZ6gX3+ztLJuG4vL3V/cDXHf
-         CJpIYvmqACqEe/awykRUnYLr0gfVd9FCZ8QIlTRXDRtYTQkWdVjOcJNBm3Ie++TlfY+9
-         TkhhpK0XIPWHH6bmlPjVEk12D/F+q+iy1RKsvAOtolC10GtylBtBwscyMS3tOyBf20Fv
-         josA==
+        bh=qPUmFy7nnfR4BPVnW0Iq/YrfVYfO4gvONfjfSzy1Vk0=;
+        b=dSfrIfCFlnPEuOaFeecweOgBko2te3tG2lNhXwM7HoD+t6D5ckiYZPiaXdFSR/Sjt0
+         bXM1tuy1rjulI/TnAAJMFkVwuWdi3kLcoezfForRbu3kn6NAi/78yQ3e5hi7xuKz3jFw
+         QCHwEU46A8GuKdwpJuopkN3CNLzu2bNRpkLj/MF6gy26bV8Rmrv6RecrF8XrYOTt/Apx
+         7aXc34swEsv5P2cwWQffb2v/p7lzrU4M0D6I68IRC6RZwfbjF0eRkRCuz54G0sM/DOy9
+         st8Fm5j+ZYUpm04R3W6ggLV2QEojPyC48d/Dy0fCjZTFXJFQgYS2Tia7UbwIiN5JsJSc
+         loxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=WzMGZXaEOlRXK4dqLeaJHkKEfUJG+DDEAm+9ueoRpZU=;
-        b=d0Sg4BmIJpR/tdot184Xlzz9sNjzMyg8fLQ4mNknYVC84GWxz4dNI7piQgvtNXt0+c
-         AL2yWpE3WRSMTvsNvDjIrOfbfrBgxbDZcy+fZyD7WKb8BXJ917WcS75EMWAPnNYiLS9D
-         QQqgqu9lca/LeSHF7CCZCh5z2rbPjnwIslhjUq6S2zhnUgLhsjY9QKX/b1zh+dkd+6l9
-         TBqK76sGuenSLLZ5DT2DT55pE+lAo/46drzfdNJCe7QNzPK76paI40tyLdDymCPZ09mw
-         kYr/Lf/2QjLtRQpj7jHjmhxnYrp1IMt2IwSqWk8cpYmW3Br+5+1SCjYKOXYTHZBARs/m
-         dgsA==
-X-Gm-Message-State: APjAAAUuOdxCQdCbVERRKKUL8U39u56Vb8jmQSDIU8fYWGNMbgMjgfze
-	X4+L/5W4mNEwPH9z6qYN+3QfI2rqAlKSjQnM
-X-Google-Smtp-Source: APXvYqwpIjkBcxeQGuAYkeTZ3kmQQKG49hF7tADyBRvwgPbb522P8dyZJmt9OEgrtcDqWs0tsbM6DQ==
-X-Received: by 2002:a17:90a:b001:: with SMTP id x1mr174603pjq.114.1568755714959;
-        Tue, 17 Sep 2019 14:28:34 -0700 (PDT)
+        bh=qPUmFy7nnfR4BPVnW0Iq/YrfVYfO4gvONfjfSzy1Vk0=;
+        b=ESYSYow737ez9aBT3fQiaKYzP7iy1ye4i5JYgMeVWMUbYeBl3xY1FInwYQgun9m0rS
+         Jf3gW2VYgRkeaVSS+6TN7X02KBUrxwC4b7DMWeTyZ4wD8Wlh56srb/nScMO3N+SM0jYw
+         hoo/Yx20aEjzg0fUWuj3E+JRRxiDTwMXzcJVCkrrMcqX73y07ybgrlew9bEU16wsdeB2
+         lFU0hiNw3Qw2MkWLmjdPW+kWXMcTmnIVNwC/kc3Jhq2XGxhYIdVlPokvSbRJVIx420e4
+         Nxf+OHGgVHl4v3S8wQa+iAb2ghG/i2SAZuOE5Wu0ME1s/pSYIFI3V0I07LMDzhmkhCg5
+         a1TA==
+X-Gm-Message-State: APjAAAWgmc5c3pW/WZIhLLVVB6CgmPkwZx7KtyQ8QNSXfZPfl7iwuoYx
+	RCgZVMeumSFFJKN5dhN44hV2QQE5S+EBIx8U
+X-Google-Smtp-Source: APXvYqxycGZyP9EXo0dng9aO66nUlu3FH5wGlsCluKPx/wX9nyGzePwjIknnEVJvdKEvY1Yx1VzRrQ==
+X-Received: by 2002:a17:902:bd97:: with SMTP id q23mr773044pls.259.1568755874644;
+        Tue, 17 Sep 2019 14:31:14 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id n15sm1679909pgl.80.2019.09.17.14.28.33
+        by smtp.gmail.com with ESMTPSA id s5sm3706620pfe.52.2019.09.17.14.31.13
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Sep 2019 14:28:34 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH v1 7/9] tests/tcg: add float_madds test to
- multiarch
+        Tue, 17 Sep 2019 14:31:13 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v1 8/9] tests/tcg: add generic version of
+ float_convs
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: peter.maydell@linaro.org, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20190917184109.12564-1-alex.bennee@linaro.org>
- <20190917184109.12564-8-alex.bennee@linaro.org>
- <afd9bc85-9c79-a456-73c1-fc19e97d1acd@linaro.org> <877e661vur.fsf@linaro.org>
+ <20190917184109.12564-9-alex.bennee@linaro.org>
+ <73df6b9e-d096-f58f-dfeb-aad0c8e50d39@linaro.org> <878sqm1w0f.fsf@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <93ff7174-77c0-d2eb-eac2-d3eef7e88a14@linaro.org>
-Date: Tue, 17 Sep 2019 14:28:31 -0700
+Message-ID: <62cd0ee7-dcf3-7731-399e-168a02c1ccda@linaro.org>
+Date: Tue, 17 Sep 2019 14:31:12 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <877e661vur.fsf@linaro.org>
+In-Reply-To: <878sqm1w0f.fsf@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: sO+wxZXSUNeu
+X-TUID: /iyDk1JsfqLK
 
-On 9/17/19 5:00 PM, Alex Bennée wrote:
->>> +    add_f32_const(0x8p-152);
->>> +    add_f32_const(0x8p-152);
->>> +    add_f32_const(0x8p-152);
->>
->> Why are you adding 3 of the same?
+On 9/17/19 4:57 PM, Alex Bennée wrote:
 > 
-> To replicate the 1841491 test case where the same number is used for
-> a/b/c
-
-Then we really ought to be more explicit about that.
-
-You're not doing full permutations on the sets of numbers, so does incrementing
-a random index really test what you intended?
-
->>> +#if defined(__arm__)
->>> +                r = __builtin_fmaf(a, b, c);
->>> +#else
->>> +                r = __builtin_fmaf(a, b, c);
->>> +#endif
->>
->> Eh?
+> Richard Henderson <richard.henderson@linaro.org> writes:
 > 
-> Ahh I was going to hardcode the arm madd instruction in as the builtin
-> wasn't expanding. I tried setting -march in the CFLAGS but that didn't
-> trigger it either on my buster arm-hf compiler. Any ideas how to get the
-> compiler to do the right thing?
+>> On 9/17/19 2:41 PM, Alex Bennée wrote:
+>>> +    for (i = 0; i < ARRAY_SIZE(round_flags); ++i) {
+>>> +        fesetround(round_flags[i].flag);
+>>
+>> If we're going to make this a generic test, perhaps
+>> continue if fesetround fails?
+> 
+> I ifdef'ed the missing symbols? Can the symbol exits but not be settable?
 
-I think you want -mfpu=neon-vfpv4.
+I dunno, maybe?  Perhaps based on the exact host.
 
 
 r~

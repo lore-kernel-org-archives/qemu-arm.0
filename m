@@ -1,117 +1,132 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5648235wrp;
-        Tue, 17 Sep 2019 12:44:22 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwqhuBjr8TtyeOFOi9adUoPn+b4re9MAnRBuUl5/VDO1WWOkI2D4J6KNSvP+vhKSUZCmgzd
-X-Received: by 2002:ac8:3fba:: with SMTP id d55mr549808qtk.43.1568749462271;
-        Tue, 17 Sep 2019 12:44:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568749462; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5649942wrp;
+        Tue, 17 Sep 2019 12:46:07 -0700 (PDT)
+X-Received: by 2002:a17:90a:c383:: with SMTP id h3mr6971442pjt.14.1568749567735;
+        Tue, 17 Sep 2019 12:46:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568749567; cv=none;
         d=google.com; s=arc-20160816;
-        b=DPjTlbReF6PQp/DwGsJmrCBeurLSqU1d9CQyVfMvcz+CMZULexoSbROmwGoC9ottoB
-         Ur1ZkFZ9Cof4EJ/8qfMleiyDR2V3q9u/QBIDX+67+pIIUSD023LRpHbVbN12SPKXGanP
-         gM1vnfBmY/0Ihx3KfnudsWhF/I8yEfp8x51goaL+9Alt4r2cbqxlgswF1x+kYWg8Bybo
-         25do5EEdo70jupJwcWmlUQO7iBRsq2C72l0Lh4ROthUYRkwbbZH/rmflcGfTGrWrzh8n
-         7T+4OGg2w1sG0Fj2YoXEgBmt3Qh/Po8XqO4nOAwjcPMe8og4FNa1mHkPVponPg0TTkRw
-         T0Rg==
+        b=0lupDQjeA73C+yRlO2/e8OEzPz7LYzcyZbUO8Mbtf7aY1WQ9To16tMK7lW+4uXV/7O
+         7Ccaz9xDRrIO3zGeud54tETo25f8ZkQ/mIG0c5srN86rtJlzp0Ba9DiJJXi7y87dinx1
+         PWnZk296GJ/ANRz2NqKwBOjDhVBJfZN6/3B2V5uhDK7dExdtMu4fNoVNVBfM2BiVFttx
+         CHHGDKrm6XVGnWPjf7dLimZfQ6KlTAsrg+OsI/Bep+sUZEd9e4tXKGEIN+2AS9fNeY3y
+         cASvE+ztUfGIdaDH5HDV4rgbdLTesCNJjgRlSaQlWkwXbakm12qKM2fvLmWxd8QPDARQ
+         KT8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
-        bh=hP7H0FfJiWoqapYSTYRmCPTGc6Kquaa+iE+x41nO6O8=;
-        b=LQgb6w7FBMSf7KcvquJynaAF5tY2JBrDKE+S7ulP/kSiPZHPeBvBQJu9F1yNXc9fY0
-         lcQ0Wtw1ZwO9bg6HpSitLvUBAZtycaadcDyk6jynZGaJaCnV+H4Fa1hqMuTin2cRY/y9
-         +0WHzgjd/hssa9quxLFXzQF7E2iXxb0Dr3QvGtMgqLeIYCSlusaMlNxMGJl7kPy5PACj
-         SzGpBl3By5NQAjgtgihc3C2lWh+4AFped6eS2/P52TyqwbOnGQRBYnOInUzGRNPGNLsy
-         bb04VRR2ltnwYTDGLtNBpPZLY0i236ZS9nIwmFkEB4VSa9pqGDVeiHFX/qRZTImmRP8C
-         PqBw==
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=pCvB+ztKeOZoegWLKI6FHVrttgtkui0XKV3KuK89r9U=;
+        b=uw+3tZ2WqmeoVpmadnHEY9a+h7GXmXnndi8jJ/f4P+yt7CcFaJSbg9SBFuNYUiDUIk
+         bHx3rku4/qOySkbQLq26s6iS/TILeyMDu6IqT8mDIVMfotOWynt2d8YiiZ2UdIJVgNp+
+         q/1QTyIbtPkM6ly5RPTNck+l3mHSu+HKzzGXCt6PWTwMNTghOVCLcRkwQJfQWDAB8X/e
+         Vmq2FOrcwPB6lDJ340ry4Hk/rGs8xpTDP13bojATMm8wHd6Y20WTFQ0RzBz54hohAWmq
+         tT6pmS1kKxjG6hmF8YWAeDRaW+rOGoFawdoevp/Bjxqohs/MUNvkHFLbHcb9H5d11pLr
+         3CFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id t129si2256830qkf.344.2019.09.17.12.44.21
+       dkim=pass header.i=@linaro.org header.s=google header.b=L2oj1J3Q;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id f29sor2849243pgb.10.2019.09.17.12.46.07
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Sep 2019 12:44:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+        (Google Transport Security);
+        Tue, 17 Sep 2019 12:46:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com [209.85.128.69])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 28C098665D
-	for <alex.bennee@linaro.org>; Tue, 17 Sep 2019 19:44:21 +0000 (UTC)
-Received: by mail-wm1-f69.google.com with SMTP id r21so1264256wme.5
-        for <alex.bennee@linaro.org>; Tue, 17 Sep 2019 12:44:21 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=L2oj1J3Q;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=pCvB+ztKeOZoegWLKI6FHVrttgtkui0XKV3KuK89r9U=;
+        b=L2oj1J3QLPHzj+D8yfPf4nGiOITeqqIXRJ2ZxNJb/0N0LGagu+NwMVaYND2jKGYTn1
+         RJAJ2jjI1wbAstdeT2JIcHj/W7Gp3BO28aeqdWODiYTBzvE/+fzZBM6UD5Wewnu5Y69E
+         P4W/u63ECSjGqA2SKKyO6sfoS8si4xkgpAU+TvRZUySEKDaVGVkn+XaJ+l8idljgBa+E
+         0XIpF/lWadJrA1qd7z7FW5nra+Ffr/VVclKlPckboVSteyxC7yYdQbCWKQQGrXlTxYYP
+         iIZQmpepbyEmANeAJTYyKo6S+FV4zs/22qneRmU46MaY5Nh1dIAPh26Q6d4LQHkQh7zj
+         UuEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=hP7H0FfJiWoqapYSTYRmCPTGc6Kquaa+iE+x41nO6O8=;
-        b=O+1BezpwpafA6IPa+i3qzRrB56XHZpUUkyCVM8UQRE5eq5dLdZAN7F3cdKzNGblCEL
-         cdm8AhRhtaKR3E+zJwbz9D61m0L484mpAfHVee43xcM/jUy2wrAkX2Prd81XDEVLoNVt
-         4ayQUGWSKoiElxjQMnTazuwJJB+KC2AbDwgbODLbfiikrKqHaIzTXtUEX5141ubn+CYA
-         9KIJl6ogygTS0m3JyRx45ZS/c+bgwEByI3+FB4sgMI0XdEq/eTB8vEjywELYZGsHpGvy
-         PSIM5kvh+z0GHPkziCbgwmRS3reZhs+6rVTmnKhVavame6O9RfmuQDe3F1TVDzJlYcvp
-         dBfw==
-X-Gm-Message-State: APjAAAWTZ5Pi7H4Gn9+RKCn6KSDfVNlsSVCr+4Yl7kb8S04JaAQ4dG8t
-	WpoE5lhYeE0SGw5caHtV5T1s16L31ef5gbl1GC2RM7kBDXY2K9kjj6bWL9imUYb6bF780f3QkLv
-	QGcrV+5YrUGaQ9+Cc
-X-Received: by 2002:a05:600c:295b:: with SMTP id n27mr4156576wmd.128.1568749459547;
-        Tue, 17 Sep 2019 12:44:19 -0700 (PDT)
-X-Received: by 2002:a05:600c:295b:: with SMTP id n27mr4156570wmd.128.1568749459379;
-        Tue, 17 Sep 2019 12:44:19 -0700 (PDT)
-Received: from [192.168.1.40] (240.red-88-21-68.staticip.rima-tde.net. [88.21.68.240])
-        by smtp.gmail.com with ESMTPSA id o22sm5354998wra.96.2019.09.17.12.44.18
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 17 Sep 2019 12:44:18 -0700 (PDT)
-Subject: Re: [PATCH v1 2/9] tests/docker: fix DOCKER_PARTIAL_IMAGES
+        bh=pCvB+ztKeOZoegWLKI6FHVrttgtkui0XKV3KuK89r9U=;
+        b=pMH/LenOnXJ6rFpzLCXbTEy/DjKT2/c1j1Tay5uaGi4iegGQZq6NYvzqb2o1zGEEWv
+         Ec6ZZARpSlrCePHEPe9QMofGfLfO2yKSnYUriEGYnF+DjHuIY+Exsey0jtUPPKHisoCe
+         M7QI+gDF1UmBJRpN60sW23R04MekmKidgQs9nK7sSrsrm9nwgW9mawLA2qKbVxdW9PBh
+         TGfMOC6VwnOJOPIRwKN0IkY+4V8h/1FC9aQC5+6pRyb+aGx8A4SbaNePWxv/bbaRX/dk
+         elA5bc4IPlecoWFs/H8AjKNIslmp/DEG41+1MPNcTrrFfuEkJHQI7gZnC+01OSm0tevD
+         sdXA==
+X-Gm-Message-State: APjAAAVESc80Xg+/Tr16+nl+m6mDlerRUFY9Ncr566TijS6piewTqVo3
+	a0ieZIcg2FwBqXGeyC+T47LUS1f4
+X-Google-Smtp-Source: APXvYqyA+54f/hQvBsW97e3599EiUGVl7tts2IDt6UPp4NNWtzM107WtYZ/KroExwVTPblC4bN/wTA==
+X-Received: by 2002:a63:ec12:: with SMTP id j18mr476699pgh.327.1568749567190;
+        Tue, 17 Sep 2019 12:46:07 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+        by smtp.gmail.com with ESMTPSA id w11sm5614141pfd.116.2019.09.17.12.46.06
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 17 Sep 2019 12:46:06 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v1 7/9] tests/tcg: add float_madds test to
+ multiarch
 To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- peter.maydell@linaro.org, John Snow <jsnow@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Fam Zheng <fam@euphon.net>
+ peter.maydell@linaro.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
 References: <20190917184109.12564-1-alex.bennee@linaro.org>
- <20190917184109.12564-3-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <5b77d03b-753b-5ea6-af17-bfccac2614d5@redhat.com>
-Date: Tue, 17 Sep 2019 21:44:17 +0200
+ <20190917184109.12564-8-alex.bennee@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <afd9bc85-9c79-a456-73c1-fc19e97d1acd@linaro.org>
+Date: Tue, 17 Sep 2019 12:46:04 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190917184109.12564-3-alex.bennee@linaro.org>
+In-Reply-To: <20190917184109.12564-8-alex.bennee@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: 4poccgngjtuT
+X-TUID: Loi+TdQIzMKO
 
-On 9/17/19 8:41 PM, Alex Bennée wrote:
-> Finger trouble in a previous clean-up inadvertently set
-> DEBIAN_PARTIAL_IMAGES instead of DOCKER_PARTIAL_IMAGES.
+On 9/17/19 2:41 PM, Alex Bennée wrote:
+> +    /* From https://bugs.launchpad.net/qemu/+bug/1841491 */
+> +    add_f32_const(0x1.ffffffffffffcp-1022);
+> +    add_f32_const(0x1.0000000000001p-1);
+> +    add_f32_const(0x0.0000000000001p-1022);
 
-Arf :)
+These three constants do not fit in float32.
 
-> Fixes: 44d5a8bf5d2
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  tests/docker/Makefile.include | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-> index 50a400b573a..0d033bfbea8 100644
-> --- a/tests/docker/Makefile.include
-> +++ b/tests/docker/Makefile.include
-> @@ -7,7 +7,7 @@ DOCKER_FILES_DIR := $(SRC_PATH)/tests/docker/dockerfiles
->  DOCKER_DEPRECATED_IMAGES := debian
->  # we don't run tests on intermediate images (used as base by another image)
->  DOCKER_PARTIAL_IMAGES := debian debian8 debian9 debian10 debian-sid
-> -DEBIAN_PARTIAL_IMAGES += debian8-mxe debian-9-mxe debian-ports debian-bootstrap
-> +DOCKER_PARTIAL_IMAGES += debian8-mxe debian-9-mxe debian-ports debian-bootstrap
+> +    add_f32_const(0x8p-152);
+> +    add_f32_const(0x8p-152);
+> +    add_f32_const(0x8p-152);
 
-As John noticed, we have another typo: "debian-9-mxe" -> "debian9-mxe"
+Why are you adding 3 of the same?
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> +        for (j = 0; j < nums; j++) {
+> +            for (k = 0; k < 3; k++) {
+> +                a = get_f32(j + ((k)%3));
+> +                b = get_f32(j + ((k+1)%3));
+> +                c = get_f32(j + ((k+2)%3));
 
->  DOCKER_IMAGES := $(filter-out $(DOCKER_DEPRECATED_IMAGES),$(sort $(notdir $(basename $(wildcard $(DOCKER_FILES_DIR)/*.docker)))))
->  DOCKER_TARGETS := $(patsubst %,docker-image-%,$(DOCKER_IMAGES))
->  # Use a global constant ccache directory to speed up repetitive builds
-> 
+How does this not overflow nums?
+There does not appear to be an assert on overflow in get_f<N>.
+
+> +#if defined(__arm__)
+> +                r = __builtin_fmaf(a, b, c);
+> +#else
+> +                r = __builtin_fmaf(a, b, c);
+> +#endif
+
+Eh?
+
+> +/* Number of constants in each table */
+> +int get_num_f16();
+> +int get_num_f32();
+> +int get_num_f64();
+
+This is not c++; you want (void) to indicate no arguments.
+
+
+r~

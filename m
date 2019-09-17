@@ -1,157 +1,256 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5384508wrp;
-        Tue, 17 Sep 2019 08:25:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxB3Hrjqdq1iJjSlUIorLAdEVNr21QK3Po0KLKxX2SN3niQ9rwtTFgQm0EChle8Pw1RX++T
-X-Received: by 2002:a05:6214:2b0:: with SMTP id m16mr3672478qvv.45.1568733908460;
-        Tue, 17 Sep 2019 08:25:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568733908; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5388583wrp;
+        Tue, 17 Sep 2019 08:28:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyIzMZn5fK9krQP1WDsw6YOUUoyxKbpr7jMO2W+ZCUFS8ciKPGrIuCoL0GeQ1ySMOns6vO4
+X-Received: by 2002:a37:8f04:: with SMTP id r4mr4522303qkd.244.1568734109382;
+        Tue, 17 Sep 2019 08:28:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568734109; cv=none;
         d=google.com; s=arc-20160816;
-        b=CfN23BHMPXeKzXWMEe35lG3sSYclWghr83GC1A/qItbfAzgKzcuzAkRm4huL68qo69
-         9/RGHttqSJmqivVnjayExvIfsegLqRzPc0W3RCHbWbAadrJHSXfJ56B4yJDyFmTBMpz0
-         p8I9UtKTEHKJeVXEGGevSLsL8KqQ/njGTqebebUAnkibI/fwFn0PbWyYOyLljWOu0NjK
-         DcEhSuPrwWD4Tfzusi/Gf0bKZO7b80dUkaTBkYj3LLbtM+k09S2cSrGorDscMBu1YMCu
-         5hp7mhZkB+5a/4l7d7T5k34IxpV7mEmDhGQ02xYZhzimH5qqTsPYgHnB6c+d1Q0yAw8r
-         fnSg==
+        b=GsZyVyPTjzNjQa3jgyDd5k7AZb0YLxzh1DZMpUBQjzH4+cf17AfiDu/FrwMPLJDeHf
+         h82TJVWtvT+na6D4ybmWS9Hv7ocjoLvn94SAwCku184gPKd1zQjnN3trVaRKFojSGeoy
+         fSt1myWxhhEUZKo/qfngpC9u+taX245xFZ905G4OexYXEwnD10ZIyellX1CqTzCsPB1p
+         PbzDHaijiGGVSZvOLyg6b5WNTv3FvKNtEJA+4yUDqQ/dwnaiUurXmUOoL9KDnaF9q5F7
+         Y4gAttB4Q+XVOyTu/qKmaH4UrrxzL0BZbIpF6g8ghxwmSHauEH1x4lfVJBFpxL1gG/Cl
+         HtOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=84lIvWS/UBsMxXislbD2ODOZlrUK175JaQEXmaCSesM=;
-        b=OyqwXxz7bGSqEU72tnpnWOPHUe4jFcjYkMPTqpSJ6ZYLOtSCAziK6iSUvUyiQxYVDA
-         P463evbnUTFtzaOlAUiNXGzZmY2ZYQLlVVsUQWte83Xd4jFXlAG/Cz7d81wGXX1Gy0y0
-         YhJ6ZcT/QlhC+dbYqOFCTWIl0RunG9AMxmRkGv4FboIlOE8SxmnfPqsFNV252bZ9+LLP
-         /xXUW+jA/qUfzoHbXN3G14oI19cLaD43+NOq7f+yVAFS1+yBmBYnd31yu/GLYCwcQjBG
-         JENUMGHVdQ1uRog4zCv+bhGutQMZaGU5BePSMVul/nB8Jhv6vOkCutAAcMz7wrx1CBiE
-         Knag==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:to:from:date;
+        bh=542IdyGwDUFuCsgjKo+C8urq/LB2530/4HBGA0utn4g=;
+        b=r4RAkqFfkcw8X9dq7UNR9fwmnButyjA7BMJLsTMAG7Zv5ZJ4nTz5QwWsLgOIuJCBLd
+         avx3wGyuosobdVgY5FRCG5goYTChGhY5L/uumnrsFqRwlg036zqxdHEAkmpQ3zXVoys5
+         IgBaAka1GsYQ/7u6SU7xnvv/4iGqyN1s24wu/2n2Fw7HVhiT8cRhMSUGViU0de1zs5/8
+         TnNyaWWVq8s+v//8ThRrSkvr5S8n05saNdWxd9fR24aBk+kZ0EBmGVLs0DSvs87UsxvZ
+         5wwvY7FdZP/PgzPuccIbOvi4lEJweGx0HjXdqYceyvORhCbXFTwbL5l48tMnq0UB/Z7z
+         ECEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VyuxBYCJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c205si1696231qke.54.2019.09.17.08.25.08
+        by mx.google.com with ESMTPS id u9si1748997qkm.36.2019.09.17.08.28.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Sep 2019 08:25:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 17 Sep 2019 08:28:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=VyuxBYCJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47270 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47302 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAFLn-0005jV-Rg
-	for alex.bennee@linaro.org; Tue, 17 Sep 2019 11:25:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33826)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iAFP2-0000Uy-Fa
+	for alex.bennee@linaro.org; Tue, 17 Sep 2019 11:28:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34093)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iAFKm-0005h2-BQ
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 11:24:05 -0400
+ (envelope-from <imammedo@redhat.com>) id 1iAFMc-0007Qm-2M
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 11:25:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iAFKl-00060A-5Q
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 11:24:04 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:36765)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iAFKk-0005zp-Vd
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 11:24:03 -0400
-Received: by mail-oi1-x243.google.com with SMTP id k20so3221978oih.3
- for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 08:24:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=84lIvWS/UBsMxXislbD2ODOZlrUK175JaQEXmaCSesM=;
- b=VyuxBYCJ2KNwV12/uG4HZD/u5uLeUGxkr74DYW9oM9d0oDr0wSnqaVN1cActBVuytv
- vz+KFySUqUs0D49dzeWULto7cLPiqN6m3x+/Gc0kHuMUWjgaao+HHYhMzLFzWNMhpQNF
- i7+plUpRbQmWPNacm4W0QjL03DAOVqJ6hA/XIm8Wn7rnc4x+lnhSUhazZX562L/T5L3z
- P8UHrp5ArgxwzMvW445P8qGOc9prH/y/qtsYrBhvbLXKmYdkaioRZWp5yb3x2meUiZOz
- HDMYAAg2LKVFibJqI2DkqthQvWVo932rNHwXBv/o0bqjSM+Al9loNKJ7PeMAst1Pr+/A
- TEAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=84lIvWS/UBsMxXislbD2ODOZlrUK175JaQEXmaCSesM=;
- b=XV/dhf7W3myMNmn9yVxwkqOSsaHdNv5CrD4/jYQHx2tbeIUDybOBH9Ei5a0B5axAel
- C/w5U007tejhe4Z9cb9Y0ey+74TilmpoGYPfbIwKuXZ0XZNBFmWipG8uAyj6ueqjpjGT
- Oo1hrQd+ZCE2/q06mcHsy+q8fK+rKrawIfZlASIcfhVvev6JnVBSfUuSmr9qjU4GRTK9
- Lb6cN1NbzrF/x4gPNAiNKsqR8Jwhd/0hMFb+ZpM5Q+T0mnkf88+ej+3FgkK8OFBnBYcg
- uHrCG25CEBpOCzR2Oz0v6TtV6BEIMaLGoKQbCfObkODjcVI6/wvNMe4k43+g91nRLqNY
- TakA==
-X-Gm-Message-State: APjAAAVjGRtDgweo0c+Sa/GTbWTixMEceNvstiEOftonDYWiQR3ycMd9
- eO11JN9uFIDYtp3/WRkSkiI6g1i1lA/7oGaD+vKNDw==
-X-Received: by 2002:aca:f54d:: with SMTP id t74mr4288531oih.170.1568733841674; 
- Tue, 17 Sep 2019 08:24:01 -0700 (PDT)
-MIME-Version: 1.0
+ (envelope-from <imammedo@redhat.com>) id 1iAFMY-0006Z7-WF
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 11:25:56 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:32884)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <imammedo@redhat.com>)
+ id 1iAFMY-0006Ym-Lg; Tue, 17 Sep 2019 11:25:54 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 28D2158487;
+ Tue, 17 Sep 2019 15:25:53 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3520B5C28C;
+ Tue, 17 Sep 2019 15:25:47 +0000 (UTC)
+Date: Tue, 17 Sep 2019 17:25:45 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+Message-ID: <20190917172545.41e1dfb9@redhat.com>
+In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA83F3F293A@lhreml524-mbs.china.huawei.com>
 References: <20190904085629.13872-1-shameerali.kolothum.thodi@huawei.com>
- <20190904085629.13872-11-shameerali.kolothum.thodi@huawei.com>
- <CAFEAcA8sEhgOXnj-DGo04pSnpTObO+EeC94yrdGEikKq0=2QeA@mail.gmail.com>
- <20190911155015.3627b072@redhat.com>
- <20190911095332-mutt-send-email-mst@kernel.org>
- <20190917111100-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20190917111100-mutt-send-email-mst@kernel.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 17 Sep 2019 16:23:49 +0100
-Message-ID: <CAFEAcA8S0SE9MtjwmErAfjLACbc8p3sXFPeFLwfOW9czTwDM9g@mail.gmail.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::243
-Subject: Re: [Qemu-devel] [PATCH-for-4.2 v10 10/11] tests: add dummy ACPI
- tables for arm/virt board
-X-BeenThere: qemu-devel@nongnu.org
+ <20190904085629.13872-6-shameerali.kolothum.thodi@huawei.com>
+ <20190911150700.7a917d14@redhat.com>
+ <5FC3163CFD30C246ABAA99954A238FA83F3F293A@lhreml524-mbs.china.huawei.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.71]); Tue, 17 Sep 2019 15:25:53 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH-for-4.2 v10 05/11] hw/arm/virt: Enable device
+ memory cold/hot plug with ACPI boot
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Samuel Ortiz <sameo@linux.intel.com>,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>,
- Linuxarm <linuxarm@huawei.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>, Xu Wei <xuwei5@hisilicon.com>,
- Eric Auger <eric.auger@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- sebastien.boeuf@intel.com, Laszlo Ersek <lersek@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PBmLUdTNSX28
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "sameo@linux.intel.com" <sameo@linux.intel.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "ard.biesheuvel@linaro.org" <ard.biesheuvel@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Linuxarm <linuxarm@huawei.com>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>,
+ "sebastien.boeuf@intel.com" <sebastien.boeuf@intel.com>,
+ "lersek@redhat.com" <lersek@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JcXJHS45BVHh
 
-On Tue, 17 Sep 2019 at 16:11, Michael S. Tsirkin <mst@redhat.com> wrote:
->
-> On Wed, Sep 11, 2019 at 09:55:34AM -0400, Michael S. Tsirkin wrote:
-> > On Wed, Sep 11, 2019 at 03:50:15PM +0200, Igor Mammedov wrote:
-> > > On Wed, 11 Sep 2019 13:57:06 +0100
-> > > Peter Maydell <peter.maydell@linaro.org> wrote:
-> > > > Do the tests pass with this patch and without the
-> > > > patch that adds the tests? (That is, can we keep the
-> > > > two patches separate without breaking bisection, or
-> > > > do we need to squash them together?)
-> > > >
-> > > > I'll leave it to somebody who understands the ACPI
-> > > > tests stuff to answer whether there's a better way to
-> > > I'd squash this patch into 11/11 test case,
-> >
-> >
-> > Pls don't - the way to add this is to add the files in question to
-> > tests/bios-tables-test-allowed-diff.h.
-> >
-> > Maintainer will create a separate commit updating
-> > the binaries and removing them from the whitelist.
+On Mon, 16 Sep 2019 10:30:45 +0000
+Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com> wrote:
 
-Who is "maintainer" in this part of the process? Why
-can't the submitter just create the patches and send them?
+> Hi Igor,
+> 
+> > -----Original Message-----
+> > From: Igor Mammedov [mailto:imammedo@redhat.com]
+> > Sent: 11 September 2019 14:07
+> > To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+> > Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org;
+> > eric.auger@redhat.com; peter.maydell@linaro.org;
+> > shannon.zhaosl@gmail.com; sameo@linux.intel.com;
+> > sebastien.boeuf@intel.com; xuwei (O) <xuwei5@huawei.com>;
+> > lersek@redhat.com; ard.biesheuvel@linaro.org; Linuxarm
+> > <linuxarm@huawei.com>
+> > Subject: Re: [PATCH-for-4.2 v10 05/11] hw/arm/virt: Enable device memory
+> > cold/hot plug with ACPI boot
+> > 
+> > On Wed, 4 Sep 2019 09:56:23 +0100
+> > Shameer Kolothum <shameerali.kolothum.thodi@huawei.com> wrote:
+> > 
+> > [...]  
+> > > @@ -730,6 +733,19 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,  
+> > VirtMachineState *vms)  
+> > >                        vms->highmem, vms->highmem_ecam);
+> > >      acpi_dsdt_add_gpio(scope, &memmap[VIRT_GPIO],
+> > >                         (irqmap[VIRT_GPIO] + ARM_SPI_BASE));
+> > > +    if (vms->acpi_dev) {
+> > > +        build_ged_aml(scope, "\\_SB."GED_DEVICE,
+> > > +                      HOTPLUG_HANDLER(vms->acpi_dev),
+> > > +                      irqmap[VIRT_ACPI_GED] + ARM_SPI_BASE,  
+> > AML_SYSTEM_MEMORY,  
+> > > +                      memmap[VIRT_ACPI_GED].base);
+> > > +    }
+> > > +
+> > > +    if (vms->acpi_dev && ms->ram_slots) {
+> > > +        build_memory_hotplug_aml(scope, ms->ram_slots, "\\_SB",  
+> > NULL,  
+> > > +                                 AML_SYSTEM_MEMORY,
+> > > +  
+> > memmap[VIRT_PCDIMM_ACPI].base);  
+> > > +    }  
+> > one more thing (though non critical), if ms->ram_slots == 0 ^^^^
+> > makes IASL spew a warning
+> > 
+> >     External (_SB_.MHPC.MSCN, MethodObj)    // Warning: Unknown
+> > method, guessing 0 arguments
+> > 
+> > In general non-existing references within methods are fine if they aren't ever
+> > used.
+> > however we can be a little bit less sloppy.
+> > Below you advertise "event = ACPI_GED_MEM_HOTPLUG_EVT", and then here
+> > suddenly
+> > don't generate essential AML part for it here.  
+> 
+> Ok.
+> 
+> > For consistency if above is conditioned on ms->ram_slots != 0, probably
+> > it would be better to move that condition where you set 'event' value and
+> > check property value above instead of ms->ram_slots  
+> 
+> I understand the concern here, but not sure I get the suggestion to check 
+> the "property" instead of ms->ram_slots correctly. 
+> 
+> Is this what you have in mind?
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 538b3bbefa..5c9269dca1 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -742,10 +742,15 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>                        memmap[VIRT_ACPI_GED].base);
+>      }
+>  
+> -    if (vms->acpi_dev && ms->ram_slots) {
+> -        build_memory_hotplug_aml(scope, ms->ram_slots, "\\_SB", NULL,
+> -                                 AML_SYSTEM_MEMORY,
+> -                                 memmap[VIRT_PCDIMM_ACPI].base);
+> +    if (vms->acpi_dev) {
+> +        uint32_t event = object_property_get_uint(OBJECT(vms->acpi_dev),
+> +                                                  "ged-event", NULL);
+s/NULL/error_abort/
 
-> > This way things like rebase work seemlessly.
+> +
+> +        if (event & ACPI_GED_MEM_HOTPLUG_EVT) {
+> +            build_memory_hotplug_aml(scope, ms->ram_slots, "\\_SB", NULL,
+> +                                     AML_SYSTEM_MEMORY,
+> +                                     memmap[VIRT_PCDIMM_ACPI].base);
+> +        }
+>      }
+>  
+>      acpi_dsdt_add_power_button(scope);
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index bc152ea2b0..6b024b16df 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -534,8 +534,13 @@ static void fdt_add_pmu_nodes(const VirtMachineState *vms)
+>  static inline DeviceState *create_acpi_ged(VirtMachineState *vms, qemu_irq *pic)
+>  {
+>      DeviceState *dev;
+> +    MachineState *ms = MACHINE(vms);
+>      int irq = vms->irqmap[VIRT_ACPI_GED];
+> -    uint32_t event = ACPI_GED_MEM_HOTPLUG_EVT;
+> +    uint32_t event = 0;
+> +
+> +    if (ms->ram_slots) {
+> +        event = ACPI_GED_MEM_HOTPLUG_EVT;
+> +    }
+>  
+>      dev = qdev_create(NULL, TYPE_ACPI_GED);
+>      qdev_prop_set_uint32(dev, "ged-event", event);
+> 
+> ---8---
 >
->
-> OK?
->
-> Can you post v11 like this? I'll ack then.
+> Please let me know.
+Looks good to me.
 
-thanks
--- PMM
+Thanks!
+
+
+> 
+> Thanks,
+> Shameer
+> 
+>  
+> > [...]  
+> > > +static inline DeviceState *create_acpi_ged(VirtMachineState *vms,  
+> > qemu_irq *pic)  
+> > > +{
+> > > +    DeviceState *dev;
+> > > +    int irq = vms->irqmap[VIRT_ACPI_GED];
+> > > +    uint32_t event = ACPI_GED_MEM_HOTPLUG_EVT;
+> > > +
+> > > +    dev = qdev_create(NULL, TYPE_ACPI_GED);
+> > > +    qdev_prop_set_uint32(dev, "ged-event", event);
+> > > +    qdev_init_nofail(dev);
+> > > +
+> > > +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0,  
+> > vms->memmap[VIRT_ACPI_GED].base);  
+> > > +    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 1,  
+> > vms->memmap[VIRT_PCDIMM_ACPI].base);  
+> > > +
+> > > +    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[irq]);
+> > > +
+> > > +    return dev;
+> > > +}
+> > > +  
+> > [...]  
+

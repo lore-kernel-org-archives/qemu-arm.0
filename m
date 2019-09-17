@@ -1,107 +1,84 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5089378wrp;
-        Tue, 17 Sep 2019 04:01:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxLnvw4zxTL4LsXC7v3rbJHmTsUEAOBsI5WZb+ti9ksm6WOBBTTpXSUfHXLydgrNdoUuEkl
-X-Received: by 2002:a50:9fce:: with SMTP id c72mr4021812edf.166.1568718076195;
-        Tue, 17 Sep 2019 04:01:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568718076; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5116058wrp;
+        Tue, 17 Sep 2019 04:21:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyOXZ/oi3netDXYORqskhywfro92LnuP9BDAKbt1ILDkIWySBezG8jJD4XKDB3EDnTzOPj/
+X-Received: by 2002:a17:906:e10a:: with SMTP id gj10mr4219883ejb.134.1568719299548;
+        Tue, 17 Sep 2019 04:21:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568719299; cv=none;
         d=google.com; s=arc-20160816;
-        b=DpqqupPgDIbkHa/2HX8cDNijL+UiLPoVl6dqedeLQc//CaggPyUstxnD8qm8bHkgT9
-         19ymtk7Tgw7lciliePBEZNMud1m5AinJcpjR48rVZCn9qdIQ0PLphsCl1vsiBnYEsUrF
-         awCwWF8S3YGMK7ctZI8C/uC9WvDCIjBLNgljlPfcGSV687kVfyT39KRyLaVn5KpfnCvE
-         R74ZboVfw3zP029hnvCpoOowxMSCosLop3HPZzAIXlhTK3GpAkJU5/4eMWICxWufaDJH
-         yA7Kr3eTfyq988EEUu6kgxlg0KUjR7uL4mzQWs6EkuiRriKJ0kNldx87eNj8u7axCq3B
-         GVGA==
+        b=PT/2Ia7W++27aOHiWtxvWzvG09NoU3OFOcV3k7z7Tomv8zRzyCo6sS30YXPCmkPoI8
+         rVQAM+9Wc6EERcw348d9kVABTHX4X0IB8UPCJSLuRJj/7hw3Ehh8ZDlniqdyWuIyhXcO
+         ANWjDqNwLAgA2nesTiDi26SfU4c4Z3Nu6nCMN83cGWt4zwUJn5BMkoemEY7bL1y+Wkiz
+         6oWryADz1SSLEflGYp9vZNRi/SFGy05IEHneR68UyK0Vg2tEgalCQRTAp7uGoL4DvIYg
+         XeHpBJwMwZeYhL8jylmYjUeji9m/hqCl697qjoxZMULAw9HfijQqmCkIJFCcAtzMWm77
+         o95Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:to;
-        bh=XbSaIn7JS0lItl2+6ikN4fzNiVtuz3ELWXGjpEgGj28=;
-        b=OiB060Cz7s+x0YAHFd9cIwMb/DHwmZaGdL3PhhELFyEXPBiD46Ys4q4JD7DnS7jOQP
-         cRaDyCRZ+zcmgOzKlZEk4cm8phJ5lrdKZ/1Ift3NOCxM7bRIEdv0jYMF6CFu19z/zKz6
-         wzNNE6ZCPLWeEwWsLi/TyiyR3nsHB4qM4Ksb7mfrnNNUf+A447mFLAEnz6ES9J3yDUuI
-         /U+qHphK0BoKh2W7fYR1Fx6mHNQ2IBrsGga23p7Ibf4cews4dE/FBfI9Rddp5mcNdT5t
-         IsU2oj0K1M3GB393bA9+TdIZT/LFxXjOuWHvzYqNtibDcyvWNvDZRbE23uEmZNS3DPOt
-         5MkA==
+         :content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:to:from:date;
+        bh=NOOiqsOIrK4HvfHKUrqHDbzGgL6JxGma48e2Js6Gp2c=;
+        b=e1z+NNmxP1eiVF1VK31QB8MO7Vpc70CxI+NE1+C+mC+rhWDymBMLq7uEUc+B7IXFiU
+         gxhZ8R7n80giS2yapcn8pAZjlKwlu4EBMmAEvxKFFwP2MJTF+rhpHNQQiZFeqt3cila6
+         06Goz4V7FbCcJ2D/kpI6p2uOHDoAD+Zwm7lLoWfjVXVGEe89vztgG0BHHdOAsdPD6Osc
+         6FkRD5h6gghr3WDDVHDdqnXLlgXKf6WN0SK2iKiFu/DLtjhc1iRmJUZfn7iPrN7RK1rB
+         jvv2+haprHqaNh4324zOwoytgkOH4zuMfBpgbSsJaSfkvpnuZfUNXLSml1FYOEv/9wki
+         lFcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f20si855546ejw.399.2019.09.17.04.01.16
+        by mx.google.com with ESMTPS id g21si1055226edm.116.2019.09.17.04.21.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Sep 2019 04:01:16 -0700 (PDT)
+        Tue, 17 Sep 2019 04:21:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44158 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44452 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iABEP-0001cG-IN
-	for alex.bennee@linaro.org; Tue, 17 Sep 2019 07:01:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51613)
+	id 1iABYA-00063Q-7e
+	for alex.bennee@linaro.org; Tue, 17 Sep 2019 07:21:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54596)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iABDx-0001Yq-QM
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 07:00:47 -0400
+ (envelope-from <cohuck@redhat.com>) id 1iABXz-00063E-HE
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 07:21:28 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iABDv-0004SS-Uh
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 07:00:45 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59816)
+ (envelope-from <cohuck@redhat.com>) id 1iABXy-0002xo-0L
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 07:21:26 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38818)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iABDv-0004RR-J8
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 07:00:43 -0400
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (Exim 4.71) (envelope-from <cohuck@redhat.com>)
+ id 1iABXx-0002xK-Ql; Tue, 17 Sep 2019 07:21:25 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 2E8E537E80
- for <qemu-arm@nongnu.org>; Tue, 17 Sep 2019 11:00:42 +0000 (UTC)
-Received: by mail-wr1-f69.google.com with SMTP id j2so1181297wre.1
- for <qemu-arm@nongnu.org>; Tue, 17 Sep 2019 04:00:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=wSzNTKefRTNv6dxVX888ROxgz8neOc/3d2LLBCrP1Zo=;
- b=apurFV5Rd2CjbezfoBKu6NQ3eoxQK9BL7kPDidkzNDjrhKO+VKqJ2vSvfyQGFenFSX
- 7pqGv92usJ7B1OlKb3aQliLX0qhBERkXwm7NRh9ljXBMg00oB6n0SprwtsrToTeMsS7a
- I7EQ0fSy1R9dQj4UNp6uPvie3O2omt4dEl1i+CcuA9bECdyWA+pKNmaxmbuqxS/TIgBj
- WmgIwB3eERt7eIvAnWUWo7n9/digPXVkp9XC183EhrUYsHHCghElmU+avuIzEtZ0LSCd
- PuouNXgaWDWIqigw1URzbkZ1gPG9+yQ+HrASHtekNRQ15CRoxZFS7QZFhqkRHsqDeVMN
- kU0g==
-X-Gm-Message-State: APjAAAUCLYwyflUPVFTDcMmg/mJesiYJNyBfuAs/+1+J6pVhlYbkpKmP
- u+27ReJTS2J6xqnsE2UcozzwaAVvbKNKM0MmPg4XhILn4cQS5gBAGvuaKuULbrzirn73ywEb3UY
- tOMjut8Z+D0Pg
-X-Received: by 2002:a1c:7914:: with SMTP id l20mr3023776wme.155.1568718040917; 
- Tue, 17 Sep 2019 04:00:40 -0700 (PDT)
-X-Received: by 2002:a1c:7914:: with SMTP id l20mr3023730wme.155.1568718040640; 
- Tue, 17 Sep 2019 04:00:40 -0700 (PDT)
-Received: from [192.168.1.40] (240.red-88-21-68.staticip.rima-tde.net.
- [88.21.68.240])
- by smtp.gmail.com with ESMTPSA id h7sm2074263wrt.17.2019.09.17.04.00.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Sep 2019 04:00:39 -0700 (PDT)
-To: Greg Kurz <groug@kaod.org>, qemu-devel@nongnu.org
+ by mx1.redhat.com (Postfix) with ESMTPS id 5E0DE307D90E;
+ Tue, 17 Sep 2019 11:21:24 +0000 (UTC)
+Received: from gondolin (dhcp-192-230.str.redhat.com [10.33.192.230])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A86F919C4F;
+ Tue, 17 Sep 2019 11:21:04 +0000 (UTC)
+Date: Tue, 17 Sep 2019 13:21:02 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Greg Kurz <groug@kaod.org>
+Message-ID: <20190917132102.4031e77e.cohuck@redhat.com>
+In-Reply-To: <156871563702.196432.5964411202152101367.stgit@bahia.lan>
 References: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <551745c2-2579-9ce5-4aa4-536c37a1ce45@redhat.com>
-Date: Tue, 17 Sep 2019 13:00:37 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ <156871563702.196432.5964411202152101367.stgit@bahia.lan>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-In-Reply-To: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.48]); Tue, 17 Sep 2019 11:21:24 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 00/17] Fix usage of
- error_append_hint()
+Subject: Re: [Qemu-arm] [PATCH 01/17] error: Update error_append_hint()'s
+ documentation
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -115,43 +92,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
  Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Max Reitz <mreitz@redhat.com>, qemu-block@nongnu.org,
- Juan Quintela <quintela@redhat.com>, David Hildenbrand <david@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Eric Blake <eblake@redhat.com>,
+ qemu-block@nongnu.org, Juan Quintela <quintela@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?B?TWFyYy1BbmRy?= =?UTF-8?B?w6k=?= Lureau <marcandre.lureau@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Yuval Shaia <yuval.shaia@oracle.com>,
  Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
  John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Kevin Wolf <kwolf@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+ Kevin Wolf <kwolf@redhat.com>, "Daniel P.
+ =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>, qemu-s390x@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FF+dutwDPnq9
+X-TUID: F5P831CQKHGG
 
-For some reason your email client escaped incorrectly Daniel's email:
+On Tue, 17 Sep 2019 12:20:37 +0200
+Greg Kurz <groug@kaod.org> wrote:
 
-  "Daniel P. Berrang=C3=A9\" <berrange@redhat.com>
+> error_setg() and error_propagate(), as well as their variants, cause
+> QEMU to terminate when called with &error_fatal or &error_abort. This
+> prevents to add hints since error_append_hint() isn't even called in
+> this case.
+> 
+> It means that error_append_hint() should only be used with a local
+> error object, and then propagate this local error to the caller.
+> 
+> Document this in <qapi/error.h> .
+> 
+> Signed-off-by: Greg Kurz <groug@kaod.org>
+> ---
+>  include/qapi/error.h |   11 ++++++++++-
 
-Which makes my email client very unhappy (Thunderbird):
+It's a bit awkward requiring a local object, but better safe than sorry.
 
-There are non-ASCII characters in the local part of the recipient
-address "Daniel P. Berrang=C3=A9 <berrange@redhat.com>,
-qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
-qemu-s390x@nongnu.org"@d06av23.portsmouth.uk.ibm.com. This is not yet
-supported. Please change this address and try again.
-
-Neither is MTA:
-
-An error occurred while sending mail. The mail server responded:
-5.1.2 The recipient address <qemu-s390x@nongnu.org@d06av22.portsmouth.uk.=
-ibm
-5.1.2 .com> is not a valid RFC-5321 address. r28sm2465872wrr.94 - gsmtp.
- Please check the message recipient
-""qemu-s390x@nongnu.org"@d06av22.portsmouth.uk.ibm.com" and try again.
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>

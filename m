@@ -1,163 +1,113 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5616415wrp;
-        Tue, 17 Sep 2019 12:10:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxPpDJHY1wi/vUwX53PthD6Zrk/6XqA3nF3gcEX6MnlHTJGAXUpz4WK9dgbvEeP0vTtcDuM
-X-Received: by 2002:ae9:d885:: with SMTP id u127mr5436082qkf.109.1568747432926;
-        Tue, 17 Sep 2019 12:10:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568747432; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5694274wrp;
+        Tue, 17 Sep 2019 13:33:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx+7w4Iegk5bVIyCjiDIpQbMCnfgJM1Ju16u770wFXJgxzBGd4NE/lEpPsFGwPCgGwz2GQs
+X-Received: by 2002:ac8:1818:: with SMTP id q24mr756519qtj.135.1568752389240;
+        Tue, 17 Sep 2019 13:33:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568752389; cv=none;
         d=google.com; s=arc-20160816;
-        b=lHasv5bHCH2JhZOIy9DqQ06hh+nuvszIQNJLt7/MHTwJ9fe851+OMkCtDHELlc3thx
-         g6/1/sbQcbCTNMjxRAEPJjW9V0Q3bwxI1tnZaO3SqjWisltdmRUa9Fj1i/0N+h8YGpAv
-         mV9d5KZckYwMAKbxM2mWug+qvnY4YzbVxR2RCco+DxPDjUwey9V7k2YDtKRdTNEpS1l/
-         HpUXeACZSjxxbiTmuirADoeX/dvRSCuR0Q1Vr6mweV2FTH8bi+MT9EKs8edFNc58xdcA
-         daffQ5Krgfq3xR4RqZkeE54t0WZnqvT9vXbwPTvxh3Cra0HNeld2G7fvf0XRy5dG5jZK
-         I88Q==
+        b=lSP2i2veohjIwqpKPRYG6ag6LlAcjTdVdhOmt10Px1IS0AgG+LFBfd8UXseMA9OFP9
+         X/hzTwlKdBR3QqCJgX92yE82DoHFI2rERQtiVqfkHOimwCQA9uv71dawIqs6hVDs9XiF
+         jtpBcr2eZFQXYxPzVTXfVuDDIOJjw/hWDrHKxSFU3inmBb37RdzFYX/3D/WHiHh5qf8I
+         PpItxOXrSV5mUUIVhizdqBLjx0NJS7C8QXH/OkxRrC0jAV+XxXLj1+dKhXKNJeXL4CE/
+         0GUUV4OHuwdJR1Tmmg+CG+P8q+TE279NFn49GAbmObR8Xp15WVYLsl6Walhrum+pGoFp
+         zpOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
-        bh=RYbgItJTxXap1FI4pbiTqPnOPeWs548ypINKFId639g=;
-        b=OjnHmFFsErrymO5CPKtoerVsS22yVYHiGSo18gP6aZWHa27IeAN7CCdOjuaQaTM5C5
-         M4653rjtqCZh+1bh8d4GR0fr6I040L8FkudUJ0FQYV/jVkXmWKPyc+GmZ96RocJ+Jlhj
-         RDe3mQhNr2C87hmU0G2sOP9CCKTnCWhhO+nGi3mBk/gRfqR8PX+N+rUeQxsPoUpMlbTh
-         NRrXlDnSRdcXK7+IVss5emkTwzXruyUfM19bRTT1nDrtJsTSpCEX9MLX3f95AUle34Aw
-         1PY6ohxoEhtlK4O4vBV9WG96dZxfouGyo0HT3emCIluZcTOMkZH/gzdyL2mQsntXB/uA
-         65Aw==
+         :user-agent:date:message-id:openpgp:from:references:to
+         :dkim-signature;
+        bh=PgcH1xIdzRwjhnVhoxnojhctD2lMsauDz8vl0j3Q3BU=;
+        b=EcELt6NMH+XiqUU0HQn6+vqhH9D1ZnfvLbXdj3R2IHXurCsRfpbeGxwvY28lXOXw3k
+         08o+kGXPzDZcARfOhvZMmiw8vfqYprYYvC64ZbiqO309ME79vnEJb4TI/NJZXveEK/Sa
+         4pdojO4VkTw+lcSeY3lLOVl8do4a6//ZZ8rC0DxNwjBUKaHcQayUmCMkJBHeKOlTwIdH
+         e70cw6rVeFDbyGlQglWd/Uzcui/DLhPgfooFL0pX8SaKmVUZSeTUWTy8pJb8M3FYzuIG
+         6bhZQhMXPc0BSJ0k2CfVg9Z40LU/63enS2+4U6Pie1Mrb466Ou8KHdLIEITuZ9JSa8FF
+         vi5w==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=tiulpBot;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x25si2396148qtb.278.2019.09.17.12.10.32
+        by mx.google.com with ESMTPS id u188si2576326qkb.107.2019.09.17.13.33.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Sep 2019 12:10:32 -0700 (PDT)
+        Tue, 17 Sep 2019 13:33:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=tiulpBot;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49930 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52394 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAIrv-0001Eo-Op
-	for alex.bennee@linaro.org; Tue, 17 Sep 2019 15:10:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37310)
+	id 1iAK9s-0004Qq-Fs
+	for alex.bennee@linaro.org; Tue, 17 Sep 2019 16:33:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54457)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jsnow@redhat.com>) id 1iAIrk-0001EG-Mq
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 15:10:21 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1iAK9Q-0004PA-Jt
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 16:32:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jsnow@redhat.com>) id 1iAIrj-00069E-8W
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 15:10:20 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:57862)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jsnow@redhat.com>)
- id 1iAIrj-00068m-0G; Tue, 17 Sep 2019 15:10:19 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B558B30833BE;
- Tue, 17 Sep 2019 19:10:17 +0000 (UTC)
-Received: from [10.18.17.165] (dhcp-17-165.bos.redhat.com [10.18.17.165])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4127F19C6A;
- Tue, 17 Sep 2019 19:10:01 +0000 (UTC)
-To: Kevin Wolf <kwolf@redhat.com>, Eric Blake <eblake@redhat.com>
-References: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
- <156871564329.196432.5930574495661947805.stgit@bahia.lan>
- <19e78ae8-96dc-6154-6572-d7176057eeb7@redhat.com>
- <20190917144631.GF4824@localhost.localdomain>
-From: John Snow <jsnow@redhat.com>
+ (envelope-from <richard.henderson@linaro.org>) id 1iAK9P-0007Tn-Ga
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 16:32:40 -0400
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:35854)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1iAK9P-0007Sy-9I
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 16:32:39 -0400
+Received: by mail-pf1-x441.google.com with SMTP id y22so2829364pfr.3
+ for <qemu-arm@nongnu.org>; Tue, 17 Sep 2019 13:32:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=PgcH1xIdzRwjhnVhoxnojhctD2lMsauDz8vl0j3Q3BU=;
+ b=tiulpBotOAZa9Q0DEXY6U6BeKvXFhvb7pRxBYHxrJbxq0SNyZpB4zAyhV0IeP2DvQc
+ mEwm6iP5Wrys/lzKq/rRu6IK/ncKjPvUmLsyJsdCF2R6gHifea5P5LNl25Im8XQpXtku
+ EWzFGXsiUxvH92PZ5whkQR2NSOdk7Mj1FJjuwBiGPcOdg6IYQMfL0cvWLzh9DbdFP3vH
+ n5cpY+6Eh+20NKlz4rpBtIWbWgU1LqJ8mycTH73AhRPHpJFfzmiDb8rYt8MNJD7J2ycx
+ /yOjD+xvhW1XSofdivqf5KRUWdKVMFqnNGyvYosfT2UnF14RSfhOH/Dwx27iJnGQ5VUd
+ M69g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=PgcH1xIdzRwjhnVhoxnojhctD2lMsauDz8vl0j3Q3BU=;
+ b=KZTPCxbwRH60CNyUAOkC4ZrMQZ8R0D57RsVr0ft5fTZ53MZV7qU4Hi41LqJzA9GxnK
+ 0XXkaAJOCNaTiEElqqivE+gaxztYS1rKJTuYJHXC7UhBANjAZQScqGST+dGVZ/bFk6BA
+ NRLmz/2rMDBkEwJf+xq73pvE8mP1wMwyEwyXDEtrnB97zWOfpN0sUgNaBIjYyzBgPFqU
+ tVV31XGWcY2fVodvV8xj5w49gYFfEJzN0Z2bPKUQhaDN6M7+a9QMjdbmtorClu1fDUea
+ TMcU2F40BaVDqD51qpqHB7YhAYm0d882BV0rTUqU2LeVaP2HQ1tPTOijtXI7ibnOg25h
+ RLlA==
+X-Gm-Message-State: APjAAAVX6G9f7AsOhuewBdSPQ8ljDrhw+tU2lZeK1dN/vhvNUahge22o
+ /2BIQXy/RnwMac19uzzcKh3xdw==
+X-Received: by 2002:a65:6901:: with SMTP id s1mr666714pgq.338.1568752357934;
+ Tue, 17 Sep 2019 13:32:37 -0700 (PDT)
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id b26sm3487785pfd.61.2019.09.17.13.32.36
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 17 Sep 2019 13:32:37 -0700 (PDT)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20190916154847.28936-1-philmd@redhat.com>
+ <20190916154847.28936-4-philmd@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <8cbb8459-a4bb-2efc-c9f8-d9e95230b3ac@redhat.com>
-Date: Tue, 17 Sep 2019 15:10:00 -0400
+Message-ID: <dd8bdcd6-9e43-3721-7b39-f53d906988b3@linaro.org>
+Date: Tue, 17 Sep 2019 13:32:34 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190917144631.GF4824@localhost.localdomain>
+In-Reply-To: <20190916154847.28936-4-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.44]); Tue, 17 Sep 2019 19:10:18 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 02/17] block: Pass local error object pointer
- to error_append_hint()
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::441
+Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 03/13] hw: Move MC146818 device
+ from hw/timer/ to hw/rtc/ subdirectory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -169,73 +119,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
- Juan Quintela <quintela@redhat.com>, David Hildenbrand <david@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
- Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia@oracle.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
- Richard Henderson <rth@twiddle.net>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org,
- Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Helge Deller <deller@gmx.de>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, David Gibson <david@gibson.dropbear.id.au>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-ppc@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mVZZHEXO5N0E
+X-TUID: A73uTpXoLx2i
+
+On 9/16/19 11:48 AM, Philippe Mathieu-Daudé wrote:
+>  include/hw/rtc/mc146818rtc.h                 | 38 ++++++++++++++++++++
+
+Same rebase failure as for patch 4?
 
 
-
-On 9/17/19 10:46 AM, Kevin Wolf wrote:
-> Am 17.09.2019 um 16:39 hat Eric Blake geschrieben:
->> On 9/17/19 5:20 AM, Greg Kurz wrote:
->>> Ensure that hints are added even if errp is &error_fatal or &error_abort.
->>>
->>> Signed-off-by: Greg Kurz <groug@kaod.org>
->>> ---
->>>  block/backup.c       |    7 +++++--
->>>  block/dirty-bitmap.c |    7 +++++--
->>>  block/file-posix.c   |   20 +++++++++++++-------
->>>  block/gluster.c      |   23 +++++++++++++++--------
->>>  block/qcow.c         |   10 ++++++----
->>>  block/qcow2.c        |    7 +++++--
->>>  block/vhdx-log.c     |    7 +++++--
->>>  block/vpc.c          |    7 +++++--
->>>  8 files changed, 59 insertions(+), 29 deletions(-)
->>>
->>> diff --git a/block/backup.c b/block/backup.c
->>> index 763f0d7ff6db..d8c422a0e3bc 100644
->>> --- a/block/backup.c
->>> +++ b/block/backup.c
->>> @@ -602,11 +602,14 @@ static int64_t backup_calculate_cluster_size(BlockDriverState *target,
->>>                      BACKUP_CLUSTER_SIZE_DEFAULT);
->>>          return BACKUP_CLUSTER_SIZE_DEFAULT;
->>>      } else if (ret < 0 && !target->backing) {
->>> -        error_setg_errno(errp, -ret,
->>> +        Error *local_err = NULL;
->>
->> Can we go with the shorter name 'err' instead of 'local_err'?  I know,
->> we aren't consistent (both styles appear throughout the tree), but the
->> shorter style is more appealing to me.
-> 
-> I like local_err better because it's easier to distinguish from errp.
-> The compiler might catch it if you use the wrong one because one is
-> Error* and the other is Error**, but as a reviewer, I can still get
-> confused.
-> 
-> Kevin
-> 
-
-Doesn't that sound like a striking reason for condemnation of this
-entire model?
-
-What's going to prevent us from regressing on this technicality in the
-future?
+r~

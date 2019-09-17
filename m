@@ -1,132 +1,109 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4806376wrp;
-        Mon, 16 Sep 2019 21:58:36 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw6QSc38MY5lXLdNJKxfvVCstz8ekJcGzzD5q1oiq9mcMnsj/yi5jzWLPB44oBDP6DbrDzm
-X-Received: by 2002:a17:906:3187:: with SMTP id 7mr3014228ejy.238.1568696316592;
-        Mon, 16 Sep 2019 21:58:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568696316; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5032980wrp;
+        Tue, 17 Sep 2019 03:05:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyHFt+Jz6qcECIs3NIitY4gSqu9U7fj8U6RHD6iZ6EvAxvDI0nI2FE3VX/7Rmz47Yz2GozL
+X-Received: by 2002:ad4:4b09:: with SMTP id r9mr2259116qvw.121.1568714704229;
+        Tue, 17 Sep 2019 03:05:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568714704; cv=none;
         d=google.com; s=arc-20160816;
-        b=HQQCxIaljqFHaKaoupop0b+BU0KK4IeDPvHIW22iN9CoaqpuycE1a9Vk/ZqfRdeWWi
-         s89QhSPBXCHVKwfHVgv4AvEv7GKf9lSCRDDwrwfO2lCk8lBSvbCxtIbYMNqz+CUMNKX8
-         VoD7m2p+piVXgR0h/r3XdSsANQ5hYoV40E5FzufgTpCVr+A2jOIohl1J5XEPEuLsfx99
-         gy+99gPDRhSopphrvqeJZAQyZiAR0wQkWqa+xFMWBTy34/8aKV1fqq00pWlzAMJTbizr
-         5XRAjtDOnFJJ7/K/YpNRXOmUtItDEOQy9pk7tcMa6ABuPFy2jEZgYN7QzkkFpU+2bKMR
-         QROw==
+        b=gI3tWL3kSFCrAxWDGEYE97t8WKFH8ie4Y+SLpJwJoPY40OGGCGjOQU9aYnYlTIoyWM
+         GvtxzVXHJAmdJqpJPbaF90dV6wb/v5yfzDLBY1JCB/GvRtobn82Zic207gLCF9Ol8CxK
+         1NvnvE8UEIqWVLoWx+04G7+S8O7yvM/bLlv4SoHB+bwAR10MyTBhx5ycrEX/FSxRsXcT
+         CqWToe5BQvZGPwGlAcI6/Wsvd1NNM6r7arZidj0W0H6y7F27KJm7s+XF++GmigV9X0bZ
+         YVZG5hM2W2vAwcG1Z1VlnCNLSJ+eF+ElJU0MzkvrFVbbsty5NZeNanymbc10SmlfxLOP
+         1JdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to;
-        bh=z67WCEyHIuMQeKk5nY1KzvChx6fbSRBTQZ5M9Ud/3tY=;
-        b=0xt6KJFUJxWsc7tKa6p2IBAH9BZPcTThQa0jZj7NBdgraP/AHWTdsYD1E5frI385F8
-         5kk4Pd6MzrioSFl9ni6mR/z19/48D1FKmaRvHB3M4GzDjRKP1sMpRHAiAirTcc05Gwdv
-         HTnKX7MyeiMhW5BmN4PO09MxluASVNT9NwWCgJIDnNsNXiEBXEzeRTEmeDky3rJES39Z
-         Fhon/Hnc7XzPP0ATPlUzZq1f+8BHR+UiVBc7FheSNd5VhHVb4cjc8c1w0ukAw87WKboM
-         WOUg0LL+fDL7OYI/rvSv2LI0NLZaH8j0DT2ohO5txCO4vimHoTxCJG0tQV9JzuVG8QRM
-         MU5w==
+         :user-agent:date:message-id:openpgp:from:references:to;
+        bh=R81fY9eTnofShBytYq/782lw4xue98w1TN0/0rrzma0=;
+        b=k+5iqzvlqwq6W4+2cIntf8bJEuhQ2VyB5vyB5Ghy7tZY2M+eSsAtYJ96Tz6lMr3Ko1
+         Di/SCChEMyUyYoYawsxPLunjyanQbeIfYw+v3OhaeYfIAGqkyaQDjcmp5HeOci2KIT2E
+         L9QTckKC9Gx4Hhgzg4LJfzEg8238PDP4JFf16+3DTve4VfdhzIg8C6IPNK2ud3DTkDiv
+         yBvqgbm7tj2tLFElvGOpDGg8nVrjpGlktKctnfrw6AxQoJycVL4soKeKKI4WWvHEah3M
+         PEPicYUd9Q8bQG5qMNON/7Wv/JMoWO6rmjO+9/YKywmD+16r+vsLznIJOQEs7JPY4wIj
+         L1Dw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e25si726123edb.308.2019.09.16.21.58.36
+        by mx.google.com with ESMTPS id n129si1045748qkn.268.2019.09.17.03.05.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 16 Sep 2019 21:58:36 -0700 (PDT)
+        Tue, 17 Sep 2019 03:05:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41902 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43528 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iA5ZT-0008T4-IF
-	for alex.bennee@linaro.org; Tue, 17 Sep 2019 00:58:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58492)
+	id 1iAAM2-0005gJ-N9
+	for alex.bennee@linaro.org; Tue, 17 Sep 2019 06:05:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40865)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iA5Z7-0008Sk-7b
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 00:58:14 -0400
+ (envelope-from <philmd@redhat.com>) id 1iAAKx-00059r-0y
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 06:03:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iA5Z4-0005yh-Nv
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 00:58:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52630)
+ (envelope-from <philmd@redhat.com>) id 1iAAKu-0003Mu-GF
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 06:03:54 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44444)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1iA5Z4-0005yC-GN; Tue, 17 Sep 2019 00:58:10 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iAAKu-0003K8-2b
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 06:03:52 -0400
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 2B439307D90D;
- Tue, 17 Sep 2019 04:58:08 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-28.ams2.redhat.com [10.36.116.28])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7C38E60600;
- Tue, 17 Sep 2019 04:57:52 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
+ by mx1.redhat.com (Postfix) with ESMTPS id DF80F81F11
+ for <qemu-arm@nongnu.org>; Tue, 17 Sep 2019 10:03:50 +0000 (UTC)
+Received: by mail-wm1-f72.google.com with SMTP id n3so1033867wmf.3
+ for <qemu-arm@nongnu.org>; Tue, 17 Sep 2019 03:03:50 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=3+afwFZpDz4drxhEg51Q+8ZlZcQqE592fqIFd+/NFmM=;
+ b=grHtOgt9wGWDZCvqwBVeSWlKw1rY+wLnMm9+rDMPGG5YexSn23V66GX7WGeTcC3UiG
+ hEm2fedQz5GbkOHSSmM5H26wXU9qap/kfQXXW6TRlVmIRgAeR+iflnfHyOUejqXrM+D4
+ HMEOc26Yq9yw6n33+I2ytMHUU+e+FPDEUslMakhoBl3ennx4Uj5HuuR2ei3nnjO2CVUY
+ tKqOajznru5o0maeJ7jVrkyw3CecTIwfqhTertJnEciqeAkjipOOVESx9OrQSSVjV6uo
+ vUvlaq9vJMv8jVf2yzCgyO+3voIn46znTCJa6tJrSEJqHvFH56Ly27rzzVVgwOre6VGb
+ lqhw==
+X-Gm-Message-State: APjAAAV2uoG6RtoRh6/+9Wp6Eyg6qMWxQWtjZBTq5LSNF2K1SJvXU/uA
+ atDvXYxpWhu1dWJPnO0CLkKvZywRlhhwnL8l4CevgUYSVLrYrO4O0z/HQQQO30/8CiwNwifLG3O
+ nxcq/Aq956l8F
+X-Received: by 2002:a1c:a8cb:: with SMTP id r194mr2736617wme.156.1568714629392; 
+ Tue, 17 Sep 2019 03:03:49 -0700 (PDT)
+X-Received: by 2002:a1c:a8cb:: with SMTP id r194mr2736575wme.156.1568714629145; 
+ Tue, 17 Sep 2019 03:03:49 -0700 (PDT)
+Received: from [192.168.1.40] (240.red-88-21-68.staticip.rima-tde.net.
+ [88.21.68.240])
+ by smtp.gmail.com with ESMTPSA id r12sm1655754wrq.88.2019.09.17.03.03.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 17 Sep 2019 03:03:48 -0700 (PDT)
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
 References: <20190916154847.28936-1-philmd@redhat.com>
- <20190916154847.28936-2-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat
-Message-ID: <1c79bc3a-740e-ed69-303f-3a53afaf48e3@redhat.com>
-Date: Tue, 17 Sep 2019 06:57:49 +0200
+ <20190916154847.28936-4-philmd@redhat.com>
+ <c5caa155-19d3-1b22-ea61-d8c17dca39e7@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
+ url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
+Message-ID: <6f9f0932-5420-c67f-b6f7-2a7ceb4e99a4@redhat.com>
+Date: Tue, 17 Sep 2019 12:03:46 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ Thunderbird/60.7.0
 MIME-Version: 1.0
-In-Reply-To: <20190916154847.28936-2-philmd@redhat.com>
+In-Reply-To: <c5caa155-19d3-1b22-ea61-d8c17dca39e7@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.48]); Tue, 17 Sep 2019 04:58:08 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 01/13] hw/timer: Compile devices not
- target-dependent as common object
+Subject: Re: [Qemu-arm] [PATCH 03/13] hw: Move MC146818 device from
+ hw/timer/ to hw/rtc/ subdirectory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -155,61 +132,190 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OBE9uPPjUNW8
+X-TUID: a55n+OE10mZX
 
-On 16/09/2019 17.48, Philippe Mathieu-Daud=C3=A9 wrote:
-> All these devices do not contain any target-specific. While most
-> of them are arch-specific, they are shared between different
-> targets of the same arch family (ARM and AArch64, MIPS32/MIPS64,
-> endianess, ...).
-> Put them into common-obj-y to compile them once for all targets.
+On 9/17/19 7:07 AM, Thomas Huth wrote:
+> On 16/09/2019 17.48, Philippe Mathieu-Daud=C3=A9 wrote:
+>> The MC146818 is a Real Time Clock, not a timer.
+>> Move it under the hw/rtc/ subdirectory.
+>>
+>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> [...]
+>> diff --git a/include/hw/rtc/mc146818rtc.h b/include/hw/rtc/mc146818rtc=
+.h
+>> new file mode 100644
+>> index 0000000000..888e04f9ab
+>> --- /dev/null
+>> +++ b/include/hw/rtc/mc146818rtc.h
+>> @@ -0,0 +1,38 @@
+>> +/*
+>> + * QEMU MC146818 RTC emulation
+>> + *
+>> + * Copyright (c) 2003-2004 Fabrice Bellard
+>> + *
+>> + * Permission is hereby granted, free of charge, to any person obtain=
+ing a copy
+>> + * of this software and associated documentation files (the "Software=
+"), to deal
+>> + * in the Software without restriction, including without limitation =
+the rights
+>> + * to use, copy, modify, merge, publish, distribute, sublicense, and/=
+or sell
+>> + * copies of the Software, and to permit persons to whom the Software=
+ is
+>> + * furnished to do so, subject to the following conditions:
+>> + *
+>> + * The above copyright notice and this permission notice shall be inc=
+luded in
+>> + * all copies or substantial portions of the Software.
+>> + *
+>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EX=
+PRESS OR
+>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTAB=
+ILITY,
+>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT =
+SHALL
+>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES =
+OR OTHER
+>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, AR=
+ISING FROM,
+>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEAL=
+INGS IN
+>> + * THE SOFTWARE.
+>> + */
 >=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  hw/timer/Makefile.objs | 22 +++++++++++-----------
->  1 file changed, 11 insertions(+), 11 deletions(-)
+> If you run "git blame" on the old header file, it does not seem like
+> Fabrice wrote this header, so I'm not sure whether it makes sense to ad=
+d
+> his (c) statement here?
 >=20
-> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-> index 123d92c969..f407523aa4 100644
-> --- a/hw/timer/Makefile.objs
-> +++ b/hw/timer/Makefile.objs
-> @@ -25,20 +25,20 @@ common-obj-$(CONFIG_MILKYMIST) +=3D milkymist-sysct=
-l.o
->  common-obj-$(CONFIG_XLNX_ZYNQMP) +=3D xlnx-zynqmp-rtc.o
->  common-obj-$(CONFIG_NRF51_SOC) +=3D nrf51_timer.o
-> =20
-> -obj-$(CONFIG_ALTERA_TIMER) +=3D altera_timer.o
-> -obj-$(CONFIG_EXYNOS4) +=3D exynos4210_mct.o
-> -obj-$(CONFIG_EXYNOS4) +=3D exynos4210_pwm.o
-> -obj-$(CONFIG_EXYNOS4) +=3D exynos4210_rtc.o
-> -obj-$(CONFIG_OMAP) +=3D omap_gptimer.o
-> -obj-$(CONFIG_OMAP) +=3D omap_synctimer.o
-> -obj-$(CONFIG_PXA2XX) +=3D pxa2xx_timer.o
-> -obj-$(CONFIG_SH4) +=3D sh_timer.o
-> -obj-$(CONFIG_DIGIC) +=3D digic-timer.o
-> -obj-$(CONFIG_MIPS_CPS) +=3D mips_gictimer.o
-> +common-obj-$(CONFIG_ALTERA_TIMER) +=3D altera_timer.o
-> +common-obj-$(CONFIG_EXYNOS4) +=3D exynos4210_mct.o
-> +common-obj-$(CONFIG_EXYNOS4) +=3D exynos4210_pwm.o
-> +common-obj-$(CONFIG_EXYNOS4) +=3D exynos4210_rtc.o
-> +common-obj-$(CONFIG_OMAP) +=3D omap_gptimer.o
-> +common-obj-$(CONFIG_OMAP) +=3D omap_synctimer.o
-> +common-obj-$(CONFIG_PXA2XX) +=3D pxa2xx_timer.o
-> +common-obj-$(CONFIG_SH4) +=3D sh_timer.o
-> +common-obj-$(CONFIG_DIGIC) +=3D digic-timer.o
-> +common-obj-$(CONFIG_MIPS_CPS) +=3D mips_gictimer.o
-> =20
->  obj-$(CONFIG_MC146818RTC) +=3D mc146818rtc.o
-> =20
-> -obj-$(CONFIG_ALLWINNER_A10_PIT) +=3D allwinner-a10-pit.o
-> +common-obj-$(CONFIG_ALLWINNER_A10_PIT) +=3D allwinner-a10-pit.o
-> =20
->  common-obj-$(CONFIG_STM32F2XX_TIMER) +=3D stm32f2xx_timer.o
->  common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_timer.o aspeed_rtc.o
->=20
+> Maybe rather use a one-line "SPDX-License-Identifier: GPL-2.0-or-later"
+> here?
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+It was first added by Fabrice here:
 
-FWIW, that change is also part of my "hw/*/Makefile.objs: Move many .o
-files to common-objs" patch ... but since it looks identical, it should
-not matter, which patch goes in first.
+$ git show 80cabfad163
+[...]
+> diff --git a/hw/mc146818rtc.c b/hw/mc146818rtc.c
+new file mode 100644
+index 0000000000..cab76cfab2
+--- /dev/null
++++ b/hw/mc146818rtc.c
+@@ -0,0 +1,203 @@
++/*
++ * QEMU MC146818 RTC emulation
++ *
++ * Copyright (c) 2003-2004 Fabrice Bellard
++ *
++ * Permission is hereby granted, free of charge, to any person
+obtaining a copy
++ * of this software and associated documentation files (the
+"Software"), to deal
++ * in the Software without restriction, including without limitation
+the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or
+sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be
+included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILI=
+TY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHA=
+LL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN
++ * THE SOFTWARE.
++ */[...]
+diff --git a/vl.h b/vl.h
+index 35962d1985..026a5dee5a 100644
+--- a/vl.h
++++ b/vl.h
++/* mc146818rtc.c */
++
++typedef struct RTCState {
++    uint8_t cmos_data[128];
++    uint8_t cmos_index;
++    int irq;
++} RTCState;
++
++extern RTCState rtc_state;
++
++void rtc_init(int base, int irq);
++void rtc_timer(void);
+
+Then moved from vl.h to pc.h:
+
+$ git show 87ecb68bdf8
+commit 87ecb68bdf8a3e40ef885ddbb7ca1797dca40ebf
+Author: pbrook <pbrook@c046a42c-6fe2-441c-8c8c-71466251a162>
+Date:   Sat Nov 17 17:14:51 2007 +0000
+
+    Break up vl.h.
+
+Then moved from pc.h to mc146818rtc.h without adding the (c):
+
+$ git show e1460e4707c
+commit e1460e4707cd80982add597f5cb421289db84e4e
+Author: Isaku Yamahata <yamahata@valinux.co.jp>
+Date:   Fri May 14 16:29:16 2010 +0900
+
+    pc: move rtc declarations from pc.h into a dedicated header file.
+
+    Move rtc_xxx declarations from pc.h into mc146818rtc.h.
+
+    Signed-off-by: Isaku Yamahata <yamahata@valinux.co.jp>
+    Acked-by: Gerd Hoffmann <kraxel@redhat.com>
+    Signed-off-by: Blue Swirl <blauwirbel@gmail.com>
+
+diff --git a/hw/mc146818rtc.h b/hw/mc146818rtc.h
+new file mode 100644
+index 0000000000..7211dae37e
+--- /dev/null
++++ b/hw/mc146818rtc.h
+@@ -0,0 +1,10 @@
++#ifndef MC146818RTC_H
++#define MC146818RTC_H
++
++typedef struct RTCState RTCState;
++
++RTCState *rtc_init(int base_year);
++void rtc_set_memory(RTCState *s, int addr, int val);
++void rtc_set_date(RTCState *s, const struct tm *tm);
++
++#endif /* !MC146818RTC_H */
+diff --git a/hw/pc.h b/hw/pc.h
+index 8cfec6c0dc..e3cc0a58bd 100644
+--- a/hw/pc.h
++++ b/hw/pc.h
+@@ -5,6 +5,7 @@
+ #include "ioport.h"
+ #include "isa.h"
+ #include "fdc.h"
++#include "mc146818rtc.h"
+
+ /* PC-style peripherals (also used by other machines).  */
+
+@@ -76,14 +77,6 @@ void i8042_mm_init(qemu_irq kbd_irq, qemu_irq mouse_ir=
+q,
+                    target_phys_addr_t base, ram_addr_t size,
+                    target_phys_addr_t mask);
+
+-/* mc146818rtc.c */
+-
+-typedef struct RTCState RTCState;
+-
+-RTCState *rtc_init(int base_year);
+-void rtc_set_memory(RTCState *s, int addr, int val);
+-void rtc_set_date(RTCState *s, const struct tm *tm);
+
+So the (c) looks correct to me. Do you still disagree?

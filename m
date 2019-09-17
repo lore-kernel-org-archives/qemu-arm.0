@@ -1,91 +1,91 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5055979wrp;
-        Tue, 17 Sep 2019 03:28:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy/VHhCY5x0TpOUMHuqMCE/qHyrSKU087IV3t9tfOxDuOn/R4nBSRwahs7PGnODgsCM7xVm
-X-Received: by 2002:a17:906:7798:: with SMTP id s24mr4054168ejm.211.1568716110932;
-        Tue, 17 Sep 2019 03:28:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568716110; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5056169wrp;
+        Tue, 17 Sep 2019 03:28:44 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz0Zru5OZciwmGR0b2F5tNByVuXkaCtRs8iWtUjmG6QRdHNAnUAideihwH5jEIYLpkGGe8I
+X-Received: by 2002:a50:908c:: with SMTP id c12mr3905398eda.45.1568716124680;
+        Tue, 17 Sep 2019 03:28:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568716124; cv=none;
         d=google.com; s=arc-20160816;
-        b=XJc3GAWwKmb5/U+hZSFcFHa5J3nRr+QmUnkVTccXL8cYUrMbwyLW8XFyGsrWQzW4N9
-         K73vU1f1HLUsRwEOrzTqkSQvPuI9RP8Tc6GsM0i1OMO3usSR6mGGfbEz4jinVHWaJZob
-         qS0S3HtrIrVQ/A0cMnTnKflY1awgsr4HO3uzlXyQMXnRZRmv1aiPJT+MXCkhJVY7NA8U
-         mejHIgPO+HQu5tr51/Pt3hU6jWirf5kudv/ip7DP2kI301iWnxZhlaocZrhf303WoSQO
-         V7yFwWLVPGLcaj93aNrLiqmdYFKTnmW2XfVRiYZls8uAwmaZigwk06wG22FOc0ihLK5W
-         TLyg==
+        b=mPjPRk9F11J44sZaojNVdJZCV0dCBb+JNeWS3LM+5f279SR1YAVmGZ54pNzAmiRMIN
+         NQz51iWndzTlh4BoVQ4xlJz/ch0WEh61uEtaBsCK9Ie3gJHWMHF11zJS9xNBKUTu4DCd
+         B0K4jFbsY2ZzuJmLux5XU4vcuqajjeEebQ9Wi9XZK4EDWnNUn7HJPx0cYXf7DMi5dmvf
+         LEWBlA3quZXpVoxOKD7/T/LJvm5mlzONoWLPZRVO5RMBfm6CF/S5Vg7S1U0AB4y5H5uw
+         zswhBROXSUqyC8tsjtjuNXe2mRbHjEC1utZUn+4IiQ2rvR51WY7XZKd1k8sjkivV4w5T
+         bAiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject:message-id
          :content-transfer-encoding:mime-version:user-agent:references
          :in-reply-to:date:to:from;
-        bh=WkgmMSgokU6L7UJ47wQZmG5/eHlzFJDt62dbhweWFW8=;
-        b=r3uk1SfFoiSu0qQMSC/m5BW+cI7oHJxH5vz2FU2qy0tdiCzZbQRnnKC1ianGdZRg0e
-         5PwaOmeBYWZ/mQkyeFpU/2mYW6FzahYcsS/ATg5sho5q4u4j7samdBDffkLo5K7VIEp3
-         w2qZ36KxPpkrmoifs4mSupCZUKdb9dDvRx85KLLYlQfyvHdg+kaz9rtwc+8lHx+G4Lti
-         F8eQZzKRyrK7UhREoWktaT86t7RrcCE0pE02d8bolc7ZB7X3wdlf/T5W2GPJ7LCyn9is
-         1poVeHS8Y3/ZamdSWDkGbK7lND2zxuh5kqElEgNyF9hAj76d3Xbwbq6mN0xdJhN3Nk7H
-         32rA==
+        bh=DzJPeO32iuzNUldr0og8AoF0gmhCoodIA9ovO25K3H8=;
+        b=hzQeEh0kX8Xd5JouULBSvkpRXUYfoldzQ6wbEbIMtdept3dGJqKT3YnV3BsPf5H+14
+         BHS9c8/Lho0+mtzLyokk/QyE5lXf8TBjMhAIZHbiNQdxAKSvW/pRom2CmT+eohj9/Ww5
+         UhIBBfGB9izyhUfnnXTuHRWdZv1oKVl0i7h+Z3NLrPsaf/83oXjGT0K0C0worAWX5bmR
+         2v3EqOssLIaBsITy6VtqlPD9eqvHF58M8n5VwL5XmyQ6moKMKa09qva5BrlNTaztgmE1
+         w9KSenXXnJZmHzx6Nl73/OMKzGObcEoWRwk/ojYD7Qex+Pw2EwS8s+xnspYTt8PsWGwN
+         9U0g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i34si1165537ede.37.2019.09.17.03.28.30
+        by mx.google.com with ESMTPS id g21si1079271edg.339.2019.09.17.03.28.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Sep 2019 03:28:30 -0700 (PDT)
+        Tue, 17 Sep 2019 03:28:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43732 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43734 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAAij-0004Bq-5Q
-	for alex.bennee@linaro.org; Tue, 17 Sep 2019 06:28:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43788)
+	id 1iAAiw-0004Qk-34
+	for alex.bennee@linaro.org; Tue, 17 Sep 2019 06:28:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43857)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <groug@kaod.org>) id 1iAAby-00077j-Dx
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:21:32 -0400
+ (envelope-from <groug@kaod.org>) id 1iAAcA-0007I0-DA
+ for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:21:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <groug@kaod.org>) id 1iAAbw-0003pa-Mg
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:21:30 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:8860)
+ (envelope-from <groug@kaod.org>) id 1iAAc9-0003vh-87
+ for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:21:42 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:52478)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <groug@kaod.org>) id 1iAAbw-0003p6-DJ
- for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:21:28 -0400
-Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
+ (Exim 4.71) (envelope-from <groug@kaod.org>) id 1iAAc8-0003vN-WA
+ for qemu-devel@nongnu.org; Tue, 17 Sep 2019 06:21:41 -0400
+Received: from pps.filterd (m0098410.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.16.0.27/8.16.0.27) with SMTP id
- x8HAHFVe070841
- for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 06:21:27 -0400
-Received: from e06smtp07.uk.ibm.com (e06smtp07.uk.ibm.com [195.75.94.103])
- by mx0a-001b2d01.pphosted.com with ESMTP id 2v2w2ysmnf-1
+ x8HAHgYT048596
+ for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 06:21:40 -0400
+Received: from e06smtp05.uk.ibm.com (e06smtp05.uk.ibm.com [195.75.94.101])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 2v2wd3rqdq-1
  (version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=NOT)
- for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 06:21:27 -0400
+ for <qemu-devel@nongnu.org>; Tue, 17 Sep 2019 06:21:39 -0400
 Received: from localhost
- by e06smtp07.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
+ by e06smtp05.uk.ibm.com with IBM ESMTP SMTP Gateway: Authorized Use Only!
  Violators will be prosecuted
  for <qemu-devel@nongnu.org> from <groug@kaod.org>;
- Tue, 17 Sep 2019 11:21:24 +0100
-Received: from b06cxnps4076.portsmouth.uk.ibm.com (9.149.109.198)
- by e06smtp07.uk.ibm.com (192.168.101.137) with IBM ESMTP SMTP Gateway:
+ Tue, 17 Sep 2019 11:21:36 +0100
+Received: from b06avi18878370.portsmouth.uk.ibm.com (9.149.26.194)
+ by e06smtp05.uk.ibm.com (192.168.101.135) with IBM ESMTP SMTP Gateway:
  Authorized Use Only! Violators will be prosecuted; 
  (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256/256)
- Tue, 17 Sep 2019 11:21:18 +0100
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com
- (b06wcsmtp001.portsmouth.uk.ibm.com [9.149.105.160])
- by b06cxnps4076.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- x8HALGXt28770498
+ Tue, 17 Sep 2019 11:21:30 +0100
+Received: from d06av22.portsmouth.uk.ibm.com (d06av22.portsmouth.uk.ibm.com
+ [9.149.105.58])
+ by b06avi18878370.portsmouth.uk.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP
+ id x8HALTLu44695820
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 17 Sep 2019 10:21:16 GMT
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 572B3A405F;
- Tue, 17 Sep 2019 10:21:16 +0000 (GMT)
-Received: from b06wcsmtp001.portsmouth.uk.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 5D1AAA4054;
- Tue, 17 Sep 2019 10:21:15 +0000 (GMT)
+ Tue, 17 Sep 2019 10:21:29 GMT
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id EA5654C040;
+ Tue, 17 Sep 2019 10:21:28 +0000 (GMT)
+Received: from d06av22.portsmouth.uk.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id EEF444C044;
+ Tue, 17 Sep 2019 10:21:27 +0000 (GMT)
 Received: from bahia.lan (unknown [9.145.22.84])
- by b06wcsmtp001.portsmouth.uk.ibm.com (Postfix) with ESMTP;
- Tue, 17 Sep 2019 10:21:15 +0000 (GMT)
+ by d06av22.portsmouth.uk.ibm.com (Postfix) with ESMTP;
+ Tue, 17 Sep 2019 10:21:27 +0000 (GMT)
 From: Greg Kurz <groug@kaod.org>
 To: qemu-devel@nongnu.org
-Date: Tue, 17 Sep 2019 12:21:15 +0200
+Date: Tue, 17 Sep 2019 12:21:27 +0200
 In-Reply-To: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
 References: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
 User-Agent: StGit/unknown-version
@@ -93,22 +93,22 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-TM-AS-GCONF: 00
-x-cbid: 19091710-0028-0000-0000-0000039E0EF0
+x-cbid: 19091710-0020-0000-0000-0000036E12B7
 X-IBM-AV-DETECTION: SAVI=unused REMOTE=unused XFE=unused
-x-cbparentid: 19091710-0029-0000-0000-000024608799
-Message-Id: <156871567501.196432.1562118977835800045.stgit@bahia.lan>
+x-cbparentid: 19091710-0021-0000-0000-000021C3B664
+Message-Id: <156871568761.196432.13197720535866413065.stgit@bahia.lan>
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:, ,
  definitions=2019-09-17_05:, , signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
  priorityscore=1501
  malwarescore=0 suspectscore=1 phishscore=0 bulkscore=0 spamscore=0
  clxscore=1034 lowpriorityscore=0 mlxscore=0 impostorscore=0
- mlxlogscore=629 adultscore=0 classifier=spam adjust=0 reason=mlx
+ mlxlogscore=633 adultscore=0 classifier=spam adjust=0 reason=mlx
  scancount=1 engine=8.0.1-1908290000 definitions=main-1909170106
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic]
 X-Received-From: 148.163.156.1
-Subject: [Qemu-devel] [PATCH 07/17] virtio-pci: Pass local error object
- pointer to error_append_hint()
+Subject: [Qemu-devel] [PATCH 09/17] hw/rdma: Fix missing conversion to
+ rdma_error_report()
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -129,60 +129,49 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
  =?utf-8?q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- "Daniel P. =?utf-8?q?Berrang=C3=A9=22?= <berrange@redhat.com>,
- qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org"@b06wcsmtp001.portsmouth.uk.ibm.com,
  David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  Yuval Shaia <yuval.shaia@oracle.com>,
- Alex Williamson <alex.williamson@redhat.com>, John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, Max Reitz <mreitz@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
+ Alex Williamson <alex.williamson@redhat.com>,
+ "Daniel P. =?utf-8?q?Berrang=C3=A9=22?= <berrange@redhat.com>,
+ qemu-block@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-s390x@nongnu.org"@d06av22.portsmouth.uk.ibm.com,
+ John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Kevin Wolf <kwolf@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ Max Reitz <mreitz@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fGpf5ZBY531w
+X-TUID: 0R8w+yI1rhMy
 
-Ensure that hints are added even if errp is &error_fatal or &error_abort.
+Commit 4d71b38ae8fa converted many error_setg() call sites to
+rdma_error_report(), but it forgot to convert a companion
+error_append_hint(). Since no guy doesn't set errp anymore in
+pvrdma_realize(), errp remains NULL and error_append_hint() does
+nothing.
 
+Also error_append_hint() was a poor choice since its "intended use
+is adding helpful hints on the human user interface" and "not for
+clarifying a confusing error message".
+
+Call rdma_error_report() instead.
+
+Fixes: 4d71b38ae8fa "hw/rdma: Switch to generic error reporting way"
 Signed-off-by: Greg Kurz <groug@kaod.org>
 ---
- hw/virtio/virtio-pci.c |   14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+ hw/rdma/vmw/pvrdma_main.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
-index c6b47a9c7385..1e58822ba186 100644
---- a/hw/virtio/virtio-pci.c
-+++ b/hw/virtio/virtio-pci.c
-@@ -1543,9 +1543,12 @@ static void virtio_pci_device_plugged(DeviceState *d, Error **errp)
-         virtio_pci_disable_modern(proxy);
- 
-         if (!legacy) {
--            error_setg(errp, "Device doesn't support modern mode, and legacy"
-+            Error *local_err = NULL;
-+
-+            error_setg(&local_err, "Device doesn't support modern mode, and legacy"
-                              " mode is disabled");
--            error_append_hint(errp, "Set disable-legacy to off\n");
-+            error_append_hint(&local_err, "Set disable-legacy to off\n");
-+            error_propagate(errp, local_err);
- 
-             return;
-         }
-@@ -1737,10 +1740,13 @@ static void virtio_pci_realize(PCIDevice *pci_dev, Error **errp)
+diff --git a/hw/rdma/vmw/pvrdma_main.c b/hw/rdma/vmw/pvrdma_main.c
+index 3e36e130139c..d370ae07ca6a 100644
+--- a/hw/rdma/vmw/pvrdma_main.c
++++ b/hw/rdma/vmw/pvrdma_main.c
+@@ -667,7 +667,7 @@ static void pvrdma_realize(PCIDevice *pdev, Error **errp)
+ out:
+     if (rc) {
+         pvrdma_fini(pdev);
+-        error_append_hint(errp, "Device failed to load\n");
++        rdma_error_report("Device failed to load");
      }
- 
-     if (!virtio_pci_modern(proxy) && !virtio_pci_legacy(proxy)) {
--        error_setg(errp, "device cannot work as neither modern nor legacy mode"
-+        Error *local_err = NULL;
-+
-+        error_setg(&local_err, "device cannot work as neither modern nor legacy mode"
-                    " is enabled");
--        error_append_hint(errp, "Set either disable-modern or disable-legacy"
-+        error_append_hint(&local_err, "Set either disable-modern or disable-legacy"
-                           " to off\n");
-+        error_propagate(errp, local_err);
-         return;
-     }
+ }
  
 

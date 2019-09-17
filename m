@@ -1,83 +1,83 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5122324wrp;
-        Tue, 17 Sep 2019 04:27:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy3q0zaOxyrB2sfBmvY45z3GWZSw048NvcwwvTeNshL3rcknMPKDHbVUHGKHHPVE7LTJGyD
-X-Received: by 2002:a37:2c44:: with SMTP id s65mr2910870qkh.303.1568719628149;
-        Tue, 17 Sep 2019 04:27:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568719628; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5125604wrp;
+        Tue, 17 Sep 2019 04:30:19 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyQ+L+d5GlZN1hdlEk4o/8Yg/P1oPPoGFKfnMJWAghkNt/UhkxdwmdPgHpuh2NjtdEI73Ee
+X-Received: by 2002:a17:906:d216:: with SMTP id w22mr4327418ejz.14.1568719819673;
+        Tue, 17 Sep 2019 04:30:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568719819; cv=none;
         d=google.com; s=arc-20160816;
-        b=o7btGp0khsH0c4ncmI7Jzli+AmJlRsA96OYRVoslWM535fNyKGImF9paK+JSKt0Ike
-         AGJBn4AcjJR58YH0GGUBAaMSB+5FLFVxXdbKlztfwv0j4Z+D0Zh7K67R6PW64vCAPhxp
-         LW1+MDgFyLpemdg4Sd+4jgXbyD2P5rCzHUCyID5/vk7TSj0SZHWIzuACuXYY9nT5C3b/
-         xyGGnFwVevL7yutowfaZF2vSTCD5+kyh//aAGC7c3kjJhryksr6WwUYkA8Fr8oGfZbya
-         WnBlV5fvb9++v9Ee7k8ksZF+7flNTTIZToRex2s5lpzWB9V7ChzONGIkx1DU3BKzLpYc
-         JGJw==
+        b=e/kMuZCgi4LsE9YCCr7+U8zpHv9ixeF+CbSwwqPYmKCk8gB5RA5cT9siLxvnpCM8Hl
+         0LHUta4ke6hZEaoTfuLK6+ASNyz2OYHWHQA4nokV7G2pA/TeWOFa/kK2IjozqUG4k0o8
+         JXiTpnQN+M3nbxNdQcRIJZwq94uftj7sY01S6hNFqwhwaZceCUPOGmf+UtIE59Lb/pOp
+         p5IGfm1iWgxfIjbFZ8Ry+HAFXNe0zLMMzAWAGSuoR7pjxggTDWfOOsbSK0PGuknf0jFZ
+         OJ2gO/8siU2NEPokXDKdadcAedZe7cyy59FO6fLxW0NLQZ/FWRa0HmlK3Mfylx5NmPmz
+         QiPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:organization:references
          :in-reply-to:message-id:to:from:date;
-        bh=UQGrVJwPgGrff2LFCWLfE5i/OvHSGkdofBVEvx92zIk=;
-        b=wVIG16zJS2XTQEKv02/RdDk4QKZgokYNKbpC90pJHiDruckO7QaalhxfTWwvK3oV2M
-         HRani80sbxIJ87U8taqkICQph1N5zRD8giDmJxY+KwS3ySw9Z89cka1+AIoVMJpFRPzO
-         0k6jOUmL9c7lbDapVjQfkxoy5z/IIiwbjKO2fvIMOyLz9msyu9GW+rwwpnIJKUUO9Pcw
-         j3eoHgD7bKvEcry+ZHIwRRDunOWTCb3/4f0fGUDad8yLuI2fZklTv7Rgt7dxbaKQPzYD
-         INXRSI9jktD0jqbVE4czSR5FM5WPoREuboDQ6YSV8pvcKrzeRBW3wQB6oCZCnhSBVijT
-         btqg==
+        bh=TOMrOB0Q2quYYk9Au0/YnM+RZkRK0TphrMWlz+49sXc=;
+        b=yDWQSJE5WS3baN1/FjL8ph2yXtsBJI5cpFnN3izGPiAvlEy5ddQe3LhXmeRod8dsrz
+         mPwajUw+PiflHO0IYpTGNSJvTDbWYZS/mNGdPO8mmxK7de1Cz5cG9IQV9zlZ7JFwwOuU
+         f1tovWLNTfimM4YtNKa8DdVgbOSbt3ZgN4AOPk4ZbY79QXoCWeRCiDgKrufc7HoUE7Xv
+         tr3jLwTGVqojDkWYJeJMzx7n3sUGKSOVZ7iSFTkx+CfBQmF4Vj3R8bjCSaXr+OzknD3m
+         q6diCf74pFj2B16l9MZk68WwnviPWomgq5pxjpDYAzvokz3vRwJaYCD1WLYZdlvCaNag
+         SgLA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k1si738036qtm.89.2019.09.17.04.27.08
+        by mx.google.com with ESMTPS id d11si1093702edp.247.2019.09.17.04.30.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Sep 2019 04:27:08 -0700 (PDT)
+        Tue, 17 Sep 2019 04:30:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44564 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44604 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iABdT-0001eO-Ab
-	for alex.bennee@linaro.org; Tue, 17 Sep 2019 07:27:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55343)
+	id 1iABgY-00037p-5V
+	for alex.bennee@linaro.org; Tue, 17 Sep 2019 07:30:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55756)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <cohuck@redhat.com>) id 1iABd8-0001eD-Ep
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 07:26:47 -0400
+ (envelope-from <cohuck@redhat.com>) id 1iABgI-00037U-CC
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 07:30:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <cohuck@redhat.com>) id 1iABd7-00067s-FX
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 07:26:46 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48792)
+ (envelope-from <cohuck@redhat.com>) id 1iABgH-0008SY-4l
+ for qemu-arm@nongnu.org; Tue, 17 Sep 2019 07:30:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:33394)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <cohuck@redhat.com>)
- id 1iABd7-00066l-9d; Tue, 17 Sep 2019 07:26:45 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ id 1iABgG-0008Rg-KQ; Tue, 17 Sep 2019 07:30:00 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 038B9C04B302;
- Tue, 17 Sep 2019 11:26:44 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 8F219300CB6E;
+ Tue, 17 Sep 2019 11:29:59 +0000 (UTC)
 Received: from gondolin (dhcp-192-230.str.redhat.com [10.33.192.230])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A19745D9E1;
- Tue, 17 Sep 2019 11:26:26 +0000 (UTC)
-Date: Tue, 17 Sep 2019 13:26:24 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 55D5C1001B01;
+ Tue, 17 Sep 2019 11:29:38 +0000 (UTC)
+Date: Tue, 17 Sep 2019 13:29:36 +0200
 From: Cornelia Huck <cohuck@redhat.com>
 To: Greg Kurz <groug@kaod.org>
-Message-ID: <20190917132624.09551e2a.cohuck@redhat.com>
-In-Reply-To: <156871566867.196432.11276188812327366259.stgit@bahia.lan>
+Message-ID: <20190917132936.7a2b9c95.cohuck@redhat.com>
+In-Reply-To: <156871573833.196432.7906362695920387537.stgit@bahia.lan>
 References: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
- <156871566867.196432.11276188812327366259.stgit@bahia.lan>
+ <156871573833.196432.7906362695920387537.stgit@bahia.lan>
 Organization: Red Hat GmbH
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.31]); Tue, 17 Sep 2019 11:26:44 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.46]); Tue, 17 Sep 2019 11:29:59 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 06/17] vfio: Pass local error object pointer
+Subject: Re: [Qemu-arm] [PATCH 17/17] checkpatch: Warn when errp is passed
  to error_append_hint()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,17 +112,56 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1eaxVaL0V2HB
+X-TUID: 0AsP/88f2/PL
 
-On Tue, 17 Sep 2019 12:21:08 +0200
+On Tue, 17 Sep 2019 12:22:18 +0200
 Greg Kurz <groug@kaod.org> wrote:
 
-> Ensure that hints are added even if errp is &error_fatal or &error_abort.
+> Passing errp from the argument list to error_append_hint()
+> isn't recommended because it may cause unwanted behaviours
+> when errp is equal to &error_fatal or &error_abort.
+> 
+> First, error_append_hint() aborts QEMU when passed either of
+> those.
+> 
+> Second, consider the following:
+> 
+>     void foo(Error **errp)
+>     {
+>          error_setg(errp, "foo");
+>          error_append_hint(errp, "Try bar\n");
+>     }
+> 
+> error_setg() causes QEMU to exit or abort, and hints aren't
+> added.
 > 
 > Signed-off-by: Greg Kurz <groug@kaod.org>
 > ---
->  hw/vfio/common.c |   14 ++++++++++----
->  hw/vfio/pci.c    |   12 ++++++++----
->  2 files changed, 18 insertions(+), 8 deletions(-)
+>  scripts/checkpatch.pl |    4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+> index aa9a354a0e7e..17ce026282a6 100755
+> --- a/scripts/checkpatch.pl
+> +++ b/scripts/checkpatch.pl
+> @@ -2902,6 +2902,10 @@ sub process {
+>  		}
+>  	}
+>  
 
-Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+Maybe add a comment here?
+
+# using errp is common practice, so that check should hopefully be enough
+
+> +		if ($line =~ /error_append_hint\(errp/) {
+> +		    WARN("suspicious errp passed to error_append_hint()\n" .
+
+Add "(use a local error object)"?
+
+> +			 $herecurr);
+> +		}
+>  # check for non-portable libc calls that have portable alternatives in QEMU
+>  		if ($line =~ /\bffs\(/) {
+>  			ERROR("use ctz32() instead of ffs()\n" . $herecurr);
+> 
+

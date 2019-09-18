@@ -1,111 +1,184 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id y13sm13204858wrg.8.2019.09.18.09.58.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Sep 2019 09:58:17 -0700 (PDT)
-Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 497281FF87;
-	Wed, 18 Sep 2019 17:58:16 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Pavel Dovgalyuk <dovgaluk@ispras.ru>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [RFC PATCH] tests/tcg: add time counter to memory test (WIP, aarch64 only)
-Date: Wed, 18 Sep 2019 17:58:09 +0100
-Message-Id: <20190918165809.3719-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20190918153335.20797-1-alex.bennee@linaro.org>
-References: <20190918153335.20797-1-alex.bennee@linaro.org>
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp6782398wrp;
+        Wed, 18 Sep 2019 10:49:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx89frL0622XAH/Z8KZEmNFDvkGJvpN4xJ0fVaz8B609THVjkma+o1Otk+jD1e5LWBooRoH
+X-Received: by 2002:a50:d556:: with SMTP id f22mr11391058edj.263.1568828961607;
+        Wed, 18 Sep 2019 10:49:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568828961; cv=none;
+        d=google.com; s=arc-20160816;
+        b=G3PkP7A9dimiWT4tbuXnzgARXugAg/di9F+VDVsfq/bJCMMCh8MuR35fbxxmfu13mV
+         5q2mpFOL8UW6LRzFwdpzZq692FdDRG2ULx7MBMZf/A6thvWQPaFmQH5j+JUWn/Oc78RC
+         E6QH7SamC6UvXuaswYRK7N4sDnUL4f+U3Vqo1QhHywXneD+PPDYz251P86VAKk06q7MK
+         nTUxjQFK94TmSkfMD8eSxY+Z/My3ChsuWBNAZvUOL+ffhVWSnvaG9mYv3mpmyBxqgx6D
+         mSdRK/E2fv2c7liE9szr977Fp47EiLbeqhTs9PCyc3fmohoxOeSNvAFYmM1gOSEkK1YV
+         KrQQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=sGM+1+64DjYT+1SWUUnkRTa3RqU9stDDW9XfGlAosKo=;
+        b=lQzsvBphpnd/3L28nnIT/m0DIPggdOnQIoaHjsRrHTjcqQmBQmxbbTHJOmdd3TzpqX
+         zWKWXaeWiAgh1KI1IDqpkcVrGvLf2+EJI17BNUzvURz5XTMi1yO8QpBwVly15R2w2bnO
+         gs51yhrNNfPEspJmDe60Yhzx4Hcr9W5Dbds7L9LJwxSwp/EvZOMgWCk5v3rXOoWJAytH
+         9cu9nAJ8CeQ9IjAS5C+fHK3qQEOIoKtEMkDEGAmImw3vPAv/uJ3RZeAc8QjaZUhgjz1x
+         XKAyaaPz+uGUlC/TOlaOPPR2r/GZwQiRdsyymspp/7nDLoxGK0k7gr+NGW6YrTZPMn7q
+         0BKA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g20si3871394edb.149.2019.09.18.10.49.21
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 18 Sep 2019 10:49:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33614 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iAe4u-0000dn-MH
+	for alex.bennee@linaro.org; Wed, 18 Sep 2019 13:49:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42405)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <eblake@redhat.com>) id 1iAe2j-0008M0-3j
+ for qemu-arm@nongnu.org; Wed, 18 Sep 2019 13:47:07 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <eblake@redhat.com>) id 1iAe2f-0002mG-3R
+ for qemu-arm@nongnu.org; Wed, 18 Sep 2019 13:47:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53792)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eblake@redhat.com>)
+ id 1iAe2e-0002ls-Qc; Wed, 18 Sep 2019 13:47:01 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 236DFA23CC;
+ Wed, 18 Sep 2019 17:46:59 +0000 (UTC)
+Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 07D3860872;
+ Wed, 18 Sep 2019 17:46:42 +0000 (UTC)
+To: Cornelia Huck <cohuck@redhat.com>, Greg Kurz <groug@kaod.org>
+References: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
+ <156871569396.196432.12307975838741351907.stgit@bahia.lan>
+ <20190917132412.6610576c.cohuck@redhat.com>
+ <20190917183620.044e980d@bahia.lan>
+ <20190918122628.7acb9284.cohuck@redhat.com>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=eblake@redhat.com; keydata=
+ xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
+ xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
+ TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
+ GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
+ sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
+ AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
+ CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
+ RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
+ wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
+ Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
+ gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
+ pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
+ zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
+ pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
+ 3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
+ NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
+ cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
+ SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
+ I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
+ mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
+ Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
+ 2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
+Organization: Red Hat, Inc.
+Message-ID: <89d76bbe-8053-e817-2ccb-322bccf1533e@redhat.com>
+Date: Wed, 18 Sep 2019 12:46:42 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TUID: cYxBze8+vvje
+In-Reply-To: <20190918122628.7acb9284.cohuck@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.25]); Wed, 18 Sep 2019 17:46:59 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH 10/17] s390x/css: Pass local error object
+ pointer to error_append_hint()
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
+ Juan Quintela <quintela@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Yuval Shaia <yuval.shaia@oracle.com>,
+ Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
+ John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Kevin Wolf <kwolf@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ qemu-s390x@nongnu.org, Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: p4zLPmM8P5GL
 
-To better support testing record/replay we should output something
-that would otherwise be variable had it not been pegged to icount.
+On 9/18/19 5:26 AM, Cornelia Huck wrote:
+> On Tue, 17 Sep 2019 18:36:20 +0200
+> Greg Kurz <groug@kaod.org> wrote:
+> 
+>> On Tue, 17 Sep 2019 13:24:12 +0200
+>> Cornelia Huck <cohuck@redhat.com> wrote:
+>>
+>>> On Tue, 17 Sep 2019 12:21:34 +0200
+>>> Greg Kurz <groug@kaod.org> wrote:
+>>>   
+>>>> Ensure that hints are added even if errp is &error_fatal or &error_abort.
+>>>>
+>>>> Signed-off-by: Greg Kurz <groug@kaod.org>
+>>>> ---
+>>>>  hw/s390x/s390-ccw.c |    6 ++++--
+>>>>  1 file changed, 4 insertions(+), 2 deletions(-)  
+>>>
+>>> Reviewed-by: Cornelia Huck <cohuck@redhat.com>
+>>>
+>>> Can also take this via the s390 tree, let me know what would work best.  
+>>
+>> I guess it would be easier to merge if each individual patch goes
+>> through the corresponding sub-maintainer tree. But Eric mentioned
+>> in another mail that the whole whole series could maybe go through
+>> Markus' error tree... so, I don't know which is best. :)
+> 
+> Ok, it's probably best to take this through the s390 tree, as I plan to
+> send a pull request tomorrow :)
 
-[AJB: needs a bit of work to nicely work across architectures although
-most have some sort of counter].
+If we go with Vladimir's idea of auto-propagation, this change just gets
+rewritten again as part of our simplifications to drop all use of
+'local_err' in favor of instead using the macro that makes errp always
+safe to use locally.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Pavel Dovgalyuk <dovgaluk@ispras.ru>
----
- tests/tcg/aarch64/Makefile.softmmu-target | 1 +
- tests/tcg/aarch64/system/boot.S           | 6 ++++++
- tests/tcg/minilib/minilib.h               | 3 +++
- tests/tcg/multiarch/system/memory.c       | 6 +++++-
- 4 files changed, 15 insertions(+), 1 deletion(-)
-
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index b4b39579634..698d9b26b63 100644
---- a/tests/tcg/aarch64/Makefile.softmmu-target
-+++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -51,5 +51,6 @@ run-memory-replay: memory-replay run-memory-record
- 		  -icount shift=5$(COMMA)rr=replay$(COMMA)rrfile=record.bin \
- 	   	  $(QEMU_OPTS) memory, \
- 	  "$< on $(TARGET_NAME)")
-+	$(call diff-out,memory-record,memory-replay.out)
- 
- TESTS+=memory-record memory-replay
-diff --git a/tests/tcg/aarch64/system/boot.S b/tests/tcg/aarch64/system/boot.S
-index b14e94f332d..fb7574e9c06 100644
---- a/tests/tcg/aarch64/system/boot.S
-+++ b/tests/tcg/aarch64/system/boot.S
-@@ -220,6 +220,12 @@ __sys_outc:
- 	ldp x0, x1, [sp], #16
- 	ret
- 
-+	/* return some sort of counter value */
-+	.global __sys_counter
-+__sys_counter:
-+	mrs x0, CNTV_TVAL_EL0
-+	ret
-+
- 	.data
- 	.align	12
- 
-diff --git a/tests/tcg/minilib/minilib.h b/tests/tcg/minilib/minilib.h
-index e23361380ae..29c097c545b 100644
---- a/tests/tcg/minilib/minilib.h
-+++ b/tests/tcg/minilib/minilib.h
-@@ -12,10 +12,13 @@
- #ifndef _MINILIB_H_
- #define _MINILIB_H_
- 
-+#include <inttypes.h>
-+
- /*
-  * Provided by the individual arch
-  */
- extern void __sys_outc(char c);
-+extern uint64_t __sys_counter(void);
- 
- /*
-  * Provided by the common minilib
-diff --git a/tests/tcg/multiarch/system/memory.c b/tests/tcg/multiarch/system/memory.c
-index d124502d730..fe32ed27bf8 100644
---- a/tests/tcg/multiarch/system/memory.c
-+++ b/tests/tcg/multiarch/system/memory.c
-@@ -454,6 +454,8 @@ int main(void)
- {
-     int i;
-     bool ok = true;
-+    uint64_t start = __sys_counter();
-+    uint64_t end;
- 
-     /* Run through the unsigned tests first */
-     for (i = 0; i < ARRAY_SIZE(init_ufns) && ok; i++) {
-@@ -470,6 +472,8 @@ int main(void)
-         ok = do_signed_reads(true);
-     }
- 
--    ml_printf("Test complete: %s\n", ok ? "PASSED" : "FAILED");
-+    end = __sys_counter();
-+
-+    ml_printf("Test complete in %" PRId64 ": %s\n", start - end, ok ? "PASSED" : "FAILED");
-     return ok ? 0 : -1;
- }
 -- 
-2.20.1
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org

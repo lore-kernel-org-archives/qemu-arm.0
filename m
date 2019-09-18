@@ -1,87 +1,134 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp6168287wrp;
-        Wed, 18 Sep 2019 00:33:52 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzwhz894hYS4/94+h3Sx9m7d1osnffSlzhTCH2JNDLB7bozd9ERBHcA1itdgOEP9A5cBUyW
-X-Received: by 2002:a17:906:4a06:: with SMTP id w6mr5597459eju.214.1568792032280;
-        Wed, 18 Sep 2019 00:33:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568792032; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp6175278wrp;
+        Wed, 18 Sep 2019 00:43:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwTrhaIRxQLfOc/n4rqOIKqhE6PgCsW8HdfOk+1oFdPQvRcxiddd94gwI1DIE/gEky8jkRx
+X-Received: by 2002:ac8:100d:: with SMTP id z13mr2810999qti.224.1568792636875;
+        Wed, 18 Sep 2019 00:43:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568792636; cv=none;
         d=google.com; s=arc-20160816;
-        b=qnzrBvwsu6texJdD8zeDw8Fl7g4iCnF02uf5emd0eh8Bwm+XxFUR4qzjwy81QWA4Qv
-         42vTQD3uM79M6vfXXbpGgRxqbkqXcIWJL73c69MUS2+zBSwXQj7hqbjGNPuxzw8miFy/
-         vmHCyIO8Aou+EqjqWp44oeFIVRWZI4Ha7wK1mTCD309KQ1KN7AUEvo/4BXJSGqlcs3UD
-         +yqtDwhgSjwYTo0DsaWcOhjsPVEpK7V0sHvoy61tl2+eq2CaW6VSmYd/aZeMineT1N2K
-         +pTinD/ZOApUiBGGREtk0aLcRhqpPblQk9ZFI+DyEuUM3+j23YHTQI5UTSHuCn1Bn48U
-         21MA==
+        b=qGbVBP0S8BeFzOXtX4Kn9b8+H3y3quiNsB8Ob/5362SoQFvXiqVLEIAR/idSsIHoSc
+         EGHIbre3Tfh/EN4ycPrGF1G640jALW67fZzuB+suf85aJZCYesSRwVfRtdH4CYSf6lCR
+         vNkpotddWbKh+nYW30mtIYAU418kwPV35u34IaNdVz8FXQ7jaB0nTQrGUikVMt9akGdp
+         GmBuYuwL55+Ku+ZDF/KQxl6hBFFR5kla0VtkbRqZjx7+r5cmyw8+/Qm+J3ChBY2DG9ac
+         sTBKPE52cQMSgi+IOZeUB3qO1QSrg6BjlI48lK+tKLYNvmc/Po3mkoERdeQHJ2Yx8qdg
+         XdiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:to:from:date;
-        bh=xfeRFbd1Z1Y9dp/AlcIFjc76CMPOeAPWo9XvL/2iN0I=;
-        b=dsEC8firkS/6GD+0n10q1vTuSCz/QURs4JJ55dkhBg3q6Skt2jJW12fyQlEiAdsstB
-         y5+8L18PSKuzDTKHaQVilr/AIha2pC0usSP9cpPaD39rzpZUiy97HhZYGkYcGJDa0Eke
-         fcjFUxXJ9kz61bw06O9ZpG1uUvO3uhXODsXHyRv1n2tSnlpjlsXkQSJh3uG7wlZDFXaD
-         Pv4Uns0qzPjjhnR5OQdgK57ZG8fCSlb/cp0WRfwEH1xGVC3uFwlbI1UzreKhZhMGQ+mD
-         P6e2iutqFfFI0B6w4qUevfxv19ht5qfrzW7oon6aHIosmJVn7RWbkCb/UUANEPD41u57
-         155g==
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=aHzkuZtUb1CuIObgYH6pB5jXQWN8g4kMod7LWSh/tlo=;
+        b=l+i6oOfMDzEg/NcoHJwi4tNmiEUVh1Q+V7Fe9Hqm1w7+wE+LD4Q7B6rhjqPUXhVgAj
+         z24+RPZukaphOv9BUEuHlvhPRNCEFIkUOjE2YWjPrkwRVz07DGsVGzuFTa2vw3A21t/r
+         nh/LmNvktwn7zQ02PUJHpFWncs84aP0ZRrxdoxL4Rgz8eqdyVnmkbIiZSpauiQ4IoU7+
+         g+nKc+QKDXUBfSbFfyZxcYnVMogBq6w3Ri9cT8NUlkfuHX9Vohwa6fHLTLdg8A3mBLMN
+         daw+gb8XHTPhiBFfsLCfoi/d+io8LhXivRC1yoVIWgpuOrhfU8GjVfEDQvic2MTdpXWf
+         nysA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b20si2710264edc.359.2019.09.18.00.33.52
+        by mx.google.com with ESMTPS id r21si1876933qtr.259.2019.09.18.00.43.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2019 00:33:52 -0700 (PDT)
+        Wed, 18 Sep 2019 00:43:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55336 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55392 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAUTG-0001Kc-He
-	for alex.bennee@linaro.org; Wed, 18 Sep 2019 03:33:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41315)
+	id 1iAUd1-00074h-Qn
+	for alex.bennee@linaro.org; Wed, 18 Sep 2019 03:43:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42215)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kwolf@redhat.com>) id 1iAUT3-0001KB-P5
- for qemu-arm@nongnu.org; Wed, 18 Sep 2019 03:33:38 -0400
+ (envelope-from <thuth@redhat.com>) id 1iAUcr-000745-Ag
+ for qemu-arm@nongnu.org; Wed, 18 Sep 2019 03:43:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kwolf@redhat.com>) id 1iAUT2-0001Z5-My
- for qemu-arm@nongnu.org; Wed, 18 Sep 2019 03:33:37 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40520)
+ (envelope-from <thuth@redhat.com>) id 1iAUcq-0005fI-4Q
+ for qemu-arm@nongnu.org; Wed, 18 Sep 2019 03:43:45 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34952)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kwolf@redhat.com>)
- id 1iAUT2-0001Yr-FJ; Wed, 18 Sep 2019 03:33:36 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1iAUcp-0005f6-LH; Wed, 18 Sep 2019 03:43:44 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 0C3528980EA;
- Wed, 18 Sep 2019 07:33:35 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-116-230.ams2.redhat.com
- [10.36.116.230])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4A08D60606;
- Wed, 18 Sep 2019 07:33:13 +0000 (UTC)
-Date: Wed, 18 Sep 2019 09:33:12 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: John Snow <jsnow@redhat.com>
-Message-ID: <20190918073312.GA5207@localhost.localdomain>
-References: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
- <156871564329.196432.5930574495661947805.stgit@bahia.lan>
- <19e78ae8-96dc-6154-6572-d7176057eeb7@redhat.com>
- <20190917144631.GF4824@localhost.localdomain>
- <8cbb8459-a4bb-2efc-c9f8-d9e95230b3ac@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id B255D10CC1EC;
+ Wed, 18 Sep 2019 07:43:42 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-90.ams2.redhat.com [10.36.116.90])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D572810018FF;
+ Wed, 18 Sep 2019 07:43:31 +0000 (UTC)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20190916154847.28936-1-philmd@redhat.com>
+ <20190916154847.28936-4-philmd@redhat.com>
+ <c5caa155-19d3-1b22-ea61-d8c17dca39e7@redhat.com>
+ <6f9f0932-5420-c67f-b6f7-2a7ceb4e99a4@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat
+Message-ID: <24d0eebd-5bb2-8da9-d6e6-4a5938b0f6cc@redhat.com>
+Date: Wed, 18 Sep 2019 09:43:30 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <8cbb8459-a4bb-2efc-c9f8-d9e95230b3ac@redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+In-Reply-To: <6f9f0932-5420-c67f-b6f7-2a7ceb4e99a4@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.67]); Wed, 18 Sep 2019 07:33:35 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.65]); Wed, 18 Sep 2019 07:43:43 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH 02/17] block: Pass local error object pointer
- to error_append_hint()
+Subject: Re: [Qemu-arm] [PATCH 03/13] hw: Move MC146818 device from
+ hw/timer/ to hw/rtc/ subdirectory
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -93,73 +140,109 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Eric Blake <eblake@redhat.com>,
- qemu-block@nongnu.org, Juan Quintela <quintela@redhat.com>,
- David Hildenbrand <david@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
- Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia@oracle.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
- Richard Henderson <rth@twiddle.net>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org,
- Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Helge Deller <deller@gmx.de>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-ppc@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2WAL0+lOiw/c
+X-TUID: JjJ9oRzhPQrT
 
-Am 17.09.2019 um 21:10 hat John Snow geschrieben:
-> 
-> 
-> On 9/17/19 10:46 AM, Kevin Wolf wrote:
-> > Am 17.09.2019 um 16:39 hat Eric Blake geschrieben:
-> >> On 9/17/19 5:20 AM, Greg Kurz wrote:
-> >>> Ensure that hints are added even if errp is &error_fatal or &error_abort.
-> >>>
-> >>> Signed-off-by: Greg Kurz <groug@kaod.org>
-> >>> ---
-> >>>  block/backup.c       |    7 +++++--
-> >>>  block/dirty-bitmap.c |    7 +++++--
-> >>>  block/file-posix.c   |   20 +++++++++++++-------
-> >>>  block/gluster.c      |   23 +++++++++++++++--------
-> >>>  block/qcow.c         |   10 ++++++----
-> >>>  block/qcow2.c        |    7 +++++--
-> >>>  block/vhdx-log.c     |    7 +++++--
-> >>>  block/vpc.c          |    7 +++++--
-> >>>  8 files changed, 59 insertions(+), 29 deletions(-)
-> >>>
-> >>> diff --git a/block/backup.c b/block/backup.c
-> >>> index 763f0d7ff6db..d8c422a0e3bc 100644
-> >>> --- a/block/backup.c
-> >>> +++ b/block/backup.c
-> >>> @@ -602,11 +602,14 @@ static int64_t backup_calculate_cluster_size(BlockDriverState *target,
-> >>>                      BACKUP_CLUSTER_SIZE_DEFAULT);
-> >>>          return BACKUP_CLUSTER_SIZE_DEFAULT;
-> >>>      } else if (ret < 0 && !target->backing) {
-> >>> -        error_setg_errno(errp, -ret,
-> >>> +        Error *local_err = NULL;
-> >>
-> >> Can we go with the shorter name 'err' instead of 'local_err'?  I know,
-> >> we aren't consistent (both styles appear throughout the tree), but the
-> >> shorter style is more appealing to me.
-> > 
-> > I like local_err better because it's easier to distinguish from errp.
-> > The compiler might catch it if you use the wrong one because one is
-> > Error* and the other is Error**, but as a reviewer, I can still get
-> > confused.
-> 
-> Doesn't that sound like a striking reason for condemnation of this
-> entire model?
+On 17/09/2019 12.03, Philippe Mathieu-Daud=C3=A9 wrote:
+> On 9/17/19 7:07 AM, Thomas Huth wrote:
+>> On 16/09/2019 17.48, Philippe Mathieu-Daud=C3=A9 wrote:
+>>> The MC146818 is a Real Time Clock, not a timer.
+>>> Move it under the hw/rtc/ subdirectory.
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>> [...]
+>>> diff --git a/include/hw/rtc/mc146818rtc.h b/include/hw/rtc/mc146818rt=
+c.h
+>>> new file mode 100644
+>>> index 0000000000..888e04f9ab
+>>> --- /dev/null
+>>> +++ b/include/hw/rtc/mc146818rtc.h
+>>> @@ -0,0 +1,38 @@
+>>> +/*
+>>> + * QEMU MC146818 RTC emulation
+>>> + *
+>>> + * Copyright (c) 2003-2004 Fabrice Bellard
+>>> + *
+>>> + * Permission is hereby granted, free of charge, to any person obtai=
+ning a copy
+>>> + * of this software and associated documentation files (the "Softwar=
+e"), to deal
+>>> + * in the Software without restriction, including without limitation=
+ the rights
+>>> + * to use, copy, modify, merge, publish, distribute, sublicense, and=
+/or sell
+>>> + * copies of the Software, and to permit persons to whom the Softwar=
+e is
+>>> + * furnished to do so, subject to the following conditions:
+>>> + *
+>>> + * The above copyright notice and this permission notice shall be in=
+cluded in
+>>> + * all copies or substantial portions of the Software.
+>>> + *
+>>> + * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, E=
+XPRESS OR
+>>> + * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTA=
+BILITY,
+>>> + * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT=
+ SHALL
+>>> + * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES=
+ OR OTHER
+>>> + * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, A=
+RISING FROM,
+>>> + * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEA=
+LINGS IN
+>>> + * THE SOFTWARE.
+>>> + */
+>>
+>> If you run "git blame" on the old header file, it does not seem like
+>> Fabrice wrote this header, so I'm not sure whether it makes sense to a=
+dd
+>> his (c) statement here?
+>>
+>> Maybe rather use a one-line "SPDX-License-Identifier: GPL-2.0-or-later=
+"
+>> here?
+>=20
+> It was first added by Fabrice here:
+>=20
+> $ git show 80cabfad163
+[...]
+> diff --git a/vl.h b/vl.h
+> index 35962d1985..026a5dee5a 100644
+> --- a/vl.h
+> +++ b/vl.h
+> +/* mc146818rtc.c */
+> +
+> +typedef struct RTCState {
+> +    uint8_t cmos_data[128];
+> +    uint8_t cmos_index;
+> +    int irq;
+> +} RTCState;
+> +
+> +extern RTCState rtc_state;
+> +
+> +void rtc_init(int base, int irq);
+> +void rtc_timer(void);
 
-Might be, but do you have a better idea?
+Ok, fair. But vl.h had a slightly different copyright statement than
+vl.c, so I think you should rather use the one from vl.h.
+But IMHO you could at least drop the "THE SOFTWARE IS PROVIDED ..."
+paragraph and add a SPDX tag instead?
 
-Kevin
+ Thomas

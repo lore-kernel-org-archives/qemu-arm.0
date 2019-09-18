@@ -1,70 +1,72 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp6787148wrp;
-        Wed, 18 Sep 2019 10:53:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxFXAKhTpf0griXwCj0ifNeH/YRnGUJVMjgdced8y52jlbe3AsbGcFDPgqaDJlXvF5lHqvt
-X-Received: by 2002:aa7:d750:: with SMTP id a16mr11710251eds.27.1568829227128;
-        Wed, 18 Sep 2019 10:53:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568829227; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp19890wrp;
+        Wed, 18 Sep 2019 11:15:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx8ZdJ5hxTbFZ3nTNQ6PAZEVZENRIEUfDFVRvCcPvlmRQWbOoBz6hz+IEYOAF9BHBOD54Hk
+X-Received: by 2002:a37:912:: with SMTP id 18mr5462786qkj.185.1568830552253;
+        Wed, 18 Sep 2019 11:15:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568830552; cv=none;
         d=google.com; s=arc-20160816;
-        b=UU1cPs3Iah4cgFDKfd98LG0OOb3ohD4ALY8QqeAqj4dhMU2oBOAPZqaTI7NU7xxsJM
-         Ne/lC7IX3ZhE5hw2PkjHCKUWigjmnyT8+l4Fh9ZXb4dqB75VG5cJNtrvkRQiUZxy3wJ5
-         JeFmLK0mxphChGOapozEEtnjkvDnauKCweJyq7aQtsVlZKO9AcOzmM5x3KdeyNSLFxao
-         cszgpYC3rDpTvSs1LdYVwJlgdZKy5re+CBXULYAR7aISAwq5hvyqGTT2e3c3pi5hwcvE
-         DZC/dOqus1FCyrTe1xTM6l0PUFTw0axtFtzmW1dNtDZm0fZijy95RAZdagDTJI1P+4Xe
-         03Ow==
+        b=xfujBZqblUR8oOEDLg6ug0ELXUnmHM5w/HhzdFtJRUE8VwoxbBKtrhxszoJLuN0uUO
+         VjEHPNVKBEaEWy4YuCt8PB6bsKxZjI6rsmFzVHvG+/KSFREW+2wmCwqwEGlw3hyQfEnJ
+         NYUyKs6DDHdNOvdKB6GdCydiI3MRDg2kBW+yog1q95taEjMOS7LgarvzL5nb3UBHm4ZQ
+         iOoKKcr56AC4+kI5KkGuY4DUoPEbTTYltXzPO4cCIJs65RLd20g71OBI02NHIH6SnRVC
+         gOYPE1+Gh76TCM6R2+KdSJvCgpNszBzW6Ruo7RE7UdBF7o/KnpHQ9elyfTsVuzlT/M7q
+         nAHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:organization:autocrypt:openpgp:from
          :references:to;
-        bh=Megj7N+wL1745OSDzdclyXn/I8YV0mcIcXlXeAID5WU=;
-        b=kP9Diffrl7HK0ww0UCEcFx+gqt/+8SXc8dSbYObX4sbHrptH1wiBrDYdPliIU4VCOK
-         qJIE2zqEOXCp3zXvK0Abf0mEMY8XgJOQF3EOeMeywfic6PtCxr5+IR7jG005otoygNzP
-         eBdBw6eWCdcwBOu7uTkWz6Q1hQMmCT30pSSQa/2IIS21hX8ZDOXOLqS6VmZHruHFZezy
-         1zWmBtIvpiXduqELANnEjUCSEwci1ZHSlhvDpNBTEk2v4trzR5KcJ9xyfENiOAU/w/cg
-         BOAievRfcPglpE6JsFLSf0w7YmFDsiTKGVInYaPkZYr2bQhxtGH/B5VrwW7DTJYKBn04
-         XWVA==
+        bh=b0OFedXkS8nnBGPulGL0jL8ChS6BUg7K6Zxz85kjWqg=;
+        b=GPtOH4MsjgZuYPrvVcQlXeH1HVFKE6AXltd0DnOHS56DkhMJzcnbFen2MSclL3LzkX
+         BJWMCwyW+VHVT8Vk7p3ros0jTE4oop53yIjOUvxVUEFOg3l+J0aoudT82ntjoEEJ4mgm
+         3DMUW2jno0eMkwM2t9G1dCiK/MUGsQaCbSE1VboP59g8vtYKdIzIw4EJCb/IlwCdtO8b
+         v7iCAFsVvFAixqhGPtMhe733hB+HJcnLeme1PBnMYoWGkxDKXZTMhC5YKz688kZYXwwV
+         Eml82WiSzuiAIVZgOx0SVj/8mC+3ovK1tmXl4SsB0n91xZlrTDAs830b1kTLGPTG3s71
+         PhIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a14si4202763eda.111.2019.09.18.10.53.46
+        by mx.google.com with ESMTPS id m2si4835067qti.76.2019.09.18.11.15.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2019 10:53:47 -0700 (PDT)
+        Wed, 18 Sep 2019 11:15:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33720 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34108 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAe9B-0003rr-Ug
-	for alex.bennee@linaro.org; Wed, 18 Sep 2019 13:53:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36270)
+	id 1iAeUX-0002Yv-Oi
+	for alex.bennee@linaro.org; Wed, 18 Sep 2019 14:15:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46370)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iAdTo-0007ZE-JS
- for qemu-devel@nongnu.org; Wed, 18 Sep 2019 13:11:03 -0400
+ (envelope-from <eblake@redhat.com>) id 1iAeL5-0004PV-5j
+ for qemu-devel@nongnu.org; Wed, 18 Sep 2019 14:06:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iAdTl-00079O-Sd
- for qemu-devel@nongnu.org; Wed, 18 Sep 2019 13:11:00 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52246)
+ (envelope-from <eblake@redhat.com>) id 1iAeL3-0001n1-SW
+ for qemu-devel@nongnu.org; Wed, 18 Sep 2019 14:06:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51906)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iAdTZ-00074X-Qr; Wed, 18 Sep 2019 13:10:46 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ id 1iAeKw-0001jS-KC; Wed, 18 Sep 2019 14:05:54 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 57652316D791;
- Wed, 18 Sep 2019 17:10:44 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 1BA6B8830B;
+ Wed, 18 Sep 2019 18:05:53 +0000 (UTC)
 Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1CADD5D6B2;
- Wed, 18 Sep 2019 17:10:20 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4FBFA19C70;
+ Wed, 18 Sep 2019 18:05:33 +0000 (UTC)
 To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- qemu-devel@nongnu.org
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 References: <20190918130244.24257-1-vsementsov@virtuozzo.com>
+ <abb14088-6af2-5db2-da0d-0948fd4ac81c@redhat.com>
+ <0497ac1e-c841-39cd-9944-48dd54c5b0f0@virtuozzo.com>
 From: Eric Blake <eblake@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=eblake@redhat.com; keydata=
@@ -91,18 +93,18 @@ Autocrypt: addr=eblake@redhat.com; keydata=
  Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
  2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
 Organization: Red Hat, Inc.
-Message-ID: <abb14088-6af2-5db2-da0d-0948fd4ac81c@redhat.com>
-Date: Wed, 18 Sep 2019 12:10:19 -0500
+Message-ID: <9450fbfd-0f8b-d10f-7577-64805917f67a@redhat.com>
+Date: Wed, 18 Sep 2019 13:05:32 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190918130244.24257-1-vsementsov@virtuozzo.com>
+In-Reply-To: <0497ac1e-c841-39cd-9944-48dd54c5b0f0@virtuozzo.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.41]); Wed, 18 Sep 2019 17:10:44 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.28]); Wed, 18 Sep 2019 18:05:53 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-devel] [RFC] error: auto propagated local_err
@@ -117,493 +119,115 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: fam@euphon.net, peter.maydell@linaro.org, mst@redhat.com,
- codyprime@gmail.com, mark.cave-ayland@ilande.co.uk, mdroth@linux.vnet.ibm.com,
- kraxel@redhat.com, mreitz@redhat.com, qemu-block@nongnu.org,
- quintela@redhat.com, david@redhat.com, armbru@redhat.com, pasic@linux.ibm.com,
- borntraeger@de.ibm.com, marcandre.lureau@redhat.com, rth@twiddle.net,
- farman@linux.ibm.com, groug@kaod.org, dgilbert@redhat.com,
- alex.williamson@redhat.com, qemu-arm@nongnu.org, stefanha@redhat.com,
- jsnow@redhat.com, david@gibson.dropbear.id.au, kwolf@redhat.com,
- berrange@redhat.com, cohuck@redhat.com, qemu-s390x@nongnu.org,
- sundeep.lkml@gmail.com, qemu-ppc@nongnu.org, pbonzini@redhat.com
+Cc: "fam@euphon.net" <fam@euphon.net>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "mst@redhat.com" <mst@redhat.com>, "codyprime@gmail.com" <codyprime@gmail.com>,
+ "mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
+ "mdroth@linux.vnet.ibm.com" <mdroth@linux.vnet.ibm.com>,
+ "kraxel@redhat.com" <kraxel@redhat.com>,
+ "mreitz@redhat.com" <mreitz@redhat.com>,
+ "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
+ "quintela@redhat.com" <quintela@redhat.com>,
+ "david@redhat.com" <david@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
+ "borntraeger@de.ibm.com" <borntraeger@de.ibm.com>,
+ "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
+ "rth@twiddle.net" <rth@twiddle.net>,
+ "farman@linux.ibm.com" <farman@linux.ibm.com>,
+ "groug@kaod.org" <groug@kaod.org>, "dgilbert@redhat.com" <dgilbert@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "stefanha@redhat.com" <stefanha@redhat.com>,
+ "jsnow@redhat.com" <jsnow@redhat.com>,
+ "david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>,
+ "kwolf@redhat.com" <kwolf@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
+ "sundeep.lkml@gmail.com" <sundeep.lkml@gmail.com>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wd+pPvoP1RBa
+X-TUID: UvCfnizscQFp
 
-On 9/18/19 8:02 AM, Vladimir Sementsov-Ogievskiy wrote:
-> Hi all!
+On 9/18/19 12:46 PM, Vladimir Sementsov-Ogievskiy wrote:
+
+>>> +/*
+>>> + * Third variant:
+>>> + *   Pros:
+>>> + *     - simpler movement for functions which don't have local_err yet
+>>> + *       the only thing to do is to call one macro at function start.
+>>> + *       This extremely simplifies Greg's series
+>>> + *   Cons:
+>>> + *     - looks like errp shadowing.. Still seems safe.
+>>> + *     - must be after all definitions of local variables and before any
+>>> + *       code.
+>>
+>> Why?  I see no reason why it can't be hoisted earlier than other
+>> declarations, and the only reason to not sink it after earlier code that
+>> doesn't touch errp would be our coding standards that frowns on
+>> declaration after code.
 > 
-> Here is a proposal (three of them, actually) of auto propagation for
-> local_err, to not call error_propagate on every exit point, when we
-> deal with local_err.
+> Hmm, I thought compiler would warn about mixing code and definitions.
+> Seems that gcc don't care, so it's OK.
+
+C89 required all definitions before code, but that's historical.
+Meanwhile, we require a compiler that supports C99 as well as at least
+the __attribute__((cleanup)) extension (gcc and clang qualify, nothing
+else really does, but no one has been complaining).  And C99 requires
+compiler support for intermixing definitions (in part because c++ did it
+first, then gcc allowed that as an extension in C89); so it's been
+permissible to intermix code and declarations for more than 20 years
+now.  The only reason we don't do it more is because of habits and
+aesthetics, rather than necessity.
+
+>>
+>> This is actually quite cool. 
 > 
-> It also may help make Greg's series[1] about error_append_hint smaller.
+> I glad to see that you like my favorite variant)
 > 
-> See definitions and examples below.
+>> And if you get rid of your insistence that
+>> it must occur after other variable declarations, you could instead
+>> easily automate that any function that has a parameter 'Error **errp'
+>> then has a MAKE_ERRP_SAFE(errp); as the first line of its function body
+>> (that becomes something that you could grep for, rather than having to
+>> use the smarts of coccinelle).
+>>
+>> Or if we want to enforce consistency on the parameter naming, even go with:
+>>
+>> #define MAKE_ERRP_SAFE() \
+>> g_auto(ErrorPropagationStruct) (__auto_errp_prop) = {.errp = errp}; \
+>> errp = &__auto_errp_prop.local_err
+>>
 > 
-> I'm cc-ing to this RFC everyone from series[1] CC list, as if we like
-> it, the idea will touch same code (and may be more).
+> I am for
 
-It might have been nice to do a patch series of one proposal per patch,
-rather than cramming three in one, if only to see...
+So now to wait for other comments.
 
+
+>>
+>>> +     */
+>>> +    MAKE_ERRP_SAFE(errp);
+>>> +
+>>>       if (filename) {
+>>>           ret = qemu_gluster_parse_uri(gconf, filename);
+>>>           if (ret < 0) {
+>>>
+>>
+>> This is sweet - you can safely use '*errp' in the rest of the function,
+>> without having to remember a second error name - while the caller can
+>> still pass NULL or error_abort as desired.
+>>
+>> And I still think we can probably get Coccinelle to help make the
+>> conversions, both of using this macro in any function that has an Error
+>> **errp parameter, as well as getting rid of local_err declarations and
+>> error_propagate() calls rendered redundant once this macro is used.
+>>
 > 
-> [1]: https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg03449.html
-> 
-> Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-> ---
->  include/qapi/error.h | 102 +++++++++++++++++++++++++++++++++++++++++++
->  block.c              |  63 ++++++++++++--------------
->  block/backup.c       |   8 +++-
->  block/gluster.c      |   7 +++
->  4 files changed, 144 insertions(+), 36 deletions(-)
+> Thanks! And sorry for dirty draft.
 
-...relative diffstat sizing differences between them.
-
-Of course, adding the framework requires growth in error.h.  The real
-question, then, is how many lines do we save elsewhere by getting rid of
-boilerplate that is replaced by auto cleanup, and how many lines are
-mechanically churned to change variable names.  And how much of that
-churn can itself be automated with Coccinelle.
-
-But I think the idea is worth pursuing!
-
-> 
-> diff --git a/include/qapi/error.h b/include/qapi/error.h
-> index 3f95141a01..083e061014 100644
-> --- a/include/qapi/error.h
-> +++ b/include/qapi/error.h
-> @@ -322,6 +322,108 @@ void error_set_internal(Error **errp,
->                          ErrorClass err_class, const char *fmt, ...)
->      GCC_FMT_ATTR(6, 7);
->  
-> +typedef struct ErrorPropagator {
-> +    Error **errp;
-> +    Error *local_err;
-> +} ErrorPropagator;
-> +
-> +static inline void error_propagator_cleanup(ErrorPropagator *prop)
-> +{
-> +    if (prop->local_err) {
-> +        error_propagate(prop->errp, prop->local_err);
-> +    }
-
-Technically, you don't need the 'if' here, since error_propogate() works
-just fine when prop->local_err is NULL.
-
-> +}
-> +
-> +G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC(ErrorPropagator, error_propagator_cleanup);
-> +
-
-Looks reasonable.
-
-> +/*
-> + * ErrorPropagationPair
-> + *
-> + * [Error *local_err, Error **errp]
-> + *
-> + * First element is local_err, second is original errp, which is propagation
-> + * target. Yes, errp has a bit another type, so it should be converted.
-> + *
-> + * ErrorPropagationPair may be used as errp, which points to local_err,
-> + * as it's type is compatible.
-
-s/it's/its/  ("it's" is only appropriate if "it is" can be substituted)
-
-> + */
-> +typedef Error *ErrorPropagationPair[2];
-> +
-> +static inline void error_propagation_pair_cleanup(ErrorPropagationPair *arr)
-> +{
-> +    Error *local_err = (*arr)[0];
-> +    Error **errp = (Error **)(*arr)[1];
-> +
-> +    if (local_err) {
-> +        error_propagate(errp, local_err);
-> +    }
-> +}
-
-I don't like the type-punning.
-
-> +
-> +G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC(ErrorPropagationPair,
-> +                                 error_propagation_pair_cleanup);
-> +
-> +/*
-> + * DEF_AUTO_ERRP
-> + *
-> + * Define auto_errp variable, which may be used instead of errp, and
-> + * *auto_errp may be safely checked to be zero or not, and may be safely
-> + * used for error_append_hint(). auto_errp is automatically propagated
-> + * to errp at function exit.
-> + */
-> +#define DEF_AUTO_ERRP(auto_errp, errp) \
-> +    g_auto(ErrorPropagationPair) (auto_errp) = {NULL, (Error *)(errp)}
-
-Again, more type-punning.  Ends up declaring the equivalent of 'Error
-*auto_errp[2]' which devolves to 'Error **auto_errp'.
-
-So, using this macro requires me to pass in the name of my local
-variable (which auto-propagates when it goes out of scope) and the errp
-parameter.  Can we shortcut by declaring that the variable it propagates
-to MUST be named 'errp' rather than having that as a parameter name
-(doing so would force us to be consistent at using an Error **errp
-parameter).
-
-> +
-> +
-> +/*
-> + * Another variant:
-> + *   Pros:
-> + *     - normal structure instead of cheating with array
-> + *     - we can directly use errp, if it's not NULL and don't point to
-> + *       error_abort or error_fatal
-> + *   Cons:
-> + *     - we need to define two variables instead of one
-> + */
-> +typedef struct ErrorPropagationStruct {
-> +    Error *local_err;
-> +    Error **errp;
-> +} ErrorPropagationStruct;
-
-No real difference from ErrorPropagator above.
-
-> +
-> +static inline void error_propagation_struct_cleanup(ErrorPropagationStruct *prop)
-> +{
-> +    if (prop->local_err) {
-> +        error_propagate(prop->errp, prop->local_err);
-> +    }
-
-Another useless if.
-
-> +}
-> +
-> +G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC(ErrorPropagationStruct,
-> +                                 error_propagation_struct_cleanup);
-> +
-> +#define DEF_AUTO_ERRP_V2(auto_errp, errp) \
-> +    g_auto(ErrorPropagationStruct) (__auto_errp_prop) = {.errp = (errp)}; \
-> +    Error **auto_errp = \
-> +        ((errp) == NULL || *(errp) == error_abort || *(errp) == error_fatal) ? \
-> +        &__auto_errp_prop.local_err : \
-> +        (errp);
-
-
-Not written to take a trailing semicolon in the caller.
-
-Less type-punning, and and tries to reuse errp where possible.
-
-> +
-> +/*
-> + * Third variant:
-> + *   Pros:
-> + *     - simpler movement for functions which don't have local_err yet
-> + *       the only thing to do is to call one macro at function start.
-> + *       This extremely simplifies Greg's series
-> + *   Cons:
-> + *     - looks like errp shadowing.. Still seems safe.
-> + *     - must be after all definitions of local variables and before any
-> + *       code.
-
-Why?  I see no reason why it can't be hoisted earlier than other
-declarations, and the only reason to not sink it after earlier code that
-doesn't touch errp would be our coding standards that frowns on
-declaration after code.
-
-> + *     - like v2, several statements in one open macro
-
-Not a drawback in my mind.
-
-> + */
-> +#define MAKE_ERRP_SAFE(errp) \
-> +g_auto(ErrorPropagationStruct) (__auto_errp_prop) = {.errp = (errp)}; \
-> +if ((errp) == NULL || *(errp) == error_abort || *(errp) == error_fatal) { \
-> +    (errp) = &__auto_errp_prop.local_err; \
-> +}
-
-Not written to take a trailing semicolon in the caller.
-
-You could even set __auto_errp_prop unconditionally rather than trying
-to reuse incoming errp (the difference being that error_propagate() gets
-called more frequently).
-
-This is actually quite cool.  And if you get rid of your insistence that
-it must occur after other variable declarations, you could instead
-easily automate that any function that has a parameter 'Error **errp'
-then has a MAKE_ERRP_SAFE(errp); as the first line of its function body
-(that becomes something that you could grep for, rather than having to
-use the smarts of coccinelle).
-
-Or if we want to enforce consistency on the parameter naming, even go with:
-
-#define MAKE_ERRP_SAFE() \
-g_auto(ErrorPropagationStruct) (__auto_errp_prop) = {.errp = errp}; \
-errp = &__auto_errp_prop.local_err
-
-> +
-> +
->  /*
->   * Special error destination to abort on error.
->   * See error_setg() and error_propagate() for details.
-> diff --git a/block.c b/block.c
-> index 5944124845..5253663329 100644
-> --- a/block.c
-> +++ b/block.c
-
-So the above was the proposed implementations (I'm leaning towards
-option 3); the below is a demonstration of their use.
-
-> @@ -1275,12 +1275,11 @@ static int bdrv_open_driver(BlockDriverState *bs, BlockDriver *drv,
->                              const char *node_name, QDict *options,
->                              int open_flags, Error **errp)
->  {
-> -    Error *local_err = NULL;
-> +    DEF_AUTO_ERRP_V2(auto_errp, errp);
-
-This is option 2. Basically, you replace any declaration of local_err to
-instead use the magic macro...
-
->      int i, ret;
->  
-> -    bdrv_assign_node_name(bs, node_name, &local_err);
-> -    if (local_err) {
-> -        error_propagate(errp, local_err);
-> +    bdrv_assign_node_name(bs, node_name, auto_errp);
-> +    if (*auto_errp) {
-
-then s/local_err/*auto_errp/ and delete resulting &* pairs and
-error_propagate() calls in the rest of the function.  Coccinelle could
-make this type of conversion easy.
-
->          return -EINVAL;
->      }
->  
-> @@ -1290,20 +1289,21 @@ static int bdrv_open_driver(BlockDriverState *bs, BlockDriver *drv,
->  
->      if (drv->bdrv_file_open) {
->          assert(!drv->bdrv_needs_filename || bs->filename[0]);
-> -        ret = drv->bdrv_file_open(bs, options, open_flags, &local_err);
-> +        ret = drv->bdrv_file_open(bs, options, open_flags, auto_errp);
->      } else if (drv->bdrv_open) {
-> -        ret = drv->bdrv_open(bs, options, open_flags, &local_err);
-> +        ret = drv->bdrv_open(bs, options, open_flags, auto_errp);
->      } else {
->          ret = 0;
->      }
->  
->      if (ret < 0) {
-> -        if (local_err) {
-> -            error_propagate(errp, local_err);
-> -        } else if (bs->filename[0]) {
-> -            error_setg_errno(errp, -ret, "Could not open '%s'", bs->filename);
-> -        } else {
-> -            error_setg_errno(errp, -ret, "Could not open image");
-> +        if (!*auto_errp) {
-> +            if (bs->filename[0]) {
-> +                error_setg_errno(errp, -ret, "Could not open '%s'",
-> +                                 bs->filename);
-
-You reflowed the logic a bit here, but it is still worth pointing out
-that you still call error_setg*(errp) as before (no changing to
-auto_errp, although that would also have worked).
-
-> +            } else {
-> +                error_setg_errno(errp, -ret, "Could not open image");
-> +            }
->          }
->          goto open_failed;
->      }
-> @@ -1314,9 +1314,8 @@ static int bdrv_open_driver(BlockDriverState *bs, BlockDriver *drv,
->          return ret;
->      }
->  
-> -    bdrv_refresh_limits(bs, &local_err);
-> -    if (local_err) {
-> -        error_propagate(errp, local_err);
-> +    bdrv_refresh_limits(bs, auto_errp);
-> +    if (*auto_errp) {
->          return -EINVAL;
->      }
->  
-> @@ -4238,17 +4237,17 @@ out:
->  void bdrv_append(BlockDriverState *bs_new, BlockDriverState *bs_top,
->                   Error **errp)
->  {
-> -    Error *local_err = NULL;
-> +    g_auto(ErrorPropagator) prop = {.errp = errp};
-
-This is option 1.  It's rather open-coded, rather than having a nice
-wrapper macro.
-
->  
-> -    bdrv_set_backing_hd(bs_new, bs_top, &local_err);
-> -    if (local_err) {
-> -        error_propagate(errp, local_err);
-> +    errp = &prop.local_err;
-
-And by re-assigning errp manually,
-
-> +
-> +    bdrv_set_backing_hd(bs_new, bs_top, errp);
-> +    if (*errp) {
-
-you can now safely use it in the rest of the function without worrying
-about NULL.
-
->          goto out;
->      }
->  
-> -    bdrv_replace_node(bs_top, bs_new, &local_err);
-> -    if (local_err) {
-> -        error_propagate(errp, local_err);
-> +    bdrv_replace_node(bs_top, bs_new, errp);
-> +    if (*errp) {
->          bdrv_set_backing_hd(bs_new, NULL, &error_abort);
->          goto out;
-
-Not too bad (we'd probably want a coccinelle script to prove that you
-don't dereference *errp without first using the magic reassignment).
-
->      }
-> @@ -5309,9 +5308,9 @@ void bdrv_init_with_whitelist(void)
->  static void coroutine_fn bdrv_co_invalidate_cache(BlockDriverState *bs,
->                                                    Error **errp)
->  {
-> +    DEF_AUTO_ERRP(auto_errp, errp);
-
-Option 1 again, but this time with a macro.
-
->      BdrvChild *child, *parent;
->      uint64_t perm, shared_perm;
-> -    Error *local_err = NULL;
->      int ret;
->      BdrvDirtyBitmap *bm;
->  
-> @@ -5324,9 +5323,8 @@ static void coroutine_fn bdrv_co_invalidate_cache(BlockDriverState *bs,
->      }
->  
->      QLIST_FOREACH(child, &bs->children, next) {
-> -        bdrv_co_invalidate_cache(child->bs, &local_err);
-> -        if (local_err) {
-> -            error_propagate(errp, local_err);
-> +        bdrv_co_invalidate_cache(child->bs, auto_errp);
-> +        if (*auto_errp) {
->              return;
->          }
->      }
-> @@ -5346,19 +5344,17 @@ static void coroutine_fn bdrv_co_invalidate_cache(BlockDriverState *bs,
->       */
->      bs->open_flags &= ~BDRV_O_INACTIVE;
->      bdrv_get_cumulative_perm(bs, &perm, &shared_perm);
-> -    ret = bdrv_check_perm(bs, NULL, perm, shared_perm, NULL, NULL, &local_err);
-> +    ret = bdrv_check_perm(bs, NULL, perm, shared_perm, NULL, NULL, auto_errp);
->      if (ret < 0) {
->          bs->open_flags |= BDRV_O_INACTIVE;
-> -        error_propagate(errp, local_err);
->          return;
->      }
->      bdrv_set_perm(bs, perm, shared_perm);
->  
->      if (bs->drv->bdrv_co_invalidate_cache) {
-> -        bs->drv->bdrv_co_invalidate_cache(bs, &local_err);
-> -        if (local_err) {
-> +        bs->drv->bdrv_co_invalidate_cache(bs, auto_errp);
-> +        if (*auto_errp) {
->              bs->open_flags |= BDRV_O_INACTIVE;
-> -            error_propagate(errp, local_err);
->              return;
->          }
->      }
-> @@ -5378,10 +5374,9 @@ static void coroutine_fn bdrv_co_invalidate_cache(BlockDriverState *bs,
->  
->      QLIST_FOREACH(parent, &bs->parents, next_parent) {
->          if (parent->role->activate) {
-> -            parent->role->activate(parent, &local_err);
-> -            if (local_err) {
-> +            parent->role->activate(parent, auto_errp);
-> +            if (*auto_errp) {
->                  bs->open_flags |= BDRV_O_INACTIVE;
-> -                error_propagate(errp, local_err);
->                  return;
->              }
->          }
-> diff --git a/block/backup.c b/block/backup.c
-> index 89f7f89200..462dea4fbb 100644
-> --- a/block/backup.c
-> +++ b/block/backup.c
-> @@ -583,6 +583,10 @@ static const BlockJobDriver backup_job_driver = {
->  static int64_t backup_calculate_cluster_size(BlockDriverState *target,
->                                               Error **errp)
->  {
-> +    /*
-> +     * Example of using DEF_AUTO_ERRP to make error_append_hint safe
-> +     */
-> +    DEF_AUTO_ERRP(auto_errp, errp);
-
-Option 1 again.  Requires renaming errp to auto_errp in the rest of the
-function.
-
->      int ret;
->      BlockDriverInfo bdi;
->  
-> @@ -602,10 +606,10 @@ static int64_t backup_calculate_cluster_size(BlockDriverState *target,
->                      BACKUP_CLUSTER_SIZE_DEFAULT);
->          return BACKUP_CLUSTER_SIZE_DEFAULT;
->      } else if (ret < 0 && !target->backing) {
-> -        error_setg_errno(errp, -ret,
-> +        error_setg_errno(auto_errp, -ret,
->              "Couldn't determine the cluster size of the target image, "
->              "which has no backing file");
-> -        error_append_hint(errp,
-> +        error_append_hint(auto_errp,
->              "Aborting, since this may create an unusable destination image\n");
->          return ret;
->      } else if (ret < 0 && target->backing) {
-> diff --git a/block/gluster.c b/block/gluster.c
-> index 64028b2cba..799a2dbeca 100644
-> --- a/block/gluster.c
-> +++ b/block/gluster.c
-> @@ -695,6 +695,13 @@ static int qemu_gluster_parse(BlockdevOptionsGluster *gconf,
->                                QDict *options, Error **errp)
->  {
->      int ret;
-> +    /*
-> +     * Example of using MAKE_ERRP_SAFE to make error_append_hint safe. We
-> +     * only need to add one macro call.
-
-Option 3.  By far my favorite, whether or not we decide to take a macro
-parameter for the variable name to protect, or hard-code for consistency
-that 'errp' must be in scope when it is used.
-
-> Note, it must be placed exactly after
-> +     * all local variables defenition.
-
-definition
-
-Why do you think this limitation is necessary?  Do you have an actual
-code sequence that misbehaves if the compiler-unwind cleanup is
-performed in a different order when the macro is used before other
-variable declarations?
-
-> +     */
-> +    MAKE_ERRP_SAFE(errp);
-> +
->      if (filename) {
->          ret = qemu_gluster_parse_uri(gconf, filename);
->          if (ret < 0) {
-> 
-
-This is sweet - you can safely use '*errp' in the rest of the function,
-without having to remember a second error name - while the caller can
-still pass NULL or error_abort as desired.
-
-And I still think we can probably get Coccinelle to help make the
-conversions, both of using this macro in any function that has an Error
-**errp parameter, as well as getting rid of local_err declarations and
-error_propagate() calls rendered redundant once this macro is used.
+It was titled RFC, after all :)
 
 -- 
 Eric Blake, Principal Software Engineer

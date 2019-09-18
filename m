@@ -1,103 +1,87 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp5846105wrp;
-        Tue, 17 Sep 2019 16:34:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwHnVBAxi096KCyGc2BxkW64ofPKAwZwkinne0P1p8ahNqyk+ULoraKNnd+48y1zpO2g+4P
-X-Received: by 2002:a17:906:cc9b:: with SMTP id oq27mr6086193ejb.125.1568763250870;
-        Tue, 17 Sep 2019 16:34:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568763250; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp6168287wrp;
+        Wed, 18 Sep 2019 00:33:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzwhz894hYS4/94+h3Sx9m7d1osnffSlzhTCH2JNDLB7bozd9ERBHcA1itdgOEP9A5cBUyW
+X-Received: by 2002:a17:906:4a06:: with SMTP id w6mr5597459eju.214.1568792032280;
+        Wed, 18 Sep 2019 00:33:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568792032; cv=none;
         d=google.com; s=arc-20160816;
-        b=ncxJFT6GgyQFv3oo0zSTUxscr9x6J3W6TN5lElT+exiSZVB2wGl5WZx5G9e+BydEQ7
-         8yl/K+pdfVLKZK9WXcY3v89LcaYXbqdCE8Tw1A98VQ2w7BxHVps+JXUEtPT/mptPqLth
-         gPdOzYye2lG/SQrwDM4g7UHKnase2CSYHIgp3sPt0CFP5oB3x/Ddl2hh63ZK28X6Mgyo
-         rRcUvkhGXwlg/URt/DRjuQxS5CxT/4yq2At94Wel8Tr/g2j0Ntr1hJU7Lg9E5WCPrS/7
-         pfDwZLHSYv3AOiYkvWtlHl7wXY/XSI19uCGY+MU4xLuaRQZ4bJLFI+3PnQy/BGEfg0+P
-         E0Gg==
+        b=qnzrBvwsu6texJdD8zeDw8Fl7g4iCnF02uf5emd0eh8Bwm+XxFUR4qzjwy81QWA4Qv
+         42vTQD3uM79M6vfXXbpGgRxqbkqXcIWJL73c69MUS2+zBSwXQj7hqbjGNPuxzw8miFy/
+         vmHCyIO8Aou+EqjqWp44oeFIVRWZI4Ha7wK1mTCD309KQ1KN7AUEvo/4BXJSGqlcs3UD
+         +yqtDwhgSjwYTo0DsaWcOhjsPVEpK7V0sHvoy61tl2+eq2CaW6VSmYd/aZeMineT1N2K
+         +pTinD/ZOApUiBGGREtk0aLcRhqpPblQk9ZFI+DyEuUM3+j23YHTQI5UTSHuCn1Bn48U
+         21MA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:to:message-id:date:from:in-reply-to
-         :references:mime-version:dkim-signature;
-        bh=NFfngu4qiu+UdawEd84UgqAiCsI9ZcVvohMXB947E/8=;
-        b=vrZRMSMetxJkRPPblOP9GnCej6hsJHbIzfcMX7/KPv3z9Ai4DkcqNDs7PNN+t33pSO
-         s/QMECyGueXILBrPeyIywzXp94k1XPTpmuMpa3Rm6z0dobsgMwgZaQbCEksn5K+jUrTw
-         S0ulID6VgtKRXnTgbn57GYUrqk84r0qp45rvLCMqyVMXHIzvjR1rqCq35tOfiQd0fnr1
-         U9cpuytO2qV7oAi4vtCJEtMej8OM6L9HGo1jqEF6T8eF27LmZmDPRnL+Dmoi2twuv2iF
-         cpMNqRFlWgfP97iadCML4dgNyog20wrW36FcS4xNLPCLsgWal7sTPyHYnYATNJmDpm6j
-         JWvA==
+         :list-unsubscribe:list-id:precedence:subject:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:to:from:date;
+        bh=xfeRFbd1Z1Y9dp/AlcIFjc76CMPOeAPWo9XvL/2iN0I=;
+        b=dsEC8firkS/6GD+0n10q1vTuSCz/QURs4JJ55dkhBg3q6Skt2jJW12fyQlEiAdsstB
+         y5+8L18PSKuzDTKHaQVilr/AIha2pC0usSP9cpPaD39rzpZUiy97HhZYGkYcGJDa0Eke
+         fcjFUxXJ9kz61bw06O9ZpG1uUvO3uhXODsXHyRv1n2tSnlpjlsXkQSJh3uG7wlZDFXaD
+         Pv4Uns0qzPjjhnR5OQdgK57ZG8fCSlb/cp0WRfwEH1xGVC3uFwlbI1UzreKhZhMGQ+mD
+         P6e2iutqFfFI0B6w4qUevfxv19ht5qfrzW7oon6aHIosmJVn7RWbkCb/UUANEPD41u57
+         155g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Fi9CgOlQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k53si2372554edb.303.2019.09.17.16.34.10
+        by mx.google.com with ESMTPS id b20si2710264edc.359.2019.09.18.00.33.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 17 Sep 2019 16:34:10 -0700 (PDT)
+        Wed, 18 Sep 2019 00:33:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Fi9CgOlQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53504 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55336 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAMz3-0000j7-RP
-	for alex.bennee@linaro.org; Tue, 17 Sep 2019 19:34:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51483)
+	id 1iAUTG-0001Kc-He
+	for alex.bennee@linaro.org; Wed, 18 Sep 2019 03:33:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41315)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1iAMym-0000hC-Ri
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 19:33:55 -0400
+ (envelope-from <kwolf@redhat.com>) id 1iAUT3-0001KB-P5
+ for qemu-arm@nongnu.org; Wed, 18 Sep 2019 03:33:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1iAMyj-00073F-O6
- for qemu-arm@nongnu.org; Tue, 17 Sep 2019 19:33:52 -0400
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:33791)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1iAMyX-0006uW-Dv; Tue, 17 Sep 2019 19:33:39 -0400
-Received: by mail-lf1-x144.google.com with SMTP id y127so4252596lfc.0;
- Tue, 17 Sep 2019 16:33:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=NFfngu4qiu+UdawEd84UgqAiCsI9ZcVvohMXB947E/8=;
- b=Fi9CgOlQagT5Lkje+YIt6Smx3i+mgbFBaUUrOPV4PnZM2CSYTDWRgqaENqvb5NG0Sg
- 9Wl8L9i8KT37Q+QnUymPUZo4rzNEuXj3PiYbM6Pb0KDOr9/luomcT3T3RIWqnDS0BzbQ
- /pDpW514OS4eZzQvySRaRPv1tX4VmzpoJ36HrUL5ZohaYKhh3+vuTKmDt3r66ePVHp1U
- jL/JtdxSZbSG7ie9qeTo7jGvwkC+cxomcDmUB5D2H1FIm2X6/mHmnQUyA7A9iHzYzrWZ
- YRrv+sFCz3/w5K4x21IYIh4Q1NUfKKxC9uAP/oR2oLWOiNgbF+xNkAWr4mBroPUseD2U
- KgUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=NFfngu4qiu+UdawEd84UgqAiCsI9ZcVvohMXB947E/8=;
- b=NoQ4lCb/h7m/jAt+4F5UANs+ZCb2h50qZn8Ps0tqrwhG89EtLVYDj4HMgnL5Masrs3
- nBCVq3KII7tpYLLx2NoWZLs33IDuokVZ8eNGw4Z9hmJOp8pFxmd6Vyk9uOA5THTkCcB9
- u1hPGOd9hFOp2B9BLYWirNEtuuD1ED+rt79QU7IVOGx5+T2BFkuZEAQNZjGs0Vo5G8sT
- KoRMoCba5yjlTnVXZrt+iAxPrCgbx6r3anxbKC8dUmr+i42WU7gpzfpyKE9YE4487Nmu
- rDDi/FZAXdz3Ud32Ikw3TSjPKOy50rHEEhQ5l1dBTngubVLUGMOMP70FaGAZh1mGidE9
- NkJA==
-X-Gm-Message-State: APjAAAWZgfWFbkdWJrdl5NOzcfUQ06k5UK05Kk/ny7OVpfz0eLHSTnnc
- mvXeARxdMe7trPBiciDQWvjNkb52bmT4C6avc/w=
-X-Received: by 2002:a19:f11c:: with SMTP id p28mr420534lfh.44.1568763214402;
- Tue, 17 Sep 2019 16:33:34 -0700 (PDT)
+ (envelope-from <kwolf@redhat.com>) id 1iAUT2-0001Z5-My
+ for qemu-arm@nongnu.org; Wed, 18 Sep 2019 03:33:37 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:40520)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kwolf@redhat.com>)
+ id 1iAUT2-0001Yr-FJ; Wed, 18 Sep 2019 03:33:36 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 0C3528980EA;
+ Wed, 18 Sep 2019 07:33:35 +0000 (UTC)
+Received: from localhost.localdomain (ovpn-116-230.ams2.redhat.com
+ [10.36.116.230])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4A08D60606;
+ Wed, 18 Sep 2019 07:33:13 +0000 (UTC)
+Date: Wed, 18 Sep 2019 09:33:12 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+To: John Snow <jsnow@redhat.com>
+Message-ID: <20190918073312.GA5207@localhost.localdomain>
+References: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
+ <156871564329.196432.5930574495661947805.stgit@bahia.lan>
+ <19e78ae8-96dc-6154-6572-d7176057eeb7@redhat.com>
+ <20190917144631.GF4824@localhost.localdomain>
+ <8cbb8459-a4bb-2efc-c9f8-d9e95230b3ac@redhat.com>
 MIME-Version: 1.0
-References: <20190916154847.28936-1-philmd@redhat.com>
- <20190916154847.28936-10-philmd@redhat.com>
- <CAKmqyKPtRbU5X-72+HfNNbaV46LOD6D+JLQoGiBROB+zJczNgA@mail.gmail.com>
- <7a48ec0e-c386-7022-b7ab-00f0cb53fa82@redhat.com>
-In-Reply-To: <7a48ec0e-c386-7022-b7ab-00f0cb53fa82@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 17 Sep 2019 16:29:01 -0700
-Message-ID: <CAKmqyKPgz6a49mx==AUtLk0AKxB7XVNt7jxGW1dQZKkQBPM7Fg@mail.gmail.com>
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::144
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH 09/13] hw: Move Xilinx ZynqMP
- RTC from hw/timer/ to hw/rtc/ subdirectory
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <8cbb8459-a4bb-2efc-c9f8-d9e95230b3ac@redhat.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.67]); Wed, 18 Sep 2019 07:33:35 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: Re: [Qemu-arm] [PATCH 02/17] block: Pass local error object pointer
+ to error_append_hint()
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,234 +93,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Aleksandar Rikalo <arikalo@wavecomp.com>, Helge Deller <deller@gmx.de>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, David Gibson <david@gibson.dropbear.id.au>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Andrew Jeffery <andrew@aj.id.au>, "open list:New World" <qemu-ppc@nongnu.org>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Eric Blake <eblake@redhat.com>,
+ qemu-block@nongnu.org, Juan Quintela <quintela@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
+ Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia@oracle.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
+ Richard Henderson <rth@twiddle.net>,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hklhv1QYAS0L
+X-TUID: 2WAL0+lOiw/c
 
-On Tue, Sep 17, 2019 at 3:28 AM Philippe Mathieu-Daud=C3=A9
-<philmd@redhat.com> wrote:
->
-> Hi Alistair,
->
-> On 9/16/19 11:44 PM, Alistair Francis wrote:
-> > On Mon, Sep 16, 2019 at 8:56 AM Philippe Mathieu-Daud=C3=A9
-> > <philmd@redhat.com> wrote:
+Am 17.09.2019 um 21:10 hat John Snow geschrieben:
+> 
+> 
+> On 9/17/19 10:46 AM, Kevin Wolf wrote:
+> > Am 17.09.2019 um 16:39 hat Eric Blake geschrieben:
+> >> On 9/17/19 5:20 AM, Greg Kurz wrote:
+> >>> Ensure that hints are added even if errp is &error_fatal or &error_abort.
+> >>>
+> >>> Signed-off-by: Greg Kurz <groug@kaod.org>
+> >>> ---
+> >>>  block/backup.c       |    7 +++++--
+> >>>  block/dirty-bitmap.c |    7 +++++--
+> >>>  block/file-posix.c   |   20 +++++++++++++-------
+> >>>  block/gluster.c      |   23 +++++++++++++++--------
+> >>>  block/qcow.c         |   10 ++++++----
+> >>>  block/qcow2.c        |    7 +++++--
+> >>>  block/vhdx-log.c     |    7 +++++--
+> >>>  block/vpc.c          |    7 +++++--
+> >>>  8 files changed, 59 insertions(+), 29 deletions(-)
+> >>>
+> >>> diff --git a/block/backup.c b/block/backup.c
+> >>> index 763f0d7ff6db..d8c422a0e3bc 100644
+> >>> --- a/block/backup.c
+> >>> +++ b/block/backup.c
+> >>> @@ -602,11 +602,14 @@ static int64_t backup_calculate_cluster_size(BlockDriverState *target,
+> >>>                      BACKUP_CLUSTER_SIZE_DEFAULT);
+> >>>          return BACKUP_CLUSTER_SIZE_DEFAULT;
+> >>>      } else if (ret < 0 && !target->backing) {
+> >>> -        error_setg_errno(errp, -ret,
+> >>> +        Error *local_err = NULL;
 > >>
-> >> Move RTC devices under the hw/rtc/ subdirectory.
-> >>
-> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> >> ---
-> >>  hw/rtc/Makefile.objs                        | 1 +
-> >>  hw/rtc/trace-events                         | 3 +++
-> >>  hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.c         | 2 +-
-> >>  hw/timer/Makefile.objs                      | 1 -
-> >>  hw/timer/trace-events                       | 3 ---
-> >>  include/hw/arm/xlnx-zynqmp.h                | 2 +-
-> >>  include/hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.h | 6 +++---
-> >>  7 files changed, 9 insertions(+), 9 deletions(-)
-> >>  rename hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.c (99%)
-> >>  rename include/hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.h (95%)
-> >>
-> >> diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
-> >> index b195863291..543a550a0f 100644
-> >> --- a/hw/rtc/Makefile.objs
-> >> +++ b/hw/rtc/Makefile.objs
-> >> @@ -6,5 +6,6 @@ common-obj-$(CONFIG_M48T59) +=3D m48t59-isa.o
-> >>  endif
-> >>  common-obj-$(CONFIG_PL031) +=3D pl031.o
-> >>  common-obj-$(CONFIG_TWL92230) +=3D twl92230.o
-> >> +common-obj-$(CONFIG_XLNX_ZYNQMP) +=3D xlnx-zynqmp-rtc.o
-> >>  obj-$(CONFIG_MC146818RTC) +=3D mc146818rtc.o
-> >>  common-obj-$(CONFIG_SUN4V_RTC) +=3D sun4v-rtc.o
-> >> diff --git a/hw/rtc/trace-events b/hw/rtc/trace-events
-> >> index ac9e0e0fba..7f1945ad4c 100644
-> >> --- a/hw/rtc/trace-events
-> >> +++ b/hw/rtc/trace-events
-> >> @@ -4,6 +4,9 @@
-> >>  sun4v_rtc_read(uint64_t addr, uint64_t value) "read: addr 0x%" PRIx64=
- " value 0x%" PRIx64
-> >>  sun4v_rtc_write(uint64_t addr, uint64_t value) "write: addr 0x%" PRIx=
-64 " value 0x%" PRIx64
-> >>
-> >> +# xlnx-zynqmp-rtc.c
-> >> +xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int m=
-in, int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
-> >> +
-> >>  # pl031.c
-> >>  pl031_irq_state(int level) "irq state %d"
-> >>  pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
-> >> diff --git a/hw/timer/xlnx-zynqmp-rtc.c b/hw/rtc/xlnx-zynqmp-rtc.c
-> >> similarity index 99%
-> >> rename from hw/timer/xlnx-zynqmp-rtc.c
-> >> rename to hw/rtc/xlnx-zynqmp-rtc.c
-> >> index 5692db98c2..f9f09b7296 100644
-> >> --- a/hw/timer/xlnx-zynqmp-rtc.c
-> >> +++ b/hw/rtc/xlnx-zynqmp-rtc.c
-> >> @@ -36,7 +36,7 @@
-> >>  #include "qemu/cutils.h"
-> >>  #include "sysemu/sysemu.h"
-> >>  #include "trace.h"
-> >> -#include "hw/timer/xlnx-zynqmp-rtc.h"
-> >> +#include "hw/rtc/xlnx-zynqmp-rtc.h"
-> >>  #include "migration/vmstate.h"
-> >>
-> >>  #ifndef XLNX_ZYNQMP_RTC_ERR_DEBUG
-> >> diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-> >> index 70b61b69c7..294465ef47 100644
-> >> --- a/hw/timer/Makefile.objs
-> >> +++ b/hw/timer/Makefile.objs
-> >> @@ -14,7 +14,6 @@ common-obj-$(CONFIG_IMX) +=3D imx_epit.o
-> >>  common-obj-$(CONFIG_IMX) +=3D imx_gpt.o
-> >>  common-obj-$(CONFIG_LM32) +=3D lm32_timer.o
-> >>  common-obj-$(CONFIG_MILKYMIST) +=3D milkymist-sysctl.o
-> >> -common-obj-$(CONFIG_XLNX_ZYNQMP) +=3D xlnx-zynqmp-rtc.o
-> >>  common-obj-$(CONFIG_NRF51_SOC) +=3D nrf51_timer.o
-> >>
-> >>  common-obj-$(CONFIG_ALTERA_TIMER) +=3D altera_timer.o
-> >> diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-> >> index ce34b967db..1459d07237 100644
-> >> --- a/hw/timer/trace-events
-> >> +++ b/hw/timer/trace-events
-> >> @@ -70,9 +70,6 @@ cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer=
-: reset"
-> >>  aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " =
-value 0x%08" PRIx64
-> >>  aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 "=
- value 0x%08" PRIx64
-> >>
-> >> -# xlnx-zynqmp-rtc.c
-> >> -xlnx_zynqmp_rtc_gettime(int year, int month, int day, int hour, int m=
-in, int sec) "Get time from host: %d-%d-%d %2d:%02d:%02d"
-> >> -
-> >>  # nrf51_timer.c
-> >>  nrf51_timer_read(uint64_t addr, uint32_t value, unsigned size) "read =
-addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
-> >>  nrf51_timer_write(uint64_t addr, uint32_t value, unsigned size) "writ=
-e addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
-> >> diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp=
-.h
-> >> index d7483c3b42..53076fa29a 100644
-> >> --- a/include/hw/arm/xlnx-zynqmp.h
-> >> +++ b/include/hw/arm/xlnx-zynqmp.h
-> >> @@ -29,7 +29,7 @@
-> >>  #include "hw/dma/xlnx-zdma.h"
-> >>  #include "hw/display/xlnx_dp.h"
-> >>  #include "hw/intc/xlnx-zynqmp-ipi.h"
-> >> -#include "hw/timer/xlnx-zynqmp-rtc.h"
-> >> +#include "hw/rtc/xlnx-zynqmp-rtc.h"
-> >>  #include "hw/cpu/cluster.h"
-> >>  #include "target/arm/cpu.h"
-> >>
-> >> diff --git a/include/hw/timer/xlnx-zynqmp-rtc.h b/include/hw/rtc/xlnx-=
-zynqmp-rtc.h
-> >> similarity index 95%
-> >> rename from include/hw/timer/xlnx-zynqmp-rtc.h
-> >> rename to include/hw/rtc/xlnx-zynqmp-rtc.h
-> >> index 97e32322ed..6fa1cb2f43 100644
-> >> --- a/include/hw/timer/xlnx-zynqmp-rtc.h
-> >> +++ b/include/hw/rtc/xlnx-zynqmp-rtc.h
-> >> @@ -3,7 +3,7 @@
-> >>   *
-> >>   * Copyright (c) 2017 Xilinx Inc.
-> >>   *
-> >> - * Written-by: Alistair Francis <alistair.francis@xilinx.com>
-> >> + * Written-by: Alistair Francis
-> >
-> > Why remove the email address?
->
-> In https://lists.gnu.org/archive/html/qemu-devel/2019-01/msg00759.html
-> Thomas suggested to remove invalid email addresses:
->
->   I don't think that this e-mail address is still valid since that
->   company has been bought up > 10 years ago... so it likely does not
->   make sense to mention it in new files anymore. So just mention the
->   name?
->
-> In your case Xilinx still exists, but you warned us it might bounce:
+> >> Can we go with the shorter name 'err' instead of 'local_err'?  I know,
+> >> we aren't consistent (both styles appear throughout the tree), but the
+> >> shorter style is more appealing to me.
+> > 
+> > I like local_err better because it's easier to distinguish from errp.
+> > The compiler might catch it if you use the wrong one because one is
+> > Error* and the other is Error**, but as a reviewer, I can still get
+> > confused.
+> 
+> Doesn't that sound like a striking reason for condemnation of this
+> entire model?
 
-Yeah, I assume it bounces now.
+Might be, but do you have a better idea?
 
->
-> $ git show c22e580c2ad
-> commit c22e580c2ad1cccef582e1490e732f254d4ac064 (tag:
-> pull-target-arm-20180301)
-> Author: Alistair Francis <alistair.francis@xilinx.com>
-> Date:   Thu Mar 1 11:05:58 2018 +0000
->
->     MAINTAINERS: Update my email address
->
->     I am leaving Xilinx, so to avoid having an email address that bounces
->     update my maintainer address to point to my personal email address.
->
-> So I stripped your obsolete email.
->
-> Since the line is not "(c) Name <email>" but simply "Written by" and the
-> (C) remains to Xilinx, we could update the email by your personal one,
-> that seems fair (so if someone want to contact you to ask you question
-> about your code, he still can).
-
-I always though that the email address indicated that "Alistair
-Francis" wrote this, but while being funded by "Xilinx". It gave both
-parties credit for the work. The email address is also unique (at
-least somewhat) which helps tie things together if you have a common
-name.
-
-You are right though that the author and copyright tags do the same thing.
-
-As for contact to ask questions that is where the maintainers file
-comes in, so it probably doesn't matter too much.
-
->
-> What do you prefer?
-
-I'm not fussed, was just curious why you thought the email should be
-removed. It's fine as it is.
-
-Alistair
-
->
-> >
-> > Otherwise:
-> >
-> > Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
->
-> Thanks!
->
-> >
-> > Alistair
-> >
-> >>   *
-> >>   * Permission is hereby granted, free of charge, to any person obtain=
-ing a copy
-> >>   * of this software and associated documentation files (the "Software=
-"), to deal
-> >> @@ -24,8 +24,8 @@
-> >>   * THE SOFTWARE.
-> >>   */
-> >>
-> >> -#ifndef HW_TIMER_XLNX_ZYNQMP_RTC_H
-> >> -#define HW_TIMER_XLNX_ZYNQMP_RTC_H
-> >> +#ifndef HW_RTC_XLNX_ZYNQMP_H
-> >> +#define HW_RTC_XLNX_ZYNQMP_H
-> >>
-> >>  #include "hw/register.h"
-> >>  #include "hw/sysbus.h"
-> >> --
-> >> 2.20.1
-> >>
-> >>
+Kevin

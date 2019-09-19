@@ -1,75 +1,71 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1022726wrp;
-        Thu, 19 Sep 2019 06:54:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz9x1AMFY48KleW4ncbFS3rkIMg4+xeQoYN4m+gR5HXIJpN/ln9hf8ILoCkbCz4SGJx/xv0
-X-Received: by 2002:a37:2784:: with SMTP id n126mr2872526qkn.302.1568901273135;
-        Thu, 19 Sep 2019 06:54:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568901273; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1025693wrp;
+        Thu, 19 Sep 2019 06:57:36 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw0GB/fjGRqWlpSoLeBPVISDTyLfzW0WnZ10Iw7/CtZUYheCFjYPHOsM/0vbF2I5sYoxP9F
+X-Received: by 2002:a17:906:8041:: with SMTP id x1mr14370130ejw.132.1568901456773;
+        Thu, 19 Sep 2019 06:57:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568901456; cv=none;
         d=google.com; s=arc-20160816;
-        b=HHOJjrh87JI3Li268kGzlzIJYtYfs5UBFCMdkM4poFw+/LWuVP2YIQbQI+aWO6Y8yg
-         lKLw45eceaiSkBt2bfuRMr39usKMjcDeNLZQHRSXuVHGHQOljkxknD+bx19dwkhrIH6U
-         2ZWPXZiELpF5lTxkoPlwFLOH33BVNjggOoO85b0LvC3krexcb4+z+ABxHZQNDmkpATfW
-         lpKSe1uotvioct20KVrsIgBMcPw4ly0NjEjOGyZtCBO92t2YP8P1Ra0IX+50mR2QaYmW
-         UJAIeTE+XPQfHC7Oz93O4ktzYSpsMAVux4S+ct/QhNFDSQ1/BAM7ZheROddgmdPz2shr
-         75Vw==
+        b=cGLjgT373ZoB0nOsRxb88+jkz/bdpq3oVXswP/KCUhymWLLVcIxv2iUnKfbLVlQZSF
+         fC8G7mukskncGijMawU+HoxWPOk87r0Kgeb2f1o6EwE8azZ+z9s2zC5CPYl/QBw3LzUS
+         R2TUlcZ6M9KGI86Nj+8p/pHZPORYghBPMmchOfNdEFyHs/gI+NNuY2+RV+lzdE7ldSco
+         Z/LDS+Yqq7y1QcBB+0MGk34hZcmKjxzsAOGilXYpMQL036MENZiIV2TlnxjVv66hWXZC
+         pu9UhwzTuXGbCRhPupdPZs6JZju7ElKtrnCwm5ZoVBYo6jbbyCiYQo9TGITN5dSUKp1l
+         uIZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:organization:autocrypt:openpgp:from
          :references:to;
-        bh=s/GxcNLca86v2jyD0ms6MKA2RbRV+ENKW8V6Idcu2C0=;
-        b=za2RXorWpysSGuIrCGK//TU+DBXKUmY63wWvmct6/neil1kx4dtwyriV4N9BpzG6zk
-         13I0+AubviaFO5yLkvYSSZephtO1Hhy+tCZFgcXkAyNxgULFHfhHIuvYsNt9IubxEoiT
-         kfcP3/10MXKR/uNykjvWlE/6Zx33Khp085nrvjufTtnpij8ZMManOGTI5qORXjQm7mPd
-         aEPUXLvuEQ+QkftnVMKGcIvh9r7XvV/Tiq0SGxCof1KKsAhGgyo8YTR/ZwKpRxE47SGO
-         c8H5FsO7A0MD63j3G3vHp1tfOz0PGxc+adbAgCnzOLpeUnf+CK/z4ki8c5zl6Ae4YCyJ
-         kZPg==
+        bh=CweiGcBP7/0WrfJv9BET6qlg2i++amEwXhnSbOfqb1I=;
+        b=GB53RXM0FEPDYLPsAism8Tmd3YNbajs/saOKPMNSM3JxPoW+003LZxh6ikKjUYDTZl
+         rR19eOtnyjnh5PN/pMxXny2Dl6PVrQxU3F3d0gSKXIVFHeBTmaCtuSkmCy4BnyZDRxBj
+         v1LnHqQextwrzYqWclFkav46gLx8gGA3BEUNVYxEpS+5wfdKiiUud3JoJMGLuW/Aa2+K
+         r/g8f8fqz7xY6nMIV4V/7dGTBrL2k6Xu7Y8HgceA4LSxs+FojgmYsr1V4rVLK/LRw/Ii
+         sK0tdrSITrqTSttOydO6ofmsv9I91Ftae4cdJS3r5zAvW8fAaK/aD8EE5c5tBEGd8BDa
+         5cPw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 21si6363560qki.323.2019.09.19.06.54.33
+        by mx.google.com with ESMTPS id b1si5515438edm.271.2019.09.19.06.57.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Sep 2019 06:54:33 -0700 (PDT)
+        Thu, 19 Sep 2019 06:57:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44450 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44496 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAwtE-0002DM-4x
-	for alex.bennee@linaro.org; Thu, 19 Sep 2019 09:54:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47058)
+	id 1iAwwB-0006FY-Ma
+	for alex.bennee@linaro.org; Thu, 19 Sep 2019 09:57:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49670)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iAwVE-0007Ho-UF
- for qemu-arm@nongnu.org; Thu, 19 Sep 2019 09:29:45 -0400
+ (envelope-from <eblake@redhat.com>) id 1iAwgb-0004Ok-15
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2019 09:41:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iAwVD-0002bN-H1
- for qemu-arm@nongnu.org; Thu, 19 Sep 2019 09:29:44 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47694)
+ (envelope-from <eblake@redhat.com>) id 1iAwgX-0003hV-MM
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2019 09:41:27 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37772)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iAwVD-0002ap-88; Thu, 19 Sep 2019 09:29:43 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ id 1iAwgS-0003ZD-UB; Thu, 19 Sep 2019 09:41:22 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 1E76C2D6A04;
- Thu, 19 Sep 2019 13:29:42 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 413C7109EFC3;
+ Thu, 19 Sep 2019 13:41:18 +0000 (UTC)
 Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8126E60C18;
- Thu, 19 Sep 2019 13:29:14 +0000 (UTC)
-To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 41CFD1001281;
+ Thu, 19 Sep 2019 13:40:59 +0000 (UTC)
+To: Kevin Wolf <kwolf@redhat.com>
 References: <20190918130244.24257-1-vsementsov@virtuozzo.com>
  <abb14088-6af2-5db2-da0d-0948fd4ac81c@redhat.com>
- <0497ac1e-c841-39cd-9944-48dd54c5b0f0@virtuozzo.com>
- <9450fbfd-0f8b-d10f-7577-64805917f67a@redhat.com>
- <26217614-77cf-9519-f94b-d606864f4d46@redhat.com>
- <1c82faa5-9443-bc3d-6df2-dbfd82a7b830@virtuozzo.com>
+ <20190919091720.GB10163@localhost.localdomain>
 From: Eric Blake <eblake@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=eblake@redhat.com; keydata=
@@ -96,18 +92,18 @@ Autocrypt: addr=eblake@redhat.com; keydata=
  Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
  2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
 Organization: Red Hat, Inc.
-Message-ID: <f10d759b-58b0-f3f8-5250-9b4f11f10433@redhat.com>
-Date: Thu, 19 Sep 2019 08:29:13 -0500
+Message-ID: <57483252-273c-4606-47a8-eddeb840109a@redhat.com>
+Date: Thu, 19 Sep 2019 08:40:58 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <1c82faa5-9443-bc3d-6df2-dbfd82a7b830@virtuozzo.com>
+In-Reply-To: <20190919091720.GB10163@localhost.localdomain>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.29]); Thu, 19 Sep 2019 13:29:42 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.65]); Thu, 19 Sep 2019 13:41:18 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [RFC] error: auto propagated local_err
@@ -122,66 +118,103 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "fam@euphon.net" <fam@euphon.net>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "mst@redhat.com" <mst@redhat.com>, "codyprime@gmail.com" <codyprime@gmail.com>,
- "mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
- "mdroth@linux.vnet.ibm.com" <mdroth@linux.vnet.ibm.com>,
- "kraxel@redhat.com" <kraxel@redhat.com>,
- "mreitz@redhat.com" <mreitz@redhat.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- "quintela@redhat.com" <quintela@redhat.com>,
- "david@redhat.com" <david@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
- "borntraeger@de.ibm.com" <borntraeger@de.ibm.com>,
- "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
- "rth@twiddle.net" <rth@twiddle.net>,
- "farman@linux.ibm.com" <farman@linux.ibm.com>,
- "groug@kaod.org" <groug@kaod.org>, "dgilbert@redhat.com" <dgilbert@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "stefanha@redhat.com" <stefanha@redhat.com>,
- "jsnow@redhat.com" <jsnow@redhat.com>,
- "david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>,
- "kwolf@redhat.com" <kwolf@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- "sundeep.lkml@gmail.com" <sundeep.lkml@gmail.com>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>
+Cc: fam@euphon.net, peter.maydell@linaro.org, mst@redhat.com,
+ codyprime@gmail.com, mark.cave-ayland@ilande.co.uk, qemu-devel@nongnu.org,
+ armbru@redhat.com, kraxel@redhat.com, mreitz@redhat.com, qemu-block@nongnu.org,
+ quintela@redhat.com, david@redhat.com, mdroth@linux.vnet.ibm.com,
+ pasic@linux.ibm.com, borntraeger@de.ibm.com, marcandre.lureau@redhat.com,
+ rth@twiddle.net, farman@linux.ibm.com, groug@kaod.org, dgilbert@redhat.com,
+ alex.williamson@redhat.com, qemu-arm@nongnu.org, stefanha@redhat.com,
+ jsnow@redhat.com, david@gibson.dropbear.id.au,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>, berrange@redhat.com,
+ cohuck@redhat.com, qemu-s390x@nongnu.org, sundeep.lkml@gmail.com,
+ qemu-ppc@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GzjrM3fKLols
+X-TUID: 7RmyGN19FD94
 
-On 9/19/19 1:47 AM, Vladimir Sementsov-Ogievskiy wrote:
-
->> "The evaluations of the initialization list expressions are
->> indeterminately sequenced with respect to one another and thus the order
->> in which any side effects occur is unspecified."
+On 9/19/19 4:17 AM, Kevin Wolf wrote:
+> Am 18.09.2019 um 19:10 hat Eric Blake geschrieben:
+>> On 9/18/19 8:02 AM, Vladimir Sementsov-Ogievskiy wrote:
+>>> + */
+>>> +#define MAKE_ERRP_SAFE(errp) \
+>>> +g_auto(ErrorPropagationStruct) (__auto_errp_prop) = {.errp = (errp)}; \
+>>> +if ((errp) == NULL || *(errp) == error_abort || *(errp) == error_fatal) { \
+>>> +    (errp) = &__auto_errp_prop.local_err; \
+>>> +}
 >>
->> which does not bode well for the assignment to __auto_errp_prop.errp.
->> All changes to errp would have to be within the same initializer.  Maybe:
+>> Not written to take a trailing semicolon in the caller.
 >>
->> #define MAKE_ERRP_SAFE() \
->>    g_auto(ErrorPropagator) __auto_errp_prop = { \
->>      .local_err = (__auto_errp_prop.err = errp, \
->>          (errp = &__auto_errp_prop.local_err), NULL) }
+>> You could even set __auto_errp_prop unconditionally rather than trying
+>> to reuse incoming errp (the difference being that error_propagate() gets
+>> called more frequently).
 > 
-> Is it guaranteed that .errp will not be initialized to NULL after evaluating of
-> .local_err initializer?
+> I think this difference is actually a problem.
+> 
+> When debugging things, I hate error_propagate(). It means that the Error
+> (specifically its fields src/func/line) points to the outermost
+> error_propagate() rather than the place where the error really happened.
+> It also makes error_abort completely useless because at the point where
+> the process gets aborted, the interesting information is already lost.
 
-Probably not.
+Okay, based on that, I see the following desirable semantics:
+
+Caller: one of 4 calling paradigms:
+
+pass errp=NULL (we don't care about failures)
+pass errp=&error_abort (we want to abort() as soon as possible as close
+to the real problem as possible)
+pass errp=&error_fatal (we want to exit(), but only after collecting as
+much information as possible)
+pass errp = anything else (we are collecting an error for other reasons,
+we may report it or let the caller decide or ...)
+
+Callee: we want a SINGLE paradigm:
+
+func (Error **errp)
+{
+    MAKE_ERRP_SAFE();
+
+    now we can pass errp to any child function, test '*errp', or do
+anything else, and we DON'T have to call error_propagate.
+
+I think that means we need:
+
+#define MAKE_ERRP_SAFE() \
+  g_auto(...) __auto_errp = { .errp = errp }; \
+  do { \
+    if (!errp || errp == &error_fatal) { errp = &__auto_errp.local; } \
+  } while (0)
+
+So back to the caller semantics:
+
+if the caller passed NULL, we've redirected errp locally so that we can
+use *errp at will; the auto-cleanup will free our local error.
+
+if the caller passed &error_abort, we keep errp unchanged.  *errp tests
+will never trigger, because we'll have already aborted in the child on
+the original errp, giving developers the best stack trace.
+
+if the caller passed &error_fatal, we redirect errp.  auto-cleanup will
+then error_propagate that back to the caller, producing as much nice
+information as possible.
+
+if the caller passed anything else, we keep errp unchanged, so no extra
+error_propagate in the mix.
 
 > 
->>
->> but by the time you get that complicated, just using a statement is
->> easier to read.
+> So I'd really like to restrict the use of error_propagate() to places
+> where it's absolutely necessary. Unless, of course, you can fix these
+> practical problems that error_propagate() causes for debugging.
+> 
+> In fact, in the context of Greg's series, I think we really only need to
+> support hints for error_fatal, which are cases that users are supposed
+> to see. We should exclude error_abort in MAKE_ERRP_SAFE() because these
+> are things that are never supposed to happen. A good stack trace is more
+> important there than adding a hint to the message.
 
-Either two declarations (the second being an unused dummy variable
-declared solely for its initializer's side-effects) or a declaration and
-a statement are the only sane ways I can see to provide guaranteed
-ordering.  It's hidden behind a macro, so I don't care which.
+We also want to handle the caller passing NULL, so that we no longer
+have to introduce 'Error *local_error = NULL' everywhere.
 
 -- 
 Eric Blake, Principal Software Engineer

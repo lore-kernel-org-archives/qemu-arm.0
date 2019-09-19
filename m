@@ -1,88 +1,111 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp722293wrp;
-        Thu, 19 Sep 2019 01:57:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyFipUdmn9vtUvbAvPQY6FbWYxWCfNHB+nRbjp8WVHwrup+MyCoVorXqwKCRIw8RJvSXvrK
-X-Received: by 2002:ae9:ea12:: with SMTP id f18mr1804917qkg.204.1568883473484;
-        Thu, 19 Sep 2019 01:57:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568883473; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp730989wrp;
+        Thu, 19 Sep 2019 02:07:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw6+BKLsJBlx6gaxFMXe3TqRbORDa88LlfZU/ohjcQYNy1U+DXyyykFgcg+KdU+Fu+NnMdA
+X-Received: by 2002:a50:cd1a:: with SMTP id z26mr14603883edi.75.1568884041211;
+        Thu, 19 Sep 2019 02:07:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568884041; cv=none;
         d=google.com; s=arc-20160816;
-        b=T39RebHqlR+I0LEkMPZDAOGS7Zx9Hy0FjUwYE9CBENJHBFJmVTabuJM6L/IQpbE7HT
-         xRKpQ5un/YBax5zfnNEDaD+J12uABpSw9b8b7E9sLD/e1DRGAHvGcd4LTHAQmxzZOVzV
-         tSTd+EP++MJY95sLs079f3r7G0pMYxguSbfELz9PctKehK3CbwTdgrx9HTICPfwTcPkB
-         K2vRXDwJVtCkkQXgmKEHj2tFdt1oe+qw+xx1U1ygtAOKWg0fXsK8IrHHqLwAcn4iGXgI
-         5BukfisnfK9vhWd/hAVTqgVK0sk8PKWh/uGvnm9T7V1eWCA6YZ581Bua+bADMVcNC6fu
-         FFPw==
+        b=KRTsCke5LTM8nJUqCQNflRxuT1RnJj2XcAW/4qpX9D2a+g9TDJT8UI0zCPKKf4WQp/
+         VjvSnSSpUlVhU+dHa8pDqjZ3ThHQK9SryN+Nve7+5EGqzVGcZX3M3XYRY76LF+indjhL
+         AJ9MNfawsE6YwwObelcBwlNQdhVyjw3hZYm5YhO9bFnxlH831CGFVRTlkngBwlZZLOy+
+         ttcQRUouQzF3m4zFhW6W3Yn/2goquZ8U+wr57phXEEaUvUUdACw12LXadTxQvB+94ZMd
+         GG/5bMzbdg8xMokx2Z8V43AtX4/dBfRSC8m5jsWWU86eZdRtJKyVs3zqOPOpGYdYdAak
+         L0Qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:to:from:date;
-        bh=KSNjW+08411Xgtl9vvq6SnVe+jgtIVqIsrZVuZEdVpg=;
-        b=jjO68B8SgkR2n9P5WtUPDH6LdIWasyVd1JJZsncvYRBK9kASb/3Xqg6ZqIJxSCuRFy
-         l3VfOgXYJXDYHJR9KL45zc1nLD2fRSDx3GvGqr+Z6OqziaCGZYinMw99IkhZZ9fJ5h1l
-         7+c6opiIgyDA0mDYxwdU+z6YT9P7ynU5xmP7Z3eLSG9t4iUtT3U8OOGs3rCOoRPuUK36
-         SVcleNT27TC5w8UMCDYCD3fPdE/uFs3w76VihQa1CKXpsTLKPBPJnho+oE1HBe419OOv
-         46puvZEup9X41pYAr3ZRUZoNjITJCukuCNmchY0piQ+MYfUDzputgEVQKjGjFafDxcFX
-         1dyw==
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:openpgp:from:references:to;
+        bh=nDNbUlprPXEXg+q12Y1AuCNd0Zq61EwS6yt2ffP/p+Q=;
+        b=d0piA7i67z+mVDoBhF4RaFlbiQAsaqzU+fQcAPSSND3Rrkz0FOpmcO7fMxgUBg1mvI
+         +qY9g0VzTqmlkre28u2+YJagSalZA5BFzsy3hyuaM96ylzYilThSNM5e2cz6PA679Uf2
+         PwrwVDOa0iHLuKEmTtjyxNdu/GqX1Y3whBGo4rSYeTixF30QPjR86NGyOtnAtQCqkTso
+         not3BrgMDsj5bHG5z4KVbvupgMZxiiF1666tHUYgj8+pQiuX8h9X8p3O8y21erwG8rDL
+         4B4ZJ7sggnrk+Ro1El9MxubZAgo6RHKYg3zUQOAEsP23fbnxFlx9lafc5NGNxigU4x4l
+         ZKUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a11si5916255qva.129.2019.09.19.01.57.53
+        by mx.google.com with ESMTPS id q9si4072106ejp.347.2019.09.19.02.07.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Sep 2019 01:57:53 -0700 (PDT)
+        Thu, 19 Sep 2019 02:07:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40382 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40474 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAsG8-0004Y1-HN
-	for alex.bennee@linaro.org; Thu, 19 Sep 2019 04:57:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37454)
+	id 1iAsPH-0006Dg-CR
+	for alex.bennee@linaro.org; Thu, 19 Sep 2019 05:07:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38332)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <cohuck@redhat.com>) id 1iAs98-0004rg-Tr
- for qemu-devel@nongnu.org; Thu, 19 Sep 2019 04:50:39 -0400
+ (envelope-from <mreitz@redhat.com>) id 1iAsI6-00085S-Lo
+ for qemu-devel@nongnu.org; Thu, 19 Sep 2019 04:59:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <cohuck@redhat.com>) id 1iAs97-00051A-MV
- for qemu-devel@nongnu.org; Thu, 19 Sep 2019 04:50:38 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:35012)
+ (envelope-from <mreitz@redhat.com>) id 1iAsI5-0001Gx-IV
+ for qemu-devel@nongnu.org; Thu, 19 Sep 2019 04:59:54 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59342)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <cohuck@redhat.com>)
- id 1iAs92-0004zE-Lg; Thu, 19 Sep 2019 04:50:32 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ (Exim 4.71) (envelope-from <mreitz@redhat.com>)
+ id 1iAsHy-00019Y-Df; Thu, 19 Sep 2019 04:59:46 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 32046317529C;
- Thu, 19 Sep 2019 08:50:31 +0000 (UTC)
-Received: from gondolin (dhcp-192-230.str.redhat.com [10.33.192.230])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AAB9F19C5B;
- Thu, 19 Sep 2019 08:50:11 +0000 (UTC)
-Date: Thu, 19 Sep 2019 10:50:08 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Eric Blake <eblake@redhat.com>
-Message-ID: <20190919105008.103ede60.cohuck@redhat.com>
-In-Reply-To: <89d76bbe-8053-e817-2ccb-322bccf1533e@redhat.com>
-References: <156871562997.196432.17776290406203122029.stgit@bahia.lan>
- <156871569396.196432.12307975838741351907.stgit@bahia.lan>
- <20190917132412.6610576c.cohuck@redhat.com>
- <20190917183620.044e980d@bahia.lan>
- <20190918122628.7acb9284.cohuck@redhat.com>
- <89d76bbe-8053-e817-2ccb-322bccf1533e@redhat.com>
-Organization: Red Hat GmbH
+ by mx1.redhat.com (Postfix) with ESMTPS id 3D0A13175282;
+ Thu, 19 Sep 2019 08:59:45 +0000 (UTC)
+Received: from dresden.str.redhat.com (ovpn-204-52.brq.redhat.com
+ [10.40.204.52])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 58E4F1001947;
+ Thu, 19 Sep 2019 08:59:26 +0000 (UTC)
+To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ qemu-devel@nongnu.org
+References: <20190918130244.24257-1-vsementsov@virtuozzo.com>
+From: Max Reitz <mreitz@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=mreitz@redhat.com; prefer-encrypt=mutual; keydata=
+ mQENBFXOJlcBCADEyyhOTsoa/2ujoTRAJj4MKA21dkxxELVj3cuILpLTmtachWj7QW+TVG8U
+ /PsMCFbpwsQR7oEy8eHHZwuGQsNpEtNC2G/L8Yka0BIBzv7dEgrPzIu+W3anZXQW4702+uES
+ U29G8TP/NGfXRRHGlbBIH9KNUnOSUD2vRtpOLXkWsV5CN6vQFYgQfFvmp5ZpPeUe6xNplu8V
+ mcTw8OSEDW/ZnxJc8TekCKZSpdzYoxfzjm7xGmZqB18VFwgJZlIibt1HE0EB4w5GsD7x5ekh
+ awIe3RwoZgZDLQMdOitJ1tUc8aqaxvgA4tz6J6st8D8pS//m1gAoYJWGwwIVj1DjTYLtABEB
+ AAG0HU1heCBSZWl0eiA8bXJlaXR6QHJlZGhhdC5jb20+iQFTBBMBCAA9AhsDBQkSzAMABQsJ
+ CAcCBhUICQoLAgQWAgMBAh4BAheABQJVzie5FRhoa3A6Ly9rZXlzLmdudXBnLm5ldAAKCRD0
+ B9sAYdXPQDcIB/9uNkbYEex1rHKz3mr12uxYMwLOOFY9fstP5aoVJQ1nWQVB6m2cfKGdcRe1
+ 2/nFaHSNAzT0NnKz2MjhZVmcrpyd2Gp2QyISCfb1FbT82GMtXFj1wiHmPb3CixYmWGQUUh+I
+ AvUqsevLA+WihgBUyaJq/vuDVM1/K9Un+w+Tz5vpeMidlIsTYhcsMhn0L9wlCjoucljvbDy/
+ 8C9L2DUdgi3XTa0ORKeflUhdL4gucWoAMrKX2nmPjBMKLgU7WLBc8AtV+84b9OWFML6NEyo4
+ 4cP7cM/07VlJK53pqNg5cHtnWwjHcbpGkQvx6RUx6F1My3y52vM24rNUA3+ligVEgPYBuQEN
+ BFXOJlcBCADAmcVUNTWT6yLWQHvxZ0o47KCP8OcLqD+67T0RCe6d0LP8GsWtrJdeDIQk+T+F
+ xO7DolQPS6iQ6Ak2/lJaPX8L0BkEAiMuLCKFU6Bn3lFOkrQeKp3u05wCSV1iKnhg0UPji9V2
+ W5eNfy8F4ZQHpeGUGy+liGXlxqkeRVhLyevUqfU0WgNqAJpfhHSGpBgihUupmyUg7lfUPeRM
+ DzAN1pIqoFuxnN+BRHdAecpsLcbR8sQddXmDg9BpSKozO/JyBmaS1RlquI8HERQoe6EynJhd
+ 64aICHDfj61rp+/0jTIcevxIIAzW70IadoS/y3DVIkuhncgDBvGbF3aBtjrJVP+5ABEBAAGJ
+ ASUEGAEIAA8FAlXOJlcCGwwFCRLMAwAACgkQ9AfbAGHVz0CbFwf9F/PXxQR9i4N0iipISYjU
+ sxVdjJOM2TMut+ZZcQ6NSMvhZ0ogQxJ+iEQ5OjnIputKvPVd5U7WRh+4lF1lB/NQGrGZQ1ic
+ alkj6ocscQyFwfib+xIe9w8TG1CVGkII7+TbS5pXHRxZH1niaRpoi/hYtgzkuOPp35jJyqT/
+ /ELbqQTDAWcqtJhzxKLE/ugcOMK520dJDeb6x2xVES+S5LXby0D4juZlvUj+1fwZu+7Io5+B
+ bkhSVPb/QdOVTpnz7zWNyNw+OONo1aBUKkhq2UIByYXgORPFnbfMY7QWHcjpBVw9MgC4tGeF
+ R4bv+1nAMMxKmb5VvQCExr0eFhJUAHAhVg==
+Message-ID: <d2a793c1-aae7-6e22-8baa-0c403c111e5c@redhat.com>
+Date: Thu, 19 Sep 2019 10:59:24 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+In-Reply-To: <20190918130244.24257-1-vsementsov@virtuozzo.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.49]); Thu, 19 Sep 2019 08:50:31 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.49]); Thu, 19 Sep 2019 08:59:45 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-devel] [PATCH 10/17] s390x/css: Pass local error object
- pointer to error_append_hint()
+Subject: Re: [Qemu-devel] [RFC] error: auto propagated local_err
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -94,65 +117,75 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jeff Cody <codyprime@gmail.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
- Juan Quintela <quintela@redhat.com>, David Hildenbrand <david@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
- Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia@oracle.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
- John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Kevin Wolf <kwolf@redhat.com>,
- "Daniel P. =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>,
- qemu-s390x@nongnu.org, Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: fam@euphon.net, peter.maydell@linaro.org, mst@redhat.com,
+ codyprime@gmail.com, mark.cave-ayland@ilande.co.uk, mdroth@linux.vnet.ibm.com,
+ kraxel@redhat.com, qemu-block@nongnu.org, quintela@redhat.com,
+ david@redhat.com, armbru@redhat.com, pasic@linux.ibm.com,
+ borntraeger@de.ibm.com, marcandre.lureau@redhat.com, rth@twiddle.net,
+ farman@linux.ibm.com, groug@kaod.org, dgilbert@redhat.com,
+ alex.williamson@redhat.com, qemu-arm@nongnu.org, stefanha@redhat.com,
+ jsnow@redhat.com, david@gibson.dropbear.id.au, kwolf@redhat.com,
+ berrange@redhat.com, cohuck@redhat.com, qemu-s390x@nongnu.org,
+ sundeep.lkml@gmail.com, qemu-ppc@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XHg0wwxYJoaD
+X-TUID: XjZa6qKzF6K2
 
-On Wed, 18 Sep 2019 12:46:42 -0500
-Eric Blake <eblake@redhat.com> wrote:
+On 18.09.19 15:02, Vladimir Sementsov-Ogievskiy wrote:
+> Hi all!
+>=20
+> Here is a proposal (three of them, actually) of auto propagation for
+> local_err, to not call error_propagate on every exit point, when we
+> deal with local_err.
+>=20
+> It also may help make Greg's series[1] about error_append_hint smaller.
+>=20
+> See definitions and examples below.
+>=20
+> I'm cc-ing to this RFC everyone from series[1] CC list, as if we like
+> it, the idea will touch same code (and may be more).
+>=20
+> [1]: https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg03449.htm=
+l
+>=20
+> Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+> ---
+>  include/qapi/error.h | 102 +++++++++++++++++++++++++++++++++++++++++++
+>  block.c              |  63 ++++++++++++--------------
+>  block/backup.c       |   8 +++-
+>  block/gluster.c      |   7 +++
+>  4 files changed, 144 insertions(+), 36 deletions(-)
 
-> On 9/18/19 5:26 AM, Cornelia Huck wrote:
-> > On Tue, 17 Sep 2019 18:36:20 +0200
-> > Greg Kurz <groug@kaod.org> wrote:
-> >   
-> >> On Tue, 17 Sep 2019 13:24:12 +0200
-> >> Cornelia Huck <cohuck@redhat.com> wrote:
-> >>  
-> >>> On Tue, 17 Sep 2019 12:21:34 +0200
-> >>> Greg Kurz <groug@kaod.org> wrote:
-> >>>     
-> >>>> Ensure that hints are added even if errp is &error_fatal or &error_abort.
-> >>>>
-> >>>> Signed-off-by: Greg Kurz <groug@kaod.org>
-> >>>> ---
-> >>>>  hw/s390x/s390-ccw.c |    6 ++++--
-> >>>>  1 file changed, 4 insertions(+), 2 deletions(-)    
-> >>>
-> >>> Reviewed-by: Cornelia Huck <cohuck@redhat.com>
-> >>>
-> >>> Can also take this via the s390 tree, let me know what would work best.    
-> >>
-> >> I guess it would be easier to merge if each individual patch goes
-> >> through the corresponding sub-maintainer tree. But Eric mentioned
-> >> in another mail that the whole whole series could maybe go through
-> >> Markus' error tree... so, I don't know which is best. :)  
-> > 
-> > Ok, it's probably best to take this through the s390 tree, as I plan to
-> > send a pull request tomorrow :)  
-> 
-> If we go with Vladimir's idea of auto-propagation, this change just gets
-> rewritten again as part of our simplifications to drop all use of
-> 'local_err' in favor of instead using the macro that makes errp always
-> safe to use locally.
-> 
+If the combination of =E2=80=9Cif (local_err) { error_propagate(...); ...=
+ }=E2=80=9D is
+what=E2=80=99s cumbersome, can=E2=80=99t this be done simpler by adding a=
+n
+error_propagate() variant with a return value?
 
-Fair enough. That auto-propagation approach really looks nice, so I'll
-go ahead and unqueue this patch again.
+i.e.
+
+bool has_error_then_propagate(Error **errp, Error *err)
+{
+    if (!err) {
+        return false;
+    }
+    error_propagate(errp, err);
+    return true;
+}
+
+And then turn all instances of
+
+if (local_err) {
+    error_propagate(errp, local_err);
+    ...
+}
+
+into
+
+if (has_error_then_propagate(errp, local_err)) {
+    ...
+}
+
+?
+
+Max

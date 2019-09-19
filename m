@@ -1,80 +1,79 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp587095wrp;
-        Wed, 18 Sep 2019 22:58:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyv79S9cJkvzQtmL69fGo2980C/lIw9o0ibL78pJhYgFGtWdIcLc6yBr+RWBy+rv6Y8JfHc
-X-Received: by 2002:ac8:3a86:: with SMTP id x6mr1500555qte.316.1568872681840;
-        Wed, 18 Sep 2019 22:58:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568872681; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp587419wrp;
+        Wed, 18 Sep 2019 22:58:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqytU43hCUwEWywl1QEprTctwIiQY6IowsZJB3qVdTt2SGDB0FtS2AHd/KbV47lZ3aAMPhMC
+X-Received: by 2002:a37:a44f:: with SMTP id n76mr1239241qke.414.1568872710256;
+        Wed, 18 Sep 2019 22:58:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568872710; cv=none;
         d=google.com; s=arc-20160816;
-        b=jq8yq5nh+0MhYL3eC8J0dmycnSzAx0yZbPoKYLvI88Hk3RFA1ZoprTolwLcJLhqauu
-         O5K39R6VVjqx1wxsvUBnOr8K3doruS9uaEmkpyjHpW5f3aH0oT0DkWZhq2KOoAcN3+Yg
-         TCwYDNdYH2Oz2xBxQCJsb0OZKV/SjJrIjaH4O+X6WS+/Q8ryxdoi1Z3UydeQaAYgAnXj
-         RG8rdsbjtUYVC5Adq2BhMAIwpCHRgH3T3xPbJgllYcw0epcTg1jgo6u5wgnGd6kFyMTf
-         wDMdFkCGbuH708CLAzrxDKuNfeWF2ODrLcDAQ8nDEM8F5bEt0XHTk/Gehw63yBRE/ovw
-         mQHg==
+        b=NVnZxHR7WJH3PrhnsMTgquM5eGDQQTZnQwY5sT1QZRydLx96CIp/63ixRZvFe1tCOY
+         M1NeOmvwjThxxcXO/ln0VJkE+LyNgplxaZjwdJZS9TpyLW06IGX1TtyF0G9uU3fvYvsN
+         C5bmc8oeBdkZe4XU3di6qI3Gqwowt1jezhD4UHlpBBjpDF8eXgZKCdKeFvKk2skdFTGL
+         mVdreXysJ0T+KpM/wjedF06Ny1DE7uLSsHCXiufJPLV+MUcrEM3U8WGr86QIsg6o84km
+         ZovkS8qGIK8HhiBp6j/PXQIx0J5O3CCabeszFBu6TPJc6kJeUGcPSkVqQeg1pCYNMF8o
+         smDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=RSuS1ug1PeRKK+uvesAQPiP0wIBYvM+rUaxDl3Pt8/o=;
-        b=yOhJFS891U0OlwsivvZGrTythW/fCQLkIcqv700Xis2tdUYlK3JBrUsLHtGpVAKPv1
-         UowV47TSrdipjlMtiphca7LND7G5lVGBRKQNiWQfzZLRXwbgQ8JO66qfHx4pt20NwMcA
-         BfCAgbs96K5n55/jTw7k07OxAQMTJ9H8fafj8kukgYX4/QPAkFHFUWzhzDPBFMMKDJR4
-         oLLxo/Up14Lcuh60BgKq63XuuGSMQFUcyCi0rsliSh5r6OCUiTkhHaSRpsZFxIS0idK0
-         4ObHNchCUtJbSeMsUdVzJ3vCPfNvqotxOEvOKC/bQogzFYmkMHc/pQrrMsOu2nDZF+xH
-         jrrg==
+        bh=jKxs9q0ZYkEz7fn8s/Plm2HUR5RsuktFFUOU1jGLVsA=;
+        b=lZ4o0AYbDvHCSYHOylr+DgZ8eAdpZ9qZ+P0IlHK0Sy+464PVw+XaHgk/IKile68pcx
+         74Pv4fGRupcIaiilwd/qHthhISYiNSOvhADwscEBWwjOr1EqhOyMw74UEqoR5DBhDpKu
+         U7EhvcwN71RDPpDnHv2HPq3gQu92jRX3PlFoaqFNVRwdWraAh2lubqIwvC7gJT//n81q
+         qgpl9wF+W5deiiTiRSwFqaRc57/OPfgvfOspvznrkP3w5C0iHNuBeiq4jIVSx3uYz57z
+         9jKPCCgTDKq4evGlphBRSriupcZGMPfZe4nb7vzEG0LOMOxFxDHPfd5slhFRmXcPKuDm
+         JHdw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c78si563724qkb.296.2019.09.18.22.58.01
+        by mx.google.com with ESMTPS id m190si5670560qkc.320.2019.09.18.22.58.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2019 22:58:01 -0700 (PDT)
+        Wed, 18 Sep 2019 22:58:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37890 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37902 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iApS4-0000w9-JB
-	for alex.bennee@linaro.org; Thu, 19 Sep 2019 01:58:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42427)
+	id 1iApSX-0001dS-CT
+	for alex.bennee@linaro.org; Thu, 19 Sep 2019 01:58:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42721)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1iApL8-0000uO-G6
- for qemu-arm@nongnu.org; Thu, 19 Sep 2019 01:50:51 -0400
+ (envelope-from <clg@kaod.org>) id 1iApLs-0001r0-Hr
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2019 01:51:38 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1iApL7-0007s5-5z
- for qemu-arm@nongnu.org; Thu, 19 Sep 2019 01:50:50 -0400
-Received: from 10.mo5.mail-out.ovh.net ([46.105.52.148]:57372)
+ (envelope-from <clg@kaod.org>) id 1iApLq-0008Km-Pq
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2019 01:51:36 -0400
+Received: from 1.mo69.mail-out.ovh.net ([178.33.251.173]:43801)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iApL7-0007rG-1C
- for qemu-arm@nongnu.org; Thu, 19 Sep 2019 01:50:49 -0400
-Received: from player788.ha.ovh.net (unknown [10.108.57.44])
- by mo5.mail-out.ovh.net (Postfix) with ESMTP id B5CF124EFCE
- for <qemu-arm@nongnu.org>; Thu, 19 Sep 2019 07:50:47 +0200 (CEST)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iApLq-0008Js-IJ
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2019 01:51:34 -0400
+Received: from player788.ha.ovh.net (unknown [10.108.57.16])
+ by mo69.mail-out.ovh.net (Postfix) with ESMTP id 2C32C6A0E9
+ for <qemu-arm@nongnu.org>; Thu, 19 Sep 2019 07:51:33 +0200 (CEST)
 Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
  (Authenticated sender: clg@kaod.org)
- by player788.ha.ovh.net (Postfix) with ESMTPSA id 3C3D49F173A3;
- Thu, 19 Sep 2019 05:50:41 +0000 (UTC)
+ by player788.ha.ovh.net (Postfix) with ESMTPSA id AFB9D9F17522;
+ Thu, 19 Sep 2019 05:51:26 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 19 Sep 2019 07:49:46 +0200
-Message-Id: <20190919055002.6729-6-clg@kaod.org>
+Date: Thu, 19 Sep 2019 07:49:53 +0200
+Message-Id: <20190919055002.6729-13-clg@kaod.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190919055002.6729-1-clg@kaod.org>
 References: <20190919055002.6729-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 1672805790456449809
+X-Ovh-Tracer-Id: 1685753637732715281
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudelgdelhecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.52.148
-Subject: [Qemu-arm] [PATCH 05/21] aspeed/timer: Add support for control
- register 3
+X-Received-From: 178.33.251.173
+Subject: [Qemu-arm] [PATCH 12/21] aspeed/smc: Add AST2600 support
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -91,99 +90,280 @@ Cc: Andrew Jeffery <andrew@aj.id.au>,
  qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jAn7Rd+aQavn
+X-TUID: IwcQoPBM3F4T
 
-The AST2500 timer has a third control register that is used to
-implement a set-to-clear feature for the main control register.
+The AST2600 SoC SMC controller is a SPI only controller now and has a
+few extensions which we will need to take into account when SW
+requires it.
 
-This models the behaviour expected by the AST2500 while maintaining
-the same behaviour for the AST2400.
+ - 4BYTE mode
+ - HCLK divider has changed (SPI Training)
+ - CE0-2 Read Timing Compensation registers
 
-The vmstate version is not increased yet because the structure is
-modified again in the following patches.
-
-Based on previous work from Joel Stanley.
+This is enough to support u-boot.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- include/hw/timer/aspeed_timer.h |  1 +
- hw/timer/aspeed_timer.c         | 19 +++++++++++++++++++
- 2 files changed, 20 insertions(+)
+ include/hw/ssi/aspeed_smc.h |   2 +
+ hw/ssi/aspeed_smc.c         | 129 +++++++++++++++++++++++++++++++++---
+ 2 files changed, 123 insertions(+), 8 deletions(-)
 
-diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_ti=
-mer.h
-index a791fee276f4..1e0288ebc49f 100644
---- a/include/hw/timer/aspeed_timer.h
-+++ b/include/hw/timer/aspeed_timer.h
-@@ -58,6 +58,7 @@ typedef struct AspeedTimerCtrlState {
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index 5176ff6bf95f..84f268de3091 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -49,6 +49,8 @@ typedef struct AspeedSMCController {
+     hwaddr dma_flash_mask;
+     hwaddr dma_dram_mask;
+     uint32_t nregs;
++    uint32_t (*segment_to_reg)(const AspeedSegments *seg);
++    void (*reg_to_segment)(uint32_t reg, AspeedSegments *seg);
+ } AspeedSMCController;
 =20
-     uint32_t ctrl;
-     uint32_t ctrl2;
-+    uint32_t ctrl3;
-     AspeedTimer timers[ASPEED_TIMER_NR_TIMERS];
+ typedef struct AspeedSMCFlash {
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index 9ffc7e01179a..1be53b5e53ac 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -54,10 +54,8 @@
 =20
-     AspeedSCUState *scu;
-diff --git a/hw/timer/aspeed_timer.c b/hw/timer/aspeed_timer.c
-index c78bc1bd2d25..d70e78a0293e 100644
---- a/hw/timer/aspeed_timer.c
-+++ b/hw/timer/aspeed_timer.c
-@@ -498,6 +498,8 @@ static uint64_t aspeed_2500_timer_read(AspeedTimerCtr=
-lState *s, hwaddr offset)
+ /* CE Control Register */
+ #define R_CE_CTRL            (0x04 / 4)
+-#define   CTRL_EXTENDED4       4  /* 32 bit addressing for SPI */
+-#define   CTRL_EXTENDED3       3  /* 32 bit addressing for SPI */
+-#define   CTRL_EXTENDED2       2  /* 32 bit addressing for SPI */
+-#define   CTRL_EXTENDED1       1  /* 32 bit addressing for SPI */
++
++#define   CTRL_4B_AUTOREAD     4  /* 4B address Auto-Read command select=
+ion */
+ #define   CTRL_EXTENDED0       0  /* 32 bit addressing for SPI */
 =20
-     switch (offset) {
-     case 0x38:
-+        value =3D s->ctrl3 & BIT(0);
-+        break;
-     case 0x3C:
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx =
-"\n",
-@@ -511,9 +513,24 @@ static uint64_t aspeed_2500_timer_read(AspeedTimerCt=
-rlState *s, hwaddr offset)
- static void aspeed_2500_timer_write(AspeedTimerCtrlState *s, hwaddr offs=
-et,
-                                     uint64_t value)
+ /* Interrupt Control and Status Register */
+@@ -71,8 +69,11 @@
+=20
+ /* CEx Control Register */
+ #define R_CTRL0           (0x10 / 4)
++#define   CTRL_IO_QPI              (1 << 31)
++#define   CTRL_IO_QUAD_DATA        (1 << 30)
+ #define   CTRL_IO_DUAL_DATA        (1 << 29)
+ #define   CTRL_IO_DUAL_ADDR_DATA   (1 << 28) /* Includes dummies */
++#define   CTRL_IO_QUAD_ADDR_DATA   (1 << 28) /* Includes dummies */
+ #define   CTRL_CMD_SHIFT           16
+ #define   CTRL_CMD_MASK            0xff
+ #define   CTRL_DUMMY_HIGH_SHIFT    14
+@@ -84,7 +85,7 @@
+ #define   CTRL_DUMMY_LOW_SHIFT     6 /* 2 bits [7:6] */
+ #define   CTRL_CE_STOP_ACTIVE      (1 << 2)
+ #define   CTRL_CMD_MODE_MASK       0x3
+-#define     CTRL_READMODE          0x0
++#define     CTRL_READMODE          0x0 /* AST2600: 4BYTE READ */
+ #define     CTRL_FREADMODE         0x1
+ #define     CTRL_WRITEMODE         0x2
+ #define     CTRL_USERMODE          0x3
+@@ -135,8 +136,11 @@
+=20
+ /* Misc Control Register #2 */
+ #define R_TIMINGS         (0x94 / 4)
++#define R_CE0_READ_TIMING (0x94 / 4)
++#define R_CE1_READ_TIMING (0x98 / 4)
++#define R_CE2_READ_TIMING (0x9C / 4)
+=20
+-/* SPI controller registers and bits */
++/* AST2400 SPI1 controller registers and bits */
+ #define R_SPI_CONF        (0x00 / 4)
+ #define   SPI_CONF_ENABLE_W0   0
+ #define R_SPI_CTRL0       (0x4 / 4)
+@@ -212,6 +216,36 @@ static const AspeedSegments aspeed_segments_ast2500_=
+spi2[] =3D {
+     { 0x3A000000, 96 * 1024 * 1024 }, /* end address is readonly */
+ };
+=20
++/*
++ * AST2600 definitions
++ */
++#define ASPEED26_SOC_FMC_FLASH_BASE   0x20000000
++#define ASPEED26_SOC_SPI_FLASH_BASE   0x30000000
++#define ASPEED26_SOC_SPI2_FLASH_BASE  0x50000000
++
++static const AspeedSegments aspeed_segments_ast2600_fmc[] =3D {
++    { 0x20000000, 128 * 1024 * 1024 }, /* start address is readonly */
++    { 0x0, 0 }, /* disabled */
++    { 0x0, 0 }, /* disabled */
++};
++
++static const AspeedSegments aspeed_segments_ast2600_spi1[] =3D {
++    { 0x30000000, 128 * 1024 * 1024 }, /* start address is readonly */
++    { 0x0, 0 }, /* disabled */
++};
++
++static const AspeedSegments aspeed_segments_ast2600_spi2[] =3D {
++    { 0x50000000, 128 * 1024 * 1024 }, /* start address is readonly */
++    { 0x0, 0 }, /* disabled */
++    { 0x0, 0 }, /* disabled */
++};
++
++static uint32_t aspeed_smc_segment_to_reg(const AspeedSegments *seg);
++static void aspeed_smc_reg_to_segment(uint32_t reg, AspeedSegments *seg)=
+;
++
++static uint32_t aspeed_2600_smc_segment_to_reg(const AspeedSegments *seg=
+);
++static void aspeed_2600_smc_reg_to_segment(uint32_t reg, AspeedSegments =
+*seg);
++
+ static const AspeedSMCController controllers[] =3D {
+     {
+         .name              =3D "aspeed.smc-ast2400",
+@@ -226,6 +260,8 @@ static const AspeedSMCController controllers[] =3D {
+         .flash_window_size =3D 0x6000000,
+         .has_dma           =3D false,
+         .nregs             =3D ASPEED_SMC_R_SMC_MAX,
++        .segment_to_reg    =3D aspeed_smc_segment_to_reg,
++        .reg_to_segment    =3D aspeed_smc_reg_to_segment,
+     }, {
+         .name              =3D "aspeed.fmc-ast2400",
+         .r_conf            =3D R_CONF,
+@@ -241,6 +277,8 @@ static const AspeedSMCController controllers[] =3D {
+         .dma_flash_mask    =3D 0x0FFFFFFC,
+         .dma_dram_mask     =3D 0x1FFFFFFC,
+         .nregs             =3D ASPEED_SMC_R_MAX,
++        .segment_to_reg    =3D aspeed_smc_segment_to_reg,
++        .reg_to_segment    =3D aspeed_smc_reg_to_segment,
+     }, {
+         .name              =3D "aspeed.spi1-ast2400",
+         .r_conf            =3D R_SPI_CONF,
+@@ -254,6 +292,8 @@ static const AspeedSMCController controllers[] =3D {
+         .flash_window_size =3D 0x10000000,
+         .has_dma           =3D false,
+         .nregs             =3D ASPEED_SMC_R_SPI_MAX,
++        .segment_to_reg    =3D aspeed_smc_segment_to_reg,
++        .reg_to_segment    =3D aspeed_smc_reg_to_segment,
+     }, {
+         .name              =3D "aspeed.fmc-ast2500",
+         .r_conf            =3D R_CONF,
+@@ -269,6 +309,8 @@ static const AspeedSMCController controllers[] =3D {
+         .dma_flash_mask    =3D 0x0FFFFFFC,
+         .dma_dram_mask     =3D 0x3FFFFFFC,
+         .nregs             =3D ASPEED_SMC_R_MAX,
++        .segment_to_reg    =3D aspeed_smc_segment_to_reg,
++        .reg_to_segment    =3D aspeed_smc_reg_to_segment,
+     }, {
+         .name              =3D "aspeed.spi1-ast2500",
+         .r_conf            =3D R_CONF,
+@@ -282,6 +324,8 @@ static const AspeedSMCController controllers[] =3D {
+         .flash_window_size =3D 0x8000000,
+         .has_dma           =3D false,
+         .nregs             =3D ASPEED_SMC_R_MAX,
++        .segment_to_reg    =3D aspeed_smc_segment_to_reg,
++        .reg_to_segment    =3D aspeed_smc_reg_to_segment,
+     }, {
+         .name              =3D "aspeed.spi2-ast2500",
+         .r_conf            =3D R_CONF,
+@@ -295,6 +339,53 @@ static const AspeedSMCController controllers[] =3D {
+         .flash_window_size =3D 0x8000000,
+         .has_dma           =3D false,
+         .nregs             =3D ASPEED_SMC_R_MAX,
++        .segment_to_reg    =3D aspeed_smc_segment_to_reg,
++        .reg_to_segment    =3D aspeed_smc_reg_to_segment,
++    }, {
++        .name              =3D "aspeed.fmc-ast2600",
++        .r_conf            =3D R_CONF,
++        .r_ce_ctrl         =3D R_CE_CTRL,
++        .r_ctrl0           =3D R_CTRL0,
++        .r_timings         =3D R_TIMINGS,
++        .conf_enable_w0    =3D CONF_ENABLE_W0,
++        .max_slaves        =3D 3,
++        .segments          =3D aspeed_segments_ast2600_fmc,
++        .flash_window_base =3D ASPEED26_SOC_FMC_FLASH_BASE,
++        .flash_window_size =3D 0x10000000,
++        .has_dma           =3D true,
++        .nregs             =3D ASPEED_SMC_R_MAX,
++        .segment_to_reg    =3D aspeed_2600_smc_segment_to_reg,
++        .reg_to_segment    =3D aspeed_2600_smc_reg_to_segment,
++    }, {
++        .name              =3D "aspeed.spi1-ast2600",
++        .r_conf            =3D R_CONF,
++        .r_ce_ctrl         =3D R_CE_CTRL,
++        .r_ctrl0           =3D R_CTRL0,
++        .r_timings         =3D R_TIMINGS,
++        .conf_enable_w0    =3D CONF_ENABLE_W0,
++        .max_slaves        =3D 2,
++        .segments          =3D aspeed_segments_ast2600_spi1,
++        .flash_window_base =3D ASPEED26_SOC_SPI_FLASH_BASE,
++        .flash_window_size =3D 0x10000000,
++        .has_dma           =3D false,
++        .nregs             =3D ASPEED_SMC_R_MAX,
++        .segment_to_reg    =3D aspeed_2600_smc_segment_to_reg,
++        .reg_to_segment    =3D aspeed_2600_smc_reg_to_segment,
++    }, {
++        .name              =3D "aspeed.spi2-ast2600",
++        .r_conf            =3D R_CONF,
++        .r_ce_ctrl         =3D R_CE_CTRL,
++        .r_ctrl0           =3D R_CTRL0,
++        .r_timings         =3D R_TIMINGS,
++        .conf_enable_w0    =3D CONF_ENABLE_W0,
++        .max_slaves        =3D 3,
++        .segments          =3D aspeed_segments_ast2600_spi2,
++        .flash_window_base =3D ASPEED26_SOC_SPI2_FLASH_BASE,
++        .flash_window_size =3D 0x10000000,
++        .has_dma           =3D false,
++        .nregs             =3D ASPEED_SMC_R_MAX,
++        .segment_to_reg    =3D aspeed_2600_smc_segment_to_reg,
++        .reg_to_segment    =3D aspeed_2600_smc_reg_to_segment,
+     },
+ };
+=20
+@@ -307,7 +398,7 @@ static const AspeedSMCController controllers[] =3D {
+  *        |  end   |  start |   0    |   0    |
+  *
+  */
+-static inline uint32_t aspeed_smc_segment_to_reg(const AspeedSegments *s=
+eg)
++static uint32_t aspeed_smc_segment_to_reg(const AspeedSegments *seg)
  {
-+    const uint32_t tv =3D (uint32_t)(value & 0xFFFFFFFF);
-+    uint8_t command;
-+
-     switch (offset) {
-     case 0x38:
-+        command =3D (value >> 1) & 0xFF;
-+        if (command =3D=3D 0xAE) {
-+            s->ctrl3 =3D 0x1;
-+        } else if (command =3D=3D 0xEA) {
-+            s->ctrl3 =3D 0x0;
-+        }
-+        break;
-     case 0x3C:
-+        if (s->ctrl3 & BIT(0)) {
-+            aspeed_timer_set_ctrl(s, s->ctrl & ~tv);
-+        }
-+        break;
-+
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset 0x%" HWADDR_PRIx =
-"\n",
-                 __func__, offset);
-@@ -574,6 +591,7 @@ static void aspeed_timer_reset(DeviceState *dev)
-     }
-     s->ctrl =3D 0;
-     s->ctrl2 =3D 0;
-+    s->ctrl3 =3D 0;
+     uint32_t reg =3D 0;
+     reg |=3D ((seg->addr >> 23) & SEG_START_MASK) << SEG_START_SHIFT;
+@@ -315,12 +406,34 @@ static inline uint32_t aspeed_smc_segment_to_reg(co=
+nst AspeedSegments *seg)
+     return reg;
  }
 =20
- static const VMStateDescription vmstate_aspeed_timer =3D {
-@@ -597,6 +615,7 @@ static const VMStateDescription vmstate_aspeed_timer_=
-state =3D {
-     .fields =3D (VMStateField[]) {
-         VMSTATE_UINT32(ctrl, AspeedTimerCtrlState),
-         VMSTATE_UINT32(ctrl2, AspeedTimerCtrlState),
-+        VMSTATE_UINT32(ctrl3, AspeedTimerCtrlState),
-         VMSTATE_STRUCT_ARRAY(timers, AspeedTimerCtrlState,
-                              ASPEED_TIMER_NR_TIMERS, 1, vmstate_aspeed_t=
-imer,
-                              AspeedTimer),
+-static inline void aspeed_smc_reg_to_segment(uint32_t reg, AspeedSegment=
+s *seg)
++static void aspeed_smc_reg_to_segment(uint32_t reg, AspeedSegments *seg)
+ {
+     seg->addr =3D ((reg >> SEG_START_SHIFT) & SEG_START_MASK) << 23;
+     seg->size =3D (((reg >> SEG_END_SHIFT) & SEG_END_MASK) << 23) - seg-=
+>addr;
+ }
+=20
++/*
++ * AST2600 uses a 1MB unit
++ */
++static uint32_t aspeed_2600_smc_segment_to_reg(const AspeedSegments *seg=
+)
++{
++    uint32_t reg =3D 0;
++
++    /* Disabled segments have a nil register */
++    if (!seg->addr) {
++        return 0;
++    }
++    reg |=3D (seg->addr >> 20) & 0xffff;
++    reg |=3D (((seg->addr + seg->size) >> 20) & 0xffff) << 16;
++    return reg;
++}
++
++static void aspeed_2600_smc_reg_to_segment(uint32_t reg, AspeedSegments =
+*seg)
++{
++    seg->addr =3D (reg & 0xffff) << 20;
++    seg->size =3D (((reg >> 16) & 0xffff) << 20) - seg->addr;
++}
++
+ static bool aspeed_smc_flash_overlap(const AspeedSMCState *s,
+                                      const AspeedSegments *new,
+                                      int cs)
 --=20
 2.21.0
 

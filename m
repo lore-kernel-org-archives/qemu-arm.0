@@ -1,119 +1,130 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp625355wrp;
-        Wed, 18 Sep 2019 23:48:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy47yaNXrV6BS567Z1FtbFvPZ9HxTA2a9XFBis7S0FeNTtTw0nI4jxvP6UF+3nUP2/rG6Qt
-X-Received: by 2002:a0c:b596:: with SMTP id g22mr6728546qve.231.1568875688285;
-        Wed, 18 Sep 2019 23:48:08 -0700 (PDT)
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp660880wrp;
+        Thu, 19 Sep 2019 00:34:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxhbPQvf74VCFHJ2vm/3S0/cZAVg2tbYKifytlx3n0k0ZHm7jOwO5EVBR5x8Oe6TRKXCQKR
+X-Received: by 2002:a05:620a:694:: with SMTP id f20mr1496174qkh.379.1568878463579;
+        Thu, 19 Sep 2019 00:34:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568878463; cv=none;
+        d=google.com; s=arc-20160816;
+        b=V+GqK/ZfC/bHRZFyaIn3Gu/F1VuKz8DzMp2g/S9q7EFt1qOr+rLUwIsyWwpTd87K+s
+         uobkC9NuaYQzRHZXbD7u0VZYqjvoiX8F8zHi2iUwQ8P1ibRH2pQCXuFoMFEGT0K9kiEb
+         Q6iG2pFF9TcIWAoZaWbbibzT+X3qr/Ef85TxC8b6o0UB1mWRS/r4QkbsLSqTdQIN0uuI
+         0PGOZ4HYRvDAkaJ+JqzueC5ZhMeQc4eQXin/GVm87nwHtrcpB3HW5LuJic/gPjwbYITj
+         naeCGAHFEiUyN3p8hQ2ZrjTGmzH87I+SDveUaXoa53tFZm1Y9rTNlfcRMa6Cxn0kSbd9
+         ncWQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:organization:autocrypt:openpgp:from
+         :references:to;
+        bh=4PlkZNOi0aj0Gh1yN+DfqIXW+vx1LbDQstyd4gWh0mk=;
+        b=UDmQHhijjZbUVTd6xUAasWGyTsoxQokuFdXDVN18AvPHhDHDyYpCi3PH311HIJJTix
+         ROZb3/AbF0X3sg+rvKqVHglkz8dcFelYzBjGk8tNsxWKmtcgC+4XvG+6Zvr2jM+hvmWl
+         rup1ktf5mBBhifWkR18rQHkRTnXIiHj2d4p1EZye2f8eaRT+Em+eegt9POIcnVAqXd+Q
+         nGvhCBFsIDr31PdOkysqXXwlduw5DQDhf1k7LPHFxLgo8a5IounS6UyxzwpFswAI5RzA
+         irCFDp/kAUv45J3NBQlMt4skN6Jt81NwhUVmGGU7GOKEJjtqmUja7bMrH9YzgkR+xXl6
+         jiyQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a136si5683557qkc.304.2019.09.18.23.48.08
+        by mx.google.com with ESMTPS id d44si6226321qtb.86.2019.09.19.00.34.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2019 23:48:08 -0700 (PDT)
+        Thu, 19 Sep 2019 00:34:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@virtuozzo.com header.s=selector2 header.b=OWreBDgs;
-       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Received: from localhost ([::1]:38336 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39526 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAqEZ-0006tN-L9
-	for alex.bennee@linaro.org; Thu, 19 Sep 2019 02:48:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48113)
+	id 1iAqxJ-0005ed-W6
+	for alex.bennee@linaro.org; Thu, 19 Sep 2019 03:34:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55913)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iAqEC-0006rR-T0
- for qemu-arm@nongnu.org; Thu, 19 Sep 2019 02:47:45 -0400
+ (envelope-from <david@redhat.com>) id 1iAqw4-0005df-Cs
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2019 03:33:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iAqEB-0005BJ-Gs
- for qemu-arm@nongnu.org; Thu, 19 Sep 2019 02:47:44 -0400
-Received: from mail-ve1eur01on071e.outbound.protection.outlook.com
- ([2a01:111:f400:fe1f::71e]:10411
- helo=EUR01-VE1-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
- id 1iAqE5-00054W-SY; Thu, 19 Sep 2019 02:47:38 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MJXf5tCSnoO0gy86bVW9cIz14roFszHpI6cY+d9K43l9LfO0LdQY+od5jS3qg4ISRoPSHxRa/5PkGqSxn+wAl1OSI8chmdq10YW0Um2m4dkjR4gakOoYov0W3mnFvEcTzNlrPpDjqkez+ePyoooyKtHWDSqNDV56EfDukdsbA3kFLrcHAOlGj/RvYowYRlAQammy7GjDf4NKP9WLCF8V2HhqeA1uOmEfgov2uT3abcZrHZ/cHFpje/bdF/guaSpWKh0ctM3rOFSh9j9n+V1xGapfFz65/3k79tkO7e1mN6hV+ZOmOxxGXzkolNAjtA7eu8eS6FExZvxuANB5t+NtbQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Yow5mhuHOGbfe5qSpW+yoqb1DKmIWKCcPWE9dp/clc8=;
- b=XcXhWAXIW8t0cfWPnwsaeEjhRsOFzh2zL1l//475kndvpJCqgKzF1E+5AzmrZHFqIAsLWnThKToaSsfksQ9zktxBy2RhlMx+bZj1EoREb8fsMq0ADKE1diNMVgMWEjiNIKF0AVk8XeY+GlDMLAyGzUoZ3c9/cKK0qlGzSKDDKE65F4xvHvpPup4Ws8gribQf2hePj0TVPJ5ruGSkVpCn2vIWVZUNOkZ6UCbDx0SIJMNRKxsgIRX2wqvJpIHutBQL1RosvbOIkX2kg0z1bG9UVqwereq8EBA80k4b5vNtlmom/qfgk3tEqk9C5sJaSLWm8MNJUGexuOTEfXZYzBrDgQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
- header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Yow5mhuHOGbfe5qSpW+yoqb1DKmIWKCcPWE9dp/clc8=;
- b=OWreBDgsiQu1d0hmBBQisXqIGY9LMdhQEWf3M6QZWuqUBRVHqsfvbrJamBCscv8wIvALylOldWlCFMDZ86oxGLbCYAsKfhHNEhZqTGCQvncB+CcBivL8hjNJwWroraoL8LfnD2iJ2AywbuERxkuHEULNeNw//RtA51eHkvE9W08=
-Received: from DB8PR08MB5498.eurprd08.prod.outlook.com (52.133.242.216) by
- DB8PR08MB4058.eurprd08.prod.outlook.com (20.179.10.146) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2284.18; Thu, 19 Sep 2019 06:47:35 +0000
-Received: from DB8PR08MB5498.eurprd08.prod.outlook.com
- ([fe80::b5c0:6b97:438d:77ed]) by DB8PR08MB5498.eurprd08.prod.outlook.com
- ([fe80::b5c0:6b97:438d:77ed%2]) with mapi id 15.20.2284.009; Thu, 19 Sep 2019
- 06:47:35 +0000
-From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-To: Eric Blake <eblake@redhat.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-Thread-Topic: [RFC] error: auto propagated local_err
-Thread-Index: AQHVbiFyZhBrSsOpYEOTsgc7Le+SIKcxq6KAgAAJ94CAAAV2AIAAB5aAgADNTgA=
-Date: Thu, 19 Sep 2019 06:47:34 +0000
-Message-ID: <1c82faa5-9443-bc3d-6df2-dbfd82a7b830@virtuozzo.com>
+ (envelope-from <david@redhat.com>) id 1iAqw1-00072g-J8
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2019 03:33:03 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:17306)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <david@redhat.com>)
+ id 1iAqw1-00071v-AJ; Thu, 19 Sep 2019 03:33:01 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 988BDA707;
+ Thu, 19 Sep 2019 07:32:59 +0000 (UTC)
+Received: from [10.36.117.104] (ovpn-117-104.ams2.redhat.com [10.36.117.104])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E9490194B2;
+ Thu, 19 Sep 2019 07:32:35 +0000 (UTC)
+To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ qemu-devel@nongnu.org
 References: <20190918130244.24257-1-vsementsov@virtuozzo.com>
- <abb14088-6af2-5db2-da0d-0948fd4ac81c@redhat.com>
- <0497ac1e-c841-39cd-9944-48dd54c5b0f0@virtuozzo.com>
- <9450fbfd-0f8b-d10f-7577-64805917f67a@redhat.com>
- <26217614-77cf-9519-f94b-d606864f4d46@redhat.com>
-In-Reply-To: <26217614-77cf-9519-f94b-d606864f4d46@redhat.com>
-Accept-Language: ru-RU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: HE1PR05CA0372.eurprd05.prod.outlook.com
- (2603:10a6:7:94::31) To DB8PR08MB5498.eurprd08.prod.outlook.com
- (2603:10a6:10:11c::24)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=vsementsov@virtuozzo.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-tagtoolbar-keys: D20190919094730617
-x-originating-ip: [185.231.240.5]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 62cd9efa-efc3-4ccb-7149-08d73ccd4088
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600167)(711020)(4605104)(1401327)(2017052603328)(7193020);
- SRVR:DB8PR08MB4058; 
-x-ms-traffictypediagnostic: DB8PR08MB4058:
-x-microsoft-antispam-prvs: <DB8PR08MB40580C899ACAD9367EF6BF90C1890@DB8PR08MB4058.eurprd08.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-forefront-prvs: 016572D96D
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(136003)(39850400004)(366004)(396003)(346002)(376002)(199004)(189003)(36756003)(54906003)(386003)(446003)(11346002)(25786009)(6506007)(229853002)(31686004)(14454004)(66066001)(256004)(14444005)(6246003)(71190400001)(6436002)(99286004)(71200400001)(6512007)(5660300002)(66476007)(66946007)(7736002)(305945005)(2906002)(478600001)(102836004)(4326008)(26005)(52116002)(2501003)(53546011)(6486002)(476003)(2616005)(7406005)(7416002)(486006)(76176011)(6116002)(81156014)(81166006)(186003)(66556008)(3846002)(66446008)(64756008)(8676002)(86362001)(31696002)(110136005)(316002)(8936002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:DB8PR08MB4058;
- H:DB8PR08MB5498.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: virtuozzo.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: pUViq+88IcjrAq5JpcJLwgOqHOJQ/3MPGmuVUhMN5qZL+acsQRWXB1V0kv9xA5fW7Q3TZEJw64HDwEGwL8W+R+ffB5cHJz8IPy5QWgTX+b7J78BnxPyDzpRnJaAlEfuRrZBuPDZG0x2xh/GnXIGYh6BjlDoN4+MAbbgriYfQz7gMDge/+c6GfphIUDk7609ikmJdcpLdMpOjT6voXLyKpS752rFCMC6ZzcMQodm//Z9DF7UDGxyHMosOrq1Cx/fiqTgHnRdWaxSzC/Kv8+mDjVP7GIC79b8bqEXQxi1PX15JHpYv/9wj1fxNHOTiCWfDouoDu6BWLToMhXLW4prP8pJvLVNelHvkuY0zO5mxXdzEsHzEYB/PppkVvdjxc1YHMfMUW2ocFZdcJBbBplHOCcT6nvHAGooUyi9wKAHumQc=
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <D9D2A0C2BEB81C4D800FA7625B2DB630@eurprd08.prod.outlook.com>
-Content-Transfer-Encoding: base64
+From: David Hildenbrand <david@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+ SE+xAvmumFBY
+Organization: Red Hat GmbH
+Message-ID: <c4a95138-3c08-0563-d567-aa1828de7e39@redhat.com>
+Date: Thu, 19 Sep 2019 09:32:34 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-X-OriginatorOrg: virtuozzo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 62cd9efa-efc3-4ccb-7149-08d73ccd4088
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Sep 2019 06:47:34.9503 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: JsMdYsDQhUDVvNfAbAvz2d3feVdhVGFj+Ew2ZMn6u2X03NPOKE34kdgQ1vx6YI96JbX9nNlre0bfzZQyPeTOsv36bHKVWVPsAm41edr2ee0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR08MB4058
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 2a01:111:f400:fe1f::71e
+In-Reply-To: <20190918130244.24257-1-vsementsov@virtuozzo.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.29]); Thu, 19 Sep 2019 07:33:00 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
 Subject: Re: [Qemu-arm] [RFC] error: auto propagated local_err
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -126,60 +137,226 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "fam@euphon.net" <fam@euphon.net>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "mst@redhat.com" <mst@redhat.com>, "codyprime@gmail.com" <codyprime@gmail.com>,
- "mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
- "mdroth@linux.vnet.ibm.com" <mdroth@linux.vnet.ibm.com>,
- "kraxel@redhat.com" <kraxel@redhat.com>,
- "mreitz@redhat.com" <mreitz@redhat.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- "quintela@redhat.com" <quintela@redhat.com>,
- "david@redhat.com" <david@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
- "borntraeger@de.ibm.com" <borntraeger@de.ibm.com>,
- "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
- "rth@twiddle.net" <rth@twiddle.net>,
- "farman@linux.ibm.com" <farman@linux.ibm.com>,
- "groug@kaod.org" <groug@kaod.org>, "dgilbert@redhat.com" <dgilbert@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "stefanha@redhat.com" <stefanha@redhat.com>,
- "jsnow@redhat.com" <jsnow@redhat.com>,
- "david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>,
- "kwolf@redhat.com" <kwolf@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- "sundeep.lkml@gmail.com" <sundeep.lkml@gmail.com>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>
+Cc: fam@euphon.net, peter.maydell@linaro.org, mst@redhat.com,
+ codyprime@gmail.com, mark.cave-ayland@ilande.co.uk, mdroth@linux.vnet.ibm.com,
+ kraxel@redhat.com, mreitz@redhat.com, eblake@redhat.com, qemu-block@nongnu.org,
+ quintela@redhat.com, armbru@redhat.com, pasic@linux.ibm.com,
+ borntraeger@de.ibm.com, marcandre.lureau@redhat.com, rth@twiddle.net,
+ farman@linux.ibm.com, groug@kaod.org, dgilbert@redhat.com,
+ alex.williamson@redhat.com, qemu-arm@nongnu.org, stefanha@redhat.com,
+ jsnow@redhat.com, david@gibson.dropbear.id.au, kwolf@redhat.com,
+ berrange@redhat.com, cohuck@redhat.com, qemu-s390x@nongnu.org,
+ sundeep.lkml@gmail.com, qemu-ppc@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r0GxLxRBHga0
+X-TUID: xXHApByLgiIt
 
-MTguMDkuMjAxOSAyMTozMiwgRXJpYyBCbGFrZSB3cm90ZToNCj4gT24gOS8xOC8xOSAxOjA1IFBN
-LCBFcmljIEJsYWtlIHdyb3RlOg0KPiANCj4+Pj4gI2RlZmluZSBNQUtFX0VSUlBfU0FGRSgpIFwN
-Cj4+Pj4gZ19hdXRvKEVycm9yUHJvcGFnYXRpb25TdHJ1Y3QpIChfX2F1dG9fZXJycF9wcm9wKSA9
-IHsuZXJycCA9IGVycnB9OyBcDQo+Pj4+IGVycnAgPSAmX19hdXRvX2VycnBfcHJvcC5sb2NhbF9l
-cnINCj4+Pj4NCj4gDQo+IEkgdHJpZWQgdG8gc2VlIGlmIHRoaXMgY291bGQgYmUgZG9uZSB3aXRo
-IGp1c3QgYSBzaW5nbGUgZGVjbGFyYXRpb24NCj4gbGluZSwgYXMgaW46DQo+IA0KPiB0eXBlZGVm
-IHN0cnVjdCBFcnJvclByb3BhZ2F0b3Igew0KPiAgICAgIEVycm9yICoqZXJycDsNCj4gICAgICBF
-cnJvciAqbG9jYWxfZXJyOw0KPiB9IEVycm9yUHJvcGFnYXRvcjsNCj4gDQo+ICNkZWZpbmUgTUFL
-RV9FUlJQX1NBRkUoKSBcDQo+ICAgIGdfYXV0byhFcnJvclByb3BhZ2F0b3IpIF9fYXV0b19lcnJw
-X3Byb3AgPSB7IFwNCj4gICAgICBlcnJwLCAoKGVycnAgPSAmX19hdXRvX2VycnBfcHJvcC5sb2Nh
-bF9lcnIpLCBOVUxMKSB9DQo+IA0KPiBCdXQgc2FkbHksIEMxNyBwYXJhZ3JhcGggNi43LjlQMjMg
-c3RhdGVzOg0KPiANCj4gIlRoZSBldmFsdWF0aW9ucyBvZiB0aGUgaW5pdGlhbGl6YXRpb24gbGlz
-dCBleHByZXNzaW9ucyBhcmUNCj4gaW5kZXRlcm1pbmF0ZWx5IHNlcXVlbmNlZCB3aXRoIHJlc3Bl
-Y3QgdG8gb25lIGFub3RoZXIgYW5kIHRodXMgdGhlIG9yZGVyDQo+IGluIHdoaWNoIGFueSBzaWRl
-IGVmZmVjdHMgb2NjdXIgaXMgdW5zcGVjaWZpZWQuIg0KPiANCj4gd2hpY2ggZG9lcyBub3QgYm9k
-ZSB3ZWxsIGZvciB0aGUgYXNzaWdubWVudCB0byBfX2F1dG9fZXJycF9wcm9wLmVycnAuDQo+IEFs
-bCBjaGFuZ2VzIHRvIGVycnAgd291bGQgaGF2ZSB0byBiZSB3aXRoaW4gdGhlIHNhbWUgaW5pdGlh
-bGl6ZXIuICBNYXliZToNCj4gDQo+ICNkZWZpbmUgTUFLRV9FUlJQX1NBRkUoKSBcDQo+ICAgIGdf
-YXV0byhFcnJvclByb3BhZ2F0b3IpIF9fYXV0b19lcnJwX3Byb3AgPSB7IFwNCj4gICAgICAubG9j
-YWxfZXJyID0gKF9fYXV0b19lcnJwX3Byb3AuZXJyID0gZXJycCwgXA0KPiAgICAgICAgICAoZXJy
-cCA9ICZfX2F1dG9fZXJycF9wcm9wLmxvY2FsX2VyciksIE5VTEwpIH0NCg0KSXMgaXQgZ3VhcmFu
-dGVlZCB0aGF0IC5lcnJwIHdpbGwgbm90IGJlIGluaXRpYWxpemVkIHRvIE5VTEwgYWZ0ZXIgZXZh
-bHVhdGluZyBvZg0KLmxvY2FsX2VyciBpbml0aWFsaXplcj8NCg0KPiANCj4gYnV0IGJ5IHRoZSB0
-aW1lIHlvdSBnZXQgdGhhdCBjb21wbGljYXRlZCwganVzdCB1c2luZyBhIHN0YXRlbWVudCBpcw0K
-PiBlYXNpZXIgdG8gcmVhZC4NCj4gDQoNCg0KLS0gDQpCZXN0IHJlZ2FyZHMsDQpWbGFkaW1pcg0K
+On 18.09.19 15:02, Vladimir Sementsov-Ogievskiy wrote:
+> Hi all!
+>=20
+> Here is a proposal (three of them, actually) of auto propagation for
+> local_err, to not call error_propagate on every exit point, when we
+> deal with local_err.
+>=20
+> It also may help make Greg's series[1] about error_append_hint smaller.
+>=20
+> See definitions and examples below.
+>=20
+> I'm cc-ing to this RFC everyone from series[1] CC list, as if we like
+> it, the idea will touch same code (and may be more).
+>=20
+> [1]: https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg03449.htm=
+l
+>=20
+> Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+> ---
+>  include/qapi/error.h | 102 +++++++++++++++++++++++++++++++++++++++++++
+>  block.c              |  63 ++++++++++++--------------
+>  block/backup.c       |   8 +++-
+>  block/gluster.c      |   7 +++
+>  4 files changed, 144 insertions(+), 36 deletions(-)
+>=20
+> diff --git a/include/qapi/error.h b/include/qapi/error.h
+> index 3f95141a01..083e061014 100644
+> --- a/include/qapi/error.h
+> +++ b/include/qapi/error.h
+> @@ -322,6 +322,108 @@ void error_set_internal(Error **errp,
+>                          ErrorClass err_class, const char *fmt, ...)
+>      GCC_FMT_ATTR(6, 7);
+> =20
+> +typedef struct ErrorPropagator {
+> +    Error **errp;
+> +    Error *local_err;
+> +} ErrorPropagator;
+> +
+> +static inline void error_propagator_cleanup(ErrorPropagator *prop)
+> +{
+> +    if (prop->local_err) {
+> +        error_propagate(prop->errp, prop->local_err);
+> +    }
+> +}
+> +
+> +G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC(ErrorPropagator, error_propagator_cle=
+anup);
+> +
+> +/*
+> + * ErrorPropagationPair
+> + *
+> + * [Error *local_err, Error **errp]
+> + *
+> + * First element is local_err, second is original errp, which is propa=
+gation
+> + * target. Yes, errp has a bit another type, so it should be converted=
+.
+> + *
+> + * ErrorPropagationPair may be used as errp, which points to local_err=
+,
+> + * as it's type is compatible.
+> + */
+> +typedef Error *ErrorPropagationPair[2];
+> +
+> +static inline void error_propagation_pair_cleanup(ErrorPropagationPair=
+ *arr)
+> +{
+> +    Error *local_err =3D (*arr)[0];
+> +    Error **errp =3D (Error **)(*arr)[1];
+> +
+> +    if (local_err) {
+> +        error_propagate(errp, local_err);
+> +    }
+> +}
+> +
+> +G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC(ErrorPropagationPair,
+> +                                 error_propagation_pair_cleanup);
+> +
+> +/*
+> + * DEF_AUTO_ERRP
+> + *
+> + * Define auto_errp variable, which may be used instead of errp, and
+> + * *auto_errp may be safely checked to be zero or not, and may be safe=
+ly
+> + * used for error_append_hint(). auto_errp is automatically propagated
+> + * to errp at function exit.
+> + */
+> +#define DEF_AUTO_ERRP(auto_errp, errp) \
+> +    g_auto(ErrorPropagationPair) (auto_errp) =3D {NULL, (Error *)(errp=
+)}
+> +
+> +
+> +/*
+> + * Another variant:
+> + *   Pros:
+> + *     - normal structure instead of cheating with array
+> + *     - we can directly use errp, if it's not NULL and don't point to
+> + *       error_abort or error_fatal
+> + *   Cons:
+> + *     - we need to define two variables instead of one
+> + */
+> +typedef struct ErrorPropagationStruct {
+> +    Error *local_err;
+> +    Error **errp;
+> +} ErrorPropagationStruct;
+> +
+> +static inline void error_propagation_struct_cleanup(ErrorPropagationSt=
+ruct *prop)
+> +{
+> +    if (prop->local_err) {
+> +        error_propagate(prop->errp, prop->local_err);
+> +    }
+> +}
+> +
+> +G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC(ErrorPropagationStruct,
+> +                                 error_propagation_struct_cleanup);
+> +
+> +#define DEF_AUTO_ERRP_V2(auto_errp, errp) \
+> +    g_auto(ErrorPropagationStruct) (__auto_errp_prop) =3D {.errp =3D (=
+errp)}; \
+> +    Error **auto_errp =3D \
+> +        ((errp) =3D=3D NULL || *(errp) =3D=3D error_abort || *(errp) =3D=
+=3D error_fatal) ? \
+> +        &__auto_errp_prop.local_err : \
+> +        (errp);
+> +
+> +/*
+> + * Third variant:
+> + *   Pros:
+> + *     - simpler movement for functions which don't have local_err yet
+> + *       the only thing to do is to call one macro at function start.
+> + *       This extremely simplifies Greg's series
+> + *   Cons:
+> + *     - looks like errp shadowing.. Still seems safe.
+> + *     - must be after all definitions of local variables and before a=
+ny
+> + *       code.
+> + *     - like v2, several statements in one open macro
+> + */
+> +#define MAKE_ERRP_SAFE(errp) \
+> +g_auto(ErrorPropagationStruct) (__auto_errp_prop) =3D {.errp =3D (errp=
+)}; \
+> +if ((errp) =3D=3D NULL || *(errp) =3D=3D error_abort || *(errp) =3D=3D=
+ error_fatal) { \
+> +    (errp) =3D &__auto_errp_prop.local_err; \
+> +}
+
+
+Using that idea, what about something like this:
+
+diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+index 8bfb6684cb..043ad69f8b 100644
+--- a/hw/s390x/s390-virtio-ccw.c
++++ b/hw/s390x/s390-virtio-ccw.c
+@@ -58,22 +58,42 @@ S390CPU *s390_cpu_addr2state(uint16_t cpu_addr)
+     return S390_CPU(ms->possible_cpus->cpus[cpu_addr].cpu);
+ }
+=20
++typedef struct ErrorPropagator {
++    Error **errp;
++    Error *local_err;
++} ErrorPropagator;
++
++static inline void error_propagator_cleanup(ErrorPropagator *prop)
++{
++    if (prop->local_err) {
++        error_propagate(prop->errp, prop->local_err);
++    }
++}
++
++G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC(ErrorPropagator, error_propagator_clean=
+up);
++
++#define DEFINE_LOCAL_ERRP(_errp) \
++g_auto(ErrorPropagator) (__auto_errp_prop) =3D {.errp =3D (_errp)}; \
++Error **local_errp =3D &__auto_errp_prop.local_err
++
+ static S390CPU *s390x_new_cpu(const char *typename, uint32_t core_id,
+                               Error **errp)
+ {
++    DEFINE_LOCAL_ERRP(errp);
+     S390CPU *cpu =3D S390_CPU(object_new(typename));
+-    Error *err =3D NULL;
+=20
+-    object_property_set_int(OBJECT(cpu), core_id, "core-id", &err);
+-    if (err !=3D NULL) {
++    object_property_set_int(OBJECT(cpu), core_id, "core-id", local_errp)=
+;
++    if (*local_errp !=3D NULL) {
+         goto out;
+     }
+-    object_property_set_bool(OBJECT(cpu), true, "realized", &err);
++    object_property_set_bool(OBJECT(cpu), true, "realized", local_errp);
+=20
+ out:
+     object_unref(OBJECT(cpu));
+-    if (err) {
+-        error_propagate(errp, err);
++    if (*local_errp) {
+         cpu =3D NULL;
+     }
+     return cpu;
+
+
+--=20
+
+Thanks,
+
+David / dhildenb

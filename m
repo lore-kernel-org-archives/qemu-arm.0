@@ -1,393 +1,185 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp600630wrp;
-        Wed, 18 Sep 2019 23:14:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyr9aXdNp/qFgqvz12BFzBtI9OgRjG4VMaZJJEhTG+wyix3yEMmRFAjeDpgOV5i+JcLmG3t
-X-Received: by 2002:a37:a544:: with SMTP id o65mr1243918qke.422.1568873661200;
-        Wed, 18 Sep 2019 23:14:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568873661; cv=none;
-        d=google.com; s=arc-20160816;
-        b=rcUBYy5jUG2Bm2oVeR37WnvUNQWvagHB/vdMreIHIaExfR/aY//eLrwTJZNmLkdnKv
-         mkggZaptOCAQcR6TpAaGI6YQSiV2t+bRnUN0EsoW6ZDXlIzhVArl6XACJo/BtTK2669s
-         psViL5EQxZnq9b3ayzXH5UunJXPVPxlgp+F+V0KEIwcB+QjPgQyQZeuTwGBoJhyaYT7p
-         Df42MFQcTj9/2sakfLz4lbGwciGYhRcxhWkP5+nBxPtbB0CkMhnuT1kAIAhuSJXKdkm/
-         eJuV8ezqQcuISGiRFC7v4ZAFQpnwA2V5MCXRnT6gvLXCfth5n5iZK5VIGCmoBBSMy4XN
-         ft8Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:to:from;
-        bh=0bevBdq5fHMe7Rw/+L0O50i+4Vt0ug+3T5h3f9rHJL0=;
-        b=gybDIHx2EafF9u8hi8qYrSL2r2wa2z6X1HAFWhw9BJu7b3vUdef9rNotXGDI+ygGKX
-         dGDMi2kGLcOSqBLYaHKvpq4sLyTwqNDUpuF0lhuUtbldxiYdDwIOgs7mANcJcFGvefPH
-         hu7y6Q4imqTdC6uiBf32jDBG8dD4bAwl0X95DSsN6QbiXav2RPPbOtdZCn447KV6HBtO
-         LdY+5Bv1VpwH17O8CmKvuc1Xqzch1dnsAxszQVMncdSZCI1VwirGacLJHKvcnTGTV/1i
-         qPS1bQVwD3OtXplCh6pt7UCsV5ul6QqxUBkaimE3/DDbHMnT80xSY5tT9cZiTCieVqDl
-         B4jg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp625355wrp;
+        Wed, 18 Sep 2019 23:48:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy47yaNXrV6BS567Z1FtbFvPZ9HxTA2a9XFBis7S0FeNTtTw0nI4jxvP6UF+3nUP2/rG6Qt
+X-Received: by 2002:a0c:b596:: with SMTP id g22mr6728546qve.231.1568875688285;
+        Wed, 18 Sep 2019 23:48:08 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e7si4652476qkm.346.2019.09.18.23.14.21
+        by mx.google.com with ESMTPS id a136si5683557qkc.304.2019.09.18.23.48.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2019 23:14:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 18 Sep 2019 23:48:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38032 helo=lists1p.gnu.org)
+       dkim=fail header.i=@virtuozzo.com header.s=selector2 header.b=OWreBDgs;
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
+Received: from localhost ([::1]:38336 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAphq-0007Mh-LI
-	for alex.bennee@linaro.org; Thu, 19 Sep 2019 02:14:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43019)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iAqEZ-0006tN-L9
+	for alex.bennee@linaro.org; Thu, 19 Sep 2019 02:48:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48113)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1iApMk-0002oj-AE
- for qemu-devel@nongnu.org; Thu, 19 Sep 2019 01:52:32 -0400
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iAqEC-0006rR-T0
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2019 02:47:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1iApMi-0000VH-Ik
- for qemu-devel@nongnu.org; Thu, 19 Sep 2019 01:52:30 -0400
-Received: from 15.mo6.mail-out.ovh.net ([188.165.39.161]:52004)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iApMi-0000UQ-AN
- for qemu-devel@nongnu.org; Thu, 19 Sep 2019 01:52:28 -0400
-Received: from player788.ha.ovh.net (unknown [10.108.35.159])
- by mo6.mail-out.ovh.net (Postfix) with ESMTP id D39241E1510
- for <qemu-devel@nongnu.org>; Thu, 19 Sep 2019 07:52:26 +0200 (CEST)
-Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
- (Authenticated sender: clg@kaod.org)
- by player788.ha.ovh.net (Postfix) with ESMTPSA id 5C03F9F176A0;
- Thu, 19 Sep 2019 05:52:20 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 19 Sep 2019 07:50:01 +0200
-Message-Id: <20190919055002.6729-21-clg@kaod.org>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20190919055002.6729-1-clg@kaod.org>
-References: <20190919055002.6729-1-clg@kaod.org>
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iAqEB-0005BJ-Gs
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2019 02:47:44 -0400
+Received: from mail-ve1eur01on071e.outbound.protection.outlook.com
+ ([2a01:111:f400:fe1f::71e]:10411
+ helo=EUR01-VE1-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
+ id 1iAqE5-00054W-SY; Thu, 19 Sep 2019 02:47:38 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=MJXf5tCSnoO0gy86bVW9cIz14roFszHpI6cY+d9K43l9LfO0LdQY+od5jS3qg4ISRoPSHxRa/5PkGqSxn+wAl1OSI8chmdq10YW0Um2m4dkjR4gakOoYov0W3mnFvEcTzNlrPpDjqkez+ePyoooyKtHWDSqNDV56EfDukdsbA3kFLrcHAOlGj/RvYowYRlAQammy7GjDf4NKP9WLCF8V2HhqeA1uOmEfgov2uT3abcZrHZ/cHFpje/bdF/guaSpWKh0ctM3rOFSh9j9n+V1xGapfFz65/3k79tkO7e1mN6hV+ZOmOxxGXzkolNAjtA7eu8eS6FExZvxuANB5t+NtbQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Yow5mhuHOGbfe5qSpW+yoqb1DKmIWKCcPWE9dp/clc8=;
+ b=XcXhWAXIW8t0cfWPnwsaeEjhRsOFzh2zL1l//475kndvpJCqgKzF1E+5AzmrZHFqIAsLWnThKToaSsfksQ9zktxBy2RhlMx+bZj1EoREb8fsMq0ADKE1diNMVgMWEjiNIKF0AVk8XeY+GlDMLAyGzUoZ3c9/cKK0qlGzSKDDKE65F4xvHvpPup4Ws8gribQf2hePj0TVPJ5ruGSkVpCn2vIWVZUNOkZ6UCbDx0SIJMNRKxsgIRX2wqvJpIHutBQL1RosvbOIkX2kg0z1bG9UVqwereq8EBA80k4b5vNtlmom/qfgk3tEqk9C5sJaSLWm8MNJUGexuOTEfXZYzBrDgQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
+ header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Yow5mhuHOGbfe5qSpW+yoqb1DKmIWKCcPWE9dp/clc8=;
+ b=OWreBDgsiQu1d0hmBBQisXqIGY9LMdhQEWf3M6QZWuqUBRVHqsfvbrJamBCscv8wIvALylOldWlCFMDZ86oxGLbCYAsKfhHNEhZqTGCQvncB+CcBivL8hjNJwWroraoL8LfnD2iJ2AywbuERxkuHEULNeNw//RtA51eHkvE9W08=
+Received: from DB8PR08MB5498.eurprd08.prod.outlook.com (52.133.242.216) by
+ DB8PR08MB4058.eurprd08.prod.outlook.com (20.179.10.146) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2284.18; Thu, 19 Sep 2019 06:47:35 +0000
+Received: from DB8PR08MB5498.eurprd08.prod.outlook.com
+ ([fe80::b5c0:6b97:438d:77ed]) by DB8PR08MB5498.eurprd08.prod.outlook.com
+ ([fe80::b5c0:6b97:438d:77ed%2]) with mapi id 15.20.2284.009; Thu, 19 Sep 2019
+ 06:47:35 +0000
+From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+To: Eric Blake <eblake@redhat.com>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+Thread-Topic: [RFC] error: auto propagated local_err
+Thread-Index: AQHVbiFyZhBrSsOpYEOTsgc7Le+SIKcxq6KAgAAJ94CAAAV2AIAAB5aAgADNTgA=
+Date: Thu, 19 Sep 2019 06:47:34 +0000
+Message-ID: <1c82faa5-9443-bc3d-6df2-dbfd82a7b830@virtuozzo.com>
+References: <20190918130244.24257-1-vsementsov@virtuozzo.com>
+ <abb14088-6af2-5db2-da0d-0948fd4ac81c@redhat.com>
+ <0497ac1e-c841-39cd-9944-48dd54c5b0f0@virtuozzo.com>
+ <9450fbfd-0f8b-d10f-7577-64805917f67a@redhat.com>
+ <26217614-77cf-9519-f94b-d606864f4d46@redhat.com>
+In-Reply-To: <26217614-77cf-9519-f94b-d606864f4d46@redhat.com>
+Accept-Language: ru-RU, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-clientproxiedby: HE1PR05CA0372.eurprd05.prod.outlook.com
+ (2603:10a6:7:94::31) To DB8PR08MB5498.eurprd08.prod.outlook.com
+ (2603:10a6:10:11c::24)
+authentication-results: spf=none (sender IP is )
+ smtp.mailfrom=vsementsov@virtuozzo.com; 
+x-ms-exchange-messagesentrepresentingtype: 1
+x-tagtoolbar-keys: D20190919094730617
+x-originating-ip: [185.231.240.5]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 62cd9efa-efc3-4ccb-7149-08d73ccd4088
+x-microsoft-antispam: BCL:0; PCL:0;
+ RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600167)(711020)(4605104)(1401327)(2017052603328)(7193020);
+ SRVR:DB8PR08MB4058; 
+x-ms-traffictypediagnostic: DB8PR08MB4058:
+x-microsoft-antispam-prvs: <DB8PR08MB40580C899ACAD9367EF6BF90C1890@DB8PR08MB4058.eurprd08.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:9508;
+x-forefront-prvs: 016572D96D
+x-forefront-antispam-report: SFV:NSPM;
+ SFS:(10019020)(136003)(39850400004)(366004)(396003)(346002)(376002)(199004)(189003)(36756003)(54906003)(386003)(446003)(11346002)(25786009)(6506007)(229853002)(31686004)(14454004)(66066001)(256004)(14444005)(6246003)(71190400001)(6436002)(99286004)(71200400001)(6512007)(5660300002)(66476007)(66946007)(7736002)(305945005)(2906002)(478600001)(102836004)(4326008)(26005)(52116002)(2501003)(53546011)(6486002)(476003)(2616005)(7406005)(7416002)(486006)(76176011)(6116002)(81156014)(81166006)(186003)(66556008)(3846002)(66446008)(64756008)(8676002)(86362001)(31696002)(110136005)(316002)(8936002);
+ DIR:OUT; SFP:1102; SCL:1; SRVR:DB8PR08MB4058;
+ H:DB8PR08MB5498.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
+ PTR:InfoNoRecords; A:1; MX:1; 
+received-spf: None (protection.outlook.com: virtuozzo.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam-message-info: pUViq+88IcjrAq5JpcJLwgOqHOJQ/3MPGmuVUhMN5qZL+acsQRWXB1V0kv9xA5fW7Q3TZEJw64HDwEGwL8W+R+ffB5cHJz8IPy5QWgTX+b7J78BnxPyDzpRnJaAlEfuRrZBuPDZG0x2xh/GnXIGYh6BjlDoN4+MAbbgriYfQz7gMDge/+c6GfphIUDk7609ikmJdcpLdMpOjT6voXLyKpS752rFCMC6ZzcMQodm//Z9DF7UDGxyHMosOrq1Cx/fiqTgHnRdWaxSzC/Kv8+mDjVP7GIC79b8bqEXQxi1PX15JHpYv/9wj1fxNHOTiCWfDouoDu6BWLToMhXLW4prP8pJvLVNelHvkuY0zO5mxXdzEsHzEYB/PppkVvdjxc1YHMfMUW2ocFZdcJBbBplHOCcT6nvHAGooUyi9wKAHumQc=
+x-ms-exchange-transport-forked: True
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <D9D2A0C2BEB81C4D800FA7625B2DB630@eurprd08.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 1700671810984708881
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudelgdelhecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 188.165.39.161
-Subject: [Qemu-devel] [PATCH 20/21] aspeed: add support for the Aspeed MII
- controller of the AST2600
-X-BeenThere: qemu-devel@nongnu.org
+X-OriginatorOrg: virtuozzo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 62cd9efa-efc3-4ccb-7149-08d73ccd4088
+X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Sep 2019 06:47:34.9503 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: JsMdYsDQhUDVvNfAbAvz2d3feVdhVGFj+Ew2ZMn6u2X03NPOKE34kdgQ1vx6YI96JbX9nNlre0bfzZQyPeTOsv36bHKVWVPsAm41edr2ee0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR08MB4058
+X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
+X-Received-From: 2a01:111:f400:fe1f::71e
+Subject: Re: [Qemu-arm] [RFC] error: auto propagated local_err
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WNYp4hs9k3Su
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "fam@euphon.net" <fam@euphon.net>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "mst@redhat.com" <mst@redhat.com>, "codyprime@gmail.com" <codyprime@gmail.com>,
+ "mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
+ "mdroth@linux.vnet.ibm.com" <mdroth@linux.vnet.ibm.com>,
+ "kraxel@redhat.com" <kraxel@redhat.com>,
+ "mreitz@redhat.com" <mreitz@redhat.com>,
+ "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
+ "quintela@redhat.com" <quintela@redhat.com>,
+ "david@redhat.com" <david@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
+ "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
+ "borntraeger@de.ibm.com" <borntraeger@de.ibm.com>,
+ "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
+ "rth@twiddle.net" <rth@twiddle.net>,
+ "farman@linux.ibm.com" <farman@linux.ibm.com>,
+ "groug@kaod.org" <groug@kaod.org>, "dgilbert@redhat.com" <dgilbert@redhat.com>,
+ "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "stefanha@redhat.com" <stefanha@redhat.com>,
+ "jsnow@redhat.com" <jsnow@redhat.com>,
+ "david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>,
+ "kwolf@redhat.com" <kwolf@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
+ "sundeep.lkml@gmail.com" <sundeep.lkml@gmail.com>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: r0GxLxRBHga0
 
-The AST2600 SoC has an extra controller to set the PHY registers.
-
-Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
----
- include/hw/arm/aspeed_soc.h |   5 ++
- include/hw/net/ftgmac100.h  |  17 ++++
- hw/arm/aspeed_ast2600.c     |  20 +++++
- hw/net/ftgmac100.c          | 162 ++++++++++++++++++++++++++++++++++++
- 4 files changed, 204 insertions(+)
-
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 088a5d108185..43478f617879 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -52,6 +52,7 @@ typedef struct AspeedSoCState {
-     AspeedSDMCState sdmc;
-     AspeedWDTState wdt[ASPEED_WDTS_NUM];
-     FTGMAC100State ftgmac100[ASPEED_MACS_NUM];
-+    AspeedMiiState mii[ASPEED_MACS_NUM];
-     AspeedGPIOState gpio;
-     AspeedGPIOState gpio_1_8v;
-     AspeedSDHCIState sdhci;
-@@ -117,6 +118,10 @@ enum {
-     ASPEED_ETH2,
-     ASPEED_ETH3,
-     ASPEED_ETH4,
-+    ASPEED_MII1,
-+    ASPEED_MII2,
-+    ASPEED_MII3,
-+    ASPEED_MII4,
-     ASPEED_SDRAM,
-     ASPEED_XDMA,
- };
-diff --git a/include/hw/net/ftgmac100.h b/include/hw/net/ftgmac100.h
-index 94cfe0533297..ab37e7b2b8ae 100644
---- a/include/hw/net/ftgmac100.h
-+++ b/include/hw/net/ftgmac100.h
-@@ -66,4 +66,21 @@ typedef struct FTGMAC100State {
-     uint32_t rxdes0_edorr;
- } FTGMAC100State;
-=20
-+#define TYPE_ASPEED_MII "aspeed-mmi"
-+#define ASPEED_MII(obj) OBJECT_CHECK(AspeedMiiState, (obj), TYPE_ASPEED_=
-MII)
-+
-+/*
-+ * AST2600 MII controller
-+ */
-+typedef struct AspeedMiiState {
-+    /*< private >*/
-+    SysBusDevice parent_obj;
-+
-+    FTGMAC100State *nic;
-+
-+    MemoryRegion iomem;
-+    uint32_t phycr;
-+    uint32_t phydata;
-+} AspeedMiiState;
-+
- #endif
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index ec51f9b6e617..26ad9c3394e2 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -31,6 +31,10 @@ static const hwaddr aspeed_soc_ast2600_memmap[] =3D {
-     [ASPEED_FMC]       =3D 0x1E620000,
-     [ASPEED_SPI1]      =3D 0x1E630000,
-     [ASPEED_SPI2]      =3D 0x1E641000,
-+    [ASPEED_MII1]      =3D 0x1E650000,
-+    [ASPEED_MII2]      =3D 0x1E650008,
-+    [ASPEED_MII3]      =3D 0x1E650010,
-+    [ASPEED_MII4]      =3D 0x1E650018,
-     [ASPEED_ETH1]      =3D 0x1E660000,
-     [ASPEED_ETH3]      =3D 0x1E670000,
-     [ASPEED_ETH2]      =3D 0x1E680000,
-@@ -180,6 +184,12 @@ static void aspeed_soc_ast2600_init(Object *obj)
-     for (i =3D 0; i < sc->macs_num; i++) {
-         sysbus_init_child_obj(obj, "ftgmac100[*]", OBJECT(&s->ftgmac100[=
-i]),
-                               sizeof(s->ftgmac100[i]), TYPE_FTGMAC100);
-+
-+        sysbus_init_child_obj(obj, "mii[*]", &s->mii[i], sizeof(s->mii[i=
-]),
-+                              TYPE_ASPEED_MII);
-+        object_property_add_const_link(OBJECT(&s->mii[i]), "nic",
-+                                       OBJECT(&s->ftgmac100[i]),
-+                                       &error_abort);
-     }
-=20
-     sysbus_init_child_obj(obj, "xdma", OBJECT(&s->xdma), sizeof(s->xdma)=
-,
-@@ -416,6 +426,16 @@ static void aspeed_soc_ast2600_realize(DeviceState *=
-dev, Error **errp)
-                         sc->memmap[ASPEED_ETH1 + i]);
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->ftgmac100[i]), 0,
-                            aspeed_soc_get_irq(s, ASPEED_ETH1 + i));
-+
-+        object_property_set_bool(OBJECT(&s->mii[i]), true, "realized",
-+                                 &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->mii[i]), 0,
-+                        sc->memmap[ASPEED_MII1 + i]);
-     }
-=20
-     /* XDMA */
-diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-index 04c78e85170b..eb8b441461a1 100644
---- a/hw/net/ftgmac100.c
-+++ b/hw/net/ftgmac100.c
-@@ -15,6 +15,7 @@
- #include "hw/irq.h"
- #include "hw/net/ftgmac100.h"
- #include "sysemu/dma.h"
-+#include "qapi/error.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "net/checksum.h"
-@@ -1087,9 +1088,170 @@ static const TypeInfo ftgmac100_info =3D {
-     .class_init =3D ftgmac100_class_init,
- };
-=20
-+/*
-+ * AST2600 MII controller
-+ */
-+#define ASPEED_MII_PHYCR_FIRE        BIT(31)
-+#define ASPEED_MII_PHYCR_ST_22       BIT(28)
-+#define ASPEED_MII_PHYCR_OP(x)       ((x) & (ASPEED_MII_PHYCR_OP_WRITE |=
- \
-+                                             ASPEED_MII_PHYCR_OP_READ))
-+#define ASPEED_MII_PHYCR_OP_WRITE    BIT(26)
-+#define ASPEED_MII_PHYCR_OP_READ     BIT(27)
-+#define ASPEED_MII_PHYCR_DATA(x)     (x & 0xffff)
-+#define ASPEED_MII_PHYCR_PHY(x)      (((x) >> 21) & 0x1f)
-+#define ASPEED_MII_PHYCR_REG(x)      (((x) >> 16) & 0x1f)
-+
-+#define ASPEED_MII_PHYDATA_IDLE      BIT(16)
-+
-+static void aspeed_mii_transition(AspeedMiiState *s, bool fire)
-+{
-+    if (fire) {
-+        s->phycr |=3D ASPEED_MII_PHYCR_FIRE;
-+        s->phydata &=3D ~ASPEED_MII_PHYDATA_IDLE;
-+    } else {
-+        s->phycr &=3D ~ASPEED_MII_PHYCR_FIRE;
-+        s->phydata |=3D ASPEED_MII_PHYDATA_IDLE;
-+    }
-+}
-+
-+static void aspeed_mii_do_phy_ctl(AspeedMiiState *s)
-+{
-+    uint8_t reg;
-+    uint16_t data;
-+
-+    if (!(s->phycr & ASPEED_MII_PHYCR_ST_22)) {
-+        aspeed_mii_transition(s, !ASPEED_MII_PHYCR_FIRE);
-+        qemu_log_mask(LOG_UNIMP, "%s: unsupported ST code\n", __func__);
-+        return;
-+    }
-+
-+    /* Nothing to do */
-+    if (!(s->phycr & ASPEED_MII_PHYCR_FIRE)) {
-+        return;
-+    }
-+
-+    reg =3D ASPEED_MII_PHYCR_REG(s->phycr);
-+    data =3D ASPEED_MII_PHYCR_DATA(s->phycr);
-+
-+    switch (ASPEED_MII_PHYCR_OP(s->phycr)) {
-+    case ASPEED_MII_PHYCR_OP_WRITE:
-+        do_phy_write(s->nic, reg, data);
-+        break;
-+    case ASPEED_MII_PHYCR_OP_READ:
-+        s->phydata =3D (s->phydata & ~0xffff) | do_phy_read(s->nic, reg)=
-;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid OP code %08x\n",
-+                      __func__, s->phycr);
-+    }
-+
-+    aspeed_mii_transition(s, !ASPEED_MII_PHYCR_FIRE);
-+}
-+
-+static uint64_t aspeed_mii_read(void *opaque, hwaddr addr, unsigned size=
-)
-+{
-+    AspeedMiiState *s =3D ASPEED_MII(opaque);
-+
-+    switch (addr) {
-+    case 0x0:
-+        return s->phycr;
-+    case 0x4:
-+        return s->phydata;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
-+static void aspeed_mii_write(void *opaque, hwaddr addr,
-+                             uint64_t value, unsigned size)
-+{
-+    AspeedMiiState *s =3D ASPEED_MII(opaque);
-+
-+    switch (addr) {
-+    case 0x0:
-+        s->phycr =3D value & ~(s->phycr & ASPEED_MII_PHYCR_FIRE);
-+        break;
-+    case 0x4:
-+        s->phydata =3D value & ~(0xffff | ASPEED_MII_PHYDATA_IDLE);
-+        break;
-+    default:
-+        g_assert_not_reached();
-+    }
-+
-+    aspeed_mii_transition(s, !!(s->phycr & ASPEED_MII_PHYCR_FIRE));
-+    aspeed_mii_do_phy_ctl(s);
-+}
-+
-+static const MemoryRegionOps aspeed_mii_ops =3D {
-+    .read =3D aspeed_mii_read,
-+    .write =3D aspeed_mii_write,
-+    .valid.min_access_size =3D 4,
-+    .valid.max_access_size =3D 4,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
-+};
-+
-+static void aspeed_mii_reset(DeviceState *dev)
-+{
-+    AspeedMiiState *s =3D ASPEED_MII(dev);
-+
-+    s->phycr =3D 0;
-+    s->phydata =3D 0;
-+
-+    aspeed_mii_transition(s, !!(s->phycr & ASPEED_MII_PHYCR_FIRE));
-+};
-+
-+static void aspeed_mii_realize(DeviceState *dev, Error **errp)
-+{
-+    AspeedMiiState *s =3D ASPEED_MII(dev);
-+    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-+    Object *obj;
-+    Error *local_err =3D NULL;
-+
-+    obj =3D object_property_get_link(OBJECT(dev), "nic", &local_err);
-+    if (!obj) {
-+        error_propagate(errp, local_err);
-+        error_prepend(errp, "required link 'nic' not found: ");
-+        return;
-+    }
-+
-+    s->nic =3D FTGMAC100(obj);
-+
-+    memory_region_init_io(&s->iomem, OBJECT(dev), &aspeed_mii_ops, s,
-+                          TYPE_ASPEED_MII, 0x8);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static const VMStateDescription vmstate_aspeed_mii =3D {
-+    .name =3D TYPE_ASPEED_MII,
-+    .version_id =3D 1,
-+    .minimum_version_id =3D 1,
-+    .fields =3D (VMStateField[]) {
-+        VMSTATE_UINT32(phycr, FTGMAC100State),
-+        VMSTATE_UINT32(phydata, FTGMAC100State),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+static void aspeed_mii_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+
-+    dc->vmsd =3D &vmstate_aspeed_mii;
-+    dc->reset =3D aspeed_mii_reset;
-+    dc->realize =3D aspeed_mii_realize;
-+    dc->desc =3D "Aspeed MII controller";
-+}
-+
-+static const TypeInfo aspeed_mii_info =3D {
-+    .name =3D TYPE_ASPEED_MII,
-+    .parent =3D TYPE_SYS_BUS_DEVICE,
-+    .instance_size =3D sizeof(AspeedMiiState),
-+    .class_init =3D aspeed_mii_class_init,
-+};
-+
- static void ftgmac100_register_types(void)
- {
-     type_register_static(&ftgmac100_info);
-+    type_register_static(&aspeed_mii_info);
- }
-=20
- type_init(ftgmac100_register_types)
---=20
-2.21.0
-
+MTguMDkuMjAxOSAyMTozMiwgRXJpYyBCbGFrZSB3cm90ZToNCj4gT24gOS8xOC8xOSAxOjA1IFBN
+LCBFcmljIEJsYWtlIHdyb3RlOg0KPiANCj4+Pj4gI2RlZmluZSBNQUtFX0VSUlBfU0FGRSgpIFwN
+Cj4+Pj4gZ19hdXRvKEVycm9yUHJvcGFnYXRpb25TdHJ1Y3QpIChfX2F1dG9fZXJycF9wcm9wKSA9
+IHsuZXJycCA9IGVycnB9OyBcDQo+Pj4+IGVycnAgPSAmX19hdXRvX2VycnBfcHJvcC5sb2NhbF9l
+cnINCj4+Pj4NCj4gDQo+IEkgdHJpZWQgdG8gc2VlIGlmIHRoaXMgY291bGQgYmUgZG9uZSB3aXRo
+IGp1c3QgYSBzaW5nbGUgZGVjbGFyYXRpb24NCj4gbGluZSwgYXMgaW46DQo+IA0KPiB0eXBlZGVm
+IHN0cnVjdCBFcnJvclByb3BhZ2F0b3Igew0KPiAgICAgIEVycm9yICoqZXJycDsNCj4gICAgICBF
+cnJvciAqbG9jYWxfZXJyOw0KPiB9IEVycm9yUHJvcGFnYXRvcjsNCj4gDQo+ICNkZWZpbmUgTUFL
+RV9FUlJQX1NBRkUoKSBcDQo+ICAgIGdfYXV0byhFcnJvclByb3BhZ2F0b3IpIF9fYXV0b19lcnJw
+X3Byb3AgPSB7IFwNCj4gICAgICBlcnJwLCAoKGVycnAgPSAmX19hdXRvX2VycnBfcHJvcC5sb2Nh
+bF9lcnIpLCBOVUxMKSB9DQo+IA0KPiBCdXQgc2FkbHksIEMxNyBwYXJhZ3JhcGggNi43LjlQMjMg
+c3RhdGVzOg0KPiANCj4gIlRoZSBldmFsdWF0aW9ucyBvZiB0aGUgaW5pdGlhbGl6YXRpb24gbGlz
+dCBleHByZXNzaW9ucyBhcmUNCj4gaW5kZXRlcm1pbmF0ZWx5IHNlcXVlbmNlZCB3aXRoIHJlc3Bl
+Y3QgdG8gb25lIGFub3RoZXIgYW5kIHRodXMgdGhlIG9yZGVyDQo+IGluIHdoaWNoIGFueSBzaWRl
+IGVmZmVjdHMgb2NjdXIgaXMgdW5zcGVjaWZpZWQuIg0KPiANCj4gd2hpY2ggZG9lcyBub3QgYm9k
+ZSB3ZWxsIGZvciB0aGUgYXNzaWdubWVudCB0byBfX2F1dG9fZXJycF9wcm9wLmVycnAuDQo+IEFs
+bCBjaGFuZ2VzIHRvIGVycnAgd291bGQgaGF2ZSB0byBiZSB3aXRoaW4gdGhlIHNhbWUgaW5pdGlh
+bGl6ZXIuICBNYXliZToNCj4gDQo+ICNkZWZpbmUgTUFLRV9FUlJQX1NBRkUoKSBcDQo+ICAgIGdf
+YXV0byhFcnJvclByb3BhZ2F0b3IpIF9fYXV0b19lcnJwX3Byb3AgPSB7IFwNCj4gICAgICAubG9j
+YWxfZXJyID0gKF9fYXV0b19lcnJwX3Byb3AuZXJyID0gZXJycCwgXA0KPiAgICAgICAgICAoZXJy
+cCA9ICZfX2F1dG9fZXJycF9wcm9wLmxvY2FsX2VyciksIE5VTEwpIH0NCg0KSXMgaXQgZ3VhcmFu
+dGVlZCB0aGF0IC5lcnJwIHdpbGwgbm90IGJlIGluaXRpYWxpemVkIHRvIE5VTEwgYWZ0ZXIgZXZh
+bHVhdGluZyBvZg0KLmxvY2FsX2VyciBpbml0aWFsaXplcj8NCg0KPiANCj4gYnV0IGJ5IHRoZSB0
+aW1lIHlvdSBnZXQgdGhhdCBjb21wbGljYXRlZCwganVzdCB1c2luZyBhIHN0YXRlbWVudCBpcw0K
+PiBlYXNpZXIgdG8gcmVhZC4NCj4gDQoNCg0KLS0gDQpCZXN0IHJlZ2FyZHMsDQpWbGFkaW1pcg0K

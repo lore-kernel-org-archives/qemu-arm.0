@@ -1,116 +1,80 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp899912wrp;
-        Thu, 19 Sep 2019 05:01:12 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxkT9dXO2tAqGZBLSmBjGLxCgaz0oKqTaRKsFXxk70prEYlqD2rha0W0ofsBrHpSFr+IHIV
-X-Received: by 2002:a17:906:a2c7:: with SMTP id by7mr6743094ejb.13.1568894472405;
-        Thu, 19 Sep 2019 05:01:12 -0700 (PDT)
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp920333wrp;
+        Thu, 19 Sep 2019 05:19:18 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwi/rk5BYVa14cKhzp7KQeEF6eSjzoHhkRuoWtm/WddeE9czDHOBUx2viYPDKN07Rcjx6WS
+X-Received: by 2002:ad4:418c:: with SMTP id e12mr7665816qvp.70.1568895558286;
+        Thu, 19 Sep 2019 05:19:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568895558; cv=none;
+        d=google.com; s=arc-20160816;
+        b=i0xnWg0q4P4T1hRonvR2ndLbucDCUVDtKw+v3UwviZfxirTDhBwytMcnbtvC8+zZ8s
+         QYfal0xJGg5METL+mfCLmbO3tZyq6Lg2bBYgYcYMgeB5xEJlz8HjJpZwvajPZ8V/TQVq
+         0qc/aaLPjXcznYzSUACLWZfQHkSHz6RkUf6PYk41JYS4BdqTTNe/s9MHDYlRCH5yVtvX
+         yWJEks1WMdapGuHpAGW9ynvUsw3r0Ggy72wpSYQUXlnsBTACoBbCmU7baTbYIKDNurNs
+         yieGLqjb0hccuddCd6YcpruzGMrZ+2QPTA4BlknMDu4N6aoe/vpQI4PyccdPHvWN91qI
+         7ZpA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=ZMEFKpiRQdv9ZrmUZ7Ju2pj8J6AzVj9rgiqSk0aqWtY=;
+        b=iE9MJ2WdbBmC50PtcV1HvuG0igCz2A0313GdP2mhVeo4Wm1Yc0vl8VdePJ06O2vget
+         iD5ZOOkkD4SkwqzKdK84+x1i3+oj+fCrzGy18iaTL6+qsWERDkQq8hkkQ0JAS2G0Ic8w
+         ziC1rYdmXaa79T/M0LnhozR4Xm2XQWvYyfjNkYKdkqiV4euGJoOqAtZOPe1F9Z0VK9wo
+         3IpdOU7i9L7DB0i1nlFfz6k4lYWdi5WaoAJG2lhX4NPe+mXUD/Uz5Amu/oWJQR7fMRlb
+         9EWdCyOm+N2qgZxqk6tVEJ9dBtwbX7CFMV0aw4LxjL7jQYULdcr2iNc8yp98KCstjdSW
+         IAuA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id me23si3090777ejb.344.2019.09.19.05.01.12
+        by mx.google.com with ESMTPS id 2si6245315qvy.187.2019.09.19.05.19.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Sep 2019 05:01:12 -0700 (PDT)
+        Thu, 19 Sep 2019 05:19:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@virtuozzo.com header.s=selector2 header.b=wM6cPLDq;
-       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Received: from localhost ([::1]:42892 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43342 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAv7X-00088F-76
-	for alex.bennee@linaro.org; Thu, 19 Sep 2019 08:01:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34896)
+	id 1iAvP3-00055H-NN
+	for alex.bennee@linaro.org; Thu, 19 Sep 2019 08:19:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37617)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iAv6z-00084C-S0
- for qemu-arm@nongnu.org; Thu, 19 Sep 2019 08:00:39 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1iAvOo-00054c-MA
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2019 08:19:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iAv6x-0004UT-SX
- for qemu-arm@nongnu.org; Thu, 19 Sep 2019 08:00:37 -0400
-Received: from mail-eopbgr10108.outbound.protection.outlook.com
- ([40.107.1.108]:19774 helo=EUR02-HE1-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
- id 1iAv6j-0004JL-2d; Thu, 19 Sep 2019 08:00:21 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=K5BrXE4msMPDzPSv2+rNbdTwxLQwN+/vqb29oN8fm8kH+V7lEJU029azCCNgs9UzZ+CvHnHcdEbE1QJua3hrO+w7b/j8fI5kxNAwo1pjsR6D1j3mhtfYvShhOUw7CkUjHFwGTZ8q/fGUTGZ/2kPiuvEXt34i9gFVTy6rP9E41PWqc7afKpLEtrhicXxtzgURP2rn1EKevt7Hy2wvjjph9injbH66UJ6ggMKrnX4p+knyiUs89WoPtzfTVGfplqePBRLLqf9jB8slQ1dnl2OfVXEj4lJlv42wJdSbIZW0fT4zEXgH2RjMOtKQoPuHLnlwJmIRmuQg8KkFle5CVUG0aw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yDy1rVf6dSAyX6nLkqCWQqw4nubV9lEY+yaMMYo3jrI=;
- b=i5i6pcdrqTSLHMm60l3g/uD/U/YkbzExV6dEVowuDzUvB88c1KDO6TtINl4z7bwvQ/nDuTl6kCrQiobU+d5TregvEsEeXA4/EFKrIRp5zH0FgpziCm+mE2PkggKV/ZPhKq5vyAi1yP+z1i8ieIkNUpZaKgjlikj3BY436tKAO5iNDcOE31gArxvQzX9xzFUs0oQpGVrstnRjD+zK9QP0hSBcvw5rkwyDHLrnBjY3iJQFl4iZva1uftk4LNEBzcy9GIghki1wawqzFtIlxaj7LmXf/eIsWcvMYvTf9r5pcrCbJM9mPrtOaNyKJtwY0hIxEGtyOTBo1x01pgs0Ly1QAA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
- header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yDy1rVf6dSAyX6nLkqCWQqw4nubV9lEY+yaMMYo3jrI=;
- b=wM6cPLDqF8AFVYYZtuWCNgkMM6gOzgTVfPClJEYTVmelOxKG3Zqx7OjXzsHlw6TUWnyfrBTT8QhvZ6rP34pTFjbegDJ1WNB5bXWmM888Aqjbdn+3WGzAJP8lPBlm02+Omf5p7fllBagfHcbDo6pTiGja4c9BcF5HKAhxO0OAeKU=
-Received: from DB8PR08MB5498.eurprd08.prod.outlook.com (52.133.242.216) by
- DB8PR08MB5514.eurprd08.prod.outlook.com (52.133.243.136) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2284.20; Thu, 19 Sep 2019 12:00:15 +0000
-Received: from DB8PR08MB5498.eurprd08.prod.outlook.com
- ([fe80::b5c0:6b97:438d:77ed]) by DB8PR08MB5498.eurprd08.prod.outlook.com
- ([fe80::b5c0:6b97:438d:77ed%2]) with mapi id 15.20.2284.009; Thu, 19 Sep 2019
- 12:00:15 +0000
-From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-To: Kevin Wolf <kwolf@redhat.com>, Eric Blake <eblake@redhat.com>
-Thread-Topic: [RFC] error: auto propagated local_err
-Thread-Index: AQHVbiFyZhBrSsOpYEOTsgc7Le+SIKcxq6KAgAEOLgCAAC2AgA==
-Date: Thu, 19 Sep 2019 12:00:15 +0000
-Message-ID: <1ee95d94-d3f9-2f56-a0bb-61d31e3ceeb7@virtuozzo.com>
-References: <20190918130244.24257-1-vsementsov@virtuozzo.com>
- <abb14088-6af2-5db2-da0d-0948fd4ac81c@redhat.com>
- <20190919091720.GB10163@localhost.localdomain>
-In-Reply-To: <20190919091720.GB10163@localhost.localdomain>
-Accept-Language: ru-RU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: HE1P195CA0018.EURP195.PROD.OUTLOOK.COM (2603:10a6:3:fd::28)
- To DB8PR08MB5498.eurprd08.prod.outlook.com
- (2603:10a6:10:11c::24)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=vsementsov@virtuozzo.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-tagtoolbar-keys: D20190919150011597
-x-originating-ip: [185.231.240.5]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 9f4fdcc0-fba1-42e4-de6a-08d73cf8eeeb
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600167)(711020)(4605104)(1401327)(2017052603328)(7193020);
- SRVR:DB8PR08MB5514; 
-x-ms-traffictypediagnostic: DB8PR08MB5514:
-x-microsoft-antispam-prvs: <DB8PR08MB5514CB4CDB9BCC75C48DCD8DC1890@DB8PR08MB5514.eurprd08.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:5516;
-x-forefront-prvs: 016572D96D
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(366004)(136003)(376002)(396003)(39850400004)(346002)(199004)(189003)(66066001)(81156014)(4326008)(66446008)(5660300002)(8676002)(7416002)(81166006)(6436002)(110136005)(7736002)(8936002)(54906003)(6512007)(6486002)(7406005)(14454004)(305945005)(478600001)(31686004)(186003)(66946007)(11346002)(2906002)(6506007)(386003)(25786009)(53546011)(256004)(26005)(66556008)(52116002)(229853002)(316002)(102836004)(446003)(6116002)(66476007)(64756008)(86362001)(36756003)(14444005)(6246003)(76176011)(71200400001)(3846002)(31696002)(99286004)(476003)(486006)(71190400001)(2616005);
- DIR:OUT; SFP:1102; SCL:1; SRVR:DB8PR08MB5514;
- H:DB8PR08MB5498.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: virtuozzo.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: 3XA/26qfkURGWtcGfLjbN6U0LQCaGGIUAllVGp/+tAyuM+aT0jemvLRv8BpYuB+I/g+mXFVDGTTd87zgQIKYzyzuaOcyj84dJzqKcvUMEkEGsRwGH0hH5q6xMNg00yRZfCc7kb1gRaW/cfaeobc3QqFsrKIvSJgT+n/rZkesVrkq1A+n2ix9JuSydzyqAXmMp4rfbParu0Rrk4DGt7sm16+6ef3DKeNqGhf7RKvT3sILyuyLRZ/iwrq52Nbi7nNMcIm6DmXlcGRDTXsDJUU4Hw0Cc4Lzl4fZED2NDxfoIqSmgI74alAqPuZmOsQxIpb69CNqEMCwHF/S5xccrFg5SSxMsCJoqpOMKv8SxaefGJ92e7t8CsgVm19ITwwSkF6yEndRKJ/KvfVeh7qIB7BRM6mY09/x2dTpX6XCXltFVF8=
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <4AE41068D7705242A9273BC1F6A32BCB@eurprd08.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ (envelope-from <eric.auger@redhat.com>) id 1iAvOn-0003nl-He
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2019 08:19:02 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39858)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1iAvOn-0003mw-Bk; Thu, 19 Sep 2019 08:19:01 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 82AE2369AC;
+ Thu, 19 Sep 2019 12:19:00 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-117-220.ams2.redhat.com [10.36.117.220])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3242660BF1;
+ Thu, 19 Sep 2019 12:18:48 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, pbonzini@redhat.com,
+ alex.williamson@redhat.com, peterx@redhat.com
+Date: Thu, 19 Sep 2019 14:18:40 +0200
+Message-Id: <20190919121845.29520-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-X-OriginatorOrg: virtuozzo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9f4fdcc0-fba1-42e4-de6a-08d73cf8eeeb
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Sep 2019 12:00:15.6587 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: UFK76qC0FX+uxOQAqoGhgcdCMvUFDqsc7V4MNu1f18jEKyGjt9F+ZvDvwRoxtc840SoYBFSUY7G1bz6syIhTf61Eop+UHK7e6BLySLBKNls=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR08MB5514
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.1.108
-Subject: Re: [Qemu-arm] [RFC] error: auto propagated local_err
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.30]); Thu, 19 Sep 2019 12:19:00 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+Subject: [Qemu-arm] [PATCH v2 0/5] Allow
+ memory_region_register_iommu_notifier() to fail
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -122,80 +86,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "fam@euphon.net" <fam@euphon.net>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "mst@redhat.com" <mst@redhat.com>, "codyprime@gmail.com" <codyprime@gmail.com>,
- "mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "kraxel@redhat.com" <kraxel@redhat.com>,
- "mreitz@redhat.com" <mreitz@redhat.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- "quintela@redhat.com" <quintela@redhat.com>,
- "david@redhat.com" <david@redhat.com>,
- "mdroth@linux.vnet.ibm.com" <mdroth@linux.vnet.ibm.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
- "borntraeger@de.ibm.com" <borntraeger@de.ibm.com>,
- "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
- "rth@twiddle.net" <rth@twiddle.net>,
- "farman@linux.ibm.com" <farman@linux.ibm.com>,
- "groug@kaod.org" <groug@kaod.org>, "dgilbert@redhat.com" <dgilbert@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "stefanha@redhat.com" <stefanha@redhat.com>,
- "jsnow@redhat.com" <jsnow@redhat.com>,
- "david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- "sundeep.lkml@gmail.com" <sundeep.lkml@gmail.com>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>
+Cc: mst@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yRqpY03FuQVJ
+X-TUID: Jn/ra8mTbHsH
 
-MTkuMDkuMjAxOSAxMjoxNywgS2V2aW4gV29sZiB3cm90ZToNCj4gQW0gMTguMDkuMjAxOSB1bSAx
-OToxMCBoYXQgRXJpYyBCbGFrZSBnZXNjaHJpZWJlbjoNCj4+IE9uIDkvMTgvMTkgODowMiBBTSwg
-VmxhZGltaXIgU2VtZW50c292LU9naWV2c2tpeSB3cm90ZToNCj4+PiArICovDQo+Pj4gKyNkZWZp
-bmUgTUFLRV9FUlJQX1NBRkUoZXJycCkgXA0KPj4+ICtnX2F1dG8oRXJyb3JQcm9wYWdhdGlvblN0
-cnVjdCkgKF9fYXV0b19lcnJwX3Byb3ApID0gey5lcnJwID0gKGVycnApfTsgXA0KPj4+ICtpZiAo
-KGVycnApID09IE5VTEwgfHwgKihlcnJwKSA9PSBlcnJvcl9hYm9ydCB8fCAqKGVycnApID09IGVy
-cm9yX2ZhdGFsKSB7IFwNCj4+PiArICAgIChlcnJwKSA9ICZfX2F1dG9fZXJycF9wcm9wLmxvY2Fs
-X2VycjsgXA0KPj4+ICt9DQo+Pg0KPj4gTm90IHdyaXR0ZW4gdG8gdGFrZSBhIHRyYWlsaW5nIHNl
-bWljb2xvbiBpbiB0aGUgY2FsbGVyLg0KPj4NCj4+IFlvdSBjb3VsZCBldmVuIHNldCBfX2F1dG9f
-ZXJycF9wcm9wIHVuY29uZGl0aW9uYWxseSByYXRoZXIgdGhhbiB0cnlpbmcNCj4+IHRvIHJldXNl
-IGluY29taW5nIGVycnAgKHRoZSBkaWZmZXJlbmNlIGJlaW5nIHRoYXQgZXJyb3JfcHJvcGFnYXRl
-KCkgZ2V0cw0KPj4gY2FsbGVkIG1vcmUgZnJlcXVlbnRseSkuDQo+IA0KPiBJIHRoaW5rIHRoaXMg
-ZGlmZmVyZW5jZSBpcyBhY3R1YWxseSBhIHByb2JsZW0uDQo+IA0KPiBXaGVuIGRlYnVnZ2luZyB0
-aGluZ3MsIEkgaGF0ZSBlcnJvcl9wcm9wYWdhdGUoKS4gSXQgbWVhbnMgdGhhdCB0aGUgRXJyb3IN
-Cj4gKHNwZWNpZmljYWxseSBpdHMgZmllbGRzIHNyYy9mdW5jL2xpbmUpIHBvaW50cyB0byB0aGUg
-b3V0ZXJtb3N0DQo+IGVycm9yX3Byb3BhZ2F0ZSgpIHJhdGhlciB0aGFuIHRoZSBwbGFjZSB3aGVy
-ZSB0aGUgZXJyb3IgcmVhbGx5IGhhcHBlbmVkLg0KPiBJdCBhbHNvIG1ha2VzIGVycm9yX2Fib3J0
-IGNvbXBsZXRlbHkgdXNlbGVzcyBiZWNhdXNlIGF0IHRoZSBwb2ludCB3aGVyZQ0KPiB0aGUgcHJv
-Y2VzcyBnZXRzIGFib3J0ZWQsIHRoZSBpbnRlcmVzdGluZyBpbmZvcm1hdGlvbiBpcyBhbHJlYWR5
-IGxvc3QuDQo+IA0KPiBTbyBJJ2QgcmVhbGx5IGxpa2UgdG8gcmVzdHJpY3QgdGhlIHVzZSBvZiBl
-cnJvcl9wcm9wYWdhdGUoKSB0byBwbGFjZXMNCj4gd2hlcmUgaXQncyBhYnNvbHV0ZWx5IG5lY2Vz
-c2FyeS4gVW5sZXNzLCBvZiBjb3Vyc2UsIHlvdSBjYW4gZml4IHRoZXNlDQo+IHByYWN0aWNhbCBw
-cm9ibGVtcyB0aGF0IGVycm9yX3Byb3BhZ2F0ZSgpIGNhdXNlcyBmb3IgZGVidWdnaW5nLg0KPiAN
-Cj4gSW4gZmFjdCwgaW4gdGhlIGNvbnRleHQgb2YgR3JlZydzIHNlcmllcywgSSB0aGluayB3ZSBy
-ZWFsbHkgb25seSBuZWVkIHRvDQo+IHN1cHBvcnQgaGludHMgZm9yIGVycm9yX2ZhdGFsLCB3aGlj
-aCBhcmUgY2FzZXMgdGhhdCB1c2VycyBhcmUgc3VwcG9zZWQNCj4gdG8gc2VlLiBXZSBzaG91bGQg
-ZXhjbHVkZSBlcnJvcl9hYm9ydCBpbiBNQUtFX0VSUlBfU0FGRSgpIGJlY2F1c2UgdGhlc2UNCj4g
-YXJlIHRoaW5ncyB0aGF0IGFyZSBuZXZlciBzdXBwb3NlZCB0byBoYXBwZW4uIEEgZ29vZCBzdGFj
-ayB0cmFjZSBpcyBtb3JlDQo+IGltcG9ydGFudCB0aGVyZSB0aGFuIGFkZGluZyBhIGhpbnQgdG8g
-dGhlIG1lc3NhZ2UuDQo+IA0KDQpJbnRlcmVzdGluZywgdGhhdCB0byBoYW5kbGUgZXJyb3JfYXBw
-ZW5kX2hpbnQgcHJvYmxlbSwgd2UgZG9uJ3QgbmVlZCB0bw0KY3JlYXRlIGxvY2FsX2VyciBpbiBj
-YXNlIG9mIGVycnA9PU5VTEwgZWl0aGVyLi4NCg0KU28sIHBvc3NpYmx5LCB3ZSBuZWVkIHRoZSBm
-b2xsb3dpbmcgc3RlcHM6DQoNCjEuIGltcGxlbWVudCBNQUtFX0VSUlBfU0FGRV9GT1JfSElOVCAo
-d2hpY2ggb25seSBsZWF2ZSAiKihlcnJwKSA9PSBlcnJvcl9mYXRhbCIgaW4gdGhlIGlmIGNvbmRp
-dGlvbg0KMi4gcmViYXNlIEdyZWcncyBzZXJpZXMgb24gaXQsIHRvIGZpeCBoaW50cyBmb3IgZmF0
-YWwgZXJyb3JzDQozLiBpbXBsZW1lbnQgTUFLRV9FUlJQX1NBRkVfRk9SX0RFUkVGRVJFTkNFICh3
-aGljaCBvbmx5IGxlYXZlICIoZXJycCkgPT0gTlVMTCIgaW4gdGhlIGlmIGNvbmRpdGlvbg0KNC4g
-Y29udmVydCBhbGwgKGFsbW9zdCBhbGwpIGxvY2FsX2VyciB1c2FnZSB0byB1c2UgTUFLRV9FUlJQ
-X1NBRkVfRk9SX0RFUkVGRVJFTkNFLCB3aGljaCB3aWxsDQogICAgZml4IHByb2JsZW0gd2l0aCBl
-cnJvcl9hYm9ydCAoYW5kIGFsc28gZHJvcCBhIGxvdCBvZiBjYWxscyBvZiBlcnJvcl9wcm9wYWdh
-dGUpDQo1LiBtZXJlbHkgY29udmVydCAidm9pZCBmdW5jKC4uLCBlcnJwKSIgdG8gImludCBmdW5j
-KC4uLCBlcnJwKSIgYW5kIGRyb3AgTUFLRV9FUlJQX1NBRkVfRk9SX0RFUkVGRVJFTkNFKCkNCiAg
-ICBtYWdpYywgdG9nZXRoZXIgd2l0aCBkZXJlZmVyZW5jaW5nLg0KDQoNCi0tIA0KQmVzdCByZWdh
-cmRzLA0KVmxhZGltaXINCg==
+This series allows the memory_region_register_iommu_notifier()
+to fail. As of now, when a MAP notifier is attempted to be
+registered along with SMMUv3, Intel iommu without caching mode
+or AMD IOMMU, we exit in the IOMMU MR notify_flag_changed()
+callback. In case of VFIO assigned device hotplug, this could be
+handled more nicely directly within the VFIO code, simply rejecting
+the hotplug without exiting. This is what the series achieves
+by handling the memory_region_register_iommu_notifier() returned
+value.
+
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/v4.1.0_register_iommu_notifier_fail_v=
+2
+
+History:
+
+v1 -> v2:
+- Intel IOMMU now handles the problem differently with machine init done
+  notifier and machine hotplug allowed hook.
+- use assert(!ret)
+- message rewording in SMMUv3
+
+Follow-up of "VFIO/SMMUv3: Fail on VFIO/HW nested paging detection"
+https://patchew.org/QEMU/20190829090141.21821-1-eric.auger@redhat.com/
+
+
+Eric Auger (5):
+  memory: allow memory_region_register_iommu_notifier() to fail
+  vfio/common: Handle memory_region_register_iommu_notifier() failure
+  exec: assert on memory_region_register_iommu_notifier() failure
+  vhost: assert on memory_region_register_iommu_notifier() failure
+  amd_iommu: Let amdvi_iommu_notify_flag_changed() fail
+
+ exec.c                |  6 ++++--
+ hw/arm/smmuv3.c       | 12 +++++++-----
+ hw/i386/amd_iommu.c   |  9 +++++----
+ hw/i386/intel_iommu.c |  7 ++++---
+ hw/ppc/spapr_iommu.c  |  7 ++++---
+ hw/vfio/common.c      |  8 ++++++--
+ hw/virtio/vhost.c     |  5 +++--
+ include/exec/memory.h | 18 +++++++++++++-----
+ memory.c              | 28 ++++++++++++++++++----------
+ 9 files changed, 64 insertions(+), 36 deletions(-)
+
+--=20
+2.20.1
+

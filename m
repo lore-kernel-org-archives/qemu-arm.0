@@ -1,80 +1,79 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp591820wrp;
-        Wed, 18 Sep 2019 23:03:34 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzKx8X8KyhQ42sVJwjrVRTBVlxhywSP0zRXB8rXRATNUOWLy+AAmKpLm2jw9BYn2naH+6d+
-X-Received: by 2002:a17:906:b84e:: with SMTP id ga14mr9731043ejb.215.1568873014798;
-        Wed, 18 Sep 2019 23:03:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568873014; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp597076wrp;
+        Wed, 18 Sep 2019 23:09:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy82HTODNky6jc7b7QCMDYtlrygO7lOqf3FBUSr86WTXSbawC4LcqTUh4To2OXYfiz425ID
+X-Received: by 2002:a17:906:b34c:: with SMTP id cd12mr12816187ejb.48.1568873388231;
+        Wed, 18 Sep 2019 23:09:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568873388; cv=none;
         d=google.com; s=arc-20160816;
-        b=Cck4Ook8Qwg7f1JvlysVk6BbPssKtYHVfH9tE+sdF4RBCKGuz2N/pww2JYn5CnteOe
-         1fJQRA2+v+Ox4naBQmLA4iQuX5TBXvgDkBaipPWcosU7VJVG0GYO9KW+InWabkZ9pl6R
-         6zwxVT2+VKdiq2T+ECsQan5Suk5uFGxmVWzTwGuG/deqvgJx9XjENcZrj6uBrAe7u8Uw
-         q9H877TPtpB8KgoPQ3wmPLVOrPTA+l+wt91M/5fk+o0WsNKcQlOZGGdrB1sdO/1Ra4Bz
-         97oMnqQPGRrjaSkJ+xgfLxrFk/9bySYvOn5LSP7oUo26KVT5ATwTmreJ09DAnrdRr/nt
-         gdWw==
+        b=OJfIZo/01F2Plb4fVDGkN6gRFGk8WVkrMKfSUoCun6liYD11CQtwGKMEU1uLmtYGQD
+         zdSTc4mq9j5Nq/qTwr+600gxv20nLcihSnw+4Z7ozsKW6gX2mgWPtVSZuRlzjpnAsu1y
+         +1hH/l+FNpMT9XvH+blz+lLryH5vQrJl8fRlyFdwcKiwSV7Ko8cqoCsZIbZu2aYOjUgU
+         OXGM5xPyMi17oeG1iGoHxQ1gA7/xaHaAL+opkBhHla0lizEnhOzUDdfx5YeMTfAXEbxy
+         skZNZ8wo4WGxGCMuFn4SldWuhzlVYF5pGVZjRaMOoim2Ea4SzX4NF/unnumO9LhldBR8
+         2Edw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:subject
          :content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:to:from;
-        bh=4j03AjZxe4+sBLXQ8T9eEv0S/+/oNrmGBlP8x1+mMFE=;
-        b=VwM77JPhCXEAqT7Xg3Rl9iENTE+dKzMZ0E4foKu283hjVtE1FJ6h/7Y5e84kE3uJ8V
-         45Oo5ALeswHfHaztjWQ40w+HCMN84AWuWDa1szLbbtBVNze+rYWLQh73RnnDCglApTle
-         08I/YkV1stjseCi6jXdPBbD7msM75ksDgzI35GoZLuCshJeuijZlZpryfa+l2lwnedMB
-         qPQrIyzOrDHMjlY3Hmukr8MNGL7O6fb+yxgjVwSlIXPKzI0qeSw1altE47apmu4t3LGd
-         UlhV+C3nNhm0RGQEZMsJsIFMY+bRPyaeiiAeaGzKHgB3BHGZsT9YEt7vXV2BZzo157u7
-         bLFQ==
+        bh=tXwSj2DqxgZHTmquLCV8ahj1PNWF+43OSlSsxbb30XQ=;
+        b=aBIBzMjEJfZLOz3XkkvfZYDpW8vSNHuJLI4VGkbqyOCHA/J5txHn6D2WKLayxmmZNQ
+         E0lsqLq5hztJ4ESrh3XqlLnoFIR5NECuFGW7Ci0b7XNebDuf0oo0y8sIqtWw43oyudmr
+         HVopLsUoVKK7xJD2LwFjEVekKPPBrKvb59pl4mfGJhzlgwOo9X/4h+FTQHi7Xg/C304G
+         V0jXpq+ugqJZkttiehQTaKnoEMirqe0u03EUkQALoXLHGVlvso2Xp9OCV7DPP3L4N+un
+         frdi2Mk5Qc4J0adPCqIHUXFIjxs5rQkNxeGuYg/fOrCX9DSyrosKkrMOzgU8VP2d6Hgo
+         +fYg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w2si4728387edc.386.2019.09.18.23.03.34
+        by mx.google.com with ESMTPS id z11si4078187eja.331.2019.09.18.23.09.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2019 23:03:34 -0700 (PDT)
+        Wed, 18 Sep 2019 23:09:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37952 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38000 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iApXQ-0006B5-Uh
-	for alex.bennee@linaro.org; Thu, 19 Sep 2019 02:03:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42795)
+	id 1iApdS-0003ZJ-Q3
+	for alex.bennee@linaro.org; Thu, 19 Sep 2019 02:09:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42829)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1iApM6-0002BV-Rp
- for qemu-devel@nongnu.org; Thu, 19 Sep 2019 01:51:52 -0400
+ (envelope-from <clg@kaod.org>) id 1iApMC-0002J2-NJ
+ for qemu-devel@nongnu.org; Thu, 19 Sep 2019 01:51:58 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1iApM5-0008Vk-BF
- for qemu-devel@nongnu.org; Thu, 19 Sep 2019 01:51:50 -0400
-Received: from 19.mo3.mail-out.ovh.net ([178.32.98.231]:54574)
+ (envelope-from <clg@kaod.org>) id 1iApMB-00008E-AA
+ for qemu-devel@nongnu.org; Thu, 19 Sep 2019 01:51:56 -0400
+Received: from 3.mo1.mail-out.ovh.net ([46.105.60.232]:38916)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iApM5-0008US-5L
- for qemu-devel@nongnu.org; Thu, 19 Sep 2019 01:51:49 -0400
-Received: from player788.ha.ovh.net (unknown [10.109.160.143])
- by mo3.mail-out.ovh.net (Postfix) with ESMTP id 8003F225BAA
- for <qemu-devel@nongnu.org>; Thu, 19 Sep 2019 07:51:47 +0200 (CEST)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iApMB-00007b-4v
+ for qemu-devel@nongnu.org; Thu, 19 Sep 2019 01:51:55 -0400
+Received: from player788.ha.ovh.net (unknown [10.109.143.210])
+ by mo1.mail-out.ovh.net (Postfix) with ESMTP id 1080C18F90F
+ for <qemu-devel@nongnu.org>; Thu, 19 Sep 2019 07:51:54 +0200 (CEST)
 Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
  (Authenticated sender: clg@kaod.org)
- by player788.ha.ovh.net (Postfix) with ESMTPSA id DF88C9F175BC;
- Thu, 19 Sep 2019 05:51:40 +0000 (UTC)
+ by player788.ha.ovh.net (Postfix) with ESMTPSA id 81E609F175EA;
+ Thu, 19 Sep 2019 05:51:47 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 19 Sep 2019 07:49:55 +0200
-Message-Id: <20190919055002.6729-15-clg@kaod.org>
+Date: Thu, 19 Sep 2019 07:49:56 +0200
+Message-Id: <20190919055002.6729-16-clg@kaod.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190919055002.6729-1-clg@kaod.org>
 References: <20190919055002.6729-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Ovh-Tracer-Id: 1689694286966786833
+X-Ovh-Tracer-Id: 1691664610166803217
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudelgdelhecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 178.32.98.231
-Subject: [Qemu-devel] [PATCH 14/21] aspeed/i2c: Introduce an object class
- per SoC
+X-Received-From: 46.105.60.232
+Subject: [Qemu-devel] [PATCH 15/21] aspeed/i2c: Add AST2600 support
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -91,188 +90,179 @@ Cc: Andrew Jeffery <andrew@aj.id.au>,
  qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xrSLDCt4VsAv
+X-TUID: giSjYVcFFMXB
 
-It prepares ground for register differences between SoCs.
+The I2C controller of the AST2400 and AST2500 SoCs have one IRQ shared
+by all I2C busses. The AST2600 SoC I2C controller has one IRQ per bus
+and 16 busses.
 
 Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 ---
- include/hw/i2c/aspeed_i2c.h | 15 ++++++++++
- hw/arm/aspeed_soc.c         |  3 +-
- hw/i2c/aspeed_i2c.c         | 60 ++++++++++++++++++++++++++++++++-----
- 3 files changed, 69 insertions(+), 9 deletions(-)
+ include/hw/i2c/aspeed_i2c.h |  5 +++-
+ hw/i2c/aspeed_i2c.c         | 46 +++++++++++++++++++++++++++++++++++--
+ 2 files changed, 48 insertions(+), 3 deletions(-)
 
 diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
-index a2753f0bbbaa..6e2dae7db818 100644
+index 6e2dae7db818..13e01059189f 100644
 --- a/include/hw/i2c/aspeed_i2c.h
 +++ b/include/hw/i2c/aspeed_i2c.h
-@@ -25,6 +25,8 @@
- #include "hw/sysbus.h"
-=20
+@@ -27,10 +27,11 @@
  #define TYPE_ASPEED_I2C "aspeed.i2c"
-+#define TYPE_ASPEED_2400_I2C TYPE_ASPEED_I2C "-ast2400"
-+#define TYPE_ASPEED_2500_I2C TYPE_ASPEED_I2C "-ast2500"
+ #define TYPE_ASPEED_2400_I2C TYPE_ASPEED_I2C "-ast2400"
+ #define TYPE_ASPEED_2500_I2C TYPE_ASPEED_I2C "-ast2500"
++#define TYPE_ASPEED_2600_I2C TYPE_ASPEED_I2C "-ast2600"
  #define ASPEED_I2C(obj) \
      OBJECT_CHECK(AspeedI2CState, (obj), TYPE_ASPEED_I2C)
 =20
-@@ -59,6 +61,19 @@ typedef struct AspeedI2CState {
-     AspeedI2CBus busses[ASPEED_I2C_NR_BUSSES];
- } AspeedI2CState;
+-#define ASPEED_I2C_NR_BUSSES 14
++#define ASPEED_I2C_NR_BUSSES 16
 =20
-+#define ASPEED_I2C_CLASS(klass) \
-+     OBJECT_CLASS_CHECK(AspeedI2CClass, (klass), TYPE_ASPEED_I2C)
-+#define ASPEED_I2C_GET_CLASS(obj) \
-+     OBJECT_GET_CLASS(AspeedI2CClass, (obj), TYPE_ASPEED_I2C)
-+
-+typedef struct AspeedI2CClass {
-+    SysBusDeviceClass parent_class;
-+
-+    uint8_t num_busses;
-+    uint8_t reg_size;
-+    uint8_t gap;
-+} AspeedI2CClass;
-+
+ struct AspeedI2CState;
+=20
+@@ -41,6 +42,7 @@ typedef struct AspeedI2CBus {
+=20
+     I2CBus *bus;
+     uint8_t id;
++    qemu_irq irq;
+=20
+     uint32_t ctrl;
+     uint32_t timing[2];
+@@ -72,6 +74,7 @@ typedef struct AspeedI2CClass {
+     uint8_t num_busses;
+     uint8_t reg_size;
+     uint8_t gap;
++    qemu_irq (*bus_get_irq)(AspeedI2CBus *);
+ } AspeedI2CClass;
+=20
  I2CBus *aspeed_i2c_get_bus(DeviceState *dev, int busnr);
-=20
- #endif /* ASPEED_I2C_H */
-diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-index 5c5fcb810944..e60f198d92c1 100644
---- a/hw/arm/aspeed_soc.c
-+++ b/hw/arm/aspeed_soc.c
-@@ -188,8 +188,9 @@ static void aspeed_soc_init(Object *obj)
-     object_property_add_const_link(OBJECT(&s->timerctrl), "scu",
-                                    OBJECT(&s->scu), &error_abort);
-=20
-+    snprintf(typename, sizeof(typename), "aspeed.i2c-%s", socname);
-     sysbus_init_child_obj(obj, "i2c", OBJECT(&s->i2c), sizeof(s->i2c),
--                          TYPE_ASPEED_I2C);
-+                          typename);
-=20
-     snprintf(typename, sizeof(typename), "aspeed.fmc-%s", socname);
-     sysbus_init_child_obj(obj, "fmc", OBJECT(&s->fmc), sizeof(s->fmc),
 diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
-index a956eb384922..fabdb01e9747 100644
+index fabdb01e9747..06c119f385b8 100644
 --- a/hw/i2c/aspeed_i2c.c
 +++ b/hw/i2c/aspeed_i2c.c
-@@ -408,10 +408,11 @@ static void aspeed_i2c_reset(DeviceState *dev)
+@@ -145,10 +145,12 @@ static inline bool aspeed_i2c_bus_is_enabled(Aspeed=
+I2CBus *bus)
+=20
+ static inline void aspeed_i2c_bus_raise_interrupt(AspeedI2CBus *bus)
  {
-     int i;
-     AspeedI2CState *s =3D ASPEED_I2C(dev);
-+    AspeedI2CClass *aic =3D ASPEED_I2C_GET_CLASS(s);
-=20
-     s->intr_status =3D 0;
-=20
--    for (i =3D 0; i < ASPEED_I2C_NR_BUSSES; i++) {
-+    for (i =3D 0; i < aic->num_busses; i++) {
-         s->busses[i].intr_ctrl =3D 0;
-         s->busses[i].intr_status =3D 0;
-         s->busses[i].cmd =3D 0;
-@@ -421,7 +422,7 @@ static void aspeed_i2c_reset(DeviceState *dev)
++    AspeedI2CClass *aic =3D ASPEED_I2C_GET_CLASS(bus->controller);
++
+     bus->intr_status &=3D bus->intr_ctrl;
+     if (bus->intr_status) {
+         bus->controller->intr_status |=3D 1 << bus->id;
+-        qemu_irq_raise(bus->controller->irq);
++        qemu_irq_raise(aic->bus_get_irq(bus));
+     }
  }
 =20
- /*
-- * Address Definitions
-+ * Address Definitions (AST2400 and AST2500)
-  *
-  *   0x000 ... 0x03F: Global Register
-  *   0x040 ... 0x07F: Device 1
-@@ -446,22 +447,24 @@ static void aspeed_i2c_realize(DeviceState *dev, Er=
-ror **errp)
-     int i;
-     SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);
-     AspeedI2CState *s =3D ASPEED_I2C(dev);
-+    AspeedI2CClass *aic =3D ASPEED_I2C_GET_CLASS(s);
+@@ -273,6 +275,7 @@ static void aspeed_i2c_bus_write(void *opaque, hwaddr=
+ offset,
+                                  uint64_t value, unsigned size)
+ {
+     AspeedI2CBus *bus =3D opaque;
++    AspeedI2CClass *aic =3D ASPEED_I2C_GET_CLASS(bus->controller);
+     bool handle_rx;
 =20
-     sysbus_init_irq(sbd, &s->irq);
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_i2c_ctrl_ops, s,
-                           "aspeed.i2c", 0x1000);
-     sysbus_init_mmio(sbd, &s->iomem);
-=20
--    for (i =3D 0; i < ASPEED_I2C_NR_BUSSES; i++) {
--        char name[16];
--        int offset =3D i < 7 ? 1 : 5;
-+    for (i =3D 0; i < aic->num_busses; i++) {
-+        char name[32];
-+        int offset =3D i < aic->gap ? 1 : 5;
+     switch (offset) {
+@@ -299,7 +302,7 @@ static void aspeed_i2c_bus_write(void *opaque, hwaddr=
+ offset,
+         bus->intr_status &=3D ~(value & 0x7FFF);
+         if (!bus->intr_status) {
+             bus->controller->intr_status &=3D ~(1 << bus->id);
+-            qemu_irq_lower(bus->controller->irq);
++            qemu_irq_lower(aic->bus_get_irq(bus));
+         }
+         if (handle_rx && (bus->cmd & (I2CD_M_RX_CMD | I2CD_M_S_RX_CMD_LA=
+ST))) {
+             aspeed_i2c_handle_rx_cmd(bus);
+@@ -457,6 +460,8 @@ static void aspeed_i2c_realize(DeviceState *dev, Erro=
+r **errp)
+     for (i =3D 0; i < aic->num_busses; i++) {
+         char name[32];
+         int offset =3D i < aic->gap ? 1 : 5;
++
++        sysbus_init_irq(sbd, &s->busses[i].irq);
          snprintf(name, sizeof(name), "aspeed.i2c.%d", i);
          s->busses[i].controller =3D s;
          s->busses[i].id =3D i;
-         s->busses[i].bus =3D i2c_init_bus(dev, name);
-         memory_region_init_io(&s->busses[i].mr, OBJECT(dev),
--                              &aspeed_i2c_bus_ops, &s->busses[i], name, =
-0x40);
--        memory_region_add_subregion(&s->iomem, 0x40 * (i + offset),
-+                              &aspeed_i2c_bus_ops, &s->busses[i], name,
-+                              aic->reg_size);
-+        memory_region_add_subregion(&s->iomem, aic->reg_size * (i + offs=
-et),
-                                     &s->busses[i].mr);
-     }
- }
-@@ -481,11 +484,51 @@ static const TypeInfo aspeed_i2c_info =3D {
-     .parent        =3D TYPE_SYS_BUS_DEVICE,
-     .instance_size =3D sizeof(AspeedI2CState),
-     .class_init    =3D aspeed_i2c_class_init,
-+    .class_size =3D sizeof(AspeedI2CClass),
-+    .abstract   =3D true,
-+};
-+
-+static void aspeed_2400_i2c_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    AspeedI2CClass *aic =3D ASPEED_I2C_CLASS(klass);
-+
-+    dc->desc =3D "ASPEED 2400 I2C Controller";
-+
-+    aic->num_busses =3D 14;
-+    aic->reg_size =3D 0x40;
-+    aic->gap =3D 7;
-+}
-+
-+static const TypeInfo aspeed_2400_i2c_info =3D {
-+    .name =3D TYPE_ASPEED_2400_I2C,
-+    .parent =3D TYPE_ASPEED_I2C,
-+    .class_init =3D aspeed_2400_i2c_class_init,
-+};
-+
-+static void aspeed_2500_i2c_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
-+    AspeedI2CClass *aic =3D ASPEED_I2C_CLASS(klass);
-+
-+    dc->desc =3D "ASPEED 2500 I2C Controller";
-+
-+    aic->num_busses =3D 14;
-+    aic->reg_size =3D 0x40;
-+    aic->gap =3D 7;
-+}
-+
-+static const TypeInfo aspeed_2500_i2c_info =3D {
-+    .name =3D TYPE_ASPEED_2500_I2C,
-+    .parent =3D TYPE_ASPEED_I2C,
-+    .class_init =3D aspeed_2500_i2c_class_init,
+@@ -488,6 +493,11 @@ static const TypeInfo aspeed_i2c_info =3D {
+     .abstract   =3D true,
  };
 =20
++static qemu_irq aspeed_2400_i2c_bus_get_irq(AspeedI2CBus *bus)
++{
++    return bus->controller->irq;
++}
++
+ static void aspeed_2400_i2c_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+@@ -498,6 +508,7 @@ static void aspeed_2400_i2c_class_init(ObjectClass *k=
+lass, void *data)
+     aic->num_busses =3D 14;
+     aic->reg_size =3D 0x40;
+     aic->gap =3D 7;
++    aic->bus_get_irq =3D aspeed_2400_i2c_bus_get_irq;
+ }
+=20
+ static const TypeInfo aspeed_2400_i2c_info =3D {
+@@ -506,6 +517,11 @@ static const TypeInfo aspeed_2400_i2c_info =3D {
+     .class_init =3D aspeed_2400_i2c_class_init,
+ };
+=20
++static qemu_irq aspeed_2500_i2c_bus_get_irq(AspeedI2CBus *bus)
++{
++    return bus->controller->irq;
++}
++
+ static void aspeed_2500_i2c_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+@@ -516,6 +532,7 @@ static void aspeed_2500_i2c_class_init(ObjectClass *k=
+lass, void *data)
+     aic->num_busses =3D 14;
+     aic->reg_size =3D 0x40;
+     aic->gap =3D 7;
++    aic->bus_get_irq =3D aspeed_2500_i2c_bus_get_irq;
+ }
+=20
+ static const TypeInfo aspeed_2500_i2c_info =3D {
+@@ -524,11 +541,36 @@ static const TypeInfo aspeed_2500_i2c_info =3D {
+     .class_init =3D aspeed_2500_i2c_class_init,
+ };
+=20
++static qemu_irq aspeed_2600_i2c_bus_get_irq(AspeedI2CBus *bus)
++{
++    return bus->irq;
++}
++
++static void aspeed_2600_i2c_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++    AspeedI2CClass *aic =3D ASPEED_I2C_CLASS(klass);
++
++    dc->desc =3D "ASPEED 2600 I2C Controller";
++
++    aic->num_busses =3D 16;
++    aic->reg_size =3D 0x80;
++    aic->gap =3D -1; /* no gap */
++    aic->bus_get_irq =3D aspeed_2600_i2c_bus_get_irq;
++}
++
++static const TypeInfo aspeed_2600_i2c_info =3D {
++    .name =3D TYPE_ASPEED_2600_I2C,
++    .parent =3D TYPE_ASPEED_I2C,
++    .class_init =3D aspeed_2600_i2c_class_init,
++};
++
  static void aspeed_i2c_register_types(void)
  {
      type_register_static(&aspeed_i2c_info);
-+    type_register_static(&aspeed_2400_i2c_info);
-+    type_register_static(&aspeed_2500_i2c_info);
+     type_register_static(&aspeed_2400_i2c_info);
+     type_register_static(&aspeed_2500_i2c_info);
++    type_register_static(&aspeed_2600_i2c_info);
  }
 =20
  type_init(aspeed_i2c_register_types)
-@@ -494,9 +537,10 @@ type_init(aspeed_i2c_register_types)
- I2CBus *aspeed_i2c_get_bus(DeviceState *dev, int busnr)
- {
-     AspeedI2CState *s =3D ASPEED_I2C(dev);
-+    AspeedI2CClass *aic =3D ASPEED_I2C_GET_CLASS(s);
-     I2CBus *bus =3D NULL;
-=20
--    if (busnr >=3D 0 && busnr < ASPEED_I2C_NR_BUSSES) {
-+    if (busnr >=3D 0 && busnr < aic->num_busses) {
-         bus =3D s->busses[busnr].bus;
-     }
-=20
 --=20
 2.21.0
 

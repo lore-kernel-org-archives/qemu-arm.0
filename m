@@ -1,64 +1,76 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp539817wrp;
-        Wed, 18 Sep 2019 21:54:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxNYfrt9SzCTwB/mDN7UzrVaKmrvwHjxcsmLTI+H/vSGXxGYON3U16cukL4WYz0AYY22aWe
-X-Received: by 2002:a50:b6aa:: with SMTP id d39mr13762109ede.16.1568868885644;
-        Wed, 18 Sep 2019 21:54:45 -0700 (PDT)
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp581743wrp;
+        Wed, 18 Sep 2019 22:50:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwIARbqOgVRBj8JHVR1Ygkm3UsEOn/Q0R2xh3nV/gZcy0BX44iiQNyH8Vy7Jf74klah9j+A
+X-Received: by 2002:aa7:c749:: with SMTP id c9mr14330616eds.232.1568872231537;
+        Wed, 18 Sep 2019 22:50:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568872231; cv=none;
+        d=google.com; s=arc-20160816;
+        b=nm4U5Y+ltQyYdk/Y0O0xy6al8wc+oHUMLAy0Ur2+Ijekqv3PrptvJe8luLdN3LUYsk
+         VE4O59qYImxTFGSQiLFn2u24frgnsoADP05qOFrOoIomD0VF2fok2WhP2SpPdW/LXyAl
+         7S40nMcw8JAQUupPdSiHUsGS1E4iuLJRTlLqmh70C8cnx+8CrIVkp+YI9vRt/P1zUntn
+         +WVX7DcpIcypblIUqGgDPKz02WELthqgrCiUmNYgGbEEWSndAVuGlWMsliMH2zE4Tlbh
+         +FAC67IXNuP3AYsXl/8km6QVu10S2pfBO2L2zOH5th/sMfP80uoD/WetCWcM+9QMU4ed
+         XXAQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject
+         :content-transfer-encoding:mime-version:message-id:date:to:from;
+        bh=3s4bumUwrsvSlJs3tBiueGeIxdtyFCDttQ+NFSM2QfM=;
+        b=OrlXdV2P0Ah1TTygLe70WFwrYco30tM8c/FDmsxze+PCnL24lkwFqbSaKHNnpQEVq/
+         l91dZ1+jUp1ozYjEF7XqIxEwoi/tlwsCStUzeZm3q7brQXMTH9Lc7nBY35nQ18MhwZhq
+         dSTjYiBMFc4ojM2PhJdsXFb2Whws/HniZ3CgUukBZQlW9mH9aRV6mXgvpqCFnsztaA/q
+         cGcpRf8q4HouS3kzxB35+T0nh0vE1brUNFqlW/8mPQkwMLWqeQyqGZx86unBwe3LmYpI
+         xqVhlsV2tAt1IXshR3bE3h9GYZHPpF6dKsLev0CI0hV49V+nzD+zUpbtN8pJskn0K+Yt
+         Wnrw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w34si4728120edc.252.2019.09.18.21.54.45
+        by mx.google.com with ESMTPS id f5si3957256ejq.98.2019.09.18.22.50.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2019 21:54:45 -0700 (PDT)
+        Wed, 18 Sep 2019 22:50:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37584 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37812 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAoSq-0003A3-L2
-	for alex.bennee@linaro.org; Thu, 19 Sep 2019 00:54:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35760)
+	id 1iApKo-0000HD-72
+	for alex.bennee@linaro.org; Thu, 19 Sep 2019 01:50:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42280)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1iAoSf-00038V-BM
- for qemu-arm@nongnu.org; Thu, 19 Sep 2019 00:54:34 -0400
+ (envelope-from <clg@kaod.org>) id 1iApKb-0000Ge-2v
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2019 01:50:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1iAoSd-0007P7-MH
- for qemu-arm@nongnu.org; Thu, 19 Sep 2019 00:54:33 -0400
-Resent-Date: Thu, 19 Sep 2019 00:54:32 -0400
-Resent-Message-Id: <E1iAoSd-0007P7-MH@eggs.gnu.org>
-Received: from sender4-of-o54.zoho.com ([136.143.188.54]:21438)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1iAoSY-0007Gt-5s; Thu, 19 Sep 2019 00:54:26 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1568868820; cv=none; d=zoho.com; s=zohoarc; 
- b=iGP6xSziePBKGCjhzGXnjsurza9PXRVNWAVVYI2LVOLPeTjl5P18c225HY7U7O7kwsvUzHWd2FAdWVKeFt3Uqbuw73EJlVzNfrdLjyk4zmciNRcnR2LyGWRUzD+4E01doN5E1C2IkGBYIatF/3RbGA+uvrWkYLEDWmPugil9i4o=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
- s=zohoarc; t=1568868820;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
- bh=YdtUza1sOX8e9ej9RGyJQYGWtj1HqKpyz579XlI9Cuc=; 
- b=FeHbXM/0h08L5cCeAR2Ogd3HG7HlybmHNPnwIElLk0rWf9n6KavG9+B1asVBWRPw2+G31WFQNB2eDkSRttGkSYNv6XL9i5cX3o/OCpju7M6N2gaYCv+/QL+sE8r+6G+pYh91Vm/hSr/g6GRQ7Es5VYmEwBa67J5smm/d2sqOkpk=
-ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 15688688196655.492372173410217;
- Wed, 18 Sep 2019 21:53:39 -0700 (PDT)
-In-Reply-To: <20190918130633.4872-1-shameerali.kolothum.thodi@huawei.com>
-Message-ID: <156886881774.17151.14880568020719741460@5dec9699b7de>
+ (envelope-from <clg@kaod.org>) id 1iApKZ-0007QL-Id
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2019 01:50:16 -0400
+Received: from 5.mo178.mail-out.ovh.net ([46.105.51.53]:46784)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iApKZ-0007P8-Cq
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2019 01:50:15 -0400
+Received: from player788.ha.ovh.net (unknown [10.108.57.44])
+ by mo178.mail-out.ovh.net (Postfix) with ESMTP id 4B12E796DC
+ for <qemu-arm@nongnu.org>; Thu, 19 Sep 2019 07:50:13 +0200 (CEST)
+Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
+ (Authenticated sender: clg@kaod.org)
+ by player788.ha.ovh.net (Postfix) with ESMTPSA id 9B3C79F172A3;
+ Thu, 19 Sep 2019 05:50:06 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 19 Sep 2019 07:49:41 +0200
+Message-Id: <20190919055002.6729-1-clg@kaod.org>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: shameerali.kolothum.thodi@huawei.com
-Date: Wed, 18 Sep 2019 21:53:39 -0700 (PDT)
-X-ZohoMailClient: External
+Content-Type: text/plain; charset=UTF-8
+X-Ovh-Tracer-Id: 1662954162933959441
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrudelgdelhecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 136.143.188.54
-Subject: Re: [Qemu-arm] [Qemu-devel] [PATCH-for-4.2 v11 00/11] ARM virt:
- ACPI memory hotplug support
+X-Received-From: 46.105.51.53
+Subject: [Qemu-arm] [PATCH 00/21] aspeed: Add support for the AST2600 SoC
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -70,40 +82,87 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
- shannon.zhaosl@gmail.com, mst@redhat.com, qemu-devel@nongnu.org,
- xuwei5@hisilicon.com, linuxarm@huawei.com, eric.auger@redhat.com,
- qemu-arm@nongnu.org, imammedo@redhat.com, sebastien.boeuf@intel.com,
- lersek@redhat.com
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WGMmziwQSv4H
+X-TUID: mXlfQ1F2jwHG
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDkxODEzMDYzMy40ODcy
-LTEtc2hhbWVlcmFsaS5rb2xvdGh1bS50aG9kaUBodWF3ZWkuY29tLwoKCgpIaSwKClRoaXMgc2Vy
-aWVzIGZhaWxlZCB0aGUgZG9ja2VyLXF1aWNrQGNlbnRvczcgYnVpbGQgdGVzdC4gUGxlYXNlIGZp
-bmQgdGhlIHRlc3RpbmcgY29tbWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhh
-dmUgRG9ja2VyIGluc3RhbGxlZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxs
-eS4KCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKbWFrZSBkb2NrZXItaW1h
-Z2UtY2VudG9zNyBWPTEgTkVUV09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1xdWlja0BjZW50
-b3M3IFNIT1dfRU5WPTEgSj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCmxp
-YnVkZXYgICAgICAgICAgIG5vCmRlZmF1bHQgZGV2aWNlcyAgIHllcwoKd2FybmluZzogUHl0aG9u
-IDIgc3VwcG9ydCBpcyBkZXByZWNhdGVkCndhcm5pbmc6IFB5dGhvbiAzIHdpbGwgYmUgcmVxdWly
-ZWQgZm9yIGJ1aWxkaW5nIGZ1dHVyZSB2ZXJzaW9ucyBvZiBRRU1VCmNyb3NzIGNvbnRhaW5lcnMg
-IG5vCgpOT1RFOiBndWVzdCBjcm9zcy1jb21waWxlcnMgZW5hYmxlZDogY2MKLS0tCkxvb2tpbmcg
-Zm9yIGV4cGVjdGVkIGZpbGUgJ3Rlc3RzL2RhdGEvYWNwaS92aXJ0L1NSQVQubnVtYW1lbScKTG9v
-a2luZyBmb3IgZXhwZWN0ZWQgZmlsZSAndGVzdHMvZGF0YS9hY3BpL3ZpcnQvU1JBVCcKKioKRVJS
-T1I6L3RtcC9xZW11LXRlc3Qvc3JjL3Rlc3RzL2Jpb3MtdGFibGVzLXRlc3QuYzozMjc6bG9hZF9l
-eHBlY3RlZF9hbWw6IGFzc2VydGlvbiBmYWlsZWQ6IChleHBfc2R0LmFtbF9maWxlKQpFUlJPUiAt
-IEJhaWwgb3V0ISBFUlJPUjovdG1wL3FlbXUtdGVzdC9zcmMvdGVzdHMvYmlvcy10YWJsZXMtdGVz
-dC5jOjMyNzpsb2FkX2V4cGVjdGVkX2FtbDogYXNzZXJ0aW9uIGZhaWxlZDogKGV4cF9zZHQuYW1s
-X2ZpbGUpCm1ha2U6ICoqKiBbY2hlY2stcXRlc3QtYWFyY2g2NF0gRXJyb3IgMQpUcmFjZWJhY2sg
-KG1vc3QgcmVjZW50IGNhbGwgbGFzdCk6CiAgRmlsZSAiLi90ZXN0cy9kb2NrZXIvZG9ja2VyLnB5
-IiwgbGluZSA2NjQsIGluIDxtb2R1bGU+CgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApo
-dHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDE5MDkxODEzMDYzMy40ODcyLTEtc2hhbWVlcmFsaS5r
-b2xvdGh1bS50aG9kaUBodWF3ZWkuY29tL3Rlc3RpbmcuZG9ja2VyLXF1aWNrQGNlbnRvczcvP3R5
-cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcg
-W2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRj
-aGV3LWRldmVsQHJlZGhhdC5jb20=
+Hello,
+
+The series starts with a watchdog fix and a new model for the SDHCI
+controller. Follows the code for the AST2600 SoC.
+
+Most of the Aspeed models are reworked with an object class to
+introduce the AST2600 variant. A model for the AST2600 SoC and a
+simple AST2600 EVB machine is proposed at the end of the series. It
+can boot the OpenBMC firmware image which is currently used for HW
+bringup.
+
+Thanks,
+
+C.
+
+Amithash Prasad (1):
+  aspeed/wdt: Check correct register for clock source
+
+C=C3=A9dric Le Goater (13):
+  aspeed/timer: Introduce an object class per SoC
+  aspeed/timer: Add support for control register 3
+  aspeed/timer: Add AST2600 support
+  aspeed/timer: Add support for IRQ status register on the AST2600
+  aspeed/sdmc: Introduce an object class per SoC
+  watchdog/aspeed: Introduce an object class per SoC
+  aspeed/smc: Add AST2600 support
+  aspeed/i2c: Introduce an object class per SoC
+  aspeed/i2c: Add AST2600 support
+  aspeed: Introduce an object class per SoC
+  aspeed/soc: Add AST2600 support
+  aspeed: Add an AST2600 eval board
+  aspeed: add support for the Aspeed MII controller of the AST2600
+
+Eddie James (1):
+  hw/sd/aspeed_sdhci: New device
+
+Joel Stanley (5):
+  hw: aspeed_scu: Add AST2600 support
+  aspeed/sdmc: Add AST2600 support
+  hw: wdt_aspeed: Add AST2600 support
+  aspeed: Parameterise number of MACs
+  aspeed/soc: Add ASPEED Video stub
+
+Rashmica Gupta (1):
+  hw/gpio: Add in AST2600 specific implementation
+
+ include/hw/arm/aspeed_soc.h      |  29 +-
+ include/hw/i2c/aspeed_i2c.h      |  20 +-
+ include/hw/misc/aspeed_scu.h     |   7 +-
+ include/hw/misc/aspeed_sdmc.h    |  20 +-
+ include/hw/net/ftgmac100.h       |  17 +
+ include/hw/sd/aspeed_sdhci.h     |  34 ++
+ include/hw/ssi/aspeed_smc.h      |   2 +
+ include/hw/timer/aspeed_timer.h  |  18 ++
+ include/hw/watchdog/wdt_aspeed.h |  19 +-
+ hw/arm/aspeed.c                  |  37 ++-
+ hw/arm/aspeed_ast2600.c          | 522 +++++++++++++++++++++++++++++++
+ hw/arm/aspeed_soc.c              | 199 +++++++-----
+ hw/gpio/aspeed_gpio.c            | 142 ++++++++-
+ hw/i2c/aspeed_i2c.c              | 106 ++++++-
+ hw/misc/aspeed_scu.c             | 192 +++++++++++-
+ hw/misc/aspeed_sdmc.c            | 250 +++++++++++----
+ hw/net/ftgmac100.c               | 162 ++++++++++
+ hw/sd/aspeed_sdhci.c             | 198 ++++++++++++
+ hw/ssi/aspeed_smc.c              | 129 +++++++-
+ hw/timer/aspeed_timer.c          | 213 +++++++++++--
+ hw/watchdog/wdt_aspeed.c         | 153 +++++----
+ hw/arm/Makefile.objs             |   2 +-
+ hw/sd/Makefile.objs              |   1 +
+ 23 files changed, 2204 insertions(+), 268 deletions(-)
+ create mode 100644 include/hw/sd/aspeed_sdhci.h
+ create mode 100644 hw/arm/aspeed_ast2600.c
+ create mode 100644 hw/sd/aspeed_sdhci.c
+
+--=20
+2.21.0
 

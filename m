@@ -1,65 +1,116 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id a18sm21374021wrh.25.2019.09.19.10.10.17
+        by smtp.gmail.com with ESMTPSA id y12sm10697593wrn.74.2019.09.19.10.10.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 19 Sep 2019 10:10:19 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3354F1FF93;
+	by zen.linaroharston (Postfix) with ESMTP id 4D79F1FF96;
 	Thu, 19 Sep 2019 18:10:16 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: peter.maydell@linaro.org,
 	qemu-arm@nongnu.org,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	Riku Voipio <riku.voipio@iki.fi>,
-	Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH  v2 06/16] target/ppc: fix signal delivery for ppc64abi32
-Date: Thu, 19 Sep 2019 18:10:05 +0100
-Message-Id: <20190919171015.12681-7-alex.bennee@linaro.org>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH  v2 07/16] tests/tcg: clean-up some comments after the de-tangling
+Date: Thu, 19 Sep 2019 18:10:06 +0100
+Message-Id: <20190919171015.12681-8-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190919171015.12681-1-alex.bennee@linaro.org>
 References: <20190919171015.12681-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: GDSU/AoqM5e6
+X-TUID: TvYIdiT9XrLj
 
-We were incorrectly using the 64-bit AIX ABI instead of the 32-bit
-SYSV ABI for setting NIP for the signal handler.
+These were missed in the recent de-tangling so have been updated to be
+more actuate. I've also built up ARM_TESTS in a manner similar to
+AARCH64_TESTS for better consistency.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-v2
-  - change to wording
----
- linux-user/ppc/signal.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ tests/tcg/Makefile.target         |  7 +++++--
+ tests/tcg/aarch64/Makefile.target |  3 ++-
+ tests/tcg/arm/Makefile.target     | 15 ++++++++-------
+ 3 files changed, 15 insertions(+), 10 deletions(-)
 
-diff --git a/linux-user/ppc/signal.c b/linux-user/ppc/signal.c
-index 619a56950df..5b82af6cb62 100644
---- a/linux-user/ppc/signal.c
-+++ b/linux-user/ppc/signal.c
-@@ -501,7 +501,9 @@ void setup_rt_frame(int sig, struct target_sigaction *ka,
-     int i, err = 0;
- #if defined(TARGET_PPC64)
-     struct target_sigcontext *sc = 0;
-+#if !defined(TARGET_ABI32)
-     struct image_info *image = ((TaskState *)thread_cpu->opaque)->info;
-+#endif
- #endif
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index 8808beaf74b..679eb56bd37 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -74,8 +74,11 @@ TIMEOUT=15
+ endif
  
-     rt_sf_addr = get_sigframe(ka, env, sizeof(*rt_sf));
-@@ -557,7 +559,7 @@ void setup_rt_frame(int sig, struct target_sigaction *ka,
-     env->gpr[5] = (target_ulong) h2g(&rt_sf->uc);
-     env->gpr[6] = (target_ulong) h2g(rt_sf);
+ ifdef CONFIG_USER_ONLY
+-# The order we include is important. We include multiarch, base arch
+-# and finally arch if it's not the same as base arch.
++# The order we include is important. We include multiarch first and
++# then the target. If there are common tests shared between
++# sub-targets (e.g. ARM & AArch64) then it is up to
++# $(TARGET_NAME)/Makefile.target to include the common parent
++# architecture in its VPATH.
+ -include $(SRC_PATH)/tests/tcg/multiarch/Makefile.target
+ -include $(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.target
  
--#if defined(TARGET_PPC64)
-+#if defined(TARGET_PPC64) && !defined(TARGET_ABI32)
-     if (get_ppc64_abi(image) < 2) {
-         /* ELFv1 PPC64 function pointers are pointers to OPD entries. */
-         struct target_func_ptr *handler =
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index e763dd9da37..9758f89f905 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -8,7 +8,7 @@ VPATH 		+= $(ARM_SRC)
+ AARCH64_SRC=$(SRC_PATH)/tests/tcg/aarch64
+ VPATH 		+= $(AARCH64_SRC)
+ 
+-# we don't build any other ARM test
++# Float-convert Tests
+ AARCH64_TESTS=fcvt
+ 
+ fcvt: LDFLAGS+=-lm
+@@ -17,6 +17,7 @@ run-fcvt: fcvt
+ 	$(call run-test,$<,$(QEMU) $<, "$< on $(TARGET_NAME)")
+ 	$(call diff-out,$<,$(AARCH64_SRC)/fcvt.ref)
+ 
++# Pauth Tests
+ AARCH64_TESTS += pauth-1 pauth-2
+ run-pauth-%: QEMU_OPTS += -cpu max
+ 
+diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+index aa4e4e3782c..7347d3d0adb 100644
+--- a/tests/tcg/arm/Makefile.target
++++ b/tests/tcg/arm/Makefile.target
+@@ -8,25 +8,26 @@ ARM_SRC=$(SRC_PATH)/tests/tcg/arm
+ # Set search path for all sources
+ VPATH 		+= $(ARM_SRC)
+ 
+-ARM_TESTS=hello-arm test-arm-iwmmxt
+-
+-TESTS += $(ARM_TESTS) fcvt
+-
++# Basic Hello World
++ARM_TESTS = hello-arm
+ hello-arm: CFLAGS+=-marm -ffreestanding
+ hello-arm: LDFLAGS+=-nostdlib
+ 
++# IWMXT floating point extensions
++ARM_TESTS += test-arm-iwmmxt
+ test-arm-iwmmxt: CFLAGS+=-marm -march=iwmmxt -mabi=aapcs -mfpu=fpv4-sp-d16
+ test-arm-iwmmxt: test-arm-iwmmxt.S
+ 	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
+ 
+-ifeq ($(TARGET_NAME), arm)
++# Float-convert Tests
++ARM_TESTS += fcvt
+ fcvt: LDFLAGS+=-lm
+ # fcvt: CFLAGS+=-march=armv8.2-a+fp16 -mfpu=neon-fp-armv8
+-
+ run-fcvt: fcvt
+ 	$(call run-test,fcvt,$(QEMU) $<,"$< on $(TARGET_NAME)")
+ 	$(call diff-out,fcvt,$(ARM_SRC)/fcvt.ref)
+-endif
++
++TESTS += $(ARM_TESTS)
+ 
+ # On ARM Linux only supports 4k pages
+ EXTRA_RUNS+=run-test-mmap-4096
 -- 
 2.20.1

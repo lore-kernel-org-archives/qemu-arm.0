@@ -1,114 +1,63 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp37124wrp;
-        Wed, 18 Sep 2019 11:33:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz/sLxl5g58LlxzWjumNZ3prtOQJhuJFk9mOGS/f8KhqwQ+HvbbYNZw9OQgHgwq9QnwSnc8
-X-Received: by 2002:a50:d089:: with SMTP id v9mr12283678edd.54.1568831615532;
-        Wed, 18 Sep 2019 11:33:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568831615; cv=none;
-        d=google.com; s=arc-20160816;
-        b=bIs0xheRvV4LgvkyQnKCGBRuUPH5JuJWUGS0cQqL9kdJ3jxgrWZ+uSXyrQkbPmk7hH
-         6Ly9yGHSXdygLRcQTxD4WEoHnNIdH8qQ/mHHQbkI7skerdVqyGD80yv4lJJYXRWyjOEj
-         aiU5yFSbYBf9D8xrN8ZUIsevPVR4N2ukCfoJqL1k2sVLrVZ45Fr215JhSDTChm3Kr+wQ
-         kzt1Bv0vGR9d9CKlDzyy9TP/beGriH49cVU4GQU2n4Z7vDPvHcZlgWtqCUlVMBrQ4g7q
-         nNCHmaxcQtoFx3MSEyWv7kw3MByIx0VNwhefRwj7oh7oG9Gk0roHg6rOxA+pRalFqFfY
-         YXQQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to;
-        bh=LOWGi+iQChSZo84kQye2NtUGTpizQlolQoN18b0WPpY=;
-        b=GrwJ66p07nG6oFjgrjadIJZYXJgJE3Yl2FsngEP5C5H9z0sqNJqvOXQo4UPOCTPvu+
-         TNEcYW/kbyVgGz5ztQ0+T3LxREZznkq507p444B5ljpjpZAPTg3i7cGnXR0hvuxidapJ
-         4XeX1CNkIOLEw9xa2nWnvjNd9Ut5FceSukHx5qulHTUJ1oXrPggeX+1m4qUlDUO9vxe2
-         w4mfd/BM/9Ka5HoqxVMV+EePuItzTgTT40phu6u2TE+gmq/bQbDCSHAs/RvuOnQ3UljK
-         xat0AeBgJOr3tup7VyO2YXfukC0YXm8PHd9zP/VEGZCAwOj85l1pmYIkpU+eSCUhIXuG
-         p5fg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp413025wrp;
+        Wed, 18 Sep 2019 18:56:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwZUPbtXKinC5AiJsW+vbQzAny1y/S3IUlocSq5etzl/BKiE05iLxS3s3axMeg1d1iVQvao
+X-Received: by 2002:a17:906:af57:: with SMTP id ly23mr9930593ejb.269.1568858189275;
+        Wed, 18 Sep 2019 18:56:29 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d23si3752034edb.55.2019.09.18.11.33.35
+        by mx.google.com with ESMTPS id lw9si3534672ejb.51.2019.09.18.18.56.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 18 Sep 2019 11:33:35 -0700 (PDT)
+        Wed, 18 Sep 2019 18:56:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34300 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:36920 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iAeli-00068A-1F
-	for alex.bennee@linaro.org; Wed, 18 Sep 2019 14:33:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52150)
+	id 1iAlgJ-0003vw-Td
+	for alex.bennee@linaro.org; Wed, 18 Sep 2019 21:56:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48036)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iAelG-00065s-4n
- for qemu-arm@nongnu.org; Wed, 18 Sep 2019 14:33:07 -0400
+ (envelope-from <no-reply@patchew.org>) id 1iAlg0-0003qf-RU
+ for qemu-arm@nongnu.org; Wed, 18 Sep 2019 21:56:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iAelE-0006mu-74
- for qemu-arm@nongnu.org; Wed, 18 Sep 2019 14:33:06 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40250)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iAelD-0006l8-UG; Wed, 18 Sep 2019 14:33:04 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id BD577309BDA2;
- Wed, 18 Sep 2019 18:33:02 +0000 (UTC)
-Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3F1545D6D0;
- Wed, 18 Sep 2019 18:32:42 +0000 (UTC)
-To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-References: <20190918130244.24257-1-vsementsov@virtuozzo.com>
- <abb14088-6af2-5db2-da0d-0948fd4ac81c@redhat.com>
- <0497ac1e-c841-39cd-9944-48dd54c5b0f0@virtuozzo.com>
- <9450fbfd-0f8b-d10f-7577-64805917f67a@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=eblake@redhat.com; keydata=
- xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
- xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
- TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
- GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
- sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
- AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
- CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
- RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
- wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
- Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
- gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
- pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
- zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
- pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
- 3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
- NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
- cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
- SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
- I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
- mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
- Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
- 2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
-Organization: Red Hat, Inc.
-Message-ID: <26217614-77cf-9519-f94b-d606864f4d46@redhat.com>
-Date: Wed, 18 Sep 2019 13:32:41 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ (envelope-from <no-reply@patchew.org>) id 1iAlfz-0003nO-EO
+ for qemu-arm@nongnu.org; Wed, 18 Sep 2019 21:56:08 -0400
+Resent-Date: Wed, 18 Sep 2019 21:56:08 -0400
+Resent-Message-Id: <E1iAlfz-0003nO-EO@eggs.gnu.org>
+Received: from sender4-of-o55.zoho.com ([136.143.188.55]:21569)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1iAlft-0003ak-DU; Wed, 18 Sep 2019 21:56:01 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1568858095; cv=none; d=zoho.com; s=zohoarc; 
+ b=GxCAqkl+8DM4nJ0nwy75z31r3hSuOeGohJ98gI3c9nCUQXd5LuRYhAUy5DcItzYwjf9Agq9ZSQCc2S/qwHOMA4JsLRKyePEaskiJ6RFZrbvqz3+rMlmBCe8AWhF5gUFOlLm7DjWcCm2AX5Ht8P4d2OdD+4OosAv/FxA66OO8P7A=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+ s=zohoarc; t=1568858095;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+ bh=g3MUPPNoxnyxxc+tFruon4uQYRok2KBctXnL7EMokb8=; 
+ b=eJw38i2hw+q8LhSbTWfiSKQwA4QL/FBAhx7zdIJUOlmWeU0nWsUMnd/yu3MUYUcddvVuh/vGC1hhklP30v8OnXNEpeofPE+XaPnIqnjNgHEkwgHLQytEzc6kBTjU2SnblGYRt667vmoZ/6dVYKG9o5EWZitVsS2zZXhWXtGofBQ=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1568858094046855.4916674348552;
+ Wed, 18 Sep 2019 18:54:54 -0700 (PDT)
+In-Reply-To: <20190918130244.24257-1-vsementsov@virtuozzo.com>
+Message-ID: <156885809062.17151.6266982811357723263@5dec9699b7de>
 MIME-Version: 1.0
-In-Reply-To: <9450fbfd-0f8b-d10f-7577-64805917f67a@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.45]); Wed, 18 Sep 2019 18:33:03 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: vsementsov@virtuozzo.com
+Date: Wed, 18 Sep 2019 18:54:54 -0700 (PDT)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [RFC] error: auto propagated local_err
+X-Received-From: 136.143.188.55
+Subject: Re: [Qemu-arm] [Qemu-devel] [RFC] error: auto propagated local_err
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -120,75 +69,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "fam@euphon.net" <fam@euphon.net>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "mst@redhat.com" <mst@redhat.com>, "codyprime@gmail.com" <codyprime@gmail.com>,
- "mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
- "mdroth@linux.vnet.ibm.com" <mdroth@linux.vnet.ibm.com>,
- "kraxel@redhat.com" <kraxel@redhat.com>,
- "mreitz@redhat.com" <mreitz@redhat.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- "quintela@redhat.com" <quintela@redhat.com>,
- "david@redhat.com" <david@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
- "borntraeger@de.ibm.com" <borntraeger@de.ibm.com>,
- "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
- "rth@twiddle.net" <rth@twiddle.net>,
- "farman@linux.ibm.com" <farman@linux.ibm.com>,
- "groug@kaod.org" <groug@kaod.org>, "dgilbert@redhat.com" <dgilbert@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "stefanha@redhat.com" <stefanha@redhat.com>,
- "jsnow@redhat.com" <jsnow@redhat.com>,
- "david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>,
- "kwolf@redhat.com" <kwolf@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- "sundeep.lkml@gmail.com" <sundeep.lkml@gmail.com>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>
+Reply-To: qemu-devel@nongnu.org
+Cc: fam@euphon.net, peter.maydell@linaro.org, mst@redhat.com,
+ codyprime@gmail.com, mark.cave-ayland@ilande.co.uk, qemu-devel@nongnu.org,
+ mdroth@linux.vnet.ibm.com, kraxel@redhat.com, sundeep.lkml@gmail.com,
+ qemu-block@nongnu.org, quintela@redhat.com, david@redhat.com,
+ armbru@redhat.com, pasic@linux.ibm.com, borntraeger@de.ibm.com,
+ marcandre.lureau@redhat.com, david@gibson.dropbear.id.au, farman@linux.ibm.com,
+ groug@kaod.org, dgilbert@redhat.com, alex.williamson@redhat.com,
+ qemu-arm@nongnu.org, stefanha@redhat.com, jsnow@redhat.com, rth@twiddle.net,
+ kwolf@redhat.com, vsementsov@virtuozzo.com, berrange@redhat.com,
+ cohuck@redhat.com, qemu-s390x@nongnu.org, mreitz@redhat.com,
+ qemu-ppc@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ly/9xY1d3BjH
+X-TUID: JyqpskJuaknx
 
-On 9/18/19 1:05 PM, Eric Blake wrote:
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDkxODEzMDI0NC4yNDI1
+Ny0xLXZzZW1lbnRzb3ZAdmlydHVvenpvLmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0
+byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgpt
+b3JlIGluZm9ybWF0aW9uOgoKU3ViamVjdDogW1FlbXUtZGV2ZWxdIFtSRkNdIGVycm9yOiBhdXRv
+IHByb3BhZ2F0ZWQgbG9jYWxfZXJyCk1lc3NhZ2UtaWQ6IDIwMTkwOTE4MTMwMjQ0LjI0MjU3LTEt
+dnNlbWVudHNvdkB2aXJ0dW96em8uY29tClR5cGU6IHNlcmllcwoKPT09IFRFU1QgU0NSSVBUIEJF
+R0lOID09PQojIS9iaW4vYmFzaApnaXQgcmV2LXBhcnNlIGJhc2UgPiAvZGV2L251bGwgfHwgZXhp
+dCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAKZ2l0IGNvbmZpZyAtLWxv
+Y2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLmFsZ29yaXRobSBo
+aXN0b2dyYW0KLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFjayBiYXNlLi4KPT09IFRF
+U1QgU0NSSVBUIEVORCA9PT0KClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKMTZlODg3
+NCBlcnJvcjogYXV0byBwcm9wYWdhdGVkIGxvY2FsX2VycgoKPT09IE9VVFBVVCBCRUdJTiA9PT0K
+V0FSTklORzogbGluZSBvdmVyIDgwIGNoYXJhY3RlcnMKIzI5MTogRklMRTogaW5jbHVkZS9xYXBp
+L2Vycm9yLmg6MzkxOgorc3RhdGljIGlubGluZSB2b2lkIGVycm9yX3Byb3BhZ2F0aW9uX3N0cnVj
+dF9jbGVhbnVwKEVycm9yUHJvcGFnYXRpb25TdHJ1Y3QgKnByb3ApCgpFUlJPUjogTWFjcm9zIHdp
+dGggbXVsdGlwbGUgc3RhdGVtZW50cyBzaG91bGQgYmUgZW5jbG9zZWQgaW4gYSBkbyAtIHdoaWxl
+IGxvb3AKIzMwMTogRklMRTogaW5jbHVkZS9xYXBpL2Vycm9yLmg6NDAxOgorI2RlZmluZSBERUZf
+QVVUT19FUlJQX1YyKGF1dG9fZXJycCwgZXJycCkgXAorICAgIGdfYXV0byhFcnJvclByb3BhZ2F0
+aW9uU3RydWN0KSAoX19hdXRvX2VycnBfcHJvcCkgPSB7LmVycnAgPSAoZXJycCl9OyBcCisgICAg
+RXJyb3IgKiphdXRvX2VycnAgPSBcCisgICAgICAgICgoZXJycCkgPT0gTlVMTCB8fCAqKGVycnAp
+ID09IGVycm9yX2Fib3J0IHx8ICooZXJycCkgPT0gZXJyb3JfZmF0YWwpID8gXAorICAgICAgICAm
+X19hdXRvX2VycnBfcHJvcC5sb2NhbF9lcnIgOiBcCisgICAgICAgIChlcnJwKTsKCkVSUk9SOiBN
+YWNyb3Mgd2l0aCBtdWx0aXBsZSBzdGF0ZW1lbnRzIHNob3VsZCBiZSBlbmNsb3NlZCBpbiBhIGRv
+IC0gd2hpbGUgbG9vcAojMzIwOiBGSUxFOiBpbmNsdWRlL3FhcGkvZXJyb3IuaDo0MjA6CisjZGVm
+aW5lIE1BS0VfRVJSUF9TQUZFKGVycnApIFwKK2dfYXV0byhFcnJvclByb3BhZ2F0aW9uU3RydWN0
+KSAoX19hdXRvX2VycnBfcHJvcCkgPSB7LmVycnAgPSAoZXJycCl9OyBcCitpZiAoKGVycnApID09
+IE5VTEwgfHwgKihlcnJwKSA9PSBlcnJvcl9hYm9ydCB8fCAqKGVycnApID09IGVycm9yX2ZhdGFs
+KSB7IFwKKyAgICAoZXJycCkgPSAmX19hdXRvX2VycnBfcHJvcC5sb2NhbF9lcnI7IFwKK30KCnRv
+dGFsOiAyIGVycm9ycywgMSB3YXJuaW5ncywgMjc3IGxpbmVzIGNoZWNrZWQKCkNvbW1pdCAxNmU4
+ODc0OTQ3ZTcgKGVycm9yOiBhdXRvIHByb3BhZ2F0ZWQgbG9jYWxfZXJyKSBoYXMgc3R5bGUgcHJv
+YmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFyZSBmYWxzZSBw
+b3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVDS1BBVENIIGlu
+IE1BSU5UQUlORVJTLgo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0
+aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5v
+cmcvbG9ncy8yMDE5MDkxODEzMDI0NC4yNDI1Ny0xLXZzZW1lbnRzb3ZAdmlydHVvenpvLmNvbS90
+ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRv
+bWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQg
+eW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
 
->>> #define MAKE_ERRP_SAFE() \
->>> g_auto(ErrorPropagationStruct) (__auto_errp_prop) = {.errp = errp}; \
->>> errp = &__auto_errp_prop.local_err
->>>
-
-I tried to see if this could be done with just a single declaration
-line, as in:
-
-typedef struct ErrorPropagator {
-    Error **errp;
-    Error *local_err;
-} ErrorPropagator;
-
-#define MAKE_ERRP_SAFE() \
-  g_auto(ErrorPropagator) __auto_errp_prop = { \
-    errp, ((errp = &__auto_errp_prop.local_err), NULL) }
-
-But sadly, C17 paragraph 6.7.9P23 states:
-
-"The evaluations of the initialization list expressions are
-indeterminately sequenced with respect to one another and thus the order
-in which any side effects occur is unspecified."
-
-which does not bode well for the assignment to __auto_errp_prop.errp.
-All changes to errp would have to be within the same initializer.  Maybe:
-
-#define MAKE_ERRP_SAFE() \
-  g_auto(ErrorPropagator) __auto_errp_prop = { \
-    .local_err = (__auto_errp_prop.err = errp, \
-        (errp = &__auto_errp_prop.local_err), NULL) }
-
-but by the time you get that complicated, just using a statement is
-easier to read.
-
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org

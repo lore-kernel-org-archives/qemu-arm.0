@@ -1,229 +1,163 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1792132wrp;
-        Thu, 19 Sep 2019 19:08:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxng3aees0gcTwItMYEJeRgBqgyWMVKi8vFf4R3AEkJPBUfT2f2CC+tv7p/aptWbCdjkbSA
-X-Received: by 2002:a17:906:5ad8:: with SMTP id x24mr16875879ejs.107.1568945284004;
-        Thu, 19 Sep 2019 19:08:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568945284; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1872038wrp;
+        Thu, 19 Sep 2019 20:33:49 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzoUvZfpzH67rIPWzeH4vfjUYAHrBbjaHVa6yhZDNi0I6DXOBQ+mLxApJO2cjK4UyyTlsGu
+X-Received: by 2002:aed:2902:: with SMTP id s2mr912150qtd.205.1568950429549;
+        Thu, 19 Sep 2019 20:33:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568950429; cv=none;
         d=google.com; s=arc-20160816;
-        b=jD1O8h+hAY6Ec0/zyS/KVc8tzzD0w7onOtbADpDeMWC/7bYl1wBLDpv+vXQH0Sli/I
-         KIVqwlHwskNnclYiCb0WMxMzRURwKXpSLcw7waAgJIYfs97miwKNgsbE8k7cipvcHStN
-         lsC0cwktCP+dWMEwwY5wCXaJE3R02SeshCEFduP3hkyMysUAGYZeKnlUFa6LGkbhuJg2
-         ewRZUF64+sytDh7iYRSZUxvUWhARwBwgva7cS3JFdDlm5RqZ0JyWR32u2Rd4GsFsOWxA
-         3RsIdJ0PteA3qtr9eCT/XizEPqPeGpY58Q556N0NLELS4K74RFYI9RWs8bvWOvgW9jZ3
-         EkUQ==
+        b=u3YpTLeR2u16ZqkS1zVwHVvVeiy2XG/qKIphMLdIry28Q9K8/Uj3iT6beoQ66C48L5
+         Yo6g3DLiYdlBHB105muvTfij3c37ud3pya7Dw0sPk211k6bnNdOeYAFR1SsSUuhvId9i
+         uof3z2i2Oy2C/N0mxWAtuPIBJGIwClYQJ2gXLefYMPtQ3D6noSSM/5AxY5T2LL0TNASz
+         avJH3jytUjzczVCpPt0tkMde51HrHeus2rSPQbmC2EPojFIlJiXVz5v4L/+7AOqRoiC7
+         jVyFnpqV916YHv1j25BBX10uV5PMVpFTTNecNQwMQXTg3D2GrUQUarSXbyLwiVnZR5kx
+         Vjzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=uJqQjaolUfc5pu/rGTffYPZF663h0u3WKImze94OJzk=;
-        b=aXUj5G2zdgJJXH3rX/AKloRZah+OACQjJExkDH4z9eznlmIvl/vzsRAPZUAQVmq42w
-         zmneshIY5sQjXaEkPkxTN05lTdhlAYJ70pK9JKADJ+NA9zdVd5zFkWD9cimFpgjCn0PE
-         vdPUPWDsAuwifsQeWqerw3eSQAbSy+ZPmpY8cdMNtqIDMsEXp6irqrcI+/2w7pdhT54G
-         u5evyXM6w7J+MfHm/KjbrgRxCwhfKnERiHzAIHR8HexHUX4nzgAkcvNH3ebr9TkG4sKv
-         BF/mf9ldh0ZKbLZo8OpIeDq6pV8VR2JxsSr/Y3mg+N39pL+uhQRdXBX6p1O77AgfOIs2
-         qx/g==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:from:date:references
+         :in-reply-to:message-id:mime-version:user-agent:dkim-signature
+         :dkim-signature;
+        bh=ah7cQPmHf2Gk7WcmfSJ5XdfKJIREpKFJSm/kt3ZWmFo=;
+        b=v/X+4VTv143oradnaDR+hQi/QZ/mBStiNDwtwfNolNIZy6V/m7qsv5L6hYIQZ+z18i
+         cIFnaR7OO2ZIKrtmByWlfcM1mm+L7OmJh9V17OwahOV8M/TYr8gwnyI4fy7mhDVBWbMJ
+         fNYpVeZoMkENEmbwy2ed9wITt5Lq2SrzJlFvwyB2Jw+PHzo4m+J37oztZhvvGK4LTaUn
+         38ezgvYqrZn97/4HqAIh9PVW1/n/Eptlva316w2oXhuFS3+X+LGeLIHSrEziRxT0ytvl
+         B4Ev1BvDfikuZyR+8jfTVxMOi08myiI4qVNAzVtKOCdhCoIscedrD4iPgV5uQNzQHCPO
+         l5ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id e12si441577edb.262.2019.09.19.19.08.03;
-        Thu, 19 Sep 2019 19:08:03 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b="G6/Q01Qf";
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=v31LoSfY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id b24si1084657qkl.27.2019.09.19.20.33.49
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 19 Sep 2019 20:33:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S2394536AbfITCH7 (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Thu, 19 Sep 2019 22:07:59 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2741 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S2390810AbfITCH6 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 19 Sep 2019 22:07:58 -0400
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.59])
-        by Forcepoint Email with ESMTP id E64648F65FBBB5223B92;
-        Fri, 20 Sep 2019 10:07:55 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS413-HUB.china.huawei.com
- (10.3.19.213) with Microsoft SMTP Server id 14.3.439.0; Fri, 20 Sep 2019
- 10:07:49 +0800
-Subject: Re: [PATCH v18 0/6] Add ARMv8 RAS virtualization support in QEMU
-To:     Xiang Zheng <zhengxiang9@huawei.com>, <pbonzini@redhat.com>,
-        <mst@redhat.com>, <imammedo@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <lersek@redhat.com>, <james.morse@arm.com>, <mtosatti@redhat.com>,
-        <rth@twiddle.net>, <ehabkost@redhat.com>,
-        <jonathan.cameron@huawei.com>, <xuwei5@huawei.com>,
-        <kvm@vger.kernel.org>, <qemu-devel@nongnu.org>,
-        <qemu-arm@nongnu.org>, <linuxarm@huawei.com>
-CC:     <wanghaibin.wang@huawei.com>
-References: <20190906083152.25716-1-zhengxiang9@huawei.com>
- <997a7f78-9ade-a107-8f83-de5dde85e483@huawei.com>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <d6827588-32a5-6bef-64b7-edeaddbd74d8@huawei.com>
-Date:   Fri, 20 Sep 2019 10:07:40 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
-MIME-Version: 1.0
-In-Reply-To: <997a7f78-9ade-a107-8f83-de5dde85e483@huawei.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 49n9+3so1Vff
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b="G6/Q01Qf";
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=v31LoSfY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:50792 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iB9g4-0002fs-UA
+	for alex.bennee@linaro.org; Thu, 19 Sep 2019 23:33:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58636)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <andrew@aj.id.au>) id 1iB9fu-0002dH-KN
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2019 23:33:39 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <andrew@aj.id.au>) id 1iB9ft-0008LO-Cc
+ for qemu-arm@nongnu.org; Thu, 19 Sep 2019 23:33:38 -0400
+Received: from wout4-smtp.messagingengine.com ([64.147.123.20]:42949)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <andrew@aj.id.au>)
+ id 1iB9ft-0008Kx-1c; Thu, 19 Sep 2019 23:33:37 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.west.internal (Postfix) with ESMTP id 626B8494;
+ Thu, 19 Sep 2019 23:33:34 -0400 (EDT)
+Received: from imap2 ([10.202.2.52])
+ by compute4.internal (MEProxy); Thu, 19 Sep 2019 23:33:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
+ mime-version:message-id:in-reply-to:references:date:from:to:cc
+ :subject:content-type; s=fm3; bh=ah7cQPmHf2Gk7WcmfSJ5XdfKJIREpKF
+ JSm/kt3ZWmFo=; b=G6/Q01QfqhKg5dseK28VH/R7gwDemg3+6F/2TdBowN/E4HY
+ ODzE/xsjZoLquflwS7z0EkzbHS6PXyjUkzLIMtDzhsdd7TfDFyq7TXjA+3sAu8ZR
+ aXWhLumurK29+DusijthSrna+3zXK1CSgC6jfOEwuzlZbYb5u2nP51cFxhd9nQtf
+ TgDj2K/LbwivUlqtq1zvKAprGwDl6tDSwghXMc9zqLHDQvJAJddt4w/9H6NXBpVb
+ ivDLs8UjFz4kBbmLqmMQNiD/SuPbIca2drMr+Ev6ZpQ/EsgqCuVbOsVjP6A83Ogg
+ OudiiJ/Nq+wMi3YIZwRhUvijJsF7iSApokCJj2w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=ah7cQP
+ mHf2Gk7WcmfSJ5XdfKJIREpKFJSm/kt3ZWmFo=; b=v31LoSfYj19Xbu4DkDvcuW
+ Jf/3E7GPBUkDMdXazvQHnBcRqkOsruG82fSjZUTBjuBntaEu2kj+AA1e7GuAaFqf
+ ZHC6uocI4/OTUlTTudcKnHXNex4LLAWTB/HOCDe4y4nKgQTyfH0UBDSU8cQk2m8X
+ vQ1bxKKKrN1lVygWJHN4RaFMeCS7oFVhSbMVS0TAoPmXpzdd4OdVenv4dETAwO2b
+ 7/cfIplJTyr0AkCpVB6h3TSFu7Ms9mLnmXWZdpLFBTlXmuTaIJzsb9OO5LxXeFoq
+ k5Pp63wfT0Z1PpToZ2P3E/C9qLhY0mm4nOuPB5Cq/+efwKFPn8t+947NYT7W0emA
+ ==
+X-ME-Sender: <xms:jUiEXRV0InU27Zg5MMJYUHj-gIyNb1H81FyjRG5KwgQD5VFFq1G_mA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrvddugdejvdcutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpefofgggkfgjfhffhffvufgtsehttdertderreejnecuhfhrohhmpedftehnughr
+ vgifucflvghffhgvrhihfdcuoegrnhgurhgvfiesrghjrdhiugdrrghuqeenucffohhmrg
+ hinhepphgrthgthhgvfidrohhrghenucfrrghrrghmpehmrghilhhfrhhomheprghnughr
+ vgifsegrjhdrihgurdgruhenucevlhhushhtvghrufhiiigvpedt
+X-ME-Proxy: <xmx:jUiEXV3nTNuhZjAjMjqZmSL1tPhZiKnm6Nm7LUgsr6Gmj1noU8DrAw>
+ <xmx:jUiEXQ8EqWl36QYLCHaPI49FcAqM6mtRuCJb20jHNcOzx27-3xKVWQ>
+ <xmx:jUiEXTdFnO6s4pR_xVoeq2chKJOZDwKJANwmps4CpdmbROJNzWVWug>
+ <xmx:jkiEXbnAi8Y76nL3m_YXWcrEpkmuhgPHzylakmvqsCvDard3FsgYQw>
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id 1EAB3E00A9; Thu, 19 Sep 2019 23:33:33 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.1.7-238-g170a812-fmstable-20190913v1
+Mime-Version: 1.0
+Message-Id: <d0707b66-4446-457b-a5fa-2b4225db9ad5@www.fastmail.com>
+In-Reply-To: <156892658765.2125.17871103047730488122@1c8ae44fe5c0>
+References: <156892658765.2125.17871103047730488122@1c8ae44fe5c0>
+Date: Fri, 20 Sep 2019 13:04:09 +0930
+From: "Andrew Jeffery" <andrew@aj.id.au>
+To: no-reply <no-reply@patchew.org>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Subject: =?UTF-8?Q?Re:_[Qemu-devel]_[PATCH_00/21]_aspeed:_Add_support_for_the_AST?=
+ =?UTF-8?Q?2600_SoC?=
+Content-Type: text/plain
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 64.147.123.20
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4eBUlNV0OsjL
 
-Thanks xiang's continue upstream and test.
-Hope maintainer can review it.
 
 
-On 2019/9/17 20:39, Xiang Zheng wrote:
-> Hi all,
-> 
-> This patch series has been tested for both TCG and KVM scenes.
-> 
-> 1) Test for TCG:
->    - Re-compile qemu after applying the patch refered to https://patchwork.kernel.org/cover/10942757/#22640271).
->    - Use command line shown below to start qemu:
->         ./qemu-system-aarch64 \
->                 -name guest=ras \
->                 -machine virt,gic-version=3,ras=on \
->                 -cpu cortex-a57 \
->                 -bios /usr/share/edk2/aarch64/QEMU_EFI.fd \
->                 -nodefaults \
->                 -kernel ${GUEST_KERNEL} \
->                 -initrd ${GUEST_FS} \
->                 -append "rdinit=init console=ttyAMA0 earlycon=pl011,0x9000000" \
->                 -m 8192 \
->                 -smp 4 \
->                 -serial stdio \
-> 
->    - Send a signal to one of the VCPU threads:
->         kill -s SIGBUS 71571
-> 
->    - The result of test is shown below:
-> 
->     [   41.194753] {1}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 0
->     [   41.197329] {1}[Hardware Error]: event severity: recoverable
->     [   41.199078] {1}[Hardware Error]:  Error 0, type: recoverable
->     [   41.200829] {1}[Hardware Error]:   section_type: memory error
->     [   41.202603] {1}[Hardware Error]:   physical_address: 0x00000000400a1000
->     [   41.204649] {1}[Hardware Error]:   error_type: 0, unknown
->     [   41.206328] EDAC MC0: 1 UE Unknown on unknown label ( page:0x400a1 offset:0x0 grain:0)
->     [   41.208788] Internal error: synchronous external abort: 96000410 [#1] SMP
->     [   41.210879] Modules linked in:
->     [   41.211823] CPU: 2 PID: 0 Comm: swapper/2 Not tainted 4.19.0+ #8
->     [   41.213698] Hardware name: QEMU KVM Virtual Machine, BIOS 0.0.0 02/06/2015
->     [   41.215812] pstate: 60c00085 (nZCv daIf +PAN +UAO)
->     [   41.217296] pc : cpu_do_idle+0x8/0xc
->     [   41.218400] lr : arch_cpu_idle+0x2c/0x1b8
->     [   41.219629] sp : ffff000009f9bf00
->     [   41.220649] x29: ffff000009f9bf00 x28: 0000000000000000
->     [   41.222310] x27: 0000000000000000 x26: ffff8001fe471d80
->     [   41.223945] x25: 0000000000000000 x24: ffff00000937ba38
->     [   41.225581] x23: ffff0000090b3338 x22: ffff000009379000
->     [   41.227220] x21: ffff00000937b000 x20: 0000000000000004
->     [   41.228871] x19: ffff0000090a6000 x18: 0000000000000000
->     [   41.230517] x17: 0000000000000000 x16: 0000000000000000
->     [   41.232165] x15: 0000000000000000 x14: 0000000000000000
->     [   41.233810] x13: ffff0000089f4da8 x12: 000000000000000e
->     [   41.235448] x11: ffff0000089f4d80 x10: 0000000000000af0
->     [   41.237101] x9 : ffff000009f9be80 x8 : ffff8001fe4728d0
->     [   41.238738] x7 : 0000000000000004 x6 : ffff8001fffbaf30
->     [   41.240380] x5 : ffff00000c43b940 x4 : 00008001f6f0c000
->     [   41.242030] x3 : 0000000000000001 x2 : ffff000009f9bf00
->     [   41.243666] x1 : ffff8001fffb82c8 x0 : ffff0000090a6018
->     [   41.245306] Process swapper/2 (pid: 0, stack limit = 0x(____ptrval____))
->     [   41.247378] Call trace:
->     [   41.248117]  cpu_do_idle+0x8/0xc
->     [   41.249111]  do_idle+0x1dc/0x2a8
->     [   41.250111]  cpu_startup_entry+0x28/0x30
->     [   41.251319]  secondary_start_kernel+0x180/0x1c8
->     [   41.252725] Code: a8c17bfd d65f03c0 d5033f9f d503207f (d65f03c0)
->     [   41.254606] ---[ end trace 221bc8a614fb5a1d ]---
->     [   41.256030] Kernel panic - not syncing: Fatal exception
->     [   41.257644] SMP: stopping secondary CPUs
->     [   41.258912] Kernel Offset: disabled
->     [   41.260011] CPU features: 0x0,22a00238
->     [   41.261178] Memory Limit: none
->     [   41.262122] ---[ end Kernel panic - not syncing: Fatal exception ]---
-> 
-> 2) Test for KVM:
->    - Use command line shown below to start qemu:
->         ./qemu-system-aarch64 \
->             -name guest=ras \
->             -machine virt,accel=kvm,gic-version=3,ras=on \
->             -cpu host \
->             -bios /usr/share/edk2/aarch64/QEMU_EFI.fd \
->             -nodefaults \
->             -kernel ${GUEST_KERNEL} \
->             -initrd ${GUEST_FS} \
->             -append "rdinit=init console=ttyAMA0 earlycon=pl011,0x9000000" \
->             -m 8192 \
->             -smp 4 \
->             -serial stdio \
-> 
->    - Run mca-recover and get the GPA(IPA) of allocated page which would be corrupted on the later.
->    - Convert the GPA to HPA and corrupt this HPA via APEI/EINJ.
->    - Go back to guest and continue to read this page.
-> 
->    - The result of test is shown below:
-> 
->     root@genericarmv8:~/tools# ./mca-recover
->     pagesize: 0x1000
->     before clear cache
->     flags for page 0x2317b2: uptodate active mmap anon swapbacked
->     vtop(0xffff9c9e8000) = 0x2317b2000
->     Hit any key to access: before read
-> 
->     after read
->     Access at Tue Sep 17 01:41:14 2019
-> 
->     flags for page 0x2317b2: uptodate active mmap anon swapbacked
->     [  403.298539] {1}[Hardware Error]: Hardware error from APEI Generic Hardware Error Source: 0
->     [  403.301421] {1}[Hardware Error]: event severity: recoverable
->     [  403.303217] {1}[Hardware Error]:  Error 0, type: recoverable
->     [  403.304920] {1}[Hardware Error]:   section_type: memory error
->     [  403.306645] {1}[Hardware Error]:   physical_address: 0x00000002317b2000
->     [  403.308947] {1}[Hardware Error]:   error_type: 0, unknown
->     [  403.310630] WARNING: CPU: 0 PID: 510 at drivers/edac/ghes_edac.c:202 ghes_edac_report_mem_error+0x648/0xb20
->     [  403.310630] Modules linked in:
->     [  403.310631] CPU: 0 PID: 510 Comm: mca-recover Not tainted 4.19.0+ #8
->     [  403.310632] Hardware name: QEMU KVM Virtual Machine, BIOS 0.0.0 02/06/2015
->     [  403.310632] pstate: 60000005 (nZCv daif -PAN -UAO)
->     [  403.310632] pc : ghes_edac_report_mem_error+0x648/0xb20
->     [  403.310633] lr : ghes_proc+0x3d8/0x950
->     [  403.310633] sp : ffff00000c543b20
->     [  403.310633] x29: ffff00000c543b50 x28: ffff8001f5918014
->     [  403.310634] x27: 0000000000000000 x26: b1837ced833e63b8
->     [  403.310635] x25: 430fbbc1d995e954 x24: 0000000000000002
->     [  403.310636] x23: 0000000000000002 x22: ffff0000096ec000
->     [  403.310637] x21: ffff000009379000 x20: ffff8001f591805c
->     [  403.310638] x19: ffff8001f591e71c x18: ffffffffffffffff
->     [  403.310638] x17: 0000000000000000 x16: 0000000000000000
->     [  403.310639] x15: ffff000009379708 x14: 0000000000000000
->     [  403.310640] x13: 0000000000000002 x12: 317b200000000000
->     [  403.310641] x11: 0000000000000000 x10: 0000400200000000
->     [  403.310642] x9 : 0000000000000000 x8 : 00000002540be3ff
->     [  403.310642] x7 : 0000000000000000 x6 : ffff0000096dce30
->     [  403.310643] x5 : 4ede6f64a5bc1114 x4 : 0000000000000000
->     [  403.310644] x3 : ffff0000096ec4f0 x2 : ffff8001f591805c
->     [  403.310645] x1 : 0000000000000000 x0 : 0000000000110000
->     [  403.310646] Call trace:
->     [  403.310646]  ghes_edac_report_mem_error+0x648/0xb20
->     [  403.310646]  ghes_proc+0x3d8/0x950
->     [  403.310647]  ghes_notify_sea+0x3c/0x68
->     [  403.310647]  do_sea+0x9c/0x188
->     [  403.310647]  do_mem_abort+0x74/0x140
->     [  403.310648]  el0_da+0x24/0x28
->     [  403.310648] ---[ end trace 651f1abaa6b1de2d ]---
->     Recover: sig=7 si=0xffffc9bc5640 v=0xffffc9bc56c0[  403.364295] Memory failure: 0x2317b2: recovery action for dirty LRU page: Recovered
->     [  403.364295] Memory failure: 0x2317b2: recovery action for dirty LRU page: Recovered
-> 
->     Platform memory error at 0x(nil)
->     Addr = (nil) lsb=0
->     Recovery allocated new page at physical 0x232563000
->     Got 2a2a2a2a
+On Fri, 20 Sep 2019, at 06:26, no-reply@patchew.org wrote:
+> Patchew URL: https://patchew.org/QEMU/20190919055002.6729-1-clg@kaod.org/
 > 
 > 
+> 
+> Hi,
+> 
+> This series failed the docker-quick@centos7 build test. Please find the 
+> testing commands and
+> their output below. If you have Docker installed, you can probably 
+> reproduce it
+> locally.
+> 
+> === TEST SCRIPT BEGIN ===
+> #!/bin/bash
+> make docker-image-centos7 V=1 NETWORK=1
+> time make docker-test-quick@centos7 SHOW_ENV=1 J=14 NETWORK=1
+> === TEST SCRIPT END ===
+> 
+> libudev           no
+> default devices   yes
+> 
+> warning: Python 2 support is deprecated
+> warning: Python 3 will be required for building future versions of QEMU
+> cross containers  no
+> 
+> NOTE: guest cross-compilers enabled: cc
+> ---
+> Property '.cntfrq' not found
+
+Ah, we should drop the patch introducing the CNTFRQ configuration for the 2600
+as well given the patch adding support to configure it isn't part of the series.
+
+Andrew

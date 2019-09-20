@@ -1,103 +1,163 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1568504wrp;
-        Thu, 19 Sep 2019 15:12:16 -0700 (PDT)
-X-Received: by 2002:a63:1c56:: with SMTP id c22mr11270971pgm.231.1568931136540;
-        Thu, 19 Sep 2019 15:12:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568931136; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2013353wrp;
+        Thu, 19 Sep 2019 23:10:01 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx1N4jl6XnbSDWdvY20Y1KQycGodSWXqxZwypHSf77SW88XfrQ5bQQwnWyThta/UhejMqEU
+X-Received: by 2002:ac8:2afb:: with SMTP id c56mr1532302qta.222.1568959801900;
+        Thu, 19 Sep 2019 23:10:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568959801; cv=none;
         d=google.com; s=arc-20160816;
-        b=yX6i2jBRyssqIZLyWUFFekmotISdEB98PqwiMUwaFNpqC5bQMfXGGDUrEbJ3NI+9KG
-         5uoxeY1BQNmfAdyEC7domD+EoAKd2bP6ghXKQyENFuNzfWwy7i3TgxcFLIcvpuxRzY43
-         I2qIzgO7YHVlLK95PnmavyAWPE66gw0lN6KHFjDW6Hii95ZK4KbII4rp5UsUZtqu/AaI
-         Hfvo826NwfiETbPT/hZw5Hhvz4sboG/FtpAxFTbxaJ7WoK7PF/tDbqM+0bOQdVx0aa9b
-         /4iEHPwUobmNQb/0CaUMmsYVyS8J+3xOL7ySgoI97KMEBMrO6vBia+2gdEjYnyFzqTFH
-         5iEA==
+        b=TBWFx2Jp7BY5mpmX9flqbYhdmqmdJ/iZKjqN/QtrhL7n9ml1SWVTQJS50qdQg4WEnw
+         yUuWIsMlbboWq0UKz+3Wj3NtQMzVZSAfZ1tt9LuD4X1VPIoCuWHKks7Ra/3k6ApevfL7
+         9vJxuAo1ZDKOyEh0hUqHlP6l0O8PU+HJM2zLzDZykZF3hqnbdn9xe7SlBryIHo0zmRy4
+         aLtzQHVQZ/7GW/A4c4AlfOqvP7F4imL/LubP6siiuzFU2Pw2wkS0rHsDQ6anzNvNjGPO
+         GmABmZ7etL9ju5W+Nn4uHa4StpKYUXr+Y8+KEFuoTnADpRDeddSFVcBXPv3WHd6/vj8N
+         Dqzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:subject:to:from:date:references
+         :in-reply-to:message-id:mime-version:user-agent:dkim-signature
          :dkim-signature;
-        bh=cE4trpSnP98fjNTUopWYGw+YfZEOE4CvcAUadDHzEes=;
-        b=0yBF6YYYJvgO+cn3GaA6vCGm+Zl4A3J1NSlQJ8kWoZX0FsxZfEzjICleWv/E+4Pp5x
-         7U1cRhuHylcQ9vHlzyAVSW/cnF3P/oDn37qoiFca4unY1tTrPL2ZkWCjzXA9z9xqfW4x
-         CxSmOD9r1JJFiOeAzzLy62cT/81kcNl78VMNryIj89/7/CifBOypSBZt36qwYXtjFBzG
-         UEfpQwXQIPOuYxbXsCjgnWisIP6Mo1KYyqq/PmoXJz0A3hd21HAdhj8FPt+jDNbUSYgL
-         3Qi3HyLwTVfz44vR1Zr7lYafL070YWE6scAF/qoTLZSWwDcCb7YYJjif6pTBSzn2SfKn
-         tSzw==
+        bh=4JulzxRjrCJADSN2RqTn4pcV4NnrlzTwZfpc+skoit8=;
+        b=MGjnIE2cC/qws0i2TGYgIY1KhMpKZgCMToD+aPzuljC8fCIoIBdKyPAGalLJFacMAI
+         2TC4/XdHtd6+vsMzQ7wsj+avHPfIxmeGaRazFEVX5KBSQYT1I3bqELhk4m7uaET7KPDw
+         tSL1iAX/efIeTpCFB38rKfoxU+3vwjGFq1hEUVrxxGkWHR2Ytr3EmCcDAnZlKdDfy4HL
+         h0chnZ6Q705lNIQGuemBMlTfl8RIpgN9tlhS82XP1RiRDVPFup4xgmNbD/SeclJnwp7t
+         PC7iH+xLh77CudvghOu1qDah7H3xN5BkvB1XxSwwKXIsiz8pCStierZfqRdvPS2Hd8M+
+         9OxQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MlK4c6aV;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id t21sor9155679pjr.18.2019.09.19.15.12.16
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=D2aLkw1E;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=WOcGUeWw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a16si1517400qkn.148.2019.09.19.23.10.01
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 19 Sep 2019 15:12:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 19 Sep 2019 23:10:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MlK4c6aV;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=cE4trpSnP98fjNTUopWYGw+YfZEOE4CvcAUadDHzEes=;
-        b=MlK4c6aVjeglSr/xpmgQ6JIuzgz+Z4V+H56whSYZEaHvipFm0mguHr9Dfb1bNNmfK9
-         yIsohYOPRW5uZnQv+ETNBStxVT5xowsKXBmsqvG4v7D20Fp8lMl6iZNWKSgubvI/LZy0
-         iFKvpkPRiu57FbVyCi0NMPGkV21LhKP/eZmF3BLdaxKAzxffy8pAd8E7JoJM5byWYlSm
-         i10ZETXDh9jj5Yx9H88WNqkjlvm0guJQMbvnmERYk0gIyKr6jRbW2DmbtsSMKJxzrsnn
-         yXomh4couWMq7bUysYpaF2mwJMwBLH4JwOcvjkk5iU/DSugtfp4NRK8yzJD7rsSYrgzS
-         lgpw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=cE4trpSnP98fjNTUopWYGw+YfZEOE4CvcAUadDHzEes=;
-        b=FhbBPymBqKcGA9X3qEJKe31sSbUxjEBWlnGqqfoD9sO8/vd6aYU5p6inFB5RGN+/jd
-         pnXWbcgR8bmxGZPUxx6DXRhnJbUJvDNkAOXqB8T/Dpe26aZtNt4vvmRrxw3L7TSDetsm
-         IMwMxxyfZlauDrifrm+yL3DpmtBWWey6db/WZrIa6Sht+cr4etr/Xkh1waENP9QXmLVA
-         gfvdLjvo2VxkI9vxDAdk3IgyzAOCpQtNK5Cgttvd8W2+2pkjoGAWqDYtxBKztZOGauoP
-         juJ3OQEAoIaEmZQvI3dCLqKQ9WmYeIMnrWAmEJBLQiSRP75XovmzEklECpj0Md1+ydhf
-         OW7w==
-X-Gm-Message-State: APjAAAUWDG8ahOomOlUF4HOLjHdaQ2DUUhqcG3HNHlF85RrFcLwO4lVH
-	8eb14vWIH1jMHH8WK4PggQy9LUzh
-X-Google-Smtp-Source: APXvYqwraMz9vRG0HWEBwssdpewypSRiyKx4fv8k3E1dOW/GDbOvHQIYn80AaxZB32Q9NnU495skvQ==
-X-Received: by 2002:a17:90a:778c:: with SMTP id v12mr137167pjk.109.1568931136022;
-        Thu, 19 Sep 2019 15:12:16 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id 129sm12502083pfd.173.2019.09.19.15.12.14
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 19 Sep 2019 15:12:15 -0700 (PDT)
-Subject: Re: [PATCH v2 14/16] configure: preserve PKG_CONFIG for subdir builds
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-References: <20190919171015.12681-1-alex.bennee@linaro.org>
- <20190919171015.12681-15-alex.bennee@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <241355ac-cea3-2eb5-392a-13ea1aaf62ac@linaro.org>
-Date: Thu, 19 Sep 2019 15:12:13 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
-MIME-Version: 1.0
-In-Reply-To: <20190919171015.12681-15-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: c401CpVcAbEA
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=D2aLkw1E;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=WOcGUeWw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51708 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iBC7F-0008LY-6W
+	for alex.bennee@linaro.org; Fri, 20 Sep 2019 02:10:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44139)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <andrew@aj.id.au>) id 1iBC74-0008Kq-El
+ for qemu-arm@nongnu.org; Fri, 20 Sep 2019 02:09:51 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <andrew@aj.id.au>) id 1iBC73-0007Jv-Fi
+ for qemu-arm@nongnu.org; Fri, 20 Sep 2019 02:09:50 -0400
+Received: from out5-smtp.messagingengine.com ([66.111.4.29]:34319)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <andrew@aj.id.au>)
+ id 1iBC73-0007Ji-5Y; Fri, 20 Sep 2019 02:09:49 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id A6AD021E6A;
+ Fri, 20 Sep 2019 02:09:48 -0400 (EDT)
+Received: from imap2 ([10.202.2.52])
+ by compute4.internal (MEProxy); Fri, 20 Sep 2019 02:09:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
+ mime-version:message-id:in-reply-to:references:date:from:to:cc
+ :subject:content-type; s=fm3; bh=4JulzxRjrCJADSN2RqTn4pcV4NnrlzT
+ wZfpc+skoit8=; b=D2aLkw1E8Y3ukKedAlYjBQJ1fntr2eTShj07rU3HJJu6ZPn
+ 2F5olAKZcLWVMY6idQB1v9TSBh94acgcl21/W+o4BhyZpF6hN7EL5/sk3hQoxTGI
+ OqmyIL82SAKYnKsCDc3e/MirFttnDVrGVL+oCj4UEsWjWcoSgL2d3KSr9Su0mB+g
+ 3AIXus7HZc3bjCMtTpOa5guQQU9EnbKD/JxQpcud7j4vw7GRlf+VRY01bGPcxrRy
+ 377W6KL8syTLuzkkZBFUYe9x/NvjHUqV5uWEVJc2r79xMsQw5mZnsgymYersWYD/
+ 1su4HXqOlkCMC/9jDEUFiUrgIUP9+u5RXkALfaQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to:x-me-proxy
+ :x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; bh=4Julzx
+ RjrCJADSN2RqTn4pcV4NnrlzTwZfpc+skoit8=; b=WOcGUeWwb5dvK1wYk3z3k1
+ P2h/UQN6Fz6pUJKf2g1vuDxFPVTp44cVzJx77EwPsphC3/BcEqY+uKqzsFA2XPt0
+ J6C4LAJkbpt1Vr5c6xmRzs5Ji1MTMbyGdcxLAaIdjP/AIBo6dtTaRNF162vA4+ME
+ pPovKoGD8dwLYuDnfBOc6GWwuBo/KDC8YnvIHGaItbY2o/iO4kOS7/2j4W4mSUtT
+ jPWKduy4ruQ+8fVHDVkPel/LUGPtUjRMZGt0aw0ie4tzwIUPiqollyha9ZZWTFyG
+ gpZS897CH2DljYqO+PNEWr+BNEgSHxhVlQ/4GpYTSc42EGjJkfLTkxnBDfFmAO4Q
+ ==
+X-ME-Sender: <xms:K22EXXV2UCIfCJUL3HufMLdHr_1aofwaQ8-iHbvbvtQUMBox4EWmBA>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedufedrvddugddutdegucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfqfgfvpdfurfetoffkrfgpnffqhgen
+ uceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmne
+ cujfgurhepofgfggfkjghffffhvffutgesthdtredtreertdenucfhrhhomhepfdetnhgu
+ rhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecurfgrrh
+ grmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhiugdrrghunecuvehluhhsthgv
+ rhfuihiivgeptd
+X-ME-Proxy: <xmx:K22EXZ-iwBdKsYPP8fjDG6UYYpKk5IEPjEstjfK21YLeMytPmTbm_A>
+ <xmx:K22EXZi3eqjLWGy97OR333-EhxnBPYwknFtFiqNe3YGxJiO-crZthg>
+ <xmx:K22EXdffuSg_DXOvL7ql7rYbn4yUAyRtgkf-XJErM4E06iN_VdV24g>
+ <xmx:LG2EXVTuVVE6RK7PoSzAQgJFSONbeDx7qn3MKV5P__bs6INOzz7j8Q>
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id 81D46E00A9; Fri, 20 Sep 2019 02:09:47 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.1.7-238-g170a812-fmstable-20190913v1
+Mime-Version: 1.0
+Message-Id: <327db2f1-a146-472c-89f3-9187b2cb5f70@www.fastmail.com>
+In-Reply-To: <CAFEAcA_h80VQVC0jE7v8kmsuXU=16+KXSKQ-qhuRNTct7X6X7g@mail.gmail.com>
+References: <20190912065631.12473-1-andrew@aj.id.au>
+ <CAFEAcA_h80VQVC0jE7v8kmsuXU=16+KXSKQ-qhuRNTct7X6X7g@mail.gmail.com>
+Date: Fri, 20 Sep 2019 15:39:36 +0930
+From: "Andrew Jeffery" <andrew@aj.id.au>
+To: "Peter Maydell" <peter.maydell@linaro.org>
+Subject: Re: [PATCH v5] target-arm: Make the counter tick relative to cntfrq
+Content-Type: text/plain
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 66.111.4.29
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VcdCs5ISFPh/
 
-On 9/19/19 10:10 AM, Alex Bennée wrote:
-> The slirp sub-module complains about not being able to find the glib
-> library on cross-compiles because it is using the default pkg-config
-> tool (which isn't installed in our cross-build docker images).
-> Preserve PKG_CONFIG in our host config and pass it down to slirp.
+
+
+On Wed, 18 Sep 2019, at 01:44, Peter Maydell wrote:
+> On Thu, 12 Sep 2019 at 07:56, Andrew Jeffery <andrew@aj.id.au> wrote:
+> > diff --git a/target/arm/helper.c b/target/arm/helper.c
+> > index 507026c9154b..09975704d47f 100644
+> > --- a/target/arm/helper.c
+> > +++ b/target/arm/helper.c
+> > @@ -2409,7 +2409,21 @@ static CPAccessResult gt_stimer_access(CPUARMState *env,
+> >
+> >  static uint64_t gt_get_countervalue(CPUARMState *env)
+> >  {
+> > -    return qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) / GTIMER_SCALE;
+> > +    uint64_t effective;
+> > +
+> > +    /*
+> > +     * Deal with quantized clock scaling by calculating the effective frequency
+> > +     * in terms of the timer scale.
+> > +     */
+> > +    if (env->cp15.c14_cntfrq <= NANOSECONDS_PER_SECOND) {
+> > +        uint32_t scale = NANOSECONDS_PER_SECOND / env->cp15.c14_cntfrq;
+> > +        effective = NANOSECONDS_PER_SECOND / scale;
+> > +    } else {
+> > +        effective = NANOSECONDS_PER_SECOND;
+> > +    }
 > 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
+> What is this doing, and why didn't we need to do it before?
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+I'll fix all of your other comments, but I think this question in particular is best
+answered by turning the patch into a short series. It's a bit of a complex story.
+I'll try to split what's going on into smaller steps so what I've done above is
+better documented. The short story is there's asymmetry between converting
+time to ticks and ticks to time that leads us to schedule timers in the past for
+most CNTFRQ values if we don't do something like the above.
 
-
-r~
+Andrew

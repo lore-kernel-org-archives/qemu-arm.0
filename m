@@ -1,128 +1,109 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2550386wrp;
-        Fri, 20 Sep 2019 08:24:52 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwEbtCB7wo3RTgn+hI5ZYjzmu5bREtcxUFhQ1uOe/wFzu7YX+rzBN9LlqzZow71CQaVcmUC
-X-Received: by 2002:a05:6402:150a:: with SMTP id f10mr22033017edw.110.1568993092525;
-        Fri, 20 Sep 2019 08:24:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568993092; cv=none;
-        d=google.com; s=arc-20160816;
-        b=kZw4tdwXCc6+315mnZ/7pXyXmxiJf/+S32ExBz/mfZXfnrFnmftW4T0Y0HJtf+exdk
-         9ZmHWsvUxIvPzrGhcco/Rz9xUq76RoqKDXdUHCCUWrL8aN8ja4rXquHFGtcYoeBmnuqL
-         o//BMWJgIiHgR6NX8sEIdm9E8KEnTFUePbAVkpIpkFRRruLAT5Ib2gk8LOh/1WwIqOmr
-         6HJd/P0jOWYg+frND4Qn7J4v9Kz1LWsnmsfaKl+3IPYQfPRJyc9625WxphQzNv99bZvO
-         4+P0sc5IkwUA8JbYVNMT9IUe6deDPhxie5n6nHHzzjg3d+VRaNoWe4opoOZs7A2xHIpu
-         JXjQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=R/Im3At0N/Bjboesr3qM8kioKwIWf2tN3osqNQ9qe58=;
-        b=kssbKxd3Ct1YFYVVSBIP7eTlCr/tle/0zOQuUEkBC8HXDfSZ5JWH1Y/fWJhj+nb4LL
-         U6htX2bAujmJSuB4bi90KKs4z3ErM2DyrGRhzbuDnLF09TCmtSY6VlcUiXMsUAv5o9PE
-         K8ie99EypcfHHyZcrxqDfSM8ZRBmRz5g8648Mq1DnuLbENd787rnrsulNyf9p//dgnWf
-         En2aIu9B+vh84TJR14a7u1wEZ5roGY/UOBDoPXRHGn1rzEmHweMmnXsTQgLqYds9wyJS
-         fQt8qt+eBiRksX61fIcHR46sQqbUPsxO/sJfXLETsxg3H07v1YNuf3UdM9HNj6AAzwP4
-         ByQw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2613940wrp;
+        Fri, 20 Sep 2019 09:20:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxZECCmbXNv8JCnYgMjfTyzXqlaOcbYH58FQ/372nMYk8584zkPT7mN9AFSn8+vUpmag70y
+X-Received: by 2002:a17:906:5957:: with SMTP id g23mr19686474ejr.312.1568996422252;
+        Fri, 20 Sep 2019 09:20:22 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v25si1396228edy.392.2019.09.20.08.24.52
+        by mx.google.com with ESMTPS id k7si1307747ejk.266.2019.09.20.09.20.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Sep 2019 08:24:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Sep 2019 09:20:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60768 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33218 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iBKmB-0005FD-FF
-	for alex.bennee@linaro.org; Fri, 20 Sep 2019 11:24:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43192)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iBLds-0005aU-0g
+	for alex.bennee@linaro.org; Fri, 20 Sep 2019 12:20:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48171)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1iBKm2-0005Em-DO
- for qemu-arm@nongnu.org; Fri, 20 Sep 2019 11:24:43 -0400
+ (envelope-from <no-reply@patchew.org>) id 1iBLC6-0003D6-6V
+ for qemu-devel@nongnu.org; Fri, 20 Sep 2019 11:51:39 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1iBKm1-0002s6-GL
- for qemu-arm@nongnu.org; Fri, 20 Sep 2019 11:24:42 -0400
-Received: from 20.mo7.mail-out.ovh.net ([46.105.49.208]:50524)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iBKm1-0002rE-BU
- for qemu-arm@nongnu.org; Fri, 20 Sep 2019 11:24:41 -0400
-Received: from player772.ha.ovh.net (unknown [10.108.35.240])
- by mo7.mail-out.ovh.net (Postfix) with ESMTP id 28B51133D1F
- for <qemu-arm@nongnu.org>; Fri, 20 Sep 2019 17:24:38 +0200 (CEST)
-Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
- (Authenticated sender: clg@kaod.org)
- by player772.ha.ovh.net (Postfix) with ESMTPSA id 140F4A088065;
- Fri, 20 Sep 2019 15:24:34 +0000 (UTC)
-Subject: Re: [PATCH 12/21] aspeed/smc: Add AST2600 support
-To: Joel Stanley <joel@jms.id.au>
-References: <20190919055002.6729-1-clg@kaod.org>
- <20190919055002.6729-13-clg@kaod.org>
- <CACPK8XcJRT8fa81vp7aC8f+yfOxaHMFd9+tijq7j1D68DGbFcQ@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <f06cbfcf-8fe3-2b1b-b259-4995e4b30480@kaod.org>
-Date: Fri, 20 Sep 2019 17:24:33 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ (envelope-from <no-reply@patchew.org>) id 1iBLC4-0005Bj-2m
+ for qemu-devel@nongnu.org; Fri, 20 Sep 2019 11:51:37 -0400
+Resent-Date: Fri, 20 Sep 2019 11:51:37 -0400
+Resent-Message-Id: <E1iBLC4-0005Bj-2m@eggs.gnu.org>
+Received: from sender4-of-o59.zoho.com ([136.143.188.59]:21944)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1iBLC3-0005BI-QL; Fri, 20 Sep 2019 11:51:36 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1568994543; cv=none; d=zoho.com; s=zohoarc; 
+ b=eY+DaVum+8J2w3I39Wv+zC0De/xZIen719ey7V+lw8yiPLkgNTExqmWnzGReGWt57DGBSBHC6cOYUkA0DJ+W66y2Rd1XctvWT+cuNFGmUQ3iNHA74kljSELUwffwhfUxxgOsiKqUhaxolSmxX41HubzAm1Tj0llfEFgm7YNWREg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+ s=zohoarc; t=1568994543;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+ bh=tTfi92Ime6VEmjFx6bJ8LSyWC6FS7DF0UtbG/sW8nm8=; 
+ b=RvmGCMBVcRn5rXArOBAxqnider8RzSnIuSLrqpr2s+pL1wEdTrIA7LwNZt5Liqa9mNiWuBCAxnj21ZwJ0fks5bjt3KPbn8BdbyPn6b885AClhCoFUYYRMOa/zJ4Hbs/0z0bNANSWQiZ5STA8Noti7YjZjWHVhFb8yXyDNidgYiE=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1568994541676383.26895998389296;
+ Fri, 20 Sep 2019 08:49:01 -0700 (PDT)
+In-Reply-To: <20190918130633.4872-1-shameerali.kolothum.thodi@huawei.com>
+Subject: Re: [Qemu-devel] [PATCH-for-4.2 v11 00/11] ARM virt: ACPI memory
+ hotplug support
+Message-ID: <156899453956.5071.11055733674708746891@1c8ae44fe5c0>
 MIME-Version: 1.0
-In-Reply-To: <CACPK8XcJRT8fa81vp7aC8f+yfOxaHMFd9+tijq7j1D68DGbFcQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 17236964624092728235
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrvddvgdekjecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: shameerali.kolothum.thodi@huawei.com
+Date: Fri, 20 Sep 2019 08:49:01 -0700 (PDT)
+X-ZohoMailClient: External
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.49.208
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 136.143.188.59
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uV8y+L5a86pC
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, sameo@linux.intel.com, ard.biesheuvel@linaro.org,
+ shannon.zhaosl@gmail.com, mst@redhat.com, qemu-devel@nongnu.org,
+ xuwei5@hisilicon.com, linuxarm@huawei.com, eric.auger@redhat.com,
+ qemu-arm@nongnu.org, imammedo@redhat.com, sebastien.boeuf@intel.com,
+ lersek@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eswAjW6pCscK
 
-On 20/09/2019 06:46, Joel Stanley wrote:
-> On Thu, 19 Sep 2019 at 05:51, C=C3=A9dric Le Goater <clg@kaod.org> wrot=
-e:
->>
->> The AST2600 SoC SMC controller is a SPI only controller now and has a
->> few extensions which we will need to take into account when SW
->> requires it.
->>
->>  - 4BYTE mode
->>  - HCLK divider has changed (SPI Training)
->>  - CE0-2 Read Timing Compensation registers
->>
->> This is enough to support u-boot.
->=20
-> As easy as that! I hope the Linux driver is as simple :)
-
-Only HW will tell ! :)
-=20
->> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
->=20
-> Reviewed-by: Joel Stanley <joel@jms.id.au>
-
-I had some issues with the segment routines. I will have to resend
-this one.
-
-thanks,
-
-C.
-
-=20
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDkxODEzMDYzMy40ODcy
+LTEtc2hhbWVlcmFsaS5rb2xvdGh1bS50aG9kaUBodWF3ZWkuY29tLwoKCgpIaSwKClRoaXMgc2Vy
+aWVzIGZhaWxlZCB0aGUgZG9ja2VyLXF1aWNrQGNlbnRvczcgYnVpbGQgdGVzdC4gUGxlYXNlIGZp
+bmQgdGhlIHRlc3RpbmcgY29tbWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhh
+dmUgRG9ja2VyIGluc3RhbGxlZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxs
+eS4KCj09PSBURVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKbWFrZSBkb2NrZXItaW1h
+Z2UtY2VudG9zNyBWPTEgTkVUV09SSz0xCnRpbWUgbWFrZSBkb2NrZXItdGVzdC1xdWlja0BjZW50
+b3M3IFNIT1dfRU5WPTEgSj0xNCBORVRXT1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCmxp
+YnVkZXYgICAgICAgICAgIG5vCmRlZmF1bHQgZGV2aWNlcyAgIHllcwoKd2FybmluZzogUHl0aG9u
+IDIgc3VwcG9ydCBpcyBkZXByZWNhdGVkCndhcm5pbmc6IFB5dGhvbiAzIHdpbGwgYmUgcmVxdWly
+ZWQgZm9yIGJ1aWxkaW5nIGZ1dHVyZSB2ZXJzaW9ucyBvZiBRRU1VCmNyb3NzIGNvbnRhaW5lcnMg
+IG5vCgpOT1RFOiBndWVzdCBjcm9zcy1jb21waWxlcnMgZW5hYmxlZDogY2MKLS0tCkxvb2tpbmcg
+Zm9yIGV4cGVjdGVkIGZpbGUgJ3Rlc3RzL2RhdGEvYWNwaS92aXJ0L1NSQVQubnVtYW1lbScKTG9v
+a2luZyBmb3IgZXhwZWN0ZWQgZmlsZSAndGVzdHMvZGF0YS9hY3BpL3ZpcnQvU1JBVCcKKioKRVJS
+T1I6L3RtcC9xZW11LXRlc3Qvc3JjL3Rlc3RzL2Jpb3MtdGFibGVzLXRlc3QuYzozMjc6bG9hZF9l
+eHBlY3RlZF9hbWw6IGFzc2VydGlvbiBmYWlsZWQ6IChleHBfc2R0LmFtbF9maWxlKQpFUlJPUiAt
+IEJhaWwgb3V0ISBFUlJPUjovdG1wL3FlbXUtdGVzdC9zcmMvdGVzdHMvYmlvcy10YWJsZXMtdGVz
+dC5jOjMyNzpsb2FkX2V4cGVjdGVkX2FtbDogYXNzZXJ0aW9uIGZhaWxlZDogKGV4cF9zZHQuYW1s
+X2ZpbGUpCm1ha2U6ICoqKiBbY2hlY2stcXRlc3QtYWFyY2g2NF0gRXJyb3IgMQptYWtlOiAqKiog
+V2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2JzLi4uLgogIFRFU1QgICAgY2hlY2stcXRlc3QteDg2
+XzY0OiB0ZXN0cy92bWdlbmlkLXRlc3QKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0
+dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMTkwOTE4MTMwNjMzLjQ4NzItMS1zaGFtZWVyYWxpLmtv
+bG90aHVtLnRob2RpQGh1YXdlaS5jb20vdGVzdGluZy5kb2NrZXItcXVpY2tAY2VudG9zNy8/dHlw
+ZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBb
+aHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNo
+ZXctZGV2ZWxAcmVkaGF0LmNvbQ==
 

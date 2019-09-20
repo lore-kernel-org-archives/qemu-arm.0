@@ -1,102 +1,285 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1571064wrp;
-        Thu, 19 Sep 2019 15:14:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy1oWaDC8wRG5QjNzEx/V399fAEisx3RtjlLXvOHsBly5n1ZuhufQKPx11RTSpEHtIHgDzR
-X-Received: by 2002:a17:906:f204:: with SMTP id gt4mr14045497ejb.299.1568931289688;
-        Thu, 19 Sep 2019 15:14:49 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id gz26si1810824ejb.65.2019.09.19.15.14.49
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 19 Sep 2019 15:14:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1769254wrp;
+        Thu, 19 Sep 2019 18:45:52 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzeucGfbJMRO8CqzVGOtV2SssAsVQKw1/EurXPYsK+ThcleFFhbpnia8fMMi53x5Mpaml+1
+X-Received: by 2002:a17:906:b30b:: with SMTP id n11mr6252539ejz.35.1568943952939;
+        Thu, 19 Sep 2019 18:45:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568943952; cv=none;
+        d=google.com; s=arc-20160816;
+        b=U5fSEXuiTy/dHtNTNQm6wGLj+iaR/aI8JZV8EQKmJtuqSaoS+gAKyf9bFdYQWnb+Tg
+         TJa4jRKQOjMVg6bYhL/V57ytKeYLFMMgq3SY65OL8VvIqKZ/8oty6ePNLY2tDk1Ebz6I
+         XSJIdH8sq8Vsy0PW/jVyzSDSezwn5jRlsJNguiZPhlgiPNeYqGY3Lgo6r3qNpFOnx0mJ
+         v+Q751Vda2UGktK3Ic29Laf3D898a6w7/uQ+LID2qLWSvIGsmaYDrA7dLuThO5FgcdfK
+         SKnbVeOa22DUsoijnW6UoRRpraJctdlAnzY5+VqO4eUsXRZqqhnsMucGpa9U1gU4V8r2
+         ZK3g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=ivL29Sl2LFr45frnpaZUaYmdsTOjbA70YwKuUmTnDYo=;
+        b=HYl9xKpHhqqqdJ2T0qw3IRnlHUctoDV8mobXZptiz3JAdEt/SaPIc/oYC2fmIUd3XH
+         i2+N5gNUKA8VZTAnjPzeKul7fVAa7obbbvmsw6PCWYPz/H8TvlsuFXw7c9hNk8DDnqPB
+         PaoVvM73MdaFvHAQlTW6/UIqB7YQu78XzWM8OGhGzUfax6n/68AQ5iDosgOZu1sRE4wh
+         7V7SVo2karIQexEc3NlJMt+ws2tVeBxPh/T8WmxVffZDaZvBNOIVn2xhli+ryjWL/tgd
+         /qj/sgRfDntw+hMPP+7mmMbmpVOrjslLdOrGRdw7s+Qg4uxEQHEGv8UlwmoBaID8+JZQ
+         AZTg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id d35si345576ede.440.2019.09.19.18.45.52;
+        Thu, 19 Sep 2019 18:45:52 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49074 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iB4hM-0005VL-L6
-	for alex.bennee@linaro.org; Thu, 19 Sep 2019 18:14:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56764)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1iB4Bl-0003Y4-O5
- for qemu-arm@nongnu.org; Thu, 19 Sep 2019 17:42:10 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1iB4Bk-0006nu-21
- for qemu-arm@nongnu.org; Thu, 19 Sep 2019 17:42:09 -0400
-Resent-Date: Thu, 19 Sep 2019 17:42:09 -0400
-Resent-Message-Id: <E1iB4Bk-0006nu-21@eggs.gnu.org>
-Received: from sender4-of-o54.zoho.com ([136.143.188.54]:21437)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1iB4Bj-0006nW-PK
- for qemu-arm@nongnu.org; Thu, 19 Sep 2019 17:42:08 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1568926590; cv=none; d=zoho.com; s=zohoarc; 
- b=Cx1cPNtbpLRfP3eYsgIQlXFYwO6JbumwNmdKZJ6IWRtm9bLrhULgQPgubqGMDFU3zZbqA2DXfAdSqZldNL+o42WEOZFUC6iTlf+IyAfuixmVjtS3cFJBL+iiR5PpA1y/1DhzwiBS6lS0tLoIpoOtPfXvwSveMncetpT68OiZveU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
- s=zohoarc; t=1568926590;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
- bh=auxqEA3Xv+6y9bwyggt/NLM33WfUILlFKF+pZ8fHsIQ=; 
- b=VFz+TkAWHL7wE3hkA/j0QIH/E3ceop3HbWG8NtQubsqwHfnLNaQ+Vg96azRur7SFVAIvi5rdD/Oik8A+jbDOsIsFtuVwWjAJn6tKcLilVtIR6UvFys+NOQzicx1dYifvTZjuTzadZUFn3HfvkkLG8f4wyBjOqJIALs8mFkml5s8=
-ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1568926588938354.4897800261799;
- Thu, 19 Sep 2019 13:56:28 -0700 (PDT)
-In-Reply-To: <20190919055002.6729-1-clg@kaod.org>
-Subject: Re: [Qemu-devel] [PATCH 00/21] aspeed: Add support for the AST2600 SoC
-Message-ID: <156892658765.2125.17871103047730488122@1c8ae44fe5c0>
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S2394642AbfITBpt (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Thu, 19 Sep 2019 21:45:49 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:41618 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1729760AbfITBpt (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 19 Sep 2019 21:45:49 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
+        by Forcepoint Email with ESMTP id 171465FE99D9A574D1B7;
+        Fri, 20 Sep 2019 09:45:47 +0800 (CST)
+Received: from [127.0.0.1] (10.133.224.57) by DGGEMS411-HUB.china.huawei.com
+ (10.3.19.211) with Microsoft SMTP Server id 14.3.439.0; Fri, 20 Sep 2019
+ 09:45:36 +0800
+Subject: Re: [PATCH v18 2/6] docs: APEI GHES generation and CPER record
+ description
+To:     Peter Maydell <peter.maydell@linaro.org>
+CC:     Paolo Bonzini <pbonzini@redhat.com>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Shannon Zhao <shannon.zhaosl@gmail.com>,
+        Laszlo Ersek <lersek@redhat.com>,
+        James Morse <james.morse@arm.com>,
+        gengdongjiu <gengdongjiu@huawei.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Jonathan Cameron <jonathan.cameron@huawei.com>,
+        "xuwei (O)" <xuwei5@huawei.com>, kvm-devel <kvm@vger.kernel.org>,
+        "QEMU Developers" <qemu-devel@nongnu.org>,
+        qemu-arm <qemu-arm@nongnu.org>, Linuxarm <linuxarm@huawei.com>,
+        <wanghaibin.wang@huawei.com>
+References: <20190906083152.25716-1-zhengxiang9@huawei.com>
+ <20190906083152.25716-3-zhengxiang9@huawei.com>
+ <CAFEAcA_MGiatTVCEbnoy5D7S_j9H1DyPkqWMb8uBKL_oycyVDg@mail.gmail.com>
+From:   Xiang Zheng <zhengxiang9@huawei.com>
+Message-ID: <8235139e-0b72-1e9c-23d0-2d87afcce5a0@huawei.com>
+Date:   Fri, 20 Sep 2019 09:45:34 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.0
 MIME-Version: 1.0
+In-Reply-To: <CAFEAcA_MGiatTVCEbnoy5D7S_j9H1DyPkqWMb8uBKL_oycyVDg@mail.gmail.com>
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: clg@kaod.org
-Date: Thu, 19 Sep 2019 13:56:28 -0700 (PDT)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 136.143.188.54
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, andrew@aj.id.au, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, joel@jms.id.au, clg@kaod.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: a69dMnWHtTzg
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.133.224.57]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: duN7Xw4/eIA9
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDkxOTA1NTAwMi42NzI5
-LTEtY2xnQGthb2Qub3JnLwoKCgpIaSwKClRoaXMgc2VyaWVzIGZhaWxlZCB0aGUgZG9ja2VyLXF1
-aWNrQGNlbnRvczcgYnVpbGQgdGVzdC4gUGxlYXNlIGZpbmQgdGhlIHRlc3RpbmcgY29tbWFuZHMg
-YW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhhdmUgRG9ja2VyIGluc3RhbGxlZCwgeW91
-IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxseS4KCj09PSBURVNUIFNDUklQVCBCRUdJ
-TiA9PT0KIyEvYmluL2Jhc2gKbWFrZSBkb2NrZXItaW1hZ2UtY2VudG9zNyBWPTEgTkVUV09SSz0x
-CnRpbWUgbWFrZSBkb2NrZXItdGVzdC1xdWlja0BjZW50b3M3IFNIT1dfRU5WPTEgSj0xNCBORVRX
-T1JLPTEKPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KCmxpYnVkZXYgICAgICAgICAgIG5vCmRlZmF1
-bHQgZGV2aWNlcyAgIHllcwoKd2FybmluZzogUHl0aG9uIDIgc3VwcG9ydCBpcyBkZXByZWNhdGVk
-Cndhcm5pbmc6IFB5dGhvbiAzIHdpbGwgYmUgcmVxdWlyZWQgZm9yIGJ1aWxkaW5nIGZ1dHVyZSB2
-ZXJzaW9ucyBvZiBRRU1VCmNyb3NzIGNvbnRhaW5lcnMgIG5vCgpOT1RFOiBndWVzdCBjcm9zcy1j
-b21waWxlcnMgZW5hYmxlZDogY2MKLS0tClByb3BlcnR5ICcuY250ZnJxJyBub3QgZm91bmQKQnJv
-a2VuIHBpcGUKL3RtcC9xZW11LXRlc3Qvc3JjL3Rlc3RzL2xpYnF0ZXN0LmM6MTQ5OiBraWxsX3Fl
-bXUoKSBkZXRlY3RlZCBRRU1VIGRlYXRoIGZyb20gc2lnbmFsIDYgKEFib3J0ZWQpIChjb3JlIGR1
-bXBlZCkKRVJST1IgLSB0b28gZmV3IHRlc3RzIHJ1biAoZXhwZWN0ZWQgNiwgZ290IDUpCm1ha2U6
-ICoqKiBbY2hlY2stcXRlc3QtYWFyY2g2NF0gRXJyb3IgMQptYWtlOiAqKiogV2FpdGluZyBmb3Ig
-dW5maW5pc2hlZCBqb2JzLi4uLgogIFRFU1QgICAgY2hlY2stcXRlc3QteDg2XzY0OiB0ZXN0cy9x
-MzUtdGVzdAoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3Jn
-L2xvZ3MvMjAxOTA5MTkwNTUwMDIuNjcyOS0xLWNsZ0BrYW9kLm9yZy90ZXN0aW5nLmRvY2tlci1x
-dWlja0BjZW50b3M3Lz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGlj
-YWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIg
-ZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
+Hi Peter, thanks for your review!
 
+On 2019/9/19 21:25, Peter Maydell wrote:
+> On Fri, 6 Sep 2019 at 09:33, Xiang Zheng <zhengxiang9@huawei.com> wrote:
+>>
+>> From: Dongjiu Geng <gengdongjiu@huawei.com>
+>>
+>> Add APEI/GHES detailed design document
+>>
+>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+>> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+>> ---
+>>  docs/specs/acpi_hest_ghes.txt | 88 +++++++++++++++++++++++++++++++++++
+>>  1 file changed, 88 insertions(+)
+>>  create mode 100644 docs/specs/acpi_hest_ghes.txt
+> 
+> Hi; new documentation in docs/specs should be in rst format and
+> listed in the contents page for the manual at docs/specs/index.rst,
+> please. Conversion from plain text should hopefully be fairly
+> straightforward.
+> 
+
+Got it!
+
+> 
+> I've also provided some minor typo/grammar fixes below.
+> 
+Thanks, I will fix them soon.
+
+> 
+>> diff --git a/docs/specs/acpi_hest_ghes.txt b/docs/specs/acpi_hest_ghes.txt
+>> new file mode 100644
+>> index 0000000000..690d4b2bd0
+>> --- /dev/null
+>> +++ b/docs/specs/acpi_hest_ghes.txt
+>> @@ -0,0 +1,88 @@
+>> +APEI tables generating and CPER record
+>> +=============================
+>> +
+>> +Copyright (C) 2019 Huawei Corporation.
+>> +
+>> +Design Details:
+>> +-------------------
+>> +
+>> +       etc/acpi/tables                                 etc/hardware_errors
+>> +    ====================                      ==========================================
+>> ++ +--------------------------+            +-----------------------+
+>> +| | HEST                     |            |    address            |            +--------------+
+>> +| +--------------------------+            |    registers          |            | Error Status |
+>> +| | GHES1                    |            | +---------------------+            | Data Block 1 |
+>> +| +--------------------------+ +--------->| |error_block_address1 |----------->| +------------+
+>> +| | .................        | |          | +---------------------+            | |  CPER      |
+>> +| | error_status_address-----+-+ +------->| |error_block_address2 |--------+   | |  CPER      |
+>> +| | .................        |   |        | +---------------------+        |   | |  ....      |
+>> +| | read_ack_register--------+-+ |        | |    ..............   |        |   | |  CPER      |
+>> +| | read_ack_preserve        | | |        +-----------------------+        |   | +------------+
+>> +| | read_ack_write           | | | +----->| |error_block_addressN |------+ |   | Error Status |
+>> ++ +--------------------------+ | | |      | +---------------------+      | |   | Data Block 2 |
+>> +| | GHES2                    | +-+-+----->| |read_ack_register1   |      | +-->| +------------+
+>> ++ +--------------------------+   | |      | +---------------------+      |     | |  CPER      |
+>> +| | .................        |   | | +--->| |read_ack_register2   |      |     | |  CPER      |
+>> +| | error_status_address-----+---+ | |    | +---------------------+      |     | |  ....      |
+>> +| | .................        |     | |    | |  .............      |      |     | |  CPER      |
+>> +| | read_ack_register--------+-----+-+    | +---------------------+      |     +-+------------+
+>> +| | read_ack_preserve        |     |   +->| |read_ack_registerN   |      |     | |..........  |
+>> +| | read_ack_write           |     |   |  | +---------------------+      |     | +------------+
+>> ++ +--------------------------|     |   |                                 |     | Error Status |
+>> +| | ...............          |     |   |                                 |     | Data Block N |
+>> ++ +--------------------------+     |   |                                 +---->| +------------+
+>> +| | GHESN                    |     |   |                                       | |  CPER      |
+>> ++ +--------------------------+     |   |                                       | |  CPER      |
+>> +| | .................        |     |   |                                       | |  ....      |
+>> +| | error_status_address-----+-----+   |                                       | |  CPER      |
+>> +| | .................        |         |                                       +-+------------+
+>> +| | read_ack_register--------+---------+
+>> +| | read_ack_preserve        |
+>> +| | read_ack_write           |
+>> ++ +--------------------------+
+>> +
+>> +(1) QEMU generates the ACPI HEST table. This table goes in the current
+>> +    "etc/acpi/tables" fw_cfg blob. Each error source has different
+>> +    notification types.
+>> +
+>> +(2) A new fw_cfg blob called "etc/hardware_errors" is introduced. QEMU
+>> +    also need to populate this blob. The "etc/hardwre_errors" fw_cfg blob
+> 
+> "needs". "hardware_errors".
+> 
+>> +    contains an address registers table and an Error Status Data Block table.
+>> +
+>> +(3) The address registers table contains N Error Block Address entries
+>> +    and N Read Ack Register entries, the size for each entry is 8-byte.
+> 
+> ". The size".
+> 
+>> +    The Error Status Data Block table contains N Error Status Data Block
+>> +    entries, the size for each entry is 4096(0x1000) bytes. The total size
+> 
+> 
+> ". The size"
+> 
+>> +    for "etc/hardware_errors" fw_cfg blob is (N * 8 * 2 + N * 4096) bytes.
+> 
+> "for the"
+> 
+>> +    N is the kinds of hardware error sources.
+> 
+> Not sure what you had in mind here. Possibly either "N is the number of kinds of
+> hardware error sources" or "N is the number of hardware error sources" ?
+
+Yes, I mean "N is the number of kinds of hardware error sources".
+
+> 
+>> +
+>> +(4) QEMU generates the ACPI linker/loader script for the firmware, the
+> 
+> ". The"
+> 
+>> +    firmware pre-allocates memory for "etc/acpi/tables", "etc/hardware_errors"
+>> +    and copies blobs content there.
+> 
+> "blob contents"
+> 
+>> +
+>> +(5) QEMU generates N ADD_POINTER commands, which patch address in the
+> 
+> "addresses"
+> 
+>> +    "error_status_address" fields of the HEST table with a pointer to the
+>> +    corresponding "address registers" in "etc/hardware_errors" blob.
+> 
+> "in the"
+> 
+>> +
+>> +(6) QEMU generates N ADD_POINTER commands, which patch address in the
+> 
+> "addresses"
+> 
+>> +    "read_ack_register" fields of the HEST table with a pointer to the
+>> +    corresponding "address registers" in "etc/hardware_errors" blob.
+> 
+> "in the"
+> 
+>> +
+>> +(7) QEMU generates N ADD_POINTER commands for the firmware, which patch
+>> +    address in the " error_block_address" fields with a pointer to the
+> 
+> "addresses". Stray extra space after open-quote.
+> 
+>> +    respective "Error Status Data Block" in "etc/hardware_errors" blob.
+> 
+> "in the"
+> 
+>> +
+>> +(8) QEMU defines a third and write-only fw_cfg blob which is called
+>> +    "etc/hardware_errors_addr". Through that blob, the firmware can send back
+>> +    the guest-side allocation addresses to QEMU. The "etc/hardware_errors_addr"
+>> +    blob contains a 8-byte entry. QEMU generates a single WRITE_POINTER commands
+> 
+> "command"
+> 
+>> +    for the firmware, the firmware will write back the start address of
+> 
+> ". The"
+> 
+>> +    "etc/hardware_errors" blob to fw_cfg file "etc/hardware_errors_addr".
+> 
+> "to the fw_cfg file"
+> 
+>> +
+>> +(9) When QEMU gets SIGBUS from the kernel, QEMU formats the CPER right into
+> 
+> "a SIGBUS"
+> 
+>> +    guest memory, and then injects whatever interrupt (or assert whatever GPIO
+> 
+> "or asserts"
+> 
+>> +    line) as a notification which is necessary for notifying the guest.
+>> +
+>> +(10) This notification (in virtual hardware) will be handled by guest kernel,
+> 
+> "the guest kernel"
+> 
+>> +    guest APEI driver will read the CPER which is recorded by QEMU and do the
+> 
+> "and the guest APEI driver"
+> 
+>> +    recovery.
+> 
+> thanks
+> -- PMM
+> 
+> .
+> 
+
+-- 
+
+Thanks,
+Xiang

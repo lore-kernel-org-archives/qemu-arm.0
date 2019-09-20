@@ -1,119 +1,83 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2391906wrp;
-        Fri, 20 Sep 2019 06:06:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqya4KLJVLr35/YdyUAwMuZS7XqShlOVSr0woC2eLeld959WUfT1mhrNaUfq6ZLCJE+3Mu6H
-X-Received: by 2002:ac8:192d:: with SMTP id t42mr3121141qtj.358.1568984786235;
-        Fri, 20 Sep 2019 06:06:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1568984786; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2539262wrp;
+        Fri, 20 Sep 2019 08:15:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxkFOB8UkduAoEe7DDag52pFB3hTWOjPmnvrEyS4tCuMTvmtMYilYJAX8ReuLzPFen7XFUk
+X-Received: by 2002:a0c:9352:: with SMTP id e18mr13193683qve.33.1568992556753;
+        Fri, 20 Sep 2019 08:15:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568992556; cv=none;
         d=google.com; s=arc-20160816;
-        b=SbTUEQP5ejpPWRrf2wNlcNhbpwfehSBhK9YZGimypOy6SHSWPnUoUJ1+GrXLGfDpVD
-         e/njbo/rsXuD8GlONt2l6GfokKBRsfBykuJ3ak6Zd0H+r6kK0ELJjv4PmycbOdCF0RyV
-         OM8ffZRasmcsbu7VukoNkJ0DxfMDyVlN+aJBl/q+1tRWdOWaADXL69iZTovMf11NpwY4
-         vfFaq3UFECpsPuU5vc/yB/fM8jz9henSj5CgBkyXzQY9WXBQEnrO1kiAIn+HEKg/EUJP
-         Nq3yljcoi+C6ozA2NTMs6NcjDoRxXam6dZ+DjJ2x4Ed8gcqf/a6lhfCktPj9r7J5IpJs
-         yAmA==
+        b=ByL7UZ/WPy9bd0H+S5TgEjUNdh7zafFtcwNn1PBoJ6shGIrcPj74HWTzbAmE4COfRN
+         Vs6gEQtnjl7oFdV2gRsOwtcLRhOWG5VMlLwFSpvm3ThzTK1RH/qtM23L95Nyu0x/KGo4
+         SRaKnYqISd5HkbIgjuRMCugFjEOdVQyFVl6LKxYJkFVfMd5b5PstOWoRCoKT0dJnZ4Mk
+         A+6jiHBNC+h5tf7sMEBiK4TjaS+Nnhg5BIrcGaKh7mSDKs9ynKykdEy17RNWVQpA0QGG
+         lVSMcHquBKooK7fdYt66lBz+E80cPkM5vwWupDmS34acRYP/IHWDEWBtYq7l/RT3PWUU
+         iHoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:openpgp:from:references:to
-         :subject;
-        bh=BB1/Hoqd1dOb8cvqzg4+4AS7CaSYoEGsLj2+zdXzcfM=;
-        b=cEezMpZ/hKo/ZipR70dWy9unsu1/dqZR2YIn6G7txTUzSkvi6QEtg4ALQS5xlXdVGJ
-         07CaKZBTMWPghX1PybKEnfS1d+rMQHB3t6K0J5d6COWewxEl8+soMuzpX9f3vumnYzTY
-         M5ou5O64UCMSCEaEORcpnTLeDPPMr/4ojJ0BUsoThlXV6d6bwJHIDIdSXjUmtvDKBm+c
-         njr9ACD0yyvZDdDstDD0bCaXgaXMY2TogrV3NT6YdNNesck+Ngazm6HWJpDljDeAHWJ+
-         BFpUWG+9KrucExrnZiYH28IG/TrLcaz7OVJFTIdhedu+ZU1IVCAk5xw6dI0GLnk+fbHQ
-         fNLg==
+         :message-id:from:references:to:subject;
+        bh=9k9g0vLusd/60SLWwPdP83OdD1hE2CaqK8GlB7q7Xms=;
+        b=yaAKyZumPWUyOSdEB6B+gynmB950dH8bRJqSz3Ku3l8bIjY3Er12U2wMB/ke08NkZs
+         cGRRnzGtllThHDJm0wVShFk9NEaR34jJqG7Yp6/9cykh4rplV/UHti+aVJQP5Wse8BLa
+         x/GN/xUIGZT5cK0c2GpuZx9SocesrOqOFDOvYG23Bd1d7zk3ex1Wcj0wLHR4qqKC+gHv
+         NtElzW+M2qDB1s0/UbQeaTQW/CUl0gYkj2gwMpfUfyKXMuAUV/YgPqI4rxsNHQuLo8Z8
+         /9c5rrPW5wz1jN73y/ZDrLET3oGBTnkeN1u+m8mlpnwTovYNwT2tkJbUwybhGVIxN0dq
+         qyaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j54si1990668qtk.318.2019.09.20.06.06.26
+        by mx.google.com with ESMTPS id z197si2275033qka.373.2019.09.20.08.15.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Sep 2019 06:06:26 -0700 (PDT)
+        Fri, 20 Sep 2019 08:15:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59360 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60690 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iBIcD-0004gh-Gj
-	for alex.bennee@linaro.org; Fri, 20 Sep 2019 09:06:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50133)
+	id 1iBKdY-0008ID-4n
+	for alex.bennee@linaro.org; Fri, 20 Sep 2019 11:15:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41872)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iBIVF-00089e-OK
- for qemu-arm@nongnu.org; Fri, 20 Sep 2019 08:59:15 -0400
+ (envelope-from <clg@kaod.org>) id 1iBKdL-0008HS-DL
+ for qemu-arm@nongnu.org; Fri, 20 Sep 2019 11:15:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iBIVD-0007T4-Hk
- for qemu-arm@nongnu.org; Fri, 20 Sep 2019 08:59:12 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36720)
+ (envelope-from <clg@kaod.org>) id 1iBKdJ-0008Pp-8s
+ for qemu-arm@nongnu.org; Fri, 20 Sep 2019 11:15:43 -0400
+Received: from 11.mo4.mail-out.ovh.net ([46.105.34.195]:48962)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iBIVC-0007S5-Mx; Fri, 20 Sep 2019 08:59:11 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 4B80110C050B;
- Fri, 20 Sep 2019 12:59:07 +0000 (UTC)
-Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 91134600C6;
- Fri, 20 Sep 2019 12:58:46 +0000 (UTC)
-Subject: Re: [RFC] error: auto propagated local_err
-To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
-References: <20190918130244.24257-1-vsementsov@virtuozzo.com>
- <abb14088-6af2-5db2-da0d-0948fd4ac81c@redhat.com>
- <20190919091720.GB10163@localhost.localdomain>
- <57483252-273c-4606-47a8-eddeb840109a@redhat.com>
- <35c972e1-bdb5-cbcb-ed45-6a51f19af98c@virtuozzo.com>
- <696673be-95c8-3f75-551c-26fccd230eb1@virtuozzo.com>
- <152afb5b-8efb-d968-d595-94f58ad02a04@redhat.com>
- <20190919144948.GR20217@redhat.com>
- <b5128e58-8b90-233d-6bb1-cc9009852d8d@redhat.com>
- <20190919155045.GS20217@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=eblake@redhat.com; keydata=
- xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
- xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
- TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
- GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
- sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
- AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
- CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
- RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
- wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
- Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
- gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
- pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
- zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
- pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
- 3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
- NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
- cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
- SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
- I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
- mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
- Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
- 2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
-Organization: Red Hat, Inc.
-Message-ID: <4ad0fead-f016-6ead-d97c-89d266787bb3@redhat.com>
-Date: Fri, 20 Sep 2019 07:58:45 -0500
+ (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iBKdH-0008Nr-Dw
+ for qemu-arm@nongnu.org; Fri, 20 Sep 2019 11:15:41 -0400
+Received: from player158.ha.ovh.net (unknown [10.108.54.67])
+ by mo4.mail-out.ovh.net (Postfix) with ESMTP id 5FC99205329
+ for <qemu-arm@nongnu.org>; Fri, 20 Sep 2019 17:15:36 +0200 (CEST)
+Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
+ (Authenticated sender: clg@kaod.org)
+ by player158.ha.ovh.net (Postfix) with ESMTPSA id 483EC9F38821;
+ Fri, 20 Sep 2019 15:15:31 +0000 (UTC)
+Subject: Re: [PATCH 03/21] hw: aspeed_scu: Add AST2600 support
+To: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>
+References: <20190919055002.6729-1-clg@kaod.org>
+ <20190919055002.6729-4-clg@kaod.org>
+ <139c3f7e-465e-4efb-b6c7-213dcd2ec6b7@www.fastmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <2a267d68-2463-ae0d-00d0-d9a33ba845b2@kaod.org>
+Date: Fri, 20 Sep 2019 17:15:30 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190919155045.GS20217@redhat.com>
+In-Reply-To: <139c3f7e-465e-4efb-b6c7-213dcd2ec6b7@www.fastmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.65]); Fri, 20 Sep 2019 12:59:07 +0000 (UTC)
+X-Ovh-Tracer-Id: 17084123714722892755
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrvddvgdekiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmd
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+X-Received-From: 46.105.34.195
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -125,113 +89,86 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "fam@euphon.net" <fam@euphon.net>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "mst@redhat.com" <mst@redhat.com>, "codyprime@gmail.com" <codyprime@gmail.com>,
- "mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "kraxel@redhat.com" <kraxel@redhat.com>,
- "sundeep.lkml@gmail.com" <sundeep.lkml@gmail.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- "quintela@redhat.com" <quintela@redhat.com>,
- "david@redhat.com" <david@redhat.com>,
- "mdroth@linux.vnet.ibm.com" <mdroth@linux.vnet.ibm.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
- "borntraeger@de.ibm.com" <borntraeger@de.ibm.com>,
- "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
- "david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>,
- "farman@linux.ibm.com" <farman@linux.ibm.com>,
- "groug@kaod.org" <groug@kaod.org>, "dgilbert@redhat.com" <dgilbert@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "stefanha@redhat.com" <stefanha@redhat.com>,
- "jsnow@redhat.com" <jsnow@redhat.com>, "rth@twiddle.net" <rth@twiddle.net>,
- Kevin Wolf <kwolf@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- "mreitz@redhat.com" <mreitz@redhat.com>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DJ5ISDkgtm6s
+X-TUID: BKQ8rsGjbDoJ
 
-On 9/19/19 10:50 AM, Daniel P. Berrang=C3=A9 wrote:
-
-> To get some slightly less made-up stats, I did some searching:
->=20
->   - 4408  methods with an 'errp' parameter declared
->=20
->      git grep 'Error \*\*errp'|  wc -l
->=20
->   - 696 methods with an 'Error *local' declared (what other names
->     do we use for this?)
->=20
->      git grep 'Error \*local' | wc -l
-
-Covers 'local' and 'local_err'.  We also have:
-
-git grep 'Error \*err\b' | wc -l
-553
-
-So 1249 local errors.
-
->=20
->   - 1243 methods with an 'errp' parameter which have void
->     return value (fuzzy number - my matching is quite crude)
->=20
->      git grep 'Error \*\*errp'|  grep -E '(^| )void' | wc -l
->=20
->   - 11 methods using error_append_hint with a local_err
->=20
->      git grep append_hint | grep local | wc -l
+On 20/09/2019 06:10, Andrew Jeffery wrote:
 >=20
 >=20
-> This suggests to me, that if we used the 'return 0 / return -1' convent=
-ion
-> to indicate failure for the methods which currently return void, we cou=
-ld
-> potentially only have 11 cases where a local error object is genuinely
-> needed.=20
->=20
-> If my numbers are at all accurate, I still believe we're better off
-> changing the return type and eliminating essentially all use of local
-> error variables, as void funcs/local error objects appear to be the
-> minority coding pattern.
-
-When relying on a return value, you do have to check whether a negative
-return value happens if and only if errp is set; that's something that's
-harder for code grepping to spot.  I'm not opposed to that coding
-pattern, just pointing out that it requires some semantic analysis,
-while MAKE_ERRP_SAFE() coupled with checking *errp is easier to prove at
-a glance that the check for whether an error happened is 1:1 associated
-with whether an error is reported.
-
->=20
->=20
->>> There are lots of neat things we could do with auto-cleanup functions=
- we
->>> I think we need to be wary of hiding too much cleverness behind macro=
-s
->>> when doing so overall.
+> On Thu, 19 Sep 2019, at 15:19, C=C3=A9dric Le Goater wrote:
+>> From: Joel Stanley <joel@jms.id.au>
 >>
->> The benefit of getting rid of the 'Error *local_err =3D NULL; ...
->> error_propagate()' boilerplate is worth the cleverness, in my opinion,
->> but especially if also accompanied by CI coverage that we abide by our
->> new rules.
+>> The SCU controller on the AST2600 SoC has extra registers. Increase
+>> the number of regs of the model and introduce a new field in the class
+>> to customize the MemoryRegion operations depending on the SoC model.
+>>
+>> Signed-off-by: Joel Stanley <joel@jms.id.au>
+>> [clg: - improved commit log
+>>       - changed vmstate version
+>>       - reworked model integration into new objet class ]
+>> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>> ---
+>>  include/hw/misc/aspeed_scu.h |   7 +-
+>>  hw/misc/aspeed_scu.c         | 190 +++++++++++++++++++++++++++++++++-=
+-
+>>  2 files changed, 189 insertions(+), 8 deletions(-)
 >=20
-> At least we're both wanting to eliminate the local error + propagation.
-> The difference is whether we're genuinely eliminating it, or just hidin=
-g
-> it from view via auto-cleanup & macro magic
+> ...
 >=20
-> Regards,
-> Daniel
+>> +static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,=20
+>> uint64_t data,
+>> +                                     unsigned size)
+>> +{
+>> +    AspeedSCUState *s =3D ASPEED_SCU(opaque);
+>> +    int reg =3D TO_REG(offset);
+>> +
+>> +    if (reg >=3D ASPEED_AST2600_SCU_NR_REGS) {
+>> +        qemu_log_mask(LOG_GUEST_ERROR,
+>> +                      "%s: Out-of-bounds write at offset 0x%"=20
+>> HWADDR_PRIx "\n",
+>> +                      __func__, offset);
+>> +        return;
+>> +    }
+>> +
+>> +    if (reg > PROT_KEY && !s->regs[PROT_KEY]) {
+>> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: SCU is locked!\n",=20
+>> __func__);
+>> +    }
+>> +
+>> +    trace_aspeed_scu_write(offset, size, data);
+>> +
+>> +    switch (reg) {
+>> +    case AST2600_PROT_KEY:
+>> +        s->regs[reg] =3D (data =3D=3D ASPEED_SCU_PROT_KEY) ? 1 : 0;
+>> +        return;
+>> +    case AST2600_HW_STRAP1:
+>> +    case AST2600_HW_STRAP2:
+>> +        if (s->regs[reg + 2]) {
+>> +            return;
+>> +        }
+>> +        /* fall through */
+>> +    case AST2600_SYS_RST_CTRL:
+>> +    case AST2600_SYS_RST_CTRL2:
+>> +        /* W1S (Write 1 to set) registers */
+>> +        s->regs[reg] |=3D data;
+>> +        return;
+>> +    case AST2600_SYS_RST_CTRL_CLR:
+>> +    case AST2600_SYS_RST_CTRL2_CLR:
+>> +    case AST2600_HW_STRAP1_CLR:
+>> +    case AST2600_HW_STRAP2_CLR:
+>> +        /* W1C (Write 1 to clear) registers */
+>> +        s->regs[reg] &=3D ~data;
 >=20
+> This clear should respect the protection register for each strap case.
 
---=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+Joel,
+
+You are the expert ! :)=20
+
+Thanks,
+
+C.
+
+

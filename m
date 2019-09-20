@@ -1,115 +1,112 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2803717wrp;
-        Fri, 20 Sep 2019 12:27:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyXdLX1aP1A8Hb9UKY40PTrY0rEBA2Y1DpiYAwx8rosttkYRFtbFVKOl1eZXrGvHjTC/TEh
-X-Received: by 2002:adf:ef49:: with SMTP id c9mr13128567wrp.122.1569007657207;
-        Fri, 20 Sep 2019 12:27:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569007657; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2947796wrp;
+        Fri, 20 Sep 2019 15:09:44 -0700 (PDT)
+X-Received: by 2002:a17:90a:65c9:: with SMTP id i9mr6948262pjs.54.1569017384066;
+        Fri, 20 Sep 2019 15:09:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569017384; cv=none;
         d=google.com; s=arc-20160816;
-        b=UuEq8xWncdNKkjTYAEdVA0nxiiYsFsCXiHLX64DRl/k8nn5Z9ZTlNeu4RdUXXzpLRI
-         oca2lfpv7WXhmoj2PktfA/NDiCDUva15OeeFT/PET89pT2nHGv5TsZbGI+8ssIjViL3y
-         sNgHAO5ki/hlXXZGaHTIPO6AGBM+fQmr136pwOmjwzut0l9eAPUz9UYRwWzxNI2/RiX+
-         UzuDi9rfXWoLtdI8lSVDmkahNXgn3HcOQ/ox/L+tzwsYUmpDDVc+e7kskJZ3kuN4xoTC
-         x4S9gkiska93EVRZPqaD/0Kf8UG+Q6ZNgTnvR6QPZKWV3WdZHZEaYxSwSYZ2+F2bXuC8
-         kBvg==
+        b=RFKq6cJyhP/vTLVuMepSFDumLfhxF2dUUAtUYeNplkpjtB68DXxkrE0DvktaDfr7AS
+         Sr3k6FZLy9tMJ4wro8WenL6AhicwX2gvPMeUUC5+qBniluqbTSxWkY38qSO4oMH+DuYO
+         I18f0cFAMoLFimbD4almd64P9rLtc0+TKf4XCkH4Gm8lPSI0SHwygG7mWS8UEGXfhiQR
+         5L0Iqm19xjFfO/f7Y2Nu37Z61ZvBXeKQAjMeyeZ3qd/OCmfvu0s9InxgDVJ1d25qKLpw
+         aZD/lVmt5xXcyuHwTEmZEuQ/pZz6sF8BSmi/0YnYxoSKoefHD75b+4xxpMHJBwQFX8GJ
+         VurA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=ZLbGt7AKAZtt83OO0UsDS6v7d5QP5N95kaRb+sY7icc=;
-        b=F+4Y8a2/ypVVGwvlyPnkX/A+iC+4kEV0tMVkgE0eKxpcaOQ/xr7CZHAfKbcZHjVMGz
-         2y0EOYOlDV/DrWO0oCVLJYClHJVHJJXGE7HklahMbNL9NQRsfN4kuhrh6KiKYZr9klzL
-         KttoRNXjPhjgNVxLNRGbLTphvrDByLaUJ3jV1S5uQRI5wQMOnpFQr5JGSGfR/rlfOUcL
-         blW6f5DR6+tqEKZ8J8RtK1mWv9qad0UpliM0yY5l5LZsGqFfvbI99YfFWKd/NRxAtFWy
-         le54EbTTpV7e5C/Yq02k6hv3eorwCtOzg3bUDI1raRaAsfFkNsRFWrX7wHZl1zLrpEPZ
-         KCAw==
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=Xq6CjTsGZJR9XwIXAsothWRRID2FfNd4/CnJWbG8XTM=;
+        b=rXaHL4sSMYPJvyk3aidtoLpfTLZoNO9yTVgcvIzliZ0PPU4We0AR0qtMx7Irwt6IpK
+         LBUMW1XQLhrxQABA2FR5BMBazkOG6J2lAW34vHqayzC7DSjytl5iCS10H4CsVu0lPuT9
+         ERD/u2i8+yrZB8eDa3yA8bC4Eo7c22M6kIXAFV0cd3mBOKUZX2WSKRQBrKXEcb9dr5fy
+         2jGRD98WRi2l9KvauXBkxxPOBFAvuMIGq+ZHkagOloX4jSVmcFiFrCm3klJdTWJk3N4V
+         lHoOPFGqowN/70njo9CzVXfHsDG5EbQKfx094nYvJFvOq66fusLw8n/2Ks/tihiuPv4g
+         eAFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
-Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [212.227.126.131])
-        by mx.google.com with ESMTPS id n16si439171wrg.43.2019.09.20.12.27.35
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Sep 2019 12:27:36 -0700 (PDT)
-Received-SPF: neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=212.227.126.131;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Wydt88o8;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id m25sor3079862pgb.83.2019.09.20.15.09.43
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Fri, 20 Sep 2019 15:09:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 212.227.126.131 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
-Received: from [192.168.100.1] ([78.238.229.36]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1M1JJC-1iE8eh0JBK-002oJ8; Fri, 20 Sep 2019 21:27:29 +0200
-Subject: Re: [PATCH v2 06/16] target/ppc: fix signal delivery for ppc64abi32
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Riku Voipio <riku.voipio@iki.fi>
+       dkim=pass header.i=@linaro.org header.s=google header.b=Wydt88o8;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=Xq6CjTsGZJR9XwIXAsothWRRID2FfNd4/CnJWbG8XTM=;
+        b=Wydt88o8wqr9s6XOMuXl1rGL6qL6HGEF3+opEmxczu8NZuMzPKPMiuquy8fXQWY0qg
+         l7vuSspLHTPzhoaG5YNumwuE05CGagRwls+ttmxKmAkueKos6K+453WZmFJcU//b8Wse
+         TS9rOZ6BXnPuEJAL8OMtnjHWpbB36SGP50YiSmhFvd16o+nSjgBOY1Q5PXBPKrSqk9na
+         7HZpkOZonKR6AgLaUcn/WNn1Zyu234WBCuWyBOWhHRzNe/6TXrbApp58WSxmMk1UTxdO
+         UtY8EPEN/32fft32iiov2H5qFVX8sbJvomxzZJSt7lfuDmUPxpKHKd2Nw5kSzdL3+aJH
+         spjQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=Xq6CjTsGZJR9XwIXAsothWRRID2FfNd4/CnJWbG8XTM=;
+        b=VK8JPNAJCsOla2cjB0OdyoIjQ/esbCUxb6E7O24E+EmPbjhFacATixMbIskmhleH/c
+         SJHDR6/LLb87ZKhzyotMtbHEvaQsEDYAMpux74qWYwx2HpxHObdI79xA0lkRkr3odzzp
+         0jKDsJ0/mD98m/m2m8RvR3+WJ15iollOQoaQCH3XAjVmoty3VCRK2v6lS4SfRNvnkqzt
+         dbz2uU0x36K9SsGqQynd8AAuMf8uedkwnUcaR1nqrrHWc2oymtkxQ2g+SRbSS7fHYzIs
+         WdxLwnypnEQM8P1TJhB5bn6/59rkxUK9CgUkJ3QdMTqA17beddWBZBxrKMoYlA6Rzd3b
+         y0Ow==
+X-Gm-Message-State: APjAAAX/IPylE7c5+A8FzryNoniwJW74jsdNIcWuHuis9NWkAKTGhaGM
+	HSZJ1r6481QhuGlSQ/f1BWI2o0GL
+X-Google-Smtp-Source: APXvYqz5JelNdtvqL+XIhk1bmq9WBlrlX2ISeidqgXyz7O6rOYDUVY/H+U2T513vCCkNd/0abesKTg==
+X-Received: by 2002:a63:5b23:: with SMTP id p35mr17082669pgb.366.1569017383421;
+        Fri, 20 Sep 2019 15:09:43 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+        by smtp.gmail.com with ESMTPSA id v44sm3832336pgn.17.2019.09.20.15.09.42
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 20 Sep 2019 15:09:42 -0700 (PDT)
+Subject: Re: [PATCH v2 10/16] tests/tcg: add generic version of float_convs
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org
 References: <20190919171015.12681-1-alex.bennee@linaro.org>
- <20190919171015.12681-7-alex.bennee@linaro.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Message-ID: <3a341d3e-ff80-2af5-8163-da6469d89d6e@vivier.eu>
-Date: Fri, 20 Sep 2019 21:27:26 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.0
+ <20190919171015.12681-11-alex.bennee@linaro.org>
+ <c6cd971c-e84c-c5c9-b313-2e454e02a1da@linaro.org> <87impnz568.fsf@linaro.org>
+ <87h857z32j.fsf@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <0b0c45c7-4b9b-0d03-01aa-25a689a8f914@linaro.org>
+Date: Fri, 20 Sep 2019 15:09:40 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190919171015.12681-7-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <87h857z32j.fsf@linaro.org>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:nxZl/62RJ0y43RIGrlYlNwhTB6TEv6JQ/X7nkTGgsXplZWufv49
- YRZZi2IjYtrc8d1isdlcDG8XQajcO6bpMizb1CWYuflVngJerLFYiO6NA9P6tSiE8xhonng
- MYCN2UB00J3dqnRHOax2XkkeOmS+LGBB2zMjY/J55TZtQimXjCO19a1kaLjKd9FSBRl/jGh
- vorgUKwpHIhfKVqWpIRqA==
-X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:1aVzMhnyIRY=:ntk5TOdy9Dk+KiqR8hBP4/
- ZEX5CO/573aED8IvjDXO+r3qJW7HriEeV7T6eKdFKPmqLEQlU//HITUZZHkDb4rZdJO2et2JJ
- /6gyXD1S0bO47oKsPEgyTuAHKXpDDca6SsI2SGiUGdlb/x8mmvrfwsFohHu8iH87PQRkenWbu
- Q0s6+WWPssKFwCeOVnA1j3CSrcmIqu5a4KKvJHh11WPMqNAWsGbmlAvBaWX+ET2Gwm8KrulbT
- TIx0q987vgVFlEhSOEI36sGiBDPVfXYNQYPq8rxgz+epspXN6g9PNnMysmEFy76HczYiMT9oE
- /FALlJUkvAoSvlrxek34srQXLQpMCowvwkrvbAaJ3BdzNcZ8QT+7GqnN/6V9xLAv6EzjUrgHk
- 6/b2b1j8Loz8Es5pX9Gzkq3F2bsYokHDm+mN3JkTKhyZq9uFZOEjQAEprr2IiyZ34hyO0Jgqw
- /hSJeuGN6HS9A0OhjShWs5dlYAZK6Liowt+hzDlPtxYgsmoRx1oP5hkwIJ4gQJeaq5pkjtU6f
- rpVcl2jGTR/5fk8RqOky5L1eD5blgaXrDYK7KvzwQ70PZKCMoZzS8AmxcmNzRurBdisaTHgrU
- YnQSN/lUqe3hXUJESwPgs0l6MEOpg6XU2BKFWiYRUIJMVlNYmDWMvq5Cb9s2xufqqKxq0p2i5
- XuBflIiG/8uvx9WncP0xswOyHM5nll2Lj5nwRxGW45lpjubzNGCorsCLpAN99aaVuYfdp82nA
- 6gnC1Q6xkZVwsTQb67UhmPTUVtIJP0xPwbJT6g6CN2PHqgfaCclRxsH29nC/prNi/xnJG7s+U
- rG0ClQLiK4cE1PeB3iy2L/fczQmjfbUpvDXZJ8lVe9ltZr6gniiPe5umMaWWe/uBm+QcCl4aH
- DT88S7A5qf/hp2eRXiubHnc9MeETG4DM7oWU+g8cw=
-X-TUID: oHMd+J7eFn1a
+X-TUID: m8Hw67+2V2Ik
 
-Le 19/09/2019 à 19:10, Alex Bennée a écrit :
-> We were incorrectly using the 64-bit AIX ABI instead of the 32-bit
-> SYSV ABI for setting NIP for the signal handler.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> 
-> ---
-> v2
->    - change to wording
-> ---
->   linux-user/ppc/signal.c | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/linux-user/ppc/signal.c b/linux-user/ppc/signal.c
-> index 619a56950df..5b82af6cb62 100644
-> --- a/linux-user/ppc/signal.c
-> +++ b/linux-user/ppc/signal.c
-> @@ -501,7 +501,9 @@ void setup_rt_frame(int sig, struct target_sigaction *ka,
->       int i, err = 0;
->   #if defined(TARGET_PPC64)
->       struct target_sigcontext *sc = 0;
-> +#if !defined(TARGET_ABI32)
->       struct image_info *image = ((TaskState *)thread_cpu->opaque)->info;
-> +#endif
->   #endif
->   
->       rt_sf_addr = get_sigframe(ka, env, sizeof(*rt_sf));
-> @@ -557,7 +559,7 @@ void setup_rt_frame(int sig, struct target_sigaction *ka,
->       env->gpr[5] = (target_ulong) h2g(&rt_sf->uc);
->       env->gpr[6] = (target_ulong) h2g(rt_sf);
->   
-> -#if defined(TARGET_PPC64)
-> +#if defined(TARGET_PPC64) && !defined(TARGET_ABI32)
->       if (get_ppc64_abi(image) < 2) {
->           /* ELFv1 PPC64 function pointers are pointers to OPD entries. */
->           struct target_func_ptr *handler =
-> 
+On 9/20/19 3:15 AM, Alex Bennée wrote:
+> I can't figure out what is meant to be going on with CONVERT_BITS. It
+> seems to be implying there is a direct relationship between status flags
+> and the exception disable bits. But that is confusing because integer
+> overflow (IOV) and float overflow (OVF) are different flags bit I assume
+> both suppressed by Overflow Disable (OVFD).
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+I had failed to notice that the kernel routine plays with INV and not IOV for
+the emulation of CVTTQ, so it's the SWCR_TRAP_ENABLE_INV bit that controls
+whether CVTTQ/S raises a signal.
+
+Will fix.
+
+> Why are we doing this magic 32 bit shuffling anyway? Is it purely to
+> save 32 bits of a mostly empty lower half of the FPCR register?
+
+Yes.  Which is not a great answer, but it was done years ago and there's little
+point in changing it back now.
+
+
+r~

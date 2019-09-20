@@ -1,153 +1,148 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2699722wrp;
-        Fri, 20 Sep 2019 10:41:07 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxTAGuUgx3in4YKu0HZrE/K9Hf8UiS+FzblGCidzyrF8OGfV4fJVMY68NJHVkD03iG6qYUy
-X-Received: by 2002:a17:906:19d9:: with SMTP id h25mr20180983ejd.43.1569001267628;
-        Fri, 20 Sep 2019 10:41:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569001267; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2937341wrp;
+        Fri, 20 Sep 2019 15:00:01 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwKlRIzJUlk8bwWwoX5mOOETKJCgZa+UrbOnyw0uiVKEK/EGtQCJOXjGnxSoU5T59vQ5vzu
+X-Received: by 2002:a17:906:c79a:: with SMTP id cw26mr20726163ejb.265.1569016801354;
+        Fri, 20 Sep 2019 15:00:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569016801; cv=none;
         d=google.com; s=arc-20160816;
-        b=xz+wcILnias32MUwIr15YOMx0LTZVvbJpcrMaYo48kK2rkkp+cArwkY4e5m6o+akFG
-         PXKNzpfvp0JRvILmpj7syerH7u6MUzwCMADDbqmUxSi/e6ouhQG3kWS3ulb0RtYRZT9K
-         1DQNszsMJA5d6TYDUrWBdW5GvjyRq7XKmolQqS/FqTFzdVo/5rTA9HPkdloZb9hQ+vyj
-         L9q/nrd8bIKQQkGvDS8QdLm5cJThtGsXwjdzD3eYQHMaxnTyAIKk2Nqieyg9ifkOLvXc
-         cEEFVVwpmjKV7D9N4/J0BtIBeqVp43bF0fWBN4n0sUtzRbkqC6vPx336l9eERbeFNyNP
-         EqYQ==
+        b=zR+tI1xEx3DHFdWv+i3PEQWugUBg7d0ntERvfua6cN2RTrMWp7If+/tMsfDw83WQGs
+         PdGv8vlK/ZrxnLyyN33d0cRiqqez9OOh2/Y0TbU3nAFjg8fUCoe1VKYfymYWQqaObBbt
+         I+0XJQOIb0S8/oCg+nNA6jsRg9fdAtQlOFmn9TuoA4YXHoiThrLb1IK39eb5suxAo1ux
+         kFqjWk4TFe4MsOUSggrtouyun0S/F2HL5reZvfHjPfIHQ0nh3KEG0tHYLHDF7ky2MhzU
+         ocYJimEG+cvUtoIePKPGLQqbtvnynYdboWJMJr2Lq2f1NaU8AbtlsEh+Frr7JKAHlOAK
+         8tWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=pd1d+il4V+KkThmMTERSYGXdeHgQGOjSI8wZb/+55zM=;
-        b=mHBQHMk23n68/3WpwybzEqtoMDBAH5/JjU9s38FAiMovNiEju8UlcFUDt2JdijvmLm
-         XfVd3J4hs7AInz7fa6FvcVi8KSkpgFzOZ+OKT8riaLDrNyfIbb0YT1Ktaga4ZNONatHu
-         x2Orkf5mx+mZDQR29/eD77A4UC9N6UDErz25N05vXbpZQ1N2dUNy9GtXy+RXZG9zUVrV
-         +5wuEkZcy3xDLj8VSNYwoPHOI4KPSIp/hgd6P8FEh0+Mlls9blmovkpSavsBEAB5GUh8
-         8ATVSqbK1n7H2LNri3EedZzZ0X+kdPCYxypc7txipBqUdhKwDAKafYt+mLIAUMBBvKXJ
-         PAAw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:openpgp:from:references:to:subject:dkim-signature;
+        bh=Fl/f3/ggFALzae9KsX0yoWKHmaMvS7SHiXxmHzfRV2g=;
+        b=VhhUpvaYS/YscofzCmBn/wJXv3GbZYfZuVxdR8SdZtKgwvgNa6qAE2yh8lJ5+jZ3Wq
+         hy8DHnaCPQ2Yzq9NHBawyCCi2wne1XeIjRGeD2N+GLirfCnaGejqIcezuauBRev++EIs
+         VwMortDALVgt91B3P9Yhk/YUbEVh5BY1kPj/nSbiLe3I0rgUI0j6VeGY1yZTSMZc3UQd
+         RXxYRW3b7djCyG1e34vaLOinp1UFhdqoGA8L1oylInV4ltqFzYcsZC8M43sZN2fQVwPy
+         rrBzRWtTZBpe7jQvV90339K6a0gSSJdZr4l27EswWZZdtdIL/2brMA5iCAORGimIzJ85
+         iVIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dZAYsfq3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=vDW+y7o+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g14si1642619edm.407.2019.09.20.10.41.07
+        by mx.google.com with ESMTPS id z16si2266547edb.420.2019.09.20.15.00.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Sep 2019 10:41:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 20 Sep 2019 15:00:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dZAYsfq3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=vDW+y7o+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34190 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35664 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iBMu2-0006T0-Kx
-	for alex.bennee@linaro.org; Fri, 20 Sep 2019 13:41:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39029)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iBQwa-0003oK-Ei
+	for alex.bennee@linaro.org; Fri, 20 Sep 2019 18:00:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55691)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iBMtg-0006Q8-I0
- for qemu-arm@nongnu.org; Fri, 20 Sep 2019 13:40:45 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1iBQwC-0003nm-GL
+ for qemu-devel@nongnu.org; Fri, 20 Sep 2019 17:59:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iBMtf-00008F-1p
- for qemu-arm@nongnu.org; Fri, 20 Sep 2019 13:40:44 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:44386)
+ (envelope-from <richard.henderson@linaro.org>) id 1iBQwB-0000nU-3x
+ for qemu-devel@nongnu.org; Fri, 20 Sep 2019 17:59:36 -0400
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:37088)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iBMte-00007r-Sm
- for qemu-arm@nongnu.org; Fri, 20 Sep 2019 13:40:43 -0400
-Received: by mail-wr1-x441.google.com with SMTP id i18so7571727wru.11
- for <qemu-arm@nongnu.org>; Fri, 20 Sep 2019 10:40:42 -0700 (PDT)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1iBQwA-0000nH-SN
+ for qemu-devel@nongnu.org; Fri, 20 Sep 2019 17:59:35 -0400
+Received: by mail-pl1-x641.google.com with SMTP id b10so3808872plr.4
+ for <qemu-devel@nongnu.org>; Fri, 20 Sep 2019 14:59:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=pd1d+il4V+KkThmMTERSYGXdeHgQGOjSI8wZb/+55zM=;
- b=dZAYsfq3BnTXrhPNXwWj5FbwPIBkonMcemnzkmg4/rgJAoO630LTjjjv3kwwa2qH51
- suIC05jyge/GygtOfpnFLSikuGu5SbOERB5N2DFSkkRXNHrAhVM9t6dAlYyg7wtl4Ogh
- y7MkRvoNK3aeDK7E5bftNOV/UmlBoWAauKelqK3lwf93q+bClN0g0PH7A7hb5ugC3lhh
- yMfqw4JPUtfSqBCsEUkNGwuNbHzO8+C0HyNckz6sLhacbYzoLikm9t5dWoHOt/uYgw2g
- cdBkibvaM8E3VWfUBQybbtlNYLnE21+a9BpPI8Mt/hGDCMrBEC6K46kSy/X3YAj0YKHw
- M2lg==
+ h=subject:to:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Fl/f3/ggFALzae9KsX0yoWKHmaMvS7SHiXxmHzfRV2g=;
+ b=vDW+y7o+zX5Fz1FCK2oMXaFJWCbR6923xJDqoc0+TnBTiHo8q+kwtXLAGBOs6aka7X
+ Ds5NdII/ESvYD0IzzZqovlRZ2qMDpTZ9AlVNNagNtkxsdiXjS9DZ4DHCy4l/fkMDFDBd
+ 8CtUk76bXOHdPaK7lLyAqCZpmhemST7IUVqPA0GDK9LsO0ZTgSm9nUFr6aq6kLzR/t3P
+ STkQN/ArmDNVt6B4ZR13t0HxvQL2ygw1iVHmam32wePD3XYh4aI2/5/VeClMJKqqNUQx
+ UpUtsF33/fiMcj31arwUUkaYn2F8MBa9XJEt77vf7Q8XW5gveAUwQEjOtqF/eIKak3fA
+ ajRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ h=x-gm-message-state:subject:to:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=pd1d+il4V+KkThmMTERSYGXdeHgQGOjSI8wZb/+55zM=;
- b=ZXQUd8Xhnpv8OsixSiqEp0jSkI5zoYiypfRrJ/7soxe6N3ryge+TzCxMLtLZrtGuXg
- U3RdcRXrRK6EV5OFtmVWe7fxoCfnVBzDMPqIIulaYHygEUL/lCKYcAXsUwkLWH8oPxL6
- yktJZCGbYyLAw7cDSPmD85v91Sv48g3dBaOlxe69uELA/tqfJXaLXhMDlUpVydeuUzRc
- arGm5qDq3dOAB4sK7Vw/Wbd3K6ha36wdlX/T4G4pmI0p5UTur9ecKu7OGDfaPml8YHp7
- muZXy5wBlP7iJKkJHj3mcaJq5D3Qqo6dC8jIXH7/dU8PuvDtl4A8FXF5Fw2SUkMhGQMv
- Grzw==
-X-Gm-Message-State: APjAAAVkG2eyaMSG26kg/5idz2/mJGlTlObUQg3gyd1Due/U6kWsF6Xw
- hDnm8qMuGMmty2a9LG+8RX6vCGsdGDpfqQ==
-X-Received: by 2002:adf:a350:: with SMTP id d16mr12503364wrb.326.1569001241540; 
- Fri, 20 Sep 2019 10:40:41 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id b144sm2710547wmb.3.2019.09.20.10.40.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 20 Sep 2019 10:40:40 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] hw/arm/boot.c: Set NSACR.{CP11,CP10} for NS kernel boots
-Date: Fri, 20 Sep 2019 18:40:39 +0100
-Message-Id: <20190920174039.3916-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ bh=Fl/f3/ggFALzae9KsX0yoWKHmaMvS7SHiXxmHzfRV2g=;
+ b=VoCI0/8z232NanLzKqRDIpiIX08Oz75VvIYXYieYXbfdVEJyxW3R2eoOiMR2wGFHMw
+ hBGh2ajN5E0c9wOfdI1kdLswF4R8GE4bSWLr6vqIeG3LuYlCHGI6rOR6DNSMzhuyykBY
+ 7MJT5eeZav18s++jC+ZefsJrP5Kf8SEMLAc1mWjfxNkKNiPrNfA83XIya92I7hMWy0PN
+ 4uwnHlbocm/4HC5y1Wi5dMEjryggaYATS+5YweKITMi29dMeY37J8zYLCRgJ/mWfluuK
+ ztoNTHYS2MPiNzUuSgTsVLJY32mZNruu7uyUEmm/zITmnEranHI46wbhDvcKCP60dJ5a
+ q+RQ==
+X-Gm-Message-State: APjAAAUc05Em25S5HlWbfalAA21NVhWtFAa7USMS+pFv0qSclg0VDLx5
+ RcyOB2wUMm61qGdP+qSBxVRAQ0esHWM=
+X-Received: by 2002:a17:902:202:: with SMTP id 2mr18424853plc.96.1569016772774; 
+ Fri, 20 Sep 2019 14:59:32 -0700 (PDT)
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id c10sm3478780pfo.49.2019.09.20.14.59.31
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Fri, 20 Sep 2019 14:59:31 -0700 (PDT)
+Subject: Re: [PATCH] hw/arm/boot.c: Set NSACR.{CP11,CP10} for NS kernel boots
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20190920174039.3916-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <ef0f2fab-d482-cb88-4966-ca9a2eb7ab44@linaro.org>
+Date: Fri, 20 Sep 2019 14:59:29 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <20190920174039.3916-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::441
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::641
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yGpCsO/4UuN2
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kbbqrIRjLU/N
 
-If we're booting a Linux kernel directly into Non-Secure
-state on a CPU which has Secure state, then make sure we
-set the NSACR CP11 and CP10 bits, so that Non-Secure is allowed
-to access the FPU. Otherwise an AArch32 kernel will UNDEF as
-soon as it tries to use the FPU.
+On 9/20/19 10:40 AM, Peter Maydell wrote:
+> If we're booting a Linux kernel directly into Non-Secure
+> state on a CPU which has Secure state, then make sure we
+> set the NSACR CP11 and CP10 bits, so that Non-Secure is allowed
+> to access the FPU. Otherwise an AArch32 kernel will UNDEF as
+> soon as it tries to use the FPU.
+> 
+> It used to not matter that we didn't do this until commit
+> fc1120a7f5f2d4b6, where we implemented actually honouring
+> these NSACR bits.
+> 
+> The problem only exists for CPUs where EL3 is AArch32; the
+> equivalent AArch64 trap bits are in CPTR_EL3 and are "0 to
+> not trap, 1 to trap", so the reset value of the register
+> permits NS access, unlike NSACR.
+> 
+> Fixes: fc1120a7f5
+> Fixes: https://bugs.launchpad.net/qemu/+bug/1844597
+> Cc: qemu-stable@nongnu.org
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
 
-It used to not matter that we didn't do this until commit
-fc1120a7f5f2d4b6, where we implemented actually honouring
-these NSACR bits.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-The problem only exists for CPUs where EL3 is AArch32; the
-equivalent AArch64 trap bits are in CPTR_EL3 and are "0 to
-not trap, 1 to trap", so the reset value of the register
-permits NS access, unlike NSACR.
 
-Fixes: fc1120a7f5
-Fixes: https://bugs.launchpad.net/qemu/+bug/1844597
-Cc: qemu-stable@nongnu.org
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/boot.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index bf97ef3e339..25422660545 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -754,6 +754,8 @@ static void do_cpu_reset(void *opaque)
-                     (cs != first_cpu || !info->secure_board_setup)) {
-                     /* Linux expects non-secure state */
-                     env->cp15.scr_el3 |= SCR_NS;
-+                    /* Set NSACR.{CP11,CP10} so NS can access the FPU */
-+                    env->cp15.nsacr |= 3 << 10;
-                 }
-             }
- 
--- 
-2.20.1
-
+r~

@@ -1,77 +1,73 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp497204wrp;
-        Sat, 21 Sep 2019 03:34:25 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx/2Bkcr9zcpYPUfGqfQEp7JsznHcfcGDtMtR6RYpl5Th/0wkH+jB8mzjBirdyeCCNkrn9m
-X-Received: by 2002:aa7:c743:: with SMTP id c3mr20422496eds.241.1569062065122;
-        Sat, 21 Sep 2019 03:34:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569062065; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp711844wrp;
+        Sat, 21 Sep 2019 08:04:59 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyCYwfeNfsHdLrvyDpTEt9FyvDGf6R/xvH4mVPka53Q5KUMdDPRRpxl6NkDBWxnV7mMkoG9
+X-Received: by 2002:a1c:9c51:: with SMTP id f78mr6971887wme.144.1569078299208;
+        Sat, 21 Sep 2019 08:04:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569078299; cv=none;
         d=google.com; s=arc-20160816;
-        b=CgQQFEEfE6fXLu/+ri3f12djeV3YBuIxsuquzPZOeh72AMYVkWotak2tzliemWg9J3
-         YuCBR9H6Dl84XsU5a4hyabKM+yJvrLrqtTzINMQ/023DTgtmKfWiEqzc43Hy7viMozfF
-         kcsyv5lP5A3GFxf021TXls+mFtcO1dNl52bg0tY/SIb6m03/0fJZZI7vFccN+1UY5sr0
-         VsVBlfHu8GMr8zRhmhzVYSPa8Yjvh1V/W5lsvFLzKFaohGZFb8e0NhThIyERy/xQqmgD
-         NrCJC+Sz4OLExhnKi7NGhM5g1S54nfArMR4KC+XI+hw7IKZ/KoGCTvO7JorX8Tf9ak3v
-         dqGA==
+        b=rlHaF+64gRUDjNQP/NCm1FMw7EwMshPAhr47Vc80JIJyy6D/romRBaS0XJBN3R5FuK
+         gcNFwVZlrE/VH4Ri/hN+IS3p11rVF0IYfS0tQHIHUwFz8nLX/z4f1Jviag4CTLsROReb
+         GIs8sX3P7QQDm6Mk2gBIKI80Byvf0NvrCXs8Qp5Pjd3kB/K3iYpslijtJYOxWy7cbgLY
+         6gblueutLzr0RmFpYAO4wRNlw/IU4CJpLIuWfJ/POclPIHUL0oDPzwo5xjJpQSl3JrEx
+         HayTibO9hHoFOzzo02u9axrDXiUrS4M6Im8BEBRzlyYW7A5XzRHvQ/euhu6PJjSV/zQl
+         q0uQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=d+Fe0leIo16SsXrmZDGKTyeXqu0oGw54YtM9o7TVH2I=;
-        b=A2qba0/LtoGD2Z21X+ppPPf8nUTeZHRWkdLpmLrZhXXcM8L+gsKj1hLePPLsVJN6el
-         OjbQ7O5tBgAWCL1FasFcCesbZUd/VdC+dcr9vrcXNMJeuHZGaskCUV8xEU0UP4MjEigv
-         wXQwXTqGc4H8ZhYiKPjenWL7faMIC27WHIu7ME9vtCmquGs4TK6vcGGEHYgSbGCFkDb1
-         nMJTKbErYfTYXv3o6oR4dU4Qzk3ypLr1xG1ayTp5r2nBQdLmbpFmmjXfk9eX+c3p9pRz
-         vjL4Knz5TJBjIUqRvNUohpKkEoE7jaIC9+boCXW5X4B+hP5rX1MzFnDMdL6OURPbcxLt
-         x2Jg==
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from;
+        bh=XWKR+GI4RANhME/sZVwF+joaD6fkq7djqJEa84ehpQ8=;
+        b=VmdXuovL4OwVr89n5FoXhuemJMkR+awuvkf9RGjwzxzzoY7cYVRr0Vxc3lqsRWCYZQ
+         IfRLeTzHXx50YOZp4T9EAorx8Sz5/imI9eTWzWZGlG4cyCH0Fx+FXyXSF5LS5kBos/iX
+         VeZWbkpuwmjlAQitr14n6D05hXjspFNwORdKiezXmIxc66wIvk9MjTL/i5DUfFsTUUGD
+         clqxDoNDoPYwvZqT5TTUt0LcFGr1lzfIgI6CFTKnjR5LCqCCpWmah4MTeWX40BGxlS4G
+         8NVLNO0YAXXycQkVhaYkvCW7+UgGQlcV0x6sV1ux7vwLAG8TBncgQfr95mH5+mfNy4Ed
+         sDzg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k9si2418766ejh.263.2019.09.21.03.34.25
+        by mx.google.com with ESMTPS id w8si3324860edq.391.2019.09.21.08.04.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Sep 2019 03:34:25 -0700 (PDT)
+        Sat, 21 Sep 2019 08:04:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40776 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42276 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iBcie-0007Pc-3S
-	for alex.bennee@linaro.org; Sat, 21 Sep 2019 06:34:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46993)
+	id 1iBgwT-0004Km-D7
+	for alex.bennee@linaro.org; Sat, 21 Sep 2019 11:04:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39746)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iBciW-0007PQ-62
- for qemu-arm@nongnu.org; Sat, 21 Sep 2019 06:34:17 -0400
+ (envelope-from <thuth@redhat.com>) id 1iBgw3-0004KD-Or
+ for qemu-arm@nongnu.org; Sat, 21 Sep 2019 11:04:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iBciU-0000n5-3Y
- for qemu-arm@nongnu.org; Sat, 21 Sep 2019 06:34:15 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56636)
+ (envelope-from <thuth@redhat.com>) id 1iBgw1-0003Ck-EO
+ for qemu-arm@nongnu.org; Sat, 21 Sep 2019 11:04:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51844)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1iBciT-0000md-R4; Sat, 21 Sep 2019 06:34:13 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1iBgw1-0003CV-9R; Sat, 21 Sep 2019 11:04:29 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id C61A5307D91F;
- Sat, 21 Sep 2019 10:34:12 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-61.brq.redhat.com [10.40.204.61])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id EA978600C6;
- Sat, 21 Sep 2019 10:34:07 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id A54088535D;
+ Sat, 21 Sep 2019 15:04:27 +0000 (UTC)
+Received: from thuth.com (ovpn-116-27.ams2.redhat.com [10.36.116.27])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2025E608A5;
+ Sat, 21 Sep 2019 15:04:23 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] hw/arm/boot: Use the IEC binary prefix definitions
-Date: Sat, 21 Sep 2019 12:34:04 +0200
-Message-Id: <20190921103405.19623-1-philmd@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH 0/4] Make it possible to compile with CONFIG_ARM_V7M=n
+Date: Sat, 21 Sep 2019 17:04:16 +0200
+Message-Id: <20190921150420.30743-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.48]); Sat, 21 Sep 2019 10:34:12 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+ (mx1.redhat.com [10.5.110.25]); Sat, 21 Sep 2019 15:04:27 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 X-BeenThere: qemu-arm@nongnu.org
@@ -85,65 +81,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Mv4ckj+41P52
+X-TUID: 6oQqj9KvH3tj
 
-IEC binary prefixes ease code review: the unit is explicit.
+We've got CONFIG_ARM_V7M, but it currently can't be disabled.
+Here are some patches that should allow to disable the switch
+(if the corresponding boards are disabled, too).
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/arm/boot.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+RFC -> v1:
+ - Move the definitions into internals.h instead of cpu.h in the 1st patch
+ - Instead of creating an ugly stubs file, simply make armv7m_nvic.c
+   mandatory for linking.
 
-diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-index bf97ef3e33..59bb2fa0d3 100644
---- a/hw/arm/boot.c
-+++ b/hw/arm/boot.c
-@@ -1095,7 +1095,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cp=
-u,
-      * we might still make a bad choice here.
-      */
-     info->initrd_start =3D info->loader_start +
--        MIN(info->ram_size / 2, 128 * 1024 * 1024);
-+        MIN(info->ram_size / 2, 128 * MiB);
-     if (image_high_addr) {
-         info->initrd_start =3D MAX(info->initrd_start, image_high_addr);
-     }
-@@ -1155,13 +1155,13 @@ static void arm_setup_direct_kernel_boot(ARMCPU *=
-cpu,
-                  *
-                  * Let's play safe and prealign it to 2MB to give us som=
-e space.
-                  */
--                align =3D 2 * 1024 * 1024;
-+                align =3D 2 * MiB;
-             } else {
-                 /*
-                  * Some 32bit kernels will trash anything in the 4K page=
- the
-                  * initrd ends in, so make sure the DTB isn't caught up =
-in that.
-                  */
--                align =3D 4096;
-+                align =3D 4 * KiB;
-             }
-=20
-             /* Place the DTB after the initrd in memory with alignment. =
-*/
-@@ -1178,7 +1178,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cp=
-u,
-                 info->loader_start + KERNEL_ARGS_ADDR;
-             fixupcontext[FIXUP_ARGPTR_HI] =3D
-                 (info->loader_start + KERNEL_ARGS_ADDR) >> 32;
--            if (info->ram_size >=3D (1ULL << 32)) {
-+            if (info->ram_size >=3D 4 * GiB) {
-                 error_report("RAM size must be less than 4GB to boot"
-                              " Linux kernel using ATAGS (try passing a d=
-evice tree"
-                              " using -dtb)");
---=20
-2.20.1
+Thomas Huth (4):
+  target/arm: Make cpu_register() and set_feature() available for other
+    files
+  target/arm: Move cortex-m related functions to new file v7m.c
+  hw/arm: Move armv7m_nvic.c to hw/arm/ and always enable it for arm
+    builds
+  default-configs: Do not enforce CONFIG_ARM_V7M anymore
+
+ default-configs/arm-softmmu.mak |   3 -
+ hw/arm/Makefile.objs            |   2 +
+ hw/{intc => arm}/armv7m_nvic.c  |   0
+ hw/arm/trace-events             |  17 +++
+ hw/intc/Makefile.objs           |   1 -
+ hw/intc/trace-events            |  17 ---
+ target/arm/Makefile.objs        |   1 +
+ target/arm/cpu.c                | 166 +--------------------------
+ target/arm/cpu64.c              |  17 +--
+ target/arm/internals.h          |  18 +++
+ target/arm/v7m.c                | 193 ++++++++++++++++++++++++++++++++
+ 11 files changed, 234 insertions(+), 201 deletions(-)
+ rename hw/{intc => arm}/armv7m_nvic.c (100%)
+ create mode 100644 target/arm/v7m.c
+
+-- 
+2.18.1
 

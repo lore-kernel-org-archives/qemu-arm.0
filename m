@@ -1,135 +1,150 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp731535wrp;
-        Sat, 21 Sep 2019 08:27:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyny4n1hxhpIiAZmcLYzVLhBgeJfHEEHuQFuOjFfnz0yskjnqlNirzCvPDrNpMnARJQe89Y
-X-Received: by 2002:a37:83c7:: with SMTP id f190mr8361025qkd.221.1569079670384;
-        Sat, 21 Sep 2019 08:27:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569079670; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp987453wrp;
+        Sat, 21 Sep 2019 14:23:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz4dGR+h5qv63vVhK49R4Qwvo5VF2egnry6HoYFQf09kX/95Kf2Aizzg8IXGIGOjZiR/WiV
+X-Received: by 2002:a17:906:60d0:: with SMTP id f16mr24375271ejk.267.1569101034569;
+        Sat, 21 Sep 2019 14:23:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569101034; cv=none;
         d=google.com; s=arc-20160816;
-        b=O4KbnrCEEWKDiGr5kvwGOhi2jyKY/L7HOwG1cOQpZ48MNW4mmSS380FICbY17934Yg
-         9qV084nRitIFx4hB5SFCgqn7YTz1CfaOWeobw2xA6Zy7FEqZIvFvZIYdmv7FHkEybRq3
-         uDEejoxmhfhz2S+lCSi6JWFLTJRKMN2slwgR+WEOEQYsY0rAfBuCkBmQhzfo0BD6efgF
-         5kcRbfdAp5CmdpTW0M35PpqLxpEQGiaRLcTWTDeMhkzQELr8IBiDhdvzkhIGJ75qWOn2
-         FoGGtil0sE7Aw9+uwLZY5kV6e8miDU4aH32qgEgFMG4ZxnV39XhKGthsHwlO92W4CfJi
-         HUgw==
+        b=tBWz67CgqmWFg0GFqsaQCZN+RsG78wm9zMDdJFVAHrKvfF2cGwnn83kczzJ5ECLqCT
+         tuX2HwyL35y7IMdpG2yb8cApuWIymy5RHt44PDkMmQKxMtmMhFfGllCn9v8ipMy0E6fr
+         YgmLFlwHSP8pmri/PdcjiG+v679ypygnKJ5fkXQwYEyOS4R17MZg2ipiQkmEEd/7KQZg
+         6cEnF2HN4gUW/CoscT+wDVxa13r60nTrF/4XHv+CGkDuS4Zqq/IgKze9xQIiYzwvHXq4
+         j9sL0MlF9gVACsTELoUBjuppS21LI36kNg1WtsYKJUtgNhxQgNm5M8z6/M/YLLsKIjKT
+         qfzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:openpgp:from:references:to:subject:dkim-signature;
-        bh=54rGvRC2DHDrzSXA4F9r+xIfJe2KBhX8HqaGRlC98Us=;
-        b=ex5zBApjnUy8TYoqq5vE4FQ6qq0lb+04aPSv6a8xsrwgT4glxZozy+sgeVT2pzz36L
-         6XfcieF3tq14/QmfBPg2057arYIBvi/9TryTHaiul8KP2Auh/HHinq8/fZgH3pRdE875
-         tFXg/OF4xHAi7m2gVSulminxrmDGO0QRZ8rVufVn8L2AFGRptSM7AXVvjPKPmjkeVK6+
-         tm62vByOggHoe+LbcKGEsew2bSCX574hxZ/qaNzbVj4r5o+Ow3jwVdAL1p1dUz3Af8cr
-         dlWeHSX7APIZz28Niluw2EqzvZA523pku8vu9Vy6ePy1KcaD6wR1VXbpsvYz8VIUCqR8
-         +DOg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=TkUzjYncvntC7zkP3J2VUBzsY3k1Kp6v5/zUdwOh6Ys=;
+        b=HvdavCpm2tiMgQYKplNxN/4mo+3267wGkwMpcyy/IPHNKgz8oMyAj+kBOMrnFJ858k
+         haFZHhwLMaIhd6XivJac4FotMsoDk3YSyBwpuIumuJ+OKbV7j75/J0RFfl0AnmkxDXaT
+         ML+f2saoD2ViL+VFqwNns/1T1RE4QOTm7h9tlrDNv4pgp0lcb1GcephvTM6wFDPwVblP
+         sbWgOVMe6F2LLNrOcfqKKOFUhkv0iqQX4/hFhnHVcrDw24s3rZNKNy2nUTOBlH/NVcGK
+         YWsDMz85aVNCkHB+moxpAqvOqRO95yhifKvvsJJQetBxu07Q06gmj8L47hhYewtBsqfi
+         7Nzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WGV7AXzr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dC5qynKD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u11si4583753qtk.198.2019.09.21.08.27.50
+        by mx.google.com with ESMTPS id k7si2830914eja.377.2019.09.21.14.23.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Sep 2019 08:27:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 21 Sep 2019 14:23:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WGV7AXzr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42450 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=dC5qynKD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:43816 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iBhIb-00071F-Nw
-	for alex.bennee@linaro.org; Sat, 21 Sep 2019 11:27:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41492)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iBmrB-00062N-KV
+	for alex.bennee@linaro.org; Sat, 21 Sep 2019 17:23:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37065)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1iBhHg-0006QW-0R
- for qemu-devel@nongnu.org; Sat, 21 Sep 2019 11:26:52 -0400
+ (envelope-from <sherrellbc@gmail.com>) id 1iBlwj-0001gf-4R
+ for qemu-arm@nongnu.org; Sat, 21 Sep 2019 16:25:34 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1iBhHf-00043l-3b
- for qemu-devel@nongnu.org; Sat, 21 Sep 2019 11:26:51 -0400
-Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:37520)
+ (envelope-from <sherrellbc@gmail.com>) id 1iBlwi-0004qG-05
+ for qemu-arm@nongnu.org; Sat, 21 Sep 2019 16:25:32 -0400
+Received: from mail-qk1-x734.google.com ([2607:f8b0:4864:20::734]:42031)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1iBhHe-00043N-RN
- for qemu-devel@nongnu.org; Sat, 21 Sep 2019 11:26:50 -0400
-Received: by mail-pf1-x441.google.com with SMTP id y5so6470228pfo.4
- for <qemu-devel@nongnu.org>; Sat, 21 Sep 2019 08:26:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=54rGvRC2DHDrzSXA4F9r+xIfJe2KBhX8HqaGRlC98Us=;
- b=WGV7AXzrPrHjbY72MWE3HQOyxMXk9Uv/QHqSWTx3J1wsWtTeXI3+i8G8Ybkm0PX5Oj
- wgA83b8J0ksXgdHT6du76U6IOfna6gOZltatny2qMiW1RT8dnGJGmIhza8hFiGQ055uZ
- dwjXc66SohjbF190q13QHPB+7WZRBjToSx77lpdgQJ11CEBbBayFl5NTh1/Y9CfEy+eT
- 0mHXdPrtKgAAYpbqtxEJxu8aswq2BE5YJ888lPbhznq/+H1XTR7pHI6H+rBqKIoIsMuT
- pOXhCf18QK72sg05A5BLprWQp/WMgPxri1+hOCLMXsUSoKMbJt+5d/vaSlw0rLVZwzgq
- uwzw==
+ (Exim 4.71) (envelope-from <sherrellbc@gmail.com>)
+ id 1iBlwh-0004pi-SM
+ for qemu-arm@nongnu.org; Sat, 21 Sep 2019 16:25:31 -0400
+Received: by mail-qk1-x734.google.com with SMTP id f16so11069719qkl.9
+ for <qemu-arm@nongnu.org>; Sat, 21 Sep 2019 13:25:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=TkUzjYncvntC7zkP3J2VUBzsY3k1Kp6v5/zUdwOh6Ys=;
+ b=dC5qynKDyBh5R4hbOAdVWpdROW0G2MUrpbffEhouHTTbC5/M3b4GzoInHo02uU2r4K
+ 4D5XGCpew/lfvLqUf9qNvQWKYQ4wFB4yZBACAXKAZE8RYwouTwAejwlY1tN6aUiTRzeR
+ C0QHaPDAFO2864GRig0gt7fAKAmp1rhPsUoZyEtH8qPyiCjuRYnI9e3LH6FDy8DEIFOp
+ ep/iPLHM+1+6fnrzgiu2KPJ81yHyG9y46VQXnlaha7h99zcLgDab8jO8QPSR79xd6CmM
+ gc1/SiU+jMCxCahoii/vsg0kTIjPRct9krS33hANdmm8uKplAGAZsW+gkVOBWqsfXN0R
+ aAGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=54rGvRC2DHDrzSXA4F9r+xIfJe2KBhX8HqaGRlC98Us=;
- b=faQiZFMiOiaH7381fooHBApnM/vij9AZiGXnWxfAprF4cbEvHazGsJ905SvC3KYwPN
- Ws8Xing1hFZnETDhBqM71LXMe9SEWxPf/H2KRNWQ1/ZzBhXQ7vMdmjVMfFuSk5jXqSwm
- GWxNltlR38NcdzmBcEmKSN+dVXqVn4vDpsTeQeJvL5PZoZFzj2rpmXMj3UGgvf4WWV6N
- rcFYG6Vm4McSdEdSvNC3lZoNY6JAFrO5ColD4RWlbR5tqxdD6hVXpgfJonFG4RUkBYk/
- 8IKnz1GOCcpzqdtETFCXhD+FDVEbL7T6oYiTwJOM39x93MvJc1sFLl4IRav4bHL2pme+
- YkfA==
-X-Gm-Message-State: APjAAAWH/b+hAaimzOKZ7MERkoeVfZnjLc+WL20aw5Yrx7sn6J1z3d19
- kvL2zWQoEyOkfQ+p5Qy1wKx5IA==
-X-Received: by 2002:a65:6254:: with SMTP id q20mr21209552pgv.423.1569079609657; 
- Sat, 21 Sep 2019 08:26:49 -0700 (PDT)
-Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id v18sm6083361pff.32.2019.09.21.08.26.48
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 21 Sep 2019 08:26:48 -0700 (PDT)
-Subject: Re: [PATCH] hw/arm/boot: Use the IEC binary prefix definitions
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20190921103405.19623-1-philmd@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <089a9b68-b1bf-66a4-f696-9e7e28bf6c4e@linaro.org>
-Date: Sat, 21 Sep 2019 08:26:47 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=TkUzjYncvntC7zkP3J2VUBzsY3k1Kp6v5/zUdwOh6Ys=;
+ b=sVLgYuHU/Nz5qg6tEmLaikNpZ5M350E2gjqNeF9J3pxyRnA2PuuwUCVeiFV+W++YwS
+ QgCiEQ0qFCZqZ8QH528CKWdx5hp5V+jsWL36KChJGfbANHX6WPOg0mjPCWFsvQwYJsGe
+ JgMwIIT1a4XD5TYzwRY4wbUCTD3HRO0it6ZNKoTZPFQBKFZ/JH8IL4X7mhIyYCYxvrLP
+ eY+wzh2PrLWk3PEjHkGiDeyDIaFF1gtzyB34Z+VlH+0ljsU4cIZkTnWe8So9dMikiSUq
+ IUmR0flEipKtsO9WQrnYEB6B+/F4+LKGRy8PrZXiw88n4gRNaL+JqG58fGA0JLfRsr5O
+ ytng==
+X-Gm-Message-State: APjAAAUExOksXgLzsmmNEDmH+j9WexhLAEA1h2vIHF/p6YFLwEsDyNJ/
+ zJnkI73qYHQJ3sIFajvN9sNwMB4HZm7ieKgtCxVZLQ==
+X-Received: by 2002:a37:ea1a:: with SMTP id t26mr10011538qkj.211.1569097530459; 
+ Sat, 21 Sep 2019 13:25:30 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190921103405.19623-1-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
+From: Branden Sherrell <sherrellbc@gmail.com>
+Date: Sat, 21 Sep 2019 16:25:19 -0400
+Message-ID: <CACkBWHZY72Hd6ekan5yi8RLf69g6Q4zHpuFvARaTOVw-_FjNoA@mail.gmail.com>
+Subject: Remapping Flash into VM address space
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="000000000000ebcc8d059315fc14"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::441
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::734
+X-Mailman-Approved-At: Sat, 21 Sep 2019 17:23:46 -0400
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vy6EH+ueIRtL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vKAUUV96KdAq
 
-On 9/21/19 3:34 AM, Philippe Mathieu-Daudé wrote:
-> IEC binary prefixes ease code review: the unit is explicit.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  hw/arm/boot.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+--000000000000ebcc8d059315fc14
+Content-Type: text/plain; charset="UTF-8"
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Hi all,
 
+I've been prototyping EL3 firmware using the virt device lately. After
+successfully initializing the page tables I was met with a particularly
+strange issue: I am unable to map the Flash memory range into the VM
+address space. At first I was identity mapping everything. I considered it
+might be a strange issue related to using address "zero", so I tried moving
+it above where I mapped RAM. However I'm always met with the same result:
+Data Abort.
 
-r~
+All other translations work, including the UART and RAM. I've tested my
+translation table configuration in many ways, including several VA mappings
+to the same PA and non-identity mappings. Everything works except those
+destined to hit the emulated Flash hardware. Is this a known issue? Is
+Flash handled differently than other emulated hardware in QEMU?
+
+I tried enabling MMU debugging with `-d mmu` but, after looking through the
+code, it appears to not be implemented for this target.
+
+--000000000000ebcc8d059315fc14
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi all,</div><div><br></div><div>I&#39;ve been protot=
+yping EL3 firmware using the virt device lately. After successfully initial=
+izing the page tables I was met with a particularly strange issue: I am una=
+ble to map the Flash memory range into the VM address space. At first I was=
+ identity mapping everything. I considered it might be a strange issue rela=
+ted to using address &quot;zero&quot;, so I tried moving it above where I m=
+apped RAM. However I&#39;m always met with the same result: Data Abort.<br>=
+</div><div><br></div><div>All other translations work, including the UART a=
+nd RAM. I&#39;ve tested my translation table configuration in many ways, in=
+cluding several VA mappings to the same PA and non-identity mappings. Every=
+thing works except those destined to hit the emulated Flash hardware. Is th=
+is a known issue? Is Flash handled differently than other emulated hardware=
+ in QEMU?</div><div><br></div><div>I tried enabling MMU debugging with `-d =
+mmu` but, after looking through the code, it appears to not be implemented =
+for this target.<br></div><div><br></div></div>
+
+--000000000000ebcc8d059315fc14--

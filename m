@@ -1,73 +1,74 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2943716wrp;
-        Mon, 23 Sep 2019 10:54:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwWcfH+37ETJCQNeCluNkEHciV3s9G8mzValRvnDD3rJKu7qU3mzuofw3QnxBxue+6y82wp
-X-Received: by 2002:a17:906:278a:: with SMTP id j10mr969077ejc.228.1569261296173;
-        Mon, 23 Sep 2019 10:54:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569261296; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2959722wrp;
+        Mon, 23 Sep 2019 11:09:42 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqynDNtbxx1P/nwALDfjhruDJETkuPAipSMK91/IsjGcu6iXC9JOJo5x02nbj1tR4wcfTaYA
+X-Received: by 2002:a50:eb8b:: with SMTP id y11mr1452867edr.200.1569262182308;
+        Mon, 23 Sep 2019 11:09:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569262182; cv=none;
         d=google.com; s=arc-20160816;
-        b=rruP0ZuuITJ6wLW7U+AzMBRKMa5PIZKSYbqgDVcPtjD0wgWqEDIMS8troQRbLDZ+o6
-         OMkOI1WOp23Px7ocSolmsiY4iFkn3WBkMTq9s7C97E630BcTnrt06cCI/K7PIcX6hJif
-         dOfsj3TMe3VaRd316voar5HlKs4/AiMY4FpO4hArNdUbT2VixXRxjmxTZsH9am5T6Eaw
-         G4y/qtrTVFRJI/f7WqLO1GctVzPlFiDOw7p5+byY1P560OPZmS6veZH3jAHMPZkTbSAu
-         +40cf2CTTPHfaWHV2fqbr7MHamTSwRvxLl4ItTWT2mTz6X790rZYbQBRP63fq3hEOGIc
-         0IfQ==
+        b=0OZTfIRrYA0mZkzeXg6jR0Xy2vmINrMhKkCwoVz5nPprTQIiTTC3BZvuq/iXKjU1y0
+         UIFoGBXvSKMmTsFnuJ/fNroQpDEZhJK95/KilUWshx9rVzkUgrifNax6yqjyFzwI/DE0
+         W9gUyEHOu45pnotUSSmbn/5gJraX9YtmhTSm0XLO7EtpFuLT9/99RJWXzImopNMY8iMF
+         zkFi9zA+16YDZpu/608GYuKHQutvPnBlyCvXLXW0yhcFuOIMzTHbtMGoR8LaT+f74PlV
+         o/rPmPJnbu08cGoprG+AwA/h3MJIQ+UvQi/83R4m0/Q7xDFs/PTzrO8roYoDm7S5P5CX
+         OmLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:organization:autocrypt:openpgp:from:references:to
          :subject;
-        bh=8tYHzE7oNq+M3EPcJZpXriNAOOqsYmbAVRN2qrmLpc0=;
-        b=DyG+TQxy12UhCBNeqv0LCv5od771YCL8Ki++lAf9bdVJ2vVy2BkgmPTIuDkYIC/5z+
-         tyNjynvXUaLMXZaoj6lbD7Pm/50m+sFYSYnIbXrvMlP9Vl7+YkEUK1IQmhEG7S+MEYz+
-         S07VF5OStW3oL1i0dNi2TPzJcS83BLgj9oLhSkTVLDQPjz/M3jyz1xBU2gBj/EslGD0o
-         0n5jA/wyaIJ2m9LpnR/13gcQhD+FJ7so4f6vx2DkNqbu9bi0KBXiBIqKnxHCdlupKRVs
-         B3qAWS2cgE2P0OI1Moa/v5m+OBCfKXdBrtEGBQFpid0U1TxbC9bShcHlwL2ijYdl6Y1i
-         zSdw==
+        bh=VCOZyqpSPaEEJ5GJn7eduTsoOddqEr+L+Sl9YUWHnB8=;
+        b=UwV/zoP7xA8BBoLPPlLN+p5DYcFMraT0Kw0rGqM+URbyuzPRGy0antOEsn5WhSXnLo
+         X0L4EHLuRz0F4tIoKGz/PM4cSsF1qFGTGwGnuAbrD7Fw6ZCS0FqptJkjabzFw5UHDgOj
+         FW7vxc6fF+Xhw/ocKOh8k9E+YmYGfV1el9jN+ApSnLkvGhkva3paMqNs38yXHEtUvHFt
+         fbg3re6FKJQQvsljeO+X2aCLdE8K88QIbS6b/sjxR9gIzzRTt/XYTlwKGjBanZq4aWA1
+         TBaz3LT1N+G6l6mdGbPHiGkDRQhuiMlDve2AmzVucLqHw0W2Q5NGav9biXSXkdM8E4rw
+         5P0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p43si6917851edc.368.2019.09.23.10.54.56
+        by mx.google.com with ESMTPS id m55si7057754edc.17.2019.09.23.11.09.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 10:54:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Sep 2019 11:09:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60480 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60536 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCSY3-0003Ai-3Y
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 13:54:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45120)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iCSmL-00073l-4X
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 14:09:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46917)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iCSXT-00036f-P1
- for qemu-devel@nongnu.org; Mon, 23 Sep 2019 13:54:20 -0400
+ (envelope-from <thuth@redhat.com>) id 1iCSm0-00073Z-Vr
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:09:22 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iCSXS-0001Wv-Nh
- for qemu-devel@nongnu.org; Mon, 23 Sep 2019 13:54:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55244)
+ (envelope-from <thuth@redhat.com>) id 1iCSly-00083Q-Pg
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:09:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42654)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1iCSXQ-0001Vk-F5; Mon, 23 Sep 2019 13:54:16 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ id 1iCSly-00083E-IJ; Mon, 23 Sep 2019 14:09:18 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 5459F18C4286;
- Mon, 23 Sep 2019 17:54:15 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 628E03175281;
+ Mon, 23 Sep 2019 18:09:17 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-116-120.ams2.redhat.com [10.36.116.120])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0F6BD1001DC2;
- Mon, 23 Sep 2019 17:54:08 +0000 (UTC)
-Subject: Re: [PATCH 3/4] hw/arm: Move armv7m_nvic.c to hw/arm/ and always
- enable it for arm builds
-To: Peter Maydell <peter.maydell@linaro.org>
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4612919D70;
+ Mon, 23 Sep 2019 18:09:09 +0000 (UTC)
+Subject: Re: [PATCH 2/4] target/arm: Move cortex-m related functions to new
+ file v7m.c
+To: Auger Eric <eric.auger@redhat.com>, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
 References: <20190921150420.30743-1-thuth@redhat.com>
- <20190921150420.30743-4-thuth@redhat.com>
- <CAFEAcA_6UxMBeyOMM0iT5cnCQEpWXfRO2XMuV9ez_0Su2osXNg@mail.gmail.com>
+ <20190921150420.30743-3-thuth@redhat.com>
+ <bd6efd14-9200-98e2-4f76-dda101f85274@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
@@ -113,78 +114,135 @@ Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
 Organization: Red Hat
-Message-ID: <0389e9dc-7f78-5b27-4764-51f0bdef5bef@redhat.com>
-Date: Mon, 23 Sep 2019 19:54:07 +0200
+Message-ID: <8585b93b-e239-829b-d634-b89941f27aed@redhat.com>
+Date: Mon, 23 Sep 2019 20:09:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_6UxMBeyOMM0iT5cnCQEpWXfRO2XMuV9ez_0Su2osXNg@mail.gmail.com>
+In-Reply-To: <bd6efd14-9200-98e2-4f76-dda101f85274@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.62]); Mon, 23 Sep 2019 17:54:15 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.49]); Mon, 23 Sep 2019 18:09:17 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /3T7xI2BhFUa
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6Sxi61zmSiJ7
 
-On 23/09/2019 16.52, Peter Maydell wrote:
-> On Sat, 21 Sep 2019 at 16:04, Thomas Huth <thuth@redhat.com> wrote:
->>
->> qemu-system-arm/-aarch64 currently can't be built without setting the
->> switch CONFIG_ARM_V7M=3Dy - which we currently always do in the config=
- file
->> default-configs/arm-softmmu.mak. This is because the code in target/ar=
-m/
->> calls many functions from this armv7m_nvic.c, and thus linking fails
->> without this file.
->>
->> So armv7m_nvic.c should not be under the CONFIG_ARM_V7M switch, but al=
-ways
->> compiled for arm builds. Since we can not simply do this in hw/intc/ (=
-with
->> "obj-y +=3D ..." it would get compiled for all other architectures, to=
-o),
->> let's move the file to hw/arm/ instead and always enable it there.
+On 23/09/2019 16.31, Auger Eric wrote:
+> Hi Thomas,
+>=20
+> On 9/21/19 5:04 PM, Thomas Huth wrote:
+>> We are going to make CONFIG_ARM_V7M optional, so the related cortex-m
+>> CPUs should only be created if the switch is enabled. This can best
+>> be done if the code resides in a separate file, thus move the related
+>> functions to a new file v7m.c which only gets compiled if CONFIG_ARM_V=
+7M
+>> is enabled.
 >>
 >> Signed-off-by: Thomas Huth <thuth@redhat.com>
 >> ---
->>  hw/arm/Makefile.objs           |  2 ++
->>  hw/{intc =3D> arm}/armv7m_nvic.c |  0
->>  hw/arm/trace-events            | 17 +++++++++++++++++
->>  hw/intc/Makefile.objs          |  1 -
->>  hw/intc/trace-events           | 17 -----------------
->>  5 files changed, 19 insertions(+), 18 deletions(-)
->>  rename hw/{intc =3D> arm}/armv7m_nvic.c (100%)
->=20
-> Please don't move this file. This is an interrupt
-> controller (with some other functionality jammed into it)
-> and so it should be in hw/intc. It's true that it's rather
-> tightly-coupled to the CPU, but the same is true for our
-> GICv3 model.
+>>  target/arm/Makefile.objs |   1 +
+>>  target/arm/cpu.c         | 146 -----------------------------
+>>  target/arm/v7m.c         | 193 ++++++++++++++++++++++++++++++++++++++=
++
+>>  3 files changed, 194 insertions(+), 146 deletions(-)
+>>  create mode 100644 target/arm/v7m.c
+[...]
+>> diff --git a/target/arm/v7m.c b/target/arm/v7m.c
+>> new file mode 100644
+>> index 0000000000..505043febe
+>> --- /dev/null
+>> +++ b/target/arm/v7m.c
+>> @@ -0,0 +1,193 @@
+>> +/*
+>> + * ARM v7m helpers.
+>> + *
+>> + * This code is licensed under the GNU GPL v2 or later.
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "qemu/qemu-print.h"
+>> +#include "qemu-common.h"
+>> +#include "target/arm/idau.h"
+>> +#include "qemu/module.h"
+>> +#include "qapi/error.h"
+>> +#include "qapi/visitor.h"
+>> +#include "cpu.h"
+>> +#include "internals.h"
+>> +#include "exec/exec-all.h"
+>> +#include "hw/qdev-properties.h"
+>> +#if !defined(CONFIG_USER_ONLY)
+>> +#include "hw/loader.h"
+>> +#include "hw/boards.h"
+>> +#endif
+>> +#include "sysemu/sysemu.h"
+>> +#include "sysemu/tcg.h"
+>> +#include "sysemu/hw_accel.h"
+>> +#include "disas/capstone.h"
+>> +#include "fpu/softfloat.h"
+>
+> I guess some of those headers are not needed.
 
-Ok, then what would you suggest to solve the problem that this file has
-always to be linked into the binary? I can't use "obj-y +=3D ..." in
-hw/intc/Makefile.objs since that would mean that the file also gets
-compiled for non-Arm boards. Would you prefer a bunch of stubs instead
-that get used if CONFIG_ARM_V7M is not set?
+Yeah, I just copy-n-pasted from the source file ... I'll check what can
+be omitted (if this patch series has a chance at all...)
+
+>> +
+>> +#if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
+>> +
+>> +static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_re=
+quest)
+>> +{
+>> +    CPUClass *cc =3D CPU_GET_CLASS(cs);
+>> +    ARMCPU *cpu =3D ARM_CPU(cs);
+>> +    CPUARMState *env =3D &cpu->env;
+>> +    bool ret =3D false;
+>> +
+>> +    /*
+>> +     * ARMv7-M interrupt masking works differently than -A or -R.
+>> +     * There is no FIQ/IRQ distinction. Instead of I and F bits
+>> +     * masking FIQ and IRQ interrupts, an exception is taken only
+>> +     * if it is higher priority than the current execution priority
+>> +     * (which depends on state like BASEPRI, FAULTMASK and the
+>> +     * currently active exception).
+>> +     */
+>> +    if (interrupt_request & CPU_INTERRUPT_HARD
+>> +        && (armv7m_nvic_can_take_pending_exception(env->nvic))) {
+>
+> so what is the status wrt m_helper.c which stays unconditionally
+> compiled. m_helper functions seem to called from target/arm/translate.c
+> mostly. Have you abandoned the stub idea. It may be confusing to have 2
+> different helper files. At least a comment explaining where a new helpe=
+r
+> shall go may be useful.
+
+All the HELPER() functions should definitely stay in m_helper.c. They
+are required for linking. Or do you prefer a stub file instead? Then we
+could maybe make the whole m_helper.c conditional in the Makefile.objs
+instead.
+
+However, there's one thing I currently don't quite understand in this
+code (since I'm not an ARM guy, sorry) : There are references to "v8" in
+m_helper.c, too. Is that related to a separate CPU type, ie. should the
+v8 code also be available when CONFIG_ARM_V7M is disabled? Or can the
+code in m_helper.c be disabled completely if CONFIG_ARM_V7M is not set?
 
  Thomas

@@ -1,112 +1,98 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2947796wrp;
-        Fri, 20 Sep 2019 15:09:44 -0700 (PDT)
-X-Received: by 2002:a17:90a:65c9:: with SMTP id i9mr6948262pjs.54.1569017384066;
-        Fri, 20 Sep 2019 15:09:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569017384; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2998459wrp;
+        Mon, 23 Sep 2019 11:47:25 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyPxJtsgGkY+nXInmsoPr+fzIY71Oj9tJ1TuWuwmNk2Fbqdf2gh8Cgf5HScFAnJeCeDaKyD
+X-Received: by 2002:a02:7f8a:: with SMTP id r132mr1021374jac.46.1569264445399;
+        Mon, 23 Sep 2019 11:47:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569264445; cv=none;
         d=google.com; s=arc-20160816;
-        b=RFKq6cJyhP/vTLVuMepSFDumLfhxF2dUUAtUYeNplkpjtB68DXxkrE0DvktaDfr7AS
-         Sr3k6FZLy9tMJ4wro8WenL6AhicwX2gvPMeUUC5+qBniluqbTSxWkY38qSO4oMH+DuYO
-         I18f0cFAMoLFimbD4almd64P9rLtc0+TKf4XCkH4Gm8lPSI0SHwygG7mWS8UEGXfhiQR
-         5L0Iqm19xjFfO/f7Y2Nu37Z61ZvBXeKQAjMeyeZ3qd/OCmfvu0s9InxgDVJ1d25qKLpw
-         aZD/lVmt5xXcyuHwTEmZEuQ/pZz6sF8BSmi/0YnYxoSKoefHD75b+4xxpMHJBwQFX8GJ
-         VurA==
+        b=Iv0bKA7A6Cv0Yc1BqOt5XFPLzv6IF8+ZrJ4mBWMU+ahYvlD6BBnDTaAZGlNZ/+4g9z
+         YjiBFqmU5ndwndwKly/wA8Y/ZVEKvqVBCfo0InIB0bt9B67RzKAWIC5aA3iDQ3gJg0zD
+         LtzQ4VJ+FVRYhllJjb5G2VDBYFkF/kvuP8U9jfc5Zod7Ec3naXroe5n8ynRXt9of/iQm
+         WZyBuWXHAYXNXJD1PJ/T77yoboSTJOpbZThGfjtFxl5vA6YmdzztPgboj8Gv9Vl7hWcD
+         uRZLkhsWACrOlj8nGuvtX+nXhFsM3jXX3i9a8/4VGlA9hVl6mWORqNzHXojBPFwbo89t
+         LG+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=Xq6CjTsGZJR9XwIXAsothWRRID2FfNd4/CnJWbG8XTM=;
-        b=rXaHL4sSMYPJvyk3aidtoLpfTLZoNO9yTVgcvIzliZ0PPU4We0AR0qtMx7Irwt6IpK
-         LBUMW1XQLhrxQABA2FR5BMBazkOG6J2lAW34vHqayzC7DSjytl5iCS10H4CsVu0lPuT9
-         ERD/u2i8+yrZB8eDa3yA8bC4Eo7c22M6kIXAFV0cd3mBOKUZX2WSKRQBrKXEcb9dr5fy
-         2jGRD98WRi2l9KvauXBkxxPOBFAvuMIGq+ZHkagOloX4jSVmcFiFrCm3klJdTWJk3N4V
-         lHoOPFGqowN/70njo9CzVXfHsDG5EbQKfx094nYvJFvOq66fusLw8n/2Ks/tihiuPv4g
-         eAFw==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date;
+        bh=EtNQ4Ej6D4WsQI8tc9msg1H151LMQPemOi45qwG2j5Y=;
+        b=M4K3h1cHAgB/PtEDMgREItTJ4PxzZ9vgaAJpFqwIiA/xIF3SQcweInttL9Rxh0rLrI
+         /IS/vJ3mzw7LoWa+JUDziKKeKI+GxjRy9VmEpO6aCa4moP99EukezKsg69q9z8rH/iKW
+         /UwW8FstqvKM/fjBHxJH5XLbWoPl+i4QjEhrQvHEi/iPjlvW7tYw30QvOMXdRuiMf5l2
+         bEUOU+Y79uIni7VY8iseDgo5WkaE2r2kip7/9fcH4EMadbKxmBJVXpT4q7EiMmHF6LL1
+         OLK3u3bp5MgvDElHATudHDi+DG+7GSj7Ot6nwfTLYEreFaVwz89xMCydqO2AvEr0vGfq
+         rrcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Wydt88o8;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id m25sor3079862pgb.83.2019.09.20.15.09.43
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 20 Sep 2019 15:09:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Wydt88o8;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=Xq6CjTsGZJR9XwIXAsothWRRID2FfNd4/CnJWbG8XTM=;
-        b=Wydt88o8wqr9s6XOMuXl1rGL6qL6HGEF3+opEmxczu8NZuMzPKPMiuquy8fXQWY0qg
-         l7vuSspLHTPzhoaG5YNumwuE05CGagRwls+ttmxKmAkueKos6K+453WZmFJcU//b8Wse
-         TS9rOZ6BXnPuEJAL8OMtnjHWpbB36SGP50YiSmhFvd16o+nSjgBOY1Q5PXBPKrSqk9na
-         7HZpkOZonKR6AgLaUcn/WNn1Zyu234WBCuWyBOWhHRzNe/6TXrbApp58WSxmMk1UTxdO
-         UtY8EPEN/32fft32iiov2H5qFVX8sbJvomxzZJSt7lfuDmUPxpKHKd2Nw5kSzdL3+aJH
-         spjQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=Xq6CjTsGZJR9XwIXAsothWRRID2FfNd4/CnJWbG8XTM=;
-        b=VK8JPNAJCsOla2cjB0OdyoIjQ/esbCUxb6E7O24E+EmPbjhFacATixMbIskmhleH/c
-         SJHDR6/LLb87ZKhzyotMtbHEvaQsEDYAMpux74qWYwx2HpxHObdI79xA0lkRkr3odzzp
-         0jKDsJ0/mD98m/m2m8RvR3+WJ15iollOQoaQCH3XAjVmoty3VCRK2v6lS4SfRNvnkqzt
-         dbz2uU0x36K9SsGqQynd8AAuMf8uedkwnUcaR1nqrrHWc2oymtkxQ2g+SRbSS7fHYzIs
-         WdxLwnypnEQM8P1TJhB5bn6/59rkxUK9CgUkJ3QdMTqA17beddWBZBxrKMoYlA6Rzd3b
-         y0Ow==
-X-Gm-Message-State: APjAAAX/IPylE7c5+A8FzryNoniwJW74jsdNIcWuHuis9NWkAKTGhaGM
-	HSZJ1r6481QhuGlSQ/f1BWI2o0GL
-X-Google-Smtp-Source: APXvYqz5JelNdtvqL+XIhk1bmq9WBlrlX2ISeidqgXyz7O6rOYDUVY/H+U2T513vCCkNd/0abesKTg==
-X-Received: by 2002:a63:5b23:: with SMTP id p35mr17082669pgb.366.1569017383421;
-        Fri, 20 Sep 2019 15:09:43 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id v44sm3832336pgn.17.2019.09.20.15.09.42
+       spf=pass (google.com: domain of crosa@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <crosa@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id c185si15724483iof.23.2019.09.23.11.47.25
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 20 Sep 2019 15:09:42 -0700 (PDT)
-Subject: Re: [PATCH v2 10/16] tests/tcg: add generic version of float_convs
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org
+        Mon, 23 Sep 2019 11:47:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of crosa@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of crosa@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id A8EE6898108;
+	Mon, 23 Sep 2019 18:47:24 +0000 (UTC)
+Received: from dhcp-17-179.bos.redhat.com (dhcp-17-179.bos.redhat.com [10.18.17.179])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 1E5A260BFB;
+	Mon, 23 Sep 2019 18:47:19 +0000 (UTC)
+Date: Mon, 23 Sep 2019 14:47:17 -0400
+From: Cleber Rosa <crosa@redhat.com>
+To: Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>,
+	peter.maydell@linaro.org, John Snow <jsnow@redhat.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+	qemu-arm@nongnu.org
+Subject: Re: [PATCH  v2 05/16] podman: fix command invocation
+Message-ID: <20190923184717.GB6528@dhcp-17-179.bos.redhat.com>
 References: <20190919171015.12681-1-alex.bennee@linaro.org>
- <20190919171015.12681-11-alex.bennee@linaro.org>
- <c6cd971c-e84c-c5c9-b313-2e454e02a1da@linaro.org> <87impnz568.fsf@linaro.org>
- <87h857z32j.fsf@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <0b0c45c7-4b9b-0d03-01aa-25a689a8f914@linaro.org>
-Date: Fri, 20 Sep 2019 15:09:40 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ <20190919171015.12681-6-alex.bennee@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <87h857z32j.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-TUID: m8Hw67+2V2Ik
+In-Reply-To: <20190919171015.12681-6-alex.bennee@linaro.org>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2 (mx1.redhat.com [10.5.110.67]); Mon, 23 Sep 2019 18:47:24 +0000 (UTC)
+X-TUID: 1vMqBxvsMVy8
 
-On 9/20/19 3:15 AM, Alex BennÃ©e wrote:
-> I can't figure out what is meant to be going on with CONVERT_BITS. It
-> seems to be implying there is a direct relationship between status flags
-> and the exception disable bits. But that is confusing because integer
-> overflow (IOV) and float overflow (OVF) are different flags bit I assume
-> both suppressed by Overflow Disable (OVFD).
+On Thu, Sep 19, 2019 at 06:10:04PM +0100, Alex Bennée wrote:
+> From: John Snow <jsnow@redhat.com>
+> 
+> Oops; there's no argv here.
+> 
+> Signed-off-by: John Snow <jsnow@redhat.com>
+> Message-Id: <20190913193821.17756-1-jsnow@redhat.com>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-I had failed to notice that the kernel routine plays with INV and not IOV for
-the emulation of CVTTQ, so it's the SWCR_TRAP_ENABLE_INV bit that controls
-whether CVTTQ/S raises a signal.
+Reviewed-by: Cleber Rosa <crosa@redhat.com>
+Tested-by: Cleber Rosa <crosa@redhat.com>
 
-Will fix.
-
-> Why are we doing this magic 32 bit shuffling anyway? Is it purely to
-> save 32 bits of a mostly empty lower half of the FPCR register?
-
-Yes.  Which is not a great answer, but it was done years ago and there's little
-point in changing it back now.
-
-
-r~
+> ---
+>  tests/docker/docker.py | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tests/docker/docker.py b/tests/docker/docker.py
+> index 4dca6006d2f..890e874ba93 100755
+> --- a/tests/docker/docker.py
+> +++ b/tests/docker/docker.py
+> @@ -338,7 +338,7 @@ class Docker(object):
+>              cmd = [ "-u", str(uid) ] + cmd
+>              # podman requires a bit more fiddling
+>              if self._command[0] == "podman":
+> -                argv.insert(0, '--userns=keep-id')
+> +                cmd.insert(0, '--userns=keep-id')
+>  
+>          ret = self._do_check(["run", "--label",
+>                               "com.qemu.instance.uuid=" + label] + cmd,
+> -- 
+> 2.20.1
+> 
+> 

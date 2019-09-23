@@ -1,197 +1,166 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2411609wrp;
-        Mon, 23 Sep 2019 01:49:46 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxip0SQKW63mLrsgm47MSsjC3/uOMzHKM90F/tseLFMF5Oj4ZJVl5LQMWXZ/MG58JoDNSqS
-X-Received: by 2002:a37:4c4d:: with SMTP id z74mr15535704qka.459.1569228586513;
-        Mon, 23 Sep 2019 01:49:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569228586; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2412726wrp;
+        Mon, 23 Sep 2019 01:51:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwZXvG59uwDxikbBlH3UClrSSTxz6TL+7h6ebfYaEx8DdBraMtU8hZyNvfBnKniXEqQtXqI
+X-Received: by 2002:a50:aa8e:: with SMTP id q14mr10534919edc.155.1569228689985;
+        Mon, 23 Sep 2019 01:51:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569228689; cv=none;
         d=google.com; s=arc-20160816;
-        b=ysJewfdc1/J/K6Uvwy5xsIe4P8nw4a7XW9zAoA12gWGTPXm1gS5YSp9ZNbd2Wjvd6G
-         nMSu+r7c9t2laAt2QxEwjA/67N+DbwIA4kX3P9wYxg0kjklNlsC3WjYuC9qULSfZwUQ3
-         caSlISjMrN8zSAzKiYQLANqZ8Sdq8xZE2eiOZpZ3zOMQIs80D7ZczdwWNCkp9W8yyeuZ
-         5dXFume/no7NR8if0lmtt9cFhr1umzN1g9TJSBDzKaH4R+OnslRvNre5j49FTGSIWhrH
-         mYtoBWPNzW23kT088Mdj9DwaQaKXrYEvQ6GEQ03CqZBgYq7GKbQZVrR1Wv5rIqvbTgIi
-         FJIg==
+        b=AD3LSbcpCK3a7+Jeqb8rkT6yBqnfl/NTRsJo/bzv5PGB55VTdG1baubLI8Q/AIAWSK
+         7IPiXd6NQSqjNhxah4iJV15DDoYynsf7SSXInhy8dBeE0dXPbI/CRb+hfNBRMpQpOWBx
+         MQMbfj3rjy2ihrIpsExhDzHzX6XCLmHNok7gEHeIT/19YYMWlhOjppaswpxZUgd8Hzmv
+         Lyp6GhNCHVj2pULyEzXHrVZ6wb79m2xv9UJ4JYTfITkxBBmhoDzAX6x78SlwopByajP2
+         Kvu3TIzPQIIxJjKhDN08ZT0lEuuys/DTCJ7DalEdKpMeL934W3oaaV5jqKTml45Mlnvi
+         fVNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:to:from:date;
-        bh=zMw6Muzp11Y+mWJuQZtTrTgLGZUpLd2Ea1IeJWiCR38=;
-        b=TC7uA1/nMajE41G3uA+HE3FikWXlDWGPGNBPVpbZIkwYbQa7tNDAkgqaDhaUKFIGzp
-         shmNBWX1TS6vGJmSCusRfOj97dbVOZ6gF3m5EvofK4v0LHdeXtTZCpvVkzpo6IUg5C5R
-         u+M5i6Goto4ofRzTxdFqPvUUPnDA4jKrL8vcgolvWXpdyzozdOv4CqhJv09k2DIrqowy
-         SWOW7/aKJZ87ssg4o2D8EaB++rDgbcrajXJKbqeMl8NAFnz8crAIECzUy/6aPX661ZEG
-         d27zn7Mj5W+VbXiJEx6+koZsTOrxTjeB+F67xOkqyBSxbuDTddmKtSHxFKskSuWeueb6
-         WJRQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:organization:autocrypt:openpgp:from:references:to
+         :subject;
+        bh=56bZhDXw1MqK5SsDiNqN20SEDP2aPfG6b+U5aSDUyMw=;
+        b=bEtl0/DEbNtukvKEGQCPv2WChWFfJAnUH3zw9ZTTN+OVh1YFEnOYCgLaUCrNom8ePX
+         s1DLL77imgojraqdNh6Wt10NnqQpyTWsmp/NaZWQ2SqNITmCRlILSSdAsBgEZ/mRn98H
+         mCIxJ5lbOjXopCwqNmIk4FZkcJBdfdgOvE9x4HPL2mF4PjHoBP2xGhHWXT1TwK+cGbtk
+         g3sDXE43E1Ai/lavtEwe+QG3rk2i2KmfAvVBVMjKdGPNVJEiZpGyvcfY5Jwc2fDcVYVe
+         UXqKYncNnegEyuKSkUTrXOrdwvMf5G/XZtwurvEgP6WnAYtV7QQJi6+ZYB+ie7kYef5L
+         2Fpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a12si8070593qte.312.2019.09.23.01.49.46
+        by mx.google.com with ESMTPS id d17si5777012edv.76.2019.09.23.01.51.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 01:49:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Sep 2019 01:51:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53824 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53834 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCK2T-0007rK-Lc
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 04:49:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46490)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iCK48-0000D9-K1
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 04:51:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49925)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <sgarzare@redhat.com>) id 1iCJis-00067U-37
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 04:29:31 -0400
+ (envelope-from <thuth@redhat.com>) id 1iCK32-0000Ak-Rf
+ for qemu-devel@nongnu.org; Mon, 23 Sep 2019 04:50:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <sgarzare@redhat.com>) id 1iCJiq-0007YW-NL
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 04:29:29 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60766)
+ (envelope-from <thuth@redhat.com>) id 1iCK31-0000q2-Hf
+ for qemu-devel@nongnu.org; Mon, 23 Sep 2019 04:50:20 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51476)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <sgarzare@redhat.com>) id 1iCJio-0007XW-Pe
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 04:29:27 -0400
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1iCK2y-0000p6-Dy; Mon, 23 Sep 2019 04:50:16 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id E4D822CD7E5
- for <qemu-arm@nongnu.org>; Mon, 23 Sep 2019 08:29:23 +0000 (UTC)
-Received: by mail-wr1-f70.google.com with SMTP id v18so4538360wro.16
- for <qemu-arm@nongnu.org>; Mon, 23 Sep 2019 01:29:23 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=kikYKHfL3Ck2fN5906iWkH6+cgjWSLcj4UEJt3nusl4=;
- b=YeIkqC3etcgMJti4h2NjHeJ7yXsk7mulJvllxAAUlP+6bs9KQi0RmV3pANnWhCqwU3
- 4gQskJoDv7CFnbhWfKp1IIIs5aC5SCD/YKIdUfqg8ayxCDoalcYgU8FGcXYr1DyP/aIb
- nkvFVtgMZhdPZa1d2Vk5NbVju2YEBixJOrpeTSVOzb8X9O7eyNDLCZqc/Dk2pXwt1tUd
- rMZ+7hVrCeu0GdIiTErKgur3KQbZX6w1n87AA5HyW834/QWbiemoVKesc/MmZi/rlf13
- 2Bneb7PCkST6SYny8wcYICnqevOrDXEFfgl67PDBmDyunEo5h1szbOVveNkwtE2xEXfX
- uilw==
-X-Gm-Message-State: APjAAAVuLHHb2ejzCFfG8X8mJ2bRLDw+X1cyRF02owEHtIvX/OV5DrjD
- Czf+M6qwWFT32nVEzFl20y+Fgeh8kjzlEvsR9hDUNurYIBCp5XUzb5hpcaVgFrP49OBFTzLBGj3
- 5QTCYsZvtzZyf
-X-Received: by 2002:a1c:7ed7:: with SMTP id
- z206mr13700941wmc.124.1569227362479; 
- Mon, 23 Sep 2019 01:29:22 -0700 (PDT)
-X-Received: by 2002:a1c:7ed7:: with SMTP id
- z206mr13700926wmc.124.1569227362235; 
- Mon, 23 Sep 2019 01:29:22 -0700 (PDT)
-Received: from steredhat (host170-61-dynamic.36-79-r.retail.telecomitalia.it.
- [79.36.61.170])
- by smtp.gmail.com with ESMTPSA id e6sm10312791wrp.91.2019.09.23.01.29.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 23 Sep 2019 01:29:21 -0700 (PDT)
-Date: Mon, 23 Sep 2019 10:29:19 +0200
-From: Stefano Garzarella <sgarzare@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [PATCH] hw/arm/boot: Use the IEC binary prefix definitions
-Message-ID: <20190923082919.y2fjn2y6t7lire3z@steredhat>
-References: <20190921103405.19623-1-philmd@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id EDA8918CB8E1;
+ Mon, 23 Sep 2019 08:50:14 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-120.ams2.redhat.com [10.36.116.120])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B7E6360852;
+ Mon, 23 Sep 2019 08:50:08 +0000 (UTC)
+Subject: Re: [PATCH 0/4] Make it possible to compile with CONFIG_ARM_V7M=n
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+References: <20190921150420.30743-1-thuth@redhat.com>
+ <faa7f493-6c40-a5ac-cc70-8cba6e016cb8@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat
+Message-ID: <11706c6f-a2e4-f181-208e-a7357e0c8d57@redhat.com>
+Date: Mon, 23 Sep 2019 10:50:07 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20190921103405.19623-1-philmd@redhat.com>
-User-Agent: NeoMutt/20180716
+In-Reply-To: <faa7f493-6c40-a5ac-cc70-8cba6e016cb8@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.63]); Mon, 23 Sep 2019 08:50:15 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5oBxQgNo+Dvl
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HVBQxpIBxtZP
 
-On Sat, Sep 21, 2019 at 12:34:04PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> IEC binary prefixes ease code review: the unit is explicit.
+On 23/09/2019 10.37, Philippe Mathieu-Daud=C3=A9 wrote:
+> Hi Thomas,
 >=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-> ---
->  hw/arm/boot.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+> On 9/21/19 5:04 PM, Thomas Huth wrote:
+>> We've got CONFIG_ARM_V7M, but it currently can't be disabled.
+>> Here are some patches that should allow to disable the switch
+>> (if the corresponding boards are disabled, too).
 >=20
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index bf97ef3e33..59bb2fa0d3 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
+> What about the ARMv4/v5/v6/v7r?
 
-Very appreciated!
+We don't have config switches for these yet, do we? You started to
+introduce them in some of your TCG-disablement patches which are not
+merged yet, so that's something that should be addressed once they are
+merged, or directly in your series. Here, I wanted to provide you with
+these patches so that the arm_cpu_register() is available for your
+patches / later clean-up patches ... I mentioned that in the RFC cover
+letter
+(https://www.mail-archive.com/qemu-devel@nongnu.org/msg641907.html) but
+forgot to copy / update that paragraph for this cover letter here again :=
+-/
 
-What about fixing also this other line?
-
-@@ -575,7 +575,7 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_i=
-nfo *binfo,
-         goto fail;
-     }
-=20
--    if (scells < 2 && binfo->ram_size >=3D (1ULL << 32)) {
-+    if (scells < 2 && binfo->ram_size >=3D 4 * GiB) {
-         /* This is user error so deserves a friendlier error message
-          * than the failure of setprop_sized_cells would provide
-
-
-> @@ -1095,7 +1095,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU *=
-cpu,
->       * we might still make a bad choice here.
->       */
->      info->initrd_start =3D info->loader_start +
-> -        MIN(info->ram_size / 2, 128 * 1024 * 1024);
-> +        MIN(info->ram_size / 2, 128 * MiB);
->      if (image_high_addr) {
->          info->initrd_start =3D MAX(info->initrd_start, image_high_addr=
-);
->      }
-> @@ -1155,13 +1155,13 @@ static void arm_setup_direct_kernel_boot(ARMCPU=
- *cpu,
->                   *
->                   * Let's play safe and prealign it to 2MB to give us s=
-ome space.
->                   */
-> -                align =3D 2 * 1024 * 1024;
-> +                align =3D 2 * MiB;
->              } else {
->                  /*
->                   * Some 32bit kernels will trash anything in the 4K pa=
-ge the
->                   * initrd ends in, so make sure the DTB isn't caught u=
-p in that.
->                   */
-> -                align =3D 4096;
-> +                align =3D 4 * KiB;
->              }
-> =20
->              /* Place the DTB after the initrd in memory with alignment=
-. */
-> @@ -1178,7 +1178,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU *=
-cpu,
->                  info->loader_start + KERNEL_ARGS_ADDR;
->              fixupcontext[FIXUP_ARGPTR_HI] =3D
->                  (info->loader_start + KERNEL_ARGS_ADDR) >> 32;
-> -            if (info->ram_size >=3D (1ULL << 32)) {
-> +            if (info->ram_size >=3D 4 * GiB) {
->                  error_report("RAM size must be less than 4GB to boot"
->                               " Linux kernel using ATAGS (try passing a=
- device tree"
->                               " using -dtb)");
-
-With or without the new line fix:
-
-Acked-by: Stefano Garzarella <sgarzare@redhat.com>
-
-Thanks,
-Stefano
+ Thomas

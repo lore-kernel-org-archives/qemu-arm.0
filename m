@@ -1,65 +1,65 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2858839wrp;
-        Mon, 23 Sep 2019 09:26:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxox+JmecbsFrMuZYcc+yd8DGKYb7riGgi4yMgxWduX2kqapCNgdIUjVcgKPZ7pJKLhYDYt
-X-Received: by 2002:a17:906:fc11:: with SMTP id ov17mr652150ejb.288.1569255999806;
-        Mon, 23 Sep 2019 09:26:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569255999; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2859117wrp;
+        Mon, 23 Sep 2019 09:26:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx5OSPgnl0OFU/1jTZur51WuFuV+iankfUQY18zU19KXXOQcaTU9OJHY0GAwHhV0NUZO4Il
+X-Received: by 2002:a17:906:eddb:: with SMTP id sb27mr667601ejb.304.1569256014425;
+        Mon, 23 Sep 2019 09:26:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569256014; cv=none;
         d=google.com; s=arc-20160816;
-        b=mdpEIjvyTR3PtSUAekE2vFG79ZC9SJAlPvvRmYgO9iq7FBguk/D3qkIwl+JZpTX/cf
-         kY2PFUNV6SE+1kF2oeNc3MFGBZJ+tVPpnYuyIy24/gi7qG+OW3CWMqsC3FD8O1xKSfRR
-         h1DVBpxqQRPFLGh/yUAdc59sajdkprecy9ePhXXtHgrcmAhfpmsZ1uPuAFNrX8ZwyQDo
-         5flCJXSTCttTlPjhNuFPK2BVG0Tt7nN9780HhFnbKkYod0NUZhs0Ftum9B+MVXc4SJt2
-         rLkAc0h6t/w7fu0pVl49VL0P1k4tshW9n8s8TYjPsdVCulkVEzogfgrDViuIw8pY78pG
-         0M8A==
+        b=QZuz4wCEOH9xFEOqT/5E1snbtxah6lL0gFZiAp333SYBzJyKiFM8671obSbKP0+45Y
+         QuEYXg4UXSslKxWZf22aM307AKurz7xIvECTLJ/2cTz2ZARHJJRGVk7G3q9dpdQjivpm
+         WEyu/Em94AuhKFCJ33wpJMw22+FAeEym9GAE/rKy8yc8r/KdWx1bbu+HM+L0c4rJGuBn
+         YUft/HbEROkptmUCYaf1YvNF4z8DbFkjWjdL8KkP7Ay1INTxBM61A0CK+BBZVEb1Kyht
+         u2Y+4yk4jAW1w+mGzFVjELWVY56646a1xlZTEPR8UnlMBOVHjrR5RjSgst5Wp0fTPsD0
+         toKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=HC7VDs7wF+HFaubAu0bajQyNrJq52GZQp5E3fA8zkoQ=;
-        b=jwqhkgwrybqf3uX+QRjjkg3dlYLjzkpRV/6RbVsAqhilXIwQBISbCemz5h4Nb0CMTF
-         gKw2xJnN7rnHS/hR9LtvRw9K9UPd+MOPHyWs7zXRHYL4wQsl2ZgGzH9S80LwAsiYkR4H
-         CG6fx75yaNMeMu+pl/Ajd8n2kvK1tGYTaz5M2vFzzPPf1sf1ZMNq+PphBEj1x9HHGEN/
-         D636j+TM1/yie8SwlpsdGyRq6dRaxb83+J+HaiPyri7c6bMJGEWgQVv/womXPUgecfjM
-         XjPXFngdDm8s18ifc0uUs335mWZyAAXB606TlUaC7L3+/zsMVshKiL73tBYi3Lfjldr0
-         STvg==
+        bh=iT9Sd37XLydDdHT0iBDVwSabmXCiocg1xvI9TIFmGno=;
+        b=Le8weDsZx5WVdAJ3phuqW/9Nx2Lgo52jtWVANfGRF6jxK/fyPT5jyidVAODdDh356+
+         L+xoj/OBQfyc0CMhBNbze2x2o0xgtMJJlFVo7/3HQxsvk474/e7dS/Z+WjmQbg4E5W0w
+         uKzy4bIZ2sgsryLm8gzH3+kKw3UYNtmOhF0+kJqWMMqAm+6JW+MSmWMNdQDHM5klYkKm
+         n7U4ePk4pha5dr05CkalACGnQdWTePvRyzjTpQv/A/knrfI0G1Jau5dKa1sbcc35A/pr
+         KjQwbiYk4GBtlfYuP/Tir7zQcOiF78rdM98Yv0bwnhg4eCo3Y6XHmyUMBO78PCS16ehH
+         /Sgg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t16si7036835edd.269.2019.09.23.09.26.39
+        by mx.google.com with ESMTPS id a14si7595695eda.111.2019.09.23.09.26.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 09:26:39 -0700 (PDT)
+        Mon, 23 Sep 2019 09:26:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Received: from localhost ([::1]:59338 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59344 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCRAc-00038Q-CM
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 12:26:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57328)
+	id 1iCRAq-0003Wx-QO
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 12:26:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57354)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iCQxX-0002aB-PR
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 12:13:09 -0400
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iCQxY-0002au-IM
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 12:13:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iCQxV-0003rn-Ji
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 12:13:07 -0400
-Received: from relay.sw.ru ([185.231.240.75]:39520)
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iCQxX-0003sm-5A
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 12:13:08 -0400
+Received: from relay.sw.ru ([185.231.240.75]:39502)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
- id 1iCQxM-0003aF-A4; Mon, 23 Sep 2019 12:12:56 -0400
+ id 1iCQxN-0003a9-HI; Mon, 23 Sep 2019 12:12:57 -0400
 Received: from [10.94.3.0] (helo=kvm.qa.sw.ru)
  by relay.sw.ru with esmtp (Exim 4.92.2)
  (envelope-from <vsementsov@virtuozzo.com>)
- id 1iCQwz-0001Fp-8w; Mon, 23 Sep 2019 19:12:33 +0300
+ id 1iCQx0-0001Fp-4Q; Mon, 23 Sep 2019 19:12:34 +0300
 From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 To: qemu-devel@nongnu.org
-Subject: [RFC v2 3/9] errp: rename errp to errp_in where it is IN-argument
-Date: Mon, 23 Sep 2019 19:12:25 +0300
-Message-Id: <20190923161231.22028-4-vsementsov@virtuozzo.com>
+Subject: [RFC v2 5/9] net/net: fix local variable shadowing in net_client_init
+Date: Mon, 23 Sep 2019 19:12:27 +0300
+Message-Id: <20190923161231.22028-6-vsementsov@virtuozzo.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190923161231.22028-1-vsementsov@virtuozzo.com>
 References: <20190923161231.22028-1-vsementsov@virtuozzo.com>
@@ -113,153 +113,34 @@ Cc: stefanha@redhat.com, codyprime@gmail.com, jan.kiszka@siemens.com,
  jcd@tribudubois.net, pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +yUQwe+XJSr7
+X-TUID: 8yGiTmJdba+Y
 
-Error **errp is almost always OUT-argument: it's assumed to be NULL, or
-pointer to NULL-initialized pointer, or pointer to error_abort or
-error_fatal, for callee to report error.
-
-But very few functions (most of the are error API) instead get Error
-**errp as IN-argument: it's assumed to be set, and callee should clean
-it. In such cases, rename errp to errp_in.
+Don't shadow Error *err: it's a bad thing. This patch also simplifies
+following Error propagation conversion.
 
 Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 ---
- include/monitor/hmp.h |  2 +-
- include/qapi/error.h  |  8 ++++----
- ui/vnc.h              |  2 +-
- monitor/hmp-cmds.c    |  8 ++++----
- ui/vnc.c              | 10 +++++-----
- util/error.c          |  2 +-
- 6 files changed, 16 insertions(+), 16 deletions(-)
+ net/net.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/include/monitor/hmp.h b/include/monitor/hmp.h
-index a0e9511440..f929814f1a 100644
---- a/include/monitor/hmp.h
-+++ b/include/monitor/hmp.h
-@@ -16,7 +16,7 @@
+diff --git a/net/net.c b/net/net.c
+index 84aa6d8d00..5fc72511c1 100644
+--- a/net/net.c
++++ b/net/net.c
+@@ -1128,10 +1128,10 @@ static int net_client_init(QemuOpts *opts, bool is_netdev, Error **errp)
  
- #include "qemu/readline.h"
+             if (substrings[1]) {
+                 /* User-specified prefix length.  */
+-                int err;
++                int ret2;
  
--void hmp_handle_error(Monitor *mon, Error **errp);
-+void hmp_handle_error(Monitor *mon, Error **errp_in);
- 
- void hmp_info_name(Monitor *mon, const QDict *qdict);
- void hmp_info_version(Monitor *mon, const QDict *qdict);
-diff --git a/include/qapi/error.h b/include/qapi/error.h
-index 551385aa91..4264d22223 100644
---- a/include/qapi/error.h
-+++ b/include/qapi/error.h
-@@ -283,7 +283,7 @@ void error_free(Error *err);
- /*
-  * Convenience function to assert that *@errp is set, then silently free it.
-  */
--void error_free_or_abort(Error **errp);
-+void error_free_or_abort(Error **errp_in);
- 
- /*
-  * Convenience function to warn_report() and free @err.
-@@ -301,19 +301,19 @@ void error_report_err(Error *err);
-  * Functions to clean Error **errp: call corresponding Error *err cleaning
-  * function an set pointer to NULL
-  */
--static inline void error_free_errp(Error **errp)
-+static inline void error_free_errp(Error **errp_in)
- {
-     error_free(*errp_in);
-     *errp_in = NULL;
- }
- 
--static inline void error_report_errp(Error **errp)
-+static inline void error_report_errp(Error **errp_in)
- {
-     error_report_err(*errp_in);
-     *errp_in = NULL;
- }
- 
--static inline void warn_report_errp(Error **errp)
-+static inline void warn_report_errp(Error **errp_in)
- {
-     warn_report_err(*errp_in);
-     *errp_in = NULL;
-diff --git a/ui/vnc.h b/ui/vnc.h
-index fea79c2fc9..00e0b48f2f 100644
---- a/ui/vnc.h
-+++ b/ui/vnc.h
-@@ -547,7 +547,7 @@ uint32_t read_u32(uint8_t *data, size_t offset);
- 
- /* Protocol stage functions */
- void vnc_client_error(VncState *vs);
--size_t vnc_client_io_error(VncState *vs, ssize_t ret, Error **errp);
-+size_t vnc_client_io_error(VncState *vs, ssize_t ret, Error **errp_in);
- 
- void start_client_init(VncState *vs);
- void start_auth_vnc(VncState *vs);
-diff --git a/monitor/hmp-cmds.c b/monitor/hmp-cmds.c
-index b2551c16d1..941d5d0a45 100644
---- a/monitor/hmp-cmds.c
-+++ b/monitor/hmp-cmds.c
-@@ -60,11 +60,11 @@
- #include <spice/enums.h>
- #endif
- 
--void hmp_handle_error(Monitor *mon, Error **errp)
-+void hmp_handle_error(Monitor *mon, Error **errp_in)
- {
--    assert(errp);
--    if (*errp) {
--        error_reportf_err(*errp, "Error: ");
-+    assert(errp_in);
-+    if (*errp_in) {
-+        error_reportf_err(*errp_in, "Error: ");
-     }
- }
- 
-diff --git a/ui/vnc.c b/ui/vnc.c
-index 87b8045afe..9d6384d9b1 100644
---- a/ui/vnc.c
-+++ b/ui/vnc.c
-@@ -1312,7 +1312,7 @@ void vnc_disconnect_finish(VncState *vs)
-     g_free(vs);
- }
- 
--size_t vnc_client_io_error(VncState *vs, ssize_t ret, Error **errp)
-+size_t vnc_client_io_error(VncState *vs, ssize_t ret, Error **errp_in)
- {
-     if (ret <= 0) {
-         if (ret == 0) {
-@@ -1320,14 +1320,14 @@ size_t vnc_client_io_error(VncState *vs, ssize_t ret, Error **errp)
-             vnc_disconnect_start(vs);
-         } else if (ret != QIO_CHANNEL_ERR_BLOCK) {
-             trace_vnc_client_io_error(vs, vs->ioc,
--                                      errp ? error_get_pretty(*errp) :
-+                                      errp_in ? error_get_pretty(*errp_in) :
-                                       "Unknown");
-             vnc_disconnect_start(vs);
-         }
- 
--        if (errp) {
--            error_free(*errp);
--            *errp = NULL;
-+        if (errp_in) {
-+            error_free(*errp_in);
-+            *errp_in = NULL;
-         }
-         return 0;
-     }
-diff --git a/util/error.c b/util/error.c
-index dfba091757..b3ff3832d6 100644
---- a/util/error.c
-+++ b/util/error.c
-@@ -271,7 +271,7 @@ void error_free(Error *err)
-     }
- }
- 
--void error_free_or_abort(Error **errp)
-+void error_free_or_abort(Error **errp_in)
- {
-     assert(errp_in && *errp_in);
-     error_free(*errp_in);
+-                err = qemu_strtoul(substrings[1], NULL, 10, &prefix_len);
+-                if (err) {
++                ret2 = qemu_strtoul(substrings[1], NULL, 10, &prefix_len);
++                if (ret2) {
+                     error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+                                "ipv6-prefixlen", "a number");
+                     goto out;
 -- 
 2.21.0
 

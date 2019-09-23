@@ -1,68 +1,66 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2858078wrp;
-        Mon, 23 Sep 2019 09:25:48 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzcx0fPzhJH8hUFRIi7UWWc8eMPCTd9XpYFq9M9NjpkXIHEqXSZKZQcNDKLe42GcU3d8i8D
-X-Received: by 2002:ac8:38ef:: with SMTP id g44mr787637qtc.277.1569255948203;
-        Mon, 23 Sep 2019 09:25:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569255948; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2858319wrp;
+        Mon, 23 Sep 2019 09:26:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwmSj0ORmCWB+pLM4IeRb4gqcBnWhx5ZdGdruiJEH97R1qCo9Czn3QYo1Frwh3/AcbWiTzk
+X-Received: by 2002:aed:30ce:: with SMTP id 72mr792876qtf.27.1569255963188;
+        Mon, 23 Sep 2019 09:26:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569255963; cv=none;
         d=google.com; s=arc-20160816;
-        b=hW41NGzLnV5Ygj9ZFvwYtmb1e4przvle7RLfOy0m2MnXvE2H3NWeQyahQOLxhEqipm
-         AefBQ3zxhsk4wEgtdxHEXlrMeBWxmVxs6bgLC657VLn9cP7vnjVA1LcdPEWYDeX1UUfj
-         xllitNesdZwBYnS15lzP455EgQB6pH504Oqus5lX93oOWM3Jj5URs5GnEX1cx/Skhy/B
-         CYKUuKa9vwM0B0FtaM34dU11o9F06cyA2mbx4rFtSFZtZZsm2btjGrZi8pWdOhdPCKh7
-         sXiXQEQBoQWMUhbkFg54SBHaz+BQbkzMDaVMhcushFLm/PToSBlEJZ7yrpwVZJ5WaG8K
-         588Q==
+        b=Bmih/bl8bkVIf3HCGNdDX1+zgUTXJNj75kcaPvTXmXnK3qXo8nRYOKz3xK75LTNuTg
+         YWwHVFvBcus8inxkjazirhgU1qLOrXlarBpQTpBiYzJpUqZ74zelVyXTETmCbqp8K3SV
+         O+1EO7DPkXq4MW7fT5XjmX4ZfgoZj324PWqDuw3Iljm6JrSnrq1h7cAj/bMrZ0i+FrKL
+         UOd/3dg8vHnvdo783Z6xCn1nea+T/f3z9zbeub8Cf9YUbP0lYNziLMO6fdYCguOHMP6W
+         UPGLP0eR9YXsw7LG+qJuF5TduQvs5Ds83eSoZe8p3NOCQwtHYZVtToKPPYkFjmxQsyTt
+         zgDQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=VuyAlsykkyYOQBDoL5GA33lV58roAlCyUz8o1wGhPZo=;
-        b=qwwxBIYkvio8Gn8XCTpw4roLQ2/D0MMes6AjcR6z2EvPIFwJNzRFoo0shKCgXkIscZ
-         YLFZRTWvRHJNtouIrT8yL/gLjBnzDbf9Mv626opEn4r9rwjzCg8SVrAmiJttm8gqGj5p
-         EhtPq9WibHEnG1Z1E2NjNFeILZW+QUvAPeuyArD+WgBlJgbiYj3B4rmIUV+JrqqteoDO
-         vEd45iqLlzpbdWw1fCYN9no5VL3jZD0FbH9XyA4jvPKE+RP7dHE1GeF09t+HuyVp/wRA
-         QahpR6LIuVF2plP0xRxlIfkJT7W8FqtQ/35FoHO06+uT30fT3se74P6cXH1A/gn4MIdC
-         9DqA==
+         :mime-version:message-id:date:subject:to:from;
+        bh=ZG3REVsm80++5/Ne7A+0kgxXtID2gzSI5I0utM9R7ZE=;
+        b=j2ZgCi9HJquPj4YHBcsczxn7FznMJigqJbX4jUzREldE+njMchrfeUtKHGYfg7DNwN
+         GoY2INScOlP0rMXjVH28AqbUUE6kg/oDDFUAwIVAMQdtjilXoSUPbVwkC6TnWrIRbAWu
+         ckiHlJd+uT+fI04Cn2RamzeFCKs81Q1GZF/wQW4us+PXzua9jYeBiqUDMPLyuE8OVimQ
+         ZxsH94T7Wh2dSNr0XHyTu0WgWf79HBWMmZ/TfRJBc4MU6cD/TWHm2IDyMcMW6Ds9QM8q
+         QHAdto8Ed5HIe8lOYELcrW73XJS79jkpcOvxL3mfTuvguL077kjIQusIIWnTNE27heFH
+         XkFg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c23si8458816qkc.57.2019.09.23.09.25.48
+        by mx.google.com with ESMTPS id c19si8775065qke.288.2019.09.23.09.26.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 09:25:48 -0700 (PDT)
+        Mon, 23 Sep 2019 09:26:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Received: from localhost ([::1]:59310 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59314 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCR9m-00028k-W7
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 12:25:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57373)
+	id 1iCRA2-0002Rf-Db
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 12:26:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57498)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iCQxZ-0002bR-CF
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 12:13:11 -0400
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iCQxg-0002df-3l
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 12:13:19 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iCQxW-0003sD-1w
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 12:13:09 -0400
-Received: from relay.sw.ru ([185.231.240.75]:39506)
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iCQxd-000407-5i
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 12:13:15 -0400
+Received: from relay.sw.ru ([185.231.240.75]:39524)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
- id 1iCQxM-0003a7-Gv; Mon, 23 Sep 2019 12:12:56 -0400
+ id 1iCQxM-0003aC-JW; Mon, 23 Sep 2019 12:12:57 -0400
 Received: from [10.94.3.0] (helo=kvm.qa.sw.ru)
  by relay.sw.ru with esmtp (Exim 4.92.2)
  (envelope-from <vsementsov@virtuozzo.com>)
- id 1iCQx1-0001Fp-PU; Mon, 23 Sep 2019 19:12:35 +0300
+ id 1iCQwx-0001Fp-QV; Mon, 23 Sep 2019 19:12:32 +0300
 From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 To: qemu-devel@nongnu.org
-Subject: [RFC v2 9/9] fix-compilation: includes
-Date: Mon, 23 Sep 2019 19:12:31 +0300
-Message-Id: <20190923161231.22028-10-vsementsov@virtuozzo.com>
+Subject: [RFC v2 0/9] error: auto propagated local_err
+Date: Mon, 23 Sep 2019 19:12:22 +0300
+Message-Id: <20190923161231.22028-1-vsementsov@virtuozzo.com>
 X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20190923161231.22028-1-vsementsov@virtuozzo.com>
-References: <20190923161231.22028-1-vsementsov@virtuozzo.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
@@ -113,122 +111,394 @@ Cc: stefanha@redhat.com, codyprime@gmail.com, jan.kiszka@siemens.com,
  jcd@tribudubois.net, pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: M3cI/sXW/xyE
+X-TUID: /LGZL5skSdNA
 
-Hmm. Should we allow empty stubs with errp parameter without calling
-new macro?
+Hi all!
 
-Or, just apply this commit before auto-generated commit.
+Here is a proposal of auto propagation for local_err, to not call
+error_propagate on every exit point, when we deal with local_err.
 
-Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
----
- target/ppc/kvm_ppc.h        | 2 ++
- target/s390x/cpu_models.h   | 1 +
- hw/i386/kvm/apic.c          | 1 +
- hw/misc/arm11scu.c          | 1 +
- hw/misc/mps2-scc.c          | 1 +
- hw/pci-bridge/dec.c         | 1 +
- qapi/qapi-dealloc-visitor.c | 1 +
- stubs/xen-hvm.c             | 1 +
- 8 files changed, 9 insertions(+)
+It also fixes two issues:
+1. Fix issue with error_fatal & error_append_hint: user can't see these
+hints, because exit() happens in error_setg earlier than hint is
+appended. [Reported by Greg Kurz]
 
-diff --git a/target/ppc/kvm_ppc.h b/target/ppc/kvm_ppc.h
-index 807c245e90..f6366c19aa 100644
---- a/target/ppc/kvm_ppc.h
-+++ b/target/ppc/kvm_ppc.h
-@@ -9,6 +9,8 @@
- #ifndef KVM_PPC_H
- #define KVM_PPC_H
- 
-+#include "qapi/error.h"
-+
- #define TYPE_HOST_POWERPC_CPU POWERPC_CPU_TYPE_NAME("host")
- 
- #ifdef CONFIG_KVM
-diff --git a/target/s390x/cpu_models.h b/target/s390x/cpu_models.h
-index 5329045a71..062161c5fa 100644
---- a/target/s390x/cpu_models.h
-+++ b/target/s390x/cpu_models.h
-@@ -16,6 +16,7 @@
- #include "cpu_features.h"
- #include "gen-features.h"
- #include "hw/core/cpu.h"
-+#include "qapi/error.h"
- 
- /* static CPU definition */
- struct S390CPUDef {
-diff --git a/hw/i386/kvm/apic.c b/hw/i386/kvm/apic.c
-index d125b370f4..cadf75b71c 100644
---- a/hw/i386/kvm/apic.c
-+++ b/hw/i386/kvm/apic.c
-@@ -18,6 +18,7 @@
- #include "sysemu/hw_accel.h"
- #include "sysemu/kvm.h"
- #include "target/i386/kvm_i386.h"
-+#include "qapi/error.h"
- 
- static inline void kvm_apic_set_reg(struct kvm_lapic_state *kapic,
-                                     int reg_id, uint32_t val)
-diff --git a/hw/misc/arm11scu.c b/hw/misc/arm11scu.c
-index befc85f321..9c1fec7825 100644
---- a/hw/misc/arm11scu.c
-+++ b/hw/misc/arm11scu.c
-@@ -13,6 +13,7 @@
- #include "hw/qdev-properties.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-+#include "qapi/error.h"
- 
- static uint64_t mpcore_scu_read(void *opaque, hwaddr offset,
-                                 unsigned size)
-diff --git a/hw/misc/mps2-scc.c b/hw/misc/mps2-scc.c
-index f2a00d3235..c41e776996 100644
---- a/hw/misc/mps2-scc.c
-+++ b/hw/misc/mps2-scc.c
-@@ -26,6 +26,7 @@
- #include "hw/registerfields.h"
- #include "hw/misc/mps2-scc.h"
- #include "hw/qdev-properties.h"
-+#include "qapi/error.h"
- 
- REG32(CFG0, 0)
- REG32(CFG1, 4)
-diff --git a/hw/pci-bridge/dec.c b/hw/pci-bridge/dec.c
-index fbe781474e..06445e0545 100644
---- a/hw/pci-bridge/dec.c
-+++ b/hw/pci-bridge/dec.c
-@@ -31,6 +31,7 @@
- #include "hw/pci/pci_host.h"
- #include "hw/pci/pci_bridge.h"
- #include "hw/pci/pci_bus.h"
-+#include "qapi/error.h"
- 
- /* debug DEC */
- //#define DEBUG_DEC
-diff --git a/qapi/qapi-dealloc-visitor.c b/qapi/qapi-dealloc-visitor.c
-index 3ee4c7a2e7..e265e29234 100644
---- a/qapi/qapi-dealloc-visitor.c
-+++ b/qapi/qapi-dealloc-visitor.c
-@@ -16,6 +16,7 @@
- #include "qapi/dealloc-visitor.h"
- #include "qapi/qmp/qnull.h"
- #include "qapi/visitor-impl.h"
-+#include "qapi/error.h"
- 
- struct QapiDeallocVisitor
- {
-diff --git a/stubs/xen-hvm.c b/stubs/xen-hvm.c
-index 840a2a0d09..350c762c64 100644
---- a/stubs/xen-hvm.c
-+++ b/stubs/xen-hvm.c
-@@ -12,6 +12,7 @@
- #include "hw/xen/xen.h"
- #include "exec/memory.h"
- #include "qapi/qapi-commands-misc.h"
-+#include "qapi/error.h"
- 
- int xen_pci_slot_get_pirq(PCIDevice *pci_dev, int irq_num)
- {
+2. Fix issue with error_abort & error_propagate: when we wrap
+error_abort by local_err+error_propagate, resulting coredump will
+refer to error_propagate and not to the place where error happened.
+(the macro itself don't fix the issue, but it allows to [3.] drop all
+local_err+error_propagate pattern, which will definitely fix the issue)
+[Reported by Kevin Wolf]
+
+It's still an RFC, due to the following reasons:
+
+1. I'm new to coccinella, so I failed to do the following pattern:
+
+ <...
+- goto out;
++ return;
+ ...>
+- out:
+- error_propagate(errp, local_err)
+
+So, here is compilation fix 08.. Who can help with it? If nobody, 08 is
+to be merged to 07 by hand.
+
+2. Question about using new macro in empty stub functions - see 09
+
+3. What to do with huge auto-generated commit 07? Should I split it
+per-maintainer or per-subsystem, or leave it as-is?
+
+4. Also, checkpatch has some complains about 07 patch:
+  - using tabs.. (hmm exactly stubs functions..)
+  - empty ifs
+  Again, I don't see any ways to fix it other that by hand and merge to
+  07..
+
+==================
+
+Also, if we decide, that this all is too huge, here is plan B:
+
+1. apply 01
+2. fix only functions that don't use local_err and use
+error_append_hint, by just invocation of new macro at function start -
+it will substitute Greg's series with no pain.
+3[optional]. Do full update for some subsystems, for example, only for
+block* and nbd*
+
+Vladimir Sementsov-Ogievskiy (9):
+  error: auto propagated local_err
+  qapi/error: add (Error **errp) cleaning APIs
+  errp: rename errp to errp_in where it is IN-argument
+  hw/core/loader-fit: fix freeing errp in fit_load_fdt
+  net/net: fix local variable shadowing in net_client_init
+  scripts: add coccinelle script to use auto propagated errp
+  Use auto-propagated errp
+  fix-compilation: empty goto
+  fix-compilation: includes
+
+ include/hw/pci-host/spapr.h                   |   2 +
+ include/monitor/hmp.h                         |   2 +-
+ include/qapi/error.h                          |  61 ++++-
+ target/ppc/kvm_ppc.h                          |   3 +
+ target/s390x/cpu_models.h                     |   3 +
+ ui/vnc.h                                      |   2 +-
+ audio/audio.c                                 |  12 +-
+ authz/pamacct.c                               |   1 +
+ backends/cryptodev-vhost-user.c               |   9 +-
+ backends/cryptodev.c                          |  24 +-
+ backends/hostmem-file.c                       |  19 +-
+ backends/hostmem-memfd.c                      |  17 +-
+ backends/hostmem.c                            |  38 ++-
+ backends/rng.c                                |   6 +-
+ block.c                                       | 208 +++++++----------
+ block/blkdebug.c                              |  33 +--
+ block/blklogwrites.c                          |  21 +-
+ block/blkreplay.c                             |   6 +-
+ block/blkverify.c                             |  16 +-
+ block/block-backend.c                         |  17 +-
+ block/commit.c                                |   6 +-
+ block/crypto.c                                |  12 +-
+ block/curl.c                                  |   6 +-
+ block/file-posix.c                            |  71 +++---
+ block/file-win32.c                            |  27 +--
+ block/gluster.c                               |  64 +++--
+ block/io.c                                    |  11 +-
+ block/iscsi.c                                 |  33 +--
+ block/mirror.c                                |  17 +-
+ block/nbd.c                                   |  44 ++--
+ block/nfs.c                                   |   6 +-
+ block/nvme.c                                  |  17 +-
+ block/parallels.c                             |  28 +--
+ block/qapi.c                                  |  23 +-
+ block/qcow.c                                  |  15 +-
+ block/qcow2-bitmap.c                          |   6 +-
+ block/qcow2.c                                 |  90 +++----
+ block/qed.c                                   |  16 +-
+ block/quorum.c                                |  22 +-
+ block/raw-format.c                            |   6 +-
+ block/rbd.c                                   |  25 +-
+ block/replication.c                           |  36 ++-
+ block/sheepdog.c                              |  66 +++---
+ block/snapshot.c                              |  14 +-
+ block/ssh.c                                   |  11 +-
+ block/throttle-groups.c                       |  22 +-
+ block/throttle.c                              |   6 +-
+ block/vdi.c                                   |  12 +-
+ block/vhdx.c                                  |  20 +-
+ block/vmdk.c                                  |  36 +--
+ block/vpc.c                                   |  25 +-
+ block/vvfat.c                                 |  11 +-
+ block/vxhs.c                                  |  22 +-
+ blockdev.c                                    | 220 +++++++-----------
+ blockjob.c                                    |   7 +-
+ bootdevice.c                                  |  29 +--
+ chardev/char-socket.c                         |   6 +-
+ chardev/char.c                                |  18 +-
+ crypto/block-luks.c                           |  31 +--
+ crypto/secret.c                               |  16 +-
+ crypto/tlssession.c                           |   6 +-
+ dump/dump.c                                   | 142 +++++------
+ dump/win_dump.c                               |  27 +--
+ exec.c                                        |  12 +-
+ hw/9pfs/9p-local.c                            |   7 +-
+ hw/acpi/core.c                                |  17 +-
+ hw/acpi/ich9.c                                |  27 +--
+ hw/acpi/memory_hotplug.c                      |   6 +-
+ hw/arm/allwinner-a10.c                        |  26 +--
+ hw/arm/armv7m.c                               |  51 ++--
+ hw/arm/bcm2835_peripherals.c                  |  84 +++----
+ hw/arm/bcm2836.c                              |  40 ++--
+ hw/arm/digic.c                                |  21 +-
+ hw/arm/fsl-imx25.c                            |  61 ++---
+ hw/arm/fsl-imx31.c                            |  56 ++---
+ hw/arm/fsl-imx6.c                             |  80 +++----
+ hw/arm/integratorcp.c                         |   6 +-
+ hw/arm/msf2-soc.c                             |  21 +-
+ hw/arm/nrf51_soc.c                            |  46 ++--
+ hw/arm/smmu-common.c                          |   6 +-
+ hw/arm/smmuv3.c                               |   6 +-
+ hw/arm/stm32f205_soc.c                        |  38 ++-
+ hw/arm/tosa.c                                 |   1 +
+ hw/arm/xlnx-versal-virt.c                     |   6 +-
+ hw/arm/xlnx-zynqmp.c                          |  84 +++----
+ hw/audio/intel-hda.c                          |  12 +-
+ hw/block/dataplane/xen-block.c                |  16 +-
+ hw/block/fdc.c                                |  17 +-
+ hw/block/onenand.c                            |   6 +-
+ hw/block/pflash_cfi01.c                       |   6 +-
+ hw/block/pflash_cfi02.c                       |   6 +-
+ hw/block/vhost-user-blk.c                     |   5 +-
+ hw/block/virtio-blk.c                         |   6 +-
+ hw/block/xen-block.c                          | 114 ++++-----
+ hw/char/debugcon.c                            |   6 +-
+ hw/char/serial-pci-multi.c                    |   6 +-
+ hw/char/serial-pci.c                          |   6 +-
+ hw/char/virtio-serial-bus.c                   |   6 +-
+ hw/core/bus.c                                 |  14 +-
+ hw/core/loader-fit.c                          |   2 +-
+ hw/core/machine.c                             |  18 +-
+ hw/core/numa.c                                |  48 ++--
+ hw/core/qdev-properties-system.c              |  24 +-
+ hw/core/qdev-properties.c                     |  78 +++----
+ hw/core/qdev.c                                |  36 ++-
+ hw/core/sysbus.c                              |   1 +
+ hw/cpu/a15mpcore.c                            |   6 +-
+ hw/cpu/a9mpcore.c                             |  26 +--
+ hw/cpu/arm11mpcore.c                          |  21 +-
+ hw/cpu/core.c                                 |  12 +-
+ hw/cpu/realview_mpcore.c                      |  11 +-
+ hw/display/bcm2835_fb.c                       |   5 +-
+ hw/display/qxl.c                              |   6 +-
+ hw/display/virtio-gpu-base.c                  |   6 +-
+ hw/display/virtio-gpu-pci.c                   |   6 +-
+ hw/display/virtio-vga.c                       |   6 +-
+ hw/dma/bcm2835_dma.c                          |   5 +-
+ hw/dma/xilinx_axidma.c                        |  21 +-
+ hw/gpio/aspeed_gpio.c                         |   6 +-
+ hw/gpio/bcm2835_gpio.c                        |   9 +-
+ hw/i386/kvm/apic.c                            |   2 +
+ hw/i386/pc.c                                  | 109 ++++-----
+ hw/ide/qdev.c                                 |  15 +-
+ hw/input/virtio-input.c                       |  12 +-
+ hw/intc/apic_common.c                         |   6 +-
+ hw/intc/arm_gic.c                             |   6 +-
+ hw/intc/arm_gic_kvm.c                         |  11 +-
+ hw/intc/arm_gicv3.c                           |  11 +-
+ hw/intc/arm_gicv3_its_kvm.c                   |   6 +-
+ hw/intc/arm_gicv3_kvm.c                       |  16 +-
+ hw/intc/armv7m_nvic.c                         |  11 +-
+ hw/intc/nios2_iic.c                           |   5 +-
+ hw/intc/pnv_xive.c                            |  14 +-
+ hw/intc/realview_gic.c                        |   6 +-
+ hw/intc/s390_flic_kvm.c                       |  10 +-
+ hw/intc/spapr_xive.c                          |  11 +-
+ hw/intc/spapr_xive_kvm.c                      |  49 ++--
+ hw/intc/xics.c                                |  31 +--
+ hw/intc/xics_kvm.c                            |  28 +--
+ hw/intc/xics_pnv.c                            |   6 +-
+ hw/intc/xive.c                                |  23 +-
+ hw/ipack/ipack.c                              |   4 +-
+ hw/isa/pc87312.c                              |   6 +-
+ hw/mem/memory-device.c                        |  19 +-
+ hw/mem/nvdimm.c                               |  23 +-
+ hw/mem/pc-dimm.c                              |  21 +-
+ hw/microblaze/xlnx-zynqmp-pmu.c               |  11 +-
+ hw/mips/cps.c                                 |  45 ++--
+ hw/misc/arm11scu.c                            |   2 +
+ hw/misc/bcm2835_mbox.c                        |   5 +-
+ hw/misc/bcm2835_property.c                    |   9 +-
+ hw/misc/ivshmem.c                             |  33 +--
+ hw/misc/macio/macio.c                         |  65 ++----
+ hw/misc/mps2-scc.c                            |   2 +
+ hw/misc/tmp105.c                              |   6 +-
+ hw/misc/tmp421.c                              |   6 +-
+ hw/net/dp8393x.c                              |   6 +-
+ hw/net/eepro100.c                             |   6 +-
+ hw/net/ne2000-isa.c                           |  16 +-
+ hw/net/xilinx_axienet.c                       |  21 +-
+ hw/nvram/fw_cfg.c                             |  12 +-
+ hw/nvram/nrf51_nvm.c                          |   6 +-
+ hw/pci-bridge/dec.c                           |   2 +
+ hw/pci-bridge/gen_pcie_root_port.c            |   6 +-
+ hw/pci-bridge/pci_bridge_dev.c                |  12 +-
+ hw/pci-bridge/pci_expander_bridge.c           |   6 +-
+ hw/pci-bridge/pcie_pci_bridge.c               |   7 +-
+ hw/pci-host/piix.c                            |   6 +-
+ hw/pci/pci.c                                  |  17 +-
+ hw/pci/pcie.c                                 |   6 +-
+ hw/pci/shpc.c                                 |  12 +-
+ hw/ppc/e500.c                                 |   6 +-
+ hw/ppc/pnv.c                                  |  92 +++-----
+ hw/ppc/pnv_core.c                             |  21 +-
+ hw/ppc/pnv_lpc.c                              |  22 +-
+ hw/ppc/pnv_occ.c                              |   4 +-
+ hw/ppc/pnv_psi.c                              |  21 +-
+ hw/ppc/spapr.c                                | 124 ++++------
+ hw/ppc/spapr_caps.c                           |  50 ++--
+ hw/ppc/spapr_cpu_core.c                       |  33 ++-
+ hw/ppc/spapr_drc.c                            |  44 ++--
+ hw/ppc/spapr_irq.c                            |  95 +++-----
+ hw/ppc/spapr_pci.c                            |  88 +++----
+ hw/ppc/spapr_vio.c                            |  11 +-
+ hw/riscv/riscv_hart.c                         |   7 +-
+ hw/riscv/sifive_e.c                           |   6 +-
+ hw/riscv/sifive_u.c                           |  10 +-
+ hw/s390x/3270-ccw.c                           |  12 +-
+ hw/s390x/css-bridge.c                         |   6 +-
+ hw/s390x/css.c                                |   6 +-
+ hw/s390x/ipl.c                                |  23 +-
+ hw/s390x/s390-ccw.c                           |  17 +-
+ hw/s390x/s390-pci-bus.c                       |  34 ++-
+ hw/s390x/s390-skeys.c                         |   6 +-
+ hw/s390x/s390-virtio-ccw.c                    |  10 +-
+ hw/s390x/sclp.c                               |  14 +-
+ hw/s390x/tod-kvm.c                            |  13 +-
+ hw/s390x/virtio-ccw-crypto.c                  |   6 +-
+ hw/s390x/virtio-ccw-rng.c                     |   6 +-
+ hw/s390x/virtio-ccw.c                         |  12 +-
+ hw/scsi/esp-pci.c                             |   6 +-
+ hw/scsi/megasas.c                             |  10 +-
+ hw/scsi/mptsas.c                              |  12 +-
+ hw/scsi/scsi-bus.c                            |  22 +-
+ hw/scsi/scsi-disk.c                           |   6 +-
+ hw/scsi/vhost-scsi.c                          |  11 +-
+ hw/scsi/vhost-user-scsi.c                     |   6 +-
+ hw/scsi/virtio-scsi.c                         |   6 +-
+ hw/sd/milkymist-memcard.c                     |  10 +-
+ hw/sd/sdhci-pci.c                             |   6 +-
+ hw/sd/sdhci.c                                 |  20 +-
+ hw/sd/ssi-sd.c                                |  13 +-
+ hw/smbios/smbios.c                            |  41 ++--
+ hw/sparc/sun4m.c                              |  18 +-
+ hw/sparc64/sun4u.c                            |   6 +-
+ hw/timer/aspeed_timer.c                       |   6 +-
+ hw/tpm/tpm_util.c                             |   6 +-
+ hw/usb/bus.c                                  |  33 +--
+ hw/usb/dev-serial.c                           |   6 +-
+ hw/usb/dev-smartcard-reader.c                 |  12 +-
+ hw/usb/dev-storage.c                          |  16 +-
+ hw/usb/hcd-ohci-pci.c                         |   6 +-
+ hw/usb/hcd-ohci.c                             |  12 +-
+ hw/usb/hcd-uhci.c                             |   6 +-
+ hw/usb/hcd-xhci.c                             |  12 +-
+ hw/vfio/ap.c                                  |   9 +-
+ hw/vfio/ccw.c                                 |  23 +-
+ hw/vfio/pci-quirks.c                          |   6 +-
+ hw/vfio/pci.c                                 |  36 ++-
+ hw/virtio/virtio-balloon.c                    |  33 ++-
+ hw/virtio/virtio-bus.c                        |  16 +-
+ hw/virtio/virtio-rng-pci.c                    |   6 +-
+ hw/virtio/virtio-rng.c                        |   6 +-
+ hw/virtio/virtio.c                            |  17 +-
+ hw/watchdog/wdt_aspeed.c                      |   4 +-
+ hw/xen/xen-backend.c                          |   6 +-
+ hw/xen/xen-bus.c                              |  85 +++----
+ hw/xen/xen-host-pci-device.c                  |  26 +--
+ hw/xen/xen_pt.c                               |  24 +-
+ hw/xen/xen_pt_config_init.c                   |  19 +-
+ io/dns-resolver.c                             |   6 +-
+ io/net-listener.c                             |   6 +-
+ iothread.c                                    |  25 +-
+ job.c                                         |   6 +-
+ memory.c                                      |  54 ++---
+ memory_mapping.c                              |   6 +-
+ migration/colo.c                              |  33 +--
+ migration/migration.c                         |  35 ++-
+ migration/ram.c                               |  12 +-
+ migration/rdma.c                              |  11 +-
+ migration/socket.c                            |  16 +-
+ monitor/hmp-cmds.c                            |   8 +-
+ monitor/misc.c                                |   8 +-
+ monitor/qmp-cmds.c                            |   6 +-
+ net/can/can_host.c                            |   6 +-
+ net/dump.c                                    |  14 +-
+ net/filter-buffer.c                           |  14 +-
+ net/filter.c                                  |   6 +-
+ net/net.c                                     |  44 ++--
+ net/netmap.c                                  |   6 +-
+ net/slirp.c                                   |   6 +-
+ net/tap-bsd.c                                 |   1 +
+ net/tap-solaris.c                             |   1 +
+ net/tap-stub.c                                |   1 +
+ net/tap.c                                     |  44 ++--
+ qapi/opts-visitor.c                           |   1 +
+ qapi/qapi-dealloc-visitor.c                   |   8 +
+ qapi/qapi-visit-core.c                        |  53 ++---
+ qapi/qmp-dispatch.c                           |   6 +-
+ qapi/string-input-visitor.c                   |   6 +-
+ qdev-monitor.c                                |  37 ++-
+ qga/commands-posix.c                          | 197 ++++++----------
+ qga/commands-win32.c                          | 127 ++++------
+ qom/object.c                                  | 187 ++++++---------
+ qom/object_interfaces.c                       |  26 +--
+ qom/qom-qobject.c                             |   6 +-
+ replication.c                                 |  24 +-
+ scsi/pr-manager-helper.c                      |   6 +-
+ stubs/xen-hvm.c                               |   3 +
+ target/alpha/cpu.c                            |   6 +-
+ target/arm/cpu.c                              |   6 +-
+ target/arm/cpu64.c                            |  10 +-
+ target/cris/cpu.c                             |   6 +-
+ target/hppa/cpu.c                             |   6 +-
+ target/i386/cpu.c                             | 107 ++++-----
+ target/lm32/cpu.c                             |   6 +-
+ target/m68k/cpu.c                             |   6 +-
+ target/microblaze/cpu.c                       |   6 +-
+ target/mips/cpu.c                             |   6 +-
+ target/moxie/cpu.c                            |   6 +-
+ target/nios2/cpu.c                            |   6 +-
+ target/openrisc/cpu.c                         |   6 +-
+ target/ppc/compat.c                           |  18 +-
+ target/ppc/kvm.c                              |   6 +-
+ target/ppc/translate_init.inc.c               |  23 +-
+ target/riscv/cpu.c                            |   6 +-
+ target/s390x/cpu.c                            |  25 +-
+ target/s390x/kvm-stub.c                       |   1 +
+ target/sh4/cpu.c                              |   6 +-
+ target/sparc/cpu.c                            |  12 +-
+ target/tilegx/cpu.c                           |   6 +-
+ target/tricore/cpu.c                          |   6 +-
+ target/unicore32/cpu.c                        |   6 +-
+ target/xtensa/cpu.c                           |   6 +-
+ tests/test-image-locking.c                    |   6 +-
+ tests/test-qmp-cmds.c                         |   7 +
+ tpm.c                                         |   6 +-
+ trace/qmp.c                                   |  12 +-
+ ui/input-barrier.c                            |   6 +-
+ ui/input.c                                    |  12 +-
+ ui/vnc.c                                      |  27 +--
+ util/error.c                                  |   8 +-
+ util/main-loop.c                              |   4 +-
+ util/oslib-posix.c                            |   5 +-
+ util/qemu-config.c                            |  27 +--
+ util/qemu-option.c                            |  50 ++--
+ util/qemu-sockets.c                           |  25 +-
+ vl.c                                          |  13 +-
+ scripts/coccinelle/auto-propagated-errp.cocci |  82 +++++++
+ 319 files changed, 2729 insertions(+), 4245 deletions(-)
+ create mode 100644 scripts/coccinelle/auto-propagated-errp.cocci
+
 -- 
 2.21.0
 

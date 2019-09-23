@@ -1,101 +1,134 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2978629wrp;
-        Mon, 23 Sep 2019 11:27:51 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqylFEK8vjzzf4KGjgXIXF8jC2kw5ie2RDCRCpOI8hcuDDsHpnHmF4+QpbpD72SvGVC/6UgQ
-X-Received: by 2002:ac8:5344:: with SMTP id d4mr1470967qto.258.1569263270899;
-        Mon, 23 Sep 2019 11:27:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569263270; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2988760wrp;
+        Mon, 23 Sep 2019 11:37:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyPVzgguR95dfAm5Skk3ZjOL+9h8hNXxor0/p9AN9ibGe2Q5iuHlFYzDktiXVYRaVQKDPOs
+X-Received: by 2002:a37:a24f:: with SMTP id l76mr1330078qke.91.1569263828987;
+        Mon, 23 Sep 2019 11:37:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569263828; cv=none;
         d=google.com; s=arc-20160816;
-        b=cbitfKKs8ewoYTZ229C0Z1+enw+op98z1/NafyWHcZY1V7Sg2axnwOv0S1A2+XOdhd
-         1JqYevrfSzNvYUsnZXp88XLG5vui5p+1erX5yo3IXfBoT2TwpxSN2OcDPkmDxPngMGCU
-         ZfP/4c7MlDtr1HfD55Bo6pZBXk4I9JR7YBI72Ix8fx7FQ+QYeP4lbkbWCpwRZkjOBhQM
-         VobHjddUZZboy7xubmJ8bP5QyWeK9yZ31o9zstBPJ8sS4SJmcwCEpYpLd8x6D1ZDw7K9
-         30xJcTT4u/WOaetuszFAJjHrQtyJcb6oFmk7bb3tlD2mD3aSmpBtR7j3AKUajpItiIhC
-         o8gg==
+        b=OsB5e0lCkfgkoZNdqSWvYB42PhbGAXFw1M2mZh58gqv02kGTN4VTJ4W3i9nJf9Nkoc
+         1G+NVDYS4LZ/OF6oi82Wv9yEN6mcaZMXkEZPzsw81ELHUAGl3mI5/EUm+Yp8f3RYwi9V
+         vnv8u9EsOQGhu6YYeE9ovTM04JZ2m5VxO/+rhnDAzvhi/ThY0Pdrdsoz8SDdW6ktZPFX
+         mQpdhPP8EkX4ZoFxKRXTFxDPQzirI0HanbTN8eDC9VSk4Y72d04weWxxdfsy8b7xkdIz
+         aIYIRJOZVFUlwnODVjDq+UV2hmxhWAfddEDtVERYSk+mrWWgf+xBCOpJ9usa9vZ1DiCM
+         6q8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=kE6GTsnxEsnSOYqZoVxiBRcQ9jMpOE4rFqMDVVkm1lg=;
-        b=lfFdiFiq6a5hwLcsHDxUizziuI1mi7sRrMQiEY3mAvfAQ1N5zPsNsDNUECJ+MBR02r
-         nDND6QUibHtcMVptaDDzDYUC+nFHkK75/Q4m5VG1vYWMf15v5r7REqtVAKY2VjtBXx2G
-         DI201OFw+KqSPTYOXOwhKAg+DBVihlU+jYNQVWzOfJPmwpa9/DDA3YEVMvvkIEsEI+Fi
-         jxBKn91fKv5Cryh9bXdrr8pjoSIxrPBDDpVvz3EKyPXrSbYMvm3JcZrXgHln/CkT6dHe
-         SZAXvJnIQMbI8fvkAgjeCAC3UUVCwS8c1kY5stKgJcE7aqCWVzCLxDved9CUygC3Grvy
-         DNFA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:organization:autocrypt:openpgp:from:references:to
+         :subject;
+        bh=5yiQu4FdJh35ItdVEfmb0uNN3wEBSSuVzNnrsNOBsok=;
+        b=XTHSLzhVIalBjVZ7wwI89pOXNKZDjIozlZd5SuycmgrenBE74ZpSlA5pUu88swENVh
+         1urObdX3O8VwFZT3FJt7ZsYbHWdCO2t49yLiOcGvJ3y604dqCPd8brgyv31TSLB5jAc4
+         IqefMJxfrmo3i2+PLDxJFB/ooA1J8Z8+UGjHsIMczAlQPGvMXc6P/JfXRshik5LmaI5A
+         Cec02xmc5epTQ1hZfo+hcVV872MTcz9zcxw45yjzEQyMxPVCv5dDwJyQfSynllvRXwhx
+         fNvBSTOopfvqQS5zxeznTbJYTgRX0qeX4NwF9egKLR/aTmk7Oa+nl9MSySuk1B1AzoDs
+         7JMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UCqEsrfy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z37si9409996qtz.50.2019.09.23.11.27.50
+        by mx.google.com with ESMTPS id y79si8646493qka.236.2019.09.23.11.37.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 11:27:50 -0700 (PDT)
+        Mon, 23 Sep 2019 11:37:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UCqEsrfy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60782 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60872 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCT3u-0004h4-84
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 14:27:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49657)
+	id 1iCTCu-00031q-0u
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 14:37:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51209)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iCT3Y-0004go-NS
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:27:29 -0400
+ (envelope-from <thuth@redhat.com>) id 1iCTCf-00031A-UQ
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:36:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iCT3X-0007Xd-Qy
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:27:28 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:35914)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iCT3X-0007XQ-Lb
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:27:27 -0400
-Received: by mail-ot1-x342.google.com with SMTP id 67so13046497oto.3
- for <qemu-arm@nongnu.org>; Mon, 23 Sep 2019 11:27:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=kE6GTsnxEsnSOYqZoVxiBRcQ9jMpOE4rFqMDVVkm1lg=;
- b=UCqEsrfy5zkY+UZnwpriH4g5cs0zmvxd6WR/yB6p+hRusOXUxrDo6qVASIGlFXdwK9
- 5r4ASzCYEDjm/CvvwSm0xlyPivfixI1MNls0JqO5gwjRYuul9XsJ7VzD4ZsTHDO/rF+N
- aUfJnucgDqkdCbfXMpdwMpzf8xR5wWPOg8K9JANL+kAlegvH14O34EYer43CLl4u9t8l
- QY5neyzHTufOGnFPfCI6gGWHutsO9g+RDHlESRlXhwhcCA84uuvEyfLWS6KgpaYvghqY
- 2lG4M+zNDnubLo0eRVLoRXv4XDyV9vSKHDDv9d0JIrAyv4542DAhfktv1D77jSVxNt/0
- 9zmA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=kE6GTsnxEsnSOYqZoVxiBRcQ9jMpOE4rFqMDVVkm1lg=;
- b=tPCtn4GP8+ZKuLN9N+1L6Q+5Xx0pV4dvSMw/eMH4/HknnWBv0VLJ6caHXeoaf0TG70
- RddG6dtMudsLH4DMFvjzpcOXSYXV5PH3DiqnvMuuM1bEAnp8KR5lukLohCcRmX8iS0W+
- PNfD1IPHq6JOvFMPs6/yfr6xzdrLXHZC32Ndd3H0M8MEZwXxuHcvew7CGOxsng8SLpjg
- diIS4enErUZSpjBiszl4Xy+5Mfx/WVG1hHrH3EOSKg0tHRFclNwIY7O1kY59DIITMtZL
- 0kqwB+pIReQ7zVQssgvf+rubxWLPRDJrblJv9rWIq09nDQJku5YRTrKzVC+IYndbS94s
- SwQw==
-X-Gm-Message-State: APjAAAXF9/jw1nSBtgoT7xZoe1azvrAUDfaUwPXACb2/bUTMS/hzexax
- LpAh2h+SO7wl3TCdCUQhug2OlfMevk4ys8zSoxbjIA==
-X-Received: by 2002:a9d:5e11:: with SMTP id d17mr1032382oti.135.1569263246759; 
- Mon, 23 Sep 2019 11:27:26 -0700 (PDT)
-MIME-Version: 1.0
+ (envelope-from <thuth@redhat.com>) id 1iCTCe-00033a-3H
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:36:53 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58512)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1iCTCd-00033D-S5; Mon, 23 Sep 2019 14:36:52 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 25AAB898111;
+ Mon, 23 Sep 2019 18:36:51 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-120.ams2.redhat.com [10.36.116.120])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0505E601B6;
+ Mon, 23 Sep 2019 18:36:46 +0000 (UTC)
+Subject: Re: [PATCH 3/4] hw/arm: Move armv7m_nvic.c to hw/arm/ and always
+ enable it for arm builds
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20190921150420.30743-1-thuth@redhat.com>
  <20190921150420.30743-4-thuth@redhat.com>
  <CAFEAcA_6UxMBeyOMM0iT5cnCQEpWXfRO2XMuV9ez_0Su2osXNg@mail.gmail.com>
  <0389e9dc-7f78-5b27-4764-51f0bdef5bef@redhat.com>
-In-Reply-To: <0389e9dc-7f78-5b27-4764-51f0bdef5bef@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 23 Sep 2019 19:27:15 +0100
-Message-ID: <CAFEAcA8XSQs=fw839O4+tTUqy-DpNh-jdHxQsfYQxm-nTbvH4Q@mail.gmail.com>
-Subject: Re: [PATCH 3/4] hw/arm: Move armv7m_nvic.c to hw/arm/ and always
- enable it for arm builds
-To: Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::342
+ <CAFEAcA8XSQs=fw839O4+tTUqy-DpNh-jdHxQsfYQxm-nTbvH4Q@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat
+Message-ID: <88bcb5b7-4f91-1cc2-39a1-bd919608737e@redhat.com>
+Date: Mon, 23 Sep 2019 20:36:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA8XSQs=fw839O4+tTUqy-DpNh-jdHxQsfYQxm-nTbvH4Q@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.67]); Mon, 23 Sep 2019 18:36:51 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -107,23 +140,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-arm <qemu-arm@nongnu.org>,
  Richard Henderson <richard.henderson@linaro.org>,
  QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bsqA/cPi282t
+X-TUID: 1VMtTmQkqGVN
 
-On Mon, 23 Sep 2019 at 18:54, Thomas Huth <thuth@redhat.com> wrote:
-> Ok, then what would you suggest to solve the problem that this file has
-> always to be linked into the binary? I can't use "obj-y += ..." in
-> hw/intc/Makefile.objs since that would mean that the file also gets
-> compiled for non-Arm boards. Would you prefer a bunch of stubs instead
-> that get used if CONFIG_ARM_V7M is not set?
+On 23/09/2019 20.27, Peter Maydell wrote:
+> On Mon, 23 Sep 2019 at 18:54, Thomas Huth <thuth@redhat.com> wrote:
+>> Ok, then what would you suggest to solve the problem that this file ha=
+s
+>> always to be linked into the binary? I can't use "obj-y +=3D ..." in
+>> hw/intc/Makefile.objs since that would mean that the file also gets
+>> compiled for non-Arm boards. Would you prefer a bunch of stubs instead
+>> that get used if CONFIG_ARM_V7M is not set?
+>=20
+> I thought obj-y was for only-this-target and obj-common-y was
+> for all-boards ?
 
-I thought obj-y was for only-this-target and obj-common-y was
-for all-boards ?
+Well, obj-y is for the current target that gets compiled. But if you use
+it in a Makefile that gets used by all targets, the file gets compiled
+for each target individually.
 
-thanks
--- PMM
+Just try to change "obj-$(CONFIG_ARM_V7M) +=3D armv7m_nvic.o" into
+"obj-y +=3D armv7m_nvic.o" in hw/int/Makefile.objs, and you'll see it bre=
+ak:
+
+  CC      alpha-softmmu/hw/intc/armv7m_nvic.o
+In file included from include/hw/intc/armv7m_nvic.h:13,
+                 from hw/intc/armv7m_nvic.c:19:
+target/arm/cpu.h:1416: error: "FPCR_DZE" redefined [-Werror]
+ #define FPCR_DZE    (1 << 9)    /* Divide by Zero exception trap enable =
+*/
+
+ Thomas

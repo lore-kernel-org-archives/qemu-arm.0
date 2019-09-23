@@ -1,71 +1,74 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3114836wrp;
-        Mon, 23 Sep 2019 14:01:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxBQIjCMiT1T0OahwA6eL/hgRZv1tlULsMnlaCx7rebq20f0lll9KQvU+GdBMRBPThUukdK
-X-Received: by 2002:a05:620a:159b:: with SMTP id d27mr2110034qkk.298.1569272462908;
-        Mon, 23 Sep 2019 14:01:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569272462; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3142669wrp;
+        Mon, 23 Sep 2019 14:31:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzIuI4w/mSv2ej1+Zxt7v42nV+pE+Y6KrtsFsXt4bFVbv+ZD8gez8h5t4FDa6skIfErvVpS
+X-Received: by 2002:a37:a9c1:: with SMTP id s184mr358qke.360.1569274273205;
+        Mon, 23 Sep 2019 14:31:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569274273; cv=none;
         d=google.com; s=arc-20160816;
-        b=B8UVPNsoUsH5PZsl5PifqxUrsje7i9xdCZ6rACNxmhV6AmsVhPrRNZoy7KTmtj11XC
-         TDy0HL/90ircgfykM/quCE3L3nsbop1LB0tCRLTqVzlaeecbrNvsIAbmGFPVJWKh7BlV
-         baoNK4caS2OEbHVhDzDDkqEYkcEJGX2qOUyvBHfiDAr714g0L7K5buzCMOtddC+gK1bJ
-         3L0HkRwFTrmrgInyFVdsZiZs8jmGqggLbeYuNt1W2+oAMO5LNPd+CEpH9tdyWV2yJMmX
-         FRHTb3gZqltpneTSV3lFNKcUlXwe44J73ZlDMT7fjMto66QA2kErHDJiNBtYeQUjpF03
-         6+cg==
+        b=duppa09htRawmLO2XxjtELaEergiSBK3ssV+tA9z38kY+55fmMBrIkDNYrgrqkYd2S
+         JCltUfTDu6fk1GcRtlduCkZBNXWRUn4MyNg3Z82LJDOCiR13iywbXDBpPqpmQ9rMFgAj
+         xGelrmmhE9dN7klliAxew3zZCpA/KyLyYoNQwran7ySAOgBQ9BC8Gz8OHUYrVOCroK1E
+         /duAtUu8DNMR7WZ9mIYbyazsTtI4P+vxADZ6n9na2QcZpO0dQDYaqs3m0JkpqfK+QtKD
+         ZgHjba9VS+xzb+xNZc5WcFeGYRFv2TnRRT577HqoQCaVAynMKiFvMXvfs3Yfag+PGQX9
+         K8JA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:organization:autocrypt:openpgp:from:references:to
          :subject;
-        bh=fP1+2NMwz4jxbrfkiBDzi5pCXO5qOnzp9cVx4e/H/0E=;
-        b=KyngGLy3OxZfkxT4j4RAZWaJ+4uLe11o5o0q2Wj/OZ+0cIKBrm8UPNg7qCCOg5AX3I
-         MhOZ+KkPDmyo1KiyX4HA0g6EbWgZson8d+gnjmT64tJ5A/K6J7+UVEwBzgHVAqGNablD
-         Ls779YtgYmc12OOR0BI5eYDgLNVaEQSmWEED+raxuVjExMNrsD8fIbB3nUH5fel8X6ZS
-         jsp5ibvl+Tr22vx13ErlF8wGBanjqaeyIDUc3+3DABp/BcCO+J9yJUmrzFvhOmsUyIrW
-         ytMGn9gCZkmfZM2Edun5tyridBHq0+mEli+bcoVc4ZikH6juaPrMIBM20G1Yk7K5/BPM
-         pdfg==
+        bh=bBmTwwY99xcRh4kY4Fx6POgoaKqJsdDm8FTDGExxl/8=;
+        b=ZzEvvJmOJ9mlM2XWkfK44C6Y6wKn0QXg2+sJCptYHsyzIRrrYy+3Lp3QNLeFVvt0FA
+         +8Z3ycD72zbQeHhG9ypXcJXSHRXfj6cpVzY4AsJUJsEaoV9jcqYDinXbsNmBpNjcP7Ee
+         /QZxt2uGlDNzLhOm9gkICKlOAHc7MQH1r72YpIQzVfBPZNn3hpwcKXd/MunuRK28MTDu
+         zwa0ZfegR/u6h0NhjxI4SJotHTJEJhtJbteLcjTZU4QkC1WtHJR6zNPzQEwRXXe/Lcby
+         Nb3JO2MMl18+g225XsmSxj5sqkZOD1e4HzR6sem0ND94BSnEhrWWg+d3+xLia8vf5mHB
+         Udkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d16si9332358qvz.169.2019.09.23.14.01.02
+        by mx.google.com with ESMTPS id j21si8672795qvg.150.2019.09.23.14.31.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 14:01:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Sep 2019 14:31:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34026 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34332 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCVS9-0002i0-Uw
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 17:01:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33339)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iCVvM-0007DR-7g
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 17:31:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46836)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iCUJy-0000jj-SW
- for qemu-devel@nongnu.org; Mon, 23 Sep 2019 15:48:32 -0400
+ (envelope-from <eblake@redhat.com>) id 1iCVv8-0007DE-8x
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 17:30:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iCUJx-00074X-CS
- for qemu-devel@nongnu.org; Mon, 23 Sep 2019 15:48:30 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45248)
+ (envelope-from <eblake@redhat.com>) id 1iCVv5-0000aT-V9
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 17:30:56 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:37560)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iCUJr-00072v-KW; Mon, 23 Sep 2019 15:48:23 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ id 1iCVv5-0000ZX-NE; Mon, 23 Sep 2019 17:30:55 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id EB77730833C1;
- Mon, 23 Sep 2019 19:48:21 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 6C9B559449;
+ Mon, 23 Sep 2019 21:30:51 +0000 (UTC)
 Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 50FBB6017E;
- Mon, 23 Sep 2019 19:47:28 +0000 (UTC)
-Subject: Re: [RFC v2 0/9] error: auto propagated local_err
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4B7125D71C;
+ Mon, 23 Sep 2019 21:30:02 +0000 (UTC)
+Subject: Re: [RFC v2 6/9] scripts: add coccinelle script to use auto
+ propagated errp
 To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
  qemu-devel@nongnu.org
 References: <20190923161231.22028-1-vsementsov@virtuozzo.com>
+ <20190923161231.22028-7-vsementsov@virtuozzo.com>
+ <57e97ed0-b1a1-d209-fc23-cf41ec467157@redhat.com>
 From: Eric Blake <eblake@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=eblake@redhat.com; keydata=
@@ -92,186 +95,98 @@ Autocrypt: addr=eblake@redhat.com; keydata=
  Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
  2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
 Organization: Red Hat, Inc.
-Message-ID: <d1527fdc-b5e8-093a-9206-6f7ceeece2ac@redhat.com>
-Date: Mon, 23 Sep 2019 14:47:27 -0500
+Message-ID: <7cffb999-35e5-742e-7241-6da4777885bf@redhat.com>
+Date: Mon, 23 Sep 2019 16:29:59 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190923161231.22028-1-vsementsov@virtuozzo.com>
+In-Reply-To: <57e97ed0-b1a1-d209-fc23-cf41ec467157@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.44]); Mon, 23 Sep 2019 19:48:22 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.39]); Mon, 23 Sep 2019 21:30:51 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-X-Mailman-Approved-At: Mon, 23 Sep 2019 16:51:49 -0400
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: stefanha@redhat.com, codyprime@gmail.com, jan.kiszka@siemens.com,
- berto@igalia.com, zhang.zhanghailiang@huawei.com, qemu-block@nongnu.org,
- arikalo@wavecomp.com, pasic@linux.ibm.com, hpoussin@reactos.org,
- anthony.perard@citrix.com, samuel.thibault@ens-lyon.org, philmd@redhat.com,
- green@moxielogic.com, lvivier@redhat.com, ehabkost@redhat.com,
- xiechanglong.d@gmail.com, pl@kamp.de, dgilbert@redhat.com, b.galvani@gmail.com,
- eric.auger@redhat.com, alex.williamson@redhat.com, ronniesahlberg@gmail.com,
- jsnow@redhat.com, rth@twiddle.net, kwolf@redhat.com, andrew@aj.id.au,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: stefanha@redhat.com, jan.kiszka@siemens.com, zhang.zhanghailiang@huawei.com,
+ qemu-block@nongnu.org, arikalo@wavecomp.com, pasic@linux.ibm.com,
+ hpoussin@reactos.org, anthony.perard@citrix.com, samuel.thibault@ens-lyon.org,
+ balrogg@gmail.com, jasowang@redhat.com, lvivier@redhat.com,
+ ehabkost@redhat.com, xiechanglong.d@gmail.com, pl@kamp.de, dgilbert@redhat.com,
+ b.galvani@gmail.com, eric.auger@redhat.com, alex.williamson@redhat.com,
+ ronniesahlberg@gmail.com, rth@twiddle.net, kwolf@redhat.com, andrew@aj.id.au,
  crwulff@gmail.com, sundeep.lkml@gmail.com, michael@walle.cc,
  qemu-ppc@nongnu.org, kbastian@mail.uni-paderborn.de, imammedo@redhat.com,
  fam@euphon.net, peter.maydell@linaro.org, sheepdog@lists.wpkg.org,
- david@redhat.com, palmer@sifive.com, thuth@redhat.com, jcmvbkbc@gmail.com,
- den@openvz.org, hare@suse.com, sstabellini@kernel.org, arei.gonglei@huawei.com,
- namei.unix@gmail.com, atar4qemu@gmail.com, farman@linux.ibm.com,
- amit@kernel.org, sw@weilnetz.de, groug@kaod.org, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, peter.chubb@nicta.com.au, clg@kaod.org, shorne@gmail.com,
- qemu-riscv@nongnu.org, cohuck@redhat.com, amarkovic@wavecomp.com,
- aurelien@aurel32.net, pburton@wavecomp.com, sagark@eecs.berkeley.edu,
- jasowang@redhat.com, kraxel@redhat.com, edgar.iglesias@gmail.com,
- gxt@mprc.pku.edu.cn, ari@tuxera.com, quintela@redhat.com,
- mdroth@linux.vnet.ibm.com, lersek@redhat.com, borntraeger@de.ibm.com,
- antonynpavlov@gmail.com, dillaman@redhat.com, joel@jms.id.au,
- xen-devel@lists.xenproject.org, integration@gluster.org, rjones@redhat.com,
- Andrew.Baumann@microsoft.com, mreitz@redhat.com, walling@linux.ibm.com,
- mst@redhat.com, mark.cave-ayland@ilande.co.uk, v.maffione@gmail.com,
- marex@denx.de, armbru@redhat.com, marcandre.lureau@redhat.com,
- alistair@alistair23.me, paul.durrant@citrix.com, pavel.dovgaluk@ispras.ru,
- g.lettieri@iet.unipi.it, rizzo@iet.unipi.it, david@gibson.dropbear.id.au,
- akrowiak@linux.ibm.com, berrange@redhat.com, xiaoguangrong.eric@gmail.com,
- pmorel@linux.ibm.com, wencongyang2@huawei.com, jcd@tribudubois.net,
- pbonzini@redhat.com, stefanb@linux.ibm.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pmG/y5o1z+jo
+ david@redhat.com, palmer@sifive.com, jcmvbkbc@gmail.com, den@openvz.org,
+ hare@suse.com, sstabellini@kernel.org, arei.gonglei@huawei.com,
+ marcel.apfelbaum@gmail.com, namei.unix@gmail.com, atar4qemu@gmail.com,
+ thuth@redhat.com, amit@kernel.org, sw@weilnetz.de, groug@kaod.org,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, peter.chubb@nicta.com.au,
+ clg@kaod.org, shorne@gmail.com, qemu-riscv@nongnu.org, cohuck@redhat.com,
+ philmd@redhat.com, amarkovic@wavecomp.com, aurelien@aurel32.net,
+ pburton@wavecomp.com, sagark@eecs.berkeley.edu, green@moxielogic.com,
+ kraxel@redhat.com, gxt@mprc.pku.edu.cn, quintela@redhat.com,
+ mdroth@linux.vnet.ibm.com, borntraeger@de.ibm.com, antonynpavlov@gmail.com,
+ joel@jms.id.au, xen-devel@lists.xenproject.org, integration@gluster.org,
+ lersek@redhat.com, Andrew.Baumann@microsoft.com, mreitz@redhat.com,
+ walling@linux.ibm.com, mst@redhat.com, mark.cave-ayland@ilande.co.uk,
+ v.maffione@gmail.com, marex@denx.de, armbru@redhat.com,
+ marcandre.lureau@redhat.com, alistair@alistair23.me, paul.durrant@citrix.com,
+ pavel.dovgaluk@ispras.ru, g.lettieri@iet.unipi.it, rizzo@iet.unipi.it,
+ david@gibson.dropbear.id.au, akrowiak@linux.ibm.com, berrange@redhat.com,
+ xiaoguangrong.eric@gmail.com, pmorel@linux.ibm.com, wencongyang2@huawei.com,
+ jcd@tribudubois.net, pbonzini@redhat.com, stefanb@linux.ibm.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /GDPAzVVlLEq
 
-On 9/23/19 11:12 AM, Vladimir Sementsov-Ogievskiy wrote:
-> Hi all!
+On 9/23/19 3:05 PM, Eric Blake wrote:
+
+> Does running this Coccinelle script 2 times in a row add a second
+> ERRP_FUNCTION_BEGIN() line?  We want it to be idempotent (no changes on
+> a second run).  (Admittedly, I did not actually test that yet).  Also, I
+> don't know if this can be tweaked to avoid adding the line to a function
+> with an empty body, maybe:
 > 
-> Here is a proposal of auto propagation for local_err, to not call
-> error_propagate on every exit point, when we deal with local_err.
-> 
-> It also fixes two issues:
-> 1. Fix issue with error_fatal & error_append_hint: user can't see these
-> hints, because exit() happens in error_setg earlier than hint is
-> appended. [Reported by Greg Kurz]
-> 
-> 2. Fix issue with error_abort & error_propagate: when we wrap
-> error_abort by local_err+error_propagate, resulting coredump will
-> refer to error_propagate and not to the place where error happened.
-> (the macro itself don't fix the issue, but it allows to [3.] drop all
+>  fn(..., Error **errp, ...)
+>  {
+> +    ERRP_FUNCTION_BEGIN();
+>      ...
+>  }
 
-doesn't
+Also untested:
 
-> local_err+error_propagate pattern, which will definitely fix the issue)
-> [Reported by Kevin Wolf]
-> 
-> It's still an RFC, due to the following reasons:
-> 
-> 1. I'm new to coccinella, so I failed to do the following pattern:
-> 
->  <...
-> - goto out;
-> + return;
->  ...>
-> - out:
-> - error_propagate(errp, local_err)
-> 
-> So, here is compilation fix 08.. Who can help with it? If nobody, 08 is
-> to be merged to 07 by hand.
+ fn(..., Error **errp, ...)
+ {
+(
+|
+     ERRP_FUNCTION_BEGIN();
+     ...
+|
++    ERRP_FUNCTION_BEGIN()
+     ...
+)
+ }
 
-I'm not sure either; but I agree that if we can't figure out how to make
-Coccinelle do quite what we want, that we are better off squashing in
-compile fixes.
 
-Also, while I like Coccinelle for automating the conversion, it's harder
-to get everyone to run it; it would be nice if we could also figure out
-a patch to scripts/checkpatch.pl that for any instance of 'Error
-**errp)\n{\n' not followed by either } or the new macro, we flag that as
-a checkpatch warning or error.
+> Overall, the script makes sense in my reading (but no idea if it
+> actually catches everything we want, or if it missed something).
 
-> 
-> 2. Question about using new macro in empty stub functions - see 09
-
-It would be nice if we could exempt empty functions - no need to use the
-macro if there is no function body otherwise.  I'm not sure if
-Coccinelle can do that filtering during the conversion, or if we clean
-up by hand after the fact.
-
-> 
-> 3. What to do with huge auto-generated commit 07? Should I split it
-> per-maintainer or per-subsystem, or leave it as-is?
-
-It's big. I'd split it into multiple patches (and reduce the cc - except
-for the cover letter, the rest of the patches can be limited to the
-actual maintainer/subsystem affected rather than everyone involved
-anywhere else in the series. With the current large cc, anyone that
-replies gets several mail bounces about "too many recipients").  It may
-be easier to split along directory boundaries than by maintainer
-boundaries.  Markus has applied large tree-wide Coccinelle cleanups
-before, maybe he has some advice.
-
-> 
-> 4. Also, checkpatch has some complains about 07 patch:
->   - using tabs.. (hmm exactly stubs functions..)
->   - empty ifs
->   Again, I don't see any ways to fix it other that by hand and merge to
->   07..
-
-Hand cleanups for formatting or compilation fixes to Coccinelle's work
-is not an uncommon issue after large patches; thankfully it's also not
-very difficult (and surprisingly needed in very few places compared to
-how much actually gets touched).
-
-> 
-> ==================
-> 
-> Also, if we decide, that this all is too huge, here is plan B:
-> 
-> 1. apply 01
-> 2. fix only functions that don't use local_err and use
-> error_append_hint, by just invocation of new macro at function start -
-> it will substitute Greg's series with no pain.
-> 3[optional]. Do full update for some subsystems, for example, only for
-> block* and nbd*
-
-Even if we go with plan B, it's still worth checking in a Coccinelle
-script that we can periodically run to make sure we aren't missing out
-on the use of the macro where it is needed.
-
-> 
-> Vladimir Sementsov-Ogievskiy (9):
->   error: auto propagated local_err
->   qapi/error: add (Error **errp) cleaning APIs
->   errp: rename errp to errp_in where it is IN-argument
->   hw/core/loader-fit: fix freeing errp in fit_load_fdt
->   net/net: fix local variable shadowing in net_client_init
->   scripts: add coccinelle script to use auto propagated errp
->   Use auto-propagated errp
->   fix-compilation: empty goto
->   fix-compilation: includes
-> 
->  include/hw/pci-host/spapr.h                   |   2 +
->  include/monitor/hmp.h                         |   2 +-
->  include/qapi/error.h                          |  61 ++++-
->  target/ppc/kvm_ppc.h                          |   3 +
->  target/s390x/cpu_models.h                     |   3 +
->  ui/vnc.h                                      |   2 +-
-
->  vl.c                                          |  13 +-
->  scripts/coccinelle/auto-propagated-errp.cocci |  82 +++++++
->  319 files changed, 2729 insertions(+), 4245 deletions(-)
->  create mode 100644 scripts/coccinelle/auto-propagated-errp.cocci
-
-The diffstat is huge, but promising.
+Having spot-checked 7, it definitely misses cases where it was supposed
+to add ERRP_FUNCTION_BEGIN().
 
 -- 
 Eric Blake, Principal Software Engineer

@@ -1,72 +1,72 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3107370wrp;
-        Mon, 23 Sep 2019 13:51:43 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyPHCjt+u/bHupGv39oPc04aYKYMu/VatfEzQPghA5ftHRT4LT+xur4yHonUf+KaEObfXB2
-X-Received: by 2002:ac8:664d:: with SMTP id j13mr2030322qtp.191.1569271903829;
-        Mon, 23 Sep 2019 13:51:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569271903; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3107382wrp;
+        Mon, 23 Sep 2019 13:51:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzczpXLjxzEUn8zHCoTV4CfKCOTVjU4OGqWUNoEwXUbFz2e0cN8qbL6GEYJ3mrXp47Mw3Rq
+X-Received: by 2002:a0c:e5c1:: with SMTP id u1mr1116113qvm.206.1569271904984;
+        Mon, 23 Sep 2019 13:51:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569271904; cv=none;
         d=google.com; s=arc-20160816;
-        b=HZET9ajsKK0nWiq5UL63JQIeeX5xKLz+I2WsYVXMOhCJjQql/SS0nZC5Tk7KzkVbSn
-         ybe0kGlEdmhDjIfU7tTHJ4p9Xr3T9SZ/B3/1WMibXnkKwFeVaSuXmMsBoYoMF1EyYNha
-         vHP0N10PBRHkkkoYoeKAsJVKpY4NdOQyr+XZf0IJMw+h/tMAyJMPzIzJIjH7igFCQZnX
-         OwPqSkgHjU3PlfQRCX6LmmqZim2tEGFDCG7lK4LZ4QyseOPM1p4GivyCLHabKtnftFC/
-         ChZ3p6/JY9m+6IBbDzkc3W39/pFcgcZR+NeXP4hnPJnGe/bWP+42JC0JMeemHWXOo97J
-         gGXQ==
+        b=LrYjUZpwm0jpnIpMg03BXJlwVPC6tVxzeGmljypyZxgx+CI2xxf+BDUv8lFok9KZdt
+         GpEpD6yCVKDHStWXxS1/khgk8QJ248+DRSR/aLWlQsp7vFWhVao3syn0KoFvF70V7A/v
+         U+BH/ZyopMhxxKBvD4l1PWzr6zc1AiXwX1fEmC8fu9kEk+IajQllwyid2mq1/bt2eRmF
+         PgUfzEHGYr7dLP6ma2EwcB42O0R6S3BGKSHAELE3TqyR+2wxh71sXn1Xq1rBcZIGrazU
+         L7eULyG8ATht6X0EZJKzicQv+Rri3bjb2VgOhyqYFJn+Ca8nA5EA5IzlUNnAsXhMrB6i
+         LmyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:organization:autocrypt:openpgp:from:references:to
          :subject;
-        bh=V9Esm41Ngfx+CBT4BTnJfRf+pgPpn1GxaSE1IX1rGVw=;
-        b=kUSSUPsUo7VqvZZJp7TjcILKHaQlnOy/CD32oN5Vw1Q2liKWclmkfZWg980oCgqCCZ
-         aKXE3vO3btk6wbSoB8UBF97GqRgsUxUBf2LRR6hsqn6vxEfArL4n267q9VfhcyFnfhbW
-         EopPOcmRw5xJFoBz75JhDMNycxAGj0DgSvK/1PxxpNOytJdqdAUv0vl0kT76UC0nRfPD
-         9+e3RhX9cdseQ3BsFg9Dx17kYbEc7zfAl8kWfjzpEL/CeVI7J6fo4TOD1y5tdniiAvMg
-         Fd7bdtGHVBToA/ejD7aMURFkf6YFNqAcVDxB4mGhytM5PZtTxbREKWJeFA3jqCVfZBBG
-         n1Uw==
+        bh=L7UGuUFsJLhUO0m8W7FJBea1CRBJqIxuvlfNBNft16w=;
+        b=wgrs2QmoYadfnN3LL+IdmR/Cjvr8kTgAs1FdSGxkQH/WWZPneNfk+sxSFLERty4zq5
+         4THnSGq21mIX33VSJxua44llmPClI+HV5Fg5v6jHDh8b3E2nmUgOAMYB22MektVOKvdc
+         R9LSV8qSAHWsLv3+Q9Up84Iq9AUP5rb/KB4oFC84TsXWL7sxXkWXARMGDa9NVzs96jmp
+         lKhsqD5VMebWhoiMX/u7kYhhAdQujFVuReqn4zyX2aIgZIZ5kA+6yFJI2yjC/AO87Xqb
+         qjlpv2TqgGFaGz1Z/p3VkdK8gu3ix8nMQ2TQ9of35HQ+OlXKszNsp+bwTKWTFLbjR6uk
+         Oweg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 69si9829768qkh.184.2019.09.23.13.51.43
+        by mx.google.com with ESMTPS id d16si9253206qkl.43.2019.09.23.13.51.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 13:51:43 -0700 (PDT)
+        Mon, 23 Sep 2019 13:51:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33944 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33950 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCVJ8-0004Iq-CI
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 16:51:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52332)
+	id 1iCVJ9-0004Kd-Ho
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 16:51:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51370)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iCTHP-0006Kg-O1
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:41:48 -0400
+ (envelope-from <eblake@redhat.com>) id 1iCTDG-0003jH-JA
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:37:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iCTHM-0004wr-VZ
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:41:46 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47730)
+ (envelope-from <eblake@redhat.com>) id 1iCTDF-0003Kk-HS
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:37:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:10785)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iCTHK-0004wE-SP; Mon, 23 Sep 2019 14:41:43 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ id 1iCTDF-0003KR-77; Mon, 23 Sep 2019 14:37:29 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id BDDDD315C005;
- Mon, 23 Sep 2019 18:41:41 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 5833310DCC84;
+ Mon, 23 Sep 2019 18:37:27 +0000 (UTC)
 Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2E9F4608C2;
- Mon, 23 Sep 2019 18:41:04 +0000 (UTC)
-Subject: Re: [RFC v2 4/9] hw/core/loader-fit: fix freeing errp in fit_load_fdt
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9317460C5E;
+ Mon, 23 Sep 2019 18:35:52 +0000 (UTC)
+Subject: Re: [RFC v2 3/9] errp: rename errp to errp_in where it is IN-argument
 To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
  qemu-devel@nongnu.org
 References: <20190923161231.22028-1-vsementsov@virtuozzo.com>
- <20190923161231.22028-5-vsementsov@virtuozzo.com>
+ <20190923161231.22028-4-vsementsov@virtuozzo.com>
 From: Eric Blake <eblake@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=eblake@redhat.com; keydata=
@@ -93,18 +93,18 @@ Autocrypt: addr=eblake@redhat.com; keydata=
  Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
  2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
 Organization: Red Hat, Inc.
-Message-ID: <1aac3fb1-b880-dde0-4568-f5395bc98262@redhat.com>
-Date: Mon, 23 Sep 2019 13:41:03 -0500
+Message-ID: <8ad05d4f-e7e6-d7b5-dce4-c4d24ac81e0e@redhat.com>
+Date: Mon, 23 Sep 2019 13:35:51 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190923161231.22028-5-vsementsov@virtuozzo.com>
+In-Reply-To: <20190923161231.22028-4-vsementsov@virtuozzo.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.41]); Mon, 23 Sep 2019 18:41:42 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.64]); Mon, 23 Sep 2019 18:37:28 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 X-Mailman-Approved-At: Mon, 23 Sep 2019 16:50:47 -0400
@@ -152,37 +152,30 @@ Cc: stefanha@redhat.com, codyprime@gmail.com, jan.kiszka@siemens.com,
  jcd@tribudubois.net, pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S70Qu4Bva/st
+X-TUID: W2j8cL2bYLbr
 
 On 9/23/19 11:12 AM, Vladimir Sementsov-Ogievskiy wrote:
-> fit_load_fdt forget to zero errp. Fix it.
+> Error **errp is almost always OUT-argument: it's assumed to be NULL, or
+> pointer to NULL-initialized pointer, or pointer to error_abort or
+> error_fatal, for callee to report error.
+> 
+> But very few functions (most of the are error API) instead get Error
+> **errp as IN-argument: it's assumed to be set, and callee should clean
+> it. In such cases, rename errp to errp_in.
 > 
 > Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 > ---
->  hw/core/loader-fit.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
+>  include/monitor/hmp.h |  2 +-
+>  include/qapi/error.h  |  8 ++++----
+>  ui/vnc.h              |  2 +-
+>  monitor/hmp-cmds.c    |  8 ++++----
+>  ui/vnc.c              | 10 +++++-----
+>  util/error.c          |  2 +-
+>  6 files changed, 16 insertions(+), 16 deletions(-)
 
-Independent bug fix.  Either we take the (fixed) 2-3 (to rely on the new
-error_free_errp), or you could open-code the assignment of errp=NULL to
-take this on its own, regardless of the hfate of the rest of the series.
+This is worthwhile, regardless of the fate of the rest of the series.
 
 Reviewed-by: Eric Blake <eblake@redhat.com>
-
-> diff --git a/hw/core/loader-fit.c b/hw/core/loader-fit.c
-> index 953b16bc82..fe5bcc6700 100644
-> --- a/hw/core/loader-fit.c
-> +++ b/hw/core/loader-fit.c
-> @@ -200,7 +200,7 @@ static int fit_load_fdt(const struct fit_loader *ldr, const void *itb,
->      err = fit_image_addr(itb, img_off, "load", &load_addr, errp);
->      if (err == -ENOENT) {
->          load_addr = ROUND_UP(kernel_end, 64 * KiB) + (10 * MiB);
-> -        error_free(*errp);
-> +        error_free_errp(errp);
->      } else if (err) {
->          error_prepend(errp, "unable to read FDT load address from FIT: ");
->          ret = err;
-> 
 
 -- 
 Eric Blake, Principal Software Engineer

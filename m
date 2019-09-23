@@ -1,72 +1,71 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3108528wrp;
-        Mon, 23 Sep 2019 13:53:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwBfiJh7ajT8Q6UM5OH8wQOzpXyBnO2dezAVevE6tplSm2dhP5Ky20ajPl0SM243vFMT79J
-X-Received: by 2002:a50:9384:: with SMTP id o4mr2212829eda.8.1569271995258;
-        Mon, 23 Sep 2019 13:53:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569271995; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3114836wrp;
+        Mon, 23 Sep 2019 14:01:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxBQIjCMiT1T0OahwA6eL/hgRZv1tlULsMnlaCx7rebq20f0lll9KQvU+GdBMRBPThUukdK
+X-Received: by 2002:a05:620a:159b:: with SMTP id d27mr2110034qkk.298.1569272462908;
+        Mon, 23 Sep 2019 14:01:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569272462; cv=none;
         d=google.com; s=arc-20160816;
-        b=INgbzsczHG1mZ1QE1fsCVZJZO/qoorXUOimJLRbMPyP8xL2+rj377o+gCBxBpFM6e5
-         4YDJtqWQxn5TttNyOOZ2kUJi1oa8UBkRxszO2M5VvyAi7HhNUoHgepNLpTzNDMpRBJdE
-         QENVGzTGz6ive+iLAcsqRB3ZAzbOxghS6gCH+HC9zYdJ039dH141L0qIir9jm/oqDWwm
-         39wvyZ1PfZI4aWeYAMWoNFyQbb8kFBt6GpeADqrZCg6wUrMbJ8bPbNqg8TAZhrdSWNL/
-         17vxjTipd7v/CSM8dL8g0HoiYFFjtmDhpSLYNgK4ho43POwsdaPa6ZkF3px5IsCz7dfu
-         TRqA==
+        b=B8UVPNsoUsH5PZsl5PifqxUrsje7i9xdCZ6rACNxmhV6AmsVhPrRNZoy7KTmtj11XC
+         TDy0HL/90ircgfykM/quCE3L3nsbop1LB0tCRLTqVzlaeecbrNvsIAbmGFPVJWKh7BlV
+         baoNK4caS2OEbHVhDzDDkqEYkcEJGX2qOUyvBHfiDAr714g0L7K5buzCMOtddC+gK1bJ
+         3L0HkRwFTrmrgInyFVdsZiZs8jmGqggLbeYuNt1W2+oAMO5LNPd+CEpH9tdyWV2yJMmX
+         FRHTb3gZqltpneTSV3lFNKcUlXwe44J73ZlDMT7fjMto66QA2kErHDJiNBtYeQUjpF03
+         6+cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:organization:autocrypt:openpgp:from:references:to
          :subject;
-        bh=OpH9n58jjy21dQnyGpJ32TV1HudD20l+gckpAzZBab0=;
-        b=pRPTspagb7G2Vb7Ycapfr4wzZSuP4Yn0e2jz3rP0O54AHGQiygWQdAOUAXewpqhfSX
-         bzbIl9IBnTgzEcRHizRB3UnblvRrsRwdkCo44EMq2CfbnqPtHVpbItpWOrU1g6gxaZ28
-         SnauGy9zSdBA+08fI0KdLVrLEZREuV+s2NqfYQLsvPFjjg4J//D3GGNlqEQZMZMq6kaO
-         1BpgxaApkVeZNUWWKYse5bkI0cS4d4jnsp4fFj+jXzm6l5Oc1AkXqXaPRpJeKg1bICKK
-         6mpN7eFT5bkDUXRF4BYIWdpdYszvUBcESJwwYxPZOPiMWx3LhIQqYdT1RsAywEW21X5P
-         9dGg==
+        bh=fP1+2NMwz4jxbrfkiBDzi5pCXO5qOnzp9cVx4e/H/0E=;
+        b=KyngGLy3OxZfkxT4j4RAZWaJ+4uLe11o5o0q2Wj/OZ+0cIKBrm8UPNg7qCCOg5AX3I
+         MhOZ+KkPDmyo1KiyX4HA0g6EbWgZson8d+gnjmT64tJ5A/K6J7+UVEwBzgHVAqGNablD
+         Ls779YtgYmc12OOR0BI5eYDgLNVaEQSmWEED+raxuVjExMNrsD8fIbB3nUH5fel8X6ZS
+         jsp5ibvl+Tr22vx13ErlF8wGBanjqaeyIDUc3+3DABp/BcCO+J9yJUmrzFvhOmsUyIrW
+         ytMGn9gCZkmfZM2Edun5tyridBHq0+mEli+bcoVc4ZikH6juaPrMIBM20G1Yk7K5/BPM
+         pdfg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id si6si5641410ejb.195.2019.09.23.13.53.15
+        by mx.google.com with ESMTPS id d16si9332358qvz.169.2019.09.23.14.01.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 13:53:15 -0700 (PDT)
+        Mon, 23 Sep 2019 14:01:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33960 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34026 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCVKb-0004rV-Hz
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 16:53:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34769)
+	id 1iCVS9-0002i0-Uw
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 17:01:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33339)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iCUUg-0006gX-2z
- for qemu-devel@nongnu.org; Mon, 23 Sep 2019 15:59:35 -0400
+ (envelope-from <eblake@redhat.com>) id 1iCUJy-0000jj-SW
+ for qemu-devel@nongnu.org; Mon, 23 Sep 2019 15:48:32 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iCUUe-00022S-Rk
- for qemu-devel@nongnu.org; Mon, 23 Sep 2019 15:59:34 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:44822)
+ (envelope-from <eblake@redhat.com>) id 1iCUJx-00074X-CS
+ for qemu-devel@nongnu.org; Mon, 23 Sep 2019 15:48:30 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45248)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iCUUY-00020p-SV; Mon, 23 Sep 2019 15:59:27 -0400
+ id 1iCUJr-00072v-KW; Mon, 23 Sep 2019 15:48:23 -0400
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 9320D8A1C8C;
- Mon, 23 Sep 2019 19:59:24 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id EB77730833C1;
+ Mon, 23 Sep 2019 19:48:21 +0000 (UTC)
 Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 321B26017E;
- Mon, 23 Sep 2019 19:58:11 +0000 (UTC)
-Subject: Re: [RFC v2 1/9] error: auto propagated local_err
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 50FBB6017E;
+ Mon, 23 Sep 2019 19:47:28 +0000 (UTC)
+Subject: Re: [RFC v2 0/9] error: auto propagated local_err
 To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
  qemu-devel@nongnu.org
 References: <20190923161231.22028-1-vsementsov@virtuozzo.com>
- <20190923161231.22028-2-vsementsov@virtuozzo.com>
 From: Eric Blake <eblake@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=eblake@redhat.com; keydata=
@@ -93,18 +92,18 @@ Autocrypt: addr=eblake@redhat.com; keydata=
  Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
  2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
 Organization: Red Hat, Inc.
-Message-ID: <b345e88b-f426-5bcc-cf2f-4774d5b98bcb@redhat.com>
-Date: Mon, 23 Sep 2019 14:58:10 -0500
+Message-ID: <d1527fdc-b5e8-093a-9206-6f7ceeece2ac@redhat.com>
+Date: Mon, 23 Sep 2019 14:47:27 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190923161231.22028-2-vsementsov@virtuozzo.com>
+In-Reply-To: <20190923161231.22028-1-vsementsov@virtuozzo.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.69]); Mon, 23 Sep 2019 19:59:26 +0000 (UTC)
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.44]); Mon, 23 Sep 2019 19:48:22 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 X-Mailman-Approved-At: Mon, 23 Sep 2019 16:51:49 -0400
@@ -152,14 +151,15 @@ Cc: stefanha@redhat.com, codyprime@gmail.com, jan.kiszka@siemens.com,
  pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YO/lh0f5JAIg
+X-TUID: pmG/y5o1z+jo
 
 On 9/23/19 11:12 AM, Vladimir Sementsov-Ogievskiy wrote:
-> Here is introduced ERRP_FUNCTION_BEGIN macro, to be used at start of
-> any function with errp parameter.
+> Hi all!
 > 
-> It has three goals:
+> Here is a proposal of auto propagation for local_err, to not call
+> error_propagate on every exit point, when we deal with local_err.
 > 
+> It also fixes two issues:
 > 1. Fix issue with error_fatal & error_append_hint: user can't see these
 > hints, because exit() happens in error_setg earlier than hint is
 > appended. [Reported by Greg Kurz]
@@ -174,98 +174,104 @@ doesn't
 > local_err+error_propagate pattern, which will definitely fix the issue)
 > [Reported by Kevin Wolf]
 > 
-> 3. Drop local_err+error_propagate pattern, which is used to workaround
-> void functions with errp parameter, when caller wants to know resulting
-> status. (Note: actually these functions should be merely updated to
-
-Maybe:
-
-s/should/could/
-
-> return int error code).
+> It's still an RFC, due to the following reasons:
 > 
-> Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-> ---
->  include/qapi/error.h | 37 +++++++++++++++++++++++++++++++++++++
->  1 file changed, 37 insertions(+)
+> 1. I'm new to coccinella, so I failed to do the following pattern:
 > 
-> diff --git a/include/qapi/error.h b/include/qapi/error.h
-> index 3f95141a01..f6f4fa0fac 100644
-> --- a/include/qapi/error.h
-> +++ b/include/qapi/error.h
-> @@ -322,6 +322,43 @@ void error_set_internal(Error **errp,
->                          ErrorClass err_class, const char *fmt, ...)
->      GCC_FMT_ATTR(6, 7);
->  
-> +typedef struct ErrorPropagator {
-> +    Error *local_err;
-> +    Error **errp;
-> +} ErrorPropagator;
-> +
-> +static inline void error_propagator_cleanup(ErrorPropagator *prop)
-> +{
-> +    error_propagate(prop->errp, prop->local_err);
-> +}
-> +
-> +G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC(ErrorPropagator, error_propagator_cleanup);
-> +
-> +/*
-> + * ERRP_FUNCTION_BEGIN
-> + *
-> + * This macro MUST be the first line of EACH function with Error **errp
-> + * parameter.
-
-Maybe s/EACH function/ANY non-empty function/ (allowing our stub
-functions to be exemptions).
-
-> + *
-> + * If errp is NULL or points to error_fatal, it is rewritten to point to
-
-s/to/to a/
-
-> + * local Error object, which will be automatically propagated to original
-
-s/to/to the/
-
-> + * errp on function exit (see error_propagator_cleanup).
-> + *
-> + * After invocation of this macro it is always safe to dereference errp
-> + * (as it's not NULL anymore) and to append hint (by error_append_hint)
-
-s/append hint/append hints/
-
-> + * (as, if it was error_fatal, we swapped it by local_error to be
-
-s/by local_error/with a local error/
-
-> + * propagated on cleanup).
-> + *
-> + * Note: we don't wrap error_abort case, as we want resulting coredump
-> + * to point to the place where the error happened, not to error_propagate.
-
-s/wrap/wrap the/
-
-> + */
-> +#define ERRP_FUNCTION_BEGIN() \
-> +g_auto(ErrorPropagator) __auto_errp_prop = {.errp = errp}; \
-> +Error **__local_errp_unused __attribute__ ((unused)) = \
-> +    (errp = (errp == NULL || *errp == error_fatal ? \
-> +             &__auto_errp_prop.local_err : errp))
-
-I'm not sold on why we need the dummy declaration (yeah, I know it's so
-that you don't have to fight the battle of mixing declarations and
-statements - but this is in a macro call whose usage LOOKS like a
-statement rather than a declaration, so we're already on fuzzy ground).
-We could make this macro expansion one line shorter and still be
-correct, but I'm not going to insist (we'll see what consensus is,
-and/or what Markus says).
-
-> +
-> +
->  /*
->   * Special error destination to abort on error.
->   * See error_setg() and error_propagate() for details.
+>  <...
+> - goto out;
+> + return;
+>  ...>
+> - out:
+> - error_propagate(errp, local_err)
 > 
+> So, here is compilation fix 08.. Who can help with it? If nobody, 08 is
+> to be merged to 07 by hand.
+
+I'm not sure either; but I agree that if we can't figure out how to make
+Coccinelle do quite what we want, that we are better off squashing in
+compile fixes.
+
+Also, while I like Coccinelle for automating the conversion, it's harder
+to get everyone to run it; it would be nice if we could also figure out
+a patch to scripts/checkpatch.pl that for any instance of 'Error
+**errp)\n{\n' not followed by either } or the new macro, we flag that as
+a checkpatch warning or error.
+
+> 
+> 2. Question about using new macro in empty stub functions - see 09
+
+It would be nice if we could exempt empty functions - no need to use the
+macro if there is no function body otherwise.  I'm not sure if
+Coccinelle can do that filtering during the conversion, or if we clean
+up by hand after the fact.
+
+> 
+> 3. What to do with huge auto-generated commit 07? Should I split it
+> per-maintainer or per-subsystem, or leave it as-is?
+
+It's big. I'd split it into multiple patches (and reduce the cc - except
+for the cover letter, the rest of the patches can be limited to the
+actual maintainer/subsystem affected rather than everyone involved
+anywhere else in the series. With the current large cc, anyone that
+replies gets several mail bounces about "too many recipients").  It may
+be easier to split along directory boundaries than by maintainer
+boundaries.  Markus has applied large tree-wide Coccinelle cleanups
+before, maybe he has some advice.
+
+> 
+> 4. Also, checkpatch has some complains about 07 patch:
+>   - using tabs.. (hmm exactly stubs functions..)
+>   - empty ifs
+>   Again, I don't see any ways to fix it other that by hand and merge to
+>   07..
+
+Hand cleanups for formatting or compilation fixes to Coccinelle's work
+is not an uncommon issue after large patches; thankfully it's also not
+very difficult (and surprisingly needed in very few places compared to
+how much actually gets touched).
+
+> 
+> ==================
+> 
+> Also, if we decide, that this all is too huge, here is plan B:
+> 
+> 1. apply 01
+> 2. fix only functions that don't use local_err and use
+> error_append_hint, by just invocation of new macro at function start -
+> it will substitute Greg's series with no pain.
+> 3[optional]. Do full update for some subsystems, for example, only for
+> block* and nbd*
+
+Even if we go with plan B, it's still worth checking in a Coccinelle
+script that we can periodically run to make sure we aren't missing out
+on the use of the macro where it is needed.
+
+> 
+> Vladimir Sementsov-Ogievskiy (9):
+>   error: auto propagated local_err
+>   qapi/error: add (Error **errp) cleaning APIs
+>   errp: rename errp to errp_in where it is IN-argument
+>   hw/core/loader-fit: fix freeing errp in fit_load_fdt
+>   net/net: fix local variable shadowing in net_client_init
+>   scripts: add coccinelle script to use auto propagated errp
+>   Use auto-propagated errp
+>   fix-compilation: empty goto
+>   fix-compilation: includes
+> 
+>  include/hw/pci-host/spapr.h                   |   2 +
+>  include/monitor/hmp.h                         |   2 +-
+>  include/qapi/error.h                          |  61 ++++-
+>  target/ppc/kvm_ppc.h                          |   3 +
+>  target/s390x/cpu_models.h                     |   3 +
+>  ui/vnc.h                                      |   2 +-
+
+>  vl.c                                          |  13 +-
+>  scripts/coccinelle/auto-propagated-errp.cocci |  82 +++++++
+>  319 files changed, 2729 insertions(+), 4245 deletions(-)
+>  create mode 100644 scripts/coccinelle/auto-propagated-errp.cocci
+
+The diffstat is huge, but promising.
 
 -- 
 Eric Blake, Principal Software Engineer

@@ -1,127 +1,83 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2479437wrp;
-        Mon, 23 Sep 2019 03:17:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwircQZRQUHwhDRUicQOtIN9OSuD7QGVOeb//N+H6W33MuevMUrd6K/yQ/mv8zXFU4wbFfp
-X-Received: by 2002:a37:a842:: with SMTP id r63mr16232738qke.34.1569233853028;
-        Mon, 23 Sep 2019 03:17:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569233853; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2556557wrp;
+        Mon, 23 Sep 2019 04:43:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx+SwoZEqwPGcE31kpPHM4oZZ2cYILB7OBjizveqIcmn09NuWx2QwEs8VdynZPqdFhZQTAX
+X-Received: by 2002:a17:906:1f03:: with SMTP id w3mr29403008ejj.31.1569239021747;
+        Mon, 23 Sep 2019 04:43:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569239021; cv=none;
         d=google.com; s=arc-20160816;
-        b=x9S2u4uTXAQQ0gY9n81bj3udIrPS5p9S2SWtMVB8xYmIJ2YaCfa68j5y8w0UxAQchs
-         iwHmnmm85GnkPYqz6V5zyFHf1bkOG95XBoKJI8vKZle5CVLd8duQDiO6zv8WukTCO+Na
-         d/s+y/Yy3mAOgChhO2mTokHwl2XXcsRxF16csMN8ZCbGrUFpiH0vmWn/IQrBryQl/L7g
-         UmD3Bkr50+84IsrSOilfjpOBiqHQsedpVMP0HoDK1r+MjDOOdAEukhMeEjlLXGqVp6Zz
-         4Qi27oLtC4QK1Qeq799/SM4UAxJaCSDAlG/JF2vyi5UaOdi/yXfTCuu0TZNAfmSWGFAk
-         u4MA==
+        b=mLZAZMW9uXpBnC2PWQCqfvZ+gGxqqbvOeedvQ8ROrokaGvTE+S7i88cqd3oygxh/oY
+         tqKj51oswNceSbM/z4ZSvrR43oQs8HTs2xTXApRQpigY9B4PIn4hCjXbswvyfYX/T02B
+         snBZ2cWOpubEOvsvAanmrczMuXjYuQHhJAPM1jFBgw1uLRyAqciGWAYmOP6fEbk54ftx
+         cdc93qUoENbnHYd0IliyJLnUjN8slWjNcA9ZNuPgoMDJohu5d92q7hRBEZkw/TmGvG+A
+         WxejdEmu56wCYUgrTkR5kxcv8t+T2eCKZsIalVnwE3ksmu+qOA4nyYoYEBVYo3yHCIA6
+         4jMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to:subject;
-        bh=OgrI5Yq2GVsZq+jBn0RlpWo/opRXObVa0+jGgMaSmq0=;
-        b=q7wbaOETvFs/JSutMLmwhGi7eaDUk+hcs2b4/D7kMsJMZPs4nlW+KnWKNqv9jmkJfO
-         qxoLgWBnTxPR3zYn8lzpVufCQxnIAx5pwVDZueaGb/MkM29rxKMO1aqiXpE4i8KW0sK4
-         1TUyWU6kyT9jdBBrjykRpyO6Y7vJTCVXIN/MG21xGs/fb07uhzCXyeCi/MZRhbUK/qL8
-         E29DIC5EJtBcZjL9FTlcPmCsbaHnJATp6ELkXqoO9Ka206u7g14gTVfYkIat8/0n2+7K
-         kcO8XELD5jKlQk1VoEBfEjVl7dve+ZryyQwhLh93oniTwr2v/fknA7oNRCjtmKuVk1G5
-         DS+A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=EiUQzn3o0By68Ijuskv0/6DFzZw2oONtzEdPGW8igjk=;
+        b=boWsJVsKyzXjDZ6AM49i7ffhHgJTtOi6Wz6AjOKQtORtNswff8AaQR+IwK2pYfDLUz
+         /LwWlaNIgmoFjJQaciIWF2RGrQc6d8Hc/PtYJcFPVJoZb/QIdzVRPfPsM5JEHx+kI2UR
+         6DQl6gmjsZR80A85gr/EGsFiqPtjWqbfYk8DufoHqqFhjKe4TbNY7WSgoNQ9TE4SuJey
+         ahPUuFrmmyj5WOXQf30qHtd9SeXExnsqR5QqvsK/UGwQIScc5wz3Cc8EjiCZm8eF+tNO
+         Hwe8fD7GoFYpvGJ9P+az81B92kvQhhBbvcnFEnFfUIuESyNR7p4Y+mmSE7waBY18pRwS
+         uBDg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y38si8008251qvh.22.2019.09.23.03.17.32
+        by mx.google.com with ESMTPS id pg17si4739082ejb.288.2019.09.23.04.43.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 03:17:33 -0700 (PDT)
+        Mon, 23 Sep 2019 04:43:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54526 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55070 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCLPQ-0003KA-5H
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 06:17:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33464)
+	id 1iCMkm-0002aQ-IL
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 07:43:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43468)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iCLPH-0003JX-2W
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 06:17:24 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1iCMkX-0002Xr-B9
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 07:43:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iCLPE-0007pa-O1
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 06:17:21 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50578)
+ (envelope-from <eric.auger@redhat.com>) id 1iCMkV-0002uq-7I
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 07:43:24 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47362)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1iCLPE-0007oe-Er; Mon, 23 Sep 2019 06:17:20 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1iCMkU-0002uK-V9; Mon, 23 Sep 2019 07:43:23 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 4440118CB8ED;
- Mon, 23 Sep 2019 10:17:19 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-120.ams2.redhat.com [10.36.116.120])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 362915D9E2;
- Mon, 23 Sep 2019 10:17:14 +0000 (UTC)
-Subject: Re: [PATCH] hw/arm/boot: Use the IEC binary prefix definitions
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20190921103405.19623-1-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat
-Message-ID: <908de611-8875-843b-ea56-2d75d8a8d30d@redhat.com>
-Date: Mon, 23 Sep 2019 12:17:09 +0200
+ by mx1.redhat.com (Postfix) with ESMTPS id 13C7430A76BE;
+ Mon, 23 Sep 2019 11:43:21 +0000 (UTC)
+Received: from [10.36.116.30] (ovpn-116-30.ams2.redhat.com [10.36.116.30])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id CB3C81001947;
+ Mon, 23 Sep 2019 11:43:09 +0000 (UTC)
+Subject: Re: [PATCH v3 1/2] vfio: Turn the container error into an Error handle
+To: Peter Xu <peterx@redhat.com>
+References: <20190923065552.10602-1-eric.auger@redhat.com>
+ <20190923065552.10602-2-eric.auger@redhat.com> <20190923075145.GA12806@xz-x1>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <765755f6-4447-9322-d276-567d844ed50c@redhat.com>
+Date: Mon, 23 Sep 2019 13:43:08 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-In-Reply-To: <20190921103405.19623-1-philmd@redhat.com>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="Olpvw2oJcfJiOB0J6Sop2EsrcRUfoyM7Y"
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.63]); Mon, 23 Sep 2019 10:17:19 +0000 (UTC)
+In-Reply-To: <20190923075145.GA12806@xz-x1>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.47]); Mon, 23 Sep 2019 11:43:21 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 X-BeenThere: qemu-arm@nongnu.org
@@ -135,111 +91,144 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, mst@redhat.com, aik@ozlabs.ru,
+ qemu-devel@nongnu.org, alex.williamson@redhat.com, qemu-arm@nongnu.org,
+ pbonzini@redhat.com, david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lbmCz5CekIWS
+X-TUID: S3i64WjLUuk7
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---Olpvw2oJcfJiOB0J6Sop2EsrcRUfoyM7Y
-Content-Type: multipart/mixed; boundary="FHhfKoDvy6YwjrajVhHlu9mi4XQJkx1N7";
- protected-headers="v1"
-From: Thomas Huth <thuth@redhat.com>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Message-ID: <908de611-8875-843b-ea56-2d75d8a8d30d@redhat.com>
-Subject: Re: [PATCH] hw/arm/boot: Use the IEC binary prefix definitions
-References: <20190921103405.19623-1-philmd@redhat.com>
-In-Reply-To: <20190921103405.19623-1-philmd@redhat.com>
+Hi Peter,
 
---FHhfKoDvy6YwjrajVhHlu9mi4XQJkx1N7
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+On 9/23/19 9:51 AM, Peter Xu wrote:
+> On Mon, Sep 23, 2019 at 08:55:51AM +0200, Eric Auger wrote:
+>> The container error integer field is currently used to store
+>> the first error potentially encountered during any
+>> vfio_listener_region_add() call. However this fails to propagate
+>> detailed error messages up to the vfio_connect_container caller.
+>> Instead of using an integer, let's use an Error handle.
+>>
+>> Messages are slightly reworded to accomodate the propagation.
+> 
+> Thanks for working on this.  Mostly good at least to me, though I
+> still have a few nitpickings below.
+> 
+>> @@ -543,6 +545,9 @@ static void vfio_listener_region_add(MemoryListener *listener,
+>>                                 hostwin->max_iova - hostwin->min_iova + 1,
+>>                                 section->offset_within_address_space,
+>>                                 int128_get64(section->size))) {
+>> +                error_setg(&err, "Overlap with existing IOMMU range "
+>> +                                 "[0x%"PRIx64",0x%"PRIx64"]", hostwin->min_iova,
+>> +                                 hostwin->max_iova - hostwin->min_iova + 1);
+>>                  ret = -1;
+> 
+> This line seems to be useless now after we dropped the integer version
+> of container->error and start to use Error*.
+correct
+> 
+>>                  goto fail;
+>>              }
+>> @@ -550,6 +555,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
+>>  
+>>          ret = vfio_spapr_create_window(container, section, &pgsize);
+>>          if (ret) {
+>> +            error_setg_errno(&err, -ret, "Failed to create SPAPR window");
+>>              goto fail;
+>>          }
+>>  
+>> @@ -559,7 +565,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
+>>  #ifdef CONFIG_KVM
+>>          if (kvm_enabled()) {
+>>              VFIOGroup *group;
+>> -            IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(section->mr);
+>> +            IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(mr);
+>>              struct kvm_vfio_spapr_tce param;
+>>              struct kvm_device_attr attr = {
+>>                  .group = KVM_DEV_VFIO_GROUP,
+>> @@ -594,18 +600,17 @@ static void vfio_listener_region_add(MemoryListener *listener,
+>>      }
+>>  
+>>      if (!hostwin_found) {
+>> -        error_report("vfio: IOMMU container %p can't map guest IOVA region"
+>> -                     " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx,
+>> -                     container, iova, end);
+>> +        error_setg(&err, "Container %p can't map guest IOVA region"
+>> +                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
+>>          ret = -EFAULT;
+> 
+> Same here.
+OK
+> 
+>>          goto fail;
+>>      }
+> 
+> [...]
+> 
+>> @@ -688,10 +694,14 @@ fail:
+>>       */
+>>      if (!container->initialized) {
+>>          if (!container->error) {
+>> -            container->error = ret;
+>> +            error_propagate_prepend(&container->error, err,
+>> +                                    "Region %s: ", memory_region_name(mr));
+>> +        } else {
+>> +            error_free(err);
+>>          }
+>>      } else {
+>> -        hw_error("vfio: DMA mapping failed, unable to continue");
+>> +        error_reportf_err(err,
+>> +                          "vfio: DMA mapping failed, unable to continue: ");
+> 
+> Probably need to keep hw_error() because it asserts inside.  Maybe an
+> error_report_err() before hw_error()?
+that's correct.
+> 
+>>      }
+>>  }
+>>  
+>> @@ -1251,6 +1261,7 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
+>>      container = g_malloc0(sizeof(*container));
+>>      container->space = space;
+>>      container->fd = fd;
+>> +    container->error = NULL;
+>>      QLIST_INIT(&container->giommu_list);
+>>      QLIST_INIT(&container->hostwin_list);
+>>  
+>> @@ -1308,9 +1319,9 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
+>>                                       &address_space_memory);
+>>              if (container->error) {
+>>                  memory_listener_unregister(&container->prereg_listener);
+>> -                ret = container->error;
+>> -                error_setg(errp,
+>> -                    "RAM memory listener initialization failed for container");
+>> +                ret = -1;
+>> +                error_propagate_prepend(errp, container->error,
+>> +                    "RAM memory listener initialization failed: ");
+> 
+> (I saw that we've got plenty of prepended prefixes for an error
+>  messages.  For me I'll disgard quite a few of them because the errors
+>  will directly be delivered to the top level user, but this might be
+>  too personal as a comment)
+That's true we have a lot of prefix messages.
 
-On 21/09/2019 12.34, Philippe Mathieu-Daud=C3=A9 wrote:
-> IEC binary prefixes ease code review: the unit is explicit.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  hw/arm/boot.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->=20
-> diff --git a/hw/arm/boot.c b/hw/arm/boot.c
-> index bf97ef3e33..59bb2fa0d3 100644
-> --- a/hw/arm/boot.c
-> +++ b/hw/arm/boot.c
-> @@ -1095,7 +1095,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU *=
-cpu,
->       * we might still make a bad choice here.
->       */
->      info->initrd_start =3D info->loader_start +
-> -        MIN(info->ram_size / 2, 128 * 1024 * 1024);
-> +        MIN(info->ram_size / 2, 128 * MiB);
->      if (image_high_addr) {
->          info->initrd_start =3D MAX(info->initrd_start, image_high_addr=
-);
->      }
-> @@ -1155,13 +1155,13 @@ static void arm_setup_direct_kernel_boot(ARMCPU=
- *cpu,
->                   *
->                   * Let's play safe and prealign it to 2MB to give us s=
-ome space.
->                   */
-> -                align =3D 2 * 1024 * 1024;
-> +                align =3D 2 * MiB;
->              } else {
->                  /*
->                   * Some 32bit kernels will trash anything in the 4K pa=
-ge the
->                   * initrd ends in, so make sure the DTB isn't caught u=
-p in that.
->                   */
-> -                align =3D 4096;
-> +                align =3D 4 * KiB;
->              }
-> =20
->              /* Place the DTB after the initrd in memory with alignment=
-=2E */
-> @@ -1178,7 +1178,7 @@ static void arm_setup_direct_kernel_boot(ARMCPU *=
-cpu,
->                  info->loader_start + KERNEL_ARGS_ADDR;
->              fixupcontext[FIXUP_ARGPTR_HI] =3D
->                  (info->loader_start + KERNEL_ARGS_ADDR) >> 32;
-> -            if (info->ram_size >=3D (1ULL << 32)) {
-> +            if (info->ram_size >=3D 4 * GiB) {
->                  error_report("RAM size must be less than 4GB to boot"
->                               " Linux kernel using ATAGS (try passing a=
- device tree"
->                               " using -dtb)");
->=20
+The output message now is:
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+"vfio 0000:89:00.0: failed
+to setup container for group 2: memory listener initialization failed:
+Region smmuv3-iommu-memory-region-0-6: device 01.00.0 requires iommu MAP
+notifier which is not currently supported"
+
+Alex, any opinion?
+
+Thanks
+
+Eric
 
 
---FHhfKoDvy6YwjrajVhHlu9mi4XQJkx1N7--
-
---Olpvw2oJcfJiOB0J6Sop2EsrcRUfoyM7Y
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEJ7iIR+7gJQEY8+q5LtnXdP5wLbUFAl2Im6UACgkQLtnXdP5w
-LbUW9A/8CkW8WK2gJmI5/raC+0iuGw6z4qoipdoHYoApP2yj0D/cn9qjErIVQAA9
-W4Hq+g5t8id8f5znOKJlmGYTd+zXbroMHHBDIAncbWzASrrgtdoWLp58leY50Zhf
-A/wgLNFzy1ZS4ENJlM/ay0jSmIrhl1DAhTsxmYQAlXbseHtBSUNkao1LNd7R2zO6
-bNdJJrhbAciZZwhTfWK+wjITd+/z+pFobTD+AyOesPkJK5iAo040VSqP6qA83JSb
-Ln0DKV2QDyN3gMjOwC5YIQJCjMmUrjjMslsnAT9IU2l40Fr1p88dFE3Vol5MtmMl
-FVxTAza9z3vkONTNMzFSnXsLJU21kLO920jzuF96Xiy4bu1GT4/lvbNMLt9FYyTb
-BHuKwuFRimRjdZgTrYRjIn0V5ttjXufakdq8lBfCZfARdcfoyB/K86TPYvQtImTW
-gHwKVZGx6FOncd2BrGscY+Uh4PYbUuAtrr6mhcgyLIceyv70lfHzzxKEHStAOKQm
-/o6d7wApMhQfj1yTy5fJ2P41Qqk8YABUNhyxXRPQM8ar/bihfWBQQGpOy2GtIpAy
-49jt6ny/32Eos616Cm6cPSLkGgz5UwI1HrLyWp3fDS7CmLJQyLBM1Lv5T6890wq+
-K+T5QvPUb0tuh3HtWiEKr9/wL7kbukKXia+jDxIaYSXe5VXOsE8=
-=R82V
------END PGP SIGNATURE-----
-
---Olpvw2oJcfJiOB0J6Sop2EsrcRUfoyM7Y--
+> 
+> Thanks,
+> 
+>>                  goto free_container_exit;
+>>              }
+>>          }
+> 

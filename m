@@ -1,65 +1,65 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2857999wrp;
-        Mon, 23 Sep 2019 09:25:44 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy4jgRtn6puhImgg4mx1jlHwu/MG5lN4YbBbYcr56FzUCKG/hS/QdC8z35k+u2D7cg++Ck+
-X-Received: by 2002:a17:906:254d:: with SMTP id j13mr691510ejb.30.1569255944144;
-        Mon, 23 Sep 2019 09:25:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569255944; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2858078wrp;
+        Mon, 23 Sep 2019 09:25:48 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzcx0fPzhJH8hUFRIi7UWWc8eMPCTd9XpYFq9M9NjpkXIHEqXSZKZQcNDKLe42GcU3d8i8D
+X-Received: by 2002:ac8:38ef:: with SMTP id g44mr787637qtc.277.1569255948203;
+        Mon, 23 Sep 2019 09:25:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569255948; cv=none;
         d=google.com; s=arc-20160816;
-        b=LrdqOsJpoOovNHorzbWDmc4RLCwAeoOhtG5Rz8egStyk0HlQcHrtdTvzx+NLO2FIMB
-         8VAtuKxj+i6GybYmZaynvn+sbnVlPt1YkCORGnatoF2T+wk4aqlW0YKa1noMN0F1qJrs
-         f3S/J46BqLA9YmFtCKc4Z4g+UOjOwaaw0eRu6Vk6dVoVV4S/1XASBeZtYNHkBIW9nCkP
-         OMwPnWPqyxEHt55QazAiX2RzIij/+GqqbSD7vhU8scJ8ZLZS3U+U3jgtPjPPLL3hQZDJ
-         uKSV46lsrbhvSWc/I88Q8fzA6X7Y7rQ1/Hroz3/hoixd8I6YZauW7RHEYJrTYgYeFaQS
-         ONRg==
+        b=hW41NGzLnV5Ygj9ZFvwYtmb1e4przvle7RLfOy0m2MnXvE2H3NWeQyahQOLxhEqipm
+         AefBQ3zxhsk4wEgtdxHEXlrMeBWxmVxs6bgLC657VLn9cP7vnjVA1LcdPEWYDeX1UUfj
+         xllitNesdZwBYnS15lzP455EgQB6pH504Oqus5lX93oOWM3Jj5URs5GnEX1cx/Skhy/B
+         CYKUuKa9vwM0B0FtaM34dU11o9F06cyA2mbx4rFtSFZtZZsm2btjGrZi8pWdOhdPCKh7
+         sXiXQEQBoQWMUhbkFg54SBHaz+BQbkzMDaVMhcushFLm/PToSBlEJZ7yrpwVZJ5WaG8K
+         588Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=B0y8U3sDHPqaycOZBVH05XSBeYxJtW7Iu8HO1pRgvY0=;
-        b=FRmDjUvgEHJ9A1x8RCFjSew5TEY9UsfQODm+m9Le4fWAGkw4J/ct+EQvuoI0ZJTJU2
-         RbZbyPgk14hoISrWD5bN11TEi6DpntT+r1FINkC3EW7SRBQdVix/kzdAo1Bc/Of3y8K/
-         D2T/smnmB/lFxuO3zM7msl9i5iE3IGA3RTN8DI9x9jqNhNeEk+0krf5qrPpkGk2YfgAK
-         CeqsXOdCEliBNthyXRGgTuXyMoiISnFK5X4zaeL6F9mEoE8EZPCYncdx/NZc1rBOaKeK
-         jPp3aBqPfOuhWjN+CIjNhKqNtAiVDj6focORWqNrK2HVAsOcTpAlRK/XD0z3SaJ/g5Ov
-         q6UQ==
+        bh=VuyAlsykkyYOQBDoL5GA33lV58roAlCyUz8o1wGhPZo=;
+        b=qwwxBIYkvio8Gn8XCTpw4roLQ2/D0MMes6AjcR6z2EvPIFwJNzRFoo0shKCgXkIscZ
+         YLFZRTWvRHJNtouIrT8yL/gLjBnzDbf9Mv626opEn4r9rwjzCg8SVrAmiJttm8gqGj5p
+         EhtPq9WibHEnG1Z1E2NjNFeILZW+QUvAPeuyArD+WgBlJgbiYj3B4rmIUV+JrqqteoDO
+         vEd45iqLlzpbdWw1fCYN9no5VL3jZD0FbH9XyA4jvPKE+RP7dHE1GeF09t+HuyVp/wRA
+         QahpR6LIuVF2plP0xRxlIfkJT7W8FqtQ/35FoHO06+uT30fT3se74P6cXH1A/gn4MIdC
+         9DqA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id dt14si5293564ejb.168.2019.09.23.09.25.44
+        by mx.google.com with ESMTPS id c23si8458816qkc.57.2019.09.23.09.25.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 09:25:44 -0700 (PDT)
+        Mon, 23 Sep 2019 09:25:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Received: from localhost ([::1]:59306 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59310 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCR9i-00021t-Od
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 12:25:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57285)
+	id 1iCR9m-00028k-W7
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 12:25:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57373)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iCQxW-0002Yi-DA
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 12:13:08 -0400
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iCQxZ-0002bR-CF
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 12:13:11 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iCQxU-0003qO-DX
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 12:13:06 -0400
-Received: from relay.sw.ru ([185.231.240.75]:39508)
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iCQxW-0003sD-1w
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 12:13:09 -0400
+Received: from relay.sw.ru ([185.231.240.75]:39506)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
- id 1iCQxM-0003a8-Tg; Mon, 23 Sep 2019 12:12:57 -0400
+ id 1iCQxM-0003a7-Gv; Mon, 23 Sep 2019 12:12:56 -0400
 Received: from [10.94.3.0] (helo=kvm.qa.sw.ru)
  by relay.sw.ru with esmtp (Exim 4.92.2)
  (envelope-from <vsementsov@virtuozzo.com>)
- id 1iCQwy-0001Fp-Od; Mon, 23 Sep 2019 19:12:32 +0300
+ id 1iCQx1-0001Fp-PU; Mon, 23 Sep 2019 19:12:35 +0300
 From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 To: qemu-devel@nongnu.org
-Subject: [RFC v2 2/9] qapi/error: add (Error **errp) cleaning APIs
-Date: Mon, 23 Sep 2019 19:12:24 +0300
-Message-Id: <20190923161231.22028-3-vsementsov@virtuozzo.com>
+Subject: [RFC v2 9/9] fix-compilation: includes
+Date: Mon, 23 Sep 2019 19:12:31 +0300
+Message-Id: <20190923161231.22028-10-vsementsov@virtuozzo.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20190923161231.22028-1-vsementsov@virtuozzo.com>
 References: <20190923161231.22028-1-vsementsov@virtuozzo.com>
@@ -67,7 +67,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
 X-Received-From: 185.231.240.75
-X-Mailman-Approved-At: Mon, 23 Sep 2019 12:25:22 -0400
+X-Mailman-Approved-At: Mon, 23 Sep 2019 12:25:24 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -113,64 +113,122 @@ Cc: stefanha@redhat.com, codyprime@gmail.com, jan.kiszka@siemens.com,
  jcd@tribudubois.net, pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Y4lnpLMOwwdZ
+X-TUID: M3cI/sXW/xyE
+
+Hmm. Should we allow empty stubs with errp parameter without calling
+new macro?
+
+Or, just apply this commit before auto-generated commit.
 
 Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 ---
- include/qapi/error.h | 22 ++++++++++++++++++++++
- util/error.c         |  6 +++---
- 2 files changed, 25 insertions(+), 3 deletions(-)
+ target/ppc/kvm_ppc.h        | 2 ++
+ target/s390x/cpu_models.h   | 1 +
+ hw/i386/kvm/apic.c          | 1 +
+ hw/misc/arm11scu.c          | 1 +
+ hw/misc/mps2-scc.c          | 1 +
+ hw/pci-bridge/dec.c         | 1 +
+ qapi/qapi-dealloc-visitor.c | 1 +
+ stubs/xen-hvm.c             | 1 +
+ 8 files changed, 9 insertions(+)
 
-diff --git a/include/qapi/error.h b/include/qapi/error.h
-index f6f4fa0fac..551385aa91 100644
---- a/include/qapi/error.h
-+++ b/include/qapi/error.h
-@@ -297,6 +297,28 @@ void warn_report_err(Error *err);
-  */
- void error_report_err(Error *err);
+diff --git a/target/ppc/kvm_ppc.h b/target/ppc/kvm_ppc.h
+index 807c245e90..f6366c19aa 100644
+--- a/target/ppc/kvm_ppc.h
++++ b/target/ppc/kvm_ppc.h
+@@ -9,6 +9,8 @@
+ #ifndef KVM_PPC_H
+ #define KVM_PPC_H
  
-+/*
-+ * Functions to clean Error **errp: call corresponding Error *err cleaning
-+ * function an set pointer to NULL
-+ */
-+static inline void error_free_errp(Error **errp)
-+{
-+    error_free(*errp_in);
-+    *errp_in = NULL;
-+}
++#include "qapi/error.h"
 +
-+static inline void error_report_errp(Error **errp)
-+{
-+    error_report_err(*errp_in);
-+    *errp_in = NULL;
-+}
-+
-+static inline void warn_report_errp(Error **errp)
-+{
-+    warn_report_err(*errp_in);
-+    *errp_in = NULL;
-+}
-+
- /*
-  * Convenience function to error_prepend(), warn_report() and free @err.
-  */
-diff --git a/util/error.c b/util/error.c
-index d4532ce318..dfba091757 100644
---- a/util/error.c
-+++ b/util/error.c
-@@ -273,9 +273,9 @@ void error_free(Error *err)
+ #define TYPE_HOST_POWERPC_CPU POWERPC_CPU_TYPE_NAME("host")
  
- void error_free_or_abort(Error **errp)
+ #ifdef CONFIG_KVM
+diff --git a/target/s390x/cpu_models.h b/target/s390x/cpu_models.h
+index 5329045a71..062161c5fa 100644
+--- a/target/s390x/cpu_models.h
++++ b/target/s390x/cpu_models.h
+@@ -16,6 +16,7 @@
+ #include "cpu_features.h"
+ #include "gen-features.h"
+ #include "hw/core/cpu.h"
++#include "qapi/error.h"
+ 
+ /* static CPU definition */
+ struct S390CPUDef {
+diff --git a/hw/i386/kvm/apic.c b/hw/i386/kvm/apic.c
+index d125b370f4..cadf75b71c 100644
+--- a/hw/i386/kvm/apic.c
++++ b/hw/i386/kvm/apic.c
+@@ -18,6 +18,7 @@
+ #include "sysemu/hw_accel.h"
+ #include "sysemu/kvm.h"
+ #include "target/i386/kvm_i386.h"
++#include "qapi/error.h"
+ 
+ static inline void kvm_apic_set_reg(struct kvm_lapic_state *kapic,
+                                     int reg_id, uint32_t val)
+diff --git a/hw/misc/arm11scu.c b/hw/misc/arm11scu.c
+index befc85f321..9c1fec7825 100644
+--- a/hw/misc/arm11scu.c
++++ b/hw/misc/arm11scu.c
+@@ -13,6 +13,7 @@
+ #include "hw/qdev-properties.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "qapi/error.h"
+ 
+ static uint64_t mpcore_scu_read(void *opaque, hwaddr offset,
+                                 unsigned size)
+diff --git a/hw/misc/mps2-scc.c b/hw/misc/mps2-scc.c
+index f2a00d3235..c41e776996 100644
+--- a/hw/misc/mps2-scc.c
++++ b/hw/misc/mps2-scc.c
+@@ -26,6 +26,7 @@
+ #include "hw/registerfields.h"
+ #include "hw/misc/mps2-scc.h"
+ #include "hw/qdev-properties.h"
++#include "qapi/error.h"
+ 
+ REG32(CFG0, 0)
+ REG32(CFG1, 4)
+diff --git a/hw/pci-bridge/dec.c b/hw/pci-bridge/dec.c
+index fbe781474e..06445e0545 100644
+--- a/hw/pci-bridge/dec.c
++++ b/hw/pci-bridge/dec.c
+@@ -31,6 +31,7 @@
+ #include "hw/pci/pci_host.h"
+ #include "hw/pci/pci_bridge.h"
+ #include "hw/pci/pci_bus.h"
++#include "qapi/error.h"
+ 
+ /* debug DEC */
+ //#define DEBUG_DEC
+diff --git a/qapi/qapi-dealloc-visitor.c b/qapi/qapi-dealloc-visitor.c
+index 3ee4c7a2e7..e265e29234 100644
+--- a/qapi/qapi-dealloc-visitor.c
++++ b/qapi/qapi-dealloc-visitor.c
+@@ -16,6 +16,7 @@
+ #include "qapi/dealloc-visitor.h"
+ #include "qapi/qmp/qnull.h"
+ #include "qapi/visitor-impl.h"
++#include "qapi/error.h"
+ 
+ struct QapiDeallocVisitor
  {
--    assert(errp && *errp);
--    error_free(*errp);
--    *errp = NULL;
-+    assert(errp_in && *errp_in);
-+    error_free(*errp_in);
-+    *errp_in = NULL;
- }
+diff --git a/stubs/xen-hvm.c b/stubs/xen-hvm.c
+index 840a2a0d09..350c762c64 100644
+--- a/stubs/xen-hvm.c
++++ b/stubs/xen-hvm.c
+@@ -12,6 +12,7 @@
+ #include "hw/xen/xen.h"
+ #include "exec/memory.h"
+ #include "qapi/qapi-commands-misc.h"
++#include "qapi/error.h"
  
- void error_propagate(Error **dst_errp, Error *local_err)
+ int xen_pci_slot_get_pirq(PCIDevice *pci_dev, int irq_num)
+ {
 -- 
 2.21.0
 

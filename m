@@ -1,77 +1,79 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2332409wrp;
-        Sun, 22 Sep 2019 23:56:25 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxWIeHXTj2UHi6IUNLrZEgKyyRK3AZ9MbZt1YPcRlnw1/B0hD9r/mn6BZnEhiBFbQ1Dr3+p
-X-Received: by 2002:ac8:1e1a:: with SMTP id n26mr15920415qtl.357.1569221785288;
-        Sun, 22 Sep 2019 23:56:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569221785; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2332477wrp;
+        Sun, 22 Sep 2019 23:56:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwlft0QaV3AKdNDMWnTUBBLWQSybhMTD8IjTYnHxUtjbJjLDscKzh3Zjd4SVhAhzeEZWMMP
+X-Received: by 2002:ac8:1701:: with SMTP id w1mr15952660qtj.24.1569221790718;
+        Sun, 22 Sep 2019 23:56:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569221790; cv=none;
         d=google.com; s=arc-20160816;
-        b=P6Rw6PmkdwweYAHAoFrAEx99Pq4U2F0k1IfJByhersUy4iyiJUVMr6eTpWDGjbD1rJ
-         v1Vumn73bdTtLr5qqbyRgP06qwKYjGflflrWBo0cbSMcGVYP/V6is/I4eHYHLHROVqQs
-         bC8aurUOVR/ze44QdXiVfbCFAkzfEcmupcnXZV5h4F9HRa3hs6DVNHD6FE+uFVo67/Uf
-         nXUcvuMW0ws6Wnm4deLZl9PUZdTEyGuLayBciPPn4xHAC96PO4viJPvMSGlFxEAe2wGh
-         ZLT0U/UFhij6UC0k/sfwd4xnSUF3LAa7R7cxUkEXg6P7NASVABpx7cenoSG51F+D63ay
-         ZiYg==
+        b=I1ZJfuuLBZu6CPa591svuO3xqIwWtg0vnR89yGDK6oOivtRMY1j/7ps62vsh10bMoH
+         2isKOMU4QnQQRrg0TKoWpvEQTzFUQ2OVpNAEiFum2jgJ8GSspAIn8K8F4FsyqoRFz1yC
+         UvGOg6V2n/rnmWPC6DuOoLb+6BCxT/UnozWnGs/PQNhHU1RY927zfmat3skwkpBHOsTV
+         O1XC991Y12hc2ZkARXxiriBKMUeZPYuE6MIk7Ons7gW8Yg04LEocP5i6Y2xN2fTeBpdW
+         IcSwCR+f7tzG5tsNht4UoRWC4xMCxRYxJwB7g7Mwp1aMNUD6Cev76cagGHBEGRa5mCi5
+         HCCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=sn8O50B6Yo6ONDkJFpc4Sl5gNUNWb7U8Ypz2Lcq5uJ4=;
-        b=zGc0WRgZZf4Ouq41Hsu2VqVZRVO1P/MoC7jqFeHZHXQ/Y1FQ5MH8UuZrPygVYoGD3t
-         GlAun2XS5yEme3MxXb4QIbr9qNBO1O1I0SuXZ+2BD5zcEpH2c9uGfcLy8K6H6hNyDznz
-         ESeNSP/XdVbJbf6R6bHkHoSrsWcCLCtWqBUOW0wAXDRd9JMjxfj8Hc/hv/ahrIspwebx
-         TqvH8PGv6K2qiZSHRYZ2ynk1/qM0Y2/cqx+nEhxDUdkZ8L0+XFi1ZKcPqbgzbM7G/7XS
-         uz4vJya9F5l6ENzkCeM4lhjyDEgdkTbzlNtVPUDHx5oFO6yOuSFAUUUzNiWFNVqj237K
-         8qAA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=g33IvZk5IX11hzVuXafazUn2W8Ek99HTpEovz5+znQg=;
+        b=wCg8+cOHPmJoyFJ1L85M56HKCzLs4LwXvp4losRwIj6hpCaPkaleXEJNFL70Sjvhxb
+         nt346Rqvz23DQJ9zzgHhAM8/WcVCsdM9s1RWsNhTEk3ORz148F3mp0f9yByqGWHS3NIT
+         akxV8JMNP5a+VR1Sw7iZC2gr4ixlFeGTm0cY1JKao87cow+LVHkyrmP1giRrIDjF0ozG
+         iT7nBWPUYwl3bjlCXSCek9hQqi4Xbc4Kt5AlIbn2qoNXMBFgqLRpL7jXp2B6BLKNDoWG
+         Sp2ti2mBD6x4jVuospwOfngC7n1R/JKQoglEno0KNiJyGWSZ8D2sF7BKRKYB1sPyr51C
+         sIeA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x47si7847302qvh.216.2019.09.22.23.56.25
+        by mx.google.com with ESMTPS id 57si7758714qvr.140.2019.09.22.23.56.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Sep 2019 23:56:25 -0700 (PDT)
+        Sun, 22 Sep 2019 23:56:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52744 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52750 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCIGl-0006CF-UQ
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 02:56:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32840)
+	id 1iCIGr-0006Ef-F9
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 02:56:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32857)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1iCIGa-0006C3-Lp
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 02:56:13 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1iCIGc-0006CD-6b
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 02:56:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1iCIGY-0006no-1T
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 02:56:11 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:39348)
+ (envelope-from <eric.auger@redhat.com>) id 1iCIGa-0006q8-J4
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 02:56:14 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:41376)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1iCIGX-0006nE-Rw; Mon, 23 Sep 2019 02:56:09 -0400
+ id 1iCIGa-0006pK-Bc; Mon, 23 Sep 2019 02:56:12 -0400
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 73507C049E32;
- Mon, 23 Sep 2019 06:56:08 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id A551587642;
+ Mon, 23 Sep 2019 06:56:11 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-116-30.ams2.redhat.com [10.36.116.30])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 59CD25D713;
- Mon, 23 Sep 2019 06:55:54 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id CACEA5EE1D;
+ Mon, 23 Sep 2019 06:56:08 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, pbonzini@redhat.com,
  alex.williamson@redhat.com, peterx@redhat.com, aik@ozlabs.ru,
  david@gibson.dropbear.id.au
-Subject: [PATCH v3 0/2] Allow memory_region_register_iommu_notifier() to fail
-Date: Mon, 23 Sep 2019 08:55:50 +0200
-Message-Id: <20190923065552.10602-1-eric.auger@redhat.com>
+Subject: [PATCH v3 1/2] vfio: Turn the container error into an Error handle
+Date: Mon, 23 Sep 2019 08:55:51 +0200
+Message-Id: <20190923065552.10602-2-eric.auger@redhat.com>
+In-Reply-To: <20190923065552.10602-1-eric.auger@redhat.com>
+References: <20190923065552.10602-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.31]); Mon, 23 Sep 2019 06:56:08 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.26]); Mon, 23 Sep 2019 06:56:11 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
@@ -89,71 +91,271 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: mst@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3ew4blCFOyHw
+X-TUID: i7aqvXn0LC+o
 
-This series allows the memory_region_register_iommu_notifier()
-to fail. As of now, when a MAP notifier is attempted to be
-registered along with SMMUv3 or AMD IOMMU, we exit in the IOMMU
-MR notify_flag_changed() callback.
+The container error integer field is currently used to store
+the first error potentially encountered during any
+vfio_listener_region_add() call. However this fails to propagate
+detailed error messages up to the vfio_connect_container caller.
+Instead of using an integer, let's use an Error handle.
 
-In case of VFIO assigned device hotplug, this could be handled
-more nicely directly within the VFIO code, simply rejecting
-the hotplug without exiting. This is what the series achieves
-by handling the memory_region_register_iommu_notifier() returned
-value and Error object.
+Messages are slightly reworded to accomodate the propagation.
 
-To propagate errors collected during vfio_listener_region_add()
-we now store the error handle inside the VFIO container instead
-of a returned value.
-
-The message now is:
-(QEMU) device_add id=3Dhot0 driver=3Dvfio-pci host=3D0000:89:00.0 bus=3Dp=
-cie.1
-{"error": {"class": "GenericError", "desc": "vfio 0000:89:00.0: failed
-to setup container for group 2: memory listener initialization failed:
-Region smmuv3-iommu-memory-region-0-6: device 01.00.0 requires iommu MAP
-notifier which is not currently supported"}}
-
-Best Regards
-
-Eric
-
-This series can be found at:
-https://github.com/eauger/qemu/tree/v4.1.0_register_iommu_notifier_fail_v=
-3
-
-History:
-
-v2 -> v3:
-- also pass an Error handle (suggested by Peter)
-- VFIO container error becomes and Error handle
-
-v1 -> v2:
-- Intel IOMMU now handles the problem differently with machine init done
-  notifier and machine hotplug allowed hook.
-- use assert(!ret)
-- message rewording in SMMUv3
-
-Follow-up of "VFIO/SMMUv3: Fail on VFIO/HW nested paging detection"
-https://patchew.org/QEMU/20190829090141.21821-1-eric.auger@redhat.com/
-
-Eric Auger (2):
-  vfio: Turn the container error into an Error handle
-  memory: allow memory_region_register_iommu_notifier() to fail
-
- exec.c                        | 10 ++++--
- hw/arm/smmuv3.c               | 18 +++++-----
- hw/i386/amd_iommu.c           | 17 +++++----
- hw/i386/intel_iommu.c         |  8 +++--
- hw/ppc/spapr_iommu.c          |  8 +++--
- hw/vfio/common.c              | 67 +++++++++++++++++++++--------------
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+---
+ hw/vfio/common.c              | 61 +++++++++++++++++++++--------------
  hw/vfio/spapr.c               |  4 ++-
- hw/virtio/vhost.c             |  9 +++--
- include/exec/memory.h         | 21 ++++++++---
  include/hw/vfio/vfio-common.h |  2 +-
- memory.c                      | 31 ++++++++++------
- 11 files changed, 126 insertions(+), 69 deletions(-)
+ 3 files changed, 40 insertions(+), 27 deletions(-)
 
+diff --git a/hw/vfio/common.c b/hw/vfio/common.c
+index 3e03c495d8..a0670cc63a 100644
+--- a/hw/vfio/common.c
++++ b/hw/vfio/common.c
+@@ -503,12 +503,14 @@ static void vfio_listener_region_add(MemoryListener=
+ *listener,
+                                      MemoryRegionSection *section)
+ {
+     VFIOContainer *container =3D container_of(listener, VFIOContainer, l=
+istener);
++    MemoryRegion *mr =3D section->mr;
+     hwaddr iova, end;
+     Int128 llend, llsize;
+     void *vaddr;
+     int ret;
+     VFIOHostDMAWindow *hostwin;
+     bool hostwin_found;
++    Error *err =3D NULL;
+=20
+     if (vfio_listener_skipped_section(section)) {
+         trace_vfio_listener_region_add_skip(
+@@ -543,6 +545,9 @@ static void vfio_listener_region_add(MemoryListener *=
+listener,
+                                hostwin->max_iova - hostwin->min_iova + 1=
+,
+                                section->offset_within_address_space,
+                                int128_get64(section->size))) {
++                error_setg(&err, "Overlap with existing IOMMU range "
++                                 "[0x%"PRIx64",0x%"PRIx64"]", hostwin->m=
+in_iova,
++                                 hostwin->max_iova - hostwin->min_iova +=
+ 1);
+                 ret =3D -1;
+                 goto fail;
+             }
+@@ -550,6 +555,7 @@ static void vfio_listener_region_add(MemoryListener *=
+listener,
+=20
+         ret =3D vfio_spapr_create_window(container, section, &pgsize);
+         if (ret) {
++            error_setg_errno(&err, -ret, "Failed to create SPAPR window"=
+);
+             goto fail;
+         }
+=20
+@@ -559,7 +565,7 @@ static void vfio_listener_region_add(MemoryListener *=
+listener,
+ #ifdef CONFIG_KVM
+         if (kvm_enabled()) {
+             VFIOGroup *group;
+-            IOMMUMemoryRegion *iommu_mr =3D IOMMU_MEMORY_REGION(section-=
+>mr);
++            IOMMUMemoryRegion *iommu_mr =3D IOMMU_MEMORY_REGION(mr);
+             struct kvm_vfio_spapr_tce param;
+             struct kvm_device_attr attr =3D {
+                 .group =3D KVM_DEV_VFIO_GROUP,
+@@ -594,18 +600,17 @@ static void vfio_listener_region_add(MemoryListener=
+ *listener,
+     }
+=20
+     if (!hostwin_found) {
+-        error_report("vfio: IOMMU container %p can't map guest IOVA regi=
+on"
+-                     " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx,
+-                     container, iova, end);
++        error_setg(&err, "Container %p can't map guest IOVA region"
++                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova,=
+ end);
+         ret =3D -EFAULT;
+         goto fail;
+     }
+=20
+-    memory_region_ref(section->mr);
++    memory_region_ref(mr);
+=20
+-    if (memory_region_is_iommu(section->mr)) {
++    if (memory_region_is_iommu(mr)) {
+         VFIOGuestIOMMU *giommu;
+-        IOMMUMemoryRegion *iommu_mr =3D IOMMU_MEMORY_REGION(section->mr)=
+;
++        IOMMUMemoryRegion *iommu_mr =3D IOMMU_MEMORY_REGION(mr);
+         int iommu_idx;
+=20
+         trace_vfio_listener_region_add_iommu(iova, end);
+@@ -632,15 +637,15 @@ static void vfio_listener_region_add(MemoryListener=
+ *listener,
+                             iommu_idx);
+         QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_next);
+=20
+-        memory_region_register_iommu_notifier(section->mr, &giommu->n);
++        memory_region_register_iommu_notifier(mr, &giommu->n);
+         memory_region_iommu_replay(giommu->iommu, &giommu->n);
+=20
+         return;
+     }
+=20
+-    /* Here we assume that memory_region_is_ram(section->mr)=3D=3Dtrue *=
+/
++    /* Here we assume that memory_region_is_ram(mr)=3D=3Dtrue */
+=20
+-    vaddr =3D memory_region_get_ram_ptr(section->mr) +
++    vaddr =3D memory_region_get_ram_ptr(mr) +
+             section->offset_within_region +
+             (iova - section->offset_within_address_space);
+=20
+@@ -648,12 +653,12 @@ static void vfio_listener_region_add(MemoryListener=
+ *listener,
+=20
+     llsize =3D int128_sub(llend, int128_make64(iova));
+=20
+-    if (memory_region_is_ram_device(section->mr)) {
++    if (memory_region_is_ram_device(mr)) {
+         hwaddr pgmask =3D (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
+=20
+         if ((iova & pgmask) || (int128_get64(llsize) & pgmask)) {
+             trace_vfio_listener_region_add_no_dma_map(
+-                memory_region_name(section->mr),
++                memory_region_name(mr),
+                 section->offset_within_address_space,
+                 int128_getlo(section->size),
+                 pgmask + 1);
+@@ -664,11 +669,12 @@ static void vfio_listener_region_add(MemoryListener=
+ *listener,
+     ret =3D vfio_dma_map(container, iova, int128_get64(llsize),
+                        vaddr, section->readonly);
+     if (ret) {
+-        error_report("vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
+-                     "0x%"HWADDR_PRIx", %p) =3D %d (%m)",
+-                     container, iova, int128_get64(llsize), vaddr, ret);
+-        if (memory_region_is_ram_device(section->mr)) {
++        error_setg(&err, "vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
++                   "0x%"HWADDR_PRIx", %p) =3D %d (%m)",
++                   container, iova, int128_get64(llsize), vaddr, ret);
++        if (memory_region_is_ram_device(mr)) {
+             /* Allow unexpected mappings not to be fatal for RAM devices=
+ */
++            error_report_err(err);
+             return;
+         }
+         goto fail;
+@@ -677,7 +683,7 @@ static void vfio_listener_region_add(MemoryListener *=
+listener,
+     return;
+=20
+ fail:
+-    if (memory_region_is_ram_device(section->mr)) {
++    if (memory_region_is_ram_device(mr)) {
+         error_report("failed to vfio_dma_map. pci p2p may not work");
+         return;
+     }
+@@ -688,10 +694,14 @@ fail:
+      */
+     if (!container->initialized) {
+         if (!container->error) {
+-            container->error =3D ret;
++            error_propagate_prepend(&container->error, err,
++                                    "Region %s: ", memory_region_name(mr=
+));
++        } else {
++            error_free(err);
+         }
+     } else {
+-        hw_error("vfio: DMA mapping failed, unable to continue");
++        error_reportf_err(err,
++                          "vfio: DMA mapping failed, unable to continue:=
+ ");
+     }
+ }
+=20
+@@ -1251,6 +1261,7 @@ static int vfio_connect_container(VFIOGroup *group,=
+ AddressSpace *as,
+     container =3D g_malloc0(sizeof(*container));
+     container->space =3D space;
+     container->fd =3D fd;
++    container->error =3D NULL;
+     QLIST_INIT(&container->giommu_list);
+     QLIST_INIT(&container->hostwin_list);
+=20
+@@ -1308,9 +1319,9 @@ static int vfio_connect_container(VFIOGroup *group,=
+ AddressSpace *as,
+                                      &address_space_memory);
+             if (container->error) {
+                 memory_listener_unregister(&container->prereg_listener);
+-                ret =3D container->error;
+-                error_setg(errp,
+-                    "RAM memory listener initialization failed for conta=
+iner");
++                ret =3D -1;
++                error_propagate_prepend(errp, container->error,
++                    "RAM memory listener initialization failed: ");
+                 goto free_container_exit;
+             }
+         }
+@@ -1365,9 +1376,9 @@ static int vfio_connect_container(VFIOGroup *group,=
+ AddressSpace *as,
+     memory_listener_register(&container->listener, container->space->as)=
+;
+=20
+     if (container->error) {
+-        ret =3D container->error;
+-        error_setg_errno(errp, -ret,
+-                         "memory listener initialization failed for cont=
+ainer");
++        ret =3D -1;
++        error_propagate_prepend(errp, container->error,
++            "memory listener initialization failed: ");
+         goto listener_release_exit;
+     }
+=20
+diff --git a/hw/vfio/spapr.c b/hw/vfio/spapr.c
+index 96c0ad9d9b..e853eebe11 100644
+--- a/hw/vfio/spapr.c
++++ b/hw/vfio/spapr.c
+@@ -17,6 +17,7 @@
+ #include "hw/hw.h"
+ #include "exec/ram_addr.h"
+ #include "qemu/error-report.h"
++#include "qapi/error.h"
+ #include "trace.h"
+=20
+ static bool vfio_prereg_listener_skipped_section(MemoryRegionSection *se=
+ction)
+@@ -85,7 +86,8 @@ static void vfio_prereg_listener_region_add(MemoryListe=
+ner *listener,
+          */
+         if (!container->initialized) {
+             if (!container->error) {
+-                container->error =3D ret;
++                error_setg_errno(&container->error, -ret,
++                                 "Memory registering failed");
+             }
+         } else {
+             hw_error("vfio: Memory registering failed, unable to continu=
+e");
+diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.=
+h
+index 9107bd41c0..fd564209ac 100644
+--- a/include/hw/vfio/vfio-common.h
++++ b/include/hw/vfio/vfio-common.h
+@@ -71,7 +71,7 @@ typedef struct VFIOContainer {
+     MemoryListener listener;
+     MemoryListener prereg_listener;
+     unsigned iommu_type;
+-    int error;
++    Error *error;
+     bool initialized;
+     unsigned long pgsizes;
+     QLIST_HEAD(, VFIOGuestIOMMU) giommu_list;
 --=20
 2.20.1
 

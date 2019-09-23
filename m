@@ -1,103 +1,114 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3004787wrp;
-        Mon, 23 Sep 2019 11:54:41 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyMnJg1+PHEXW3+Z4Wht4klxmOIsiTtIFMIR4A66Qeiyqf4G/dLgMcgT9EKmhKs2XyGOhS9
-X-Received: by 2002:a37:4386:: with SMTP id q128mr1465631qka.311.1569264881716;
-        Mon, 23 Sep 2019 11:54:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569264881; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3107131wrp;
+        Mon, 23 Sep 2019 13:51:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw9M9+0CZ010+Y/m8fL9CPw/gpUm03XEFKNS+cp3n1H/t6glc/UlId1Blk4Y7AUL2yMc1NM
+X-Received: by 2002:a37:4b54:: with SMTP id y81mr1956148qka.344.1569271883841;
+        Mon, 23 Sep 2019 13:51:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569271883; cv=none;
         d=google.com; s=arc-20160816;
-        b=nmxcM+exlNQieDpYmyvbupOPjsFcZYWdzENO5LAW7kCsfrfv/x7rrT+CrKpCTRnlnK
-         rqo8vAmSqGJNSwrixvcmJQv4fWO0vNzo2oXc94pKUNXu2jzGHaVjj7TVKUacyXKlsdgI
-         ru1nNQeQt12PjI8ZnOcWDixjOf5oXXoEUnAXT+l/LnVZvaq2uHdmMtbo6BOX9ZbMLEEM
-         JDnB+WLJiylifwllW9R0mZ8qK6Vmx5/eTK2fnDRjoH22z8UyBYMIGlSOqAaG94UMG5Td
-         K1DGT69Kqd9ytfjh21vuqWntLf2t5fmy1TAA3ndNUeIEmt18A1ptVTdg5pQlb9owH7kY
-         lJDg==
+        b=SYIcNpLHoXiB+AL6qJkJeE9K3HRB9EiDOv4yWBrwz3b0JhWw56qgqUnWnEjuPM4sgl
+         N0seL5R+iBYi/L/8/dwL4Of/JoH8fh8OJJm4xXMFGPgv2bIcyfAkP8ZY77oKFblwEh29
+         4aA5MDRzgKtgKNzYoMEl8pk1EGk3o8l3n9n9DMeg3tX4cDcI6UFpCQnf2l8RMRg133+w
+         Ot6WW+3wct+XjJ5H8azxYuZ9Pbq6DqBrcX+hBCDwosDS8MBtXcXJHRMZfBAbglcBW7X0
+         ZGRP6FekAcWB+6ReqvlDSswrpaR3zPD7BRpcWjsdtg73Rz+p1JTcMKAxyfyzmGoUBqH7
+         y/aw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=20wMnS9sE7SkaDy4jeoxOwwRH46kamUBFHZzSrG8KCY=;
-        b=q/x45Q857GB5uT29mAAjAGwhagZ4nzi3xptmKsDwouik2Mif6gO7Epp1lB7Zq4ij92
-         9HyIuZI/N5AwfkVumlPqdN9xbN5EBA26GAm4f0zQKUhXtmR7Wc6/rBmEqbqvT6C2vwnA
-         8x6aqKku5iEegk9K1b2IQ7XqQddWEsQP5SEzaYosMa180ICm4Y57UN9UR3JgIYe+oEmm
-         Q498ZZXyFWUsIkb6ThrSGwJ38K2IgL/B+2smTMbLsURNSR7a1LdzWjHhyoKUZbzIgN8Z
-         9bPFSsFY4XkCjsb6q3sQZ9h/T1Tcb5eGoM7gVHPnwZPr8YJ/r90Qzj+nAdE2gG1RqMq6
-         xPrg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:organization:autocrypt:openpgp:from:references:to
+         :subject;
+        bh=7uSHfsbmUNvgGkkTV4k3eFspT4AE5b4L6eH+5lD+7WU=;
+        b=OiHIzGEvr71kSrcDKBe4ro7ub/wSN71zhkPEcxSUS4vI/8Vtxh9Ndnl11OFj6GspZ6
+         LZFrRrBIfUlOiJ7ErbSQ9EIkl7b9NHJ0rTWgl/OiSlVOWVZtpLw4/rOVo+drkJqyKS/9
+         KODE1ey97LLx4qX1IZsVlk3aarljdSYraLSM1v9L2V9hLg2EuymUmRuKGYEJevy4Ta/9
+         hJLQbYhlazigb862LO8p9nA3y5CZkzePrMkHSZL4OOZLjrIdBRqpMHU9jIJCeH6MhrIN
+         ICLkLAnz+y+3JqEE7w++GVarxG/uo1mCAP/INilsEz9kaabt2Gr7JlA/7NIt0Q39SDmD
+         Q6RA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eOdgFx6Y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f20si10184023qtm.23.2019.09.23.11.54.41
+        by mx.google.com with ESMTPS id g184si9520460qkf.290.2019.09.23.13.51.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 11:54:41 -0700 (PDT)
+        Mon, 23 Sep 2019 13:51:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=eOdgFx6Y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:32996 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:33934 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCTTs-0006cm-T6
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 14:54:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54509)
+	id 1iCVIp-0003sc-9a
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 16:51:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52885)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iCTTZ-0006QX-Cm
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:54:22 -0400
+ (envelope-from <eblake@redhat.com>) id 1iCTKU-0007Tf-Uq
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:44:59 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iCTTX-00068e-5O
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:54:20 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:34030)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iCTTX-00067X-11
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:54:19 -0400
-Received: by mail-ot1-x343.google.com with SMTP id m19so11261969otp.1
- for <qemu-arm@nongnu.org>; Mon, 23 Sep 2019 11:54:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=20wMnS9sE7SkaDy4jeoxOwwRH46kamUBFHZzSrG8KCY=;
- b=eOdgFx6YfAwe3KCrOp+dGTbqYQEsYPFA9u4fl69CQ38e9oVe3Fa+KBeRpJsSkxb+Ot
- NrFSZiuIvSVldvNuuWez+UOkk4gsnSfn61Yks5cnzBZvWwyWM+ABAo0t4cdYQwALcLQ+
- 9MXEQzjGeZ0FwEf6j8/O1wFAq3hajYxZGHXwsPREnV/+mhm7WDRIUdigN7wiSw66tlBW
- EdPebOZ/OXKyqXiosyJkthwEIKdAHp5bGAnyB+S3E6GrEfCipqGXp9/S0kdwRroImmfa
- 1KFWeNOIwTtvNoYfH2PwYiKDUdMu86SjzaPULytWFn5WMuAMMPiekNjs/8XRBn9tZzku
- d/gw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=20wMnS9sE7SkaDy4jeoxOwwRH46kamUBFHZzSrG8KCY=;
- b=Bk75Wj0ayNsxxYFtM3Xsb0DUlw717JmoZt9qYeiYPcuFj/GjNhl40Yg+YhpfB/EbvT
- 9OOupxAaVk9U29vASeOCb1GzXMPqdvroUjlJOlbICX2vOGb1yBG2yD/e/QM2P+LI55OW
- th2cCLtt6yD30rTEmrQaTlZDLXmEYNV6qde/oEeWR4iXpHUbLxzuEyfim/OdhLV01r2N
- WqH4fIubP/JrVCnv14PfnXJXQOHY20/0s0UQxUd5RPtVuas3YM9qx28ObsuRErFA3Tss
- 5enY0jhCBcSSfHnKiy6qJxQyQa/FhhSjhfnOYVC40YkyzT72JfvkU4KWg+CvBbJN7r6x
- yzSQ==
-X-Gm-Message-State: APjAAAUYC3cZruuJpnyG5h19fYLMSlS/kAWGl73i4kXOOopBxTv3Makm
- XaDgun3jqld67CF8O4/gfWfDsR0NQED1VVayt3GC6g==
-X-Received: by 2002:a9d:6d0a:: with SMTP id o10mr1043813otp.221.1569264857480; 
- Mon, 23 Sep 2019 11:54:17 -0700 (PDT)
+ (envelope-from <eblake@redhat.com>) id 1iCTKT-0006Wh-Qv
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:44:58 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54236)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eblake@redhat.com>)
+ id 1iCTKT-0006WP-Ia; Mon, 23 Sep 2019 14:44:57 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 90020308624A;
+ Mon, 23 Sep 2019 18:44:56 +0000 (UTC)
+Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4D7E81001B05;
+ Mon, 23 Sep 2019 18:44:29 +0000 (UTC)
+Subject: Re: [RFC v2 5/9] net/net: fix local variable shadowing in
+ net_client_init
+To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ qemu-devel@nongnu.org
+References: <20190923161231.22028-1-vsementsov@virtuozzo.com>
+ <20190923161231.22028-6-vsementsov@virtuozzo.com>
+From: Eric Blake <eblake@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=eblake@redhat.com; keydata=
+ xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
+ xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
+ TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
+ GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
+ sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
+ AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
+ CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
+ RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
+ wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
+ Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
+ gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
+ pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
+ zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
+ pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
+ 3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
+ NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
+ cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
+ SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
+ I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
+ mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
+ Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
+ 2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
+Organization: Red Hat, Inc.
+Message-ID: <ce58d998-cc75-9eae-1bab-7e1c7c3737d1@redhat.com>
+Date: Mon, 23 Sep 2019 13:44:28 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-References: <20190921150420.30743-1-thuth@redhat.com>
- <20190921150420.30743-3-thuth@redhat.com>
- <bd6efd14-9200-98e2-4f76-dda101f85274@redhat.com>
- <8585b93b-e239-829b-d634-b89941f27aed@redhat.com>
- <CAFEAcA9k59CRG23qP-o5PF0mdXvXpszhuxx+GpbpWO+hFdHOOA@mail.gmail.com>
- <4841d83d-4d91-eef6-28aa-c920cb10d9c9@redhat.com>
-In-Reply-To: <4841d83d-4d91-eef6-28aa-c920cb10d9c9@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 23 Sep 2019 19:54:05 +0100
-Message-ID: <CAFEAcA-YHQZptu+owoVZeoEFG9LC1g=L=ASbb6zEg=UJ+RbzMA@mail.gmail.com>
-Subject: Re: [PATCH 2/4] target/arm: Move cortex-m related functions to new
- file v7m.c
-To: Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::343
+In-Reply-To: <20190923161231.22028-6-vsementsov@virtuozzo.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.49]); Mon, 23 Sep 2019 18:44:56 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
+X-Mailman-Approved-At: Mon, 23 Sep 2019 16:50:47 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -109,24 +120,88 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Auger Eric <eric.auger@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: stefanha@redhat.com, codyprime@gmail.com, jan.kiszka@siemens.com,
+ berto@igalia.com, zhang.zhanghailiang@huawei.com, qemu-block@nongnu.org,
+ arikalo@wavecomp.com, pasic@linux.ibm.com, hpoussin@reactos.org,
+ anthony.perard@citrix.com, samuel.thibault@ens-lyon.org, philmd@redhat.com,
+ green@moxielogic.com, lvivier@redhat.com, ehabkost@redhat.com,
+ xiechanglong.d@gmail.com, pl@kamp.de, dgilbert@redhat.com, b.galvani@gmail.com,
+ eric.auger@redhat.com, alex.williamson@redhat.com, ronniesahlberg@gmail.com,
+ jsnow@redhat.com, rth@twiddle.net, kwolf@redhat.com, andrew@aj.id.au,
+ crwulff@gmail.com, sundeep.lkml@gmail.com, michael@walle.cc,
+ qemu-ppc@nongnu.org, kbastian@mail.uni-paderborn.de, imammedo@redhat.com,
+ fam@euphon.net, peter.maydell@linaro.org, sheepdog@lists.wpkg.org,
+ david@redhat.com, palmer@sifive.com, thuth@redhat.com, jcmvbkbc@gmail.com,
+ den@openvz.org, hare@suse.com, sstabellini@kernel.org, arei.gonglei@huawei.com,
+ marcel.apfelbaum@gmail.com, namei.unix@gmail.com, atar4qemu@gmail.com,
+ farman@linux.ibm.com, amit@kernel.org, sw@weilnetz.de, groug@kaod.org,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, peter.chubb@nicta.com.au,
+ clg@kaod.org, shorne@gmail.com, qemu-riscv@nongnu.org, cohuck@redhat.com,
+ amarkovic@wavecomp.com, aurelien@aurel32.net, pburton@wavecomp.com,
+ sagark@eecs.berkeley.edu, jasowang@redhat.com, kraxel@redhat.com,
+ gxt@mprc.pku.edu.cn, ari@tuxera.com, quintela@redhat.com,
+ mdroth@linux.vnet.ibm.com, lersek@redhat.com, borntraeger@de.ibm.com,
+ antonynpavlov@gmail.com, dillaman@redhat.com, joel@jms.id.au,
+ xen-devel@lists.xenproject.org, integration@gluster.org, balrogg@gmail.com,
+ rjones@redhat.com, Andrew.Baumann@microsoft.com, mreitz@redhat.com,
+ walling@linux.ibm.com, mst@redhat.com, mark.cave-ayland@ilande.co.uk,
+ v.maffione@gmail.com, marex@denx.de, armbru@redhat.com,
+ marcandre.lureau@redhat.com, alistair@alistair23.me, paul.durrant@citrix.com,
+ pavel.dovgaluk@ispras.ru, g.lettieri@iet.unipi.it, rizzo@iet.unipi.it,
+ david@gibson.dropbear.id.au, akrowiak@linux.ibm.com, berrange@redhat.com,
+ xiaoguangrong.eric@gmail.com, pmorel@linux.ibm.com, wencongyang2@huawei.com,
+ jcd@tribudubois.net, pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: reb3TSNiOpYN
+X-TUID: 0uXNZ1empwEb
 
-On Mon, 23 Sep 2019 at 19:51, Thomas Huth <thuth@redhat.com> wrote:
-> It also sounds like CONFIG_ARM_V7M should rather be renamed to
-> CONFIG_ARM_MPROFILE or something similar?
+On 9/23/19 11:12 AM, Vladimir Sementsov-Ogievskiy wrote:
+> Don't shadow Error *err: it's a bad thing. This patch also simplifies
+> following Error propagation conversion.
+> 
+> Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+> ---
+>  net/net.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
-Depends whether it's visible to end-users or not. If it is,
-a different name is probably more helpful; if it's just a
-symbol used in the QEMU source code/makefiles/etc then you
-might as well stick with the V7M naming convention we have
-for consistency with the C files.
+Can be applied independently of the rest of this series.
 
-thanks
--- PMM
+> 
+> diff --git a/net/net.c b/net/net.c
+> index 84aa6d8d00..5fc72511c1 100644
+> --- a/net/net.c
+> +++ b/net/net.c
+> @@ -1128,10 +1128,10 @@ static int net_client_init(QemuOpts *opts, bool is_netdev, Error **errp)
+>  
+>              if (substrings[1]) {
+>                  /* User-specified prefix length.  */
+> -                int err;
+> +                int ret2;
+>  
+> -                err = qemu_strtoul(substrings[1], NULL, 10, &prefix_len);
+> -                if (err) {
+> +                ret2 = qemu_strtoul(substrings[1], NULL, 10, &prefix_len);
+> +                if (ret2) {
+
+In fact, you don't need ret2; you could just:
+
+if (qemu_strtoul(...)) {
+
+at which point you could then join:
+
+if (substrings[1] &&
+    qemus_strtoul(...)) {
+
+>                      error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+>                                 "ipv6-prefixlen", "a number");
+>                      goto out;
+> 
+
+Either way,
+
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org

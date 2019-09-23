@@ -1,35 +1,35 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3107131wrp;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3107132wrp;
         Mon, 23 Sep 2019 13:51:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw9M9+0CZ010+Y/m8fL9CPw/gpUm03XEFKNS+cp3n1H/t6glc/UlId1Blk4Y7AUL2yMc1NM
-X-Received: by 2002:a37:4b54:: with SMTP id y81mr1956148qka.344.1569271883841;
+X-Google-Smtp-Source: APXvYqzL5YXcnR5DGQj27FPQu7Ee+uPXEo5IygKpXk91XjJJWR9QyPZ5s2f2n87H5JpVVwF1Wixu
+X-Received: by 2002:ac8:7b2a:: with SMTP id l10mr2157475qtu.115.1569271883898;
         Mon, 23 Sep 2019 13:51:23 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1569271883; cv=none;
         d=google.com; s=arc-20160816;
-        b=SYIcNpLHoXiB+AL6qJkJeE9K3HRB9EiDOv4yWBrwz3b0JhWw56qgqUnWnEjuPM4sgl
-         N0seL5R+iBYi/L/8/dwL4Of/JoH8fh8OJJm4xXMFGPgv2bIcyfAkP8ZY77oKFblwEh29
-         4aA5MDRzgKtgKNzYoMEl8pk1EGk3o8l3n9n9DMeg3tX4cDcI6UFpCQnf2l8RMRg133+w
-         Ot6WW+3wct+XjJ5H8azxYuZ9Pbq6DqBrcX+hBCDwosDS8MBtXcXJHRMZfBAbglcBW7X0
-         ZGRP6FekAcWB+6ReqvlDSswrpaR3zPD7BRpcWjsdtg73Rz+p1JTcMKAxyfyzmGoUBqH7
-         y/aw==
+        b=xaKNAvvUUg82qWCA4akclRvx9CGEhnZDPzBqBSYDvCC8CG+KH41sFDBCyDL7jCVTCr
+         FJmX1ktgNJIQY8RERbpM8UEx5+FZuelsVSfvxkFJ+V7l7SIeza4S0ZfJ4BxIEqrwmZ+D
+         F/PNZhyTfRpYffVNf3eP4utjK1SLRlX+EfvFy4kZ9PY+RCtG9NAGc89ZmeAO4hXX+GAH
+         Ii6zc7HY8sYE3Ojez2JHk9emgfValpnFyorNM863YMNy1UeblFS2MX0ACnLK4jItgvlP
+         v8Oy05OI4qsSA8fPE7ofcTvmFjghgMUMNJ0b2Wzo4ajp4Vei1d1rwtrvDcsk9iZQcT/A
+         zxAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:organization:autocrypt:openpgp:from:references:to
          :subject;
-        bh=7uSHfsbmUNvgGkkTV4k3eFspT4AE5b4L6eH+5lD+7WU=;
-        b=OiHIzGEvr71kSrcDKBe4ro7ub/wSN71zhkPEcxSUS4vI/8Vtxh9Ndnl11OFj6GspZ6
-         LZFrRrBIfUlOiJ7ErbSQ9EIkl7b9NHJ0rTWgl/OiSlVOWVZtpLw4/rOVo+drkJqyKS/9
-         KODE1ey97LLx4qX1IZsVlk3aarljdSYraLSM1v9L2V9hLg2EuymUmRuKGYEJevy4Ta/9
-         hJLQbYhlazigb862LO8p9nA3y5CZkzePrMkHSZL4OOZLjrIdBRqpMHU9jIJCeH6MhrIN
-         ICLkLAnz+y+3JqEE7w++GVarxG/uo1mCAP/INilsEz9kaabt2Gr7JlA/7NIt0Q39SDmD
-         Q6RA==
+        bh=Kgt23BlPOGXFp3OPxIrXqcDiYgtQquRS9NAkTcnBNFM=;
+        b=Jz0oAqEUqW5QJ5ZBX7CbU7VwA+I26/Yqpi1SR1mrjUaXI+/kMWmQY1TQNZcoA51+pW
+         SorjgWIryAwSmxUf2VWax2SSKjYELS7RgN+HbeSrPhOpx/0Sk8lgVXmGgYESxjLr3moV
+         10TnuOymYvXvg9jq27RSRqoVDDMF5hjCzzmJg3ATe+v5KuDxp6NXQHbGvx/vjUbvDmGv
+         ccWqsap0TxeZlEmsq7QxmHuPmyYI2n20tTL9xTDDP6z6Z7Besgy1GnUvCppXIhlKI5KU
+         MQLoNa85/jmbajMSLYlnrqYMHbDivtBaGcpEzTlgINcv/PgBmhtr1H2sUayRYQ1aq2ZD
+         8sOA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g184si9520460qkf.290.2019.09.23.13.51.23
+        by mx.google.com with ESMTPS id q11si10168054qti.6.2019.09.23.13.51.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
         Mon, 23 Sep 2019 13:51:23 -0700 (PDT)
@@ -37,37 +37,36 @@ Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.or
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33934 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33936 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCVIp-0003sc-9a
+	id 1iCVIp-0003se-7s
 	for alex.bennee@linaro.org; Mon, 23 Sep 2019 16:51:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52885)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52120)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iCTKU-0007Tf-Uq
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:44:59 -0400
+ (envelope-from <eblake@redhat.com>) id 1iCTGD-0005xo-AG
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:40:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iCTKT-0006Wh-Qv
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:44:58 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54236)
+ (envelope-from <eblake@redhat.com>) id 1iCTGB-0004VI-PF
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:40:33 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45504)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iCTKT-0006WP-Ia; Mon, 23 Sep 2019 14:44:57 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ id 1iCTG9-0004Ui-Ft; Mon, 23 Sep 2019 14:40:30 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 90020308624A;
- Mon, 23 Sep 2019 18:44:56 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 5EFE63091753;
+ Mon, 23 Sep 2019 18:40:27 +0000 (UTC)
 Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4D7E81001B05;
- Mon, 23 Sep 2019 18:44:29 +0000 (UTC)
-Subject: Re: [RFC v2 5/9] net/net: fix local variable shadowing in
- net_client_init
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9324560C63;
+ Mon, 23 Sep 2019 18:39:14 +0000 (UTC)
+Subject: Re: [RFC v2 2/9] qapi/error: add (Error **errp) cleaning APIs
 To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
  qemu-devel@nongnu.org
 References: <20190923161231.22028-1-vsementsov@virtuozzo.com>
- <20190923161231.22028-6-vsementsov@virtuozzo.com>
+ <20190923161231.22028-3-vsementsov@virtuozzo.com>
 From: Eric Blake <eblake@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=eblake@redhat.com; keydata=
@@ -94,18 +93,18 @@ Autocrypt: addr=eblake@redhat.com; keydata=
  Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
  2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
 Organization: Red Hat, Inc.
-Message-ID: <ce58d998-cc75-9eae-1bab-7e1c7c3737d1@redhat.com>
-Date: Mon, 23 Sep 2019 13:44:28 -0500
+Message-ID: <113940a4-3ef1-c7d7-4110-9c55a73ec241@redhat.com>
+Date: Mon, 23 Sep 2019 13:39:13 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190923161231.22028-6-vsementsov@virtuozzo.com>
+In-Reply-To: <20190923161231.22028-3-vsementsov@virtuozzo.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.49]); Mon, 23 Sep 2019 18:44:56 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.41]); Mon, 23 Sep 2019 18:40:27 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 X-Mailman-Approved-At: Mon, 23 Sep 2019 16:50:47 -0400
@@ -153,53 +152,78 @@ Cc: stefanha@redhat.com, codyprime@gmail.com, jan.kiszka@siemens.com,
  jcd@tribudubois.net, pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0uXNZ1empwEb
+X-TUID: UGuLLqG/jXAv
 
 On 9/23/19 11:12 AM, Vladimir Sementsov-Ogievskiy wrote:
-> Don't shadow Error *err: it's a bad thing. This patch also simplifies
-> following Error propagation conversion.
-> 
 > Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 > ---
->  net/net.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
 
-Can be applied independently of the rest of this series.
+A "why" as the commit message body wouldn't hurt.
 
+>  include/qapi/error.h | 22 ++++++++++++++++++++++
+>  util/error.c         |  6 +++---
+>  2 files changed, 25 insertions(+), 3 deletions(-)
 > 
-> diff --git a/net/net.c b/net/net.c
-> index 84aa6d8d00..5fc72511c1 100644
-> --- a/net/net.c
-> +++ b/net/net.c
-> @@ -1128,10 +1128,10 @@ static int net_client_init(QemuOpts *opts, bool is_netdev, Error **errp)
+> diff --git a/include/qapi/error.h b/include/qapi/error.h
+> index f6f4fa0fac..551385aa91 100644
+> --- a/include/qapi/error.h
+> +++ b/include/qapi/error.h
+> @@ -297,6 +297,28 @@ void warn_report_err(Error *err);
+>   */
+>  void error_report_err(Error *err);
 >  
->              if (substrings[1]) {
->                  /* User-specified prefix length.  */
-> -                int err;
-> +                int ret2;
+> +/*
+> + * Functions to clean Error **errp: call corresponding Error *err cleaning
+> + * function an set pointer to NULL
+
+s/an/and/
+
+> + */
+> +static inline void error_free_errp(Error **errp)
+> +{
+> +    error_free(*errp_in);
+
+Fails to compile.  Did you mean for this to come after 3/9?
+
+> +    *errp_in = NULL;
+> +}
+> +
+> +static inline void error_report_errp(Error **errp)
+> +{
+> +    error_report_err(*errp_in);
+> +    *errp_in = NULL;
+> +}
+> +
+> +static inline void warn_report_errp(Error **errp)
+> +{
+> +    warn_report_err(*errp_in);
+> +    *errp_in = NULL;
+> +}
+> +
+>  /*
+>   * Convenience function to error_prepend(), warn_report() and free @err.
+>   */
+> diff --git a/util/error.c b/util/error.c
+> index d4532ce318..dfba091757 100644
+> --- a/util/error.c
+> +++ b/util/error.c
+> @@ -273,9 +273,9 @@ void error_free(Error *err)
 >  
-> -                err = qemu_strtoul(substrings[1], NULL, 10, &prefix_len);
-> -                if (err) {
-> +                ret2 = qemu_strtoul(substrings[1], NULL, 10, &prefix_len);
-> +                if (ret2) {
+>  void error_free_or_abort(Error **errp)
+>  {
+> -    assert(errp && *errp);
+> -    error_free(*errp);
+> -    *errp = NULL;
+> +    assert(errp_in && *errp_in);
+> +    error_free(*errp_in);
+> +    *errp_in = NULL;
 
-In fact, you don't need ret2; you could just:
+Did you mean to use error_free_errp() instead of these last two lines?
 
-if (qemu_strtoul(...)) {
-
-at which point you could then join:
-
-if (substrings[1] &&
-    qemus_strtoul(...)) {
-
->                      error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
->                                 "ipv6-prefixlen", "a number");
->                      goto out;
+>  }
+>  
+>  void error_propagate(Error **dst_errp, Error *local_err)
 > 
-
-Either way,
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
 
 -- 
 Eric Blake, Principal Software Engineer

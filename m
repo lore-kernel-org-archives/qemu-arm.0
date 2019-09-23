@@ -1,72 +1,73 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3107382wrp;
-        Mon, 23 Sep 2019 13:51:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzczpXLjxzEUn8zHCoTV4CfKCOTVjU4OGqWUNoEwXUbFz2e0cN8qbL6GEYJ3mrXp47Mw3Rq
-X-Received: by 2002:a0c:e5c1:: with SMTP id u1mr1116113qvm.206.1569271904984;
-        Mon, 23 Sep 2019 13:51:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569271904; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3107614wrp;
+        Mon, 23 Sep 2019 13:52:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxYPiZpXxY5UEXnWgcSeY3ZGVU6elYuHgxLxR1BSImb4+lKlaY+Sh5WQe3d5Z7reNoKTnSJ
+X-Received: by 2002:ac8:6745:: with SMTP id n5mr2123577qtp.239.1569271923561;
+        Mon, 23 Sep 2019 13:52:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569271923; cv=none;
         d=google.com; s=arc-20160816;
-        b=LrYjUZpwm0jpnIpMg03BXJlwVPC6tVxzeGmljypyZxgx+CI2xxf+BDUv8lFok9KZdt
-         GpEpD6yCVKDHStWXxS1/khgk8QJ248+DRSR/aLWlQsp7vFWhVao3syn0KoFvF70V7A/v
-         U+BH/ZyopMhxxKBvD4l1PWzr6zc1AiXwX1fEmC8fu9kEk+IajQllwyid2mq1/bt2eRmF
-         PgUfzEHGYr7dLP6ma2EwcB42O0R6S3BGKSHAELE3TqyR+2wxh71sXn1Xq1rBcZIGrazU
-         L7eULyG8ATht6X0EZJKzicQv+Rri3bjb2VgOhyqYFJn+Ca8nA5EA5IzlUNnAsXhMrB6i
-         LmyA==
+        b=OOOXFcaHcIDcXDqBFoHNSjV6TcdFN+V3UzW05eU3MtyZofabmjlwqVMHgreypPHgpc
+         K9VfJQJJV4D95Sj55Ns5rCzEnIBtZnwS01iKWskBp7MbkDk2G+iG0Vop5RuXoyyNn75g
+         ZF7AV36pOdX5kxdsQ9gEkZzXCxEf6uHdL0LG6PcA6QYQqLKslr+ZbK9F1ZXjlb1w7Ny5
+         ka32eODoqmLh2RjbImYqopkWkseK7EddimvyXIpuT4U2ZZwlRyXhQjf0NlmZnogZFMcO
+         4K1GB2cQTWXCon9V0h9+Qk6TuwayTItiiBPZqZWTRpRCz6g3hk4vqF5r+190OuK+mK8o
+         MgMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:organization:autocrypt:openpgp:from:references:to
          :subject;
-        bh=L7UGuUFsJLhUO0m8W7FJBea1CRBJqIxuvlfNBNft16w=;
-        b=wgrs2QmoYadfnN3LL+IdmR/Cjvr8kTgAs1FdSGxkQH/WWZPneNfk+sxSFLERty4zq5
-         4THnSGq21mIX33VSJxua44llmPClI+HV5Fg5v6jHDh8b3E2nmUgOAMYB22MektVOKvdc
-         R9LSV8qSAHWsLv3+Q9Up84Iq9AUP5rb/KB4oFC84TsXWL7sxXkWXARMGDa9NVzs96jmp
-         lKhsqD5VMebWhoiMX/u7kYhhAdQujFVuReqn4zyX2aIgZIZ5kA+6yFJI2yjC/AO87Xqb
-         qjlpv2TqgGFaGz1Z/p3VkdK8gu3ix8nMQ2TQ9of35HQ+OlXKszNsp+bwTKWTFLbjR6uk
-         Oweg==
+        bh=LS8iHyeyTWzPfwbdy6eq3fsvT54+4YPtW/7Bjrsh478=;
+        b=L1g0A4vYqB7+iHFp8bicnyQmNYbpJ2VUfUARWwK1YQmnFHo449cSvo4DfuigUuqNuK
+         vTT6UD2bPKs6sBjgCPLrYyOHvz0jSFAWmUmxOk7lKgQAcIQM7sQ6zqVyISraPCFCQUNs
+         5KGVE9dS/y9F8wsoG6pXvI09gq3XvPHg08mBOw4hr56j1+OIXq9TrAiKMh9SkYVYmx7n
+         2kHdSPrC70YJ/ygOBgDe07x/nO597t+SdobAMTKMnUMvcX55NbR1uTIj9sb+cPyOT0jQ
+         LUwUEQRpns6o2W6eomToDxZyYRa0jHjQHyBedcHnsRcMzAFWD4fZEQwRWtFK7rsRNYml
+         EHcw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d16si9253206qkl.43.2019.09.23.13.51.44
+        by mx.google.com with ESMTPS id v5si9052943qki.210.2019.09.23.13.52.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 13:51:44 -0700 (PDT)
+        Mon, 23 Sep 2019 13:52:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33950 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33954 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCVJ9-0004Kd-Ho
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 16:51:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51370)
+	id 1iCVJS-0004fg-Lm
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 16:52:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36514)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iCTDG-0003jH-JA
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:37:31 -0400
+ (envelope-from <eblake@redhat.com>) id 1iCUbM-00015M-AA
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 16:06:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iCTDF-0003Kk-HS
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:37:30 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:10785)
+ (envelope-from <eblake@redhat.com>) id 1iCUbL-00057z-4s
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 16:06:28 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:51454)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iCTDF-0003KR-77; Mon, 23 Sep 2019 14:37:29 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ id 1iCUbK-00057Q-TR; Mon, 23 Sep 2019 16:06:27 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 5833310DCC84;
- Mon, 23 Sep 2019 18:37:27 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 06205307CDE7;
+ Mon, 23 Sep 2019 20:06:24 +0000 (UTC)
 Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9317460C5E;
- Mon, 23 Sep 2019 18:35:52 +0000 (UTC)
-Subject: Re: [RFC v2 3/9] errp: rename errp to errp_in where it is IN-argument
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 630F819D70;
+ Mon, 23 Sep 2019 20:05:50 +0000 (UTC)
+Subject: Re: [RFC v2 6/9] scripts: add coccinelle script to use auto
+ propagated errp
 To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
  qemu-devel@nongnu.org
 References: <20190923161231.22028-1-vsementsov@virtuozzo.com>
- <20190923161231.22028-4-vsementsov@virtuozzo.com>
+ <20190923161231.22028-7-vsementsov@virtuozzo.com>
 From: Eric Blake <eblake@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=eblake@redhat.com; keydata=
@@ -93,18 +94,18 @@ Autocrypt: addr=eblake@redhat.com; keydata=
  Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
  2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
 Organization: Red Hat, Inc.
-Message-ID: <8ad05d4f-e7e6-d7b5-dce4-c4d24ac81e0e@redhat.com>
-Date: Mon, 23 Sep 2019 13:35:51 -0500
+Message-ID: <57e97ed0-b1a1-d209-fc23-cf41ec467157@redhat.com>
+Date: Mon, 23 Sep 2019 15:05:49 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190923161231.22028-4-vsementsov@virtuozzo.com>
+In-Reply-To: <20190923161231.22028-7-vsementsov@virtuozzo.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.64]); Mon, 23 Sep 2019 18:37:28 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.49]); Mon, 23 Sep 2019 20:06:24 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 X-Mailman-Approved-At: Mon, 23 Sep 2019 16:50:47 -0400
@@ -152,30 +153,136 @@ Cc: stefanha@redhat.com, codyprime@gmail.com, jan.kiszka@siemens.com,
  jcd@tribudubois.net, pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: W2j8cL2bYLbr
+X-TUID: /rdoXXEXd6lk
 
 On 9/23/19 11:12 AM, Vladimir Sementsov-Ogievskiy wrote:
-> Error **errp is almost always OUT-argument: it's assumed to be NULL, or
-> pointer to NULL-initialized pointer, or pointer to error_abort or
-> error_fatal, for callee to report error.
-> 
-> But very few functions (most of the are error API) instead get Error
-> **errp as IN-argument: it's assumed to be set, and callee should clean
-> it. In such cases, rename errp to errp_in.
-> 
 > Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 > ---
->  include/monitor/hmp.h |  2 +-
->  include/qapi/error.h  |  8 ++++----
->  ui/vnc.h              |  2 +-
->  monitor/hmp-cmds.c    |  8 ++++----
->  ui/vnc.c              | 10 +++++-----
->  util/error.c          |  2 +-
->  6 files changed, 16 insertions(+), 16 deletions(-)
+>  scripts/coccinelle/auto-propagated-errp.cocci | 82 +++++++++++++++++++
+>  1 file changed, 82 insertions(+)
+>  create mode 100644 scripts/coccinelle/auto-propagated-errp.cocci
+> 
+> diff --git a/scripts/coccinelle/auto-propagated-errp.cocci b/scripts/coccinelle/auto-propagated-errp.cocci
+> new file mode 100644
+> index 0000000000..1a3f006f0b
+> --- /dev/null
+> +++ b/scripts/coccinelle/auto-propagated-errp.cocci
+> @@ -0,0 +1,82 @@
+> +@@
+> +identifier fn;
+> +identifier local_err;
+> +@@
+> +
+> + fn(..., Error **errp)
+> + {
+> ++    ERRP_FUNCTION_BEGIN();
+> + }
 
-This is worthwhile, regardless of the fate of the rest of the series.
+This doesn't catch functions where Error **errp is not the last
+parameter.  Some examples (some of which may need independent tweaking
+in their own right for being inconsistent, although we DO want errp to
+appear before any 'format, ...' arguments):
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+block/ssh.c:sftp_error_setg(Error **errp, BDRVSSHState *s, const char
+*fs, ...)
+exec.c:static void ram_block_add(RAMBlock *new_block, Error **errp, bool
+shared)
+
+Does running this Coccinelle script 2 times in a row add a second
+ERRP_FUNCTION_BEGIN() line?  We want it to be idempotent (no changes on
+a second run).  (Admittedly, I did not actually test that yet).  Also, I
+don't know if this can be tweaked to avoid adding the line to a function
+with an empty body, maybe:
+
+ fn(..., Error **errp, ...)
+ {
++    ERRP_FUNCTION_BEGIN();
+     ...
+ }
+
+to only add it to a function that already has a body (thanks to the ...)
+- but I'm fuzzy enough on Coccinelle that I may be saying something
+totally wrong.
+
+> +
+> +@rule1@
+> +identifier fn;
+> +identifier local_err;
+> +@@
+> +
+> + fn(..., Error **errp)
+> + {
+> +     <...
+> +-    Error *local_err = NULL;
+> +     ...>
+> + }
+> +
+> +@@
+> +identifier rule1.fn;
+> +identifier rule1.local_err;
+> +identifier out;
+> +@@
+> +
+> + fn(...)
+> + {
+> +     <...
+> +-    goto out;
+> ++    return;
+> +     ...>
+> +- out:
+> +-    error_propagate(errp, local_err);
+> + }
+> +
+> +@@
+> +identifier rule1.fn;
+> +identifier rule1.local_err;
+> +@@
+> +
+> + fn(...)
+> + {
+> +     <...
+> +(
+> +-    error_free(local_err);
+> +-    local_err = NULL;
+> ++    error_free_errp(errp);
+> +|
+> +-    error_free(local_err);
+> ++    error_free_errp(errp);
+> +|
+> +-    error_report_err(local_err);
+> ++    error_report_errp(errp);
+> +|
+> +-    warn_report_err(local_err);
+> ++    warn_report_errp(errp);
+> +|
+> +-    error_propagate(errp, local_err);
+> +)
+> +     ...>
+> + }
+> +
+> +@@
+> +identifier rule1.fn;
+> +identifier rule1.local_err;
+> +@@
+> +
+> + fn(...)
+> + {
+> +     <...
+> +(
+> +-    &local_err
+> ++    errp
+> +|
+> +-    local_err
+> ++    *errp
+> +)
+> +     ...>
+> + }
+> 
+
+Overall, the script makes sense in my reading (but no idea if it
+actually catches everything we want, or if it missed something).  At any
+rate, once patch 7 is split into more manageable chunks, we can
+definitely spot-check results to make sure they all look reasonable.
 
 -- 
 Eric Blake, Principal Software Engineer

@@ -1,108 +1,73 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2809912wrp;
-        Mon, 23 Sep 2019 08:40:22 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzb///qKzHVS8R1M16TQ32cdhW2Fd78eouwreDnKNraQB2gIlP4NbgHCCS2QA6atcpQfoK1
-X-Received: by 2002:a37:a946:: with SMTP id s67mr435786qke.470.1569253222886;
-        Mon, 23 Sep 2019 08:40:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569253222; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2857999wrp;
+        Mon, 23 Sep 2019 09:25:44 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy4jgRtn6puhImgg4mx1jlHwu/MG5lN4YbBbYcr56FzUCKG/hS/QdC8z35k+u2D7cg++Ck+
+X-Received: by 2002:a17:906:254d:: with SMTP id j13mr691510ejb.30.1569255944144;
+        Mon, 23 Sep 2019 09:25:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569255944; cv=none;
         d=google.com; s=arc-20160816;
-        b=iqVw7DvsUJHJb49icdHbr2ksr48t1NwKxvdS3IJxYYakYEKhxEESomvnza8jvgN7u9
-         X0ds02E9Eq31VtQxkhZJJlmFg+D8diYqQfkB6T0QE285hS7fA5TOlHy51hERmH4cRX/q
-         8pxiXJ0L2Yze5dghM5EWkVzd9RC8o7dzck41Oxm9vN+jYPvfIxLPK+PSN9bePR0hDtPz
-         ei/LxVNav/at/TrgrfdedCVX6SZv00c9KJm1zpT0CU01SDrIRLmFAreTBe3sG8mKJ+6g
-         PyY0P9QffI0l1pij5UEUqQx15PO234rLeIa8yrKVITnmHJal9NC5qLrju5VRTrulMEyO
-         0oXg==
+        b=LrdqOsJpoOovNHorzbWDmc4RLCwAeoOhtG5Rz8egStyk0HlQcHrtdTvzx+NLO2FIMB
+         8VAtuKxj+i6GybYmZaynvn+sbnVlPt1YkCORGnatoF2T+wk4aqlW0YKa1noMN0F1qJrs
+         f3S/J46BqLA9YmFtCKc4Z4g+UOjOwaaw0eRu6Vk6dVoVV4S/1XASBeZtYNHkBIW9nCkP
+         OMwPnWPqyxEHt55QazAiX2RzIij/+GqqbSD7vhU8scJ8ZLZS3U+U3jgtPjPPLL3hQZDJ
+         uKSV46lsrbhvSWc/I88Q8fzA6X7Y7rQ1/Hroz3/hoixd8I6YZauW7RHEYJrTYgYeFaQS
+         ONRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:openpgp:from:references:to:subject;
-        bh=AMFkxltNvKcjgNyq6lsWcB5cj2MXillWQNT1EsA8qL4=;
-        b=krK7vaZrj0a4dsBhui9YLvi2ZjHywWhmu1Yjer3jm4cIOaZ30NwV5KQdg1UqW+mgQU
-         rBRnqMn9xiqcps01ixi/WQ0VZ96/D5vX/40N8NbuJ699BxBtT9DUUu+dBvi7Mez6nMps
-         zDntOYu6um8NN8rn2lkDkFvVnkarpb3VJ6B6O0jaxLi9YEFnlWI7TcH7VeqGroajM7lu
-         SkMGmzer2utqG8AjAt75qYuoSdeMSAwuQglFrgkV6FCDViXR51TlqFa20Owa1mZYBipR
-         PqP603kDzs52tar+4jCmSx606CiJ/U6rqbWm6BiXJhayYqKPBEAee0GnIXSNXPHn/yj6
-         iPhA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=B0y8U3sDHPqaycOZBVH05XSBeYxJtW7Iu8HO1pRgvY0=;
+        b=FRmDjUvgEHJ9A1x8RCFjSew5TEY9UsfQODm+m9Le4fWAGkw4J/ct+EQvuoI0ZJTJU2
+         RbZbyPgk14hoISrWD5bN11TEi6DpntT+r1FINkC3EW7SRBQdVix/kzdAo1Bc/Of3y8K/
+         D2T/smnmB/lFxuO3zM7msl9i5iE3IGA3RTN8DI9x9jqNhNeEk+0krf5qrPpkGk2YfgAK
+         CeqsXOdCEliBNthyXRGgTuXyMoiISnFK5X4zaeL6F9mEoE8EZPCYncdx/NZc1rBOaKeK
+         jPp3aBqPfOuhWjN+CIjNhKqNtAiVDj6focORWqNrK2HVAsOcTpAlRK/XD0z3SaJ/g5Ov
+         q6UQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d10si9120525qtg.260.2019.09.23.08.40.22
+        by mx.google.com with ESMTPS id dt14si5293564ejb.168.2019.09.23.09.25.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 08:40:22 -0700 (PDT)
+        Mon, 23 Sep 2019 09:25:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58184 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
+Received: from localhost ([::1]:59306 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCQRq-0000xa-1y
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 11:40:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50813)
+	id 1iCR9i-00021t-Od
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 12:25:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57285)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iCQRW-0000x3-Vl
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 11:40:04 -0400
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iCQxW-0002Yi-DA
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 12:13:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iCQRV-0003H5-3M
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 11:40:02 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45942)
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iCQxU-0003qO-DX
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 12:13:06 -0400
+Received: from relay.sw.ru ([185.231.240.75]:39508)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iCQRU-0003GY-Ro
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 11:40:01 -0400
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id DF29085536
- for <qemu-arm@nongnu.org>; Mon, 23 Sep 2019 15:39:59 +0000 (UTC)
-Received: by mail-wm1-f71.google.com with SMTP id o8so4920175wmc.2
- for <qemu-arm@nongnu.org>; Mon, 23 Sep 2019 08:39:59 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=pcPFpcKUi523Ys3CU2Lb1ssw8BTF69fob0LEa6188aQ=;
- b=tXM10CDLOKhkLW48tcbBpWpmECDf5CYAgLGfotD5LFAkgvl2qX+y7+27NiMtmHNB0t
- FGCZ35L0S86mN4A+yUo/CWo4L3IMImMmuSMjXRR9gQDnqbfBV0DUWbjrj74sNxkdFmSq
- 9hTZbTCBGQrsX+O3dZRPFJsCpUy12PBMImGvN/UBSHzOqwXjKTGBshc1mcjFym8igJl9
- 5snD8khcO+w5pOa8F04pdSsfx0ToBejWv92E8R9sQQKOOraXlskJBY5OlxIKjLiDmhbk
- Yvkbm/SE9Gjti/tWziF0ZUhl1h/zqe/7XoabC5knsmZeGZiT9+VNthmfxbrMn77D+Bje
- PFBQ==
-X-Gm-Message-State: APjAAAWostgqnUMHOk7HdBOycSrKqdRA6RGv1wOdjDEEMeDF1X0BpogT
- sBMTJkJXfHr5hBoRJezz3rJa8NIIwoSP1kibvt6gKPJb6ZuNseBiJNpq5NAYwWF4S50b3SRuvsO
- FxI5oSFQR7k1V
-X-Received: by 2002:a7b:cf3a:: with SMTP id m26mr211584wmg.73.1569253198705;
- Mon, 23 Sep 2019 08:39:58 -0700 (PDT)
-X-Received: by 2002:a7b:cf3a:: with SMTP id m26mr211567wmg.73.1569253198521;
- Mon, 23 Sep 2019 08:39:58 -0700 (PDT)
-Received: from [192.168.1.115] (240.red-88-21-68.staticip.rima-tde.net.
- [88.21.68.240])
- by smtp.gmail.com with ESMTPSA id z189sm17971177wmc.25.2019.09.23.08.39.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 23 Sep 2019 08:39:57 -0700 (PDT)
-Subject: Re: [RFC PATCH 0/2] hw/char/bcm2835_aux: Provide full 16550 UART
- support
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20190820123417.27930-1-philmd@redhat.com>
- <CAFEAcA_6uBtREzj2UaSwDp_VWd=oPsD-dARcOPeJdcMpO5kaHw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <93b7cd93-e03d-d0c5-7cae-7f571a9b8ca1@redhat.com>
-Date: Mon, 23 Sep 2019 17:39:56 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+ (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
+ id 1iCQxM-0003a8-Tg; Mon, 23 Sep 2019 12:12:57 -0400
+Received: from [10.94.3.0] (helo=kvm.qa.sw.ru)
+ by relay.sw.ru with esmtp (Exim 4.92.2)
+ (envelope-from <vsementsov@virtuozzo.com>)
+ id 1iCQwy-0001Fp-Od; Mon, 23 Sep 2019 19:12:32 +0300
+From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+To: qemu-devel@nongnu.org
+Subject: [RFC v2 2/9] qapi/error: add (Error **errp) cleaning APIs
+Date: Mon, 23 Sep 2019 19:12:24 +0300
+Message-Id: <20190923161231.22028-3-vsementsov@virtuozzo.com>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20190923161231.22028-1-vsementsov@virtuozzo.com>
+References: <20190923161231.22028-1-vsementsov@virtuozzo.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_6uBtREzj2UaSwDp_VWd=oPsD-dARcOPeJdcMpO5kaHw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 185.231.240.75
+X-Mailman-Approved-At: Mon, 23 Sep 2019 12:25:22 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,56 +79,98 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Guenter Roeck <linux@roeck-us.net>
+Cc: stefanha@redhat.com, codyprime@gmail.com, jan.kiszka@siemens.com,
+ eblake@redhat.com, berto@igalia.com, zhang.zhanghailiang@huawei.com,
+ qemu-block@nongnu.org, arikalo@wavecomp.com, pasic@linux.ibm.com,
+ hpoussin@reactos.org, anthony.perard@citrix.com, samuel.thibault@ens-lyon.org,
+ philmd@redhat.com, green@moxielogic.com, lvivier@redhat.com,
+ ehabkost@redhat.com, xiechanglong.d@gmail.com, pl@kamp.de, dgilbert@redhat.com,
+ b.galvani@gmail.com, eric.auger@redhat.com, alex.williamson@redhat.com,
+ ronniesahlberg@gmail.com, jsnow@redhat.com, rth@twiddle.net, kwolf@redhat.com,
+ vsementsov@virtuozzo.com, andrew@aj.id.au, crwulff@gmail.com,
+ sundeep.lkml@gmail.com, michael@walle.cc, qemu-ppc@nongnu.org,
+ kbastian@mail.uni-paderborn.de, imammedo@redhat.com, fam@euphon.net,
+ peter.maydell@linaro.org, sheepdog@lists.wpkg.org, david@redhat.com,
+ palmer@sifive.com, thuth@redhat.com, jcmvbkbc@gmail.com, den@openvz.org,
+ hare@suse.com, sstabellini@kernel.org, arei.gonglei@huawei.com,
+ marcel.apfelbaum@gmail.com, namei.unix@gmail.com, atar4qemu@gmail.com,
+ farman@linux.ibm.com, amit@kernel.org, sw@weilnetz.de, groug@kaod.org,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, peter.chubb@nicta.com.au,
+ clg@kaod.org, shorne@gmail.com, qemu-riscv@nongnu.org, cohuck@redhat.com,
+ amarkovic@wavecomp.com, aurelien@aurel32.net, pburton@wavecomp.com,
+ sagark@eecs.berkeley.edu, jasowang@redhat.com, kraxel@redhat.com,
+ gxt@mprc.pku.edu.cn, ari@tuxera.com, quintela@redhat.com,
+ mdroth@linux.vnet.ibm.com, lersek@redhat.com, borntraeger@de.ibm.com,
+ antonynpavlov@gmail.com, dillaman@redhat.com, joel@jms.id.au,
+ xen-devel@lists.xenproject.org, integration@gluster.org, balrogg@gmail.com,
+ rjones@redhat.com, Andrew.Baumann@microsoft.com, mreitz@redhat.com,
+ walling@linux.ibm.com, mst@redhat.com, mark.cave-ayland@ilande.co.uk,
+ v.maffione@gmail.com, marex@denx.de, armbru@redhat.com,
+ marcandre.lureau@redhat.com, alistair@alistair23.me, paul.durrant@citrix.com,
+ pavel.dovgaluk@ispras.ru, g.lettieri@iet.unipi.it, rizzo@iet.unipi.it,
+ david@gibson.dropbear.id.au, akrowiak@linux.ibm.com, berrange@redhat.com,
+ xiaoguangrong.eric@gmail.com, pmorel@linux.ibm.com, wencongyang2@huawei.com,
+ jcd@tribudubois.net, pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zzs8L9iND4ir
+X-TUID: Y4lnpLMOwwdZ
 
-Hi Peter,
+Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+---
+ include/qapi/error.h | 22 ++++++++++++++++++++++
+ util/error.c         |  6 +++---
+ 2 files changed, 25 insertions(+), 3 deletions(-)
 
-On 9/23/19 3:26 PM, Peter Maydell wrote:
-> On Tue, 20 Aug 2019 at 13:34, Philippe Mathieu-Daud=C3=A9 <philmd@redha=
-t.com> wrote:
->> Since there has been some activity on the list asking about
->> Rasberry PI USB support, I had a look a some previous unfinished
->> work and rebased it to share, in case it helps hobbyist interested
->> in improving these machines.
->>
->> This series is some proof-of-concept on improving the AUX UART
->> support. See the commit description for various TODO/questions.
->=20
-> Apologies for not having got round to looking at this
-> RFC patchset sooner...
+diff --git a/include/qapi/error.h b/include/qapi/error.h
+index f6f4fa0fac..551385aa91 100644
+--- a/include/qapi/error.h
++++ b/include/qapi/error.h
+@@ -297,6 +297,28 @@ void warn_report_err(Error *err);
+  */
+ void error_report_err(Error *err);
+ 
++/*
++ * Functions to clean Error **errp: call corresponding Error *err cleaning
++ * function an set pointer to NULL
++ */
++static inline void error_free_errp(Error **errp)
++{
++    error_free(*errp_in);
++    *errp_in = NULL;
++}
++
++static inline void error_report_errp(Error **errp)
++{
++    error_report_err(*errp_in);
++    *errp_in = NULL;
++}
++
++static inline void warn_report_errp(Error **errp)
++{
++    warn_report_err(*errp_in);
++    *errp_in = NULL;
++}
++
+ /*
+  * Convenience function to error_prepend(), warn_report() and free @err.
+  */
+diff --git a/util/error.c b/util/error.c
+index d4532ce318..dfba091757 100644
+--- a/util/error.c
++++ b/util/error.c
+@@ -273,9 +273,9 @@ void error_free(Error *err)
+ 
+ void error_free_or_abort(Error **errp)
+ {
+-    assert(errp && *errp);
+-    error_free(*errp);
+-    *errp = NULL;
++    assert(errp_in && *errp_in);
++    error_free(*errp_in);
++    *errp_in = NULL;
+ }
+ 
+ void error_propagate(Error **dst_errp, Error *local_err)
+-- 
+2.21.0
 
-No worry, this patch is not very important.
-
-> I think my question here would be -- is using the 16650 emulation
-> really the right thing? The BCM2835 documentation says
-> "The implemented UART is *not* a 16650 compatible UART. However
-> as far as possible the first 8 control and status registers are
-> laid out *like* a 16550 UART." That suggests to me that it would
-> be better to just improve our model of this hardware rather than
-> to replace it with a 16550 model which isn't what the hardware
-> really is.
-
-Some registers are the same as the 16550, some others only implement
-bits (identically placed). None provide extra bit (a new bit not present
-in the 16550, for that they used new registers).
-
-My idea was to reduce/reuse the chardev code.
-I think a correct way is using the "hw/register.h" API to mask the
-unimplemented bits.
-
-This patch reduces a lot of [LCR/LSR/MCR/MSR] "register unimplemented"
-when booting Linux, but from the emulation point of view they are
-harmless, so we can ignore this patch for now.
-
-Thanks,
-
-Phil.

@@ -1,112 +1,83 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3142669wrp;
-        Mon, 23 Sep 2019 14:31:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzIuI4w/mSv2ej1+Zxt7v42nV+pE+Y6KrtsFsXt4bFVbv+ZD8gez8h5t4FDa6skIfErvVpS
-X-Received: by 2002:a37:a9c1:: with SMTP id s184mr358qke.360.1569274273205;
-        Mon, 23 Sep 2019 14:31:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569274273; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3223432wrp;
+        Mon, 23 Sep 2019 16:11:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyf5dEtF8wJZgltQd57TUo84ebS9bbMR03IzelMmtQvqOFAQM06r9x5pUOdNU+wQ9boPt9t
+X-Received: by 2002:a50:87ca:: with SMTP id 10mr2670324edz.77.1569280273600;
+        Mon, 23 Sep 2019 16:11:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569280273; cv=none;
         d=google.com; s=arc-20160816;
-        b=duppa09htRawmLO2XxjtELaEergiSBK3ssV+tA9z38kY+55fmMBrIkDNYrgrqkYd2S
-         JCltUfTDu6fk1GcRtlduCkZBNXWRUn4MyNg3Z82LJDOCiR13iywbXDBpPqpmQ9rMFgAj
-         xGelrmmhE9dN7klliAxew3zZCpA/KyLyYoNQwran7ySAOgBQ9BC8Gz8OHUYrVOCroK1E
-         /duAtUu8DNMR7WZ9mIYbyazsTtI4P+vxADZ6n9na2QcZpO0dQDYaqs3m0JkpqfK+QtKD
-         ZgHjba9VS+xzb+xNZc5WcFeGYRFv2TnRRT577HqoQCaVAynMKiFvMXvfs3Yfag+PGQX9
-         K8JA==
+        b=sgVOjc+3vxu2Ucudjmr6EQ0AyBDgnaK9h+ANrzcdelC+xI1d0UU4GADF+83zFO6/Tq
+         ykedifwsV0SyRwxKOa13qC9K40Koklv68JRuo1HlYrnd+r8lVuIM5dzIkDkpW7OKN86w
+         ypVnxuFlqZ/SnnV086G8S6m00YfCASuUGntMn+hdtTH5krdM11Wxumpwa1QblHD/XVA/
+         artVsdifsD2GZiSBs6EbJJE7tC7uDnEfAzuowZaunYTS9DCNoi2zXv969t46/TbB8kjr
+         nkZEhu281uZsVJWLULdRPrwpW31T9h2GfCjMx63MXXsi/opHsauIQp1Dlr8ziXAGRCRJ
+         QSAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:openpgp:from:references:to
-         :subject;
-        bh=bBmTwwY99xcRh4kY4Fx6POgoaKqJsdDm8FTDGExxl/8=;
-        b=ZzEvvJmOJ9mlM2XWkfK44C6Y6wKn0QXg2+sJCptYHsyzIRrrYy+3Lp3QNLeFVvt0FA
-         +8Z3ycD72zbQeHhG9ypXcJXSHRXfj6cpVzY4AsJUJsEaoV9jcqYDinXbsNmBpNjcP7Ee
-         /QZxt2uGlDNzLhOm9gkICKlOAHc7MQH1r72YpIQzVfBPZNn3hpwcKXd/MunuRK28MTDu
-         zwa0ZfegR/u6h0NhjxI4SJotHTJEJhtJbteLcjTZU4QkC1WtHJR6zNPzQEwRXXe/Lcby
-         Nb3JO2MMl18+g225XsmSxj5sqkZOD1e4HzR6sem0ND94BSnEhrWWg+d3+xLia8vf5mHB
-         Udkw==
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :to:from:date;
+        bh=fX2dvrqUG1S//cKfepbCfrTcwppUl/RqhYa89ovf26U=;
+        b=p2l+Yt+Tza6cGfJkmPk/L6rC9hN3Ww8Gmdjs86p4UAOuVmgbLfaUTt59a1mjfJIsTm
+         Fb5NDphVer89blApJPkOsHc690BkKGf6BUo6EfA6YUh7N6Rhgt0QXZBtKDMbWt4GG0zz
+         ijLkHHncij3Vk9ielSka4PeNmYNeVRtEOkkK64+YuYBfnrNqPh46q3WRasE6wG/VrRK2
+         xfYSsfmw4MyVynHop6jnua2gsrldFdmx/qoSVwMSxqRExReFEPbgqB5s/U+740qHUAzs
+         e6Y/r7nFrULw4WFzqmgyeIHa6SbkJCkdTOOKBz2sML+7hNwOtVJ/K0V6ni65+UMsQkCf
+         mMjA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j21si8672795qvg.150.2019.09.23.14.31.13
+        by mx.google.com with ESMTPS id c31si7754311edb.309.2019.09.23.16.11.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 14:31:13 -0700 (PDT)
+        Mon, 23 Sep 2019 16:11:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34332 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37174 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCVvM-0007DR-7g
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 17:31:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46836)
+	id 1iCXU8-0006eM-27
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 19:11:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37227)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iCVv8-0007DE-8x
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 17:30:59 -0400
+ (envelope-from <alex.williamson@redhat.com>) id 1iCXTr-0006a8-KP
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 19:10:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iCVv5-0000aT-V9
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 17:30:56 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:37560)
+ (envelope-from <alex.williamson@redhat.com>) id 1iCXTq-0006vI-FB
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 19:10:55 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:34226)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iCVv5-0000ZX-NE; Mon, 23 Sep 2019 17:30:55 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
+ (Exim 4.71) (envelope-from <alex.williamson@redhat.com>)
+ id 1iCXTq-0006ux-9V; Mon, 23 Sep 2019 19:10:54 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 6C9B559449;
- Mon, 23 Sep 2019 21:30:51 +0000 (UTC)
-Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4B7125D71C;
- Mon, 23 Sep 2019 21:30:02 +0000 (UTC)
-Subject: Re: [RFC v2 6/9] scripts: add coccinelle script to use auto
- propagated errp
-To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- qemu-devel@nongnu.org
-References: <20190923161231.22028-1-vsementsov@virtuozzo.com>
- <20190923161231.22028-7-vsementsov@virtuozzo.com>
- <57e97ed0-b1a1-d209-fc23-cf41ec467157@redhat.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=eblake@redhat.com; keydata=
- xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
- xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
- TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
- GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
- sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
- AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
- CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
- RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
- wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
- Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
- gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
- pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
- zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
- pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
- 3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
- NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
- cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
- SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
- I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
- mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
- Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
- 2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
-Organization: Red Hat, Inc.
-Message-ID: <7cffb999-35e5-742e-7241-6da4777885bf@redhat.com>
-Date: Mon, 23 Sep 2019 16:29:59 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ by mx1.redhat.com (Postfix) with ESMTPS id 7D46918C8902;
+ Mon, 23 Sep 2019 23:10:53 +0000 (UTC)
+Received: from x1.home (ovpn-118-102.phx2.redhat.com [10.3.118.102])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 882135C1B5;
+ Mon, 23 Sep 2019 23:10:44 +0000 (UTC)
+Date: Mon, 23 Sep 2019 17:10:43 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Auger Eric <eric.auger@redhat.com>
+Subject: Re: [PATCH v3 1/2] vfio: Turn the container error into an Error handle
+Message-ID: <20190923171043.4de13820@x1.home>
+In-Reply-To: <765755f6-4447-9322-d276-567d844ed50c@redhat.com>
+References: <20190923065552.10602-1-eric.auger@redhat.com>
+ <20190923065552.10602-2-eric.auger@redhat.com>
+ <20190923075145.GA12806@xz-x1>
+ <765755f6-4447-9322-d276-567d844ed50c@redhat.com>
+Organization: Red Hat
 MIME-Version: 1.0
-In-Reply-To: <57e97ed0-b1a1-d209-fc23-cf41ec467157@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.39]); Mon, 23 Sep 2019 21:30:51 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.70]); Mon, 23 Sep 2019 23:10:53 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 X-BeenThere: qemu-arm@nongnu.org
@@ -120,75 +91,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: stefanha@redhat.com, jan.kiszka@siemens.com, zhang.zhanghailiang@huawei.com,
- qemu-block@nongnu.org, arikalo@wavecomp.com, pasic@linux.ibm.com,
- hpoussin@reactos.org, anthony.perard@citrix.com, samuel.thibault@ens-lyon.org,
- balrogg@gmail.com, jasowang@redhat.com, lvivier@redhat.com,
- ehabkost@redhat.com, xiechanglong.d@gmail.com, pl@kamp.de, dgilbert@redhat.com,
- b.galvani@gmail.com, eric.auger@redhat.com, alex.williamson@redhat.com,
- ronniesahlberg@gmail.com, rth@twiddle.net, kwolf@redhat.com, andrew@aj.id.au,
- crwulff@gmail.com, sundeep.lkml@gmail.com, michael@walle.cc,
- qemu-ppc@nongnu.org, kbastian@mail.uni-paderborn.de, imammedo@redhat.com,
- fam@euphon.net, peter.maydell@linaro.org, sheepdog@lists.wpkg.org,
- david@redhat.com, palmer@sifive.com, jcmvbkbc@gmail.com, den@openvz.org,
- hare@suse.com, sstabellini@kernel.org, arei.gonglei@huawei.com,
- marcel.apfelbaum@gmail.com, namei.unix@gmail.com, atar4qemu@gmail.com,
- thuth@redhat.com, amit@kernel.org, sw@weilnetz.de, groug@kaod.org,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, peter.chubb@nicta.com.au,
- clg@kaod.org, shorne@gmail.com, qemu-riscv@nongnu.org, cohuck@redhat.com,
- philmd@redhat.com, amarkovic@wavecomp.com, aurelien@aurel32.net,
- pburton@wavecomp.com, sagark@eecs.berkeley.edu, green@moxielogic.com,
- kraxel@redhat.com, gxt@mprc.pku.edu.cn, quintela@redhat.com,
- mdroth@linux.vnet.ibm.com, borntraeger@de.ibm.com, antonynpavlov@gmail.com,
- joel@jms.id.au, xen-devel@lists.xenproject.org, integration@gluster.org,
- lersek@redhat.com, Andrew.Baumann@microsoft.com, mreitz@redhat.com,
- walling@linux.ibm.com, mst@redhat.com, mark.cave-ayland@ilande.co.uk,
- v.maffione@gmail.com, marex@denx.de, armbru@redhat.com,
- marcandre.lureau@redhat.com, alistair@alistair23.me, paul.durrant@citrix.com,
- pavel.dovgaluk@ispras.ru, g.lettieri@iet.unipi.it, rizzo@iet.unipi.it,
- david@gibson.dropbear.id.au, akrowiak@linux.ibm.com, berrange@redhat.com,
- xiaoguangrong.eric@gmail.com, pmorel@linux.ibm.com, wencongyang2@huawei.com,
- jcd@tribudubois.net, pbonzini@redhat.com, stefanb@linux.ibm.com
+Cc: peter.maydell@linaro.org, mst@redhat.com, aik@ozlabs.ru,
+ qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>, qemu-arm@nongnu.org,
+ pbonzini@redhat.com, david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /GDPAzVVlLEq
+X-TUID: SfUG201/whpJ
 
-On 9/23/19 3:05 PM, Eric Blake wrote:
+On Mon, 23 Sep 2019 13:43:08 +0200
+Auger Eric <eric.auger@redhat.com> wrote:
 
-> Does running this Coccinelle script 2 times in a row add a second
-> ERRP_FUNCTION_BEGIN() line?  We want it to be idempotent (no changes on
-> a second run).  (Admittedly, I did not actually test that yet).  Also, I
-> don't know if this can be tweaked to avoid adding the line to a function
-> with an empty body, maybe:
+> On 9/23/19 9:51 AM, Peter Xu wrote:
+> > On Mon, Sep 23, 2019 at 08:55:51AM +0200, Eric Auger wrote:  
+> >> @@ -1308,9 +1319,9 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
+> >>                                       &address_space_memory);
+> >>              if (container->error) {
+> >>                  memory_listener_unregister(&container->prereg_listener);
+> >> -                ret = container->error;
+> >> -                error_setg(errp,
+> >> -                    "RAM memory listener initialization failed for container");
+> >> +                ret = -1;
+> >> +                error_propagate_prepend(errp, container->error,
+> >> +                    "RAM memory listener initialization failed: ");  
+> > 
+> > (I saw that we've got plenty of prepended prefixes for an error
+> >  messages.  For me I'll disgard quite a few of them because the errors
+> >  will directly be delivered to the top level user, but this might be
+> >  too personal as a comment)  
+> That's true we have a lot of prefix messages.
 > 
->  fn(..., Error **errp, ...)
->  {
-> +    ERRP_FUNCTION_BEGIN();
->      ...
->  }
+> The output message now is:
+> 
+> "vfio 0000:89:00.0: failed
+> to setup container for group 2: memory listener initialization failed:
+> Region smmuv3-iommu-memory-region-0-6: device 01.00.0 requires iommu MAP
+> notifier which is not currently supported"
+> 
+> Alex, any opinion?
 
-Also untested:
+Peter, I don't really understand what the comment is here.  Is it the
+number of prepends on the error message?  I don't really have an
+opinion on that so long as the end message makes sense.  Seems like if
+we're familiar with the error generation it helps to unwind the
+context.  Thanks,
 
- fn(..., Error **errp, ...)
- {
-(
-|
-     ERRP_FUNCTION_BEGIN();
-     ...
-|
-+    ERRP_FUNCTION_BEGIN()
-     ...
-)
- }
-
-
-> Overall, the script makes sense in my reading (but no idea if it
-> actually catches everything we want, or if it missed something).
-
-Having spot-checked 7, it definitely misses cases where it was supposed
-to add ERRP_FUNCTION_BEGIN().
-
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+Alex

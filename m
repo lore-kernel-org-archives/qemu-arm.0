@@ -1,72 +1,72 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3107132wrp;
-        Mon, 23 Sep 2019 13:51:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzL5YXcnR5DGQj27FPQu7Ee+uPXEo5IygKpXk91XjJJWR9QyPZ5s2f2n87H5JpVVwF1Wixu
-X-Received: by 2002:ac8:7b2a:: with SMTP id l10mr2157475qtu.115.1569271883898;
-        Mon, 23 Sep 2019 13:51:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569271883; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3107370wrp;
+        Mon, 23 Sep 2019 13:51:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyPHCjt+u/bHupGv39oPc04aYKYMu/VatfEzQPghA5ftHRT4LT+xur4yHonUf+KaEObfXB2
+X-Received: by 2002:ac8:664d:: with SMTP id j13mr2030322qtp.191.1569271903829;
+        Mon, 23 Sep 2019 13:51:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569271903; cv=none;
         d=google.com; s=arc-20160816;
-        b=xaKNAvvUUg82qWCA4akclRvx9CGEhnZDPzBqBSYDvCC8CG+KH41sFDBCyDL7jCVTCr
-         FJmX1ktgNJIQY8RERbpM8UEx5+FZuelsVSfvxkFJ+V7l7SIeza4S0ZfJ4BxIEqrwmZ+D
-         F/PNZhyTfRpYffVNf3eP4utjK1SLRlX+EfvFy4kZ9PY+RCtG9NAGc89ZmeAO4hXX+GAH
-         Ii6zc7HY8sYE3Ojez2JHk9emgfValpnFyorNM863YMNy1UeblFS2MX0ACnLK4jItgvlP
-         v8Oy05OI4qsSA8fPE7ofcTvmFjghgMUMNJ0b2Wzo4ajp4Vei1d1rwtrvDcsk9iZQcT/A
-         zxAg==
+        b=HZET9ajsKK0nWiq5UL63JQIeeX5xKLz+I2WsYVXMOhCJjQql/SS0nZC5Tk7KzkVbSn
+         ybe0kGlEdmhDjIfU7tTHJ4p9Xr3T9SZ/B3/1WMibXnkKwFeVaSuXmMsBoYoMF1EyYNha
+         vHP0N10PBRHkkkoYoeKAsJVKpY4NdOQyr+XZf0IJMw+h/tMAyJMPzIzJIjH7igFCQZnX
+         OwPqSkgHjU3PlfQRCX6LmmqZim2tEGFDCG7lK4LZ4QyseOPM1p4GivyCLHabKtnftFC/
+         ChZ3p6/JY9m+6IBbDzkc3W39/pFcgcZR+NeXP4hnPJnGe/bWP+42JC0JMeemHWXOo97J
+         gGXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:organization:autocrypt:openpgp:from:references:to
          :subject;
-        bh=Kgt23BlPOGXFp3OPxIrXqcDiYgtQquRS9NAkTcnBNFM=;
-        b=Jz0oAqEUqW5QJ5ZBX7CbU7VwA+I26/Yqpi1SR1mrjUaXI+/kMWmQY1TQNZcoA51+pW
-         SorjgWIryAwSmxUf2VWax2SSKjYELS7RgN+HbeSrPhOpx/0Sk8lgVXmGgYESxjLr3moV
-         10TnuOymYvXvg9jq27RSRqoVDDMF5hjCzzmJg3ATe+v5KuDxp6NXQHbGvx/vjUbvDmGv
-         ccWqsap0TxeZlEmsq7QxmHuPmyYI2n20tTL9xTDDP6z6Z7Besgy1GnUvCppXIhlKI5KU
-         MQLoNa85/jmbajMSLYlnrqYMHbDivtBaGcpEzTlgINcv/PgBmhtr1H2sUayRYQ1aq2ZD
-         8sOA==
+        bh=V9Esm41Ngfx+CBT4BTnJfRf+pgPpn1GxaSE1IX1rGVw=;
+        b=kUSSUPsUo7VqvZZJp7TjcILKHaQlnOy/CD32oN5Vw1Q2liKWclmkfZWg980oCgqCCZ
+         aKXE3vO3btk6wbSoB8UBF97GqRgsUxUBf2LRR6hsqn6vxEfArL4n267q9VfhcyFnfhbW
+         EopPOcmRw5xJFoBz75JhDMNycxAGj0DgSvK/1PxxpNOytJdqdAUv0vl0kT76UC0nRfPD
+         9+e3RhX9cdseQ3BsFg9Dx17kYbEc7zfAl8kWfjzpEL/CeVI7J6fo4TOD1y5tdniiAvMg
+         Fd7bdtGHVBToA/ejD7aMURFkf6YFNqAcVDxB4mGhytM5PZtTxbREKWJeFA3jqCVfZBBG
+         n1Uw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q11si10168054qti.6.2019.09.23.13.51.23
+        by mx.google.com with ESMTPS id 69si9829768qkh.184.2019.09.23.13.51.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 13:51:23 -0700 (PDT)
+        Mon, 23 Sep 2019 13:51:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33936 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33944 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCVIp-0003se-7s
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 16:51:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52120)
+	id 1iCVJ8-0004Iq-CI
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 16:51:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52332)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iCTGD-0005xo-AG
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:40:36 -0400
+ (envelope-from <eblake@redhat.com>) id 1iCTHP-0006Kg-O1
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:41:48 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iCTGB-0004VI-PF
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:40:33 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45504)
+ (envelope-from <eblake@redhat.com>) id 1iCTHM-0004wr-VZ
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:41:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47730)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iCTG9-0004Ui-Ft; Mon, 23 Sep 2019 14:40:30 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ id 1iCTHK-0004wE-SP; Mon, 23 Sep 2019 14:41:43 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 5EFE63091753;
- Mon, 23 Sep 2019 18:40:27 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id BDDDD315C005;
+ Mon, 23 Sep 2019 18:41:41 +0000 (UTC)
 Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9324560C63;
- Mon, 23 Sep 2019 18:39:14 +0000 (UTC)
-Subject: Re: [RFC v2 2/9] qapi/error: add (Error **errp) cleaning APIs
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2E9F4608C2;
+ Mon, 23 Sep 2019 18:41:04 +0000 (UTC)
+Subject: Re: [RFC v2 4/9] hw/core/loader-fit: fix freeing errp in fit_load_fdt
 To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
  qemu-devel@nongnu.org
 References: <20190923161231.22028-1-vsementsov@virtuozzo.com>
- <20190923161231.22028-3-vsementsov@virtuozzo.com>
+ <20190923161231.22028-5-vsementsov@virtuozzo.com>
 From: Eric Blake <eblake@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=eblake@redhat.com; keydata=
@@ -93,18 +93,18 @@ Autocrypt: addr=eblake@redhat.com; keydata=
  Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
  2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
 Organization: Red Hat, Inc.
-Message-ID: <113940a4-3ef1-c7d7-4110-9c55a73ec241@redhat.com>
-Date: Mon, 23 Sep 2019 13:39:13 -0500
+Message-ID: <1aac3fb1-b880-dde0-4568-f5395bc98262@redhat.com>
+Date: Mon, 23 Sep 2019 13:41:03 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190923161231.22028-3-vsementsov@virtuozzo.com>
+In-Reply-To: <20190923161231.22028-5-vsementsov@virtuozzo.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.41]); Mon, 23 Sep 2019 18:40:27 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.41]); Mon, 23 Sep 2019 18:41:42 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 X-Mailman-Approved-At: Mon, 23 Sep 2019 16:50:47 -0400
@@ -152,77 +152,36 @@ Cc: stefanha@redhat.com, codyprime@gmail.com, jan.kiszka@siemens.com,
  jcd@tribudubois.net, pbonzini@redhat.com, stefanb@linux.ibm.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UGuLLqG/jXAv
+X-TUID: S70Qu4Bva/st
 
 On 9/23/19 11:12 AM, Vladimir Sementsov-Ogievskiy wrote:
+> fit_load_fdt forget to zero errp. Fix it.
+> 
 > Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 > ---
-
-A "why" as the commit message body wouldn't hurt.
-
->  include/qapi/error.h | 22 ++++++++++++++++++++++
->  util/error.c         |  6 +++---
->  2 files changed, 25 insertions(+), 3 deletions(-)
+>  hw/core/loader-fit.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/include/qapi/error.h b/include/qapi/error.h
-> index f6f4fa0fac..551385aa91 100644
-> --- a/include/qapi/error.h
-> +++ b/include/qapi/error.h
-> @@ -297,6 +297,28 @@ void warn_report_err(Error *err);
->   */
->  void error_report_err(Error *err);
->  
-> +/*
-> + * Functions to clean Error **errp: call corresponding Error *err cleaning
-> + * function an set pointer to NULL
 
-s/an/and/
+Independent bug fix.  Either we take the (fixed) 2-3 (to rely on the new
+error_free_errp), or you could open-code the assignment of errp=NULL to
+take this on its own, regardless of the hfate of the rest of the series.
 
-> + */
-> +static inline void error_free_errp(Error **errp)
-> +{
-> +    error_free(*errp_in);
+Reviewed-by: Eric Blake <eblake@redhat.com>
 
-Fails to compile.  Did you mean for this to come after 3/9?
-
-> +    *errp_in = NULL;
-> +}
-> +
-> +static inline void error_report_errp(Error **errp)
-> +{
-> +    error_report_err(*errp_in);
-> +    *errp_in = NULL;
-> +}
-> +
-> +static inline void warn_report_errp(Error **errp)
-> +{
-> +    warn_report_err(*errp_in);
-> +    *errp_in = NULL;
-> +}
-> +
->  /*
->   * Convenience function to error_prepend(), warn_report() and free @err.
->   */
-> diff --git a/util/error.c b/util/error.c
-> index d4532ce318..dfba091757 100644
-> --- a/util/error.c
-> +++ b/util/error.c
-> @@ -273,9 +273,9 @@ void error_free(Error *err)
->  
->  void error_free_or_abort(Error **errp)
->  {
-> -    assert(errp && *errp);
-> -    error_free(*errp);
-> -    *errp = NULL;
-> +    assert(errp_in && *errp_in);
-> +    error_free(*errp_in);
-> +    *errp_in = NULL;
-
-Did you mean to use error_free_errp() instead of these last two lines?
-
->  }
->  
->  void error_propagate(Error **dst_errp, Error *local_err)
+> diff --git a/hw/core/loader-fit.c b/hw/core/loader-fit.c
+> index 953b16bc82..fe5bcc6700 100644
+> --- a/hw/core/loader-fit.c
+> +++ b/hw/core/loader-fit.c
+> @@ -200,7 +200,7 @@ static int fit_load_fdt(const struct fit_loader *ldr, const void *itb,
+>      err = fit_image_addr(itb, img_off, "load", &load_addr, errp);
+>      if (err == -ENOENT) {
+>          load_addr = ROUND_UP(kernel_end, 64 * KiB) + (10 * MiB);
+> -        error_free(*errp);
+> +        error_free_errp(errp);
+>      } else if (err) {
+>          error_prepend(errp, "unable to read FDT load address from FIT: ");
+>          ret = err;
 > 
 
 -- 

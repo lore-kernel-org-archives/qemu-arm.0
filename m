@@ -1,73 +1,72 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3107614wrp;
-        Mon, 23 Sep 2019 13:52:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxYPiZpXxY5UEXnWgcSeY3ZGVU6elYuHgxLxR1BSImb4+lKlaY+Sh5WQe3d5Z7reNoKTnSJ
-X-Received: by 2002:ac8:6745:: with SMTP id n5mr2123577qtp.239.1569271923561;
-        Mon, 23 Sep 2019 13:52:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569271923; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3108476wrp;
+        Mon, 23 Sep 2019 13:53:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwzsPMQKhenUjxBtCWDRjHQk5dH6RrsT2V8DG1W0QRZaYVAzyiRgi3Kde+13JnXL3BswFQG
+X-Received: by 2002:a17:906:4c4c:: with SMTP id d12mr1550482ejw.174.1569271991126;
+        Mon, 23 Sep 2019 13:53:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569271991; cv=none;
         d=google.com; s=arc-20160816;
-        b=OOOXFcaHcIDcXDqBFoHNSjV6TcdFN+V3UzW05eU3MtyZofabmjlwqVMHgreypPHgpc
-         K9VfJQJJV4D95Sj55Ns5rCzEnIBtZnwS01iKWskBp7MbkDk2G+iG0Vop5RuXoyyNn75g
-         ZF7AV36pOdX5kxdsQ9gEkZzXCxEf6uHdL0LG6PcA6QYQqLKslr+ZbK9F1ZXjlb1w7Ny5
-         ka32eODoqmLh2RjbImYqopkWkseK7EddimvyXIpuT4U2ZZwlRyXhQjf0NlmZnogZFMcO
-         4K1GB2cQTWXCon9V0h9+Qk6TuwayTItiiBPZqZWTRpRCz6g3hk4vqF5r+190OuK+mK8o
-         MgMA==
+        b=nFyeNWTeooYEfVinhMRS6shsEB6u+p8VN0/m3jWiH0o1/coHBM6L1AQjdXSH/WuD6O
+         xJbg0bMjYFfgJCg977LkvbaCHI3tbeHUJTwbSOM+0MZmjSt5paE7KQlrFLiJS2JORfTZ
+         6m/W6mIpt+1d2hZJCFHvKKP4ZgZ0EiCnD2GmoLkq8RZTfs21pEE68iZCfmlEIW1GqaC/
+         C+HDyAJtyD6G0wIipRSJObnyTJkvwBDddP49FhKSW/QW6WOwSHdCdjnZqZhAPF7oejEi
+         fGqjudf+fqxCPYcVkEu1a8jK6CwiDIQLWC4lN+bdaPwhxIjlBAr1at5cx8w/bJuC7OU8
+         8ZUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:organization:autocrypt:openpgp:from:references:to
          :subject;
-        bh=LS8iHyeyTWzPfwbdy6eq3fsvT54+4YPtW/7Bjrsh478=;
-        b=L1g0A4vYqB7+iHFp8bicnyQmNYbpJ2VUfUARWwK1YQmnFHo449cSvo4DfuigUuqNuK
-         vTT6UD2bPKs6sBjgCPLrYyOHvz0jSFAWmUmxOk7lKgQAcIQM7sQ6zqVyISraPCFCQUNs
-         5KGVE9dS/y9F8wsoG6pXvI09gq3XvPHg08mBOw4hr56j1+OIXq9TrAiKMh9SkYVYmx7n
-         2kHdSPrC70YJ/ygOBgDe07x/nO597t+SdobAMTKMnUMvcX55NbR1uTIj9sb+cPyOT0jQ
-         LUwUEQRpns6o2W6eomToDxZyYRa0jHjQHyBedcHnsRcMzAFWD4fZEQwRWtFK7rsRNYml
-         EHcw==
+        bh=TupTQq32MunduanaoH250L4TlgZfyZ+XszSS7ivbXto=;
+        b=GWKoM/Po1Os21L7lVgilN2whMrfB7b5O9dwBorCsF5LEQo6MZkdSNy0jy4GAbgP7YM
+         6g/bLzzudRD7TVsMG6x4sl8bD+98sbb0iLWVFK46SyDcJdW0EHT2OS6fdorcJQxzRGjO
+         SlCY0K4/JstH+21+c3BHV5T5+6Id0U4Hahr5NeSia1/GM9cE4hsG9xQMYxEj9e15DuDv
+         fvCRXi85mH4msFH+0BarLhkh/QfsYpNMY1Tgh653s4RUKr0Ys23LgH1Bf7CxKt4YGr7X
+         TG7vuk22SR7fZS5fCT32L5KdGy4naZH5E4589vDBSFqOyQCFFaR+NXktbm5vrsYpA7IT
+         qXsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v5si9052943qki.210.2019.09.23.13.52.03
+        by mx.google.com with ESMTPS id e5si7698796ede.150.2019.09.23.13.53.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 13:52:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 23 Sep 2019 13:53:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33954 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33958 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCVJS-0004fg-Lm
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 16:52:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36514)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iCVKX-0004kF-IR
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 16:53:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39088)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iCUbM-00015M-AA
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 16:06:30 -0400
+ (envelope-from <eblake@redhat.com>) id 1iCUzd-00077L-Pp
+ for qemu-devel@nongnu.org; Mon, 23 Sep 2019 16:31:35 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iCUbL-00057z-4s
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 16:06:28 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:51454)
+ (envelope-from <eblake@redhat.com>) id 1iCUzb-0000aJ-S4
+ for qemu-devel@nongnu.org; Mon, 23 Sep 2019 16:31:33 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:3796)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iCUbK-00057Q-TR; Mon, 23 Sep 2019 16:06:27 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ id 1iCUzS-0000Vf-3H; Mon, 23 Sep 2019 16:31:23 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 06205307CDE7;
- Mon, 23 Sep 2019 20:06:24 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id DAE9E3090FC3;
+ Mon, 23 Sep 2019 20:31:19 +0000 (UTC)
 Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 630F819D70;
- Mon, 23 Sep 2019 20:05:50 +0000 (UTC)
-Subject: Re: [RFC v2 6/9] scripts: add coccinelle script to use auto
- propagated errp
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id AD3F0601AF;
+ Mon, 23 Sep 2019 20:30:35 +0000 (UTC)
+Subject: Re: [RFC v2 7/9] Use auto-propagated errp
 To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
  qemu-devel@nongnu.org
 References: <20190923161231.22028-1-vsementsov@virtuozzo.com>
- <20190923161231.22028-7-vsementsov@virtuozzo.com>
+ <20190923161231.22028-8-vsementsov@virtuozzo.com>
 From: Eric Blake <eblake@redhat.com>
 Openpgp: preference=signencrypt
 Autocrypt: addr=eblake@redhat.com; keydata=
@@ -94,32 +93,32 @@ Autocrypt: addr=eblake@redhat.com; keydata=
  Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
  2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
 Organization: Red Hat, Inc.
-Message-ID: <57e97ed0-b1a1-d209-fc23-cf41ec467157@redhat.com>
-Date: Mon, 23 Sep 2019 15:05:49 -0500
+Message-ID: <59c5ccc7-3d4c-9613-fcd3-97642c1394cd@redhat.com>
+Date: Mon, 23 Sep 2019 15:30:31 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190923161231.22028-7-vsementsov@virtuozzo.com>
+In-Reply-To: <20190923161231.22028-8-vsementsov@virtuozzo.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.49]); Mon, 23 Sep 2019 20:06:24 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.43]); Mon, 23 Sep 2019 20:31:20 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
-X-Mailman-Approved-At: Mon, 23 Sep 2019 16:50:47 -0400
-X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Approved-At: Mon, 23 Sep 2019 16:51:49 -0400
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: stefanha@redhat.com, codyprime@gmail.com, jan.kiszka@siemens.com,
  berto@igalia.com, zhang.zhanghailiang@huawei.com, qemu-block@nongnu.org,
  arikalo@wavecomp.com, pasic@linux.ibm.com, hpoussin@reactos.org,
@@ -133,156 +132,258 @@ Cc: stefanha@redhat.com, codyprime@gmail.com, jan.kiszka@siemens.com,
  fam@euphon.net, peter.maydell@linaro.org, sheepdog@lists.wpkg.org,
  david@redhat.com, palmer@sifive.com, thuth@redhat.com, jcmvbkbc@gmail.com,
  den@openvz.org, hare@suse.com, sstabellini@kernel.org, arei.gonglei@huawei.com,
- marcel.apfelbaum@gmail.com, namei.unix@gmail.com, atar4qemu@gmail.com,
- farman@linux.ibm.com, amit@kernel.org, sw@weilnetz.de, groug@kaod.org,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org, peter.chubb@nicta.com.au,
- clg@kaod.org, shorne@gmail.com, qemu-riscv@nongnu.org, cohuck@redhat.com,
- amarkovic@wavecomp.com, aurelien@aurel32.net, pburton@wavecomp.com,
- sagark@eecs.berkeley.edu, jasowang@redhat.com, kraxel@redhat.com,
+ namei.unix@gmail.com, atar4qemu@gmail.com, farman@linux.ibm.com,
+ amit@kernel.org, sw@weilnetz.de, groug@kaod.org, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, peter.chubb@nicta.com.au, clg@kaod.org, shorne@gmail.com,
+ qemu-riscv@nongnu.org, cohuck@redhat.com, amarkovic@wavecomp.com,
+ aurelien@aurel32.net, pburton@wavecomp.com, sagark@eecs.berkeley.edu,
+ jasowang@redhat.com, kraxel@redhat.com, edgar.iglesias@gmail.com,
  gxt@mprc.pku.edu.cn, ari@tuxera.com, quintela@redhat.com,
  mdroth@linux.vnet.ibm.com, lersek@redhat.com, borntraeger@de.ibm.com,
  antonynpavlov@gmail.com, dillaman@redhat.com, joel@jms.id.au,
- xen-devel@lists.xenproject.org, integration@gluster.org, balrogg@gmail.com,
- rjones@redhat.com, Andrew.Baumann@microsoft.com, mreitz@redhat.com,
- walling@linux.ibm.com, mst@redhat.com, mark.cave-ayland@ilande.co.uk,
- v.maffione@gmail.com, marex@denx.de, armbru@redhat.com,
- marcandre.lureau@redhat.com, alistair@alistair23.me, paul.durrant@citrix.com,
- pavel.dovgaluk@ispras.ru, g.lettieri@iet.unipi.it, rizzo@iet.unipi.it,
- david@gibson.dropbear.id.au, akrowiak@linux.ibm.com, berrange@redhat.com,
- xiaoguangrong.eric@gmail.com, pmorel@linux.ibm.com, wencongyang2@huawei.com,
- jcd@tribudubois.net, pbonzini@redhat.com, stefanb@linux.ibm.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /rdoXXEXd6lk
+ xen-devel@lists.xenproject.org, integration@gluster.org, rjones@redhat.com,
+ Andrew.Baumann@microsoft.com, mreitz@redhat.com, walling@linux.ibm.com,
+ mst@redhat.com, mark.cave-ayland@ilande.co.uk, v.maffione@gmail.com,
+ marex@denx.de, armbru@redhat.com, marcandre.lureau@redhat.com,
+ alistair@alistair23.me, paul.durrant@citrix.com, pavel.dovgaluk@ispras.ru,
+ g.lettieri@iet.unipi.it, rizzo@iet.unipi.it, david@gibson.dropbear.id.au,
+ akrowiak@linux.ibm.com, berrange@redhat.com, xiaoguangrong.eric@gmail.com,
+ pmorel@linux.ibm.com, wencongyang2@huawei.com, jcd@tribudubois.net,
+ pbonzini@redhat.com, stefanb@linux.ibm.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ifpzwbDJidKa
 
 On 9/23/19 11:12 AM, Vladimir Sementsov-Ogievskiy wrote:
+> This commit is generated by command
+> 
+> git grep -l 'Error \*\*errp' | while read f; \
+> do spatch --sp-file \
+> scripts/coccinelle/auto-propagated-errp.cocci --in-place $f; done
+> 
+
+As mentioned in your cover letter, this fails syntax-check and
+compilation without squashing in some followups; if we can't improve the
+.cocci script to do it automatically, then manually squashing in
+cleanups (and documenting what types of cleanups they were) is fine.
+(The goal for a mechanical patch like this is to make it easy enough to
+automate downstream, even where the file contents are changed, but where
+the process for creating those changes are the same).
+
 > Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 > ---
->  scripts/coccinelle/auto-propagated-errp.cocci | 82 +++++++++++++++++++
->  1 file changed, 82 insertions(+)
->  create mode 100644 scripts/coccinelle/auto-propagated-errp.cocci
-> 
-> diff --git a/scripts/coccinelle/auto-propagated-errp.cocci b/scripts/coccinelle/auto-propagated-errp.cocci
-> new file mode 100644
-> index 0000000000..1a3f006f0b
-> --- /dev/null
-> +++ b/scripts/coccinelle/auto-propagated-errp.cocci
-> @@ -0,0 +1,82 @@
-> +@@
-> +identifier fn;
-> +identifier local_err;
-> +@@
-> +
-> + fn(..., Error **errp)
-> + {
-> ++    ERRP_FUNCTION_BEGIN();
-> + }
 
-This doesn't catch functions where Error **errp is not the last
-parameter.  Some examples (some of which may need independent tweaking
-in their own right for being inconsistent, although we DO want errp to
-appear before any 'format, ...' arguments):
+Spot-checking
 
-block/ssh.c:sftp_error_setg(Error **errp, BDRVSSHState *s, const char
-*fs, ...)
-exec.c:static void ram_block_add(RAMBlock *new_block, Error **errp, bool
-shared)
+>  block/io.c                          |  11 +-
 
-Does running this Coccinelle script 2 times in a row add a second
-ERRP_FUNCTION_BEGIN() line?  We want it to be idempotent (no changes on
-a second run).  (Admittedly, I did not actually test that yet).  Also, I
-don't know if this can be tweaked to avoid adding the line to a function
-with an empty body, maybe:
+>  block/nbd.c                         |  44 +++---
 
- fn(..., Error **errp, ...)
- {
-+    ERRP_FUNCTION_BEGIN();
-     ...
- }
+>  qapi/qapi-visit-core.c              |  53 ++-----
 
-to only add it to a function that already has a body (thanks to the ...)
-- but I'm fuzzy enough on Coccinelle that I may be saying something
-totally wrong.
+just to see how it looks.
 
-> +
-> +@rule1@
-> +identifier fn;
-> +identifier local_err;
-> +@@
-> +
-> + fn(..., Error **errp)
-> + {
-> +     <...
-> +-    Error *local_err = NULL;
-> +     ...>
-> + }
-> +
-> +@@
-> +identifier rule1.fn;
-> +identifier rule1.local_err;
-> +identifier out;
-> +@@
-> +
-> + fn(...)
-> + {
-> +     <...
-> +-    goto out;
-> ++    return;
-> +     ...>
-> +- out:
-> +-    error_propagate(errp, local_err);
-> + }
-> +
-> +@@
-> +identifier rule1.fn;
-> +identifier rule1.local_err;
-> +@@
-> +
-> + fn(...)
-> + {
-> +     <...
-> +(
-> +-    error_free(local_err);
-> +-    local_err = NULL;
-> ++    error_free_errp(errp);
-> +|
-> +-    error_free(local_err);
-> ++    error_free_errp(errp);
-> +|
-> +-    error_report_err(local_err);
-> ++    error_report_errp(errp);
-> +|
-> +-    warn_report_err(local_err);
-> ++    warn_report_errp(errp);
-> +|
-> +-    error_propagate(errp, local_err);
-> +)
-> +     ...>
-> + }
-> +
-> +@@
-> +identifier rule1.fn;
-> +identifier rule1.local_err;
-> +@@
-> +
-> + fn(...)
-> + {
-> +     <...
-> +(
-> +-    &local_err
-> ++    errp
-> +|
-> +-    local_err
-> ++    *errp
-> +)
-> +     ...>
-> + }
-> 
+> +++ b/block/io.c
+> @@ -136,7 +136,6 @@ static void bdrv_merge_limits(BlockLimits *dst, const BlockLimits *src)
+>  void bdrv_refresh_limits(BlockDriverState *bs, Error **errp)
+>  {
+>      BlockDriver *drv = bs->drv;
+> -    Error *local_err = NULL;
+>  
 
-Overall, the script makes sense in my reading (but no idea if it
-actually catches everything we want, or if it missed something).  At any
-rate, once patch 7 is split into more manageable chunks, we can
-definitely spot-check results to make sure they all look reasonable.
+Umm, no insertion of ERR_FUNCTION_BEGIN().  Oops.
+
+>      memset(&bs->bl, 0, sizeof(bs->bl));
+>  
+> @@ -151,9 +150,8 @@ void bdrv_refresh_limits(BlockDriverState *bs, Error **errp)
+>  
+>      /* Take some limits from the children as a default */
+>      if (bs->file) {
+> -        bdrv_refresh_limits(bs->file->bs, &local_err);
+> -        if (local_err) {
+> -            error_propagate(errp, local_err);
+> +        bdrv_refresh_limits(bs->file->bs, errp);
+> +        if (*errp) {
+>              return;
+>          }
+>          bdrv_merge_limits(&bs->bl, &bs->file->bs->bl);
+> @@ -166,9 +164,8 @@ void bdrv_refresh_limits(BlockDriverState *bs, Error **errp)
+>      }
+>  
+>      if (bs->backing) {
+> -        bdrv_refresh_limits(bs->backing->bs, &local_err);
+> -        if (local_err) {
+> -            error_propagate(errp, local_err);
+> +        bdrv_refresh_limits(bs->backing->bs, errp);
+> +        if (*errp) {
+>              return;
+
+Rest of the changes in this file are good if the macro gets added correctly.
+
+>          }
+>          bdrv_merge_limits(&bs->bl, &bs->backing->bs->bl);
+
+> +++ b/block/nbd.c
+> @@ -808,7 +808,6 @@ static int nbd_co_receive_cmdread_reply(BDRVNBDState *s, uint64_t handle,
+>      NBDReplyChunkIter iter;
+>      NBDReply reply;
+>      void *payload = NULL;
+> -    Error *local_err = NULL;
+
+Recurring problem of not inserting the macro as expected.
+
+>  
+>      NBD_FOREACH_REPLY_CHUNK(s, iter, handle, s->info.structured_reply,
+>                              qiov, &reply, &payload)
+> @@ -827,20 +826,20 @@ static int nbd_co_receive_cmdread_reply(BDRVNBDState *s, uint64_t handle,
+>              break;
+>          case NBD_REPLY_TYPE_OFFSET_HOLE:
+>              ret = nbd_parse_offset_hole_payload(s, &reply.structured, payload,
+> -                                                offset, qiov, &local_err);
+> +                                                offset, qiov, errp);
+>              if (ret < 0) {
+>                  nbd_channel_error(s, ret);
+> -                nbd_iter_channel_error(&iter, ret, &local_err);
+> +                nbd_iter_channel_error(&iter, ret, errp);
+>              }
+>              break;
+>          default:
+>              if (!nbd_reply_type_is_error(chunk->type)) {
+>                  /* not allowed reply type */
+>                  nbd_channel_error(s, -EINVAL);
+> -                error_setg(&local_err,
+> +                error_setg(errp,
+>                             "Unexpected reply type: %d (%s) for CMD_READ",
+
+Could almost fold these lines (but I'm not asking you to; keeping this
+patch as mechanical as possible is fine).
+
+>                             chunk->type, nbd_reply_type_lookup(chunk->type));
+> -                nbd_iter_channel_error(&iter, -EINVAL, &local_err);
+> +                nbd_iter_channel_error(&iter, -EINVAL, errp);
+>              }
+>          }
+>  
+> @@ -861,7 +860,6 @@ static int nbd_co_receive_blockstatus_reply(BDRVNBDState *s,
+>      NBDReplyChunkIter iter;
+>      NBDReply reply;
+>      void *payload = NULL;
+> -    Error *local_err = NULL;
+>      bool received = false;
+
+Oops on the macro.
+
+> @@ -1174,15 +1172,13 @@ static QIOChannelSocket *nbd_establish_connection(SocketAddress *saddr,
+>                                                    Error **errp)
+>  {
+>      QIOChannelSocket *sioc;
+> -    Error *local_err = NULL;
+>  
+>      sioc = qio_channel_socket_new();
+>      qio_channel_set_name(QIO_CHANNEL(sioc), "nbd-client");
+>  
+> -    qio_channel_socket_connect_sync(sioc, saddr, &local_err);
+> -    if (local_err) {
+> +    qio_channel_socket_connect_sync(sioc, saddr, errp);
+> +    if (*errp) {
+>          object_unref(OBJECT(sioc));
+> -        error_propagate(errp, local_err);
+>          return NULL;
+
+But getting rid of error_propagate() is nice.
+
+Did you grep for instances of error_propagate() after your mechanical
+patch, to see what else the Coccinelle script might have missed?
+
+
+> +++ b/qapi/opts-visitor.c
+> @@ -275,6 +275,7 @@ opts_next_list(Visitor *v, GenericList *tail, size_t size)
+>  static void
+>  opts_check_list(Visitor *v, Error **errp)
+>  {
+> +	ERRP_FUNCTION_BEGIN();
+>      /*
+>       * Unvisited list elements will be reported later when checking
+>       * whether unvisited struct members remain.
+
+Here the macro got added, but with no obvious benefit later on (although
+we also argued that adding it even when it makes no difference is not
+bad, if that's easier to automate for style checking).
+
+> diff --git a/qapi/qapi-dealloc-visitor.c b/qapi/qapi-dealloc-visitor.c
+> index d192724b13..3ee4c7a2e7 100644
+> --- a/qapi/qapi-dealloc-visitor.c
+> +++ b/qapi/qapi-dealloc-visitor.c
+> @@ -25,6 +25,7 @@ struct QapiDeallocVisitor
+>  static void qapi_dealloc_start_struct(Visitor *v, const char *name, void **obj,
+>                                        size_t unused, Error **errp)
+>  {
+> +	ERRP_FUNCTION_BEGIN();
+>  }
+
+Here's an example where exempting empty functions would be nicer.
+
+
+> +++ b/qapi/qapi-visit-core.c
+> @@ -39,18 +39,15 @@ void visit_free(Visitor *v)
+>  void visit_start_struct(Visitor *v, const char *name, void **obj,
+>                          size_t size, Error **errp)
+>  {
+> -    Error *err = NULL;
+> -
+
+Oops, macro not added.
+
+>      trace_visit_start_struct(v, name, obj, size);
+>      if (obj) {
+>          assert(size);
+>          assert(!(v->type & VISITOR_OUTPUT) || *obj);
+>      }
+> -    v->start_struct(v, name, obj, size, &err);
+> +    v->start_struct(v, name, obj, size, errp);
+>      if (obj && (v->type & VISITOR_INPUT)) {
+> -        assert(!err != !*obj);
+> +        assert(!*errp != !*obj);
+>      }
+> -    error_propagate(errp, err);
+>  }
+
+But the cleanup is sane, once the macro is present.
+
+> @@ -152,12 +143,10 @@ void visit_type_int(Visitor *v, const char *name, int64_t *obj, Error **errp)
+>  static void visit_type_uintN(Visitor *v, uint64_t *obj, const char *name,
+>                               uint64_t max, const char *type, Error **errp)
+>  {
+> -    Error *err = NULL;
+>      uint64_t value = *obj;
+>  
+> -    v->type_uint64(v, name, &value, &err);
+> -    if (err) {
+> -        error_propagate(errp, err);
+> +    v->type_uint64(v, name, &value, errp);
+> +    if (*errp) {
+>      } else if (value > max) {
+>          error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+>                     name ? name : "null", type);
+
+Results in an empty if which looks funny.  This one could be a manual
+touchup later.
+
+> @@ -211,12 +200,10 @@ static void visit_type_intN(Visitor *v, int64_t *obj, const char *name,
+>                              int64_t min, int64_t max, const char *type,
+>                              Error **errp)
+>  {
+> -    Error *err = NULL;
+>      int64_t value = *obj;
+>  
+> -    v->type_int64(v, name, &value, &err);
+> -    if (err) {
+> -        error_propagate(errp, err);
+> +    v->type_int64(v, name, &value, errp);
+> +    if (*errp) {
+>      } else if (value < min || value > max) {
+
+and again
 
 -- 
 Eric Blake, Principal Software Engineer

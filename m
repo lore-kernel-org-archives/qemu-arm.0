@@ -1,85 +1,80 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2285707wrp;
-        Sun, 22 Sep 2019 22:44:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwx/s4xf5D4PjSSJ3JeTvspX3PcDcW1knUZ8mgZuypykac3VLu+9egkq08n+Mw7SM+/djHT
-X-Received: by 2002:ac8:550d:: with SMTP id j13mr15984747qtq.338.1569217471254;
-        Sun, 22 Sep 2019 22:44:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569217471; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2332409wrp;
+        Sun, 22 Sep 2019 23:56:25 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxWIeHXTj2UHi6IUNLrZEgKyyRK3AZ9MbZt1YPcRlnw1/B0hD9r/mn6BZnEhiBFbQ1Dr3+p
+X-Received: by 2002:ac8:1e1a:: with SMTP id n26mr15920415qtl.357.1569221785288;
+        Sun, 22 Sep 2019 23:56:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569221785; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mz3QweovKv9mVLKP74UNVdGg2tXbNSHSqRYHdskaDKU+P5Nd1Ac7DEK6Bjqs5UNem2
-         PrctzuRWYLdn082aZOzuGupP3oGnaDMPJYnn8vSTZBEghvRRQBviVeS9heEBsPgoQtxs
-         4TaS+GNO7VU4QvFTaF8wgCassQX/gcF7gSnzd2WN7eCl+Q8p8TiSX1AmgXMSsF9iszX8
-         YD4964tjmbOK+uoYfhsg02kONUcvPRuoiq6klLDWQsGv0TP6IFO9bzhrSNXIfhmnG24D
-         66n6/a0fC7SWd+njUL04KW+5Okb+5tYGB33zrwzdp/pqX95BOYgTRJy8Oov4lIZI7/WT
-         d45g==
+        b=P6Rw6PmkdwweYAHAoFrAEx99Pq4U2F0k1IfJByhersUy4iyiJUVMr6eTpWDGjbD1rJ
+         v1Vumn73bdTtLr5qqbyRgP06qwKYjGflflrWBo0cbSMcGVYP/V6is/I4eHYHLHROVqQs
+         bC8aurUOVR/ze44QdXiVfbCFAkzfEcmupcnXZV5h4F9HRa3hs6DVNHD6FE+uFVo67/Uf
+         nXUcvuMW0ws6Wnm4deLZl9PUZdTEyGuLayBciPPn4xHAC96PO4viJPvMSGlFxEAe2wGh
+         ZLT0U/UFhij6UC0k/sfwd4xnSUF3LAa7R7cxUkEXg6P7NASVABpx7cenoSG51F+D63ay
+         ZiYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=en0csYdDVQpbj7LHVpfTB/OAKwzqkTH9PBRvCslsKDA=;
-        b=WtqEovfLZXS6Pdh1N+GSfebGQTiPs653VAloPhxIfQMXF9JN9QJnqOUwleebQYqnDr
-         wS4K/1j3IXeIWqL6ap47GDTEV4gBiLwdhHqQ3o4Mvcmvadn7uWUrk4s0Aimxby+o+Gd0
-         nV/pc9DUNN1BOZAF+k1jns30UIVIm1AuMbM1YoQBpGRpcrLPAOk8oOXd2X/FuBDMDADS
-         5H7qKdJ21sKb/QY+mzORKUQYCru45FL9ibykSy5jLVPiN2q8lFpaxfuSpE6NraQM4IuL
-         tuHINNBDYdHOm0Axw07hE0yfJe5OF9Ncw33GW1BCrUs5iy7FWRG4w02avwHeklF7/qM3
-         i00A==
+         :mime-version:message-id:date:subject:to:from;
+        bh=sn8O50B6Yo6ONDkJFpc4Sl5gNUNWb7U8Ypz2Lcq5uJ4=;
+        b=zGc0WRgZZf4Ouq41Hsu2VqVZRVO1P/MoC7jqFeHZHXQ/Y1FQ5MH8UuZrPygVYoGD3t
+         GlAun2XS5yEme3MxXb4QIbr9qNBO1O1I0SuXZ+2BD5zcEpH2c9uGfcLy8K6H6hNyDznz
+         ESeNSP/XdVbJbf6R6bHkHoSrsWcCLCtWqBUOW0wAXDRd9JMjxfj8Hc/hv/ahrIspwebx
+         TqvH8PGv6K2qiZSHRYZ2ynk1/qM0Y2/cqx+nEhxDUdkZ8L0+XFi1ZKcPqbgzbM7G/7XS
+         uz4vJya9F5l6ENzkCeM4lhjyDEgdkTbzlNtVPUDHx5oFO6yOuSFAUUUzNiWFNVqj237K
+         8qAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 14si8247811qkv.230.2019.09.22.22.44.31
+        by mx.google.com with ESMTPS id x47si7847302qvh.216.2019.09.22.23.56.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Sep 2019 22:44:31 -0700 (PDT)
+        Sun, 22 Sep 2019 23:56:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52344 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52744 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCH9C-00070s-LX
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 01:44:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49769)
+	id 1iCIGl-0006CF-UQ
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 02:56:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32840)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <clg@kaod.org>) id 1iCH92-00070U-D7
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 01:44:21 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1iCIGa-0006C3-Lp
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 02:56:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <clg@kaod.org>) id 1iCH91-0003vu-71
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 01:44:20 -0400
-Received: from 7.mo7.mail-out.ovh.net ([46.105.43.131]:40110)
+ (envelope-from <eric.auger@redhat.com>) id 1iCIGY-0006no-1T
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 02:56:11 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39348)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <clg@kaod.org>) id 1iCH91-0003uh-0t
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 01:44:19 -0400
-Received: from player794.ha.ovh.net (unknown [10.109.159.7])
- by mo7.mail-out.ovh.net (Postfix) with ESMTP id EB85812F624
- for <qemu-arm@nongnu.org>; Mon, 23 Sep 2019 07:44:16 +0200 (CEST)
-Received: from kaod.org (lfbn-1-2240-157.w90-76.abo.wanadoo.fr [90.76.60.157])
- (Authenticated sender: clg@kaod.org)
- by player794.ha.ovh.net (Postfix) with ESMTPSA id E0DB0A1041F6;
- Mon, 23 Sep 2019 05:44:11 +0000 (UTC)
-Subject: Re: [PATCH 03/21] hw: aspeed_scu: Add AST2600 support
-To: Joel Stanley <joel@jms.id.au>
-References: <20190919055002.6729-1-clg@kaod.org>
- <20190919055002.6729-4-clg@kaod.org>
- <139c3f7e-465e-4efb-b6c7-213dcd2ec6b7@www.fastmail.com>
- <2a267d68-2463-ae0d-00d0-d9a33ba845b2@kaod.org>
- <CACPK8Xd2aR9tJKfVjNn7ZCnNw1XK4X7A+fe-5Z62N_HyCOiAWQ@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <3d4e0b9c-f658-bebb-e0f5-6c513c5434cf@kaod.org>
-Date: Mon, 23 Sep 2019 07:44:11 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.0
+ (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
+ id 1iCIGX-0006nE-Rw; Mon, 23 Sep 2019 02:56:09 -0400
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 73507C049E32;
+ Mon, 23 Sep 2019 06:56:08 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-116-30.ams2.redhat.com [10.36.116.30])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 59CD25D713;
+ Mon, 23 Sep 2019 06:55:54 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, pbonzini@redhat.com,
+ alex.williamson@redhat.com, peterx@redhat.com, aik@ozlabs.ru,
+ david@gibson.dropbear.id.au
+Subject: [PATCH v3 0/2] Allow memory_region_register_iommu_notifier() to fail
+Date: Mon, 23 Sep 2019 08:55:50 +0200
+Message-Id: <20190923065552.10602-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CACPK8Xd2aR9tJKfVjNn7ZCnNw1XK4X7A+fe-5Z62N_HyCOiAWQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Ovh-Tracer-Id: 6606780653786532672
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedufedrvdejgddutdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddm
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.31]); Mon, 23 Sep 2019 06:56:08 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 46.105.43.131
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -91,68 +86,74 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: mst@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BE7foEkDs2mJ
+X-TUID: 3ew4blCFOyHw
 
-On 21/09/2019 06:37, Joel Stanley wrote:
-> On Fri, 20 Sep 2019 at 15:15, C=C3=A9dric Le Goater <clg@kaod.org> wrot=
-e:
->>
->> On 20/09/2019 06:10, Andrew Jeffery wrote:
->>>
->>>
->>> On Thu, 19 Sep 2019, at 15:19, C=C3=A9dric Le Goater wrote:
->>>> From: Joel Stanley <joel@jms.id.au>
->>>>
->>>> The SCU controller on the AST2600 SoC has extra registers. Increase
->>>> the number of regs of the model and introduce a new field in the cla=
-ss
->>>> to customize the MemoryRegion operations depending on the SoC model.
->>>>
->>>> +    switch (reg) {
->>>> +    case AST2600_PROT_KEY:
->>>> +        s->regs[reg] =3D (data =3D=3D ASPEED_SCU_PROT_KEY) ? 1 : 0;
->>>> +        return;
->>>> +    case AST2600_HW_STRAP1:
->>>> +    case AST2600_HW_STRAP2:
->>>> +        if (s->regs[reg + 2]) {
->>>> +            return;
->>>> +        }
->>>> +        /* fall through */
->>>> +    case AST2600_SYS_RST_CTRL:
->>>> +    case AST2600_SYS_RST_CTRL2:
->>>> +        /* W1S (Write 1 to set) registers */
->>>> +        s->regs[reg] |=3D data;
->>>> +        return;
->>>> +    case AST2600_SYS_RST_CTRL_CLR:
->>>> +    case AST2600_SYS_RST_CTRL2_CLR:
->>>> +    case AST2600_HW_STRAP1_CLR:
->>>> +    case AST2600_HW_STRAP2_CLR:
->>>> +        /* W1C (Write 1 to clear) registers */
->>>> +        s->regs[reg] &=3D ~data;
->>>
->>> This clear should respect the protection register for each strap case=
-.
->>
->> Joel,
->>
->> You are the expert ! :)
->=20
-> Someone could implement this if they wanted to. In the future it might
-> be useful to create a detailed model for the OTP and secure boot
-> behavior, and that can affect the strapping.
->=20
-> However it is not critical for running guests under qemu. I think we
-> should defer it until there is some guest code that needs the detailed
-> behavior.
+This series allows the memory_region_register_iommu_notifier()
+to fail. As of now, when a MAP notifier is attempted to be
+registered along with SMMUv3 or AMD IOMMU, we exit in the IOMMU
+MR notify_flag_changed() callback.
 
-ok. It think we could trap the invalid writes with a simple mask
-array at the beginning of the write op .
+In case of VFIO assigned device hotplug, this could be handled
+more nicely directly within the VFIO code, simply rejecting
+the hotplug without exiting. This is what the series achieves
+by handling the memory_region_register_iommu_notifier() returned
+value and Error object.
 
-Thanks,
+To propagate errors collected during vfio_listener_region_add()
+we now store the error handle inside the VFIO container instead
+of a returned value.
 
-C.=20
+The message now is:
+(QEMU) device_add id=3Dhot0 driver=3Dvfio-pci host=3D0000:89:00.0 bus=3Dp=
+cie.1
+{"error": {"class": "GenericError", "desc": "vfio 0000:89:00.0: failed
+to setup container for group 2: memory listener initialization failed:
+Region smmuv3-iommu-memory-region-0-6: device 01.00.0 requires iommu MAP
+notifier which is not currently supported"}}
+
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu/tree/v4.1.0_register_iommu_notifier_fail_v=
+3
+
+History:
+
+v2 -> v3:
+- also pass an Error handle (suggested by Peter)
+- VFIO container error becomes and Error handle
+
+v1 -> v2:
+- Intel IOMMU now handles the problem differently with machine init done
+  notifier and machine hotplug allowed hook.
+- use assert(!ret)
+- message rewording in SMMUv3
+
+Follow-up of "VFIO/SMMUv3: Fail on VFIO/HW nested paging detection"
+https://patchew.org/QEMU/20190829090141.21821-1-eric.auger@redhat.com/
+
+Eric Auger (2):
+  vfio: Turn the container error into an Error handle
+  memory: allow memory_region_register_iommu_notifier() to fail
+
+ exec.c                        | 10 ++++--
+ hw/arm/smmuv3.c               | 18 +++++-----
+ hw/i386/amd_iommu.c           | 17 +++++----
+ hw/i386/intel_iommu.c         |  8 +++--
+ hw/ppc/spapr_iommu.c          |  8 +++--
+ hw/vfio/common.c              | 67 +++++++++++++++++++++--------------
+ hw/vfio/spapr.c               |  4 ++-
+ hw/virtio/vhost.c             |  9 +++--
+ include/exec/memory.h         | 21 ++++++++---
+ include/hw/vfio/vfio-common.h |  2 +-
+ memory.c                      | 31 ++++++++++------
+ 11 files changed, 126 insertions(+), 69 deletions(-)
+
+--=20
+2.20.1
 

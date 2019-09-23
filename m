@@ -1,133 +1,101 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2959722wrp;
-        Mon, 23 Sep 2019 11:09:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqynDNtbxx1P/nwALDfjhruDJETkuPAipSMK91/IsjGcu6iXC9JOJo5x02nbj1tR4wcfTaYA
-X-Received: by 2002:a50:eb8b:: with SMTP id y11mr1452867edr.200.1569262182308;
-        Mon, 23 Sep 2019 11:09:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569262182; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2978629wrp;
+        Mon, 23 Sep 2019 11:27:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqylFEK8vjzzf4KGjgXIXF8jC2kw5ie2RDCRCpOI8hcuDDsHpnHmF4+QpbpD72SvGVC/6UgQ
+X-Received: by 2002:ac8:5344:: with SMTP id d4mr1470967qto.258.1569263270899;
+        Mon, 23 Sep 2019 11:27:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569263270; cv=none;
         d=google.com; s=arc-20160816;
-        b=0OZTfIRrYA0mZkzeXg6jR0Xy2vmINrMhKkCwoVz5nPprTQIiTTC3BZvuq/iXKjU1y0
-         UIFoGBXvSKMmTsFnuJ/fNroQpDEZhJK95/KilUWshx9rVzkUgrifNax6yqjyFzwI/DE0
-         W9gUyEHOu45pnotUSSmbn/5gJraX9YtmhTSm0XLO7EtpFuLT9/99RJWXzImopNMY8iMF
-         zkFi9zA+16YDZpu/608GYuKHQutvPnBlyCvXLXW0yhcFuOIMzTHbtMGoR8LaT+f74PlV
-         o/rPmPJnbu08cGoprG+AwA/h3MJIQ+UvQi/83R4m0/Q7xDFs/PTzrO8roYoDm7S5P5CX
-         OmLw==
+        b=cbitfKKs8ewoYTZ229C0Z1+enw+op98z1/NafyWHcZY1V7Sg2axnwOv0S1A2+XOdhd
+         1JqYevrfSzNvYUsnZXp88XLG5vui5p+1erX5yo3IXfBoT2TwpxSN2OcDPkmDxPngMGCU
+         ZfP/4c7MlDtr1HfD55Bo6pZBXk4I9JR7YBI72Ix8fx7FQ+QYeP4lbkbWCpwRZkjOBhQM
+         VobHjddUZZboy7xubmJ8bP5QyWeK9yZ31o9zstBPJ8sS4SJmcwCEpYpLd8x6D1ZDw7K9
+         30xJcTT4u/WOaetuszFAJjHrQtyJcb6oFmk7bb3tlD2mD3aSmpBtR7j3AKUajpItiIhC
+         o8gg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:openpgp:from:references:to
-         :subject;
-        bh=VCOZyqpSPaEEJ5GJn7eduTsoOddqEr+L+Sl9YUWHnB8=;
-        b=UwV/zoP7xA8BBoLPPlLN+p5DYcFMraT0Kw0rGqM+URbyuzPRGy0antOEsn5WhSXnLo
-         X0L4EHLuRz0F4tIoKGz/PM4cSsF1qFGTGwGnuAbrD7Fw6ZCS0FqptJkjabzFw5UHDgOj
-         FW7vxc6fF+Xhw/ocKOh8k9E+YmYGfV1el9jN+ApSnLkvGhkva3paMqNs38yXHEtUvHFt
-         fbg3re6FKJQQvsljeO+X2aCLdE8K88QIbS6b/sjxR9gIzzRTt/XYTlwKGjBanZq4aWA1
-         TBaz3LT1N+G6l6mdGbPHiGkDRQhuiMlDve2AmzVucLqHw0W2Q5NGav9biXSXkdM8E4rw
-         5P0w==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=kE6GTsnxEsnSOYqZoVxiBRcQ9jMpOE4rFqMDVVkm1lg=;
+        b=lfFdiFiq6a5hwLcsHDxUizziuI1mi7sRrMQiEY3mAvfAQ1N5zPsNsDNUECJ+MBR02r
+         nDND6QUibHtcMVptaDDzDYUC+nFHkK75/Q4m5VG1vYWMf15v5r7REqtVAKY2VjtBXx2G
+         DI201OFw+KqSPTYOXOwhKAg+DBVihlU+jYNQVWzOfJPmwpa9/DDA3YEVMvvkIEsEI+Fi
+         jxBKn91fKv5Cryh9bXdrr8pjoSIxrPBDDpVvz3EKyPXrSbYMvm3JcZrXgHln/CkT6dHe
+         SZAXvJnIQMbI8fvkAgjeCAC3UUVCwS8c1kY5stKgJcE7aqCWVzCLxDved9CUygC3Grvy
+         DNFA==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=UCqEsrfy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m55si7057754edc.17.2019.09.23.11.09.42
+        by mx.google.com with ESMTPS id z37si9409996qtz.50.2019.09.23.11.27.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 23 Sep 2019 11:09:42 -0700 (PDT)
+        Mon, 23 Sep 2019 11:27:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=UCqEsrfy;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60536 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60782 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCSmL-00073l-4X
-	for alex.bennee@linaro.org; Mon, 23 Sep 2019 14:09:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46917)
+	id 1iCT3u-0004h4-84
+	for alex.bennee@linaro.org; Mon, 23 Sep 2019 14:27:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49657)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <thuth@redhat.com>) id 1iCSm0-00073Z-Vr
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:09:22 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iCT3Y-0004go-NS
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:27:29 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1iCSly-00083Q-Pg
- for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:09:20 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42654)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1iCSly-00083E-IJ; Mon, 23 Sep 2019 14:09:18 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 628E03175281;
- Mon, 23 Sep 2019 18:09:17 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-120.ams2.redhat.com [10.36.116.120])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4612919D70;
- Mon, 23 Sep 2019 18:09:09 +0000 (UTC)
-Subject: Re: [PATCH 2/4] target/arm: Move cortex-m related functions to new
- file v7m.c
-To: Auger Eric <eric.auger@redhat.com>, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20190921150420.30743-1-thuth@redhat.com>
- <20190921150420.30743-3-thuth@redhat.com>
- <bd6efd14-9200-98e2-4f76-dda101f85274@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
- mQINBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
- yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
- 4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
- tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
- 0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
- O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
- 0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
- gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
- 3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
- zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABtB5UaG9tYXMgSHV0
- aCA8dGh1dGhAcmVkaGF0LmNvbT6JAjgEEwECACIFAlVgX6oCGwMGCwkIBwMCBhUIAgkKCwQW
- AgMBAh4BAheAAAoJEC7Z13T+cC21EbIP/ii9cvT2HHGbFRl8HqGT6+7Wkb+XLMqJBMAIGiQK
- QIP3xk1HPTsLfVG0ao4hy/oYkGNOP8+ubLnZen6Yq3zAFiMhQ44lvgigDYJo3Ve59gfe99KX
- EbtB+X95ODARkq0McR6OAsPNJ7gpEUzfkQUUJTXRDQXfG/FX303Gvk+YU0spm2tsIKPl6AmV
- 1CegDljzjycyfJbk418MQmMu2T82kjrkEofUO2a24ed3VGC0/Uz//XCR2ZTo+vBoBUQl41BD
- eFFtoCSrzo3yPFS+w5fkH9NT8ChdpSlbNS32NhYQhJtr9zjWyFRf0Zk+T/1P7ECn6gTEkp5k
- ofFIA4MFBc/fXbaDRtBmPB0N9pqTFApIUI4vuFPPO0JDrII9dLwZ6lO9EKiwuVlvr1wwzsgq
- zJTPBU3qHaUO4d/8G+gD7AL/6T4zi8Jo/GmjBsnYaTzbm94lf0CjXjsOX3seMhaE6WAZOQQG
- tZHAO1kAPWpaxne+wtgMKthyPLNwelLf+xzGvrIKvLX6QuLoWMnWldu22z2ICVnLQChlR9d6
- WW8QFEpo/FK7omuS8KvvopFcOOdlbFMM8Y/8vBgVMSsK6fsYUhruny/PahprPbYGiNIhKqz7
- UvgyZVl4pBFjTaz/SbimTk210vIlkDyy1WuS8Zsn0htv4+jQPgo9rqFE4mipJjy/iboDuQIN
- BFH7eUwBEAC2nzfUeeI8dv0C4qrfCPze6NkryUflEut9WwHhfXCLjtvCjnoGqFelH/PE9NF4
- 4VPSCdvD1SSmFVzu6T9qWdcwMSaC+e7G/z0/AhBfqTeosAF5XvKQlAb9ZPkdDr7YN0a1XDfa
- +NgA+JZB4ROyBZFFAwNHT+HCnyzy0v9Sh3BgJJwfpXHH2l3LfncvV8rgFv0bvdr70U+On2XH
- 5bApOyW1WpIG5KPJlDdzcQTyptOJ1dnEHfwnABEfzI3dNf63rlxsGouX/NFRRRNqkdClQR3K
- gCwciaXfZ7ir7fF0u1N2UuLsWA8Ei1JrNypk+MRxhbvdQC4tyZCZ8mVDk+QOK6pyK2f4rMf/
- WmqxNTtAVmNuZIwnJdjRMMSs4W4w6N/bRvpqtykSqx7VXcgqtv6eqoDZrNuhGbekQA0sAnCJ
- VPArerAZGArm63o39me/bRUQeQVSxEBmg66yshF9HkcUPGVeC4B0TPwz+HFcVhheo6hoJjLq
- knFOPLRj+0h+ZL+D0GenyqD3CyuyeTT5dGcNU9qT74bdSr20k/CklvI7S9yoQje8BeQAHtdV
- cvO8XCLrpGuw9SgOS7OP5oI26a0548M4KldAY+kqX6XVphEw3/6U1KTf7WxW5zYLTtadjISB
- X9xsRWSU+Yqs3C7oN5TIPSoj9tXMoxZkCIHWvnqGwZ7JhwARAQABiQIfBBgBAgAJBQJR+3lM
- AhsMAAoJEC7Z13T+cC21hPAQAIsBL9MdGpdEpvXs9CYrBkd6tS9mbaSWj6XBDfA1AEdQkBOn
- ZH1Qt7HJesk+qNSnLv6+jP4VwqK5AFMrKJ6IjE7jqgzGxtcZnvSjeDGPF1h2CKZQPpTw890k
- fy18AvgFHkVk2Oylyexw3aOBsXg6ukN44vIFqPoc+YSU0+0QIdYJp/XFsgWxnFIMYwDpxSHS
- 5fdDxUjsk3UBHZx+IhFjs2siVZi5wnHIqM7eK9abr2cK2weInTBwXwqVWjsXZ4tq5+jQrwDK
- cvxIcwXdUTLGxc4/Z/VRH1PZSvfQxdxMGmNTGaXVNfdFZjm4fz0mz+OUi6AHC4CZpwnsliGV
- ODqwX8Y1zic9viSTbKS01ZNp175POyWViUk9qisPZB7ypfSIVSEULrL347qY/hm9ahhqmn17
- Ng255syASv3ehvX7iwWDfzXbA0/TVaqwa1YIkec+/8miicV0zMP9siRcYQkyTqSzaTFBBmqD
- oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
- IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
- yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-Organization: Red Hat
-Message-ID: <8585b93b-e239-829b-d634-b89941f27aed@redhat.com>
-Date: Mon, 23 Sep 2019 20:09:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ (envelope-from <peter.maydell@linaro.org>) id 1iCT3X-0007Xd-Qy
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:27:28 -0400
+Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:35914)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iCT3X-0007XQ-Lb
+ for qemu-arm@nongnu.org; Mon, 23 Sep 2019 14:27:27 -0400
+Received: by mail-ot1-x342.google.com with SMTP id 67so13046497oto.3
+ for <qemu-arm@nongnu.org>; Mon, 23 Sep 2019 11:27:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=kE6GTsnxEsnSOYqZoVxiBRcQ9jMpOE4rFqMDVVkm1lg=;
+ b=UCqEsrfy5zkY+UZnwpriH4g5cs0zmvxd6WR/yB6p+hRusOXUxrDo6qVASIGlFXdwK9
+ 5r4ASzCYEDjm/CvvwSm0xlyPivfixI1MNls0JqO5gwjRYuul9XsJ7VzD4ZsTHDO/rF+N
+ aUfJnucgDqkdCbfXMpdwMpzf8xR5wWPOg8K9JANL+kAlegvH14O34EYer43CLl4u9t8l
+ QY5neyzHTufOGnFPfCI6gGWHutsO9g+RDHlESRlXhwhcCA84uuvEyfLWS6KgpaYvghqY
+ 2lG4M+zNDnubLo0eRVLoRXv4XDyV9vSKHDDv9d0JIrAyv4542DAhfktv1D77jSVxNt/0
+ 9zmA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=kE6GTsnxEsnSOYqZoVxiBRcQ9jMpOE4rFqMDVVkm1lg=;
+ b=tPCtn4GP8+ZKuLN9N+1L6Q+5Xx0pV4dvSMw/eMH4/HknnWBv0VLJ6caHXeoaf0TG70
+ RddG6dtMudsLH4DMFvjzpcOXSYXV5PH3DiqnvMuuM1bEAnp8KR5lukLohCcRmX8iS0W+
+ PNfD1IPHq6JOvFMPs6/yfr6xzdrLXHZC32Ndd3H0M8MEZwXxuHcvew7CGOxsng8SLpjg
+ diIS4enErUZSpjBiszl4Xy+5Mfx/WVG1hHrH3EOSKg0tHRFclNwIY7O1kY59DIITMtZL
+ 0kqwB+pIReQ7zVQssgvf+rubxWLPRDJrblJv9rWIq09nDQJku5YRTrKzVC+IYndbS94s
+ SwQw==
+X-Gm-Message-State: APjAAAXF9/jw1nSBtgoT7xZoe1azvrAUDfaUwPXACb2/bUTMS/hzexax
+ LpAh2h+SO7wl3TCdCUQhug2OlfMevk4ys8zSoxbjIA==
+X-Received: by 2002:a9d:5e11:: with SMTP id d17mr1032382oti.135.1569263246759; 
+ Mon, 23 Sep 2019 11:27:26 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <bd6efd14-9200-98e2-4f76-dda101f85274@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.49]); Mon, 23 Sep 2019 18:09:17 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
+References: <20190921150420.30743-1-thuth@redhat.com>
+ <20190921150420.30743-4-thuth@redhat.com>
+ <CAFEAcA_6UxMBeyOMM0iT5cnCQEpWXfRO2XMuV9ez_0Su2osXNg@mail.gmail.com>
+ <0389e9dc-7f78-5b27-4764-51f0bdef5bef@redhat.com>
+In-Reply-To: <0389e9dc-7f78-5b27-4764-51f0bdef5bef@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 23 Sep 2019 19:27:15 +0100
+Message-ID: <CAFEAcA8XSQs=fw839O4+tTUqy-DpNh-jdHxQsfYQxm-nTbvH4Q@mail.gmail.com>
+Subject: Re: [PATCH 3/4] hw/arm: Move armv7m_nvic.c to hw/arm/ and always
+ enable it for arm builds
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::342
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -139,110 +107,23 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6Sxi61zmSiJ7
+X-TUID: bsqA/cPi282t
 
-On 23/09/2019 16.31, Auger Eric wrote:
-> Hi Thomas,
->=20
-> On 9/21/19 5:04 PM, Thomas Huth wrote:
->> We are going to make CONFIG_ARM_V7M optional, so the related cortex-m
->> CPUs should only be created if the switch is enabled. This can best
->> be done if the code resides in a separate file, thus move the related
->> functions to a new file v7m.c which only gets compiled if CONFIG_ARM_V=
-7M
->> is enabled.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>  target/arm/Makefile.objs |   1 +
->>  target/arm/cpu.c         | 146 -----------------------------
->>  target/arm/v7m.c         | 193 ++++++++++++++++++++++++++++++++++++++=
-+
->>  3 files changed, 194 insertions(+), 146 deletions(-)
->>  create mode 100644 target/arm/v7m.c
-[...]
->> diff --git a/target/arm/v7m.c b/target/arm/v7m.c
->> new file mode 100644
->> index 0000000000..505043febe
->> --- /dev/null
->> +++ b/target/arm/v7m.c
->> @@ -0,0 +1,193 @@
->> +/*
->> + * ARM v7m helpers.
->> + *
->> + * This code is licensed under the GNU GPL v2 or later.
->> + *
->> + * SPDX-License-Identifier: GPL-2.0-or-later
->> + */
->> +
->> +#include "qemu/osdep.h"
->> +#include "qemu/qemu-print.h"
->> +#include "qemu-common.h"
->> +#include "target/arm/idau.h"
->> +#include "qemu/module.h"
->> +#include "qapi/error.h"
->> +#include "qapi/visitor.h"
->> +#include "cpu.h"
->> +#include "internals.h"
->> +#include "exec/exec-all.h"
->> +#include "hw/qdev-properties.h"
->> +#if !defined(CONFIG_USER_ONLY)
->> +#include "hw/loader.h"
->> +#include "hw/boards.h"
->> +#endif
->> +#include "sysemu/sysemu.h"
->> +#include "sysemu/tcg.h"
->> +#include "sysemu/hw_accel.h"
->> +#include "disas/capstone.h"
->> +#include "fpu/softfloat.h"
->
-> I guess some of those headers are not needed.
+On Mon, 23 Sep 2019 at 18:54, Thomas Huth <thuth@redhat.com> wrote:
+> Ok, then what would you suggest to solve the problem that this file has
+> always to be linked into the binary? I can't use "obj-y += ..." in
+> hw/intc/Makefile.objs since that would mean that the file also gets
+> compiled for non-Arm boards. Would you prefer a bunch of stubs instead
+> that get used if CONFIG_ARM_V7M is not set?
 
-Yeah, I just copy-n-pasted from the source file ... I'll check what can
-be omitted (if this patch series has a chance at all...)
+I thought obj-y was for only-this-target and obj-common-y was
+for all-boards ?
 
->> +
->> +#if !defined(CONFIG_USER_ONLY) || !defined(TARGET_AARCH64)
->> +
->> +static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, int interrupt_re=
-quest)
->> +{
->> +    CPUClass *cc =3D CPU_GET_CLASS(cs);
->> +    ARMCPU *cpu =3D ARM_CPU(cs);
->> +    CPUARMState *env =3D &cpu->env;
->> +    bool ret =3D false;
->> +
->> +    /*
->> +     * ARMv7-M interrupt masking works differently than -A or -R.
->> +     * There is no FIQ/IRQ distinction. Instead of I and F bits
->> +     * masking FIQ and IRQ interrupts, an exception is taken only
->> +     * if it is higher priority than the current execution priority
->> +     * (which depends on state like BASEPRI, FAULTMASK and the
->> +     * currently active exception).
->> +     */
->> +    if (interrupt_request & CPU_INTERRUPT_HARD
->> +        && (armv7m_nvic_can_take_pending_exception(env->nvic))) {
->
-> so what is the status wrt m_helper.c which stays unconditionally
-> compiled. m_helper functions seem to called from target/arm/translate.c
-> mostly. Have you abandoned the stub idea. It may be confusing to have 2
-> different helper files. At least a comment explaining where a new helpe=
-r
-> shall go may be useful.
-
-All the HELPER() functions should definitely stay in m_helper.c. They
-are required for linking. Or do you prefer a stub file instead? Then we
-could maybe make the whole m_helper.c conditional in the Makefile.objs
-instead.
-
-However, there's one thing I currently don't quite understand in this
-code (since I'm not an ARM guy, sorry) : There are references to "v8" in
-m_helper.c, too. Is that related to a separate CPU type, ie. should the
-v8 code also be available when CONFIG_ARM_V7M is disabled? Or can the
-code in m_helper.c be disabled completely if CONFIG_ARM_V7M is not set?
-
- Thomas
+thanks
+-- PMM

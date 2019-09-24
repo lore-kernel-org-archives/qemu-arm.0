@@ -1,343 +1,184 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4045328wrp;
-        Tue, 24 Sep 2019 08:23:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxGOsRY6DkcczA4mzCUcc3ydXysdxnxJ6v9me+VEHeuM1Bo7hGTRdL+/qCzXHqJtQsYtQW6
-X-Received: by 2002:a37:5887:: with SMTP id m129mr2853908qkb.27.1569338615894;
-        Tue, 24 Sep 2019 08:23:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569338615; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4045370wrp;
+        Tue, 24 Sep 2019 08:23:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwqF4bEDik3237jkx135Lz2LVOoJfvGaeXBfho7QxP1UfE6a51QJDZ0gtuWIv5eM+KI49sA
+X-Received: by 2002:a17:90a:8c17:: with SMTP id a23mr576819pjo.111.1569338617461;
+        Tue, 24 Sep 2019 08:23:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569338617; cv=none;
         d=google.com; s=arc-20160816;
-        b=BKMRxqwDRZNqiLiq8RNojSxRHgGkSc4Xas7BYXo6zrGy37Ykg+L1+7As99hy8G7bte
-         +Vac7pSPfIiU80QGF1UPsXDqx+z+5PRwnvWHWX8Zq5xPeJQrftfMcLTeFqSGP1nbNoQk
-         Zm1XKYyHYT4G/Pk73otTfmsztxAuI1odYdm87S7EQMVpWF3LZxwxdx71E7Hgnvh+8C3F
-         bJTYVGlqUPZJ/AV/8XTQzfQPZl5Qh7YWFBxBZFW/8jp9Rxs0S3y3xFMpuQvTx7F8GkOG
-         rcKcUImdN/3DIlgeapvdSP6yqLNSnqkE4kcs5bahQaThu1cs3zZQqTMmj7JntSva9Wbm
-         Xb2Q==
+        b=enqRO4DUpmx+0+pTTElLf5pKjEzhPeT6L4wKGMDWUSxdqttf6nDN3M8uDuY/n+7DdX
+         b1xCvmVIZFpMIxgCDVhR4PlNH/tuJu1fv8mkLEnfpT9wvNx25dAwWsOEQBeX7nQ1fh2M
+         TQCuH1hhd7C6imsqNuUqn0n2vVuxYYfNsUd3Py9zGZyuVV0hTn+uEblSaUGSiBQYJ2C3
+         MtFo5j6cW1mWGLqQntmrOY0BWi6j/G1ydTolpPUrkJOEFjzbk8rxnPttPrT8+z82128o
+         DzpPktFtlqsO6w+W1s7rRrw27f/254KL35Br07ye8OJdrF2HM79QfcVORqE/Hb+NL5OP
+         7c/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=nrCATvZR9fYWArQxcvL56ZNpU0BE5XF9TPna6g+H55E=;
-        b=07XA+A6gfMmpVzUWKCmsQn3a7uRNFjG13/9mazs4kQPj96ixGISU/qGvMxJLBkOHvK
-         b4dDpyj/bSM2gALYdIfbDYUqBD3Sg1jbpSTuMnGRudSq134lRBtWfH0H4Nx7WqaH6KGm
-         d94lDrOow5m++3ghpI8C1T+foYjdhgMkGVDcT58QCrLMHbrPsf9z4M9SYl8vNicPpbQs
-         /jLwaRUNbtKmbd/FNjEB/K/XHiZQQF7APTVea66VizcaTsq07IzXvLPwUZqabfgeR4sR
-         F4VMFBy0ORZxwypzcpieyTlU1EnwpaEO+iiUEsBHW31EAJxN0t0fvl0my+IAH8pN+1BS
-         rB+g==
+        h=errors-to:sender:content-transfer-encoding:cc:list-subscribe
+         :list-help:list-post:list-archive:list-unsubscribe:list-id
+         :precedence:mime-version:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=IePsnbOOwGm9JHq3Te/jDpPPqO8F6SHVFzYHsWe5xV4=;
+        b=NU+uCPNzwlC/b1YE26NQlnCfHkKJtiZ07UXDY0jSGOFK7nBFug9n4lNswXvCEStJGC
+         4nlW/fX115ZFqYY7YSkXjI2ZGfNwkmz4FDrqLP+uj3+CvxslDTa6SANuJAas7yOlJfFV
+         gjnyNmioA4iJ38QFDP8N8H8wk49vobOpFZZ1qeUIyWfrYZfNW6gUFrBWIN/2+0dDqP2j
+         bAtfciEkMw8QU6Xl2hHGMCAPXOMvcA8o7yf+zW4T5YidlP9eYpkXuMuF8U3R7+zHkaYc
+         /omRJ1CwF0AreY8Lm1Cxs+N7+Gee6Gfsb5f3YOx66lkN6oYLtMeaOgaxh+XUYmnNpIvu
+         jU3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id f11si1420387qvd.35.2019.09.24.08.23.35;
-        Tue, 24 Sep 2019 08:23:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b=PYwJ+UHf;
+       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org"
+Return-Path: <linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org>
+Received: from bombadil.infradead.org (bombadil.infradead.org. [2607:7c80:54:e::133])
+        by mx.google.com with ESMTPS id d10si1954848plr.178.2019.09.24.08.23.37
+        for <alex.bennee@linaro.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Sep 2019 08:23:37 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) client-ip=2607:7c80:54:e::133;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 83A094A6DB;
-	Tue, 24 Sep 2019 11:23:35 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: -1.502
-X-Spam-Level: 
-X-Spam-Status: No, score=-1.502 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3,
-	SPF_HELO_PASS=-0.001] autolearn=no
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id l7cNfoJkixsN; Tue, 24 Sep 2019 11:23:34 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 140304A6BB;
-	Tue, 24 Sep 2019 11:23:34 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id B61A64A66F
- for <kvmarm@lists.cs.columbia.edu>; Tue, 24 Sep 2019 11:23:32 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id MGblcjFs-51Z for <kvmarm@lists.cs.columbia.edu>;
- Tue, 24 Sep 2019 11:23:31 -0400 (EDT)
-Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 6B1034A64A
- for <kvmarm@lists.cs.columbia.edu>; Tue, 24 Sep 2019 11:23:30 -0400 (EDT)
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 652C98126B7940A2D8D7;
- Tue, 24 Sep 2019 23:23:27 +0800 (CST)
+       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b=PYwJ+UHf;
+       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org"
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=IePsnbOOwGm9JHq3Te/jDpPPqO8F6SHVFzYHsWe5xV4=; b=PYwJ+UHfAt0/tp
+	o0TrnxF3PK01JYNfOBff3gMr7Nzin1WDLQy/xJp2G8mkvT8B4FnWnMOoOr9qA8OUOvBuGKzE7AuIe
+	t0NaEhimYv3JnZWcRwGcgnFCoIv77AXo3czO8gT1tTBBih3Wdf3Em3fyGx91IX3oGDPaOm041vgQ8
+	lECdArEFI5QhpdxZthXxO99jN7o4d+ekfobG5wKhnsoC/QEZsYGOc75x44LHBVTtUhd2QRAikmWcK
+	tMAe3Co9IuQQr5yqEyc06r3fMi9sfl/2aFtr7G5OMBIROeMjl+SPbaZxULfbHN9es5NVPmiUd/UAC
+	ldTOe77jPjd1lOKg3sHA==;
+Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
+	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
+	id 1iCmf6-00037f-QP; Tue, 24 Sep 2019 15:23:32 +0000
+Received: from szxga05-in.huawei.com ([45.249.212.191] helo=huawei.com)
+ by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
+ id 1iCmez-00030x-CL
+ for linux-arm-kernel@lists.infradead.org; Tue, 24 Sep 2019 15:23:27 +0000
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 4C7D13C505E55FB75118;
+ Tue, 24 Sep 2019 23:23:22 +0800 (CST)
 Received: from linux-Bxxcye.huawei.com (10.175.104.222) by
  DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.439.0; Tue, 24 Sep 2019 23:23:18 +0800
+ 14.3.439.0; Tue, 24 Sep 2019 23:23:13 +0800
 From: Heyi Guo <guoheyi@huawei.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
  <linux-arm-kernel@lists.infradead.org>, <kvmarm@lists.cs.columbia.edu>
-Subject: [RFC PATCH 07/12] arm/sdei: override qemu_irq handler when binding
- interrupt
-Date: Tue, 24 Sep 2019 23:21:46 +0800
-Message-ID: <1569338511-3572-8-git-send-email-guoheyi@huawei.com>
+Subject: [RFC PATCH 00/12] Add SDEI support for arm64
+Date: Tue, 24 Sep 2019 23:21:39 +0800
+Message-ID: <1569338511-3572-1-git-send-email-guoheyi@huawei.com>
 X-Mailer: git-send-email 1.8.3.1
-In-Reply-To: <1569338511-3572-1-git-send-email-guoheyi@huawei.com>
-References: <1569338511-3572-1-git-send-email-guoheyi@huawei.com>
 MIME-Version: 1.0
 X-Originating-IP: [10.175.104.222]
 X-CFilter-Loop: Reflected
-Cc: Marc Zyngier <marc.zyngier@arm.com>, Heyi Guo <guoheyi@huawei.com>,
- Dave Martin <Dave.Martin@arm.com>
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190924_082325_738393_646A0263 
+X-CRM114-Status: GOOD (  12.30  )
+X-Spam-Score: -2.3 (--)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (-2.3 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -2.3 RCVD_IN_DNSWL_MED      RBL: Sender listed at https://www.dnswl.org/,
+ medium trust [45.249.212.191 listed in list.dnswl.org]
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+ -0.0 SPF_HELO_PASS          SPF: HELO matches SPF record
+X-BeenThere: linux-arm-kernel@lists.infradead.org
+X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+List-Id: <linux-arm-kernel.lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>, 
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>, 
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Cc: Mark Rutland <mark.rutland@arm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Marc Zyngier <marc.zyngier@arm.com>,
+ James Morse <james.morse@arm.com>, Heyi Guo <guoheyi@huawei.com>,
+ wanghaibin.wang@huawei.com, Dave Martin <Dave.Martin@arm.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: waKFSTiPf+TB
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org
+X-TUID: pUgq75QJ6A7p
 
-Override qemu_irq handler to support trigger SDEI event transparently
-after guest binds interrupt to SDEI event. We don't have good way to
-get GIC device and to guarantee SDEI device is initialized after GIC,
-so we search GIC in system bus when the first SDEI request happens or
-in VMSTATE post_load().
+As promised, this is the first RFC patch set for arm64 SDEI support.
+Key points:
+- We propose to only support kvm enabled arm64 virtual machines, for
+  non-kvm VMs can emulate EL3 and have Trusted Firmware run on it,
+  which has a builtin SDEI dispatcher.
+- New kvm capability KVM_CAP_FORWARD_HYPERCALL is added to probe if
+  kvm supports forwarding hypercalls, and the capability should be
+  enabled explicitly. PSCI can be set as exception for backward
+  compatibility.
+- We make the dispatcher as a logical device, to save the states
+  during migration or save/restore operation; only one instance is
+  allowed in one VM.
+- We use qemu_irq as the bridge for other qemu modules to switch from
+  irq injection to SDEI event trigger after VM binds the interrupt to
+  SDEI event. We use qemu_irq_intercept_in() to override qemu_irq
+  handler with SDEI event trigger, and a new interface
+  qemu_irq_remove_intercept() is added to restore the handler to
+  default one (i.e. ARM GIC).
 
-Signed-off-by: Heyi Guo <guoheyi@huawei.com>
+More details are in the commit message of each patch.
+
+Basic tests are done by emulating a watchdog timer and triggering SDEI
+event in every 10s.
+
+As this is the first rough RFC, please focus on the interfaces and
+framework first. We can refine the code for several rounds after the
+big things have been determined.
+
+Please give your comments and suggestions.
+
+Thanks,
+HG
+
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: Dave Martin <Dave.Martin@arm.com>
 Cc: Marc Zyngier <marc.zyngier@arm.com>
 Cc: Mark Rutland <mark.rutland@arm.com>
 Cc: James Morse <james.morse@arm.com>
----
- target/arm/sdei.c     | 137 ++++++++++++++++++++++++++++++++++++++++++++++++--
- target/arm/sdei_int.h |   3 ++
- 2 files changed, 137 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/sdei.c b/target/arm/sdei.c
-index 088ed76..9ceb131 100644
---- a/target/arm/sdei.c
-+++ b/target/arm/sdei.c
-@@ -85,6 +85,24 @@ static void qemu_sde_cpu_init(QemuSDEState *s)
-     }
- }
- 
-+static int gic_int_to_irq(int num_irq, int intid, int cpu)
-+{
-+    if (intid >= GIC_INTERNAL) {
-+        return intid - GIC_INTERNAL;
-+    }
-+    return num_irq - GIC_INTERNAL + cpu * GIC_INTERNAL + intid;
-+}
-+
-+static int irq_to_gic_int(int num_irq, int irq, int *cpu)
-+{
-+    if (irq < num_irq - GIC_INTERNAL) {
-+        return irq + GIC_INTERNAL;
-+    }
-+    irq -= num_irq - GIC_INTERNAL;
-+    *cpu = irq / GIC_INTERNAL;
-+    return irq % GIC_INTERNAL;
-+}
-+
- static inline QemuSDECpu *get_sde_cpu(QemuSDEState *s, CPUState *cs)
- {
-     assert(cs->cpu_index < s->sdei_max_cpus);
-@@ -381,6 +399,76 @@ static void dispatch_cpu(QemuSDEState *s, CPUState *cs, bool is_critical)
-     }
- }
- 
-+static void qemu_sdei_irq_handler(void *opaque, int irq, int level)
-+{
-+    int cpu = 0;
-+    irq = irq_to_gic_int(sde_state->num_irq, irq, &cpu);
-+    trigger_sdei_by_irq(cpu, irq);
-+}
-+
-+static void override_qemu_irq(QemuSDEState *s, int32_t event, uint32_t intid)
-+{
-+    qemu_irq irq;
-+    QemuSDE *sde;
-+    CPUState *cs;
-+    int cpu;
-+
-+    /* SPI */
-+    if (intid >= GIC_INTERNAL) {
-+        cs = arm_get_cpu_by_id(0);
-+        irq = qdev_get_gpio_in(s->gic_dev,
-+                               gic_int_to_irq(s->num_irq, intid, 0));
-+        if (irq) {
-+            qemu_irq_intercept_in(&irq, qemu_sdei_irq_handler, 1);
-+        }
-+        sde = get_sde_no_check(s, event, cs);
-+        sde->irq = irq;
-+        put_sde(sde, cs);
-+        return;
-+    }
-+    /* PPI */
-+    for (cpu = 0; cpu < s->sdei_max_cpus; cpu++) {
-+        cs = arm_get_cpu_by_id(cpu);
-+        irq = qdev_get_gpio_in(s->gic_dev,
-+                               gic_int_to_irq(s->num_irq, intid, cpu));
-+        if (irq) {
-+            qemu_irq_intercept_in(&irq, qemu_sdei_irq_handler, 1);
-+        }
-+        sde = get_sde_no_check(s, event, cs);
-+        sde->irq = irq;
-+        put_sde(sde, cs);
-+    }
-+}
-+
-+static void restore_qemu_irq(QemuSDEState *s, int32_t event, uint32_t intid)
-+{
-+    QemuSDE *sde;
-+    CPUState *cs;
-+    int cpu;
-+
-+    /* SPI */
-+    if (intid >= GIC_INTERNAL) {
-+        cs = arm_get_cpu_by_id(0);
-+        sde = get_sde_no_check(s, event, cs);
-+        if (sde->irq) {
-+            qemu_irq_remove_intercept(&sde->irq, 1);
-+            sde->irq = NULL;
-+        }
-+        put_sde(sde, cs);
-+        return;
-+    }
-+    /* PPI */
-+    for (cpu = 0; cpu < s->sdei_max_cpus; cpu++) {
-+        cs = arm_get_cpu_by_id(cpu);
-+        sde = get_sde_no_check(s, event, cs);
-+        if (sde->irq) {
-+            qemu_irq_remove_intercept(&sde->irq, 1);
-+            sde->irq = NULL;
-+        }
-+        put_sde(sde, cs);
-+    }
-+}
-+
- static int32_t sdei_alloc_event_num(QemuSDEState *s, bool is_critical,
-                                     bool is_shared, int intid)
- {
-@@ -414,6 +502,7 @@ static int32_t sdei_alloc_event_num(QemuSDEState *s, bool is_critical,
-             sde_props[index].interrupt = intid;
-             sde_props[index].is_shared = is_shared;
-             sde_props[index].is_critical = is_critical;
-+            override_qemu_irq(s, event, intid);
-             s->irq_map[intid] = event;
-             qemu_mutex_unlock(&sde_props[index].lock);
-             qemu_mutex_unlock(&s->sdei_interrupt_bind_lock);
-@@ -433,6 +522,7 @@ static int32_t sdei_free_event_num_locked(QemuSDEState *s, QemuSDEProp *prop)
-         goto unlock_return;
-     }
- 
-+    restore_qemu_irq(s, prop->event_id, prop->interrupt);
-     s->irq_map[prop->interrupt] = SDEI_INVALID_EVENT_ID;
-     prop->event_id = SDEI_INVALID_EVENT_ID;
-     prop->interrupt = SDEI_INVALID_INTERRUPT;
-@@ -929,13 +1019,33 @@ static int64_t sdei_event_pe_unmask(QemuSDEState *s, CPUState *cs,
-     return SDEI_SUCCESS;
- }
- 
-+static int dev_walkerfn(DeviceState *dev, void *opaque)
-+{
-+    QemuSDEState *s = opaque;
-+
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_GICV3_COMMON)) {
-+        GICv3State *gic = ARM_GICV3_COMMON(dev);
-+        s->num_irq = gic->num_irq;
-+        s->gic_dev = dev;
-+        return -1;
-+    }
-+
-+    if (object_dynamic_cast(OBJECT(dev), TYPE_ARM_GIC_COMMON)) {
-+        GICState *gic = ARM_GIC_COMMON(dev);
-+        s->num_irq = gic->num_irq;
-+        s->gic_dev = dev;
-+        return -1;
-+    }
-+    return 0;
-+}
-+
- static int64_t sdei_event_interrupt_bind(QemuSDEState *s, CPUState *cs,
-                                          struct kvm_run *run)
- {
-     uint64_t *args = (uint64_t *)(run->hypercall.args);
-     uint32_t intid = args[1];
- 
--    if (intid < GIC_NR_SGIS || intid >= GIC_MAXIRQ) {
-+    if (intid < GIC_NR_SGIS || intid >= s->num_irq) {
-         return SDEI_INVALID_PARAMETERS;
-     }
-     return sdei_alloc_event_num(s, false, intid >= 32, intid);
-@@ -1042,6 +1152,17 @@ void sdei_handle_request(CPUState *cs, struct kvm_run *run)
-         return;
-     }
- 
-+    if (!sde_state->gic_dev) {
-+        /* Search for ARM GIC device */
-+        qbus_walk_children(sysbus_get_default(), dev_walkerfn,
-+                           NULL, NULL, NULL, sde_state);
-+        if (!sde_state->gic_dev) {
-+            error_report("Cannot find ARM GIC device!");
-+            run->hypercall.args[0] = SDEI_NOT_SUPPORTED;
-+            return;
-+        }
-+    }
-+
-     if (func_id < SDEI_1_0_FN_BASE || func_id > SDEI_MAX_REQ) {
-         error_report("Invalid SDEI function ID: 0x%x", func_id);
-         run->hypercall.args[0] = SDEI_INVALID_PARAMETERS;
-@@ -1198,9 +1319,19 @@ static int qemu_sdei_post_load(void *opaque, int version_id)
-         }
-     }
- 
-+    /* Search for ARM GIC device */
-+    qbus_walk_children(sysbus_get_default(), dev_walkerfn,
-+                       NULL, NULL, NULL, s);
-+    if (!s->gic_dev) {
-+        error_report("Cannot find ARM GIC device!");
-+        return 0;
-+    }
-+
-     for (i = 0; i < PRIVATE_SLOT_COUNT + SHARED_SLOT_COUNT; i++) {
--        if (sde_props[i].interrupt != SDEI_INVALID_INTERRUPT) {
--            s->irq_map[sde_props[i].interrupt] = sde_props[i].event_id;
-+        int intid = sde_props[i].interrupt;
-+        if (intid != SDEI_INVALID_INTERRUPT) {
-+            s->irq_map[intid] = sde_props[i].event_id;
-+            override_qemu_irq(s, sde_props[i].event_id, intid);
-         }
-     }
- 
-diff --git a/target/arm/sdei_int.h b/target/arm/sdei_int.h
-index 7f69507..3930591 100644
---- a/target/arm/sdei_int.h
-+++ b/target/arm/sdei_int.h
-@@ -63,6 +63,7 @@ typedef struct QemuSDEProp {
- typedef struct QemuSDE {
-     QemuSDEProp     *prop;
-     CPUState        *target_cpu;
-+    qemu_irq        irq;
-     QemuMutex       lock;
-     bool            enabled;
-     bool            running;
-@@ -95,9 +96,11 @@ typedef struct QemuSDECpu {
- 
- typedef struct QemuSDEState {
-     DeviceState     parent_obj;
-+    DeviceState     *gic_dev;
-     QemuSDEProp     sde_props_state[PRIVATE_SLOT_COUNT + SHARED_SLOT_COUNT];
-     QemuSDECpu      *sde_cpus;
-     int             sdei_max_cpus;
-+    int             num_irq;
-     QemuSDE         *shared_sde_array[SHARED_SLOT_COUNT];
-     int32_t         irq_map[GIC_MAXIRQ];
-     QemuMutex       sdei_interrupt_bind_lock;
+Heyi Guo (12):
+  linux-headers: import arm_sdei.h
+  arm/sdei: add virtual device framework
+  arm/sdei: add support to handle SDEI requests from guest
+  arm/sdei: add system reset callback
+  arm/sdei: add support to trigger event by GIC interrupt ID
+  core/irq: add qemu_irq_remove_intercept interface
+  arm/sdei: override qemu_irq handler when binding interrupt
+  arm/sdei: add support to register interrupt bind notifier
+  linux-headers/kvm.h: add capability to forward hypercall
+  arm/sdei: check KVM cap and enable SDEI
+  arm/kvm: handle guest exit of hypercall
+  virt/acpi: add SDEI table if SDEI is enabled
+
+ hw/arm/virt-acpi-build.c       |   16 +
+ hw/core/irq.c                  |   11 +
+ include/hw/acpi/acpi-defs.h    |    5 +
+ include/hw/irq.h               |    8 +-
+ linux-headers/linux/arm_sdei.h |   73 ++
+ linux-headers/linux/kvm.h      |    3 +
+ target/arm/Makefile.objs       |    1 +
+ target/arm/kvm.c               |   17 +
+ target/arm/sdei.c              | 1518 ++++++++++++++++++++++++++++++++++++++++
+ target/arm/sdei.h              |   60 ++
+ target/arm/sdei_int.h          |  109 +++
+ 11 files changed, 1819 insertions(+), 2 deletions(-)
+ create mode 100644 linux-headers/linux/arm_sdei.h
+ create mode 100644 target/arm/sdei.c
+ create mode 100644 target/arm/sdei.h
+ create mode 100644 target/arm/sdei_int.h
+
 -- 
 1.8.3.1
 
+
 _______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel

@@ -1,76 +1,75 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4045380wrp;
-        Tue, 24 Sep 2019 08:23:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyLW34rcvd/FvcABbhMFitzO0Mt+msPJnJJXUwY8Og/TWyv6wyU8Bk2s3pOJcoeImGZCAtH
-X-Received: by 2002:a37:a68e:: with SMTP id p136mr2935419qke.49.1569338618072;
-        Tue, 24 Sep 2019 08:23:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569338618; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4045402wrp;
+        Tue, 24 Sep 2019 08:23:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwshfWkVWGhoa7tDemZRbS2e7PntcHyY9za+6C7SY0FZdDoN/LCdmacHK6keKwZy+W8kcmR
+X-Received: by 2002:a37:6358:: with SMTP id x85mr3154608qkb.229.1569338619215;
+        Tue, 24 Sep 2019 08:23:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569338619; cv=none;
         d=google.com; s=arc-20160816;
-        b=i3H2otyT+1IC5KNN9qY5JB3x0XaPN3yqwiklhwgQ5jtIwaU9pw32QA0Uc/3HZYiQ3y
-         2HLAtIBpReLd19ULC2Go5t2vPKKH5eT/Vh4l+W1v7NifmkO2svW94DuWvi7xYle4/3yJ
-         Orz0QWqJ4AIFglOQoR+IPajEXPDcLuZca9JH9pkHZZfCRIHeMsP4diCR94RGO9ip9lPi
-         B8Fay2MGqGcEGQaRdcUhj9cZmSdPwJ/KV2v2zJQR+nE8vzGibOgcfcIhJrwL7wtm3c2W
-         IbG8e0Dd0bRfFwUdDbb7WP+VIILGYlaznyVzH0mP4FHaZR1VGnvPdLq1tfYPtja7qd3w
-         0wlA==
+        b=GsXWwU/3/40XqGLXLGhsvESv1ntmD1of023CRekTTgMLT6cS0NvG4V/2R+Oky+z1Zo
+         zdazUrugvlOj6bNXkod5XUEfasm9oXsRLe0AEwgdd+x1xpMabaD8dwip8daRWKz2AntO
+         4Gbtw9RH8BU0VW64Ahj3CA8SLrmUkMeTPc7apdWlZ5R/XRjGXdhXV02o9BZR1I6ll0u1
+         0Q1CgrnuSW/OqodFRIFbB4zm4/ECsKnuV3TQfTNo9aDj71ElrDYXdllD33Ry7Y4snB5N
+         9Z+KAK2GW4KyFKt1GQjiJPeGz8xNOsth+f9XSj2TyeE++585lP98nZBFk67AdxK7Q0Ql
+         XnZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
          :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=N63jhOzgmqQrsk5Nt2pCcyoKtQVQtsEDd6+UWXWRuOk=;
-        b=lLnsypBO5dXULVyB+qqDT6geIBYvzAWhaezUE/gv8otM2qzElxTghbwXLrIMEDhh7L
-         ARlTsJuaPhar/cX3rVVzIt/ebuKQTRFmYkWAcLOearGGeOLh15KuHd9klLeCgzAPAlmz
-         j4an0bdEbo+n6DOqdX3xN8H0XTsdCrOtknAio2HLRxHzAo9+d+0f9VPXVIMf0s5SKPJk
-         NshBXOby9/ibAEUiOvnILc9KtPsUnuDH8nIkhRy+B6HYNZJLLWh1Dpco7QqoRkyn0o18
-         z5Hfw13Xhv5e2BJ/kft2c+8MVxY6oc2GtX9fJOU8i4u/AXHUC6YXU0CwzfWFzK2wUsuJ
-         jwMw==
+        bh=9kiBcz1hxtgaa8lPbeXhzUmmU6EpOy9OKyq/k4CbNP4=;
+        b=Np5Rb0p/e8WCaFn84CMzawE0qGbl1OMVEQWNO2yNlfjtX6ovQmoS78QPiKze2ttluf
+         QCyYJGayc7yuyfwdV/tbStEaaDMbrwnpupv7X7xp9+6dYly+dqi1kno9uSP3QtGBXK2H
+         EqnvBtkeVK0Tc34pnk//IVWOlVlUd9pbnpsXCEEY++8NcmfK66D0tSNeGotzmBo+iiJr
+         qDiOdZlFU+SGeU8vC8HiWoYmWwkSQSEb759dPYZzs1rCf3V+2PxXypbkSoP3N4nCh7fE
+         /fl2UDr0n9CZP5kyuc8FxG5ZMM21tGh7b0ERofeCNFcOR24Z3aPHt7yQodZPU6+7hQLP
+         IFdA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id p48si1453449qvc.84.2019.09.24.08.23.37;
-        Tue, 24 Sep 2019 08:23:38 -0700 (PDT)
+        by mx.google.com with ESMTP id n27si1364672qtf.142.2019.09.24.08.23.39;
+        Tue, 24 Sep 2019 08:23:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id C350E4A6CF;
-	Tue, 24 Sep 2019 11:23:37 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id E87A04A6C6;
+	Tue, 24 Sep 2019 11:23:38 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
-X-Spam-Score: -1.502
+X-Spam-Score: -1.494
 X-Spam-Level: 
-X-Spam-Status: No, score=-1.502 required=6.1 tests=[BAYES_00=-1.9,
+X-Spam-Status: No, score=-1.494 required=6.1 tests=[BAYES_00=-1.9,
 	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3,
-	SPF_HELO_PASS=-0.001] autolearn=no
+	SPF_HELO_PASS=-0.001, UPPERCASE_50_75=0.008] autolearn=no
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id SIYrlfDQkgYT; Tue, 24 Sep 2019 11:23:36 -0400 (EDT)
+	with ESMTP id xfaIRACjy7M6; Tue, 24 Sep 2019 11:23:37 -0400 (EDT)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 3EE124A6B7;
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 599714A6AD;
 	Tue, 24 Sep 2019 11:23:35 -0400 (EDT)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 0C8214A64A
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 54D504A67B
  for <kvmarm@lists.cs.columbia.edu>; Tue, 24 Sep 2019 11:23:33 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id ivpj9-RlOdjX for <kvmarm@lists.cs.columbia.edu>;
+ with ESMTP id EmfGf1rR1DMl for <kvmarm@lists.cs.columbia.edu>;
  Tue, 24 Sep 2019 11:23:32 -0400 (EDT)
-Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id E25CF4A650
+Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id A540A4A688
  for <kvmarm@lists.cs.columbia.edu>; Tue, 24 Sep 2019 11:23:31 -0400 (EDT)
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 89D0CC4FB6F9F57E2490;
- Tue, 24 Sep 2019 23:23:27 +0800 (CST)
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 532B4BCC54BC3747BF23;
+ Tue, 24 Sep 2019 23:23:22 +0800 (CST)
 Received: from linux-Bxxcye.huawei.com (10.175.104.222) by
  DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.439.0; Tue, 24 Sep 2019 23:23:20 +0800
+ 14.3.439.0; Tue, 24 Sep 2019 23:23:14 +0800
 From: Heyi Guo <guoheyi@huawei.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
  <linux-arm-kernel@lists.infradead.org>, <kvmarm@lists.cs.columbia.edu>
-Subject: [RFC PATCH 09/12] linux-headers/kvm.h: add capability to forward
- hypercall
-Date: Tue, 24 Sep 2019 23:21:48 +0800
-Message-ID: <1569338511-3572-10-git-send-email-guoheyi@huawei.com>
+Subject: [RFC PATCH 01/12] linux-headers: import arm_sdei.h
+Date: Tue, 24 Sep 2019 23:21:40 +0800
+Message-ID: <1569338511-3572-2-git-send-email-guoheyi@huawei.com>
 X-Mailer: git-send-email 1.8.3.1
 In-Reply-To: <1569338511-3572-1-git-send-email-guoheyi@huawei.com>
 References: <1569338511-3572-1-git-send-email-guoheyi@huawei.com>
@@ -95,19 +94,12 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: 3DlWA9aUhhcl
+X-TUID: m6y4r+0lpd7M
 
-To keep backward compatibility, we add new KVM capability
-"KVM_CAP_FORWARD_HYPERCALL" to probe whether KVM supports forwarding
-hypercall to userspace.
+Import Linux header file include/uapi/linux/arm_sdei.h from kernel
+v5.3 release.
 
-The capability should be enabled explicitly, for we don't want user
-space application to deal with unexpected hypercall exits. We also use
-an additional argument to pass exception bit mask, to request KVM to
-forward all hypercalls except the classes specified in the bit mask.
-
-Currently only PSCI can be set as exception, so that we can still keep
-consistent with the original PSCI processing flow.
+This is to prepare for qemu SDEI emulation.
 
 Signed-off-by: Heyi Guo <guoheyi@huawei.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>
@@ -119,30 +111,89 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>
 Cc: Cornelia Huck <cohuck@redhat.com>
 Cc: Paolo Bonzini <pbonzini@redhat.com>
 ---
- linux-headers/linux/kvm.h | 3 +++
- 1 file changed, 3 insertions(+)
+ linux-headers/linux/arm_sdei.h | 73 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 73 insertions(+)
+ create mode 100644 linux-headers/linux/arm_sdei.h
 
-diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
-index 18892d6..20e8a68 100644
---- a/linux-headers/linux/kvm.h
-+++ b/linux-headers/linux/kvm.h
-@@ -711,6 +711,8 @@ struct kvm_enable_cap {
- 	__u8  pad[64];
- };
- 
-+#define KVM_CAP_FORWARD_HYPERCALL_EXCL_PSCI (1 << 0)
+diff --git a/linux-headers/linux/arm_sdei.h b/linux-headers/linux/arm_sdei.h
+new file mode 100644
+index 0000000..af0630b
+--- /dev/null
++++ b/linux-headers/linux/arm_sdei.h
+@@ -0,0 +1,73 @@
++/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
++/* Copyright (C) 2017 Arm Ltd. */
++#ifndef _UAPI_LINUX_ARM_SDEI_H
++#define _UAPI_LINUX_ARM_SDEI_H
 +
- /* for KVM_PPC_GET_PVINFO */
- 
- #define KVM_PPC_PVINFO_FLAGS_EV_IDLE   (1<<0)
-@@ -995,6 +997,7 @@ struct kvm_ppc_resize_hpt {
- #define KVM_CAP_ARM_SVE 170
- #define KVM_CAP_ARM_PTRAUTH_ADDRESS 171
- #define KVM_CAP_ARM_PTRAUTH_GENERIC 172
-+#define KVM_CAP_FORWARD_HYPERCALL 174
- 
- #ifdef KVM_CAP_IRQ_ROUTING
- 
++#define SDEI_1_0_FN_BASE			0xC4000020
++#define SDEI_1_0_MASK				0xFFFFFFE0
++#define SDEI_1_0_FN(n)				(SDEI_1_0_FN_BASE + (n))
++
++#define SDEI_1_0_FN_SDEI_VERSION			SDEI_1_0_FN(0x00)
++#define SDEI_1_0_FN_SDEI_EVENT_REGISTER			SDEI_1_0_FN(0x01)
++#define SDEI_1_0_FN_SDEI_EVENT_ENABLE			SDEI_1_0_FN(0x02)
++#define SDEI_1_0_FN_SDEI_EVENT_DISABLE			SDEI_1_0_FN(0x03)
++#define SDEI_1_0_FN_SDEI_EVENT_CONTEXT			SDEI_1_0_FN(0x04)
++#define SDEI_1_0_FN_SDEI_EVENT_COMPLETE			SDEI_1_0_FN(0x05)
++#define SDEI_1_0_FN_SDEI_EVENT_COMPLETE_AND_RESUME	SDEI_1_0_FN(0x06)
++#define SDEI_1_0_FN_SDEI_EVENT_UNREGISTER		SDEI_1_0_FN(0x07)
++#define SDEI_1_0_FN_SDEI_EVENT_STATUS			SDEI_1_0_FN(0x08)
++#define SDEI_1_0_FN_SDEI_EVENT_GET_INFO			SDEI_1_0_FN(0x09)
++#define SDEI_1_0_FN_SDEI_EVENT_ROUTING_SET		SDEI_1_0_FN(0x0A)
++#define SDEI_1_0_FN_SDEI_PE_MASK			SDEI_1_0_FN(0x0B)
++#define SDEI_1_0_FN_SDEI_PE_UNMASK			SDEI_1_0_FN(0x0C)
++#define SDEI_1_0_FN_SDEI_INTERRUPT_BIND			SDEI_1_0_FN(0x0D)
++#define SDEI_1_0_FN_SDEI_INTERRUPT_RELEASE		SDEI_1_0_FN(0x0E)
++#define SDEI_1_0_FN_SDEI_PRIVATE_RESET			SDEI_1_0_FN(0x11)
++#define SDEI_1_0_FN_SDEI_SHARED_RESET			SDEI_1_0_FN(0x12)
++
++#define SDEI_VERSION_MAJOR_SHIFT			48
++#define SDEI_VERSION_MAJOR_MASK				0x7fff
++#define SDEI_VERSION_MINOR_SHIFT			32
++#define SDEI_VERSION_MINOR_MASK				0xffff
++#define SDEI_VERSION_VENDOR_SHIFT			0
++#define SDEI_VERSION_VENDOR_MASK			0xffffffff
++
++#define SDEI_VERSION_MAJOR(x)	(x>>SDEI_VERSION_MAJOR_SHIFT & SDEI_VERSION_MAJOR_MASK)
++#define SDEI_VERSION_MINOR(x)	(x>>SDEI_VERSION_MINOR_SHIFT & SDEI_VERSION_MINOR_MASK)
++#define SDEI_VERSION_VENDOR(x)	(x>>SDEI_VERSION_VENDOR_SHIFT & SDEI_VERSION_VENDOR_MASK)
++
++/* SDEI return values */
++#define SDEI_SUCCESS		0
++#define SDEI_NOT_SUPPORTED	-1
++#define SDEI_INVALID_PARAMETERS	-2
++#define SDEI_DENIED		-3
++#define SDEI_PENDING		-5
++#define SDEI_OUT_OF_RESOURCE	-10
++
++/* EVENT_REGISTER flags */
++#define SDEI_EVENT_REGISTER_RM_ANY	0
++#define SDEI_EVENT_REGISTER_RM_PE	1
++
++/* EVENT_STATUS return value bits */
++#define SDEI_EVENT_STATUS_RUNNING	2
++#define SDEI_EVENT_STATUS_ENABLED	1
++#define SDEI_EVENT_STATUS_REGISTERED	0
++
++/* EVENT_COMPLETE status values */
++#define SDEI_EV_HANDLED	0
++#define SDEI_EV_FAILED	1
++
++/* GET_INFO values */
++#define SDEI_EVENT_INFO_EV_TYPE			0
++#define SDEI_EVENT_INFO_EV_SIGNALED		1
++#define SDEI_EVENT_INFO_EV_PRIORITY		2
++#define SDEI_EVENT_INFO_EV_ROUTING_MODE		3
++#define SDEI_EVENT_INFO_EV_ROUTING_AFF		4
++
++/* and their results */
++#define SDEI_EVENT_TYPE_PRIVATE			0
++#define SDEI_EVENT_TYPE_SHARED			1
++#define SDEI_EVENT_PRIORITY_NORMAL		0
++#define SDEI_EVENT_PRIORITY_CRITICAL		1
++
++#endif /* _UAPI_LINUX_ARM_SDEI_H */
 -- 
 1.8.3.1
 

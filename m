@@ -1,83 +1,82 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4045402wrp;
-        Tue, 24 Sep 2019 08:23:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwshfWkVWGhoa7tDemZRbS2e7PntcHyY9za+6C7SY0FZdDoN/LCdmacHK6keKwZy+W8kcmR
-X-Received: by 2002:a37:6358:: with SMTP id x85mr3154608qkb.229.1569338619215;
-        Tue, 24 Sep 2019 08:23:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569338619; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4045425wrp;
+        Tue, 24 Sep 2019 08:23:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqytAo1+AS1zxz/bsxS0drBi5uT6DikbblUeUVqerYE10ovLWY2s+adzjOVsfIsVV3Y2wOrb
+X-Received: by 2002:ac8:6e8b:: with SMTP id c11mr3377398qtv.77.1569338620183;
+        Tue, 24 Sep 2019 08:23:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569338620; cv=none;
         d=google.com; s=arc-20160816;
-        b=GsXWwU/3/40XqGLXLGhsvESv1ntmD1of023CRekTTgMLT6cS0NvG4V/2R+Oky+z1Zo
-         zdazUrugvlOj6bNXkod5XUEfasm9oXsRLe0AEwgdd+x1xpMabaD8dwip8daRWKz2AntO
-         4Gbtw9RH8BU0VW64Ahj3CA8SLrmUkMeTPc7apdWlZ5R/XRjGXdhXV02o9BZR1I6ll0u1
-         0Q1CgrnuSW/OqodFRIFbB4zm4/ECsKnuV3TQfTNo9aDj71ElrDYXdllD33Ry7Y4snB5N
-         9Z+KAK2GW4KyFKt1GQjiJPeGz8xNOsth+f9XSj2TyeE++585lP98nZBFk67AdxK7Q0Ql
-         XnZQ==
+        b=LZ0zxTrF7dkm/wtz+VE9Ru9AKtueonpOfc2qmtwD5fdWgjSava/AHWqY+YWrpVLKdE
+         WUG7H37FmsWyqcE3EQwAwPBcRzH6NLLJzJN245lpjp2w0AxSnorrjcTw5mPq4uXOoCfv
+         o9vfUyr6kc76WhFVw/DB2/q/TNqdaAuD5gStPfUdrLYw6fLk3yQfOEthu+XmijjEko4m
+         ZLsZRRusmVz6z2oM2bbXlk/5yYFmvxWy817ay4ZKfOjCRofrX8WsPUEFWwhaKWTUNq9o
+         yx94snbamAn8cTtKAxADXIhTD/70avdmZvO1c1ZuMWeYJsxfY1kkgLIzH3scAFAE3Lij
+         peIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
          :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=9kiBcz1hxtgaa8lPbeXhzUmmU6EpOy9OKyq/k4CbNP4=;
-        b=Np5Rb0p/e8WCaFn84CMzawE0qGbl1OMVEQWNO2yNlfjtX6ovQmoS78QPiKze2ttluf
-         QCyYJGayc7yuyfwdV/tbStEaaDMbrwnpupv7X7xp9+6dYly+dqi1kno9uSP3QtGBXK2H
-         EqnvBtkeVK0Tc34pnk//IVWOlVlUd9pbnpsXCEEY++8NcmfK66D0tSNeGotzmBo+iiJr
-         qDiOdZlFU+SGeU8vC8HiWoYmWwkSQSEb759dPYZzs1rCf3V+2PxXypbkSoP3N4nCh7fE
-         /fl2UDr0n9CZP5kyuc8FxG5ZMM21tGh7b0ERofeCNFcOR24Z3aPHt7yQodZPU6+7hQLP
-         IFdA==
+        bh=4ufvYzqtOolB7W+Ga8+hwW5APvCt8+Ca8ubg6fRYrT4=;
+        b=g97mldaJzWmWtnKEnOXiy7+wPwE9aVK3pVpts9lqjjWUpinx990gtgn6mW6z05GrQj
+         yxodpWRLieNIqvuB9pNr/sBBTabuNRLOT/IMeoC2J5sTU1TrxMSKF1RwwlNN7xsikuEJ
+         rZmirAHy8omRagCZLxEHshhsZh1MszPJ/LuA30BSiZjleHKwe7YZTUzmcw1eJ2Ai66gv
+         P9mYkmrLcPGJITg1GbUf+qQRXhpOCyHmou6/juGZ3XPEmv+6L97RRdQAXf9QzEYDp9Q5
+         4j7wgrpqwTeYl/tgUif1ElsOdjiNyuXuSP7zTSh9QBnFxtXCTgYO+2E0hfM8pXTkkS7k
+         GS2w==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id n27si1364672qtf.142.2019.09.24.08.23.39;
-        Tue, 24 Sep 2019 08:23:39 -0700 (PDT)
+        by mx.google.com with ESMTP id g43si1256755qtc.379.2019.09.24.08.23.39;
+        Tue, 24 Sep 2019 08:23:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id E87A04A6C6;
-	Tue, 24 Sep 2019 11:23:38 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id DC9354A67B;
+	Tue, 24 Sep 2019 11:23:39 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
-X-Spam-Score: -1.494
+X-Spam-Score: -1.502
 X-Spam-Level: 
-X-Spam-Status: No, score=-1.494 required=6.1 tests=[BAYES_00=-1.9,
+X-Spam-Status: No, score=-1.502 required=6.1 tests=[BAYES_00=-1.9,
 	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3,
-	SPF_HELO_PASS=-0.001, UPPERCASE_50_75=0.008] autolearn=no
+	SPF_HELO_PASS=-0.001] autolearn=no
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id xfaIRACjy7M6; Tue, 24 Sep 2019 11:23:37 -0400 (EDT)
+	with ESMTP id iJEIVMTwkfsw; Tue, 24 Sep 2019 11:23:38 -0400 (EDT)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 599714A6AD;
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 713534A6E4;
 	Tue, 24 Sep 2019 11:23:35 -0400 (EDT)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 54D504A67B
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id B15C64A672
  for <kvmarm@lists.cs.columbia.edu>; Tue, 24 Sep 2019 11:23:33 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id EmfGf1rR1DMl for <kvmarm@lists.cs.columbia.edu>;
+ with ESMTP id P0V+ptipkmNb for <kvmarm@lists.cs.columbia.edu>;
  Tue, 24 Sep 2019 11:23:32 -0400 (EDT)
-Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id A540A4A688
- for <kvmarm@lists.cs.columbia.edu>; Tue, 24 Sep 2019 11:23:31 -0400 (EDT)
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 532B4BCC54BC3747BF23;
- Tue, 24 Sep 2019 23:23:22 +0800 (CST)
+Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 8FF6C4A681
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 24 Sep 2019 11:23:32 -0400 (EDT)
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 58A3B3FBB55EA3E76511;
+ Tue, 24 Sep 2019 23:23:27 +0800 (CST)
 Received: from linux-Bxxcye.huawei.com (10.175.104.222) by
  DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.439.0; Tue, 24 Sep 2019 23:23:14 +0800
+ 14.3.439.0; Tue, 24 Sep 2019 23:23:16 +0800
 From: Heyi Guo <guoheyi@huawei.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
  <linux-arm-kernel@lists.infradead.org>, <kvmarm@lists.cs.columbia.edu>
-Subject: [RFC PATCH 01/12] linux-headers: import arm_sdei.h
-Date: Tue, 24 Sep 2019 23:21:40 +0800
-Message-ID: <1569338511-3572-2-git-send-email-guoheyi@huawei.com>
+Subject: [RFC PATCH 04/12] arm/sdei: add system reset callback
+Date: Tue, 24 Sep 2019 23:21:43 +0800
+Message-ID: <1569338511-3572-5-git-send-email-guoheyi@huawei.com>
 X-Mailer: git-send-email 1.8.3.1
 In-Reply-To: <1569338511-3572-1-git-send-email-guoheyi@huawei.com>
 References: <1569338511-3572-1-git-send-email-guoheyi@huawei.com>
 MIME-Version: 1.0
 X-Originating-IP: [10.175.104.222]
 X-CFilter-Loop: Reflected
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Marc Zyngier <marc.zyngier@arm.com>,
- Cornelia Huck <cohuck@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+Cc: Marc Zyngier <marc.zyngier@arm.com>, Jingyi Wang <wangjingyi11@huawei.com>,
  Heyi Guo <guoheyi@huawei.com>, Dave Martin <Dave.Martin@arm.com>
 X-BeenThere: kvmarm@lists.cs.columbia.edu
 X-Mailman-Version: 2.1.14
@@ -94,106 +93,62 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: m6y4r+0lpd7M
+X-TUID: v+8GgKPcBPKt
 
-Import Linux header file include/uapi/linux/arm_sdei.h from kernel
-v5.3 release.
-
-This is to prepare for qemu SDEI emulation.
+For this is a logical device which is not attached to system bus, we
+cannot use DeviceClass->reset interface directly. Instead we register
+our own reset callback to reset SDEI services when system resets.
 
 Signed-off-by: Heyi Guo <guoheyi@huawei.com>
+Signed-off-by: Jingyi Wang <wangjingyi11@huawei.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: Dave Martin <Dave.Martin@arm.com>
 Cc: Marc Zyngier <marc.zyngier@arm.com>
 Cc: Mark Rutland <mark.rutland@arm.com>
 Cc: James Morse <james.morse@arm.com>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Cornelia Huck <cohuck@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>
 ---
- linux-headers/linux/arm_sdei.h | 73 ++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 73 insertions(+)
- create mode 100644 linux-headers/linux/arm_sdei.h
+ target/arm/sdei.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/linux-headers/linux/arm_sdei.h b/linux-headers/linux/arm_sdei.h
-new file mode 100644
-index 0000000..af0630b
---- /dev/null
-+++ b/linux-headers/linux/arm_sdei.h
-@@ -0,0 +1,73 @@
-+/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
-+/* Copyright (C) 2017 Arm Ltd. */
-+#ifndef _UAPI_LINUX_ARM_SDEI_H
-+#define _UAPI_LINUX_ARM_SDEI_H
+diff --git a/target/arm/sdei.c b/target/arm/sdei.c
+index b40fa36..f9a1208 100644
+--- a/target/arm/sdei.c
++++ b/target/arm/sdei.c
+@@ -1083,6 +1083,26 @@ static void qemu_sde_init(QemuSDEState *s)
+     qemu_private_sde_init(s);
+ }
+ 
++static void qemu_sde_reset(void *opaque)
++{
++    int64_t         ret;
++    CPUState        *cs;
++    QemuSDEState    *s = opaque;
 +
-+#define SDEI_1_0_FN_BASE			0xC4000020
-+#define SDEI_1_0_MASK				0xFFFFFFE0
-+#define SDEI_1_0_FN(n)				(SDEI_1_0_FN_BASE + (n))
++    CPU_FOREACH(cs) {
++        QemuSDECpu *sde_cpu = get_sde_cpu(s, cs);
++        sdei_private_reset_common(s, cs, true);
++        sde_cpu->masked = true;
++        sde_cpu->critical_running_event = SDEI_INVALID_EVENT_ID;
++        sde_cpu->normal_running_event = SDEI_INVALID_EVENT_ID;
++    }
 +
-+#define SDEI_1_0_FN_SDEI_VERSION			SDEI_1_0_FN(0x00)
-+#define SDEI_1_0_FN_SDEI_EVENT_REGISTER			SDEI_1_0_FN(0x01)
-+#define SDEI_1_0_FN_SDEI_EVENT_ENABLE			SDEI_1_0_FN(0x02)
-+#define SDEI_1_0_FN_SDEI_EVENT_DISABLE			SDEI_1_0_FN(0x03)
-+#define SDEI_1_0_FN_SDEI_EVENT_CONTEXT			SDEI_1_0_FN(0x04)
-+#define SDEI_1_0_FN_SDEI_EVENT_COMPLETE			SDEI_1_0_FN(0x05)
-+#define SDEI_1_0_FN_SDEI_EVENT_COMPLETE_AND_RESUME	SDEI_1_0_FN(0x06)
-+#define SDEI_1_0_FN_SDEI_EVENT_UNREGISTER		SDEI_1_0_FN(0x07)
-+#define SDEI_1_0_FN_SDEI_EVENT_STATUS			SDEI_1_0_FN(0x08)
-+#define SDEI_1_0_FN_SDEI_EVENT_GET_INFO			SDEI_1_0_FN(0x09)
-+#define SDEI_1_0_FN_SDEI_EVENT_ROUTING_SET		SDEI_1_0_FN(0x0A)
-+#define SDEI_1_0_FN_SDEI_PE_MASK			SDEI_1_0_FN(0x0B)
-+#define SDEI_1_0_FN_SDEI_PE_UNMASK			SDEI_1_0_FN(0x0C)
-+#define SDEI_1_0_FN_SDEI_INTERRUPT_BIND			SDEI_1_0_FN(0x0D)
-+#define SDEI_1_0_FN_SDEI_INTERRUPT_RELEASE		SDEI_1_0_FN(0x0E)
-+#define SDEI_1_0_FN_SDEI_PRIVATE_RESET			SDEI_1_0_FN(0x11)
-+#define SDEI_1_0_FN_SDEI_SHARED_RESET			SDEI_1_0_FN(0x12)
++    ret = sdei_shared_reset_common(s, first_cpu, true);
++    if (ret) {
++        error_report("SDEI system reset failed: 0x%lx", ret);
++    }
++}
 +
-+#define SDEI_VERSION_MAJOR_SHIFT			48
-+#define SDEI_VERSION_MAJOR_MASK				0x7fff
-+#define SDEI_VERSION_MINOR_SHIFT			32
-+#define SDEI_VERSION_MINOR_MASK				0xffff
-+#define SDEI_VERSION_VENDOR_SHIFT			0
-+#define SDEI_VERSION_VENDOR_MASK			0xffffffff
-+
-+#define SDEI_VERSION_MAJOR(x)	(x>>SDEI_VERSION_MAJOR_SHIFT & SDEI_VERSION_MAJOR_MASK)
-+#define SDEI_VERSION_MINOR(x)	(x>>SDEI_VERSION_MINOR_SHIFT & SDEI_VERSION_MINOR_MASK)
-+#define SDEI_VERSION_VENDOR(x)	(x>>SDEI_VERSION_VENDOR_SHIFT & SDEI_VERSION_VENDOR_MASK)
-+
-+/* SDEI return values */
-+#define SDEI_SUCCESS		0
-+#define SDEI_NOT_SUPPORTED	-1
-+#define SDEI_INVALID_PARAMETERS	-2
-+#define SDEI_DENIED		-3
-+#define SDEI_PENDING		-5
-+#define SDEI_OUT_OF_RESOURCE	-10
-+
-+/* EVENT_REGISTER flags */
-+#define SDEI_EVENT_REGISTER_RM_ANY	0
-+#define SDEI_EVENT_REGISTER_RM_PE	1
-+
-+/* EVENT_STATUS return value bits */
-+#define SDEI_EVENT_STATUS_RUNNING	2
-+#define SDEI_EVENT_STATUS_ENABLED	1
-+#define SDEI_EVENT_STATUS_REGISTERED	0
-+
-+/* EVENT_COMPLETE status values */
-+#define SDEI_EV_HANDLED	0
-+#define SDEI_EV_FAILED	1
-+
-+/* GET_INFO values */
-+#define SDEI_EVENT_INFO_EV_TYPE			0
-+#define SDEI_EVENT_INFO_EV_SIGNALED		1
-+#define SDEI_EVENT_INFO_EV_PRIORITY		2
-+#define SDEI_EVENT_INFO_EV_ROUTING_MODE		3
-+#define SDEI_EVENT_INFO_EV_ROUTING_AFF		4
-+
-+/* and their results */
-+#define SDEI_EVENT_TYPE_PRIVATE			0
-+#define SDEI_EVENT_TYPE_SHARED			1
-+#define SDEI_EVENT_PRIORITY_NORMAL		0
-+#define SDEI_EVENT_PRIORITY_CRITICAL		1
-+
-+#endif /* _UAPI_LINUX_ARM_SDEI_H */
+ static int qemu_sdei_pre_save(void *opaque)
+ {
+     QemuSDEState *s = opaque;
+@@ -1235,6 +1255,7 @@ static void sdei_initfn(Object *obj)
+     sde_state = s;
+ 
+     qemu_sde_init(s);
++    qemu_register_reset(qemu_sde_reset, s);
+ }
+ 
+ static void qemu_sde_class_init(ObjectClass *klass, void *data)
 -- 
 1.8.3.1
 

@@ -1,138 +1,233 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4165765wrp;
-        Tue, 24 Sep 2019 10:15:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwMH7gxK+0G4a8Q0nTOSudxeTQTElC7aublqh0gyO4O/XWbuv7Uyz4l/zt2rjvVvgNo0bcx
-X-Received: by 2002:a05:620a:16d2:: with SMTP id a18mr3585805qkn.104.1569345356813;
-        Tue, 24 Sep 2019 10:15:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569345356; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4179535wrp;
+        Tue, 24 Sep 2019 10:30:05 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwzn7CHCj2rNC/T0nr//MBRJcACEjbNLHQ+W6OeAbSy3XPz+xDU0rN9T152rZfytLlvcWAs
+X-Received: by 2002:a17:906:168f:: with SMTP id s15mr3497426ejd.109.1569346204811;
+        Tue, 24 Sep 2019 10:30:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569346204; cv=none;
         d=google.com; s=arc-20160816;
-        b=wHmRcon4Dys+/caiBroJwIenNUHSNwKEsSuu6BnQIkYHMx1DMhceMeyQgYCV/1LuyE
-         4CC8GKALFkQ2LZaje7UhaQcjSL7L8JFGWbyZWitsXf3BUUOs8FVG3ShFP1prFAzbPa2S
-         Zy8Lhsr2/0/iTi2FVkD/IzGwDHnWs0+0aPpm6dCsiqUe5M5GPYSt/fGu77hsaFBqUtzm
-         9Pg2v0PlcWeV81GVC734/ax8HkHcV+pyvm30E/cNH4Cc8p3ma/3EBSMa0+WZ5/w+8KWP
-         e8JDfrGAdtvcHNO+FH6108Ntoovo1YbGmd3h6SAXgOiOJKmd2bNj9JKifkp3s7ZPNwLP
-         JxoQ==
+        b=oG+peTyUXCibsGq5uCvSvfz2L4Py8i7FTeQHgU7PGN5Be0Ws8GMugCAxriKwUXTAHy
+         NFFxezPVIHuqmzkLLJg44QLBwbvRUuL7MTuSJpE6ih3TDrXfo8KJeOCQ5Z/MlgFv9Fqj
+         v2tL1xUvv5ZFTmiLvfjS+0hCVSGbR0P7fZxJcFkNWGDv9/Hrebp9hZ3VsRHuHdSGGseU
+         GDfRhsygQqEU3zVi8kcp0dRj2OsZjeZ+hhJ2XyMfZoTAt/5ix/s5XibJijCMDbwEFwoM
+         B4VzgmtsO05LlK4nhqDbr3sbk1ftnYS1rXe0N/DS/XOu0nu2UP3HRgQrf4ZluckmcEt/
+         VyOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:openpgp:from:references:to:subject:dkim-signature;
-        bh=dcF8WTJf1FdsqtK7JaRa15A8rHmVQlOZFjgElD0eE3c=;
-        b=0hcOHytpNeAye6nCS24CU8PNHMUGlOqgLSIeJG7hOStysRlCWSpMBFK3xf6Wu29rCM
-         ZMIuDfXha6litxzTdZAI57CZqMBSGfpH3dwIg2HYNGz/JPiBudqInWmyYGGQ/quY5qRp
-         uJ8P/LRsNon84+tFEpY+2gLklHaLmCM1GPRcl/TPQ7IRdaMgf/ZsNISgIEdqUFJk8Xp2
-         mRK2bma6YGA2EPFE1MA6A+9cp71+rgY0tel/LAkO+c+PmqSbCatPQc+5wSHCzhIzMKkp
-         kbUTZ6a45xel6WGvzWDHtQzPZMXzlfH1t1JNYCKnpCcLp7zAOLNLsi4AzmSe9aAX4sRs
-         5MrQ==
+        bh=ShJu3UJ26MTFMk5sHkGBGMjA9yGJor0G5wu1YDqz3nQ=;
+        b=rTKsSIY5GMA5glWvLeYDTFl2JkuO/NJZYsfhuAkSQQGdccAx2b63yae5L7JPLlAHg+
+         2PP5bh3l9n4RnsnclMs70p2IXsWD57suTcvZcFgGWfqn4edykCwTmb6uxDmige1zKrkI
+         lONX9bQQmUEgZZjvAOLakjwWdBRCx5TeA6cuZXC7hVYQ0aTXsPEkbP3+DpTINdeigwJA
+         7M/GAHDVLsReSMLNJAV0BD3OM0XgUEwMI74/AkYR95OvGNbldzS/Vr94As1RKuDRku1I
+         /n87CCmtUcEfQbV11001s8dC5k5vmq8EZlzlmdtDmrPxqleUgoie9IR6tvfWqNXFZNm5
+         Zr6g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=zqZ9NC9X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=m4ERP71r;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h128si1652560qkc.149.2019.09.24.10.15.56
+        by mx.google.com with ESMTPS id w34si1616728edc.252.2019.09.24.10.30.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Sep 2019 10:15:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Sep 2019 10:30:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=zqZ9NC9X;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=m4ERP71r;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48946 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49206 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCoPr-0002D3-PR
-	for alex.bennee@linaro.org; Tue, 24 Sep 2019 13:15:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60226)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iCodX-0006zF-Aa
+	for alex.bennee@linaro.org; Tue, 24 Sep 2019 13:30:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40882)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1iCnhZ-0002CH-8o
- for qemu-arm@nongnu.org; Tue, 24 Sep 2019 12:30:11 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1iCoVs-0008Jl-2K
+ for qemu-devel@nongnu.org; Tue, 24 Sep 2019 13:22:09 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1iCnhX-0006WR-P2
- for qemu-arm@nongnu.org; Tue, 24 Sep 2019 12:30:08 -0400
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:45989)
+ (envelope-from <richard.henderson@linaro.org>) id 1iCoVq-0001vA-GK
+ for qemu-devel@nongnu.org; Tue, 24 Sep 2019 13:22:07 -0400
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:41274)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1iCnhX-0006Vd-Gg
- for qemu-arm@nongnu.org; Tue, 24 Sep 2019 12:30:07 -0400
-Received: by mail-pf1-x443.google.com with SMTP id y72so1659015pfb.12
- for <qemu-arm@nongnu.org>; Tue, 24 Sep 2019 09:30:07 -0700 (PDT)
+ id 1iCoVq-0001uU-7j
+ for qemu-devel@nongnu.org; Tue, 24 Sep 2019 13:22:06 -0400
+Received: by mail-pf1-x443.google.com with SMTP id q7so1757347pfh.8
+ for <qemu-devel@nongnu.org>; Tue, 24 Sep 2019 10:22:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=dcF8WTJf1FdsqtK7JaRa15A8rHmVQlOZFjgElD0eE3c=;
- b=zqZ9NC9Xc38c9xYG5BzIoDuGSLSc4NTCD5wmcJ3syAEOSesf3jVbkM/BJ5L59GpUVD
- iZxWFpsPUSeSzAYCAQ1jd32kwZqyRJoO6tbveb5FroftgIytq4snqmC1+b5HaYbAvzsp
- L/nOo9Key5QodpZc/1Hhys1uetQYgCg264dPHDAzdWgfJpdaQY9Iz+oz0jUj9b5+mCPu
- otUS/45nd6+EA2s1eyEMxsANeSeZiEcRRI8ri/nqpaXUFsO3aw/QzgiqXAJmY0OuG0Oz
- t/1W8DajLrBOC6ZXsvPje2NO5JONEfE01hCRhKR5HfjVmIcmRRwEDVGhQIc8+ptKbt4/
- 5hfg==
+ bh=ShJu3UJ26MTFMk5sHkGBGMjA9yGJor0G5wu1YDqz3nQ=;
+ b=m4ERP71ruEA+f7f3VOzwS6CnKrgBqPcP/dllq3dUR4yZL/teOtgQU0IiPH0tuMokfJ
+ /8lYNRJx7QAZQ4rP5i9oxtYZJwB2lhQ8y879JiCZn/KQbf37s12Qlpk80L873GM97E0D
+ eOfN2B/mUQNMIcXJSnMYpdaokDNrsstdAtU8NTV0nAscP4oTYN/UIXYOW//l7jbRpf93
+ sKVwn8VPp5WWky5vzR17zDhMJ49I0chQVYMqIYe8/IjMOUavNK2mVoDnsGDfV9k4J/Q9
+ PKC3IvddrRHWeannTG50Y9/tqCgZ+QCO3Bv3lYnMhu9A2amaRiez/+Hv2Ri/nyNd3lWY
+ WlJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=dcF8WTJf1FdsqtK7JaRa15A8rHmVQlOZFjgElD0eE3c=;
- b=BzEEI3rq6pMqm822OxfWeBO4IrRQC2ez6Ij2WFDMwLGr+Q40HM1FRVlrgzuko3HeAv
- FlrLjT1UrRMCf47ahx9v1vFGLpMmMJlnzV7OZXPtD3UrpZ2V7UNOxaNtrVHbH9XFJxkq
- 55ugnSWnDZV9HbPV779tDcyoyN5j68SODL2/9R4h7jE0L5i1L/no8Q0le40t4mkptZUI
- NMLdQKfew59Ber3gjJII6+RJ1viaFAPbk/SJRYJUdAdtv0EYyJIZJATC3SWhPluGfeEU
- Vqdu7SVAKTu7CmhSPzPJUYPQe7oFho99f3Nicp0cGiqrJUCMeqhnbS5r2piV2gUSmKwa
- U88A==
-X-Gm-Message-State: APjAAAXLP8mlGkH+9eeZq33KR77lc7sInNpFUrFOYB19VPzBm3v/to06
- PvrFT52lQIl8cBWUFBsTUADtwg==
-X-Received: by 2002:a62:e916:: with SMTP id j22mr2866488pfh.210.1569342606374; 
- Tue, 24 Sep 2019 09:30:06 -0700 (PDT)
+ bh=ShJu3UJ26MTFMk5sHkGBGMjA9yGJor0G5wu1YDqz3nQ=;
+ b=n970/34hLbFCwdfJRbwY/A5q7zA+3g387k+Eb/40ll7E4+X620uxPiRPz6/jmu1zo7
+ QzN7jhRf5aanwBTiGNpK9nka+CdFmM1FhNvk61SbuoHSEdeT5TvdI8XiuNyshvUb971i
+ 8IQUYfJ+gkfDhILqKPFVqjR3KqMlY8SpUyKfk2/QXXA9Lw39pR8p2DfGNXLu9NuTZByR
+ tSq2wdm1NAOrdUUqFOPIF8HFbreMt5TFAuA1q+egShUN4dCYbiDFOfvEvsQ/AFLomNZi
+ y+sPKtkcJ/cibMp+PX+oNJnoYoihemYJvvKWFJ24RJRq39QeoYTYFtl0CEP/G5GV7bvL
+ RYQw==
+X-Gm-Message-State: APjAAAXmnwj8luMOLmrSECVTfB3tSjoP2ePadh8VmGKSCJ1ZC+C0tI8o
+ XAhCorTi/lZp2whaQvPllnTOKg==
+X-Received: by 2002:a63:594f:: with SMTP id j15mr4193469pgm.57.1569345724490; 
+ Tue, 24 Sep 2019 10:22:04 -0700 (PDT)
 Received: from [172.20.32.216] ([12.206.46.59])
- by smtp.gmail.com with ESMTPSA id q204sm5751112pfq.176.2019.09.24.09.30.04
+ by smtp.gmail.com with ESMTPSA id r185sm2848063pfr.68.2019.09.24.10.22.02
  (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 24 Sep 2019 09:30:05 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH 2/4] Memory: Enable writeback for given
- memory region
+ Tue, 24 Sep 2019 10:22:03 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH 4/4] target/arm: Add support for DC CVAP & DC
+ CVADP ins
 To: Beata Michalska <beata.michalska@linaro.org>, qemu-devel@nongnu.org
 References: <20190910095610.4546-1-beata.michalska@linaro.org>
- <20190910095610.4546-3-beata.michalska@linaro.org>
+ <20190910095610.4546-5-beata.michalska@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <e5e66d9c-16ee-a700-7608-69ec19c32b47@linaro.org>
-Date: Tue, 24 Sep 2019 09:30:03 -0700
+Message-ID: <c70f7562-c988-5eab-fa1e-fc8b5897e171@linaro.org>
+Date: Tue, 24 Sep 2019 10:22:01 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190910095610.4546-3-beata.michalska@linaro.org>
+In-Reply-To: <20190910095610.4546-5-beata.michalska@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
 X-Received-From: 2607:f8b0:4864:20::443
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, quintela@redhat.com, dgilbert@redhat.com,
  shameerali.kolothum.thodi@huawei.com, eric.auger@redhat.com,
  qemu-arm@nongnu.org, pbonzini@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ima3mIaNmTMi
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4b/xSdfxvyWw
 
 On 9/10/19 2:56 AM, Beata Michalska wrote:
-> +void qemu_ram_writeback(RAMBlock *block, ram_addr_t start, ram_addr_t length);
-> +
-> +/* Clear whole block of mem */
-> +#define qemu_ram_block_writeback(rb)    \
-> +    qemu_ram_writeback(rb, 0, rb->used_length)
-> +
+> @@ -2229,7 +2229,8 @@ static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
+>  #define ARM_CP_NZCV              (ARM_CP_SPECIAL | 0x0300)
+>  #define ARM_CP_CURRENTEL         (ARM_CP_SPECIAL | 0x0400)
+>  #define ARM_CP_DC_ZVA            (ARM_CP_SPECIAL | 0x0500)
+> -#define ARM_LAST_SPECIAL         ARM_CP_DC_ZVA
+> +#define ARM_CP_DC_CVAP           (ARM_CP_SPECIAL | 0x0600)
+> +#define ARM_LAST_SPECIAL         ARM_CP_DC_CVAP
 
-Inline function, with its typechecking, is preferred.
+I don't see that this operation needs to be handled via "special".  It's a
+function call upon write, as for many other system registers.
+
+> +static inline bool isar_feature_aa64_dcpop(const ARMISARegisters *id)
+> +{
+> +    return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, DPB) != 0;
+> +}
+> +
+> +static inline bool isar_feature_aa64_dcpodp(const ARMISARegisters *id)
+> +{
+> +    return (FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, DPB) >> 1) != 0;
+> +}
+
+The correct check is FIELD_EX(...) >= 2.  This is a 4-bit field, as with all of
+the others.
+
+> +static CPAccessResult aa64_cacheop_persist_access(CPUARMState *env,
+> +                                                  const ARMCPRegInfo *ri,
+> +                                                  bool isread)
+> +{
+> +    ARMCPU *cpu = env_archcpu(env);
+> +    /*
+> +     * Access is UNDEF if lacking implementation for either DC CVAP or DC CVADP
+> +     * DC CVAP ->  CRm: 0xc
+> +     * DC CVADP -> CRm: 0xd
+> +     */
+> +    return (ri->crm == 0xc && !cpu_isar_feature(aa64_dcpop, cpu)) ||
+> +           (ri->crm == 0xd && !cpu_isar_feature(aa64_dcpodp, cpu))
+> +           ? CP_ACCESS_TRAP_UNCATEGORIZED
+> +           : aa64_cacheop_access(env, ri, isread);
+> +}
+...
+> +    { .name = "DC_CVAP", .state = ARM_CP_STATE_AA64,
+> +      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 12, .opc2 = 1,
+> +      .access = PL0_W, .type = ARM_CP_DC_CVAP,
+> +      .accessfn = aa64_cacheop_persist_access },
+> +    { .name = "DC_CVADP", .state = ARM_CP_STATE_AA64,
+> +      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 13, .opc2 = 1,
+> +      .access = PL0_W, .type = ARM_CP_DC_CVAP,
+> +      .accessfn = aa64_cacheop_persist_access },
+
+While this access function works, it's better to simply not register these at
+all when they're not supported.  Compare the registration of rndr_reginfo.
+
+As I described above, I think this can use a normal write function.  In which
+case this would use .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END.
+
+(I believe that ARM_CP_IO is not required, but I'm not 100% sure.  Certainly
+there does not seem to be anything in dc_cvap() that affects state which can
+queried from another virtual cpu, so there does not appear to be any reason to
+grab the global i/o lock.  The host kernel should be just fine with concurrent
+msync syscalls, or whatever it is that libpmem uses.)
+
+
+> +void HELPER(dc_cvap)(CPUARMState *env, uint64_t vaddr_in)
+> +{
+> +#ifndef CONFIG_USER_ONLY
+> +    ARMCPU *cpu = env_archcpu(env);
+> +    /* CTR_EL0 System register -> DminLine, bits [19:16] */
+> +    uint64_t dline_size = 4 << ((cpu->ctr >> 16) & 0xF);
+> +    uint64_t vaddr = vaddr_in & ~(dline_size - 1);
+> +    void *haddr;
+> +    int mem_idx = cpu_mmu_index(env, false);
+> +
+> +    /* This won't be crossing page boundaries */
+> +    haddr = probe_read(env, vaddr, dline_size, mem_idx, GETPC());
+> +    if (haddr) {
+> +
+> +        ram_addr_t offset;
+> +        MemoryRegion *mr;
+> +
+> +        /*
+> +         * RCU critical section + ref counting,
+> +         * so that MR won't disappear behind the scene
+> +         */
+> +        rcu_read_lock();
+> +        mr = memory_region_from_host(haddr, &offset);
+> +        if (mr) {
+> +            memory_region_ref(mr);
+> +        }
+> +        rcu_read_unlock();
+> +
+> +        if (mr) {
+> +            memory_region_do_writeback(mr, offset, dline_size);
+> +            memory_region_unref(mr);
+> +        }
+> +    }
+> +#endif
+
+
+We hold the rcu lock whenever a TB is executing.  I don't believe there's any
+point in increasing the lock count here.  Similarly with memory_region
+refcounts -- they cannot vanish while we're executing a TB.
+
+Thus I believe that about half of this function can fold away.
 
 
 r~

@@ -1,171 +1,176 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4374485wrp;
-        Tue, 24 Sep 2019 13:53:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxYBST0Fqif2A7/1DgpXW9XRIzLY/0VFqptQ4fgK3NsIO4kk4UL7TaTYeaLf4wGW76xqQqn
-X-Received: by 2002:a37:8cc6:: with SMTP id o189mr86571qkd.82.1569358412293;
-        Tue, 24 Sep 2019 13:53:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569358412; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp64418wrp;
+        Tue, 24 Sep 2019 16:13:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx3DFb2IoSJJoyLHKDO/FXVtZrKfbDyI4XJvNbvjPHbGz8wMb2H6jC+l9EwGeKOmVEcfRqj
+X-Received: by 2002:a1c:35c9:: with SMTP id c192mr3186143wma.91.1569366833018;
+        Tue, 24 Sep 2019 16:13:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569366833; cv=none;
         d=google.com; s=arc-20160816;
-        b=y7KVe9DC1/CBz0gt7JsR2SOFbLubs9nGfm35OjLGTiSF/ehcF3lRn32t0aLTULoYqj
-         GDuM60wi0uwWfvjNZtBptMeP+pjv9UF82UDzj90HeTCS726cDxcsIsW3vWi3zids0w5H
-         W8LlGNkyJOFEoWFMbBlfQvYYM8YdW18JhA1xHYKd4aJf7U+VbXiv6142QuwfMMrdg0fg
-         oiDC/LAG1cZ9J8p7tPno2MfFn6iouwKcJ85i5naz+qRBqiamQCG+FEeGDtF6nrRE24Yr
-         +am+GjXXyBRV3mkjeYhm8j8OB2ffh26ox8cE7CyS73ndP1qgwGD8Po74b/heu0TjKU8l
-         MbiA==
+        b=0SoV6wDyg8m/Vao9ieef4c8+QQ7qYlmRC5dQ+zGNrSS/o9f5rAdtAlHJUnEWoVB0Rs
+         8dHzOIAewUrv8yLG/45pkshw0dUWLfT3y/PrmV8whtQnXQSLTzAvxvwNfhZPqzko/M8U
+         5WJOFIsY+7Lk/rFYImMdECnXLLmRzdLWtbcCgAFJhi3rxQlg7Qww80D5p+/Nu/lwY7CD
+         xKRSMy7+F1pNg/YyL+ESQE0JUGE84ADR7Jzy6iWJ0gZiyOfHXUqImPegRpLurUU0xUmE
+         eUTZv1kpJHabgi6UgiyEiM5m6OQaZ9tgrAQz8LU+MU0MPTqxvyPez8kj428lwomlzc40
+         cckA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:openpgp:from:references:to
-         :subject;
-        bh=IKQm/6RXwLQ8okSEGqFbHTDwa2lhfQq++zb9a6yf1no=;
-        b=Aa2kv9CyRrOyiRMUebf1XtEkYwKF7oyKc6F0m2mHHkg+fmY0mTf17Xp2MaOhwiM9mP
-         CSpQUVtIR5yl67S0VnA64FJZ49FUwy8JPQ8VvN7MOXikPtKphzNDxi21ed3v3zbC3oNk
-         MWpEdhmF/Igx8allUoDS9aIk+1VZO0aKgdtrK0GSFVmbFD2ZP6wF1iVrQMtrFtdAfZ+o
-         4ZudFJPVnFN3lviMXO7N2CbvZEWuKFEhzgWlVksaRcJ0QW1yqMo7+dwq3aXul3I9/uCn
-         Z+2IQZOxhWq2IUx4b/i2k4iLPXBX5Mt/AUdbJQq9UGXyfQBWa/HMw5JDeBN3uiN4VaSV
-         kYNQ==
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :to:from:date;
+        bh=RtPPDDcTnqTBHjJdkjYKVw9AFLONZ/vqLZV/SAnDbxw=;
+        b=kyK575Fk7wyeZiG4u5T8O2HpmqrMUnjYakhDDyjXY2+GB/AvyQKseaGCHCpKvKSEIg
+         eKnlFCn6Xdhw+DzhWYm7CUOZ+UCSNPbxsy1d9Yk37gHDT05gaCEuHrHxmj6mJIFk0fbl
+         m0hkcX6sO9mVTecR6RTLkME2ntjzTjTp+7BcdoZ0UPO4mtjRjX4oWnuugMPZSRTju8vP
+         KNW20QoreFk46yoBb64vh6uFVNwlMrisRGG9/SlhvD7ZNwiD/U6ab0d18mZ8vkdElIP1
+         r1+3HG+wvDw1zV3++hGOnz6k00/ho1NwG5d7p7JaCJdJZ+k0kAkisa39nDnSH9NSwizb
+         734Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n70si2096479qka.193.2019.09.24.13.53.32
+        by mx.google.com with ESMTPS id v5si2124544edm.313.2019.09.24.16.13.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Sep 2019 13:53:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Sep 2019 16:13:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51098 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43830 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCroR-00044G-1X
-	for alex.bennee@linaro.org; Tue, 24 Sep 2019 16:53:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54325)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iCtvk-0004Ov-G0
+	for alex.bennee@linaro.org; Tue, 24 Sep 2019 19:09:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46789)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iCrnN-0003eX-4e
- for qemu-devel@nongnu.org; Tue, 24 Sep 2019 16:52:25 -0400
+ (envelope-from <alex.williamson@redhat.com>) id 1iCttz-0002B6-9C
+ for qemu-arm@nongnu.org; Tue, 24 Sep 2019 19:07:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iCrnM-000163-2u
- for qemu-devel@nongnu.org; Tue, 24 Sep 2019 16:52:25 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54380)
+ (envelope-from <alex.williamson@redhat.com>) id 1iCttx-000393-U8
+ for qemu-arm@nongnu.org; Tue, 24 Sep 2019 19:07:23 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:47514)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iCrnH-000135-EA; Tue, 24 Sep 2019 16:52:19 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ (Exim 4.71) (envelope-from <alex.williamson@redhat.com>)
+ id 1iCttx-00037f-C5; Tue, 24 Sep 2019 19:07:21 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 6CDDD20F0;
- Tue, 24 Sep 2019 20:52:18 +0000 (UTC)
-Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5FD9060C5D;
- Tue, 24 Sep 2019 20:52:01 +0000 (UTC)
-Subject: Re: [PATCH v3 05/25] scripts: add coccinelle script to fix
- error_append_hint usage
-To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- qemu-devel@nongnu.org
-References: <20190924200902.4703-1-vsementsov@virtuozzo.com>
- <20190924200902.4703-6-vsementsov@virtuozzo.com>
-From: Eric Blake <eblake@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=eblake@redhat.com; keydata=
- xsBNBEvHyWwBCACw7DwsQIh0kAbUXyqhfiKAKOTVu6OiMGffw2w90Ggrp4bdVKmCaEXlrVLU
- xphBM8mb+wsFkU+pq9YR621WXo9REYVIl0FxKeQo9dyQBZ/XvmUMka4NOmHtFg74nvkpJFCD
- TUNzmqfcjdKhfFV0d7P/ixKQeZr2WP1xMcjmAQY5YvQ2lUoHP43m8TtpB1LkjyYBCodd+LkV
- GmCx2Bop1LSblbvbrOm2bKpZdBPjncRNob73eTpIXEutvEaHH72LzpzksfcKM+M18cyRH+nP
- sAd98xIbVjm3Jm4k4d5oQyE2HwOur+trk2EcxTgdp17QapuWPwMfhaNq3runaX7x34zhABEB
- AAHNHkVyaWMgQmxha2UgPGVibGFrZUByZWRoYXQuY29tPsLAegQTAQgAJAIbAwULCQgHAwUV
- CgkICwUWAgMBAAIeAQIXgAUCS8fL9QIZAQAKCRCnoWtKJSdDahBHCACbl/5FGkUqJ89GAjeX
- RjpAeJtdKhujir0iS4CMSIng7fCiGZ0fNJCpL5RpViSo03Q7l37ss+No+dJI8KtAp6ID+PMz
- wTJe5Egtv/KGUKSDvOLYJ9WIIbftEObekP+GBpWP2+KbpADsc7EsNd70sYxExD3liwVJYqLc
- Rw7so1PEIFp+Ni9A1DrBR5NaJBnno2PHzHPTS9nmZVYm/4I32qkLXOcdX0XElO8VPDoVobG6
- gELf4v/vIImdmxLh/w5WctUpBhWWIfQDvSOW2VZDOihm7pzhQodr3QP/GDLfpK6wI7exeu3P
- pfPtqwa06s1pae3ad13mZGzkBdNKs1HEm8x6zsBNBEvHyWwBCADGkMFzFjmmyqAEn5D+Mt4P
- zPdO8NatsDw8Qit3Rmzu+kUygxyYbz52ZO40WUu7EgQ5kDTOeRPnTOd7awWDQcl1gGBXgrkR
- pAlQ0l0ReO57Q0eglFydLMi5bkwYhfY+TwDPMh3aOP5qBXkm4qIYSsxb8A+i00P72AqFb9Q7
- 3weG/flxSPApLYQE5qWGSXjOkXJv42NGS6o6gd4RmD6Ap5e8ACo1lSMPfTpGzXlt4aRkBfvb
- NCfNsQikLZzFYDLbQgKBA33BDeV6vNJ9Cj0SgEGOkYyed4I6AbU0kIy1hHAm1r6+sAnEdIKj
- cHi3xWH/UPrZW5flM8Kqo14OTDkI9EtlABEBAAHCwF8EGAEIAAkFAkvHyWwCGwwACgkQp6Fr
- SiUnQ2q03wgAmRFGDeXzc58NX0NrDijUu0zx3Lns/qZ9VrkSWbNZBFjpWKaeL1fdVeE4TDGm
- I5mRRIsStjQzc2R9b+2VBUhlAqY1nAiBDv0Qnt+9cLiuEICeUwlyl42YdwpmY0ELcy5+u6wz
- mK/jxrYOpzXKDwLq5k4X+hmGuSNWWAN3gHiJqmJZPkhFPUIozZUCeEc76pS/IUN72NfprZmF
- Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
- 2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
-Organization: Red Hat, Inc.
-Message-ID: <76b21549-a584-e30b-2e43-3885daf90408@redhat.com>
-Date: Tue, 24 Sep 2019 15:52:00 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ by mx1.redhat.com (Postfix) with ESMTPS id 5D7C57622B;
+ Tue, 24 Sep 2019 23:07:18 +0000 (UTC)
+Received: from x1.home (ovpn-118-102.phx2.redhat.com [10.3.118.102])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BA46219C7F;
+ Tue, 24 Sep 2019 23:07:12 +0000 (UTC)
+Date: Tue, 24 Sep 2019 15:31:44 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Eric Auger <eric.auger@redhat.com>
+Subject: Re: [PATCH v4 0/2] Allow memory_region_register_iommu_notifier() to
+ fail
+Message-ID: <20190924153144.0a656a41@x1.home>
+In-Reply-To: <20190924082517.13724-1-eric.auger@redhat.com>
+References: <20190924082517.13724-1-eric.auger@redhat.com>
+Organization: Red Hat
 MIME-Version: 1.0
-In-Reply-To: <20190924200902.4703-6-vsementsov@virtuozzo.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.71]); Tue, 24 Sep 2019 20:52:18 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.26]); Tue, 24 Sep 2019 23:07:18 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
 X-Received-From: 209.132.183.28
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Paul Burton <pburton@wavecomp.com>,
- Peter Maydell <peter.maydell@linaro.org>, Jeff Cody <codyprime@gmail.com>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
- Juan Quintela <quintela@redhat.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Greg Kurz <groug@kaod.org>,
- Yuval Shaia <yuval.shaia@oracle.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
- David Hildenbrand <david@redhat.com>, John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- integration@gluster.org,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org,
- Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e1McKIqij7bS
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, aik@ozlabs.ru, qemu-devel@nongnu.org,
+ peterx@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
+ david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: tGbkswflO4F9
 
-On 9/24/19 3:08 PM, Vladimir Sementsov-Ogievskiy wrote:
-> error_append_hint will not work, if errp == &fatal_error, as program
-> will exit before error_append_hint call. Fix this by use of special
-> macro ERRP_FUNCTION_BEGIN.
+On Tue, 24 Sep 2019 10:25:15 +0200
+Eric Auger <eric.auger@redhat.com> wrote:
+
+> This series allows the memory_region_register_iommu_notifier()
+> to fail. As of now, when a MAP notifier is attempted to be
+> registered along with SMMUv3 or AMD IOMMU, we exit in the IOMMU
+> MR notify_flag_changed() callback.
 > 
-> Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-> ---
-
->  .../fix-error_append_hint-usage.cocci         | 25 +++++++++++++++++++
->  1 file changed, 25 insertions(+)
->  create mode 100644 scripts/coccinelle/fix-error_append_hint-usage.cocci
+> In case of VFIO assigned device hotplug, this could be handled
+> more nicely directly within the VFIO code, simply rejecting
+> the hotplug without exiting. This is what the series achieves
+> by handling the memory_region_register_iommu_notifier() returned
+> value and Error object.
 > 
-
-> +}
-> +
+> To propagate errors collected during vfio_listener_region_add()
+> we now store the error handle inside the VFIO container instead
+> of a returned value.
 > 
+> The message now is:
+> (QEMU) device_add id=hot0 driver=vfio-pci host=0000:89:00.0 bus=pcie.1
+> {"error": {"class": "GenericError", "desc": "vfio 0000:89:00.0: failed
+> to setup container for group 2: memory listener initialization failed:
+> Region smmuv3-iommu-memory-region-0-6: device 01.00.0 requires iommu MAP
+> notifier which is not currently supported"}}
+> 
+> Best Regards
+> 
+> Eric
+> 
+> This series can be found at:
+> https://github.com/eauger/qemu/tree/v4.1.0_register_iommu_notifier_fail_v4
+> 
+> History:
+> 
+> v3 -> v4:
+> - added Peter's R-b on 2d patch
+> - 1st patch: restore hw_error, remove useless ret assignment, improve
+>   DMA host window error message, remove local mr variable
+> 
+> v2 -> v3:
+> - also pass an Error handle (suggested by Peter)
+> 
+> v1 -> v2:
+> - Intel IOMMU now handles the problem differently with machine init done
+>   notifier and machine hotplug allowed hook.
+> - use assert(!ret)
+> - message rewording in SMMUv3
+> 
+> Follow-up of "VFIO/SMMUv3: Fail on VFIO/HW nested paging detection"
+> https://patchew.org/QEMU/20190829090141.21821-1-eric.auger@redhat.com/
+> 
+> 
+> Eric Auger (2):
+>   vfio: Turn the container error into an Error handle
+>   memory: allow memory_region_register_iommu_notifier() to fail
+> 
+>  exec.c                        | 10 +++++--
+>  hw/arm/smmuv3.c               | 18 ++++++------
+>  hw/i386/amd_iommu.c           | 17 +++++++-----
+>  hw/i386/intel_iommu.c         |  8 ++++--
+>  hw/ppc/spapr_iommu.c          |  8 ++++--
+>  hw/vfio/common.c              | 52 +++++++++++++++++++++++------------
+>  hw/vfio/spapr.c               |  4 ++-
+>  hw/virtio/vhost.c             |  9 ++++--
+>  include/exec/memory.h         | 21 ++++++++++----
+>  include/hw/vfio/vfio-common.h |  2 +-
+>  memory.c                      | 31 +++++++++++++--------
+>  11 files changed, 120 insertions(+), 60 deletions(-)
 
-Why are you creating a file with a trailing blank line?
+For series,
 
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+Acked-by: Alex Williamson <alex.williamson@redhat.com>
+
+Paolo, would this go in through you given the memory API changes and
+greater girth in patch 2/2?  Thanks,
+
+Alex

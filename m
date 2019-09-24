@@ -1,145 +1,87 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4098247wrp;
-        Tue, 24 Sep 2019 09:12:40 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwNxzab8sUcwTwl4FXukWPcJ7BOP9kyW95o1hi2XgFgv5dUY7by2VREi9AEFiDB6mDj4qmU
-X-Received: by 2002:a05:600c:2291:: with SMTP id 17mr969557wmf.58.1569341559173;
-        Tue, 24 Sep 2019 09:12:39 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1569341559; cv=pass;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4103041wrp;
+        Tue, 24 Sep 2019 09:16:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw9dAk+/JQt2wy0r/YYoQ0aoRoGOofC+PvWLVp4k6ipzD1HTW7YBcqxW8lssytFFod913fF
+X-Received: by 2002:a17:906:4910:: with SMTP id b16mr3179106ejq.301.1569341818763;
+        Tue, 24 Sep 2019 09:16:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569341818; cv=none;
         d=google.com; s=arc-20160816;
-        b=NiSZ+wjCr33mNYxOehqg8japBzM4kZK1Hc2MCrQB94wgAxzlIR4ZXMyZH5hqmN2ZJp
-         T3q6xsi1hn1XyLPr/okUGii0Y38Dhf/CbLqQz5SpipArBa71JHuHaTx6SjvOgx0C3M5u
-         8SFzjDvGj1xnUevLFbsJwJUajpW6K4WcMM0Oat3UPrIXBUaBXYzM7a0JM9m3r7vuqnZC
-         ug/64D1CwPzYkvykSI6n84injm0a31qXtXY2gjxpqHkSet3GQgUhGbXUG8cIm4geBZbu
-         iME7lrBADmyUrefxS/b19nflJOJ1y80qkS50u7lk8JCB2UWSq4PxegPzI2egEpHSlz4h
-         J9RQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=Q24q344MhYUUkSnAVkBQfPzhNDRC304MT2CE2gbhYJD9hNgcuAd+i4alnjMeaGUt12
+         7DT6ekMHnEnsoIZgWfHVUYzwQ6N/kzhhY6B4zz2qLL1scgf+M/R8K0qs10e+5NP74Gpw
+         nShe0bI8n2GwtdkLHYpy9rvaq+ux3Ei6vt30+LGALjAxrnptD81Lb+GSLyhu2g3a/LXe
+         VXWGAoVWoKgPZzy3lKc74vtXq3+ZmFPOlo11wREO87wTg/H87NzUokWYyunX9YaYEkZd
+         bHQETdwDJZI7/uaj4T+vAXS4noZhK8mSR/vFxPg6xrRqDeEIU71Ohy1OPFllY36DMdm7
+         MxgQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:to:from:dkim-signature;
-        bh=QQ9GUuh2TyVUJeJNFFC6pXqFoWbr+xXWfE+1U4lNj1E=;
-        b=Nfr10Z++EixzwGXqdNM/oNFaLKwN2fJOIfSHb6U5EjRkCZf+asi0LlHbRZojMK2BJB
-         lDasanwbWYwQGtD82bpiEfMg5vzwvGN9GOQRGbCRrj2svw+2u/EtMKGrxQqwjUez0UY/
-         iXRFjTLnnritva06QJWXN0vHztwjxZeTTy/jpUmr4km613807nlCAELpmPIZQXG6VXPJ
-         scJ52QkHW8mQrq0dm4919YmvDkYKIfIIadIZKCtaYm36BAjkQyU5pgUaby9M+zkoFAH6
-         NPk6pgQA4wwq4EqoO2F3A+cofXWLWOXvgAPGa2gr4FN4wujGyiCacrmZ8XDZCk8ZHoxi
-         w05w==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b=qSUocq1f;
-       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=l7DDPSvyKqSweU+TxYv1azHvfNfumkUTfUsVjKoHC/Y=;
+        b=KeVCTDcVXaV+i5aYwZZYswh4xC5hH674uKJCBaN34izaY8lPSXoZVturKKVvX8ycpR
+         JYswyNBgPov5ZDxyMZ+9j1WQUUcYxMfv7dUnrg6PqeQ6CIyFdm95pNy563WsWlisStgE
+         8sHNsxE4XR+S6Bc0RhItIvojxJs5L/SAAzGaIOljW/rwfUxtq6ilWEv+Rp1Turho1l17
+         PtAMAnTAoDJSsgEfGh9fk78iM+qgwIpgVf7/FGpQA+kQYHEfLHt7sC7K53CDrwxVM1Gs
+         1vHJCE38RMdZJyn0IA1Vwv5co37Bge4kxspHOlNS/u23UqSQi8mROgEIV3pSJFH21gN5
+         sGOA==
+ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g14si1297982edm.407.2019.09.24.09.12.38
+        by mx.google.com with ESMTPS id re13si1127490ejb.279.2019.09.24.09.16.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Sep 2019 09:12:39 -0700 (PDT)
+        Tue, 24 Sep 2019 09:16:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b=qSUocq1f;
-       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Received: from localhost ([::1]:47838 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47898 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCnQb-0007bN-TO
-	for alex.bennee@linaro.org; Tue, 24 Sep 2019 12:12:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52562)
+	id 1iCnUn-00047O-17
+	for alex.bennee@linaro.org; Tue, 24 Sep 2019 12:16:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53657)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iCn1X-0007SX-Ou
- for qemu-arm@nongnu.org; Tue, 24 Sep 2019 11:46:45 -0400
+ (envelope-from <lersek@redhat.com>) id 1iCn7I-0006BL-Kb
+ for qemu-arm@nongnu.org; Tue, 24 Sep 2019 11:52:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iCn1V-0002aQ-Gw
- for qemu-arm@nongnu.org; Tue, 24 Sep 2019 11:46:43 -0400
-Received: from mail-eopbgr50105.outbound.protection.outlook.com
- ([40.107.5.105]:9460 helo=EUR03-VE1-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
- id 1iCn1L-0002Uy-Gq; Tue, 24 Sep 2019 11:46:31 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=blHgSySHwAX4kEX7kvUANwg31VINdefegNExgcjlOpxetC4WipWqO7hyup4yHWzrOJ6MQ5K5QYb5x09CANJNGd/6wtbeuxtquxVapYBWR7RimSOkygzGIHr4JtNbMIdYNt13S1XWJc44+Djx6ajjrGGIlhcIMX3ubWJ8dP812M5iTm0Qh85UhCRkhIBS8gQJTuOChPZJxIiNB0oj6WD1w2ZE+hSW8Mf1n+nnkFIVTaziWWYU+mztBC05WlA6y9bF3nHM4FbTa2DmDpfT/rWbuKvzN1HCPS+QbsESXdjKRkHAaAbKmP0dJNJ/C4Y/QecPRe+ZciXDzT6vAzMsDnT2lQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=QQ9GUuh2TyVUJeJNFFC6pXqFoWbr+xXWfE+1U4lNj1E=;
- b=ZJg2lMaxkuvuUVb/s0pRgTv0y+98u1Ku36UWgzXT7vSYCDhKu2ospHFwkpzHsKlr9QCG/K4nRybGG+xkmwH71VVoNVnjylebQRWKA1w25d0zG2TshqWyrQD1ObJ2932+9O8ClBYFoY/fWcj5CrbBTtEGSRuV9LgSFw0S1PtzH2pwUveIs1+Qkhvi1iNIWwS9a4beDZK22ry//9w3+iIma4BdygC9cWoWDBvOCnpQOxSR6lVl2jvlGwIL8W6n6kTVN2iWg+zePe1ghvhVfZH1VWSYtERwiXLCwHtg7qoM5YAMp0iOks9Z5QybZOk4XD3L9ZLlfwt/497kmBLGc7wjKQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
- header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=QQ9GUuh2TyVUJeJNFFC6pXqFoWbr+xXWfE+1U4lNj1E=;
- b=qSUocq1f1bTVIO/lTuf1+v9oIr2+EaQYeD6KIp6Qj0GbvB3VT95Zh2Y9I5esUfY1iojLGgGQo9LN0yxqqbC2oTusOnAbNMMzOeU6IJ/u0i26zFaQRoK6kMbNKla0eq31G5+HoP8DDnSApvfK5NY8oZP3cv9F9UIPgFeQscmDLRs=
-Received: from DB8PR08MB5498.eurprd08.prod.outlook.com (52.133.242.216) by
- DB8PR08MB4203.eurprd08.prod.outlook.com (20.179.11.18) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2284.26; Tue, 24 Sep 2019 15:46:28 +0000
-Received: from DB8PR08MB5498.eurprd08.prod.outlook.com
- ([fe80::b5c0:6b97:438d:77ed]) by DB8PR08MB5498.eurprd08.prod.outlook.com
- ([fe80::b5c0:6b97:438d:77ed%2]) with mapi id 15.20.2284.023; Tue, 24 Sep 2019
- 15:46:28 +0000
-From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-To: Eric Blake <eblake@redhat.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-Subject: Re: [RFC v2 0/9] error: auto propagated local_err
-Thread-Topic: [RFC v2 0/9] error: auto propagated local_err
-Thread-Index: AQHVcioNiDMY2yo+Z0yF9jZaFGvJZ6c5qyCAgAFm+wD//+MaAIAANo8A///OUYA=
-Date: Tue, 24 Sep 2019 15:46:27 +0000
-Message-ID: <824bb514-fc6f-7adc-4f4f-97dd758fb04d@virtuozzo.com>
-References: <20190923161231.22028-1-vsementsov@virtuozzo.com>
- <d1527fdc-b5e8-093a-9206-6f7ceeece2ac@redhat.com>
- <84c9e5dd-3e0f-94e1-5da1-2c7baa594bf1@virtuozzo.com>
- <22191b09-822a-1f54-dcaa-3726c833805b@redhat.com>
- <97b77e48-b370-a596-0a06-9ceaaf6bc72e@virtuozzo.com>
-In-Reply-To: <97b77e48-b370-a596-0a06-9ceaaf6bc72e@virtuozzo.com>
-Accept-Language: ru-RU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: HE1PR09CA0068.eurprd09.prod.outlook.com
- (2603:10a6:7:3d::12) To DB8PR08MB5498.eurprd08.prod.outlook.com
- (2603:10a6:10:11c::24)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=vsementsov@virtuozzo.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-tagtoolbar-keys: D20190924184618996
-x-originating-ip: [185.231.240.5]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 7d19856f-cec3-4ada-9621-08d741065c78
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600167)(711020)(4605104)(1401327)(2017052603328)(7193020);
- SRVR:DB8PR08MB4203; 
-x-ms-traffictypediagnostic: DB8PR08MB4203:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DB8PR08MB4203188355D83BE29E2323A2C1840@DB8PR08MB4203.eurprd08.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
-x-forefront-prvs: 0170DAF08C
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(376002)(39850400004)(366004)(396003)(136003)(346002)(189003)(199004)(31696002)(7736002)(14454004)(6486002)(6506007)(386003)(7336002)(256004)(305945005)(31686004)(53546011)(7276002)(7416002)(81166006)(316002)(86362001)(54906003)(6116002)(2906002)(5660300002)(76176011)(99286004)(478600001)(25786009)(110136005)(2501003)(6246003)(229853002)(7366002)(7406005)(8936002)(6436002)(8676002)(102836004)(81156014)(52116002)(45426003)(66476007)(66556008)(66446008)(476003)(446003)(3846002)(66066001)(36756003)(6512007)(2616005)(64756008)(11346002)(186003)(71190400001)(4326008)(26005)(66946007)(71200400001)(486006);
- DIR:OUT; SFP:1102; SCL:1; SRVR:DB8PR08MB4203;
- H:DB8PR08MB5498.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: virtuozzo.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: gkEd5VhN042Em+SNYYlMnaPUieq+wCSwxbLM9SiCgx6+GMD+x27RLHQUEYUN7Zd5NaFp53Xu2WoWc75vEGdkvQN1yn5tSEfvLqgjoetCk5nhDbw6c98C6pr492/leEAU040q1D8JLJfxmvOt6b1NC5BtBi+jCFUj9bFlIzLmSuaTQwXsYE3O2jAEm5ZvAoC8boIo0VYC36kp19cSDGY/vh3JmqKMrelGLJPI5xCK/Orc4tB2jT/brbsgo2YzrhlQQdyZy4HNMH6P71peSvUaAyPv+gML7QKhWnm3BiOA+C3vNKXDB0Ri+OG2NZ0sumbPUXhg8AtvZA4GHerqKlDuU+crgvPHcp+7EY/tiQDucRHifEIPf3Q9HtUuU7XQQ1kowXEot+7ShTfViAPiCkOfjk8CK0mCfgsCwOFEdUvJJnA=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <1762D7B37FC658489165B19AF619C313@eurprd08.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ (envelope-from <lersek@redhat.com>) id 1iCn7G-0006JQ-F9
+ for qemu-arm@nongnu.org; Tue, 24 Sep 2019 11:52:40 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59680)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <lersek@redhat.com>)
+ id 1iCn7G-0006In-6g; Tue, 24 Sep 2019 11:52:38 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 5C1FC3091786;
+ Tue, 24 Sep 2019 15:52:37 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-120-118.rdu2.redhat.com
+ [10.10.120.118])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E04FD1001B20;
+ Tue, 24 Sep 2019 15:52:31 +0000 (UTC)
+Subject: Re: Invalid blob size on NVDIMM hot-add (was: RE: [RFC PATCH 0/4] ARM
+ virt: ACPI memory hotplug support)
+To: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ Igor Mammedov <imammedo@redhat.com>
+References: <5FC3163CFD30C246ABAA99954A238FA83F3FB328@lhreml524-mbs.china.huawei.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <a1667b4a-72ac-48da-ab36-be1821757ac5@redhat.com>
+Date: Tue, 24 Sep 2019 17:52:30 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
+ Thunderbird/52.9.1
 MIME-Version: 1.0
-X-OriginatorOrg: virtuozzo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7d19856f-cec3-4ada-9621-08d741065c78
-X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Sep 2019 15:46:27.8754 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 4lS8HcPb5rxJzLV+DCKkAzTLNzC9I4z3QtkCg41ypqZdbJF9EQ7SmFaYx+O+xOo8M20olfgWl2G4gOGEdWsj69A8V1VjQVBybC0bGwqoNy0=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR08MB4203
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.5.105
+In-Reply-To: <5FC3163CFD30C246ABAA99954A238FA83F3FB328@lhreml524-mbs.china.huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.41]); Tue, 24 Sep 2019 15:52:37 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -151,153 +93,267 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "stefanha@redhat.com" <stefanha@redhat.com>,
- "codyprime@gmail.com" <codyprime@gmail.com>,
- "jan.kiszka@siemens.com" <jan.kiszka@siemens.com>,
- "berto@igalia.com" <berto@igalia.com>,
- "zhang.zhanghailiang@huawei.com" <zhang.zhanghailiang@huawei.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- "arikalo@wavecomp.com" <arikalo@wavecomp.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
- "hpoussin@reactos.org" <hpoussin@reactos.org>,
- "anthony.perard@citrix.com" <anthony.perard@citrix.com>,
- "samuel.thibault@ens-lyon.org" <samuel.thibault@ens-lyon.org>,
- "philmd@redhat.com" <philmd@redhat.com>,
- "green@moxielogic.com" <green@moxielogic.com>,
- "lvivier@redhat.com" <lvivier@redhat.com>,
- "ehabkost@redhat.com" <ehabkost@redhat.com>,
- "xiechanglong.d@gmail.com" <xiechanglong.d@gmail.com>,
- "pl@kamp.de" <pl@kamp.de>, "dgilbert@redhat.com" <dgilbert@redhat.com>,
- "b.galvani@gmail.com" <b.galvani@gmail.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "ronniesahlberg@gmail.com" <ronniesahlberg@gmail.com>,
- "jsnow@redhat.com" <jsnow@redhat.com>, "rth@twiddle.net" <rth@twiddle.net>,
- "kwolf@redhat.com" <kwolf@redhat.com>, "andrew@aj.id.au" <andrew@aj.id.au>,
- "crwulff@gmail.com" <crwulff@gmail.com>,
- "sundeep.lkml@gmail.com" <sundeep.lkml@gmail.com>,
- "michael@walle.cc" <michael@walle.cc>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- "kbastian@mail.uni-paderborn.de" <kbastian@mail.uni-paderborn.de>,
- "imammedo@redhat.com" <imammedo@redhat.com>, "fam@euphon.net" <fam@euphon.net>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "sheepdog@lists.wpkg.org" <sheepdog@lists.wpkg.org>,
- "david@redhat.com" <david@redhat.com>, "palmer@sifive.com" <palmer@sifive.com>,
- "thuth@redhat.com" <thuth@redhat.com>,
- "jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>, "hare@suse.com" <hare@suse.com>,
- "sstabellini@kernel.org" <sstabellini@kernel.org>,
- "arei.gonglei@huawei.com" <arei.gonglei@huawei.com>,
- "marcel.apfelbaum@gmail.com" <marcel.apfelbaum@gmail.com>,
- "namei.unix@gmail.com" <namei.unix@gmail.com>,
- "atar4qemu@gmail.com" <atar4qemu@gmail.com>,
- "farman@linux.ibm.com" <farman@linux.ibm.com>,
- "amit@kernel.org" <amit@kernel.org>, "sw@weilnetz.de" <sw@weilnetz.de>,
- "groug@kaod.org" <groug@kaod.org>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "peter.chubb@nicta.com.au" <peter.chubb@nicta.com.au>,
- "clg@kaod.org" <clg@kaod.org>, "shorne@gmail.com" <shorne@gmail.com>,
- "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "amarkovic@wavecomp.com" <amarkovic@wavecomp.com>,
- "aurelien@aurel32.net" <aurelien@aurel32.net>,
- "pburton@wavecomp.com" <pburton@wavecomp.com>,
- "sagark@eecs.berkeley.edu" <sagark@eecs.berkeley.edu>,
- "jasowang@redhat.com" <jasowang@redhat.com>,
- "kraxel@redhat.com" <kraxel@redhat.com>,
- "gxt@mprc.pku.edu.cn" <gxt@mprc.pku.edu.cn>, "ari@tuxera.com" <ari@tuxera.com>,
- "quintela@redhat.com" <quintela@redhat.com>,
- "mdroth@linux.vnet.ibm.com" <mdroth@linux.vnet.ibm.com>,
- "lersek@redhat.com" <lersek@redhat.com>,
- "borntraeger@de.ibm.com" <borntraeger@de.ibm.com>,
- "antonynpavlov@gmail.com" <antonynpavlov@gmail.com>,
- "dillaman@redhat.com" <dillaman@redhat.com>, "joel@jms.id.au" <joel@jms.id.au>,
- "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
- "integration@gluster.org" <integration@gluster.org>,
- "balrogg@gmail.com" <balrogg@gmail.com>,
- "rjones@redhat.com" <rjones@redhat.com>,
- "Andrew.Baumann@microsoft.com" <Andrew.Baumann@microsoft.com>,
- "mreitz@redhat.com" <mreitz@redhat.com>,
- "walling@linux.ibm.com" <walling@linux.ibm.com>,
- Denis Lunev <den@virtuozzo.com>, "mst@redhat.com" <mst@redhat.com>,
- "mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
- "v.maffione@gmail.com" <v.maffione@gmail.com>, "marex@denx.de" <marex@denx.de>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
- "alistair@alistair23.me" <alistair@alistair23.me>,
- "paul.durrant@citrix.com" <paul.durrant@citrix.com>,
- "pavel.dovgaluk@ispras.ru" <pavel.dovgaluk@ispras.ru>,
- "g.lettieri@iet.unipi.it" <g.lettieri@iet.unipi.it>,
- "rizzo@iet.unipi.it" <rizzo@iet.unipi.it>,
- "david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>,
- "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
- "pmorel@linux.ibm.com" <pmorel@linux.ibm.com>,
- "wencongyang2@huawei.com" <wencongyang2@huawei.com>,
- "jcd@tribudubois.net" <jcd@tribudubois.net>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "stefanb@linux.ibm.com" <stefanb@linux.ibm.com>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "Leif Lindholm \(Linaro address\)" <leif.lindholm@linaro.org>,
+ Linuxarm <linuxarm@huawei.com>, Auger Eric <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vikSrzEZK+ld
+X-TUID: i5N51FewzV4j
 
-MjQuMDkuMjAxOSAxODo0NCwgVmxhZGltaXIgU2VtZW50c292LU9naWV2c2tpeSB3cm90ZToNCj4g
-MjQuMDkuMjAxOSAxODoyOCwgRXJpYyBCbGFrZSB3cm90ZToNCj4+IE9uIDkvMjQvMTkgOToxMiBB
-TSwgVmxhZGltaXIgU2VtZW50c292LU9naWV2c2tpeSB3cm90ZToNCj4+DQo+Pj4+PiAzLiBXaGF0
-IHRvIGRvIHdpdGggaHVnZSBhdXRvLWdlbmVyYXRlZCBjb21taXQgMDc/IFNob3VsZCBJIHNwbGl0
-IGl0DQo+Pj4+PiBwZXItbWFpbnRhaW5lciBvciBwZXItc3Vic3lzdGVtLCBvciBsZWF2ZSBpdCBh
-cy1pcz8NCj4+Pj4NCj4+Pj4gSXQncyBiaWcuIEknZCBzcGxpdCBpdCBpbnRvIG11bHRpcGxlIHBh
-dGNoZXMgKGFuZCByZWR1Y2UgdGhlIGNjIC0gZXhjZXB0DQo+Pj4+IGZvciB0aGUgY292ZXIgbGV0
-dGVyLCB0aGUgcmVzdCBvZiB0aGUgcGF0Y2hlcyBjYW4gYmUgbGltaXRlZCB0byB0aGUNCj4+Pj4g
-YWN0dWFsIG1haW50YWluZXIvc3Vic3lzdGVtIGFmZmVjdGVkIHJhdGhlciB0aGFuIGV2ZXJ5b25l
-IGludm9sdmVkDQo+Pj4+IGFueXdoZXJlIGVsc2UgaW4gdGhlIHNlcmllcy4gV2l0aCB0aGUgY3Vy
-cmVudCBsYXJnZSBjYywgYW55b25lIHRoYXQNCj4+Pj4gcmVwbGllcyBnZXRzIHNldmVyYWwgbWFp
-bCBib3VuY2VzIGFib3V0ICJ0b28gbWFueSByZWNpcGllbnRzIikuwqAgSXQgbWF5DQo+Pj4+IGJl
-IGVhc2llciB0byBzcGxpdCBhbG9uZyBkaXJlY3RvcnkgYm91bmRhcmllcyB0aGFuIGJ5IG1haW50
-YWluZXINCj4+Pj4gYm91bmRhcmllcy7CoCBNYXJrdXMgaGFzIGFwcGxpZWQgbGFyZ2UgdHJlZS13
-aWRlIENvY2NpbmVsbGUgY2xlYW51cHMNCj4+Pj4gYmVmb3JlLCBtYXliZSBoZSBoYXMgc29tZSBh
-ZHZpY2UuDQo+Pj4NCj4+Pg0KPj4+IElmIHNwbGl0IGJ5IHN1YnN5c3RlbSBpdCB3b3VsZCBiZSAy
-MDArIHBhdGNoZXM6DQo+Pj4gZ2l0IGRpZmYgLS1uYW1lLW9ubHkgfCB3aGlsZSByZWFkIGY7IGRv
-IHNjcmlwdHMvZ2V0X21haW50YWluZXIucGwgLWYgJGYgLS1zdWJzeXN0ZW0gLS1uby1yb2xlc3Rh
-dHMgMj4vZGV2L251bGwgfCBncmVwIC12IEAgfCBoZWFkIC0xOyBkb25lIHwgc29ydCB8IHVuaXEg
-fCB3YyAtbA0KPj4+IDIwNQ0KPj4+DQo+Pj4NCj4+PiBUcnkgdG8gbG9vayBhdCBsYXJnZXIgc3Vi
-c3lzdGVtOg0KPj4+IGdpdCBkaWZmIC0tbmFtZS1vbmx5IHwgd2hpbGUgcmVhZCBmOyBkbyBzY3Jp
-cHRzL2dldF9tYWludGFpbmVyLnBsIC1mICRmIC0tc3Vic3lzdGVtIC0tbm8tcm9sZXN0YXRzIDI+
-L2Rldi9udWxsIHwgZ3JlcCAtdiBAIHwgdGFpbCAtMiB8IGhlYWQgLTE7IGRvbmUgfCBzb3J0IHwg
-dW5pcSB8IHdjIC1sDQo+Pj4gMTM5DQo+Pj4NCj4+PiBzdGlsbCB0b28gbWFueS4uIE9yIGlzIGl0
-IE9LPw0KPj4NCj4+IEhtbSAtIHRoYXQgYmVjb21lcyBhIHRyYWRlb2ZmIGluIGxlbmd0aCBvZiB0
-aGUgc2VyaWVzICh3aGVyZSBpbmRpdmlkdWFsDQo+PiBwYXRjaGVzIG1heSBiZSByZXZpZXdlZCBm
-YXN0LCBidXQgd2hlcmUgdGhlIG92ZXJhbGwgcHJvY2VzcyBtYXkgYmUNCj4+IGJvZ2dlZCBkb3du
-IGJ5IHNoZWVyIGxlbmd0aCksIHZzLiBsZW5ndGggb2YgaW5kaXZpZHVhbCBlbWFpbHMgKHdoZXJl
-IHRoZQ0KPj4gZW1haWwgaXRzZWxmIGlzIGRhdW50aW5nLCBidXQgYXMgdGhlIHJldmlldyBpcyBt
-ZWNoYW5pY2FsIGFuZCBkb25lIGJ5DQo+PiBhdXRvbWF0aW9uLCBpdCBiZWNvbWVzIGEgbWF0dGVy
-IG9mIHNwb3QtY2hlY2tpbmcgaWYgd2UgdHJ1c3QgdGhhdCB0aGUNCj4+IGF1dG9tYXRpb24gd2Fz
-IGRvbmUgY29ycmVjdGx5KS7CoCBZb3UgY2FuIHByb2JhYmx5IGdyb3VwIGl0IGluIGZld2VyDQo+
-PiBwYXRjaGVzLCBieSBqb2luaW5nIHNtYWxsZXIgcGF0Y2hlcyBhY3Jvc3MgYSBjb3VwbGUgb2Yg
-c3Vic3lzdGVtcy7CoCBJdCdzDQo+PiBhbiBhcnQgZm9ybSwgdGhlcmUncyBwcm9iYWJseSBzZXZl
-cmFsIHdheXMgdG8gZG8gaXQgdGhhdCB3b3VsZCB3b3JrLCBhbmQNCj4+IGl0IGNvbWVzIGRvd24g
-dG8gYSBqdWRnbWVudCBjYWxsIG9uIGhvdyBtdWNoIHdvcmsgeW91IHdhbnQgdG8gZG8gdG8gdHJ5
-DQo+PiBhbmQgcmVkdWNlIG90aGVyJ3Mgd29yayBpbiByZXZpZXdpbmcgaXQuwqAgTWF5YmUgZXZl
-biBhbiBvZmYtaGFuZCBzcGxpdA0KPj4gb2YgZ2F0aGVyaW5nIGZpbGVzIHVudGlsIHlvdSByZWFj
-aCBhYm91dCA1MDAgb3Igc28gbGluZXMgcGVyIGRpZmYuwqAgSQ0KPj4gd2lzaCBJIGhhZCBlYXNp
-ZXIgYWR2aWNlIG9uIGhvdyB0byB0YWNrbGUgdGhpcyBzb3J0IG9mIHByb2plY3QgaW4gdGhlDQo+
-PiB3YXkgdGhhdCB3aWxsIGdldCB0aGUgZmFzdGVzdCByZXNwb25zZSB0aW1lLg0KPj4NCj4+DQo+
-Pj4+PiDCoMKgIHZsLmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCAxMyArLQ0KPj4+Pj4g
-wqDCoCBzY3JpcHRzL2NvY2NpbmVsbGUvYXV0by1wcm9wYWdhdGVkLWVycnAuY29jY2kgfMKgIDgy
-ICsrKysrKysNCj4+Pj4+IMKgwqAgMzE5IGZpbGVzIGNoYW5nZWQsIDI3MjkgaW5zZXJ0aW9ucygr
-KSwgNDI0NSBkZWxldGlvbnMoLSkNCj4+Pj4+IMKgwqAgY3JlYXRlIG1vZGUgMTAwNjQ0IHNjcmlw
-dHMvY29jY2luZWxsZS9hdXRvLXByb3BhZ2F0ZWQtZXJycC5jb2NjaQ0KPj4+Pg0KPj4+PiBUaGUg
-ZGlmZnN0YXQgaXMgaHVnZSwgYnV0IHByb21pc2luZy4NCj4+DQo+PiBXZSBhbHNvIGxlYXJuZWQg
-aW4gcmV2aWV3cyBvZiA3LzkgdGhhdCB0aGUgZGlmZnN0YXQgaGVyZSBpcyBtaXNsZWFkaW5nLA0K
-Pj4gdGhlIG51bWJlciBvZiBpbnNlcnRpb25zIHdpbGwgZGVmaW5pdGVseSBiZSBpbmNyZWFzaW5n
-IG9uY2UgdGhlDQo+PiBDb2NjaW5lbGxlIHNjcmlwdCBpcyBmaXhlZCB0byBpbnNlcnQgdGhlIG1h
-Y3JvIGluIG1vcmUgZnVuY3Rpb25zLCBidXQNCj4+IGhvcGVmdWxseSBpdCdzIHN0aWxsIGEgbmV0
-IHJlZHVjdGlvbiBpbiBvdmVyYWxsIGxpbmVzLg0KPj4NCj4gDQo+IE5vIGhvcGUgZm9yIHVzOiB3
-aXRoIGZpeGVkIHNjcmlwdCBJIG5vdyBzZWUNCj4gDQo+IDkxOSBmaWxlcyBjaGFuZ2VkLCA2NDI1
-IGluc2VydGlvbnMoKyksIDQyMzQgZGVsZXRpb25zKC0pDQo+IA0KDQpBbHNvLCBJIGhhdmUgYWRk
-IGluY2x1ZGUgInFhcGkvZXJyb3IuaCIgdG8gZmlsZXMsIHdoZXJlIGVycnAgb25seSBwYXNzZWQN
-CnRvIGNhbGxlZCBmdW5jdGlvbnMgKG9yIGZvciBmdW5jdGlvbnMsIHdoaWNoIGFyZSBub3Qgc2lt
-cGxlIHN0dWJzKToNCg0KIyBnaXQgZGlmZiB8IGdyZXAgJysjaW5jbHVkZScgfCB3YyAtbA0KMjUz
-DQoNCg0KLS0gDQpCZXN0IHJlZ2FyZHMsDQpWbGFkaW1pcg0K
+On 09/20/19 19:04, Shameerali Kolothum Thodi wrote:
+> Hi Laszlo/Igor,
+>
+> I spend some time to debug this further as I was rebasing the nvdimm
+> hot-add support patches on top of the ongoing pc-dimm hot add ones.
+>
+> Just to refresh the memory:
+>
+> https://patchwork.kernel.org/cover/10783589/
+>
+> " It is observed that hot adding nvdimm will results in guest reboot
+> failure. EDK2 fails to build the ACPI tables on reboot. Please find
+> below EDK2 log on Guest reboot after nvdimm hot-add,
+>
+> ProcessCmdAddChecksum: invalid checksum range in "etc/acpi/tables"
+> OnRootBridgesConnected: InstallAcpiTables: Protocol Error
+> "
+>
+> Please find below,
+>
+>> -----Original Message-----
+>> From: Laszlo Ersek [mailto:lersek@redhat.com]
+>> Sent: 05 March 2019 12:15
+>> To: Igor Mammedov <imammedo@redhat.com>
+>> Cc: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>;
+>> Auger Eric <eric.auger@redhat.com>; shannon.zhaosl@gmail.com;
+>> peter.maydell@linaro.org; qemu-devel@nongnu.org; qemu-arm@nongnu.org;
+>> xuwei (O) <xuwei5@huawei.com>; Linuxarm <linuxarm@huawei.com>; Ard
+>> Biesheuvel <ard.biesheuvel@linaro.org>; Leif Lindholm (Linaro
+>> address) <leif.lindholm@linaro.org>
+>> Subject: Re: [RFC PATCH 0/4] ARM virt: ACPI memory hotplug support
+>>
+>> On 03/01/19 18:39, Igor Mammedov wrote:
+>>> On Fri, 1 Mar 2019 14:49:45 +0100
+>>> Laszlo Ersek <lersek@redhat.com> wrote:
+>>>
+>>>> On 02/28/19 15:02, Shameerali Kolothum Thodi wrote:
+>>>>
+>>>>> Ah..I missed the fact that, firmware indeed sees an update in the
+>>>>> blob len here (rounded or not) after reboot. So don't think x86
+>>>>> has the same issue and padding is not the right solution as Igor
+>>>>> explained in his reply.
+>>>>>
+>>>>> I will try to debug this further. Any pointers welcome.
+>>>>
+>>>> How about this.
+>>>>
+>>>> (1) The firmware looks up the fw_cfg file called "etc/table-loader"
+>>>> in the fw_cfg file directory (identified by constant selector key
+>>>> 0x0019, FW_CFG_FILE_DIR).
+>>>>
+>>>> (2) The directory entry, once found, tells the firmware two things
+>>>> simultaneously. The selector key, and the size of the blob.
+>>>>
+>>>> (3) The firmware selects the selector key from step (2).
+>>>>
+>>>> (4) QEMU regenerates the ACPI payload (as a select callback).
+>>>>
+>>>> (5) The firmware reads the number of bytes from the fw_cfg blob
+>>>> that it learned in step (2).
+>>>>
+>>>> Here's the problem. As long as QEMU used to perform step (4) only
+>>>> for the purpose of refreshing PCI resources in the ACPI payload,
+>>>> step (4) wouldn't *resize* the blob.
+>>>>
+>>>> However, if step (4) enlarges the blob, then the byte count that
+>>>> step (5) uses -- from step (2) -- for reading, is obsolete.
+>>
+>>> I've thought that was a problem with IO based fw_cfg, as reading
+>>> size/content were separates steps and that it was solved by DMA
+>>> based fw_cfg file read.
+>>
+>> The DMA backend is not relevant for this question, for two reasons:
+>>
+>> (a) The question whether the fw_cfg transfer takes places with port
+>> IO vs. DMA is hidden from the fw_cfg client code; that code goes
+>> through an abstract library API.
+>>
+>> (b) While the DMA method indeed lets the firmware specify the details
+>> of the transfer with one action, the issue is with the number of
+>> bytes that the firmware requests (that is, not with *how* the
+>> firmware requests the transfer). The firmware has to know the size of
+>> the transfer before it can initiate the transfer (regardless of port
+>> IO vs. DMA).
+>>
+>>
+>> My question is: assume the firmware item in question is selected, and
+>> the QEMU-side select callback runs (regenerating the ACPI payload).
+>> Does this action update the blob size in the fw_cfg file directory as
+>> well?
+>
+> I think it doesn't update the blob size on select callback which is
+> the root cause of this issue. And the reason looks like,
+> qemu_ram_resize() function returns without invoking the callback to
+> update the blob size.
+>
+> On boot up, Qemu builds the table and exposes it to guest,
+>       virt_acpi_setup()
+>         acpi_add_rom_blob()
+>           rom_add_blob()
+>             rom_set_mr()  --> mr is allocated here and ram_block used_length = HOST_PAGE_ALIGN(blob size);
+>             fw_cfg_add_file_callback()
+>               fw_cfg_add_bytes_callback() --> This uses the blob size passed into it.
+>
+> On select callback path,
+>
+> virt_acpi_build_update()
+>    acpi_ram_update()
+>     memory_region_ram_resize()
+>       qemu_ram_resize() -->. Here the newsize gets aligned to HOST_PAGE and callback is only called used_length != newsize.
+>
+> https://github.com/qemu/qemu/blob/master/exec.c#L2180
+>
+> Debug logs:
+> Initial boot:
+> ##QEMU_DEBUG## rom_add_blob: file etc/acpi/tables size 0x64f7
+> ##QEMU_DEBUG## fw_cfg_add_bytes_callback: key 0x21 len 0x64f7
+> ........
+> ........
+> ###UEFI#### InstallQemuFwCfgTables: "etc/table-loader" has FwCfgItem 0x27 size 0xD00
+> ##QEMU_DEBUG## virt_acpi_build_update:
+> ##QEMU_DEBUG## acpi_ram_update: size 0x64f7
+> ##QEMU_DEBUG## qemu_ram_resize: idstr /rom@etc/acpi/tables used_length  0x7000 newsize 0x7000 --> No callback.
+> .....
+> ######UEFI###### ProcessCmdAllocate: QemuFwCfgFindFile("etc/acpi/tables"): size 0x64F7 --> UEFI get the actual size, which is fine for now.
+>
+> Hot-add nvdimms and reboot.
+>
+> root@ubuntu:/# reboot
+> .......
+> ........
+> ###UEFI#### InstallQemuFwCfgTables: "etc/table-loader" has FwCfgItem 0x27 size 0xD00
+> ##QEMU_DEBUG## virt_acpi_build_update:
+> ##QEMU_DEBUG## acpi_ram_update: size 0x6667 --> Size changed.
+> ##QEMU_DEBUG## qemu_ram_resize: idstr /rom@etc/acpi/tables used_length  0x7000 newsize 0x7000 --> newsize is still aligned to 0x7000 and no callback to update.
+> ......
+> ######UEFI###### ProcessCmdAllocate: QemuFwCfgFindFile("etc/acpi/tables"): size 0x64F7 -->UEFI still sees the old value and fails.
+>
+> This can be fixed by,
+>
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c index f3bd45675b..79da3fd35d 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -854,6 +854,9 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+>          build_rsdp(tables->rsdp, tables->linker, &rsdp_data);
+>      }
+>
+> +    g_array_set_size(tables_blob,
+> +                    TARGET_PAGE_ALIGN(acpi_data_len(tables_blob)));
+> +
+>      /* Cleanup memory that's no longer used. */
+>      g_array_free(table_offsets, true);
+>  }
+>
+> But I am not sure this is the best to way fix this issue (Or I am
+> missing something here).
+>
+> Please let me know.
+
+The above QEMU patch, for virt_acpi_build(), may be necessary, but I
+don't think it is sufficient.
+
+For the firmware to see the updated (enlarged) blob, two things are
+required:
+
+(a) QEMU to update the blob size in the fw_cfg directory entry.
+
+Note: to the firmware, it is totally irrelevant if QEMU updates some
+*other* value or field that reflects the fresh blob size. The only thing
+the firmware can see is the entry in the FW_CFG_FILE_DIR blob.
+
+To illustrate the field I'm referring to, see:
+
+    s->files->f[index].size   = cpu_to_be32(len);
+
+in fw_cfg_add_file_callback().
+
+See also:
+
+            s->files->f[i].size   = cpu_to_be32(len);
+
+in fw_cfg_modify_file().
+
+That "size" field is what the firmware can see.
+
+Note: *all* relevant fw_cfg files must have their "size" fields updated
+in the directory blob (FW_CFG_FILE_DIR). I.e. the requirement applies to
+both the linker-loader script, and to all blobs that are referenced (by
+name) by the commands in the linker-loader script.
+
+
+(b) The firmware to re-read the size from the directory, after selecting
+the key for the sake of ACPI regeneration.
+
+I wrote:
+
+>> If it does, then I can work around the problem in the firmware. I can
+>> add a re-lookup to the code after the item selection, in order to get
+>> the fresh blob size from the fw_cfg file directory. Then we can use
+>> that size for the actual transfer.
+>>
+>> This won't help old firmware on new QEMU, but at least new firmware
+>> on old QEMU will not be hurt (the re-fetching of the fw_cfg file
+>> directory will come with a small performance penalty, but
+>> functionally it will be a no-op).
+
+Thus, the firmware patch in question would be:
+
+| diff --git a/OvmfPkg/AcpiPlatformDxe/QemuFwCfgAcpi.c b/OvmfPkg/AcpiPlatformDxe/QemuFwCfgAcpi.c
+| index bc1a891dbaf1..07f70ffe158a 100644
+| --- a/OvmfPkg/AcpiPlatformDxe/QemuFwCfgAcpi.c
+| +++ b/OvmfPkg/AcpiPlatformDxe/QemuFwCfgAcpi.c
+| @@ -975,6 +975,24 @@ InstallQemuFwCfgTables (
+|    ORDERED_COLLECTION       *SeenPointers;
+|    ORDERED_COLLECTION_ENTRY *SeenPointerEntry, *SeenPointerEntry2;
+|
+| +  Status = QemuFwCfgFindFile ("etc/table-loader", &FwCfgItem, &FwCfgSize);
+| +  if (EFI_ERROR (Status)) {
+| +    return Status;
+| +  }
+| +
+| +  //
+| +  // By selecting "FwCfgItem", ask QEMU to regenerate the ACPI payload, with
+| +  // all PCI devices decoding their resources. Note: further selections
+| +  // of the same key will not repeat the patching.
+| +  //
+| +  EnablePciDecoding (&OriginalPciAttributes, &OriginalPciAttributesCount);
+| +  QemuFwCfgSelectItem (FwCfgItem);
+| +  RestorePciDecoding (OriginalPciAttributes, OriginalPciAttributesCount);
+| +
+| +  //
+| +  // The size of the script may have changed, possibly due to platform devices
+| +  // having been hot-plugged before platform reset. Re-read the size.
+| +  //
+|    Status = QemuFwCfgFindFile ("etc/table-loader", &FwCfgItem, &FwCfgSize);
+|    if (EFI_ERROR (Status)) {
+|      return Status;
+| @@ -989,10 +1007,8 @@ InstallQemuFwCfgTables (
+|    if (LoaderStart == NULL) {
+|      return EFI_OUT_OF_RESOURCES;
+|    }
+| -  EnablePciDecoding (&OriginalPciAttributes, &OriginalPciAttributesCount);
+|    QemuFwCfgSelectItem (FwCfgItem);
+|    QemuFwCfgReadBytes (FwCfgSize, LoaderStart);
+| -  RestorePciDecoding (OriginalPciAttributes, OriginalPciAttributesCount);
+|    LoaderEnd = LoaderStart + FwCfgSize / sizeof *LoaderEntry;
+|
+|    AllocationsRestrictedTo32Bit = NULL;
+
+But, again, this only makes sense if QEMU implements (a).
+
+Thanks
+Laszlo

@@ -1,320 +1,259 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4150918wrp;
-        Tue, 24 Sep 2019 10:02:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxH9AwcP4sgoOmEKsn9mKdL3HleVHLVBa1uOUEAsU8WejUvu2+7vfMunXNxEMDLD5sPsJQX
-X-Received: by 2002:a17:906:6b98:: with SMTP id l24mr3544630ejr.208.1569344552672;
-        Tue, 24 Sep 2019 10:02:32 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1569344552; cv=pass;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4337794wrp;
+        Tue, 24 Sep 2019 13:11:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyZULbz3XcfdM6gsY9r6ZlKSjntGpYq64RoUF30x+WqonleH1MArcWdcraXhH8iY0CDeAFE
+X-Received: by 2002:a0c:a988:: with SMTP id a8mr4064477qvb.34.1569355864799;
+        Tue, 24 Sep 2019 13:11:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569355864; cv=none;
         d=google.com; s=arc-20160816;
-        b=gE869k4zsb008P24e5iB5M4dFoftAbKpKoyoEE7OajhDHCnjiU4vKYtOGN6iRbk6yD
-         QLO3vxLBhBCHEexwP2CkWs/347ZapQluUK5bH0MiNz9Q3usu8+9H8BVsTk70yrgO2n/Y
-         M1DvukozNhFHFRf57TDJbOa78jSCWTsiB4hS0gQZRUiYWUo1lGIE7xSMMWPipGz7A4mf
-         vxowTpwj87b/QrgDiziEnSjrp0aexOY7TTdgtdd2fMgJ2J/Mim1NoXo+srZ2yQrUY1jk
-         3dYSwxjoqlsUMvpuzUvswhxFk60WYx22iXwj/DpUVutQ5bJU+O6EGuiio4GLnOYNMwIH
-         ztwA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=gGpMG8pNLlGCulmKPAcOfG+FixZX2oORHXWJ5rZlLvTl1d9fWO4D0TYTLRk4Hbg531
+         HGYqFQb/qe0LGrvu6UotscN8z5larDbqQB/wN1AtE1+JEEqxCUTBpMBi82goaaAw4igP
+         c98LXpKlGnK0s0ukcjtNeW57Nbmd+MRl3O30ZvgmKS449auxyGLFGBUNv/XC0Nr8/3c5
+         GRBue2tDFK1i+rbuF1CjHKHMGa8WjSnCJ+uFzzDRRUwNyydDJglexiOi5HJoThzmLJqv
+         cSPPqsWyAfMAEJTLtxrBV1fGPYXXdSlA5kgECIKePBN6AzD1wPjZJuDgZs+jzOoYxL0q
+         AeZg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:to:from:dkim-signature;
-        bh=mkX9PA85Z3c+NsQAK74o/lDeyeQUnUYUnBRcLQhvkzc=;
-        b=FvRDPoGz97xQpqjFTAcHN+qIllPpUen87K2YzNUNDXJrrwdGcues7NkhGCGoBYKbvs
-         B4uKUqa/sD6wrrUGJYGzTt3Ba8cFntQXJ4gzx9RuhR+MLlPUyrWZHgAjafbIib1auIAZ
-         jOgb3Zcr2Gn4b/7VyUQjo8kp3lK8/6xZllMzNV4YSipB5uP/qDseaIWvHKKIzyQEuhcD
-         DrkDuS6JWlFGdj8AowlhUw/zcGFuwt9LVEnNeTkUq1q0B6Htq4OJPlApvjPzIW5Asjul
-         GTgholt/i0ZGEOONClMD6CK0yMqeZHaTWLDuG6IJjMd9R0vJgrGJwivz56Ay91wbXb5s
-         LPtA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b=ODsjgLzX;
-       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=4Wg3mmWs24pjAlm29jFSuNKZ90UOsKEw51heL7I+oUE=;
+        b=WymKtVfsrTWoh1FPF+6wQhUT1TdNHxPZq2NRlBR2Dvjgp/oQoHJjUgV5ldTXWuoeAd
+         euxw/HTsf0f/JaIkFQ8vxT0UlcPdvZCQo05+cf0EgdY3PdtleFXMI3HlcEG07x0M4RpM
+         F/uk7ac1nZtNkE0gP904BoRpaiIID+mjNvnCrgmwAgha3nR+mvLnzh3yNKcIdi4FhOY0
+         uTI0uFbqGygMlcPL9aqAsT/ee+GlR55JkzJXPNDnYVLJ6I1Brm1gW0gWmnABJMfJaSI1
+         4+sr45s/COnNnjFgEyJnt4pye0Oh5VyTbQuYJZ5MuFu6U733jcu9ZAjwGiEq7ZlToHh8
+         b8gA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v2si1320375eju.3.2019.09.24.10.02.32
+        by mx.google.com with ESMTPS id l3si2006576qkg.203.2019.09.24.13.11.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Sep 2019 10:02:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 24 Sep 2019 13:11:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b=ODsjgLzX;
-       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Received: from localhost ([::1]:48632 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
+Received: from localhost ([::1]:50532 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCoCs-0006Ai-MQ
-	for alex.bennee@linaro.org; Tue, 24 Sep 2019 13:02:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57557)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iCr9L-0000fL-PY
+	for alex.bennee@linaro.org; Tue, 24 Sep 2019 16:11:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43661)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iCnOg-0005De-Pj
- for qemu-arm@nongnu.org; Tue, 24 Sep 2019 12:10:40 -0400
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iCr85-0000PC-DL
+ for qemu-devel@nongnu.org; Tue, 24 Sep 2019 16:09:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iCnOf-0001a3-7c
- for qemu-arm@nongnu.org; Tue, 24 Sep 2019 12:10:38 -0400
-Received: from mail-eopbgr150092.outbound.protection.outlook.com
- ([40.107.15.92]:34113 helo=EUR01-DB5-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iCr83-0002ox-ML
+ for qemu-devel@nongnu.org; Tue, 24 Sep 2019 16:09:45 -0400
+Received: from relay.sw.ru ([185.231.240.75]:38020)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
- id 1iCnOU-0001Rt-KR; Tue, 24 Sep 2019 12:10:27 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Wbo93jgSpJhitUlMrJBJiNZoCP9shTy/sRsWQa/0vK6ifNMftrmYAa+ivM8u7BHZeS0MgHuNbiJs2uxqLZ7Vf6u/k1y1YaoJSzp2Ne+Ei8ERo4fwrJ05DSPXlIzN4b54gDpaltX4ybvFTZILZkfDuebInrIxE+YXM75/lX7tOaH7jpMDTG3/weSMn4/jpO774hv8LpDsZiP9vZMdfIkROTcaHJeam4x/G1EPsoACPAqhR129aTFAjLXRsT8WYfTMF26kSmhEZ1OgFUyirx0y53T174vxmT7zI+TC+L6QRRI9tTdwsXyRgR8CD/DduCYz1JQw1J/zfzGk/wactgtkuQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mkX9PA85Z3c+NsQAK74o/lDeyeQUnUYUnBRcLQhvkzc=;
- b=m9e67ytV5VqTgqfjCu3TIzYeWspr3nncVL6xcdrCNNRempzlLR9saH+q0XxzX/QwUvLSdhq2xvo4Hd1IsTELGRXAJ0vgrMJYaXdAcq9RWacG8rdWhDDZJQrvapr0KuM7SIapXZRg1dCSV5NUDSCK2GnrdXulJruj0gW+WyKYOQDEFutqwH7qKg/PGw+Bk8V/u+zXElaGPHeWy8zn8uQEHFIWRdaxSjMzUDn/X8j23Al1Z054ANfDSM6leX61KJ7LxdV2rlyeMxCH1tLKWPqbyIIRb+KVg/ExQQAw58nSsO9IbeY1bSEGzOL+n4Q9ufxbe6OQFKapMMok65QqjyVHZQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
- header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mkX9PA85Z3c+NsQAK74o/lDeyeQUnUYUnBRcLQhvkzc=;
- b=ODsjgLzXPhpOHiqC+NeexpF4+yg7pS5S+TMzRb2D0UVdSJpxsmc6vrt6LyKryhvPRTYnXjpgFdxEjH4fpJNVFgquwh9Td/3MlDa37NPEB4/rs6v/qIHJFL+PI5XNLVIZbXESXhqtvAKLr7o8Zhy7JV8/ML7+uJEXdcv70de3xuI=
-Received: from DB8PR08MB5498.eurprd08.prod.outlook.com (52.133.242.216) by
- DB8PR08MB5099.eurprd08.prod.outlook.com (10.255.18.155) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2284.26; Tue, 24 Sep 2019 16:10:24 +0000
-Received: from DB8PR08MB5498.eurprd08.prod.outlook.com
- ([fe80::b5c0:6b97:438d:77ed]) by DB8PR08MB5498.eurprd08.prod.outlook.com
- ([fe80::b5c0:6b97:438d:77ed%2]) with mapi id 15.20.2284.023; Tue, 24 Sep 2019
- 16:10:24 +0000
+ id 1iCr83-0002np-F4; Tue, 24 Sep 2019 16:09:43 -0400
+Received: from [10.94.3.0] (helo=kvm.qa.sw.ru)
+ by relay.sw.ru with esmtp (Exim 4.92.2)
+ (envelope-from <vsementsov@virtuozzo.com>)
+ id 1iCr7r-0001Mk-Gw; Tue, 24 Sep 2019 23:09:31 +0300
 From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-To: Eric Blake <eblake@redhat.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-Subject: Re: [RFC v2 0/9] error: auto propagated local_err
-Thread-Topic: [RFC v2 0/9] error: auto propagated local_err
-Thread-Index: AQHVcioNiDMY2yo+Z0yF9jZaFGvJZ6c5qyCAgAFm+wD//+MaAIAANo8AgAAAnICAAAD3AP//026A
-Date: Tue, 24 Sep 2019 16:10:23 +0000
-Message-ID: <693d8f68-5ab8-71f3-1b2d-cd33f654d3a2@virtuozzo.com>
-References: <20190923161231.22028-1-vsementsov@virtuozzo.com>
- <d1527fdc-b5e8-093a-9206-6f7ceeece2ac@redhat.com>
- <84c9e5dd-3e0f-94e1-5da1-2c7baa594bf1@virtuozzo.com>
- <22191b09-822a-1f54-dcaa-3726c833805b@redhat.com>
- <97b77e48-b370-a596-0a06-9ceaaf6bc72e@virtuozzo.com>
- <824bb514-fc6f-7adc-4f4f-97dd758fb04d@virtuozzo.com>
- <0bc76371-c667-3fa7-8fea-c3c3df84a7d6@virtuozzo.com>
-In-Reply-To: <0bc76371-c667-3fa7-8fea-c3c3df84a7d6@virtuozzo.com>
-Accept-Language: ru-RU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: HE1PR0301CA0005.eurprd03.prod.outlook.com
- (2603:10a6:3:76::15) To DB8PR08MB5498.eurprd08.prod.outlook.com
- (2603:10a6:10:11c::24)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=vsementsov@virtuozzo.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-tagtoolbar-keys: D20190924191015234
-x-originating-ip: [185.231.240.5]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 43df7101-4bfd-45b8-73df-08d74109b476
-x-microsoft-antispam: BCL:0; PCL:0;
- RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600167)(711020)(4605104)(1401327)(2017052603328)(7193020);
- SRVR:DB8PR08MB5099; 
-x-ms-traffictypediagnostic: DB8PR08MB5099:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <DB8PR08MB50997BB021D43D59E7A25441C1840@DB8PR08MB5099.eurprd08.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
-x-forefront-prvs: 0170DAF08C
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(136003)(366004)(376002)(396003)(39850400004)(346002)(189003)(199004)(102836004)(36756003)(66476007)(2501003)(229853002)(64756008)(81166006)(81156014)(8676002)(66556008)(14454004)(71200400001)(256004)(478600001)(71190400001)(31686004)(2906002)(3846002)(6116002)(25786009)(7336002)(6512007)(7416002)(486006)(6246003)(86362001)(4326008)(31696002)(2616005)(476003)(7366002)(186003)(8936002)(5660300002)(99286004)(76176011)(7406005)(446003)(11346002)(54906003)(6486002)(52116002)(26005)(110136005)(66066001)(7736002)(53546011)(316002)(66446008)(66946007)(7276002)(305945005)(386003)(6506007)(6436002)(45426003);
- DIR:OUT; SFP:1102; SCL:1; SRVR:DB8PR08MB5099;
- H:DB8PR08MB5498.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: virtuozzo.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: HJ3RgibEymuDHOAgXSQeOhBEBc/lrNvbi9A9xcm6kSFDV+u6OZXVG9RBmK7ffx/UkLfOuqgXAkPwe4puZ5ejb5Z3Ohxk6FCouPhCwGlc7mnA1reuO+Z9fIjXSt8q5NdMydkNprlfsUT2Y3+iqijhrDbAmnIL7CY+Z9HVy3CBWIG/r0Ect3dwR5RsC0BJOisLFTT3b9DCO7rSUhnrOZgTkhfReI8DzQDcrMpZWFU9/tmIW+ItlR7L6V6pmp5N6Q4rhYHwSZREqISu+kb8hUoSzrM42ftMOdPAMT/JckhnqLrOAOPF1sSxZOk2HyMwZcPTOO8sKqHn2ZielUyxtz+sw1Ap36TCSFz9QzSTz8aE4TWQZg3TxLh3vZiuiXfZr8L8aoUNdD54nsQ7yBCmLVSVDCGNKUV5N/RePz+wt24cwWE=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <71B78CFDAE40C64BABE9E074DF095940@eurprd08.prod.outlook.com>
-Content-Transfer-Encoding: base64
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 00/25] error: auto propagated local_err
+Date: Tue, 24 Sep 2019 23:08:37 +0300
+Message-Id: <20190924200902.4703-1-vsementsov@virtuozzo.com>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-X-OriginatorOrg: virtuozzo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 43df7101-4bfd-45b8-73df-08d74109b476
-X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Sep 2019 16:10:23.9601 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: aJt0ghZNHMqdswRSbUXaf2MGzKF2E4MwdBNYDAqqpZBL9mDsC5SUeVJaXRnGtC1OnADSVOTQosyiK5BUu6IRwipsUmvSs7AK++6n+UOHfDs=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR08MB5099
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.15.92
-X-BeenThere: qemu-arm@nongnu.org
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 185.231.240.75
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "stefanha@redhat.com" <stefanha@redhat.com>,
- "codyprime@gmail.com" <codyprime@gmail.com>,
- "jan.kiszka@siemens.com" <jan.kiszka@siemens.com>,
- "berto@igalia.com" <berto@igalia.com>,
- "zhang.zhanghailiang@huawei.com" <zhang.zhanghailiang@huawei.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- "arikalo@wavecomp.com" <arikalo@wavecomp.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
- "hpoussin@reactos.org" <hpoussin@reactos.org>,
- "anthony.perard@citrix.com" <anthony.perard@citrix.com>,
- "samuel.thibault@ens-lyon.org" <samuel.thibault@ens-lyon.org>,
- "philmd@redhat.com" <philmd@redhat.com>,
- "green@moxielogic.com" <green@moxielogic.com>,
- "lvivier@redhat.com" <lvivier@redhat.com>,
- "ehabkost@redhat.com" <ehabkost@redhat.com>,
- "xiechanglong.d@gmail.com" <xiechanglong.d@gmail.com>,
- "pl@kamp.de" <pl@kamp.de>, "dgilbert@redhat.com" <dgilbert@redhat.com>,
- "b.galvani@gmail.com" <b.galvani@gmail.com>,
- "eric.auger@redhat.com" <eric.auger@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "ronniesahlberg@gmail.com" <ronniesahlberg@gmail.com>,
- "jsnow@redhat.com" <jsnow@redhat.com>, "rth@twiddle.net" <rth@twiddle.net>,
- "kwolf@redhat.com" <kwolf@redhat.com>, "andrew@aj.id.au" <andrew@aj.id.au>,
- "crwulff@gmail.com" <crwulff@gmail.com>,
- "sundeep.lkml@gmail.com" <sundeep.lkml@gmail.com>,
- "michael@walle.cc" <michael@walle.cc>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- "kbastian@mail.uni-paderborn.de" <kbastian@mail.uni-paderborn.de>,
- "imammedo@redhat.com" <imammedo@redhat.com>, "fam@euphon.net" <fam@euphon.net>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "sheepdog@lists.wpkg.org" <sheepdog@lists.wpkg.org>,
- "david@redhat.com" <david@redhat.com>, "palmer@sifive.com" <palmer@sifive.com>,
- "thuth@redhat.com" <thuth@redhat.com>,
- "jcmvbkbc@gmail.com" <jcmvbkbc@gmail.com>, "hare@suse.com" <hare@suse.com>,
- "sstabellini@kernel.org" <sstabellini@kernel.org>,
- "arei.gonglei@huawei.com" <arei.gonglei@huawei.com>,
- "marcel.apfelbaum@gmail.com" <marcel.apfelbaum@gmail.com>,
- "namei.unix@gmail.com" <namei.unix@gmail.com>,
- "atar4qemu@gmail.com" <atar4qemu@gmail.com>,
- "farman@linux.ibm.com" <farman@linux.ibm.com>,
- "amit@kernel.org" <amit@kernel.org>, "sw@weilnetz.de" <sw@weilnetz.de>,
- "groug@kaod.org" <groug@kaod.org>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "peter.chubb@nicta.com.au" <peter.chubb@nicta.com.au>,
- "clg@kaod.org" <clg@kaod.org>, "shorne@gmail.com" <shorne@gmail.com>,
- "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "amarkovic@wavecomp.com" <amarkovic@wavecomp.com>,
- "aurelien@aurel32.net" <aurelien@aurel32.net>,
- "pburton@wavecomp.com" <pburton@wavecomp.com>,
- "sagark@eecs.berkeley.edu" <sagark@eecs.berkeley.edu>,
- "jasowang@redhat.com" <jasowang@redhat.com>,
- "kraxel@redhat.com" <kraxel@redhat.com>,
- "gxt@mprc.pku.edu.cn" <gxt@mprc.pku.edu.cn>, "ari@tuxera.com" <ari@tuxera.com>,
- "quintela@redhat.com" <quintela@redhat.com>,
- "mdroth@linux.vnet.ibm.com" <mdroth@linux.vnet.ibm.com>,
- "lersek@redhat.com" <lersek@redhat.com>,
- "borntraeger@de.ibm.com" <borntraeger@de.ibm.com>,
- "antonynpavlov@gmail.com" <antonynpavlov@gmail.com>,
- "dillaman@redhat.com" <dillaman@redhat.com>, "joel@jms.id.au" <joel@jms.id.au>,
- "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
- "integration@gluster.org" <integration@gluster.org>,
- "balrogg@gmail.com" <balrogg@gmail.com>,
- "rjones@redhat.com" <rjones@redhat.com>,
- "Andrew.Baumann@microsoft.com" <Andrew.Baumann@microsoft.com>,
- "mreitz@redhat.com" <mreitz@redhat.com>,
- "walling@linux.ibm.com" <walling@linux.ibm.com>,
- Denis Lunev <den@virtuozzo.com>, "mst@redhat.com" <mst@redhat.com>,
- "mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
- "v.maffione@gmail.com" <v.maffione@gmail.com>, "marex@denx.de" <marex@denx.de>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
- "alistair@alistair23.me" <alistair@alistair23.me>,
- "paul.durrant@citrix.com" <paul.durrant@citrix.com>,
- "pavel.dovgaluk@ispras.ru" <pavel.dovgaluk@ispras.ru>,
- "g.lettieri@iet.unipi.it" <g.lettieri@iet.unipi.it>,
- "rizzo@iet.unipi.it" <rizzo@iet.unipi.it>,
- "david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>,
- "akrowiak@linux.ibm.com" <akrowiak@linux.ibm.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "xiaoguangrong.eric@gmail.com" <xiaoguangrong.eric@gmail.com>,
- "pmorel@linux.ibm.com" <pmorel@linux.ibm.com>,
- "wencongyang2@huawei.com" <wencongyang2@huawei.com>,
- "jcd@tribudubois.net" <jcd@tribudubois.net>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "stefanb@linux.ibm.com" <stefanb@linux.ibm.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aOZ0kIJi6j68
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Paul Burton <pburton@wavecomp.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Jeff Cody <codyprime@gmail.com>,
+ Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-block@nongnu.org,
+ Juan Quintela <quintela@redhat.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Greg Kurz <groug@kaod.org>,
+ Yuval Shaia <yuval.shaia@oracle.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>, integration@gluster.org,
+ David Hildenbrand <david@redhat.com>, John Snow <jsnow@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ vsementsov@virtuozzo.com,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fep+9fbZHkTh
 
-MjQuMDkuMjAxOSAxODo0OSwgVmxhZGltaXIgU2VtZW50c292LU9naWV2c2tpeSB3cm90ZToNCj4g
-MjQuMDkuMjAxOSAxODo0NiwgVmxhZGltaXIgU2VtZW50c292LU9naWV2c2tpeSB3cm90ZToNCj4+
-IDI0LjA5LjIwMTkgMTg6NDQsIFZsYWRpbWlyIFNlbWVudHNvdi1PZ2lldnNraXkgd3JvdGU6DQo+
-Pj4gMjQuMDkuMjAxOSAxODoyOCwgRXJpYyBCbGFrZSB3cm90ZToNCj4+Pj4gT24gOS8yNC8xOSA5
-OjEyIEFNLCBWbGFkaW1pciBTZW1lbnRzb3YtT2dpZXZza2l5IHdyb3RlOg0KPj4+Pg0KPj4+Pj4+
-PiAzLiBXaGF0IHRvIGRvIHdpdGggaHVnZSBhdXRvLWdlbmVyYXRlZCBjb21taXQgMDc/IFNob3Vs
-ZCBJIHNwbGl0IGl0DQo+Pj4+Pj4+IHBlci1tYWludGFpbmVyIG9yIHBlci1zdWJzeXN0ZW0sIG9y
-IGxlYXZlIGl0IGFzLWlzPw0KPj4+Pj4+DQo+Pj4+Pj4gSXQncyBiaWcuIEknZCBzcGxpdCBpdCBp
-bnRvIG11bHRpcGxlIHBhdGNoZXMgKGFuZCByZWR1Y2UgdGhlIGNjIC0gZXhjZXB0DQo+Pj4+Pj4g
-Zm9yIHRoZSBjb3ZlciBsZXR0ZXIsIHRoZSByZXN0IG9mIHRoZSBwYXRjaGVzIGNhbiBiZSBsaW1p
-dGVkIHRvIHRoZQ0KPj4+Pj4+IGFjdHVhbCBtYWludGFpbmVyL3N1YnN5c3RlbSBhZmZlY3RlZCBy
-YXRoZXIgdGhhbiBldmVyeW9uZSBpbnZvbHZlZA0KPj4+Pj4+IGFueXdoZXJlIGVsc2UgaW4gdGhl
-IHNlcmllcy4gV2l0aCB0aGUgY3VycmVudCBsYXJnZSBjYywgYW55b25lIHRoYXQNCj4+Pj4+PiBy
-ZXBsaWVzIGdldHMgc2V2ZXJhbCBtYWlsIGJvdW5jZXMgYWJvdXQgInRvbyBtYW55IHJlY2lwaWVu
-dHMiKS7CoCBJdCBtYXkNCj4+Pj4+PiBiZSBlYXNpZXIgdG8gc3BsaXQgYWxvbmcgZGlyZWN0b3J5
-IGJvdW5kYXJpZXMgdGhhbiBieSBtYWludGFpbmVyDQo+Pj4+Pj4gYm91bmRhcmllcy7CoCBNYXJr
-dXMgaGFzIGFwcGxpZWQgbGFyZ2UgdHJlZS13aWRlIENvY2NpbmVsbGUgY2xlYW51cHMNCj4+Pj4+
-PiBiZWZvcmUsIG1heWJlIGhlIGhhcyBzb21lIGFkdmljZS4NCj4+Pj4+DQo+Pj4+Pg0KPj4+Pj4g
-SWYgc3BsaXQgYnkgc3Vic3lzdGVtIGl0IHdvdWxkIGJlIDIwMCsgcGF0Y2hlczoNCj4+Pj4+IGdp
-dCBkaWZmIC0tbmFtZS1vbmx5IHwgd2hpbGUgcmVhZCBmOyBkbyBzY3JpcHRzL2dldF9tYWludGFp
-bmVyLnBsIC1mICRmIC0tc3Vic3lzdGVtIC0tbm8tcm9sZXN0YXRzIDI+L2Rldi9udWxsIHwgZ3Jl
-cCAtdiBAIHwgaGVhZCAtMTsgZG9uZSB8IHNvcnQgfCB1bmlxIHwgd2MgLWwNCj4+Pj4+IDIwNQ0K
-Pj4+Pj4NCj4+Pj4+DQo+Pj4+PiBUcnkgdG8gbG9vayBhdCBsYXJnZXIgc3Vic3lzdGVtOg0KPj4+
-Pj4gZ2l0IGRpZmYgLS1uYW1lLW9ubHkgfCB3aGlsZSByZWFkIGY7IGRvIHNjcmlwdHMvZ2V0X21h
-aW50YWluZXIucGwgLWYgJGYgLS1zdWJzeXN0ZW0gLS1uby1yb2xlc3RhdHMgMj4vZGV2L251bGwg
-fCBncmVwIC12IEAgfCB0YWlsIC0yIHwgaGVhZCAtMTsgZG9uZSB8IHNvcnQgfCB1bmlxIHwgd2Mg
-LWwNCj4+Pj4+IDEzOQ0KPj4+Pj4NCj4+Pj4+IHN0aWxsIHRvbyBtYW55Li4gT3IgaXMgaXQgT0s/
-DQo+Pj4+DQo+Pj4+IEhtbSAtIHRoYXQgYmVjb21lcyBhIHRyYWRlb2ZmIGluIGxlbmd0aCBvZiB0
-aGUgc2VyaWVzICh3aGVyZSBpbmRpdmlkdWFsDQo+Pj4+IHBhdGNoZXMgbWF5IGJlIHJldmlld2Vk
-IGZhc3QsIGJ1dCB3aGVyZSB0aGUgb3ZlcmFsbCBwcm9jZXNzIG1heSBiZQ0KPj4+PiBib2dnZWQg
-ZG93biBieSBzaGVlciBsZW5ndGgpLCB2cy4gbGVuZ3RoIG9mIGluZGl2aWR1YWwgZW1haWxzICh3
-aGVyZSB0aGUNCj4+Pj4gZW1haWwgaXRzZWxmIGlzIGRhdW50aW5nLCBidXQgYXMgdGhlIHJldmll
-dyBpcyBtZWNoYW5pY2FsIGFuZCBkb25lIGJ5DQo+Pj4+IGF1dG9tYXRpb24sIGl0IGJlY29tZXMg
-YSBtYXR0ZXIgb2Ygc3BvdC1jaGVja2luZyBpZiB3ZSB0cnVzdCB0aGF0IHRoZQ0KPj4+PiBhdXRv
-bWF0aW9uIHdhcyBkb25lIGNvcnJlY3RseSkuwqAgWW91IGNhbiBwcm9iYWJseSBncm91cCBpdCBp
-biBmZXdlcg0KPj4+PiBwYXRjaGVzLCBieSBqb2luaW5nIHNtYWxsZXIgcGF0Y2hlcyBhY3Jvc3Mg
-YSBjb3VwbGUgb2Ygc3Vic3lzdGVtcy7CoCBJdCdzDQo+Pj4+IGFuIGFydCBmb3JtLCB0aGVyZSdz
-IHByb2JhYmx5IHNldmVyYWwgd2F5cyB0byBkbyBpdCB0aGF0IHdvdWxkIHdvcmssIGFuZA0KPj4+
-PiBpdCBjb21lcyBkb3duIHRvIGEganVkZ21lbnQgY2FsbCBvbiBob3cgbXVjaCB3b3JrIHlvdSB3
-YW50IHRvIGRvIHRvIHRyeQ0KPj4+PiBhbmQgcmVkdWNlIG90aGVyJ3Mgd29yayBpbiByZXZpZXdp
-bmcgaXQuwqAgTWF5YmUgZXZlbiBhbiBvZmYtaGFuZCBzcGxpdA0KPj4+PiBvZiBnYXRoZXJpbmcg
-ZmlsZXMgdW50aWwgeW91IHJlYWNoIGFib3V0IDUwMCBvciBzbyBsaW5lcyBwZXIgZGlmZi7CoCBJ
-DQo+Pj4+IHdpc2ggSSBoYWQgZWFzaWVyIGFkdmljZSBvbiBob3cgdG8gdGFja2xlIHRoaXMgc29y
-dCBvZiBwcm9qZWN0IGluIHRoZQ0KPj4+PiB3YXkgdGhhdCB3aWxsIGdldCB0aGUgZmFzdGVzdCBy
-ZXNwb25zZSB0aW1lLg0KPiANCj4gZ2l0IGRpZmYgfCB3YyAtbA0KPiA0ODk0MQ0KPiANCj4gc28s
-IGJ5IDUwMCBsaW5lcyBpdCB3b3VsZCBiZSA5NyBwYXRjaGVzLg0KPiANCj4gU2VlbXMsIHdlJ2xs
-IG5ldmVyIGJlIGFibGUgdG8gcmV2aWV3IHRoaXMgdGhpbmcgOigNCj4gDQo+IEFueSBpZGVhcz8N
-Cj4gDQo+IE1heSBiZSwgc2VwYXJhdGUgYmlnIHBhdGNoLCB3aGljaCBqdXN0IGFkZCBFUlJQX0ZV
-TkNUSU9OX0JFR0lOKCkgdG8gYWxsIGVycnAgZnVuY3Rpb25zPw0KDQpjaGVja2VkOiBmb3IgcmVt
-YWluaW5nIGltcHJvdmVtZW50czoNCmdpdCBkaWZmIHwgd2MgLWwNCjIwMjE4DQoNCmdpdCBkaWZm
-IC0tbmFtZS1vbmx5IHwgd2hpbGUgcmVhZCBmOyBkbyBzY3JpcHRzL2dldF9tYWludGFpbmVyLnBs
-IC1mICRmIC0tc3Vic3lzdGVtIC0tbm8tcm9sZXN0YXRzIDI+L2Rldi9udWxsIHwgZ3JlcCAtdiBA
-IHwgdGFpbCAtMiB8IGhlYWQgLTE7IGRvbmUgfCBzb3J0IHwgdW5pcSB8IHdjIC1sDQo5MA0KDQpT
-dGlsbCwgdG9vIG11Y2guLg0KDQpJIHRoaW5rIHdlIHNob3VsZCBzd2l0Y2ggdG8gcGxhbiBCLCBh
-dCBsZWFzdCBhcyBzb21ldGhpbmcgdGhhdCBtYXkgYmUgbWVyZ2VkIHRvIDQuMg0KDQoNCj4gDQo+
-Pj4+DQo+Pj4+DQo+Pj4+Pj4+IMKgwqAgdmwuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKg
-IDEzICstDQo+Pj4+Pj4+IMKgwqAgc2NyaXB0cy9jb2NjaW5lbGxlL2F1dG8tcHJvcGFnYXRlZC1l
-cnJwLmNvY2NpIHzCoCA4MiArKysrKysrDQo+Pj4+Pj4+IMKgwqAgMzE5IGZpbGVzIGNoYW5nZWQs
-IDI3MjkgaW5zZXJ0aW9ucygrKSwgNDI0NSBkZWxldGlvbnMoLSkNCj4+Pj4+Pj4gwqDCoCBjcmVh
-dGUgbW9kZSAxMDA2NDQgc2NyaXB0cy9jb2NjaW5lbGxlL2F1dG8tcHJvcGFnYXRlZC1lcnJwLmNv
-Y2NpDQo+Pj4+Pj4NCj4+Pj4+PiBUaGUgZGlmZnN0YXQgaXMgaHVnZSwgYnV0IHByb21pc2luZy4N
-Cj4+Pj4NCj4+Pj4gV2UgYWxzbyBsZWFybmVkIGluIHJldmlld3Mgb2YgNy85IHRoYXQgdGhlIGRp
-ZmZzdGF0IGhlcmUgaXMgbWlzbGVhZGluZywNCj4+Pj4gdGhlIG51bWJlciBvZiBpbnNlcnRpb25z
-IHdpbGwgZGVmaW5pdGVseSBiZSBpbmNyZWFzaW5nIG9uY2UgdGhlDQo+Pj4+IENvY2NpbmVsbGUg
-c2NyaXB0IGlzIGZpeGVkIHRvIGluc2VydCB0aGUgbWFjcm8gaW4gbW9yZSBmdW5jdGlvbnMsIGJ1
-dA0KPj4+PiBob3BlZnVsbHkgaXQncyBzdGlsbCBhIG5ldCByZWR1Y3Rpb24gaW4gb3ZlcmFsbCBs
-aW5lcy4NCj4+Pj4NCj4+Pg0KPj4+IE5vIGhvcGUgZm9yIHVzOiB3aXRoIGZpeGVkIHNjcmlwdCBJ
-IG5vdyBzZWUNCj4+Pg0KPj4+IDkxOSBmaWxlcyBjaGFuZ2VkLCA2NDI1IGluc2VydGlvbnMoKyks
-IDQyMzQgZGVsZXRpb25zKC0pDQo+Pj4NCj4+DQo+PiBBbHNvLCBJIGhhdmUgYWRkIGluY2x1ZGUg
-InFhcGkvZXJyb3IuaCIgdG8gZmlsZXMsIHdoZXJlIGVycnAgb25seSBwYXNzZWQNCj4+IHRvIGNh
-bGxlZCBmdW5jdGlvbnMgKG9yIGZvciBmdW5jdGlvbnMsIHdoaWNoIGFyZSBub3Qgc2ltcGxlIHN0
-dWJzKToNCj4+DQo+PiAjIGdpdCBkaWZmIHwgZ3JlcCAnKyNpbmNsdWRlJyB8IHdjIC1sDQo+PiAy
-NTMNCj4+DQo+Pg0KPiANCj4gDQoNCg0KLS0gDQpCZXN0IHJlZ2FyZHMsDQpWbGFkaW1pcg0K
+Hi all!
+
+Here is a proposal of auto propagation for local_err, to not call
+error_propagate on every exit point, when we deal with local_err.
+
+There are also two issues with errp:
+
+1. error_fatal & error_append_hint: user can't see these
+hints, because exit() happens in error_setg earlier than hint is
+appended. [Reported by Greg Kurz]
+
+2. error_abort & error_propagate: when we wrap
+error_abort by local_err+error_propagate, resulting coredump will
+refer to error_propagate and not to the place where error happened.
+(the macro itself don't fix the issue, but it allows to [3.] drop all
+local_err+error_propagate pattern, which will definitely fix the issue)
+[Reported by Kevin Wolf]
+
+Still, applying new macro to all errp-functions is a huge task, which is
+impossible to solve in one series.
+
+So, here is a minimum: solve only [1.], by adding new macro to all
+errp-functions which wants to call error_append_hint.
+
+v3: plan B: fix only error_append_hint users, as a first step.
+01: - new errp-based API dropped, so now patch is smaller.
+    - slightly adjust commit message
+    - keep Eric's r-b
+02: - no new API, so just open-code fix
+    - keep Eric's r-b
+03: - simplify the code [Eric]
+04: - grammar and wording
+    - drop extra unused variable
+others: new
+
+Vladimir Sementsov-Ogievskiy (25):
+  errp: rename errp to errp_in where it is IN-argument
+  hw/core/loader-fit: fix freeing errp in fit_load_fdt
+  net/net: fix local variable shadowing in net_client_init
+  error: auto propagated local_err
+  scripts: add coccinelle script to fix error_append_hint usage
+  python: add commit-per-subsystem.py
+  s390: Fix error_append_hint usage
+  ARM TCG CPUs: Fix error_append_hint usage
+  PowerPC TCG CPUs: Fix error_append_hint usage
+  arm: Fix error_append_hint usage
+  SmartFusion2: Fix error_append_hint usage
+  PCI: Fix error_append_hint usage
+  SCSI: Fix error_append_hint usage
+  USB: Fix error_append_hint usage
+  VFIO: Fix error_append_hint usage
+  virtio: Fix error_append_hint usage
+  virtio-9p: Fix error_append_hint usage
+  block: Fix error_append_hint usage
+  chardev: Fix error_append_hint usage
+  cmdline: Fix error_append_hint usage
+  QOM: Fix error_append_hint usage
+  Migration: Fix error_append_hint usage
+  Sockets: Fix error_append_hint usage
+  nbd: Fix error_append_hint usage
+  PVRDMA: Fix error_append_hint usage
+
+ include/monitor/hmp.h                         |  2 +-
+ include/qapi/error.h                          | 37 +++++++++-
+ ui/vnc.h                                      |  2 +-
+ block/backup.c                                |  1 +
+ block/dirty-bitmap.c                          |  1 +
+ block/file-posix.c                            |  3 +
+ block/gluster.c                               |  2 +
+ block/qcow.c                                  |  1 +
+ block/qcow2.c                                 |  1 +
+ block/vhdx-log.c                              |  1 +
+ block/vpc.c                                   |  1 +
+ chardev/spice.c                               |  1 +
+ hw/9pfs/9p-local.c                            |  1 +
+ hw/9pfs/9p-proxy.c                            |  1 +
+ hw/arm/msf2-soc.c                             |  1 +
+ hw/arm/virt.c                                 |  2 +
+ hw/core/loader-fit.c                          |  1 +
+ hw/intc/arm_gicv3_kvm.c                       |  1 +
+ hw/misc/msf2-sysreg.c                         |  1 +
+ hw/pci-bridge/pcie_root_port.c                |  1 +
+ hw/ppc/mac_newworld.c                         |  1 +
+ hw/ppc/spapr.c                                |  1 +
+ hw/ppc/spapr_pci.c                            |  1 +
+ hw/rdma/vmw/pvrdma_main.c                     |  1 +
+ hw/s390x/s390-ccw.c                           |  1 +
+ hw/scsi/scsi-disk.c                           |  1 +
+ hw/scsi/scsi-generic.c                        |  1 +
+ hw/usb/ccid-card-emulated.c                   |  1 +
+ hw/vfio/common.c                              |  2 +
+ hw/vfio/pci.c                                 |  2 +
+ hw/virtio/virtio-pci.c                        |  2 +
+ migration/migration.c                         |  1 +
+ monitor/hmp-cmds.c                            |  8 +--
+ nbd/client.c                                  |  1 +
+ nbd/server.c                                  |  1 +
+ net/net.c                                     | 17 ++---
+ qdev-monitor.c                                |  2 +
+ target/ppc/kvm.c                              |  2 +
+ ui/vnc.c                                      | 10 +--
+ util/error.c                                  |  8 +--
+ util/qemu-option.c                            |  2 +
+ util/qemu-sockets.c                           |  2 +
+ python/commit-per-subsystem.py                | 69 +++++++++++++++++++
+ .../fix-error_append_hint-usage.cocci         | 25 +++++++
+ 44 files changed, 198 insertions(+), 26 deletions(-)
+ create mode 100755 python/commit-per-subsystem.py
+ create mode 100644 scripts/coccinelle/fix-error_append_hint-usage.cocci
+
+CC: John Snow <jsnow@redhat.com>
+CC: Kevin Wolf <kwolf@redhat.com>
+CC: Max Reitz <mreitz@redhat.com>
+CC: Fam Zheng <fam@euphon.net>
+CC: Jeff Cody <codyprime@gmail.com>
+CC: "Marc-André Lureau" <marcandre.lureau@redhat.com>
+CC: Paolo Bonzini <pbonzini@redhat.com>
+CC: Greg Kurz <groug@kaod.org>
+CC: Subbaraya Sundeep <sundeep.lkml@gmail.com>
+CC: Peter Maydell <peter.maydell@linaro.org>
+CC: Paul Burton <pburton@wavecomp.com>
+CC: Aleksandar Rikalo <arikalo@wavecomp.com>
+CC: "Michael S. Tsirkin" <mst@redhat.com>
+CC: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+CC: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+CC: David Gibson <david@gibson.dropbear.id.au>
+CC: Yuval Shaia <yuval.shaia@oracle.com>
+CC: Cornelia Huck <cohuck@redhat.com>
+CC: Eric Farman <farman@linux.ibm.com>
+CC: Richard Henderson <rth@twiddle.net>
+CC: David Hildenbrand <david@redhat.com>
+CC: Halil Pasic <pasic@linux.ibm.com>
+CC: Christian Borntraeger <borntraeger@de.ibm.com>
+CC: Gerd Hoffmann <kraxel@redhat.com>
+CC: Alex Williamson <alex.williamson@redhat.com>
+CC: Markus Armbruster <armbru@redhat.com>
+CC: Michael Roth <mdroth@linux.vnet.ibm.com>
+CC: Juan Quintela <quintela@redhat.com>
+CC: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+CC: Eric Blake <eblake@redhat.com>
+CC: Jason Wang <jasowang@redhat.com>
+CC: "Daniel P. Berrangé" <berrange@redhat.com>
+CC: Eduardo Habkost <ehabkost@redhat.com>
+CC: qemu-block@nongnu.org
+CC: qemu-devel@nongnu.org
+CC: integration@gluster.org
+CC: qemu-arm@nongnu.org
+CC: qemu-ppc@nongnu.org
+CC: qemu-s390x@nongnu.org
+
+-- 
+2.21.0
+

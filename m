@@ -1,117 +1,121 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp631754wrp;
-        Sat, 21 Sep 2019 06:24:07 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxUDVib3aEtkkZ7PCz8TDN8UPJAk5ao3klKgt4Wy2fAMo8XO6YCadfFEGSXSqpgdLW1w04d
-X-Received: by 2002:a17:906:eb92:: with SMTP id mh18mr23412270ejb.298.1569072246932;
-        Sat, 21 Sep 2019 06:24:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569072246; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4043927wrp;
+        Tue, 24 Sep 2019 08:22:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxDa1kUSFUc8fq4/xIsMcKHsyY0/HYFTI2sk/iG3WUt6SyYntdIDv3VYFIY0D6BlWmS2gyG
+X-Received: by 2002:a17:906:ccd6:: with SMTP id ot22mr3035980ejb.1.1569338542594;
+        Tue, 24 Sep 2019 08:22:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569338542; cv=none;
         d=google.com; s=arc-20160816;
-        b=FNWyKGHdqHNQ0fwUDDc8ySnL6EOx2bwDEt2RCN5/UqHNh5Ib0nIsFwwdbQA6L+NQ62
-         Wo35TTkpSVDCfXDdD+J8ntyXrGQv12ossH08TX8lhSLyLQ0Id8tvePGUK9YG8WaM77lA
-         AXUO2mXnGFJgup7A9bbZ5p43BSL7Jsp53xLdiD2tM2uUZl2nwSmMIhgjYJ9SilSWacWI
-         yWBAcM0usqNUDvefBhMjwtFORZlwHGAUZelRkukCbFyWylRIXE+dWOuWovWQ66ViPgcg
-         gxUU6VUhOneN2v3Yt34IIyaInIscCjk073DL2a3LEoVo0JM9Uwh2qfQNE/pKNDTsaKFA
-         1/TA==
+        b=DidwJggEkT080Tn82BE5tT2rYi2RufZAnZbXfU48WJQqkU899tAR1sUOmHCSpqRAuz
+         ku/Z22U8tLpHe1bn1NigVB1OaCe2Uy1Y0rRczEUm8EnouJvGHuwx7nj1MdojzAU0twpI
+         52B4YLCm98XWwLa33Y/ootDdhrmF1rdZpVgARCc0yehi4AgA2y7mJXItaf8d+G4WCOI7
+         jUh4O2DG/9+fowrWAfj71tuADQOq5j0bPgmKl6y/UdhEnPcUSs8zpVM6BQf7+RcmVAlX
+         Sc1vunH9o7PISA2MYPeLsQtc/qlaRvi+SlAawIie856BZgiptbJY02gj1FZtb1WYmPi9
+         iW+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=13n4A6DxDtV/X9n2r3QanJu1abRwTXkLtLSDDNnZL5c=;
-        b=wOK6IRYb6ZiH5+CKb08go8okdV3oTUTpHYQ61c6f/tjALHwVE34ybggDkOzPQtxMm6
-         dBFbqT0QdXfPTo1hPoIGsxXNGhrV6IEqCZpR9sVZrA3pql9rdw5p9rv/sao+sidrSnGW
-         CY3X9n565In6wfa7J6SjaKgrD40RvSdjspA2COjD4AVzSZtWs/qR1IHxfryukv3o1gwb
-         FrHtf7l18Rp6S4GI9+l2Q0Se164Eyu8aWr3U4d8Mzn4z4cP99OzMTs3HW3ucZawhZXh3
-         E3DKkwKz+wsa+B9qohLDDu1yMvtVeJ9SQRyHYHJkyMtR9Uuh+dKVWbm7kVOymeejjIOn
-         CtUg==
+        h=list-id:precedence:sender:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=K19evHUiUHkaO5FBhqGL5o1nwS7Ou96O0gIFNabO/LE=;
+        b=uGYUweGP+aoG9T8jdGiimK+n0XBU/pbqK/oGRBlxSZvtIweydpOPEPHtlRVXjGSgf5
+         W12NtIZ4N3tgaAZsb5haim6vwnWRoJBSMHeNKzT9DVUtgaRvXGaMMf+w6GA0npD1jw7/
+         DKi81H1U+MVKp3p9X/oj3MK10CVdXziYWzYalg+AtOE1Tl0NwQ9O5c7cFEnI55UoPd6k
+         Ywd66bpnvntewSTkG1bTG9x8xLVfMXmjGCGUUuZHJDNP7F1EZ8FU/vN59gGg4Oak09cR
+         jUXdT2ZgNnyX/vIDXulyHTsvUyiI7mmLP+5uvxO319OoOyCJsEDxV/TLLA/oahmK2eC1
+         V8XQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o25si2437286ejc.361.2019.09.21.06.24.06
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 21 Sep 2019 06:24:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
+Return-Path: <linux-kernel-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id ot6si1073417ejb.62.2019.09.24.08.22.22;
+        Tue, 24 Sep 2019 08:22:22 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41882 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iBfMr-0005al-S3
-	for alex.bennee@linaro.org; Sat, 21 Sep 2019 09:24:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59769)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <Stewart.Hildebrand@dornerworks.com>)
- id 1iBfMh-0005Zb-Sx
- for qemu-arm@nongnu.org; Sat, 21 Sep 2019 09:23:56 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <Stewart.Hildebrand@dornerworks.com>)
- id 1iBfMg-0001mQ-S4
- for qemu-arm@nongnu.org; Sat, 21 Sep 2019 09:23:55 -0400
-Received: from mail.dornerworks.com ([12.207.209.150]:35801
- helo=webmail.dornerworks.com) by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <Stewart.Hildebrand@dornerworks.com>)
- id 1iBfMe-0001kO-MN; Sat, 21 Sep 2019 09:23:52 -0400
-From: Stewart Hildebrand <Stewart.Hildebrand@dornerworks.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>, "Peter
- Maydell" <peter.maydell@linaro.org>, Esteban Bosse <estebanbosse@gmail.com>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>, Pekka Enberg <penberg@iki.fi>,
- =?utf-8?B?Wm9sdMOhbiBCYWxkYXN6dGk=?= <bztemail@gmail.com>
-Subject: RE: [Qemu-arm] [RFC PATCH 00/14] hw/arm: Add the Raspberry Pi 4B
-Thread-Topic: [Qemu-arm] [RFC PATCH 00/14] hw/arm: Add the Raspberry Pi 4B
-Thread-Index: AQHVY0TkMHB97Y0/60qxJoIoRMQ4KKc2NZsg
-Date: Sat, 21 Sep 2019 13:25:36 +0000
-Message-ID: <e27f5b1a3e92494086340831c3c8513c@dornerworks.com>
-References: <20190904171315.8354-1-f4bug@amsat.org>
-In-Reply-To: <20190904171315.8354-1-f4bug@amsat.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [172.58.139.46]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       spf=pass (google.com: best guess record for domain of linux-kernel-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=linux-kernel-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1732527AbfIXPWV (ORCPT <rfc822;mike.holmes@linaro.org>
+        + 26 others); Tue, 24 Sep 2019 11:22:21 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:46512 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1727382AbfIXPWV (ORCPT <rfc822;linux-kernel@vger.kernel.org>);
+        Tue, 24 Sep 2019 11:22:21 -0400
+Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 19DE9F71006A9E2A596B;
+        Tue, 24 Sep 2019 23:22:19 +0800 (CST)
+Received: from linux-Bxxcye.huawei.com (10.175.104.222) by
+ DGGEMS401-HUB.china.huawei.com (10.3.19.201) with Microsoft SMTP Server id
+ 14.3.439.0; Tue, 24 Sep 2019 23:22:09 +0800
+From:   Heyi Guo <guoheyi@huawei.com>
+To:     <linux-arm-kernel@lists.infradead.org>,
+        <kvmarm@lists.cs.columbia.edu>, <linux-kernel@vger.kernel.org>,
+        <kvm@vger.kernel.org>, <qemu-arm@nongnu.org>
+CC:     <wanghaibin.wang@huawei.com>, Heyi Guo <guoheyi@huawei.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Dave Martin <Dave.Martin@arm.com>,
+        Marc Zyngier <marc.zyngier@arm.com>,
+        Mark Rutland <mark.rutland@arm.com>,
+        James Morse <james.morse@arm.com>
+Subject: [RFC PATCH 0/2] Add virtual SDEI support for arm64
+Date:   Tue, 24 Sep 2019 23:20:52 +0800
+Message-ID: <1569338454-26202-1-git-send-email-guoheyi@huawei.com>
+X-Mailer: git-send-email 1.8.3.1
 MIME-Version: 1.0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 12.207.209.150
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Clement Deschamps <clement.deschamps@antfield.fr>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
- Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5xkusYTs4ggT
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.222]
+X-CFilter-Loop: Reflected
+Sender: linux-kernel-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <linux-kernel.vger.kernel.org>
+X-Mailing-List: linux-kernel@vger.kernel.org
+X-TUID: 9IB4mH4QOKT/
 
-T24gV2VkbmVzZGF5LCBTZXB0ZW1iZXIgNCwgMjAxOSAxOjEzIFBNLCBQaGlsaXBwZSBNYXRoaWV1
-LURhdWTDqSB3cm90ZToNCj5Fc3RlYmFuIHdyb3RlIG1lIG92ZXIgdGhlIHdlZWtlbmQgYXNraW5n
-IGFib3V0IHJhc3BpNCBwcm9ncmVzcy4NCj5JIGNsZWFuZWQgdXAgbXkgcGF0Y2hlcy9ub3RlcyB0
-byBwYXNzIGhpbS4gT3RoZXIgaGVscCBpcyBhbHNvIHdlbGNvbWVkIDopDQo+SSBnb3Qgc2NhcmVk
-IHRyeWluZyB0byB1bmRlcnN0YW5kIGhvdyB0byB1c2UgdGhlIEdJQywgYW5kIHdpcmUgdGhlIHZh
-cmlvdXMNCj5JUlFzLg0KPg0KPk1vc3QgaW1wb3J0YW50IG5vdGVzIGFib3V0IHRlc3RpbmcgYXJl
-IGluIHBhdGNoICMxMjoNCj4iQWRkIHRoZSBCQ00yODM4IHdoaWNoIHVzZXMgYSBHSUN2MiINCj4N
-Cj5Ob3QgbXVjaCB3b3JrcyB5ZXQsIGl0IG9ubHkgcnVucyBhIGJpdCB1bnRpbCBjb25maWd1cmlu
-ZyB0aGUgR0lDLg0KPg0KPmJyYW5jaCBwdXNoZWQgYXQgaHR0cHM6Ly9naXRsYWIuY29tL3BoaWxt
-ZC9xZW11L2NvbW1pdHMvcmFzcGk0X3dpcA0KPg0KPlJlZ2FyZHMsDQo+DQo+UGhpbC4NCg0KSXQg
-c2VlbXMgdXBzdHJlYW0gbGludXggbWF5IGJlIGFkb3B0aW5nIHRoZSBCQ00yNzExIG5hbWluZyBj
-b252ZW50aW9uIFsxXSwgdGhvdWdoIGl0IGRvZXNuJ3QgbG9vayBsaWtlIHRoZSBzZXJpZXMgWzFd
-IGhhcyBiZWVuIGNvbW1pdHRlZCB5ZXQuIFRoZSBTb0MgbmFtZSBpbiBkb2N1bWVudGF0aW9uIGlz
-IEJDTTI3MTEgWzJdLiBJIGhhdmUgbm8gb3BpbmlvbiBvbiB3aGljaCBuYW1pbmcgY29udmVudGlv
-biB0aGUgUUVNVSBjb21tdW5pdHkgYWRvcHRzLCBJIHNpbXBseSB3YW50ZWQgdG8gcGFzcyBhbG9u
-ZyB0aGlzIG9ic2VydmF0aW9uLg0KDQotU3Rldw0KDQpbMV0gaHR0cHM6Ly9wYXRjaHdvcmsua2Vy
-bmVsLm9yZy9jb3Zlci8xMTA5MjYxMy8NClsyXSBodHRwczovL3d3dy5yYXNwYmVycnlwaS5vcmcv
-ZG9jdW1lbnRhdGlvbi9oYXJkd2FyZS9yYXNwYmVycnlwaS9iY20yNzExL1JFQURNRS5tZA0K
+As promised, this is the first RFC patch set for arm64 virtual SDEI
+support.
+
+New kvm capability KVM_CAP_FORWARD_HYPERCALL is added to probe if kvm
+supports forwarding hypercalls, and the capability should be enabled
+explicitly. PSCI can be set as exception for backward compatibility.
+
+We reuse the existing term "hypercall" for SMC/HVC, as well as the
+hypercall structure in kvm_run to exchange arguments and return
+values. The definition on arm64 is as below:
+
+exit_reason: KVM_EXIT_HYPERCALL
+
+Input:
+  nr: the immediate value of SMC/HVC calls; not really used today.
+  args[6]: x0..x5 (This is not fully conform with SMCCC which requires
+           x6 as argument as well, but use space can use GET_ONE_REG
+           ioctl for such rare case).
+
+Return:
+  args[0..3]: x0..x3 as defined in SMCCC. We need to extract
+              args[0..3] and write them to x0..x3 when hypercall exit
+              returns.
+
+And there is a corresponding patch set for qemu.
+
+Please give your comments and suggestions.
+
+Thanks,
+HG
+
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Dave Martin <Dave.Martin@arm.com>
+Cc: Marc Zyngier <marc.zyngier@arm.com>
+Cc: Mark Rutland <mark.rutland@arm.com>
+Cc: James Morse <james.morse@arm.com>
+
+Heyi Guo (2):
+  kvm/arm: add capability to forward hypercall to user space
+  kvm/arm64: expose hypercall_forwarding capability
+
+ arch/arm/include/asm/kvm_host.h   |  5 +++++
+ arch/arm64/include/asm/kvm_host.h |  5 +++++
+ arch/arm64/kvm/reset.c            | 25 +++++++++++++++++++++++++
+ include/kvm/arm_psci.h            |  1 +
+ include/uapi/linux/kvm.h          |  3 +++
+ virt/kvm/arm/arm.c                |  2 ++
+ virt/kvm/arm/psci.c               | 30 ++++++++++++++++++++++++++++--
+ 7 files changed, 69 insertions(+), 2 deletions(-)
+
+-- 
+1.8.3.1

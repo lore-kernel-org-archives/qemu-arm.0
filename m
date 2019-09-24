@@ -1,82 +1,79 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3966001wrp;
-        Tue, 24 Sep 2019 07:13:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxuvrlcOsSXyiGxHUin8QvUjtQaDYDzOa94BrZmqfHfgXPLYMgsNw8quqe73c68Q7YlQYvX
-X-Received: by 2002:ac8:5543:: with SMTP id o3mr3022123qtr.129.1569334436886;
-        Tue, 24 Sep 2019 07:13:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569334436; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3990598wrp;
+        Tue, 24 Sep 2019 07:35:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy/gDGlvxJeHezpyC5S9cujAB0sobOVsNeUzcA+r7ULeaeb7j3So+mEXhCMGMbBSQIUW61G
+X-Received: by 2002:a5d:4582:: with SMTP id p2mr2647947wrq.305.1569335722745;
+        Tue, 24 Sep 2019 07:35:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569335722; cv=none;
         d=google.com; s=arc-20160816;
-        b=hPtvQdhgtb4PTxMoKYIIH/hTOerUmBn5WdoALd17N8jSi1Zj6IEcO3E3yDaSlxiXOo
-         0AloD4tFcQc29t3dGhxXuDbJ7JVEzB7Nlat0LJdoEikl22ousZeygTQYLQB+uhp3CFT8
-         Ws+Z8+/lNapVMFU4QbTnb2dE7yCpqafLVxeomEQ3jvl1C287nN/o2Ig3ohMvZcbnxfwQ
-         pwD6VvWyfJuVuTLiqCxiLVkcPEQtukqCKGbx3khtOsWwtuy23S2EOJfdT++N5EN0l3I/
-         FQCjp1Xt7adYT0XiXwqcJNONEa0y+8u3W7CpXSE/EW+B4FtoywR8VITUpA1PuLHAtMRP
-         Wu9A==
+        b=UjTlp45bQ1sciahkrIgVzG+Xp55839SKp60u9nGLX0DgwDM17iUSDcWsqH/jqj6xJN
+         CruEhXwQcNCS5mXRJTrK5kV+58m9ZW/rqT2/dxMFDyCz4VNMej5VzCipnNjyqb4I7DLF
+         IUNM3SWWR4Kz35aLBwuom21e2yN+9/jZuJ2UUOZMgZKc0JeRtus8UJfL/i0B2Wf9quko
+         wWR06GoRY4XO9jCGgMAM3GKkHD+U+t+czdZ/yMXfOOyFWZfh8cQj0BCeG259ZHJII4/2
+         y4eWvhC+N5mig99F2EVKd+xTdudqHcFyaHEXLvvDUxClXDZg+5pclk/FZwDpgTd9GvdD
+         dFxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=6Vts3JasbA4zan63R3GCcXEkLT9gArRNFbwiG7GADfc=;
-        b=1C3hcxup+2hfC1VFHEc02pCeA1jRqe7esmnzrRaDZ/zLwbStFln92zOBc3Nd5pta0v
-         JGJuIgKJQ7xm9uNFHAYTn1mKO3KZ/NeQUa/2MuZMTydD2T2AJMRztBD6XJJ0boZzyXE6
-         4xqgtE9MKZoOAiZCDD0WnhduV89YKGYWgcmprUWnqQh90Y2jeA4G0nR2Ddg5XI7xMkVp
-         1MDKkzVW6lYRbOvcBFtJFCygHPU4+KkT6YBbeGMzD9FmE0BiMoJZNDap+qO50BgblAi0
-         V8O5cpN+oJO460rNTtyPNlHI9GHQgVDj6sTYqGlRfd8kNzchHzmXE2GaTuZOScnsor1V
-         w5vg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=86I1tsrpFkq9PrinBexRunLeXs+0nqltYJUZsUIywuk=;
+        b=X2qww2Pvz+kjLRU4lK73cTTyI7neYGUoBoNrbjyZtR4MDdgWrDrCsPUjnZyVZsgpFw
+         oF8NjANjKqarsJVmKbcFyi1l33tU9JusliCcfAAW7YaJsNP5H1DTst4FDik+aUzSJT9H
+         +h58ibDCyGfCvKh5IvVWxea0uvS8CE/iyQU2FpSQZ0VUjVhaDXHj9UE+N85aSi/y7YjL
+         mrkFgGxTBHIvleXZxEOnJWA5LSvx2i2FwEzQf/wt7h6aYd+gPx5UkZ3iZBB+OWje8zVl
+         +9n9kq1zpIfZ2wyOBrBJEuI0ngifXew+Lri4FkHixGmCk+2RFdUK+V20YSzuKTZKHE/K
+         8IGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b="l41aT8/N";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a69si1305147qkc.264.2019.09.24.07.13.56
+        by mx.google.com with ESMTPS id a23si1333418edj.201.2019.09.24.07.35.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Sep 2019 07:13:56 -0700 (PDT)
+        Tue, 24 Sep 2019 07:35:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b="l41aT8/N";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46186 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:46404 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iClZj-0000Tr-N8
-	for alex.bennee@linaro.org; Tue, 24 Sep 2019 10:13:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58259)
+	id 1iCluT-00046U-5k
+	for alex.bennee@linaro.org; Tue, 24 Sep 2019 10:35:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37939)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <dgibson@ozlabs.org>) id 1iCkqW-00072V-QW
- for qemu-arm@nongnu.org; Tue, 24 Sep 2019 09:27:15 -0400
+ (envelope-from <philmd@redhat.com>) id 1iClYX-0008CB-HO
+ for qemu-arm@nongnu.org; Tue, 24 Sep 2019 10:12:43 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <dgibson@ozlabs.org>) id 1iCkqV-0000tO-2A
- for qemu-arm@nongnu.org; Tue, 24 Sep 2019 09:27:12 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:36341)
+ (envelope-from <philmd@redhat.com>) id 1iClYU-0007na-1j
+ for qemu-arm@nongnu.org; Tue, 24 Sep 2019 10:12:40 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35338)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <dgibson@ozlabs.org>)
- id 1iCkqT-0000sF-Qy; Tue, 24 Sep 2019 09:27:10 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 46d26K1yn5z9sDB; Tue, 24 Sep 2019 23:27:05 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1569331625;
- bh=N0ZDgsZkLGVcga+EKDbKms0VcmTN4w3BG0f0b8/5IYg=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=l41aT8/N2snuTYIVwofEpt1O1LFMa1dPxP7Ns9wYfpiQVdSGzgmX8rG3Fzx2YzcgM
- CHaZ0FKs0uVugIeSJ4aupy3b/YwROW78oQIq4M4Jt5alUS4iNW4y0jZ6sFxIai9e1s
- 2RLDSUK9SySDoyXhAtwauIkbB8hPOmMl+Ar7dz+w=
-Date: Tue, 24 Sep 2019 23:26:58 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v4 0/2] Allow memory_region_register_iommu_notifier() to
- fail
-Message-ID: <20190924132658.GE17405@umbus>
-References: <20190924082517.13724-1-eric.auger@redhat.com>
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1iClYT-0007n6-Pp; Tue, 24 Sep 2019 10:12:38 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 8471230A7B89;
+ Tue, 24 Sep 2019 14:12:36 +0000 (UTC)
+Received: from x1w.redhat.com (unknown [10.40.205.15])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 990645C1B2;
+ Tue, 24 Sep 2019 14:12:31 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] hw/timer/pl031: Add warning "do not use as model to implement
+ a RTC"
+Date: Tue, 24 Sep 2019 16:12:28 +0200
+Message-Id: <20190924141228.25009-1-philmd@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="jKBxcB1XkHIR0Eqt"
-Content-Disposition: inline
-In-Reply-To: <20190924082517.13724-1-eric.auger@redhat.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2401:3900:2:1::2
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.47]); Tue, 24 Sep 2019 14:12:36 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -88,121 +85,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, aik@ozlabs.ru, qemu-devel@nongnu.org,
- peterx@redhat.com, alex.williamson@redhat.com, qemu-arm@nongnu.org,
- pbonzini@redhat.com, eric.auger.pro@gmail.com
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0roWEzj8BWzy
+X-TUID: TA56et9PWez1
 
+Peter said we should "not use the pl031 as a good model of how
+to do an RTC, it has some definite flaws."
+Add this information to the PL031 header for other developers.
 
---jKBxcB1XkHIR0Eqt
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ hw/timer/pl031.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-On Tue, Sep 24, 2019 at 10:25:15AM +0200, Eric Auger wrote:
-> This series allows the memory_region_register_iommu_notifier()
-> to fail. As of now, when a MAP notifier is attempted to be
-> registered along with SMMUv3 or AMD IOMMU, we exit in the IOMMU
-> MR notify_flag_changed() callback.
->=20
-> In case of VFIO assigned device hotplug, this could be handled
-> more nicely directly within the VFIO code, simply rejecting
-> the hotplug without exiting. This is what the series achieves
-> by handling the memory_region_register_iommu_notifier() returned
-> value and Error object.
->=20
-> To propagate errors collected during vfio_listener_region_add()
-> we now store the error handle inside the VFIO container instead
-> of a returned value.
->=20
-> The message now is:
-> (QEMU) device_add id=3Dhot0 driver=3Dvfio-pci host=3D0000:89:00.0 bus=3Dp=
-cie.1
-> {"error": {"class": "GenericError", "desc": "vfio 0000:89:00.0: failed
-> to setup container for group 2: memory listener initialization failed:
-> Region smmuv3-iommu-memory-region-0-6: device 01.00.0 requires iommu MAP
-> notifier which is not currently supported"}}
->=20
-> Best Regards
-
-For the series
-
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
-
-and ppc parts
-
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
-
->=20
-> Eric
->=20
-> This series can be found at:
-> https://github.com/eauger/qemu/tree/v4.1.0_register_iommu_notifier_fail_v4
->=20
-> History:
->=20
-> v3 -> v4:
-> - added Peter's R-b on 2d patch
-> - 1st patch: restore hw_error, remove useless ret assignment, improve
->   DMA host window error message, remove local mr variable
->=20
-> v2 -> v3:
-> - also pass an Error handle (suggested by Peter)
->=20
-> v1 -> v2:
-> - Intel IOMMU now handles the problem differently with machine init done
->   notifier and machine hotplug allowed hook.
-> - use assert(!ret)
-> - message rewording in SMMUv3
->=20
-> Follow-up of "VFIO/SMMUv3: Fail on VFIO/HW nested paging detection"
-> https://patchew.org/QEMU/20190829090141.21821-1-eric.auger@redhat.com/
->=20
->=20
-> Eric Auger (2):
->   vfio: Turn the container error into an Error handle
->   memory: allow memory_region_register_iommu_notifier() to fail
->=20
->  exec.c                        | 10 +++++--
->  hw/arm/smmuv3.c               | 18 ++++++------
->  hw/i386/amd_iommu.c           | 17 +++++++-----
->  hw/i386/intel_iommu.c         |  8 ++++--
->  hw/ppc/spapr_iommu.c          |  8 ++++--
->  hw/vfio/common.c              | 52 +++++++++++++++++++++++------------
->  hw/vfio/spapr.c               |  4 ++-
->  hw/virtio/vhost.c             |  9 ++++--
->  include/exec/memory.h         | 21 ++++++++++----
->  include/hw/vfio/vfio-common.h |  2 +-
->  memory.c                      | 31 +++++++++++++--------
->  11 files changed, 120 insertions(+), 60 deletions(-)
->=20
-
+diff --git a/hw/timer/pl031.c b/hw/timer/pl031.c
+index 2b3e261006..da453b5b04 100644
+--- a/hw/timer/pl031.c
++++ b/hw/timer/pl031.c
+@@ -1,6 +1,14 @@
+ /*
+  * ARM AMBA PrimeCell PL031 RTC
+  *
++ * Note from the maintainer:
++ *
++ * Don't use the pl031 code as a good model of how to do an RTC,
++ * it has some definite flaws. x86 or ppc RTC handling is probably
++ * a better place to look.
++ *
++ * See https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg05399.ht=
+ml
++ *
+  * Copyright (c) 2007 CodeSourcery
+  *
+  * This file is free software; you can redistribute it and/or modify
 --=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+2.20.1
 
---jKBxcB1XkHIR0Eqt
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl2KGaIACgkQbDjKyiDZ
-s5IJsBAA4ByxzmapOytirWyvauRs/FjonxgHXmwuqJqsr/5MIaYmY0zJI1wU+zhb
-xnPgWFV82kFfb7MMkB6TDKGU86N9pGWhI/OfgF7nFru4Bpq14IoScIOiv7wNfURO
-i0PK94kGk8Xi6IgphlcN8SKnOBc5YhLsdqLrIdWOb6aLuaPm6OhWNcC6i8nB/c4W
-etIZQgO6Ynit3RN3u2C0f5pYRp/Un2frhjm8VDdzUzhcb57EJeH7Qmd7AsDl7Ch3
-dc5Qjkkt/hDKBwg2W5VQBTe0qGDRFYoaE9HQ0XLLuA1zNP/tvQa+CSqwpMWyOxVR
-l9qXQINaiJ4qJXmcPMAOJDz+oWVk7y1MBavOaJKhJF3UoBamdNGExGrmfga8ZxQG
-t7F4Khwax9cyPnQ2tn3tNN8A1+HtA7LPAd21j380mkR9Kqw9+QEv+MDF6ClDJpH3
-9ONN9dAzLjjciaqPAFd7ZFUHQ1fQcDBJ5Bncn7QIgCJq9igsDMup+pLSjQa9ePvC
-p2Mat9LxSzIwFjYy8ZPRDrRfqtVzKXwsvzcQrA22m1BAvSQVE2sCg+tcbobEsCHR
-D5C0gHQdX3m16UR261wHuGoOVMW3iCGXP4xLJhdMyks3KaiQVpYZVUASitv41dUO
-WC2DdELF/B+KQzwberkA4hvcJyghOckORmm60nQnNRrdpFmblUs=
-=wquf
------END PGP SIGNATURE-----
-
---jKBxcB1XkHIR0Eqt--

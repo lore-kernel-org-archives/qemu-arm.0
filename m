@@ -1,39 +1,39 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4045437wrp;
-        Tue, 24 Sep 2019 08:23:40 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxIJzMxxTWs3Jx7SRevB6GMaOKR5tVgUUwmPXwbKqMEuANDgVdOwdYFz/DMysf895ntiZkk
-X-Received: by 2002:a37:9503:: with SMTP id x3mr1273610qkd.418.1569338620618;
-        Tue, 24 Sep 2019 08:23:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569338620; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4045468wrp;
+        Tue, 24 Sep 2019 08:23:41 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx1rwRPzAHnGw8h4JSSx6c7dN/TbEq1XW+oJc1AZ6uULdkrGpSO4IMUrhpMoUmprd4gZFqo
+X-Received: by 2002:a05:620a:15d2:: with SMTP id o18mr2912655qkm.341.1569338621831;
+        Tue, 24 Sep 2019 08:23:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569338621; cv=none;
         d=google.com; s=arc-20160816;
-        b=D3vzqMcQOA9S2DKlc7407Hbwa+iGZevVErwN/kOazVYuBIINE6auGr5+/eKvjtpDo4
-         L2fH7oZs7SeVgEPV/ZiX0lgwjoBE2G4GHVACLdYMBKlj1PHpL5xD+A1+USGrOhwQVcTB
-         STldkztc1P8XbuBnVL2WjTI1U37KLLcPJHGhvRnj0Xab4Ek0xmA11owchkyTBaqFMcoI
-         gnxd2kpPXxFps8p/M30MYuspuKdP4PWFm2j9S993LvBPDdF5zUhgnJtqMgxVUdAVRfWS
-         L2AGsriCcD8Ff4OF8VSuhn9zl5bw9pMuvQd37uPrSB4/qZUzllcXNGZa1zP/SjHGl2Au
-         D0+Q==
+        b=nEgA/HNVKZhYke8SwJgBDdiJQ2rWBOKVdkF6oJPe1eRR+BomChkWGPF1IavSDjc0Sm
+         RCY0wBlP8ETKz89HDf0bb+lDYrM7haQ2vvDgr9YZacrr5Z9FO+oGnqvC1Gy73Q3YGjTG
+         vr3ilbAJDIKM0ynY2DxWhFCAb12KW4eFz+nXgUOP0zJAwobIkKVEGY4nci176WnOz6Z0
+         Uhu5btH8RiMs3S38sHymRMfDBFXnxw9/zfzPfdeLcHqsEFrWXGt090yja+b3vkAgbRjN
+         /Z7AYcSui7gHLFopP5OWek/bGTA7fpES8QLC7JGQKHhib9GUYLEkBZTlydyMbFUcOgAA
+         il9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
          :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=369mpe7VUwlPnJKHR2YJ8H6FUDRwfCuVDnLcX6+VeBU=;
-        b=tq7eYa/cHb8h3Nw04V1q9nwjl7/cv7xQgOQYic3IsVjhAICBfpsbQ+Izfsq3qIs7wa
-         F59Q22i92e9D2m4GLBO5INe4eWMreFD2uP7mcSneR/Ovy6BfnNYMrl2ljCldy5AYvcZ3
-         XdUm3xFndc/a92HSw6goEFt4zQfkAgxXKGWkMgUKaz1t49lMewQqPSfARDS+ZXgx9feo
-         NVnJDphGVfKvhFAEWxOZkJksxd44ReZeOZK0AZc00b8h1Mj/ZzAeZxeD4a9Jj+FO86u/
-         IX9yMYZ9gilI4V1ZGS8fHjt2MuheHUNxD5kx8U5p2vTUUoFuZ0e9/ye9PwaMe0dJtpFV
-         /hkw==
+        bh=LudcK1EYKiQlZUcrTYvhskMcGuqBIoydOQEyExYvlDQ=;
+        b=xuMhJLNF2wOMLnjra5B0KecToY5UVWtHdvMiGmLBgyYji5gz2pzWItwM7G/vcbEylM
+         DCuIA/Hesa8sGTWDccrNcibo/bZvxza94ZIaCi7s7Hjj0n0sV78Pzol7kxwBTbmmNTF4
+         V82GWhW+xC9OcSBSXnXiugbyskZC1QilFQF6hrwnG6jJY3dqORosc+B6P9nSdq5nKbNv
+         Kccn6bkRh3JEJby7+hEMxpV8PqbpsK53rVd+/hsDF4Lk9ENpTfy4cKKYHHfw/vkuwOiC
+         WhU9DMPhdw0abdZ0SrYxWrB0GSob4KDrZ25ADNjWP7UVjYdNCm3GDH90Go6Qfob9iYWt
+         Wpog==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
 Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
 Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id h26si1291829qtq.18.2019.09.24.08.23.40;
-        Tue, 24 Sep 2019 08:23:40 -0700 (PDT)
+        by mx.google.com with ESMTP id b18si1361352qkl.303.2019.09.24.08.23.41;
+        Tue, 24 Sep 2019 08:23:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
 Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 4F3CF4A6DA;
-	Tue, 24 Sep 2019 11:23:40 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 8A2794A650;
+	Tue, 24 Sep 2019 11:23:41 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 X-Spam-Flag: NO
 X-Spam-Score: -1.502
@@ -43,33 +43,33 @@ X-Spam-Status: No, score=-1.502 required=6.1 tests=[BAYES_00=-1.9,
 	SPF_HELO_PASS=-0.001] autolearn=no
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
 	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id ild3r7t3ZmNH; Tue, 24 Sep 2019 11:23:39 -0400 (EDT)
+	with ESMTP id UT2XvcmmKGDe; Tue, 24 Sep 2019 11:23:40 -0400 (EDT)
 Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 8C19F4A6B2;
-	Tue, 24 Sep 2019 11:23:35 -0400 (EDT)
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id AAAD24A6CC;
+	Tue, 24 Sep 2019 11:23:38 -0400 (EDT)
 Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 3CA114A691
- for <kvmarm@lists.cs.columbia.edu>; Tue, 24 Sep 2019 11:23:34 -0400 (EDT)
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 6E71D4A6A5
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 24 Sep 2019 11:23:37 -0400 (EDT)
 X-Virus-Scanned: at lists.cs.columbia.edu
 Received: from mm01.cs.columbia.edu ([127.0.0.1])
  by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id TaStOtPe84qg for <kvmarm@lists.cs.columbia.edu>;
- Tue, 24 Sep 2019 11:23:33 -0400 (EDT)
+ with ESMTP id 99MzbqiMlFIg for <kvmarm@lists.cs.columbia.edu>;
+ Tue, 24 Sep 2019 11:23:36 -0400 (EDT)
 Received: from huawei.com (szxga07-in.huawei.com [45.249.212.35])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 14EB64A650
- for <kvmarm@lists.cs.columbia.edu>; Tue, 24 Sep 2019 11:23:33 -0400 (EDT)
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 51FF67C2680FDC283024;
- Tue, 24 Sep 2019 23:23:27 +0800 (CST)
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 2FF774A6CA
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 24 Sep 2019 11:23:34 -0400 (EDT)
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 619AEE0D577D65100598;
+ Tue, 24 Sep 2019 23:23:32 +0800 (CST)
 Received: from linux-Bxxcye.huawei.com (10.175.104.222) by
  DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.439.0; Tue, 24 Sep 2019 23:23:18 +0800
+ 14.3.439.0; Tue, 24 Sep 2019 23:23:21 +0800
 From: Heyi Guo <guoheyi@huawei.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
  <linux-arm-kernel@lists.infradead.org>, <kvmarm@lists.cs.columbia.edu>
-Subject: [RFC PATCH 06/12] core/irq: add qemu_irq_remove_intercept interface
-Date: Tue, 24 Sep 2019 23:21:45 +0800
-Message-ID: <1569338511-3572-7-git-send-email-guoheyi@huawei.com>
+Subject: [RFC PATCH 11/12] arm/kvm: handle guest exit of hypercall
+Date: Tue, 24 Sep 2019 23:21:50 +0800
+Message-ID: <1569338511-3572-12-git-send-email-guoheyi@huawei.com>
 X-Mailer: git-send-email 1.8.3.1
 In-Reply-To: <1569338511-3572-1-git-send-email-guoheyi@huawei.com>
 References: <1569338511-3572-1-git-send-email-guoheyi@huawei.com>
@@ -93,16 +93,10 @@ Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Errors-To: kvmarm-bounces@lists.cs.columbia.edu
 Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: cM1A9Wnlz0uG
+X-TUID: +7NTajc9mEs+
 
-We use qemu_irq as the bridge for other qemu modules to switch from
-irq injection to SDEI event trigger after VM binds the interrupt to
-SDEI event. We use qemu_irq_intercept_in() to override qemu_irq
-handler with SDEI event trigger, so we also need a corresponding
-interface to restore the handler to default one (i.e. ARM GIC).
-
-qemu_irq_remove_intercept() is the new interface to do the above
-job.
+Add support to handle guest exit of hypercall, and forward to SDEI
+dispatcher if SDEI is enabled and it is an SDEI request.
 
 Signed-off-by: Heyi Guo <guoheyi@huawei.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>
@@ -111,51 +105,51 @@ Cc: Marc Zyngier <marc.zyngier@arm.com>
 Cc: Mark Rutland <mark.rutland@arm.com>
 Cc: James Morse <james.morse@arm.com>
 ---
- hw/core/irq.c    | 11 +++++++++++
- include/hw/irq.h |  8 ++++++--
- 2 files changed, 17 insertions(+), 2 deletions(-)
+ target/arm/kvm.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-diff --git a/hw/core/irq.c b/hw/core/irq.c
-index 7cc0295..114bce6 100644
---- a/hw/core/irq.c
-+++ b/hw/core/irq.c
-@@ -145,6 +145,17 @@ void qemu_irq_intercept_in(qemu_irq *gpio_in, qemu_irq_handler handler, int n)
-     }
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index b2eaa50..97a67b1 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -30,6 +30,7 @@
+ #include "hw/boards.h"
+ #include "hw/irq.h"
+ #include "qemu/log.h"
++#include "sdei.h"
+ 
+ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+     KVM_CAP_LAST_INFO
+@@ -668,6 +669,19 @@ MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
  }
  
-+void qemu_irq_remove_intercept(qemu_irq *gpio_in, int n)
+ 
++static void kvm_arm_handle_hypercall(CPUState *cs, struct kvm_run *run)
 +{
-+    int i;
-+    qemu_irq *old_irqs = gpio_in[0]->opaque;
-+    for (i = 0; i < n; i++) {
-+        gpio_in[i]->handler = old_irqs[i]->handler;
-+        gpio_in[i]->opaque = old_irqs[i]->opaque;
++    uint32_t func_id = run->hypercall.args[0];
++
++    if (sdei_enabled &&
++        func_id >= SDEI_1_0_FN_BASE && func_id <= SDEI_MAX_REQ) {
++        sdei_handle_request(cs, run);
++    } else {
++        run->hypercall.args[0] = -1;
 +    }
-+    qemu_free_irqs(old_irqs, n);
 +}
 +
- static const TypeInfo irq_type_info = {
-    .name = TYPE_IRQ,
-    .parent = TYPE_OBJECT,
-diff --git a/include/hw/irq.h b/include/hw/irq.h
-index fe527f6..1af1db9 100644
---- a/include/hw/irq.h
-+++ b/include/hw/irq.h
-@@ -56,8 +56,12 @@ qemu_irq qemu_irq_split(qemu_irq irq1, qemu_irq irq2);
-  */
- qemu_irq *qemu_irq_proxy(qemu_irq **target, int n);
- 
--/* For internal use in qtest.  Similar to qemu_irq_split, but operating
--   on an existing vector of qemu_irq.  */
-+/*
-+ * Similar to qemu_irq_split, but operating on an existing vector of qemu_irq.
-+ */
- void qemu_irq_intercept_in(qemu_irq *gpio_in, qemu_irq_handler handler, int n);
- 
-+/* Restore the irq handler intercepted by qemu_irq_intercept_in() */
-+void qemu_irq_remove_intercept(qemu_irq *gpio_in, int n);
 +
- #endif
+ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+ {
+     int ret = 0;
+@@ -678,6 +692,9 @@ int kvm_arch_handle_exit(CPUState *cs, struct kvm_run *run)
+             ret = EXCP_DEBUG;
+         } /* otherwise return to guest */
+         break;
++    case KVM_EXIT_HYPERCALL:
++        kvm_arm_handle_hypercall(cs, run);
++        break;
+     default:
+         qemu_log_mask(LOG_UNIMP, "%s: un-handled exit reason %d\n",
+                       __func__, run->exit_reason);
 -- 
 1.8.3.1
 

@@ -1,75 +1,118 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id l10sm4654754wrh.20.2019.09.24.14.01.12
+        by smtp.gmail.com with ESMTPSA id b184sm721383wmg.47.2019.09.24.14.10.31
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Sep 2019 14:01:17 -0700 (PDT)
+        Tue, 24 Sep 2019 14:10:32 -0700 (PDT)
 Received: from zen.lan (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id CD5021FF8F;
+	by zen.linaroharston (Postfix) with ESMTP id 5A3131FFA3;
 	Tue, 24 Sep 2019 22:01:08 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: f4bug@amsat.org,
 	jsnow@redhat.com,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	Pavel Dovgalyuk <dovgaluk@ispras.ru>,
 	Peter Maydell <peter.maydell@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
 	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH  v3 21/33] tests/tcg: add simple record/replay smoke test for aarch64
-Date: Tue, 24 Sep 2019 22:00:54 +0100
-Message-Id: <20190924210106.27117-22-alex.bennee@linaro.org>
+Subject: [PATCH  v3 17/33] tests/tcg: clean-up some comments after the de-tangling
+Date: Tue, 24 Sep 2019 22:00:50 +0100
+Message-Id: <20190924210106.27117-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190924210106.27117-1-alex.bennee@linaro.org>
 References: <20190924210106.27117-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: PHPlEJR5mjek
+X-TUID: wz/fzjOKKE4i
 
-This adds two new tests that re-use the memory test to check basic
-record replay functionality is still working. We have to define our
-own runners rather than using the default pattern as we want to change
-the test name but re-use the memory binary.
-
-We declare the test binaries as PHONY as they don't rely exist.
-
-[AJB: A better test would output some sort of timer value or other
-otherwise variable value so we could compare the record and replay
-outputs and ensure they match]
+These were missed in the recent de-tangling so have been updated to be
+more actuate. I've also built up ARM_TESTS in a manner similar to
+AARCH64_TESTS for better consistency.
 
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Cc: Pavel Dovgalyuk <dovgaluk@ispras.ru>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- tests/tcg/aarch64/Makefile.softmmu-target | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ tests/tcg/Makefile.target         |  7 +++++--
+ tests/tcg/aarch64/Makefile.target |  3 ++-
+ tests/tcg/arm/Makefile.target     | 15 ++++++++-------
+ 3 files changed, 15 insertions(+), 10 deletions(-)
 
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index 4c4aaf61dd3..b4b39579634 100644
---- a/tests/tcg/aarch64/Makefile.softmmu-target
-+++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -32,3 +32,24 @@ memory: CFLAGS+=-DCHECK_UNALIGNED=1
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index 8808beaf74b..679eb56bd37 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -74,8 +74,11 @@ TIMEOUT=15
+ endif
  
- # Running
- QEMU_OPTS+=-M virt -cpu max -display none -semihosting-config enable=on,target=native,chardev=output -kernel
+ ifdef CONFIG_USER_ONLY
+-# The order we include is important. We include multiarch, base arch
+-# and finally arch if it's not the same as base arch.
++# The order we include is important. We include multiarch first and
++# then the target. If there are common tests shared between
++# sub-targets (e.g. ARM & AArch64) then it is up to
++# $(TARGET_NAME)/Makefile.target to include the common parent
++# architecture in its VPATH.
+ -include $(SRC_PATH)/tests/tcg/multiarch/Makefile.target
+ -include $(SRC_PATH)/tests/tcg/$(TARGET_NAME)/Makefile.target
+ 
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index e763dd9da37..9758f89f905 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -8,7 +8,7 @@ VPATH 		+= $(ARM_SRC)
+ AARCH64_SRC=$(SRC_PATH)/tests/tcg/aarch64
+ VPATH 		+= $(AARCH64_SRC)
+ 
+-# we don't build any other ARM test
++# Float-convert Tests
+ AARCH64_TESTS=fcvt
+ 
+ fcvt: LDFLAGS+=-lm
+@@ -17,6 +17,7 @@ run-fcvt: fcvt
+ 	$(call run-test,$<,$(QEMU) $<, "$< on $(TARGET_NAME)")
+ 	$(call diff-out,$<,$(AARCH64_SRC)/fcvt.ref)
+ 
++# Pauth Tests
+ AARCH64_TESTS += pauth-1 pauth-2
+ run-pauth-%: QEMU_OPTS += -cpu max
+ 
+diff --git a/tests/tcg/arm/Makefile.target b/tests/tcg/arm/Makefile.target
+index aa4e4e3782c..7347d3d0adb 100644
+--- a/tests/tcg/arm/Makefile.target
++++ b/tests/tcg/arm/Makefile.target
+@@ -8,25 +8,26 @@ ARM_SRC=$(SRC_PATH)/tests/tcg/arm
+ # Set search path for all sources
+ VPATH 		+= $(ARM_SRC)
+ 
+-ARM_TESTS=hello-arm test-arm-iwmmxt
+-
+-TESTS += $(ARM_TESTS) fcvt
+-
++# Basic Hello World
++ARM_TESTS = hello-arm
+ hello-arm: CFLAGS+=-marm -ffreestanding
+ hello-arm: LDFLAGS+=-nostdlib
+ 
++# IWMXT floating point extensions
++ARM_TESTS += test-arm-iwmmxt
+ test-arm-iwmmxt: CFLAGS+=-marm -march=iwmmxt -mabi=aapcs -mfpu=fpv4-sp-d16
+ test-arm-iwmmxt: test-arm-iwmmxt.S
+ 	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
+ 
+-ifeq ($(TARGET_NAME), arm)
++# Float-convert Tests
++ARM_TESTS += fcvt
+ fcvt: LDFLAGS+=-lm
+ # fcvt: CFLAGS+=-march=armv8.2-a+fp16 -mfpu=neon-fp-armv8
+-
+ run-fcvt: fcvt
+ 	$(call run-test,fcvt,$(QEMU) $<,"$< on $(TARGET_NAME)")
+ 	$(call diff-out,fcvt,$(ARM_SRC)/fcvt.ref)
+-endif
 +
-+# Simple Record/Replay Test
-+.PHONY: memory-record
-+run-memory-record: memory-record memory
-+	$(call run-test, $<, \
-+	  $(QEMU) -monitor none -display none \
-+		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
-+		  -icount shift=5$(COMMA)rr=record$(COMMA)rrfile=record.bin \
-+	   	  $(QEMU_OPTS) memory, \
-+	  "$< on $(TARGET_NAME)")
-+
-+.PHONY: memory-replay
-+run-memory-replay: memory-replay run-memory-record
-+	$(call run-test, $<, \
-+	  $(QEMU) -monitor none -display none \
-+		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
-+		  -icount shift=5$(COMMA)rr=replay$(COMMA)rrfile=record.bin \
-+	   	  $(QEMU_OPTS) memory, \
-+	  "$< on $(TARGET_NAME)")
-+
-+TESTS+=memory-record memory-replay
++TESTS += $(ARM_TESTS)
+ 
+ # On ARM Linux only supports 4k pages
+ EXTRA_RUNS+=run-test-mmap-4096
 -- 
 2.20.1

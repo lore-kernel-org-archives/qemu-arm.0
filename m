@@ -1,84 +1,136 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3690536wrp;
-        Tue, 24 Sep 2019 02:43:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz37RC2AzPOMIUUSeykEI420kwM1RX7EpodLhiOt3uNmnDAL8OE+qFQZ2aG8m4526oTsRwM
-X-Received: by 2002:a37:c0f:: with SMTP id 15mr1450628qkm.73.1569318188713;
-        Tue, 24 Sep 2019 02:43:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569318188; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3698435wrp;
+        Tue, 24 Sep 2019 02:53:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyO6offzkq8nMettaOMVYCNm52VdcwkapqzF0c5wvVVzMYKQnfZydjeiQLg+DlcdDzuTREF
+X-Received: by 2002:a05:620a:1249:: with SMTP id a9mr1418207qkl.243.1569318797763;
+        Tue, 24 Sep 2019 02:53:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569318797; cv=none;
         d=google.com; s=arc-20160816;
-        b=Cnng71mBDIMGO+LNb07QfwRmqNTiwk37Z4RZ20niVJhx2VbweWOw2TFP18+oL+FziY
-         gdrxqsBlM+LyC49OnBpN6q9B3b/z4IvTH0KXouwSSywNFLs+g8D3R9faFOvdB+sMhxaL
-         8sz/DW6ZxlXdc4w7XVjVyQhiVoiGcaop3gHkq+rpFfj6nWwJYWEtVr39eiIWQj8E8Vf4
-         Oua0UBVJxTffYWEfsqW70nn2bJlzn9ngBuvSP6VkIj/XIlLcSrxEYZl4dtsws37g9vRM
-         vkTf0HnrKb1oG3angLoZUSOoq2hk4VMipNtIwbxCAEWoRgsST/qDKtELznIl4s8ytJC0
-         YWrA==
+        b=Ra/FC0VZOAQAZSGhIgogS2PRcFLZHNlBFYRRX1u02RBfMq4si3q6td53AFLBqC4MrK
+         iWilww239ECiCgn0Ax+T2AoCGiky1S8/bIUwsXxqfIm2dGVMaaDAAHP4qQdxOu3Vi5Sb
+         q0B3AV2Sks9zuiOaxVLGf1ZQ3AAT1aBqIhUZo++BQON2kfDaFDaFJ6WhooIAL/+S7GAV
+         Z1nWdtwoQ8Vr8S3+j8h8K9uDBx86QILR9za10Mq3hrs+RFYYY57wjrwhjJTnp/LWIs12
+         CKhbRtFkLYe4BpfxP2+ow+fOxXVbzSHD1zwMTvp/FOoqaQUw+k9Uir166XAvoLVYnnvb
+         GUwA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=tlElmbk0lEA/90rAYIPTPVv42Lf6+vFVRibcOaUvkg0=;
-        b=SrcbGDzO8CbkJzcYux7pY6WDM5eD8dXUYIr6SjuZrkat9BSTx39LQin7mvq9xVdAKK
-         PyOaYclsJhYnbJpuOKMIJs9uIqz4GUFeXmGHjSVXtcXMPEn55xVMp5jl+FI6DBLmbF77
-         iv5RZpeH0XJTCAhGY6Kqmxdn+6sUC0AcVhHXs5JRXDQ6iCqUaVMAIrfRPDd0y8RIPOw5
-         +0aeCqtH2GHpBuk8HRyDLw+7uVK0LSatz0PT9uOwrVp273DK+fsm8L+C79kCweDuxE/4
-         +Aet0xlYJ23yia0Ycw46HTHMByt65nYkCKAU6tmpk4FzNaPOINIA9P9Wtq+k2JBN3KDb
-         u57g==
+         :message-id:organization:autocrypt:openpgp:from:references:to
+         :subject;
+        bh=dLFCsMOPVvkNzAQfhWeenpCKmktMkGn4xW8p11tbV2A=;
+        b=Ayuv5tBjNFo2lmMARbFxJgLhUcuDtdBV6HkqAsbimeevcNPOeJepYEdhC1A2S7Siqt
+         en0wR/ueEDXVzq9z9svLr6gF6xBi5IeD5kgcVtl7bJls7/DZbGfXKWh3ZW4KPSBArug+
+         t9A2c6jYvq+nhy+XMLdhbi9xfFPBmVZBF/DY4+xtVf5umOb/kF9fVlU33yQlp9nezFy0
+         EoxCZJyJKOfNR7ReW9qY9XXaD0GEqriuSTHhztQBHupdRaa7bMQWGJHXN07Uc+uR9/Ol
+         fi3QLjQbKu5Ks8osS221DA/3ogcpRBeSxNDJlObG9LsKAEpOPt9cXdJl87ypzyC9hJNf
+         hesQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 14si847962qkv.230.2019.09.24.02.43.08
+        by mx.google.com with ESMTPS id a16si833200qkn.148.2019.09.24.02.53.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Sep 2019 02:43:08 -0700 (PDT)
+        Tue, 24 Sep 2019 02:53:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43238 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43360 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iChLf-0005rP-TH
-	for alex.bennee@linaro.org; Tue, 24 Sep 2019 05:43:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56064)
+	id 1iChVU-0003qu-Ir
+	for alex.bennee@linaro.org; Tue, 24 Sep 2019 05:53:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56913)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1iChLT-0005o0-Lg
- for qemu-arm@nongnu.org; Tue, 24 Sep 2019 05:42:57 -0400
+ (envelope-from <thuth@redhat.com>) id 1iChR8-0000zf-T0
+ for qemu-arm@nongnu.org; Tue, 24 Sep 2019 05:48:49 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1iChLR-0000xL-8c
- for qemu-arm@nongnu.org; Tue, 24 Sep 2019 05:42:54 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:54074)
+ (envelope-from <thuth@redhat.com>) id 1iChR7-0002P0-Ot
+ for qemu-arm@nongnu.org; Tue, 24 Sep 2019 05:48:46 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:59966)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1iChLQ-0000wG-Vj; Tue, 24 Sep 2019 05:42:53 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ (Exim 4.71) (envelope-from <thuth@redhat.com>)
+ id 1iChR7-0002OQ-Fs; Tue, 24 Sep 2019 05:48:45 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B62607FDCA;
- Tue, 24 Sep 2019 09:42:51 +0000 (UTC)
-Received: from [10.36.116.30] (ovpn-116-30.ams2.redhat.com [10.36.116.30])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 337CA1001956;
- Tue, 24 Sep 2019 09:42:39 +0000 (UTC)
-Subject: Re: [PATCH v3 1/2] vfio: Turn the container error into an Error handle
-To: Alex Williamson <alex.williamson@redhat.com>
-References: <20190923065552.10602-1-eric.auger@redhat.com>
- <20190923065552.10602-2-eric.auger@redhat.com>
- <20190923170550.252020d0@x1.home>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <efd9847f-a6e3-965d-2d65-d12a23918b39@redhat.com>
-Date: Tue, 24 Sep 2019 11:42:37 +0200
+ by mx1.redhat.com (Postfix) with ESMTPS id C979518C891A;
+ Tue, 24 Sep 2019 09:48:42 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-116-95.ams2.redhat.com [10.36.116.95])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 26FA75C1B2;
+ Tue, 24 Sep 2019 09:48:37 +0000 (UTC)
+Subject: Re: [PATCH 3/4] hw/arm: Move armv7m_nvic.c to hw/arm/ and always
+ enable it for arm builds
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20190921150420.30743-1-thuth@redhat.com>
+ <20190921150420.30743-4-thuth@redhat.com>
+ <CAFEAcA_6UxMBeyOMM0iT5cnCQEpWXfRO2XMuV9ez_0Su2osXNg@mail.gmail.com>
+ <0389e9dc-7f78-5b27-4764-51f0bdef5bef@redhat.com>
+ <CAFEAcA8XSQs=fw839O4+tTUqy-DpNh-jdHxQsfYQxm-nTbvH4Q@mail.gmail.com>
+ <88bcb5b7-4f91-1cc2-39a1-bd919608737e@redhat.com>
+ <CAFEAcA_QAtK3GmyZoR7swNKwdxkXWZCzdK0G6Sk6OU_tQ9FV2A@mail.gmail.com>
+ <3a21d31e-fe74-9e0f-fe8d-f9c00a184fe3@redhat.com>
+ <CAFEAcA-ThXGZKr8--YZGUPiw4MaMVqMxKODhVepXCgjxox6ZQg@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Organization: Red Hat
+Message-ID: <11c77a5f-ab06-a743-dd45-311d1f15ec12@redhat.com>
+Date: Tue, 24 Sep 2019 11:48:36 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-In-Reply-To: <20190923170550.252020d0@x1.home>
+In-Reply-To: <CAFEAcA-ThXGZKr8--YZGUPiw4MaMVqMxKODhVepXCgjxox6ZQg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.27]); Tue, 24 Sep 2019 09:42:52 +0000 (UTC)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.70]); Tue, 24 Sep 2019 09:48:42 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 X-BeenThere: qemu-arm@nongnu.org
@@ -92,282 +144,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com, aik@ozlabs.ru,
- qemu-devel@nongnu.org, peterx@redhat.com, qemu-arm@nongnu.org,
- pbonzini@redhat.com, david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IbrINKH70D8T
+X-TUID: wAu65JtJtqe1
 
-Hi Alex,
-
-On 9/24/19 1:05 AM, Alex Williamson wrote:
-> On Mon, 23 Sep 2019 08:55:51 +0200
-> Eric Auger <eric.auger@redhat.com> wrote:
-> 
->> The container error integer field is currently used to store
->> the first error potentially encountered during any
->> vfio_listener_region_add() call. However this fails to propagate
->> detailed error messages up to the vfio_connect_container caller.
->> Instead of using an integer, let's use an Error handle.
+On 24/09/2019 11.42, Peter Maydell wrote:
+> On Tue, 24 Sep 2019 at 05:44, Thomas Huth <thuth@redhat.com> wrote:
 >>
->> Messages are slightly reworded to accomodate the propagation.
+>> On 23/09/2019 20.50, Peter Maydell wrote:
+>>> On Mon, 23 Sep 2019 at 19:36, Thomas Huth <thuth@redhat.com> wrote:
+>>>> Just try to change "obj-$(CONFIG_ARM_V7M) += armv7m_nvic.o" into
+>>>> "obj-y += armv7m_nvic.o" in hw/int/Makefile.objs, and you'll see it break:
+>>>>
+>>>>   CC      alpha-softmmu/hw/intc/armv7m_nvic.o
+>>>> In file included from include/hw/intc/armv7m_nvic.h:13,
+>>>>                  from hw/intc/armv7m_nvic.c:19:
+>>>> target/arm/cpu.h:1416: error: "FPCR_DZE" redefined [-Werror]
+>>>>  #define FPCR_DZE    (1 << 9)    /* Divide by Zero exception trap enable */
+>>>
+>>> Sure, so don't define CONFIG_ARM_V7M in a default-config for
+>>> a non-Arm architecture. Then you get the behaviour you want:
+>>> the file is compiled only for the arm targets.
 >>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> ---
->>  hw/vfio/common.c              | 61 +++++++++++++++++++++--------------
->>  hw/vfio/spapr.c               |  4 ++-
->>  include/hw/vfio/vfio-common.h |  2 +-
->>  3 files changed, 40 insertions(+), 27 deletions(-)
->>
->> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
->> index 3e03c495d8..a0670cc63a 100644
->> --- a/hw/vfio/common.c
->> +++ b/hw/vfio/common.c
->> @@ -503,12 +503,14 @@ static void vfio_listener_region_add(MemoryListener *listener,
->>                                       MemoryRegionSection *section)
->>  {
->>      VFIOContainer *container = container_of(listener, VFIOContainer, listener);
->> +    MemoryRegion *mr = section->mr;
+>> Sigh, the point of this series is that it should also possible to
+>> compile *without* CONFIG_ARM_V7M in default-configs if you want (and
+>> yes, there are people out there who want to be able to compile a
+>> minimalistic QEMU). It's currently not possible to disable this switch.
+>> But ok, if you're not really interested in providing a possibility to
+>> make qemu-system-arm a little bit more flexible in this regard, never
+>> mind, I'll look into other issues instead.
 > 
-> This looks like an entirely secondary change that obscures the primary
-> purpose of this patch and isn't mentioned in the changelog.  It's also a
-> bit inconsistent in places where we're references section->size and
-> section->offset_within_address_space, but now mr instead of section->mr.
-OK. I removed it.
+> No, I'm happy that we should be able to compile without CONFIG_ARM_V7M
+> selected. I'm just confused about why you think this requires that
+> we move this file out of hw/intc.
 > 
-> 
->>      hwaddr iova, end;
->>      Int128 llend, llsize;
->>      void *vaddr;
->>      int ret;
->>      VFIOHostDMAWindow *hostwin;
->>      bool hostwin_found;
->> +    Error *err = NULL;
->>  
->>      if (vfio_listener_skipped_section(section)) {
->>          trace_vfio_listener_region_add_skip(
->> @@ -543,6 +545,9 @@ static void vfio_listener_region_add(MemoryListener *listener,
->>                                 hostwin->max_iova - hostwin->min_iova + 1,
->>                                 section->offset_within_address_space,
->>                                 int128_get64(section->size))) {
->> +                error_setg(&err, "Overlap with existing IOMMU range "
->> +                                 "[0x%"PRIx64",0x%"PRIx64"]", hostwin->min_iova,
->> +                                 hostwin->max_iova - hostwin->min_iova + 1);
->>                  ret = -1;
-> 
-> Agree with Peter here, we should no longer be gratuitously setting ret
-> when it's not consumed.
-> 
-> Alexey or David might want to comment on the error message here since
-> we didn't have one previously, but we're only providing half the story
-> above, the existing window that interferes but not the range we
-> attempted to add that it interferes with.
-Now both the new range and the existing window are output
-> 
->>                  goto fail;
->>              }
->> @@ -550,6 +555,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
->>  
->>          ret = vfio_spapr_create_window(container, section, &pgsize);
->>          if (ret) {
->> +            error_setg_errno(&err, -ret, "Failed to create SPAPR window");
->>              goto fail;
->>          }
->>  
->> @@ -559,7 +565,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
->>  #ifdef CONFIG_KVM
->>          if (kvm_enabled()) {
->>              VFIOGroup *group;
->> -            IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(section->mr);
->> +            IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(mr);
->>              struct kvm_vfio_spapr_tce param;
->>              struct kvm_device_attr attr = {
->>                  .group = KVM_DEV_VFIO_GROUP,
->> @@ -594,18 +600,17 @@ static void vfio_listener_region_add(MemoryListener *listener,
->>      }
->>  
->>      if (!hostwin_found) {
->> -        error_report("vfio: IOMMU container %p can't map guest IOVA region"
->> -                     " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx,
->> -                     container, iova, end);
->> +        error_setg(&err, "Container %p can't map guest IOVA region"
->> +                   " 0x%"HWADDR_PRIx"..0x%"HWADDR_PRIx, container, iova, end);
-> 
-> Note that here we print the start and end addresses, so I'm not sure
-> why we chose to print [start,size] in the new message commented on
-> above.
-fixed
-> 
->>          ret = -EFAULT;
->>          goto fail;
->>      }
->>  
->> -    memory_region_ref(section->mr);
->> +    memory_region_ref(mr);
->>  
->> -    if (memory_region_is_iommu(section->mr)) {
->> +    if (memory_region_is_iommu(mr)) {
->>          VFIOGuestIOMMU *giommu;
->> -        IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(section->mr);
->> +        IOMMUMemoryRegion *iommu_mr = IOMMU_MEMORY_REGION(mr);
->>          int iommu_idx;
->>  
->>          trace_vfio_listener_region_add_iommu(iova, end);
->> @@ -632,15 +637,15 @@ static void vfio_listener_region_add(MemoryListener *listener,
->>                              iommu_idx);
->>          QLIST_INSERT_HEAD(&container->giommu_list, giommu, giommu_next);
->>  
->> -        memory_region_register_iommu_notifier(section->mr, &giommu->n);
->> +        memory_region_register_iommu_notifier(mr, &giommu->n);
->>          memory_region_iommu_replay(giommu->iommu, &giommu->n);
->>  
->>          return;
->>      }
->>  
->> -    /* Here we assume that memory_region_is_ram(section->mr)==true */
->> +    /* Here we assume that memory_region_is_ram(mr)==true */
->>  
->> -    vaddr = memory_region_get_ram_ptr(section->mr) +
->> +    vaddr = memory_region_get_ram_ptr(mr) +
->>              section->offset_within_region +
->>              (iova - section->offset_within_address_space);
->>  
->> @@ -648,12 +653,12 @@ static void vfio_listener_region_add(MemoryListener *listener,
->>  
->>      llsize = int128_sub(llend, int128_make64(iova));
->>  
->> -    if (memory_region_is_ram_device(section->mr)) {
->> +    if (memory_region_is_ram_device(mr)) {
->>          hwaddr pgmask = (1ULL << ctz64(hostwin->iova_pgsizes)) - 1;
->>  
->>          if ((iova & pgmask) || (int128_get64(llsize) & pgmask)) {
->>              trace_vfio_listener_region_add_no_dma_map(
->> -                memory_region_name(section->mr),
->> +                memory_region_name(mr),
->>                  section->offset_within_address_space,
->>                  int128_getlo(section->size),
->>                  pgmask + 1);
->> @@ -664,11 +669,12 @@ static void vfio_listener_region_add(MemoryListener *listener,
->>      ret = vfio_dma_map(container, iova, int128_get64(llsize),
->>                         vaddr, section->readonly);
->>      if (ret) {
->> -        error_report("vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
->> -                     "0x%"HWADDR_PRIx", %p) = %d (%m)",
->> -                     container, iova, int128_get64(llsize), vaddr, ret);
->> -        if (memory_region_is_ram_device(section->mr)) {
->> +        error_setg(&err, "vfio_dma_map(%p, 0x%"HWADDR_PRIx", "
->> +                   "0x%"HWADDR_PRIx", %p) = %d (%m)",
->> +                   container, iova, int128_get64(llsize), vaddr, ret);
->> +        if (memory_region_is_ram_device(mr)) {
->>              /* Allow unexpected mappings not to be fatal for RAM devices */
->> +            error_report_err(err);
->>              return;
->>          }
->>          goto fail;
->> @@ -677,7 +683,7 @@ static void vfio_listener_region_add(MemoryListener *listener,
->>      return;
->>  
->>  fail:
->> -    if (memory_region_is_ram_device(section->mr)) {
->> +    if (memory_region_is_ram_device(mr)) {
->>          error_report("failed to vfio_dma_map. pci p2p may not work");
->>          return;
->>      }
->> @@ -688,10 +694,14 @@ fail:
->>       */
->>      if (!container->initialized) {
->>          if (!container->error) {
->> -            container->error = ret;
->> +            error_propagate_prepend(&container->error, err,
->> +                                    "Region %s: ", memory_region_name(mr));
->> +        } else {
->> +            error_free(err);
->>          }
->>      } else {
->> -        hw_error("vfio: DMA mapping failed, unable to continue");
-> 
-> As Peter notes, this removal is troubling.  Thanks,
-Corrected.
+> Case 1: arm target, CONFIG_ARM_V7M=y (presumably in a Kconfig world
+> this is set by default if the user doesn't flip that switch):
+> obj-$(CONFIG_ARM_V7M) expands to obj-y, file compiled, OK
+> Case 2: arm target, CONFIG_ARM_V7M=n set by user via Kconfig:
+> obj-$(CONFIG_ARM_V7M) expands to obj-n, file not compiled, which is
+> also what we want
+The problem is this "case 2" - it does not work. For example, try to
+delete everything from default-configs/aarch64-softmmu.mak (especially
+the "include"), and just stick a "CONFIG_ARM_VIRT=y" in there.
+Linking of qemu-system-aarch64 will fail with lots of "undefined
+reference to `armv7m_nvic_set_pending'" etc. messages.
 
-Thanks
+ Thomas
 
-Eric
-> 
-> Alex
-> 
->> +        error_reportf_err(err,
->> +                          "vfio: DMA mapping failed, unable to continue: ");
->>      }
->>  }
->>  
->> @@ -1251,6 +1261,7 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
->>      container = g_malloc0(sizeof(*container));
->>      container->space = space;
->>      container->fd = fd;
->> +    container->error = NULL;
->>      QLIST_INIT(&container->giommu_list);
->>      QLIST_INIT(&container->hostwin_list);
->>  
->> @@ -1308,9 +1319,9 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
->>                                       &address_space_memory);
->>              if (container->error) {
->>                  memory_listener_unregister(&container->prereg_listener);
->> -                ret = container->error;
->> -                error_setg(errp,
->> -                    "RAM memory listener initialization failed for container");
->> +                ret = -1;
->> +                error_propagate_prepend(errp, container->error,
->> +                    "RAM memory listener initialization failed: ");
->>                  goto free_container_exit;
->>              }
->>          }
->> @@ -1365,9 +1376,9 @@ static int vfio_connect_container(VFIOGroup *group, AddressSpace *as,
->>      memory_listener_register(&container->listener, container->space->as);
->>  
->>      if (container->error) {
->> -        ret = container->error;
->> -        error_setg_errno(errp, -ret,
->> -                         "memory listener initialization failed for container");
->> +        ret = -1;
->> +        error_propagate_prepend(errp, container->error,
->> +            "memory listener initialization failed: ");
->>          goto listener_release_exit;
->>      }
->>  
->> diff --git a/hw/vfio/spapr.c b/hw/vfio/spapr.c
->> index 96c0ad9d9b..e853eebe11 100644
->> --- a/hw/vfio/spapr.c
->> +++ b/hw/vfio/spapr.c
->> @@ -17,6 +17,7 @@
->>  #include "hw/hw.h"
->>  #include "exec/ram_addr.h"
->>  #include "qemu/error-report.h"
->> +#include "qapi/error.h"
->>  #include "trace.h"
->>  
->>  static bool vfio_prereg_listener_skipped_section(MemoryRegionSection *section)
->> @@ -85,7 +86,8 @@ static void vfio_prereg_listener_region_add(MemoryListener *listener,
->>           */
->>          if (!container->initialized) {
->>              if (!container->error) {
->> -                container->error = ret;
->> +                error_setg_errno(&container->error, -ret,
->> +                                 "Memory registering failed");
->>              }
->>          } else {
->>              hw_error("vfio: Memory registering failed, unable to continue");
->> diff --git a/include/hw/vfio/vfio-common.h b/include/hw/vfio/vfio-common.h
->> index 9107bd41c0..fd564209ac 100644
->> --- a/include/hw/vfio/vfio-common.h
->> +++ b/include/hw/vfio/vfio-common.h
->> @@ -71,7 +71,7 @@ typedef struct VFIOContainer {
->>      MemoryListener listener;
->>      MemoryListener prereg_listener;
->>      unsigned iommu_type;
->> -    int error;
->> +    Error *error;
->>      bool initialized;
->>      unsigned long pgsizes;
->>      QLIST_HEAD(, VFIOGuestIOMMU) giommu_list;
-> 
+
+

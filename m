@@ -1,111 +1,103 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4179535wrp;
-        Tue, 24 Sep 2019 10:30:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwzn7CHCj2rNC/T0nr//MBRJcACEjbNLHQ+W6OeAbSy3XPz+xDU0rN9T152rZfytLlvcWAs
-X-Received: by 2002:a17:906:168f:: with SMTP id s15mr3497426ejd.109.1569346204811;
-        Tue, 24 Sep 2019 10:30:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569346204; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4359084wrp;
+        Tue, 24 Sep 2019 13:34:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwXazXnLhLzz5JJnSg46mvV6UmpZF1OV9yJ22XOlJ7eMUht93UehVh7oAvHJ+IvyTnSmOk4
+X-Received: by 2002:a1c:7509:: with SMTP id o9mr2343947wmc.21.1569357293190;
+        Tue, 24 Sep 2019 13:34:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569357293; cv=none;
         d=google.com; s=arc-20160816;
-        b=oG+peTyUXCibsGq5uCvSvfz2L4Py8i7FTeQHgU7PGN5Be0Ws8GMugCAxriKwUXTAHy
-         NFFxezPVIHuqmzkLLJg44QLBwbvRUuL7MTuSJpE6ih3TDrXfo8KJeOCQ5Z/MlgFv9Fqj
-         v2tL1xUvv5ZFTmiLvfjS+0hCVSGbR0P7fZxJcFkNWGDv9/Hrebp9hZ3VsRHuHdSGGseU
-         GDfRhsygQqEU3zVi8kcp0dRj2OsZjeZ+hhJ2XyMfZoTAt/5ix/s5XibJijCMDbwEFwoM
-         B4VzgmtsO05LlK4nhqDbr3sbk1ftnYS1rXe0N/DS/XOu0nu2UP3HRgQrf4ZluckmcEt/
-         VyOQ==
+        b=YCWU9O747km9jzjJpWCqx7ZPiTCzpNrpRdNnu0uc6hjGmoOyd9WuOlD6xUUVXLwCsX
+         z+ifD3JezpYsk7U3jv9yni16cV+obCqRZhigCXSgAW2CS++h+48tl7W8PMUFH/XfBQiR
+         bUUOKhLoFvN7SVbKMNru8AQ3O3iS4awhss8bw6zlDyfiyked6h6dA1pLY501lfB0LysF
+         nqkN7CPC/AQoGmvVGaiPPyrM+PtnV5weyo+uORbIZxXkx/2S3xEC2H7pKN8lYEiFKYsc
+         Akt4RV4dKKcLrioLNIPIS0NPMRjCo9PRbhvVXTT4MUKjgLp0SL2tCMEWhjt9ImuYzAoK
+         oH/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:openpgp:from:references:to:subject:dkim-signature;
-        bh=ShJu3UJ26MTFMk5sHkGBGMjA9yGJor0G5wu1YDqz3nQ=;
-        b=rTKsSIY5GMA5glWvLeYDTFl2JkuO/NJZYsfhuAkSQQGdccAx2b63yae5L7JPLlAHg+
-         2PP5bh3l9n4RnsnclMs70p2IXsWD57suTcvZcFgGWfqn4edykCwTmb6uxDmige1zKrkI
-         lONX9bQQmUEgZZjvAOLakjwWdBRCx5TeA6cuZXC7hVYQ0aTXsPEkbP3+DpTINdeigwJA
-         7M/GAHDVLsReSMLNJAV0BD3OM0XgUEwMI74/AkYR95OvGNbldzS/Vr94As1RKuDRku1I
-         /n87CCmtUcEfQbV11001s8dC5k5vmq8EZlzlmdtDmrPxqleUgoie9IR6tvfWqNXFZNm5
-         Zr6g==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date;
+        bh=+ayamWpTrHWPZCsI6div5JRAFtqTW96w8LUiO9oH6j8=;
+        b=Vf1mdSp2LcbuWlanBCxdE+kWHU0OeX6Ja6ZwecvW/rklQe6hX8Jb4hdTl659QjC0BF
+         nykZMrl/OkZda+DeedYqi3uaCb8E9SNBsH1V0fyUHvMlBe2nX65FXrNkr7j6ZvdlmPy/
+         xTjZlCZiRH8yZE5fWh9JMQsTRo+TizHw7/YoM/+ihvKvKeScHrOn4ba92RSefK2rrOCX
+         UyilI8GqoqdkSe9OgnM9Xtr1I5AsIGEu/nXW99o7fnrI1DNr6wUmlGRDV4ARvqdM1l05
+         dxofoyuK+LgJTwtefNeAuWOkV8sZ1mDFaREE6Y41e0Q0gEckwzCtaAI7hH5Op+C7l928
+         cAZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=m4ERP71r;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=canonical.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w34si1616728edc.252.2019.09.24.10.30.04
+        by mx.google.com with ESMTPS id c12si1895617edb.394.2019.09.24.13.34.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Sep 2019 10:30:04 -0700 (PDT)
+        Tue, 24 Sep 2019 13:34:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=m4ERP71r;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49206 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=canonical.com
+Received: from localhost ([::1]:50810 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCodX-0006zF-Aa
-	for alex.bennee@linaro.org; Tue, 24 Sep 2019 13:30:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40882)
+	id 1iCrWM-0001ax-4T
+	for alex.bennee@linaro.org; Tue, 24 Sep 2019 16:34:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50375)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1iCoVs-0008Jl-2K
- for qemu-devel@nongnu.org; Tue, 24 Sep 2019 13:22:09 -0400
+ (envelope-from <dann.frazier@canonical.com>) id 1iCrNF-0002jL-PU
+ for qemu-devel@nongnu.org; Tue, 24 Sep 2019 16:25:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1iCoVq-0001vA-GK
- for qemu-devel@nongnu.org; Tue, 24 Sep 2019 13:22:07 -0400
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:41274)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1iCoVq-0001uU-7j
- for qemu-devel@nongnu.org; Tue, 24 Sep 2019 13:22:06 -0400
-Received: by mail-pf1-x443.google.com with SMTP id q7so1757347pfh.8
- for <qemu-devel@nongnu.org>; Tue, 24 Sep 2019 10:22:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=ShJu3UJ26MTFMk5sHkGBGMjA9yGJor0G5wu1YDqz3nQ=;
- b=m4ERP71ruEA+f7f3VOzwS6CnKrgBqPcP/dllq3dUR4yZL/teOtgQU0IiPH0tuMokfJ
- /8lYNRJx7QAZQ4rP5i9oxtYZJwB2lhQ8y879JiCZn/KQbf37s12Qlpk80L873GM97E0D
- eOfN2B/mUQNMIcXJSnMYpdaokDNrsstdAtU8NTV0nAscP4oTYN/UIXYOW//l7jbRpf93
- sKVwn8VPp5WWky5vzR17zDhMJ49I0chQVYMqIYe8/IjMOUavNK2mVoDnsGDfV9k4J/Q9
- PKC3IvddrRHWeannTG50Y9/tqCgZ+QCO3Bv3lYnMhu9A2amaRiez/+Hv2Ri/nyNd3lWY
- WlJQ==
+ (envelope-from <dann.frazier@canonical.com>) id 1iCrNE-0001hA-11
+ for qemu-devel@nongnu.org; Tue, 24 Sep 2019 16:25:25 -0400
+Received: from youngberry.canonical.com ([91.189.89.112]:52719)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <dann.frazier@canonical.com>)
+ id 1iCrND-0001em-NR
+ for qemu-devel@nongnu.org; Tue, 24 Sep 2019 16:25:23 -0400
+Received: from mail-io1-f72.google.com ([209.85.166.72])
+ by youngberry.canonical.com with esmtps
+ (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.86_2)
+ (envelope-from <dann.frazier@canonical.com>) id 1iCrNA-0001Su-0F
+ for qemu-devel@nongnu.org; Tue, 24 Sep 2019 20:25:20 +0000
+Received: by mail-io1-f72.google.com with SMTP id w8so4974435iol.20
+ for <qemu-devel@nongnu.org>; Tue, 24 Sep 2019 13:25:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ShJu3UJ26MTFMk5sHkGBGMjA9yGJor0G5wu1YDqz3nQ=;
- b=n970/34hLbFCwdfJRbwY/A5q7zA+3g387k+Eb/40ll7E4+X620uxPiRPz6/jmu1zo7
- QzN7jhRf5aanwBTiGNpK9nka+CdFmM1FhNvk61SbuoHSEdeT5TvdI8XiuNyshvUb971i
- 8IQUYfJ+gkfDhILqKPFVqjR3KqMlY8SpUyKfk2/QXXA9Lw39pR8p2DfGNXLu9NuTZByR
- tSq2wdm1NAOrdUUqFOPIF8HFbreMt5TFAuA1q+egShUN4dCYbiDFOfvEvsQ/AFLomNZi
- y+sPKtkcJ/cibMp+PX+oNJnoYoihemYJvvKWFJ24RJRq39QeoYTYFtl0CEP/G5GV7bvL
- RYQw==
-X-Gm-Message-State: APjAAAXmnwj8luMOLmrSECVTfB3tSjoP2ePadh8VmGKSCJ1ZC+C0tI8o
- XAhCorTi/lZp2whaQvPllnTOKg==
-X-Received: by 2002:a63:594f:: with SMTP id j15mr4193469pgm.57.1569345724490; 
- Tue, 24 Sep 2019 10:22:04 -0700 (PDT)
-Received: from [172.20.32.216] ([12.206.46.59])
- by smtp.gmail.com with ESMTPSA id r185sm2848063pfr.68.2019.09.24.10.22.02
- (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 24 Sep 2019 10:22:03 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH 4/4] target/arm: Add support for DC CVAP & DC
- CVADP ins
-To: Beata Michalska <beata.michalska@linaro.org>, qemu-devel@nongnu.org
-References: <20190910095610.4546-1-beata.michalska@linaro.org>
- <20190910095610.4546-5-beata.michalska@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <c70f7562-c988-5eab-fa1e-fc8b5897e171@linaro.org>
-Date: Tue, 24 Sep 2019 10:22:01 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=+ayamWpTrHWPZCsI6div5JRAFtqTW96w8LUiO9oH6j8=;
+ b=pllkvpS0Zp3UL/cdTf+U57muN7VO/Obk3q7zee/WLhgHYyeNwpgkwESzrBL70SoqlM
+ JalLbKPJXHARn01wUoeSAGPn7uSWksUOOU5y236iqyrkeU9CJzpPjdOkTQNlPNH7vw3a
+ jF36m0Yb7f7cG9MJVDNaHJqnmRtZNEnRkMLIN9AfnPA0HfVOmtKaJFj1APRZBrp2I7zk
+ 8G31cTwaPxWcErgtMjS2EFZ5+g1p4k8YT2Hp2edIu2EfmpVfUigHtZeKjps/FX8zETZ2
+ PUHwsuZeX4Yl38h7NHhg0y2QbJffvq20J3oSftSyKWeeLqAv/sFr/WoV5zoDp3jvU88J
+ APvA==
+X-Gm-Message-State: APjAAAVHGxinvUKt9adBDD1P18T6rF+Z6cm4nq6n4VExupfrX8+NjRNi
+ yUzvb+Tv/JocGHFUf1xc2lpgJh8nY710oLeL47oGwOOV+Bd1ItqltVB11HnqRsmt0wLdXkR0VAY
+ GaHVOVlY9dAxEvfIxYBppNv6yjqxdyu8N
+X-Received: by 2002:a02:7f49:: with SMTP id r70mr768907jac.85.1569356718940;
+ Tue, 24 Sep 2019 13:25:18 -0700 (PDT)
+X-Received: by 2002:a02:7f49:: with SMTP id r70mr768858jac.85.1569356718531;
+ Tue, 24 Sep 2019 13:25:18 -0700 (PDT)
+Received: from xps13.canonical.com (c-71-56-235-36.hsd1.co.comcast.net.
+ [71.56.235.36])
+ by smtp.gmail.com with ESMTPSA id m67sm4944026iof.21.2019.09.24.13.25.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 24 Sep 2019 13:25:18 -0700 (PDT)
+Date: Tue, 24 Sep 2019 14:25:17 -0600
+From: dann frazier <dann.frazier@canonical.com>
+To: Rafael David Tinoco <rafaeldtinoco@ubuntu.com>
+Subject: Re: [Qemu-devel] qemu_futex_wait() lockups in ARM64: 2 possible issues
+Message-ID: <20190924202517.GA21422@xps13.dannf>
+References: <cbe46ad6-ef6c-d155-e79a-672182c725ad@ubuntu.com>
+ <d94f18f1-986f-ec19-02c0-e83e5e7af3d0@redhat.com>
+ <1864070a-2f84-1d98-341e-f01ddf74ec4b@ubuntu.com>
 MIME-Version: 1.0
-In-Reply-To: <20190910095610.4546-5-beata.michalska@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::443
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <1864070a-2f84-1d98-341e-f01ddf74ec4b@ubuntu.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x
+X-Received-From: 91.189.89.112
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,117 +109,203 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, quintela@redhat.com, dgilbert@redhat.com,
- shameerali.kolothum.thodi@huawei.com, eric.auger@redhat.com,
- qemu-arm@nongnu.org, pbonzini@redhat.com
+Cc: lizhengui <lizhengui@huawei.com>, Jan Glauber <jglauber@marvell.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Bug 1805256 <1805256@bugs.launchpad.net>,
+ QEMU Developers - ARM <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4b/xSdfxvyWw
+X-TUID: xpLeaI9/k/6r
 
-On 9/10/19 2:56 AM, Beata Michalska wrote:
-> @@ -2229,7 +2229,8 @@ static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
->  #define ARM_CP_NZCV              (ARM_CP_SPECIAL | 0x0300)
->  #define ARM_CP_CURRENTEL         (ARM_CP_SPECIAL | 0x0400)
->  #define ARM_CP_DC_ZVA            (ARM_CP_SPECIAL | 0x0500)
-> -#define ARM_LAST_SPECIAL         ARM_CP_DC_ZVA
-> +#define ARM_CP_DC_CVAP           (ARM_CP_SPECIAL | 0x0600)
-> +#define ARM_LAST_SPECIAL         ARM_CP_DC_CVAP
+On Wed, Sep 11, 2019 at 04:09:25PM -0300, Rafael David Tinoco wrote:
+> > Zhengui's theory that notify_me doesn't work properly on ARM is more
+> > promising, but he couldn't provide a clear explanation of why he thought
+> > notify_me is involved.  In particular, I would have expected notify_me to
+> > be wrong if the qemu_poll_ns call came from aio_ctx_dispatch, for example:
+> > 
+> > 
+> >     glib_pollfds_fill
+> >       g_main_context_prepare
+> >         aio_ctx_prepare
+> >           atomic_or(&ctx->notify_me, 1)
+> >     qemu_poll_ns
+> >     glib_pollfds_poll
+> >       g_main_context_check
+> >         aio_ctx_check
+> >           atomic_and(&ctx->notify_me, ~1)
+> >       g_main_context_dispatch
+> >         aio_ctx_dispatch
+> >           /* do something for event */
+> >             qemu_poll_ns 
+> > 
+> 
+> Paolo,
+> 
+> I tried confining execution in a single NUMA domain (cpu & mem) and
+> still faced the issue, then, I added a mutex "ctx->notify_me_lcktest"
+> into context to protect "ctx->notify_me", like showed bellow, and it
+> seems to have either fixed or mitigated it.
+> 
+> I was able to cause the hung once every 3 or 4 runs. I have already ran
+> qemu-img convert more than 30 times now and couldn't reproduce it again.
+> 
+> Next step is to play with the barriers and check why existing ones
+> aren't enough for ordering access to ctx->notify_me ... or should I
+> try/do something else in your opinion ?
+> 
+> This arch/machine (Huawei D06):
+> 
+> $ lscpu
+> Architecture:        aarch64
+> Byte Order:          Little Endian
+> CPU(s):              96
+> On-line CPU(s) list: 0-95
+> Thread(s) per core:  1
+> Core(s) per socket:  48
+> Socket(s):           2
+> NUMA node(s):        4
+> Vendor ID:           0x48
+> Model:               0
+> Stepping:            0x0
+> CPU max MHz:         2000.0000
+> CPU min MHz:         200.0000
+> BogoMIPS:            200.00
+> L1d cache:           64K
+> L1i cache:           64K
+> L2 cache:            512K
+> L3 cache:            32768K
+> NUMA node0 CPU(s):   0-23
+> NUMA node1 CPU(s):   24-47
+> NUMA node2 CPU(s):   48-71
+> NUMA node3 CPU(s):   72-95
+> Flags:               fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics
+> cpuid asimdrdm dcpop
 
-I don't see that this operation needs to be handled via "special".  It's a
-function call upon write, as for many other system registers.
+Note that I'm also seeing this on a ThunderX2 (same calltrace):
 
-> +static inline bool isar_feature_aa64_dcpop(const ARMISARegisters *id)
-> +{
-> +    return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, DPB) != 0;
-> +}
+$ lscpu
+Architecture:        aarch64
+Byte Order:          Little Endian
+CPU(s):              224
+On-line CPU(s) list: 0-223
+Thread(s) per core:  4
+Core(s) per socket:  28
+Socket(s):           2
+NUMA node(s):        2
+Vendor ID:           Cavium
+Model:               1
+Model name:          ThunderX2 99xx
+Stepping:            0x1
+BogoMIPS:            400.00
+L1d cache:           32K
+L1i cache:           32K
+L2 cache:            256K
+L3 cache:            32768K
+NUMA node0 CPU(s):   0-111
+NUMA node1 CPU(s):   112-223
+Flags:               fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics cpuid asimdrdm
+
+  -dann
+
+> ----
+> 
+> diff --git a/include/block/aio.h b/include/block/aio.h
+> index 0ca25dfec6..0724086d91 100644
+> --- a/include/block/aio.h
+> +++ b/include/block/aio.h
+> @@ -84,6 +84,7 @@ struct AioContext {
+>       * dispatch phase, hence a simple counter is enough for them.
+>       */
+>      uint32_t notify_me;
+> +    QemuMutex notify_me_lcktest;
+> 
+>      /* A lock to protect between QEMUBH and AioHandler adders and deleter,
+>       * and to ensure that no callbacks are removed while we're walking and
+> diff --git a/util/aio-posix.c b/util/aio-posix.c
+> index 51c41ed3c9..031d6e2997 100644
+> --- a/util/aio-posix.c
+> +++ b/util/aio-posix.c
+> @@ -529,7 +529,9 @@ static bool run_poll_handlers(AioContext *ctx,
+> int64_t max_ns, int64_t *timeout)
+>      bool progress;
+>      int64_t start_time, elapsed_time;
+> 
+> +    qemu_mutex_lock(&ctx->notify_me_lcktest);
+>      assert(ctx->notify_me);
+> +    qemu_mutex_unlock(&ctx->notify_me_lcktest);
+>      assert(qemu_lockcnt_count(&ctx->list_lock) > 0);
+> 
+>      trace_run_poll_handlers_begin(ctx, max_ns, *timeout);
+> @@ -601,8 +603,10 @@ bool aio_poll(AioContext *ctx, bool blocking)
+>       * so disable the optimization now.
+>       */
+>      if (blocking) {
+> +        qemu_mutex_lock(&ctx->notify_me_lcktest);
+>          assert(in_aio_context_home_thread(ctx));
+>          atomic_add(&ctx->notify_me, 2);
+> +        qemu_mutex_unlock(&ctx->notify_me_lcktest);
+>      }
+> 
+>      qemu_lockcnt_inc(&ctx->list_lock);
+> @@ -647,8 +651,10 @@ bool aio_poll(AioContext *ctx, bool blocking)
+>      }
+> 
+>      if (blocking) {
+> +        qemu_mutex_lock(&ctx->notify_me_lcktest);
+>          atomic_sub(&ctx->notify_me, 2);
+>          aio_notify_accept(ctx);
+> +        qemu_mutex_unlock(&ctx->notify_me_lcktest);
+>      }
+> 
+>      /* Adjust polling time */
+> diff --git a/util/async.c b/util/async.c
+> index c10642a385..140e1e86f5 100644
+> --- a/util/async.c
+> +++ b/util/async.c
+> @@ -221,7 +221,9 @@ aio_ctx_prepare(GSource *source, gint    *timeout)
+>  {
+>      AioContext *ctx = (AioContext *) source;
+> 
+> +    qemu_mutex_lock(&ctx->notify_me_lcktest);
+>      atomic_or(&ctx->notify_me, 1);
+> +    qemu_mutex_unlock(&ctx->notify_me_lcktest);
+> 
+>      /* We assume there is no timeout already supplied */
+>      *timeout = qemu_timeout_ns_to_ms(aio_compute_timeout(ctx));
+> @@ -239,8 +241,10 @@ aio_ctx_check(GSource *source)
+>      AioContext *ctx = (AioContext *) source;
+>      QEMUBH *bh;
+> 
+> +    qemu_mutex_lock(&ctx->notify_me_lcktest);
+>      atomic_and(&ctx->notify_me, ~1);
+>      aio_notify_accept(ctx);
+> +    qemu_mutex_unlock(&ctx->notify_me_lcktest);
+> 
+>      for (bh = ctx->first_bh; bh; bh = bh->next) {
+>          if (bh->scheduled) {
+> @@ -346,11 +350,13 @@ void aio_notify(AioContext *ctx)
+>      /* Write e.g. bh->scheduled before reading ctx->notify_me.  Pairs
+>       * with atomic_or in aio_ctx_prepare or atomic_add in aio_poll.
+>       */
+> -    smp_mb();
+> +    //smp_mb();
+> +    qemu_mutex_lock(&ctx->notify_me_lcktest);
+>      if (ctx->notify_me) {
+>          event_notifier_set(&ctx->notifier);
+>          atomic_mb_set(&ctx->notified, true);
+>      }
+> +    qemu_mutex_unlock(&ctx->notify_me_lcktest);
+>  }
+> 
+>  void aio_notify_accept(AioContext *ctx)
+> @@ -424,6 +430,8 @@ AioContext *aio_context_new(Error **errp)
+>      ctx->co_schedule_bh = aio_bh_new(ctx, co_schedule_bh_cb, ctx);
+>      QSLIST_INIT(&ctx->scheduled_coroutines);
+> 
+> +    qemu_rec_mutex_init(&ctx->notify_me_lcktest);
 > +
-> +static inline bool isar_feature_aa64_dcpodp(const ARMISARegisters *id)
-> +{
-> +    return (FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, DPB) >> 1) != 0;
-> +}
-
-The correct check is FIELD_EX(...) >= 2.  This is a 4-bit field, as with all of
-the others.
-
-> +static CPAccessResult aa64_cacheop_persist_access(CPUARMState *env,
-> +                                                  const ARMCPRegInfo *ri,
-> +                                                  bool isread)
-> +{
-> +    ARMCPU *cpu = env_archcpu(env);
-> +    /*
-> +     * Access is UNDEF if lacking implementation for either DC CVAP or DC CVADP
-> +     * DC CVAP ->  CRm: 0xc
-> +     * DC CVADP -> CRm: 0xd
-> +     */
-> +    return (ri->crm == 0xc && !cpu_isar_feature(aa64_dcpop, cpu)) ||
-> +           (ri->crm == 0xd && !cpu_isar_feature(aa64_dcpodp, cpu))
-> +           ? CP_ACCESS_TRAP_UNCATEGORIZED
-> +           : aa64_cacheop_access(env, ri, isread);
-> +}
-...
-> +    { .name = "DC_CVAP", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 12, .opc2 = 1,
-> +      .access = PL0_W, .type = ARM_CP_DC_CVAP,
-> +      .accessfn = aa64_cacheop_persist_access },
-> +    { .name = "DC_CVADP", .state = ARM_CP_STATE_AA64,
-> +      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 13, .opc2 = 1,
-> +      .access = PL0_W, .type = ARM_CP_DC_CVAP,
-> +      .accessfn = aa64_cacheop_persist_access },
-
-While this access function works, it's better to simply not register these at
-all when they're not supported.  Compare the registration of rndr_reginfo.
-
-As I described above, I think this can use a normal write function.  In which
-case this would use .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END.
-
-(I believe that ARM_CP_IO is not required, but I'm not 100% sure.  Certainly
-there does not seem to be anything in dc_cvap() that affects state which can
-queried from another virtual cpu, so there does not appear to be any reason to
-grab the global i/o lock.  The host kernel should be just fine with concurrent
-msync syscalls, or whatever it is that libpmem uses.)
-
-
-> +void HELPER(dc_cvap)(CPUARMState *env, uint64_t vaddr_in)
-> +{
-> +#ifndef CONFIG_USER_ONLY
-> +    ARMCPU *cpu = env_archcpu(env);
-> +    /* CTR_EL0 System register -> DminLine, bits [19:16] */
-> +    uint64_t dline_size = 4 << ((cpu->ctr >> 16) & 0xF);
-> +    uint64_t vaddr = vaddr_in & ~(dline_size - 1);
-> +    void *haddr;
-> +    int mem_idx = cpu_mmu_index(env, false);
-> +
-> +    /* This won't be crossing page boundaries */
-> +    haddr = probe_read(env, vaddr, dline_size, mem_idx, GETPC());
-> +    if (haddr) {
-> +
-> +        ram_addr_t offset;
-> +        MemoryRegion *mr;
-> +
-> +        /*
-> +         * RCU critical section + ref counting,
-> +         * so that MR won't disappear behind the scene
-> +         */
-> +        rcu_read_lock();
-> +        mr = memory_region_from_host(haddr, &offset);
-> +        if (mr) {
-> +            memory_region_ref(mr);
-> +        }
-> +        rcu_read_unlock();
-> +
-> +        if (mr) {
-> +            memory_region_do_writeback(mr, offset, dline_size);
-> +            memory_region_unref(mr);
-> +        }
-> +    }
-> +#endif
-
-
-We hold the rcu lock whenever a TB is executing.  I don't believe there's any
-point in increasing the lock count here.  Similarly with memory_region
-refcounts -- they cannot vanish while we're executing a TB.
-
-Thus I believe that about half of this function can fold away.
-
-
-r~
+>      aio_set_event_notifier(ctx, &ctx->notifier,
+>                             false,
+>                             (EventNotifierHandler *)
+> 

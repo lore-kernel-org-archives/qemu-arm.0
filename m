@@ -1,67 +1,67 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4373506wrp;
-        Tue, 24 Sep 2019 13:52:17 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxIdVFwargQk+oNllYUDvO80P4horpw/Jw/xbk6Jwft0FIN4loGKZeSWaUjNWlcwwuDBenV
-X-Received: by 2002:a37:66c8:: with SMTP id a191mr71128qkc.108.1569358336895;
-        Tue, 24 Sep 2019 13:52:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569358336; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4374485wrp;
+        Tue, 24 Sep 2019 13:53:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxYBST0Fqif2A7/1DgpXW9XRIzLY/0VFqptQ4fgK3NsIO4kk4UL7TaTYeaLf4wGW76xqQqn
+X-Received: by 2002:a37:8cc6:: with SMTP id o189mr86571qkd.82.1569358412293;
+        Tue, 24 Sep 2019 13:53:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569358412; cv=none;
         d=google.com; s=arc-20160816;
-        b=qSZIr9bR0LV0i1ht1CzmdcjEsMV8LPte3B3FFSvcPzf7pLonzl7LUl6xJ2TKR2ZeeP
-         nbEmBK3Pj2X8bu0vDDOWhfJI6nL1uWINZu6Op+XCvbiSWpXQY2Ov9DMkEZQ8MgA2CbIF
-         P0H1Eh4XpFBWEFCbj90z/vB/+GRE9xZzYYvFvVs8a8n3nYzf8OeKnc4INXTgy1c/x/5f
-         mmuHL7yvrgVeZf8NKK4eIdnjoK4IHjFkDIOC8LWi5kJkS+rxq12I3/7JN4OEGyAiru5L
-         5IJMPuikCTX5YW9d9cc7VHOuwKbj5SBYkNHiNzPJFXVz3lSBOKg20v88/aSJAYsh4T54
-         FvkA==
+        b=y7KVe9DC1/CBz0gt7JsR2SOFbLubs9nGfm35OjLGTiSF/ehcF3lRn32t0aLTULoYqj
+         GDuM60wi0uwWfvjNZtBptMeP+pjv9UF82UDzj90HeTCS726cDxcsIsW3vWi3zids0w5H
+         W8LlGNkyJOFEoWFMbBlfQvYYM8YdW18JhA1xHYKd4aJf7U+VbXiv6142QuwfMMrdg0fg
+         oiDC/LAG1cZ9J8p7tPno2MfFn6iouwKcJ85i5naz+qRBqiamQCG+FEeGDtF6nrRE24Yr
+         +am+GjXXyBRV3mkjeYhm8j8OB2ffh26ox8cE7CyS73ndP1qgwGD8Po74b/heu0TjKU8l
+         MbiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:organization:autocrypt:openpgp:from:references:to
          :subject;
-        bh=zGuX8XKXFqdra+lB+Hv50eAHkEp+yZRAqiWooCsmvkw=;
-        b=bQf2uxKQMFhmv0wPdJpcwRA3ZHMEOGaAM5JtjR2pZcQvrrpE0yWXdRNwCK2SBCIEeO
-         Yni0vqzvXzzXWxMiGcohowIMePdJgThe4/JbCjhxQzlwCfEv5c7n/qSlRc2Lk5exFkse
-         acAbJFkcvSoAdLyvCcYPc79UiosilE0Nr69fKVrq8Zn0sheUPcLdkN4GEohEx+bhWeRY
-         FsdmRKRnvsZVhpfMy7Jj+fFC97W9/s8GqH96zEfvnMccUZXK6VqCptuXs0pkscGgLjCC
-         8CTJfa6JGlvotjmZXXBdrzYzdEVgx2xZZNOg/ZlaT/27pwFtRoMF/kgxgH1zv1nf5WO+
-         WE2g==
+        bh=IKQm/6RXwLQ8okSEGqFbHTDwa2lhfQq++zb9a6yf1no=;
+        b=Aa2kv9CyRrOyiRMUebf1XtEkYwKF7oyKc6F0m2mHHkg+fmY0mTf17Xp2MaOhwiM9mP
+         CSpQUVtIR5yl67S0VnA64FJZ49FUwy8JPQ8VvN7MOXikPtKphzNDxi21ed3v3zbC3oNk
+         MWpEdhmF/Igx8allUoDS9aIk+1VZO0aKgdtrK0GSFVmbFD2ZP6wF1iVrQMtrFtdAfZ+o
+         4ZudFJPVnFN3lviMXO7N2CbvZEWuKFEhzgWlVksaRcJ0QW1yqMo7+dwq3aXul3I9/uCn
+         Z+2IQZOxhWq2IUx4b/i2k4iLPXBX5Mt/AUdbJQq9UGXyfQBWa/HMw5JDeBN3uiN4VaSV
+         kYNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h13si2070283qtr.74.2019.09.24.13.52.16
+        by mx.google.com with ESMTPS id n70si2096479qka.193.2019.09.24.13.53.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Sep 2019 13:52:16 -0700 (PDT)
+        Tue, 24 Sep 2019 13:53:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51072 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51098 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCrnE-0002ZM-6J
-	for alex.bennee@linaro.org; Tue, 24 Sep 2019 16:52:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53857)
+	id 1iCroR-00044G-1X
+	for alex.bennee@linaro.org; Tue, 24 Sep 2019 16:53:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54325)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iCrkh-00012s-6w
- for qemu-devel@nongnu.org; Tue, 24 Sep 2019 16:49:41 -0400
+ (envelope-from <eblake@redhat.com>) id 1iCrnN-0003eX-4e
+ for qemu-devel@nongnu.org; Tue, 24 Sep 2019 16:52:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iCrkf-0007y2-3M
- for qemu-devel@nongnu.org; Tue, 24 Sep 2019 16:49:38 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:26371)
+ (envelope-from <eblake@redhat.com>) id 1iCrnM-000163-2u
+ for qemu-devel@nongnu.org; Tue, 24 Sep 2019 16:52:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:54380)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iCrkX-0007rQ-JR; Tue, 24 Sep 2019 16:49:30 -0400
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ id 1iCrnH-000135-EA; Tue, 24 Sep 2019 16:52:19 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 679C920EB;
- Tue, 24 Sep 2019 20:49:27 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 6CDDD20F0;
+ Tue, 24 Sep 2019 20:52:18 +0000 (UTC)
 Received: from [10.3.116.249] (ovpn-116-249.phx2.redhat.com [10.3.116.249])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 5E68460852;
- Tue, 24 Sep 2019 20:48:49 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5FD9060C5D;
+ Tue, 24 Sep 2019 20:52:01 +0000 (UTC)
 Subject: Re: [PATCH v3 05/25] scripts: add coccinelle script to fix
  error_append_hint usage
 To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
@@ -94,8 +94,8 @@ Autocrypt: addr=eblake@redhat.com; keydata=
  Dp6/QDjDFtfS39bHSWXKVZUbqaMPqlj/z6Ugk027/3GUjHHr8WkeL1ezWepYDY7WSoXwfoAL
  2UXYsMAr/uUncSKlfjvArhsej0S4zbqim2ZY6S8aRWw94J3bSvJR+Nwbs34GPTD4Pg==
 Organization: Red Hat, Inc.
-Message-ID: <1626833c-a19a-bba1-7194-932b873bc490@redhat.com>
-Date: Tue, 24 Sep 2019 15:48:48 -0500
+Message-ID: <76b21549-a584-e30b-2e43-3885daf90408@redhat.com>
+Date: Tue, 24 Sep 2019 15:52:00 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
@@ -103,9 +103,9 @@ In-Reply-To: <20190924200902.4703-6-vsementsov@virtuozzo.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.71]); Tue, 24 Sep 2019 20:49:27 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.71]); Tue, 24 Sep 2019 20:52:18 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
 X-Received-From: 209.132.183.28
 X-BeenThere: qemu-devel@nongnu.org
@@ -144,7 +144,7 @@ Cc: Fam Zheng <fam@euphon.net>, Paul Burton <pburton@wavecomp.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: n4SGfXmAzQx6
+X-TUID: e1McKIqij7bS
 
 On 9/24/19 3:08 PM, Vladimir Sementsov-Ogievskiy wrote:
 > error_append_hint will not work, if errp == &fatal_error, as program
@@ -154,46 +154,16 @@ On 9/24/19 3:08 PM, Vladimir Sementsov-Ogievskiy wrote:
 > Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 > ---
 
-With the approach of a partial cleanup (rather than globally enforcing
-it for all functions with errp parameter), we'll probably be rerunning
-this Coccinelle script regularly, to track down any regressions.
+>  .../fix-error_append_hint-usage.cocci         | 25 +++++++++++++++++++
+>  1 file changed, 25 insertions(+)
+>  create mode 100644 scripts/coccinelle/fix-error_append_hint-usage.cocci
+> 
 
-
-> +++ b/scripts/coccinelle/fix-error_append_hint-usage.cocci
-> @@ -0,0 +1,25 @@
-> +@rule0@
-> +// Add invocation to errp-functions
-> +identifier fn;
-> +@@
-> +
-> + fn(..., Error **errp, ...)
-> + {
-> ++   ERRP_FUNCTION_BEGIN();
-> +    <+...
-> +    error_append_hint(errp, ...);
-> +    ...+>
-> + }
-
-Does not catch the case that we want to also use the macro for any use
-of *errp, but we can augment that later.
-
-> +
-> +@@
-> +// Drop doubled invocation
-> +identifier rule0.fn;
-> +@@
-> +
-> + fn(...)
-> +{
-> +    ERRP_FUNCTION_BEGIN();
-> +-   ERRP_FUNCTION_BEGIN();
-> +    ...
 > +}
+> +
+> 
 
-This is smaller than the script you posted in v2, and thus I'm a bit
-more confident in stating that it looks correct and idempotent.
-
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Why are you creating a file with a trailing blank line?
 
 -- 
 Eric Blake, Principal Software Engineer

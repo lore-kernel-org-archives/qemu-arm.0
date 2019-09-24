@@ -1,199 +1,627 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4024093wrp;
-        Tue, 24 Sep 2019 08:06:13 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz7e09yBLANxap7ijzluJUiPDxgz9GI2Kwlt7WfF3bXTIqdztNh4f3GMhPkgq4yNC0YkxWk
-X-Received: by 2002:aca:3556:: with SMTP id c83mr500148oia.78.1569337572491;
-        Tue, 24 Sep 2019 08:06:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569337572; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4045247wrp;
+        Tue, 24 Sep 2019 08:23:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzYpH3IvrTCpNtmHng53ETv6IO+Jc72cXs4rjtJp6fLu8GSOvor8Up0Aop5MBr8SxNSRhVl
+X-Received: by 2002:ac8:4742:: with SMTP id k2mr3476782qtp.268.1569338611919;
+        Tue, 24 Sep 2019 08:23:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569338611; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZJT3ueCIle7WV+oBxGxcyVMrOHZq85tr20Wvtx8KOJyP/ll+YXMp4x/aBmapgcD3hc
-         gvL0+ShUi/bZA0BhGiW6u0ic+dgoGZgAzpGx/2yNkKiVHHiFF+aZqXlXAxMNfPFt4aqP
-         +IxVx6gSzO0MDSnm9mlvS1FeeLu/u8N2PZgsWh3AJ0yGznBynzM/ZSkjn6oA4YTeuR0e
-         xMdjOV8NOk4yxPdspIh6mUjVG18ZSjiYCLif8AbCdZJ4oM1DtjE8ehKi8V4V1FR1x21z
-         biv+ORVbmTMulUZu/sqfsU80qmX3bU6L+eef1Bz7t1ijXTz4FyLXEwGO7JupzprYrq3i
-         wPzg==
+        b=YIg+7fM55t7uc2G4QfDIdIbR/D9QZUWAWT9VXW9bcfIc9NP5oYkCQYt38kCZgSdSGR
+         vu72LWvb+47Jl0rpZqEkm246Bo3YXbhH7MzVEzmqJjcEHRgD25mx9m4IXFysf4/ynNpL
+         HCAj9ciW4Wd5XxnQ0EZnnhfBhbOl6d8qvXo5ptp8bLH/mn/2jvSwXjcNOGSsnU1g6EWp
+         Uwrk03S37HmtAYb3jp6Ih8uenn9H+ORF3WxxfeeDN2uJgFTd/uMD2faENvdOzhbNcFsa
+         +DpUTqnWGOrhBwipsWPcRWekf69oEaze6X3BFjt9dzdoX7O2WCdrt+FYs+V75/FpMyI5
+         7AKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=NxoBwaPBgvfK8zfF8JquE2OQIFSP9P0hdohdY61xgUc=;
-        b=pe9X+EaZaUnoFRy9iXGJBWjkYDg9EeE8AbbqpzlSAjmrsMlOc9n7vPc/F4dIHr+ClD
-         2KtRjezSiTEUPnCjPJ6NFm51faU5QnzDSW4EE/L1GvYL9KuAo5/3sCdGz3gWGlSMpiF4
-         jHCmmdLtzJ0cKCTDUTxhoe3nScgZlmFw7OI/DXwR0XpOol7ZtYpNz2tHJqsVJXAmmdsq
-         XthSWU4/jmvP8LZkNxHCUM6y/nHzBpoMUUj8X4QRfCZQfPh2p0BBJywEsaHczJIQhN10
-         gZYvqxGq2OI3XHlVoo+oe1Zz7lwcAg+vmvhY+KAAgmpIEfLUHeLnBf3Z+wwjFDxLKxrm
-         nmpQ==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=kdMyD9ANUXaV6FeXAQ9ePEeJqLyFJcI1znajq/wljgs=;
+        b=pfsDmiFoSQLMkLXrkhP5qld7/tII4gdjixJa2dDvgqkI3GLfDzlWxYcMtz61L1AvrT
+         Jz+9Zbh4wEpdccmYmnWxBuOc6NFPUTcGedVBcbktHGpurkMCKLtMvn+7VRIJYJ2nyTEw
+         iXHPdV0t5HEccBJeW6jJ1Rmwws2RlRWL9RHEADlwcdxKAZKNQg3Iz0GHnJFKJ9O0vXpa
+         /QY7LcvV7jtcOWSfmKkaTkzAJWaL7lZQA4ij9q9oT9bmSMa0fUv/TWWhh13lxb7bfe7w
+         pOc78N15JInr8ZYjU9S8jq6mDiw1hSPuMDOvcSTb10LqrcakgbYynsZAlfP1paidbOQ+
+         zyAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id z7si3065816jab.99.2019.09.24.08.06.12
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 24 Sep 2019 08:06:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id y79si1338847qka.236.2019.09.24.08.23.31;
+        Tue, 24 Sep 2019 08:23:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 8EA4C18C4288;
-	Tue, 24 Sep 2019 15:06:11 +0000 (UTC)
-Received: from [10.36.116.30] (ovpn-116-30.ams2.redhat.com [10.36.116.30])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9AF8A5D713;
-	Tue, 24 Sep 2019 15:06:07 +0000 (UTC)
-Subject: Re: [PATCH v4 3/9] target/arm: Allow SVE to be disabled via a CPU
- property
-To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
- alex.bennee@linaro.org, armbru@redhat.com, eblake@redhat.com,
- Dave.Martin@arm.com, imammedo@redhat.com
-References: <20190924113105.19076-1-drjones@redhat.com>
- <20190924113105.19076-4-drjones@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <78300b0a-cb7e-ab08-ec65-92227feeb873@redhat.com>
-Date: Tue, 24 Sep 2019 17:06:05 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 8D2774A68F;
+	Tue, 24 Sep 2019 11:23:31 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -1.502
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.502 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3,
+	SPF_HELO_PASS=-0.001] autolearn=no
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id EZTUHy1dh3cb; Tue, 24 Sep 2019 11:23:29 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id CEB894A5BD;
+	Tue, 24 Sep 2019 11:23:29 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id 6E8064A5BD
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 24 Sep 2019 11:23:28 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id mycJfKUCzeT3 for <kvmarm@lists.cs.columbia.edu>;
+ Tue, 24 Sep 2019 11:23:26 -0400 (EDT)
+Received: from huawei.com (szxga05-in.huawei.com [45.249.212.191])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 57C9B4A57B
+ for <kvmarm@lists.cs.columbia.edu>; Tue, 24 Sep 2019 11:23:26 -0400 (EDT)
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 5AF7A2C1E6C1AC4F4F26;
+ Tue, 24 Sep 2019 23:23:22 +0800 (CST)
+Received: from linux-Bxxcye.huawei.com (10.175.104.222) by
+ DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
+ 14.3.439.0; Tue, 24 Sep 2019 23:23:15 +0800
+From: Heyi Guo <guoheyi@huawei.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>,
+ <linux-arm-kernel@lists.infradead.org>, <kvmarm@lists.cs.columbia.edu>
+Subject: [RFC PATCH 02/12] arm/sdei: add virtual device framework
+Date: Tue, 24 Sep 2019 23:21:41 +0800
+Message-ID: <1569338511-3572-3-git-send-email-guoheyi@huawei.com>
+X-Mailer: git-send-email 1.8.3.1
+In-Reply-To: <1569338511-3572-1-git-send-email-guoheyi@huawei.com>
+References: <1569338511-3572-1-git-send-email-guoheyi@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20190924113105.19076-4-drjones@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+X-Originating-IP: [10.175.104.222]
+X-CFilter-Loop: Reflected
+Cc: Marc Zyngier <marc.zyngier@arm.com>, Jingyi Wang <wangjingyi11@huawei.com>,
+ Heyi Guo <guoheyi@huawei.com>, Dave Martin <Dave.Martin@arm.com>
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
+Precedence: list
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2 (mx1.redhat.com [10.5.110.62]); Tue, 24 Sep 2019 15:06:11 +0000 (UTC)
-X-TUID: RvMzByVoftfY
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: tO4rjbKmL62i
 
-Hi Drew,
+SDEI is useful to emulate NMI on arm64 platforms. To support SDEI in
+virtual machine with KVM enabled, we choose to implement SDEI
+interfaces in qemu. It is targeted for KVM mode only, for the full
+user space emulation can also emulate secure world and have ARM
+Trusted Firmware to run on emulated EL3.
 
-On 9/24/19 1:30 PM, Andrew Jones wrote:
-> Since 97a28b0eeac14 ("target/arm: Allow VFP and Neon to be disabled via
-> a CPU property") we can disable the 'max' cpu model's VFP and neon
-> features, but there's no way to disable SVE. Add the 'sve=on|off'
-> property to give it that flexibility. We also rename
-> cpu_max_get/set_sve_vq to cpu_max_get/set_sve_max_vq in order for them
-> to follow the typical *_get/set_<property-name> pattern.
-> 
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+- We create a logical SDEI device to hold the states of SDEI services,
+  to support VM migration.
+- Only one SDEI virtual device is allowed in the whole VM to provide
+  SDEI services.
+- We create struct QemuSDE to hold states of each SDEI event, and
+  private events with the same ID on different CPUs have their own
+  QemuSDE instance.
+- We create struct QemuSDEProp to hold properties of each SDEI event,
+  so all private instances with the same ID will pointed to the same
+  QemuSDEProp.
+- We create struct QemuSDECpu to hold CPU/PE states, including the
+  interrupted CPU context.
+- Slot numbers for private and shared event are fixed, for guests
+  cannot request more interrupt binds than BIND_SLOTS in SDEI_FEATURES
+  call.
+- The first PRIVATE_SLOT_COUNT slots in property array are for private
+  events, and the next SHARED_SLOT_COUNT slots are for shared events.
+- We use property slot index as lower bit for each allocated event
+  number, so that we can get property easily from valid input event
+  number, as well as the QemuSDE instance.
 
-Eric
-> ---
->  target/arm/cpu.c         |  3 ++-
->  target/arm/cpu64.c       | 42 ++++++++++++++++++++++++++++++++++------
->  target/arm/monitor.c     |  2 +-
->  tests/arm-cpu-features.c |  1 +
->  4 files changed, 40 insertions(+), 8 deletions(-)
-> 
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 2399c144718d..73be2ebfdd39 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -200,7 +200,8 @@ static void arm_cpu_reset(CPUState *s)
->          env->cp15.cpacr_el1 = deposit64(env->cp15.cpacr_el1, 16, 2, 3);
->          env->cp15.cptr_el[3] |= CPTR_EZ;
->          /* with maximum vector length */
-> -        env->vfp.zcr_el[1] = cpu->sve_max_vq - 1;
-> +        env->vfp.zcr_el[1] = cpu_isar_feature(aa64_sve, cpu) ?
-> +                             cpu->sve_max_vq - 1 : 0;
->          env->vfp.zcr_el[2] = env->vfp.zcr_el[1];
->          env->vfp.zcr_el[3] = env->vfp.zcr_el[1];
->          /*
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index d7f5bf610a7d..8cdb0c79fa7a 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -256,15 +256,15 @@ static void aarch64_a72_initfn(Object *obj)
->      define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
->  }
->  
-> -static void cpu_max_get_sve_vq(Object *obj, Visitor *v, const char *name,
-> -                               void *opaque, Error **errp)
-> +static void cpu_max_get_sve_max_vq(Object *obj, Visitor *v, const char *name,
-> +                                   void *opaque, Error **errp)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
->      visit_type_uint32(v, name, &cpu->sve_max_vq, errp);
->  }
->  
-> -static void cpu_max_set_sve_vq(Object *obj, Visitor *v, const char *name,
-> -                               void *opaque, Error **errp)
-> +static void cpu_max_set_sve_max_vq(Object *obj, Visitor *v, const char *name,
-> +                                   void *opaque, Error **errp)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
->      Error *err = NULL;
-> @@ -279,6 +279,34 @@ static void cpu_max_set_sve_vq(Object *obj, Visitor *v, const char *name,
->      error_propagate(errp, err);
->  }
->  
-> +static void cpu_arm_get_sve(Object *obj, Visitor *v, const char *name,
-> +                            void *opaque, Error **errp)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +    bool value = cpu_isar_feature(aa64_sve, cpu);
-> +
-> +    visit_type_bool(v, name, &value, errp);
-> +}
-> +
-> +static void cpu_arm_set_sve(Object *obj, Visitor *v, const char *name,
-> +                            void *opaque, Error **errp)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +    Error *err = NULL;
-> +    bool value;
-> +    uint64_t t;
-> +
-> +    visit_type_bool(v, name, &value, &err);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +
-> +    t = cpu->isar.id_aa64pfr0;> +    t = FIELD_DP64(t, ID_AA64PFR0, SVE, value);
-> +    cpu->isar.id_aa64pfr0 = t;
-> +}
-> +
->  /* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
->   * otherwise, a CPU with as many features enabled as our emulation supports.
->   * The version of '-cpu max' for qemu-system-arm is defined in cpu.c;
-> @@ -391,8 +419,10 @@ static void aarch64_max_initfn(Object *obj)
->  #endif
->  
->          cpu->sve_max_vq = ARM_MAX_VQ;
-> -        object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_vq,
-> -                            cpu_max_set_sve_vq, NULL, NULL, &error_fatal);
-> +        object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
-> +                            cpu_max_set_sve_max_vq, NULL, NULL, &error_fatal);
-> +        object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
-> +                            cpu_arm_set_sve, NULL, NULL, &error_fatal);
->      }
->  }
->  
-> diff --git a/target/arm/monitor.c b/target/arm/monitor.c
-> index edca8aa885f0..4fddb6c252a3 100644
-> --- a/target/arm/monitor.c
-> +++ b/target/arm/monitor.c
-> @@ -97,7 +97,7 @@ GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
->   * then the order that considers those dependencies must be used.
->   */
->  static const char *cpu_model_advertised_features[] = {
-> -    "aarch64", "pmu",
-> +    "aarch64", "pmu", "sve",
->      NULL
->  };
->  
-> diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
-> index 198ff6d6b495..202bc0e3e823 100644
-> --- a/tests/arm-cpu-features.c
-> +++ b/tests/arm-cpu-features.c
-> @@ -179,6 +179,7 @@ static void test_query_cpu_model_expansion(const void *data)
->  
->      if (g_str_equal(qtest_get_arch(), "aarch64")) {
->          assert_has_feature(qts, "max", "aarch64");
-> +        assert_has_feature(qts, "max", "sve");
->          assert_has_feature(qts, "cortex-a57", "pmu");
->          assert_has_feature(qts, "cortex-a57", "aarch64");
->  
-> 
+Signed-off-by: Heyi Guo <guoheyi@huawei.com>
+Signed-off-by: Jingyi Wang <wangjingyi11@huawei.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Dave Martin <Dave.Martin@arm.com>
+Cc: Marc Zyngier <marc.zyngier@arm.com>
+Cc: Mark Rutland <mark.rutland@arm.com>
+Cc: James Morse <james.morse@arm.com>
+---
+ target/arm/Makefile.objs |   1 +
+ target/arm/sdei.c        | 351 +++++++++++++++++++++++++++++++++++++++++++++++
+ target/arm/sdei_int.h    | 106 ++++++++++++++
+ 3 files changed, 458 insertions(+)
+ create mode 100644 target/arm/sdei.c
+ create mode 100644 target/arm/sdei_int.h
+
+diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+index cf26c16..674109d 100644
+--- a/target/arm/Makefile.objs
++++ b/target/arm/Makefile.objs
+@@ -7,6 +7,7 @@ obj-$(CONFIG_SOFTMMU) += machine.o arch_dump.o monitor.o
+ obj-$(CONFIG_SOFTMMU) += arm-powerctl.o
+ 
+ obj-$(CONFIG_KVM) += kvm.o
++obj-$(CONFIG_KVM) += sdei.o
+ obj-$(call land,$(CONFIG_KVM),$(call lnot,$(TARGET_AARCH64))) += kvm32.o
+ obj-$(call land,$(CONFIG_KVM),$(TARGET_AARCH64)) += kvm64.o
+ obj-$(call lnot,$(CONFIG_KVM)) += kvm-stub.o
+diff --git a/target/arm/sdei.c b/target/arm/sdei.c
+new file mode 100644
+index 0000000..7f12d69
+--- /dev/null
++++ b/target/arm/sdei.c
+@@ -0,0 +1,351 @@
++/*
++ * ARM SDEI emulation for ARM64 virtual machine with KVM
++ *
++ * Copyright (c) 2019 HUAWEI TECHNOLOGIES CO., LTD.
++ *
++ * Authors:
++ *    Heyi Guo <guoheyi@huawei.com>
++ *    Jingyi Wang <wangjingyi11@huawei.com>
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms and conditions of the GNU General Public License,
++ * version 2 or later, as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ *
++ * You should have received a copy of the GNU General Public License along with
++ * this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "arm-powerctl.h"
++#include "qemu/timer.h"
++#include "sysemu/kvm.h"
++#include "sysemu/kvm_int.h"
++#include "sysemu/sysemu.h"
++#include "sysemu/reset.h"
++#include "qemu/error-report.h"
++#include "sdei_int.h"
++#include "internals.h"
++#include "hw/boards.h"
++#include "hw/intc/arm_gicv3.h"
++#include "hw/intc/arm_gic.h"
++#include "hw/irq.h"
++#include "hw/sysbus.h"
++#include "migration/vmstate.h"
++#include "qom/object.h"
++
++#define TYPE_QEMU_SDEI "qemu_sdei"
++#define QEMU_SDEI(obj) OBJECT_CHECK(QemuSDEState, (obj), TYPE_QEMU_SDEI)
++
++static QemuSDEState *sde_state;
++
++static void qemu_sde_prop_init(QemuSDEState *s)
++{
++    QemuSDEProp *sde_props = s->sde_props_state;
++    int i;
++    for (i = 0; i < ARRAY_SIZE(s->sde_props_state); i++) {
++        sde_props[i].event_id = SDEI_INVALID_EVENT_ID;
++        sde_props[i].interrupt = SDEI_INVALID_INTERRUPT;
++        sde_props[i].sde_index = i >= PRIVATE_SLOT_COUNT ?
++                                 i - PRIVATE_SLOT_COUNT : i;
++
++        qemu_mutex_init(&(sde_props[i].lock));
++        sde_props[i].refcount = 0;
++    }
++    sde_props[0].event_id = SDEI_STD_EVT_SOFTWARE_SIGNAL;
++    sde_props[0].interrupt = SDEI_INVALID_INTERRUPT;
++    sde_props[0].is_shared = false;
++    sde_props[0].is_critical = false;
++
++    for (i = 0; i < ARRAY_SIZE(s->irq_map); i++) {
++        s->irq_map[i] = SDEI_INVALID_EVENT_ID;
++    }
++
++    qemu_mutex_init(&s->sdei_interrupt_bind_lock);
++}
++
++static void qemu_sde_cpu_init(QemuSDEState *s)
++{
++    int i;
++    QemuSDECpu *sde_cpus;
++
++    s->sdei_max_cpus = current_machine->smp.max_cpus;
++    s->sde_cpus = g_new0(QemuSDECpu, s->sdei_max_cpus);
++    sde_cpus = s->sde_cpus;
++    for (i = 0; i < s->sdei_max_cpus; i++) {
++        sde_cpus[i].masked = true;
++        sde_cpus[i].critical_running_event = SDEI_INVALID_EVENT_ID;
++        sde_cpus[i].normal_running_event = SDEI_INVALID_EVENT_ID;
++    }
++}
++
++static bool is_valid_event_number(int32_t event)
++{
++    int32_t slot_id;
++
++    if (event < 0 || (event & 0x3F000000)) {
++        return false;
++    }
++
++    slot_id = SDEI_EVENT_TO_SLOT(event);
++    if (slot_id >= PRIVATE_SLOT_COUNT + SHARED_SLOT_COUNT) {
++        return false;
++    }
++
++    return true;
++}
++
++static bool is_valid_event(QemuSDEState *s, int32_t event)
++{
++    if (!is_valid_event_number(event)) {
++        return false;
++    }
++
++    if (s->sde_props_state[SDEI_EVENT_TO_SLOT(event)].event_id != event) {
++        return false;
++    }
++
++    return true;
++}
++
++static QemuSDEProp *get_sde_prop_no_lock(QemuSDEState *s, int32_t event)
++{
++    if (!is_valid_event(s, event)) {
++        return NULL;
++    }
++
++    return &s->sde_props_state[SDEI_EVENT_TO_SLOT(event)];
++}
++
++static void qemu_shared_sde_init(QemuSDEState *s)
++{
++    int i;
++    for (i = 0; i < SHARED_SLOT_COUNT; i++) {
++        QemuSDE *sde;
++        sde = s->shared_sde_array[i];
++        if (!sde) {
++            sde = g_new0(QemuSDE, 1);
++        }
++        sde->event_id = SDEI_INVALID_EVENT_ID;
++        sde->enabled = false;
++        sde->running = false;
++        sde->pending = false;
++        sde->unregister_pending = false;
++        qemu_mutex_init(&sde->lock);
++        s->shared_sde_array[i] = sde;
++    }
++}
++
++static void qemu_private_sde_init(QemuSDEState *s)
++{
++    int i, j;
++    for (i = 0; i < s->sdei_max_cpus; i++) {
++        QemuSDE **array = s->sde_cpus[i].private_sde_array;
++        for (j = 0; j < PRIVATE_SLOT_COUNT; j++) {
++            QemuSDE *sde;
++            sde = array[j];
++            if (!sde) {
++                sde = g_new0(QemuSDE, 1);
++            }
++            sde->event_id = SDEI_INVALID_EVENT_ID;
++            sde->enabled = false;
++            sde->running = false;
++            sde->pending = false;
++            sde->unregister_pending = false;
++            qemu_mutex_init(&sde->lock);
++            array[j] = sde;
++        }
++    }
++}
++
++static void qemu_sde_init(QemuSDEState *s)
++{
++    qemu_sde_prop_init(s);
++    qemu_sde_cpu_init(s);
++
++    qemu_shared_sde_init(s);
++    qemu_private_sde_init(s);
++}
++
++static int qemu_sdei_pre_save(void *opaque)
++{
++    QemuSDEState *s = opaque;
++    QemuSDE **array;
++    int i, j;
++
++    for (i = 0; i < s->sdei_max_cpus; i++) {
++        array = s->sde_cpus[i].private_sde_array;
++        for (j = 0; j < PRIVATE_SLOT_COUNT; j++) {
++            QemuSDE *sde = array[j];
++            if (sde->event_id != SDEI_INVALID_EVENT_ID) {
++                sde->event_id = sde->prop->event_id;
++                sde->cpu_affinity = ARM_CPU(sde->target_cpu)->mp_affinity;
++            }
++        }
++    }
++
++    array = s->shared_sde_array;
++    for (j = 0; j < SHARED_SLOT_COUNT; j++) {
++        QemuSDE *sde = array[j];
++        if (sde->event_id != SDEI_INVALID_EVENT_ID) {
++            sde->event_id = sde->prop->event_id;
++            sde->cpu_affinity = ARM_CPU(sde->target_cpu)->mp_affinity;
++        }
++    }
++
++    return 0;
++}
++
++
++static int qemu_sdei_post_load(void *opaque, int version_id)
++{
++    QemuSDEState *s = opaque;
++    QemuSDEProp *sde_props = s->sde_props_state;
++    QemuSDE **array;
++    int i, j;
++
++    for (i = 0; i < s->sdei_max_cpus; i++) {
++        array = s->sde_cpus[i].private_sde_array;
++        for (j = 0; j < PRIVATE_SLOT_COUNT; j++) {
++            QemuSDE *sde = array[j];
++            if (sde->event_id != SDEI_INVALID_EVENT_ID) {
++                sde->prop = get_sde_prop_no_lock(s, sde->event_id);
++                sde->target_cpu = arm_get_cpu_by_id(sde->cpu_affinity);
++            }
++        }
++    }
++
++    array = s->shared_sde_array;
++    for (j = 0; j < SHARED_SLOT_COUNT; j++) {
++        QemuSDE *sde = array[j];
++        if (sde->event_id != SDEI_INVALID_EVENT_ID) {
++            sde->prop = get_sde_prop_no_lock(s, sde->event_id);
++            sde->target_cpu = arm_get_cpu_by_id(sde->cpu_affinity);
++        }
++    }
++
++    for (i = 0; i < PRIVATE_SLOT_COUNT + SHARED_SLOT_COUNT; i++) {
++        if (sde_props[i].interrupt != SDEI_INVALID_INTERRUPT) {
++            s->irq_map[sde_props[i].interrupt] = sde_props[i].event_id;
++        }
++    }
++
++    return 0;
++}
++
++static const VMStateDescription vmstate_sdes = {
++    .name = "qemu_sdei/sdes",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_BOOL(enabled, QemuSDE),
++        VMSTATE_BOOL(running, QemuSDE),
++        VMSTATE_BOOL(pending, QemuSDE),
++        VMSTATE_BOOL(unregister_pending, QemuSDE),
++        VMSTATE_UINT64(ep_address, QemuSDE),
++        VMSTATE_UINT64(ep_argument, QemuSDE),
++        VMSTATE_UINT64(routing_mode, QemuSDE),
++        VMSTATE_INT32(event_id, QemuSDE),
++        VMSTATE_UINT64(cpu_affinity, QemuSDE),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static const VMStateDescription vmstate_sde_props = {
++    .name = "qemu_sdei/sde_props",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_INT32(event_id, QemuSDEProp),
++        VMSTATE_INT32(interrupt, QemuSDEProp),
++        VMSTATE_BOOL(is_shared, QemuSDEProp),
++        VMSTATE_BOOL(is_critical, QemuSDEProp),
++        VMSTATE_INT32(sde_index, QemuSDEProp),
++        VMSTATE_INT32(refcount, QemuSDEProp),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static const VMStateDescription vmstate_sde_cpu = {
++    .name = "qemu_sdei/sde_cpu",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (VMStateField[]) {
++        VMSTATE_ARRAY_OF_POINTER_TO_STRUCT(private_sde_array, QemuSDECpu,
++                                           PRIVATE_SLOT_COUNT, 1,
++                                           vmstate_sdes, QemuSDE),
++        VMSTATE_UINT64_ARRAY(ctx[0].xregs, QemuSDECpu, 18),
++        VMSTATE_UINT64_ARRAY(ctx[1].xregs, QemuSDECpu, 18),
++        VMSTATE_UINT64(ctx[0].pc, QemuSDECpu),
++        VMSTATE_UINT64(ctx[1].pc, QemuSDECpu),
++        VMSTATE_UINT32(ctx[0].pstate, QemuSDECpu),
++        VMSTATE_UINT32(ctx[1].pstate, QemuSDECpu),
++        VMSTATE_INT32(critical_running_event, QemuSDECpu),
++        VMSTATE_INT32(normal_running_event, QemuSDECpu),
++        VMSTATE_BOOL(masked, QemuSDECpu),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static const VMStateDescription vmstate_sde_state = {
++    .name = "qemu_sdei",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .pre_save = qemu_sdei_pre_save,
++    .post_load = qemu_sdei_post_load,
++    .fields = (VMStateField[]) {
++        VMSTATE_STRUCT_ARRAY(sde_props_state, QemuSDEState,
++                             PRIVATE_SLOT_COUNT + SHARED_SLOT_COUNT, 1,
++                             vmstate_sde_props, QemuSDEProp),
++        VMSTATE_ARRAY_OF_POINTER_TO_STRUCT(shared_sde_array, QemuSDEState,
++                                           SHARED_SLOT_COUNT, 1,
++                                           vmstate_sdes, QemuSDE),
++        VMSTATE_STRUCT_VARRAY_POINTER_INT32(sde_cpus, QemuSDEState,
++                                            sdei_max_cpus,
++                                            vmstate_sde_cpu, QemuSDECpu),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++
++static void sdei_initfn(Object *obj)
++{
++    QemuSDEState *s = QEMU_SDEI(obj);
++
++    if (sde_state) {
++        error_report("Only one SDEI dispatcher is allowed!");
++        abort();
++    }
++    sde_state = s;
++
++    qemu_sde_init(s);
++}
++
++static void qemu_sde_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->desc = "SDEI_QEMU";
++    dc->vmsd = &vmstate_sde_state;
++    dc->user_creatable = true;
++}
++
++static const TypeInfo sde_qemu_info = {
++    .name          = TYPE_QEMU_SDEI,
++    .parent        = TYPE_DEVICE,
++    .instance_size = sizeof(QemuSDEState),
++    .instance_init = sdei_initfn,
++    .class_init    = qemu_sde_class_init,
++};
++
++static void register_types(void)
++{
++    type_register_static(&sde_qemu_info);
++}
++
++type_init(register_types);
+diff --git a/target/arm/sdei_int.h b/target/arm/sdei_int.h
+new file mode 100644
+index 0000000..7f69507
+--- /dev/null
++++ b/target/arm/sdei_int.h
+@@ -0,0 +1,106 @@
++/*
++ * ARM SDEI emulation internal interfaces
++ *
++ * Copyright (c) 2019 HUAWEI TECHNOLOGIES CO., LTD.
++ *
++ * Authors:
++ *    Heyi Guo <guoheyi@huawei.com>
++ *    Jingyi Wang <wangjingyi11@huawei.com>
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms and conditions of the GNU General Public License,
++ * version 2 or later, as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
++ * more details.
++ *
++ * You should have received a copy of the GNU General Public License along with
++ * this program.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef QEMU_SDEI_INT_H
++#define QEMU_SDEI_INT_H
++
++#include <linux/kvm.h>
++#include <linux/arm_sdei.h>
++#include <asm-arm64/kvm.h>
++#include "hw/intc/arm_gic_common.h"
++#include "qemu/thread.h"
++
++#define SDEI_STD_EVT_SOFTWARE_SIGNAL        0
++#define SDEI_FEATURE_BIND_SLOTS             0
++#define SDEI_PARAM_MAX                      18
++
++#define PRIVATE_SLOT_COUNT                  16
++#define PLAT_PRIVATE_SLOT_COUNT             8
++#define SHARED_SLOT_COUNT                   32
++#define PLAT_SHARED_SLOT_COUNT              16
++#define SDEI_INVALID_INTERRUPT              -1
++#define SDEI_INVALID_EVENT_ID               -1
++
++#define SDEI_EVENT_TO_SLOT(event)           ((event) & 0xFFFFFF)
++#define SDEI_IS_SHARED_EVENT(event)         \
++    (SDEI_EVENT_TO_SLOT(event) >= PRIVATE_SLOT_COUNT)
++
++typedef enum {
++    SDEI_PRIO_NORMAL        = 0,
++    SDEI_PRIO_CRITICAL      = 1,
++} QemuSDEIPriority;
++
++typedef struct QemuSDEProp {
++    QemuMutex       lock;
++    int32_t         event_id;
++    int             interrupt;
++    bool            is_shared;
++    bool            is_critical;
++    /* This is the internal index for private or shared SDE */
++    int             sde_index;
++    int             refcount;
++} QemuSDEProp;
++
++typedef struct QemuSDE {
++    QemuSDEProp     *prop;
++    CPUState        *target_cpu;
++    QemuMutex       lock;
++    bool            enabled;
++    bool            running;
++    bool            pending;
++    bool            unregister_pending;
++    uint64_t        ep_address;
++    uint64_t        ep_argument;
++    uint64_t        routing_mode;
++    int32_t         event_id;
++    /*
++     * For it is not easy to save the pointer target_cpu during migration, we
++     * add below field to save the corresponding numerical values.
++     */
++    uint64_t        cpu_affinity;
++} QemuSDE;
++
++typedef struct QemuSDECpuCtx {
++    uint64_t        xregs[18];
++    uint64_t        pc;
++    uint32_t        pstate;
++} QemuSDECpuCtx;
++
++typedef struct QemuSDECpu {
++    QemuSDE         *private_sde_array[PRIVATE_SLOT_COUNT];
++    QemuSDECpuCtx   ctx[2];
++    bool            masked;
++    int32_t         critical_running_event;
++    int32_t         normal_running_event;
++} QemuSDECpu;
++
++typedef struct QemuSDEState {
++    DeviceState     parent_obj;
++    QemuSDEProp     sde_props_state[PRIVATE_SLOT_COUNT + SHARED_SLOT_COUNT];
++    QemuSDECpu      *sde_cpus;
++    int             sdei_max_cpus;
++    QemuSDE         *shared_sde_array[SHARED_SLOT_COUNT];
++    int32_t         irq_map[GIC_MAXIRQ];
++    QemuMutex       sdei_interrupt_bind_lock;
++} QemuSDEState;
++
++#endif
+-- 
+1.8.3.1
+
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

@@ -1,130 +1,199 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3992573wrp;
-        Tue, 24 Sep 2019 07:37:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwe5O8B1pmg1yG18RaSMOVwB7YqQGz6ecDHM034yQSEr45tzhO07rNBUTAHQr765Du8MTDz
-X-Received: by 2002:a05:620a:130e:: with SMTP id o14mr2639344qkj.127.1569335829730;
-        Tue, 24 Sep 2019 07:37:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569335829; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4024093wrp;
+        Tue, 24 Sep 2019 08:06:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz7e09yBLANxap7ijzluJUiPDxgz9GI2Kwlt7WfF3bXTIqdztNh4f3GMhPkgq4yNC0YkxWk
+X-Received: by 2002:aca:3556:: with SMTP id c83mr500148oia.78.1569337572491;
+        Tue, 24 Sep 2019 08:06:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569337572; cv=none;
         d=google.com; s=arc-20160816;
-        b=pCai5YDUPQOgnHbPdzv2MCHzZr1kqbauhFH4IJGNj8w52JsXdrQpFi34364CSx/vjr
-         8ra7GhkGzMbA+yPUALGLFr6tf2fEPslfmWiIx5gwqoy3EjVQ59GGR4XgM0sLPfcB1JcT
-         eVdr53S5Vta91g8JcL5E8zy+QiLyW2apnWZIfxNftAKgpchTNRgzDcSuzXdDuOid+G6o
-         xM1KsQGasVwL9OflyFgDOZ94noQZ41FTSaGLcB8k28MIXEq7zfoyeJdFZ/ppNp412qKh
-         sGCTFz8+RJPLcEb3i9s5KUYQExfA50q+tOhOUBu3cTACZYfSNdxGFAQ4yZZzXH3jmIe9
-         V5uw==
+        b=ZJT3ueCIle7WV+oBxGxcyVMrOHZq85tr20Wvtx8KOJyP/ll+YXMp4x/aBmapgcD3hc
+         gvL0+ShUi/bZA0BhGiW6u0ic+dgoGZgAzpGx/2yNkKiVHHiFF+aZqXlXAxMNfPFt4aqP
+         +IxVx6gSzO0MDSnm9mlvS1FeeLu/u8N2PZgsWh3AJ0yGznBynzM/ZSkjn6oA4YTeuR0e
+         xMdjOV8NOk4yxPdspIh6mUjVG18ZSjiYCLif8AbCdZJ4oM1DtjE8ehKi8V4V1FR1x21z
+         biv+ORVbmTMulUZu/sqfsU80qmX3bU6L+eef1Bz7t1ijXTz4FyLXEwGO7JupzprYrq3i
+         wPzg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=Mhd/FJiamKV8bgwxvhSM1XmfViMLPDMRpLbPk1h8UFQ=;
-        b=EuVpJ/6pCqxUgjRwCCock0msOBYctUQioUqxok6RnHp0o5S46sX0BTBWIJdkmcnJ0s
-         MgeCT96Vf9bcgTU4HpP9Sr2Ue0ZNPkbTTEKWXLt4YvIgWljgMA28ge+wGLxUl/CyUz/w
-         lrXQ6enSYQdF3gV9eBuzPfQ2Y7QLXxizzqBXAHBAh8UxLjrZmdx4MQgkHQkpKClHY1Yd
-         iIdpIJj4bjz1twLdJHpHY2qXfZnVwZpiM0Ue2vaao4axiPiGW+2r69+Yk1RgJTbhgZP+
-         Kh9+GhfixqWQDGY/W6eqn4KICDJ6xdl5ymnv+tdXR2m79C6T40un6K+GPZ8EWwFIeRZY
-         /gSQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=NxoBwaPBgvfK8zfF8JquE2OQIFSP9P0hdohdY61xgUc=;
+        b=pe9X+EaZaUnoFRy9iXGJBWjkYDg9EeE8AbbqpzlSAjmrsMlOc9n7vPc/F4dIHr+ClD
+         2KtRjezSiTEUPnCjPJ6NFm51faU5QnzDSW4EE/L1GvYL9KuAo5/3sCdGz3gWGlSMpiF4
+         jHCmmdLtzJ0cKCTDUTxhoe3nScgZlmFw7OI/DXwR0XpOol7ZtYpNz2tHJqsVJXAmmdsq
+         XthSWU4/jmvP8LZkNxHCUM6y/nHzBpoMUUj8X4QRfCZQfPh2p0BBJywEsaHczJIQhN10
+         gZYvqxGq2OI3XHlVoo+oe1Zz7lwcAg+vmvhY+KAAgmpIEfLUHeLnBf3Z+wwjFDxLKxrm
+         nmpQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=j4yagwqX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f15si1366538qtg.373.2019.09.24.07.37.09
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Sep 2019 07:37:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <eric.auger@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id z7si3065816jab.99.2019.09.24.08.06.12
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 24 Sep 2019 08:06:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=j4yagwqX;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46408 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iClwC-0004bb-E2
-	for alex.bennee@linaro.org; Tue, 24 Sep 2019 10:37:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38254)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iCla9-0001Ka-6V
- for qemu-devel@nongnu.org; Tue, 24 Sep 2019 10:14:22 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iCla7-00006p-SX
- for qemu-devel@nongnu.org; Tue, 24 Sep 2019 10:14:20 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:42276)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iCla7-00006F-LV
- for qemu-devel@nongnu.org; Tue, 24 Sep 2019 10:14:19 -0400
-Received: by mail-oi1-x244.google.com with SMTP id i185so1748321oif.9
- for <qemu-devel@nongnu.org>; Tue, 24 Sep 2019 07:14:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Mhd/FJiamKV8bgwxvhSM1XmfViMLPDMRpLbPk1h8UFQ=;
- b=j4yagwqXqS6lcOkOx5LSGKWlLY7JFtE0BSiUDKdT/0FUEo1UqAlkUOmbTGRRCzlYQd
- 0tH7T1+Gffnwm7zqlAzsr8aoQsWIMlsiFYsW1Ii58h7uXiPoElHc8mwCXHRugHNH4eim
- fI38tAv+rKuucYWaAa1KAfpC80eYWTfqeF2a6kOcA4zNzKhAWp7b9ULGsPrDeEdPMAd5
- dVToJBdinNNvbzgJkJOM+NNBgeN5Aw6o+4mNwuvXHZjbmiFDC4ifq2As5wVh0MHO8rRW
- BEtnDgNNrNoOozizNFmaIQBn1OZngb016lQmCXLeudMN6LAdO4KTi2/Hi/juPoAoFAY4
- z+wg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Mhd/FJiamKV8bgwxvhSM1XmfViMLPDMRpLbPk1h8UFQ=;
- b=dEOmwlRM1EBsj7WULPAob3dIO/FPdk2C7crygiY+Kjf8K0Dwv74T58Y6sYG10FSnau
- u+BP3qr/GxXYdQsMEpUBBXFW9BWKyZSBPs/rQriqFS5VjLeTpwjP7+zjwtfb/f9ecJCo
- iojkV1Axs0yOGslAON+8CYMq8e8fD8QZ2nM6CQMzvYnoKzrbI42mr+Y8GHB4+7DN7JHu
- IN6ea8yy9ujIaNI5EAavmIGcS3TX9PwPJ8G4PY7X5crxYOZ6BmnhFWU4pJ8hQFkoxxem
- kHYow3R6clWlqTdcc7BUJCzm//vXZptFO2DLf4KZG+oaEh3A+Kptp85k/gIPltCQmZ9n
- QKXw==
-X-Gm-Message-State: APjAAAXt3HfcI5iBJ/HMEtssabjMdBFasEYR/BbaTqO6Op3QO+uqlEb4
- WP5n6cH2Iky0Cg2ddGEsRCG38B8DnnhjvBzv/qftng==
-X-Received: by 2002:aca:50d8:: with SMTP id e207mr255616oib.48.1569334458739; 
- Tue, 24 Sep 2019 07:14:18 -0700 (PDT)
+       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 8EA4C18C4288;
+	Tue, 24 Sep 2019 15:06:11 +0000 (UTC)
+Received: from [10.36.116.30] (ovpn-116-30.ams2.redhat.com [10.36.116.30])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 9AF8A5D713;
+	Tue, 24 Sep 2019 15:06:07 +0000 (UTC)
+Subject: Re: [PATCH v4 3/9] target/arm: Allow SVE to be disabled via a CPU
+ property
+To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+ alex.bennee@linaro.org, armbru@redhat.com, eblake@redhat.com,
+ Dave.Martin@arm.com, imammedo@redhat.com
+References: <20190924113105.19076-1-drjones@redhat.com>
+ <20190924113105.19076-4-drjones@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <78300b0a-cb7e-ab08-ec65-92227feeb873@redhat.com>
+Date: Tue, 24 Sep 2019 17:06:05 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.4.0
 MIME-Version: 1.0
-References: <20190924141228.25009-1-philmd@redhat.com>
-In-Reply-To: <20190924141228.25009-1-philmd@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 24 Sep 2019 15:14:07 +0100
-Message-ID: <CAFEAcA9a-OdpzLgqeO+iRTr3PNYxGZ+ECX_GVOQD0NLNk8OynA@mail.gmail.com>
-Subject: Re: [PATCH] hw/timer/pl031: Add warning "do not use as model to
- implement a RTC"
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gppMWzuRtHw2
+In-Reply-To: <20190924113105.19076-4-drjones@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2 (mx1.redhat.com [10.5.110.62]); Tue, 24 Sep 2019 15:06:11 +0000 (UTC)
+X-TUID: RvMzByVoftfY
 
-On Tue, 24 Sep 2019 at 15:12, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
-m> wrote:
->
-> Peter said we should "not use the pl031 as a good model of how
-> to do an RTC, it has some definite flaws."
-> Add this information to the PL031 header for other developers.
+Hi Drew,
 
-Lots of our code is less than great. I'm not sure this
-specific case really justifies blazoning it in a comment header
-at the top of the file... (If you do want to put in a comment,
-being more specific about exactly what the problems are would
-be better.)
+On 9/24/19 1:30 PM, Andrew Jones wrote:
+> Since 97a28b0eeac14 ("target/arm: Allow VFP and Neon to be disabled via
+> a CPU property") we can disable the 'max' cpu model's VFP and neon
+> features, but there's no way to disable SVE. Add the 'sve=on|off'
+> property to give it that flexibility. We also rename
+> cpu_max_get/set_sve_vq to cpu_max_get/set_sve_max_vq in order for them
+> to follow the typical *_get/set_<property-name> pattern.
+> 
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-thanks
--- PMM
+Eric
+> ---
+>  target/arm/cpu.c         |  3 ++-
+>  target/arm/cpu64.c       | 42 ++++++++++++++++++++++++++++++++++------
+>  target/arm/monitor.c     |  2 +-
+>  tests/arm-cpu-features.c |  1 +
+>  4 files changed, 40 insertions(+), 8 deletions(-)
+> 
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 2399c144718d..73be2ebfdd39 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -200,7 +200,8 @@ static void arm_cpu_reset(CPUState *s)
+>          env->cp15.cpacr_el1 = deposit64(env->cp15.cpacr_el1, 16, 2, 3);
+>          env->cp15.cptr_el[3] |= CPTR_EZ;
+>          /* with maximum vector length */
+> -        env->vfp.zcr_el[1] = cpu->sve_max_vq - 1;
+> +        env->vfp.zcr_el[1] = cpu_isar_feature(aa64_sve, cpu) ?
+> +                             cpu->sve_max_vq - 1 : 0;
+>          env->vfp.zcr_el[2] = env->vfp.zcr_el[1];
+>          env->vfp.zcr_el[3] = env->vfp.zcr_el[1];
+>          /*
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index d7f5bf610a7d..8cdb0c79fa7a 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -256,15 +256,15 @@ static void aarch64_a72_initfn(Object *obj)
+>      define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
+>  }
+>  
+> -static void cpu_max_get_sve_vq(Object *obj, Visitor *v, const char *name,
+> -                               void *opaque, Error **errp)
+> +static void cpu_max_get_sve_max_vq(Object *obj, Visitor *v, const char *name,
+> +                                   void *opaque, Error **errp)
+>  {
+>      ARMCPU *cpu = ARM_CPU(obj);
+>      visit_type_uint32(v, name, &cpu->sve_max_vq, errp);
+>  }
+>  
+> -static void cpu_max_set_sve_vq(Object *obj, Visitor *v, const char *name,
+> -                               void *opaque, Error **errp)
+> +static void cpu_max_set_sve_max_vq(Object *obj, Visitor *v, const char *name,
+> +                                   void *opaque, Error **errp)
+>  {
+>      ARMCPU *cpu = ARM_CPU(obj);
+>      Error *err = NULL;
+> @@ -279,6 +279,34 @@ static void cpu_max_set_sve_vq(Object *obj, Visitor *v, const char *name,
+>      error_propagate(errp, err);
+>  }
+>  
+> +static void cpu_arm_get_sve(Object *obj, Visitor *v, const char *name,
+> +                            void *opaque, Error **errp)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    bool value = cpu_isar_feature(aa64_sve, cpu);
+> +
+> +    visit_type_bool(v, name, &value, errp);
+> +}
+> +
+> +static void cpu_arm_set_sve(Object *obj, Visitor *v, const char *name,
+> +                            void *opaque, Error **errp)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    Error *err = NULL;
+> +    bool value;
+> +    uint64_t t;
+> +
+> +    visit_type_bool(v, name, &value, &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +
+> +    t = cpu->isar.id_aa64pfr0;> +    t = FIELD_DP64(t, ID_AA64PFR0, SVE, value);
+> +    cpu->isar.id_aa64pfr0 = t;
+> +}
+> +
+>  /* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
+>   * otherwise, a CPU with as many features enabled as our emulation supports.
+>   * The version of '-cpu max' for qemu-system-arm is defined in cpu.c;
+> @@ -391,8 +419,10 @@ static void aarch64_max_initfn(Object *obj)
+>  #endif
+>  
+>          cpu->sve_max_vq = ARM_MAX_VQ;
+> -        object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_vq,
+> -                            cpu_max_set_sve_vq, NULL, NULL, &error_fatal);
+> +        object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
+> +                            cpu_max_set_sve_max_vq, NULL, NULL, &error_fatal);
+> +        object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
+> +                            cpu_arm_set_sve, NULL, NULL, &error_fatal);
+>      }
+>  }
+>  
+> diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+> index edca8aa885f0..4fddb6c252a3 100644
+> --- a/target/arm/monitor.c
+> +++ b/target/arm/monitor.c
+> @@ -97,7 +97,7 @@ GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
+>   * then the order that considers those dependencies must be used.
+>   */
+>  static const char *cpu_model_advertised_features[] = {
+> -    "aarch64", "pmu",
+> +    "aarch64", "pmu", "sve",
+>      NULL
+>  };
+>  
+> diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
+> index 198ff6d6b495..202bc0e3e823 100644
+> --- a/tests/arm-cpu-features.c
+> +++ b/tests/arm-cpu-features.c
+> @@ -179,6 +179,7 @@ static void test_query_cpu_model_expansion(const void *data)
+>  
+>      if (g_str_equal(qtest_get_arch(), "aarch64")) {
+>          assert_has_feature(qts, "max", "aarch64");
+> +        assert_has_feature(qts, "max", "sve");
+>          assert_has_feature(qts, "cortex-a57", "pmu");
+>          assert_has_feature(qts, "cortex-a57", "aarch64");
+>  
+> 

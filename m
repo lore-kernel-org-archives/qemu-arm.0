@@ -1,13 +1,13 @@
 Return-Path: <alex.bennee@linaro.org>
 Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id z142sm24532149wmc.24.2019.09.23.16.54.16
+        by smtp.gmail.com with ESMTPSA id d9sm25078wrc.44.2019.09.23.17.00.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Sep 2019 16:54:16 -0700 (PDT)
+        Mon, 23 Sep 2019 17:00:51 -0700 (PDT)
 Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 3FB3A1FF87;
-	Tue, 24 Sep 2019 00:54:16 +0100 (BST)
+	by zen.linaroharston (Postfix) with ESMTP id E283C1FF87;
+	Tue, 24 Sep 2019 01:00:50 +0100 (BST)
 References: <20190910095610.4546-1-beata.michalska@linaro.org>
- <20190910095610.4546-2-beata.michalska@linaro.org>
+ <20190910095610.4546-3-beata.michalska@linaro.org>
 User-agent: mu4e 1.3.4; emacs 27.0.50
 From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -15,50 +15,220 @@ Cc: peter.maydell@linaro.org, Beata Michalska <beata.michalska@linaro.org>,
  quintela@redhat.com, richard.henderson@linaro.org, dgilbert@redhat.com,
  shameerali.kolothum.thodi@huawei.com, eric.auger@redhat.com,
  qemu-arm@nongnu.org, pbonzini@redhat.com
-Subject: Re: [Qemu-devel] [PATCH 1/4] tcg: cputlb: Add probe_read
-In-reply-to: <20190910095610.4546-2-beata.michalska@linaro.org>
-Date: Tue, 24 Sep 2019 00:54:16 +0100
-Message-ID: <87ef06bmc7.fsf@linaro.org>
+Subject: Re: [Qemu-devel] [PATCH 2/4] Memory: Enable writeback for given
+ memory region
+In-reply-to: <20190910095610.4546-3-beata.michalska@linaro.org>
+Date: Tue, 24 Sep 2019 01:00:50 +0100
+Message-ID: <87d0fqbm19.fsf@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-X-TUID: IBlr9utfrl1D
+X-TUID: 9W3VRbU5sP40
 
 
 Beata Michalska <beata.michalska@linaro.org> writes:
 
-> Add probe_read alongside the write probing equivalent.
+> Add an option to trigger memory writeback to sync given memory region
+> with the corresponding backing store, case one is available.
+> This extends the support for persistent memory, allowing syncing on-deman=
+d.
+>
+> Also, adding verification for msync support on host.
 >
 > Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
 > ---
->  include/exec/exec-all.h | 6 ++++++
->  1 file changed, 6 insertions(+)
+>  configure               | 24 ++++++++++++++++++++++++
+>  exec.c                  | 38 ++++++++++++++++++++++++++++++++++++++
+>  include/exec/memory.h   |  6 ++++++
+>  include/exec/ram_addr.h |  6 ++++++
+>  memory.c                | 12 ++++++++++++
+>  5 files changed, 86 insertions(+)
 >
-> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-> index 81b02eb2fe..e1785700c3 100644
-> --- a/include/exec/exec-all.h
-> +++ b/include/exec/exec-all.h
-> @@ -319,6 +319,12 @@ static inline void *probe_write(CPUArchState *env, t=
-arget_ulong addr, int size,
->      return probe_access(env, addr, size, MMU_DATA_STORE, mmu_idx, retadd=
-r);
+> diff --git a/configure b/configure
+> index 95134c0180..bdb7dc47e9 100755
+> --- a/configure
+> +++ b/configure
+> @@ -5081,6 +5081,26 @@ if compile_prog "" "" ; then
+>      fdatasync=3Dyes
+>  fi
+>
+> +##########################################
+> +# verify support for msyc
+> +
+> +msync=3Dno
+> +cat > $TMPC << EOF
+> +#include <unistd.h>
+> +#include <sys/mman.h>
+> +int main(void) {
+> +#if defined(_POSIX_MAPPED_FILES) && _POSIX_MAPPED_FILES > 0 \
+> +&& defined(_POSIX_SYNCHRONIZED_IO) && _POSIX_SYNCHRONIZED_IO > 0
+> +return msync(NULL,0, MS_SYNC);
+> +#else
+> +#error Not supported
+> +#endif
+> +}
+> +EOF
+> +if compile_prog "" "" ; then
+> +    msync=3Dyes
+> +fi
+> +
+>  ##########################################
+>  # check if we have madvise
+>
+> @@ -6413,6 +6433,7 @@ echo "fdt support       $fdt"
+>  echo "membarrier        $membarrier"
+>  echo "preadv support    $preadv"
+>  echo "fdatasync         $fdatasync"
+> +echo "msync             $msync"
+>  echo "madvise           $madvise"
+>  echo "posix_madvise     $posix_madvise"
+>  echo "posix_memalign    $posix_memalign"
+> @@ -6952,6 +6973,9 @@ fi
+>  if test "$fdatasync" =3D "yes" ; then
+>    echo "CONFIG_FDATASYNC=3Dy" >> $config_host_mak
+>  fi
+> +if test "$msync" =3D "yes" ; then
+> +    echo "CONFIG_MSYNC=3Dy" >> $config_host_mak
+> +fi
+
+I think it's best to split this configure check into a new prequel patch an=
+d...
+
+>  if test "$madvise" =3D "yes" ; then
+>    echo "CONFIG_MADVISE=3Dy" >> $config_host_mak
+>  fi
+> diff --git a/exec.c b/exec.c
+> index 235d6bc883..5ed6908368 100644
+> --- a/exec.c
+> +++ b/exec.c
+> @@ -65,6 +65,8 @@
+>  #include "exec/ram_addr.h"
+>  #include "exec/log.h"
+>
+> +#include "qemu/pmem.h"
+> +
+>  #include "migration/vmstate.h"
+>
+>  #include "qemu/range.h"
+> @@ -2182,6 +2184,42 @@ int qemu_ram_resize(RAMBlock *block, ram_addr_t ne=
+wsize, Error **errp)
+>      return 0;
 >  }
 >
-> +static inline void *probe_read(CPUArchState *env, target_ulong addr, int=
- size,
-> +                               int mmu_idx, uintptr_t retaddr)
+> +/*
+> + * Trigger sync on the given ram block for range [start, start + length]
+> + * with the backing store if available.
+> + * @Note: this is supposed to be a SYNC op.
+> + */
+> +void qemu_ram_writeback(RAMBlock *block, ram_addr_t start, ram_addr_t le=
+ngth)
 > +{
-> +    return probe_access(env, addr, size, MMU_DATA_LOAD, mmu_idx, retaddr=
-);
+> +    void *addr =3D ramblock_ptr(block, start);
+> +
+> +    /*
+> +     * The requested range might spread up to the very end of the block
+> +     */
+> +    if ((start + length) > block->used_length) {
+> +        error_report("%s: sync range outside the block boundires: "
+> +                     "start: " RAM_ADDR_FMT " length: " RAM_ADDR_FMT
+> +                     " block length: " RAM_ADDR_FMT " Narrowing down ...=
+" ,
+> +                     __func__, start, length, block->used_length);
+
+Is this an error or just logging? error_report should be used for stuff
+that the user needs to know about so it will appear on the HMP console
+(or via stderr). If so what is the user expected to do? Have they
+misconfigured their system?
+
+> +        length =3D block->used_length - start;
+> +    }
+> +
+> +#ifdef CONFIG_LIBPMEM
+> +    /* The lack of support for pmem should not block the sync */
+> +    if (ramblock_is_pmem(block)) {
+> +        pmem_persist(addr, length);
+> +    } else
+> +#endif
+> +    if (block->fd >=3D 0) {
+> +#ifdef CONFIG_MSYNC
+> +        msync((void *)((uintptr_t)addr & qemu_host_page_mask),
+> +               HOST_PAGE_ALIGN(length), MS_SYNC);
+> +#else
+> +        qemu_fdatasync(block->fd);
+> +#endif
+
+... hide the implementation details in util/cutils.c, maybe as
+qemu_msync()?
+
+> +    }
 > +}
 > +
->  #define CODE_GEN_ALIGN           16 /* must be >=3D of the size of a ica=
-che line */
+>  /* Called with ram_list.mutex held */
+>  static void dirty_memory_extend(ram_addr_t old_ram_size,
+>                                  ram_addr_t new_ram_size)
+> diff --git a/include/exec/memory.h b/include/exec/memory.h
+> index 2dd810259d..ff0d7937cf 100644
+> --- a/include/exec/memory.h
+> +++ b/include/exec/memory.h
+> @@ -1242,6 +1242,12 @@ void *memory_region_get_ram_ptr(MemoryRegion *mr);
+>   */
+>  void memory_region_ram_resize(MemoryRegion *mr, ram_addr_t newsize,
+>                                Error **errp);
+> +/**
+> + * memory_region_do_writeback: Trigger writeback for selected address ra=
+nge
+> + * [addr, addr + size]
+> + *
+> + */
+> +void memory_region_do_writeback(MemoryRegion *mr, hwaddr addr, hwaddr si=
+ze);
 >
->  /* Estimated block size for TB allocation.  */
+>  /**
+>   * memory_region_set_log: Turn dirty logging on or off for a region.
+> diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
+> index a327a80cfe..d4bce81a03 100644
+> --- a/include/exec/ram_addr.h
+> +++ b/include/exec/ram_addr.h
+> @@ -180,6 +180,12 @@ void qemu_ram_free(RAMBlock *block);
+>
+>  int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp);
+>
+> +void qemu_ram_writeback(RAMBlock *block, ram_addr_t start, ram_addr_t le=
+ngth);
+> +
+> +/* Clear whole block of mem */
+> +#define qemu_ram_block_writeback(rb)    \
+> +    qemu_ram_writeback(rb, 0, rb->used_length)
+> +
+>  #define DIRTY_CLIENTS_ALL     ((1 << DIRTY_MEMORY_NUM) - 1)
+>  #define DIRTY_CLIENTS_NOCODE  (DIRTY_CLIENTS_ALL & ~(1 << DIRTY_MEMORY_C=
+ODE))
+>
+> diff --git a/memory.c b/memory.c
+> index 61a254c3f9..436eb64737 100644
+> --- a/memory.c
+> +++ b/memory.c
+> @@ -2228,6 +2228,18 @@ void memory_region_ram_resize(MemoryRegion *mr, ra=
+m_addr_t newsize, Error **errp
+>      qemu_ram_resize(mr->ram_block, newsize, errp);
+>  }
+>
+> +
+> +void memory_region_do_writeback(MemoryRegion *mr, hwaddr addr, hwaddr si=
+ze)
+> +{
+> +    /*
+> +     * Might be extended case needed to cover
+> +     * different types of memory regions
+> +     */
+> +    if (mr->ram_block && mr->dirty_log_mask) {
+> +        qemu_ram_writeback(mr->ram_block, addr, size);
+> +    }
+> +}
+> +
+>  /*
+>   * Call proper memory listeners about the change on the newly
+>   * added/removed CoalescedMemoryRange.
 
 
 --

@@ -1,227 +1,182 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp489066wrp;
-        Wed, 25 Sep 2019 01:13:05 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyCkEZOrUsUdWrImDqKbyU+txRVe5t5YBtKneKCqiiDS7rj/R+kS4zqXHZG0WYZCWjit9JJ
-X-Received: by 2002:a0c:e948:: with SMTP id n8mr6305903qvo.113.1569399184888;
-        Wed, 25 Sep 2019 01:13:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569399184; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Tv+sY1euql2KDTWujJKKUcyUHw/Pvu0jXs0rgjQXsngufvLjiD7dVbNAwv8PpcJNxw
-         t/CdeQ9rSrJrISeuKrWTVldlchJ9YsJCIJkYvM8S/0nq+ZZfrhiRCNYMr7kB9LEDcK8F
-         zJF0KS6KDu5zI5Z6jp8rdQ570WjeoRTcenB77unZLsZZ0lXCc1EAUcbMZN+0rf/ptH2+
-         MSIR3ChsXuoqx4mAY7ixFWIbyffs+J0j1UVYIuclvWGVx7Oq3oNfdosfJLUpuWbz64eg
-         O0HxbprKn3XtCdPAJrdiY+Up704uUHo/lm637+foPGmLidausXYSm112OBA2M4G16yYR
-         uyZA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=CRPpRK5zSlB6YuY9fRbZ+zSV/ihZ/UK8jOLnvE09aWo=;
-        b=R3Eg24vc9wPpmdGVSZURd9J5Qb6fag+LE9nVv17McT1dFKg9fxP4p2PPxnwfOZR1dv
-         3sTiNST0pY8J8AnHI70M/9dcSFgqJdn7ilrBRgmfmMS3669kLqxyzW85ipoyX4dItJb2
-         0926KZb1hAure8AaJJVV/4lAbjkRPakYSsb0i/Jt07WcIr9LgBmPkDk34cHbpie38HuC
-         +3q9t0Dxt6nFI/gLBLgmmKmc67BSdlHXqPHQJHtUZvtEYxp2dIzgm74I/7jTg1hwnQy0
-         ppVx/3mqOxeC1UTyvrLJUii6ZX3vzByWKF/Q9J3bKx4inwJYQeKWq78fT7RMU/kprfHT
-         Eh7w==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id x15si3460166qvu.34.2019.09.25.01.13.04;
-        Wed, 25 Sep 2019 01:13:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp594436wrp;
+        Wed, 25 Sep 2019 03:11:51 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqytFi6M88DjOwgGVyQWpD8lDpj0Q2NbSY+sqsquPnFbQYowZuDvyw5hHtDpyd/8Jmd7OGs4
+X-Received: by 2002:a2e:89c9:: with SMTP id c9mr5677093ljk.64.1569406311830;
+        Wed, 25 Sep 2019 03:11:51 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v7si2853217edr.125.2019.09.25.03.11.51
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 25 Sep 2019 03:11:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 4BD274A6B4;
-	Wed, 25 Sep 2019 04:13:04 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: -1.502
-X-Spam-Level: 
-X-Spam-Status: No, score=-1.502 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_MED=-2.3,
-	SPF_HELO_PASS=-0.001] autolearn=no
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id tyl3hgYl7bRq; Wed, 25 Sep 2019 04:13:03 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 1E9EC4A6B5;
-	Wed, 25 Sep 2019 04:13:03 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id DA9544A6B2
- for <kvmarm@lists.cs.columbia.edu>; Wed, 25 Sep 2019 04:13:01 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id zrQBraZGkejF for <kvmarm@lists.cs.columbia.edu>;
- Wed, 25 Sep 2019 04:13:00 -0400 (EDT)
-Received: from huawei.com (szxga04-in.huawei.com [45.249.212.190])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 616874A697
- for <kvmarm@lists.cs.columbia.edu>; Wed, 25 Sep 2019 04:12:59 -0400 (EDT)
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id EF74175CD047DB4EC037;
- Wed, 25 Sep 2019 16:12:44 +0800 (CST)
-Received: from [127.0.0.1] (10.133.216.73) by DGGEMS409-HUB.china.huawei.com
- (10.3.19.209) with Microsoft SMTP Server id 14.3.439.0; Wed, 25 Sep 2019
- 16:12:35 +0800
-Subject: Re: [RFC PATCH 01/12] linux-headers: import arm_sdei.h
-To: "Michael S. Tsirkin" <mst@redhat.com>
-References: <1569338511-3572-1-git-send-email-guoheyi@huawei.com>
- <1569338511-3572-2-git-send-email-guoheyi@huawei.com>
- <20190924113640-mutt-send-email-mst@kernel.org>
-From: Guoheyi <guoheyi@huawei.com>
-Message-ID: <f0096ac1-e7d4-78d2-9e8a-21a7f6f266ad@huawei.com>
-Date: Wed, 25 Sep 2019 16:12:33 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
- Thunderbird/45.7.1
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47840 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iD4H0-00070T-8B
+	for alex.bennee@linaro.org; Wed, 25 Sep 2019 06:11:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38592)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <no-reply@patchew.org>) id 1iD4Gf-0006ur-Ge
+ for qemu-arm@nongnu.org; Wed, 25 Sep 2019 06:11:31 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <no-reply@patchew.org>) id 1iD4Ge-0000fU-2a
+ for qemu-arm@nongnu.org; Wed, 25 Sep 2019 06:11:29 -0400
+Resent-Date: Wed, 25 Sep 2019 06:11:29 -0400
+Resent-Message-Id: <E1iD4Ge-0000fU-2a@eggs.gnu.org>
+Received: from sender4-of-o54.zoho.com ([136.143.188.54]:21467)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1iD4GQ-0000U9-1z; Wed, 25 Sep 2019 06:11:14 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1569406194; cv=none; d=zoho.com; s=zohoarc; 
+ b=IT3lZF+JW9M/99ky/JttLhleMs8ubJCaD92AqNhIpS+HQ666oaYqFWuFSRzohNMwK3DEpxWB/nuqeSiq2Z/H724FCmAjBTXbu7YYccvkiQlRPRSSSdS12AXs4azHxs/uTOk3VOqexD4SWSJtnv1Lhbr7bbv4rjLKvi/CAvUJZwc=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+ s=zohoarc; t=1569406194;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+ bh=lrvd1o5KLFKNYpQNffSeSqk6F3jO5f23PqEygIFLiHM=; 
+ b=oXyQCEZ+rrIpRcqalRc/jtQ9fihLwq3Ki2LeQBMCNF3wafUdKDxeag+Z4v2x5WxtZE3j8d9LWEZXKDdGZvhkNHzSLrQ87PZArT+ByiGTLjrTu7TiJATyVSHEgdiO6XWAB3BuxuJa+ZeuIB75HGwQ1/stxqGK49h+g3j9Bv+t/Qo=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1569406192060895.9371691912185;
+ Wed, 25 Sep 2019 03:09:52 -0700 (PDT)
+Subject: Re: [PATCH v3 00/25] error: auto propagated local_err
+In-Reply-To: <20190924200902.4703-1-vsementsov@virtuozzo.com>
+Message-ID: <156940618778.4823.16859844052516018660@8230166b0665>
 MIME-Version: 1.0
-In-Reply-To: <20190924113640-mutt-send-email-mst@kernel.org>
-X-Originating-IP: [10.133.216.73]
-X-CFilter-Loop: Reflected
-Cc: Marc Zyngier <marc.zyngier@arm.com>, Cornelia Huck <cohuck@redhat.com>,
- qemu-devel@nongnu.org, Dave Martin <Dave.Martin@arm.com>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, kvmarm@lists.cs.columbia.edu,
- linux-arm-kernel@lists.infradead.org
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: vsementsov@virtuozzo.com
+Date: Wed, 25 Sep 2019 03:09:52 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 136.143.188.54
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: IcXpjkfBJNiG
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: fam@euphon.net, pburton@wavecomp.com, peter.maydell@linaro.org,
+ codyprime@gmail.com, jasowang@redhat.com, mark.cave-ayland@ilande.co.uk,
+ qemu-devel@nongnu.org, mdroth@linux.vnet.ibm.com, kraxel@redhat.com,
+ mreitz@redhat.com, qemu-block@nongnu.org, quintela@redhat.com,
+ arikalo@wavecomp.com, mst@redhat.com, armbru@redhat.com, pasic@linux.ibm.com,
+ borntraeger@de.ibm.com, marcandre.lureau@redhat.com, rth@twiddle.net,
+ farman@linux.ibm.com, ehabkost@redhat.com, groug@kaod.org,
+ yuval.shaia@oracle.com, dgilbert@redhat.com, alex.williamson@redhat.com,
+ vsementsov@virtuozzo.com, david@redhat.com, jsnow@redhat.com,
+ david@gibson.dropbear.id.au, kwolf@redhat.com, integration@gluster.org,
+ berrange@redhat.com, cohuck@redhat.com, qemu-s390x@nongnu.org,
+ sundeep.lkml@gmail.com, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ pbonzini@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: At2GDyZLttuy
 
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MDkyNDIwMDkwMi40NzAz
+LTEtdnNlbWVudHNvdkB2aXJ0dW96em8uY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRv
+IGhhdmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1v
+cmUgaW5mb3JtYXRpb246CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAxOTA5MjQyMDA5MDIu
+NDcwMy0xLXZzZW1lbnRzb3ZAdmlydHVvenpvLmNvbQpTdWJqZWN0OiBbUEFUQ0ggdjMgMDAvMjVd
+IGVycm9yOiBhdXRvIHByb3BhZ2F0ZWQgbG9jYWxfZXJyCgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4g
+PT09CiMhL2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAK
+Z2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwg
+ZGlmZi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3Rv
+Z3JhbQouL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBT
+Q1JJUFQgRU5EID09PQoKU3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0JwoyODIxODI0IFBW
+UkRNQTogRml4IGVycm9yX2FwcGVuZF9oaW50IHVzYWdlCjRmZWQ5YmQgbmJkOiBGaXggZXJyb3Jf
+YXBwZW5kX2hpbnQgdXNhZ2UKNGRkNTkzYiBTb2NrZXRzOiBGaXggZXJyb3JfYXBwZW5kX2hpbnQg
+dXNhZ2UKNGI1MWU2MCBNaWdyYXRpb246IEZpeCBlcnJvcl9hcHBlbmRfaGludCB1c2FnZQo4YmFk
+ZDFlIFFPTTogRml4IGVycm9yX2FwcGVuZF9oaW50IHVzYWdlCmNlZTEyZDcgY21kbGluZTogRml4
+IGVycm9yX2FwcGVuZF9oaW50IHVzYWdlCjllZTAwMGQgY2hhcmRldjogRml4IGVycm9yX2FwcGVu
+ZF9oaW50IHVzYWdlCjliODI3NjkgYmxvY2s6IEZpeCBlcnJvcl9hcHBlbmRfaGludCB1c2FnZQoy
+NjgwYTljIHZpcnRpby05cDogRml4IGVycm9yX2FwcGVuZF9oaW50IHVzYWdlCjk1NjNjYzAgdmly
+dGlvOiBGaXggZXJyb3JfYXBwZW5kX2hpbnQgdXNhZ2UKZWFmM2M1ZiBWRklPOiBGaXggZXJyb3Jf
+YXBwZW5kX2hpbnQgdXNhZ2UKNWE3MGQxMiBVU0I6IEZpeCBlcnJvcl9hcHBlbmRfaGludCB1c2Fn
+ZQphNzMwN2EyIFNDU0k6IEZpeCBlcnJvcl9hcHBlbmRfaGludCB1c2FnZQozOGFiMjM2IFBDSTog
+Rml4IGVycm9yX2FwcGVuZF9oaW50IHVzYWdlCjFlM2Y5OGUgU21hcnRGdXNpb24yOiBGaXggZXJy
+b3JfYXBwZW5kX2hpbnQgdXNhZ2UKNGIwNmJjYyBhcm06IEZpeCBlcnJvcl9hcHBlbmRfaGludCB1
+c2FnZQoxZTE5NGI0IFBvd2VyUEMgVENHIENQVXM6IEZpeCBlcnJvcl9hcHBlbmRfaGludCB1c2Fn
+ZQoxNmY3YmU4IEFSTSBUQ0cgQ1BVczogRml4IGVycm9yX2FwcGVuZF9oaW50IHVzYWdlCjM4YmFh
+MGEgczM5MDogRml4IGVycm9yX2FwcGVuZF9oaW50IHVzYWdlCmU1OTZjNzIgcHl0aG9uOiBhZGQg
+Y29tbWl0LXBlci1zdWJzeXN0ZW0ucHkKYzgyYjc1OCBzY3JpcHRzOiBhZGQgY29jY2luZWxsZSBz
+Y3JpcHQgdG8gZml4IGVycm9yX2FwcGVuZF9oaW50IHVzYWdlCjRjMzdkNWMgZXJyb3I6IGF1dG8g
+cHJvcGFnYXRlZCBsb2NhbF9lcnIKMWY1ZDk4MyBuZXQvbmV0OiBmaXggbG9jYWwgdmFyaWFibGUg
+c2hhZG93aW5nIGluIG5ldF9jbGllbnRfaW5pdAoxMThmNjE3IGh3L2NvcmUvbG9hZGVyLWZpdDog
+Zml4IGZyZWVpbmcgZXJycCBpbiBmaXRfbG9hZF9mZHQKMjQ5MzA2OSBlcnJwOiByZW5hbWUgZXJy
+cCB0byBlcnJwX2luIHdoZXJlIGl0IGlzIElOLWFyZ3VtZW50Cgo9PT0gT1VUUFVUIEJFR0lOID09
+PQoxLzI1IENoZWNraW5nIGNvbW1pdCAyNDkzMDY5Yjc2MDMgKGVycnA6IHJlbmFtZSBlcnJwIHRv
+IGVycnBfaW4gd2hlcmUgaXQgaXMgSU4tYXJndW1lbnQpCjIvMjUgQ2hlY2tpbmcgY29tbWl0IDEx
+OGY2MTc4NzI3OSAoaHcvY29yZS9sb2FkZXItZml0OiBmaXggZnJlZWluZyBlcnJwIGluIGZpdF9s
+b2FkX2ZkdCkKMy8yNSBDaGVja2luZyBjb21taXQgMWY1ZDk4MzI4ZDZjIChuZXQvbmV0OiBmaXgg
+bG9jYWwgdmFyaWFibGUgc2hhZG93aW5nIGluIG5ldF9jbGllbnRfaW5pdCkKNC8yNSBDaGVja2lu
+ZyBjb21taXQgNGMzN2Q1YzZkMjI4IChlcnJvcjogYXV0byBwcm9wYWdhdGVkIGxvY2FsX2VycikK
+RVJST1I6IE1hY3JvcyB3aXRoIG11bHRpcGxlIHN0YXRlbWVudHMgc2hvdWxkIGJlIGVuY2xvc2Vk
+IGluIGEgZG8gLSB3aGlsZSBsb29wCiM2OTogRklMRTogaW5jbHVkZS9xYXBpL2Vycm9yLmg6MzU1
+OgorI2RlZmluZSBFUlJQX0ZVTkNUSU9OX0JFR0lOKCkgXAorZ19hdXRvKEVycm9yUHJvcGFnYXRv
+cikgX19hdXRvX2VycnBfcHJvcCA9IHsuZXJycCA9IGVycnB9OyBcCitlcnJwID0gKChlcnJwID09
+IE5VTEwgfHwgKmVycnAgPT0gZXJyb3JfZmF0YWwpID8gXAorICAgICZfX2F1dG9fZXJycF9wcm9w
+LmxvY2FsX2VyciA6IGVycnApCgp0b3RhbDogMSBlcnJvcnMsIDAgd2FybmluZ3MsIDQxIGxpbmVz
+IGNoZWNrZWQKClBhdGNoIDQvMjUgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAg
+SWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRv
+IHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KCjUvMjUgQ2hl
+Y2tpbmcgY29tbWl0IGM4MmI3NThhZjFkYSAoc2NyaXB0czogYWRkIGNvY2NpbmVsbGUgc2NyaXB0
+IHRvIGZpeCBlcnJvcl9hcHBlbmRfaGludCB1c2FnZSkKV0FSTklORzogYWRkZWQsIG1vdmVkIG9y
+IGRlbGV0ZWQgZmlsZShzKSwgZG9lcyBNQUlOVEFJTkVSUyBuZWVkIHVwZGF0aW5nPwojMTU6IApu
+ZXcgZmlsZSBtb2RlIDEwMDY0NAoKdG90YWw6IDAgZXJyb3JzLCAxIHdhcm5pbmdzLCAyNSBsaW5l
+cyBjaGVja2VkCgpQYXRjaCA1LzI1IGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4g
+IElmIGFueSBvZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0
+byB0aGUgbWFpbnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCjYvMjUgQ2hl
+Y2tpbmcgY29tbWl0IGU1OTZjNzIwMzkzYyAocHl0aG9uOiBhZGQgY29tbWl0LXBlci1zdWJzeXN0
+ZW0ucHkpCldBUk5JTkc6IGFkZGVkLCBtb3ZlZCBvciBkZWxldGVkIGZpbGUocyksIGRvZXMgTUFJ
+TlRBSU5FUlMgbmVlZCB1cGRhdGluZz8KIzEzOiAKbmV3IGZpbGUgbW9kZSAxMDA3NTUKCnRvdGFs
+OiAwIGVycm9ycywgMSB3YXJuaW5ncywgNjkgbGluZXMgY2hlY2tlZAoKUGF0Y2ggNi8yNSBoYXMg
+c3R5bGUgcHJvYmxlbXMsIHBsZWFzZSByZXZpZXcuICBJZiBhbnkgb2YgdGhlc2UgZXJyb3JzCmFy
+ZSBmYWxzZSBwb3NpdGl2ZXMgcmVwb3J0IHRoZW0gdG8gdGhlIG1haW50YWluZXIsIHNlZQpDSEVD
+S1BBVENIIGluIE1BSU5UQUlORVJTLgo3LzI1IENoZWNraW5nIGNvbW1pdCAzOGJhYTBhMzE4YTAg
+KHMzOTA6IEZpeCBlcnJvcl9hcHBlbmRfaGludCB1c2FnZSkKOC8yNSBDaGVja2luZyBjb21taXQg
+MTZmN2JlODZlZWIxIChBUk0gVENHIENQVXM6IEZpeCBlcnJvcl9hcHBlbmRfaGludCB1c2FnZSkK
+OS8yNSBDaGVja2luZyBjb21taXQgMWUxOTRiNDhlOTdiIChQb3dlclBDIFRDRyBDUFVzOiBGaXgg
+ZXJyb3JfYXBwZW5kX2hpbnQgdXNhZ2UpCjEwLzI1IENoZWNraW5nIGNvbW1pdCA0YjA2YmNjZmU5
+NDcgKGFybTogRml4IGVycm9yX2FwcGVuZF9oaW50IHVzYWdlKQoxMS8yNSBDaGVja2luZyBjb21t
+aXQgMWUzZjk4ZWIxMmQwIChTbWFydEZ1c2lvbjI6IEZpeCBlcnJvcl9hcHBlbmRfaGludCB1c2Fn
+ZSkKMTIvMjUgQ2hlY2tpbmcgY29tbWl0IDM4YWIyMzY0ZjQ0YiAoUENJOiBGaXggZXJyb3JfYXBw
+ZW5kX2hpbnQgdXNhZ2UpCjEzLzI1IENoZWNraW5nIGNvbW1pdCBhNzMwN2EyOTE1OWUgKFNDU0k6
+IEZpeCBlcnJvcl9hcHBlbmRfaGludCB1c2FnZSkKMTQvMjUgQ2hlY2tpbmcgY29tbWl0IDVhNzBk
+MTI3YzlmYyAoVVNCOiBGaXggZXJyb3JfYXBwZW5kX2hpbnQgdXNhZ2UpCjE1LzI1IENoZWNraW5n
+IGNvbW1pdCBlYWYzYzVmODU1YzggKFZGSU86IEZpeCBlcnJvcl9hcHBlbmRfaGludCB1c2FnZSkK
+MTYvMjUgQ2hlY2tpbmcgY29tbWl0IDk1NjNjYzBiNmUzNyAodmlydGlvOiBGaXggZXJyb3JfYXBw
+ZW5kX2hpbnQgdXNhZ2UpCjE3LzI1IENoZWNraW5nIGNvbW1pdCAyNjgwYTljYTg4ZmEgKHZpcnRp
+by05cDogRml4IGVycm9yX2FwcGVuZF9oaW50IHVzYWdlKQoxOC8yNSBDaGVja2luZyBjb21taXQg
+OWI4Mjc2OTYxNTUwIChibG9jazogRml4IGVycm9yX2FwcGVuZF9oaW50IHVzYWdlKQoxOS8yNSBD
+aGVja2luZyBjb21taXQgOWVlMDAwZGEyNTA4IChjaGFyZGV2OiBGaXggZXJyb3JfYXBwZW5kX2hp
+bnQgdXNhZ2UpCjIwLzI1IENoZWNraW5nIGNvbW1pdCBjZWUxMmQ3Yzg2OTcgKGNtZGxpbmU6IEZp
+eCBlcnJvcl9hcHBlbmRfaGludCB1c2FnZSkKMjEvMjUgQ2hlY2tpbmcgY29tbWl0IDhiYWRkMWVj
+MDRkYSAoUU9NOiBGaXggZXJyb3JfYXBwZW5kX2hpbnQgdXNhZ2UpCjIyLzI1IENoZWNraW5nIGNv
+bW1pdCA0YjUxZTYwYTFlODMgKE1pZ3JhdGlvbjogRml4IGVycm9yX2FwcGVuZF9oaW50IHVzYWdl
+KQoyMy8yNSBDaGVja2luZyBjb21taXQgNGRkNTkzYjljN2RmIChTb2NrZXRzOiBGaXggZXJyb3Jf
+YXBwZW5kX2hpbnQgdXNhZ2UpCjI0LzI1IENoZWNraW5nIGNvbW1pdCA0ZmVkOWJkODNhNzcgKG5i
+ZDogRml4IGVycm9yX2FwcGVuZF9oaW50IHVzYWdlKQoyNS8yNSBDaGVja2luZyBjb21taXQgMjgy
+MTgyNGQ5OGJmIChQVlJETUE6IEZpeCBlcnJvcl9hcHBlbmRfaGludCB1c2FnZSkKPT09IE9VVFBV
+VCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxv
+ZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAxOTA5MjQyMDA5MDIu
+NDcwMy0xLXZzZW1lbnRzb3ZAdmlydHVvenpvLmNvbS90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9
+bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0
+dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3
+LWRldmVsQHJlZGhhdC5jb20=
 
-
-On 2019/9/24 23:39, Michael S. Tsirkin wrote:
-> On Tue, Sep 24, 2019 at 11:21:40PM +0800, Heyi Guo wrote:
->> Import Linux header file include/uapi/linux/arm_sdei.h from kernel
->> v5.3 release.
->>
->> This is to prepare for qemu SDEI emulation.
->>
->> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
->> Cc: Peter Maydell <peter.maydell@linaro.org>
->> Cc: Dave Martin <Dave.Martin@arm.com>
->> Cc: Marc Zyngier <marc.zyngier@arm.com>
->> Cc: Mark Rutland <mark.rutland@arm.com>
->> Cc: James Morse <james.morse@arm.com>
->> Cc: "Michael S. Tsirkin" <mst@redhat.com>
->> Cc: Cornelia Huck <cohuck@redhat.com>
->> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Some issues with this.  First linux-headers is for linux as a host.
-> This is for linux as a guest, so belongs in include/standard-headers.
->
-> Second, please add to scripts/update-linux-headers.sh in a 1st patch,
-> then add the file in the second patch.
-
-Thanks; now I understand the differences. I'll do that in next version.
-
-HG
-
->
->
->
->> ---
->>   linux-headers/linux/arm_sdei.h | 73 ++++++++++++++++++++++++++++++++++++++++++
->>   1 file changed, 73 insertions(+)
->>   create mode 100644 linux-headers/linux/arm_sdei.h
->>
->> diff --git a/linux-headers/linux/arm_sdei.h b/linux-headers/linux/arm_sdei.h
->> new file mode 100644
->> index 0000000..af0630b
->> --- /dev/null
->> +++ b/linux-headers/linux/arm_sdei.h
->> @@ -0,0 +1,73 @@
->> +/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
->> +/* Copyright (C) 2017 Arm Ltd. */
->> +#ifndef _UAPI_LINUX_ARM_SDEI_H
->> +#define _UAPI_LINUX_ARM_SDEI_H
->> +
->> +#define SDEI_1_0_FN_BASE			0xC4000020
->> +#define SDEI_1_0_MASK				0xFFFFFFE0
->> +#define SDEI_1_0_FN(n)				(SDEI_1_0_FN_BASE + (n))
->> +
->> +#define SDEI_1_0_FN_SDEI_VERSION			SDEI_1_0_FN(0x00)
->> +#define SDEI_1_0_FN_SDEI_EVENT_REGISTER			SDEI_1_0_FN(0x01)
->> +#define SDEI_1_0_FN_SDEI_EVENT_ENABLE			SDEI_1_0_FN(0x02)
->> +#define SDEI_1_0_FN_SDEI_EVENT_DISABLE			SDEI_1_0_FN(0x03)
->> +#define SDEI_1_0_FN_SDEI_EVENT_CONTEXT			SDEI_1_0_FN(0x04)
->> +#define SDEI_1_0_FN_SDEI_EVENT_COMPLETE			SDEI_1_0_FN(0x05)
->> +#define SDEI_1_0_FN_SDEI_EVENT_COMPLETE_AND_RESUME	SDEI_1_0_FN(0x06)
->> +#define SDEI_1_0_FN_SDEI_EVENT_UNREGISTER		SDEI_1_0_FN(0x07)
->> +#define SDEI_1_0_FN_SDEI_EVENT_STATUS			SDEI_1_0_FN(0x08)
->> +#define SDEI_1_0_FN_SDEI_EVENT_GET_INFO			SDEI_1_0_FN(0x09)
->> +#define SDEI_1_0_FN_SDEI_EVENT_ROUTING_SET		SDEI_1_0_FN(0x0A)
->> +#define SDEI_1_0_FN_SDEI_PE_MASK			SDEI_1_0_FN(0x0B)
->> +#define SDEI_1_0_FN_SDEI_PE_UNMASK			SDEI_1_0_FN(0x0C)
->> +#define SDEI_1_0_FN_SDEI_INTERRUPT_BIND			SDEI_1_0_FN(0x0D)
->> +#define SDEI_1_0_FN_SDEI_INTERRUPT_RELEASE		SDEI_1_0_FN(0x0E)
->> +#define SDEI_1_0_FN_SDEI_PRIVATE_RESET			SDEI_1_0_FN(0x11)
->> +#define SDEI_1_0_FN_SDEI_SHARED_RESET			SDEI_1_0_FN(0x12)
->> +
->> +#define SDEI_VERSION_MAJOR_SHIFT			48
->> +#define SDEI_VERSION_MAJOR_MASK				0x7fff
->> +#define SDEI_VERSION_MINOR_SHIFT			32
->> +#define SDEI_VERSION_MINOR_MASK				0xffff
->> +#define SDEI_VERSION_VENDOR_SHIFT			0
->> +#define SDEI_VERSION_VENDOR_MASK			0xffffffff
->> +
->> +#define SDEI_VERSION_MAJOR(x)	(x>>SDEI_VERSION_MAJOR_SHIFT & SDEI_VERSION_MAJOR_MASK)
->> +#define SDEI_VERSION_MINOR(x)	(x>>SDEI_VERSION_MINOR_SHIFT & SDEI_VERSION_MINOR_MASK)
->> +#define SDEI_VERSION_VENDOR(x)	(x>>SDEI_VERSION_VENDOR_SHIFT & SDEI_VERSION_VENDOR_MASK)
->> +
->> +/* SDEI return values */
->> +#define SDEI_SUCCESS		0
->> +#define SDEI_NOT_SUPPORTED	-1
->> +#define SDEI_INVALID_PARAMETERS	-2
->> +#define SDEI_DENIED		-3
->> +#define SDEI_PENDING		-5
->> +#define SDEI_OUT_OF_RESOURCE	-10
->> +
->> +/* EVENT_REGISTER flags */
->> +#define SDEI_EVENT_REGISTER_RM_ANY	0
->> +#define SDEI_EVENT_REGISTER_RM_PE	1
->> +
->> +/* EVENT_STATUS return value bits */
->> +#define SDEI_EVENT_STATUS_RUNNING	2
->> +#define SDEI_EVENT_STATUS_ENABLED	1
->> +#define SDEI_EVENT_STATUS_REGISTERED	0
->> +
->> +/* EVENT_COMPLETE status values */
->> +#define SDEI_EV_HANDLED	0
->> +#define SDEI_EV_FAILED	1
->> +
->> +/* GET_INFO values */
->> +#define SDEI_EVENT_INFO_EV_TYPE			0
->> +#define SDEI_EVENT_INFO_EV_SIGNALED		1
->> +#define SDEI_EVENT_INFO_EV_PRIORITY		2
->> +#define SDEI_EVENT_INFO_EV_ROUTING_MODE		3
->> +#define SDEI_EVENT_INFO_EV_ROUTING_AFF		4
->> +
->> +/* and their results */
->> +#define SDEI_EVENT_TYPE_PRIVATE			0
->> +#define SDEI_EVENT_TYPE_SHARED			1
->> +#define SDEI_EVENT_PRIORITY_NORMAL		0
->> +#define SDEI_EVENT_PRIORITY_CRITICAL		1
->> +
->> +#endif /* _UAPI_LINUX_ARM_SDEI_H */
->> -- 
->> 1.8.3.1
-> .
->
-
-
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

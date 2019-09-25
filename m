@@ -1,108 +1,117 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1366207wrp;
-        Wed, 25 Sep 2019 15:26:12 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxmAcFLMly9ozc3cYzS37ZOxtmcuSWbJyq5jJTUlR3/+BpTJAZmf4+NNO5PQXt7GuzMxFCA
-X-Received: by 2002:a6b:b291:: with SMTP id b139mr258494iof.281.1569450372675;
-        Wed, 25 Sep 2019 15:26:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569450372; cv=none;
-        d=google.com; s=arc-20160816;
-        b=kKl8xN2Iwiuj4CPTEJh//x5G4edUkGHrTNWaqqrbR6oT9x9HkJufySGvENiQymx3rS
-         n1bcBuCoD5Dx7kHX7VrBmnal94KiReLctCGsbpsi9m1UreU0fI6qDID/337mtFx9fPEV
-         xfH+0XiTrwjx1jzB8K6UDwwFmCytKnN+IX3Dl1sv5Vo8qRxRqnVU7h6gKC6TBdxBJVCH
-         P864fducyjkPOYPvxMrDjbCzz//jQhu3gqXWqXshn3NQ3o657MZjOVPzDsGZZTRfAF1k
-         IZgIJhZhzGuwZOSLwZDZ3XdI2ZMJ3sciDfrGeEwSIYcPWQudsnuQmzUEMkslo7C7KVB8
-         2Ixg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject;
-        bh=Ki4KWdct/PxQ711z7Z5gWMHnI3AztE+laXxt2f5hC1I=;
-        b=rmpr5sIUot2BYJP2G2y86fUszK3/i50MOHrCi31WzkDVGuO9MIzNAY5B2gyVzjqsHf
-         OKcTHMM0ginOiXoyWEVCkhoWixlnL4YeJRpFo8gyNHbdZnvS5/z+Z2RpjZmjRyjDPBOL
-         FmlRPwEiNNMB3q/B3IlTzJ3AdBr7cQfzrKE06c32yhwf71j2YZAuQj+VqAtBeOriR4tI
-         VKcU2oR6h4RAt8wHbGfbEXW1omZd3IRlAHNOiP2qndJTkSVPndL8X3dhVgkFjC/vfIl3
-         t9I8G2uNcYdda/e0Qo+fQjwJLD57K1mrJgl/U2nMsTBXFQYLZS3YjCvFfhj947K++q8V
-         om3w==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id x1si56864jap.46.2019.09.25.15.26.12
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 25 Sep 2019 15:26:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com [209.85.221.71])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id DCA5489AC6
-	for <alex.bennee@linaro.org>; Wed, 25 Sep 2019 22:26:11 +0000 (UTC)
-Received: by mail-wr1-f71.google.com with SMTP id a4so133703wrg.8
-        for <alex.bennee@linaro.org>; Wed, 25 Sep 2019 15:26:11 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=Ki4KWdct/PxQ711z7Z5gWMHnI3AztE+laXxt2f5hC1I=;
-        b=q7v3zf6kYLDWdswXS3U5yNeDm8UOv/6EAA/HRqAIJQyYctdPHbPgdDM+d7NKVXoXg9
-         dzUSbnFWXY+C7nVjbeO2uAFcWAX+8lQKXgjSDpiSdy/dDQ2Ha0ig5Z4FVTGCtOohQHSG
-         /nBaPrR9olaCACl5TqNLNZCMHdG1y0A+/FsLcRgEHVt6J9p1KEWKkns7P+yd7rQ6DdJq
-         iBKleFddbg0cvx5BVW1FIBY+KJmCMsEnp++6N45uDoSpm+16yP6Cp30LmjViLgRh91mG
-         COJuw8MXLgWML15TV+2XUDXTFzkRkfP4TQlEWrDKyqwNjuZ+zIprPKWAof0HbKG6ZUSj
-         +tgw==
-X-Gm-Message-State: APjAAAV3aD1eaAD861ftKPZrLEIFrwoiK7rPi/ydcZAaolK654sTMQV5
-	Sl1W3NWs0OztjDCyuTFuFZBHJYbywXaPs4ccMN5MoWdZNeIgdLG5mbI3TyJmO87cBZTC3BvZUa6
-	vltG73L+6YL/w4C+g
-X-Received: by 2002:a7b:cf12:: with SMTP id l18mr353679wmg.25.1569450370632;
-        Wed, 25 Sep 2019 15:26:10 -0700 (PDT)
-X-Received: by 2002:a7b:cf12:: with SMTP id l18mr353670wmg.25.1569450370481;
-        Wed, 25 Sep 2019 15:26:10 -0700 (PDT)
-Received: from [192.168.1.35] (240.red-88-21-68.staticip.rima-tde.net. [88.21.68.240])
-        by smtp.gmail.com with ESMTPSA id x5sm276669wrt.75.2019.09.25.15.26.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 25 Sep 2019 15:26:09 -0700 (PDT)
-Subject: Re: [PATCH v3 20/33] tests/tcg: add generic version of float_convs
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, jsnow@redhat.com,
- Richard Henderson <richard.henderson@linaro.org>, f4bug@amsat.org,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-References: <20190924210106.27117-1-alex.bennee@linaro.org>
- <20190924210106.27117-21-alex.bennee@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <1bcee6a3-fbc0-327a-340c-8e0eae655119@redhat.com>
-Date: Thu, 26 Sep 2019 00:26:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id v8sm399828wra.79.2019.09.25.16.30.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Sep 2019 16:30:22 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 12F441FF87;
+	Thu, 26 Sep 2019 00:30:22 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	qemu-ppc@nongnnu.org,
+	qemu-riscv@nongnu.org,
+	qemu-discuss@nongnu.org,
+	qemu-s390x@nongnu.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>
+Subject: [RFC PATCH] configure: deprecate 32 bit build hosts
+Date: Thu, 26 Sep 2019 00:30:13 +0100
+Message-Id: <20190925233013.6449-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <20190924210106.27117-21-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: SXUCc/5RBQNz
+X-TUID: 3PnFhOJlPX7F
 
-On 9/24/19 11:00 PM, Alex Bennée wrote:
-> This is broadly similar to the existing fcvt test for ARM but using
-> the generic float testing framework. We should be able to pare down
-> the ARM fcvt test case to purely half-precision with or without the
-> Alt HP provision.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  tests/tcg/aarch64/float_convs.ref   | 748 ++++++++++++++++++++++++++++
->  tests/tcg/arm/float_convs.ref       | 748 ++++++++++++++++++++++++++++
->  tests/tcg/multiarch/Makefile.target |   6 +-
->  tests/tcg/multiarch/float_convs.c   | 105 ++++
->  4 files changed, 1604 insertions(+), 3 deletions(-)
->  create mode 100755 tests/tcg/aarch64/float_convs.ref
->  create mode 100644 tests/tcg/arm/float_convs.ref
->  create mode 100644 tests/tcg/multiarch/float_convs.c
-[...]
+The 32 bit hosts are already a second class citizen especially with
+support for running 64 bit guests under TCG. We are also limited by
+testing as actual working 32 bit machines are getting quite rare in
+developers personal menageries. For TCG supporting newer types like
+Int128 is a lot harder with 32 bit calling conventions compared to
+their larger bit sized cousins. Fundamentally address space is the
+most useful thing for the translator to have even for a 32 bit guest a
+32 bit host is quite constrained.
 
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+As far as I'm aware 32 bit KVM users are even less numerous. Even
+ILP32 doesn't make much sense given the address space QEMU needs to
+manage.
+
+Lets mark these machines as deprecated so we can have the wailing and
+gnashing of teeth now and look to actually dropping the support in a
+couple of cycles.
+
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>
+---
+ configure | 24 +++++++++++++-----------
+ 1 file changed, 13 insertions(+), 11 deletions(-)
+
+diff --git a/configure b/configure
+index 542f6aea3f..776fd460b5 100755
+--- a/configure
++++ b/configure
+@@ -728,7 +728,7 @@ ARCH=
+ # Normalise host CPU name and set ARCH.
+ # Note that this case should only have supported host CPUs, not guests.
+ case "$cpu" in
+-  ppc|ppc64|s390|s390x|sparc64|x32|riscv32|riscv64)
++  ppc64|s390|s390x|sparc64|riscv64)
+     supported_cpu="yes"
+   ;;
+   ppc64le)
+@@ -737,7 +737,6 @@ case "$cpu" in
+   ;;
+   i386|i486|i586|i686|i86pc|BePC)
+     cpu="i386"
+-    supported_cpu="yes"
+   ;;
+   x86_64|amd64)
+     cpu="x86_64"
+@@ -745,19 +744,22 @@ case "$cpu" in
+   ;;
+   armv*b|armv*l|arm)
+     cpu="arm"
+-    supported_cpu="yes"
+   ;;
+   aarch64)
+     cpu="aarch64"
+     supported_cpu="yes"
+   ;;
+-  mips*)
++  mips64*)
+     cpu="mips"
+     supported_cpu="yes"
+   ;;
++  mips*)
++    cpu="mips"
++  ;;
+   sparc|sun4[cdmuv])
+     cpu="sparc"
+-    supported_cpu="yes"
++  ;;
++  x32|riscv32)
+   ;;
+   *)
+     # This will result in either an error or falling back to TCI later
+@@ -6438,12 +6440,12 @@ if test "$supported_cpu" = "no"; then
+     echo "WARNING: SUPPORT FOR THIS HOST CPU WILL GO AWAY IN FUTURE RELEASES!"
+     echo
+     echo "CPU host architecture $cpu support is not currently maintained."
+-    echo "The QEMU project intends to remove support for this host CPU in"
+-    echo "a future release if nobody volunteers to maintain it and to"
+-    echo "provide a build host for our continuous integration setup."
+-    echo "configure has succeeded and you can continue to build, but"
+-    echo "if you care about QEMU on this platform you should contact"
+-    echo "us upstream at qemu-devel@nongnu.org."
++    echo "The QEMU project intends to remove support for all 32 bit host"
++    echo "CPUs in a future release. 64 bit hosts will need a volunteer"
++    echo "to maintain it and to provide a build host for our continuous"
++    echo "integration setup. configure has succeeded and you can continue"
++    echo "to build, but if you care about QEMU on this platform you"
++    echo "should contact us upstream at qemu-devel@nongnu.org."
+ fi
+ 
+ if test "$supported_os" = "no"; then
+-- 
+2.20.1

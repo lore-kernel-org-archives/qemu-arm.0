@@ -1,176 +1,136 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp64418wrp;
-        Tue, 24 Sep 2019 16:13:53 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx3DFb2IoSJJoyLHKDO/FXVtZrKfbDyI4XJvNbvjPHbGz8wMb2H6jC+l9EwGeKOmVEcfRqj
-X-Received: by 2002:a1c:35c9:: with SMTP id c192mr3186143wma.91.1569366833018;
-        Tue, 24 Sep 2019 16:13:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569366833; cv=none;
-        d=google.com; s=arc-20160816;
-        b=0SoV6wDyg8m/Vao9ieef4c8+QQ7qYlmRC5dQ+zGNrSS/o9f5rAdtAlHJUnEWoVB0Rs
-         8dHzOIAewUrv8yLG/45pkshw0dUWLfT3y/PrmV8whtQnXQSLTzAvxvwNfhZPqzko/M8U
-         5WJOFIsY+7Lk/rFYImMdECnXLLmRzdLWtbcCgAFJhi3rxQlg7Qww80D5p+/Nu/lwY7CD
-         xKRSMy7+F1pNg/YyL+ESQE0JUGE84ADR7Jzy6iWJ0gZiyOfHXUqImPegRpLurUU0xUmE
-         eUTZv1kpJHabgi6UgiyEiM5m6OQaZ9tgrAQz8LU+MU0MPTqxvyPez8kj428lwomlzc40
-         cckA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :to:from:date;
-        bh=RtPPDDcTnqTBHjJdkjYKVw9AFLONZ/vqLZV/SAnDbxw=;
-        b=kyK575Fk7wyeZiG4u5T8O2HpmqrMUnjYakhDDyjXY2+GB/AvyQKseaGCHCpKvKSEIg
-         eKnlFCn6Xdhw+DzhWYm7CUOZ+UCSNPbxsy1d9Yk37gHDT05gaCEuHrHxmj6mJIFk0fbl
-         m0hkcX6sO9mVTecR6RTLkME2ntjzTjTp+7BcdoZ0UPO4mtjRjX4oWnuugMPZSRTju8vP
-         KNW20QoreFk46yoBb64vh6uFVNwlMrisRGG9/SlhvD7ZNwiD/U6ab0d18mZ8vkdElIP1
-         r1+3HG+wvDw1zV3++hGOnz6k00/ho1NwG5d7p7JaCJdJZ+k0kAkisa39nDnSH9NSwizb
-         734Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v5si2124544edm.313.2019.09.24.16.13.52
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp425738wrp;
+        Tue, 24 Sep 2019 23:55:23 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw20Nc9T4/hnv7RlLD9MW2/AFrX9crXFXr/cBaef0LLAFCyfZ5bZd06AkVSCYjEjFQjVob2
+X-Received: by 2002:a17:902:36a:: with SMTP id 97mr7032176pld.75.1569394523522;
+        Tue, 24 Sep 2019 23:55:23 -0700 (PDT)
+Return-Path: <linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org>
+Received: from bombadil.infradead.org (bombadil.infradead.org. [2607:7c80:54:e::133])
+        by mx.google.com with ESMTPS id d19si4007215pll.37.2019.09.24.23.55.23
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 24 Sep 2019 16:13:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Sep 2019 23:55:23 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) client-ip=2607:7c80:54:e::133;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43830 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iCtvk-0004Ov-G0
-	for alex.bennee@linaro.org; Tue, 24 Sep 2019 19:09:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46789)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alex.williamson@redhat.com>) id 1iCttz-0002B6-9C
- for qemu-arm@nongnu.org; Tue, 24 Sep 2019 19:07:24 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alex.williamson@redhat.com>) id 1iCttx-000393-U8
- for qemu-arm@nongnu.org; Tue, 24 Sep 2019 19:07:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47514)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <alex.williamson@redhat.com>)
- id 1iCttx-00037f-C5; Tue, 24 Sep 2019 19:07:21 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 5D7C57622B;
- Tue, 24 Sep 2019 23:07:18 +0000 (UTC)
-Received: from x1.home (ovpn-118-102.phx2.redhat.com [10.3.118.102])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BA46219C7F;
- Tue, 24 Sep 2019 23:07:12 +0000 (UTC)
-Date: Tue, 24 Sep 2019 15:31:44 -0600
-From: Alex Williamson <alex.williamson@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v4 0/2] Allow memory_region_register_iommu_notifier() to
- fail
-Message-ID: <20190924153144.0a656a41@x1.home>
-In-Reply-To: <20190924082517.13724-1-eric.auger@redhat.com>
-References: <20190924082517.13724-1-eric.auger@redhat.com>
-Organization: Red Hat
+       dkim=pass header.i=@lists.infradead.org header.s=bombadil.20170209 header.b="K9J/6754";
+       arc=fail (body hash mismatch);
+       spf=pass (google.com: best guess record for domain of linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org designates 2607:7c80:54:e::133 as permitted sender) smtp.mailfrom="linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org"
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=lists.infradead.org; s=bombadil.20170209; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Date:To:From:Resent-From:
+	MIME-Version:Message-ID:In-Reply-To:Subject:Content-ID:Content-Description:
+	Resent-Date:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
+	List-Owner; bh=277UeJOWhWB1gP9B7Rd51IKlvLsioavDA30U4n6wz4A=; b=K9J/6754AL13vw
+	r2fJf+uMlQ56Xza3dWUsP0vIs4e2qyD1NM5XX8mSVGtZlhg34/sMh7O+oEapfIN/fPcAVgZQ+O4OX
+	A3FO/ubRrFzv9QfyMXJkrC1PXBb8oTQ2ea2pcLA3nA0O/O/n5CBmc3sfjxvYfsB7gWwkRfyaJ/GT6
+	OH6PrslEkEhyHYCCxDKxG4uAYJzesWQ86smW0u80IT8waysNOAy7xigcY73YciDtyB5s7SLRB9F7v
+	nTpfeOQYa2ksVU8hRkfeFo/3lDyodmBTfP+gb9rbfR3tokZnnrF/vb/inQuQz9WqJse5KzrLDcq0V
+	vUazoIqesXqPU29UxwQQ==;
+Received: from localhost ([127.0.0.1] helo=bombadil.infradead.org)
+	by bombadil.infradead.org with esmtp (Exim 4.92.2 #3 (Red Hat Linux))
+	id 1iD1Ci-0007gl-UY; Wed, 25 Sep 2019 06:55:13 +0000
+Received: from sender4-of-o55.zoho.com ([136.143.188.55])
+ by bombadil.infradead.org with esmtps (Exim 4.92.2 #3 (Red Hat Linux))
+ id 1iD1Cb-0006RS-Sb
+ for linux-arm-kernel@lists.infradead.org; Wed, 25 Sep 2019 06:55:07 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1569394499; cv=none; d=zoho.com; s=zohoarc; 
+ b=G9fwlLYhaCLgMp4Wfx8ck+IPbQ7Puhu10Gba3XsosLq/2xcQVJZFO+CDcZynGncYl3PpY+cqYwXY5Dk5+3YoCDTmSUdjn4SEex/Ek4AojODKApmK1AKSSDlhhM4lSb0IwX+H5hBUI53h8eBF9CjjmPT7A2dLJrdHurK6ZhnLUlk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+ s=zohoarc; t=1569394499;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To:ARC-Authentication-Results;
+ bh=oeqeulBf4Vwbu+50L48ehygqO8U7uSyqvJgVC9qTLRw=; 
+ b=WmnqH0n+vesLrDZWLG4nHEZMjGLHX+7C7UMQZEcdQQOUgR5mKKR/Q8A7zOvtWQ7hmbFu058UPp8SvAednFyZKGc9N55d6FmzJWuOzE4i7ko9cH5lRAVxOXdeeOa7XSXtKJ3WA2912OIz+NW5fVxjQ2P1GWW3fCRym4reqpVe8WE=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 156939449744494.24444381336264;
+ Tue, 24 Sep 2019 23:54:57 -0700 (PDT)
+Subject: Re: [RFC PATCH 00/12] Add SDEI support for arm64
+In-Reply-To: <1569338511-3572-1-git-send-email-guoheyi@huawei.com>
+Message-ID: <156939449538.4188.158567627991892527@8230166b0665>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.26]); Tue, 24 Sep 2019 23:07:18 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+Resent-From: 
+From: no-reply@patchew.org
+To: guoheyi@huawei.com
+Date: Tue, 24 Sep 2019 23:54:57 -0700 (PDT)
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20190924_235505_987149_70FDDCC3 
+X-CRM114-Status: UNSURE (   5.33  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: 0.0 (/)
+X-Spam-Report: SpamAssassin version 3.4.2 on bombadil.infradead.org summary:
+ Content analysis details:   (0.0 points)
+ pts rule name              description
+ ---- ---------------------- --------------------------------------------------
+ -0.0 RCVD_IN_DNSWL_NONE     RBL: Sender listed at https://www.dnswl.org/,
+ no trust [136.143.188.55 listed in list.dnswl.org]
+ 0.0 SPF_HELO_NONE          SPF: HELO does not publish an SPF Record
+ -0.0 SPF_PASS               SPF: sender matches SPF record
+X-BeenThere: linux-arm-kernel@lists.infradead.org
+X-Mailman-Version: 2.1.29
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, aik@ozlabs.ru, qemu-devel@nongnu.org,
- peterx@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com,
- david@gibson.dropbear.id.au, eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tGbkswflO4F9
+List-Id: <linux-arm-kernel.lists.infradead.org>
+List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-arm-kernel>, 
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=unsubscribe>
+List-Archive: <http://lists.infradead.org/pipermail/linux-arm-kernel/>
+List-Post: <mailto:linux-arm-kernel@lists.infradead.org>
+List-Help: <mailto:linux-arm-kernel-request@lists.infradead.org?subject=help>
+List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-arm-kernel>, 
+ <mailto:linux-arm-kernel-request@lists.infradead.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: mark.rutland@arm.com, peter.maydell@linaro.org, marc.zyngier@arm.com,
+ qemu-devel@nongnu.org, Dave.Martin@arm.com, qemu-arm@nongnu.org,
+ james.morse@arm.com, guoheyi@huawei.com, wanghaibin.wang@huawei.com,
+ kvmarm@lists.cs.columbia.edu, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Sender: "linux-arm-kernel" <linux-arm-kernel-bounces@lists.infradead.org>
+Errors-To: linux-arm-kernel-bounces+alex.bennee=linaro.org@lists.infradead.org
+X-TUID: cJOtxvlLVskI
 
-On Tue, 24 Sep 2019 10:25:15 +0200
-Eric Auger <eric.auger@redhat.com> wrote:
+Patchew URL: https://patchew.org/QEMU/1569338511-3572-1-git-send-email-guoheyi@huawei.com/
 
-> This series allows the memory_region_register_iommu_notifier()
-> to fail. As of now, when a MAP notifier is attempted to be
-> registered along with SMMUv3 or AMD IOMMU, we exit in the IOMMU
-> MR notify_flag_changed() callback.
-> 
-> In case of VFIO assigned device hotplug, this could be handled
-> more nicely directly within the VFIO code, simply rejecting
-> the hotplug without exiting. This is what the series achieves
-> by handling the memory_region_register_iommu_notifier() returned
-> value and Error object.
-> 
-> To propagate errors collected during vfio_listener_region_add()
-> we now store the error handle inside the VFIO container instead
-> of a returned value.
-> 
-> The message now is:
-> (QEMU) device_add id=hot0 driver=vfio-pci host=0000:89:00.0 bus=pcie.1
-> {"error": {"class": "GenericError", "desc": "vfio 0000:89:00.0: failed
-> to setup container for group 2: memory listener initialization failed:
-> Region smmuv3-iommu-memory-region-0-6: device 01.00.0 requires iommu MAP
-> notifier which is not currently supported"}}
-> 
-> Best Regards
-> 
-> Eric
-> 
-> This series can be found at:
-> https://github.com/eauger/qemu/tree/v4.1.0_register_iommu_notifier_fail_v4
-> 
-> History:
-> 
-> v3 -> v4:
-> - added Peter's R-b on 2d patch
-> - 1st patch: restore hw_error, remove useless ret assignment, improve
->   DMA host window error message, remove local mr variable
-> 
-> v2 -> v3:
-> - also pass an Error handle (suggested by Peter)
-> 
-> v1 -> v2:
-> - Intel IOMMU now handles the problem differently with machine init done
->   notifier and machine hotplug allowed hook.
-> - use assert(!ret)
-> - message rewording in SMMUv3
-> 
-> Follow-up of "VFIO/SMMUv3: Fail on VFIO/HW nested paging detection"
-> https://patchew.org/QEMU/20190829090141.21821-1-eric.auger@redhat.com/
-> 
-> 
-> Eric Auger (2):
->   vfio: Turn the container error into an Error handle
->   memory: allow memory_region_register_iommu_notifier() to fail
-> 
->  exec.c                        | 10 +++++--
->  hw/arm/smmuv3.c               | 18 ++++++------
->  hw/i386/amd_iommu.c           | 17 +++++++-----
->  hw/i386/intel_iommu.c         |  8 ++++--
->  hw/ppc/spapr_iommu.c          |  8 ++++--
->  hw/vfio/common.c              | 52 +++++++++++++++++++++++------------
->  hw/vfio/spapr.c               |  4 ++-
->  hw/virtio/vhost.c             |  9 ++++--
->  include/exec/memory.h         | 21 ++++++++++----
->  include/hw/vfio/vfio-common.h |  2 +-
->  memory.c                      | 31 +++++++++++++--------
->  11 files changed, 120 insertions(+), 60 deletions(-)
 
-For series,
 
-Acked-by: Alex Williamson <alex.williamson@redhat.com>
+Hi,
 
-Paolo, would this go in through you given the memory API changes and
-greater girth in patch 2/2?  Thanks,
+This series failed the docker-quick@centos7 build test. Please find the testing commands and
+their output below. If you have Docker installed, you can probably reproduce it
+locally.
 
-Alex
+=== TEST SCRIPT BEGIN ===
+#!/bin/bash
+make docker-image-centos7 V=1 NETWORK=1
+time make docker-test-quick@centos7 SHOW_ENV=1 J=14 NETWORK=1
+=== TEST SCRIPT END ===
+
+libudev           no
+default devices   yes
+
+warning: Python 2 support is deprecated
+warning: Python 3 will be required for building future versions of QEMU
+cross containers  no
+
+NOTE: guest cross-compilers enabled: cc
+---
+  LINK    aarch64-softmmu/qemu-system-aarch64
+hw/arm/virt-acpi-build.o: In function `virt_acpi_build':
+/tmp/qemu-test/src/hw/arm/virt-acpi-build.c:810: undefined reference to `sdei_enabled'
+collect2: error: ld returned 1 exit status
+make[1]: *** [qemu-system-aarch64] Error 1
+make: *** [aarch64-softmmu/all] Error 2
+Traceback (most recent call last):
+
+
+The full log is available at
+http://patchew.org/logs/1569338511-3572-1-git-send-email-guoheyi@huawei.com/testing.docker-quick@centos7/?type=message.
+---
+Email generated automatically by Patchew [https://patchew.org/].
+Please send your feedback to patchew-devel@redhat.com
+_______________________________________________
+linux-arm-kernel mailing list
+linux-arm-kernel@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-arm-kernel

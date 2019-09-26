@@ -1,96 +1,96 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2435035wrp;
-        Thu, 26 Sep 2019 10:45:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw5zUES733H/NWU4nxeSCPO6oD9ZThulg5s8A+2dA3r+YxB+VESa0O/p2JZUzhnZiAGevLx
-X-Received: by 2002:a37:708:: with SMTP id 8mr112972qkh.210.1569519914652;
-        Thu, 26 Sep 2019 10:45:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569519914; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2437572wrp;
+        Thu, 26 Sep 2019 10:47:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzKMJH3zQZ4OYhUF+aS+3xGoIBIL89L/VCKmfrfwhvaLpDe1KzroF269o1YG7JsiKOjFQCE
+X-Received: by 2002:ac8:7957:: with SMTP id r23mr5383983qtt.130.1569520040847;
+        Thu, 26 Sep 2019 10:47:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569520040; cv=none;
         d=google.com; s=arc-20160816;
-        b=tKsgxxGwVHpuy3CGIWUOaUQ/LqXsdgIKylq8LKVgtFR2Q5EQ3h20D/8GKxs3dvyTq5
-         8zdrg9w3R6ygze1F8MTIErS9KOW/kMIsMsG5mJwzMSgHHUwTjxXgyonYpB1RwUsxE3Pr
-         6Hj9ZURJ7zgpGwurgPnwwMWPIJNnIUD1MLKOOx9Khaajt/qfTs6qxkYwEFqXAsmE45iP
-         I5N31k9ij+YiYlY0vbhvqI87NJBUtiOzIx+UjYUA3DitTlXTUaLC370HrXjAJoekGJ3V
-         NtzA+jIIh1yyYLDStV5egjXZpHmgfY00UsySJ2e7nDrpBWyPm8pA+uI61fZozfJdEy6n
-         kBvg==
+        b=fqR5cH6ME7NMlVoeoLXKAbB7rM8bcO0FgvVklZmPfmcWrvVoXRoKka0rk2uHmph4SL
+         tPm26JFLBUPsybbClI2VKxiyx9R67LfaF2OfV8M1dNlxSHBN8gtxS/KZ6MqEK3pn2nOE
+         H4tqFB1/EjGdMFJP3nbmwiGIMZ83c4BZNyJuME47sNf9a5e+DEVPLjmUEI6I4WhITf8l
+         rXwp2r2qhqmqvz9kIS+/YPEvuzQHszM+obnUqJieVXXC11aD20QVvVFr5rZrt+Z0Z18Z
+         QrDYG3wxYux+KOrSKMHg+a2aBnjr57J2K6WmTvTbNHbPqnUh/ieW6/qeRiK5bWFtkw4R
+         JFEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=/8xcNneZ2/qvbDmM1OKk4z67N/LkpAUXIQ5kG5a96Wc=;
-        b=F5tGSfMOUUR0MzBuIr8HkUZ5qvWg7hBiOx2YzgDxwKsjwKv8QXAkaS6PpN9rsgVZAN
-         oP2sjdkMSXBrxpJvpIcXXfDD3uTuiv1ICi6Ck/LD9ZJ0Eo847BMWzAGN2i9t0M/XEfhJ
-         e1wQdVqfiTm7Nb40flfVjYepEINRXmc71sQYKQxc3MXMU28RLgmiD4JB5Y+zwR3URQec
-         xfjIm/aVBLJkrx5yllLDKDiFTav8lKt4vp3XDIaDozgx2FeQU1ItpFCB22qBClzmd2Py
-         C7K19CmKOa2DHOGtn2hK4PL4uGfioS9It+KRTTsslCir8zoQEQWQhRB/UuATD8U1DFLx
-         dZmg==
+        bh=3CkZIT9Y9Ae7LSSsN/oOgCMbPqmMCdmGsnbLDg7Flfg=;
+        b=oE/eeD/NGltGs455H6Ny9Xrl3CGXghpPAjZQiyNYaK1fGrCokH+XE70xzWkWr6xdzh
+         5KRKGB/m37VSiagDA2xb+ZzyCHz92VPjUpLGXd7W80zyql44UsXlaK0HsRfCjeA4h6Ha
+         g2pYICwmb2EyvJCzjnd8bdBkVedHl1OGnDuApes/toeuV7PRDZMimrvQCXbjFi8Z0ytZ
+         b1WUz3Erv/oh1RiuKRB6d1/kEBYa5m1fNtP23YBi0vY9Dtn7YiNxHwNZfTcsB77vhLV4
+         7QTXWVxgbihWlnAgVrQb9hQXwMfskRxV/9Uu6XPu/IAEMoAVIgipBXVgZ/b3dOMqaRqx
+         KEpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TwNnoiFM;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iSkeWhZl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c205si2579151qke.54.2019.09.26.10.45.14
+        by mx.google.com with ESMTPS id e27si2359270qvd.28.2019.09.26.10.47.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Sep 2019 10:45:14 -0700 (PDT)
+        Thu, 26 Sep 2019 10:47:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TwNnoiFM;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iSkeWhZl;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41830 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41860 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iDXpH-0004dN-W7
-	for alex.bennee@linaro.org; Thu, 26 Sep 2019 13:45:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58867)
+	id 1iDXrL-0007EF-1R
+	for alex.bennee@linaro.org; Thu, 26 Sep 2019 13:47:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59029)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXgE-0004Qf-OO
- for qemu-arm@nongnu.org; Thu, 26 Sep 2019 13:35:52 -0400
+ id 1iDXgQ-0004ei-AA
+ for qemu-arm@nongnu.org; Thu, 26 Sep 2019 13:36:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXgD-0002s2-33
- for qemu-arm@nongnu.org; Thu, 26 Sep 2019 13:35:50 -0400
-Received: from mail-wr1-f66.google.com ([209.85.221.66]:38862)
+ id 1iDXgO-00030K-AR
+ for qemu-arm@nongnu.org; Thu, 26 Sep 2019 13:36:01 -0400
+Received: from mail-wm1-f66.google.com ([209.85.128.66]:51547)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXg9-0002p0-Fi; Thu, 26 Sep 2019 13:35:45 -0400
-Received: by mail-wr1-f66.google.com with SMTP id w12so3030319wro.5;
- Thu, 26 Sep 2019 10:35:45 -0700 (PDT)
+ id 1iDXgJ-0002wp-MV; Thu, 26 Sep 2019 13:35:55 -0400
+Received: by mail-wm1-f66.google.com with SMTP id 7so3726067wme.1;
+ Thu, 26 Sep 2019 10:35:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=/8xcNneZ2/qvbDmM1OKk4z67N/LkpAUXIQ5kG5a96Wc=;
- b=TwNnoiFM7EJNzS+NQNIFxuyhk4QbIaOBCgsNgCY6waK+qwWJlJraWMcsPvYzeW4IqD
- 1yKNf9NU/5tX/ObAztYMZmC7Tvz+/Rl+Pf3fcIEO+px0//XWxod1vKlJOcy9VeFin6v2
- 9t5pL2izNG7VKmrT4eTh5mc/ryQoFzwImMYxGkEKmB79ZpN6mckyBeXNr/qWgwO8csyj
- RDV3Le1Xf0UlEYk0S2nBdGJVB0PkSRC6wPM7nHQaj8DXtMXtFKfiGD7yUTdmAXgXcrHL
- HC2hpb4T7RS1x/nHomNmtHoBTVMA/PyTNHS1AcO0jmKI7tImXBAEdtE5TAYwDqy2iS1S
- sClQ==
+ bh=3CkZIT9Y9Ae7LSSsN/oOgCMbPqmMCdmGsnbLDg7Flfg=;
+ b=iSkeWhZljJ/p+KpbCPQ2NakCDSFvW1N+zD6z1JHe8QrX2XngZM8IGKTkLuXWKvSaz7
+ QxkE8wrPnmVIdmW5lPXUP+/8bYLlZtPvmOhu/H4rVHqIvKxmGGleMnpe7GXmbL7jaOtH
+ BwsPYvm0fCVliroaIROZHi1BT0ldjFJ+5bdHozVwnOOqD6mA5TeK7wsjtoi68wx2HNS9
+ y0/Hj2VsVh9+qARYgBTEDLYPDwgp1Sm/gQ6gW5BzaDCIhfjAU2A9RlbjVKuKaOKcSzgL
+ a6EMzMRoRufVodCseDb6shK5ANPbyv2gZLFLH58cvX6XS5sDweHkAfUybkuIvIfe+rSX
+ mViA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=/8xcNneZ2/qvbDmM1OKk4z67N/LkpAUXIQ5kG5a96Wc=;
- b=X+yxSt0O3Sr2nW5eV62merqIaJqh/xmItm6fyDorxRZ3EH1Mz8BzXhwUg5bRvCkxSh
- NYjZvDBayT96OjHm2aOpl+nLD/4rMWWSFfgpOMsvrs6ZwpSe5wcuhkUZlRmrOwMR9VYy
- VBkWKoXjOmgRnJeTuz2KPvgt65Zob1JRm3SZBV+14JrJkXvwAzmqSJEKQik4mMiGQdpT
- rt0n6SuIz4nOQE+iPNPGA/vnKyw99RHRbiYHTnFr63qBTtSpI68eCJsG/D9pkBmY1lbW
- y5ece+TtpuAuAVxEjbw0qH0soXbhi6EbbDi29ve4Gfh0ckYqKQIZ3i2i4qna2P4nLlNw
- QEyg==
-X-Gm-Message-State: APjAAAV3epPCqnY2GarO+x3zxSo1CbS+oVEL2sv8UQ2wlfFeMFHyaBqp
- gOO9cPApFrPzEJdbW87iDI0Y6pDBQ6c=
-X-Received: by 2002:adf:ce05:: with SMTP id p5mr2398368wrn.48.1569519284264;
- Thu, 26 Sep 2019 10:34:44 -0700 (PDT)
+ bh=3CkZIT9Y9Ae7LSSsN/oOgCMbPqmMCdmGsnbLDg7Flfg=;
+ b=JdOOUuGOfSbLko0G1da9cLSstQecDi0DzYjuhbbE4RnSEYeyB16FGm+wEPqDUNEgGY
+ bfTexpXCiljspV+DxMi/vdaBUCCyisGgU55kF2smQgJA2E6aKPErI5IDijyHd/rO/0P9
+ wfWzskEGR0MOcLmDBDjUFZlZYWqC9fMek8qGs2CjnXwGC7SI3Uh8E1q6SEOupC17Ds5J
+ HwrDwMCUkBVoafQILQtpzIcfZE4/CTl5Kd4SMGduvNlIGsoQ+Gn4lEkP6SvbMYLVnWhW
+ uVweGTP+OEfXKYt6B91pXosp4D4BrTSU+9IqURiIecu3F32eWM6Kj3WydwvnZm1wv9Pz
+ 3mQg==
+X-Gm-Message-State: APjAAAXXNNb+5L0quslL966CgkptImSxHCkHmA3yTsALHr6U7eaKYwk2
+ y6M5jUma+ZtDWrvmTwKTbUHA1jsd1r4=
+X-Received: by 2002:a7b:c0d4:: with SMTP id s20mr4122872wmh.101.1569519294390; 
+ Thu, 26 Sep 2019 10:34:54 -0700 (PDT)
 Received: from x1w.redhat.com (240.red-88-21-68.staticip.rima-tde.net.
  [88.21.68.240])
- by smtp.gmail.com with ESMTPSA id b186sm9918980wmd.16.2019.09.26.10.34.42
+ by smtp.gmail.com with ESMTPSA id b186sm9918980wmd.16.2019.09.26.10.34.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Sep 2019 10:34:43 -0700 (PDT)
+ Thu, 26 Sep 2019 10:34:51 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 05/19] hw/arm/bcm2835: Add various unimplemented peripherals
-Date: Thu, 26 Sep 2019 19:34:13 +0200
-Message-Id: <20190926173428.10713-6-f4bug@amsat.org>
+Subject: [PATCH 10/19] hw/timer/bcm2835: Add the BCM2835 SYS_timer
+Date: Thu, 26 Sep 2019 19:34:18 +0200
+Message-Id: <20190926173428.10713-11-f4bug@amsat.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190926173428.10713-1-f4bug@amsat.org>
 References: <20190926173428.10713-1-f4bug@amsat.org>
@@ -100,7 +100,7 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.85.221.66
+X-Received-From: 209.85.128.66
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -129,140 +129,198 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qXkq5pExgQs1
+X-TUID: 7Djb/9RsWXxK
 
-Base addresses and sizes taken from the "BCM2835 ARM Peripherals"
-datasheet from February 06 2012:
+Add the 64-bit free running timer. Do not model the COMPARE register
+(no IRQ generated).
+This timer is used by U-Boot and recent Linux kernels:
+https://github.com/u-boot/u-boot/blob/v2019.07/include/configs/rpi.h#L19
+
+Datasheet used:
 https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/bcm2835_peripherals.c         | 31 ++++++++++++++++++++++++++++
- include/hw/arm/bcm2835_peripherals.h | 15 ++++++++++++++
- include/hw/arm/raspi_platform.h      |  8 +++++++
- 3 files changed, 54 insertions(+)
+Since which kernels? 4.19 seems to use it.
 
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index 1bd2ff41d5..fdcf616c56 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -22,6 +22,20 @@
- /* Capabilities for SD controller: no DMA, high-speed, default clocks etc. */
- #define BCM2835_SDHC_CAPAREG 0x52134b4
- 
-+static void create_unimp(BCM2835PeripheralState *ps,
-+                         UnimplementedDeviceState *uds,
-+                         const char *name, hwaddr ofs, hwaddr size)
+checkpatch warning:
+WARNING: added, moved or deleted file(s), does MAINTAINERS need updating?
+This is OK because the regex are:
+
+  F: hw/*/bcm283*
+  F: include/hw/*/bcm283*
+---
+ hw/timer/Makefile.objs            |   1 +
+ hw/timer/bcm2835_systmr.c         | 100 ++++++++++++++++++++++++++++++
+ hw/timer/trace-events             |   4 ++
+ include/hw/timer/bcm2835_systmr.h |  30 +++++++++
+ 4 files changed, 135 insertions(+)
+ create mode 100644 hw/timer/bcm2835_systmr.c
+ create mode 100644 include/hw/timer/bcm2835_systmr.h
+
+diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
+index 123d92c969..696cda5905 100644
+--- a/hw/timer/Makefile.objs
++++ b/hw/timer/Makefile.objs
+@@ -47,3 +47,4 @@ common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
+ common-obj-$(CONFIG_CMSDK_APB_TIMER) += cmsdk-apb-timer.o
+ common-obj-$(CONFIG_CMSDK_APB_DUALTIMER) += cmsdk-apb-dualtimer.o
+ common-obj-$(CONFIG_MSF2) += mss-timer.o
++common-obj-$(CONFIG_RASPI) += bcm2835_systmr.o
+diff --git a/hw/timer/bcm2835_systmr.c b/hw/timer/bcm2835_systmr.c
+new file mode 100644
+index 0000000000..c4d2b488bd
+--- /dev/null
++++ b/hw/timer/bcm2835_systmr.c
+@@ -0,0 +1,100 @@
++/*
++ * BCM2835 SYS timer emulation
++ *
++ * Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License version 2 or
++ * (at your option) any later version.
++ *
++ * Datasheet: BCM2835 ARM Peripherals (C6357-M-1398)
++ * https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
++ *
++ * Only the free running 64-bit counter is implemented.
++ * The 4 COMPARE registers and the interruption are not implemented.
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/timer.h"
++#include "qemu/log.h"
++#include "hw/registerfields.h"
++#include "hw/timer/bcm2835_systmr.h"
++#include "trace.h"
++
++REG32(CTRL_STATUS,  0x00)
++REG32(COUNTER_LOW,  0x04)
++REG32(COUNTER_HIGH, 0x08)
++REG32(COMPARE0,     0x0c)
++REG32(COMPARE1,     0x10)
++REG32(COMPARE2,     0x14)
++REG32(COMPARE3,     0x18)
++
++static uint64_t bcm2835_sys_timer_read(void *opaque, hwaddr offset,
++                                       unsigned size)
 +{
-+    sysbus_init_child_obj(OBJECT(ps), name, uds,
-+                          sizeof(UnimplementedDeviceState),
-+                          TYPE_UNIMPLEMENTED_DEVICE);
-+    qdev_prop_set_string(DEVICE(uds), "name", name);
-+    qdev_prop_set_uint64(DEVICE(uds), "size", size);
-+    object_property_set_bool(OBJECT(uds), true, "realized", &error_fatal);
-+    memory_region_add_subregion_overlap(&ps->peri_mr, ofs,
-+                    sysbus_mmio_get_region(SYS_BUS_DEVICE(uds), 0), -1000);
++    uint64_t r = 0;
++
++    switch (offset) {
++    case A_CTRL_STATUS:
++    case A_COMPARE0 ... A_COMPARE3:
++        break;
++    case A_COUNTER_LOW:
++    case A_COUNTER_HIGH:
++        /* Free running counter at 1MHz */
++        r = qemu_clock_get_us(QEMU_CLOCK_VIRTUAL);
++        r >>= 8 * (offset - A_COUNTER_LOW);
++        r &= UINT32_MAX;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad offset 0x%" HWADDR_PRIx "\n",
++                      __func__, offset);
++        break;
++    }
++    trace_bcm2835_sys_timer_read(offset, r);
++
++    return r;
 +}
 +
- static void bcm2835_peripherals_init(Object *obj)
- {
-     BCM2835PeripheralState *s = BCM2835_PERIPHERALS(obj);
-@@ -323,6 +337,23 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-         error_propagate(errp, err);
-         return;
-     }
++static void bcm2835_sys_timer_write(void *opaque, hwaddr offset,
++                                    uint64_t value, unsigned size)
++{
++    trace_bcm2835_sys_timer_write(offset, value);
 +
-+    create_unimp(s, &s->armtmr, "bcm2835-sp804", ARMCTRL_TIMER0_1_OFFSET, 0x40);
-+    create_unimp(s, &s->systmr, "bcm2835-systimer", ST_OFFSET, 0x20);
-+    create_unimp(s, &s->cprman, "bcm2835-cprman", CPRMAN_OFFSET, 0x1000);
-+    create_unimp(s, &s->a2w, "bcm2835-a2w", A2W_OFFSET, 0x1000);
-+    create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
-+    create_unimp(s, &s->smi, "bcm2835-smi", SMI_OFFSET, 0x100);
-+    create_unimp(s, &s->spi[0], "bcm2835-spi0", SPI0_OFFSET, 0x20);
-+    create_unimp(s, &s->bscsl, "bcm2835-spis", BSC_SL_OFFSET, 0x100);
-+    create_unimp(s, &s->i2c[0], "bcm2835-i2c0", BSC0_OFFSET, 0x20);
-+    create_unimp(s, &s->i2c[1], "bcm2835-i2c1", BSC1_OFFSET, 0x20);
-+    create_unimp(s, &s->i2c[2], "bcm2835-i2c2", BSC2_OFFSET, 0x20);
-+    create_unimp(s, &s->otp, "bcm2835-otp", OTP_OFFSET, 0x80);
-+    create_unimp(s, &s->dbus, "bcm2835-dbus", DBUS_OFFSET, 0x8000);
-+    create_unimp(s, &s->ave0, "bcm2835-ave0", AVE0_OFFSET, 0x8000);
-+    create_unimp(s, &s->dwc2, "dwc-usb2", USB_OTG_OFFSET, 0x1000);
-+    create_unimp(s, &s->sdramc, "bcm2835-sdramc", SDRAMC_OFFSET, 0x100);
- }
- 
- static void bcm2835_peripherals_class_init(ObjectClass *oc, void *data)
-diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
-index 6b17f6a382..62a4c7b559 100644
---- a/include/hw/arm/bcm2835_peripherals.h
-+++ b/include/hw/arm/bcm2835_peripherals.h
-@@ -23,6 +23,7 @@
- #include "hw/sd/sdhci.h"
- #include "hw/sd/bcm2835_sdhost.h"
- #include "hw/gpio/bcm2835_gpio.h"
-+#include "hw/misc/unimp.h"
- 
- #define TYPE_BCM2835_PERIPHERALS "bcm2835-peripherals"
- #define BCM2835_PERIPHERALS(obj) \
-@@ -37,6 +38,10 @@ typedef struct BCM2835PeripheralState {
-     MemoryRegion ram_alias[4];
-     qemu_irq irq, fiq;
- 
-+    UnimplementedDeviceState systmr;
-+    UnimplementedDeviceState armtmr;
-+    UnimplementedDeviceState cprman;
-+    UnimplementedDeviceState a2w;
-     PL011State uart0;
-     BCM2835AuxState aux;
-     BCM2835FBState fb;
-@@ -48,6 +53,16 @@ typedef struct BCM2835PeripheralState {
-     SDHCIState sdhci;
-     BCM2835SDHostState sdhost;
-     BCM2835GpioState gpio;
-+    UnimplementedDeviceState i2s;
-+    UnimplementedDeviceState spi[1];
-+    UnimplementedDeviceState i2c[3];
-+    UnimplementedDeviceState otp;
-+    UnimplementedDeviceState dbus;
-+    UnimplementedDeviceState ave0;
-+    UnimplementedDeviceState bscsl;
-+    UnimplementedDeviceState smi;
-+    UnimplementedDeviceState dwc2;
-+    UnimplementedDeviceState sdramc;
- } BCM2835PeripheralState;
- 
- #endif /* BCM2835_PERIPHERALS_H */
-diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
-index 66969fac5d..cdcbca943f 100644
---- a/include/hw/arm/raspi_platform.h
-+++ b/include/hw/arm/raspi_platform.h
-@@ -38,6 +38,8 @@
-                                                       * Doorbells & Mailboxes */
- #define CPRMAN_OFFSET           0x100000 /* Power Management, Watchdog */
- #define CM_OFFSET               0x101000 /* Clock Management */
-+#define A2W_OFFSET              0x102000 /* Reset controller */
-+#define AVS_OFFSET              0x103000 /* Audio Video Standard */
- #define RNG_OFFSET              0x104000
- #define GPIO_OFFSET             0x200000
- #define UART0_OFFSET            0x201000
-@@ -45,11 +47,17 @@
- #define I2S_OFFSET              0x203000
- #define SPI0_OFFSET             0x204000
- #define BSC0_OFFSET             0x205000 /* BSC0 I2C/TWI */
-+#define OTP_OFFSET              0x20f000
-+#define BSC_SL_OFFSET           0x214000 /* SPI slave */
- #define AUX_OFFSET              0x215000 /* AUX: UART1/SPI1/SPI2 */
- #define EMMC1_OFFSET            0x300000
- #define SMI_OFFSET              0x600000
- #define BSC1_OFFSET             0x804000 /* BSC1 I2C/TWI */
-+#define BSC2_OFFSET             0x805000 /* BSC2 I2C/TWI */
-+#define DBUS_OFFSET             0x900000
-+#define AVE0_OFFSET             0x910000
- #define USB_OTG_OFFSET          0x980000 /* DTC_OTG USB controller */
-+#define SDRAMC_OFFSET           0xe00000
- #define DMA15_OFFSET            0xE05000 /* DMA controller, channel 15 */
- 
- /* GPU interrupts */
++    qemu_log_mask(LOG_UNIMP, "%s: bad offset 0x%" HWADDR_PRIx "\n",
++                  __func__, offset);
++}
++
++static const MemoryRegionOps bcm2835_sys_timer_ops = {
++    .read = bcm2835_sys_timer_read,
++    .write = bcm2835_sys_timer_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .impl = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++};
++
++static void bcm2835_sys_timer_init(Object *obj)
++{
++    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
++    BCM2835SysTimerState *s = BCM2835_SYSTIMER(obj);
++
++    memory_region_init_io(&s->iomem, obj, &bcm2835_sys_timer_ops,
++                          s, "bcm2835-sys-timer", 0x20);
++    sysbus_init_mmio(sbd, &s->iomem);
++    sysbus_init_irq(sbd, &s->irq);
++}
++
++static const TypeInfo bcm2835_sys_timer_info = {
++    .name = TYPE_BCM2835_SYSTIMER,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(BCM2835SysTimerState),
++    .instance_init = bcm2835_sys_timer_init,
++};
++
++static void bcm2835_sys_timer_register_types(void)
++{
++    type_register_static(&bcm2835_sys_timer_info);
++}
++
++type_init(bcm2835_sys_timer_register_types);
+diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+index db02a9142c..81967a1a19 100644
+--- a/hw/timer/trace-events
++++ b/hw/timer/trace-events
+@@ -87,3 +87,7 @@ pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+ pl031_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+ pl031_alarm_raised(void) "alarm raised"
+ pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
++
++# bcm2835_systmr.c
++bcm2835_sys_timer_read(uint64_t offset, uint64_t data) "timer read: offset 0x%" PRIx64 " data 0x%" PRIx64
++bcm2835_sys_timer_write(uint64_t offset, uint64_t data) "timer write: offset 0x%" PRIx64 " data 0x%" PRIx64
+diff --git a/include/hw/timer/bcm2835_systmr.h b/include/hw/timer/bcm2835_systmr.h
+new file mode 100644
+index 0000000000..6ac7f8ec5a
+--- /dev/null
++++ b/include/hw/timer/bcm2835_systmr.h
+@@ -0,0 +1,30 @@
++/*
++ * BCM2835 SYS timer emulation
++ *
++ * Copyright (c) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
++ *
++ *  This program is free software; you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License version 2 or
++ *  (at your option) any later version.
++ */
++
++#ifndef BCM2835_SYSTIMER_H
++#define BCM2835_SYSTIMER_H
++
++#include "hw/sysbus.h"
++#include "hw/irq.h"
++
++#define TYPE_BCM2835_SYSTIMER "bcm2835-sys-timer"
++#define BCM2835_SYSTIMER(obj) \
++    OBJECT_CHECK(BCM2835SysTimerState, (obj), TYPE_BCM2835_SYSTIMER)
++
++typedef struct {
++    /*< private >*/
++    SysBusDevice parent_obj;
++
++    /*< public >*/
++    MemoryRegion iomem;
++    qemu_irq irq;
++} BCM2835SysTimerState;
++
++#endif
 -- 
 2.20.1
 

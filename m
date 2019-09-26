@@ -1,96 +1,97 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2437572wrp;
-        Thu, 26 Sep 2019 10:47:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzKMJH3zQZ4OYhUF+aS+3xGoIBIL89L/VCKmfrfwhvaLpDe1KzroF269o1YG7JsiKOjFQCE
-X-Received: by 2002:ac8:7957:: with SMTP id r23mr5383983qtt.130.1569520040847;
-        Thu, 26 Sep 2019 10:47:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569520040; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2438501wrp;
+        Thu, 26 Sep 2019 10:48:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxWrS56V1a7/omlTeDzHtpajXtUkvzM+rR4rQSdInckwBqaHFFzopXXcE+cMtnbC3NKRh1t
+X-Received: by 2002:a37:9ec5:: with SMTP id h188mr4714243qke.93.1569520084630;
+        Thu, 26 Sep 2019 10:48:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569520084; cv=none;
         d=google.com; s=arc-20160816;
-        b=fqR5cH6ME7NMlVoeoLXKAbB7rM8bcO0FgvVklZmPfmcWrvVoXRoKka0rk2uHmph4SL
-         tPm26JFLBUPsybbClI2VKxiyx9R67LfaF2OfV8M1dNlxSHBN8gtxS/KZ6MqEK3pn2nOE
-         H4tqFB1/EjGdMFJP3nbmwiGIMZ83c4BZNyJuME47sNf9a5e+DEVPLjmUEI6I4WhITf8l
-         rXwp2r2qhqmqvz9kIS+/YPEvuzQHszM+obnUqJieVXXC11aD20QVvVFr5rZrt+Z0Z18Z
-         QrDYG3wxYux+KOrSKMHg+a2aBnjr57J2K6WmTvTbNHbPqnUh/ieW6/qeRiK5bWFtkw4R
-         JFEw==
+        b=ujcQeh06n78FtGZqw/fjh4I2gyruMKnVD2jzvXQTPY5Eo1TTQmAfVzYpULmKIvIJE8
+         RBkIvHWaRak0F9CYtYY1EmKSP6cUbyok8eIu+t786D3Jqpu1PRe15AlKX2kywSZfNrof
+         k4icOIHlw7Vy1nU/etvm6DSGfrNDBNUJ1m+3xDfJEISXH06rhjVsdcBdm+C11j/pGHni
+         5E2xHI6QtHS29Nu7F1eqdaqlnEc9enOJ39ATYOM+mTCFxFlhiHCZcr6prtp1bjVtup20
+         +iDAbRWPPajpqvod0XAcqgVcwpiwXHVFijHXnHqZIU1HtOLJbC0FAIxUA+X3XG71haCh
+         iWnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=3CkZIT9Y9Ae7LSSsN/oOgCMbPqmMCdmGsnbLDg7Flfg=;
-        b=oE/eeD/NGltGs455H6Ny9Xrl3CGXghpPAjZQiyNYaK1fGrCokH+XE70xzWkWr6xdzh
-         5KRKGB/m37VSiagDA2xb+ZzyCHz92VPjUpLGXd7W80zyql44UsXlaK0HsRfCjeA4h6Ha
-         g2pYICwmb2EyvJCzjnd8bdBkVedHl1OGnDuApes/toeuV7PRDZMimrvQCXbjFi8Z0ytZ
-         b1WUz3Erv/oh1RiuKRB6d1/kEBYa5m1fNtP23YBi0vY9Dtn7YiNxHwNZfTcsB77vhLV4
-         7QTXWVxgbihWlnAgVrQb9hQXwMfskRxV/9Uu6XPu/IAEMoAVIgipBXVgZ/b3dOMqaRqx
-         KEpA==
+        bh=kskdVuLQCPaH6Xp1rulbaOs6j5l5CnUBB+uNJbXgnDc=;
+        b=e6qbgALQOo4l7ERZ9RQTLL7GGNKfdBBp4+NuzDrmmTZH9FWwN94PpN4Dk0XxGGV3Fq
+         Z2VAxw8QREyU1fSY9cd30OQ0ERwQlJV0163t9b+ggKbDUYB3YQp9Aj7eRMweZI36Fj0H
+         lUMFN5I4XymhYBA7MXZo29djZR2TEngQGTTjIWYXRWpCnMnDumI72HIXFmvsvQrKaOtC
+         d90NK0pEZ1RF0/pJ4u2WgnMg8x1ferjHDScuqP8tdRgixXrth6N6LquEAo2bs7atzFdi
+         6FT9jUzSRBPRpvC7iGz3V3Bt2cr5o1Xi/uFbZ0GlpxRYQSBE2kvI6wh+4aLvLjJrEbkN
+         uwRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iSkeWhZl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mNXrZfs3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e27si2359270qvd.28.2019.09.26.10.47.20
+        by mx.google.com with ESMTPS id w142si2347502qkb.172.2019.09.26.10.48.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Sep 2019 10:47:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 26 Sep 2019 10:48:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iSkeWhZl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41860 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mNXrZfs3;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41854 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iDXrL-0007EF-1R
-	for alex.bennee@linaro.org; Thu, 26 Sep 2019 13:47:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59029)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iDXs3-00073B-5i
+	for alex.bennee@linaro.org; Thu, 26 Sep 2019 13:48:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58900)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXgQ-0004ei-AA
- for qemu-arm@nongnu.org; Thu, 26 Sep 2019 13:36:04 -0400
+ id 1iDXgG-0004SM-BI
+ for qemu-devel@nongnu.org; Thu, 26 Sep 2019 13:35:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXgO-00030K-AR
- for qemu-arm@nongnu.org; Thu, 26 Sep 2019 13:36:01 -0400
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:51547)
+ id 1iDXgE-0002sh-IM
+ for qemu-devel@nongnu.org; Thu, 26 Sep 2019 13:35:52 -0400
+Received: from mail-wr1-f67.google.com ([209.85.221.67]:40282)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXgJ-0002wp-MV; Thu, 26 Sep 2019 13:35:55 -0400
-Received: by mail-wm1-f66.google.com with SMTP id 7so3726067wme.1;
- Thu, 26 Sep 2019 10:35:55 -0700 (PDT)
+ id 1iDXgE-0002sH-BV; Thu, 26 Sep 2019 13:35:50 -0400
+Received: by mail-wr1-f67.google.com with SMTP id l3so3705278wru.7;
+ Thu, 26 Sep 2019 10:35:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=3CkZIT9Y9Ae7LSSsN/oOgCMbPqmMCdmGsnbLDg7Flfg=;
- b=iSkeWhZljJ/p+KpbCPQ2NakCDSFvW1N+zD6z1JHe8QrX2XngZM8IGKTkLuXWKvSaz7
- QxkE8wrPnmVIdmW5lPXUP+/8bYLlZtPvmOhu/H4rVHqIvKxmGGleMnpe7GXmbL7jaOtH
- BwsPYvm0fCVliroaIROZHi1BT0ldjFJ+5bdHozVwnOOqD6mA5TeK7wsjtoi68wx2HNS9
- y0/Hj2VsVh9+qARYgBTEDLYPDwgp1Sm/gQ6gW5BzaDCIhfjAU2A9RlbjVKuKaOKcSzgL
- a6EMzMRoRufVodCseDb6shK5ANPbyv2gZLFLH58cvX6XS5sDweHkAfUybkuIvIfe+rSX
- mViA==
+ bh=kskdVuLQCPaH6Xp1rulbaOs6j5l5CnUBB+uNJbXgnDc=;
+ b=mNXrZfs3/JC/MRVyZmuWrCxGg/bFOdrfX0dK7lwwH76fipZczdazhuh3df3WMOmxHg
+ 3QAEQKRnWoce0IfCYn8F6lG7Q3IIqvP1PT0Q/6SWWkAwsAh5fe2vtzMt9nQQHhkyxp1k
+ J4eLhal+tTTmhSaW6ekaWhBmbBpd2sjLa1Ejz9L/zle2nCn7Kl8Tv6D3UUqXnwan1pO0
+ ZDkuBZC6t1gRJMGxFHaDQu7CiTKfZnJ6XH71IzjH5tWwad7mbr5liv75oCc0NChOxNLQ
+ B4upw2f49RGtrmv7SGMDVrT2rM2qyA/wvft3XfeM2FB8XgaOQpOsiMmutFKXkayxdlbq
+ IZhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=3CkZIT9Y9Ae7LSSsN/oOgCMbPqmMCdmGsnbLDg7Flfg=;
- b=JdOOUuGOfSbLko0G1da9cLSstQecDi0DzYjuhbbE4RnSEYeyB16FGm+wEPqDUNEgGY
- bfTexpXCiljspV+DxMi/vdaBUCCyisGgU55kF2smQgJA2E6aKPErI5IDijyHd/rO/0P9
- wfWzskEGR0MOcLmDBDjUFZlZYWqC9fMek8qGs2CjnXwGC7SI3Uh8E1q6SEOupC17Ds5J
- HwrDwMCUkBVoafQILQtpzIcfZE4/CTl5Kd4SMGduvNlIGsoQ+Gn4lEkP6SvbMYLVnWhW
- uVweGTP+OEfXKYt6B91pXosp4D4BrTSU+9IqURiIecu3F32eWM6Kj3WydwvnZm1wv9Pz
- 3mQg==
-X-Gm-Message-State: APjAAAXXNNb+5L0quslL966CgkptImSxHCkHmA3yTsALHr6U7eaKYwk2
- y6M5jUma+ZtDWrvmTwKTbUHA1jsd1r4=
-X-Received: by 2002:a7b:c0d4:: with SMTP id s20mr4122872wmh.101.1569519294390; 
- Thu, 26 Sep 2019 10:34:54 -0700 (PDT)
+ bh=kskdVuLQCPaH6Xp1rulbaOs6j5l5CnUBB+uNJbXgnDc=;
+ b=GRFg5aJTnZth0YDbaRlqM2f9abKPcYOKxq8GgceDHuQvMddBn4IRuSQzYUyyb0Ap9R
+ 31r9Jgx1LSjpHKhml6HXeGzpspXv8AjCnv5lbwbViid+LukRfq+87Yd5tsPL2AR8oPzc
+ tWQsA6eruEzOMi400fxXEMBYiI9b4/LUiflmCB4kkNamvV63hgwizqLNaWX4TjE75N1Z
+ ey8ryCMD8h0kFfVpIkLZT10UkgCui0luxzHXX0Knk27IvZyyyPdxDPV2kqPSstpZk6W0
+ hj2uI3fdA7lyI3UmRO4Eu9tAmPnmBWfeBF+yGgggO/mfAlVTLg8CMjp7zoRob3guLVFv
+ wQ0Q==
+X-Gm-Message-State: APjAAAVqOn4CPbKnRy71MLYuypCKKrrGsDzNsw0HDqsRkPhe0AnlzO7e
+ XcPI0PujnWD/WhslTEyeKgIvkcYYNEY=
+X-Received: by 2002:adf:f406:: with SMTP id g6mr3722246wro.325.1569519289031; 
+ Thu, 26 Sep 2019 10:34:49 -0700 (PDT)
 Received: from x1w.redhat.com (240.red-88-21-68.staticip.rima-tde.net.
  [88.21.68.240])
- by smtp.gmail.com with ESMTPSA id b186sm9918980wmd.16.2019.09.26.10.34.50
+ by smtp.gmail.com with ESMTPSA id b186sm9918980wmd.16.2019.09.26.10.34.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Sep 2019 10:34:51 -0700 (PDT)
+ Thu, 26 Sep 2019 10:34:48 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 10/19] hw/timer/bcm2835: Add the BCM2835 SYS_timer
-Date: Thu, 26 Sep 2019 19:34:18 +0200
-Message-Id: <20190926173428.10713-11-f4bug@amsat.org>
+Subject: [PATCH 08/19] hw/misc/bcm2835_thermal: Add a dummy BCM2835 thermal
+ sensor
+Date: Thu, 26 Sep 2019 19:34:16 +0200
+Message-Id: <20190926173428.10713-9-f4bug@amsat.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190926173428.10713-1-f4bug@amsat.org>
 References: <20190926173428.10713-1-f4bug@amsat.org>
@@ -100,18 +101,18 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.85.128.66
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 209.85.221.67
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Zolt=C3=A1n=20Baldaszti?= <bztemail@gmail.com>,
  Laurent Bonnans <laurent.bonnans@here.com>,
@@ -119,7 +120,6 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
- BALATON Zoltan <balaton@eik.bme.hu>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org, Clement Deschamps <clement.deschamps@antfield.fr>,
  Cleber Rosa <crosa@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -127,22 +127,20 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Pekka Enberg <penberg@iki.fi>, Guenter Roeck <linux@roeck-us.net>,
  Eduardo Habkost <ehabkost@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7Djb/9RsWXxK
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xOaKtIqLMmJO
 
-Add the 64-bit free running timer. Do not model the COMPARE register
-(no IRQ generated).
-This timer is used by U-Boot and recent Linux kernels:
-https://github.com/u-boot/u-boot/blob/v2019.07/include/configs/rpi.h#L19
+We will soon implement the SYS_timer. This timer is used by Linux
+in the thermal subsystem, so once available, the subsystem will be
+enabled and poll the temperature sensors. We need to provide the
+minimum required to keep Linux booting.
 
-Datasheet used:
-https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
+Add a dummy thermal sensor returning ~25°C based on:
+https://github.com/raspberrypi/linux/blob/rpi-5.3.y/drivers/thermal/broadcom/bcm2835_thermal.c
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-Since which kernels? 4.19 seems to use it.
-
 checkpatch warning:
 WARNING: added, moved or deleted file(s), does MAINTAINERS need updating?
 This is OK because the regex are:
@@ -150,175 +148,171 @@ This is OK because the regex are:
   F: hw/*/bcm283*
   F: include/hw/*/bcm283*
 ---
- hw/timer/Makefile.objs            |   1 +
- hw/timer/bcm2835_systmr.c         | 100 ++++++++++++++++++++++++++++++
- hw/timer/trace-events             |   4 ++
- include/hw/timer/bcm2835_systmr.h |  30 +++++++++
- 4 files changed, 135 insertions(+)
- create mode 100644 hw/timer/bcm2835_systmr.c
- create mode 100644 include/hw/timer/bcm2835_systmr.h
+ hw/misc/Makefile.objs             |   1 +
+ hw/misc/bcm2835_thermal.c         | 109 ++++++++++++++++++++++++++++++
+ include/hw/misc/bcm2835_thermal.h |  27 ++++++++
+ 3 files changed, 137 insertions(+)
+ create mode 100644 hw/misc/bcm2835_thermal.c
+ create mode 100644 include/hw/misc/bcm2835_thermal.h
 
-diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index 123d92c969..696cda5905 100644
---- a/hw/timer/Makefile.objs
-+++ b/hw/timer/Makefile.objs
-@@ -47,3 +47,4 @@ common-obj-$(CONFIG_SUN4V_RTC) += sun4v-rtc.o
- common-obj-$(CONFIG_CMSDK_APB_TIMER) += cmsdk-apb-timer.o
- common-obj-$(CONFIG_CMSDK_APB_DUALTIMER) += cmsdk-apb-dualtimer.o
- common-obj-$(CONFIG_MSF2) += mss-timer.o
-+common-obj-$(CONFIG_RASPI) += bcm2835_systmr.o
-diff --git a/hw/timer/bcm2835_systmr.c b/hw/timer/bcm2835_systmr.c
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index a150680966..c89f3816a5 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -53,6 +53,7 @@ common-obj-$(CONFIG_OMAP) += omap_tap.o
+ common-obj-$(CONFIG_RASPI) += bcm2835_mbox.o
+ common-obj-$(CONFIG_RASPI) += bcm2835_property.o
+ common-obj-$(CONFIG_RASPI) += bcm2835_rng.o
++common-obj-$(CONFIG_RASPI) += bcm2835_thermal.o
+ common-obj-$(CONFIG_SLAVIO) += slavio_misc.o
+ common-obj-$(CONFIG_ZYNQ) += zynq_slcr.o
+ common-obj-$(CONFIG_ZYNQ) += zynq-xadc.o
+diff --git a/hw/misc/bcm2835_thermal.c b/hw/misc/bcm2835_thermal.c
 new file mode 100644
-index 0000000000..c4d2b488bd
+index 0000000000..bac23f21ea
 --- /dev/null
-+++ b/hw/timer/bcm2835_systmr.c
-@@ -0,0 +1,100 @@
++++ b/hw/misc/bcm2835_thermal.c
+@@ -0,0 +1,109 @@
 +/*
-+ * BCM2835 SYS timer emulation
++ * BCM2835 dummy thermal sensor
 + *
 + * Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
 + *
-+ * This program is free software; you can redistribute it and/or modify
-+ * it under the terms of the GNU General Public License version 2 or
-+ * (at your option) any later version.
-+ *
-+ * Datasheet: BCM2835 ARM Peripherals (C6357-M-1398)
-+ * https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
-+ *
-+ * Only the free running 64-bit counter is implemented.
-+ * The 4 COMPARE registers and the interruption are not implemented.
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + */
-+
 +#include "qemu/osdep.h"
-+#include "qemu/timer.h"
++#include "hw/sysbus.h"
++#include "hw/misc/bcm2835_thermal.h"
 +#include "qemu/log.h"
++#include "qapi/error.h"
 +#include "hw/registerfields.h"
-+#include "hw/timer/bcm2835_systmr.h"
-+#include "trace.h"
 +
-+REG32(CTRL_STATUS,  0x00)
-+REG32(COUNTER_LOW,  0x04)
-+REG32(COUNTER_HIGH, 0x08)
-+REG32(COMPARE0,     0x0c)
-+REG32(COMPARE1,     0x10)
-+REG32(COMPARE2,     0x14)
-+REG32(COMPARE3,     0x18)
++REG32(CTL, 0)
++FIELD(CTL, POWER_DOWN, 0, 1)
++FIELD(CTL, RESET, 1, 1)
++FIELD(CTL, BANDGAP_CTRL, 2, 3)
++FIELD(CTL, INTERRUPT_ENABLE, 5, 1)
++FIELD(CTL, DIRECT, 6, 1)
++FIELD(CTL, INTERRUPT_CLEAR, 7, 1)
++FIELD(CTL, HOLD, 8, 10)
++FIELD(CTL, RESET_DELAY, 18, 8)
++FIELD(CTL, REGULATOR_ENABLE, 26, 1)
 +
-+static uint64_t bcm2835_sys_timer_read(void *opaque, hwaddr offset,
-+                                       unsigned size)
++REG32(STAT, 4)
++FIELD(STAT, DATA, 0, 10)
++FIELD(STAT, VALID, 10, 1)
++FIELD(STAT, INTERRUPT, 11, 1)
++
++#define THERMAL_OFFSET_C 412
++#define THERMAL_COEFF  (-0.538f)
++
++static uint16_t bcm2835_thermal_temp2adc(int temp_C)
 +{
-+    uint64_t r = 0;
++    return (temp_C - THERMAL_OFFSET_C) / THERMAL_COEFF;
++}
 +
-+    switch (offset) {
-+    case A_CTRL_STATUS:
-+    case A_COMPARE0 ... A_COMPARE3:
++static uint64_t bcm2835_thermal_read(void *opaque, hwaddr addr, unsigned size)
++{
++    Bcm2835ThermalState *s = BCM2835_THERMAL(opaque);
++    uint32_t val = 0;
++
++    switch (addr) {
++    case A_CTL:
++        val = s->ctl;
 +        break;
-+    case A_COUNTER_LOW:
-+    case A_COUNTER_HIGH:
-+        /* Free running counter at 1MHz */
-+        r = qemu_clock_get_us(QEMU_CLOCK_VIRTUAL);
-+        r >>= 8 * (offset - A_COUNTER_LOW);
-+        r &= UINT32_MAX;
++    case A_STAT:
++        val = FIELD_DP32(bcm2835_thermal_temp2adc(25), STAT, VALID, true);
 +        break;
 +    default:
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+        break;
++        g_assert_not_reached();
 +    }
-+    trace_bcm2835_sys_timer_read(offset, r);
-+
-+    return r;
++    return val;
 +}
 +
-+static void bcm2835_sys_timer_write(void *opaque, hwaddr offset,
-+                                    uint64_t value, unsigned size)
++static void bcm2835_thermal_write(void *opaque, hwaddr addr,
++                                  uint64_t value, unsigned size)
 +{
-+    trace_bcm2835_sys_timer_write(offset, value);
++    Bcm2835ThermalState *s = BCM2835_THERMAL(opaque);
 +
-+    qemu_log_mask(LOG_UNIMP, "%s: bad offset 0x%" HWADDR_PRIx "\n",
-+                  __func__, offset);
++    switch (addr) {
++    case A_CTL:
++        s->ctl = value;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: write 0x%" PRIx64
++                                       " to 0x%" HWADDR_PRIx "\n",
++                       __func__, value, addr);
++    }
 +}
 +
-+static const MemoryRegionOps bcm2835_sys_timer_ops = {
-+    .read = bcm2835_sys_timer_read,
-+    .write = bcm2835_sys_timer_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
++static const MemoryRegionOps bcm2835_thermal_ops = {
++    .read = bcm2835_thermal_read,
++    .write = bcm2835_thermal_write,
++    .impl.max_access_size = 4,
++    .valid.min_access_size = 4,
++    .endianness = DEVICE_NATIVE_ENDIAN,
 +};
 +
-+static void bcm2835_sys_timer_init(Object *obj)
++static void bcm2835_thermal_realize(DeviceState *dev, Error **errp)
 +{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    BCM2835SysTimerState *s = BCM2835_SYSTIMER(obj);
++    Bcm2835ThermalState *s = BCM2835_THERMAL(dev);
 +
-+    memory_region_init_io(&s->iomem, obj, &bcm2835_sys_timer_ops,
-+                          s, "bcm2835-sys-timer", 0x20);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_init_irq(sbd, &s->irq);
++    memory_region_init_io(&s->iomem, OBJECT(s), &bcm2835_thermal_ops,
++                          s, TYPE_BCM2835_THERMAL, 8);
++    sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->iomem);
 +}
 +
-+static const TypeInfo bcm2835_sys_timer_info = {
-+    .name = TYPE_BCM2835_SYSTIMER,
++static void bcm2835_thermal_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = bcm2835_thermal_realize;
++}
++
++static const TypeInfo bcm2835_thermal_info = {
++    .name = TYPE_BCM2835_THERMAL,
 +    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(BCM2835SysTimerState),
-+    .instance_init = bcm2835_sys_timer_init,
++    .instance_size = sizeof(Bcm2835ThermalState),
++    .class_init = bcm2835_thermal_class_init,
 +};
 +
-+static void bcm2835_sys_timer_register_types(void)
++static void bcm2835_thermal_register_types(void)
 +{
-+    type_register_static(&bcm2835_sys_timer_info);
++    type_register_static(&bcm2835_thermal_info);
 +}
 +
-+type_init(bcm2835_sys_timer_register_types);
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index db02a9142c..81967a1a19 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -87,3 +87,7 @@ pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
- pl031_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
- pl031_alarm_raised(void) "alarm raised"
- pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
-+
-+# bcm2835_systmr.c
-+bcm2835_sys_timer_read(uint64_t offset, uint64_t data) "timer read: offset 0x%" PRIx64 " data 0x%" PRIx64
-+bcm2835_sys_timer_write(uint64_t offset, uint64_t data) "timer write: offset 0x%" PRIx64 " data 0x%" PRIx64
-diff --git a/include/hw/timer/bcm2835_systmr.h b/include/hw/timer/bcm2835_systmr.h
++type_init(bcm2835_thermal_register_types)
+diff --git a/include/hw/misc/bcm2835_thermal.h b/include/hw/misc/bcm2835_thermal.h
 new file mode 100644
-index 0000000000..6ac7f8ec5a
+index 0000000000..f85cce7214
 --- /dev/null
-+++ b/include/hw/timer/bcm2835_systmr.h
-@@ -0,0 +1,30 @@
++++ b/include/hw/misc/bcm2835_thermal.h
+@@ -0,0 +1,27 @@
 +/*
-+ * BCM2835 SYS timer emulation
++ * BCM2835 dummy thermal sensor
 + *
-+ * Copyright (c) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
++ * Copyright (C) 2019 Philippe Mathieu-Daudé <f4bug@amsat.org>
 + *
-+ *  This program is free software; you can redistribute it and/or modify
-+ *  it under the terms of the GNU General Public License version 2 or
-+ *  (at your option) any later version.
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + */
++#ifndef HW_MISC_BCM2835_THERMAL_H
++#define HW_MISC_BCM2835_THERMAL_H
 +
-+#ifndef BCM2835_SYSTIMER_H
-+#define BCM2835_SYSTIMER_H
-+
++#include "hw/qdev-properties.h"
 +#include "hw/sysbus.h"
-+#include "hw/irq.h"
 +
-+#define TYPE_BCM2835_SYSTIMER "bcm2835-sys-timer"
-+#define BCM2835_SYSTIMER(obj) \
-+    OBJECT_CHECK(BCM2835SysTimerState, (obj), TYPE_BCM2835_SYSTIMER)
++#define TYPE_BCM2835_THERMAL "bcm2835-thermal"
++
++#define BCM2835_THERMAL(obj) \
++    OBJECT_CHECK(Bcm2835ThermalState, (obj), TYPE_BCM2835_THERMAL)
 +
 +typedef struct {
 +    /*< private >*/
 +    SysBusDevice parent_obj;
-+
 +    /*< public >*/
 +    MemoryRegion iomem;
-+    qemu_irq irq;
-+} BCM2835SysTimerState;
++    uint32_t ctl;
++} Bcm2835ThermalState;
 +
 +#endif
 -- 

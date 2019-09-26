@@ -1,114 +1,117 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2429050wrp;
-        Thu, 26 Sep 2019 10:39:43 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqymeSaCWIy2VXLmBxE3T9vL/woh/nIY+wiEqwu1XOz+cmrfhNaaGmAwNeqeMXf59evaRk+6
-X-Received: by 2002:ac8:7401:: with SMTP id p1mr5118192qtq.141.1569519583400;
-        Thu, 26 Sep 2019 10:39:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569519583; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2431466wrp;
+        Thu, 26 Sep 2019 10:42:01 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzTiIkhwew7ZiuBcWXv3A73T+CBE21Nx/flkPbEcpCunGcNrtivA8rs/tqKeaucIWPmc/Ld
+X-Received: by 2002:ac8:347b:: with SMTP id v56mr5301835qtb.49.1569519720915;
+        Thu, 26 Sep 2019 10:42:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569519720; cv=none;
         d=google.com; s=arc-20160816;
-        b=0TcFN6NpB+znLdl3lqWD8Nhja3Nhj7nQQkgZxbqb0gstZ49tMHD/4FltpJxDibLHvX
-         2EDpfzYntUC+IpvEUSkleuDmrSQTCznAFQ+NfXD0wour9X1P4KI/esFqTgFtcsPZ4LeC
-         MYnZ6kq/5nwGJv/449i19LqzbJTTtv+r+XhnIK4DHD04VeWeYryuj68qj30q2Gs1mX+r
-         mH82eZFnie1r3J+PI0bykRKFkjO+/noZcbUdWU12qph7U2UoJk0z+6LOoDl82eVRREn9
-         HUJ0P3DT8G7V1SjAjzdMfAAzqt+ucxgi0ebDD+tVh4QrgZtQUfposyr25K7kOSzD/q+5
-         vKkA==
+        b=RWPJTW42KbwfQEZGl/2CGpnQKP5gK17FagGl7sKJzArMhvhAZHUHSv6hP1oSc9lVsB
+         itKTu41I6IENo2f8hb3/OZGzaAzUMxq/TADdR/LNXycLL06rS7UxJOY3vMbjR3UBVPrd
+         YDGT4+ShXk8vs7XDS2WL4PqWcGJxjoH1YvhtHbP3eB2sx1y6p+cDfspourNuvO6089LG
+         HwNDCPBiOJBti3iRHq+8GSvYos4EXoVl6ki6xn1q73QWlojqd3w1pSL4hP+wEwCQM892
+         Mma7Bqf4OZFToNWoDT6Jzjrmyz9IRPGgoOecj9bf/BLTdkUHTy2I+LhkjXpHAdD1oXF3
+         U8ew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=X5E8a57tJOmGA1IoWBlI4ynhtwnzGDa/inS2XNZ8gbU=;
-        b=t1jYNwK8UjsEU8AX625Q1AVw6hr7cwsQIKTwb3TCP3HMvZnepB2vuIYznqhauj/Jbh
-         c7UOLDDWaCMMfFShn0WKJ1WdBVl3QM40wbBafTc1m64v8km93euY11HSXhu70VFH+uEE
-         oxTzZChyyogRe9kxHHald8AgWbGH6TftQRIwxunyPIlzkJO1OfpQ1bm0zTcSYWLU5051
-         iI6tvWznc15dK8FyETM6kbn4N/GpJ6TnTyzBYzAVJRhNB54QYrh4xtj0OqJK9NkMSyUi
-         AjocL1XAtLUv7QtSyD4CpR2GEALlFY6SF3XQ0NU9Y7mA5l9i6uXnRFL1Ykd8ki/apfMf
-         CiXg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=0nYrEyIE8Ksn++8Q6sjUUjo6us9YPYxfJ0rmZNlZ6VA=;
+        b=UoheQQZFkLvCLCvhrDNecd0XI7XZAhpyYMDEMQbm+s3ZjampPzlS/1OfTCwpFolYzU
+         q9tb1a9eDFymiply32d1KVmki9+0iIgCZHP+sl5O1U6Bg/myVuCip3loiMj8YWsiby0h
+         yKIrswtymcGANcKOTXDZ187XRXupejfsnUBgtg5nvPM8VTUkcSpV9TnYPld+qbDn8oPr
+         Um1Rdg2ndOGuItU5RM+XsIaEAYZX8psZuVnCSa91KE95TZmWXkwx2FvmhEqDsl9YffIx
+         iCCCl3HmP9pMTrSYrq/eER+egoM8NzwZLKfgBmVKvoSmXDCnb09mU8EDJqoMS4XmZ3J8
+         TSsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b7KjHw31;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Zf4hUEyt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d22si2377250qtg.205.2019.09.26.10.39.43
+        by mx.google.com with ESMTPS id h5si1978829qkm.101.2019.09.26.10.42.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Sep 2019 10:39:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 26 Sep 2019 10:42:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b7KjHw31;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41764 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Zf4hUEyt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41803 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iDXjy-0006Xy-8m
-	for alex.bennee@linaro.org; Thu, 26 Sep 2019 13:39:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58761)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iDXmB-000184-Re
+	for alex.bennee@linaro.org; Thu, 26 Sep 2019 13:41:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58892)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXg7-0004Gc-U9
- for qemu-devel@nongnu.org; Thu, 26 Sep 2019 13:35:47 -0400
+ id 1iDXgG-0004Rl-Pf
+ for qemu-arm@nongnu.org; Thu, 26 Sep 2019 13:35:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXg3-0002i1-Oi
- for qemu-devel@nongnu.org; Thu, 26 Sep 2019 13:35:43 -0400
-Received: from mail-wr1-f68.google.com ([209.85.221.68]:35016)
+ id 1iDXgE-0002sV-9c
+ for qemu-arm@nongnu.org; Thu, 26 Sep 2019 13:35:51 -0400
+Received: from mail-wr1-f66.google.com ([209.85.221.66]:33788)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXg0-0002dB-23; Thu, 26 Sep 2019 13:35:38 -0400
-Received: by mail-wr1-f68.google.com with SMTP id v8so3735284wrt.2;
- Thu, 26 Sep 2019 10:35:35 -0700 (PDT)
+ id 1iDXgA-0002qV-Tm; Thu, 26 Sep 2019 13:35:47 -0400
+Received: by mail-wr1-f66.google.com with SMTP id b9so3740463wrs.0;
+ Thu, 26 Sep 2019 10:35:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=X5E8a57tJOmGA1IoWBlI4ynhtwnzGDa/inS2XNZ8gbU=;
- b=b7KjHw31QPDxO6HVKM1svEXGGIHbf6mJhfmv9XTRk9d9DqYY50GPAw42UT5oVEuHEg
- i282SlUU9SQIrED30UdmG7zDUQ3ofR6rPrDMfrYvf2L+lZKUN6JO8a9xZSrh1pVDpp9k
- OlJA3w7HQK67h+TFavRmtpDY6QfL6XMfE7VEa9Vvb3KyOWm4zSnr5q2zpt3Nh9UQS9DR
- hn5mkJy22OLoRhO2BPXetORqukxRqGDPJNF1YUwxvWRgIWfscLOoka2WNvK8HOKfxXCX
- jdV6iFeiMiuA3nEL3OrBcWwU3y2eEAgWQBVUkkSUWNab19YX0Xd4toXOPwJvStqDF2Kk
- Hndg==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=0nYrEyIE8Ksn++8Q6sjUUjo6us9YPYxfJ0rmZNlZ6VA=;
+ b=Zf4hUEytuT66Vk8Q/kLrnqWhVUdYRPo5txTb0r2vrCAptQk/xn1csbclZAYGxstLYP
+ YLwqU5rG0W+Ww2cBreX8g5mYQjnOaSpCCMiwtoJIYVawHVI+XX/ntBfjt/790Uvli0Zp
+ dHaYgYYhqWCS31UiNzTAVDH0N0x+UdopVoNa6cX6xvwAVJv2BUB2gZu4tK2q0e7IJ+Q4
+ lFdEv6Kzyu4Os4ttvuqEcwoXhg4PWE81f4pvhng0sLcYzH77Djdom9qF8rsFhv/1BpCp
+ hFA5ky1wXzqvxG+ozWVBGkpoaXRjL/eUQiL6OLfQXFjPk/zEKgl0DP2biBge+tbxb3g4
+ WqQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=X5E8a57tJOmGA1IoWBlI4ynhtwnzGDa/inS2XNZ8gbU=;
- b=la6EJeEuCw0YuMftR7S2MBxjC9LtldtezmrOCdsCVanwRsTI5qagkiBiVV7H8ZjWkz
- pqsiKJQ4uPVRLwcoO67BXJcrok09k2GFtk4Y01MuYjpIGWukFpXjVtKpdArWCY3dGDQF
- mSw7bsY8BdKWjaCwtQq84k73UENiKtSQOCQAlyvLHYKhKD+bQ3O/tEhosfdtZg5h5Qgl
- NqX7i+HJ5cMU1uY2F8lYCCQ2VSG0pE0SusY1PpN2ZL8erIW4IUYHNDQinNTC8+E1vLa8
- R+UKmGZvbYSZp0MkYOSl5ychVqAdMpHjrKI2EzzwNuD5SEjIEh5HvHiZRbG/NukUz5EO
- HUwg==
-X-Gm-Message-State: APjAAAWoVZ4HJArypaPPJZ0sWyQgpFSAZNB+oom6k/LDuTSlC89dN/3Z
- T/lhsS/NyyqHfF4VGr739t2vQibXyIM=
-X-Received: by 2002:adf:ee4d:: with SMTP id w13mr2744448wro.90.1569519271771; 
- Thu, 26 Sep 2019 10:34:31 -0700 (PDT)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=0nYrEyIE8Ksn++8Q6sjUUjo6us9YPYxfJ0rmZNlZ6VA=;
+ b=lbWvouvlMx8sAJOGrcJOdKcVhK112fBEsBZEF7s/m4UotAMxEKEoiHOY9SdbkwMHF5
+ X6YfgWi8a16RXxg+bNebh1zzqlWGbdhBt/VKjKSdygtlOWnWHMmyYAVLd6acQZ+CSmMp
+ V/s2x8YZj5S23i6oKVwpURAXygifcD/FeKmTR1VT0iWcwPqcZg5LAVhZA+/L36bG5BMq
+ xxTLi3zJ1di+daB3Xodwo9+Q+K1sw4WgN5vzg8EeHdpuYfTyXGdT8go203wgeAu1MCac
+ L103OX9cH9waR9VPd3fpd5bjSWE/B5jqugTvQtot8dQG89IEBu0E/rYFDPNvXSBrHS+L
+ jDWA==
+X-Gm-Message-State: APjAAAVQL1BSqSShk7Ls30UAnn18SZdscYMK7IE0s6VJSTHXgpvqDlL4
+ 2ak+Tsm83LjhdaE7/8o0+nZFTaP1ioo=
+X-Received: by 2002:a5d:5642:: with SMTP id j2mr3980873wrw.345.1569519285785; 
+ Thu, 26 Sep 2019 10:34:45 -0700 (PDT)
 Received: from x1w.redhat.com (240.red-88-21-68.staticip.rima-tde.net.
  [88.21.68.240])
- by smtp.gmail.com with ESMTPSA id b186sm9918980wmd.16.2019.09.26.10.34.29
+ by smtp.gmail.com with ESMTPSA id b186sm9918980wmd.16.2019.09.26.10.34.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Sep 2019 10:34:31 -0700 (PDT)
+ Thu, 26 Sep 2019 10:34:45 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 00/19] hw/arm/raspi: Improve Raspberry Pi 2/3 reliability
-Date: Thu, 26 Sep 2019 19:34:08 +0200
-Message-Id: <20190926173428.10713-1-f4bug@amsat.org>
+Subject: [PATCH 06/19] hw/char/bcm2835_aux: Add trace events
+Date: Thu, 26 Sep 2019 19:34:14 +0200
+Message-Id: <20190926173428.10713-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190926173428.10713-1-f4bug@amsat.org>
+References: <20190926173428.10713-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.85.221.68
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.85.221.66
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Zolt=C3=A1n=20Baldaszti?= <bztemail@gmail.com>,
  Laurent Bonnans <laurent.bonnans@here.com>,
@@ -116,6 +119,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org, Clement Deschamps <clement.deschamps@antfield.fr>,
  Cleber Rosa <crosa@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -123,542 +127,174 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Pekka Enberg <penberg@iki.fi>, Guenter Roeck <linux@roeck-us.net>,
  Eduardo Habkost <ehabkost@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +8mfqOaCZ745
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xeRZKa6+NfAY
 
-Hi,
+The BCM2835 AUX UART is compatible with the 16650 model, when
+the registers belong the the 16650 block, use its trace events,
+else use bcm2835_aux_read/write.
 
-I previously posted a RFC for the Raspberry Pi 4:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg642241.html
-and got it almost working (boots Linux kernel to userland, sadly
-I'm still having timeout issues with the eMMC block).
-However since it is quite usable, I started to clean up to post
-the series and realized it is way too big for Peter Maydell, so
-I'm following his rule of thumb by splitting in 3 sets of ~20
-functional patches.
-
-In this first series, we pay old debts with these models. Linux
-evolved and recent kernels were barely usable. U-boot now ticks,
-Linux stops to Oops every so and then. We can use more than one
-console at a time (think pppd?).
-
-Then we add various tests to confirm our effort made sense, and
-to avoid regressions.
-
-Laurent, Cheng, do you mind testing on U-Boot?
-
-In the next part we'll improve/update the MBox/Properties and the
-interrupt controller blocks.
-
-Finally the last part adds the raspi4.
-
-Please review.
-
-Regards,
-
-Phil.
-
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
+ hw/char/bcm2835_aux.c | 55 +++++++++++++++++++++++++++++++------------
+ hw/char/trace-events  |  4 ++++
+ 2 files changed, 44 insertions(+), 15 deletions(-)
 
-The tests added are already enabled on our Travis-CI.
-It takes me <2min to run all the tests:
-
-$ make aarch64-softmmu/all check-venv
-$ ./tests/venv/bin/avocado --show=app,console run -t machine:raspi2 -t machine:raspi3 tests/acceptance
-JOB ID     : 10bf6593659f0b191941265c19fe3dbf1652c3e7
-JOB LOG    : /home/phil/avocado/job-results/job-2019-09-26T19.04-10bf659/job.log
- (1/4) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_raspi2_uart0: \console: [    0.000000] Booting Linux on physical CPU 0xf00
-console: [    0.000000] Linux version 4.14.98-v7+ (dom@dom-XPS-13-9370) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1200 SMP Tue Feb 12 20:27:48 GMT 2019
-console: [    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=10c5387d
-console: [    0.000000] CPU: div instructions available: patching division code
-console: [    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
-console: [    0.000000] OF: fdt: Machine model: Raspberry Pi 2 Model B
-console: [    0.000000] earlycon: pl11 at MMIO 0x3f201000 (options '')
-console: [    0.000000] bootconsole [pl11] enabled
-console: [    0.000000] Memory policy: Data cache writealloc
-console: [    0.000000] cma: Reserved 8 MiB at 0x3b800000
-console: [    0.000000] percpu: Embedded 17 pages/cpu @baf2e000 s38720 r8192 d22720 u69632
-console: [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 243600
-console: [    0.000000] Kernel command line: printk.time=0 earlycon=pl011,0x3f201000 console=ttyAMA0
-PASS (6.74 s)
- (2/4) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_raspi2_uart1: -console: [    0.000000] Booting Linux on physical CPU 0xf00
-console: [    0.000000] Linux version 4.14.98-v7+ (dom@dom-XPS-13-9370) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1200 SMP Tue Feb 12 20:27:48 GMT 2019
-console: [    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=10c5387d
-console: [    0.000000] CPU: div instructions available: patching division code
-console: [    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
-console: [    0.000000] OF: fdt: Machine model: Raspberry Pi 2 Model B
-console: [    0.000000] earlycon: uart8250 at MMIO32 0x3f215040 (options '')
-console: [    0.000000] bootconsole [uart8250] enabled
-console: [    0.000000] Memory policy: Data cache writealloc
-console: [    0.000000] cma: Reserved 8 MiB at 0x3b800000
-console: [    0.000000] percpu: Embedded 17 pages/cpu @baf2e000 s38720 r8192 d22720 u69632
-console: [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 243600
-console: [    0.000000] Kernel command line: printk.time=0 earlycon=uart8250,mmio32,0x3f215040 console=ttyS1,115200
-PASS (6.69 s)
- (3/4) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_raspi3_initrd_uart0: -console: [    0.000000] Booting Linux on physical CPU 0x0
-console: [    0.000000] Linux version 4.14.0-3-arm64 (debian-kernel@lists.debian.org) (gcc version 7.2.0 (Debian 7.2.0-18)) #1 SMP Debian 4.14.12-2 (2018-01-06)
-console: [    0.000000] Boot CPU: AArch64 Processor [410fd034]
-console: [    0.000000] Machine model: Raspberry Pi 3 Model B
-console: [    0.000000] earlycon: pl11 at MMIO 0x000000003f201000 (options '')
-console: [    0.000000] bootconsole [pl11] enabled
-console: [    0.000000] efi: Getting EFI parameters from FDT:
-console: [    0.000000] efi: UEFI not found.
-console: [    0.000000] cma: Reserved 64 MiB at 0x0000000038000000
-console: [    0.000000] NUMA: No NUMA configuration found
-console: [    0.000000] NUMA: Faking a node at [mem 0x0000000000000000-0x000000003bffffff]
-console: [    0.000000] NUMA: NODE_DATA [mem 0x37fdc380-0x37fdde7f]
-console: [    0.000000] Zone ranges:
-console: [    0.000000]   DMA      [mem 0x0000000000000000-0x000000003bffffff]
-console: [    0.000000]   Normal   empty
-console: [    0.000000] Movable zone start for each node
-console: [    0.000000] Early memory node ranges
-console: [    0.000000]   node   0: [mem 0x0000000000000000-0x000000003bffffff]
-console: [    0.000000] Initmem setup node 0 [mem 0x0000000000000000-0x000000003bffffff]
-\console: [    0.000000] /cpus/cpu@1: missing enable-method property
-console: [    0.000000] /cpus/cpu@2: missing enable-method property
-console: [    0.000000] /cpus/cpu@3: missing enable-method property
-console: [    0.000000] random: fast init done
-console: [    0.000000] percpu: Embedded 22 pages/cpu @ffff800037fb3000 s51608 r8192 d30312 u90112
-console: [    0.000000] Detected VIPT I-cache on CPU0
-console: [    0.000000] CPU features: enabling workaround for ARM erratum 845719
-console: [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 241920
-console: [    0.000000] Policy zone: DMA
-console: [    0.000000] Kernel command line: printk.time=0 earlycon=pl011,0x3f201000 console=ttyAMA0 panic=-1 noreboot
-console: PID hash table entries: 4096 (order: 3, 32768 bytes)
-console: Memory: 879888K/983040K available (8252K kernel code, 1448K rwdata, 2692K rodata, 4480K init, 601K bss, 37616K reserved, 65536K cma-reserved)
-console: Virtual kernel memory layout:
-console: modules : 0xffff000000000000 - 0xffff000008000000   (   128 MB)
-console: vmalloc : 0xffff000008000000 - 0xffff7dffbfff0000   (129022 GB)
-console: .text : 0xffff000008080000 - 0xffff000008890000   (  8256 KB)
-console: .rodata : 0xffff000008890000 - 0xffff000008b40000   (  2752 KB)
-console: .init : 0xffff000008b40000 - 0xffff000008fa0000   (  4480 KB)
-console: .data : 0xffff000008fa0000 - 0xffff00000910a200   (  1449 KB)
-console: .bss : 0xffff00000910a200 - 0xffff0000091a0910   (   602 KB)
-console: fixed   : 0xffff7dfffe7fd000 - 0xffff7dfffec00000   (  4108 KB)
-console: PCI I/O : 0xffff7dfffee00000 - 0xffff7dffffe00000   (    16 MB)
-console: vmemmap : 0xffff7e0000000000 - 0xffff800000000000   (  2048 GB maximum)
-console: 0xffff7e0000000000 - 0xffff7e0000f00000   (    15 MB actual)
-console: memory  : 0xffff800000000000 - 0xffff80003c000000   (   960 MB)
-console: ftrace: allocating 30760 entries in 121 pages
-\console: Hierarchical RCU implementation.
-console: RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=1.
-console: RCU: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
-console: NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
-console: arch_timer: WARNING: Invalid trigger for IRQ2, assuming level low
-console: arch_timer: WARNING: Please fix your firmware
-console: arch_timer: cp15 timer(s) running at 62.50MHz (phys).
-console: clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x1cd42e208c, max_idle_ns: 881590405314 ns
-console: sched_clock: 56 bits at 62MHz, resolution 16ns, wraps every 4398046511096ns
-console: Console: colour dummy device 80x25
-console: Calibrating delay loop (skipped), value calculated using timer frequency.. 125.00 BogoMIPS (lpj=250000)
-console: pid_max: default: 32768 minimum: 301
-console: Security Framework initialized
-console: Yama: disabled by default; enable with sysctl kernel.yama.*
-console: AppArmor: AppArmor initialized
-console: Dentry cache hash table entries: 131072 (order: 8, 1048576 bytes)
-console: Inode-cache hash table entries: 65536 (order: 7, 524288 bytes)
-console: Mount-cache hash table entries: 2048 (order: 2, 16384 bytes)
-console: Mountpoint-cache hash table entries: 2048 (order: 2, 16384 bytes)
-console: ASID allocator initialised with 65536 entries
-console: Hierarchical SRCU implementation.
-console: EFI services will not be available.
-console: smp: Bringing up secondary CPUs ...
-console: smp: Brought up 1 node, 1 CPU
-console: SMP: Total of 1 processors activated.
-console: CPU features: detected feature: 32-bit EL0 Support
-console: CPU: All CPU(s) started at EL2
-console: alternatives: patching kernel code
-|console: devtmpfs: initialized
-console: Registered cp15_barrier emulation handler
-console: Registered setend emulation handler
-console: clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
-console: futex hash table entries: 256 (order: 3, 32768 bytes)
-console: pinctrl core: initialized pinctrl subsystem
-console: DMI not present or invalid.
-console: NET: Registered protocol family 16
-console: cpuidle: using governor ladder
-console: cpuidle: using governor menu
-console: vdso: 2 pages (1 code @ ffff000008896000, 1 data @ ffff000008fa5000)
-console: hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
-console: DMA: preallocated 256 KiB pool for atomic allocations
-console: Serial: AMBA PL011 UART driver
-console: uart-pl011 3f201000.serial: could not find pctldev for node /soc/gpio@7e200000/uart0_pins, deferring probe
-console: HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
-console: ACPI: Interpreter disabled.
-console: vgaarb: loaded
-console: EDAC MC: Ver: 3.0.0
-console: dmi: Firmware registration failed.
-/console: clocksource: Switched to clocksource arch_sys_counter
--console: VFS: Disk quotas dquot_6.6.0
-console: VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
-console: AppArmor: AppArmor Filesystem Enabled
-console: pnp: PnP ACPI: disabled
-\console: NET: Registered protocol family 2
-console: TCP established hash table entries: 8192 (order: 4, 65536 bytes)
-console: TCP bind hash table entries: 8192 (order: 5, 131072 bytes)
-console: TCP: Hash tables configured (established 8192 bind 8192)
-console: UDP hash table entries: 512 (order: 2, 16384 bytes)
-console: UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
-console: NET: Registered protocol family 1
-console: Unpacking initramfs...
-console: Freeing initrd memory: 3268K
-console: kvm [1]: 8-bit VMID
-console: kvm [1]: IDMAP page: 87a000
-console: kvm [1]: HYP VA range: 800000000000:ffffffffffff
-console: kvm [1]: Invalid trigger for IRQ4, assuming level low
-console: kvm [1]: virtual timer IRQ4
-console: kvm [1]: Hyp mode initialized successfully
-|console: audit: initializing netlink subsys (disabled)
-console: audit: type=2000 audit(4.436:1): state=initialized audit_enabled=0 res=1
-console: workingset: timestamp_bits=44 max_order=18 bucket_order=0
-console: zbud: loaded
-/console: Key type asymmetric registered
-console: Asymmetric key parser 'x509' registered
-console: Block layer SCSI generic (bsg) driver version 0.4 loaded (major 246)
-console: io scheduler noop registered
-console: io scheduler deadline registered
-console: io scheduler cfq registered (default)
-console: io scheduler mq-deadline registered
-console: Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
-console: bcm2835-aux-uart 3f215040.serial: irq not found - -517
-console: Serial: AMBA driver
-console: msm_serial: driver initialized
-console: cacheinfo: Unable to detect cache hierarchy for CPU 0
-console: mousedev: PS/2 mouse device common for all mice
-console: ledtrig-cpu: registered to indicate activity on CPUs
-console: dmi-sysfs: dmi entry is absent.
-console: bcm2835-mbox 3f00b880.mailbox: mailbox enabled
-console: NET: Registered protocol family 10
-console: Segment Routing with IPv6
-console: mip6: Mobile IPv6
-console: NET: Registered protocol family 17
-console: mpls_gso: MPLS GSO support
-console: registered taskstats version 1
-console: zswap: loaded using pool lzo/zbud
-console: AppArmor: AppArmor sha1 policy hashing enabled
-console: ima: No TPM chip found, activating TPM-bypass! (rc=-19)
-console: 3f201000.serial: ttyAMA0 at MMIO 0x3f201000 (irq = 72, base_baud = 0) is a PL011 rev2
-console: console [ttyAMA0] enabled
-console: console [ttyAMA0] enabled
-console: bootconsole [pl11] disabled
-console: bootconsole [pl11] disabled
-console: bcm2835-aux-uart 3f215040.serial: irq not found - -517
-console: raspberrypi-firmware soc:firmware: Attached to firmware from 1970-01-05 00:12
-console: bcm2835-aux-uart 3f215040.serial: irq not found - -517
--console: hctosys: unable to open rtc device (rtc0)
-console: uart-pl011 3f201000.serial: no DMA platform data
-console: Freeing unused kernel memory: 4480K
-\console: mount: mounting devtmpfs on /dev failed: Device or resource busy
--console: Starting logging: OK
-\console: Initializing random number generator... done.
-/console: Starting network: OK
--console: Found console ttyAMA0
-\console: Boot successful.
-console: cat /proc/cpuinfo
-console: / # cat /proc/cpuinfo
-|console: processor     : 0
-console: BogoMIPS       : 125.00
-console: Featuresuname -a
-console: : fp asimd evtstrm aes pmull sha1 sha2 crc32 cpuid
-console: CPU implementer        : 0x41
-console: CPU architecture: 8
-console: CPU variant    : 0x0
-console: CPU part       : 0xd03
-console: CPU revision   : 4
-console: / # uname -a
-console: Linux buildroot 4.14.0-3-arm64 #1 SMP Debian 4.14.12-2 (2018-01-06) aarch64 GNU/Linux
-console: reboot
-console: / # reboot
-/console: / # Found console ttyAMA0
-\console: Stopping network: OK
-|console: Saving random seed... done.
-console: Stopping logging: OK
-/console: umount: devtmpfs busy - remounted read-only
-console: umount: can't unmount /: Invalid argument
-console: The system is going down NOW!
-console: Sent SIGTERM to all processes
--console: Sent SIGKILL to all processes
-console: Requesting system reboot
-\console: kvm: exiting hardware virtualization
-console: reboot: Restarting system
-PASS (36.65 s)
- (4/4) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_raspi3_initrd_sd_temp: /console: [    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
-console: [    0.000000] Linux version 4.19.71-v8-13ce09db830e+ (sakaki@kurosawa) (gcc version 8.3.0 (Gentoo 8.3.0-r1 p1.1)) #1 SMP PREEMPT Tue Sep 10 13:07:40 GMT 2019
-console: [    0.000000] Machine model: Raspberry Pi 3 Model B
-console: [    0.000000] earlycon: pl11 at MMIO 0x000000003f201000 (options '')
-console: [    0.000000] bootconsole [pl11] enabled
-console: [    0.000000] efi: Getting EFI parameters from FDT:
-console: [    0.000000] efi: UEFI not found.
-console: [    0.000000] cma: Reserved 8 MiB at 0x000000003b800000
--console: [    0.000000] random: get_random_bytes called from start_kernel+0xa0/0x464 with crng_init=0
-console: [    0.000000] percpu: Embedded 24 pages/cpu s57368 r8192 d32744 u98304
-console: [    0.000000] Detected VIPT I-cache on CPU0
-console: [    0.000000] CPU features: enabling workaround for ARM erratum 843419
-console: [    0.000000] CPU features: enabling workaround for ARM erratum 845719
-\console: [    0.000000] CPU features: detected: Kernel page table isolation (KPTI)
-console: [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 241920
-console: [    0.000000] Kernel command line: printk.time=0 earlycon=pl011,0x3f201000 console=ttyAMA0 root=/dev/mmcblk0 rootwait rw panic=-1 noreboot
-console: Dentry cache hash table entries: 131072 (order: 8, 1048576 bytes)
-console: Inode-cache hash table entries: 65536 (order: 7, 524288 bytes)
-console: Memory: 941500K/983040K available (7676K kernel code, 880K rwdata, 2368K rodata, 2752K init, 918K bss, 33348K reserved, 8192K cma-reserved)
-console: SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
-console: ftrace: allocating 26487 entries in 104 pages
--console: rcu: Preemptible hierarchical RCU implementation.
-console: Tasks RCU enabled.
-console: NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
-console: arch_timer: cp15 timer(s) running at 62.50MHz (phys).
-console: clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x1cd42e208c, max_idle_ns: 881590405314 ns
-console: sched_clock: 56 bits at 62MHz, resolution 16ns, wraps every 4398046511096ns
-\console: Console: colour dummy device 80x25
-console: Calibrating delay loop (skipped), value calculated using timer frequency.. 125.00 BogoMIPS (lpj=62500)
-console: pid_max: default: 32768 minimum: 301
-console: Mount-cache hash table entries: 2048 (order: 2, 16384 bytes)
-console: Mountpoint-cache hash table entries: 2048 (order: 2, 16384 bytes)
-console: ASID allocator initialised with 32768 entries
-console: rcu: Hierarchical SRCU implementation.
-console: EFI services will not be available.
-console: smp: Bringing up secondary CPUs ...
-console: Detected VIPT I-cache on CPU1
-console: CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
-console: Detected VIPT I-cache on CPU2
-console: CPU2: Booted secondary processor 0x0000000002 [0x410fd034]
-console: Detected VIPT I-cache on CPU3
-console: CPU3: Booted secondary processor 0x0000000003 [0x410fd034]
-console: smp: Brought up 1 node, 4 CPUs
-console: SMP: Total of 4 processors activated.
-console: CPU features: detected: 32-bit EL0 Support
-|console: CPU: All CPU(s) started at EL2
-console: alternatives: patching kernel code
-console: devtmpfs: initialized
-console: Enabled cp15_barrier support
-console: Enabled setend support
-console: clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 1911260446275000 ns
-console: futex hash table entries: 1024 (order: 4, 65536 bytes)
-console: pinctrl core: initialized pinctrl subsystem
-console: DMI not present or invalid.
-console: NET: Registered protocol family 16
-/console: cpuidle: using governor menu
-console: vdso: 2 pages (1 code @ (____ptrval____), 1 data @ (____ptrval____))
-console: hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
-console: DMA: preallocated 256 KiB pool for atomic allocations
-console: Serial: AMBA PL011 UART driver
-console: bcm2835-mbox 3f00b880.mailbox: mailbox enabled
-\console: bcm2835-dma 3f007000.dma: DMA legacy API manager at (____ptrval____), dmachans=0x1
-console: SCSI subsystem initialized
-console: usbcore: registered new interface driver usbfs
-console: usbcore: registered new interface driver hub
-console: usbcore: registered new device driver usb
-console: raspberrypi-firmware soc:firmware: Attached to firmware from 1970-01-05 00:12, variant unknown
-console: raspberrypi-firmware soc:firmware: Firmware hash is ffffffff08542080ffffff8008023bb0ffffff80
-console: clocksource: Switched to clocksource arch_sys_counter
--console: VFS: Disk quotas dquot_6.6.0
-console: VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
-console: FS-Cache: Loaded
-console: CacheFiles: Loaded
-\console: NET: Registered protocol family 2
-console: tcp_listen_portaddr_hash hash table entries: 512 (order: 1, 8192 bytes)
-console: TCP established hash table entries: 8192 (order: 4, 65536 bytes)
-console: TCP bind hash table entries: 8192 (order: 5, 131072 bytes)
-console: TCP: Hash tables configured (established 8192 bind 8192)
-console: UDP hash table entries: 512 (order: 2, 16384 bytes)
-console: UDP-Lite hash table entries: 512 (order: 2, 16384 bytes)
-console: NET: Registered protocol family 1
-console: RPC: Registered named UNIX socket transport module.
-console: RPC: Registered udp transport module.
-console: RPC: Registered tcp transport module.
-console: RPC: Registered tcp NFSv4.1 backchannel transport module.
-console: hw perfevents: enabled with armv8_cortex_a53 PMU driver, 5 counters available
-console: Initialise system trusted keyrings
-console: workingset: timestamp_bits=46 max_order=18 bucket_order=0
-console: FS-Cache: Netfs 'nfs' registered for caching
-console: NFS: Registering the id_resolver key type
-console: Key type id_resolver registered
-console: Key type id_legacy registered
-|console: Key type asymmetric registered
-console: Asymmetric key parser 'x509' registered
-console: Block layer SCSI generic (bsg) driver version 0.4 loaded (major 251)
-console: io scheduler noop registered
-console: io scheduler deadline registered
-console: io scheduler cfq registered (default)
-console: io scheduler mq-deadline registered
-console: io scheduler kyber registered
-console: bcm2835-aux-uart 3f215040.serial: unable to register 8250 port - -22
-console: bcm2835-aux-uart: probe of 3f215040.serial failed with error -22
-console: bcm2835-rng 3f104000.rng: hwrng registered
-console: vc-mem: phys_addr:0x00000000 mem_base=0x00000000 mem_size:0x00000000(0 MiB)
-console: cacheinfo: Unable to detect cache hierarchy for CPU 0
-/console: brd: module loaded
-console: loop: module loaded
-console: Loading iSCSI transport class v2.0-870.
-console: libphy: Fixed MDIO Bus: probed
-console: usbcore: registered new interface driver lan78xx
-console: usbcore: registered new interface driver smsc95xx
-console: dwc_otg: version 3.00a 10-AUG-2012 (platform bus)
-console: dwc2 3f980000.usb: dwc2_core_reset: HANG! AHB Idle timeout GRSTCTL GRSTCTL_AHBIDLE
-console: dwc2: probe of 3f980000.usb failed with error -16
-console: usbcore: registered new interface driver usb-storage
-console: bcm2835_thermal 3f212000.thermal: Clock tsens running at 19200000 Hz is outside of the recommended range: 1.92 to 5MHz
-console: bcm2835-wdt bcm2835-wdt: Broadcom BCM2835 watchdog timer
-console: bcm2835-cpufreq: min=700000 max=700000
-console: raspberrypi-exp-gpio soc:firmware:gpio: Failed to get GPIO 1 config (0 81)
-console: raspberrypi-exp-gpio soc:firmware:gpio: Failed to get GPIO 1 config (0 81)
-console: pwrseq_simple: probe of wifi-pwrseq failed with error -5
-console: sdhci: Secure Digital Host Controller Interface driver
-console: sdhci: Copyright(c) Pierre Ossman
-console: sdhost-bcm2835 3f202000.mmc: /aliases ID not available
-console: sdhost: log_buf @ (____ptrval____) (fb840000)
--console: mmc0: sdhost-bcm2835 loaded - DMA enabled (>1)
-console: sdhci-pltfm: SDHCI platform and OF driver helper
-console: raspberrypi-exp-gpio soc:firmware:gpio: Failed to get GPIO 2 config (0 82)
-console: raspberrypi-exp-gpio soc:firmware:gpio: Failed to get GPIO 2 state (0 82)
-console: leds-gpio: probe of leds failed with error -5
-console: ledtrig-cpu: registered to indicate activity on CPUs
-console: hidraw: raw HID events driver (C) Jiri Kosina
-console: usbcore: registered new interface driver usbhid
-console: usbhid: USB HID core driver
-console: Initializing XFRM netlink socket
-console: NET: Registered protocol family 17
-console: Key type dns_resolver registered
-console: mmc0: host does not support reading read-only switch, assuming write-enable
-console: mmc0: Problem switching card into high-speed mode!
-console: registered taskstats version 1
-console: Loading compiled-in X.509 certificates
-console: mmc0: new SD card at address 4567
-console: mmcblk0: mmc0:4567 QEMU! 10.0 MiB
-console: 3f201000.serial: ttyAMA0 at MMIO 0x3f201000 (irq = 66, base_baud = 0) is a PL011 rev2
-console: console [ttyAMA0] enabled
-console: console [ttyAMA0] enabled
-console: bootconsole [pl11] disabled
-console: bootconsole [pl11] disabled
-console: of_cfs_init
-console: of_cfs_init: OK
-console: uart-pl011 3f201000.serial: no DMA platform data
-console: EXT4-fs (mmcblk0): mounting ext2 file system using the ext4 subsystem
-console: EXT4-fs (mmcblk0): mounted filesystem without journal. Opts: (null)
-console: VFS: Mounted root (ext2 filesystem) on device 179:0.
-\console: devtmpfs: mounted
-console: Freeing unused kernel memory: 2752K
-console: Run /sbin/init as init process
-\console: mount: mounting devtmpfs on /dev failed: Device or resource busy
-|console: EXT4-fs (mmcblk0): re-mounted. Opts: (null)
-|console: Starting logging: OK
-|console: Initializing random number generator... random: dd: uninitialized urandom read (512 bytes read)
-console: done.
-\console: Starting network: OK
-/console: Found console ttyAMA0
-\console: Boot successful.
-console: cat /proc/cpuinfo
-|console: / # cat /proc/cpuinfo
-/console: processor     : 0
-console: BogoMIPS       : 125.00
-console: Features       : fp asimd evtstrm aes pmull sha1 sha2 crc32 cpuid
-console: CPU implementer        : 0x41
-console: CPU architecture: 8
-console: CPU variant    : 0x0
-console: CPU part       : 0xd03
-console: CPU revision   : 4
-console: processor      : 1
-console: BogoMIPS       : 125.00
-console: Features       : fp asimd evtstrm aes pmull sha1 sha2 crc32 cpuid
-console: CPU implementer        : 0x41
-console: CPU architecture: 8
-console: CPU variant    : 0x0
-console: CPU part       : 0xd03
-console: CPU revision   : 4
-console: processor      : 2
-console: BogoMIPS       : 125.00
-console: Features       : fp asimd evtstrm aes pmull sha1 sha2 crc32 cpuid
-console: CPU implementer        : 0x41
-console: CPU architecture: 8
-console: CPU variant    : 0x0
-console: CPU part       : 0xd03
-console: CPU revision   : 4
-console: processor      : 3
-console: BogoMIPS       : 125.00
-console: Features       : fp asimd evtstrm aes pmull sha1 sha2 crc32 cpuid
-console: CPU implementer        : 0x41
-console: CPU architecture: 8
-console: CPU variant    : 0x0
-console: CPU part       : 0xd03
-console: CPU revision   : 4
-console: Hardware       : BCM2835
-console: Model          : Raspberry Pi 3 Model B
-console: cat /sys/devices/virtual/thermal/thermal_zone0/temp
-console: / # cat /sys/devices/virtual/thermal/thermal_zone0/temp
-console: 25178
-console: reboot
--console: / # reboot
-\console: / # Found console ttyAMA0
-\console: Stopping network: hrtimer: interrupt took 5480528 ns
-/console: OK
-\console: Saving random seed... random: dd: uninitialized urandom read (512 bytes read)
-console: done.
-/console: Stopping logging: OK
-\console: umount: devtmpfs busy - remounted read-only
-console: EXT4-fs (mmcblk0): re-mounted. Opts: (null)
-console: The system is going down NOW!
-console: Sent SIGTERM to all processes
-|console: Sent SIGKILL to all processes
-console: Requesting system reboot
-/console: reboot: Restarting system
-PASS (66.14 s)
-RESULTS    : PASS 4 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0
-JOB TIME   : 116.67 s
-
-Philippe Mathieu-Daudé (19):
-  hw/arm/raspi: Use the IEC binary prefix definitions
-  hw/arm/bcm2835_peripherals: Improve logging
-  hw/arm/bcm2835_peripherals: Name various address spaces
-  hw/arm/bcm2835: Rename some definitions
-  hw/arm/bcm2835: Add various unimplemented peripherals
-  hw/char/bcm2835_aux: Add trace events
-  hw/misc/bcm2835_mbox: Add trace events
-  hw/misc/bcm2835_thermal: Add a dummy BCM2835 thermal sensor
-  hw/arm/bcm2835_peripherals: Use the thermal sensor block
-  hw/timer/bcm2835: Add the BCM2835 SYS_timer
-  hw/arm/bcm2835_peripherals: Use the SYS_timer
-  hw/arm/bcm2835_peripherals: Add Clock/Power/Reset Manager blocks
-  hw/arm/raspi: Define various blocks base addresses
-  python/qemu/machine: Allow to use other serial consoles than default
-  tests/boot_linux_console: Extract the gunzip() helper
-  tests/boot_linux_console: Add a test for the Raspberry Pi 2
-  tests/boot_linux_console: Test the raspi2 UART1 (16550 based)
-  tests/boot_linux_console: Boot Linux and run few commands on raspi3
-  tests/boot_linux_console: Test SDHCI and termal sensor on raspi3
-
- hw/arm/bcm2835_peripherals.c           |  86 +++++-
- hw/arm/bcm2836.c                       |   2 +-
- hw/arm/raspi.c                         |   4 +-
- hw/char/bcm2835_aux.c                  |  60 ++--
- hw/char/trace-events                   |   4 +
- hw/display/bcm2835_fb.c                |   2 +-
- hw/dma/bcm2835_dma.c                   |  10 +-
- hw/intc/bcm2836_control.c              |   7 +-
- hw/misc/Makefile.objs                  |   2 +
- hw/misc/bcm2835_cprman.c               | 383 +++++++++++++++++++++++++
- hw/misc/bcm2835_mbox.c                 |  14 +-
- hw/misc/bcm2835_property.c             |  20 +-
- hw/misc/bcm2835_thermal.c              | 109 +++++++
- hw/misc/trace-events                   |  14 +
- hw/timer/Makefile.objs                 |   1 +
- hw/timer/bcm2835_systmr.c              | 100 +++++++
- hw/timer/trace-events                  |   4 +
- include/hw/arm/bcm2835_peripherals.h   |  18 ++
- include/hw/arm/raspi_platform.h        |  70 +++--
- include/hw/misc/bcm2835_cprman.h       |  32 +++
- include/hw/misc/bcm2835_thermal.h      |  27 ++
- include/hw/timer/bcm2835_systmr.h      |  30 ++
- python/qemu/machine.py                 |   5 +-
- tests/acceptance/boot_linux_console.py | 147 +++++++++-
- 24 files changed, 1087 insertions(+), 64 deletions(-)
- create mode 100644 hw/misc/bcm2835_cprman.c
- create mode 100644 hw/misc/bcm2835_thermal.c
- create mode 100644 hw/timer/bcm2835_systmr.c
- create mode 100644 include/hw/misc/bcm2835_cprman.h
- create mode 100644 include/hw/misc/bcm2835_thermal.h
- create mode 100644 include/hw/timer/bcm2835_systmr.h
-
+diff --git a/hw/char/bcm2835_aux.c b/hw/char/bcm2835_aux.c
+index a6fc1bf152..b26a255630 100644
+--- a/hw/char/bcm2835_aux.c
++++ b/hw/char/bcm2835_aux.c
+@@ -27,6 +27,7 @@
+ #include "migration/vmstate.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "trace.h"
+ 
+ #define AUX_IRQ         0x0
+ #define AUX_ENABLES     0x4
+@@ -62,17 +63,24 @@ static void bcm2835_aux_update(BCM2835AuxState *s)
+     qemu_set_irq(s->irq, s->iir != 0);
+ }
+ 
++static bool is_16650(hwaddr offset)
++{
++    return offset >= AUX_MU_IO_REG && offset < AUX_MU_CNTL_REG;
++}
++
+ static uint64_t bcm2835_aux_read(void *opaque, hwaddr offset, unsigned size)
+ {
+     BCM2835AuxState *s = opaque;
+-    uint32_t c, res;
++    uint32_t c, res = 0;
+ 
+     switch (offset) {
+     case AUX_IRQ:
+-        return s->iir != 0;
++        res = s->iir != 0;
++        break;
+ 
+     case AUX_ENABLES:
+-        return 1; /* mini UART permanently enabled */
++        res = 1; /* mini UART permanently enabled */
++        break;
+ 
+     case AUX_MU_IO_REG:
+         /* "DLAB bit set means access baudrate register" is NYI */
+@@ -85,11 +93,13 @@ static uint64_t bcm2835_aux_read(void *opaque, hwaddr offset, unsigned size)
+         }
+         qemu_chr_fe_accept_input(&s->chr);
+         bcm2835_aux_update(s);
+-        return c;
++        res = c;
++        break;
+ 
+     case AUX_MU_IER_REG:
+         /* "DLAB bit set means access baudrate register" is NYI */
+-        return 0xc0 | s->ier; /* FIFO enables always read 1 */
++        res = 0xc0 | s->ier; /* FIFO enables always read 1 */
++        break;
+ 
+     case AUX_MU_IIR_REG:
+         res = 0xc0; /* FIFO enables */
+@@ -105,33 +115,34 @@ static uint64_t bcm2835_aux_read(void *opaque, hwaddr offset, unsigned size)
+         if (s->iir == 0) {
+             res |= 0x1;
+         }
+-        return res;
++        break;
+ 
+     case AUX_MU_LCR_REG:
+         qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_LCR_REG unsupported\n", __func__);
+-        return 0;
++        break;
+ 
+     case AUX_MU_MCR_REG:
+         qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_MCR_REG unsupported\n", __func__);
+-        return 0;
++        break;
+ 
+     case AUX_MU_LSR_REG:
+         res = 0x60; /* tx idle, empty */
+         if (s->read_count != 0) {
+             res |= 0x1;
+         }
+-        return res;
++        break;
+ 
+     case AUX_MU_MSR_REG:
+         qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_MSR_REG unsupported\n", __func__);
+-        return 0;
++        break;
+ 
+     case AUX_MU_SCRATCH:
+         qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_SCRATCH unsupported\n", __func__);
+-        return 0;
++        break;
+ 
+     case AUX_MU_CNTL_REG:
+-        return 0x3; /* tx, rx enabled */
++        res = 0x3; /* tx, rx enabled */
++        break;
+ 
+     case AUX_MU_STAT_REG:
+         res = 0x30e; /* space in the output buffer, empty tx fifo, idle tx/rx */
+@@ -140,17 +151,25 @@ static uint64_t bcm2835_aux_read(void *opaque, hwaddr offset, unsigned size)
+             assert(s->read_count < BCM2835_AUX_RX_FIFO_LEN);
+             res |= ((uint32_t)s->read_count) << 16; /* rx fifo fill level */
+         }
+-        return res;
++        break;
+ 
+     case AUX_MU_BAUD_REG:
+         qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_BAUD_REG unsupported\n", __func__);
+-        return 0;
++        break;
+ 
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
+                       __func__, offset);
+-        return 0;
++        break;
+     }
++
++    if (is_16650(offset)) {
++        trace_serial_ioport_read((offset & 0x1f) >> 2, res);
++    } else {
++        trace_bcm2835_aux_read(offset, res);
++    }
++
++    return res;
+ }
+ 
+ static void bcm2835_aux_write(void *opaque, hwaddr offset, uint64_t value,
+@@ -159,6 +178,12 @@ static void bcm2835_aux_write(void *opaque, hwaddr offset, uint64_t value,
+     BCM2835AuxState *s = opaque;
+     unsigned char ch;
+ 
++    if (is_16650(offset)) {
++        trace_serial_ioport_write((offset & 0x1f) >> 2, value);
++    } else {
++        trace_bcm2835_aux_write(offset, value);
++    }
++
+     switch (offset) {
+     case AUX_ENABLES:
+         if (value != 1) {
+diff --git a/hw/char/trace-events b/hw/char/trace-events
+index 2ce7f2f998..a7d477ab1e 100644
+--- a/hw/char/trace-events
++++ b/hw/char/trace-events
+@@ -1,5 +1,9 @@
+ # See docs/devel/tracing.txt for syntax documentation.
+ 
++# bcm2835_aux.c
++bcm2835_aux_read(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
++bcm2835_aux_write(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
++
+ # parallel.c
+ parallel_ioport_read(const char *desc, uint16_t addr, uint8_t value) "read [%s] addr 0x%02x val 0x%02x"
+ parallel_ioport_write(const char *desc, uint16_t addr, uint8_t value) "write [%s] addr 0x%02x val 0x%02x"
 -- 
 2.20.1
 

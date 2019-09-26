@@ -1,96 +1,97 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2449703wrp;
-        Thu, 26 Sep 2019 10:58:56 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqww6xf9wUXFyOv/YIGYTB5855X+CEaHHHJvA9eMyrsBfphSb02N9Bl557VEThb97ImjnEqN
-X-Received: by 2002:a37:313:: with SMTP id 19mr40249qkd.356.1569520736304;
-        Thu, 26 Sep 2019 10:58:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569520736; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2449917wrp;
+        Thu, 26 Sep 2019 10:59:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw4oxv1FXC/Zl1sKQH2Bv/WLvBT0Wn4FAIQeHDDTjMvBUP5TrVPJXqMqqR/5jUSKLDvxj2h
+X-Received: by 2002:a05:620a:148d:: with SMTP id w13mr75095qkj.14.1569520749731;
+        Thu, 26 Sep 2019 10:59:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569520749; cv=none;
         d=google.com; s=arc-20160816;
-        b=MUbf4xPMtpehd82U/MYxTmfVCBnpnx0iCD7qdXlkHgRYCaOJk7yLuKFF61KNeo/SMl
-         fXbwmtkkLP/BdDGivy+266+BwfE1geKjIW8nqIcJsSFg0O8hUz8spYKfeL3x35amCLWm
-         jXF1CM/rHfN8R5dQYDmuDC/zNrw6pWdTGMSm9O9j3PG82TErPFbBz6j4Aiu7tklESkRL
-         Gh5N4n/x8xBzh72J7dx6FRLMvDJhNjuCMou6wxr8jsXewpAs4fpUsYK0ZW8vGh8Xx7QR
-         gWQkQlhGsL/rMI69pag/Ul5CmavliBNK1U7rmBjnHMqPX6EePL35ztrsGsBqCupWwTOo
-         eo6g==
+        b=u33hthjBxRCItEc5FbfXOyDJS8LST0lCvDkdC/kr8KKxTXYjmFp16T9S6iTfPSlmuV
+         oqcg3Czt+x1vXsmHEyKOhdwqfOt4kMTqfYRyofqkezkK2xm7cD4/Z7pNiosec5eZHMXn
+         DfYoK6kycYNuScA67jMLw6lQb0kCK6lkJVqu4Lit15Y/gbMcG/EwSpCCdcgu6P2Gwhhx
+         48uoLGZWzPEk1FdecFVVUQHu670bx0NsAgctTI8Qy+1e2N3IPEPbBBug1YwO9L80hggH
+         Db1pUUte94cHyOVefGdqV74KlGr0NmVBdKbTXVMRZDiHrmrnihj0B9zHaReZArTBbCr2
+         +quQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=g3nQVTK9GRsWGCd+XSVezaLWTAj2OLG2kci059FNOZg=;
-        b=DtuFks8pWR1v7P+YCJT4xlrmAHEnBt8mzEf742L6gL5wprtI36+RB0hnE1QPdxhdW4
-         DwUhKZ8seiOiKetBs3r/h8qnBAeoU0gIDp0BW9XGx58oY7PfKpGwRPWAgqq8RJ8zXqpO
-         cm3WifHgezaPEfUMB4qDqBt1OShZql0YneaBn5ia45FcnzhsVPP8q3Ha93C4stBgUAe4
-         4nJ3tTKTzANM+1+CgCsjeWuSYyQ2/2/eACeZ++7zW/+DmugwYER1oG7JcwK77K6o8KSX
-         oKsSPCv8OqhihLabYtWsTh5wJxU10o97V1xdRpjwYISRqhSKY+Jaxj9VmVozOh8unF6H
-         OMGQ==
+        bh=9Z2jS7j2Q+UZz1eGlkTvwz28s1PK4ipN7g47nz7DXm4=;
+        b=gAyAIvSA4BHfPzKcUFXeWa8UmRLDnmPnJ/cr7EufBVHisaaUge/vHX3CD9VJFAO6X7
+         4/xw6QTb+aAdzw3MN45lS7dq3bESDBnuAtLv4XNN9oU0rINl5AmlhZ4JDQdNL/JeRYF+
+         RvepBkP0DfPhRzXacAowF2jwkZbVX6A1epYfDjXGJykZuFES3+zlgm73CVQ8fT+yxlck
+         s9C0jOCdxd7WuwfUa30W+xRRl5ht8Qk3h54wrMMrae5H88188afXMVxsuJwUu2y8I2gN
+         ys+5AM6+FJolp8vXPPWibYZ1/qFZumKmLTc/8fkQp0A3qYhxYSdi86wV8Lnnkp2xdWgz
+         zoKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Vzs5sgC7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rmchfyel;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l26si2114413qtk.368.2019.09.26.10.58.56
+        by mx.google.com with ESMTPS id g27si2245173qte.11.2019.09.26.10.59.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Sep 2019 10:58:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 26 Sep 2019 10:59:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Vzs5sgC7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41952 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rmchfyel;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41958 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iDY2Z-0008D5-FM
-	for alex.bennee@linaro.org; Thu, 26 Sep 2019 13:58:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59069)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iDY2n-0000le-0c
+	for alex.bennee@linaro.org; Thu, 26 Sep 2019 13:59:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59246)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXgS-0004hw-Fr
- for qemu-devel@nongnu.org; Thu, 26 Sep 2019 13:36:06 -0400
+ id 1iDXge-0004yO-G0
+ for qemu-arm@nongnu.org; Thu, 26 Sep 2019 13:36:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXgQ-000336-RJ
- for qemu-devel@nongnu.org; Thu, 26 Sep 2019 13:36:04 -0400
-Received: from mail-wm1-f67.google.com ([209.85.128.67]:33344)
+ id 1iDXgc-0003GU-NN
+ for qemu-arm@nongnu.org; Thu, 26 Sep 2019 13:36:16 -0400
+Received: from mail-wr1-f68.google.com ([209.85.221.68]:43456)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXgQ-00032G-HY; Thu, 26 Sep 2019 13:36:02 -0400
-Received: by mail-wm1-f67.google.com with SMTP id r17so7136030wme.0;
- Thu, 26 Sep 2019 10:36:02 -0700 (PDT)
+ id 1iDXgZ-0003Au-8l; Thu, 26 Sep 2019 13:36:11 -0400
+Received: by mail-wr1-f68.google.com with SMTP id q17so3427826wrx.10;
+ Thu, 26 Sep 2019 10:36:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=g3nQVTK9GRsWGCd+XSVezaLWTAj2OLG2kci059FNOZg=;
- b=Vzs5sgC75Z+MJsuTbcMwEDqv6i/qd7z5YfPlMArif9Bc+Ub35xddM4qSQwYq+UrnXd
- 3DnIxO7FZjFmyTgQ/Wyao5/kjQ/DqwuLeNPrm/bZN1CTdJNT6MFRbRp5sQnc7lBvO3N8
- mWUpXWkgBFow+wTvMvCTf0pk86LczFWakNX4c0aOThYo2jv1R6/TgWoP7Bh+yJZ2Le1b
- ufn3lpxLWfD4amCfXgvZ/jwY+hMQJukbj12yQNAdNp4Shc0DEKt6wIQtvD2iRtD1Y9JT
- Ul8wBt+fk8SaRIqvCvOL8QTXkuuQqIDMNZtSTwfDAcOTzR4bUkuw+UBc8TMQ7wj46cEE
- lhdQ==
+ bh=9Z2jS7j2Q+UZz1eGlkTvwz28s1PK4ipN7g47nz7DXm4=;
+ b=rmchfyellb1V8WNuVkKdIvfHSf/UUoCi2kMuM6NQrmsHqEHMjBcNdfjTt+S1aIb15h
+ tjCbrcWk+sTTfsFX/F5kS3TLqDrBE4NSGCJvgs1VYnSSWIuTCibg4LWPQywFWIpjqYzz
+ mV0TN4rqhQsa4csXVmYE5NpkpLOGGOWciDoKW8ZsJNvGKlZZL0glkiHXME9i/sPL+Ccw
+ 0yAyu7HTMyUcFMbTWFOiS8OvCgrAFcjJ2aer+tnfcfe1nmLZBVwg3PwBnJBxmv4nXd1b
+ Lu98O2L1vSq9fxQG7jBOzi3bRMMRrqd1lYnIb8IGSydXFektTD2vra1I+pAQe6Iqlv34
+ C5QQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=g3nQVTK9GRsWGCd+XSVezaLWTAj2OLG2kci059FNOZg=;
- b=hg56DIscyk+Qu0D8to3cmsROOEpNZjJn8t41eXNcOd6H6eheWKnuE1caH7VQT4QhWQ
- AqRkaFBRaDQ3nvWawc2S+o4jUzR7/yzINVfWy6xatq/+mMnIWp4oXIySsNlC+o50gQ9x
- 67BfLO+8XZrk6SvtlUSHEs8Mz8khZ3RkZKFpttMOhoftkAU+BAxOychFgAnd0CQKFz2I
- QmCC654yfvd892uev+eJkp1pfzUmoLMc8fyiGmaF+zeGXF4ramMTSv1WpeEsm4DUuH2h
- 9pMd7SNB0VkIstPTgPLOOeNUiNu4ym4V5BJKpooOvz7ETz8atAkgFCSr/na3riucca/I
- nBhQ==
-X-Gm-Message-State: APjAAAUqa/cZCT8E/K59ZyO6e7wR3R6QTMOT92ub2L4Aiu0wUCbfKVRb
- c+fEtl46CGFWbLLeEVhsmnVNm8tX9Po=
-X-Received: by 2002:a7b:c84f:: with SMTP id c15mr4148285wml.52.1569519301185; 
- Thu, 26 Sep 2019 10:35:01 -0700 (PDT)
+ bh=9Z2jS7j2Q+UZz1eGlkTvwz28s1PK4ipN7g47nz7DXm4=;
+ b=slBX12eHxVSAA6ZArtxv61ouBD1EiIZy8hu2/4duK+ioqAvHIDSEZu0diPQ5CzbFVx
+ nle0zLQGWvr41k1x71ovS8amrRGt+OFVDBi+rE4/767V6kpskqBTs++xrwLB+x920+eY
+ DmyyPaC/LExGHIrY50E2sjnhzR2p+XzeloqA+4YOSFEA5pq6rOQzilj3DwEht0qgFpVC
+ MyYOF7ZpGsGuh/XLPBiX/tAdmEnMIzwX6iDAwFDdya74DxYflTlEesYyEJwz8gtrSnJa
+ OQ+o4ANulSuOVfnA+bDT/jdOYdxKD4orCTG+py6VPCrI/pf73ZIAk1kFW3JgG8CR040a
+ xSOA==
+X-Gm-Message-State: APjAAAWtmPds7JYGnpBWUq+D69haS/N+rg25Z+uFwmPkUcrUBpAVc5DK
+ 6zF3+cbzAY/R59rjZCYHqn5wqfjiGDw=
+X-Received: by 2002:adf:e48a:: with SMTP id i10mr3831085wrm.311.1569519309986; 
+ Thu, 26 Sep 2019 10:35:09 -0700 (PDT)
 Received: from x1w.redhat.com (240.red-88-21-68.staticip.rima-tde.net.
  [88.21.68.240])
- by smtp.gmail.com with ESMTPSA id b186sm9918980wmd.16.2019.09.26.10.34.58
+ by smtp.gmail.com with ESMTPSA id b186sm9918980wmd.16.2019.09.26.10.35.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Sep 2019 10:34:58 -0700 (PDT)
+ Thu, 26 Sep 2019 10:35:09 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 13/19] hw/arm/raspi: Define various blocks base addresses
-Date: Thu, 26 Sep 2019 19:34:21 +0200
-Message-Id: <20190926173428.10713-14-f4bug@amsat.org>
+Subject: [PATCH 18/19] tests/boot_linux_console: Boot Linux and run few
+ commands on raspi3
+Date: Thu, 26 Sep 2019 19:34:26 +0200
+Message-Id: <20190926173428.10713-19-f4bug@amsat.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190926173428.10713-1-f4bug@amsat.org>
 References: <20190926173428.10713-1-f4bug@amsat.org>
@@ -100,18 +101,18 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.85.128.67
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 209.85.221.68
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Zolt=C3=A1n=20Baldaszti?= <bztemail@gmail.com>,
  Laurent Bonnans <laurent.bonnans@here.com>,
@@ -119,6 +120,7 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org, Clement Deschamps <clement.deschamps@antfield.fr>,
  Cleber Rosa <crosa@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -126,117 +128,126 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Pekka Enberg <penberg@iki.fi>, Guenter Roeck <linux@roeck-us.net>,
  Eduardo Habkost <ehabkost@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zvhwgM1AymZf
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +Mhg+zWyfuHt
 
-The Raspberry firmware is closed-source. While running it, it
-accesses various I/O registers. Logging these accesses as UNIMP
-(unimplemented) help to understand what the firmware is doing
-(ideally we want it able to boot a Linux kernel).
+Add a test which boots Linux and run basic commands using the serial
+port console.
 
-Document various blocks we might use later.
+The kernel image is built by the Debian project:
+https://wiki.debian.org/RaspberryPi
 
-Adresses and names based on:
-https://github.com/hermanhermitage/videocoreiv/wiki/MMIO-Register-map
+The DeviceTree blob comes from the official Raspberry Pi project:
+https://www.raspberrypi.org/
+
+The cpio image used comes from the linux-build-test project:
+https://github.com/groeck/linux-build-test
+
+This test can be run using:
+
+  $ avocado run --show=console,app run -t machine:raspi3 tests/acceptance
+  console: [    0.000000] Linux version 4.14.0-3-arm64 (debian-kernel@lists.debian.org) (gcc version 7.2.0 (Debian 7.2.0-18)) #1 SMP Debian 4.14.12-2 (2018-01-06)
+  console: [    0.000000] Boot CPU: AArch64 Processor [410fd034]
+  console: [    0.000000] Machine model: Raspberry Pi 3 Model B
+  console: [    0.000000] earlycon: pl11 at MMIO 0x000000003f201000 (options '')
+  console: [    0.000000] bootconsole [pl11] enabled
+  [...]
+  console: Starting network: OK
+  console: Found console ttyAMA0
+  console: Boot successful.
+  console: / # cat /proc/cpuinfo
+  console: processor      : 0
+  console: BogoMIPS       : 125.00
+  console: r      : 0x41
+  console: CPU architecture: 8
+  console: CPU variant
+  console: : 0x0
+  console: CPU part       : 0xd03
+  console: CPU revision   : 4
+  console: / # uname -a
+  console: Linux buildroot 4.14.0-3-arm64 #1 SMP Debian 4.14.12-2 (2018-01-06) aarch64 GNU/Linux
+  console: reboot
+  console: / # reboot
+  console: / # Found console ttyAMA0
+  console: Stopping network: OK
+  console: Saving random seed... done.
+  console: Stopping logging: OK
+  console: umount: devtmpfs busy - remounted read-only
+  console: umount: can't unmount /: Invalid argument
+  console: The system is going down NOW!
+  console: Sent SIGTERM to all processes
+  console: Sent SIGKILL to all processes
+  console: Requesting system reboot
+  console: kvm: exiting hardware virtualization
+  console: reboot: Restarting system
+  PASS (11.08 s)
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-Now the header is incorrect, should I add that in another file or
-update the header?
-
- * These definitions are derived from those in Raspbian Linux at
- * arch/arm/mach-{bcm2708,bcm2709}/include/mach/platform.h
- * where they carry the following notice:
- *
- * Copyright (C) 2010 Broadcom
+some chars are scrambled on the console...
 ---
- include/hw/arm/raspi_platform.h | 47 +++++++++++++++++++++++++++------
- 1 file changed, 39 insertions(+), 8 deletions(-)
+ tests/acceptance/boot_linux_console.py | 47 ++++++++++++++++++++++++++
+ 1 file changed, 47 insertions(+)
 
-diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
-index 61b04a1bd4..8bcf1c7c93 100644
---- a/include/hw/arm/raspi_platform.h
-+++ b/include/hw/arm/raspi_platform.h
-@@ -26,14 +26,19 @@
- #define HW_ARM_RASPI_PLATFORM_H
+diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
+index 33e8f6c635..2a1a23763e 100644
+--- a/tests/acceptance/boot_linux_console.py
++++ b/tests/acceptance/boot_linux_console.py
+@@ -363,6 +363,53 @@ class BootLinuxConsole(Test):
+         """
+         self.do_test_arm_raspi2(1)
  
- #define MSYNC_OFFSET            0x0000   /* Multicore Sync Block */
--#define IC0_OFFSET              0x2000
-+#define CCPT_OFFSET             0x1000   /* Compact Camera Port 2 TX */
-+#define INTE_OFFSET             0x2000   /* VC Interrupt controller */
- #define ST_OFFSET               0x3000   /* System Timer */
-+#define TXP_OFFSET              0x4000
-+#define JPEG_OFFSET             0x5000
- #define MPHI_OFFSET             0x6000   /* Message-based Parallel Host Intf. */
- #define DMA_OFFSET              0x7000   /* DMA controller, channels 0-14 */
--#define ARM_OFFSET              0xB000   /* BCM2708 ARM control block */
-+#define ARBA_OFFSET             0x9000
-+#define BRDG_OFFSET             0xa000
-+#define ARM_OFFSET              0xB000   /* ARM control block */
- #define ARMCTRL_OFFSET          (ARM_OFFSET + 0x000)
- #define ARMCTRL_IC_OFFSET       (ARM_OFFSET + 0x200) /* Interrupt controller */
--#define ARMCTRL_TIMER0_1_OFFSET (ARM_OFFSET + 0x400) /* Timer 0 and 1 */
-+#define ARMCTRL_TIMER0_1_OFFSET (ARM_OFFSET + 0x400) /* Timer 0 and 1 (SP804) */
- #define ARMCTRL_0_SBM_OFFSET    (ARM_OFFSET + 0x800) /* User 0 (ARM) Semaphores
-                                                       * Doorbells & Mailboxes */
- #define CPRMAN_OFFSET           0x100000 /* Power Management, Watchdog */
-@@ -42,24 +47,50 @@
- #define AVS_OFFSET              0x103000 /* Audio Video Standard */
- #define RNG_OFFSET              0x104000
- #define GPIO_OFFSET             0x200000
--#define UART0_OFFSET            0x201000
--#define MMCI0_OFFSET            0x202000
--#define I2S_OFFSET              0x203000
--#define SPI0_OFFSET             0x204000
-+#define UART0_OFFSET            0x201000 /* PL011 */
-+#define MMCI0_OFFSET            0x202000 /* Legacy MMC */
-+#define I2S_OFFSET              0x203000 /* PCM */
-+#define SPI0_OFFSET             0x204000 /* SPI master */
- #define BSC0_OFFSET             0x205000 /* BSC0 I2C/TWI */
-+#define PIXV0_OFFSET            0x206000
-+#define PIXV1_OFFSET            0x207000
-+#define DPI_OFFSET              0x208000
-+#define DSI0_OFFSET             0x209000 /* Display Serial Interface */
-+#define PWM_OFFSET              0x20c000
-+#define PERM_OFFSET             0x20d000
-+#define TEC_OFFSET              0x20e000
- #define OTP_OFFSET              0x20f000
-+#define SLIM_OFFSET             0x210000 /* SLIMbus */
-+#define CPG_OFFSET              0x211000
- #define THERMAL_OFFSET          0x212000
--#define BSC_SL_OFFSET           0x214000 /* SPI slave */
-+#define AVSP_OFFSET             0x213000
-+#define BSC_SL_OFFSET           0x214000 /* SPI slave (bootrom) */
- #define AUX_OFFSET              0x215000 /* AUX: UART1/SPI1/SPI2 */
- #define EMMC1_OFFSET            0x300000
-+#define EMMC2_OFFSET            0x340000
-+#define HVS_OFFSET              0x400000
- #define SMI_OFFSET              0x600000
-+#define DSI1_OFFSET             0x700000
-+#define UCAM_OFFSET             0x800000
-+#define CMI_OFFSET              0x802000
- #define BSC1_OFFSET             0x804000 /* BSC1 I2C/TWI */
- #define BSC2_OFFSET             0x805000 /* BSC2 I2C/TWI */
-+#define VECA_OFFSET             0x806000
-+#define PIXV2_OFFSET            0x807000
-+#define HDMI_OFFSET             0x808000
-+#define HDCP_OFFSET             0x809000
-+#define ARBR0_OFFSET            0x80a000
- #define DBUS_OFFSET             0x900000
- #define AVE0_OFFSET             0x910000
- #define USB_OTG_OFFSET          0x980000 /* DTC_OTG USB controller */
-+#define V3D_OFFSET              0xc00000
- #define SDRAMC_OFFSET           0xe00000
-+#define L2CC_OFFSET             0xe01000 /* Level 2 Cache controller */
-+#define L1CC_OFFSET             0xe02000 /* Level 1 Cache controller */
-+#define ARBR1_OFFSET            0xe04000
- #define DMA15_OFFSET            0xE05000 /* DMA controller, channel 15 */
-+#define DCRC_OFFSET             0xe07000
-+#define AXIP_OFFSET             0xe08000
- 
- /* GPU interrupts */
- #define INTERRUPT_TIMER0               0
++    def test_arm_raspi3_initrd_uart0(self):
++        """
++        :avocado: tags=arch:aarch64
++        :avocado: tags=machine:raspi3
++        """
++        deb_url = ('https://snapshot.debian.org/archive/debian/'
++                   '20180106T174014Z/pool/main/l/linux/'
++                   'linux-image-4.14.0-3-arm64_4.14.12-2_arm64.deb')
++        deb_hash = 'e71c995de57921921895c1162baea5df527d1c6b'
++        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
++        kernel_path = self.extract_from_deb(deb_path,
++                                            '/boot/vmlinuz-4.14.0-3-arm64')
++
++        dtb_url = ('https://github.com/raspberrypi/firmware/raw/'
++                   '1.20180313/boot/bcm2710-rpi-3-b.dtb')
++        dtb_hash = 'eb14d67133401ef2f93523be7341456d38bfc077'
++        dtb_path = self.fetch_asset(dtb_url, asset_hash=dtb_hash)
++
++        initrd_url = ('https://github.com/groeck/linux-build-test/raw/'
++                      '9b6b392ea7bc15f0d6632328d429d31c9c6273da/rootfs/'
++                      'arm64/rootfs.cpio.gz')
++        initrd_hash = '6fd05324f17bb950196b5ad9d3a0fa996339f4cd'
++        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
++        initrd_path = self.workdir + "rootfs.cpio"
++        gunzip(initrd_path_gz, initrd_path)
++
++        self.vm.set_machine('raspi3')
++        self.vm.set_console()
++        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
++                               'earlycon=pl011,0x3f201000 console=ttyAMA0 ' +
++                               'panic=-1 noreboot')
++        self.vm.add_args('-kernel', kernel_path,
++                         '-dtb', dtb_path,
++                         '-initrd', initrd_path,
++                         '-append', kernel_command_line,
++                         '-no-reboot')
++        self.vm.launch()
++
++        self.wait_for_console_pattern('Boot successful.')
++
++        self.exec_command_and_wait_for_pattern('cat /proc/cpuinfo',
++                                               'BogoMIPS')
++        self.exec_command_and_wait_for_pattern('uname -a',
++                                               'Debian')
++        self.exec_command_and_wait_for_pattern('reboot',
++                                               'reboot: Restarting system')
++
+     def test_s390x_s390_ccw_virtio(self):
+         """
+         :avocado: tags=arch:s390x
 -- 
 2.20.1
 

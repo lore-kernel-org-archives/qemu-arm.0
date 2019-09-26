@@ -1,98 +1,97 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2450422wrp;
-        Thu, 26 Sep 2019 10:59:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzGHFUhowbUSOpNsogAUJYSyTO0lk11SNHuYDiGI7fq59eGijROYMqBoCh5TI1GRSxHh6Gc
-X-Received: by 2002:ac8:7646:: with SMTP id i6mr5524369qtr.50.1569520777697;
-        Thu, 26 Sep 2019 10:59:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569520777; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2450783wrp;
+        Thu, 26 Sep 2019 10:59:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyb1d0YZEBVr+UAa15hgI6xt4gmlIgBVS3woxG58wnManAO3yGpx/OFihKVllYnih1bQ3e3
+X-Received: by 2002:a37:a012:: with SMTP id j18mr66401qke.146.1569520796933;
+        Thu, 26 Sep 2019 10:59:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569520796; cv=none;
         d=google.com; s=arc-20160816;
-        b=m3PnQv47zt+miWXReA6U0/774nUVnDfRpldJie7Ukws0CTZsRpu1D7//11n5LoClEz
-         GDcz/pT+NozQqvHGB2O2xO/l+pPVtxhc6qh5mTIoECRryXtTqTx5N09BQDz4BP7n8TUg
-         fRkVBpyOC56fgpXmFlTPA+2oACke0sCc+A3lyrgMf4yzJOo6rMU6FQtFbaxG26GEvBfs
-         MZ3S8IVmbRWiFJt2cI7WTgbhNJsa6930eYujuKOCc+HzeLKWoL31eubEylC1Dd6SsQPd
-         ko634KP7JgQZAjt3rBGtHlu6+looC84wMYfPw2AfKh2SKKmY5M9M0wR0zKM1porROL4J
-         C3nw==
+        b=lXsYfc900oYsq/H4IiiBbtEsuN94gGCIWA5T79dfm3Cpzs6oNAes4QJ4/R+HUVEIh2
+         d1YMdKXzL2vVayo2pJ0n5KK1w6zTRv2X1TYyIcBRP/X3FKSH2ECcdxQi6ShI7PqbPq6b
+         /uKinv5jmAd2im7OhqeDe6KtA1FjuyO6sb9nRXrZQFBlVkeB9yUOXXQkxjPDHF4c8llR
+         cUdH5cVYjk3mnKosO9mQ5pfAzc1jtKRJJSsHU3++5zkVDq1+gY2IiqYdPDK3s6DlMU1M
+         C1dkwp4H8xkPPaU2lVSu4+02owjb1lEW2EabwKLd5ybuZHGBCsbiaMaa56uixmN2F5wI
+         YhnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=sYC4TW3JApn0s9JBnDkHTfcWp0aEvoNVAyyWC/Q/bqI=;
-        b=trxNoj5adVUKD9SCO8oHF3jql1L/1TJduczFg4IQ+V3jICi5XhYuu9eTxMvP7BqRzU
-         koxTwEFcAoadZ4uZDOfmJiuegOoea3N/UzIwnCYy00hGENXoUmnvbbGm28/2WxzJSZeI
-         droL1LKaH8nWEvBG4UYhcki8wrLXVlFWH4ctvyYHDCvfFAzfB7hBfalpKinRga4lOT6m
-         Sgvtmq4TQFaVqtLDeD6DIqIRDU7v7T1WVvtdSmcXzaphR1sppijsdYFgBIXczcG7z/aA
-         X4tEXLI8XSXQ0Lw3zIGLP8sVRKit8kvAXFIekTjRn5bkMCyEM/Lrq1MZclfKDb/7U7vA
-         1j4A==
+        bh=cygAIn+NuvbvRK0dqFc+XGYOmNQ092Yut2eORQ2IB/E=;
+        b=SaWN5lt1QxOOmZg9D0JhMzfJVbfQVu/caUzeE2CzCgzFTJxnkB7Msq4mDoPqWH6dpe
+         xbkDU3bqh+s1VVCZXclnYNj5UvEGlNLo+SXN1UIsIi/8W2+HYabIahW8hehEQkXOLX6w
+         +cLlhrxYjBBjy9Q7Tbv4Wwxtld7k5eidK5eiR2sSuJfzXdKCwDkwk9v89YNQrZrRM9wp
+         fYjK8CQnhVTZK7zjGb1G+AgT/KUpnRi2eJTc58IftURUT6YJ9t9ka2pFyJZq/VQngosS
+         x1QYZE0WK+WifuKpi+J477N2oHkJww+RbHGDv3ml7l2exGN2vm0inO0H8Sj4edwUyoQf
+         Qrsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WE4MPnAZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GQIbIbV9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r33si2474665qvr.107.2019.09.26.10.59.37
+        by mx.google.com with ESMTPS id o65si2238234qtd.63.2019.09.26.10.59.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Sep 2019 10:59:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 26 Sep 2019 10:59:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WE4MPnAZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41960 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GQIbIbV9;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41956 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iDY3E-00018b-Ok
-	for alex.bennee@linaro.org; Thu, 26 Sep 2019 13:59:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59257)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iDY3X-0000h9-8Z
+	for alex.bennee@linaro.org; Thu, 26 Sep 2019 13:59:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59084)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXgf-0004zy-Ep
- for qemu-arm@nongnu.org; Thu, 26 Sep 2019 13:36:18 -0400
+ id 1iDXgT-0004jm-Mp
+ for qemu-devel@nongnu.org; Thu, 26 Sep 2019 13:36:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXgd-0003I5-TM
- for qemu-arm@nongnu.org; Thu, 26 Sep 2019 13:36:17 -0400
-Received: from mail-wm1-f66.google.com ([209.85.128.66]:55831)
+ id 1iDXgS-00035k-Fv
+ for qemu-devel@nongnu.org; Thu, 26 Sep 2019 13:36:05 -0400
+Received: from mail-wr1-f65.google.com ([209.85.221.65]:35069)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXga-0003DB-V2; Thu, 26 Sep 2019 13:36:13 -0400
-Received: by mail-wm1-f66.google.com with SMTP id a6so3700229wma.5;
- Thu, 26 Sep 2019 10:36:12 -0700 (PDT)
+ id 1iDXgS-00034b-9i; Thu, 26 Sep 2019 13:36:04 -0400
+Received: by mail-wr1-f65.google.com with SMTP id v8so3736777wrt.2;
+ Thu, 26 Sep 2019 10:36:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=sYC4TW3JApn0s9JBnDkHTfcWp0aEvoNVAyyWC/Q/bqI=;
- b=WE4MPnAZC7pmWGO5woLanDbPrXW7oAn4hiFqMS0iZVmJPo+pa6CIOecZE2SzVNfvzv
- ybPCqVpsMWsnJee4ozT8sXhVNLNUD9Ep29Yw0aujY3fLaCXPvYayK0OIa6ks4R3Duwy7
- CZhB/3AKHlDIvJzcm7Yp3O8k354dlblDx6iO6t0Kkc2GAUJgYeWP2/6JwC+U6uxdZFFS
- zmTP8mTI9QGqYJF4KBfK/564ioEHagd3kaSF8qG5gbZ2fQQyM4KVJDeJ5fHNDa20ecuX
- jjZbE2lqKswnl7TDYkVvkityb00qPbLS3DKsSIcO88sFuJ2+YzuHH+/vZ2cRvgAqI4hf
- 8h1g==
+ bh=cygAIn+NuvbvRK0dqFc+XGYOmNQ092Yut2eORQ2IB/E=;
+ b=GQIbIbV9fySy4FLDxvt+JEgMFNVpmd1ccC7GT6b21MZWKp4WbYw20LIM7pgz0NVE+y
+ hlTlUlr0k2tdGuiUbFoh8MopOPLEOyWysoq8tmL1AipVsVRm5HU2DP3orh4HgR2sLr6a
+ J5uR6z7mE5gYiobYBpWg/0Slz6nrF0L2Pp2egTsd/sbvz8pGpp8kuOEam5MhBuDCestT
+ lpAobfjhz8b7WqlUHZrJ/qA5SiQhHONtAcFPLjKRdJ2OMygky/dcts4VuOIFe/VhXWvJ
+ QOhiz/B2dYU2VpPQWcsLiJWQrFCmpjXDExwu41ZDmhNQwIU6tiyoLoROSZ35ctFG2ABt
+ 2ifQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=sYC4TW3JApn0s9JBnDkHTfcWp0aEvoNVAyyWC/Q/bqI=;
- b=a1DdTZStVcm9Fa1V1YsUbn1CU0HbLmVk/P1SnSw1993rqaAlddJE2VzZFDsQjT98CU
- D4YWo2csh2gqNgBhy0ng4L3FMNOm5rydniRGvKVB7e9/BWsTTjVj70J5XVXIyaGSF/6z
- SwXRxQABUz0hePf/8qsf9nsUBj/ZHdqtfm14PkPos8g0gDfCB2+trRbDLuABzVNOxXGC
- HapYGA9+ppzPLaadE9vZWUBO+4fykApj3oIatpNl1YsqGf+M/LO2pb0FxdYzjjxvBVZE
- FtMHJzspEKh/KXVsEYQD4vqA+sa2Sm6G0xQbWUl9LOS5FhRMum9nEQu5pxLFjl+6GHso
- ZPYw==
-X-Gm-Message-State: APjAAAXNr5trY0YWfd8gcK4gybzRDvK99L5fpRuy5SYonagTA6cUoc77
- dq8CORwoBFL5N8d8ineV7otr166MKsk=
-X-Received: by 2002:a05:600c:2151:: with SMTP id
- v17mr3777780wml.56.1569519311717; 
- Thu, 26 Sep 2019 10:35:11 -0700 (PDT)
+ bh=cygAIn+NuvbvRK0dqFc+XGYOmNQ092Yut2eORQ2IB/E=;
+ b=YcNtuW7nITuqYCG8Gvx65ZXF67GZ78InlfS2IXYe9mdLgzxXjxgJGHqA7ehZzbm6zK
+ oAWB9cfo3MLZcI6TWzeChrfLTAiDoLOPZIHc/nk/FSQHFYk0SM5jDdn+kiX1zD6bXhEr
+ VYBHuFeXPA9S7q2PL4wbyWBGQCBJbrM98B8zn04MlzFqEnjjaNI3L4iyx+7Wud9Y2mDt
+ KPyIgkDclstVnMHDQ7uOWeqLRXL6130f1VB23wXQsaot3iG9pIcEYEC/QdA9jvBqwXhg
+ l0Gfye+YC2A3sLtlY7t/784m+LybXyuUZ72lauLes78KZBJ+oIVJa/Z1INOtkUgLG9d1
+ TsRg==
+X-Gm-Message-State: APjAAAVY648nTZ3fuHYfHhb0/e/hhl0KYIKNamayY+6f7Hm6ewljqooR
+ JhWZggrji8d9gLygXuKAzi7F306HbJM=
+X-Received: by 2002:adf:f212:: with SMTP id p18mr4215158wro.340.1569519303075; 
+ Thu, 26 Sep 2019 10:35:03 -0700 (PDT)
 Received: from x1w.redhat.com (240.red-88-21-68.staticip.rima-tde.net.
  [88.21.68.240])
- by smtp.gmail.com with ESMTPSA id b186sm9918980wmd.16.2019.09.26.10.35.10
+ by smtp.gmail.com with ESMTPSA id b186sm9918980wmd.16.2019.09.26.10.35.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Sep 2019 10:35:11 -0700 (PDT)
+ Thu, 26 Sep 2019 10:35:02 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 19/19] tests/boot_linux_console: Test SDHCI and termal sensor
- on raspi3
-Date: Thu, 26 Sep 2019 19:34:27 +0200
-Message-Id: <20190926173428.10713-20-f4bug@amsat.org>
+Subject: [PATCH 14/19] python/qemu/machine: Allow to use other serial consoles
+ than default
+Date: Thu, 26 Sep 2019 19:34:22 +0200
+Message-Id: <20190926173428.10713-15-f4bug@amsat.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190926173428.10713-1-f4bug@amsat.org>
 References: <20190926173428.10713-1-f4bug@amsat.org>
@@ -102,18 +101,18 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.85.128.66
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 209.85.221.65
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Zolt=C3=A1n=20Baldaszti?= <bztemail@gmail.com>,
  Laurent Bonnans <laurent.bonnans@here.com>,
@@ -121,7 +120,6 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
- BALATON Zoltan <balaton@eik.bme.hu>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org, Clement Deschamps <clement.deschamps@antfield.fr>,
  Cleber Rosa <crosa@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -129,80 +127,55 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Pekka Enberg <penberg@iki.fi>, Guenter Roeck <linux@roeck-us.net>,
  Eduardo Habkost <ehabkost@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rIvpgVAF5fVW
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: enE+RUe0jaAl
 
-Add a test which loads the root filesystem on a SD card.
-Use a kernel recent enough to also test the thermal sensor.
+Currently we are limited to use the first serial console available.
+Some machines/guest might use another console than the first one as
+the 'boot console'.
 
-The kernel image comes from:
-https://github.com/sakaki-/bcmrpi3-kernel#description
+To be able to use the N console as default, we simply need to connect
+all the N - 1 consoles to the null chardev.
 
-The cpio image used comes from the linux-build-test project:
-https://github.com/groeck/linux-build-test
+Add an index argument, so we can use a specific serial console as
+default.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- tests/acceptance/boot_linux_console.py | 45 ++++++++++++++++++++++++++
- 1 file changed, 45 insertions(+)
+ python/qemu/machine.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index 2a1a23763e..5c48cacba8 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -410,6 +410,51 @@ class BootLinuxConsole(Test):
-         self.exec_command_and_wait_for_pattern('reboot',
-                                                'reboot: Restarting system')
- 
-+    def test_arm_raspi3_initrd_sd_temp(self):
-+        """
-+        :avocado: tags=arch:aarch64
-+        :avocado: tags=machine:raspi3
-+        """
-+        tarball_url = ('https://github.com/sakaki-/bcmrpi3-kernel/releases/'
-+                       'download/4.19.71.20190910/'
-+                       'bcmrpi3-kernel-4.19.71.20190910.tar.xz')
-+        tarball_hash = '844f117a1a6de0532ba92d2a7bceb5b2acfbb298'
-+        tarball_path = self.fetch_asset(tarball_url, asset_hash=tarball_hash)
-+        archive.extract(tarball_path, self.workdir)
-+        dtb_path    = self.workdir + "/boot/bcm2837-rpi-3-b.dtb"
-+        kernel_path = self.workdir + "/boot/kernel8.img"
-+
-+        rootfs_url = ('https://github.com/groeck/linux-build-test/raw/'
-+                      '9b6b392ea7bc15f0d6632328d429d31c9c6273da/rootfs/'
-+                      'arm64/rootfs.ext2.gz')
-+        rootfs_hash = 'dbe4136f0b4a0d2180b93fd2a3b9a784f9951d10'
-+        rootfs_path_gz = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash)
-+        rootfs_path = self.workdir + "rootfs.ext2"
-+        gunzip(rootfs_path_gz, rootfs_path)
-+
-+        self.vm.set_machine('raspi3')
-+        self.vm.set_console()
-+        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-+                               'earlycon=pl011,0x3f201000 console=ttyAMA0 ' +
-+                               'root=/dev/mmcblk0 rootwait rw ' +
-+                               'panic=-1 noreboot')
-+        self.vm.add_args('-kernel', kernel_path,
-+                         '-dtb', dtb_path,
-+                         '-append', kernel_command_line,
-+                         '-drive', 'file=' + rootfs_path + ',if=sd,format=raw',
-+                         '-no-reboot')
-+        self.vm.launch()
-+
-+        self.wait_for_console_pattern('Boot successful.')
-+
-+        self.exec_command_and_wait_for_pattern('cat /proc/cpuinfo',
-+                                               'Raspberry Pi 3 Model B')
-+        self.exec_command_and_wait_for_pattern('cat /sys/devices/virtual/' +
-+                                               'thermal/thermal_zone0/temp',
-+                                               '25178')
-+        self.exec_command_and_wait_for_pattern('reboot',
-+                                               'reboot: Restarting system')
-+
-     def test_s390x_s390_ccw_virtio(self):
+diff --git a/python/qemu/machine.py b/python/qemu/machine.py
+index 128a3d1dc2..302b158a18 100644
+--- a/python/qemu/machine.py
++++ b/python/qemu/machine.py
+@@ -235,6 +235,8 @@ class QEMUMachine(object):
+                 '-display', 'none', '-vga', 'none']
+         if self._machine is not None:
+             args.extend(['-machine', self._machine])
++        for i in range(self._console_id):
++            args.extend(['-serial', 'null'])
+         if self._console_set:
+             self._console_address = os.path.join(self._temp_dir,
+                                                  self._name + "-console.sock")
+@@ -495,7 +497,7 @@ class QEMUMachine(object):
          """
-         :avocado: tags=arch:s390x
+         self._machine = machine_type
+ 
+-    def set_console(self, device_type=None):
++    def set_console(self, device_type=None, console_id=0):
+         """
+         Sets the device type for a console device
+ 
+@@ -519,6 +521,7 @@ class QEMUMachine(object):
+         """
+         self._console_set = True
+         self._console_device_type = device_type
++        self._console_id = console_id
+ 
+     @property
+     def console_socket(self):
 -- 
 2.20.1
 

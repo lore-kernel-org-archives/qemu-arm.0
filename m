@@ -1,157 +1,107 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2207629wrp;
-        Thu, 26 Sep 2019 07:26:11 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzqvPMG/pvPhqIqe+T0gqpt8UScioLhMvBtnSagjwwY4HtBhulXC6mtUow13YP41rSbDZZD
-X-Received: by 2002:a6b:8bd4:: with SMTP id n203mr3737948iod.133.1569507971064;
-        Thu, 26 Sep 2019 07:26:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569507971; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2269163wrp;
+        Thu, 26 Sep 2019 08:18:10 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqycqrJ/RQY2x0N6hB95vmednL7e5OGg/fHZhPnam9mQ/SIPUPtL8h+HmfYxcjz+TLlhOuSz
+X-Received: by 2002:a05:6214:1463:: with SMTP id c3mr3191121qvy.48.1569511090263;
+        Thu, 26 Sep 2019 08:18:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569511090; cv=none;
         d=google.com; s=arc-20160816;
-        b=xiHhEa6CJJzUjonmPaC4RW224KM+rxo9r5NqXRCnA/cs7fdaJQmaISstufUtWCN2qH
-         ok3huhvB5fnfupKDRp74uWfzn/Du5uzZlSVRIaEHwYtNBR3NCavWEE9DYJrq18dk2wIz
-         KPdvKDCD12IIpDmLunQow8EblomAYDmB41BnSaKtXJWInMRxbk7jJr1qct083JdZfmcJ
-         Whjo+VVI9YEugVnLVMMxZu+Pls6J5IWvzmUxmuA/oRwNORbeX/eXGwfD/Xn0klFayt0V
-         vaLzphV0Pb1DJrAm9tGeKshC3pExQDTMT6Xd/J8np7Bb72vxguigGNBHA5hgb+JLAdm3
-         3kaQ==
+        b=QIujxXalgJtnkx62BVC4YMZxcepd7b4jd2g+lKjI3//4kBm24n+DBOd1w8ml3goCpf
+         p4N30yv0/uKqEY060KRkgKHP54IeGtvwmj9FCQJaXTkiKbIH0li/konV5shUOQU0mPq5
+         ovME02JS9I95krJeLCfpYzXeoDQV7x63wWFQQJNY/6PBoW03nZsifrFr7F/K9olSK1qa
+         XNuY03s4vtikKeoEepiJfNVv2q+PzML3Wl5bv+aTN16mgEBuLpORrzzkWJjc87DdX1hQ
+         6RWJAgwxOmI36NlQvNsqGO9DLoMv+othPoyRX+ZrUaJJ4laR76cMeMq0qa/YPGykenwI
+         RvMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:cc:to:subject;
-        bh=xRe0PP2JadDpEtrh5xeFQcBiSOFNYkjQhXdtuQPdgv8=;
-        b=mAyUGPmjfXH6oqL9/+Sat2t+SrJRs8fJ1pm+OrOl2EllJWdcP1/r7o/cDaDYnRo3ON
-         SVgxbY02CzVSfPUmk+7PA060yLH3FTojfBb4uomi/O0IzQiaeZXxzNbwDTOVRiIhvp1B
-         fCFzPHu4+fYxPreFMky/l9vc3jMXsRTjgUyqsHOMl5uvTz58oNrq977kajYpiyHcIVbc
-         1FOJp9EihFzyekU+p2f4t3/FoOA9Gsf6Amjq8wnn61SV808dR2eg4oHGpPD5+mgqQOZH
-         c4S4IBryMtLn2MyQNzpsGwMfJrd5Q467daLJY/JmBtPR2UsIUhO5NaFhw+xmzOxYnXLi
-         aLAQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:mime-version:user-agent:date:message-id:subject
+         :from:to:dkim-filter;
+        bh=GzLQm7XSWPXo3uMyQeXlJy/T6MmunVI7PcUonFBv6JE=;
+        b=w/FHhggzWQeQolRiUoJdf7+b+W0asDYVfPnisPf0eGSKcCwQU3FnHMQAk46DuUFZVu
+         axwb7bzG9MqVX4t+d/jY7RAXXohjgE/fWMM78NY7YmyeVwJnZCN7HNcoeNeoxsqO3D8C
+         H/JkHH62QPvJfsiDPzBWuHe6EioR/iKKu0mPOAd0A/ekP9MDMt3TMrl93nubu/L3drCh
+         Pyl76Y7curzFDapXtrRNB32F9u3MZtmCVIx5HTKqqsmEAW5XjkU7JDesHzG88aAY9wfi
+         Z8isvscp4MHauJ11+VYP60a25DqxDSKHcvaozUnO5mbnmsrsl2X2daynlzO3LVCctZnx
+         AQjA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of thuth@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id z3si3018361iog.74.2019.09.26.07.26.10
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Sep 2019 07:26:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m11si1920825qke.167.2019.09.26.08.18.10
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 26 Sep 2019 08:18:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of thuth@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=thuth@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 2D401305C3A4;
-	Thu, 26 Sep 2019 14:26:10 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-116-127.ams2.redhat.com [10.36.116.127])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 70BE660F88;
-	Thu, 26 Sep 2019 14:26:06 +0000 (UTC)
-Subject: Re: [RFC PATCH] configure: deprecate 32 bit build hosts
-To: Christian Borntraeger <borntraeger@de.ibm.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- qemu-discuss <qemu-discuss@nongnu.org>, qemu-s390x <qemu-s390x@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, qemu-ppc@nongnu.org
-References: <20190925233013.6449-1-alex.bennee@linaro.org>
- <CAFEAcA9vb5_Mi_axWpu7269Zg0xMLbiiV80ofLeyDpfws3G4nQ@mail.gmail.com>
- <20190926125817.GB19660@redhat.com>
- <ea6b671a-0c05-d880-3b9f-62a4f8626ec1@de.ibm.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; prefer-encrypt=mutual; keydata=
- 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
-Organization: Red Hat
-Message-ID: <19efe3ee-a532-cf66-a5a7-03a7c053737c@redhat.com>
-Date: Thu, 26 Sep 2019 16:26:05 +0200
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
+Received: from localhost ([::1]:39036 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iDVWy-0002j6-HX
+	for alex.bennee@linaro.org; Thu, 26 Sep 2019 11:18:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52128)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <nramas@linux.microsoft.com>) id 1iDVWJ-0002fU-5l
+ for qemu-arm@nongnu.org; Thu, 26 Sep 2019 11:17:29 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <nramas@linux.microsoft.com>) id 1iDVWH-0004KF-D2
+ for qemu-arm@nongnu.org; Thu, 26 Sep 2019 11:17:26 -0400
+Received: from linux.microsoft.com ([13.77.154.182]:54380)
+ by eggs.gnu.org with esmtp (Exim 4.71)
+ (envelope-from <nramas@linux.microsoft.com>) id 1iDVWG-0004JR-VV
+ for qemu-arm@nongnu.org; Thu, 26 Sep 2019 11:17:25 -0400
+Received: from [10.200.157.26] (unknown [131.107.147.154])
+ by linux.microsoft.com (Postfix) with ESMTPSA id 1D9832008710;
+ Thu, 26 Sep 2019 08:17:21 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 1D9832008710
+To: qemu-arm <qemu-arm@nongnu.org>,
+ James Bottomley <James.Bottomley@HansenPartnership.com>
+From: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>
+Subject: Is kexec supported in QEMU for ARM64 (qemu-system-aarch64) with
+ arm-trusted-firmware, optee, and u-boot.
+Message-ID: <21633062-b021-a8e7-0cc8-062f4c29dde5@linux.microsoft.com>
+Date: Thu, 26 Sep 2019 08:17:20 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <ea6b671a-0c05-d880-3b9f-62a4f8626ec1@de.ibm.com>
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.45]); Thu, 26 Sep 2019 14:26:10 +0000 (UTC)
-X-TUID: YALO+olOzp4Q
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 13.77.154.182
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: gJ/JYSWh0Hsf
 
-On 26/09/2019 15.46, Christian Borntraeger wrote:
-> 
-> 
-> On 26.09.19 14:58, Daniel P. Berrangé wrote:
->> On Thu, Sep 26, 2019 at 08:50:36AM +0100, Peter Maydell wrote:
->>> On Thu, 26 Sep 2019 at 00:31, Alex Bennée <alex.bennee@linaro.org> wrote:
->>>>
->>>> The 32 bit hosts are already a second class citizen especially with
->>>> support for running 64 bit guests under TCG. We are also limited by
->>>> testing as actual working 32 bit machines are getting quite rare in
->>>> developers personal menageries. For TCG supporting newer types like
->>>> Int128 is a lot harder with 32 bit calling conventions compared to
->>>> their larger bit sized cousins. Fundamentally address space is the
->>>> most useful thing for the translator to have even for a 32 bit guest a
->>>> 32 bit host is quite constrained.
->>>>
->>>> As far as I'm aware 32 bit KVM users are even less numerous. Even
->>>> ILP32 doesn't make much sense given the address space QEMU needs to
->>>> manage.
->>>
->>> For KVM we should wait until the kernel chooses to drop support,
->>> I think.
->>
->> What if the kernel is waiting for QEMU to drop support too ;-P
-> 
-> For what its worth on kvm/s390 we never cared about implementing
-> 32 bit. 
+When I execute kexec ("kexec -l <kernel>", followed by "kexec -e") I hit 
+the following assert (in arm-trusted-firmware/plat/qemu/qemu_pm.c)
 
-Looking at tcg/s390/tcg-target.inc.c :
+/*******************************************************************************
+  * Platform handler called when a power domain is about to be turned
+  * off. The target_state encodes the power state that each level should
+  * transition to.
+******************************************************************************/
+void qemu_pwr_domain_off(const psci_power_state_t *target_state)
+{
+	assert(0);
+}
 
-...
-/* We only support generating code for 64-bit mode.  */
-#if TCG_TARGET_REG_BITS != 64
-#error "unsupported code generation mode"
-#endif
-...
+Is kexec supported in ARM64 QEMU (qemu-system-aarch64) -
+using arm-trusted-firmware, optee, and u-boot?
 
-... it seems to me that TCG does not support 32-bit on s390 either. I
-think we can remove s390 (32-bit) from the list completely?
-
- Thomas
+Thanks,
+  -lakshmi

@@ -1,107 +1,146 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2269163wrp;
-        Thu, 26 Sep 2019 08:18:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqycqrJ/RQY2x0N6hB95vmednL7e5OGg/fHZhPnam9mQ/SIPUPtL8h+HmfYxcjz+TLlhOuSz
-X-Received: by 2002:a05:6214:1463:: with SMTP id c3mr3191121qvy.48.1569511090263;
-        Thu, 26 Sep 2019 08:18:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569511090; cv=none;
-        d=google.com; s=arc-20160816;
-        b=QIujxXalgJtnkx62BVC4YMZxcepd7b4jd2g+lKjI3//4kBm24n+DBOd1w8ml3goCpf
-         p4N30yv0/uKqEY060KRkgKHP54IeGtvwmj9FCQJaXTkiKbIH0li/konV5shUOQU0mPq5
-         ovME02JS9I95krJeLCfpYzXeoDQV7x63wWFQQJNY/6PBoW03nZsifrFr7F/K9olSK1qa
-         XNuY03s4vtikKeoEepiJfNVv2q+PzML3Wl5bv+aTN16mgEBuLpORrzzkWJjc87DdX1hQ
-         6RWJAgwxOmI36NlQvNsqGO9DLoMv+othPoyRX+ZrUaJJ4laR76cMeMq0qa/YPGykenwI
-         RvMA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:mime-version:user-agent:date:message-id:subject
-         :from:to:dkim-filter;
-        bh=GzLQm7XSWPXo3uMyQeXlJy/T6MmunVI7PcUonFBv6JE=;
-        b=w/FHhggzWQeQolRiUoJdf7+b+W0asDYVfPnisPf0eGSKcCwQU3FnHMQAk46DuUFZVu
-         axwb7bzG9MqVX4t+d/jY7RAXXohjgE/fWMM78NY7YmyeVwJnZCN7HNcoeNeoxsqO3D8C
-         H/JkHH62QPvJfsiDPzBWuHe6EioR/iKKu0mPOAd0A/ekP9MDMt3TMrl93nubu/L3drCh
-         Pyl76Y7curzFDapXtrRNB32F9u3MZtmCVIx5HTKqqsmEAW5XjkU7JDesHzG88aAY9wfi
-         Z8isvscp4MHauJ11+VYP60a25DqxDSKHcvaozUnO5mbnmsrsl2X2daynlzO3LVCctZnx
-         AQjA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m11si1920825qke.167.2019.09.26.08.18.10
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Sep 2019 08:18:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
-Received: from localhost ([::1]:39036 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iDVWy-0002j6-HX
-	for alex.bennee@linaro.org; Thu, 26 Sep 2019 11:18:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52128)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nramas@linux.microsoft.com>) id 1iDVWJ-0002fU-5l
- for qemu-arm@nongnu.org; Thu, 26 Sep 2019 11:17:29 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nramas@linux.microsoft.com>) id 1iDVWH-0004KF-D2
- for qemu-arm@nongnu.org; Thu, 26 Sep 2019 11:17:26 -0400
-Received: from linux.microsoft.com ([13.77.154.182]:54380)
- by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <nramas@linux.microsoft.com>) id 1iDVWG-0004JR-VV
- for qemu-arm@nongnu.org; Thu, 26 Sep 2019 11:17:25 -0400
-Received: from [10.200.157.26] (unknown [131.107.147.154])
- by linux.microsoft.com (Postfix) with ESMTPSA id 1D9832008710;
- Thu, 26 Sep 2019 08:17:21 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 1D9832008710
-To: qemu-arm <qemu-arm@nongnu.org>,
- James Bottomley <James.Bottomley@HansenPartnership.com>
-From: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>
-Subject: Is kexec supported in QEMU for ARM64 (qemu-system-aarch64) with
- arm-trusted-firmware, optee, and u-boot.
-Message-ID: <21633062-b021-a8e7-0cc8-062f4c29dde5@linux.microsoft.com>
-Date: Thu, 26 Sep 2019 08:17:20 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id q192sm5033836wme.23.2019.09.26.08.27.09
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 26 Sep 2019 08:27:09 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id D81D21FF87;
+	Thu, 26 Sep 2019 16:27:08 +0100 (BST)
+References: <20190925233013.6449-1-alex.bennee@linaro.org>
+ <0a2c56da-173e-2abd-de76-e38a649e8f25@redhat.com>
+User-agent: mu4e 1.3.4; emacs 27.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, Richard Henderson
+ <richard.henderson@linaro.org>, qemu-discuss@nongnu.org,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
+Subject: Re: [RFC PATCH] configure: deprecate 32 bit build hosts
+In-reply-to: <0a2c56da-173e-2abd-de76-e38a649e8f25@redhat.com>
+Date: Thu, 26 Sep 2019 16:27:08 +0100
+Message-ID: <87ef039iyb.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 13.77.154.182
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gJ/JYSWh0Hsf
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: b+ltfmZQQ49v
 
-When I execute kexec ("kexec -l <kernel>", followed by "kexec -e") I hit 
-the following assert (in arm-trusted-firmware/plat/qemu/qemu_pm.c)
 
-/*******************************************************************************
-  * Platform handler called when a power domain is about to be turned
-  * off. The target_state encodes the power state that each level should
-  * transition to.
-******************************************************************************/
-void qemu_pwr_domain_off(const psci_power_state_t *target_state)
-{
-	assert(0);
-}
+Thomas Huth <thuth@redhat.com> writes:
 
-Is kexec supported in ARM64 QEMU (qemu-system-aarch64) -
-using arm-trusted-firmware, optee, and u-boot?
+> On 26/09/2019 01.30, Alex Benn=C3=A9e wrote:
+>> The 32 bit hosts are already a second class citizen especially with
+>> support for running 64 bit guests under TCG. We are also limited by
+>> testing as actual working 32 bit machines are getting quite rare in
+>> developers personal menageries. For TCG supporting newer types like
+>> Int128 is a lot harder with 32 bit calling conventions compared to
+>> their larger bit sized cousins. Fundamentally address space is the
+>> most useful thing for the translator to have even for a 32 bit guest a
+>> 32 bit host is quite constrained.
+>>
+>> As far as I'm aware 32 bit KVM users are even less numerous. Even
+>> ILP32 doesn't make much sense given the address space QEMU needs to
+>> manage.
+>>
+>> Lets mark these machines as deprecated so we can have the wailing and
+>> gnashing of teeth now and look to actually dropping the support in a
+>> couple of cycles.
+>>
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> Cc: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>  configure | 24 +++++++++++++-----------
+>>  1 file changed, 13 insertions(+), 11 deletions(-)
+>>
+>> diff --git a/configure b/configure
+>> index 542f6aea3f..776fd460b5 100755
+>> --- a/configure
+>> +++ b/configure
+>> @@ -728,7 +728,7 @@ ARCH=3D
+>>  # Normalise host CPU name and set ARCH.
+>>  # Note that this case should only have supported host CPUs, not guests.
+>>  case "$cpu" in
+>> -  ppc|ppc64|s390|s390x|sparc64|x32|riscv32|riscv64)
+>> +  ppc64|s390|s390x|sparc64|riscv64)
+>
+> I think you can also remove "s390". "s390" is the 32-bit variant,
+> "s390x" is the 64-bit variant.
+>
+>>      supported_cpu=3D"yes"
+>>    ;;
+>>    ppc64le)
+>> @@ -737,7 +737,6 @@ case "$cpu" in
+>>    ;;
+>>    i386|i486|i586|i686|i86pc|BePC)
+>>      cpu=3D"i386"
+>> -    supported_cpu=3D"yes"
+>>    ;;
+>>    x86_64|amd64)
+>>      cpu=3D"x86_64"
+>> @@ -745,19 +744,22 @@ case "$cpu" in
+>>    ;;
+>>    armv*b|armv*l|arm)
+>>      cpu=3D"arm"
+>> -    supported_cpu=3D"yes"
+>>    ;;
+>>    aarch64)
+>>      cpu=3D"aarch64"
+>>      supported_cpu=3D"yes"
+>>    ;;
+>> -  mips*)
+>> +  mips64*)
+>>      cpu=3D"mips"
+>>      supported_cpu=3D"yes"
+>>    ;;
+>> +  mips*)
+>> +    cpu=3D"mips"
+>> +  ;;
+>>    sparc|sun4[cdmuv])
+>>      cpu=3D"sparc"
+>> -    supported_cpu=3D"yes"
+>> +  ;;
+>> +  x32|riscv32)
+>
+> You forgot to add "ppc" (and "s390") here.
+>
+>>    ;;
+>>    *)
+>>      # This will result in either an error or falling back to TCI later
+>> @@ -6438,12 +6440,12 @@ if test "$supported_cpu" =3D "no"; then
+>>      echo "WARNING: SUPPORT FOR THIS HOST CPU WILL GO AWAY IN FUTURE REL=
+EASES!"
+>>      echo
+>>      echo "CPU host architecture $cpu support is not currently maintaine=
+d."
+>> -    echo "The QEMU project intends to remove support for this host CPU =
+in"
+>> -    echo "a future release if nobody volunteers to maintain it and to"
+>> -    echo "provide a build host for our continuous integration setup."
+>> -    echo "configure has succeeded and you can continue to build, but"
+>> -    echo "if you care about QEMU on this platform you should contact"
+>> -    echo "us upstream at qemu-devel@nongnu.org."
+>> +    echo "The QEMU project intends to remove support for all 32 bit hos=
+t"
+>> +    echo "CPUs in a future release. 64 bit hosts will need a volunteer"
+>> +    echo "to maintain it and to provide a build host for our continuous"
+>> +    echo "integration setup. configure has succeeded and you can contin=
+ue"
+>> +    echo "to build, but if you care about QEMU on this platform you"
+>> +    echo "should contact us upstream at qemu-devel@nongnu.org."
+>>  fi
+>>
+>>  if test "$supported_os" =3D "no"; then
+>
+> In case this gets accepted, we also might want to deprecate the
+> qemu-system-i386, qemu-system-arm and qemu-system-ppc targets, since
+> they are AFAIK just a subset of qemu-system-x86_64, qemu-system-aarch64
+> and qemu-system-ppc64. But that's likely something for a later patch, I
+> think.
 
-Thanks,
-  -lakshmi
+Yes this is purely for the host side. I'm not intending to deprecate any
+guest support.
+
+>
+>  Thomas
+
+
+--
+Alex Benn=C3=A9e

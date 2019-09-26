@@ -1,726 +1,357 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1923366wrp;
-        Thu, 26 Sep 2019 03:01:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx+4o8JbQURMTtUHgAAIjW/qp5KbJSwT23jaaKEazRAANLmsvl8G7+BK5lRmIzsN18BfW+t
-X-Received: by 2002:a92:a80c:: with SMTP id o12mr1413255ilh.190.1569492102058;
-        Thu, 26 Sep 2019 03:01:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569492102; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2020332wrp;
+        Thu, 26 Sep 2019 04:38:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx30CnnMgIbacl2eEXWRMLTXoK/lDYPA5Al4se3n3kf20J5XaSc2eHjYx2a9zzJ1Ay/o19Z
+X-Received: by 2002:a17:907:211c:: with SMTP id qn28mr2645226ejb.244.1569497906308;
+        Thu, 26 Sep 2019 04:38:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569497906; cv=none;
         d=google.com; s=arc-20160816;
-        b=nniNTSnfF8mr+m0bECVyeqJqOadkg9OLwe34okfQFgVPnKH1Pq6/JjTtmPuls2Q2hp
-         YcpP1Qws113viXcEj0nW/JIwzMo3UAi8bmc6RDWhOH0qFTqiaiTxMQxQoRBSSTzRJotA
-         O36xv9Wb0OHuPWkSMdnJFO+IUW//0GGl84jS6V+h/B89mavOgqGOhD9ajIkh/in4Nr8e
-         AZWjyUafFUMJ40EtAPOebNuzLRxii0W87NZKXZyD4rPomcCm9x74aseZlIdaHdzUQDnk
-         4OF2KOIns6W9mcG3KOrAHFwAG4amwlikrw6pkE3+sh+6oiPYlB9SX8nVl/NlZPYxxHFU
-         ncRQ==
+        b=NC2F6lHjL/pU7e08SDGK0a/2zj5jwsiBUOQ/8SD/4vBJCFRrD4MMb15Ra6/v/sd0+a
+         biWdfgx6PbgjYpzuj4yAfazHqE/MJFz/k28HdpYF3NHzszxx0eUok+BNaLWiRUiqFHF5
+         4/82HRbbOopFi6a1w82RW3HuARqkdPueN0UJHghgQKDSWDWDJzo0ybgQ431evSk/7BsE
+         iW7y6eJQTGW/xsqJydRq0VW4incZCsERPge01GIQ9qIaaw7VPhtKEFTwdmPLSKJdIxF2
+         Zd7uOLCLR0e0UbWnHux2FbEQICmt755lnJmJsZDdScCzN0ppb6LbCmtt789xrsigvr3T
+         bgcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=6PiHdXI8Z732x7ua+yw2Neu1d8jWtyAcaxVkO7qS5ZY=;
-        b=qXXP5/4eyZYSbQZFy0BIi730yg3a+T5WbKs7egF4bz4SGYx6plkYHqvlNv+zr6/BCr
-         yZ+G9mbgZei/vB4U7jpj545J+CxtAGYXGi+mEhNhp1V9Yrh4wMYkMLhyHBH66gyFOwvd
-         jC8CvCu0Vb2SN53q4fcCOKBdNCak4DR/EAeXvh/O/iKGvOtdB5rrvuiO9N5bhGGU0FNt
-         6orA5qfPjETGjvxWtmISkRfpycmT4jRH5AL6jZZb8+fnw4aDHoY5QI/MXJ3dOrE60VNT
-         3LHrkldws+F//HYMOGahpubdhWZdtBjuV080DiVx+aQKjqgIonsNMoB7j2IX7LUZJmcT
-         b2JA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:accept-language
+         :references:message-id:date:thread-index:thread-topic:subject:to
+         :from;
+        bh=9lOIO7RYcp5kN47BakLXAE0qF+J+UfJ3sxVtqrtvvvo=;
+        b=i/T/x6IzbHGYnoATnKPKv3DTkLEp4W699Deph7OxwOfCWk8XUCcmlIL8Uqw4dTsoVC
+         4XAFGmh2o13sfe3+TboEQr0amioD/FMMxKlk4sYhjTb5qRYTRm8/mv3MeQGYW6F44RLk
+         ehY2RItkZYsuzz9h73Hy8fqX/4BiUMIfpPlmLv+bRDNgfsRy0l8DbEDY/CVZ0RRCfMOY
+         5IfgwiSpvHMe6ZBePiGSE2r1vNCAcNfATaMsq/uql9aEFq2uwFOIH2oTRQ6d92HRJ6Xt
+         mQ5mQ49CBbGbdmkY1+qXgAYAMI71xHsH+a1/vB5FIFPI9zPL3VPU2PjW4BBaQiHstHgl
+         rSEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <eric.auger@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id k127si2190590iof.65.2019.09.26.03.01.41
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Sep 2019 03:01:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j3si1261723edj.448.2019.09.26.04.38.26
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 26 Sep 2019 04:38:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of eric.auger@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=eric.auger@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 0B33518C4269;
-	Thu, 26 Sep 2019 10:01:41 +0000 (UTC)
-Received: from [10.36.117.64] (ovpn-117-64.ams2.redhat.com [10.36.117.64])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 085F96012C;
-	Thu, 26 Sep 2019 10:01:37 +0000 (UTC)
-Subject: Re: [PATCH v4 8/9] target/arm/cpu64: max cpu: Support sve properties
- with KVM
-To: Andrew Jones <drjones@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, armbru@redhat.com, imammedo@redhat.com,
- alex.bennee@linaro.org, Dave.Martin@arm.com
-References: <20190924113105.19076-1-drjones@redhat.com>
- <20190924113105.19076-9-drjones@redhat.com>
- <f8578400-c587-73f8-3517-6cc89cd56471@redhat.com>
- <20190926084117.xfshky2tyunzvvv2@kamzik.brq.redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <ea68a4f8-fbf2-3def-3815-f0dc64f81184@redhat.com>
-Date: Thu, 26 Sep 2019 12:01:36 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.4.0
-MIME-Version: 1.0
-In-Reply-To: <20190926084117.xfshky2tyunzvvv2@kamzik.brq.redhat.com>
-Content-Type: text/plain; charset=utf-8
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34260 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iDS6L-0003sr-3I
+	for alex.bennee@linaro.org; Thu, 26 Sep 2019 07:38:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55920)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1iDS6A-0003sa-3s
+ for qemu-arm@nongnu.org; Thu, 26 Sep 2019 07:38:16 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1iDS67-0002ma-KK
+ for qemu-arm@nongnu.org; Thu, 26 Sep 2019 07:38:13 -0400
+Received: from lhrrgout.huawei.com ([185.176.76.210]:2049 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
+ id 1iDS67-0002UF-Ay; Thu, 26 Sep 2019 07:38:11 -0400
+Received: from lhreml709-cah.china.huawei.com (unknown [172.18.7.107])
+ by Forcepoint Email with ESMTP id 1CF7E7B80D38F846F6CC;
+ Thu, 26 Sep 2019 12:37:58 +0100 (IST)
+Received: from LHREML524-MBS.china.huawei.com ([169.254.2.174]) by
+ lhreml709-cah.china.huawei.com ([10.201.108.32]) with mapi id 14.03.0415.000; 
+ Thu, 26 Sep 2019 12:37:52 +0100
+From: Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>
+To: Laszlo Ersek <lersek@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+Subject: RE: Invalid blob size on NVDIMM hot-add (was: RE: [RFC PATCH 0/4]
+ ARM virt: ACPI memory hotplug support)
+Thread-Topic: Invalid blob size on NVDIMM hot-add (was: RE: [RFC PATCH 0/4]
+ ARM virt: ACPI memory hotplug support)
+Thread-Index: AdVv0yEPLdplA0GwRKqg4qaBRPehIQDFI9YAAAJykJAAWnI7oA==
+Date: Thu, 26 Sep 2019 11:37:51 +0000
+Message-ID: <5FC3163CFD30C246ABAA99954A238FA83F418D5C@lhreml524-mbs.china.huawei.com>
+References: <5FC3163CFD30C246ABAA99954A238FA83F3FB328@lhreml524-mbs.china.huawei.com>
+ <a1667b4a-72ac-48da-ab36-be1821757ac5@redhat.com> 
+Accept-Language: en-GB, en-US
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2 (mx1.redhat.com [10.5.110.62]); Thu, 26 Sep 2019 10:01:41 +0000 (UTC)
-X-TUID: dOiWqoD9ec5+
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [10.202.227.237]
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-CFilter-Loop: Reflected
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 185.176.76.210
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ Ard Biesheuvel <ard.biesheuvel@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "Leif Lindholm \(Linaro address\)" <leif.lindholm@linaro.org>,
+ Linuxarm <linuxarm@huawei.com>, Auger Eric <eric.auger@redhat.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "xuwei \(O\)" <xuwei5@huawei.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YOBDySjeniLF
 
-
-
-On 9/26/19 10:41 AM, Andrew Jones wrote:
-> On Thu, Sep 26, 2019 at 08:52:55AM +0200, Auger Eric wrote:
->> Hi Drew,
->>
->> On 9/24/19 1:31 PM, Andrew Jones wrote:
->>> Extend the SVE vq map initialization and validation with KVM's
->>> supported vector lengths when KVM is enabled. In order to determine
->>> and select supported lengths we add two new KVM functions for getting
->>> and setting the KVM_REG_ARM64_SVE_VLS pseudo-register.
->>>
->>> This patch has been co-authored with Richard Henderson, who reworked
->>> the target/arm/cpu64.c changes in order to push all the validation and
->>> auto-enabling/disabling steps into the finalizer, resulting in a nice
->>> LOC reduction.
->>>
->>> Signed-off-by: Andrew Jones <drjones@redhat.com>
->>> ---
->>>  docs/arm-cpu-features.rst |  36 +++++---
->>>  target/arm/cpu64.c        | 167 +++++++++++++++++++++++++++++---------
->>>  target/arm/kvm64.c        | 100 ++++++++++++++++++++++-
->>>  target/arm/kvm_arm.h      |  12 +++
->>>  tests/arm-cpu-features.c  | 105 +++++++++++++++++++++++-
->>>  5 files changed, 368 insertions(+), 52 deletions(-)
->>>
->>> diff --git a/docs/arm-cpu-features.rst b/docs/arm-cpu-features.rst
->>> index 1262fddc6201..939366f959cf 100644
->>> --- a/docs/arm-cpu-features.rst
->>> +++ b/docs/arm-cpu-features.rst
->>> @@ -188,10 +188,17 @@ SVE CPU Property Dependencies and Constraints
->>>  
->>>    1) At least one vector length must be enabled when `sve` is enabled.
->>>  
->>> -  2) If a vector length `N` is enabled, then all power-of-two vector
->>> -     lengths smaller than `N` must also be enabled.  E.g. if `sve512`
->>> -     is enabled, then `sve128` and `sve256` must also be enabled,
->>> -     but `sve384` is not required.
->>> +  2) If a vector length `N` is enabled, then, when KVM is enabled, all
->>> +     smaller, host supported vector lengths must also be enabled.  If
->>> +     KVM is not enabled, then only all the smaller, power-of-two vector
->>> +     lengths must be enabled.  E.g. with KVM if the host supports all
->>> +     vector lengths up to 512-bits (128, 256, 384, 512), then if
->>> +     `sve512` is enabled, `sve128`, `sve256`, and `sve384` must also
->>> +     be enabled. Without KVM, `sve384` would not be required.
->>> +
->>> +  3) If KVM is enabled then only vector lengths that the host CPU type
->>> +     support may be enabled.  If SVE is not supported by the host, then
->>> +     no `sve*` properties may be enabled.
->>>  
->>>  SVE CPU Property Parsing Semantics
->>>  ----------------------------------
->>> @@ -210,20 +217,29 @@ SVE CPU Property Parsing Semantics
->>>       disable the last enabled vector length (see constraint (1) of "SVE
->>>       CPU Property Dependencies and Constraints").
->>>  
->>> -  4) If one or more `sve<N>` CPU properties are set `off`, but no `sve<N>`,
->>> +  4) When KVM is enabled, if the host does not support SVE, then an error
->>> +     is generated when attempting to enable any `sve*` properties.
->>> +
->>> +  5) When KVM is enabled, if the host does support SVE, then an error is
->>> +     generated when attempting to enable any vector lengths not supported
->>> +     by the host.
->>> +
->>> +  6) If one or more `sve<N>` CPU properties are set `off`, but no `sve<N>`,
->>>       CPU properties are set `on`, then the specified vector lengths are
->>>       disabled but the default for any unspecified lengths remains enabled.
->>> -     Disabling a power-of-two vector length also disables all vector
->>> -     lengths larger than the power-of-two length (see constraint (2) of
->>> -     "SVE CPU Property Dependencies and Constraints").
->>> +     When KVM is not enabled, disabling a power-of-two vector length also
->>> +     disables all vector lengths larger than the power-of-two length.
->>> +     When KVM is enabled, then disabling any supported vector length also
->>> +     disables all larger vector lengths (see constraint (2) of "SVE CPU
->>> +     Property Dependencies and Constraints").
->>>  
->>> -  5) If one or more `sve<N>` CPU properties are set to `on`, then they
->>> +  7) If one or more `sve<N>` CPU properties are set to `on`, then they
->>>       are enabled and all unspecified lengths default to disabled, except
->>>       for the required lengths per constraint (2) of "SVE CPU Property
->>>       Dependencies and Constraints", which will even be auto-enabled if
->>>       they were not explicitly enabled.
->>>  
->>> -  6) If SVE was disabled (`sve=off`), allowing all vector lengths to be
->>> +  8) If SVE was disabled (`sve=off`), allowing all vector lengths to be
->>>       explicitly disabled (i.e. avoiding the error specified in (3) of
->>>       "SVE CPU Property Parsing Semantics"), then if later an `sve=on` is
->>>       provided an error will be generated.  To avoid this error, one must
->>> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
->>> index b7eff4e1e107..18dd5e24ec61 100644
->>> --- a/target/arm/cpu64.c
->>> +++ b/target/arm/cpu64.c
->>> @@ -273,9 +273,18 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
->>>       * any of the above.  Finally, if SVE is not disabled, then at least one
->>>       * vector length must be enabled.
->>>       */
->>> +    DECLARE_BITMAP(kvm_supported, ARM_MAX_VQ);
->>>      DECLARE_BITMAP(tmp, ARM_MAX_VQ);
->>>      uint32_t vq, max_vq = 0;
->>>  
->>> +    /* Collect the set of vector lengths supported by KVM. */
->>> +    bitmap_zero(kvm_supported, ARM_MAX_VQ);
->>> +    if (kvm_enabled() && kvm_arm_sve_supported(CPU(cpu))) {
->>> +        kvm_arm_sve_get_vls(CPU(cpu), kvm_supported);
->>> +    } else if (kvm_enabled()) {
->>> +        assert(!cpu_isar_feature(aa64_sve, cpu));
->> why not set an error and propagate it instead?
-> 
-> This should never happen. We shouldn't be here if KVM is enabled and SVE
-> isn't supported. The question is how defensive do we want QEMU code?
-> We could just drop the check altogether if we don't want the assert, but
-> I'd rather keep it.
-> 
->>> +    }
->>> +
->>>      /*
->>>       * Process explicit sve<N> properties.
->>>       * From the properties, sve_vq_map<N> implies sve_vq_init<N>.
->>> @@ -293,10 +302,19 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
->>>              return;
->>>          }
->>>  
->>> -        /* Propagate enabled bits down through required powers-of-two. */
->>> -        for (vq = pow2floor(max_vq); vq >= 1; vq >>= 1) {
->>> -            if (!test_bit(vq - 1, cpu->sve_vq_init)) {
->>> -                set_bit(vq - 1, cpu->sve_vq_map);
->>> +        if (kvm_enabled()) {
->>> +            /*
->>> +             * For KVM we have to automatically enable all supported unitialized
->>> +             * lengths, even when the smaller lengths are not all powers-of-two.
->>> +             */
->>> +            bitmap_andnot(tmp, kvm_supported, cpu->sve_vq_init, max_vq);
->>> +            bitmap_or(cpu->sve_vq_map, cpu->sve_vq_map, tmp, max_vq);
->>> +        } else {
->>> +            /* Propagate enabled bits down through required powers-of-two. */
->>> +            for (vq = pow2floor(max_vq); vq >= 1; vq >>= 1) {
->>> +                if (!test_bit(vq - 1, cpu->sve_vq_init)) {
->>> +                    set_bit(vq - 1, cpu->sve_vq_map);
->>> +                }
->>>              }
->>>          }
->>>      } else if (cpu->sve_max_vq == 0) {
->>> @@ -308,23 +326,46 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
->>>              return;
->>>          }
->>>  
->>> -        /* Disabling a power-of-two disables all larger lengths. */
->>> -        if (test_bit(0, cpu->sve_vq_init)) {
->>> -            error_setg(errp, "cannot disable sve128");
->>> -            error_append_hint(errp, "Disabling sve128 results in all vector "
->>> -                              "lengths being disabled.\n");
->>> -            error_append_hint(errp, "With SVE enabled, at least one vector "
->>> -                              "length must be enabled.\n");
->>> -            return;
->>> -        }
->>> -        for (vq = 2; vq <= ARM_MAX_VQ; vq <<= 1) {
->>> -            if (test_bit(vq - 1, cpu->sve_vq_init)) {
->>> -                break;
->>> +        if (kvm_enabled()) {
->>> +            /* Disabling a supported length disables all larger lengths. */
->>> +            for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
->>> +                if (test_bit(vq - 1, cpu->sve_vq_init) &&
->>> +                    test_bit(vq - 1, kvm_supported)) {
->>> +                    break;
->>> +                }
-the above loop looks for the 1st disabled vq that is also supported, right?
->>> +            }
->>> +            max_vq = vq <= ARM_MAX_VQ ? vq - 1 : ARM_MAX_VQ;
->>> +            bitmap_andnot(cpu->sve_vq_map, kvm_supported,
->>> +                          cpu->sve_vq_init, max_vq);
->>> +            if (max_vq == 0 || bitmap_empty(cpu->sve_vq_map, max_vq)) {
-here we don't have anything enabled below the disabled one. So don't we
-have the culprit already?
->>> +                vq = find_next_bit(kvm_supported, ARM_MAX_VQ, 0) + 1;
->>> +                error_setg(errp, "cannot disable sve%d", vq * 128);
->> isn't the one disabled max_vq? Do you really need to re-compute vq?
-> 
-> We're not looking for max_vq with find_next_bit(), we're looking for
-> "min_vq". Here we're checking that we always have at least one vector
-> length enabled. You can't disable the minimum, because that's the last
-> one.
-> 
->>> +                error_append_hint(errp, "Disabling sve%d results in all "
->>> +                                  "vector lengths being disabled.\n",
->>> +                                  vq * 128);
->>> +                error_append_hint(errp, "With SVE enabled, at least one "
->>> +                                  "vector length must be enabled.\n");
->>> +                return;> +            }
->>> +        } else {
->>> +            /* Disabling a power-of-two disables all larger lengths. */
->>> +            if (test_bit(0, cpu->sve_vq_init)) {
->>> +                error_setg(errp, "cannot disable sve128");
->>> +                error_append_hint(errp, "Disabling sve128 results in all "
->>> +                                  "vector lengths being disabled.\n");
->>> +                error_append_hint(errp, "With SVE enabled, at least one "
->>> +                                  "vector length must be enabled.\n");
->>> +                return;
->>> +            }
->>> +            for (vq = 2; vq <= ARM_MAX_VQ; vq <<= 1) {
->>> +                if (test_bit(vq - 1, cpu->sve_vq_init)) {
->>> +                    break;
->>> +                }
->>>              }
->>> +            max_vq = vq <= ARM_MAX_VQ ? vq - 1 : ARM_MAX_VQ;
->>> +            bitmap_complement(cpu->sve_vq_map, cpu->sve_vq_init, max_vq);
->>>          }
->>> -        max_vq = vq <= ARM_MAX_VQ ? vq - 1 : ARM_MAX_VQ;
->>>  
->>> -        bitmap_complement(cpu->sve_vq_map, cpu->sve_vq_init, max_vq);
->>>          max_vq = find_last_bit(cpu->sve_vq_map, max_vq) + 1;
->>>      }
->>>  
->>> @@ -358,16 +399,48 @@ void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
->>>      assert(max_vq != 0);
->>>      bitmap_clear(cpu->sve_vq_map, max_vq, ARM_MAX_VQ - max_vq);
->>>  
->>> -    /* Ensure all required powers-of-two are enabled. */
->>> -    for (vq = pow2floor(max_vq); vq >= 1; vq >>= 1) {
->>> -        if (!test_bit(vq - 1, cpu->sve_vq_map)) {
->>> -            error_setg(errp, "cannot disable sve%d", vq * 128);
->>> -            error_append_hint(errp, "sve%d is required as it "
->>> -                              "is a power-of-two length smaller than "
->>> -                              "the maximum, sve%d\n",
->>> -                              vq * 128, max_vq * 128);
->>> +    if (kvm_enabled()) {
->>> +        /* Ensure the set of lengths matches what KVM supports. */
->>> +        bitmap_xor(tmp, cpu->sve_vq_map, kvm_supported, max_vq);
->>> +        if (!bitmap_empty(tmp, max_vq)) {
->>> +            vq = find_last_bit(tmp, max_vq) + 1;
->>> +            if (test_bit(vq - 1, cpu->sve_vq_map)) {
->>> +                if (cpu->sve_max_vq) {
->>> +                    error_setg(errp, "cannot set sve-max-vq=%d",
->>> +                               cpu->sve_max_vq);
->>> +                    error_append_hint(errp, "This KVM host does not support "
->>> +                                      "the vector length %d-bits.\n",
->>> +                                      vq * 128);
->>> +                    error_append_hint(errp, "It may not be possible to use "
->>> +                                      "sve-max-vq with this KVM host. Try "
->>> +                                      "using only sve<N> properties.\n");
->>> +                } else {
->>> +                    error_setg(errp, "cannot enable sve%d", vq * 128);
->>> +                    error_append_hint(errp, "This KVM host does not support "
->>> +                                      "the vector length %d-bits.\n",
->>> +                                      vq * 128);
->>> +                }
->>> +            } else {
->>> +                error_setg(errp, "cannot disable sve%d", vq * 128);
->> I am not sure about the above message. what is the vq value supposed to
->> be? For instance if we previously entered the
->> "if (!bitmap_empty(cpu->sve_vq_map, ARM_MAX_VQ)) {" path
-> 
-> 'vq' here should be enabled because it's a dependency for the max-vq.
-> If the user had enabled it or left it uninitialized (allowing it to
-> be auto-enabled) then we wouldn't be here. To get here the user must
-> have explicitly disabled it. Hence the 'cannot disable' message.
-OK you're right. Got it.
-
-Eric
-
-> 
->>> +                error_append_hint(errp, "The KVM host requires all "
->>> +                                  "supported vector lengths smaller "
->>> +                                  "than %d bits to also be enabled.\n",
->>> +                                  max_vq * 128);
->>> +            }
->>>              return;
->>>          }
->>> +    } else {
->>> +        /* Ensure all required powers-of-two are enabled. */
->>> +        for (vq = pow2floor(max_vq); vq >= 1; vq >>= 1) {
->>> +            if (!test_bit(vq - 1, cpu->sve_vq_map)) {
->>> +                error_setg(errp, "cannot disable sve%d", vq * 128);
->>> +                error_append_hint(errp, "sve%d is required as it "
->>> +                                  "is a power-of-two length smaller than "
->>> +                                  "the maximum, sve%d\n",
->>> +                                  vq * 128, max_vq * 128);
->>> +                return;
->>> +            }
->>> +        }
->>>      }
->>>  
->>>      /* From now on sve_max_vq is the actual maximum supported length. */
->>> @@ -411,13 +484,22 @@ static void cpu_max_set_sve_max_vq(Object *obj, Visitor *v, const char *name,
->>>      Error *err = NULL;
->>>  
->>>      visit_type_uint32(v, name, &cpu->sve_max_vq, &err);
->>> +    if (err) {
->>> +        error_propagate(errp, err);
->>> +        return;
->>> +    }
->>>  
->>> -    if (!err && (cpu->sve_max_vq == 0 || cpu->sve_max_vq > ARM_MAX_VQ)) {
->>> -        error_setg(&err, "unsupported SVE vector length");
->>> -        error_append_hint(&err, "Valid sve-max-vq in range [1-%d]\n",
->>> +    if (kvm_enabled() && !kvm_arm_sve_supported(CPU(cpu))) {
->>> +        error_setg(errp, "cannot set sve-max-vq");
->>> +        error_append_hint(errp, "SVE not supported by KVM on this host\n");
->>> +        return;
->>> +    }
->>> +
->>> +    if (cpu->sve_max_vq == 0 || cpu->sve_max_vq > ARM_MAX_VQ) {
->>> +        error_setg(errp, "unsupported SVE vector length");
->>> +        error_append_hint(errp, "Valid sve-max-vq in range [1-%d]\n",
->>>                            ARM_MAX_VQ);
->>>      }
->>> -    error_propagate(errp, err);
->>>  }
->>>  
->>>  static void cpu_arm_get_sve_vq(Object *obj, Visitor *v, const char *name,
->>> @@ -450,6 +532,12 @@ static void cpu_arm_set_sve_vq(Object *obj, Visitor *v, const char *name,
->>>          return;
->>>      }
->>>  
->>> +    if (value && kvm_enabled() && !kvm_arm_sve_supported(CPU(cpu))) {
->>> +        error_setg(errp, "cannot enable %s", name);
->>> +        error_append_hint(errp, "SVE not supported by KVM on this host\n");
->>> +        return;
->>> +    }
->>> +
->>>      if (value) {
->>>          set_bit(vq - 1, cpu->sve_vq_map);
->>>      } else {
->>> @@ -607,20 +695,19 @@ static void aarch64_max_initfn(Object *obj)
->>>          cpu->ctr = 0x80038003; /* 32 byte I and D cacheline size, VIPT icache */
->>>          cpu->dcz_blocksize = 7; /*  512 bytes */
->>>  #endif
->>> -
->>> -        object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
->>> -                            cpu_max_set_sve_max_vq, NULL, NULL, &error_fatal);
->>> -
->>> -        for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
->>> -            char name[8];
->>> -            sprintf(name, "sve%d", vq * 128);
->>> -            object_property_add(obj, name, "bool", cpu_arm_get_sve_vq,
->>> -                                cpu_arm_set_sve_vq, NULL, NULL, &error_fatal);
->>> -        }
->>>      }
->>>  
->>>      object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
->>>                          cpu_arm_set_sve, NULL, NULL, &error_fatal);
->>> +    object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
->>> +                        cpu_max_set_sve_max_vq, NULL, NULL, &error_fatal);
->>> +
->>> +    for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
->>> +        char name[8];
->>> +        sprintf(name, "sve%d", vq * 128);
->>> +        object_property_add(obj, name, "bool", cpu_arm_get_sve_vq,
->>> +                            cpu_arm_set_sve_vq, NULL, NULL, &error_fatal);
->>> +    }
->>>  }
->>>  
->>>  struct ARMCPUInfo {
->>> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
->>> index f96649ae0349..cff4217a8469 100644
->>> --- a/target/arm/kvm64.c
->>> +++ b/target/arm/kvm64.c
->>> @@ -613,6 +613,100 @@ bool kvm_arm_sve_supported(CPUState *cpu)
->>>      return kvm_check_extension(s, KVM_CAP_ARM_SVE);
->>>  }
->>>  
->>> +QEMU_BUILD_BUG_ON(KVM_ARM64_SVE_VQ_MIN != 1);
->>> +
->>> +void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map)
->>> +{
->>> +    /* Only call this function if kvm_arm_sve_supported() returns true. */
->>> +    static uint64_t vls[KVM_ARM64_SVE_VLS_WORDS];
->>> +    static bool probed;
->>> +    uint32_t vq = 0;
->>> +    int i, j;
->>> +
->>> +    bitmap_clear(map, 0, ARM_MAX_VQ);
->>> +
->>> +    /*
->>> +     * KVM ensures all host CPUs support the same set of vector lengths.
->>> +     * So we only need to create the scratch VCPUs once and then cache
->>> +     * the results.
->>> +     */
->>> +    if (!probed) {
->>> +        struct kvm_vcpu_init init = {
->>> +            .target = -1,
->>> +            .features[0] = (1 << KVM_ARM_VCPU_SVE),
->>> +        };
->>> +        struct kvm_one_reg reg = {
->>> +            .id = KVM_REG_ARM64_SVE_VLS,
->>> +            .addr = (uint64_t)&vls[0],
->>> +        };
->>> +        int fdarray[3], ret;
->>> +
->>> +        probed = true;
->>> +
->>> +        if (!kvm_arm_create_scratch_host_vcpu(NULL, fdarray, &init)) {
->>> +            error_report("failed to create scratch VCPU with SVE enabled");
->>> +            abort();
->>> +        }
->>> +        ret = ioctl(fdarray[2], KVM_GET_ONE_REG, &reg);
->>> +        kvm_arm_destroy_scratch_host_vcpu(fdarray);
->>> +        if (ret) {
->>> +            error_report("failed to get KVM_REG_ARM64_SVE_VLS: %s",
->>> +                         strerror(errno));
->>> +            abort();
->>> +        }
->>> +
->>> +        for (i = KVM_ARM64_SVE_VLS_WORDS - 1; i >= 0; --i) {
->>> +            if (vls[i]) {
->>> +                vq = 64 - clz64(vls[i]) + i * 64;
->>> +                break;
->>> +            }
->>> +        }
->>> +        if (vq > ARM_MAX_VQ) {
->>> +            warn_report("KVM supports vector lengths larger than "
->>> +                        "QEMU can enable");
->>> +        }
->>> +    }
->>> +
->>> +    for (i = 0; i < KVM_ARM64_SVE_VLS_WORDS; ++i) {
->>> +        if (!vls[i]) {
->>> +            continue;
->>> +        }
->>> +        for (j = 1; j <= 64; ++j) {
->>> +            vq = j + i * 64;
->>> +            if (vq > ARM_MAX_VQ) {
->>> +                return;
->>> +            }
->>> +            if (vls[i] & (1UL << (j - 1))) {
->>> +                set_bit(vq - 1, map);
->>> +            }
->>> +        }
->>> +    }
->>> +}
->>> +
->>> +static int kvm_arm_sve_set_vls(CPUState *cs)
->>> +{
->>> +    uint64_t vls[KVM_ARM64_SVE_VLS_WORDS] = {0};
->>> +    struct kvm_one_reg reg = {
->>> +        .id = KVM_REG_ARM64_SVE_VLS,
->>> +        .addr = (uint64_t)&vls[0],
->>> +    };
->>> +    ARMCPU *cpu = ARM_CPU(cs);
->>> +    uint32_t vq;
->>> +    int i, j;
->>> +
->>> +    assert(cpu->sve_max_vq <= KVM_ARM64_SVE_VQ_MAX);
->>> +
->>> +    for (vq = 1; vq <= cpu->sve_max_vq; ++vq) {
->>> +        if (test_bit(vq - 1, cpu->sve_vq_map)) {
->>> +            i = (vq - 1) / 64;
->>> +            j = (vq - 1) % 64;
->>> +            vls[i] |= 1UL << j;
->>> +        }
->>> +    }
->>> +
->>> +    return kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
->>> +}
->>> +
->>>  #define ARM_CPU_ID_MPIDR       3, 0, 0, 0, 5
->>>  
->>>  int kvm_arch_init_vcpu(CPUState *cs)
->>> @@ -624,7 +718,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
->>>  
->>>      if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE ||
->>>          !object_dynamic_cast(OBJECT(cpu), TYPE_AARCH64_CPU)) {
->>> -        fprintf(stderr, "KVM is not supported for this guest CPU type\n");
->>> +        error_report("KVM is not supported for this guest CPU type");
->>>          return -EINVAL;
->>>      }
->>>  
->>> @@ -660,6 +754,10 @@ int kvm_arch_init_vcpu(CPUState *cs)
->>>      }
->>>  
->>>      if (cpu_isar_feature(aa64_sve, cpu)) {
->>> +        ret = kvm_arm_sve_set_vls(cs);
->>> +        if (ret) {
->>> +            return ret;
->>> +        }
->>>          ret = kvm_arm_vcpu_finalize(cs, KVM_ARM_VCPU_SVE);
->>>          if (ret) {
->>>              return ret;
->>> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
->>> index 1151877f97ea..a1cc6513f72b 100644
->>> --- a/target/arm/kvm_arm.h
->>> +++ b/target/arm/kvm_arm.h
->>> @@ -212,6 +212,17 @@ typedef struct ARMHostCPUFeatures {
->>>   */
->>>  bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf);
->>>  
->>> +/**
->>> + * kvm_arm_sve_get_vls:
->>> + * @cs: CPUState
->>> + * @map: bitmap to fill in
->>> + *
->>> + * Get all the SVE vector lengths supported by the KVM host, setting
->>> + * the bits corresponding to their length in quadwords minus one
->>> + * (vq - 1) in @map up to ARM_MAX_VQ.
->>> + */
->>> +void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map);
->>> +
->>>  /**
->>>   * kvm_arm_set_cpu_features_from_host:
->>>   * @cpu: ARMCPU to set the features for
->>> @@ -315,6 +326,7 @@ static inline int kvm_arm_vgic_probe(void)
->>>  static inline void kvm_arm_pmu_set_irq(CPUState *cs, int irq) {}
->>>  static inline void kvm_arm_pmu_init(CPUState *cs) {}
->>>  
->>> +static inline void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map) {}
->>>  #endif
->>>  
->>>  static inline const char *gic_class_name(void)
->>> diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
->>> index d50f98cb6aea..a0129aebf409 100644
->>> --- a/tests/arm-cpu-features.c
->>> +++ b/tests/arm-cpu-features.c
->>> @@ -117,6 +117,17 @@ static QDict *resp_get_props(QDict *resp)
->>>      return qdict;
->>>  }
->>>  
->>> +static bool resp_get_feature(QDict *resp, const char *feature)
->>> +{
->>> +    QDict *props;
->>> +
->>> +    g_assert(resp);
->>> +    g_assert(resp_has_props(resp));
->>> +    props = resp_get_props(resp);
->>> +    g_assert(qdict_get(props, feature));
->>> +    return qdict_get_bool(props, feature);
->>> +}
->>> +
->>>  #define assert_has_feature(qts, cpu_type, feature)                     \
->>>  ({                                                                     \
->>>      QDict *_resp = do_query_no_props(qts, cpu_type);                   \
->>> @@ -336,6 +347,25 @@ static void sve_tests_sve_off(const void *data)
->>>      qtest_quit(qts);
->>>  }
->>>  
->>> +static void sve_tests_sve_off_kvm(const void *data)
->>> +{
->>> +    QTestState *qts;
->>> +
->>> +    qts = qtest_init(MACHINE "-accel kvm -cpu max,sve=off");
->>> +
->>> +    /*
->>> +     * We don't know if this host supports SVE so we don't
->>> +     * attempt to test enabling anything. We only test that
->>> +     * everything is disabled (as it should be with sve=off)
->>> +     * and that using sve<N>=off to explicitly disable vector
->>> +     * lengths is OK too.
->>> +     */
->>> +    assert_sve_vls(qts, "max", 0, NULL);
->>> +    assert_sve_vls(qts, "max", 0, "{ 'sve128': false }");
->>> +
->>> +    qtest_quit(qts);
->>> +}
->>> +
->>>  static void test_query_cpu_model_expansion(const void *data)
->>>  {
->>>      QTestState *qts;
->>> @@ -385,12 +415,81 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
->>>      assert_has_feature(qts, "host", "pmu");
->>>  
->>>      if (g_str_equal(qtest_get_arch(), "aarch64")) {
->>> +        bool kvm_supports_sve;
->>> +        char max_name[8], name[8];
->>> +        uint32_t max_vq, vq;
->>> +        uint64_t vls;
->>> +        QDict *resp;
->>> +        char *error;
->>> +
->>>          assert_has_feature(qts, "host", "aarch64");
->>> -        assert_has_feature(qts, "max", "sve");
->>>  
->>>          assert_error(qts, "cortex-a15",
->>>              "We cannot guarantee the CPU type 'cortex-a15' works "
->>>              "with KVM on this host", NULL);
->>> +
->>> +        assert_has_feature(qts, "max", "sve");
->>> +        resp = do_query_no_props(qts, "max");
->>> +        kvm_supports_sve = resp_get_feature(resp, "sve");
->>> +        vls = resp_get_sve_vls(resp);
->>> +        qobject_unref(resp);
->>> +
->>> +        if (kvm_supports_sve) {
->>> +            g_assert(vls != 0);
->>> +            max_vq = 64 - __builtin_clzll(vls);
->>> +            sprintf(max_name, "sve%d", max_vq * 128);
->>> +
->>> +            /* Enabling a supported length is of course fine. */
->>> +            assert_sve_vls(qts, "max", vls, "{ %s: true }", max_name);
->>> +
->>> +            /* Get the next supported length smaller than max-vq. */
->>> +            vq = 64 - __builtin_clzll(vls & ~BIT(max_vq - 1));
->>> +            if (vq) {
->>> +                /*
->>> +                 * We have at least one length smaller than max-vq,
->>> +                 * so we can disable max-vq.
->>> +                 */
->>> +                assert_sve_vls(qts, "max", (vls & ~BIT(max_vq - 1)),
->>> +                               "{ %s: false }", max_name);
->>> +
->>> +                /*
->>> +                 * Smaller, supported vector lengths cannot be disabled
->>> +                 * unless all larger, supported vector lengths are also
->>> +                 * disabled.
->>> +                 */
->>> +                sprintf(name, "sve%d", vq * 128);
->>> +                error = g_strdup_printf("cannot disable %s", name);
->>> +                assert_error(qts, "max", error,
->>> +                             "{ %s: true, %s: false }",
->>> +                             max_name, name);
->>> +                g_free(error);
->>> +            }
->>> +
->>> +            /*
->>> +             * The smallest, supported vector length is required, because
->>> +             * we need at least one vector length enabled.
->>> +             */
->>> +            vq = __builtin_ffsll(vls);
->>> +            sprintf(name, "sve%d", vq * 128);
->>> +            error = g_strdup_printf("cannot disable %s", name);
->>> +            assert_error(qts, "max", error, "{ %s: false }", name);
->>> +            g_free(error);
->>> +
->>> +            /* Get an unsupported length. */
->>> +            for (vq = 1; vq <= max_vq; ++vq) {
->>> +                if (!(vls & BIT(vq - 1))) {
->>> +                    break;
->>> +                }
->>> +            }
->>> +            if (vq <= SVE_MAX_VQ) {
->>> +                sprintf(name, "sve%d", vq * 128);
->>> +                error = g_strdup_printf("cannot enable %s", name);
->>> +                assert_error(qts, "max", error, "{ %s: true }", name);
->>> +                g_free(error);
->>> +            }
->>> +        } else {
->>> +            g_assert(vls == 0);
->>> +        }
->>>      } else {
->>>          assert_error(qts, "host",
->>>                       "'pmu' feature not supported by KVM on this host",
->>> @@ -427,6 +526,10 @@ int main(int argc, char **argv)
->>>      if (kvm_available) {
->>>          qtest_add_data_func("/arm/kvm/query-cpu-model-expansion",
->>>                              NULL, test_query_cpu_model_expansion_kvm);
->>> +        if (g_str_equal(qtest_get_arch(), "aarch64")) {
->>> +            qtest_add_data_func("/arm/kvm/query-cpu-model-expansion/sve-off",
->>> +                                NULL, sve_tests_sve_off_kvm);
->>> +        }
->>>      }
->>>  
->>>      return g_test_run();
->>>
->> Besides,
->> Reviewed-by: Eric Auger <eric.auger@redhat.com>
->>
->>
-> 
-> Thanks!
-> 
-> drew 
-> 
+DQoNCj4gLS0tLS1PcmlnaW5hbCBNZXNzYWdlLS0tLS0NCj4gRnJvbTogU2hhbWVlcmFsaSBLb2xv
+dGh1bSBUaG9kaQ0KPiBTZW50OiAyNCBTZXB0ZW1iZXIgMjAxOSAxNzozOQ0KPiBUbzogJ0xhc3ps
+byBFcnNlaycgPGxlcnNla0ByZWRoYXQuY29tPjsgSWdvciBNYW1tZWRvdg0KPiA8aW1hbW1lZG9A
+cmVkaGF0LmNvbT4NCj4gQ2M6IEF1Z2VyIEVyaWMgPGVyaWMuYXVnZXJAcmVkaGF0LmNvbT47IHNo
+YW5ub24uemhhb3NsQGdtYWlsLmNvbTsNCj4gcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnOyBxZW11
+LWRldmVsQG5vbmdudS5vcmc7IHFlbXUtYXJtQG5vbmdudS5vcmc7DQo+IHh1d2VpIChPKSA8eHV3
+ZWk1QGh1YXdlaS5jb20+OyBMaW51eGFybSA8bGludXhhcm1AaHVhd2VpLmNvbT47IEFyZA0KPiBC
+aWVzaGV1dmVsIDxhcmQuYmllc2hldXZlbEBsaW5hcm8ub3JnPjsgTGVpZiBMaW5kaG9sbSAoTGlu
+YXJvIGFkZHJlc3MpDQo+IDxsZWlmLmxpbmRob2xtQGxpbmFyby5vcmc+DQo+IFN1YmplY3Q6IFJF
+OiBJbnZhbGlkIGJsb2Igc2l6ZSBvbiBOVkRJTU0gaG90LWFkZCAod2FzOiBSRTogW1JGQyBQQVRD
+SCAwLzRdDQo+IEFSTSB2aXJ0OiBBQ1BJIG1lbW9yeSBob3RwbHVnIHN1cHBvcnQpDQogDQpbLi4u
+XQ0KIA0KPiANCj4gPiA+Pj4+IEhvdyBhYm91dCB0aGlzLg0KPiA+ID4+Pj4NCj4gPiA+Pj4+ICgx
+KSBUaGUgZmlybXdhcmUgbG9va3MgdXAgdGhlIGZ3X2NmZyBmaWxlIGNhbGxlZCAiZXRjL3RhYmxl
+LWxvYWRlciINCj4gPiA+Pj4+IGluIHRoZSBmd19jZmcgZmlsZSBkaXJlY3RvcnkgKGlkZW50aWZp
+ZWQgYnkgY29uc3RhbnQgc2VsZWN0b3Iga2V5DQo+ID4gPj4+PiAweDAwMTksIEZXX0NGR19GSUxF
+X0RJUikuDQo+ID4gPj4+Pg0KPiA+ID4+Pj4gKDIpIFRoZSBkaXJlY3RvcnkgZW50cnksIG9uY2Ug
+Zm91bmQsIHRlbGxzIHRoZSBmaXJtd2FyZSB0d28gdGhpbmdzDQo+ID4gPj4+PiBzaW11bHRhbmVv
+dXNseS4gVGhlIHNlbGVjdG9yIGtleSwgYW5kIHRoZSBzaXplIG9mIHRoZSBibG9iLg0KPiA+ID4+
+Pj4NCj4gPiA+Pj4+ICgzKSBUaGUgZmlybXdhcmUgc2VsZWN0cyB0aGUgc2VsZWN0b3Iga2V5IGZy
+b20gc3RlcCAoMikuDQo+ID4gPj4+Pg0KPiA+ID4+Pj4gKDQpIFFFTVUgcmVnZW5lcmF0ZXMgdGhl
+IEFDUEkgcGF5bG9hZCAoYXMgYSBzZWxlY3QgY2FsbGJhY2spLg0KPiA+ID4+Pj4NCj4gPiA+Pj4+
+ICg1KSBUaGUgZmlybXdhcmUgcmVhZHMgdGhlIG51bWJlciBvZiBieXRlcyBmcm9tIHRoZSBmd19j
+ZmcgYmxvYg0KPiA+ID4+Pj4gdGhhdCBpdCBsZWFybmVkIGluIHN0ZXAgKDIpLg0KPiA+ID4+Pj4N
+Cj4gPiA+Pj4+IEhlcmUncyB0aGUgcHJvYmxlbS4gQXMgbG9uZyBhcyBRRU1VIHVzZWQgdG8gcGVy
+Zm9ybSBzdGVwICg0KSBvbmx5DQo+ID4gPj4+PiBmb3IgdGhlIHB1cnBvc2Ugb2YgcmVmcmVzaGlu
+ZyBQQ0kgcmVzb3VyY2VzIGluIHRoZSBBQ1BJIHBheWxvYWQsDQo+ID4gPj4+PiBzdGVwICg0KSB3
+b3VsZG4ndCAqcmVzaXplKiB0aGUgYmxvYi4NCj4gPiA+Pj4+DQo+ID4gPj4+PiBIb3dldmVyLCBp
+ZiBzdGVwICg0KSBlbmxhcmdlcyB0aGUgYmxvYiwgdGhlbiB0aGUgYnl0ZSBjb3VudCB0aGF0DQo+
+ID4gPj4+PiBzdGVwICg1KSB1c2VzIC0tIGZyb20gc3RlcCAoMikgLS0gZm9yIHJlYWRpbmcsIGlz
+IG9ic29sZXRlLg0KPiA+ID4+DQo+ID4gPj4+IEkndmUgdGhvdWdodCB0aGF0IHdhcyBhIHByb2Js
+ZW0gd2l0aCBJTyBiYXNlZCBmd19jZmcsIGFzIHJlYWRpbmcNCj4gPiA+Pj4gc2l6ZS9jb250ZW50
+IHdlcmUgc2VwYXJhdGVzIHN0ZXBzIGFuZCB0aGF0IGl0IHdhcyBzb2x2ZWQgYnkgRE1BDQo+ID4g
+Pj4+IGJhc2VkIGZ3X2NmZyBmaWxlIHJlYWQuDQo+ID4gPj4NCj4gPiA+PiBUaGUgRE1BIGJhY2tl
+bmQgaXMgbm90IHJlbGV2YW50IGZvciB0aGlzIHF1ZXN0aW9uLCBmb3IgdHdvIHJlYXNvbnM6DQo+
+ID4gPj4NCj4gPiA+PiAoYSkgVGhlIHF1ZXN0aW9uIHdoZXRoZXIgdGhlIGZ3X2NmZyB0cmFuc2Zl
+ciB0YWtlcyBwbGFjZXMgd2l0aCBwb3J0DQo+ID4gPj4gSU8gdnMuIERNQSBpcyBoaWRkZW4gZnJv
+bSB0aGUgZndfY2ZnIGNsaWVudCBjb2RlOyB0aGF0IGNvZGUgZ29lcw0KPiA+ID4+IHRocm91Z2gg
+YW4gYWJzdHJhY3QgbGlicmFyeSBBUEkuDQo+ID4gPj4NCj4gPiA+PiAoYikgV2hpbGUgdGhlIERN
+QSBtZXRob2QgaW5kZWVkIGxldHMgdGhlIGZpcm13YXJlIHNwZWNpZnkgdGhlIGRldGFpbHMNCj4g
+PiA+PiBvZiB0aGUgdHJhbnNmZXIgd2l0aCBvbmUgYWN0aW9uLCB0aGUgaXNzdWUgaXMgd2l0aCB0
+aGUgbnVtYmVyIG9mDQo+ID4gPj4gYnl0ZXMgdGhhdCB0aGUgZmlybXdhcmUgcmVxdWVzdHMgKHRo
+YXQgaXMsIG5vdCB3aXRoICpob3cqIHRoZQ0KPiA+ID4+IGZpcm13YXJlIHJlcXVlc3RzIHRoZSB0
+cmFuc2ZlcikuIFRoZSBmaXJtd2FyZSBoYXMgdG8ga25vdyB0aGUgc2l6ZSBvZg0KPiA+ID4+IHRo
+ZSB0cmFuc2ZlciBiZWZvcmUgaXQgY2FuIGluaXRpYXRlIHRoZSB0cmFuc2ZlciAocmVnYXJkbGVz
+cyBvZiBwb3J0DQo+ID4gPj4gSU8gdnMuIERNQSkuDQo+ID4gPj4NCj4gPiA+Pg0KPiA+ID4+IE15
+IHF1ZXN0aW9uIGlzOiBhc3N1bWUgdGhlIGZpcm13YXJlIGl0ZW0gaW4gcXVlc3Rpb24gaXMgc2Vs
+ZWN0ZWQsIGFuZA0KPiA+ID4+IHRoZSBRRU1VLXNpZGUgc2VsZWN0IGNhbGxiYWNrIHJ1bnMgKHJl
+Z2VuZXJhdGluZyB0aGUgQUNQSSBwYXlsb2FkKS4NCj4gPiA+PiBEb2VzIHRoaXMgYWN0aW9uIHVw
+ZGF0ZSB0aGUgYmxvYiBzaXplIGluIHRoZSBmd19jZmcgZmlsZSBkaXJlY3RvcnkgYXMNCj4gPiA+
+PiB3ZWxsPw0KPiA+ID4NCj4gPiA+IEkgdGhpbmsgaXQgZG9lc24ndCB1cGRhdGUgdGhlIGJsb2Ig
+c2l6ZSBvbiBzZWxlY3QgY2FsbGJhY2sgd2hpY2ggaXMNCj4gPiA+IHRoZSByb290IGNhdXNlIG9m
+IHRoaXMgaXNzdWUuIEFuZCB0aGUgcmVhc29uIGxvb2tzIGxpa2UsDQo+ID4gPiBxZW11X3JhbV9y
+ZXNpemUoKSBmdW5jdGlvbiByZXR1cm5zIHdpdGhvdXQgaW52b2tpbmcgdGhlIGNhbGxiYWNrIHRv
+DQo+ID4gPiB1cGRhdGUgdGhlIGJsb2Igc2l6ZS4NCj4gPiA+DQo+ID4gPiBPbiBib290IHVwLCBR
+ZW11IGJ1aWxkcyB0aGUgdGFibGUgYW5kIGV4cG9zZXMgaXQgdG8gZ3Vlc3QsDQo+ID4gPiAgICAg
+ICB2aXJ0X2FjcGlfc2V0dXAoKQ0KPiA+ID4gICAgICAgICBhY3BpX2FkZF9yb21fYmxvYigpDQo+
+ID4gPiAgICAgICAgICAgcm9tX2FkZF9ibG9iKCkNCj4gPiA+ICAgICAgICAgICAgIHJvbV9zZXRf
+bXIoKSAgLS0+IG1yIGlzIGFsbG9jYXRlZCBoZXJlIGFuZCByYW1fYmxvY2sNCj4gPiB1c2VkX2xl
+bmd0aCA9IEhPU1RfUEFHRV9BTElHTihibG9iIHNpemUpOw0KPiA+ID4gICAgICAgICAgICAgZndf
+Y2ZnX2FkZF9maWxlX2NhbGxiYWNrKCkNCj4gPiA+ICAgICAgICAgICAgICAgZndfY2ZnX2FkZF9i
+eXRlc19jYWxsYmFjaygpIC0tPiBUaGlzIHVzZXMgdGhlIGJsb2Igc2l6ZQ0KPiA+IHBhc3NlZCBp
+bnRvIGl0Lg0KPiA+ID4NCj4gPiA+IE9uIHNlbGVjdCBjYWxsYmFjayBwYXRoLA0KPiA+ID4NCj4g
+PiA+IHZpcnRfYWNwaV9idWlsZF91cGRhdGUoKQ0KPiA+ID4gICAgYWNwaV9yYW1fdXBkYXRlKCkN
+Cj4gPiA+ICAgICBtZW1vcnlfcmVnaW9uX3JhbV9yZXNpemUoKQ0KPiA+ID4gICAgICAgcWVtdV9y
+YW1fcmVzaXplKCkgLS0+LiBIZXJlIHRoZSBuZXdzaXplIGdldHMgYWxpZ25lZCB0bw0KPiBIT1NU
+X1BBR0UNCj4gPiBhbmQgY2FsbGJhY2sgaXMgb25seSBjYWxsZWQgdXNlZF9sZW5ndGggIT0gbmV3
+c2l6ZS4NCj4gPiA+DQo+ID4gPiBodHRwczovL2dpdGh1Yi5jb20vcWVtdS9xZW11L2Jsb2IvbWFz
+dGVyL2V4ZWMuYyNMMjE4MA0KPiA+ID4NCj4gPiA+IERlYnVnIGxvZ3M6DQo+ID4gPiBJbml0aWFs
+IGJvb3Q6DQo+ID4gPiAjI1FFTVVfREVCVUcjIyByb21fYWRkX2Jsb2I6IGZpbGUgZXRjL2FjcGkv
+dGFibGVzIHNpemUgMHg2NGY3DQo+ID4gPiAjI1FFTVVfREVCVUcjIyBmd19jZmdfYWRkX2J5dGVz
+X2NhbGxiYWNrOiBrZXkgMHgyMSBsZW4gMHg2NGY3DQo+ID4gPiAuLi4uLi4uLg0KPiA+ID4gLi4u
+Li4uLi4NCj4gPiA+ICMjI1VFRkkjIyMjIEluc3RhbGxRZW11RndDZmdUYWJsZXM6ICJldGMvdGFi
+bGUtbG9hZGVyIiBoYXMgRndDZmdJdGVtDQo+ID4gMHgyNyBzaXplIDB4RDAwDQo+ID4gPiAjI1FF
+TVVfREVCVUcjIyB2aXJ0X2FjcGlfYnVpbGRfdXBkYXRlOg0KPiA+ID4gIyNRRU1VX0RFQlVHIyMg
+YWNwaV9yYW1fdXBkYXRlOiBzaXplIDB4NjRmNw0KPiA+ID4gIyNRRU1VX0RFQlVHIyMgcWVtdV9y
+YW1fcmVzaXplOiBpZHN0ciAvcm9tQGV0Yy9hY3BpL3RhYmxlcw0KPiA+IHVzZWRfbGVuZ3RoICAw
+eDcwMDAgbmV3c2l6ZSAweDcwMDAgLS0+IE5vIGNhbGxiYWNrLg0KPiA+ID4gLi4uLi4NCj4gPiA+
+ICMjIyMjI1VFRkkjIyMjIyMgUHJvY2Vzc0NtZEFsbG9jYXRlOg0KPiA+IFFlbXVGd0NmZ0ZpbmRG
+aWxlKCJldGMvYWNwaS90YWJsZXMiKTogc2l6ZSAweDY0RjcgLS0+IFVFRkkgZ2V0IHRoZSBhY3R1
+YWwNCj4gc2l6ZSwNCj4gPiB3aGljaCBpcyBmaW5lIGZvciBub3cuDQo+ID4gPg0KPiA+ID4gSG90
+LWFkZCBudmRpbW1zIGFuZCByZWJvb3QuDQo+ID4gPg0KPiA+ID4gcm9vdEB1YnVudHU6LyMgcmVi
+b290DQo+ID4gPiAuLi4uLi4uDQo+ID4gPiAuLi4uLi4uLg0KPiA+ID4gIyMjVUVGSSMjIyMgSW5z
+dGFsbFFlbXVGd0NmZ1RhYmxlczogImV0Yy90YWJsZS1sb2FkZXIiIGhhcyBGd0NmZ0l0ZW0NCj4g
+PiAweDI3IHNpemUgMHhEMDANCj4gPiA+ICMjUUVNVV9ERUJVRyMjIHZpcnRfYWNwaV9idWlsZF91
+cGRhdGU6DQo+ID4gPiAjI1FFTVVfREVCVUcjIyBhY3BpX3JhbV91cGRhdGU6IHNpemUgMHg2NjY3
+IC0tPiBTaXplIGNoYW5nZWQuDQo+ID4gPiAjI1FFTVVfREVCVUcjIyBxZW11X3JhbV9yZXNpemU6
+IGlkc3RyIC9yb21AZXRjL2FjcGkvdGFibGVzDQo+ID4gdXNlZF9sZW5ndGggIDB4NzAwMCBuZXdz
+aXplIDB4NzAwMCAtLT4gbmV3c2l6ZSBpcyBzdGlsbCBhbGlnbmVkIHRvIDB4NzAwMA0KPiBhbmQN
+Cj4gPiBubyBjYWxsYmFjayB0byB1cGRhdGUuDQo+ID4gPiAuLi4uLi4NCj4gPiA+ICMjIyMjI1VF
+RkkjIyMjIyMgUHJvY2Vzc0NtZEFsbG9jYXRlOg0KPiA+IFFlbXVGd0NmZ0ZpbmRGaWxlKCJldGMv
+YWNwaS90YWJsZXMiKTogc2l6ZSAweDY0RjcgLS0+VUVGSSBzdGlsbCBzZWVzIHRoZSBvbGQNCj4g
+PiB2YWx1ZSBhbmQgZmFpbHMuDQo+ID4gPg0KPiA+ID4gVGhpcyBjYW4gYmUgZml4ZWQgYnksDQo+
+ID4gPg0KPiA+ID4gZGlmZiAtLWdpdCBhL2h3L2FybS92aXJ0LWFjcGktYnVpbGQuYyBiL2h3L2Fy
+bS92aXJ0LWFjcGktYnVpbGQuYyBpbmRleA0KPiA+IGYzYmQ0NTY3NWIuLjc5ZGEzZmQzNWQgMTAw
+NjQ0DQo+ID4gPiAtLS0gYS9ody9hcm0vdmlydC1hY3BpLWJ1aWxkLmMNCj4gPiA+ICsrKyBiL2h3
+L2FybS92aXJ0LWFjcGktYnVpbGQuYw0KPiA+ID4gQEAgLTg1NCw2ICs4NTQsOSBAQCB2b2lkIHZp
+cnRfYWNwaV9idWlsZChWaXJ0TWFjaGluZVN0YXRlICp2bXMsDQo+ID4gQWNwaUJ1aWxkVGFibGVz
+ICp0YWJsZXMpDQo+ID4gPiAgICAgICAgICBidWlsZF9yc2RwKHRhYmxlcy0+cnNkcCwgdGFibGVz
+LT5saW5rZXIsICZyc2RwX2RhdGEpOw0KPiA+ID4gICAgICB9DQo+ID4gPg0KPiA+ID4gKyAgICBn
+X2FycmF5X3NldF9zaXplKHRhYmxlc19ibG9iLA0KPiA+ID4gKw0KPiA+IFRBUkdFVF9QQUdFX0FM
+SUdOKGFjcGlfZGF0YV9sZW4odGFibGVzX2Jsb2IpKSk7DQo+ID4gPiArDQo+ID4gPiAgICAgIC8q
+IENsZWFudXAgbWVtb3J5IHRoYXQncyBubyBsb25nZXIgdXNlZC4gKi8NCj4gPiA+ICAgICAgZ19h
+cnJheV9mcmVlKHRhYmxlX29mZnNldHMsIHRydWUpOw0KPiA+ID4gIH0NCj4gPiA+DQo+ID4gPiBC
+dXQgSSBhbSBub3Qgc3VyZSB0aGlzIGlzIHRoZSBiZXN0IHRvIHdheSBmaXggdGhpcyBpc3N1ZSAo
+T3IgSSBhbQ0KPiA+ID4gbWlzc2luZyBzb21ldGhpbmcgaGVyZSkuDQo+ID4gPg0KPiA+ID4gUGxl
+YXNlIGxldCBtZSBrbm93Lg0KPiA+DQo+ID4gVGhlIGFib3ZlIFFFTVUgcGF0Y2gsIGZvciB2aXJ0
+X2FjcGlfYnVpbGQoKSwgbWF5IGJlIG5lY2Vzc2FyeSwgYnV0IEkNCj4gPiBkb24ndCB0aGluayBp
+dCBpcyBzdWZmaWNpZW50Lg0KPiA+DQo+ID4gRm9yIHRoZSBmaXJtd2FyZSB0byBzZWUgdGhlIHVw
+ZGF0ZWQgKGVubGFyZ2VkKSBibG9iLCB0d28gdGhpbmdzIGFyZQ0KPiA+IHJlcXVpcmVkOg0KPiA+
+DQo+ID4gKGEpIFFFTVUgdG8gdXBkYXRlIHRoZSBibG9iIHNpemUgaW4gdGhlIGZ3X2NmZyBkaXJl
+Y3RvcnkgZW50cnkuDQo+ID4NCj4gPiBOb3RlOiB0byB0aGUgZmlybXdhcmUsIGl0IGlzIHRvdGFs
+bHkgaXJyZWxldmFudCBpZiBRRU1VIHVwZGF0ZXMgc29tZQ0KPiA+ICpvdGhlciogdmFsdWUgb3Ig
+ZmllbGQgdGhhdCByZWZsZWN0cyB0aGUgZnJlc2ggYmxvYiBzaXplLiBUaGUgb25seSB0aGluZw0K
+PiA+IHRoZSBmaXJtd2FyZSBjYW4gc2VlIGlzIHRoZSBlbnRyeSBpbiB0aGUgRldfQ0ZHX0ZJTEVf
+RElSIGJsb2IuDQo+ID4NCj4gPiBUbyBpbGx1c3RyYXRlIHRoZSBmaWVsZCBJJ20gcmVmZXJyaW5n
+IHRvLCBzZWU6DQo+ID4NCj4gPiAgICAgcy0+ZmlsZXMtPmZbaW5kZXhdLnNpemUgICA9IGNwdV90
+b19iZTMyKGxlbik7DQo+ID4NCj4gPiBpbiBmd19jZmdfYWRkX2ZpbGVfY2FsbGJhY2soKS4NCj4g
+Pg0KPiA+IFNlZSBhbHNvOg0KPiA+DQo+ID4gICAgICAgICAgICAgcy0+ZmlsZXMtPmZbaV0uc2l6
+ZSAgID0gY3B1X3RvX2JlMzIobGVuKTsNCj4gPg0KPiA+IGluIGZ3X2NmZ19tb2RpZnlfZmlsZSgp
+Lg0KPiA+DQo+ID4gVGhhdCAic2l6ZSIgZmllbGQgaXMgd2hhdCB0aGUgZmlybXdhcmUgY2FuIHNl
+ZS4NCj4gDQo+IEFncmVlLiBBbmQgd2hhdCBJIGFtIHRyeWluZyB0byBpbGx1c3RyYXRlIGFib3Zl
+IGlzIHdoeSB0aGlzIHVwZGF0ZSBpcyBub3QNCj4gaGFwcGVuaW5nLg0KPiANCj4gVGhlIFFlbXUg
+cGF0aCBvbiBzZWxlY3Qga2V5IGZyb20gZmlybXdhcmUgaXMoSSB0aGluayksDQo+IA0KPiBmd19j
+Zmdfc2VsZWN0KCkNCj4gIGUtPnNlbGVjdF9jYigpIC0tPkNhbGxiYWNrIHJlZ2lzdGVyZWQgaW4g
+dmlydF9hY3BpX3NldHVwKCkgLS0+DQo+IGFjcGlfYWRkX3JvbV9ibG9iKCkgLi4uLi4gLT4gZndf
+Y2ZnX2FkZF9maWxlX2NhbGxiYWNrKCkNCj4gICB2aXJ0X2FjcGlfYnVpbGRfdXBkYXRlKCkNCj4g
+ICAgYWNwaV9yYW1fdXBkYXRlKCkNCj4gICAgIG1lbW9yeV9yZWdpb25fcmFtX3Jlc2l6ZSgpDQo+
+ICAgICAgcWVtdV9yYW1fcmVzaXplKCkNCj4gICAgICAgYmxvY2stPnJlc2l6ZWQoKSAgLS0+IENh
+bGxiYWNrIHJlZ2lzdGVyZWQgaW4gdmlydF9hY3BpX3NldHVwKCkgLT4NCj4gYWNwaV9hZGRfcm9t
+X2Jsb2IoKS0+IHJvbV9hZGRfYmxvYigpIC0+IHJvbV9zZXRfbXIoKQ0KPiAgICAgICAgZndfY2Zn
+X3Jlc2l6ZWQoKQ0KPiAgICAgICAgIGZ3X2NmZ19tb2RpZnlfZmlsZSgpDQo+ICAgICAgICAgIHMt
+PmZpbGVzLT5mW2ldLnNpemUgID0gY3B1X3RvX2JlMzIobGVuKTsgVXBkYXRlcyB0aGUgc2l6ZSBm
+b3INCj4gZmlybXdhcmUNCj4gDQo+IEJ1dCBhcyBJIHdhcyB0cnlpbmcgdG8gZXhwbGFpbiBhYm92
+ZSwgdGhlIGNhbGxiYWNrIGZ1bmN0aW9uIGZ3X2NmZ19yZXNpemVkKCkgaXMNCj4gbm90DQo+IGlu
+dm9rZWQgaW4gcWVtdV9yYW1fcmVzaXplKCliZWNhdXNlIHdoaWxlIGFkZGluZyB0aGUgbXINCj4g
+cmVnaW9uKHJvbV9zZXRfbXIoKSksDQo+IGl0IHVzZXMgdGhlIGFsaWduZWQgc2l6ZS4gQW5kIGFz
+IGEgcmVzdWx0IGlmIHRoZSB1cGRhdGVkL21vZGlmaWVkIGJsb2Igc2l6ZSBpcyBub3QNCj4gZ3Jl
+YXRlcg0KPiB0aGFuIHRoZSBhbGlnbmVkIHNpemUgdGhlIHFlbXVfcmFtX3Jlc2l6ZSgpIHJldHVy
+bnMgaW1tZWRpYXRlbHkuDQo+IA0KPiBpbnQgcWVtdV9yYW1fcmVzaXplKFJBTUJsb2NrICpibG9j
+aywgcmFtX2FkZHJfdCBuZXdzaXplLCBFcnJvciAqKmVycnApDQo+IHsNCj4gICAgIGFzc2VydChi
+bG9jayk7DQo+IA0KPiAJbmV3c2l6ZSA9IEhPU1RfUEFHRV9BTElHTihuZXdzaXplKTsNCj4gDQo+
+ICAgICBpZiAoYmxvY2stPnVzZWRfbGVuZ3RoID09IG5ld3NpemUpIHsNCj4gICAgICAgICByZXR1
+cm4gMDsNCj4gICAgIH0NCj4gLi4uDQo+IA0KPiAgICAgaWYgKGJsb2NrLT5yZXNpemVkKSB7DQo+
+ICAgICAgICAgYmxvY2stPnJlc2l6ZWQoYmxvY2stPmlkc3RyLCBuZXdzaXplLCBibG9jay0+aG9z
+dCk7ICAtLS0+IHJlZ2lzdGVyZWQNCj4gY2FsbGJhY2ssIGZ3X2NmZ19yZXNpemVkKCkNCj4gICAg
+IH0NCj4gICAgIHJldHVybiAwOw0KPiB9DQoNCkhpIElnb3IsDQoNCkNvdWxkIHlvdSBwbGVhc2Ug
+dGFrZSBhIGxvb2sgYXQgdGhlIGFib3ZlIFFlbXUgc2lkZSBwcm9ibGVtIEkgYW0gdHJ5aW5nIHRv
+DQpleHBsYWluIGhlcmUuIFBsZWFzZSBsZXQgbWUgaWYgaXQgaXMgbm90IGNsZWFyIG9yIG1vcmUg
+ZGV0YWlscyBhcmUgcmVxdWlyZWQuDQoNCj4gPiBOb3RlOiAqYWxsKiByZWxldmFudCBmd19jZmcg
+ZmlsZXMgbXVzdCBoYXZlIHRoZWlyICJzaXplIiBmaWVsZHMgdXBkYXRlZA0KPiA+IGluIHRoZSBk
+aXJlY3RvcnkgYmxvYiAoRldfQ0ZHX0ZJTEVfRElSKS4gSS5lLiB0aGUgcmVxdWlyZW1lbnQgYXBw
+bGllcyB0bw0KPiA+IGJvdGggdGhlIGxpbmtlci1sb2FkZXIgc2NyaXB0LCBhbmQgdG8gYWxsIGJs
+b2JzIHRoYXQgYXJlIHJlZmVyZW5jZWQgKGJ5DQo+ID4gbmFtZSkgYnkgdGhlIGNvbW1hbmRzIGlu
+IHRoZSBsaW5rZXItbG9hZGVyIHNjcmlwdC4NCj4gPg0KPiA+DQo+ID4gKGIpIFRoZSBmaXJtd2Fy
+ZSB0byByZS1yZWFkIHRoZSBzaXplIGZyb20gdGhlIGRpcmVjdG9yeSwgYWZ0ZXIgc2VsZWN0aW5n
+DQo+ID4gdGhlIGtleSBmb3IgdGhlIHNha2Ugb2YgQUNQSSByZWdlbmVyYXRpb24uDQo+IA0KPiBI
+bW0uLi5JIGFtIG5vdCBzdXJlIHRoaXMgaXMgcmVxdWlyZWQuIEluIG15IHRlc3Rpbmcgd2l0aCB0
+aGUgYWJvdmUgZml4IEkNCj4gbWVudGlvbmVkLA0KPiBJIGNhbiBzZWUgdGhhdCBmaXJtd2FyZSBp
+cyByZWFkaW5nIHRoZSBjb3JyZWN0KG1vZGlmaWVkKSBzaXplIG9uIHNlbGVjdC4NCj4gSSB3aWxs
+IGRvdWJsZSBjaGVjayB0aGlzIHRob3VnaC4NCg0KSGkgTGFzemxvLA0KDQpSaWdodC4gSSB0aGlu
+ayB0aGUgcmVhc29uIGl0IHdvcmtzIGZvciBtZSB3aXRob3V0IHlvdXIgcGF0Y2ggaXMgd2hlbiBm
+aXJtd2FyZQ0Kc2VsZWN0cyB0aGUgZmlyc3QgaXRlbSgiZXRjL3RhYmxlLWxvYWRlciIpLCB0aGUg
+UWVtdSBzaWRlIHJ1bnMgdGhlIGNhbGxiYWNrDQphbmQgdHJ5IHRvIHVwZGF0ZSBhbGwgdGhlIGFj
+cGkgcmFtIHNpemVzIGluY2x1ZGluZyAiIGV0Yy9hY3BpL3RhYmxlcyIgd2hpY2ggaXMgdGhlIA0K
+b25lIHRoYXQgbWF0dGVycyBpbiB0aGlzIHNwZWNpZmljIGNhc2UuDQoNClRoaXMgaXMgdGhlIGxv
+ZyBJIGhhdmUgd2l0aCBwcmludHMgYWRkZWQgdG8gYm90aCBmaXJtd2FyZSBhbmQgUWVtdSwNCg0K
+T25Sb290QnJpZGdlc0Nvbm5lY3RlZDogcm9vdCBicmlkZ2VzIGhhdmUgYmVlbiBjb25uZWN0ZWQs
+IGluc3RhbGxpbmcgQUNQSSB0YWJsZXMNCiNVRUZJIyBJbnN0YWxsUWVtdUZ3Q2ZnVGFibGVzOiBG
+aW5kIGZpbGUgImV0Yy90YWJsZS1sb2FkZXIiDQojVUVGSSMgUWVtdUZ3Q2ZnRmluZEZpbGU6ICBT
+ZWxlY3QgUWVtdUZ3Q2ZnSXRlbUZpbGVEaXIgZm9yIGV0Yy90YWJsZS1sb2FkZXINCiNVRUZJIyBR
+ZW11RndDZmdTZWxlY3RJdGVtOiBTZWxlY3QgSXRlbSAweDE5DQojUUVNVSMgZndfY2ZnX3NlbGVj
+dDoga2V5IDB4MTkgTm8gY2FsbGJhY2sNCiNVRUZJIyBRZW11RndDZmdGaW5kRmlsZTogIEZpbGVT
+aXplIDB4RDAwIEZpbGVTZWxlY3QgMHgyNyBGTmFtZSBldGMvdGFibGUtbG9hZGVyDQojVUVGSSMg
+UWVtdUZ3Q2ZnU2VsZWN0SXRlbTogU2VsZWN0IEl0ZW0gMHgyNw0KI1FFTVUjIGZ3X2NmZ19zZWxl
+Y3Q6IGtleSAweDI3IEludm9raW5nIGNhbGxiYWNrLi4uDQojUUVNVSMgdmlydF9hY3BpX2J1aWxk
+X3VwZGF0ZTogVXBkYXRpbmcgQUNQSSB0YWJsZXMuLi4NCiNRRU1VIyBhY3BpX3JhbV91cGRhdGU6
+IG1yIG5hbWUgL3JvbUBldGMvYWNwaS90YWJsZXMgc2l6ZSAweDY0ZjcNCiNRRU1VIyBxZW11X3Jh
+bV9yZXNpemU6IG5ld3NpemUgMHg3MDAwKHVzZWRfbGVuZ3RoID09IG5ld3NpemUpLiBSZXR1cm5p
+bmcNCiNRRU1VIyBhY3BpX3JhbV91cGRhdGU6IG1yIG5hbWUgL3JvbUBldGMvYWNwaS9yc2RwIHNp
+emUgMHgyNA0KI1FFTVUjIHFlbXVfcmFtX3Jlc2l6ZTogbmV3c2l6ZSAweDEwMDAodXNlZF9sZW5n
+dGggPT0gbmV3c2l6ZSkuIFJldHVybmluZw0KI1FFTVUjIGFjcGlfcmFtX3VwZGF0ZTogbXIgbmFt
+ZSAvcm9tQGV0Yy90YWJsZS1sb2FkZXIgc2l6ZSAweGQwMA0KI1FFTVUjIHFlbXVfcmFtX3Jlc2l6
+ZTogbmV3c2l6ZSAweDEwMDAodXNlZF9sZW5ndGggPT0gbmV3c2l6ZSkuIFJldHVybmluZw0KI1VF
+RkkjIFFlbXVGd0NmZ0ZpbmRGaWxlOiAgU2VsZWN0IFFlbXVGd0NmZ0l0ZW1GaWxlRGlyIGZvciBl
+dGMvYWNwaS9yc2RwDQojVUVGSSMgUWVtdUZ3Q2ZnU2VsZWN0SXRlbTogU2VsZWN0IEl0ZW0gMHgx
+OQ0KI1FFTVUjIGZ3X2NmZ19zZWxlY3Q6IGtleSAweDE5IE5vIGNhbGxiYWNrDQojVUVGSSMgUWVt
+dUZ3Q2ZnRmluZEZpbGU6ICBGaWxlU2l6ZSAweDI0IEZpbGVTZWxlY3QgMHgyMiBGTmFtZSBldGMv
+YWNwaS9yc2RwDQojVUVGSSMgUWVtdUZ3Q2ZnU2VsZWN0SXRlbTogU2VsZWN0IEl0ZW0gMHgyMg0K
+I1FFTVUjIGZ3X2NmZ19zZWxlY3Q6IGtleSAweDIyIEludm9raW5nIGNhbGxiYWNrLi4uDQojUUVN
+VSMgdmlydF9hY3BpX2J1aWxkX3VwZGF0ZTogTm8gdXBkYXRlIHJlcXVpcmVkDQouLi4uLg0KI1VF
+RkkjIFFlbXVGd0NmZ0ZpbmRGaWxlOiAgU2VsZWN0IFFlbXVGd0NmZ0l0ZW1GaWxlRGlyIGZvciBl
+dGMvYWNwaS90YWJsZXMNCiNVRUZJIyBRZW11RndDZmdTZWxlY3RJdGVtOiBTZWxlY3QgSXRlbSAw
+eDE5DQojUUVNVSMgZndfY2ZnX3NlbGVjdDoga2V5IDB4MTkgTm8gY2FsbGJhY2sNCiNVRUZJIyBR
+ZW11RndDZmdGaW5kRmlsZTogIEZpbGVTaXplIDB4NjRGNyBGaWxlU2VsZWN0IDB4MjMgRk5hbWUg
+ZXRjL2FjcGkvdGFibGVzDQojVUVGSSMgUWVtdUZ3Q2ZnU2VsZWN0SXRlbTogU2VsZWN0IEl0ZW0g
+MHgyMw0KI1FFTVUjIGZ3X2NmZ19zZWxlY3Q6IGtleSAweDIzIEludm9raW5nIGNhbGxiYWNrLi4u
+DQojUUVNVSMgdmlydF9hY3BpX2J1aWxkX3VwZGF0ZTogTm8gdXBkYXRlIHJlcXVpcmVkDQpJbnN0
+YWxsUWVtdUZ3Q2ZnVGFibGVzOiBpbnN0YWxsZWQgOSB0YWJsZXMNCg0KU28gd2l0aCBteSBmaXgg
+d2l0aCB0aGUgdGFibGVzX2Jsb2Igc2l6ZSBhbGlnbiwgcWVtdV9yYW1fcmVzaXplKCkgY2FsbHMg
+dGhlDQpmd19jZmdfbW9kaWZ5X2ZpbGUoKSBhbmQgdXBkYXRlcyB0aGUgIiBldGMvYWNwaS90YWJs
+ZXMiIHNpemUgd2hlbiBmaXJtd2FyZQ0Kc2VsZWN0cyB0aGUgIiBldGMvdGFibGUtbG9hZGVyIiBp
+dGVtLg0KDQpCdXQgSSB0aGluaywgeW91ciBiZWxvdyBwYXRjaCBpcyBzdGlsbCByZXF1aXJlZCBp
+biBjYXNlICIgZXRjL3RhYmxlLWxvYWRlciIgaXMNCmNoYW5nZWQgYnkgUWVtdS4NCg0KVGhhbmtz
+LA0KU2hhbWVlcg0KDQo+IFRoYW5rcywNCj4gU2hhbWVlcg0KPiANCj4gPiBJIHdyb3RlOg0KPiA+
+DQo+ID4gPj4gSWYgaXQgZG9lcywgdGhlbiBJIGNhbiB3b3JrIGFyb3VuZCB0aGUgcHJvYmxlbSBp
+biB0aGUgZmlybXdhcmUuIEkgY2FuDQo+ID4gPj4gYWRkIGEgcmUtbG9va3VwIHRvIHRoZSBjb2Rl
+IGFmdGVyIHRoZSBpdGVtIHNlbGVjdGlvbiwgaW4gb3JkZXIgdG8gZ2V0DQo+ID4gPj4gdGhlIGZy
+ZXNoIGJsb2Igc2l6ZSBmcm9tIHRoZSBmd19jZmcgZmlsZSBkaXJlY3RvcnkuIFRoZW4gd2UgY2Fu
+IHVzZQ0KPiA+ID4+IHRoYXQgc2l6ZSBmb3IgdGhlIGFjdHVhbCB0cmFuc2Zlci4NCj4gPiA+Pg0K
+PiA+ID4+IFRoaXMgd29uJ3QgaGVscCBvbGQgZmlybXdhcmUgb24gbmV3IFFFTVUsIGJ1dCBhdCBs
+ZWFzdCBuZXcgZmlybXdhcmUNCj4gPiA+PiBvbiBvbGQgUUVNVSB3aWxsIG5vdCBiZSBodXJ0ICh0
+aGUgcmUtZmV0Y2hpbmcgb2YgdGhlIGZ3X2NmZyBmaWxlDQo+ID4gPj4gZGlyZWN0b3J5IHdpbGwg
+Y29tZSB3aXRoIGEgc21hbGwgcGVyZm9ybWFuY2UgcGVuYWx0eSwgYnV0DQo+ID4gPj4gZnVuY3Rp
+b25hbGx5IGl0IHdpbGwgYmUgYSBuby1vcCkuDQo+ID4NCj4gPiBUaHVzLCB0aGUgZmlybXdhcmUg
+cGF0Y2ggaW4gcXVlc3Rpb24gd291bGQgYmU6DQo+ID4NCj4gPiB8IGRpZmYgLS1naXQgYS9Pdm1m
+UGtnL0FjcGlQbGF0Zm9ybUR4ZS9RZW11RndDZmdBY3BpLmMNCj4gPiBiL092bWZQa2cvQWNwaVBs
+YXRmb3JtRHhlL1FlbXVGd0NmZ0FjcGkuYw0KPiA+IHwgaW5kZXggYmMxYTg5MWRiYWYxLi4wN2Y3
+MGZmZTE1OGEgMTAwNjQ0DQo+ID4gfCAtLS0gYS9Pdm1mUGtnL0FjcGlQbGF0Zm9ybUR4ZS9RZW11
+RndDZmdBY3BpLmMNCj4gPiB8ICsrKyBiL092bWZQa2cvQWNwaVBsYXRmb3JtRHhlL1FlbXVGd0Nm
+Z0FjcGkuYw0KPiA+IHwgQEAgLTk3NSw2ICs5NzUsMjQgQEAgSW5zdGFsbFFlbXVGd0NmZ1RhYmxl
+cyAoDQo+ID4gfCAgICBPUkRFUkVEX0NPTExFQ1RJT04gICAgICAgKlNlZW5Qb2ludGVyczsNCj4g
+PiB8ICAgIE9SREVSRURfQ09MTEVDVElPTl9FTlRSWSAqU2VlblBvaW50ZXJFbnRyeSwNCj4gKlNl
+ZW5Qb2ludGVyRW50cnkyOw0KPiA+IHwNCj4gPiB8ICsgIFN0YXR1cyA9IFFlbXVGd0NmZ0ZpbmRG
+aWxlICgiZXRjL3RhYmxlLWxvYWRlciIsICZGd0NmZ0l0ZW0sDQo+ID4gJkZ3Q2ZnU2l6ZSk7DQo+
+ID4gfCArICBpZiAoRUZJX0VSUk9SIChTdGF0dXMpKSB7DQo+ID4gfCArICAgIHJldHVybiBTdGF0
+dXM7DQo+ID4gfCArICB9DQo+ID4gfCArDQo+ID4gfCArICAvLw0KPiA+IHwgKyAgLy8gQnkgc2Vs
+ZWN0aW5nICJGd0NmZ0l0ZW0iLCBhc2sgUUVNVSB0byByZWdlbmVyYXRlIHRoZSBBQ1BJIHBheWxv
+YWQsDQo+ID4gd2l0aA0KPiA+IHwgKyAgLy8gYWxsIFBDSSBkZXZpY2VzIGRlY29kaW5nIHRoZWly
+IHJlc291cmNlcy4gTm90ZTogZnVydGhlciBzZWxlY3Rpb25zDQo+ID4gfCArICAvLyBvZiB0aGUg
+c2FtZSBrZXkgd2lsbCBub3QgcmVwZWF0IHRoZSBwYXRjaGluZy4NCj4gPiB8ICsgIC8vDQo+ID4g
+fCArICBFbmFibGVQY2lEZWNvZGluZyAoJk9yaWdpbmFsUGNpQXR0cmlidXRlcywNCj4gJk9yaWdp
+bmFsUGNpQXR0cmlidXRlc0NvdW50KTsNCj4gPiB8ICsgIFFlbXVGd0NmZ1NlbGVjdEl0ZW0gKEZ3
+Q2ZnSXRlbSk7DQo+ID4gfCArICBSZXN0b3JlUGNpRGVjb2RpbmcgKE9yaWdpbmFsUGNpQXR0cmli
+dXRlcywgT3JpZ2luYWxQY2lBdHRyaWJ1dGVzQ291bnQpOw0KPiA+IHwgKw0KPiA+IHwgKyAgLy8N
+Cj4gPiB8ICsgIC8vIFRoZSBzaXplIG9mIHRoZSBzY3JpcHQgbWF5IGhhdmUgY2hhbmdlZCwgcG9z
+c2libHkgZHVlIHRvIHBsYXRmb3JtDQo+ID4gZGV2aWNlcw0KPiA+IHwgKyAgLy8gaGF2aW5nIGJl
+ZW4gaG90LXBsdWdnZWQgYmVmb3JlIHBsYXRmb3JtIHJlc2V0LiBSZS1yZWFkIHRoZSBzaXplLg0K
+PiA+IHwgKyAgLy8NCj4gPiB8ICAgIFN0YXR1cyA9IFFlbXVGd0NmZ0ZpbmRGaWxlICgiZXRjL3Rh
+YmxlLWxvYWRlciIsICZGd0NmZ0l0ZW0sDQo+ID4gJkZ3Q2ZnU2l6ZSk7DQo+ID4gfCAgICBpZiAo
+RUZJX0VSUk9SIChTdGF0dXMpKSB7DQo+ID4gfCAgICAgIHJldHVybiBTdGF0dXM7DQo+ID4gfCBA
+QCAtOTg5LDEwICsxMDA3LDggQEAgSW5zdGFsbFFlbXVGd0NmZ1RhYmxlcyAoDQo+ID4gfCAgICBp
+ZiAoTG9hZGVyU3RhcnQgPT0gTlVMTCkgew0KPiA+IHwgICAgICByZXR1cm4gRUZJX09VVF9PRl9S
+RVNPVVJDRVM7DQo+ID4gfCAgICB9DQo+ID4gfCAtICBFbmFibGVQY2lEZWNvZGluZyAoJk9yaWdp
+bmFsUGNpQXR0cmlidXRlcywNCj4gJk9yaWdpbmFsUGNpQXR0cmlidXRlc0NvdW50KTsNCj4gPiB8
+ICAgIFFlbXVGd0NmZ1NlbGVjdEl0ZW0gKEZ3Q2ZnSXRlbSk7DQo+ID4gfCAgICBRZW11RndDZmdS
+ZWFkQnl0ZXMgKEZ3Q2ZnU2l6ZSwgTG9hZGVyU3RhcnQpOw0KPiA+IHwgLSAgUmVzdG9yZVBjaURl
+Y29kaW5nIChPcmlnaW5hbFBjaUF0dHJpYnV0ZXMsIE9yaWdpbmFsUGNpQXR0cmlidXRlc0NvdW50
+KTsNCj4gPiB8ICAgIExvYWRlckVuZCA9IExvYWRlclN0YXJ0ICsgRndDZmdTaXplIC8gc2l6ZW9m
+ICpMb2FkZXJFbnRyeTsNCj4gPiB8DQo+ID4gfCAgICBBbGxvY2F0aW9uc1Jlc3RyaWN0ZWRUbzMy
+Qml0ID0gTlVMTDsNCj4gPg0KPiA+IEJ1dCwgYWdhaW4sIHRoaXMgb25seSBtYWtlcyBzZW5zZSBp
+ZiBRRU1VIGltcGxlbWVudHMgKGEpLg0KPiA+DQo+ID4gVGhhbmtzDQo+ID4gTGFzemxvDQo=

@@ -1,76 +1,80 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2608093wrp;
-        Thu, 26 Sep 2019 13:32:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwCi9/x/lbKLL4MfWpCSu9uCvy2V3TLWcLPZVng/rb/RTsnSe7vUTt9fHlYfm+ERHhBgL7x
-X-Received: by 2002:ac8:74d0:: with SMTP id j16mr6161057qtr.244.1569529958392;
-        Thu, 26 Sep 2019 13:32:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569529958; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2724063wrp;
+        Thu, 26 Sep 2019 15:36:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzUDf1joYSxR1xGEjbw5nXAiu9LGLZ/p0HUY6EEuImURgkFG6y5CvGzDB56P45qz598Dlm3
+X-Received: by 2002:aed:2ae6:: with SMTP id t93mr6722832qtd.384.1569537380681;
+        Thu, 26 Sep 2019 15:36:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569537380; cv=none;
         d=google.com; s=arc-20160816;
-        b=sZtcKC1C3Rv0Yj07t13biGaTnvdpjycm8T16zylsiXzj5zFHEo9FMWKPqYUnU9idnn
-         3V8bVMrpGTEWqFV9nkNN5QDjEd0QsSmMzMEEQcmLHY9NcYl7elxO9Fwc5ToQBitQGLar
-         CDikFQ9du3eD86gMT6nKilYI3K0HyBEroa8hrazYvkaujUtdjEv+ww75FhFM+9Da2ILZ
-         gzpqb42O/ggfG53RHch4ZyJT1DMBc4Nki56PWRELM9gZ0OqmWmqXfOPe8/GK6E4+gd85
-         R1pu+ydiy6B4sMojcgC209Al7D9ccEUdud/KgutfY6UWVfEe6JgR/eFXk5k4vvBREeFq
-         ycYg==
+        b=V2RxHQKIPy3QX55+KHbVWT19aR1Jk+L9MvTK6FuLP1ak6V7DhoCD1qn08BluTHYGFZ
+         +nOxeZ1IpIQSrJ/iNeFWBhNoQiEvOanAoo4CFxfd8SyAoQOm+pdlnXu6e7GUz7JyfmNM
+         yFyPk83VT1FkG5bXvJm+FQfsm9CLux/LxMiGEFpgy+Qvsv1knIrg4PJ6kXYgEUeGurVU
+         zQA88+6PenvLRqsHGpgNkXWmwdUaPkp8UMwR8ssy/67ke9pbd410CibppcZZ5M+eiEXZ
+         31Kzf01qfWKbbS+UnZU7r3fvNH1F5v/NoU1IpTdOtWg/mapumpBwv29N722TB5j23peh
+         +Bmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-id:mime-version
-         :user-agent:references:message-id:in-reply-to:subject:to:from:date;
-        bh=L9h0mhiqNP2PDE5Y/fNuPpCKjF5BmhZS5jh2cwso+/E=;
-        b=lY4vZIE/IACjZkwDB8KJvmuDgmlfL//ruZ29toBv1uicmVrUecGg+Ii7Ho+ADT14wv
-         eSrofVuf5KV1qGrjbKXxBXqz6fLvugaIQhNq7lCkf6uW9xcsrfwncJcmnzwWNLwn9trh
-         nMRSEOuJJQ5DTjRtrJV6MwmUR7XhmF5/UFOtylizBlIxKAcIKoHvLefh75CW9ef2JcQT
-         p2dygjClos+QA6jKJISVif+xFAQ6fdfdUDnxvl0FYbLz288cKJoQOXTgdW5XDT/99vVN
-         ZeMn35LptizH2J1akV1PoGpYWrd6jYGdmS+pFKtfkV1I8dfpwexoTdE3S4nqJqHvNkH3
-         4r9A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:references:to:from:subject:dkim-filter;
+        bh=y3qIgRgr1iDUK/lHLiRLBnh0ftBRBW2RA3yOUC0xqys=;
+        b=MA3/3p9haxGwefs89ps3E5n9ViR/PdI7LkDk757+aeG3PFALDY5NAPRAmM2OC6hERk
+         SnoBhz1GGEWIZtOyoMb68cvJsxRUBmMsLjV/8cvdLyEtFYfL7InIaLgU4P3DrHc2bWXT
+         XYOHnP2wgRDC3EfxZMixGhx+P1slqtDspK6BbMjHuI85LNsoKqbdJoAUrcNd4A+dp3Vg
+         SuRywWzPSIsm7vzMxwq1TdbJ2yUwx4BRnTFMgJKrMXC2FZU8kGL75klXRPYuQMHjUDx3
+         eK3i5FhGg4faiAOXnuH3aeTCIIKtBc0wjutLB+OFYHjpU4Ren9gT47ORrzvn0Vl1TDzi
+         c2FA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z8si2586712qtj.349.2019.09.26.13.32.38
+        by mx.google.com with ESMTPS id e30si2944106qtm.294.2019.09.26.15.36.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Sep 2019 13:32:38 -0700 (PDT)
+        Thu, 26 Sep 2019 15:36:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44268 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
+Received: from localhost ([::1]:44986 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iDaRJ-0002wm-Sy
-	for alex.bennee@linaro.org; Thu, 26 Sep 2019 16:32:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35433)
+	id 1iDcN2-0000nQ-4x
+	for alex.bennee@linaro.org; Thu, 26 Sep 2019 18:36:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40074)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <balaton@eik.bme.hu>) id 1iDaR9-0002wQ-5H
- for qemu-arm@nongnu.org; Thu, 26 Sep 2019 16:32:28 -0400
+ (envelope-from <nramas@linux.microsoft.com>) id 1iDcMh-0000nG-Qx
+ for qemu-arm@nongnu.org; Thu, 26 Sep 2019 18:36:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <balaton@eik.bme.hu>) id 1iDaR6-0008Ds-Pn
- for qemu-arm@nongnu.org; Thu, 26 Sep 2019 16:32:26 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2]:50249)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
- id 1iDaR6-00085U-JU; Thu, 26 Sep 2019 16:32:24 -0400
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id 6994574AAAC;
- Thu, 26 Sep 2019 22:32:14 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 4CF1B749FDB; Thu, 26 Sep 2019 22:32:14 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 4BB25749EDE;
- Thu, 26 Sep 2019 22:32:14 +0200 (CEST)
-Date: Thu, 26 Sep 2019 22:32:14 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 00/19] hw/arm/raspi: Improve Raspberry Pi 2/3 reliability
-In-Reply-To: <20190926173428.10713-1-f4bug@amsat.org>
-Message-ID: <alpine.BSF.2.21.9999.1909262221020.91838@zero.eik.bme.hu>
-References: <20190926173428.10713-1-f4bug@amsat.org>
-User-Agent: Alpine 2.21.9999 (BSF 287 2018-06-16)
+ (envelope-from <nramas@linux.microsoft.com>) id 1iDcMg-0003RB-CP
+ for qemu-arm@nongnu.org; Thu, 26 Sep 2019 18:35:59 -0400
+Received: from linux.microsoft.com ([13.77.154.182]:34104)
+ by eggs.gnu.org with esmtp (Exim 4.71)
+ (envelope-from <nramas@linux.microsoft.com>)
+ id 1iDcMg-0003Ph-7E; Thu, 26 Sep 2019 18:35:58 -0400
+Received: from [10.200.157.26] (unknown [131.107.147.154])
+ by linux.microsoft.com (Postfix) with ESMTPSA id D226B2008710;
+ Thu, 26 Sep 2019 15:35:56 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com D226B2008710
+Subject: Re: Is kexec supported in QEMU for ARM64 (qemu-system-aarch64) with
+ arm-trusted-firmware, optee, and u-boot.
+From: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>
+To: qemu-arm <qemu-arm@nongnu.org>,
+ James Bottomley <James.Bottomley@HansenPartnership.com>,
+ qemu-devel@nongnu.org
+References: <21633062-b021-a8e7-0cc8-062f4c29dde5@linux.microsoft.com>
+Message-ID: <ca5c74db-cf5d-0c3f-eb6f-27d1092420ae@linux.microsoft.com>
+Date: Thu, 26 Sep 2019 15:35:56 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- BOUNDARY="3866299591-895926101-1569529556=:91838"
-Content-ID: <alpine.BSF.2.21.9999.1909262227160.91838@zero.eik.bme.hu>
-X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
-X-Received-From: 152.66.115.2
+In-Reply-To: <21633062-b021-a8e7-0cc8-062f4c29dde5@linux.microsoft.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 13.77.154.182
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -82,64 +86,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Put/e9Xab/V9
+X-TUID: 9ZOn+pRe3+v0
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On 9/26/19 8:17 AM, Lakshmi Ramasubramanian wrote:
 
---3866299591-895926101-1569529556=:91838
-Content-Type: text/plain; CHARSET=ISO-8859-15; format=flowed
-Content-ID: <alpine.BSF.2.21.9999.1909262227161.91838@zero.eik.bme.hu>
-Content-Transfer-Encoding: quoted-printable
+The following commit for ARM Trusted Firmware for QEMU virt ARMv8-A
+is almost 3 years old
 
-On Thu, 26 Sep 2019, Philippe Mathieu-Daud=E9 wrote:
-> and got it almost working (boots Linux kernel to userland, sadly
-> I'm still having timeout issues with the eMMC block).
-[...]
-> $ make aarch64-softmmu/all check-venv
-> $ ./tests/venv/bin/avocado --show=3Dapp,console run -t machine:raspi2 -=
-t machine:raspi3 tests/acceptance
-> JOB ID     : 10bf6593659f0b191941265c19fe3dbf1652c3e7
-> JOB LOG    : /home/phil/avocado/job-results/job-2019-09-26T19.04-10bf65=
-9/job.log
-> (1/4) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_=
-raspi2_uart0: \console: [    0.000000] Booting Linux on physical CPU 0xf0=
-0
-> console: [    0.000000] Linux version 4.14.98-v7+ (dom@dom-XPS-13-9370)=
- (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1200=
- SMP Tue Feb 12 20:27:48 GMT 2019
-> console: [    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARM=
-v7), cr=3D10c5387d
-> console: [    0.000000] CPU: div instructions available: patching divis=
-ion code
-> console: [    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT a=
-liasing instruction cache
-> console: [    0.000000] OF: fdt: Machine model: Raspberry Pi 2 Model B
-> console: [    0.000000] earlycon: pl11 at MMIO 0x3f201000 (options '')
-> console: [    0.000000] bootconsole [pl11] enabled
-> console: [    0.000000] Memory policy: Data cache writealloc
-> console: [    0.000000] cma: Reserved 8 MiB at 0x3b800000
-> console: [    0.000000] percpu: Embedded 17 pages/cpu @baf2e000 s38720 =
-r8192 d22720 u69632
-> console: [    0.000000] Built 1 zonelists, mobility grouping on.  Total=
- pages: 243600
-> console: [    0.000000] Kernel command line: printk.time=3D0 earlycon=3D=
-pl011,0x3f201000 console=3DttyAMA0
+https://salsa.debian.org/debian/atf-allwinner/commit/b6b671c4ac4bd5595306=
+863225bb3bece1e6135c
 
-Not sure what timeouts you get related to eMMC but previously we've found=
-=20
-that panic at boot due to mmcblk not ready is avoided with the "rootwait"=
-=20
-kernel option which does not seem to be present in most of these tests.=20
-(It's also not present in images for real hardware so likely this only=20
-happens with QEMU but not on real hardware. Could it be that real hardwar=
-e=20
-is slower so timing is different?)
+Current limitations:
+* Only cold boot is supported
+* No build instructions for QEMU_EFI.fd and rootfs-arm64.cpio.gz
+* No instructions for how to load a BL32 (Secure Payload)
 
-Regards,
-BALATON Zoltan
---3866299591-895926101-1569529556=:91838--
+So looks like only cold boot is supported (no kexec support)
+Is this correct?
+
+> When I execute kexec ("kexec -l <kernel>", followed by "kexec -e") I hi=
+t=20
+> the following assert (in arm-trusted-firmware/plat/qemu/qemu_pm.c)
+>=20
+> /**********************************************************************=
+*********=20
+>=20
+>  =C2=A0* Platform handler called when a power domain is about to be tur=
+ned
+>  =C2=A0* off. The target_state encodes the power state that each level =
+should
+>  =C2=A0* transition to.
+> ***********************************************************************=
+*******/=20
+>=20
+> void qemu_pwr_domain_off(const psci_power_state_t *target_state)
+> {
+>  =C2=A0=C2=A0=C2=A0=C2=A0assert(0);
+> }
+>=20
+> Is kexec supported in ARM64 QEMU (qemu-system-aarch64) -
+> using arm-trusted-firmware, optee, and u-boot?
+>=20
+> Thanks,
+>  =C2=A0-lakshmi
+

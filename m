@@ -1,165 +1,207 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2274531wrp;
-        Thu, 26 Sep 2019 08:22:43 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqziZBACk9UdBVTsB6xxxXQw/9lVflWEsdNwsXJ6QRK/TucRjHVNqYla5WjfkLEUZYUQkqdF
-X-Received: by 2002:ac8:320c:: with SMTP id x12mr4368612qta.285.1569511363592;
-        Thu, 26 Sep 2019 08:22:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569511363; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2435316wrp;
+        Thu, 26 Sep 2019 10:45:27 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzwPDXKD0TIqCkj9jDepuqMj0QtHuGNPjMx2o1qLaekPZtcNlNTLyGU3L832mGXUPumY0FQ
+X-Received: by 2002:a37:a9c1:: with SMTP id s184mr4552890qke.360.1569519927442;
+        Thu, 26 Sep 2019 10:45:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569519927; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xa8h+BudTu4Laj6D6AbIbLUhWevqkNWl6GEeZe7SdHM0HrYTg8P5XwC3DIWjE5RdGl
-         2JmkMF8ZKXScmD6qA6Mc3/Y4/X+w+O++HLiWnJVkehCIMya9kry7w+XEs/SFP5xxl+oM
-         P6MluWg416kTaJ1PMkZKjYQIE4UY8WWfd6Jnoggk3BVJkBc2v/FMtpaKAEB+f6bdysOj
-         dlJ8pRzUF66b7jJlVOqnoAUcDqMVDcTTr0yhxFqLISiHAZL9XPqCNRRcoP9sc0p0r+X/
-         A/5yN8caQdpxEZ3zorlCbVW55NrXDHTg4WFpIgA2SVFBz4lQKcrS50s5DfPZ+CxIoggA
-         /KQQ==
+        b=wNe6K/8favSEGOnc8TRVbHyUYkvGXWLhz+Dd3qVt1DpslqYv7Vo2uWrUUhQp01qtQ/
+         bXdzgWBalfbuZycPIlsNB8xySH8UKvddwv35t4Fetw17cNb+TrwKMl57ct6oTjtvMKNE
+         d1DDfOtZOW++yrf2EN/wlR6UoEiGpl4G68AXvd0cmH6jQ5eXUk+GlMacGIN3lcJF0S0p
+         DTkrUqYtdXWXlDwRMpRdl6Y+GxtlDyg0xWB49P/x7fnVgJvqYr86ciNiruknZOVhcF7Z
+         tNh5lDhYJmNChskPCBSyPiRFs6Ps0pGwfqX0ZfdUMnqr8z0QyyAuizsgX5N6xplvKBNj
+         eg9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=4JF6vdoVf8WzYA5BKjoxEidrhJo7oUDw8cQ5uuL5j4M=;
-        b=X/uz8OwRvsx6oDYEBkxr7HgdWxx31kUCJJb5aeDIzvk6XunSyCfdQNX9DLSPBVgkl3
-         sJe4N/szLWbAHL8Bk6CfL35NHNPYdXITYgaO2EK+kMCxhftmHuJxo0BuOpjbFjKfxncS
-         0RScAVJ9v0AWvT5APPZbpa5lp88+lywFn+T8unNzPRtPbvII0Jz+Mwh9u5yG6mprvs2G
-         62WDf0lxmD65VA9qPEs9WZOVJTIaylIj8tTj7/ute3Z8mPZijt4g/z0eT1OW2OOm/0qo
-         zGZnjukQ7NLUAPY5t1sdDJ7vcbZNeR3sS9BBPkEs8CClXeXjKq4n3ZOIzy8haCf1K4pW
-         F4sA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=dMBRiTpLuqyI3tuVBy2ZLm7Wzg1GaNHi9g5XPWVyXlc=;
+        b=K2hTQ4mqkA1ySYoqIqTKkiTtVzRuYp+RGmADS45a+5d72TIHfdP6bo7UVm8GfqeHDw
+         qrFdWCocp8BiKiZi2lMocyw9rltPjIs/l4pERU19cnglik8jyR2oSuSZfxxxa5rTeieY
+         XdmlE/2LpIC2mo9sSblTahMW2gSsaaffHPEDGSSF9nR0XM4hnc4IKRaDRqoMPwRW40gB
+         klIpZL4GUKQwluAz9UOaF22DITxsrziW2enaQF4wWAGLv9XzPS63Quqww65dC2+8SUpP
+         1sr2tAj2SGI6Asw9pVdhZbOvyCSeLWuMEN9mLuBq5SMAHLFzqPpMYRMJgdXmlPwchuTO
+         fkIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Jmzr0cep;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s42si1760284qtb.141.2019.09.26.08.22.43
+        by mx.google.com with ESMTPS id f36si2181358qtc.206.2019.09.26.10.45.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Sep 2019 08:22:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 26 Sep 2019 10:45:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39180 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Jmzr0cep;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41816 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iDVbO-0006v1-Fv
-	for alex.bennee@linaro.org; Thu, 26 Sep 2019 11:22:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52732)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iDXpW-0003bK-5x
+	for alex.bennee@linaro.org; Thu, 26 Sep 2019 13:45:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58917)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iDVXd-0003RE-H6
- for qemu-arm@nongnu.org; Thu, 26 Sep 2019 11:18:50 -0400
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iDXgH-0004Th-D6
+ for qemu-devel@nongnu.org; Thu, 26 Sep 2019 13:35:54 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iDVXb-0004rI-Ag
- for qemu-arm@nongnu.org; Thu, 26 Sep 2019 11:18:49 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42862)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1iDVXa-0004px-3j; Thu, 26 Sep 2019 11:18:46 -0400
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 20F2630BCB97;
- Thu, 26 Sep 2019 15:18:44 +0000 (UTC)
-Received: from x1w.redhat.com (unknown [10.40.205.127])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 195335D6B0;
- Thu, 26 Sep 2019 15:18:36 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iDXgG-0002uJ-0N
+ for qemu-devel@nongnu.org; Thu, 26 Sep 2019 13:35:53 -0400
+Received: from mail-wr1-f67.google.com ([209.85.221.67]:32772)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iDXgF-0002tD-PG; Thu, 26 Sep 2019 13:35:51 -0400
+Received: by mail-wr1-f67.google.com with SMTP id b9so3740735wrs.0;
+ Thu, 26 Sep 2019 10:35:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=dMBRiTpLuqyI3tuVBy2ZLm7Wzg1GaNHi9g5XPWVyXlc=;
+ b=Jmzr0cepOGPkBtav/ifREcbjSkztyj4oaLOjlFggGH84IjFxe/y9BRADm2t992Zbtp
+ +NeizxJcxR49MK4ex7iSxdoaOpm7vkRbbSh2zm1IjeBmBW/lNZZCQrpNX+aeEsey2mBP
+ XiTea//MnVQCeKZQz58jllVa2TyyFfnfNHAdvtlFYHzzY094lob4KdWRmuNEFIRc/dAp
+ IEbSsXmy9RjE7ZEUDcEUgSNkNyR+O5S6jJcl5JyQOpWVzROXv01o+E4LQFvvgt+kTUHm
+ +gZXiraEGRl1D/ykjZv+Up+ePPJPnHUpbCdUeE5JHW5mC/FrUnrvr0Hmw2l2D2Ib1VDM
+ CxIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=dMBRiTpLuqyI3tuVBy2ZLm7Wzg1GaNHi9g5XPWVyXlc=;
+ b=WojbChAH54DryaO3EwaJPmFTOHxcWa5mq7WSM6rgZji30R+D1EmdjtHPNgYn7JNc2y
+ 4mXbCGzAB53P5yB3PaX1US9MuzlWQrvzlNQ15CKCzg+FnaA7GiWAGlpVvLKmd7mU/dyj
+ 1GsfdpXjbq0nxhxoYHzMDExixjUgpRBz6iRlJEQEKgfsC7zlGqTqqskSzfBEmnN9qZ2l
+ AT60SmrqEmhZp716h7UYk8G3p3pMPTNS8dXjLWLLzeo/KcJuzOQkg9P6qc3nLZ/rLmrZ
+ T4Me/TD5Dvu5S9R+kFgSEMbf/Ze4skcILfGcYvDNycwu0X1waGHYQ/DlPx0G+0gq6/S5
+ 3/YQ==
+X-Gm-Message-State: APjAAAU4y8IKzf+ks3gGB1jVL3pAKyGvhUwMWhBLwAHvhXjDgbqi8rf6
+ PuXNITtxkzLDi2Abr9WcCepahkzsPNk=
+X-Received: by 2002:adf:dc4b:: with SMTP id m11mr4217967wrj.269.1569519290674; 
+ Thu, 26 Sep 2019 10:34:50 -0700 (PDT)
+Received: from x1w.redhat.com (240.red-88-21-68.staticip.rima-tde.net.
+ [88.21.68.240])
+ by smtp.gmail.com with ESMTPSA id b186sm9918980wmd.16.2019.09.26.10.34.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 26 Sep 2019 10:34:50 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 08/11] hw/input/lm832x: Convert reset handler to DeviceReset
-Date: Thu, 26 Sep 2019 17:17:30 +0200
-Message-Id: <20190926151733.25349-9-philmd@redhat.com>
-In-Reply-To: <20190926151733.25349-1-philmd@redhat.com>
-References: <20190926151733.25349-1-philmd@redhat.com>
+Subject: [PATCH 09/19] hw/arm/bcm2835_peripherals: Use the thermal sensor block
+Date: Thu, 26 Sep 2019 19:34:17 +0200
+Message-Id: <20190926173428.10713-10-f4bug@amsat.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20190926173428.10713-1-f4bug@amsat.org>
+References: <20190926173428.10713-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.49]); Thu, 26 Sep 2019 15:18:44 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.132.183.28
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 209.85.221.67
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Zolt=C3=A1n=20Baldaszti?= <bztemail@gmail.com>,
+ Laurent Bonnans <laurent.bonnans@here.com>,
+ Esteban Bosse <estebanbosse@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-arm@nongnu.org, Clement Deschamps <clement.deschamps@antfield.fr>,
+ Cleber Rosa <crosa@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Cheng Xiang <ext-cheng.xiang@here.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- Andrzej Zaborowski <balrogg@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3/9l4TbhBpAb
+ Pekka Enberg <penberg@iki.fi>, Guenter Roeck <linux@roeck-us.net>,
+ Eduardo Habkost <ehabkost@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: K2IxUZXhgm64
 
-Convert the reset handler into a proper Device reset method.
+Map the thermal sensor in the BCM2835 block.
 
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/input/lm832x.c | 12 +++++-------
- 1 file changed, 5 insertions(+), 7 deletions(-)
+ hw/arm/bcm2835_peripherals.c         | 13 +++++++++++++
+ include/hw/arm/bcm2835_peripherals.h |  2 ++
+ include/hw/arm/raspi_platform.h      |  1 +
+ 3 files changed, 16 insertions(+)
 
-diff --git a/hw/input/lm832x.c b/hw/input/lm832x.c
-index a37eb854b9..aa629ddbf1 100644
---- a/hw/input/lm832x.c
-+++ b/hw/input/lm832x.c
-@@ -24,7 +24,6 @@
- #include "migration/vmstate.h"
- #include "qemu/module.h"
- #include "qemu/timer.h"
--#include "sysemu/reset.h"
- #include "ui/console.h"
-=20
- #define TYPE_LM8323 "lm8323"
-@@ -94,8 +93,10 @@ static void lm_kbd_gpio_update(LM823KbdState *s)
- {
- }
-=20
--static void lm_kbd_reset(LM823KbdState *s)
-+static void lm_kbd_reset(DeviceState *dev)
- {
-+    LM823KbdState *s =3D LM8323(dev);
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index fdcf616c56..70bf927a02 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -111,6 +111,10 @@ static void bcm2835_peripherals_init(Object *obj)
+     object_property_add_const_link(OBJECT(&s->dma), "dma-mr",
+                                    OBJECT(&s->gpu_bus_mr), &error_abort);
+ 
++    /* Thermal */
++    sysbus_init_child_obj(obj, "thermal", &s->thermal, sizeof(s->thermal),
++                          TYPE_BCM2835_THERMAL);
 +
-     s->config =3D 0x80;
-     s->status =3D INT_NOINIT;
-     s->acttime =3D 125;
-@@ -273,7 +274,7 @@ static void lm_kbd_write(LM823KbdState *s, int reg, i=
-nt byte, uint8_t value)
-=20
-     case LM832x_CMD_RESET:
-         if (value =3D=3D 0xaa)
--            lm_kbd_reset(s);
-+            lm_kbd_reset(DEVICE(s));
-         else
-             lm_kbd_error(s, ERR_BADPAR);
-         s->reg =3D LM832x_GENERAL_ERROR;
-@@ -476,10 +477,6 @@ static void lm8323_realize(DeviceState *dev, Error *=
-*errp)
-     s->pwm.tm[1] =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, lm_kbd_pwm1_tick, =
-s);
-     s->pwm.tm[2] =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, lm_kbd_pwm2_tick, =
-s);
-     qdev_init_gpio_out(dev, &s->nirq, 1);
--
--    lm_kbd_reset(s);
--
--    qemu_register_reset((void *) lm_kbd_reset, s);
- }
-=20
- void lm832x_key_event(DeviceState *dev, int key, int state)
-@@ -507,6 +504,7 @@ static void lm8323_class_init(ObjectClass *klass, voi=
-d *data)
-     DeviceClass *dc =3D DEVICE_CLASS(klass);
-     I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
-=20
-+    dc->reset =3D lm_kbd_reset;
-     dc->realize =3D lm8323_realize;
-     k->event =3D lm_i2c_event;
-     k->recv =3D lm_i2c_rx;
---=20
+     /* GPIO */
+     sysbus_init_child_obj(obj, "gpio", &s->gpio, sizeof(s->gpio),
+                           TYPE_BCM2835_GPIO);
+@@ -321,6 +325,15 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+                                                   INTERRUPT_DMA0 + n));
+     }
+ 
++    /* THERMAL */
++    object_property_set_bool(OBJECT(&s->thermal), true, "realized", &err);
++    if (err) {
++        error_propagate(errp, err);
++        return;
++    }
++    memory_region_add_subregion(&s->peri_mr, THERMAL_OFFSET,
++                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->thermal), 0));
++
+     /* GPIO */
+     object_property_set_bool(OBJECT(&s->gpio), true, "realized", &err);
+     if (err) {
+diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
+index 62a4c7b559..be7ad9b499 100644
+--- a/include/hw/arm/bcm2835_peripherals.h
++++ b/include/hw/arm/bcm2835_peripherals.h
+@@ -20,6 +20,7 @@
+ #include "hw/misc/bcm2835_property.h"
+ #include "hw/misc/bcm2835_rng.h"
+ #include "hw/misc/bcm2835_mbox.h"
++#include "hw/misc/bcm2835_thermal.h"
+ #include "hw/sd/sdhci.h"
+ #include "hw/sd/bcm2835_sdhost.h"
+ #include "hw/gpio/bcm2835_gpio.h"
+@@ -53,6 +54,7 @@ typedef struct BCM2835PeripheralState {
+     SDHCIState sdhci;
+     BCM2835SDHostState sdhost;
+     BCM2835GpioState gpio;
++    Bcm2835ThermalState thermal;
+     UnimplementedDeviceState i2s;
+     UnimplementedDeviceState spi[1];
+     UnimplementedDeviceState i2c[3];
+diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
+index cdcbca943f..61b04a1bd4 100644
+--- a/include/hw/arm/raspi_platform.h
++++ b/include/hw/arm/raspi_platform.h
+@@ -48,6 +48,7 @@
+ #define SPI0_OFFSET             0x204000
+ #define BSC0_OFFSET             0x205000 /* BSC0 I2C/TWI */
+ #define OTP_OFFSET              0x20f000
++#define THERMAL_OFFSET          0x212000
+ #define BSC_SL_OFFSET           0x214000 /* SPI slave */
+ #define AUX_OFFSET              0x215000 /* AUX: UART1/SPI1/SPI2 */
+ #define EMMC1_OFFSET            0x300000
+-- 
 2.20.1
 

@@ -1,137 +1,145 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2526098wrp;
-        Thu, 26 Sep 2019 12:07:58 -0700 (PDT)
-X-Received: by 2002:a65:5c0b:: with SMTP id u11mr4986673pgr.294.1569524878791;
-        Thu, 26 Sep 2019 12:07:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569524878; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2608093wrp;
+        Thu, 26 Sep 2019 13:32:38 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwCi9/x/lbKLL4MfWpCSu9uCvy2V3TLWcLPZVng/rb/RTsnSe7vUTt9fHlYfm+ERHhBgL7x
+X-Received: by 2002:ac8:74d0:: with SMTP id j16mr6161057qtr.244.1569529958392;
+        Thu, 26 Sep 2019 13:32:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569529958; cv=none;
         d=google.com; s=arc-20160816;
-        b=N2Vcog/BA76Vbxwsk2bEoKl+le6UV/ld/aYL3Pzd+E4yuDwA732RRWIgExdkK7Xziw
-         rTHbwlmLlO6o5ey2JVLMM/S9vGIqCjrifckv0iUOT0FxrNihOIS1YaRlVZjIwhaEvR88
-         ICYzph/1hOIAgQLRT+2W7RV90/oBf7It084j4SjYAyBOMq/mfQleHSDB4YMwX5k8iRu/
-         Hfd0ylo8tGEhXGVOvNqqulT1z3w8250Uzv5iOxAzQNU9a/IUk0BLdJH0YONKUKIjqY4q
-         E9whNspEjp/Dov9+zBsArbRiQ8/xz1PAXsRl6Dwzh5u4xSTL0j0PFvcfIEqAu6+EUyPO
-         +wAQ==
+        b=sZtcKC1C3Rv0Yj07t13biGaTnvdpjycm8T16zylsiXzj5zFHEo9FMWKPqYUnU9idnn
+         3V8bVMrpGTEWqFV9nkNN5QDjEd0QsSmMzMEEQcmLHY9NcYl7elxO9Fwc5ToQBitQGLar
+         CDikFQ9du3eD86gMT6nKilYI3K0HyBEroa8hrazYvkaujUtdjEv+ww75FhFM+9Da2ILZ
+         gzpqb42O/ggfG53RHch4ZyJT1DMBc4Nki56PWRELM9gZ0OqmWmqXfOPe8/GK6E4+gd85
+         R1pu+ydiy6B4sMojcgC209Al7D9ccEUdud/KgutfY6UWVfEe6JgR/eFXk5k4vvBREeFq
+         ycYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
-         :dkim-signature;
-        bh=zKpl9jWF7yohhRW+KbqxUCibNvl2Z53+iZCD5XEizI4=;
-        b=L0IUZbD7RAQtW38Og08K4ocO64hmr0QJ8xX6kLQvH9pRH2zUNuOBpGbc7NSuUMTAmK
-         kApPow+hrVblu3YHvi63NVsfMRlHWNGLAoQ6qkAdk5jNE+oc9clABCmR8sbJ8WKhG4uj
-         19njYoOeYgvZ0QH9fRMt3lqH500Rt8v4rO6Qrlz2dLesD3kk4xglNytYc3KjnQ9/TueG
-         jOXX6EJ6ma9pcmg1/Ru1VjzYAPK+ZGXdqJ+zjvMUiyfGSIQ0e5+nHe4ZMv+5J3GIYSG9
-         l4Yd6ZTQC6PO1vhDH4G/GrJS5cs41vj9qMH5iNi0H9ziETQmb4zNaje7D141xRify2yh
-         OUZg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-id:mime-version
+         :user-agent:references:message-id:in-reply-to:subject:to:from:date;
+        bh=L9h0mhiqNP2PDE5Y/fNuPpCKjF5BmhZS5jh2cwso+/E=;
+        b=lY4vZIE/IACjZkwDB8KJvmuDgmlfL//ruZ29toBv1uicmVrUecGg+Ii7Ho+ADT14wv
+         eSrofVuf5KV1qGrjbKXxBXqz6fLvugaIQhNq7lCkf6uW9xcsrfwncJcmnzwWNLwn9trh
+         nMRSEOuJJQ5DTjRtrJV6MwmUR7XhmF5/UFOtylizBlIxKAcIKoHvLefh75CW9ef2JcQT
+         p2dygjClos+QA6jKJISVif+xFAQ6fdfdUDnxvl0FYbLz288cKJoQOXTgdW5XDT/99vVN
+         ZeMn35LptizH2J1akV1PoGpYWrd6jYGdmS+pFKtfkV1I8dfpwexoTdE3S4nqJqHvNkH3
+         4r9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uNR91pvR;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id q8sor197185plr.67.2019.09.26.12.07.58
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z8si2586712qtj.349.2019.09.26.13.32.38
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 26 Sep 2019 12:07:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 26 Sep 2019 13:32:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=uNR91pvR;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=zKpl9jWF7yohhRW+KbqxUCibNvl2Z53+iZCD5XEizI4=;
-        b=uNR91pvRCwcuiYNvBUqwh1PcxVPhBjuOKSe810lMdYb2XbCeTmwkyx/p+ZjPCtt1aC
-         6Mq1TsQg5lh8Gua+uzY0KxJDwmhDpMMryajQjbGzqtCDthpWZ5XP/EpKJD3ZaojeS2iF
-         uyDvbVcX16t+F2mloHDGFxkojM54XYObUJoZJLbWRtEUDagkbDTNrlTbtlV3ZTwe93cY
-         f9DXoyJC+/QeT2SG5v7CTSi9iT2wMm6vCzYLjHb9jO97C8AEHfo435/dT8cdu/RaL7WH
-         pPVEUB1VSLSYuvHITmhEGrfSbA6dxOR3LZ6VlBXd620gSt8WnZvn3w4TMZWHzqIei8YH
-         43Vw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=zKpl9jWF7yohhRW+KbqxUCibNvl2Z53+iZCD5XEizI4=;
-        b=BdEGPkEBtmdqhGX4uWda3AHUn7WV9+tHm0N0zud4RQCy4fCe/g6nSDUK/MW2RcjdkW
-         CYBJwT8XYXcefbBavyngrMT1b3Y53yaQL/JSn6e89hjCrPfVfq4AisVuWYnipUJtJ5IK
-         wEhBCJJBAAvEPmyfmP5KprKvoWa7eYaTVkICP0n3qpqs5Ag4aeUNIJ1/bM1VXdeLTUBO
-         wN4VmRSfU97Li5WS1wVtK2N4T/rIFcqv8pqd1kbXtpz9rCS8L8/okmqXGMY/FGkXCoGs
-         Usk13vTcvk7dC6Oawlgpvr4VLdcN7UaNJe1vipYJgjFw3Bqf5cMEvn5xCFTnqQ6U4AI+
-         vr/A==
-X-Gm-Message-State: APjAAAW6t8kTqOuQltwpRwNp+zxLS99q1hcV3VzO5CrR14MjnL5kV+fk
-	/ZRHEW+qafIHO5Oq+h07w4x1m5Y0
-X-Google-Smtp-Source: APXvYqyEk2ODKjE97AqcrtWyw1yTImZvr7bM880/6S5IYEVIGFe0vAtOutG4wNaG89eGEDmwOTqVbg==
-X-Received: by 2002:a17:902:5a44:: with SMTP id f4mr109642plm.31.1569524878184;
-        Thu, 26 Sep 2019 12:07:58 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [172.20.32.216] ([12.157.10.114])
-        by smtp.gmail.com with ESMTPSA id e10sm34997pfh.77.2019.09.26.12.07.56
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Sep 2019 12:07:56 -0700 (PDT)
-Subject: Re: [PATCH v4 4/9] target/arm/cpu64: max cpu: Introduce sve<N>
- properties
-To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, alex.bennee@linaro.org, armbru@redhat.com,
- eblake@redhat.com, Dave.Martin@arm.com, eric.auger@redhat.com,
- imammedo@redhat.com
-References: <20190924113105.19076-1-drjones@redhat.com>
- <20190924113105.19076-5-drjones@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Openpgp: preference=signencrypt
-Message-ID: <2beb840f-99cf-d928-0926-c284933c78d9@linaro.org>
-Date: Thu, 26 Sep 2019 12:07:54 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44268 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iDaRJ-0002wm-Sy
+	for alex.bennee@linaro.org; Thu, 26 Sep 2019 16:32:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35433)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <balaton@eik.bme.hu>) id 1iDaR9-0002wQ-5H
+ for qemu-arm@nongnu.org; Thu, 26 Sep 2019 16:32:28 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <balaton@eik.bme.hu>) id 1iDaR6-0008Ds-Pn
+ for qemu-arm@nongnu.org; Thu, 26 Sep 2019 16:32:26 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2]:50249)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <balaton@eik.bme.hu>)
+ id 1iDaR6-00085U-JU; Thu, 26 Sep 2019 16:32:24 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id 6994574AAAC;
+ Thu, 26 Sep 2019 22:32:14 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 4CF1B749FDB; Thu, 26 Sep 2019 22:32:14 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 4BB25749EDE;
+ Thu, 26 Sep 2019 22:32:14 +0200 (CEST)
+Date: Thu, 26 Sep 2019 22:32:14 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [PATCH 00/19] hw/arm/raspi: Improve Raspberry Pi 2/3 reliability
+In-Reply-To: <20190926173428.10713-1-f4bug@amsat.org>
+Message-ID: <alpine.BSF.2.21.9999.1909262221020.91838@zero.eik.bme.hu>
+References: <20190926173428.10713-1-f4bug@amsat.org>
+User-Agent: Alpine 2.21.9999 (BSF 287 2018-06-16)
 MIME-Version: 1.0
-In-Reply-To: <20190924113105.19076-5-drjones@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: ri3ZBPFEqf0r
+Content-Type: multipart/mixed;
+ BOUNDARY="3866299591-895926101-1569529556=:91838"
+Content-ID: <alpine.BSF.2.21.9999.1909262227160.91838@zero.eik.bme.hu>
+X-detected-operating-system: by eggs.gnu.org: FreeBSD 9.x [fuzzy]
+X-Received-From: 152.66.115.2
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Guenter Roeck <linux@roeck-us.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Put/e9Xab/V9
 
-On 9/24/19 4:31 AM, Andrew Jones wrote:
-> +static uint32_t sve_zcr_get_valid_len(ARMCPU *cpu, uint32_t start_len)
-> +{
-> +    uint32_t start_vq = (start_len & 0xf) + 1;
-> +
-> +    return arm_cpu_vq_map_next_smaller(cpu, start_vq + 1) - 1;
-> +}
-> +
->  /*
->   * Given that SVE is enabled, return the vector length for EL.
->   */
-> @@ -5360,13 +5367,13 @@ uint32_t sve_zcr_len_for_el(CPUARMState *env, int el)
->      uint32_t zcr_len = cpu->sve_max_vq - 1;
->  
->      if (el <= 1) {
-> -        zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[1]);
-> +        zcr_len = sve_zcr_get_valid_len(cpu, env->vfp.zcr_el[1]);
->      }
->      if (el <= 2 && arm_feature(env, ARM_FEATURE_EL2)) {
-> -        zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[2]);
-> +        zcr_len = sve_zcr_get_valid_len(cpu, env->vfp.zcr_el[2]);
->      }
->      if (arm_feature(env, ARM_FEATURE_EL3)) {
-> -        zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[3]);
-> +        zcr_len = sve_zcr_get_valid_len(cpu, env->vfp.zcr_el[3]);
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-This has lost the MIN relation between these 3 registers.
-One possible solution is to keep these 3 if statements as-is,
-but make one call
+--3866299591-895926101-1569529556=:91838
+Content-Type: text/plain; CHARSET=ISO-8859-15; format=flowed
+Content-ID: <alpine.BSF.2.21.9999.1909262227161.91838@zero.eik.bme.hu>
+Content-Transfer-Encoding: quoted-printable
 
-    zcr_len = arm_cpu_vq_map_next_smaller(cpu, zcr_len);
+On Thu, 26 Sep 2019, Philippe Mathieu-Daud=E9 wrote:
+> and got it almost working (boots Linux kernel to userland, sadly
+> I'm still having timeout issues with the eMMC block).
+[...]
+> $ make aarch64-softmmu/all check-venv
+> $ ./tests/venv/bin/avocado --show=3Dapp,console run -t machine:raspi2 -=
+t machine:raspi3 tests/acceptance
+> JOB ID     : 10bf6593659f0b191941265c19fe3dbf1652c3e7
+> JOB LOG    : /home/phil/avocado/job-results/job-2019-09-26T19.04-10bf65=
+9/job.log
+> (1/4) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_=
+raspi2_uart0: \console: [    0.000000] Booting Linux on physical CPU 0xf0=
+0
+> console: [    0.000000] Linux version 4.14.98-v7+ (dom@dom-XPS-13-9370)=
+ (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1200=
+ SMP Tue Feb 12 20:27:48 GMT 2019
+> console: [    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARM=
+v7), cr=3D10c5387d
+> console: [    0.000000] CPU: div instructions available: patching divis=
+ion code
+> console: [    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT a=
+liasing instruction cache
+> console: [    0.000000] OF: fdt: Machine model: Raspberry Pi 2 Model B
+> console: [    0.000000] earlycon: pl11 at MMIO 0x3f201000 (options '')
+> console: [    0.000000] bootconsole [pl11] enabled
+> console: [    0.000000] Memory policy: Data cache writealloc
+> console: [    0.000000] cma: Reserved 8 MiB at 0x3b800000
+> console: [    0.000000] percpu: Embedded 17 pages/cpu @baf2e000 s38720 =
+r8192 d22720 u69632
+> console: [    0.000000] Built 1 zonelists, mobility grouping on.  Total=
+ pages: 243600
+> console: [    0.000000] Kernel command line: printk.time=3D0 earlycon=3D=
+pl011,0x3f201000 console=3DttyAMA0
 
-at the end.
+Not sure what timeouts you get related to eMMC but previously we've found=
+=20
+that panic at boot due to mmcblk not ready is avoided with the "rootwait"=
+=20
+kernel option which does not seem to be present in most of these tests.=20
+(It's also not present in images for real hardware so likely this only=20
+happens with QEMU but not on real hardware. Could it be that real hardwar=
+e=20
+is slower so timing is different?)
 
-> +#if __SIZEOF_LONG__ == 8
-> +#define BIT(n) (1UL << (n))
-> +#else
-> +#define BIT(n) (1ULL << (n))
-> +#endif
-
-There's no reason not to always use 1ULL is there?
-
-
-r~
+Regards,
+BALATON Zoltan
+--3866299591-895926101-1569529556=:91838--

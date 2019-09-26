@@ -1,96 +1,96 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2431466wrp;
-        Thu, 26 Sep 2019 10:42:01 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzTiIkhwew7ZiuBcWXv3A73T+CBE21Nx/flkPbEcpCunGcNrtivA8rs/tqKeaucIWPmc/Ld
-X-Received: by 2002:ac8:347b:: with SMTP id v56mr5301835qtb.49.1569519720915;
-        Thu, 26 Sep 2019 10:42:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569519720; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp2433303wrp;
+        Thu, 26 Sep 2019 10:43:44 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxcI52jSA8sIliXxePBUC0jo4Ve/UB+gwhGvTEj5l61V6YDf2c0GNCqqbAElJUIHgGQq/Z7
+X-Received: by 2002:ac8:6b82:: with SMTP id z2mr4844221qts.331.1569519823994;
+        Thu, 26 Sep 2019 10:43:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569519823; cv=none;
         d=google.com; s=arc-20160816;
-        b=RWPJTW42KbwfQEZGl/2CGpnQKP5gK17FagGl7sKJzArMhvhAZHUHSv6hP1oSc9lVsB
-         itKTu41I6IENo2f8hb3/OZGzaAzUMxq/TADdR/LNXycLL06rS7UxJOY3vMbjR3UBVPrd
-         YDGT4+ShXk8vs7XDS2WL4PqWcGJxjoH1YvhtHbP3eB2sx1y6p+cDfspourNuvO6089LG
-         HwNDCPBiOJBti3iRHq+8GSvYos4EXoVl6ki6xn1q73QWlojqd3w1pSL4hP+wEwCQM892
-         Mma7Bqf4OZFToNWoDT6Jzjrmyz9IRPGgoOecj9bf/BLTdkUHTy2I+LhkjXpHAdD1oXF3
-         U8ew==
+        b=v/V8WvUSt4GfoFrYpD3xJ491v80DHg0LCNKazDbIL+qKfiFybRRAksuIPj0MDCb2J9
+         rs4QqDRAqK5jVXUyc61Ep/kkE4BwkOd+PNgnAIc1Jipah39Zkf03R7t7TwYQHNi9POJo
+         AL32iumBVEq3yXOYrjrDQbvwnsABs47rUtzxpkoqQ7iFwGf3SEcHRj8PXsT7E++7vjGO
+         9Qk9v4RvaZOrCYkJSjqzHznpXlPLfHVK5ks4DCoSusJB95Sz9xDd7DDQRk4pT730xGwo
+         N/ORBO7DuVRECn1XtnAolDmtAUthZRjv/Xko4ovqiSNlAzBu7Xv8GH1vTUw2xSCv8ksT
+         W63w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=0nYrEyIE8Ksn++8Q6sjUUjo6us9YPYxfJ0rmZNlZ6VA=;
-        b=UoheQQZFkLvCLCvhrDNecd0XI7XZAhpyYMDEMQbm+s3ZjampPzlS/1OfTCwpFolYzU
-         q9tb1a9eDFymiply32d1KVmki9+0iIgCZHP+sl5O1U6Bg/myVuCip3loiMj8YWsiby0h
-         yKIrswtymcGANcKOTXDZ187XRXupejfsnUBgtg5nvPM8VTUkcSpV9TnYPld+qbDn8oPr
-         Um1Rdg2ndOGuItU5RM+XsIaEAYZX8psZuVnCSa91KE95TZmWXkwx2FvmhEqDsl9YffIx
-         iCCCl3HmP9pMTrSYrq/eER+egoM8NzwZLKfgBmVKvoSmXDCnb09mU8EDJqoMS4XmZ3J8
-         TSsQ==
+        bh=GlaMMIfLZjSDDtTHA/uHOissc0A853GaqoDlAhxsiJM=;
+        b=ySdRBBkojX/GM1TI8C3cZ+wTt2uBJXtCS8hvfqy6NAvMSm8sTwJOW/xXgLV/0gSu9M
+         PSHP6XcBabudIfXtG6UwCtXhPaeBipdomhTACN5YXVzDmyKeRb+LPFnblnTy2KMkz4uC
+         LhBd+bSbJMKmRwFJMmX/zsGShed2X1AtT9vhHyVFhtXK3iaVEVpM0xLzLGGcjdzm6hVy
+         /HsEmYYbHmlQecP/0D29emcldvNx52zVf2llpBS+RvASV+OA4AuqGYlcaYufzzAwIQN7
+         L7mVKzLFJ/g8AkbDJp6TvGwGwNXSMQJK6e3nN9bKzZ/eT4QgoWjnvDMaQiJkvBCv8qUG
+         nzLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Zf4hUEyt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="QmupJf/2";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h5si1978829qkm.101.2019.09.26.10.42.00
+        by mx.google.com with ESMTPS id u32si2034995qtk.280.2019.09.26.10.43.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 26 Sep 2019 10:42:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 26 Sep 2019 10:43:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Zf4hUEyt;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41803 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="QmupJf/2";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41806 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iDXmB-000184-Re
-	for alex.bennee@linaro.org; Thu, 26 Sep 2019 13:41:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58892)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iDXnp-0001mg-HY
+	for alex.bennee@linaro.org; Thu, 26 Sep 2019 13:43:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58779)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXgG-0004Rl-Pf
- for qemu-arm@nongnu.org; Thu, 26 Sep 2019 13:35:54 -0400
+ id 1iDXg9-0004JH-Df
+ for qemu-devel@nongnu.org; Thu, 26 Sep 2019 13:35:46 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXgE-0002sV-9c
- for qemu-arm@nongnu.org; Thu, 26 Sep 2019 13:35:51 -0400
-Received: from mail-wr1-f66.google.com ([209.85.221.66]:33788)
+ id 1iDXg7-0002oI-Uo
+ for qemu-devel@nongnu.org; Thu, 26 Sep 2019 13:35:45 -0400
+Received: from mail-wr1-f66.google.com ([209.85.221.66]:33827)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iDXgA-0002qV-Tm; Thu, 26 Sep 2019 13:35:47 -0400
-Received: by mail-wr1-f66.google.com with SMTP id b9so3740463wrs.0;
- Thu, 26 Sep 2019 10:35:46 -0700 (PDT)
+ id 1iDXg7-0002na-GD; Thu, 26 Sep 2019 13:35:43 -0400
+Received: by mail-wr1-f66.google.com with SMTP id a11so3744359wrx.1;
+ Thu, 26 Sep 2019 10:35:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=0nYrEyIE8Ksn++8Q6sjUUjo6us9YPYxfJ0rmZNlZ6VA=;
- b=Zf4hUEytuT66Vk8Q/kLrnqWhVUdYRPo5txTb0r2vrCAptQk/xn1csbclZAYGxstLYP
- YLwqU5rG0W+Ww2cBreX8g5mYQjnOaSpCCMiwtoJIYVawHVI+XX/ntBfjt/790Uvli0Zp
- dHaYgYYhqWCS31UiNzTAVDH0N0x+UdopVoNa6cX6xvwAVJv2BUB2gZu4tK2q0e7IJ+Q4
- lFdEv6Kzyu4Os4ttvuqEcwoXhg4PWE81f4pvhng0sLcYzH77Djdom9qF8rsFhv/1BpCp
- hFA5ky1wXzqvxG+ozWVBGkpoaXRjL/eUQiL6OLfQXFjPk/zEKgl0DP2biBge+tbxb3g4
- WqQQ==
+ bh=GlaMMIfLZjSDDtTHA/uHOissc0A853GaqoDlAhxsiJM=;
+ b=QmupJf/2U6S3tX/1kh4MFs5BaT311mz8YFy6GDfe48td7bhn2osy22KsyarRVS923C
+ 8X3/iIygr3eeECtn+stZAmoPSUm8V67qnRi8JsomTI9FPiRnVQDjnsRV4FHlvyGSx9o2
+ M+pTAkfrdtx+ihkxpo5eFEVff+KzWz46t9NdFQJsRo+W2adA38IxhisCAvG6FV0Q1L9Z
+ WEuR909D8JpwJaGWIGd+zAYcYpg4FbnhAyLNy8M69cMZf3Z1sRWDW5yPY541PycNqnma
+ U2LjSk+eslIW5vBuroQIVTBKO9AVooov6G7BfVwqUMbwqDLHjW849bJkFtCtlfzsl5oy
+ 1Vtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=0nYrEyIE8Ksn++8Q6sjUUjo6us9YPYxfJ0rmZNlZ6VA=;
- b=lbWvouvlMx8sAJOGrcJOdKcVhK112fBEsBZEF7s/m4UotAMxEKEoiHOY9SdbkwMHF5
- X6YfgWi8a16RXxg+bNebh1zzqlWGbdhBt/VKjKSdygtlOWnWHMmyYAVLd6acQZ+CSmMp
- V/s2x8YZj5S23i6oKVwpURAXygifcD/FeKmTR1VT0iWcwPqcZg5LAVhZA+/L36bG5BMq
- xxTLi3zJ1di+daB3Xodwo9+Q+K1sw4WgN5vzg8EeHdpuYfTyXGdT8go203wgeAu1MCac
- L103OX9cH9waR9VPd3fpd5bjSWE/B5jqugTvQtot8dQG89IEBu0E/rYFDPNvXSBrHS+L
- jDWA==
-X-Gm-Message-State: APjAAAVQL1BSqSShk7Ls30UAnn18SZdscYMK7IE0s6VJSTHXgpvqDlL4
- 2ak+Tsm83LjhdaE7/8o0+nZFTaP1ioo=
-X-Received: by 2002:a5d:5642:: with SMTP id j2mr3980873wrw.345.1569519285785; 
- Thu, 26 Sep 2019 10:34:45 -0700 (PDT)
+ bh=GlaMMIfLZjSDDtTHA/uHOissc0A853GaqoDlAhxsiJM=;
+ b=aQVQmNT7cGw4eHuGAhtfaWuSpRxkaUKXjcBhq4THGyhDXdS46b+JFcCqjfTMc6F6DA
+ LXX6npwXfnqeVpm18qbdm6DEolFAL9MXS8lIfxmYyBj0Jf9cbvnbu7nEM6if0tn/bjOi
+ 6fTYHfJFlpDXyjGmfJYeItgFBzp6os6fND/LxL1I4z7SETLA+kcrIOGC2VF2SFgyvcyg
+ bByGaub/at3TqHAyUdwsMtgKAk3apP/W64T3Ry9u4aG+whQYzCMFOWndyXqYYZSzXolw
+ HnbMcL2h+Gj1yeSioHn3kfGtTNvoXt9iXI67p7lJRlva6pLMcFy7hwID9pkMspG8UBEf
+ QnAw==
+X-Gm-Message-State: APjAAAXfkPelNXCdsoapHbt6l4KYi1bAju2T8vTOmTTUsrwajbRPDlCU
+ TK/4B8lGLJ3xmlEWs2Si98J3SagBFhk=
+X-Received: by 2002:a5d:6284:: with SMTP id k4mr1834075wru.205.1569519282325; 
+ Thu, 26 Sep 2019 10:34:42 -0700 (PDT)
 Received: from x1w.redhat.com (240.red-88-21-68.staticip.rima-tde.net.
  [88.21.68.240])
- by smtp.gmail.com with ESMTPSA id b186sm9918980wmd.16.2019.09.26.10.34.44
+ by smtp.gmail.com with ESMTPSA id b186sm9918980wmd.16.2019.09.26.10.34.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 26 Sep 2019 10:34:45 -0700 (PDT)
+ Thu, 26 Sep 2019 10:34:41 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 06/19] hw/char/bcm2835_aux: Add trace events
-Date: Thu, 26 Sep 2019 19:34:14 +0200
-Message-Id: <20190926173428.10713-7-f4bug@amsat.org>
+Subject: [PATCH 04/19] hw/arm/bcm2835: Rename some definitions
+Date: Thu, 26 Sep 2019 19:34:12 +0200
+Message-Id: <20190926173428.10713-5-f4bug@amsat.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190926173428.10713-1-f4bug@amsat.org>
 References: <20190926173428.10713-1-f4bug@amsat.org>
@@ -101,17 +101,17 @@ Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.85.221.66
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Zolt=C3=A1n=20Baldaszti?= <bztemail@gmail.com>,
  Laurent Bonnans <laurent.bonnans@here.com>,
@@ -119,7 +119,6 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
- BALATON Zoltan <balaton@eik.bme.hu>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org, Clement Deschamps <clement.deschamps@antfield.fr>,
  Cleber Rosa <crosa@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -127,174 +126,124 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Pekka Enberg <penberg@iki.fi>, Guenter Roeck <linux@roeck-us.net>,
  Eduardo Habkost <ehabkost@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xeRZKa6+NfAY
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vAspV0xvbbaq
 
-The BCM2835 AUX UART is compatible with the 16650 model, when
-the registers belong the the 16650 block, use its trace events,
-else use bcm2835_aux_read/write.
+The UART1 is part of the AUX peripheral,
+the PCM_CLOCK (yet unimplemented) is part of the CPRMAN.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/char/bcm2835_aux.c | 55 +++++++++++++++++++++++++++++++------------
- hw/char/trace-events  |  4 ++++
- 2 files changed, 44 insertions(+), 15 deletions(-)
+I dunno if this is OK to do that since the header has:
 
-diff --git a/hw/char/bcm2835_aux.c b/hw/char/bcm2835_aux.c
-index a6fc1bf152..b26a255630 100644
---- a/hw/char/bcm2835_aux.c
-+++ b/hw/char/bcm2835_aux.c
-@@ -27,6 +27,7 @@
- #include "migration/vmstate.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-+#include "trace.h"
- 
- #define AUX_IRQ         0x0
- #define AUX_ENABLES     0x4
-@@ -62,17 +63,24 @@ static void bcm2835_aux_update(BCM2835AuxState *s)
-     qemu_set_irq(s->irq, s->iir != 0);
- }
- 
-+static bool is_16650(hwaddr offset)
-+{
-+    return offset >= AUX_MU_IO_REG && offset < AUX_MU_CNTL_REG;
-+}
+ * These definitions are derived from those in Raspbian Linux at
+ * arch/arm/mach-{bcm2708,bcm2709}/include/mach/platform.h
+ * where they carry the following notice:
+ *
+ * Copyright (C) 2010 Broadcom
+---
+ hw/arm/bcm2835_peripherals.c    |  7 ++++---
+ hw/arm/bcm2836.c                |  2 +-
+ include/hw/arm/raspi_platform.h | 16 +++++++---------
+ 3 files changed, 12 insertions(+), 13 deletions(-)
+
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 8984e2e91f..1bd2ff41d5 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -165,7 +165,8 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->uart0), 0));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart0), 0,
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+-                               INTERRUPT_UART));
++                               INTERRUPT_UART0));
 +
- static uint64_t bcm2835_aux_read(void *opaque, hwaddr offset, unsigned size)
- {
-     BCM2835AuxState *s = opaque;
--    uint32_t c, res;
-+    uint32_t c, res = 0;
+     /* AUX / UART1 */
+     qdev_prop_set_chr(DEVICE(&s->aux), "chardev", serial_hd(1));
  
-     switch (offset) {
-     case AUX_IRQ:
--        return s->iir != 0;
-+        res = s->iir != 0;
-+        break;
- 
-     case AUX_ENABLES:
--        return 1; /* mini UART permanently enabled */
-+        res = 1; /* mini UART permanently enabled */
-+        break;
- 
-     case AUX_MU_IO_REG:
-         /* "DLAB bit set means access baudrate register" is NYI */
-@@ -85,11 +93,13 @@ static uint64_t bcm2835_aux_read(void *opaque, hwaddr offset, unsigned size)
-         }
-         qemu_chr_fe_accept_input(&s->chr);
-         bcm2835_aux_update(s);
--        return c;
-+        res = c;
-+        break;
- 
-     case AUX_MU_IER_REG:
-         /* "DLAB bit set means access baudrate register" is NYI */
--        return 0xc0 | s->ier; /* FIFO enables always read 1 */
-+        res = 0xc0 | s->ier; /* FIFO enables always read 1 */
-+        break;
- 
-     case AUX_MU_IIR_REG:
-         res = 0xc0; /* FIFO enables */
-@@ -105,33 +115,34 @@ static uint64_t bcm2835_aux_read(void *opaque, hwaddr offset, unsigned size)
-         if (s->iir == 0) {
-             res |= 0x1;
-         }
--        return res;
-+        break;
- 
-     case AUX_MU_LCR_REG:
-         qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_LCR_REG unsupported\n", __func__);
--        return 0;
-+        break;
- 
-     case AUX_MU_MCR_REG:
-         qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_MCR_REG unsupported\n", __func__);
--        return 0;
-+        break;
- 
-     case AUX_MU_LSR_REG:
-         res = 0x60; /* tx idle, empty */
-         if (s->read_count != 0) {
-             res |= 0x1;
-         }
--        return res;
-+        break;
- 
-     case AUX_MU_MSR_REG:
-         qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_MSR_REG unsupported\n", __func__);
--        return 0;
-+        break;
- 
-     case AUX_MU_SCRATCH:
-         qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_SCRATCH unsupported\n", __func__);
--        return 0;
-+        break;
- 
-     case AUX_MU_CNTL_REG:
--        return 0x3; /* tx, rx enabled */
-+        res = 0x3; /* tx, rx enabled */
-+        break;
- 
-     case AUX_MU_STAT_REG:
-         res = 0x30e; /* space in the output buffer, empty tx fifo, idle tx/rx */
-@@ -140,17 +151,25 @@ static uint64_t bcm2835_aux_read(void *opaque, hwaddr offset, unsigned size)
-             assert(s->read_count < BCM2835_AUX_RX_FIFO_LEN);
-             res |= ((uint32_t)s->read_count) << 16; /* rx fifo fill level */
-         }
--        return res;
-+        break;
- 
-     case AUX_MU_BAUD_REG:
-         qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_BAUD_REG unsupported\n", __func__);
--        return 0;
-+        break;
- 
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
-                       __func__, offset);
--        return 0;
-+        break;
+@@ -175,7 +176,7 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+         return;
      }
-+
-+    if (is_16650(offset)) {
-+        trace_serial_ioport_read((offset & 0x1f) >> 2, res);
-+    } else {
-+        trace_bcm2835_aux_read(offset, res);
-+    }
-+
-+    return res;
- }
  
- static void bcm2835_aux_write(void *opaque, hwaddr offset, uint64_t value,
-@@ -159,6 +178,12 @@ static void bcm2835_aux_write(void *opaque, hwaddr offset, uint64_t value,
-     BCM2835AuxState *s = opaque;
-     unsigned char ch;
+-    memory_region_add_subregion(&s->peri_mr, UART1_OFFSET,
++    memory_region_add_subregion(&s->peri_mr, AUX_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->aux), 0));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->aux), 0,
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+@@ -268,7 +269,7 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+         return;
+     }
  
-+    if (is_16650(offset)) {
-+        trace_serial_ioport_write((offset & 0x1f) >> 2, value);
-+    } else {
-+        trace_bcm2835_aux_write(offset, value);
-+    }
-+
-     switch (offset) {
-     case AUX_ENABLES:
-         if (value != 1) {
-diff --git a/hw/char/trace-events b/hw/char/trace-events
-index 2ce7f2f998..a7d477ab1e 100644
---- a/hw/char/trace-events
-+++ b/hw/char/trace-events
-@@ -1,5 +1,9 @@
- # See docs/devel/tracing.txt for syntax documentation.
+-    memory_region_add_subregion(&s->peri_mr, EMMC_OFFSET,
++    memory_region_add_subregion(&s->peri_mr, EMMC1_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->sdhci), 0));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->sdhci), 0,
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+index 493a913f89..723aef6bf5 100644
+--- a/hw/arm/bcm2836.c
++++ b/hw/arm/bcm2836.c
+@@ -126,7 +126,7 @@ static void bcm2836_realize(DeviceState *dev, Error **errp)
  
-+# bcm2835_aux.c
-+bcm2835_aux_read(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
-+bcm2835_aux_write(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
-+
- # parallel.c
- parallel_ioport_read(const char *desc, uint16_t addr, uint8_t value) "read [%s] addr 0x%02x val 0x%02x"
- parallel_ioport_write(const char *desc, uint16_t addr, uint8_t value) "write [%s] addr 0x%02x val 0x%02x"
+         /* set periphbase/CBAR value for CPU-local registers */
+         object_property_set_int(OBJECT(&s->cpus[n]),
+-                                BCM2836_PERI_BASE + MCORE_OFFSET,
++                                BCM2836_PERI_BASE + MSYNC_OFFSET,
+                                 "reset-cbar", &err);
+         if (err) {
+             error_propagate(errp, err);
+diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
+index 10083d33df..66969fac5d 100644
+--- a/include/hw/arm/raspi_platform.h
++++ b/include/hw/arm/raspi_platform.h
+@@ -25,8 +25,7 @@
+ #ifndef HW_ARM_RASPI_PLATFORM_H
+ #define HW_ARM_RASPI_PLATFORM_H
+ 
+-#define MCORE_OFFSET            0x0000   /* Fake frame buffer device
+-                                          * (the multicore sync block) */
++#define MSYNC_OFFSET            0x0000   /* Multicore Sync Block */
+ #define IC0_OFFSET              0x2000
+ #define ST_OFFSET               0x3000   /* System Timer */
+ #define MPHI_OFFSET             0x6000   /* Message-based Parallel Host Intf. */
+@@ -37,9 +36,8 @@
+ #define ARMCTRL_TIMER0_1_OFFSET (ARM_OFFSET + 0x400) /* Timer 0 and 1 */
+ #define ARMCTRL_0_SBM_OFFSET    (ARM_OFFSET + 0x800) /* User 0 (ARM) Semaphores
+                                                       * Doorbells & Mailboxes */
+-#define PM_OFFSET               0x100000 /* Power Management, Reset controller
+-                                          * and Watchdog registers */
+-#define PCM_CLOCK_OFFSET        0x101098
++#define CPRMAN_OFFSET           0x100000 /* Power Management, Watchdog */
++#define CM_OFFSET               0x101000 /* Clock Management */
+ #define RNG_OFFSET              0x104000
+ #define GPIO_OFFSET             0x200000
+ #define UART0_OFFSET            0x201000
+@@ -47,11 +45,11 @@
+ #define I2S_OFFSET              0x203000
+ #define SPI0_OFFSET             0x204000
+ #define BSC0_OFFSET             0x205000 /* BSC0 I2C/TWI */
+-#define UART1_OFFSET            0x215000
+-#define EMMC_OFFSET             0x300000
++#define AUX_OFFSET              0x215000 /* AUX: UART1/SPI1/SPI2 */
++#define EMMC1_OFFSET            0x300000
+ #define SMI_OFFSET              0x600000
+ #define BSC1_OFFSET             0x804000 /* BSC1 I2C/TWI */
+-#define USB_OFFSET              0x980000 /* DTC_OTG USB controller */
++#define USB_OTG_OFFSET          0x980000 /* DTC_OTG USB controller */
+ #define DMA15_OFFSET            0xE05000 /* DMA controller, channel 15 */
+ 
+ /* GPU interrupts */
+@@ -112,7 +110,7 @@
+ #define INTERRUPT_SPI                  54
+ #define INTERRUPT_I2SPCM               55
+ #define INTERRUPT_SDIO                 56
+-#define INTERRUPT_UART                 57
++#define INTERRUPT_UART0                57
+ #define INTERRUPT_SLIMBUS              58
+ #define INTERRUPT_VEC                  59
+ #define INTERRUPT_CPG                  60
 -- 
 2.20.1
 

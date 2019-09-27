@@ -1,98 +1,109 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3923374wrp;
-        Fri, 27 Sep 2019 12:49:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyiSMDXVHejcloU2/t1V3TYS14FX00dkUfoJcQRGiTgxOSRiwhQXKUXBtkT4nOcGV39zWfj
-X-Received: by 2002:a37:62d8:: with SMTP id w207mr6122663qkb.261.1569613769155;
-        Fri, 27 Sep 2019 12:49:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569613769; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3953207wrp;
+        Fri, 27 Sep 2019 13:18:56 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy3be1taoYb2Yoq57LzB2FdV7c+bt/N21njNzlUD3kvF8AcPhq9ejZ7FmxCZyme8nouNyN0
+X-Received: by 2002:a37:c441:: with SMTP id h1mr6480905qkm.16.1569615536086;
+        Fri, 27 Sep 2019 13:18:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569615536; cv=none;
         d=google.com; s=arc-20160816;
-        b=f+2xPocTHWyh8xYXAhS8U/7evTnGNHRg481MwoaoViOGhuhpbp1MgezyYFdeyHxrSg
-         4xa3a2o5ehsuHHvbFsSaw9JWr0vCYhEG+uqA4PzMk+Ug4iC5ceazfdwZwzaNV0UROp7j
-         SOMsKQyygnoPHg1VSLCc82t/pRls1ejilEgyRDti9hrXPa5+blkRbrKQ9T3fBk0TYbmD
-         tqOUOhFxv4CJQ/eqD4Z1Y2J94Ak26fAkBQ1xpuLtbKlkA0Qc4T8WeJybHAgHKRhzuYWF
-         nm+QswL+xfJtdhIR1p7Fws5vqp1BNL1LUgGz0Pvabku/sAzlDvigbs4WaPUFiUVz1kel
-         w3tw==
+        b=IrlsT0rEktjevIxmzf5iYX4e6D/73z0Rv2e8AIFFYToHdL7Q40o/vhxcdPyuxZfK7Z
+         jBWEumB8vJjiT8V6Klq1f7Zs2yT+pVTRfqFTueRvyP5FnltfPY0iw/atqOKUWe6cVOSv
+         6HIsoYTbZf0cGsV627BOOIeZJ73jiC616Q/I+J1JrJVyrr1iRputZROPTNG7D7+FEAYG
+         /CWKFUCWLw8+EVS7+ubhkIX5AGmm7wnER/0j021C4dRc9jvVlNQtiHDp0+PTjRdYPPGd
+         FiBxh9hWew1eyYQ3oD9TwOFkG5EjC2N1cdJ46LldTfQl0MM/Bm48NzaDAt2uUpGrYszY
+         8YeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=jOwWvrN151x0DDEdrQrY3RB+nObetgY3tjAATY489o8=;
-        b=cVr/CaJ+8LvEKDbe5/kU5Q6OycWZlDCDxWNz1czVk8EumWxwQ2RF5iFjCKhshkFS7I
-         GfIAtYWcXX/dxLDfuv8/IfRIAJKl5T4rpUwHlxEaKtReoRVlJb3KsrnjdWaGP9E1YCFf
-         DoYpBVtEbd/ffNBnX5krsmUquyVJiA/Qs9VxalQpMx1IEAIFYeqXjoqhYfGNSQnOGLGV
-         ygs0gINuPqnO4wcBnrz5zXbfA34SivJLZxM2kBlKwndHcAtGtfwm6TF5+2YhaL1VNpQ9
-         d9OPUj3mDTEjXn177k6ugW0bH/NCu0WwSsPhnIhbL0GgLSRRw5BZq/wJG1PgZjidYSPH
-         X8cA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:openpgp:from:references:to:subject;
+        bh=VYIARQZeSo4eqIGZ7/+Ci3Bhjf7+cEZeiTX0M8qC638=;
+        b=oaOIIEEq/kcbeLmYxIGbSebwSO/dwgZWkJAUjRh5tR6OQr8kcAIVdcEUs9g886EdLx
+         egjXeNxwBakDSrll5FBkWzSFA3GagVJaVVGbDCN3/MZBiy2/1pY7EbWypVjwN0ZWfrtP
+         QhoecvYjbnndPv6y5qOxJgoBGZSkOpigAzTarch18wRe+iQEDgM2NElAE9/M8J56KVww
+         WL0nREYKmeES2uRfqV7TlIHEcBiIBsDQ42qDL1vjqSU1Dkbp91L64yNQstnduUCzJCDa
+         tWz9s7FO/hHr8XYWlx0iNjO6LSC6HBXfEejafbgdsG5CKomBYiEsINVw1C1/7npLoZkr
+         IvYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rPJrpEsU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 26si5935434qvt.162.2019.09.27.12.49.29
+        by mx.google.com with ESMTPS id t2si3344385qkb.277.2019.09.27.13.18.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Sep 2019 12:49:29 -0700 (PDT)
+        Fri, 27 Sep 2019 13:18:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rPJrpEsU;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:56898 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57252 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iDwF5-0004Fl-1O
-	for alex.bennee@linaro.org; Fri, 27 Sep 2019 15:49:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47478)
+	id 1iDwhb-0008NJ-GU
+	for alex.bennee@linaro.org; Fri, 27 Sep 2019 16:18:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51592)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <estebanbosse@gmail.com>) id 1iDwCM-0001wa-5M
- for qemu-arm@nongnu.org; Fri, 27 Sep 2019 15:46:39 -0400
+ (envelope-from <pbonzini@redhat.com>) id 1iDwhL-0008K7-2H
+ for qemu-arm@nongnu.org; Fri, 27 Sep 2019 16:18:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <estebanbosse@gmail.com>) id 1iDwCK-0001wI-PZ
- for qemu-arm@nongnu.org; Fri, 27 Sep 2019 15:46:38 -0400
-Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:33442)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <estebanbosse@gmail.com>)
- id 1iDwCH-0001qk-6N; Fri, 27 Sep 2019 15:46:33 -0400
-Received: by mail-ed1-x543.google.com with SMTP id c4so3384411edl.0;
- Fri, 27 Sep 2019 12:46:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=jOwWvrN151x0DDEdrQrY3RB+nObetgY3tjAATY489o8=;
- b=rPJrpEsUyphW5X37v+48Dkx72u4xiMqAU2tI4jAKEBQV+MIH35D2nfkDyoI4de254o
- FFI/j3jlL/a2kG/TykTqP95lQHWJ0QxxqLWafxAxoZDH3Q4jkLxYgUYDwQUN6k5CfLyH
- Y4EsE7Ujtj9BsG1r3tyTzIJ024PRYC4fJTmjXlHm3sVsYOY+9wVa/qwc4gOiZm785aK5
- 4JIij+IWFirG+kZ676W5slSVCcUlas00YN7Iok6w6BxerdrCrri4gZ3jADgLyeNuFKJ1
- cgOZUZfgI0kBn4JqsGDLCbefSpdncoDotOUrB35HQ+134YpfIT7p7LW/kXT1znEoVbZj
- Q0+A==
+ (envelope-from <pbonzini@redhat.com>) id 1iDwhI-0007yT-Bb
+ for qemu-arm@nongnu.org; Fri, 27 Sep 2019 16:18:37 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:35434)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1iDwhI-0007y3-2I
+ for qemu-arm@nongnu.org; Fri, 27 Sep 2019 16:18:36 -0400
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id C07E550F4D
+ for <qemu-arm@nongnu.org>; Fri, 27 Sep 2019 20:18:34 +0000 (UTC)
+Received: by mail-wr1-f70.google.com with SMTP id l6so1599196wrn.2
+ for <qemu-arm@nongnu.org>; Fri, 27 Sep 2019 13:18:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=jOwWvrN151x0DDEdrQrY3RB+nObetgY3tjAATY489o8=;
- b=DO87aiv+qsyCOtWBsg5UT40XUU+rhv3hrZuz68iEfWjIJPhADiSV3BU+LnIU/YIwnO
- tqd2qM0sYG00qNe5TnKMRSLJv8Zqu9sWQUO8THRLU4U2khbHUEXXGI6WnTpfjQOlA43h
- ucVitOO0fep2Sp2cXxAb8mtzKvGmBj3sCeVuA1I+IZz4avUiXESjYO5Js6wkIv7CaOz6
- t4N0m3jzJRCB/B9nEnUTVmGgRbsRfR/9J5Rj+qTtf7dq+GYKAHQPLMuuI+Wua+QwfBpF
- YnmYQj7IyxZpH5UyfhQ0n2o5UHgDUh3+XwNTGW4YCJhiybuYpBK2l1wztxJqzzvmwz72
- FfRA==
-X-Gm-Message-State: APjAAAX8QBWj48GTEstg7MZYb03n5a0inoX4SqX6kDSrimjXf/JRc7SU
- DE9axZCSTCBCSAqxUds2JWoLHd7wYgSQA/vK/g8=
-X-Received: by 2002:a17:906:ecb6:: with SMTP id
- qh22mr9266527ejb.114.1569613590259; 
- Fri, 27 Sep 2019 12:46:30 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=VYIARQZeSo4eqIGZ7/+Ci3Bhjf7+cEZeiTX0M8qC638=;
+ b=HII18IDy1grciG3HC0dyrD550dd3ar8qrOLWFbq/er7AyIudTWipWfuNmGQWJKuXNC
+ bIfntxUxIb/yiDeXvR9yPHv4lQDLbmy9jaLHqGXE7CNpyfQBuAARDlCKLlz93TJ2sgCe
+ 20UciUQ0xk2pxXCBXj4WwjO6ZbGnWBNfr2FEU0A4F6mNvpbcsPnmbA3wHbw3mudraFIi
+ q0T45t4UtWz9XvorGxFUfVxCpCOz0u2CI+WeMWpFUA3CAnrjQnhL99ghxsOQJ7oOXHit
+ 3Xb7aYNJ5oKKf6xl56sJ4N10DzEvj0GVT5p8wZB2eY5I1VwX0LcLli4eGovvq8t7MK4Y
+ nZmQ==
+X-Gm-Message-State: APjAAAWRBs+n3VRCcHF28WU++52QRZxB+eKnw1qrOsLoWLVvYUdXnrOX
+ UwyyLXCVXUOf4A9pITto1KPYx5kLBytpxe7+LlgfEm1WDVyB9ayks47SADV0sGIFUgpa8b54J2l
+ IS31oCQ/8IMxv
+X-Received: by 2002:a5d:6647:: with SMTP id f7mr4458077wrw.170.1569615513355; 
+ Fri, 27 Sep 2019 13:18:33 -0700 (PDT)
+X-Received: by 2002:a5d:6647:: with SMTP id f7mr4458051wrw.170.1569615513010; 
+ Fri, 27 Sep 2019 13:18:33 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:9520:22e6:6416:5c36?
+ ([2001:b07:6468:f312:9520:22e6:6416:5c36])
+ by smtp.gmail.com with ESMTPSA id b16sm6044423wrh.5.2019.09.27.13.18.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 27 Sep 2019 13:18:32 -0700 (PDT)
+Subject: Re: [PATCH v4 0/2] Allow memory_region_register_iommu_notifier() to
+ fail
+To: Alex Williamson <alex.williamson@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>
+References: <20190924082517.13724-1-eric.auger@redhat.com>
+ <20190924153144.0a656a41@x1.home>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <e91b5121-44f9-6afb-cf0a-3016cbc7913d@redhat.com>
+Date: Fri, 27 Sep 2019 22:18:31 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-References: <20190904171315.8354-1-f4bug@amsat.org>
- <20190904171315.8354-2-f4bug@amsat.org>
-In-Reply-To: <20190904171315.8354-2-f4bug@amsat.org>
-From: Esteban Bosse <estebanbosse@gmail.com>
-Date: Fri, 27 Sep 2019 21:46:19 +0200
-Message-ID: <CAGbAg_Du+eVRgZp+ue6zwMknAgJx8zFF6W7DaD8BB5MUkkMoDQ@mail.gmail.com>
-Subject: Re: [PATCH 01/14] hw/arm/raspi: Use the IEC binary prefix definitions
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="0000000000007b6ca105938e24d2"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::543
+In-Reply-To: <20190924153144.0a656a41@x1.home>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,105 +115,92 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Zolt=C3=A1n_Baldaszti?= <bztemail@gmail.com>, qemu-devel@nongnu.org,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm <qemu-arm@nongnu.org>,
- Clement Deschamps <clement.deschamps@antfield.fr>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Pekka Enberg <penberg@iki.fi>, Luc Michel <luc.michel@greensocs.com>
+Cc: peter.maydell@linaro.org, aik@ozlabs.ru, qemu-devel@nongnu.org,
+ peterx@redhat.com, qemu-arm@nongnu.org, david@gibson.dropbear.id.au,
+ eric.auger.pro@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sH8xq5AkVrE7
+X-TUID: iJ/YFUQJcAdm
 
---0000000000007b6ca105938e24d2
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 24/09/19 23:31, Alex Williamson wrote:
+> On Tue, 24 Sep 2019 10:25:15 +0200
+> Eric Auger <eric.auger@redhat.com> wrote:
+> 
+>> This series allows the memory_region_register_iommu_notifier()
+>> to fail. As of now, when a MAP notifier is attempted to be
+>> registered along with SMMUv3 or AMD IOMMU, we exit in the IOMMU
+>> MR notify_flag_changed() callback.
+>>
+>> In case of VFIO assigned device hotplug, this could be handled
+>> more nicely directly within the VFIO code, simply rejecting
+>> the hotplug without exiting. This is what the series achieves
+>> by handling the memory_region_register_iommu_notifier() returned
+>> value and Error object.
+>>
+>> To propagate errors collected during vfio_listener_region_add()
+>> we now store the error handle inside the VFIO container instead
+>> of a returned value.
+>>
+>> The message now is:
+>> (QEMU) device_add id=hot0 driver=vfio-pci host=0000:89:00.0 bus=pcie.1
+>> {"error": {"class": "GenericError", "desc": "vfio 0000:89:00.0: failed
+>> to setup container for group 2: memory listener initialization failed:
+>> Region smmuv3-iommu-memory-region-0-6: device 01.00.0 requires iommu MAP
+>> notifier which is not currently supported"}}
+>>
+>> Best Regards
+>>
+>> Eric
+>>
+>> This series can be found at:
+>> https://github.com/eauger/qemu/tree/v4.1.0_register_iommu_notifier_fail_v4
+>>
+>> History:
+>>
+>> v3 -> v4:
+>> - added Peter's R-b on 2d patch
+>> - 1st patch: restore hw_error, remove useless ret assignment, improve
+>>   DMA host window error message, remove local mr variable
+>>
+>> v2 -> v3:
+>> - also pass an Error handle (suggested by Peter)
+>>
+>> v1 -> v2:
+>> - Intel IOMMU now handles the problem differently with machine init done
+>>   notifier and machine hotplug allowed hook.
+>> - use assert(!ret)
+>> - message rewording in SMMUv3
+>>
+>> Follow-up of "VFIO/SMMUv3: Fail on VFIO/HW nested paging detection"
+>> https://patchew.org/QEMU/20190829090141.21821-1-eric.auger@redhat.com/
+>>
+>>
+>> Eric Auger (2):
+>>   vfio: Turn the container error into an Error handle
+>>   memory: allow memory_region_register_iommu_notifier() to fail
+>>
+>>  exec.c                        | 10 +++++--
+>>  hw/arm/smmuv3.c               | 18 ++++++------
+>>  hw/i386/amd_iommu.c           | 17 +++++++-----
+>>  hw/i386/intel_iommu.c         |  8 ++++--
+>>  hw/ppc/spapr_iommu.c          |  8 ++++--
+>>  hw/vfio/common.c              | 52 +++++++++++++++++++++++------------
+>>  hw/vfio/spapr.c               |  4 ++-
+>>  hw/virtio/vhost.c             |  9 ++++--
+>>  include/exec/memory.h         | 21 ++++++++++----
+>>  include/hw/vfio/vfio-common.h |  2 +-
+>>  memory.c                      | 31 +++++++++++++--------
+>>  11 files changed, 120 insertions(+), 60 deletions(-)
+> 
+> For series,
+> 
+> Acked-by: Alex Williamson <alex.williamson@redhat.com>
+> 
+> Paolo, would this go in through you given the memory API changes and
+> greater girth in patch 2/2?  Thanks,
 
-Reviewed-by: Esteban
+Fine, queued.
 
-El mi=C3=A9., 4 sept. 2019 a las 19:13, Philippe Mathieu-Daud=C3=A9 (<f4bug=
-@amsat.org>)
-escribi=C3=B3:
+Paolo
 
-> IEC binary prefixes ease code review: the unit is explicit.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/arm/raspi.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-> index 74c062d05e..615d755879 100644
-> --- a/hw/arm/raspi.c
-> +++ b/hw/arm/raspi.c
-> @@ -230,7 +230,7 @@ static void raspi2_machine_init(MachineClass *mc)
->      mc->max_cpus =3D BCM283X_NCPUS;
->      mc->min_cpus =3D BCM283X_NCPUS;
->      mc->default_cpus =3D BCM283X_NCPUS;
-> -    mc->default_ram_size =3D 1024 * 1024 * 1024;
-> +    mc->default_ram_size =3D 1 * GiB;
->      mc->ignore_memory_transaction_failures =3D true;
->  };
->  DEFINE_MACHINE("raspi2", raspi2_machine_init)
-> @@ -252,7 +252,7 @@ static void raspi3_machine_init(MachineClass *mc)
->      mc->max_cpus =3D BCM283X_NCPUS;
->      mc->min_cpus =3D BCM283X_NCPUS;
->      mc->default_cpus =3D BCM283X_NCPUS;
-> -    mc->default_ram_size =3D 1024 * 1024 * 1024;
-> +    mc->default_ram_size =3D 1 * GiB;
->  }
->  DEFINE_MACHINE("raspi3", raspi3_machine_init)
->  #endif
-> --
-> 2.20.1
->
->
 
---0000000000007b6ca105938e24d2
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Reviewed-by: Esteban<br></div><br><div class=3D"gmail_quot=
-e"><div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9., 4 sept. 2019 a las 1=
-9:13, Philippe Mathieu-Daud=C3=A9 (&lt;<a href=3D"mailto:f4bug@amsat.org">f=
-4bug@amsat.org</a>&gt;) escribi=C3=B3:<br></div><blockquote class=3D"gmail_=
-quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,=
-204);padding-left:1ex">IEC binary prefixes ease code review: the unit is ex=
-plicit.<br>
-<br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
-t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
----<br>
-=C2=A0hw/arm/raspi.c | 4 ++--<br>
-=C2=A01 file changed, 2 insertions(+), 2 deletions(-)<br>
-<br>
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c<br>
-index 74c062d05e..615d755879 100644<br>
---- a/hw/arm/raspi.c<br>
-+++ b/hw/arm/raspi.c<br>
-@@ -230,7 +230,7 @@ static void raspi2_machine_init(MachineClass *mc)<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;max_cpus =3D BCM283X_NCPUS;<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;min_cpus =3D BCM283X_NCPUS;<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;default_cpus =3D BCM283X_NCPUS;<br>
--=C2=A0 =C2=A0 mc-&gt;default_ram_size =3D 1024 * 1024 * 1024;<br>
-+=C2=A0 =C2=A0 mc-&gt;default_ram_size =3D 1 * GiB;<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;ignore_memory_transaction_failures =3D true;<br>
-=C2=A0};<br>
-=C2=A0DEFINE_MACHINE(&quot;raspi2&quot;, raspi2_machine_init)<br>
-@@ -252,7 +252,7 @@ static void raspi3_machine_init(MachineClass *mc)<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;max_cpus =3D BCM283X_NCPUS;<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;min_cpus =3D BCM283X_NCPUS;<br>
-=C2=A0 =C2=A0 =C2=A0mc-&gt;default_cpus =3D BCM283X_NCPUS;<br>
--=C2=A0 =C2=A0 mc-&gt;default_ram_size =3D 1024 * 1024 * 1024;<br>
-+=C2=A0 =C2=A0 mc-&gt;default_ram_size =3D 1 * GiB;<br>
-=C2=A0}<br>
-=C2=A0DEFINE_MACHINE(&quot;raspi3&quot;, raspi3_machine_init)<br>
-=C2=A0#endif<br>
--- <br>
-2.20.1<br>
-<br>
-</blockquote></div>
-
---0000000000007b6ca105938e24d2--

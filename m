@@ -1,144 +1,217 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3461543wrp;
-        Fri, 27 Sep 2019 05:59:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy4DNfQ7nJnaGkIra7vR2Larhw4EnhYAcaXpNwyzw9WWmfzqd5LStvKlj29OlkctuKE7uOU
-X-Received: by 2002:ae9:e609:: with SMTP id z9mr4345558qkf.50.1569589154762;
-        Fri, 27 Sep 2019 05:59:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569589154; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3462722wrp;
+        Fri, 27 Sep 2019 06:00:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzUe6rybKLEvI4YabDdNDQIairyTIFFBxlRwZdJdURQUXJftXNeA5YMbmbUDnhGtdXFq4xs
+X-Received: by 2002:a92:db0c:: with SMTP id b12mr4361956iln.27.1569589220992;
+        Fri, 27 Sep 2019 06:00:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569589220; cv=none;
         d=google.com; s=arc-20160816;
-        b=fIkaF+6fxHLPfhWCJ92W/zhxRARQmChh/LEq5zf9kz1U7zDxf2g6Lu2GT9PlnIySnz
-         qHa3nKUVXadpOF6ypgTgaff9z8XTQsmx9O3S/htGsCkQibLeHi887r75EA3FanC422ZZ
-         rlR9IJGeHkrG7epjVzSmT+xFghkt8fvbpiYk8vb/KPSg+TIywNP063I7NiPoiLIesjAS
-         oBZjdFwkM87k28y+OjStjpPZdx6h51G0j3vsKxOvzJXkPLKkBEefUIiEdhilNPC3Wv6Z
-         7kpWVY/bLK/hdRjC4CsRJsYwJ8TKP1Vm4kDuyJQLrE/iSNzZ0LSxdFCQVkWRB0S2QDCz
-         6OCg==
+        b=fzlQ42Alyc0uf/LkI9v33JEuM5a3E2h4Kvq9cZioIChP2AZoaIkPkyIclsEjSM8Hp4
+         7fwn2iasaIjBAsRGE2gM2LfBc90JMOTNd9SCraNBaKoFOzR0ImG6iuyDUSnfs1Eq4OaG
+         FheYx3U1gQ/qPawZvFST8hGo/93XghNw2bwTSeGRuat0yfxZTunQ9JlqFQflCApnJl14
+         OYtXn9MF1yRwJ3+f/brNKAu4pyiWKl9o/eXjleOWoP1SZi7qdZeYMBTNIntOiTjL/qK6
+         F1umNc6hqsq7KZRI8BD34T3rY+yDuK0Kv58CyjqvOMIQZUnnZVq5XSKCjKTyu/Z78twM
+         NzEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:references:in-reply-to:mime-version
-         :dkim-signature;
-        bh=aRoYLQbfJV2BBSaZ7N4Kpoe84Kc4cjRkXjDxOT3gE6U=;
-        b=vxHTwe0QNSmnJVS6UU9RfOdj+R6kTa2KuP0rUhd8w54wcmD89bTCkpr2MYCrgRpveA
-         YPRRQHhbh3cqOZ/cvNBWavFl1WT7+SIS3Sb6AsFLMljfwoLfTjknMTqY8jgHIzQlQU5+
-         +5ggOfvU83DI6zMUwtl6ecLJAzKc7Qh//D6dT29OZlkBMV5L51I6LS9vjqbT0tKg6ds6
-         vYwE5db3q7Ww79E14qN8LT4zGAXfnQqD7gJMt6UtErublESiz/MfR5ssDQ7VVIU2NGVU
-         eX1XzCL8AWhX5ApOUs+iT7YTqGw/hQO0UMUHpKiAeAwdCipgUZVfEIY/tTnJAS2n+dbn
-         vPwA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=hYkkn7zBsnJLIFMHETxTbP4EquDL4qa5F56ONFXlsKw=;
+        b=M76d2CMtKkMDcCt15J3vDJgrOUfXln+LRsDBdgWnhCPd6kRQM7fE0VfMbI8hMplXHu
+         afh/KewGwgqI9ZKbamyzMIq+x6yXtN6tyZhOK51g+/nnM93aGfhA0Ch4bXxob/fXYkA7
+         MwwLtbovIottjJMyfmwl00era2M3uTH2qgJHKbMTQWeK9kPpjYhDvkTED0wJEQ7M1YcW
+         U8UUCrXBKVwb74TnhbqdjPicMW4Q3q6RolzP9tNzhwXOv0TsmmmrT/QLa82PVszvdbQo
+         EmhQK7OH63c04xZbjNT3B/S7OfPWVv3+Hpnon/PR4AQaIVN4YN7k3UW/gEIdLkqddToM
+         Aqug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=salun11U;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f59si3997230qtd.330.2019.09.27.05.59.14
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Sep 2019 05:59:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id k11si7137541jaa.35.2019.09.27.06.00.20
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 27 Sep 2019 06:00:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=salun11U;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:49866 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iDpq5-00089j-PM
-	for alex.bennee@linaro.org; Fri, 27 Sep 2019 08:59:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52499)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <bztemail@gmail.com>) id 1iDplH-0003cB-Di
- for qemu-devel@nongnu.org; Fri, 27 Sep 2019 08:54:16 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <bztemail@gmail.com>) id 1iDplF-0001j0-Gq
- for qemu-devel@nongnu.org; Fri, 27 Sep 2019 08:54:14 -0400
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:41878)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <bztemail@gmail.com>)
- id 1iDplF-0001in-9S; Fri, 27 Sep 2019 08:54:13 -0400
-Received: by mail-lf1-x144.google.com with SMTP id r2so1830990lfn.8;
- Fri, 27 Sep 2019 05:54:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:in-reply-to:references:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=aRoYLQbfJV2BBSaZ7N4Kpoe84Kc4cjRkXjDxOT3gE6U=;
- b=salun11U18x3RD0RMvy4s89lOBcfywhxa7PMMLX6xamFQM+cLQJgp2VvPDYVtKKcr6
- ToogjYPUZFCly+o2DeyKLUl3p+sAm2xwpgMzbXoBdFrzBJ0qojW9cChJ+xPPhi0oGJse
- tTWl1AnFy7YRUA4AFfZGf6CHN4VjMHtTgh+elVbDTp2qS4rRxhlGEfO/+rbVL00Yha2t
- ING6yRMhFg/0uaIS6n3P7sNXrzRd90ocagynk2oKB1akTvI3XDxsX8nDgChHvs8LUbAd
- +CqFAKl48TEWUxcPWfm/ZeA1XIANfwZJ6SsvabfQ1m+o6FteI423d66ZXiiryQDA+obq
- ejmg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:in-reply-to:references:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=aRoYLQbfJV2BBSaZ7N4Kpoe84Kc4cjRkXjDxOT3gE6U=;
- b=bITmtKBzLUNN42T3DkqIPfot6x9T2sMO0LvSBFa6N05Owb0DA5z+Yd3eT7yT8deAMo
- ThSBc0Qbz78Z+1u08D8i5sn+9ZHxcK/PURngLH4zbNSCAdMwSME3PdqXkVwOU7VPBHnE
- h8ODDdmEWjWfpr5mXlOakQyVnicM8BAXbWUm/bCuC+jP5p/C0DheJ6Gke+TTEh0Up/Bs
- fAMoqOvE3aBjIhtRNQHgdTr8a8mn8Na/uE4/EVKWcslXTz/6mlVvb3oyVQlFmkQ5NtMY
- DPwtKvaOwsV0wBXE5kT37mApZMfuWsRv9WGMnhU/Xagd1E9dSJ3z7tKHts4GFRV4j4t6
- 1giw==
-X-Gm-Message-State: APjAAAXUUbOiPyFZLLWhxLrJa4HRVtBn4PlgasyPtkrjMjHx3s3tzCXz
- cc79Cpz3lte6vnDgYqD6105IrvwKSO61kaJ8I8U=
-X-Received: by 2002:a19:c396:: with SMTP id t144mr2801843lff.14.1569588851726; 
- Fri, 27 Sep 2019 05:54:11 -0700 (PDT)
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1466730BC58E;
+	Fri, 27 Sep 2019 13:00:20 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id 914AF60606;
+	Fri, 27 Sep 2019 13:00:10 +0000 (UTC)
+Date: Fri, 27 Sep 2019 15:00:08 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+	alex.bennee@linaro.org, armbru@redhat.com, eblake@redhat.com,
+	Dave.Martin@arm.com, eric.auger@redhat.com, imammedo@redhat.com
+Subject: Re: [PATCH v4 5/9] target/arm/kvm64: Add kvm_arch_get/put_sve
+Message-ID: <20190927130008.lh3t2tz26cknvvmf@kamzik.brq.redhat.com>
+References: <20190924113105.19076-1-drjones@redhat.com>
+ <20190924113105.19076-6-drjones@redhat.com>
 MIME-Version: 1.0
-Received: by 2002:a2e:98c1:0:0:0:0:0 with HTTP; Fri, 27 Sep 2019 05:54:10
- -0700 (PDT)
-In-Reply-To: <20190926173428.10713-15-f4bug@amsat.org>
-References: <20190926173428.10713-1-f4bug@amsat.org>
- <20190926173428.10713-15-f4bug@amsat.org>
-From: bzt <bztemail@gmail.com>
-Date: Fri, 27 Sep 2019 14:54:10 +0200
-Message-ID: <CADYoBw11iiK=+O-mGYS5Xp85zVhezOXXXr-wKV_xCg07ZYuzVw@mail.gmail.com>
-Subject: Re: [PATCH 14/19] python/qemu/machine: Allow to use other serial
- consoles than default
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::144
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Laurent Bonnans <laurent.bonnans@here.com>,
- Esteban Bosse <estebanbosse@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, Clement Deschamps <clement.deschamps@antfield.fr>,
- Cleber Rosa <crosa@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Cheng Xiang <ext-cheng.xiang@here.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Pekka Enberg <penberg@iki.fi>, Guenter Roeck <linux@roeck-us.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EucA1jclpvnu
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190924113105.19076-6-drjones@redhat.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.49]); Fri, 27 Sep 2019 13:00:20 +0000 (UTC)
+X-TUID: JtiELDS491S0
 
-Hi,
+On Tue, Sep 24, 2019 at 01:31:01PM +0200, Andrew Jones wrote:
+> These are the SVE equivalents to kvm_arch_get/put_fpsimd. Note, the
+> swabbing is different than it is for fpsmid because the vector format
+> is a little-endian stream of words.
+> 
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/kvm64.c | 137 +++++++++++++++++++++++++++++++++++++++++++--
+>  1 file changed, 133 insertions(+), 4 deletions(-)
+>
 
-On 9/26/19, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
-> Currently we are limited to use the first serial console available.
+It looks like I need to add the below changes to this patch as well,
+since FPSR and FPCR are still in use with SVE.
 
-I'm not so sure. Right now it works like this:
+Thanks,
+drew
 
-qemu -serial stdio
-Connects the VM's UART0 (PL011) serial console to the host terminal
 
-qemu -serial null -serial stdio
-Connects the VM's UART1 (AUX) serial console to the host terminal
-
-I think this is simple and good, please don't remove this option. If
-your commit does not influence these cli args, I'm not against it.
-
-bzt
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 2da366ba113e..be31e56a1ab0 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -854,10 +854,8 @@ int kvm_arm_cpreg_level(uint64_t regidx)
+ 
+ static int kvm_arch_put_fpsimd(CPUState *cs)
+ {
+-    ARMCPU *cpu = ARM_CPU(cs);
+-    CPUARMState *env = &cpu->env;
++    CPUARMState *env = &ARM_CPU(cs)->env;
+     struct kvm_one_reg reg;
+-    uint32_t fpr;
+     int i, ret;
+ 
+     for (i = 0; i < 32; i++) {
+@@ -875,22 +873,6 @@ static int kvm_arch_put_fpsimd(CPUState *cs)
+         }
+     }
+ 
+-    reg.addr = (uintptr_t)(&fpr);
+-    fpr = vfp_get_fpsr(env);
+-    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
+-    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+-    if (ret) {
+-        return ret;
+-    }
+-
+-    reg.addr = (uintptr_t)(&fpr);
+-    fpr = vfp_get_fpcr(env);
+-    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpcr);
+-    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
+-    if (ret) {
+-        return ret;
+-    }
+-
+     return 0;
+ }
+ 
+@@ -970,6 +952,7 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+ {
+     struct kvm_one_reg reg;
+     uint64_t val;
++    uint32_t fpr;
+     int i, ret;
+     unsigned int el;
+ 
+@@ -1069,6 +1052,22 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+         return ret;
+     }
+ 
++    reg.addr = (uintptr_t)(&fpr);
++    fpr = vfp_get_fpsr(env);
++    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
++    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
++    if (ret) {
++        return ret;
++    }
++
++    reg.addr = (uintptr_t)(&fpr);
++    fpr = vfp_get_fpcr(env);
++    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpcr);
++    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
++    if (ret) {
++        return ret;
++    }
++
+     ret = kvm_put_vcpu_events(cpu);
+     if (ret) {
+         return ret;
+@@ -1087,10 +1086,8 @@ int kvm_arch_put_registers(CPUState *cs, int level)
+ 
+ static int kvm_arch_get_fpsimd(CPUState *cs)
+ {
+-    ARMCPU *cpu = ARM_CPU(cs);
+-    CPUARMState *env = &cpu->env;
++    CPUARMState *env = &ARM_CPU(cs)->env;
+     struct kvm_one_reg reg;
+-    uint32_t fpr;
+     int i, ret;
+ 
+     for (i = 0; i < 32; i++) {
+@@ -1108,22 +1105,6 @@ static int kvm_arch_get_fpsimd(CPUState *cs)
+         }
+     }
+ 
+-    reg.addr = (uintptr_t)(&fpr);
+-    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
+-    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
+-    if (ret) {
+-        return ret;
+-    }
+-    vfp_set_fpsr(env, fpr);
+-
+-    reg.addr = (uintptr_t)(&fpr);
+-    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpcr);
+-    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
+-    if (ret) {
+-        return ret;
+-    }
+-    vfp_set_fpcr(env, fpr);
+-
+     return 0;
+ }
+ 
+@@ -1180,6 +1161,7 @@ int kvm_arch_get_registers(CPUState *cs)
+     struct kvm_one_reg reg;
+     uint64_t val;
+     unsigned int el;
++    uint32_t fpr;
+     int i, ret;
+ 
+     ARMCPU *cpu = ARM_CPU(cs);
+@@ -1278,6 +1260,22 @@ int kvm_arch_get_registers(CPUState *cs)
+         return ret;
+     }
+ 
++    reg.addr = (uintptr_t)(&fpr);
++    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
++    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++    if (ret) {
++        return ret;
++    }
++    vfp_set_fpsr(env, fpr);
++
++    reg.addr = (uintptr_t)(&fpr);
++    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpcr);
++    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
++    if (ret) {
++        return ret;
++    }
++    vfp_set_fpcr(env, fpr);
++
+     ret = kvm_get_vcpu_events(cpu);
+     if (ret) {
+         return ret;

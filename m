@@ -1,81 +1,82 @@
-Received: by 2002:a17:90a:1a54:0:0:0:0 with SMTP id 20csp3510061pjl;
-        Fri, 27 Sep 2019 06:33:25 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxabcCvYwHneCMmUhNboqlqSSxs9O8mfVE9MXGeJmBGtbtw4gAiJRaKeV26IgJ55jlVdbWY
-X-Received: by 2002:a05:6402:1699:: with SMTP id a25mr4550412edv.91.1569591205029;
-        Fri, 27 Sep 2019 06:33:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569591205; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3531109wrp;
+        Fri, 27 Sep 2019 06:58:09 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwM149IoBN3PMeHZW5eSUTy6dOI67Uz4nIcKNpRxIXs6YVOhPysTT+7gP5mehxFfp+t4VRE
+X-Received: by 2002:a50:b6aa:: with SMTP id d39mr4605778ede.16.1569592689596;
+        Fri, 27 Sep 2019 06:58:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569592689; cv=none;
         d=google.com; s=arc-20160816;
-        b=y7Gcg7tnCHOKBHs33emoM6JQC0WJViB9W6ZefhNt+kKlM6yLSrda2Z7L+IIjrrbuFL
-         UeiNP1D2mPYELDDp5dzeyUTjg2P0+Man1+Z2f3Aii9wHxBdHSnZJBocYXqedHfDzgnhj
-         T85DhIB0e6BEiLY1zChheGQamv5aSwFCHmruGyTXT6vJqM01lH1My5dtCECv8OOlO5a6
-         HCWb6dzZWWdUJAC9O86ERPYiGkCk2FEb6bziyfsjLiqMJ15LdTZJkm8dez+AtolMZeeH
-         FWW//DZQRiqbhtsmAvcCdkR2zF9hWZnVKAPs/gHyCej5nNnGLDk07ByJoQWJYhYz1p1M
-         mIwA==
+        b=K7+pXxuOT21ojc9JpkSPZya00uSoZ2ClbwxNZrOQsGGqlB0casbbdLSAgNodrdk6ql
+         qlze2SQ5y9GjIDdJ7+zqJMILHm/jEVBHHmdYj4+6Q8lQBwJqrNLBrr6qfu30qQqQoSEu
+         V9CevN/gkob/DIfmCOIhVI1tbU1piUiMoF77bXmq1snMvLHoy+jPBhrsaEfF/qxp2laX
+         pcE5xiBvxM0AJaFrrYBrWJO4S3cj72wBNk90+7nmqKTN3Z5to0tlgH3yukij7hGT8nVl
+         siqHRaxJvYyd1BuJrnISMu0KIaenrbIGqyZN5p4cJKkypwM3MNbMExbPLqZsatpkgq/t
+         yCSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=XpRff2jEEJjun5C2nBwnEy0mpg4KSV3BL/CHwT484IE=;
-        b=gz/LHcEulx5eE7CuP06Vd0C0ljW2iLEymu4Pto68GAHiAxBSA4uKkmhZ7E5UI6zQJj
-         ivwLf2HjA3Lv65pXLoJW13R6k4PotPDonp6yN/K1EgVYJJb/0lxyyTKqR68C+f55eoP/
-         3tp5yDvViBZ4OQ2Bw/XO1BzZ9cm3nkPTLwu9naZtZmMZpGGRLTlx3QGEpFTtrJlQLjHT
-         CvXJ2ZIe/IAVwe57pQiOjhSzOehBTVADZ3VDiILyF4uh1HRYuRplb0oIYeo8Br+PF9yH
-         DAPYgB04QS4RiwYoiDUFfYq0UZimtXIfHypMHLmOs4hXOqXwWxs2Wu3CRY1TP5Iz8H6L
-         WeQw==
+        bh=/L1vk8ZEX1dDFsyoP8jdEPTbwfmUYl1fqd9uotjBFoQ=;
+        b=Tdz3v6X7Wsb7zdN8uwxr0Xrujia++RP/3tt8PFKbu8mXXYHLKsO4fT3d/KaroQsvIo
+         CmRPCRU9RpocaNHheKSYQDURacaouvTOvn+b7cXY/ZePvoZb98R1/VC1NKrEj2a1hKcb
+         SGB2xnv9CVj0EDfybnv4I+ZP/J1MZpFjIFKWqeh8uAOGYAj9T2DaM/LgCBa1JLZiWAF1
+         dqQExYrWwGSW25NEFVgGJFwUN+d1K1Iul38f4otI1peU7qK+kdg+TaF2W32n67mbxdh5
+         21zpkpxcg03fGRKwY1jsD56UOL/TuoR8I6c6PNbLJg6YDCmS5muJFSfVJsgnS2ClA3F+
+         pp2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qcFWW4Gw;
+       dkim=pass header.i=@linaro.org header.s=google header.b=x6m1c+RI;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id l48si1645072edc.276.2019.09.27.06.33.24;
-        Fri, 27 Sep 2019 06:33:25 -0700 (PDT)
+        by mx.google.com with ESMTP id n14si1482264edv.377.2019.09.27.06.58.09;
+        Fri, 27 Sep 2019 06:58:09 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=qcFWW4Gw;
+       dkim=pass header.i=@linaro.org header.s=google header.b=x6m1c+RI;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727419AbfI0NdV (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Fri, 27 Sep 2019 09:33:21 -0400
-Received: from mail-oi1-f196.google.com ([209.85.167.196]:43771 "EHLO
-        mail-oi1-f196.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1726549AbfI0NdU (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 27 Sep 2019 09:33:20 -0400
-Received: by mail-oi1-f196.google.com with SMTP id t84so5177707oih.10
-        for <kvm@vger.kernel.org>; Fri, 27 Sep 2019 06:33:18 -0700 (PDT)
+        id S1727518AbfI0N6I (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 27 Sep 2019 09:58:08 -0400
+Received: from mail-ot1-f66.google.com ([209.85.210.66]:41995 "EHLO
+        mail-ot1-f66.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1726251AbfI0N6I (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 27 Sep 2019 09:58:08 -0400
+Received: by mail-ot1-f66.google.com with SMTP id c10so2292625otd.9
+        for <kvm@vger.kernel.org>; Fri, 27 Sep 2019 06:58:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=XpRff2jEEJjun5C2nBwnEy0mpg4KSV3BL/CHwT484IE=;
-        b=qcFWW4Gw2Z1hHz2R8mU/7PNImqDSLwQyb9YokkDvkIFBQGNra8ryGJ0Mu/u0rqwqLc
-         9NMqnwwG/iPr9oGSWsYCfiQOvZoZOLQcIx37TenROPvMxcIlNLsszFebmz/ISrP1I002
-         nNKTwl7k6+zZBC90PoaDCvyHQ5jsc8CZImfI/O+2g6UWFgnUHjMBN9edyv10srOnB0aB
-         zWVJKjFkmhJ7UTofs8uuCyw7EBlDbXtoflkBUeseFk0Qp/QkuOJsFy6S2GmeIhPT50fR
-         Imoh+XTDM1Uf1uKnWGcunaRpKbyBqhJWOUtLXAK8/mbTyTnfmhOR3Xdn1DX+1qi6udvt
-         1+og==
+        bh=/L1vk8ZEX1dDFsyoP8jdEPTbwfmUYl1fqd9uotjBFoQ=;
+        b=x6m1c+RIp9S7ggPV9dD5W8bthMp/oigvGlUwn0P8vP5dyfwGciPgIqLFSuAVJxZPT4
+         CP1cRDyy5hWppSOhv0KDBB61zO+IFpXNGI9iJem8UT4mVqmcgi88bOBU/9ZxJPZhBc66
+         NYfbHGjn5kYCx10GDN4KZHp3WaSqs2qDXPPku+2r2jW2IdjNn2FRco56rhpVbNOECVrb
+         Hi7Pbi+KAs7QTCI6zE6oGtw5lJM56TyEluaqfhrFZ0YCecLW7xlhTiy0ax39XnZTKVD9
+         meU7mgozp/vriibdlNDuOGKLahraOnRjlW2dur9VMe5fVTVbmuGzJN4udrCOFHmDGOlN
+         m0nA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=XpRff2jEEJjun5C2nBwnEy0mpg4KSV3BL/CHwT484IE=;
-        b=mrcq8zptfgzP8tkhdYj9V/J7FN4FhiGB/RPdem+9FlDclG/Z3oXdhiJxZyySppM2Fi
-         McysP47Ur5HFT2wN1BzSjxnViO6uB6XAmWaqG3t02gpLJfGReR5I9idUB4CLbIbRNUJi
-         5cIfFcDjJILdokmopaDNTK2iB9HZQfUskyOcyjcIH82e8mwbf+RnLp3YIbfgDHNWXKAy
-         F4xSRhWhGVYeUyZak82jP36OGRvg12Nci1T4Rk63RP1rJnysyTsaS5c3v7VgfnSzqDcJ
-         nB7TNz4I9UQ8d/tK2r6kUE5WoDu+aQ3yqjyumEKdZENbREOchqZcZ3JSI0mRVwI3lVZ+
-         a3zw==
-X-Gm-Message-State: APjAAAV1E1uX6Z3ImbNT368iqKHefq2+Xi0SzDTNJFmXOVaDFafWKZOv
-        kXFZZRD8jZ4+MosReiGG+Bzbd+0i2Y7UWOXrXnf+vA==
-X-Received: by 2002:aca:b48a:: with SMTP id d132mr7301167oif.98.1569591198389;
- Fri, 27 Sep 2019 06:33:18 -0700 (PDT)
+        bh=/L1vk8ZEX1dDFsyoP8jdEPTbwfmUYl1fqd9uotjBFoQ=;
+        b=QmftvDg5sS7Ih7XZOJfamXIoQMsZJfQ1RlV+2z+P/iJG9iINyTa9jX2bs3l9Re74v2
+         LYmIfreACHRGKZDeH6ZOAq7YvRvTNHHAhAdOfC43/1EZNjCgEY0sVWdFQv6Ia6xvdFeR
+         rg0aM/DrlqvaMkFVTiwJmKpFx/FarJhe+UOgO2dTWctKazZ7OBM+IXyqcdKRpXai5XKI
+         7MBpDViL65EF4kTa70cVp8+5NcL6w/sT5fBTc5z4Who3orEsI3skj2LTQKpDVNHAPnXq
+         X6noXr/9LRLLQqZHAQ0MPnFsNSRlbIpqg/MCfprNt+0naG4N/0ZbCkehPW8QKCnleZ6f
+         bQCQ==
+X-Gm-Message-State: APjAAAURTsWzB4UR45LjioUfGTE866A6G+3Rx+8R5M3kNa6vJH1GkoE1
+        RWepO9q9OvrKJAlme3GHh2ojLWzIILBab9b4aNGmBw==
+X-Received: by 2002:a05:6830:1357:: with SMTP id r23mr3354259otq.91.1569592685416;
+ Fri, 27 Sep 2019 06:58:05 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190906083152.25716-1-zhengxiang9@huawei.com> <20190906083152.25716-6-zhengxiang9@huawei.com>
-In-Reply-To: <20190906083152.25716-6-zhengxiang9@huawei.com>
+References: <20190906083152.25716-1-zhengxiang9@huawei.com> <20190906083152.25716-7-zhengxiang9@huawei.com>
+In-Reply-To: <20190906083152.25716-7-zhengxiang9@huawei.com>
 From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Fri, 27 Sep 2019 14:33:07 +0100
-Message-ID: <CAFEAcA-xc2XUq2Kwa1cK=4sAMq8B-2jUFAmxiGOQbmRCp-+UmQ@mail.gmail.com>
-Subject: Re: [PATCH v18 5/6] target-arm: kvm64: inject synchronous External Abort
+Date:   Fri, 27 Sep 2019 14:57:54 +0100
+Message-ID: <CAFEAcA9Y3J8uRDN+HQO74-codKhoj5CyPW=9q3GwH8Mk_PNYTA@mail.gmail.com>
+Subject: Re: [PATCH v18 6/6] target-arm: kvm64: handle SIGBUS signal from
+ kernel or KVM
 To:     Xiang Zheng <zhengxiang9@huawei.com>
 Cc:     Paolo Bonzini <pbonzini@redhat.com>,
         "Michael S. Tsirkin" <mst@redhat.com>,
@@ -97,100 +98,151 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 3T/lbvo1SxSJ
+X-TUID: 2CEgbUetULaC
 
 On Fri, 6 Sep 2019 at 09:33, Xiang Zheng <zhengxiang9@huawei.com> wrote:
 >
 > From: Dongjiu Geng <gengdongjiu@huawei.com>
 >
-> Introduce kvm_inject_arm_sea() function in which we will setup the type
-> of exception and the syndrome information in order to inject a virtual
-> synchronous external abort. When switching to guest, it will jump to the
-> synchronous external abort vector table entry.
+> Add a SIGBUS signal handler. In this handler, it checks the SIGBUS type,
+> translates the host VA delivered by host to guest PA, then fills this PA
+> to guest APEI GHES memory, then notifies guest according to the SIGBUS
+> type.
 >
-> The ESR_ELx.DFSC is set to synchronous external abort(0x10), and
-> ESR_ELx.FnV is set to not valid(0x1), which will tell guest that FAR is
-> not valid and hold an UNKNOWN value. These values will be set to KVM
-> register structures through KVM_SET_ONE_REG IOCTL.
+> If guest accesses the poisoned memory, it generates Synchronous External
+> Abort(SEA). Then host kernel gets an APEI notification and calls
+> memory_failure() to unmapped the affected page in stage 2, finally
+> returns to guest.
 >
+> Guest continues to access PG_hwpoison page, it will trap to KVM as
+> stage2 fault, then a SIGBUS_MCEERR_AR synchronous signal is delivered to
+> Qemu, Qemu records this error address into guest APEI GHES memory and
+> notifes guest using Synchronous-External-Abort(SEA).
+>
+> Suggested-by: James Morse <james.morse@arm.com>
 > Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 > Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+> ---
+>  hw/acpi/acpi_ghes.c         | 252 ++++++++++++++++++++++++++++++++++++
+>  include/hw/acpi/acpi_ghes.h |  40 ++++++
+>  include/sysemu/kvm.h        |   2 +-
+>  target/arm/kvm64.c          |  39 ++++++
+>  4 files changed, 332 insertions(+), 1 deletion(-)
 
-> +/* Inject synchronous external abort */
-> +static void kvm_inject_arm_sea(CPUState *c)
+I'll let somebody else review the ACPI parts as that's not my
+area of expertise, but I'll look at the target/arm parts below:
 
-This will cause a compilation failure at this point in
-the patch series, because the compiler will complain about
-a static function which is defined but never used.
-To avoid breaking bisection, we need to put the definition
-of the function in the same patch where it's used.
+> diff --git a/hw/acpi/acpi_ghes.c b/hw/acpi/acpi_ghes.c
+> index 20c45179ff..2d17c88045 100644
+> --- a/hw/acpi/acpi_ghes.c
+> +++ b/hw/acpi/acpi_ghes.c
+> @@ -26,6 +26,168 @@
+>  #include "sysemu/sysemu.h"
+>  #include "qemu/error-report.h"
+>
+> +/* Total size for Generic Error Status Block
 
+This block comment should start with '/*' on a line of its own
+(as should others in this patch). Usually checkpatch catches these
+but it's not infallible.
+
+> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+> index 909bcd77cf..5f57e4ed43 100644
+> --- a/include/sysemu/kvm.h
+> +++ b/include/sysemu/kvm.h
+> @@ -378,7 +378,7 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
+>  /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
+>  unsigned long kvm_arch_vcpu_id(CPUState *cpu);
+>
+> -#ifdef TARGET_I386
+> +#if defined(TARGET_I386) || defined(TARGET_AARCH64)
+>  #define KVM_HAVE_MCE_INJECTION 1
+>  void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
+>  #endif
+
+Rather than introducing a new ifdef with lots of TARGET_*,
+I think it would be better to have target/i386/cpu.h and
+target/arm/cpu.h do "#define KVM_HAVE_MCE_INJECTION 1"
+(nb that the arm cpu.h needs to define it only for aarch64,
+not for 32-bit arm host compiles).
+
+and then kvm.h can just do
+#ifdef KVM_HAVE_MCE_INJECTION
+void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
+#endif
+
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index bf6edaa3f6..186d855522 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -28,6 +28,8 @@
+>  #include "kvm_arm.h"
+>  #include "hw/boards.h"
+>  #include "internals.h"
+> +#include "hw/acpi/acpi.h"
+> +#include "hw/acpi/acpi_ghes.h"
+>
+>  static bool have_guest_debug;
+>
+> @@ -1070,6 +1072,43 @@ int kvm_arch_get_registers(CPUState *cs)
+>      return ret;
+>  }
+>
+> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
 > +{
-> +    ARMCPU *cpu = ARM_CPU(c);
-> +    CPUARMState *env = &cpu->env;
-> +    CPUClass *cc = CPU_GET_CLASS(c);
-> +    uint32_t esr;
-> +    bool same_el;
+> +    ram_addr_t ram_addr;
+> +    hwaddr paddr;
 > +
-> +    /**
-> +     * Set the exception type to synchronous data abort
-> +     * and the target exception Level to EL1.
-> +     */
-
-This comment doesn't really tell us anything that's not obvious
-from the two lines of code that it's commenting on:
-
-> +    c->exception_index = EXCP_DATA_ABORT;
-> +    env->exception.target_el = 1;
+> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
 > +
-> +    /*
-> +     * Set the DFSC to synchronous external abort and set FnV to not valid,
-> +     * this will tell guest the FAR_ELx is UNKNOWN for this abort.
-> +     */
+> +    if (acpi_enabled && addr &&
+> +            object_property_get_bool(qdev_get_machine(), "ras", NULL)) {
+> +        ram_addr = qemu_ram_addr_from_host(addr);
+> +        if (ram_addr != RAM_ADDR_INVALID &&
+> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
+> +            kvm_hwpoison_page_add(ram_addr);
+> +            /* Asynchronous signal will be masked by main thread, so
+> +             * only handle synchronous signal.
+> +             */
+
+I don't entirely understand this comment. The x86 version
+of this function says:
+
+    /* If we get an action required MCE, it has been injected by KVM
+     * while the VM was running.  An action optional MCE instead should
+     * be coming from the main thread, which qemu_init_sigbus identifies
+     * as the "early kill" thread.
+     */
+
+so we can be called for action-optional MCE here (not on the vcpu
+thread). We obviously can't deliver those as a synchronous exception
+to a particular CPU, but is there no mechanism for reporting them
+to the guest at all?
+
+> +            if (code == BUS_MCEERR_AR) {
+> +                kvm_cpu_synchronize_state(c);
+> +                if (ACPI_GHES_CPER_FAIL !=
+> +                    acpi_ghes_record_errors(ACPI_GHES_NOTIFY_SEA, paddr)) {
+> +                    kvm_inject_arm_sea(c);
+> +                } else {
+> +                    fprintf(stderr, "failed to record the error\n");
+> +                }
+> +            }
+> +            return;
+> +        }
+> +        fprintf(stderr, "Hardware memory error for memory used by "
+> +                "QEMU itself instead of guest system!\n");
+> +    }
 > +
-> +    /* This exception comes from lower or current exception level. */
-
-This comment too is stating the obvious I think.
-
-> +    same_el = arm_current_el(env) == env->exception.target_el;
-> +    esr = syn_data_abort_no_iss(same_el, 1, 0, 0, 0, 0, 0x10);
-> +
-> +    env->exception.syndrome = esr;
-> +
-> +    /**
-
-There's a stray second '*' in this comment-start.
-
-
-> +     * The vcpu thread already hold BQL, so no need hold again when
-> +     * calling do_interrupt
-
-I think this requirement would be better placed as a
-comment at the top of the function noting that callers
-must hold the iothread lock.
-
-> +     */
-> +    cc->do_interrupt(c);
+> +    if (code == BUS_MCEERR_AR) {
+> +        fprintf(stderr, "Hardware memory error!\n");
+> +        exit(1);
+> +    }
 > +}
 > +
->  #define AARCH64_CORE_REG(x)   (KVM_REG_ARM64 | KVM_REG_SIZE_U64 | \
->                   KVM_REG_ARM_CORE | KVM_REG_ARM_CORE_REG(x))
+>  /* C6.6.29 BRK instruction */
+>  static const uint32_t brk_insn = 0xd4200000;
 >
-> diff --git a/target/arm/tlb_helper.c b/target/arm/tlb_helper.c
-> index 5feb312941..499672ebbc 100644
-> --- a/target/arm/tlb_helper.c
-> +++ b/target/arm/tlb_helper.c
-> @@ -33,7 +33,7 @@ static inline uint32_t merge_syn_data_abort(uint32_t template_syn,
->       * ISV field.
->       */
->      if (!(template_syn & ARM_EL_ISV) || target_el != 2 || s1ptw) {
-> -        syn = syn_data_abort_no_iss(same_el,
-> +        syn = syn_data_abort_no_iss(same_el, 0,
->                                      ea, 0, s1ptw, is_write, fsc);
->      } else {
->          /*
-> --
-> 2.19.1
 
 thanks
 -- PMM

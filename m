@@ -1,184 +1,189 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3241291wrp;
-        Fri, 27 Sep 2019 02:21:43 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy3CerWY8BBr4Qj9SytrUu2FUXmb+6StaEORyOcNyHB6FkYXHMCGMeXbStUj5Ez/DiZ41XC
-X-Received: by 2002:a37:a683:: with SMTP id p125mr3456214qke.173.1569576103595;
-        Fri, 27 Sep 2019 02:21:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569576103; cv=none;
+Received: by 2002:a17:90a:1a54:0:0:0:0 with SMTP id 20csp3493089pjl;
+        Fri, 27 Sep 2019 06:19:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwh1Ig6utzkUM55asrFFofuUuS+vaZuXoMTZYgbRlRswNc978PYJg/ilpMERZC3blfl/OeC
+X-Received: by 2002:aa7:dcca:: with SMTP id w10mr4498129edu.183.1569590390156;
+        Fri, 27 Sep 2019 06:19:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569590390; cv=none;
         d=google.com; s=arc-20160816;
-        b=byHIzp4QGcH/0BULoxzWOXNcH/oOvCfwaWADDX9L/PgvZDE+rRAGWYHJrdqZpqjAQt
-         RWBBQ0G1eDuHH2+kYroz8I0pSK17oI3oy6MYgiYNiUZGr4A+bLAFo+tJwojqpHhp+hRW
-         YH5v8LJyuM1woVvtJ/S3D6wx0He3qfgdXRzpvgORLQbksXzjwMaylOeMb79vZ870eUVl
-         MOOFU723zZvMy1boK5FkmW9OIdeq6c02869RGdfnySrPqiF3RJeh/e13AI+xyJpdgk90
-         KxSuFlTj3ZUsMpAwacjTkt8KEL9F0SxkwVgVn+pJ4LV0n6hGJ/PzgMT2kyPaDFx66YX4
-         CeAQ==
+        b=blkMAEx1X62YZW13bG3Tg38HPH8mr+ex2aDbMV0sW5LKbq5xnMm9gKFlQo1gAHTRs/
+         yAHafz2G97iqLWgYKvoWXa0XQjmiiLzXYqN2yPP6dLOCPBhLFEibYtSr9M3CbWmND0M6
+         rg7qHHQ9qKn4tsSkJdv6aHrI2wkE9qf9H62nnspK6WydsGgF9cU+2tvs6wMpcNJ8FYmy
+         hrY3npMuXtCB6TvTuHKbanhPKb/kU63HI+eaNdEgkbODNBSzvKOyEd6RJHbCaNLYlxF6
+         zTuAx9RoxmcCloDTwrNclc0RBGck7/yYoU9LculO4UAJ84lQ9iNSEzhgWOgJZicRyVTB
+         a7Kg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:openpgp:from:references:to:subject:dkim-signature;
-        bh=7wZxLIs8Ts4HJSL9qGkv1O0CMPFLEaAmLOKNPImx/80=;
-        b=tdDdxqGE0g123ohBJ3Gevch/P6y9mvpAlr6ov4hcuRRfhabQeixuKD3hL/dMML7cPs
-         +Qmx64e8PpSQ3pq6NXwjykxmAL+2MnsLm2Kip9QWpLjWDjl/d38zqIpxZ9enWu6fTW5B
-         fvsFF1IJITor7RnirqrQfz3GCj1rhgwKfQDtZawARaQJa6qUnKsSLu0PSJbgIJ1H4q7j
-         jUtyxe3V4zo2elFaH2oTVoWiYdAH9N6jrwmcO2Kq8tabXeqc/+gISJPQzpllrALdaaU9
-         kTysV2BtYPhTQmcwen3CmCItLpYBNlLpdYb2ecytDP67HMMjbKOUi1VT/oI5re7Zu1rF
-         OrMg==
+        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Kau7tqDv4N5BfV3Vw5Rek2SevsQVcXfTdIXf3HFT2yo=;
+        b=sYQSQzo9+ZyLw0FblT4M7hh0XAQYi4DbD029PPYcABhxMQhmXx9gBrj8wrFjfnX346
+         rnIZ3moDlGjp8588+CiplVeQzMUy4MEn38SHsaKJdsBRTu5zJ4iqIIV0BM74EaMu3zw2
+         7iHtPlvsWIbGD+lo96phf7okzgKwH/iqyzc8qZTvS/GqgEY5rnP/M90lH9zK0nGFqH4p
+         zyBADiswpcjNfA1IrXUZ5flzvAPi42zCtUCCqWQBRUGyjuXba/nYJtvqGlqqoLxfQTfU
+         mAvOuvcqPnimsDbJKpWvuk7KYcNr/xlgl8A18IA//ZoCVYMemCPXqkvxWVorYKBlodAq
+         AVzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MnijILNg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q26si4146661qtf.3.2019.09.27.02.21.43
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Sep 2019 02:21:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@linaro.org header.s=google header.b="cCX1WO/b";
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id f19si1577552edb.385.2019.09.27.06.19.49;
+        Fri, 27 Sep 2019 06:19:50 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MnijILNg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48448 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iDmRa-0002LN-BF
-	for alex.bennee@linaro.org; Fri, 27 Sep 2019 05:21:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55858)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iDmLP-0004zo-MK
- for qemu-arm@nongnu.org; Fri, 27 Sep 2019 05:15:21 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iDmLO-0002oh-Cx
- for qemu-arm@nongnu.org; Fri, 27 Sep 2019 05:15:19 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:58552)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iDmLO-0002mm-5P
- for qemu-arm@nongnu.org; Fri, 27 Sep 2019 05:15:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1569575717;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=7wZxLIs8Ts4HJSL9qGkv1O0CMPFLEaAmLOKNPImx/80=;
- b=MnijILNgbfLoakUIbfsy84M7YPCY6Z1xmnFOzwx2oY7Cw2TqsztZFWt0k8CqaPGrMQT3sZ
- WlfrqmckKXz2/5Q9UEMVsC/MJpAQGKBqjViesj8WnEr6zqJ5IDYDXZO8OzKyWfQPUTfYX8
- 2RQGO+klV+iGc31jjKctMhFVLnsgzHU=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-10-hpc2Xe8RO1yx7ZKaQponXg-1; Fri, 27 Sep 2019 05:15:15 -0400
-Received: by mail-wm1-f72.google.com with SMTP id s25so1972488wmh.1
- for <qemu-arm@nongnu.org>; Fri, 27 Sep 2019 02:15:15 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b="cCX1WO/b";
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1727334AbfI0NTp (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 27 Sep 2019 09:19:45 -0400
+Received: from mail-oi1-f194.google.com ([209.85.167.194]:36506 "EHLO
+        mail-oi1-f194.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1726144AbfI0NTp (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 27 Sep 2019 09:19:45 -0400
+Received: by mail-oi1-f194.google.com with SMTP id k20so5169658oih.3
+        for <kvm@vger.kernel.org>; Fri, 27 Sep 2019 06:19:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=Kau7tqDv4N5BfV3Vw5Rek2SevsQVcXfTdIXf3HFT2yo=;
+        b=cCX1WO/bNqbsVLei5AA6tys+J9PQMz1GCTn1ofd38X9yeB/fkI6TGDTPGAovh1gxGJ
+         zIGgaNSH3KW4LZLhHdSL7SW3IkKPLQQsZ9cI6spH+4/CRcYEGOykEIJT8bShZ+GDlW4o
+         b0kEQDvOms3LGJDEgJHj+O8DyaMzVBc1S9zGk9ZPfwSYtL9s50mUBfR4VRQKmM4DFHST
+         vFgJYE7O3m4pTQWNgqexAgCt6S4epYt3IsrczSUcQ8ZKZKa+sb4j+dTClfYstJyKBJSx
+         CtJw7FsCAuzm+ipAFreRZqtIRDMxlbBHuiZe58JntnoPNM+gS3QfEkbKM19+iDlMj/P1
+         M3NQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=ZM17ymn2lck6Yard47o1e27kHTzBjtHrS85U5JQL02A=;
- b=I6I0sB4dN78gNgjVKkWfWIMTR4EAmRPfDMip+QISfsMB8c7wRmqDhVv7ltQI5qEtAM
- DehMLvGnusHboGKxG1bkT5UrjCLbGDw5ZR2IgBTacFmwhRI5sKsmI3SSEG1WGD44hQuB
- LhH7bra0mXUXqMqAfuGDQIFqwGZ8bsej5tzQ6G6N6R1Tm51vDSmkLn60Bsrl5g3P/XMC
- QM629JHz9xuz1GDuq1trX9zNhwNRVECgEP452h1V2Th03PaI3yPVIEkz7PWy8ccmXShj
- 3o0DJ7vDFogYSI/T1rTkf88/6c2soXKbc48s6d/dQ2mtdOEHs1ZuaSNkWTT9nps8OK8E
- m11w==
-X-Gm-Message-State: APjAAAXYJjZZq+FwP9v3W/OxHCGgRu2xR1eLR5V0C+fnJycLSOTbGpDE
- 8AWwIcL+6xYcEYxTW36k0gtFKGT7n9st02flMBAQmoBkEP9UQ3ym0mpQGheRptNpDfs6BvsGMkb
- EyO2JjaXvqiC8
-X-Received: by 2002:a05:6000:162e:: with SMTP id
- v14mr2245360wrb.112.1569575714366; 
- Fri, 27 Sep 2019 02:15:14 -0700 (PDT)
-X-Received: by 2002:a05:6000:162e:: with SMTP id
- v14mr2245344wrb.112.1569575714159; 
- Fri, 27 Sep 2019 02:15:14 -0700 (PDT)
-Received: from [192.168.1.35] (240.red-88-21-68.staticip.rima-tde.net.
- [88.21.68.240])
- by smtp.gmail.com with ESMTPSA id q3sm1938155wrm.86.2019.09.27.02.15.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 27 Sep 2019 02:15:13 -0700 (PDT)
-Subject: Re: Is kexec supported in QEMU for ARM64 (qemu-system-aarch64) with
- arm-trusted-firmware, optee, and u-boot.
-To: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- James Bottomley <James.Bottomley@HansenPartnership.com>,
- qemu-devel@nongnu.org, Ard Biesheuvel <ard.biesheuvel@linaro.org>
-References: <21633062-b021-a8e7-0cc8-062f4c29dde5@linux.microsoft.com>
- <ca5c74db-cf5d-0c3f-eb6f-27d1092420ae@linux.microsoft.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Openpgp: id=89C1E78F601EE86C867495CBA2A3FD6EDEADC0DE;
- url=http://pgp.mit.edu/pks/lookup?op=get&search=0xA2A3FD6EDEADC0DE
-Message-ID: <65b49cb0-c9fb-d966-8dec-1e39d09ab8c7@redhat.com>
-Date: Fri, 27 Sep 2019 11:15:12 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=Kau7tqDv4N5BfV3Vw5Rek2SevsQVcXfTdIXf3HFT2yo=;
+        b=AdELT6bWd3HkdeyGvHEZe4JF3KCiMfNg9kT6sNMqaIHeVbZnXea6STlWVYFJwjKXlG
+         p3VZs7hsHh5XfZS3pfqMfEWHmb/4WD/YgBQtp3ZASjlm9Z4X4PmA6YYGXbu8188TZsEG
+         loWIwOl5BhSn0gpoqaNTXumaSns6Pjc1Qk2MsT2/Y4YWHOznggBt5VXMmLkspFUDraTY
+         bYLz2NGUU10cFtAIC0Kx/2n2ZMA8GX5yltI9Lagqpvj71gWq8l7WLvE+e6qAtu+4HtJz
+         k6jpWZ6gzxBhC6V2tQleGz0N+QedVXfijANs+PThCtLROg6Prme9ia0383inwLwHcFpm
+         ZNPg==
+X-Gm-Message-State: APjAAAXNZXNk16kpvq/8x1ihvvm183gICD20corbSLlJY0EOuuZFeALo
+        pI2uMKRT1B4ClsVRmumu0yQERZkGn9acPChlyYHHcw==
+X-Received: by 2002:aca:f54d:: with SMTP id t74mr7264630oih.170.1569590383304;
+ Fri, 27 Sep 2019 06:19:43 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <ca5c74db-cf5d-0c3f-eb6f-27d1092420ae@linux.microsoft.com>
-Content-Language: en-US
-X-MC-Unique: hpc2Xe8RO1yx7ZKaQponXg-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 205.139.110.61
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3Y0d3fzrzZPd
+References: <20190906083152.25716-1-zhengxiang9@huawei.com> <20190906083152.25716-5-zhengxiang9@huawei.com>
+In-Reply-To: <20190906083152.25716-5-zhengxiang9@huawei.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Fri, 27 Sep 2019 14:19:32 +0100
+Message-ID: <CAFEAcA_o6NkOGptWFOoVt4pUgHU+dNyWQ9h_VfNweR17CtHSnw@mail.gmail.com>
+Subject: Re: [Qemu-arm] [PATCH v18 4/6] KVM: Move hwpoison page related
+ functions into include/sysemu/kvm_int.h
+To:     Xiang Zheng <zhengxiang9@huawei.com>
+Cc:     Paolo Bonzini <pbonzini@redhat.com>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Shannon Zhao <shannon.zhaosl@gmail.com>,
+        Laszlo Ersek <lersek@redhat.com>,
+        James Morse <james.morse@arm.com>,
+        gengdongjiu <gengdongjiu@huawei.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Jonathan Cameron <jonathan.cameron@huawei.com>,
+        "xuwei (O)" <xuwei5@huawei.com>, kvm-devel <kvm@vger.kernel.org>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        qemu-arm <qemu-arm@nongnu.org>, Linuxarm <linuxarm@huawei.com>,
+        wanghaibin.wang@huawei.com
+Content-Type: text/plain; charset="UTF-8"
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: AMav4JBdZTrF
 
-Cc'ing Ard too
+On Fri, 6 Sep 2019 at 09:33, Xiang Zheng <zhengxiang9@huawei.com> wrote:
+>
+> From: Dongjiu Geng <gengdongjiu@huawei.com>
+>
+> kvm_hwpoison_page_add() and kvm_unpoison_all() will both be used by X86
+> and ARM platforms, so moving them into "include/sysemu/kvm_int.h" to
+> avoid duplicate code.
+>
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+> ---
+>  accel/kvm/kvm-all.c      | 33 +++++++++++++++++++++++++++++++++
+>  include/sysemu/kvm_int.h | 23 +++++++++++++++++++++++
+>  target/arm/kvm.c         |  3 +++
+>  target/i386/kvm.c        | 34 ----------------------------------
+>  4 files changed, 59 insertions(+), 34 deletions(-)
 
-On 9/27/19 12:35 AM, Lakshmi Ramasubramanian wrote:
-> On 9/26/19 8:17 AM, Lakshmi Ramasubramanian wrote:
->=20
-> The following commit for ARM Trusted Firmware for QEMU virt ARMv8-A
-> is almost 3 years old
->=20
-> https://salsa.debian.org/debian/atf-allwinner/commit/b6b671c4ac4bd5595306=
-863225bb3bece1e6135c
->=20
->=20
-> Current limitations:
-> * Only cold boot is supported
-> * No build instructions for QEMU_EFI.fd and rootfs-arm64.cpio.gz
-> * No instructions for how to load a BL32 (Secure Payload)
->=20
-> So looks like only cold boot is supported (no kexec support)
-> Is this correct?
->=20
->> When I execute kexec ("kexec -l <kernel>", followed by "kexec -e") I
->> hit the following assert (in arm-trusted-firmware/plat/qemu/qemu_pm.c)
->>
->> /***********************************************************************=
-********
->>
->> =C2=A0=C2=A0* Platform handler called when a power domain is about to be=
- turned
->> =C2=A0=C2=A0* off. The target_state encodes the power state that each le=
-vel should
->> =C2=A0=C2=A0* transition to.
->> ************************************************************************=
-******/
->>
->> void qemu_pwr_domain_off(const psci_power_state_t *target_state)
->> {
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0assert(0);
->> }
->>
->> Is kexec supported in ARM64 QEMU (qemu-system-aarch64) -
->> using arm-trusted-firmware, optee, and u-boot?
->>
->> Thanks,
->> =C2=A0=C2=A0-lakshmi
->=20
->=20
+>  static uint32_t adjust_ioeventfd_endianness(uint32_t val, uint32_t size)
+>  {
+>  #if defined(HOST_WORDS_BIGENDIAN) != defined(TARGET_WORDS_BIGENDIAN)
+> diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
+> index 72b2d1b3ae..3ad49f9a28 100644
+> --- a/include/sysemu/kvm_int.h
+> +++ b/include/sysemu/kvm_int.h
+> @@ -41,4 +41,27 @@ typedef struct KVMMemoryListener {
+>  void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
+>                                    AddressSpace *as, int as_id);
+>
+> +/**
+> + * kvm_hwpoison_page_add:
+> + *
+> + * Parameters:
+> + *  @ram_addr: the address in the RAM for the poisoned page
+> + *
+> + * Add a poisoned page to the list
+> + *
+> + * Return: None.
+> + */
+> +void kvm_hwpoison_page_add(ram_addr_t ram_addr);
+> +
+> +/**
+> + * kvm_unpoison_all:
+> + *
+> + * Parameters:
+> + *  @param: some data may be passed to this function
+> + *
+> + * Free and remove all the poisoned pages in the list
+> + *
+> + * Return: None.
+> + */
+> +void kvm_unpoison_all(void *param);
+>  #endif
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index b2eaa50b8d..3a110be7b8 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -20,6 +20,7 @@
+>  #include "sysemu/sysemu.h"
+>  #include "sysemu/kvm.h"
+>  #include "sysemu/kvm_int.h"
+> +#include "sysemu/reset.h"
+>  #include "kvm_arm.h"
+>  #include "cpu.h"
+>  #include "trace.h"
+> @@ -195,6 +196,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+>
+>      cap_has_mp_state = kvm_check_extension(s, KVM_CAP_MP_STATE);
+>
+> +    qemu_register_reset(kvm_unpoison_all, NULL);
+> +
 
+Rather than registering the same reset handler in
+all the architectures, we could register it in the
+generic kvm_init() function. (For architectures that
+don't use the poison-list functionality the reset handler
+will harmlessly do nothing, because there will be nothing
+in the list.)
+
+This would allow you to not have to make the
+kvm_unpoison_all() function global -- it can be static
+in accel/tcg/kvm-all.c.
+
+>      return 0;
+>  }
+
+thanks
+-- PMM

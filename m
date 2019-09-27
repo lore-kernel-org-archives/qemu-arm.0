@@ -1,110 +1,108 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3985012wrp;
-        Fri, 27 Sep 2019 13:52:43 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwQ+G0RaFI+PSe5owVOCCzOSCU7ARlH3Brzf68QRg6TXj/hfHe4LAou9PwP/dzthuSWW2sm
-X-Received: by 2002:a37:7086:: with SMTP id l128mr6646211qkc.433.1569617563646;
-        Fri, 27 Sep 2019 13:52:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569617563; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4016604wrp;
+        Fri, 27 Sep 2019 14:28:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzejRCmpzK08N1jAQ0CqjZynEp1h0wQWKjRIjywGrHOQK3OYe90Tgtfg1KKX5/YFoSbnhA/
+X-Received: by 2002:a37:b704:: with SMTP id h4mr7145928qkf.373.1569619712425;
+        Fri, 27 Sep 2019 14:28:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569619712; cv=none;
         d=google.com; s=arc-20160816;
-        b=UCIVFq30IFo1p6NKh4PCu/6uUcWh7jJ2ZEmied7HyzurSTCvFCN5Qvme2tvinob4ZY
-         jTnQOC0EFepJynMR/tsycWaO7VEZysr8pEBJ/qUCULvsrKlP745w9vuK6TjdQuGukBWk
-         5hzymckEGK3tsF+z0S0oq2M0gR1+weTyRSrGDxyQcmAU7iTwVVCWOm9rYNliTycW8mnk
-         eNiWs5tMPb5EBj+KCmYMiRWd7jrbbU3EP0XP7e84QGzfa02Xuq9uJdsF3CiEPfagmqct
-         9L9u3qaNFfAaT/9Q+KDboiHvAn8FHFV6JDr7ZmEtD6PMwyCSyXyMs4gMCJrj0/b/810G
-         ozJg==
+        b=Ywn7Bvlz4SjTto7NVCigHu1bBrYZRL6ADDe3xaLe/ohfXPofKY2jCqU4Qf6vUG3GOL
+         1Jn7IGu2arEFxroVlV8qf1Q+O8LKK1CTgDGUvWfwBOxUNL4y52r0S94j973HrUqolcYB
+         HNOxoUA+CqKN/Xs5Q8LSmlRV6lwZ6db2ju6xg0pp/JB/UojYVtHl9kQKkycawBPJYiXe
+         wr8YD1tjyMflDk2gMn5W+AQ107LQDGvX06XB0ThQJ0utux8OkgjEND1R3Su5++V/9SC/
+         RXHLZtMluPmSSJ+IjnZfDR14YgvR7ikqZJEVsnrUZB7+nbj+kUaSG8A12LPR817+sSqi
+         H3iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=p+nDA86jMH4Pq7MzS8/vEaBEc7PBFlKlGTqXWHL8JeE=;
-        b=Pdtk4XMeDm3u88LsjX4lWkm6VMIXs2o9y0wGGNrXOPntXluWsO3AHDuhsv78rDmVXl
-         O9ZZ9BEM1Pg8IkKPSw/BPMDkxFJ3IbAAWjEizyWXVZ3CMJXUfYCM+2sjiPK3NHztgx5+
-         etBdQMu6+XOntD14TQ7htFit+aNJ6ScMwaeOqGGM7bMV7YK/FrBdI1axXoZg4MYpzazf
-         D6pM9CBiostPdpNRSTPIrJom0z5u7AcY0Ey4vfZlMY++L7f8+mqjhAHXBLZV0kFN8Ihz
-         kbtbRuHjkUJC8kyGWqwU+WX8K4G9z1W7Fk6oq3uoHg3Yc1ipRsfN+dteC7lbGLkJxG4C
-         Wlrw==
+        bh=YsJpUKnUM6h4TMWxtaSP45vMzdsIvrZ7mGQBfgyDCj4=;
+        b=GiqXTVSeNG7ZbSwv/YSU9EKSKYSJL46KhybGYURVJpuU8P9SXt3QJDAFgfNpyT7DQu
+         hA8unJQXsgOjIX0FvW1SfIBWcNswpwLentnE5/beaflSWwCJ/pMwRbBmYKRO9G8G6xku
+         lkSy7rkIE5O3w+DD0jSoGvhDexQ5UyQmVMZVbtGHAf0kaobwFLoFmgLnDU4AqVmvy9bz
+         UZ/tqkC9+OBWBJTu++XNrc4pXFD1Ztj5+aNKNyTcI/0iQ21ntqGcIInPTZGm6DoOi6YP
+         fSR37jxksqvDzK3ho1HJRUzD+fYOzzEeQF7BdMvv4t4hv89mzk0oiElsaSxdN+BrwKhZ
+         ywgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jIqLeI6l;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ld+MjPT0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w7si3285227qka.222.2019.09.27.13.52.43
+        by mx.google.com with ESMTPS id x5si3620027qkb.218.2019.09.27.14.28.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Sep 2019 13:52:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 27 Sep 2019 14:28:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jIqLeI6l;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ld+MjPT0;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57422 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57684 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iDxEJ-0007sP-03
-	for alex.bennee@linaro.org; Fri, 27 Sep 2019 16:52:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55111)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iDxmx-0002TR-Qe
+	for alex.bennee@linaro.org; Fri, 27 Sep 2019 17:28:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60069)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <estebanbosse@gmail.com>) id 1iDxDJ-0007Hv-PW
- for qemu-devel@nongnu.org; Fri, 27 Sep 2019 16:51:43 -0400
+ (envelope-from <estebanbosse@gmail.com>) id 1iDxk4-0008Gf-Rd
+ for qemu-arm@nongnu.org; Fri, 27 Sep 2019 17:25:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <estebanbosse@gmail.com>) id 1iDxDI-0006c4-CG
- for qemu-devel@nongnu.org; Fri, 27 Sep 2019 16:51:41 -0400
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:36741)
+ (envelope-from <estebanbosse@gmail.com>) id 1iDxk0-0003Yc-PE
+ for qemu-arm@nongnu.org; Fri, 27 Sep 2019 17:25:32 -0400
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:38972)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <estebanbosse@gmail.com>)
- id 1iDxDI-0006bT-3W; Fri, 27 Sep 2019 16:51:40 -0400
-Received: by mail-ed1-x541.google.com with SMTP id h2so3498894edn.3;
- Fri, 27 Sep 2019 13:51:40 -0700 (PDT)
+ id 1iDxjp-0003K0-IN; Fri, 27 Sep 2019 17:25:17 -0400
+Received: by mail-ed1-x543.google.com with SMTP id a15so3542657edt.6;
+ Fri, 27 Sep 2019 14:25:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=p+nDA86jMH4Pq7MzS8/vEaBEc7PBFlKlGTqXWHL8JeE=;
- b=jIqLeI6lIwmqbhiuWlMlLdpLKkrDTt+F8TF+IwhJFm0Z7YSUtJiUMMHYYF9dhRySAG
- MC7EyuLY1Ce08/LkfvNecX49gy04w/PweKE5YIXKhhPRb/Op6oprLjAacKzzBgSYM+NQ
- GPFX9qH3Nciy4cY+T64us0ZBNRQs+i3m5/OocaV6besBuM0Z/8X22aylmraT8MztbviR
- a9RB9kydlfF9aF8rPEqn9nCoiPEBwfThwcSpA59+t8ORgIl1VDKZ6EaGjsawA4DTZJVV
- g6kbYcjfeMQvLWDaD/pIvXFguTIsXnZJ2f/vPmds6Ax96EZedtYbGuqg1UwyLcxN54OA
- z8og==
+ :cc; bh=YsJpUKnUM6h4TMWxtaSP45vMzdsIvrZ7mGQBfgyDCj4=;
+ b=Ld+MjPT0hZcMb121Zk66fAqBK3glUZRHocQQTKnCP7p4I9W8IRFcZna7yIsA1l9X3+
+ /ep7xEP2n3QxSoeOe0EXU+ad8kVIzEaZiVc5PqiSXjQs+Sd6lJdtTQeh8acO5uE++4So
+ MpQKic8sERMtBEYRBPIwOnynhmDeKhrpEDCNwtuiU71ju/YGSjOUC790vbaUwEm1AaOA
+ LNcj/vxvzWD4+ItRlwDuqQ2oNK9TsGS272csDIoWEUHFXyXUoWzYyzWyXoKd6dGtxIbW
+ 0X/C+SKX9TKPhIOQ9qxSZ8rfwcGrywKh0CV3GbqlqxcUsRdy3P3YECBd/Rkr8OJ5a0xH
+ gP+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=p+nDA86jMH4Pq7MzS8/vEaBEc7PBFlKlGTqXWHL8JeE=;
- b=BTXj6FW8wAQVOACD1Mc4k2j84VjhUqlTep3rN4LAG/LeoZoU2b0bs4eF2GLrNjv3vU
- 771c85C20f4Jz8Nq+im27M2SUeNuKPZXUMdhc4Yxzbkp8vuU2435j89XOyTuqWW8L81f
- 19ctseSbY5wRgZsKv+JRcH8sycORiVRjlGlRhs+T0+x7A+NKBHNL5L1a8IKKCV36QTjW
- dmkMiBXF7qVGNabt0zqZgyI/3OH3tOy3FaaBE/UmNCXSslmm5CSEz6kxd32Dujj9dFgq
- 19GXI/YfvQwYLZHVdfA1RlrMm8arbLz0gM1i4mQwkmxedALVbovu/ND97QZj5QdDA/d/
- LsrQ==
-X-Gm-Message-State: APjAAAUisQOyrx77UOBSMPc1Yzq8V+CQ688GeSUiuYMtivZZxPeFDiBQ
- SAi3pHErSRu6fdXJlURmGsSAgFZ/O57ChyIc0Ms=
-X-Received: by 2002:a17:906:19d3:: with SMTP id
- h19mr9729195ejd.121.1569617498537; 
- Fri, 27 Sep 2019 13:51:38 -0700 (PDT)
+ bh=YsJpUKnUM6h4TMWxtaSP45vMzdsIvrZ7mGQBfgyDCj4=;
+ b=g31Q8QjYJk9WEipRX4ekoqM4IvhSHPOWpR5opceAVZDPB4mbJEUukYjZhXMl5ihPWF
+ MizRe3LbNg2Vr2wIVqPRn6sou05/1oveur6L8wLqFvgC7yDyJGs9kiZ4xhTgLpNFk5MO
+ wUK0AkyP7kGQP1toAltWzUCqf5+U7xLRGKQYzi3ikLXoBN+OJ8Z4NX5zGW3D0K1vwPY5
+ x6ZSCaf7iJD4fmHAvc4uK2fI8CVrTLCuUJKzefwrDQgKqmYd6H1s1z2D2J361+5w55Wm
+ wnFV+KDu2nvSxuvtPgaO/30qrYQJp6Kiq2DGDMoyhanCU3gd7XxBuYmlQ56X1B7nePel
+ aLaw==
+X-Gm-Message-State: APjAAAWjcAJOeCFAo72qLTYV0cME1XbciaJqTQjSqxH3Acdsmo8ofmwj
+ adKKvqlx5RzxQ1rbJr/e9jL7Z2npPYe/On1Tbjc=
+X-Received: by 2002:a50:a5f8:: with SMTP id b53mr6931507edc.39.1569619515615; 
+ Fri, 27 Sep 2019 14:25:15 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190904171315.8354-1-f4bug@amsat.org>
- <20190904171315.8354-4-f4bug@amsat.org>
-In-Reply-To: <20190904171315.8354-4-f4bug@amsat.org>
+ <20190904171315.8354-5-f4bug@amsat.org>
+In-Reply-To: <20190904171315.8354-5-f4bug@amsat.org>
 From: Esteban Bosse <estebanbosse@gmail.com>
-Date: Fri, 27 Sep 2019 22:51:27 +0200
-Message-ID: <CAGbAg_AcaPU4w175KgDU5Nm9FC=9OBLEL+3cM01EqtMpD3YNfg@mail.gmail.com>
-Subject: Re: [RFC PATCH 03/14] hw/misc/bcm2835_property: Handle the 'domain
- state' property
+Date: Fri, 27 Sep 2019 23:25:04 +0200
+Message-ID: <CAGbAg_AmENM4WXVJw-n-xP-K-11wR6N5Yu8XAGWNQ4rCY9Gu8Q@mail.gmail.com>
+Subject: Re: [PATCH 04/14] hw/arm/bcm2835_peripherals: Improve logging
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="0000000000006f03d805938f0d19"
+Content-Type: multipart/alternative; boundary="000000000000a9347905938f854a"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::541
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2a00:1450:4864:20::543
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?Q?Zolt=C3=A1n_Baldaszti?= <bztemail@gmail.com>, qemu-devel@nongnu.org,
  Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm <qemu-arm@nongnu.org>,
@@ -113,117 +111,620 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
  Pekka Enberg <penberg@iki.fi>, Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z5kXCtqYeHSZ
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7lu6fC9AVIyq
 
---0000000000006f03d805938f0d19
+--000000000000a9347905938f854a
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-
-Searching this property in the kernel, I found a lot of properties not
-implemented.
-https://github.com/raspberrypi/linux/blob/rpi-4.19.y/include/soc/bcm2835/ra=
-spberrypi-firmware.h#L41
-Are the properties only added when they are necessaries for the standard
-kernel use?
-
-Reviewed-by: EstebanB
 
 El mi=C3=A9., 4 sept. 2019 a las 19:13, Philippe Mathieu-Daud=C3=A9 (<f4bug=
 @amsat.org>)
 escribi=C3=B3:
 
-> The kernel is happy with this change, so we don't need
-> to do anything more sophisticated.
+> Various logging improvements as once:
+> - Use 0x prefix for hex numbers
+> - Display value written during write accesses
+> - Move some logs from GUEST_ERROR to UNIMP
 >
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/misc/bcm2835_property.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
+> v2: Use PRIx64 format (pm215)
+> ---
+>  hw/char/bcm2835_aux.c      |  5 +++--
+>  hw/dma/bcm2835_dma.c       |  8 ++++----
+>  hw/intc/bcm2836_control.c  |  7 ++++---
+>  hw/misc/bcm2835_mbox.c     |  7 ++++---
+>  hw/misc/bcm2835_property.c | 16 ++++++++++------
+>  5 files changed, 25 insertions(+), 18 deletions(-)
 >
+> diff --git a/hw/char/bcm2835_aux.c b/hw/char/bcm2835_aux.c
+> index 3f855196e3..a6fc1bf152 100644
+> --- a/hw/char/bcm2835_aux.c
+> +++ b/hw/char/bcm2835_aux.c
+> @@ -162,8 +162,9 @@ static void bcm2835_aux_write(void *opaque, hwaddr
+> offset, uint64_t value,
+>      switch (offset) {
+>      case AUX_ENABLES:
+>          if (value !=3D 1) {
+> -            qemu_log_mask(LOG_UNIMP, "%s: unsupported attempt to enable
+> SPI "
+> -                          "or disable UART\n", __func__);
+> +            qemu_log_mask(LOG_UNIMP, "%s: unsupported attempt to enable
+> SPI"
+> +                                     " or disable UART: 0x%"PRIx64"\n",
+> +                          __func__, value);
+>          }
+>          break;
+>
+> I found others qemu_log_mask calls in this file, why did you only add
+"0x%" to this calls ?
+
+Icho :: qemu/qemu/hw 148 =C2=BB grep -r qemu_log_mask char/bcm2835_aux.c
+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_LCR_REG unsupported\n",
+__func__);
+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_MCR_REG unsupported\n",
+__func__);
+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_MSR_REG unsupported\n",
+__func__);
+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_SCRATCH unsupported\n",
+__func__);
+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_BAUD_REG unsupported\n",
+__func__);
+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
+            qemu_log_mask(LOG_UNIMP, "%s: unsupported attempt to enable SPI
+"
+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_LCR_REG unsupported\n",
+__func__);
+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_MCR_REG unsupported\n",
+__func__);
+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_SCRATCH unsupported\n",
+__func__);
+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_CNTL_REG unsupported\n",
+__func__);
+        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_BAUD_REG unsupported\n",
+__func__);
+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
+
+
+> diff --git a/hw/dma/bcm2835_dma.c b/hw/dma/bcm2835_dma.c
+> index 192bd377a0..6acc2b644e 100644
+> --- a/hw/dma/bcm2835_dma.c
+> +++ b/hw/dma/bcm2835_dma.c
+> @@ -180,7 +180,7 @@ static uint64_t bcm2835_dma_read(BCM2835DMAState *s,
+> hwaddr offset,
+>          res =3D ch->debug;
+>          break;
+>      default:
+> -        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n"=
+,
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset
+> 0x%"HWADDR_PRIx"\n",
+>                        __func__, offset);
+>          break;
+>      }
+> @@ -228,7 +228,7 @@ static void bcm2835_dma_write(BCM2835DMAState *s,
+> hwaddr offset,
+>          ch->debug =3D value;
+>          break;
+>      default:
+> -        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n"=
+,
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset
+> 0x%"HWADDR_PRIx"\n",
+>                        __func__, offset);
+>          break;
+>      }
+> @@ -247,7 +247,7 @@ static uint64_t bcm2835_dma0_read(void *opaque, hwadd=
+r
+> offset, unsigned size)
+>          case BCM2708_DMA_ENABLE:
+>              return s->enable;
+>          default:
+> -            qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset
+> %"HWADDR_PRIx"\n",
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset
+> 0x%"HWADDR_PRIx"\n",
+>                            __func__, offset);
+>              return 0;
+>          }
+> @@ -274,7 +274,7 @@ static void bcm2835_dma0_write(void *opaque, hwaddr
+> offset, uint64_t value,
+>              s->enable =3D (value & 0xffff);
+>              break;
+>          default:
+> -            qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset
+> %"HWADDR_PRIx"\n",
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset
+> 0x%"HWADDR_PRIx"\n",
+>                            __func__, offset);
+>          }
+>      }
+> diff --git a/hw/intc/bcm2836_control.c b/hw/intc/bcm2836_control.c
+> index 04229b8a17..61f884ff9e 100644
+> --- a/hw/intc/bcm2836_control.c
+> +++ b/hw/intc/bcm2836_control.c
+> @@ -264,7 +264,7 @@ static uint64_t bcm2836_control_read(void *opaque,
+> hwaddr offset, unsigned size)
+>      } else if (offset >=3D REG_MBOX0_RDCLR && offset < REG_LIMIT) {
+>          return s->mailboxes[(offset - REG_MBOX0_RDCLR) >> 2];
+>      } else {
+> -        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n"=
+,
+> +        qemu_log_mask(LOG_UNIMP, "%s: Unsupported offset
+> 0x%"HWADDR_PRIx"\n",
+>                        __func__, offset);
+>          return 0;
+>      }
+> @@ -293,8 +293,9 @@ static void bcm2836_control_write(void *opaque, hwadd=
+r
+> offset,
+>      } else if (offset >=3D REG_MBOX0_RDCLR && offset < REG_LIMIT) {
+>          s->mailboxes[(offset - REG_MBOX0_RDCLR) >> 2] &=3D ~val;
+>      } else {
+> -        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n"=
+,
+> -                      __func__, offset);
+> +        qemu_log_mask(LOG_UNIMP, "%s: Unsupported offset 0x%"HWADDR_PRIx
+> +                                 " value 0x%"PRIx64"\n",
+> +                      __func__, offset, val);
+>          return;
+>      }
+>
+> diff --git a/hw/misc/bcm2835_mbox.c b/hw/misc/bcm2835_mbox.c
+> index 79bad11631..7690b9afaf 100644
+> --- a/hw/misc/bcm2835_mbox.c
+> +++ b/hw/misc/bcm2835_mbox.c
+> @@ -176,7 +176,7 @@ static uint64_t bcm2835_mbox_read(void *opaque, hwadd=
+r
+> offset, unsigned size)
+>          break;
+>
+>      default:
+> -        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n"=
+,
+> +        qemu_log_mask(LOG_UNIMP, "%s: Unsupported offset
+> 0x%"HWADDR_PRIx"\n",
+>                        __func__, offset);
+>          return 0;
+>      }
+> @@ -228,8 +228,9 @@ static void bcm2835_mbox_write(void *opaque, hwaddr
+> offset,
+>          break;
+>
+>      default:
+> -        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n"=
+,
+> -                      __func__, offset);
+> +        qemu_log_mask(LOG_UNIMP, "%s: Unsupported offset 0x%"HWADDR_PRIx
+> +                                 " value 0x%"PRIx64"\n",
+> +                      __func__, offset, value);
+>          return;
+>      }
+>
+> Same question here:
+Icho :: qemu/qemu/hw 148 =C2=BB grep -r qemu_log_mask misc/bcm2835_mbox.c
+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
+            qemu_log_mask(LOG_GUEST_ERROR, "%s: mailbox full\n", __func__);
+                qemu_log_mask(LOG_GUEST_ERROR, "%s: invalid channel %u\n",
+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
+
+
 > diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-> index 399f0d9dd5..d8eb28f267 100644
+> index d8eb28f267..ab66d3572e 100644
 > --- a/hw/misc/bcm2835_property.c
 > +++ b/hw/misc/bcm2835_property.c
-> @@ -127,6 +127,14 @@ static void
+> @@ -56,7 +56,8 @@ static void
 > bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+>              break;
+>          case 0x00010001: /* Get board model */
+>              qemu_log_mask(LOG_UNIMP,
+> -                          "bcm2835_property: %x get board model NYI\n",
+> tag);
+> +                          "bcm2835_property: 0x%08x get board model
+> NYI\n",
+> +                          tag);
+>              /* FIXME returning uninitialized memory */
+>              resplen =3D 4;
+>              break;
+> @@ -70,7 +71,8 @@ static void
+> bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+>              break;
+>          case 0x00010004: /* Get board serial */
+>              qemu_log_mask(LOG_UNIMP,
+> -                          "bcm2835_property: %x get board serial NYI\n",
+> tag);
+> +                          "bcm2835_property: 0x%08x get board serial
+> NYI\n",
+> +                          tag);
+>              /* FIXME returning uninitialized memory */
+>              resplen =3D 8;
+>              break;
+> @@ -106,7 +108,8 @@ static void
+> bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+>
+>          case 0x00038001: /* Set clock state */
+>              qemu_log_mask(LOG_UNIMP,
+> -                          "bcm2835_property: %x set clock state NYI\n",
+> tag);
+> +                          "bcm2835_property: 0x%08x set clock state
+> NYI\n",
+> +                          tag);
 >              resplen =3D 8;
 >              break;
 >
-> +        case 0x00030030: /* Get domain state */
-> +            qemu_log_mask(LOG_UNIMP,
-> +                          "bcm2835_property: 0x%08x get domain state
-> NYI\n",
-> +                          tag);
-> +            /* FIXME returning uninitialized memory */
-> +            resplen =3D 8;
-> +            break;
-> +
->          case 0x00038002: /* Set clock rate */
+> @@ -139,7 +142,8 @@ static void
+> bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
 >          case 0x00038004: /* Set max clock rate */
 >          case 0x00038007: /* Set min clock rate */
-> --
+>              qemu_log_mask(LOG_UNIMP,
+> -                          "bcm2835_property: %x set clock rates NYI\n",
+> tag);
+> +                          "bcm2835_property: 0x%08x set clock rate NYI\n=
+",
+> +                          tag);
+>              resplen =3D 8;
+>              break;
+>
+> @@ -284,8 +288,8 @@ static void
+> bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+>              break;
+>
+>          default:
+> -            qemu_log_mask(LOG_GUEST_ERROR,
+> -                          "bcm2835_property: unhandled tag %08x\n", tag)=
+;
+> +            qemu_log_mask(LOG_UNIMP,
+> +                          "bcm2835_property: unhandled tag 0x%08x\n",
+> tag);
+>              break;
+>          }
+>
+ Same question here:
+ Icho :: qemu/qemu/hw 148 =C2=BB grep -r qemu_log_mask misc/bcm2835_propert=
+y.c
+            qemu_log_mask(LOG_UNIMP,
+            qemu_log_mask(LOG_UNIMP,
+            qemu_log_mask(LOG_UNIMP,
+            qemu_log_mask(LOG_UNIMP,
+            qemu_log_mask(LOG_GUEST_ERROR,
+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
+        qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
+
+>  --
 > 2.20.1
 >
->
 
---0000000000006f03d805938f0d19
+I found other calls to qemu_log_mask in others files:
+hw/display/bcm2835_fb.c, hw/gpio/bcm2835_gpio.c, hw/intc/bcm2835_ic.c,
+hw/misc/bcm2835_rng.c and hw/sd/bcm2835_sdhost.c.
+
+--000000000000a9347905938f854a
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">Searching this property in the kernel, I found a lot of pr=
-operties=C2=A0not implemented.=C2=A0<a href=3D"https://github.com/raspberry=
-pi/linux/blob/rpi-4.19.y/include/soc/bcm2835/raspberrypi-firmware.h#L41">ht=
-tps://github.com/raspberrypi/linux/blob/rpi-4.19.y/include/soc/bcm2835/rasp=
-berrypi-firmware.h#L41</a><br>Are the properties only added when they are n=
-ecessaries for the standard kernel use?<br><br>Reviewed-by: EstebanB<br></d=
-iv><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">El =
-mi=C3=A9., 4 sept. 2019 a las 19:13, Philippe Mathieu-Daud=C3=A9 (&lt;<a hr=
-ef=3D"mailto:f4bug@amsat.org">f4bug@amsat.org</a>&gt;) escribi=C3=B3:<br></=
-div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;bor=
-der-left:1px solid rgb(204,204,204);padding-left:1ex">The kernel is happy w=
-ith this change, so we don&#39;t need<br>
-to do anything more sophisticated.<br>
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">El mi=C3=A9., 4 sept. 2019 a las 19:1=
+3, Philippe Mathieu-Daud=C3=A9 (&lt;<a href=3D"mailto:f4bug@amsat.org">f4bu=
+g@amsat.org</a>&gt;) escribi=C3=B3:<br></div><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
+);padding-left:1ex">Various logging improvements as once:<br>
+- Use 0x prefix for hex numbers<br>
+- Display value written during write accesses<br>
+- Move some logs from GUEST_ERROR to UNIMP<br>
 <br>
-Reviewed-by: Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" =
-target=3D"_blank">peter.maydell@linaro.org</a>&gt;<br>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
 t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
 ---<br>
-=C2=A0hw/misc/bcm2835_property.c | 8 ++++++++<br>
-=C2=A01 file changed, 8 insertions(+)<br>
+v2: Use PRIx64 format (pm215)<br>
+---<br>
+=C2=A0hw/char/bcm2835_aux.c=C2=A0 =C2=A0 =C2=A0 |=C2=A0 5 +++--<br>
+=C2=A0hw/dma/bcm2835_dma.c=C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 8 ++++----<br>
+=C2=A0hw/intc/bcm2836_control.c=C2=A0 |=C2=A0 7 ++++---<br>
+=C2=A0hw/misc/bcm2835_mbox.c=C2=A0 =C2=A0 =C2=A0|=C2=A0 7 ++++---<br>
+=C2=A0hw/misc/bcm2835_property.c | 16 ++++++++++------<br>
+=C2=A05 files changed, 25 insertions(+), 18 deletions(-)<br>
 <br>
+diff --git a/hw/char/bcm2835_aux.c b/hw/char/bcm2835_aux.c<br>
+index 3f855196e3..a6fc1bf152 100644<br>
+--- a/hw/char/bcm2835_aux.c<br>
++++ b/hw/char/bcm2835_aux.c<br>
+@@ -162,8 +162,9 @@ static void bcm2835_aux_write(void *opaque, hwaddr offs=
+et, uint64_t value,<br>
+=C2=A0 =C2=A0 =C2=A0switch (offset) {<br>
+=C2=A0 =C2=A0 =C2=A0case AUX_ENABLES:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (value !=3D 1) {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%=
+s: unsupported attempt to enable SPI &quot;<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &quot;or disable UART\n&quot;, __func__);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%=
+s: unsupported attempt to enable SPI&quot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot; or disabl=
+e UART: 0x%&quot;PRIx64&quot;\n&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 __func__, value);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+<br></blockquote><div>I found others qemu_log_mask calls in this file, why =
+did you only add &quot;0x%&quot; to this calls ?<br><br>Icho :: qemu/qemu/h=
+w 148 =C2=BB grep -r qemu_log_mask char/bcm2835_aux.c <br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: AUX_MU_LCR_REG unsupported\n&=
+quot;, __func__);<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &=
+quot;%s: AUX_MU_MCR_REG unsupported\n&quot;, __func__);<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: AUX_MU_MSR_REG unsupported=
+\n&quot;, __func__);<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP=
+, &quot;%s: AUX_MU_SCRATCH unsupported\n&quot;, __func__);<br>=C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: AUX_MU_BAUD_REG unsupport=
+ed\n&quot;, __func__);<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUE=
+ST_ERROR, &quot;%s: Bad offset %&quot;HWADDR_PRIx&quot;\n&quot;,<br>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: unsup=
+ported attempt to enable SPI &quot;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log=
+_mask(LOG_UNIMP, &quot;%s: AUX_MU_LCR_REG unsupported\n&quot;, __func__);<b=
+r>=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: AUX_MU_MCR=
+_REG unsupported\n&quot;, __func__);<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_lo=
+g_mask(LOG_UNIMP, &quot;%s: AUX_MU_SCRATCH unsupported\n&quot;, __func__);<=
+br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: AUX_MU_CN=
+TL_REG unsupported\n&quot;, __func__);<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_=
+log_mask(LOG_UNIMP, &quot;%s: AUX_MU_BAUD_REG unsupported\n&quot;, __func__=
+);<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: =
+Bad offset %&quot;HWADDR_PRIx&quot;\n&quot;,<br></div><div>=C2=A0</div><blo=
+ckquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left=
+:1px solid rgb(204,204,204);padding-left:1ex">
+diff --git a/hw/dma/bcm2835_dma.c b/hw/dma/bcm2835_dma.c<br>
+index 192bd377a0..6acc2b644e 100644<br>
+--- a/hw/dma/bcm2835_dma.c<br>
++++ b/hw/dma/bcm2835_dma.c<br>
+@@ -180,7 +180,7 @@ static uint64_t bcm2835_dma_read(BCM2835DMAState *s, hw=
+addr offset,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0res =3D ch-&gt;debug;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0 =C2=A0default:<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: Bad o=
+ffset %&quot;HWADDR_PRIx&quot;\n&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: Bad o=
+ffset 0x%&quot;HWADDR_PRIx&quot;\n&quot;,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0__func__, offset);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+@@ -228,7 +228,7 @@ static void bcm2835_dma_write(BCM2835DMAState *s, hwadd=
+r offset,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ch-&gt;debug =3D value;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0 =C2=A0default:<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: Bad o=
+ffset %&quot;HWADDR_PRIx&quot;\n&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: Bad o=
+ffset 0x%&quot;HWADDR_PRIx&quot;\n&quot;,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0__func__, offset);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+@@ -247,7 +247,7 @@ static uint64_t bcm2835_dma0_read(void *opaque, hwaddr =
+offset, unsigned size)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0case BCM2708_DMA_ENABLE:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return s-&gt;enable;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0default:<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &=
+quot;%s: Bad offset %&quot;HWADDR_PRIx&quot;\n&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &=
+quot;%s: Bad offset 0x%&quot;HWADDR_PRIx&quot;\n&quot;,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0__func__, offset);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return 0;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+@@ -274,7 +274,7 @@ static void bcm2835_dma0_write(void *opaque, hwaddr off=
+set, uint64_t value,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;enable =3D (value &am=
+p; 0xffff);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0default:<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &=
+quot;%s: Bad offset %&quot;HWADDR_PRIx&quot;\n&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &=
+quot;%s: Bad offset 0x%&quot;HWADDR_PRIx&quot;\n&quot;,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0__func__, offset);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+diff --git a/hw/intc/bcm2836_control.c b/hw/intc/bcm2836_control.c<br>
+index 04229b8a17..61f884ff9e 100644<br>
+--- a/hw/intc/bcm2836_control.c<br>
++++ b/hw/intc/bcm2836_control.c<br>
+@@ -264,7 +264,7 @@ static uint64_t bcm2836_control_read(void *opaque, hwad=
+dr offset, unsigned size)<br>
+=C2=A0 =C2=A0 =C2=A0} else if (offset &gt;=3D REG_MBOX0_RDCLR &amp;&amp; of=
+fset &lt; REG_LIMIT) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return s-&gt;mailboxes[(offset - REG_MBOX=
+0_RDCLR) &gt;&gt; 2];<br>
+=C2=A0 =C2=A0 =C2=A0} else {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: Bad o=
+ffset %&quot;HWADDR_PRIx&quot;\n&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: Unsupported=
+ offset 0x%&quot;HWADDR_PRIx&quot;\n&quot;,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0__func__, offset);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return 0;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+@@ -293,8 +293,9 @@ static void bcm2836_control_write(void *opaque, hwaddr =
+offset,<br>
+=C2=A0 =C2=A0 =C2=A0} else if (offset &gt;=3D REG_MBOX0_RDCLR &amp;&amp; of=
+fset &lt; REG_LIMIT) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;mailboxes[(offset - REG_MBOX0_RDCLR=
+) &gt;&gt; 2] &amp;=3D ~val;<br>
+=C2=A0 =C2=A0 =C2=A0} else {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: Bad o=
+ffset %&quot;HWADDR_PRIx&quot;\n&quot;,<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 __func__, offset);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: Unsupported=
+ offset 0x%&quot;HWADDR_PRIx<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot; value 0x%&quot;PRIx64&q=
+uot;\n&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 __func__, offset, val);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+diff --git a/hw/misc/bcm2835_mbox.c b/hw/misc/bcm2835_mbox.c<br>
+index 79bad11631..7690b9afaf 100644<br>
+--- a/hw/misc/bcm2835_mbox.c<br>
++++ b/hw/misc/bcm2835_mbox.c<br>
+@@ -176,7 +176,7 @@ static uint64_t bcm2835_mbox_read(void *opaque, hwaddr =
+offset, unsigned size)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0default:<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: Bad o=
+ffset %&quot;HWADDR_PRIx&quot;\n&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: Unsupported=
+ offset 0x%&quot;HWADDR_PRIx&quot;\n&quot;,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0__func__, offset);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return 0;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+@@ -228,8 +228,9 @@ static void bcm2835_mbox_write(void *opaque, hwaddr off=
+set,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0default:<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: Bad o=
+ffset %&quot;HWADDR_PRIx&quot;\n&quot;,<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 __func__, offset);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP, &quot;%s: Unsupported=
+ offset 0x%&quot;HWADDR_PRIx<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&quot; value 0x%&quot;PRIx64&q=
+uot;\n&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 __func__, offset, value);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br></blockquote><div>Same question here:<br>Icho :: qemu/qemu/hw 148 =C2=
+=BB grep -r qemu_log_mask misc/bcm2835_mbox.c<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: Bad offset %&quot;HWADDR_PRIx&=
+quot;\n&quot;,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(L=
+OG_GUEST_ERROR, &quot;%s: mailbox full\n&quot;, __func__);<br>=C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &=
+quot;%s: invalid channel %u\n&quot;,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_lo=
+g_mask(LOG_GUEST_ERROR, &quot;%s: Bad offset %&quot;HWADDR_PRIx&quot;\n&quo=
+t;,<br>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0p=
+x 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
 diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c<br>
-index 399f0d9dd5..d8eb28f267 100644<br>
+index d8eb28f267..ab66d3572e 100644<br>
 --- a/hw/misc/bcm2835_property.c<br>
 +++ b/hw/misc/bcm2835_property.c<br>
-@@ -127,6 +127,14 @@ static void bcm2835_property_mbox_push(BCM2835Property=
-State *s, uint32_t value)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0resplen =3D 8;<br>
+@@ -56,7 +56,8 @@ static void bcm2835_property_mbox_push(BCM2835PropertySta=
+te *s, uint32_t value)<br>
 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
-<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 case 0x00030030: /* Get domain state */<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0case 0x00010001: /* Get board model */<br=
+>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qemu_log_mask(LOG_UNIMP,<br=
+>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &quot;bcm2835_property: %x get board model NYI\n&quot;, t=
+ag);<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 &quot;bcm2835_property: 0x%08x get domain state NYI\n&quo=
+=A0 =C2=A0 =C2=A0 &quot;bcm2835_property: 0x%08x get board model NYI\n&quot=
+;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 tag);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* FIXME returning uninitia=
+lized memory */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0resplen =3D 4;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+@@ -70,7 +71,8 @@ static void bcm2835_property_mbox_push(BCM2835PropertySta=
+te *s, uint32_t value)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0case 0x00010004: /* Get board serial */<b=
+r>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qemu_log_mask(LOG_UNIMP,<br=
+>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &quot;bcm2835_property: %x get board serial NYI\n&quot;, =
+tag);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &quot;bcm2835_property: 0x%08x get board serial NYI\n&quo=
 t;,<br>
 +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
 =A0 =C2=A0 =C2=A0 tag);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* FIXME returning uninitialized=
- memory */<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 resplen =3D 8;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 break;<br>
-+<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0case 0x00038002: /* Set clock rate */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* FIXME returning uninitia=
+lized memory */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0resplen =3D 8;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+@@ -106,7 +108,8 @@ static void bcm2835_property_mbox_push(BCM2835PropertyS=
+tate *s, uint32_t value)<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0case 0x00038001: /* Set clock state */<br=
+>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qemu_log_mask(LOG_UNIMP,<br=
+>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &quot;bcm2835_property: %x set clock state NYI\n&quot;, t=
+ag);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &quot;bcm2835_property: 0x%08x set clock state NYI\n&quot=
+;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 tag);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0resplen =3D 8;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+<br>
+@@ -139,7 +142,8 @@ static void bcm2835_property_mbox_push(BCM2835PropertyS=
+tate *s, uint32_t value)<br>
 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0case 0x00038004: /* Set max clock rate */=
 <br>
 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0case 0x00038007: /* Set min clock rate */=
 <br>
--- <br>
-2.20.1<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qemu_log_mask(LOG_UNIMP,<br=
+>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &quot;bcm2835_property: %x set clock rates NYI\n&quot;, t=
+ag);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &quot;bcm2835_property: 0x%08x set clock rate NYI\n&quot;=
+,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 tag);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0resplen =3D 8;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
 <br>
-</blockquote></div>
+@@ -284,8 +288,8 @@ static void bcm2835_property_mbox_push(BCM2835PropertyS=
+tate *s, uint32_t value)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0default:<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<b=
+r>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &quot;bcm2835_property: unhandled tag %08x\n&quot;, tag);=
+<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &quot;bcm2835_property: unhandled tag 0x%08x\n&quot;, tag=
+);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+</blockquote><div>=C2=A0Same question here:</div><div>=C2=A0Icho :: qemu/qe=
+mu/hw 148 =C2=BB grep -r qemu_log_mask misc/bcm2835_property.c</div>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP,<br>=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP,<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP,<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_UNIMP,<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_ERROR,<br>=C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 qemu_log_mask(LOG_GUEST_ERROR, &quot;%s: Bad offset %&quot;HWADDR_P=
+RIx&quot;\n&quot;,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_log_mask(LOG_GUEST_E=
+RROR, &quot;%s: Bad offset %&quot;HWADDR_PRIx&quot;\n&quot;,<br><blockquote=
+ class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px so=
+lid rgb(204,204,204);padding-left:1ex">=C2=A0-- <br>
+2.20.1<br></blockquote><div><br></div><div>I found other calls to qemu_log_=
+mask in others files: hw/display/bcm2835_fb.c, hw/gpio/bcm2835_gpio.c, hw/i=
+ntc/bcm2835_ic.c, hw/misc/bcm2835_rng.c and hw/sd/bcm2835_sdhost.c.</div></=
+div></div>
 
---0000000000006f03d805938f0d19--
+--000000000000a9347905938f854a--

@@ -1,82 +1,82 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3531109wrp;
-        Fri, 27 Sep 2019 06:58:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwM149IoBN3PMeHZW5eSUTy6dOI67Uz4nIcKNpRxIXs6YVOhPysTT+7gP5mehxFfp+t4VRE
-X-Received: by 2002:a50:b6aa:: with SMTP id d39mr4605778ede.16.1569592689596;
-        Fri, 27 Sep 2019 06:58:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569592689; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp3536186wrp;
+        Fri, 27 Sep 2019 07:02:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyydnbd/RMzEcVfdCtlGtctdQpORqokqd6rTP+cpMg1I3Pghp6Gl56vaxU03us4WQ3Rghnz
+X-Received: by 2002:a50:9e0a:: with SMTP id z10mr4768217ede.202.1569592935464;
+        Fri, 27 Sep 2019 07:02:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569592935; cv=none;
         d=google.com; s=arc-20160816;
-        b=K7+pXxuOT21ojc9JpkSPZya00uSoZ2ClbwxNZrOQsGGqlB0casbbdLSAgNodrdk6ql
-         qlze2SQ5y9GjIDdJ7+zqJMILHm/jEVBHHmdYj4+6Q8lQBwJqrNLBrr6qfu30qQqQoSEu
-         V9CevN/gkob/DIfmCOIhVI1tbU1piUiMoF77bXmq1snMvLHoy+jPBhrsaEfF/qxp2laX
-         pcE5xiBvxM0AJaFrrYBrWJO4S3cj72wBNk90+7nmqKTN3Z5to0tlgH3yukij7hGT8nVl
-         siqHRaxJvYyd1BuJrnISMu0KIaenrbIGqyZN5p4cJKkypwM3MNbMExbPLqZsatpkgq/t
-         yCSA==
+        b=1KMGwaWyksRxrJUyE8Yjwg6UcTP46TgkJiK0vuLzLg7fPdw7zIbFKwl7xGW8Uuuh0N
+         SFKGPxDhHEewhJ4n38kwBCUGLKuSMy2Ymp7zwTr6ilUaYkczlIpzQJm/VCKG6sD1e30Z
+         uzHlRZlGmP1qLW+MGqKJtVx8tC1QskX2OswiYp5KPsDucI3sNpuntsQcxG3wmcUy6ZPR
+         cEUm0R03DaeqKbkJCOJ5DsPzlt7X30tTNrOLmaloVxVHqTixWhmBmnzVFWu8Ye7fBJMx
+         7J6om+PE8ARBc/RA4yKPjyFWl8ltmdOEiy0YcIedeKKp7lJCX8W9rhwsYpJ8EtxNfGm5
+         fbEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-id:precedence:sender:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=/L1vk8ZEX1dDFsyoP8jdEPTbwfmUYl1fqd9uotjBFoQ=;
-        b=Tdz3v6X7Wsb7zdN8uwxr0Xrujia++RP/3tt8PFKbu8mXXYHLKsO4fT3d/KaroQsvIo
-         CmRPCRU9RpocaNHheKSYQDURacaouvTOvn+b7cXY/ZePvoZb98R1/VC1NKrEj2a1hKcb
-         SGB2xnv9CVj0EDfybnv4I+ZP/J1MZpFjIFKWqeh8uAOGYAj9T2DaM/LgCBa1JLZiWAF1
-         dqQExYrWwGSW25NEFVgGJFwUN+d1K1Iul38f4otI1peU7qK+kdg+TaF2W32n67mbxdh5
-         21zpkpxcg03fGRKwY1jsD56UOL/TuoR8I6c6PNbLJg6YDCmS5muJFSfVJsgnS2ClA3F+
-         pp2g==
+        bh=JNdVUv0zNXaOfCb4Gice9wMOQgdLgAnNhUj5m0MnIEY=;
+        b=biKhBQ1hbgwoRSeQYkE6n+NOYeIk0EPe70NHLW6PggsssuBvrVKnV9JUCsXPoU9mAU
+         DH4Xp/rZ7WGboVk43NjrqdRGIoaNBXlBieWFPwjVvTCHObZoQ/93jikZdC3ixlIeuVkM
+         yrhrl770zenJBdtveIsb/jnvBfuBV5GlRTlsIUC2tosIekHoz3mPMbCqy5OBbwLiupNC
+         QFkwbNZiFRHAIGUIYjTaVH5TwkMggjwnXoxlKgKJTS7VafIwQy3n+oVbQBcZ0x5IvYDZ
+         qYFaQcC7oIMHpaj5HW7D7abakDgQE3ov0R6s7OltclobVi2G7q3IQEzOb3wSQrZBJVjq
+         GVRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x6m1c+RI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nqHE+bAY;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id n14si1482264edv.377.2019.09.27.06.58.09;
-        Fri, 27 Sep 2019 06:58:09 -0700 (PDT)
+        by mx.google.com with ESMTP id j18si2816429ejv.201.2019.09.27.07.02.15;
+        Fri, 27 Sep 2019 07:02:15 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=x6m1c+RI;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nqHE+bAY;
        spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1727518AbfI0N6I (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Fri, 27 Sep 2019 09:58:08 -0400
-Received: from mail-ot1-f66.google.com ([209.85.210.66]:41995 "EHLO
-        mail-ot1-f66.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1726251AbfI0N6I (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Fri, 27 Sep 2019 09:58:08 -0400
-Received: by mail-ot1-f66.google.com with SMTP id c10so2292625otd.9
-        for <kvm@vger.kernel.org>; Fri, 27 Sep 2019 06:58:05 -0700 (PDT)
+        id S1727517AbfI0OCO (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Fri, 27 Sep 2019 10:02:14 -0400
+Received: from mail-oi1-f195.google.com ([209.85.167.195]:34686 "EHLO
+        mail-oi1-f195.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1726843AbfI0OCO (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Fri, 27 Sep 2019 10:02:14 -0400
+Received: by mail-oi1-f195.google.com with SMTP id 83so5297511oii.1
+        for <kvm@vger.kernel.org>; Fri, 27 Sep 2019 07:02:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=/L1vk8ZEX1dDFsyoP8jdEPTbwfmUYl1fqd9uotjBFoQ=;
-        b=x6m1c+RIp9S7ggPV9dD5W8bthMp/oigvGlUwn0P8vP5dyfwGciPgIqLFSuAVJxZPT4
-         CP1cRDyy5hWppSOhv0KDBB61zO+IFpXNGI9iJem8UT4mVqmcgi88bOBU/9ZxJPZhBc66
-         NYfbHGjn5kYCx10GDN4KZHp3WaSqs2qDXPPku+2r2jW2IdjNn2FRco56rhpVbNOECVrb
-         Hi7Pbi+KAs7QTCI6zE6oGtw5lJM56TyEluaqfhrFZ0YCecLW7xlhTiy0ax39XnZTKVD9
-         meU7mgozp/vriibdlNDuOGKLahraOnRjlW2dur9VMe5fVTVbmuGzJN4udrCOFHmDGOlN
-         m0nA==
+        bh=JNdVUv0zNXaOfCb4Gice9wMOQgdLgAnNhUj5m0MnIEY=;
+        b=nqHE+bAYeccazvFVv4LtPzdLNeAZIaYIXaJeBGsztk/vijCrzp/x4/pOciFBNgWWty
+         srCZWTEAJBBNAJbLoeqzhSTC8Ysao60knw8aGhi7JKL0NonKmbNeDDYt9xlLfeYheH3W
+         Ik+SxOBPsV+IASTgEq6dYZOg51EBiqjUIsWOy9zr37Rhb56dB/gMHLHDe0vTmT13vJJk
+         pMYt5c2m+c6jlRfO03Ea7rZp6vWsX20ovbG4Ujd4tQGvtWaI5RqtuZTUCG0ta2rzAzUI
+         XAeLYq+FYk7FbxUNu8ekRv5b8LBENW7U5YgNzNMaxtw6K9w8PA9wdWykZM3JjBoOvYz5
+         rASw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=/L1vk8ZEX1dDFsyoP8jdEPTbwfmUYl1fqd9uotjBFoQ=;
-        b=QmftvDg5sS7Ih7XZOJfamXIoQMsZJfQ1RlV+2z+P/iJG9iINyTa9jX2bs3l9Re74v2
-         LYmIfreACHRGKZDeH6ZOAq7YvRvTNHHAhAdOfC43/1EZNjCgEY0sVWdFQv6Ia6xvdFeR
-         rg0aM/DrlqvaMkFVTiwJmKpFx/FarJhe+UOgO2dTWctKazZ7OBM+IXyqcdKRpXai5XKI
-         7MBpDViL65EF4kTa70cVp8+5NcL6w/sT5fBTc5z4Who3orEsI3skj2LTQKpDVNHAPnXq
-         X6noXr/9LRLLQqZHAQ0MPnFsNSRlbIpqg/MCfprNt+0naG4N/0ZbCkehPW8QKCnleZ6f
-         bQCQ==
-X-Gm-Message-State: APjAAAURTsWzB4UR45LjioUfGTE866A6G+3Rx+8R5M3kNa6vJH1GkoE1
-        RWepO9q9OvrKJAlme3GHh2ojLWzIILBab9b4aNGmBw==
-X-Received: by 2002:a05:6830:1357:: with SMTP id r23mr3354259otq.91.1569592685416;
- Fri, 27 Sep 2019 06:58:05 -0700 (PDT)
+        bh=JNdVUv0zNXaOfCb4Gice9wMOQgdLgAnNhUj5m0MnIEY=;
+        b=swM9tLsUQ0csRAv75uOWc7F24o/DE0kHUPtmqei1dQ6TQgPTWiVc2A09yaNylsJMC1
+         pq6OkbPw8H0sGuce7aeRZjxPQA6A3pMFWHqE5hfTtk5+9/SfW0W3QtQ1c2a73AU9xaX5
+         vmWAy5Bx9wXzrp+PWhG0uzB+r6djLQuIvT+ZPrmybg5waJICeXQKv7PAfMnOfCkYW3hG
+         7B3/gwyBVhGSY6emklMZNvI1nQXt9rT0uYkmW/c0qtSPMrRNHT3A7cm03dEeg1hceYrC
+         h/clUOCGFT5476jTplmW3Itr05jSbZvcSBWPm1V98vCClSqz4q1X2HCz3r70EKOjkr9U
+         X9eg==
+X-Gm-Message-State: APjAAAVcDgZVe6GuTpHooB3pbxrFE7qNe1FN7WIYisShJd+v3cJLo6kg
+        hrGKIVZKYqimCcG9i25Ozf8laPW0SQBzaIgaWsLTfA==
+X-Received: by 2002:aca:b646:: with SMTP id g67mr7302016oif.163.1569592933016;
+ Fri, 27 Sep 2019 07:02:13 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190906083152.25716-1-zhengxiang9@huawei.com> <20190906083152.25716-7-zhengxiang9@huawei.com>
-In-Reply-To: <20190906083152.25716-7-zhengxiang9@huawei.com>
+References: <20190906083152.25716-1-zhengxiang9@huawei.com> <20190906083152.25716-2-zhengxiang9@huawei.com>
+In-Reply-To: <20190906083152.25716-2-zhengxiang9@huawei.com>
 From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Fri, 27 Sep 2019 14:57:54 +0100
-Message-ID: <CAFEAcA9Y3J8uRDN+HQO74-codKhoj5CyPW=9q3GwH8Mk_PNYTA@mail.gmail.com>
-Subject: Re: [PATCH v18 6/6] target-arm: kvm64: handle SIGBUS signal from
- kernel or KVM
+Date:   Fri, 27 Sep 2019 15:02:02 +0100
+Message-ID: <CAFEAcA9cQwAJfPBC9fRcxLZVzZqag0Si62nTBNwDPyQiPVwPcg@mail.gmail.com>
+Subject: Re: [PATCH v18 1/6] hw/arm/virt: Introduce RAS platform version and
+ RAS machine option
 To:     Xiang Zheng <zhengxiang9@huawei.com>
 Cc:     Paolo Bonzini <pbonzini@redhat.com>,
         "Michael S. Tsirkin" <mst@redhat.com>,
@@ -98,151 +98,101 @@ Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 2CEgbUetULaC
+X-TUID: zj1dI8YMKIon
 
 On Fri, 6 Sep 2019 at 09:33, Xiang Zheng <zhengxiang9@huawei.com> wrote:
 >
 > From: Dongjiu Geng <gengdongjiu@huawei.com>
 >
-> Add a SIGBUS signal handler. In this handler, it checks the SIGBUS type,
-> translates the host VA delivered by host to guest PA, then fills this PA
-> to guest APEI GHES memory, then notifies guest according to the SIGBUS
-> type.
+> Support RAS Virtualization feature since version 4.2, disable it by
+> default in the old versions. Also add a machine option which allows user
+> to enable it explicitly.
 >
-> If guest accesses the poisoned memory, it generates Synchronous External
-> Abort(SEA). Then host kernel gets an APEI notification and calls
-> memory_failure() to unmapped the affected page in stage 2, finally
-> returns to guest.
->
-> Guest continues to access PG_hwpoison page, it will trap to KVM as
-> stage2 fault, then a SIGBUS_MCEERR_AR synchronous signal is delivered to
-> Qemu, Qemu records this error address into guest APEI GHES memory and
-> notifes guest using Synchronous-External-Abort(SEA).
->
-> Suggested-by: James Morse <james.morse@arm.com>
 > Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
 > Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
 > ---
->  hw/acpi/acpi_ghes.c         | 252 ++++++++++++++++++++++++++++++++++++
->  include/hw/acpi/acpi_ghes.h |  40 ++++++
->  include/sysemu/kvm.h        |   2 +-
->  target/arm/kvm64.c          |  39 ++++++
->  4 files changed, 332 insertions(+), 1 deletion(-)
-
-I'll let somebody else review the ACPI parts as that's not my
-area of expertise, but I'll look at the target/arm parts below:
-
-> diff --git a/hw/acpi/acpi_ghes.c b/hw/acpi/acpi_ghes.c
-> index 20c45179ff..2d17c88045 100644
-> --- a/hw/acpi/acpi_ghes.c
-> +++ b/hw/acpi/acpi_ghes.c
-> @@ -26,6 +26,168 @@
->  #include "sysemu/sysemu.h"
->  #include "qemu/error-report.h"
+>  hw/arm/virt.c         | 33 +++++++++++++++++++++++++++++++++
+>  include/hw/arm/virt.h |  2 ++
+>  2 files changed, 35 insertions(+)
 >
-> +/* Total size for Generic Error Status Block
-
-This block comment should start with '/*' on a line of its own
-(as should others in this patch). Usually checkpatch catches these
-but it's not infallible.
-
-> diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-> index 909bcd77cf..5f57e4ed43 100644
-> --- a/include/sysemu/kvm.h
-> +++ b/include/sysemu/kvm.h
-> @@ -378,7 +378,7 @@ bool kvm_vcpu_id_is_valid(int vcpu_id);
->  /* Returns VCPU ID to be used on KVM_CREATE_VCPU ioctl() */
->  unsigned long kvm_arch_vcpu_id(CPUState *cpu);
->
-> -#ifdef TARGET_I386
-> +#if defined(TARGET_I386) || defined(TARGET_AARCH64)
->  #define KVM_HAVE_MCE_INJECTION 1
->  void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
->  #endif
-
-Rather than introducing a new ifdef with lots of TARGET_*,
-I think it would be better to have target/i386/cpu.h and
-target/arm/cpu.h do "#define KVM_HAVE_MCE_INJECTION 1"
-(nb that the arm cpu.h needs to define it only for aarch64,
-not for 32-bit arm host compiles).
-
-and then kvm.h can just do
-#ifdef KVM_HAVE_MCE_INJECTION
-void kvm_arch_on_sigbus_vcpu(CPUState *cpu, int code, void *addr);
-#endif
-
-> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> index bf6edaa3f6..186d855522 100644
-> --- a/target/arm/kvm64.c
-> +++ b/target/arm/kvm64.c
-> @@ -28,6 +28,8 @@
->  #include "kvm_arm.h"
->  #include "hw/boards.h"
->  #include "internals.h"
-> +#include "hw/acpi/acpi.h"
-> +#include "hw/acpi/acpi_ghes.h"
->
->  static bool have_guest_debug;
->
-> @@ -1070,6 +1072,43 @@ int kvm_arch_get_registers(CPUState *cs)
->      return ret;
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index d74538b021..e0451433c8 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1783,6 +1783,20 @@ static void virt_set_its(Object *obj, bool value, Error **errp)
+>      vms->its = value;
 >  }
 >
-> +void kvm_arch_on_sigbus_vcpu(CPUState *c, int code, void *addr)
+> +static bool virt_get_ras(Object *obj, Error **errp)
 > +{
-> +    ram_addr_t ram_addr;
-> +    hwaddr paddr;
+> +    VirtMachineState *vms = VIRT_MACHINE(obj);
 > +
-> +    assert(code == BUS_MCEERR_AR || code == BUS_MCEERR_AO);
-> +
-> +    if (acpi_enabled && addr &&
-> +            object_property_get_bool(qdev_get_machine(), "ras", NULL)) {
-> +        ram_addr = qemu_ram_addr_from_host(addr);
-> +        if (ram_addr != RAM_ADDR_INVALID &&
-> +            kvm_physical_memory_addr_from_host(c->kvm_state, addr, &paddr)) {
-> +            kvm_hwpoison_page_add(ram_addr);
-> +            /* Asynchronous signal will be masked by main thread, so
-> +             * only handle synchronous signal.
-> +             */
-
-I don't entirely understand this comment. The x86 version
-of this function says:
-
-    /* If we get an action required MCE, it has been injected by KVM
-     * while the VM was running.  An action optional MCE instead should
-     * be coming from the main thread, which qemu_init_sigbus identifies
-     * as the "early kill" thread.
-     */
-
-so we can be called for action-optional MCE here (not on the vcpu
-thread). We obviously can't deliver those as a synchronous exception
-to a particular CPU, but is there no mechanism for reporting them
-to the guest at all?
-
-> +            if (code == BUS_MCEERR_AR) {
-> +                kvm_cpu_synchronize_state(c);
-> +                if (ACPI_GHES_CPER_FAIL !=
-> +                    acpi_ghes_record_errors(ACPI_GHES_NOTIFY_SEA, paddr)) {
-> +                    kvm_inject_arm_sea(c);
-> +                } else {
-> +                    fprintf(stderr, "failed to record the error\n");
-> +                }
-> +            }
-> +            return;
-> +        }
-> +        fprintf(stderr, "Hardware memory error for memory used by "
-> +                "QEMU itself instead of guest system!\n");
-> +    }
-> +
-> +    if (code == BUS_MCEERR_AR) {
-> +        fprintf(stderr, "Hardware memory error!\n");
-> +        exit(1);
-> +    }
+> +    return vms->ras;
 > +}
 > +
->  /* C6.6.29 BRK instruction */
->  static const uint32_t brk_insn = 0xd4200000;
+> +static void virt_set_ras(Object *obj, bool value, Error **errp)
+> +{
+> +    VirtMachineState *vms = VIRT_MACHINE(obj);
+> +
+> +    vms->ras = value;
+> +}
+> +
+>  static char *virt_get_gic_version(Object *obj, Error **errp)
+>  {
+>      VirtMachineState *vms = VIRT_MACHINE(obj);
+> @@ -2026,6 +2040,19 @@ static void virt_instance_init(Object *obj)
+>                                      "Valid values are none and smmuv3",
+>                                      NULL);
 >
+> +    if (vmc->no_ras) {
+> +        vms->ras = false;
+> +    } else {
+> +        /* Default disallows RAS instantiation */
+> +        vms->ras = false;
+> +        object_property_add_bool(obj, "ras", virt_get_ras,
+> +                                 virt_set_ras, NULL);
+> +        object_property_set_description(obj, "ras",
+> +                                        "Set on/off to enable/disable "
+> +                                        "RAS instantiation",
+> +                                        NULL);
+> +    }
+
+For a property which is disabled by default, you don't need
+to have a separate flag in the VirtMachineClass struct.
+Those are only needed for properties where we need the old machine
+types to have the property be 'off' but new machine types
+need to default to it be 'on'. Since vms->ras is false
+by default anyway, you can just have this part:
+
+> +        /* Default disallows RAS instantiation */
+> +        vms->ras = false;
+> +        object_property_add_bool(obj, "ras", virt_get_ras,
+> +                                 virt_set_ras, NULL);
+> +        object_property_set_description(obj, "ras",
+> +                                        "Set on/off to enable/disable "
+> +                                        "RAS instantiation",
+> +                                        NULL);
+
+Compare the 'vms->secure' flag and associated property
+for an example of this.
+
+>      vms->irqmap = a15irqmap;
+>
+>      virt_flash_create(vms);
+> @@ -2058,8 +2085,14 @@ DEFINE_VIRT_MACHINE_AS_LATEST(4, 2)
+>
+>  static void virt_machine_4_1_options(MachineClass *mc)
+>  {
+> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+> +
+>      virt_machine_4_2_options(mc);
+>      compat_props_add(mc->compat_props, hw_compat_4_1, hw_compat_4_1_len);
+> +    /* Disable memory recovery feature for 4.1 as RAS support was
+> +     * introduced with 4.2.
+> +     */
+> +    vmc->no_ras = true;
+>  }
+>  DEFINE_VIRT_MACHINE(4, 1)
 
 thanks
 -- PMM

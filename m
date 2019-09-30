@@ -1,217 +1,134 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp4040083wrp;
-        Fri, 27 Sep 2019 14:58:44 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzKRm093TBNYza9VGKPRYHfKdFYKczo9NFTC6QI7W9OhYVxEcRaU3n7uSsPBmeJkJ5zMAJk
-X-Received: by 2002:a05:620a:12d1:: with SMTP id e17mr7057240qkl.149.1569621524292;
-        Fri, 27 Sep 2019 14:58:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569621524; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp6637413wrp;
+        Mon, 30 Sep 2019 02:25:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwkGmKhiii6C+gvSm23oqdn8rXSVhdS2A2PW+6UmePGTVd4KKD2fk4kSMgV+cQTVx3p15a/
+X-Received: by 2002:a6b:f703:: with SMTP id k3mr19326381iog.20.1569835547235;
+        Mon, 30 Sep 2019 02:25:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569835547; cv=none;
         d=google.com; s=arc-20160816;
-        b=FTTcIERBdJrdmIJJo1jV0wMNuryi1qxdiM5ygzE9Z2L6p3zsDE+pn02SDFk3XJcMBq
-         zS7/qqqxAypIou/JmkXPent39lKabF+JchuWPhMPg9LSGu/ASIhjQL43F5VdcyalrLey
-         k/NYpWoVq8y7ytjzuqV/zmLAwrNFjCaYB3YNX1Cp0Rx3rpmJMiqPjH4El0232gP2psoI
-         JFoomKLTZD4RxF8oymvfkJBjNQxm/aMWM86Wt4vS0cIkF1tQbOGe8KaiJD1cAffV59HY
-         HKIF/uG0Y41TGkerjguz9Tzs8Qu9ZyUiHZKoVtvcN3ENxIlSNAi/PKoNwddMlx7C2Yyf
-         9ggw==
+        b=ZlVj86o/he0I890Zw2PCTefDsiu8wwW7P79PF/fdsmjFqHjFVXLxRMj+D8TfbLivrF
+         rR/05lEsEmWKmLrr8NiFxOfjGhtkcfec64KXla7t/KR4XdOXiYZ7o7Gn1xb0OanJR0sW
+         4vGdBlBsP/Gp3f9b8uB8KpEAVaW3wyEzpbShMvXX+KN8iVsttaJnl30v9ACT40MboOuV
+         De6XlcjRvlAb6fWArw5Ihtwp8PkyOuODwbZQbsZKP9VCHu5fVvkRNWlbhgTfu/ij5t0t
+         AcJCnoshpCcjFNO+arKXO9e2Pxc/y8ceakWAJHXmlGBk6W/Nm6gpBwSfYK8FaiPMfsT/
+         vhAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=+CPKxPVVDfhT0cAoc/B31bv7euMHESRzMG7B3a7nxHI=;
-        b=BbZKuxzJttYpD+rhuXmSEfuDxzVghnxrP49/5XEFKwbGUTOk9YfkBBkW2sq/nDDSVi
-         xWu2pxkVBXbJjbGCposBanYlR+mj80wFj2quZr31yOn0xhDEaexIrH3nkSFmtTMZVrXL
-         F+PIu8bx95Fo3N0TKQohcUSwd1oGghlcE99t6f4qhvkl2F+I5G3JPhNzGgXEyJXwn4MR
-         Wdg8oIMVfaq55T67lMYEAipO4h7lfFhGp8ksawR5z2ZWr5z5WqZx27hhs63NyNp62DkY
-         Drf0TWrK9GqBu69lUZGVAwBMHlZ4tEASpmmI5xKJNPTidGDZ4oGEVMtC3ZGRhhk9BJne
-         9fXQ==
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:reply-to:message-id
+         :subject:cc:to:from:date;
+        bh=9Ewd8IA30ffoYJt++xgOb9dOONwidjSFZoKdUTHc32k=;
+        b=GaXtJhYag2ARQygZpt4vMPEXbVzgGnz4iJ2msbBYDwBahISSf9QDcPHfRSyvtLK2CO
+         aI9KmMBii+hqBYck8kdVIO6C+NR4VlCF6xAOjhKDopqT2309TOel/wS7S500e9FaqdKY
+         nhg8J6PWGrfOKZnJcbOcAgXKtjoxlcaDERsBVOswd3mKZ6a0HSXXecOvbhHjam7Vo4zx
+         AiuUD2TzL70zWQmFTjI5FCyTyBRoXv7sXdr2haAYzY2VRisS7WmgPIjFdN1C26TUSOBe
+         TiMIVao5UuUQiQOSJN9mdkq8BT3Sw6gPgryAuFUJuX6kJNuacpbXt9F9yH/M2DMBVna3
+         iVPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=A+rw58Xp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n64si3761757qkb.62.2019.09.27.14.58.44
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 27 Sep 2019 14:58:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of berrange@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id v127si15858100jaa.19.2019.09.30.02.25.46
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 30 Sep 2019 02:25:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=A+rw58Xp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57914 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iDyGB-0005nz-OS
-	for alex.bennee@linaro.org; Fri, 27 Sep 2019 17:58:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38261)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1iDyDm-0003zc-GT
- for qemu-arm@nongnu.org; Fri, 27 Sep 2019 17:56:15 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1iDyDl-0006Q7-A3
- for qemu-arm@nongnu.org; Fri, 27 Sep 2019 17:56:14 -0400
-Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:37524)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1iDyDh-0006DB-M2; Fri, 27 Sep 2019 17:56:09 -0400
-Received: by mail-lj1-x244.google.com with SMTP id l21so3901397lje.4;
- Fri, 27 Sep 2019 14:56:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=+CPKxPVVDfhT0cAoc/B31bv7euMHESRzMG7B3a7nxHI=;
- b=A+rw58XpcojTsfMnbGf1OyM49U7JXN+m6O60Q3XScyxbUJMqCOdWeBnkmqVuluRs/V
- xsJ40A6TahdX42LbVMLoctRgUSCb6Ap7APfgOf6FzWvrsshXMGipFpOvlXHmqVyowoef
- i63iYOXgQvII8mRVMkOrZLRyinTvzb0AUfPfe1/ZuFH3yWbfw/QC5z/FKmiZc9VTauQC
- yRXLq6bkuUg7Z5/B5HokmdZ6e/AOu889WkQFKHQRX6jMHk4sNOQGO7cUnCNJYiwWuR7J
- hRTnAo4wF15IjLiDyA7jv74Flxkzm3ne7u40Fk/gupyfikHGBgRgoQSZqVgiu5ZqHj9C
- pDYg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=+CPKxPVVDfhT0cAoc/B31bv7euMHESRzMG7B3a7nxHI=;
- b=p57AmytgAFMs3lZgKgwUeF8yFAQJHexohF6sLjrrcZm1AL3BASQweSe5N0SbWZRsme
- ctk0/IQeFDWiSxySurmplGYm4/x815Z7YsBE6/AudsijZUIyjKJkJ4dqKWxwEarhZYcH
- HlBIU7H+Ooz5TIDX6Yn0f8njJkWYdnl+zxe+DqyO2OWtZpzmGBGz8h2/x7nUUETXE5S8
- L8CpJI5PAG9AtQnPaJgrMJkkowtoGodVAQeaPNO3fCgScSlGwCikYHRq3mBc2dag3twb
- B7FkwLtWjnDv1ht4uepdAg/OTfxdsYbyVBX/58mvu2+ZQ7Kn/X4Enmg2z4pR/mfO6uHI
- +klQ==
-X-Gm-Message-State: APjAAAWStaRDOAvkiy6KfSa9bVuoUSwmRTbXH0bL0stNSk8IrCNx8ZGz
- iBN041/bAoQImNBOvUGPIHOO6lgaiByrSi7yymY=
-X-Received: by 2002:a2e:91c7:: with SMTP id u7mr4365011ljg.146.1569621368224; 
- Fri, 27 Sep 2019 14:56:08 -0700 (PDT)
-MIME-Version: 1.0
-References: <20190926173428.10713-1-f4bug@amsat.org>
- <20190926173428.10713-10-f4bug@amsat.org>
-In-Reply-To: <20190926173428.10713-10-f4bug@amsat.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 27 Sep 2019 14:51:17 -0700
-Message-ID: <CAKmqyKP0vtp26B1rmyZYM4QXe8pJQ_nqX-NpLeqZDwTThOWjUw@mail.gmail.com>
-Subject: Re: [PATCH 09/19] hw/arm/bcm2835_peripherals: Use the thermal sensor
- block
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::244
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+       spf=pass (google.com: domain of berrange@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4B85818CB8F9;
+	Mon, 30 Sep 2019 09:25:46 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.17.55])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C73D01001B33;
+	Mon, 30 Sep 2019 09:25:44 +0000 (UTC)
+Date: Mon, 30 Sep 2019 10:25:42 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Richard Henderson <richard.henderson@linaro.org>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Zolt=C3=A1n_Baldaszti?= <bztemail@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Esteban Bosse <estebanbosse@gmail.com>, Cleber Rosa <crosa@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- Clement Deschamps <clement.deschamps@antfield.fr>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- Laurent Bonnans <laurent.bonnans@here.com>,
- Cheng Xiang <ext-cheng.xiang@here.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Pekka Enberg <penberg@iki.fi>, Guenter Roeck <linux@roeck-us.net>,
- Eduardo Habkost <ehabkost@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DSDo7stox8Un
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	"open list:RISC-V" <qemu-riscv@nongnu.org>,
+	QEMU Developers <qemu-devel@nongnu.org>,
+	qemu-discuss <qemu-discuss@nongnu.org>,
+	qemu-s390x <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+	qemu-ppc@nongnu.org
+Subject: Re: [RFC PATCH] configure: deprecate 32 bit build hosts
+Message-ID: <20190930092519.GB11996@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20190925233013.6449-1-alex.bennee@linaro.org>
+ <CAFEAcA9vb5_Mi_axWpu7269Zg0xMLbiiV80ofLeyDpfws3G4nQ@mail.gmail.com>
+ <4512b61a-ed82-e628-88e5-f44ef87c2b50@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <4512b61a-ed82-e628-88e5-f44ef87c2b50@linaro.org>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2 (mx1.redhat.com [10.5.110.63]); Mon, 30 Sep 2019 09:25:46 +0000 (UTC)
+X-TUID: Fpj/3Ts7u68s
 
-On Thu, Sep 26, 2019 at 10:42 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
->
-> Map the thermal sensor in the BCM2835 block.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On Thu, Sep 26, 2019 at 10:11:05AM -0700, Richard Henderson wrote:
+> On 9/26/19 12:50 AM, Peter Maydell wrote:
+> > On Thu, 26 Sep 2019 at 00:31, Alex Bennée <alex.bennee@linaro.org> wrote:
+> >>
+> >> The 32 bit hosts are already a second class citizen especially with
+> >> support for running 64 bit guests under TCG. We are also limited by
+> >> testing as actual working 32 bit machines are getting quite rare in
+> >> developers personal menageries. For TCG supporting newer types like
+> >> Int128 is a lot harder with 32 bit calling conventions compared to
+> >> their larger bit sized cousins. Fundamentally address space is the
+> >> most useful thing for the translator to have even for a 32 bit guest a
+> >> 32 bit host is quite constrained.
+> >>
+> >> As far as I'm aware 32 bit KVM users are even less numerous. Even
+> >> ILP32 doesn't make much sense given the address space QEMU needs to
+> >> manage.
+> > 
+> > For KVM we should wait until the kernel chooses to drop support,
+> > I think.
+> 
+> Agreed.  I think this discussion should be more about TCG.
+> 
+> >> @@ -745,19 +744,22 @@ case "$cpu" in
+> >>    ;;
+> >>    armv*b|armv*l|arm)
+> >>      cpu="arm"
+> >> -    supported_cpu="yes"
+> >>    ;;
+> > 
+> > I'll leave others to voice opinions about their architectures,
+> > but I still have 32-bit arm in my test set for builds, and
+> > I'm pretty sure we have users (raspi users, for a start).
+> 
+> I'd really like to know what raspi users might be using qemu for.  Depending on
+> that answer, perhaps it would be sufficient for arm32 tcg to only support
+> 32-bit guests.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+I asked on the Fedora development lists for feedback on the idea of
+dropping QEMU 32-bit host support
 
-Alistair
+  https://lists.fedoraproject.org/archives/list/devel@lists.fedoraproject.org/thread/TPAVIC6YANGP2NK4RUOP7OCIOIFIOV3A/
 
-> ---
->  hw/arm/bcm2835_peripherals.c         | 13 +++++++++++++
->  include/hw/arm/bcm2835_peripherals.h |  2 ++
->  include/hw/arm/raspi_platform.h      |  1 +
->  3 files changed, 16 insertions(+)
->
-> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-> index fdcf616c56..70bf927a02 100644
-> --- a/hw/arm/bcm2835_peripherals.c
-> +++ b/hw/arm/bcm2835_peripherals.c
-> @@ -111,6 +111,10 @@ static void bcm2835_peripherals_init(Object *obj)
->      object_property_add_const_link(OBJECT(&s->dma), "dma-mr",
->                                     OBJECT(&s->gpu_bus_mr), &error_abort)=
-;
->
-> +    /* Thermal */
-> +    sysbus_init_child_obj(obj, "thermal", &s->thermal, sizeof(s->thermal=
-),
-> +                          TYPE_BCM2835_THERMAL);
-> +
->      /* GPIO */
->      sysbus_init_child_obj(obj, "gpio", &s->gpio, sizeof(s->gpio),
->                            TYPE_BCM2835_GPIO);
-> @@ -321,6 +325,15 @@ static void bcm2835_peripherals_realize(DeviceState =
-*dev, Error **errp)
->                                                    INTERRUPT_DMA0 + n));
->      }
->
-> +    /* THERMAL */
-> +    object_property_set_bool(OBJECT(&s->thermal), true, "realized", &err=
-);
-> +    if (err) {
-> +        error_propagate(errp, err);
-> +        return;
-> +    }
-> +    memory_region_add_subregion(&s->peri_mr, THERMAL_OFFSET,
-> +                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->thermal), 0));
-> +
->      /* GPIO */
->      object_property_set_bool(OBJECT(&s->gpio), true, "realized", &err);
->      if (err) {
-> diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm283=
-5_peripherals.h
-> index 62a4c7b559..be7ad9b499 100644
-> --- a/include/hw/arm/bcm2835_peripherals.h
-> +++ b/include/hw/arm/bcm2835_peripherals.h
-> @@ -20,6 +20,7 @@
->  #include "hw/misc/bcm2835_property.h"
->  #include "hw/misc/bcm2835_rng.h"
->  #include "hw/misc/bcm2835_mbox.h"
-> +#include "hw/misc/bcm2835_thermal.h"
->  #include "hw/sd/sdhci.h"
->  #include "hw/sd/bcm2835_sdhost.h"
->  #include "hw/gpio/bcm2835_gpio.h"
-> @@ -53,6 +54,7 @@ typedef struct BCM2835PeripheralState {
->      SDHCIState sdhci;
->      BCM2835SDHostState sdhost;
->      BCM2835GpioState gpio;
-> +    Bcm2835ThermalState thermal;
->      UnimplementedDeviceState i2s;
->      UnimplementedDeviceState spi[1];
->      UnimplementedDeviceState i2c[3];
-> diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platf=
-orm.h
-> index cdcbca943f..61b04a1bd4 100644
-> --- a/include/hw/arm/raspi_platform.h
-> +++ b/include/hw/arm/raspi_platform.h
-> @@ -48,6 +48,7 @@
->  #define SPI0_OFFSET             0x204000
->  #define BSC0_OFFSET             0x205000 /* BSC0 I2C/TWI */
->  #define OTP_OFFSET              0x20f000
-> +#define THERMAL_OFFSET          0x212000
->  #define BSC_SL_OFFSET           0x214000 /* SPI slave */
->  #define AUX_OFFSET              0x215000 /* AUX: UART1/SPI1/SPI2 */
->  #define EMMC1_OFFSET            0x300000
-> --
-> 2.20.1
->
->
+The response was rather underwhealming to say the least, with only one
+person explicitly expressing a desire for QEMU to keep 32-bit host
+support for armv7l.
+
+The main interesting thing I learnt was that even with 64-bit Raspberry
+Pi hardware, it can be desirable to run 32-bit Raspberry Pi supporting
+distro, supposedly for performance benefits.
+
+> For context, the discussion that Alex and I were having was about int128_t, and
+> how to support that directly in tcg (especially to/from helpers), and how that
+> might be vastly easier if we didn't have to consider 32-bit hosts.
+
+I know nothing about TCG internals, but Is it viable to implement int128_t
+support only in 64-bit host, leaving 32-bit hosts without it ? Or is this
+really a blocking item that is holding back 64-bit host features.
+
+Regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

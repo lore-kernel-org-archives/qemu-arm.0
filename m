@@ -1,88 +1,83 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp7098747wrp;
-        Mon, 30 Sep 2019 09:39:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqylwhFEaSXIN16Jnh+ehiaaTrTu3c7KyxHddhgdhzephnBfxYlcozF4GyWu8aApX9g0VMTi
-X-Received: by 2002:a37:4e55:: with SMTP id c82mr926466qkb.437.1569861590334;
-        Mon, 30 Sep 2019 09:39:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569861590; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp7425676wrp;
+        Mon, 30 Sep 2019 15:27:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwCpcIN5NH2W+ebkntJIHTBrBtrZ+oartlidABum9RGYlF4YiXbwAtkeZmoTgnTi68hd/lY
+X-Received: by 2002:a0c:8867:: with SMTP id 36mr11099515qvm.177.1569882465131;
+        Mon, 30 Sep 2019 15:27:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569882465; cv=none;
         d=google.com; s=arc-20160816;
-        b=pwZu4iGHAMwxjxgI5yuRYb/S+1Apq8QP1Wgj6pNxo4Yk4q+TwH//rr2gtYXHPmBvkb
-         E1Jd33/fanAMBUyrI/4xSoaJsOPV4M6bNcmzqChjh/u2H8gItPvQs6KwVkRjUYU7G5oV
-         oqfGIwN312HpiJ+tGSHCC/MENjt1fZ/Bf/PNgXgW2aKA96NqZg8meVBHooxKBh1PanSI
-         T5mGBzoGwnHrWykQ/YlJ3rDzP3Xii/6NKUG4TKmxCcAosN1J7FXNZ0eUz9Nu1OXW/CNE
-         c9t3lgvjkkItx7v2d3C25HxXYl8YMRv6DMGTD/qD/aXJx1490XO6x0FyEkBRjtbjfzKA
-         CO+A==
+        b=Cg0XNSN66bq9486rJnfNNBhFb7K7tcuGVykKfp0lRk5Ushiub/x8V7ScHfoZerHMbG
+         xpcuwHLheFLMTO0QO4SFb+VkGFUgTsWkCcSe4RgUMjAT+RVNuz5YkckHiQgAKj7on1yy
+         z4TqQ1Ajp2lCzTo7Afp03P3ySRSYnlb6747fAk+eGnyFS8Rgwgp/Up2k6pGsE9PnMidj
+         GKIZejDAlUlAzG5V7eQS1pCZst9ZiQCx1LoJhdQsUCASWc3+eoD9g1XtrmDcAyc/NVlc
+         YvgSESIaRUHVsQpwNOTRUz0WQ/GVOYeHFXTvYPpNgSIIwiA1XI9S7icGBMpwaQeLgj7d
+         4JIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date;
-        bh=zdFk/xJqV0a33nuCbJUZD04M3I5oe8WRSMuKVZFeIDE=;
-        b=jI35WsfeD8mgGvOa4HODBXRdDwP1jqqZqQWLSjRnY9jffDK2yDGaoJvPTm5DG8Idhy
-         P5jz8gA8rtzLCKAv2txIjUI8goZtwubH2qsfudMwnZY13MEzHr9uDP/+0fUMWRdbFKC1
-         PX0k/E68SeHajLj/gWF0KTqBpNomgCZ5l2KGy1Nqe5Rl3vY189F8pRmRevPi/CoMeW+o
-         EnKjixKqyjzVW3mN73yKFoURMXpCwIy9MShC5RPhf9A2qNvcJRoEfESpnlEgrNGchMDt
-         h3x5rcx+OKGASl2DDvX9YRyGHgVdgvE9Q/Vj+U9ojmlYXHEyuLcUA2RuYy9vmneDqPox
-         IyIQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-filter;
+        bh=wkRgj8K3RsPTki756eS0I/Skli8awMywW1dX5h5c1zM=;
+        b=s+XPVAj1SHUwgBb0Ldem3yHcvxfQ4IVfEmY1N2G1pg/Z90RowPtLZGeA1ox0SgCqks
+         PeDUOiyEtN4rxXCFBMF4MjZrX5R+FegUYVFXG1Vu/AQhJRhIaHqdzMbSCA0riIrFIFCK
+         K0uR3BslyUshvjf0yT3BefpViDuRvfLNjMPXNu/Qlc4e7unRqMTK7kkco7FApjF2s4BB
+         sKdVnUCGibtAy56A466BJ7FJ51Z9ZBq2j1TsIIPkCQ2EVkbmWdrOyey6IX53RiiaqCk0
+         ZMZBWnPJohmLvwigFSSwEKxr0gtfa/TevWuKNvCLJnByQoNaZf3vV9LUHAMxJBa0rrYV
+         GzZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v69si10376092qkb.164.2019.09.30.09.39.50
+        by mx.google.com with ESMTPS id n55si13802859qvc.19.2019.09.30.15.27.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Sep 2019 09:39:50 -0700 (PDT)
+        Mon, 30 Sep 2019 15:27:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54982 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
+Received: from localhost ([::1]:57858 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iEyiD-0007in-M6
-	for alex.bennee@linaro.org; Mon, 30 Sep 2019 12:39:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43021)
+	id 1iF48u-0003Ex-KL
+	for alex.bennee@linaro.org; Mon, 30 Sep 2019 18:27:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60744)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kwolf@redhat.com>) id 1iEyi4-0007ib-Uj
- for qemu-arm@nongnu.org; Mon, 30 Sep 2019 12:39:42 -0400
+ (envelope-from <nramas@linux.microsoft.com>) id 1iF48m-0003EW-3M
+ for qemu-arm@nongnu.org; Mon, 30 Sep 2019 18:27:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kwolf@redhat.com>) id 1iEyi2-0007Bb-8s
- for qemu-arm@nongnu.org; Mon, 30 Sep 2019 12:39:39 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46162)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kwolf@redhat.com>)
- id 1iEyi2-0007B6-05; Mon, 30 Sep 2019 12:39:38 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 51EF010CC1F4;
- Mon, 30 Sep 2019 16:39:36 +0000 (UTC)
-Received: from linux.fritz.box (ovpn-116-86.ams2.redhat.com [10.36.116.86])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9728B5D9CA;
- Mon, 30 Sep 2019 16:39:10 +0000 (UTC)
-Date: Mon, 30 Sep 2019 18:39:09 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-Subject: Re: [PATCH v3 04/25] error: auto propagated local_err
-Message-ID: <20190930163909.GD12777@linux.fritz.box>
-References: <20190924200902.4703-1-vsementsov@virtuozzo.com>
- <20190924200902.4703-5-vsementsov@virtuozzo.com>
- <20190930151215.GB12777@linux.fritz.box>
- <ca629ae8-15c5-1685-1cbb-99283d37b0a1@virtuozzo.com>
- <20190930160039.GC12777@linux.fritz.box>
- <495102b2-5d1a-f659-4387-5733ae34b3e2@virtuozzo.com>
+ (envelope-from <nramas@linux.microsoft.com>) id 1iF48j-0003Dk-Q6
+ for qemu-arm@nongnu.org; Mon, 30 Sep 2019 18:27:35 -0400
+Received: from linux.microsoft.com ([13.77.154.182]:60084)
+ by eggs.gnu.org with esmtp (Exim 4.71)
+ (envelope-from <nramas@linux.microsoft.com>)
+ id 1iF48j-0003DO-LE; Mon, 30 Sep 2019 18:27:33 -0400
+Received: from [10.200.157.26] (unknown [131.107.147.154])
+ by linux.microsoft.com (Postfix) with ESMTPSA id 17FA82010688;
+ Mon, 30 Sep 2019 15:27:32 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 17FA82010688
+Subject: Re: Is kexec supported in QEMU for ARM64 (qemu-system-aarch64) with
+ arm-trusted-firmware, optee, and u-boot.
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ James Bottomley <James.Bottomley@HansenPartnership.com>,
+ qemu-devel@nongnu.org, Ard Biesheuvel <ard.biesheuvel@linaro.org>
+References: <21633062-b021-a8e7-0cc8-062f4c29dde5@linux.microsoft.com>
+ <ca5c74db-cf5d-0c3f-eb6f-27d1092420ae@linux.microsoft.com>
+ <65b49cb0-c9fb-d966-8dec-1e39d09ab8c7@redhat.com>
+From: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>
+Message-ID: <88878b22-803f-41fc-9df2-2c6eb551b98d@linux.microsoft.com>
+Date: Mon, 30 Sep 2019 15:27:25 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <495102b2-5d1a-f659-4387-5733ae34b3e2@virtuozzo.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.65]); Mon, 30 Sep 2019 16:39:36 +0000 (UTC)
+In-Reply-To: <65b49cb0-c9fb-d966-8dec-1e39d09ab8c7@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 209.132.183.28
+X-Received-From: 13.77.154.182
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -94,79 +89,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Paul Burton <pburton@wavecomp.com>, Jeff Cody <codyprime@gmail.com>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Eric Blake <eblake@redhat.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- Juan Quintela <quintela@redhat.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Greg Kurz <groug@kaod.org>,
- Yuval Shaia <yuval.shaia@oracle.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- David Hildenbrand <david@redhat.com>, John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>,
- "integration@gluster.org" <integration@gluster.org>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>, Max Reitz <mreitz@redhat.com>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oZptccyTRoif
+X-TUID: 8/EJSNB6vQd6
 
-Am 30.09.2019 um 18:26 hat Vladimir Sementsov-Ogievskiy geschrieben:
-> 30.09.2019 19:00, Kevin Wolf wrote:
-> > Am 30.09.2019 um 17:19 hat Vladimir Sementsov-Ogievskiy geschrieben:
-> >> 30.09.2019 18:12, Kevin Wolf wrote:
-> >>> Am 24.09.2019 um 22:08 hat Vladimir Sementsov-Ogievskiy geschrieben:
-> >>>> Here is introduced ERRP_FUNCTION_BEGIN macro, to be used at start of
-> >>>> functions with errp parameter.
-> >>>
-> >>> A bit of bike shedding, but FOO_BEGIN suggests to me that a FOO_END will
-> >>> follow. Can we find a different name, especially now that we won't use
-> >>> this macro in every function that uses an errp, so even the "errp
-> >>> function" part isn't really correct any more?
-> >>>
-> >>> How about ERRP_AUTO_PROPAGATE?
-> >>
-> >> I have an idea that with this macro we can (optionally) get the whole call stack
-> >> of the error and print it to log, so it's good to give it more generic name, not
-> >> limited to propagation..
-> > 
-> > Hm, what's the context for this feature?
-> > 
-> > The obvious one where you want to have a stack trace is &error_abort,
-> > but that one crashes, so you get it automatically. If it's just a normal
-> > error (like a QAPI option contains an invalid value and some function
-> > down the call chain checks it), why would anyone want to know what the
-> > call chain in the QEMU code was?
-> > 
-> 
-> When I have bug from testers, call stack would be a lot more descriptive, than just
-> an error message.
-> 
-> We may add trace point which will print this information, so with disabled trace point
-> - no extra output.
+On 9/27/19 2:15 AM, Philippe Mathieu-Daud=C3=A9 wrote:
 
-But wouldn't it make much more sense then to optionally add this
-functionality to any trace point? I really don't see how this is related
-specifically to user-visible error messages.
+> Cc'ing Ard too
+>>
+>> https://salsa.debian.org/debian/atf-allwinner/commit/b6b671c4ac4bd5595=
+306863225bb3bece1e6135c
+>>
+>>
+>> Current limitations:
+>> * Only cold boot is supported
+>> * No build instructions for QEMU_EFI.fd and rootfs-arm64.cpio.gz
+>> * No instructions for how to load a BL32 (Secure Payload)
+>>
+>> So looks like only cold boot is supported (no kexec support)
+>> Is this correct?
 
-However, even if we decide that we want to have this in Error objects,
-wouldn't it make much more sense to use the real C stack trace and save
-it from the innermost error_set() using backtrace() or compiler
-built-ins rather than relying on an error_propagate() chain?
+Just wanted to check again -
 
-Kevin
+Does ATF and QEMU (for ARM64) support cold boot only and does not have=20
+support for kexec?
+
+thanks,
+  -lakshmi

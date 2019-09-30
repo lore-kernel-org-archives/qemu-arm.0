@@ -1,192 +1,132 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp6870666wrp;
-        Mon, 30 Sep 2019 06:19:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy0sCMBTHvZXLXYWBcgpdJX7AP4imxnT7paDJ+DRUWEi5iCS9MLPMQCwn+9PURFI6Obu2h5
-X-Received: by 2002:a0c:e60b:: with SMTP id z11mr20368912qvm.53.1569849570279;
-        Mon, 30 Sep 2019 06:19:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569849570; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp6998864wrp;
+        Mon, 30 Sep 2019 08:12:50 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwhCkgjlaOEqoqyMS40/vdp7J/N3F3gUGCmmsRkEaJfuJLcmhyx4dF5j9wp+7zzBamtbad3
+X-Received: by 2002:a0c:8749:: with SMTP id 9mr21002399qvi.174.1569856370318;
+        Mon, 30 Sep 2019 08:12:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569856370; cv=none;
         d=google.com; s=arc-20160816;
-        b=cOC/Pk65bHafy2l9WJliWZv4xFZYcNtP9EaFW83jEkS3lRW8sAQsgvSJsO+I33T8fP
-         g6BBf2KoxXCxc5rzBzowVAlXASKKbDrrHTCGFwdaLpSA9wsEPekVXFmKFjNLLRDtvg39
-         pfbSneD5fSicp4DNkfSyDYuCHH3gk8hdl6rEoeyEPPFIqcP/bqTbR4X2qqx9q8JOHAA3
-         bG4bbquvTBV9Tu4XSi/KBj69sCd5W13l7UBkNUYbjAag+HwIHRCblmOuWAB0Wc20fcH5
-         2vkKGBGwGyRXy9lWV1MVYvrT0DTneOFn+aeqUdTaIZWfVteUmakKsZLF4pKtVBlgrc7F
-         d2+g==
+        b=eCljCDbGZtq9SScSnpBcf/ObGEjR2gLuX11Cp7gAXwBB+P0ud3gAMaDZRmr6ETWTLg
+         4Le0PNoY1ZmEaxha8vLeZMg20Ojc4MB8XN9xEGZOVrI4w32UeFRbzq5DZAdCJRXqPxmc
+         2gk16kRuvyS8HHX4YdClPS3Dwf1oXogNV7QWorDSfE/9711uHsTcfIpp4Q++nbp8TRQw
+         g+1nHk4HI3F+7EkXk5qlxE/ttKwXaYBABGkZ+z8qELoPZ/hD28Bb+10oSKBN9ZppH6sW
+         KFhEtgUo1P9uNvxPDY4Sge/p1MY+xRVLzI/CGzJbqZa9ABTU2UIQedrJ8oWPNl8QOH/V
+         1mdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=N1DMyimke8VAUKvuIFUOsTt00uBStw96bm+gChhXKho=;
-        b=d35tJl4by4QtTx4N4rSkQHjPnhsWxMwp99BTHmtcFRwfESaOSC1EuDQvQLjMvbvKgM
-         C9+Y0AabcH6JbO4lhIjtfgohX8JNvPz+Gkn6i2wakLxrRbKHFJKh2eP4xyTp0zCxUWig
-         T5FEnig5iia/xvIyTYlJCCn9t0AN5Xp4lM7tT3fFJtlkfvebmxYMM5YYzp5SpTyFeQUp
-         wjqThhjSw9Yes3k7Uo1DbX7Ai50Y0/fwSTp3t17dJZ8wn5FmuSaGNAu3ZzesjIVb9RPV
-         OQp+LyM91PRN735dljSW5hBrMV9JSAyDK+x0ERsqkajL8luaSf7I36v/Ekse6MgZr3qH
-         8KXg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date;
+        bh=NQC4KaXLrh9qXtCz7FKk6N6dbYWOF3wmS+V+tY4ujkE=;
+        b=HBpNtaUy84Urb5nyhVVGoQ3IYV5pMvS/m5tcvY9Bl8PfqDR4kR5g+d0wZkMND8LS/e
+         X8CSh0gjui1lEBNCRmkCWo755ZtZACUFhcvYAJBLOU9GtoVYBDTdET85FuPjP/Cyx96w
+         3PnFoRVEdRSLWwwNRhpFPj+rq7kwqfBryKJw2z/pZaC2LYuGLd44kzzic3Y3ufOky/zt
+         57SQvh5w5bDONoUi/FdC7/U2QwhEWwa7rOSomlaKFeiclv5cQRmfgbhT10JsfgWg5gSH
+         Df4XeOmT3wEZ3w0ptvEhptUoNZeouU6JDwZ8ZwDbWKBSkRMHx8tf7zxDJyrsHb0pRO9J
+         VInA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b="PO3eOfC/";
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id i21si9677830qki.56.2019.09.30.06.19.30;
-        Mon, 30 Sep 2019 06:19:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m58si12430321qta.48.2019.09.30.08.12.50
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 30 Sep 2019 08:12:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=neutral (body hash did not verify) header.i=@linaro.org header.s=google header.b="PO3eOfC/";
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id DED0E4A736;
-	Mon, 30 Sep 2019 09:19:29 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: 0.909
-X-Spam-Level: 
-X-Spam-Status: No, score=0.909 required=6.1 tests=[BAYES_00=-1.9,
-	DKIM_SIGNED=0.1, DNS_FROM_AHBL_RHSBL=2.699,
-	RCVD_IN_DNSWL_NONE=-0.0001, T_DKIM_INVALID=0.01] autolearn=no
-Authentication-Results: mm01.cs.columbia.edu (amavisd-new); dkim=softfail
-	(fail, message has been altered) header.i=@linaro.org
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id 0-DmXTTmN4R0; Mon, 30 Sep 2019 09:19:28 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id CD3104A770;
-	Mon, 30 Sep 2019 09:19:28 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id 7F9B44A736
- for <kvmarm@lists.cs.columbia.edu>; Mon, 30 Sep 2019 09:19:27 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id 1m3Z2b06gFst for <kvmarm@lists.cs.columbia.edu>;
- Mon, 30 Sep 2019 09:19:26 -0400 (EDT)
-Received: from mail-oi1-f195.google.com (mail-oi1-f195.google.com
- [209.85.167.195])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 89CA64A6A5
- for <kvmarm@lists.cs.columbia.edu>; Mon, 30 Sep 2019 09:19:26 -0400 (EDT)
-Received: by mail-oi1-f195.google.com with SMTP id x3so11080272oig.2
- for <kvmarm@lists.cs.columbia.edu>; Mon, 30 Sep 2019 06:19:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=tvF2rhjIU40oHZTkD8AiJlAuhk6N45ACdpW2yo/HLqU=;
- b=PO3eOfC/q3wl/KRr0kWCAelNHERyjJNf3sYliZiXHahyxh4ZRx2ySTuhPxn1dLYQtz
- Ye7DkO0wnQTjwjmUaxO8t8JgHdk/PerRiFSCyrNFh5SbjlOxqUbk17JiIevIdEtWEmqn
- D+03S22BPz+8zeYwZv2Bei/nLUk1RNyudNjaeErSn+O9FIlqczoufsYOsZOoGm5F3MtH
- oAOfw9c/il8g2OxXfN5HbM+5V+PC16ESN+8dUaf3o354nFgG9uXH+SoowTtN6gelXjGF
- 2f7a0ilmT8oGOJV2PKIB+OsJ1h0c3lxdDtGuZ78Fa7qJuhxDICK5hsWj3CFXe07wW8IK
- nuJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=tvF2rhjIU40oHZTkD8AiJlAuhk6N45ACdpW2yo/HLqU=;
- b=jIsKZk/NsiOe5mEvDqDKUlJCTFzoPyTn1gxmtClayvGY/j08QYAgk6vyBy08N99FaC
- nOA294UxxEcU5TTi3ejIWaVhOHlgE/YsTgJRuD9sTnUeMblbSw1IZ/NG7k0XxWmG2abJ
- 7bRw64On4i9BmJXRL3TfHcOPEsSxF5BzaAhWktpJgeeiBa+XgT7CYFeDJwjY+TSlA9pC
- G5nI6G0WzlW08dIjLzBbDVgMd0fOGADEpTOfrjIoBWZZiGLc+AvaIbAgNv97mvZdJ/0h
- 5QupVs8l0TPMYrETn8sETODIqlpW4BoUTGuZ263zRrTWtWBN/UMWc2oOSF+abcDvP3M0
- Q8cw==
-X-Gm-Message-State: APjAAAXoeYMfHMa4hT3FGvAFVOmYDBG4ySvxsuOT4ieCQn43+TJSwZk/
- Fm8f2xIy0e/FHLVsAL/iRpIl8UrbyjTU1uXupyapOA==
-X-Received: by 2002:aca:b48a:: with SMTP id d132mr18336111oif.98.1569849565968; 
- Mon, 30 Sep 2019 06:19:25 -0700 (PDT)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53600 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iExM1-00034g-QH
+	for alex.bennee@linaro.org; Mon, 30 Sep 2019 11:12:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59703)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <kwolf@redhat.com>) id 1iExLt-00034S-T1
+ for qemu-arm@nongnu.org; Mon, 30 Sep 2019 11:12:42 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <kwolf@redhat.com>) id 1iExLr-0005Bu-OV
+ for qemu-arm@nongnu.org; Mon, 30 Sep 2019 11:12:40 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:38066)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <kwolf@redhat.com>)
+ id 1iExLr-0005Bj-J8; Mon, 30 Sep 2019 11:12:39 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id BB6811918641;
+ Mon, 30 Sep 2019 15:12:36 +0000 (UTC)
+Received: from linux.fritz.box (ovpn-116-86.ams2.redhat.com [10.36.116.86])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 60ECF6012A;
+ Mon, 30 Sep 2019 15:12:17 +0000 (UTC)
+Date: Mon, 30 Sep 2019 17:12:15 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Subject: Re: [PATCH v3 04/25] error: auto propagated local_err
+Message-ID: <20190930151215.GB12777@linux.fritz.box>
+References: <20190924200902.4703-1-vsementsov@virtuozzo.com>
+ <20190924200902.4703-5-vsementsov@virtuozzo.com>
 MIME-Version: 1.0
-References: <1569338511-3572-1-git-send-email-guoheyi@huawei.com>
- <1569338511-3572-8-git-send-email-guoheyi@huawei.com>
-In-Reply-To: <1569338511-3572-8-git-send-email-guoheyi@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 30 Sep 2019 14:19:15 +0100
-Message-ID: <CAFEAcA9ZHs=GdJ-_Ap1PWdgDjSDBnnRqG1UkMGx_FiqCJ5ZyGw@mail.gmail.com>
-Subject: Re: [RFC PATCH 07/12] arm/sdei: override qemu_irq handler when
- binding interrupt
-To: Heyi Guo <guoheyi@huawei.com>
-Cc: Marc Zyngier <marc.zyngier@arm.com>,
- QEMU Developers <qemu-devel@nongnu.org>, kvmarm@lists.cs.columbia.edu,
- qemu-arm <qemu-arm@nongnu.org>, Dave Martin <Dave.Martin@arm.com>,
- arm-mail-list <linux-arm-kernel@lists.infradead.org>
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20190924200902.4703-5-vsementsov@virtuozzo.com>
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.70]); Mon, 30 Sep 2019 15:12:38 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: iS2C8x8AYb+I
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Paul Burton <pburton@wavecomp.com>, Jeff Cody <codyprime@gmail.com>,
+ Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Eric Blake <eblake@redhat.com>,
+ qemu-block@nongnu.org, Juan Quintela <quintela@redhat.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Greg Kurz <groug@kaod.org>,
+ Yuval Shaia <yuval.shaia@oracle.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>, qemu-arm@nongnu.org,
+ David Hildenbrand <david@redhat.com>, John Snow <jsnow@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, integration@gluster.org,
+ Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: YbD11TFusjq/
 
-On Tue, 24 Sep 2019 at 16:23, Heyi Guo <guoheyi@huawei.com> wrote:
->
-> Override qemu_irq handler to support trigger SDEI event transparently
-> after guest binds interrupt to SDEI event. We don't have good way to
-> get GIC device and to guarantee SDEI device is initialized after GIC,
-> so we search GIC in system bus when the first SDEI request happens or
-> in VMSTATE post_load().
->
-> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Dave Martin <Dave.Martin@arm.com>
-> Cc: Marc Zyngier <marc.zyngier@arm.com>
-> Cc: Mark Rutland <mark.rutland@arm.com>
-> Cc: James Morse <james.morse@arm.com>
+Am 24.09.2019 um 22:08 hat Vladimir Sementsov-Ogievskiy geschrieben:
+> Here is introduced ERRP_FUNCTION_BEGIN macro, to be used at start of
+> functions with errp parameter.
 
+A bit of bike shedding, but FOO_BEGIN suggests to me that a FOO_END will
+follow. Can we find a different name, especially now that we won't use
+this macro in every function that uses an errp, so even the "errp
+function" part isn't really correct any more?
 
-> +static void override_qemu_irq(QemuSDEState *s, int32_t event, uint32_t intid)
-> +{
-> +    qemu_irq irq;
-> +    QemuSDE *sde;
-> +    CPUState *cs;
-> +    int cpu;
-> +
-> +    /* SPI */
-> +    if (intid >= GIC_INTERNAL) {
-> +        cs = arm_get_cpu_by_id(0);
-> +        irq = qdev_get_gpio_in(s->gic_dev,
-> +                               gic_int_to_irq(s->num_irq, intid, 0));
-> +        if (irq) {
-> +            qemu_irq_intercept_in(&irq, qemu_sdei_irq_handler, 1);
-> +        }
+How about ERRP_AUTO_PROPAGATE?
 
-I'm not sure what this code is trying to do, but
-qemu_irq_intercept_in() is a function for internal use
-by the qtest testing infrastructure, so it shouldn't be
-used in 'real' QEMU code.
-
-> +        sde = get_sde_no_check(s, event, cs);
-> +        sde->irq = irq;
-> +        put_sde(sde, cs);
-> +        return;
-> +    }
-
-> @@ -1042,6 +1152,17 @@ void sdei_handle_request(CPUState *cs, struct kvm_run *run)
->          return;
->      }
->
-> +    if (!sde_state->gic_dev) {
-> +        /* Search for ARM GIC device */
-> +        qbus_walk_children(sysbus_get_default(), dev_walkerfn,
-> +                           NULL, NULL, NULL, sde_state);
-> +        if (!sde_state->gic_dev) {
-> +            error_report("Cannot find ARM GIC device!");
-> +            run->hypercall.args[0] = SDEI_NOT_SUPPORTED;
-> +            return;
-> +        }
-> +    }
-
-Walking through the qbus tree looking for particular devices
-isn't really something I'd recommend either.
-
-thanks
--- PMM
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+Kevin

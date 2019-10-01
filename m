@@ -1,199 +1,429 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp7943762wrp;
-        Tue, 1 Oct 2019 02:20:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx9BeY3hcWccnF+fEKdP5Byah1fxgQFuufFLTFymarDd0TOOvngwnllbHkp0qctnQIKcrjd
-X-Received: by 2002:aed:204b:: with SMTP id 69mr29134221qta.126.1569921631137;
-        Tue, 01 Oct 2019 02:20:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569921631; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp8157055wrp;
+        Tue, 1 Oct 2019 05:58:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwK9x063IXrINvrt3JkGV2mbw73dBkw30sPnHqoGrl5BgYz1aoNUB2HDSs1+C0maf0L97he
+X-Received: by 2002:a92:603:: with SMTP id x3mr7002479ilg.295.1569934738862;
+        Tue, 01 Oct 2019 05:58:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569934738; cv=none;
         d=google.com; s=arc-20160816;
-        b=E5LfuyvzTO98Ulwuiz9hrzzFp2KUYW0uNJiwAaOu9WfLfXmWOxTcSiMSlc0RSlr/4P
-         YFno2CpjvD/ubX50Zia5sUeADo+1NQIRaIWU4dY2ijanm45mxbI3FAAKsnBpcnar5NTa
-         UPwHCz9bfVmpyFHNP0qOC2BxoHWZXXxsNcwWkmaSyucZ6c42lCTSNrTP78S7tlTuYDs+
-         a0spkVlfXA2b7c6kzqu/IbM4nwP+HJSxapKxMDSuqQWGTlFCS7xwu6Sx5aGq06c2Z40W
-         BaQwk7iZQJCq/3AHi7MD+vtLlHlKUclS8F2lxBnXdE0sil1Wuh+TBmFDf1mkjilTEnTj
-         rEEQ==
+        b=fk6JuSIpSLQv1NCzbYfEzJsj1yIfunDImasUr9piZdcb3rU4cGc2UAFyCh/mRD4NRm
+         rokRTPP+XF666Z2h3SXWrDZouF2eHL9zifDmUqjjkP/3fZnK+YifyOT6R25I3nrv+3LU
+         sRZTCSGltIVAuIwSRJnvA5m6PEU1IKZaN8IzbTFWDnk0vefVAVzIyMwhMCekUA1O3tY2
+         uNnXkmMUguNwrAi0Kn6g9LHpDMEPCpV+FGAn9qKdpBDi8XmPh/UAV241XPxDSu4+0dMa
+         HjCKIv4mEj1YC7hzkXyU3uqVUxSZ1Zwf2CJLoYirfAnZgEn4jdIoTzgETtKi/RormEbt
+         H8EQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date;
-        bh=TzTncD6nw97Uk4u2XjsMT+JtY86QlMZ1nmfJ7DKpYzM=;
-        b=uyzkBUYUQsVoP+ZTpvsyJe8GTWpCXCHKG9qP20nDg73fi/JTrgKJA49IC9G7csIhZj
-         pEYFHEk3N7z/jS1F7MDsmtYBVtal/kJzwa5Ts6tIfIY53I//hJ+05Ue3+qzpqHuy1QMp
-         jdYCrYtDHn/1ssJ2REFvcD0O6/a7UmQCsMoHkw+lJ9FazXYNX61rD6QywnB8/5AHvYhm
-         yfT438pkwqJdGmg3YCbMqKQ2Zt/q7z3KTuARtffA48dqP8FXKgl2Y1OPF33uOz5jLWDj
-         zFF0btpRvosQwzWgJ1+tC3M0tfR7vmrcDEc/8+EU81Gncul+dELmuZ7r4Qly94zDjI1P
-         4sqw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=hfVWXRQvh7m3QwQXWzG7Inp1rYAueLwIzaZqPYRYTtA=;
+        b=ZepAulNxB7Mh9N8OpQ89dZS0To8cxxly0AG6vBfCPxD2hiQs7BsdcQfUMJlbLF9Cgb
+         ihF85niS9X7YlGDMZp5ZNw8x+KFkjo0JanXeIM4Fcp32AcTHONXHQH+oLqYGhifBOXI8
+         F5sI4/i65uPqGEPPAPQHTzrBmEECTMcGNXktrrCtvcx+UHAu6N0IpCzbMyUJf3cqppdb
+         UTgdRnsPQQxjWSScUPOsP1bqDvHxrTY+5E2z/rV1GrJclBDbPB82Bx/D4bPZlVTqe1dU
+         N08/IWqPmZvJm/qGHyv+becLDzQOsu7aIv8FlUWXj6ftabUJM9R0Ri2OgSz2vWRms3gq
+         aiqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o28si13978088qtt.306.2019.10.01.02.20.31
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Oct 2019 02:20:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id n20si20602436jac.27.2019.10.01.05.58.58
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 01 Oct 2019 05:58:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39512 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iFEKb-0000QL-Te
-	for alex.bennee@linaro.org; Tue, 01 Oct 2019 05:20:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34272)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <kwolf@redhat.com>) id 1iFEKL-0000JZ-0Z
- for qemu-arm@nongnu.org; Tue, 01 Oct 2019 05:20:14 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <kwolf@redhat.com>) id 1iFEKJ-0006Eh-LT
- for qemu-arm@nongnu.org; Tue, 01 Oct 2019 05:20:12 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60884)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <kwolf@redhat.com>)
- id 1iFEKJ-0006CO-6D; Tue, 01 Oct 2019 05:20:11 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 3FBC081F07;
- Tue,  1 Oct 2019 09:20:09 +0000 (UTC)
-Received: from linux.fritz.box (ovpn-117-215.ams2.redhat.com [10.36.117.215])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4AD343DE2;
- Tue,  1 Oct 2019 09:19:46 +0000 (UTC)
-Date: Tue, 1 Oct 2019 11:19:44 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-Subject: Re: [PATCH v3 04/25] error: auto propagated local_err
-Message-ID: <20191001091944.GB4688@linux.fritz.box>
-References: <20190924200902.4703-1-vsementsov@virtuozzo.com>
- <20190924200902.4703-5-vsementsov@virtuozzo.com>
- <20190930151215.GB12777@linux.fritz.box>
- <ca629ae8-15c5-1685-1cbb-99283d37b0a1@virtuozzo.com>
- <20190930160039.GC12777@linux.fritz.box>
- <495102b2-5d1a-f659-4387-5733ae34b3e2@virtuozzo.com>
- <20190930163909.GD12777@linux.fritz.box>
- <8d55df7a-abe6-bebc-a6bd-a1a2db4b8946@virtuozzo.com>
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 2022718C427B;
+	Tue,  1 Oct 2019 12:58:58 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 8E78D261D1;
+	Tue,  1 Oct 2019 12:58:53 +0000 (UTC)
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	armbru@redhat.com,
+	eblake@redhat.com,
+	Dave.Martin@arm.com,
+	eric.auger@redhat.com,
+	imammedo@redhat.com
+Subject: [PATCH v5 1/9] target/arm/monitor: Introduce qmp_query_cpu_model_expansion
+Date: Tue,  1 Oct 2019 14:58:37 +0200
+Message-Id: <20191001125845.8793-2-drjones@redhat.com>
+In-Reply-To: <20191001125845.8793-1-drjones@redhat.com>
+References: <20191001125845.8793-1-drjones@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <8d55df7a-abe6-bebc-a6bd-a1a2db4b8946@virtuozzo.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
+Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.25]); Tue, 01 Oct 2019 09:20:09 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Paul Burton <pburton@wavecomp.com>, Jeff Cody <codyprime@gmail.com>,
- Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Eric Blake <eblake@redhat.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- Juan Quintela <quintela@redhat.com>, Aleksandar Rikalo <arikalo@wavecomp.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Eric Farman <farman@linux.ibm.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Greg Kurz <groug@kaod.org>,
- Yuval Shaia <yuval.shaia@oracle.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- David Hildenbrand <david@redhat.com>, John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>,
- "integration@gluster.org" <integration@gluster.org>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>, Max Reitz <mreitz@redhat.com>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oxG2FgmXaWIG
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2 (mx1.redhat.com [10.5.110.62]); Tue, 01 Oct 2019 12:58:58 +0000 (UTC)
+X-TUID: Pglv611yyUZq
 
-Am 01.10.2019 um 10:39 hat Vladimir Sementsov-Ogievskiy geschrieben:
-> 30.09.2019 19:39, Kevin Wolf wrote:
-> > Am 30.09.2019 um 18:26 hat Vladimir Sementsov-Ogievskiy geschrieben:
-> >> 30.09.2019 19:00, Kevin Wolf wrote:
-> >>> Am 30.09.2019 um 17:19 hat Vladimir Sementsov-Ogievskiy geschrieben:
-> >>>> 30.09.2019 18:12, Kevin Wolf wrote:
-> >>>>> Am 24.09.2019 um 22:08 hat Vladimir Sementsov-Ogievskiy geschrieben:
-> >>>>>> Here is introduced ERRP_FUNCTION_BEGIN macro, to be used at start of
-> >>>>>> functions with errp parameter.
-> >>>>>
-> >>>>> A bit of bike shedding, but FOO_BEGIN suggests to me that a FOO_END will
-> >>>>> follow. Can we find a different name, especially now that we won't use
-> >>>>> this macro in every function that uses an errp, so even the "errp
-> >>>>> function" part isn't really correct any more?
-> >>>>>
-> >>>>> How about ERRP_AUTO_PROPAGATE?
-> >>>>
-> >>>> I have an idea that with this macro we can (optionally) get the whole call stack
-> >>>> of the error and print it to log, so it's good to give it more generic name, not
-> >>>> limited to propagation..
-> >>>
-> >>> Hm, what's the context for this feature?
-> >>>
-> >>> The obvious one where you want to have a stack trace is &error_abort,
-> >>> but that one crashes, so you get it automatically. If it's just a normal
-> >>> error (like a QAPI option contains an invalid value and some function
-> >>> down the call chain checks it), why would anyone want to know what the
-> >>> call chain in the QEMU code was?
-> >>>
-> >>
-> >> When I have bug from testers, call stack would be a lot more descriptive, than just
-> >> an error message.
-> >>
-> >> We may add trace point which will print this information, so with disabled trace point
-> >> - no extra output.
-> > 
-> > But wouldn't it make much more sense then to optionally add this
-> > functionality to any trace point? I really don't see how this is related
-> > specifically to user-visible error messages.
-> 
-> Interesting idea
-> 
-> > 
-> > However, even if we decide that we want to have this in Error objects,
-> > wouldn't it make much more sense to use the real C stack trace and save
-> > it from the innermost error_set() using backtrace() or compiler
-> > built-ins rather than relying on an error_propagate() chain?
-> > 
-> Hmm, I thought about this.. And in concatenation with the fact that
-> we'll have macro not everywhere, backtrace may be better..
-> 
-> On the other hand, backtrace will not show coroutine entries..
+Add support for the query-cpu-model-expansion QMP command to Arm. We
+do this selectively, only exposing CPU properties which represent
+optional CPU features which the user may want to enable/disable.
+Additionally we restrict the list of queryable cpu models to 'max',
+'host', or the current type when KVM is in use. And, finally, we only
+implement expansion type 'full', as Arm does not yet have a "base"
+CPU type. More details and example queries are described in a new
+document (docs/arm-cpu-features.rst).
 
-Hm, good point. I wonder if we can easily get a stack trace not starting
-at the current point, but from a jmp_buf. Then we could just switch to
-the coroutine caller whenever we reach coroutine_trampoline().
+Note, certainly more features may be added to the list of advertised
+features, e.g. 'vfp' and 'neon'. The only requirement is that we can
+detect invalid configurations and emit failures at QMP query time.
+For 'vfp' and 'neon' this will require some refactoring to share a
+validation function between the QMP query and the CPU realize
+functions.
 
-But glibc doesn't seem to support this case easily, so that might mean
-rewriting all of the stack unwinding inside QEMU... Maybe not then.
+Signed-off-by: Andrew Jones <drjones@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+---
+ docs/arm-cpu-features.rst | 137 +++++++++++++++++++++++++++++++++++
+ qapi/machine-target.json  |   6 +-
+ target/arm/monitor.c      | 145 ++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 285 insertions(+), 3 deletions(-)
+ create mode 100644 docs/arm-cpu-features.rst
 
-> OK, anyway, if we will track some additional information in
-> trace-events or in macros or in error_* API functions, it's not bad to
-> track some additional information in macro named ERRP_AUTO_PROPAGATE.
-
-Yes, I think tracking the information where we use ERRP_AUTO_PROPAGATE
-anyway is okay. I just wouldn't add the macro everywhere just for the
-sake of the additional information.
-
-Kevin
+diff --git a/docs/arm-cpu-features.rst b/docs/arm-cpu-features.rst
+new file mode 100644
+index 000000000000..c79dcffb5556
+--- /dev/null
++++ b/docs/arm-cpu-features.rst
+@@ -0,0 +1,137 @@
++================
++ARM CPU Features
++================
++
++Examples of probing and using ARM CPU features
++
++Introduction
++============
++
++CPU features are optional features that a CPU of supporting type may
++choose to implement or not.  In QEMU, optional CPU features have
++corresponding boolean CPU proprieties that, when enabled, indicate
++that the feature is implemented, and, conversely, when disabled,
++indicate that it is not implemented. An example of an ARM CPU feature
++is the Performance Monitoring Unit (PMU).  CPU types such as the
++Cortex-A15 and the Cortex-A57, which respectively implement ARM
++architecture reference manuals ARMv7-A and ARMv8-A, may both optionally
++implement PMUs.  For example, if a user wants to use a Cortex-A15 without
++a PMU, then the `-cpu` parameter should contain `pmu=off` on the QEMU
++command line, i.e. `-cpu cortex-a15,pmu=off`.
++
++As not all CPU types support all optional CPU features, then whether or
++not a CPU property exists depends on the CPU type.  For example, CPUs
++that implement the ARMv8-A architecture reference manual may optionally
++support the AArch32 CPU feature, which may be enabled by disabling the
++`aarch64` CPU property.  A CPU type such as the Cortex-A15, which does
++not implement ARMv8-A, will not have the `aarch64` CPU property.
++
++QEMU's support may be limited for some CPU features, only partially
++supporting the feature or only supporting the feature under certain
++configurations.  For example, the `aarch64` CPU feature, which, when
++disabled, enables the optional AArch32 CPU feature, is only supported
++when using the KVM accelerator and when running on a host CPU type that
++supports the feature.
++
++CPU Feature Probing
++===================
++
++Determining which CPU features are available and functional for a given
++CPU type is possible with the `query-cpu-model-expansion` QMP command.
++Below are some examples where `scripts/qmp/qmp-shell` (see the top comment
++block in the script for usage) is used to issue the QMP commands.
++
++(1) Determine which CPU features are available for the `max` CPU type
++    (Note, we started QEMU with qemu-system-aarch64, so `max` is
++     implementing the ARMv8-A reference manual in this case)::
++
++      (QEMU) query-cpu-model-expansion type=full model={"name":"max"}
++      { "return": {
++        "model": { "name": "max", "props": {
++        "pmu": true, "aarch64": true
++      }}}}
++
++We see that the `max` CPU type has the `pmu` and `aarch64` CPU features.
++We also see that the CPU features are enabled, as they are all `true`.
++
++(2) Let's try to disable the PMU::
++
++      (QEMU) query-cpu-model-expansion type=full model={"name":"max","props":{"pmu":false}}
++      { "return": {
++        "model": { "name": "max", "props": {
++        "pmu": false, "aarch64": true
++      }}}}
++
++We see it worked, as `pmu` is now `false`.
++
++(3) Let's try to disable `aarch64`, which enables the AArch32 CPU feature::
++
++      (QEMU) query-cpu-model-expansion type=full model={"name":"max","props":{"aarch64":false}}
++      {"error": {
++       "class": "GenericError", "desc":
++       "'aarch64' feature cannot be disabled unless KVM is enabled and 32-bit EL1 is supported"
++      }}
++
++It looks like this feature is limited to a configuration we do not
++currently have.
++
++(4) Let's try probing CPU features for the Cortex-A15 CPU type::
++
++      (QEMU) query-cpu-model-expansion type=full model={"name":"cortex-a15"}
++      {"return": {"model": {"name": "cortex-a15", "props": {"pmu": true}}}}
++
++Only the `pmu` CPU feature is available.
++
++A note about CPU feature dependencies
++-------------------------------------
++
++It's possible for features to have dependencies on other features. I.e.
++it may be possible to change one feature at a time without error, but
++when attempting to change all features at once an error could occur
++depending on the order they are processed.  It's also possible changing
++all at once doesn't generate an error, because a feature's dependencies
++are satisfied with other features, but the same feature cannot be changed
++independently without error.  For these reasons callers should always
++attempt to make their desired changes all at once in order to ensure the
++collection is valid.
++
++A note about CPU models and KVM
++-------------------------------
++
++Named CPU models generally do not work with KVM.  There are a few cases
++that do work, e.g. using the named CPU model `cortex-a57` with KVM on a
++seattle host, but mostly if KVM is enabled the `host` CPU type must be
++used.  This means the guest is provided all the same CPU features as the
++host CPU type has.  And, for this reason, the `host` CPU type should
++enable all CPU features that the host has by default.  Indeed it's even
++a bit strange to allow disabling CPU features that the host has when using
++the `host` CPU type, but in the absence of CPU models it's the best we can
++do if we want to launch guests without all the host's CPU features enabled.
++
++Enabling KVM also affects the `query-cpu-model-expansion` QMP command.  The
++affect is not only limited to specific features, as pointed out in example
++(3) of "CPU Feature Probing", but also to which CPU types may be expanded.
++When KVM is enabled, only the `max`, `host`, and current CPU type may be
++expanded.  This restriction is necessary as it's not possible to know all
++CPU types that may work with KVM, but it does impose a small risk of users
++experiencing unexpected errors.  For example on a seattle, as mentioned
++above, the `cortex-a57` CPU type is also valid when KVM is enabled.
++Therefore a user could use the `host` CPU type for the current type, but
++then attempt to query `cortex-a57`, however that query will fail with our
++restrictions.  This shouldn't be an issue though as management layers and
++users have been preferring the `host` CPU type for use with KVM for quite
++some time.  Additionally, if the KVM-enabled QEMU instance running on a
++seattle host is using the `cortex-a57` CPU type, then querying `cortex-a57`
++will work.
++
++Using CPU Features
++==================
++
++After determining which CPU features are available and supported for a
++given CPU type, then they may be selectively enabled or disabled on the
++QEMU command line with that CPU type::
++
++  $ qemu-system-aarch64 -M virt -cpu max,pmu=off
++
++The example above disables the PMU for the `max` CPU type.
++
+diff --git a/qapi/machine-target.json b/qapi/machine-target.json
+index 55310a6aa226..04623224720d 100644
+--- a/qapi/machine-target.json
++++ b/qapi/machine-target.json
+@@ -212,7 +212,7 @@
+ ##
+ { 'struct': 'CpuModelExpansionInfo',
+   'data': { 'model': 'CpuModelInfo' },
+-  'if': 'defined(TARGET_S390X) || defined(TARGET_I386)' }
++  'if': 'defined(TARGET_S390X) || defined(TARGET_I386) || defined(TARGET_ARM)' }
+ 
+ ##
+ # @query-cpu-model-expansion:
+@@ -237,7 +237,7 @@
+ #   query-cpu-model-expansion while using these is not advised.
+ #
+ # Some architectures may not support all expansion types. s390x supports
+-# "full" and "static".
++# "full" and "static". Arm only supports "full".
+ #
+ # Returns: a CpuModelExpansionInfo. Returns an error if expanding CPU models is
+ #          not supported, if the model cannot be expanded, if the model contains
+@@ -251,7 +251,7 @@
+   'data': { 'type': 'CpuModelExpansionType',
+             'model': 'CpuModelInfo' },
+   'returns': 'CpuModelExpansionInfo',
+-  'if': 'defined(TARGET_S390X) || defined(TARGET_I386)' }
++  'if': 'defined(TARGET_S390X) || defined(TARGET_I386) || defined(TARGET_ARM)' }
+ 
+ ##
+ # @CpuDefinitionInfo:
+diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+index 6457c3c87f7c..edca8aa885f0 100644
+--- a/target/arm/monitor.c
++++ b/target/arm/monitor.c
+@@ -21,8 +21,16 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "hw/boards.h"
+ #include "kvm_arm.h"
++#include "qapi/error.h"
++#include "qapi/visitor.h"
++#include "qapi/qobject-input-visitor.h"
++#include "qapi/qapi-commands-machine-target.h"
+ #include "qapi/qapi-commands-misc-target.h"
++#include "qapi/qmp/qerror.h"
++#include "qapi/qmp/qdict.h"
++#include "qom/qom-qobject.h"
+ 
+ static GICCapability *gic_cap_new(int version)
+ {
+@@ -81,3 +89,140 @@ GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
+ 
+     return head;
+ }
++
++/*
++ * These are cpu model features we want to advertise. The order here
++ * matters as this is the order in which qmp_query_cpu_model_expansion
++ * will attempt to set them. If there are dependencies between features,
++ * then the order that considers those dependencies must be used.
++ */
++static const char *cpu_model_advertised_features[] = {
++    "aarch64", "pmu",
++    NULL
++};
++
++CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
++                                                     CpuModelInfo *model,
++                                                     Error **errp)
++{
++    CpuModelExpansionInfo *expansion_info;
++    const QDict *qdict_in = NULL;
++    QDict *qdict_out;
++    ObjectClass *oc;
++    Object *obj;
++    const char *name;
++    int i;
++
++    if (type != CPU_MODEL_EXPANSION_TYPE_FULL) {
++        error_setg(errp, "The requested expansion type is not supported");
++        return NULL;
++    }
++
++    if (!kvm_enabled() && !strcmp(model->name, "host")) {
++        error_setg(errp, "The CPU type '%s' requires KVM", model->name);
++        return NULL;
++    }
++
++    oc = cpu_class_by_name(TYPE_ARM_CPU, model->name);
++    if (!oc) {
++        error_setg(errp, "The CPU type '%s' is not a recognized ARM CPU type",
++                   model->name);
++        return NULL;
++    }
++
++    if (kvm_enabled()) {
++        const char *cpu_type = current_machine->cpu_type;
++        int len = strlen(cpu_type) - strlen(ARM_CPU_TYPE_SUFFIX);
++        bool supported = false;
++
++        if (!strcmp(model->name, "host") || !strcmp(model->name, "max")) {
++            /* These are kvmarm's recommended cpu types */
++            supported = true;
++        } else if (strlen(model->name) == len &&
++                   !strncmp(model->name, cpu_type, len)) {
++            /* KVM is enabled and we're using this type, so it works. */
++            supported = true;
++        }
++        if (!supported) {
++            error_setg(errp, "We cannot guarantee the CPU type '%s' works "
++                             "with KVM on this host", model->name);
++            return NULL;
++        }
++    }
++
++    if (model->props) {
++        qdict_in = qobject_to(QDict, model->props);
++        if (!qdict_in) {
++            error_setg(errp, QERR_INVALID_PARAMETER_TYPE, "props", "dict");
++            return NULL;
++        }
++    }
++
++    obj = object_new(object_class_get_name(oc));
++
++    if (qdict_in) {
++        Visitor *visitor;
++        Error *err = NULL;
++
++        visitor = qobject_input_visitor_new(model->props);
++        visit_start_struct(visitor, NULL, NULL, 0, &err);
++        if (err) {
++            object_unref(obj);
++            error_propagate(errp, err);
++            return NULL;
++        }
++
++        i = 0;
++        while ((name = cpu_model_advertised_features[i++]) != NULL) {
++            if (qdict_get(qdict_in, name)) {
++                object_property_set(obj, visitor, name, &err);
++                if (err) {
++                    break;
++                }
++            }
++        }
++
++        if (!err) {
++            visit_check_struct(visitor, &err);
++        }
++        visit_end_struct(visitor, NULL);
++        visit_free(visitor);
++        if (err) {
++            object_unref(obj);
++            error_propagate(errp, err);
++            return NULL;
++        }
++    }
++
++    expansion_info = g_new0(CpuModelExpansionInfo, 1);
++    expansion_info->model = g_malloc0(sizeof(*expansion_info->model));
++    expansion_info->model->name = g_strdup(model->name);
++
++    qdict_out = qdict_new();
++
++    i = 0;
++    while ((name = cpu_model_advertised_features[i++]) != NULL) {
++        ObjectProperty *prop = object_property_find(obj, name, NULL);
++        if (prop) {
++            Error *err = NULL;
++            QObject *value;
++
++            assert(prop->get);
++            value = object_property_get_qobject(obj, name, &err);
++            assert(!err);
++
++            qdict_put_obj(qdict_out, name, value);
++        }
++    }
++
++    if (!qdict_size(qdict_out)) {
++        qobject_unref(qdict_out);
++    } else {
++        expansion_info->model->props = QOBJECT(qdict_out);
++        expansion_info->model->has_props = true;
++    }
++
++    object_unref(obj);
++
++    return expansion_info;
++}
+-- 
+2.20.1

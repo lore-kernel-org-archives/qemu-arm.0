@@ -1,359 +1,147 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp8231209wrp;
-        Tue, 1 Oct 2019 06:58:25 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzCeC9CcolF93X6T3OEacX7cSN5iJcogLYez6xhnRULgItIseWJNG5vm7mDVN7gkVzdgaif
-X-Received: by 2002:a6b:2b91:: with SMTP id r139mr26438291ior.293.1569938304703;
-        Tue, 01 Oct 2019 06:58:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569938304; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp8446787wrp;
+        Tue, 1 Oct 2019 09:57:29 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyis2tQkKPitRerelBknxcSrlwkxyEFIsAT0SEWBujpOwdFFK+gd4X1Kw/vmb5uy0mUKHRN
+X-Received: by 2002:a17:906:18a1:: with SMTP id c1mr24954204ejf.4.1569949049878;
+        Tue, 01 Oct 2019 09:57:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569949049; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tf6OE6WbwWJ8KAKuze98g851TKBy47wi7aqaltL+Py1ljq7YLerJ6DHnDYGbspa+bD
-         5BqccpAIrQaS3RqQOqLPSz4almOQl7javA0g3a1l1r/10LTg/PqMuywCd5lmoZw17Z0w
-         Ccnj75+9FbirvBNtwAvzA00q1e1YRFWa7rp61favCgR8t8QhFsKAzgYDoNQ7yPsi0PsM
-         S5d4zdwkTYaZVeUVNJTkoC5eHl73zwa+ucHPH5+xD5vWNX/rS3zKyJ6re302BAY0djRL
-         H2JzuG9r/TSIdKPIstkOzrOnYSFDoMupBLKHW1Q4T1UwSGG8fodnCzKCAY3FjVH1hMQq
-         5Qog==
+        b=eBJFrCf5LXhyPStUZ3AkmztZ5+XSBzKbpVdWaMJ86MmuYrJnVcSZVaqP8VW+C86zob
+         klYqf9AK9qMt5ufFhxZBQXXKdOuGpco4gYgx/y25dpGUeg1/J9V6LDdhKoidDnpw6jNN
+         NNJgHM3oaNCO8tGd+5x6VM5F9neZfXngKTnVYOc9pnzae1NGkq6vt/2IvqCneSKqC1pz
+         iyYI/MgAKCWD+xYoppefn6YHTz3ZLqtPcxsYxyMzU+Aky1eadhpg5XElUi8Jej3PCQ4i
+         r+P09fn7x+X2SSij/8wyvIIcrYYHTSy2qfL8bTM93B3TsAiQ7TWQyWSTN7zFnyRAbpWB
+         863w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=msWkLTwpOWCjXe5uNTMQzhN5iwChdj6wTAwCfdD2MYA=;
-        b=PvgaK7YQlsK9bdyIfX53dCxpKxlKtWekWCEvApO+XI1cPO1/qL5HiXalUHofUWrlv0
-         EIOFX7kSPn0Oh714ll6RB2UEJvpaaX3q2VvCAgzPRPL+fGjA2TgDJEY4euXk/NIzFu2S
-         /D0qrv8+nDS4kAGCfK6j11vfye6f/sa0651KnP3Iw2EvHg82SO/7F4RT3c1GAryPkSDb
-         W7UFar7/yfhrcf1C1iWI0w+ciQO0CXnQW6zwiTB3bwLUf3BRfIr98p6qgFzZehPfZuau
-         IyoQ3Oi83iprTOPxPEornM5LahwblZLq81uSqFLmax1aM/Hy2CklZVfqjYRLoo5jK7Nq
-         XWdw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=iDE3NPxK2YgasB7/UtWZn8dDQ9EAgUrKIEWxXkVOJEs=;
+        b=qQBZyGYSkO51GdFF/8fPL0Xk8PKHWsxvy7VSxNtLcYaU64d6/z8oncu9AGKHvigVLs
+         Ut/H7SxMttxA0tvkUsO8oT4s9RfMP89qH1T6TwE6nqELjdpplDUPo16iJumz/zrbIXd3
+         zAmkYgNntszimHxyMmqUSpGNXtpYPRraYNFT/+WJbDeGejAoddli7IdpW1pDUrO5Om6d
+         TkYqAQgjDLddwr1Yl5L4K0Jy+tGBzuT2lBUH7ingOnotn9pQ/IRulI/fFrNnAa/9bdX+
+         IClShaYhp2GD++pxeR+zw+eM1uIfL/YF8Vvb4feTavvQ/D4IfxqWKiRCNXGjp98kmMnZ
+         uYxA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id 189si20424703jad.47.2019.10.01.06.58.24
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Oct 2019 06:58:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Z+ThUQ+x;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id z10si9454812edx.168.2019.10.01.09.57.29
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 01 Oct 2019 09:57:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id E3382190C013;
-	Tue,  1 Oct 2019 13:58:23 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 8D8CC5C1D4;
-	Tue,  1 Oct 2019 13:58:17 +0000 (UTC)
-Date: Tue, 1 Oct 2019 15:58:15 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
-	alex.bennee@linaro.org, armbru@redhat.com, eblake@redhat.com,
-	Dave.Martin@arm.com, eric.auger@redhat.com, imammedo@redhat.com
-Subject: Re: [PATCH v5 5/9] target/arm/kvm64: Add kvm_arch_get/put_sve
-Message-ID: <20191001135815.sgrmueqo7orsj727@kamzik.brq.redhat.com>
-References: <20191001125845.8793-1-drjones@redhat.com>
- <20191001125845.8793-6-drjones@redhat.com>
- <20191001135246.7czev32x7w6nhulv@kamzik.brq.redhat.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=Z+ThUQ+x;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45094 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iFLSq-0008J4-D7
+	for alex.bennee@linaro.org; Tue, 01 Oct 2019 12:57:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55780)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <ard.biesheuvel@linaro.org>) id 1iFL35-0004Uu-Tm
+ for qemu-devel@nongnu.org; Tue, 01 Oct 2019 12:30:59 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <ard.biesheuvel@linaro.org>) id 1iFL33-0007um-Lu
+ for qemu-devel@nongnu.org; Tue, 01 Oct 2019 12:30:51 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:55917)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <ard.biesheuvel@linaro.org>)
+ id 1iFL31-0007qS-JR
+ for qemu-devel@nongnu.org; Tue, 01 Oct 2019 12:30:49 -0400
+Received: by mail-wm1-x343.google.com with SMTP id a6so4065789wma.5
+ for <qemu-devel@nongnu.org>; Tue, 01 Oct 2019 09:30:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=iDE3NPxK2YgasB7/UtWZn8dDQ9EAgUrKIEWxXkVOJEs=;
+ b=Z+ThUQ+xug7orDJ6yRzSKmboswm1kWjiB2agoyiTUNh4x3wAf0YD0YcWjh22THsmtQ
+ gn/f0sQRWXAYFaCtstRqGFFxGkc1RK1jt0O3BAo7wctY8ntLdu2YZbwnHpjiwMzOx0LX
+ 5jQmCOzvAnn2W6GyqDcD3S2CTvVFY2HnEe0SNHRlwnIgm6sPBopaOXXhJxTaILtdONN0
+ lbrD+Y1rbRQNV2RVo7bwc70M3WpSGXY7gEYRBraS4H+9wy9d+eqZbKG5TTAbFlchfX/q
+ 6ddW+REWFJJewJkinmVhOsU2Bl4Ite9mzoIFArQL8A4/c3Zd6w5/DMDc//i/ChKjN8g3
+ LV9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=iDE3NPxK2YgasB7/UtWZn8dDQ9EAgUrKIEWxXkVOJEs=;
+ b=ZNZ7ojID41fupWmj4l5wm5en8Ij3lzcAjvAXh/5RWUsfmhhrsI0u9h4AJ5oGIv/RqM
+ eyo7HPB7HfZevhshSsDO8AHpeXH0uaGUVYXmixCqmcO8U3rvYOvJF5dmkCZqqfn6kySL
+ Ie14vkruLiWjjgn7qqqrrYxKejfHFqsMDYZuEXt9pgZjkis/e4dzFPXODIRlhFwog/VW
+ oWHW4obHqZ1CsMYYlDqjuEkebrOAXO2nmy/AkkBoohdUCMPQ2+Xq7ZcnMv5vNRTecxuX
+ HIMPlw8TUvu2qfulKoeWAR9ISoAgGX1KSmzjuymvKfC+0IuZKd78CrzvKhKej0xbSYXy
+ e8kg==
+X-Gm-Message-State: APjAAAVQ7sixpfLQn7dhCVL4UkS8nXrJkwQ3zAl4mwwxCqLhdXlnWvQa
+ 3s+8yd9Id0vPkkJ9qdK9WduNaPcJn1XwrciHYoSQNA==
+X-Received: by 2002:a7b:cb55:: with SMTP id v21mr4537934wmj.53.1569947443269; 
+ Tue, 01 Oct 2019 09:30:43 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20191001135246.7czev32x7w6nhulv@kamzik.brq.redhat.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2 (mx1.redhat.com [10.5.110.70]); Tue, 01 Oct 2019 13:58:23 +0000 (UTC)
-X-TUID: rhc2K0OnWoui
+References: <21633062-b021-a8e7-0cc8-062f4c29dde5@linux.microsoft.com>
+ <ca5c74db-cf5d-0c3f-eb6f-27d1092420ae@linux.microsoft.com>
+ <65b49cb0-c9fb-d966-8dec-1e39d09ab8c7@redhat.com>
+ <88878b22-803f-41fc-9df2-2c6eb551b98d@linux.microsoft.com>
+In-Reply-To: <88878b22-803f-41fc-9df2-2c6eb551b98d@linux.microsoft.com>
+From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
+Date: Tue, 1 Oct 2019 18:30:31 +0200
+Message-ID: <CAKv+Gu8kwg_tsrH7qne3H11hUPyA6zw-J_jpUmiyJMvXo3-SNQ@mail.gmail.com>
+Subject: Re: Is kexec supported in QEMU for ARM64 (qemu-system-aarch64) with
+ arm-trusted-firmware, optee, and u-boot.
+To: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::343
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: James Bottomley <James.Bottomley@hansenpartnership.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: zHvt61DIC0s2
 
-On Tue, Oct 01, 2019 at 03:52:46PM +0200, Andrew Jones wrote:
-> On Tue, Oct 01, 2019 at 02:58:41PM +0200, Andrew Jones wrote:
-> > These are the SVE equivalents to kvm_arch_get/put_fpsimd. Note, the
-> > swabbing is different than it is for fpsmid because the vector format
-> > is a little-endian stream of words.
-> > 
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> 
-> Hi Eric and Richard,
-> 
-> I dropped your tags from this patch because it changed too much.
-> I apologize for requiring a second look.
+On Tue, 1 Oct 2019 at 00:27, Lakshmi Ramasubramanian
+<nramas@linux.microsoft.com> wrote:
+>
+> On 9/27/19 2:15 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+>
+> > Cc'ing Ard too
+> >>
+> >> https://salsa.debian.org/debian/atf-allwinner/commit/b6b671c4ac4bd5595=
+306863225bb3bece1e6135c
+> >>
+> >>
+> >> Current limitations:
+> >> * Only cold boot is supported
+> >> * No build instructions for QEMU_EFI.fd and rootfs-arm64.cpio.gz
+> >> * No instructions for how to load a BL32 (Secure Payload)
+> >>
+> >> So looks like only cold boot is supported (no kexec support)
+> >> Is this correct?
+>
+> Just wanted to check again -
+>
+> Does ATF and QEMU (for ARM64) support cold boot only and does not have
+> support for kexec?
+>
 
-Also it looks like I should have generated it with --patience, as this
-diff isn't the easiest thing to review. Let me know if you'd like me to
-repost it.
-
-drew
-
-> 
-> Thanks,
-> drew
-> 
-> > ---
-> >  target/arm/kvm64.c | 183 ++++++++++++++++++++++++++++++++++++++-------
-> >  1 file changed, 155 insertions(+), 28 deletions(-)
-> > 
-> > diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> > index 28f6db57d5ee..4c0b11d105a4 100644
-> > --- a/target/arm/kvm64.c
-> > +++ b/target/arm/kvm64.c
-> > @@ -671,11 +671,12 @@ int kvm_arch_destroy_vcpu(CPUState *cs)
-> >  bool kvm_arm_reg_syncs_via_cpreg_list(uint64_t regidx)
-> >  {
-> >      /* Return true if the regidx is a register we should synchronize
-> > -     * via the cpreg_tuples array (ie is not a core reg we sync by
-> > -     * hand in kvm_arch_get/put_registers())
-> > +     * via the cpreg_tuples array (ie is not a core or sve reg that
-> > +     * we sync by hand in kvm_arch_get/put_registers())
-> >       */
-> >      switch (regidx & KVM_REG_ARM_COPROC_MASK) {
-> >      case KVM_REG_ARM_CORE:
-> > +    case KVM_REG_ARM64_SVE:
-> >          return false;
-> >      default:
-> >          return true;
-> > @@ -721,10 +722,8 @@ int kvm_arm_cpreg_level(uint64_t regidx)
-> >  
-> >  static int kvm_arch_put_fpsimd(CPUState *cs)
-> >  {
-> > -    ARMCPU *cpu = ARM_CPU(cs);
-> > -    CPUARMState *env = &cpu->env;
-> > +    CPUARMState *env = &ARM_CPU(cs)->env;
-> >      struct kvm_one_reg reg;
-> > -    uint32_t fpr;
-> >      int i, ret;
-> >  
-> >      for (i = 0; i < 32; i++) {
-> > @@ -742,17 +741,73 @@ static int kvm_arch_put_fpsimd(CPUState *cs)
-> >          }
-> >      }
-> >  
-> > -    reg.addr = (uintptr_t)(&fpr);
-> > -    fpr = vfp_get_fpsr(env);
-> > -    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
-> > -    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-> > -    if (ret) {
-> > -        return ret;
-> > +    return 0;
-> > +}
-> > +
-> > +/*
-> > + * SVE registers are encoded in KVM's memory in an endianness-invariant format.
-> > + * The byte at offset i from the start of the in-memory representation contains
-> > + * the bits [(7 + 8 * i) : (8 * i)] of the register value. As this means the
-> > + * lowest offsets are stored in the lowest memory addresses, then that nearly
-> > + * matches QEMU's representation, which is to use an array of host-endian
-> > + * uint64_t's, where the lower offsets are at the lower indices. To complete
-> > + * the translation we just need to byte swap the uint64_t's on big-endian hosts.
-> > + */
-> > +static uint64_t *sve_bswap64(uint64_t *dst, uint64_t *src, int nr)
-> > +{
-> > +#ifdef HOST_WORDS_BIGENDIAN
-> > +    int i;
-> > +
-> > +    for (i = 0; i < nr; ++i) {
-> > +        dst[i] = bswap64(src[i]);
-> >      }
-> >  
-> > -    reg.addr = (uintptr_t)(&fpr);
-> > -    fpr = vfp_get_fpcr(env);
-> > -    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpcr);
-> > +    return dst;
-> > +#else
-> > +    return src;
-> > +#endif
-> > +}
-> > +
-> > +/*
-> > + * KVM SVE registers come in slices where ZREGs have a slice size of 2048 bits
-> > + * and PREGS and the FFR have a slice size of 256 bits. However we simply hard
-> > + * code the slice index to zero for now as it's unlikely we'll need more than
-> > + * one slice for quite some time.
-> > + */
-> > +static int kvm_arch_put_sve(CPUState *cs)
-> > +{
-> > +    ARMCPU *cpu = ARM_CPU(cs);
-> > +    CPUARMState *env = &cpu->env;
-> > +    uint64_t tmp[ARM_MAX_VQ * 2];
-> > +    uint64_t *r;
-> > +    struct kvm_one_reg reg;
-> > +    int n, ret;
-> > +
-> > +    for (n = 0; n < KVM_ARM64_SVE_NUM_ZREGS; ++n) {
-> > +        r = sve_bswap64(tmp, &env->vfp.zregs[n].d[0], cpu->sve_max_vq * 2);
-> > +        reg.addr = (uintptr_t)r;
-> > +        reg.id = KVM_REG_ARM64_SVE_ZREG(n, 0);
-> > +        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-> > +        if (ret) {
-> > +            return ret;
-> > +        }
-> > +    }
-> > +
-> > +    for (n = 0; n < KVM_ARM64_SVE_NUM_PREGS; ++n) {
-> > +        r = sve_bswap64(tmp, r = &env->vfp.pregs[n].p[0],
-> > +                        DIV_ROUND_UP(cpu->sve_max_vq * 2, 8));
-> > +        reg.addr = (uintptr_t)r;
-> > +        reg.id = KVM_REG_ARM64_SVE_PREG(n, 0);
-> > +        ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-> > +        if (ret) {
-> > +            return ret;
-> > +        }
-> > +    }
-> > +
-> > +    r = sve_bswap64(tmp, &env->vfp.pregs[FFR_PRED_NUM].p[0],
-> > +                    DIV_ROUND_UP(cpu->sve_max_vq * 2, 8));
-> > +    reg.addr = (uintptr_t)r;
-> > +    reg.id = KVM_REG_ARM64_SVE_FFR(0);
-> >      ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-> >      if (ret) {
-> >          return ret;
-> > @@ -765,6 +820,7 @@ int kvm_arch_put_registers(CPUState *cs, int level)
-> >  {
-> >      struct kvm_one_reg reg;
-> >      uint64_t val;
-> > +    uint32_t fpr;
-> >      int i, ret;
-> >      unsigned int el;
-> >  
-> > @@ -855,7 +911,27 @@ int kvm_arch_put_registers(CPUState *cs, int level)
-> >          }
-> >      }
-> >  
-> > -    ret = kvm_arch_put_fpsimd(cs);
-> > +    if (cpu_isar_feature(aa64_sve, cpu)) {
-> > +        ret = kvm_arch_put_sve(cs);
-> > +    } else {
-> > +        ret = kvm_arch_put_fpsimd(cs);
-> > +    }
-> > +    if (ret) {
-> > +        return ret;
-> > +    }
-> > +
-> > +    reg.addr = (uintptr_t)(&fpr);
-> > +    fpr = vfp_get_fpsr(env);
-> > +    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
-> > +    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-> > +    if (ret) {
-> > +        return ret;
-> > +    }
-> > +
-> > +    reg.addr = (uintptr_t)(&fpr);
-> > +    fpr = vfp_get_fpcr(env);
-> > +    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpcr);
-> > +    ret = kvm_vcpu_ioctl(cs, KVM_SET_ONE_REG, &reg);
-> >      if (ret) {
-> >          return ret;
-> >      }
-> > @@ -878,10 +954,8 @@ int kvm_arch_put_registers(CPUState *cs, int level)
-> >  
-> >  static int kvm_arch_get_fpsimd(CPUState *cs)
-> >  {
-> > -    ARMCPU *cpu = ARM_CPU(cs);
-> > -    CPUARMState *env = &cpu->env;
-> > +    CPUARMState *env = &ARM_CPU(cs)->env;
-> >      struct kvm_one_reg reg;
-> > -    uint32_t fpr;
-> >      int i, ret;
-> >  
-> >      for (i = 0; i < 32; i++) {
-> > @@ -899,21 +973,53 @@ static int kvm_arch_get_fpsimd(CPUState *cs)
-> >          }
-> >      }
-> >  
-> > -    reg.addr = (uintptr_t)(&fpr);
-> > -    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
-> > -    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-> > -    if (ret) {
-> > -        return ret;
-> > +    return 0;
-> > +}
-> > +
-> > +/*
-> > + * KVM SVE registers come in slices where ZREGs have a slice size of 2048 bits
-> > + * and PREGS and the FFR have a slice size of 256 bits. However we simply hard
-> > + * code the slice index to zero for now as it's unlikely we'll need more than
-> > + * one slice for quite some time.
-> > + */
-> > +static int kvm_arch_get_sve(CPUState *cs)
-> > +{
-> > +    ARMCPU *cpu = ARM_CPU(cs);
-> > +    CPUARMState *env = &cpu->env;
-> > +    struct kvm_one_reg reg;
-> > +    uint64_t *r;
-> > +    int n, ret;
-> > +
-> > +    for (n = 0; n < KVM_ARM64_SVE_NUM_ZREGS; ++n) {
-> > +        r = &env->vfp.zregs[n].d[0];
-> > +        reg.addr = (uintptr_t)r;
-> > +        reg.id = KVM_REG_ARM64_SVE_ZREG(n, 0);
-> > +        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-> > +        if (ret) {
-> > +            return ret;
-> > +        }
-> > +        sve_bswap64(r, r, cpu->sve_max_vq * 2);
-> >      }
-> > -    vfp_set_fpsr(env, fpr);
-> >  
-> > -    reg.addr = (uintptr_t)(&fpr);
-> > -    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpcr);
-> > +    for (n = 0; n < KVM_ARM64_SVE_NUM_PREGS; ++n) {
-> > +        r = &env->vfp.pregs[n].p[0];
-> > +        reg.addr = (uintptr_t)r;
-> > +        reg.id = KVM_REG_ARM64_SVE_PREG(n, 0);
-> > +        ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-> > +        if (ret) {
-> > +            return ret;
-> > +        }
-> > +        sve_bswap64(r, r, DIV_ROUND_UP(cpu->sve_max_vq * 2, 8));
-> > +    }
-> > +
-> > +    r = &env->vfp.pregs[FFR_PRED_NUM].p[0];
-> > +    reg.addr = (uintptr_t)r;
-> > +    reg.id = KVM_REG_ARM64_SVE_FFR(0);
-> >      ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-> >      if (ret) {
-> >          return ret;
-> >      }
-> > -    vfp_set_fpcr(env, fpr);
-> > +    sve_bswap64(r, r, DIV_ROUND_UP(cpu->sve_max_vq * 2, 8));
-> >  
-> >      return 0;
-> >  }
-> > @@ -923,6 +1029,7 @@ int kvm_arch_get_registers(CPUState *cs)
-> >      struct kvm_one_reg reg;
-> >      uint64_t val;
-> >      unsigned int el;
-> > +    uint32_t fpr;
-> >      int i, ret;
-> >  
-> >      ARMCPU *cpu = ARM_CPU(cs);
-> > @@ -1012,10 +1119,30 @@ int kvm_arch_get_registers(CPUState *cs)
-> >          env->spsr = env->banked_spsr[i];
-> >      }
-> >  
-> > -    ret = kvm_arch_get_fpsimd(cs);
-> > +    if (cpu_isar_feature(aa64_sve, cpu)) {
-> > +        ret = kvm_arch_get_sve(cs);
-> > +    } else {
-> > +        ret = kvm_arch_get_fpsimd(cs);
-> > +    }
-> > +    if (ret) {
-> > +        return ret;
-> > +    }
-> > +
-> > +    reg.addr = (uintptr_t)(&fpr);
-> > +    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpsr);
-> > +    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-> > +    if (ret) {
-> > +        return ret;
-> > +    }
-> > +    vfp_set_fpsr(env, fpr);
-> > +
-> > +    reg.addr = (uintptr_t)(&fpr);
-> > +    reg.id = AARCH64_SIMD_CTRL_REG(fp_regs.fpcr);
-> > +    ret = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-> >      if (ret) {
-> >          return ret;
-> >      }
-> > +    vfp_set_fpcr(env, fpr);
-> >  
-> >      ret = kvm_get_vcpu_events(cpu);
-> >      if (ret) {
-> > -- 
-> > 2.20.1
-> > 
+kexec is a linux concept, so whether it is supported should not depend
+on the secure world firmware or the underlying host.

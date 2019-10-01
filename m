@@ -1,118 +1,147 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp7425676wrp;
-        Mon, 30 Sep 2019 15:27:45 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwCpcIN5NH2W+ebkntJIHTBrBtrZ+oartlidABum9RGYlF4YiXbwAtkeZmoTgnTi68hd/lY
-X-Received: by 2002:a0c:8867:: with SMTP id 36mr11099515qvm.177.1569882465131;
-        Mon, 30 Sep 2019 15:27:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569882465; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp8156962wrp;
+        Tue, 1 Oct 2019 05:58:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzC6UpsUFSe/6Vfn7QfKLQqtzsfV1JRTE/DgR6EWKYTvB8UymbxsYTj/Ed3/lt4t3Colph2
+X-Received: by 2002:a92:4698:: with SMTP id d24mr22911524ilk.222.1569934734059;
+        Tue, 01 Oct 2019 05:58:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569934734; cv=none;
         d=google.com; s=arc-20160816;
-        b=Cg0XNSN66bq9486rJnfNNBhFb7K7tcuGVykKfp0lRk5Ushiub/x8V7ScHfoZerHMbG
-         xpcuwHLheFLMTO0QO4SFb+VkGFUgTsWkCcSe4RgUMjAT+RVNuz5YkckHiQgAKj7on1yy
-         z4TqQ1Ajp2lCzTo7Afp03P3ySRSYnlb6747fAk+eGnyFS8Rgwgp/Up2k6pGsE9PnMidj
-         GKIZejDAlUlAzG5V7eQS1pCZst9ZiQCx1LoJhdQsUCASWc3+eoD9g1XtrmDcAyc/NVlc
-         YvgSESIaRUHVsQpwNOTRUz0WQ/GVOYeHFXTvYPpNgSIIwiA1XI9S7icGBMpwaQeLgj7d
-         4JIQ==
+        b=c6Ni2+c6U1UpVW1Z7Tz9ZDHS453yGBQJ4PNImAcF8cn5TLjHyiw2KMGSxrXSs/W3v4
+         HvFXg0njKck3nReuPIRQFSy8kLYyeXxh1OKIGCNwkqGavNac2+ghG48O0UmALIRGvqXw
+         bOONrGvCbwTfPvT4pgOW2BvxHLLk+1MBbTNcU8N415qAVKZ3htQw2aPzH8aKrJNgzcIh
+         15fehQ48bbqPmNoI58Dlw7iKrtu3O7cYiDKKV+HGcqM/rQHFv1pYryLUQvZUtFszxhwE
+         3qY47URpLSxB6IVEnKYMUkfAGHA+MJITu+JnqR2aPfcj/0cOmqxIKT0ZUFf3YPdiwVGl
+         KdgQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-filter;
-        bh=wkRgj8K3RsPTki756eS0I/Skli8awMywW1dX5h5c1zM=;
-        b=s+XPVAj1SHUwgBb0Ldem3yHcvxfQ4IVfEmY1N2G1pg/Z90RowPtLZGeA1ox0SgCqks
-         PeDUOiyEtN4rxXCFBMF4MjZrX5R+FegUYVFXG1Vu/AQhJRhIaHqdzMbSCA0riIrFIFCK
-         K0uR3BslyUshvjf0yT3BefpViDuRvfLNjMPXNu/Qlc4e7unRqMTK7kkco7FApjF2s4BB
-         sKdVnUCGibtAy56A466BJ7FJ51Z9ZBq2j1TsIIPkCQ2EVkbmWdrOyey6IX53RiiaqCk0
-         ZMZBWnPJohmLvwigFSSwEKxr0gtfa/TevWuKNvCLJnByQoNaZf3vV9LUHAMxJBa0rrYV
-         GzZQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=z68W5/vrvvDQSYeQDmpnQOJt0EfdnlpCOB2A41tULRQ=;
+        b=lcBv02xzm3wsGcmJza4QE088nHYYk3rqaQDAqP8jReh7juETfplNI1GseHgkVuaejE
+         J6WFDIT32kTloWy0/6rGlMGCYcCGZ4uIgeNJ6XiktylXwnq+22Q1FMcCYO1GABVXj/xL
+         +w7ahrFza5NgrvzKwkG65aKqy5vWg83t3sJQ+HE9hes6xIGj2VmJYCiajg7Zzzha61t2
+         ZvYZ8utQ/YO/UJSN2gNHDAivLImGZsn36HhEPOWpZjFENY5LyDWCYKzx6UMtN1fXaumC
+         rU0Y6QknABLIHbt5OjRdDeZTwi9BfEd1cvcz4+U3wGBdp0zYuFGph3OZeS6kK4jHb61Z
+         9nvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n55si13802859qvc.19.2019.09.30.15.27.44
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 30 Sep 2019 15:27:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id c18si14973428ilr.55.2019.10.01.05.58.53
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 01 Oct 2019 05:58:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
-Received: from localhost ([::1]:57858 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iF48u-0003Ex-KL
-	for alex.bennee@linaro.org; Mon, 30 Sep 2019 18:27:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60744)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nramas@linux.microsoft.com>) id 1iF48m-0003EW-3M
- for qemu-arm@nongnu.org; Mon, 30 Sep 2019 18:27:36 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nramas@linux.microsoft.com>) id 1iF48j-0003Dk-Q6
- for qemu-arm@nongnu.org; Mon, 30 Sep 2019 18:27:35 -0400
-Received: from linux.microsoft.com ([13.77.154.182]:60084)
- by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <nramas@linux.microsoft.com>)
- id 1iF48j-0003DO-LE; Mon, 30 Sep 2019 18:27:33 -0400
-Received: from [10.200.157.26] (unknown [131.107.147.154])
- by linux.microsoft.com (Postfix) with ESMTPSA id 17FA82010688;
- Mon, 30 Sep 2019 15:27:32 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 17FA82010688
-Subject: Re: Is kexec supported in QEMU for ARM64 (qemu-system-aarch64) with
- arm-trusted-firmware, optee, and u-boot.
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- James Bottomley <James.Bottomley@HansenPartnership.com>,
- qemu-devel@nongnu.org, Ard Biesheuvel <ard.biesheuvel@linaro.org>
-References: <21633062-b021-a8e7-0cc8-062f4c29dde5@linux.microsoft.com>
- <ca5c74db-cf5d-0c3f-eb6f-27d1092420ae@linux.microsoft.com>
- <65b49cb0-c9fb-d966-8dec-1e39d09ab8c7@redhat.com>
-From: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>
-Message-ID: <88878b22-803f-41fc-9df2-2c6eb551b98d@linux.microsoft.com>
-Date: Mon, 30 Sep 2019 15:27:25 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com [10.5.11.23])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 4718D88307;
+	Tue,  1 Oct 2019 12:58:53 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 92245261C2;
+	Tue,  1 Oct 2019 12:58:46 +0000 (UTC)
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	armbru@redhat.com,
+	eblake@redhat.com,
+	Dave.Martin@arm.com,
+	eric.auger@redhat.com,
+	imammedo@redhat.com
+Subject: [PATCH v5 0/9] target/arm/kvm: enable SVE in guests
+Date: Tue,  1 Oct 2019 14:58:36 +0200
+Message-Id: <20191001125845.8793-1-drjones@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <65b49cb0-c9fb-d966-8dec-1e39d09ab8c7@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 13.77.154.182
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8/EJSNB6vQd6
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.28]); Tue, 01 Oct 2019 12:58:53 +0000 (UTC)
+X-TUID: 3iZCq1+ZZDHu
 
-On 9/27/19 2:15 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+Since Linux kernel v5.2-rc1 KVM has support for enabling SVE in guests.
+This series provides the QEMU bits for that enablement. First, we
+select existing CPU properties representing features we want to
+advertise in addition to the SVE vector lengths and prepare
+them for a qmp query. Then we introduce the qmp query, applying
+it immediately to those selected features. We also document ARM CPU
+features at this time. We next add a qtest for the selected CPU
+features that uses the qmp query for its tests - and we continue to
+add tests as we add CPU features with the following patches. So then,
+once we have the support we need for CPU feature querying and testing,
+we add our first SVE CPU feature property, 'sve', which just allows
+SVE to be completely enabled/disabled. Following that feature property,
+we add all 16 vector length properties along with the input validation
+they need and tests to prove the validation works. At this point the
+SVE features are still only for TCG, so we provide some patches to
+prepare for KVM and then a patch that allows the 'max' CPU type to
+enable SVE with KVM, but at first without vector length properties.
+After a bit more preparation we add the SVE vector length properties
+to the KVM-enabled 'max' CPU type along with the additional input
+validation and tests that that needs.  Finally we allow the 'host'
+CPU type to also enjoy these properties by simply sharing them with it.
 
-> Cc'ing Ard too
->>
->> https://salsa.debian.org/debian/atf-allwinner/commit/b6b671c4ac4bd5595=
-306863225bb3bece1e6135c
->>
->>
->> Current limitations:
->> * Only cold boot is supported
->> * No build instructions for QEMU_EFI.fd and rootfs-arm64.cpio.gz
->> * No instructions for how to load a BL32 (Secure Payload)
->>
->> So looks like only cold boot is supported (no kexec support)
->> Is this correct?
+v5:
+  - Now generate an error if vector lengths have been explicitly
+    enabled, but SVE is disabled
+  - Fixed a bug in sve_zcr_len_for_el()
+  - Fixed a bug in kvm_arch_put/get_sve() and brought back the
+    put/get of FPSR/FPCR
+  - A few document clarifications and added some new sentences
+  - Added a couple more tests
+  - Added BIT_ULL and use it in the test
+  - Removed an unnecessary bitmap search
+  - Moved a cpu_max_get_sve_max_vq() hunk from 4/9 to 3/9 and
+    added a fix for it in 8/9
+  - Picked up some more tags from Eric
 
-Just wanted to check again -
+v4:
+  - Integrated Richard Henderson's rework for the sve property
+    validation, in order to do all validating at finalize time
+    and save several lines of code.
+  - Fixed 'host' cpu SVE default. It was still off by default.
+  - Cleaned up #ifdef's for sve_bswap64()
+  - Removed redundant KVM_CAP_ARM_SVE extension check in
+    kvm_arm_sve_get_vls()
+  - Improved the KVM SVE qtest
+  - Renamed sve<vl-bits> to sve<N> everywhere
+  - Renamed power-of-2 to power-of-two everywhere
+  - Picked up some more tags from Richard
 
-Does ATF and QEMU (for ARM64) support cold boot only and does not have=20
-support for kexec?
+Thanks!
+drew
 
-thanks,
-  -lakshmi
+
+Andrew Jones (9):
+  target/arm/monitor: Introduce qmp_query_cpu_model_expansion
+  tests: arm: Introduce cpu feature tests
+  target/arm: Allow SVE to be disabled via a CPU property
+  target/arm/cpu64: max cpu: Introduce sve<N> properties
+  target/arm/kvm64: Add kvm_arch_get/put_sve
+  target/arm/kvm64: max cpu: Enable SVE when available
+  target/arm/kvm: scratch vcpu: Preserve input kvm_vcpu_init features
+  target/arm/cpu64: max cpu: Support sve properties with KVM
+  target/arm/kvm: host cpu: Add support for sve<N> properties
+
+ docs/arm-cpu-features.rst | 317 ++++++++++++++++++++++
+ include/qemu/bitops.h     |   1 +
+ qapi/machine-target.json  |   6 +-
+ target/arm/cpu.c          |  25 +-
+ target/arm/cpu.h          |  21 ++
+ target/arm/cpu64.c        | 356 ++++++++++++++++++++++++-
+ target/arm/helper.c       |  10 +-
+ target/arm/kvm.c          |  25 +-
+ target/arm/kvm32.c        |   6 +-
+ target/arm/kvm64.c        | 323 ++++++++++++++++++++---
+ target/arm/kvm_arm.h      |  39 +++
+ target/arm/monitor.c      | 157 +++++++++++
+ tests/Makefile.include    |   5 +-
+ tests/arm-cpu-features.c  | 542 ++++++++++++++++++++++++++++++++++++++
+ 14 files changed, 1776 insertions(+), 57 deletions(-)
+ create mode 100644 docs/arm-cpu-features.rst
+ create mode 100644 tests/arm-cpu-features.c
+
+-- 
+2.20.1

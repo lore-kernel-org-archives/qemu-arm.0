@@ -1,147 +1,106 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp8446787wrp;
-        Tue, 1 Oct 2019 09:57:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyis2tQkKPitRerelBknxcSrlwkxyEFIsAT0SEWBujpOwdFFK+gd4X1Kw/vmb5uy0mUKHRN
-X-Received: by 2002:a17:906:18a1:: with SMTP id c1mr24954204ejf.4.1569949049878;
-        Tue, 01 Oct 2019 09:57:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569949049; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp8511355wrp;
+        Tue, 1 Oct 2019 10:52:24 -0700 (PDT)
+X-Received: by 2002:a17:902:558f:: with SMTP id g15mr19498927pli.91.1569952344840;
+        Tue, 01 Oct 2019 10:52:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569952344; cv=none;
         d=google.com; s=arc-20160816;
-        b=eBJFrCf5LXhyPStUZ3AkmztZ5+XSBzKbpVdWaMJ86MmuYrJnVcSZVaqP8VW+C86zob
-         klYqf9AK9qMt5ufFhxZBQXXKdOuGpco4gYgx/y25dpGUeg1/J9V6LDdhKoidDnpw6jNN
-         NNJgHM3oaNCO8tGd+5x6VM5F9neZfXngKTnVYOc9pnzae1NGkq6vt/2IvqCneSKqC1pz
-         iyYI/MgAKCWD+xYoppefn6YHTz3ZLqtPcxsYxyMzU+Aky1eadhpg5XElUi8Jej3PCQ4i
-         r+P09fn7x+X2SSij/8wyvIIcrYYHTSy2qfL8bTM93B3TsAiQ7TWQyWSTN7zFnyRAbpWB
-         863w==
+        b=LwRVvkKLMCAzhI8I+cClSD/RbrC4YsevdFkXb5lDSs0mUrx5EdvDl0+Qs1nTnpIMQw
+         X+eaehDdA3NZwKlO87og1PZDOebDBQdf6REH/0ZOUbiryQ8VsNjjKauV5QWlRfjCBkIN
+         M/vuZw0zi5/X3Nju9IvpZOw36MLTr+9FRA3+h4gpPhJ7W6OuM4qY6NDlWC9FOoQxUR2Y
+         cRpuChLfyP4Cyx9dJ4pQT5jddfh5nLnnSw9Rc03kiBn8VE0mFHDlCgwXvVpm+j4k9Inz
+         If99tnuEdRfFVD5CSp5ClnuI0eOn7yVHGWsrpts//Z71L2ax1N7Q7KfRmY8WjH5VPimT
+         qCgw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
          :dkim-signature;
-        bh=iDE3NPxK2YgasB7/UtWZn8dDQ9EAgUrKIEWxXkVOJEs=;
-        b=qQBZyGYSkO51GdFF/8fPL0Xk8PKHWsxvy7VSxNtLcYaU64d6/z8oncu9AGKHvigVLs
-         Ut/H7SxMttxA0tvkUsO8oT4s9RfMP89qH1T6TwE6nqELjdpplDUPo16iJumz/zrbIXd3
-         zAmkYgNntszimHxyMmqUSpGNXtpYPRraYNFT/+WJbDeGejAoddli7IdpW1pDUrO5Om6d
-         TkYqAQgjDLddwr1Yl5L4K0Jy+tGBzuT2lBUH7ingOnotn9pQ/IRulI/fFrNnAa/9bdX+
-         IClShaYhp2GD++pxeR+zw+eM1uIfL/YF8Vvb4feTavvQ/D4IfxqWKiRCNXGjp98kmMnZ
-         uYxA==
+        bh=IamS+0u8k2KB8OrUkHc8+dAuTrF8fBqWKyndWEEqrOo=;
+        b=Pi3hfiJbmeQ+0RUXuXH8oprGjyZHILDLUi7vgVHWToqQKQuLzFsH+sgAuLkz5g0y+N
+         bzUS92GI1wt690xFCrPGdqiR8KIONIo3cx+XWawjiILJ5PkNDIdGwIBUcqfbfNDOiHa3
+         Ou1Wk6T8GmWrEj6bZBbIgD+EGE62PkR5umJmnQJpTHd20XAW5qOUlcHzdLwQrU83kokV
+         hbz6aCeszWtkBxthrXc7ddNNLsfXTGRG91Hg7b2MfFhRNGiLm3y59yPhFMM5iDlzmMpv
+         EJ3wCT/G52YM6ABCrT1IMQbMca8iK2F7jloHYl6jvfQvYrDfKYDhcPVfZN66ACajT+ml
+         Hsyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Z+ThUQ+x;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z10si9454812edx.168.2019.10.01.09.57.29
+       dkim=pass header.i=@linaro.org header.s=google header.b=dPqfyvzr;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id 10sor4514732pjj.22.2019.10.01.10.52.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Oct 2019 09:57:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 01 Oct 2019 10:52:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Z+ThUQ+x;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45094 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iFLSq-0008J4-D7
-	for alex.bennee@linaro.org; Tue, 01 Oct 2019 12:57:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55780)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <ard.biesheuvel@linaro.org>) id 1iFL35-0004Uu-Tm
- for qemu-devel@nongnu.org; Tue, 01 Oct 2019 12:30:59 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <ard.biesheuvel@linaro.org>) id 1iFL33-0007um-Lu
- for qemu-devel@nongnu.org; Tue, 01 Oct 2019 12:30:51 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:55917)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <ard.biesheuvel@linaro.org>)
- id 1iFL31-0007qS-JR
- for qemu-devel@nongnu.org; Tue, 01 Oct 2019 12:30:49 -0400
-Received: by mail-wm1-x343.google.com with SMTP id a6so4065789wma.5
- for <qemu-devel@nongnu.org>; Tue, 01 Oct 2019 09:30:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=iDE3NPxK2YgasB7/UtWZn8dDQ9EAgUrKIEWxXkVOJEs=;
- b=Z+ThUQ+xug7orDJ6yRzSKmboswm1kWjiB2agoyiTUNh4x3wAf0YD0YcWjh22THsmtQ
- gn/f0sQRWXAYFaCtstRqGFFxGkc1RK1jt0O3BAo7wctY8ntLdu2YZbwnHpjiwMzOx0LX
- 5jQmCOzvAnn2W6GyqDcD3S2CTvVFY2HnEe0SNHRlwnIgm6sPBopaOXXhJxTaILtdONN0
- lbrD+Y1rbRQNV2RVo7bwc70M3WpSGXY7gEYRBraS4H+9wy9d+eqZbKG5TTAbFlchfX/q
- 6ddW+REWFJJewJkinmVhOsU2Bl4Ite9mzoIFArQL8A4/c3Zd6w5/DMDc//i/ChKjN8g3
- LV9w==
+       dkim=pass header.i=@linaro.org header.s=google header.b=dPqfyvzr;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=IamS+0u8k2KB8OrUkHc8+dAuTrF8fBqWKyndWEEqrOo=;
+        b=dPqfyvzrh3a7uxqWuSxWN+VJy1GbNgTk7CU8m/eYN25DRIhxj5038QzyI73yyM7N1M
+         qHwVBr6lwAQkw5PpYPNcIGjL9BX2YdtzYTXsTquRAe7g1oCAK3NVKis+2+zSKVKTUzfi
+         RQ4moYvIlXNIN8NH7YV7pPrzmFCCLlMH8IuETmRyddUIO34foSrFEF9mq8TI2KxBAbUj
+         pd2UDAgJYIJsVxhCrSfvZhEXlrGb4yAgsSH/01cjEWnn2McO/4F036Fvn1NsYiXfWqXg
+         fDkR2fV02r3FCWkDQ9vc0Gqpzj6nxgcQBWmU+xIGxtD+4RPuycLT9GHlCXyD1DYjoUzA
+         uLkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=iDE3NPxK2YgasB7/UtWZn8dDQ9EAgUrKIEWxXkVOJEs=;
- b=ZNZ7ojID41fupWmj4l5wm5en8Ij3lzcAjvAXh/5RWUsfmhhrsI0u9h4AJ5oGIv/RqM
- eyo7HPB7HfZevhshSsDO8AHpeXH0uaGUVYXmixCqmcO8U3rvYOvJF5dmkCZqqfn6kySL
- Ie14vkruLiWjjgn7qqqrrYxKejfHFqsMDYZuEXt9pgZjkis/e4dzFPXODIRlhFwog/VW
- oWHW4obHqZ1CsMYYlDqjuEkebrOAXO2nmy/AkkBoohdUCMPQ2+Xq7ZcnMv5vNRTecxuX
- HIMPlw8TUvu2qfulKoeWAR9ISoAgGX1KSmzjuymvKfC+0IuZKd78CrzvKhKej0xbSYXy
- e8kg==
-X-Gm-Message-State: APjAAAVQ7sixpfLQn7dhCVL4UkS8nXrJkwQ3zAl4mwwxCqLhdXlnWvQa
- 3s+8yd9Id0vPkkJ9qdK9WduNaPcJn1XwrciHYoSQNA==
-X-Received: by 2002:a7b:cb55:: with SMTP id v21mr4537934wmj.53.1569947443269; 
- Tue, 01 Oct 2019 09:30:43 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=IamS+0u8k2KB8OrUkHc8+dAuTrF8fBqWKyndWEEqrOo=;
+        b=uWwSrs3qaSB9e8zZOxjVS195NIFmAzyqcLPIjEr3VmM7rxKbKoNmJa9b9y+LqKyE5j
+         aSKOvaQa2tQOyuzqpPlYHVZHLpSDdqwhlTbfsUENqVwuGboxWcBEfzXCxCPEBEWVBUSP
+         HretfHg0SP+tCknjifMa8oBBJcXFsN21mHbeJBvnJHrtPUQ9qSjXr+E9hQYasNvB5I9c
+         ZfSe5bgvHdz4kYQ10WeLPbj4nmT7WdKEVp2ejs4inOTSM8VWQfCKMM7iFzgGRUOoHIww
+         p7Fw596GAb/sKV3r9fQ+XSjEZ+Jx62v4R5KoSRN9uCjoVAqi3y/Htl7SDD7XeAFlRX4f
+         B/Sw==
+X-Gm-Message-State: APjAAAWQbIYI0flWJ9tY0LKo/ZwD/qgx+bmj7m9bKzTJeNbgcpFIx/oT
+	XD+LABcKM/v3c1/X3WN4Kd1MobYx
+X-Google-Smtp-Source: APXvYqyUdGXUSQpbOyELCIMlgZN1jCNn37UT+braM2Vl9kkDthbvSGTcqUvnsE5RmpDGMGaznr76cA==
+X-Received: by 2002:a17:90a:5886:: with SMTP id j6mr6701868pji.137.1569952344168;
+        Tue, 01 Oct 2019 10:52:24 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+        by smtp.gmail.com with ESMTPSA id r11sm23427490pgn.67.2019.10.01.10.52.22
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 01 Oct 2019 10:52:23 -0700 (PDT)
+Subject: Re: [PATCH v5 5/9] target/arm/kvm64: Add kvm_arch_get/put_sve
+To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org, alex.bennee@linaro.org, armbru@redhat.com,
+ eblake@redhat.com, Dave.Martin@arm.com, eric.auger@redhat.com,
+ imammedo@redhat.com
+References: <20191001125845.8793-1-drjones@redhat.com>
+ <20191001125845.8793-6-drjones@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <5d79e6bf-2b16-b7c9-726d-226d149f7e4e@linaro.org>
+Date: Tue, 1 Oct 2019 10:52:21 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-References: <21633062-b021-a8e7-0cc8-062f4c29dde5@linux.microsoft.com>
- <ca5c74db-cf5d-0c3f-eb6f-27d1092420ae@linux.microsoft.com>
- <65b49cb0-c9fb-d966-8dec-1e39d09ab8c7@redhat.com>
- <88878b22-803f-41fc-9df2-2c6eb551b98d@linux.microsoft.com>
-In-Reply-To: <88878b22-803f-41fc-9df2-2c6eb551b98d@linux.microsoft.com>
-From: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Date: Tue, 1 Oct 2019 18:30:31 +0200
-Message-ID: <CAKv+Gu8kwg_tsrH7qne3H11hUPyA6zw-J_jpUmiyJMvXo3-SNQ@mail.gmail.com>
-Subject: Re: Is kexec supported in QEMU for ARM64 (qemu-system-aarch64) with
- arm-trusted-firmware, optee, and u-boot.
-To: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::343
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: James Bottomley <James.Bottomley@hansenpartnership.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zHvt61DIC0s2
+In-Reply-To: <20191001125845.8793-6-drjones@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: 5xjWW+U9rY7l
 
-On Tue, 1 Oct 2019 at 00:27, Lakshmi Ramasubramanian
-<nramas@linux.microsoft.com> wrote:
->
-> On 9/27/19 2:15 AM, Philippe Mathieu-Daud=C3=A9 wrote:
->
-> > Cc'ing Ard too
-> >>
-> >> https://salsa.debian.org/debian/atf-allwinner/commit/b6b671c4ac4bd5595=
-306863225bb3bece1e6135c
-> >>
-> >>
-> >> Current limitations:
-> >> * Only cold boot is supported
-> >> * No build instructions for QEMU_EFI.fd and rootfs-arm64.cpio.gz
-> >> * No instructions for how to load a BL32 (Secure Payload)
-> >>
-> >> So looks like only cold boot is supported (no kexec support)
-> >> Is this correct?
->
-> Just wanted to check again -
->
-> Does ATF and QEMU (for ARM64) support cold boot only and does not have
-> support for kexec?
->
+On 10/1/19 5:58 AM, Andrew Jones wrote:
+> These are the SVE equivalents to kvm_arch_get/put_fpsimd. Note, the
+> swabbing is different than it is for fpsmid because the vector format
+> is a little-endian stream of words.
+> 
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> ---
+>  target/arm/kvm64.c | 183 ++++++++++++++++++++++++++++++++++++++-------
+>  1 file changed, 155 insertions(+), 28 deletions(-)
 
-kexec is a linux concept, so whether it is supported should not depend
-on the secure world firmware or the underlying host.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~

@@ -1,66 +1,65 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp8387275wrp;
-        Tue, 1 Oct 2019 09:04:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxMuTHXmwMtPrOI6r1BNDYGupHibiwWOQAqWExqNWfDTzswFvy6Ohsxr+A9MfwJMyAcl6ho
-X-Received: by 2002:a0c:8a6d:: with SMTP id 42mr26321003qvu.138.1569945860996;
-        Tue, 01 Oct 2019 09:04:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569945860; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp8406425wrp;
+        Tue, 1 Oct 2019 09:19:49 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxLGkUYvNhRiatRe6uc9eixQwTCet/SMTghmKCIaF6nwTFM9LpZgPpFj6Dfg7z4w8qzcOqB
+X-Received: by 2002:a17:906:18a1:: with SMTP id c1mr24795874ejf.4.1569946788864;
+        Tue, 01 Oct 2019 09:19:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569946788; cv=none;
         d=google.com; s=arc-20160816;
-        b=lz9xiyyCwjy+cagFcBU/Y/92xP56U+PdtujbDEYw0l9o6dTSMdxuAlxaLp6ejklBNP
-         S0K4JFiuwEuwlG2bGMuYL/ub0KJ0lifDn7UqH7fK/3GIKYZkajXwbEk24X3aA+LyiEtk
-         +wQRElHHXmGhkcQZFGVFLo7ijzCv5Dc9NzwH6wFHpaYm/xNT9gjEhP81i1hj7aEJnW1i
-         ++nl6i6yOxl5shAp58LQfM1Oi3080WR8pyMQoYHmwCbYGTz8e9xryJ0GO8fJIO68F3C4
-         1+CvMQB0w9A/eB5+awGMTXrjsyJDfi59aHKi6oQWZX6oMSSryTkJ9u26eWxBGgisxuo2
-         b8zA==
+        b=0gOg8GPwpNmrsLHf6dRNIjDFoYD6WJ9wxgLOsuDHUTbyVDJzjYjglBW74LNJF4p+AF
+         1zKUnfgTnzhzaDZ3AYS5/Fn45OHxA44aE3EAQ4B+1s4mu81b8luP4YemJDTw/Sf+vs8N
+         mXODLOazSbNTEUNHbBink7YhMXiAsf4+eb72teVmIOfzdzZ7y3m15cfbLDQNHr4U44+A
+         lxirky6yyYWEK7TzaLlQZZ6vTVb7tWMX7KVWSt46aLwbRfVfW1QcLHTg99MXpkFldVg0
+         LW3x7CgzhC2GvuMADu+/KNaeKVsx76gULfvYdCFppKC+85/Zv9An7AqE+OvcL0E7OgE0
+         7j2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=MM/4Le1ElSFvXB5k6S3LfZVUKx2mUpsF+PsU6qPs8a4=;
-        b=Au4+D5Btj8d0VbeCdOmspiWcZ3uG+0/ZJxol1SpM7Sz+4soCS/rgTw6xcSG9LLiVjD
-         HiyF5MTgGjcB9k6W/WsoYNQAhEKsgKOTpE1LeO5rvH4xPL68Pdhy0okJb2kitOxZNdvj
-         Xv/yIe8T6QENOQepqzY0MHdt6hEolW2k2r5ZM+Ip5cFpPZOf6jWJNoGNIfZ3abcI78Pg
-         fyK69xmDlvtvASOwTkxpJR6iep1gcJypEIn26OKizLXnliisalojzwcZnzbOATYM374j
-         zfyRcKxXpUuCkoZyqkXqMBcAPkKSd2HA1g/fcAjmndNxXjGkMUu4+EVUB2P0f9UJ0u+A
-         pepQ==
+        bh=1rELVPty46iwBPISyTbvW979a9IXXR0O7l3s977xb48=;
+        b=jndeMm1GTabz2w7Jc2S3/ZhU0z6sXXXWwa9p6f4gSx2T8JuFblGLMBp9Mu2RoPmELc
+         wVpSm4fNN10colOERzL132hwrb2PmPy3P2j4O/l3UxCc/2tZcwBBe1TKze80jIAp2bco
+         hNL/qtvOO9vsgJ0YBRckESd9CKKMpwJJ+A7o0JsJ9/gBgYHmUEbp0Qq/U7nIouP2H/S/
+         wvPgHBXNLrJsXWxwbsfh++2oszVs7Ij2duVHFJdgSJ3MYVdyFZh1TbLqXIjlKUVjZDrX
+         jgpQmOAeRKsmLuuZQSbs+hVka1YFix21cGaBKf1ZMPbmNYfse7AGV3K9Oxa48DmTTTOQ
+         q61A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s46si15654216qvs.131.2019.10.01.09.04.20
+        by mx.google.com with ESMTPS id c14si9251349edc.81.2019.10.01.09.19.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Oct 2019 09:04:20 -0700 (PDT)
+        Tue, 01 Oct 2019 09:19:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Received: from localhost ([::1]:44066 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44278 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iFKdP-00021t-6n
-	for alex.bennee@linaro.org; Tue, 01 Oct 2019 12:04:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49917)
+	id 1iFKsN-0008WF-4L
+	for alex.bennee@linaro.org; Tue, 01 Oct 2019 12:19:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50409)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iFKT1-00082w-Mk
- for qemu-devel@nongnu.org; Tue, 01 Oct 2019 11:53:36 -0400
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iFKU0-0000jI-B8
+ for qemu-devel@nongnu.org; Tue, 01 Oct 2019 11:54:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iFKT0-0006XU-9m
- for qemu-devel@nongnu.org; Tue, 01 Oct 2019 11:53:35 -0400
-Received: from relay.sw.ru ([185.231.240.75]:38372)
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iFKTy-0007Eu-97
+ for qemu-devel@nongnu.org; Tue, 01 Oct 2019 11:54:36 -0400
+Received: from relay.sw.ru ([185.231.240.75]:38482)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
- id 1iFKT0-0006WM-0v; Tue, 01 Oct 2019 11:53:34 -0400
+ id 1iFKTr-0006Zq-SI; Tue, 01 Oct 2019 11:54:34 -0400
 Received: from [10.94.3.0] (helo=kvm.qa.sw.ru)
  by relay.sw.ru with esmtp (Exim 4.92.2)
  (envelope-from <vsementsov@virtuozzo.com>)
- id 1iFKSx-0004xb-Q0; Tue, 01 Oct 2019 18:53:31 +0300
+ id 1iFKSx-0004xb-Aj; Tue, 01 Oct 2019 18:53:31 +0300
 From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 08/31] ARM TCG CPUs: Fix error_append_hint/error_prepend
- usage
-Date: Tue,  1 Oct 2019 18:52:56 +0300
-Message-Id: <20191001155319.8066-9-vsementsov@virtuozzo.com>
+Subject: [PATCH v4 06/31] python: add commit-per-subsystem.py
+Date: Tue,  1 Oct 2019 18:52:54 +0300
+Message-Id: <20191001155319.8066-7-vsementsov@virtuozzo.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191001155319.8066-1-vsementsov@virtuozzo.com>
 References: <20191001155319.8066-1-vsementsov@virtuozzo.com>
@@ -79,78 +78,152 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>
+Cc: fam@euphon.net, pburton@wavecomp.com, peter.maydell@linaro.org,
+ codyprime@gmail.com, jasowang@redhat.com, mark.cave-ayland@ilande.co.uk,
+ mdroth@linux.vnet.ibm.com, kraxel@redhat.com, sundeep.lkml@gmail.com,
+ qemu-block@nongnu.org, quintela@redhat.com, arikalo@wavecomp.com,
+ mst@redhat.com, armbru@redhat.com, pasic@linux.ibm.com, borntraeger@de.ibm.com,
+ joel@jms.id.au, marcandre.lureau@redhat.com, rth@twiddle.net,
+ farman@linux.ibm.com, ehabkost@redhat.com, sw@weilnetz.de, groug@kaod.org,
+ yuval.shaia@oracle.com, dgilbert@redhat.com, alex.williamson@redhat.com,
+ integration@gluster.org, clg@kaod.org, stefanha@redhat.com, david@redhat.com,
+ jsnow@redhat.com, david@gibson.dropbear.id.au, kwolf@redhat.com,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>, berrange@redhat.com,
+ andrew@aj.id.au, cohuck@redhat.com, qemu-s390x@nongnu.org, mreitz@redhat.com,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: icT1VIEyaLXX
+X-TUID: 0Pf5g8skIJ3p
 
-If we want to add some info to errp (by error_prepend() or
-error_append_hint()), we must use the ERRP_AUTO_PROPAGATE macro.
-Otherwise, this info will not be added when errp == &fatal_err
-(the program will exit prior to the error_append_hint() or
-error_prepend() call).  Fix such cases.
+Add script to automatically commit tree-wide changes per-subsystem.
 
-This commit (together with its neighbors) was generated by
-
-git grep -l 'error_\(append_hint\|prepend\)(errp' | while read f; do \
-spatch --sp-file scripts/coccinelle/fix-error-add-info.cocci \
---in-place $f; done
-
-and then
-
-./python/commit-per-subsystem.py MAINTAINERS "$(< auto-msg)"
-
-(auto-msg was a file with this commit message)
-
-and then by hand, for not maintained changed files:
-
-git commit -m "<SUB-SYSTEM>: $(< auto-msg)" <FILES>
-
-Still, for backporting it may be more comfortable to use only the first
-command and then do one huge commit.
-
-Reported-by: Greg Kurz <groug@kaod.org>
 Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 ---
- hw/arm/msf2-soc.c | 1 +
- hw/arm/virt.c     | 2 ++
- 2 files changed, 3 insertions(+)
 
-diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
-index 008fd9327a..b76f45657e 100644
---- a/hw/arm/msf2-soc.c
-+++ b/hw/arm/msf2-soc.c
-@@ -85,6 +85,7 @@ static void m2sxxx_soc_initfn(Object *obj)
- 
- static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
- {
-+    ERRP_AUTO_PROPAGATE();
-     MSF2State *s = MSF2_SOC(dev_soc);
-     DeviceState *dev, *armv7m;
-     SysBusDevice *busdev;
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index d74538b021..ce2e57fd59 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1793,6 +1793,7 @@ static char *virt_get_gic_version(Object *obj, Error **errp)
- 
- static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
- {
-+    ERRP_AUTO_PROPAGATE();
-     VirtMachineState *vms = VIRT_MACHINE(obj);
- 
-     if (!strcmp(value, "3")) {
-@@ -1825,6 +1826,7 @@ static char *virt_get_iommu(Object *obj, Error **errp)
- 
- static void virt_set_iommu(Object *obj, const char *value, Error **errp)
- {
-+    ERRP_AUTO_PROPAGATE();
-     VirtMachineState *vms = VIRT_MACHINE(obj);
- 
-     if (!strcmp(value, "smmuv3")) {
+CC: kwolf@redhat.com
+CC: mreitz@redhat.com
+CC: jsnow@redhat.com
+CC: fam@euphon.net
+CC: sw@weilnetz.de
+CC: codyprime@gmail.com
+CC: marcandre.lureau@redhat.com
+CC: pbonzini@redhat.com
+CC: groug@kaod.org
+CC: sundeep.lkml@gmail.com
+CC: peter.maydell@linaro.org
+CC: stefanha@redhat.com
+CC: pburton@wavecomp.com
+CC: arikalo@wavecomp.com
+CC: berrange@redhat.com
+CC: ehabkost@redhat.com
+CC: david@gibson.dropbear.id.au
+CC: clg@kaod.org
+CC: mst@redhat.com
+CC: marcel.apfelbaum@gmail.com
+CC: mark.cave-ayland@ilande.co.uk
+CC: yuval.shaia@oracle.com
+CC: cohuck@redhat.com
+CC: farman@linux.ibm.com
+CC: rth@twiddle.net
+CC: david@redhat.com
+CC: pasic@linux.ibm.com
+CC: borntraeger@de.ibm.com
+CC: kraxel@redhat.com
+CC: alex.williamson@redhat.com
+CC: andrew@aj.id.au
+CC: joel@jms.id.au
+CC: eblake@redhat.com
+CC: armbru@redhat.com
+CC: mdroth@linux.vnet.ibm.com
+CC: quintela@redhat.com
+CC: dgilbert@redhat.com
+CC: jasowang@redhat.com
+CC: qemu-block@nongnu.org
+CC: integration@gluster.org
+CC: qemu-arm@nongnu.org
+CC: qemu-ppc@nongnu.org
+CC: qemu-s390x@nongnu.org
+
+
+ python/commit-per-subsystem.py | 69 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 69 insertions(+)
+ create mode 100755 python/commit-per-subsystem.py
+
+diff --git a/python/commit-per-subsystem.py b/python/commit-per-subsystem.py
+new file mode 100755
+index 0000000000..d8442d9ea3
+--- /dev/null
++++ b/python/commit-per-subsystem.py
+@@ -0,0 +1,69 @@
++#!/usr/bin/env python3
++#
++# Copyright (c) 2019 Virtuozzo International GmbH
++#
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 2 of the License, or
++# (at your option) any later version.
++#
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++#
++
++import subprocess
++import sys
++
++
++def git_add(pattern):
++    subprocess.run(['git', 'add', pattern])
++
++
++def git_commit(msg):
++    subprocess.run(['git', 'commit', '-m', msg], capture_output=True)
++
++
++maintainers = sys.argv[1]
++message = sys.argv[2].strip()
++
++subsystem = None
++
++shortnames = {
++    'Block layer core': 'block',
++    'ARM cores': 'arm',
++    'Network Block Device (NBD)': 'nbd',
++    'Command line option argument parsing': 'cmdline',
++    'Character device backends': 'chardev',
++    'S390 general architecture support': 's390'
++}
++
++
++def commit():
++    if subsystem:
++        msg = subsystem
++        if msg in shortnames:
++            msg = shortnames[msg]
++        msg += ': ' + message
++        git_commit(msg)
++
++
++with open(maintainers) as f:
++    for line in f:
++        line = line.rstrip()
++        if not line:
++            continue
++        if len(line) >= 2 and line[1] == ':':
++            if line[0] == 'F' and line[3:] not in ['*', '*/']:
++                git_add(line[3:])
++        else:
++            # new subsystem start
++            commit()
++
++            subsystem = line
++
++commit()
 -- 
 2.21.0
 

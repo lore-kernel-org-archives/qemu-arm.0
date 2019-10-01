@@ -1,65 +1,65 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp8406425wrp;
-        Tue, 1 Oct 2019 09:19:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxLGkUYvNhRiatRe6uc9eixQwTCet/SMTghmKCIaF6nwTFM9LpZgPpFj6Dfg7z4w8qzcOqB
-X-Received: by 2002:a17:906:18a1:: with SMTP id c1mr24795874ejf.4.1569946788864;
-        Tue, 01 Oct 2019 09:19:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569946788; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp8412291wrp;
+        Tue, 1 Oct 2019 09:25:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyOl47UI0TthmvPEypSquj8v6mJ3AOEics5l27muLDq95CZoRX8sjQOSAfb7R/an7vgZruD
+X-Received: by 2002:a17:906:ecf6:: with SMTP id qt22mr24920164ejb.212.1569947102658;
+        Tue, 01 Oct 2019 09:25:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569947102; cv=none;
         d=google.com; s=arc-20160816;
-        b=0gOg8GPwpNmrsLHf6dRNIjDFoYD6WJ9wxgLOsuDHUTbyVDJzjYjglBW74LNJF4p+AF
-         1zKUnfgTnzhzaDZ3AYS5/Fn45OHxA44aE3EAQ4B+1s4mu81b8luP4YemJDTw/Sf+vs8N
-         mXODLOazSbNTEUNHbBink7YhMXiAsf4+eb72teVmIOfzdzZ7y3m15cfbLDQNHr4U44+A
-         lxirky6yyYWEK7TzaLlQZZ6vTVb7tWMX7KVWSt46aLwbRfVfW1QcLHTg99MXpkFldVg0
-         LW3x7CgzhC2GvuMADu+/KNaeKVsx76gULfvYdCFppKC+85/Zv9An7AqE+OvcL0E7OgE0
-         7j2w==
+        b=BxiC8x3RdY3EvHc7Kt5XIgOdEqtd0JrVoDQH7aloiO+o1D7AY8oKyoQmWiECfs+TXl
+         UR6sbToCqbyaKT4U/k8GeG0M9FUG/cH/LB/rANzu7eMrpJDX4xJ1A/qXg3jQ8i88WT7M
+         Wqks8t9X8k1BEsxQuGFLxvPHtuot5I6Yb3Dd6v+Lza32XVNN2PrwwNEMPVmATT3WznJX
+         ad7v7VX3xST+vxJslcHsmn/vRN4m0DPfZhhescxJe96tmFG7fuSEvYLQajXdm/bPEGFv
+         29xj8QtW7s5W5apdsJvhNBJzz+wKeEBO1ovhC4fIk885jRpmuxUCL+sNYhNLL/gGeSfB
+         0QRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=1rELVPty46iwBPISyTbvW979a9IXXR0O7l3s977xb48=;
-        b=jndeMm1GTabz2w7Jc2S3/ZhU0z6sXXXWwa9p6f4gSx2T8JuFblGLMBp9Mu2RoPmELc
-         wVpSm4fNN10colOERzL132hwrb2PmPy3P2j4O/l3UxCc/2tZcwBBe1TKze80jIAp2bco
-         hNL/qtvOO9vsgJ0YBRckESd9CKKMpwJJ+A7o0JsJ9/gBgYHmUEbp0Qq/U7nIouP2H/S/
-         wvPgHBXNLrJsXWxwbsfh++2oszVs7Ij2duVHFJdgSJ3MYVdyFZh1TbLqXIjlKUVjZDrX
-         jgpQmOAeRKsmLuuZQSbs+hVka1YFix21cGaBKf1ZMPbmNYfse7AGV3K9Oxa48DmTTTOQ
-         q61A==
+        bh=iOR1wPucok67SIc9AtGi38LPajjE+rCnTpIVcEkmZro=;
+        b=No3hlHtdstPS6korXCAO4DyAJ/G8k2gA5tfAqvkjcVS+AT5dSchkonXU1QrOy2r5cm
+         tpHMuiMvdBL4X43ToUwE+vHZmbEK7YoU3XCzrYYebqMdYpa3hgajaWufSTSlzQZjU/Gb
+         j3bgO/oL2eJoaa6WRyXQa2/U18LLdTzktfAly1+yh4GUCGJsH5+TxsxK2vhqWHfDEAh1
+         sAPb+NnB2vNmOgUTYlNlgnoycnocIR6hQHnRsVw5NuzsQxQAqzuBZIx5wb9lbVDAu0Kt
+         ZoZ+mPQJX28nyzxp9co5m0gciHZSERzJyCr3pNb7C9QvD50a7EP3577xrv0zG3QrZAP3
+         6jjw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c14si9251349edc.81.2019.10.01.09.19.48
+        by mx.google.com with ESMTPS id g21si8909814ejk.23.2019.10.01.09.25.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Oct 2019 09:19:48 -0700 (PDT)
+        Tue, 01 Oct 2019 09:25:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Received: from localhost ([::1]:44278 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44386 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iFKsN-0008WF-4L
-	for alex.bennee@linaro.org; Tue, 01 Oct 2019 12:19:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50409)
+	id 1iFKxR-0005eI-0E
+	for alex.bennee@linaro.org; Tue, 01 Oct 2019 12:25:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50410)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iFKU0-0000jI-B8
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iFKU0-0000jN-C5
  for qemu-devel@nongnu.org; Tue, 01 Oct 2019 11:54:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iFKTy-0007Eu-97
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iFKTy-0007Ec-5G
  for qemu-devel@nongnu.org; Tue, 01 Oct 2019 11:54:36 -0400
-Received: from relay.sw.ru ([185.231.240.75]:38482)
+Received: from relay.sw.ru ([185.231.240.75]:38470)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
- id 1iFKTr-0006Zq-SI; Tue, 01 Oct 2019 11:54:34 -0400
+ id 1iFKTr-0006Zo-8W; Tue, 01 Oct 2019 11:54:33 -0400
 Received: from [10.94.3.0] (helo=kvm.qa.sw.ru)
  by relay.sw.ru with esmtp (Exim 4.92.2)
  (envelope-from <vsementsov@virtuozzo.com>)
- id 1iFKSx-0004xb-Aj; Tue, 01 Oct 2019 18:53:31 +0300
+ id 1iFKSw-0004xb-Of; Tue, 01 Oct 2019 18:53:30 +0300
 From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 06/31] python: add commit-per-subsystem.py
-Date: Tue,  1 Oct 2019 18:52:54 +0300
-Message-Id: <20191001155319.8066-7-vsementsov@virtuozzo.com>
+Subject: [PATCH v4 04/31] error: auto propagated local_err
+Date: Tue,  1 Oct 2019 18:52:52 +0300
+Message-Id: <20191001155319.8066-5-vsementsov@virtuozzo.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191001155319.8066-1-vsementsov@virtuozzo.com>
 References: <20191001155319.8066-1-vsementsov@virtuozzo.com>
@@ -93,9 +93,28 @@ Cc: fam@euphon.net, pburton@wavecomp.com, peter.maydell@linaro.org,
  qemu-arm@nongnu.org, qemu-ppc@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0Pf5g8skIJ3p
+X-TUID: pEwejedTlV4o
 
-Add script to automatically commit tree-wide changes per-subsystem.
+Here is introduced ERRP_AUTO_PROPAGATE macro, to be used at start of
+functions with errp OUT parameter.
+
+It has three goals:
+
+1. Fix issue with error_fatal & error_prepend/error_append_hint: user
+can't see this additional information, because exit() happens in
+error_setg earlier than information is added. [Reported by Greg Kurz]
+
+2. Fix issue with error_abort & error_propagate: when we wrap
+error_abort by local_err+error_propagate, resulting coredump will
+refer to error_propagate and not to the place where error happened.
+(the macro itself doesn't fix the issue, but it allows to [3.] drop all
+local_err+error_propagate pattern, which will definitely fix the issue)
+[Reported by Kevin Wolf]
+
+3. Drop local_err+error_propagate pattern, which is used to workaround
+void functions with errp parameter, when caller wants to know resulting
+status. (Note: actually these functions could be merely updated to
+return int error code).
 
 Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 ---
@@ -144,86 +163,57 @@ CC: qemu-arm@nongnu.org
 CC: qemu-ppc@nongnu.org
 CC: qemu-s390x@nongnu.org
 
+ include/qapi/error.h | 37 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
 
- python/commit-per-subsystem.py | 69 ++++++++++++++++++++++++++++++++++
- 1 file changed, 69 insertions(+)
- create mode 100755 python/commit-per-subsystem.py
-
-diff --git a/python/commit-per-subsystem.py b/python/commit-per-subsystem.py
-new file mode 100755
-index 0000000000..d8442d9ea3
---- /dev/null
-+++ b/python/commit-per-subsystem.py
-@@ -0,0 +1,69 @@
-+#!/usr/bin/env python3
-+#
-+# Copyright (c) 2019 Virtuozzo International GmbH
-+#
-+# This program is free software; you can redistribute it and/or modify
-+# it under the terms of the GNU General Public License as published by
-+# the Free Software Foundation; either version 2 of the License, or
-+# (at your option) any later version.
-+#
-+# This program is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+# GNU General Public License for more details.
-+#
-+# You should have received a copy of the GNU General Public License
-+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+#
+diff --git a/include/qapi/error.h b/include/qapi/error.h
+index 9376f59c35..02f967ac1d 100644
+--- a/include/qapi/error.h
++++ b/include/qapi/error.h
+@@ -322,6 +322,43 @@ void error_set_internal(Error **errp,
+                         ErrorClass err_class, const char *fmt, ...)
+     GCC_FMT_ATTR(6, 7);
+ 
++typedef struct ErrorPropagator {
++    Error *local_err;
++    Error **errp;
++} ErrorPropagator;
 +
-+import subprocess
-+import sys
-+
-+
-+def git_add(pattern):
-+    subprocess.run(['git', 'add', pattern])
-+
-+
-+def git_commit(msg):
-+    subprocess.run(['git', 'commit', '-m', msg], capture_output=True)
-+
-+
-+maintainers = sys.argv[1]
-+message = sys.argv[2].strip()
-+
-+subsystem = None
-+
-+shortnames = {
-+    'Block layer core': 'block',
-+    'ARM cores': 'arm',
-+    'Network Block Device (NBD)': 'nbd',
-+    'Command line option argument parsing': 'cmdline',
-+    'Character device backends': 'chardev',
-+    'S390 general architecture support': 's390'
++static inline void error_propagator_cleanup(ErrorPropagator *prop)
++{
++    error_propagate(prop->errp, prop->local_err);
 +}
 +
++G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC(ErrorPropagator, error_propagator_cleanup);
 +
-+def commit():
-+    if subsystem:
-+        msg = subsystem
-+        if msg in shortnames:
-+            msg = shortnames[msg]
-+        msg += ': ' + message
-+        git_commit(msg)
++/*
++ * ERRP_AUTO_PROPAGATE
++ *
++ * This macro is created to be the first line of a function with Error **errp
++ * OUT parameter. It's needed only in cases where we want to use error_prepend,
++ * error_append_hint or dereference *errp. It's still safe (but useless) in
++ * other cases.
++ *
++ * If errp is NULL or points to error_fatal, it is rewritten to point to a
++ * local Error object, which will be automatically propagated to the original
++ * errp on function exit (see error_propagator_cleanup).
++ *
++ * After invocation of this macro it is always safe to dereference errp
++ * (as it's not NULL anymore) and to append hints (by error_append_hint)
++ * (as, if it was error_fatal, we swapped it with a local_error to be
++ * propagated on cleanup).
++ *
++ * Note: we don't wrap the error_abort case, as we want resulting coredump
++ * to point to the place where the error happened, not to error_propagate.
++ */
++#define ERRP_AUTO_PROPAGATE() \
++g_auto(ErrorPropagator) __auto_errp_prop = {.errp = errp}; \
++errp = ((errp == NULL || *errp == error_fatal) ? \
++    &__auto_errp_prop.local_err : errp)
 +
-+
-+with open(maintainers) as f:
-+    for line in f:
-+        line = line.rstrip()
-+        if not line:
-+            continue
-+        if len(line) >= 2 and line[1] == ':':
-+            if line[0] == 'F' and line[3:] not in ['*', '*/']:
-+                git_add(line[3:])
-+        else:
-+            # new subsystem start
-+            commit()
-+
-+            subsystem = line
-+
-+commit()
+ /*
+  * Special error destination to abort on error.
+  * See error_setg() and error_propagate() for details.
 -- 
 2.21.0
 

@@ -1,66 +1,66 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp8382850wrp;
-        Tue, 1 Oct 2019 09:01:06 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxteMUtDuyiQtsvK2y64SON/p4E9xTa73DSi9tpqlIgtoE9BgqcPJHX4Gw/n0N5prHukn1N
-X-Received: by 2002:a37:912:: with SMTP id 18mr6763325qkj.185.1569945665858;
-        Tue, 01 Oct 2019 09:01:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569945665; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp8387275wrp;
+        Tue, 1 Oct 2019 09:04:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxMuTHXmwMtPrOI6r1BNDYGupHibiwWOQAqWExqNWfDTzswFvy6Ohsxr+A9MfwJMyAcl6ho
+X-Received: by 2002:a0c:8a6d:: with SMTP id 42mr26321003qvu.138.1569945860996;
+        Tue, 01 Oct 2019 09:04:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569945860; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xz13XkrhUqb1nr2ESytWsq9FdTfSNczpMA6C+tIefmw+FHoPUFqmki0hu5EHMp4L6N
-         s3kCIJ870J7emRMxNwgO8Fd4etiqkBFAjGb53zaSuNw6amOedWj2rOggynKk76+/wNh/
-         g9kH7BdLssNjSwdqTVSZNEgyw0R1IH4gykTHkxNSQiMWMY9MmzMFVpb9UT8tuZmNZz9g
-         1/TdwKifrf6irmzFSraI+Ypeywo8R8chbWm3JSGE74+j23Pf1Eb3JDlQuIxqiQMzdZFX
-         77cIRy43mIvAUyvAxCzMSC5xlrKCR9IUuEsDqoo8kZGs6PR9kYYN88wsOR0krpUFbEET
-         L4Iw==
+        b=lz9xiyyCwjy+cagFcBU/Y/92xP56U+PdtujbDEYw0l9o6dTSMdxuAlxaLp6ejklBNP
+         S0K4JFiuwEuwlG2bGMuYL/ub0KJ0lifDn7UqH7fK/3GIKYZkajXwbEk24X3aA+LyiEtk
+         +wQRElHHXmGhkcQZFGVFLo7ijzCv5Dc9NzwH6wFHpaYm/xNT9gjEhP81i1hj7aEJnW1i
+         ++nl6i6yOxl5shAp58LQfM1Oi3080WR8pyMQoYHmwCbYGTz8e9xryJ0GO8fJIO68F3C4
+         1+CvMQB0w9A/eB5+awGMTXrjsyJDfi59aHKi6oQWZX6oMSSryTkJ9u26eWxBGgisxuo2
+         b8zA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=2f4hQhSLnIjbo2KGSeXghk4NVGigQ4HZe266C/l1Yr8=;
-        b=Mx+MJGd/8fsnslCKeF6pss1QGYKaQ8VzastGPrKd6Cfggm54pEImRxfyXuioQi0HAa
-         3CQob40hXvmMNhRbGLuRiDl8kNAs8Dieuzrv9WW2QL8ccV8cHtsSH5ap5Wz/geEvw52D
-         0Swx7KutCFnJOzEg6tQGq4cJDloRrDoU41yHsrA7SDYcKw4a88wWzo6Vexai9a/sunia
-         80zXIwNH5yxzp8cWwPsN+hLbSa/yGrYuvOlZg8ZQMp6IQuglMUsOqJi2ZfTVzP8x/jP0
-         ShDNNkBuUTrFWDCFtyBbueigP8b1MRQ4jEiASS9PiZ6fylozRyvnIA+G+FQMQ2LImhGw
-         21ng==
+        bh=MM/4Le1ElSFvXB5k6S3LfZVUKx2mUpsF+PsU6qPs8a4=;
+        b=Au4+D5Btj8d0VbeCdOmspiWcZ3uG+0/ZJxol1SpM7Sz+4soCS/rgTw6xcSG9LLiVjD
+         HiyF5MTgGjcB9k6W/WsoYNQAhEKsgKOTpE1LeO5rvH4xPL68Pdhy0okJb2kitOxZNdvj
+         Xv/yIe8T6QENOQepqzY0MHdt6hEolW2k2r5ZM+Ip5cFpPZOf6jWJNoGNIfZ3abcI78Pg
+         fyK69xmDlvtvASOwTkxpJR6iep1gcJypEIn26OKizLXnliisalojzwcZnzbOATYM374j
+         zfyRcKxXpUuCkoZyqkXqMBcAPkKSd2HA1g/fcAjmndNxXjGkMUu4+EVUB2P0f9UJ0u+A
+         pepQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n41si15503017qvg.103.2019.10.01.09.01.05
+        by mx.google.com with ESMTPS id s46si15654216qvs.131.2019.10.01.09.04.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Oct 2019 09:01:05 -0700 (PDT)
+        Tue, 01 Oct 2019 09:04:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Received: from localhost ([::1]:44010 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44066 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iFKaG-0006r6-IM
-	for alex.bennee@linaro.org; Tue, 01 Oct 2019 12:01:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49923)
+	id 1iFKdP-00021t-6n
+	for alex.bennee@linaro.org; Tue, 01 Oct 2019 12:04:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49917)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iFKT1-00083F-Tm
- for qemu-devel@nongnu.org; Tue, 01 Oct 2019 11:53:37 -0400
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iFKT1-00082w-Mk
+ for qemu-devel@nongnu.org; Tue, 01 Oct 2019 11:53:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iFKT0-0006Y6-N6
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iFKT0-0006XU-9m
  for qemu-devel@nongnu.org; Tue, 01 Oct 2019 11:53:35 -0400
-Received: from relay.sw.ru ([185.231.240.75]:38378)
+Received: from relay.sw.ru ([185.231.240.75]:38372)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
- id 1iFKT0-0006WV-C9; Tue, 01 Oct 2019 11:53:34 -0400
+ id 1iFKT0-0006WM-0v; Tue, 01 Oct 2019 11:53:34 -0400
 Received: from [10.94.3.0] (helo=kvm.qa.sw.ru)
  by relay.sw.ru with esmtp (Exim 4.92.2)
  (envelope-from <vsementsov@virtuozzo.com>)
- id 1iFKSy-0004xb-G8; Tue, 01 Oct 2019 18:53:32 +0300
+ id 1iFKSx-0004xb-Q0; Tue, 01 Oct 2019 18:53:31 +0300
 From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 12/31] ASPEED BMCs: Fix error_append_hint/error_prepend
+Subject: [PATCH v4 08/31] ARM TCG CPUs: Fix error_append_hint/error_prepend
  usage
-Date: Tue,  1 Oct 2019 18:53:00 +0300
-Message-Id: <20191001155319.8066-13-vsementsov@virtuozzo.com>
+Date: Tue,  1 Oct 2019 18:52:56 +0300
+Message-Id: <20191001155319.8066-9-vsementsov@virtuozzo.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191001155319.8066-1-vsementsov@virtuozzo.com>
 References: <20191001155319.8066-1-vsementsov@virtuozzo.com>
@@ -81,12 +81,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- Andrew Jeffery <andrew@aj.id.au>, Greg Kurz <groug@kaod.org>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+ Greg Kurz <groug@kaod.org>, qemu-arm@nongnu.org,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Lsl9vKhnmZyY
+X-TUID: icT1VIEyaLXX
 
 If we want to add some info to errp (by error_prepend() or
 error_append_hint()), we must use the ERRP_AUTO_PROPAGATE macro.
@@ -116,21 +115,42 @@ command and then do one huge commit.
 Reported-by: Greg Kurz <groug@kaod.org>
 Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 ---
- hw/watchdog/wdt_aspeed.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/arm/msf2-soc.c | 1 +
+ hw/arm/virt.c     | 2 ++
+ 2 files changed, 3 insertions(+)
 
-diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-index 9b93213417..a70d6dee63 100644
---- a/hw/watchdog/wdt_aspeed.c
-+++ b/hw/watchdog/wdt_aspeed.c
-@@ -243,6 +243,7 @@ static void aspeed_wdt_timer_expired(void *dev)
+diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+index 008fd9327a..b76f45657e 100644
+--- a/hw/arm/msf2-soc.c
++++ b/hw/arm/msf2-soc.c
+@@ -85,6 +85,7 @@ static void m2sxxx_soc_initfn(Object *obj)
  
- static void aspeed_wdt_realize(DeviceState *dev, Error **errp)
+ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
  {
 +    ERRP_AUTO_PROPAGATE();
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-     AspeedWDTState *s = ASPEED_WDT(dev);
-     Error *err = NULL;
+     MSF2State *s = MSF2_SOC(dev_soc);
+     DeviceState *dev, *armv7m;
+     SysBusDevice *busdev;
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index d74538b021..ce2e57fd59 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1793,6 +1793,7 @@ static char *virt_get_gic_version(Object *obj, Error **errp)
+ 
+ static void virt_set_gic_version(Object *obj, const char *value, Error **errp)
+ {
++    ERRP_AUTO_PROPAGATE();
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+ 
+     if (!strcmp(value, "3")) {
+@@ -1825,6 +1826,7 @@ static char *virt_get_iommu(Object *obj, Error **errp)
+ 
+ static void virt_set_iommu(Object *obj, const char *value, Error **errp)
+ {
++    ERRP_AUTO_PROPAGATE();
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+ 
+     if (!strcmp(value, "smmuv3")) {
 -- 
 2.21.0
 

@@ -1,106 +1,107 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp8516733wrp;
-        Tue, 1 Oct 2019 10:58:06 -0700 (PDT)
-X-Received: by 2002:a63:e444:: with SMTP id i4mr31809222pgk.45.1569952686576;
-        Tue, 01 Oct 2019 10:58:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569952686; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp8518371wrp;
+        Tue, 1 Oct 2019 10:59:58 -0700 (PDT)
+X-Received: by 2002:a63:f0e:: with SMTP id e14mr28965444pgl.404.1569952798050;
+        Tue, 01 Oct 2019 10:59:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569952798; cv=none;
         d=google.com; s=arc-20160816;
-        b=SxmNEGiWNVtNUbcoRnK5ITtiEZ7Jj3VjyzMfl8spaCIdgLWYaCNY07nqShagIO4g1K
-         k+m9fcDnYGdg1rB2Cd/iBxOrqmqszVWGrnOBY1yqTjAKbZtL6At+7eUHjvF/ZN4uc2xD
-         nOcA4qg+oXTGXXDPN2dLZj3cK0lVdz9QoHuA/JPNag3XxvCFSVBl+lETGlhk6ksDf9wb
-         H68QuDRuKculMY1Z7rDAPpj7Xc4GVRkOMVrwZYbabzwSVkerJXgwGB/1F1ZvtitIwMsC
-         Cjd1x5utoblBOmMAzgikIkXAypvFxBaPkMa4lhnPYxjvFWXS68lnz7pCWWdIakT44nkm
-         JTMA==
+        b=fLdpqd2+0PtQEZt15L4bobArvHYdRLTl7xRSFRQZ4CgqjB6Zjy/jyHJZqlgxqqzgog
+         qHFJB5fOK3thQ22Ht5kWdSLdAVaDmZJmpngennGhLRg7JoxzeWSwPJf1eR8fIdpN50WZ
+         poqCYDyI13p/caVO30FdZ9TRFqSFvVNf9AXwcNaHXTvFiJphVZIt4PSaIoOONZX95Dxe
+         xo15wZrALMyStRcHDVFiqvvbfAY5n1U0vZYl/EpkLldglvZCCnrzJuYpePZRBsT8a2TL
+         bxb8TGekeTtqsPh1JtmbL5w0TXB0Lb4b7KXKMMUSwsdDlSCNZJoPAf83bQjAweOq9W67
+         ZHdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject
          :dkim-signature;
-        bh=GpG3ksufPUabInnVHaFmlcM2bJfnLvdb2nUimFeA08Q=;
-        b=D2j3AYJuGFQ79BaHT6akc8YzjUepWqa3YFDkjZuVqUCZlK1qJMpXK0mHrEitYGwa9k
-         H2E9y/DF2Oc9jAaFzdJT0lw9/qKJDDeTFqlwoiAmbS6eB7vOUvBQbY8AOxlYjuHNzGv3
-         JmjkXR0qowK9lmzWZlMUHTYvebzFU+Oi4YxKOw2XM3ArmSVqtQdu6AG4N1XFLZ3QLle9
-         UC0n4yapSwovFDhpptmj7A/Ruce1tSQnie3OAcMwJ0c2I/+QojiCnoElg6p0sdOSYU2a
-         k7ns+MKYmlSgstNTwIcilVVsZiW7xYiQADFnmsvscZM02Qz9/1OSCOVsEowy3SCK4XFP
-         8EuQ==
+        bh=SFJLAxMxRgMAOruAs1NxSyXkuAOhN8XfQESEQ+1HUAY=;
+        b=fP5fffGn/hVFHyFA3/gvESYOcSjsSveWXBd9sgyanHHyQOkSEskk5W4RywmbKQU14M
+         TBpZG8eEdCPdgZwBJ+PFAJy+f76oeGmD6peMDzaGlQjp+6pPZTp202Xyb8Z+yNCjDXiN
+         DPejQH5D0ecfpyPohvuruAt4WSXAvw+gVMl5LKUztqf8ulmGgSRoft+PSPB+6ZEdlFmK
+         KRWAVyVpcHjDdI2d4sr7sEmlS2bkLfIyHHJNVL3E+Fh0lG7igdtrOhiDuDRWPiDy2V5y
+         WSnP1oBBbYKoQTe6IsrS+/VIah99N3Z14LtYi5Xbgd0yRiVaeFK6mIOglHGxzG2uoRl+
+         IQZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xSUCO0Sm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Tw+pGVXk;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id s21sor16451188pfh.73.2019.10.01.10.58.06
+        by mx.google.com with SMTPS id x130sor1844361pgx.33.2019.10.01.10.59.57
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 01 Oct 2019 10:58:06 -0700 (PDT)
+        Tue, 01 Oct 2019 10:59:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xSUCO0Sm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Tw+pGVXk;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=GpG3ksufPUabInnVHaFmlcM2bJfnLvdb2nUimFeA08Q=;
-        b=xSUCO0SmLutHE9MyHtPLHBggp79hImRbJhKlEMdnBZziHfO8misTP5aecFBZi3xcDN
-         Rwqncr0enYd9iqO9mFFJp5daLAtE8LAc3cTXnwMiNlk/pJo6DuiMurhB3OAppLS9dE60
-         iVtXhQIcsmy3NdFXKwZs8x7kvyrZ+6UOdfAsG/o9LtCQJC1HFyArUm1ebpY65BSbp3ll
-         hPHPq1dQwTar4OljFCF3s/figfSn23984qHXxUVF4dDBG8FvW0EYVhOkImISd3ahcOpg
-         Xxm5z+MoOdQ3WupgbwLiIIzxCXnENvxEGYhTXMB6Afi7cEu+4wWuVFkwP/XQwQSt940p
-         pNLg==
+        bh=SFJLAxMxRgMAOruAs1NxSyXkuAOhN8XfQESEQ+1HUAY=;
+        b=Tw+pGVXkUr8Kax3pKrFyWM8P9PqikGEnfYt0p/YEZLpVbAXNN1r9NuGinZ3pHqBAGo
+         LDvODXDiSP+Zt8GWEtc3PrjcLFORmD6d11D4CPWkV7muDK6Nck9OE2uXgiiWCgvHkTNQ
+         2QyJZxl24erschMiiGqUwni36Tjk36MSvsFYlVizdtbnyObEBepD1MdKvI60wcH2+W6i
+         cUuTQnZxs/Mnu3mc5pnGMCMFHcSNdGnjlLJLx2j2XJNJgnQvaP/CL/jVuXHfHpZ0HLq0
+         5j0U5z4Xp0DZ1dNz+8qlkYcDM/GLmSSax/y+lm69szleSVVetygseKsmiTE430Mu+pTm
+         sx5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=GpG3ksufPUabInnVHaFmlcM2bJfnLvdb2nUimFeA08Q=;
-        b=OnRbVqVALN6o6hzs/6Cc/VMXbaE1K2105vQcEPBIFRWKF4/Nm6zpmlw+Wg4VsGGnW9
-         wcAC/q7pPn5DAy51PLS3Cc5mm2EYrX2qj5+SobOZVK9Vh0iDjs2t7rbcCIg5hzcUPJst
-         GnqitmuYJU8LOpkxNwIAksbM6f/AsjhRZOt8WB0F3UYH4i53fc7bEdIxiYN9c5G+ggXm
-         Vcvy4Avr0epYWVgxerpJ56X2O1vq+CZrvWD0BVC+ZkgSzQtfzjK6iPKRVEislNtm2lq1
-         3VlK4TUoABFxWJUcIJbLd4No6x/ENQ6jBdHIKUGqCgQ790PBJ/Cxx8JhQY5bfvOAywHC
-         JRfA==
-X-Gm-Message-State: APjAAAXSPbMAv6X5jTtth3GC//2VANFmUQs2T6vmb4p//c09FLIq1NO1
-	jNgoa2VrqUkRL05SXra3rYu9I+pB
-X-Google-Smtp-Source: APXvYqzCf1nNyyRE7Snq0KrLW8VzB9cE8x9ERYguQ8gDSSS3ZgQ93bQKAjDattLuGfxFEfmoVZJFJg==
-X-Received: by 2002:aa7:9104:: with SMTP id 4mr29339661pfh.176.1569952686018;
-        Tue, 01 Oct 2019 10:58:06 -0700 (PDT)
+        bh=SFJLAxMxRgMAOruAs1NxSyXkuAOhN8XfQESEQ+1HUAY=;
+        b=D8dOxBCLpq3BnekDHLARZP4nVSfaCE9Ma5gz7BBmawKeJnpzceLDwktkhqrqmI3eM9
+         d+PWON6SCNxtT2V/IpPvb8fYwg+1neaC4tzuB8SBGkdFOnx/Bk6q5X0zS53SyZEhnW06
+         2AycMjUHWp4HBusei+1HOwUCYuQwfZ3hBc7tEUC2n8fxBINMSVsRltJX7b+RcuxYdp3K
+         Z8hCchyK1HkxCU3xEKTlE/ybYfalDHoUl1rNZn7HF2mf0dXm1ra2pT0LUk+wQqCx099L
+         d8JAphiXwfb5LR1ipQOQhSuzEIbHiuQVDN/zU7NGbvpNVrcHrfBNtgp8z6tBwmXjwjmi
+         r+fA==
+X-Gm-Message-State: APjAAAWW7PF4Oj5/vpLt0RP7xcAvERzeel6Kh151bdOd2Loz+GvLFaE/
+	JwCKeVaErZLWHzvfhI+x5g4LXs/h
+X-Google-Smtp-Source: APXvYqxbFJE0zV1Q5zAKldLXgPHXpJn8izUHBdtkxCKbvtSKASHiZqlA619G2WbBKnvEILupo6v13Q==
+X-Received: by 2002:a63:465c:: with SMTP id v28mr31849646pgk.310.1569952797543;
+        Tue, 01 Oct 2019 10:59:57 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
-        by smtp.gmail.com with ESMTPSA id o60sm4022122pje.21.2019.10.01.10.58.04
+        by smtp.gmail.com with ESMTPSA id f185sm5023192pfb.183.2019.10.01.10.59.56
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Oct 2019 10:58:05 -0700 (PDT)
-Subject: Re: [PATCH v5 8/9] target/arm/cpu64: max cpu: Support sve properties
- with KVM
+        Tue, 01 Oct 2019 10:59:56 -0700 (PDT)
+Subject: Re: [PATCH v5 9/9] target/arm/kvm: host cpu: Add support for sve<N>
+ properties
 To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: peter.maydell@linaro.org, alex.bennee@linaro.org, armbru@redhat.com,
  eblake@redhat.com, Dave.Martin@arm.com, eric.auger@redhat.com,
  imammedo@redhat.com
 References: <20191001125845.8793-1-drjones@redhat.com>
- <20191001125845.8793-9-drjones@redhat.com>
+ <20191001125845.8793-10-drjones@redhat.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <231b4353-9c4f-71e3-3337-bf858edabdfc@linaro.org>
-Date: Tue, 1 Oct 2019 10:58:03 -0700
+Message-ID: <a4f3be1b-533b-1089-6bdf-1ac3f4da4ef3@linaro.org>
+Date: Tue, 1 Oct 2019 10:59:54 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20191001125845.8793-9-drjones@redhat.com>
+In-Reply-To: <20191001125845.8793-10-drjones@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-TUID: 2JIbkwr8B5wO
+X-TUID: OCYRG2raX+US
 
 On 10/1/19 5:58 AM, Andrew Jones wrote:
-> Extend the SVE vq map initialization and validation with KVM's
-> supported vector lengths when KVM is enabled. In order to determine
-> and select supported lengths we add two new KVM functions for getting
-> and setting the KVM_REG_ARM64_SVE_VLS pseudo-register.
-> 
-> This patch has been co-authored with Richard Henderson, who reworked
-> the target/arm/cpu64.c changes in order to push all the validation and
-> auto-enabling/disabling steps into the finalizer, resulting in a nice
-> LOC reduction.
+> Allow cpu 'host' to enable SVE when it's available, unless the
+> user chooses to disable it with the added 'sve=off' cpu property.
+> Also give the user the ability to select vector lengths with the
+> sve<N> properties. We don't adopt 'max' cpu's other sve property,
+> sve-max-vq, because that property is difficult to use with KVM.
+> That property assumes all vector lengths in the range from 1 up
+> to and including the specified maximum length are supported, but
+> there may be optional lengths not supported by the host in that
+> range. With KVM one must be more specific when enabling vector
+> lengths.
 > 
 > Signed-off-by: Andrew Jones <drjones@redhat.com>
 > Reviewed-by: Eric Auger <eric.auger@redhat.com>

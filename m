@@ -1,82 +1,106 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp298370wrp;
-        Tue, 1 Oct 2019 19:07:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzrybw+4DDqyB/a8Mw9Q2BP893EMAyTstdrqrvlFhHa3KVT+0svB7NmVgZnHY5hSKQiDxNd
-X-Received: by 2002:aed:3709:: with SMTP id i9mr1654589qtb.61.1569982041136;
-        Tue, 01 Oct 2019 19:07:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569982041; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp752749wrp;
+        Wed, 2 Oct 2019 04:18:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzNvbEsglUTGmiS67W5YWiJ1vawJAO4XX0gclyhLBZi0tTZ/5st/q+b9SESn8SXN60aiOfe
+X-Received: by 2002:a37:65c7:: with SMTP id z190mr3049859qkb.483.1570015104318;
+        Wed, 02 Oct 2019 04:18:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570015104; cv=none;
         d=google.com; s=arc-20160816;
-        b=YB6AshoSpvH/2wHViasRUuFBLJ4dLePOTMbTb9vp+Opdq0Cz8zwqpiIC/TdqVaszvZ
-         pj3HQEiimNG5NQzv1VHCU8BMlZ0Fg2scSssPkmvLHTGjdEIJ8T+gC96v09nYIrDcyPpA
-         L198C8t1+lm8Liy33Kz8bMOPz2KQO7NFaN0y/2QcUmhfi2sx86J7+wJDU+dfUnKMoacW
-         ZjSi9c8cqdk5oxCx1WbGuvH/rPM3TsymQShH70YCC3F4xs4NSsRBDAf/OgRhREN86/U4
-         +smZG4wqPphhvnXJ31i+s0vW4ndmLCqr5pV6rSdBTmTZQuFm7Rn3b6VSfMbFsKkMYVJ8
-         wYQw==
+        b=IWAGpHmw81r6DLuLpZCFyXdf3m/s53ZAlGdeBpxJVfemK0MtnR1Uu8Jt54FppDWI/W
+         XDM3JwBGBwhXJwkpWLO7ngHtS7/fqLk5TdOQF+/oSWXEV6x+Q+7szVVi0hJqMtM5ZuC4
+         u+HS2ZwwDOxqzv87oSGV+8f4YZLa0OBw0f6W67N7RntdFwz1rWmEHrCtDmvVlkZoAEJ+
+         DOibkwzg3u0VBig6OcR/PNuaqnmJWpJl6xsunIOa5b48Lx3dRYLVG8CWerZR3NYwmSxt
+         h5E2a3QRy6lOEilzC7Na7JeWTnAIQhhFvrr2xrsf5ypxEPzwPsr0IjIdn+T5hZ0eBWQU
+         bihg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-filter;
-        bh=6dcSwEMcurtKdlc8MOuo3Pi2gO8n+YqU1CsmRXDUSQo=;
-        b=goYjDcHb2/NBq/Om3/Xupyy2vqkPXYuZNSfIfRO0xYNo/Bn8ObBiODnG79t5YomD6p
-         EypwnR2Eb/+G0nZQKTTHJshoZOUVTZ6Zckm8Ujl/GO2+6ScSqpY6daK/yoeKDtbTAHky
-         1dQxKmfiTpKcUOmvwDWOIoCsOjHan4yoRLpOWA5Ktfcts8InYubXZELUtHYfFbFeQbU/
-         qPQ1SGbZEOrNi7s4IHN6byfGpM62RfJVddGwD8sGyV/RxCJ/MwL2n9H1P/kCFgsHXRQ9
-         NyMVz0Z8Mc6GbRpgrA/J27HN9leIbXUQjHBwFQjjUTFQZEBDunyTaN1xVZ03zEB+HcCb
-         ENdw==
+         :message-id:from:references:to:subject;
+        bh=BmYTIcKLsjSP0VeDjPsSNIvplrmTqdntAb0QToAyFZY=;
+        b=1BK5DtVav3F3esVxTIwy1bUR3UU1fxoMLF799+1t4zLdJ/HmMjIUQg0DmQiwXK+kAT
+         Exgj5tHHQTJy7msFFb3YVwGpKaytx2VKWh+mzqRFVKRcbTagMlXtE1fjfkw2wPxhq2Ru
+         G+ZhZzx+qfWJpOSx6Y/NKeX7WZYAiGXtEEF7eHOdV/8j3azEIfrbBVyB2Wcwa125Ludi
+         8gFPRdev1TrfJ6UDfw8UQTCE9/pGn/nyyinKmVnmp41zneeBNkVhXJiUuZZJsJQihoch
+         oSnkxCvIzeFqvku3bjVPZZazG5ZpzkcNNGsDXFxrWEv0JDnebK9XJiXtx02EwnKHXxLT
+         Wz1A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b24si16339050qtb.326.2019.10.01.19.07.21
+        by mx.google.com with ESMTPS id y10si16877958qtk.369.2019.10.02.04.18.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Oct 2019 19:07:21 -0700 (PDT)
+        Wed, 02 Oct 2019 04:18:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linux.microsoft.com
-Received: from localhost ([::1]:50568 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53784 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iFU2x-0004Az-EN
-	for alex.bennee@linaro.org; Tue, 01 Oct 2019 22:07:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52668)
+	id 1iFceF-0006f8-PK
+	for alex.bennee@linaro.org; Wed, 02 Oct 2019 07:18:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35345)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <nramas@linux.microsoft.com>) id 1iFTVH-000250-Hc
- for qemu-devel@nongnu.org; Tue, 01 Oct 2019 21:32:32 -0400
+ (envelope-from <philmd@redhat.com>) id 1iFcdE-0006B9-HB
+ for qemu-devel@nongnu.org; Wed, 02 Oct 2019 07:17:21 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <nramas@linux.microsoft.com>) id 1iFTVG-0005kC-4G
- for qemu-devel@nongnu.org; Tue, 01 Oct 2019 21:32:31 -0400
-Received: from linux.microsoft.com ([13.77.154.182]:35386)
- by eggs.gnu.org with esmtp (Exim 4.71)
- (envelope-from <nramas@linux.microsoft.com>)
- id 1iFTVC-0005eU-KQ; Tue, 01 Oct 2019 21:32:26 -0400
-Received: from [10.200.157.26] (unknown [131.107.147.154])
- by linux.microsoft.com (Postfix) with ESMTPSA id 075762007698;
- Tue,  1 Oct 2019 18:32:25 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 075762007698
-Subject: Re: Is kexec supported in QEMU for ARM64 (qemu-system-aarch64) with
- arm-trusted-firmware, optee, and u-boot.
-To: Ard Biesheuvel <ard.biesheuvel@linaro.org>
-References: <21633062-b021-a8e7-0cc8-062f4c29dde5@linux.microsoft.com>
- <ca5c74db-cf5d-0c3f-eb6f-27d1092420ae@linux.microsoft.com>
- <65b49cb0-c9fb-d966-8dec-1e39d09ab8c7@redhat.com>
- <88878b22-803f-41fc-9df2-2c6eb551b98d@linux.microsoft.com>
- <CAKv+Gu8kwg_tsrH7qne3H11hUPyA6zw-J_jpUmiyJMvXo3-SNQ@mail.gmail.com>
-From: Lakshmi Ramasubramanian <nramas@linux.microsoft.com>
-Message-ID: <5938a592-1494-ca0c-8a34-7df38dbbea0c@linux.microsoft.com>
-Date: Tue, 1 Oct 2019 18:32:24 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ (envelope-from <philmd@redhat.com>) id 1iFcdC-0007o2-R3
+ for qemu-devel@nongnu.org; Wed, 02 Oct 2019 07:17:19 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45928)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iFcd9-0007kL-OF
+ for qemu-devel@nongnu.org; Wed, 02 Oct 2019 07:17:16 -0400
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id B4950C0546FB
+ for <qemu-devel@nongnu.org>; Wed,  2 Oct 2019 11:17:13 +0000 (UTC)
+Received: by mail-wm1-f69.google.com with SMTP id c188so1943607wmd.9
+ for <qemu-devel@nongnu.org>; Wed, 02 Oct 2019 04:17:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=BmYTIcKLsjSP0VeDjPsSNIvplrmTqdntAb0QToAyFZY=;
+ b=d7BKZNat7PCAWN8yR5BwIFlhuY7JU5C8rqFanbfg8qdio9ZPOAExWBeLGzL6N8eqr1
+ j8BuPPGniHop5QsfmjqLadyasb2fCBOQKx1cc5DDaCjy0ecmIzUpyqvpjaBLL7+PWSLC
+ vaTWO+b9C6y/MEDBPoHP4XbGFY+eP2/0SnwS8SS5aUvq5z+FmMzKzFEgDcqXD5nfEL66
+ eVIySX1tPsNcKIJm4I5kmgp1cAyAtmFsZgXVKcrucy3L2/e3NlJZxnW+vVcNeG5e8Gzh
+ CkPoYGAvt1O9v5qo0N2Ra8j/9f9wWG60Ik26TPsJbgRXRDgScDXiW9tnZcZLRC8Igp2u
+ M0SA==
+X-Gm-Message-State: APjAAAVEIsFWTRT2g9tbQteeBYwz6oqyCd2q/my9KwLa7F4otYrscaCa
+ ht5GNVd8fKORjhTKSqW/1Xw/lwNNCFG7i9r6KDvdobGZDR62PlcO2m+EGrPizYVlbv+cMKdV4g5
+ Q4xAtOJFJrNBBVK4=
+X-Received: by 2002:a5d:5552:: with SMTP id g18mr2196625wrw.386.1570015032520; 
+ Wed, 02 Oct 2019 04:17:12 -0700 (PDT)
+X-Received: by 2002:a5d:5552:: with SMTP id g18mr2196602wrw.386.1570015032326; 
+ Wed, 02 Oct 2019 04:17:12 -0700 (PDT)
+Received: from [10.201.33.15] ([195.166.127.210])
+ by smtp.gmail.com with ESMTPSA id o19sm19350854wro.50.2019.10.02.04.17.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 02 Oct 2019 04:17:11 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH 18/19] hw/timer: Declare device little or big
+ endian
+To: Tony Nguyen <tony.nguyen@bt.com>, qemu-devel@nongnu.org
+References: <cover.1566829168.git.tony.nguyen@bt.com>
+ <9fde52f9085bd7ad607bf2372931178e4a01fabd.1566829168.git.tony.nguyen@bt.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <8c66b0cd-f4ee-0b5f-fd1c-e843cae09e48@redhat.com>
+Date: Wed, 2 Oct 2019 13:17:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.0
 MIME-Version: 1.0
-In-Reply-To: <CAKv+Gu8kwg_tsrH7qne3H11hUPyA6zw-J_jpUmiyJMvXo3-SNQ@mail.gmail.com>
+In-Reply-To: <9fde52f9085bd7ad607bf2372931178e4a01fabd.1566829168.git.tony.nguyen@bt.com>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 13.77.154.182
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -88,40 +112,59 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: James Bottomley <James.Bottomley@hansenpartnership.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Alistair Francis <alistair@alistair23.me>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Fabien Chouteau <chouteau@adacore.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Michael Walle <michael@walle.cc>,
+ qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
+ Joel Stanley <joel@jms.id.au>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /iNUj4xmGFNv
+X-TUID: hfIb1WFHnOEa
 
-On 10/1/19 9:30 AM, Ard Biesheuvel wrote:
-
+On 8/26/19 4:21 PM, Tony Nguyen wrote:
+> For each device declared with DEVICE_NATIVE_ENDIAN, find the set of
+> targets from the set of target/hw/*/device.o.
 > 
-> kexec is a linux concept, so whether it is supported should not depend
-> on the secure world firmware or the underlying host.
+> If the set of targets are all little or all big endian, re-declare
+> as DEVICE_LITTLE_ENDIAN or DEVICE_BIG_ENDIAN respectively.
+> 
+> Then, on inspection:
+> - if not used, re-declare as DEVICE_HOST_ENDIAN.
+> - if max/min size=1, re-declare as DEVICE_HOST_ENDIAN.
+> - if just a bit bucket, re-declare as DEVICE_HOST_ENDIAN
+> - if PCI, re-declare as DEVICE_LITTLE_ENDIAN.
+> - if for {ARM|unicore32} only, re-declare as DEVICE_LITTLE_ENDIAN.
+> - if for SPARC only, re-declare as DEVICE_BIG_ENDIAN.
+> 
+> Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
+> ---
+>   hw/timer/a9gtimer.c         | 4 ++--
+>   hw/timer/arm_mptimer.c      | 4 ++--
+>   hw/timer/arm_timer.c        | 4 ++--
+>   hw/timer/armv7m_systick.c   | 2 +-
+>   hw/timer/aspeed_rtc.c       | 2 +-
+>   hw/timer/cadence_ttc.c      | 2 +-
+>   hw/timer/grlib_gptimer.c    | 2 +-
+>   hw/timer/hpet.c             | 2 +-
+>   hw/timer/imx_epit.c         | 2 +-
+>   hw/timer/imx_gpt.c          | 2 +-
+>   hw/timer/lm32_timer.c       | 2 +-
+>   hw/timer/milkymist-sysctl.c | 2 +-
+>   hw/timer/mss-timer.c        | 2 +-
+>   hw/timer/pl031.c            | 2 +-
+>   hw/timer/puv3_ost.c         | 2 +-
+>   hw/timer/slavio_timer.c     | 2 +-
+>   hw/timer/stm32f2xx_timer.c  | 2 +-
+>   hw/timer/sun4v-rtc.c        | 2 +-
 
-I agree Ard.
-When I don't use ATF I am able to do kexec in QEMU and successfully boot 
-into the new kernel.
-Is the following expected?
+This patch affects various areas, maybe it is worth splitting in at 
+least big/little changes? Or 3: ARM first, then big/little.
 
-When I execute kexec ("kexec -l <kernel>", followed by "kexec -e") I hit 
-the following assert in ATF (in the file
-arm-trusted-firmware/plat/qemu/qemu_pm.c)
-
-/*******************************************************************************
-   * Platform handler called when a power domain is about to be turned
-   * off. The target_state encodes the power state that each level should
-   * transition to.
-******************************************************************************/
-void qemu_pwr_domain_off(const psci_power_state_t *target_state)
-{
-      assert(0);
-}
-
-Thanks,
-  -lakshmi
-
-
+[...]

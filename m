@@ -1,263 +1,129 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp988469wrp;
-        Wed, 2 Oct 2019 08:00:03 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyVwdMYFcGvCTPOnrQs1yjFd3n/GASAf7ZiOPXkeGSDVDC2qfs3mPvxmuDCl90ZFAWK+X/8
-X-Received: by 2002:aed:21a3:: with SMTP id l32mr4400048qtc.339.1570028403129;
-        Wed, 02 Oct 2019 08:00:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570028403; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp1010048wrp;
+        Wed, 2 Oct 2019 08:16:49 -0700 (PDT)
+X-Received: by 2002:a63:1101:: with SMTP id g1mr4276936pgl.320.1570029409004;
+        Wed, 02 Oct 2019 08:16:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570029409; cv=none;
         d=google.com; s=arc-20160816;
-        b=r4ZQEU+30NRkiryJwFvcR0wSrENv47n0QwcHxTJELKpJ2ZCCVu9HbQNAW/OkH5Nrt1
-         8uY+9b2f3ngZOR87U24MFTAW8IX8iZNO6KIkgrUCMM4OnHvyou8vFQJC2qfrAk+uuYw6
-         B1pbyzO+E/keJlZXMXX1mQVsroBbS8XXNgea1zX/8ik7BWajPWcFNrMyGh9aDSike8Bs
-         2xfKlowhei2Iqs4qKxtp6coaIjuJnikkp1PE1AtyeKYFWmGwuL4tY2bCRlfZhC5SY3mt
-         hq4NzvRQ6sAOWBv/kYlPHmGm6imVmgbM0quDyLgReCaD3JkyrSaLNdekiSdIryoYHCWN
-         GFlQ==
+        b=0DQHiN+UFvxw7O3kVAjaWIBwyUZw1q6KjRBbsKCfNFnIM4wUAc0Qogl2Q6TthbQgpx
+         UgqOS/MB6irDaXIRacKX3OdIzreL8FitIlmAUKfnZKxewBkZwbqzZ8MthGp+de3JS4U7
+         BO52WRS+tf5avKnnh+zv8gc/xfrOopLQzgqmql0kIBew67e9N1uvMErVgat95XR/rIqA
+         FYhXD4oFfjm/bb+7GF+soyUYJT0fiWFHp3I7C7wihThfm0tFh7f0H/qVq13fggIygLVM
+         gWUOiSnrjRV+m8ypu1MBeUIFwX76S8hw2CrCWsbcc12/K7Z0mGAPPx9e4OjZ1MN2qRtD
+         byZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:date:to:from:subject:message-id;
-        bh=741hbOVG7RMGn3xijAq9aEWwGvUpOMlZD4gkHlr9Zw4=;
-        b=aQrF2ZKIgwGVUUb1CAYnluqyJVV43HQNq0QFnmeG3eSFXqGujCrtcVuQ7ND4HxF/OG
-         JIHtDFVV2iIp1tQWpCfjB8h0x4a/ZmrIwCvMcWVEuzxkvEj36Kb1iH9yO6ENw847O/gl
-         WDR3HClVF29u0KNuTgxZjJVHTh66wY5LHmdZdwQVV3GLXfB9Tza1+QIM36crQR68RYzh
-         MXM3TCtU8zPLWcZJGyMQwnGf4Xqwv7NziDxeowFLsO0CmmiqFswJiT2csmHV0iakxaUx
-         DSZj2j4iSfCPbPSE7pG/7sbhiwHq4Gs3QVafDl075CQrTZaiO1kZxmyhw7SjlIzRiYOd
-         sxBg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=05tls94euaalL4DwohLqpfyv0VHo5flj8PcM2IO60Ik=;
+        b=nGyTNhs7UwwV+k4Xp2POwe+KUhuPYzFJZPdhxeXh+v0HgHd7wonTBd3n+SZpxcuVQV
+         Q8vHC0fvSnHpsmDd8aJtNNmrLMXsXC4PrcCWHaqgTVodE/FqeVbv+MwJJHgDhOkMgCIf
+         H+GiFckBxCbLH4h3jfdmX/2NB4fXc0TUAnfY2GHrhozEYpWnEHC5lO/+RzKCXuqv3BBl
+         PCXGPzY+KKfm5SuOMmQ9+9DmP/9fZtgw/rVfCj2EFj+jJ5rMgA7pe0+ear+Bp1p92llU
+         MkU7S/rrv+LYI3vKBhB8YkOP88SXfqnCJLSrc+gR1rZn/8we2FKLlszeYQ3N0mkwgG3t
+         O3XQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o77si6366142qke.110.2019.10.02.08.00.02
+       dkim=pass header.i=@linaro.org header.s=google header.b=q423oyDi;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id w4sor8730596plq.4.2019.10.02.08.16.48
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Oct 2019 08:00:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Wed, 02 Oct 2019 08:16:48 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56192 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iFg6k-0001Hn-Gs
-	for alex.bennee@linaro.org; Wed, 02 Oct 2019 11:00:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44307)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <triegel@redhat.com>) id 1iFg5Q-0000PL-4C
- for qemu-devel@nongnu.org; Wed, 02 Oct 2019 10:58:41 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <triegel@redhat.com>) id 1iFg5O-0004D7-Ga
- for qemu-devel@nongnu.org; Wed, 02 Oct 2019 10:58:40 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52210)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <triegel@redhat.com>)
- id 1iFg5L-00049C-1O; Wed, 02 Oct 2019 10:58:35 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 4661E307D974;
- Wed,  2 Oct 2019 14:58:33 +0000 (UTC)
-Received: from ovpn-118-97.ams2.redhat.com (unknown [10.36.118.97])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C759110495C2;
- Wed,  2 Oct 2019 14:58:25 +0000 (UTC)
-Message-ID: <12dc4ab638bf8b5af941b24ac989ea45aa8c09b6.camel@redhat.com>
-Subject: Re: memory barriers and ATOMIC_SEQ_CST on aarch64 (was Re:
- [Qemu-devel] qemu_futex_wait() lockups in ARM64: 2 possible issues)
-From: Torvald Riegel <triegel@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>, Jan Glauber <jglauber@marvell.com>
-Date: Wed, 02 Oct 2019 16:58:23 +0200
-In-Reply-To: <96c26e21-5996-0c63-ce8b-99a1b5473453@redhat.com>
-References: <cbe46ad6-ef6c-d155-e79a-672182c725ad@ubuntu.com>
- <d94f18f1-986f-ec19-02c0-e83e5e7af3d0@redhat.com>
- <1864070a-2f84-1d98-341e-f01ddf74ec4b@ubuntu.com>
- <20190924202517.GA21422@xps13.dannf> <20191002092253.GA3857@hc>
- <ed5c4522-9250-e403-c55d-d3dbcda82540@redhat.com>
- <20191002110550.GA3482@hc>
- <96c26e21-5996-0c63-ce8b-99a1b5473453@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.48]); Wed, 02 Oct 2019 14:58:33 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Rafael David Tinoco <rafaeldtinoco@ubuntu.com>,
- lizhengui <lizhengui@huawei.com>, dann frazier <dann.frazier@canonical.com>,
- Richard Henderson <richard.henderson@linaro.org>,
+       dkim=pass header.i=@linaro.org header.s=google header.b=q423oyDi;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=05tls94euaalL4DwohLqpfyv0VHo5flj8PcM2IO60Ik=;
+        b=q423oyDiT1KR2aho2xzaMLiIjYNyGqCROKCvVRItQ7JOG4MqK3YU/jUoxyBJp70onE
+         k2qvpCR4Kr5saIB4hratTKb26cl9ycVpxQiLpR3lFzSoR0M3hBjN87aev4+jMRtUX86z
+         nDtPvAeugJd+7FsL81O+iFXObZHRtrTe3uWW/yXJZ25TQ1k4nWiXSeWs/o1zisoUqhcG
+         fZWe18a+jZf+jePdWFaCDpnd0x99WxW59WDgUpWMry6vDbpsaeIflCMY+FeRNIYqPLzw
+         3uCvsPY7qiQtt4ygHCjCnzmer8Kx8SZkZQlm/zULkDbc2HNCsokgd+MsPjZZA0jFlYv+
+         GXqg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=05tls94euaalL4DwohLqpfyv0VHo5flj8PcM2IO60Ik=;
+        b=oB38bv5LbHrFWcJwIllHh596L1oXZH3yNIJtraYpAt8MfxxEbQjb4Rh4Y/R7uNXWKP
+         u9OW51mhTcdcHLfqzEklGf/QjQ8/Q84TkU8ZurEBFkkvFq/3Oy302R/c5/1uID4TqUht
+         wmw69Iyg26dhyDQO2bOFAcfgDkXXCibk52d00BOrrfpt+qr7pgBqHN+kjtVmOciG8av+
+         9Skz8ymwF1ICz/a1lkx0ws4E9lfPRn52ucxTBIlzWueKazWnSH80J8nPA4oBE726IJDW
+         FJz7e75JJjDb38HrW4+8h8gHjl1xXuE6YVjmjIbYB8Dbn7lDsIMchQ1z+sObCXgB6IvX
+         9zeg==
+X-Gm-Message-State: APjAAAUZyK0EtwYbI6vuX8nhnwv8xFUwZR9ML3npv1NgfsILEooXR0jP
+	GL1WQgDP223PutQiYUfUnrdThHt/
+X-Google-Smtp-Source: APXvYqyzthjqsqkvxmm+IrtXCYCzcpPeP8xDiW+fZlh1RnHyiaYN8gIuom3PwnMnad2t8X20LSvxxw==
+X-Received: by 2002:a17:902:326:: with SMTP id 35mr4352618pld.128.1570029408349;
+        Wed, 02 Oct 2019 08:16:48 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+        by smtp.gmail.com with ESMTPSA id s17sm30893669pgg.77.2019.10.02.08.16.46
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 02 Oct 2019 08:16:47 -0700 (PDT)
+Subject: Re: [RFC PATCH] configure: deprecate 32 bit build hosts
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
+Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  QEMU Developers <qemu-devel@nongnu.org>,
- Bug 1805256 <1805256@bugs.launchpad.net>,
- QEMU Developers - ARM <qemu-arm@nongnu.org>, Will Deacon <will@kernel.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e6DIJ8VqxnJb
+ "qemu-discuss@nongnu.org" <qemu-discuss@nongnu.org>,
+ qemu-s390x <qemu-s390x@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
+ "open list:RISC-V" <qemu-riscv@nongnu.org>
+References: <20190925233013.6449-1-alex.bennee@linaro.org>
+ <CAFEAcA9vb5_Mi_axWpu7269Zg0xMLbiiV80ofLeyDpfws3G4nQ@mail.gmail.com>
+ <4512b61a-ed82-e628-88e5-f44ef87c2b50@linaro.org>
+ <20190930092519.GB11996@redhat.com> <87impakrky.fsf@linaro.org>
+ <CAFEAcA8_Zt+4RuXh8ww3Xm5=fQT+e_XcjZ6VC2N9k5mzLy0bnw@mail.gmail.com>
+ <ddf455e3-742e-81ce-c51a-d783e8d2ad55@ilande.co.uk>
+ <58da7aa4-877b-2c85-71f5-e703a841e6d4@linaro.org>
+ <20191002091037.GB607@redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <02ab8cdf-1011-2bbb-c720-731c2b68537e@linaro.org>
+Date: Wed, 2 Oct 2019 08:16:45 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+In-Reply-To: <20191002091037.GB607@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: bwJ/uHCjx46s
 
-On Wed, 2019-10-02 at 15:20 +0200, Paolo Bonzini wrote:
-> On 02/10/19 13:05, Jan Glauber wrote:
-> > The arm64 code generated for the
-> > atomic_[add|sub] accesses of ctx->notify_me doesn't contain any
-> > memory barriers. It is just plain ldaxr/stlxr.
-> > 
-> > From my understanding this is not sufficient for SMP sync.
-> > 
-> > > > If I read this comment correct:
-> > > > 
-> > > >     void aio_notify(AioContext *ctx)
-> > > >     {
-> > > >         /* Write e.g. bh->scheduled before reading ctx->notify_me.  Pairs
-> > > >          * with atomic_or in aio_ctx_prepare or atomic_add in aio_poll.
-> > > >          */
-> > > >         smp_mb();
-> > > >         if (ctx->notify_me) {
-> > > > 
-> > > > it points out that the smp_mb() should be paired. But as
-> > > > I said the used atomics don't generate any barriers at all.
-> > > 
-> > > Awesome!  That would be a compiler bug though, as atomic_add and atomic_sub
-> > > are defined as sequentially consistent:
-> > > 
-> > > #define atomic_add(ptr, n) ((void) __atomic_fetch_add(ptr, n, __ATOMIC_SEQ_CST))
-> > > #define atomic_sub(ptr, n) ((void) __atomic_fetch_sub(ptr, n, __ATOMIC_SEQ_CST))
-> > 
-> > Compiler bug sounds kind of unlikely...
+On 10/2/19 2:10 AM, Daniel P. Berrangé wrote:
+>> GCC only implements int128_t for 64-bit targets.
 > 
-> Indeed the assembly produced by the compiler matches for example the
-> mappings at https://www.cl.cam.ac.uk/~pes20/cpp/cpp0xmappings.html.  A
-> small testcase is as follows:
+> QEMU probes for that during configure  and sets CONFIG_INT128
 > 
->   int ctx_notify_me;
->   int bh_scheduled;
+> If I'm reading correctly include/qemu/int128.h then provides a
+> fallback type based on a struct with two int64s.
 > 
->   int x()
->   {
->       int one = 1;
->       int ret;
->       __atomic_store(&bh_scheduled, &one, __ATOMIC_RELEASE);     // x1
->       __atomic_thread_fence(__ATOMIC_SEQ_CST);                   // x2
->       __atomic_load(&ctx_notify_me, &ret, __ATOMIC_RELAXED);     // x3
->       return ret;
->   }
+> This has some inconvenience though as you have to use the the (inline)
+> function calls for all the basic operands and will be less efficient
+> when using the fallback.
 > 
->   int y()
->   {
->       int ret;
->       __atomic_fetch_add(&ctx_notify_me, 2, __ATOMIC_SEQ_CST);  // y1
->       __atomic_load(&bh_scheduled, &ret, __ATOMIC_RELAXED);     // y2
->       return ret;
->   }
-> 
-> Here y (which is aio_poll) wants to order the write to ctx->notify_me
-> before reads of bh->scheduled.  However, the processor can speculate the
-> load of bh->scheduled between the load-acquire and store-release of
-> ctx->notify_me.  So you can have something like:
-> 
->  thread 0 (y)                          thread 1 (x)
->  -----------------------------------   -----------------------------
->  y1: load-acq ctx->notify_me
->  y2: load-rlx bh->scheduled
->                                        x1: store-rel bh->scheduled <-- 1
->                                        x2: memory barrier
->                                        x3: load-rlx ctx->notify_me
->  y1: store-rel ctx->notify_me <-- 2
-> 
-> Being very puzzled, I tried to put this into cppmem:
-> 
->   int main() {
->     atomic_int ctx_notify_me = 0;
->     atomic_int bh_scheduled = 0;
->     {{{ {
->           bh_scheduled.store(1, mo_release);
->           atomic_thread_fence(mo_seq_cst);
->           // must be zero since the bug report shows no notification
->           ctx_notify_me.load(mo_relaxed).readsvalue(0);
->         }
->     ||| {
->           ctx_notify_me.store(2, mo_seq_cst);
->           r2=bh_scheduled.load(mo_relaxed);
->         }
->     }}};
->     return 0;
->   }
-> 
-> and much to my surprise, the tool said r2 *can* be 0.  Same if I put a
-> CAS like
-> 
->         cas_strong_explicit(ctx_notify_me.readsvalue(0), 0, 2,
->                             mo_seq_cst, mo_seq_cst);
-> 
-> which resembles the code in the test case a bit more.
+> Presumably this is not viable for TCG ?
 
-This example looks like Dekker synchronization (if I get the intent right).
+A structure (for some ABIs) may be passed and returned by invisible reference.
+ It's not impossible (nothing's impossible), but it adds previously unnecessary
+complexity to allocate that storage on the jit stack.
 
-Two possible implementations of this are either (1) with all memory
-accesses having seq-cst MO, or (2) with relaxed-MO accesses and seq-cst
-fences on between the store and load on both ends.  It's possible to mix
-both, but that get's trickier I think.  I'd prefer the one with just
-fences, just because it's easiest, conceptually.
+Actually manipulating one 128-bit value consumes 4/6 of the i386 registers,
+which I can well imagine could wind up causing problems.  Certainly
+manipulating two values at once is out of the question.  That's less of a
+problem for arm and mips.
 
-> I then found a discussion about using the C11 memory model in Linux
-> (https://gcc.gnu.org/ml/gcc/2014-02/msg00058.html) which contains the
-> following statement, which is a bit disheartening even though it is
-> about a different test:
-> 
->    My first gut feeling was that the assertion should never fire, but
->    that was wrong because (as I seem to usually forget) the seq-cst
->    total order is just a constraint but doesn't itself contribute
->    to synchronizes-with -- but this is different for seq-cst fences.
+Anyway, all of the pain points go away if we assume 64-bit.
 
-It works if you use (1) or (2) consistently.  cppmem and the Batty et al.
-tech report should give you the gory details.
-My comment is just about seq-cst working differently on memory accesses vs.
-fences (in the way it's specified in the memory model).
 
-> and later in the thread:
-> 
->    Use of C11 atomics to implement Linux kernel atomic operations
->    requires knowledge of the underlying architecture and the compiler's
->    implementation, as was noted earlier in this thread.
-> 
-> Indeed if I add an atomic_thread_fence I get only one valid execution,
-> where r2 must be 1.  This is similar to GCC's bug
-> https://gcc.gnu.org/bugzilla/show_bug.cgi?id=65697, and we can fix it in
-> QEMU by using __sync_fetch_and_add; in fact cppmem also shows one valid
-> execution if the store is replaced with something like GCC's assembly
-> for __sync_fetch_and_add (or Linux's assembly for atomic_add_return):
-> 
->         cas_strong_explicit(ctx_notify_me.readsvalue(0), 0, 2,
->                             mo_release, mo_release);
->         atomic_thread_fence(mo_seq_cst);
-> 
-> So we should:
-> 
-> 1) understand why ATOMIC_SEQ_CST is not enough in this case.  QEMU code
-> seems to be making the same assumptions as Linux about the memory model,
-> and this is wrong because QEMU uses C11 atomics if available.
-> Fortunately, this kind of synchronization in QEMU is relatively rare and
-> only this particular bit seems affected.  If there is a fix which stays
-> within the C11 memory model, and does not pessimize code on x86, we can
-> use it[1] and document the pitfall.
-
-Using the fences between the store/load pairs in Dekker-like
-synchronization should do that, right?  It's also relatively easy to deal
-with.
-
-> 2) if there's no way to fix the bug, qemu/atomic.h needs to switch to
-> __sync_fetch_and_add and friends.  And again, in this case the
-> difference between the C11 and Linux/QEMU memory models must be documented.
-
-I surely not aware of all the constraints here, but I'd be surprised if the
-C11 memory model isn't good enough for portable synchronization code (with
-the exception of the consume MO minefield, perhaps). 
-
+r~

@@ -1,171 +1,111 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp825904wrp;
-        Wed, 2 Oct 2019 05:27:22 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw7Y1w0dwXZBXmadhcAeBqrp1mthOWcSuYbE3NaQ/8DzHQGHLI5mEcm55gcsdU/ziaGxV2i
-X-Received: by 2002:ae9:e109:: with SMTP id g9mr3072038qkm.345.1570019242328;
-        Wed, 02 Oct 2019 05:27:22 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1570019242; cv=pass;
+Received: by 2002:a17:90a:1a54:0:0:0:0 with SMTP id 20csp815366pjl;
+        Wed, 2 Oct 2019 06:20:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzYFCq0x5LMiCTXtplxq4yQa+wneh9MNc0fZ72n9g/C7u7iGLctAd/cKOuPmYj/U0yBfkCk
+X-Received: by 2002:ac8:7604:: with SMTP id t4mr3982923qtq.34.1570022430540;
+        Wed, 02 Oct 2019 06:20:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570022430; cv=none;
         d=google.com; s=arc-20160816;
-        b=OzBMcmdL4sZdcMwST/Ei/tXDejDhkmjgLYy8LYD+bwu6GW/HUzCgXyC1X5tQi/DFls
-         8tieU0Ja0yMq1Zz28r3uIMDUuAyNAiSvjOvaR4yLlz364gxujEApCPBT1GRxfgLgpbZX
-         rEmEEWaXuRXcULXxFYtGqXB+pVkR119XHwkbZLbxTPWDYFmTuXyLLKgkkqx/xtW09Mfb
-         O+nSENnf6zugGgT/s1u5a6uNZaLiC85be8sh3wl8umqFUUVjW3nf/1C4V+Z/TfjTd0ek
-         6IQLvwA/eb4SQg2PRpIl7HHm7rlAWLWKAV89k4NH5ZW1OJmpXvZeWbm8QhHR42fboajT
-         L6Gg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=g5BqyXuC7xOH+xFOwQpYsyOSKXKSJGKKBE3H++GwcOW9FR4rPHIoqRoRv0Tsc/zRI0
+         gHQpbwielGtvXHY9kpzib+k4QCHAl15+512Ubi/Oy3dJkHGEpGqdIF+Lcpmq3DDHD1OF
+         9s3+bwSHpBoEI3BWSPYQiuJ7HAv5eDr3nuKJJuhLe9As9z1KHO4+HQdIyipmj6x6AAYn
+         pZQEhn/HDxZjFTnd53Cc75isDFbSMiPVSto2cGD427WSUnIck/n5gi3TY+C/wGq5aXKs
+         ObxR5LVEtinc4Majywk6hpdbw3DYLBxo/wi51eZRE3vceLwNFTBjWQHSwThcxULSH0fP
+         bUOQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:to:from:dkim-signature:dkim-signature;
-        bh=EFDxkDF/0G/gyAHFdLEbXHCcL5I84rZ0elughXsauuY=;
-        b=xY47PSdAIBnnxGdQRs/Whxz7p3bbOGmZUcBUn/cdbR9DDLEKgaVcMZIidoAHt13bIp
-         ko/18UE+wQYDIxs3OSXz4XO99dZSXoTeomDyt3GJbRG69Nfn9/Zvxx0h+XRoSqTdVMdm
-         wvGtiZswG4ISbms80gOD7Fl3018kgAafSeqoeb15liyKDDU4RTRfUX1O12NmrWistUj8
-         sHf2vuvpZ1H2B6Se/c/eyIpX3I/non4BIMy3RdUZJJ4K9VL3Gt0NvKIbLYKTAWetomFF
-         b4xWLHTGCHm1WufmSGG2Hvxr/4QYqqkPeNbpPxQ3MSKXdto3wnj0bvefgdRRPvmG91Ke
-         R0pw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=fail header.i=@marvell.com header.s=pfpt0818 header.b=XgWodsgG;
-       dkim=pass header.i=@marvell.onmicrosoft.com header.s=selector2-marvell-onmicrosoft-com header.b=iknwAG2G;
-       arc=pass (i=1 spf=pass spfdomain=marvell.com dkim=pass dkdomain=marvell.com dmarc=pass fromdomain=marvell.com);
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:openpgp:from:references:to:subject;
+        bh=HiSosKbL2npaAFkVwirGRZPt70/UvUVKM/bGIq2Af24=;
+        b=imq68bfldAvVYTv4TYw8vMsNMZAfYp8qfYT0brkwJ36wNfYitoSfCskNqsj1X8lQrU
+         qX4p0K2wvwt+rasvBE4+/rOL7Wsl6ac8mDMGcqZMeEGwG18w8nZHTXKCMdMgZujVbHFy
+         b5ChylI7g+5eqioSNeLqSs/PqciVTVvKX20MzTbqkqwslEq/B5HSxvwlPHmJfYS0jzNI
+         1gkZdr6Ci70sEYgrNj182zr2v1U1/a9zN6w6qCLo6HW3mWa35fp3CEp7FR7idjVCrZK4
+         VVeCYQ+3JDa+fgybUYFuz2W7iZJkujhr5Fl9+NP+uhw+X/wkJbyCdYDqqAL96kGGMfHC
+         LMvg==
+ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=marvell.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 58si17760589qvw.130.2019.10.02.05.27.22
+        by mx.google.com with ESMTPS id u201si15307489qka.335.2019.10.02.06.20.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Oct 2019 05:27:22 -0700 (PDT)
+        Wed, 02 Oct 2019 06:20:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@marvell.com header.s=pfpt0818 header.b=XgWodsgG;
-       dkim=pass header.i=@marvell.onmicrosoft.com header.s=selector2-marvell-onmicrosoft-com header.b=iknwAG2G;
-       arc=pass (i=1 spf=pass spfdomain=marvell.com dkim=pass dkdomain=marvell.com dmarc=pass fromdomain=marvell.com);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=marvell.com
-Received: from localhost ([::1]:54808 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55278 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iFdiz-0007Sa-PQ
-	for alex.bennee@linaro.org; Wed, 02 Oct 2019 08:27:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33773)
+	id 1iFeYP-0000xi-QE
+	for alex.bennee@linaro.org; Wed, 02 Oct 2019 09:20:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55029)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <prvs=71787d9211=jglauber@marvell.com>)
- id 1iFcSb-0001aH-T3
- for qemu-arm@nongnu.org; Wed, 02 Oct 2019 07:06:22 -0400
+ (envelope-from <pbonzini@redhat.com>) id 1iFeYD-0000qt-AF
+ for qemu-arm@nongnu.org; Wed, 02 Oct 2019 09:20:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <prvs=71787d9211=jglauber@marvell.com>)
- id 1iFcSa-000889-N6
- for qemu-arm@nongnu.org; Wed, 02 Oct 2019 07:06:21 -0400
-Received: from mx0b-0016f401.pphosted.com ([67.231.156.173]:23934)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <prvs=71787d9211=jglauber@marvell.com>)
- id 1iFcSX-00084J-OW; Wed, 02 Oct 2019 07:06:18 -0400
-Received: from pps.filterd (m0045851.ppops.net [127.0.0.1])
- by mx0b-0016f401.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- x92B56hO016689; Wed, 2 Oct 2019 04:06:02 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marvell.com;
- h=from : to : cc :
- subject : date : message-id : references : in-reply-to : content-type :
- content-id : content-transfer-encoding : mime-version; s=pfpt0818;
- bh=EFDxkDF/0G/gyAHFdLEbXHCcL5I84rZ0elughXsauuY=;
- b=XgWodsgGm1W39e/LDV3T4rIh6k5MGrHU0xBNnRexvagpEfIPPJO9ay2c1wMk9iSuWavl
- We+ae5rlDG28zN3iL9V9zYU0xEEU0ROAO35t2ujkr4Fjn8/b1tMeZjFmGZeNECEyf/41
- K8wwXmvSpVEaLDM2Vs2HXZR5tQiVzOo6vW6hqU3lqc2z/yKJFLPLvukAafd5+K1y/0im
- 3gEslFjhlfU1NHbUPYyk8dBdR+iZWQwumLtlu+y/Mvtp1VarZnvvFmq8WzRTaskdbk61
- +sZVzbVM2W/ZMCX9o1dFAJDA12thfslZLpiWNbuEYkvP8fJM7CIN0frTd3TVXqO8tUO3 Bw== 
-Received: from sc-exch02.marvell.com ([199.233.58.182])
- by mx0b-0016f401.pphosted.com with ESMTP id 2va71mpse0-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
- Wed, 02 Oct 2019 04:06:02 -0700
-Received: from SC-EXCH03.marvell.com (10.93.176.83) by SC-EXCH02.marvell.com
- (10.93.176.82) with Microsoft SMTP Server (TLS) id 15.0.1367.3; Wed, 2 Oct
- 2019 04:06:00 -0700
-Received: from NAM01-BN3-obe.outbound.protection.outlook.com (104.47.33.56) by
- SC-EXCH03.marvell.com (10.93.176.83) with Microsoft SMTP Server
- (TLS) id
- 15.0.1367.3 via Frontend Transport; Wed, 2 Oct 2019 04:06:00 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=S+3/VP5TgRYHm7WEO54gDuuS/usRQzQv2JNa6d/CS/K96UonPqN3p2NGbJmuxf83weIwLJ+zvBZ09cXECLqyIYyst24C/QSMr6QMqTM1qPXsOa19DEwypoMIxyDW/8QtPWuxmS2sZ9JcC00THJf+5nTKxqyIh17sT+gaNSAmgAOiZukl1KQl9J8YOo+fAV8TAGSzyn64dzsQYm2B0m9rYlXzHwkYjQ7Q6OtpCD68ScijXW2nSf8l3oP/c8NHO9OFXMP85o5XQ+Y74cL3TSD8hgMWz6PN21mMzI3Qc6HnXFWNOWhkWkLu0nRcZtCaN+UAKv9QDCBYsQZ6FszEseQUcQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EFDxkDF/0G/gyAHFdLEbXHCcL5I84rZ0elughXsauuY=;
- b=PQMrkQcTfduoHD5JPPomNUQ7FYYh9Jfh1fFy+3yBSveiwWrl249HGFyArN2Tgaoz0fyLO7bQS38n0lTOt+GacAB22sKFUwHmwEpjLWJaZmpXh17wSb1F/xJo748rbKKqhvNge22szRoboGzhNHE7MGLdkNRcEcLWMB1T9Z3OxPsqBnxTBJ12mzwqzfvT5fDn8WIihIIOt7mCfmRlZdwtQs+835IDhkl19vyYGyVOxPjyrJ7ZjgIo0yihAhL29oOEToV+jxf5+H2CQOrTO6v+XIv1mGN/6ylBJW6tBWnNjXTLP4SPws5L3iMKGtQCxQZQCNaubBjZ1OyCscd+4Nr3Og==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=marvell.com; dmarc=pass action=none header.from=marvell.com;
- dkim=pass header.d=marvell.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=marvell.onmicrosoft.com; s=selector2-marvell-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EFDxkDF/0G/gyAHFdLEbXHCcL5I84rZ0elughXsauuY=;
- b=iknwAG2G3geAYmCJk0QRAsKrhFfWAhhsd8oGZtqot+Y5YKYMc9z47/bCt27yROpH4ZcEt3GTBfU/kf5CuF77lbB/RWBcbtIg+1ZVCd43nPTXkmmKIUqYO1hjHfKStDxcdfxlj9C/pgLGMq8gbb3eqIS2yTbpYkvovl4XdIPZU84=
-Received: from DM6PR18MB3001.namprd18.prod.outlook.com (20.179.104.143) by
- DM6PR18MB2362.namprd18.prod.outlook.com (20.179.71.27) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2305.18; Wed, 2 Oct 2019 11:05:59 +0000
-Received: from DM6PR18MB3001.namprd18.prod.outlook.com
- ([fe80::11c2:98e0:b9d9:5dba]) by DM6PR18MB3001.namprd18.prod.outlook.com
- ([fe80::11c2:98e0:b9d9:5dba%5]) with mapi id 15.20.2305.023; Wed, 2 Oct 2019
- 11:05:59 +0000
-From: Jan Glauber <jglauber@marvell.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-devel] qemu_futex_wait() lockups in ARM64: 2 possible issues
-Thread-Topic: [Qemu-devel] qemu_futex_wait() lockups in ARM64: 2 possible
- issues
-Thread-Index: AQHVeRFen3KZ7K8mD02pkgA8c1cuvA==
-Date: Wed, 2 Oct 2019 11:05:59 +0000
-Message-ID: <20191002110550.GA3482@hc>
+ (envelope-from <pbonzini@redhat.com>) id 1iFeYB-0004N0-0j
+ for qemu-arm@nongnu.org; Wed, 02 Oct 2019 09:20:16 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42678)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1iFeYA-0004M9-Nw
+ for qemu-arm@nongnu.org; Wed, 02 Oct 2019 09:20:14 -0400
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 1670D4FCDA
+ for <qemu-arm@nongnu.org>; Wed,  2 Oct 2019 13:20:13 +0000 (UTC)
+Received: by mail-wr1-f71.google.com with SMTP id b6so7525589wrx.0
+ for <qemu-arm@nongnu.org>; Wed, 02 Oct 2019 06:20:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=HiSosKbL2npaAFkVwirGRZPt70/UvUVKM/bGIq2Af24=;
+ b=t8MlGLmLqD4UeNXyvQh1mLrr3P0KY0Ko9XFynovRggdUiTTUCNTa9YdGvfzB995WeL
+ VVlF1AUKcNDoelyMEaZ+iTcpne5Nozizi3s8aLPqM1rIpOft9xG3GJ+UbJpOYKeQhKxg
+ 96XZ2lMPuY0SY7isauPf3kmQHvngC8KC2FZXGqMImkfRHGtjevs8egFOnPOs7lAr/S22
+ 349k5YaP6FINJ4vgw7r2NSL3Fw54gohkrMp079xoVk2JkdtkUFq/X7lrjrK30kLxHjnx
+ Gl1u9VnZg3yImHwS5gtS5ftuVM8rwE6xyt0G8NG3gk7GX2r0MFuJEfxl2Jjp0WTxSKVh
+ QCEw==
+X-Gm-Message-State: APjAAAWcfCN/Hb9bWo4NovI86HkRBWT8cUzQKJ/ymh3gkY6rPcEx78fy
+ /I519Xxd8csuaGrvj35T67zSXVitZOnPZN/kBm3LMbQINhlCjOY+uW+qxSdboY88O1m/xFE3iFS
+ kwGuwEnqfsWU0
+X-Received: by 2002:a1c:5454:: with SMTP id p20mr3006517wmi.93.1570022411703; 
+ Wed, 02 Oct 2019 06:20:11 -0700 (PDT)
+X-Received: by 2002:a1c:5454:: with SMTP id p20mr3006486wmi.93.1570022411275; 
+ Wed, 02 Oct 2019 06:20:11 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:b903:6d6f:a447:e464?
+ ([2001:b07:6468:f312:b903:6d6f:a447:e464])
+ by smtp.gmail.com with ESMTPSA id o19sm10496752wmh.27.2019.10.02.06.20.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 02 Oct 2019 06:20:10 -0700 (PDT)
+Subject: memory barriers and ATOMIC_SEQ_CST on aarch64 (was Re: [Qemu-devel]
+ qemu_futex_wait() lockups in ARM64: 2 possible issues)
+To: Jan Glauber <jglauber@marvell.com>
 References: <cbe46ad6-ef6c-d155-e79a-672182c725ad@ubuntu.com>
  <d94f18f1-986f-ec19-02c0-e83e5e7af3d0@redhat.com>
  <1864070a-2f84-1d98-341e-f01ddf74ec4b@ubuntu.com>
  <20190924202517.GA21422@xps13.dannf> <20191002092253.GA3857@hc>
- <ed5c4522-9250-e403-c55d-d3dbcda82540@redhat.com>
-In-Reply-To: <ed5c4522-9250-e403-c55d-d3dbcda82540@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: AM0PR10CA0056.EURPRD10.PROD.OUTLOOK.COM
- (2603:10a6:20b:150::36) To DM6PR18MB3001.namprd18.prod.outlook.com
- (2603:10b6:5:182::15)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [109.42.2.12]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: e7d98316-6b95-4f2c-992c-08d74728814a
-x-ms-traffictypediagnostic: DM6PR18MB2362:
-x-ms-exchange-purlcount: 1
-x-microsoft-antispam-prvs: <DM6PR18MB2362690DAEE656B51202DB52D89C0@DM6PR18MB2362.namprd18.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:6108;
-x-forefront-prvs: 0178184651
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(4636009)(7916004)(376002)(346002)(366004)(396003)(39860400002)(136003)(189003)(199004)(6306002)(316002)(7736002)(81166006)(1076003)(52116002)(6436002)(66066001)(8936002)(99286004)(2906002)(33656002)(4326008)(9686003)(5660300002)(305945005)(8676002)(14444005)(26005)(81156014)(966005)(6486002)(3846002)(478600001)(76176011)(6116002)(256004)(6246003)(6916009)(229853002)(14454004)(53546011)(6506007)(6512007)(5024004)(102836004)(25786009)(386003)(86362001)(11346002)(476003)(486006)(64756008)(71200400001)(66556008)(66476007)(66946007)(33716001)(71190400001)(446003)(66446008)(186003)(54906003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:DM6PR18MB2362;
- H:DM6PR18MB3001.namprd18.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: marvell.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 7/p9KFAwpMC/KNFOS3sW1jO+wWfr79FyHxaRIPKUbVt1su826VmXfXMBtyZ1PZlCpCEuuVU9hS4BXbzvQCFMie7EeLjivlGWPtrKhNXNwPdZf2lhzNv3V097hxW1d3k4ZLqX+53htrJzsA8fL8J2dcw3KIhS7ONOc3SqTO/aR01dEQEk8uExvc2EyhOhFcr7gOWekY0JaRc5bkYMu5GyC0/eqcOUbwdbVUZoBOV5p2A4mlD6rbGJoi5fjHFdY/6eTOc9htcqR58UuapdkrbcLUL3kEqa5u1FqWfLHMuBg1eGSPTKj3Oex7ZU7Adi9CPXzdiJhcDtGEnuBvO2fUa72nBqkIwk2gc+WE/NCxKb8yL3gd44CUDUg/XQ1dtQWw1HQNphFZBhbHCWF8uZsaFYs/chG6dRTLeNlGTsa6+4LlEw7Dn0f7gdf7lqxYRuUGDPds4O7iWsC/Tx4zo9q2ncrA==
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="us-ascii"
-Content-ID: <A4E5701BF442ED4899E88E94649B8589@namprd18.prod.outlook.com>
-Content-Transfer-Encoding: quoted-printable
+ <ed5c4522-9250-e403-c55d-d3dbcda82540@redhat.com> <20191002110550.GA3482@hc>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <96c26e21-5996-0c63-ce8b-99a1b5473453@redhat.com>
+Date: Wed, 2 Oct 2019 15:20:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: e7d98316-6b95-4f2c-992c-08d74728814a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Oct 2019 11:05:59.2576 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 70e1fb47-1155-421d-87fc-2e58f638b6e0
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: xK+wbFx59S6OXXyUO0Pz1HoEOiUrGg8SCeeVjz1l1q+0JdgYw78OrnL7fvczoe3DD/QhrocgCJczSakk0ij8hA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR18MB2362
-X-OriginatorOrg: marvell.com
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.95,1.0.8
- definitions=2019-10-02_06:2019-10-01,2019-10-02 signatures=0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 67.231.156.173
-X-Mailman-Approved-At: Wed, 02 Oct 2019 08:27:01 -0400
+In-Reply-To: <20191002110550.GA3482@hc>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -179,46 +119,152 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Rafael David Tinoco <rafaeldtinoco@ubuntu.com>,
  lizhengui <lizhengui@huawei.com>, dann frazier <dann.frazier@canonical.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
  QEMU Developers <qemu-devel@nongnu.org>,
- Bug 1805256 <1805256@bugs.launchpad.net>, QEMU
- Developers - ARM <qemu-arm@nongnu.org>
+ Bug 1805256 <1805256@bugs.launchpad.net>,
+ QEMU Developers - ARM <qemu-arm@nongnu.org>,
+ Torvald Riegel <triegel@redhat.com>, Will Deacon <will@kernel.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wnV2so7rAxPk
+X-TUID: HbjrnVhVLhAJ
 
-On Wed, Oct 02, 2019 at 11:45:19AM +0200, Paolo Bonzini wrote:
-> On 02/10/19 11:23, Jan Glauber wrote:
-> > I've tried to verify me theory with this patch and didn't run into the
-> > issue for ~500 iterations (usually I would trigger the issue ~20 iterat=
-ions).
->=20
-> Awesome!  That would be a compiler bug though, as atomic_add and atomic_s=
-ub
-> are defined as sequentially consistent:
->=20
-> #define atomic_add(ptr, n) ((void) __atomic_fetch_add(ptr, n, __ATOMIC_SE=
-Q_CST))
-> #define atomic_sub(ptr, n) ((void) __atomic_fetch_sub(ptr, n, __ATOMIC_SE=
-Q_CST))
+On 02/10/19 13:05, Jan Glauber wrote:
+> The arm64 code generated for the
+> atomic_[add|sub] accesses of ctx->notify_me doesn't contain any
+> memory barriers. It is just plain ldaxr/stlxr.
+> 
+> From my understanding this is not sufficient for SMP sync.
+> 
+>>> If I read this comment correct:
+>>> 
+>>>     void aio_notify(AioContext *ctx)
+>>>     {
+>>>         /* Write e.g. bh->scheduled before reading ctx->notify_me.  Pairs
+>>>          * with atomic_or in aio_ctx_prepare or atomic_add in aio_poll.
+>>>          */
+>>>         smp_mb();
+>>>         if (ctx->notify_me) {
+>>>
+>>> it points out that the smp_mb() should be paired. But as
+>>> I said the used atomics don't generate any barriers at all.
+>>
+>> Awesome!  That would be a compiler bug though, as atomic_add and atomic_sub
+>> are defined as sequentially consistent:
+>>
+>> #define atomic_add(ptr, n) ((void) __atomic_fetch_add(ptr, n, __ATOMIC_SEQ_CST))
+>> #define atomic_sub(ptr, n) ((void) __atomic_fetch_sub(ptr, n, __ATOMIC_SEQ_CST))
+>
+> Compiler bug sounds kind of unlikely...
+Indeed the assembly produced by the compiler matches for example the
+mappings at https://www.cl.cam.ac.uk/~pes20/cpp/cpp0xmappings.html.  A
+small testcase is as follows:
 
-Compiler bug sounds kind of unlikely...
+  int ctx_notify_me;
+  int bh_scheduled;
 
-> What compiler are you using and what distro?  Can you compile util/aio-po=
-six.c
-> with "-fdump-rtl-all -fdump-tree-all", zip the boatload of debugging file=
-s and
-> send them my way?
+  int x()
+  {
+      int one = 1;
+      int ret;
+      __atomic_store(&bh_scheduled, &one, __ATOMIC_RELEASE);     // x1
+      __atomic_thread_fence(__ATOMIC_SEQ_CST);                   // x2
+      __atomic_load(&ctx_notify_me, &ret, __ATOMIC_RELAXED);     // x3
+      return ret;
+  }
 
-This is on Ubuntu 18.04.3,
-gcc version 7.4.0 (Ubuntu/Linaro 7.4.0-1ubuntu1~18.04.1)
+  int y()
+  {
+      int ret;
+      __atomic_fetch_add(&ctx_notify_me, 2, __ATOMIC_SEQ_CST);  // y1
+      __atomic_load(&bh_scheduled, &ret, __ATOMIC_RELAXED);     // y2
+      return ret;
+  }
 
-I've uploaded the debug files to:
-https://bugs.launchpad.net/qemu/+bug/1805256/+attachment/5293619/+files/aio=
--posix.tar.xz
+Here y (which is aio_poll) wants to order the write to ctx->notify_me
+before reads of bh->scheduled.  However, the processor can speculate the
+load of bh->scheduled between the load-acquire and store-release of
+ctx->notify_me.  So you can have something like:
 
-Thanks,
-Jan
+ thread 0 (y)                          thread 1 (x)
+ -----------------------------------   -----------------------------
+ y1: load-acq ctx->notify_me
+ y2: load-rlx bh->scheduled
+                                       x1: store-rel bh->scheduled <-- 1
+                                       x2: memory barrier
+                                       x3: load-rlx ctx->notify_me
+ y1: store-rel ctx->notify_me <-- 2
 
-> Thanks,
->=20
-> Paolo
+Being very puzzled, I tried to put this into cppmem:
+
+  int main() {
+    atomic_int ctx_notify_me = 0;
+    atomic_int bh_scheduled = 0;
+    {{{ {
+          bh_scheduled.store(1, mo_release);
+          atomic_thread_fence(mo_seq_cst);
+          // must be zero since the bug report shows no notification
+          ctx_notify_me.load(mo_relaxed).readsvalue(0);
+        }
+    ||| {
+          ctx_notify_me.store(2, mo_seq_cst);
+          r2=bh_scheduled.load(mo_relaxed);
+        }
+    }}};
+    return 0;
+  }
+
+and much to my surprise, the tool said r2 *can* be 0.  Same if I put a
+CAS like
+
+        cas_strong_explicit(ctx_notify_me.readsvalue(0), 0, 2,
+                            mo_seq_cst, mo_seq_cst);
+
+which resembles the code in the test case a bit more.
+
+I then found a discussion about using the C11 memory model in Linux
+(https://gcc.gnu.org/ml/gcc/2014-02/msg00058.html) which contains the
+following statement, which is a bit disheartening even though it is
+about a different test:
+
+   My first gut feeling was that the assertion should never fire, but
+   that was wrong because (as I seem to usually forget) the seq-cst
+   total order is just a constraint but doesn't itself contribute
+   to synchronizes-with -- but this is different for seq-cst fences.
+
+and later in the thread:
+
+   Use of C11 atomics to implement Linux kernel atomic operations
+   requires knowledge of the underlying architecture and the compiler's
+   implementation, as was noted earlier in this thread.
+
+Indeed if I add an atomic_thread_fence I get only one valid execution,
+where r2 must be 1.  This is similar to GCC's bug
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=65697, and we can fix it in
+QEMU by using __sync_fetch_and_add; in fact cppmem also shows one valid
+execution if the store is replaced with something like GCC's assembly
+for __sync_fetch_and_add (or Linux's assembly for atomic_add_return):
+
+        cas_strong_explicit(ctx_notify_me.readsvalue(0), 0, 2,
+                            mo_release, mo_release);
+        atomic_thread_fence(mo_seq_cst);
+
+So we should:
+
+1) understand why ATOMIC_SEQ_CST is not enough in this case.  QEMU code
+seems to be making the same assumptions as Linux about the memory model,
+and this is wrong because QEMU uses C11 atomics if available.
+Fortunately, this kind of synchronization in QEMU is relatively rare and
+only this particular bit seems affected.  If there is a fix which stays
+within the C11 memory model, and does not pessimize code on x86, we can
+use it[1] and document the pitfall.
+
+2) if there's no way to fix the bug, qemu/atomic.h needs to switch to
+__sync_fetch_and_add and friends.  And again, in this case the
+difference between the C11 and Linux/QEMU memory models must be documented.
+
+Torvald, Will, help me please... :((
+
+Paolo
+
+[1] as would be the case if fetch_add was implemented as
+fetch_add(RELEASE)+thread_fence(SEQ_CST).

@@ -1,180 +1,207 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp94485wrp;
-        Thu, 3 Oct 2019 16:30:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyQl96N02rBArJ+Fsd6aXaGvaObQ5uBYsL3i/N+bfarfzkOCUdXsX5M8i9GYQ7lBXbCt9Fq
-X-Received: by 2002:a17:906:6084:: with SMTP id t4mr9809169ejj.164.1570145410365;
-        Thu, 03 Oct 2019 16:30:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570145410; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp97254wrp;
+        Thu, 3 Oct 2019 16:32:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyboRVyYGOqm9bXT7bXplSEiKganf5PJzOBNPJCMvDeWNoXXgr7fW0+PYmWN2i7dyzot2mD
+X-Received: by 2002:ae9:eb46:: with SMTP id b67mr7281598qkg.401.1570145531647;
+        Thu, 03 Oct 2019 16:32:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570145531; cv=none;
         d=google.com; s=arc-20160816;
-        b=FlIQaMLp3adASHPKVKjUnqZjay7qA1OV349NG+gEsbwkeLrsRd5LnhMFUvWE5oGNe9
-         P3b3oUQ4uKoxqUiYpnV6VIbBtrRIQwfWCF92dTDrHGOrLZItaUCHSYvzmnFyE1AFLl9F
-         /1viuUHsxkVByuNwbR4AiP6OYxPl2fFFRQFZUiSN/t0jQv1RJYd8PahVOo4YGNt4V+Bm
-         /nZazzZuhvWXxia7+x5itmoHlVXFWi+rc84oHeH9g5q4mCdzjvpaJNoBxq0kI7aH5WCG
-         8RJYd0cBBX35ssAr/JiwvlE5dua/KakdnJT7Y0baelbWet8noreN5e6p79asmymrJnAL
-         MOaA==
+        b=yoxi/FfhcOXBqZ2pYSkbcEA4F0pT0qEbMA6lebWQ9Khi5Hn2bmWMkuW2EGFTD672Bv
+         xPHCMtNPVyi7qlSJUT8szuv6jY22a324j/8fFrVDV+H7lusq7hWmTqBiPNI+PWFDBUCl
+         d2mD7Ma6VtyBpYq4862pzz9FEd9fUvwCbGX/BvYyQfgLBGqy/qJgwFeMuIzInFblax65
+         D+Ru07r/8DiWrZZrhxMBVO5S4bXZqtu4WuRFouGthPtAwiW1n831aQkwy18UOSV7wgtP
+         +EkVZ8LZnU/P4wHikCukR9dvkX/AQITaZh/3yQmgJtxCeMfCPY7F5hIc6sc3DvdNLPOn
+         /WHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=nvEJaXAqGlMiPQa0/XqbCG3nag9FqoFJeY9TlL+cl6w=;
-        b=wmaHhfaWzKSVHq+mYeDeCy93hXTVfpKLvCFjxlErX91L4TZL0ZOjAT8cn6IegczcIp
-         JtYzdO8ZqJYaYB6EhVEeQ7Jt3WT4o+UAI+WweANDN/EKQAAI967ahfL1Bqf7XBVbNsfa
-         zRYSbt7d3kDjP+mAJRP/r5t377y9r6HRk9BcWGW5nXHda93nOZAJFuJTdWxHdKsFDB5g
-         EIECah7xmuaXihLlew7uBJDyezrwBUBrJUGuOEX4yRPxo/Im/py1UPo798k/mXSelGc0
-         blh5q45XccYsPdUOVq4c1pvwMHuoAeRTs5PcyfIfkg3yuPhmIRgOQvmy2dQkWQIcuOHZ
-         jnAw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=X++9C+o63TLz2yiBE4eVu8eFHPYuFJf499i6Z8ZrnAE=;
+        b=EG+ic6tn4eAPAh+VBhotvjxJtJNNV1ddOcE6ifS+Msu3Z2qDcb3kP6J6kTGrm3gykG
+         OuTKnHrHvOphf4qRxcP2W9eH924c3bJ1EEZCE/B8PNEZPJszhZRPz8h5oL/v+GK7vugW
+         AW+mFUL0hVmaIYEmOIvk86SdacgCFzXCS8L7QknnxgGgDrt7NMwF6FWQamJSogUHnjNv
+         Q0fKEmxFcLV84ytSahVQZcBf/ow0AhDY8t1gTMek41vHqi8ZL8fnXO8mqGJS9vCJBSvE
+         CtPjef23jO1A6U5lC75ux38dCjdG5v1yDD0qpU1T5RWCxc3llfLmi004enBRfDDf/xhw
+         /+UQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a30si2554576eda.39.2019.10.03.16.30.10
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BzfuI4T4;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
+        by mx.google.com with ESMTPS id p5si3622539qtn.234.2019.10.03.16.32.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Oct 2019 16:30:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 03 Oct 2019 16:32:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41082 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iGAXw-0001fD-SK
-	for alex.bennee@linaro.org; Thu, 03 Oct 2019 19:30:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46286)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iGAAm-0001Vt-8l
- for qemu-arm@nongnu.org; Thu, 03 Oct 2019 19:06:14 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iGAAl-0006Ze-33
- for qemu-arm@nongnu.org; Thu, 03 Oct 2019 19:06:12 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:50590)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1iGAAk-0006YW-Qh; Thu, 03 Oct 2019 19:06:11 -0400
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 692308667D;
- Thu,  3 Oct 2019 23:06:07 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-21.brq.redhat.com [10.40.204.21])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 86F8910013A7;
- Thu,  3 Oct 2019 23:05:53 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 08/14] hw: Move DS1338 device from hw/timer/ to hw/rtc/
- subdirectory
-Date: Fri,  4 Oct 2019 01:03:58 +0200
-Message-Id: <20191003230404.19384-9-philmd@redhat.com>
-In-Reply-To: <20191003230404.19384-1-philmd@redhat.com>
-References: <20191003230404.19384-1-philmd@redhat.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BzfuI4T4;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1570145531;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=X++9C+o63TLz2yiBE4eVu8eFHPYuFJf499i6Z8ZrnAE=;
+	b=BzfuI4T4iQoLrEGKsaG43mlTcATK6auN7LgZZinch8cgD9mG8p76GCvZJh9QiuipgevbXY
+	gpE3t8zJMXqpMPPox3Q2ULJJYG2UNjiiJXWPLEQvq+TfM8ewKyYvrXU6gRm+p6TElKA1Yx
+	83szwSL+k/hd/clpvmxQy8D3laibcTI=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-337-4fCeJt0FNXGQtcaRJHRG0g-1; Thu, 03 Oct 2019 19:32:09 -0400
+Received: by mail-wm1-f70.google.com with SMTP id j125so1779302wmj.6
+        for <alex.bennee@linaro.org>; Thu, 03 Oct 2019 16:32:09 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=6fg+tL8hdMuSlCATnh5vXBFe8nhdX3zEsZie5KLf89k=;
+        b=n1UlI0q4vodlzZCw9xlL3GusSw3+QouJTR+n+oDTXHgye/XKesohfOL4tj98YAIXhi
+         13KM6vedhkq0nStlJ6j5sCp+UG0nPKUjCaOr6P3Kb9slFp8znkvJ7A29iuFAQ+EovOrU
+         ZLHd3TzTvKafFsOJWHV23ow7u1WUybTGY9cKl1scExfrbLwSOwhF0LfPRRLbixcXguvJ
+         +r7ZI9T0iEjDyFX6PPDbMWrtIaRxQ+DbOMiPd+Ec84W5QIfqCja3d/sV+0POrA3ktgMr
+         gRMOpWK074s7uHLRkAfrtW6FoSWl1c2a33saPWfq/NSNTWDed658vLc1UJy5VDbp0Buk
+         k1Hw==
+X-Gm-Message-State: APjAAAV4bT80JzNvyqLOoti+YjHBfCc+tjZwv4JtDvC9PSUbMczuu1Zv
+	d0y4Kv+xRC5MAhGfezd+RVACmpeRAJNGSruGlCzo0K/sECQJnmH1K6uud4sLXpkLZ7aUwrf+V3j
+	ebrjyETodo0pzHguT
+X-Received: by 2002:a5d:51d1:: with SMTP id n17mr415035wrv.85.1570145527443;
+        Thu, 03 Oct 2019 16:32:07 -0700 (PDT)
+X-Received: by 2002:a5d:51d1:: with SMTP id n17mr415024wrv.85.1570145527218;
+        Thu, 03 Oct 2019 16:32:07 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.35] (240.red-88-21-68.staticip.rima-tde.net. [88.21.68.240])
+        by smtp.gmail.com with ESMTPSA id t123sm6570271wma.40.2019.10.03.16.32.06
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 03 Oct 2019 16:32:06 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v2 07/15] target/arm/arm-semi: Factor out
+ implementation of SYS_CLOSE
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20190916141544.17540-1-peter.maydell@linaro.org>
+ <20190916141544.17540-8-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <84350edd-f5e7-cf9a-5cfe-c5caf603f492@redhat.com>
+Date: Fri, 4 Oct 2019 01:32:05 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.26]); Thu, 03 Oct 2019 23:06:07 +0000 (UTC)
+In-Reply-To: <20190916141544.17540-8-peter.maydell@linaro.org>
+Content-Language: en-US
+X-MC-Unique: 4fCeJt0FNXGQtcaRJHRG0g-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Alistair Francis <alistair.francis@wdc.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>, Helge Deller <deller@gmx.de>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
- Andrew Jeffery <andrew@aj.id.au>, qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PRoukX2OgzGl
+X-TUID: Seh+ghqxRTm7
 
-The DS1338 is a Real Time Clock, not a timer.
-Move it under the hw/rtc/ subdirectory.
+On 9/16/19 4:15 PM, Peter Maydell wrote:
+> Currently for the semihosting calls which take a file descriptor
+> (SYS_CLOSE, SYS_WRITE, SYS_READ, SYS_ISTTY, SYS_SEEK, SYS_FLEN)
+> we have effectively two implementations, one for real host files
+> and one for when we indirect via the gdbstub. We want to add a
+> third one to deal with the magic :semihosting-features file.
+>=20
+> Instead of having a three-way if statement in each of these
+> cases, factor out the implementation of the calls to separate
+> functions which we dispatch to via function pointers selected
+> via the GuestFDType for the guest fd.
+>=20
+> In this commit, we set up the framework for the dispatch,
+> and convert the SYS_CLOSE call to use it.
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
----
- hw/rtc/Kconfig             | 4 ++++
- hw/rtc/Makefile.objs       | 1 +
- hw/{timer =3D> rtc}/ds1338.c | 0
- hw/timer/Kconfig           | 4 ----
- hw/timer/Makefile.objs     | 1 -
- 5 files changed, 5 insertions(+), 5 deletions(-)
- rename hw/{timer =3D> rtc}/ds1338.c (100%)
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-diff --git a/hw/rtc/Kconfig b/hw/rtc/Kconfig
-index dff9d60946..45daa8d655 100644
---- a/hw/rtc/Kconfig
-+++ b/hw/rtc/Kconfig
-@@ -1,3 +1,7 @@
-+config DS1338
-+    bool
-+    depends on I2C
-+
- config M41T80
-     bool
-     depends on I2C
-diff --git a/hw/rtc/Makefile.objs b/hw/rtc/Makefile.objs
-index 810a38ee7b..b195863291 100644
---- a/hw/rtc/Makefile.objs
-+++ b/hw/rtc/Makefile.objs
-@@ -1,3 +1,4 @@
-+common-obj-$(CONFIG_DS1338) +=3D ds1338.o
- common-obj-$(CONFIG_M41T80) +=3D m41t80.o
- common-obj-$(CONFIG_M48T59) +=3D m48t59.o
- ifeq ($(CONFIG_ISA_BUS),y)
-diff --git a/hw/timer/ds1338.c b/hw/rtc/ds1338.c
-similarity index 100%
-rename from hw/timer/ds1338.c
-rename to hw/rtc/ds1338.c
-diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
-index 9357875f28..a990f9fe35 100644
---- a/hw/timer/Kconfig
-+++ b/hw/timer/Kconfig
-@@ -9,10 +9,6 @@ config ARM_MPTIMER
- config A9_GTIMER
-     bool
-=20
--config DS1338
--    bool
--    depends on I2C
--
- config HPET
-     bool
-     default y if PC
-diff --git a/hw/timer/Makefile.objs b/hw/timer/Makefile.objs
-index 23be70b71d..70b61b69c7 100644
---- a/hw/timer/Makefile.objs
-+++ b/hw/timer/Makefile.objs
-@@ -3,7 +3,6 @@ common-obj-$(CONFIG_ARM_MPTIMER) +=3D arm_mptimer.o
- common-obj-$(CONFIG_ARM_V7M) +=3D armv7m_systick.o
- common-obj-$(CONFIG_A9_GTIMER) +=3D a9gtimer.o
- common-obj-$(CONFIG_CADENCE) +=3D cadence_ttc.o
--common-obj-$(CONFIG_DS1338) +=3D ds1338.o
- common-obj-$(CONFIG_HPET) +=3D hpet.o
- common-obj-$(CONFIG_I8254) +=3D i8254_common.o i8254.o
- common-obj-$(CONFIG_PUV3) +=3D puv3_ost.o
---=20
-2.20.1
-
+> ---
+>   target/arm/arm-semi.c | 44 ++++++++++++++++++++++++++++++++++++-------
+>   1 file changed, 37 insertions(+), 7 deletions(-)
+>=20
+> diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
+> index 02cd673d47d..e5f1e2aaaf2 100644
+> --- a/target/arm/arm-semi.c
+> +++ b/target/arm/arm-semi.c
+> @@ -109,6 +109,7 @@ static int open_modeflags[12] =3D {
+>   typedef enum GuestFDType {
+>       GuestFDUnused =3D 0,
+>       GuestFDHost =3D 1,
+> +    GuestFDGDB =3D 2,
+>   } GuestFDType;
+>  =20
+>   /*
+> @@ -172,14 +173,14 @@ static GuestFD *do_get_guestfd(int guestfd)
+>   /*
+>    * Associate the specified guest fd (which must have been
+>    * allocated via alloc_fd() and not previously used) with
+> - * the specified host fd.
+> + * the specified host/gdb fd.
+>    */
+>   static void associate_guestfd(int guestfd, int hostfd)
+>   {
+>       GuestFD *gf =3D do_get_guestfd(guestfd);
+>  =20
+>       assert(gf);
+> -    gf->type =3D GuestFDHost;
+> +    gf->type =3D use_gdb_syscalls() ? GuestFDGDB : GuestFDHost;
+>       gf->hostfd =3D hostfd;
+>   }
+>  =20
+> @@ -376,6 +377,39 @@ static target_ulong arm_gdb_syscall(ARMCPU *cpu, gdb=
+_syscall_complete_cb cb,
+>       return is_a64(env) ? env->xregs[0] : env->regs[0];
+>   }
+>  =20
+> +/*
+> + * Types for functions implementing various semihosting calls
+> + * for specific types of guest file descriptor. These must all
+> + * do the work and return the required return value for the guest,
+> + * setting the guest errno if appropriate.
+> + */
+> +typedef uint32_t sys_closefn(ARMCPU *cpu, GuestFD *gf);
+> +
+> +static uint32_t host_closefn(ARMCPU *cpu, GuestFD *gf)
+> +{
+> +    CPUARMState *env =3D &cpu->env;
+> +
+> +    return set_swi_errno(env, close(gf->hostfd));
+> +}
+> +
+> +static uint32_t gdb_closefn(ARMCPU *cpu, GuestFD *gf)
+> +{
+> +    return arm_gdb_syscall(cpu, arm_semi_cb, "close,%x", gf->hostfd);
+> +}
+> +
+> +typedef struct GuestFDFunctions {
+> +    sys_closefn *closefn;
+> +} GuestFDFunctions;
+> +
+> +static const GuestFDFunctions guestfd_fns[] =3D {
+> +    [GuestFDHost] =3D {
+> +        .closefn =3D host_closefn,
+> +    },
+> +    [GuestFDGDB] =3D {
+> +        .closefn =3D gdb_closefn,
+> +    },
+> +};
+> +
+>   /* Read the input value from the argument block; fail the semihosting
+>    * call if the memory read fails.
+>    */
+> @@ -485,11 +519,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+>               return set_swi_errno(env, -1);
+>           }
+>  =20
+> -        if (use_gdb_syscalls()) {
+> -            ret =3D arm_gdb_syscall(cpu, arm_semi_cb, "close,%x", gf->ho=
+stfd);
+> -        } else {
+> -            ret =3D set_swi_errno(env, close(gf->hostfd));
+> -        }
+> +        ret =3D guestfd_fns[gf->type].closefn(cpu, gf);
+>           dealloc_guestfd(arg0);
+>           return ret;
+>       case TARGET_SYS_WRITEC:
+>=20

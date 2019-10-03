@@ -1,120 +1,79 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp812334wrp;
-        Thu, 3 Oct 2019 14:41:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxn4jnzYED99/iJU80HHL7FyjERyMAol41K/SMIf7omZrD8imb0JMfHuXHR/oX4xUiovubZ
-X-Received: by 2002:ac8:46d8:: with SMTP id h24mr12473203qto.235.1570138870536;
-        Thu, 03 Oct 2019 14:41:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570138870; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp72748wrp;
+        Thu, 3 Oct 2019 16:06:12 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwzaZKo3MLrWgMJAsnypw9DFr0Mk3tKyRRrOeJMoUgz/OXuP1Kns4RwXrxpK+7wIGqPO4Vm
+X-Received: by 2002:a17:906:6a45:: with SMTP id n5mr10062172ejs.20.1570143972710;
+        Thu, 03 Oct 2019 16:06:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570143972; cv=none;
         d=google.com; s=arc-20160816;
-        b=crliKe42tfZx8OxCZk1sOzaj9acg5WEEMK5MLXsFy726jFGmzfafJn9I9ibFA2U2w7
-         bhG0XyPP3UQxoBJfvbWTUEL3e7KU6UYZDW/XsYzaxgsys3snWjCjy4+W/J+VtB53zniB
-         dZ+bPSfMkIDSVTJVEn+2fy86bK4jh3IeCux8eK1CJd+EI1/rOnfiKpGDFirUzJ+g7gnz
-         AGs26nFEiVXS50I0rbwGogjuE0Lzgn+y/lo+RndRvKx8Z+B5N47LYiKovWmZbOsUnVri
-         hv1ka4RonPYz83HQobEnusg61/TE3bnKMpN0OcBhC347/7lSmP+GzoTBmm5lyUJKPPTo
-         8MMA==
+        b=qnE8zCmvCDsUOjn/kkNxZ6z7fpdK4aCgZxPm3sddycrHa4kvaWJGnQ/jc1kQwBL5Qh
+         I/TnQRzjMfX6q28GsqjXyt90eb83+zapbVBBrT0/AseotGi7mUzrEbmWV7cGxFv15ptR
+         A5wMelKGn0DNRNx2zTi3uPta2uEYQeKZ+CT7e6ffK5b4kWKMOAKZFodqKUgdM87udWm4
+         /KVMxG7vrd4KDLqubi/y7Kzrpdnnc7SRLo7a79qDP9BF5hMHDtam2uiXh5gZtbO1yfQ3
+         Q9bqlo4n33rVxe+FvBlJpnt9pyapnwPtpJO2I91LzxgK7LgBSruZfNcbkFxPQBMXRRd8
+         PppQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=Oiie/5BoLYvBLnYujIkzYtsCTPZmL/d7Jgw3LTxPJ9M=;
-        b=m19ijQyQDqYC7sRlpe7hBN4012nGBf8ll1BA7yJ8H4nHjlsOc5vfmqB0WzbIN4TPlR
-         w9mQw0T4oM4j/gZV2W80+G8cLsTeWok0k2FLLoee5iBMhcrT3S2cnN1ApFAvBmNm+d0k
-         aom4BeD2pxK/1qdRTH3B74nAYvuo3SMeCcZG8ajaKUA936grHDWpzbgj9LR3CAP/qj+T
-         n7WxnTvBPrIGFyWw1j5TyG8ehXryYt/Uvif2acTEjFRXnfzyB1ssjeSrHb3T/+cF/ml9
-         4uOL4ta0bypyNS8oFI8LHTuSsw37jPhBrNrI/gQ2gG+1Y1vEM0JilBXoZgi166ovGRyR
-         FqAw==
+         :mime-version:message-id:date:subject:to:from;
+        bh=e+7xwGIzaN0FIHLoGXENEqImm4705xClUz8lgjhxxx4=;
+        b=ipaAp84rKBwKUhhZXiMSZk9B0HSW235hXg6N1jVt4x+RC/QgtSHiP6c6c7m6EU0pGd
+         tKOIPAHCrtkQnR7qGzRvvPVgnxZGWuRNPr5JWUc06JVu83akMCAmsNJwfhixmlBkTNeA
+         Lsjd4ZoOLYKnU4hj0wC9JTILDLqnypzCXGl+uKdCK6e9unzjs3SxRuJNbqziuM6WLHLQ
+         O3mjMGlnVj4coJdoPrTc59fqCQXcN6e6ssVcOARtgQdlnd9ucAlpXaFLgytdALG8sdQs
+         cpjtZjYoARvoCqjVwWQvqFvD5VQdwZaGq52pVJ4QI8FfZURzOaufHi+rJH7wyOvdCUix
+         t00Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T0rNqlxa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 21si3581300qki.323.2019.10.03.14.41.10
+        by mx.google.com with ESMTPS id o2si1942680ejm.367.2019.10.03.16.06.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Oct 2019 14:41:10 -0700 (PDT)
+        Thu, 03 Oct 2019 16:06:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=T0rNqlxa;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40288 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40772 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iG8qT-0002Sn-V9
-	for alex.bennee@linaro.org; Thu, 03 Oct 2019 17:41:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56519)
+	id 1iGAAl-0000pX-9A
+	for alex.bennee@linaro.org; Thu, 03 Oct 2019 19:06:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45609)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iG8qK-0002SO-5X
- for qemu-arm@nongnu.org; Thu, 03 Oct 2019 17:41:02 -0400
+ (envelope-from <philmd@redhat.com>) id 1iGA9B-0000nP-MZ
+ for qemu-arm@nongnu.org; Thu, 03 Oct 2019 19:04:36 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iG8qG-0002dx-Bv
- for qemu-arm@nongnu.org; Thu, 03 Oct 2019 17:40:58 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:27291
- helo=us-smtp-1.mimecast.com)
+ (envelope-from <philmd@redhat.com>) id 1iGA98-0005pl-9k
+ for qemu-arm@nongnu.org; Thu, 03 Oct 2019 19:04:33 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:26606)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iG8q9-0002V3-Du
- for qemu-arm@nongnu.org; Thu, 03 Oct 2019 17:40:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1570138845;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Oiie/5BoLYvBLnYujIkzYtsCTPZmL/d7Jgw3LTxPJ9M=;
- b=T0rNqlxa53nxxvRzhCtsLZRbcs5dUm1WUnqRnVGPrQqZYchB6LTvIgCMUd3jj82n/L6odu
- dfq1IWvoXBEDD1Ciz4DMH3LYiqw1QQJladJ2iKOjtpgDl45zYp/9SjrT4tCkRZAgl107yG
- weMIw4pRScHB6mCznyWIA5n9bAsa3+Y=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-162-pvOGYoJ4O3KsEbxHY5Brbg-1; Thu, 03 Oct 2019 17:40:42 -0400
-Received: by mail-wm1-f72.google.com with SMTP id r187so2946470wme.0
- for <qemu-arm@nongnu.org>; Thu, 03 Oct 2019 14:40:42 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=tOf5KBlaCBTyfqyZJRcF2KlfUtLrLdbL5dPGhD9CX2A=;
- b=Isft9wcKt5NgkfgGuDQVkece2UpcQTDCH8QlMqJhKQ8MJpGxQ7VnWiC3NEvmbzczLt
- Seck8NokHWIqYFQmDMlLlsB4amOfX9YMyZB1LzJMlBwIGE9GaLU+7BOhF+t8FlQFv2qu
- QLlzaPTNhhIFTr/dftAidrHb3SBti3tD4Rf+1Li0o/ls2n8QGTWxwstXkf5BcMNHh3nx
- o1Pn3AHVGFJx981D8Y184ckbE6IX6lalqa3TlU8rZdME4zjk3KDlCbyWMW65T85z+yOt
- bA8N7e302jvopabWZscetL0eujhGC/bTxS0jPzhx09QVEviSIk0axDJXaEPMILbRpotT
- oCAQ==
-X-Gm-Message-State: APjAAAUmuvl8s4sPBNI9ePp/1ArI091sOlMxpXaohKc9o3Cr4C/sJRcL
- 0hZFfPqHl3+PFuI6KpgLlgEIVV9xjA2pW2kx0TSibgdP7v+uRXB0lnc3XwPJ6zSzoDpns7/igvS
- F967SwHLXiVJ9
-X-Received: by 2002:a7b:c35a:: with SMTP id l26mr8614186wmj.81.1570138841409; 
- Thu, 03 Oct 2019 14:40:41 -0700 (PDT)
-X-Received: by 2002:a7b:c35a:: with SMTP id l26mr8614173wmj.81.1570138841043; 
- Thu, 03 Oct 2019 14:40:41 -0700 (PDT)
-Received: from [192.168.1.35] (240.red-88-21-68.staticip.rima-tde.net.
- [88.21.68.240])
- by smtp.gmail.com with ESMTPSA id p7sm4778733wma.34.2019.10.03.14.40.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 03 Oct 2019 14:40:40 -0700 (PDT)
-Subject: Re: [U-Boot] U-Boot build for i.MX board won't boot in corresponding
- QEMU machine
-To: Bin Meng <bmeng.cn@gmail.com>, Waseem ALKurdi <waseem19992009@outlook.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
-References: <AM0PR01MB5795656B2DB2EA6E760BA8A8D79C0@AM0PR01MB5795.eurprd01.prod.exchangelabs.com>
- <CAEUhbmUYt=kNzJMyhZWouuktSKkqRtwkzxSQeFygMTid-M=QUw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <77dd4faa-77b9-2156-3f6a-ece8c7b6f1df@redhat.com>
-Date: Thu, 3 Oct 2019 23:40:38 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.0
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1iGA94-0005oE-I9; Thu, 03 Oct 2019 19:04:27 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 625AF10C0928;
+ Thu,  3 Oct 2019 23:04:24 +0000 (UTC)
+Received: from x1w.redhat.com (ovpn-204-21.brq.redhat.com [10.40.204.21])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 91D381001B20;
+ Thu,  3 Oct 2019 23:04:07 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 00/14] hw: Split RTC devices from hw/timer/ to hw/rtc/
+Date: Fri,  4 Oct 2019 01:03:50 +0200
+Message-Id: <20191003230404.19384-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CAEUhbmUYt=kNzJMyhZWouuktSKkqRtwkzxSQeFygMTid-M=QUw@mail.gmail.com>
-Content-Language: en-US
-X-MC-Unique: pvOGYoJ4O3KsEbxHY5Brbg-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.66]); Thu, 03 Oct 2019 23:04:25 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 205.139.110.120
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -127,203 +86,180 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- "u-boot@lists.denx.de" <u-boot@lists.denx.de>, qemu-arm@nongnu.org,
- Jean-Christophe Dubois <jcd@tribudubois.net>
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Helge Deller <deller@gmx.de>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <lvivier@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6j6nFFonJ1+0
+X-TUID: OfsElON5PVzm
 
-Cc'ing the SABRELITE maintainers:
+Since v1: https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg03334.=
+html
+- addressed review comments (described in patches 3 and 4)
+- added R-b/A-b tags
 
-$ ./scripts/get_maintainer.pl -f hw/misc/imx6_ccm.c
-Peter Maydell <peter.maydell@linaro.org> (odd fixer:SABRELITE / i.MX6)
-Jean-Christophe Dubois <jcd@tribudubois.net> (reviewer:SABRELITE / i.MX6)
-qemu-arm@nongnu.org (open list:SABRELITE / i.MX6)
+Whole series now reviewed.
 
-On 10/3/19 1:54 PM, Bin Meng wrote:
-> +QEMU developers ML
-> On Thu, Oct 3, 2019 at 7:37 PM Waseem ALKurdi
-> <waseem19992009@outlook.com> wrote:
->>
->> I'm trying to get mainline U-Boot to boot on mainline QEMU 4.1.0 for the=
- 'sabrelite' board, using the configuration 'mx6qsabrelite_defconfig'.
->>
->> It's not booting at all. Actually, not a single U-Boot build for an i.MX=
- board would boot, with the exception of 'imx25-pdk'.
->>
->> I'm compiling U-Boot by un-tarring the source tarball and running the fo=
-llowing commands:
->>
->> $ time CROSS_COMPILE=3D/path/to/toolchain/arm-2014.05/bin/arm-none-linux=
--gnueabi- make ARCH=3Darm clean
->> $ time CROSS_COMPILE=3D/path/to/toolchain/arm-2014.05/bin/arm-none-linux=
--gnueabi- make ARCH=3Darm mrproper
->> $ time CROSS_COMPILE=3D/path/to/toolchain/arm-2014.05/bin/arm-none-linux=
--gnueabi- make ARCH=3Darm mx6qsabrelite_defconfig
->>
->> then after the build finishes:
->>
->> $ qemu-system-arm -M sabrelite -m 512M -kernel ~/Downloads/u-boot-2019.1=
-0-rc3/u-boot.imx -monitor stdio
->>
->> And other variations on this command as well.
->> No amount of kernel commandline options or anything would make it boot. =
-What should I do?
+v1 blurb:
 
-Running QEMU with '-d in_asm,cpu' shows the guest is looping polling a=20
-mmio mapped register:
+When working on timers, I found it confuse to have RTC devices
+mixed in the hw/timer/ directory.
 
-IN: arch_cpu_init
-0x17803264:  e5943150  ldr      r3, [r4, #0x150]
-0x17803268:  f57ff05f  dmb      sy
-0x1780326c:  e3130080  tst      r3, #0x80
-0x17803270:  0afffffb  beq      #0x17803264
+We can see the models use slighly different APIs:
 
-R00=3D00000000 R01=3D00000000 R02=3D00000001 R03=3D04000000
-R04=3D020c8000 R05=3D17864a7c R06=3D17864a78 R07=3D00000000
-R08=3D00000000 R09=3D0093dde0 R10=3D00000000 R11=3D00000000
-R12=3D0093dee8 R13=3D0093ddc8 R14=3D178033e4 R15=3D17803264
-PSR=3D400001d3 -Z-- A S svc32
-R00=3D00000000 R01=3D00000000 R02=3D00000001 R03=3D04000000
-R04=3D020c8000 R05=3D17864a7c R06=3D17864a78 R07=3D00000000
-R08=3D00000000 R09=3D0093dde0 R10=3D00000000 R11=3D00000000
-R12=3D0093dee8 R13=3D0093ddc8 R14=3D178033e4 R15=3D17803264
-PSR=3D400001d3 -Z-- A S svc32
+  $ git grep '#include' hw/timer/|cut -d: -f3-|sort|uniq -c|egrep -v '^  =
+    1 '|sort -rn
+     33 #include "qemu/osdep.h"
+     29 #include "hw/irq.h"
+     28 #include "qemu/module.h"
+     23 #include "migration/vmstate.h"
+     21 #include "hw/sysbus.h"
+     20 #include "qemu/timer.h"
+     20 #include "qemu/main-loop.h"
+     17 #include "qemu/log.h"
+     14 #include "hw/qdev-properties.h"
+     14 #include "hw/ptimer.h"
+      9 #include "trace.h"
+      7 #include "qapi/error.h"
+      5 #include "hw/hw.h"
+      3 #include "sysemu/runstate.h"
+      3 #include "qemu/error-report.h"
+      3 #include "hw/timer/i8254.h"
+      2 #include "qemu/bitops.h"
+      2 #include "hw/timer/i8254_internal.h"
+      2 #include "hw/registerfields.h"
+      2 #include "hw/core/cpu.h"
+      2 #include "hw/arm/omap.h"
+      2 #include "hw/arm/exynos4210.h"
 
-R04 + 0x150 =3D 0x020c8000 + 0x150 =3D 0x020c8150, which is the=20
-CCM_ANALOG_MISC0 register.
+  $ git grep '#include' hw/rtc/|cut -d: -f3-|sort|uniq -c|egrep -v '^    =
+  1 '|sort -rn
+     11 #include "qemu/osdep.h"
+     10 #include "qemu/module.h"
+      9 #include "qemu-common.h"
+      8 #include "qemu/timer.h"
+      8 #include "migration/vmstate.h"
+      6 #include "qemu/bcd.h"
+      6 #include "hw/irq.h"
+      5 #include "sysemu/sysemu.h"
+      5 #include "qemu/log.h"
+      5 #include "hw/sysbus.h"
+      4 #include "trace.h"
+      4 #include "hw/qdev-properties.h"
+      3 #include "qemu/cutils.h"
+      3 #include "hw/i2c/i2c.h"
+      2 #include "sysemu/runstate.h"
+      2 #include "m48t59-internal.h"
+      2 #include "hw/rtc/m48t59.h"
+      2 #include "exec/address-spaces.h"
 
-Looking at u-boot arch/arm/mach-imx/mx6/soc.c we have:
+Split the RTC-related files in the new hw/rtc/ directory.
 
-int arch_cpu_init(void)
-{
-=09struct mxc_ccm_reg *ccm =3D (struct mxc_ccm_reg *)CCM_BASE_ADDR;
+Philippe Mathieu-Daud=C3=A9 (14):
+  hw/timer: Compile devices not target-dependent as common object
+  hw: Move PL031 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move MC146818 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move M48T59 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move M41T80 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move sun4v hypervisor RTC from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move TWL92230 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move DS1338 device from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move Xilinx ZynqMP RTC from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move Exynos4210 RTC from hw/timer/ to hw/rtc/ subdirectory
+  hw: Move Aspeed RTC from hw/timer/ to hw/rtc/ subdirectory
+  hw/rtc/mc146818: Include mc146818rtc_regs.h a bit less
+  hw/rtc/xlnx-zynqmp-rtc: Remove unused "ptimer.h" include
+  hw/rtc/aspeed_rtc: Remove unused includes
 
-=09init_aips();
+ MAINTAINERS                                  | 20 +++----
+ Makefile.objs                                |  1 +
+ hw/Kconfig                                   |  1 +
+ hw/Makefile.objs                             |  1 +
+ hw/alpha/dp264.c                             |  2 +-
+ hw/arm/musca.c                               |  2 +-
+ hw/hppa/machine.c                            |  2 +-
+ hw/i386/acpi-build.c                         |  2 +-
+ hw/i386/pc.c                                 |  2 +-
+ hw/i386/pc_q35.c                             |  2 +-
+ hw/mips/mips_fulong2e.c                      |  2 +-
+ hw/mips/mips_jazz.c                          |  2 +-
+ hw/mips/mips_malta.c                         |  2 +-
+ hw/mips/mips_r4k.c                           |  2 +-
+ hw/ppc/pnv.c                                 |  2 +-
+ hw/ppc/ppc405_boards.c                       |  2 +-
+ hw/ppc/prep.c                                |  4 +-
+ hw/rtc/Kconfig                               | 23 ++++++++
+ hw/rtc/Makefile.objs                         | 13 +++++
+ hw/{timer =3D> rtc}/aspeed_rtc.c               |  2 +-
+ hw/{timer =3D> rtc}/ds1338.c                   |  0
+ hw/{timer =3D> rtc}/exynos4210_rtc.c           |  0
+ hw/{timer =3D> rtc}/m41t80.c                   |  0
+ hw/{timer =3D> rtc}/m48t59-internal.h          |  0
+ hw/{timer =3D> rtc}/m48t59-isa.c               |  4 +-
+ hw/{timer =3D> rtc}/m48t59.c                   |  2 +-
+ hw/{timer =3D> rtc}/mc146818rtc.c              |  3 +-
+ hw/{timer =3D> rtc}/pl031.c                    |  2 +-
+ hw/{timer =3D> rtc}/sun4v-rtc.c                |  2 +-
+ hw/rtc/trace-events                          | 19 +++++++
+ hw/{timer =3D> rtc}/twl92230.c                 |  0
+ hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.c          |  3 +-
+ hw/sparc/sun4m.c                             |  2 +-
+ hw/sparc64/niagara.c                         |  2 +-
+ hw/sparc64/sun4u.c                           |  2 +-
+ hw/timer/Kconfig                             | 24 ---------
+ hw/timer/Makefile.objs                       | 35 ++++--------
+ hw/timer/hpet.c                              |  3 +-
+ hw/timer/trace-events                        | 18 -------
+ include/hw/arm/aspeed_soc.h                  |  2 +-
+ include/hw/arm/xlnx-zynqmp.h                 |  2 +-
+ include/hw/{timer =3D> rtc}/aspeed_rtc.h       |  9 ++--
+ include/hw/rtc/m48t59.h                      | 57 ++++++++++++++++++++
+ include/hw/{timer =3D> rtc}/mc146818rtc.h      | 13 +++--
+ include/hw/{timer =3D> rtc}/mc146818rtc_regs.h |  5 +-
+ include/hw/{timer =3D> rtc}/pl031.h            |  5 +-
+ include/hw/rtc/sun4v-rtc.h                   | 19 +++++++
+ include/hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.h  |  6 +--
+ include/hw/timer/m48t59.h                    | 32 -----------
+ include/hw/timer/sun4v-rtc.h                 |  1 -
+ tests/rtc-test.c                             |  2 +-
+ 51 files changed, 208 insertions(+), 155 deletions(-)
+ create mode 100644 hw/rtc/Kconfig
+ create mode 100644 hw/rtc/Makefile.objs
+ rename hw/{timer =3D> rtc}/aspeed_rtc.c (99%)
+ rename hw/{timer =3D> rtc}/ds1338.c (100%)
+ rename hw/{timer =3D> rtc}/exynos4210_rtc.c (100%)
+ rename hw/{timer =3D> rtc}/m41t80.c (100%)
+ rename hw/{timer =3D> rtc}/m48t59-internal.h (100%)
+ rename hw/{timer =3D> rtc}/m48t59-isa.c (98%)
+ rename hw/{timer =3D> rtc}/m48t59.c (99%)
+ rename hw/{timer =3D> rtc}/mc146818rtc.c (99%)
+ rename hw/{timer =3D> rtc}/pl031.c (99%)
+ rename hw/{timer =3D> rtc}/sun4v-rtc.c (98%)
+ create mode 100644 hw/rtc/trace-events
+ rename hw/{timer =3D> rtc}/twl92230.c (100%)
+ rename hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.c (99%)
+ rename include/hw/{timer =3D> rtc}/aspeed_rtc.h (80%)
+ create mode 100644 include/hw/rtc/m48t59.h
+ rename include/hw/{timer =3D> rtc}/mc146818rtc.h (63%)
+ rename include/hw/{timer =3D> rtc}/mc146818rtc_regs.h (96%)
+ rename include/hw/{timer =3D> rtc}/pl031.h (93%)
+ create mode 100644 include/hw/rtc/sun4v-rtc.h
+ rename include/hw/{timer =3D> rtc}/xlnx-zynqmp-rtc.h (95%)
+ delete mode 100644 include/hw/timer/m48t59.h
+ delete mode 100644 include/hw/timer/sun4v-rtc.h
 
-=09/* Need to clear MMDC_CHx_MASK to make warm reset work. */
-=09clear_mmdc_ch_mask();
-
-=09/*
-=09 * Disable self-bias circuit in the analog bandap.
-=09 * The self-bias circuit is used by the bandgap during startup.
-=09 * This bit should be set after the bandgap has initialized.
-=09 */
-=09init_bandgap();
-
-         ...
-
-With:
-
-static void init_bandgap(void)
-{
-=09struct anatop_regs *anatop =3D (struct anatop_regs *)ANATOP_BASE_ADDR;
-=09struct ocotp_regs *ocotp =3D (struct ocotp_regs *)OCOTP_BASE_ADDR;
-=09struct fuse_bank *bank =3D &ocotp->bank[1];
-=09struct fuse_bank1_regs *fuse =3D
-=09=09(struct fuse_bank1_regs *)bank->fuse_regs;
-=09uint32_t val;
-
-=09/*
-=09 * Ensure the bandgap has stabilized.
-=09 */
-=09while (!(readl(&anatop->ana_misc0) & 0x80))
-=09=09;
-
-QEMU returns R03=3D04000000 which comes from hw/misc/imx6_ccm.c:
-
-static void imx6_ccm_reset(DeviceState *dev)
-{
-     ...
-     s->analog[PMU_MISC0] =3D 0x04000000;
-     s->analog[PMU_MISC1] =3D 0x00000000;
-     s->analog[PMU_MISC2] =3D 0x00272727;
-
-Changing the PMU_MISC0 register to return the bit u-boot is polling with=20
-this snippet (I have no clue what this does) with:
-
--- >8 --
-diff --git a/hw/misc/imx6_ccm.c b/hw/misc/imx6_ccm.c
-index 7fec8f0a47..3a52ea640a 100644
---- a/hw/misc/imx6_ccm.c
-+++ b/hw/misc/imx6_ccm.c
-@@ -450,7 +450,7 @@ static void imx6_ccm_reset(DeviceState *dev)
-      s->analog[PMU_REG_3P0] =3D 0x00000F74;
-      s->analog[PMU_REG_2P5] =3D 0x00005071;
-      s->analog[PMU_REG_CORE] =3D 0x00402010;
--    s->analog[PMU_MISC0] =3D 0x04000000;
-+    s->analog[PMU_MISC0] =3D 0x04000080;
-      s->analog[PMU_MISC1] =3D 0x00000000;
-      s->analog[PMU_MISC2] =3D 0x00272727;
----
-
-I see u-boot going further.
-
-> I suspect mainline QEMU sabrelite machine only supports booting the
-> Linux kernel directly, but not booting U-Boot.
-
-Note this u-boot code is ~4 years old:
-
-commit 1f516faa45611aedc8c2e3f303b3866f615d481e
-Author: Peng Fan <Peng.Fan@freescale.com>
-Date:   Thu Jan 15 14:22:32 2015 +0800
-
-     ARM: imx6: disable bandgap self-bias after boot
-
-     The self-bias circuit is used by the bandgap during startup.
-     Once the bandgap has stabilized, the self-bias circuit should
-     be disabled for best noise performance of analog blocks.
-     Also this bit should be disabled before the chip enters STOP mode or
-     when ever the regular bandgap is disabled.
-
-The QEMU device code was added later:
-
-commit a66d815cd558193182b09fb23211f7ebf88d0661
-Author: Jean-Christophe Dubois <jcd@tribudubois.net>
-Date:   Wed Mar 16 17:06:00 2016 +0000
-
-     i.MX: Add i.MX6 CCM and ANALOG device.
-
-So I believe QEMU never booted u-boot on the i.MX6.
-
-Waseem, you can enable some QEMU i.MX debug changing DEBUG_IMX*=20
-definitions, such:
-
--- >8 --
-diff --git a/hw/misc/imx6_ccm.c b/hw/misc/imx6_ccm.c
-index 7fec8f0a47..3a52ea640a 100644
---- a/hw/misc/imx6_ccm.c
-+++ b/hw/misc/imx6_ccm.c
-@@ -17,7 +17,7 @@
-  #include "qemu/module.h"
-
-  #ifndef DEBUG_IMX6_CCM
--#define DEBUG_IMX6_CCM 0
-+#define DEBUG_IMX6_CCM 1
-  #endif
-
-  #define DPRINTF(fmt, args...) \
----
-
-There are more:
-
-$ git grep ifndef.*DEBUG_IMX
-hw/char/imx_serial.c:29:#ifndef DEBUG_IMX_UART
-hw/gpio/imx_gpio.c:28:#ifndef DEBUG_IMX_GPIO
-hw/i2c/imx_i2c.c:29:#ifndef DEBUG_IMX_I2C
-hw/intc/imx_avic.c:25:#ifndef DEBUG_IMX_AVIC
-hw/misc/imx25_ccm.c:20:#ifndef DEBUG_IMX25_CCM
-hw/misc/imx31_ccm.c:22:#ifndef DEBUG_IMX31_CCM
-hw/misc/imx6_ccm.c:19:#ifndef DEBUG_IMX6_CCM
-hw/misc/imx6_src.c:21:#ifndef DEBUG_IMX6_SRC
-hw/misc/imx_ccm.c:19:#ifndef DEBUG_IMX_CCM
-hw/net/imx_fec.c:38:#ifndef DEBUG_IMX_FEC
-hw/net/imx_fec.c:50:#ifndef DEBUG_IMX_PHY
-hw/ssi/imx_spi.c:18:#ifndef DEBUG_IMX_SPI
-hw/timer/imx_epit.c:24:#ifndef DEBUG_IMX_EPIT
-hw/timer/imx_gpt.c:23:#ifndef DEBUG_IMX_GPT
-
-Regards,
-
-Phil.
+--=20
+2.20.1
 

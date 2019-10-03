@@ -1,207 +1,205 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp97254wrp;
-        Thu, 3 Oct 2019 16:32:11 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyboRVyYGOqm9bXT7bXplSEiKganf5PJzOBNPJCMvDeWNoXXgr7fW0+PYmWN2i7dyzot2mD
-X-Received: by 2002:ae9:eb46:: with SMTP id b67mr7281598qkg.401.1570145531647;
-        Thu, 03 Oct 2019 16:32:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570145531; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp98805wrp;
+        Thu, 3 Oct 2019 16:33:40 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzJWwUTqHvyqiEoLGP4uRidViZufuvmcTC89BllFK9cv+d35FuHYv4Qu/EK/+eb5NwNks5y
+X-Received: by 2002:a37:7041:: with SMTP id l62mr7336722qkc.7.1570145620530;
+        Thu, 03 Oct 2019 16:33:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570145620; cv=none;
         d=google.com; s=arc-20160816;
-        b=yoxi/FfhcOXBqZ2pYSkbcEA4F0pT0qEbMA6lebWQ9Khi5Hn2bmWMkuW2EGFTD672Bv
-         xPHCMtNPVyi7qlSJUT8szuv6jY22a324j/8fFrVDV+H7lusq7hWmTqBiPNI+PWFDBUCl
-         d2mD7Ma6VtyBpYq4862pzz9FEd9fUvwCbGX/BvYyQfgLBGqy/qJgwFeMuIzInFblax65
-         D+Ru07r/8DiWrZZrhxMBVO5S4bXZqtu4WuRFouGthPtAwiW1n831aQkwy18UOSV7wgtP
-         +EkVZ8LZnU/P4wHikCukR9dvkX/AQITaZh/3yQmgJtxCeMfCPY7F5hIc6sc3DvdNLPOn
-         /WHg==
+        b=zS229eihDi95sOKGYX+RpmR0iz+X0Z6tQYukENrShgEFBNul0s3NZvQFRhxW4u/jqe
+         HGsa8W1S+KJ22VY3hOhi+Oy2BsKOU2m4MGzAp8BOyKOTWCArcSeuAlbp6C8cucdPunBs
+         53EW8rPRtKQU1CwFaJS0cHGcqLKz/6nQwwPhekVbe0JnehGABFX8y7XAoRgoSXsu3H+0
+         VzBafPq2U3LZBzmSnVTZ0wAkroKZzStOCxo7fU6ZZnKhpN5QOxNnTWjr/FYgQmztXtfI
+         VLroGREvqwEoBgF0jCtX0kLW3H95L4eufMNSg2/HEb0MmHguWemdX+hOYsO2ZEBFYTrq
+         VVcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=X++9C+o63TLz2yiBE4eVu8eFHPYuFJf499i6Z8ZrnAE=;
-        b=EG+ic6tn4eAPAh+VBhotvjxJtJNNV1ddOcE6ifS+Msu3Z2qDcb3kP6J6kTGrm3gykG
-         OuTKnHrHvOphf4qRxcP2W9eH924c3bJ1EEZCE/B8PNEZPJszhZRPz8h5oL/v+GK7vugW
-         AW+mFUL0hVmaIYEmOIvk86SdacgCFzXCS8L7QknnxgGgDrt7NMwF6FWQamJSogUHnjNv
-         Q0fKEmxFcLV84ytSahVQZcBf/ow0AhDY8t1gTMek41vHqi8ZL8fnXO8mqGJS9vCJBSvE
-         CtPjef23jO1A6U5lC75ux38dCjdG5v1yDD0qpU1T5RWCxc3llfLmi004enBRfDDf/xhw
-         /+UQ==
+        bh=ncD+GIq+W9TQMVOQtOXuiMziZEZ6DuqaNnsravIvYNs=;
+        b=gM7TLXG986bv22EN4DAe2A+124oDnVy92NoH/cmM0OyxHtdeH9oHrBHyE8Sj5nhPXH
+         a/Sz/cBmRPCDoMymw/rtFgVJfC/JPLIF07kNYtG/kivKztd3A7kS+fhmgEbsiLQgBO0n
+         +J9TKFTiFuEBDFe3vw/ImR/QdHD3pzwiMq0AtgwZAHMOPKq4eyq5cFvwLY26s9ZJ8iws
+         Z0622PdI18ki1IGPMIagi4P0ZZfi+zyVzxS+d/qsc0LNAOqMITTnzALusirO5wIl7p/x
+         NeJkgPqbAgexOwKpD33I14D4I6rpOYXs6b6NLCaOKJoRqYkNS7lZLMT/Xoce7sXFJKIs
+         Pcow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BzfuI4T4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=frqJKCWW;
        spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [207.211.31.81])
-        by mx.google.com with ESMTPS id p5si3622539qtn.234.2019.10.03.16.32.11
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
+        by mx.google.com with ESMTPS id c66si4207203qkg.377.2019.10.03.16.33.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 03 Oct 2019 16:32:11 -0700 (PDT)
+        Thu, 03 Oct 2019 16:33:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BzfuI4T4;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=frqJKCWW;
        spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1570145531;
+	s=mimecast20190719; t=1570145620;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=X++9C+o63TLz2yiBE4eVu8eFHPYuFJf499i6Z8ZrnAE=;
-	b=BzfuI4T4iQoLrEGKsaG43mlTcATK6auN7LgZZinch8cgD9mG8p76GCvZJh9QiuipgevbXY
-	gpE3t8zJMXqpMPPox3Q2ULJJYG2UNjiiJXWPLEQvq+TfM8ewKyYvrXU6gRm+p6TElKA1Yx
-	83szwSL+k/hd/clpvmxQy8D3laibcTI=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-337-4fCeJt0FNXGQtcaRJHRG0g-1; Thu, 03 Oct 2019 19:32:09 -0400
-Received: by mail-wm1-f70.google.com with SMTP id j125so1779302wmj.6
-        for <alex.bennee@linaro.org>; Thu, 03 Oct 2019 16:32:09 -0700 (PDT)
+	bh=ncD+GIq+W9TQMVOQtOXuiMziZEZ6DuqaNnsravIvYNs=;
+	b=frqJKCWWNL2PY1QeC3zEkJ7/zUIi7/FfOXn8YfMtxhAqzoU1X7WndCTizJFdYM9JxuzcQF
+	eIywdV1bZV+ICfJeAVNj5MIh4WuoEU6MV4Fg6JqbngDio42Fi6tdLq7kkVo1A0bP1/JtNR
+	GkCMtrfsLDTrI+lgoTv49eGQKLbfjTk=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-317-wPWUMpH3NTihGf-rCfXjSg-1; Thu, 03 Oct 2019 19:33:37 -0400
+Received: by mail-wr1-f69.google.com with SMTP id n3so1830924wrt.9
+        for <alex.bennee@linaro.org>; Thu, 03 Oct 2019 16:33:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=6fg+tL8hdMuSlCATnh5vXBFe8nhdX3zEsZie5KLf89k=;
-        b=n1UlI0q4vodlzZCw9xlL3GusSw3+QouJTR+n+oDTXHgye/XKesohfOL4tj98YAIXhi
-         13KM6vedhkq0nStlJ6j5sCp+UG0nPKUjCaOr6P3Kb9slFp8znkvJ7A29iuFAQ+EovOrU
-         ZLHd3TzTvKafFsOJWHV23ow7u1WUybTGY9cKl1scExfrbLwSOwhF0LfPRRLbixcXguvJ
-         +r7ZI9T0iEjDyFX6PPDbMWrtIaRxQ+DbOMiPd+Ec84W5QIfqCja3d/sV+0POrA3ktgMr
-         gRMOpWK074s7uHLRkAfrtW6FoSWl1c2a33saPWfq/NSNTWDed658vLc1UJy5VDbp0Buk
-         k1Hw==
-X-Gm-Message-State: APjAAAV4bT80JzNvyqLOoti+YjHBfCc+tjZwv4JtDvC9PSUbMczuu1Zv
-	d0y4Kv+xRC5MAhGfezd+RVACmpeRAJNGSruGlCzo0K/sECQJnmH1K6uud4sLXpkLZ7aUwrf+V3j
-	ebrjyETodo0pzHguT
-X-Received: by 2002:a5d:51d1:: with SMTP id n17mr415035wrv.85.1570145527443;
-        Thu, 03 Oct 2019 16:32:07 -0700 (PDT)
-X-Received: by 2002:a5d:51d1:: with SMTP id n17mr415024wrv.85.1570145527218;
-        Thu, 03 Oct 2019 16:32:07 -0700 (PDT)
+        bh=2OXZied8K+dE+da8q1xBCh960/6kRu+OEosH48qhxHc=;
+        b=lrmX1WTb6dGS3DkBkl5iCUodkkKw73kcMlCy8faWQ1rjqj8tNgG8VvrEEKozGUMxDy
+         LWHY9kn0UjKQH5bouMtKvMezdVvSKSJCYwyEwUAXz20VL2ma6VcHO9oZVJaXqu7aFvJd
+         WJLxhYncXLZ/NJ+BlV8Wps2/4xh1Jv0o96zplVKCDLTrZdwRHJe9kPaFdM5xmrcTthZJ
+         C8wY8Vf2MJssrxeYqKnBs1jlSsEpy48NLLnMY/vxV5+I+AUJ94xWKT/S1B9d5CZ1Vbdp
+         OTgMkbxczJj7Yb2ZaBQ8Zr7f+ETCvOFnfHGgm+29KqjlbYT8+ejE6lHDpVPbUVOcv4hx
+         4y5w==
+X-Gm-Message-State: APjAAAUHDGy/NE4iNihf33k9MF14FZpjEVgSfaqqhBG2zXNlhWuDAuq6
+	ZgQCof5qoXrWX4U9mqBH0gsTj5K3qUQh4LtK3t7h1Ed/7hY7OvdKzh9LMtMko5NLhNuk0RXZWP2
+	fbnmEQxMo4FYoppvt
+X-Received: by 2002:a7b:c35a:: with SMTP id l26mr8864689wmj.81.1570145615651;
+        Thu, 03 Oct 2019 16:33:35 -0700 (PDT)
+X-Received: by 2002:a7b:c35a:: with SMTP id l26mr8864680wmj.81.1570145615407;
+        Thu, 03 Oct 2019 16:33:35 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from [192.168.1.35] (240.red-88-21-68.staticip.rima-tde.net. [88.21.68.240])
-        by smtp.gmail.com with ESMTPSA id t123sm6570271wma.40.2019.10.03.16.32.06
+        by smtp.gmail.com with ESMTPSA id a3sm6652758wmc.3.2019.10.03.16.33.34
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 03 Oct 2019 16:32:06 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH v2 07/15] target/arm/arm-semi: Factor out
- implementation of SYS_CLOSE
+        Thu, 03 Oct 2019 16:33:34 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v2 08/15] target/arm/arm-semi: Factor out
+ implementation of SYS_WRITE
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <20190916141544.17540-1-peter.maydell@linaro.org>
- <20190916141544.17540-8-peter.maydell@linaro.org>
+ <20190916141544.17540-9-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <84350edd-f5e7-cf9a-5cfe-c5caf603f492@redhat.com>
-Date: Fri, 4 Oct 2019 01:32:05 +0200
+Message-ID: <674d0aff-71c7-f613-2a62-3fbaffda1da1@redhat.com>
+Date: Fri, 4 Oct 2019 01:33:34 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.0
 MIME-Version: 1.0
-In-Reply-To: <20190916141544.17540-8-peter.maydell@linaro.org>
+In-Reply-To: <20190916141544.17540-9-peter.maydell@linaro.org>
 Content-Language: en-US
-X-MC-Unique: 4fCeJt0FNXGQtcaRJHRG0g-1
+X-MC-Unique: wPWUMpH3NTihGf-rCfXjSg-1
 X-Mimecast-Spam-Score: 0
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: quoted-printable
-X-TUID: Seh+ghqxRTm7
+X-TUID: 9lJppeKa5V80
 
 On 9/16/19 4:15 PM, Peter Maydell wrote:
-> Currently for the semihosting calls which take a file descriptor
-> (SYS_CLOSE, SYS_WRITE, SYS_READ, SYS_ISTTY, SYS_SEEK, SYS_FLEN)
-> we have effectively two implementations, one for real host files
-> and one for when we indirect via the gdbstub. We want to add a
-> third one to deal with the magic :semihosting-features file.
->=20
-> Instead of having a three-way if statement in each of these
-> cases, factor out the implementation of the calls to separate
-> functions which we dispatch to via function pointers selected
-> via the GuestFDType for the guest fd.
->=20
-> In this commit, we set up the framework for the dispatch,
-> and convert the SYS_CLOSE call to use it.
+> Factor out the implementation of SYS_WRITE via the
+> new function tables.
 >=20
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
 Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
 > ---
->   target/arm/arm-semi.c | 44 ++++++++++++++++++++++++++++++++++++-------
->   1 file changed, 37 insertions(+), 7 deletions(-)
+>   target/arm/arm-semi.c | 51 ++++++++++++++++++++++++++++---------------
+>   1 file changed, 33 insertions(+), 18 deletions(-)
 >=20
 > diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-> index 02cd673d47d..e5f1e2aaaf2 100644
+> index e5f1e2aaaf2..c21cbb97bc1 100644
 > --- a/target/arm/arm-semi.c
 > +++ b/target/arm/arm-semi.c
-> @@ -109,6 +109,7 @@ static int open_modeflags[12] =3D {
->   typedef enum GuestFDType {
->       GuestFDUnused =3D 0,
->       GuestFDHost =3D 1,
-> +    GuestFDGDB =3D 2,
->   } GuestFDType;
->  =20
->   /*
-> @@ -172,14 +173,14 @@ static GuestFD *do_get_guestfd(int guestfd)
->   /*
->    * Associate the specified guest fd (which must have been
->    * allocated via alloc_fd() and not previously used) with
-> - * the specified host fd.
-> + * the specified host/gdb fd.
+> @@ -384,6 +384,8 @@ static target_ulong arm_gdb_syscall(ARMCPU *cpu, gdb_=
+syscall_complete_cb cb,
+>    * setting the guest errno if appropriate.
 >    */
->   static void associate_guestfd(int guestfd, int hostfd)
+>   typedef uint32_t sys_closefn(ARMCPU *cpu, GuestFD *gf);
+> +typedef uint32_t sys_writefn(ARMCPU *cpu, GuestFD *gf,
+> +                             target_ulong buf, uint32_t len);
+>  =20
+>   static uint32_t host_closefn(ARMCPU *cpu, GuestFD *gf)
 >   {
->       GuestFD *gf =3D do_get_guestfd(guestfd);
->  =20
->       assert(gf);
-> -    gf->type =3D GuestFDHost;
-> +    gf->type =3D use_gdb_syscalls() ? GuestFDGDB : GuestFDHost;
->       gf->hostfd =3D hostfd;
+> @@ -392,21 +394,51 @@ static uint32_t host_closefn(ARMCPU *cpu, GuestFD *=
+gf)
+>       return set_swi_errno(env, close(gf->hostfd));
 >   }
 >  =20
-> @@ -376,6 +377,39 @@ static target_ulong arm_gdb_syscall(ARMCPU *cpu, gdb=
-_syscall_complete_cb cb,
->       return is_a64(env) ? env->xregs[0] : env->regs[0];
->   }
->  =20
-> +/*
-> + * Types for functions implementing various semihosting calls
-> + * for specific types of guest file descriptor. These must all
-> + * do the work and return the required return value for the guest,
-> + * setting the guest errno if appropriate.
-> + */
-> +typedef uint32_t sys_closefn(ARMCPU *cpu, GuestFD *gf);
-> +
-> +static uint32_t host_closefn(ARMCPU *cpu, GuestFD *gf)
+> +static uint32_t host_writefn(ARMCPU *cpu, GuestFD *gf,
+> +                             target_ulong buf, uint32_t len)
 > +{
+> +    uint32_t ret;
 > +    CPUARMState *env =3D &cpu->env;
-> +
-> +    return set_swi_errno(env, close(gf->hostfd));
+> +    char *s =3D lock_user(VERIFY_READ, buf, len, 1);
+> +    if (!s) {
+> +        /* Return bytes not written on error */
+> +        return len;
+> +    }
+> +    ret =3D set_swi_errno(env, write(gf->hostfd, s, len));
+> +    unlock_user(s, buf, 0);
+> +    if (ret =3D=3D (uint32_t)-1) {
+> +        ret =3D 0;
+> +    }
+> +    /* Return bytes not written */
+> +    return len - ret;
 > +}
 > +
-> +static uint32_t gdb_closefn(ARMCPU *cpu, GuestFD *gf)
+>   static uint32_t gdb_closefn(ARMCPU *cpu, GuestFD *gf)
+>   {
+>       return arm_gdb_syscall(cpu, arm_semi_cb, "close,%x", gf->hostfd);
+>   }
+>  =20
+> +static uint32_t gdb_writefn(ARMCPU *cpu, GuestFD *gf,
+> +                            target_ulong buf, uint32_t len)
 > +{
-> +    return arm_gdb_syscall(cpu, arm_semi_cb, "close,%x", gf->hostfd);
+> +    arm_semi_syscall_len =3D len;
+> +    return arm_gdb_syscall(cpu, arm_semi_cb, "write,%x,%x,%x",
+> +                           gf->hostfd, buf, len);
 > +}
 > +
-> +typedef struct GuestFDFunctions {
-> +    sys_closefn *closefn;
-> +} GuestFDFunctions;
-> +
-> +static const GuestFDFunctions guestfd_fns[] =3D {
-> +    [GuestFDHost] =3D {
-> +        .closefn =3D host_closefn,
-> +    },
-> +    [GuestFDGDB] =3D {
-> +        .closefn =3D gdb_closefn,
-> +    },
-> +};
-> +
->   /* Read the input value from the argument block; fail the semihosting
->    * call if the memory read fails.
->    */
-> @@ -485,11 +519,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+>   typedef struct GuestFDFunctions {
+>       sys_closefn *closefn;
+> +    sys_writefn *writefn;
+>   } GuestFDFunctions;
+>  =20
+>   static const GuestFDFunctions guestfd_fns[] =3D {
+>       [GuestFDHost] =3D {
+>           .closefn =3D host_closefn,
+> +        .writefn =3D host_writefn,
+>       },
+>       [GuestFDGDB] =3D {
+>           .closefn =3D gdb_closefn,
+> +        .writefn =3D gdb_writefn,
+>       },
+>   };
+>  =20
+> @@ -539,24 +571,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
 >               return set_swi_errno(env, -1);
 >           }
 >  =20
 > -        if (use_gdb_syscalls()) {
-> -            ret =3D arm_gdb_syscall(cpu, arm_semi_cb, "close,%x", gf->ho=
-stfd);
+> -            arm_semi_syscall_len =3D len;
+> -            return arm_gdb_syscall(cpu, arm_semi_cb, "write,%x,%x,%x",
+> -                                   gf->hostfd, arg1, len);
 > -        } else {
-> -            ret =3D set_swi_errno(env, close(gf->hostfd));
+> -            s =3D lock_user(VERIFY_READ, arg1, len, 1);
+> -            if (!s) {
+> -                /* Return bytes not written on error */
+> -                return len;
+> -            }
+> -            ret =3D set_swi_errno(env, write(gf->hostfd, s, len));
+> -            unlock_user(s, arg1, 0);
+> -            if (ret =3D=3D (uint32_t)-1) {
+> -                ret =3D 0;
+> -            }
+> -            /* Return bytes not written */
+> -            return len - ret;
 > -        }
-> +        ret =3D guestfd_fns[gf->type].closefn(cpu, gf);
->           dealloc_guestfd(arg0);
->           return ret;
->       case TARGET_SYS_WRITEC:
+> +        return guestfd_fns[gf->type].writefn(cpu, gf, arg1, len);
+>       case TARGET_SYS_READ:
+>           GET_ARG(0);
+>           GET_ARG(1);
 >=20

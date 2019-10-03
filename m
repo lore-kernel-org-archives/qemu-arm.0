@@ -1,171 +1,177 @@
-Received: by 2002:a5d:51d0:0:0:0:0:0 with SMTP id n16csp4135180wrv;
-        Mon, 15 Jul 2019 06:05:23 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzLqfnKUu/lh0hfuMVRSnVA2h91GiFdI0xCAlejy4jYYzeXbn4lIIfjgvhTUIQAG13Hh4hM
-X-Received: by 2002:a17:906:af4f:: with SMTP id ly15mr20247068ejb.126.1563195923890;
-        Mon, 15 Jul 2019 06:05:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563195923; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp237254wrp;
+        Thu, 3 Oct 2019 06:03:51 -0700 (PDT)
+X-Received: by 2002:a9d:73ce:: with SMTP id m14mr6576207otk.135.1570107830912;
+        Thu, 03 Oct 2019 06:03:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570107830; cv=none;
         d=google.com; s=arc-20160816;
-        b=MOjq9sXXPyoWy84V7xEQCqWCuSZfWZiSMxbs/Z9QS8K3dNouYPfy7fYTjwGxRp2F7J
-         SrUpasy9mWVmh8s9jHNCu4oQdJOAWtUnQCl63uJ+5SSeVxkUp8/lVtEGMeSNZqdUgn8E
-         5u1VWGO3uAQiLoM+7wKCBKdcu7vx3v2cZKa7AHTp7UYmPVEh1qe+xK1ARtOfNtDD8NwU
-         3uJT24q0dDdPR/KgyIZCKhdo2+5EhxPvoppSra/xUMxdFjBfed7Z+Eh+9CkLezyesG16
-         9tSdVmA8UTYB2GGeCQBg90U59xqxvGuyVr5cGV/5G5Nk5NN488kw+Ey/iNGaVkDvnf+U
-         eYsg==
+        b=YWbinvQbGp6zK6gHJWA+1UOId78fsPf/ZVjcXUQ0EpFFJfan4EKIcZpk/4vQLEbVtq
+         +i6LltR2Rrb6tW8qKl9Yd2+R9JdjyM26UWxZ5wIKhNbguZ7sXyhxRTIedluTr3kNYmU9
+         LZa5WP93rY6SLcJY4ZthbXWlhpyxoJbO1Db4i6izSqvaMrB6DfHU1rQQ0OKzzOvPlHcP
+         Jqb8qiDELnscIJdwlJ/GYf5o/xe1aOZMIc+nrbzuhJHWt7Ucul+cx+Jln6AC+4cGC5ax
+         R0Qe2Khcu7SXM9059U5/TDuCE1Ku1rnKYYWd3XYDloticBYtawiF8eYGetTGFPp/RloW
+         WKZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject
-         :content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:autocrypt:openpgp:from
-         :references:to;
-        bh=6J20NXm58BgLH0LuqTNHkdn7AQSUeBOV8bw0X84/Ex0=;
-        b=LJHPDz2zO2/jX8Ip9YF7gujeDuS5zdgfhVPU2Z3jb7N38GvUPyJV1EpWWeZZoPb6Lr
-         uLJS1zB9Z5VamWD5OEXHY4wIvGZDJof64AGJjCvLdld/jONlxqmW5V8ClVMSQIcsMFc3
-         HOVoSHwCJ1UeHXAyT+EAaNmkObqV+f9/25FXx2FpIDCk/Z5UItwVMX4CYDasIBXEoACv
-         ZkSzFFhHDN9/mNdOSZ0QadwEinevFxdb826t49bp8yO3bgQ0YDg6+j2KlqvRtTVoWfp+
-         41LbdOgBFtrYiF4Es6ZhrmuZMBe48yVGvmJ5nlp12KAWxrS2MlI9iv311x93ADFsEsc3
-         nsyg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=ipghaSDRH3YnZXK1nkRDDiCycPJ/rQxJ3f4sjT7herY=;
+        b=Gt0s+ac/PWxLSs3QkvrJzMNlxiBztnCz+gSVcBrYLW0SNCp/trf8PUyp5xCpL49nRR
+         iY1N5k5vxsEubYJ4w33ssON2Yx6mThuXqggVCxVlIxVv1C5sgEvYB4X+dL77z2mcKn3j
+         oUv8fHFZN5rix0abZ+ktEr7Xm2p76iEBheW052oOZfoc2FOwCv4wC6IsxTW2ZzImwdxi
+         Rtf77hzUGlWWzxCnwFbs52zoIzZFO3g0wuNkBquxTjD+5F+c9/JeX2NxjButJnf4/6fS
+         9WyyQ8sl4uXV8yauk7hba7esXPg87/g8A2usUMZMhgPP4nqUJCAmJuz3EvcSg3qSvV4r
+         Pfow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u20si9141410ejt.309.2019.07.15.06.05.23
+       dkim=pass header.i=@linaro.org header.s=google header.b="nMDrk/Au";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id t18sor1042615otm.111.2019.10.03.06.03.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 15 Jul 2019 06:05:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Thu, 03 Oct 2019 06:03:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38386 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.86_2)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1hn0fT-00033Z-0W
-	for alex.bennee@linaro.org; Mon, 15 Jul 2019 09:05:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43985)
- by lists.gnu.org with esmtp (Exim 4.86_2)
- (envelope-from <thuth@redhat.com>) id 1hn0fQ-000335-21
- for qemu-arm@nongnu.org; Mon, 15 Jul 2019 09:05:20 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <thuth@redhat.com>) id 1hn0fP-00022t-4T
- for qemu-arm@nongnu.org; Mon, 15 Jul 2019 09:05:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:59514)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <thuth@redhat.com>)
- id 1hn0fO-00022N-T1; Mon, 15 Jul 2019 09:05:19 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 3D34B30705FE;
- Mon, 15 Jul 2019 13:05:18 +0000 (UTC)
-Received: from thuth.remote.csb (reserved-198-198.str.redhat.com
- [10.33.198.198])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 760B35D9C6;
- Mon, 15 Jul 2019 13:05:12 +0000 (UTC)
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-References: <20190712133928.21394-1-philmd@redhat.com>
- <20190712133928.21394-2-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-Organization: Red Hat
-Message-ID: <555528ae-4ed8-1179-e24e-50548e1eb467@redhat.com>
-Date: Mon, 15 Jul 2019 15:05:11 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.2
+       dkim=pass header.i=@linaro.org header.s=google header.b="nMDrk/Au";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=ipghaSDRH3YnZXK1nkRDDiCycPJ/rQxJ3f4sjT7herY=;
+        b=nMDrk/AuwiorZpFQW/VJN4lPDP3F8E04MZlm4T3Tipjf8H4p8r8U1HdnVbFxjSxPFB
+         DHHUKHVM70tMzNywW1W7hO5URlWvqWu25rxPmtPW25QgSwxBaSIi3pUJj2cMdtX8vhcp
+         /OfgrMGADawAX3ztzna35maOtiawZTbNggTfEvWyzky6RuzudZCnpwME23AV2qwD9zX4
+         aHcqr/yXIjkZPES8PUsvt9I7c/IStMKfiiMXL/jz7ofMJSCTeIwoSyzRfPgYU9CquZGX
+         od3n6Waj8EFj0JspcTmDOgfN+Y1H344H28fZyAT2nORsh2SqH6n2pLz9XPTkGKJeGuMs
+         /uwQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=ipghaSDRH3YnZXK1nkRDDiCycPJ/rQxJ3f4sjT7herY=;
+        b=hp3qq4OQ5VW90Kkj/rLAryRUUXDSMhNCMCV8a7ZjGY4nxAYZVVgz4FTJ89jlj1k3cL
+         RLvVNI1TQsiS/Jpx9GPmVwNT9rojOIGbrrrjiUulx6ACiKoeaJKWBiOMTaGADUoobRDE
+         ciG7IszoDRffJEniu0hIUGS4WT1COtO7D4nCJdTZByiOQ1SzzlXw04McwQbTZC7yHs22
+         8AeK/Pp9ZpgbxcKCkXMhuhNXC/EXzjyIMbmJjNQy4KLmWtXBPSlAMcE0lUCW03IHxOMq
+         dJrdoXDh+eRIy6xF3MXMtyl+PQg7lLoF+r27K5oW4JZC8XZN/To/HJAdi23tTW9XKLmc
+         v4xw==
+X-Gm-Message-State: APjAAAW5kEZRV09SN5djrZ82r5mKs91rU+tsBexnST9irqoCT0H/8RMM
+	tQFS0yyuRvZaeVva+CZM4H97mYZCIQ3AYk5KPy8eLgjh
+X-Google-Smtp-Source: APXvYqxO5Wzft4nIjec+vUoP6tXA/o5iAru/G7hppGwN2pbYBDVpe7ybD7FKZ2HJ8jUODWDTrgXgbSFaRKwucqEz0+g=
+X-Received: by 2002:a05:6830:1357:: with SMTP id r23mr6670747otq.91.1570107830223;
+ Thu, 03 Oct 2019 06:03:50 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20190712133928.21394-2-philmd@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.46]); Mon, 15 Jul 2019 13:05:18 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
-X-Received-From: 209.132.183.28
-Subject: Re: [Qemu-arm] [PATCH-for-4.1? 1/7] hw/arm: Nokia N-series tablet
- requires Bluetooth
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Miroslav Rezanina <mrezanin@redhat.com>, qemu-arm@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xb0v87ntQEZ0
+References: <20190916141544.17540-1-peter.maydell@linaro.org>
+In-Reply-To: <20190916141544.17540-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 3 Oct 2019 14:03:38 +0100
+Message-ID: <CAFEAcA_deKRqVfn+P5HBQrTcHFjdSnHdcuzvFJsQC3jUP=dFww@mail.gmail.com>
+Subject: Re: [PATCH v2 00/15] target/arm: Implement semihosting v2.0
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: L32Y4lWuKq5n
 
-On 12/07/2019 15.39, Philippe Mathieu-Daud=C3=A9 wrote:
-> Missed in 4826ac6d192 because the Bluetooth devices are
-> currently always enabled.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-> ---
->  hw/arm/Kconfig | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index ab65ecd216..11195251f3 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -106,6 +106,7 @@ config NSERIES
->      select LM832X   # GPIO keyboard chip
->      select TWL92230 # energy-management
->      select TUSB6010
-> +    select BLUETOOTH
+Ping for code review, please?
 
-Looking at hw/bt/Makefile.objs the BLUETOOTH switch seems to be
-completely unused?
+thanks
+-- PMM
 
- Thomas
+On Mon, 16 Sep 2019 at 15:15, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> This patchset implements support in QEMU for v2.0 of the
+> Arm semihosting specification:
+>  https://developer.arm.com/docs/100863/latest/preface
+>
+> Specifically, v2.0 has:
+>  * a mechanism for detection of optional extra features,
+>    which works by allowing the guest to open a magic file
+>    named ":semihosting-features" and read some feature
+>    flags from it
+>  * two defined extensions:
+>   - STDOUT_STDERR lets the guest separately open stdout and
+>     stderr via the ":tt" magic filename (v1.0 only allowed
+>     access to stdout)
+>   - EXIT_EXTENDED lets A32/T32 guests exit with a specified
+>     exit status (otherwise only available to A64 guests).
+>     This is something that people have been complaining
+>     about for a long time.
+>
+> (Technically some of the things we already support, like
+> having an A64 semihosting interface at all, are also part of
+> the v2.0 spec.)
+>
+> This patchset:
+>  * fixes some bugs relating to errnos in some cases
+>  * makes semihosting hand out its own filedescriptors rather
+>    than just passing out host fd numbers
+>  * abstracts out the fd-related semihosting calls so they
+>    indirect via a function table based on the type of the fd
+>  * adds a new type of fd representing the magic file
+>    ":semihosting-features" which is used for feature-detection
+>  * implements both of the extensions defined by the v2.0 spec
+>
+> I've tested this by improving my semihosting test suite:
+>  https://git.linaro.org/people/peter.maydell/semihosting-tests.git/
+> (if people have other guest binaries that make much use of
+> semihosting then testing would certainly be welcome.)
+>
+> Changes v1->v2:
+>  * Added a patch which corrects misunderstanding in a FIXME
+>    comment about the when the callback function is called
+>    for arm_gdb_syscall()
+>  * in patch 4, if the SYS_open is going via the gdbstub, we
+>    must do the associate_guestfd() work in the gdbstub callback
+>    function. This is because in softmmu mode the callback will
+>    not be called until after do_arm_semihosting() returns.
+>    (The v1 series effectively broke SYS_open in the gdbstub
+>    + softmmu config)
+>  * Pass CPUARMState* to set_swi_errno(), rather than creating
+>    an odd local-to-this-file typedef of TaskState for the
+>    softmmu compilation
+>  * New patch: avoid ifdeffery in gdb callback fns by
+>    using set_swi_errno() rather than doing it by-hand
+>  * The various 'factor out SYS_foo' patches are basically
+>    unchanged, but all the functions no longer need to take
+>    a TaskState*. This seemed kind of borderline as to whether
+>    to retain Alex's reviewed-by tags, so I dropped them.
+>  * Since we need 'env' for set_swi_errno(), we don't need
+>    to put the variable declaration inside ifdefs any more
+>    in the host_readfn() etc.
+>
+> I do plan to have a go at fixing the odd FIXME surrounding
+> arm_gdb_syscall() which patch 3 clarifies/states in a comment.
+> But I thought it better to not tangle that up with this
+> patchset, which is already pretty long.
+>
+> thanks
+> -- PMM
+>
+>
+> Peter Maydell (15):
+>   target/arm/arm-semi: Capture errno in softmmu version of
+>     set_swi_errno()
+>   target/arm/arm-semi: Always set some kind of errno for failed calls
+>   target/arm/arm-semi: Correct comment about gdb syscall races
+>   target/arm/arm-semi: Make semihosting code hand out its own file
+>     descriptors
+>   target/arm/arm-semi: Restrict use of TaskState*
+>   target/arm/arm-semi: Use set_swi_errno() in gdbstub callback functions
+>   target/arm/arm-semi: Factor out implementation of SYS_CLOSE
+>   target/arm/arm-semi: Factor out implementation of SYS_WRITE
+>   target/arm/arm-semi: Factor out implementation of SYS_READ
+>   target/arm/arm-semi: Factor out implementation of SYS_ISTTY
+>   target/arm/arm-semi: Factor out implementation of SYS_SEEK
+>   target/arm/arm-semi: Factor out implementation of SYS_FLEN
+>   target/arm/arm-semi: Implement support for semihosting feature
+>     detection
+>   target/arm/arm-semi: Implement SH_EXT_EXIT_EXTENDED extension
+>   target/arm/arm-semi: Implement SH_EXT_STDOUT_STDERR extension
+>
+>  target/arm/arm-semi.c | 707 ++++++++++++++++++++++++++++++++++--------
+>  1 file changed, 577 insertions(+), 130 deletions(-)
+>
+> --
+> 2.20.1

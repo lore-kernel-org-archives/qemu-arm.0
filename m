@@ -1,200 +1,240 @@
-Received: by 2002:a5d:4850:0:0:0:0:0 with SMTP id n16csp2922335wrs;
-        Sun, 25 Aug 2019 08:53:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwzMo5Y2wVK13CNtc4G3ypcF3O8mNeE11eliYkI+H5DFoZum7q4R6CZwcQm5LyxC/Ah+TCl
-X-Received: by 2002:a50:fb90:: with SMTP id e16mr14189143edq.16.1566748419891;
-        Sun, 25 Aug 2019 08:53:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1566748419; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp92323wrp;
+        Thu, 3 Oct 2019 16:27:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwQZDQJ+vfjoCpDLyJxZhPbp6ysIG8lfkmIbShBDTLSSB3P+1cQoYXyv9NpbqHynWp8n3Rs
+X-Received: by 2002:a50:9625:: with SMTP id y34mr12143882eda.72.1570145255927;
+        Thu, 03 Oct 2019 16:27:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570145255; cv=none;
         d=google.com; s=arc-20160816;
-        b=1A7FEotTRAVvf/pY8U7Lg6HZqWpKqepFdAwIVWREQYFbM/X2BVxLqEnp9ZrJrGqqBB
-         62WpI4FfykckldMXOI1SKytUnBL1+KIQ0P4dTW9QX43oAVQ4n2FUHp86VNTCgvxjVERO
-         C8mawhqnmSDiwvrubGXaXOnrEgr7qHnZua5kzGqBIe61IgzQQeI08gCukxW7SBvqamwo
-         NBnbeOkXZCEJJw7gJhLk07NehK8h6JYaB+10UUut0prRVr0pf9CTXNY1fj5viXbOJkiS
-         zin5TupSbFxZ+FCuxATLEsx2Aw36yLRrhymZO/k5t8OoqD7LHE+FYatjpPIzxNrSVljF
-         lD0A==
+        b=GMlS6H2iz0dHRFn5SXfokXc3CM8gwy+9nNB96Npiv7jahY3KqwVv27T42bO2f1DlQJ
+         6WW+a7LsJk86ZMefunofimUn0EIZ+JxEPY7OrVZVvAjT1L1+I0AtREwfvzEzjOKg2xfG
+         8Yb9YoW2chlJw3G21ZvIxC0TZ6Abixwwr5/7hQuOSlbHRxo4SXsPDEEUNKZFZCplVfVK
+         XmA3d0RQUTq/4xEQqxS4McG0mEyiea+mmkfCqZKmnEaR8JysVYeojtZ7+HbRch8CyCZm
+         5CfkjWukJlob9fHxGjIHGoWisc2XiC9JLTLpashyJItDuDze4AE6rB9Q+bi2Nciv2Kxp
+         XssQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:subject:to:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=W0IcHQridGAGqKfGqNzNcl38G0UTF3CBokZbn4Mntks=;
-        b=0aip5r/51FyLEVLMPph2Svad0/v9hUvC5vmBJn7eeFhfjZQPR683/u+IvDO/90urNj
-         z3U5QT/u6ORHtL3hMtQQ6qEMcY429qsjwU8RIOCkZm7gGhRZJ/icTy4RLIrZp96paJvw
-         e2s9bP0w36luz117AfnbUm336cT+HNMk8ZvbYEYDzJsmLl+5UQ8yxzSWE5MEzquFtbUf
-         jFOof4KxMHcH0M+Gyn+IHzVsCqBzfe42rRdhEDgmFKLsoZGwwhr00y++DcYfzC2s7XUc
-         JieOYE80YaDnzQICZpgghxXIJ7+QNAhnTNFuA+xqVLy1BHH7+uy51IK6OLbTCsHMb/yw
-         AMsA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=8ZjAxt4cP4IRJPHO7T1aBscLO1IaHI6oOKh+GLrbAAI=;
+        b=Hi7LdoRbjHAwsYgkV1sh26yR6ZSN8rhlRtngYI9HObhGT0SyWh4gCGF1skWTdwf7m3
+         JbWr2uoAmh4+mymyUV4xZ0vjG3zxJvJDEXypAo6JveKuJbheCTLFtzFmD0qYn5rQM+lt
+         KmLuY5nTDIXHMK8KuwBUz/sFkVoXKk2quRlVHVrcUvSRMwmnXsCPgN30IaY12dhZOHUk
+         gs2N7Tv61BLHBIrsaijphS63AWYODrq8QWwUwugzm+fmrZR1JgdoW5YtE2i9eIy9sDTE
+         TuHR4uRaWZzOej2f8EQY5Ne+2REL4N56lDtrwTHCdsWD1UAOq/hs7rhr9FPdADGgXTx3
+         8Ozw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="g/YNuK5N";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k51si5535610eda.427.2019.08.25.08.53.39
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ba3Sj1PB;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by mx.google.com with ESMTPS id a2si2422061edc.321.2019.10.03.16.27.35
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Aug 2019 08:53:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 03 Oct 2019 16:27:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="g/YNuK5N";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43314 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1i1upm-00008F-WA
-	for alex.bennee@linaro.org; Sun, 25 Aug 2019 11:53:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58985)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1i1up1-00089L-OT
- for qemu-devel@nongnu.org; Sun, 25 Aug 2019 11:52:52 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1i1up0-0004re-E6
- for qemu-devel@nongnu.org; Sun, 25 Aug 2019 11:52:51 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:38847)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1i1up0-0004rO-5H
- for qemu-devel@nongnu.org; Sun, 25 Aug 2019 11:52:50 -0400
-Received: by mail-ot1-x342.google.com with SMTP id r20so13004434ota.5
- for <qemu-devel@nongnu.org>; Sun, 25 Aug 2019 08:52:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=W0IcHQridGAGqKfGqNzNcl38G0UTF3CBokZbn4Mntks=;
- b=g/YNuK5NvXmXb2O80G/S9qH/dsGowtd5lR5vkec1uEbwfkXZkV8g1/acGZ0y1Hzzt2
- NAYSZNJRaXhSDLJnk60x/NWMMG/FEMpQHY5od3AmyaaLB8HHhuAGQj+qRQC+39XS8KEe
- PxBpHXXzD9b0U35o3nSXniD5c5rSzolne9xo9OOp4Ewi0MTVHWsrBVrZ/GWuUXlJO/NZ
- 3T7B29EkolN7wWz7AYgrgKnO+hNsI9vmDJ3wrdYZG6Ldq6szVU9YUBJyedHo0UCo/cEf
- qiWQMIy0jY/VVt0qvNGZUJbWsPurzb4HbRT68qjzyGJ837tPQgRPVDWNT7nOSe/11r3n
- eCCQ==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Ba3Sj1PB;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1570145254;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=8ZjAxt4cP4IRJPHO7T1aBscLO1IaHI6oOKh+GLrbAAI=;
+	b=Ba3Sj1PB4TA0zmvtHsv6JRXsY4A8rqeNrZIeHRgEo+2lW/DtJQcK9oZ+uw0s4MAVdvo2JY
+	b2w29uwjMQ3UlH/nQ7oQULHv7MGRDVwbrQ82twZUA9ZvG7dNFcFuW4o61H0BfMsUI+L1bz
+	GwCaRyB6p6OVi4csI4X9YMKi56CgELc=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-197-P_t2LNFeOdegQ7iUYYh-sQ-1; Thu, 03 Oct 2019 19:27:33 -0400
+Received: by mail-wr1-f71.google.com with SMTP id w10so1823992wrl.5
+        for <alex.bennee@linaro.org>; Thu, 03 Oct 2019 16:27:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=W0IcHQridGAGqKfGqNzNcl38G0UTF3CBokZbn4Mntks=;
- b=lJ1YkD3mHMgQmLhCoZwGjwbzMeod9ztRNaSyO1QXx66dVxoQjtQVb1/+P8TKbAuA00
- 5O/Ipy++AV5OpDbQO/mRrJaEVvp0PMteidUWz4IYAIJeJyNXbIgQyRH+K5jJTbzPHMVw
- gy/rQCk9gTYbex7Wt0rudYKtAja54oKnTPZW3SW8TmPwF5/Rw0qSsPIbxHj6V+6eGeAE
- MZsF/5dJpMOhDcQt02KI85Ik27Yl8Bz6vq0AhneDAMjSHrFo2EvSpzJoEK35Zp5QPHKH
- Xd4SaWCVyGNcE6GJAvIoSSJahsCUbhEx4n/vNDs8fUtn1FX5cEw8nNZHTx/Or3pbVL0Q
- Xe4A==
-X-Gm-Message-State: APjAAAXlTxp3L3wRKAjn2AX22iM6f/gdcYz0z66UhCzwztNMJ+YQQR2v
- PKtkE61b4ZGvEZXRjiFsyWKdQDW7KIv4PrVNpDLwyw==
-X-Received: by 2002:a9d:6a94:: with SMTP id l20mr11412380otq.221.1566748369374; 
- Sun, 25 Aug 2019 08:52:49 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=0ForYoJMzBgOc+AT5Ml/lQK+m86Hmnd8hRSvmswKqu8=;
+        b=IDAzxvYPHTNZ/MIELstR51ffo2uuoo8NKNi+md5o1MsFiPy6u4qhsXWl5O9jXP74zA
+         HJfuMYwdsbjWBqCbgMORIvau58tdw3+styf+bjSBRh6LlhKlGIZA0iqL6F70dBnt+TIG
+         HBnlDvwUoFzkGioVfsQo0hbdoegWOfiilLjkpGCo4mcD+YG6ct8TaQs9S9aNP0IYFgsH
+         EwD6Ukb6LGqhY5Gro2f/et078TS9vifk2N1h+XOj68TEFiDmssET7ZaNY8RNpyFZMia7
+         2rInqpLmS8AoMxloNeeyfpgePe0hfvhOPS7+bcXhG9/0nPVNxAVWkkVbDF1ZaBetP+om
+         GsvQ==
+X-Gm-Message-State: APjAAAUBqBr5kO+N9dUPwbFqImo3UCdzJnp4HJpvvpBcNepplG/iHcwQ
+	rHxfvxOTCEyaPQDqxk14NbwSxoz5gxlnZ+sbr3Ox4AWu+kgN/8lI2fZvMIj0MmyAYAUrS9wQc6x
+	zTLJ+px4i0DdfUM6J
+X-Received: by 2002:a05:600c:252:: with SMTP id 18mr7984474wmj.4.1570145251809;
+        Thu, 03 Oct 2019 16:27:31 -0700 (PDT)
+X-Received: by 2002:a05:600c:252:: with SMTP id 18mr7984467wmj.4.1570145251558;
+        Thu, 03 Oct 2019 16:27:31 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.35] (240.red-88-21-68.staticip.rima-tde.net. [88.21.68.240])
+        by smtp.gmail.com with ESMTPSA id g3sm8224865wro.14.2019.10.03.16.27.30
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 03 Oct 2019 16:27:31 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v2 02/15] target/arm/arm-semi: Always set
+ some kind of errno for failed calls
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20190916141544.17540-1-peter.maydell@linaro.org>
+ <20190916141544.17540-3-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <0c3b2796-b7e9-ecfd-0b63-a466ee03cdbf@redhat.com>
+Date: Fri, 4 Oct 2019 01:27:30 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.0
 MIME-Version: 1.0
-References: <20190819213755.26175-1-richard.henderson@linaro.org>
- <20190819213755.26175-35-richard.henderson@linaro.org>
-In-Reply-To: <20190819213755.26175-35-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 25 Aug 2019 16:52:37 +0100
-Message-ID: <CAFEAcA9Fgqp2n7WraoePuW==4MW9iJ6WWR=xAfPf2sOhmAuD=w@mail.gmail.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::342
-Subject: Re: [Qemu-devel] [PATCH v2 34/68] target/arm: Convert
- Clear-Exclusive, Barriers
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zQp7psQWnQLi
+In-Reply-To: <20190916141544.17540-3-peter.maydell@linaro.org>
+Content-Language: en-US
+X-MC-Unique: P_t2LNFeOdegQ7iUYYh-sQ-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 9YJFRKI4wQlN
 
-On Mon, 19 Aug 2019 at 22:38, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+On 9/16/19 4:15 PM, Peter Maydell wrote:
+> If we fail a semihosting call we should always set the
+> semihosting errno to something; we were failing to do
+> this for some of the "check inputs for sanity" cases.
+>=20
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
 > ---
->  target/arm/translate.c       | 122 +++++++++++++++--------------------
->  target/arm/a32-uncond.decode |  10 +++
->  target/arm/t32.decode        |  10 +++
->  3 files changed, 73 insertions(+), 69 deletions(-)
->
-> diff --git a/target/arm/translate.c b/target/arm/translate.c
-> index e268c5168d..6489bbc09c 100644
-> --- a/target/arm/translate.c
-> +++ b/target/arm/translate.c
-> @@ -10038,6 +10038,58 @@ static bool trans_SRS(DisasContext *s, arg_SRS *a)
->      return true;
->  }
->
-> +/*
-> + * Clear-Exclusive, Barriers
-> + */
-> +
-> +static bool trans_CLREX(DisasContext *s, arg_CLREX *a)
-> +{
-> +    if (!ENABLE_ARCH_6K) {
-> +        return false;
-> +    }
-> +    gen_clrex(s);
-> +    return true;
-> +}
-> +
-> +static bool trans_DSB(DisasContext *s, arg_DSB *a)
-> +{
-> +    if (!s->thumb && !ENABLE_ARCH_7) {
-> +        return false;
-> +    }
-> +    tcg_gen_mb(TCG_MO_ALL | TCG_BAR_SC);
-> +    return true;
-> +}
-> +
-> +static bool trans_DMB(DisasContext *s, arg_DMB *a)
-> +{
-> +    return trans_DSB(s, NULL);
-> +}
-> +
-> +static bool trans_ISB(DisasContext *s, arg_ISB *a)
-> +{
-> +    /*
-> +     * We need to break the TB after this insn to execute
-> +     * self-modifying code correctly and also to take
-> +     * any pending interrupts immediately.
-> +     */
-> +    gen_goto_tb(s, 0, s->base.pc_next);
-> +    return true;
-> +}
-
-The guard conditions on these don't look right for the
-Thumb case -- the old Thumb decoder has them exist only if
-we have feature V7 or feature M. Are they really equivalent?
-
-
-> diff --git a/target/arm/t32.decode b/target/arm/t32.decode
-> index c8a8aeceee..18c268e712 100644
-> --- a/target/arm/t32.decode
-> +++ b/target/arm/t32.decode
-> @@ -305,6 +305,16 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 ....      @rdm
->        # of the space is "reserved hint, behaves as nop".
->        NOP        1111 0011 1010 1111 1000 0000 ---- ----
->      }
-> +
-> +    # Miscelaneous control
-
-"Miscellaneous"
-
-> +    {
-> +      CLREX      1111 0011 1011 1111 1000 1111 0010 1111
-> +      DSB        1111 0011 1011 1111 1000 1111 0100 ----
-> +      DMB        1111 0011 1011 1111 1000 1111 0101 ----
-> +      ISB        1111 0011 1011 1111 1000 1111 0110 ----
-> +      SB         1111 0011 1011 1111 1000 1111 0111 0000
-> +    }
-
-
-Otherwise
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
--- PMM
+>   target/arm/arm-semi.c | 45 ++++++++++++++++++++++++++-----------------
+>   1 file changed, 27 insertions(+), 18 deletions(-)
+>=20
+> diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
+> index 03e60105c05..51b55816faf 100644
+> --- a/target/arm/arm-semi.c
+> +++ b/target/arm/arm-semi.c
+> @@ -232,11 +232,13 @@ static target_ulong arm_gdb_syscall(ARMCPU *cpu, gd=
+b_syscall_complete_cb cb,
+>   #define GET_ARG(n) do {                                 \
+>       if (is_a64(env)) {                                  \
+>           if (get_user_u64(arg ## n, args + (n) * 8)) {   \
+> -            return -1;                                  \
+> +            errno =3D EFAULT;                             \
+> +            return set_swi_errno(ts, -1);               \
+>           }                                               \
+>       } else {                                            \
+>           if (get_user_u32(arg ## n, args + (n) * 4)) {   \
+> -            return -1;                                  \
+> +            errno =3D EFAULT;                             \
+> +            return set_swi_errno(ts, -1);               \
+>           }                                               \
+>       }                                                   \
+>   } while (0)
+> @@ -287,12 +289,13 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+>           GET_ARG(2);
+>           s =3D lock_user_string(arg0);
+>           if (!s) {
+> -            /* FIXME - should this error code be -TARGET_EFAULT ? */
+> -            return (uint32_t)-1;
+> +            errno =3D EFAULT;
+> +            return set_swi_errno(ts, -1);
+>           }
+>           if (arg1 >=3D 12) {
+>               unlock_user(s, arg0, 0);
+> -            return (uint32_t)-1;
+> +            errno =3D EINVAL;
+> +            return set_swi_errno(ts, -1);
+>           }
+>           if (strcmp(s, ":tt") =3D=3D 0) {
+>               int result_fileno =3D arg1 < 4 ? STDIN_FILENO : STDOUT_FILE=
+NO;
+> @@ -413,8 +416,8 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+>           } else {
+>               s =3D lock_user_string(arg0);
+>               if (!s) {
+> -                /* FIXME - should this error code be -TARGET_EFAULT ? */
+> -                return (uint32_t)-1;
+> +                errno =3D EFAULT;
+> +                return set_swi_errno(ts, -1);
+>               }
+>               ret =3D  set_swi_errno(ts, remove(s));
+>               unlock_user(s, arg0, 0);
+> @@ -432,11 +435,12 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+>               char *s2;
+>               s =3D lock_user_string(arg0);
+>               s2 =3D lock_user_string(arg2);
+> -            if (!s || !s2)
+> -                /* FIXME - should this error code be -TARGET_EFAULT ? */
+> -                ret =3D (uint32_t)-1;
+> -            else
+> +            if (!s || !s2) {
+> +                errno =3D EFAULT;
+> +                ret =3D set_swi_errno(ts, -1);
+> +            } else {
+>                   ret =3D set_swi_errno(ts, rename(s, s2));
+> +            }
+>               if (s2)
+>                   unlock_user(s2, arg2, 0);
+>               if (s)
+> @@ -456,8 +460,8 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+>           } else {
+>               s =3D lock_user_string(arg0);
+>               if (!s) {
+> -                /* FIXME - should this error code be -TARGET_EFAULT ? */
+> -                return (uint32_t)-1;
+> +                errno =3D EFAULT;
+> +                return set_swi_errno(ts, -1);
+>               }
+>               ret =3D set_swi_errno(ts, system(s));
+>               unlock_user(s, arg0, 0);
+> @@ -517,19 +521,22 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+>  =20
+>               if (output_size > input_size) {
+>                   /* Not enough space to store command-line arguments.  *=
+/
+> -                return -1;
+> +                errno =3D E2BIG;
+> +                return set_swi_errno(ts, -1);
+>               }
+>  =20
+>               /* Adjust the command-line length.  */
+>               if (SET_ARG(1, output_size - 1)) {
+>                   /* Couldn't write back to argument block */
+> -                return -1;
+> +                errno =3D EFAULT;
+> +                return set_swi_errno(ts, -1);
+>               }
+>  =20
+>               /* Lock the buffer on the ARM side.  */
+>               output_buffer =3D lock_user(VERIFY_WRITE, arg0, output_size=
+, 0);
+>               if (!output_buffer) {
+> -                return -1;
+> +                errno =3D EFAULT;
+> +                return set_swi_errno(ts, -1);
+>               }
+>  =20
+>               /* Copy the command-line arguments.  */
+> @@ -544,7 +551,8 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+>  =20
+>               if (copy_from_user(output_buffer, ts->info->arg_start,
+>                                  output_size)) {
+> -                status =3D -1;
+> +                errno =3D EFAULT;
+> +                status =3D set_swi_errno(ts, -1);
+>                   goto out;
+>               }
+>  =20
+> @@ -614,7 +622,8 @@ target_ulong do_arm_semihosting(CPUARMState *env)
+>  =20
+>                   if (fail) {
+>                       /* Couldn't write back to argument block */
+> -                    return -1;
+> +                    errno =3D EFAULT;
+> +                    return set_swi_errno(ts, -1);
+>                   }
+>               }
+>               return 0;
+>=20

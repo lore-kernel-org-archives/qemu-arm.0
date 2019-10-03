@@ -1,78 +1,78 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp427839wrp;
-        Thu, 3 Oct 2019 08:47:11 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwpQIN35ha0LhKzOP05IYucotAQI02tWtoGL1PVfT5iL+KV4D0cljld990mTbExB+ZBIg/o
-X-Received: by 2002:a17:906:134b:: with SMTP id x11mr8193500ejb.272.1570117631707;
-        Thu, 03 Oct 2019 08:47:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570117631; cv=none;
+Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp429393wrp;
+        Thu, 3 Oct 2019 08:48:43 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqziMIgKiynhPTOaIDA3v00Cp8pkSTjBI4UE7nyPdqFDHtsirlLGwk0Qf7zCyJ1oCozuQPde
+X-Received: by 2002:a05:6402:709:: with SMTP id w9mr10201954edx.85.1570117722991;
+        Thu, 03 Oct 2019 08:48:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570117722; cv=none;
         d=google.com; s=arc-20160816;
-        b=QyApfNYJYGGIo6RqmKAhRo6oQM3rkC6uCQXIvoTcxh+VGMdUGiqcdznGpvQCpSF3L7
-         SvabJ4PgFwQ4RbV6PxCS/ls8lnfxICGU8Qnfg41enUj/u46aSlGSkWZsML5DxtZp0hGA
-         j1x7nDRnR8fXIpX2QhnTMVqpIYr5Te08znFjSVuP3ztz0fX3g8EQhveHwrfNwNar0PwW
-         J7ZVuJf7BGbznkcpGQVMJ6iGtqwVC7iCrx1EPqqJtlHy+YYiFQzbcUr/Dg1fPk//LKzn
-         KULFqSltnT8Mrruu2ewLIPxFR/T/sPU7oE6z9wIr7cW9j7FFocAc6LSA9ZtjG7nB2Jd/
-         01Ng==
+        b=UFyPKkmZAAzynci8ax4fh+VywurJQYXGFKHAOb5y6yI+Jh8ZAkFbRLHWAIcadEpkyM
+         tKFgL1IbUtcLBJoZMCl4/5ySrZMvu7p/++kDIC6/koVU1LfYXAA4v2oHDO32LZ1QfqTT
+         cceqsRM+pgVd2w6hd8Ryz2rYt7jy521yqnmQrjUkyisoES16D4sE8bgld6h0xp+haI/G
+         E8BuHj4V+b2kH9HXw6FFYQhQjxBNogUTxHV5drI4fs7udvwTmhIczN+z9NlWqalz0FGg
+         +BvaJabB7PmgNYKxJXXN+Kn/TJBFjdc70UhZXheFM2vePKkRTCJ8Hm8HL/VANk/aJQf7
+         +POg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=FWcl8Je2SjlqM+P29/1yaGFlqOjvdHjK75OXzBPRR/A=;
-        b=0O8TFFJsBvUjDa5UJomJonL5lYSmu7k/1j7tqQ2nd9WlDKXZ3PBH+hFwtnt0asD7OG
-         rUkFDXXnKN61gBC1fSH371ZHzVN7A5A/KxTKqy+xs8+7sYsBjPoW7deuT45+D/nF8Ubi
-         PW0lRWs/trtTo1ZutsTG7Td7yGIIeZSxFp75FxRZs+roFNjJzcVrWcyBpnHuUUnHqUlE
-         SbUbjVvWAdOlPWF36NGKakyK10UWzA2xRrQt8AKUifCDfmNys1DgUhHU+Dk/xzOUv4+z
-         sazMgULQwuAVb/yKl7d3Bl6a3Suib7cdfMcrukDDL0ULHw2NKCjAnktBaD49HbrCdmzM
-         80XA==
+        bh=W5QtKBOh/pRKAEkIlTyead1b46VUfSe2iBfsgY13ucQ=;
+        b=XhHGNdhc+OZQt+gXhuyLJ7jf+YguvKK0F3fpycfJnaDbtoUa7qNjxNAa1I9dZVG1Pt
+         P0WS/uxb9aYKxyc1UL9RmGUoQZB1TpW4FO7RAFapCz6zrEEHJQ2Y+XMC6smHvaBPyfUs
+         biqdifdEB2NWMefhEby29XE6Q316LVmG6EDPCL+MwJ89cJ0hibFYbrUiFAWby+0+urYe
+         k7lmuWdsx5vTL7PXFcpZp6/IkuyzVqTNLOZvZS+VXAUvLA8SmcDMb6YjFC9nct5VGCtw
+         ILeIq4tYChvMk87xmZBb0PLjNjyDmpfS+/z7RVaiW828rB0J8E2MOc0JpcDx13oU0R+z
+         Nq1A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t26si1331575eju.238.2019.10.03.08.47.11
+        by mx.google.com with ESMTPS id ox28si1428308ejb.130.2019.10.03.08.48.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Oct 2019 08:47:11 -0700 (PDT)
+        Thu, 03 Oct 2019 08:48:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37824 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37852 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iG3Ju-0003CJ-7Q
-	for alex.bennee@linaro.org; Thu, 03 Oct 2019 11:47:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47985)
+	id 1iG3LN-0004bW-CJ
+	for alex.bennee@linaro.org; Thu, 03 Oct 2019 11:48:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48010)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eric.auger@redhat.com>) id 1iG3Je-0003A5-Mg
- for qemu-arm@nongnu.org; Thu, 03 Oct 2019 11:46:56 -0400
+ (envelope-from <eric.auger@redhat.com>) id 1iG3Jg-0003BC-DQ
+ for qemu-arm@nongnu.org; Thu, 03 Oct 2019 11:46:57 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eric.auger@redhat.com>) id 1iG3Jd-0006J6-Bo
- for qemu-arm@nongnu.org; Thu, 03 Oct 2019 11:46:54 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:56978)
+ (envelope-from <eric.auger@redhat.com>) id 1iG3Jf-0006LV-96
+ for qemu-arm@nongnu.org; Thu, 03 Oct 2019 11:46:56 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:58178)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <eric.auger@redhat.com>)
- id 1iG3Jd-0006IC-1R; Thu, 03 Oct 2019 11:46:53 -0400
+ id 1iG3Jf-0006Kv-3d; Thu, 03 Oct 2019 11:46:55 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 35A683090FDA;
- Thu,  3 Oct 2019 15:46:52 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 506B418C427B;
+ Thu,  3 Oct 2019 15:46:54 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-117-64.ams2.redhat.com [10.36.117.64])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6DF5A19C7F;
- Thu,  3 Oct 2019 15:46:50 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8C86019C7F;
+ Thu,  3 Oct 2019 15:46:52 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org
-Subject: [PATCH v4 2/3] intc/arm_gic: Support IRQ injection for more than 256
- vpus
-Date: Thu,  3 Oct 2019 17:46:39 +0200
-Message-Id: <20191003154640.22451-3-eric.auger@redhat.com>
+Subject: [PATCH v4 3/3] ARM: KVM: Check KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 for
+ smp_cpus > 256
+Date: Thu,  3 Oct 2019 17:46:40 +0200
+Message-Id: <20191003154640.22451-4-eric.auger@redhat.com>
 In-Reply-To: <20191003154640.22451-1-eric.auger@redhat.com>
 References: <20191003154640.22451-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.43]); Thu, 03 Oct 2019 15:46:52 +0000 (UTC)
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.62]); Thu, 03 Oct 2019 15:46:54 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -91,138 +91,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: yuzenghui@huawei.com, maz@kernel.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k9fQ08sXV9hT
+X-TUID: LwHEiPPsHp/D
 
-Host kernels that expose the KVM_CAP_ARM_IRQ_LINE_LAYOUT_2 capability
-allow injection of interrupts along with vcpu ids larger than 255.
-Let's encode the vpcu id on 12 bits according to the upgraded KVM_IRQ_LIN=
-E
-ABI when needed.
+Host kernel within [4.18, 5.3] report an erroneous KVM_MAX_VCPUS=3D512
+for ARM. The actual capability to instantiate more than 256 vcpus
+was fixed in 5.4 with the upgrade of the KVM_IRQ_LINE ABI to support
+vcpu id encoded on 12 bits instead of 8 and a redistributor consuming
+a single KVM IO device instead of 2.
 
-Given that we have two callsites that need to assemble
-the value for kvm_set_irq(), a new helper routine, kvm_arm_set_irq
-is introduced.
-
-Without that patch qemu exits with "kvm_set_irq: Invalid argument"
-message.
+So let's check this capability when attempting to use more than 256
+vcpus within any ARM kvm accelerated machine.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reported-by: Zenghui Yu <yuzenghui@huawei.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Andrew Jones <drjones@redhat.com>
 
 ---
 
 v2 -> v3:
-- remove if (cpu !=3D0), drop mask, as per Drew's suggestions
+- Implement the check in kvm_arch_init as suggested by Peter
 ---
- hw/intc/arm_gic_kvm.c |  7 ++-----
- target/arm/cpu.c      | 10 ++++------
- target/arm/kvm.c      | 12 ++++++++++++
- target/arm/kvm_arm.h  |  1 +
- 4 files changed, 19 insertions(+), 11 deletions(-)
+ target/arm/kvm.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/hw/intc/arm_gic_kvm.c b/hw/intc/arm_gic_kvm.c
-index b56fda144f..9deb15e7e6 100644
---- a/hw/intc/arm_gic_kvm.c
-+++ b/hw/intc/arm_gic_kvm.c
-@@ -55,7 +55,7 @@ void kvm_arm_gic_set_irq(uint32_t num_irq, int irq, int=
- level)
-      * has separate fields in the irq number for type,
-      * CPU number and interrupt number.
-      */
--    int kvm_irq, irqtype, cpu;
-+    int irqtype, cpu;
-=20
-     if (irq < (num_irq - GIC_INTERNAL)) {
-         /* External interrupt. The kernel numbers these like the GIC
-@@ -72,10 +72,7 @@ void kvm_arm_gic_set_irq(uint32_t num_irq, int irq, in=
-t level)
-         cpu =3D irq / GIC_INTERNAL;
-         irq %=3D GIC_INTERNAL;
-     }
--    kvm_irq =3D (irqtype << KVM_ARM_IRQ_TYPE_SHIFT)
--        | (cpu << KVM_ARM_IRQ_VCPU_SHIFT) | irq;
--
--    kvm_set_irq(kvm_state, kvm_irq, !!level);
-+    kvm_arm_set_irq(cpu, irqtype, irq, !!level);
- }
-=20
- static void kvm_arm_gicv2_set_irq(void *opaque, int irq, int level)
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 2399c14471..13813fb213 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -576,16 +576,16 @@ static void arm_cpu_kvm_set_irq(void *opaque, int i=
-rq, int level)
-     ARMCPU *cpu =3D opaque;
-     CPUARMState *env =3D &cpu->env;
-     CPUState *cs =3D CPU(cpu);
--    int kvm_irq =3D KVM_ARM_IRQ_TYPE_CPU << KVM_ARM_IRQ_TYPE_SHIFT;
-     uint32_t linestate_bit;
-+    int irq_id;
-=20
-     switch (irq) {
-     case ARM_CPU_IRQ:
--        kvm_irq |=3D KVM_ARM_IRQ_CPU_IRQ;
-+        irq_id =3D KVM_ARM_IRQ_CPU_IRQ;
-         linestate_bit =3D CPU_INTERRUPT_HARD;
-         break;
-     case ARM_CPU_FIQ:
--        kvm_irq |=3D KVM_ARM_IRQ_CPU_FIQ;
-+        irq_id =3D KVM_ARM_IRQ_CPU_FIQ;
-         linestate_bit =3D CPU_INTERRUPT_FIQ;
-         break;
-     default:
-@@ -597,9 +597,7 @@ static void arm_cpu_kvm_set_irq(void *opaque, int irq=
-, int level)
-     } else {
-         env->irq_line_state &=3D ~linestate_bit;
-     }
--
--    kvm_irq |=3D cs->cpu_index << KVM_ARM_IRQ_VCPU_SHIFT;
--    kvm_set_irq(kvm_state, kvm_irq, level ? 1 : 0);
-+    kvm_arm_set_irq(cs->cpu_index, KVM_ARM_IRQ_TYPE_CPU, irq_id, !!level=
-);
- #endif
- }
-=20
 diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index b2eaa50b8d..b10581fa06 100644
+index b10581fa06..b473c63edb 100644
 --- a/target/arm/kvm.c
 +++ b/target/arm/kvm.c
-@@ -744,6 +744,18 @@ int kvm_arm_vgic_probe(void)
-     }
+@@ -182,6 +182,7 @@ int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
+=20
+ int kvm_arch_init(MachineState *ms, KVMState *s)
+ {
++    int ret =3D 0;
+     /* For ARM interrupt delivery is always asynchronous,
+      * whether we are using an in-kernel VGIC or not.
+      */
+@@ -195,7 +196,14 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+=20
+     cap_has_mp_state =3D kvm_check_extension(s, KVM_CAP_MP_STATE);
+=20
+-    return 0;
++    if (ms->smp.cpus > 256 &&
++        !kvm_check_extension(s, KVM_CAP_ARM_IRQ_LINE_LAYOUT_2)) {
++        error_report("Using more than 256 vcpus requires a host kernel "
++                     "with KVM_CAP_ARM_IRQ_LINE_LAYOUT_2");
++        ret =3D -EINVAL;
++    }
++
++    return ret;
  }
 =20
-+int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level)
-+{
-+    int kvm_irq =3D (irqtype << KVM_ARM_IRQ_TYPE_SHIFT) | irq;
-+    int cpu_idx1 =3D cpu % 256;
-+    int cpu_idx2 =3D cpu / 256;
-+
-+    kvm_irq |=3D (cpu_idx1 << KVM_ARM_IRQ_VCPU_SHIFT) |
-+               (cpu_idx2 << KVM_ARM_IRQ_VCPU2_SHIFT);
-+
-+    return kvm_set_irq(kvm_state, kvm_irq, !!level);
-+}
-+
- int kvm_arch_fixup_msi_route(struct kvm_irq_routing_entry *route,
-                              uint64_t address, uint32_t data, PCIDevice =
-*dev)
- {
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index b3106c8600..b4e19457a0 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -253,6 +253,7 @@ int kvm_arm_vgic_probe(void);
-=20
- void kvm_arm_pmu_set_irq(CPUState *cs, int irq);
- void kvm_arm_pmu_init(CPUState *cs);
-+int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
-=20
- #else
-=20
+ unsigned long kvm_arch_vcpu_id(CPUState *cpu)
 --=20
 2.20.1
 

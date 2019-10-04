@@ -1,140 +1,122 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp377617wrm;
-        Fri, 4 Oct 2019 05:29:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyunFu1IXhLaP2yw6OmsY81AXfPAQRqurRTGNJ/IOyy9rAkBPEHblzq4A+fgTivyQpt+TtG
-X-Received: by 2002:a05:6402:383:: with SMTP id o3mr630732edv.205.1570192149467;
-        Fri, 04 Oct 2019 05:29:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570192149; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp379639wrm;
+        Fri, 4 Oct 2019 05:31:08 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzsNC9OaczZwVVzZsHCi+hgLgFzk++8G281QAeKIXY0SNaQjQvbRr2RM3XhfIxIFTyJ03dU
+X-Received: by 2002:ac8:4148:: with SMTP id e8mr15648136qtm.227.1570192268678;
+        Fri, 04 Oct 2019 05:31:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570192268; cv=none;
         d=google.com; s=arc-20160816;
-        b=vqfaQ7pQPqPNBEtlbbf50MmAX+kYHTQvfAw6mVquLX/kP7kzyVDCIe9t8l26Muu1jc
-         0DLi71NCppeSJuDFt3NWzmuPAaHMePHIf+46f0oalDhzWm+nDIsmhqAcXhdVznUf/ncy
-         GEIrqJGpHb4BlDWe/jykkJfcadIqnaMrAvE/a9ctZRvwLSm6wWAZzY8OvDOIUF57hJO2
-         3EMd9cO9wx2hJjOvHPxuDceN/QLaaBPbspvsEVIFqFecDqN/KUNffyTxDKh8RKh/2t+b
-         u1zTkPhs/zeNH6/8NpxDGWb1OSWGY9LX2g1thg7ql6Qbe9+xgHpLXOnmTmO/YJHFf26c
-         1DfA==
+        b=Hkv6Y9Fw7zOXs48axjG36zWomJH0mE84Uh3MMibWiGW7Yof8rdejbGpXK+TKmC9AVo
+         WnzF3ZqetPyGgK528/zzSLeTNWSjpLLjtGpn4GRyJg0sT8ZkDRtanouDNpTRPWpgMD0q
+         iEIYeJ/sUYrPMeP/PHOnRsV91KCbLofrepi5gEM5i6UOe2biGD28hHzLHlD9v4onPQC9
+         6CQAffNvQDBuAmKp4v0otPKBuKzdqacFY1iw3enQw7QHFd89+7ueFxGQ+zHt1ZCRaltP
+         +Sl+vzTG7DODPt+ksrZ9G8ptwA/RiP2/cnpngfUfDE29B5VT1W4tgCRJo3PEfDaFW7bx
+         NCXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:openpgp:from:references:to:subject;
-        bh=/oQT8DN4K81lAulpObLL8omqgqhNuiPwlAvoiwKSXCE=;
-        b=uJzY2QLuQ8ToePyHagGdCN6RuTYMuNd8PvFCMU6jujof6YdJaRj57YOChqNEq5pOMe
-         nj77XcQAnchCgmBWMrG2enTNSeTFBUu7ibWnmxWiVV9ueeBkhxzS7MLXmo+oLYUZmOgH
-         l8FWx/+95TYm1R+UXmRiyDd3xftM9pAPSteE7L9SY74YT2Tmi7Mfoj9AjHOjaauXHfIj
-         swWNMtRbESttcMz95vYiW9oTez0Np3VhWydZjRSUyYp71N376Ak6AFFZ8iM7WxF4pk4n
-         vkLc/W6mOqMw2N3b20M6oxpeVnbbPzy3NGWEQz72P5NMxRuha9rhvCiMkRuOEFL6io5M
-         yPMA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=73tXdKen0FxXUuZYNbEuimiM9wHeptOmr0gi/jbII7I=;
+        b=sk+/IwKsXwN19N2o9SuKRIkebtTBQJPAld9Zan/iGJ3TJNJjvTcrb1hua8dojOrzTn
+         kh8DOm3i/7/6TFMpSanYO96TgWBswMyLjkfnmcp5UNlCA0pFsrUsfa9TsZt4IBr2aFsf
+         rMUWi1pDi0t3Z3VC8PRgkhVf6Xt0l0dK7yHfx7dO9seOpQ1b25grnbmeNEqXSD1i+cjv
+         mmH1Gxx7d6oOc9sdVXUBoD93sPjPSR4bYQqUGezATjJWXBsMqMXros7yepv4YsKsb6EZ
+         bAzpvrGmyE/ADUen1gi7YbCjsKA0SEbn/GmZJ5WVluxwxbNwGKmrMyJyXDAi6icw87du
+         ILMg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=N4lhLiFn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f45si3579730edb.166.2019.10.04.05.29.09
+        by mx.google.com with ESMTPS id f4si4890080qtg.257.2019.10.04.05.31.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Oct 2019 05:29:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 04 Oct 2019 05:31:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47954 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=N4lhLiFn;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47998 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iGMho-0006oo-Hz
-	for alex.bennee@linaro.org; Fri, 04 Oct 2019 08:29:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59387)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iGMjj-0000Zc-TT
+	for alex.bennee@linaro.org; Fri, 04 Oct 2019 08:31:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59953)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1iGMO8-0002xy-LF
- for qemu-devel@nongnu.org; Fri, 04 Oct 2019 08:08:50 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iGMSK-0005ky-7e
+ for qemu-arm@nongnu.org; Fri, 04 Oct 2019 08:13:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1iGMO6-0003Nt-7f
- for qemu-devel@nongnu.org; Fri, 04 Oct 2019 08:08:48 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:38596)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1iGMO6-0003Mv-1P
- for qemu-devel@nongnu.org; Fri, 04 Oct 2019 08:08:46 -0400
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id D416E8E3C0
- for <qemu-devel@nongnu.org>; Fri,  4 Oct 2019 12:08:44 +0000 (UTC)
-Received: by mail-wm1-f69.google.com with SMTP id c188so1527700wmd.9
- for <qemu-devel@nongnu.org>; Fri, 04 Oct 2019 05:08:44 -0700 (PDT)
+ (envelope-from <peter.maydell@linaro.org>) id 1iGMSJ-0005yl-BL
+ for qemu-arm@nongnu.org; Fri, 04 Oct 2019 08:13:08 -0400
+Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b]:40172)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iGMSJ-0005yN-6c
+ for qemu-arm@nongnu.org; Fri, 04 Oct 2019 08:13:07 -0400
+Received: by mail-ot1-x32b.google.com with SMTP id y39so5084096ota.7
+ for <qemu-arm@nongnu.org>; Fri, 04 Oct 2019 05:13:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=73tXdKen0FxXUuZYNbEuimiM9wHeptOmr0gi/jbII7I=;
+ b=N4lhLiFna5ReHy8U0PsYkw0+aU5yQwd5OCeboO7+qcpwtg4DtO8VLy5FxcXLaclzpb
+ 8bYwvmNlIRhQEAmjCfc6/2f+4GqmnPzYNGKUuVUkOTJJopTAiBAX9ryqLeQYKyaKljh8
+ sERr0q1LFsE3EjDz0r3Xmiu1zdHFdhpwQX5eO32pADH+jQreWSPa1PmxO2T7OUUE0hlz
+ iTi2IovEufx6T5iUXwvBrUN8OESLmuXd3DFbR++5ZEM5nofvfyP1BCFfjOGq0LSHGNYf
+ 3NZ9MGvUEk/DzXXEa5bPF+RGwh3AdrM1Ox2d5ntRBnzDvrE8o+nZhQXQueBUzSzCxQ7V
+ ffQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=/oQT8DN4K81lAulpObLL8omqgqhNuiPwlAvoiwKSXCE=;
- b=dA5VDw0qCZX4N6zn6/dK9O5393u/9j7A/t/uh4WZUUk8l1Q7DX3f1PLaS5Uu7vpf/9
- nOsCYs/+E95ZavXQYBxPVarYvi4y5L2v9Z11/8j46dKuDd8kZpId13LwTByF360/1xyr
- 7KVO/xmXmAkaEd6YmFiZd8y3Y2LIhYkcOSkrfoWPDnGViyH15uMbCXBYS0K5x3jIMHpo
- GUmxKx7bfMLvlbvBrkcUfqhjOuS4Fx7yq/XW/c1ZKmPdPMnfrF9aXpWLsbPAfjwF5e6t
- +yskCrrzImIXUsv153ON53+C1FrIDLNOOhMbGbgHQ+/d+mQxwM/a0rbZhmQaf27SF77H
- ZsvA==
-X-Gm-Message-State: APjAAAXUSwIzNc7EkmG7TtCciMYs0g1l8o3ERgiRwQN8S562549PzH6F
- BifNiZmKsu7AzJTPi5ZMpeBOsgt8v0WFsO5KIlauPoNqCSRIQ3UsuXwvbGG/Uw4QZrNjUkgtqDr
- oOj/UNpSSjKNapyM=
-X-Received: by 2002:a05:600c:2:: with SMTP id
- g2mr10605882wmc.111.1570190923475; 
- Fri, 04 Oct 2019 05:08:43 -0700 (PDT)
-X-Received: by 2002:a05:600c:2:: with SMTP id
- g2mr10605862wmc.111.1570190923216; 
- Fri, 04 Oct 2019 05:08:43 -0700 (PDT)
-Received: from [192.168.10.150] ([93.56.166.5])
- by smtp.gmail.com with ESMTPSA id w17sm919268wmi.30.2019.10.04.05.08.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 04 Oct 2019 05:08:42 -0700 (PDT)
-Subject: Re: [RFC 0/4] transaction-based ptimer API
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20191004114848.16831-1-peter.maydell@linaro.org>
- <2edcfdab-0682-2728-2632-e4f5bb6cd7e2@redhat.com>
- <CAFEAcA_cReY=9a40pJ3J1esWTEise-Q29DPqVgm9AAHx9FesvQ@mail.gmail.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <1a424c17-4ec0-5cf2-4fb7-b8b8bb357f6c@redhat.com>
-Date: Fri, 4 Oct 2019 14:08:42 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=73tXdKen0FxXUuZYNbEuimiM9wHeptOmr0gi/jbII7I=;
+ b=HumaSpzcWDD7/bw4nhKuawexJ4mVySGf659sgYlmh/Fme1QfKgqRp9Ly2tAbYkzPYi
+ Tdihr47/jmK9Uh0G2vRLmNYhuU65svRVSonOXNvNWLxFzNJUDPCTP8c5IjY3bWTehAUK
+ +4A8Yg8dHDqt24rQoQ5C4brVP/DGD9H+DrKU8zFEDnesclUWgYao/NeZ7EMZ0wxxLO6d
+ 3BYPfKx+ePbg0Q7pheReB2I6boFywHOAYBJlcaXcZdsNnq9Jb1f3dNpaYR3LS4Ij09AD
+ C0l+4MN96qTiGs1ovjj0kY3//WusT4qYvOplv6aw+CLQLDOxFINmrKlUMhwLTA0p6DYh
+ DA9g==
+X-Gm-Message-State: APjAAAVwTdMhP6BNHaU6M5FnFw/ykKBbwvL3eSfe2OVK491iwUhOVbHy
+ M3dz8Y19AlcZQu1YYiwxIZDnFNLTDI/MFiFdIPMx3A==
+X-Received: by 2002:a9d:562:: with SMTP id 89mr10727195otw.232.1570191186424; 
+ Fri, 04 Oct 2019 05:13:06 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_cReY=9a40pJ3J1esWTEise-Q29DPqVgm9AAHx9FesvQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
-X-BeenThere: qemu-devel@nongnu.org
+References: <AM0PR01MB57951DFAEC15A7E418F6F3C1D79E0@AM0PR01MB5795.eurprd01.prod.exchangelabs.com>
+In-Reply-To: <AM0PR01MB57951DFAEC15A7E418F6F3C1D79E0@AM0PR01MB5795.eurprd01.prod.exchangelabs.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 4 Oct 2019 13:12:55 +0100
+Message-ID: <CAFEAcA_Q9V570TSbNKBBoB1+G58_q4J98iD0CKvSfxx9gCBYAA@mail.gmail.com>
+Subject: Re: [re-sent to correct mailing list] QEMU not booting U-Boot on
+ almost all i.MX ARM boards
+To: Waseem ALKurdi <waseem19992009@outlook.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::32b
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Lx59mAeq9sNn
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WJucqBiRYCWR
 
-On 04/10/19 14:00, Peter Maydell wrote:
-> No, because stop/run causes the ptimer to "lose time"
-> (we stop the underlying timer and restart it). It's
-> very common for a device to want to change the ptimer
-> properties without a stop/restart -- "set the ptimer
-> count value when the guest writes to the device's counter
-> register" is the common one. Of the three begin/commit
-> blocks in the arm_timer.c conversion, only one of those
-> involves calls to stop/run, and even there we only
-> call stop/run if the write to the control register
-> modified the enable bit.
+On Fri, 4 Oct 2019 at 13:10, Waseem ALKurdi <waseem19992009@outlook.com> wrote:
+>
+> Dear all,
+>
+> I'm trying to get mainline U-Boot to boot on mainline QEMU 4.1.0 for the 'sabrelite' board, using the configuration 'mx6qsabrelite_defconfig'.
 
-Ok, thanks.
+Hi -- can you stop sending repeat copies of this question to the
+lists, please? You already sent it yesterday and got a reply...
 
-Paolo
+thanks
+-- PMM

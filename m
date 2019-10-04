@@ -1,100 +1,100 @@
-Received: by 2002:adf:ef42:0:0:0:0:0 with SMTP id c2csp752749wrp;
-        Wed, 2 Oct 2019 04:18:24 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzNvbEsglUTGmiS67W5YWiJ1vawJAO4XX0gclyhLBZi0tTZ/5st/q+b9SESn8SXN60aiOfe
-X-Received: by 2002:a37:65c7:: with SMTP id z190mr3049859qkb.483.1570015104318;
-        Wed, 02 Oct 2019 04:18:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570015104; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp252088wrm;
+        Fri, 4 Oct 2019 03:23:49 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxTOFv1hZQsyzS54OkiQxYqCmsCRbsjColWV2kP/C/CZO44f3anzLsn9h0fNFuIgPOgMOIv
+X-Received: by 2002:a37:6156:: with SMTP id v83mr9270805qkb.80.1570184629297;
+        Fri, 04 Oct 2019 03:23:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570184629; cv=none;
         d=google.com; s=arc-20160816;
-        b=IWAGpHmw81r6DLuLpZCFyXdf3m/s53ZAlGdeBpxJVfemK0MtnR1Uu8Jt54FppDWI/W
-         XDM3JwBGBwhXJwkpWLO7ngHtS7/fqLk5TdOQF+/oSWXEV6x+Q+7szVVi0hJqMtM5ZuC4
-         u+HS2ZwwDOxqzv87oSGV+8f4YZLa0OBw0f6W67N7RntdFwz1rWmEHrCtDmvVlkZoAEJ+
-         DOibkwzg3u0VBig6OcR/PNuaqnmJWpJl6xsunIOa5b48Lx3dRYLVG8CWerZR3NYwmSxt
-         h5E2a3QRy6lOEilzC7Na7JeWTnAIQhhFvrr2xrsf5ypxEPzwPsr0IjIdn+T5hZ0eBWQU
-         bihg==
+        b=UO3jjAwuhx4Pu8EwKp3b/0Ur458CwKbx0wI5+CV+ro4OOGhrhEXT4homdo3d+jT8De
+         1xE4xzuOK9x5wwHThyLbuHqKu3ioK6FXiHEugqfgmXU5ciS8AGwmV2/h09EbovLn1dnm
+         2dYE/24FMX9vQOhJiFXdTnJbbw8Dsprrs4oYjnnnxzQJ5q+SF/DxKG87wmqqaHXmVLED
+         2SOuXog7D33qmHMGrTM53FdGsuSFvT4a6R/jMhPgYNHqEIxklNmwuSYVynzVoqG36xS2
+         k9oMnRSdo5dAv5b1J2MBnzWkb0vIT5DbZNlxa9q6nEqejtNmp/gISk9kYTc1iXvwOJnA
+         gCzQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=BmYTIcKLsjSP0VeDjPsSNIvplrmTqdntAb0QToAyFZY=;
-        b=1BK5DtVav3F3esVxTIwy1bUR3UU1fxoMLF799+1t4zLdJ/HmMjIUQg0DmQiwXK+kAT
-         Exgj5tHHQTJy7msFFb3YVwGpKaytx2VKWh+mzqRFVKRcbTagMlXtE1fjfkw2wPxhq2Ru
-         G+ZhZzx+qfWJpOSx6Y/NKeX7WZYAiGXtEEF7eHOdV/8j3azEIfrbBVyB2Wcwa125Ludi
-         8gFPRdev1TrfJ6UDfw8UQTCE9/pGn/nyyinKmVnmp41zneeBNkVhXJiUuZZJsJQihoch
-         oSnkxCvIzeFqvku3bjVPZZazG5ZpzkcNNGsDXFxrWEv0JDnebK9XJiXtx02EwnKHXxLT
-         Wz1A==
+        bh=Vobup07TQuXLeqn05FwJTaNe75SF0hv7bXAlkzWugoo=;
+        b=TfoMoIYmqDVBY+biXjsK5v3JuPKC4nbWnaOo1F6zk4cUteiUwgwBQrapfSU58AI+zH
+         mMRQZzdgfUDf0W4p+AjBXilSlNsQNh2hleBA7qL3TpNXHLWhe5XVT0tiUQJPko9VuSRS
+         OiiEjRDdeBYg5rTSWd7j+I1RKP8aVdPHB1ieOUuir3yniP/iDdzHMUnv3BIhd48LxEz0
+         CRv9dblDBNjIuIMBHkDwQBaMFqh0dSpSt1AMsAzgFxdnX3eYoDDaAysK1CMeQUDpIlem
+         WnstPnCPF6Kl1M3dX2U/hbPMC5ZVDKNrhoFuJrzUkb0f9RZ4OrUkkAVp7TCnh+VxfRrU
+         G0zQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y10si16877958qtk.369.2019.10.02.04.18.24
+        by mx.google.com with ESMTPS id s51si685026qtb.197.2019.10.04.03.23.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Oct 2019 04:18:24 -0700 (PDT)
+        Fri, 04 Oct 2019 03:23:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53784 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45020 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iFceF-0006f8-PK
-	for alex.bennee@linaro.org; Wed, 02 Oct 2019 07:18:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35345)
+	id 1iGKkW-0002wB-96
+	for alex.bennee@linaro.org; Fri, 04 Oct 2019 06:23:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53731)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iFcdE-0006B9-HB
- for qemu-devel@nongnu.org; Wed, 02 Oct 2019 07:17:21 -0400
+ (envelope-from <philmd@redhat.com>) id 1iGK3d-0006Us-UA
+ for qemu-devel@nongnu.org; Fri, 04 Oct 2019 05:39:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iFcdC-0007o2-R3
- for qemu-devel@nongnu.org; Wed, 02 Oct 2019 07:17:19 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45928)
+ (envelope-from <philmd@redhat.com>) id 1iGK3c-0006UV-Ca
+ for qemu-devel@nongnu.org; Fri, 04 Oct 2019 05:39:29 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53000)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iFcd9-0007kL-OF
- for qemu-devel@nongnu.org; Wed, 02 Oct 2019 07:17:16 -0400
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69])
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iGK3c-0006Td-2d
+ for qemu-devel@nongnu.org; Fri, 04 Oct 2019 05:39:28 -0400
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70])
  (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B4950C0546FB
- for <qemu-devel@nongnu.org>; Wed,  2 Oct 2019 11:17:13 +0000 (UTC)
-Received: by mail-wm1-f69.google.com with SMTP id c188so1943607wmd.9
- for <qemu-devel@nongnu.org>; Wed, 02 Oct 2019 04:17:13 -0700 (PDT)
+ by mx1.redhat.com (Postfix) with ESMTPS id 3A0C5C05AA61
+ for <qemu-devel@nongnu.org>; Fri,  4 Oct 2019 09:39:27 +0000 (UTC)
+Received: by mail-wr1-f70.google.com with SMTP id h6so2449668wrh.6
+ for <qemu-devel@nongnu.org>; Fri, 04 Oct 2019 02:39:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=BmYTIcKLsjSP0VeDjPsSNIvplrmTqdntAb0QToAyFZY=;
- b=d7BKZNat7PCAWN8yR5BwIFlhuY7JU5C8rqFanbfg8qdio9ZPOAExWBeLGzL6N8eqr1
- j8BuPPGniHop5QsfmjqLadyasb2fCBOQKx1cc5DDaCjy0ecmIzUpyqvpjaBLL7+PWSLC
- vaTWO+b9C6y/MEDBPoHP4XbGFY+eP2/0SnwS8SS5aUvq5z+FmMzKzFEgDcqXD5nfEL66
- eVIySX1tPsNcKIJm4I5kmgp1cAyAtmFsZgXVKcrucy3L2/e3NlJZxnW+vVcNeG5e8Gzh
- CkPoYGAvt1O9v5qo0N2Ra8j/9f9wWG60Ik26TPsJbgRXRDgScDXiW9tnZcZLRC8Igp2u
- M0SA==
-X-Gm-Message-State: APjAAAVEIsFWTRT2g9tbQteeBYwz6oqyCd2q/my9KwLa7F4otYrscaCa
- ht5GNVd8fKORjhTKSqW/1Xw/lwNNCFG7i9r6KDvdobGZDR62PlcO2m+EGrPizYVlbv+cMKdV4g5
- Q4xAtOJFJrNBBVK4=
-X-Received: by 2002:a5d:5552:: with SMTP id g18mr2196625wrw.386.1570015032520; 
- Wed, 02 Oct 2019 04:17:12 -0700 (PDT)
-X-Received: by 2002:a5d:5552:: with SMTP id g18mr2196602wrw.386.1570015032326; 
- Wed, 02 Oct 2019 04:17:12 -0700 (PDT)
-Received: from [10.201.33.15] ([195.166.127.210])
- by smtp.gmail.com with ESMTPSA id o19sm19350854wro.50.2019.10.02.04.17.10
+ bh=Vobup07TQuXLeqn05FwJTaNe75SF0hv7bXAlkzWugoo=;
+ b=dB4pEVyT3BgiKTcVV8ib3LEaBZOdjTRkE08fPnCbQyKh32InC0V+gHFnKj8FOlMTrB
+ H4rXzX/CEyqKlt6uUwmMptx4BNiQJNtTM/uTIG7m8h3l9mzjDxvqxFfBmEYnzkzaGfDa
+ cahwCdz+32KqQ7V5sKyloJBJeoaHknyExxVH7eVqwWqQZesqem8qiigurxxGv6AFn12p
+ OyRF56i2AGqmORAIgOyaK3PWapDgWsY77BJ6lFljlLjKRmQbUr2qRb4SWdtOeXVng91K
+ vKUXISxc5YSUJq7S73l23YqeX1cv2AANlUh82bM2/Qz7SuRpm2mLefbM4dIt2xxRwLKM
+ WBIQ==
+X-Gm-Message-State: APjAAAU8T+1i1VjPfwm2yDTNbzHHGx798QqrSkv46aSF0VAfO8u5xEay
+ R5cvBcc5YzBNzabmaA/2LBPQYyuwNQFsy/nizMRV53SkpSup5OKi8ePDqSMvnLnzBjpprOjg3E3
+ xwWG6mDrRG+nmkjk=
+X-Received: by 2002:adf:f190:: with SMTP id h16mr10632608wro.357.1570181965636; 
+ Fri, 04 Oct 2019 02:39:25 -0700 (PDT)
+X-Received: by 2002:adf:f190:: with SMTP id h16mr10632588wro.357.1570181965387; 
+ Fri, 04 Oct 2019 02:39:25 -0700 (PDT)
+Received: from [192.168.1.35] (240.red-88-21-68.staticip.rima-tde.net.
+ [88.21.68.240])
+ by smtp.gmail.com with ESMTPSA id t83sm8660182wmt.18.2019.10.04.02.39.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Oct 2019 04:17:11 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH 18/19] hw/timer: Declare device little or big
- endian
-To: Tony Nguyen <tony.nguyen@bt.com>, qemu-devel@nongnu.org
-References: <cover.1566829168.git.tony.nguyen@bt.com>
- <9fde52f9085bd7ad607bf2372931178e4a01fabd.1566829168.git.tony.nguyen@bt.com>
+ Fri, 04 Oct 2019 02:39:24 -0700 (PDT)
+Subject: Re: [PATCH] exynos4210_gic: Suppress gcc9 format-truncation warnings
+To: David Gibson <david@gibson.dropbear.id.au>, i.mitsyanko@gmail.com,
+ peter.maydell@linaro.org, Eric Blake <eblake@redhat.com>
+References: <20191004025509.3012-1-david@gibson.dropbear.id.au>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <8c66b0cd-f4ee-0b5f-fd1c-e843cae09e48@redhat.com>
-Date: Wed, 2 Oct 2019 13:17:09 +0200
+Message-ID: <8a33744a-9ac5-4359-62d0-ccd9c9c43676@redhat.com>
+Date: Fri, 4 Oct 2019 11:39:23 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.0
 MIME-Version: 1.0
-In-Reply-To: <9fde52f9085bd7ad607bf2372931178e4a01fabd.1566829168.git.tony.nguyen@bt.com>
+In-Reply-To: <20191004025509.3012-1-david@gibson.dropbear.id.au>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
@@ -112,59 +112,55 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Fabien Chouteau <chouteau@adacore.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Michael Walle <michael@walle.cc>,
- qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
- Joel Stanley <joel@jms.id.au>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Guan Xuetao <gxt@mprc.pku.edu.cn>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hfIb1WFHnOEa
+X-TUID: f/skxbuMT5s9
 
-On 8/26/19 4:21 PM, Tony Nguyen wrote:
-> For each device declared with DEVICE_NATIVE_ENDIAN, find the set of
-> targets from the set of target/hw/*/device.o.
+On 10/4/19 4:55 AM, David Gibson wrote:
+> exynos4210_gic_realize() prints the number of cpus into some temporary
+> buffers, but it only allows 3 bytes space for it.  That's plenty - I'm
+> pretty sure that existing machines will only ever set this value to 2
+> (EXYNOS4210_NCPUS).  But the compiler can't really be expected to figure
+> that out.
 > 
-> If the set of targets are all little or all big endian, re-declare
-> as DEVICE_LITTLE_ENDIAN or DEVICE_BIG_ENDIAN respectively.
+> Some[*] gcc9 versions therefore emit -Wformat-truncation warnings.  Fix
+> that by allowing more space in the temporary buffers - these are on stack
+> very briefly before being essentially strdup()ed inside the memory region
+> code, so there's not much cost to doing so.
 > 
-> Then, on inspection:
-> - if not used, re-declare as DEVICE_HOST_ENDIAN.
-> - if max/min size=1, re-declare as DEVICE_HOST_ENDIAN.
-> - if just a bit bucket, re-declare as DEVICE_HOST_ENDIAN
-> - if PCI, re-declare as DEVICE_LITTLE_ENDIAN.
-> - if for {ARM|unicore32} only, re-declare as DEVICE_LITTLE_ENDIAN.
-> - if for SPARC only, re-declare as DEVICE_BIG_ENDIAN.
+> [*] The bizarre thing here, is that I've long gotten these warnings
+> compiling in a 32-bit x86 container as host - Fedora 30 with
+> gcc-9.2.1-1.fc30.i686 - but it compiles just fine on my normal x86_64 host
+> - Fedora 30 with and gcc-9.2.1-1.fc30.x86_64.
 > 
-> Signed-off-by: Tony Nguyen <tony.nguyen@bt.com>
+> Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
 > ---
->   hw/timer/a9gtimer.c         | 4 ++--
->   hw/timer/arm_mptimer.c      | 4 ++--
->   hw/timer/arm_timer.c        | 4 ++--
->   hw/timer/armv7m_systick.c   | 2 +-
->   hw/timer/aspeed_rtc.c       | 2 +-
->   hw/timer/cadence_ttc.c      | 2 +-
->   hw/timer/grlib_gptimer.c    | 2 +-
->   hw/timer/hpet.c             | 2 +-
->   hw/timer/imx_epit.c         | 2 +-
->   hw/timer/imx_gpt.c          | 2 +-
->   hw/timer/lm32_timer.c       | 2 +-
->   hw/timer/milkymist-sysctl.c | 2 +-
->   hw/timer/mss-timer.c        | 2 +-
->   hw/timer/pl031.c            | 2 +-
->   hw/timer/puv3_ost.c         | 2 +-
->   hw/timer/slavio_timer.c     | 2 +-
->   hw/timer/stm32f2xx_timer.c  | 2 +-
->   hw/timer/sun4v-rtc.c        | 2 +-
+>   hw/intc/exynos4210_gic.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
+> index a1b699b6ba..2e5e47f9ec 100644
+> --- a/hw/intc/exynos4210_gic.c
+> +++ b/hw/intc/exynos4210_gic.c
+> @@ -290,8 +290,8 @@ static void exynos4210_gic_realize(DeviceState *dev, Error **errp)
+>       SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+>       const char cpu_prefix[] = "exynos4210-gic-alias_cpu";
+>       const char dist_prefix[] = "exynos4210-gic-alias_dist";
+> -    char cpu_alias_name[sizeof(cpu_prefix) + 3];
+> -    char dist_alias_name[sizeof(cpu_prefix) + 3];
+> +    char cpu_alias_name[sizeof(cpu_prefix) + 10];
+> +    char dist_alias_name[sizeof(cpu_prefix) + 10];
 
-This patch affects various areas, maybe it is worth splitting in at 
-least big/little changes? Or 3: ARM first, then big/little.
+Hmm magic again... So GCC provides a new warning with no helpful 
+definitions about how to clean this :(
 
-[...]
+We already have:
+#define UUID_FMT_LEN 36
+
+What about adding/using UINT32_FMT_LEN?
+
+>       SysBusDevice *gicbusdev;
+>       uint32_t i;
+>   
+> 

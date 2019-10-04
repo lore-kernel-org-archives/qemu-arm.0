@@ -1,268 +1,138 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp347799wrm;
-        Fri, 4 Oct 2019 05:03:17 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqymmvao1BTozIEhsSTKK+XgwPtKBKcX/lX6aTRL4+17yBffoVdfxYoJDa4hw2qWUXZanfeK
-X-Received: by 2002:a92:17c4:: with SMTP id 65mr15393982ilx.28.1570190597299;
-        Fri, 04 Oct 2019 05:03:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570190597; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp350019wrm;
+        Fri, 4 Oct 2019 05:05:00 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwuSeAfiNkfSyskf35cc/JehtcS10vFqOQLOfu/AUEDfSA4Jgvm7pDLxns5jI0OQOBU5MyZ
+X-Received: by 2002:a05:6402:794:: with SMTP id d20mr14719237edy.20.1570190700816;
+        Fri, 04 Oct 2019 05:05:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570190700; cv=none;
         d=google.com; s=arc-20160816;
-        b=OtZ2vZySBSbDyYmfq435LmyZNWGRT4MTJi9oeDiPuKOKgdcGYcC39TIJmmPbA5qYx5
-         LyryWN3UNd8zuzIwxoTZyZgUCZGiAphI956MkTvOHV0AQsdwr79B6V4Ott0me+JZqcZj
-         HBupCmd2x1ypksLzAwnWqUNY4AOnh6GBcqbCxYMTXuqW2dxLgINjE5P0rbAK1S14Do1g
-         Jr7tA61mICwiOZwJPivn65opNZWksN/Xf/VRcMB/CDj5/xB13j26C1pXvDUDbgYlvW8G
-         k82DB6qeZBhncZI+KurUNcRtVXwl57RNV4XnxrZInMTreFGk3mNWtFVQQW2AeQU3Q3Iu
-         1Keg==
+        b=EtY59S1PtQzZewOLFaqj5Pg/0Zo4VjpY8BIYwrtXiY2F0ageUpQETan80fxshmt5eO
+         XBrYow3CmQl72OadamcAocoitDooPdYQ7uouyIDzGA1cjn5Twoxn9eP0NmFq81HpzDyf
+         97tEaZUXwv4vgRN17Sj6SCg8vNF/1ZZ6JhsWdPP1NEsqb9KkrjmzfS5OyTL10vnDeW+B
+         VdtuapL66aQg61uu0e56xqFJA4/63MYYhYV+LX3MGf4pxw1xeSKFYPzf8lISubb8UMrP
+         KwXYdVuvUTMEvP5RGUAHqKowGp0WOfSyHFFwxoDE70vm/QKPiGJrxfVv7bKehUb0pnh3
+         hakg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=j/6LuSsWoGGTHZZbPBF+nG5emhR4R7PHDcssi1br+fA=;
-        b=0PQP/C/NnyLJWh3j4BiAHIg2uK1/bnE3EyGvdCRTIpbgV1iezU1a+Dd6+CPs60PDJv
-         pZgd3Vd94wAuVn86jRDwmfp3V0FzWvLy20Igi7xhr+o7hQkWEI3cXUaX9bFYlm/yDtiU
-         gDkw+ydma0AdZhMOCsz5ZjE/jmQLlp4yDhqpZi1yBk6O/aspvlzmQ8GMW+z42jKSb66F
-         IZBAkupmAwTJRhqX1zYoY5au2EjzmmoOGBVUhKob2vp0lCKSD0E2+Ke9qWflhif0lnmG
-         3dzCH6dLxj6VxKM3kluCtPaUMm1kGhsyS1Z6w8BbJdwsNIjHKZbu5gsMA0R382mzHEM1
-         ntNA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Xt2EzE0z6lux5nyX4FA3db27ZeOXTHbOvN3tP7Q4FCA=;
+        b=mqLJWYp5UKzsGjeDCI+p+1nJ1wK7uAd4aeaJzW65QDh2Hn6Rpu2TIMld7e6DDVvFts
+         K4NdGYwvjkNyxVK89eXmSMA8v3AGAw+gqRUEv6MiGCk3eMphob9xIDy6UBUgN1ypUgs7
+         e3LHM6fryZqAOptzi7/+gJWxmhmOSbMxEXSxfOULgGZxGTF0kMJE+NHeQhRgEl52Zc5V
+         ab/JP9uvUTpDVgJk9DvTpe5x56dwyf4c20x0rSs0Wr3qkN3S3rxn7kWmojCAmBNkndRC
+         /+5Thjweaf6M5QvYyzlZHRft2st/TfN4nw+d+UpGRZjufSVMccTseJhdoHAS2ZeP8K1K
+         Q66g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id d124si6657056iof.78.2019.10.04.05.03.16
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 04 Oct 2019 05:03:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=fail header.i=@linaro.org header.s=google header.b=pO8owpDl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id q9si3348022edr.382.2019.10.04.05.05.00
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 04 Oct 2019 05:05:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 56CFC2102;
-	Fri,  4 Oct 2019 12:03:16 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id AF34160BE1;
-	Fri,  4 Oct 2019 12:03:14 +0000 (UTC)
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Cc: peter.maydell@linaro.org,
-	richard.henderson@linaro.org,
-	alex.bennee@linaro.org,
-	Dave.Martin@arm.com,
-	eric.auger@redhat.com
-Subject: [PATCH v2] target/arm/arch_dump: Add SVE notes
-Date: Fri,  4 Oct 2019 14:03:13 +0200
-Message-Id: <20191004120313.5347-1-drjones@redhat.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=pO8owpDl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47480 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iGMKR-00008B-JY
+	for alex.bennee@linaro.org; Fri, 04 Oct 2019 08:04:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57911)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1iGMGn-0007B4-2W
+ for qemu-devel@nongnu.org; Fri, 04 Oct 2019 08:01:14 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1iGMGl-0000ov-EC
+ for qemu-devel@nongnu.org; Fri, 04 Oct 2019 08:01:12 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:45326)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iGMGl-0000lC-6z
+ for qemu-devel@nongnu.org; Fri, 04 Oct 2019 08:01:11 -0400
+Received: by mail-ot1-x341.google.com with SMTP id 41so5037431oti.12
+ for <qemu-devel@nongnu.org>; Fri, 04 Oct 2019 05:01:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Xt2EzE0z6lux5nyX4FA3db27ZeOXTHbOvN3tP7Q4FCA=;
+ b=pO8owpDlj0kimzb4ma2uZRM4scJJc0Ow1ocXrnE7frdCJdyjeicdq/1UANY+EwY8qw
+ 5IBrLKMHxT4zVtKDUkaEiQrh/L3WGGoX8c3rw141UtLP2D+cE6bmFZa4G1mLRt/HSiMm
+ y9TBc1zRxU8OZilqD4/FICdV+ofv96V9hi+UzLuwAKjOdvRGnSZqBUN1wKxSSQCa1mqJ
+ gu06ABXVobrvWwPLD0oiKUk5EJySetvqgvIbZTvhRkyzE/Hjdbmvaxzpn9e8PPKNlPdc
+ S5nIGqpUr8LMFzmr2T0o8ZwZfTjjv/WxMDV2bVGEOP6ybcinAov4BYJI8TuU0vjJTGR5
+ 0iVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Xt2EzE0z6lux5nyX4FA3db27ZeOXTHbOvN3tP7Q4FCA=;
+ b=DzXV/T6MRYAka1ON4mMX/u89dVToUTzhqMDGJK7iBeZIECAwWJCASNM6ogPgJfqZ6x
+ viMRNamYUTahEA4N4epyLQrFd7sfNlmP9XyTz+lki4qXYf+WxLlkXULOx613ZSSxIGer
+ 76bFEgTUJ25N2X4Zxwu4F2BCxBPpuPntBlqKkUEH1l7d/Y06ezda4G3WkYSk88AVBZr6
+ mQhgXooAYzu15ufflbOHHxUezrV9EctYIyxR78Owt2/nsfzXNZHNtpjWGfNZb96Ukbl+
+ yqTVlmWoE9XfwTEz0XntbONYMf55EtPiY0CsfAt0RZVA8jXEmcKNaLPIz6c6OqXi6ukK
+ Y1oA==
+X-Gm-Message-State: APjAAAXoI0MpHimnO1uMbPmgLGNW8UL8w8akYsjyZn0MBUfk4B6LofSI
+ mvM2cAq9G8YdGhdBnZssMEzkFm7E22qbx23rYgyLxw==
+X-Received: by 2002:a9d:6d0a:: with SMTP id o10mr9740157otp.221.1570190469713; 
+ Fri, 04 Oct 2019 05:01:09 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2 (mx1.redhat.com [10.5.110.71]); Fri, 04 Oct 2019 12:03:16 +0000 (UTC)
-X-TUID: kXduIIb9JtD8
+References: <20191004114848.16831-1-peter.maydell@linaro.org>
+ <2edcfdab-0682-2728-2632-e4f5bb6cd7e2@redhat.com>
+In-Reply-To: <2edcfdab-0682-2728-2632-e4f5bb6cd7e2@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 4 Oct 2019 13:00:58 +0100
+Message-ID: <CAFEAcA_cReY=9a40pJ3J1esWTEise-Q29DPqVgm9AAHx9FesvQ@mail.gmail.com>
+Subject: Re: [RFC 0/4] transaction-based ptimer API
+To: Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::341
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OZYr+1Ko8xf8
 
-When dumping a guest with dump-guest-memory also dump the SVE
-registers if they are in use.
+On Fri, 4 Oct 2019 at 12:57, Paolo Bonzini <pbonzini@redhat.com> wrote:
+>
+> On 04/10/19 13:48, Peter Maydell wrote:
+> > must be between matched calls to ptimer_transaction_begin() and
+> > ptimer_transaction_commit().  When ptimer_transaction_commit() is
+> > called it will evaluate the state of the timer after all the changes
+> > in the transaction, and call the callback if necessary.
+>
+> Could ptimer_stop/ptimer_run act as the begin and commit functions?
+> That is, ptimer_set_* can be called only between ptimer_stop and ptimer_run?
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
----
- include/elf.h          |   2 +
- target/arm/arch_dump.c | 135 ++++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 135 insertions(+), 2 deletions(-)
+No, because stop/run causes the ptimer to "lose time"
+(we stop the underlying timer and restart it). It's
+very common for a device to want to change the ptimer
+properties without a stop/restart -- "set the ptimer
+count value when the guest writes to the device's counter
+register" is the common one. Of the three begin/commit
+blocks in the arm_timer.c conversion, only one of those
+involves calls to stop/run, and even there we only
+call stop/run if the write to the control register
+modified the enable bit.
 
-diff --git a/include/elf.h b/include/elf.h
-index 3501e0c8d03a..a7c357af74ca 100644
---- a/include/elf.h
-+++ b/include/elf.h
-@@ -1650,6 +1650,8 @@ typedef struct elf64_shdr {
- #define NT_ARM_HW_BREAK 0x402           /* ARM hardware breakpoint registers */
- #define NT_ARM_HW_WATCH 0x403           /* ARM hardware watchpoint registers */
- #define NT_ARM_SYSTEM_CALL      0x404   /* ARM system call number */
-+#define NT_ARM_SVE	0x405		/* ARM Scalable Vector Extension
-+					   registers */
- 
- /*
-  * Physical entry point into the kernel.
-diff --git a/target/arm/arch_dump.c b/target/arm/arch_dump.c
-index 26a2c098687c..b02e398430b9 100644
---- a/target/arm/arch_dump.c
-+++ b/target/arm/arch_dump.c
-@@ -62,12 +62,23 @@ struct aarch64_user_vfp_state {
- 
- QEMU_BUILD_BUG_ON(sizeof(struct aarch64_user_vfp_state) != 528);
- 
-+/* struct user_sve_header from arch/arm64/include/uapi/asm/ptrace.h */
-+struct aarch64_user_sve_header {
-+    uint32_t size;
-+    uint32_t max_size;
-+    uint16_t vl;
-+    uint16_t max_vl;
-+    uint16_t flags;
-+    uint16_t reserved;
-+} QEMU_PACKED;
-+
- struct aarch64_note {
-     Elf64_Nhdr hdr;
-     char name[8]; /* align_up(sizeof("CORE"), 4) */
-     union {
-         struct aarch64_elf_prstatus prstatus;
-         struct aarch64_user_vfp_state vfp;
-+        struct aarch64_user_sve_header sve;
-     };
- } QEMU_PACKED;
- 
-@@ -76,6 +87,8 @@ struct aarch64_note {
-             (AARCH64_NOTE_HEADER_SIZE + sizeof(struct aarch64_elf_prstatus))
- #define AARCH64_PRFPREG_NOTE_SIZE \
-             (AARCH64_NOTE_HEADER_SIZE + sizeof(struct aarch64_user_vfp_state))
-+#define AARCH64_SVE_NOTE_SIZE(env) \
-+            (AARCH64_NOTE_HEADER_SIZE + sve_size(env))
- 
- static void aarch64_note_init(struct aarch64_note *note, DumpState *s,
-                               const char *name, Elf64_Word namesz,
-@@ -128,11 +141,113 @@ static int aarch64_write_elf64_prfpreg(WriteCoreDumpFunction f,
-     return 0;
- }
- 
-+#ifdef TARGET_AARCH64
-+static off_t sve_zreg_offset(uint32_t vq, int n)
-+{
-+    off_t off = sizeof(struct aarch64_user_sve_header);
-+    return ROUND_UP(off, 16) + vq * 16 * n;
-+}
-+static off_t sve_preg_offset(uint32_t vq, int n)
-+{
-+    return sve_zreg_offset(vq, 32) + vq * 16 / 8 * n;
-+}
-+static off_t sve_fpsr_offset(uint32_t vq)
-+{
-+    off_t off = sve_preg_offset(vq, 17) + offsetof(struct aarch64_note, sve);
-+    return ROUND_UP(off, 16) - offsetof(struct aarch64_note, sve);
-+}
-+static off_t sve_fpcr_offset(uint32_t vq)
-+{
-+    return sve_fpsr_offset(vq) + sizeof(uint32_t);
-+}
-+static uint32_t sve_current_vq(CPUARMState *env)
-+{
-+    return sve_zcr_len_for_el(env, arm_current_el(env)) + 1;
-+}
-+static size_t sve_size_vq(uint32_t vq)
-+{
-+    off_t off = sve_fpcr_offset(vq) + sizeof(uint32_t) +
-+                offsetof(struct aarch64_note, sve);
-+    return ROUND_UP(off, 16) - offsetof(struct aarch64_note, sve);
-+}
-+static size_t sve_size(CPUARMState *env)
-+{
-+    return sve_size_vq(sve_current_vq(env));
-+}
-+
-+static int aarch64_write_elf64_sve(WriteCoreDumpFunction f,
-+                                   CPUARMState *env, int cpuid,
-+                                   DumpState *s)
-+{
-+    struct aarch64_note *note;
-+    ARMCPU *cpu = env_archcpu(env);
-+    uint32_t vq = sve_current_vq(env);
-+    uint32_t fpr;
-+    uint8_t *buf;
-+    int ret, i;
-+
-+    note = g_malloc0(AARCH64_SVE_NOTE_SIZE(env));
-+    buf = (uint8_t *)&note->sve;
-+
-+    aarch64_note_init(note, s, "LINUX", 6, NT_ARM_SVE, sve_size_vq(vq));
-+
-+    note->sve.size = cpu_to_dump32(s, sve_size_vq(vq));
-+    note->sve.max_size = cpu_to_dump32(s, sve_size_vq(cpu->sve_max_vq));
-+    note->sve.vl = cpu_to_dump16(s, vq * 16);
-+    note->sve.max_vl = cpu_to_dump16(s, cpu->sve_max_vq * 16);
-+    note->sve.flags = cpu_to_dump16(s, 1);
-+
-+    for (i = 0; i < 32; ++i) {
-+#ifdef HOST_WORDS_BIGENDIAN
-+        uint64_t d[vq * 2];
-+        int j;
-+
-+        for (j = 0; j < vq * 2; ++j) {
-+            d[j] = bswap64(env->vfp.zregs[i].d[j]);
-+        }
-+#else
-+        uint64_t *d = &env->vfp.zregs[i].d[0];
-+#endif
-+        memcpy(&buf[sve_zreg_offset(vq, i)], &d[0], vq * 16);
-+    }
-+
-+    for (i = 0; i < 17; ++i) {
-+#ifdef HOST_WORDS_BIGENDIAN
-+        uint64_t d[DIV_ROUND_UP(vq * 2, 8)];
-+        int j;
-+
-+        for (j = 0; j < DIV_ROUND_UP(vq * 2, 8); ++j) {
-+            d[j] = bswap64(env->vfp.pregs[i].p[j]);
-+        }
-+#else
-+        uint64_t *d = &env->vfp.pregs[i].p[0];
-+#endif
-+        memcpy(&buf[sve_preg_offset(vq, i)], &d[0], vq * 16 / 8);
-+    }
-+
-+    fpr = cpu_to_dump32(s, vfp_get_fpsr(env));
-+    memcpy(&buf[sve_fpsr_offset(vq)], &fpr, sizeof(uint32_t));
-+
-+    fpr = cpu_to_dump32(s, vfp_get_fpcr(env));
-+    memcpy(&buf[sve_fpcr_offset(vq)], &fpr, sizeof(uint32_t));
-+
-+    ret = f(note, AARCH64_SVE_NOTE_SIZE(env), s);
-+    g_free(note);
-+
-+    if (ret < 0) {
-+        return -1;
-+    }
-+
-+    return 0;
-+}
-+#endif
-+
- int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-                              int cpuid, void *opaque)
- {
-     struct aarch64_note note;
--    CPUARMState *env = &ARM_CPU(cs)->env;
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUARMState *env = &cpu->env;
-     DumpState *s = opaque;
-     uint64_t pstate, sp;
-     int ret, i;
-@@ -163,7 +278,18 @@ int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
-         return -1;
-     }
- 
--    return aarch64_write_elf64_prfpreg(f, env, cpuid, s);
-+    ret = aarch64_write_elf64_prfpreg(f, env, cpuid, s);
-+    if (ret) {
-+        return ret;
-+    }
-+
-+#ifdef TARGET_AARCH64
-+    if (cpu_isar_feature(aa64_sve, cpu)) {
-+        ret = aarch64_write_elf64_sve(f, env, cpuid, s);
-+    }
-+#endif
-+
-+    return ret;
- }
- 
- /* struct pt_regs from arch/arm/include/asm/ptrace.h */
-@@ -335,6 +461,11 @@ ssize_t cpu_get_note_size(int class, int machine, int nr_cpus)
-     if (class == ELFCLASS64) {
-         note_size = AARCH64_PRSTATUS_NOTE_SIZE;
-         note_size += AARCH64_PRFPREG_NOTE_SIZE;
-+#ifdef TARGET_AARCH64
-+        if (cpu_isar_feature(aa64_sve, cpu)) {
-+            note_size += AARCH64_SVE_NOTE_SIZE(env);
-+        }
-+#endif
-     } else {
-         note_size = ARM_PRSTATUS_NOTE_SIZE;
-         if (arm_feature(env, ARM_FEATURE_VFP)) {
--- 
-2.20.1
+thanks
+-- PMM

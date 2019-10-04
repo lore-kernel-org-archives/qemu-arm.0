@@ -1,505 +1,268 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp338952wrm;
-        Fri, 4 Oct 2019 04:54:52 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyxq+CJk9MKAbnzoFnM6Sb3aKIu0YWOLHVUKBhpiHP5U0Myd/ulGxd1ZavVvI9vTeSa2sr5
-X-Received: by 2002:a05:620a:4d6:: with SMTP id 22mr9104723qks.15.1570190092780;
-        Fri, 04 Oct 2019 04:54:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570190092; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp347799wrm;
+        Fri, 4 Oct 2019 05:03:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqymmvao1BTozIEhsSTKK+XgwPtKBKcX/lX6aTRL4+17yBffoVdfxYoJDa4hw2qWUXZanfeK
+X-Received: by 2002:a92:17c4:: with SMTP id 65mr15393982ilx.28.1570190597299;
+        Fri, 04 Oct 2019 05:03:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570190597; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q4UlM2xq7edPEl3bISOK3eKBu+wONl+vMC8B58lkMHPd9T9fdjDLIxppxF2QYsngb9
-         9P5o1yxr5gYMVeycx0hSjtTmcAsJsYx4CE+hZgat0LcvwEjr3BpHo9UeA0Rxxj72h3O9
-         fV7hs3X3i1eeNSyLdKoRmLzk4eDoBOInQdIWs5KoMA1VFLeCt80klwmca5D2N4ZeWLpZ
-         EFpqxUClGG5p0dUgFkYx4W5iEEQD/utBhCYcvCRyvuUPdu2lqHrbeIporavXPtqYiz9I
-         7uRCdtfd6ezNtJDml9sWgtXY26xKNfbMEzVOletRUOJlk0ZwNsSFMCqvvwmO/YatBtgV
-         uCwg==
+        b=OtZ2vZySBSbDyYmfq435LmyZNWGRT4MTJi9oeDiPuKOKgdcGYcC39TIJmmPbA5qYx5
+         LyryWN3UNd8zuzIwxoTZyZgUCZGiAphI956MkTvOHV0AQsdwr79B6V4Ott0me+JZqcZj
+         HBupCmd2x1ypksLzAwnWqUNY4AOnh6GBcqbCxYMTXuqW2dxLgINjE5P0rbAK1S14Do1g
+         Jr7tA61mICwiOZwJPivn65opNZWksN/Xf/VRcMB/CDj5/xB13j26C1pXvDUDbgYlvW8G
+         k82DB6qeZBhncZI+KurUNcRtVXwl57RNV4XnxrZInMTreFGk3mNWtFVQQW2AeQU3Q3Iu
+         1Keg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=aZ62Msi6+VMnCAAUmgOLUV4qO75/pTiQ0YCB2BZ1mjM=;
-        b=iN2/tADnF3LxY+xoHFwZgHz8B+PiVeNKOqmc2lT/K2+H4VNaxAjh3Fl7/h8cSdVZWn
-         DXaY77DeW+a8BpQO0rS+sTyjMgYUF60zZQAwVf+pyUXVjZSkqz+DV9ZLw5dLfo3zDFcw
-         QmUEEMtWhhk7ImnNB39DNIHHssihgvZC/x7yf/yL93p5SJZkT29rPznkMB0poJ6rnXTD
-         FXuxj5D69oQCQvU2hEMniw/U8aEJiAnFAv6cfbnc7GPRrZlC2ENreo6Re4OlKCgFtyU1
-         oV9nGfGZ2nhp6vmLNdBYxcoT3LvXl1j7gtrISBf/Q1Aj78vbWnm9KbKnRgNRtxfVIXkP
-         6MJA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=j/6LuSsWoGGTHZZbPBF+nG5emhR4R7PHDcssi1br+fA=;
+        b=0PQP/C/NnyLJWh3j4BiAHIg2uK1/bnE3EyGvdCRTIpbgV1iezU1a+Dd6+CPs60PDJv
+         pZgd3Vd94wAuVn86jRDwmfp3V0FzWvLy20Igi7xhr+o7hQkWEI3cXUaX9bFYlm/yDtiU
+         gDkw+ydma0AdZhMOCsz5ZjE/jmQLlp4yDhqpZi1yBk6O/aspvlzmQ8GMW+z42jKSb66F
+         IZBAkupmAwTJRhqX1zYoY5au2EjzmmoOGBVUhKob2vp0lCKSD0E2+Ke9qWflhif0lnmG
+         3dzCH6dLxj6VxKM3kluCtPaUMm1kGhsyS1Z6w8BbJdwsNIjHKZbu5gsMA0R382mzHEM1
+         ntNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=SjkGs1W6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p90si5736246qtd.327.2019.10.04.04.54.52
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Oct 2019 04:54:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id d124si6657056iof.78.2019.10.04.05.03.16
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 04 Oct 2019 05:03:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=SjkGs1W6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47214 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iGMAd-0001LR-J0
-	for alex.bennee@linaro.org; Fri, 04 Oct 2019 07:54:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55295)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iGM4x-0003aY-J3
- for qemu-arm@nongnu.org; Fri, 04 Oct 2019 07:49:01 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iGM4v-00017I-CT
- for qemu-arm@nongnu.org; Fri, 04 Oct 2019 07:48:59 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:53712)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iGM4v-00016o-5y
- for qemu-arm@nongnu.org; Fri, 04 Oct 2019 07:48:57 -0400
-Received: by mail-wm1-x336.google.com with SMTP id i16so5505163wmd.3
- for <qemu-arm@nongnu.org>; Fri, 04 Oct 2019 04:48:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=aZ62Msi6+VMnCAAUmgOLUV4qO75/pTiQ0YCB2BZ1mjM=;
- b=SjkGs1W65IL/u/a4xu8YoHSuiFwdRvy9o2hk4tLqPV1ShQ/kNx6S+Mww4foH6r6xED
- LuwWpzB7V5vVvTtsJpGvL5tYEHEKqZ6CPCTccfVzvPb/ZnSRtwQzpwr0cDOdhMcpno++
- 2jg2uzeY5dkQ1eeH58gwIS0NW0tN6N0qwejbbDu0oVIIOIKRdTJ9WXnBXW9kHA0/Ykda
- 4zhmPjlUp5b7RhLFVCJelKn+sTePQHJBpeeD3IVXX2nlckpwzB3ecbXS/KHr6vGLMrG/
- zR2Xeq7FCQPRhQ1f+grxxj8MHKH1IDwAKc+uV++5pyoGfpcNW6Ps6WypH4+UsDVeunFO
- PETg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=aZ62Msi6+VMnCAAUmgOLUV4qO75/pTiQ0YCB2BZ1mjM=;
- b=fdZjwjUT+segY+wtWMVlDAUIYYdJIFKhm3Uiwx2GOod+wQWQuihdubag/p9/35kZOS
- n9tV288Ct9ymSDL364m52eN1Gqs0MinpWsVaXxmdXp6OHIZnoy5LArqzeC0BHJWqEzCq
- gzGSxQEiZYUfWu5EEODEejR2mkrgc9x5ZZswzD4bdFUVuudU+z4ZFvARWkosITvtJjAG
- hvO3E+eRba/JXjp+UqbJoR9BeKjw9DVEtim2EahL3aOkIKBEHCuu5jlH69GMf9Y9k7zV
- lAcP3VG2h6gc8SPzUMhPHQ0vjSk7lsGczeIfb9hxdPQGZsehA+O+zEsnf2KgeWHHi2jO
- rBiA==
-X-Gm-Message-State: APjAAAVtkYtOTIiVlx1bg974pHLo00CeGkWaJ2ANeAPOI5nLRccQn6Dg
- MB+zSfatO+jJ2VU8zol4HPeQ4FEMprdtWg==
-X-Received: by 2002:a1c:980e:: with SMTP id a14mr10063954wme.99.1570189735425; 
- Fri, 04 Oct 2019 04:48:55 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id t17sm11962094wrp.72.2019.10.04.04.48.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Oct 2019 04:48:54 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [RFC 3/4] ptimer: Provide new transaction-based API
-Date: Fri,  4 Oct 2019 12:48:47 +0100
-Message-Id: <20191004114848.16831-4-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191004114848.16831-1-peter.maydell@linaro.org>
-References: <20191004114848.16831-1-peter.maydell@linaro.org>
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 56CFC2102;
+	Fri,  4 Oct 2019 12:03:16 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id AF34160BE1;
+	Fri,  4 Oct 2019 12:03:14 +0000 (UTC)
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	Dave.Martin@arm.com,
+	eric.auger@redhat.com
+Subject: [PATCH v2] target/arm/arch_dump: Add SVE notes
+Date: Fri,  4 Oct 2019 14:03:13 +0200
+Message-Id: <20191004120313.5347-1-drjones@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::336
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qLOHBYf/sX6t
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2 (mx1.redhat.com [10.5.110.71]); Fri, 04 Oct 2019 12:03:16 +0000 (UTC)
+X-TUID: kXduIIb9JtD8
 
-Provide the new transaction-based API. If a ptimer is created
-using ptimer_init() rather than ptimer_init_with_bh(), then
-instead of providing a QEMUBH, it provides a pointer to the
-callback function directly, and has opted into the transaction
-API. All calls to functions which modify ptimer state:
- - ptimer_set_period()
- - ptimer_set_freq()
- - ptimer_set_limit()
- - ptimer_set_count()
- - ptimer_run()
- - ptimer_stop()
-must be between matched calls to ptimer_transaction_begin()
-and ptimer_transaction_commit(). When ptimer_transaction_commit()
-is called it will evaluate the state of the timer after all the
-changes in the transaction, and call the callback if necessary.
+When dumping a guest with dump-guest-memory also dump the SVE
+registers if they are in use.
 
-In the old API the individual update functions generally would
-call ptimer_trigger() immediately, which would schedule the QEMUBH.
-In the new API the update functions will instead defer the
-"set s->next_event and call ptimer_reload()" work to
-ptimer_transaction_commit().
-
-We use assertions to check that:
- * the functions modifying ptimer state are not called outside
-   a transaction block
- * ptimer_transaction_begin() and _commit() calls are paired
- * the transaction API is not used with a QEMUBH ptimer
-
-There is some slight repetition of code:
- * most of the set functions have similar looking "if s->bh
-   call ptimer_reload, otherwise set s->need_reload" code
- * ptimer_init() and ptimer_init_with_bh() have similar code
-We deliberately don't try to avoid this repetition, because
-it will all be deleted when the QEMUBH version of the API
-is removed.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- include/hw/ptimer.h |  66 +++++++++++++++++++++++++
- hw/core/ptimer.c    | 114 +++++++++++++++++++++++++++++++++++++++-----
- 2 files changed, 169 insertions(+), 11 deletions(-)
+ include/elf.h          |   2 +
+ target/arm/arch_dump.c | 135 ++++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 135 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
-index 2fb9ba1915e..b9cd301ab02 100644
---- a/include/hw/ptimer.h
-+++ b/include/hw/ptimer.h
-@@ -91,6 +91,32 @@ typedef void (*ptimer_cb)(void *opaque);
-  */
- ptimer_state *ptimer_init_with_bh(QEMUBH *bh, uint8_t policy_mask);
+diff --git a/include/elf.h b/include/elf.h
+index 3501e0c8d03a..a7c357af74ca 100644
+--- a/include/elf.h
++++ b/include/elf.h
+@@ -1650,6 +1650,8 @@ typedef struct elf64_shdr {
+ #define NT_ARM_HW_BREAK 0x402           /* ARM hardware breakpoint registers */
+ #define NT_ARM_HW_WATCH 0x403           /* ARM hardware watchpoint registers */
+ #define NT_ARM_SYSTEM_CALL      0x404   /* ARM system call number */
++#define NT_ARM_SVE	0x405		/* ARM Scalable Vector Extension
++					   registers */
  
-+/**
-+ * ptimer_init - Allocate and return a new ptimer
-+ * @callback: function to call on ptimer expiry
-+ * @callback_data: opaque pointer passed to @callback
-+ * @policy: PTIMER_POLICY_* bits specifying behaviour
-+ *
-+ * The ptimer returned must be freed using ptimer_free().
-+ *
-+ * If a ptimer is created using this API then will use the
-+ * transaction-based API for modifying ptimer state: all calls
-+ * to functions which modify ptimer state:
-+ *  - ptimer_set_period()
-+ *  - ptimer_set_freq()
-+ *  - ptimer_set_limit()
-+ *  - ptimer_set_count()
-+ *  - ptimer_run()
-+ *  - ptimer_stop()
-+ * must be between matched calls to ptimer_transaction_begin()
-+ * and ptimer_transaction_commit(). When ptimer_transaction_commit()
-+ * is called it will evaluate the state of the timer after all the
-+ * changes in the transaction, and call the callback if necessary.
-+ */
-+ptimer_state *ptimer_init(ptimer_cb callback,
-+                          void *callback_opaque,
-+                          uint8_t policy_mask);
+ /*
+  * Physical entry point into the kernel.
+diff --git a/target/arm/arch_dump.c b/target/arm/arch_dump.c
+index 26a2c098687c..b02e398430b9 100644
+--- a/target/arm/arch_dump.c
++++ b/target/arm/arch_dump.c
+@@ -62,12 +62,23 @@ struct aarch64_user_vfp_state {
+ 
+ QEMU_BUILD_BUG_ON(sizeof(struct aarch64_user_vfp_state) != 528);
+ 
++/* struct user_sve_header from arch/arm64/include/uapi/asm/ptrace.h */
++struct aarch64_user_sve_header {
++    uint32_t size;
++    uint32_t max_size;
++    uint16_t vl;
++    uint16_t max_vl;
++    uint16_t flags;
++    uint16_t reserved;
++} QEMU_PACKED;
 +
- /**
-  * ptimer_free - Free a ptimer
-  * @s: timer to free
-@@ -100,6 +126,28 @@ ptimer_state *ptimer_init_with_bh(QEMUBH *bh, uint8_t policy_mask);
-  */
- void ptimer_free(ptimer_state *s);
+ struct aarch64_note {
+     Elf64_Nhdr hdr;
+     char name[8]; /* align_up(sizeof("CORE"), 4) */
+     union {
+         struct aarch64_elf_prstatus prstatus;
+         struct aarch64_user_vfp_state vfp;
++        struct aarch64_user_sve_header sve;
+     };
+ } QEMU_PACKED;
  
-+/**
-+ * ptimer_transaction_begin() - Start a ptimer modification transaction
-+ *
-+ * This function must be called before making any calls to functions
-+ * which modify the ptimer's state (see the ptimer_init() documentation
-+ * for a list of these), and must always have a matched call to
-+ * ptimer_transaction_commit().
-+ * It is an error to call this function for a BH-based ptimer;
-+ * attempting to do this will trigger an assert.
-+ */
-+void ptimer_transaction_begin(ptimer_state *s);
-+
-+/**
-+ * ptimer_transaction_commit() - Commit a ptimer modification transaction
-+ *
-+ * This function must be called after calls to functions which modify
-+ * the ptimer's state, and completes the update of the ptimer. If the
-+ * ptimer state now means that we should trigger the timer expiry
-+ * callback, it will be called directly.
-+ */
-+void ptimer_transaction_commit(ptimer_state *s);
-+
- /**
-  * ptimer_set_period - Set counter increment interval in nanoseconds
-  * @s: ptimer to configure
-@@ -108,6 +156,9 @@ void ptimer_free(ptimer_state *s);
-  * Note that if your counter behaviour is specified as having a
-  * particular frequency rather than a period then ptimer_set_freq()
-  * may be more appropriate.
-+ *
-+ * This function will assert if it is called outside a
-+ * ptimer_transaction_begin/commit block, unless this is a bottom-half ptimer.
-  */
- void ptimer_set_period(ptimer_state *s, int64_t period);
+@@ -76,6 +87,8 @@ struct aarch64_note {
+             (AARCH64_NOTE_HEADER_SIZE + sizeof(struct aarch64_elf_prstatus))
+ #define AARCH64_PRFPREG_NOTE_SIZE \
+             (AARCH64_NOTE_HEADER_SIZE + sizeof(struct aarch64_user_vfp_state))
++#define AARCH64_SVE_NOTE_SIZE(env) \
++            (AARCH64_NOTE_HEADER_SIZE + sve_size(env))
  
-@@ -121,6 +172,9 @@ void ptimer_set_period(ptimer_state *s, int64_t period);
-  * as setting the frequency then this function is more appropriate,
-  * because it allows specifying an effective period which is
-  * precise to fractions of a nanosecond, avoiding rounding errors.
-+ *
-+ * This function will assert if it is called outside a
-+ * ptimer_transaction_begin/commit block, unless this is a bottom-half ptimer.
-  */
- void ptimer_set_freq(ptimer_state *s, uint32_t freq);
- 
-@@ -148,6 +202,9 @@ uint64_t ptimer_get_limit(ptimer_state *s);
-  * Set the limit value of the down-counter. The @reload flag can
-  * be used to emulate the behaviour of timers which immediately
-  * reload the counter when their reload register is written to.
-+ *
-+ * This function will assert if it is called outside a
-+ * ptimer_transaction_begin/commit block, unless this is a bottom-half ptimer.
-  */
- void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload);
- 
-@@ -169,6 +226,9 @@ uint64_t ptimer_get_count(ptimer_state *s);
-  * Set the value of the down-counter. If the counter is currently
-  * enabled this will arrange for a timer callback at the appropriate
-  * point in the future.
-+ *
-+ * This function will assert if it is called outside a
-+ * ptimer_transaction_begin/commit block, unless this is a bottom-half ptimer.
-  */
- void ptimer_set_count(ptimer_state *s, uint64_t count);
- 
-@@ -183,6 +243,9 @@ void ptimer_set_count(ptimer_state *s, uint64_t count);
-  * the counter value will then be reloaded from the limit and it will
-  * start counting down again. If @oneshot is non-zero, then the counter
-  * will disable itself when it reaches zero.
-+ *
-+ * This function will assert if it is called outside a
-+ * ptimer_transaction_begin/commit block, unless this is a bottom-half ptimer.
-  */
- void ptimer_run(ptimer_state *s, int oneshot);
- 
-@@ -195,6 +258,9 @@ void ptimer_run(ptimer_state *s, int oneshot);
-  *
-  * Note that this can cause it to "lose" time, even if it is immediately
-  * restarted.
-+ *
-+ * This function will assert if it is called outside a
-+ * ptimer_transaction_begin/commit block, unless this is a bottom-half ptimer.
-  */
- void ptimer_stop(ptimer_state *s);
- 
-diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
-index f0d3ce11398..89228132650 100644
---- a/hw/core/ptimer.c
-+++ b/hw/core/ptimer.c
-@@ -31,6 +31,16 @@ struct ptimer_state
-     uint8_t policy_mask;
-     QEMUBH *bh;
-     QEMUTimer *timer;
-+    ptimer_cb callback;
-+    void *callback_opaque;
-+    /*
-+     * These track whether we're in a transaction block, and if we
-+     * need to do a timer reload when the block finishes. They don't
-+     * need to be migrated because migration can never happen in the
-+     * middle of a transaction block.
-+     */
-+    bool in_transaction;
-+    bool need_reload;
- };
- 
- /* Use a bottom-half routine to avoid reentrancy issues.  */
-@@ -39,6 +49,9 @@ static void ptimer_trigger(ptimer_state *s)
-     if (s->bh) {
-         replay_bh_schedule_event(s->bh);
-     }
-+    if (s->callback) {
-+        s->callback(s->callback_opaque);
-+    }
+ static void aarch64_note_init(struct aarch64_note *note, DumpState *s,
+                               const char *name, Elf64_Word namesz,
+@@ -128,11 +141,113 @@ static int aarch64_write_elf64_prfpreg(WriteCoreDumpFunction f,
+     return 0;
  }
  
- static void ptimer_reload(ptimer_state *s, int delta_adjust)
-@@ -263,10 +276,15 @@ uint64_t ptimer_get_count(ptimer_state *s)
- 
- void ptimer_set_count(ptimer_state *s, uint64_t count)
- {
-+    assert(s->in_transaction || !s->callback);
-     s->delta = count;
-     if (s->enabled) {
--        s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--        ptimer_reload(s, 0);
-+        if (!s->callback) {
-+            s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+            ptimer_reload(s, 0);
-+        } else {
-+            s->need_reload = true;
-+        }
-     }
- }
- 
-@@ -274,6 +292,8 @@ void ptimer_run(ptimer_state *s, int oneshot)
- {
-     bool was_disabled = !s->enabled;
- 
-+    assert(s->in_transaction || !s->callback);
-+
-     if (was_disabled && s->period == 0) {
-         if (!qtest_enabled()) {
-             fprintf(stderr, "Timer with period zero, disabling\n");
-@@ -282,8 +302,12 @@ void ptimer_run(ptimer_state *s, int oneshot)
-     }
-     s->enabled = oneshot ? 2 : 1;
-     if (was_disabled) {
--        s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--        ptimer_reload(s, 0);
-+        if (!s->callback) {
-+            s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+            ptimer_reload(s, 0);
-+        } else {
-+            s->need_reload = true;
-+        }
-     }
- }
- 
-@@ -291,35 +315,50 @@ void ptimer_run(ptimer_state *s, int oneshot)
-    is immediately restarted.  */
- void ptimer_stop(ptimer_state *s)
- {
-+    assert(s->in_transaction || !s->callback);
-+
-     if (!s->enabled)
-         return;
- 
-     s->delta = ptimer_get_count(s);
-     timer_del(s->timer);
-     s->enabled = 0;
-+    if (s->callback) {
-+        s->need_reload = false;
-+    }
- }
- 
- /* Set counter increment interval in nanoseconds.  */
- void ptimer_set_period(ptimer_state *s, int64_t period)
- {
-+    assert(s->in_transaction || !s->callback);
-     s->delta = ptimer_get_count(s);
-     s->period = period;
-     s->period_frac = 0;
-     if (s->enabled) {
--        s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--        ptimer_reload(s, 0);
-+        if (!s->callback) {
-+            s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+            ptimer_reload(s, 0);
-+        } else {
-+            s->need_reload = true;
-+        }
-     }
- }
- 
- /* Set counter frequency in Hz.  */
- void ptimer_set_freq(ptimer_state *s, uint32_t freq)
- {
-+    assert(s->in_transaction || !s->callback);
-     s->delta = ptimer_get_count(s);
-     s->period = 1000000000ll / freq;
-     s->period_frac = (1000000000ll << 32) / freq;
-     if (s->enabled) {
--        s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--        ptimer_reload(s, 0);
-+        if (!s->callback) {
-+            s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+            ptimer_reload(s, 0);
-+        } else {
-+            s->need_reload = true;
-+        }
-     }
- }
- 
-@@ -327,12 +366,17 @@ void ptimer_set_freq(ptimer_state *s, uint32_t freq)
-    count = limit.  */
- void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload)
- {
-+    assert(s->in_transaction || !s->callback);
-     s->limit = limit;
-     if (reload)
-         s->delta = limit;
-     if (s->enabled && reload) {
--        s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--        ptimer_reload(s, 0);
-+        if (!s->callback) {
-+            s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+            ptimer_reload(s, 0);
-+        } else {
-+            s->need_reload = true;
-+        }
-     }
- }
- 
-@@ -341,6 +385,22 @@ uint64_t ptimer_get_limit(ptimer_state *s)
-     return s->limit;
- }
- 
-+void ptimer_transaction_begin(ptimer_state *s)
++#ifdef TARGET_AARCH64
++static off_t sve_zreg_offset(uint32_t vq, int n)
 +{
-+    assert(!s->in_transaction && s->callback);
-+    s->in_transaction = true;
++    off_t off = sizeof(struct aarch64_user_sve_header);
++    return ROUND_UP(off, 16) + vq * 16 * n;
++}
++static off_t sve_preg_offset(uint32_t vq, int n)
++{
++    return sve_zreg_offset(vq, 32) + vq * 16 / 8 * n;
++}
++static off_t sve_fpsr_offset(uint32_t vq)
++{
++    off_t off = sve_preg_offset(vq, 17) + offsetof(struct aarch64_note, sve);
++    return ROUND_UP(off, 16) - offsetof(struct aarch64_note, sve);
++}
++static off_t sve_fpcr_offset(uint32_t vq)
++{
++    return sve_fpsr_offset(vq) + sizeof(uint32_t);
++}
++static uint32_t sve_current_vq(CPUARMState *env)
++{
++    return sve_zcr_len_for_el(env, arm_current_el(env)) + 1;
++}
++static size_t sve_size_vq(uint32_t vq)
++{
++    off_t off = sve_fpcr_offset(vq) + sizeof(uint32_t) +
++                offsetof(struct aarch64_note, sve);
++    return ROUND_UP(off, 16) - offsetof(struct aarch64_note, sve);
++}
++static size_t sve_size(CPUARMState *env)
++{
++    return sve_size_vq(sve_current_vq(env));
 +}
 +
-+void ptimer_transaction_commit(ptimer_state *s)
++static int aarch64_write_elf64_sve(WriteCoreDumpFunction f,
++                                   CPUARMState *env, int cpuid,
++                                   DumpState *s)
 +{
-+    assert(s->in_transaction);
-+    s->in_transaction = false;
-+    if (s->need_reload) {
-+        s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+        ptimer_reload(s, 0);
-+    }
-+}
++    struct aarch64_note *note;
++    ARMCPU *cpu = env_archcpu(env);
++    uint32_t vq = sve_current_vq(env);
++    uint32_t fpr;
++    uint8_t *buf;
++    int ret, i;
 +
- const VMStateDescription vmstate_ptimer = {
-     .name = "ptimer",
-     .version_id = 1,
-@@ -377,9 +437,41 @@ ptimer_state *ptimer_init_with_bh(QEMUBH *bh, uint8_t policy_mask)
-     return s;
++    note = g_malloc0(AARCH64_SVE_NOTE_SIZE(env));
++    buf = (uint8_t *)&note->sve;
++
++    aarch64_note_init(note, s, "LINUX", 6, NT_ARM_SVE, sve_size_vq(vq));
++
++    note->sve.size = cpu_to_dump32(s, sve_size_vq(vq));
++    note->sve.max_size = cpu_to_dump32(s, sve_size_vq(cpu->sve_max_vq));
++    note->sve.vl = cpu_to_dump16(s, vq * 16);
++    note->sve.max_vl = cpu_to_dump16(s, cpu->sve_max_vq * 16);
++    note->sve.flags = cpu_to_dump16(s, 1);
++
++    for (i = 0; i < 32; ++i) {
++#ifdef HOST_WORDS_BIGENDIAN
++        uint64_t d[vq * 2];
++        int j;
++
++        for (j = 0; j < vq * 2; ++j) {
++            d[j] = bswap64(env->vfp.zregs[i].d[j]);
++        }
++#else
++        uint64_t *d = &env->vfp.zregs[i].d[0];
++#endif
++        memcpy(&buf[sve_zreg_offset(vq, i)], &d[0], vq * 16);
++    }
++
++    for (i = 0; i < 17; ++i) {
++#ifdef HOST_WORDS_BIGENDIAN
++        uint64_t d[DIV_ROUND_UP(vq * 2, 8)];
++        int j;
++
++        for (j = 0; j < DIV_ROUND_UP(vq * 2, 8); ++j) {
++            d[j] = bswap64(env->vfp.pregs[i].p[j]);
++        }
++#else
++        uint64_t *d = &env->vfp.pregs[i].p[0];
++#endif
++        memcpy(&buf[sve_preg_offset(vq, i)], &d[0], vq * 16 / 8);
++    }
++
++    fpr = cpu_to_dump32(s, vfp_get_fpsr(env));
++    memcpy(&buf[sve_fpsr_offset(vq)], &fpr, sizeof(uint32_t));
++
++    fpr = cpu_to_dump32(s, vfp_get_fpcr(env));
++    memcpy(&buf[sve_fpcr_offset(vq)], &fpr, sizeof(uint32_t));
++
++    ret = f(note, AARCH64_SVE_NOTE_SIZE(env), s);
++    g_free(note);
++
++    if (ret < 0) {
++        return -1;
++    }
++
++    return 0;
++}
++#endif
++
+ int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
+                              int cpuid, void *opaque)
+ {
+     struct aarch64_note note;
+-    CPUARMState *env = &ARM_CPU(cs)->env;
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
+     DumpState *s = opaque;
+     uint64_t pstate, sp;
+     int ret, i;
+@@ -163,7 +278,18 @@ int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
+         return -1;
+     }
+ 
+-    return aarch64_write_elf64_prfpreg(f, env, cpuid, s);
++    ret = aarch64_write_elf64_prfpreg(f, env, cpuid, s);
++    if (ret) {
++        return ret;
++    }
++
++#ifdef TARGET_AARCH64
++    if (cpu_isar_feature(aa64_sve, cpu)) {
++        ret = aarch64_write_elf64_sve(f, env, cpuid, s);
++    }
++#endif
++
++    return ret;
  }
  
-+ptimer_state *ptimer_init(ptimer_cb callback, void *callback_opaque,
-+                          uint8_t policy_mask)
-+{
-+    ptimer_state *s;
-+
-+    /*
-+     * The callback function is mandatory; so we use it to distinguish
-+     * old-style QEMUBH ptimers from new transaction API ptimers.
-+     * (ptimer_init_with_bh() allows a NULL bh pointer and at least
-+     * one device (digic-timer) passes NULL, so it's not the case
-+     * that either s->bh != NULL or s->callback != NULL.)
-+     */
-+    assert(callback);
-+
-+    s = g_new0(ptimer_state, 1);
-+    s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, ptimer_tick, s);
-+    s->policy_mask = policy_mask;
-+    s->callback = callback;
-+    s->callback_opaque = callback_opaque;
-+
-+    /*
-+     * These two policies are incompatible -- trigger-on-decrement implies
-+     * a timer trigger when the count becomes 0, but no-immediate-trigger
-+     * implies a trigger when the count stops being 0.
-+     */
-+    assert(!((policy_mask & PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT) &&
-+             (policy_mask & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER)));
-+    return s;
-+}
-+
- void ptimer_free(ptimer_state *s)
- {
--    qemu_bh_delete(s->bh);
-+    if (s->bh) {
-+        qemu_bh_delete(s->bh);
-+    }
-     timer_free(s->timer);
-     g_free(s);
- }
+ /* struct pt_regs from arch/arm/include/asm/ptrace.h */
+@@ -335,6 +461,11 @@ ssize_t cpu_get_note_size(int class, int machine, int nr_cpus)
+     if (class == ELFCLASS64) {
+         note_size = AARCH64_PRSTATUS_NOTE_SIZE;
+         note_size += AARCH64_PRFPREG_NOTE_SIZE;
++#ifdef TARGET_AARCH64
++        if (cpu_isar_feature(aa64_sve, cpu)) {
++            note_size += AARCH64_SVE_NOTE_SIZE(env);
++        }
++#endif
+     } else {
+         note_size = ARM_PRSTATUS_NOTE_SIZE;
+         if (arm_feature(env, ARM_FEATURE_VFP)) {
 -- 
 2.20.1
-

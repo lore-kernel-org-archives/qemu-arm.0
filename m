@@ -1,102 +1,105 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp334959wrm;
-        Fri, 4 Oct 2019 04:50:22 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwqIZBXIg56zPuhCxgGkljYZV4MNQc3lln3fPFe1SmyIKpQKw8+4SV8wrLy+FJ2XQ9li5wN
-X-Received: by 2002:a37:aa58:: with SMTP id t85mr9406841qke.381.1570189822550;
-        Fri, 04 Oct 2019 04:50:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570189822; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp336101wrm;
+        Fri, 4 Oct 2019 04:51:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwlSF31q+ezlYKWetHKDsPEXimRZYgqfiwtcoRQaE77p4mgNtF0Sf6HbHAHYDeDESZk1pFB
+X-Received: by 2002:a05:6214:452:: with SMTP id cc18mr13113662qvb.41.1570189905552;
+        Fri, 04 Oct 2019 04:51:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570189905; cv=none;
         d=google.com; s=arc-20160816;
-        b=xHpnLg1EgAjaWQKIGlTB6IxzB6E7bOr/Lg8WiNzCQDxYTBDaX2NQaQSwltqE9mwNQq
-         gOEnOgkaOjSleUB6Jnr8M6Ltns6IhdH4wJb/kWi0xwEBcc+28JtsmSDFLtnRqz3oxS0m
-         GeUTN2ZbimaQBD0YwOSH1vHm9qt50jUiTfG9rPbRcRCygHEGAv4QWmgRxTmRtkZSP//6
-         HslHCGm3v791gDyWYp6jVq6o42S3uuDcQ9RD2mO4WsKPgOrCVkqfMqS67fw/nxFc5Tvz
-         ZBSKhw75fZfebZ9x6PxbV0Tc6qy3uxRJmwmjhDtHTMa25+X7T2HlU8ZdlQFanwYN2glV
-         zSkg==
+        b=c6c/rNgu4DnRJ0aPn3UUHrCyrBMsN46frhc+4mFPTN7eMyVYqJENhqVTlPTZhBsMGk
+         NfSiyfTaWhOK/Zlm/d+xU6Po77f0ru3aY9sTOMWd+ZbpkHP5kyqPdEjepQNImnhVcqJe
+         qatKcmVOh/JdEr3U+4W3WRqGfaaWW4GhICglp6Bl1U8UbR3RTTtdMntZjVNBV7Q3nEEF
+         rW4/coLCKolpq1i/1s4Y/esavUyuchUxY8tg73wXOfRGVi0ulq7hGGT6ES5G6VYubqst
+         xw2mT/1ggEeynSTdqQgClqikZruGunK/GmG56srYSDVtL0YTfdz5GJA/oIRuiPK2k/77
+         tn/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=KKScjR57hVzYNGoNM4hmpoJkxC9aOZTTXFxkpS3XYJU=;
-        b=MyObSUW/5vWVVVPQ9sMR72CczmitI4S1Ch3ApyfnEnsWx2pixDpNF9h1GNnjO6omnG
-         X44LUihumahj72DwAnN+fncJCSTWPIpy0/3pGeYGV88IyMB1CeQxc4u1gEsR+aZ2wL1w
-         dYTPwrGd7XgQJQlSY9ZrdBDUZhgKBDnBj4CMjwTdfiDuyA40rqvR2OybxaMwOL3vh/fC
-         v8qw066og4K+RM0c/9V88T9n3PJ1OLHs3f4OiIeLxnMn/qv3WgqL2AkXSaBb7WMhG9Hh
-         JFRhroLWUkFKD+4D/jw/dl7nOhB/ApLw53U/jMKPdmUiI0WtJ8dIGjXH5mBAwqjiszeC
-         hsTw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=tWO1/w2pbq76WDihTU7NTfFwpS052NS/zIcxZUmg9Z8=;
+        b=0L8n6ykwKC0+SeEHSq8NazCdTcCmKL5cUH2LJPRuhQnMQufryj9U8spAPOKaKltW8H
+         qwC+yVduF06k93bIJPOxbatz1qqW7d0Fb/l2UIu/iG0a6D3vrqHuLxxju6tgkF8qmIdq
+         lzmZOCxz4HQePro5GGek6M5golqQNm81jYAA+IIJaV7lQknbRqvBBbdDqYGLJHu7qkpI
+         hrJGfcusXq2ne62onbP3rJd0vfmedyYNt8cIzRlLJm6AoeV/CPHhtePCsZ/UCsKqO2VS
+         +8EOFS+aDTzYVqd2vbq3E12w8gtU3zGAuwzV+ecWZTRyuUnsRRnBEmPoVyuNFU8IawD4
+         mz7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="PLe/dyjb";
+       dkim=fail header.i=@linaro.org header.s=google header.b=VaahP1bJ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r48si5657605qtc.202.2019.10.04.04.50.22
+        by mx.google.com with ESMTPS id q24si5495924qvh.102.2019.10.04.04.51.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Oct 2019 04:50:22 -0700 (PDT)
+        Fri, 04 Oct 2019 04:51:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="PLe/dyjb";
+       dkim=fail header.i=@linaro.org header.s=google header.b=VaahP1bJ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47084 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47146 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iGM6H-0003Yj-8n
-	for alex.bennee@linaro.org; Fri, 04 Oct 2019 07:50:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55227)
+	id 1iGM7c-00055P-Gr
+	for alex.bennee@linaro.org; Fri, 04 Oct 2019 07:51:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55228)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iGM4s-0003U8-SK
+ (envelope-from <peter.maydell@linaro.org>) id 1iGM4s-0003UG-Rh
  for qemu-devel@nongnu.org; Fri, 04 Oct 2019 07:48:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iGM4r-00013C-2Z
+ (envelope-from <peter.maydell@linaro.org>) id 1iGM4r-00013h-MY
  for qemu-devel@nongnu.org; Fri, 04 Oct 2019 07:48:54 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:45825)
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:44583)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iGM4q-00012N-Rj
+ id 1iGM4r-00012u-GJ
  for qemu-devel@nongnu.org; Fri, 04 Oct 2019 07:48:53 -0400
-Received: by mail-wr1-x441.google.com with SMTP id r5so6753639wrm.12
- for <qemu-devel@nongnu.org>; Fri, 04 Oct 2019 04:48:52 -0700 (PDT)
+Received: by mail-wr1-x444.google.com with SMTP id z9so6763897wrl.11
+ for <qemu-devel@nongnu.org>; Fri, 04 Oct 2019 04:48:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=KKScjR57hVzYNGoNM4hmpoJkxC9aOZTTXFxkpS3XYJU=;
- b=PLe/dyjbnLO0yCxR5hbSOoMAb7CyHzT37GXzRhEWA23w3LqPmLjJX2e17O8PAg+tJB
- HfFQKoQJdLQPFyiKTXTW8nyB8pBJVpa+r/Qfyl7aEjvZvjYJIGLeQkge0J/7Fe2MKnDM
- ukyo2fLWoAuBmrSu56ErEz1KOP/KSOW3fQog+Jp6kfRKr/NkBBJzavXuvfuvEfGVw+Rm
- KHtTjko2x3MmYyUu/asDZWJ6UdrdLJGN0RisW2EaiDbyrmEntwEBRhve+s2g5Rt+xUUY
- 20Q/XH/vGgZ6NJCMWL6FETLArdak0z3TEyVWDDkMRu+F+DWsYPu/94Q0+qP/1xOw6kKb
- f1Gg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=tWO1/w2pbq76WDihTU7NTfFwpS052NS/zIcxZUmg9Z8=;
+ b=VaahP1bJi2xcdpZhg4k/R8BFCQFmrQYArrykQIiM8pk+iSZTAzNfkqW01rTKJ/HBwD
+ JYTCSgpQGxFSNQdKpxx/nOjFyc3hipOiPj1vJxVBvR2hiQjisBao7pHUmBVnp7iieEeU
+ zpLc3/HTMMz+k75G98FtI2+Xnv6NnSSC8TriTnLcZh0r2fd4qZm23Se5aEmeJVpzbTa0
+ js5WjDUkScoDwgR9xGBNmCJjWnq2Sd19Q+vYmeFKcTCzER01OVapPnAEnAEbKRhcHwQt
+ X5+foWggR9vpSoK+hPcWkk81cMVzaHbR+/tN9PgZVWn6nSEPOJ1OD7TH4Z4qPajsqL26
+ n7Ew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=KKScjR57hVzYNGoNM4hmpoJkxC9aOZTTXFxkpS3XYJU=;
- b=S3p4ha3qCz8ix1b1A2Hd0jtsuiZmZkadT28/pqZuLhTOQGoxkGY3+P2Ox0nPN7OMOZ
- gGRyLnNnXjwNTJacKwnLUSUM/pL1F8tO55Cga8mDOUhPp2UMEbXVmBEhikmaxweI20Gz
- 3EiAIuFmCM0rTWQH68Q9G2fyj+cAuHCFmpQI+XP29qb2wHpd5mB5hL4ERN5KiDiFbd/Q
- jcqv4kdRxIwhBx541Lep51zmlZKcJ3uCYAdiKAHlOtxN4hio0l5RF0lHCvSd2kp0DF/T
- r9lEFGPen296PD4uCVD5GCQ6ibaSltcWATwAVTtb/FvBKq4VDsF1iLZOqk9rtdDlRRbV
- ascw==
-X-Gm-Message-State: APjAAAXz8nLOC8t1u0+lmLcqHjTSsxPMXJ33cYEBaWEiXk2xy7ZVz0uM
- jzzV24JpPFv1E54Ug7bSMVks3Q==
-X-Received: by 2002:adf:ec44:: with SMTP id w4mr10820503wrn.251.1570189731325; 
- Fri, 04 Oct 2019 04:48:51 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=tWO1/w2pbq76WDihTU7NTfFwpS052NS/zIcxZUmg9Z8=;
+ b=TzqO/gS6ryUlyjimHR9H1FKdzh5FeOqY2zob0GobxQQhg/YvEPl4uzoVUPAE1zFvLc
+ Tp2LRRdn86lus/iEWx/MNk20kbIKgRgRO3kVntxrv2LvndcGOo6csSMQ7rkzcje6OVO9
+ NAab/MIMclclhJejR0yqL3rwCvmOwmqhXVdtKTdpo905iDED9uTJyGYEs2r/mbkYFcRs
+ WYMkPfF+wlQMq/w0HJe/yJXWfbFc2FTYDGtNrVb3Me7sr5Vu3ZBXnBQqRgg7b4phUvVo
+ fYtnAwxqbeWvgjdMlEu+KnTfqt5mdTovZvYL69FnCm3F2nAxTNfFVfnUQONB4t3fEsSl
+ +ayQ==
+X-Gm-Message-State: APjAAAWcfrT0fYFTsbwjkbUtjsrGuxCyqtGIM47me1II1eg4fzzNfIxZ
+ aiPiQo1ERs5eZ4eWUt0xQnu62A==
+X-Received: by 2002:adf:fcc7:: with SMTP id f7mr11092345wrs.319.1570189732496; 
+ Fri, 04 Oct 2019 04:48:52 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id t17sm11962094wrp.72.2019.10.04.04.48.50
+ by smtp.gmail.com with ESMTPSA id t17sm11962094wrp.72.2019.10.04.04.48.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Oct 2019 04:48:50 -0700 (PDT)
+ Fri, 04 Oct 2019 04:48:52 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [RFC 0/4] transaction-based ptimer API
-Date: Fri,  4 Oct 2019 12:48:44 +0100
-Message-Id: <20191004114848.16831-1-peter.maydell@linaro.org>
+Subject: [RFC 1/4] hw/timer/arm_timer: Add trace events
+Date: Fri,  4 Oct 2019 12:48:45 +0100
+Message-Id: <20191004114848.16831-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20191004114848.16831-1-peter.maydell@linaro.org>
+References: <20191004114848.16831-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::441
+X-Received-From: 2a00:1450:4864:20::444
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -113,93 +116,109 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: w3nSbUMAbSoz
+X-TUID: LcfPpFrbu6O1
 
-Currently the ptimer design uses a QEMU bottom-half as its mechanism
-for calling back into the device model using the ptimer when the
-timer has expired.  Unfortunately this design is fatally flawed,
-because it means that there is a lag between the ptimer updating its
-own state and the device callback function updating device state, and
-guest accesses to device registers between the two can return
-inconsistent device state. This was reported as a bug in a specific
-timer device but it's a problem with the generic ptimer code:
-https://bugs.launchpad.net/qemu/+bug/1777777
+Add some basic trace events to the arm_timer device.
 
-This RFC patchset introduces a change to the ptimer API so that
-instead of using a bottom-half for the trigger a device can choose to
-use a new 'transaction' based approach.  In this design (suggested by
-RTH) all calls which modify ptimer state:
-     - ptimer_set_period()
-     - ptimer_set_freq()
-     - ptimer_set_limit()
-     - ptimer_set_count()
-     - ptimer_run()
-     - ptimer_stop()
-must be between matched calls to ptimer_transaction_begin() and
-ptimer_transaction_commit().  When ptimer_transaction_commit() is
-called it will evaluate the state of the timer after all the changes
-in the transaction, and call the callback if necessary.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/timer/arm_timer.c  | 27 +++++++++++++++++++++------
+ hw/timer/trace-events |  7 +++++++
+ 2 files changed, 28 insertions(+), 6 deletions(-)
 
-I'm sending this out as an RFC to get opinions on the new API
-before I proceed to converting all the users of ptimer. (My
-plan is that the final patchset will start with these patches,
-have another couple of dozen patches changing the other timer
-devices using ptimer, and then have a "delete the BH API/code"
-patch. Or we could split the "change to new API" parts into
-smaller per-architecture ones.)
-
-Patch 1 is some new trace events I added to the arm_timer code
-while I was investigating the original bug report.
-Patch 2 is just a function rename so we can keep the nicer
-"ptimer_init()" name for the new API.
-Patch 3 adds the new API and its implementation.
-Patch 4 is a sample conversion of a ptimer-using device,
-which fixes the reported bug:
-https://bugs.launchpad.net/qemu/+bug/1777777
-
-thanks
--- PMM
-
-Peter Maydell (4):
-  hw/timer/arm_timer: Add trace events
-  ptimer: Rename ptimer_init() to ptimer_init_with_bh()
-  ptimer: Provide new transaction-based API
-  hw/timer/arm_timer.c: Switch to transaction-based ptimer API
-
- include/hw/ptimer.h              |  77 ++++++++++++++++++--
- hw/arm/musicpal.c                |   2 +-
- hw/core/ptimer.c                 | 116 +++++++++++++++++++++++++++----
- hw/dma/xilinx_axidma.c           |   2 +-
- hw/m68k/mcf5206.c                |   2 +-
- hw/m68k/mcf5208.c                |   2 +-
- hw/net/fsl_etsec/etsec.c         |   2 +-
- hw/net/lan9118.c                 |   2 +-
- hw/timer/allwinner-a10-pit.c     |   2 +-
- hw/timer/altera_timer.c          |   2 +-
- hw/timer/arm_mptimer.c           |   6 +-
- hw/timer/arm_timer.c             |  43 +++++++++---
- hw/timer/cmsdk-apb-dualtimer.c   |   2 +-
- hw/timer/cmsdk-apb-timer.c       |   2 +-
- hw/timer/digic-timer.c           |   2 +-
- hw/timer/etraxfs_timer.c         |   6 +-
- hw/timer/exynos4210_mct.c        |   7 +-
- hw/timer/exynos4210_pwm.c        |   2 +-
- hw/timer/exynos4210_rtc.c        |   4 +-
- hw/timer/grlib_gptimer.c         |   2 +-
- hw/timer/imx_epit.c              |   4 +-
- hw/timer/imx_gpt.c               |   2 +-
- hw/timer/lm32_timer.c            |   2 +-
- hw/timer/milkymist-sysctl.c      |   4 +-
- hw/timer/mss-timer.c             |   2 +-
- hw/timer/puv3_ost.c              |   2 +-
- hw/timer/sh_timer.c              |   2 +-
- hw/timer/slavio_timer.c          |   2 +-
- hw/timer/xilinx_timer.c          |   2 +-
- hw/watchdog/cmsdk-apb-watchdog.c |   2 +-
- tests/ptimer-test.c              |  22 +++---
- hw/timer/trace-events            |   7 ++
- 32 files changed, 263 insertions(+), 75 deletions(-)
-
+diff --git a/hw/timer/arm_timer.c b/hw/timer/arm_timer.c
+index c2e6211188b..283ae1e74a9 100644
+--- a/hw/timer/arm_timer.c
++++ b/hw/timer/arm_timer.c
+@@ -17,6 +17,7 @@
+ #include "qemu/main-loop.h"
+ #include "qemu/module.h"
+ #include "qemu/log.h"
++#include "trace.h"
+ 
+ /* Common timer implementation.  */
+ 
+@@ -43,7 +44,10 @@ typedef struct {
+ static void arm_timer_update(arm_timer_state *s)
+ {
+     /* Update interrupts.  */
+-    if (s->int_level && (s->control & TIMER_CTRL_IE)) {
++    int level = s->int_level && (s->control & TIMER_CTRL_IE);
++
++    trace_sp804_arm_timer_update(level);
++    if (level) {
+         qemu_irq_raise(s->irq);
+     } else {
+         qemu_irq_lower(s->irq);
+@@ -216,17 +220,21 @@ static uint64_t sp804_read(void *opaque, hwaddr offset,
+                            unsigned size)
+ {
+     SP804State *s = (SP804State *)opaque;
++    uint64_t res;
+ 
+     if (offset < 0x20) {
+-        return arm_timer_read(s->timer[0], offset);
++        res = arm_timer_read(s->timer[0], offset);
++        goto out;
+     }
+     if (offset < 0x40) {
+-        return arm_timer_read(s->timer[1], offset - 0x20);
++        res = arm_timer_read(s->timer[1], offset - 0x20);
++        goto out;
+     }
+ 
+     /* TimerPeriphID */
+     if (offset >= 0xfe0 && offset <= 0xffc) {
+-        return sp804_ids[(offset - 0xfe0) >> 2];
++        res = sp804_ids[(offset - 0xfe0) >> 2];
++        goto out;
+     }
+ 
+     switch (offset) {
+@@ -236,12 +244,17 @@ static uint64_t sp804_read(void *opaque, hwaddr offset,
+         qemu_log_mask(LOG_UNIMP,
+                       "%s: integration test registers unimplemented\n",
+                       __func__);
+-        return 0;
++        res = 0;
++        goto out;
+     }
+ 
+     qemu_log_mask(LOG_GUEST_ERROR,
+                   "%s: Bad offset %x\n", __func__, (int)offset);
+-    return 0;
++    res = 0;
++
++out:
++    trace_sp804_read(offset, res);
++    return res;
+ }
+ 
+ static void sp804_write(void *opaque, hwaddr offset,
+@@ -249,6 +262,8 @@ static void sp804_write(void *opaque, hwaddr offset,
+ {
+     SP804State *s = (SP804State *)opaque;
+ 
++    trace_sp804_write(offset, value);
++
+     if (offset < 0x20) {
+         arm_timer_write(s->timer[0], offset, value);
+         return;
+diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+index db02a9142cd..600b002c7bf 100644
+--- a/hw/timer/trace-events
++++ b/hw/timer/trace-events
+@@ -87,3 +87,10 @@ pl031_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+ pl031_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+ pl031_alarm_raised(void) "alarm raised"
+ pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
++
++# arm_timer.c
++sp804_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
++sp804_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
++# Note that this trace event can't distinguish which of the two timers
++# in the sp804 is being updated
++sp804_arm_timer_update(int level) "level %d"
 -- 
 2.20.1
 

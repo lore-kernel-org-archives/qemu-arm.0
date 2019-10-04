@@ -1,78 +1,77 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp614694wrm;
-        Fri, 4 Oct 2019 08:55:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyljVe4O/hObIy8uxwGpVcnnXcLxFu1DyQ7r1rWf9ouINHptUUSQAi+u7v4FouYFziCLn6J
-X-Received: by 2002:aa7:db02:: with SMTP id t2mr15931589eds.252.1570204508670;
-        Fri, 04 Oct 2019 08:55:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570204508; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp619354wrm;
+        Fri, 4 Oct 2019 08:59:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxIZ0OyvvLtTaGl7DqpYsYnSJXphS9j/Ngkcge6d67v0gTKoRbi1GEI69L/hDy7kl7kF4dX
+X-Received: by 2002:ac8:47d6:: with SMTP id d22mr16227812qtr.54.1570204779831;
+        Fri, 04 Oct 2019 08:59:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570204779; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z6UEaO0vC0HABmO+7aR/mwXoho15G0Qz2jpRDLmznzLGyMahXa/ZNsUZJbCVqPPyoM
-         0iIEkhKrXeToKTIIMniD7Vm36ofzq1EWlRp6YexyrgNi/DQ1oiPcR0lKduj5Vm8wgUoB
-         F8E7glH/JwoAzYoZ5Uwfos4a+8zdvt9rRKa5ozZl2Wi9bKV27xUZu0aCzi2a4FHXLRyl
-         V1mpVD842Cvrp0QAMZZRXZQQoxooMU/G8JS//Olp2y3nUC19nnped1RlWvLnxzcBYbX4
-         gwMkS4Rl5fqfzpd0Wz9g7Zny8BMfrAeApeg2USDKdtrhQnPp+6EKCWUmE+teIaiOqZSQ
-         NUzQ==
+        b=T8Vv37trxKAI1OA5SJ/GA8rr/yspHOyxBnutbxnxLAjQNCIhwpTQHGpNsSwFx4JA6p
+         /kNSYzuIhxJO5jVAe9s4v6Wh0HIcEKgln2dyJvb3Cl0D9N45gwjHRXC98fCoKgUt+X8q
+         v7PHt9QcWFNSdDOlYqdJP9g69Ac6bpcnUxTAD+bR1uuQlon+6CVP6VJIEReIr22/prFF
+         hptFmRF6TccnxZeYeyzGgggQYmcOFS0wK6josiHpD09PAtErRWi3uri6XB8TL3DuwmQj
+         D/xWPLhRG/7YhzgtJk7IPoiYiztFkwn+snFWKldBMtexlgInMeqjXF+0F/ZacJEfIjBi
+         7Juw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from;
-        bh=qO0npJ+//3i9lZXH5w+hsZxGu9qf9HZDNxWq3faE9DQ=;
-        b=mrMmjCc8XCI0W1kDxCjca5wd2pT4ewut1ogJv8hpGUeUaFTRPbaiQcWk58aUApunSf
-         GHhzQ7JCTHVaiF5ppnBPpmrOt6tm3qHslZvYCnYvEaaOqzBAHwzfJGYLXvJgGiRphdvz
-         W2rfNgPd6afd+NmdjzAcaHVB8DYcieJFQ7pWa3WifVpDR5IEEXa/qKOMAa77xQGiJuRW
-         KcMVVScmRC95GTeKgXyHJJJWwMH3vLuUjs2RQnxDwz3s1w8VpHt5JltS9FFeDrCg2Csh
-         xLmWjLFJhqQIQJxRpjVtNOFhSafHJrNEhMs3Qb7fwyP1CbVG/ZAyvCOmwur9acEMvcUJ
-         b/MQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=p6+59pam/YNaGC8sm7X8TUDSZ+p80VXv4HPFfOkpu/Y=;
+        b=e0hSQn0NAFPUKjvdI7WayA40Dw4mbfwLMa9677LtEAQTH7aqjYzGqfTXKvREhG+eM/
+         KJ5rt0flc4PLDJ2au/UaPUDt9EEjVQyf8Ati2LLmVfcTh01LwPOtCdVEeqmvERR9XhCl
+         UnrQQeEZ+0NN8/ieFVFiJX5Dbz0BPl3ZQ30Rur7faJAUtyLyfiOTSsAvgDzsZr7HY6yQ
+         z0ILmR/twzl4eUjZDpXbIQ1s8KkkfMtM1QXKphoKrXBG2f1AaXvy9mXMMJ7XWWEjJLu2
+         uG5slsH9d5gDXZFhhktw9XyGGYGnmjPr5W4lGpjGoAWHiRjEVVfNQI1cK7pbZiAmqg2c
+         uj9g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b42si3796943eda.367.2019.10.04.08.55.08
+        by mx.google.com with ESMTPS id p57si6041733qtk.10.2019.10.04.08.59.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Oct 2019 08:55:08 -0700 (PDT)
+        Fri, 04 Oct 2019 08:59:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50020 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50054 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iGPv9-0006kl-0y
-	for alex.bennee@linaro.org; Fri, 04 Oct 2019 11:55:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42200)
+	id 1iGPzX-0002AM-0X
+	for alex.bennee@linaro.org; Fri, 04 Oct 2019 11:59:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42166)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1iGPuR-0006KA-KT
- for qemu-arm@nongnu.org; Fri, 04 Oct 2019 11:54:26 -0400
+ id 1iGPuQ-0006Jx-3A
+ for qemu-arm@nongnu.org; Fri, 04 Oct 2019 11:54:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1iGPuQ-0000Ws-6r
- for qemu-arm@nongnu.org; Fri, 04 Oct 2019 11:54:23 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2244 helo=huawei.com)
+ id 1iGPuO-0000Vu-ME
+ for qemu-arm@nongnu.org; Fri, 04 Oct 2019 11:54:21 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:44540 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <shameerali.kolothum.thodi@huawei.com>)
- id 1iGPuP-0000Un-QR; Fri, 04 Oct 2019 11:54:22 -0400
+ id 1iGPuO-0000Mn-93; Fri, 04 Oct 2019 11:54:20 -0400
 Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id C259B1E99BED508086FD;
- Fri,  4 Oct 2019 23:54:17 +0800 (CST)
+ by Forcepoint Email with ESMTP id D0FF42812587D8540905;
+ Fri,  4 Oct 2019 23:54:07 +0800 (CST)
 Received: from S00345302A-PC.china.huawei.com (10.202.227.237) by
  DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.439.0; Fri, 4 Oct 2019 23:54:08 +0800
+ 14.3.439.0; Fri, 4 Oct 2019 23:54:00 +0800
 From: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
 To: <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>, <eric.auger@redhat.com>,
  <imammedo@redhat.com>
-Subject: [PATCH 3/5] hw/arm/virt: Add nvdimm hot-plug infrastructure
-Date: Fri, 4 Oct 2019 16:53:00 +0100
-Message-ID: <20191004155302.4632-4-shameerali.kolothum.thodi@huawei.com>
+Subject: [PATCH 0/5] ARM virt: Add NVDIMM support
+Date: Fri, 4 Oct 2019 16:52:57 +0100
+Message-ID: <20191004155302.4632-1-shameerali.kolothum.thodi@huawei.com>
 X-Mailer: git-send-email 2.12.0.windows.1
-In-Reply-To: <20191004155302.4632-1-shameerali.kolothum.thodi@huawei.com>
-References: <20191004155302.4632-1-shameerali.kolothum.thodi@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="UTF-8"
 X-Originating-IP: [10.202.227.237]
 X-CFilter-Loop: Reflected
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
-X-Received-From: 45.249.212.191
+X-Received-From: 45.249.212.35
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -88,146 +87,59 @@ Cc: peter.maydell@linaro.org, lersek@redhat.com, linuxarm@huawei.com,
  xuwei5@hisilicon.com, shannon.zhaosl@gmail.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UvBY8Bk5sz0/
+X-TUID: tE3NR//WpF7/
 
-From: Kwangwoo Lee <kwangwoo.lee@sk.com>
+This series adds NVDIMM support to arm/virt platform.
+This has a dependency on [0] and make use of the GED
+device for NVDIMM hotplug events. The series reuses
+some of=C2=A0the=C2=A0patches posted by Eric in his earlier
+attempt here[1].
 
-Pre-plug and plug handlers are prepared for NVDIMM support.
-Please note nvdimm_support is not yet enabled.
+Patch 1/5 is a fix to the Guest reboot issue on NVDIMM
+hot add case described here[2].
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Kwangwoo Lee <kwangwoo.lee@sk.com>
-Signed-off-by: Shameer Kolothum <shameerali.kolothum.thodi@huawei.com>
----
- hw/arm/Kconfig           |  1 +
- hw/arm/virt-acpi-build.c |  6 ++++++
- hw/arm/virt.c            | 22 +++++++++++++++++++++-
- hw/mem/Kconfig           |  2 +-
- include/hw/arm/virt.h    |  1 +
- 5 files changed, 30 insertions(+), 2 deletions(-)
+I have done basic sanity testing of NVDIMM deviecs with
+both ACPI and DT Guest boot. Further testing is always
+welcome.
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index c6e7782580..851dd81289 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -24,6 +24,7 @@ config ARM_VIRT
-     select DIMM
-     select ACPI_MEMORY_HOTPLUG
-     select ACPI_HW_REDUCED
-+    select ACPI_NVDIMM
- 
- config CHEETAH
-     bool
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 074e0c858e..4e63f5da48 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -44,6 +44,7 @@
- #include "hw/pci/pcie_host.h"
- #include "hw/pci/pci.h"
- #include "hw/arm/virt.h"
-+#include "hw/mem/nvdimm.h"
- #include "sysemu/numa.h"
- #include "sysemu/reset.h"
- #include "kvm_arm.h"
-@@ -835,6 +836,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
-         }
-     }
- 
-+    if (ms->nvdimms_state->is_enabled) {
-+        nvdimm_build_acpi(table_offsets, tables_blob, tables->linker,
-+                          ms->nvdimms_state, ms->ram_slots);
-+    }
-+
-     if (its_class_name() && !vmc->no_its) {
-         acpi_add_table(table_offsets, tables_blob);
-         build_iort(tables_blob, tables->linker, vms);
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index d4bedc2607..30bc8a7803 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -143,6 +143,7 @@ static const MemMapEntry base_memmap[] = {
-     [VIRT_SMMU] =               { 0x09050000, 0x00020000 },
-     [VIRT_PCDIMM_ACPI] =        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
-     [VIRT_ACPI_GED] =           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
-+    [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
-     [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
-     /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
-     [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
-@@ -1750,6 +1751,18 @@ static void machvirt_init(MachineState *machine)
- 
-     create_platform_bus(vms, pic);
- 
-+    if (machine->nvdimms_state->is_enabled) {
-+        const struct AcpiGenericAddress arm_virt_nvdimm_acpi_dsmio = {
-+            .space_id = AML_AS_SYSTEM_MEMORY,
-+            .address = vms->memmap[VIRT_NVDIMM_ACPI].base,
-+            .bit_width = NVDIMM_ACPI_IO_LEN << 3
-+        };
-+
-+        nvdimm_init_acpi_state(machine->nvdimms_state, sysmem,
-+                               arm_virt_nvdimm_acpi_dsmio,
-+                               vms->fw_cfg, OBJECT(vms));
-+    }
-+
-     vms->bootinfo.ram_size = machine->ram_size;
-     vms->bootinfo.nb_cpus = smp_cpus;
-     vms->bootinfo.board_id = -1;
-@@ -1916,9 +1929,10 @@ static void virt_memory_pre_plug(HotplugHandler *hotplug_dev, DeviceState *dev,
-                                  Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-+    MachineState *ms = MACHINE(hotplug_dev);
-     const bool is_nvdimm = object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
- 
--    if (is_nvdimm) {
-+    if (is_nvdimm && (!ms->nvdimms_state->is_enabled)) {
-         error_setg(errp, "nvdimm is not yet supported");
-         return;
-     }
-@@ -1937,6 +1951,8 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
- {
-     HotplugHandlerClass *hhc;
-     VirtMachineState *vms = VIRT_MACHINE(hotplug_dev);
-+    MachineState *ms = MACHINE(hotplug_dev);
-+    bool is_nvdimm = object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
-     Error *local_err = NULL;
- 
-     pc_dimm_plug(PC_DIMM(dev), MACHINE(vms), &local_err);
-@@ -1944,6 +1960,10 @@ static void virt_memory_plug(HotplugHandler *hotplug_dev,
-         goto out;
-     }
- 
-+    if (is_nvdimm) {
-+        nvdimm_plug(ms->nvdimms_state);
-+    }
-+
-     hhc = HOTPLUG_HANDLER_GET_CLASS(vms->acpi_dev);
-     hhc->plug(HOTPLUG_HANDLER(vms->acpi_dev), dev, &error_abort);
- out:
-diff --git a/hw/mem/Kconfig b/hw/mem/Kconfig
-index 620fd4cb59..0d5f8f321a 100644
---- a/hw/mem/Kconfig
-+++ b/hw/mem/Kconfig
-@@ -8,4 +8,4 @@ config MEM_DEVICE
- config NVDIMM
-     bool
-     default y
--    depends on PC
-+    depends on PC || ARM_VIRT
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 0b41083e9d..06d5e75611 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -79,6 +79,7 @@ enum {
-     VIRT_SECURE_MEM,
-     VIRT_PCDIMM_ACPI,
-     VIRT_ACPI_GED,
-+    VIRT_NVDIMM_ACPI,
-     VIRT_LOWMEMMAP_LAST,
- };
- 
--- 
+Please let me know your feedback.
+
+Thanks,
+Shameer
+
+[0] https://patchwork.kernel.org/cover/11150345/
+[1] https://patchwork.kernel.org/cover/10830777/
+[2] https://patchwork.kernel.org/patch/11154757/
+
+Eric Auger (1):
+  hw/arm/boot: Expose the pmem nodes in the DT
+
+Kwangwoo Lee (2):
+  nvdimm: Use configurable ACPI IO base and size
+  hw/arm/virt: Add nvdimm hot-plug infrastructure
+
+Shameer Kolothum (2):
+  hw/arm: Align ACPI blob len to PAGE size
+  hw/arm/virt: Add nvdimm hotplug support
+
+ docs/specs/acpi_hw_reduced_hotplug.rst |  1 +
+ hw/acpi/generic_event_device.c         | 13 ++++++++
+ hw/acpi/nvdimm.c                       | 32 ++++++++++++------
+ hw/arm/Kconfig                         |  1 +
+ hw/arm/boot.c                          | 45 ++++++++++++++++++++++++++
+ hw/arm/virt-acpi-build.c               | 20 ++++++++++++
+ hw/arm/virt.c                          | 42 ++++++++++++++++++++----
+ hw/i386/acpi-build.c                   |  6 ++++
+ hw/i386/acpi-build.h                   |  3 ++
+ hw/i386/pc_piix.c                      |  2 ++
+ hw/i386/pc_q35.c                       |  2 ++
+ hw/mem/Kconfig                         |  2 +-
+ include/hw/acpi/generic_event_device.h |  1 +
+ include/hw/arm/virt.h                  |  1 +
+ include/hw/mem/nvdimm.h                |  3 ++
+ 15 files changed, 157 insertions(+), 17 deletions(-)
+
+--=20
 2.17.1
 
 

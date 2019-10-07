@@ -1,106 +1,95 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4060740wrm;
-        Mon, 7 Oct 2019 10:11:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyDsSJ+nZaFIFgNjK9F/VZAfFx132p+C7u18M8lRxTF/ec4F2qUK+U7/q8HZT7LT5JxWw6x
-X-Received: by 2002:aed:3b19:: with SMTP id p25mr2963098qte.355.1570468309585;
-        Mon, 07 Oct 2019 10:11:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570468309; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4095157wrm;
+        Mon, 7 Oct 2019 10:43:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwlugdM3uYX2bGsAyKgIdQuOfeH4rncLcoodgVLiWMzErvwyV7FRzS+WSmuk5Wyh+o57cb4
+X-Received: by 2002:a37:7402:: with SMTP id p2mr24558625qkc.457.1570470197832;
+        Mon, 07 Oct 2019 10:43:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570470197; cv=none;
         d=google.com; s=arc-20160816;
-        b=lsi7ZZy5GoxTYcKdLkinnSBr9XylKvZasjYRBFDP3YNc06RIxEZOzDAMSVuFn/utZY
-         BJRaGj4dl7IdByHwhZgmSCc/vCsd3jxv7lT7hchGaoQiu6MAWU+4ukvTVSo8UmdhEWIe
-         vHHTfjKUiTFXt13b+YvbXiaIcO6KsCIvelt8TdoT+S5KLT8SqOzPanZdaD1ybIKqM8Y5
-         M4BDe40OJx0ClE0KZxf40zWxrfUlYO2zy0VxPUyAFZst5NV3aF/J4hSqgp5DHQ8xjPxu
-         fPaPX2DwD5OIGfgynjyRQSF/1zRDBv9JpR3Lux2UKsCnlygg1ym7how2QnaZxEElU9Mb
-         UXRw==
+        b=0+RzpRy7TcAFyjM4HMvVQutvcA/vH2O2F2LbSyqR2h+n3eFVygcs89skiYYenkuKHz
+         c+zYgk1MMqT0kkRkU9ytz3eNgmyevzP+XO6o4+OHkN9UHKHXixsD682iA/FBBbaI/d5W
+         Y8pTyYlEHBbUUu2iIMyA42uXOJ1D/bkdV5S2iyjVTcTP43ca/GOv84s2g/uL4z8zKAD9
+         SWxxA/jSsjGyLljOJmcJsj/1ptweiBB9/hYI4qz7ymOWG1wbF1TWxVd7HjM1FRGOrELy
+         KBR09CV9dDcWIdM75DC12pH1S+ttSlymw1jCsqUEZQZIQsAdg81uzvykOPFpdfwIwf91
+         LcCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=h9QPSdYlAgh15MXqatIxr3w1iFSHreJWGKOTOlnlE1I=;
-        b=Pm4+3LjiJOCOVC98+R1/LTMnRuEqcJhj2dYW9QQ5afiNn7GaaO59DWmr10VOLUoLDL
-         WpAOr61PsigiiwUQhZGVxSLGmpe3pvG4ChRvYmvOuhWZ28tSpOqahhIZvHp9LxMrIovz
-         kcr5fr6CdyCDDGc175L/W7UxY3SJJfw1UoQKed/Q0U3rF1o6p/0uPkfd61EYBDu3B11b
-         jnLb1ituY+L3PL8sNpZcoSV1Ux6YHs2aFEkeAi81DS5PjPzszsLkbllkTDUWdhj3XSEE
-         8YDth9HRxQplxKXdFuW/4DbDJTjfEip2GHPtf02m1DnQaSP4vYnM5KFMwIA0RlsNoYAm
-         SozQ==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date;
+        bh=UPcpTQSi7VXhqtxvLfOXbN2IwD881LYjHFdrb1IRVbE=;
+        b=p1ZEM8qNA29flG2YUCr+ZO1CLWrONFdW96L5yuY1iNbHJahoOCneadhCCk/7hx2rv8
+         NH5zhDYX63Q27dQ/LMrk2EikF8pRd1TrtpvUjXpImeAkdLZss+1p6r1iWrRnczjYYEWc
+         qiVKPukploHmLN7+uhan+HNVfco67temv3Vt3OYRmIqNR5GuKCp0cK6lMUGotsLFi0Jx
+         w5R8iME46M79vuSDGMuBlTUsKq+AZd2HQxKcGCmPj1l4OFMpuls5Ryk02ccagq0HWj8Z
+         bE9YHPxn8GNzJGpwLBHGu7YMmoAB0S3RL9huW0vM453gCnJtKCFStVdWGvUPNi6c2ym+
+         9Avg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="m36v3Zb/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r67si13994410qke.318.2019.10.07.10.11.49
+        by mx.google.com with ESMTPS id 184si14608767qkd.245.2019.10.07.10.43.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Oct 2019 10:11:49 -0700 (PDT)
+        Mon, 07 Oct 2019 10:43:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="m36v3Zb/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47962 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from localhost ([::1]:48250 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iHWY0-00044Q-VG
-	for alex.bennee@linaro.org; Mon, 07 Oct 2019 13:11:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37044)
+	id 1iHX2T-0006eU-8O
+	for alex.bennee@linaro.org; Mon, 07 Oct 2019 13:43:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42977)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iHWTM-0006rr-Kl
- for qemu-arm@nongnu.org; Mon, 07 Oct 2019 13:07:01 -0400
+ (envelope-from <k.kozlowski.k@gmail.com>) id 1iHX2H-0006c4-Gs
+ for qemu-arm@nongnu.org; Mon, 07 Oct 2019 13:43:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iHWTL-0004xo-BG
- for qemu-arm@nongnu.org; Mon, 07 Oct 2019 13:07:00 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:40868)
+ (envelope-from <k.kozlowski.k@gmail.com>) id 1iHX2G-0004ct-0A
+ for qemu-arm@nongnu.org; Mon, 07 Oct 2019 13:43:05 -0400
+Received: from mail-wm1-f67.google.com ([209.85.128.67]:37428)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iHWTI-0004vX-CS; Mon, 07 Oct 2019 13:06:56 -0400
-Received: by mail-wr1-x442.google.com with SMTP id h4so7494229wrv.7;
- Mon, 07 Oct 2019 10:06:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=h9QPSdYlAgh15MXqatIxr3w1iFSHreJWGKOTOlnlE1I=;
- b=m36v3Zb/J0IfGdJFu2+4hn+/UczY3B6eSt/YcSsm5tXpqxY1MMQZSazW7e21aXpBxc
- o/INrxvyIe6/Tvbc6qdhoQpLNxxN5KTcCInpe7Y9mrgqFENcnSKHMbBy4HerS5FYSoCj
- 2rlNzJfGB1jlhVid5ibz2dgjhFq63D/Zn2dZrMv5A6UQfXLDqW/PWwi2Tmb0PNJaTJsX
- J4qbPFug3ONq+PNYqx87AHVKl13fj1DMymb6xc66xO4mwsJCtZN5PX2CkspPaHINXqOY
- 845a5a0KJf7t7JV77JCt2P0DlcLVTVgnsv9TtPN+LQF9q06MUko96fmVnU0RUv0IG5Ns
- I4eA==
+ (Exim 4.71) (envelope-from <k.kozlowski.k@gmail.com>)
+ id 1iHX2D-0004aP-40; Mon, 07 Oct 2019 13:43:01 -0400
+Received: by mail-wm1-f67.google.com with SMTP id f22so377196wmc.2;
+ Mon, 07 Oct 2019 10:43:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=h9QPSdYlAgh15MXqatIxr3w1iFSHreJWGKOTOlnlE1I=;
- b=VUVL09sCWDNZMyp/4y9FrZ2PaPvURyL9AIFcPjfElK3YPwDmZGM1WcblomleJcCMRT
- eSqf92oCFZZR7seMksJBTfU9zn5ooef6/gRSfEbbRARyfjBLf75srjRE1IqSCPwkmRTt
- XBTUD2Okz6IO4IksfgiWeDMuevLbLpv/qB4wI4KIQTSlDhN16P6zUtkojl0imm+GFKj6
- Hp2Gv7duPp6paqAAFNNqLpM4OvUh58DKxMsajrYhwfzYNNc79txvUEhRyWEDPqiDIQn1
- pMM86NDW5U0iS1vQ4PpOxZHeVVJ5UhjxgSK2+a85poYOAz+YQOOHFcg/tw5Qukx964Hh
- XZcw==
-X-Gm-Message-State: APjAAAUPkdBNBWYw3kwBh92dXGU7yVUs5icfnZu/M4bBg/hypjHzuLeb
- R51e8qnl6Pb9gsq4cVb/b2Jiy1dQsG0=
-X-Received: by 2002:adf:e88f:: with SMTP id d15mr8093875wrm.324.1570468015165; 
- Mon, 07 Oct 2019 10:06:55 -0700 (PDT)
-Received: from x1w.redhat.com (46.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.46])
- by smtp.gmail.com with ESMTPSA id x5sm14036603wrt.75.2019.10.07.10.06.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Oct 2019 10:06:54 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 3/3] hw: Move BCM2835 AUX device from hw/char/ to hw/misc/
-Date: Mon,  7 Oct 2019 19:06:46 +0200
-Message-Id: <20191007170646.14961-4-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20191007170646.14961-1-f4bug@amsat.org>
-References: <20191007170646.14961-1-f4bug@amsat.org>
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to:user-agent;
+ bh=UPcpTQSi7VXhqtxvLfOXbN2IwD881LYjHFdrb1IRVbE=;
+ b=ugys95Gk6K4EH1TBsVyPoLodHNCN6GQuiFQVcR0Ar2l6PDCN+WlP1Bp1fMC8sIezQS
+ 129D+UP6smYuyOVa3IPjVMBqPODG7le+ys3NgL7GqlLbzIBq+bUh+LZZtRpVQBexQVMN
+ TGr38e2658cMG478mhAnncNS0MfTGKKPQ2cALPE6OsmOdUMg7sNqxVuBM8eMNBzvtrPq
+ lxbmwftXSaACq8m5QcOX0dpY1oxSIfvkFNL3F2WlacQXsv7MsBDvGfJ09qrg3MchXX7H
+ 7ydKRKy32e5g9EeedNsY1QPH6nEhgLsqytyj6LJMPM4ae1uvXFQtEHFAs1dRfxYRRrII
+ PtPw==
+X-Gm-Message-State: APjAAAXqpu1CT7UuyLgK8J/gSB/V18q0+msecz868d5JGPRzStILS5ow
+ A8WD72arYr6c19+p1BRYcD4=
+X-Received: by 2002:a1c:3182:: with SMTP id x124mr377956wmx.168.1570470179609; 
+ Mon, 07 Oct 2019 10:42:59 -0700 (PDT)
+Received: from kozik-lap ([194.230.155.145])
+ by smtp.googlemail.com with ESMTPSA id s10sm164130wmf.48.2019.10.07.10.42.57
+ (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+ Mon, 07 Oct 2019 10:42:58 -0700 (PDT)
+Date: Mon, 7 Oct 2019 19:42:56 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH 0/5] hw/arm/exynos4210: Add acceptance tests to the
+ SMDKC210 board
+Message-ID: <20191007174256.GA9803@kozik-lap>
+References: <20191005154748.21718-1-f4bug@amsat.org> <20191007091024.GC541@pi3>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::442
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20191007091024.GC541@pi3>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.85.128.67
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -112,118 +101,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Marc-Andre Lureau <marcandre.lureau@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: =?utf-8?B?RnLDqWTDqXJpYw==?= Basse <contact@fredericb.info>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Evgeny Voevodin <e.voevodin@samsung.com>,
+ Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
+ Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-devel@nongnu.org,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
+ Dmitry Solodkiy <d.solodkiy@samsung.com>, Cleber Rosa <crosa@redhat.com>,
+ Maksim Kozlov <m.kozlov@samsung.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Guenter Roeck <linux@roeck-us.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lcW7bAFS9Oat
+X-TUID: Qp1CJ3AAUE1l
 
-The BCM2835 AUX device is a MUX between one UART block and two SPI
-blocks. Move it to the hw/misc/ folder.
+On Mon, Oct 07, 2019 at 11:10:24AM +0200, Krzysztof Kozlowski wrote:
+> On Sat, Oct 05, 2019 at 05:47:43PM +0200, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+> > Hi all,
+> >=20
+> > Yesterday Peter Maydell asked on IRC if I had any working Exynos4
+> > image. I looked at some old backuped notes and could boot Guenter
+> > initrd with BusyBox.
+> > I'll use this cover letter to share my notes, they might help to
+> > have this board fully usable again.
+> >=20
+> > This board is listed as "Odd Fixes". Since we have it covered, I
+> > thought it was worthwhile to have it covered by tests to avoid
+> > more regressions.
+> >=20
+> > Fr=C3=A9d=C3=A9ric Basse used this board last year:
+> > https://fredericb.info/2018/03/emulating-exynos-4210-bootrom-in-qemu.ht=
+ml
+> >=20
+> > I'll have a look a these particular commits he added:
+> >=20
+> > - https://github.com/frederic/qemu-exynos-bootrom/commit/9be5c9f2253dbc=
+04ee
+> >=20
+> >    sd: add sd clock support to SDHC_CLKCON
+> >=20
+> > - https://github.com/frederic/qemu-exynos-bootrom/commit/6f045949ee2fde=
+c624
+> >=20
+> >    sd: always reply to ACMD41 (SD_APP_OP_COND)
+> >=20
+> > Guenter also carries on this patch:
+> >=20
+> > - https://github.com/groeck/qemu/commit/0a80543cc910d
+> >=20
+> >   hw/timer/exynos4210_mct: Initialize timer before starting it
+> >=20
+> >   When booting a recent Linux kernel, the qemu message "Timer with peri=
+od
+> >   zero, disabling" is seen, apparently because a timer is started before
+> >   being initialized.  Fix the problem by initializing the offending tim=
+er
+> >   before starting it.
+> >=20
+> > It might also be interesting to use Krzysztof's initramfs image:
+> > https://github.com/krzk/tools/blob/master/run-qemu.sh#L29
+>=20
+> I haven't been working on QEMU since 2 years but I can try to find that
+> initramfs image.
+>=20
+> The recent initramfs I create, is for testing kernel under my Buildbot.
+> I take standard initramfs from Arch ARM and then I add some more stuff:
+> Source/instruction is here:
+> https://github.com/krzk/tools/tree/master/buildbot/initramfs
+> and the script making it for each boot is here:
+> https://github.com/krzk/tools/blob/master/buildbot/build-slave-deploy.sh#=
+L50
+> https://github.com/krzk/tools/blob/master/pi/make-initramfs.sh
+>
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/char/Makefile.objs                   | 1 -
- hw/char/trace-events                    | 4 ----
- hw/misc/Makefile.objs                   | 1 +
- hw/{char => misc}/bcm2835_aux.c         | 2 +-
- hw/misc/trace-events                    | 4 ++++
- include/hw/arm/bcm2835_peripherals.h    | 2 +-
- include/hw/{char => misc}/bcm2835_aux.h | 0
- 7 files changed, 7 insertions(+), 7 deletions(-)
- rename hw/{char => misc}/bcm2835_aux.c (99%)
- rename include/hw/{char => misc}/bcm2835_aux.h (100%)
+I checked my initramfs. I created it simply from a running Arch ARM
+    instance with `fakeroot mkinitcpio -g file.cpio.gz`
 
-diff --git a/hw/char/Makefile.objs b/hw/char/Makefile.objs
-index 5bd93bde9f..d6b8ce5e60 100644
---- a/hw/char/Makefile.objs
-+++ b/hw/char/Makefile.objs
-@@ -20,7 +20,6 @@ obj-$(CONFIG_SH4) += sh_serial.o
- obj-$(CONFIG_PSERIES) += spapr_vty.o
- obj-$(CONFIG_DIGIC) += digic-uart.o
- obj-$(CONFIG_STM32F2XX_USART) += stm32f2xx_usart.o
--obj-$(CONFIG_RASPI) += bcm2835_aux.o
- 
- common-obj-$(CONFIG_RASPI) += bcm2835_miniuart.o
- common-obj-$(CONFIG_CMSDK_APB_UART) += cmsdk-apb-uart.o
-diff --git a/hw/char/trace-events b/hw/char/trace-events
-index 0c86a907df..f1e6dd9918 100644
---- a/hw/char/trace-events
-+++ b/hw/char/trace-events
-@@ -1,9 +1,5 @@
- # See docs/devel/tracing.txt for syntax documentation.
- 
--# bcm2835_aux.c
--bcm2835_aux_read(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
--bcm2835_aux_write(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
--
- # bcm2835_miniuart.c
- bcm2835_miniuart_read(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
- bcm2835_miniuart_write(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
-diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
-index a150680966..9ffeee7f46 100644
---- a/hw/misc/Makefile.objs
-+++ b/hw/misc/Makefile.objs
-@@ -50,6 +50,7 @@ common-obj-$(CONFIG_OMAP) += omap_gpmc.o
- common-obj-$(CONFIG_OMAP) += omap_l4.o
- common-obj-$(CONFIG_OMAP) += omap_sdrc.o
- common-obj-$(CONFIG_OMAP) += omap_tap.o
-+common-obj-$(CONFIG_RASPI) += bcm2835_aux.o
- common-obj-$(CONFIG_RASPI) += bcm2835_mbox.o
- common-obj-$(CONFIG_RASPI) += bcm2835_property.o
- common-obj-$(CONFIG_RASPI) += bcm2835_rng.o
-diff --git a/hw/char/bcm2835_aux.c b/hw/misc/bcm2835_aux.c
-similarity index 99%
-rename from hw/char/bcm2835_aux.c
-rename to hw/misc/bcm2835_aux.c
-index a1ca9741d6..83698e2ece 100644
---- a/hw/char/bcm2835_aux.c
-+++ b/hw/misc/bcm2835_aux.c
-@@ -12,7 +12,7 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "hw/char/bcm2835_aux.h"
-+#include "hw/misc/bcm2835_aux.h"
- #include "hw/irq.h"
- #include "hw/qdev-properties.h"
- #include "hw/registerfields.h"
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 74276225f8..0756d58162 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -1,5 +1,9 @@
- # See docs/devel/tracing.txt for syntax documentation.
- 
-+# bcm2835_aux.c
-+bcm2835_aux_read(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
-+bcm2835_aux_write(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
-+
- # eccmemctl.c
- ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
- ecc_mem_writel_mdr(uint32_t val) "Write memory delay 0x%08x"
-diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
-index 6b17f6a382..7aae515d7e 100644
---- a/include/hw/arm/bcm2835_peripherals.h
-+++ b/include/hw/arm/bcm2835_peripherals.h
-@@ -13,7 +13,7 @@
- 
- #include "hw/sysbus.h"
- #include "hw/char/pl011.h"
--#include "hw/char/bcm2835_aux.h"
-+#include "hw/misc/bcm2835_aux.h"
- #include "hw/display/bcm2835_fb.h"
- #include "hw/dma/bcm2835_dma.h"
- #include "hw/intc/bcm2835_ic.h"
-diff --git a/include/hw/char/bcm2835_aux.h b/include/hw/misc/bcm2835_aux.h
-similarity index 100%
-rename from include/hw/char/bcm2835_aux.h
-rename to include/hw/misc/bcm2835_aux.h
--- 
-2.21.0
+You could automatize the process by:
+1. Downloading and extracting
+   http://os.archlinuxarm.org/os/ArchLinuxARM-odroid-latest.tar.gz,
+2. Running mkinitcpio or creating initramfs manually (e.g. my script
+   above).
 
+Best regards,
+Krzysztof

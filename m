@@ -1,123 +1,113 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp3848129wrm;
-        Mon, 7 Oct 2019 07:12:23 -0700 (PDT)
-X-Received: by 2002:a25:bd4a:: with SMTP id p10mr7112460ybm.362.1570457543197;
-        Mon, 07 Oct 2019 07:12:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570457543; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp3851514wrm;
+        Mon, 7 Oct 2019 07:15:09 -0700 (PDT)
+X-Received: by 2002:a0d:e255:: with SMTP id l82mr20808012ywe.269.1570457709559;
+        Mon, 07 Oct 2019 07:15:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570457709; cv=none;
         d=google.com; s=arc-20160816;
-        b=fX8ps+PZ/3jHQpuNf9nI70TbPoBnzV8aqVBaFUNJw9H1QNtygtoYFir7s4MIhoQBeA
-         CXOfYhr3Ee+yStFr3EmDUDZgvuQJUrhK/EP5FUb3B1jHkY9OvcMIhCSc89M/kqGT45t0
-         OySLxxdCllND2KFb0xJq53KLbJ5XzncNlnETIQZDPMnFpjiEl721tyNB4xe0j5vMs14x
-         d65JbYXWqIVddms1vvWijzb2F6mfx4gZ6wWLH2zxSpnlZvO0WvHTEACYyQAeJsk1+Gjz
-         bfnvhymGzWrAx3rLK37e1FnDp/nUweUW1Qcs+J5JGwH7eh5E2x5IdcfOKfR2hglUryph
-         NCpQ==
+        b=RnnCz5JayhivbpsyLjnNdjeE4vH6/zVmtyCnalyRd5wvk4KF2mNImiDowDDjqdW/GU
+         EvSb4Ktg8YDM2gemo+1KnWT5wGiKnMBn8vRBDb79ywJnvNc0OEz5PW7e/H+H4k7v/zPp
+         bt0weNEcMyvS2SIMxipjkvbYyRJcSXv3PfNYa00JZQyjTxOxFic7WXgg2DIPM3mU2Bfk
+         VJq3769HfJvSoXeIdrLP7msgnZcLw6XQlpFWHQ2bn7fqG4SHJtya4MNfe3tFlKh7ot8v
+         Rnx6lewsuzZ0ILR9bOtBlXHO41shOfgRL+U+w1VFLBeh8M6hIv5mgCYznglP0K9BqxOj
+         G1Ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:openpgp:from:references:cc:to:subject
          :dkim-signature;
-        bh=9O7QyR4sroz5pD6I+kX3EyvJIXvX9Ibf1lzBnsgKDlE=;
-        b=lVvsWkuMGf9EvgWcRg82W7ge7weCRPiD3ZC3qpRdQnnS6iNKNG+Sny+s7sZuuAUVk0
-         9UINk9gYZaej97cgeZC8Iaml5zJ/0Amr73RCekYPTQnSvrn7kX7D/WBDI2LjNoYKRhx5
-         NLZwHN55WduGq2sEKEiJtCucJpw8WurP6Pc4u2qtAalzFgQS8xzulELVCxATqjkmt3KP
-         hbrfFt3O/lnZs9puh+FjUXafCnW7jKAKnG2ukGrLMbP/acYSpDKDAMXaTN9XwO1Es4R6
-         yjzE8Wr7SYnDERqnR9g2lkgahm/Kj2U8YxBkGEUrbMirSZGI0bHvExpFx6Xda7N9q0Ly
-         J8YQ==
+        bh=KRgBJxZK6iBuT/CcMbiDw89iBtp15koM2kwiNVbKbXI=;
+        b=JcYaSvtzlYI1p+SXA4G9Fb/iPQVHPnsYbdG/JJrZ3FTfn9cq97tRtSImX7QISGoJjC
+         jtgiuryjXCsaMwCNMtP6FgINTLhkc5+G3Gl90YqoTkDAPVTX1m+VPTJe2PeYJHbznTY3
+         zgbevNDunoH6bkTAez2jhyySNEKgZHGkKAhZuSaVxdJB6n7VXj7zaeb9JdZU2jvBtEFj
+         YeGV/Cwcwkf7DwENwyq+AmfD1LErktY5W5XrTvNSEwXnS8dsSQKW2EmSjfM/N/q/oZPT
+         cIVpaA3DaY1UCLO5vdji1MV4CgVxT2A6MXR2LpmWdEMsfYgpPC/YCWf4RrTV0YbYq7ls
+         40Sw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=adsrto1c;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Blht6MNz;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id y187sor7873757yby.178.2019.10.07.07.12.23
+        by mx.google.com with SMTPS id p9sor8258457ywb.101.2019.10.07.07.15.09
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 07 Oct 2019 07:12:23 -0700 (PDT)
+        Mon, 07 Oct 2019 07:15:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=adsrto1c;
+       dkim=pass header.i=@linaro.org header.s=google header.b=Blht6MNz;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=9O7QyR4sroz5pD6I+kX3EyvJIXvX9Ibf1lzBnsgKDlE=;
-        b=adsrto1cvTaMOiitHUl+ZwAdwSFhlxiAf8QMxRkDFKF+i7IQGPrZD3zTj2te5mTMJG
-         Ad1JL+O7fWo98OEd+71lWibyaME0DNs7lExsI17Tc/Sj23V4YLrwy51dFbFd8mX7h94+
-         qob6ltwPB/mXi5xFULah8xwMcFC/U2K1tL7Belj6e9BxC562Y8sKAOKGBpcch9H0QWmy
-         6oPSkeAbZexRWnxJPLmXZIlSekLw9TkPToAGR+f4YlkckahsNcCDJkNBo3LOtYHbMjlV
-         ZNdrWgkXANeuQhhjEEI9PevhL601Fxd9YLiN6CDNRtRcPzo+fgVH+UqtsrRU6S/uueaP
-         tYOQ==
+        bh=KRgBJxZK6iBuT/CcMbiDw89iBtp15koM2kwiNVbKbXI=;
+        b=Blht6MNzjupd2wjA8M2Uzlk/eL2n8lqg6xeaAglWnCRkl/67mDvRUeFMi+EJliJAtX
+         UVMFnvZ3jsTyNrWbgsCzmWlHbgjBGa2wALWQZ3nu+oXoMRi6s7QJ+MYPAkHfYKUF4wE+
+         gSjazYV3FKMShG80BzyRPyKfj51R8SrgFAc9qMM1CAG1dKBNq7uU+DVqNxyhaeX8pDpw
+         mT3i3bddrC9dSipRKwXPJU0JzrodMuxnTWnXGJrbdO06GV7ISow8SbPMuNgjBN1u/zw5
+         oq0ckSdw9vFxF3KlgZ6pY/4XJpawz94zFrHUZXT3Ugl/0FS0XEXVvrw0IqfQ6etRSA/H
+         xwSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=9O7QyR4sroz5pD6I+kX3EyvJIXvX9Ibf1lzBnsgKDlE=;
-        b=Yg3v0zoNyZfrWIBnd3cOfcn7xBZcbsYLIqfaK50hdFDbPjEDRYuH/5o5utkJeodQMA
-         SzDgL0GahTehBrAaIOmxc/3KFkQ+hLrHbEAHgkvCeF+DVjBPn+WkR13Gd5J1VHdUGG/R
-         i19105j3ez5y0wjttcY5JzPeI8/Ek4P1DlpvSCX0VQbwTTktr16fy6Zah2j+0oJu7m62
-         v9SG5B0/O2MwpjSyqdKgrx1OWIg3T22Zag36vHFm2kaLeW7b2ybj+5sTIEu7vZkJcLPy
-         70ZNs0jHRoQ62XSTAdwvlAGXOjcBscp9NmP+nZofj+mUhDP0Z4u40LNlcgDrpi2wUcqo
-         KJlg==
-X-Gm-Message-State: APjAAAX4LyouZ/msipZyPVsHCLHfSmCkhpOLWuOFZWkl1NvmwhBWGaXt
-	R7CdfrDiFA4Y4SKpWtp5+GWGkgtN1OTTyg==
-X-Google-Smtp-Source: APXvYqzHyt/lzZ7DHGZYr6Z0bAPIgo67Tae487Sc8Er8gDosr1Uo3s6KmdJImFaY196u5qJKZUoPRQ==
-X-Received: by 2002:a25:3046:: with SMTP id w67mr10914412ybw.4.1570457542289;
-        Mon, 07 Oct 2019 07:12:22 -0700 (PDT)
+        bh=KRgBJxZK6iBuT/CcMbiDw89iBtp15koM2kwiNVbKbXI=;
+        b=MIQYLhpfdR4CxKSxotuLA70JnGfs3M73iAln7tnTYZLM4mj1L/qwKufvivQb4/aD0H
+         IKSK+RiwEh/hPfr4Ond8VFkujfwZO3CkMlvxWtKci2cfJ5jv3rVRJFFDJmO80LIusC4U
+         Po18vN1s5i7xgUa2w3aIdD5Qk/xHnleODpAnBxMSa/1pE2xvvCkn3uU6V7ulcOUpLsBK
+         E803mvLfE4w/+d7R9W7A1ytTPWqFgm6dloxB4lw85myTIX+Q+hWp5BP4wugiQdeASuKI
+         SXkUXMsBEvbA5ichAd2Paw34hM6Q0PX+1swq5oGPxWnFNTjLuL+gLgkzNERD6VzhhZP9
+         GfPw==
+X-Gm-Message-State: APjAAAWTJukRDhnH1Pv/tpiD/CJpNSRJJZSZsyFjzE9DxmNLsejXouWG
+	PvM8wsPpdbnCerCRXNh3kpHPKlPdlJ5dOQ==
+X-Google-Smtp-Source: APXvYqwXWYxIrxHayNdUv/4cVr7d0Y/MFUcC3ITtz4dUddTzngC6czuB4SjZCyHCkgmdfGzi3Oy4aw==
+X-Received: by 2002:a81:3c81:: with SMTP id j123mr19838806ywa.393.1570457708770;
+        Mon, 07 Oct 2019 07:15:08 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [192.168.1.44] (67.216.144.16.pool.hargray.net. [67.216.144.16])
-        by smtp.gmail.com with ESMTPSA id 207sm3905897ywu.106.2019.10.07.07.12.21
+        by smtp.gmail.com with ESMTPSA id u69sm4108700ywu.93.2019.10.07.07.15.07
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 07 Oct 2019 07:12:21 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PATCH v2 05/15] target/arm/arm-semi: Restrict use
- of TaskState*
+        Mon, 07 Oct 2019 07:15:08 -0700 (PDT)
+Subject: Re: [Qemu-devel] [PATCH v2 07/15] target/arm/arm-semi: Factor out
+ implementation of SYS_CLOSE
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <20190916141544.17540-1-peter.maydell@linaro.org>
- <20190916141544.17540-6-peter.maydell@linaro.org>
+ <20190916141544.17540-8-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <70f8f360-def7-5216-32dd-310a48ff1456@linaro.org>
-Date: Mon, 7 Oct 2019 10:12:19 -0400
+Message-ID: <9c71ae7c-fed1-d48c-2114-30177511246d@linaro.org>
+Date: Mon, 7 Oct 2019 10:15:05 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20190916141544.17540-6-peter.maydell@linaro.org>
+In-Reply-To: <20190916141544.17540-8-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-TUID: Keo57FoxRB6H
+X-TUID: I5+6pEXR10Hv
 
 On 9/16/19 7:15 AM, Peter Maydell wrote:
-> The semihosting code needs accuss to the linux-user only
-> TaskState pointer so it can set the semihosting errno per-thread
-> for linux-user mode. At the moment we do this by having some
-> ifdefs so that we define a 'ts' local in do_arm_semihosting()
-> which is either a real TaskState * or just a CPUARMState *,
-> depending on which mode we're compiling for.
+> Currently for the semihosting calls which take a file descriptor
+> (SYS_CLOSE, SYS_WRITE, SYS_READ, SYS_ISTTY, SYS_SEEK, SYS_FLEN)
+> we have effectively two implementations, one for real host files
+> and one for when we indirect via the gdbstub. We want to add a
+> third one to deal with the magic :semihosting-features file.
 > 
-> This is awkward if we want to refactor do_arm_semihosting()
-> into other functions which might need to be passed the TaskState.
-> Restrict usage of the TaskState local by:
->  * making set_swi_errno() always take the CPUARMState pointer
->    and (for the linux-user version) get TaskState from that
->  * creating a new get_swi_errno() which reads the errno
->  * having the two semihosting calls which need the TaskState
->    for other purposes (SYS_GET_CMDLINE and SYS_HEAPINFO)
->    define a variable with scope restricted to just that code
+> Instead of having a three-way if statement in each of these
+> cases, factor out the implementation of the calls to separate
+> functions which we dispatch to via function pointers selected
+> via the GuestFDType for the guest fd.
+> 
+> In this commit, we set up the framework for the dispatch,
+> and convert the SYS_CLOSE call to use it.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
-> We use 'CPUARMState *', aka 'env', rather than the other
-> options of passing the ARMCPU* or the CPUState *, purely
-> because it means that the later refactoring of each SYS_*
-> can pass just the CPUARMState * and incidentally avoid
-> an ugly ifdef caused by the implicit use of env in the
-> softmmu lock_user().
-> ---
->  target/arm/arm-semi.c | 111 ++++++++++++++++++++++++------------------
->  1 file changed, 63 insertions(+), 48 deletions(-)
+>  target/arm/arm-semi.c | 44 ++++++++++++++++++++++++++++++++++++-------
+>  1 file changed, 37 insertions(+), 7 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

@@ -1,81 +1,106 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4060021wrm;
-        Mon, 7 Oct 2019 10:11:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqz4WUfPrCFSWdp4TgKYFwwlMhsmzAn3rqGeZ6Cx9yxvpJOZFGu8N8kKXA5vIl5DKfxP11EN
-X-Received: by 2002:ac8:3647:: with SMTP id n7mr32114072qtb.159.1570468275338;
-        Mon, 07 Oct 2019 10:11:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570468275; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4060740wrm;
+        Mon, 7 Oct 2019 10:11:49 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyDsSJ+nZaFIFgNjK9F/VZAfFx132p+C7u18M8lRxTF/ec4F2qUK+U7/q8HZT7LT5JxWw6x
+X-Received: by 2002:aed:3b19:: with SMTP id p25mr2963098qte.355.1570468309585;
+        Mon, 07 Oct 2019 10:11:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570468309; cv=none;
         d=google.com; s=arc-20160816;
-        b=PLNLlpck5ceyhyrqA2ZIAfxhZlcjENTyQhm05ZiiFoHHZPAG6KjqwSFCTZ+s9dfr0p
-         teMICY/TIYSE8TIS5PCwf30Hk866WhgRo027wcAYo5ACjLU/tlUdBgoSEMOimKhT2duX
-         mkI73eThW8EPRih5qkjpyBl76Er46beoo4IiL13Qlyh+z4x5EVZy8fJgVaPCMtYCnWkl
-         Qdca31XG2QZogwz5FaHz0J1h7QOSHCJIhLpA/qoJaica0YcRlXrtnO2ISr1b5QA0qCYB
-         aZNyVDOisuYEae0Yvj41PbJbiCUWZqhPmg+PGm1Q4Mpu3dp7WX9aSMIEYxhPnAe405pz
-         duJQ==
+        b=lsi7ZZy5GoxTYcKdLkinnSBr9XylKvZasjYRBFDP3YNc06RIxEZOzDAMSVuFn/utZY
+         BJRaGj4dl7IdByHwhZgmSCc/vCsd3jxv7lT7hchGaoQiu6MAWU+4ukvTVSo8UmdhEWIe
+         vHHTfjKUiTFXt13b+YvbXiaIcO6KsCIvelt8TdoT+S5KLT8SqOzPanZdaD1ybIKqM8Y5
+         M4BDe40OJx0ClE0KZxf40zWxrfUlYO2zy0VxPUyAFZst5NV3aF/J4hSqgp5DHQ8xjPxu
+         fPaPX2DwD5OIGfgynjyRQSF/1zRDBv9JpR3Lux2UKsCnlygg1ym7how2QnaZxEElU9Mb
+         UXRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=Rc+crDEzJI9Ct0JbyFQMRMok9bXtrzxvw4oEmUGcqQk=;
-        b=s9/AyaQVb75djreF1D3bLF0cJ8HQP7IlpMBmqjjvhU60qnFtjxn6oBcMg4sg9FuSVt
-         sahVKhcs8Lzt4HwDqPGLohIYZmocY6xvdfsR2QdnJXUnU8lsPkcdTYaeU3dFPkES2gQP
-         /hDh0eUCMRDs/ILJpLSJjp/dNNxSngD3+7odtgr8Iocd4WBmUyA4+fa4UXOtSbd0qWqq
-         pGp4RORnyo/XsJN+4Eb8rYxWbAAFU1ICGArS9tCuu5do8b4MWNDHdS5lK48Xg3qAoWmc
-         BlNzs3bUHfHN0DKH5hty6Dn2His/XSqlfRmHFI+R/NO/8k+wV9R8DOvuXaXxIV0mJpjY
-         xSBw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=h9QPSdYlAgh15MXqatIxr3w1iFSHreJWGKOTOlnlE1I=;
+        b=Pm4+3LjiJOCOVC98+R1/LTMnRuEqcJhj2dYW9QQ5afiNn7GaaO59DWmr10VOLUoLDL
+         WpAOr61PsigiiwUQhZGVxSLGmpe3pvG4ChRvYmvOuhWZ28tSpOqahhIZvHp9LxMrIovz
+         kcr5fr6CdyCDDGc175L/W7UxY3SJJfw1UoQKed/Q0U3rF1o6p/0uPkfd61EYBDu3B11b
+         jnLb1ituY+L3PL8sNpZcoSV1Ux6YHs2aFEkeAi81DS5PjPzszsLkbllkTDUWdhj3XSEE
+         8YDth9HRxQplxKXdFuW/4DbDJTjfEip2GHPtf02m1DnQaSP4vYnM5KFMwIA0RlsNoYAm
+         SozQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="m36v3Zb/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d26si13138853qkj.211.2019.10.07.10.11.15
+        by mx.google.com with ESMTPS id r67si13994410qke.318.2019.10.07.10.11.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Oct 2019 10:11:15 -0700 (PDT)
+        Mon, 07 Oct 2019 10:11:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47956 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="m36v3Zb/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47962 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iHWXS-0003O9-N2
-	for alex.bennee@linaro.org; Mon, 07 Oct 2019 13:11:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36916)
+	id 1iHWY0-00044Q-VG
+	for alex.bennee@linaro.org; Mon, 07 Oct 2019 13:11:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37044)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1iHWT1-0006KI-Bg
- for qemu-arm@nongnu.org; Mon, 07 Oct 2019 13:06:40 -0400
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iHWTM-0006rr-Kl
+ for qemu-arm@nongnu.org; Mon, 07 Oct 2019 13:07:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1iHWSz-0004qx-Qj
- for qemu-arm@nongnu.org; Mon, 07 Oct 2019 13:06:39 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:53622)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>)
- id 1iHWSz-0004qW-IU; Mon, 07 Oct 2019 13:06:37 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 5A21A307CDD1;
- Mon,  7 Oct 2019 17:06:36 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1275E5D9C9;
- Mon,  7 Oct 2019 17:06:34 +0000 (UTC)
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Subject: [RFC PATCH 5/5] target/arm/cpu: Add the kvm-adjvtime CPU property
-Date: Mon,  7 Oct 2019 19:06:22 +0200
-Message-Id: <20191007170622.1814-6-drjones@redhat.com>
-In-Reply-To: <20191007170622.1814-1-drjones@redhat.com>
-References: <20191007170622.1814-1-drjones@redhat.com>
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iHWTL-0004xo-BG
+ for qemu-arm@nongnu.org; Mon, 07 Oct 2019 13:07:00 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:40868)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iHWTI-0004vX-CS; Mon, 07 Oct 2019 13:06:56 -0400
+Received: by mail-wr1-x442.google.com with SMTP id h4so7494229wrv.7;
+ Mon, 07 Oct 2019 10:06:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=h9QPSdYlAgh15MXqatIxr3w1iFSHreJWGKOTOlnlE1I=;
+ b=m36v3Zb/J0IfGdJFu2+4hn+/UczY3B6eSt/YcSsm5tXpqxY1MMQZSazW7e21aXpBxc
+ o/INrxvyIe6/Tvbc6qdhoQpLNxxN5KTcCInpe7Y9mrgqFENcnSKHMbBy4HerS5FYSoCj
+ 2rlNzJfGB1jlhVid5ibz2dgjhFq63D/Zn2dZrMv5A6UQfXLDqW/PWwi2Tmb0PNJaTJsX
+ J4qbPFug3ONq+PNYqx87AHVKl13fj1DMymb6xc66xO4mwsJCtZN5PX2CkspPaHINXqOY
+ 845a5a0KJf7t7JV77JCt2P0DlcLVTVgnsv9TtPN+LQF9q06MUko96fmVnU0RUv0IG5Ns
+ I4eA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=h9QPSdYlAgh15MXqatIxr3w1iFSHreJWGKOTOlnlE1I=;
+ b=VUVL09sCWDNZMyp/4y9FrZ2PaPvURyL9AIFcPjfElK3YPwDmZGM1WcblomleJcCMRT
+ eSqf92oCFZZR7seMksJBTfU9zn5ooef6/gRSfEbbRARyfjBLf75srjRE1IqSCPwkmRTt
+ XBTUD2Okz6IO4IksfgiWeDMuevLbLpv/qB4wI4KIQTSlDhN16P6zUtkojl0imm+GFKj6
+ Hp2Gv7duPp6paqAAFNNqLpM4OvUh58DKxMsajrYhwfzYNNc79txvUEhRyWEDPqiDIQn1
+ pMM86NDW5U0iS1vQ4PpOxZHeVVJ5UhjxgSK2+a85poYOAz+YQOOHFcg/tw5Qukx964Hh
+ XZcw==
+X-Gm-Message-State: APjAAAUPkdBNBWYw3kwBh92dXGU7yVUs5icfnZu/M4bBg/hypjHzuLeb
+ R51e8qnl6Pb9gsq4cVb/b2Jiy1dQsG0=
+X-Received: by 2002:adf:e88f:: with SMTP id d15mr8093875wrm.324.1570468015165; 
+ Mon, 07 Oct 2019 10:06:55 -0700 (PDT)
+Received: from x1w.redhat.com (46.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.46])
+ by smtp.gmail.com with ESMTPSA id x5sm14036603wrt.75.2019.10.07.10.06.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 07 Oct 2019 10:06:54 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 3/3] hw: Move BCM2835 AUX device from hw/char/ to hw/misc/
+Date: Mon,  7 Oct 2019 19:06:46 +0200
+Message-Id: <20191007170646.14961-4-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.0
+In-Reply-To: <20191007170646.14961-1-f4bug@amsat.org>
+References: <20191007170646.14961-1-f4bug@amsat.org>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.49]); Mon, 07 Oct 2019 17:06:36 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::442
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,232 +112,118 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, bijan.mottahedeh@oracle.com, maz@kernel.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Marc-Andre Lureau <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lDcEBlJJDQSu
+X-TUID: lcW7bAFS9Oat
 
-kvm-adjvtime is a KVM specific CPU property and a first of its kind.
-To accommodate it we also add kvm_arm_add_vcpu_properties() and a
-KVM specific CPU properties description to the CPU features document.
+The BCM2835 AUX device is a MUX between one UART block and two SPI
+blocks. Move it to the hw/misc/ folder.
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- docs/arm-cpu-features.rst | 27 ++++++++++++++++++++++++++-
- target/arm/cpu.c          |  2 ++
- target/arm/cpu64.c        |  1 +
- target/arm/kvm.c          | 27 +++++++++++++++++++++++++++
- target/arm/kvm_arm.h      | 11 +++++++++++
- target/arm/monitor.c      |  1 +
- tests/arm-cpu-features.c  |  4 ++++
- 7 files changed, 72 insertions(+), 1 deletion(-)
+ hw/char/Makefile.objs                   | 1 -
+ hw/char/trace-events                    | 4 ----
+ hw/misc/Makefile.objs                   | 1 +
+ hw/{char => misc}/bcm2835_aux.c         | 2 +-
+ hw/misc/trace-events                    | 4 ++++
+ include/hw/arm/bcm2835_peripherals.h    | 2 +-
+ include/hw/{char => misc}/bcm2835_aux.h | 0
+ 7 files changed, 7 insertions(+), 7 deletions(-)
+ rename hw/{char => misc}/bcm2835_aux.c (99%)
+ rename include/hw/{char => misc}/bcm2835_aux.h (100%)
 
-diff --git a/docs/arm-cpu-features.rst b/docs/arm-cpu-features.rst
-index 1b367e22e16e..5c317296845f 100644
---- a/docs/arm-cpu-features.rst
-+++ b/docs/arm-cpu-features.rst
-@@ -31,7 +31,9 @@ supporting the feature or only supporting the feature u=
-nder certain
- configurations.  For example, the `aarch64` CPU feature, which, when
- disabled, enables the optional AArch32 CPU feature, is only supported
- when using the KVM accelerator and when running on a host CPU type that
--supports the feature.
-+supports the feature.  While `aarch64` currently only works with KVM,
-+it could work with TCG.  CPU features that are specific to KVM are
-+prefixed with "kvm-" and are described in "KVM VCPU Features".
-=20
- CPU Feature Probing
- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-@@ -171,6 +173,29 @@ disabling many SVE vector lengths would be quite ver=
-bose, the `sve<N>` CPU
- properties have special semantics (see "SVE CPU Property Parsing
- Semantics").
-=20
-+KVM VCPU Features
-+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-+
-+KVM VCPU features are CPU features that are specific to KVM, such as
-+paravirt features or features that enable CPU virtualization extensions.
-+The features' CPU properties are only available when KVM is enabled and =
-are
-+named with the prefix "kvm-".  KVM VCPU features may be probed, enabled,=
- and
-+disabled in the same way as other CPU features.  Below is the list of KV=
-M
-+VCPU features and their descriptions.
-+
-+  kvm-adjvtime             When enabled, each time the VM transitions ba=
-ck
-+                           to running state the VCPU's vitual counter is
-+                           updated to ensure stopped time is not counted=
-.
-+                           This avoids time jumps surprising guest OSes =
-and
-+                           applications, as long as they use the virtual
-+                           counter for timekeeping, but has the side eff=
-ect
-+                           of the virtual and physical counters divergin=
-g.
-+                           All timekeeping based on the virtual counter =
-will
-+                           appear to lag behind any timekeeping that doe=
-s
-+                           not subtract VM stopped time.  The guest may
-+                           resynchronize its virtual counter with other =
-time
-+                           sources as needed.
-+
- SVE CPU Properties
- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-=20
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 7695ae551218..d8ad26438f9f 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2483,6 +2483,7 @@ static void arm_max_initfn(Object *obj)
-=20
-     if (kvm_enabled()) {
-         kvm_arm_set_cpu_features_from_host(cpu);
-+        kvm_arm_add_vcpu_properties(obj);
-     } else {
-         cortex_a15_initfn(obj);
-=20
-@@ -2674,6 +2675,7 @@ static void arm_host_initfn(Object *obj)
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-         aarch64_add_sve_properties(obj);
-     }
-+    kvm_arm_add_vcpu_properties(obj);
-     arm_cpu_post_init(obj);
- }
-=20
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 68baf0482ffa..c9a657a178ce 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -620,6 +620,7 @@ static void aarch64_max_initfn(Object *obj)
-=20
-     if (kvm_enabled()) {
-         kvm_arm_set_cpu_features_from_host(cpu);
-+        kvm_arm_add_vcpu_properties(obj);
-     } else {
-         uint64_t t;
-         uint32_t u;
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index f79b9b8ef57a..1652e3febe51 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -17,6 +17,8 @@
- #include "qemu/timer.h"
- #include "qemu/error-report.h"
- #include "qemu/main-loop.h"
-+#include "qom/object.h"
-+#include "qapi/error.h"
- #include "sysemu/sysemu.h"
- #include "sysemu/kvm.h"
- #include "sysemu/kvm_int.h"
-@@ -179,6 +181,31 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
-     env->features =3D arm_host_cpu_features.features;
- }
-=20
-+static bool kvm_adjvtime_get(Object *obj, Error **errp)
-+{
-+    return ARM_CPU(obj)->kvm_adjvtime;
-+}
-+
-+static void kvm_adjvtime_set(Object *obj, bool value, Error **errp)
-+{
-+    ARM_CPU(obj)->kvm_adjvtime =3D value;
-+}
-+
-+/* KVM VCPU properties should be prefixed with "kvm-". */
-+void kvm_arm_add_vcpu_properties(Object *obj)
-+{
-+    if (!kvm_enabled()) {
-+        return;
-+    }
-+
-+    object_property_add_bool(obj, "kvm-adjvtime", kvm_adjvtime_get,
-+                             kvm_adjvtime_set, &error_abort);
-+    object_property_set_description(obj, "kvm-adjvtime",
-+                                    "Set on to enable the adjustment of =
-"
-+                                    "the virtual counter. VM stopped tim=
-e "
-+                                    "will not be counted.", &error_abort=
-);
-+}
-+
- bool kvm_arm_pmu_supported(CPUState *cpu)
- {
-     KVMState *s =3D KVM_STATE(current_machine->accelerator);
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index d506c4e84be6..5d8077df6a4a 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -232,6 +232,15 @@ void kvm_arm_sve_get_vls(CPUState *cs, unsigned long=
- *map);
+diff --git a/hw/char/Makefile.objs b/hw/char/Makefile.objs
+index 5bd93bde9f..d6b8ce5e60 100644
+--- a/hw/char/Makefile.objs
++++ b/hw/char/Makefile.objs
+@@ -20,7 +20,6 @@ obj-$(CONFIG_SH4) += sh_serial.o
+ obj-$(CONFIG_PSERIES) += spapr_vty.o
+ obj-$(CONFIG_DIGIC) += digic-uart.o
+ obj-$(CONFIG_STM32F2XX_USART) += stm32f2xx_usart.o
+-obj-$(CONFIG_RASPI) += bcm2835_aux.o
+ 
+ common-obj-$(CONFIG_RASPI) += bcm2835_miniuart.o
+ common-obj-$(CONFIG_CMSDK_APB_UART) += cmsdk-apb-uart.o
+diff --git a/hw/char/trace-events b/hw/char/trace-events
+index 0c86a907df..f1e6dd9918 100644
+--- a/hw/char/trace-events
++++ b/hw/char/trace-events
+@@ -1,9 +1,5 @@
+ # See docs/devel/tracing.txt for syntax documentation.
+ 
+-# bcm2835_aux.c
+-bcm2835_aux_read(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
+-bcm2835_aux_write(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
+-
+ # bcm2835_miniuart.c
+ bcm2835_miniuart_read(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
+ bcm2835_miniuart_write(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index a150680966..9ffeee7f46 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -50,6 +50,7 @@ common-obj-$(CONFIG_OMAP) += omap_gpmc.o
+ common-obj-$(CONFIG_OMAP) += omap_l4.o
+ common-obj-$(CONFIG_OMAP) += omap_sdrc.o
+ common-obj-$(CONFIG_OMAP) += omap_tap.o
++common-obj-$(CONFIG_RASPI) += bcm2835_aux.o
+ common-obj-$(CONFIG_RASPI) += bcm2835_mbox.o
+ common-obj-$(CONFIG_RASPI) += bcm2835_property.o
+ common-obj-$(CONFIG_RASPI) += bcm2835_rng.o
+diff --git a/hw/char/bcm2835_aux.c b/hw/misc/bcm2835_aux.c
+similarity index 99%
+rename from hw/char/bcm2835_aux.c
+rename to hw/misc/bcm2835_aux.c
+index a1ca9741d6..83698e2ece 100644
+--- a/hw/char/bcm2835_aux.c
++++ b/hw/misc/bcm2835_aux.c
+@@ -12,7 +12,7 @@
   */
- void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
-=20
-+/**
-+ * void kvm_arm_add_vcpu_properties:
-+ * @obj: The CPU object to add the properties to
-+ *
-+ * Add all KVM specific CPU properties to the CPU object. These
-+ * are the CPU properties with "kvm-" prefixed names.
-+ */
-+void kvm_arm_add_vcpu_properties(Object *obj);
+ 
+ #include "qemu/osdep.h"
+-#include "hw/char/bcm2835_aux.h"
++#include "hw/misc/bcm2835_aux.h"
+ #include "hw/irq.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/registerfields.h"
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 74276225f8..0756d58162 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -1,5 +1,9 @@
+ # See docs/devel/tracing.txt for syntax documentation.
+ 
++# bcm2835_aux.c
++bcm2835_aux_read(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
++bcm2835_aux_write(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
 +
- /**
-  * void kvm_arm_set_virtual_time:
-  * @cs: CPUState
-@@ -308,6 +317,8 @@ static inline void kvm_arm_set_cpu_features_from_host=
-(ARMCPU *cpu)
-     cpu->host_cpu_probe_failed =3D true;
- }
-=20
-+static inline void kvm_arm_add_vcpu_properties(Object *obj) {}
-+
- static inline bool kvm_arm_aarch32_supported(CPUState *cs)
- {
-     return false;
-diff --git a/target/arm/monitor.c b/target/arm/monitor.c
-index e912ed2cefa0..a89976fe7e4b 100644
---- a/target/arm/monitor.c
-+++ b/target/arm/monitor.c
-@@ -103,6 +103,7 @@ static const char *cpu_model_advertised_features[] =3D=
- {
-     "sve128", "sve256", "sve384", "sve512",
-     "sve640", "sve768", "sve896", "sve1024", "sve1152", "sve1280",
-     "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
-+    "kvm-adjvtime",
-     NULL
- };
-=20
-diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
-index ee444b04010f..c207a2bec9e9 100644
---- a/tests/arm-cpu-features.c
-+++ b/tests/arm-cpu-features.c
-@@ -417,6 +417,8 @@ static void test_query_cpu_model_expansion(const void=
- *data)
-     assert_has_feature_enabled(qts, "cortex-a15", "pmu");
-     assert_has_not_feature(qts, "cortex-a15", "aarch64");
-=20
-+    assert_has_not_feature(qts, "max", "kvm-adjvtime");
-+
-     if (g_str_equal(qtest_get_arch(), "aarch64")) {
-         assert_has_feature_enabled(qts, "max", "aarch64");
-         assert_has_feature_enabled(qts, "max", "sve");
-@@ -445,6 +447,8 @@ static void test_query_cpu_model_expansion_kvm(const =
-void *data)
-=20
-     assert_has_feature_enabled(qts, "host", "pmu");
-=20
-+    assert_has_feature_disabled(qts, "host", "kvm-adjvtime");
-+
-     if (g_str_equal(qtest_get_arch(), "aarch64")) {
-         bool kvm_supports_sve;
-         char max_name[8], name[8];
---=20
-2.20.1
+ # eccmemctl.c
+ ecc_mem_writel_mer(uint32_t val) "Write memory enable 0x%08x"
+ ecc_mem_writel_mdr(uint32_t val) "Write memory delay 0x%08x"
+diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
+index 6b17f6a382..7aae515d7e 100644
+--- a/include/hw/arm/bcm2835_peripherals.h
++++ b/include/hw/arm/bcm2835_peripherals.h
+@@ -13,7 +13,7 @@
+ 
+ #include "hw/sysbus.h"
+ #include "hw/char/pl011.h"
+-#include "hw/char/bcm2835_aux.h"
++#include "hw/misc/bcm2835_aux.h"
+ #include "hw/display/bcm2835_fb.h"
+ #include "hw/dma/bcm2835_dma.h"
+ #include "hw/intc/bcm2835_ic.h"
+diff --git a/include/hw/char/bcm2835_aux.h b/include/hw/misc/bcm2835_aux.h
+similarity index 100%
+rename from include/hw/char/bcm2835_aux.h
+rename to include/hw/misc/bcm2835_aux.h
+-- 
+2.21.0
 

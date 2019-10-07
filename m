@@ -1,560 +1,318 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4056252wrm;
-        Mon, 7 Oct 2019 10:07:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx3z5y9KV5ewVBGga40iaSjqDuUMcWwmBF13M1xx2LJRGG/lSUZRYSKYl5NGCYwtHECaLi+
-X-Received: by 2002:a17:906:ecf6:: with SMTP id qt22mr24759608ejb.212.1570468079586;
-        Mon, 07 Oct 2019 10:07:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570468079; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4060021wrm;
+        Mon, 7 Oct 2019 10:11:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz4WUfPrCFSWdp4TgKYFwwlMhsmzAn3rqGeZ6Cx9yxvpJOZFGu8N8kKXA5vIl5DKfxP11EN
+X-Received: by 2002:ac8:3647:: with SMTP id n7mr32114072qtb.159.1570468275338;
+        Mon, 07 Oct 2019 10:11:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570468275; cv=none;
         d=google.com; s=arc-20160816;
-        b=BYZthyZYhKk2MKtn/2WgaasKkTFoypZeid4b0zxvAQaluB6yfPamnwMrTgdXT5o5Wk
-         RId3t/HXvEOoFfmm9J5k5EzflHLjq1U55N6Ri/NngEPzecqdVJPN0koGEumdvBAS1S+M
-         v1mUkCUoa9Yl4caJo617R3k4Kk4VTNoeeO6uAnCdHVEBh7od/BrOpxvk8qhNyqqGx0iY
-         iaSUsywhvWFeBwg/woyK4BHwjbCxQrm7TqdO+wqG4sQPq7ARjwE+BV7C8iaCX5PmK5nl
-         RbFVl3br4B1D6LTG+pcpCaXLNhVoimghBVgCb/XDVva8+BiLkbEr7/LfTJly1JbDeiyP
-         tdEA==
+        b=PLNLlpck5ceyhyrqA2ZIAfxhZlcjENTyQhm05ZiiFoHHZPAG6KjqwSFCTZ+s9dfr0p
+         teMICY/TIYSE8TIS5PCwf30Hk866WhgRo027wcAYo5ACjLU/tlUdBgoSEMOimKhT2duX
+         mkI73eThW8EPRih5qkjpyBl76Er46beoo4IiL13Qlyh+z4x5EVZy8fJgVaPCMtYCnWkl
+         Qdca31XG2QZogwz5FaHz0J1h7QOSHCJIhLpA/qoJaica0YcRlXrtnO2ISr1b5QA0qCYB
+         aZNyVDOisuYEae0Yvj41PbJbiCUWZqhPmg+PGm1Q4Mpu3dp7WX9aSMIEYxhPnAe405pz
+         duJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=jSz3lu3Ei18RQg3y4i6HEF7/UO7Edvfr6eCMaBljwiQ=;
-        b=nsPuDpj8YiPnbNLN/U5BNdM8sr8GWJ6MlGgjAa0seP3Cvax7pQn71l8oYhD6NGRgi6
-         Dwp0zTsT11MCks75ZghsACdeFtlYC85M/kMTUpmO4Cd1xQbRVdA6h2lQbXp7nq5uo9Cq
-         xFVx4hqEQzAZhH2irKkn3IzltCdJedxslAptWAuC7gmqpFCBMmsM96kJJpiZruUypYBt
-         AWD/kO5ofu42QLEob6t26srvHnzzjg7ANUWBw+ts7ij/Dn5FCqPsz3nxafnfCR+EUqat
-         1BSRYnnC2/47Lg1S7BE+yS/0uE64THi33RhPajol/P5mZSY0KVwR4YyXMh6kb226UHW3
-         fu5A==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=Rc+crDEzJI9Ct0JbyFQMRMok9bXtrzxvw4oEmUGcqQk=;
+        b=s9/AyaQVb75djreF1D3bLF0cJ8HQP7IlpMBmqjjvhU60qnFtjxn6oBcMg4sg9FuSVt
+         sahVKhcs8Lzt4HwDqPGLohIYZmocY6xvdfsR2QdnJXUnU8lsPkcdTYaeU3dFPkES2gQP
+         /hDh0eUCMRDs/ILJpLSJjp/dNNxSngD3+7odtgr8Iocd4WBmUyA4+fa4UXOtSbd0qWqq
+         pGp4RORnyo/XsJN+4Eb8rYxWbAAFU1ICGArS9tCuu5do8b4MWNDHdS5lK48Xg3qAoWmc
+         BlNzs3bUHfHN0DKH5hty6Dn2His/XSqlfRmHFI+R/NO/8k+wV9R8DOvuXaXxIV0mJpjY
+         xSBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vbK7cbx6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id qn24si7176708ejb.200.2019.10.07.10.07.59
+        by mx.google.com with ESMTPS id d26si13138853qkj.211.2019.10.07.10.11.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Oct 2019 10:07:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 07 Oct 2019 10:11:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vbK7cbx6;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47916 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47956 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iHWUI-0007Ak-0M
-	for alex.bennee@linaro.org; Mon, 07 Oct 2019 13:07:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37014)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iHWXS-0003O9-N2
+	for alex.bennee@linaro.org; Mon, 07 Oct 2019 13:11:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36916)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iHWTJ-0006nT-HW
- for qemu-devel@nongnu.org; Mon, 07 Oct 2019 13:06:59 -0400
+ (envelope-from <drjones@redhat.com>) id 1iHWT1-0006KI-Bg
+ for qemu-arm@nongnu.org; Mon, 07 Oct 2019 13:06:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iHWTH-0004vM-Df
- for qemu-devel@nongnu.org; Mon, 07 Oct 2019 13:06:57 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:35082)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iHWTH-0004vF-68; Mon, 07 Oct 2019 13:06:55 -0400
-Received: by mail-wr1-x441.google.com with SMTP id v8so16239438wrt.2;
- Mon, 07 Oct 2019 10:06:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=jSz3lu3Ei18RQg3y4i6HEF7/UO7Edvfr6eCMaBljwiQ=;
- b=vbK7cbx6/RPzArOaurIS//EaiIvrmzYKTJCLh9oQX7UFr7mRFZuZEUoYeTrkkFWKgv
- To2M5d7dLoijsWY7KRiWjAVugZxuRuzSFplVnOyzHSgI/vnrk49Z/3YpgCVV5gZ3pgbQ
- z+nEylQggiHGcxz5xwsFOEi8UMz7BOk9vgMyYGW3DZkI3a0i8AyBDD9bUdWCdBI8eztc
- cOK7EylFzCNVbmh+T/WM43JYFgS2710dv121VoXG5eE6r5ssD++4SFy8qy1sTIe9SiVt
- 1ojt4nn+7CKF+QAC0gJVcPisBmRmuluci+gLrNRM54f0AH5SF3HVnNbA0xFkq/no8qrF
- YSIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=jSz3lu3Ei18RQg3y4i6HEF7/UO7Edvfr6eCMaBljwiQ=;
- b=kXa4H2MHPr/rWVJGjpNWpGklnSHWrQeH91gycjfMCpaf4rQNEcHSCoTKI62IYvAffl
- ltPEj2XXyCVQ4kXvA0wY+ZALwZJlXyU+rynPXj7HmQocfDghiWZmcCprhMk3HQDkmo2r
- AQzGpch06mFj5M0b8t+4/TxfBgiJtlOmCx3sWI45FrqKcNmkGtWm2qtj8VqLv2Hqfq7g
- qLSqWlSgebI0jsB2m292OJoIdHPyzBIJG2DhG2OKTHpNPjZrkss7CbUOL54ztbPsVCkC
- dS3W0aUEIUaK3UhbTumgSHVeZ+EoVEHUGwCVSZPozrE9GboycZSEt+FayFoyenWU6oMv
- dhGg==
-X-Gm-Message-State: APjAAAX2oaYUxiWO3r/YeqK/f1kIpV4TwDpfxhOdu+LZyUCOTLBG7Hi2
- JtAV6RGDzQ9Gof9+qzFTQvudRy5YFRE=
-X-Received: by 2002:a5d:574f:: with SMTP id q15mr11769311wrw.362.1570468013802; 
- Mon, 07 Oct 2019 10:06:53 -0700 (PDT)
-Received: from x1w.redhat.com (46.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.46])
- by smtp.gmail.com with ESMTPSA id x5sm14036603wrt.75.2019.10.07.10.06.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Oct 2019 10:06:53 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 2/3] hw/char/bcm2835_aux: Use the BCM2835 miniuart block
-Date: Mon,  7 Oct 2019 19:06:45 +0200
-Message-Id: <20191007170646.14961-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.0
-In-Reply-To: <20191007170646.14961-1-f4bug@amsat.org>
-References: <20191007170646.14961-1-f4bug@amsat.org>
+ (envelope-from <drjones@redhat.com>) id 1iHWSz-0004qx-Qj
+ for qemu-arm@nongnu.org; Mon, 07 Oct 2019 13:06:39 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53622)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <drjones@redhat.com>)
+ id 1iHWSz-0004qW-IU; Mon, 07 Oct 2019 13:06:37 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 5A21A307CDD1;
+ Mon,  7 Oct 2019 17:06:36 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1275E5D9C9;
+ Mon,  7 Oct 2019 17:06:34 +0000 (UTC)
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Subject: [RFC PATCH 5/5] target/arm/cpu: Add the kvm-adjvtime CPU property
+Date: Mon,  7 Oct 2019 19:06:22 +0200
+Message-Id: <20191007170622.1814-6-drjones@redhat.com>
+In-Reply-To: <20191007170622.1814-1-drjones@redhat.com>
+References: <20191007170622.1814-1-drjones@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::441
-X-BeenThere: qemu-devel@nongnu.org
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.49]); Mon, 07 Oct 2019 17:06:36 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- Marc-Andre Lureau <marcandre.lureau@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LNWGh5xYUlr6
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, bijan.mottahedeh@oracle.com, maz@kernel.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lDcEBlJJDQSu
 
-In the previous commit we extracted the miniuart block. Time to
-use it. It is mapped at offset 0x40 in the AUX block, and uses
-the first IRQ.
+kvm-adjvtime is a KVM specific CPU property and a first of its kind.
+To accommodate it we also add kvm_arm_add_vcpu_properties() and a
+KVM specific CPU properties description to the CPU features document.
 
-Due to incomplete Clock Tree support, Linux kernel fails at
-initializing the UART clock and disable this block. For now Disable
-this feature with the 'aux_enable_supported' variable.
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- hw/char/bcm2835_aux.c         | 280 +++++++++-------------------------
- hw/char/trace-events          |   4 +
- include/hw/char/bcm2835_aux.h |  10 +-
- 3 files changed, 83 insertions(+), 211 deletions(-)
+ docs/arm-cpu-features.rst | 27 ++++++++++++++++++++++++++-
+ target/arm/cpu.c          |  2 ++
+ target/arm/cpu64.c        |  1 +
+ target/arm/kvm.c          | 27 +++++++++++++++++++++++++++
+ target/arm/kvm_arm.h      | 11 +++++++++++
+ target/arm/monitor.c      |  1 +
+ tests/arm-cpu-features.c  |  4 ++++
+ 7 files changed, 72 insertions(+), 1 deletion(-)
 
-diff --git a/hw/char/bcm2835_aux.c b/hw/char/bcm2835_aux.c
-index 3f855196e3..a1ca9741d6 100644
---- a/hw/char/bcm2835_aux.c
-+++ b/hw/char/bcm2835_aux.c
-@@ -2,19 +2,10 @@
-  * BCM2835 (Raspberry Pi / Pi 2) Aux block (mini UART and SPI).
-  * Copyright (c) 2015, Microsoft
-  * Written by Andrew Baumann
-- * Based on pl011.c, copyright terms below:
-- *
-- * Arm PrimeCell PL011 UART
-- *
-- * Copyright (c) 2006 CodeSourcery.
-- * Written by Paul Brook
-  *
-  * This code is licensed under the GPL.
-  *
-- * At present only the core UART functions (data path for tx/rx) are
-- * implemented. The following features/registers are unimplemented:
-- *  - Line/modem control
-- *  - Scratch register
-+ * The following features/registers are unimplemented:
-  *  - Extra control
-  *  - Baudrate
-  *  - SPI interfaces
-@@ -24,189 +15,77 @@
- #include "hw/char/bcm2835_aux.h"
- #include "hw/irq.h"
- #include "hw/qdev-properties.h"
-+#include "hw/registerfields.h"
- #include "migration/vmstate.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
+diff --git a/docs/arm-cpu-features.rst b/docs/arm-cpu-features.rst
+index 1b367e22e16e..5c317296845f 100644
+--- a/docs/arm-cpu-features.rst
++++ b/docs/arm-cpu-features.rst
+@@ -31,7 +31,9 @@ supporting the feature or only supporting the feature u=
+nder certain
+ configurations.  For example, the `aarch64` CPU feature, which, when
+ disabled, enables the optional AArch32 CPU feature, is only supported
+ when using the KVM accelerator and when running on a host CPU type that
+-supports the feature.
++supports the feature.  While `aarch64` currently only works with KVM,
++it could work with TCG.  CPU features that are specific to KVM are
++prefixed with "kvm-" and are described in "KVM VCPU Features".
+=20
+ CPU Feature Probing
+ =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+@@ -171,6 +173,29 @@ disabling many SVE vector lengths would be quite ver=
+bose, the `sve<N>` CPU
+ properties have special semantics (see "SVE CPU Property Parsing
+ Semantics").
+=20
++KVM VCPU Features
++=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
++
++KVM VCPU features are CPU features that are specific to KVM, such as
++paravirt features or features that enable CPU virtualization extensions.
++The features' CPU properties are only available when KVM is enabled and =
+are
++named with the prefix "kvm-".  KVM VCPU features may be probed, enabled,=
+ and
++disabled in the same way as other CPU features.  Below is the list of KV=
+M
++VCPU features and their descriptions.
++
++  kvm-adjvtime             When enabled, each time the VM transitions ba=
+ck
++                           to running state the VCPU's vitual counter is
++                           updated to ensure stopped time is not counted=
+.
++                           This avoids time jumps surprising guest OSes =
+and
++                           applications, as long as they use the virtual
++                           counter for timekeeping, but has the side eff=
+ect
++                           of the virtual and physical counters divergin=
+g.
++                           All timekeeping based on the virtual counter =
+will
++                           appear to lag behind any timekeeping that doe=
+s
++                           not subtract VM stopped time.  The guest may
++                           resynchronize its virtual counter with other =
+time
++                           sources as needed.
++
+ SVE CPU Properties
+ =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+=20
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 7695ae551218..d8ad26438f9f 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2483,6 +2483,7 @@ static void arm_max_initfn(Object *obj)
+=20
+     if (kvm_enabled()) {
+         kvm_arm_set_cpu_features_from_host(cpu);
++        kvm_arm_add_vcpu_properties(obj);
+     } else {
+         cortex_a15_initfn(obj);
+=20
+@@ -2674,6 +2675,7 @@ static void arm_host_initfn(Object *obj)
+     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+         aarch64_add_sve_properties(obj);
+     }
++    kvm_arm_add_vcpu_properties(obj);
+     arm_cpu_post_init(obj);
+ }
+=20
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 68baf0482ffa..c9a657a178ce 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -620,6 +620,7 @@ static void aarch64_max_initfn(Object *obj)
+=20
+     if (kvm_enabled()) {
+         kvm_arm_set_cpu_features_from_host(cpu);
++        kvm_arm_add_vcpu_properties(obj);
+     } else {
+         uint64_t t;
+         uint32_t u;
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index f79b9b8ef57a..1652e3febe51 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -17,6 +17,8 @@
+ #include "qemu/timer.h"
+ #include "qemu/error-report.h"
+ #include "qemu/main-loop.h"
++#include "qom/object.h"
 +#include "qapi/error.h"
-+#include "trace.h"
- 
--#define AUX_IRQ         0x0
--#define AUX_ENABLES     0x4
--#define AUX_MU_IO_REG   0x40
--#define AUX_MU_IER_REG  0x44
--#define AUX_MU_IIR_REG  0x48
--#define AUX_MU_LCR_REG  0x4c
--#define AUX_MU_MCR_REG  0x50
--#define AUX_MU_LSR_REG  0x54
--#define AUX_MU_MSR_REG  0x58
--#define AUX_MU_SCRATCH  0x5c
--#define AUX_MU_CNTL_REG 0x60
--#define AUX_MU_STAT_REG 0x64
--#define AUX_MU_BAUD_REG 0x68
-+REG32(AUX_IRQ,      0x00)
-+REG32(AUX_ENABLE,   0x04)
- 
--/* bits in IER/IIR registers */
--#define RX_INT  0x1
--#define TX_INT  0x2
-+static const bool aux_enable_supported = false;
- 
- static void bcm2835_aux_update(BCM2835AuxState *s)
- {
--    /* signal an interrupt if either:
--     * 1. rx interrupt is enabled and we have a non-empty rx fifo, or
--     * 2. the tx interrupt is enabled (since we instantly drain the tx fifo)
--     */
--    s->iir = 0;
--    if ((s->ier & RX_INT) && s->read_count != 0) {
--        s->iir |= RX_INT;
--    }
--    if (s->ier & TX_INT) {
--        s->iir |= TX_INT;
--    }
--    qemu_set_irq(s->irq, s->iir != 0);
-+    qemu_set_irq(s->irq, !!(s->reg[R_AUX_IRQ] & s->reg[R_AUX_ENABLE]));
+ #include "sysemu/sysemu.h"
+ #include "sysemu/kvm.h"
+ #include "sysemu/kvm_int.h"
+@@ -179,6 +181,31 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+     env->features =3D arm_host_cpu_features.features;
+ }
+=20
++static bool kvm_adjvtime_get(Object *obj, Error **errp)
++{
++    return ARM_CPU(obj)->kvm_adjvtime;
 +}
 +
-+static void bcm2835_aux_set_irq(void *opaque, int irq, int level)
++static void kvm_adjvtime_set(Object *obj, bool value, Error **errp)
 +{
-+    BCM2835AuxState *s = opaque;
++    ARM_CPU(obj)->kvm_adjvtime =3D value;
++}
 +
-+    s->reg[R_AUX_IRQ] = deposit32(s->reg[R_AUX_IRQ], irq, 1, !!level);
-+
-+    bcm2835_aux_update(s);
- }
- 
- static uint64_t bcm2835_aux_read(void *opaque, hwaddr offset, unsigned size)
- {
--    BCM2835AuxState *s = opaque;
--    uint32_t c, res;
-+    BCM2835AuxState *s = BCM2835_AUX(opaque);
-+    uint32_t res = 0;
- 
-     switch (offset) {
--    case AUX_IRQ:
--        return s->iir != 0;
-+    case A_AUX_IRQ:
-+        res = s->reg[R_AUX_IRQ];
-+        break;
- 
--    case AUX_ENABLES:
--        return 1; /* mini UART permanently enabled */
--
--    case AUX_MU_IO_REG:
--        /* "DLAB bit set means access baudrate register" is NYI */
--        c = s->read_fifo[s->read_pos];
--        if (s->read_count > 0) {
--            s->read_count--;
--            if (++s->read_pos == BCM2835_AUX_RX_FIFO_LEN) {
--                s->read_pos = 0;
--            }
--        }
--        qemu_chr_fe_accept_input(&s->chr);
--        bcm2835_aux_update(s);
--        return c;
--
--    case AUX_MU_IER_REG:
--        /* "DLAB bit set means access baudrate register" is NYI */
--        return 0xc0 | s->ier; /* FIFO enables always read 1 */
--
--    case AUX_MU_IIR_REG:
--        res = 0xc0; /* FIFO enables */
--        /* The spec is unclear on what happens when both tx and rx
--         * interrupts are active, besides that this cannot occur. At
--         * present, we choose to prioritise the rx interrupt, since
--         * the tx fifo is always empty. */
--        if (s->read_count != 0) {
--            res |= 0x4;
--        } else {
--            res |= 0x2;
--        }
--        if (s->iir == 0) {
--            res |= 0x1;
--        }
--        return res;
--
--    case AUX_MU_LCR_REG:
--        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_LCR_REG unsupported\n", __func__);
--        return 0;
--
--    case AUX_MU_MCR_REG:
--        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_MCR_REG unsupported\n", __func__);
--        return 0;
--
--    case AUX_MU_LSR_REG:
--        res = 0x60; /* tx idle, empty */
--        if (s->read_count != 0) {
--            res |= 0x1;
--        }
--        return res;
--
--    case AUX_MU_MSR_REG:
--        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_MSR_REG unsupported\n", __func__);
--        return 0;
--
--    case AUX_MU_SCRATCH:
--        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_SCRATCH unsupported\n", __func__);
--        return 0;
--
--    case AUX_MU_CNTL_REG:
--        return 0x3; /* tx, rx enabled */
--
--    case AUX_MU_STAT_REG:
--        res = 0x30e; /* space in the output buffer, empty tx fifo, idle tx/rx */
--        if (s->read_count > 0) {
--            res |= 0x1; /* data in input buffer */
--            assert(s->read_count < BCM2835_AUX_RX_FIFO_LEN);
--            res |= ((uint32_t)s->read_count) << 16; /* rx fifo fill level */
--        }
--        return res;
--
--    case AUX_MU_BAUD_REG:
--        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_BAUD_REG unsupported\n", __func__);
--        return 0;
-+    case A_AUX_ENABLE:
-+        res = s->reg[R_AUX_ENABLE];
-+        break;
- 
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
-                       __func__, offset);
--        return 0;
-+        break;
-     }
-+    trace_bcm2835_aux_read(offset, res);
-+
-+    return res;
- }
- 
- static void bcm2835_aux_write(void *opaque, hwaddr offset, uint64_t value,
-                               unsigned size)
- {
--    BCM2835AuxState *s = opaque;
--    unsigned char ch;
-+    BCM2835AuxState *s = BCM2835_AUX(opaque);
- 
-+    trace_bcm2835_aux_write(offset, value);
-     switch (offset) {
--    case AUX_ENABLES:
--        if (value != 1) {
--            qemu_log_mask(LOG_UNIMP, "%s: unsupported attempt to enable SPI "
--                          "or disable UART\n", __func__);
-+    case A_AUX_ENABLE:
-+        if (value <= 1) {
-+            if (aux_enable_supported) {
-+                memory_region_set_enabled(
-+                        sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->uart), 0),
-+                        value);
-+            }
-+        } else {
-+            qemu_log_mask(LOG_UNIMP, "%s: unsupported attempt to enable SPI:"
-+                                     " 0x%"PRIx64"\n",
-+                          __func__, value);
-         }
-         break;
- 
--    case AUX_MU_IO_REG:
--        /* "DLAB bit set means access baudrate register" is NYI */
--        ch = value;
--        /* XXX this blocks entire thread. Rewrite to use
--         * qemu_chr_fe_write and background I/O callbacks */
--        qemu_chr_fe_write_all(&s->chr, &ch, 1);
--        break;
--
--    case AUX_MU_IER_REG:
--        /* "DLAB bit set means access baudrate register" is NYI */
--        s->ier = value & (TX_INT | RX_INT);
--        bcm2835_aux_update(s);
--        break;
--
--    case AUX_MU_IIR_REG:
--        if (value & 0x2) {
--            s->read_count = 0;
--        }
--        break;
--
--    case AUX_MU_LCR_REG:
--        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_LCR_REG unsupported\n", __func__);
--        break;
--
--    case AUX_MU_MCR_REG:
--        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_MCR_REG unsupported\n", __func__);
--        break;
--
--    case AUX_MU_SCRATCH:
--        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_SCRATCH unsupported\n", __func__);
--        break;
--
--    case AUX_MU_CNTL_REG:
--        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_CNTL_REG unsupported\n", __func__);
--        break;
--
--    case AUX_MU_BAUD_REG:
--        qemu_log_mask(LOG_UNIMP, "%s: AUX_MU_BAUD_REG unsupported\n", __func__);
--        break;
--
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR, "%s: Bad offset %"HWADDR_PRIx"\n",
-                       __func__, offset);
-@@ -215,35 +94,6 @@ static void bcm2835_aux_write(void *opaque, hwaddr offset, uint64_t value,
-     bcm2835_aux_update(s);
- }
- 
--static int bcm2835_aux_can_receive(void *opaque)
--{
--    BCM2835AuxState *s = opaque;
--
--    return s->read_count < BCM2835_AUX_RX_FIFO_LEN;
--}
--
--static void bcm2835_aux_put_fifo(void *opaque, uint8_t value)
--{
--    BCM2835AuxState *s = opaque;
--    int slot;
--
--    slot = s->read_pos + s->read_count;
--    if (slot >= BCM2835_AUX_RX_FIFO_LEN) {
--        slot -= BCM2835_AUX_RX_FIFO_LEN;
--    }
--    s->read_fifo[slot] = value;
--    s->read_count++;
--    if (s->read_count == BCM2835_AUX_RX_FIFO_LEN) {
--        /* buffer full */
--    }
--    bcm2835_aux_update(s);
--}
--
--static void bcm2835_aux_receive(void *opaque, const uint8_t *buf, int size)
--{
--    bcm2835_aux_put_fifo(opaque, *buf);
--}
--
- static const MemoryRegionOps bcm2835_aux_ops = {
-     .read = bcm2835_aux_read,
-     .write = bcm2835_aux_write,
-@@ -254,15 +104,9 @@ static const MemoryRegionOps bcm2835_aux_ops = {
- 
- static const VMStateDescription vmstate_bcm2835_aux = {
-     .name = TYPE_BCM2835_AUX,
--    .version_id = 1,
--    .minimum_version_id = 1,
-+    .version_id = 2,
-+    .minimum_version_id = 2,
-     .fields = (VMStateField[]) {
--        VMSTATE_UINT8_ARRAY(read_fifo, BCM2835AuxState,
--                            BCM2835_AUX_RX_FIFO_LEN),
--        VMSTATE_UINT8(read_pos, BCM2835AuxState),
--        VMSTATE_UINT8(read_count, BCM2835AuxState),
--        VMSTATE_UINT8(ier, BCM2835AuxState),
--        VMSTATE_UINT8(iir, BCM2835AuxState),
-         VMSTATE_END_OF_LIST()
-     }
- };
-@@ -276,18 +120,45 @@ static void bcm2835_aux_init(Object *obj)
-                           TYPE_BCM2835_AUX, 0x100);
-     sysbus_init_mmio(sbd, &s->iomem);
-     sysbus_init_irq(sbd, &s->irq);
-+
-+    qdev_init_gpio_in_named(DEVICE(obj), bcm2835_aux_set_irq, "aux-irq", 3);
-+
-+    sysbus_init_child_obj(obj, "miniuart", &s->uart, sizeof(s->uart),
-+                          TYPE_BCM2835_MINIUART);
-+    object_property_add_alias(obj, "chardev", OBJECT(&s->uart), "chardev",
-+                              &error_abort);
- }
- 
- static void bcm2835_aux_realize(DeviceState *dev, Error **errp)
- {
-     BCM2835AuxState *s = BCM2835_AUX(dev);
-+    Error *err = NULL;
- 
--    qemu_chr_fe_set_handlers(&s->chr, bcm2835_aux_can_receive,
--                             bcm2835_aux_receive, NULL, NULL, s, NULL, true);
-+    object_property_set_bool(OBJECT(&s->uart), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
++/* KVM VCPU properties should be prefixed with "kvm-". */
++void kvm_arm_add_vcpu_properties(Object *obj)
++{
++    if (!kvm_enabled()) {
 +        return;
 +    }
-+    memory_region_add_subregion(&s->iomem, 0x40,
-+                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->uart), 0));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart), 0,
-+                qdev_get_gpio_in_named(dev, "aux-irq", 0));
++
++    object_property_add_bool(obj, "kvm-adjvtime", kvm_adjvtime_get,
++                             kvm_adjvtime_set, &error_abort);
++    object_property_set_description(obj, "kvm-adjvtime",
++                                    "Set on to enable the adjustment of =
+"
++                                    "the virtual counter. VM stopped tim=
+e "
++                                    "will not be counted.", &error_abort=
+);
 +}
 +
-+static void bcm2835_aux_reset(DeviceState *dev)
-+{
-+    BCM2835AuxState *s = BCM2835_AUX(dev);
+ bool kvm_arm_pmu_supported(CPUState *cpu)
+ {
+     KVMState *s =3D KVM_STATE(current_machine->accelerator);
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index d506c4e84be6..5d8077df6a4a 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -232,6 +232,15 @@ void kvm_arm_sve_get_vls(CPUState *cs, unsigned long=
+ *map);
+  */
+ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
+=20
++/**
++ * void kvm_arm_add_vcpu_properties:
++ * @obj: The CPU object to add the properties to
++ *
++ * Add all KVM specific CPU properties to the CPU object. These
++ * are the CPU properties with "kvm-" prefixed names.
++ */
++void kvm_arm_add_vcpu_properties(Object *obj);
 +
-+    s->reg[R_AUX_IRQ] = s->reg[R_AUX_ENABLE] = 0;
-+
-+    if (aux_enable_supported) {
-+        memory_region_set_enabled(
-+                    sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->uart), 0),
-+                    false);
-+    }
+ /**
+  * void kvm_arm_set_virtual_time:
+  * @cs: CPUState
+@@ -308,6 +317,8 @@ static inline void kvm_arm_set_cpu_features_from_host=
+(ARMCPU *cpu)
+     cpu->host_cpu_probe_failed =3D true;
  }
- 
- static Property bcm2835_aux_props[] = {
--    DEFINE_PROP_CHR("chardev", BCM2835AuxState, chr),
-     DEFINE_PROP_END_OF_LIST(),
+=20
++static inline void kvm_arm_add_vcpu_properties(Object *obj) {}
++
+ static inline bool kvm_arm_aarch32_supported(CPUState *cs)
+ {
+     return false;
+diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+index e912ed2cefa0..a89976fe7e4b 100644
+--- a/target/arm/monitor.c
++++ b/target/arm/monitor.c
+@@ -103,6 +103,7 @@ static const char *cpu_model_advertised_features[] =3D=
+ {
+     "sve128", "sve256", "sve384", "sve512",
+     "sve640", "sve768", "sve896", "sve1024", "sve1152", "sve1280",
+     "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
++    "kvm-adjvtime",
+     NULL
  };
- 
-@@ -296,8 +167,9 @@ static void bcm2835_aux_class_init(ObjectClass *oc, void *data)
-     DeviceClass *dc = DEVICE_CLASS(oc);
- 
-     dc->realize = bcm2835_aux_realize;
-+    dc->reset = bcm2835_aux_reset;
-     dc->vmsd = &vmstate_bcm2835_aux;
--    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-     dc->props = bcm2835_aux_props;
- }
- 
-diff --git a/hw/char/trace-events b/hw/char/trace-events
-index f1e6dd9918..0c86a907df 100644
---- a/hw/char/trace-events
-+++ b/hw/char/trace-events
-@@ -1,5 +1,9 @@
- # See docs/devel/tracing.txt for syntax documentation.
- 
-+# bcm2835_aux.c
-+bcm2835_aux_read(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
-+bcm2835_aux_write(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
+=20
+diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
+index ee444b04010f..c207a2bec9e9 100644
+--- a/tests/arm-cpu-features.c
++++ b/tests/arm-cpu-features.c
+@@ -417,6 +417,8 @@ static void test_query_cpu_model_expansion(const void=
+ *data)
+     assert_has_feature_enabled(qts, "cortex-a15", "pmu");
+     assert_has_not_feature(qts, "cortex-a15", "aarch64");
+=20
++    assert_has_not_feature(qts, "max", "kvm-adjvtime");
 +
- # bcm2835_miniuart.c
- bcm2835_miniuart_read(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
- bcm2835_miniuart_write(uint64_t addr, uint32_t value) "read addr 0x%"PRIx64" value 0x%x"
-diff --git a/include/hw/char/bcm2835_aux.h b/include/hw/char/bcm2835_aux.h
-index cdbf7e3e37..a7b3a6ac60 100644
---- a/include/hw/char/bcm2835_aux.h
-+++ b/include/hw/char/bcm2835_aux.h
-@@ -9,25 +9,21 @@
- #define BCM2835_AUX_H
- 
- #include "hw/sysbus.h"
--#include "chardev/char-fe.h"
-+#include "hw/char/bcm2835_miniuart.h"
- 
- #define TYPE_BCM2835_AUX "bcm2835-aux"
- #define BCM2835_AUX(obj) OBJECT_CHECK(BCM2835AuxState, (obj), TYPE_BCM2835_AUX)
- 
--#define BCM2835_AUX_RX_FIFO_LEN 8
--
- typedef struct {
-     /*< private >*/
-     SysBusDevice parent_obj;
-     /*< public >*/
- 
-     MemoryRegion iomem;
--    CharBackend chr;
-     qemu_irq irq;
- 
--    uint8_t read_fifo[BCM2835_AUX_RX_FIFO_LEN];
--    uint8_t read_pos, read_count;
--    uint8_t ier, iir;
-+    uint32_t reg[2];
-+    BCM2835MiniUartState uart;
- } BCM2835AuxState;
- 
- #endif
--- 
-2.21.0
+     if (g_str_equal(qtest_get_arch(), "aarch64")) {
+         assert_has_feature_enabled(qts, "max", "aarch64");
+         assert_has_feature_enabled(qts, "max", "sve");
+@@ -445,6 +447,8 @@ static void test_query_cpu_model_expansion_kvm(const =
+void *data)
+=20
+     assert_has_feature_enabled(qts, "host", "pmu");
+=20
++    assert_has_feature_disabled(qts, "host", "kvm-adjvtime");
++
+     if (g_str_equal(qtest_get_arch(), "aarch64")) {
+         bool kvm_supports_sve;
+         char max_name[8], name[8];
+--=20
+2.20.1
 

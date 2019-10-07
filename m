@@ -1,81 +1,103 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4055238wrm;
-        Mon, 7 Oct 2019 10:07:08 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxKGoA7rqbETcy6TcJgRLTj3kQUNp40mmmzu+3GJVBLtr/uJ6uuKcAnMu3GNz1W58Rgh4vm
-X-Received: by 2002:a17:906:8c8:: with SMTP id o8mr25196806eje.56.1570468028126;
-        Mon, 07 Oct 2019 10:07:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570468028; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4055388wrm;
+        Mon, 7 Oct 2019 10:07:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqydrQw+9Ss+7ikZgwmGIGzRpNiJNIqyDHCos2QoNNfB1aM7lJUM/wrmC4c+WeZxWntRTleJ
+X-Received: by 2002:aa7:d789:: with SMTP id s9mr964317edq.62.1570468035657;
+        Mon, 07 Oct 2019 10:07:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570468035; cv=none;
         d=google.com; s=arc-20160816;
-        b=BanXZbQrQmrvxWUJQaUD5gWYLVlwlYXvOIFIp7aZTTJctwjWwdK2V9NvtBCcyiZl/4
-         OSrcLrOTO+Od88XP0on5jDjzmjMjHBXTc0b20NDDEuRIfGKIi8it+1MPhmGwMSOLBucc
-         t7ymzk5690nmx2Mke3eeRBoXqQqrFIE/P8j/3NDFoelw3Lz7WL02cggYHwRnxy1vI5qt
-         MosMaGGvMcPBkcSbZVbPZ7esyuA88VIqXMnCvZowQVrGCTooscCbyezEgOPOozhhza28
-         h5praDgLLFkoqTWC6QueyqJWuauK9SSqHqobu2KnUnU599GL5kfQPiHM9Ash5CtfqDWs
-         B73w==
+        b=ZtbCInlWu9fW3uysUaSL3nwGHngD2g3ELTelIvLnbY3eAFk51Q7aSMs5vrvRvq0BI0
+         FAlz2zOQdiVtk/i/p68T2bexxL7Iesz6RSI7TQUcwB0TfuWM15qK4mjXZABWTfXVnFH4
+         +h7FfWpTdlqM2cu7mpR5KOJN/0erZrl8bTHyMGPGPmLMKJowl4pCB8SKFV/KPzeXkOFg
+         87Nbu95lAjHFrdzwOL8YPSVDK0/DR8m6n8xn6nIvvAe5JFZG7mve99L04KfTSiTqrfzM
+         vfUEQKBNuqrxWN4WmEDirrrCp3j7wwgVHXmCpqRkBdIKb+bMQRnICcZw7xEHFWiTiqSl
+         F8lA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=OdHacEIWSF/2zTal5cic3lzuYQuJHS07vdSHU/gNiKY=;
-        b=ZbxCcLtNVw3UvRy1cerpLs7eMLAvzKYJmCwdQgSRkttTwURqxMhpiq9rMe62gk4j3O
-         hv8ggcrKi2Ql4DFke9SRVHcwx6y8ESVbmXbcxHcN4IsGtS4T2DDwNvuhfedI7KfkAgEo
-         dUFrTUbop7DDNV40s8ffP35qe8c4WfyIsLX2ZhzCowterPkR3I7aXenlrNJmI5F+CoRx
-         tTjZFUUp8vWz/JDdcvh41sSXlqfMIAbWdoOy49Z+ZyxGcEsY31e516LGgXt9HDGV3aFb
-         DgfG+awSU4CIqhHbXl6oWfZZeHuUZ7QykjE2/lSXUQ046VZvtq9o9Q4jFdHd1o9etiDs
-         +CrA==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=+3UBHXl0Q3tHZixwPH6fsHjN2QJ1bQEaKGonQtRbZd4=;
+        b=q0uBQ+gvJsgqoV0DFMchqf9KJKpCrBjh/qK6Sn8x4ymnOOzFVtDq7WQ83dJE/9gobi
+         EPuHk1UQT1x2qKY2dID2toyELwvtOWI+3L/J7afGqAVKvvJDaUls2369KPNooNGsiwv+
+         GGm7NXFx+aJi+whtAJnSkmbYIDjf3NueBHwjV9fIv+seW6CDBBCHIawktIn7HP+6aSR9
+         CiPkVol+ORreoMk0KKAFjLrFs0jzlDC36VTe32DuG9pJiziYHadGprnjsY9orguSFcIe
+         92TmWH6O8vJUg01uAnw0Zo3zNztMP5pN/ikgLHF7zz2CBjBzyONkqQSspkRsfDjPx+DN
+         Ugyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uNoGvRiw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h18si7215427ejx.68.2019.10.07.10.07.08
+        by mx.google.com with ESMTPS id b15si8793162eda.152.2019.10.07.10.07.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Oct 2019 10:07:08 -0700 (PDT)
+        Mon, 07 Oct 2019 10:07:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47908 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uNoGvRiw;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47910 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iHWTS-0006hZ-7g
-	for alex.bennee@linaro.org; Mon, 07 Oct 2019 13:07:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36888)
+	id 1iHWTa-0006pg-2j
+	for alex.bennee@linaro.org; Mon, 07 Oct 2019 13:07:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36997)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1iHWSz-0006HE-M0
- for qemu-arm@nongnu.org; Mon, 07 Oct 2019 13:06:38 -0400
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iHWTH-0006jd-Hi
+ for qemu-arm@nongnu.org; Mon, 07 Oct 2019 13:06:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1iHWSy-0004qP-A0
- for qemu-arm@nongnu.org; Mon, 07 Oct 2019 13:06:37 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:47802)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>)
- id 1iHWSx-0004pu-KH; Mon, 07 Oct 2019 13:06:36 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id C0BC710C050B;
- Mon,  7 Oct 2019 17:06:34 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 77FF65D9C9;
- Mon,  7 Oct 2019 17:06:33 +0000 (UTC)
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Subject: [RFC PATCH 4/5] tests/arm-cpu-features: Check feature default values
-Date: Mon,  7 Oct 2019 19:06:21 +0200
-Message-Id: <20191007170622.1814-5-drjones@redhat.com>
-In-Reply-To: <20191007170622.1814-1-drjones@redhat.com>
-References: <20191007170622.1814-1-drjones@redhat.com>
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iHWTG-0004v9-J0
+ for qemu-arm@nongnu.org; Mon, 07 Oct 2019 13:06:55 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:34057)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iHWTE-0004uA-D7; Mon, 07 Oct 2019 13:06:52 -0400
+Received: by mail-wr1-x441.google.com with SMTP id j11so10436819wrp.1;
+ Mon, 07 Oct 2019 10:06:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=+3UBHXl0Q3tHZixwPH6fsHjN2QJ1bQEaKGonQtRbZd4=;
+ b=uNoGvRiwUiJCmtif4CMZwT/OIBf3S16hlWuLfBWCCXfgBFUaX9G1tIMwRHG13jyilN
+ vRHCU5qu8YrV9G5S8Quvx2AHrS7d6jWpYWzmzO52/ODpgv8LvE1TQ7NdNBQkmLbaCqrp
+ 9yJIKdSv1YJ5x8yDyZuKbhi+VaqeJqdqzpefUPbl0tok/H8PT4oX59FeNIU+k7nn7WqE
+ mPmu7Rs4UOunzrfVdZ0ZmGV/Jb+pF2oGsbDiqSaUPQ7tVtqhyuZj/s9KWby09Vv7yIhs
+ G8XbKzQUDKy1yXnGsdzS9RVwazbMnogz34TikL07BfEJq/oNi+XlhacCNaJtBtsaPYXB
+ o6+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=+3UBHXl0Q3tHZixwPH6fsHjN2QJ1bQEaKGonQtRbZd4=;
+ b=J6YxVH3ZNw5M1HWP+KPylaOcF3nsdAPZtNBsezgEtqkPuCjY+gqBU1b/hzk4w11iJF
+ SjVrOGc9nXuahpdiftSLa8yVe1qIR71vN/kkFtF1ZF7MjccyDXtp8rGpBgxaHm/QsUC7
+ lB9pQNvoW8UBhoz2N0NHPKXQsyjNA58JGSiXIWfVHQZUnWXl+q0urCNW3NQhGUUmDGQs
+ EuE+28h6BOsYgEzJFmDSSEf6wM7ajc0dAfGKPEErwDkbdoCucjy4xsSqALBW2bS4fBJd
+ u9lEbgHFidNyCS1SAARvqHAAH1CVFWO8/ESudOCzHR6ysE1kEyCexmD3QR1G5F8CmbfN
+ GZwg==
+X-Gm-Message-State: APjAAAWSnWbK8Dv9/GZwaCAkORPFS2Qu0L7sJxjnJOau3fLBJRycFzgz
+ FKfzi5TX80WyguOgxEyE0ETiy/oQPlk=
+X-Received: by 2002:a5d:6a4b:: with SMTP id t11mr21350322wrw.24.1570468010620; 
+ Mon, 07 Oct 2019 10:06:50 -0700 (PDT)
+Received: from x1w.redhat.com (46.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.46])
+ by smtp.gmail.com with ESMTPSA id x5sm14036603wrt.75.2019.10.07.10.06.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 07 Oct 2019 10:06:49 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 0/3] hw/arm/raspi: Split the UART block from the AUX block
+Date: Mon,  7 Oct 2019 19:06:43 +0200
+Message-Id: <20191007170646.14961-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.65]); Mon, 07 Oct 2019 17:06:34 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::441
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,106 +109,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, bijan.mottahedeh@oracle.com, maz@kernel.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bfD+lCRTAJQR
+X-TUID: S2pWxtoI2lHy
 
-If we know what the default value should be then we can test for
-that as well as the feature existence.
+The BCM2838 has many more peripherals than his little brother,
+the BCM2837. With the raspi4, the Linux kernel takes more steps
+to configure the various MUXed devices. At some point it started
+to bug me, so I plan to add a dummy simple BCM2835_SPI block.
+It is cleaner to add it as a separate device than mixed with the
+AUX block. As a first step, split the UART block out.
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
----
- tests/arm-cpu-features.c | 44 ++++++++++++++++++++++++++++++++--------
- 1 file changed, 35 insertions(+), 9 deletions(-)
+Since this part is self-contained and my raspi4 branch is getting
+too big, I'm sending it as a single series.
 
-diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
-index 92668efb8f56..ee444b04010f 100644
---- a/tests/arm-cpu-features.c
-+++ b/tests/arm-cpu-features.c
-@@ -141,6 +141,32 @@ static bool resp_get_feature(QDict *resp, const char=
- *feature)
-     qobject_unref(_resp);                                              \
- })
-=20
-+#define assert_has_feature_enabled(qts, cpu_type, feature)             \
-+({                                                                     \
-+    QDict *_resp, *_props;                                             \
-+                                                                       \
-+    _resp =3D do_query_no_props(qts, cpu_type);                         =
- \
-+    g_assert(_resp);                                                   \
-+    g_assert(resp_has_props(_resp));                                   \
-+    _props =3D resp_get_props(_resp);                                   =
- \
-+    g_assert(qdict_get(_props, feature));                              \
-+    g_assert(qdict_get_bool(_props, feature));                         \
-+    qobject_unref(_resp);                                              \
-+})
-+
-+#define assert_has_feature_disabled(qts, cpu_type, feature)            \
-+({                                                                     \
-+    QDict *_resp, *_props;                                             \
-+                                                                       \
-+    _resp =3D do_query_no_props(qts, cpu_type);                         =
- \
-+    g_assert(_resp);                                                   \
-+    g_assert(resp_has_props(_resp));                                   \
-+    _props =3D resp_get_props(_resp);                                   =
- \
-+    g_assert(qdict_get(_props, feature));                              \
-+    g_assert(!qdict_get_bool(_props, feature));                        \
-+    qobject_unref(_resp);                                              \
-+})
-+
- static void assert_type_full(QTestState *qts)
- {
-     const char *error;
-@@ -387,16 +413,16 @@ static void test_query_cpu_model_expansion(const vo=
-id *data)
-     assert_error(qts, "host", "The CPU type 'host' requires KVM", NULL);
-=20
-     /* Test expected feature presence/absence for some cpu types */
--    assert_has_feature(qts, "max", "pmu");
--    assert_has_feature(qts, "cortex-a15", "pmu");
-+    assert_has_feature_enabled(qts, "max", "pmu");
-+    assert_has_feature_enabled(qts, "cortex-a15", "pmu");
-     assert_has_not_feature(qts, "cortex-a15", "aarch64");
-=20
-     if (g_str_equal(qtest_get_arch(), "aarch64")) {
--        assert_has_feature(qts, "max", "aarch64");
--        assert_has_feature(qts, "max", "sve");
--        assert_has_feature(qts, "max", "sve128");
--        assert_has_feature(qts, "cortex-a57", "pmu");
--        assert_has_feature(qts, "cortex-a57", "aarch64");
-+        assert_has_feature_enabled(qts, "max", "aarch64");
-+        assert_has_feature_enabled(qts, "max", "sve");
-+        assert_has_feature_enabled(qts, "max", "sve128");
-+        assert_has_feature_enabled(qts, "cortex-a57", "pmu");
-+        assert_has_feature_enabled(qts, "cortex-a57", "aarch64");
-=20
-         sve_tests_default(qts, "max");
-=20
-@@ -417,7 +443,7 @@ static void test_query_cpu_model_expansion_kvm(const =
-void *data)
-=20
-     qts =3D qtest_init(MACHINE "-accel kvm -cpu host");
-=20
--    assert_has_feature(qts, "host", "pmu");
-+    assert_has_feature_enabled(qts, "host", "pmu");
-=20
-     if (g_str_equal(qtest_get_arch(), "aarch64")) {
-         bool kvm_supports_sve;
-@@ -427,7 +453,7 @@ static void test_query_cpu_model_expansion_kvm(const =
-void *data)
-         QDict *resp;
-         char *error;
-=20
--        assert_has_feature(qts, "host", "aarch64");
-+        assert_has_feature_enabled(qts, "host", "aarch64");
-=20
-         assert_error(qts, "cortex-a15",
-             "We cannot guarantee the CPU type 'cortex-a15' works "
---=20
-2.20.1
+Regards,
+
+Phil.
+
+Philippe Mathieu-Daudé (3):
+  hw/char: Add the BCM2835 miniuart
+  hw/char/bcm2835_aux: Use the BCM2835 miniuart block
+  hw: Move BCM2835 AUX device from hw/char/ to hw/misc/
+
+ hw/char/Makefile.objs                   |   2 +-
+ hw/char/bcm2835_aux.c                   | 317 -----------------------
+ hw/char/bcm2835_miniuart.c              | 327 ++++++++++++++++++++++++
+ hw/char/trace-events                    |   4 +
+ hw/misc/Makefile.objs                   |   1 +
+ hw/misc/bcm2835_aux.c                   | 189 ++++++++++++++
+ hw/misc/trace-events                    |   4 +
+ include/hw/arm/bcm2835_peripherals.h    |   2 +-
+ include/hw/char/bcm2835_miniuart.h      |  37 +++
+ include/hw/{char => misc}/bcm2835_aux.h |  10 +-
+ 10 files changed, 567 insertions(+), 326 deletions(-)
+ delete mode 100644 hw/char/bcm2835_aux.c
+ create mode 100644 hw/char/bcm2835_miniuart.c
+ create mode 100644 hw/misc/bcm2835_aux.c
+ create mode 100644 include/hw/char/bcm2835_miniuart.h
+ rename include/hw/{char => misc}/bcm2835_aux.h (73%)
+
+-- 
+2.21.0
 

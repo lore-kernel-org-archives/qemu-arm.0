@@ -1,186 +1,206 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4799170wrm;
-        Tue, 8 Oct 2019 00:01:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqywrX22IhVY3FwScWFsyDMzpXeedFvE27Yxus/P1fSgrOsU2h5kV4MU90CW6Nojo0ehbvbm
-X-Received: by 2002:a50:ce06:: with SMTP id y6mr31763821edi.282.1570518095814;
-        Tue, 08 Oct 2019 00:01:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570518095; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4824428wrm;
+        Tue, 8 Oct 2019 00:31:39 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqySdnzrmVQxTeVAOR1uGGkCIS0MbmQJc2CXnBv1F+EpGg93wv8e4vd+Q5rCYc1pp2oYOk6p
+X-Received: by 2002:a17:906:8258:: with SMTP id f24mr26927179ejx.234.1570519899466;
+        Tue, 08 Oct 2019 00:31:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570519899; cv=none;
         d=google.com; s=arc-20160816;
-        b=uH6fmeUd0TU2OhkwsDsONG/dd8x6Mvgw7qKM4qALkjz/aveQ4tISKmE8bRlNiAVPr8
-         iZndD8invP4HvjD+xE0eAAQOkdJQlBNW8esXv6o8BCTkwJjo6ql9guXSBNiwXWwXsQkZ
-         LE/0vZ3Yei3fwt8gxqsviYSt0bLLbAYX4Um6F0XFJHCxh11m+qcHTv8F2LoUCIsP5UO4
-         IC6uLbUDyH3Zgon+OrhOp0MifOlREoApUFmJfLJhQrmNhvLSCwl0o/qSi56JAQNhZ8LK
-         ZImTT8PzT7EtegrT6+bGcM47WMGKGnm4jiofSrvQWGyIwS6m1S83Lku2+lAk6WHzxmMs
-         m0Fw==
+        b=MnqxrE9z1tkZ5tk0cBj5amQP1h6EuHfk7zZm9WwjjJu7pn34Hsbnj/sYmx9NMG8N2D
+         rb+NpoTt1syGcUJ77y9OQA5FMgLAvZux1CL4gpA/BTrvR3aJtm5NqddzGy7Dqa+JBpbY
+         P4gbb0Tjx2ADqIAER1+iAhnAp+XP2TfmiJ3cVEcmxfLvYVn4hiij3A+Rho9PwPWA3nQP
+         0C2l8pDiDPF00KqKau08lU8iEV/U03LDjxJ+VpIBHfApW80X1cieQ0IlX7TjH5nbSPeN
+         UHQdtTK8Ts92l9MplhqF4R3fXoJZiVys9aPrW54FcLns1vNsl6V7mb8P1Zrvt0lH9bBW
+         25Bw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=npJKwS6uLbyMWQBM+jPPDR4+PBD6hclUOYrt65BDhwI=;
-        b=mQ9EjA8sJxHxEqYZCO6sxvjqEfCjvykzvq2NbKIKLEVSCBf+KStqkLOSbg4vdWIVfW
-         cu72ha4R4tD/0PCrPyxClf7/rFqHEDhSrnB5IojAyAE+neTAwjhSukdrnvJ9OSnN11fS
-         iq/nZAhOCzLvzq9p6HOuoz154rlO2tmYzn/ZZytmnAYevhNx7AWbaCOqNN01+8H7Nmxj
-         1nuOnYcGoHIh/gGJ5E1N9PFotNumJV/3zwNTQS74Xs+su+xTsOIyOGbwJhlF2+COs8HO
-         zYGxkcILwLwi4K9eiFGXvKtTJNPPJt/htkFiZqUNCwf04t8DhWdHn88F0ouL/G7K7Eil
-         11Pw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:to:from;
+        bh=COb5YQiNb3S1fzhfkOFgvX1kK2GwhC9VHk8WUOwv+HQ=;
+        b=XRvpLPneJk904dvT+bZoIwAGuYDlm2uj3mSWG8rlzx7Hl3BCeLQwPMOucH/l0sus+P
+         I0+6XU1VgAW5BhvxAKMNNmffLNslSK7j/IwxqB1ohkedI9K/WKmz6QzgBQagm56bKdEJ
+         LJlvWZ0nm2lQVD5IyHoVsUAIm6u+opIWb5GU/1L54pfOeRUATrg3mdH4lcNpFsqszWPi
+         Mp1xY67H6w6KxCSVe8Di+PFS3fgpS9c3tT2hS7kg6Q3ATlvFfR0HwR+2k3HcO/63R1i1
+         kFOcYg473U5txzgPNSFXCiQAbq1UKluo2nWeTY/JnRVXrSIaYqHDxPORR16MvC2Q8we5
+         TqSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id g17si8342071ejd.123.2019.10.08.00.01.35;
-        Tue, 08 Oct 2019 00:01:35 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i38si10662730eda.64.2019.10.08.00.31.39
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 08 Oct 2019 00:31:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1730112AbfJHHBe (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Tue, 8 Oct 2019 03:01:34 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3267 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1730057AbfJHHBe (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 8 Oct 2019 03:01:34 -0400
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 25EA08A9D591A1209D42;
-        Tue,  8 Oct 2019 15:01:32 +0800 (CST)
-Received: from [127.0.0.1] (10.133.224.57) by DGGEMS403-HUB.china.huawei.com
- (10.3.19.203) with Microsoft SMTP Server id 14.3.439.0; Tue, 8 Oct 2019
- 15:01:24 +0800
-Subject: Re: [Qemu-arm] [PATCH v18 4/6] KVM: Move hwpoison page related
- functions into include/sysemu/kvm_int.h
-To:     Peter Maydell <peter.maydell@linaro.org>
-CC:     Paolo Bonzini <pbonzini@redhat.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Igor Mammedov <imammedo@redhat.com>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        Laszlo Ersek <lersek@redhat.com>,
-        James Morse <james.morse@arm.com>,
-        gengdongjiu <gengdongjiu@huawei.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Jonathan Cameron <jonathan.cameron@huawei.com>,
-        "xuwei (O)" <xuwei5@huawei.com>, kvm-devel <kvm@vger.kernel.org>,
-        "QEMU Developers" <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>, Linuxarm <linuxarm@huawei.com>,
-        <wanghaibin.wang@huawei.com>
-References: <20190906083152.25716-1-zhengxiang9@huawei.com>
- <20190906083152.25716-5-zhengxiang9@huawei.com>
- <CAFEAcA_o6NkOGptWFOoVt4pUgHU+dNyWQ9h_VfNweR17CtHSnw@mail.gmail.com>
-From:   Xiang Zheng <zhengxiang9@huawei.com>
-Message-ID: <a857520c-f115-a096-3aeb-3d3588575c4a@huawei.com>
-Date:   Tue, 8 Oct 2019 15:01:22 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51650 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iHjy6-0007Zn-Ej
+	for alex.bennee@linaro.org; Tue, 08 Oct 2019 03:31:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49266)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <armbru@redhat.com>) id 1iHjxL-0007Ze-1z
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 03:30:52 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <armbru@redhat.com>) id 1iHjxG-0000RS-Gp
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 03:30:48 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:57196)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <armbru@redhat.com>)
+ id 1iHjxC-0000QL-40; Tue, 08 Oct 2019 03:30:43 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 3C8F619D369;
+ Tue,  8 Oct 2019 07:30:35 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.36.118.123])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 754BE5D9D3;
+ Tue,  8 Oct 2019 07:30:20 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id CB1D01138648; Tue,  8 Oct 2019 09:30:18 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Subject: Re: [PATCH v4 00/31] error: auto propagated local_err
+References: <20191001155319.8066-1-vsementsov@virtuozzo.com>
+Date: Tue, 08 Oct 2019 09:30:18 +0200
+In-Reply-To: <20191001155319.8066-1-vsementsov@virtuozzo.com> (Vladimir
+ Sementsov-Ogievskiy's message of "Tue, 1 Oct 2019 18:52:48 +0300")
+Message-ID: <87eeznn185.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_o6NkOGptWFOoVt4pUgHU+dNyWQ9h_VfNweR17CtHSnw@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.133.224.57]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: W/bNbdZEGRBR
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.29]); Tue, 08 Oct 2019 07:30:40 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: fam@euphon.net, pburton@wavecomp.com, peter.maydell@linaro.org,
+ codyprime@gmail.com, jasowang@redhat.com, mark.cave-ayland@ilande.co.uk,
+ qemu-devel@nongnu.org, kraxel@redhat.com, mreitz@redhat.com,
+ qemu-block@nongnu.org, quintela@redhat.com, arikalo@wavecomp.com,
+ mst@redhat.com, mdroth@linux.vnet.ibm.com, pasic@linux.ibm.com,
+ borntraeger@de.ibm.com, joel@jms.id.au, marcandre.lureau@redhat.com,
+ david@gibson.dropbear.id.au, farman@linux.ibm.com, ehabkost@redhat.com,
+ sw@weilnetz.de, groug@kaod.org, yuval.shaia@oracle.com, dgilbert@redhat.com,
+ alex.williamson@redhat.com, qemu-arm@nongnu.org, clg@kaod.org,
+ stefanha@redhat.com, david@redhat.com, jsnow@redhat.com, rth@twiddle.net,
+ kwolf@redhat.com, integration@gluster.org, berrange@redhat.com,
+ andrew@aj.id.au, cohuck@redhat.com, qemu-s390x@nongnu.org,
+ sundeep.lkml@gmail.com, qemu-ppc@nongnu.org, pbonzini@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bYfAaQ6JzYSi
 
+Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com> writes:
 
+> Hi all!
+>
+> Here is a proposal of auto propagation for local_err, to not call
+> error_propagate on every exit point, when we deal with local_err.
+>
+> There are also two issues with errp:
+>
+> 1. error_fatal & error_append_hint/error_prepend: user can't see this
+> additional info, because exit() happens in error_setg earlier than info
+> is added. [Reported by Greg Kurz]
 
-On 2019/9/27 21:19, Peter Maydell wrote:
-> On Fri, 6 Sep 2019 at 09:33, Xiang Zheng <zhengxiang9@huawei.com> wrote:
->>
->> From: Dongjiu Geng <gengdongjiu@huawei.com>
->>
->> kvm_hwpoison_page_add() and kvm_unpoison_all() will both be used by X86
->> and ARM platforms, so moving them into "include/sysemu/kvm_int.h" to
->> avoid duplicate code.
->>
->> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
->> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
->> ---
->>  accel/kvm/kvm-all.c      | 33 +++++++++++++++++++++++++++++++++
->>  include/sysemu/kvm_int.h | 23 +++++++++++++++++++++++
->>  target/arm/kvm.c         |  3 +++
->>  target/i386/kvm.c        | 34 ----------------------------------
->>  4 files changed, 59 insertions(+), 34 deletions(-)
-> 
->>  static uint32_t adjust_ioeventfd_endianness(uint32_t val, uint32_t size)
->>  {
->>  #if defined(HOST_WORDS_BIGENDIAN) != defined(TARGET_WORDS_BIGENDIAN)
->> diff --git a/include/sysemu/kvm_int.h b/include/sysemu/kvm_int.h
->> index 72b2d1b3ae..3ad49f9a28 100644
->> --- a/include/sysemu/kvm_int.h
->> +++ b/include/sysemu/kvm_int.h
->> @@ -41,4 +41,27 @@ typedef struct KVMMemoryListener {
->>  void kvm_memory_listener_register(KVMState *s, KVMMemoryListener *kml,
->>                                    AddressSpace *as, int as_id);
->>
->> +/**
->> + * kvm_hwpoison_page_add:
->> + *
->> + * Parameters:
->> + *  @ram_addr: the address in the RAM for the poisoned page
->> + *
->> + * Add a poisoned page to the list
->> + *
->> + * Return: None.
->> + */
->> +void kvm_hwpoison_page_add(ram_addr_t ram_addr);
->> +
->> +/**
->> + * kvm_unpoison_all:
->> + *
->> + * Parameters:
->> + *  @param: some data may be passed to this function
->> + *
->> + * Free and remove all the poisoned pages in the list
->> + *
->> + * Return: None.
->> + */
->> +void kvm_unpoison_all(void *param);
->>  #endif
->> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->> index b2eaa50b8d..3a110be7b8 100644
->> --- a/target/arm/kvm.c
->> +++ b/target/arm/kvm.c
->> @@ -20,6 +20,7 @@
->>  #include "sysemu/sysemu.h"
->>  #include "sysemu/kvm.h"
->>  #include "sysemu/kvm_int.h"
->> +#include "sysemu/reset.h"
->>  #include "kvm_arm.h"
->>  #include "cpu.h"
->>  #include "trace.h"
->> @@ -195,6 +196,8 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
->>
->>      cap_has_mp_state = kvm_check_extension(s, KVM_CAP_MP_STATE);
->>
->> +    qemu_register_reset(kvm_unpoison_all, NULL);
->> +
-> 
-> Rather than registering the same reset handler in
-> all the architectures, we could register it in the
-> generic kvm_init() function. (For architectures that
-> don't use the poison-list functionality the reset handler
-> will harmlessly do nothing, because there will be nothing
-> in the list.)
-> 
-> This would allow you to not have to make the
-> kvm_unpoison_all() function global -- it can be static
-> in accel/tcg/kvm-all.c.
+How is this series related to Greg's "[PATCH 00/17] Fix usage of
+error_append_hint()"?  Do we need both?
 
-OK, I will move the register code into the kvm_init() function.
+> 2. error_abort & error_propagate: when we wrap
+> error_abort by local_err+error_propagate, resulting coredump will
+> refer to error_propagate and not to the place where error happened.
+> (the macro itself don't fix the issue, but it allows to [3.] drop all
+> local_err+error_propagate pattern, which will definitely fix the issue)
+> [Reported by Kevin Wolf]
+>
+> Still, applying new macro to all errp-functions is a huge task, which is
+> impossible to solve in one series.
+>
+> So, here is a minimum: solve only [1.], by adding new macro to all
+> errp-functions which wants to call error_append_hint.
+>
+> v4;
+> 02: - check errp to be not NULL
+>     - drop Eric's r-b
+> 03: add Eric's r-b
+> 04: - rename macro to ERRP_AUTO_PROPAGATE [Kevin]
+>     - improve comment and commit msg, mention
+>       error_prepend
+> 05: - handle error_prepend too
+>     - use new macro name
+>     - drop empty line at the end
+>
+> commit message for auto-generated commits updated,
+> commits regenerated.
+>
+> I'll use cc-cmd to cc appropriate recipients per patch, still
+> cover-letter together with 04-06 patches should be interesting for
+> all:
+[...]
 
-> 
->>      return 0;
->>  }
-> 
-> thanks
-> -- PMM
-> 
-> .
-> 
+Big series; let me guess its structure.
 
--- 
+> Vladimir Sementsov-Ogievskiy (31):
+>   errp: rename errp to errp_in where it is IN-argument
+>   hw/core/loader-fit: fix freeing errp in fit_load_fdt
+>   net/net: fix local variable shadowing in net_client_init
 
-Thanks,
-Xiang
+Preparations.
+
+>   error: auto propagated local_err
+
+The new idea.
+
+>   scripts: add script to fix error_append_hint/error_prepend usage
+>   python: add commit-per-subsystem.py
+
+Scripts to help you apply it.
+
+>   s390: Fix error_append_hint/error_prepend usage
+>   ARM TCG CPUs: Fix error_append_hint/error_prepend usage
+>   PowerPC TCG CPUs: Fix error_append_hint/error_prepend usage
+>   arm: Fix error_append_hint/error_prepend usage
+>   SmartFusion2: Fix error_append_hint/error_prepend usage
+>   ASPEED BMCs: Fix error_append_hint/error_prepend usage
+>   Boston: Fix error_append_hint/error_prepend usage
+>   PowerNV (Non-Virtualized): Fix error_append_hint/error_prepend usage
+>   PCI: Fix error_append_hint/error_prepend usage
+>   SCSI: Fix error_append_hint/error_prepend usage
+>   USB: Fix error_append_hint/error_prepend usage
+>   VFIO: Fix error_append_hint/error_prepend usage
+>   vhost: Fix error_append_hint/error_prepend usage
+>   virtio: Fix error_append_hint/error_prepend usage
+>   virtio-9p: Fix error_append_hint/error_prepend usage
+>   XIVE: Fix error_append_hint/error_prepend usage
+>   block: Fix error_append_hint/error_prepend usage
+>   chardev: Fix error_append_hint/error_prepend usage
+>   cmdline: Fix error_append_hint/error_prepend usage
+>   QOM: Fix error_append_hint/error_prepend usage
+>   Migration: Fix error_append_hint/error_prepend usage
+>   Sockets: Fix error_append_hint/error_prepend usage
+>   nbd: Fix error_append_hint/error_prepend usage
+>   PVRDMA: Fix error_append_hint/error_prepend usage
+>   ivshmem: Fix error_append_hint/error_prepend usage
+
+Applying it.
+
+Correct?
+
+[...]

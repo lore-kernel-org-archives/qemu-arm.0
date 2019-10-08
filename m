@@ -1,189 +1,304 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id t6sm3594884wmf.8.2019.10.08.02.04.48
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 08 Oct 2019 02:04:48 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 4B7681FF87;
-	Tue,  8 Oct 2019 10:04:48 +0100 (BST)
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4940394wrm;
+        Tue, 8 Oct 2019 02:45:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzKX0nAVZgsiC42ho4LNa/ex4IkfmrkLpqNoNRcpZvHig7ykEhqyngOUC3tWwb9cqpJymfo
+X-Received: by 2002:ac8:78c:: with SMTP id l12mr35109815qth.132.1570527922564;
+        Tue, 08 Oct 2019 02:45:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570527922; cv=none;
+        d=google.com; s=arc-20160816;
+        b=YYlcjdcHhXM9mSFtsjqKS3iNbaj7ddydF/fzrhIQshL0oMpm+XHOOIpBmy1ssqO7eO
+         V3IBpVPdNYXbkmL7qWuY3krF4YAy3LtD8cbD1myyAadxjjJtelXaRHKqrxFQRlyXTmr3
+         knYTgDFhREZwKSVYqOJfyJBiUmpf/OQ4GDzpka39A0Ffzz7JdogjwsRTZh/gj9nfAMoc
+         nau5A4zctzENquBp3bht0VOXGdWi68GgV9Ik+a95DncJuZ/2sErK/9G6nqr4ISvYvOvk
+         TNkYxCtgedhaub4JEryTtwFCKHjzCMCqG2sekBlN6uVk8sBGYHe5TSk/iF5LT9DXVgHh
+         3tXA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=sEKYBVgPKenJ354dWN21L7QcGf1JAPyfKvXWJVllcrU=;
+        b=HfMawkPlfH9aAlV9M8N/3Ca+OYfgiTtgRhMOFqmK60eevC1yB9HLC9pXuQS7wGmtKI
+         M2b1I69JI3pdhyrGfJUHR13H8py4B4Hs7e0Py0UoWRgQh7E+7htjfGCMFqPDK+s3yDTo
+         Ihfs7YEgtTrjc536gl0sJWpAcGm7zZfQExLD9kaQKkofPbU+88AgqRdPm/2aVtKsg/mE
+         TW7T5yL0q6OS6o+XwG+dLo7vRq+LYwGMk8pRc21oDu5GdFzk7ih6lB0wWljxBnkwkw8g
+         +DT4hevMQqwDaNJpRi66xY2GzZbywcSCaeMTsYkfEPId7kwyIckMfCaeF48U8aHsnNkD
+         p/zw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fsqxOCKr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o2si14740201qkc.141.2019.10.08.02.45.22
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 08 Oct 2019 02:45:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fsqxOCKr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53040 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iHm3V-0008Rm-Mh
+	for alex.bennee@linaro.org; Tue, 08 Oct 2019 05:45:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38317)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iHm37-0008Qp-G0
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 05:44:59 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iHm33-0007mK-QG
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 05:44:57 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:55414)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iHm1O-0006uU-4Z; Tue, 08 Oct 2019 05:44:53 -0400
+Received: by mail-wm1-x343.google.com with SMTP id a6so2374905wma.5;
+ Tue, 08 Oct 2019 02:43:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=sEKYBVgPKenJ354dWN21L7QcGf1JAPyfKvXWJVllcrU=;
+ b=fsqxOCKr+NQ0Ip3PYiI/tBzax2aujZGrHNp4NJh7dnZAY/atSKlTsfmDGOncVASCbA
+ tVQIgeQePrtuen58NYP912casEKEsZqdK/rZNmy+TTAKxKkW/f/JfwE6GHShEXij1Lkc
+ Bj7DsKSYv0v7Iuwj6jB3k2YMAeNA70TRMIaa0Jy4nzHw06ADn5AkdfAr4rPd00Us6J6g
+ 9KQQx+UOQ4tZypz7pu6mi7ksK6DJPq4fsMEq63L2z9Ayhzc/QTFoeECpYoInLNdBONhh
+ Mu1E7d5ul2+3pqWDctlpjEEX5xkQ5F97AyeHqX234saAW7rxx/YdKb8NFFHWw0cSQPtU
+ wPbw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=sEKYBVgPKenJ354dWN21L7QcGf1JAPyfKvXWJVllcrU=;
+ b=oaR6jECVrXqow8acxVUUSvq05Yl6xEny6/Ml+56E3dA+yhLpX5L1rphhtlvg2OERzV
+ xuwDsdx1SSeXu6JJyBsvNifSu6T5t0CHpxPbvNkNLXiN0SBlstRyxK7jKpXysfuWdfD6
+ pqF1gL1aKDicvWmTuGfCpSQEcYOZAEY3NcNGciFUV3W5QBhDVA3cAn9hyIax73PDTH72
+ qJYdfWpuuLr51+/oMpU9yJZnPHhaoC/0L817W5PJAxacEuhlBesZHFu1Q/hyUlFOAjQi
+ pDYv3jnYZP7DnMwh67M7/Uvq2j+uKDMv9m7rGSw/qgHkIzPHVcOjtq4dc6RgtKcq2bhf
+ vHfQ==
+X-Gm-Message-State: APjAAAUqEqcAQDvc/kUAWO+U7IlA0qKUCOR8jq27x1OH2HaRdxDd+Szs
+ fiJdBo+VBRuALOB077QGRh8=
+X-Received: by 2002:a1c:1f89:: with SMTP id f131mr2925133wmf.72.1570527787909; 
+ Tue, 08 Oct 2019 02:43:07 -0700 (PDT)
+Received: from [192.168.1.35] (46.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.46])
+ by smtp.gmail.com with ESMTPSA id l7sm18760255wrv.77.2019.10.08.02.43.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 08 Oct 2019 02:43:06 -0700 (PDT)
+Subject: Re: [PATCH 05/19] hw/arm/bcm2835: Add various unimplemented
+ peripherals
+To: Alistair Francis <alistair23@gmail.com>
 References: <20190926173428.10713-1-f4bug@amsat.org>
- <20190926173428.10713-4-f4bug@amsat.org>
-User-agent: mu4e 1.3.5; emacs 27.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- =?utf-8?Q?Zolt=C3=A1n?=
- Baldaszti <bztemail@gmail.com>, Laurent Bonnans
- <laurent.bonnans@here.com>, Esteban Bosse <estebanbosse@gmail.com>,
- Alistair Francis <alistair@alistair23.me>, Philippe =?utf-8?Q?Mathieu-Dau?=
- =?utf-8?Q?d=C3=A9?=
- <f4bug@amsat.org>, Andrew Baumann <Andrew.Baumann@microsoft.com>, BALATON
- Zoltan <balaton@eik.bme.hu>, =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>, Clement Deschamps
- <clement.deschamps@antfield.fr>, Cleber Rosa <crosa@redhat.com>, Paolo
- Bonzini <pbonzini@redhat.com>, Cheng Xiang <ext-cheng.xiang@here.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>, Pekka Enberg
- <penberg@iki.fi>,
- Guenter Roeck <linux@roeck-us.net>, Eduardo Habkost <ehabkost@redhat.com>
-Subject: Re: [PATCH 03/19] hw/arm/bcm2835_peripherals: Name various address
- spaces
-In-reply-to: <20190926173428.10713-4-f4bug@amsat.org>
-Date: Tue, 08 Oct 2019 10:04:48 +0100
-Message-ID: <8736g3k3pr.fsf@linaro.org>
+ <20190926173428.10713-6-f4bug@amsat.org>
+ <CAKmqyKP+ABP9J=1UJEA+HEO4+UBuyjOoyzZVEJEDiM7N63bMag@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <d2ab9145-cf4e-008c-8351-51f271fa37f8@amsat.org>
+Date: Tue, 8 Oct 2019 11:43:05 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: 9329FdN5+pVV
+In-Reply-To: <CAKmqyKP+ABP9J=1UJEA+HEO4+UBuyjOoyzZVEJEDiM7N63bMag@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::343
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Zolt=c3=a1n_Baldaszti?= <bztemail@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Esteban Bosse <estebanbosse@gmail.com>, Cleber Rosa <crosa@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ Clement Deschamps <clement.deschamps@antfield.fr>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Laurent Bonnans <laurent.bonnans@here.com>,
+ Cheng Xiang <ext-cheng.xiang@here.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Pekka Enberg <penberg@iki.fi>, Guenter Roeck <linux@roeck-us.net>,
+ Eduardo Habkost <ehabkost@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KQAEQreOUMTy
 
+Hi Alistair,
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+On 9/27/19 11:42 PM, Alistair Francis wrote:
+>   On Thu, Sep 26, 2019 at 10:44 AM Philippe Mathieu-Daudé
+> <f4bug@amsat.org> wrote:
+>>
+>> Base addresses and sizes taken from the "BCM2835 ARM Peripherals"
+>> datasheet from February 06 2012:
+>> https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
+>>
+>> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>   hw/arm/bcm2835_peripherals.c         | 31 ++++++++++++++++++++++++++++
+>>   include/hw/arm/bcm2835_peripherals.h | 15 ++++++++++++++
+>>   include/hw/arm/raspi_platform.h      |  8 +++++++
+>>   3 files changed, 54 insertions(+)
+>>
+>> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+>> index 1bd2ff41d5..fdcf616c56 100644
+>> --- a/hw/arm/bcm2835_peripherals.c
+>> +++ b/hw/arm/bcm2835_peripherals.c
+>> @@ -22,6 +22,20 @@
+>>   /* Capabilities for SD controller: no DMA, high-speed, default clocks etc. */
+>>   #define BCM2835_SDHC_CAPAREG 0x52134b4
+>>
+>> +static void create_unimp(BCM2835PeripheralState *ps,
+>> +                         UnimplementedDeviceState *uds,
+>> +                         const char *name, hwaddr ofs, hwaddr size)
+>> +{
+>> +    sysbus_init_child_obj(OBJECT(ps), name, uds,
+>> +                          sizeof(UnimplementedDeviceState),
+>> +                          TYPE_UNIMPLEMENTED_DEVICE);
+>> +    qdev_prop_set_string(DEVICE(uds), "name", name);
+>> +    qdev_prop_set_uint64(DEVICE(uds), "size", size);
+>> +    object_property_set_bool(OBJECT(uds), true, "realized", &error_fatal);
+>> +    memory_region_add_subregion_overlap(&ps->peri_mr, ofs,
+>> +                    sysbus_mmio_get_region(SYS_BUS_DEVICE(uds), 0), -1000);
+> 
+> Why not just use create_unimplemented_device() and not bother saving
+> the UnimplementedDeviceState members in the struct?
 
-> Various address spaces from the BCM2835 are reported as
-> 'anonymous' in memory tree:
+create_unimplemented_device() calls
+  -> sysbus_mmio_map_overlap()
+     -> sysbus_mmio_map_common()
+       -> memory_region_del_subregion(get_system_memory())
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+So it maps the device at *absolute* offset in the system memory.
 
->
->   (qemu) info mtree
->
->   address-space: anonymous
->     0000000000000000-000000000000008f (prio 0, i/o): bcm2835-mbox
->       0000000000000010-000000000000001f (prio 0, i/o): bcm2835-fb
->       0000000000000080-000000000000008f (prio 0, i/o): bcm2835-property
->
->   address-space: anonymous
->     0000000000000000-00000000ffffffff (prio 0, i/o): bcm2835-gpu
->       0000000000000000-000000003fffffff (prio 0, i/o): alias bcm2835-gpu-=
-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       0000000040000000-000000007fffffff (prio 0, i/o): alias bcm2835-gpu-=
-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       000000007e000000-000000007effffff (prio 1, i/o): alias bcm2835-peri=
-pherals @bcm2835-peripherals 0000000000000000-0000000000ffffff
->       0000000080000000-00000000bfffffff (prio 0, i/o): alias bcm2835-gpu-=
-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       00000000c0000000-00000000ffffffff (prio 0, i/o): alias bcm2835-gpu-=
-ram-alias[*] @ram 0000000000000000-000000003fffffff
->
->   [...]
->
-> Since the address_space_init() function takes a 'name' argument,
-> set it to correctly describe each address space:
->
->   (qemu) info mtree
->
->   address-space: bcm2835-mbox-memory
->     0000000000000000-000000000000008f (prio 0, i/o): bcm2835-mbox
->       0000000000000010-000000000000001f (prio 0, i/o): bcm2835-fb
->       0000000000000080-000000000000008f (prio 0, i/o): bcm2835-property
->
->   address-space: bcm2835-fb-memory
->     0000000000000000-00000000ffffffff (prio 0, i/o): bcm2835-gpu
->       0000000000000000-000000003fffffff (prio 0, i/o): alias bcm2835-gpu-=
-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       0000000040000000-000000007fffffff (prio 0, i/o): alias bcm2835-gpu-=
-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       000000007e000000-000000007effffff (prio 1, i/o): alias bcm2835-peri=
-pherals @bcm2835-peripherals 0000000000000000-0000000000ffffff
->       0000000080000000-00000000bfffffff (prio 0, i/o): alias bcm2835-gpu-=
-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       00000000c0000000-00000000ffffffff (prio 0, i/o): alias bcm2835-gpu-=
-ram-alias[*] @ram 0000000000000000-000000003fffffff
->
->   address-space: bcm2835-property-memory
->     0000000000000000-00000000ffffffff (prio 0, i/o): bcm2835-gpu
->       0000000000000000-000000003fffffff (prio 0, i/o): alias bcm2835-gpu-=
-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       0000000040000000-000000007fffffff (prio 0, i/o): alias bcm2835-gpu-=
-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       000000007e000000-000000007effffff (prio 1, i/o): alias bcm2835-peri=
-pherals @bcm2835-peripherals 0000000000000000-0000000000ffffff
->       0000000080000000-00000000bfffffff (prio 0, i/o): alias bcm2835-gpu-=
-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       00000000c0000000-00000000ffffffff (prio 0, i/o): alias bcm2835-gpu-=
-ram-alias[*] @ram 0000000000000000-000000003fffffff
->
->   address-space: bcm2835-dma-memory
->     0000000000000000-00000000ffffffff (prio 0, i/o): bcm2835-gpu
->       0000000000000000-000000003fffffff (prio 0, i/o): alias bcm2835-gpu-=
-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       0000000040000000-000000007fffffff (prio 0, i/o): alias bcm2835-gpu-=
-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       000000007e000000-000000007effffff (prio 1, i/o): alias bcm2835-peri=
-pherals @bcm2835-peripherals 0000000000000000-0000000000ffffff
->       0000000080000000-00000000bfffffff (prio 0, i/o): alias bcm2835-gpu-=
-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       00000000c0000000-00000000ffffffff (prio 0, i/o): alias bcm2835-gpu-=
-ram-alias[*] @ram 0000000000000000-000000003fffffff
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
->  hw/display/bcm2835_fb.c    | 2 +-
->  hw/dma/bcm2835_dma.c       | 2 +-
->  hw/misc/bcm2835_mbox.c     | 2 +-
->  hw/misc/bcm2835_property.c | 2 +-
->  4 files changed, 4 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
-> index 8f856878cd..85aaa54330 100644
-> --- a/hw/display/bcm2835_fb.c
-> +++ b/hw/display/bcm2835_fb.c
-> @@ -425,7 +425,7 @@ static void bcm2835_fb_realize(DeviceState *dev, Erro=
-r **errp)
->      s->initial_config.base =3D s->vcram_base + BCM2835_FB_OFFSET;
->
->      s->dma_mr =3D MEMORY_REGION(obj);
-> -    address_space_init(&s->dma_as, s->dma_mr, NULL);
-> +    address_space_init(&s->dma_as, s->dma_mr, TYPE_BCM2835_FB "-memory");
->
->      bcm2835_fb_reset(dev);
->
-> diff --git a/hw/dma/bcm2835_dma.c b/hw/dma/bcm2835_dma.c
-> index 6acc2b644e..1e458d7fba 100644
-> --- a/hw/dma/bcm2835_dma.c
-> +++ b/hw/dma/bcm2835_dma.c
-> @@ -383,7 +383,7 @@ static void bcm2835_dma_realize(DeviceState *dev, Err=
-or **errp)
->      }
->
->      s->dma_mr =3D MEMORY_REGION(obj);
-> -    address_space_init(&s->dma_as, s->dma_mr, NULL);
-> +    address_space_init(&s->dma_as, s->dma_mr, TYPE_BCM2835_DMA "-memory"=
-);
->
->      bcm2835_dma_reset(dev);
->  }
-> diff --git a/hw/misc/bcm2835_mbox.c b/hw/misc/bcm2835_mbox.c
-> index 7690b9afaf..77285624c9 100644
-> --- a/hw/misc/bcm2835_mbox.c
-> +++ b/hw/misc/bcm2835_mbox.c
-> @@ -311,7 +311,7 @@ static void bcm2835_mbox_realize(DeviceState *dev, Er=
-ror **errp)
->      }
->
->      s->mbox_mr =3D MEMORY_REGION(obj);
-> -    address_space_init(&s->mbox_as, s->mbox_mr, NULL);
-> +    address_space_init(&s->mbox_as, s->mbox_mr, TYPE_BCM2835_MBOX "-memo=
-ry");
->      bcm2835_mbox_reset(dev);
->  }
->
-> diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-> index 0a1a3eb5d9..43a5465c5d 100644
-> --- a/hw/misc/bcm2835_property.c
-> +++ b/hw/misc/bcm2835_property.c
-> @@ -407,7 +407,7 @@ static void bcm2835_property_realize(DeviceState *dev=
-, Error **errp)
->      }
->
->      s->dma_mr =3D MEMORY_REGION(obj);
-> -    address_space_init(&s->dma_as, s->dma_mr, NULL);
-> +    address_space_init(&s->dma_as, s->dma_mr, TYPE_BCM2835_PROPERTY "-me=
-mory");
->
->      /* TODO: connect to MAC address of USB NIC device, once we emulate i=
-t */
->      qemu_macaddr_default_if_unset(&s->macaddr);
+create_unimp() maps the device at offset *relative* to peri_mr.
 
+Patch 8 of this series maps the PERI (container) block at peri_base 
+(fixed at BCM2836_PERI_BASE=0x3F000000 for the 2836/2837), then patch 12 
+adds the 2838 which has PERI mapped at 0xfe000000. So we have the same 
+"container" block mapped at different addresses.
+Not the PERI block itself doesn't know its base address, all offsets are 
+relative.
 
---
-Alex Benn=C3=A9e
+So using create_unimp() allow to use the same block in two different SoCs.
+
+8:  https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg00678.html
+12: https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg00684.html
+
+>> +}
+>> +
+>>   static void bcm2835_peripherals_init(Object *obj)
+>>   {
+>>       BCM2835PeripheralState *s = BCM2835_PERIPHERALS(obj);
+>> @@ -323,6 +337,23 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+>>           error_propagate(errp, err);
+>>           return;
+>>       }
+>> +
+>> +    create_unimp(s, &s->armtmr, "bcm2835-sp804", ARMCTRL_TIMER0_1_OFFSET, 0x40);
+>> +    create_unimp(s, &s->systmr, "bcm2835-systimer", ST_OFFSET, 0x20);
+>> +    create_unimp(s, &s->cprman, "bcm2835-cprman", CPRMAN_OFFSET, 0x1000);
+>> +    create_unimp(s, &s->a2w, "bcm2835-a2w", A2W_OFFSET, 0x1000);
+>> +    create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
+>> +    create_unimp(s, &s->smi, "bcm2835-smi", SMI_OFFSET, 0x100);
+>> +    create_unimp(s, &s->spi[0], "bcm2835-spi0", SPI0_OFFSET, 0x20);
+>> +    create_unimp(s, &s->bscsl, "bcm2835-spis", BSC_SL_OFFSET, 0x100);
+>> +    create_unimp(s, &s->i2c[0], "bcm2835-i2c0", BSC0_OFFSET, 0x20);
+>> +    create_unimp(s, &s->i2c[1], "bcm2835-i2c1", BSC1_OFFSET, 0x20);
+>> +    create_unimp(s, &s->i2c[2], "bcm2835-i2c2", BSC2_OFFSET, 0x20);
+>> +    create_unimp(s, &s->otp, "bcm2835-otp", OTP_OFFSET, 0x80);
+>> +    create_unimp(s, &s->dbus, "bcm2835-dbus", DBUS_OFFSET, 0x8000);
+>> +    create_unimp(s, &s->ave0, "bcm2835-ave0", AVE0_OFFSET, 0x8000);
+>> +    create_unimp(s, &s->dwc2, "dwc-usb2", USB_OTG_OFFSET, 0x1000);
+>> +    create_unimp(s, &s->sdramc, "bcm2835-sdramc", SDRAMC_OFFSET, 0x100);
+>>   }
+>>
+>>   static void bcm2835_peripherals_class_init(ObjectClass *oc, void *data)
+>> diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
+>> index 6b17f6a382..62a4c7b559 100644
+>> --- a/include/hw/arm/bcm2835_peripherals.h
+>> +++ b/include/hw/arm/bcm2835_peripherals.h
+>> @@ -23,6 +23,7 @@
+>>   #include "hw/sd/sdhci.h"
+>>   #include "hw/sd/bcm2835_sdhost.h"
+>>   #include "hw/gpio/bcm2835_gpio.h"
+>> +#include "hw/misc/unimp.h"
+>>
+>>   #define TYPE_BCM2835_PERIPHERALS "bcm2835-peripherals"
+>>   #define BCM2835_PERIPHERALS(obj) \
+>> @@ -37,6 +38,10 @@ typedef struct BCM2835PeripheralState {
+>>       MemoryRegion ram_alias[4];
+>>       qemu_irq irq, fiq;
+>>
+>> +    UnimplementedDeviceState systmr;
+>> +    UnimplementedDeviceState armtmr;
+>> +    UnimplementedDeviceState cprman;
+>> +    UnimplementedDeviceState a2w;
+>>       PL011State uart0;
+>>       BCM2835AuxState aux;
+>>       BCM2835FBState fb;
+>> @@ -48,6 +53,16 @@ typedef struct BCM2835PeripheralState {
+>>       SDHCIState sdhci;
+>>       BCM2835SDHostState sdhost;
+>>       BCM2835GpioState gpio;
+>> +    UnimplementedDeviceState i2s;
+>> +    UnimplementedDeviceState spi[1];
+>> +    UnimplementedDeviceState i2c[3];
+>> +    UnimplementedDeviceState otp;
+>> +    UnimplementedDeviceState dbus;
+>> +    UnimplementedDeviceState ave0;
+>> +    UnimplementedDeviceState bscsl;
+>> +    UnimplementedDeviceState smi;
+>> +    UnimplementedDeviceState dwc2;
+>> +    UnimplementedDeviceState sdramc;
+>>   } BCM2835PeripheralState;
+>>
+>>   #endif /* BCM2835_PERIPHERALS_H */
+>> diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
+>> index 66969fac5d..cdcbca943f 100644
+>> --- a/include/hw/arm/raspi_platform.h
+>> +++ b/include/hw/arm/raspi_platform.h
+>> @@ -38,6 +38,8 @@
+>>                                                         * Doorbells & Mailboxes */
+>>   #define CPRMAN_OFFSET           0x100000 /* Power Management, Watchdog */
+>>   #define CM_OFFSET               0x101000 /* Clock Management */
+>> +#define A2W_OFFSET              0x102000 /* Reset controller */
+>> +#define AVS_OFFSET              0x103000 /* Audio Video Standard */
+>>   #define RNG_OFFSET              0x104000
+>>   #define GPIO_OFFSET             0x200000
+>>   #define UART0_OFFSET            0x201000
+>> @@ -45,11 +47,17 @@
+>>   #define I2S_OFFSET              0x203000
+>>   #define SPI0_OFFSET             0x204000
+>>   #define BSC0_OFFSET             0x205000 /* BSC0 I2C/TWI */
+>> +#define OTP_OFFSET              0x20f000
+>> +#define BSC_SL_OFFSET           0x214000 /* SPI slave */
+>>   #define AUX_OFFSET              0x215000 /* AUX: UART1/SPI1/SPI2 */
+>>   #define EMMC1_OFFSET            0x300000
+>>   #define SMI_OFFSET              0x600000
+>>   #define BSC1_OFFSET             0x804000 /* BSC1 I2C/TWI */
+>> +#define BSC2_OFFSET             0x805000 /* BSC2 I2C/TWI */
+>> +#define DBUS_OFFSET             0x900000
+>> +#define AVE0_OFFSET             0x910000
+>>   #define USB_OTG_OFFSET          0x980000 /* DTC_OTG USB controller */
+>> +#define SDRAMC_OFFSET           0xe00000
+>>   #define DMA15_OFFSET            0xE05000 /* DMA controller, channel 15 */
+>>
+>>   /* GPU interrupts */
+>> --
+>> 2.20.1
+>>
+>>

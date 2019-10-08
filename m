@@ -1,98 +1,99 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5442378wrm;
-        Tue, 8 Oct 2019 10:28:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqygMKsPst5d3is2uoSCPLYg89mjoO5r673kUv6T0aoyMZsLgI8uhg7t2rCbOAW3sR7lyOla
-X-Received: by 2002:ae9:f215:: with SMTP id m21mr30557437qkg.47.1570555698520;
-        Tue, 08 Oct 2019 10:28:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570555698; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5442639wrm;
+        Tue, 8 Oct 2019 10:28:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz+f8G/MURSIwg6aSnLPPYS3JDNIs5yJffEf5XNlHdXu8yljbAKHsHpiSVx8Kwrmaz4aunO
+X-Received: by 2002:a0c:e785:: with SMTP id x5mr34559823qvn.71.1570555717312;
+        Tue, 08 Oct 2019 10:28:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570555717; cv=none;
         d=google.com; s=arc-20160816;
-        b=NP1t5GQ+BXasNX+++2DzK9IRJ/aAH/VQ70QO/m2aB/9LlzSPkBTT7yFFkC7qz0HtQK
-         mOp1taZUqpaY/63L3RBN+Dap9MOS66nfv1OqXn+PS/dYYnJGoUQAcVPYV1EjmKnniftR
-         y07C2n+uBuMs9B+cBA+DOuQk8b2papxCmQJmgbPrQIDQ4wMdNXpwnVb7rUnNqbNWi8N/
-         zvsQR9sfI54QKNBs9k00o2uLYf0lIDx8/P/xamTGoH8+p7RdV04RI48lCxilv94nEOUu
-         Hyoxcninm8H2i8N2iDV9acbLXzm1VU/W7TK0m9VBzvJp4tvTM+neJKQpEvYwP6m/wdIR
-         h1qQ==
+        b=zrisGq7/T4stPSYYB6FsFiGcHq8F274jo/X54JHCT5EVPty5/VDdfEyNhqWNm9IfkN
+         Pj8hAM4GDClVk0TSkwxAHffdMmHiFb1KydS/KcKUn232wM2VWbCJw9vxjFdCT3RfShJC
+         /RfMoIb0zFIGVihHL5Y2wjUnUKLRRIusi7hd+lrRBUuAVKTbRnrXlQ3pU7g0dsQXZCVC
+         NI23szQLr0Ar/0ns601gIiytFF+Rg4WoWe9DdlbGuW7O6Kk3J5SZhn00UvELM8um4xdW
+         2rG5X77mJE/NKZIAhKPuv9sf617vMHSBQf8A4Mya78XPgBkszu1DRpHaj4ffb07+eEK0
+         e5Tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=AQvT9vDwvMSeUbPbD+uEtZfbrPLTNxo2MaS4CXHbEVw=;
-        b=YK4m4BZjTcff6OgNdKJLfsSlginXNaadvp7aSnDAIW7m08w28oI+Mo6X4WDo2UWNC+
-         DTVTIhDT/IhYw+fwzmVM2YmNAd6ZbPCiEMxNRy924eiNeyLabLEoF/Uyqocw19K27TJ9
-         DlYvC+wQBQ25anqSJvvEKYPLlnruI5BgdpxfMevDczkubyv2JM0uWBWFujkRNO7VdE/t
-         Ce4xcXoTSG8kuIObricHEZ0YKSdNodOScan0o+CGAip29cMBcP59tvGLLsJkg3SsHO+W
-         fLJqyO6b/0bkfw+DfFnlKjLD+xEPUySWg/fqeLobfz8XvMY+o2tuFyXZnQi7wwm3pFAE
-         s1+w==
+        bh=QW+A6xlbgK0FgzrwM5hDJiZEldqNh8wWGg0ioEj7aAU=;
+        b=GWBLxoa6tJIlqoLxqvobx2+ZWyzBqNUUDZP1m4pjPfOY43G1lZdy8jQryJIKFOSmOy
+         7AB6K4Tge75zlXY/DE+P9+pjVupogecBKi4uOI08SrI4kbzCppIWX23Lv++do0AjEu1k
+         srrauqgyzDsM7y5W5ERvvR+Iv7vb0p7pTQoze68b0c2A0+stsXuAwID5/RRV/rf1r866
+         WMohfHzKYFAMKEGMvajUg1ROh5xczzwntoTfaynCi3DxZuKDmTetOareaIx8zfAP5TGw
+         vHJdPR0RUrCUr5vlvuq12yePHbovUNVsA4y8BH+uzM8XseAUrSRwos4PMyZPDci5XWJY
+         synA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ohhpWqFF;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BM+7Tp44;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e52si17459961qtk.158.2019.10.08.10.28.18
+        by mx.google.com with ESMTPS id v10si17133840qta.300.2019.10.08.10.28.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Oct 2019 10:28:18 -0700 (PDT)
+        Tue, 08 Oct 2019 10:28:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ohhpWqFF;
+       dkim=fail header.i=@linaro.org header.s=google header.b=BM+7Tp44;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59134 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59146 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iHtHV-0008QV-6F
-	for alex.bennee@linaro.org; Tue, 08 Oct 2019 13:28:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48963)
+	id 1iHtHo-0000M8-5c
+	for alex.bennee@linaro.org; Tue, 08 Oct 2019 13:28:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49010)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iHt7a-0006kc-Vg
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:18:04 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iHt7c-0006m2-Uy
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:18:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iHt7Z-0002Lx-6a
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:18:02 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:44077)
+ (envelope-from <peter.maydell@linaro.org>) id 1iHt7a-0002N3-Vn
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:18:04 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:33123)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iHt7Y-0002Kw-Uk
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:18:01 -0400
-Received: by mail-wr1-x442.google.com with SMTP id z9so20280108wrl.11
- for <qemu-arm@nongnu.org>; Tue, 08 Oct 2019 10:18:00 -0700 (PDT)
+ id 1iHt7Z-0002Lh-UB
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:18:02 -0400
+Received: by mail-wr1-x441.google.com with SMTP id b9so20371723wrs.0
+ for <qemu-arm@nongnu.org>; Tue, 08 Oct 2019 10:18:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=AQvT9vDwvMSeUbPbD+uEtZfbrPLTNxo2MaS4CXHbEVw=;
- b=ohhpWqFFQHiMPwr97FA20nrcPzPIFqpzJQCRvfq+vE/j6/3P2V2Uo3p6Boe6Hx1XqF
- 2D7B4fwzZEuaoAF5c4DQl+ZUrPmDVBVHEQlYMXvj9am4n3vDfMRCbmDrBXdm/YLflYR4
- xudVSZ3HCJIl/DubdNsUMZGEpab3rRrxqHH30RUzQ5STZgNnD/m0oQd52sicnkpBk7fn
- rt/NDlxwRBiKa+1jTsy8vEqjIBqzi5Rb6Gpa8zLXcz15RVrzd0x0lud5J4aEXv5mPTEQ
- oUEIis7FsepQWO/cpdU0Fb+9jaSKY27oXX7GDOHPQO44syRoS4kcetQp7FL4B89kcm6G
- mmxQ==
+ bh=QW+A6xlbgK0FgzrwM5hDJiZEldqNh8wWGg0ioEj7aAU=;
+ b=BM+7Tp44LjG8NgGZHfvDmDNNWka0Np95L+GTWDj3/fnwbDtoWXWUGRwFBsOwjPH1T9
+ Q3tt5+/1dRV6Eqf4doZ45IEThOFblKzSSJmv1+bcp85+G0YsGPBVoRxlvvlf2b+KQ7n2
+ NNBRzg/CFyjHXWnSnfBlAZlM2owFuwq+dcP/7O34mrcVZuShhIWzhYhpGCRJibZbkfXP
+ /QijTH3DZVZ6kftZNG4iNYSkAjnBzRJzVK8tUhG9goXCmzh+a1lB1elxo/m/3Oziti5D
+ Rva7ccFW1IU3oZvfTJGE3oyFuk5Vaj5iNdgOO0R2c2PdSKY09u4aGzrdZDGwy+PAjveb
+ 0Ypw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=AQvT9vDwvMSeUbPbD+uEtZfbrPLTNxo2MaS4CXHbEVw=;
- b=CCvsNnxvo985hvg9qagsta4CUCGrlNu9MAkQqePptH/gEKD5AK8Za1QSkWdJHwuZsK
- eYwpAhR7nSOO5RQ3PPgp+q2YbItM5gknTuod0Jnq1UwVYJMwTssxFJs8tdBwxXRWJe8b
- AbjAJ33f/axne+XknX/a+HpyqIl5T5qfsu9y0OlEawC1ztgKFkm4+08WGem03jp3KRq5
- /gpgm2fDrF4VsD2gDUmrrymCN0ZUyuDpyE/gJSpStfWwuHvV9YJlZj6Yv3eqGgUyJtdf
- Hd6ovdKKWGV95i/z9hK7iT+VFzVPBy6aeE53M+m9FReV01pU5u0dEC926f6OawYxamw0
- E4Vg==
-X-Gm-Message-State: APjAAAUBQCe1pTUe8ERcAaXynb40Bli4RQ+2VevV31t26cVnTtyae6Sx
- ti6hAKINM++FhpG4Pi6rl31uX90gkr+FYw==
-X-Received: by 2002:a5d:574f:: with SMTP id q15mr16258203wrw.362.1570555079030; 
- Tue, 08 Oct 2019 10:17:59 -0700 (PDT)
+ bh=QW+A6xlbgK0FgzrwM5hDJiZEldqNh8wWGg0ioEj7aAU=;
+ b=axlQyyuWjdcxvAMfVZGo9A3BFgHFqDcVIBHDfnBJpitI9KIrUVts760vpU3032E8MI
+ ArPI74KjTavf9S5wr5mmcwVd9j8ifGwRQfnMS6nnZHjnamUwyE6F0TQSiRFp1qUOrboT
+ MpBFw7owyr2tbL/GKXrKwGgQfwhXodDl0HQf51jgFCCi89Ep6+P5y0afG5QNzHDD2f6S
+ XOjxgIm9RiKnY1pj4hoSztNV8XFVkvFb8vHVBbG3bKV/0FcZGo/SgjPUeDP/cDrrxJge
+ VMNfFGqzaNfy/UZRScv8GQua+9Ux1i5qGdcLOSsyW/9biBVlcy/vSd32bK6Rv+0YLO6a
+ 9Akg==
+X-Gm-Message-State: APjAAAWLfQ8W7ZvK7Zxxg7u8IjKsPS2uvA3FMQVfUP+ycjRsV3KFnCWf
+ p/CV7/xvnPxoZXHVKhuxzIuyUFTncHdKZg==
+X-Received: by 2002:a05:6000:186:: with SMTP id
+ p6mr25899400wrx.136.1570555080350; 
+ Tue, 08 Oct 2019 10:18:00 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id z9sm19135541wrl.35.2019.10.08.10.17.57
+ by smtp.gmail.com with ESMTPSA id z9sm19135541wrl.35.2019.10.08.10.17.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Oct 2019 10:17:58 -0700 (PDT)
+ Tue, 08 Oct 2019 10:17:59 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 12/21] hw/timer/exynos4210_mct.c: Switch LFRC to
+Subject: [PATCH v2 13/21] hw/timer/exynos4210_mct.c: Switch ltick to
  transaction-based ptimer API
-Date: Tue,  8 Oct 2019 18:17:31 +0100
-Message-Id: <20191008171740.9679-13-peter.maydell@linaro.org>
+Date: Tue,  8 Oct 2019 18:17:32 +0100
+Message-Id: <20191008171740.9679-14-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191008171740.9679-1-peter.maydell@linaro.org>
 References: <20191008171740.9679-1-peter.maydell@linaro.org>
@@ -100,7 +101,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::442
+X-Received-From: 2a00:1450:4864:20::441
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,113 +118,139 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YjmfbD37TwzR
+X-TUID: rO1JIpHdEI1p
 
-Switch the exynos MCT LFRC timers over to the ptimer transaction API.
+Switch the ltick ptimer over to the ptimer transaction API.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/timer/exynos4210_mct.c | 27 +++++++++++++++++++++++----
- 1 file changed, 23 insertions(+), 4 deletions(-)
+ hw/timer/exynos4210_mct.c | 31 +++++++++++++++++++++++++------
+ 1 file changed, 25 insertions(+), 6 deletions(-)
 
 diff --git a/hw/timer/exynos4210_mct.c b/hw/timer/exynos4210_mct.c
-index fcf91c75cc5..82803ef9a02 100644
+index 82803ef9a02..72257584145 100644
 --- a/hw/timer/exynos4210_mct.c
 +++ b/hw/timer/exynos4210_mct.c
-@@ -608,6 +608,7 @@ static uint64_t exynos4210_lfrc_get_count(Exynos4210MCTLT *s)
+@@ -58,7 +58,6 @@
+ #include "hw/sysbus.h"
+ #include "migration/vmstate.h"
+ #include "qemu/timer.h"
+-#include "qemu/main-loop.h"
+ #include "qemu/module.h"
+ #include "hw/ptimer.h"
+ 
+@@ -735,6 +734,7 @@ static uint32_t exynos4210_ltick_int_get_cnto(struct tick_timer *s)
  
  /*
-  * Set counter of FRC local timer.
-+ * Must be called from within exynos4210_lfrc_tx_begin/commit block.
+  * Start local tick cnt timer.
++ * Must be called within exynos4210_ltick_tx_begin/commit block.
   */
- static void exynos4210_lfrc_update_count(Exynos4210MCTLT *s)
+ static void exynos4210_ltick_cnt_start(struct tick_timer *s)
  {
-@@ -620,6 +621,7 @@ static void exynos4210_lfrc_update_count(Exynos4210MCTLT *s)
+@@ -750,6 +750,7 @@ static void exynos4210_ltick_cnt_start(struct tick_timer *s)
  
  /*
-  * Start local FRC timer
-+ * Must be called from within exynos4210_lfrc_tx_begin/commit block.
+  * Stop local tick cnt timer.
++ * Must be called within exynos4210_ltick_tx_begin/commit block.
   */
- static void exynos4210_lfrc_start(Exynos4210MCTLT *s)
+ static void exynos4210_ltick_cnt_stop(struct tick_timer *s)
  {
-@@ -628,12 +630,25 @@ static void exynos4210_lfrc_start(Exynos4210MCTLT *s)
- 
- /*
-  * Stop local FRC timer
-+ * Must be called from within exynos4210_lfrc_tx_begin/commit block.
-  */
- static void exynos4210_lfrc_stop(Exynos4210MCTLT *s)
- {
-     ptimer_stop(s->ptimer_frc);
+@@ -767,6 +768,18 @@ static void exynos4210_ltick_cnt_stop(struct tick_timer *s)
+     }
  }
  
-+/* Start ptimer transaction for local FRC timer */
-+static void exynos4210_lfrc_tx_begin(Exynos4210MCTLT *s)
++/* Start ptimer transaction for local tick timer */
++static void exynos4210_ltick_tx_begin(struct tick_timer *s)
 +{
-+    ptimer_transaction_begin(s->ptimer_frc);
++    ptimer_transaction_begin(s->ptimer_tick);
 +}
 +
-+/* Commit ptimer transaction for local FRC timer */
-+static void exynos4210_lfrc_tx_commit(Exynos4210MCTLT *s)
++/* Commit ptimer transaction for local tick timer */
++static void exynos4210_ltick_tx_commit(struct tick_timer *s)
 +{
-+    ptimer_transaction_commit(s->ptimer_frc);
++    ptimer_transaction_commit(s->ptimer_tick);
 +}
 +
  /*
-  * Local timer free running counter tick handler
+  * Get counter for CNT timer
   */
-@@ -981,9 +996,9 @@ static void exynos4210_mct_update_freq(Exynos4210MCTState *s)
+@@ -812,6 +825,7 @@ static uint32_t exynos4210_ltick_cnt_get_cnto(struct tick_timer *s)
+ 
+ /*
+  * Set new values of counters for CNT and INT timers
++ * Must be called within exynos4210_ltick_tx_begin/commit block.
+  */
+ static void exynos4210_ltick_set_cntb(struct tick_timer *s, uint32_t new_cnt,
+         uint32_t new_int)
+@@ -885,7 +899,9 @@ static void exynos4210_ltick_recalc_count(struct tick_timer *s)
+ static void exynos4210_ltick_timer_init(struct tick_timer *s)
+ {
+     exynos4210_ltick_int_stop(s);
++    exynos4210_ltick_tx_begin(s);
+     exynos4210_ltick_cnt_stop(s);
++    exynos4210_ltick_tx_commit(s);
+ 
+     s->count = 0;
+     s->distance = 0;
+@@ -995,9 +1011,9 @@ static void exynos4210_mct_update_freq(Exynos4210MCTState *s)
+         tx_ptimer_set_freq(s->g_timer.ptimer_frc, s->freq);
  
          /* local timer */
-         ptimer_set_freq(s->l_timer[0].tick_timer.ptimer_tick, s->freq);
--        ptimer_set_freq(s->l_timer[0].ptimer_frc, s->freq);
-+        tx_ptimer_set_freq(s->l_timer[0].ptimer_frc, s->freq);
-         ptimer_set_freq(s->l_timer[1].tick_timer.ptimer_tick, s->freq);
--        ptimer_set_freq(s->l_timer[1].ptimer_frc, s->freq);
-+        tx_ptimer_set_freq(s->l_timer[1].ptimer_frc, s->freq);
+-        ptimer_set_freq(s->l_timer[0].tick_timer.ptimer_tick, s->freq);
++        tx_ptimer_set_freq(s->l_timer[0].tick_timer.ptimer_tick, s->freq);
+         tx_ptimer_set_freq(s->l_timer[0].ptimer_frc, s->freq);
+-        ptimer_set_freq(s->l_timer[1].tick_timer.ptimer_tick, s->freq);
++        tx_ptimer_set_freq(s->l_timer[1].tick_timer.ptimer_tick, s->freq);
+         tx_ptimer_set_freq(s->l_timer[1].ptimer_frc, s->freq);
      }
  }
+@@ -1304,6 +1320,7 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+         s->l_timer[lt_i].reg.wstat |= L_WSTAT_TCON_WRITE;
+         s->l_timer[lt_i].reg.tcon = value;
  
-@@ -1012,7 +1027,9 @@ static void exynos4210_mct_reset(DeviceState *d)
-         s->l_timer[i].tick_timer.count = 0;
-         s->l_timer[i].tick_timer.distance = 0;
-         s->l_timer[i].tick_timer.progress = 0;
-+        exynos4210_lfrc_tx_begin(&s->l_timer[i]);
-         ptimer_stop(s->l_timer[i].ptimer_frc);
-+        exynos4210_lfrc_tx_commit(&s->l_timer[i]);
- 
-         exynos4210_ltick_timer_init(&s->l_timer[i].tick_timer);
-     }
-@@ -1316,6 +1333,7 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
++        exynos4210_ltick_tx_begin(&s->l_timer[lt_i].tick_timer);
+         /* Stop local CNT */
+         if ((value & L_TCON_TICK_START) <
+                 (old_val & L_TCON_TICK_START)) {
+@@ -1331,6 +1348,7 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+             DPRINTF("local timer[%d] start int\n", lt_i);
+             exynos4210_ltick_int_start(&s->l_timer[lt_i].tick_timer);
          }
++        exynos4210_ltick_tx_commit(&s->l_timer[lt_i].tick_timer);
  
          /* Start or Stop local FRC if TCON changed */
-+        exynos4210_lfrc_tx_begin(&s->l_timer[lt_i]);
-         if ((value & L_TCON_FRC_START) >
-         (s->l_timer[lt_i].reg.tcon & L_TCON_FRC_START)) {
-             DPRINTF("local timer[%d] start frc\n", lt_i);
-@@ -1326,6 +1344,7 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
-             DPRINTF("local timer[%d] stop frc\n", lt_i);
-             exynos4210_lfrc_stop(&s->l_timer[lt_i]);
-         }
-+        exynos4210_lfrc_tx_commit(&s->l_timer[lt_i]);
-         break;
+         exynos4210_lfrc_tx_begin(&s->l_timer[lt_i]);
+@@ -1356,8 +1374,10 @@ static void exynos4210_mct_write(void *opaque, hwaddr offset,
+          * Due to this we should reload timer to nearest moment when CNT is
+          * expired and then in event handler update tcntb to new TCNTB value.
+          */
++        exynos4210_ltick_tx_begin(&s->l_timer[lt_i].tick_timer);
+         exynos4210_ltick_set_cntb(&s->l_timer[lt_i].tick_timer, value,
+                 s->l_timer[lt_i].tick_timer.icntb);
++        exynos4210_ltick_tx_commit(&s->l_timer[lt_i].tick_timer);
  
-     case L0_TCNTB: case L1_TCNTB:
-@@ -1477,11 +1496,11 @@ static void exynos4210_mct_init(Object *obj)
+         s->l_timer[lt_i].reg.wstat |= L_WSTAT_TCNTB_WRITE;
+         s->l_timer[lt_i].reg.cnt[L_REG_CNT_TCNTB] = value;
+@@ -1486,7 +1506,6 @@ static void exynos4210_mct_init(Object *obj)
+     int i;
+     Exynos4210MCTState *s = EXYNOS4210_MCT(obj);
+     SysBusDevice *dev = SYS_BUS_DEVICE(obj);
+-    QEMUBH *bh[2];
+ 
+     /* Global timer */
+     s->g_timer.ptimer_frc = ptimer_init(exynos4210_gfrc_event, s,
+@@ -1495,9 +1514,9 @@ static void exynos4210_mct_init(Object *obj)
+ 
      /* Local timers */
      for (i = 0; i < 2; i++) {
-         bh[0] = qemu_bh_new(exynos4210_ltick_event, &s->l_timer[i]);
--        bh[1] = qemu_bh_new(exynos4210_lfrc_event, &s->l_timer[i]);
+-        bh[0] = qemu_bh_new(exynos4210_ltick_event, &s->l_timer[i]);
          s->l_timer[i].tick_timer.ptimer_tick =
-             ptimer_init_with_bh(bh[0], PTIMER_POLICY_DEFAULT);
-         s->l_timer[i].ptimer_frc =
--            ptimer_init_with_bh(bh[1], PTIMER_POLICY_DEFAULT);
-+            ptimer_init(exynos4210_lfrc_event, &s->l_timer[i],
+-            ptimer_init_with_bh(bh[0], PTIMER_POLICY_DEFAULT);
++            ptimer_init(exynos4210_ltick_event, &s->l_timer[i],
 +                        PTIMER_POLICY_DEFAULT);
-         s->l_timer[i].id = i;
-     }
- 
+         s->l_timer[i].ptimer_frc =
+             ptimer_init(exynos4210_lfrc_event, &s->l_timer[i],
+                         PTIMER_POLICY_DEFAULT);
 -- 
 2.20.1
 

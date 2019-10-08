@@ -1,98 +1,98 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5443265wrm;
-        Tue, 8 Oct 2019 10:29:15 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwFalOqjfi/QPRxr4Na1HDaWVWL/bCmG/1zpZPewkHvkXkbhwuizA6OFdmswZ7L0aHlKiSw
-X-Received: by 2002:a50:aa96:: with SMTP id q22mr34949767edc.179.1570555755737;
-        Tue, 08 Oct 2019 10:29:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570555755; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5446767wrm;
+        Tue, 8 Oct 2019 10:32:24 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwBXavjyXw7Y92nhpxFxTLtemzL3siqUI39Pn2fpJMbqXt+ZIkQgpeQnYOrCTVJYjX69lX1
+X-Received: by 2002:a17:906:255b:: with SMTP id j27mr6464186ejb.96.1570555944051;
+        Tue, 08 Oct 2019 10:32:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570555944; cv=none;
         d=google.com; s=arc-20160816;
-        b=qYx4F3KYLFF61Q/Vxii93utD2gCpUGlMZVSN8i0/X2i0F3QVzX/3qXVPMgVFozNpRy
-         XBZ6npSqbYDlVTkTNFcIjY5bFeGH6MlLVk8TvUOjvETkXLk7L/Xrkvf+P9m9m/BK5Oq4
-         /Vb6ZEp34OIeQ/jOXUh+JjlqP0io7tlL/RnZMM+l9T8zU7t8UPRzmXc5QNHZjcVh/klZ
-         LI3HzQZp0/TgBsQ6KrQdgM14lfdfP5oiFFEZ+XpE4tfncYJONOiq5HRTwGriNhyLluyK
-         qNp8cE7yHZBCPDtAEWbnJO2i0HNJktKx59vholHmG3V05kFtZs+7wU+z8zbH1NFeuTcd
-         nCfw==
+        b=KGqpCxwKlH8oSaQxmq3ujnFNtxyzFmbn5vbra8fIJHEla/iOvSSVzRqzW+Nv9eAQ72
+         nZtc2TDiUUvvb2c4VdDHgTC2xbbDwRWssm40lZn5+ZaPKX9cw6ya1u5tNVLu30Q2nsAP
+         sltTJcqM2JSKUnY1Um33D/XpIAKp1A6k3cAbsswhNPZTVBdvJl+IxkMFH7+58ooMgDIZ
+         HNXypKaohJyxkhMNZotVEDMtaUmVDGl4BK+kXTJGhiTuI/EzsbmMLXD4tBD3Z6FkNsLG
+         R566P18RtWnpQz+KSPE88FG49FW8tKnxvpZtFc47eLTg7G4Sy8kRDrTQP7vupUH6PvLA
+         Wsmw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=FS9XddmY4om6siRP8IpkPnxKBpobej+L3T9CfHmPAng=;
-        b=cNG6AufNWAZJMvIBCdhykE6kCKv1UnKIRQb3cC5ibeaeSxF76svBTsmzmZ4qcDYMou
-         NvNXfkRjRe+yjPzDl1B0Q0MSDsr7uvUDOovollcyy/YKnsVx3p5rsEBThGPaDqSREL0p
-         z5JzKoxOVoVvTspsO/ZWlRxmNNusRl+BhhJhOmDJmYf3tDrkt+44FbYluQVXkgoVu6f5
-         CiJhrTs4/6qtdycPx9FYcrRy1X6ee9mfQIzt6yzwogEHAGbG6Q3NgtKwfAnsULlaOKc6
-         chg383TmbYc7mDT/axeRwLfudDwPnBE4EsSgfZqiStrYSQdVTget2dwfZUmZFg0sdVNr
-         1Q3g==
+        bh=NFu/MEC+WzwyReIBeXZdHYVan9ju3LNnnVn/p9IiNqo=;
+        b=Pm39sVXqmP/fKHo4cipaD88lSapGDWS9OWlNPpmx96yrKsSECKVgIOzBDQymyOzAtm
+         q5GgCCYbR4txA4CjBLw05U5byaejtHHM/KjsU9pR1NNDN8pX6ugWGn6g16+CSPobguIB
+         Ds99XnWLlp01WZ1hz3BuBA1ZOJMfFj+wq/jXrhSXPYK527xGJqJARz+WJI/NGrfyrbJC
+         r/ArCwPLpEuhBZ0HRsCEgj1Nuu/TtZ570xNCL9/N0g/0VBI0WIeniqFEN6PJnpkPJd0V
+         iuacqasEu2pg2aGseG8U4pcsvIO5enaBNwnIil5rO2nvCqETWSK/t8jBGOB77e8/7Y61
+         St/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qRFXGLXb;
+       dkim=fail header.i=@linaro.org header.s=google header.b=JHDd5AMv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id oq24si9179087ejb.202.2019.10.08.10.29.15
+        by mx.google.com with ESMTPS id e46si10966777eda.401.2019.10.08.10.32.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Oct 2019 10:29:15 -0700 (PDT)
+        Tue, 08 Oct 2019 10:32:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qRFXGLXb;
+       dkim=fail header.i=@linaro.org header.s=google header.b=JHDd5AMv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59142 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59196 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iHtIP-0000AP-TT
-	for alex.bennee@linaro.org; Tue, 08 Oct 2019 13:29:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48893)
+	id 1iHtLS-0002PQ-1p
+	for alex.bennee@linaro.org; Tue, 08 Oct 2019 13:32:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49063)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iHt7W-0006jA-WB
- for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:18:00 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iHt7e-0006oJ-HI
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:18:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iHt7U-0002Hm-E1
- for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:17:58 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:52584)
+ (envelope-from <peter.maydell@linaro.org>) id 1iHt7c-0002OL-Q6
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:18:06 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:52586)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iHt7T-0002Gk-JL
- for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:17:55 -0400
-Received: by mail-wm1-x341.google.com with SMTP id r19so4028790wmh.2
- for <qemu-devel@nongnu.org>; Tue, 08 Oct 2019 10:17:55 -0700 (PDT)
+ id 1iHt7a-0002MF-UH
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:18:04 -0400
+Received: by mail-wm1-x342.google.com with SMTP id r19so4029156wmh.2
+ for <qemu-devel@nongnu.org>; Tue, 08 Oct 2019 10:18:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=FS9XddmY4om6siRP8IpkPnxKBpobej+L3T9CfHmPAng=;
- b=qRFXGLXbvtyoSUzGEn+fj6yeidVCtQyNh/Q0vOwOOQVAT2XICV9O2mSbRv4HJZlmId
- me7/ylz6GbK326jqcbanI7chJnHWEjEGkDy4N6atU4IX5ywsOBjeamJ7Zz3ZxVA65lId
- tIblyRerbfmQMDTLGc06cXH2wSMgas4dUyTLrGDLnDdnE21Up/yavN7OQozCSVxVgElv
- SvXVCTYbtIkf4JPb+4dTPppoPYokScoPvqshavXeYk8MlEcGE8yhCUK38iUoSDe0dl9b
- GsO5kTN3NCTEDGgjEWlsRmfEwK4jyVZtlpJeriz25TP48YgwMQqe2rS3bBtrknyzFEo/
- A4mA==
+ bh=NFu/MEC+WzwyReIBeXZdHYVan9ju3LNnnVn/p9IiNqo=;
+ b=JHDd5AMvkjN4JVcHK8nTdOzcH5T1Gp/15GkDzhs9qwqhzY2RqVATBDxbxX4qmhS9HL
+ llIwRlCwSKpRPOBHnftVsX+/HZc+zIpJjvUAAtlMrK3iPa4quJGAypH4eNMnBalR4mSJ
+ 0IwDinvB8Z2l41Ykhl9LEhxEwFPOlUkPiy5gSx1cPodxQkBkA3mgyyRQ5skozQorKkP/
+ kaPOeThKlAR1v10Xp4uhLZHpaQEWuLn+HldUFzTDjXIubXt36E5of6M1+ll6UtcHH7s5
+ l4NPx80BxtSFMd7caeKjEmysvmHAGAJBRcDQaHl4grcXi9LkatyCnQ/mOvh1kLalAHjK
+ jY5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=FS9XddmY4om6siRP8IpkPnxKBpobej+L3T9CfHmPAng=;
- b=VUyeRZK2eTO9l5jJosNpt4sPRT8fWmNyrB3d5PqAQGNSCE73sgHKF/LD/bPA13XPvI
- X4ICJc3ZlXPhbuFfhHhmLhzBKXQ3frgDXLeuVoRpZbSd3HjXzuIf0Hnyeh2BlYIwtkCa
- k1qy/elvh/8+z/BhIRDVVXgI/w5PbMW9KJ5E4shB9UJF0hmRfANNlGTep1kpaG3DNS8T
- MVr8FC/vdDqd0VKQ7A9043aPqWhBvjU6AOuMiY55viIKiIRS4LhJIUaQHkQK4p/4do++
- 5WcVBFVXINl5LdKLnfgGYQbKWu1e8M2JodK1O8nZx05NMD2oty7QIBQjlkJXTg/08ra7
- 3rEw==
-X-Gm-Message-State: APjAAAXdnw9Zf+Zwl/mgHA+wQqdjVhgGu1jAhZ17LTAi/gs645LumMkr
- LLRT0lpsMT+bQfYCzupN9xzDUg==
-X-Received: by 2002:a1c:6a03:: with SMTP id f3mr4514443wmc.167.1570555074057; 
- Tue, 08 Oct 2019 10:17:54 -0700 (PDT)
+ bh=NFu/MEC+WzwyReIBeXZdHYVan9ju3LNnnVn/p9IiNqo=;
+ b=rjY/8PvukTBVgHFP6XA4Ptx9Nktz2kt8inOBUYX4KJ28Fvf0EMXgaO1nOuR/INiUfB
+ 4/5femXiiQh2eUoIobyqfyJpG3tsxtfmNeeH74vy5PK2MsUEk06sZKgpFvuXIT1NvaSR
+ kXZTCZeVBTyaxV9O9jcNpnTQKmX5soEX1EgLPvRLbF/SbZIhCeqLr0tBhgspthnb6svK
+ ve0LyvZoKfzLpEmBEQCDJUUCbJgVaXf+63zePudYZRWbJVsChbiVgOoStihG8VFdknYO
+ mV8yJqUfmT8XAz2/IbtEw+GethhznBWzYQjHglS1zV7rQcW48L6dKSjuvnHJxJmeCdzl
+ qZvw==
+X-Gm-Message-State: APjAAAXvKiNU1Kt5NPUp8R+Euw1MnTJ3/OfPTfMSuapngh2I6DFe7Te3
+ Uhu6wwXWJD8j3y6Q6aMDRg3J/g==
+X-Received: by 2002:a1c:b745:: with SMTP id h66mr4505556wmf.70.1570555081534; 
+ Tue, 08 Oct 2019 10:18:01 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id z9sm19135541wrl.35.2019.10.08.10.17.52
+ by smtp.gmail.com with ESMTPSA id z9sm19135541wrl.35.2019.10.08.10.18.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Oct 2019 10:17:53 -0700 (PDT)
+ Tue, 08 Oct 2019 10:18:00 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 08/21] hw/timer/cmsdk-apb-dualtimer.c: Switch to
+Subject: [PATCH v2 14/21] hw/timer/exynos4210_pwm.c: Switch to
  transaction-based ptimer API
-Date: Tue,  8 Oct 2019 18:17:27 +0100
-Message-Id: <20191008171740.9679-9-peter.maydell@linaro.org>
+Date: Tue,  8 Oct 2019 18:17:33 +0100
+Message-Id: <20191008171740.9679-15-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191008171740.9679-1-peter.maydell@linaro.org>
 References: <20191008171740.9679-1-peter.maydell@linaro.org>
@@ -100,7 +100,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::341
+X-Received-From: 2a00:1450:4864:20::342
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,103 +117,92 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WdK1s8jj4bwx
+X-TUID: Hlv/kXGqeR4a
 
-Switch the cmsdk-apb-dualtimer code away from bottom-half based
-ptimers to the new transaction-based ptimer API.  This just requires
-adding begin/commit calls around the various places that modify the
-ptimer state, and using the new ptimer_init() function to create the
-timer.
+Switch the exynos4210_pwm code away from bottom-half based ptimers to
+the new transaction-based ptimer API.  This just requires adding
+begin/commit calls around the various places that modify the ptimer
+state, and using the new ptimer_init() function to create the timer.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/timer/cmsdk-apb-dualtimer.c | 14 +++++++++++---
- 1 file changed, 11 insertions(+), 3 deletions(-)
+ hw/timer/exynos4210_pwm.c | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
 
-diff --git a/hw/timer/cmsdk-apb-dualtimer.c b/hw/timer/cmsdk-apb-dualtimer.c
-index 44d23c80364..e28ba9c90a8 100644
---- a/hw/timer/cmsdk-apb-dualtimer.c
-+++ b/hw/timer/cmsdk-apb-dualtimer.c
-@@ -20,7 +20,6 @@
- #include "qemu/log.h"
- #include "trace.h"
- #include "qapi/error.h"
+diff --git a/hw/timer/exynos4210_pwm.c b/hw/timer/exynos4210_pwm.c
+index aa5dca68ef7..59a8c08db0f 100644
+--- a/hw/timer/exynos4210_pwm.c
++++ b/hw/timer/exynos4210_pwm.c
+@@ -25,7 +25,6 @@
+ #include "hw/sysbus.h"
+ #include "migration/vmstate.h"
+ #include "qemu/timer.h"
 -#include "qemu/main-loop.h"
  #include "qemu/module.h"
- #include "hw/sysbus.h"
- #include "hw/irq.h"
-@@ -112,6 +111,8 @@ static void cmsdk_dualtimermod_write_control(CMSDKAPBDualTimerModule *m,
-     /* Handle a write to the CONTROL register */
-     uint32_t changed;
+ #include "hw/ptimer.h"
  
-+    ptimer_transaction_begin(m->timer);
-+
-     newctrl &= R_CONTROL_VALID_MASK;
+@@ -150,7 +149,9 @@ static const VMStateDescription vmstate_exynos4210_pwm_state = {
+ };
  
-     changed = m->control ^ newctrl;
-@@ -213,6 +214,8 @@ static void cmsdk_dualtimermod_write_control(CMSDKAPBDualTimerModule *m,
-     }
+ /*
+- * PWM update frequency
++ * PWM update frequency.
++ * Must be called within a ptimer_transaction_begin/commit block
++ * for s->timer[id].ptimer.
+  */
+ static void exynos4210_pwm_update_freq(Exynos4210PWMState *s, uint32_t id)
+ {
+@@ -281,12 +282,15 @@ static void exynos4210_pwm_write(void *opaque, hwaddr offset,
  
-     m->control = newctrl;
-+
-+    ptimer_transaction_commit(m->timer);
- }
+         /* update timers frequencies */
+         for (i = 0; i < EXYNOS4210_PWM_TIMERS_NUM; i++) {
++            ptimer_transaction_begin(s->timer[i].ptimer);
+             exynos4210_pwm_update_freq(s, s->timer[i].id);
++            ptimer_transaction_commit(s->timer[i].ptimer);
+         }
+         break;
  
- static uint64_t cmsdk_apb_dualtimer_read(void *opaque, hwaddr offset,
-@@ -330,6 +333,7 @@ static void cmsdk_apb_dualtimer_write(void *opaque, hwaddr offset,
-             if (!(m->control & R_CONTROL_SIZE_MASK)) {
-                 value &= 0xffff;
-             }
-+            ptimer_transaction_begin(m->timer);
-             if (!(m->control & R_CONTROL_MODE_MASK)) {
+     case TCON:
+         for (i = 0; i < EXYNOS4210_PWM_TIMERS_NUM; i++) {
++            ptimer_transaction_begin(s->timer[i].ptimer);
+             if ((value & TCON_TIMER_MANUAL_UPD(i)) >
+             (s->reg_tcon & TCON_TIMER_MANUAL_UPD(i))) {
                  /*
-                  * In free-running mode this won't set the limit but will
-@@ -346,6 +350,7 @@ static void cmsdk_apb_dualtimer_write(void *opaque, hwaddr offset,
-                     ptimer_run(m->timer, 1);
-                 }
+@@ -315,6 +319,7 @@ static void exynos4210_pwm_write(void *opaque, hwaddr offset,
+                 ptimer_stop(s->timer[i].ptimer);
+                 DPRINTF("stop timer %d\n", i);
              }
-+            ptimer_transaction_commit(m->timer);
-             break;
-         case A_TIMER1BGLOAD:
-             /* Set the limit, but not the current count */
-@@ -357,7 +362,9 @@ static void cmsdk_apb_dualtimer_write(void *opaque, hwaddr offset,
-             if (!(m->control & R_CONTROL_SIZE_MASK)) {
-                 value &= 0xffff;
-             }
-+            ptimer_transaction_begin(m->timer);
-             ptimer_set_limit(m->timer, value, 0);
-+            ptimer_transaction_commit(m->timer);
-             break;
-         case A_TIMER1CONTROL:
-             cmsdk_dualtimermod_write_control(m, value);
-@@ -398,6 +405,7 @@ static void cmsdk_dualtimermod_reset(CMSDKAPBDualTimerModule *m)
-     m->intstatus = 0;
-     m->load = 0;
-     m->value = 0xffffffff;
-+    ptimer_transaction_begin(m->timer);
-     ptimer_stop(m->timer);
-     /*
-      * We start in free-running mode, with VALUE at 0xffffffff, and
-@@ -406,6 +414,7 @@ static void cmsdk_dualtimermod_reset(CMSDKAPBDualTimerModule *m)
-      */
-     ptimer_set_limit(m->timer, 0xffff, 1);
-     ptimer_set_freq(m->timer, m->parent->pclk_frq);
-+    ptimer_transaction_commit(m->timer);
++            ptimer_transaction_commit(s->timer[i].ptimer);
+         }
+         s->reg_tcon = value;
+         break;
+@@ -369,8 +374,10 @@ static void exynos4210_pwm_reset(DeviceState *d)
+         s->timer[i].reg_tcmpb = 0;
+         s->timer[i].reg_tcntb = 0;
+ 
++        ptimer_transaction_begin(s->timer[i].ptimer);
+         exynos4210_pwm_update_freq(s, s->timer[i].id);
+         ptimer_stop(s->timer[i].ptimer);
++        ptimer_transaction_commit(s->timer[i].ptimer);
+     }
  }
  
- static void cmsdk_apb_dualtimer_reset(DeviceState *dev)
-@@ -450,10 +459,9 @@ static void cmsdk_apb_dualtimer_realize(DeviceState *dev, Error **errp)
+@@ -388,12 +395,12 @@ static void exynos4210_pwm_init(Object *obj)
+     Exynos4210PWMState *s = EXYNOS4210_PWM(obj);
+     SysBusDevice *dev = SYS_BUS_DEVICE(obj);
+     int i;
+-    QEMUBH *bh;
  
-     for (i = 0; i < ARRAY_SIZE(s->timermod); i++) {
-         CMSDKAPBDualTimerModule *m = &s->timermod[i];
--        QEMUBH *bh = qemu_bh_new(cmsdk_dualtimermod_tick, m);
- 
-         m->parent = s;
--        m->timer = ptimer_init_with_bh(bh,
-+        m->timer = ptimer_init(cmsdk_dualtimermod_tick, m,
-                                PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD |
-                                PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT |
-                                PTIMER_POLICY_NO_IMMEDIATE_RELOAD |
+     for (i = 0; i < EXYNOS4210_PWM_TIMERS_NUM; i++) {
+-        bh = qemu_bh_new(exynos4210_pwm_tick, &s->timer[i]);
+         sysbus_init_irq(dev, &s->timer[i].irq);
+-        s->timer[i].ptimer = ptimer_init_with_bh(bh, PTIMER_POLICY_DEFAULT);
++        s->timer[i].ptimer = ptimer_init(exynos4210_pwm_tick,
++                                         &s->timer[i],
++                                         PTIMER_POLICY_DEFAULT);
+         s->timer[i].id = i;
+         s->timer[i].parent = s;
+     }
 -- 
 2.20.1
 

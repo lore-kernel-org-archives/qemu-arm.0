@@ -1,260 +1,221 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4884360wrm;
-        Tue, 8 Oct 2019 01:41:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqylQhZHASMtvZjwkN4G3ZJfnTNwC7lGtl4AF9P08mGmx6kaKnNT5gRbhwU++44N8h8NIV4W
-X-Received: by 2002:aa7:d48f:: with SMTP id b15mr32840183edr.159.1570524091563;
-        Tue, 08 Oct 2019 01:41:31 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1570524091; cv=pass;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4904763wrm;
+        Tue, 8 Oct 2019 02:06:28 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqygIkJUCK4QbnL1OKMdD5CkLmWQD7vmUnZiwHcN7KjiXqOFEwdz3pxsjIH1gvuCkCSzTGRg
+X-Received: by 2002:ac8:6b05:: with SMTP id w5mr26403240qts.331.1570525588501;
+        Tue, 08 Oct 2019 02:06:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570525588; cv=none;
         d=google.com; s=arc-20160816;
-        b=tUH8ObwDcxP7nmflWaBxyNV6G4UzAJ721lzwcfjUiznWaur5xEmaVNMFbCmW7eIFZW
-         8zoUB6xiYSeFwb/3JItwP5zs3fEz+FY/Psuatydwe7FJSoiJ75plVP8yZHT5cES1ZbGt
-         OdGnPChay3geLUeUx6yXa9aN06ch2n3KOKMkfzr6gUZhKqG8U9BiWHiH9CxOGgpLgXhL
-         uIdLvtH0X7MZe/iBTadJYj3Yahd8zxgoHqH7LuS4WswMS3O6Ir5prRWmfeNWdSQ+f5ja
-         gKK7eNlwCfSp+hLAcdouIpsvUM5UqBm5uUBABwtLEYlAlqqSUh3azWB9R9ZUPqZri2pt
-         qsqw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=SeB1vQu59j6W4cBonCWpqjSnduxzr1sBWY+0y4lcAYhidimhDH5I2YNhvRSc+EL29L
+         PP6nDqfaRO9kF6dlJisHPGFL73FS9rlATVSI947aHsJgRvYbF6M4HNbazt6DSzuKiyBD
+         jIODQietIRuF5EyHZBqMkISvrnP7L8QpWsLEFfQEgddDQZJSS6Bn0NmnLpPIGCsBT9wC
+         ZnlP2iVp2fCrkHaoNk/x+KztWN/9RH5BBbDwh2U4Ib6tCpNUUdGpVQpEu0YVRukHodf+
+         5VXOLTUW1q/uY/TtTf7uAdh5CC0yJbvY1QE7DPMW78lKAGwrtcA8TGgngpU5tdX11BDU
+         j4hg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:to:from:dkim-signature;
-        bh=HVo18PR/l2kDtXOZ1+ZLfwqLzjB/yLlC1tJf0jnJdyk=;
-        b=KsbckJZCLif1dQ1OwcDK3XkA9HCqXdHuU25Ml43IsKh7egz9kaC+vHtdUFxirXChvU
-         +j16wrp1KseKCjVrfeW/f4kFwsJ8ltL61MlFgrUavXPRUSUOugLclPtymSqaPtERcWoR
-         ExGwDL3HX/S6Ihr/9qj/Oes+8IhrcZWwoTp4uxp8SG9EcWrEYsCftAKdcJVrkIl6kRbL
-         ZyEeKesJ3OppalaUH7Z932T5db8Q7rYsuFHOvMKq95VZKYoU8CDAAM35qJrBE8/yUi1T
-         OKM7eDKUpTUd+aS+Oj4w4uFqkR8BDSf08/Uy4nFP7urZ1XSiSOWLs2e56ELT6oyhX6Cq
-         Cj6A==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b="gLc/2dft";
-       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Sla1WAPIsDQRMT0iB64L68ydwLjhOCPjA9AsUCjvFYo=;
+        b=tUhvi7gWM+QKCD1seFi/5+nFZtvcaxRXJo+tNEvTlbgRTmOvldv0Pa4ugXAebztzXk
+         EFOgPNcf48IpsLjphGuxi7e/KnMUBq3Z/gSVwFAj6LalCXjvuwkLqTMVi6W0DqfUd+k6
+         UkdThMkJ6/xipvI5bKLW2ct4eXNKPf/haghz/u0wAMpaigOXIel3CZumrHy9sVEugQ3Z
+         slHPXMuHdzkUipuwiQmPlMRBdr5MSthcx84ukInqPjZYJDcoLSOpaC9kmWo4YbFCqUgC
+         QlcaD9gaW+SYAvHGmahoWKDNnwTRAdkjtQrURWP3viz/ukG7Ccvhz4zU1e4FXlLYQHxQ
+         8FkA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Vo/yvWwZ";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z6si9387455edx.139.2019.10.08.01.41.31
+        by mx.google.com with ESMTPS id y15si14906528qvf.100.2019.10.08.02.06.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Oct 2019 01:41:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 08 Oct 2019 02:06:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b="gLc/2dft";
-       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Received: from localhost ([::1]:52144 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="Vo/yvWwZ";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52624 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iHl3h-0001KM-C0
-	for alex.bennee@linaro.org; Tue, 08 Oct 2019 04:41:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57086)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iHlRr-00061Z-A7
+	for alex.bennee@linaro.org; Tue, 08 Oct 2019 05:06:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32920)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iHl3T-0001IJ-HM
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 04:41:17 -0400
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iHlQ8-0005yw-4Q
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 05:04:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iHl3R-0007FS-N3
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 04:41:15 -0400
-Received: from mail-eopbgr150117.outbound.protection.outlook.com
- ([40.107.15.117]:47782 helo=EUR01-DB5-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
- id 1iHl3Q-0007Cc-Sj; Tue, 08 Oct 2019 04:41:13 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=aI8vVHQx10kuJDCM9lg1dVR55P8WuUYjEFQjrraxzTT5iOkB9temzR7O9AsO5abct0NA/J3kp23IQ6D1YQvIio1iwM/DVhZtd5CfluUddwd3THjx/JY4JEcY85BS5z3ve/uPrUtYDJulv5gL7b+eUVKSNkrz6itQ1nvpwIqVh8LJPuuY9ti1AEG/I1Yg1IFrcyVkMwkGgMLBZ3s1VKqRwjlIz2CQTuk9Im6Pt1dGqL1aeta8rZE7/XG7f//o0dD4//2PEYyavO+8Bs8oqdDwtvq5LzNVgaajVtjv5LQYXJA8Lrlz38mpp8BmCSvPoGYT4afUZ5gwm5D16P6AEDZ+Dw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=HVo18PR/l2kDtXOZ1+ZLfwqLzjB/yLlC1tJf0jnJdyk=;
- b=Y55D1h05S45wCD7q4m0FEIKHMsYvsqF6Ksm6CMCfZ99Cn+aGxTnwGbQqEYEQ8H/USzp/3C2TJ8US6jDRNtxmKjCIN1NkEp8ToTeEXGn67Jc6glbrrmew0KP15H1F5LfdYE10UHMA7JPunFpm2ORCVl9qZyAeAO/WKhAyP0WrGl+rAYtfwh5Jg0QPwv0L/TgcLEKoTLFsjMjluXyazDYsDxur3uf9pWJKBimhYuG6x9OCGs4ekdBmppvQEJRlD+JXjdDar52khVOQQQR7HL4fGOTUYfdnAyLRRQXBR+9MdBICl/Yxz6CEyaM3wBZl9pL4TxuiXoT8csyzHplL4xcV4w==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
- header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=HVo18PR/l2kDtXOZ1+ZLfwqLzjB/yLlC1tJf0jnJdyk=;
- b=gLc/2dfty6RTXbz7kiY2U/gLBcxNiCzdnjT9Zk0t39Or9YtHS8POrNr/e/t77JWmFRuGgl5bO+DvMe2W+nmkJaq6zyI3bZACMbJD9enlMw+XLgLYPcewH0dpT+rxZlIiT1WzMWkwSJWIizzKK9XqhgKmT9QqhN397yugyukFIBQ=
-Received: from DB8PR08MB5498.eurprd08.prod.outlook.com (52.133.242.216) by
- DB8PR08MB4955.eurprd08.prod.outlook.com (10.255.4.26) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2327.23; Tue, 8 Oct 2019 08:41:09 +0000
-Received: from DB8PR08MB5498.eurprd08.prod.outlook.com
- ([fe80::2856:990a:197a:288f]) by DB8PR08MB5498.eurprd08.prod.outlook.com
- ([fe80::2856:990a:197a:288f%2]) with mapi id 15.20.2327.023; Tue, 8 Oct 2019
- 08:41:09 +0000
-From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-To: Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH v4 00/31] error: auto propagated local_err
-Thread-Topic: [PATCH v4 00/31] error: auto propagated local_err
-Thread-Index: AQHVeHBjrP5HIXy9eUuF1AJePQl1JqdQY7bDgAATpgA=
-Date: Tue, 8 Oct 2019 08:41:08 +0000
-Message-ID: <a449a64d-ca3c-2442-27b3-70b565545a36@virtuozzo.com>
-References: <20191001155319.8066-1-vsementsov@virtuozzo.com>
- <87eeznn185.fsf@dusky.pond.sub.org>
-In-Reply-To: <87eeznn185.fsf@dusky.pond.sub.org>
-Accept-Language: ru-RU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: HE1P189CA0019.EURP189.PROD.OUTLOOK.COM (2603:10a6:7:53::32)
- To DB8PR08MB5498.eurprd08.prod.outlook.com
- (2603:10a6:10:11c::24)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=vsementsov@virtuozzo.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-tagtoolbar-keys: D20191008114104001
-x-originating-ip: [185.231.240.5]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 0cc70b6d-3cd3-49e3-e688-08d74bcb43e1
-x-ms-traffictypediagnostic: DB8PR08MB4955:
-x-microsoft-antispam-prvs: <DB8PR08MB495562D4B6087440A402EE3EC19A0@DB8PR08MB4955.eurprd08.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:4502;
-x-forefront-prvs: 01842C458A
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(376002)(346002)(396003)(136003)(39850400004)(366004)(199004)(53754006)(189003)(52116002)(6916009)(8676002)(81166006)(478600001)(81156014)(14454004)(561944003)(25786009)(99286004)(54906003)(7416002)(7406005)(7736002)(31686004)(316002)(5660300002)(305945005)(76176011)(8936002)(476003)(6436002)(446003)(11346002)(66946007)(66556008)(64756008)(66446008)(66476007)(6506007)(71190400001)(2906002)(256004)(486006)(2616005)(229853002)(6486002)(26005)(6246003)(31696002)(86362001)(186003)(386003)(4326008)(36756003)(71200400001)(6512007)(102836004)(6116002)(3846002)(66066001);
- DIR:OUT; SFP:1102; SCL:1; SRVR:DB8PR08MB4955;
- H:DB8PR08MB5498.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: virtuozzo.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: G+25fCvAQqj1rqegsJMPn8+cnoii5C8ZzxPfcdfBJKJwLiA239IlyOnxuSJF+JBKosE5M8hjzXj0BaKBZdsN1Yz0WzuDGLPI35KtE0B8gF+XrlMrj8YHNTgmN4o5yvXTilj4C+Hgl2MUnlZKrcRHLBEluZu0QCAXvSpNNrSMSXH7Y3zXQ6bD6MAC0kMDyVguS7svFwZTAQtekGeInzJ4kCPM4hpwzPFtU3pKjuK73zB+ZrMM67Kdr9tN5vWx/l5ohsWab6NqkIJoHCPzH07hEzztRjFYhtAkvYe+A4TxWJEF5RP3i/MULxWCozgjQQeJRweIJY735aITM2o8ec1C1lmkyyKlkjFr8wGtJyDzWQs/VIK/aht8DqC3YwejzPfPc19sGh3xOXuyn/hlOvFQxm8MqDn8XpdB5Uep7Y1r2Yk=
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <150D088C8346574C84C31BF4A7915B17@eurprd08.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iHlQ6-0001gi-Ue
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 05:04:40 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:44083)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1iHlQ3-0001bU-Oj; Tue, 08 Oct 2019 05:04:36 -0400
+Received: by mail-wr1-x442.google.com with SMTP id z9so18380417wrl.11;
+ Tue, 08 Oct 2019 02:04:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Sla1WAPIsDQRMT0iB64L68ydwLjhOCPjA9AsUCjvFYo=;
+ b=Vo/yvWwZ1iflLA7YfFRPi3wYFyiLuQpg6NCAEPQjJXfMpr3I1Iwj8FBnwx9o+eSM7T
+ AEGiO4bHA1vuVhYs1LAB00tw6cdSJ8UDm1GOolrRcT4vfA7gGUFc3XvOGdLD7/DbHXzH
+ RwU1xPYfnBUvp4PIE47+MnN2xqY3FAc5yNdHB6kVDUux35gYYA56ZQF8iOIGtCXsUhfN
+ cpKO0z0AcnGDh4F0RF8QtZDH/WGwtcR7iTXEYSqdk7xtrUPAlg57E/F0rODpKGYFTLMj
+ rL6jksoaLzxhu33Be76sT/J5kc8Np3E6J6Mw3Qcl9WbFjzQMCLUOwzG2YOUFBxgsS8xR
+ IVrw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Sla1WAPIsDQRMT0iB64L68ydwLjhOCPjA9AsUCjvFYo=;
+ b=Y5bhMRyEUNEMC4vBc47F446oLBtvZkhHRfparFoG3xZD99DkenIUZnUuHt+U+C08r1
+ FhPgp9bY4aIFN5woWh24AhbnyVxIEPzkxEu0y41vfodfvkTl7VK7ehRejVv4ZLKvGQ53
+ 24jZCZeIs8QZ2nxnNNgwlBvACYrEJJ//HaZPJ830Nt4HEsGp6E5KQoniDrq9ZxjPMus2
+ zGlqOE0h1RolSghj9fSKeA7Jij0K7Qj5ZnYat5/9jokNm9/m4KPmYffAkyBABvq7+Up1
+ +1ahmqzpTX69nK7NWnNIW7Z0a+trsp0C6hSyRaWoB0uj9Mj77p1FKBHrK52dmVDfcP2T
+ us2Q==
+X-Gm-Message-State: APjAAAU2eYS/ZeCueTzjB7z1Fp0IGsgvXB09L8MG6pCGb3T7xdr3Vin5
+ XshNkLdrqbzO7a+AYvabaqY=
+X-Received: by 2002:a5d:6347:: with SMTP id b7mr20506970wrw.131.1570525474508; 
+ Tue, 08 Oct 2019 02:04:34 -0700 (PDT)
+Received: from [192.168.1.35] (46.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.46])
+ by smtp.gmail.com with ESMTPSA id r6sm2389522wmh.38.2019.10.08.02.04.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 08 Oct 2019 02:04:33 -0700 (PDT)
+Subject: Re: [RFC PATCH 14/14] hw/arm/raspi: Add the Raspberry Pi 4B board
+To: Esteban Bosse <estebanbosse@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-devel@nongnu.org,
+ Pekka Enberg <penberg@iki.fi>, =?UTF-8?Q?Zolt=c3=a1n_Baldaszti?=
+ <bztemail@gmail.com>
+References: <20190904171315.8354-1-f4bug@amsat.org>
+ <20190904171315.8354-15-f4bug@amsat.org>
+ <c8a8c7758104a1a5fe052743b5a22d3a1353de91.camel@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <5f1dd044-2909-767d-5a79-8a40d330e129@amsat.org>
+Date: Tue, 8 Oct 2019 11:04:32 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.0
 MIME-Version: 1.0
-X-OriginatorOrg: virtuozzo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0cc70b6d-3cd3-49e3-e688-08d74bcb43e1
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Oct 2019 08:41:09.0030 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 5JrQfN61h5VsCE8T88jXidQhjj9OPSdUf+NtZGS/nTAZUo38S1EY0RrRsR9SGrVV46QuQxJ9+G9OKPoa5GASu2fI7vbXKdN/NQEtHjelsBA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR08MB4955
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.15.117
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <c8a8c7758104a1a5fe052743b5a22d3a1353de91.camel@gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2a00:1450:4864:20::442
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "fam@euphon.net" <fam@euphon.net>,
- "pburton@wavecomp.com" <pburton@wavecomp.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "codyprime@gmail.com" <codyprime@gmail.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>,
- "mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "kraxel@redhat.com" <kraxel@redhat.com>,
- "mreitz@redhat.com" <mreitz@redhat.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- "quintela@redhat.com" <quintela@redhat.com>,
- "arikalo@wavecomp.com" <arikalo@wavecomp.com>,
- "mst@redhat.com" <mst@redhat.com>,
- "mdroth@linux.vnet.ibm.com" <mdroth@linux.vnet.ibm.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
- "borntraeger@de.ibm.com" <borntraeger@de.ibm.com>,
- "joel@jms.id.au" <joel@jms.id.au>,
- "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
- "david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>,
- "farman@linux.ibm.com" <farman@linux.ibm.com>,
- "ehabkost@redhat.com" <ehabkost@redhat.com>, "sw@weilnetz.de" <sw@weilnetz.de>,
- "groug@kaod.org" <groug@kaod.org>,
- "yuval.shaia@oracle.com" <yuval.shaia@oracle.com>,
- "dgilbert@redhat.com" <dgilbert@redhat.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "clg@kaod.org" <clg@kaod.org>,
- "stefanha@redhat.com" <stefanha@redhat.com>,
- "david@redhat.com" <david@redhat.com>, "jsnow@redhat.com" <jsnow@redhat.com>,
- "rth@twiddle.net" <rth@twiddle.net>, "kwolf@redhat.com" <kwolf@redhat.com>,
- "integration@gluster.org" <integration@gluster.org>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "andrew@aj.id.au" <andrew@aj.id.au>, "cohuck@redhat.com" <cohuck@redhat.com>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- "sundeep.lkml@gmail.com" <sundeep.lkml@gmail.com>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H49he/7m0dZY
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, Clement Deschamps <clement.deschamps@antfield.fr>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Luc Michel <luc.michel@greensocs.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4xY7aUsblaK6
 
-MDguMTAuMjAxOSAxMDozMCwgTWFya3VzIEFybWJydXN0ZXIgd3JvdGU6DQo+IFZsYWRpbWlyIFNl
-bWVudHNvdi1PZ2lldnNraXkgPHZzZW1lbnRzb3ZAdmlydHVvenpvLmNvbT4gd3JpdGVzOg0KPiAN
-Cj4+IEhpIGFsbCENCj4+DQo+PiBIZXJlIGlzIGEgcHJvcG9zYWwgb2YgYXV0byBwcm9wYWdhdGlv
-biBmb3IgbG9jYWxfZXJyLCB0byBub3QgY2FsbA0KPj4gZXJyb3JfcHJvcGFnYXRlIG9uIGV2ZXJ5
-IGV4aXQgcG9pbnQsIHdoZW4gd2UgZGVhbCB3aXRoIGxvY2FsX2Vyci4NCj4+DQo+PiBUaGVyZSBh
-cmUgYWxzbyB0d28gaXNzdWVzIHdpdGggZXJycDoNCj4+DQo+PiAxLiBlcnJvcl9mYXRhbCAmIGVy
-cm9yX2FwcGVuZF9oaW50L2Vycm9yX3ByZXBlbmQ6IHVzZXIgY2FuJ3Qgc2VlIHRoaXMNCj4+IGFk
-ZGl0aW9uYWwgaW5mbywgYmVjYXVzZSBleGl0KCkgaGFwcGVucyBpbiBlcnJvcl9zZXRnIGVhcmxp
-ZXIgdGhhbiBpbmZvDQo+PiBpcyBhZGRlZC4gW1JlcG9ydGVkIGJ5IEdyZWcgS3Vyel0NCj4gDQo+
-IEhvdyBpcyB0aGlzIHNlcmllcyByZWxhdGVkIHRvIEdyZWcncyAiW1BBVENIIDAwLzE3XSBGaXgg
-dXNhZ2Ugb2YNCj4gZXJyb3JfYXBwZW5kX2hpbnQoKSI/ICBEbyB3ZSBuZWVkIGJvdGg/DQoNClRo
-ZXNlIHNlcmllcyBpcyBhIHN1YnN0aXR1dGlvbiBmb3IgR3JlZydzLiBTdGlsbCwgdGhlcmUgYXJl
-IHByb2JsZW1zIHdpdGgNCmF1dG9tYXRpb24sIHdoaWNoIEdyZWcgcG9pbnRlZCBpbiAyMS8zMSwg
-YW5kIEkgZG9uJ3Qga25vdyB3aGF0IHRvIGRvIG5leHQuDQoNCk1heSBiZSwganVzdCBjb250aW51
-ZSB0byByZXZpZXcgcGF0Y2hlcyBhbmQgZml4IHRoZW0gYnkgaGFuZC4gTWF5IGJlIHRyeSB0bw0K
-aW1wcm92ZSBhdXRvbWF0aW9uLi4uDQoNCj4gDQo+PiAyLiBlcnJvcl9hYm9ydCAmIGVycm9yX3By
-b3BhZ2F0ZTogd2hlbiB3ZSB3cmFwDQo+PiBlcnJvcl9hYm9ydCBieSBsb2NhbF9lcnIrZXJyb3Jf
-cHJvcGFnYXRlLCByZXN1bHRpbmcgY29yZWR1bXAgd2lsbA0KPj4gcmVmZXIgdG8gZXJyb3JfcHJv
-cGFnYXRlIGFuZCBub3QgdG8gdGhlIHBsYWNlIHdoZXJlIGVycm9yIGhhcHBlbmVkLg0KPj4gKHRo
-ZSBtYWNybyBpdHNlbGYgZG9uJ3QgZml4IHRoZSBpc3N1ZSwgYnV0IGl0IGFsbG93cyB0byBbMy5d
-IGRyb3AgYWxsDQo+PiBsb2NhbF9lcnIrZXJyb3JfcHJvcGFnYXRlIHBhdHRlcm4sIHdoaWNoIHdp
-bGwgZGVmaW5pdGVseSBmaXggdGhlIGlzc3VlKQ0KPj4gW1JlcG9ydGVkIGJ5IEtldmluIFdvbGZd
-DQo+Pg0KPj4gU3RpbGwsIGFwcGx5aW5nIG5ldyBtYWNybyB0byBhbGwgZXJycC1mdW5jdGlvbnMg
-aXMgYSBodWdlIHRhc2ssIHdoaWNoIGlzDQo+PiBpbXBvc3NpYmxlIHRvIHNvbHZlIGluIG9uZSBz
-ZXJpZXMuDQo+Pg0KPj4gU28sIGhlcmUgaXMgYSBtaW5pbXVtOiBzb2x2ZSBvbmx5IFsxLl0sIGJ5
-IGFkZGluZyBuZXcgbWFjcm8gdG8gYWxsDQo+PiBlcnJwLWZ1bmN0aW9ucyB3aGljaCB3YW50cyB0
-byBjYWxsIGVycm9yX2FwcGVuZF9oaW50Lg0KPj4NCj4+IHY0Ow0KPj4gMDI6IC0gY2hlY2sgZXJy
-cCB0byBiZSBub3QgTlVMTA0KPj4gICAgICAtIGRyb3AgRXJpYydzIHItYg0KPj4gMDM6IGFkZCBF
-cmljJ3Mgci1iDQo+PiAwNDogLSByZW5hbWUgbWFjcm8gdG8gRVJSUF9BVVRPX1BST1BBR0FURSBb
-S2V2aW5dDQo+PiAgICAgIC0gaW1wcm92ZSBjb21tZW50IGFuZCBjb21taXQgbXNnLCBtZW50aW9u
-DQo+PiAgICAgICAgZXJyb3JfcHJlcGVuZA0KPj4gMDU6IC0gaGFuZGxlIGVycm9yX3ByZXBlbmQg
-dG9vDQo+PiAgICAgIC0gdXNlIG5ldyBtYWNybyBuYW1lDQo+PiAgICAgIC0gZHJvcCBlbXB0eSBs
-aW5lIGF0IHRoZSBlbmQNCj4+DQo+PiBjb21taXQgbWVzc2FnZSBmb3IgYXV0by1nZW5lcmF0ZWQg
-Y29tbWl0cyB1cGRhdGVkLA0KPj4gY29tbWl0cyByZWdlbmVyYXRlZC4NCj4+DQo+PiBJJ2xsIHVz
-ZSBjYy1jbWQgdG8gY2MgYXBwcm9wcmlhdGUgcmVjaXBpZW50cyBwZXIgcGF0Y2gsIHN0aWxsDQo+
-PiBjb3Zlci1sZXR0ZXIgdG9nZXRoZXIgd2l0aCAwNC0wNiBwYXRjaGVzIHNob3VsZCBiZSBpbnRl
-cmVzdGluZyBmb3INCj4+IGFsbDoNCj4gWy4uLl0NCj4gDQo+IEJpZyBzZXJpZXM7IGxldCBtZSBn
-dWVzcyBpdHMgc3RydWN0dXJlLg0KPiANCj4+IFZsYWRpbWlyIFNlbWVudHNvdi1PZ2lldnNraXkg
-KDMxKToNCj4+ICAgIGVycnA6IHJlbmFtZSBlcnJwIHRvIGVycnBfaW4gd2hlcmUgaXQgaXMgSU4t
-YXJndW1lbnQNCj4+ICAgIGh3L2NvcmUvbG9hZGVyLWZpdDogZml4IGZyZWVpbmcgZXJycCBpbiBm
-aXRfbG9hZF9mZHQNCj4+ICAgIG5ldC9uZXQ6IGZpeCBsb2NhbCB2YXJpYWJsZSBzaGFkb3dpbmcg
-aW4gbmV0X2NsaWVudF9pbml0DQo+IA0KPiBQcmVwYXJhdGlvbnMuDQo+IA0KPj4gICAgZXJyb3I6
-IGF1dG8gcHJvcGFnYXRlZCBsb2NhbF9lcnINCj4gDQo+IFRoZSBuZXcgaWRlYS4NCj4gDQo+PiAg
-ICBzY3JpcHRzOiBhZGQgc2NyaXB0IHRvIGZpeCBlcnJvcl9hcHBlbmRfaGludC9lcnJvcl9wcmVw
-ZW5kIHVzYWdlDQo+PiAgICBweXRob246IGFkZCBjb21taXQtcGVyLXN1YnN5c3RlbS5weQ0KPiAN
-Cj4gU2NyaXB0cyB0byBoZWxwIHlvdSBhcHBseSBpdC4NCj4gDQo+PiAgICBzMzkwOiBGaXggZXJy
-b3JfYXBwZW5kX2hpbnQvZXJyb3JfcHJlcGVuZCB1c2FnZQ0KPj4gICAgQVJNIFRDRyBDUFVzOiBG
-aXggZXJyb3JfYXBwZW5kX2hpbnQvZXJyb3JfcHJlcGVuZCB1c2FnZQ0KPj4gICAgUG93ZXJQQyBU
-Q0cgQ1BVczogRml4IGVycm9yX2FwcGVuZF9oaW50L2Vycm9yX3ByZXBlbmQgdXNhZ2UNCj4+ICAg
-IGFybTogRml4IGVycm9yX2FwcGVuZF9oaW50L2Vycm9yX3ByZXBlbmQgdXNhZ2UNCj4+ICAgIFNt
-YXJ0RnVzaW9uMjogRml4IGVycm9yX2FwcGVuZF9oaW50L2Vycm9yX3ByZXBlbmQgdXNhZ2UNCj4+
-ICAgIEFTUEVFRCBCTUNzOiBGaXggZXJyb3JfYXBwZW5kX2hpbnQvZXJyb3JfcHJlcGVuZCB1c2Fn
-ZQ0KPj4gICAgQm9zdG9uOiBGaXggZXJyb3JfYXBwZW5kX2hpbnQvZXJyb3JfcHJlcGVuZCB1c2Fn
-ZQ0KPj4gICAgUG93ZXJOViAoTm9uLVZpcnR1YWxpemVkKTogRml4IGVycm9yX2FwcGVuZF9oaW50
-L2Vycm9yX3ByZXBlbmQgdXNhZ2UNCj4+ICAgIFBDSTogRml4IGVycm9yX2FwcGVuZF9oaW50L2Vy
-cm9yX3ByZXBlbmQgdXNhZ2UNCj4+ICAgIFNDU0k6IEZpeCBlcnJvcl9hcHBlbmRfaGludC9lcnJv
-cl9wcmVwZW5kIHVzYWdlDQo+PiAgICBVU0I6IEZpeCBlcnJvcl9hcHBlbmRfaGludC9lcnJvcl9w
-cmVwZW5kIHVzYWdlDQo+PiAgICBWRklPOiBGaXggZXJyb3JfYXBwZW5kX2hpbnQvZXJyb3JfcHJl
-cGVuZCB1c2FnZQ0KPj4gICAgdmhvc3Q6IEZpeCBlcnJvcl9hcHBlbmRfaGludC9lcnJvcl9wcmVw
-ZW5kIHVzYWdlDQo+PiAgICB2aXJ0aW86IEZpeCBlcnJvcl9hcHBlbmRfaGludC9lcnJvcl9wcmVw
-ZW5kIHVzYWdlDQo+PiAgICB2aXJ0aW8tOXA6IEZpeCBlcnJvcl9hcHBlbmRfaGludC9lcnJvcl9w
-cmVwZW5kIHVzYWdlDQo+PiAgICBYSVZFOiBGaXggZXJyb3JfYXBwZW5kX2hpbnQvZXJyb3JfcHJl
-cGVuZCB1c2FnZQ0KPj4gICAgYmxvY2s6IEZpeCBlcnJvcl9hcHBlbmRfaGludC9lcnJvcl9wcmVw
-ZW5kIHVzYWdlDQo+PiAgICBjaGFyZGV2OiBGaXggZXJyb3JfYXBwZW5kX2hpbnQvZXJyb3JfcHJl
-cGVuZCB1c2FnZQ0KPj4gICAgY21kbGluZTogRml4IGVycm9yX2FwcGVuZF9oaW50L2Vycm9yX3By
-ZXBlbmQgdXNhZ2UNCj4+ICAgIFFPTTogRml4IGVycm9yX2FwcGVuZF9oaW50L2Vycm9yX3ByZXBl
-bmQgdXNhZ2UNCj4+ICAgIE1pZ3JhdGlvbjogRml4IGVycm9yX2FwcGVuZF9oaW50L2Vycm9yX3By
-ZXBlbmQgdXNhZ2UNCj4+ICAgIFNvY2tldHM6IEZpeCBlcnJvcl9hcHBlbmRfaGludC9lcnJvcl9w
-cmVwZW5kIHVzYWdlDQo+PiAgICBuYmQ6IEZpeCBlcnJvcl9hcHBlbmRfaGludC9lcnJvcl9wcmVw
-ZW5kIHVzYWdlDQo+PiAgICBQVlJETUE6IEZpeCBlcnJvcl9hcHBlbmRfaGludC9lcnJvcl9wcmVw
-ZW5kIHVzYWdlDQo+PiAgICBpdnNobWVtOiBGaXggZXJyb3JfYXBwZW5kX2hpbnQvZXJyb3JfcHJl
-cGVuZCB1c2FnZQ0KPiANCj4gQXBwbHlpbmcgaXQuDQo+IA0KPiBDb3JyZWN0Pw0KPiANCg0KWWVz
-DQoNCg0KLS0gDQpCZXN0IHJlZ2FyZHMsDQpWbGFkaW1pcg0K
+Hi Esteban,
+
+On 9/29/19 5:53 PM, Esteban Bosse wrote:
+> El mié, 04-09-2019 a las 19:13 +0200, Philippe Mathieu-Daudé escribió:
+>> The Raspberry Pi 4 uses a BCM2711 SoC (based on a BCM2838).
+>> The SoC can handle up to 8GiB of SDRAM, but we limit it to 4GiB
+>> (no 8GiB models in the market yet).
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>   hw/arm/raspi.c | 31 ++++++++++++++++++++++++++++++-
+>>   1 file changed, 30 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+>> index b4db39661f..59ee2f82b4 100644
+>> --- a/hw/arm/raspi.c
+>> +++ b/hw/arm/raspi.c
+>> @@ -39,11 +39,13 @@ enum BoardIdChip {
+>>       C_BCM2835 = 0,
+>>       C_BCM2836 = 1,
+>>       C_BCM2837 = 2,
+>> +    C_BCM2711 = 3,
+>>   };
+>>   
+>>   enum BoardIdType {
+>>       T_2B = 0x04,
+>>       T_3B = 0x08,
+>> +    T_4B = 0x11,
+>>   };
+>>   
+>>   enum BoardIdRevision {
+>> @@ -56,6 +58,7 @@ enum BoardIdRevision {
+>>   static const char *processor_typename[] = {
+>>       [C_BCM2836] = TYPE_BCM2836,
+>>       [C_BCM2837] = TYPE_BCM2837,
+>> +    [C_BCM2711] = TYPE_BCM2838,
+>>   };
+>>   
+>>   typedef struct BoardInfo BoardInfo;
+>> @@ -90,6 +93,12 @@ static const BoardInfo bcm283x_boards[] = {
+>>           .ram_size_min = 1 * GiB,
+>>           .ram_size_max = 1 * GiB,
+>>       },
+>> +    [4] = {
+>> +        .board_id = 0xc42,
+>> +        .board_rev = { T_4B, R_1_1, C_BCM2711, M_SONY_UK },
+>> +        .ram_size_min = 1 * GiB,
+>> +        .ram_size_max = 4 * GiB,
+>> +    },
+>>   };
+>>   
+>>   typedef struct RasPiState {
+>> @@ -336,4 +345,24 @@ static void raspi3_machine_init(MachineClass
+>> *mc)
+>>       mc->default_ram_size = 1 * GiB;
+>>   }
+>>   DEFINE_MACHINE("raspi3", raspi3_machine_init)
+>> -#endif
+>> +
+>> +static void raspi4_init(MachineState *machine)
+>> +{
+>> +    raspi_init(machine, 4);
+>> +}
+>> +
+>> +static void raspi4_machine_init(MachineClass *mc)
+>> +{
+>> +    mc->desc = "Raspberry Pi 4B";
+>> +    mc->init = raspi4_init;
+>> +    mc->block_default_type = IF_SD;
+>> +    mc->no_parallel = 1;
+>> +    mc->no_floppy = 1;
+>> +    mc->no_cdrom = 1;
+>> +    mc->max_cpus = BCM283X_NCPUS;
+>> +    mc->min_cpus = BCM283X_NCPUS;
+>> +    mc->default_cpus = BCM283X_NCPUS;
+>> +    mc->default_ram_size = 1 * GiB;
+> The comercial models are: 1, 2 and 4 GiB. Why do you choose 1 GiB as
+> default?
+
+Well need one default, and 1GiB is the least beefy :)
+You can start a VM with more using the '-m' switch.
+
+Note there is also a 8GiB raspi4, but it is not yet launched apparently.
+
+>> +}
+>> +DEFINE_MACHINE("raspi4", raspi4_machine_init)
+>> +#endif /* TARGET_AARCH64 */
+> Reviewed-by: Esteban Bosse <estebanbosse@gmail.com>
+
+Thanks!

@@ -1,78 +1,78 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5243887wrm;
-        Tue, 8 Oct 2019 07:35:32 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyqm75DvUyThpO8FjRzwkinREHGVWkhLd0lg9FOkvKuzGnrCGO1M2GRczhzwwdCklMY8dQl
-X-Received: by 2002:ad4:5552:: with SMTP id v18mr33365846qvy.185.1570545332119;
-        Tue, 08 Oct 2019 07:35:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570545332; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5246770wrm;
+        Tue, 8 Oct 2019 07:38:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx/YIANZzTuV+BFFdCnqqSIjbeACN8YSWFXayj/cxlIh44KD7hB9sut+tSWBcpDPDi9yETR
+X-Received: by 2002:a0c:f6cd:: with SMTP id d13mr33713511qvo.146.1570545486086;
+        Tue, 08 Oct 2019 07:38:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570545486; cv=none;
         d=google.com; s=arc-20160816;
-        b=yNdK/w4Ms3CjIh0Nnw7Vq3/U7PKCD6orovoEXyrBmcioIYNqySwdW3EXgag9E0WK7f
-         myD11ZXfJb5K3YcMvD4AV8QHaflK+bT1tMODnSwEW3bmTkIlIzWzMHt6hGUhucaZDcJ3
-         2Mo20HDBKx9ayFd6sJs21Z0YEtQheJB/5zH/AWQQTxzU5BESbxisnQJHosEtdawv9zNs
-         bCYN6A5hoMyW2+w07dnOROt7sd8/gAZtcD/WDJ1NGPC/sftH5+1uinn9twzmS3wlMHX7
-         l50m31aqNivgBR5h71jf7l2yxnMMeQi8Tm8/mr+FH067NWMlylCFw4FD9fAM1amizbHh
-         XpTA==
+        b=NpvddXk8GoDK0mfDTFnUrtdpNr5KXFOuv4Csjt/mdEzUIacwytj3gymvmKzCLvsELI
+         rO+vX69zTNrJToDDnoPna01b/HWf8LLDc/bEkTYeuQl7ljAp98rZMniIQVRhzB0DcW3M
+         zYm9h7t7SQh4w9zW8CX+CDUzTA9hKlTx9DaKcytZm6kN6XY3Cr73PI4rgqrOONItI7ss
+         R7JkCFW9rlFN+3o/9oKxmGnK24tAHdHspUvSplhuJnl21fjNZOgkkPUKlC5A+B6B5gja
+         9BNkPs71jRGFD1QpIIHD3CqKQbf/S9yD/LoV5Mw1HFU6TG9+1Y3vtcvw+eWFHCNR+TKp
+         TkfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=lp3oiMFxAAgp2Sh/f1h9kcIV5p6RXNfXLluTlCgotzA=;
-        b=blfsKcfNT21qQdirrIrGudfQ3eXhsauOqFQRnnr2qlaJEpft9oOHCr3Sf+S57/5JdP
-         7Jx3cJD+cRc1+adjveSd7QvIwK95bxm4icbzMMzueL8Hf8FPzUWyw1hqgr7M/lJxLfwA
-         XcUlwyXAM708f0AKuUDLV4u5psYzccI/xcIwlS9mbIpZE4NyR9rtXNTmTOW8ymBhFj7+
-         dpefmS+KJGEZ/1IAyF3Vw4AhdwPIHSOJhJU34ik1oDsrVcVfniQ2HjbpKRn8fA4X4lHi
-         fwfo57HyrZ6yH5SwfRsg1WMLenK9P/NSaYdwbe6wExwyEHxpaCqWNhyT08xt6UHdjazY
-         OOLw==
+        bh=ItpvhK3WUozobL+A3JSampil82oOOwX67ygqDnwkABk=;
+        b=1D3Cmb8iHNGdtoCUh96W6C+J4n3xUG3IXlgSDEnUbTYVdivnourW1WkJZgO/KgRobZ
+         p9S7wpL+aw+IotsSdqqD9HahqdAX2aSiJ9Ao6J9cLMKi8wrVAs4YYvVVylL3nNlE3xTh
+         4w1PQVUFR8IiCCi5++c4OG2MR0khV2Drvsh8Y3a7PTgOHKVaoXdg4QvnO+1MRw+CETll
+         8jLHJ1EvkFbZJJ2lZzUpVe8TXvnnvXn3nlR+LxI8m49Waer6W+4jSYfAuQ6XRPYTEYqZ
+         ZbmE4UOBusJgWcunbfwFbUXJZB4YbNKJpdbDtif8OtnmYtEVU34wghgdnJkFBRxnCE/C
+         gMDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b28si16671822qvb.24.2019.10.08.07.35.31
+        by mx.google.com with ESMTPS id z26si15416902qkj.171.2019.10.08.07.38.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Oct 2019 07:35:32 -0700 (PDT)
+        Tue, 08 Oct 2019 07:38:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56702 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56732 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iHqaI-0005kJ-TM
-	for alex.bennee@linaro.org; Tue, 08 Oct 2019 10:35:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50204)
+	id 1iHqcm-0000Hs-Q4
+	for alex.bennee@linaro.org; Tue, 08 Oct 2019 10:38:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50375)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iHqSI-00074R-3m
- for qemu-devel@nongnu.org; Tue, 08 Oct 2019 10:27:15 -0400
+ (envelope-from <philmd@redhat.com>) id 1iHqSi-0007YN-34
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 10:27:41 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iHqSG-0000NV-2I
- for qemu-devel@nongnu.org; Tue, 08 Oct 2019 10:27:13 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:8010)
+ (envelope-from <philmd@redhat.com>) id 1iHqSg-0000Yx-T1
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 10:27:39 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:10585)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1iHqS9-0000LP-Uf; Tue, 08 Oct 2019 10:27:06 -0400
+ id 1iHqSY-0000Vm-2x; Tue, 08 Oct 2019 10:27:30 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 0630C190C006;
- Tue,  8 Oct 2019 14:27:05 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 322477F75C;
+ Tue,  8 Oct 2019 14:27:29 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-43.brq.redhat.com [10.40.204.43])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7080D19C69;
- Tue,  8 Oct 2019 14:26:49 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 07D3919C69;
+ Tue,  8 Oct 2019 14:27:23 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Eduardo Habkost <ehabkost@redhat.com>,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 5/8] hw/ide/via82c: Convert reset handler to DeviceReset
-Date: Tue,  8 Oct 2019 16:25:36 +0200
-Message-Id: <20191008142539.7793-6-philmd@redhat.com>
+Subject: [PATCH v2 7/8] hw/input/lm832x: Convert reset handler to DeviceReset
+Date: Tue,  8 Oct 2019 16:25:38 +0200
+Message-Id: <20191008142539.7793-8-philmd@redhat.com>
 In-Reply-To: <20191008142539.7793-1-philmd@redhat.com>
 References: <20191008142539.7793-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.70]); Tue, 08 Oct 2019 14:27:05 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.71]); Tue, 08 Oct 2019 14:27:29 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -98,66 +98,75 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o9iAnvh9AN3S
+X-TUID: KeoQEPVDjtgt
 
-The VIA82C686B IDE controller is a PCI device, it will be reset
-when the PCI bus it stands on is reset.
+The LM8323 key-scan controller is a I2C device, it will be reset
+when the I2C bus it stands on is reset.
 
 Convert its reset handler into a proper Device reset method.
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/ide/via.c | 10 ++++------
- 1 file changed, 4 insertions(+), 6 deletions(-)
+ hw/input/lm832x.c | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
 
-diff --git a/hw/ide/via.c b/hw/ide/via.c
-index 7087dc676e..053622bd82 100644
---- a/hw/ide/via.c
-+++ b/hw/ide/via.c
-@@ -29,7 +29,6 @@
+diff --git a/hw/input/lm832x.c b/hw/input/lm832x.c
+index a37eb854b9..aa629ddbf1 100644
+--- a/hw/input/lm832x.c
++++ b/hw/input/lm832x.c
+@@ -24,7 +24,6 @@
  #include "migration/vmstate.h"
  #include "qemu/module.h"
- #include "sysemu/dma.h"
+ #include "qemu/timer.h"
 -#include "sysemu/reset.h"
+ #include "ui/console.h"
 =20
- #include "hw/ide/pci.h"
- #include "trace.h"
-@@ -120,10 +119,10 @@ static void via_ide_set_irq(void *opaque, int n, in=
-t level)
-     }
+ #define TYPE_LM8323 "lm8323"
+@@ -94,8 +93,10 @@ static void lm_kbd_gpio_update(LM823KbdState *s)
+ {
  }
 =20
--static void via_ide_reset(void *opaque)
-+static void via_ide_reset(DeviceState *dev)
+-static void lm_kbd_reset(LM823KbdState *s)
++static void lm_kbd_reset(DeviceState *dev)
  {
--    PCIIDEState *d =3D opaque;
--    PCIDevice *pd =3D PCI_DEVICE(d);
-+    PCIIDEState *d =3D PCI_IDE(dev);
-+    PCIDevice *pd =3D PCI_DEVICE(dev);
-     uint8_t *pci_conf =3D pd->config;
-     int i;
++    LM823KbdState *s =3D LM8323(dev);
++
+     s->config =3D 0x80;
+     s->status =3D INT_NOINIT;
+     s->acttime =3D 125;
+@@ -273,7 +274,7 @@ static void lm_kbd_write(LM823KbdState *s, int reg, i=
+nt byte, uint8_t value)
 =20
-@@ -172,8 +171,6 @@ static void via_ide_realize(PCIDevice *dev, Error **e=
-rrp)
-     pci_set_long(pci_conf + PCI_CAPABILITY_LIST, 0x000000c0);
-     dev->wmask[PCI_INTERRUPT_LINE] =3D 0xf;
-=20
--    qemu_register_reset(via_ide_reset, d);
+     case LM832x_CMD_RESET:
+         if (value =3D=3D 0xaa)
+-            lm_kbd_reset(s);
++            lm_kbd_reset(DEVICE(s));
+         else
+             lm_kbd_error(s, ERR_BADPAR);
+         s->reg =3D LM832x_GENERAL_ERROR;
+@@ -476,10 +477,6 @@ static void lm8323_realize(DeviceState *dev, Error *=
+*errp)
+     s->pwm.tm[1] =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, lm_kbd_pwm1_tick, =
+s);
+     s->pwm.tm[2] =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, lm_kbd_pwm2_tick, =
+s);
+     qdev_init_gpio_out(dev, &s->nirq, 1);
 -
-     memory_region_init_io(&d->data_bar[0], OBJECT(d), &pci_ide_data_le_o=
-ps,
-                           &d->bus[0], "via-ide0-data", 8);
-     pci_register_bar(dev, 0, PCI_BASE_ADDRESS_SPACE_IO, &d->data_bar[0])=
-;
-@@ -229,6 +226,7 @@ static void via_ide_class_init(ObjectClass *klass, vo=
-id *data)
-     DeviceClass *dc =3D DEVICE_CLASS(klass);
-     PCIDeviceClass *k =3D PCI_DEVICE_CLASS(klass);
+-    lm_kbd_reset(s);
+-
+-    qemu_register_reset((void *) lm_kbd_reset, s);
+ }
 =20
-+    dc->reset =3D via_ide_reset;
-     k->realize =3D via_ide_realize;
-     k->exit =3D via_ide_exitfn;
-     k->vendor_id =3D PCI_VENDOR_ID_VIA;
+ void lm832x_key_event(DeviceState *dev, int key, int state)
+@@ -507,6 +504,7 @@ static void lm8323_class_init(ObjectClass *klass, voi=
+d *data)
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+     I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
+=20
++    dc->reset =3D lm_kbd_reset;
+     dc->realize =3D lm8323_realize;
+     k->event =3D lm_i2c_event;
+     k->recv =3D lm_i2c_rx;
 --=20
 2.21.0
 

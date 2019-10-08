@@ -1,77 +1,82 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5255016wrm;
-        Tue, 8 Oct 2019 07:45:35 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwweHMq5PsDTjt9hLv8tBGF3WzcaDVC30xYgNzNwoodU/2T79bki6XEUasDGcNvFVnm4dm4
-X-Received: by 2002:ae9:f443:: with SMTP id z3mr28876885qkl.193.1570545935047;
-        Tue, 08 Oct 2019 07:45:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570545935; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5349421wrm;
+        Tue, 8 Oct 2019 09:06:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwl7k0YEtd10WWUva2rEChCVqJKnSQ9bUAecin2T9JJs0rv/PN2hl9Sj3aQFrMbDc9JQUAS
+X-Received: by 2002:a5d:46cc:: with SMTP id g12mr21390918wrs.101.1570550807305;
+        Tue, 08 Oct 2019 09:06:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570550807; cv=none;
         d=google.com; s=arc-20160816;
-        b=0pWdqfYSH15LxxopQdL5Sv04hYPxiXYaSDEuP1QZcXYhtgeopmSwqeF1sgPz/i5Wa2
-         idHzIq/a7lx1neZTYugw8U6hafQd6Z7b9udx2EMy8/rN6PUUEmY+32Gjj+cMQ1BPZhGH
-         TO2O1AFHDF1SsrSm7j7sq1Xf/0H97A4o4WpLLouU6CShDKKKoYOH3Cc5v4vkSHDU6nUr
-         XwRIOuuVSKnaGwCZoqw7fYkVMyDnMVMQvPesUuvYJbrLTi0oIY9N2Yf+B7BBxNk6Tsu1
-         xENKsCFI8lUjP3cI8CREHkDM8W7CxHJrPqN9XAQI4YoJdRaupqcQKR8E9TBh17X3NV1+
-         h4gQ==
+        b=XP1WAVVKbgowVUDoGTAAXghgAiG+btzK9kRDbJGXdFwj6dEWbuHeG3yZnFMOJkXxvN
+         7y09QPFnDet4YeyqTlkMRazDG1qOUx6G9AAzHpm0dvnFJxuMpEp6t9uJeA1UEuRnCkY2
+         2O9LYC5uckesSgjcwDrAgs5G6uf+XL2gzxBXK3VN1VBGFM2ZSjqWycFco2cuTk2j+E5q
+         PhkbgR7MIjNMsOku9aO5ASxJvut0Ij4HUyJVhFZ6szYzcDv051PbUoWkk66JadXSTZfg
+         HHwHmYWsqWyauZUUuhllqH86x2RlxKmBjVh8HdzFRaEniXZdZW/qmtnbFLfMzWFddHOT
+         wtnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=sKelYanOjjA6HkGGpVGabIMsCakhRURJWUfCJk7AOI4=;
-        b=AQgCdVB6TgecwLwJ5vQ3oSEsZyKVRmmI4jfikAlB9GdUwIpghZ+yrX+MtLGiHjCcWD
-         2SzB2Cyp2tD/UMb1TfdzaoUJg6GzW9ktyjXqSandA2rLCzNDRw7ZgDIvgYVNHFpwoCI7
-         rPiuThjt/B9FzsKadqokJBpCCicpexvaAoihLhwM+Fzu3V8XyCcwinKOT4H17HFeCi0n
-         KoQ7VAzKdf1fA33Yjg1MiVETPpMlmc6+7sL+ZgkI30DKxzhACJPT2+pIdSnwoOjJU9/D
-         iZn0s8yca4NxasNbNqh8sPTPpSUgUoRb1HQdcT6l2k1/B2AY2Fk/YK42Ts4u6Z7K1v2Y
-         8tgw==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:to:from;
+        bh=xwvNIycZXUDYnCTQ5r0ZgsrrH3E5AxtbDM4IYJwwTVc=;
+        b=eiqU06hPmL28QAXeXwwx12OuJ5ck2XzhS6f07goel3G05EO97pvoLEDkFqugl/nv8g
+         iyEqkJecG6qHXCr8k48VXhzw1rUmwDJjMuuQQ1bgojWAEV02JHhFuyOqOK6Xdds6hSqN
+         QYL9Nl3hJqyJXjU/Qd7LI3OD8fVKPIWsmGSlpB00ucOs7nATUalUEsyDKh40q6UknTLF
+         FQc6c27rJXot/QUJMkT9Y7PSij66ofZiKtUOJ9SU2tGfwngDxug7TaN5LzjmhNVIdc1h
+         jn6VVAitUK/3fMbQYVmlxxrGJXI7fBvF2Fxzl9QnwZilmzC+k0kChODpVAe3VD7AQPm9
+         tKyw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z134si15824609qkb.84.2019.10.08.07.45.34
+        by mx.google.com with ESMTPS id t4si9139026ejs.387.2019.10.08.09.06.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Oct 2019 07:45:35 -0700 (PDT)
+        Tue, 08 Oct 2019 09:06:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56884 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58098 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iHqk1-0000uc-GV
-	for alex.bennee@linaro.org; Tue, 08 Oct 2019 10:45:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49845)
+	id 1iHs0b-0002DD-It
+	for alex.bennee@linaro.org; Tue, 08 Oct 2019 12:06:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37378)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iHqR8-00061w-KS
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 10:26:04 -0400
+ (envelope-from <armbru@redhat.com>) id 1iHrxg-000817-1N
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 12:03:45 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iHqR7-0008JE-Eq
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 10:26:02 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:45758)
+ (envelope-from <armbru@redhat.com>) id 1iHrxd-0008B4-G6
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 12:03:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49902)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1iHqR7-0008Ir-9V; Tue, 08 Oct 2019 10:26:01 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ (Exim 4.71) (envelope-from <armbru@redhat.com>)
+ id 1iHrxd-0008AF-7M; Tue, 08 Oct 2019 12:03:41 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 1CE2130ADBB4;
- Tue,  8 Oct 2019 14:26:00 +0000 (UTC)
-Received: from x1w.redhat.com (ovpn-204-43.brq.redhat.com [10.40.204.43])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A0D5819C69;
- Tue,  8 Oct 2019 14:25:42 +0000 (UTC)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: [PATCH v2 0/8] hw: Convert various reset() handler to DeviceReset
-Date: Tue,  8 Oct 2019 16:25:31 +0200
-Message-Id: <20191008142539.7793-1-philmd@redhat.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id 250E510C094A;
+ Tue,  8 Oct 2019 16:03:39 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.36.118.123])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id DB4D45C1D4;
+ Tue,  8 Oct 2019 16:03:15 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 49B981138648; Tue,  8 Oct 2019 18:03:13 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Subject: Re: [PATCH v4 04/31] error: auto propagated local_err
+References: <20191001155319.8066-1-vsementsov@virtuozzo.com>
+ <20191001155319.8066-5-vsementsov@virtuozzo.com>
+Date: Tue, 08 Oct 2019 18:03:13 +0200
+In-Reply-To: <20191001155319.8066-5-vsementsov@virtuozzo.com> (Vladimir
+ Sementsov-Ogievskiy's message of "Tue, 1 Oct 2019 18:52:52 +0300")
+Message-ID: <87k19fgr7i.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.47]); Tue, 08 Oct 2019 14:26:00 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.66]); Tue, 08 Oct 2019 16:03:40 +0000 (UTC)
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
@@ -86,57 +91,124 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-block@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>, John Snow <jsnow@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Andrzej Zaborowski <balrogg@gmail.com>
+Cc: fam@euphon.net, pburton@wavecomp.com, peter.maydell@linaro.org,
+ codyprime@gmail.com, jasowang@redhat.com, mark.cave-ayland@ilande.co.uk,
+ qemu-devel@nongnu.org, mdroth@linux.vnet.ibm.com, kraxel@redhat.com,
+ mreitz@redhat.com, qemu-block@nongnu.org, quintela@redhat.com,
+ arikalo@wavecomp.com, mst@redhat.com, armbru@redhat.com, pasic@linux.ibm.com,
+ borntraeger@de.ibm.com, joel@jms.id.au, marcandre.lureau@redhat.com,
+ david@gibson.dropbear.id.au, farman@linux.ibm.com, ehabkost@redhat.com,
+ sw@weilnetz.de, groug@kaod.org, yuval.shaia@oracle.com, dgilbert@redhat.com,
+ alex.williamson@redhat.com, qemu-arm@nongnu.org, clg@kaod.org,
+ stefanha@redhat.com, david@redhat.com, jsnow@redhat.com, rth@twiddle.net,
+ kwolf@redhat.com, integration@gluster.org, berrange@redhat.com,
+ andrew@aj.id.au, cohuck@redhat.com, qemu-s390x@nongnu.org,
+ sundeep.lkml@gmail.com, qemu-ppc@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: V17YCt3KJNbL
+X-TUID: 4au7Je7HEslT
 
-Since v1:
-- Removed the pci-host devices
-- Removed the vmcoreinfo conversion (elmarco) but add a comment.
-- Added Igor's R-b tag.
+Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com> writes:
 
-Following the thread discussion between Peter/Markus/Damien about
-reset handlers:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg617103.html
-I started to remove qemu_register_reset() calls from few qdevified
-devices (the trivial ones).
+> Here is introduced ERRP_AUTO_PROPAGATE macro, to be used at start of
+> functions with errp OUT parameter.
+>
+> It has three goals:
+>
+> 1. Fix issue with error_fatal & error_prepend/error_append_hint: user
+> can't see this additional information, because exit() happens in
+> error_setg earlier than information is added. [Reported by Greg Kurz]
+>
+> 2. Fix issue with error_abort & error_propagate: when we wrap
+> error_abort by local_err+error_propagate, resulting coredump will
+> refer to error_propagate and not to the place where error happened.
+> (the macro itself doesn't fix the issue, but it allows to [3.] drop all
+> local_err+error_propagate pattern, which will definitely fix the issue)
+> [Reported by Kevin Wolf]
+>
+> 3. Drop local_err+error_propagate pattern, which is used to workaround
+> void functions with errp parameter, when caller wants to know resulting
+> status. (Note: actually these functions could be merely updated to
+> return int error code).
 
-Regards,
+Starting with stating your goals is an excellent idea.  But I'd love to
+next read a high-level description of how your patch achieves or enables
+achieving these goals.
 
-Phil.
+> Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+> ---
+[...]
+> diff --git a/include/qapi/error.h b/include/qapi/error.h
+> index 9376f59c35..02f967ac1d 100644
+> --- a/include/qapi/error.h
+> +++ b/include/qapi/error.h
+> @@ -322,6 +322,43 @@ void error_set_internal(Error **errp,
+>                          ErrorClass err_class, const char *fmt, ...)
+>      GCC_FMT_ATTR(6, 7);
+>  
+> +typedef struct ErrorPropagator {
+> +    Error *local_err;
+> +    Error **errp;
+> +} ErrorPropagator;
+> +
+> +static inline void error_propagator_cleanup(ErrorPropagator *prop)
+> +{
+> +    error_propagate(prop->errp, prop->local_err);
+> +}
+> +
+> +G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC(ErrorPropagator, error_propagator_cleanup);
+> +
+> +/*
+> + * ERRP_AUTO_PROPAGATE
+> + *
+> + * This macro is created to be the first line of a function with Error **errp
+> + * OUT parameter. It's needed only in cases where we want to use error_prepend,
+> + * error_append_hint or dereference *errp. It's still safe (but useless) in
+> + * other cases.
+> + *
+> + * If errp is NULL or points to error_fatal, it is rewritten to point to a
+> + * local Error object, which will be automatically propagated to the original
+> + * errp on function exit (see error_propagator_cleanup).
+> + *
+> + * After invocation of this macro it is always safe to dereference errp
+> + * (as it's not NULL anymore) and to append hints (by error_append_hint)
+> + * (as, if it was error_fatal, we swapped it with a local_error to be
+> + * propagated on cleanup).
 
-v1: https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg06367.html
+Well, appending hints was always safe, it just didn't work with
+&error_fatal.  Don't worry about that now, I'll probably want to polish
+this contract comment a bit anyway, but later.
 
-Philippe Mathieu-Daud=C3=A9 (8):
-  hw/acpi/piix4: Convert reset handler to DeviceReset
-  hw/isa/piix4: Convert reset handler to DeviceReset
-  hw/ide/piix: Convert reset handler to DeviceReset
-  hw/ide/sii3112: Convert reset handler to DeviceReset
-  hw/ide/via82c: Convert reset handler to DeviceReset
-  hw/isa/vt82c686: Convert reset handler to DeviceReset
-  hw/input/lm832x: Convert reset handler to DeviceReset
-  hw/misc/vmcoreinfo: Document its reset handler
+> + *
+> + * Note: we don't wrap the error_abort case, as we want resulting coredump
+> + * to point to the place where the error happened, not to error_propagate.
+> + */
+> +#define ERRP_AUTO_PROPAGATE() \
+> +g_auto(ErrorPropagator) __auto_errp_prop = {.errp = errp}; \
 
- hw/acpi/piix4.c      |  7 +++----
- hw/ide/piix.c        |  8 +++-----
- hw/ide/sii3112.c     |  7 +++----
- hw/ide/via.c         | 10 ++++------
- hw/input/lm832x.c    | 12 +++++-------
- hw/isa/piix4.c       |  7 +++----
- hw/isa/vt82c686.c    | 11 ++++-------
- hw/misc/vmcoreinfo.c |  1 +
- 8 files changed, 26 insertions(+), 37 deletions(-)
+Took me a second to realize: the macro works, because the initializer
+implicitly initializes .local_error = NULL.
 
---=20
-2.21.0
+__auto_errp_prop is an identifier reserved for any use.  I think we
+could use _auto_errp_prop, which is only reserved for use as identifiers
+with file scope in both the ordinary and tag name spaces.  See ISO/IEC
+9899:1999 7.1.3 Reserved identifiers.
 
+> +errp = ((errp == NULL || *errp == error_fatal) ? \
+> +    &__auto_errp_prop.local_err : errp)
+> +
+
+Please indent multi-line macros like elsewhere in this file:
+
+#define ERRP_AUTO_PROPAGATE()					\
+    g_auto(ErrorPropagator) __auto_errp_prop = {.errp = errp};	\
+    errp = ((errp == NULL || *errp == error_fatal)		\
+            ? &__auto_errp_prop.local_err : errp)
+
+>  /*
+>   * Special error destination to abort on error.
+>   * See error_setg() and error_propagate() for details.
+
+To be honest, the cover letter left me a bit skeptical, but now I think
+you might be up to something.  Let's see how the patches putting the
+macro to use come out.

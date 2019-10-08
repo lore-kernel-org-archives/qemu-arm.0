@@ -1,98 +1,98 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5455818wrm;
-        Tue, 8 Oct 2019 10:41:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyaPHup8JMX524LrvZ1luKoV4sZCE6k0AG/LwW6aBn/ZwvfQNZimZcEZcC7Uw1BE/00x9OW
-X-Received: by 2002:a17:906:6c8:: with SMTP id v8mr30379487ejb.40.1570556499194;
-        Tue, 08 Oct 2019 10:41:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570556499; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5456447wrm;
+        Tue, 8 Oct 2019 10:42:17 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwkiwWiJ4MHfTYc3mDhvQt5rQugwCu57dgCUJLN9bYqvN0by78MZzu+4BQzlmNZ8gZKADOO
+X-Received: by 2002:a05:6214:444:: with SMTP id cc4mr33592235qvb.132.1570556536944;
+        Tue, 08 Oct 2019 10:42:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570556536; cv=none;
         d=google.com; s=arc-20160816;
-        b=T06qwe7Bq8fGoIIAwKgamym8i5fUuAPUgC0+9H1+UKsy+Iz7KdFdFY7hpBDOZsknBn
-         owgGhL6SR/JyJWNy6l0zsIAHZGci3LRc8E8aIzwZ/QIQZCxRQ9XFZFPWr+Zs59rVzFm+
-         JdArO5COJKgJBPswOYIoJAFd2Zkzi3SvwLSKpooJjh6yE00epF37RT5eRhiDldGi8sOe
-         5AaznzCm70yT3jV2VwdO6Y/8c8LNvb3pY/9N7O6uVg9QAP73uHz17z2kAGfpKiPQz587
-         kqo9kLRQOYKXwtmyxNKI791c5VqeVgJpAKIvkI1OmY7JaVvKAMPNNOMxlwAGTaGvMsAb
-         12tA==
+        b=lqfIcUhcS6UmJEFH+sW9QAVVShtDaG7HWh3pXykvM79SyNreFkcf28C6XhYrZmYnkR
+         FEv7UIV112K7ANmiC0s9KiSN7QaQWiJLM6dzI02ZWZ+Gk5NwWCABiFyS6wYxkhK3wMvF
+         lVEbgRebrQJ7BObGKAbwYGCb1dnfaEcaS4bVJhD54lieyvRagXrCJpz19mc3M9/h+zPC
+         0VR5v8vSloaUQUB+VVc/LbTvFswr3sMxQ6pAEPk74zQMdcVr7weDzFG9G7/cZCO5mIdm
+         modP28f1ipZWiU+v/bDElX9FvtqvSOBGp8dxpS5VckGbwMw0AkQmTHxVpqBkP58vStXE
+         PeYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=utJl6lOKI6yGj+1Myezosvn3a88cspPU4H5F4QN8n/0=;
-        b=KY5A5RYIVWVdURh9rPUYWEzt3yKwwPR2An00C/z7aoNa7bwuGtUfjKeARsgnzzj2Ko
-         dZYd1HYvrQ24TkaSy262hjVchke2VMtPDq8fjI2ZFlsXfAI/oH24wBMq4QbEIv+Fh/ki
-         bf3gJb+5VLzsazxLAk8wunwZSVt3oM5rAzhjaaQU5CvgTBgX+JseaoGk+lhuh6dDolFq
-         kCZGvxzSSxTONvrhx0/kxS9vJRAW6ZuoNgaokG0ctAZ4xLX5enrnjgagb0bblZcyU+Gk
-         9QhmWNr3dPdMzyxbtQ5Rgry7Ma+tfz8bIhQdBSaqPceVuJ7Y3aNFJBUFklRMLeNGkehl
-         u0Uw==
+        bh=w9v8i3Z8RpP3GEkRyZK5PY2Ra4/gXWlier/tTCtR2T0=;
+        b=f1y7is8dL2VJ11Xp6NYW53KMAJj/Nr1kt+idZ3UQ9r2JtB2Aiyqg9YwztnpRDlUoWl
+         vNf8aVbfVk7/Lebs5VUfgz2UG+pjMPiYFoN7rARjj1qoR/PUTtL6upEpUa3DIKDhzxGF
+         /TXUdM9xOfQBiYsj/OrWmVtYpCxViX0NpOaMTfHp7KINuB0JKKM69HkOt/2c7jk7Xrup
+         BLVUIAg+DCDU4Q2lb9/XMjT8j7K9DtLrC/jT2T+t+GP6jxJuQeJw6e7z35LPPg68V2Yi
+         nwMazGoLwF9I9xIPoet6ZJ4/onzbgTe5OAoLhmIMTm1uGehNZXuX1R+Uw7LwxfXmUZkS
+         NSpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="N0LL/YfI";
+       dkim=fail header.i=@linaro.org header.s=google header.b=uu3mMPxn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ox28si9195734ejb.130.2019.10.08.10.41.39
+        by mx.google.com with ESMTPS id b11si16166606qtk.46.2019.10.08.10.42.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Oct 2019 10:41:39 -0700 (PDT)
+        Tue, 08 Oct 2019 10:42:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="N0LL/YfI";
+       dkim=fail header.i=@linaro.org header.s=google header.b=uu3mMPxn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59370 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59376 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iHtUP-00039R-DE
-	for alex.bennee@linaro.org; Tue, 08 Oct 2019 13:41:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49166)
+	id 1iHtUy-0003XF-Vc
+	for alex.bennee@linaro.org; Tue, 08 Oct 2019 13:42:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49189)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iHt7i-0006tA-EF
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:18:11 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iHt7j-0006ud-7V
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:18:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iHt7h-0002Rx-2j
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:18:10 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:52588)
+ (envelope-from <peter.maydell@linaro.org>) id 1iHt7i-0002SU-0W
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:18:11 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:44080)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iHt7g-0002R9-Rl
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:18:08 -0400
-Received: by mail-wm1-x343.google.com with SMTP id r19so4029474wmh.2
- for <qemu-arm@nongnu.org>; Tue, 08 Oct 2019 10:18:08 -0700 (PDT)
+ id 1iHt7h-0002S3-O9
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:18:09 -0400
+Received: by mail-wr1-x441.google.com with SMTP id z9so20280559wrl.11
+ for <qemu-arm@nongnu.org>; Tue, 08 Oct 2019 10:18:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=utJl6lOKI6yGj+1Myezosvn3a88cspPU4H5F4QN8n/0=;
- b=N0LL/YfI2y+MrFGNlw4C8nWcYSF8E4lRaFlcbC1xXeGfN53mxUEDm51MRrh3FbeQu4
- HCgrGEKJrPf7epG2YubFu6Cu+rMkodILuPXLZ70QPPnCzQvWQ8pWDjujjc4BHavDpzUv
- cAJrxckKI9xEFufW0ldYdNrHDPQRn/2upzKqYO05jaxYXAXeVXI0SfOdC+8VZG34NvNs
- bFvUJfEdREDP/fQwghCEmD9A+XMfBFriR+LysSLNvCWcTp9tQ526xD2URSwurDlzDbV1
- /JptaBJGQf1NXyUzw78rYZWPweTbhsK0YKOu4tg8GkDonfza1F14w/5+/P8VylCds7HI
- Y8mw==
+ bh=w9v8i3Z8RpP3GEkRyZK5PY2Ra4/gXWlier/tTCtR2T0=;
+ b=uu3mMPxnTsZkR066RpXGGzyAATRaGZCoNsy5bswUmDUQ18p7+G/h/T/1XD6U7pDbH9
+ HKfp1HQx/56U00GWWh8BdVx2L5zSuJ7HynrD0/geTmsoAKWpzIoOjDhJH4/Ws72EAQVV
+ rObpKPgnqmEInsrRy+B60k7+pRQODWZ8WYVlH2FEaMQ/e4yWNlbmK92TQZNj6G1fazHc
+ ZPm4WQzRI5uKkytYpgJsBTKedj7wFWgERhaqDCinEf+Zhkf99/BcSkeQ6Xri9axIPulL
+ sW+UQhinO9uIOTwS0oR1enCeos3A8nQfUH1cxSqscjAoaynTpCXPGQ3EUQnkSZAAKAF2
+ Eb0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=utJl6lOKI6yGj+1Myezosvn3a88cspPU4H5F4QN8n/0=;
- b=m81YkF7Y6E1dt6PcB67n6DwKTPdx6gDU3u1s2aCakJWqU9VKbJeFDJoCTmaAlZV9Bz
- gy5drRG6iRprtHp60upqcKt/YBNQXy/gkTsurHZhjaJgVjg5cQ+lJ1VjEhNOv3AoKnWY
- KufekIRJaJJN8ZSstt9x2+v51Q8FWi8m7kdpjqo3RvIx8NKqO15j/1gfcQsQZdrkGQQy
- ilm2VlOz1cSF/NXVzUwr0zYiT9ep7wovGD7offhGTecOiX+GFJi03yjU7l4jMheCmmgg
- 0OGEIeN1aUwtJjPWXSRY1pJN+5knIlm8OWYjL3a6fY/SPTOwYNR11rRgnmuOqXTS1oF4
- 78cQ==
-X-Gm-Message-State: APjAAAVtmvjkcsbu6XxalGMgk62fv4Gc0hruXGd8muvJEIZ/xYC0A93p
- Y10SRdh060/FCgyArO4DjqaBa850JkpD8Q==
-X-Received: by 2002:a7b:c94a:: with SMTP id i10mr4926860wml.40.1570555087431; 
- Tue, 08 Oct 2019 10:18:07 -0700 (PDT)
+ bh=w9v8i3Z8RpP3GEkRyZK5PY2Ra4/gXWlier/tTCtR2T0=;
+ b=PckmLtifBAkmWlWZV3tRkBwKAgA4twOKRwye5JwRnfWZ5XH/xiYvhplsygXp22QxVv
+ BfHZiAKtcW9ciPaGpvFiU/1vQZYNiObwEeV66LDMHSSCX4NNTZaUuMCb0OSgOkFIRwgb
+ x2aGPvuVrSmRm2KbxyItHKxLKNHit5+gDMt4Syb3rjF9qnHu5ksGK7IwYj/KHhUZI1b8
+ ND/f8ryNRpTVotWhiBpoznq6o/iTQWVSwEuEPVAzctw5Yy6POwHYoVmmJlYnPxyBuC0a
+ X0YNg4foAQrI2Yp7wlTsrLBosUPP4a18xYdmK0zlwNFC/0VktiIvNhInoLLx3Q4P4MuJ
+ ApdA==
+X-Gm-Message-State: APjAAAVkCCbhqpD0zz4g/RSWOCQW9JkAa25tm+wp1ADXL+Ti7mXrgG1U
+ PCt+Jt0hpR/tQ7LmUW0RnDburwY2GiYzFw==
+X-Received: by 2002:adf:b3d2:: with SMTP id x18mr29381135wrd.264.1570555088581; 
+ Tue, 08 Oct 2019 10:18:08 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id z9sm19135541wrl.35.2019.10.08.10.18.06
+ by smtp.gmail.com with ESMTPSA id z9sm19135541wrl.35.2019.10.08.10.18.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Oct 2019 10:18:06 -0700 (PDT)
+ Tue, 08 Oct 2019 10:18:08 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 19/21] hw/timer/mss-timerc: Switch to transaction-based
- ptimer API
-Date: Tue,  8 Oct 2019 18:17:38 +0100
-Message-Id: <20191008171740.9679-20-peter.maydell@linaro.org>
+Subject: [PATCH v2 20/21] hw/watchdog/cmsdk-apb-watchdog.c: Switch to
+ transaction-based ptimer API
+Date: Tue,  8 Oct 2019 18:17:39 +0100
+Message-Id: <20191008171740.9679-21-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191008171740.9679-1-peter.maydell@linaro.org>
 References: <20191008171740.9679-1-peter.maydell@linaro.org>
@@ -100,7 +100,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::343
+X-Received-From: 2a00:1450:4864:20::441
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,84 +117,89 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iZNdvp5kKN5k
+X-TUID: Q3kbyL9vYQK1
 
-Switch the mss-timer code away from bottom-half based ptimers to
-the new transaction-based ptimer API.  This just requires adding
-begin/commit calls around the various places that modify the ptimer
-state, and using the new ptimer_init() function to create the timer.
+Switch the cmsdk-apb-watchdog code away from bottom-half based
+ptimers to the new transaction-based ptimer API.  This just requires
+adding begin/commit calls around the various places that modify the
+ptimer state, and using the new ptimer_init() function to create the
+timer.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/timer/mss-timer.h |  1 -
- hw/timer/mss-timer.c         | 11 ++++++++---
- 2 files changed, 8 insertions(+), 4 deletions(-)
+ hw/watchdog/cmsdk-apb-watchdog.c | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
 
-diff --git a/include/hw/timer/mss-timer.h b/include/hw/timer/mss-timer.h
-index d15d1732f81..e5a784b27e4 100644
---- a/include/hw/timer/mss-timer.h
-+++ b/include/hw/timer/mss-timer.h
-@@ -46,7 +46,6 @@
- #define R_TIM1_MAX        6
- 
- struct Msf2Timer {
--    QEMUBH *bh;
-     ptimer_state *ptimer;
- 
-     uint32_t regs[R_TIM1_MAX];
-diff --git a/hw/timer/mss-timer.c b/hw/timer/mss-timer.c
-index a34c2402b00..b1c9a805011 100644
---- a/hw/timer/mss-timer.c
-+++ b/hw/timer/mss-timer.c
+diff --git a/hw/watchdog/cmsdk-apb-watchdog.c b/hw/watchdog/cmsdk-apb-watchdog.c
+index e42c3ebd29d..e6f3b93c44e 100644
+--- a/hw/watchdog/cmsdk-apb-watchdog.c
++++ b/hw/watchdog/cmsdk-apb-watchdog.c
 @@ -24,7 +24,6 @@
-  */
- 
- #include "qemu/osdep.h"
+ #include "qemu/log.h"
+ #include "trace.h"
+ #include "qapi/error.h"
 -#include "qemu/main-loop.h"
  #include "qemu/module.h"
- #include "qemu/log.h"
- #include "hw/irq.h"
-@@ -67,6 +66,7 @@ static void timer_update_irq(struct Msf2Timer *st)
-     qemu_set_irq(st->irq, (ier && isr));
+ #include "sysemu/watchdog.h"
+ #include "hw/sysbus.h"
+@@ -200,8 +199,10 @@ static void cmsdk_apb_watchdog_write(void *opaque, hwaddr offset,
+          * Reset the load value and the current count, and make sure
+          * we're counting.
+          */
++        ptimer_transaction_begin(s->timer);
+         ptimer_set_limit(s->timer, value, 1);
+         ptimer_run(s->timer, 0);
++        ptimer_transaction_commit(s->timer);
+         break;
+     case A_WDOGCONTROL:
+         if (s->is_luminary && 0 != (R_WDOGCONTROL_INTEN_MASK & s->control)) {
+@@ -217,7 +218,9 @@ static void cmsdk_apb_watchdog_write(void *opaque, hwaddr offset,
+         break;
+     case A_WDOGINTCLR:
+         s->intstatus = 0;
++        ptimer_transaction_begin(s->timer);
+         ptimer_set_count(s->timer, ptimer_get_limit(s->timer));
++        ptimer_transaction_commit(s->timer);
+         cmsdk_apb_watchdog_update(s);
+         break;
+     case A_WDOGLOCK:
+@@ -299,8 +302,10 @@ static void cmsdk_apb_watchdog_reset(DeviceState *dev)
+     s->itop = 0;
+     s->resetstatus = 0;
+     /* Set the limit and the count */
++    ptimer_transaction_begin(s->timer);
+     ptimer_set_limit(s->timer, 0xffffffff, 1);
+     ptimer_run(s->timer, 0);
++    ptimer_transaction_commit(s->timer);
  }
  
-+/* Must be called from within a ptimer_transaction_begin/commit block */
- static void timer_update(struct Msf2Timer *st)
+ static void cmsdk_apb_watchdog_init(Object *obj)
+@@ -320,7 +325,6 @@ static void cmsdk_apb_watchdog_init(Object *obj)
+ static void cmsdk_apb_watchdog_realize(DeviceState *dev, Error **errp)
  {
-     uint64_t count;
-@@ -159,7 +159,9 @@ timer_write(void *opaque, hwaddr offset,
-     switch (addr) {
-     case R_TIM_CTRL:
-         st->regs[R_TIM_CTRL] = value;
-+        ptimer_transaction_begin(st->ptimer);
-         timer_update(st);
-+        ptimer_transaction_commit(st->ptimer);
-         break;
+     CMSDKAPBWatchdog *s = CMSDK_APB_WATCHDOG(dev);
+-    QEMUBH *bh;
  
-     case R_TIM_RIS:
-@@ -171,7 +173,9 @@ timer_write(void *opaque, hwaddr offset,
-     case R_TIM_LOADVAL:
-         st->regs[R_TIM_LOADVAL] = value;
-         if (st->regs[R_TIM_CTRL] & TIMER_CTRL_ENBL) {
-+            ptimer_transaction_begin(st->ptimer);
-             timer_update(st);
-+            ptimer_transaction_commit(st->ptimer);
-         }
-         break;
- 
-@@ -228,9 +232,10 @@ static void mss_timer_init(Object *obj)
-     for (i = 0; i < NUM_TIMERS; i++) {
-         struct Msf2Timer *st = &t->timers[i];
- 
--        st->bh = qemu_bh_new(timer_hit, st);
--        st->ptimer = ptimer_init_with_bh(st->bh, PTIMER_POLICY_DEFAULT);
-+        st->ptimer = ptimer_init(timer_hit, st, PTIMER_POLICY_DEFAULT);
-+        ptimer_transaction_begin(st->ptimer);
-         ptimer_set_freq(st->ptimer, t->freq_hz);
-+        ptimer_transaction_commit(st->ptimer);
-         sysbus_init_irq(SYS_BUS_DEVICE(obj), &st->irq);
+     if (s->wdogclk_frq == 0) {
+         error_setg(errp,
+@@ -328,14 +332,15 @@ static void cmsdk_apb_watchdog_realize(DeviceState *dev, Error **errp)
+         return;
      }
  
+-    bh = qemu_bh_new(cmsdk_apb_watchdog_tick, s);
+-    s->timer = ptimer_init_with_bh(bh,
++    s->timer = ptimer_init(cmsdk_apb_watchdog_tick, s,
+                            PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD |
+                            PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT |
+                            PTIMER_POLICY_NO_IMMEDIATE_RELOAD |
+                            PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
+ 
++    ptimer_transaction_begin(s->timer);
+     ptimer_set_freq(s->timer, s->wdogclk_frq);
++    ptimer_transaction_commit(s->timer);
+ }
+ 
+ static const VMStateDescription cmsdk_apb_watchdog_vmstate = {
 -- 
 2.20.1
 

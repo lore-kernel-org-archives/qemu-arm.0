@@ -1,78 +1,78 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5239338wrm;
-        Tue, 8 Oct 2019 07:31:31 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzxbyXe15+Lot7oetZEcG6lMuXP5jvsZtPHCi630pu3QMKUFqtTT9aDwjnRJ/zVzUpYlFB7
-X-Received: by 2002:a50:f703:: with SMTP id g3mr34114967edn.43.1570545091382;
-        Tue, 08 Oct 2019 07:31:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570545091; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5243887wrm;
+        Tue, 8 Oct 2019 07:35:32 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyqm75DvUyThpO8FjRzwkinREHGVWkhLd0lg9FOkvKuzGnrCGO1M2GRczhzwwdCklMY8dQl
+X-Received: by 2002:ad4:5552:: with SMTP id v18mr33365846qvy.185.1570545332119;
+        Tue, 08 Oct 2019 07:35:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570545332; cv=none;
         d=google.com; s=arc-20160816;
-        b=Mw8molvyjpOKjSSWAZv2WzjSYc3UhuXPWkoXRVZ3ylAre1iXQnnUSVb08AwcULMix8
-         f8u3sucl0Cv/BKhVYAf/3tZ3klZ/N+4v7VLyTZOHiJqncSKYPK+qBO02Wx48lepIb5WA
-         VApenMNpPXlASkqI2noNG9YPqsdNUWaemld1naOIhV9mJPoMKI2Qjk1x/nd5R+bmHeIl
-         SiFAEP056zIw5+sXqeP8K7eHBw7zT/9seogz8HXbPAL3qg0/Ho+AjA/K3GMtrfrl49Ig
-         znH20zbIEbuAv+LodvnLWBAJvIHIbdSLCVB9c5VQgkpUu8i8edGf04iBHij95I6m8Ich
-         zzaA==
+        b=yNdK/w4Ms3CjIh0Nnw7Vq3/U7PKCD6orovoEXyrBmcioIYNqySwdW3EXgag9E0WK7f
+         myD11ZXfJb5K3YcMvD4AV8QHaflK+bT1tMODnSwEW3bmTkIlIzWzMHt6hGUhucaZDcJ3
+         2Mo20HDBKx9ayFd6sJs21Z0YEtQheJB/5zH/AWQQTxzU5BESbxisnQJHosEtdawv9zNs
+         bCYN6A5hoMyW2+w07dnOROt7sd8/gAZtcD/WDJ1NGPC/sftH5+1uinn9twzmS3wlMHX7
+         l50m31aqNivgBR5h71jf7l2yxnMMeQi8Tm8/mr+FH067NWMlylCFw4FD9fAM1amizbHh
+         XpTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=G4LEKofkk16EHnrCbi5ExxXd4xUxFyEM0+K8TMVmR0E=;
-        b=qGM+jYdhD88MmGdMD9gByZtJMpeEPdu1MspTMF6A+EO+ncefpHq2iAeu1NIYIK8UI7
-         +4dd7y/u3DH0g+unBV/KsXLReRZpNGWMIj5/ic0M/+2WoWHohd88y+wE7puUumCstVSG
-         WXmyofyhROIWEj/DQavv6sY2zra7ob3uWjV96udxAf+ATHOCGRkov62XRM5xXQyfZieC
-         5dQA9XbhGlZP2lTUJCyHjtOuI2ZzquDICaXMsyBeKEMAoXmV+0FvB2uiZ1IFFyIL7bzE
-         zyR147ztMSxwSIYdgcNEK3mK3N+k73S1KvzXJrTtRt7/Hq/Nly2k/YWe/R5Hiq8EtNRg
-         3TJA==
+        bh=lp3oiMFxAAgp2Sh/f1h9kcIV5p6RXNfXLluTlCgotzA=;
+        b=blfsKcfNT21qQdirrIrGudfQ3eXhsauOqFQRnnr2qlaJEpft9oOHCr3Sf+S57/5JdP
+         7Jx3cJD+cRc1+adjveSd7QvIwK95bxm4icbzMMzueL8Hf8FPzUWyw1hqgr7M/lJxLfwA
+         XcUlwyXAM708f0AKuUDLV4u5psYzccI/xcIwlS9mbIpZE4NyR9rtXNTmTOW8ymBhFj7+
+         dpefmS+KJGEZ/1IAyF3Vw4AhdwPIHSOJhJU34ik1oDsrVcVfniQ2HjbpKRn8fA4X4lHi
+         fwfo57HyrZ6yH5SwfRsg1WMLenK9P/NSaYdwbe6wExwyEHxpaCqWNhyT08xt6UHdjazY
+         OOLw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u23si9025207ejr.204.2019.10.08.07.31.31
+        by mx.google.com with ESMTPS id b28si16671822qvb.24.2019.10.08.07.35.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Oct 2019 07:31:31 -0700 (PDT)
+        Tue, 08 Oct 2019 07:35:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56662 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56702 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iHqWQ-0002GD-9g
-	for alex.bennee@linaro.org; Tue, 08 Oct 2019 10:31:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50102)
+	id 1iHqaI-0005kJ-TM
+	for alex.bennee@linaro.org; Tue, 08 Oct 2019 10:35:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50204)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iHqS3-0006pB-FY
- for qemu-devel@nongnu.org; Tue, 08 Oct 2019 10:27:00 -0400
+ (envelope-from <philmd@redhat.com>) id 1iHqSI-00074R-3m
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 10:27:15 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iHqS2-0000IK-CF
- for qemu-devel@nongnu.org; Tue, 08 Oct 2019 10:26:59 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:6337)
+ (envelope-from <philmd@redhat.com>) id 1iHqSG-0000NV-2I
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 10:27:13 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:8010)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1iHqRt-0000E5-RK; Tue, 08 Oct 2019 10:26:49 -0400
+ id 1iHqS9-0000LP-Uf; Tue, 08 Oct 2019 10:27:06 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id CBF8810CC1FF;
- Tue,  8 Oct 2019 14:26:48 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 0630C190C006;
+ Tue,  8 Oct 2019 14:27:05 +0000 (UTC)
 Received: from x1w.redhat.com (ovpn-204-43.brq.redhat.com [10.40.204.43])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D7E5919C69;
- Tue,  8 Oct 2019 14:26:40 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7080D19C69;
+ Tue,  8 Oct 2019 14:26:49 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Eduardo Habkost <ehabkost@redhat.com>,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 4/8] hw/ide/sii3112: Convert reset handler to DeviceReset
-Date: Tue,  8 Oct 2019 16:25:35 +0200
-Message-Id: <20191008142539.7793-5-philmd@redhat.com>
+Subject: [PATCH v2 5/8] hw/ide/via82c: Convert reset handler to DeviceReset
+Date: Tue,  8 Oct 2019 16:25:36 +0200
+Message-Id: <20191008142539.7793-6-philmd@redhat.com>
 In-Reply-To: <20191008142539.7793-1-philmd@redhat.com>
 References: <20191008142539.7793-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.65]); Tue, 08 Oct 2019 14:26:49 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.70]); Tue, 08 Oct 2019 14:27:05 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -98,61 +98,66 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IWgp/UqfF+jz
+X-TUID: o9iAnvh9AN3S
 
-The SiI3112A SATA controller is a PCI device, it will be reset
+The VIA82C686B IDE controller is a PCI device, it will be reset
 when the PCI bus it stands on is reset.
 
 Convert its reset handler into a proper Device reset method.
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/ide/sii3112.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ hw/ide/via.c | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
 
-diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c
-index 2181260531..06605d7af2 100644
---- a/hw/ide/sii3112.c
-+++ b/hw/ide/sii3112.c
-@@ -15,7 +15,6 @@
- #include "qemu/osdep.h"
- #include "hw/ide/pci.h"
+diff --git a/hw/ide/via.c b/hw/ide/via.c
+index 7087dc676e..053622bd82 100644
+--- a/hw/ide/via.c
++++ b/hw/ide/via.c
+@@ -29,7 +29,6 @@
+ #include "migration/vmstate.h"
  #include "qemu/module.h"
+ #include "sysemu/dma.h"
 -#include "sysemu/reset.h"
- #include "trace.h"
 =20
- #define TYPE_SII3112_PCI "sii3112"
-@@ -237,9 +236,9 @@ static void sii3112_set_irq(void *opaque, int channel=
-, int level)
-     sii3112_update_irq(s);
+ #include "hw/ide/pci.h"
+ #include "trace.h"
+@@ -120,10 +119,10 @@ static void via_ide_set_irq(void *opaque, int n, in=
+t level)
+     }
  }
 =20
--static void sii3112_reset(void *opaque)
-+static void sii3112_reset(DeviceState *dev)
+-static void via_ide_reset(void *opaque)
++static void via_ide_reset(DeviceState *dev)
  {
--    SiI3112PCIState *s =3D opaque;
-+    SiI3112PCIState *s =3D SII3112_PCI(dev);
+-    PCIIDEState *d =3D opaque;
+-    PCIDevice *pd =3D PCI_DEVICE(d);
++    PCIIDEState *d =3D PCI_IDE(dev);
++    PCIDevice *pd =3D PCI_DEVICE(dev);
+     uint8_t *pci_conf =3D pd->config;
      int i;
 =20
-     for (i =3D 0; i < 2; i++) {
-@@ -290,7 +289,6 @@ static void sii3112_pci_realize(PCIDevice *dev, Error=
- **errp)
-         s->bmdma[i].bus =3D &s->bus[i];
-         ide_register_restart_cb(&s->bus[i]);
-     }
--    qemu_register_reset(sii3112_reset, s);
- }
+@@ -172,8 +171,6 @@ static void via_ide_realize(PCIDevice *dev, Error **e=
+rrp)
+     pci_set_long(pci_conf + PCI_CAPABILITY_LIST, 0x000000c0);
+     dev->wmask[PCI_INTERRUPT_LINE] =3D 0xf;
 =20
- static void sii3112_pci_class_init(ObjectClass *klass, void *data)
-@@ -303,6 +301,7 @@ static void sii3112_pci_class_init(ObjectClass *klass=
-, void *data)
-     pd->class_id =3D PCI_CLASS_STORAGE_RAID;
-     pd->revision =3D 1;
-     pd->realize =3D sii3112_pci_realize;
-+    dc->reset =3D sii3112_reset;
-     dc->desc =3D "SiI3112A SATA controller";
-     set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
- }
+-    qemu_register_reset(via_ide_reset, d);
+-
+     memory_region_init_io(&d->data_bar[0], OBJECT(d), &pci_ide_data_le_o=
+ps,
+                           &d->bus[0], "via-ide0-data", 8);
+     pci_register_bar(dev, 0, PCI_BASE_ADDRESS_SPACE_IO, &d->data_bar[0])=
+;
+@@ -229,6 +226,7 @@ static void via_ide_class_init(ObjectClass *klass, vo=
+id *data)
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+     PCIDeviceClass *k =3D PCI_DEVICE_CLASS(klass);
+=20
++    dc->reset =3D via_ide_reset;
+     k->realize =3D via_ide_realize;
+     k->exit =3D via_ide_exitfn;
+     k->vendor_id =3D PCI_VENDOR_ID_VIA;
 --=20
 2.21.0
 

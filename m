@@ -1,98 +1,98 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5450225wrm;
-        Tue, 8 Oct 2019 10:35:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy3bwfIAv+a8Jo9G+AUv9nrkZ5U9Axdw5MxNm6wYyybEHvSRJbstWax7Xlt1v9x6MtqLwYq
-X-Received: by 2002:a17:906:1007:: with SMTP id 7mr4250393ejm.149.1570556128599;
-        Tue, 08 Oct 2019 10:35:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570556128; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5452664wrm;
+        Tue, 8 Oct 2019 10:38:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxMd0fE7tOyQ47WvD5zk9tzGuw9ca52t03jfklZFsCm/QsSoM++fh73NK8HqAI0V+p6fOiy
+X-Received: by 2002:a17:906:699:: with SMTP id u25mr29613239ejb.250.1570556300717;
+        Tue, 08 Oct 2019 10:38:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570556300; cv=none;
         d=google.com; s=arc-20160816;
-        b=EGaYfmcwIuXlsmtOkyJp5c9IHImLhRoQRkaqQJ0QOa35IYo/NFzvQgniPI0T+Bx+Zm
-         rj1XTvhQ6qwmjhgbSlb+4uLUCka9eBkFPh0yzMV+FPGeY0pziAv1nwj3R5/DvGvE79yq
-         BJjjbvkyxt+HLrdiEeCfG+V8ZXfACbzSynrRiSlZPh6acq3C+vbB7+SYz6ALSv8ou0wG
-         wwuHsS7hxTV9+HuXxgUXgp3elmoP0CBpeOrEXbc7Up0z6NCG1m9987LMLDHfvV9e3O2y
-         KzRynWOvVSzqJERAIwhRnvo4DKiBV6grUc+e1ZXK181n+ZBur+nff4sjZd9QRNC3fLwK
-         b0pg==
+        b=iRwD/Z+Yy7CaSN0I7LtwV+UoblZsMs8dyYstn1IE3KGA9zjXxT7LMrI6qffCbDo1+w
+         z/QEUakXtHDlPwNRY9bB3P2D6pvECivAUVjEGKe6+ir19hgDpJSGDlUYWteclWBUi28+
+         +NVx7gRdaVppqfE6lRhxyBjCDrVKnW1eSgpB7n2p2l0nFT4woLhXovnLmb3DRx7NzdzQ
+         cqVvtvGtJA/28VYBfCycWu/faHR5ppaaVhUI1svG8VL9bzEm2QFKdBd6nKzgzcBo/FXU
+         Vpj3MyOqwS+JxzYNDxpLLNE56qppWvOhDWDTVb8oca+ragQe2pcRNtqKvZ4YhBaVVd3l
+         +NJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=IKaS8RTHBXtjU4umm9TxJgozBl5pnbt1z64JULe41fo=;
-        b=CMBuNfM2EHjmgwOl/SYIei118w3SHeoofWPu7xKmTUf1i7JsWFlbimeFor7mJp3Qmv
-         HohPXAERGfhzq6YWYybRDIuVWUSqD4eJaCWSYVrKjw62zCyl5KLoCf7MwVNNDEjbfIpz
-         yeM9QPJXl/m1P0x/sUXwhSCW4r7tZYV6BjEoxhMUJ2+hIhVc97pqURbawepjfUmkAc+M
-         IZBEc83mKhoAexewBe91EO+JxSXQc5ex3n47+CDU+P246kGeknqMDSVKThBSkx2zUaRP
-         5xq7Fn0qghUdhf/iYjEaSsxFWl1h98WSnfxoauW2HRYI0mMfE81BcDZai0cgE1KCRWr0
-         KVAQ==
+        bh=6nsvqi4Uzwusg0ywFGM1w0nIdrA70CDt5J8J4ZUSnF0=;
+        b=YzkWUjPtE5hoZXsB2v3a3wlr3fa4GyWsQ4/YJ/Apa8Yy2qBrjfrQJA4utQ22qhBla4
+         ysPB73YAe2aKSvVIgv8sULC1vIhlgoRvAsVX8xEbP3tMI4AfFoeTbZd82ksP0NjHWzvo
+         EEIV6aJc/4pMtndrhmEMmgqcVPwOMNBRyHRho24ADDGWV+Bs9JICM68fCiOhLTpWPhYF
+         A1iaONWfbdAUPJX3R7iEly78gj4PVYq+P37YG3EexO83gdA+QcncMpDBB3VpYc2s+Vzb
+         w1XBCOR3JRlVt3ENgV/z7J4/2VgLKCpnCWwzVHZH95bhA7USiYliX7Xe51ifx6iJ7dsi
+         zPog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Csx+4V13;
+       dkim=fail header.i=@linaro.org header.s=google header.b=vVqr5RLR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x14si1059615ejw.208.2019.10.08.10.35.28
+        by mx.google.com with ESMTPS id m33si10866801edc.94.2019.10.08.10.38.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Oct 2019 10:35:28 -0700 (PDT)
+        Tue, 08 Oct 2019 10:38:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Csx+4V13;
+       dkim=fail header.i=@linaro.org header.s=google header.b=vVqr5RLR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59254 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59306 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iHtOQ-00050P-Ih
-	for alex.bennee@linaro.org; Tue, 08 Oct 2019 13:35:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49111)
+	id 1iHtRD-0007df-1o
+	for alex.bennee@linaro.org; Tue, 08 Oct 2019 13:38:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49131)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iHt7g-0006qG-47
- for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:18:09 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iHt7g-0006r6-TE
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:18:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iHt7e-0002PX-7e
- for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:18:07 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:40683)
+ (envelope-from <peter.maydell@linaro.org>) id 1iHt7f-0002QZ-AR
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:18:08 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:33125)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iHt7d-0002PA-VU
- for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:18:06 -0400
-Received: by mail-wm1-x344.google.com with SMTP id b24so3925283wmj.5
- for <qemu-devel@nongnu.org>; Tue, 08 Oct 2019 10:18:05 -0700 (PDT)
+ id 1iHt7f-0002Pv-47
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:18:07 -0400
+Received: by mail-wr1-x442.google.com with SMTP id b9so20372061wrs.0
+ for <qemu-devel@nongnu.org>; Tue, 08 Oct 2019 10:18:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=IKaS8RTHBXtjU4umm9TxJgozBl5pnbt1z64JULe41fo=;
- b=Csx+4V13gC3qgDV0eLlT1+8TisjHqgVTeDPEunDMr3qWRh8glQcAJirAXo1X+x7f7z
- cpTFMeqhvWwonHa4xWTNFzNghuFVIgra+5m9MyEvIgJRmQF0AbpKHfPCinAao9F2X8lO
- G0f0u3bsukY0VwBRL6tFA74VHqgcwb5d8nMlmqsf7kA6PMgpZ8Ms5SCKARzAfz6gk2Nk
- MlpLKg7I9Klo5FXiJ60DR4NWMl7OUXwBlLv8avu5mjuWC1jH+EpkAy6r/8fEIX94jIAH
- m+TkvCbK8GrKQjoFu0ARnagwxZTigqZW6emqz5++4AYj9Y7aUbSe+HBFBb8jKxFyrsJn
- 4ZgQ==
+ bh=6nsvqi4Uzwusg0ywFGM1w0nIdrA70CDt5J8J4ZUSnF0=;
+ b=vVqr5RLRSOcHUcGvlEnyp75DhJaCjBVVrtKHAyxmr3kyJ3CZNl5IdcAlpSmaTvlEkT
+ baHySrNONEkgAS8XSE5OwCtw5ALHRqL7PfmO7SfwI0F0pPaYn8wzzxCzQk+IvQDsGO+Y
+ ODpW5FMMrJHxXgvFgZSA6x0Ee2Ixq6/5y6a3IhbDiYwwCkIDG7MKDV1as4OabbPBW4wS
+ j6rF8R8ipXjqh6Y9vnEh6Uu5g0Jp3OO8P07fv+iqGIrwIPYPwZaJJSt8oyo4S1Ix2kaX
+ 5wdZD0dE2D4I5ZoE50sxFECjDMRcJ6EGfjD9DMMp4e1mG+rHuCe9MPim8ersxkZvqjY+
+ Gm2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=IKaS8RTHBXtjU4umm9TxJgozBl5pnbt1z64JULe41fo=;
- b=JiOfzKeYIgXIeHlm9MvflVMbGcu3OPOIAvdYKSfJxTqU/KL6GOzDOA3oClIC+0UxNT
- gsLGjZhWPFFIbPQqANgyWGYR5KUYh1hnpwi8zXWjAsEFkAoOWh7Cw2O6e9WODt/RbzAm
- A8uG94zXDdC9rBfrq/URWLYnxeUoTreG5oGDf0VS4ZXShnnXIVENOG3zeEktj+3dAfWf
- rZvx5hyZVcW7ndk1/0hr9n+dMA5tan1lW6tfDojjdII3/YM+3NSkd/rZdGBFpQWEZXXO
- zfzYyet8CsEIR507ydjJiafl6UeKbtE0TehHMyikRk2ffY8xG7JeDUiCPJFGQXCmn53V
- m4AQ==
-X-Gm-Message-State: APjAAAW61pGPRkWN0VT7Jl2GvvMeq7TRqNXhu670EUzoK4JGchErxkQj
- 1wWdayQx0+szttNTEtwDZt8LDw==
-X-Received: by 2002:a7b:c753:: with SMTP id w19mr4976166wmk.25.1570555084986; 
- Tue, 08 Oct 2019 10:18:04 -0700 (PDT)
+ bh=6nsvqi4Uzwusg0ywFGM1w0nIdrA70CDt5J8J4ZUSnF0=;
+ b=hjKs730xXgb1ntyEmIGXCDNl6k3oexZBEmBz/+93DXXQGzfVT3DbQWDujQe+YdkUX5
+ raf9foVDOtUtHeC6IfDuuUxz+Wzn97NFPLqIOHIh3FwfqLf3Vx7xpdrPW0FNDqViGR3y
+ Q+x8wZj+tfuLuhELfV3sTuiV3rFMLldS4YWHOaATDBKzOeermOV98wkfhf5fIOXPiUJb
+ 1xOhE1lYuVqK3uoTtknEm/AJeRW2ViDGX486B0HxRFvSs8HffvWZHluuJOri+mmGmgvu
+ GUzjBhkm3wwjoZIBHVMEOhnCPaqn5EtgYXGyGKXw8h+Xi/wKCz/LA/NuElCR82ejrdpm
+ rvqA==
+X-Gm-Message-State: APjAAAUPvDZdFrcU4or8Q/Cr2FmEm8oz8zak0ak7GcanDEHnNYLNWyMP
+ 9y5lcZJ4tPp5VH5xvov/3dCJTA==
+X-Received: by 2002:a5d:4090:: with SMTP id o16mr10300916wrp.172.1570555086158; 
+ Tue, 08 Oct 2019 10:18:06 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id z9sm19135541wrl.35.2019.10.08.10.18.03
+ by smtp.gmail.com with ESMTPSA id z9sm19135541wrl.35.2019.10.08.10.18.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Oct 2019 10:18:04 -0700 (PDT)
+ Tue, 08 Oct 2019 10:18:05 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 17/21] hw/timer/imx_epit.c: Switch to transaction-based
+Subject: [PATCH v2 18/21] hw/timer/imx_gpt.c: Switch to transaction-based
  ptimer API
-Date: Tue,  8 Oct 2019 18:17:36 +0100
-Message-Id: <20191008171740.9679-18-peter.maydell@linaro.org>
+Date: Tue,  8 Oct 2019 18:17:37 +0100
+Message-Id: <20191008171740.9679-19-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191008171740.9679-1-peter.maydell@linaro.org>
 References: <20191008171740.9679-1-peter.maydell@linaro.org>
@@ -100,7 +100,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::344
+X-Received-From: 2a00:1450:4864:20::442
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -117,7 +117,7 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3IuM7NUR2zNv
+X-TUID: GSV/54U3qtZz
 
 Switch the imx_epit.c code away from bottom-half based ptimers to
 the new transaction-based ptimer API.  This just requires adding
@@ -126,136 +126,139 @@ state, and using the new ptimer_init() function to create the timer.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/timer/imx_epit.c | 32 +++++++++++++++++++++++++++-----
- 1 file changed, 27 insertions(+), 5 deletions(-)
+ hw/timer/imx_gpt.c | 21 +++++++++++++++++----
+ 1 file changed, 17 insertions(+), 4 deletions(-)
 
-diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
-index 39810ac8b03..baf6338e1a6 100644
---- a/hw/timer/imx_epit.c
-+++ b/hw/timer/imx_epit.c
-@@ -17,7 +17,6 @@
- #include "migration/vmstate.h"
+diff --git a/hw/timer/imx_gpt.c b/hw/timer/imx_gpt.c
+index c535d191292..5c0d9a269ce 100644
+--- a/hw/timer/imx_gpt.c
++++ b/hw/timer/imx_gpt.c
+@@ -16,7 +16,6 @@
  #include "hw/irq.h"
- #include "hw/misc/imx_ccm.h"
+ #include "hw/timer/imx_gpt.h"
+ #include "migration/vmstate.h"
 -#include "qemu/main-loop.h"
  #include "qemu/module.h"
  #include "qemu/log.h"
  
-@@ -74,6 +73,10 @@ static void imx_epit_update_int(IMXEPITState *s)
-     }
- }
+@@ -127,6 +126,7 @@ static const IMXClk imx7_gpt_clocks[] = {
+     CLK_NONE,      /* 111 not defined */
+ };
  
-+/*
-+ * Must be called from within a ptimer_transaction_begin/commit block
-+ * for both s->timer_cmp and s->timer_reload.
-+ */
- static void imx_epit_set_freq(IMXEPITState *s)
++/* Must be called from within ptimer_transaction_begin/commit block */
+ static void imx_gpt_set_freq(IMXGPTState *s)
  {
-     uint32_t clksrc;
-@@ -105,6 +108,8 @@ static void imx_epit_reset(DeviceState *dev)
-     s->lr = EPIT_TIMER_MAX;
-     s->cmp = 0;
-     s->cnt = 0;
-+    ptimer_transaction_begin(s->timer_cmp);
-+    ptimer_transaction_begin(s->timer_reload);
-     /* stop both timers */
-     ptimer_stop(s->timer_cmp);
-     ptimer_stop(s->timer_reload);
-@@ -117,6 +122,8 @@ static void imx_epit_reset(DeviceState *dev)
-         /* if the timer is still enabled, restart it */
-         ptimer_run(s->timer_reload, 0);
-     }
-+    ptimer_transaction_commit(s->timer_cmp);
-+    ptimer_transaction_commit(s->timer_reload);
+     uint32_t clksrc = extract32(s->cr, GPT_CR_CLKSRC_SHIFT, 3);
+@@ -167,6 +167,7 @@ static inline uint32_t imx_gpt_find_limit(uint32_t count, uint32_t reg,
+     return timeout;
  }
  
- static uint32_t imx_epit_update_count(IMXEPITState *s)
-@@ -164,6 +171,7 @@ static uint64_t imx_epit_read(void *opaque, hwaddr offset, unsigned size)
-     return reg_value;
- }
- 
-+/* Must be called from ptimer_transaction_begin/commit block for s->timer_cmp */
- static void imx_epit_reload_compare_timer(IMXEPITState *s)
++/* Must be called from within ptimer_transaction_begin/commit block */
+ static void imx_gpt_compute_next_timeout(IMXGPTState *s, bool event)
  {
-     if ((s->cr & (CR_EN | CR_OCIEN)) == (CR_EN | CR_OCIEN))  {
-@@ -191,6 +199,8 @@ static void imx_epit_write(void *opaque, hwaddr offset, uint64_t value,
+     uint32_t timeout = GPT_TIMER_MAX;
+@@ -313,6 +314,7 @@ static uint64_t imx_gpt_read(void *opaque, hwaddr offset, unsigned size)
  
-     switch (offset >> 2) {
-     case 0: /* CR */
-+        ptimer_transaction_begin(s->timer_cmp);
-+        ptimer_transaction_begin(s->timer_reload);
+ static void imx_gpt_reset_common(IMXGPTState *s, bool is_soft_reset)
+ {
++    ptimer_transaction_begin(s->timer);
+     /* stop timer */
+     ptimer_stop(s->timer);
  
-         oldcr = s->cr;
-         s->cr = value & 0x03ffffff;
-@@ -231,6 +241,9 @@ static void imx_epit_write(void *opaque, hwaddr offset, uint64_t value,
+@@ -350,6 +352,7 @@ static void imx_gpt_reset_common(IMXGPTState *s, bool is_soft_reset)
+     if (s->freq && (s->cr & GPT_CR_EN)) {
+         ptimer_run(s->timer, 1);
+     }
++    ptimer_transaction_commit(s->timer);
+ }
+ 
+ static void imx_gpt_soft_reset(DeviceState *dev)
+@@ -382,6 +385,7 @@ static void imx_gpt_write(void *opaque, hwaddr offset, uint64_t value,
+             imx_gpt_soft_reset(DEVICE(s));
          } else {
-             ptimer_stop(s->timer_cmp);
+             /* set our freq, as the source might have changed */
++            ptimer_transaction_begin(s->timer);
+             imx_gpt_set_freq(s);
+ 
+             if ((oldreg ^ s->cr) & GPT_CR_EN) {
+@@ -397,12 +401,15 @@ static void imx_gpt_write(void *opaque, hwaddr offset, uint64_t value,
+                     ptimer_stop(s->timer);
+                 }
+             }
++            ptimer_transaction_commit(s->timer);
          }
-+
-+        ptimer_transaction_commit(s->timer_cmp);
-+        ptimer_transaction_commit(s->timer_reload);
          break;
  
-     case 1: /* SR - ACK*/
-@@ -244,6 +257,8 @@ static void imx_epit_write(void *opaque, hwaddr offset, uint64_t value,
-     case 2: /* LR - set ticks */
-         s->lr = value;
- 
-+        ptimer_transaction_begin(s->timer_cmp);
-+        ptimer_transaction_begin(s->timer_reload);
-         if (s->cr & CR_RLD) {
-             /* Also set the limit if the LRD bit is set */
-             /* If IOVW bit is set then set the timer value */
-@@ -255,12 +270,16 @@ static void imx_epit_write(void *opaque, hwaddr offset, uint64_t value,
-         }
- 
-         imx_epit_reload_compare_timer(s);
-+        ptimer_transaction_commit(s->timer_cmp);
-+        ptimer_transaction_commit(s->timer_reload);
+     case 1: /* Prescaler */
+         s->pr = value & 0xfff;
++        ptimer_transaction_begin(s->timer);
+         imx_gpt_set_freq(s);
++        ptimer_transaction_commit(s->timer);
          break;
  
-     case 3: /* CMP */
-         s->cmp = value;
+     case 2: /* SR */
+@@ -414,13 +421,16 @@ static void imx_gpt_write(void *opaque, hwaddr offset, uint64_t value,
+         s->ir = value & 0x3f;
+         imx_gpt_update_int(s);
  
-+        ptimer_transaction_begin(s->timer_cmp);
-         imx_epit_reload_compare_timer(s);
-+        ptimer_transaction_commit(s->timer_cmp);
++        ptimer_transaction_begin(s->timer);
+         imx_gpt_compute_next_timeout(s, false);
++        ptimer_transaction_commit(s->timer);
  
          break;
  
-@@ -281,6 +300,11 @@ static void imx_epit_cmp(void *opaque)
-     imx_epit_update_int(s);
- }
+     case 4: /* OCR1 -- output compare register */
+         s->ocr1 = value;
  
-+static void imx_epit_reload(void *opaque)
-+{
-+    /* No action required on rollover of timer_reload */
-+}
-+
- static const MemoryRegionOps imx_epit_ops = {
-     .read = imx_epit_read,
-     .write = imx_epit_write,
-@@ -308,7 +332,6 @@ static void imx_epit_realize(DeviceState *dev, Error **errp)
++        ptimer_transaction_begin(s->timer);
+         /* In non-freerun mode, reset count when this register is written */
+         if (!(s->cr & GPT_CR_FRR)) {
+             s->next_timeout = GPT_TIMER_MAX;
+@@ -429,6 +439,7 @@ static void imx_gpt_write(void *opaque, hwaddr offset, uint64_t value,
+ 
+         /* compute the new timeout */
+         imx_gpt_compute_next_timeout(s, false);
++        ptimer_transaction_commit(s->timer);
+ 
+         break;
+ 
+@@ -436,7 +447,9 @@ static void imx_gpt_write(void *opaque, hwaddr offset, uint64_t value,
+         s->ocr2 = value;
+ 
+         /* compute the new timeout */
++        ptimer_transaction_begin(s->timer);
+         imx_gpt_compute_next_timeout(s, false);
++        ptimer_transaction_commit(s->timer);
+ 
+         break;
+ 
+@@ -444,7 +457,9 @@ static void imx_gpt_write(void *opaque, hwaddr offset, uint64_t value,
+         s->ocr3 = value;
+ 
+         /* compute the new timeout */
++        ptimer_transaction_begin(s->timer);
+         imx_gpt_compute_next_timeout(s, false);
++        ptimer_transaction_commit(s->timer);
+ 
+         break;
+ 
+@@ -484,15 +499,13 @@ static void imx_gpt_realize(DeviceState *dev, Error **errp)
  {
-     IMXEPITState *s = IMX_EPIT(dev);
+     IMXGPTState *s = IMX_GPT(dev);
      SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
 -    QEMUBH *bh;
  
-     DPRINTF("\n");
- 
-@@ -317,10 +340,9 @@ static void imx_epit_realize(DeviceState *dev, Error **errp)
+     sysbus_init_irq(sbd, &s->irq);
+     memory_region_init_io(&s->iomem, OBJECT(s), &imx_gpt_ops, s, TYPE_IMX_GPT,
                            0x00001000);
      sysbus_init_mmio(sbd, &s->iomem);
  
--    s->timer_reload = ptimer_init_with_bh(NULL, PTIMER_POLICY_DEFAULT);
-+    s->timer_reload = ptimer_init(imx_epit_reload, s, PTIMER_POLICY_DEFAULT);
- 
--    bh = qemu_bh_new(imx_epit_cmp, s);
--    s->timer_cmp = ptimer_init_with_bh(bh, PTIMER_POLICY_DEFAULT);
-+    s->timer_cmp = ptimer_init(imx_epit_cmp, s, PTIMER_POLICY_DEFAULT);
+-    bh = qemu_bh_new(imx_gpt_timeout, s);
+-    s->timer = ptimer_init_with_bh(bh, PTIMER_POLICY_DEFAULT);
++    s->timer = ptimer_init(imx_gpt_timeout, s, PTIMER_POLICY_DEFAULT);
  }
  
- static void imx_epit_class_init(ObjectClass *klass, void *data)
+ static void imx_gpt_class_init(ObjectClass *klass, void *data)
 -- 
 2.20.1
 

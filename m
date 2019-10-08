@@ -1,196 +1,218 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5465309wrm;
-        Tue, 8 Oct 2019 10:51:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwAle0QybJ4AhHVQKaymSTv6W39WQl8O129mZJyqBzs7wzLiPAz3TbZZpOyjPMyM1fCJu4N
-X-Received: by 2002:ad4:5604:: with SMTP id ca4mr12545650qvb.50.1570557107210;
-        Tue, 08 Oct 2019 10:51:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570557107; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5502041wrm;
+        Tue, 8 Oct 2019 11:26:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz5PyK600kuFpMLvACFzZKwX4a7LN4AJj/5Rx+OInw4nJbvGwJ/xSzAMUmwJA3H8Svg+MTQ
+X-Received: by 2002:a37:a9c1:: with SMTP id s184mr30351997qke.360.1570559180141;
+        Tue, 08 Oct 2019 11:26:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570559180; cv=none;
         d=google.com; s=arc-20160816;
-        b=I/YPJVnUvphdOk+6WNfIriLMIGFB6KSKZuiaEEjp9YBRIoQdAUM4/z4TPIjRXx3t8S
-         viwnwFC8h/hD5HacWNKD0UCmJkXU3lD0Scizjx9lPM8+2raBOKzp1xQ6HJ38vGdFL6fE
-         1ouJpDGxBiov3viz91ZUdpYLGDP/VuzoG3apAVazgfics2AddfAepZNCzii217kJ3t4R
-         izq4ctIiec39CirHqJwjHszly4MCXMYnKEPRDGoSvaJv6q+R2IijnD9yQzBPkaATPNH3
-         3tj5tRhk0fHgYRVN+DctKRB5iV6fgMXmzKlh/T9NOp/FMLZ0YLDigWhF8uTH37DWNzrK
-         Bqjw==
+        b=0T/4TqyTPfs5j9/MKtXQcIG776N/zb0g9b6cAwKy5fYJLtQD1Nm9CLDzQCBHN3EETZ
+         ASoPPnege48K+WtvIf8wYHO4l7/ZFecj4qMIj6LjDYP3lBNSxtQOw2NsSORPb9vNHVjz
+         LU/SpoSc6meGmJ5bHPJGzzNXAMKQ9S0CiGutP9Xgwb3oAFwuzQGKK5jCKd1hQPqmaSeY
+         iibnDwskgM6f0Vh0Dss22GX1cr6UrkYE6+HwOh04IsNWbeq9ZI+KCxnfkW3/AMxeggg3
+         A/elQuH4+jUFIKxdFqz+t5SCjuXeo2AzYtyARql6NnaFerBzzRdLcSeXOvK20shqapG+
+         pLJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=meYD3iu+SqBh5zzbJLsZrb0S302wohjRCr6pGE0T3yQ=;
-        b=IloLGj9N1nkJpS3OrYDQdvKedFP0NZi0xHHT5r1LifdEpFtbJyHjQfOMGc2uO9GRVH
-         je8ltYlabvyLou2wapritXYXtixAETH8P39U6OzecSESl/vL61UKyYPfl1hTfsYgqphr
-         AvLUjKk/b4btPrUwcrH/iWQo1REdQoR6Uon9OKkSjdsYpfGjJbXNNfhRvrgdlBqtPiKx
-         aZ139vle2bnfAQkZmAxHkqzMoHD+j+BOwZlmuWNnjpuBw5O/Vd/jKe3LbxkJom4BqaZ3
-         th+7DYmyY+yz7dyhbwmn5LEFcB5HfhTVrLw/gZiQN+UXabhNIzZSEAE3++sV+S1lyU+X
-         OtgQ==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:to:from;
+        bh=Udq3hdfUoMlH38wVeKm45XrfjuR+5vTycRsqGuEaazk=;
+        b=aos4lbVWjCGi/MySRhyzdsc2dS+tHV00U7iiax3Q5ytaBWC/LoYyBGdnc3APQKEvxz
+         MY3oN94H+pc4kXVnre3zB+C0EpiGHZlMpsrR4HaPJBR58OCFmXKAompBiN1OGhYqV9NA
+         FQpCz/a1MMyPvQTqr8X8KfzGaPBhz2x+gjS3RS/twaXjE1cbi6iKzbjGoRJbn1o0oBGD
+         TyQZ8fwWfmt7tmT7Muc3Ch46Zjcf3GquUsd+cmPcR3oYRfsbtUTRiakta6M/wZxec1mI
+         dkkkC7yA9kBnRITiOve556hHQWM50L6n6Js8fHKt+rA0gfY2drT3IcskBsI9yB6FGvjF
+         4PFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=H8pXsMwd;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a66si17094131qkd.192.2019.10.08.10.51.47
+        by mx.google.com with ESMTPS id j30si16619869qki.47.2019.10.08.11.26.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Oct 2019 10:51:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 08 Oct 2019 11:26:20 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=H8pXsMwd;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59524 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60808 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iHteD-00032E-Mn
-	for alex.bennee@linaro.org; Tue, 08 Oct 2019 13:51:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49205)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iHuBe-0002Zt-PB
+	for alex.bennee@linaro.org; Tue, 08 Oct 2019 14:26:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35786)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iHt7k-0006vb-0e
- for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:18:13 -0400
+ (envelope-from <armbru@redhat.com>) id 1iHuAQ-0002YG-AK
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 14:25:03 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iHt7i-0002T0-QK
- for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:18:11 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:35831)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iHt7i-0002SZ-Jy
- for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:18:10 -0400
-Received: by mail-wr1-x441.google.com with SMTP id v8so20345485wrt.2
- for <qemu-devel@nongnu.org>; Tue, 08 Oct 2019 10:18:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=meYD3iu+SqBh5zzbJLsZrb0S302wohjRCr6pGE0T3yQ=;
- b=H8pXsMwdnFTERlEMgNCj9E+kEDcEH9WKgDy1O27HZmsLslyMNGkegSx71gY5fnQ1Mu
- uNxAOlnihYFw1PJA5IaK2/AA+Mb1RdG6i9YfzbOUhpSj/x/LW+OPSeRtxo4TKb/gBvmV
- HoTcC6mVAMSpgIv5hWlt1M5LCOf8AqSmLoTI6VbTHzn+xfLvZ/gmL5BJIwhdpbrca29Q
- a1x8AB00i7ZJMu4XRWhhytllKZR8f7qttFnodKMqYMdWRT2hRvINqe2zoKr2eGwUJ2c0
- 4h9N7NELr8/686UY6gvIEIz4gEQ3T+0pBG7YxIBEg/RDH21RU4PFECfbOwYpCchWpwrV
- F+BQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=meYD3iu+SqBh5zzbJLsZrb0S302wohjRCr6pGE0T3yQ=;
- b=C52ntmC1fUqbzVgDdUDKHxMJlwZsiTF/sa+jjeNld+L7HYHzFOMZbEQ0tF1pNRlEQG
- IxC9sanE3bNxt3IxUy5bTMPzhAlDJ96WRsIDDx1+s+OZVgNKpN8y6oq8+19PE2fMGl49
- V7Bfk5IzAxLjTv1xhKgf5UNUserwuw+Q328vuvWHjvsvcaRlqqDh2YBBvO7XuO3MFa6e
- DNyRtiLsuV29yjwq2VU5wYagG1zGyyxklEIhNroBBrPhiqIM96HiYSmpBk0GgbGp4n/o
- CRLqoxqS0vPUMmZ2dBiBp6Xob1eM5kd/ei4VU8rX8f5wWXVkwJajRI1wScrKwgdMVYZQ
- ONHg==
-X-Gm-Message-State: APjAAAWlLiJlyeihku9HZ1YQ/bZWD4yqIi6yfJL3XmklV4KQ61KkKgg3
- cyyT4HOowIzGF3npTAXaXmLKug==
-X-Received: by 2002:adf:f684:: with SMTP id v4mr25276739wrp.155.1570555089730; 
- Tue, 08 Oct 2019 10:18:09 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id z9sm19135541wrl.35.2019.10.08.10.18.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Oct 2019 10:18:09 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v2 21/21] hw/net/lan9118.c: Switch to transaction-based ptimer
- API
-Date: Tue,  8 Oct 2019 18:17:40 +0100
-Message-Id: <20191008171740.9679-22-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191008171740.9679-1-peter.maydell@linaro.org>
-References: <20191008171740.9679-1-peter.maydell@linaro.org>
+ (envelope-from <armbru@redhat.com>) id 1iHuAN-0002Vm-F2
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 14:25:01 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:44952)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <armbru@redhat.com>)
+ id 1iHuAN-0002Sy-4j; Tue, 08 Oct 2019 14:24:59 -0400
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 00E77806A7C;
+ Tue,  8 Oct 2019 18:24:54 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.36.118.123])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id BBF291001B32;
+ Tue,  8 Oct 2019 18:24:35 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id F3DE31138648; Tue,  8 Oct 2019 20:24:31 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Greg Kurz <groug@kaod.org>
+Subject: Re: [PATCH v4 04/31] error: auto propagated local_err
+References: <20191001155319.8066-1-vsementsov@virtuozzo.com>
+ <20191001155319.8066-5-vsementsov@virtuozzo.com>
+ <87k19fgr7i.fsf@dusky.pond.sub.org>
+ <20191008181921.288e69e4@bahia.lan>
+Date: Tue, 08 Oct 2019 20:24:31 +0200
+In-Reply-To: <20191008181921.288e69e4@bahia.lan> (Greg Kurz's message of "Tue, 
+ 8 Oct 2019 18:19:21 +0200")
+Message-ID: <87y2xvccyo.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::441
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.67]); Tue, 08 Oct 2019 18:24:54 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: i+aiaEfsKiqU
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: fam@euphon.net, pburton@wavecomp.com, peter.maydell@linaro.org,
+ codyprime@gmail.com, jasowang@redhat.com, mark.cave-ayland@ilande.co.uk,
+ qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ kraxel@redhat.com, sundeep.lkml@gmail.com, qemu-block@nongnu.org,
+ quintela@redhat.com, arikalo@wavecomp.com, mst@redhat.com,
+ mdroth@linux.vnet.ibm.com, pasic@linux.ibm.com, borntraeger@de.ibm.com,
+ joel@jms.id.au, marcandre.lureau@redhat.com, rth@twiddle.net,
+ farman@linux.ibm.com, ehabkost@redhat.com, sw@weilnetz.de, dgilbert@redhat.com,
+ yuval.shaia@oracle.com, alex.williamson@redhat.com,
+ Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>, clg@kaod.org,
+ stefanha@redhat.com, david@redhat.com, jsnow@redhat.com,
+ david@gibson.dropbear.id.au, kwolf@redhat.com, integration@gluster.org,
+ berrange@redhat.com, andrew@aj.id.au, cohuck@redhat.com, qemu-s390x@nongnu.org,
+ mreitz@redhat.com, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ pbonzini@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yQ/28Em/dPPi
 
-Switch the cmsdk-apb-watchdog code away from bottom-half based
-ptimers to the new transaction-based ptimer API.  This just requires
-adding begin/commit calls around the various places that modify the
-ptimer state, and using the new ptimer_init() function to create the
-timer.
+Greg Kurz <groug@kaod.org> writes:
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/net/lan9118.c | 11 +++++++----
- 1 file changed, 7 insertions(+), 4 deletions(-)
+> On Tue, 08 Oct 2019 18:03:13 +0200
+> Markus Armbruster <armbru@redhat.com> wrote:
+>
+>> Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com> writes:
+>> 
+>> > Here is introduced ERRP_AUTO_PROPAGATE macro, to be used at start of
+>> > functions with errp OUT parameter.
+>> >
+>> > It has three goals:
+>> >
+>> > 1. Fix issue with error_fatal & error_prepend/error_append_hint: user
+>> > can't see this additional information, because exit() happens in
+>> > error_setg earlier than information is added. [Reported by Greg Kurz]
+>> >
+>> > 2. Fix issue with error_abort & error_propagate: when we wrap
+>> > error_abort by local_err+error_propagate, resulting coredump will
+>> > refer to error_propagate and not to the place where error happened.
+>> > (the macro itself doesn't fix the issue, but it allows to [3.] drop all
+>> > local_err+error_propagate pattern, which will definitely fix the issue)
+>> > [Reported by Kevin Wolf]
+>> >
+>> > 3. Drop local_err+error_propagate pattern, which is used to workaround
+>> > void functions with errp parameter, when caller wants to know resulting
+>> > status. (Note: actually these functions could be merely updated to
+>> > return int error code).
+>> 
+>> Starting with stating your goals is an excellent idea.  But I'd love to
+>> next read a high-level description of how your patch achieves or enables
+>> achieving these goals.
+>> 
+>> > Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+>> > ---
+>> [...]
+>> > diff --git a/include/qapi/error.h b/include/qapi/error.h
+>> > index 9376f59c35..02f967ac1d 100644
+>> > --- a/include/qapi/error.h
+>> > +++ b/include/qapi/error.h
+>> > @@ -322,6 +322,43 @@ void error_set_internal(Error **errp,
+>> >                          ErrorClass err_class, const char *fmt, ...)
+>> >      GCC_FMT_ATTR(6, 7);
+>> >  
+>> > +typedef struct ErrorPropagator {
+>> > +    Error *local_err;
+>> > +    Error **errp;
+>> > +} ErrorPropagator;
+>> > +
+>> > +static inline void error_propagator_cleanup(ErrorPropagator *prop)
+>> > +{
+>> > +    error_propagate(prop->errp, prop->local_err);
+>> > +}
+>> > +
+>> > +G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC(ErrorPropagator, error_propagator_cleanup);
+>> > +
+>> > +/*
+>> > + * ERRP_AUTO_PROPAGATE
+>> > + *
+>> > + * This macro is created to be the first line of a function with Error **errp
+>> > + * OUT parameter. It's needed only in cases where we want to use error_prepend,
+>> > + * error_append_hint or dereference *errp. It's still safe (but useless) in
+>> > + * other cases.
+>> > + *
+>> > + * If errp is NULL or points to error_fatal, it is rewritten to point to a
+>> > + * local Error object, which will be automatically propagated to the original
+>> > + * errp on function exit (see error_propagator_cleanup).
+>> > + *
+>> > + * After invocation of this macro it is always safe to dereference errp
+>> > + * (as it's not NULL anymore) and to append hints (by error_append_hint)
+>> > + * (as, if it was error_fatal, we swapped it with a local_error to be
+>> > + * propagated on cleanup).
+>> 
+>> Well, appending hints was always safe, it just didn't work with
+>> &error_fatal.  Don't worry about that now, I'll probably want to polish
+>> this contract comment a bit anyway, but later.
+>> 
+>
+> FWIW I've already posted this:
+>
+> Author: Greg Kurz <groug@kaod.org>
+> Date:   Mon Oct 7 15:45:46 2019 +0200
+>
+>     error: Update error_append_hint()'s documenation
+>     
+>     error_setg() and error_propagate(), as well as their variants, cause
+>     QEMU to terminate when called with &error_fatal or &error_abort. This
+>     prevents to add hints since error_append_hint() isn't even called in
+>     this case.
+>     
+>     It means that error_append_hint() should only be used with a local
+>     error object, and then propagate this local error to the caller.
+>     
+>     Document this in <qapi/error.h> .
+>     
+>     Signed-off-by: Greg Kurz <groug@kaod.org>
+>
+> Message-id: <156871563702.196432.5964411202152101367.stgit@bahia.lan>
+> https://patchwork.ozlabs.org/patch/1163278/
 
-diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
-index 0ea51433dca..ed551f2178b 100644
---- a/hw/net/lan9118.c
-+++ b/hw/net/lan9118.c
-@@ -21,7 +21,6 @@
- #include "hw/ptimer.h"
- #include "hw/qdev-properties.h"
- #include "qemu/log.h"
--#include "qemu/main-loop.h"
- #include "qemu/module.h"
- /* For crc32 */
- #include <zlib.h>
-@@ -450,8 +449,10 @@ static void lan9118_reset(DeviceState *d)
-     s->e2p_data = 0;
-     s->free_timer_start = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) / 40;
- 
-+    ptimer_transaction_begin(s->timer);
-     ptimer_stop(s->timer);
-     ptimer_set_count(s->timer, 0xffff);
-+    ptimer_transaction_commit(s->timer);
-     s->gpt_cfg = 0xffff;
- 
-     s->mac_cr = MAC_CR_PRMS;
-@@ -1100,6 +1101,7 @@ static void lan9118_writel(void *opaque, hwaddr offset,
-         break;
-     case CSR_GPT_CFG:
-         if ((s->gpt_cfg ^ val) & GPT_TIMER_EN) {
-+            ptimer_transaction_begin(s->timer);
-             if (val & GPT_TIMER_EN) {
-                 ptimer_set_count(s->timer, val & 0xffff);
-                 ptimer_run(s->timer, 0);
-@@ -1107,6 +1109,7 @@ static void lan9118_writel(void *opaque, hwaddr offset,
-                 ptimer_stop(s->timer);
-                 ptimer_set_count(s->timer, 0xffff);
-             }
-+            ptimer_transaction_commit(s->timer);
-         }
-         s->gpt_cfg = val & (GPT_TIMER_EN | 0xffff);
-         break;
-@@ -1328,7 +1331,6 @@ static void lan9118_realize(DeviceState *dev, Error **errp)
- {
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-     lan9118_state *s = LAN9118(dev);
--    QEMUBH *bh;
-     int i;
-     const MemoryRegionOps *mem_ops =
-             s->mode_16bit ? &lan9118_16bit_mem_ops : &lan9118_mem_ops;
-@@ -1349,10 +1351,11 @@ static void lan9118_realize(DeviceState *dev, Error **errp)
-     s->pmt_ctrl = 1;
-     s->txp = &s->tx_packet;
- 
--    bh = qemu_bh_new(lan9118_tick, s);
--    s->timer = ptimer_init_with_bh(bh, PTIMER_POLICY_DEFAULT);
-+    s->timer = ptimer_init(lan9118_tick, s, PTIMER_POLICY_DEFAULT);
-+    ptimer_transaction_begin(s->timer);
-     ptimer_set_freq(s->timer, 10000);
-     ptimer_set_limit(s->timer, 0xffff, 1);
-+    ptimer_transaction_commit(s->timer);
- }
- 
- static Property lan9118_properties[] = {
--- 
-2.20.1
+I marked your series containing this patch for review.  I decided to
+review this one first.  I clearly need look at yours as well before I
+can advise on how to proceed.
 
+[...]

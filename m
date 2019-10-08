@@ -1,97 +1,99 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5432336wrm;
-        Tue, 8 Oct 2019 10:18:29 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzuP8ZsKOnLa0ufIN2rNJldkXra4so67CiFbewRQasxJD6ZSis/vxhYTvjUcFh2jTEw3P4j
-X-Received: by 2002:a17:906:ecb6:: with SMTP id qh22mr29510280ejb.114.1570555109147;
-        Tue, 08 Oct 2019 10:18:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570555109; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5432394wrm;
+        Tue, 8 Oct 2019 10:18:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwv2y0SIq9xafH7EVlSe90iZGEgN8I9vGxpGKDsYifuN58n+NlVQP7rAEG7Q1RvVeC0f4jq
+X-Received: by 2002:a05:6402:383:: with SMTP id o3mr20876493edv.205.1570555111120;
+        Tue, 08 Oct 2019 10:18:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570555111; cv=none;
         d=google.com; s=arc-20160816;
-        b=X2gTfGKRiiTmS1qCdOSZ3ysJw9nqEeLD80tsYk0lL2gquw9H67DyYBAJVnfmj2OyfX
-         ZS2zasnAqBGHUtFTPAXpweg1BtnDkFHZnxLpdTcAua+rhTdI6rIdD6Wgq00Nr/XQPKYk
-         JdoqMFY66zlyTh/2DVHkiTM+AVtHTu5s2KTpUQgd02BYAtBEMnAvdSmL9d62SYKFpr2O
-         ISra6fTTfYHz1IGup/y+s4p902nZqAZrXizFN8NV1MMZWBSNlCKfe1K/ZbcGjwFgoW7L
-         ivwuA8JYEWwf3so1C2iQ8piMuaw26WQUaQpNiW0bzBfOsVQrwEh7OCg518Sd5PBBsttm
-         xqyA==
+        b=isehyBpxSMAGNpa8E9uyq5VhecDjmr5dH0+zW4MIqjbktRkDGVMMGDz3n+OZw4i6Io
+         8E2opAGdO3UaDbY6tqA+BbEGPqJFV2V7OvdIUld6RIsZLtwX1EjK+xU8tzAM3ZYtJ5Dv
+         PKxFsoHqN5BtI19VTMJgNEQAv/15fG6bmqzOgUJRIeiD19icKf1K3baIrEY1X38eFO2m
+         fnOhVWqmPt+ZzgTZIAJh/JIXoxa7ZpKEa7TSyu+kPugIBp6paLJUoW9iADs7+H1lNSie
+         NV1pVTr2BFmnZZROy2E04AvCYD5u7pVKOA6OlHteJ1qkHJKn53XmRJfzz2BUQIgSpVFO
+         DOEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=3TNOdz92e/qBT6KrqIxG70SsX0V9K71FFrgsUzEswP0=;
-        b=SL/LjGXVddA9Ci5Bpa1PooRgFd50I7hMP9z0l9jMS8FzZzFaxiNsUSVgCf4YzH5Le9
-         VgBPxL/lwQxqq08avZ75Q/PVvRQzaApbPq38uPuYnGqHJJzNZ5qCRUVUyzKaTMnIhruK
-         TjajzuSdLJ4m175xawaXSj969rr+FwC1V0ukfsH1D/RtXtJxl/4KNJDx9URUmGCk4r09
-         PPhzAnAqPJRAaKJTaeEcx1+XOViLkRtHMxbf+CZ3/WMhR/Up8CyYQshG0fftBQUxmCfb
-         AABCaNAvtXdpmmmfjAfGOD65kqP2qkyDY/VijeoWmWeOCDUl/GhjFJoSjafrKnnnHhIF
-         CmDA==
+        bh=naa7xg2s4V4Ih3fFkoGzCGOvDaxJr7Ss6St8GXFDrdg=;
+        b=QhrGaLuqUs4pg5HQb/dvyU5m6lO6bsuWcjIrGIkd5foQM0gHm/hBJX1+xf4oTwzA78
+         31eOhLxSk3ilx0xJagHYrgVhmp+TSiYIl59fJX32eaC3u8Eaust4RHk3XVuttRsGm5E+
+         v5XWcF25F85SVmmVTnrsapm0KumZyaWelikQmticsXX/ioaf8wuXBROaAB3o1xXNLwWy
+         5vvoD1W7JomjNBWcKsj1etS8lI8jzB8YBDMg75Bi/sM9O5nb2JhRq+7JKwJGbcLML7Az
+         LVyXOT4ENG36Y3TarQlRLz4GqRxZcDk/aKGZBSOGwYW38UrGhqI/PS31xvv9xSGl5nDD
+         ax8A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RqDnjTIn;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Fybt316F;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id oc20si9010496ejb.260.2019.10.08.10.18.28
+        by mx.google.com with ESMTPS id a33si11515537edf.121.2019.10.08.10.18.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Oct 2019 10:18:29 -0700 (PDT)
+        Tue, 08 Oct 2019 10:18:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=RqDnjTIn;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Fybt316F;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58806 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58952 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iHt7z-0006kF-C5
-	for alex.bennee@linaro.org; Tue, 08 Oct 2019 13:18:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48730)
+	id 1iHt81-0006xQ-FP
+	for alex.bennee@linaro.org; Tue, 08 Oct 2019 13:18:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48782)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iHt7Q-0006aw-34
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:17:56 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iHt7R-0006dD-T9
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:17:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iHt7M-0002Bu-4O
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:17:51 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:37332)
+ (envelope-from <peter.maydell@linaro.org>) id 1iHt7Q-0002Eq-CO
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:17:53 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:38351)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iHt7L-0002BZ-Rz
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:17:48 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id p14so19392102wro.4
- for <qemu-arm@nongnu.org>; Tue, 08 Oct 2019 10:17:47 -0700 (PDT)
+ id 1iHt7P-0002Dp-Vc
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:17:52 -0400
+Received: by mail-wm1-x343.google.com with SMTP id 3so3931913wmi.3
+ for <qemu-arm@nongnu.org>; Tue, 08 Oct 2019 10:17:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=3TNOdz92e/qBT6KrqIxG70SsX0V9K71FFrgsUzEswP0=;
- b=RqDnjTInbiI1VNGzi7gMr2x6o6AMcFW6+sZ5sQ2BRTqI5CA89bPcuspRR71MuV7xs+
- gL9bI+vim46pmuWe1UTEIvkz/A3CuX6REOXMacQCBaITIRfGhwEYLegIrDK3xexnROi6
- pWUhGnRRgG9WDfGIXLHAUeMXvq+RpWD0Bm6G8MKZ95I1KWMhZQnJx900A/QmfDwEmEF5
- uaEPbYgw5CRkOXlpy1AI7v9/FAsujlw8PAN+QiTk4UEgoFmj+7kZQyCZaxVajo+BajGE
- Sfu1gSlwsppwBeZIFYIoY2onxt8COVVOOsUw15UVccvs1QEDU0uu9lOohlYqSWVTPOq7
- ylIw==
+ bh=naa7xg2s4V4Ih3fFkoGzCGOvDaxJr7Ss6St8GXFDrdg=;
+ b=Fybt316FzjeS3HF9a6qrViSMmsZaV7kgC+Ee2l59Zh4st3gK8fyskTJqzmxDnjfi9a
+ bPt0U7taa+Rlc3QixUjfB5WdUmUSP+rTgsgdp75LsXvZVl2+rKUQwvO2ORbuKgeN6Oa0
+ FsinJEwk9YmXf6rPSgpjDJYD6d5/QdD6JWFt+arGUcLkBQBtEIL3+UFVbJDcGUbkgov5
+ lHRODwz5kUJ1gDE1zwzlAMo5RE3+zjvVHqkn3eAXhHs4GNpIkab3epgaILUJJZHeIZah
+ YaOAHYdxxjLF1aa5KtiqPk+bf2SXbGzA2pSZTCsWW4zHnJnAkFfVsDKR2Ndk+lmdlhmq
+ OBMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=3TNOdz92e/qBT6KrqIxG70SsX0V9K71FFrgsUzEswP0=;
- b=mGB+XWdkHlMFFTTbzF1+sbjIJCNWOTSuYPkro74qjYTqjGxS3YUwd2mf3hEA9eZHpv
- 4InzK12PnGRnSMaBya/es8tmNewgDtvrl3Lr7e1aPb1nCFbThPB8vpz3ivpWTYTUqwpY
- dDpTHPTMHoS4ph1T1XGHfbuR8StcZSxP0SUzpCOIx8Kslq8tzfpq+SewAu9OP+Xilg/Z
- r0kLEJvM/0PkGzUY3IGF/zDea7bt5zBDC3GhWG/ExKBcZmZsycjFVIuJeoPeyed4Ftbz
- /8xbMn6qd4YXPADMmrddfrkPwkhraCEbT9ijQEbfAKJJmnW/wB4HWC8u9vGKyh5zy9RR
- rVeQ==
-X-Gm-Message-State: APjAAAUNuSW2gJ+WwQWwI94IfdZ1tyx3eWEbfhw9YQjBOkI3fSA+XDes
- ntwvVCgTbSG8INZ72Gi0wIytmR9h6+WvbA==
-X-Received: by 2002:adf:e610:: with SMTP id p16mr16688388wrm.313.1570555066280; 
- Tue, 08 Oct 2019 10:17:46 -0700 (PDT)
+ bh=naa7xg2s4V4Ih3fFkoGzCGOvDaxJr7Ss6St8GXFDrdg=;
+ b=K2YjyFc4TlVKwA3a1G2j9aoFpR1G/QwkvwTzNySKXeUk/lt8v/1kYKahTWjVFyAb/j
+ dANnm65naVwxX3z1mFAofKwLY2ykIe0UoIcGmu3+x5H9cvNi5boel0DMCYRmHG6Mz2yu
+ N2KCw4afOThpc3tm59VNwfeKhDk39zmvYI+eoJp/gJFXvV2BqALKP5NBJlaF9wWGjKnH
+ VQ+b3yf22Cdmj/2yeWySq0RHZD/mGGDa/dWyQfCCH3D9iaClrh2u300Sub4BDLQgejEp
+ m/qKAgb/Wta51ygMoLUI2LN56O2zrlmfHjdtts3a7WcTqBXiaNS0KSLnFwBSGOr9gw5f
+ 1VxA==
+X-Gm-Message-State: APjAAAUTwCsNPWqTAw9kUMnwbhcMrk+5cJ/TzpMb1tFwpWqLxuR96F5H
+ 18ZnI0deO2E0fw6J7jogAZLRKLdtTKwLDg==
+X-Received: by 2002:a05:600c:2489:: with SMTP id
+ 9mr4591426wms.131.1570555070234; 
+ Tue, 08 Oct 2019 10:17:50 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id z9sm19135541wrl.35.2019.10.08.10.17.44
+ by smtp.gmail.com with ESMTPSA id z9sm19135541wrl.35.2019.10.08.10.17.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Oct 2019 10:17:45 -0700 (PDT)
+ Tue, 08 Oct 2019 10:17:49 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 02/21] ptimer: Provide new transaction-based API
-Date: Tue,  8 Oct 2019 18:17:21 +0100
-Message-Id: <20191008171740.9679-3-peter.maydell@linaro.org>
+Subject: [PATCH v2 05/21] hw/arm/musicpal.c: Switch to transaction-based
+ ptimer API
+Date: Tue,  8 Oct 2019 18:17:24 +0100
+Message-Id: <20191008171740.9679-6-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191008171740.9679-1-peter.maydell@linaro.org>
 References: <20191008171740.9679-1-peter.maydell@linaro.org>
@@ -99,7 +101,7 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::42d
+X-Received-From: 2a00:1450:4864:20::343
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -116,483 +118,79 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TXaL/QeW2q+h
+X-TUID: kzYNnujSRB+M
 
-Provide the new transaction-based API. If a ptimer is created
-using ptimer_init() rather than ptimer_init_with_bh(), then
-instead of providing a QEMUBH, it provides a pointer to the
-callback function directly, and has opted into the transaction
-API. All calls to functions which modify ptimer state:
- - ptimer_set_period()
- - ptimer_set_freq()
- - ptimer_set_limit()
- - ptimer_set_count()
- - ptimer_run()
- - ptimer_stop()
-must be between matched calls to ptimer_transaction_begin()
-and ptimer_transaction_commit(). When ptimer_transaction_commit()
-is called it will evaluate the state of the timer after all the
-changes in the transaction, and call the callback if necessary.
-
-In the old API the individual update functions generally would
-call ptimer_trigger() immediately, which would schedule the QEMUBH.
-In the new API the update functions will instead defer the
-"set s->next_event and call ptimer_reload()" work to
-ptimer_transaction_commit().
-
-Because ptimer_trigger() can now immediately call into the
-device code which may then call other ptimer functions that
-update ptimer_state fields, we must be more careful in
-ptimer_reload() not to cache fields from ptimer_state across
-the ptimer_trigger() call. (This was harmless with the QEMUBH
-mechanism as the BH would not be invoked until much later.)
-
-We use assertions to check that:
- * the functions modifying ptimer state are not called outside
-   a transaction block
- * ptimer_transaction_begin() and _commit() calls are paired
- * the transaction API is not used with a QEMUBH ptimer
-
-There is some slight repetition of code:
- * most of the set functions have similar looking "if s->bh
-   call ptimer_reload, otherwise set s->need_reload" code
- * ptimer_init() and ptimer_init_with_bh() have similar code
-We deliberately don't try to avoid this repetition, because
-it will all be deleted when the QEMUBH version of the API
-is removed.
+Switch the musicpal code away from bottom-half based ptimers to
+the new transaction-based ptimer API.  This just requires adding
+begin/commit calls around the various places that modify the ptimer
+state, and using the new ptimer_init() function to create the timer.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-Changes since v1:
- * ptimer_transaction_begin() now sets need_reload to false
- * fixed assert condition in ptimer_transaction_begin()
- * ptimer_transaction_commit() now has a loop to call
-   ptimer_reload() again if the callback function updated
-   the ptimer state such that it needs to trigger again
- * fixed callback_opaque arg name mismatch in doc comment
- * don't cache delta, period, etc across ptimer_trigger() call
+ hw/arm/musicpal.c | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
 
-RTH: I know you gave a reviewed-by-with-caveats to v1 of
-this patch but I feel like there turned out to be enough
-things needing fixing that I'd rather you looked at v2 afresh.
----
- include/hw/ptimer.h |  72 +++++++++++++++++++++
- hw/core/ptimer.c    | 152 +++++++++++++++++++++++++++++++++++++++-----
- 2 files changed, 209 insertions(+), 15 deletions(-)
-
-diff --git a/include/hw/ptimer.h b/include/hw/ptimer.h
-index 2fb9ba1915e..4c321f65dcb 100644
---- a/include/hw/ptimer.h
-+++ b/include/hw/ptimer.h
-@@ -91,6 +91,38 @@ typedef void (*ptimer_cb)(void *opaque);
-  */
- ptimer_state *ptimer_init_with_bh(QEMUBH *bh, uint8_t policy_mask);
- 
-+/**
-+ * ptimer_init - Allocate and return a new ptimer
-+ * @callback: function to call on ptimer expiry
-+ * @callback_opaque: opaque pointer passed to @callback
-+ * @policy: PTIMER_POLICY_* bits specifying behaviour
-+ *
-+ * The ptimer returned must be freed using ptimer_free().
-+ *
-+ * If a ptimer is created using this API then will use the
-+ * transaction-based API for modifying ptimer state: all calls
-+ * to functions which modify ptimer state:
-+ *  - ptimer_set_period()
-+ *  - ptimer_set_freq()
-+ *  - ptimer_set_limit()
-+ *  - ptimer_set_count()
-+ *  - ptimer_run()
-+ *  - ptimer_stop()
-+ * must be between matched calls to ptimer_transaction_begin()
-+ * and ptimer_transaction_commit(). When ptimer_transaction_commit()
-+ * is called it will evaluate the state of the timer after all the
-+ * changes in the transaction, and call the callback if necessary.
-+ *
-+ * The callback function is always called from within a transaction
-+ * begin/commit block, so the callback should not call the
-+ * ptimer_transaction_begin() function itself. If the callback changes
-+ * the ptimer state such that another ptimer expiry is triggered, then
-+ * the callback will be called a second time after the first call returns.
-+ */
-+ptimer_state *ptimer_init(ptimer_cb callback,
-+                          void *callback_opaque,
-+                          uint8_t policy_mask);
-+
- /**
-  * ptimer_free - Free a ptimer
-  * @s: timer to free
-@@ -100,6 +132,28 @@ ptimer_state *ptimer_init_with_bh(QEMUBH *bh, uint8_t policy_mask);
-  */
- void ptimer_free(ptimer_state *s);
- 
-+/**
-+ * ptimer_transaction_begin() - Start a ptimer modification transaction
-+ *
-+ * This function must be called before making any calls to functions
-+ * which modify the ptimer's state (see the ptimer_init() documentation
-+ * for a list of these), and must always have a matched call to
-+ * ptimer_transaction_commit().
-+ * It is an error to call this function for a BH-based ptimer;
-+ * attempting to do this will trigger an assert.
-+ */
-+void ptimer_transaction_begin(ptimer_state *s);
-+
-+/**
-+ * ptimer_transaction_commit() - Commit a ptimer modification transaction
-+ *
-+ * This function must be called after calls to functions which modify
-+ * the ptimer's state, and completes the update of the ptimer. If the
-+ * ptimer state now means that we should trigger the timer expiry
-+ * callback, it will be called directly.
-+ */
-+void ptimer_transaction_commit(ptimer_state *s);
-+
- /**
-  * ptimer_set_period - Set counter increment interval in nanoseconds
-  * @s: ptimer to configure
-@@ -108,6 +162,9 @@ void ptimer_free(ptimer_state *s);
-  * Note that if your counter behaviour is specified as having a
-  * particular frequency rather than a period then ptimer_set_freq()
-  * may be more appropriate.
-+ *
-+ * This function will assert if it is called outside a
-+ * ptimer_transaction_begin/commit block, unless this is a bottom-half ptimer.
-  */
- void ptimer_set_period(ptimer_state *s, int64_t period);
- 
-@@ -121,6 +178,9 @@ void ptimer_set_period(ptimer_state *s, int64_t period);
-  * as setting the frequency then this function is more appropriate,
-  * because it allows specifying an effective period which is
-  * precise to fractions of a nanosecond, avoiding rounding errors.
-+ *
-+ * This function will assert if it is called outside a
-+ * ptimer_transaction_begin/commit block, unless this is a bottom-half ptimer.
-  */
- void ptimer_set_freq(ptimer_state *s, uint32_t freq);
- 
-@@ -148,6 +208,9 @@ uint64_t ptimer_get_limit(ptimer_state *s);
-  * Set the limit value of the down-counter. The @reload flag can
-  * be used to emulate the behaviour of timers which immediately
-  * reload the counter when their reload register is written to.
-+ *
-+ * This function will assert if it is called outside a
-+ * ptimer_transaction_begin/commit block, unless this is a bottom-half ptimer.
-  */
- void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload);
- 
-@@ -169,6 +232,9 @@ uint64_t ptimer_get_count(ptimer_state *s);
-  * Set the value of the down-counter. If the counter is currently
-  * enabled this will arrange for a timer callback at the appropriate
-  * point in the future.
-+ *
-+ * This function will assert if it is called outside a
-+ * ptimer_transaction_begin/commit block, unless this is a bottom-half ptimer.
-  */
- void ptimer_set_count(ptimer_state *s, uint64_t count);
- 
-@@ -183,6 +249,9 @@ void ptimer_set_count(ptimer_state *s, uint64_t count);
-  * the counter value will then be reloaded from the limit and it will
-  * start counting down again. If @oneshot is non-zero, then the counter
-  * will disable itself when it reaches zero.
-+ *
-+ * This function will assert if it is called outside a
-+ * ptimer_transaction_begin/commit block, unless this is a bottom-half ptimer.
-  */
- void ptimer_run(ptimer_state *s, int oneshot);
- 
-@@ -195,6 +264,9 @@ void ptimer_run(ptimer_state *s, int oneshot);
-  *
-  * Note that this can cause it to "lose" time, even if it is immediately
-  * restarted.
-+ *
-+ * This function will assert if it is called outside a
-+ * ptimer_transaction_begin/commit block, unless this is a bottom-half ptimer.
-  */
- void ptimer_stop(ptimer_state *s);
- 
-diff --git a/hw/core/ptimer.c b/hw/core/ptimer.c
-index f0d3ce11398..7239b8227cc 100644
---- a/hw/core/ptimer.c
-+++ b/hw/core/ptimer.c
-@@ -31,6 +31,16 @@ struct ptimer_state
-     uint8_t policy_mask;
-     QEMUBH *bh;
-     QEMUTimer *timer;
-+    ptimer_cb callback;
-+    void *callback_opaque;
-+    /*
-+     * These track whether we're in a transaction block, and if we
-+     * need to do a timer reload when the block finishes. They don't
-+     * need to be migrated because migration can never happen in the
-+     * middle of a transaction block.
-+     */
-+    bool in_transaction;
-+    bool need_reload;
- };
- 
- /* Use a bottom-half routine to avoid reentrancy issues.  */
-@@ -39,13 +49,16 @@ static void ptimer_trigger(ptimer_state *s)
-     if (s->bh) {
-         replay_bh_schedule_event(s->bh);
-     }
-+    if (s->callback) {
-+        s->callback(s->callback_opaque);
-+    }
- }
- 
- static void ptimer_reload(ptimer_state *s, int delta_adjust)
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index b3624d5e280..f68a399a984 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -843,13 +843,10 @@ static void mv88w8618_timer_tick(void *opaque)
+ static void mv88w8618_timer_init(SysBusDevice *dev, mv88w8618_timer_state *s,
+                                  uint32_t freq)
  {
--    uint32_t period_frac = s->period_frac;
--    uint64_t period = s->period;
--    uint64_t delta = s->delta;
-+    uint32_t period_frac;
-+    uint64_t period;
-+    uint64_t delta;
-     bool suppress_trigger = false;
+-    QEMUBH *bh;
+-
+     sysbus_init_irq(dev, &s->irq);
+     s->freq = freq;
  
-     /*
-@@ -58,11 +71,20 @@ static void ptimer_reload(ptimer_state *s, int delta_adjust)
-         (s->policy_mask & PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT)) {
-         suppress_trigger = true;
-     }
--    if (delta == 0 && !(s->policy_mask & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER)
-+    if (s->delta == 0 && !(s->policy_mask & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER)
-         && !suppress_trigger) {
-         ptimer_trigger(s);
-     }
- 
-+    /*
-+     * Note that ptimer_trigger() might call the device callback function,
-+     * which can then modify timer state, so we must not cache any fields
-+     * from ptimer_state until after we have called it.
-+     */
-+    delta = s->delta;
-+    period = s->period;
-+    period_frac = s->period_frac;
-+
-     if (delta == 0 && !(s->policy_mask & PTIMER_POLICY_NO_IMMEDIATE_RELOAD)) {
-         delta = s->delta = s->limit;
-     }
-@@ -136,6 +158,15 @@ static void ptimer_tick(void *opaque)
-     ptimer_state *s = (ptimer_state *)opaque;
-     bool trigger = true;
- 
-+    /*
-+     * We perform all the tick actions within a begin/commit block
-+     * because the callback function that ptimer_trigger() calls
-+     * might make calls into the ptimer APIs that provoke another
-+     * trigger, and we want that to cause the callback function
-+     * to be called iteratively, not recursively.
-+     */
-+    ptimer_transaction_begin(s);
-+
-     if (s->enabled == 2) {
-         s->delta = 0;
-         s->enabled = 0;
-@@ -164,6 +195,8 @@ static void ptimer_tick(void *opaque)
-     if (trigger) {
-         ptimer_trigger(s);
-     }
-+
-+    ptimer_transaction_commit(s);
+-    bh = qemu_bh_new(mv88w8618_timer_tick, s);
+-    s->ptimer = ptimer_init_with_bh(bh, PTIMER_POLICY_DEFAULT);
++    s->ptimer = ptimer_init(mv88w8618_timer_tick, s, PTIMER_POLICY_DEFAULT);
  }
  
- uint64_t ptimer_get_count(ptimer_state *s)
-@@ -263,10 +296,15 @@ uint64_t ptimer_get_count(ptimer_state *s)
+ static uint64_t mv88w8618_pit_read(void *opaque, hwaddr offset,
+@@ -879,16 +876,19 @@ static void mv88w8618_pit_write(void *opaque, hwaddr offset,
+     case MP_PIT_TIMER1_LENGTH ... MP_PIT_TIMER4_LENGTH:
+         t = &s->timer[offset >> 2];
+         t->limit = value;
++        ptimer_transaction_begin(t->ptimer);
+         if (t->limit > 0) {
+             ptimer_set_limit(t->ptimer, t->limit, 1);
+         } else {
+             ptimer_stop(t->ptimer);
+         }
++        ptimer_transaction_commit(t->ptimer);
+         break;
  
- void ptimer_set_count(ptimer_state *s, uint64_t count)
- {
-+    assert(s->in_transaction || !s->callback);
-     s->delta = count;
-     if (s->enabled) {
--        s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--        ptimer_reload(s, 0);
-+        if (!s->callback) {
-+            s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+            ptimer_reload(s, 0);
-+        } else {
-+            s->need_reload = true;
-+        }
+     case MP_PIT_CONTROL:
+         for (i = 0; i < 4; i++) {
+             t = &s->timer[i];
++            ptimer_transaction_begin(t->ptimer);
+             if (value & 0xf && t->limit > 0) {
+                 ptimer_set_limit(t->ptimer, t->limit, 0);
+                 ptimer_set_freq(t->ptimer, t->freq);
+@@ -896,6 +896,7 @@ static void mv88w8618_pit_write(void *opaque, hwaddr offset,
+             } else {
+                 ptimer_stop(t->ptimer);
+             }
++            ptimer_transaction_commit(t->ptimer);
+             value >>= 4;
+         }
+         break;
+@@ -914,8 +915,11 @@ static void mv88w8618_pit_reset(DeviceState *d)
+     int i;
+ 
+     for (i = 0; i < 4; i++) {
+-        ptimer_stop(s->timer[i].ptimer);
+-        s->timer[i].limit = 0;
++        mv88w8618_timer_state *t = &s->timer[i];
++        ptimer_transaction_begin(t->ptimer);
++        ptimer_stop(t->ptimer);
++        ptimer_transaction_commit(t->ptimer);
++        t->limit = 0;
      }
  }
  
-@@ -274,6 +312,8 @@ void ptimer_run(ptimer_state *s, int oneshot)
- {
-     bool was_disabled = !s->enabled;
- 
-+    assert(s->in_transaction || !s->callback);
-+
-     if (was_disabled && s->period == 0) {
-         if (!qtest_enabled()) {
-             fprintf(stderr, "Timer with period zero, disabling\n");
-@@ -282,8 +322,12 @@ void ptimer_run(ptimer_state *s, int oneshot)
-     }
-     s->enabled = oneshot ? 2 : 1;
-     if (was_disabled) {
--        s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--        ptimer_reload(s, 0);
-+        if (!s->callback) {
-+            s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+            ptimer_reload(s, 0);
-+        } else {
-+            s->need_reload = true;
-+        }
-     }
- }
- 
-@@ -291,35 +335,50 @@ void ptimer_run(ptimer_state *s, int oneshot)
-    is immediately restarted.  */
- void ptimer_stop(ptimer_state *s)
- {
-+    assert(s->in_transaction || !s->callback);
-+
-     if (!s->enabled)
-         return;
- 
-     s->delta = ptimer_get_count(s);
-     timer_del(s->timer);
-     s->enabled = 0;
-+    if (s->callback) {
-+        s->need_reload = false;
-+    }
- }
- 
- /* Set counter increment interval in nanoseconds.  */
- void ptimer_set_period(ptimer_state *s, int64_t period)
- {
-+    assert(s->in_transaction || !s->callback);
-     s->delta = ptimer_get_count(s);
-     s->period = period;
-     s->period_frac = 0;
-     if (s->enabled) {
--        s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--        ptimer_reload(s, 0);
-+        if (!s->callback) {
-+            s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+            ptimer_reload(s, 0);
-+        } else {
-+            s->need_reload = true;
-+        }
-     }
- }
- 
- /* Set counter frequency in Hz.  */
- void ptimer_set_freq(ptimer_state *s, uint32_t freq)
- {
-+    assert(s->in_transaction || !s->callback);
-     s->delta = ptimer_get_count(s);
-     s->period = 1000000000ll / freq;
-     s->period_frac = (1000000000ll << 32) / freq;
-     if (s->enabled) {
--        s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--        ptimer_reload(s, 0);
-+        if (!s->callback) {
-+            s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+            ptimer_reload(s, 0);
-+        } else {
-+            s->need_reload = true;
-+        }
-     }
- }
- 
-@@ -327,12 +386,17 @@ void ptimer_set_freq(ptimer_state *s, uint32_t freq)
-    count = limit.  */
- void ptimer_set_limit(ptimer_state *s, uint64_t limit, int reload)
- {
-+    assert(s->in_transaction || !s->callback);
-     s->limit = limit;
-     if (reload)
-         s->delta = limit;
-     if (s->enabled && reload) {
--        s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
--        ptimer_reload(s, 0);
-+        if (!s->callback) {
-+            s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+            ptimer_reload(s, 0);
-+        } else {
-+            s->need_reload = true;
-+        }
-     }
- }
- 
-@@ -341,6 +405,32 @@ uint64_t ptimer_get_limit(ptimer_state *s)
-     return s->limit;
- }
- 
-+void ptimer_transaction_begin(ptimer_state *s)
-+{
-+    assert(!s->in_transaction || !s->callback);
-+    s->in_transaction = true;
-+    s->need_reload = false;
-+}
-+
-+void ptimer_transaction_commit(ptimer_state *s)
-+{
-+    assert(s->in_transaction);
-+    /*
-+     * We must loop here because ptimer_reload() can call the callback
-+     * function, which might then update ptimer state in a way that
-+     * means we need to do another reload and possibly another callback.
-+     * A disabled timer never needs reloading (and if we don't check
-+     * this then we loop forever if ptimer_reload() disables the timer).
-+     */
-+    while (s->need_reload && s->enabled) {
-+        s->need_reload = false;
-+        s->next_event = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-+        ptimer_reload(s, 0);
-+    }
-+    /* Now we've finished reload we can leave the transaction block. */
-+    s->in_transaction = false;
-+}
-+
- const VMStateDescription vmstate_ptimer = {
-     .name = "ptimer",
-     .version_id = 1,
-@@ -377,9 +467,41 @@ ptimer_state *ptimer_init_with_bh(QEMUBH *bh, uint8_t policy_mask)
-     return s;
- }
- 
-+ptimer_state *ptimer_init(ptimer_cb callback, void *callback_opaque,
-+                          uint8_t policy_mask)
-+{
-+    ptimer_state *s;
-+
-+    /*
-+     * The callback function is mandatory; so we use it to distinguish
-+     * old-style QEMUBH ptimers from new transaction API ptimers.
-+     * (ptimer_init_with_bh() allows a NULL bh pointer and at least
-+     * one device (digic-timer) passes NULL, so it's not the case
-+     * that either s->bh != NULL or s->callback != NULL.)
-+     */
-+    assert(callback);
-+
-+    s = g_new0(ptimer_state, 1);
-+    s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, ptimer_tick, s);
-+    s->policy_mask = policy_mask;
-+    s->callback = callback;
-+    s->callback_opaque = callback_opaque;
-+
-+    /*
-+     * These two policies are incompatible -- trigger-on-decrement implies
-+     * a timer trigger when the count becomes 0, but no-immediate-trigger
-+     * implies a trigger when the count stops being 0.
-+     */
-+    assert(!((policy_mask & PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT) &&
-+             (policy_mask & PTIMER_POLICY_NO_IMMEDIATE_TRIGGER)));
-+    return s;
-+}
-+
- void ptimer_free(ptimer_state *s)
- {
--    qemu_bh_delete(s->bh);
-+    if (s->bh) {
-+        qemu_bh_delete(s->bh);
-+    }
-     timer_free(s->timer);
-     g_free(s);
- }
 -- 
 2.20.1
 

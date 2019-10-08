@@ -1,98 +1,98 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5437176wrm;
-        Tue, 8 Oct 2019 10:22:54 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzJF4Hs8ykesmFuX5qZysUZlltOturbT2KHzKkKlTnxdV70pSyACZEl4GYj/aiyP6VZ2Fk6
-X-Received: by 2002:a0c:eb10:: with SMTP id j16mr33405343qvp.207.1570555374489;
-        Tue, 08 Oct 2019 10:22:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570555374; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5437692wrm;
+        Tue, 8 Oct 2019 10:23:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwvUT+MEHa3KGeeS6fZApjwyK2p38kUpCt1susnSt67VWIzHGiy/AQSJtET3D5NHsTcY8bw
+X-Received: by 2002:ac8:1639:: with SMTP id p54mr36913232qtj.290.1570555405877;
+        Tue, 08 Oct 2019 10:23:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570555405; cv=none;
         d=google.com; s=arc-20160816;
-        b=eahE2aypVztxa3TOt3Wv7T6l9iAbwQuGIB191r2FxUG7IXPt/S+FkhAFEMPhIi+qOm
-         QE+WlA1gTOl0uRmLsuw19Lvx+LTdXx+OE9Vmt+7TeZljcE0ib/9rWCR7SlMSURLYhclT
-         c0DATgPrAp5IyYL93kWj7FeUneMg21D9bleNWY7nb9e3iD9e0uQqagkikuXCZWRUCA60
-         RgVctpaVD41DOh5kYm0/Yt+6AqfiadpQe7B5yo586bmOdUY0Bt/mouxVwp+xG0OC1Fh6
-         NWcBY9HXs57If8r0qSMl3IJ60N+5GmDdFcG2JIXn264oe2ffo3G2z87LMaNcg9TkKPaN
-         AoTA==
+        b=iTH/qr3lPxnbocVzIZN2velMKKgota+Yw4oH151ezEC5kVHaY+w18/JVZ+Gp69NVm7
+         KfkrhoDFJ95d0Og/zxksoFuV1JKxT/E6NtY3Zd+EUtM/hsjMjkATtAWek/3EopwO3NCW
+         Ky1lxhSwv5K0HsumcUUfIw3+IYpCL02b1oHBBh2g89CGCWIORuwcufnAnT1UXK3cnuJJ
+         mz+6iOZsfd8tzsUNVCmq6cLTKvR9TsbkFa9QpoPSPmtI75l5MjrrspwU8oldYYOF15mS
+         DDcO7KB0HReBTNJ6xvH9ClpWIwvWr6HrFvKMkJzy4CV4JV9a4cNuH4uiJtJE+ded3Mvb
+         8n/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=vTblCPBR00kWBDdHJQrBVtK3r4jiWKjQ3PNlDp1BYo0=;
-        b=UuWMHLGj87PcTGbX1smd23RPi4958NlRNEgzLTLNMjae1ao+dqZSOnlhIdwnocwl0V
-         GFYwvVwYcAe2kSaIPrX9U3MKUorau92aaRklDb6YbOSczit3gVn6SfrJwmTPHUkUbIfM
-         CmALPal6491XcAw4LwVZgs/jTxDK1VQ2H0I72FyzGBc1kLmtDhd72385hSq4/H9QJ/zX
-         HGgKAbTur0F75VRnR22IidSjLa7arzWgiA/U/Dm3yvnTZ0mOx9WPvSQjEYDydOBoLP05
-         YYsItnvKRQuLOiDY8xCVzRx2qYQsrpVxrVb23Tq9V1casimoYu/H/qvlo5L0OjnW2SPE
-         a6Gw==
+        bh=jKb9Rbp8gXPT0bACEbKBu5D4v0cg+tsMxucN4ICfYFw=;
+        b=0rSKmAK9JbThLv4FRXX1s2JGstNqA70IqiV3sPMXsMurCA8ct6UxP4vwKEgW+xsMxN
+         ah501p0zNO7qkdpC+QOqDY0zPUhlo/aIcGM515GiiZpp3rnDE9EGDKzzCXJ6SFJudSwE
+         OCnz3ndNA3DDuXhzevj/TXx+vGeqHqglSMmfFAj8BRzzCabEnEfLteGCOqQSjrQJAWay
+         tG3FGsTuQM0kcz7x8nEK9hqFwyTQYw6V158/NsGUlczv3XraCBp6j6Z9T2pwcpehSL6E
+         HWaPhF+BjeSEHW8crkG/yUvPpjsbc1SCzR8Gtj+gm8yHq/a9T84oL8OXl8qtTpg1Sk2p
+         PsLw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=R7eTfrLJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=TCDKiM1W;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 38si16789299qvi.78.2019.10.08.10.22.54
+        by mx.google.com with ESMTPS id c23si16298359qkc.57.2019.10.08.10.23.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Oct 2019 10:22:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 08 Oct 2019 10:23:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=R7eTfrLJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=TCDKiM1W;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59040 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59032 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iHtCH-0003EP-4X
-	for alex.bennee@linaro.org; Tue, 08 Oct 2019 13:22:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48895)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iHtCm-0002eH-JT
+	for alex.bennee@linaro.org; Tue, 08 Oct 2019 13:23:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48820)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iHt7X-0006jC-00
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:18:00 -0400
+ (envelope-from <peter.maydell@linaro.org>) id 1iHt7T-0006fP-Hs
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:17:56 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iHt7U-0002IL-Tw
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:17:58 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:38305)
+ (envelope-from <peter.maydell@linaro.org>) id 1iHt7R-0002Fc-5x
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:17:54 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:43025)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iHt7U-0002HT-Kb
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 13:17:56 -0400
-Received: by mail-wr1-x442.google.com with SMTP id w12so20349113wro.5
- for <qemu-arm@nongnu.org>; Tue, 08 Oct 2019 10:17:56 -0700 (PDT)
+ id 1iHt7Q-0002ER-Qs
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 13:17:53 -0400
+Received: by mail-wr1-x444.google.com with SMTP id j18so19527935wrq.10
+ for <qemu-devel@nongnu.org>; Tue, 08 Oct 2019 10:17:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=vTblCPBR00kWBDdHJQrBVtK3r4jiWKjQ3PNlDp1BYo0=;
- b=R7eTfrLJsXKYaoZP/Ro3jCeyCKMIJz02XWUM7n8bl4bP6tExa0XVBl6wGgan+T7hyW
- nCBvggFHbDwbBpWcI19VC7G2ZnKv/M9d+FnJYD6cMunO3UMXLkmw7O3zldCR4dLoZU4q
- PbPmlCQKJ4G7OwIv/BtUWdSdEqwMxXaeI2Z2C65I6R+sabQVLmXJb/P2NGRWfCJK6vzt
- xOKtDDE/d0rEEDm1mNa9+NMfLODpDahoD0EP9DBsEJ2gSFXRyIutjSs4TdGbLjt9Fs+q
- 1M+LIZnXrnF9co7ehxMmRVaef9pdJlAPJklbJCQKX3MYCvpuuYgmRS721brE94haTEwm
- h6qA==
+ bh=jKb9Rbp8gXPT0bACEbKBu5D4v0cg+tsMxucN4ICfYFw=;
+ b=TCDKiM1WzJoK/uWnKEXcIpAJL+L1HRBXg6r2xaCO9DHH1ZI6jwgu7N4cSrLpUM9WjL
+ QGayGO5T+uEYCBDBmnanaHTbtwUMUvj0zI3XCwk5LL2RCD8SIUmUxwX6LB6hF6suj7dN
+ VeN0yyoruDnREAEJPQrhDm9I2QJMm1T7cCn8ooQ5WrJdo+tsGp2iSXUkbX2E/sLd0bQZ
+ HAtXImvtEDj/aeNQAplB3HXugKhnnU3mQh3Vu+maHsBXuya0scq/c8wISi3O+bHy7L6S
+ 6uxQWppua6ROF7pgf/v8fRhoC7jvdCRMlU4RlJ5NesSUJq0NFcqkWPOpOXl2cWKfl7kY
+ DtVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=vTblCPBR00kWBDdHJQrBVtK3r4jiWKjQ3PNlDp1BYo0=;
- b=pdrVqu7ru1My32GTnsL2boQB/QBChIxLlhyO60Zu9Z4c/Y0l96dASfrpLCfWsA0n1l
- u5roTeiyn6bxvkZtVWnHZOZ4xCsPjgLJ5P3D8bhd/zvgcXuYvQwbftp7MdpG3tUip1Ls
- 3Z0hgq7DBSJ6CcHzTdfSBmIzQI2KocT/9xwTx3wJ/J5e9nULcTAnh2oKWwyc+YFcUkwI
- WO1CE34P3HowDkbYUmZWiq62ASv2DmW7oNQ0tQr3IskJpGSvbS09ZizywQlho6Awh0Gm
- NzPYrWRSAQ3cl5yPzehnfdrXWrw0MUsasqDn39G0AGGw1cLLp8cjLBUkERi5oP87vNoc
- fH3A==
-X-Gm-Message-State: APjAAAWwMwmv3eDHXd5Kr2TsQmBCsZ/7LHaCzjtX37uu+Lyz/uaDyVUx
- cz5jqAo2MOxSI9q4jEuQF+DC2yop1aRpUg==
-X-Received: by 2002:a5d:5381:: with SMTP id d1mr11391673wrv.396.1570555075246; 
- Tue, 08 Oct 2019 10:17:55 -0700 (PDT)
+ bh=jKb9Rbp8gXPT0bACEbKBu5D4v0cg+tsMxucN4ICfYFw=;
+ b=leL5P9NVR4BdieSqDHNRb7cwo5L13iYw8I2bD3f11os5pKvQAY8F6bYGpuYAMWqrz8
+ 3rc6Y7rMSn24aAfLKNSe5QzVjWTDVErPvn1huWIvqRwJRoPSAIhOoR8QhZmLGP9F/DxE
+ uSxvemOUx8oCplJgNbQlpqezgEXsdKMG6bVoZM90kpLNHuP5ICBM0abWpaZUME4XAK5m
+ iebfAlKWoGZd9A8H6fqPMw0n4WhynjP99NTCiHXnIZ33TQppNJEpXC1z3QlhbzNsGiM0
+ rhOyre+5dQxgBNJZhM2WcoL5ZF7/qfI5gTOX2R9MAZieYoJCILbPaV7fasB7D+oLq9Q3
+ psmQ==
+X-Gm-Message-State: APjAAAVKmfGkLTwYSsPk1F3iXAzP8M3AfsY2YeHLqFrXQv64sD/9tnX4
+ sk6o+M8Ed5HeU2JTp/n8PgS/Mw5jvNj2Cw==
+X-Received: by 2002:a5d:49cb:: with SMTP id t11mr25862841wrs.366.1570555071679; 
+ Tue, 08 Oct 2019 10:17:51 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id z9sm19135541wrl.35.2019.10.08.10.17.54
+ by smtp.gmail.com with ESMTPSA id z9sm19135541wrl.35.2019.10.08.10.17.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Oct 2019 10:17:54 -0700 (PDT)
+ Tue, 08 Oct 2019 10:17:51 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 09/21] hw/timer/cmsdk-apb-timer.c: Switch to
+Subject: [PATCH v2 06/21] hw/timer/allwinner-a10-pit.c: Switch to
  transaction-based ptimer API
-Date: Tue,  8 Oct 2019 18:17:28 +0100
-Message-Id: <20191008171740.9679-10-peter.maydell@linaro.org>
+Date: Tue,  8 Oct 2019 18:17:25 +0100
+Message-Id: <20191008171740.9679-7-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20191008171740.9679-1-peter.maydell@linaro.org>
 References: <20191008171740.9679-1-peter.maydell@linaro.org>
@@ -100,121 +100,106 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::442
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::444
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Bh5abkeZ9CR+
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: K6KBt6bSJGyJ
 
-Switch the cmsdk-apb-timer code away from bottom-half based ptimers
-to the new transaction-based ptimer API.  This just requires adding
+Switch the allwinner-a10-pit code away from bottom-half based ptimers to
+the new transaction-based ptimer API.  This just requires adding
 begin/commit calls around the various places that modify the ptimer
 state, and using the new ptimer_init() function to create the timer.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/timer/cmsdk-apb-timer.c | 15 +++++++++++----
- 1 file changed, 11 insertions(+), 4 deletions(-)
+ hw/timer/allwinner-a10-pit.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
-diff --git a/hw/timer/cmsdk-apb-timer.c b/hw/timer/cmsdk-apb-timer.c
-index c9ce9770cef..40728e85e20 100644
---- a/hw/timer/cmsdk-apb-timer.c
-+++ b/hw/timer/cmsdk-apb-timer.c
-@@ -29,7 +29,6 @@
- 
- #include "qemu/osdep.h"
+diff --git a/hw/timer/allwinner-a10-pit.c b/hw/timer/allwinner-a10-pit.c
+index 28d055e42f3..aae880f5b35 100644
+--- a/hw/timer/allwinner-a10-pit.c
++++ b/hw/timer/allwinner-a10-pit.c
+@@ -22,7 +22,6 @@
+ #include "hw/timer/allwinner-a10-pit.h"
+ #include "migration/vmstate.h"
  #include "qemu/log.h"
 -#include "qemu/main-loop.h"
  #include "qemu/module.h"
- #include "qapi/error.h"
- #include "trace.h"
-@@ -121,14 +120,17 @@ static void cmsdk_apb_timer_write(void *opaque, hwaddr offset, uint64_t value,
-                           "CMSDK APB timer: EXTIN input not supported\n");
-         }
-         s->ctrl = value & 0xf;
-+        ptimer_transaction_begin(s->timer);
-         if (s->ctrl & R_CTRL_EN_MASK) {
-             ptimer_run(s->timer, ptimer_get_limit(s->timer) == 0);
-         } else {
-             ptimer_stop(s->timer);
-         }
-+        ptimer_transaction_commit(s->timer);
-         break;
-     case A_RELOAD:
-         /* Writing to reload also sets the current timer value */
-+        ptimer_transaction_begin(s->timer);
-         if (!value) {
-             ptimer_stop(s->timer);
-         }
-@@ -140,8 +142,10 @@ static void cmsdk_apb_timer_write(void *opaque, hwaddr offset, uint64_t value,
-              */
-             ptimer_run(s->timer, 0);
-         }
-+        ptimer_transaction_commit(s->timer);
-         break;
-     case A_VALUE:
-+        ptimer_transaction_begin(s->timer);
-         if (!value && !ptimer_get_limit(s->timer)) {
-             ptimer_stop(s->timer);
-         }
-@@ -149,6 +153,7 @@ static void cmsdk_apb_timer_write(void *opaque, hwaddr offset, uint64_t value,
-         if (value && (s->ctrl & R_CTRL_EN_MASK)) {
-             ptimer_run(s->timer, ptimer_get_limit(s->timer) == 0);
-         }
-+        ptimer_transaction_commit(s->timer);
-         break;
-     case A_INTSTATUS:
-         /* Just one bit, which is W1C. */
-@@ -191,9 +196,11 @@ static void cmsdk_apb_timer_reset(DeviceState *dev)
-     trace_cmsdk_apb_timer_reset();
-     s->ctrl = 0;
-     s->intstatus = 0;
-+    ptimer_transaction_begin(s->timer);
-     ptimer_stop(s->timer);
-     /* Set the limit and the count */
-     ptimer_set_limit(s->timer, 0, 1);
-+    ptimer_transaction_commit(s->timer);
+ 
+ static void a10_pit_update_irq(AwA10PITState *s)
+@@ -80,6 +79,7 @@ static uint64_t a10_pit_read(void *opaque, hwaddr offset, unsigned size)
+     return 0;
  }
  
- static void cmsdk_apb_timer_init(Object *obj)
-@@ -210,21 +217,21 @@ static void cmsdk_apb_timer_init(Object *obj)
- static void cmsdk_apb_timer_realize(DeviceState *dev, Error **errp)
++/* Must be called inside a ptimer transaction block for s->timer[index] */
+ static void a10_pit_set_freq(AwA10PITState *s, int index)
  {
-     CMSDKAPBTIMER *s = CMSDK_APB_TIMER(dev);
--    QEMUBH *bh;
- 
-     if (s->pclk_frq == 0) {
-         error_setg(errp, "CMSDK APB timer: pclk-frq property must be set");
-         return;
+     uint32_t prescaler, source, source_freq;
+@@ -118,6 +118,7 @@ static void a10_pit_write(void *opaque, hwaddr offset, uint64_t value,
+         switch (offset & 0x0f) {
+         case AW_A10_PIT_TIMER_CONTROL:
+             s->control[index] = value;
++            ptimer_transaction_begin(s->timer[index]);
+             a10_pit_set_freq(s, index);
+             if (s->control[index] & AW_A10_PIT_TIMER_RELOAD) {
+                 ptimer_set_count(s->timer[index], s->interval[index]);
+@@ -131,10 +132,13 @@ static void a10_pit_write(void *opaque, hwaddr offset, uint64_t value,
+             } else {
+                 ptimer_stop(s->timer[index]);
+             }
++            ptimer_transaction_commit(s->timer[index]);
+             break;
+         case AW_A10_PIT_TIMER_INTERVAL:
+             s->interval[index] = value;
++            ptimer_transaction_begin(s->timer[index]);
+             ptimer_set_limit(s->timer[index], s->interval[index], 1);
++            ptimer_transaction_commit(s->timer[index]);
+             break;
+         case AW_A10_PIT_TIMER_COUNT:
+             s->count[index] = value;
+@@ -225,8 +229,10 @@ static void a10_pit_reset(DeviceState *dev)
+         s->control[i] = AW_A10_PIT_DEFAULT_CLOCK;
+         s->interval[i] = 0;
+         s->count[i] = 0;
++        ptimer_transaction_begin(s->timer[i]);
+         ptimer_stop(s->timer[i]);
+         a10_pit_set_freq(s, i);
++        ptimer_transaction_commit(s->timer[i]);
      }
+     s->watch_dog_mode = 0;
+     s->watch_dog_control = 0;
+@@ -255,7 +261,6 @@ static void a10_pit_init(Object *obj)
+ {
+     AwA10PITState *s = AW_A10_PIT(obj);
+     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
+-    QEMUBH * bh[AW_A10_PIT_TIMER_NR];
+     uint8_t i;
  
--    bh = qemu_bh_new(cmsdk_apb_timer_tick, s);
--    s->timer = ptimer_init_with_bh(bh,
-+    s->timer = ptimer_init(cmsdk_apb_timer_tick, s,
-                            PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD |
-                            PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT |
-                            PTIMER_POLICY_NO_IMMEDIATE_RELOAD |
-                            PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
+     for (i = 0; i < AW_A10_PIT_TIMER_NR; i++) {
+@@ -270,8 +275,7 @@ static void a10_pit_init(Object *obj)
  
-+    ptimer_transaction_begin(s->timer);
-     ptimer_set_freq(s->timer, s->pclk_frq);
-+    ptimer_transaction_commit(s->timer);
+         tc->container = s;
+         tc->index = i;
+-        bh[i] = qemu_bh_new(a10_pit_timer_cb, tc);
+-        s->timer[i] = ptimer_init_with_bh(bh[i], PTIMER_POLICY_DEFAULT);
++        s->timer[i] = ptimer_init(a10_pit_timer_cb, tc, PTIMER_POLICY_DEFAULT);
+     }
  }
  
- static const VMStateDescription cmsdk_apb_timer_vmstate = {
 -- 
 2.20.1
 

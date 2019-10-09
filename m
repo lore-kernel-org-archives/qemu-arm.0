@@ -1,74 +1,74 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp812084wrm;
-        Wed, 9 Oct 2019 04:47:52 -0700 (PDT)
-X-Received: by 2002:a6b:ec10:: with SMTP id c16mr2812585ioh.121.1570621672583;
-        Wed, 09 Oct 2019 04:47:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570621672; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp814077wrm;
+        Wed, 9 Oct 2019 04:49:45 -0700 (PDT)
+X-Received: by 2002:a6b:7410:: with SMTP id s16mr2681381iog.35.1570621785743;
+        Wed, 09 Oct 2019 04:49:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570621785; cv=none;
         d=google.com; s=arc-20160816;
-        b=HSchlhlnSG3hNtU44uFTy1vxrtHhsEDOd6Uw0zOMuahwhXdX+FNgv04oH2YHHuLhg/
-         vAAN58G0xK2GN/N23uC0i5TXwpRHvGsDOHgXZyVU9kDnUuDg7pdTDWyeuwQabzKueF7K
-         /DTjQLBiN5DiGppRwr+vDHsoBAp9YNvKCr9n1FlcEyfNPnlb/8Jv7H/jLMkl4gl1aSfP
-         AKmoJcmPWh1Opxv4gXRpqfgqhI/KdlaiJ8bv+81FLdwftPlQGybVHw9esl1ZUSKlLHEU
-         kFkpue5H5oMi0hMp8HBOn/F/vZpAZeUsnC1TJVoBJva76Oej9/WhlqtPdvvF8s867/F0
-         wRNA==
+        b=h+CT86tFUE2hqFvUDvceyJ+u9ugEDsgQ2L85BzPfYgzpGlT5X91Pl89hY7d0EkIeCB
+         VquVpLZ5F8qd7VyhJzbsxujZv/zku225nP6/kvF6jjcbNnGWWUiOUmMgW8b4Tq3lVjBC
+         4Bmzb0lBbXuvfxvc7N6Dy9jCPy/8EfyqEsy5hu2FTF7purcnD2FXnEuxktPpXxJVfcFL
+         TRA9FwQInqXZe8h9FGKJsVd/eGRKta7CHKSOX5vTyaoI/SwTC2zDUUf3S8PnTNdXaHTH
+         3sOU2DIR2lsxCCKFJ+w+5+JeEa248i5U1XBehV/f3jZKvlWT0eQAhCGD9DHYbAd9liAc
+         aBNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=U98Wd/tJ2fYitptqldGm5NQNmxvZ7yFkPvSDpC1AsU4=;
-        b=A5pxLUOrjKoAzQgvZIMDUUEYsX3ztHIZjqfC6oW2EEVaPVuBCDb99pI/yzMVljYGwe
-         nBnhSbqyeQ55NltMAXtyz/Ok/+upBJBX4/h52VTT+TBMXtFE92d0DoKnsNW4ZfUitoRE
-         V9CEox3oeFq8jmYKhnfNe2oCvXoSGBP74gLSiNmuu3dDvrigNy6abV8VGReLykQRjpmn
-         eqKho3nTm/MXJYwc8FyuVy63Hb0AOYnGk3nLvBTcTl0Bv7SCvR0t/yjPpbJUe9thdi/t
-         CRiVSfN2F+f+RWdn35u1IHYpyDbc/hWsjEPWx66P7YltwLcFlQRIs9ZSINfb5iggY/Kd
-         JYZA==
+        bh=0akdC6ifbO5r1Bkx4nu2fQVSUkpoM1OWF+hL9JHRCno=;
+        b=z3HFOeIuA4O2wr3gzLMVhZl0Bha29sOYrVSgyhcuQF83fIq54GbVyxEGk60NCtossd
+         6dm7qIkb1JwXqS0hMe5Tfhecz7L2wL21OB1lr/3LYJsHlRqNagsxBrjnGwfb422ksHgM
+         VIE/LTPiavox+QR6Z+PbOFoUp23SGx5+sdIu0ZxsxRTFzh8zOMHTaYqGTPVdCoTEr0IC
+         HyO3KbipX34zJB0ViQdvkJ1wI5Ry7FfUbxSte7hIPiEoIzx3b8H4zz7AD0vpUXzqCka6
+         5obyEtLe6TyOYmiPaLov9NDaP56AJnma1oVPZ7lGlcmRqNvEqkjY0FS8k0sgS8r8PIpc
+         osFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YFxSbspJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NcqAT3b3;
        spf=pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=beata.michalska@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <beata.michalska@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id f89sor1274633ill.86.2019.10.09.04.47.52
+        by mx.google.com with SMTPS id p4sor1049793iof.45.2019.10.09.04.49.45
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 09 Oct 2019 04:47:52 -0700 (PDT)
+        Wed, 09 Oct 2019 04:49:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YFxSbspJ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NcqAT3b3;
        spf=pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=beata.michalska@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=U98Wd/tJ2fYitptqldGm5NQNmxvZ7yFkPvSDpC1AsU4=;
-        b=YFxSbspJoAEC+pfYVCuu05igzg/Up6DnZ1gw+Zwdj860lEGrmcyeoCvOjgG9gmCvFO
-         BcPY28TTGCm2sOJCbbH3npfy71S+JSdWTv0rlYsCrxhhJC8YQKfQzjEtuSQJg1vSugbU
-         HEckHIyyfnitTb1LTEPqfJ/d8vndBAkZXHpPaGV+gGrFsqUNK+rSqomCuhn7LBxHaSKr
-         SmOa/TnOfNNg6OkCWncdwbQn9KvCPiPqqgfzMXQ1V+YRU8T5yD7JOuc4IEh/cZWYruIl
-         DwIHVdJ2vYj7EPiRTGrAysJTQNEuVKM5ZA5vavN4V9NFxglNI0ZwhlsUP2PKPlpYVTBq
-         ea6g==
+        bh=0akdC6ifbO5r1Bkx4nu2fQVSUkpoM1OWF+hL9JHRCno=;
+        b=NcqAT3b3iP1jdtZ9i/4LodHKnk4sh7ZpfMC1gkVkwhaGXM2GGkfgqUA28OKEVDfKgD
+         75HELxx//kCiRF3cO7/U6PnBrsuGAWec+d/VrC+0arBf2o/C/S3sjDeJyEgIGsosP6bl
+         AyODG8lEc2faqWeqI8YvNF9huuy60JqHdVcgUt8rWvyHYRTNC2XMM1gFqBkmhQ3V9FQY
+         lct92oGa3Flr1zgHExWl6OyO3leRSwikPwnVkTp2/uWjPNuR7iY5i0dGdjShvsNoXboV
+         F4DLKEOE6hhmoJMuUB/Pe8Sbv7mVHyGSMpsIXBnfVcoOrs49p1fUMTZbI1f6GiUqUBVL
+         ITug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=U98Wd/tJ2fYitptqldGm5NQNmxvZ7yFkPvSDpC1AsU4=;
-        b=VvB9dSIlDmK4KtC3bOWn1Y4vXDSvFUP/xrurM1CaVDh62PBVAV4ybFiRKSevnkMVSo
-         q5pEpnegrWu0/TbDvjdWq6mfNIX1uer6eJaCSwBASpKVbLCykeHzBlJE7jN8IFX9ig0i
-         IRYhCP8tGKkTZUC6Uzw5X/p5GaKydL2R2n8U6jTGy1AyFkiyX+OszcwNlH8Dk+sk2BPG
-         Jwxu28ghNbDAXP0wjK2QK3h6D2IbYjg9vWSl0KHiERYbfMqjbSHt2jVHyUnr1DDaZmdE
-         PmSI7308A+JVwPZQKlEB/jfOsBQK5FsFoQ+7AJ6aC+2wyIOdjnGodoA0KPkPpgnqDOSc
-         l3rw==
-X-Gm-Message-State: APjAAAX/R2f8DiQPOHikmg6QQ6vlnPmKOCBpp9wqBTV0SiFRsCpHIUt4
-	918Qf1v5PpLe7KxboOLlmb3SsGwKNO4fWdU43aeNKAaBtlM=
-X-Google-Smtp-Source: APXvYqxfqStlxhaK+9WcX34SdYiwWAog8br9KgjqNE7LgZqV7xwaJVysQJ5cdkuY/yK3mfrmXID3bTbR8gpQmGc9JLk=
-X-Received: by 2002:a92:7702:: with SMTP id s2mr2709489ilc.248.1570621671967;
- Wed, 09 Oct 2019 04:47:51 -0700 (PDT)
+        bh=0akdC6ifbO5r1Bkx4nu2fQVSUkpoM1OWF+hL9JHRCno=;
+        b=nwHYP/ZXeUOiuVTo7ZdC1feoYF0C8MOjWdpO68kM5NkQnkP2oMN/joQyewkSoYzYu9
+         ow3DoQpq5QI+m6B1wd09rNjvm3h+O2hfg+h251kYZ6odoO41im1uCoomapnaYJuFIFPl
+         iCeWyQsx9STEl5HT71E8MAi4ZjNSAbkQ4UJhrnIG0A4DOhcj/BoLXCwF3vq+w38TkCYq
+         xnPtoorXTePu28NkHs1TuN5Wbm2N6HOlIJO96UBMEi6HFCf5X3MYJRS/QMjSl+nXR/5F
+         li5558b5I3vb0/puzDygPgFqbAyF7xHyFMHYdbQPb5u79GJ2zHhFvLVGz8CHTBII+Lw/
+         Jh3g==
+X-Gm-Message-State: APjAAAW9pyRlnTcw3VaByqTdX25nXl/zzHkuenbfGpnHonz7JM6uXfy/
+	HYlEXgpXEB6MUYeakViDnjm0yINiAK2WUH3U7RMK38AbglA=
+X-Google-Smtp-Source: APXvYqzP9aywJCnt7B0+IRSczfqaZmfqXn4lkRdCajJLpNmgY6YMKnjeOwR9DkcBBej3qEe/UExOiLeto67f3dswalE=
+X-Received: by 2002:a5e:c811:: with SMTP id y17mr2783513iol.248.1570621785133;
+ Wed, 09 Oct 2019 04:49:45 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190910095610.4546-1-beata.michalska@linaro.org>
- <20190910095610.4546-5-beata.michalska@linaro.org> <87ftkmbmci.fsf@linaro.org>
-In-Reply-To: <87ftkmbmci.fsf@linaro.org>
+ <20190910095610.4546-5-beata.michalska@linaro.org> <87blvabijl.fsf@linaro.org>
+In-Reply-To: <87blvabijl.fsf@linaro.org>
 From: Beata Michalska <beata.michalska@linaro.org>
-Date: Wed, 9 Oct 2019 12:47:41 +0100
-Message-ID: <CADSWDzuPnWSWFhEe38=V-W=otN5mhOBwkpmaW=TE1cGaxXQ5vQ@mail.gmail.com>
+Date: Wed, 9 Oct 2019 12:49:34 +0100
+Message-ID: <CADSWDzvD69hEJU2H2aZ44f1wNY_yDk1KLA45Wz8ZwRcKpFQYcw@mail.gmail.com>
 Subject: Re: [Qemu-devel] [PATCH 4/4] target/arm: Add support for DC CVAP & DC
  CVADP ins
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
@@ -78,9 +78,9 @@ Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, quintela@re
 	eric.auger@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: Z2Z0qgb2NzHy
+X-TUID: e2LMTXeIr6xZ
 
-On Tue, 24 Sep 2019 at 00:54, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+On Tue, 24 Sep 2019 at 02:16, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
 te:
 >
 >
@@ -103,12 +103,6 @@ of
 > > Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
 > > ---
 > >  linux-user/elfload.c       | 18 +++++++++++++++++-
->
-> There are conflicts from the recent elfload.c tweaks to fix on your next =
-rebase.
-
-Will address it in the next version.
-
 > >  target/arm/cpu.h           | 13 ++++++++++++-
 > >  target/arm/cpu64.c         |  1 +
 > >  target/arm/helper.c        | 24 ++++++++++++++++++++++++
@@ -282,6 +276,17 @@ dr_in)
 > > +void HELPER(dc_cvap)(CPUARMState *env, uint64_t vaddr_in)
 > > +{
 > > +#ifndef CONFIG_USER_ONLY
+>
+> Are we essentially saying the operation is a NOP for user-mode
+> emulation? Is it just because we don't really expose HW to linux-user?
+>
+> If so move the #ifndef outside the HELPER definition and...
+>
+
+I do not think there is a way to specify persistent mem for user mode.
+Or am I mistaken ?
+I will move the switch to the HELPER def.
+
 > > +    ARMCPU *cpu =3D env_archcpu(env);
 > > +    /* CTR_EL0 System register -> DminLine, bits [19:16] */
 > > +    uint64_t dline_size =3D 4 << ((cpu->ctr >> 16) & 0xF);
@@ -325,6 +330,12 @@ dr_in)
 > >          return;
 > > +    case ARM_CP_DC_CVAP:
 > > +        /* DC CVAP / DC CVADP */
+>
+> .. #ifndef CONFIG_USER_ONLY this code so we don't add the overhead of a
+> helper call in linux-user mode.
+
+Noted.
+>
 > > +        tcg_rt =3D cpu_reg(s, rt);
 > > +        gen_helper_dc_cvap(cpu_env, tcg_rt);
 > > +        return;
@@ -335,6 +346,8 @@ dr_in)
 >
 > --
 > Alex Benn=C3=A9e
+
+Thank you,
 
 BR
 Beata

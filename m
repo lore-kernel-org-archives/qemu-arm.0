@@ -1,76 +1,76 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp804321wrm;
-        Wed, 9 Oct 2019 04:40:18 -0700 (PDT)
-X-Received: by 2002:a92:460e:: with SMTP id t14mr2792931ila.139.1570621218125;
-        Wed, 09 Oct 2019 04:40:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570621218; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp812084wrm;
+        Wed, 9 Oct 2019 04:47:52 -0700 (PDT)
+X-Received: by 2002:a6b:ec10:: with SMTP id c16mr2812585ioh.121.1570621672583;
+        Wed, 09 Oct 2019 04:47:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570621672; cv=none;
         d=google.com; s=arc-20160816;
-        b=XaX+1IlHm8DnfpOpx6pET+OpAFIBts3UEZ6cc/GqZPAipYY3M2Lm9sn2Zshtr/WcdQ
-         lXoKZwDfuZ0oeX/jCt9gSP83n1dk3EGp2a+srn06ab17QG/0pPGuUw0ntHCrT339yFbh
-         q4YDE5SN8WHD9M/cxdhPYny20UCPmnuCalgQoz8rx1bfsSCbCVa42NplBew3foJMmxN3
-         IdlD6kxdjGvy5S//CEj+h0nVzE7uaCq/DOtO9sC5IPK4aP1kAivxrRSWtgmCCuG+my86
-         9SwiR0tiA1kIgcg2mnT0f6i4QsCDGLHJfixHMqDPx6DDM8bM1sZbGYp/ej/e1CwttIWr
-         dZ7A==
+        b=HSchlhlnSG3hNtU44uFTy1vxrtHhsEDOd6Uw0zOMuahwhXdX+FNgv04oH2YHHuLhg/
+         vAAN58G0xK2GN/N23uC0i5TXwpRHvGsDOHgXZyVU9kDnUuDg7pdTDWyeuwQabzKueF7K
+         /DTjQLBiN5DiGppRwr+vDHsoBAp9YNvKCr9n1FlcEyfNPnlb/8Jv7H/jLMkl4gl1aSfP
+         AKmoJcmPWh1Opxv4gXRpqfgqhI/KdlaiJ8bv+81FLdwftPlQGybVHw9esl1ZUSKlLHEU
+         kFkpue5H5oMi0hMp8HBOn/F/vZpAZeUsnC1TJVoBJva76Oej9/WhlqtPdvvF8s867/F0
+         wRNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=MUHVWGhyuBC1n9S6rYV/LsvWZgGMjW4/odo7lrtct3I=;
-        b=J3Hh5sdA5DD6y5HevvXOSndrLKjd5VT+vfYrXm/6RQKGZNLt6BspjAE7lm6ppzEs9U
-         QOT5cMEayZUUZft4YV7JBYBBQlSvRAmvUS50sNt9epOhvZsbaRl6sdu3sUuJVo7cRAmC
-         kpwsf6cT3089oX3mbJfkAjNYwgvovPkQsVP+GAMyTkbx6eh/Cc+sZJExYFdLbCTiPHeb
-         rKJKj6Bplnnog6IKluaV9527tUkmBnyys5kXRZQNlYePanE3315aIkBI4jAi7eLSpNxs
-         jFqwOaClzqikl5MOt5O3p181/hrBTfaiep79MCD5Gw5tC+s09Vgr210dejJvxK0BtFWr
-         q6qQ==
+        bh=U98Wd/tJ2fYitptqldGm5NQNmxvZ7yFkPvSDpC1AsU4=;
+        b=A5pxLUOrjKoAzQgvZIMDUUEYsX3ztHIZjqfC6oW2EEVaPVuBCDb99pI/yzMVljYGwe
+         nBnhSbqyeQ55NltMAXtyz/Ok/+upBJBX4/h52VTT+TBMXtFE92d0DoKnsNW4ZfUitoRE
+         V9CEox3oeFq8jmYKhnfNe2oCvXoSGBP74gLSiNmuu3dDvrigNy6abV8VGReLykQRjpmn
+         eqKho3nTm/MXJYwc8FyuVy63Hb0AOYnGk3nLvBTcTl0Bv7SCvR0t/yjPpbJUe9thdi/t
+         CRiVSfN2F+f+RWdn35u1IHYpyDbc/hWsjEPWx66P7YltwLcFlQRIs9ZSINfb5iggY/Kd
+         JYZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ltYr2wXe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YFxSbspJ;
        spf=pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=beata.michalska@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <beata.michalska@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id p124sor1012409iod.98.2019.10.09.04.40.17
+        by mx.google.com with SMTPS id f89sor1274633ill.86.2019.10.09.04.47.52
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 09 Oct 2019 04:40:18 -0700 (PDT)
+        Wed, 09 Oct 2019 04:47:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ltYr2wXe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YFxSbspJ;
        spf=pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=beata.michalska@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc:content-transfer-encoding;
-        bh=MUHVWGhyuBC1n9S6rYV/LsvWZgGMjW4/odo7lrtct3I=;
-        b=ltYr2wXee+wxFHEsvwGrG1DR7/kIQZCUR1LswHa24EqdmPAhLeR0FNJsWs93bJUFla
-         +F1zSs4aO4VIfJ6iYqRJZEgfohWN8t91z1xpZPW8MGdhsYZcQWSxpv2Qf26pRNUGWtB1
-         JkS0UWMBa0ZGIsVhF2eCoIRCbpF/aWSFOPIM2lzcTy0CpAzMYvY3N37TqAvUvXzjWlbt
-         pp7gKi8J0LUyZ0dSDGe1y6jNDH/ooyzVZ6tYgOrlkwOozgSAfVWhatFW6OaMhac0i+1a
-         2LttcdJzmWN1YAqwnq5B/BO8szqUV9YXQPgBhzgZlNBgQpaXVJSK/UwpP2SIDDNRcI+8
-         SBWg==
+        bh=U98Wd/tJ2fYitptqldGm5NQNmxvZ7yFkPvSDpC1AsU4=;
+        b=YFxSbspJoAEC+pfYVCuu05igzg/Up6DnZ1gw+Zwdj860lEGrmcyeoCvOjgG9gmCvFO
+         BcPY28TTGCm2sOJCbbH3npfy71S+JSdWTv0rlYsCrxhhJC8YQKfQzjEtuSQJg1vSugbU
+         HEckHIyyfnitTb1LTEPqfJ/d8vndBAkZXHpPaGV+gGrFsqUNK+rSqomCuhn7LBxHaSKr
+         SmOa/TnOfNNg6OkCWncdwbQn9KvCPiPqqgfzMXQ1V+YRU8T5yD7JOuc4IEh/cZWYruIl
+         DwIHVdJ2vYj7EPiRTGrAysJTQNEuVKM5ZA5vavN4V9NFxglNI0ZwhlsUP2PKPlpYVTBq
+         ea6g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc:content-transfer-encoding;
-        bh=MUHVWGhyuBC1n9S6rYV/LsvWZgGMjW4/odo7lrtct3I=;
-        b=Hse730SkfxVl3zr5ALPY8PoeG2x1AVToasZGT/rf1XPvClboORMmOo3l3baOzfXcam
-         s1bfGH5CxiHGzRgXP0PvnLC0lQs9U4Bei47QzXdB1/WKpDB0Y2+7aClmH/8LzoarzrC5
-         9B31W4OUnmSZ9fBh/RbunS/VD7BKPI/cS56Zhcqr33604rWD+wq/itJ0OVoC7PGWwZPb
-         ZBhDFj/a65YeO2nRUXXlEKMCjs0l+mrYx36vyUb5kBmdn+MARQf2jb21hB0wrPjnicfB
-         N1kMGxN2p0c4BuVHCXX8aepBsVmJLxVVwusD/eFX3aNvqbESh4RMQxWE+fZE/8M/w3TX
-         xFCw==
-X-Gm-Message-State: APjAAAUdkklHTsdds5GVZKCRJMhHFJo0xOI+nXi6L7EfRcumugoUrkf4
-	Q609iQP0+aHGOE2GHtafvZWHXsq0l1Daq6tgUKqzPhbbe7U=
-X-Google-Smtp-Source: APXvYqw4vHVfDkqilXHeokUulIw6APhojnO1E2BUHPuvfHr30pYcOI1LyuuMR3pAFvR5mF6V983LST9Q2WByuPc98sU=
-X-Received: by 2002:a6b:2c02:: with SMTP id s2mr2682557ios.307.1570621217442;
- Wed, 09 Oct 2019 04:40:17 -0700 (PDT)
+        bh=U98Wd/tJ2fYitptqldGm5NQNmxvZ7yFkPvSDpC1AsU4=;
+        b=VvB9dSIlDmK4KtC3bOWn1Y4vXDSvFUP/xrurM1CaVDh62PBVAV4ybFiRKSevnkMVSo
+         q5pEpnegrWu0/TbDvjdWq6mfNIX1uer6eJaCSwBASpKVbLCykeHzBlJE7jN8IFX9ig0i
+         IRYhCP8tGKkTZUC6Uzw5X/p5GaKydL2R2n8U6jTGy1AyFkiyX+OszcwNlH8Dk+sk2BPG
+         Jwxu28ghNbDAXP0wjK2QK3h6D2IbYjg9vWSl0KHiERYbfMqjbSHt2jVHyUnr1DDaZmdE
+         PmSI7308A+JVwPZQKlEB/jfOsBQK5FsFoQ+7AJ6aC+2wyIOdjnGodoA0KPkPpgnqDOSc
+         l3rw==
+X-Gm-Message-State: APjAAAX/R2f8DiQPOHikmg6QQ6vlnPmKOCBpp9wqBTV0SiFRsCpHIUt4
+	918Qf1v5PpLe7KxboOLlmb3SsGwKNO4fWdU43aeNKAaBtlM=
+X-Google-Smtp-Source: APXvYqxfqStlxhaK+9WcX34SdYiwWAog8br9KgjqNE7LgZqV7xwaJVysQJ5cdkuY/yK3mfrmXID3bTbR8gpQmGc9JLk=
+X-Received: by 2002:a92:7702:: with SMTP id s2mr2709489ilc.248.1570621671967;
+ Wed, 09 Oct 2019 04:47:51 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190910095610.4546-1-beata.michalska@linaro.org>
- <20190910095610.4546-3-beata.michalska@linaro.org> <87d0fqbm19.fsf@linaro.org>
-In-Reply-To: <87d0fqbm19.fsf@linaro.org>
+ <20190910095610.4546-5-beata.michalska@linaro.org> <87ftkmbmci.fsf@linaro.org>
+In-Reply-To: <87ftkmbmci.fsf@linaro.org>
 From: Beata Michalska <beata.michalska@linaro.org>
-Date: Wed, 9 Oct 2019 12:40:06 +0100
-Message-ID: <CADSWDzum=6OZh5dTCCfSonpemFZQ_RV+dg7HYp3yN8TvpLB2Wg@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH 2/4] Memory: Enable writeback for given
- memory region
+Date: Wed, 9 Oct 2019 12:47:41 +0100
+Message-ID: <CADSWDzuPnWSWFhEe38=V-W=otN5mhOBwkpmaW=TE1cGaxXQ5vQ@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH 4/4] target/arm: Add support for DC CVAP & DC
+ CVADP ins
 To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
 Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, quintela@redhat.com, 
 	Richard Henderson <richard.henderson@linaro.org>, 
@@ -78,231 +78,263 @@ Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, quintela@re
 	eric.auger@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: 8U9gdGE0z7uB
+X-TUID: Z2Z0qgb2NzHy
 
-On Tue, 24 Sep 2019 at 01:00, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+On Tue, 24 Sep 2019 at 00:54, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
 te:
 >
 >
 > Beata Michalska <beata.michalska@linaro.org> writes:
 >
-> > Add an option to trigger memory writeback to sync given memory region
-> > with the corresponding backing store, case one is available.
-> > This extends the support for persistent memory, allowing syncing on-dem=
-and.
-> >
-> > Also, adding verification for msync support on host.
+> > ARMv8.2 introduced support for Data Cache Clean instructions
+> > to PoP (point-of-persistence) - DC CVAP and PoDP (point-of-deep-persist=
+ence)
+> > - DV CVADP. Both specify conceptual points in a memory system where all=
+ writes
+> > that are to reach them are considered persistent.
+> > The support provided considers both to be actually the same so there is=
+ no
+> > distinction between the two. If none is available (there is no backing =
+store
+> > for given memory) both will result in Data Cache Clean up to the point =
+of
+> > coherency. Otherwise sync for the specified range shall be performed.
 > >
 > > Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
 > > ---
-> >  configure               | 24 ++++++++++++++++++++++++
-> >  exec.c                  | 38 ++++++++++++++++++++++++++++++++++++++
-> >  include/exec/memory.h   |  6 ++++++
-> >  include/exec/ram_addr.h |  6 ++++++
-> >  memory.c                | 12 ++++++++++++
-> >  5 files changed, 86 insertions(+)
-> >
-> > diff --git a/configure b/configure
-> > index 95134c0180..bdb7dc47e9 100755
-> > --- a/configure
-> > +++ b/configure
-> > @@ -5081,6 +5081,26 @@ if compile_prog "" "" ; then
-> >      fdatasync=3Dyes
-> >  fi
-> >
-> > +##########################################
-> > +# verify support for msyc
-> > +
-> > +msync=3Dno
-> > +cat > $TMPC << EOF
-> > +#include <unistd.h>
-> > +#include <sys/mman.h>
-> > +int main(void) {
-> > +#if defined(_POSIX_MAPPED_FILES) && _POSIX_MAPPED_FILES > 0 \
-> > +&& defined(_POSIX_SYNCHRONIZED_IO) && _POSIX_SYNCHRONIZED_IO > 0
-> > +return msync(NULL,0, MS_SYNC);
-> > +#else
-> > +#error Not supported
-> > +#endif
-> > +}
-> > +EOF
-> > +if compile_prog "" "" ; then
-> > +    msync=3Dyes
-> > +fi
-> > +
-> >  ##########################################
-> >  # check if we have madvise
-> >
-> > @@ -6413,6 +6433,7 @@ echo "fdt support       $fdt"
-> >  echo "membarrier        $membarrier"
-> >  echo "preadv support    $preadv"
-> >  echo "fdatasync         $fdatasync"
-> > +echo "msync             $msync"
-> >  echo "madvise           $madvise"
-> >  echo "posix_madvise     $posix_madvise"
-> >  echo "posix_memalign    $posix_memalign"
-> > @@ -6952,6 +6973,9 @@ fi
-> >  if test "$fdatasync" =3D "yes" ; then
-> >    echo "CONFIG_FDATASYNC=3Dy" >> $config_host_mak
-> >  fi
-> > +if test "$msync" =3D "yes" ; then
-> > +    echo "CONFIG_MSYNC=3Dy" >> $config_host_mak
-> > +fi
+> >  linux-user/elfload.c       | 18 +++++++++++++++++-
 >
-> I think it's best to split this configure check into a new prequel patch =
-and...
+> There are conflicts from the recent elfload.c tweaks to fix on your next =
+rebase.
 
-I might just drop it in favour of CONFIG_POSIX switch ......
->
-> >  if test "$madvise" =3D "yes" ; then
-> >    echo "CONFIG_MADVISE=3Dy" >> $config_host_mak
-> >  fi
-> > diff --git a/exec.c b/exec.c
-> > index 235d6bc883..5ed6908368 100644
-> > --- a/exec.c
-> > +++ b/exec.c
-> > @@ -65,6 +65,8 @@
-> >  #include "exec/ram_addr.h"
-> >  #include "exec/log.h"
+Will address it in the next version.
+
+> >  target/arm/cpu.h           | 13 ++++++++++++-
+> >  target/arm/cpu64.c         |  1 +
+> >  target/arm/helper.c        | 24 ++++++++++++++++++++++++
+> >  target/arm/helper.h        |  1 +
+> >  target/arm/op_helper.c     | 36 ++++++++++++++++++++++++++++++++++++
+> >  target/arm/translate-a64.c |  5 +++++
+> >  7 files changed, 96 insertions(+), 2 deletions(-)
 > >
-> > +#include "qemu/pmem.h"
+> > diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+> > index 3365e192eb..1ec00308d5 100644
+> > --- a/linux-user/elfload.c
+> > +++ b/linux-user/elfload.c
+> > @@ -609,7 +609,12 @@ enum {
+> >      ARM_HWCAP_A64_PACG          =3D 1UL << 31,
+> >  };
+> >
+> > +enum {
+> > +    ARM_HWCAP2_A64_DCPODP   =3D 1 << 0,
+> > +};
 > > +
-> >  #include "migration/vmstate.h"
+> >  #define ELF_HWCAP get_elf_hwcap()
+> > +#define ELF_HWCAP2 get_elf_hwcap2()
 > >
-> >  #include "qemu/range.h"
-> > @@ -2182,6 +2184,42 @@ int qemu_ram_resize(RAMBlock *block, ram_addr_t =
-newsize, Error **errp)
-> >      return 0;
+> >  static uint32_t get_elf_hwcap(void)
+> >  {
+> > @@ -644,12 +649,23 @@ static uint32_t get_elf_hwcap(void)
+> >      GET_FEATURE_ID(aa64_jscvt, ARM_HWCAP_A64_JSCVT);
+> >      GET_FEATURE_ID(aa64_sb, ARM_HWCAP_A64_SB);
+> >      GET_FEATURE_ID(aa64_condm_4, ARM_HWCAP_A64_FLAGM);
+> > +    GET_FEATURE_ID(aa64_dcpop, ARM_HWCAP_A64_DCPOP);
+> >
+> > -#undef GET_FEATURE_ID
+> >
+> >      return hwcaps;
 > >  }
 > >
-> > +/*
-> > + * Trigger sync on the given ram block for range [start, start + lengt=
-h]
-> > + * with the backing store if available.
-> > + * @Note: this is supposed to be a SYNC op.
-> > + */
-> > +void qemu_ram_writeback(RAMBlock *block, ram_addr_t start, ram_addr_t =
-length)
+> > +static uint32_t get_elf_hwcap2(void)
 > > +{
-> > +    void *addr =3D ramblock_ptr(block, start);
+> > +    ARMCPU *cpu =3D ARM_CPU(thread_cpu);
+> > +    uint32_t hwcaps =3D 0;
 > > +
-> > +    /*
-> > +     * The requested range might spread up to the very end of the bloc=
-k
-> > +     */
-> > +    if ((start + length) > block->used_length) {
-> > +        error_report("%s: sync range outside the block boundires: "
-> > +                     "start: " RAM_ADDR_FMT " length: " RAM_ADDR_FMT
-> > +                     " block length: " RAM_ADDR_FMT " Narrowing down .=
-.." ,
-> > +                     __func__, start, length, block->used_length);
->
-> Is this an error or just logging? error_report should be used for stuff
-> that the user needs to know about so it will appear on the HMP console
-> (or via stderr). If so what is the user expected to do? Have they
-> misconfigured their system?
->
-
-This should be logging  rather than 'error reporting as such. My bad.
-Will address that in the next version.
-
-> > +        length =3D block->used_length - start;
-> > +    }
-> > +
-> > +#ifdef CONFIG_LIBPMEM
-> > +    /* The lack of support for pmem should not block the sync */
-> > +    if (ramblock_is_pmem(block)) {
-> > +        pmem_persist(addr, length);
-> > +    } else
-> > +#endif
-> > +    if (block->fd >=3D 0) {
-> > +#ifdef CONFIG_MSYNC
-> > +        msync((void *)((uintptr_t)addr & qemu_host_page_mask),
-> > +               HOST_PAGE_ALIGN(length), MS_SYNC);
-> > +#else
-> > +        qemu_fdatasync(block->fd);
-> > +#endif
->
-> ... hide the implementation details in util/cutils.c, maybe as
-> qemu_msync()?
->
-> > +    }
+> > +    GET_FEATURE_ID(aa64_dcpodp, ARM_HWCAP2_A64_DCPODP);
+> > +    return hwcaps;
 > > +}
 > > +
-> >  /* Called with ram_list.mutex held */
-> >  static void dirty_memory_extend(ram_addr_t old_ram_size,
-> >                                  ram_addr_t new_ram_size)
-> > diff --git a/include/exec/memory.h b/include/exec/memory.h
-> > index 2dd810259d..ff0d7937cf 100644
-> > --- a/include/exec/memory.h
-> > +++ b/include/exec/memory.h
-> > @@ -1242,6 +1242,12 @@ void *memory_region_get_ram_ptr(MemoryRegion *mr=
-);
+> > +#undef GET_FEATURE_ID
+> > +
+> >  #endif /* not TARGET_AARCH64 */
+> >  #endif /* TARGET_ARM */
+> >
+> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> > index 297ad5e47a..1713d76590 100644
+> > --- a/target/arm/cpu.h
+> > +++ b/target/arm/cpu.h
+> > @@ -2229,7 +2229,8 @@ static inline uint64_t cpreg_to_kvm_id(uint32_t c=
+pregid)
+> >  #define ARM_CP_NZCV              (ARM_CP_SPECIAL | 0x0300)
+> >  #define ARM_CP_CURRENTEL         (ARM_CP_SPECIAL | 0x0400)
+> >  #define ARM_CP_DC_ZVA            (ARM_CP_SPECIAL | 0x0500)
+> > -#define ARM_LAST_SPECIAL         ARM_CP_DC_ZVA
+> > +#define ARM_CP_DC_CVAP           (ARM_CP_SPECIAL | 0x0600)
+> > +#define ARM_LAST_SPECIAL         ARM_CP_DC_CVAP
+> >  #define ARM_CP_FPU               0x1000
+> >  #define ARM_CP_SVE               0x2000
+> >  #define ARM_CP_NO_GDB            0x4000
+> > @@ -3572,6 +3573,16 @@ static inline bool isar_feature_aa64_frint(const=
+ ARMISARegisters *id)
+> >      return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, FRINTTS) !=3D 0;
+> >  }
+> >
+> > +static inline bool isar_feature_aa64_dcpop(const ARMISARegisters *id)
+> > +{
+> > +    return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, DPB) !=3D 0;
+> > +}
+> > +
+> > +static inline bool isar_feature_aa64_dcpodp(const ARMISARegisters *id)
+> > +{
+> > +    return (FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, DPB) >> 1) !=3D=
+ 0;
+> > +}
+> > +
+> >  static inline bool isar_feature_aa64_fp16(const ARMISARegisters *id)
+> >  {
+> >      /* We always set the AdvSIMD and FP fields identically wrt FP16.  =
+*/
+> > diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> > index d7f5bf610a..20094f980d 100644
+> > --- a/target/arm/cpu64.c
+> > +++ b/target/arm/cpu64.c
+> > @@ -331,6 +331,7 @@ static void aarch64_max_initfn(Object *obj)
+> >          cpu->isar.id_aa64isar0 =3D t;
+> >
+> >          t =3D cpu->isar.id_aa64isar1;
+> > +        t =3D FIELD_DP64(t, ID_AA64ISAR1, DPB, 2);
+> >          t =3D FIELD_DP64(t, ID_AA64ISAR1, JSCVT, 1);
+> >          t =3D FIELD_DP64(t, ID_AA64ISAR1, FCMA, 1);
+> >          t =3D FIELD_DP64(t, ID_AA64ISAR1, APA, 1); /* PAuth, architect=
+ed only */
+> > diff --git a/target/arm/helper.c b/target/arm/helper.c
+> > index 507026c915..99ae01b7e7 100644
+> > --- a/target/arm/helper.c
+> > +++ b/target/arm/helper.c
+> > @@ -3843,6 +3843,22 @@ static CPAccessResult aa64_cacheop_access(CPUARM=
+State *env,
+> >      return CP_ACCESS_OK;
+> >  }
+> >
+> > +static CPAccessResult aa64_cacheop_persist_access(CPUARMState *env,
+> > +                                                  const ARMCPRegInfo *=
+ri,
+> > +                                                  bool isread)
+> > +{
+> > +    ARMCPU *cpu =3D env_archcpu(env);
+> > +    /*
+> > +     * Access is UNDEF if lacking implementation for either DC CVAP or=
+ DC CVADP
+> > +     * DC CVAP ->  CRm: 0xc
+> > +     * DC CVADP -> CRm: 0xd
+> > +     */
+> > +    return (ri->crm =3D=3D 0xc && !cpu_isar_feature(aa64_dcpop, cpu)) =
+||
+> > +           (ri->crm =3D=3D 0xd && !cpu_isar_feature(aa64_dcpodp, cpu))
+> > +           ? CP_ACCESS_TRAP_UNCATEGORIZED
+> > +           : aa64_cacheop_access(env, ri, isread);
+> > +}
+> > +
+> >  /* See: D4.7.2 TLB maintenance requirements and the TLB maintenance in=
+structions
+> >   * Page D4-1736 (DDI0487A.b)
 > >   */
-> >  void memory_region_ram_resize(MemoryRegion *mr, ram_addr_t newsize,
-> >                                Error **errp);
-> > +/**
-> > + * memory_region_do_writeback: Trigger writeback for selected address =
-range
-> > + * [addr, addr + size]
-> > + *
-> > + */
-> > +void memory_region_do_writeback(MemoryRegion *mr, hwaddr addr, hwaddr =
-size);
+> > @@ -4251,6 +4267,14 @@ static const ARMCPRegInfo v8_cp_reginfo[] =3D {
+> >        .opc0 =3D 1, .opc1 =3D 3, .crn =3D 7, .crm =3D 10, .opc2 =3D 1,
+> >        .access =3D PL0_W, .type =3D ARM_CP_NOP,
+> >        .accessfn =3D aa64_cacheop_access },
+> > +    { .name =3D "DC_CVAP", .state =3D ARM_CP_STATE_AA64,
+> > +      .opc0 =3D 1, .opc1 =3D 3, .crn =3D 7, .crm =3D 12, .opc2 =3D 1,
+> > +      .access =3D PL0_W, .type =3D ARM_CP_DC_CVAP,
+> > +      .accessfn =3D aa64_cacheop_persist_access },
+> > +    { .name =3D "DC_CVADP", .state =3D ARM_CP_STATE_AA64,
+> > +      .opc0 =3D 1, .opc1 =3D 3, .crn =3D 7, .crm =3D 13, .opc2 =3D 1,
+> > +      .access =3D PL0_W, .type =3D ARM_CP_DC_CVAP,
+> > +      .accessfn =3D aa64_cacheop_persist_access },
+> >      { .name =3D "DC_CSW", .state =3D ARM_CP_STATE_AA64,
+> >        .opc0 =3D 1, .opc1 =3D 0, .crn =3D 7, .crm =3D 10, .opc2 =3D 2,
+> >        .access =3D PL1_W, .type =3D ARM_CP_NOP },
+> > diff --git a/target/arm/helper.h b/target/arm/helper.h
+> > index 1fb2cb5a77..a850364944 100644
+> > --- a/target/arm/helper.h
+> > +++ b/target/arm/helper.h
+> > @@ -561,6 +561,7 @@ DEF_HELPER_FLAGS_3(crypto_sm4ekey, TCG_CALL_NO_RWG,=
+ void, ptr, ptr, ptr)
+> >  DEF_HELPER_FLAGS_3(crc32, TCG_CALL_NO_RWG_SE, i32, i32, i32, i32)
+> >  DEF_HELPER_FLAGS_3(crc32c, TCG_CALL_NO_RWG_SE, i32, i32, i32, i32)
+> >  DEF_HELPER_2(dc_zva, void, env, i64)
+> > +DEF_HELPER_2(dc_cvap, void, env, i64)
 > >
-> >  /**
-> >   * memory_region_set_log: Turn dirty logging on or off for a region.
-> > diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
-> > index a327a80cfe..d4bce81a03 100644
-> > --- a/include/exec/ram_addr.h
-> > +++ b/include/exec/ram_addr.h
-> > @@ -180,6 +180,12 @@ void qemu_ram_free(RAMBlock *block);
-> >
-> >  int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp)=
-;
-> >
-> > +void qemu_ram_writeback(RAMBlock *block, ram_addr_t start, ram_addr_t =
-length);
-> > +
-> > +/* Clear whole block of mem */
-> > +#define qemu_ram_block_writeback(rb)    \
-> > +    qemu_ram_writeback(rb, 0, rb->used_length)
-> > +
-> >  #define DIRTY_CLIENTS_ALL     ((1 << DIRTY_MEMORY_NUM) - 1)
-> >  #define DIRTY_CLIENTS_NOCODE  (DIRTY_CLIENTS_ALL & ~(1 << DIRTY_MEMORY=
-_CODE))
-> >
-> > diff --git a/memory.c b/memory.c
-> > index 61a254c3f9..436eb64737 100644
-> > --- a/memory.c
-> > +++ b/memory.c
-> > @@ -2228,6 +2228,18 @@ void memory_region_ram_resize(MemoryRegion *mr, =
-ram_addr_t newsize, Error **errp
-> >      qemu_ram_resize(mr->ram_block, newsize, errp);
+> >  DEF_HELPER_FLAGS_2(neon_pmull_64_lo, TCG_CALL_NO_RWG_SE, i64, i64, i64=
+)
+> >  DEF_HELPER_FLAGS_2(neon_pmull_64_hi, TCG_CALL_NO_RWG_SE, i64, i64, i64=
+)
+> > diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
+> > index 0fd4bd0238..75ebf6afa4 100644
+> > --- a/target/arm/op_helper.c
+> > +++ b/target/arm/op_helper.c
+> > @@ -987,3 +987,39 @@ void HELPER(dc_zva)(CPUARMState *env, uint64_t vad=
+dr_in)
+> >      memset(g2h(vaddr), 0, blocklen);
+> >  #endif
 > >  }
-> >
 > > +
-> > +void memory_region_do_writeback(MemoryRegion *mr, hwaddr addr, hwaddr =
-size)
+> > +void HELPER(dc_cvap)(CPUARMState *env, uint64_t vaddr_in)
 > > +{
-> > +    /*
-> > +     * Might be extended case needed to cover
-> > +     * different types of memory regions
-> > +     */
-> > +    if (mr->ram_block && mr->dirty_log_mask) {
-> > +        qemu_ram_writeback(mr->ram_block, addr, size);
-> > +    }
-> > +}
+> > +#ifndef CONFIG_USER_ONLY
+> > +    ARMCPU *cpu =3D env_archcpu(env);
+> > +    /* CTR_EL0 System register -> DminLine, bits [19:16] */
+> > +    uint64_t dline_size =3D 4 << ((cpu->ctr >> 16) & 0xF);
+> > +    uint64_t vaddr =3D vaddr_in & ~(dline_size - 1);
+> > +    void *haddr;
+> > +    int mem_idx =3D cpu_mmu_index(env, false);
 > > +
-> >  /*
-> >   * Call proper memory listeners about the change on the newly
-> >   * added/removed CoalescedMemoryRange.
+> > +    /* This won't be crossing page boundaries */
+> > +    haddr =3D probe_read(env, vaddr, dline_size, mem_idx, GETPC());
+> > +    if (haddr) {
+> > +
+> > +        ram_addr_t offset;
+> > +        MemoryRegion *mr;
+> > +
+> > +        /*
+> > +         * RCU critical section + ref counting,
+> > +         * so that MR won't disappear behind the scene
+> > +         */
+> > +        rcu_read_lock();
+> > +        mr =3D memory_region_from_host(haddr, &offset);
+> > +        if (mr) {
+> > +            memory_region_ref(mr);
+> > +        }
+> > +        rcu_read_unlock();
+> > +
+> > +        if (mr) {
+> > +            memory_region_do_writeback(mr, offset, dline_size);
+> > +            memory_region_unref(mr);
+> > +        }
+> > +    }
+> > +#endif
+> > +}
+> > diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> > index 2d6cd09634..21ea3631d6 100644
+> > --- a/target/arm/translate-a64.c
+> > +++ b/target/arm/translate-a64.c
+> > @@ -1746,6 +1746,11 @@ static void handle_sys(DisasContext *s, uint32_t=
+ insn, bool isread,
+> >          tcg_rt =3D cpu_reg(s, rt);
+> >          gen_helper_dc_zva(cpu_env, tcg_rt);
+> >          return;
+> > +    case ARM_CP_DC_CVAP:
+> > +        /* DC CVAP / DC CVADP */
+> > +        tcg_rt =3D cpu_reg(s, rt);
+> > +        gen_helper_dc_cvap(cpu_env, tcg_rt);
+> > +        return;
+> >      default:
+> >          break;
+> >      }
 >
 >
 > --
 > Alex Benn=C3=A9e
-
-Thank you.
 
 BR
 Beata

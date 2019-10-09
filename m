@@ -1,195 +1,308 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp590145wrm;
-        Wed, 9 Oct 2019 00:39:09 -0700 (PDT)
-X-Received: by 2002:adf:cd88:: with SMTP id q8mr1738871wrj.223.1570606749313;
-        Wed, 09 Oct 2019 00:39:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570606749; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp804321wrm;
+        Wed, 9 Oct 2019 04:40:18 -0700 (PDT)
+X-Received: by 2002:a92:460e:: with SMTP id t14mr2792931ila.139.1570621218125;
+        Wed, 09 Oct 2019 04:40:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570621218; cv=none;
         d=google.com; s=arc-20160816;
-        b=DaYgp6xPlWUUX79ziENDRm5Spqk0dK17yKHQr40IfODJuhGKbxAAy3Ki2OBEbUgegR
-         snzJ/pfKpG5TxqHbi+34wGUez/5YwsGQbl/LGB/aMH2w6f5e+XL5iZN/M32s4tFlF6vL
-         uclPWsNQuq17AjaG6kMsYPblc/wfUDb92QhPUfphK872H5cx6jaYvGiQcUCwk5zzWBPs
-         9JilbnoybLAUqYGdump3gvEdzQj5QYZRVJbIfbLKjGrUNAj44Wiuj0L6ibfebGBdh8Rw
-         jMjtjGxUBbBZ0WheIp3JhG/MN0kvpBsOQ17dupMSXTiLvW+zZM/+Yor7te3foyrH0RCc
-         gY4A==
+        b=XaX+1IlHm8DnfpOpx6pET+OpAFIBts3UEZ6cc/GqZPAipYY3M2Lm9sn2Zshtr/WcdQ
+         lXoKZwDfuZ0oeX/jCt9gSP83n1dk3EGp2a+srn06ab17QG/0pPGuUw0ntHCrT339yFbh
+         q4YDE5SN8WHD9M/cxdhPYny20UCPmnuCalgQoz8rx1bfsSCbCVa42NplBew3foJMmxN3
+         IdlD6kxdjGvy5S//CEj+h0nVzE7uaCq/DOtO9sC5IPK4aP1kAivxrRSWtgmCCuG+my86
+         9SwiR0tiA1kIgcg2mnT0f6i4QsCDGLHJfixHMqDPx6DDM8bM1sZbGYp/ej/e1CwttIWr
+         dZ7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject:sender
-         :dkim-signature;
-        bh=8zCFhaOYo4JvZDuTR8LT8ZeRH1glJIoNVNvHzaX7Cqs=;
-        b=N1gcqZyflRWxF6v0TzR3FtQXSAPuI3Rh8MUDALtIRDDAKftSpzDtBe6pKGjhAMYkup
-         WTi0ya4/OnT0WEiTeJ1vKPKO4/ztX2srr743q0QPq/3zlT1bBKY52VJ9D0tG66j0mPA1
-         Ge+vonRt+6yHjrkPP2i1dHlgnLZVG2+xWwItISC0swmMtp3laXfYHTshEmIG2wVTfoQL
-         +hKYIkiq17yIq2kQMkKGhG7/uV2wSImjw77DYcNIcNfHe6xT8CJ41vLe7dTcW1HCb1Wy
-         gNLtYLguj+592Q2bfdZb/KgiC/PNTYgfyLZtGU2nFzAByQWHtzXeKYGSiLdwii/U2Xnj
-         k/Tg==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=MUHVWGhyuBC1n9S6rYV/LsvWZgGMjW4/odo7lrtct3I=;
+        b=J3Hh5sdA5DD6y5HevvXOSndrLKjd5VT+vfYrXm/6RQKGZNLt6BspjAE7lm6ppzEs9U
+         QOT5cMEayZUUZft4YV7JBYBBQlSvRAmvUS50sNt9epOhvZsbaRl6sdu3sUuJVo7cRAmC
+         kpwsf6cT3089oX3mbJfkAjNYwgvovPkQsVP+GAMyTkbx6eh/Cc+sZJExYFdLbCTiPHeb
+         rKJKj6Bplnnog6IKluaV9527tUkmBnyys5kXRZQNlYePanE3315aIkBI4jAi7eLSpNxs
+         jFqwOaClzqikl5MOt5O3p181/hrBTfaiep79MCD5Gw5tC+s09Vgr210dejJvxK0BtFWr
+         q6qQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=a4VU4Lpm;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
-Return-Path: <philippe.mathieu.daude@gmail.com>
+       dkim=pass header.i=@linaro.org header.s=google header.b=ltYr2wXe;
+       spf=pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=beata.michalska@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <beata.michalska@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id t124sor707149wmb.1.2019.10.09.00.39.09
+        by mx.google.com with SMTPS id p124sor1012409iod.98.2019.10.09.04.40.17
+        for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 09 Oct 2019 00:39:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Wed, 09 Oct 2019 04:40:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=a4VU4Lpm;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=ltYr2wXe;
+       spf=pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=beata.michalska@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=8zCFhaOYo4JvZDuTR8LT8ZeRH1glJIoNVNvHzaX7Cqs=;
-        b=a4VU4LpmOcvKddw9FNgq6jUIm9m3OHkTQZoJSIfuAgwIZJL33jZPT9qa5rYVcGPHhK
-         nWXJDNiKq4b+jqj//mjMZl2HGYM801289uhhZKspOa1NbU1AAyQAnxpB9h4aqGcHcUvO
-         pgd0IZ3JTy0nOmt0QGFVOOMDAY8mM3ncYQlC9UCD9gGQcpQjdJxuzNkrk/QEFbq2YpPJ
-         Ju3wqHPVmH20nPHgVpUQ8NPZAgmefgIX1AtB9rRpwUyXifjKzErY+Iu2EZeUrGJ9yhLc
-         1zGcOVCM6VbI1EUz26u+YNBZQr6QXDmQja8siopQ6u2ZsmwJz6mLPXzYtX2Te8VoeAyE
-         L1gA==
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=MUHVWGhyuBC1n9S6rYV/LsvWZgGMjW4/odo7lrtct3I=;
+        b=ltYr2wXee+wxFHEsvwGrG1DR7/kIQZCUR1LswHa24EqdmPAhLeR0FNJsWs93bJUFla
+         +F1zSs4aO4VIfJ6iYqRJZEgfohWN8t91z1xpZPW8MGdhsYZcQWSxpv2Qf26pRNUGWtB1
+         JkS0UWMBa0ZGIsVhF2eCoIRCbpF/aWSFOPIM2lzcTy0CpAzMYvY3N37TqAvUvXzjWlbt
+         pp7gKi8J0LUyZ0dSDGe1y6jNDH/ooyzVZ6tYgOrlkwOozgSAfVWhatFW6OaMhac0i+1a
+         2LttcdJzmWN1YAqwnq5B/BO8szqUV9YXQPgBhzgZlNBgQpaXVJSK/UwpP2SIDDNRcI+8
+         SBWg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=8zCFhaOYo4JvZDuTR8LT8ZeRH1glJIoNVNvHzaX7Cqs=;
-        b=LfpFHSoUzAjl08vGsDG1AS041iyCUbC2ffDaPHt2LqRiDslY1QJK/DWrJkuKkHfr8B
-         iiyINhIEJwLrwtgxraNm38e9DQDipmybtXTk+QqBoilYxagPkqVDy9r10cDqNLCEKoPH
-         nTpLHHSPSvCyKuWvKTxSqemqkdtPZcNQDaPv63NO1f+0WCJuLHo0CrFf34KZuvxBk9g3
-         7q2nwxGJ2GPG/2P6q8wFRK6Gy5pO0tRxyJcMATzPpj5+Zxz8TUi0PpTX2dDTsMak55RZ
-         oONA+peoxgEMbv4LjiYDjqguTLFJYqHfLXYUFz5KL4jUkBXWnPELeCKrSc9bYrxPyYgb
-         6OLQ==
-X-Gm-Message-State: APjAAAVtrQQwt2VMCLUaQziQ75vrtFZxKAtKouiWJ9sfE5FzaYKD98H7
-	Xs7W1kh6gecd2gCEU1bDgK0=
-X-Google-Smtp-Source: APXvYqxCyh6EsXBbQxydeZWUVX3A0jT3NOAhxJHLS7Fsfw/nct2c84Y2/WnTkW5f3/eyCuWkKp8Xvg==
-X-Received: by 2002:a1c:5946:: with SMTP id n67mr1540645wmb.93.1570606748866;
-        Wed, 09 Oct 2019 00:39:08 -0700 (PDT)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.35] (46.red-83-42-66.dynamicip.rima-tde.net. [83.42.66.46])
-        by smtp.gmail.com with ESMTPSA id u6sm1264547wrt.92.2019.10.09.00.39.06
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 09 Oct 2019 00:39:07 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH 11/19] hw/arm/bcm2835_peripherals: Use the SYS_timer
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Zolt=c3=a1n_Baldaszti?= <bztemail@gmail.com>,
- Laurent Bonnans <laurent.bonnans@here.com>,
- Esteban Bosse <estebanbosse@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, Clement Deschamps <clement.deschamps@antfield.fr>,
- Cleber Rosa <crosa@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Cheng Xiang <ext-cheng.xiang@here.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Pekka Enberg <penberg@iki.fi>, Guenter Roeck <linux@roeck-us.net>,
- Eduardo Habkost <ehabkost@redhat.com>
-References: <20190926173428.10713-1-f4bug@amsat.org>
- <20190926173428.10713-12-f4bug@amsat.org> <87sgo3i7n1.fsf@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <c4886680-45aa-b039-4baf-b413493f3890@amsat.org>
-Date: Wed, 9 Oct 2019 09:39:06 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.0
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=MUHVWGhyuBC1n9S6rYV/LsvWZgGMjW4/odo7lrtct3I=;
+        b=Hse730SkfxVl3zr5ALPY8PoeG2x1AVToasZGT/rf1XPvClboORMmOo3l3baOzfXcam
+         s1bfGH5CxiHGzRgXP0PvnLC0lQs9U4Bei47QzXdB1/WKpDB0Y2+7aClmH/8LzoarzrC5
+         9B31W4OUnmSZ9fBh/RbunS/VD7BKPI/cS56Zhcqr33604rWD+wq/itJ0OVoC7PGWwZPb
+         ZBhDFj/a65YeO2nRUXXlEKMCjs0l+mrYx36vyUb5kBmdn+MARQf2jb21hB0wrPjnicfB
+         N1kMGxN2p0c4BuVHCXX8aepBsVmJLxVVwusD/eFX3aNvqbESh4RMQxWE+fZE/8M/w3TX
+         xFCw==
+X-Gm-Message-State: APjAAAUdkklHTsdds5GVZKCRJMhHFJo0xOI+nXi6L7EfRcumugoUrkf4
+	Q609iQP0+aHGOE2GHtafvZWHXsq0l1Daq6tgUKqzPhbbe7U=
+X-Google-Smtp-Source: APXvYqw4vHVfDkqilXHeokUulIw6APhojnO1E2BUHPuvfHr30pYcOI1LyuuMR3pAFvR5mF6V983LST9Q2WByuPc98sU=
+X-Received: by 2002:a6b:2c02:: with SMTP id s2mr2682557ios.307.1570621217442;
+ Wed, 09 Oct 2019 04:40:17 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <87sgo3i7n1.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: e+WrikzzC88G
+References: <20190910095610.4546-1-beata.michalska@linaro.org>
+ <20190910095610.4546-3-beata.michalska@linaro.org> <87d0fqbm19.fsf@linaro.org>
+In-Reply-To: <87d0fqbm19.fsf@linaro.org>
+From: Beata Michalska <beata.michalska@linaro.org>
+Date: Wed, 9 Oct 2019 12:40:06 +0100
+Message-ID: <CADSWDzum=6OZh5dTCCfSonpemFZQ_RV+dg7HYp3yN8TvpLB2Wg@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH 2/4] Memory: Enable writeback for given
+ memory region
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, quintela@redhat.com, 
+	Richard Henderson <richard.henderson@linaro.org>, 
+	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, shameerali.kolothum.thodi@huawei.com, 
+	eric.auger@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 8U9gdGE0z7uB
 
-On 10/8/19 5:22 PM, Alex Bennée wrote:
-> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
-> 
->> Connect the recently added SYS_timer.
->> Now U-Boot does not hang anymore polling a free running counter
->> stuck at 0.
->> This timer is also used by the Linux kernel thermal subsystem.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>   hw/arm/bcm2835_peripherals.c         | 21 ++++++++++++++++++++-
->>   include/hw/arm/bcm2835_peripherals.h |  3 ++-
->>   2 files changed, 22 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
->> index 70bf927a02..965f4c1f3d 100644
->> --- a/hw/arm/bcm2835_peripherals.c
->> +++ b/hw/arm/bcm2835_peripherals.c
->> @@ -58,6 +58,10 @@ static void bcm2835_peripherals_init(Object *obj)
->>       /* Interrupt Controller */
->>       sysbus_init_child_obj(obj, "ic", &s->ic, sizeof(s->ic), TYPE_BCM2835_IC);
->>
->> +    /* SYS Timer */
->> +    sysbus_init_child_obj(obj, "systimer", &s->systmr, sizeof(s->systmr),
->> +                          TYPE_BCM2835_SYSTIMER);
->> +
->>       /* UART0 */
->>       sysbus_init_child_obj(obj, "uart0", &s->uart0, sizeof(s->uart0),
->>                             TYPE_PL011);
->> @@ -171,6 +175,22 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
->>                   sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->ic), 0));
->>       sysbus_pass_irq(SYS_BUS_DEVICE(s), SYS_BUS_DEVICE(&s->ic));
->>
->> +    /* Sys Timer */
->> +    if (err) {
->> +        error_propagate(errp, err);
->> +        return;
->> +    }
-> 
-> This looks like an extra check because err is checked above and hasn't
-> been messed with since.
+On Tue, 24 Sep 2019 at 01:00, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
+>
+>
+> Beata Michalska <beata.michalska@linaro.org> writes:
+>
+> > Add an option to trigger memory writeback to sync given memory region
+> > with the corresponding backing store, case one is available.
+> > This extends the support for persistent memory, allowing syncing on-dem=
+and.
+> >
+> > Also, adding verification for msync support on host.
+> >
+> > Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
+> > ---
+> >  configure               | 24 ++++++++++++++++++++++++
+> >  exec.c                  | 38 ++++++++++++++++++++++++++++++++++++++
+> >  include/exec/memory.h   |  6 ++++++
+> >  include/exec/ram_addr.h |  6 ++++++
+> >  memory.c                | 12 ++++++++++++
+> >  5 files changed, 86 insertions(+)
+> >
+> > diff --git a/configure b/configure
+> > index 95134c0180..bdb7dc47e9 100755
+> > --- a/configure
+> > +++ b/configure
+> > @@ -5081,6 +5081,26 @@ if compile_prog "" "" ; then
+> >      fdatasync=3Dyes
+> >  fi
+> >
+> > +##########################################
+> > +# verify support for msyc
+> > +
+> > +msync=3Dno
+> > +cat > $TMPC << EOF
+> > +#include <unistd.h>
+> > +#include <sys/mman.h>
+> > +int main(void) {
+> > +#if defined(_POSIX_MAPPED_FILES) && _POSIX_MAPPED_FILES > 0 \
+> > +&& defined(_POSIX_SYNCHRONIZED_IO) && _POSIX_SYNCHRONIZED_IO > 0
+> > +return msync(NULL,0, MS_SYNC);
+> > +#else
+> > +#error Not supported
+> > +#endif
+> > +}
+> > +EOF
+> > +if compile_prog "" "" ; then
+> > +    msync=3Dyes
+> > +fi
+> > +
+> >  ##########################################
+> >  # check if we have madvise
+> >
+> > @@ -6413,6 +6433,7 @@ echo "fdt support       $fdt"
+> >  echo "membarrier        $membarrier"
+> >  echo "preadv support    $preadv"
+> >  echo "fdatasync         $fdatasync"
+> > +echo "msync             $msync"
+> >  echo "madvise           $madvise"
+> >  echo "posix_madvise     $posix_madvise"
+> >  echo "posix_memalign    $posix_memalign"
+> > @@ -6952,6 +6973,9 @@ fi
+> >  if test "$fdatasync" =3D "yes" ; then
+> >    echo "CONFIG_FDATASYNC=3Dy" >> $config_host_mak
+> >  fi
+> > +if test "$msync" =3D "yes" ; then
+> > +    echo "CONFIG_MSYNC=3Dy" >> $config_host_mak
+> > +fi
+>
+> I think it's best to split this configure check into a new prequel patch =
+and...
 
-Oops good catch. Looking at older branch I had this property:
+I might just drop it in favour of CONFIG_POSIX switch ......
+>
+> >  if test "$madvise" =3D "yes" ; then
+> >    echo "CONFIG_MADVISE=3Dy" >> $config_host_mak
+> >  fi
+> > diff --git a/exec.c b/exec.c
+> > index 235d6bc883..5ed6908368 100644
+> > --- a/exec.c
+> > +++ b/exec.c
+> > @@ -65,6 +65,8 @@
+> >  #include "exec/ram_addr.h"
+> >  #include "exec/log.h"
+> >
+> > +#include "qemu/pmem.h"
+> > +
+> >  #include "migration/vmstate.h"
+> >
+> >  #include "qemu/range.h"
+> > @@ -2182,6 +2184,42 @@ int qemu_ram_resize(RAMBlock *block, ram_addr_t =
+newsize, Error **errp)
+> >      return 0;
+> >  }
+> >
+> > +/*
+> > + * Trigger sync on the given ram block for range [start, start + lengt=
+h]
+> > + * with the backing store if available.
+> > + * @Note: this is supposed to be a SYNC op.
+> > + */
+> > +void qemu_ram_writeback(RAMBlock *block, ram_addr_t start, ram_addr_t =
+length)
+> > +{
+> > +    void *addr =3D ramblock_ptr(block, start);
+> > +
+> > +    /*
+> > +     * The requested range might spread up to the very end of the bloc=
+k
+> > +     */
+> > +    if ((start + length) > block->used_length) {
+> > +        error_report("%s: sync range outside the block boundires: "
+> > +                     "start: " RAM_ADDR_FMT " length: " RAM_ADDR_FMT
+> > +                     " block length: " RAM_ADDR_FMT " Narrowing down .=
+.." ,
+> > +                     __func__, start, length, block->used_length);
+>
+> Is this an error or just logging? error_report should be used for stuff
+> that the user needs to know about so it will appear on the HMP console
+> (or via stderr). If so what is the user expected to do? Have they
+> misconfigured their system?
+>
 
-     object_property_set_uint(OBJECT(&s->systmr), 1000000, "freq_hz", &err);
+This should be logging  rather than 'error reporting as such. My bad.
+Will address that in the next version.
 
-but then when I removed it I forgot to clean the error check. Thanks!
-
->> +    object_property_set_bool(OBJECT(&s->systmr), true, "realized", &err);
->> +    if (err) {
->> +        error_propagate(errp, err);
->> +        return;
->> +    }
->> +    memory_region_add_subregion(&s->peri_mr, ST_OFFSET,
->> +                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systmr), 0));
->> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->systmr), 0,
->> +        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_ARM_IRQ,
->> +                               INTERRUPT_ARM_TIMER));
->> +
->>       /* UART0 */
->>       qdev_prop_set_chr(DEVICE(&s->uart0), "chardev", serial_hd(0));
->>       object_property_set_bool(OBJECT(&s->uart0), true, "realized", &err);
->> @@ -352,7 +372,6 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
->>       }
->>
->>       create_unimp(s, &s->armtmr, "bcm2835-sp804", ARMCTRL_TIMER0_1_OFFSET, 0x40);
->> -    create_unimp(s, &s->systmr, "bcm2835-systimer", ST_OFFSET, 0x20);
->>       create_unimp(s, &s->cprman, "bcm2835-cprman", CPRMAN_OFFSET, 0x1000);
->>       create_unimp(s, &s->a2w, "bcm2835-a2w", A2W_OFFSET, 0x1000);
->>       create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
->> diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
->> index be7ad9b499..5b9fc89453 100644
->> --- a/include/hw/arm/bcm2835_peripherals.h
->> +++ b/include/hw/arm/bcm2835_peripherals.h
->> @@ -24,6 +24,7 @@
->>   #include "hw/sd/sdhci.h"
->>   #include "hw/sd/bcm2835_sdhost.h"
->>   #include "hw/gpio/bcm2835_gpio.h"
->> +#include "hw/timer/bcm2835_systmr.h"
->>   #include "hw/misc/unimp.h"
->>
->>   #define TYPE_BCM2835_PERIPHERALS "bcm2835-peripherals"
->> @@ -39,7 +40,7 @@ typedef struct BCM2835PeripheralState {
->>       MemoryRegion ram_alias[4];
->>       qemu_irq irq, fiq;
->>
->> -    UnimplementedDeviceState systmr;
->> +    BCM2835SysTimerState systmr;
->>       UnimplementedDeviceState armtmr;
->>       UnimplementedDeviceState cprman;
->>       UnimplementedDeviceState a2w;
-> 
-> 
+> > +        length =3D block->used_length - start;
+> > +    }
+> > +
+> > +#ifdef CONFIG_LIBPMEM
+> > +    /* The lack of support for pmem should not block the sync */
+> > +    if (ramblock_is_pmem(block)) {
+> > +        pmem_persist(addr, length);
+> > +    } else
+> > +#endif
+> > +    if (block->fd >=3D 0) {
+> > +#ifdef CONFIG_MSYNC
+> > +        msync((void *)((uintptr_t)addr & qemu_host_page_mask),
+> > +               HOST_PAGE_ALIGN(length), MS_SYNC);
+> > +#else
+> > +        qemu_fdatasync(block->fd);
+> > +#endif
+>
+> ... hide the implementation details in util/cutils.c, maybe as
+> qemu_msync()?
+>
+> > +    }
+> > +}
+> > +
+> >  /* Called with ram_list.mutex held */
+> >  static void dirty_memory_extend(ram_addr_t old_ram_size,
+> >                                  ram_addr_t new_ram_size)
+> > diff --git a/include/exec/memory.h b/include/exec/memory.h
+> > index 2dd810259d..ff0d7937cf 100644
+> > --- a/include/exec/memory.h
+> > +++ b/include/exec/memory.h
+> > @@ -1242,6 +1242,12 @@ void *memory_region_get_ram_ptr(MemoryRegion *mr=
+);
+> >   */
+> >  void memory_region_ram_resize(MemoryRegion *mr, ram_addr_t newsize,
+> >                                Error **errp);
+> > +/**
+> > + * memory_region_do_writeback: Trigger writeback for selected address =
+range
+> > + * [addr, addr + size]
+> > + *
+> > + */
+> > +void memory_region_do_writeback(MemoryRegion *mr, hwaddr addr, hwaddr =
+size);
+> >
+> >  /**
+> >   * memory_region_set_log: Turn dirty logging on or off for a region.
+> > diff --git a/include/exec/ram_addr.h b/include/exec/ram_addr.h
+> > index a327a80cfe..d4bce81a03 100644
+> > --- a/include/exec/ram_addr.h
+> > +++ b/include/exec/ram_addr.h
+> > @@ -180,6 +180,12 @@ void qemu_ram_free(RAMBlock *block);
+> >
+> >  int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp)=
+;
+> >
+> > +void qemu_ram_writeback(RAMBlock *block, ram_addr_t start, ram_addr_t =
+length);
+> > +
+> > +/* Clear whole block of mem */
+> > +#define qemu_ram_block_writeback(rb)    \
+> > +    qemu_ram_writeback(rb, 0, rb->used_length)
+> > +
+> >  #define DIRTY_CLIENTS_ALL     ((1 << DIRTY_MEMORY_NUM) - 1)
+> >  #define DIRTY_CLIENTS_NOCODE  (DIRTY_CLIENTS_ALL & ~(1 << DIRTY_MEMORY=
+_CODE))
+> >
+> > diff --git a/memory.c b/memory.c
+> > index 61a254c3f9..436eb64737 100644
+> > --- a/memory.c
+> > +++ b/memory.c
+> > @@ -2228,6 +2228,18 @@ void memory_region_ram_resize(MemoryRegion *mr, =
+ram_addr_t newsize, Error **errp
+> >      qemu_ram_resize(mr->ram_block, newsize, errp);
+> >  }
+> >
+> > +
+> > +void memory_region_do_writeback(MemoryRegion *mr, hwaddr addr, hwaddr =
+size)
+> > +{
+> > +    /*
+> > +     * Might be extended case needed to cover
+> > +     * different types of memory regions
+> > +     */
+> > +    if (mr->ram_block && mr->dirty_log_mask) {
+> > +        qemu_ram_writeback(mr->ram_block, addr, size);
+> > +    }
+> > +}
+> > +
+> >  /*
+> >   * Call proper memory listeners about the change on the newly
+> >   * added/removed CoalescedMemoryRange.
+>
+>
 > --
-> Alex Bennée
-> 
+> Alex Benn=C3=A9e
+
+Thank you.
+
+BR
+Beata

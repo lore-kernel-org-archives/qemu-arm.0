@@ -1,239 +1,272 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1195471wrm;
-        Wed, 9 Oct 2019 10:15:50 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwxYKd1PZoH40yCs4ItoqxAShvcp4Mx83qmB0FWhdzYcmjTQn+sCi4Vt+w/IwyORvSulTVw
-X-Received: by 2002:a37:b981:: with SMTP id j123mr4868344qkf.205.1570641349997;
-        Wed, 09 Oct 2019 10:15:49 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1570641349; cv=pass;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1207233wrm;
+        Wed, 9 Oct 2019 10:26:44 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzbgB7hAUHTvO5S2Si83tgVde9upYyipIU9ZHyNjmSvYgyhqbgt8DBU5w7/MdrPC+WF4+Hr
+X-Received: by 2002:aed:2462:: with SMTP id s31mr5063443qtc.40.1570642004438;
+        Wed, 09 Oct 2019 10:26:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570642004; cv=none;
         d=google.com; s=arc-20160816;
-        b=DViMy9eNOwWzI4oiStRCpU2acbA2kRB2yWVbRmRbUALEwZM/bjE7xkzxOmd1+0JZ0s
-         Ti4p/il0BjSK54MSBfNYjysnFhZGkGdJvYFvZVRRxzJODOiHOEUVcEHSOXMXAWLE903F
-         Oo7bUvVV+WTR32xWQ1IHpO5zPYIAFrL7WCMPC2jX3UryMqNlk9vGIO8LOxdoqnZsY9Ft
-         URYDxV3DHQ4D8z9TmMR1pVLEU36f+OshGIWUU6P3edH5ARlCrPImdAinfvHOcmzSY0m8
-         QtHdON21QR/kh8xbVfpEiKq9fQ10qVKtRxD4t6/aTsQaBuJF9labEju75Is8WNYzkm7n
-         tw5A==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=VH5Eyzz6xVkhwJA0JYy/fhBZ5tWVFwoMOZBwBwZWT0nx8UhmnIo/kpQ0pUx1rDJC6o
+         9T4MJNvOWbQWlJ5QSTs6WhmA8tACzWagPlKwuuAorYfn7fEGDytVb9afmLpfTzVs3IMH
+         dj6pK5LfNmLkSPrh29sWvDFNkFY4KiNtE3TDdJ86/nieDXlUL0a50o/oVMmVDfSsXLQO
+         7AdeocC9v1azFyKT95z9wkjTvEqlZBNs9tYwFuRC+CpUkJrlT9VfpPr04YzoXhjhb2JR
+         wfmgwjNWkAAvvokxwIgi2TeaqY4WHkPHg4+zNUjJTAGgAL7bALWuiCp8SqE3cN3fJxeJ
+         jQNQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:to:from:dkim-signature;
-        bh=P+FrAXsYGM3ontZCGN9l1VMwtfn51EODt5kR/B+RH/k=;
-        b=u8Aih0FqYXYwbp1vBUel6oAfhhiUg+R+acrCMGtUdziXphzXsDo2h8/2BcZfl7dINj
-         Mbl7Lz/LP2ViW2rI15pnfNvKyNdTf4goWnwP15r9Uly/o0EfkDmvxp3t+qk5kTV71bqo
-         MNWDsrYoDDkQT9wD/Fq3PZWLqdDdLCTK7wxSusaFlbjvfLtfNyLhWxHiE7oqTlQqYLir
-         V5jBQsbZwUI60Fa4RzrgA+7IhcyTv4fyEPTi6Xlt3oVpkEmb5MUkY/P2Rm8K0wWtgwZT
-         w4b32YfL5Vxfta4nCj1vRLC7rmnxwQDIz6RUzLlyjp4Lp3q2KVHJwr0tohuYYvcZbR1K
-         QGCw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b=E2iWKVV7;
-       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:openpgp:from:references:to:subject:dkim-signature;
+        bh=LnthtDy+kBjD5T6p/osgMCT9YrFI9qED9phS99dKGNY=;
+        b=Z2LvwYx6LIRRoZsWVHUd/aXJsdYqGGu7ssEjB17WZtQ7jFwoI9lq9f4eSpOK7Us8Lr
+         +XOCVpfRDgb75DC06RGhMJy41Qh0iXLKGnoTG41xynmVJ5ZjzjIwKzIJFj9HTor89fxC
+         rhwCndkkphL9QjhhODAVRR+iJ9QtfFyMB5qKsHJdIrfZebATjQ/ornYpuhe98cJXRwhb
+         KiUAqMIjCOB3s7BVDmIXrHgDc79G5LLEPdif4bhwiU6fOD3cC0QPC23ni0iltutoBvCY
+         mwZI575mrBhc37QOAAdCW8nbZZ4DjQdpMLruy6wnE+RPC/o276L7/q9DGdluH81/GXAu
+         TbwQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IYGmZrn+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 19si2721335qvm.21.2019.10.09.10.15.49
+        by mx.google.com with ESMTPS id e12si2872034qtm.103.2019.10.09.10.26.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Oct 2019 10:15:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 09 Oct 2019 10:26:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b=E2iWKVV7;
-       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Received: from localhost ([::1]:52906 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IYGmZrn+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53022 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iIFYy-0004DV-Dk
-	for alex.bennee@linaro.org; Wed, 09 Oct 2019 13:15:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47831)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iIFjX-0007zy-9x
+	for alex.bennee@linaro.org; Wed, 09 Oct 2019 13:26:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50536)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iI7bR-0000Il-87
- for qemu-arm@nongnu.org; Wed, 09 Oct 2019 04:45:50 -0400
+ (envelope-from <pbonzini@redhat.com>) id 1iI83u-000329-Ui
+ for qemu-devel@nongnu.org; Wed, 09 Oct 2019 05:15:16 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iI7bP-0003xF-GM
- for qemu-arm@nongnu.org; Wed, 09 Oct 2019 04:45:48 -0400
-Received: from mail-eopbgr130091.outbound.protection.outlook.com
- ([40.107.13.91]:35591 helo=EUR01-HE1-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
- id 1iI7bO-0003wK-OZ; Wed, 09 Oct 2019 04:45:47 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=lIwTg5SCfwZnMTA906hUJK5/vOfyZutouyfZhUjik8HAbcv2eNNMUcB9+BuUsEWpvg+iQLg2F8+QibllJyank7IzYXZ4iCXXg79B8gDEa2ieGbqC/hfQaffsn0dK7cJ6lroJ/zXjpDxB95yqNMcSO/ySDwQQgsQAarhZ78QvImpBPuoScvgKjmwBLGl6v5CNSob6x4OOK0HjvMGY0MqY2ZxU6IvHaUzpKsKEnsTikzvJUueD8YwUfMoI7KRV5RZn83Adoe3mvEfpM6sjuxYDPSWSDf6hk8mizQPdw6PHKs00cWz1PiuzxpTrVMmzw75YCg15/qJ5wt/uyjn08dSVzA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=P+FrAXsYGM3ontZCGN9l1VMwtfn51EODt5kR/B+RH/k=;
- b=fe2LW/NMZu0ETqT7j7efjkAX2h48AugwG4ygF1IjsX31T6S7DlyqHTNvX+M9/PHi6Kt/Wa6zLKBbUwaaeGWS70zMIl/kCgI0pMcYIL0Uzi67ZT2vswOlrF0MVaUM8mFAbPgS//YIEI/fz63nJZNQioTrpvz3Zgmz/rLm0eoYN+dvsIRvBOj6PZlMQnef7LZwVqNiwvXvpEdhihe6Kniv7a8G+bQ1M8VC8GYlUm/gmlIgdgWJhC7NqmuIgt8TvCc2QcwGgNW9+xCku8CMVnLHHRrU7Eqx6jXyyNkgqJ8VwqWKSbEAoD9JbU6IWJIuHo8Puutk5CBwbAIvB+uCogbrjw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
- header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=P+FrAXsYGM3ontZCGN9l1VMwtfn51EODt5kR/B+RH/k=;
- b=E2iWKVV7c7P6fL+FSGsCw43oPuHXsRffyFhJmkYQTXLwUoC3cVKPzn8oOBngr2nhZrZzWf2aX/eOGsPInDgrT3jQwrlMy6DRsdaLnnWa1ph7rCW3x32MwXeMcfmCIwzD51YOpDMj5wqKYtDLVk/9pkdvqJkrbgAqL7hbofVzz5Q=
-Received: from DB8PR08MB5498.eurprd08.prod.outlook.com (52.133.242.216) by
- DB8PR08MB5052.eurprd08.prod.outlook.com (10.255.18.20) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2347.16; Wed, 9 Oct 2019 08:45:42 +0000
-Received: from DB8PR08MB5498.eurprd08.prod.outlook.com
- ([fe80::2856:990a:197a:288f]) by DB8PR08MB5498.eurprd08.prod.outlook.com
- ([fe80::2856:990a:197a:288f%2]) with mapi id 15.20.2327.026; Wed, 9 Oct 2019
- 08:45:42 +0000
-From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
-To: Greg Kurz <groug@kaod.org>
-Subject: Re: [PATCH v4 00/31] error: auto propagated local_err
-Thread-Topic: [PATCH v4 00/31] error: auto propagated local_err
-Thread-Index: AQHVeHBjrP5HIXy9eUuF1AJePQl1JqdQY7bDgABF8QD//94LAIAAOrKAgAFIlAA=
-Date: Wed, 9 Oct 2019 08:45:42 +0000
-Message-ID: <9798f8c1-896d-c304-e3a7-2aee505c3a63@virtuozzo.com>
-References: <20191001155319.8066-1-vsementsov@virtuozzo.com>
- <87eeznn185.fsf@dusky.pond.sub.org>
- <a449a64d-ca3c-2442-27b3-70b565545a36@virtuozzo.com>
- <20191008113932.18eb4c1d@bahia.lan>
- <7567d46b-f51c-d459-fd54-7841637d0666@virtuozzo.com>
-In-Reply-To: <7567d46b-f51c-d459-fd54-7841637d0666@virtuozzo.com>
-Accept-Language: ru-RU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: HE1P190CA0020.EURP190.PROD.OUTLOOK.COM (2603:10a6:3:bc::30)
- To DB8PR08MB5498.eurprd08.prod.outlook.com
- (2603:10a6:10:11c::24)
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=vsementsov@virtuozzo.com; 
-x-ms-exchange-messagesentrepresentingtype: 1
-x-tagtoolbar-keys: D20191009114538151
-x-originating-ip: [185.231.240.5]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: e21404d5-7165-4e7b-30cc-08d74c951170
-x-ms-traffictypediagnostic: DB8PR08MB5052:
-x-microsoft-antispam-prvs: <DB8PR08MB5052255F54F0111DED585CEAC1950@DB8PR08MB5052.eurprd08.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-forefront-prvs: 018577E36E
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(376002)(136003)(396003)(366004)(346002)(39840400004)(199004)(189003)(53754006)(86362001)(102836004)(66476007)(6246003)(99286004)(64756008)(66556008)(66446008)(71190400001)(71200400001)(76176011)(6506007)(386003)(66946007)(305945005)(229853002)(54906003)(5660300002)(316002)(52116002)(36756003)(7736002)(2906002)(66066001)(4326008)(7406005)(478600001)(6116002)(25786009)(7416002)(3846002)(6486002)(14454004)(6436002)(561944003)(6512007)(31686004)(8936002)(256004)(81156014)(186003)(81166006)(26005)(31696002)(486006)(6916009)(8676002)(446003)(2616005)(476003)(11346002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:DB8PR08MB5052;
- H:DB8PR08MB5498.eurprd08.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: virtuozzo.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: MjGgyMRDFF9Rs1r4S/5rLfQAurSJvEu4kRDhZOK2eXVEann7VBar7tT7mSgbLB97V1ygqARDCe7zqdKoyVsz9mAqEWj2HQLr+cJ2FtunuZ7MwxHyIKHOE1c7qnsXeS0TpoG9ncPwlqgB0t53qefzP8J3uHPtjgPt0jO9i2T8YaJIXvmHOcBgmPttR1QValMeafPBxZOwjoqg4dpx/BEu0xv+1PXt4LCfAuoCvY9roiVGVPqFYIOT63IH2UmdypKQgHScPFqj21G1KbVf7dkoAmaSi2o7jdqqjUH87mmvf4m7Jq4c7BP7Y2pjU+rlZKUnWvq/3epzq1/s8CChxBpv5p3+VnGCwedXP6oX95L5ftQNWxTMTYbOZ1yJQZh/jrFu8F0ozdjj4XBVEdORpSejqbsmGWX8Fyb/lIv8eDQ7AHc=
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <11210B3B7115F446AE22F7B9D2F87160@eurprd08.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ (envelope-from <pbonzini@redhat.com>) id 1iI83t-0005r1-Ga
+ for qemu-devel@nongnu.org; Wed, 09 Oct 2019 05:15:14 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:51694
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1iI83t-0005pP-Cy
+ for qemu-devel@nongnu.org; Wed, 09 Oct 2019 05:15:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1570612512;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=LnthtDy+kBjD5T6p/osgMCT9YrFI9qED9phS99dKGNY=;
+ b=IYGmZrn+Y7PNDA6rC6gJxONNq4Q78YUAr6K2DMdAaez4UyhscJpUIpt/10uK4VvB3TNDmm
+ VCr60vqHtszEhpg8ho+uIipGKXYBDlBpegFFll3Gcuxpvg4mDZjJSjjSVIO8lpZeWn+hkm
+ dWsudNyl/97TLLDTkBfbTH0OOMXtvtw=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-57-5-4RjutvMeWVqebn9BFteA-1; Wed, 09 Oct 2019 05:15:09 -0400
+Received: by mail-wr1-f71.google.com with SMTP id f3so792752wrr.23
+ for <qemu-devel@nongnu.org>; Wed, 09 Oct 2019 02:15:08 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=d5tISs1KCHtwOyrKlMfPsxt9ttmffCaWBvnrP40d/kE=;
+ b=DMbE9SuYGrY2QwbSbpnWcVr3G9ldqLmfPt4LObmS/E5iFUwMQXokw+NnWDh432lFhG
+ EHhtAqFlXR+yZyaIagJH2oaJh+zPYgO7WlCiQelH+0m6IjzUmlTKZlshRGPfAAabt+z/
+ jYaS//616Yn75tKhF4LfDj0qmO3WOH+6qU13HBPdtSBF4YheWQDwoDbexBxzSH/lsrig
+ g6Xw48nmrVAxwAukNtlw/byDJ3Nnq9Jj7R7ZKYmJOdOXPyw0lEEArCAFCUB9GyCcRiQz
+ Fym3mDcpqfVqAhmttjbqYWW8nfPee4w7ejvq8WVlH2GJsD3osa6c83VmL/wtlTUl6GgQ
+ gOng==
+X-Gm-Message-State: APjAAAVc7C4j1cSX522UY5snkNcEY6nPKFZoJepuK7jCLhD3QDJQrBqX
+ EcthzNWLo6pyAhRTjo9vBXKbPQrdfZBeW/vBkOyfL9GOmxyLH7umSNnShP3wZNAOh8eeSVsIxFU
+ mnUUAo+UijGiJsP4=
+X-Received: by 2002:adf:fd46:: with SMTP id h6mr1894908wrs.243.1570612507681; 
+ Wed, 09 Oct 2019 02:15:07 -0700 (PDT)
+X-Received: by 2002:adf:fd46:: with SMTP id h6mr1894891wrs.243.1570612507348; 
+ Wed, 09 Oct 2019 02:15:07 -0700 (PDT)
+Received: from [192.168.10.150] ([93.56.166.5])
+ by smtp.gmail.com with ESMTPSA id 63sm2388645wri.25.2019.10.09.02.15.06
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 09 Oct 2019 02:15:06 -0700 (PDT)
+Subject: Re: [Qemu-devel] qemu_futex_wait() lockups in ARM64: 2 possible issues
+To: Jan Glauber <jglauber@marvell.com>
+References: <cbe46ad6-ef6c-d155-e79a-672182c725ad@ubuntu.com>
+ <d94f18f1-986f-ec19-02c0-e83e5e7af3d0@redhat.com>
+ <1864070a-2f84-1d98-341e-f01ddf74ec4b@ubuntu.com>
+ <20190924202517.GA21422@xps13.dannf> <20191002092253.GA3857@hc>
+ <6dd73749-49b0-0fbc-b9bb-44c3736642b8@redhat.com>
+ <20191007144432.GA29958@xps13.dannf>
+ <065a52a9-5bb0-1259-6c73-41af60e0a05d@redhat.com> <20191009080220.GA2905@hc>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <d5367b2a-84ee-1211-a2dc-7d631c94fe3f@redhat.com>
+Date: Wed, 9 Oct 2019 11:15:04 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-X-OriginatorOrg: virtuozzo.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e21404d5-7165-4e7b-30cc-08d74c951170
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Oct 2019 08:45:42.6210 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Ie6Z4o/4Zdibe9zJzlOUOD4lq0bwUVqZL4y0xUP+CPb/AKKLgypU3Vng8PWtK9gW52M3t09dt625v+xBSvWoy5si+p/E0yQG00XhXbbm3/I=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB8PR08MB5052
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.13.91
-X-BeenThere: qemu-arm@nongnu.org
+In-Reply-To: <20191009080220.GA2905@hc>
+Content-Language: en-US
+X-MC-Unique: 5-4RjutvMeWVqebn9BFteA-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.81
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "fam@euphon.net" <fam@euphon.net>,
- "pburton@wavecomp.com" <pburton@wavecomp.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "codyprime@gmail.com" <codyprime@gmail.com>,
- "jasowang@redhat.com" <jasowang@redhat.com>,
- "mark.cave-ayland@ilande.co.uk" <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Markus Armbruster <armbru@redhat.com>, "kraxel@redhat.com" <kraxel@redhat.com>,
- "mreitz@redhat.com" <mreitz@redhat.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- "quintela@redhat.com" <quintela@redhat.com>,
- "arikalo@wavecomp.com" <arikalo@wavecomp.com>,
- "mst@redhat.com" <mst@redhat.com>,
- "mdroth@linux.vnet.ibm.com" <mdroth@linux.vnet.ibm.com>,
- "pasic@linux.ibm.com" <pasic@linux.ibm.com>,
- "borntraeger@de.ibm.com" <borntraeger@de.ibm.com>,
- "joel@jms.id.au" <joel@jms.id.au>,
- "marcandre.lureau@redhat.com" <marcandre.lureau@redhat.com>,
- "david@gibson.dropbear.id.au" <david@gibson.dropbear.id.au>,
- "farman@linux.ibm.com" <farman@linux.ibm.com>,
- "ehabkost@redhat.com" <ehabkost@redhat.com>, "sw@weilnetz.de" <sw@weilnetz.de>,
- "dgilbert@redhat.com" <dgilbert@redhat.com>,
- "yuval.shaia@oracle.com" <yuval.shaia@oracle.com>,
- "alex.williamson@redhat.com" <alex.williamson@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "clg@kaod.org" <clg@kaod.org>,
- "stefanha@redhat.com" <stefanha@redhat.com>,
- "david@redhat.com" <david@redhat.com>, "jsnow@redhat.com" <jsnow@redhat.com>,
- "rth@twiddle.net" <rth@twiddle.net>, "kwolf@redhat.com" <kwolf@redhat.com>,
- "integration@gluster.org" <integration@gluster.org>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "andrew@aj.id.au" <andrew@aj.id.au>, "cohuck@redhat.com" <cohuck@redhat.com>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- "sundeep.lkml@gmail.com" <sundeep.lkml@gmail.com>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OoMh1AfJmjIH
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Rafael David Tinoco <rafaeldtinoco@ubuntu.com>,
+ lizhengui <lizhengui@huawei.com>, dann frazier <dann.frazier@canonical.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Bug 1805256 <1805256@bugs.launchpad.net>,
+ QEMU Developers - ARM <qemu-arm@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uqMnnT369iPH
 
-MDguMTAuMjAxOSAxMzowOSwgVmxhZGltaXIgU2VtZW50c292LU9naWV2c2tpeSB3cm90ZToNCj4g
-MDguMTAuMjAxOSAxMjozOSwgR3JlZyBLdXJ6IHdyb3RlOg0KPj4gT24gVHVlLCA4IE9jdCAyMDE5
-IDA4OjQxOjA4ICswMDAwDQo+PiBWbGFkaW1pciBTZW1lbnRzb3YtT2dpZXZza2l5IDx2c2VtZW50
-c292QHZpcnR1b3p6by5jb20+IHdyb3RlOg0KPj4NCj4+PiAwOC4xMC4yMDE5IDEwOjMwLCBNYXJr
-dXMgQXJtYnJ1c3RlciB3cm90ZToNCj4+Pj4gVmxhZGltaXIgU2VtZW50c292LU9naWV2c2tpeSA8
-dnNlbWVudHNvdkB2aXJ0dW96em8uY29tPiB3cml0ZXM6DQo+Pj4+DQo+Pj4+PiBIaSBhbGwhDQo+
-Pj4+Pg0KPj4+Pj4gSGVyZSBpcyBhIHByb3Bvc2FsIG9mIGF1dG8gcHJvcGFnYXRpb24gZm9yIGxv
-Y2FsX2VyciwgdG8gbm90IGNhbGwNCj4+Pj4+IGVycm9yX3Byb3BhZ2F0ZSBvbiBldmVyeSBleGl0
-IHBvaW50LCB3aGVuIHdlIGRlYWwgd2l0aCBsb2NhbF9lcnIuDQo+Pj4+Pg0KPj4+Pj4gVGhlcmUg
-YXJlIGFsc28gdHdvIGlzc3VlcyB3aXRoIGVycnA6DQo+Pj4+Pg0KPj4+Pj4gMS4gZXJyb3JfZmF0
-YWwgJiBlcnJvcl9hcHBlbmRfaGludC9lcnJvcl9wcmVwZW5kOiB1c2VyIGNhbid0IHNlZSB0aGlz
-DQo+Pj4+PiBhZGRpdGlvbmFsIGluZm8sIGJlY2F1c2UgZXhpdCgpIGhhcHBlbnMgaW4gZXJyb3Jf
-c2V0ZyBlYXJsaWVyIHRoYW4gaW5mbw0KPj4+Pj4gaXMgYWRkZWQuIFtSZXBvcnRlZCBieSBHcmVn
-IEt1cnpdDQo+Pj4+DQo+Pj4+IEhvdyBpcyB0aGlzIHNlcmllcyByZWxhdGVkIHRvIEdyZWcncyAi
-W1BBVENIIDAwLzE3XSBGaXggdXNhZ2Ugb2YNCj4+Pj4gZXJyb3JfYXBwZW5kX2hpbnQoKSI/wqAg
-RG8gd2UgbmVlZCBib3RoPw0KPj4+DQo+Pj4gVGhlc2Ugc2VyaWVzIGlzIGEgc3Vic3RpdHV0aW9u
-IGZvciBHcmVnJ3MuIFN0aWxsLCB0aGVyZSBhcmUgcHJvYmxlbXMgd2l0aA0KPj4+IGF1dG9tYXRp
-b24sIHdoaWNoIEdyZWcgcG9pbnRlZCBpbiAyMS8zMSwgYW5kIEkgZG9uJ3Qga25vdyB3aGF0IHRv
-IGRvIG5leHQuDQo+Pj4NCj4+PiBNYXkgYmUsIGp1c3QgY29udGludWUgdG8gcmV2aWV3IHBhdGNo
-ZXMgYW5kIGZpeCB0aGVtIGJ5IGhhbmQuIE1heSBiZSB0cnkgdG8NCj4+PiBpbXByb3ZlIGF1dG9t
-YXRpb24uLi4NCj4+Pg0KPj4NCj4+IFRoZSBmZWVsaW5nIEkgaGF2ZSBhZnRlciB3b3JraW5nIG9u
-IG15IHNlcmllcyBpcyB0aGF0IHRoZSBsaW5lcyB0aGF0IGRlYWwNCj4+IHdpdGggZXJyb3JzIGFy
-ZSBtaXhlZCB1cCB3aXRoIHRoZSBmdW5jdGlvbmFsIGNvZGUgaW4gYSB2YXJpZXR5IG9mIHdheXMu
-DQo+PiBUaGF0IG1ha2VzIGl0IHZlcnkgZGlmZmljdWx0IGlmIG5vdCBpbXBvc3NpYmxlIHRvIGNv
-bWUgd2l0aCBjb2RlIHBhdHRlcm5zDQo+PiBzdWl0YWJsZSBmb3IgYSAxMDAlIGF1dG9tYXRlZCBz
-b2x1dGlvbiBJTUhPLg0KPj4NCj4+IE15IHF1ZXN0aW9uaW5nIGlzIG1vcmUgYXJvdW5kIHRoZSBz
-ZW1hbnRpY3Mgb2YgZXJyb3JfZmF0YWwgYWN0dWFsbHkuIFdoYXQNCj4+IGRvZXMgcGFzc2luZyAm
-ZXJyb3JfZmF0YWwgZ2l2ZXMgdXMgb3ZlciBwYXNzaW5nICZsb2NhbF9lcnIgYW5kIGNhbGxpbmcN
-Cj4+IGVycm9yX3JlcG9ydF9lcnIoKStleGl0KCksIGFwYXJ0IGZyb20gYnJlYWtpbmcgZXJyb3Jf
-YXBwZW5kX2hpbnQoKSBhbmQNCj4+IGVycm9yX3ByZXBlbmQoKSA/DQo+IA0KPiBBcyBJIHVuZGVy
-c3RhbmQsIHRoZSBvbmx5IGJlbmVmaXQgaXMgb25lIGxpbmUgaW5zdGVhZCBvZiBmb3VyOg0KPiAN
-Cj4gZnVuYyguLi4sICZlcnJvcl9mYXRhbCk7DQo+IA0KPiBpbnN0ZWFkIG9mDQo+IA0KPiBmdW5j
-KC4uLiwgJmxvY2FsX2Vycik7DQo+IGlmIChsb2NhbF9lcnIpIHsNCj4gIMKgwqDCoCBleGl0KDEp
-Ow0KPiB9DQo+IA0KPiBCdXQsIGtlZXBpbmcgaW4gbWluZCBhbGwgZGlmZmljdWx0aWVzIGFib3V0
-IHRoZXNlIHNlcmllcy4uLiBXZSBjYW4gY29uc2lkZXINCj4gY29udmVyc2lvbiBlcnJvcl9mYXRh
-bCAtPiBsb2NhbF9lcnIgdG9vLiBJdCBzZWVtcyBzaW1wbGUgdG8gZG8gd2l0aCBhIGNvY2NpbmVs
-bGUNCj4gc2NyaXB0LCBJIGNhbiBzZW5kIGFub3RoZXIgYXV0b21hdGljIHNlcmllcyB0byBsb29r
-IGF0IGl0Lg0KPiANCj4gDQo+IEhtbSwgc29tZSBpZGVhcyBhcm91bmQgdGhpczoNCj4gDQo+IDEu
-IFdlIGNhbiBnZW5lcmF0ZSBfZmF0YWwgdmVyc2lvbnMgb2YgZnVuY3Rpb25zIGJ5IHB5dGhvbiBz
-Y3JpcHQgKHdlJ2xsIGNhbGwgaXQgZnJvbSBNYWtlZmlsZSwgd2UgaGF2ZSBhIGxvdCBvZiBnZW5l
-cmF0ZWQgY29kZSBhbnl3YXkpLg0KPiANCj4gYW5kIGNvbnZlcnQNCj4gZnVuYyguLi4sICZsb2Nh
-bF9lcnIpOyB0bw0KPiANCj4gZnVuY19mYXRhbCguLi4pOw0KPiANCj4gMi4gVXNlIG1hY3JvIGxp
-a2UNCj4gDQo+ICNkZWZpbmUgRkFUQUwoZnVuYywgLi4uKSBkbyB7IEVycm9yICpfX2ZhdGFsX2Vy
-ciA9IE5VTEw7IGZ1bmMoX19WQV9BUkdTX18gX19WQV9PUFQoLCksICZfX2ZhdGFsX2Vycik7IGlm
-IChfX2ZhdGFsX2VycikgeyBlcnJvcl9yZXBvcnQoX19mYXRhbF9lcnIpOyBleGl0KDEpOyB9IH0g
-d2hpbGUgKDApDQo+IA0KPiBhbmQgY29udmVydA0KPiBmdW5jKC4uLiwgJmxvY2FsX2Vycik7IHRv
-DQo+IA0KPiBGQVRBTChmdW5jLCAuLi4pOw0KDQpOb3csIEkgdGhpbmssIHRoYXQgd2hhdCB0aGVz
-ZSBzZXJpZXMgZG8gaXMgYmV0dGVyLCBhcw0KZnVuYyguLi4sICZmYXRhbF9lcnIpIGFuZCBvbmUg
-bWFjcm8gaW52b2NhdGlvbiBhdCBmdW5jdGlvbiBzdGFydA0KaXMgYmV0dGVyIHRoYW4gdG9vIG1h
-bnkgZ2VuZXJhdGVkIGZ1bmN0aW9ucy4NCg0KLS0gDQpCZXN0IHJlZ2FyZHMsDQpWbGFkaW1pcg0K
+On 09/10/19 10:02, Jan Glauber wrote:
+> On Mon, Oct 07, 2019 at 04:58:30PM +0200, Paolo Bonzini wrote:
+>> On 07/10/19 16:44, dann frazier wrote:
+>>> On Mon, Oct 07, 2019 at 01:06:20PM +0200, Paolo Bonzini wrote:
+>>>> On 02/10/19 11:23, Jan Glauber wrote:
+>>>>> I've looked into this on ThunderX2. The arm64 code generated for the
+>>>>> atomic_[add|sub] accesses of ctx->notify_me doesn't contain any
+>>>>> memory barriers. It is just plain ldaxr/stlxr.
+>>>>>
+>>>>> From my understanding this is not sufficient for SMP sync.
+>>>>>
+>>>>> If I read this comment correct:
+>>>>>
+>>>>>     void aio_notify(AioContext *ctx)
+>>>>>     {
+>>>>>         /* Write e.g. bh->scheduled before reading ctx->notify_me.  P=
+airs
+>>>>>          * with atomic_or in aio_ctx_prepare or atomic_add in aio_pol=
+l.
+>>>>>          */
+>>>>>         smp_mb();
+>>>>>         if (ctx->notify_me) {
+>>>>>
+>>>>> it points out that the smp_mb() should be paired. But as
+>>>>> I said the used atomics don't generate any barriers at all.
+>>>>
+>>>> Based on the rest of the thread, this patch should also fix the bug:
+>>>>
+>>>> diff --git a/util/async.c b/util/async.c
+>>>> index 47dcbfa..721ea53 100644
+>>>> --- a/util/async.c
+>>>> +++ b/util/async.c
+>>>> @@ -249,7 +249,7 @@ aio_ctx_check(GSource *source)
+>>>>      aio_notify_accept(ctx);
+>>>> =20
+>>>>      for (bh =3D ctx->first_bh; bh; bh =3D bh->next) {
+>>>> -        if (bh->scheduled) {
+>>>> +        if (atomic_mb_read(&bh->scheduled)) {
+>>>>              return true;
+>>>>          }
+>>>>      }
+>>>>
+>>>>
+>>>> And also the memory barrier in aio_notify can actually be replaced
+>>>> with a SEQ_CST load:
+>>>>
+>>>> diff --git a/util/async.c b/util/async.c
+>>>> index 47dcbfa..721ea53 100644
+>>>> --- a/util/async.c
+>>>> +++ b/util/async.c
+>>>> @@ -349,11 +349,11 @@ LinuxAioState *aio_get_linux_aio(AioContext *ctx=
+)
+>>>> =20
+>>>>  void aio_notify(AioContext *ctx)
+>>>>  {
+>>>> -    /* Write e.g. bh->scheduled before reading ctx->notify_me.  Pairs
+>>>> -     * with atomic_or in aio_ctx_prepare or atomic_add in aio_poll.
+>>>> +    /* Using atomic_mb_read ensures that e.g. bh->scheduled is writte=
+n before
+>>>> +     * ctx->notify_me is read.  Pairs with atomic_or in aio_ctx_prepa=
+re or
+>>>> +     * atomic_add in aio_poll.
+>>>>       */
+>>>> -    smp_mb();
+>>>> -    if (ctx->notify_me) {
+>>>> +    if (atomic_mb_read(&ctx->notify_me)) {
+>>>>          event_notifier_set(&ctx->notifier);
+>>>>          atomic_mb_set(&ctx->notified, true);
+>>>>      }
+>>>>
+>>>>
+>>>> Would you be able to test these (one by one possibly)?
+>>>
+>>> Paolo,
+>>>   I tried them both separately and together on a Hi1620 system, each
+>>> time it hung in the first iteration. Here's a backtrace of a run with
+>>> both patches applied:
+>>
+>> Ok, not a great start...  I'll find myself an aarch64 machine and look
+>> at it more closely.  I'd like the patch to be something we can
+>> understand and document, since this is probably the second most-used
+>> memory barrier idiom in QEMU.
+>>
+>> Paolo
+>=20
+> I'm still not sure what the actual issue is here, but could it be some ba=
+d
+> interaction between the notify_me and the list_lock? The are both 4 byte
+> and side-by-side:
+>=20
+> address notify_me: 0xaaaadb528aa0  sizeof notify_me: 4
+> address list_lock: 0xaaaadb528aa4  sizeof list_lock: 4
+>=20
+> AFAICS the generated code looks OK (all load/store exclusive done
+> with 32 bit size):
+>=20
+>      e6c:       885ffc01        ldaxr   w1, [x0]
+>      e70:       11000821        add     w1, w1, #0x2
+>      e74:       8802fc01        stlxr   w2, w1, [x0]
+>=20
+> ...but if I bump notify_me size to uint64_t the issue goes away.
+
+Ouch. :)  Is this with or without my patch(es)?
+
+Also, what if you just add a dummy uint32_t after notify_me?
+
+Thanks,
+
+Paolo
+
+>=20
+> BTW, the image file I convert in the testcase is ~20 GB.
+>=20
+> --Jan
+>=20
+> diff --git a/include/block/aio.h b/include/block/aio.h
+> index a1d6b9e24939..e8a5ea3860bb 100644
+> --- a/include/block/aio.h
+> +++ b/include/block/aio.h
+> @@ -83,7 +83,7 @@ struct AioContext {
+>       * Instead, the aio_poll calls include both the prepare and the
+>       * dispatch phase, hence a simple counter is enough for them.
+>       */
+> -    uint32_t notify_me;
+> +    uint64_t notify_me;
+> =20
+>      /* A lock to protect between QEMUBH and AioHandler adders and delete=
+r,
+>       * and to ensure that no callbacks are removed while we're walking a=
+nd
+>=20
+

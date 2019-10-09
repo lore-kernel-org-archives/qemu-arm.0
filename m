@@ -1,305 +1,143 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1165450wrm;
-        Wed, 9 Oct 2019 09:48:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyWVoGZWiiUTaT9Fbk4KaTpy/u8Cx2qFZyLRU86NXPP5+Ykst0MhfNivWks6wX56VNpe49k
-X-Received: by 2002:a0c:fdcc:: with SMTP id g12mr4794564qvs.104.1570639699969;
-        Wed, 09 Oct 2019 09:48:19 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1570639699; cv=pass;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1168425wrm;
+        Wed, 9 Oct 2019 09:51:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyi2G23KFq3759fEUiudQJMF8E02g8uVw1XifKjIAM8sU6FSCz1oFKobGSEDzB2uOPFKRDO
+X-Received: by 2002:ac8:3969:: with SMTP id t38mr4677372qtb.253.1570639876059;
+        Wed, 09 Oct 2019 09:51:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570639876; cv=none;
         d=google.com; s=arc-20160816;
-        b=VpArPSqcLkRPSdFDgwePzPqAuzUnrROsCe+te69WQ5dFy7ZaTOwDIK+sSxLZtQj6SY
-         9V7jDnYxZ7mlZQF0R4MM25HFEo+/rxToGX+nt56FUElT+tlbbktJI4UJ6hlX7RO/3dQT
-         kP509SCq6qtiHdDUm8nwHS4ABL68ZH2biecVdX7h1VToEPa/SyNavO42vUvc6/1e4hnY
-         /d1wWCnDljwdirIqo7T6RLwy4Hz2qyuuXwM/e/VATntCwqbtfJ/fXsELkd5av0OGOde/
-         4c1kd+yu/Yet9HRgbUfwQnkrKRHlk+zNjFM9R80W40g/WngzYJfviDJDzh7jOHX8YobS
-         IL6Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=FMDeANBEV6udTVZqgSbVVFfmuRmjUiDwkjlU/TO1TIxK3lSYSVECwYxC7or81M6xwj
+         V1phsTFQmBRuLka9xxP3/uaJfv62wfCO5jPWYB3j+0OdQXwOOtewi/b4fFv8Hr5mzweJ
+         Js7fX+cr5ZFmjkTYX5X0jOYIeqN7aPwe8ja1YLemGytmmeMm1Oo1h5xfRy6Mzwq+oCoY
+         0PJWqQUEEjcuzdoNUv9JmcgcEjPpbcH4gf0XwMl5Hc2l/rJSo1weJ39rXN/dTTX487b2
+         1lIk+55cCzzZk4oE1NLA7zZHpHq2yROeVg0aUps38qRJFphYMp3CtSQtPz9VMxhwb9OV
+         7ndA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:to:from:dkim-signature:dkim-signature;
-        bh=dQ8RnV6BB660yZahOF6QVCf976LOe4pwUkpDjwMKgwo=;
-        b=bMOhuOrZmcXssShwcVou3sjM1VGoo/rAATyehAqAENEAxCUgFTY6km8wyENUip6R1n
-         0zK9Lzpx1toHCiqkOkKufhteNPYBWBsJigHZKzDTiMdQ6AP3uWuEUr/0s1stNbJVWnRr
-         /4CnzGiZYpmQ439pbMuI22rzAEp0NQeyte3QxqBFYB68TcGcYhb4oTVhSJ0ZAsGHMtpe
-         mR1JEI8WyYxPFj+Ydr7feG6EpSgkNyq51LAudwieLy24SmtGX4nSwcNZ4liM9kkRyKXC
-         rzlj9ZdWHRURcQdaNINCqAh77iasYXi1A+15zmmbVVkrWx4XwHBQNFyIMKmjhf07wKEp
-         4UnA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=fail header.i=@marvell.com header.s=pfpt0818 header.b=aMjJ+ZIe;
-       dkim=pass header.i=@marvell.onmicrosoft.com header.s=selector2-marvell-onmicrosoft-com header.b=tkmEdzlh;
-       arc=pass (i=1 spf=pass spfdomain=marvell.com dkim=pass dkdomain=marvell.com dmarc=pass fromdomain=marvell.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=marvell.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:to:from;
+        bh=v75+jnEfOse9zmwlvibFyc/1RxtshGuF+Sww9XesKBs=;
+        b=ktBkfOtPh0fKYzhii2TdyQ3xEtqAuRtpHQ0vkSQz6LHnVmhXKsJ+JBX3bLIYcUt8RU
+         24EnDvS/+1lmuANfVHsB3ZjbXZj1MNE67Kv0ODFRPKWAwcxM+P3CpVMNpA8T8YDq6y2g
+         OwNfC37LHAV7jAdS+yCZcJit0AU8DxV5wTVyY6h5PQXyPmgTSdMDUPNG4DcY5Sz7mbaM
+         geoDRXANGMyNUtGUCVqeqHOIZYE2nIDtH8X4BYlHBI3AJsYVIkF0Ff5Q8NEQJPq0zQV6
+         vJ2q4zyf7RxKfz77+fDie7wVi7ODhRASz9QJltcV0bj6qMebmHZ+z9wAVGDO1S6g5pQx
+         NZNg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w66si2500216qkd.178.2019.10.09.09.48.19
+        by mx.google.com with ESMTPS id y50si2542831qtb.20.2019.10.09.09.51.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Oct 2019 09:48:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 09 Oct 2019 09:51:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@marvell.com header.s=pfpt0818 header.b=aMjJ+ZIe;
-       dkim=pass header.i=@marvell.onmicrosoft.com header.s=selector2-marvell-onmicrosoft-com header.b=tkmEdzlh;
-       arc=pass (i=1 spf=pass spfdomain=marvell.com dkim=pass dkdomain=marvell.com dmarc=pass fromdomain=marvell.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=marvell.com
-Received: from localhost ([::1]:52492 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52548 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iIF8M-0001mt-UB
-	for alex.bennee@linaro.org; Wed, 09 Oct 2019 12:48:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43066)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iIFBD-0006vI-60
+	for alex.bennee@linaro.org; Wed, 09 Oct 2019 12:51:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43266)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <prvs=718511e6aa=jglauber@marvell.com>)
- id 1iI6w4-0004F2-AD
- for qemu-devel@nongnu.org; Wed, 09 Oct 2019 04:03:06 -0400
+ (envelope-from <armbru@redhat.com>) id 1iI6xm-0004P6-1j
+ for qemu-arm@nongnu.org; Wed, 09 Oct 2019 04:04:51 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <prvs=718511e6aa=jglauber@marvell.com>)
- id 1iI6vy-0004XW-IO
- for qemu-devel@nongnu.org; Wed, 09 Oct 2019 04:03:03 -0400
-Received: from mx0b-0016f401.pphosted.com ([67.231.156.173]:51120)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <prvs=718511e6aa=jglauber@marvell.com>)
- id 1iI6vy-0004Sa-3Q; Wed, 09 Oct 2019 04:02:58 -0400
-Received: from pps.filterd (m0045851.ppops.net [127.0.0.1])
- by mx0b-0016f401.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- x9982IiA016913; Wed, 9 Oct 2019 01:02:43 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marvell.com;
- h=from : to : cc :
- subject : date : message-id : references : in-reply-to : content-type :
- content-id : content-transfer-encoding : mime-version; s=pfpt0818;
- bh=dQ8RnV6BB660yZahOF6QVCf976LOe4pwUkpDjwMKgwo=;
- b=aMjJ+ZIewG577j0sOsatvOFgL7xNruai7/DfglFL2dWYrl3KFUEhMmTJaNdWGyYT2RbJ
- X5ADSKBeDtpFoA10EXXIuzL9aGwo52/E9Du2tbKQZ8K0vsc4YD8uLaIqJAlR6NP3to01
- YLV7RUDo2XhZaKrkKKJjoQcc+9gW+G4JjtkrxOOsihku8JE7EOVUwYnPUGGINtbxbTxc
- ndJ4s/VjUeJER98oP0EfDBA/ivGevubBvH1txvsAQyXntC5B4V5auN+gJtOX+sZ3mtGS
- cfy0kPAy98oJ3Qj/8nDsv7MZKuBS728UyDrvBpYLcRUPPUB1QlVFA5buBr83IAkMxhJl Iw== 
-Received: from sc-exch03.marvell.com ([199.233.58.183])
- by mx0b-0016f401.pphosted.com with ESMTP id 2vetpn5y45-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
- Wed, 09 Oct 2019 01:02:43 -0700
-Received: from SC-EXCH04.marvell.com (10.93.176.84) by SC-EXCH03.marvell.com
- (10.93.176.83) with Microsoft SMTP Server (TLS) id 15.0.1367.3; Wed, 9 Oct
- 2019 01:02:41 -0700
-Received: from NAM02-SN1-obe.outbound.protection.outlook.com (104.47.36.56) by
- SC-EXCH04.marvell.com (10.93.176.84) with Microsoft SMTP Server
- (TLS) id
- 15.0.1367.3 via Frontend Transport; Wed, 9 Oct 2019 01:02:41 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=kgN8hns2ZWL5piTuB5iX/AE0HxAySWE91zmBGrA7lboUr3dB/bF0oarRDLBU8aHFkW5Rs5rJeGiccuUzCQPifdvWWYDLuRoLbuyd0bNLLOBIHrb4HrZQZChCy+aquJBOdXvKuPvqua/sXwS64KsITiKp7vtc4S5zAulu56JH8dRDH1dE6bYAkM95EgqZBJuxanTBpfpN8ACGTTc9jBAl4B/eUMvaEFwSJIQZBTeRcA+lArJfKQWZhduVVp6uX7Ptq6csQ5mUfVBI62dVVMAm+OhZJj0kUbcRpd8/bsv5m9fhDfZrQ9PwdqWB7Uid9Xm69v4UacF5lM/LSx1ENmWfpQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=dQ8RnV6BB660yZahOF6QVCf976LOe4pwUkpDjwMKgwo=;
- b=GrCjX6ysQd8WY6HLiD9uhzwlHQwpSbNy1FCGsskZrUCeMiNldtAji/0WF1qwjOvA2fNzcd7RaLU2TXMuoK6y4q432dMF59jOUnAZsHCyrlTxZDlLf7UiB2uwuMZSR7kNn/jIx1JZ5q5Vii78PqhHWlDhyxzOdp4PCO7wRGG3dU0aSgrUZeGS9zra/OhFK124Q1IYcxUHuA+nzwGh1oqQ7nJ4aGDd+NbudkiNCXUwMbK8V10O+eUQfqwqz8gFhRx1zX5g6vYvdNOSSPdtmpupyRIVMKUrM9gMjmXNcZPXThPItxKqnTnjmO+52hXaVgy6w/EGk7blp1u61ks40azKTw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=marvell.com; dmarc=pass action=none header.from=marvell.com;
- dkim=pass header.d=marvell.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=marvell.onmicrosoft.com; s=selector2-marvell-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=dQ8RnV6BB660yZahOF6QVCf976LOe4pwUkpDjwMKgwo=;
- b=tkmEdzlhyAASWpQATp+WVTMtSHpf/2HX4gtb3QMw1K6XcWRmW25VVP2m4jg0M0ULdQcS13YGcIZwcVWqMFCOiVMG2Q8axfoIu5ih245PsvwL881KNMw2JKCrcIiPND9sTV2P0uZzqWWBlvQ1czrsUXWoC7qBRp3qlzGlzB+kyBI=
-Received: from DM6PR18MB3001.namprd18.prod.outlook.com (20.179.104.143) by
- DM6PR18MB3275.namprd18.prod.outlook.com (10.255.173.148) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2347.16; Wed, 9 Oct 2019 08:02:39 +0000
-Received: from DM6PR18MB3001.namprd18.prod.outlook.com
- ([fe80::11c2:98e0:b9d9:5dba]) by DM6PR18MB3001.namprd18.prod.outlook.com
- ([fe80::11c2:98e0:b9d9:5dba%5]) with mapi id 15.20.2327.026; Wed, 9 Oct 2019
- 08:02:39 +0000
-From: Jan Glauber <jglauber@marvell.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [Qemu-devel] qemu_futex_wait() lockups in ARM64: 2 possible issues
-Thread-Topic: [Qemu-devel] qemu_futex_wait() lockups in ARM64: 2 possible
- issues
-Thread-Index: AQHVfnfqvu+yt3RexE2xAyyT9MgnEQ==
-Date: Wed, 9 Oct 2019 08:02:38 +0000
-Message-ID: <20191009080220.GA2905@hc>
-References: <cbe46ad6-ef6c-d155-e79a-672182c725ad@ubuntu.com>
- <d94f18f1-986f-ec19-02c0-e83e5e7af3d0@redhat.com>
- <1864070a-2f84-1d98-341e-f01ddf74ec4b@ubuntu.com>
- <20190924202517.GA21422@xps13.dannf> <20191002092253.GA3857@hc>
- <6dd73749-49b0-0fbc-b9bb-44c3736642b8@redhat.com>
- <20191007144432.GA29958@xps13.dannf>
- <065a52a9-5bb0-1259-6c73-41af60e0a05d@redhat.com>
-In-Reply-To: <065a52a9-5bb0-1259-6c73-41af60e0a05d@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: AM0PR06CA0062.eurprd06.prod.outlook.com
- (2603:10a6:208:aa::39) To DM6PR18MB3001.namprd18.prod.outlook.com
- (2603:10b6:5:182::15)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [46.5.45.66]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 5e3be27c-6fef-479a-66d4-08d74c8f0c8a
-x-ms-traffictypediagnostic: DM6PR18MB3275:
-x-microsoft-antispam-prvs: <DM6PR18MB32750DB22F89CEAE084B548ED8950@DM6PR18MB3275.namprd18.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:10000;
-x-forefront-prvs: 018577E36E
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(7916004)(4636009)(136003)(376002)(366004)(346002)(39850400004)(396003)(189003)(199004)(66556008)(386003)(476003)(486006)(4326008)(446003)(6246003)(11346002)(99286004)(33716001)(54906003)(26005)(66066001)(186003)(66946007)(64756008)(66446008)(71200400001)(66476007)(71190400001)(102836004)(53546011)(6506007)(256004)(52116002)(14444005)(76176011)(8676002)(6436002)(33656002)(81166006)(316002)(81156014)(6916009)(5660300002)(86362001)(6486002)(8936002)(6512007)(9686003)(3846002)(6116002)(7736002)(305945005)(2906002)(14454004)(229853002)(478600001)(25786009)(1076003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:DM6PR18MB3275;
- H:DM6PR18MB3001.namprd18.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; MX:1; A:1; 
-received-spf: None (protection.outlook.com: marvell.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: kZS3kbsSV6vvCPmmP6oHZTYPtHpZpnuVUqeyLXmC49kMKyzyAmK5JpWdL+t38wb67jpkPnqfFt5baHCW/jfsj5rUGK2Xyf/Y7sfwu1H6l/NPZsxgCXNFxrJ9Su8UuQSqjFdxwS/DC5TALK5Iz/+WyATLhNp6HJlVn3QDEUeu06zh/N1u3TkhIEIyxyHG10gTUQ6hCUv4F0TMcOWSZrUzEfH2d1igt56anqRIapzrWu7R88nnFKwOqQOrvK2QDGzByAUtJ2dDFB+SdO7Xeg/grN4UL7p8gHLfX9hbOFqfxdPUBpUkTfzDernXWBIToMugMBWzzWcisT7XfdSinMmuyMTH3rFqPeT5LJtGCVOVymC7Jx5s4DohBBW3Z7N1VngdcKhXW4fYpNHHqIakHvQ0XCEDCWiqOH9Ir/RVeX/3Ktg=
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="us-ascii"
-Content-ID: <99F6E93CC8D06744859B160F24C647C4@namprd18.prod.outlook.com>
-Content-Transfer-Encoding: quoted-printable
+ (envelope-from <armbru@redhat.com>) id 1iI6xk-0005Ks-0P
+ for qemu-arm@nongnu.org; Wed, 09 Oct 2019 04:04:49 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:53818)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <armbru@redhat.com>)
+ id 1iI6xi-0005KS-Ay; Wed, 09 Oct 2019 04:04:47 -0400
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id E0EE6308FB82;
+ Wed,  9 Oct 2019 08:04:44 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.36.118.123])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5D25A60605;
+ Wed,  9 Oct 2019 08:04:26 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id BC6CA1138619; Wed,  9 Oct 2019 10:04:24 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Subject: Re: [PATCH v4 04/31] error: auto propagated local_err
+References: <20191001155319.8066-1-vsementsov@virtuozzo.com>
+ <20191001155319.8066-5-vsementsov@virtuozzo.com>
+Date: Wed, 09 Oct 2019 10:04:24 +0200
+In-Reply-To: <20191001155319.8066-5-vsementsov@virtuozzo.com> (Vladimir
+ Sementsov-Ogievskiy's message of "Tue, 1 Oct 2019 18:52:52 +0300")
+Message-ID: <87r23m8hvb.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.2 (gnu/linux)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5e3be27c-6fef-479a-66d4-08d74c8f0c8a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Oct 2019 08:02:38.8885 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 70e1fb47-1155-421d-87fc-2e58f638b6e0
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 2bdojPrWsSpo2J9sa61ETC5UdIjkH28fpBR+jnrIwRZbatKkXpKu/hmRpv3Z8bJbwdPZikjaFiQXrtdpTrKKlw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR18MB3275
-X-OriginatorOrg: marvell.com
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.95,1.0.8
- definitions=2019-10-09_03:2019-10-08,2019-10-09 signatures=0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 67.231.156.173
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.43]); Wed, 09 Oct 2019 08:04:45 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Rafael David Tinoco <rafaeldtinoco@ubuntu.com>,
- lizhengui <lizhengui@huawei.com>, dann frazier <dann.frazier@canonical.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Bug 1805256 <1805256@bugs.launchpad.net>, QEMU
- Developers - ARM <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qNYNoLAzlNld
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: fam@euphon.net, pburton@wavecomp.com, peter.maydell@linaro.org,
+ codyprime@gmail.com, jasowang@redhat.com, mark.cave-ayland@ilande.co.uk,
+ qemu-devel@nongnu.org, kraxel@redhat.com, mreitz@redhat.com,
+ qemu-block@nongnu.org, quintela@redhat.com, arikalo@wavecomp.com,
+ mst@redhat.com, mdroth@linux.vnet.ibm.com, pasic@linux.ibm.com,
+ borntraeger@de.ibm.com, joel@jms.id.au, marcandre.lureau@redhat.com,
+ david@gibson.dropbear.id.au, farman@linux.ibm.com, ehabkost@redhat.com,
+ sw@weilnetz.de, groug@kaod.org, yuval.shaia@oracle.com, dgilbert@redhat.com,
+ alex.williamson@redhat.com, qemu-arm@nongnu.org, clg@kaod.org,
+ stefanha@redhat.com, david@redhat.com, jsnow@redhat.com, rth@twiddle.net,
+ kwolf@redhat.com, integration@gluster.org, berrange@redhat.com,
+ andrew@aj.id.au, cohuck@redhat.com, qemu-s390x@nongnu.org,
+ sundeep.lkml@gmail.com, qemu-ppc@nongnu.org, pbonzini@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Rq+9uJ+anh5I
 
-On Mon, Oct 07, 2019 at 04:58:30PM +0200, Paolo Bonzini wrote:
-> On 07/10/19 16:44, dann frazier wrote:
-> > On Mon, Oct 07, 2019 at 01:06:20PM +0200, Paolo Bonzini wrote:
-> >> On 02/10/19 11:23, Jan Glauber wrote:
-> >>> I've looked into this on ThunderX2. The arm64 code generated for the
-> >>> atomic_[add|sub] accesses of ctx->notify_me doesn't contain any
-> >>> memory barriers. It is just plain ldaxr/stlxr.
-> >>>
-> >>> From my understanding this is not sufficient for SMP sync.
-> >>>
-> >>> If I read this comment correct:
-> >>>
-> >>>     void aio_notify(AioContext *ctx)
-> >>>     {
-> >>>         /* Write e.g. bh->scheduled before reading ctx->notify_me.  P=
-airs
-> >>>          * with atomic_or in aio_ctx_prepare or atomic_add in aio_pol=
-l.
-> >>>          */
-> >>>         smp_mb();
-> >>>         if (ctx->notify_me) {
-> >>>
-> >>> it points out that the smp_mb() should be paired. But as
-> >>> I said the used atomics don't generate any barriers at all.
-> >>
-> >> Based on the rest of the thread, this patch should also fix the bug:
-> >>
-> >> diff --git a/util/async.c b/util/async.c
-> >> index 47dcbfa..721ea53 100644
-> >> --- a/util/async.c
-> >> +++ b/util/async.c
-> >> @@ -249,7 +249,7 @@ aio_ctx_check(GSource *source)
-> >>      aio_notify_accept(ctx);
-> >> =20
-> >>      for (bh =3D ctx->first_bh; bh; bh =3D bh->next) {
-> >> -        if (bh->scheduled) {
-> >> +        if (atomic_mb_read(&bh->scheduled)) {
-> >>              return true;
-> >>          }
-> >>      }
-> >>
-> >>
-> >> And also the memory barrier in aio_notify can actually be replaced
-> >> with a SEQ_CST load:
-> >>
-> >> diff --git a/util/async.c b/util/async.c
-> >> index 47dcbfa..721ea53 100644
-> >> --- a/util/async.c
-> >> +++ b/util/async.c
-> >> @@ -349,11 +349,11 @@ LinuxAioState *aio_get_linux_aio(AioContext *ctx=
-)
-> >> =20
-> >>  void aio_notify(AioContext *ctx)
-> >>  {
-> >> -    /* Write e.g. bh->scheduled before reading ctx->notify_me.  Pairs
-> >> -     * with atomic_or in aio_ctx_prepare or atomic_add in aio_poll.
-> >> +    /* Using atomic_mb_read ensures that e.g. bh->scheduled is writte=
-n before
-> >> +     * ctx->notify_me is read.  Pairs with atomic_or in aio_ctx_prepa=
-re or
-> >> +     * atomic_add in aio_poll.
-> >>       */
-> >> -    smp_mb();
-> >> -    if (ctx->notify_me) {
-> >> +    if (atomic_mb_read(&ctx->notify_me)) {
-> >>          event_notifier_set(&ctx->notifier);
-> >>          atomic_mb_set(&ctx->notified, true);
-> >>      }
-> >>
-> >>
-> >> Would you be able to test these (one by one possibly)?
-> >=20
-> > Paolo,
-> >   I tried them both separately and together on a Hi1620 system, each
-> > time it hung in the first iteration. Here's a backtrace of a run with
-> > both patches applied:
->=20
-> Ok, not a great start...  I'll find myself an aarch64 machine and look
-> at it more closely.  I'd like the patch to be something we can
-> understand and document, since this is probably the second most-used
-> memory barrier idiom in QEMU.
->=20
-> Paolo
+Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com> writes:
 
-I'm still not sure what the actual issue is here, but could it be some bad
-interaction between the notify_me and the list_lock? The are both 4 byte
-and side-by-side:
+> Here is introduced ERRP_AUTO_PROPAGATE macro, to be used at start of
+> functions with errp OUT parameter.
+>
+> It has three goals:
+>
+> 1. Fix issue with error_fatal & error_prepend/error_append_hint: user
+> can't see this additional information, because exit() happens in
+> error_setg earlier than information is added. [Reported by Greg Kurz]
 
-address notify_me: 0xaaaadb528aa0  sizeof notify_me: 4
-address list_lock: 0xaaaadb528aa4  sizeof list_lock: 4
+Done in PATCH 07-31.
 
-AFAICS the generated code looks OK (all load/store exclusive done
-with 32 bit size):
+> 2. Fix issue with error_abort & error_propagate: when we wrap
+> error_abort by local_err+error_propagate, resulting coredump will
+> refer to error_propagate and not to the place where error happened.
+> (the macro itself doesn't fix the issue, but it allows to [3.] drop all
+> local_err+error_propagate pattern, which will definitely fix the issue)
+> [Reported by Kevin Wolf]
+>
+> 3. Drop local_err+error_propagate pattern, which is used to workaround
+> void functions with errp parameter, when caller wants to know resulting
+> status. (Note: actually these functions could be merely updated to
+> return int error code).
 
-     e6c:       885ffc01        ldaxr   w1, [x0]
-     e70:       11000821        add     w1, w1, #0x2
-     e74:       8802fc01        stlxr   w2, w1, [x0]
+Not done.  Can you prototype this part?  A few manually done examples
+would give us an idea how the complete solution would look like.  A
+(semi-)automated complete conversion of a subsystem would additionally
+give us an idea how to actually do the conversion.
 
-...but if I bump notify_me size to uint64_t the issue goes away.
-
-BTW, the image file I convert in the testcase is ~20 GB.
-
---Jan
-
-diff --git a/include/block/aio.h b/include/block/aio.h
-index a1d6b9e24939..e8a5ea3860bb 100644
---- a/include/block/aio.h
-+++ b/include/block/aio.h
-@@ -83,7 +83,7 @@ struct AioContext {
-      * Instead, the aio_poll calls include both the prepare and the
-      * dispatch phase, hence a simple counter is enough for them.
-      */
--    uint32_t notify_me;
-+    uint64_t notify_me;
-=20
-     /* A lock to protect between QEMUBH and AioHandler adders and deleter,
-      * and to ensure that no callbacks are removed while we're walking and
+We can discuss applying ERRP_AUTO_PROPAGATE() as a bug fix for 1., and
+leave 2. and 3. for later.  Feels like a half-done job to me.  We've got
+too many of those in the tree already.  Dunno.

@@ -1,123 +1,113 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1207233wrm;
-        Wed, 9 Oct 2019 10:26:44 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzbgB7hAUHTvO5S2Si83tgVde9upYyipIU9ZHyNjmSvYgyhqbgt8DBU5w7/MdrPC+WF4+Hr
-X-Received: by 2002:aed:2462:: with SMTP id s31mr5063443qtc.40.1570642004438;
-        Wed, 09 Oct 2019 10:26:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570642004; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1225272wrm;
+        Wed, 9 Oct 2019 10:44:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx5b28GAbUwCIiXYEEwz0XYTwhbc5hOAVQ8ttUyWX9dPYce5MkqC7OQ/EZ9q/R/chj5PPPG
+X-Received: by 2002:ac8:705c:: with SMTP id y28mr5239401qtm.52.1570643094406;
+        Wed, 09 Oct 2019 10:44:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570643094; cv=none;
         d=google.com; s=arc-20160816;
-        b=VH5Eyzz6xVkhwJA0JYy/fhBZ5tWVFwoMOZBwBwZWT0nx8UhmnIo/kpQ0pUx1rDJC6o
-         9T4MJNvOWbQWlJ5QSTs6WhmA8tACzWagPlKwuuAorYfn7fEGDytVb9afmLpfTzVs3IMH
-         dj6pK5LfNmLkSPrh29sWvDFNkFY4KiNtE3TDdJ86/nieDXlUL0a50o/oVMmVDfSsXLQO
-         7AdeocC9v1azFyKT95z9wkjTvEqlZBNs9tYwFuRC+CpUkJrlT9VfpPr04YzoXhjhb2JR
-         wfmgwjNWkAAvvokxwIgi2TeaqY4WHkPHg4+zNUjJTAGgAL7bALWuiCp8SqE3cN3fJxeJ
-         jQNQ==
+        b=Di/lXOp75aeWwQe1SDWHaR12EhYPs3ivWWPPja4/lCEqyiPeqPDabopggPuabA9RJu
+         bAUMrhoArDmX35tXDtFd0Z5cDbgIzw5uXAfGJffm91QXegVnLoJ9tKaysN4JCa9FHVKW
+         jUNvD7ThOzIbd7til0ugJ6+SGvvQaggKdTxiqLwikwf7xH83qZtSgSx5AX+zBng8Wa5F
+         rvs91UgH70FeDEi5QPxWrwSUYGUaXLKDbpVZiiOGZiO/KWDlOUlpL7QGveIlaORLkZgu
+         AuCnz1HojiwIH+BXz21WvHY4CB5uPnQCFDun4oshvPdePYcOY+2Ws214m6w1lgbalUaA
+         ARQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:openpgp:from:references:to:subject:dkim-signature;
-        bh=LnthtDy+kBjD5T6p/osgMCT9YrFI9qED9phS99dKGNY=;
-        b=Z2LvwYx6LIRRoZsWVHUd/aXJsdYqGGu7ssEjB17WZtQ7jFwoI9lq9f4eSpOK7Us8Lr
-         +XOCVpfRDgb75DC06RGhMJy41Qh0iXLKGnoTG41xynmVJ5ZjzjIwKzIJFj9HTor89fxC
-         rhwCndkkphL9QjhhODAVRR+iJ9QtfFyMB5qKsHJdIrfZebATjQ/ornYpuhe98cJXRwhb
-         KiUAqMIjCOB3s7BVDmIXrHgDc79G5LLEPdif4bhwiU6fOD3cC0QPC23ni0iltutoBvCY
-         mwZI575mrBhc37QOAAdCW8nbZZ4DjQdpMLruy6wnE+RPC/o276L7/q9DGdluH81/GXAu
-         TbwQ==
+        bh=hTUKCIiic+Ut/Wo5FppKOMLXeKxhC4oaQ4z+c7aFIGk=;
+        b=CJBLPBl0QwCzT/niLCRCUi3d5QQLvm7uzIMKxE2pvlgSQR3/xbGkqyixN/i4EbiouA
+         K7JNr26H6V8a/BkrTBWPJLdgqjGql7nb1CyZNvlyXBaQwaK+1WFWQyyH9MIE1442WN6T
+         huYeIR5Bu+fmDw9x2IzYcs4YkQdx7C6auQdiX+Gbgwdx9Tug1BucDyrGzRpQSpTcrNrZ
+         o9F77THqKz0Hq+0fTe6vU7T3gMkY1X7AtDzDjtA3eUJ7gaotw5R3wB+NDJdhDfteB675
+         fNe9H73AiDKtHdR49q6T5OgXaY3XcXzQsAeaUcfIICyCB35wu9jusmznQyViLxs7wDYi
+         kP9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IYGmZrn+;
+       dkim=fail header.i=@linaro.org header.s=google header.b="zGgvYl/h";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e12si2872034qtm.103.2019.10.09.10.26.44
+        by mx.google.com with ESMTPS id g2si2643813qvd.192.2019.10.09.10.44.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Oct 2019 10:26:44 -0700 (PDT)
+        Wed, 09 Oct 2019 10:44:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IYGmZrn+;
+       dkim=fail header.i=@linaro.org header.s=google header.b="zGgvYl/h";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53022 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53230 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iIFjX-0007zy-9x
-	for alex.bennee@linaro.org; Wed, 09 Oct 2019 13:26:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50536)
+	id 1iIG17-0001Ya-H5
+	for alex.bennee@linaro.org; Wed, 09 Oct 2019 13:44:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38359)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <pbonzini@redhat.com>) id 1iI83u-000329-Ui
- for qemu-devel@nongnu.org; Wed, 09 Oct 2019 05:15:16 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1iIAhs-0003DU-P7
+ for qemu-devel@nongnu.org; Wed, 09 Oct 2019 08:04:42 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <pbonzini@redhat.com>) id 1iI83t-0005r1-Ga
- for qemu-devel@nongnu.org; Wed, 09 Oct 2019 05:15:14 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:51694
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1iI83t-0005pP-Cy
- for qemu-devel@nongnu.org; Wed, 09 Oct 2019 05:15:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1570612512;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=LnthtDy+kBjD5T6p/osgMCT9YrFI9qED9phS99dKGNY=;
- b=IYGmZrn+Y7PNDA6rC6gJxONNq4Q78YUAr6K2DMdAaez4UyhscJpUIpt/10uK4VvB3TNDmm
- VCr60vqHtszEhpg8ho+uIipGKXYBDlBpegFFll3Gcuxpvg4mDZjJSjjSVIO8lpZeWn+hkm
- dWsudNyl/97TLLDTkBfbTH0OOMXtvtw=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-57-5-4RjutvMeWVqebn9BFteA-1; Wed, 09 Oct 2019 05:15:09 -0400
-Received: by mail-wr1-f71.google.com with SMTP id f3so792752wrr.23
- for <qemu-devel@nongnu.org>; Wed, 09 Oct 2019 02:15:08 -0700 (PDT)
+ (envelope-from <richard.henderson@linaro.org>) id 1iIAhr-0001IZ-Nd
+ for qemu-devel@nongnu.org; Wed, 09 Oct 2019 08:04:40 -0400
+Received: from mail-ua1-x941.google.com ([2607:f8b0:4864:20::941]:39035)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1iIAhr-0001IQ-HH
+ for qemu-devel@nongnu.org; Wed, 09 Oct 2019 08:04:39 -0400
+Received: by mail-ua1-x941.google.com with SMTP id b14so678784uap.6
+ for <qemu-devel@nongnu.org>; Wed, 09 Oct 2019 05:04:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=hTUKCIiic+Ut/Wo5FppKOMLXeKxhC4oaQ4z+c7aFIGk=;
+ b=zGgvYl/hYoLiNZfFIrjsY+vKXxU7FyIFBN4uIxlItak+WW3/8xoJBbrjpMxcyPRouG
+ LsQ3W5mcoQ/Qh10vLjGt9CSHHP03WTzFfE/Rlg421ZYU+KLlvGjMYTOh/MbH/Vjf+3L/
+ lFQqrN8vPo8yUWZ+hvQkCD4GMmp9FchlVlM2vO1XaXdb7ccHJCU8Z7W6FwYAi9et9pHR
+ E89t+R3fHoV6fhIpF0l8Lr694cloIOCi35bgi0CCZW4442nt7VUvrjeMeQpI9iPUuhtL
+ uvJxAceDP+hBsxuTVdhven1dZs2OmtYcUD1/cgnLhQfSDi9GXJPkjQ19G9enTzW13QCU
+ 2hOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=d5tISs1KCHtwOyrKlMfPsxt9ttmffCaWBvnrP40d/kE=;
- b=DMbE9SuYGrY2QwbSbpnWcVr3G9ldqLmfPt4LObmS/E5iFUwMQXokw+NnWDh432lFhG
- EHhtAqFlXR+yZyaIagJH2oaJh+zPYgO7WlCiQelH+0m6IjzUmlTKZlshRGPfAAabt+z/
- jYaS//616Yn75tKhF4LfDj0qmO3WOH+6qU13HBPdtSBF4YheWQDwoDbexBxzSH/lsrig
- g6Xw48nmrVAxwAukNtlw/byDJ3Nnq9Jj7R7ZKYmJOdOXPyw0lEEArCAFCUB9GyCcRiQz
- Fym3mDcpqfVqAhmttjbqYWW8nfPee4w7ejvq8WVlH2GJsD3osa6c83VmL/wtlTUl6GgQ
- gOng==
-X-Gm-Message-State: APjAAAVc7C4j1cSX522UY5snkNcEY6nPKFZoJepuK7jCLhD3QDJQrBqX
- EcthzNWLo6pyAhRTjo9vBXKbPQrdfZBeW/vBkOyfL9GOmxyLH7umSNnShP3wZNAOh8eeSVsIxFU
- mnUUAo+UijGiJsP4=
-X-Received: by 2002:adf:fd46:: with SMTP id h6mr1894908wrs.243.1570612507681; 
- Wed, 09 Oct 2019 02:15:07 -0700 (PDT)
-X-Received: by 2002:adf:fd46:: with SMTP id h6mr1894891wrs.243.1570612507348; 
- Wed, 09 Oct 2019 02:15:07 -0700 (PDT)
-Received: from [192.168.10.150] ([93.56.166.5])
- by smtp.gmail.com with ESMTPSA id 63sm2388645wri.25.2019.10.09.02.15.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 09 Oct 2019 02:15:06 -0700 (PDT)
-Subject: Re: [Qemu-devel] qemu_futex_wait() lockups in ARM64: 2 possible issues
-To: Jan Glauber <jglauber@marvell.com>
-References: <cbe46ad6-ef6c-d155-e79a-672182c725ad@ubuntu.com>
- <d94f18f1-986f-ec19-02c0-e83e5e7af3d0@redhat.com>
- <1864070a-2f84-1d98-341e-f01ddf74ec4b@ubuntu.com>
- <20190924202517.GA21422@xps13.dannf> <20191002092253.GA3857@hc>
- <6dd73749-49b0-0fbc-b9bb-44c3736642b8@redhat.com>
- <20191007144432.GA29958@xps13.dannf>
- <065a52a9-5bb0-1259-6c73-41af60e0a05d@redhat.com> <20191009080220.GA2905@hc>
-From: Paolo Bonzini <pbonzini@redhat.com>
+ bh=hTUKCIiic+Ut/Wo5FppKOMLXeKxhC4oaQ4z+c7aFIGk=;
+ b=KNjz8WO83sTy95IGorf24b/P1MG1ayJ1KVIR1jnei0LyCUyURMEuwxVv7XeSEuSI++
+ wwAxazOyQ2DMDm29TZW6B3zDKYaC040lOlbaEe53PptuMuii8MwiggrOK0QsrjaPIc5S
+ n2UCtgMjGE+5rRFv791Ht3W/I/xUHmbKXkBPNpvMXgtVbB7b8WORERXj430VIysDoqis
+ vwxGwBWjMKmpMIf4ICbTW351RnmPxZcA7fJ1ZpZEATpt84EBk7wU3DcHn7yzmahLR2al
+ koM26Jfk/ijRV+RkS4MctfbTafu/ObdPh0FRcTtTq16ZiJzIXMg8RWv8lLzWrLJG0zbw
+ VGiA==
+X-Gm-Message-State: APjAAAVsw/b5T0IlMWBzRj2YDZnreaM2kOibQM+4SIxnNjOOmtHAolvB
+ JZobN5HMK0IMfqyaaWYOV27PcA==
+X-Received: by 2002:ab0:714c:: with SMTP id k12mr429717uao.16.1570622678439;
+ Wed, 09 Oct 2019 05:04:38 -0700 (PDT)
+Received: from ?IPv6:2607:fb90:12df:9ad9:70ab:b71f:bde2:72aa?
+ ([2607:fb90:12df:9ad9:70ab:b71f:bde2:72aa])
+ by smtp.gmail.com with ESMTPSA id s10sm599981vkl.8.2019.10.09.05.04.34
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 09 Oct 2019 05:04:37 -0700 (PDT)
+Subject: Re: [PATCH v2 21/21] hw/net/lan9118.c: Switch to transaction-based
+ ptimer API
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20191008171740.9679-1-peter.maydell@linaro.org>
+ <20191008171740.9679-22-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
 Openpgp: preference=signencrypt
-Message-ID: <d5367b2a-84ee-1211-a2dc-7d631c94fe3f@redhat.com>
-Date: Wed, 9 Oct 2019 11:15:04 +0200
+Message-ID: <d7f1654b-0f61-4ef8-6f83-bd5c7221a7ec@linaro.org>
+Date: Tue, 8 Oct 2019 22:07:21 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <20191009080220.GA2905@hc>
+In-Reply-To: <20191008171740.9679-22-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-MC-Unique: 5-4RjutvMeWVqebn9BFteA-1
-X-Mimecast-Spam-Score: 0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 207.211.31.81
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::941
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -129,144 +119,24 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Rafael David Tinoco <rafaeldtinoco@ubuntu.com>,
- lizhengui <lizhengui@huawei.com>, dann frazier <dann.frazier@canonical.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Bug 1805256 <1805256@bugs.launchpad.net>,
- QEMU Developers - ARM <qemu-arm@nongnu.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uqMnnT369iPH
+X-TUID: ylWwA4ZfotrD
 
-On 09/10/19 10:02, Jan Glauber wrote:
-> On Mon, Oct 07, 2019 at 04:58:30PM +0200, Paolo Bonzini wrote:
->> On 07/10/19 16:44, dann frazier wrote:
->>> On Mon, Oct 07, 2019 at 01:06:20PM +0200, Paolo Bonzini wrote:
->>>> On 02/10/19 11:23, Jan Glauber wrote:
->>>>> I've looked into this on ThunderX2. The arm64 code generated for the
->>>>> atomic_[add|sub] accesses of ctx->notify_me doesn't contain any
->>>>> memory barriers. It is just plain ldaxr/stlxr.
->>>>>
->>>>> From my understanding this is not sufficient for SMP sync.
->>>>>
->>>>> If I read this comment correct:
->>>>>
->>>>>     void aio_notify(AioContext *ctx)
->>>>>     {
->>>>>         /* Write e.g. bh->scheduled before reading ctx->notify_me.  P=
-airs
->>>>>          * with atomic_or in aio_ctx_prepare or atomic_add in aio_pol=
-l.
->>>>>          */
->>>>>         smp_mb();
->>>>>         if (ctx->notify_me) {
->>>>>
->>>>> it points out that the smp_mb() should be paired. But as
->>>>> I said the used atomics don't generate any barriers at all.
->>>>
->>>> Based on the rest of the thread, this patch should also fix the bug:
->>>>
->>>> diff --git a/util/async.c b/util/async.c
->>>> index 47dcbfa..721ea53 100644
->>>> --- a/util/async.c
->>>> +++ b/util/async.c
->>>> @@ -249,7 +249,7 @@ aio_ctx_check(GSource *source)
->>>>      aio_notify_accept(ctx);
->>>> =20
->>>>      for (bh =3D ctx->first_bh; bh; bh =3D bh->next) {
->>>> -        if (bh->scheduled) {
->>>> +        if (atomic_mb_read(&bh->scheduled)) {
->>>>              return true;
->>>>          }
->>>>      }
->>>>
->>>>
->>>> And also the memory barrier in aio_notify can actually be replaced
->>>> with a SEQ_CST load:
->>>>
->>>> diff --git a/util/async.c b/util/async.c
->>>> index 47dcbfa..721ea53 100644
->>>> --- a/util/async.c
->>>> +++ b/util/async.c
->>>> @@ -349,11 +349,11 @@ LinuxAioState *aio_get_linux_aio(AioContext *ctx=
-)
->>>> =20
->>>>  void aio_notify(AioContext *ctx)
->>>>  {
->>>> -    /* Write e.g. bh->scheduled before reading ctx->notify_me.  Pairs
->>>> -     * with atomic_or in aio_ctx_prepare or atomic_add in aio_poll.
->>>> +    /* Using atomic_mb_read ensures that e.g. bh->scheduled is writte=
-n before
->>>> +     * ctx->notify_me is read.  Pairs with atomic_or in aio_ctx_prepa=
-re or
->>>> +     * atomic_add in aio_poll.
->>>>       */
->>>> -    smp_mb();
->>>> -    if (ctx->notify_me) {
->>>> +    if (atomic_mb_read(&ctx->notify_me)) {
->>>>          event_notifier_set(&ctx->notifier);
->>>>          atomic_mb_set(&ctx->notified, true);
->>>>      }
->>>>
->>>>
->>>> Would you be able to test these (one by one possibly)?
->>>
->>> Paolo,
->>>   I tried them both separately and together on a Hi1620 system, each
->>> time it hung in the first iteration. Here's a backtrace of a run with
->>> both patches applied:
->>
->> Ok, not a great start...  I'll find myself an aarch64 machine and look
->> at it more closely.  I'd like the patch to be something we can
->> understand and document, since this is probably the second most-used
->> memory barrier idiom in QEMU.
->>
->> Paolo
->=20
-> I'm still not sure what the actual issue is here, but could it be some ba=
-d
-> interaction between the notify_me and the list_lock? The are both 4 byte
-> and side-by-side:
->=20
-> address notify_me: 0xaaaadb528aa0  sizeof notify_me: 4
-> address list_lock: 0xaaaadb528aa4  sizeof list_lock: 4
->=20
-> AFAICS the generated code looks OK (all load/store exclusive done
-> with 32 bit size):
->=20
->      e6c:       885ffc01        ldaxr   w1, [x0]
->      e70:       11000821        add     w1, w1, #0x2
->      e74:       8802fc01        stlxr   w2, w1, [x0]
->=20
-> ...but if I bump notify_me size to uint64_t the issue goes away.
+On 10/8/19 1:17 PM, Peter Maydell wrote:
+> Switch the cmsdk-apb-watchdog code away from bottom-half based
+> ptimers to the new transaction-based ptimer API.  This just requires
+> adding begin/commit calls around the various places that modify the
+> ptimer state, and using the new ptimer_init() function to create the
+> timer.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/net/lan9118.c | 11 +++++++----
+>  1 file changed, 7 insertions(+), 4 deletions(-)
 
-Ouch. :)  Is this with or without my patch(es)?
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Also, what if you just add a dummy uint32_t after notify_me?
-
-Thanks,
-
-Paolo
-
->=20
-> BTW, the image file I convert in the testcase is ~20 GB.
->=20
-> --Jan
->=20
-> diff --git a/include/block/aio.h b/include/block/aio.h
-> index a1d6b9e24939..e8a5ea3860bb 100644
-> --- a/include/block/aio.h
-> +++ b/include/block/aio.h
-> @@ -83,7 +83,7 @@ struct AioContext {
->       * Instead, the aio_poll calls include both the prepare and the
->       * dispatch phase, hence a simple counter is enough for them.
->       */
-> -    uint32_t notify_me;
-> +    uint64_t notify_me;
-> =20
->      /* A lock to protect between QEMUBH and AioHandler adders and delete=
-r,
->       * and to ensure that no callbacks are removed while we're walking a=
-nd
->=20
-
+r~

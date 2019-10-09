@@ -1,87 +1,97 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp196884wrm;
-        Tue, 8 Oct 2019 16:12:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxyvGYxjbUY5deZQj2lPPYmiiHg3BEFTd36hiBZPj831vGNoyj/9pW5alJ9nUHHNw1SFSek
-X-Received: by 2002:a50:b901:: with SMTP id m1mr406678ede.203.1570576369029;
-        Tue, 08 Oct 2019 16:12:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570576369; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp290537wrm;
+        Tue, 8 Oct 2019 17:59:27 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqza3vMmlBtMj0fETZqo18W/zuKi2RzRM75ofOfWGOdm5Km71+WGj+WQYX4nSgvY6J6KGFmQ
+X-Received: by 2002:ac8:1c49:: with SMTP id j9mr959385qtk.364.1570582767105;
+        Tue, 08 Oct 2019 17:59:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570582767; cv=none;
         d=google.com; s=arc-20160816;
-        b=pBKb2XaNL470Tc72/CJuHu7s1FDUVFcSVPFY5BEi2p1DFV7sLbv5CJDM18ZrEvvzqc
-         djvaXKb8W9DoqgLkwY4leuAVlPf+KKOqxfK/rXLO9KuFwBNO2C/ZDrjLXq8mD8gGF5Ms
-         6fd1Sa8bQiKvG2PB1b6ZefBppEiBKXnDckc0vzZqOnvIWcHzXgJS1Yw/90fw5TBTapDL
-         44zqcy6tIl/dzl5RHpYIXQfa0djIU9eCNK57zMR0bltojmnmGmX4KLnyYUZZro5PAhkP
-         B2fJKYgjpJV97AIG4JwDNJvKY+nUfUWw5f9217fnOxUvNRPXzpoxWf4SeTEhvr4fg4W6
-         YRJg==
+        b=0ENpCw5MtBuu9xGudUhOqRGMXZ3uhWBEhr3nnbqAQh9TpU3rD5bNcPuKBEeHSHppOA
+         MVrBEKvdNW9V8u0qaFNp0adcLQAZFgIWlqd/SX4+v/R8Bpl11h4SwcyGnigJuF4lv+ui
+         A43/F0s5AzA4xJ9P/Llne5HANfUeoVqQITh2vlpbeNTCl9NtG/y/rKNZ+wgA5n3YFt4k
+         qkMN9fljN/Vw9TQsFplt03Tp9AZkmj4ATYzz7bn1oZcfFJqjbkvKdbSDFoQLLpr4nN53
+         QhqjjEH8Xdo9Vf6cDgXH0Aj2lgHm0YKIyDQu/oJc2iI/4bSwzlkSJlsq62ki5+K+awwT
+         PJLQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:to:from:date;
-        bh=53ZsRh0cbAfz/aOphK7DVVyuaVYtWHiHwH23kNcFTLk=;
-        b=khnaFZGLXOiO+zIckCXmj2xWD5Sfm/pekVQwwflGYtNiOVJoXaAXcz/evEszu3RTAs
-         s1fhWveAllWHQEI7yqPMEgQ4ZKA2LDVxBH9Hg5YDE47sFPXefB9TqDJnjF9uYSpBVp8m
-         seUz0/QW5vjLI1EuqL0I8ztsWjjFg94L2HHrAbJEHrVxPyDlL95hz/mX+8TMpSH0u+MQ
-         OC+he7SsbgRvFnmk+oFdIc0gvQHXSz0tzBtRz/YhqndEENNYIZx9mOX+0vBuA0tUtYyR
-         3ipqEfAY43Zq/5NS6M6oxxJqqpLeqlFUat7wJ+F5zXAJ8mBSuKsbgM+zxX2Aro01DQWe
-         N8aw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=vdJ6hUyFIr9essbPJNXSLpLm9WkR6FVlyC3k4abQwCs=;
+        b=qd7ENix9fgO1nfI/uSsnNYXLK4GovwUzMl8hhPagpsjwe56FKUxSgGmq3sqLv0qUMY
+         dkuLA5mURqrRZQoBWGpEWYkcXgNbrFOmgZEUrS/2hAZVi/+iwL9UFbbJY+LDmAstuW0A
+         ZcKxQYLlcP6yTikaUAKc0DwHS3wEjx7pPJ3ksHfryTx860J0TGFt00PgfFTv+MCDIOeN
+         nAw+OSN1sd5q0bSKjTi9GLNV4bahtTvj3neyzgc8h2YGVwRw60EhHozcx6KjmqJuyBK5
+         Ksnn/GZ6MhS5c9lZRbCUrV9DWexekEQQaj91yUaU6uCYVOiOM2ESdSSmONxq3YKUQz/z
+         YR5g==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Bs0YIZRO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g21si202544ejk.23.2019.10.08.16.12.48
+        by mx.google.com with ESMTPS id v10si594921qta.300.2019.10.08.17.59.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Oct 2019 16:12:49 -0700 (PDT)
+        Tue, 08 Oct 2019 17:59:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Bs0YIZRO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37834 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:38322 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iHyet-0005Hh-Mf
-	for alex.bennee@linaro.org; Tue, 08 Oct 2019 19:12:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59344)
+	id 1iI0K6-0004mg-5G
+	for alex.bennee@linaro.org; Tue, 08 Oct 2019 20:59:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39412)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <crosa@redhat.com>) id 1iHyej-0005HR-Mq
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 19:12:39 -0400
+ (envelope-from <liq3ea@gmail.com>) id 1iI0Jr-0004ju-8H
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 20:59:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <crosa@redhat.com>) id 1iHyeh-0000Dd-HA
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 19:12:36 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:46796)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <crosa@redhat.com>)
- id 1iHyeh-0000DA-8c; Tue, 08 Oct 2019 19:12:35 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id F337F8342DF;
- Tue,  8 Oct 2019 23:12:33 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-122-151.rdu2.redhat.com
- [10.10.122.151])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 6FC895D9CD;
- Tue,  8 Oct 2019 23:12:28 +0000 (UTC)
-Date: Tue, 8 Oct 2019 19:12:26 -0400
-From: Cleber Rosa <crosa@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 5/5] tests/boot_linux_console: Add sdcard test for the
- Exynos4210
-Message-ID: <20191008231226.GC11091@localhost.localdomain>
-References: <20191005154748.21718-1-f4bug@amsat.org>
- <20191005154748.21718-6-f4bug@amsat.org>
+ (envelope-from <liq3ea@gmail.com>) id 1iI0Jp-000553-Ro
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 20:59:11 -0400
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:39409)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <liq3ea@gmail.com>)
+ id 1iI0Jk-00053j-GL; Tue, 08 Oct 2019 20:59:04 -0400
+Received: by mail-oi1-x244.google.com with SMTP id w144so346708oia.6;
+ Tue, 08 Oct 2019 17:59:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=vdJ6hUyFIr9essbPJNXSLpLm9WkR6FVlyC3k4abQwCs=;
+ b=Bs0YIZROhEwuGBFhDL3EbYjAVMUsDHO+0ttSU8I1ZYOZjr2+XuXmVkv1nD3KcbvjHR
+ ZQmAq3htEO0aCve7x8WoX/8y6BjLfN0pthY4JOEJ3b1PQQwoqGPjP6/xmAq+Kb+NxhTB
+ qOjvw3BV5718tK79NIS1vZRy4DMnuiVKXSs82qI1PQgYJwl8GZ8DpNcdmoM6+hKLPyHy
+ Zz9/EAJEvYwwrwKv481cvwA9UjhFOWARpkSQH0N6UWsDFesZjpBqGmDM7PUugUzSKf3M
+ 52AX1o5VO0C2K8nzW3LLHPF57t6hJZwOlVufBvm/Jv1goMTz6q6i7d6Tr758JFT3l8py
+ d/jg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=vdJ6hUyFIr9essbPJNXSLpLm9WkR6FVlyC3k4abQwCs=;
+ b=IIt70CpiLN9KFikdgmuv1BiO2wHzVtFEpG83a0aPhSx+uGwIdwcRzVRqu74QSoJkg1
+ 5eol1XhCMxOwPedjDfYIAzHQ3YatD6UnOTj4OvvGKDzGNtYZL0tp7Hctgsaonh8M65Oh
+ DLnUBVsK235LP1Np0v9EoIPWHHo7t322JPlyxjKSqKU3LC42BB59Oipji9W8o25DURdz
+ lOnCOVtpi0Pj5fQM1lMfARENirfkW0+ApnP4b/Ac2V7SwgNjjU11HE1bDkz/h65oR+AD
+ JPukhG008q9YDkhKHABp3g7Rq6naZgWqiuCEe5DY5GJ8IOOhCPYmurIToe83jIQDdcHg
+ anog==
+X-Gm-Message-State: APjAAAVyQI1snxkHdonukNMC+uqtOA2E8aoaiG7c4fM9XtZbg+jT6Z17
+ 9V3N+F3hbEyJZs7WHtIm6YqGK4dNUwPn6tuWzVw=
+X-Received: by 2002:aca:280e:: with SMTP id 14mr343753oix.129.1570582743556;
+ Tue, 08 Oct 2019 17:59:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20191005154748.21718-6-f4bug@amsat.org>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.69]); Tue, 08 Oct 2019 23:12:34 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+References: <20191008142539.7793-1-philmd@redhat.com>
+ <20191008142539.7793-2-philmd@redhat.com>
+In-Reply-To: <20191008142539.7793-2-philmd@redhat.com>
+From: Li Qiang <liq3ea@gmail.com>
+Date: Wed, 9 Oct 2019 08:58:27 +0800
+Message-ID: <CAKXe6S+jpobh-nG+-x1+QMrUcCReT2AfmfPo+mGc4X+L_V1WVw@mail.gmail.com>
+Subject: Re: [PATCH v2 1/8] hw/acpi/piix4: Convert reset handler to DeviceReset
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: multipart/alternative; boundary="00000000000085291705946fcaa8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::244
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -93,143 +103,170 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?iso-8859-1?Q?Fr=E9d=E9ric?= Basse <contact@fredericb.info>,
- Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Evgeny Voevodin <e.voevodin@samsung.com>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-devel@nongnu.org,
- Krzysztof Kozlowski <krzk@kernel.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
- Dmitry Solodkiy <d.solodkiy@samsung.com>, Maksim Kozlov <m.kozlov@samsung.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Guenter Roeck <linux@roeck-us.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>,
+ Qemu Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, John Snow <jsnow@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: w5wI08quWZo/
+X-TUID: EgdYxWjLkCXG
 
-On Sat, Oct 05, 2019 at 05:47:48PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> This test boots a Linux kernel on a smdkc210 board and verify
-> the serial output is working.
->=20
-> The cpio image used comes from the linux-build-test project:
-> https://github.com/groeck/linux-build-test
->=20
-> Since this test is not reliable due to clock timing issues,
-> it is disabled with the 'skip' property.
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+--00000000000085291705946fcaa8
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> =E4=BA=8E2019=E5=B9=B410=E6=
+=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=8810:28=E5=86=99=E9=81=
+=93=EF=BC=9A
+
+> The PIIX4/PM is a PCI device within the PIIX4 chipset, it will be reset
+> when the PCI bus it stands on is reset.
+>
+> Convert its reset handler into a proper Device reset method.
+>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>
+
+
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
+
+
 > ---
->  tests/acceptance/boot_linux_console.py | 47 ++++++++++++++++++++++++++
->  1 file changed, 47 insertions(+)
->=20
-> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/=
-boot_linux_console.py
-> index 197358a69c..2d0d82b013 100644
-> --- a/tests/acceptance/boot_linux_console.py
-> +++ b/tests/acceptance/boot_linux_console.py
-> @@ -14,6 +14,7 @@ import lzma
->  import gzip
->  import shutil
-> =20
-> +from avocado import skip
->  from avocado_qemu import Test
->  from avocado.utils import process
->  from avocado.utils import archive
-> @@ -359,6 +360,52 @@ class BootLinuxConsole(Test):
->          self.wait_for_console_pattern('Boot successful.')
->          # TODO user command, for now the uart is stuck
-> =20
-> +    @skip("unstable clock timings")
+>  hw/acpi/piix4.c | 7 +++----
+>  1 file changed, 3 insertions(+), 4 deletions(-)
+>
+> diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+> index 5742c3df87..4e079b39bd 100644
+> --- a/hw/acpi/piix4.c
+> +++ b/hw/acpi/piix4.c
+> @@ -27,7 +27,6 @@
+>  #include "hw/pci/pci.h"
+>  #include "hw/qdev-properties.h"
+>  #include "hw/acpi/acpi.h"
+> -#include "sysemu/reset.h"
+>  #include "sysemu/runstate.h"
+>  #include "sysemu/sysemu.h"
+>  #include "qapi/error.h"
+> @@ -344,9 +343,9 @@ static const VMStateDescription vmstate_acpi =3D {
+>      }
+>  };
+>
+> -static void piix4_reset(void *opaque)
+> +static void piix4_pm_reset(DeviceState *dev)
+>  {
+> -    PIIX4PMState *s =3D opaque;
+> +    PIIX4PMState *s =3D PIIX4_PM(dev);
+>      PCIDevice *d =3D PCI_DEVICE(s);
+>      uint8_t *pci_conf =3D d->config;
+>
+> @@ -542,7 +541,6 @@ static void piix4_pm_realize(PCIDevice *dev, Error
+> **errp)
+>
+>      s->machine_ready.notify =3D piix4_pm_machine_ready;
+>      qemu_add_machine_init_done_notifier(&s->machine_ready);
+> -    qemu_register_reset(piix4_reset, s);
+>
+>      piix4_acpi_system_hot_add_init(pci_address_space_io(dev),
+>                                     pci_get_bus(dev), s);
+> @@ -692,6 +690,7 @@ static void piix4_pm_class_init(ObjectClass *klass,
+> void *data)
+>      k->device_id =3D PCI_DEVICE_ID_INTEL_82371AB_3;
+>      k->revision =3D 0x03;
+>      k->class_id =3D PCI_CLASS_BRIDGE_OTHER;
+> +    dc->reset =3D piix4_pm_reset;
+>      dc->desc =3D "PM";
+>      dc->vmsd =3D &vmstate_acpi;
+>      dc->props =3D piix4_pm_properties;
+> --
+> 2.21.0
+>
+>
+>
 
-On the topic of skipping unstable tests, don't you think this is
-something that should check for some type of flag?
+--00000000000085291705946fcaa8
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Just for the sake of brainstorming, other possiblity is to build on
-Avocado's "WARN" test status, and instead of failing a test (and
-affecting the overall job execution), simply warn the user.  A
-decorator such as "@warn_on" could be implemented similar to the
-existing "@fail_on" and "@cancel_on".
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">Philippe Mathieu-Daud=C3=A9 &lt;<a hr=
+ef=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; =E4=BA=8E2019=E5=
+=B9=B410=E6=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=8810:28=E5=86=
+=99=E9=81=93=EF=BC=9A<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex">The PIIX4/PM is a PCI device within the PIIX4 chipset, it will be res=
+et<br>
+when the PCI bus it stands on is reset.<br>
+<br>
+Convert its reset handler into a proper Device reset method.<br>
+<br>
+Reviewed-by: Igor Mammedov &lt;<a href=3D"mailto:imammedo@redhat.com" targe=
+t=3D"_blank">imammedo@redhat.com</a>&gt;<br>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@red=
+hat.com" target=3D"_blank">philmd@redhat.com</a>&gt;<br></blockquote><div><=
+br></div><div><br></div><div>Reviewed-by: Li Qiang &lt;<a href=3D"mailto:li=
+q3ea@gmail.com">liq3ea@gmail.com</a>&gt;<br></div><div>=C2=A0</div><blockqu=
+ote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px=
+ solid rgb(204,204,204);padding-left:1ex">
+---<br>
+=C2=A0hw/acpi/piix4.c | 7 +++----<br>
+=C2=A01 file changed, 3 insertions(+), 4 deletions(-)<br>
+<br>
+diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c<br>
+index 5742c3df87..4e079b39bd 100644<br>
+--- a/hw/acpi/piix4.c<br>
++++ b/hw/acpi/piix4.c<br>
+@@ -27,7 +27,6 @@<br>
+=C2=A0#include &quot;hw/pci/pci.h&quot;<br>
+=C2=A0#include &quot;hw/qdev-properties.h&quot;<br>
+=C2=A0#include &quot;hw/acpi/acpi.h&quot;<br>
+-#include &quot;sysemu/reset.h&quot;<br>
+=C2=A0#include &quot;sysemu/runstate.h&quot;<br>
+=C2=A0#include &quot;sysemu/sysemu.h&quot;<br>
+=C2=A0#include &quot;qapi/error.h&quot;<br>
+@@ -344,9 +343,9 @@ static const VMStateDescription vmstate_acpi =3D {<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0};<br>
+<br>
+-static void piix4_reset(void *opaque)<br>
++static void piix4_pm_reset(DeviceState *dev)<br>
+=C2=A0{<br>
+-=C2=A0 =C2=A0 PIIX4PMState *s =3D opaque;<br>
++=C2=A0 =C2=A0 PIIX4PMState *s =3D PIIX4_PM(dev);<br>
+=C2=A0 =C2=A0 =C2=A0PCIDevice *d =3D PCI_DEVICE(s);<br>
+=C2=A0 =C2=A0 =C2=A0uint8_t *pci_conf =3D d-&gt;config;<br>
+<br>
+@@ -542,7 +541,6 @@ static void piix4_pm_realize(PCIDevice *dev, Error **er=
+rp)<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0s-&gt;machine_ready.notify =3D piix4_pm_machine_ready;<=
+br>
+=C2=A0 =C2=A0 =C2=A0qemu_add_machine_init_done_notifier(&amp;s-&gt;machine_=
+ready);<br>
+-=C2=A0 =C2=A0 qemu_register_reset(piix4_reset, s);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0piix4_acpi_system_hot_add_init(pci_address_space_io(dev=
+),<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 pci_get_bus(dev), s);<=
+br>
+@@ -692,6 +690,7 @@ static void piix4_pm_class_init(ObjectClass *klass, voi=
+d *data)<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;device_id =3D PCI_DEVICE_ID_INTEL_82371AB_3;<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;revision =3D 0x03;<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;class_id =3D PCI_CLASS_BRIDGE_OTHER;<br>
++=C2=A0 =C2=A0 dc-&gt;reset =3D piix4_pm_reset;<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;desc =3D &quot;PM&quot;;<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_acpi;<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;props =3D piix4_pm_properties;<br>
+-- <br>
+2.21.0<br>
+<br>
+<br>
+</blockquote></div></div>
 
-> +    def test_arm_exynos4210_sdcard(self):
-> +        """
-> +        :avocado: tags=3Darch:arm
-> +        :avocado: tags=3Dmachine:smdkc210
-> +        """
-> +        deb_url =3D ('https://snapshot.debian.org/archive/debian/'
-> +                   '20190928T224601Z/pool/main/l/linux/'
-> +                   'linux-image-4.19.0-6-armmp_4.19.67-2+deb10u1_armhf=
-.deb')
-> +        deb_hash =3D 'fa9df4a0d38936cb50084838f2cb933f570d7d82'
-> +        deb_path =3D self.fetch_asset(deb_url, asset_hash=3Ddeb_hash)
-> +        kernel_path =3D self.extract_from_deb(deb_path,
-> +                                            '/boot/vmlinuz-4.19.0-6-ar=
-mmp')
-> +        dtb_path =3D '/usr/lib/linux-image-4.19.0-6-armmp/exynos4210-s=
-mdkv310.dtb'
-> +        dtb_path =3D self.extract_from_deb(deb_path, dtb_path)
-> +
-> +        rootfs_url =3D ('https://github.com/groeck/linux-build-test/ra=
-w/'
-> +                      '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs=
-/'
-> +                      'arm/rootfs-armv5.ext2.gz')
-> +        rootfs_hash =3D '093e89d2b4d982234bf528bc9fb2f2f17a9d1f93'
-> +        rootfs_path_gz =3D self.fetch_asset(rootfs_url, asset_hash=3Dr=
-ootfs_hash)
-> +        rootfs_path =3D os.path.join(self.workdir, 'rootfs.ext2')
-> +        gunzip(rootfs_path_gz, rootfs_path)
-
-I was going to suggest the same thing as the previous patch, but this
-turned out to be quite interesting.  Basically, both compressed and
-uncompressed verions of this file seems to disguise themselves pretty
-well as a tar file:
-
- $ tar vtf rootfs-armv5.ext2.gz
- $ gzip -dc rootfs-armv5.ext2.gz | tar vtf -
- $ python3 -m tarfile -l rootfs-armv5.ext2.gz
- $ python3 -m tarfile -l rootfs-armv5.ext2
-
-Even though it is not.  This affects how "avocado.utils.uncompress"
-detects the file, and consequently how it tries to uncompress it.
-So, here, you could instead use:
-
-  archive.gzip_uncompress(rootfs_path_gz, rootfs_path)
-
-To avoid relying on the broken tar file detection.
-
-- Cleber.
-
-> +
-> +        self.vm.set_machine('smdkc210')
-> +        self.vm.set_console(console_id=3D1)
-> +        kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
-> +                               'earlycon=3Dexynos4210,0x13810000 early=
-printk ' +
-> +                               'console=3DttySAC1,115200n8 ' +
-> +                               'random.trust_cpu=3Doff cryptomgr.notes=
-ts ' +
-> +                               'root=3D/dev/mmcblk0 rootwait rw ' +
-> +                               'cpuidle.off=3D1 panic=3D-1 noreboot')
-> +
-> +        self.vm.add_args('-kernel', kernel_path,
-> +                         '-dtb', dtb_path,
-> +                         '-append', kernel_command_line,
-> +                         # The external MMC is on the 3rd slot
-> +                         '-drive', 'if=3Dsd,driver=3Dnull-co',
-> +                         '-drive', 'if=3Dsd,driver=3Dnull-co',
-> +                         '-drive', 'if=3Dsd,file=3D' + rootfs_path + '=
-,format=3Draw',
-> +                         '-no-reboot')
-> +        self.vm.launch()
-> +
-> +        self.wait_for_console_pattern('Boot successful.')
-> +        # TODO user command, for now the uart is stuck
-> +
->      def test_s390x_s390_ccw_virtio(self):
->          """
->          :avocado: tags=3Darch:s390x
-> --=20
-> 2.20.1
->=20
->=20
+--00000000000085291705946fcaa8--

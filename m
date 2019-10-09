@@ -1,353 +1,969 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp814077wrm;
-        Wed, 9 Oct 2019 04:49:45 -0700 (PDT)
-X-Received: by 2002:a6b:7410:: with SMTP id s16mr2681381iog.35.1570621785743;
-        Wed, 09 Oct 2019 04:49:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570621785; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp968639wrm;
+        Wed, 9 Oct 2019 07:01:29 -0700 (PDT)
+X-Received: by 2002:a9d:3a3:: with SMTP id f32mr3111951otf.231.1570629688090;
+        Wed, 09 Oct 2019 07:01:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570629688; cv=none;
         d=google.com; s=arc-20160816;
-        b=h+CT86tFUE2hqFvUDvceyJ+u9ugEDsgQ2L85BzPfYgzpGlT5X91Pl89hY7d0EkIeCB
-         VquVpLZ5F8qd7VyhJzbsxujZv/zku225nP6/kvF6jjcbNnGWWUiOUmMgW8b4Tq3lVjBC
-         4Bmzb0lBbXuvfxvc7N6Dy9jCPy/8EfyqEsy5hu2FTF7purcnD2FXnEuxktPpXxJVfcFL
-         TRA9FwQInqXZe8h9FGKJsVd/eGRKta7CHKSOX5vTyaoI/SwTC2zDUUf3S8PnTNdXaHTH
-         3sOU2DIR2lsxCCKFJ+w+5+JeEa248i5U1XBehV/f3jZKvlWT0eQAhCGD9DHYbAd9liAc
-         aBNA==
+        b=ylLnJGPBuYCi57vj156fmPVcOIcwV23QyqfYFUoV3a3XJM+iUlhnPubYKJ9AeSwTu5
+         hBJwYNwW2P0ALdNByXojL+ldaI/GKaxEZw1s9z3wpKeYth7CVpcbHGzBli8bYFX57Vkc
+         +FIkVxb2wTIhpAwsxFoTXN4xiigyJsWQbi1yeusD/GoKHlbqoqTwNfJs8BAQMboz36cs
+         f8y4gW0GSMg2Lj9Bs+NU/YBXz5BQrw87e9GkBqW8yEaq/njdYlzj7CLkwODYwZaD83A7
+         Ykh+ZrYcRhCTE/c2Pak7eIMcsmjDrW06btPvWcwO3G4nxBw0KnQadU0iD4haNjAYCaU5
+         nB0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=0akdC6ifbO5r1Bkx4nu2fQVSUkpoM1OWF+hL9JHRCno=;
-        b=z3HFOeIuA4O2wr3gzLMVhZl0Bha29sOYrVSgyhcuQF83fIq54GbVyxEGk60NCtossd
-         6dm7qIkb1JwXqS0hMe5Tfhecz7L2wL21OB1lr/3LYJsHlRqNagsxBrjnGwfb422ksHgM
-         VIE/LTPiavox+QR6Z+PbOFoUp23SGx5+sdIu0ZxsxRTFzh8zOMHTaYqGTPVdCoTEr0IC
-         HyO3KbipX34zJB0ViQdvkJ1wI5Ry7FfUbxSte7hIPiEoIzx3b8H4zz7AD0vpUXzqCka6
-         5obyEtLe6TyOYmiPaLov9NDaP56AJnma1oVPZ7lGlcmRqNvEqkjY0FS8k0sgS8r8PIpc
-         osFw==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=ASLNAGjTfmH04HEzqWJlKTMX72bqQOJMfoQfr4O+3ys=;
+        b=rpJlzoyFXUmnaPp5GWTjRP43/kftMDoeYgafGJ/v1Y/JAUEYPRYHEavOc+yH4JaRnw
+         eB9470jqA8DBzhmBwvsAxNkSmfOuqp7vieoUlzFA4Pc1gpRbuJsvs2D1dOcgwgkhelXC
+         6FGf3TVilAsDPG/KUZVXsyOx+k+et7ujQMadmIBYpynako1/pT2XDV0qJ0ca52xhmwoL
+         B/NFsSHbi/V7mCk7WHUMh1PfJVZwWPyn281nGptvWF0owaS5a3jVKJmk7fLUgknlfq5M
+         do517Vt4BOp2d1tyFT9TaXdvfC5FOnblKolgjh1P2fd1qeljRQOr3Maojgmmia3BjO5z
+         KvBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NcqAT3b3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JIyFiyvC;
        spf=pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=beata.michalska@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <beata.michalska@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id p4sor1049793iof.45.2019.10.09.04.49.45
+        by mx.google.com with SMTPS id y10sor4702256jar.1.2019.10.09.07.01.27
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 09 Oct 2019 04:49:45 -0700 (PDT)
+        Wed, 09 Oct 2019 07:01:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=NcqAT3b3;
+       dkim=pass header.i=@linaro.org header.s=google header.b=JIyFiyvC;
        spf=pass (google.com: domain of beata.michalska@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=beata.michalska@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=0akdC6ifbO5r1Bkx4nu2fQVSUkpoM1OWF+hL9JHRCno=;
-        b=NcqAT3b3iP1jdtZ9i/4LodHKnk4sh7ZpfMC1gkVkwhaGXM2GGkfgqUA28OKEVDfKgD
-         75HELxx//kCiRF3cO7/U6PnBrsuGAWec+d/VrC+0arBf2o/C/S3sjDeJyEgIGsosP6bl
-         AyODG8lEc2faqWeqI8YvNF9huuy60JqHdVcgUt8rWvyHYRTNC2XMM1gFqBkmhQ3V9FQY
-         lct92oGa3Flr1zgHExWl6OyO3leRSwikPwnVkTp2/uWjPNuR7iY5i0dGdjShvsNoXboV
-         F4DLKEOE6hhmoJMuUB/Pe8Sbv7mVHyGSMpsIXBnfVcoOrs49p1fUMTZbI1f6GiUqUBVL
-         ITug==
+         :cc;
+        bh=ASLNAGjTfmH04HEzqWJlKTMX72bqQOJMfoQfr4O+3ys=;
+        b=JIyFiyvCYRHjbA+oJe1YqqqKBC8P3k7AGUGeFOarFIGg141qccCyCYDUT7frxkuj4O
+         UA+eJk39F6jdCVTNOaxGlywSTT4klzUZKYBQql3rhtlZWwqb+zlTw55m1R0RNsfB9mP6
+         88Z63S08yBwK0Ti4vYWgXDW0DyjOsKvdNkg4bfz9eZiDnYtOKc6HI19ot2osTiDE5Q9o
+         7I2aoVno/ty2G1JrkNSgbS1ijLQNS1NJmepBWw4tEBg9ajyJj2q/9JzbY2QsH5YkOE4+
+         mEnsS3l8OnMoCpF9ghP18EUCh9Fs5rNdLx/kwnkR+hbZoWyp6xrF30IWEpORG14Zsd3J
+         SVCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=0akdC6ifbO5r1Bkx4nu2fQVSUkpoM1OWF+hL9JHRCno=;
-        b=nwHYP/ZXeUOiuVTo7ZdC1feoYF0C8MOjWdpO68kM5NkQnkP2oMN/joQyewkSoYzYu9
-         ow3DoQpq5QI+m6B1wd09rNjvm3h+O2hfg+h251kYZ6odoO41im1uCoomapnaYJuFIFPl
-         iCeWyQsx9STEl5HT71E8MAi4ZjNSAbkQ4UJhrnIG0A4DOhcj/BoLXCwF3vq+w38TkCYq
-         xnPtoorXTePu28NkHs1TuN5Wbm2N6HOlIJO96UBMEi6HFCf5X3MYJRS/QMjSl+nXR/5F
-         li5558b5I3vb0/puzDygPgFqbAyF7xHyFMHYdbQPb5u79GJ2zHhFvLVGz8CHTBII+Lw/
-         Jh3g==
-X-Gm-Message-State: APjAAAW9pyRlnTcw3VaByqTdX25nXl/zzHkuenbfGpnHonz7JM6uXfy/
-	HYlEXgpXEB6MUYeakViDnjm0yINiAK2WUH3U7RMK38AbglA=
-X-Google-Smtp-Source: APXvYqzP9aywJCnt7B0+IRSczfqaZmfqXn4lkRdCajJLpNmgY6YMKnjeOwR9DkcBBej3qEe/UExOiLeto67f3dswalE=
-X-Received: by 2002:a5e:c811:: with SMTP id y17mr2783513iol.248.1570621785133;
- Wed, 09 Oct 2019 04:49:45 -0700 (PDT)
+         :message-id:subject:to:cc;
+        bh=ASLNAGjTfmH04HEzqWJlKTMX72bqQOJMfoQfr4O+3ys=;
+        b=S4neIorZLa8KJp0EcCq1gp+wHgN3NXeVpn4ACPgtJtXRIB6NzmXnwjvtiEIExSSN/g
+         ZmwzCn4rO3Ow4LpJRd+cqnaa0cEbONt5gDwWBRxZoC06EE0+rEvE1ENIe8vqCYtIDbco
+         QDvYsd8+/iu9f6+c/D0xQRZwoq6mYBcu87PXhhg3Zkm+dZB02MF93K/6QY8q28oZWr9w
+         SSX4/5mvlASZL77+sUr0YkDuAY7MN/lJudkbE+WBd7NuWslWmly4UhScoLMNg/Jnbh8P
+         F0f9aUMYIUvBAha0v3o2ER/q/+/e3yHdExglMlfAhBArtMunFcNtsfk/CwkyX1ckGMXV
+         6lQg==
+X-Gm-Message-State: APjAAAU0MTgDthkZ0stpDMS4SCbaM1YxVSuSd10xhPrDfVhVJKV87c5y
+	Ojod2EXX/q3sGuFLxRuXk+/HuUjbDL/dAmq5RJ/WiMLUuBE=
+X-Google-Smtp-Source: APXvYqxFUWEufHVywXm9BN1BTjWLT2gka/7IVxWEeLRN9MKZZ8yrFWTDGMRftnZpPFRKJPBqsjfDU8JFtRv+5sVRhn0=
+X-Received: by 2002:a02:4447:: with SMTP id o68mr3167331jaa.137.1570629686780;
+ Wed, 09 Oct 2019 07:01:26 -0700 (PDT)
 MIME-Version: 1.0
-References: <20190910095610.4546-1-beata.michalska@linaro.org>
- <20190910095610.4546-5-beata.michalska@linaro.org> <87blvabijl.fsf@linaro.org>
-In-Reply-To: <87blvabijl.fsf@linaro.org>
+References: <20191001125845.8793-1-drjones@redhat.com> <20191001125845.8793-5-drjones@redhat.com>
+In-Reply-To: <20191001125845.8793-5-drjones@redhat.com>
 From: Beata Michalska <beata.michalska@linaro.org>
-Date: Wed, 9 Oct 2019 12:49:34 +0100
-Message-ID: <CADSWDzvD69hEJU2H2aZ44f1wNY_yDk1KLA45Wz8ZwRcKpFQYcw@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH 4/4] target/arm: Add support for DC CVAP & DC
- CVADP ins
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, quintela@redhat.com, 
-	Richard Henderson <richard.henderson@linaro.org>, 
-	"Dr. David Alan Gilbert" <dgilbert@redhat.com>, shameerali.kolothum.thodi@huawei.com, 
-	eric.auger@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com
+Date: Wed, 9 Oct 2019 15:01:15 +0100
+Message-ID: <CADSWDzu2mUvTDYJj42747DgBAzWRDoMQRNgtepqyvv23OArHNQ@mail.gmail.com>
+Subject: Re: [PATCH v5 4/9] target/arm/cpu64: max cpu: Introduce sve<N> properties
+To: Andrew Jones <drjones@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+	Peter Maydell <peter.maydell@linaro.org>, Richard Henderson <richard.henderson@linaro.org>, 
+	armbru@redhat.com, eric.auger@redhat.com, imammedo@redhat.com, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, Dave.Martin@arm.com
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: e2LMTXeIr6xZ
+X-TUID: mR/uiMC1moma
 
-On Tue, 24 Sep 2019 at 02:16, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
-te:
+On Tue, 1 Oct 2019 at 14:04, Andrew Jones <drjones@redhat.com> wrote:
 >
+> Introduce cpu properties to give fine control over SVE vector lengths.
+> We introduce a property for each valid length up to the current
+> maximum supported, which is 2048-bits. The properties are named, e.g.
+> sve128, sve256, sve384, sve512, ..., where the number is the number of
+> bits. See the updates to docs/arm-cpu-features.rst for a description
+> of the semantics and for example uses.
 >
-> Beata Michalska <beata.michalska@linaro.org> writes:
+> Note, as sve-max-vq is still present and we'd like to be able to
+> support qmp_query_cpu_model_expansion with guests launched with e.g.
+> -cpu max,sve-max-vq=8 on their command lines, then we do allow
+> sve-max-vq and sve<N> properties to be provided at the same time, but
+> this is not recommended, and is why sve-max-vq is not mentioned in the
+> document.  If sve-max-vq is provided then it enables all lengths smaller
+> than and including the max and disables all lengths larger. It also has
+> the side-effect that no larger lengths may be enabled and that the max
+> itself cannot be disabled. Smaller non-power-of-two lengths may,
+> however, be disabled, e.g. -cpu max,sve-max-vq=4,sve384=off provides a
+> guest the vector lengths 128, 256, and 512 bits.
 >
-> > ARMv8.2 introduced support for Data Cache Clean instructions
-> > to PoP (point-of-persistence) - DC CVAP and PoDP (point-of-deep-persist=
-ence)
-> > - DV CVADP. Both specify conceptual points in a memory system where all=
- writes
-> > that are to reach them are considered persistent.
-> > The support provided considers both to be actually the same so there is=
- no
-> > distinction between the two. If none is available (there is no backing =
-store
-> > for given memory) both will result in Data Cache Clean up to the point =
-of
-> > coherency. Otherwise sync for the specified range shall be performed.
-> >
-> > Signed-off-by: Beata Michalska <beata.michalska@linaro.org>
-> > ---
-> >  linux-user/elfload.c       | 18 +++++++++++++++++-
-> >  target/arm/cpu.h           | 13 ++++++++++++-
-> >  target/arm/cpu64.c         |  1 +
-> >  target/arm/helper.c        | 24 ++++++++++++++++++++++++
-> >  target/arm/helper.h        |  1 +
-> >  target/arm/op_helper.c     | 36 ++++++++++++++++++++++++++++++++++++
-> >  target/arm/translate-a64.c |  5 +++++
-> >  7 files changed, 96 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-> > index 3365e192eb..1ec00308d5 100644
-> > --- a/linux-user/elfload.c
-> > +++ b/linux-user/elfload.c
-> > @@ -609,7 +609,12 @@ enum {
-> >      ARM_HWCAP_A64_PACG          =3D 1UL << 31,
-> >  };
-> >
-> > +enum {
-> > +    ARM_HWCAP2_A64_DCPODP   =3D 1 << 0,
-> > +};
-> > +
-> >  #define ELF_HWCAP get_elf_hwcap()
-> > +#define ELF_HWCAP2 get_elf_hwcap2()
-> >
-> >  static uint32_t get_elf_hwcap(void)
-> >  {
-> > @@ -644,12 +649,23 @@ static uint32_t get_elf_hwcap(void)
-> >      GET_FEATURE_ID(aa64_jscvt, ARM_HWCAP_A64_JSCVT);
-> >      GET_FEATURE_ID(aa64_sb, ARM_HWCAP_A64_SB);
-> >      GET_FEATURE_ID(aa64_condm_4, ARM_HWCAP_A64_FLAGM);
-> > +    GET_FEATURE_ID(aa64_dcpop, ARM_HWCAP_A64_DCPOP);
-> >
-> > -#undef GET_FEATURE_ID
-> >
-> >      return hwcaps;
-> >  }
-> >
-> > +static uint32_t get_elf_hwcap2(void)
-> > +{
-> > +    ARMCPU *cpu =3D ARM_CPU(thread_cpu);
-> > +    uint32_t hwcaps =3D 0;
-> > +
-> > +    GET_FEATURE_ID(aa64_dcpodp, ARM_HWCAP2_A64_DCPODP);
-> > +    return hwcaps;
-> > +}
-> > +
-> > +#undef GET_FEATURE_ID
-> > +
-> >  #endif /* not TARGET_AARCH64 */
-> >  #endif /* TARGET_ARM */
-> >
-> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> > index 297ad5e47a..1713d76590 100644
-> > --- a/target/arm/cpu.h
-> > +++ b/target/arm/cpu.h
-> > @@ -2229,7 +2229,8 @@ static inline uint64_t cpreg_to_kvm_id(uint32_t c=
-pregid)
-> >  #define ARM_CP_NZCV              (ARM_CP_SPECIAL | 0x0300)
-> >  #define ARM_CP_CURRENTEL         (ARM_CP_SPECIAL | 0x0400)
-> >  #define ARM_CP_DC_ZVA            (ARM_CP_SPECIAL | 0x0500)
-> > -#define ARM_LAST_SPECIAL         ARM_CP_DC_ZVA
-> > +#define ARM_CP_DC_CVAP           (ARM_CP_SPECIAL | 0x0600)
-> > +#define ARM_LAST_SPECIAL         ARM_CP_DC_CVAP
-> >  #define ARM_CP_FPU               0x1000
-> >  #define ARM_CP_SVE               0x2000
-> >  #define ARM_CP_NO_GDB            0x4000
-> > @@ -3572,6 +3573,16 @@ static inline bool isar_feature_aa64_frint(const=
- ARMISARegisters *id)
-> >      return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, FRINTTS) !=3D 0;
-> >  }
-> >
-> > +static inline bool isar_feature_aa64_dcpop(const ARMISARegisters *id)
-> > +{
-> > +    return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, DPB) !=3D 0;
-> > +}
-> > +
-> > +static inline bool isar_feature_aa64_dcpodp(const ARMISARegisters *id)
-> > +{
-> > +    return (FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, DPB) >> 1) !=3D=
- 0;
-> > +}
-> > +
-> >  static inline bool isar_feature_aa64_fp16(const ARMISARegisters *id)
-> >  {
-> >      /* We always set the AdvSIMD and FP fields identically wrt FP16.  =
-*/
-> > diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> > index d7f5bf610a..20094f980d 100644
-> > --- a/target/arm/cpu64.c
-> > +++ b/target/arm/cpu64.c
-> > @@ -331,6 +331,7 @@ static void aarch64_max_initfn(Object *obj)
-> >          cpu->isar.id_aa64isar0 =3D t;
-> >
-> >          t =3D cpu->isar.id_aa64isar1;
-> > +        t =3D FIELD_DP64(t, ID_AA64ISAR1, DPB, 2);
-> >          t =3D FIELD_DP64(t, ID_AA64ISAR1, JSCVT, 1);
-> >          t =3D FIELD_DP64(t, ID_AA64ISAR1, FCMA, 1);
-> >          t =3D FIELD_DP64(t, ID_AA64ISAR1, APA, 1); /* PAuth, architect=
-ed only */
-> > diff --git a/target/arm/helper.c b/target/arm/helper.c
-> > index 507026c915..99ae01b7e7 100644
-> > --- a/target/arm/helper.c
-> > +++ b/target/arm/helper.c
-> > @@ -3843,6 +3843,22 @@ static CPAccessResult aa64_cacheop_access(CPUARM=
-State *env,
-> >      return CP_ACCESS_OK;
-> >  }
-> >
-> > +static CPAccessResult aa64_cacheop_persist_access(CPUARMState *env,
-> > +                                                  const ARMCPRegInfo *=
-ri,
-> > +                                                  bool isread)
-> > +{
-> > +    ARMCPU *cpu =3D env_archcpu(env);
-> > +    /*
-> > +     * Access is UNDEF if lacking implementation for either DC CVAP or=
- DC CVADP
-> > +     * DC CVAP ->  CRm: 0xc
-> > +     * DC CVADP -> CRm: 0xd
-> > +     */
-> > +    return (ri->crm =3D=3D 0xc && !cpu_isar_feature(aa64_dcpop, cpu)) =
-||
-> > +           (ri->crm =3D=3D 0xd && !cpu_isar_feature(aa64_dcpodp, cpu))
-> > +           ? CP_ACCESS_TRAP_UNCATEGORIZED
-> > +           : aa64_cacheop_access(env, ri, isread);
-> > +}
-> > +
-> >  /* See: D4.7.2 TLB maintenance requirements and the TLB maintenance in=
-structions
-> >   * Page D4-1736 (DDI0487A.b)
-> >   */
-> > @@ -4251,6 +4267,14 @@ static const ARMCPRegInfo v8_cp_reginfo[] =3D {
-> >        .opc0 =3D 1, .opc1 =3D 3, .crn =3D 7, .crm =3D 10, .opc2 =3D 1,
-> >        .access =3D PL0_W, .type =3D ARM_CP_NOP,
-> >        .accessfn =3D aa64_cacheop_access },
-> > +    { .name =3D "DC_CVAP", .state =3D ARM_CP_STATE_AA64,
-> > +      .opc0 =3D 1, .opc1 =3D 3, .crn =3D 7, .crm =3D 12, .opc2 =3D 1,
-> > +      .access =3D PL0_W, .type =3D ARM_CP_DC_CVAP,
-> > +      .accessfn =3D aa64_cacheop_persist_access },
-> > +    { .name =3D "DC_CVADP", .state =3D ARM_CP_STATE_AA64,
-> > +      .opc0 =3D 1, .opc1 =3D 3, .crn =3D 7, .crm =3D 13, .opc2 =3D 1,
-> > +      .access =3D PL0_W, .type =3D ARM_CP_DC_CVAP,
-> > +      .accessfn =3D aa64_cacheop_persist_access },
-> >      { .name =3D "DC_CSW", .state =3D ARM_CP_STATE_AA64,
-> >        .opc0 =3D 1, .opc1 =3D 0, .crn =3D 7, .crm =3D 10, .opc2 =3D 2,
-> >        .access =3D PL1_W, .type =3D ARM_CP_NOP },
-> > diff --git a/target/arm/helper.h b/target/arm/helper.h
-> > index 1fb2cb5a77..a850364944 100644
-> > --- a/target/arm/helper.h
-> > +++ b/target/arm/helper.h
-> > @@ -561,6 +561,7 @@ DEF_HELPER_FLAGS_3(crypto_sm4ekey, TCG_CALL_NO_RWG,=
- void, ptr, ptr, ptr)
-> >  DEF_HELPER_FLAGS_3(crc32, TCG_CALL_NO_RWG_SE, i32, i32, i32, i32)
-> >  DEF_HELPER_FLAGS_3(crc32c, TCG_CALL_NO_RWG_SE, i32, i32, i32, i32)
-> >  DEF_HELPER_2(dc_zva, void, env, i64)
-> > +DEF_HELPER_2(dc_cvap, void, env, i64)
-> >
-> >  DEF_HELPER_FLAGS_2(neon_pmull_64_lo, TCG_CALL_NO_RWG_SE, i64, i64, i64=
-)
-> >  DEF_HELPER_FLAGS_2(neon_pmull_64_hi, TCG_CALL_NO_RWG_SE, i64, i64, i64=
-)
-> > diff --git a/target/arm/op_helper.c b/target/arm/op_helper.c
-> > index 0fd4bd0238..75ebf6afa4 100644
-> > --- a/target/arm/op_helper.c
-> > +++ b/target/arm/op_helper.c
-> > @@ -987,3 +987,39 @@ void HELPER(dc_zva)(CPUARMState *env, uint64_t vad=
-dr_in)
-> >      memset(g2h(vaddr), 0, blocklen);
-> >  #endif
-> >  }
-> > +
-> > +void HELPER(dc_cvap)(CPUARMState *env, uint64_t vaddr_in)
-> > +{
-> > +#ifndef CONFIG_USER_ONLY
->
-> Are we essentially saying the operation is a NOP for user-mode
-> emulation? Is it just because we don't really expose HW to linux-user?
->
-> If so move the #ifndef outside the HELPER definition and...
+> This patch has been co-authored with Richard Henderson, who reworked
+> the target/arm/cpu64.c changes in order to push all the validation and
+> auto-enabling/disabling steps into the finalizer, resulting in a nice
+> LOC reduction.
 >
 
-I do not think there is a way to specify persistent mem for user mode.
-Or am I mistaken ?
-I will move the switch to the HELPER def.
-
-> > +    ARMCPU *cpu =3D env_archcpu(env);
-> > +    /* CTR_EL0 System register -> DminLine, bits [19:16] */
-> > +    uint64_t dline_size =3D 4 << ((cpu->ctr >> 16) & 0xF);
-> > +    uint64_t vaddr =3D vaddr_in & ~(dline_size - 1);
-> > +    void *haddr;
-> > +    int mem_idx =3D cpu_mmu_index(env, false);
-> > +
-> > +    /* This won't be crossing page boundaries */
-> > +    haddr =3D probe_read(env, vaddr, dline_size, mem_idx, GETPC());
-> > +    if (haddr) {
-> > +
-> > +        ram_addr_t offset;
-> > +        MemoryRegion *mr;
-> > +
-> > +        /*
-> > +         * RCU critical section + ref counting,
-> > +         * so that MR won't disappear behind the scene
-> > +         */
-> > +        rcu_read_lock();
-> > +        mr =3D memory_region_from_host(haddr, &offset);
-> > +        if (mr) {
-> > +            memory_region_ref(mr);
-> > +        }
-> > +        rcu_read_unlock();
-> > +
-> > +        if (mr) {
-> > +            memory_region_do_writeback(mr, offset, dline_size);
-> > +            memory_region_unref(mr);
-> > +        }
-> > +    }
-> > +#endif
-> > +}
-> > diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> > index 2d6cd09634..21ea3631d6 100644
-> > --- a/target/arm/translate-a64.c
-> > +++ b/target/arm/translate-a64.c
-> > @@ -1746,6 +1746,11 @@ static void handle_sys(DisasContext *s, uint32_t=
- insn, bool isread,
-> >          tcg_rt =3D cpu_reg(s, rt);
-> >          gen_helper_dc_zva(cpu_env, tcg_rt);
-> >          return;
-> > +    case ARM_CP_DC_CVAP:
-> > +        /* DC CVAP / DC CVADP */
->
-> .. #ifndef CONFIG_USER_ONLY this code so we don't add the overhead of a
-> helper call in linux-user mode.
-
-Noted.
->
-> > +        tcg_rt =3D cpu_reg(s, rt);
-> > +        gen_helper_dc_cvap(cpu_env, tcg_rt);
-> > +        return;
-> >      default:
-> >          break;
-> >      }
->
->
-> --
-> Alex Benn=C3=A9e
-
-Thank you,
+I have most probably missed part of previous discussions around the vector
+lengths  so apologies if the question is not relevant anymore  but ...
+why the idea of having bitmap representation for those has been dropped ?
+Although the proposed solution provides indeed fine control over the vector
+lengths it also adds extra logic for handling corner cases and makes specifying
+those on the command line rather cumbersome in some cases.
+What if we could re-consider bitmaps and add an option for sve with a 'help'
+switch to query available options and present them (or just a subset
+as an example)
+with additional information on how to interpret/modify it ? Smth like :
+           -cpu max,sve=help
+which would print the bitmap of available lengths with note on what each bit
+represents and which ones can be modified .
+Than it should be pretty straightforward to enable/disable selected lengths.
+This could potentially simplify things a bit....
 
 BR
 Beata
+
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> ---
+>  docs/arm-cpu-features.rst | 168 +++++++++++++++++++++++++++++++--
+>  include/qemu/bitops.h     |   1 +
+>  target/arm/cpu.c          |  19 ++++
+>  target/arm/cpu.h          |  19 ++++
+>  target/arm/cpu64.c        | 192 ++++++++++++++++++++++++++++++++++++-
+>  target/arm/helper.c       |  10 +-
+>  target/arm/monitor.c      |  12 +++
+>  tests/arm-cpu-features.c  | 194 ++++++++++++++++++++++++++++++++++++++
+>  8 files changed, 606 insertions(+), 9 deletions(-)
+>
+> diff --git a/docs/arm-cpu-features.rst b/docs/arm-cpu-features.rst
+> index c79dcffb5556..2ea4d6e90c02 100644
+> --- a/docs/arm-cpu-features.rst
+> +++ b/docs/arm-cpu-features.rst
+> @@ -48,18 +48,31 @@ block in the script for usage) is used to issue the QMP commands.
+>        (QEMU) query-cpu-model-expansion type=full model={"name":"max"}
+>        { "return": {
+>          "model": { "name": "max", "props": {
+> -        "pmu": true, "aarch64": true
+> +        "sve1664": true, "pmu": true, "sve1792": true, "sve1920": true,
+> +        "sve128": true, "aarch64": true, "sve1024": true, "sve": true,
+> +        "sve640": true, "sve768": true, "sve1408": true, "sve256": true,
+> +        "sve1152": true, "sve512": true, "sve384": true, "sve1536": true,
+> +        "sve896": true, "sve1280": true, "sve2048": true
+>        }}}}
+>
+> -We see that the `max` CPU type has the `pmu` and `aarch64` CPU features.
+> -We also see that the CPU features are enabled, as they are all `true`.
+> +We see that the `max` CPU type has the `pmu`, `aarch64`, `sve`, and many
+> +`sve<N>` CPU features.  We also see that all the CPU features are
+> +enabled, as they are all `true`.  (The `sve<N>` CPU features are all
+> +optional SVE vector lengths (see "SVE CPU Properties").  While with TCG
+> +all SVE vector lengths can be supported, when KVM is in use it's more
+> +likely that only a few lengths will be supported, if SVE is supported at
+> +all.)
+>
+>  (2) Let's try to disable the PMU::
+>
+>        (QEMU) query-cpu-model-expansion type=full model={"name":"max","props":{"pmu":false}}
+>        { "return": {
+>          "model": { "name": "max", "props": {
+> -        "pmu": false, "aarch64": true
+> +        "sve1664": true, "pmu": false, "sve1792": true, "sve1920": true,
+> +        "sve128": true, "aarch64": true, "sve1024": true, "sve": true,
+> +        "sve640": true, "sve768": true, "sve1408": true, "sve256": true,
+> +        "sve1152": true, "sve512": true, "sve384": true, "sve1536": true,
+> +        "sve896": true, "sve1280": true, "sve2048": true
+>        }}}}
+>
+>  We see it worked, as `pmu` is now `false`.
+> @@ -75,7 +88,22 @@ We see it worked, as `pmu` is now `false`.
+>  It looks like this feature is limited to a configuration we do not
+>  currently have.
+>
+> -(4) Let's try probing CPU features for the Cortex-A15 CPU type::
+> +(4) Let's disable `sve` and see what happens to all the optional SVE
+> +    vector lengths::
+> +
+> +      (QEMU) query-cpu-model-expansion type=full model={"name":"max","props":{"sve":false}}
+> +      { "return": {
+> +        "model": { "name": "max", "props": {
+> +        "sve1664": false, "pmu": true, "sve1792": false, "sve1920": false,
+> +        "sve128": false, "aarch64": true, "sve1024": false, "sve": false,
+> +        "sve640": false, "sve768": false, "sve1408": false, "sve256": false,
+> +        "sve1152": false, "sve512": false, "sve384": false, "sve1536": false,
+> +        "sve896": false, "sve1280": false, "sve2048": false
+> +      }}}}
+> +
+> +As expected they are now all `false`.
+> +
+> +(5) Let's try probing CPU features for the Cortex-A15 CPU type::
+>
+>        (QEMU) query-cpu-model-expansion type=full model={"name":"cortex-a15"}
+>        {"return": {"model": {"name": "cortex-a15", "props": {"pmu": true}}}}
+> @@ -131,7 +159,133 @@ After determining which CPU features are available and supported for a
+>  given CPU type, then they may be selectively enabled or disabled on the
+>  QEMU command line with that CPU type::
+>
+> -  $ qemu-system-aarch64 -M virt -cpu max,pmu=off
+> +  $ qemu-system-aarch64 -M virt -cpu max,pmu=off,sve=on,sve128=on,sve256=on
+> +
+> +The example above disables the PMU and enables the first two SVE vector
+> +lengths for the `max` CPU type.  Note, the `sve=on` isn't actually
+> +necessary, because, as we observed above with our probe of the `max` CPU
+> +type, `sve` is already on by default.  Also, based on our probe of
+> +defaults, it would seem we need to disable many SVE vector lengths, rather
+> +than only enabling the two we want.  This isn't the case, because, as
+> +disabling many SVE vector lengths would be quite verbose, the `sve<N>` CPU
+> +properties have special semantics (see "SVE CPU Property Parsing
+> +Semantics").
+> +
+> +SVE CPU Properties
+> +==================
+> +
+> +There are two types of SVE CPU properties: `sve` and `sve<N>`.  The first
+> +is used to enable or disable the entire SVE feature, just as the `pmu`
+> +CPU property completely enables or disables the PMU.  The second type
+> +is used to enable or disable specific vector lengths, where `N` is the
+> +number of bits of the length.  The `sve<N>` CPU properties have special
+> +dependencies and constraints, see "SVE CPU Property Dependencies and
+> +Constraints" below.  Additionally, as we want all supported vector lengths
+> +to be enabled by default, then, in order to avoid overly verbose command
+> +lines (command lines full of `sve<N>=off`, for all `N` not wanted), we
+> +provide the parsing semantics listed in "SVE CPU Property Parsing
+> +Semantics".
+> +
+> +SVE CPU Property Dependencies and Constraints
+> +---------------------------------------------
+> +
+> +  1) At least one vector length must be enabled when `sve` is enabled.
+> +
+> +  2) If a vector length `N` is enabled, then all power-of-two vector
+> +     lengths smaller than `N` must also be enabled.  E.g. if `sve512`
+> +     is enabled, then the 128-bit and 256-bit vector lengths must also
+> +     be enabled.
+> +
+> +SVE CPU Property Parsing Semantics
+> +----------------------------------
+> +
+> +  1) If SVE is disabled (`sve=off`), then which SVE vector lengths
+> +     are enabled or disabled is irrelevant to the guest, as the entire
+> +     SVE feature is disabled and that disables all vector lengths for
+> +     the guest.  However QEMU will still track any `sve<N>` CPU
+> +     properties provided by the user.  If later an `sve=on` is provided,
+> +     then the guest will get only the enabled lengths.  If no `sve=on`
+> +     is provided and there are explicitly enabled vector lengths, then
+> +     an error is generated.
+> +
+> +  2) If SVE is enabled (`sve=on`), but no `sve<N>` CPU properties are
+> +     provided, then all supported vector lengths are enabled, including
+> +     the non-power-of-two lengths.
+> +
+> +  3) If SVE is enabled, then an error is generated when attempting to
+> +     disable the last enabled vector length (see constraint (1) of "SVE
+> +     CPU Property Dependencies and Constraints").
+> +
+> +  4) If one or more vector lengths have been explicitly enabled and at
+> +     at least one of the dependency lengths of the maximum enabled length
+> +     has been explicitly disabled, then an error is generated (see
+> +     constraint (2) of "SVE CPU Property Dependencies and Constraints").
+> +
+> +  5) If one or more `sve<N>` CPU properties are set `off`, but no `sve<N>`,
+> +     CPU properties are set `on`, then the specified vector lengths are
+> +     disabled but the default for any unspecified lengths remains enabled.
+> +     Disabling a power-of-two vector length also disables all vector
+> +     lengths larger than the power-of-two length (see constraint (2) of
+> +     "SVE CPU Property Dependencies and Constraints").
+> +
+> +  6) If one or more `sve<N>` CPU properties are set to `on`, then they
+> +     are enabled and all unspecified lengths default to disabled, except
+> +     for the required lengths per constraint (2) of "SVE CPU Property
+> +     Dependencies and Constraints", which will even be auto-enabled if
+> +     they were not explicitly enabled.
+> +
+> +  7) If SVE was disabled (`sve=off`), allowing all vector lengths to be
+> +     explicitly disabled (i.e. avoiding the error specified in (3) of
+> +     "SVE CPU Property Parsing Semantics"), then if later an `sve=on` is
+> +     provided an error will be generated.  To avoid this error, one must
+> +     enable at least one vector length prior to enabling SVE.
+> +
+> +SVE CPU Property Examples
+> +-------------------------
+> +
+> +  1) Disable SVE::
+> +
+> +     $ qemu-system-aarch64 -M virt -cpu max,sve=off
+> +
+> +  2) Implicitly enable all vector lengths for the `max` CPU type::
+> +
+> +     $ qemu-system-aarch64 -M virt -cpu max
+> +
+> +  3) Only enable the 128-bit vector length::
+> +
+> +     $ qemu-system-aarch64 -M virt -cpu max,sve128=on
+> +
+> +  4) Disable the 512-bit vector length and all larger vector lengths,
+> +     since 512 is a power-of-two.  This results in all the smaller,
+> +     uninitialized lengths (128, 256, and 384) defaulting to enabled::
+> +
+> +     $ qemu-system-aarch64 -M virt -cpu max,sve512=off
+> +
+> +  5) Enable the 128-bit, 256-bit, and 512-bit vector lengths::
+> +
+> +     $ qemu-system-aarch64 -M virt -cpu max,sve128=on,sve256=on,sve512=on
+> +
+> +  6) The same as (5), but since the 128-bit and 256-bit vector
+> +     lengths are required for the 512-bit vector length to be enabled,
+> +     then allow them to be auto-enabled::
+> +
+> +     $ qemu-system-aarch64 -M virt -cpu max,sve512=on
+> +
+> +  7) Do the same as (6), but by first disabling SVE and then re-enabling it::
+> +
+> +     $ qemu-system-aarch64 -M virt -cpu max,sve=off,sve512=on,sve=on
+> +
+> +  8) Force errors regarding the last vector length::
+> +
+> +     $ qemu-system-aarch64 -M virt -cpu max,sve128=off
+> +     $ qemu-system-aarch64 -M virt -cpu max,sve=off,sve128=off,sve=on
+> +
+> +SVE CPU Property Recommendations
+> +--------------------------------
+>
+> -The example above disables the PMU for the `max` CPU type.
+> +The examples in "SVE CPU Property Examples" exhibit many ways to select
+> +vector lengths which developers may find useful in order to avoid overly
+> +verbose command lines.  However, the recommended way to select vector
+> +lengths is to explicitly enable each desired length.  Therefore only
+> +example's (1), (3), and (5) exhibit recommended uses of the properties.
+>
+> diff --git a/include/qemu/bitops.h b/include/qemu/bitops.h
+> index 3f0926cf40ca..ee76552c0622 100644
+> --- a/include/qemu/bitops.h
+> +++ b/include/qemu/bitops.h
+> @@ -20,6 +20,7 @@
+>  #define BITS_PER_LONG           (sizeof (unsigned long) * BITS_PER_BYTE)
+>
+>  #define BIT(nr)                 (1UL << (nr))
+> +#define BIT_ULL(nr)             (1ULL << (nr))
+>  #define BIT_MASK(nr)            (1UL << ((nr) % BITS_PER_LONG))
+>  #define BIT_WORD(nr)            ((nr) / BITS_PER_LONG)
+>  #define BITS_TO_LONGS(nr)       DIV_ROUND_UP(nr, BITS_PER_BYTE * sizeof(long))
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 73be2ebfdd39..522fed95b339 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -1199,6 +1199,19 @@ static void arm_cpu_finalizefn(Object *obj)
+>  #endif
+>  }
+>
+> +void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
+> +{
+> +    Error *local_err = NULL;
+> +
+> +    if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+> +        arm_cpu_sve_finalize(cpu, &local_err);
+> +        if (local_err != NULL) {
+> +            error_propagate(errp, local_err);
+> +            return;
+> +        }
+> +    }
+> +}
+> +
+>  static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>  {
+>      CPUState *cs = CPU(dev);
+> @@ -1255,6 +1268,12 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>          return;
+>      }
+>
+> +    arm_cpu_finalize_features(cpu, &local_err);
+> +    if (local_err != NULL) {
+> +        error_propagate(errp, local_err);
+> +        return;
+> +    }
+> +
+>      if (arm_feature(env, ARM_FEATURE_AARCH64) &&
+>          cpu->has_vfp != cpu->has_neon) {
+>          /*
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 297ad5e47ad8..11162484465a 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -184,8 +184,13 @@ typedef struct {
+>
+>  #ifdef TARGET_AARCH64
+>  # define ARM_MAX_VQ    16
+> +void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
+> +uint32_t arm_cpu_vq_map_next_smaller(ARMCPU *cpu, uint32_t vq);
+>  #else
+>  # define ARM_MAX_VQ    1
+> +static inline void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp) { }
+> +static inline uint32_t arm_cpu_vq_map_next_smaller(ARMCPU *cpu, uint32_t vq)
+> +{ return 0; }
+>  #endif
+>
+>  typedef struct ARMVectorReg {
+> @@ -915,6 +920,18 @@ struct ARMCPU {
+>
+>      /* Used to set the maximum vector length the cpu will support.  */
+>      uint32_t sve_max_vq;
+> +
+> +    /*
+> +     * In sve_vq_map each set bit is a supported vector length of
+> +     * (bit-number + 1) * 16 bytes, i.e. each bit number + 1 is the vector
+> +     * length in quadwords.
+> +     *
+> +     * While processing properties during initialization, corresponding
+> +     * sve_vq_init bits are set for bits in sve_vq_map that have been
+> +     * set by properties.
+> +     */
+> +    DECLARE_BITMAP(sve_vq_map, ARM_MAX_VQ);
+> +    DECLARE_BITMAP(sve_vq_init, ARM_MAX_VQ);
+>  };
+>
+>  void arm_cpu_post_init(Object *obj);
+> @@ -1834,6 +1851,8 @@ static inline int arm_feature(CPUARMState *env, int feature)
+>      return (env->features & (1ULL << feature)) != 0;
+>  }
+>
+> +void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp);
+> +
+>  #if !defined(CONFIG_USER_ONLY)
+>  /* Return true if exception levels below EL3 are in secure state,
+>   * or would be following an exception return to that level.
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index 89a8ae77fe84..34b0ba2cf6f7 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -256,6 +256,151 @@ static void aarch64_a72_initfn(Object *obj)
+>      define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
+>  }
+>
+> +void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
+> +{
+> +    /*
+> +     * If any vector lengths are explicitly enabled with sve<N> properties,
+> +     * then all other lengths are implicitly disabled.  If sve-max-vq is
+> +     * specified then it is the same as explicitly enabling all lengths
+> +     * up to and including the specified maximum, which means all larger
+> +     * lengths will be implicitly disabled.  If no sve<N> properties
+> +     * are enabled and sve-max-vq is not specified, then all lengths not
+> +     * explicitly disabled will be enabled.  Additionally, all power-of-two
+> +     * vector lengths less than the maximum enabled length will be
+> +     * automatically enabled and all vector lengths larger than the largest
+> +     * disabled power-of-two vector length will be automatically disabled.
+> +     * Errors are generated if the user provided input that interferes with
+> +     * any of the above.  Finally, if SVE is not disabled, then at least one
+> +     * vector length must be enabled.
+> +     */
+> +    DECLARE_BITMAP(tmp, ARM_MAX_VQ);
+> +    uint32_t vq, max_vq = 0;
+> +
+> +    /*
+> +     * Process explicit sve<N> properties.
+> +     * From the properties, sve_vq_map<N> implies sve_vq_init<N>.
+> +     * Check first for any sve<N> enabled.
+> +     */
+> +    if (!bitmap_empty(cpu->sve_vq_map, ARM_MAX_VQ)) {
+> +        max_vq = find_last_bit(cpu->sve_vq_map, ARM_MAX_VQ) + 1;
+> +
+> +        if (cpu->sve_max_vq && max_vq > cpu->sve_max_vq) {
+> +            error_setg(errp, "cannot enable sve%d", max_vq * 128);
+> +            error_append_hint(errp, "sve%d is larger than the maximum vector "
+> +                              "length, sve-max-vq=%d (%d bits)\n",
+> +                              max_vq * 128, cpu->sve_max_vq,
+> +                              cpu->sve_max_vq * 128);
+> +            return;
+> +        }
+> +
+> +        /* Propagate enabled bits down through required powers-of-two. */
+> +        for (vq = pow2floor(max_vq); vq >= 1; vq >>= 1) {
+> +            if (!test_bit(vq - 1, cpu->sve_vq_init)) {
+> +                set_bit(vq - 1, cpu->sve_vq_map);
+> +            }
+> +        }
+> +    } else if (cpu->sve_max_vq == 0) {
+> +        /*
+> +         * No explicit bits enabled, and no implicit bits from sve-max-vq.
+> +         */
+> +        if (!cpu_isar_feature(aa64_sve, cpu)) {
+> +            /* SVE is disabled and so are all vector lengths.  Good. */
+> +            return;
+> +        }
+> +
+> +        /* Disabling a power-of-two disables all larger lengths. */
+> +        if (test_bit(0, cpu->sve_vq_init)) {
+> +            error_setg(errp, "cannot disable sve128");
+> +            error_append_hint(errp, "Disabling sve128 results in all vector "
+> +                              "lengths being disabled.\n");
+> +            error_append_hint(errp, "With SVE enabled, at least one vector "
+> +                              "length must be enabled.\n");
+> +            return;
+> +        }
+> +        for (vq = 2; vq <= ARM_MAX_VQ; vq <<= 1) {
+> +            if (test_bit(vq - 1, cpu->sve_vq_init)) {
+> +                break;
+> +            }
+> +        }
+> +        max_vq = vq <= ARM_MAX_VQ ? vq - 1 : ARM_MAX_VQ;
+> +
+> +        bitmap_complement(cpu->sve_vq_map, cpu->sve_vq_init, max_vq);
+> +        max_vq = find_last_bit(cpu->sve_vq_map, max_vq) + 1;
+> +    }
+> +
+> +    /*
+> +     * Process the sve-max-vq property.
+> +     * Note that we know from the above that no bit above
+> +     * sve-max-vq is currently set.
+> +     */
+> +    if (cpu->sve_max_vq != 0) {
+> +        max_vq = cpu->sve_max_vq;
+> +
+> +        if (!test_bit(max_vq - 1, cpu->sve_vq_map) &&
+> +            test_bit(max_vq - 1, cpu->sve_vq_init)) {
+> +            error_setg(errp, "cannot disable sve%d", max_vq * 128);
+> +            error_append_hint(errp, "The maximum vector length must be "
+> +                              "enabled, sve-max-vq=%d (%d bits)\n",
+> +                              max_vq, max_vq * 128);
+> +            return;
+> +        }
+> +
+> +        /* Set all bits not explicitly set within sve-max-vq. */
+> +        bitmap_complement(tmp, cpu->sve_vq_init, max_vq);
+> +        bitmap_or(cpu->sve_vq_map, cpu->sve_vq_map, tmp, max_vq);
+> +    }
+> +
+> +    /*
+> +     * We should know what max-vq is now.  Also, as we're done
+> +     * manipulating sve-vq-map, we ensure any bits above max-vq
+> +     * are clear, just in case anybody looks.
+> +     */
+> +    assert(max_vq != 0);
+> +    bitmap_clear(cpu->sve_vq_map, max_vq, ARM_MAX_VQ - max_vq);
+> +
+> +    /* Ensure all required powers-of-two are enabled. */
+> +    for (vq = pow2floor(max_vq); vq >= 1; vq >>= 1) {
+> +        if (!test_bit(vq - 1, cpu->sve_vq_map)) {
+> +            error_setg(errp, "cannot disable sve%d", vq * 128);
+> +            error_append_hint(errp, "sve%d is required as it "
+> +                              "is a power-of-two length smaller than "
+> +                              "the maximum, sve%d\n",
+> +                              vq * 128, max_vq * 128);
+> +            return;
+> +        }
+> +    }
+> +
+> +    /*
+> +     * Now that we validated all our vector lengths, the only question
+> +     * left to answer is if we even want SVE at all.
+> +     */
+> +    if (!cpu_isar_feature(aa64_sve, cpu)) {
+> +        error_setg(errp, "cannot enable sve%d", max_vq * 128);
+> +        error_append_hint(errp, "SVE must be enabled to enable vector "
+> +                          "lengths.\n");
+> +        error_append_hint(errp, "Add sve=on to the CPU property list.\n");
+> +        return;
+> +    }
+> +
+> +    /* From now on sve_max_vq is the actual maximum supported length. */
+> +    cpu->sve_max_vq = max_vq;
+> +}
+> +
+> +uint32_t arm_cpu_vq_map_next_smaller(ARMCPU *cpu, uint32_t vq)
+> +{
+> +    uint32_t bitnum;
+> +
+> +    /*
+> +     * We allow vq == ARM_MAX_VQ + 1 to be input because the caller may want
+> +     * to find the maximum vq enabled, which may be ARM_MAX_VQ, but this
+> +     * function always returns the next smaller than the input.
+> +     */
+> +    assert(vq && vq <= ARM_MAX_VQ + 1);
+> +
+> +    bitnum = find_last_bit(cpu->sve_vq_map, vq - 1);
+> +    return bitnum == vq - 1 ? 0 : bitnum + 1;
+> +}
+> +
+>  static void cpu_max_get_sve_max_vq(Object *obj, Visitor *v, const char *name,
+>                                     void *opaque, Error **errp)
+>  {
+> @@ -287,6 +432,44 @@ static void cpu_max_set_sve_max_vq(Object *obj, Visitor *v, const char *name,
+>      error_propagate(errp, err);
+>  }
+>
+> +static void cpu_arm_get_sve_vq(Object *obj, Visitor *v, const char *name,
+> +                               void *opaque, Error **errp)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    uint32_t vq = atoi(&name[3]) / 128;
+> +    bool value;
+> +
+> +    /* All vector lengths are disabled when SVE is off. */
+> +    if (!cpu_isar_feature(aa64_sve, cpu)) {
+> +        value = false;
+> +    } else {
+> +        value = test_bit(vq - 1, cpu->sve_vq_map);
+> +    }
+> +    visit_type_bool(v, name, &value, errp);
+> +}
+> +
+> +static void cpu_arm_set_sve_vq(Object *obj, Visitor *v, const char *name,
+> +                               void *opaque, Error **errp)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    uint32_t vq = atoi(&name[3]) / 128;
+> +    Error *err = NULL;
+> +    bool value;
+> +
+> +    visit_type_bool(v, name, &value, &err);
+> +    if (err) {
+> +        error_propagate(errp, err);
+> +        return;
+> +    }
+> +
+> +    if (value) {
+> +        set_bit(vq - 1, cpu->sve_vq_map);
+> +    } else {
+> +        clear_bit(vq - 1, cpu->sve_vq_map);
+> +    }
+> +    set_bit(vq - 1, cpu->sve_vq_init);
+> +}
+> +
+>  static void cpu_arm_get_sve(Object *obj, Visitor *v, const char *name,
+>                              void *opaque, Error **errp)
+>  {
+> @@ -323,6 +506,7 @@ static void cpu_arm_set_sve(Object *obj, Visitor *v, const char *name,
+>  static void aarch64_max_initfn(Object *obj)
+>  {
+>      ARMCPU *cpu = ARM_CPU(obj);
+> +    uint32_t vq;
+>
+>      if (kvm_enabled()) {
+>          kvm_arm_set_cpu_features_from_host(cpu);
+> @@ -426,11 +610,17 @@ static void aarch64_max_initfn(Object *obj)
+>          cpu->dcz_blocksize = 7; /*  512 bytes */
+>  #endif
+>
+> -        cpu->sve_max_vq = ARM_MAX_VQ;
+>          object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
+>                              cpu_max_set_sve_max_vq, NULL, NULL, &error_fatal);
+>          object_property_add(obj, "sve", "bool", cpu_arm_get_sve,
+>                              cpu_arm_set_sve, NULL, NULL, &error_fatal);
+> +
+> +        for (vq = 1; vq <= ARM_MAX_VQ; ++vq) {
+> +            char name[8];
+> +            sprintf(name, "sve%d", vq * 128);
+> +            object_property_add(obj, name, "bool", cpu_arm_get_sve_vq,
+> +                                cpu_arm_set_sve_vq, NULL, NULL, &error_fatal);
+> +        }
+>      }
+>  }
+>
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index 507026c9154b..f83f164a2346 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -5351,6 +5351,13 @@ int sve_exception_el(CPUARMState *env, int el)
+>      return 0;
+>  }
+>
+> +static uint32_t sve_zcr_get_valid_len(ARMCPU *cpu, uint32_t start_len)
+> +{
+> +    uint32_t start_vq = (start_len & 0xf) + 1;
+> +
+> +    return arm_cpu_vq_map_next_smaller(cpu, start_vq + 1) - 1;
+> +}
+> +
+>  /*
+>   * Given that SVE is enabled, return the vector length for EL.
+>   */
+> @@ -5368,7 +5375,8 @@ uint32_t sve_zcr_len_for_el(CPUARMState *env, int el)
+>      if (arm_feature(env, ARM_FEATURE_EL3)) {
+>          zcr_len = MIN(zcr_len, 0xf & (uint32_t)env->vfp.zcr_el[3]);
+>      }
+> -    return zcr_len;
+> +
+> +    return sve_zcr_get_valid_len(cpu, zcr_len);
+>  }
+>
+>  static void zcr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+> diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+> index 4fddb6c252a3..e912ed2cefa0 100644
+> --- a/target/arm/monitor.c
+> +++ b/target/arm/monitor.c
+> @@ -90,6 +90,8 @@ GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
+>      return head;
+>  }
+>
+> +QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
+> +
+>  /*
+>   * These are cpu model features we want to advertise. The order here
+>   * matters as this is the order in which qmp_query_cpu_model_expansion
+> @@ -98,6 +100,9 @@ GICCapabilityList *qmp_query_gic_capabilities(Error **errp)
+>   */
+>  static const char *cpu_model_advertised_features[] = {
+>      "aarch64", "pmu", "sve",
+> +    "sve128", "sve256", "sve384", "sve512",
+> +    "sve640", "sve768", "sve896", "sve1024", "sve1152", "sve1280",
+> +    "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
+>      NULL
+>  };
+>
+> @@ -185,6 +190,9 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+>          if (!err) {
+>              visit_check_struct(visitor, &err);
+>          }
+> +        if (!err) {
+> +            arm_cpu_finalize_features(ARM_CPU(obj), &err);
+> +        }
+>          visit_end_struct(visitor, NULL);
+>          visit_free(visitor);
+>          if (err) {
+> @@ -192,6 +200,10 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+>              error_propagate(errp, err);
+>              return NULL;
+>          }
+> +    } else {
+> +        Error *err = NULL;
+> +        arm_cpu_finalize_features(ARM_CPU(obj), &err);
+> +        assert(err == NULL);
+>      }
+>
+>      expansion_info = g_new0(CpuModelExpansionInfo, 1);
+> diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
+> index 202bc0e3e823..0190148260dc 100644
+> --- a/tests/arm-cpu-features.c
+> +++ b/tests/arm-cpu-features.c
+> @@ -9,10 +9,17 @@
+>   * See the COPYING file in the top-level directory.
+>   */
+>  #include "qemu/osdep.h"
+> +#include "qemu/bitops.h"
+>  #include "libqtest.h"
+>  #include "qapi/qmp/qdict.h"
+>  #include "qapi/qmp/qjson.h"
+>
+> +/*
+> + * We expect the SVE max-vq to be 16. Also it must be <= 64
+> + * for our test code, otherwise 'vls' can't just be a uint64_t.
+> + */
+> +#define SVE_MAX_VQ 16
+> +
+>  #define MACHINE    "-machine virt,gic-version=max "
+>  #define QUERY_HEAD "{ 'execute': 'query-cpu-model-expansion', " \
+>                       "'arguments': { 'type': 'full', "
+> @@ -157,6 +164,183 @@ static void assert_bad_props(QTestState *qts, const char *cpu_type)
+>      qobject_unref(resp);
+>  }
+>
+> +static uint64_t resp_get_sve_vls(QDict *resp)
+> +{
+> +    QDict *props;
+> +    const QDictEntry *e;
+> +    uint64_t vls = 0;
+> +    int n = 0;
+> +
+> +    g_assert(resp);
+> +    g_assert(resp_has_props(resp));
+> +
+> +    props = resp_get_props(resp);
+> +
+> +    for (e = qdict_first(props); e; e = qdict_next(props, e)) {
+> +        if (strlen(e->key) > 3 && !strncmp(e->key, "sve", 3) &&
+> +            g_ascii_isdigit(e->key[3])) {
+> +            char *endptr;
+> +            int bits;
+> +
+> +            bits = g_ascii_strtoll(&e->key[3], &endptr, 10);
+> +            if (!bits || *endptr != '\0') {
+> +                continue;
+> +            }
+> +
+> +            if (qdict_get_bool(props, e->key)) {
+> +                vls |= BIT_ULL((bits / 128) - 1);
+> +            }
+> +            ++n;
+> +        }
+> +    }
+> +
+> +    g_assert(n == SVE_MAX_VQ);
+> +
+> +    return vls;
+> +}
+> +
+> +#define assert_sve_vls(qts, cpu_type, expected_vls, fmt, ...)          \
+> +({                                                                     \
+> +    QDict *_resp = do_query(qts, cpu_type, fmt, ##__VA_ARGS__);        \
+> +    g_assert(_resp);                                                   \
+> +    g_assert(resp_has_props(_resp));                                   \
+> +    g_assert(resp_get_sve_vls(_resp) == expected_vls);                 \
+> +    qobject_unref(_resp);                                              \
+> +})
+> +
+> +static void sve_tests_default(QTestState *qts, const char *cpu_type)
+> +{
+> +    /*
+> +     * With no sve-max-vq or sve<N> properties on the command line
+> +     * the default is to have all vector lengths enabled. This also
+> +     * tests that 'sve' is 'on' by default.
+> +     */
+> +    assert_sve_vls(qts, cpu_type, BIT_ULL(SVE_MAX_VQ) - 1, NULL);
+> +
+> +    /* With SVE off, all vector lengths should also be off. */
+> +    assert_sve_vls(qts, cpu_type, 0, "{ 'sve': false }");
+> +
+> +    /* With SVE on, we must have at least one vector length enabled. */
+> +    assert_error(qts, cpu_type, "cannot disable sve128", "{ 'sve128': false }");
+> +
+> +    /* Basic enable/disable tests. */
+> +    assert_sve_vls(qts, cpu_type, 0x7, "{ 'sve384': true }");
+> +    assert_sve_vls(qts, cpu_type, ((BIT_ULL(SVE_MAX_VQ) - 1) & ~BIT_ULL(2)),
+> +                   "{ 'sve384': false }");
+> +
+> +    /*
+> +     * ---------------------------------------------------------------------
+> +     *               power-of-two(vq)   all-power-            can      can
+> +     *                                  of-two(< vq)        enable   disable
+> +     * ---------------------------------------------------------------------
+> +     * vq < max_vq      no                MUST*              yes      yes
+> +     * vq < max_vq      yes               MUST*              yes      no
+> +     * ---------------------------------------------------------------------
+> +     * vq == max_vq     n/a               MUST*              yes**    yes**
+> +     * ---------------------------------------------------------------------
+> +     * vq > max_vq      n/a               no                 no       yes
+> +     * vq > max_vq      n/a               yes                yes      yes
+> +     * ---------------------------------------------------------------------
+> +     *
+> +     * [*] "MUST" means this requirement must already be satisfied,
+> +     *     otherwise 'max_vq' couldn't itself be enabled.
+> +     *
+> +     * [**] Not testable with the QMP interface, only with the command line.
+> +     */
+> +
+> +    /* max_vq := 8 */
+> +    assert_sve_vls(qts, cpu_type, 0x8b, "{ 'sve1024': true }");
+> +
+> +    /* max_vq := 8, vq < max_vq, !power-of-two(vq) */
+> +    assert_sve_vls(qts, cpu_type, 0x8f,
+> +                   "{ 'sve1024': true, 'sve384': true }");
+> +    assert_sve_vls(qts, cpu_type, 0x8b,
+> +                   "{ 'sve1024': true, 'sve384': false }");
+> +
+> +    /* max_vq := 8, vq < max_vq, power-of-two(vq) */
+> +    assert_sve_vls(qts, cpu_type, 0x8b,
+> +                   "{ 'sve1024': true, 'sve256': true }");
+> +    assert_error(qts, cpu_type, "cannot disable sve256",
+> +                 "{ 'sve1024': true, 'sve256': false }");
+> +
+> +    /* max_vq := 3, vq > max_vq, !all-power-of-two(< vq) */
+> +    assert_error(qts, cpu_type, "cannot disable sve512",
+> +                 "{ 'sve384': true, 'sve512': false, 'sve640': true }");
+> +
+> +    /*
+> +     * We can disable power-of-two vector lengths when all larger lengths
+> +     * are also disabled. We only need to disable the power-of-two length,
+> +     * as all non-enabled larger lengths will then be auto-disabled.
+> +     */
+> +    assert_sve_vls(qts, cpu_type, 0x7, "{ 'sve512': false }");
+> +
+> +    /* max_vq := 3, vq > max_vq, all-power-of-two(< vq) */
+> +    assert_sve_vls(qts, cpu_type, 0x1f,
+> +                   "{ 'sve384': true, 'sve512': true, 'sve640': true }");
+> +    assert_sve_vls(qts, cpu_type, 0xf,
+> +                   "{ 'sve384': true, 'sve512': true, 'sve640': false }");
+> +}
+> +
+> +static void sve_tests_sve_max_vq_8(const void *data)
+> +{
+> +    QTestState *qts;
+> +
+> +    qts = qtest_init(MACHINE "-cpu max,sve-max-vq=8");
+> +
+> +    assert_sve_vls(qts, "max", BIT_ULL(8) - 1, NULL);
+> +
+> +    /*
+> +     * Disabling the max-vq set by sve-max-vq is not allowed, but
+> +     * of course enabling it is OK.
+> +     */
+> +    assert_error(qts, "max", "cannot disable sve1024", "{ 'sve1024': false }");
+> +    assert_sve_vls(qts, "max", 0xff, "{ 'sve1024': true }");
+> +
+> +    /*
+> +     * Enabling anything larger than max-vq set by sve-max-vq is not
+> +     * allowed, but of course disabling everything larger is OK.
+> +     */
+> +    assert_error(qts, "max", "cannot enable sve1152", "{ 'sve1152': true }");
+> +    assert_sve_vls(qts, "max", 0xff, "{ 'sve1152': false }");
+> +
+> +    /*
+> +     * We can enable/disable non power-of-two lengths smaller than the
+> +     * max-vq set by sve-max-vq, but, while we can enable power-of-two
+> +     * lengths, we can't disable them.
+> +     */
+> +    assert_sve_vls(qts, "max", 0xff, "{ 'sve384': true }");
+> +    assert_sve_vls(qts, "max", 0xfb, "{ 'sve384': false }");
+> +    assert_sve_vls(qts, "max", 0xff, "{ 'sve256': true }");
+> +    assert_error(qts, "max", "cannot disable sve256", "{ 'sve256': false }");
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +static void sve_tests_sve_off(const void *data)
+> +{
+> +    QTestState *qts;
+> +
+> +    qts = qtest_init(MACHINE "-cpu max,sve=off");
+> +
+> +    /* SVE is off, so the map should be empty. */
+> +    assert_sve_vls(qts, "max", 0, NULL);
+> +
+> +    /* The map stays empty even if we turn lengths off. */
+> +    assert_sve_vls(qts, "max", 0, "{ 'sve128': false }");
+> +
+> +    /* It's an error to enable lengths when SVE is off. */
+> +    assert_error(qts, "max", "cannot enable sve128", "{ 'sve128': true }");
+> +
+> +    /* With SVE re-enabled we should get all vector lengths enabled. */
+> +    assert_sve_vls(qts, "max", BIT_ULL(SVE_MAX_VQ) - 1, "{ 'sve': true }");
+> +
+> +    /* Or enable SVE with just specific vector lengths. */
+> +    assert_sve_vls(qts, "max", 0x3,
+> +                   "{ 'sve': true, 'sve128': true, 'sve256': true }");
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+>  static void test_query_cpu_model_expansion(const void *data)
+>  {
+>      QTestState *qts;
+> @@ -180,9 +364,12 @@ static void test_query_cpu_model_expansion(const void *data)
+>      if (g_str_equal(qtest_get_arch(), "aarch64")) {
+>          assert_has_feature(qts, "max", "aarch64");
+>          assert_has_feature(qts, "max", "sve");
+> +        assert_has_feature(qts, "max", "sve128");
+>          assert_has_feature(qts, "cortex-a57", "pmu");
+>          assert_has_feature(qts, "cortex-a57", "aarch64");
+>
+> +        sve_tests_default(qts, "max");
+> +
+>          /* Test that features that depend on KVM generate errors without. */
+>          assert_error(qts, "max",
+>                       "'aarch64' feature cannot be disabled "
+> @@ -234,6 +421,13 @@ int main(int argc, char **argv)
+>      qtest_add_data_func("/arm/query-cpu-model-expansion",
+>                          NULL, test_query_cpu_model_expansion);
+>
+> +    if (g_str_equal(qtest_get_arch(), "aarch64")) {
+> +        qtest_add_data_func("/arm/max/query-cpu-model-expansion/sve-max-vq-8",
+> +                            NULL, sve_tests_sve_max_vq_8);
+> +        qtest_add_data_func("/arm/max/query-cpu-model-expansion/sve-off",
+> +                            NULL, sve_tests_sve_off);
+> +    }
+> +
+>      if (kvm_available) {
+>          qtest_add_data_func("/arm/kvm/query-cpu-model-expansion",
+>                              NULL, test_query_cpu_model_expansion_kvm);
+> --
+> 2.20.1
+>
+>

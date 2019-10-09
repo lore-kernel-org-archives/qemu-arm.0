@@ -1,86 +1,103 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1421278wrm;
-        Wed, 9 Oct 2019 14:01:21 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy0XjThx/WjHrcxO7YDnZQaaG4XyL7BHfLJsB6+kPnyKvZQ+Yvtd7cS6UlzWSZUVgVoNV4Q
-X-Received: by 2002:a37:ba87:: with SMTP id k129mr5861047qkf.62.1570654881652;
-        Wed, 09 Oct 2019 14:01:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570654881; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1447734wrm;
+        Wed, 9 Oct 2019 14:28:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwuPbYwcqGzIoT4s5cGRbrDLTvK+sjemX3mz1iQnFKRr29oFxRDltQPYjimu78SoR/Fumrl
+X-Received: by 2002:a05:6402:14d6:: with SMTP id f22mr5126227edx.148.1570656533964;
+        Wed, 09 Oct 2019 14:28:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570656533; cv=none;
         d=google.com; s=arc-20160816;
-        b=nV0NIUQ9vRVHy0BLOqPUSeSuLfTcuUwENXHrwNY/pOcijzuLIONhrues/zEcDFXUMV
-         9Q7cd2G9We8IMdykEHScVH0ZFKiTf/CJrK3Fxd1rqmQ4VHqKppfKGAQKw1CVe8fNMgXz
-         xFRFaiOqM6aOdetyqOGg8NquJ7i3NXJPj8rw9pJc9HJwRNUb3h820w7LT11X+K9Y72Hn
-         niK0uBGwnyV+BzxSv3tDIxA+ax9qvmCJb4Qw++6e5b+yF2I5mYfm9IxOZ7DyY5wp8ljB
-         JqFURZgcrfYmdwpU+eSJXR7llFkhkXyCo3yapmqZWWn+PJPo10C+QXyzlxV4M9acqKJU
-         4fgw==
+        b=DT/xGzpvGGjCbqkgMTC9CcufVPuEImhuLcr2AGiZYbRfQbTxbChApVjpBNFK7g/ZBy
+         UoIRZIgOctdunJILKa0ATl+rCLevCknAi6PPrihViP1XvMhPIPSB8qYi0KNPze5B0GfE
+         5dInhbVlvF/hFsfpfv8IRiio3+VCmQpzaZB87Q4ECJGbONXsu8I39CuWlam/aLm+5T87
+         dTiITBzCvzOUl7XbOfaGxfclkQE2eW4mrPgma1cchnQTZY3zvHI2DyC8LJVE7qgMEyPg
+         LDBpUUNTKnohH4WmXCaeBW8woqdjplynQM2spqAehZk57oBSmnqBrjoRczrp5ofvEpG6
+         tMBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date;
-        bh=qd8pSPgFrLrso2xqfw1Xv2tnzi0Sg1fq+Buy0hsE2ks=;
-        b=0sswk5CiaXrcJTcpB5l4VxnY2IDlEcU7GC+Xx1GGj/DxJ8c6Y/TBZ1bNTjdL+BuWSG
-         kYhueIzYKEkELzf1c33oVYySsUtkuulLaewsveADsCRiDKFH/PEG0RfDgRjHwWHaxj3A
-         OWAANfQY+d9jzfbEJnBZG1/PAsltgrEFNxg306TZ7VmCvJCofBswzR5fHRkkJoqQvVWK
-         2XObuZC48lCqGNFbAD0BOForL05mzY06i1hY2ptvYg3oaa7GlLq86rJr4u4hyN72KShn
-         5WAxNJ8JYk0SBWc9D1iHSXGOaWdpZ5DoKVeE3Il17bvB05tn8FGWX2bT2+9IqBwg7HEo
-         s0YA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=z5hHBIC8jewdiCXZHK/YBa//5J/MqspTKo6QSzqjkng=;
+        b=aTS5KwZXezj7LwxfSXfqRyWavEhanOgbj0BEzwkRDyhZ6WpdbrZ/ADEY4pige6mOkL
+         nz/Tohd4G/vqvxvfE4faReVmhCnOg/WKC5Bp8XadxCfi1iDeTUI890vnY/6u+n7kqe55
+         9NjhApXDA0EQAoiGEB18Y1zGmJpdEZwiSWQjl1N8qk3x5bHqzNETRrB/isdVwPOMO7y3
+         8/V+EYLHHTe4XQax4MS8vuTX4BzAnBTewehFw7UGgjOAqjEJ4E4RBZMk0KmpWsg+QmW+
+         FYe2ckyr7r6ELyXzcR3V3vnSHTYbuuybA81XfvyntdgSwd+QBrbVp1qwUCypsEFGIh9j
+         1AIw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f3si3227779qkl.170.2019.10.09.14.01.21
+        by mx.google.com with ESMTPS id f47si2016392ede.263.2019.10.09.14.28.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Oct 2019 14:01:21 -0700 (PDT)
+        Wed, 09 Oct 2019 14:28:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57892 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58910 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iIJ5E-0001qS-Fv
-	for alex.bennee@linaro.org; Wed, 09 Oct 2019 17:01:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50269)
+	id 1iIJVs-0006fc-SM
+	for alex.bennee@linaro.org; Wed, 09 Oct 2019 17:28:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58406)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <crosa@redhat.com>) id 1iIHJb-0008Fk-4P
- for qemu-devel@nongnu.org; Wed, 09 Oct 2019 15:08:04 -0400
+ (envelope-from <philmd@redhat.com>) id 1iII2F-0004zX-4O
+ for qemu-devel@nongnu.org; Wed, 09 Oct 2019 15:54:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <crosa@redhat.com>) id 1iIHJZ-0001Xd-Uh
- for qemu-devel@nongnu.org; Wed, 09 Oct 2019 15:08:03 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43510)
+ (envelope-from <philmd@redhat.com>) id 1iII2D-0005wU-6W
+ for qemu-devel@nongnu.org; Wed, 09 Oct 2019 15:54:11 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45308)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <crosa@redhat.com>)
- id 1iIHJR-0001T4-QW; Wed, 09 Oct 2019 15:07:54 -0400
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iII2B-0005ut-Rh
+ for qemu-devel@nongnu.org; Wed, 09 Oct 2019 15:54:08 -0400
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id A65929B29C;
- Wed,  9 Oct 2019 19:07:51 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-122-151.rdu2.redhat.com
- [10.10.122.151])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 05CDD179C9;
- Wed,  9 Oct 2019 19:07:44 +0000 (UTC)
-Date: Wed, 9 Oct 2019 15:07:43 -0400
-From: Cleber Rosa <crosa@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 1/5] tests/boot_linux_console: Add initrd test for the
- Exynos4210
-Message-ID: <20191009190743.GA6019@localhost.localdomain>
-References: <20191005154748.21718-1-f4bug@amsat.org>
- <20191005154748.21718-2-f4bug@amsat.org>
- <CAFEAcA8ME5U5=rNLRSvNx7LmanqHhn_KWj6qtgym_=W1M9WDoA@mail.gmail.com>
- <20191008214907.GA28137@localhost.localdomain>
- <CAFEAcA9DzeObmtsc2VJmw=1yruANZ6ajY2SG0cAPdehkeRN3wA@mail.gmail.com>
+ by mx1.redhat.com (Postfix) with ESMTPS id 915416378
+ for <qemu-devel@nongnu.org>; Wed,  9 Oct 2019 19:54:06 +0000 (UTC)
+Received: by mail-wr1-f72.google.com with SMTP id z17so1588741wru.13
+ for <qemu-devel@nongnu.org>; Wed, 09 Oct 2019 12:54:06 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=yhLQfKwQzysLnNGTIoM2Ddezqq2EgVAjwUcO4DhzQJo=;
+ b=DxfzHx7t4RvMBL+BHo1pL29WDgWXfQOfZ0CPxHlUcppY9SKJdM4QZMweufYF5QJkeE
+ kLJx5MGfy08TaJiZImHh34B392Y5l60SL43CVeo77pDTGL3inJqwTdbF57XAEEwYkCey
+ Bxw34+Ir79hb2+AoMWXPi6KITlmvTIXRHxZlz5WfH7e09agMyaYFMdvTSQyURJ1TIRlZ
+ rDn44wuxoxwIldCREXmHhDEkRTjc5A7zLEtTBdxCjMnUUPp58J6FBaC1RoOVD2BMncj9
+ UU4gn2anpUsaCwPTpyy9plUt3k28v1i0apmShr8TMdj2/QBQDdn5kzcuHZy2TwPkOoN+
+ vYeA==
+X-Gm-Message-State: APjAAAWbCrI6NX98/4VHCFKHAMk4tCzcJxJwXPA51NU6oud8m1eFnLtA
+ WwYnsmTW7Zv1oa5qjW2Cz088CWcogiucRL7gMvh5a3e5jbQW8NWp72enexxpVtiTrrqBtALAWMH
+ uQHi1YcdOqo/je1A=
+X-Received: by 2002:adf:e48f:: with SMTP id i15mr4681726wrm.288.1570650845304; 
+ Wed, 09 Oct 2019 12:54:05 -0700 (PDT)
+X-Received: by 2002:adf:e48f:: with SMTP id i15mr4681706wrm.288.1570650845114; 
+ Wed, 09 Oct 2019 12:54:05 -0700 (PDT)
+Received: from [192.168.1.35] (46.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.46])
+ by smtp.gmail.com with ESMTPSA id f18sm2021168wrv.38.2019.10.09.12.54.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 09 Oct 2019 12:54:04 -0700 (PDT)
+Subject: Re: [PATCH v2 0/8] hw: Convert various reset() handler to DeviceReset
+To: Li Qiang <liq3ea@gmail.com>
+References: <20191008142539.7793-1-philmd@redhat.com>
+ <CAKXe6S+JX_O8pUS-vtJSML5c4qTqoX-PWWfTYQLJVq6DPO37Zg@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <f6876b2c-547f-6254-9796-47e293a021bc@redhat.com>
+Date: Wed, 9 Oct 2019 21:54:03 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA9DzeObmtsc2VJmw=1yruANZ6ajY2SG0cAPdehkeRN3wA@mail.gmail.com>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.39]); Wed, 09 Oct 2019 19:07:51 +0000 (UTC)
+In-Reply-To: <CAKXe6S+JX_O8pUS-vtJSML5c4qTqoX-PWWfTYQLJVq6DPO37Zg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
@@ -95,52 +112,63 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: =?iso-8859-1?Q?Fr=E9d=E9ric?= Basse <contact@fredericb.info>,
- Maksim Kozlov <m.kozlov@samsung.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Evgeny Voevodin <e.voevodin@samsung.com>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Krzysztof Kozlowski <krzk@kernel.org>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
- qemu-arm <qemu-arm@nongnu.org>, Dmitry Solodkiy <d.solodkiy@samsung.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Guenter Roeck <linux@roeck-us.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>,
+ Qemu Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>, John Snow <jsnow@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EnuuBE5faUg4
+X-TUID: O2rXdm3Dy+eh
 
-On Wed, Oct 09, 2019 at 02:38:02PM +0100, Peter Maydell wrote:
-> On Tue, 8 Oct 2019 at 22:49, Cleber Rosa <crosa@redhat.com> wrote:
-> >
-> > I find it hard to judge precisely how much of a third-party some of
-> > these are.  I remember Philippe mentioning that one of them, I guess
-> > the images used on linux_ssh_mips_malta.py, were "as official as it
-> > gets" (my words, from my often misleading memory).
-> >
-> > Reproducibility is definitely an issue, in the sense given that some
-> > of these can indeed go away, but as long as they're available the hash
-> > recorded in the test should guarantee that we're running the same
-> > images.
-> >
-> > Do you think we should do something different here?
-> 
-> I'm not sure, which is why I asked whether this new test
-> was in line with what we've done previously. Since these
-> are just test cases and we don't redistribute them to
-> other people there's less of a traceability/reproducibility
-> worry, and if we check hashes on download that cuts off
-> a lot of "fail to notice if the image changes for some
-> reason" possible problems.
-> 
-> thanks
-> -- PMM
-> 
+Hi Li,
 
-Yep, because I have no clue how to do improve on this (redistributing
-the binaries is definitely not on the improvement side, and neither
-is not testing some machine types), the current approach seems good.
+On 10/9/19 4:28 AM, Li Qiang wrote:
+> Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com <mailto:philmd@redhat.co=
+m>> =E4=BA=8E=20
+> 2019=E5=B9=B410=E6=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=88=
+10:47=E5=86=99=E9=81=93=EF=BC=9A
+>=20
+>     Since v1:
+>     - Removed the pci-host devices
+>=20
+>=20
+> Hello=C2=A0 I want to know why=C2=A0 remove this?
 
-Thanks for checking in and giving feedback!
+I haven't removed the devices, I simply remove the patches converting=20
+them to DeviceReset, basically because I've not enough time to check if=20
+the are on a bus that would reset them. I added these devices on my TODO=20
+list for later, so meanwhile the other devices can be easily reviewed=20
+and merged. When few patches from a series are not reviewed or=20
+incorrect, sometime the rest of the series is not merged, so I prefer to=20
+split it and get these patches merged.
 
-- Cleber.
+>=20
+>     - Removed the vmcoreinfo conversion (elmarco) but add a comment.
+>     - Added Igor's R-b tag.
+>=20
+>     Following the thread discussion between Peter/Markus/Damien about
+>     reset handlers:
+>     https://www.mail-archive.com/qemu-devel@nongnu.org/msg617103.html
+>     I started to remove qemu_register_reset() calls from few qdevified
+>     devices (the trivial ones).
+>=20
+>     Regards,
+>=20
+>     Phil.
+>=20
+>     v1: https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg06367.=
+html
+>=20
+>     Philippe Mathieu-Daud=C3=A9 (8):
+>      =C2=A0 hw/acpi/piix4: Convert reset handler to DeviceReset
+>      =C2=A0 hw/isa/piix4: Convert reset handler to DeviceReset
+>      =C2=A0 hw/ide/piix: Convert reset handler to DeviceReset
+>      =C2=A0 hw/ide/sii3112: Convert reset handler to DeviceReset
+>      =C2=A0 hw/ide/via82c: Convert reset handler to DeviceReset
+>      =C2=A0 hw/isa/vt82c686: Convert reset handler to DeviceReset
+>      =C2=A0 hw/input/lm832x: Convert reset handler to DeviceReset
+>      =C2=A0 hw/misc/vmcoreinfo: Document its reset handler

@@ -1,108 +1,108 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp290537wrm;
-        Tue, 8 Oct 2019 17:59:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqza3vMmlBtMj0fETZqo18W/zuKi2RzRM75ofOfWGOdm5Km71+WGj+WQYX4nSgvY6J6KGFmQ
-X-Received: by 2002:ac8:1c49:: with SMTP id j9mr959385qtk.364.1570582767105;
-        Tue, 08 Oct 2019 17:59:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570582767; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp295302wrm;
+        Tue, 8 Oct 2019 18:04:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzXl8z36lSOVS/rmjypsQ08mBM0UUlQjhBUlZ/MgMw9cJQgU64/f0JwXLdxtG9nZMmvbXoC
+X-Received: by 2002:a17:906:264f:: with SMTP id i15mr483586ejc.333.1570583061533;
+        Tue, 08 Oct 2019 18:04:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570583061; cv=none;
         d=google.com; s=arc-20160816;
-        b=0ENpCw5MtBuu9xGudUhOqRGMXZ3uhWBEhr3nnbqAQh9TpU3rD5bNcPuKBEeHSHppOA
-         MVrBEKvdNW9V8u0qaFNp0adcLQAZFgIWlqd/SX4+v/R8Bpl11h4SwcyGnigJuF4lv+ui
-         A43/F0s5AzA4xJ9P/Llne5HANfUeoVqQITh2vlpbeNTCl9NtG/y/rKNZ+wgA5n3YFt4k
-         qkMN9fljN/Vw9TQsFplt03Tp9AZkmj4ATYzz7bn1oZcfFJqjbkvKdbSDFoQLLpr4nN53
-         QhqjjEH8Xdo9Vf6cDgXH0Aj2lgHm0YKIyDQu/oJc2iI/4bSwzlkSJlsq62ki5+K+awwT
-         PJLQ==
+        b=LC65kcmIW2QEjUNWDmVAVDtyrV+MURUHzkjKU40zY1mRfN+zpJGG7Ph8Vz66Sm5gwl
+         WErCKMZoWoIDKBv4BaBp7pSvuOptSv3E6SZg9UyMeI1qJfQiWd8KE6ERMwoUX4052j9R
+         s3oSlPcev0/ogSfQzp/O7wxTefWYacNKvNe6+shfQ6hpnV+YFGBb2hrqYwX6VMDaQz5L
+         j68RmWaIJa9kO94Im7yE0FSNqjZGkGCfCqTVfiomi/+DkegSu8LJgp5pG9zauNFlGJ2d
+         5+Ol90l5SXKl6O35NkvmG+m+hzkcX6on22/+xwVEqZ2uVazNzyfnthZVtqBOEmcCxBQE
+         sHcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=vdJ6hUyFIr9essbPJNXSLpLm9WkR6FVlyC3k4abQwCs=;
-        b=qd7ENix9fgO1nfI/uSsnNYXLK4GovwUzMl8hhPagpsjwe56FKUxSgGmq3sqLv0qUMY
-         dkuLA5mURqrRZQoBWGpEWYkcXgNbrFOmgZEUrS/2hAZVi/+iwL9UFbbJY+LDmAstuW0A
-         ZcKxQYLlcP6yTikaUAKc0DwHS3wEjx7pPJ3ksHfryTx860J0TGFt00PgfFTv+MCDIOeN
-         nAw+OSN1sd5q0bSKjTi9GLNV4bahtTvj3neyzgc8h2YGVwRw60EhHozcx6KjmqJuyBK5
-         Ksnn/GZ6MhS5c9lZRbCUrV9DWexekEQQaj91yUaU6uCYVOiOM2ESdSSmONxq3YKUQz/z
-         YR5g==
+        bh=/hei9vG/efFXI+czAbVE3I8ab8+OB/M64B4C7RIwuok=;
+        b=D+HH/rd/xFPDFDZzKO9CXxFOoBcVD+yDmjBA49CJSHP9n3Uutqs5EUVYgNjUpcSYvQ
+         JINNeXQa+8eBvs9TuS9sV+QyL6WWazqaVjlD5hr3Ptu9Q5h9wuy54TH8G9LhWNSHyDTs
+         L+P4uymiQq9JlW3CUA3TwqXq+SqTa8vrWCoMsaZiGy9usJd8hPcDanUFOHjMCV/9jMLx
+         f5GHdvXrxLlTGpkuhnSJf/Hv9wtVceyhD1UR75r1GjspdYxs1mkR+GxLNWFjhQKT++Gp
+         ul1RMPfAk/YqcZWYNRX5g/IoGa8SXNnIMZB2+OZzu40D4wq8JNBxzpcixCv+O6d4xAkN
+         CvNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Bs0YIZRO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=j6CLS1BG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v10si594921qta.300.2019.10.08.17.59.26
+        by mx.google.com with ESMTPS id y28si485401edb.162.2019.10.08.18.04.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Oct 2019 17:59:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 08 Oct 2019 18:04:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Bs0YIZRO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=j6CLS1BG;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38322 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38358 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iI0K6-0004mg-5G
-	for alex.bennee@linaro.org; Tue, 08 Oct 2019 20:59:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39412)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iI0Oq-0006tD-Db
+	for alex.bennee@linaro.org; Tue, 08 Oct 2019 21:04:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39712)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <liq3ea@gmail.com>) id 1iI0Jr-0004ju-8H
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 20:59:12 -0400
+ (envelope-from <liq3ea@gmail.com>) id 1iI0Nw-0006qC-RZ
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 21:03:26 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <liq3ea@gmail.com>) id 1iI0Jp-000553-Ro
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 20:59:11 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:39409)
+ (envelope-from <liq3ea@gmail.com>) id 1iI0Nv-00077c-H1
+ for qemu-devel@nongnu.org; Tue, 08 Oct 2019 21:03:24 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:32949)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <liq3ea@gmail.com>)
- id 1iI0Jk-00053j-GL; Tue, 08 Oct 2019 20:59:04 -0400
-Received: by mail-oi1-x244.google.com with SMTP id w144so346708oia.6;
- Tue, 08 Oct 2019 17:59:04 -0700 (PDT)
+ id 1iI0Nv-00077P-9J; Tue, 08 Oct 2019 21:03:23 -0400
+Received: by mail-oi1-x243.google.com with SMTP id a15so378656oic.0;
+ Tue, 08 Oct 2019 18:03:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=vdJ6hUyFIr9essbPJNXSLpLm9WkR6FVlyC3k4abQwCs=;
- b=Bs0YIZROhEwuGBFhDL3EbYjAVMUsDHO+0ttSU8I1ZYOZjr2+XuXmVkv1nD3KcbvjHR
- ZQmAq3htEO0aCve7x8WoX/8y6BjLfN0pthY4JOEJ3b1PQQwoqGPjP6/xmAq+Kb+NxhTB
- qOjvw3BV5718tK79NIS1vZRy4DMnuiVKXSs82qI1PQgYJwl8GZ8DpNcdmoM6+hKLPyHy
- Zz9/EAJEvYwwrwKv481cvwA9UjhFOWARpkSQH0N6UWsDFesZjpBqGmDM7PUugUzSKf3M
- 52AX1o5VO0C2K8nzW3LLHPF57t6hJZwOlVufBvm/Jv1goMTz6q6i7d6Tr758JFT3l8py
- d/jg==
+ :cc; bh=/hei9vG/efFXI+czAbVE3I8ab8+OB/M64B4C7RIwuok=;
+ b=j6CLS1BG3aEvwGtLuks3ok3Um1pxhIU/0oKQsyi64vZbT3lkmuPJPpup9SofcGoue8
+ DfbPNwosKHTw2JO8KTlLBUQpOr8xz4M1gP1z86nl+gAdppgOT/LKmgIKRk4XRs/vTyxK
+ t+BMV+w442Qsoec4E4v4jCgngc8PCuFJRSu1a1V9t+4FyijWeq28pDXITPtD8OvhjjVK
+ GA0h4xgd+w+/1hfFQS49qDaUAXE+stOaiG4y2S6FV4NxLjBJhO2gDtVoETk87Jbbh4s2
+ 3FHph7NnxQPizjlsvOL6+gzMreqNeVNp5E660rwbpgBom9HjezP07vXrWjGwlNmyvHbA
+ yiOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=vdJ6hUyFIr9essbPJNXSLpLm9WkR6FVlyC3k4abQwCs=;
- b=IIt70CpiLN9KFikdgmuv1BiO2wHzVtFEpG83a0aPhSx+uGwIdwcRzVRqu74QSoJkg1
- 5eol1XhCMxOwPedjDfYIAzHQ3YatD6UnOTj4OvvGKDzGNtYZL0tp7Hctgsaonh8M65Oh
- DLnUBVsK235LP1Np0v9EoIPWHHo7t322JPlyxjKSqKU3LC42BB59Oipji9W8o25DURdz
- lOnCOVtpi0Pj5fQM1lMfARENirfkW0+ApnP4b/Ac2V7SwgNjjU11HE1bDkz/h65oR+AD
- JPukhG008q9YDkhKHABp3g7Rq6naZgWqiuCEe5DY5GJ8IOOhCPYmurIToe83jIQDdcHg
- anog==
-X-Gm-Message-State: APjAAAVyQI1snxkHdonukNMC+uqtOA2E8aoaiG7c4fM9XtZbg+jT6Z17
- 9V3N+F3hbEyJZs7WHtIm6YqGK4dNUwPn6tuWzVw=
-X-Received: by 2002:aca:280e:: with SMTP id 14mr343753oix.129.1570582743556;
- Tue, 08 Oct 2019 17:59:03 -0700 (PDT)
+ bh=/hei9vG/efFXI+czAbVE3I8ab8+OB/M64B4C7RIwuok=;
+ b=WP3L+EPYqIZe+rhrNRpWplXKYY8RjFw3E6gSLyYTLnqO36VEj/ffPkFyum0o2dCBQd
+ 0c0GlLRBDeSFs+nTW6KgeRZQP2qsm1FChltSWHQ+trN2zEOzjSyqN2R86gVbtiAGfr3J
+ wXeVP0cih5zv/2hvh2hhzTgL3tONGk7Qylgg7zBVZVTkrtH4+bLODh5XfgNeYzJ8FX7d
+ sUgjbGTAThRvpUWSY4TilOA26DBL/Nivg4t3XXFNesVp0vDt0Fl3wVmHdXCmYYWlxClw
+ GLJ2HBHr9Q8Yf8esllwsgTNQG1uCSt8z4y8TFdTGU4gDlH7v6BvRWo7YG74urLhL9clp
+ LVUw==
+X-Gm-Message-State: APjAAAWLgh94IX9X/vXzyb2Xvh7XbA9AGPjNuIB3kZJFOKqdndNlzPz6
+ /MfyVWyBOTRxBisz0Q2LSOTPHLm2A5en8xWHW+A=
+X-Received: by 2002:a54:4602:: with SMTP id p2mr356903oip.150.1570583002556;
+ Tue, 08 Oct 2019 18:03:22 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191008142539.7793-1-philmd@redhat.com>
- <20191008142539.7793-2-philmd@redhat.com>
-In-Reply-To: <20191008142539.7793-2-philmd@redhat.com>
+ <20191008142539.7793-3-philmd@redhat.com>
+In-Reply-To: <20191008142539.7793-3-philmd@redhat.com>
 From: Li Qiang <liq3ea@gmail.com>
-Date: Wed, 9 Oct 2019 08:58:27 +0800
-Message-ID: <CAKXe6S+jpobh-nG+-x1+QMrUcCReT2AfmfPo+mGc4X+L_V1WVw@mail.gmail.com>
-Subject: Re: [PATCH v2 1/8] hw/acpi/piix4: Convert reset handler to DeviceReset
+Date: Wed, 9 Oct 2019 09:02:46 +0800
+Message-ID: <CAKXe6SJ7VuE3ShiE6N7NDDXWKULhK2d3CoWhxGvjbPSrWr8bfQ@mail.gmail.com>
+Subject: Re: [PATCH v2 2/8] hw/isa/piix4: Convert reset handler to DeviceReset
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="00000000000085291705946fcaa8"
+Content-Type: multipart/alternative; boundary="000000000000f52cb905946fd9e5"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::244
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::243
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>,
@@ -111,162 +111,156 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
  =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
  Igor Mammedov <imammedo@redhat.com>, John Snow <jsnow@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EgdYxWjLkCXG
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: V/4c0unYTRe7
 
---00000000000085291705946fcaa8
+--000000000000f52cb905946fd9e5
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> =E4=BA=8E2019=E5=B9=B410=E6=
-=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=8810:28=E5=86=99=E9=81=
+=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=8810:49=E5=86=99=E9=81=
 =93=EF=BC=9A
 
-> The PIIX4/PM is a PCI device within the PIIX4 chipset, it will be reset
+> The PIIX4/ISA is a PCI device within the PIIX4 chipset, it will be reset
 > when the PCI bus it stands on is reset.
 >
 > Convert its reset handler into a proper Device reset method.
 >
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 >
-
 
 Reviewed-by: Li Qiang <liq3ea@gmail.com>
 
 
+
 > ---
->  hw/acpi/piix4.c | 7 +++----
+>  hw/isa/piix4.c | 7 +++----
 >  1 file changed, 3 insertions(+), 4 deletions(-)
 >
-> diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
-> index 5742c3df87..4e079b39bd 100644
-> --- a/hw/acpi/piix4.c
-> +++ b/hw/acpi/piix4.c
-> @@ -27,7 +27,6 @@
->  #include "hw/pci/pci.h"
->  #include "hw/qdev-properties.h"
->  #include "hw/acpi/acpi.h"
+> diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c
+> index 3294056cd5..890d999abf 100644
+> --- a/hw/isa/piix4.c
+> +++ b/hw/isa/piix4.c
+> @@ -28,7 +28,6 @@
+>  #include "hw/isa/isa.h"
+>  #include "hw/sysbus.h"
+>  #include "migration/vmstate.h"
 > -#include "sysemu/reset.h"
->  #include "sysemu/runstate.h"
->  #include "sysemu/sysemu.h"
->  #include "qapi/error.h"
-> @@ -344,9 +343,9 @@ static const VMStateDescription vmstate_acpi =3D {
->      }
->  };
+>
+>  PCIDevice *piix4_dev;
+>
+> @@ -40,9 +39,9 @@ typedef struct PIIX4State {
+>  #define PIIX4_PCI_DEVICE(obj) \
+>      OBJECT_CHECK(PIIX4State, (obj), TYPE_PIIX4_PCI_DEVICE)
 >
 > -static void piix4_reset(void *opaque)
-> +static void piix4_pm_reset(DeviceState *dev)
+> +static void piix4_isa_reset(DeviceState *dev)
 >  {
-> -    PIIX4PMState *s =3D opaque;
-> +    PIIX4PMState *s =3D PIIX4_PM(dev);
->      PCIDevice *d =3D PCI_DEVICE(s);
->      uint8_t *pci_conf =3D d->config;
+> -    PIIX4State *d =3D opaque;
+> +    PIIX4State *d =3D PIIX4_PCI_DEVICE(dev);
+>      uint8_t *pci_conf =3D d->dev.config;
 >
-> @@ -542,7 +541,6 @@ static void piix4_pm_realize(PCIDevice *dev, Error
-> **errp)
+>      pci_conf[0x04] =3D 0x07; // master, memory and I/O
+> @@ -97,7 +96,6 @@ static void piix4_realize(PCIDevice *dev, Error **errp)
+>          return;
+>      }
+>      piix4_dev =3D &d->dev;
+> -    qemu_register_reset(piix4_reset, d);
+>  }
 >
->      s->machine_ready.notify =3D piix4_pm_machine_ready;
->      qemu_add_machine_init_done_notifier(&s->machine_ready);
-> -    qemu_register_reset(piix4_reset, s);
->
->      piix4_acpi_system_hot_add_init(pci_address_space_io(dev),
->                                     pci_get_bus(dev), s);
-> @@ -692,6 +690,7 @@ static void piix4_pm_class_init(ObjectClass *klass,
-> void *data)
->      k->device_id =3D PCI_DEVICE_ID_INTEL_82371AB_3;
->      k->revision =3D 0x03;
->      k->class_id =3D PCI_CLASS_BRIDGE_OTHER;
-> +    dc->reset =3D piix4_pm_reset;
->      dc->desc =3D "PM";
->      dc->vmsd =3D &vmstate_acpi;
->      dc->props =3D piix4_pm_properties;
+>  int piix4_init(PCIBus *bus, ISABus **isa_bus, int devfn)
+> @@ -118,6 +116,7 @@ static void piix4_class_init(ObjectClass *klass, void
+> *data)
+>      k->vendor_id =3D PCI_VENDOR_ID_INTEL;
+>      k->device_id =3D PCI_DEVICE_ID_INTEL_82371AB_0;
+>      k->class_id =3D PCI_CLASS_BRIDGE_ISA;
+> +    dc->reset =3D piix4_isa_reset;
+>      dc->desc =3D "ISA bridge";
+>      dc->vmsd =3D &vmstate_piix4;
+>      /*
 > --
 > 2.21.0
 >
 >
 >
 
---00000000000085291705946fcaa8
+--000000000000f52cb905946fd9e5
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
 <div dir=3D"ltr" class=3D"gmail_attr">Philippe Mathieu-Daud=C3=A9 &lt;<a hr=
 ef=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; =E4=BA=8E2019=E5=
-=B9=B410=E6=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=8810:28=E5=86=
+=B9=B410=E6=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=8810:49=E5=86=
 =99=E9=81=93=EF=BC=9A<br></div><blockquote class=3D"gmail_quote" style=3D"m=
 argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">The PIIX4/PM is a PCI device within the PIIX4 chipset, it will be res=
-et<br>
+:1ex">The PIIX4/ISA is a PCI device within the PIIX4 chipset, it will be re=
+set<br>
 when the PCI bus it stands on is reset.<br>
 <br>
 Convert its reset handler into a proper Device reset method.<br>
 <br>
-Reviewed-by: Igor Mammedov &lt;<a href=3D"mailto:imammedo@redhat.com" targe=
-t=3D"_blank">imammedo@redhat.com</a>&gt;<br>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@red=
 hat.com" target=3D"_blank">philmd@redhat.com</a>&gt;<br></blockquote><div><=
-br></div><div><br></div><div>Reviewed-by: Li Qiang &lt;<a href=3D"mailto:li=
-q3ea@gmail.com">liq3ea@gmail.com</a>&gt;<br></div><div>=C2=A0</div><blockqu=
-ote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px=
- solid rgb(204,204,204);padding-left:1ex">
+br></div><div>Reviewed-by: Li Qiang &lt;<a href=3D"mailto:liq3ea@gmail.com"=
+ target=3D"_blank">liq3ea@gmail.com</a>&gt;<div class=3D"gmail-yj6qo gmail-=
+ajU" style=3D"outline:none;padding:10px 0px;width:22px;margin:2px 0px 0px">=
+<br class=3D"gmail-Apple-interchange-newline"></div></div><div>=C2=A0</div>=
+<blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-=
+left:1px solid rgb(204,204,204);padding-left:1ex">
 ---<br>
-=C2=A0hw/acpi/piix4.c | 7 +++----<br>
+=C2=A0hw/isa/piix4.c | 7 +++----<br>
 =C2=A01 file changed, 3 insertions(+), 4 deletions(-)<br>
 <br>
-diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c<br>
-index 5742c3df87..4e079b39bd 100644<br>
---- a/hw/acpi/piix4.c<br>
-+++ b/hw/acpi/piix4.c<br>
-@@ -27,7 +27,6 @@<br>
-=C2=A0#include &quot;hw/pci/pci.h&quot;<br>
-=C2=A0#include &quot;hw/qdev-properties.h&quot;<br>
-=C2=A0#include &quot;hw/acpi/acpi.h&quot;<br>
+diff --git a/hw/isa/piix4.c b/hw/isa/piix4.c<br>
+index 3294056cd5..890d999abf 100644<br>
+--- a/hw/isa/piix4.c<br>
++++ b/hw/isa/piix4.c<br>
+@@ -28,7 +28,6 @@<br>
+=C2=A0#include &quot;hw/isa/isa.h&quot;<br>
+=C2=A0#include &quot;hw/sysbus.h&quot;<br>
+=C2=A0#include &quot;migration/vmstate.h&quot;<br>
 -#include &quot;sysemu/reset.h&quot;<br>
-=C2=A0#include &quot;sysemu/runstate.h&quot;<br>
-=C2=A0#include &quot;sysemu/sysemu.h&quot;<br>
-=C2=A0#include &quot;qapi/error.h&quot;<br>
-@@ -344,9 +343,9 @@ static const VMStateDescription vmstate_acpi =3D {<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-=C2=A0};<br>
+<br>
+=C2=A0PCIDevice *piix4_dev;<br>
+<br>
+@@ -40,9 +39,9 @@ typedef struct PIIX4State {<br>
+=C2=A0#define PIIX4_PCI_DEVICE(obj) \<br>
+=C2=A0 =C2=A0 =C2=A0OBJECT_CHECK(PIIX4State, (obj), TYPE_PIIX4_PCI_DEVICE)<=
+br>
 <br>
 -static void piix4_reset(void *opaque)<br>
-+static void piix4_pm_reset(DeviceState *dev)<br>
++static void piix4_isa_reset(DeviceState *dev)<br>
 =C2=A0{<br>
--=C2=A0 =C2=A0 PIIX4PMState *s =3D opaque;<br>
-+=C2=A0 =C2=A0 PIIX4PMState *s =3D PIIX4_PM(dev);<br>
-=C2=A0 =C2=A0 =C2=A0PCIDevice *d =3D PCI_DEVICE(s);<br>
-=C2=A0 =C2=A0 =C2=A0uint8_t *pci_conf =3D d-&gt;config;<br>
+-=C2=A0 =C2=A0 PIIX4State *d =3D opaque;<br>
++=C2=A0 =C2=A0 PIIX4State *d =3D PIIX4_PCI_DEVICE(dev);<br>
+=C2=A0 =C2=A0 =C2=A0uint8_t *pci_conf =3D d-&gt;dev.config;<br>
 <br>
-@@ -542,7 +541,6 @@ static void piix4_pm_realize(PCIDevice *dev, Error **er=
-rp)<br>
+=C2=A0 =C2=A0 =C2=A0pci_conf[0x04] =3D 0x07; // master, memory and I/O<br>
+@@ -97,7 +96,6 @@ static void piix4_realize(PCIDevice *dev, Error **errp)<b=
+r>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0return;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0 =C2=A0 =C2=A0piix4_dev =3D &amp;d-&gt;dev;<br>
+-=C2=A0 =C2=A0 qemu_register_reset(piix4_reset, d);<br>
+=C2=A0}<br>
 <br>
-=C2=A0 =C2=A0 =C2=A0s-&gt;machine_ready.notify =3D piix4_pm_machine_ready;<=
-br>
-=C2=A0 =C2=A0 =C2=A0qemu_add_machine_init_done_notifier(&amp;s-&gt;machine_=
-ready);<br>
--=C2=A0 =C2=A0 qemu_register_reset(piix4_reset, s);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0piix4_acpi_system_hot_add_init(pci_address_space_io(dev=
-),<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 pci_get_bus(dev), s);<=
-br>
-@@ -692,6 +690,7 @@ static void piix4_pm_class_init(ObjectClass *klass, voi=
-d *data)<br>
-=C2=A0 =C2=A0 =C2=A0k-&gt;device_id =3D PCI_DEVICE_ID_INTEL_82371AB_3;<br>
-=C2=A0 =C2=A0 =C2=A0k-&gt;revision =3D 0x03;<br>
-=C2=A0 =C2=A0 =C2=A0k-&gt;class_id =3D PCI_CLASS_BRIDGE_OTHER;<br>
-+=C2=A0 =C2=A0 dc-&gt;reset =3D piix4_pm_reset;<br>
-=C2=A0 =C2=A0 =C2=A0dc-&gt;desc =3D &quot;PM&quot;;<br>
-=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_acpi;<br>
-=C2=A0 =C2=A0 =C2=A0dc-&gt;props =3D piix4_pm_properties;<br>
+=C2=A0int piix4_init(PCIBus *bus, ISABus **isa_bus, int devfn)<br>
+@@ -118,6 +116,7 @@ static void piix4_class_init(ObjectClass *klass, void *=
+data)<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;vendor_id =3D PCI_VENDOR_ID_INTEL;<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;device_id =3D PCI_DEVICE_ID_INTEL_82371AB_0;<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;class_id =3D PCI_CLASS_BRIDGE_ISA;<br>
++=C2=A0 =C2=A0 dc-&gt;reset =3D piix4_isa_reset;<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;desc =3D &quot;ISA bridge&quot;;<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_piix4;<br>
+=C2=A0 =C2=A0 =C2=A0/*<br>
 -- <br>
 2.21.0<br>
 <br>
 <br>
 </blockquote></div></div>
 
---00000000000085291705946fcaa8--
+--000000000000f52cb905946fd9e5--

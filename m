@@ -1,87 +1,112 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp331355wrm;
-        Tue, 8 Oct 2019 18:49:10 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwZpha8aGF3qLhPmHJZnm1lRSvSk8J0S4QkGCNhIaHiq+Xu97I9OcH9rJeTTCGvXPgqtCsO
-X-Received: by 2002:a50:d083:: with SMTP id v3mr849020edd.51.1570585749956;
-        Tue, 08 Oct 2019 18:49:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570585749; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp332559wrm;
+        Tue, 8 Oct 2019 18:50:46 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyDwlEZp7xuGH7fCC+qh5kouvhAdOWDWzvr+4ZEBwmcBn8WDH6RGK9YVNefAQM4MRBpeD8R
+X-Received: by 2002:ac8:5496:: with SMTP id h22mr1118751qtq.227.1570585846625;
+        Tue, 08 Oct 2019 18:50:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570585846; cv=none;
         d=google.com; s=arc-20160816;
-        b=qpc9lqM55R1lI1pIjaz+DLqnQ1wxKMdhRxNEkmAryuPthT4tlmaKaxidbTqBxJFdvU
-         A6MQtFMlu8ZL8hDX+6+MtQbZBmP740fZMD8+ZDVqhDF/DK74xrjWo1aoEPDjLzM7a8hQ
-         KTZN1CS/MPpnEZ7jHDCjyjKGfiJY3bC7sLBHfo2beem3GY2VDq8JsOyFbDc4izwUWfrL
-         Q3DPxB1YzAz+Q0ciGU6szIZT/7SZeyzbajz706rIsgzBeJVnQGZZ8/OgQwlG4s6WRq86
-         79w+hDD1PzUfUKVEd3w9sMB/pXw6cxEIJ6IdgYRGp6mibAT44BWM5hm8xnJ2/yH05kDf
-         BhOw==
+        b=C5rdbKedZQ7UoMiiOGov8Uw9u3XAC56JVrLB+DQw77EOCpknF7rLZ22tABJx+wjKI6
+         AddxdQeXcx7r3G64IrnuwSiz0axSyQuYuQzn+jSVAuJhagy5CiQYE4afXwC3tBWSqm8l
+         MECWT5b98vw9wqbT9duxZulAxKwODuvzP2lwdHCEI8SUoI8PYbTsaDbbYex/DcxcCf6a
+         OeYejz9M+sld4XA+KgGk3fUSMpOX3klpbRtrMV1XiP6/6abedVdyusxaP7k0mrVdOEnC
+         8VuOsOH31xDkQhiFr8USa8MugTz0ovHU48CBQ5ib5K601b+PXFWCFyw136PNbsd6OmBD
+         ayVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:to:from:date;
-        bh=Xqo3C3hsuJ/blBv4tAezYJKwE1X5PjxQEJx76yp+ZgM=;
-        b=ED5Em5j+qrcbbsxNpzKBR4W2vr79i8MfND8XpuRW7yG3Yg4ja/w4toK9egAzL5W90l
-         GHS+SxlTuplPhMTssRJrU8QIqc5NV1hFvFugT11XkHlI/jIpyEtSg3BMTfQCcXf1Ci/o
-         vPuzHxCTl6klznmH6KYgVL0+VK1xwQdMnuCZlprFb36JeIa+0M0cJJeS5PZWw9jPUeEe
-         oKX3Zf6uqqENUTohVK/uV4xG4TwIPhwUVzGyfwyyZjtCa+zFWWtuN+9bUU8rYMEkQeQF
-         BSu0ozJyn7Cyd/rdZfa0/aDLVx1tyJuhaxIkOcMWAE9MgeqWDwsPm3x7naQLpVEe2jtM
-         KyPQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:openpgp:from:references:to:subject:dkim-signature;
+        bh=pRRGey9Kw0lIsuaYgixcsQ5RUwHu18e511yZ1VzoGaw=;
+        b=UAIQMevnY3VckOCrFM8kv7l55a1OTM1wVIMuHYR9iwNuuBZT2uGfPmzfAzyaMlybWS
+         eIlLOf2vguJGQfXcY2d5/wJGlRCJZraXeXNuhztJfuRJk2e4H1B7HQt5ZDQ0ZajhB4KX
+         Ff7ijZX4UkYVoSedPmd9G6cj1Md8/oYAh7iI/KXDTdDBV13aK5xUd/udNdzezpP/VXI2
+         3hQ7l9Tn4qx2EXj5W9YPb2HDYvWTDoDlS3END6QVfuW7BPLTiE7cf6fjo8eJtkaj+/Mi
+         0yEpv7pHcb+5PMBqpYn2/52Mp78g2FHZCzqdAq0TIWSM49mN8Swdg+luI6275mzZ33v5
+         +fag==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=nsJ5KdbN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p9si488439edc.96.2019.10.08.18.49.09
+        by mx.google.com with ESMTPS id 35si620100qvy.170.2019.10.08.18.50.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Oct 2019 18:49:09 -0700 (PDT)
+        Tue, 08 Oct 2019 18:50:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=nsJ5KdbN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38716 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38760 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iI16C-0008FF-3e
-	for alex.bennee@linaro.org; Tue, 08 Oct 2019 21:49:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42403)
+	id 1iI17l-0001gP-Cp
+	for alex.bennee@linaro.org; Tue, 08 Oct 2019 21:50:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42498)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <crosa@redhat.com>) id 1iI15t-0008Bd-G9
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 21:48:50 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1iI17S-0001cQ-BU
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 21:50:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <crosa@redhat.com>) id 1iI15q-0007fp-Ru
- for qemu-arm@nongnu.org; Tue, 08 Oct 2019 21:48:48 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:36484)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <crosa@redhat.com>)
- id 1iI15q-0007fD-IG; Tue, 08 Oct 2019 21:48:46 -0400
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 5D68818C892C;
- Wed,  9 Oct 2019 01:48:45 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-122-151.rdu2.redhat.com
- [10.10.122.151])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8582160C05;
- Wed,  9 Oct 2019 01:48:38 +0000 (UTC)
-Date: Tue, 8 Oct 2019 21:48:36 -0400
-From: Cleber Rosa <crosa@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 03/19] hw/arm/bcm2835_peripherals: Name various address
- spaces
-Message-ID: <20191009014836.GB22824@localhost.localdomain>
-References: <20190926173428.10713-1-f4bug@amsat.org>
- <20190926173428.10713-4-f4bug@amsat.org>
+ (envelope-from <richard.henderson@linaro.org>) id 1iI17Q-000842-Ub
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 21:50:26 -0400
+Received: from mail-yb1-xb41.google.com ([2607:f8b0:4864:20::b41]:45289)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1iI17Q-00083o-LS
+ for qemu-arm@nongnu.org; Tue, 08 Oct 2019 21:50:24 -0400
+Received: by mail-yb1-xb41.google.com with SMTP id q143so194418ybg.12
+ for <qemu-arm@nongnu.org>; Tue, 08 Oct 2019 18:50:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=pRRGey9Kw0lIsuaYgixcsQ5RUwHu18e511yZ1VzoGaw=;
+ b=nsJ5KdbNIcVTWQaU2tkP6YvmGjvcPYk83PN/BgJ59Esc9XlDWXPuQV03UngQUGUJSk
+ Tew/2feqXzbb0XInqmCpK1iLfewqA25ui1H2Zexg6ew13yUjViG4OP/zGy9W3NbhkZw7
+ gfXnd9cEkdsxAhrHJm80/m0DvyguPmvoXxzkNk3WJqcPY38RM7g8JaON1ycBO2v6DNYX
+ GG7sA0blF8C2acwtAgZL01qg79NsxSnS9UrTF2w4J6A0ZXaW8vpFiBc6T7MhMzLOEhCQ
+ ScjRLJ2kwAewY09YqyNIRBYChl+jrga3t2pQM22+erQx9qTbsPEN6STmmLgvBEaSttXt
+ dGBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=pRRGey9Kw0lIsuaYgixcsQ5RUwHu18e511yZ1VzoGaw=;
+ b=jIV+nP/qPHrNIcCcYIF9I4B0sHRdOs0sLODU29jA5skX/YSwRTI40xMkv/NyFeQ6/j
+ G0IV/aHaxhUyUE8ofxRDCu7MiV/JNzduCEBNnmhIJ7D2Dx/CJEly76ErsSKHQEkF0fOW
+ JZOB0YI8o/1Im7lTlLBJLMglnrIdbXpRAcY7BgKzrH84qpOwMjUFWOhmhVPSG1Y13wFI
+ BADL5uKCzMTeWucpXGMxwRsN46oowzhAO8Cg0JmNEoP+d6HiQP9sJsokFLrgNSlU88r7
+ Oq9ISESGxVHmraCFklFui2Lu9Xt9XtmiXFqYQzFwhHXRVSIR2KUKBN+1K9LafpAyVT4t
+ KNgw==
+X-Gm-Message-State: APjAAAVSFK2DuPZQMkICw+K/Li4c+LOrbVueX80aWpfg5HPgRrd86DIC
+ M+/fofDoWbF0q1+ayf0/6Rx49g==
+X-Received: by 2002:a25:790a:: with SMTP id u10mr487573ybc.273.1570585823438; 
+ Tue, 08 Oct 2019 18:50:23 -0700 (PDT)
+Received: from [192.168.1.44] (67.216.144.16.pool.hargray.net. [67.216.144.16])
+ by smtp.gmail.com with ESMTPSA id g81sm199521ywa.46.2019.10.08.18.50.22
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 08 Oct 2019 18:50:22 -0700 (PDT)
+Subject: Re: [PATCH v2 07/21] hw/timer/arm_mptimer.c: Switch to
+ transaction-based ptimer API
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20191008171740.9679-1-peter.maydell@linaro.org>
+ <20191008171740.9679-8-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <dac4fae6-0cac-2f1c-43ab-fe011cb357e8@linaro.org>
+Date: Tue, 8 Oct 2019 21:50:18 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20190926173428.10713-4-f4bug@amsat.org>
-User-Agent: Mutt/1.12.1 (2019-06-15)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.70]); Wed, 09 Oct 2019 01:48:45 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+In-Reply-To: <20191008171740.9679-8-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::b41
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -93,172 +118,23 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?iso-8859-1?Q?Zolt=E1n?= Baldaszti <bztemail@gmail.com>,
- Laurent Bonnans <laurent.bonnans@here.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- BALATON Zoltan <balaton@eik.bme.hu>, Esteban Bosse <estebanbosse@gmail.com>,
- qemu-arm@nongnu.org, Clement Deschamps <clement.deschamps@antfield.fr>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Cheng Xiang <ext-cheng.xiang@here.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Pekka Enberg <penberg@iki.fi>, Guenter Roeck <linux@roeck-us.net>,
- Eduardo Habkost <ehabkost@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: j4b0kMvLnaVo
+X-TUID: 2jAGEx0YJR+b
 
-On Thu, Sep 26, 2019 at 07:34:11PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> Various address spaces from the BCM2835 are reported as
-> 'anonymous' in memory tree:
->=20
->   (qemu) info mtree
->=20
->   address-space: anonymous
->     0000000000000000-000000000000008f (prio 0, i/o): bcm2835-mbox
->       0000000000000010-000000000000001f (prio 0, i/o): bcm2835-fb
->       0000000000000080-000000000000008f (prio 0, i/o): bcm2835-property
->=20
->   address-space: anonymous
->     0000000000000000-00000000ffffffff (prio 0, i/o): bcm2835-gpu
->       0000000000000000-000000003fffffff (prio 0, i/o): alias bcm2835-gp=
-u-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       0000000040000000-000000007fffffff (prio 0, i/o): alias bcm2835-gp=
-u-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       000000007e000000-000000007effffff (prio 1, i/o): alias bcm2835-pe=
-ripherals @bcm2835-peripherals 0000000000000000-0000000000ffffff
->       0000000080000000-00000000bfffffff (prio 0, i/o): alias bcm2835-gp=
-u-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       00000000c0000000-00000000ffffffff (prio 0, i/o): alias bcm2835-gp=
-u-ram-alias[*] @ram 0000000000000000-000000003fffffff
->=20
->   [...]
->=20
-> Since the address_space_init() function takes a 'name' argument,
-> set it to correctly describe each address space:
->=20
->   (qemu) info mtree
->=20
->   address-space: bcm2835-mbox-memory
->     0000000000000000-000000000000008f (prio 0, i/o): bcm2835-mbox
->       0000000000000010-000000000000001f (prio 0, i/o): bcm2835-fb
->       0000000000000080-000000000000008f (prio 0, i/o): bcm2835-property
->=20
->   address-space: bcm2835-fb-memory
->     0000000000000000-00000000ffffffff (prio 0, i/o): bcm2835-gpu
->       0000000000000000-000000003fffffff (prio 0, i/o): alias bcm2835-gp=
-u-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       0000000040000000-000000007fffffff (prio 0, i/o): alias bcm2835-gp=
-u-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       000000007e000000-000000007effffff (prio 1, i/o): alias bcm2835-pe=
-ripherals @bcm2835-peripherals 0000000000000000-0000000000ffffff
->       0000000080000000-00000000bfffffff (prio 0, i/o): alias bcm2835-gp=
-u-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       00000000c0000000-00000000ffffffff (prio 0, i/o): alias bcm2835-gp=
-u-ram-alias[*] @ram 0000000000000000-000000003fffffff
->=20
->   address-space: bcm2835-property-memory
->     0000000000000000-00000000ffffffff (prio 0, i/o): bcm2835-gpu
->       0000000000000000-000000003fffffff (prio 0, i/o): alias bcm2835-gp=
-u-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       0000000040000000-000000007fffffff (prio 0, i/o): alias bcm2835-gp=
-u-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       000000007e000000-000000007effffff (prio 1, i/o): alias bcm2835-pe=
-ripherals @bcm2835-peripherals 0000000000000000-0000000000ffffff
->       0000000080000000-00000000bfffffff (prio 0, i/o): alias bcm2835-gp=
-u-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       00000000c0000000-00000000ffffffff (prio 0, i/o): alias bcm2835-gp=
-u-ram-alias[*] @ram 0000000000000000-000000003fffffff
->=20
->   address-space: bcm2835-dma-memory
->     0000000000000000-00000000ffffffff (prio 0, i/o): bcm2835-gpu
->       0000000000000000-000000003fffffff (prio 0, i/o): alias bcm2835-gp=
-u-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       0000000040000000-000000007fffffff (prio 0, i/o): alias bcm2835-gp=
-u-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       000000007e000000-000000007effffff (prio 1, i/o): alias bcm2835-pe=
-ripherals @bcm2835-peripherals 0000000000000000-0000000000ffffff
->       0000000080000000-00000000bfffffff (prio 0, i/o): alias bcm2835-gp=
-u-ram-alias[*] @ram 0000000000000000-000000003fffffff
->       00000000c0000000-00000000ffffffff (prio 0, i/o): alias bcm2835-gp=
-u-ram-alias[*] @ram 0000000000000000-000000003fffffff
->=20
-> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
+On 10/8/19 1:17 PM, Peter Maydell wrote:
+> Switch the arm_mptimer.c code away from bottom-half based ptimers to
+> the new transaction-based ptimer API.  This just requires adding
+> begin/commit calls around the various places that modify the ptimer
+> state, and using the new ptimer_init() function to create the timer.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/display/bcm2835_fb.c    | 2 +-
->  hw/dma/bcm2835_dma.c       | 2 +-
->  hw/misc/bcm2835_mbox.c     | 2 +-
->  hw/misc/bcm2835_property.c | 2 +-
->  4 files changed, 4 insertions(+), 4 deletions(-)
->=20
-> diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
-> index 8f856878cd..85aaa54330 100644
-> --- a/hw/display/bcm2835_fb.c
-> +++ b/hw/display/bcm2835_fb.c
-> @@ -425,7 +425,7 @@ static void bcm2835_fb_realize(DeviceState *dev, Er=
-ror **errp)
->      s->initial_config.base =3D s->vcram_base + BCM2835_FB_OFFSET;
-> =20
->      s->dma_mr =3D MEMORY_REGION(obj);
-> -    address_space_init(&s->dma_as, s->dma_mr, NULL);
-> +    address_space_init(&s->dma_as, s->dma_mr, TYPE_BCM2835_FB "-memory=
-");
-> =20
->      bcm2835_fb_reset(dev);
-> =20
-> diff --git a/hw/dma/bcm2835_dma.c b/hw/dma/bcm2835_dma.c
-> index 6acc2b644e..1e458d7fba 100644
-> --- a/hw/dma/bcm2835_dma.c
-> +++ b/hw/dma/bcm2835_dma.c
-> @@ -383,7 +383,7 @@ static void bcm2835_dma_realize(DeviceState *dev, E=
-rror **errp)
->      }
-> =20
->      s->dma_mr =3D MEMORY_REGION(obj);
-> -    address_space_init(&s->dma_as, s->dma_mr, NULL);
-> +    address_space_init(&s->dma_as, s->dma_mr, TYPE_BCM2835_DMA "-memor=
-y");
-> =20
->      bcm2835_dma_reset(dev);
->  }
-> diff --git a/hw/misc/bcm2835_mbox.c b/hw/misc/bcm2835_mbox.c
-> index 7690b9afaf..77285624c9 100644
-> --- a/hw/misc/bcm2835_mbox.c
-> +++ b/hw/misc/bcm2835_mbox.c
-> @@ -311,7 +311,7 @@ static void bcm2835_mbox_realize(DeviceState *dev, =
-Error **errp)
->      }
-> =20
->      s->mbox_mr =3D MEMORY_REGION(obj);
-> -    address_space_init(&s->mbox_as, s->mbox_mr, NULL);
-> +    address_space_init(&s->mbox_as, s->mbox_mr, TYPE_BCM2835_MBOX "-me=
-mory");
->      bcm2835_mbox_reset(dev);
->  }
-> =20
-> diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-> index 0a1a3eb5d9..43a5465c5d 100644
-> --- a/hw/misc/bcm2835_property.c
-> +++ b/hw/misc/bcm2835_property.c
-> @@ -407,7 +407,7 @@ static void bcm2835_property_realize(DeviceState *d=
-ev, Error **errp)
->      }
-> =20
->      s->dma_mr =3D MEMORY_REGION(obj);
-> -    address_space_init(&s->dma_as, s->dma_mr, NULL);
-> +    address_space_init(&s->dma_as, s->dma_mr, TYPE_BCM2835_PROPERTY "-=
-memory");
-> =20
->      /* TODO: connect to MAC address of USB NIC device, once we emulate=
- it */
->      qemu_macaddr_default_if_unset(&s->macaddr);
-> --=20
-> 2.20.1
->=20
+>  hw/timer/arm_mptimer.c | 14 +++++++++++---
+>  1 file changed, 11 insertions(+), 3 deletions(-)
 
-The names you're giving are much more detailed than most other
-examples I found for address_space_init(), and I like that approach a
-lot.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Reviewed-by: Cleber Rosa <crosa@redhat.com>
+r~

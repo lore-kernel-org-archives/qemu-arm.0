@@ -1,242 +1,167 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1220190wrm;
-        Wed, 9 Oct 2019 10:39:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqySZk9S0y626T9OEpgU20Ix0RZI3dxiUR6D/Pq+U6xtZlligQcOhaeyPpvxkLbijP2q5p49
-X-Received: by 2002:a37:8d05:: with SMTP id p5mr4686907qkd.271.1570642768277;
-        Wed, 09 Oct 2019 10:39:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570642768; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1260850wrm;
+        Wed, 9 Oct 2019 11:20:34 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwomnPxkhatkyoKrOK7m7lNuVeXRTef7M0mLI5VVrQYo0Ah9jBbpdMotmIlKe1t5mMhbh2o
+X-Received: by 2002:a17:906:264f:: with SMTP id i15mr4166445ejc.333.1570645234821;
+        Wed, 09 Oct 2019 11:20:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570645234; cv=none;
         d=google.com; s=arc-20160816;
-        b=LQl9YSLB7Uqqbjak2MLOfEucxKL/T2aSVTK2jk6Nmn0nMMbo86BZC/t6/6mfkUvwld
-         E+I7c3RDSizHd9oinPJgFDV7CfGevE4VkVtA4irQ7gwCZMlX5FZqFYw30g10YDVE0hVc
-         10gOAczZLokSAv0Ohu6wSaY5z9N5LadwaRdk4r9evyvC7W6K5EhkxMYcOqeL6xLlRYeB
-         Lc040z7EJRXKC2ondVR3b5G6SxWnFh9aq+yyAREzfsnKlEw0PKGVBstif2srxKmV7pFp
-         hWrRvqWGcaQdbmITRhiXtnVy2y2UwPQAu82K0oxLrEFvbuUDsCwxLaTahIpimn3REpoM
-         c60A==
+        b=irvvBmgWa2hWP8MlbjMi2G/7DqHDcUEi9xrJkHXr3mTZg0BZjcf3srj9FLdn4aFvhI
+         1VL497m4u2bTo58a/kYzUbRTW83Bp4ki9wSe0PP4Z4o8iKadN0QSJ3+NX0q7ZMx4Cgyq
+         2E2xLw1anYw1AilHrjIhnj6RuLORC+7iE5Sfw9h5ps27WUBfYs5LExU5GDaDKfsJ76YC
+         g4iIggZuddllNgz+rf0bzo7wJIteMZLL+un4476PH7dHQYpdom4e3QHxU4abtoEStyuS
+         YyQpAhAW2hvq64ua82SKH4TRtilPfIIf7JVuTzBqFFICyfqQh/BETmoV4iCs1wXrp20F
+         zuCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=03YwMWE0Ew/a3SON8Z+vIAmBp2VAb4Ga2ZUj8kxeh4Q=;
-        b=0M9f32aPNkD2NRzQ3Oty0rIRslEyI+xZD0/p+QhFt0y9DbBMkAveIoGudOXgRcNlBe
-         UEwwW2pqQmN1wQAeODkEps1T6ituwGHocX6iZ7vUCZ6zypKV+MdNe7U9t3bHjq34MA3j
-         1BOoAZnxOqlVhcxswhM7cHiMmFdmocu7rq3hyF7rsiRr7T0scXcLcpe7jVJnhflOCi2T
-         CfdJgL3l2JA6jCIQrdis3Z1zFptBFIH+zQHd9vAcy1rkAlfhjZEaHawCfaYXPscTo4b5
-         GOtStd+4J5Wm3L5pW379eNfDs8CetEBniKl484+1OrjdiN4kcr8XSRzaSGAS357HYmeS
-         k24g==
+        bh=Y/AJrR7wo+KKwMOBsUQrs2hpnFS2xTQIIY8tGxegkGM=;
+        b=x/wFJ48XyAYO2d0/7QVw6NbsCjXSAhgQ0aLR4NxVV0qjRs8bsx1H0sW09GNBkcOCIL
+         2f6xwP9pI9nVahVUutMxw5u7q8MxhmKwlkq1Q9i1cRoFYCdpuGgUv4xl9ctUp5dAI6IG
+         0jGuJGZ0t9wrnf9Ob4G6lWKy6XYSMBnhOQ4SXN7b9T4lQZZZKGN//jeg2YIvH6UWxHd+
+         Kp27G9Ydp4FutyOd/HKDt1MPlpVUS3PWutpqYWTtxleBwGePyMzw1fo0OPgRxzM1LIpF
+         XFzLZ1DBZQ6sW/OunlOsZ7hQRKx+ZoKSoMrxwfxyb5GHF/mQFB1S5Zg+BvQgZipxn/yY
+         gWOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Q7kF9KM1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=wrczNESP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x25si2975231qtm.32.2019.10.09.10.39.28
+        by mx.google.com with ESMTPS id pw28si1574352ejb.43.2019.10.09.11.20.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Oct 2019 10:39:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 09 Oct 2019 11:20:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Q7kF9KM1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=wrczNESP;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53180 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53724 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iIFvr-0005bE-Ev
-	for alex.bennee@linaro.org; Wed, 09 Oct 2019 13:39:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37013)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iIGZd-0006IF-GR
+	for alex.bennee@linaro.org; Wed, 09 Oct 2019 14:20:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35954)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <beata.michalska@linaro.org>) id 1iIAWt-00024w-5E
- for qemu-arm@nongnu.org; Wed, 09 Oct 2019 07:53:20 -0400
+ (envelope-from <beata.michalska@linaro.org>) id 1iIAOu-00017o-Vp
+ for qemu-devel@nongnu.org; Wed, 09 Oct 2019 07:45:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <beata.michalska@linaro.org>) id 1iIAWr-0006xl-MW
- for qemu-arm@nongnu.org; Wed, 09 Oct 2019 07:53:19 -0400
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:33394)
+ (envelope-from <beata.michalska@linaro.org>) id 1iIAOt-0003jn-Qa
+ for qemu-devel@nongnu.org; Wed, 09 Oct 2019 07:45:04 -0400
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:44514)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <beata.michalska@linaro.org>)
- id 1iIAWr-0006xQ-Fm
- for qemu-arm@nongnu.org; Wed, 09 Oct 2019 07:53:17 -0400
-Received: by mail-io1-xd41.google.com with SMTP id z19so4365537ior.0
- for <qemu-arm@nongnu.org>; Wed, 09 Oct 2019 04:53:17 -0700 (PDT)
+ id 1iIAOt-0003jZ-La
+ for qemu-devel@nongnu.org; Wed, 09 Oct 2019 07:45:03 -0400
+Received: by mail-io1-xd42.google.com with SMTP id w12so4154187iol.11
+ for <qemu-devel@nongnu.org>; Wed, 09 Oct 2019 04:45:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=03YwMWE0Ew/a3SON8Z+vIAmBp2VAb4Ga2ZUj8kxeh4Q=;
- b=Q7kF9KM1Z9NHtYGsm9C0EmU7QO47cx65aGyxX8xoPzG4dTcin/ZsCMgSyU4W1oCzQQ
- GwG8gOl8M4fjlsV/5kVBu0z1DOISiTWm5KbKgKkDH7pncxCb7dTrnsybk3az+1You8I6
- v1YG9kDvjwYb7hx6nw+daueTLsb/Yc5SUtIt9BXiOt9j3OHTAwObV1xGxgkbKdvuNwDQ
- zleIy2QcuPYObi1WwOfdEjBowsD/JYFpb96bsmHSI4j/qZOE70XFBfgCakDa4xRF57+s
- tFNn+aV4jhWyJnbifzxRXvUo2BM0RRhc/3SL6+PlV8+DFZ8WW8aB/KbZieoQKfy04g8s
- 5gBw==
+ :cc; bh=Y/AJrR7wo+KKwMOBsUQrs2hpnFS2xTQIIY8tGxegkGM=;
+ b=wrczNESPfibfY1uG0dedQZgs89JD7RlvJ9VD6TU71J8DOSNUWHu1Vla8ueOQ1V3cGW
+ P3k13el+Od5jeDtoy+M95zpZwOqtETYe8lQnBtWOoon4/oFQoHPdP7R+LR+TA5bSjbQ6
+ iJ5tlYh8yNYqiO/Vry6vdI4oA8EflpoCuyxWXHF2AxNCaCPKFWPfeTAfCYSJRIjsuCoK
+ z6hcUQ4OQxPiLevtL0lArMQS+4ZwNwJSzxsOOMBUfKJaDHUudl2vkJ6LWn1PbFX/33LP
+ YlWZ6qbQmkZ00kocRa6qJJNPoMFDLaUYJFpDTtrUMQSkJtL0j3+O3Rxxa3CEEMog1qCe
+ kq4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=03YwMWE0Ew/a3SON8Z+vIAmBp2VAb4Ga2ZUj8kxeh4Q=;
- b=U0ehrd/v6LZDs0vLYndNgwahKG/VhJOl0993Dm6WogEPELryAa+UIg9tmS/alGAEaY
- S9cQdPIDeHJY5sAo11kO8w3AXv4BIl5Kcygdph1WAKQr4xU/04Azp2BfM/e451V5i9dr
- kXvexHsgrhBi+zgyy2H+nVaf7tfCGqRKspckFUinAZESvwex14GZJxLjWn5C4rvbpyPZ
- CYnSa1qlbjG8e7JHBx3MDEL+vKr32HTmNiyJ0aKvgd7H9VCF9kqI1pSqn0i95WT73qLd
- twdIxKMNjSbtEr3pZCEot+Qrk2lJHCzH4D83jW2IlVcLnMxMnABYR4pUNUG5L5hJ04Ze
- Y1Rw==
-X-Gm-Message-State: APjAAAUecbdtysP6zhqhP3VIJ0hYAhwuFxm6+hdXkwl6E5LPi58De2dw
- EQrvanTYcw2QNoSVj3EvKEGAJYfJTG4dXVyWA2n9Zg==
-X-Received: by 2002:a92:360b:: with SMTP id d11mr2745579ila.143.1570621996706; 
- Wed, 09 Oct 2019 04:53:16 -0700 (PDT)
+ bh=Y/AJrR7wo+KKwMOBsUQrs2hpnFS2xTQIIY8tGxegkGM=;
+ b=fx5tYVPAN+DTTXpMVKDqzXYStnbZoQUH6pKuxQQFpCRqi+jZW5CwyvxuW/6Ya5eHYP
+ 2x47JK+9QaJ66E1VvRp2YNV9LvpioAsnopWWxV4o4xQ3X+kxsX27B+lOJPXEcE9feDoE
+ rzBTDGFEDwzELSnatGuDCdxcxrS8xojJkxQ6UwFPkQJJOnd/FjdK1k/2Ebi+cgYeU7+D
+ lxDa4zplraNlGyYaO7MHKZV6uSuhmvCb7vITknHGoAuWCobmgvyXaLdBu6E9Zm1qnrUG
+ oE8iLN30lfSbWWNTsJcfyO7zTV+vWGqD/cQvYGk7/0uyRrUzd0cWwytpH/iNXqux/yMS
+ dn7A==
+X-Gm-Message-State: APjAAAXRrmLPpWYOJYeD1HHPELXCqQow7yWRJWz4ILYo0OIWkGiltNw7
+ q6mG+FMWlkaVrKQoMLy0tel0dICcQ8xz39qasU2Xjvhq
+X-Received: by 2002:a6b:2c02:: with SMTP id s2mr2697869ios.307.1570621502744; 
+ Wed, 09 Oct 2019 04:45:02 -0700 (PDT)
 MIME-Version: 1.0
 References: <20190910095610.4546-1-beata.michalska@linaro.org>
- <20190910095610.4546-5-beata.michalska@linaro.org>
- <c70f7562-c988-5eab-fa1e-fc8b5897e171@linaro.org>
-In-Reply-To: <c70f7562-c988-5eab-fa1e-fc8b5897e171@linaro.org>
+ <20190910095610.4546-3-beata.michalska@linaro.org>
+ <d8ca7a99-ca3d-00b8-f34c-82375ecb7c4d@linaro.org>
+In-Reply-To: <d8ca7a99-ca3d-00b8-f34c-82375ecb7c4d@linaro.org>
 From: Beata Michalska <beata.michalska@linaro.org>
-Date: Wed, 9 Oct 2019 12:53:05 +0100
-Message-ID: <CADSWDzs=kSveEbLdAwoCNSRYJS=NxXGSEGWHMXM+xxUJ215taQ@mail.gmail.com>
-Subject: Re: [Qemu-devel] [PATCH 4/4] target/arm: Add support for DC CVAP & DC
- CVADP ins
+Date: Wed, 9 Oct 2019 12:44:51 +0100
+Message-ID: <CADSWDzvHEnn3=hYxuH4+14OwgnUV9Vd_2dDxFHATRqAOsUuTLA@mail.gmail.com>
+Subject: Re: [Qemu-devel] [PATCH 2/4] Memory: Enable writeback for given
+ memory region
 To: Richard Henderson <richard.henderson@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::d41
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::d42
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, quintela@redhat.com,
  "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
  shameerali.kolothum.thodi@huawei.com, qemu-devel@nongnu.org,
  eric.auger@redhat.com, qemu-arm@nongnu.org, pbonzini@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ska0hpHSdYa9
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SXX2Fs2MNFLS
 
-On Tue, 24 Sep 2019 at 18:22, Richard Henderson
+On Tue, 24 Sep 2019 at 17:28, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
 > On 9/10/19 2:56 AM, Beata Michalska wrote:
-> > @@ -2229,7 +2229,8 @@ static inline uint64_t cpreg_to_kvm_id(uint32_t cpregid)
-> >  #define ARM_CP_NZCV              (ARM_CP_SPECIAL | 0x0300)
-> >  #define ARM_CP_CURRENTEL         (ARM_CP_SPECIAL | 0x0400)
-> >  #define ARM_CP_DC_ZVA            (ARM_CP_SPECIAL | 0x0500)
-> > -#define ARM_LAST_SPECIAL         ARM_CP_DC_ZVA
-> > +#define ARM_CP_DC_CVAP           (ARM_CP_SPECIAL | 0x0600)
-> > +#define ARM_LAST_SPECIAL         ARM_CP_DC_CVAP
->
-> I don't see that this operation needs to be handled via "special".  It's a
-> function call upon write, as for many other system registers.
->
-
-Too inspired by ZVA I guess. Will make the appropriate changes in the
-next version.
-
-> > +static inline bool isar_feature_aa64_dcpop(const ARMISARegisters *id)
-> > +{
-> > +    return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, DPB) != 0;
-> > +}
-> > +
-> > +static inline bool isar_feature_aa64_dcpodp(const ARMISARegisters *id)
-> > +{
-> > +    return (FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, DPB) >> 1) != 0;
-> > +}
->
-> The correct check is FIELD_EX(...) >= 2.  This is a 4-bit field, as with all of
-> the others.
->
-Noted.
-> > +static CPAccessResult aa64_cacheop_persist_access(CPUARMState *env,
-> > +                                                  const ARMCPRegInfo *ri,
-> > +                                                  bool isread)
-> > +{
-> > +    ARMCPU *cpu = env_archcpu(env);
-> > +    /*
-> > +     * Access is UNDEF if lacking implementation for either DC CVAP or DC CVADP
-> > +     * DC CVAP ->  CRm: 0xc
-> > +     * DC CVADP -> CRm: 0xd
-> > +     */
-> > +    return (ri->crm == 0xc && !cpu_isar_feature(aa64_dcpop, cpu)) ||
-> > +           (ri->crm == 0xd && !cpu_isar_feature(aa64_dcpodp, cpu))
-> > +           ? CP_ACCESS_TRAP_UNCATEGORIZED
-> > +           : aa64_cacheop_access(env, ri, isread);
-> > +}
-> ...
-> > +    { .name = "DC_CVAP", .state = ARM_CP_STATE_AA64,
-> > +      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 12, .opc2 = 1,
-> > +      .access = PL0_W, .type = ARM_CP_DC_CVAP,
-> > +      .accessfn = aa64_cacheop_persist_access },
-> > +    { .name = "DC_CVADP", .state = ARM_CP_STATE_AA64,
-> > +      .opc0 = 1, .opc1 = 3, .crn = 7, .crm = 13, .opc2 = 1,
-> > +      .access = PL0_W, .type = ARM_CP_DC_CVAP,
-> > +      .accessfn = aa64_cacheop_persist_access },
->
-> While this access function works, it's better to simply not register these at
-> all when they're not supported.  Compare the registration of rndr_reginfo.
->
-> As I described above, I think this can use a normal write function.  In which
-> case this would use .type = ARM_CP_NO_RAW | ARM_CP_SUPPRESS_TB_END.
->
-> (I believe that ARM_CP_IO is not required, but I'm not 100% sure.  Certainly
-> there does not seem to be anything in dc_cvap() that affects state which can
-> queried from another virtual cpu, so there does not appear to be any reason to
-> grab the global i/o lock.  The host kernel should be just fine with concurrent
-> msync syscalls, or whatever it is that libpmem uses.)
->
->
-OK, will move that to conditional registration and double check the type.
-Thanks for the suggestion.
-
-> > +void HELPER(dc_cvap)(CPUARMState *env, uint64_t vaddr_in)
-> > +{
-> > +#ifndef CONFIG_USER_ONLY
-> > +    ARMCPU *cpu = env_archcpu(env);
-> > +    /* CTR_EL0 System register -> DminLine, bits [19:16] */
-> > +    uint64_t dline_size = 4 << ((cpu->ctr >> 16) & 0xF);
-> > +    uint64_t vaddr = vaddr_in & ~(dline_size - 1);
-> > +    void *haddr;
-> > +    int mem_idx = cpu_mmu_index(env, false);
-> > +
-> > +    /* This won't be crossing page boundaries */
-> > +    haddr = probe_read(env, vaddr, dline_size, mem_idx, GETPC());
-> > +    if (haddr) {
-> > +
-> > +        ram_addr_t offset;
-> > +        MemoryRegion *mr;
-> > +
-> > +        /*
-> > +         * RCU critical section + ref counting,
-> > +         * so that MR won't disappear behind the scene
-> > +         */
-> > +        rcu_read_lock();
-> > +        mr = memory_region_from_host(haddr, &offset);
-> > +        if (mr) {
-> > +            memory_region_ref(mr);
-> > +        }
-> > +        rcu_read_unlock();
-> > +
-> > +        if (mr) {
-> > +            memory_region_do_writeback(mr, offset, dline_size);
-> > +            memory_region_unref(mr);
-> > +        }
-> > +    }
+> > +int main(void) {
+> > +#if defined(_POSIX_MAPPED_FILES) && _POSIX_MAPPED_FILES > 0 \
+> > +&& defined(_POSIX_SYNCHRONIZED_IO) && _POSIX_SYNCHRONIZED_IO > 0
+> > +return msync(NULL,0, MS_SYNC);
+> > +#else
+> > +#error Not supported
 > > +#endif
+> > +}
 >
+> Is there any particular reason to check _POSIX_MAPPED_FILES &
+> _POSIX_SYNCHRONIZED_IO?  IIRC, you can use those to "safely" use MS_SYNC.  But
+> this is a configure test, and an error is in fact our defined failure case, so
+> "safely" doesn't seem particularly relevant.
 >
-> We hold the rcu lock whenever a TB is executing.  I don't believe there's any
-> point in increasing the lock count here.  Similarly with memory_region
-> refcounts -- they cannot vanish while we're executing a TB.
+> Alternately, do we even support any systems (besides perhaps windows) that do
+> not provide POSIX-2001 support, and so include msync + MS_SYNC?  My first guess
+> is that we don't.
 >
-> Thus I believe that about half of this function can fold away.
+
+Both flags are there to verify support for msync itself.
+The check there is for posix systems , where if both set to value
+greater than '0'
+the msync call is available.
+AFAIK Windows is the only posix non-compliant system being supported . Though
+I might be wrong (?)
+I might just drop the check here and use CONFIG_POSIX to handle the
+msync call instead.
+
+> > +        msync((void *)((uintptr_t)addr & qemu_host_page_mask),
+> > +               HOST_PAGE_ALIGN(length), MS_SYNC);
 >
+> This isn't quite right.  If you move addr down to a lower address via this page
+> mask, you must also increase length by the same amount, and only afterward
+> increase length to the host page size.
 >
-So I was chasing the wrong locking herre...
-Indeed if the RCU lock is being already held I can safely drop the locking here.
+> Consider addr == 0xffffff, length = 2.  This covers two pages, so you'd expect
+> the final parameters to be, for 4k page size, 0xfff000, 0x2000.
+>
+Thanks for catching this - guess I was too focused on the cache line
+size, which would not cross page boundaries. Will fix that in the next version.
 
 > r~
 
-Thank you for the review,
+Thank you.
 
 BR
 Beata

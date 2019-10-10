@@ -1,215 +1,226 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp2395640wrm;
-        Thu, 10 Oct 2019 06:44:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxArBLwBAs4ENNMBo9jBrYaB1Fzt6NQNRB404H5AanFL5DLk3ff+pVVX+fn62XoTiZPbWjC
-X-Received: by 2002:a05:620a:127a:: with SMTP id b26mr9641468qkl.61.1570715044380;
-        Thu, 10 Oct 2019 06:44:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570715044; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp2410105wrm;
+        Thu, 10 Oct 2019 06:57:36 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwJmuDsq+p+u1q+aKa2BHbDPKdGuWDDzcVyr9ka+2VyKgQoCl4uCtAxgXpg2fYFs/pTSsY7
+X-Received: by 2002:ac8:234e:: with SMTP id b14mr10675622qtb.346.1570715856835;
+        Thu, 10 Oct 2019 06:57:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570715856; cv=none;
         d=google.com; s=arc-20160816;
-        b=EK90CNPU1C+Bp2KAWeWkjHEFp6zboaV6L5un1NcPSywVMiIEXiretq/y76tmp7sGod
-         IqIpzUGDeezW531IcjO0V7wcNIqZv6APaQzGUVXBc3O3Hji+vlb+VcvNSs5xTrDBt2EX
-         UJ9K1DX2crzCy9JHPevX3Ks4j5RiQCCJSr2YnpZyv7ub3mPB0YZ6Z+3tj+qARYPFmkki
-         mNfu22ItROVq2jIKJkXCIMsUdT6TaVuDQVc42ZeAqtA6P4yBw42mqK1HBqNURRdEJ0ZG
-         uBUV2/jomFuhYIhBBI6fWQKDpUT4pnd4uF0YUio8bzaZB2FKuFBbg/DecAIl5YAC0bl4
-         LknA==
+        b=IsPTDJlYbgbifXf05PH7N+l05NSKPA7YCbYBpwgUFvPQOIzsoEdwzV1d/paI2iomk/
+         rNuU7g0PJ1idiNHG9MG0nr3YxX/g2EESHbroJqb+t44EuzvVTk8MWNf1eyfHbDA/qrev
+         hfJoVf85MdL0Re/mgfdf+ViF0yg0W3S88ud8siQC6IrYwIQA6cxUL+xraTuHmv0sz45K
+         t7hY/T+AApUozcdUk2J6BDpXrfAuL2pgSHO7qzHwuI+9Id6LB/Z/ek4vpBFvZLmlYbOx
+         eZ4hFGaqAQ69ef7jR9ZAJGMiHD+gNF4Ro0nlJ1xpvo7NCDPxK4iBavF8MlQrh0lbBNRJ
+         9WwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=Q2fRCbwTFySOnCK3JiOVij95RQS5p6saSe3jyZO1Srw=;
-        b=R4iYJm0nqVQEGYnhC/5O96CZhwdm7nXMU0NtKaoykbbJRnq5a3La7/uyVeRmmfcvnn
-         jVzFF8eggoaqxieHmPnb/WI5iMs+WlLUX2N02tL7YDPjapayP2RM59uKeYgUsinK1vW7
-         WBqmNnKIHj8b4O9vceH9qgWiYEmAiBAdY7h4uojGLEMgfD5s+tQsoagXWDEJPHppi1i1
-         DMs+znXse0Gew+s+owAOcxLCLzGKs4ZOiZ2+EFXcOta4PNnKDrQZS+frlg7G4SBWg775
-         6xO4WrnKKpLTG1WsLX0q+fK6+q1TGOxrfPZBr6WfhxAwqMzggvS4R8DsKCH15S4aPOsh
-         oIIQ==
+        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date;
+        bh=k+gx6IXXHAXBoqr90FL8h1OK6Qg9teP6CDpMeZ7IvFo=;
+        b=BpzTQ1HjKqdShxMydNe/YXQEEkO9BmuDJ3xI9OezQAjm5zTgcBrKjPDziNlyb/2MwD
+         shg7KRqaPmSGxNu4Ybi8a0exL+GnuQOZeLrU0YmGrZcBXCNMSBduWUWa5tnBfM2c20k5
+         YA+n4CuB2e5WSC6KRhpP/aS+BueDsr/3NyEH8zAiN86IVOhDUMAm0tNyeCHkt2MwVIYf
+         6wYiDkNIstpeXzgtCatIzK2/6c2V8x4OZs89UAwHfMnjSo8WpkKrtBxDrandSZb0L0JH
+         HzNfkYCHArATlatJlZVABf6LgUVuWQd1rAVS+E/pzgmPgSGpmnBYbynXvbQQOa/FZL1V
+         y8Iw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r33si5662317qvr.107.2019.10.10.06.44.04
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Oct 2019 06:44:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
+Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
+        by mx.google.com with ESMTP id x187si6153644qkd.117.2019.10.10.06.57.36;
+        Thu, 10 Oct 2019 06:57:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39742 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iIYjb-0005NJ-TH
-	for alex.bennee@linaro.org; Thu, 10 Oct 2019 09:44:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44436)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iIYjG-0005L5-Ga
- for qemu-arm@nongnu.org; Thu, 10 Oct 2019 09:43:43 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iIYjF-0006bB-3X
- for qemu-arm@nongnu.org; Thu, 10 Oct 2019 09:43:42 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:22742)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iIYjE-0006aZ-Qo
- for qemu-arm@nongnu.org; Thu, 10 Oct 2019 09:43:41 -0400
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+Received: from localhost (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 756324A82A;
+	Thu, 10 Oct 2019 09:57:36 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+X-Spam-Flag: NO
+X-Spam-Score: -4.202
+X-Spam-Level: 
+X-Spam-Status: No, score=-4.202 required=6.1 tests=[BAYES_00=-1.9,
+	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_HI=-5, SPF_HELO_PASS=-0.001]
+	autolearn=unavailable
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id U4+VUQGI3IW1; Thu, 10 Oct 2019 09:57:35 -0400 (EDT)
+Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
+	by mm01.cs.columbia.edu (Postfix) with ESMTP id 4E2094A82E;
+	Thu, 10 Oct 2019 09:57:35 -0400 (EDT)
+Received: from localhost (localhost [127.0.0.1])
+ by mm01.cs.columbia.edu (Postfix) with ESMTP id D769B4A80E
+ for <kvmarm@lists.cs.columbia.edu>; Thu, 10 Oct 2019 09:57:34 -0400 (EDT)
+X-Virus-Scanned: at lists.cs.columbia.edu
+Received: from mm01.cs.columbia.edu ([127.0.0.1])
+ by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id QjN2M5MXM3OX for <kvmarm@lists.cs.columbia.edu>;
+ Thu, 10 Oct 2019 09:57:32 -0400 (EDT)
+Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
+ by mm01.cs.columbia.edu (Postfix) with ESMTPS id 1988C4A6B2
+ for <kvmarm@lists.cs.columbia.edu>; Thu, 10 Oct 2019 09:57:32 -0400 (EDT)
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B426869089
- for <qemu-arm@nongnu.org>; Thu, 10 Oct 2019 13:43:39 +0000 (UTC)
-Received: by mail-wm1-f72.google.com with SMTP id c188so1793223wmd.9
- for <qemu-arm@nongnu.org>; Thu, 10 Oct 2019 06:43:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Q2fRCbwTFySOnCK3JiOVij95RQS5p6saSe3jyZO1Srw=;
- b=qAfu1tplpkvc8Ajhrn7XTmjSJEAp6k6ZS23Mt6d6FDuoJeccOuK3K+4odHPCygy2L7
- Nv/JJJy3+ktzfpsLZP39jClE+qPOfJHh/d5L5zZCWflykEHiMcOxNzsFP/bZ2fTHeDps
- XKigwRe15fMghz+ToGM9LKLUwX7aVjMqxYjq9j+0g8pi3MD5ZZkjoNKmt50rXmYrcHu9
- kiH5XCXQRx+5IKI5P6IT664+aydrnWNTSAYJBv8YgNb9LiMpT26i/38xgeIuY49Nrb2s
- VytCAo/Qvwi6kVBQ4Zf5wSP4oxfMBWfKmcOERRtwjdf7U9anHoOTe6uDcBK6z7EK1p1l
- btAQ==
-X-Gm-Message-State: APjAAAXdr2lR9PYFSVmtBFn1L9ONtQ14KqcbEwir715F6p+GVNdq4uJT
- MKAbEf7Eh7F7DVDw7JDEAnpUPsrZ6LMiccZnC4PlZYMV8hbQXTFW7j2tIuLeAQbHIKANTKh2VZP
- cobXUHj/P2id2
-X-Received: by 2002:a5d:4302:: with SMTP id h2mr9061138wrq.35.1570715018365;
- Thu, 10 Oct 2019 06:43:38 -0700 (PDT)
-X-Received: by 2002:a5d:4302:: with SMTP id h2mr9061100wrq.35.1570715018125;
- Thu, 10 Oct 2019 06:43:38 -0700 (PDT)
-Received: from [192.168.1.35] (46.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.46])
- by smtp.gmail.com with ESMTPSA id s10sm9456944wmf.48.2019.10.10.06.43.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 10 Oct 2019 06:43:37 -0700 (PDT)
-Subject: Re: [PATCH 1/5] tests/boot_linux_console: Add initrd test for the
- Exynos4210
-To: Cleber Rosa <crosa@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-References: <20191005154748.21718-1-f4bug@amsat.org>
- <20191005154748.21718-2-f4bug@amsat.org>
- <CAFEAcA8ME5U5=rNLRSvNx7LmanqHhn_KWj6qtgym_=W1M9WDoA@mail.gmail.com>
- <20191008214907.GA28137@localhost.localdomain>
- <CAFEAcA9DzeObmtsc2VJmw=1yruANZ6ajY2SG0cAPdehkeRN3wA@mail.gmail.com>
- <20191009190743.GA6019@localhost.localdomain>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <d2011e56-8c5f-9f57-04eb-16581866fd48@redhat.com>
-Date: Thu, 10 Oct 2019 15:43:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.0
+ by mx1.redhat.com (Postfix) with ESMTPS id 434418372F2;
+ Thu, 10 Oct 2019 13:57:31 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.182])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 80CE16012A;
+ Thu, 10 Oct 2019 13:57:25 +0000 (UTC)
+Date: Thu, 10 Oct 2019 15:57:23 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Guoheyi <guoheyi@huawei.com>
+Subject: Re: [RFC PATCH 12/12] virt/acpi: add SDEI table if SDEI is enabled
+Message-ID: <20191010155723.24acb321@redhat.com>
+In-Reply-To: <3e889d37-b877-f7b5-7ee3-70cef6d8e9c1@huawei.com>
+References: <1569338511-3572-1-git-send-email-guoheyi@huawei.com>
+ <1569338511-3572-13-git-send-email-guoheyi@huawei.com>
+ <20191010111537.5e2dd584@redhat.com>
+ <3e889d37-b877-f7b5-7ee3-70cef6d8e9c1@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20191009190743.GA6019@localhost.localdomain>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.68]); Thu, 10 Oct 2019 13:57:31 +0000 (UTC)
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Marc Zyngier <marc.zyngier@arm.com>,
+ qemu-devel@nongnu.org, Dave Martin <Dave.Martin@arm.com>, qemu-arm@nongnu.org,
+ kvmarm@lists.cs.columbia.edu, linux-arm-kernel@lists.infradead.org
+X-BeenThere: kvmarm@lists.cs.columbia.edu
+X-Mailman-Version: 2.1.14
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Evgeny Voevodin <e.voevodin@samsung.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Sven Schnelle <svens@stackframe.org>,
- Helge Deller <deller@gmx.de>, Markus Armbruster <armbru@redhat.com>,
- Krzysztof Kozlowski <krzk@kernel.org>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Maksim Kozlov <m.kozlov@samsung.com>, Guenter Roeck <linux@roeck-us.net>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Bartlomiej Zolnierkiewicz <b.zolnierkie@samsung.com>,
- qemu-arm <qemu-arm@nongnu.org>, Richard Henderson <rth@twiddle.net>,
- =?UTF-8?Q?Fr=c3=a9d=c3=a9ric_Basse?= <contact@fredericb.info>,
- Igor Mitsyanko <i.mitsyanko@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Dmitry Solodkiy <d.solodkiy@samsung.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NHJ7hDkd16tl
+List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
+List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
+List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
+List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
+List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
+List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
+ <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Errors-To: kvmarm-bounces@lists.cs.columbia.edu
+Sender: kvmarm-bounces@lists.cs.columbia.edu
+X-TUID: PBx2pdntfVSe
 
-On 10/9/19 9:07 PM, Cleber Rosa wrote:
-> On Wed, Oct 09, 2019 at 02:38:02PM +0100, Peter Maydell wrote:
->> On Tue, 8 Oct 2019 at 22:49, Cleber Rosa <crosa@redhat.com> wrote:
->>> On Mon, Oct 07, 2019 at 05:28:49PM +0100, Peter Maydell wrote:
- >>>
- >>>> Do our other acceptance tests download random third-party
- >>>> (ie "not a well-known distro") binaries for the tests ?
- >>>> It seems a bit hazardous for reproducability and trustability
- >>>> reasons...
-[...]
->>> I find it hard to judge precisely how much of a third-party some of
->>> these are.  I remember Philippe mentioning that one of them, I guess
->>> the images used on linux_ssh_mips_malta.py, were "as official as it
->>> gets" (my words, from my often misleading memory).
->>>
->>> Reproducibility is definitely an issue, in the sense given that some
->>> of these can indeed go away, but as long as they're available the hash
->>> recorded in the test should guarantee that we're running the same
->>> images.
+On Thu, 10 Oct 2019 21:08:10 +0800
+Guoheyi <guoheyi@huawei.com> wrote:
 
-So this thread is a follow up on:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg546430.html
-
-For Open Source software I can understand we want to be able to rebuild 
-them, and should provide a link about how to rebuild.
-
-I don't want to rebuild images myself, I want to focus on testing QEMU. 
-I tried once to build a MIPSsim kernel and it was a total nightmare:
-https://lists.nongnu.org/archive/html/qemu-devel/2018-04/msg04071.html
-(Thomas Huth eventually succeeded using buildroot).
-
->>> Do you think we should do something different here?
->>
->> I'm not sure, which is why I asked whether this new test
->> was in line with what we've done previously. Since these
->> are just test cases and we don't redistribute them to
->> other people there's less of a traceability/reproducibility
->> worry, and if we check hashes on download that cuts off
->> a lot of "fail to notice if the image changes for some
->> reason" possible problems.
+> Thanks for your comments.
 > 
-> Yep, because I have no clue how to do improve on this (redistributing
-> the binaries is definitely not on the improvement side, and neither
-> is not testing some machine types), the current approach seems good.
+> On 2019/10/10 17:15, Igor Mammedov wrote:
+> > On Tue, 24 Sep 2019 23:21:51 +0800
+> > Heyi Guo <guoheyi@huawei.com> wrote:
+> >  
+> >> Add SDEI table if SDEI is enabled, so that guest OS can get aware and
+> >> utilize the interfaces.
+> >>
+> >> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
+> >> Cc: Peter Maydell <peter.maydell@linaro.org>
+> >> Cc: Dave Martin <Dave.Martin@arm.com>
+> >> Cc: Marc Zyngier <marc.zyngier@arm.com>
+> >> Cc: Mark Rutland <mark.rutland@arm.com>
+> >> Cc: James Morse <james.morse@arm.com>
+> >> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+> >> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> >> Cc: Igor Mammedov <imammedo@redhat.com>
+> >> ---
+> >>   hw/arm/virt-acpi-build.c    | 16 ++++++++++++++++
+> >>   include/hw/acpi/acpi-defs.h |  5 +++++
+> >>   2 files changed, 21 insertions(+)
+> >>
+> >> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> >> index 6cdf156..1088214 100644
+> >> --- a/hw/arm/virt-acpi-build.c
+> >> +++ b/hw/arm/virt-acpi-build.c
+> >> @@ -32,6 +32,7 @@
+> >>   #include "trace.h"
+> >>   #include "hw/core/cpu.h"
+> >>   #include "target/arm/cpu.h"
+> >> +#include "target/arm/sdei.h"
+> >>   #include "hw/acpi/acpi-defs.h"
+> >>   #include "hw/acpi/acpi.h"
+> >>   #include "hw/nvram/fw_cfg.h"
+> >> @@ -475,6 +476,16 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >>   }
+> >>     
+> > here should be a comment describing purpose with a reference to spec  
+> OK.
+> 
+> >  
+> >>   static void
+> >> +build_sdei(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >> +{
+> >> +    int sdei_start = table_data->len;
+> >> +
+> >> +    (void)acpi_data_push(table_data, sizeof(AcpiSdei));
+> >> +    build_header(linker, table_data, (void *)(table_data->data + sdei_start),
+> >> +                 "SDEI", table_data->len - sdei_start, 1, NULL, NULL);
+> >> +}  
+> > that's dummy table and doesn't match what spec describes,
+> > It doesn't look correct SDEI table.  
+> 
+> Refer to below document, Appendix C, I see the definition of SDEI is 
+> really a dummy table, also it is said in the document: The table 
+> consists only of a basic header with revision 1.
+> 
+> http://infocenter.arm.com/help/topic/com.arm.doc.den0054a/ARM_DEN0054A_Software_Delegated_Exception_Interface.pdf
+> 
+> Do I miss anything?
+No you are right and I was mistaken.
+It's pretty waste-full way to communicate to OS a Boolean flag
+that a new GHEST event is supported. But since they managed to make
+it a spec, it should be coded as such.
 
-QEMU machines are not restricted to running Linux or other Open Source 
-software. It seems important to be able to test for regressions with 
-closed-source code too, because it usually has been well tested on real 
-hardware.
 
-I just posted a firmware test:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg651012.html
+> 
+> >  
+> >> +
+> >> +static void
+> >>   build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >>   {
+> >>       AcpiSerialPortConsoleRedirection *spcr;
+> >> @@ -796,6 +807,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+> >>       acpi_add_table(table_offsets, tables_blob);
+> >>       build_spcr(tables_blob, tables->linker, vms);
+> >>   
+> >> +    if (sdei_enabled) {
+> >> +        acpi_add_table(table_offsets, tables_blob);
+> >> +        build_sdei(tables_blob, tables->linker, vms);
+> >> +    }
+> >> +
+> >>       if (ms->numa_state->num_nodes > 0) {
+> >>           acpi_add_table(table_offsets, tables_blob);
+> >>           build_srat(tables_blob, tables->linker, vms);
+> >> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> >> index 57a3f58..0a2265d 100644
+> >> --- a/include/hw/acpi/acpi-defs.h
+> >> +++ b/include/hw/acpi/acpi-defs.h
+> >> @@ -634,4 +634,9 @@ struct AcpiIortRC {
+> >>   } QEMU_PACKED;
+> >>   typedef struct AcpiIortRC AcpiIortRC;
+> >>   
+> >> +struct AcpiSdei {
+> >> +    ACPI_TABLE_HEADER_DEF     /* ACPI common table header */
+> >> +} QEMU_PACKED;
+> >> +typedef struct AcpiSdei AcpiSdei;  
+> > we don't use packed structures for ACPI anymore, see build_rsdp() for
+> > example of how tables are composed and comment style required for each field.  
+> Sure; will fix it in v2.
+> 
+> Thanks,
+> 
+> Heyi
+> 
+> >  
+> >>   #endif  
+> >
+> > .
+> >  
+> 
+> 
 
-I could find it stored compressed and uuencoded on the Wayback Machine.
-Since I don't want to abuse from this amazing service, and other script 
-to decode/uncompress it, I stored it on a new repository with its SHA-1
-(the default hash used by Avocado):
-https://github.com/philmd/qemu-testing-blob/tree/master/hppa/hp9000/712
-
-Is this acceptable? Incorrect?
-
-Regarding Avocado tests, maybe we can simply add a "untrusted" or 
-"closedsource" tag, so people willing to test untrusted binaries could 
-still run the tests using 'avocado --tag untrusted_software', and we 
-could skip these tests by default.
-
-I am very interested because I already experimented with:
-
-- AIX on PReP/40p
-- some RTOS on Canon PowerShot A1100
-- VxWorks on MIPS and SPARC
-- closed-source bootloader for Raspi3/4
-
-Regards,
-
-Phil.
+_______________________________________________
+kvmarm mailing list
+kvmarm@lists.cs.columbia.edu
+https://lists.cs.columbia.edu/mailman/listinfo/kvmarm

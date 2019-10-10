@@ -1,164 +1,174 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp2362523wrm;
-        Thu, 10 Oct 2019 06:16:18 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw2AZqKdj7G+7A6bhLoFRyaydMPLRMr6T0/JnMXlVsl6E6FxA2DREGXAtx/EAQCo1WDQDoV
-X-Received: by 2002:a05:6402:1359:: with SMTP id y25mr8003680edw.183.1570713378429;
-        Thu, 10 Oct 2019 06:16:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570713378; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp2368758wrm;
+        Thu, 10 Oct 2019 06:21:22 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxAfqbWMFr3II2VDd17P3IRoaZpBYMxT4nk8L49OL0Y270zVvmQLOypFIRg68baqSqM7feL
+X-Received: by 2002:ac8:7447:: with SMTP id h7mr10296760qtr.11.1570713682595;
+        Thu, 10 Oct 2019 06:21:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570713682; cv=none;
         d=google.com; s=arc-20160816;
-        b=BCnN70ZH8FqxNqe+xBQIA3RDYmqn2Q1Y5vsI5QZTGTKKW8OzuF3FLDFNMsQSqFXIH8
-         jehzMwyOGOkHA064JQLZVKhuSihCwiMDhUE51YF7s90qnqXaQ1VX7oi4lRwc2etBWKCL
-         eWW4N7ITNlBtfyNGeuXPHrxo6w1ZThiqaWB9HSYviCQSnuQmeK2zM2LbBszbpT7lonOU
-         xgEihInYLVGFgNxMrSK2HYcTo02a5x8NlVn5myK7fVazdWkUQoXS0WODHUUnVuggmHQX
-         4h4iwHYicfC7OG6Rn0Pbzsayqy+mBCCsmYY3g6RmFIdw4FarhF5bfFlZrWoQme5o/i7x
-         qSIw==
+        b=CMLke4SIpawnuTgJ1Mrxn6Lb0ArCIPsQSAwnoCSlmd5RIEVELwBO7L1GDnDksoRhoc
+         seCI9SH0677XBEirTWwGtvp7UVHRQIcvd97rHEzue4lKpuEanHc1J4503GLQvUgJFBra
+         8KqkYcJeAXrjmttnEg84+ajTGGEsRGxdT9jr6Op30BHfR5YVjYeqi+OgkpxDUaMkiKQ8
+         9DnFgjY6dgNbsTn3JeEgYLBgJRzkkk/lG+MWH/atJMBt084XOkEkqVPG6Nim9dpnllVI
+         UV0NkptXUga36fbeF2JqFjS2aoHabOwShYCKUEdP0XuLrQjnrBZJ5mTFjdPsqjUyQM6M
+         WMHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=6f3veFybJCek5QThzD5hWRpThS8W3xiH10dhJyGoM58=;
-        b=CoLG+q3DzdZVBiAorwSPqV3JX0oi8nCQsk8Q9MvWB9psU1s3fBO56PnNvAiWzoPgzR
-         m3mG2DIwSuWtvP7SuareCIRbs+N9kzTqjomasT/FrhalYIR6yWuARX0qIeBipCp5MA/v
-         k0pe/yuVR93zyO/x79O0vzRJIX8aFtH6yaXoNEevPGZ9AoOhGiaz3nzRPd1z6Mcsp2TL
-         +tw2c+Jra0dvnHAd6yV1BgOlADcbJvkgoS6AXnebOsDFKsfznmyY10nf9N6JESspifrc
-         sFevTMERvsJMpjgxCY7CumMWKhyVaFfSL2fCk9wrmot5pn6deiD4tIqbmMobvPM7sD3/
-         wl4w==
+        bh=hbvB7K6UKVysYOcknWadMnLtTxCVkXkQBfdY7Yelkng=;
+        b=09jQiGWaTaJjAVllciA3sj/Xd2pIDpoQ1uJs/YFHUk3+JxeJkOfvQb4pA94DG6QHw7
+         6h/GaHjHwWLNf/cB4UaSm/V4BrEVjSXx7flnKsuGMW98kxd/z/JaLEQRBhX2QUefHCbK
+         tk/M4Du7u8ILl0rmOVmI8O/56WWs4vO6P2Wc7bnhxfdCPKAZTiyj6TuFmfpnxVN4Rhmr
+         TgyWloNvxCrMYaR5Pejt8BhZuBAt+Odd2ATDxASlcG9OHImsQUhhHjIPj3vsB3urb5ni
+         Vut57KYSUodu8S89NojAHetc94celmF+XIz3IH+4AGCajcu6CuVhifhTR83qa5LXiSAd
+         TUFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r3si3062643ejs.415.2019.10.10.06.16.18
+        by mx.google.com with ESMTPS id s9si5387825qtq.17.2019.10.10.06.21.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Oct 2019 06:16:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 10 Oct 2019 06:21:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39274 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39374 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iIYIj-0007gD-7O
-	for alex.bennee@linaro.org; Thu, 10 Oct 2019 09:16:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40315)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iIYNd-0004DL-IX
+	for alex.bennee@linaro.org; Thu, 10 Oct 2019 09:21:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40788)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iIYIQ-0007Wv-6o
- for qemu-arm@nongnu.org; Thu, 10 Oct 2019 09:15:59 -0400
+ (envelope-from <philmd@redhat.com>) id 1iIYKH-0001d3-Hp
+ for qemu-devel@nongnu.org; Thu, 10 Oct 2019 09:17:55 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iIYIO-0001tP-6n
- for qemu-arm@nongnu.org; Thu, 10 Oct 2019 09:15:58 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:43794)
+ (envelope-from <philmd@redhat.com>) id 1iIYKE-0002dt-OO
+ for qemu-devel@nongnu.org; Thu, 10 Oct 2019 09:17:53 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:39054)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1iIYIM-0001sH-6q; Thu, 10 Oct 2019 09:15:55 -0400
+ id 1iIYJs-0002Xy-TV; Thu, 10 Oct 2019 09:17:29 -0400
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 2C46F3091D70;
- Thu, 10 Oct 2019 13:15:52 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id CB15A300BCE9;
+ Thu, 10 Oct 2019 13:17:27 +0000 (UTC)
 Received: from x1w.redhat.com (unknown [10.40.205.241])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 18889600C4;
- Thu, 10 Oct 2019 13:15:45 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B5C71600C4;
+ Thu, 10 Oct 2019 13:17:21 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Eduardo Habkost <ehabkost@redhat.com>,
 	qemu-devel@nongnu.org
-Subject: [PATCH v3 1/8] hw/acpi/piix4: Convert reset handler to DeviceReset
-Date: Thu, 10 Oct 2019 15:15:20 +0200
-Message-Id: <20191010131527.32513-2-philmd@redhat.com>
+Subject: [PATCH v3 7/8] hw/input/lm832x: Convert reset handler to DeviceReset
+Date: Thu, 10 Oct 2019 15:15:26 +0200
+Message-Id: <20191010131527.32513-8-philmd@redhat.com>
 In-Reply-To: <20191010131527.32513-1-philmd@redhat.com>
 References: <20191010131527.32513-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.42]); Thu, 10 Oct 2019 13:15:52 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.46]); Thu, 10 Oct 2019 13:17:27 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Aleksandar Markovic <amarkovic@wavecomp.com>, qemu-block@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Aleksandar Rikalo <arikalo@wavecomp.com>,
- Andrzej Zaborowski <balrogg@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Li Qiang <liq3ea@gmail.com>, BALATON Zoltan <balaton@eik.bme.hu>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Li Qiang <liq3ea@gmail.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
  Igor Mammedov <imammedo@redhat.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  John Snow <jsnow@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qobJTHqKiRzf
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: L3u/ffBZ11xy
 
-The PIIX4/PM is a PCI device within the PIIX4 chipset, it will be reset
-when the PCI bus it stands on is reset.
+The LM8323 key-scan controller is a I2C device, it will be reset
+when the I2C bus it stands on is reset.
 
 Convert its reset handler into a proper Device reset method.
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Li Qiang <liq3ea@gmail.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/acpi/piix4.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ hw/input/lm832x.c | 12 +++++-------
+ 1 file changed, 5 insertions(+), 7 deletions(-)
 
-diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
-index 5742c3df87..4e079b39bd 100644
---- a/hw/acpi/piix4.c
-+++ b/hw/acpi/piix4.c
-@@ -27,7 +27,6 @@
- #include "hw/pci/pci.h"
- #include "hw/qdev-properties.h"
- #include "hw/acpi/acpi.h"
+diff --git a/hw/input/lm832x.c b/hw/input/lm832x.c
+index a37eb854b9..aa629ddbf1 100644
+--- a/hw/input/lm832x.c
++++ b/hw/input/lm832x.c
+@@ -24,7 +24,6 @@
+ #include "migration/vmstate.h"
+ #include "qemu/module.h"
+ #include "qemu/timer.h"
 -#include "sysemu/reset.h"
- #include "sysemu/runstate.h"
- #include "sysemu/sysemu.h"
- #include "qapi/error.h"
-@@ -344,9 +343,9 @@ static const VMStateDescription vmstate_acpi =3D {
-     }
- };
+ #include "ui/console.h"
 =20
--static void piix4_reset(void *opaque)
-+static void piix4_pm_reset(DeviceState *dev)
+ #define TYPE_LM8323 "lm8323"
+@@ -94,8 +93,10 @@ static void lm_kbd_gpio_update(LM823KbdState *s)
  {
--    PIIX4PMState *s =3D opaque;
-+    PIIX4PMState *s =3D PIIX4_PM(dev);
-     PCIDevice *d =3D PCI_DEVICE(s);
-     uint8_t *pci_conf =3D d->config;
+ }
 =20
-@@ -542,7 +541,6 @@ static void piix4_pm_realize(PCIDevice *dev, Error **=
-errp)
+-static void lm_kbd_reset(LM823KbdState *s)
++static void lm_kbd_reset(DeviceState *dev)
+ {
++    LM823KbdState *s =3D LM8323(dev);
++
+     s->config =3D 0x80;
+     s->status =3D INT_NOINIT;
+     s->acttime =3D 125;
+@@ -273,7 +274,7 @@ static void lm_kbd_write(LM823KbdState *s, int reg, i=
+nt byte, uint8_t value)
 =20
-     s->machine_ready.notify =3D piix4_pm_machine_ready;
-     qemu_add_machine_init_done_notifier(&s->machine_ready);
--    qemu_register_reset(piix4_reset, s);
+     case LM832x_CMD_RESET:
+         if (value =3D=3D 0xaa)
+-            lm_kbd_reset(s);
++            lm_kbd_reset(DEVICE(s));
+         else
+             lm_kbd_error(s, ERR_BADPAR);
+         s->reg =3D LM832x_GENERAL_ERROR;
+@@ -476,10 +477,6 @@ static void lm8323_realize(DeviceState *dev, Error *=
+*errp)
+     s->pwm.tm[1] =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, lm_kbd_pwm1_tick, =
+s);
+     s->pwm.tm[2] =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, lm_kbd_pwm2_tick, =
+s);
+     qdev_init_gpio_out(dev, &s->nirq, 1);
+-
+-    lm_kbd_reset(s);
+-
+-    qemu_register_reset((void *) lm_kbd_reset, s);
+ }
 =20
-     piix4_acpi_system_hot_add_init(pci_address_space_io(dev),
-                                    pci_get_bus(dev), s);
-@@ -692,6 +690,7 @@ static void piix4_pm_class_init(ObjectClass *klass, v=
-oid *data)
-     k->device_id =3D PCI_DEVICE_ID_INTEL_82371AB_3;
-     k->revision =3D 0x03;
-     k->class_id =3D PCI_CLASS_BRIDGE_OTHER;
-+    dc->reset =3D piix4_pm_reset;
-     dc->desc =3D "PM";
-     dc->vmsd =3D &vmstate_acpi;
-     dc->props =3D piix4_pm_properties;
+ void lm832x_key_event(DeviceState *dev, int key, int state)
+@@ -507,6 +504,7 @@ static void lm8323_class_init(ObjectClass *klass, voi=
+d *data)
+     DeviceClass *dc =3D DEVICE_CLASS(klass);
+     I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
+=20
++    dc->reset =3D lm_kbd_reset;
+     dc->realize =3D lm8323_realize;
+     k->event =3D lm_i2c_event;
+     k->recv =3D lm_i2c_rx;
 --=20
 2.21.0
 

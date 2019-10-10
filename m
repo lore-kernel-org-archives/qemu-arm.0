@@ -1,98 +1,97 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1640038wrm;
-        Wed, 9 Oct 2019 18:09:17 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw0unk7M79D9g8Q3/n/QhpNZGEEmz0RWXI00ztKs10frKYIJgb3inGqtOe8GGftx9NsHclK
-X-Received: by 2002:a05:620a:4c9:: with SMTP id 9mr6620268qks.243.1570669757040;
-        Wed, 09 Oct 2019 18:09:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570669757; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1642443wrm;
+        Wed, 9 Oct 2019 18:11:54 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzMguwujP8r/0XxLzwqGStBQKkbRnvtRGXtuD0TF6uDip59rbJPLqGNBcQyUVcZe4heXrGp
+X-Received: by 2002:aa7:d90d:: with SMTP id a13mr5677138edr.2.1570669913960;
+        Wed, 09 Oct 2019 18:11:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570669913; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vd+HibnFeSh63QUzpJBRi31fHWt72eumiAcBqtE1sbCpu+HrgEMlTx/E3rLD/iG3y8
-         iaVMUl1K9ztcruuoJHbOxphsrAq0G6MDI5aUeRTZAddcyJ2jzzutmvbLiVB+xyepwgcV
-         So1Vp/M6015pkTjPwVXVIsiCT1KTu6tRF5VqUF8Qi+6LcPA/JkZQCMwHRVLRDuBxNNBN
-         H7WbzAJK5cyjGedGlWzr0RdoWtHd+6FTKa+Xf4MuWzTl7MXYpJg2oLflEQixXHpUrnb2
-         s4ePwL1GxZnX50qddBTjOVKl7/L/ardMxAM9aeR6Cst4LR6pvO/8JmXbZMl0IE2RJlWy
-         kR6A==
+        b=uN3XbdI1/CYEwUCeA8B5YXgRarheM6w2HSBOqohE7C2v+3PJ+jad4yWXAK3HwhiYk7
+         HrN69ErE56ZpWFXHR6dvYfb+zwHTw5xsLgmetrEGoxRR/k87dtST4LkpbLsQL+hts341
+         Pz2Jrx6McLSJyp0ucegl24zTbmw/g4J+3/Vkhu0QnIN8p319bNZ5oKSXy3KEFfz2kel4
+         EsRf4gJkY6an7vw1Su+hbetTgNfj+Jc6ngs78A+aXIN84JaMSosszlnM1L3QCA/e4uCJ
+         LuE5FObCg92VRF28JWX9yE+LF44QU03RZ5dbwB44nOSsFybEe9N79OAPYj4PcRSoJ9ag
+         rzRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=cQgKqo4Zm+d2yvn/nXV1xi2A6NAmW83+V/vyQ+Oucws=;
-        b=DQniR92EQvM/Slu9L071z8hVelCZ4HS34RoJGmrZi2Sk71KQhTlqLRxJ8o+A6wj3f9
-         JcCU6IO//R7tA2LI5Bq/fU934dlySp7feZXLHFnNjjrJRcuMEWoD8B1MhymaKq4KEWvI
-         59u1Mju76XMxwAhdUo9896MtaagZSioOSEIhfUv3xKHwWT9sCqKmUIadQxsP1LTFkhMq
-         6++PqeI3zvY28AXURhuqE+4K8kgwRgd3UuXB/Y1B20D3nHVI6naxnB5HZHSz4AUEuu0P
-         HEmQsUVp1tqDG7s5HDhxOgaeNvUrWHl8OrRnGneIQEENdiK5sFc9QCvE0e6wVQLL8geN
-         s9ig==
+        bh=hgCuZRL1iytUlmLyo+VV4QeDefvrzVM1LT7oPicDtvY=;
+        b=KbFjxDqE+2raW14pnLrM4thc/4JLepOBWzb18MUQwYQPhCGSFl9NDCiKywVS83Fc9Q
+         gH1KecvI1FuqNunwHhBM5bZJpg95thyFv1kGukBLmk6kTkv/3FzZcYEB90Nov0EbkArP
+         SmWIS1pWw7JKo7pRJQ5qBe8rTHyVXtwoXTky11RW0Cb8X3IvyBW8jqvC9fRRW6ueI505
+         yPriKsxXKDUAfStPPRdQR2fWbxwLrF4/ywGGuDBCeckPf17guysTmPFM71KJOz4m2PIP
+         34bisaQ4d3/KFnsRVLs2DiV3IbhZAMJ5/BPBQof6QwyM/0WSVtRxVLtHXW29NY0WDjE0
+         Ot+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ino9JGfG;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ULLEbZyE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k63si3767227qkc.270.2019.10.09.18.09.16
+        by mx.google.com with ESMTPS id ot6si2153890ejb.62.2019.10.09.18.11.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Oct 2019 18:09:17 -0700 (PDT)
+        Wed, 09 Oct 2019 18:11:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Ino9JGfG;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ULLEbZyE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33072 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33086 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iIMxA-0004Rp-96
-	for alex.bennee@linaro.org; Wed, 09 Oct 2019 21:09:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48731)
+	id 1iIMzg-0005j7-JP
+	for alex.bennee@linaro.org; Wed, 09 Oct 2019 21:11:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48936)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <liq3ea@gmail.com>) id 1iIMwu-0004O2-9F
- for qemu-arm@nongnu.org; Wed, 09 Oct 2019 21:09:01 -0400
+ (envelope-from <liq3ea@gmail.com>) id 1iIMzX-0005hF-QL
+ for qemu-arm@nongnu.org; Wed, 09 Oct 2019 21:11:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <liq3ea@gmail.com>) id 1iIMws-00042T-WF
- for qemu-arm@nongnu.org; Wed, 09 Oct 2019 21:09:00 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:41658)
+ (envelope-from <liq3ea@gmail.com>) id 1iIMzW-0004qH-Ga
+ for qemu-arm@nongnu.org; Wed, 09 Oct 2019 21:11:43 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:41677)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <liq3ea@gmail.com>)
- id 1iIMwn-00040o-JO; Wed, 09 Oct 2019 21:08:53 -0400
-Received: by mail-ot1-x342.google.com with SMTP id g13so3400546otp.8;
- Wed, 09 Oct 2019 18:08:53 -0700 (PDT)
+ id 1iIMzR-0004pL-BW; Wed, 09 Oct 2019 21:11:37 -0400
+Received: by mail-ot1-x341.google.com with SMTP id g13so3404866otp.8;
+ Wed, 09 Oct 2019 18:11:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=cQgKqo4Zm+d2yvn/nXV1xi2A6NAmW83+V/vyQ+Oucws=;
- b=Ino9JGfGZdJZfuvKy6iV1hJD2wn46PWx+YUb3Bd5zFzIzP2J1P/y12KVskBtIfcdTD
- wkglYPI5nK3PofEbDshRPO+O7mnqjyeQ7ptGg2sTDmoSKFxiG7KoEHJk+pj6hE6CozKA
- L1FZH7ZOfYBb0qEoqkCeYULejYSHrwJOltFqU3dNVrtRu95SkMPFQkyde3HaxFAyyUBO
- 2KtDI/FFJBM9saK7kdOOZOA5RYjcvv11Z+esGmrVbfz5hj0jdPjBAnpznVHiOHsqfyCt
- 6ItZBq2s6oS/UxSzXe05I8qo8TYucfeDUs20v6SNh1nJb+te2Ym4gGQLm7Ib6M44+MIN
- x2Tw==
+ :cc; bh=hgCuZRL1iytUlmLyo+VV4QeDefvrzVM1LT7oPicDtvY=;
+ b=ULLEbZyECT+hWsyCIJ88qsenyUXn2HAQFsUsblZGplOehTeunyOgZSSpk7Y+uVLk5I
+ C28UANTITB4vtM1/AqxOryyvDJGSGPdUW9SvYubG6f2tQ7cBwLVsttgwaUiXaIw9MIcN
+ tuuv2WhtSyQ7YNo58uVBVZGaYKkSwm7YMLH54VbiOrobDOQsPt8HjwKzrLoChWdyZqU6
+ ONcPJvw+u2T0fsvpTNWulBMtfBIoE7InTVcKtwhyqFp8kh9qF7fNa4haTZ0onik/T+dj
+ FoWCZ6oFpmSd2bpmvXebb+OpWbqZOJgg9/Qr/eQeiedCVzQVa/x/WlMy+5mEXGtFEm/A
+ H5jw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=cQgKqo4Zm+d2yvn/nXV1xi2A6NAmW83+V/vyQ+Oucws=;
- b=pag56Bi+dL2N26VXFP7F1ffG/Z7GroqjhENhoIo8TUIEw9jUA8osNBLFv/5kevFbJi
- W03bylrPG+f8KZJuCTID1W9qtWrl4pbm1uhzDLMkSkefRelc8K9zuqPUksOX/7A9WE3S
- VrP0i2W4xfmwa8aKeql76YzDq9ldfKeA59YUjV0qdK4iAnw14FakBHKnv5FeSD0FrM1t
- qLSr3WqY8iTOU23OZyzMtnsH1JmlVkefFOo3rzS/Mh+yuw4IfJ19WPSHsA0HxF04q/xR
- 6KfCPNm888RTPPHxwI3R8V+3KC5Bmx0BLFuiV3k63N3PYLfp+LOdi/oDgJ1ZANkovvzU
- Jgpw==
-X-Gm-Message-State: APjAAAVjpdOifuRdLDyE5dW6RkN5r1ZTzANtx18ZiRSfvZDvneqry2lz
- JBYMnp8IDbGKs3cpavnSLI9TIGDYVgahxRon1Ew=
-X-Received: by 2002:a9d:6c96:: with SMTP id c22mr5538314otr.194.1570669732810; 
- Wed, 09 Oct 2019 18:08:52 -0700 (PDT)
+ bh=hgCuZRL1iytUlmLyo+VV4QeDefvrzVM1LT7oPicDtvY=;
+ b=SdNqfpsuJuN93G44sLW9puOxnjnprE/mtGmWHqsCNQu2gPk72CTNVoHnS1CMyuZqT+
+ bPUzEtHPR/RPCqU0OswMkUgJHBX2mmXmCISCPRjuX1knZacnhppmV4/SYztnOx245kxt
+ F7eyscjVRenM34iUUZ5BiqbPnNyah8H6He7KZQhHJrUhNX5jectNbGpZYIe5CONocco+
+ FFbJet0XLDD1cjtB3bh47WQlS5395ZnjkLbKV8JskiY8/XK6Q5LVmTQ9HzSTLpWCEyWB
+ RhPacAQ+hP1uToV4MKyvQIPuvQWAcq3ikkk6BzU2tEAR6WfF7Cl/aHT/fIIupf+n4UgI
+ Kp1w==
+X-Gm-Message-State: APjAAAV3Fn1zr/rGZREPkA0+y2DjGJwdsb+6s3Q7XaOX6Unc/nBIRFaL
+ ZYJK343oEh3G9OgfkeT808LubW4krxLcuHMv41Y=
+X-Received: by 2002:a9d:6d11:: with SMTP id o17mr2302464otp.333.1570669896283; 
+ Wed, 09 Oct 2019 18:11:36 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191008142539.7793-1-philmd@redhat.com>
- <20191008142539.7793-5-philmd@redhat.com>
-In-Reply-To: <20191008142539.7793-5-philmd@redhat.com>
+ <20191008142539.7793-6-philmd@redhat.com>
+In-Reply-To: <20191008142539.7793-6-philmd@redhat.com>
 From: Li Qiang <liq3ea@gmail.com>
-Date: Thu, 10 Oct 2019 09:08:16 +0800
-Message-ID: <CAKXe6SJZfW450Jv-=62Y1=1sACsa7gFXuy01pRgOt3e__YsPBA@mail.gmail.com>
-Subject: Re: [PATCH v2 4/8] hw/ide/sii3112: Convert reset handler to
- DeviceReset
+Date: Thu, 10 Oct 2019 09:10:59 +0800
+Message-ID: <CAKXe6SLKroySEwOEasUQt0FNEgok-Upeb_aBop_Enrae7O1fTg@mail.gmail.com>
+Subject: Re: [PATCH v2 5/8] hw/ide/via82c: Convert reset handler to DeviceReset
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="0000000000007bd5f30594840b57"
+Content-Type: multipart/alternative; boundary="0000000000003a3ac305948415ad"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::342
+X-Received-From: 2607:f8b0:4864:20::341
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -114,17 +113,17 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Igor Mammedov <imammedo@redhat.com>, John Snow <jsnow@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SfmCVeg2M/3w
+X-TUID: slp8T4YZvDwC
 
---0000000000007bd5f30594840b57
+--0000000000003a3ac305948415ad
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> =E4=BA=8E2019=E5=B9=B410=E6=
-=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=8810:32=E5=86=99=E9=81=
+=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=8810:36=E5=86=99=E9=81=
 =93=EF=BC=9A
 
-> The SiI3112A SATA controller is a PCI device, it will be reset
+> The VIA82C686B IDE controller is a PCI device, it will be reset
 > when the PCI bus it stands on is reset.
 >
 > Convert its reset handler into a proper Device reset method.
@@ -136,71 +135,75 @@ Reviewed-by: Li Qiang <liq3ea@gmail.com>
 
 
 > ---
->  hw/ide/sii3112.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
+>  hw/ide/via.c | 10 ++++------
+>  1 file changed, 4 insertions(+), 6 deletions(-)
 >
-> diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c
-> index 2181260531..06605d7af2 100644
-> --- a/hw/ide/sii3112.c
-> +++ b/hw/ide/sii3112.c
-> @@ -15,7 +15,6 @@
->  #include "qemu/osdep.h"
->  #include "hw/ide/pci.h"
+> diff --git a/hw/ide/via.c b/hw/ide/via.c
+> index 7087dc676e..053622bd82 100644
+> --- a/hw/ide/via.c
+> +++ b/hw/ide/via.c
+> @@ -29,7 +29,6 @@
+>  #include "migration/vmstate.h"
 >  #include "qemu/module.h"
+>  #include "sysemu/dma.h"
 > -#include "sysemu/reset.h"
->  #include "trace.h"
 >
->  #define TYPE_SII3112_PCI "sii3112"
-> @@ -237,9 +236,9 @@ static void sii3112_set_irq(void *opaque, int channel=
-,
-> int level)
->      sii3112_update_irq(s);
+>  #include "hw/ide/pci.h"
+>  #include "trace.h"
+> @@ -120,10 +119,10 @@ static void via_ide_set_irq(void *opaque, int n, in=
+t
+> level)
+>      }
 >  }
 >
-> -static void sii3112_reset(void *opaque)
-> +static void sii3112_reset(DeviceState *dev)
+> -static void via_ide_reset(void *opaque)
+> +static void via_ide_reset(DeviceState *dev)
 >  {
-> -    SiI3112PCIState *s =3D opaque;
-> +    SiI3112PCIState *s =3D SII3112_PCI(dev);
+> -    PCIIDEState *d =3D opaque;
+> -    PCIDevice *pd =3D PCI_DEVICE(d);
+> +    PCIIDEState *d =3D PCI_IDE(dev);
+> +    PCIDevice *pd =3D PCI_DEVICE(dev);
+>      uint8_t *pci_conf =3D pd->config;
 >      int i;
 >
->      for (i =3D 0; i < 2; i++) {
-> @@ -290,7 +289,6 @@ static void sii3112_pci_realize(PCIDevice *dev, Error
+> @@ -172,8 +171,6 @@ static void via_ide_realize(PCIDevice *dev, Error
 > **errp)
->          s->bmdma[i].bus =3D &s->bus[i];
->          ide_register_restart_cb(&s->bus[i]);
->      }
-> -    qemu_register_reset(sii3112_reset, s);
->  }
+>      pci_set_long(pci_conf + PCI_CAPABILITY_LIST, 0x000000c0);
+>      dev->wmask[PCI_INTERRUPT_LINE] =3D 0xf;
 >
->  static void sii3112_pci_class_init(ObjectClass *klass, void *data)
-> @@ -303,6 +301,7 @@ static void sii3112_pci_class_init(ObjectClass *klass=
-,
+> -    qemu_register_reset(via_ide_reset, d);
+> -
+>      memory_region_init_io(&d->data_bar[0], OBJECT(d),
+> &pci_ide_data_le_ops,
+>                            &d->bus[0], "via-ide0-data", 8);
+>      pci_register_bar(dev, 0, PCI_BASE_ADDRESS_SPACE_IO, &d->data_bar[0])=
+;
+> @@ -229,6 +226,7 @@ static void via_ide_class_init(ObjectClass *klass,
 > void *data)
->      pd->class_id =3D PCI_CLASS_STORAGE_RAID;
->      pd->revision =3D 1;
->      pd->realize =3D sii3112_pci_realize;
-> +    dc->reset =3D sii3112_reset;
->      dc->desc =3D "SiI3112A SATA controller";
->      set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
->  }
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>      PCIDeviceClass *k =3D PCI_DEVICE_CLASS(klass);
+>
+> +    dc->reset =3D via_ide_reset;
+>      k->realize =3D via_ide_realize;
+>      k->exit =3D via_ide_exitfn;
+>      k->vendor_id =3D PCI_VENDOR_ID_VIA;
 > --
 > 2.21.0
 >
 >
 >
 
---0000000000007bd5f30594840b57
+--0000000000003a3ac305948415ad
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
 <div dir=3D"ltr" class=3D"gmail_attr">Philippe Mathieu-Daud=C3=A9 &lt;<a hr=
 ef=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; =E4=BA=8E2019=E5=
-=B9=B410=E6=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=8810:32=E5=86=
+=B9=B410=E6=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=8810:36=E5=86=
 =99=E9=81=93=EF=BC=9A<br></div><blockquote class=3D"gmail_quote" style=3D"m=
 argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">The SiI3112A SATA controller is a PCI device, it will be reset<br>
+:1ex">The VIA82C686B IDE controller is a PCI device, it will be reset<br>
 when the PCI bus it stands on is reset.<br>
 <br>
 Convert its reset handler into a proper Device reset method.<br>
@@ -212,61 +215,64 @@ br></div><div>Reviewed-by: Li Qiang &lt;<a href=3D"mailto:liq3ea@gmail.com"=
 kquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:=
 1px solid rgb(204,204,204);padding-left:1ex">
 ---<br>
-=C2=A0hw/ide/sii3112.c | 7 +++----<br>
-=C2=A01 file changed, 3 insertions(+), 4 deletions(-)<br>
+=C2=A0hw/ide/via.c | 10 ++++------<br>
+=C2=A01 file changed, 4 insertions(+), 6 deletions(-)<br>
 <br>
-diff --git a/hw/ide/sii3112.c b/hw/ide/sii3112.c<br>
-index 2181260531..06605d7af2 100644<br>
---- a/hw/ide/sii3112.c<br>
-+++ b/hw/ide/sii3112.c<br>
-@@ -15,7 +15,6 @@<br>
-=C2=A0#include &quot;qemu/osdep.h&quot;<br>
-=C2=A0#include &quot;hw/ide/pci.h&quot;<br>
+diff --git a/hw/ide/via.c b/hw/ide/via.c<br>
+index 7087dc676e..053622bd82 100644<br>
+--- a/hw/ide/via.c<br>
++++ b/hw/ide/via.c<br>
+@@ -29,7 +29,6 @@<br>
+=C2=A0#include &quot;migration/vmstate.h&quot;<br>
 =C2=A0#include &quot;qemu/module.h&quot;<br>
+=C2=A0#include &quot;sysemu/dma.h&quot;<br>
 -#include &quot;sysemu/reset.h&quot;<br>
-=C2=A0#include &quot;trace.h&quot;<br>
 <br>
-=C2=A0#define TYPE_SII3112_PCI &quot;sii3112&quot;<br>
-@@ -237,9 +236,9 @@ static void sii3112_set_irq(void *opaque, int channel, =
-int level)<br>
-=C2=A0 =C2=A0 =C2=A0sii3112_update_irq(s);<br>
+=C2=A0#include &quot;hw/ide/pci.h&quot;<br>
+=C2=A0#include &quot;trace.h&quot;<br>
+@@ -120,10 +119,10 @@ static void via_ide_set_irq(void *opaque, int n, int =
+level)<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
 =C2=A0}<br>
 <br>
--static void sii3112_reset(void *opaque)<br>
-+static void sii3112_reset(DeviceState *dev)<br>
+-static void via_ide_reset(void *opaque)<br>
++static void via_ide_reset(DeviceState *dev)<br>
 =C2=A0{<br>
--=C2=A0 =C2=A0 SiI3112PCIState *s =3D opaque;<br>
-+=C2=A0 =C2=A0 SiI3112PCIState *s =3D SII3112_PCI(dev);<br>
+-=C2=A0 =C2=A0 PCIIDEState *d =3D opaque;<br>
+-=C2=A0 =C2=A0 PCIDevice *pd =3D PCI_DEVICE(d);<br>
++=C2=A0 =C2=A0 PCIIDEState *d =3D PCI_IDE(dev);<br>
++=C2=A0 =C2=A0 PCIDevice *pd =3D PCI_DEVICE(dev);<br>
+=C2=A0 =C2=A0 =C2=A0uint8_t *pci_conf =3D pd-&gt;config;<br>
 =C2=A0 =C2=A0 =C2=A0int i;<br>
 <br>
-=C2=A0 =C2=A0 =C2=A0for (i =3D 0; i &lt; 2; i++) {<br>
-@@ -290,7 +289,6 @@ static void sii3112_pci_realize(PCIDevice *dev, Error *=
-*errp)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;bmdma[i].bus =3D &amp;s-&gt;bus[i];=
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ide_register_restart_cb(&amp;s-&gt;bus[i]=
+@@ -172,8 +171,6 @@ static void via_ide_realize(PCIDevice *dev, Error **err=
+p)<br>
+=C2=A0 =C2=A0 =C2=A0pci_set_long(pci_conf + PCI_CAPABILITY_LIST, 0x000000c0=
 );<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
--=C2=A0 =C2=A0 qemu_register_reset(sii3112_reset, s);<br>
-=C2=A0}<br>
+=C2=A0 =C2=A0 =C2=A0dev-&gt;wmask[PCI_INTERRUPT_LINE] =3D 0xf;<br>
 <br>
-=C2=A0static void sii3112_pci_class_init(ObjectClass *klass, void *data)<br=
->
-@@ -303,6 +301,7 @@ static void sii3112_pci_class_init(ObjectClass *klass, =
-void *data)<br>
-=C2=A0 =C2=A0 =C2=A0pd-&gt;class_id =3D PCI_CLASS_STORAGE_RAID;<br>
-=C2=A0 =C2=A0 =C2=A0pd-&gt;revision =3D 1;<br>
-=C2=A0 =C2=A0 =C2=A0pd-&gt;realize =3D sii3112_pci_realize;<br>
-+=C2=A0 =C2=A0 dc-&gt;reset =3D sii3112_reset;<br>
-=C2=A0 =C2=A0 =C2=A0dc-&gt;desc =3D &quot;SiI3112A SATA controller&quot;;<b=
+-=C2=A0 =C2=A0 qemu_register_reset(via_ide_reset, d);<br>
+-<br>
+=C2=A0 =C2=A0 =C2=A0memory_region_init_io(&amp;d-&gt;data_bar[0], OBJECT(d)=
+, &amp;pci_ide_data_le_ops,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0&amp;d-&gt;bus[0], &quot;via-ide0-data&quot;, 8);<b=
 r>
-=C2=A0 =C2=A0 =C2=A0set_bit(DEVICE_CATEGORY_STORAGE, dc-&gt;categories);<br=
->
-=C2=A0}<br>
+=C2=A0 =C2=A0 =C2=A0pci_register_bar(dev, 0, PCI_BASE_ADDRESS_SPACE_IO, &am=
+p;d-&gt;data_bar[0]);<br>
+@@ -229,6 +226,7 @@ static void via_ide_class_init(ObjectClass *klass, void=
+ *data)<br>
+=C2=A0 =C2=A0 =C2=A0DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
+=C2=A0 =C2=A0 =C2=A0PCIDeviceClass *k =3D PCI_DEVICE_CLASS(klass);<br>
+<br>
++=C2=A0 =C2=A0 dc-&gt;reset =3D via_ide_reset;<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;realize =3D via_ide_realize;<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;exit =3D via_ide_exitfn;<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;vendor_id =3D PCI_VENDOR_ID_VIA;<br>
 -- <br>
 2.21.0<br>
 <br>
 <br>
 </blockquote></div></div>
 
---0000000000007bd5f30594840b57--
+--0000000000003a3ac305948415ad--

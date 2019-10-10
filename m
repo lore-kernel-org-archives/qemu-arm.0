@@ -1,297 +1,121 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1648009wrm;
-        Wed, 9 Oct 2019 18:18:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxVWNrWQuQkcSHezuWJtLW68I59slSUjMF2JlB6OIhd/bEsLOiEKi40Ok8jgqUqf7t+ySCQ
-X-Received: by 2002:a0c:cb8b:: with SMTP id p11mr6963296qvk.212.1570670299903;
-        Wed, 09 Oct 2019 18:18:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570670299; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1956153wrm;
+        Wed, 9 Oct 2019 23:29:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxDxY+ghkUxbCH28pnpNHQVCuZuvG0wZ9ZeG4FxG08A6GqglZvgnFgrWzh/6fPhcbe9rsD0
+X-Received: by 2002:ac8:75c6:: with SMTP id z6mr8478578qtq.197.1570688986928;
+        Wed, 09 Oct 2019 23:29:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570688986; cv=none;
         d=google.com; s=arc-20160816;
-        b=ypu+Ss4OWarMinKPEWJwG3+fxXm9rg3x0q8E3onzmIChsk2IJqg/5Jf1ANT5qAR+bk
-         cuoGgFVtJ3r2SYV0L8fB8wX4P2vkzkp/JaTe1+bolw8ND409qWO81tI4JHQF7TggNyaC
-         6MnsNSfTosl6rJrUiLiXuYd88vwG5JObhKj4haA/8m7eOafPkviz16Mlvt0m4nbWS3LF
-         Uke42rW6Q+IniKCvJ60gKEhPZ7c9dePKDvz2tRhl3/L28dS1oYyXu4YWqaeVqKg9LH9+
-         b/ODYBTDGsmjtZzjBOL+DZI3dZ7/Ja1AmEE7boH1dOAYmZYJianvcLWEgSN2h7ovQyX8
-         iBSQ==
+        b=Yfx0ol6Yq9TstA886n8CRd8UiWe37QU+IEfqIavWa8HWW+oFTd9ZPy2YWqfitJv/xE
+         +DQmXJBwbTgI4xoG73vFI9Zk0Ept2vCsUnNXxt5TWbYV6d78cvETa0JtIeT+HBJZROCq
+         jHpEaHg7VyfIwv+NxBArCVYzHIYV+YtZO1ccofRdFpdC0S+tmbfydrvcRwxtaISykBRR
+         Y/B7aTE9tMhIIIWW9w8fWIzU/4HNd7ZhHzWD3VFc8MJhal+2NW2rvcNvgFkkNILksQ56
+         8p8HblC7+lobCOcjdCZj5MSeXEFNSsKhSxhwBJb6USIxPiNSTSS322RGFYbh6w8v5f6A
+         OaNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=1YAtLzfc3GUW3MWav/m+rykDlOflhVu8LwsJL1Kg5KQ=;
-        b=v1Leims1rEKjyhLelvfxG1P7lCOhYtqiBfY4beI6Z11XMoCThWQbiv5HxJ+dCFvPXV
-         9lBNCoqKlp0ft9FrhGQm5bWKxubv2919qRp6xANB5CG4Wzf6p9r4AWJrOqVCX5nfcp8Y
-         UScpBKsXS+i1BwQapWYwpBudy/j3p5VTr3xohn03ucvZ5Nd7ySwyr8K6k4fuukY6b1bF
-         7nE3p0X5nDRWeBv8J88ajcaco7jbgiOWsto3HhuK7RSFQCVlAYoDd5GZC8/0A12lUFVw
-         rRLapwuZGLsscWnm9ZWxTds0uOlEEWS0VvZiISg8V1Xy07tDo3WsO36whxqHa509r/46
-         4cFw==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date;
+        bh=lD4ZavwHOWuqjQJhEAHVRU//UD51rovBE5r1ipfqFR4=;
+        b=Aw+8Dxxi/j1aaEs8sQ7m4v0GqnE7zeAnJcGejcaG7Z08iIWT1/hqapN5dapNB0okgG
+         y/k9wtQSWA93uGHk1qvCRzshQfst22Apdw221aRyIJQzhCDgJUnFA7az9TfYbQdQo1mc
+         OdqCRf7rFnvSfQgHIQ23h1PIMjx1N/OjHaZ6SEreqceqCWsdkBW0ovqP3vi6RxXZ4GrC
+         BXytwbgioTQtolRmwW40Ip7gX+bTDn4zoJQFqzDkG2fYDPV7YoSBrPUHl9BqP8Y/PfVu
+         Zq4D1QgEueg1LkWaCb0IjfxtOU3fzO9wiaVLPfyv/Ds1axO+PpPFfzN48KseQNyVPWrz
+         19IA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HDvyf3Cq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o4si3779730qkj.276.2019.10.09.18.18.19
+        by mx.google.com with ESMTPS id w3si4633050qvl.29.2019.10.09.23.29.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Oct 2019 18:18:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 09 Oct 2019 23:29:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HDvyf3Cq;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33136 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34278 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iIN5u-0002WO-1Y
-	for alex.bennee@linaro.org; Wed, 09 Oct 2019 21:18:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49209)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iIRxK-0001Gl-DO
+	for alex.bennee@linaro.org; Thu, 10 Oct 2019 02:29:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44951)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <liq3ea@gmail.com>) id 1iIN36-0000L4-2u
- for qemu-devel@nongnu.org; Wed, 09 Oct 2019 21:15:25 -0400
+ (envelope-from <drjones@redhat.com>) id 1iIRxA-0001Gc-MY
+ for qemu-arm@nongnu.org; Thu, 10 Oct 2019 02:29:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <liq3ea@gmail.com>) id 1iIN34-0006F8-MD
- for qemu-devel@nongnu.org; Wed, 09 Oct 2019 21:15:24 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:37932)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <liq3ea@gmail.com>)
- id 1iIN34-0006Eq-Em; Wed, 09 Oct 2019 21:15:22 -0400
-Received: by mail-ot1-x343.google.com with SMTP id e11so3424243otl.5;
- Wed, 09 Oct 2019 18:15:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=1YAtLzfc3GUW3MWav/m+rykDlOflhVu8LwsJL1Kg5KQ=;
- b=HDvyf3CqfTh4y+LOzhemiDmv4zeP/db/IX8//oy3vxa/kzOA2mBS0QVUB+S8nyU0H6
- SwOOVa6izpkBkFnmvNXSX0d34Xa4oSesGO1Vzc86J5HGhQ6G2y4kqZhdsNXixevq9Jm0
- eigNKyvUk9S8AVoZES/MROn39WNs2f8c7bgWL7LJUYNRZRDKGnojbf8QDLbJWpuVQa7j
- Yc8d6X/izTMz6f4m/qA9KDLmByHLONccEwLnOk+qr0wjGA/oMRor2OYFUd0iQW7aF93m
- XTPHpycyZChVE5s9+/GJHclSzBURyjVu10r3C8chYuf/J8ySUYotnHshV+xfscePk1G0
- hAQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=1YAtLzfc3GUW3MWav/m+rykDlOflhVu8LwsJL1Kg5KQ=;
- b=Ckb0wfiwFFQ6aFaoR7ewmt91xizOf8o+X1R3qxhCsQcmdqQLqERdfJEa5q1prNisEO
- ElO1Hs+vHIzUjRINlqBtCNuTICs+NyATKaXCFplcW8Q6Mvr3FBHlYUz8BAakqcuRZZz3
- E0FawtuMXfmJu9Cv9UXmOWiX19NVSL+JvPQbbig9YmYFYy0gh8kJeVsJCf5O4ggXEiPe
- G6FOdxCjvV6u4/TXXd3lnaVArkFXuWc90IFF/T69gbY5w4of14wZgAKBOFJR0U+bWVZI
- Ddz1danr0hZ1S6YzzxpRDyzMbiZNxyk94XBEhKbVd/UDctTgdgMRDvQmtkBH4dkomQnI
- Wg5Q==
-X-Gm-Message-State: APjAAAUIBfWNWr78X2rdu3cMla/GZBbrPls5wDxQNFLKEPpq9Xa/jPHG
- bBNFrOGjsxESqtlMHieobiyCm3FFFhudkUsmj+I=
-X-Received: by 2002:a9d:6d11:: with SMTP id o17mr2312110otp.333.1570670121662; 
- Wed, 09 Oct 2019 18:15:21 -0700 (PDT)
+ (envelope-from <drjones@redhat.com>) id 1iIRx9-0007Av-9S
+ for qemu-arm@nongnu.org; Thu, 10 Oct 2019 02:29:36 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:36674)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <drjones@redhat.com>)
+ id 1iIRx9-0007Ad-47; Thu, 10 Oct 2019 02:29:35 -0400
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id ABBA83164683;
+ Thu, 10 Oct 2019 06:29:33 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3EB5360BF4;
+ Thu, 10 Oct 2019 06:29:32 +0000 (UTC)
+Date: Thu, 10 Oct 2019 08:29:29 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Subject: Re: [RFC PATCH 3/5] target/arm/kvm: Implement cpu feature kvm-adjvtime
+Message-ID: <20191010062929.arxwmdlc3i7p2u6u@kamzik.brq.redhat.com>
+References: <20191007170622.1814-1-drjones@redhat.com>
+ <20191007170622.1814-4-drjones@redhat.com>
+ <892976b9-0e43-940d-1d36-046749d652c9@linaro.org>
 MIME-Version: 1.0
-References: <20191008142539.7793-1-philmd@redhat.com>
- <20191008142539.7793-8-philmd@redhat.com>
-In-Reply-To: <20191008142539.7793-8-philmd@redhat.com>
-From: Li Qiang <liq3ea@gmail.com>
-Date: Thu, 10 Oct 2019 09:14:45 +0800
-Message-ID: <CAKXe6SJbRv5xDNA91k+AKLghog6KKbzE_mCK4JuZWKnLctY_5A@mail.gmail.com>
-Subject: Re: [PATCH v2 7/8] hw/input/lm832x: Convert reset handler to
- DeviceReset
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000a93c470594842279"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::343
-X-BeenThere: qemu-devel@nongnu.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <892976b9-0e43-940d-1d36-046749d652c9@linaro.org>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.41]); Thu, 10 Oct 2019 06:29:33 +0000 (UTC)
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Aleksandar Rikalo <arikalo@wavecomp.com>,
- Qemu Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, John Snow <jsnow@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7/wBFvukA41d
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, maz@kernel.org,
+ qemu-devel@nongnu.org, bijan.mottahedeh@oracle.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mjt9zcEaEMbL
 
---000000000000a93c470594842279
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Wed, Oct 09, 2019 at 08:50:02PM -0400, Richard Henderson wrote:
+> On 10/7/19 1:06 PM, Andrew Jones wrote:
+> > +static void kvm_arm_vm_state_change(void *opaque, int running, RunState state)
+> > +{
+> > +    CPUState *cs = opaque;
+> > +    ARMCPU *cpu = ARM_CPU(cs);
+> > +
+> > +    if (running) {
+> > +        if (cpu->kvm_adjvtime) {
+> > +            kvm_arm_set_virtual_time(cs);
+> > +        }
+> > +    }
+> > +}
+> 
+> Worth putting this in kvm.c too, so you don't have to duplicate it?  You can
+> always split it apart later if you ever do need a different hook for 32 vs 64.
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> =E4=BA=8E2019=E5=B9=B410=E6=
-=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=8810:38=E5=86=99=E9=81=
-=93=EF=BC=9A
+True. I'll send a v1 without the premature duplication of this function
+and your r-b's
 
-> The LM8323 key-scan controller is a I2C device, it will be reset
-> when the I2C bus it stands on is reset.
->
-> Convert its reset handler into a proper Device reset method.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->
-
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
-
-
-> ---
->  hw/input/lm832x.c | 12 +++++-------
->  1 file changed, 5 insertions(+), 7 deletions(-)
->
-> diff --git a/hw/input/lm832x.c b/hw/input/lm832x.c
-> index a37eb854b9..aa629ddbf1 100644
-> --- a/hw/input/lm832x.c
-> +++ b/hw/input/lm832x.c
-> @@ -24,7 +24,6 @@
->  #include "migration/vmstate.h"
->  #include "qemu/module.h"
->  #include "qemu/timer.h"
-> -#include "sysemu/reset.h"
->  #include "ui/console.h"
->
->  #define TYPE_LM8323 "lm8323"
-> @@ -94,8 +93,10 @@ static void lm_kbd_gpio_update(LM823KbdState *s)
->  {
->  }
->
-> -static void lm_kbd_reset(LM823KbdState *s)
-> +static void lm_kbd_reset(DeviceState *dev)
->  {
-> +    LM823KbdState *s =3D LM8323(dev);
-> +
->      s->config =3D 0x80;
->      s->status =3D INT_NOINIT;
->      s->acttime =3D 125;
-> @@ -273,7 +274,7 @@ static void lm_kbd_write(LM823KbdState *s, int reg,
-> int byte, uint8_t value)
->
->      case LM832x_CMD_RESET:
->          if (value =3D=3D 0xaa)
-> -            lm_kbd_reset(s);
-> +            lm_kbd_reset(DEVICE(s));
->          else
->              lm_kbd_error(s, ERR_BADPAR);
->          s->reg =3D LM832x_GENERAL_ERROR;
-> @@ -476,10 +477,6 @@ static void lm8323_realize(DeviceState *dev, Error
-> **errp)
->      s->pwm.tm[1] =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, lm_kbd_pwm1_tick, =
-s);
->      s->pwm.tm[2] =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, lm_kbd_pwm2_tick, =
-s);
->      qdev_init_gpio_out(dev, &s->nirq, 1);
-> -
-> -    lm_kbd_reset(s);
-> -
-> -    qemu_register_reset((void *) lm_kbd_reset, s);
->  }
->
->  void lm832x_key_event(DeviceState *dev, int key, int state)
-> @@ -507,6 +504,7 @@ static void lm8323_class_init(ObjectClass *klass, voi=
-d
-> *data)
->      DeviceClass *dc =3D DEVICE_CLASS(klass);
->      I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
->
-> +    dc->reset =3D lm_kbd_reset;
->      dc->realize =3D lm8323_realize;
->      k->event =3D lm_i2c_event;
->      k->recv =3D lm_i2c_rx;
-> --
-> 2.21.0
->
->
->
-
---000000000000a93c470594842279
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">Philippe Mathieu-Daud=C3=A9 &lt;<a hr=
-ef=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; =E4=BA=8E2019=E5=
-=B9=B410=E6=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=8810:38=E5=86=
-=99=E9=81=93=EF=BC=9A<br></div><blockquote class=3D"gmail_quote" style=3D"m=
-argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">The LM8323 key-scan controller is a I2C device, it will be reset<br>
-when the I2C bus it stands on is reset.<br>
-<br>
-Convert its reset handler into a proper Device reset method.<br>
-<br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@red=
-hat.com" target=3D"_blank">philmd@redhat.com</a>&gt;<br></blockquote><div><=
-br></div><div>Reviewed-by: Li Qiang &lt;<a href=3D"mailto:liq3ea@gmail.com"=
- target=3D"_blank">liq3ea@gmail.com</a>&gt;<br></div><div>=C2=A0</div><bloc=
-kquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:=
-1px solid rgb(204,204,204);padding-left:1ex">
----<br>
-=C2=A0hw/input/lm832x.c | 12 +++++-------<br>
-=C2=A01 file changed, 5 insertions(+), 7 deletions(-)<br>
-<br>
-diff --git a/hw/input/lm832x.c b/hw/input/lm832x.c<br>
-index a37eb854b9..aa629ddbf1 100644<br>
---- a/hw/input/lm832x.c<br>
-+++ b/hw/input/lm832x.c<br>
-@@ -24,7 +24,6 @@<br>
-=C2=A0#include &quot;migration/vmstate.h&quot;<br>
-=C2=A0#include &quot;qemu/module.h&quot;<br>
-=C2=A0#include &quot;qemu/timer.h&quot;<br>
--#include &quot;sysemu/reset.h&quot;<br>
-=C2=A0#include &quot;ui/console.h&quot;<br>
-<br>
-=C2=A0#define TYPE_LM8323 &quot;lm8323&quot;<br>
-@@ -94,8 +93,10 @@ static void lm_kbd_gpio_update(LM823KbdState *s)<br>
-=C2=A0{<br>
-=C2=A0}<br>
-<br>
--static void lm_kbd_reset(LM823KbdState *s)<br>
-+static void lm_kbd_reset(DeviceState *dev)<br>
-=C2=A0{<br>
-+=C2=A0 =C2=A0 LM823KbdState *s =3D LM8323(dev);<br>
-+<br>
-=C2=A0 =C2=A0 =C2=A0s-&gt;config =3D 0x80;<br>
-=C2=A0 =C2=A0 =C2=A0s-&gt;status =3D INT_NOINIT;<br>
-=C2=A0 =C2=A0 =C2=A0s-&gt;acttime =3D 125;<br>
-@@ -273,7 +274,7 @@ static void lm_kbd_write(LM823KbdState *s, int reg, int=
- byte, uint8_t value)<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0case LM832x_CMD_RESET:<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (value =3D=3D 0xaa)<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 lm_kbd_reset(s);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 lm_kbd_reset(DEVICE(s));<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0else<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0lm_kbd_error(s, ERR_BADPAR)=
-;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;reg =3D LM832x_GENERAL_ERROR;<br>
-@@ -476,10 +477,6 @@ static void lm8323_realize(DeviceState *dev, Error **e=
-rrp)<br>
-=C2=A0 =C2=A0 =C2=A0s-&gt;<a href=3D"http://pwm.tm" rel=3D"noreferrer" targ=
-et=3D"_blank">pwm.tm</a>[1] =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, lm_kbd_pwm=
-1_tick, s);<br>
-=C2=A0 =C2=A0 =C2=A0s-&gt;<a href=3D"http://pwm.tm" rel=3D"noreferrer" targ=
-et=3D"_blank">pwm.tm</a>[2] =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, lm_kbd_pwm=
-2_tick, s);<br>
-=C2=A0 =C2=A0 =C2=A0qdev_init_gpio_out(dev, &amp;s-&gt;nirq, 1);<br>
--<br>
--=C2=A0 =C2=A0 lm_kbd_reset(s);<br>
--<br>
--=C2=A0 =C2=A0 qemu_register_reset((void *) lm_kbd_reset, s);<br>
-=C2=A0}<br>
-<br>
-=C2=A0void lm832x_key_event(DeviceState *dev, int key, int state)<br>
-@@ -507,6 +504,7 @@ static void lm8323_class_init(ObjectClass *klass, void =
-*data)<br>
-=C2=A0 =C2=A0 =C2=A0DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
-=C2=A0 =C2=A0 =C2=A0I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);<br>
-<br>
-+=C2=A0 =C2=A0 dc-&gt;reset =3D lm_kbd_reset;<br>
-=C2=A0 =C2=A0 =C2=A0dc-&gt;realize =3D lm8323_realize;<br>
-=C2=A0 =C2=A0 =C2=A0k-&gt;event =3D lm_i2c_event;<br>
-=C2=A0 =C2=A0 =C2=A0k-&gt;recv =3D lm_i2c_rx;<br>
--- <br>
-2.21.0<br>
-<br>
-<br>
-</blockquote></div></div>
-
---000000000000a93c470594842279--
+Thanks,
+drew

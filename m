@@ -1,109 +1,109 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1643560wrm;
-        Wed, 9 Oct 2019 18:13:12 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw96z1RT5BMFvgk6fRScFU2J1AE6qKJIqKn52mj7fVnx7ocs6m/4qI4h5Y2WoP4zYkKjyhe
-X-Received: by 2002:a17:906:2961:: with SMTP id x1mr5550550ejd.91.1570669991973;
-        Wed, 09 Oct 2019 18:13:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570669991; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1648009wrm;
+        Wed, 9 Oct 2019 18:18:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxVWNrWQuQkcSHezuWJtLW68I59slSUjMF2JlB6OIhd/bEsLOiEKi40Ok8jgqUqf7t+ySCQ
+X-Received: by 2002:a0c:cb8b:: with SMTP id p11mr6963296qvk.212.1570670299903;
+        Wed, 09 Oct 2019 18:18:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570670299; cv=none;
         d=google.com; s=arc-20160816;
-        b=HiSvUECf8ho2Np+BvU9UjAgjuYECi2H8OoQeT92y2mookr+YgQPFxorjF3/gLay0tm
-         sWX7IgzfOt/sz45TMWgA8ieJhaP99F3uxKxnGTJq6iESLUWVZ6Fl4jAkOsWnn4V3ZHup
-         lwJ3mubM1Icn5UadNrLYe2pk1u5GGB4YBnPmoL65TgdpHmohvdowKvSJE5ZJ4gUrfweu
-         q+GXK+M827VrEQ0QnK5TEiTNsyteggQKE666xNqNyJ/OBqPdBldzL1hK5XnlvOmqXMPX
-         iJXc/lDxHBCk9Shh2AxirKqj81lb2uvpxqqu4zBhfwpaz/OE3R3YtF61EZvU2U0RNMK0
-         MTPQ==
+        b=ypu+Ss4OWarMinKPEWJwG3+fxXm9rg3x0q8E3onzmIChsk2IJqg/5Jf1ANT5qAR+bk
+         cuoGgFVtJ3r2SYV0L8fB8wX4P2vkzkp/JaTe1+bolw8ND409qWO81tI4JHQF7TggNyaC
+         6MnsNSfTosl6rJrUiLiXuYd88vwG5JObhKj4haA/8m7eOafPkviz16Mlvt0m4nbWS3LF
+         Uke42rW6Q+IniKCvJ60gKEhPZ7c9dePKDvz2tRhl3/L28dS1oYyXu4YWqaeVqKg9LH9+
+         b/ODYBTDGsmjtZzjBOL+DZI3dZ7/Ja1AmEE7boH1dOAYmZYJianvcLWEgSN2h7ovQyX8
+         iBSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=Kae0VhOmiaTOgO4PffjIZC9BUvc3e3RmbDVH1bwemv4=;
-        b=Kc9kTNM3hV58JtXXSg/slzy++iBsu890hRj/v0IMvTrmzq+4ocnw1SrZrAKZsJLTPp
-         g059sZ6e6JFO4ZGBQyHEXM9mBxZBE3+Q2/Jc/Mq9/KZMfqRY/J+Si7DpEDF+2gdGg1px
-         U72GSfndNxL0OMgNKYejUJbzdXLMbmL4OUep3Qt7g7XRlquV8WpOTlVcebhDg1umpU7L
-         SNeTtYzeTUWCJPGUI7het5i79bfgFW+DEok5ggLBjva/E9wMA2JSH5TjetC8s4f+3A0w
-         3IR2gKBIxbt+bWk1dyCl02Kw+oBe+E9cj8VSUGXlWmygVMJOMYCTr/c3RYLiok4N3I8s
-         u3bA==
+        bh=1YAtLzfc3GUW3MWav/m+rykDlOflhVu8LwsJL1Kg5KQ=;
+        b=v1Leims1rEKjyhLelvfxG1P7lCOhYtqiBfY4beI6Z11XMoCThWQbiv5HxJ+dCFvPXV
+         9lBNCoqKlp0ft9FrhGQm5bWKxubv2919qRp6xANB5CG4Wzf6p9r4AWJrOqVCX5nfcp8Y
+         UScpBKsXS+i1BwQapWYwpBudy/j3p5VTr3xohn03ucvZ5Nd7ySwyr8K6k4fuukY6b1bF
+         7nE3p0X5nDRWeBv8J88ajcaco7jbgiOWsto3HhuK7RSFQCVlAYoDd5GZC8/0A12lUFVw
+         rRLapwuZGLsscWnm9ZWxTds0uOlEEWS0VvZiISg8V1Xy07tDo3WsO36whxqHa509r/46
+         4cFw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=am4Z2fQF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HDvyf3Cq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z16si2289063edb.420.2019.10.09.18.13.11
+        by mx.google.com with ESMTPS id o4si3779730qkj.276.2019.10.09.18.18.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Oct 2019 18:13:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 09 Oct 2019 18:18:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=am4Z2fQF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HDvyf3Cq;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33102 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33136 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iIN0w-00070f-Sf
-	for alex.bennee@linaro.org; Wed, 09 Oct 2019 21:13:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49024)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iIN5u-0002WO-1Y
+	for alex.bennee@linaro.org; Wed, 09 Oct 2019 21:18:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49209)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <liq3ea@gmail.com>) id 1iIN0n-0006vV-6D
- for qemu-arm@nongnu.org; Wed, 09 Oct 2019 21:13:02 -0400
+ (envelope-from <liq3ea@gmail.com>) id 1iIN36-0000L4-2u
+ for qemu-devel@nongnu.org; Wed, 09 Oct 2019 21:15:25 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <liq3ea@gmail.com>) id 1iIN0l-00058l-Vx
- for qemu-arm@nongnu.org; Wed, 09 Oct 2019 21:13:01 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:44148)
+ (envelope-from <liq3ea@gmail.com>) id 1iIN34-0006F8-MD
+ for qemu-devel@nongnu.org; Wed, 09 Oct 2019 21:15:24 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:37932)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <liq3ea@gmail.com>)
- id 1iIN0g-00057m-Nf; Wed, 09 Oct 2019 21:12:54 -0400
-Received: by mail-oi1-x243.google.com with SMTP id w6so3428303oie.11;
- Wed, 09 Oct 2019 18:12:54 -0700 (PDT)
+ id 1iIN34-0006Eq-Em; Wed, 09 Oct 2019 21:15:22 -0400
+Received: by mail-ot1-x343.google.com with SMTP id e11so3424243otl.5;
+ Wed, 09 Oct 2019 18:15:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Kae0VhOmiaTOgO4PffjIZC9BUvc3e3RmbDVH1bwemv4=;
- b=am4Z2fQFtRm42oU5TkmaE+NCOKEcNtM2FP17TiRtPKDGj+gmUA5KM3PE9TEvPyG51c
- afVkQXz+N0atr3JjXz1I+gzxKk5BFq8efDNzFSgrkkCGFEnLszli5canxjUc24gi55N2
- DudsyOQ/UFJVB0cmzscvZTv/VV6xAOJ9rfLf4pV2O3zQKoKyd8RyXJOkbVF30SVouknF
- h7mOj1eI9aU/2rGCoLqLNsQTwfZ8jctJOan5Qd/VgHAuqj0LhR6gLptNavarzzI+sHH+
- y74okCdlqghSE0JAx/e1Z9CB1vuHOXDc55EXQT4p/Tvg0nsu3WGc8uUDrHORwOAXPeaD
- jFuQ==
+ :cc; bh=1YAtLzfc3GUW3MWav/m+rykDlOflhVu8LwsJL1Kg5KQ=;
+ b=HDvyf3CqfTh4y+LOzhemiDmv4zeP/db/IX8//oy3vxa/kzOA2mBS0QVUB+S8nyU0H6
+ SwOOVa6izpkBkFnmvNXSX0d34Xa4oSesGO1Vzc86J5HGhQ6G2y4kqZhdsNXixevq9Jm0
+ eigNKyvUk9S8AVoZES/MROn39WNs2f8c7bgWL7LJUYNRZRDKGnojbf8QDLbJWpuVQa7j
+ Yc8d6X/izTMz6f4m/qA9KDLmByHLONccEwLnOk+qr0wjGA/oMRor2OYFUd0iQW7aF93m
+ XTPHpycyZChVE5s9+/GJHclSzBURyjVu10r3C8chYuf/J8ySUYotnHshV+xfscePk1G0
+ hAQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Kae0VhOmiaTOgO4PffjIZC9BUvc3e3RmbDVH1bwemv4=;
- b=PZ3L13kAss7Mx3eMvAwMrI6pwVCvm1MYc3RdXgkQ3vSoSiQs0/c3SlMw/5x7/3efhw
- rU2GHnYZV14zOtbwEgo6+C/aOCxuSNeTUKYl4ELayK1A3wEdobDlovG9sPupEaddbcHb
- kFKih/9E8VmE8CzbuNfFmERylMXqzLvEd8QbxlOB16IEi0E7snvSKXANX+/B3JP6dj2P
- uf8yNpyorzwnlDYx+x31cXQ0+owi1j+ZS5lUtavwh2BsdUGWDVMzO/5SaswB36/wCeAQ
- 8noqvp33fSQOoSAYOLsPkZjnVr1jnMqKzqEc/jTmTBPcnqifOrTFyzHdN7oUagUUpaIc
- 5JLw==
-X-Gm-Message-State: APjAAAUXG5lf9N+WC+htfK+dzvHq/CXoNJqGap8nZypSpuQNJCtd366k
- pR0qOSPuAO6X05O3mysTaThtdsr1h2uPldI2rqo=
-X-Received: by 2002:aca:d18:: with SMTP id 24mr5255648oin.56.1570669973410;
- Wed, 09 Oct 2019 18:12:53 -0700 (PDT)
+ bh=1YAtLzfc3GUW3MWav/m+rykDlOflhVu8LwsJL1Kg5KQ=;
+ b=Ckb0wfiwFFQ6aFaoR7ewmt91xizOf8o+X1R3qxhCsQcmdqQLqERdfJEa5q1prNisEO
+ ElO1Hs+vHIzUjRINlqBtCNuTICs+NyATKaXCFplcW8Q6Mvr3FBHlYUz8BAakqcuRZZz3
+ E0FawtuMXfmJu9Cv9UXmOWiX19NVSL+JvPQbbig9YmYFYy0gh8kJeVsJCf5O4ggXEiPe
+ G6FOdxCjvV6u4/TXXd3lnaVArkFXuWc90IFF/T69gbY5w4of14wZgAKBOFJR0U+bWVZI
+ Ddz1danr0hZ1S6YzzxpRDyzMbiZNxyk94XBEhKbVd/UDctTgdgMRDvQmtkBH4dkomQnI
+ Wg5Q==
+X-Gm-Message-State: APjAAAUIBfWNWr78X2rdu3cMla/GZBbrPls5wDxQNFLKEPpq9Xa/jPHG
+ bBNFrOGjsxESqtlMHieobiyCm3FFFhudkUsmj+I=
+X-Received: by 2002:a9d:6d11:: with SMTP id o17mr2312110otp.333.1570670121662; 
+ Wed, 09 Oct 2019 18:15:21 -0700 (PDT)
 MIME-Version: 1.0
 References: <20191008142539.7793-1-philmd@redhat.com>
- <20191008142539.7793-7-philmd@redhat.com>
-In-Reply-To: <20191008142539.7793-7-philmd@redhat.com>
+ <20191008142539.7793-8-philmd@redhat.com>
+In-Reply-To: <20191008142539.7793-8-philmd@redhat.com>
 From: Li Qiang <liq3ea@gmail.com>
-Date: Thu, 10 Oct 2019 09:12:17 +0800
-Message-ID: <CAKXe6SJx-W_WQ6saGdpoWPPubgLfTeQz0+_zQp1UW_Ay-jF8zA@mail.gmail.com>
-Subject: Re: [PATCH v2 6/8] hw/isa/vt82c686: Convert reset handler to
+Date: Thu, 10 Oct 2019 09:14:45 +0800
+Message-ID: <CAKXe6SJbRv5xDNA91k+AKLghog6KKbzE_mCK4JuZWKnLctY_5A@mail.gmail.com>
+Subject: Re: [PATCH v2 7/8] hw/input/lm832x: Convert reset handler to
  DeviceReset
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000d318cb05948419ea"
+Content-Type: multipart/alternative; boundary="000000000000a93c470594842279"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::243
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::343
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
  "Michael S. Tsirkin" <mst@redhat.com>,
@@ -112,20 +112,20 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, Aleksandar Markovic <amarkovic@wavecomp.com>,
  =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
  Igor Mammedov <imammedo@redhat.com>, John Snow <jsnow@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FoKNHGsDUQ+B
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7/wBFvukA41d
 
---000000000000d318cb05948419ea
+--000000000000a93c470594842279
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> =E4=BA=8E2019=E5=B9=B410=E6=
-=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=8810:39=E5=86=99=E9=81=
+=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=8810:38=E5=86=99=E9=81=
 =93=EF=BC=9A
 
-> The VIA VT82C686 Southbridge is a PCI device, it will be reset
-> when the PCI bus it stands on is reset.
+> The LM8323 key-scan controller is a I2C device, it will be reset
+> when the I2C bus it stands on is reset.
 >
 > Convert its reset handler into a proper Device reset method.
 >
@@ -136,74 +136,85 @@ Reviewed-by: Li Qiang <liq3ea@gmail.com>
 
 
 > ---
->  hw/isa/vt82c686.c | 11 ++++-------
->  1 file changed, 4 insertions(+), 7 deletions(-)
+>  hw/input/lm832x.c | 12 +++++-------
+>  1 file changed, 5 insertions(+), 7 deletions(-)
 >
-> diff --git a/hw/isa/vt82c686.c b/hw/isa/vt82c686.c
-> index 50bd28fa82..616f67f347 100644
-> --- a/hw/isa/vt82c686.c
-> +++ b/hw/isa/vt82c686.c
-> @@ -23,7 +23,6 @@
->  #include "hw/isa/apm.h"
->  #include "hw/acpi/acpi.h"
->  #include "hw/i2c/pm_smbus.h"
-> -#include "sysemu/reset.h"
+> diff --git a/hw/input/lm832x.c b/hw/input/lm832x.c
+> index a37eb854b9..aa629ddbf1 100644
+> --- a/hw/input/lm832x.c
+> +++ b/hw/input/lm832x.c
+> @@ -24,7 +24,6 @@
+>  #include "migration/vmstate.h"
 >  #include "qemu/module.h"
 >  #include "qemu/timer.h"
->  #include "exec/address-spaces.h"
-> @@ -116,11 +115,10 @@ static const MemoryRegionOps superio_ops =3D {
->      },
->  };
+> -#include "sysemu/reset.h"
+>  #include "ui/console.h"
 >
-> -static void vt82c686b_reset(void * opaque)
-> +static void vt82c686b_isa_reset(DeviceState *dev)
+>  #define TYPE_LM8323 "lm8323"
+> @@ -94,8 +93,10 @@ static void lm_kbd_gpio_update(LM823KbdState *s)
 >  {
-> -    PCIDevice *d =3D opaque;
-> -    uint8_t *pci_conf =3D d->config;
-> -    VT82C686BState *vt82c =3D VT82C686B_DEVICE(d);
-> +    VT82C686BState *vt82c =3D VT82C686B_DEVICE(dev);
-> +    uint8_t *pci_conf =3D vt82c->dev.config;
->
->      pci_set_long(pci_conf + PCI_CAPABILITY_LIST, 0x000000c0);
->      pci_set_word(pci_conf + PCI_COMMAND, PCI_COMMAND_IO |
-> PCI_COMMAND_MEMORY |
-> @@ -476,8 +474,6 @@ static void vt82c686b_realize(PCIDevice *d, Error
-> **errp)
->       * But we do not emulate a floppy, so just set it here. */
->      memory_region_add_subregion(isa_bus->address_space_io, 0x3f0,
->                                  &vt82c->superio);
-> -
-> -    qemu_register_reset(vt82c686b_reset, d);
 >  }
 >
->  ISABus *vt82c686b_isa_init(PCIBus *bus, int devfn)
-> @@ -501,6 +497,7 @@ static void via_class_init(ObjectClass *klass, void
+> -static void lm_kbd_reset(LM823KbdState *s)
+> +static void lm_kbd_reset(DeviceState *dev)
+>  {
+> +    LM823KbdState *s =3D LM8323(dev);
+> +
+>      s->config =3D 0x80;
+>      s->status =3D INT_NOINIT;
+>      s->acttime =3D 125;
+> @@ -273,7 +274,7 @@ static void lm_kbd_write(LM823KbdState *s, int reg,
+> int byte, uint8_t value)
+>
+>      case LM832x_CMD_RESET:
+>          if (value =3D=3D 0xaa)
+> -            lm_kbd_reset(s);
+> +            lm_kbd_reset(DEVICE(s));
+>          else
+>              lm_kbd_error(s, ERR_BADPAR);
+>          s->reg =3D LM832x_GENERAL_ERROR;
+> @@ -476,10 +477,6 @@ static void lm8323_realize(DeviceState *dev, Error
+> **errp)
+>      s->pwm.tm[1] =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, lm_kbd_pwm1_tick, =
+s);
+>      s->pwm.tm[2] =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, lm_kbd_pwm2_tick, =
+s);
+>      qdev_init_gpio_out(dev, &s->nirq, 1);
+> -
+> -    lm_kbd_reset(s);
+> -
+> -    qemu_register_reset((void *) lm_kbd_reset, s);
+>  }
+>
+>  void lm832x_key_event(DeviceState *dev, int key, int state)
+> @@ -507,6 +504,7 @@ static void lm8323_class_init(ObjectClass *klass, voi=
+d
 > *data)
->      k->device_id =3D PCI_DEVICE_ID_VIA_ISA_BRIDGE;
->      k->class_id =3D PCI_CLASS_BRIDGE_ISA;
->      k->revision =3D 0x40;
-> +    dc->reset =3D vt82c686b_isa_reset;
->      dc->desc =3D "ISA bridge";
->      dc->vmsd =3D &vmstate_via;
->      /*
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>      I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);
+>
+> +    dc->reset =3D lm_kbd_reset;
+>      dc->realize =3D lm8323_realize;
+>      k->event =3D lm_i2c_event;
+>      k->recv =3D lm_i2c_rx;
 > --
 > 2.21.0
 >
 >
 >
 
---000000000000d318cb05948419ea
+--000000000000a93c470594842279
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 <div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
 <div dir=3D"ltr" class=3D"gmail_attr">Philippe Mathieu-Daud=C3=A9 &lt;<a hr=
 ef=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; =E4=BA=8E2019=E5=
-=B9=B410=E6=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=8810:39=E5=86=
+=B9=B410=E6=9C=888=E6=97=A5=E5=91=A8=E4=BA=8C =E4=B8=8B=E5=8D=8810:38=E5=86=
 =99=E9=81=93=EF=BC=9A<br></div><blockquote class=3D"gmail_quote" style=3D"m=
 argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
-:1ex">The VIA VT82C686 Southbridge is a PCI device, it will be reset<br>
-when the PCI bus it stands on is reset.<br>
+:1ex">The LM8323 key-scan controller is a I2C device, it will be reset<br>
+when the I2C bus it stands on is reset.<br>
 <br>
 Convert its reset handler into a proper Device reset method.<br>
 <br>
@@ -214,64 +225,73 @@ br></div><div>Reviewed-by: Li Qiang &lt;<a href=3D"mailto:liq3ea@gmail.com"=
 kquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:=
 1px solid rgb(204,204,204);padding-left:1ex">
 ---<br>
-=C2=A0hw/isa/vt82c686.c | 11 ++++-------<br>
-=C2=A01 file changed, 4 insertions(+), 7 deletions(-)<br>
+=C2=A0hw/input/lm832x.c | 12 +++++-------<br>
+=C2=A01 file changed, 5 insertions(+), 7 deletions(-)<br>
 <br>
-diff --git a/hw/isa/vt82c686.c b/hw/isa/vt82c686.c<br>
-index 50bd28fa82..616f67f347 100644<br>
---- a/hw/isa/vt82c686.c<br>
-+++ b/hw/isa/vt82c686.c<br>
-@@ -23,7 +23,6 @@<br>
-=C2=A0#include &quot;hw/isa/apm.h&quot;<br>
-=C2=A0#include &quot;hw/acpi/acpi.h&quot;<br>
-=C2=A0#include &quot;hw/i2c/pm_smbus.h&quot;<br>
--#include &quot;sysemu/reset.h&quot;<br>
+diff --git a/hw/input/lm832x.c b/hw/input/lm832x.c<br>
+index a37eb854b9..aa629ddbf1 100644<br>
+--- a/hw/input/lm832x.c<br>
++++ b/hw/input/lm832x.c<br>
+@@ -24,7 +24,6 @@<br>
+=C2=A0#include &quot;migration/vmstate.h&quot;<br>
 =C2=A0#include &quot;qemu/module.h&quot;<br>
 =C2=A0#include &quot;qemu/timer.h&quot;<br>
-=C2=A0#include &quot;exec/address-spaces.h&quot;<br>
-@@ -116,11 +115,10 @@ static const MemoryRegionOps superio_ops =3D {<br>
-=C2=A0 =C2=A0 =C2=A0},<br>
-=C2=A0};<br>
+-#include &quot;sysemu/reset.h&quot;<br>
+=C2=A0#include &quot;ui/console.h&quot;<br>
 <br>
--static void vt82c686b_reset(void * opaque)<br>
-+static void vt82c686b_isa_reset(DeviceState *dev)<br>
+=C2=A0#define TYPE_LM8323 &quot;lm8323&quot;<br>
+@@ -94,8 +93,10 @@ static void lm_kbd_gpio_update(LM823KbdState *s)<br>
 =C2=A0{<br>
--=C2=A0 =C2=A0 PCIDevice *d =3D opaque;<br>
--=C2=A0 =C2=A0 uint8_t *pci_conf =3D d-&gt;config;<br>
--=C2=A0 =C2=A0 VT82C686BState *vt82c =3D VT82C686B_DEVICE(d);<br>
-+=C2=A0 =C2=A0 VT82C686BState *vt82c =3D VT82C686B_DEVICE(dev);<br>
-+=C2=A0 =C2=A0 uint8_t *pci_conf =3D vt82c-&gt;dev.config;<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0pci_set_long(pci_conf + PCI_CAPABILITY_LIST, 0x000000c0=
-);<br>
-=C2=A0 =C2=A0 =C2=A0pci_set_word(pci_conf + PCI_COMMAND, PCI_COMMAND_IO | P=
-CI_COMMAND_MEMORY |<br>
-@@ -476,8 +474,6 @@ static void vt82c686b_realize(PCIDevice *d, Error **err=
-p)<br>
-=C2=A0 =C2=A0 =C2=A0 * But we do not emulate a floppy, so just set it here.=
- */<br>
-=C2=A0 =C2=A0 =C2=A0memory_region_add_subregion(isa_bus-&gt;address_space_i=
-o, 0x3f0,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&amp;vt82c-&gt;superio);<br>
--<br>
--=C2=A0 =C2=A0 qemu_register_reset(vt82c686b_reset, d);<br>
 =C2=A0}<br>
 <br>
-=C2=A0ISABus *vt82c686b_isa_init(PCIBus *bus, int devfn)<br>
-@@ -501,6 +497,7 @@ static void via_class_init(ObjectClass *klass, void *da=
-ta)<br>
-=C2=A0 =C2=A0 =C2=A0k-&gt;device_id =3D PCI_DEVICE_ID_VIA_ISA_BRIDGE;<br>
-=C2=A0 =C2=A0 =C2=A0k-&gt;class_id =3D PCI_CLASS_BRIDGE_ISA;<br>
-=C2=A0 =C2=A0 =C2=A0k-&gt;revision =3D 0x40;<br>
-+=C2=A0 =C2=A0 dc-&gt;reset =3D vt82c686b_isa_reset;<br>
-=C2=A0 =C2=A0 =C2=A0dc-&gt;desc =3D &quot;ISA bridge&quot;;<br>
-=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_via;<br>
-=C2=A0 =C2=A0 =C2=A0/*<br>
+-static void lm_kbd_reset(LM823KbdState *s)<br>
++static void lm_kbd_reset(DeviceState *dev)<br>
+=C2=A0{<br>
++=C2=A0 =C2=A0 LM823KbdState *s =3D LM8323(dev);<br>
++<br>
+=C2=A0 =C2=A0 =C2=A0s-&gt;config =3D 0x80;<br>
+=C2=A0 =C2=A0 =C2=A0s-&gt;status =3D INT_NOINIT;<br>
+=C2=A0 =C2=A0 =C2=A0s-&gt;acttime =3D 125;<br>
+@@ -273,7 +274,7 @@ static void lm_kbd_write(LM823KbdState *s, int reg, int=
+ byte, uint8_t value)<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0case LM832x_CMD_RESET:<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (value =3D=3D 0xaa)<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 lm_kbd_reset(s);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 lm_kbd_reset(DEVICE(s));<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0else<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0lm_kbd_error(s, ERR_BADPAR)=
+;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;reg =3D LM832x_GENERAL_ERROR;<br>
+@@ -476,10 +477,6 @@ static void lm8323_realize(DeviceState *dev, Error **e=
+rrp)<br>
+=C2=A0 =C2=A0 =C2=A0s-&gt;<a href=3D"http://pwm.tm" rel=3D"noreferrer" targ=
+et=3D"_blank">pwm.tm</a>[1] =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, lm_kbd_pwm=
+1_tick, s);<br>
+=C2=A0 =C2=A0 =C2=A0s-&gt;<a href=3D"http://pwm.tm" rel=3D"noreferrer" targ=
+et=3D"_blank">pwm.tm</a>[2] =3D timer_new_ns(QEMU_CLOCK_VIRTUAL, lm_kbd_pwm=
+2_tick, s);<br>
+=C2=A0 =C2=A0 =C2=A0qdev_init_gpio_out(dev, &amp;s-&gt;nirq, 1);<br>
+-<br>
+-=C2=A0 =C2=A0 lm_kbd_reset(s);<br>
+-<br>
+-=C2=A0 =C2=A0 qemu_register_reset((void *) lm_kbd_reset, s);<br>
+=C2=A0}<br>
+<br>
+=C2=A0void lm832x_key_event(DeviceState *dev, int key, int state)<br>
+@@ -507,6 +504,7 @@ static void lm8323_class_init(ObjectClass *klass, void =
+*data)<br>
+=C2=A0 =C2=A0 =C2=A0DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
+=C2=A0 =C2=A0 =C2=A0I2CSlaveClass *k =3D I2C_SLAVE_CLASS(klass);<br>
+<br>
++=C2=A0 =C2=A0 dc-&gt;reset =3D lm_kbd_reset;<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;realize =3D lm8323_realize;<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;event =3D lm_i2c_event;<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;recv =3D lm_i2c_rx;<br>
 -- <br>
 2.21.0<br>
 <br>
 <br>
 </blockquote></div></div>
 
---000000000000d318cb05948419ea--
+--000000000000a93c470594842279--

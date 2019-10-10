@@ -1,135 +1,114 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1944326wrm;
-        Wed, 9 Oct 2019 23:16:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxXXIhsdjflWpP7Sdy4Zy8uk1OGzwxbmIV8l6zVRjI2jpM1xqoX1w342Rh2XqJwYthrYOWH
-X-Received: by 2002:a6b:f415:: with SMTP id i21mr8658157iog.109.1570688169028;
-        Wed, 09 Oct 2019 23:16:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570688169; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp2665359wrm;
+        Thu, 10 Oct 2019 10:33:07 -0700 (PDT)
+X-Received: by 2002:a81:4d44:: with SMTP id a65mr8368631ywb.24.1570728787309;
+        Thu, 10 Oct 2019 10:33:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570728787; cv=none;
         d=google.com; s=arc-20160816;
-        b=0rR+ZOW7n4mbjw3Phlgq1C8EJpLucHvecN6ACQzfioe1ElBFYbm4kBhyMkQfcKwX2U
-         QlzAByDkvQwcB/yiUFKcL0qKJ3eLmXwcQHAcnQha7BI2aXrS/aPjvi+Wl96inPMvQu6J
-         iyxu85g4gZ/mEr55VHGnuG2ezubLthoZSXd/DwE6Lc6x07IanhubCwYKznNnvLJX8b4t
-         Ml01nYAyl4Yl2/4JOBn/AFdw/XOJ39TsUvtuEdIBrVoVSujh9AurYEeBRS2lU34iiOgI
-         eEZ5S6r15sx8mQMhyfsE7RUfhPi/ai7jO4Qo24RAANJryAXdlrw6j5onwqYIBdL7tLJS
-         pX3g==
+        b=uRk5E7GYEEEkl9sUeMELvHWMXCGLsKujSXuI/adFyG4L3zdgl/SoVaTD33x22veyqk
+         NPVBJbgUi189OkTRRMgQLttFEH/nia/2eAJZIGuPtQiNunCpqecXwmrRyMk8gMgcnt0F
+         Aky3Vbm+rtJa40YtP9IIkDz5+5F6gMn82B+xreHGtzVIfocFpezAZwjLjo+jXl/jiMwW
+         4vSuoY2FjnjYND1N1ebBYvd9Nrdlm94ypLJkJGi2XmyVFwNtsjnXKiYEOBvzlrCkHA9Q
+         qZQTuanHPhuBKqCKnB7FEl641b351bmosOCC3dNaO4TET6+CGkn6nJRt/nTJSV5ZJoVa
+         OacQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date;
-        bh=M85w9e4SNfMqK294ET9CeCtE7JpqWun/gzqnWR+vcOA=;
-        b=ghAAM863UpmkFVfGEMIUpy+qEjqTZM51U2bUSqYENMb53SWYV0/t8Z/q/Mflrdbmjl
-         rycaBaK9tsACs+i00IxYxI3BEXzUTiyMJZjaGWlxyxJRO3GxEXRw811W70VI2Qt00Sne
-         xyptfOG2IcBoi1Xm48sAd0rgq6UgU5jhKqD+DvV9sZ9iIykpR5yzSTSUprAxLHFyRHHR
-         zunVi7+DJ05vQLaR8NWglxjrYqJEPxe4jadKhUm7FPXFzsof5nxmiegHXCQTXZER5//6
-         ZJR2FhN7HSanJajFkDRYWVmzAWKUqxC6kTXvwXetNOp8mi+u0zOZsz8PYNfLEVUuK6u6
-         VxYQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:openpgp:from:references:cc:to:subject
+         :dkim-signature;
+        bh=gcW3IYs5nfyJdOZj8TvbqqqMdLvirZp+fSU6XHQ36Mc=;
+        b=KUFFQr3oTR2I9JzT7vtBCCe7vb+ZOPoE8OdSdNiOtVIZ5IvE5PbL5y1LbEsFdM51v0
+         ihCbOzpT6VKZzXoTSTgy2dMVhvtEd0s9yHWeKuONTe5xD/q4pSzo8uRNpaKP9x4Z2U5c
+         2y146hYXN0xF4JXk8kfcNpiuC+OJfwKRIuRohSa0Um/jDWpLkOA04Zm8DnHwEEwP+rl9
+         doW17sM1ehzR+FdZfHsm/bA7K3vJzZmiSBIkoox8/FSibf/bXNi7cqaMwDm64WbeT4CP
+         qiv5waejZKT9qgWQQetUdzmFOWezBVSLdX7TX6GAd0H57m29LQEEUJwRKJCVQKKn0obn
+         LHpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <drjones@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id h8si6791334iop.51.2019.10.09.23.16.08
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 09 Oct 2019 23:16:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lm7lldzV;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id a12sor3562118ybk.174.2019.10.10.10.33.07
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 10 Oct 2019 10:33:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id 4706530043E1;
-	Thu, 10 Oct 2019 06:16:07 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0BCA85D9E2;
-	Thu, 10 Oct 2019 06:16:02 +0000 (UTC)
-Date: Thu, 10 Oct 2019 08:16:00 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
-	alex.bennee@linaro.org, Dave.Martin@arm.com, eric.auger@redhat.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=lm7lldzV;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=gcW3IYs5nfyJdOZj8TvbqqqMdLvirZp+fSU6XHQ36Mc=;
+        b=lm7lldzVqgE434ug4IKW6hpD71Zp1cVFKHP5XZYo4Vn7D/w0fvmjCg0Dz9fOBELX1E
+         RaQYVfKEUh+c1JcD+6bATtqsZhgfDzR7f8AfRgRZmNJeqtg47Yj1/+gwG4NpD1EwxEas
+         gy7OGndYdla1+Lr+7r39yUiFkhMFhGE8O4I/4zn2/KbD6pCedU1R8/JoPKJKjf/bKUMu
+         Z6rWO9UrEfVFPFlsCjxVHuPgHGvK26+3xcPtASxzioNyJ8TRoh8XIr8GeANFtsA+SHtI
+         IwpERCQpthY7Htq6oVxHE9iLQ/5uvodOYNGK+m0DrhyG4q1XI/R1Mvqe6D/AayMq2O99
+         DEfQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=gcW3IYs5nfyJdOZj8TvbqqqMdLvirZp+fSU6XHQ36Mc=;
+        b=AezFHSizyAZD/xg1q5Kglv/C1Q+6Rbc2FNy1qeLOiBJA0fn8SRAEyKhjx4MQ4ywiDW
+         a4q8kBELVz5iPTL3bcD7zC/bEMqe6AUg2J6RjoNP8ys4WQDJg53EOFLIvQt6i4ofCT3g
+         Npx/ms1dIRCtgJf1dzu0ekYVstX7Kgk8EI+wvyi8Vgn5vtExonXgpBSJeqnTe5tQKhXS
+         OPsfNd2iNXbiq+jguGhAFu/dmuEDOOZuGgNvNAf4dZcSrV6V7TetNRg3D+PnHc10K9ks
+         X/spoIjHE6UMiG1zM4+thrb40MI91BX6NyDrW2qDn7ZA1Sr1GlNj5G/fIpe1qwn728/u
+         ysLg==
+X-Gm-Message-State: APjAAAWPl0wA7c3+Yc4oNCZzytCV2VpQo7/O44cYM7If4W3nuTkGvMHK
+	4x9We0RVlBI9t4NqSDnMVt1/gOg5
+X-Google-Smtp-Source: APXvYqx0V9RfI1qkmPr8Jnoj3MepiHPZnhY0bh/qnsvv3yarYgxqrzRRNSggl3N/sZhxSUqBJrnA8g==
+X-Received: by 2002:a25:204:: with SMTP id 4mr7084230ybc.242.1570728786739;
+        Thu, 10 Oct 2019 10:33:06 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.44] (67.216.151.25.pool.hargray.net. [67.216.151.25])
+        by smtp.gmail.com with ESMTPSA id w123sm1688740yww.22.2019.10.10.10.33.05
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 10 Oct 2019 10:33:05 -0700 (PDT)
 Subject: Re: [PATCH v2] target/arm/arch_dump: Add SVE notes
-Message-ID: <20191010061600.pwhos4huazbsv6kn@kamzik.brq.redhat.com>
+To: Andrew Jones <drjones@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ alex.bennee@linaro.org, Dave.Martin@arm.com, eric.auger@redhat.com
 References: <20191004120313.5347-1-drjones@redhat.com>
  <f23153f2-35be-f74d-ad7b-d9c324cba1cf@linaro.org>
+ <20191010061600.pwhos4huazbsv6kn@kamzik.brq.redhat.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <6451070f-9488-cc8f-2f4b-a7577e11f447@linaro.org>
+Date: Thu, 10 Oct 2019 13:33:02 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <f23153f2-35be-f74d-ad7b-d9c324cba1cf@linaro.org>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.42]); Thu, 10 Oct 2019 06:16:07 +0000 (UTC)
-X-TUID: 3hsG4YBXGmCR
+In-Reply-To: <20191010061600.pwhos4huazbsv6kn@kamzik.brq.redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: 9aK24MmnRAFz
 
-On Wed, Oct 09, 2019 at 08:39:21PM -0400, Richard Henderson wrote:
-> On 10/4/19 8:03 AM, Andrew Jones wrote:
-> > +#ifdef TARGET_AARCH64
-> > +static off_t sve_zreg_offset(uint32_t vq, int n)
-> > +{
-> > +    off_t off = sizeof(struct aarch64_user_sve_header);
-> > +    return ROUND_UP(off, 16) + vq * 16 * n;
-> > +}
-> > +static off_t sve_preg_offset(uint32_t vq, int n)
-> > +{
-> > +    return sve_zreg_offset(vq, 32) + vq * 16 / 8 * n;
-> > +}
-> > +static off_t sve_fpsr_offset(uint32_t vq)
-> > +{
-> > +    off_t off = sve_preg_offset(vq, 17) + offsetof(struct aarch64_note, sve);
-> > +    return ROUND_UP(off, 16) - offsetof(struct aarch64_note, sve);
-> > +}
-> > +static off_t sve_fpcr_offset(uint32_t vq)
-> > +{
-> > +    return sve_fpsr_offset(vq) + sizeof(uint32_t);
-> > +}
-> > +static uint32_t sve_current_vq(CPUARMState *env)
-> > +{
-> > +    return sve_zcr_len_for_el(env, arm_current_el(env)) + 1;
-> > +}
-> > +static size_t sve_size_vq(uint32_t vq)
-> > +{
-> > +    off_t off = sve_fpcr_offset(vq) + sizeof(uint32_t) +
-> > +                offsetof(struct aarch64_note, sve);
-> > +    return ROUND_UP(off, 16) - offsetof(struct aarch64_note, sve);
-> > +}
-> > +static size_t sve_size(CPUARMState *env)
-> > +{
-> > +    return sve_size_vq(sve_current_vq(env));
-> > +}
+On 10/10/19 2:16 AM, Andrew Jones wrote:
+>> It might be best to avoid the ifdef altogether:
+>>
+>>     for (i = 0; i < 32; ++i) {
+>>         uint64_t *d = (uint64_t *)&buf[sve_zreg_offset(vq, i)];
+>>         for (j = 0; j < vq * 2; ++j) {
+>>             d[j] = cpu_to_le64(env->vfp.zregs[i].d[j]);
+>>         }
+>>     }
+>>
+>> The compiler may well transform the inner loop to memcpy for little-endian
+>> host, but even if it doesn't core dumping is hardly performance sensitive.
 > 
-> Watch the missing spaces between functions.
+> True. I even had something like the above at first, but then
+> overcomplicated it with the #ifdef-ing.
 
-I'll put in the blank lines
+Ah, I wonder if you changed things around with the ifdefs due to the pregs.
+There's no trivial solution for those.  It'd be nice to share the bswapping
+subroutine that you add in the SVE KVM patch set, and size the temporary array
+using ARM_MAX_VQ.
 
-> 
-> > +    for (i = 0; i < 32; ++i) {
-> > +#ifdef HOST_WORDS_BIGENDIAN
-> > +        uint64_t d[vq * 2];
-> > +        int j;
-> > +
-> > +        for (j = 0; j < vq * 2; ++j) {
-> > +            d[j] = bswap64(env->vfp.zregs[i].d[j]);
-> > +        }
-> > +#else
-> > +        uint64_t *d = &env->vfp.zregs[i].d[0];
-> > +#endif
-> > +        memcpy(&buf[sve_zreg_offset(vq, i)], &d[0], vq * 16);
-> > +    }
-> 
-> We should avoid the variable sized array here.
-> 
-> It might be best to avoid the ifdef altogether:
-> 
->     for (i = 0; i < 32; ++i) {
->         uint64_t *d = (uint64_t *)&buf[sve_zreg_offset(vq, i)];
->         for (j = 0; j < vq * 2; ++j) {
->             d[j] = cpu_to_le64(env->vfp.zregs[i].d[j]);
->         }
->     }
-> 
-> The compiler may well transform the inner loop to memcpy for little-endian
-> host, but even if it doesn't core dumping is hardly performance sensitive.
 
-True. I even had something like the above at first, but then
-overcomplicated it with the #ifdef-ing.
-
-Thanks,
-drew
+r~

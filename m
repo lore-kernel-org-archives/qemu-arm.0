@@ -1,121 +1,101 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp417037wrm;
-        Thu, 10 Oct 2019 23:06:57 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx8SfgW9a7bi+61aRV+gxidbYgdsiIKP/Nx6OhdEvUqtm6c+9SdpAsmc3WU9Q+s7oPWMjkF
-X-Received: by 2002:a17:906:6d08:: with SMTP id m8mr12009538ejr.150.1570774017741;
-        Thu, 10 Oct 2019 23:06:57 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1570774017; cv=pass;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp529987wrm;
+        Fri, 11 Oct 2019 01:19:03 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzVqgCeQorl4WlTAFWejIFvN0A9t+uPNr91MujMnMw7F5yoY+mipS836LUd/iUAooIdgvcs
+X-Received: by 2002:a17:907:20c5:: with SMTP id qq5mr12425962ejb.96.1570781943036;
+        Fri, 11 Oct 2019 01:19:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570781943; cv=none;
         d=google.com; s=arc-20160816;
-        b=yttcVSpT73cmHDlwQiHabaNfM4nulPs1E+IfQTiQw9B7bpkzF3IvcqlnbJ2CweNdsC
-         9pt7uGYKJ2heA4xd1XDvItW0YLuB4Vab3pbjSfGK0YToGly7lAONpOmwNG2o2cFDxH9c
-         0LKCrgW1bIQ0lGqK/C8A0CRT6XrFq4KCrJRU0s24jtGnn3q7Jeg3mo20FchAVxjJQbls
-         KarBpua2bOvllyu/XK3pGfjBZWmNA9yD2vDx5ZYO06aTkdYQidyqgYMPRgb73NtJGv4v
-         yGMDsO3aqPll5vKxb7qp54+cQt7lGod4siADwVCgf079NSaVouFwEW0pKWIqriyyX/yh
-         3mQw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=sO9WeZfSk0OAc8VJGvNqD64LSdgczlvsCTBS9+RMYoowC6tIyIHmfo8t0xpr87FQa1
+         EVs2kZ8Mg35Sud0NVB/n9q7iHFHSu1w0zidn8JLUtYkquEZrEsBixzvr2fpkxMma+k7A
+         SbmJkKnTYxq/v3AVGnvSYiN7XgyJin4LQEfcDR0iCY7/HiFJWB96wCWQAFg7kz17G6/X
+         qZ73ZDNQZuwXHO+HsJI3mM3qdcOWECgWz3h6WIg/vlyygyaAX7hkW4oeIpwuhzxOt4xb
+         C9EFWMnGJ2V4BNVCvzfZVTQGRKxX87D3Ao38hmY+pMoO4PGXcCynkh+0LUpzUWu9PvJN
+         j5rw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:to:from:dkim-signature:dkim-signature;
-        bh=qciT2AYYz0s/IEru+UKwALQhX5VITMb5pvS9TnzPOdo=;
-        b=xjP52blbl2wDUmvphHcMrEAZ5fscxeAd3Spsq6shT7Ib3hIm/K/eizMrg0q+/hLOxv
-         QnLdzB0KVfcQEBmNOMKKMyxAs214V92ACnffOiCvrm0EfKlzsJMLoQdO0//yub1COqbf
-         GdnzAyYX35zhCpqRZX4qp5ts5oBZ1JBKeZkjxkQ6e+wzfCH8t4C47PPKdSqNxheNds16
-         GOYyV7aWJ0eWzGH384F36kLj+aBIzW3TDweNlpB9d92zYtNKL2du+uWbAuBh/KGeHECE
-         sdUiCbtIVzoM85TRSM0/9aXkRQ6d5R97KCQA57BkzWDOXA9hihSJEvGi9aN1FsMwQ7LB
-         14+Q==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=fail header.i=@marvell.com header.s=pfpt0818 header.b=cwbMxT3l;
-       dkim=pass header.i=@marvell.onmicrosoft.com header.s=selector2-marvell-onmicrosoft-com header.b=wyzoO5zd;
-       arc=pass (i=1 spf=pass spfdomain=marvell.com dkim=pass dkdomain=marvell.com dmarc=pass fromdomain=marvell.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=marvell.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:openpgp:from:references:to:subject:dkim-signature;
+        bh=1jV/mODnn2DVH9KFxtojSvl+p43Aps7LrdTlKd/bW9s=;
+        b=Cx/hF1C1Uh1kjidVO585BiuXAOJ8ebMmXDlrTLUzPSPw3Mkdd5ekmgSgljB6IKoDoA
+         evtBQlPnPhAu4foA80lGTM1aQZH/ewT3KzHiKm5KK4P2rrOHKc7RB3f+Y1mkZLxzTxMc
+         5LoQr2uSfo8jzXZ3osn08kiQWGqe/EKKTeE94VL8yabE2lhohSAbM8YqL4mjUju+8M0U
+         ucJnw5FGbrbNzeJ7iTNXBhDDhi92Ung1MsRdRtkh97GA312FBuL5n55PtjccQ7IQCcLG
+         q0jvWpFygehR++vesdn4QL9qmBDG7WugtdGL+DPtNXgFHE6bSnKRwF+M5WCRWMoVk7Eq
+         pPlA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=H+ic4bi1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g5si4598370ejp.430.2019.10.10.23.06.57
+        by mx.google.com with ESMTPS id e4si4861280ejd.32.2019.10.11.01.19.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Oct 2019 23:06:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 11 Oct 2019 01:19:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@marvell.com header.s=pfpt0818 header.b=cwbMxT3l;
-       dkim=pass header.i=@marvell.onmicrosoft.com header.s=selector2-marvell-onmicrosoft-com header.b=wyzoO5zd;
-       arc=pass (i=1 spf=pass spfdomain=marvell.com dkim=pass dkdomain=marvell.com dmarc=pass fromdomain=marvell.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=marvell.com
-Received: from localhost ([::1]:46134 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=H+ic4bi1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47104 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iIo4m-0000mB-Mn
-	for alex.bennee@linaro.org; Fri, 11 Oct 2019 02:06:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50211)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iIq8b-0003ZA-4T
+	for alex.bennee@linaro.org; Fri, 11 Oct 2019 04:19:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41932)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <prvs=71878e4925=jglauber@marvell.com>)
- id 1iIo3Z-0000K6-Pm
- for qemu-devel@nongnu.org; Fri, 11 Oct 2019 02:05:44 -0400
+ (envelope-from <pbonzini@redhat.com>) id 1iIq85-0003Xp-CY
+ for qemu-arm@nongnu.org; Fri, 11 Oct 2019 04:18:30 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <prvs=71878e4925=jglauber@marvell.com>)
- id 1iIo3Y-0002J6-GR
- for qemu-devel@nongnu.org; Fri, 11 Oct 2019 02:05:41 -0400
-Received: from mx0b-0016f401.pphosted.com ([67.231.156.173]:61172)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <prvs=71878e4925=jglauber@marvell.com>)
- id 1iIo3Y-0002IT-4g; Fri, 11 Oct 2019 02:05:40 -0400
-Received: from pps.filterd (m0045851.ppops.net [127.0.0.1])
- by mx0b-0016f401.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- x9B65BHw021885; Thu, 10 Oct 2019 23:05:29 -0700
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=marvell.com;
- h=from : to : cc :
- subject : date : message-id : references : in-reply-to : content-type :
- content-id : content-transfer-encoding : mime-version; s=pfpt0818;
- bh=qciT2AYYz0s/IEru+UKwALQhX5VITMb5pvS9TnzPOdo=;
- b=cwbMxT3l1cFZ7U2lh9dvnJBH7rB6c4Llakd2zhcrBpNWjvIlv/x1HfK2Vff0vw7XiFhI
- eBBdisgMQd0zk7goEYEXhvJ2CU9syxhqeUT8HP1TlkLT1qpoPbB+7U68yV+zY5t+8/j+
- Uc56BwVMxTMsMSN2NcPio4416c4P0OI0IwNAcYEgpxx/1jPDDFGBkT/V67i6DHfufOfR
- PBivlh/EHgMZ7Y86JxdQyqqkX42BqR5+jhdlZAdOMpwDCXodaBBS/CYK3E8cfjIl4hLD
- Sw5TWHYI7bHxqS02yyTVpMPdwSb7OzweYM/aQYF5BdvcCl3wCUFZChAznWULD5g02Z8x Ag== 
-Received: from sc-exch02.marvell.com ([199.233.58.182])
- by mx0b-0016f401.pphosted.com with ESMTP id 2vhdxc0dcn-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-SHA384 bits=256 verify=NOT);
- Thu, 10 Oct 2019 23:05:29 -0700
-Received: from SC-EXCH01.marvell.com (10.93.176.81) by SC-EXCH02.marvell.com
- (10.93.176.82) with Microsoft SMTP Server (TLS) id 15.0.1367.3; Thu, 10 Oct
- 2019 23:05:27 -0700
-Received: from NAM04-CO1-obe.outbound.protection.outlook.com (104.47.45.53) by
- SC-EXCH01.marvell.com (10.93.176.81) with Microsoft SMTP Server
- (TLS) id
- 15.0.1367.3 via Frontend Transport; Thu, 10 Oct 2019 23:05:27 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=GkCQK1wvqmF129E/+y/RGHyb+pTu+B2XWuKzj6uCs6bD45aYMwEbvxcguoVcRw0wBUTx8pOPkbFAWMPl8kYXvx5/6k75cK0MfRCNuH3mSRuV28yYLmRqRXHjUTewwxJIfNWddIX/azwO4JWR6LAeKZ9H6b2mG9nm8x3g3UFawCfTs4BSfjiK+rR2LsTXvB7k0VmGmX4sakHgRkeNNFSgGGQHtWEuhZ3nrCWhQ/dM8JDNObnm1SSexk6BiFAdI6bLCQH4E2G5j9IXQoyE/btUI1U5Zkrc1QDyOMrAVRkU9Viq6fT0xGHNOZp5/EzJBtsgj2Ye/+VLVyNWNn2s5ggdrA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qciT2AYYz0s/IEru+UKwALQhX5VITMb5pvS9TnzPOdo=;
- b=Ys8Sz8c9NVhk2Vz7xpGnZmipIngNPjDgGFK2sZCTJoN3aE5ooF9LQsH0/JsHr4rIBUZ6oAknshNUw/bGLhDxKfsv1P9Jm8UUMfUe72DRJSBtGDL4qnlmYLVo8VQLuEKp3RnTimBAf6Wp9+GjGDQc/FvnFdFMBt6/9ZW5fQxBs/vx1k/10Twq6sKWAlKuFm5w/E0mP0MyXBQFAKNRhyhQerN/qy0d9Tz9AmBLob1Dz4GPi2OVxA2sqRCyt16OyXyoq60m+n5cHiZm7VdOGLvZ4p7fjvGlDYK9uCq3JiHv12I3+TiLGD89kn9DezixoKt5Py6s5Ufhp3WZ8bIDmQZhrg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=marvell.com; dmarc=pass action=none header.from=marvell.com;
- dkim=pass header.d=marvell.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=marvell.onmicrosoft.com; s=selector2-marvell-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qciT2AYYz0s/IEru+UKwALQhX5VITMb5pvS9TnzPOdo=;
- b=wyzoO5zd31QsCE0IUgFwlzHkKQtUy/RHQcg5nJq8WIk9OYdB+Z97VwBUbK38So2e6m3/GdZZ9Q4s9JzeFcZk0bEYFCWNtlwemx29jU38sCnA35IYlkldjrchl1yxLlW3/sikPGp7eVZAJ8N97FWBz2uBqML+S47Q4dbjyD0RG/Y=
-Received: from DM6PR18MB3001.namprd18.prod.outlook.com (20.179.104.143) by
- DM6PR18MB2889.namprd18.prod.outlook.com (20.179.52.143) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2347.16; Fri, 11 Oct 2019 06:05:25 +0000
-Received: from DM6PR18MB3001.namprd18.prod.outlook.com
- ([fe80::11c2:98e0:b9d9:5dba]) by DM6PR18MB3001.namprd18.prod.outlook.com
- ([fe80::11c2:98e0:b9d9:5dba%5]) with mapi id 15.20.2347.016; Fri, 11 Oct 2019
- 06:05:25 +0000
-From: Jan Glauber <jglauber@marvell.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
+ (envelope-from <pbonzini@redhat.com>) id 1iIq81-00085K-0g
+ for qemu-arm@nongnu.org; Fri, 11 Oct 2019 04:18:27 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:59107
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <pbonzini@redhat.com>) id 1iIq80-00083r-Oh
+ for qemu-arm@nongnu.org; Fri, 11 Oct 2019 04:18:24 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1570781902;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=1jV/mODnn2DVH9KFxtojSvl+p43Aps7LrdTlKd/bW9s=;
+ b=H+ic4bi19ie1qnXuF9E8NyIuBWa+lSwxPWSV09ymKhEPbKn5HuRcnYVz4l61Xk9VuiBY7D
+ K0RIBZz2c3MTUUmk8gXiV8XCNrJ1uqZVHlMoRxgOLdziY455/y/6+51XPgQR5WIKMCt9MT
+ p/hc4IY3FsQFi0vvIgwS5FBwT098Gwo=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-15-yEZOd-dBNl-siOdw4Th6Ng-1; Fri, 11 Oct 2019 04:18:21 -0400
+Received: by mail-wr1-f69.google.com with SMTP id n3so4018883wrt.9
+ for <qemu-arm@nongnu.org>; Fri, 11 Oct 2019 01:18:21 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=nGQHkZKxs0mrU0xBIY0tI2iUOB1oBvE192TbOdN7jT8=;
+ b=G0fCBEw0yb7Mh1UmRbpuPY5w4IP089vcfZ9Z3DRLTbQisrOmcvrVCqWHPtSwYcnSjz
+ 5OEyfdXZnIDsx8wPebeGrmfOTACnIm5hXZqMcOMNad2RjE/BMA6KNP+hKWLuXynxPJLS
+ UPMYQdm5GUgb/8vPmXtNnsBy56F5pZggZ7/dOPyBPq1PC2er3zplt0Q22LWjZ6IRFa1x
+ zEUvvp4MlKLfVm6AfvBEyCsdtzwIGWso1YYdGGuYozS8DGxZwK3wLIaoKWIxaCJMZ5av
+ QdQzOfqwD8632B2Flaz9j3XcXIjEg148ZshsRjDjuQQqMQWja4c3DReoYLEqgAF6XC4X
+ zppg==
+X-Gm-Message-State: APjAAAVXnidcHoXKNd8KcLBA3k719dzDVUf17L4DW3rr8IqdkLWosWnz
+ dmMS91+DL4RjzczTc0rT7p5E/iR+yIP1VU3gwn0498q3RmJ0jcr+P4Ui68GWJkpiS1k5ZpQVSRR
+ cdfnJ10skQZNC
+X-Received: by 2002:adf:dd4c:: with SMTP id u12mr12379799wrm.170.1570781900549; 
+ Fri, 11 Oct 2019 01:18:20 -0700 (PDT)
+X-Received: by 2002:adf:dd4c:: with SMTP id u12mr12379777wrm.170.1570781900229; 
+ Fri, 11 Oct 2019 01:18:20 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:ddc7:c53c:581a:7f3e?
+ ([2001:b07:6468:f312:ddc7:c53c:581a:7f3e])
+ by smtp.gmail.com with ESMTPSA id e6sm8527217wre.29.2019.10.11.01.18.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 11 Oct 2019 01:18:19 -0700 (PDT)
 Subject: Re: [Qemu-devel] qemu_futex_wait() lockups in ARM64: 2 possible issues
-Thread-Topic: [Qemu-devel] qemu_futex_wait() lockups in ARM64: 2 possible
- issues
-Thread-Index: AQHVf/nf7N0H/m6eGUG8sJlCZcRBEw==
-Date: Fri, 11 Oct 2019 06:05:25 +0000
-Message-ID: <20191011060518.GA6920@hc>
+To: Jan Glauber <jglauber@marvell.com>
 References: <cbe46ad6-ef6c-d155-e79a-672182c725ad@ubuntu.com>
  <d94f18f1-986f-ec19-02c0-e83e5e7af3d0@redhat.com>
  <1864070a-2f84-1d98-341e-f01ddf74ec4b@ubuntu.com>
@@ -123,97 +103,60 @@ References: <cbe46ad6-ef6c-d155-e79a-672182c725ad@ubuntu.com>
  <6dd73749-49b0-0fbc-b9bb-44c3736642b8@redhat.com>
  <20191007144432.GA29958@xps13.dannf>
  <065a52a9-5bb0-1259-6c73-41af60e0a05d@redhat.com> <20191009080220.GA2905@hc>
- <d5367b2a-84ee-1211-a2dc-7d631c94fe3f@redhat.com>
-In-Reply-To: <d5367b2a-84ee-1211-a2dc-7d631c94fe3f@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: AM4PR0202CA0022.eurprd02.prod.outlook.com
- (2603:10a6:200:89::32) To DM6PR18MB3001.namprd18.prod.outlook.com
- (2603:10b6:5:182::15)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [46.5.207.169]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 1969f899-6e47-4f01-1a9e-08d74e1101e2
-x-ms-traffictypediagnostic: DM6PR18MB2889:
-x-microsoft-antispam-prvs: <DM6PR18MB288942E210511F2769850DB9D8970@DM6PR18MB2889.namprd18.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
-x-forefront-prvs: 0187F3EA14
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10009020)(7916004)(4636009)(396003)(376002)(346002)(39860400002)(136003)(366004)(199004)(189003)(33656002)(9686003)(71200400001)(66066001)(6116002)(2906002)(256004)(6512007)(6246003)(53546011)(6916009)(386003)(6506007)(52116002)(14444005)(3846002)(71190400001)(1076003)(5660300002)(4326008)(25786009)(76176011)(8936002)(6486002)(99286004)(11346002)(81156014)(305945005)(229853002)(8676002)(33716001)(186003)(81166006)(14454004)(7736002)(26005)(102836004)(6436002)(316002)(446003)(486006)(66476007)(4744005)(66556008)(66446008)(64756008)(66946007)(54906003)(86362001)(478600001)(476003);
- DIR:OUT; SFP:1101; SCL:1; SRVR:DM6PR18MB2889;
- H:DM6PR18MB3001.namprd18.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: marvell.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: AJ1F6muPbqBXWV71fNM3v1UP3+Dk4l+GXXy0Ujk9JM0uyUHOmmLAd5GhHHC828K0d7Px93DYPoI43nwKhalljoAbiPOnGPEIATRiuZqmVlcYUDRuH3rYKPtbvZqSI6nH4+IfVXc2F3jjFptyoEnKk0WwXFcMeRgzIphssFXdX+0BPG+tBYuI1zUoN1k68g5kRdPiS1xCkf2vBC4SSGppebodRHHZYkLcQqwvj1gdPoAKVjnErxOrrT/YqNVFeca+hCoJ7cFUUztWwS8k+pKrJmSZpya5R4B1fS5D5wgUbE1xtCmePBcfrK8bttqdPnfaVuFx8K+8Gu76OERtILPR36guZTWZXhFvSlyI/CeMkuFMdtJizXbEQ22pDUgbYBTzQKPcQQ1hY14+r5KuivD1y/LbU8p8dDZcVxVXjuB20eg=
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="us-ascii"
-Content-ID: <37F7632E33FDBD4A8FE4B6D47AED726A@namprd18.prod.outlook.com>
-Content-Transfer-Encoding: quoted-printable
+ <d5367b2a-84ee-1211-a2dc-7d631c94fe3f@redhat.com> <20191011060518.GA6920@hc>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <966c119d-aa76-2149-108f-867aebd772f7@redhat.com>
+Date: Fri, 11 Oct 2019 10:18:18 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1969f899-6e47-4f01-1a9e-08d74e1101e2
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Oct 2019 06:05:25.3327 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 70e1fb47-1155-421d-87fc-2e58f638b6e0
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 1QO57VpLdZBa6//WUyO9GQreHQnZKZuGTNJwn2BUQIY65dW67Y5ZZzaH7KWYozbfSSlrSOY6fRKnbg5zQySZJQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR18MB2889
-X-OriginatorOrg: marvell.com
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.95,1.0.8
- definitions=2019-10-11_03:2019-10-10,2019-10-11 signatures=0
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [generic] [fuzzy]
-X-Received-From: 67.231.156.173
-X-BeenThere: qemu-devel@nongnu.org
+In-Reply-To: <20191011060518.GA6920@hc>
+Content-Language: en-US
+X-MC-Unique: yEZOd-dBNl-siOdw4Th6Ng-1
+X-Mimecast-Spam-Score: 0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 207.211.31.120
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Rafael David Tinoco <rafaeldtinoco@ubuntu.com>,
  lizhengui <lizhengui@huawei.com>, dann frazier <dann.frazier@canonical.com>,
  QEMU Developers <qemu-devel@nongnu.org>,
- Bug 1805256 <1805256@bugs.launchpad.net>, QEMU
- Developers - ARM <qemu-arm@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RhQU6vFZHnhc
+ Bug 1805256 <1805256@bugs.launchpad.net>,
+ QEMU Developers - ARM <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /WuBDj33p+b2
 
-On Wed, Oct 09, 2019 at 11:15:04AM +0200, Paolo Bonzini wrote:
-> On 09/10/19 10:02, Jan Glauber wrote:
+On 11/10/19 08:05, Jan Glauber wrote:
+> On Wed, Oct 09, 2019 at 11:15:04AM +0200, Paolo Bonzini wrote:
+>>> ...but if I bump notify_me size to uint64_t the issue goes away.
+>>
+>> Ouch. :)  Is this with or without my patch(es)?
 
-> > I'm still not sure what the actual issue is here, but could it be some =
-bad
-> > interaction between the notify_me and the list_lock? The are both 4 byt=
-e
-> > and side-by-side:
-> >=20
-> > address notify_me: 0xaaaadb528aa0  sizeof notify_me: 4
-> > address list_lock: 0xaaaadb528aa4  sizeof list_lock: 4
-> >=20
-> > AFAICS the generated code looks OK (all load/store exclusive done
-> > with 32 bit size):
-> >=20
-> >      e6c:       885ffc01        ldaxr   w1, [x0]
-> >      e70:       11000821        add     w1, w1, #0x2
-> >      e74:       8802fc01        stlxr   w2, w1, [x0]
-> >=20
-> > ...but if I bump notify_me size to uint64_t the issue goes away.
+You didn't answer this question.
+
+>> Also, what if you just add a dummy uint32_t after notify_me?
 >=20
-> Ouch. :)  Is this with or without my patch(es)?
->=20
-> Also, what if you just add a dummy uint32_t after notify_me?
+> With the dummy the testcase also runs fine for 500 iterations.
 
-With the dummy the testcase also runs fine for 500 iterations.
+You might be lucky and causing list_lock to be in another cache line.
+What if you add __attribute__((aligned(16)) to notify_me (and keep the
+dummy)?
 
-Dann, can you try if this works on the Hi1620 too?
+Paolo
 
---Jan
+> Dann, can you try if this works on the Hi1620 too?
+

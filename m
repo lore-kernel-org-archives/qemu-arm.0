@@ -1,65 +1,65 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1100983wrm;
-        Fri, 11 Oct 2019 10:13:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzZbxgb2yCzg9thc6vY4kSqzXB3UrHeC8zf8LaxkAmNf7OFBEgb6P1ENXMulcmLU41Tw+Rq
-X-Received: by 2002:a0c:abcc:: with SMTP id k12mr17495770qvb.101.1570814017100;
-        Fri, 11 Oct 2019 10:13:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570814017; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1105888wrm;
+        Fri, 11 Oct 2019 10:18:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxxe+x+uyJIqlhg/ycv0Op2WO6iFFPj4wgfeYM8oZGLfkO2m44HWunSBkkwNSfag8Oimv5K
+X-Received: by 2002:ac8:4459:: with SMTP id m25mr18349529qtn.268.1570814286753;
+        Fri, 11 Oct 2019 10:18:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570814286; cv=none;
         d=google.com; s=arc-20160816;
-        b=D6TkXbEt7xHSjP6Xf5Uqy8d8UiPD/ZAoH5altWNW+RF3M61lWc/IZhyclUFaca7mW+
-         4lLO3Rqj99MgP/yDtVsi3Kl3F+/yJlUgZP/ozS1iam85I2rtXy9TUxQ3AXLshOf1l+EW
-         5yUxXKH96zhrcbILfcvIOSumiLLqSMJHlqLkhyE9TOAL9jXZN02cwQ7gby7gWLZ02t/z
-         B/bBMQbzRZrX465wb2Zi+UPJo0yKwanvK51UhgZuYXWIGmG3Wdr7fd2Ia6XU6OfKDTAN
-         sS9v1dVZYnrcO3dLywXv/LRlAphygsbWK7laXC/ZMhyLeJ4sahxI73U0ZzWecDZyK3VB
-         ekyQ==
+        b=qsRob4C/6sRlFC70/PSutjZYxQt5JQmJxJRJ1o4CdLToR9jSxMr8SinFk7+mK8CU9B
+         036Kto23JGjwhBdYJOP+16PCFv27ZDW9W6zCy7rFc9z/O3ARzvUi1I982A9rFjWCdFda
+         J3LnoeVM9P26rtmabXZ+N9lJEl+4FnlNQJ/NrWyEmw3eAThTyK5SRxKkjINisZeI+oz7
+         SYakyMWb5UdwwuCXK+BS1thigjfrz9i93bDTcfCtcMf8nPJZI6bMp52+bkYI6dEHb7oX
+         aiNHnZU1FfKV72Uijte8g6PPQDnzcHMPwbJxEjz00iQekVrYKeFFG79Ng3lKJYvALeOt
+         cMMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=Wh4v8yhw8idUv4k/LLyR8aclxgRQCay6q6zQL+5EfuY=;
-        b=vkdaithBpQoG6e0pbwsKq2aG6GC+ytX8ofFFvdPzj8uynxzBYkubHuI90p4VSIP2xG
-         HrFz0p7ThXo1GQ8BllfdKJXwAGtVW0MxVG/CZT68l+1y5FERBTVrz3f3FWx98n3krsVP
-         lM0ltuQgDlhcnjx4V97gzdA5HGGJEKi27BcOKfx8AAeH+26nIasqSdUUY56xWXxDgqd4
-         83LzJkZKJ8hM81HfYzEh5tpQteu1FkbPvAG7LyvOPb7mDWRLNNWeMuVfPKFmLllLcfVh
-         9ZeEa+jLIrrv1mWAd7mYZOlZDMqISMx7qv35/RYN/uL93vO8y149AKZJyReLGhTAEuNu
-         RiSg==
+        bh=S5Q5QWYld7SPhCl+Sp2foYjyj8RsJveahHQmOIJ1k0g=;
+        b=p+s40xTKbd0+IJblw0LftvFmZnuEK8dlVpuh91oVmvyO9V1FHAyp2U03xekQDctZ4E
+         jqOhi1sL8iL9wsqomLnWNoH8lBuf+gEnDbhu29sAYV2+ae4jO4Y4SKMiZSdKaRqs0J7V
+         ejFP+kVMYkRdKeNE+xhzuYKomf/4YTMHjJs8juFAP+z6csqmoKn1B/A2YuKr1exwweEH
+         Qtwk1ckfkEzdtVKURcg8v0iL5q3Dn/XTKt5/ZHCc6hM5OeFE6duuA5BwZyyqyXagEL//
+         lMLSKmy8ezKmdgAIxLEZA6LKgXuvQOLu2UVfbcOPyPmw8txg7Z/WtVpFyRXxpgB4v6BQ
+         FOiA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d7si9813999qko.349.2019.10.11.10.13.36
+        by mx.google.com with ESMTPS id w51si10131914qth.236.2019.10.11.10.18.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Oct 2019 10:13:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 11 Oct 2019 10:18:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=virtuozzo.com
-Received: from localhost ([::1]:54426 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54530 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iIyTw-0003dL-7H
-	for alex.bennee@linaro.org; Fri, 11 Oct 2019 13:13:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37612)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iIyYH-0001DV-Vk
+	for alex.bennee@linaro.org; Fri, 11 Oct 2019 13:18:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37793)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iIxRm-0007mz-FM
- for qemu-devel@nongnu.org; Fri, 11 Oct 2019 12:07:22 -0400
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iIxS3-0008Bg-F7
+ for qemu-arm@nongnu.org; Fri, 11 Oct 2019 12:07:40 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <vsementsov@virtuozzo.com>) id 1iIxRk-0005F1-2V
- for qemu-devel@nongnu.org; Fri, 11 Oct 2019 12:07:18 -0400
-Received: from relay.sw.ru ([185.231.240.75]:48100)
+ (envelope-from <vsementsov@virtuozzo.com>) id 1iIxRy-0005TO-R0
+ for qemu-arm@nongnu.org; Fri, 11 Oct 2019 12:07:35 -0400
+Received: from relay.sw.ru ([185.231.240.75]:48110)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <vsementsov@virtuozzo.com>)
- id 1iIxRj-0004GL-Mi; Fri, 11 Oct 2019 12:07:16 -0400
+ id 1iIxRj-0004GG-LO; Fri, 11 Oct 2019 12:07:15 -0400
 Received: from [10.94.3.0] (helo=kvm.qa.sw.ru)
  by relay.sw.ru with esmtp (Exim 4.92.2)
  (envelope-from <vsementsov@virtuozzo.com>)
- id 1iIxQb-0003XG-Ro; Fri, 11 Oct 2019 19:06:05 +0300
+ id 1iIxQb-0003XG-BC; Fri, 11 Oct 2019 19:06:05 +0300
 From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 To: qemu-devel@nongnu.org
-Subject: [RFC v5 026/126] python: add commit-per-subsystem.py
-Date: Fri, 11 Oct 2019 19:04:12 +0300
-Message-Id: <20191011160552.22907-27-vsementsov@virtuozzo.com>
+Subject: [RFC v5 024/126] error: auto propagated local_err
+Date: Fri, 11 Oct 2019 19:04:10 +0300
+Message-Id: <20191011160552.22907-25-vsementsov@virtuozzo.com>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191011160552.22907-1-vsementsov@virtuozzo.com>
 References: <20191011160552.22907-1-vsementsov@virtuozzo.com>
@@ -68,19 +68,20 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 3.x [fuzzy]
 X-Received-From: 185.231.240.75
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>, Jeff Cody <codyprime@gmail.com>,
- Jan Kiszka <jan.kiszka@siemens.com>, Alberto Garcia <berto@igalia.com>,
+ Jan Kiszka <jan.kiszka@siemens.com>, Eric Blake <eblake@redhat.com>,
+ Alberto Garcia <berto@igalia.com>,
  Hailiang Zhang <zhang.zhanghailiang@huawei.com>, qemu-block@nongnu.org,
  Aleksandar Rikalo <arikalo@wavecomp.com>, Halil Pasic <pasic@linux.ibm.com>,
  =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
@@ -105,7 +106,8 @@ Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>, Jeff Cody <codyprime@gmail.com>,
  Palmer Dabbelt <palmer@sifive.com>, Thomas Huth <thuth@redhat.com>,
  Max Filippov <jcmvbkbc@gmail.com>, "Denis V. Lunev" <den@openvz.org>,
  Hannes Reinecke <hare@suse.com>, Stefano Stabellini <sstabellini@kernel.org>,
- "Gonglei \(Arei\)" <arei.gonglei@huawei.com>, Liu Yuan <namei.unix@gmail.com>,
+ "Gonglei \(Arei\)" <arei.gonglei@huawei.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Liu Yuan <namei.unix@gmail.com>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Eric Farman <farman@linux.ibm.com>,
  Amit Shah <amit@kernel.org>, Stefan Weil <sw@weilnetz.de>,
  Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia@oracle.com>,
@@ -118,7 +120,6 @@ Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>, Jeff Cody <codyprime@gmail.com>,
  Aurelien Jarno <aurelien@aurel32.net>, Paul Burton <pburton@wavecomp.com>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>, Paul Durrant <paul@xen.org>,
  Jason Wang <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Guan Xuetao <gxt@mprc.pku.edu.cn>, Ari Sundholm <ari@tuxera.com>,
  Juan Quintela <quintela@redhat.com>, Michael Roth <mdroth@linux.vnet.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>, Joel Stanley <joel@jms.id.au>,
@@ -141,13 +142,39 @@ Cc: Ronnie Sahlberg <ronniesahlberg@gmail.com>, Jeff Cody <codyprime@gmail.com>,
  Pierre Morel <pmorel@linux.ibm.com>, Wen Congyang <wencongyang2@huawei.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QdHQsmpva0yg
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1b0H0krC3H+P
 
-Add script to automatically commit tree-wide changes per-subsystem.
+Here is introduced ERRP_AUTO_PROPAGATE macro, to be used at start of
+functions with errp OUT parameter.
+
+It has three goals:
+
+1. Fix issue with error_fatal & error_prepend/error_append_hint: user
+can't see this additional information, because exit() happens in
+error_setg earlier than information is added. [Reported by Greg Kurz]
+
+2. Fix issue with error_abort & error_propagate: when we wrap
+error_abort by local_err+error_propagate, resulting coredump will
+refer to error_propagate and not to the place where error happened.
+(the macro itself doesn't fix the issue, but it allows to [3.] drop all
+local_err+error_propagate pattern, which will definitely fix the issue)
+[Reported by Kevin Wolf]
+
+3. Drop local_err+error_propagate pattern, which is used to workaround
+void functions with errp parameter, when caller wants to know resulting
+status. (Note: actually these functions could be merely updated to
+return int error code).
+
+To achieve these goals, we need to add invocation of the macro at start
+of functions, which needs error_prepend/error_append_hint (1.); add
+invocation of the macro at start of functions which do
+local_err+error_propagate scenario the check errors, drop local errors
+from them and just use *errp instead (2., 3.).
 
 Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
 ---
 
 CC: Gerd Hoffmann <kraxel@redhat.com>
@@ -252,220 +279,58 @@ CC: qemu-ppc@nongnu.org
 CC: qemu-s390x@nongnu.org
 CC: qemu-riscv@nongnu.org
 
- python/commit-per-subsystem.py | 204 +++++++++++++++++++++++++++++++++
- 1 file changed, 204 insertions(+)
- create mode 100755 python/commit-per-subsystem.py
+ include/qapi/error.h | 38 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 38 insertions(+)
 
-diff --git a/python/commit-per-subsystem.py b/python/commit-per-subsystem.py
-new file mode 100755
-index 0000000000..2ccf84cb15
---- /dev/null
-+++ b/python/commit-per-subsystem.py
-@@ -0,0 +1,204 @@
-+#!/usr/bin/env python3
-+#
-+# Copyright (c) 2019 Virtuozzo International GmbH
-+#
-+# This program is free software; you can redistribute it and/or modify
-+# it under the terms of the GNU General Public License as published by
-+# the Free Software Foundation; either version 2 of the License, or
-+# (at your option) any later version.
-+#
-+# This program is distributed in the hope that it will be useful,
-+# but WITHOUT ANY WARRANTY; without even the implied warranty of
-+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+# GNU General Public License for more details.
-+#
-+# You should have received a copy of the GNU General Public License
-+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+#
+diff --git a/include/qapi/error.h b/include/qapi/error.h
+index d6898d833b..47238d9065 100644
+--- a/include/qapi/error.h
++++ b/include/qapi/error.h
+@@ -345,6 +345,44 @@ void error_set_internal(Error **errp,
+                         ErrorClass err_class, const char *fmt, ...)
+     GCC_FMT_ATTR(6, 7);
+ 
++typedef struct ErrorPropagator {
++    Error *local_err;
++    Error **errp;
++} ErrorPropagator;
 +
-+import subprocess
-+import sys
-+import os
-+import glob
-+
-+
-+def git_add(pattern):
-+    subprocess.run(['git', 'add', pattern])
-+
-+
-+def git_commit(msg):
-+    subprocess.run(['git', 'commit', '-m', msg], capture_output=True)
-+
-+
-+def git_changed_files():
-+    ret = subprocess.check_output(['git', 'diff', '--name-only'], encoding='utf-8').split('\n')
-+    if ret[-1] == '':
-+        del ret[-1]
-+    return ret
-+
-+
-+maintainers = sys.argv[1]
-+message = sys.argv[2].strip()
-+
-+subsystem = None
-+
-+remap = {
-+    'Block layer core': 'block',
-+    'Block Jobs': 'block',
-+    'Dirty Bitmaps': 'block',
-+    'Block QAPI, monitor, command line': 'block',
-+    'Block I/O path': 'block',
-+    'Throttling infrastructure': 'block',
-+    'Architecture support': 's390x',
-+    'Guest CPU Cores (KVM)': 'kvm',
-+    'Guest CPU Cores (Xen)': 'xen',
-+    'Guest CPU cores (TCG)': 'tcg',
-+    'Network Block Device (NBD)': 'nbd',
-+    'Parallel NOR Flash devices': 'pflash',
-+    'Firmware configuration (fw_cfg)': 'fw_cfg',
-+    'Block SCSI subsystem': 'scsi',
-+    'Network device backends': 'net',
-+    'Netmap network backend': 'net',
-+    'Host Memory Backends': 'hostmem',
-+    'Cryptodev Backends': 'cryptodev',
-+    'QEMU Guest Agent': 'qga',
-+    'COLO Framework': 'colo',
-+    'Command line option argument parsing': 'cmdline',
-+    'Character device backends': 'chardev'
++static inline void error_propagator_cleanup(ErrorPropagator *prop)
++{
++    error_propagate(prop->errp, prop->local_err);
 +}
 +
++G_DEFINE_AUTO_CLEANUP_CLEAR_FUNC(ErrorPropagator, error_propagator_cleanup);
 +
-+class Maintainers:
-+    def add(self, subsystem, path, mapper, mapper_name, glob_count=1):
-+        if subsystem in remap:
-+            subsystem = remap[subsystem]
-+        if subsystem not in self.subsystems:
-+            self.subsystems.append(subsystem)
++/*
++ * ERRP_AUTO_PROPAGATE
++ *
++ * This macro is created to be the first line of a function with Error **errp
++ * OUT parameter. It's needed only in cases where we want to use error_prepend,
++ * error_append_hint or dereference *errp. It's still safe (but useless) in
++ * other cases.
++ *
++ * If errp is NULL or points to error_fatal, it is rewritten to point to a
++ * local Error object, which will be automatically propagated to the original
++ * errp on function exit (see error_propagator_cleanup).
++ *
++ * After invocation of this macro it is always safe to dereference errp
++ * (as it's not NULL anymore) and to add information (by error_prepend or
++ * error_append_hint)
++ * (as, if it was error_fatal, we swapped it with a local_error to be
++ * propagated on cleanup).
++ *
++ * Note: we don't wrap the error_abort case, as we want resulting coredump
++ * to point to the place where the error happened, not to error_propagate.
++ */
++#define ERRP_AUTO_PROPAGATE()                                  \
++    g_auto(ErrorPropagator) _auto_errp_prop = {.errp = errp};  \
++    errp = ((errp == NULL || *errp == error_fatal)             \
++            ? &_auto_errp_prop.local_err : errp)
 +
-+        if path[-1] == '/':
-+            path = path[:-1]
-+
-+        if path in mapper:
-+            if mapper[path][1] == glob_count:
-+                print('Warning: "{}" both in "{}" and "{}" in {} mapper with '
-+                      'same glob-count={}. {} ignored for this path.'.format(
-+                        path, mapper[path][0], subsystem, mapper_name, glob_count,
-+                          subsystem))
-+                return
-+            if mapper[path][1] < glob_count:
-+                # silently ignore worse match
-+                return
-+
-+        mapper[path] = (subsystem, glob_count)
-+
-+    def __init__(self, file_name):
-+        self.map_file = {}
-+        self.map_glob_file = {}
-+        self.map_dir = {}
-+        self.map_glob_dir = {}
-+        self.map_unmaintained_dir = {
-+            'python': ('python', 1),
-+            'hw/misc': ('misc', 1)
-+        }
-+        self.subsystems = ['python', 'misc']
-+        subsystem = None
-+
-+        with open(file_name) as f:
-+            mode2 = False
-+            prevline = ''
-+            for line in f:
-+                line = line.rstrip()
-+                if not line:
-+                    continue
-+                if len(line) >= 2 and line[1] == ':':
-+                    if line[0] == 'F':
-+                        fname = line[3:]
-+                        if fname in ['*', '*/']:
-+                            continue
-+                        if os.path.isfile(fname):
-+                            self.add(subsystem, fname, self.map_file, 'file')
-+                        elif os.path.isdir(fname):
-+                            self.add(subsystem, fname, self.map_dir, 'dir')
-+                        else:
-+                            paths = glob.glob(fname)
-+                            if not paths:
-+                                print('Warning: nothing corresponds to "{}"'.format(fname))
-+                                continue
-+
-+                            n = len(paths)
-+                            for f in paths:
-+                                if os.path.isfile(f):
-+                                    self.add(subsystem, f, self.map_glob_file, 'glob-file', n)
-+                                else:
-+                                    assert os.path.isdir(f)
-+                                    self.add(subsystem, f, self.map_glob_dir, 'glob-dir', n)
-+                elif line[:3] == '---':
-+                    subsystem = prevline
-+                    if subsystem == 'Devices':
-+                        mode2 = True
-+                elif mode2:
-+                    subsystem = line
-+                prevline = line
-+
-+    def find_in_map_dir(self, file_name, mapper):
-+        while file_name != '' and file_name not in mapper:
-+            file_name = os.path.dirname(file_name)
-+
-+        return None if file_name == '' else mapper[file_name][0]
-+
-+    def find_in_map_file(self, file_name, mapper):
-+        if file_name in mapper:
-+            return mapper[file_name][0]
-+
-+    def find_subsystem(self, file_name):
-+        s = self.find_in_map_file(file_name, self.map_file)
-+        if s is not None:
-+            return s
-+
-+        s = self.find_in_map_file(file_name, self.map_glob_file)
-+        if s is not None:
-+            return s
-+
-+        s = self.find_in_map_dir(file_name, self.map_dir)
-+        if s is not None:
-+            return s
-+
-+        s = self.find_in_map_dir(file_name, self.map_glob_dir)
-+        if s is not None:
-+            return s
-+
-+        s = self.find_in_map_dir(file_name, self.map_unmaintained_dir)
-+        if s is not None:
-+            return s
-+
-+        self.subsystems.append(file_name)
-+        return file_name
-+
-+
-+def commit(subsystem):
-+    msg = subsystem
-+    if msg in remap:
-+        msg = remap[msg]
-+    msg += ': ' + message
-+    git_commit(msg)
-+
-+mnt = Maintainers(maintainers)
-+res = {}
-+for f in git_changed_files():
-+    s = mnt.find_subsystem(f)
-+    if s in res:
-+        res[s].append(f)
-+    else:
-+        res[s] = [f]
-+
-+for s in mnt.subsystems:
-+    if s in res:
-+        print(s)
-+        for f in res[s]:
-+            print('  ', f)
-+
-+for s in mnt.subsystems:
-+    if s in res:
-+        for f in res[s]:
-+            git_add(f)
-+        commit(s)
+ /*
+  * Special error destination to abort on error.
+  * See error_setg() and error_propagate() for details.
 -- 
 2.21.0
 

@@ -1,101 +1,101 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp863982wrm;
-        Fri, 11 Oct 2019 06:51:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxTjEAKWKxBYr2HtZ8JY+Mc5N/+flW8xxwBrr2zWKnUzP/Xt8JGKRfIdK4er2tSUcdzyGJ+
-X-Received: by 2002:a17:906:b817:: with SMTP id dv23mr13976728ejb.22.1570801869484;
-        Fri, 11 Oct 2019 06:51:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570801869; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp864264wrm;
+        Fri, 11 Oct 2019 06:51:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqypWShv+MzhNdHThUpdSzHdz29uiZs8o3bngsr7pGCQUs4DO31DGvZ8g1tebcjCv1auLm89
+X-Received: by 2002:a17:906:7f04:: with SMTP id d4mr14219376ejr.178.1570801886335;
+        Fri, 11 Oct 2019 06:51:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570801886; cv=none;
         d=google.com; s=arc-20160816;
-        b=HvVr1VMk+kHyhMHfKZMc/j2ifZcY/AuRwRA81PjhnON3xsX0WTjAOOVdPZS+IVvoEp
-         ULDLZaZs7a+sY7T24a8Ir0NW8iDXfLnQanh4WK0AhU5cjn0W2RHWMCJ/6bSgfYa8ouN+
-         yuLygIwr/hLqY/TG0hTtdyygRsJm3npJA6yB52QJYJ98IloeEzzBYOR6toRZYWXnkh4L
-         59dKv8U4q98qbI0drCSEYZuwTzyn8tFWfujbGDEXqFzmeMD9Q4Jtt8RTyp6v6wPp3aI+
-         quON4bP939GcN4NxYLZKgkRg9wB9EjLuTA+cr+sLy3U1W2bCLhlEDoYw18FBqUnBD1fy
-         OhAA==
+        b=HS4+hYyz8sBD5rtRh4lETnc+wGAD89/kjTMIfWroTkXJz9YvDI4GYw9gaUjcI2zLNK
+         /aM7lm/89pABYPTr8pBtLiP9HqrurptumkpSxVLoUU0ChooX+/qB04xkjfkFpwZjYlG9
+         QpZBgxb3dPOc0Nx6/XLW5u332zdoeIJp85NkXLDECPGM0/lIIdW89lsIKwfi16ACKoue
+         aT4NB5lxsr8F2r7SqZxXmEa+YYZ8++JN+iy537iOu7d1vNHqzqUCXjWRkYA1I5tu4+Xo
+         X05+zyPcfBb1f3kBToNwvPfka+JV4Ki5V+0vaNC2XergmhFaF6a6NCfiGMhMAYVAZgSH
+         pxtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=u6kz9NuK9Wp4TrtRthl3Manwia2sE3vhzut21VwbSSg=;
-        b=FpDMeS1ip1baMsOpNu1hqsm8MfccEDGi17n1dsJD8ea9rv6FO7wHWUeT2drXDk22qo
-         533FRWHHXSUq3IEIxyuHbY0wPGDPRp/ovB9Jh+uhB2b6enAr8XTNEVJjv7Lj5nY9dB8O
-         PTiYrb0ISqV27xq94OIjURkVwCs5EiyL9XznY5Y9PxKdlkJ1r2HtFPG/AUu4Eh+ujEeR
-         8KND5h3iD4vxxOif2lB6/Jpzaaf3L7PxrU7fqstvmd1rfRB+wCZzrlsr4LmqoEbLz9Mh
-         qG4GB/qWUhbc25/GPmvADVtb5fxkNMUuCHBD9V8Vbfr3rK/SmeUGoGv3sqSx2LS/5s2Q
-         me2w==
+        bh=o8+XY/UcseGCyRDxlQOhrRq4L82DVUKd4GlR/wFLdGQ=;
+        b=Ouhj6asY6HFhD11Aen/bzQqFISXjsyfbjhjJ9XNiBg5F1rkTuEFKWlPlE1to4aRbrQ
+         kuScr7XatPkpWyStSlRSpOG97D8IARiozhJi8VSCMoE7qW7B9ylZP7Cy9wId8oOgw4Mj
+         aRPTyjI5CL3jpj2ivwJcldoh16Nge4HFhKrxMfQcjKxFCZuZ5IEiQKFpj9qZ119Tia08
+         Vc5AyIPc2SRGO7kWCOHX1RVQpjiVKI5iGIVOpOmsPuMoksfLYXJgWWPasoDvVqvjb8zo
+         oafAjIsTnQkI78QTuezz5S6E9wqtMtctR2eYAd5QgtPrarWcI0A3gZJAAi0+450WcpLy
+         mN9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=WI5AX+15;
+       dkim=fail header.i=@linaro.org header.s=google header.b=XxMkP3cu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ck24si5302921ejb.400.2019.10.11.06.51.09
+        by mx.google.com with ESMTPS id x3si5671027eda.285.2019.10.11.06.51.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Oct 2019 06:51:09 -0700 (PDT)
+        Fri, 11 Oct 2019 06:51:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=WI5AX+15;
+       dkim=fail header.i=@linaro.org header.s=google header.b=XxMkP3cu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50558 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50562 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iIvK0-0006Sb-2z
-	for alex.bennee@linaro.org; Fri, 11 Oct 2019 09:51:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38666)
+	id 1iIvKG-0006ou-TN
+	for alex.bennee@linaro.org; Fri, 11 Oct 2019 09:51:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38953)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1iIvHt-0003d4-Ak
- for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:48:58 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1iIvIz-0005Qo-OM
+ for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:50:06 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1iIvHr-0003NT-Vx
- for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:48:57 -0400
-Received: from mail-yw1-xc44.google.com ([2607:f8b0:4864:20::c44]:33434)
+ (envelope-from <richard.henderson@linaro.org>) id 1iIvIy-0003q1-Gb
+ for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:50:05 -0400
+Received: from mail-yw1-xc42.google.com ([2607:f8b0:4864:20::c42]:46793)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1iIvHr-0003Mm-Rv
- for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:48:55 -0400
-Received: by mail-yw1-xc44.google.com with SMTP id w140so3503324ywd.0
- for <qemu-arm@nongnu.org>; Fri, 11 Oct 2019 06:48:55 -0700 (PDT)
+ id 1iIvIy-0003pr-CA
+ for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:50:04 -0400
+Received: by mail-yw1-xc42.google.com with SMTP id l64so3371948ywe.13
+ for <qemu-arm@nongnu.org>; Fri, 11 Oct 2019 06:50:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=u6kz9NuK9Wp4TrtRthl3Manwia2sE3vhzut21VwbSSg=;
- b=WI5AX+15EMrGSqPRoSd9m1GVeMzKoIv+IbLNVd57Ti9Qhf7ii5bNn1Gr0f2BXh7JQl
- O3bciESry5V3pSdA4VExdKm+skOnrLcIUbyyicYjy/CDTGlZtPHtOi/VP+dtZXHFZDzo
- yp4+kzdHIPz7Nolj9N0l6DBQN+64oBISD+WYi4dFjrWzIwRz1JnLNt0Ad+92ivX/RJJl
- SVLqEL7c+XtZaeVDmUbwhtokaEdbB7oif71SrC862ricsdPbGh+PSLG4poKXOsFxafdN
- SbbpiO5sm1HCZiihBQNvVg8NZ1j00O3JJ5YLNotKJZaRBFhCRFrUH+aJ5tooe+s5nIQi
- dNYw==
+ bh=o8+XY/UcseGCyRDxlQOhrRq4L82DVUKd4GlR/wFLdGQ=;
+ b=XxMkP3cuC45PymTfi2IKBDZt8J4WXEa/gzYz/z/Au1ZuaM/U+Wh2+/Z6pXS41OU/Bu
+ yWa539MQMIWZrGmU10sEDGYBRQ1KQ8l/vADphQ+MWVVeeEh0CJaUngIckbrX0HkJLI+p
+ 0VhWb5Puue2V10/LNoEfVIjOhgIe38THpT51yu0iUH+saSuLZJsNT9hHC5AThQZP4sL8
+ Y8BNI5sPGcXAiFy2pQsjOrHoQAajSpaGoRYnJodvF2mIVval+f1rvyDfy7xZqStgE9/Q
+ 4O5GzKPSepeAPP/MxobLIKi5vnAfLdSgOyM/tGQOFOVXiVt8ustM9ZHEfg9rMFwihxi4
+ Q/kQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=u6kz9NuK9Wp4TrtRthl3Manwia2sE3vhzut21VwbSSg=;
- b=WvVdh83+NYBqffGtfdv/ua76NcuzF+r+OKTQvMMqil6ScdD0KN5liEJzdUiPI6gs69
- 3Tw8VBcnvGf9UbK+dQ48OCbM5jHp+VOqZOliOic32sbrYOzXtudZJoT1i3WsvpRmX3k4
- L8Xg6QoL0PJz/7c/M3ucKEFqR+hGBxNVeuvVaVGqnVRsr4pLDmqWJAArUIRXohYXAkL1
- ZrT0HT9oOBju2va+p/cuHSfYmykPbcUJ3e7olkAfeSQ/aULq/x5wtHJSi5Xegm8Yadjr
- pyH+JfNXVomP5WqDN9zvsT4GkwXCJEdaz5lqxrdfbmLqK99nFaVFFPWxLNhkqDk5KjMG
- vWmA==
-X-Gm-Message-State: APjAAAXnFWKBFjqBqaoNsGCYR7CeseOzCdcFxsjD/daQyJdesIfhky2/
- xYS97Cdyrl4ZOBFAxVyfdZ/dEspJtog=
-X-Received: by 2002:a81:688a:: with SMTP id d132mr2314569ywc.452.1570801735166; 
- Fri, 11 Oct 2019 06:48:55 -0700 (PDT)
+ bh=o8+XY/UcseGCyRDxlQOhrRq4L82DVUKd4GlR/wFLdGQ=;
+ b=Ak7nAoicwpqfMFJRn86ymTipsKMHu5Oh5dIdTlGpaURvGLxINyER7CW/LLb5drlP8y
+ hTvnO/v2ZmiqZhB6I/qKwvrPZDMoNEGtwz3GRaAeG2wVilZN/o9WF12oNjqrgTH8eiBk
+ PlzJQHHG9om3O/C/uyP9yIS8+bcGeI9bx3Wn/mAjNEZ4ck1nuRpniRi/JElD/6sd0j7o
+ hEnZgq9/MiIEzOTzL4/Wx+gwrnsnRt4xFWq7nMYrUMEuaqgYY+gyZJLmqs3dDFZN+5HM
+ A9AX1cJL+gF/ep4sgco7TyvXDVsAsjGrqaoEUA4ebHiy3O/H5lggZ2D/i1fabVEjlkUV
+ n6xg==
+X-Gm-Message-State: APjAAAUsolDvXuYjwAj+upuZMhfAcvkmRfraDL0eElYBUwxkh8cfVjaJ
+ J22sv+dP+TjTMCcy1x1PumdJ0bRrjGk=
+X-Received: by 2002:a81:c8c:: with SMTP id 134mr2583852ywm.205.1570801803665; 
+ Fri, 11 Oct 2019 06:50:03 -0700 (PDT)
 Received: from cloudburst.gateway.pace.com (67.216.151.25.pool.hargray.net.
  [67.216.151.25])
- by smtp.gmail.com with ESMTPSA id f68sm2534000ywb.96.2019.10.11.06.48.37
+ by smtp.gmail.com with ESMTPSA id f68sm2534000ywb.96.2019.10.11.06.49.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 11 Oct 2019 06:48:54 -0700 (PDT)
+ Fri, 11 Oct 2019 06:50:03 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v5 03/22] target/arm: Add MTE system registers
-Date: Fri, 11 Oct 2019 09:47:25 -0400
-Message-Id: <20191011134744.2477-4-richard.henderson@linaro.org>
+Subject: [PATCH v5 08/22] target/arm: Implement the GMI instruction
+Date: Fri, 11 Oct 2019 09:47:30 -0400
+Message-Id: <20191011134744.2477-9-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20191011134744.2477-1-richard.henderson@linaro.org>
 References: <20191011134744.2477-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::c44
+X-Received-From: 2607:f8b0:4864:20::c42
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,164 +110,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Pym47keMjOTA
+X-TUID: pDeYkyCE/zmM
 
-This is TFSRE0_EL1, TFSR_EL1, TFSR_EL2, TFSR_EL3,
-RGSR_EL1, GCR_EL1, GMID_EL1, and PSTATE.TCO.
-
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v3: Add GMID; add access_mte.
-v4: Define only TCO at mte_insn_reg.
----
- target/arm/cpu.h           |  3 ++
- target/arm/internals.h     |  6 ++++
- target/arm/helper.c        | 73 ++++++++++++++++++++++++++++++++++++++
- target/arm/translate-a64.c | 11 ++++++
- 4 files changed, 93 insertions(+)
+ target/arm/helper-a64.h    | 1 +
+ target/arm/mte_helper.c    | 6 ++++++
+ target/arm/translate-a64.c | 6 ++++++
+ 3 files changed, 13 insertions(+)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 408d749b7a..d99bb5e956 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -486,6 +486,9 @@ typedef struct CPUARMState {
-         uint64_t pmccfiltr_el0; /* Performance Monitor Filter Register */
-         uint64_t vpidr_el2; /* Virtualization Processor ID Register */
-         uint64_t vmpidr_el2; /* Virtualization Multiprocessor ID Register */
-+        uint64_t tfsr_el[4]; /* tfsrel0_el1 is index 0.  */
-+        uint64_t gcr_el1;
-+        uint64_t rgsr_el1;
-     } cp15;
+diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
+index 268c114b79..31f848ca03 100644
+--- a/target/arm/helper-a64.h
++++ b/target/arm/helper-a64.h
+@@ -109,3 +109,4 @@ DEF_HELPER_FLAGS_3(mte_check3, TCG_CALL_NO_WG, i64, env, i64, i32)
+ DEF_HELPER_FLAGS_3(irg, TCG_CALL_NO_RWG, i64, env, i64, i64)
+ DEF_HELPER_FLAGS_4(addg, TCG_CALL_NO_RWG_SE, i64, env, i64, i32, i32)
+ DEF_HELPER_FLAGS_4(subg, TCG_CALL_NO_RWG_SE, i64, env, i64, i32, i32)
++DEF_HELPER_FLAGS_2(gmi, TCG_CALL_NO_RWG_SE, i64, i64, i64)
+diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
+index c3edc51bba..251dfff1e1 100644
+--- a/target/arm/mte_helper.c
++++ b/target/arm/mte_helper.c
+@@ -254,3 +254,9 @@ uint64_t HELPER(subg)(CPUARMState *env, uint64_t ptr,
  
-     struct {
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 9486680b87..bfa243be06 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1079,4 +1079,10 @@ void arm_log_exception(int idx);
- 
- #endif /* !CONFIG_USER_ONLY */
- 
-+/*
-+ * The log2 of the words in the tag block, for GMID_EL1.BS.
-+ * The is the maximum, 256 bytes, which manipulates 64-bits of tags.
-+ */
-+#define GMID_EL1_BS  6
+     return address_with_allocation_tag(ptr - offset, rtag);
+ }
 +
- #endif
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index f9dee51ede..f435a8d8bd 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -5921,6 +5921,73 @@ static const ARMCPRegInfo rndr_reginfo[] = {
-       .access = PL0_R, .readfn = rndr_readfn },
-     REGINFO_SENTINEL
- };
-+
-+static CPAccessResult access_mte(CPUARMState *env, const ARMCPRegInfo *ri,
-+                                 bool isread)
++uint64_t HELPER(gmi)(uint64_t ptr, uint64_t mask)
 +{
-+    int el = arm_current_el(env);
-+
-+    if (el < 2 &&
-+        arm_feature(env, ARM_FEATURE_EL2) &&
-+        !(arm_hcr_el2_eff(env) & HCR_ATA)) {
-+        return CP_ACCESS_TRAP_EL2;
-+    }
-+    if (el < 3 &&
-+        arm_feature(env, ARM_FEATURE_EL3) &&
-+        !(env->cp15.scr_el3 & SCR_ATA)) {
-+        return CP_ACCESS_TRAP_EL3;
-+    }
-+    return CP_ACCESS_OK;
++    int tag = allocation_tag_from_addr(ptr);
++    return mask | (1ULL << tag);
 +}
-+
-+static uint64_t tco_read(CPUARMState *env, const ARMCPRegInfo *ri)
-+{
-+    return env->pstate & PSTATE_TCO;
-+}
-+
-+static void tco_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t val)
-+{
-+    env->pstate = (env->pstate & ~PSTATE_TCO) | (val & PSTATE_TCO);
-+}
-+
-+static const ARMCPRegInfo mte_reginfo[] = {
-+    { .name = "TFSRE0_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 6, .crm = 6, .opc2 = 1,
-+      .access = PL1_RW, .accessfn = access_mte,
-+      .fieldoffset = offsetof(CPUARMState, cp15.tfsr_el[0]) },
-+    { .name = "TFSR_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 6, .crm = 5, .opc2 = 0,
-+      .access = PL1_RW, .accessfn = access_mte,
-+      .fieldoffset = offsetof(CPUARMState, cp15.tfsr_el[1]) },
-+    { .name = "TFSR_EL2", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 4, .crn = 6, .crm = 5, .opc2 = 0,
-+      .access = PL2_RW, .accessfn = access_mte,
-+      .fieldoffset = offsetof(CPUARMState, cp15.tfsr_el[2]) },
-+    { .name = "TFSR_EL3", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 6, .crn = 6, .crm = 6, .opc2 = 0,
-+      .access = PL3_RW,
-+      .fieldoffset = offsetof(CPUARMState, cp15.tfsr_el[3]) },
-+    { .name = "RGSR_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 1, .crm = 0, .opc2 = 5,
-+      .access = PL1_RW, .accessfn = access_mte,
-+      .fieldoffset = offsetof(CPUARMState, cp15.rgsr_el1) },
-+    { .name = "GCR_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 0, .crn = 1, .crm = 0, .opc2 = 6,
-+      .access = PL1_RW, .accessfn = access_mte,
-+      .fieldoffset = offsetof(CPUARMState, cp15.gcr_el1) },
-+    { .name = "GMID_EL1", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 1, .crn = 0, .crm = 0, .opc2 = 4,
-+      .access = PL1_R, .type = ARM_CP_CONST, .resetvalue = GMID_EL1_BS },
-+    REGINFO_SENTINEL
-+};
-+
-+static const ARMCPRegInfo mte_tco_reginfo[] = {
-+    { .name = "TCO", .state = ARM_CP_STATE_AA64,
-+      .opc0 = 3, .opc1 = 3, .crn = 4, .crm = 2, .opc2 = 7,
-+      .type = ARM_CP_NO_RAW,
-+      .access = PL0_RW, .readfn = tco_read, .writefn = tco_write },
-+    REGINFO_SENTINEL
-+};
- #endif
- 
- static CPAccessResult access_predinv(CPUARMState *env, const ARMCPRegInfo *ri,
-@@ -6881,6 +6948,12 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-     if (cpu_isar_feature(aa64_rndr, cpu)) {
-         define_arm_cp_regs(cpu, rndr_reginfo);
-     }
-+    if (cpu_isar_feature(aa64_mte_insn_reg, cpu)) {
-+        define_arm_cp_regs(cpu, mte_tco_reginfo);
-+    }
-+    if (cpu_isar_feature(aa64_mte, cpu)) {
-+        define_arm_cp_regs(cpu, mte_reginfo);
-+    }
- #endif
- 
-     /*
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index c85db69db4..62bdf50796 100644
+index 26aee0c1c9..4184d65d97 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -1611,6 +1611,17 @@ static void handle_msr_i(DisasContext *s, uint32_t insn,
-         s->base.is_jmp = DISAS_UPDATE;
+@@ -5188,6 +5188,12 @@ static void disas_data_proc_2src(DisasContext *s, uint32_t insn)
+         gen_helper_irg(cpu_reg_sp(s, rd), cpu_env,
+                        cpu_reg_sp(s, rn), cpu_reg(s, rm));
          break;
- 
-+    case 0x1c: /* TCO */
-+        if (!dc_isar_feature(aa64_mte_insn_reg, s)) {
++    case 5: /* GMI */
++        if (sf == 0 || !dc_isar_feature(aa64_mte_insn_reg, s)) {
 +            goto do_unallocated;
 +        }
-+        if (crm & 1) {
-+            set_pstate_bits(PSTATE_TCO);
-+        } else {
-+            clear_pstate_bits(PSTATE_TCO);
-+        }
++        gen_helper_gmi(cpu_reg(s, rd), cpu_reg_sp(s, rn), cpu_reg(s, rm));
 +        break;
-+
-     default:
-     do_unallocated:
-         unallocated_encoding(s);
+     case 8: /* LSLV */
+         handle_shift_reg(s, A64_SHIFT_TYPE_LSL, sf, rm, rn, rd);
+         break;
 -- 
 2.17.1
 

@@ -1,101 +1,101 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp872727wrm;
-        Fri, 11 Oct 2019 07:00:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyPRUpCuKEGXsS6CuLrdwLXGAojMqDkRS8ctUAlZCOBucpJeNoS00rSbHHLQ/lUxNXZv43v
-X-Received: by 2002:a05:6214:1234:: with SMTP id p20mr16374848qvv.204.1570802416623;
-        Fri, 11 Oct 2019 07:00:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570802416; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp872901wrm;
+        Fri, 11 Oct 2019 07:00:25 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqz5ebbNxpiS+jIqw9oKjgNVp+MXTUtSu6A2fHqSO8p/8a2q3HyfApTLVuShhpBThm88a+4i
+X-Received: by 2002:a0c:eda9:: with SMTP id h9mr6565473qvr.125.1570802425700;
+        Fri, 11 Oct 2019 07:00:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570802425; cv=none;
         d=google.com; s=arc-20160816;
-        b=I711Qc4I0cZVZqdrF0sYMVglHUPHDvKg9AI279+h6/nepk1+UPAdaZWFSKv90L2ygr
-         jFAwOwOIi5ijTJpPWcOWMQCwm4La9ypMteYmwYyqC5Qa4enPSiKWEtM6AltOZTjku8Db
-         PWJg2UNAbk0xrClxbwHBHLfsuuyDQdultV394n0/axI3sNhgfRhoFjLs7g1C94C+VraV
-         tmtBHTt2/jbddrixAipmUyq6Ql9HOXqMh+YwsUK1Qx16WzDKIkS6ofXUI3AyVlguIIzG
-         kJusgV+16OBsMYFWcXxvPlB9RiZFtzw6fpIOljOV1gBG23/yVEC1U7DjYrYcfl29FsL+
-         xsdg==
+        b=L2GrU06zbtcp0DGC72cTPtDbMfI5KeSJ9V8CYZ5z7vllJoOhfaHLWip2fkxSit64h0
+         VC8/ai4l7gDV4Suc6rBcDvCPTH+msR9SdW9IfW2PRO1fOsF/0Z4wjrY1tg3WDTKgkPrh
+         qu5ikzQNTF4QfH/IRdLH+qAwxGZD1qDwySDfwWTi/2X3LY5f9buz/pceetBIV3ufbNAh
+         0c19zVfBHDfcy6zx50gHqxcC+fwzMy2RXj5BqR9tOXFmmE/G8AprKiAmqPCzKpLio8wU
+         /eKAiqt0Nx5wwegXJJZ0/QMLFA6tyAVn4146voKCbzfOpSwAnKd2+4If+uNrOIHAAkaW
+         sfvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=BzP/FFrDkoCzHDBfpSksVJlWN9Ryii7p6SjFwNyKnoU=;
-        b=nK80SsqmHxOVhlXIgc9dcTFFD4wNopP8cuVIdiZs7EfUfPdwoKLcsBU6AV12j6jN7f
-         L3D7XaWzmI2BKF2EJM6vpSC1LoZvhT/5tvLX4oGdIFTa36K7u+ONsC8ejHSfoCaR8G/H
-         Kq5qj4XTNRHT7v5kGSMb8wLPKPooGj2MiZDNbLoPV3a4Fu0K1SsjQzXTThjiHE5PxH6w
-         ckZBHTvu//JsLcGWAyhy80+j9BRrBXddZRrIHlObvkDSknRYaE+4iID1m0loNM70osVQ
-         /swz227DVasd2rQ654sJ10LDB2QXkgtiKk4c8O7Wt9FfuLphAMhj+NYtFR/xHXSmPW6J
-         99hQ==
+        bh=FsDGTUNWhld8pKv/D95R5WX/niSk10RfgZKCNlYPPEU=;
+        b=cxPbhDWqegCk2MoG6Oifa+f8wmJ5o5XOU+tO9ipWdVMvfEjUExfPUAIIK+1tSKWKsz
+         3TZHW/IMqCa2BP59WeViKqE9yRsM24ij9GbZ1yj8MtXE0NQhATsgJlEFERfwUldV0fxC
+         YD7N/iRITY7teql49zQG2lJIElHYxyW1KuvlWNF3SvCFyVQwK0aaxlX/XPYxP+YhfORV
+         cesEdoDk3oEWcl14kpjLtAh15ns0Wzc5hxitesO+K2n3mW0r1PREyl9k5EAvC1mziAdP
+         utfUisTnrcpUQDWVqRMv0rnzQPo13fowWpdjygDHASI5qvQQI4YI2rOKcF5MulQaMEc4
+         1f1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=AqkZODQV;
+       dkim=fail header.i=@linaro.org header.s=google header.b=uQe12jG1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o38si8422597qve.161.2019.10.11.07.00.16
+        by mx.google.com with ESMTPS id x58si8671091qtk.93.2019.10.11.07.00.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Oct 2019 07:00:16 -0700 (PDT)
+        Fri, 11 Oct 2019 07:00:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=AqkZODQV;
+       dkim=fail header.i=@linaro.org header.s=google header.b=uQe12jG1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50794 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50804 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iIvSp-0001U4-Jr
-	for alex.bennee@linaro.org; Fri, 11 Oct 2019 10:00:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39271)
+	id 1iIvSy-0001go-Ha
+	for alex.bennee@linaro.org; Fri, 11 Oct 2019 10:00:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39179)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1iIvJK-00063F-Qt
- for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:50:27 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1iIvJG-0005vu-MZ
+ for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:50:24 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1iIvJJ-00047v-NH
- for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:50:26 -0400
-Received: from mail-yw1-xc42.google.com ([2607:f8b0:4864:20::c42]:34911)
+ (envelope-from <richard.henderson@linaro.org>) id 1iIvJE-00042O-W6
+ for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:50:22 -0400
+Received: from mail-yb1-xb41.google.com ([2607:f8b0:4864:20::b41]:42564)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1iIvJJ-00047Q-Em
- for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:50:25 -0400
-Received: by mail-yw1-xc42.google.com with SMTP id r134so3502770ywg.2
- for <qemu-arm@nongnu.org>; Fri, 11 Oct 2019 06:50:25 -0700 (PDT)
+ id 1iIvJE-000420-Ri
+ for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:50:20 -0400
+Received: by mail-yb1-xb41.google.com with SMTP id 4so3108106ybq.9
+ for <qemu-arm@nongnu.org>; Fri, 11 Oct 2019 06:50:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=BzP/FFrDkoCzHDBfpSksVJlWN9Ryii7p6SjFwNyKnoU=;
- b=AqkZODQVhA9/WR2YJsfGrFlyLg4lQqOmCuQ0HC5OfNv23kCK2P6hgpaP6fUkiP4ikF
- hUWt8U+8jkxWhD0FKjp2nEcyGHZEJDCzyu7PLJbwMjJx4jQCbUgdQ8OIhdSpS4hDBibf
- T/LLCfpNIsbRh6Nv6KXLV2tjYAk6T94JD55f88+c6TZ/XhMcpq6Uyh03s3EZ+RKq9+JD
- 9tX4zvU0OsWOVUOS0JvJWtmixKhiregKwL9Kn4zZrjyX73BelZArm9kMZXeMRT9PCxSw
- ormYGSJlrWJDOzGd/vaMaUPvr0KHyRLJvYzuf9HdKkBYnQL0buaJDnrmd+RmK1d4XEle
- vGcw==
+ bh=FsDGTUNWhld8pKv/D95R5WX/niSk10RfgZKCNlYPPEU=;
+ b=uQe12jG1RCJIbS4EA0C80B7C4smnmENpc+ZdK9Vpnmo+RtVfnTB5Suw7lzbPpN4x15
+ VfbvKlgHiNHagpIphFFyumfE3OQqibLcWb/c85NxlODsQ0NkghJnAAAhDPI5/+cY+6yT
+ NAL4POBBZLatnN2u1ZaQsEjlBFfhpElI3J7OZ1BRwnz6c6NPeZ3/97XEbWHt4AkJkUlk
+ S6uUEck0K6ueteCTlKwPBtv2evnIWNN4x1TVDKG/rkaSPr4dUNO6Fng23p9z+POlfGa2
+ J3JmoFgcgZiVMEowY18eSLEIpI5cYle2q2N4USD47H6ZcnqglOWUtxxbXWMtf/0uyBwe
+ dvbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=BzP/FFrDkoCzHDBfpSksVJlWN9Ryii7p6SjFwNyKnoU=;
- b=W/8Yt4vywW+tZ6NW9jjvWCtNgL43/l9ukxwvAekNBkp8ItZX1xZc4IfSbHsEpCCR3X
- JfT3RYl4ERVAFDTXcBwUUinwS2K6RY/zu4RjPp/OlvaqJ0NQSv7F8KklmQHyAoCCRFT6
- 0M9qzgeDhotzllbbqZZzdNce7xebVlsg1qtFT6BzkmWBJfkM9YekN5vLzonn8CYSzauG
- p2RB23Cxx2BipPqgoG17vXczJ0ojTfUaW9YmUzU+KNXr4WllUXe4XYh34BUyJSaMLlfd
- SmsgrSwvaeOftgmXbFHMVcKlDUDmVohLtDmQv1Nyr8j1wf+SwgzWBpM0mOGjQI9o92ay
- 2pQA==
-X-Gm-Message-State: APjAAAX7M5cablnhVHtcJAxRvreHoUpiSo9h0Hw0D926xT4gCnIIJqp+
- Tn8wWvlmMeRXkcKBpDcOaP2FSw==
-X-Received: by 2002:a81:3986:: with SMTP id g128mr2497798ywa.487.1570801824830; 
- Fri, 11 Oct 2019 06:50:24 -0700 (PDT)
+ bh=FsDGTUNWhld8pKv/D95R5WX/niSk10RfgZKCNlYPPEU=;
+ b=uHWKFG791ebOi5D/ygJr0TLtnCOhiH8FZfN1vyv+AbRHXh2+TDqBQVqWAZdfdo5xC9
+ vv0b41WUcWebkjIefgcQHW6kweP4sGNtI3MHdESnPJOdi8Agz/cPQzYee6tGqbvX46Pj
+ lVrr407cOQRvvndEl4BEzdxvEuFjyok8iUIYvd0W7y56v7Og2hEQqUaP+jeEof5HJp/y
+ 3zgNg3e+VavNb1ORH9//5qBAazsQ2qPVEE4N7jvhFGPl4pErFy5uJB3/AJj018Hi6SkW
+ QBYvNARbbjUSbHDfvKLO8OR8hjEY4u71EekHlL0X7gj97k0dWY6ZkZkdxXrUpzYpgc+5
+ VffQ==
+X-Gm-Message-State: APjAAAU6nn9D8lM51f0KSuCnw6T7bYuRLvjyeYbdY5DeHMX1IU/UonFu
+ NPtoSQ9O08qIdxaxLzg7VgQzr57+s9k=
+X-Received: by 2002:a25:d20f:: with SMTP id j15mr9913469ybg.174.1570801820185; 
+ Fri, 11 Oct 2019 06:50:20 -0700 (PDT)
 Received: from cloudburst.gateway.pace.com (67.216.151.25.pool.hargray.net.
  [67.216.151.25])
- by smtp.gmail.com with ESMTPSA id f68sm2534000ywb.96.2019.10.11.06.50.23
+ by smtp.gmail.com with ESMTPSA id f68sm2534000ywb.96.2019.10.11.06.50.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 11 Oct 2019 06:50:24 -0700 (PDT)
+ Fri, 11 Oct 2019 06:50:19 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v5 17/22] target/arm: Set PSTATE.TCO on exception entry
-Date: Fri, 11 Oct 2019 09:47:39 -0400
-Message-Id: <20191011134744.2477-18-richard.henderson@linaro.org>
+Subject: [PATCH v5 13/22] target/arm: Implement the LDGM and STGM instructions
+Date: Fri, 11 Oct 2019 09:47:35 -0400
+Message-Id: <20191011134744.2477-14-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20191011134744.2477-1-richard.henderson@linaro.org>
 References: <20191011134744.2477-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::c42
+X-Received-From: 2607:f8b0:4864:20::b41
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,43 +110,217 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rO3TGUs5lrQc
+X-TUID: qTNO9d9KItuN
 
-D1.10 specifies that exception handlers begin with tag checks overridden.
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v2: Only set if MTE feature present.
+v3: Require pre-cleaned addresses.
 ---
- target/arm/helper.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ target/arm/helper-a64.h    |  3 ++
+ target/arm/mte_helper.c    | 96 ++++++++++++++++++++++++++++++++++++++
+ target/arm/translate-a64.c | 42 +++++++++++++----
+ 3 files changed, 132 insertions(+), 9 deletions(-)
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index eec9064d88..e988398fce 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -8401,6 +8401,7 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
-     target_ulong addr = env->cp15.vbar_el[new_el];
-     unsigned int new_mode = aarch64_pstate_mode(new_el, true);
-     unsigned int cur_el = arm_current_el(env);
-+    unsigned int new_pstate;
- 
-     /*
-      * Note that new_el can never be 0.  If cur_el is 0, then
-@@ -8494,7 +8495,11 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
-     qemu_log_mask(CPU_LOG_INT, "...with ELR 0x%" PRIx64 "\n",
-                   env->elr_el[new_el]);
- 
--    pstate_write(env, PSTATE_DAIF | new_mode);
-+    new_pstate = new_mode | PSTATE_DAIF;
-+    if (cpu_isar_feature(aa64_mte, cpu)) {
-+        new_pstate |= PSTATE_TCO;
+diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
+index 88a0241915..405aa60016 100644
+--- a/target/arm/helper-a64.h
++++ b/target/arm/helper-a64.h
+@@ -115,3 +115,6 @@ DEF_HELPER_FLAGS_3(stg, TCG_CALL_NO_WG, void, env, i64, i64)
+ DEF_HELPER_FLAGS_3(st2g, TCG_CALL_NO_WG, void, env, i64, i64)
+ DEF_HELPER_FLAGS_3(stg_parallel, TCG_CALL_NO_WG, void, env, i64, i64)
+ DEF_HELPER_FLAGS_3(st2g_parallel, TCG_CALL_NO_WG, void, env, i64, i64)
++DEF_HELPER_FLAGS_2(ldgm, TCG_CALL_NO_WG, i64, env, i64)
++DEF_HELPER_FLAGS_3(stgm, TCG_CALL_NO_WG, void, env, i64, i64)
++DEF_HELPER_FLAGS_3(stzgm, TCG_CALL_NO_WG, void, env, i64, i64)
+diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
+index f1dd1cc0dd..f1315bae37 100644
+--- a/target/arm/mte_helper.c
++++ b/target/arm/mte_helper.c
+@@ -414,3 +414,99 @@ void HELPER(st2g_parallel)(CPUARMState *env, uint64_t ptr, uint64_t xt)
+ {
+     do_st2g(env, ptr, xt, GETPC(), store_tag1_parallel);
+ }
++
++uint64_t HELPER(ldgm)(CPUARMState *env, uint64_t ptr)
++{
++    const int size = 4 << GMID_EL1_BS;
++    int el;
++    uint64_t sctlr;
++    void *mem;
++
++    ptr = QEMU_ALIGN_DOWN(ptr, size);
++
++    /* Trap if accessing an invalid page(s).  */
++    mem = allocation_tag_mem(env, ptr, false, GETPC());
++
++    /*
++     * The tag is squashed to zero if the page does not support tags,
++     * or if the OS is denying access to the tags.
++     */
++    el = arm_current_el(env);
++    sctlr = arm_sctlr(env, el);
++    if (!mem || !allocation_tag_access_enabled(env, el, sctlr)) {
++        return 0;
 +    }
-+    pstate_write(env, new_pstate);
-     env->aarch64 = 1;
-     aarch64_restore_sp(env, new_el);
++
++#if GMID_EL1_BS != 6
++# error "Fill in the blanks for other sizes"
++#endif
++    /*
++     * We are loading 64-bits worth of tags.  The ordering of elements
++     * within the word corresponds to a 64-bit little-endian operation.
++     */
++    return ldq_le_p(mem);
++}
++
++static uint64_t do_stgm(CPUARMState *env, uint64_t ptr,
++                        uint64_t val, uintptr_t ra)
++{
++    const int size = 4 << GMID_EL1_BS;
++    int el;
++    uint64_t sctlr;
++    void *mem;
++
++    ptr = QEMU_ALIGN_DOWN(ptr, size);
++
++    /* Trap if accessing an invalid page(s).  */
++    mem = allocation_tag_mem(env, ptr, true, ra);
++
++    /*
++     * No action if the page does not support tags,
++     * or if the OS is denying access to the tags.
++     */
++    el = arm_current_el(env);
++    sctlr = arm_sctlr(env, el);
++    if (!mem || !allocation_tag_access_enabled(env, el, sctlr)) {
++        return ptr;
++    }
++
++#if GMID_EL1_BS != 6
++# error "Fill in the blanks for other sizes"
++#endif
++    /*
++     * We are storing 64-bits worth of tags.  The ordering of elements
++     * within the word corresponds to a 64-bit little-endian operation.
++     */
++    stq_le_p(mem, val);
++
++    return ptr;
++}
++
++void HELPER(stgm)(CPUARMState *env, uint64_t ptr, uint64_t val)
++{
++    do_stgm(env, ptr, val, GETPC());
++}
++
++void HELPER(stzgm)(CPUARMState *env, uint64_t ptr, uint64_t val)
++{
++    int i, mmu_idx, size = 4 << GMID_EL1_BS;
++    uintptr_t ra = GETPC();
++    void *mem;
++
++    ptr = do_stgm(env, ptr, val, ra);
++
++    /*
++     * We will have just probed this virtual address in do_stgm.
++     * If the tlb_vaddr_to_host fails, then the memory is not ram,
++     * or is monitored in some other way.  Fall back to stores.
++     */
++    mmu_idx = cpu_mmu_index(env, false);
++    mem = tlb_vaddr_to_host(env, ptr, MMU_DATA_STORE, mmu_idx);
++    if (mem) {
++        memset(mem, 0, size);
++    } else {
++        for (i = 0; i < size; i += 8) {
++            cpu_stq_data_ra(env, ptr + i, 0, ra);
++        }
++    }
++}
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 4ecb0a2fb7..4e049bb4aa 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -3592,7 +3592,7 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
+     uint64_t offset = sextract64(insn, 12, 9) << LOG2_TAG_GRANULE;
+     int op2 = extract32(insn, 10, 3);
+     int op1 = extract32(insn, 22, 2);
+-    bool is_load = false, is_pair = false, is_zero = false;
++    bool is_load = false, is_pair = false, is_zero = false, is_mult = false;
+     int index = 0;
+     TCGv_i64 dirty_addr, clean_addr, tcg_rt;
  
+@@ -3602,13 +3602,18 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
+     }
+ 
+     switch (op1) {
+-    case 0: /* STG */
++    case 0:
+         if (op2 != 0) {
+             /* STG */
+             index = op2 - 2;
+-            break;
++        } else {
++            /* STZGM */
++            if (s->current_el == 0 || offset != 0) {
++                goto do_unallocated;
++            }
++            is_mult = is_zero = true;
+         }
+-        goto do_unallocated;
++        break;
+     case 1:
+         if (op2 != 0) {
+             /* STZG */
+@@ -3624,17 +3629,27 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
+             /* ST2G */
+             is_pair = true;
+             index = op2 - 2;
+-            break;
++        } else {
++            /* STGM */
++            if (s->current_el == 0 || offset != 0) {
++                goto do_unallocated;
++            }
++            is_mult = true;
+         }
+-        goto do_unallocated;
++        break;
+     case 3:
+         if (op2 != 0) {
+             /* STZ2G */
+             is_pair = is_zero = true;
+             index = op2 - 2;
+-            break;
++        } else {
++            /* LDGM */
++            if (s->current_el == 0 || offset != 0) {
++                goto do_unallocated;
++            }
++            is_mult = is_load = true;
+         }
+-        goto do_unallocated;
++        break;
+ 
+     default:
+     do_unallocated:
+@@ -3651,7 +3666,16 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
+     clean_addr = clean_data_tbi(s, dirty_addr, false);
+     tcg_rt = cpu_reg(s, rt);
+ 
+-    if (is_load) {
++    if (is_mult) {
++        if (is_load) {
++            gen_helper_ldgm(tcg_rt, cpu_env, clean_addr);
++        } else if (is_zero) {
++            gen_helper_stzgm(cpu_env, clean_addr, tcg_rt);
++        } else {
++            gen_helper_stgm(cpu_env, clean_addr, tcg_rt);
++        }
++        return;
++    } else if (is_load) {
+         gen_helper_ldg(tcg_rt, cpu_env, clean_addr, tcg_rt);
+     } else if (tb_cflags(s->base.tb) & CF_PARALLEL) {
+         if (is_pair) {
 -- 
 2.17.1
 

@@ -1,101 +1,101 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp861680wrm;
-        Fri, 11 Oct 2019 06:48:59 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxKwepAxX1f4duMj66zw6/pREYM+DU/1Pg0A9pAQvx3n4AuECI9UXQtqJdqAUbh0wYm3unj
-X-Received: by 2002:a37:8ec5:: with SMTP id q188mr15475811qkd.495.1570801739221;
-        Fri, 11 Oct 2019 06:48:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570801739; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp862263wrm;
+        Fri, 11 Oct 2019 06:49:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzwExjmInrDabeWWgs3yzOyOSuL6PH2kjSByrSSO1QHyCQ4MFnbdgmbx5dxbvLIkgKNLX5P
+X-Received: by 2002:ae9:c307:: with SMTP id n7mr15513608qkg.185.1570801772844;
+        Fri, 11 Oct 2019 06:49:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570801772; cv=none;
         d=google.com; s=arc-20160816;
-        b=W72yrU5oXzxRjChtM929bgSF9i1yLxDn8ymJ9F5z8zfZoMoKsgko3viUca7t1u6sZU
-         uBwCOvHq4nA1TzMtNd0hiLfThw2czh78YCXp/Z0UvU7/oLyvSmrUBtzazMLKRcB2jBvs
-         le2JEnmYBXvA8pkV3zfkXyEy7EQusWj6krmygQK1v6HrojpO4vE59fN26/B/wyYgg3gX
-         J3MYeqbUZlIe1sQwCvgipRfma8MQ/GsYvfZcTZKiHG6dSegtbPemvtIdGavVQJVODdVB
-         1uduW/Ew9cq3ajGL18wcdncWPBhfmyuGMfETsFxzGa9ylYSWWee8j5xE7uNU+ZgPQm1N
-         5/2A==
+        b=pOV2B3ed0sS1/x0x1SJTaI4o7a7/p/GYcq2csML4IQJJ/hsWa8RXvqiO9OJVt9lggd
+         jvy1jamTK4fJFVA321bK8bSm4sztpCXVK+OxDAqmsrl0YdbUxsEDABUZ/uGq8ANFtNJj
+         B9qPQXF/CXeW2ZyQDUCVwtzkYnk2pjX17U+noMo305z+QuXdyEWH6A8GYGL1MXxv8PWq
+         66V7KisAVkDVaIR1BiGw6GY51VA+8r6bZ85oHKugMjM2VKGeoEGCsD2uBfHN/YG26Gn+
+         XwlPb3L+YViEW1yGS19nBUi3tMNEA9f6/Yx52veqSFTqGO46e9b+F1pZMfdX3FjixqT0
+         vaHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=kRVYi/cd4sJBmkOfsvOkC48A2821IfvOweyDTIJZmas=;
-        b=hWkzZtOOzGGjDhaS4+w4qMFCbMeRlsKKczqP6qvlm9JgLay+7+WdyewvsjgYYj0Rk7
-         BbrX5HW+erWT1aM6CzWZBHicd+GBV/6xqPNc92/FbhhbQnVESooDeAqGtJssZQEgwekF
-         deWmXksRxuyS5lhHhmdeQ85mYhTih9b/sTOc5zFCUxUl9OPdCDnP3WltSUDtLDB4yoW5
-         0SaDcUd5AUJDbv2xItKt/O/1J2wDJpaqcioFdUyktiMzhrTpFC0KpfYZP1Be0uPKSQNj
-         Br0AePUeuSFg++VDYBlJT/W+rcSQJQ7naKkSc0itpIPgCftNqsLXu1Yd3Yan5YdZalx/
-         Vbqg==
+        bh=7MAQa7mXXpZsLOEqim7Dns+DUUnYD+go50SC8EIGDGk=;
+        b=Kl2CKedj7cRyRQaf9ltefwjalAyDvtq4AZOzuw1CimGTkVqjPkhns0JU8kbZ+upKdi
+         ABZNC+oLbzFuQKNiWXP2ESaAcXfG9BcT6S56UU6edJRmGbpTXvxKW+DjSDvy5zCbWMPm
+         2BTLFq7OEONKN85uJNWTaoh/I3/QkEauh+/IYAenagQuDOj1lClkpkEi2o/562BAD6/V
+         fsHDzZN+plSpuIHZh/CPKICyaK8uVGZRlKIrW1VDlfK+etoYLtV2eaxADcx4U6GQPPKp
+         8Xah2r286x0s/mzy1IgIqSG0M3JOrcm82A7Lcb9LBYYp53WMZjIyPP9KW64G4PkBGp+M
+         CllA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Yu/oJVtW";
+       dkim=fail header.i=@linaro.org header.s=google header.b=TLSCcxPs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p186si8843126qkd.131.2019.10.11.06.48.59
+        by mx.google.com with ESMTPS id n41si8865342qvg.103.2019.10.11.06.49.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Oct 2019 06:48:59 -0700 (PDT)
+        Fri, 11 Oct 2019 06:49:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Yu/oJVtW";
+       dkim=fail header.i=@linaro.org header.s=google header.b=TLSCcxPs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50270 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50302 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iIvHu-0003NE-54
-	for alex.bennee@linaro.org; Fri, 11 Oct 2019 09:48:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38586)
+	id 1iIvIR-0004EX-Nx
+	for alex.bennee@linaro.org; Fri, 11 Oct 2019 09:49:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38716)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1iIvHZ-0003K7-4w
- for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:48:38 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1iIvIC-00049N-ON
+ for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:49:18 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1iIvHX-00036p-Us
- for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:48:37 -0400
-Received: from mail-yw1-xc41.google.com ([2607:f8b0:4864:20::c41]:42011)
+ (envelope-from <richard.henderson@linaro.org>) id 1iIvIA-0003WB-Sa
+ for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:49:16 -0400
+Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35]:38688)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1iIvHX-00036d-RF
- for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:48:35 -0400
-Received: by mail-yw1-xc41.google.com with SMTP id i207so3479905ywc.9
- for <qemu-arm@nongnu.org>; Fri, 11 Oct 2019 06:48:35 -0700 (PDT)
+ id 1iIvIA-0003W5-IH
+ for qemu-arm@nongnu.org; Fri, 11 Oct 2019 09:49:14 -0400
+Received: by mail-yb1-xb35.google.com with SMTP id r68so3115090ybf.5
+ for <qemu-arm@nongnu.org>; Fri, 11 Oct 2019 06:49:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=kRVYi/cd4sJBmkOfsvOkC48A2821IfvOweyDTIJZmas=;
- b=Yu/oJVtWKrqV6rqzPN9bt3luBufZ2oDC3OERGl0GNEiR0Ec/IrLQ/RY8dEN4N7Txsr
- JN7wwXOKpZucUAlDQxFNxdTevpFefm/oE3lkc2HLb/8rQkgrIbgBVaEKfbiF1Ma28UoU
- 9/aqem6igw2tSOnup1QKzToC/hxXzIXNIXXyG0jFh0d1sTKNkziMRqokOFmkEYRw7rkk
- ySgqA4aCmp1UYa3iC2a9j499kcfAU20V/8uLhAfp2NHkanHPZuXI1V74hVT7T9be5sc/
- nHZuxco4xVpsrXtL1UQV6gEP5snEQMcngc/mSbi3gxklON07IBhzkRFAZrXV9iE7iC05
- sJTA==
+ bh=7MAQa7mXXpZsLOEqim7Dns+DUUnYD+go50SC8EIGDGk=;
+ b=TLSCcxPsU1xpSiz5XqtEWK98olRuZv6jqle8hw1NVLcMHZoeyIWARAX/QxVvs7+YVQ
+ X4KjmFf3LrIGUbLdzsPxKkbHtm1y39Tu6ssKrdOkgQ7jOgQZcPEUO6a4EI1byh3mhdgZ
+ +DgaqHnwsDUj2Cwqf8rLSLfOhQMxnuKTNCu4TDCxjP/v4B/Su2kYtBqVIxE6rVO3U8d0
+ nuagDoC8zEUEgeKC5ESh38gcsGkb2CzL67SrwpNLWF7bB5vQbNFqZqCE4kTyL10xN4Gh
+ bnKYernnBNVKijrJ0Agwvkev3dT2Q3Kk8Ks8DmPuaE44gcp9cIkeQj2UlkpnYoVJLaee
+ 6cow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=kRVYi/cd4sJBmkOfsvOkC48A2821IfvOweyDTIJZmas=;
- b=lgg965unHfm76NnXS9LzfuIv7KHMx5zOZHO0vALTkD49nXUcw4Ti0Cem/IEGF0uzQr
- VKsVFasd3OexO1CnDxzvbiFF6OfOoECOklDQxJ+4gERpyFwed1Rc2U5m5vIIyWvCUWuX
- s4jcOzIscuAzh5Mi8HCkv5APwxZMeybKejcQ6w0Nw3nfmXMKlomQD9eqjXY4lpcA+rF4
- E+XIqhpsba6uCRntjETLno5gnfCVtgMznidl12vKVE8hblHGG2MXc+OWhuscAZTrlCl3
- EuXtVfFUqyGjIpBiyHpF0ughyo1kxMSIdDE/JMhy6gFM4VGS5DetYNdp5OumpOBVDHEi
- DohA==
-X-Gm-Message-State: APjAAAWSI++/G7k0mrrMbScAqfh1tdCbvnKggrMXnwK929wpiOQ4hETs
- lS0bHF4xKh9NC5qs1EP6nPmjAw==
-X-Received: by 2002:a81:2b09:: with SMTP id r9mr2411212ywr.346.1570801715120; 
- Fri, 11 Oct 2019 06:48:35 -0700 (PDT)
+ bh=7MAQa7mXXpZsLOEqim7Dns+DUUnYD+go50SC8EIGDGk=;
+ b=TE0Ku+NwECQa/zvBlbLB3wngU83qQxByKKjlvTx43LwEfIWPzy9lQRgYDyE1CLXdvO
+ FtSHh4nMLLChqsJdlQn9xfTEmAfZHuuw0BfaAbW1pi33yZgxU2aqZ09kQw+NySGfUhK1
+ 67IDyo/5t2rXpttVnIOfEipl7YjB6aYo9mOIEASukwIxM1CS0ArURM/Axn6ryJHAuZ6a
+ zt+n7r04aR2TGJ/TM8oFq6X2XSuNf5Vn8/G112g7pI2LOo8zZWEM8GWiyLinnnGdvHdm
+ jlx6sRnmVhuZLcx2scxPlBS45WpskvHjNMRbbJDqfpQxpvwIaJzPGeTt1qyUDGTBJhAs
+ h6Vw==
+X-Gm-Message-State: APjAAAU2GElZ4SMzbv8nZX7HglNxkrLz3BXeUMiU5bY8qeNxZmF09GP9
+ /sY9upxS4giiUlyniqCmYbHFWg==
+X-Received: by 2002:a25:3b51:: with SMTP id i78mr10621264yba.186.1570801753553; 
+ Fri, 11 Oct 2019 06:49:13 -0700 (PDT)
 Received: from cloudburst.gateway.pace.com (67.216.151.25.pool.hargray.net.
  [67.216.151.25])
- by smtp.gmail.com with ESMTPSA id f68sm2534000ywb.96.2019.10.11.06.48.17
+ by smtp.gmail.com with ESMTPSA id f68sm2534000ywb.96.2019.10.11.06.48.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 11 Oct 2019 06:48:34 -0700 (PDT)
+ Fri, 11 Oct 2019 06:49:12 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v5 02/22] target/arm: Add regime_has_2_ranges
-Date: Fri, 11 Oct 2019 09:47:24 -0400
-Message-Id: <20191011134744.2477-3-richard.henderson@linaro.org>
+Subject: [PATCH v5 04/22] target/arm: Add helper_mte_check{1,2,3}
+Date: Fri, 11 Oct 2019 09:47:26 -0400
+Message-Id: <20191011134744.2477-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20191011134744.2477-1-richard.henderson@linaro.org>
 References: <20191011134744.2477-1-richard.henderson@linaro.org>
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::c41
+X-Received-From: 2607:f8b0:4864:20::b35
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -110,118 +110,248 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4N8oTQ9WG6SO
+X-TUID: 5OzR67FfK6IM
 
-A translation with 2 ranges has both positive and negative addresses.
-This is true for the EL1&0 and the as-yet unimplemented EL2&0 regimes.
+Implements the rules of "PE generation of Checked and Unchecked
+accesses" which aren't already implied by TB_FLAGS_MTE_ACTIVE.
+Implements the rules of "PE handling of Tag Check Failure".
+
+Does not implement tag physical address space, so all operations
+reduce to unchecked so far.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h     | 14 ++++++++++++++
- target/arm/helper.c        | 22 +++++-----------------
- target/arm/translate-a64.c |  3 +--
- 3 files changed, 20 insertions(+), 19 deletions(-)
+v2: Fix TFSR update.
+v3: Split helper_mte_check per {1,2} IAs; take tbi data from translate.
+v5: Split helper_mte_check3, the only one that needs a runtime check for tbi.
+---
+ target/arm/helper-a64.h    |   4 +
+ target/arm/mte_helper.c    | 167 +++++++++++++++++++++++++++++++++++++
+ target/arm/translate-a64.c |  15 +++-
+ target/arm/Makefile.objs   |   1 +
+ 4 files changed, 186 insertions(+), 1 deletion(-)
+ create mode 100644 target/arm/mte_helper.c
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index dcc5d6cca3..9486680b87 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -804,6 +804,20 @@ static inline void arm_call_el_change_hook(ARMCPU *cpu)
-     }
- }
- 
-+/* Return true if this address translation regime has two ranges.  */
-+static inline bool regime_has_2_ranges(ARMMMUIdx mmu_idx)
+diff --git a/target/arm/helper-a64.h b/target/arm/helper-a64.h
+index a915c1247f..a82e21f15a 100644
+--- a/target/arm/helper-a64.h
++++ b/target/arm/helper-a64.h
+@@ -102,3 +102,7 @@ DEF_HELPER_FLAGS_3(autda, TCG_CALL_NO_WG, i64, env, i64, i64)
+ DEF_HELPER_FLAGS_3(autdb, TCG_CALL_NO_WG, i64, env, i64, i64)
+ DEF_HELPER_FLAGS_2(xpaci, TCG_CALL_NO_RWG_SE, i64, env, i64)
+ DEF_HELPER_FLAGS_2(xpacd, TCG_CALL_NO_RWG_SE, i64, env, i64)
++
++DEF_HELPER_FLAGS_2(mte_check1, TCG_CALL_NO_WG, i64, env, i64)
++DEF_HELPER_FLAGS_2(mte_check2, TCG_CALL_NO_WG, i64, env, i64)
++DEF_HELPER_FLAGS_3(mte_check3, TCG_CALL_NO_WG, i64, env, i64, i32)
+diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
+new file mode 100644
+index 0000000000..bbb90cbe86
+--- /dev/null
++++ b/target/arm/mte_helper.c
+@@ -0,0 +1,167 @@
++/*
++ * ARM v8.5-MemTag Operations
++ *
++ * Copyright (c) 2019 Linaro, Ltd.
++ *
++ * This library is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU Lesser General Public
++ * License as published by the Free Software Foundation; either
++ * version 2.1 of the License, or (at your option) any later version.
++ *
++ * This library is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public
++ * License along with this library; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "cpu.h"
++#include "internals.h"
++#include "exec/exec-all.h"
++#include "exec/cpu_ldst.h"
++#include "exec/helper-proto.h"
++
++
++static int get_allocation_tag(CPUARMState *env, uint64_t ptr, uintptr_t ra)
 +{
-+    switch (mmu_idx) {
-+    case ARMMMUIdx_S12NSE0:
-+    case ARMMMUIdx_S12NSE1:
-+    case ARMMMUIdx_S1NSE0:
-+    case ARMMMUIdx_S1NSE1:
-+        return true;
-+    default:
-+        return false;
-+    }
++    /* Tag storage not implemented.  */
++    return -1;
 +}
 +
- /* Return true if this address translation regime is secure */
- static inline bool regime_is_secure(CPUARMState *env, ARMMMUIdx mmu_idx)
- {
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index b690eda136..f9dee51ede 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -8774,15 +8774,8 @@ static int get_S1prot(CPUARMState *env, ARMMMUIdx mmu_idx, bool is_aa64,
-     }
- 
-     if (is_aa64) {
--        switch (regime_el(env, mmu_idx)) {
--        case 1:
--            if (!is_user) {
--                xn = pxn || (user_rw & PAGE_WRITE);
--            }
--            break;
--        case 2:
--        case 3:
--            break;
-+        if (regime_has_2_ranges(mmu_idx) && !is_user) {
-+            xn = pxn || (user_rw & PAGE_WRITE);
-         }
-     } else if (arm_feature(env, ARM_FEATURE_V7)) {
-         switch (regime_el(env, mmu_idx)) {
-@@ -9316,7 +9309,6 @@ ARMVAParameters aa64_va_parameters_both(CPUARMState *env, uint64_t va,
-                                         ARMMMUIdx mmu_idx)
- {
-     uint64_t tcr = regime_tcr(env, mmu_idx)->raw_tcr;
--    uint32_t el = regime_el(env, mmu_idx);
-     bool tbi, tbid, epd, hpd, tcma, using16k, using64k;
-     int select, tsz;
- 
-@@ -9326,7 +9318,7 @@ ARMVAParameters aa64_va_parameters_both(CPUARMState *env, uint64_t va,
-      */
-     select = extract64(va, 55, 1);
- 
--    if (el > 1) {
-+    if (!regime_has_2_ranges(mmu_idx)) {
-         tsz = extract32(tcr, 0, 6);
-         using64k = extract32(tcr, 14, 1);
-         using16k = extract32(tcr, 15, 1);
-@@ -9486,10 +9478,7 @@ static bool get_phys_addr_lpae(CPUARMState *env, target_ulong address,
-         param = aa64_va_parameters(env, address, mmu_idx,
-                                    access_type != MMU_INST_FETCH);
-         level = 0;
--        /* If we are in 64-bit EL2 or EL3 then there is no TTBR1, so mark it
--         * invalid.
--         */
--        ttbr1_valid = (el < 2);
-+        ttbr1_valid = regime_has_2_ranges(mmu_idx);
-         addrsize = 64 - 8 * param.tbi;
-         inputsize = 64 - param.tsz;
-     } else {
-@@ -11095,8 +11084,7 @@ void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-             ARMVAParameters p0 = aa64_va_parameters_both(env, 0, stage1);
-             int tbii;
- 
--            /* FIXME: ARMv8.1-VHE S2 translation regime.  */
--            if (regime_el(env, stage1) < 2) {
-+            if (regime_has_2_ranges(mmu_idx)) {
-                 ARMVAParameters p1 = aa64_va_parameters_both(env, -1, stage1);
-                 tbid = (p1.tbi << 1) | p0.tbi;
-                 tbii = tbid & ~((p1.tbid << 1) | p0.tbid);
++static int allocation_tag_from_addr(uint64_t ptr)
++{
++    ptr += 1ULL << 55;  /* carry ptr[55] into ptr[59:56].  */
++    return extract64(ptr, 56, 4);
++}
++
++/*
++ * Perform a checked access for MTE.
++ * On arrival, TBI is known to enabled, as is allocation_tag_access_enabled.
++ */
++static uint64_t do_mte_check(CPUARMState *env, uint64_t dirty_ptr,
++                             uint64_t clean_ptr, uint32_t select,
++                             uintptr_t ra)
++{
++    ARMMMUIdx stage1 = arm_stage1_mmu_idx(env);
++    int ptr_tag, mem_tag;
++
++    /*
++     * If TCMA is enabled, then physical tag 0 is unchecked.
++     * Note the rules in D6.8.1 are written with logical tags, where
++     * the corresponding physical tag rule is simpler: equal to 0.
++     * We will need the physical tag below anyway.
++     */
++    ptr_tag = allocation_tag_from_addr(dirty_ptr);
++    if (ptr_tag == 0) {
++        ARMVAParameters p = aa64_va_parameters(env, dirty_ptr, stage1, true);
++        if (p.tcma) {
++            return clean_ptr;
++        }
++    }
++
++    /*
++     * If an access is made to an address that does not provide tag
++     * storage, the result is IMPLEMENTATION DEFINED.  We choose to
++     * treat the access as unchecked.
++     * This is similar to MemAttr != Tagged, which are also unchecked.
++     */
++    mem_tag = get_allocation_tag(env, clean_ptr, ra);
++    if (mem_tag < 0) {
++        return clean_ptr;
++    }
++
++    /* If the tags do not match, the tag check operation fails.  */
++    if (unlikely(ptr_tag != mem_tag)) {
++        int el, regime_el, tcf;
++        uint64_t sctlr;
++
++        el = arm_current_el(env);
++        regime_el = (el ? el : 1);   /* TODO: ARMv8.1-VHE EL2&0 regime */
++        sctlr = env->cp15.sctlr_el[regime_el];
++        if (el == 0) {
++            tcf = extract64(sctlr, 38, 2);
++        } else {
++            tcf = extract64(sctlr, 40, 2);
++        }
++
++        switch (tcf) {
++        case 1:
++            /*
++             * Tag check fail causes a synchronous exception.
++             *
++             * In restore_state_to_opc, we set the exception syndrome
++             * for the load or store operation.  Do that first so we
++             * may overwrite that with the syndrome for the tag check.
++             */
++            cpu_restore_state(env_cpu(env), ra, true);
++            env->exception.vaddress = dirty_ptr;
++            raise_exception(env, EXCP_DATA_ABORT,
++                            syn_data_abort_no_iss(el != 0, 0, 0, 0, 0, 0x11),
++                            exception_target_el(env));
++            /* noreturn; fall through to assert anyway */
++
++        case 0:
++            /*
++             * Tag check fail does not affect the PE.
++             * We eliminate this case by not setting MTE_ACTIVE
++             * in tb_flags, so that we never make this runtime call.
++             */
++            g_assert_not_reached();
++
++        case 2:
++            /* Tag check fail causes asynchronous flag set.  */
++            env->cp15.tfsr_el[regime_el] |= 1 << select;
++            break;
++
++        default:
++            /* Case 3: Reserved. */
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "Tag check failure with SCTLR_EL%d.TCF "
++                          "set to reserved value %d\n", regime_el, tcf);
++            break;
++        }
++    }
++
++    return clean_ptr;
++}
++
++/*
++ * Perform check in translation regime w/single IA range.
++ * It is known that TBI is enabled on entry.
++ */
++uint64_t HELPER(mte_check1)(CPUARMState *env, uint64_t dirty_ptr)
++{
++    uint64_t clean_ptr = extract64(dirty_ptr, 0, 56);
++    return do_mte_check(env, dirty_ptr, clean_ptr, 0, GETPC());
++}
++
++/*
++ * Perform check in translation regime w/two IA ranges.
++ * It is known that TBI is enabled on entry.
++ */
++uint64_t HELPER(mte_check2)(CPUARMState *env, uint64_t dirty_ptr)
++{
++    uint32_t select = extract64(dirty_ptr, 55, 1);
++    uint64_t clean_ptr = sextract64(dirty_ptr, 0, 56);
++    return do_mte_check(env, dirty_ptr, clean_ptr, select, GETPC());
++}
++
++/*
++ * Perform check in translation regime w/two IA ranges.
++ * The TBI argument is the concatenation of TBI1:TBI0.
++ */
++uint64_t HELPER(mte_check3)(CPUARMState *env, uint64_t dirty_ptr, uint32_t tbi)
++{
++    uint32_t select = extract64(dirty_ptr, 55, 1);
++    uint64_t clean_ptr = sextract64(dirty_ptr, 0, 56);
++
++    if ((tbi >> select) & 1) {
++        return do_mte_check(env, dirty_ptr, clean_ptr, select, GETPC());
++    } else {
++        /* TBI is disabled; the access is unchecked.  */
++        return dirty_ptr;
++    }
++}
 diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 51f3af9cd9..c85db69db4 100644
+index 62bdf50796..8e4fea6b4c 100644
 --- a/target/arm/translate-a64.c
 +++ b/target/arm/translate-a64.c
-@@ -175,8 +175,7 @@ static void gen_top_byte_ignore(DisasContext *s, TCGv_i64 dst,
-     if (tbi == 0) {
-         /* Load unmodified address */
-         tcg_gen_mov_i64(dst, src);
--    } else if (s->current_el >= 2) {
--        /* FIXME: ARMv8.1-VHE S2 translation regime.  */
+@@ -214,7 +214,20 @@ static void gen_a64_set_pc(DisasContext *s, TCGv_i64 src)
+ static TCGv_i64 clean_data_tbi(DisasContext *s, TCGv_i64 addr)
+ {
+     TCGv_i64 clean = new_tmp_a64(s);
+-    gen_top_byte_ignore(s, clean, addr, s->tbid);
++
++    /* Note that s->mte_active already includes a check for s->tbid != 0. */
++    if (!s->mte_active) {
++        gen_top_byte_ignore(s, clean, addr, s->tbid);
 +    } else if (!regime_has_2_ranges(s->mmu_idx)) {
-         /* Force tag byte to all zero */
-         tcg_gen_extract_i64(dst, src, 0, 56);
-     } else {
++        gen_helper_mte_check1(clean, cpu_env, addr);
++    } else if (s->tbid == 3) {
++        /* Both TBI1:TBI0 are set; no need to check at runtime. */
++        gen_helper_mte_check2(clean, cpu_env, addr);
++    } else {
++        TCGv_i32 tbi = tcg_const_i32(s->tbid);
++        gen_helper_mte_check3(clean, cpu_env, addr, tbi);
++        tcg_temp_free_i32(tbi);
++    }
+     return clean;
+ }
+ 
+diff --git a/target/arm/Makefile.objs b/target/arm/Makefile.objs
+index cf26c16f5f..8fd7d086c8 100644
+--- a/target/arm/Makefile.objs
++++ b/target/arm/Makefile.objs
+@@ -67,3 +67,4 @@ obj-$(CONFIG_SOFTMMU) += psci.o
+ obj-$(TARGET_AARCH64) += translate-a64.o helper-a64.o
+ obj-$(TARGET_AARCH64) += translate-sve.o sve_helper.o
+ obj-$(TARGET_AARCH64) += pauth_helper.o
++obj-$(TARGET_AARCH64) += mte_helper.o
 -- 
 2.17.1
 

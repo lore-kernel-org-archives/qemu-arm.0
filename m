@@ -1,208 +1,292 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp2414945wrm;
-        Thu, 10 Oct 2019 07:01:54 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyuBwtAf274M62+RkgPvkVYvqIa1/FTBwsCTJr4cxL+CRNiKicCpSEB3rfd99Ll51X7AQs3
-X-Received: by 2002:a05:620a:988:: with SMTP id x8mr9601910qkx.306.1570716114486;
-        Thu, 10 Oct 2019 07:01:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570716114; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp174836wrm;
+        Thu, 10 Oct 2019 17:52:11 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzrj+p/DRKi0Rr9aAn5WSl5MkAE7VsdE5Bu1jDjKHwm0o/9/Om9oer1YRX2bZqqqUbQuHnv
+X-Received: by 2002:a17:906:556:: with SMTP id k22mr11080208eja.66.1570755131913;
+        Thu, 10 Oct 2019 17:52:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570755131; cv=none;
         d=google.com; s=arc-20160816;
-        b=MjEL8UStNQYa6+TWqIpvfw/l8TobxLDtC1RGzhmE4HxwSsygEh5AtSb+cYeY8xUbeH
-         adDiodlsxenjOCDQwdStEwkGSnhJvSy0YTDEuw/JOqbeZiabzgD9g/pevvCZ3z8xA9MO
-         40EKyUdcXJH6l5Od9Ze2YHUtJcWqkApLkKdIK9zee5lJSfdmGgEhIjpMCjFtht8/qcl0
-         kUghySsk+wBDa6AoTL3Ydrtb0W+0BoespRIhsO8vl+Ec31VrZmsfOQQvA5G8KspWQqrk
-         f8U+i5SCv98SKYWQcz95BhYMYX2mVZui8qhQNh+fTSvD2qxPeyojzD21z8gHPscVSsWi
-         WKDw==
+        b=ZqHWObkJF1KECfZxDrfuS1pZ0QV98XsaoRglZ3rpzueLA1PURF3HSLNguQ5NF2CSgS
+         I6ISpzlqmadE/XVDOh4BuiUMqnj5YNdTFkevpZIH4N0Y2SKg0A79OPQP9sdfrab0haDT
+         Aw7PSR8x8fbyfNLYP6JxVNazDG/WdxiE8TggwNDz0VpOConpZOCSrBNbh6JcCbzaDMSs
+         qKfKBFL1lniw9d3fPTo7KG/MYtIbFRsy9j+Bpqx62lCTDRmpoXAR5TnDC3YZ8VgGnv6z
+         B8ucqdYeXrItiJrZTed/6SvM6Vcvvu7A4NrCGwIFmWNNUcApQ2O8VC8oCTLewDfjU2bo
+         +Izw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:content-transfer-encoding:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence:cc
-         :in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:to:from:date;
-        bh=AHDT93HckwZRyEhIaDobrDcKPi3+0qN2mhHdP0Wqx4Y=;
-        b=MFo8eHNoywwYk4LPcOgok03ZDcFmgmLHuG/qTOH8HbXbcxoShQ5HzHVihbIoj7pNbR
-         C1T7dLgFfrwFGTroqID9Azu2j2YfUK8ZkZAARowqSzADgUrB9EEldSwRKFcWKAB+onyv
-         mX3zgvjcGL1qFYfPfWXo30X2aJpim1vyV5hFLks6OgXCQ5KFzko54mRF6ucFdhr3wl+w
-         0vLBf91zpBf+3NK7db8RfMPRhiPbXVu3kghTFyOczeX8ogeOM/CtjOytgnkkDM+uhtD6
-         s55wuq3RGAAoAs9/wBE7w4Fj9LVMKpEB06rnyiZjSSjCbA7lhpCe0gkx/d4Nb7kSwWeT
-         ypgA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=kmnVA7cbTiWs7045i8nyYbdn5hb53ty4ft5sWASYB7o=;
+        b=nLsxfu2B2H+5KiOd9EDenxIY3mNExIxH28wC1aWK/CZAd/bNAY1QLlPrkBu2MmIbeC
+         6ZwtzyAtVu5IkRpgaFT6/wq9gjpOjSGHpEMzDwiEsQFCQPzy5YO+oko/MZ0M0khXmao5
+         sLpY2pHgaNtED8QjpeCEZgj2d1FhxtJnRRRz8Avm4VRyzmxnm9Kdgv6uYcNC9Cv06AI5
+         o+4EzDo/deLQa6JAEWXwLGwSBNtu757msBnAqGncFMcARwHhfVm2p5OPtaweufmv3Tdg
+         18fssvkLFx6x61SDsNwbBDxUWVQZ0IicqkWBdUCelu39vv5g1p8fKnK16HXS5Wq1aXVn
+         TdHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvmarm-bounces@lists.cs.columbia.edu>
-Received: from mm01.cs.columbia.edu (mm01.cs.columbia.edu. [128.59.11.253])
-        by mx.google.com with ESMTP id h8si5525938qti.239.2019.10.10.07.01.54;
-        Thu, 10 Oct 2019 07:01:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) client-ip=128.59.11.253;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IPhBN8bv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s4si4085265eju.265.2019.10.10.17.52.11
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 10 Oct 2019 17:52:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvmarm-bounces@lists.cs.columbia.edu designates 128.59.11.253 as permitted sender) smtp.mailfrom=kvmarm-bounces@lists.cs.columbia.edu;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id 05FF64A837;
-	Thu, 10 Oct 2019 10:01:54 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-X-Spam-Flag: NO
-X-Spam-Score: -4.202
-X-Spam-Level: 
-X-Spam-Status: No, score=-4.202 required=6.1 tests=[BAYES_00=-1.9,
-	DNS_FROM_AHBL_RHSBL=2.699, RCVD_IN_DNSWL_HI=-5, SPF_HELO_PASS=-0.001]
-	autolearn=unavailable
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
-	by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
-	with ESMTP id nmOeK3qPWV0k; Thu, 10 Oct 2019 10:01:52 -0400 (EDT)
-Received: from mm01.cs.columbia.edu (localhost [127.0.0.1])
-	by mm01.cs.columbia.edu (Postfix) with ESMTP id D9F294A5FD;
-	Thu, 10 Oct 2019 10:01:52 -0400 (EDT)
-Received: from localhost (localhost [127.0.0.1])
- by mm01.cs.columbia.edu (Postfix) with ESMTP id DCA3E4A5BF
- for <kvmarm@lists.cs.columbia.edu>; Thu, 10 Oct 2019 10:01:51 -0400 (EDT)
-X-Virus-Scanned: at lists.cs.columbia.edu
-Received: from mm01.cs.columbia.edu ([127.0.0.1])
- by localhost (mm01.cs.columbia.edu [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id n2IV52QoRrmh for <kvmarm@lists.cs.columbia.edu>;
- Thu, 10 Oct 2019 10:01:50 -0400 (EDT)
-Received: from mx1.redhat.com (mx1.redhat.com [209.132.183.28])
- by mm01.cs.columbia.edu (Postfix) with ESMTPS id 9FE4A4A5A3
- for <kvmarm@lists.cs.columbia.edu>; Thu, 10 Oct 2019 10:01:50 -0400 (EDT)
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id CA3EA368E2
- for <kvmarm@lists.cs.columbia.edu>; Thu, 10 Oct 2019 14:01:49 +0000 (UTC)
-Received: by mail-qk1-f200.google.com with SMTP id s28so5571115qkm.5
- for <kvmarm@lists.cs.columbia.edu>; Thu, 10 Oct 2019 07:01:49 -0700 (PDT)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IPhBN8bv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:45078 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iIjAA-00035J-Qi
+	for alex.bennee@linaro.org; Thu, 10 Oct 2019 20:52:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45569)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <liq3ea@gmail.com>) id 1iIj9K-0002fv-Jv
+ for qemu-arm@nongnu.org; Thu, 10 Oct 2019 20:51:19 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <liq3ea@gmail.com>) id 1iIj9J-0004ON-BM
+ for qemu-arm@nongnu.org; Thu, 10 Oct 2019 20:51:18 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:34850)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <liq3ea@gmail.com>)
+ id 1iIj9B-0004EG-Kb; Thu, 10 Oct 2019 20:51:09 -0400
+Received: by mail-oi1-x243.google.com with SMTP id x3so6603039oig.2;
+ Thu, 10 Oct 2019 17:51:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=kmnVA7cbTiWs7045i8nyYbdn5hb53ty4ft5sWASYB7o=;
+ b=IPhBN8bvn0EY6lwYxK6Vq7TU2EAFymi3iYHpSn/e2xmiv77Nfkxu3hWinMIkHwRgBb
+ kQnq2sfycJHi2iaE3LnOUwMPeyNhNBPC8vX36MtYpX/9wRL006MuYDGR1VJyZj6Iivdw
+ dPiZHl8ZibUBcEgxSCO0jeHYrdnrRMI7ShFW4P2GVRMpDhvi07YaBs4/SVftubVr7BLY
+ 93KIj+nLfDXv7l45FO/gz9cO3kgqsJ1jaoLxh/lwRDqQZ36g+M+0cazJfDpXwB9azY8Z
+ qnj8Ct7yxvz85/ICkJfwuNK+J5qqeX+8fj2R4UJHym70H4xm4DGF7e4DLmhdxVGtaybW
+ NlYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=qVAAqrz8NImQua1Z+MPnnhld52fQmUNm5/UzIy85cAw=;
- b=TDkdpMtnVPM72C5DsF4TVJmt/35jTNcoipNyfnmDtiBVtrq+H9vf+uW/rjVojUindY
- nT/3RpYluWBOEia+asmVii1O3wLjsSPoOT1yg+B8TTeC1o68nyMWlGt750NhXzGUKfGc
- QTmVHpRT7B5ip1XTx/HsLUiDiiO4XzmtrEVH8AAySTGvV9VH9K+ARPKUzvp+lLBpE1v0
- ymekmecBvt6VtFaL8QS04thLR8vzkr6WiLFxGcvY6/Cky8SvNZ1S4HbtogUdkApvkkzM
- NHCSBe6M/WPj1RB1yHmcU5bUvm+pX7w3XiZtMSpMkRSUB9z/9TQO0MxsYhSXPT7OCbE2
- Dm7Q==
-X-Gm-Message-State: APjAAAW/1iU7PDxkDCN+MJPWGn+EZEtt+iDxOPnJ9HxQeDUssQh+duLg
- 9B6c0mpbUY0D+xr0MtgGDLc4Sys18ojY55YjnI2gRHZ11P04BSThw14ggNe4GZ2OlldF1i+sWJA
- dTlOSx34QZ91bYtNSuH9904N5
-X-Received: by 2002:ad4:4cd2:: with SMTP id i18mr10049276qvz.179.1570716109102; 
- Thu, 10 Oct 2019 07:01:49 -0700 (PDT)
-X-Received: by 2002:ad4:4cd2:: with SMTP id i18mr10049239qvz.179.1570716108835; 
- Thu, 10 Oct 2019 07:01:48 -0700 (PDT)
-Received: from redhat.com (bzq-79-176-10-77.red.bezeqint.net. [79.176.10.77])
- by smtp.gmail.com with ESMTPSA id
- z6sm2312398qkf.125.2019.10.10.07.01.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Oct 2019 07:01:48 -0700 (PDT)
-Date: Thu, 10 Oct 2019 10:01:42 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Heyi Guo <guoheyi@huawei.com>
-Subject: Re: [RFC PATCH 12/12] virt/acpi: add SDEI table if SDEI is enabled
-Message-ID: <20191010100107-mutt-send-email-mst@kernel.org>
-References: <1569338511-3572-1-git-send-email-guoheyi@huawei.com>
- <1569338511-3572-13-git-send-email-guoheyi@huawei.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=kmnVA7cbTiWs7045i8nyYbdn5hb53ty4ft5sWASYB7o=;
+ b=TrBPhGZlv/xCVTBbTvxA+19AMrkwmPm5gXVMbwJTx9U0zUYm8Ok4BRsuS+q0a7hO5d
+ jvdDqYl7pNRvQNbrFJ5ZdfSlT+P2pBSmHv2//WX4euHI9gHYk8AnjSPgRFbjAdaBuGYm
+ VEQitP5wXNwjHrufGCvuyA/yXPqMuxIUNeSbGAjws/V39is81F3GBp85Vo8DYYJpViur
+ mDhmZa0zH7XuGLsJb4g4mmGRM2+F6vIa/L1DFFjxCP2w3gvU1DjhFk3eksEATh6c1Tzy
+ x7Lu4Bw6qwo/Jr8Y9BaA0dZ1vqPvXfD3BEjJLqgYAcNicd02H7bkYbDUcvcQXcanA5S1
+ 13wQ==
+X-Gm-Message-State: APjAAAWUurJpmGHXBh8kCtCo3ZqqkXOswA1Q5W9LN7hGwJ+89gp1lIA5
+ vZUlpnhtzNDLgvTFzXvlUjDUnQSdz/iUZkqPQaA=
+X-Received: by 2002:aca:cd4d:: with SMTP id d74mr10242317oig.157.1570755068693; 
+ Thu, 10 Oct 2019 17:51:08 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1569338511-3572-13-git-send-email-guoheyi@huawei.com>
-Cc: Marc Zyngier <marc.zyngier@arm.com>, qemu-devel@nongnu.org,
- Dave Martin <Dave.Martin@arm.com>, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, kvmarm@lists.cs.columbia.edu,
- linux-arm-kernel@lists.infradead.org
-X-BeenThere: kvmarm@lists.cs.columbia.edu
-X-Mailman-Version: 2.1.14
+References: <20191010131527.32513-1-philmd@redhat.com>
+ <20191010131527.32513-4-philmd@redhat.com>
+In-Reply-To: <20191010131527.32513-4-philmd@redhat.com>
+From: Li Qiang <liq3ea@gmail.com>
+Date: Fri, 11 Oct 2019 08:50:32 +0800
+Message-ID: <CAKXe6SKEK4jzWimnxuWp-aVXYxgkqoPcZqAtJWSgFrSBzfnZpA@mail.gmail.com>
+Subject: Re: [PATCH v3 3/8] hw/ide/piix: Convert reset handler to DeviceReset
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000e61350059497e940"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::243
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: Where KVM/ARM decisions are made <kvmarm.lists.cs.columbia.edu>
-List-Unsubscribe: <https://lists.cs.columbia.edu/mailman/options/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=unsubscribe>
-List-Archive: <https://lists.cs.columbia.edu/pipermail/kvmarm>
-List-Post: <mailto:kvmarm@lists.cs.columbia.edu>
-List-Help: <mailto:kvmarm-request@lists.cs.columbia.edu?subject=help>
-List-Subscribe: <https://lists.cs.columbia.edu/mailman/listinfo/kvmarm>,
- <mailto:kvmarm-request@lists.cs.columbia.edu?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
-Errors-To: kvmarm-bounces@lists.cs.columbia.edu
-Sender: kvmarm-bounces@lists.cs.columbia.edu
-X-TUID: pOwU3bXHi9kl
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>,
+ Qemu Developers <qemu-devel@nongnu.org>, BALATON Zoltan <balaton@eik.bme.hu>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ John Snow <jsnow@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BI/ySqCDCm+J
 
-On Tue, Sep 24, 2019 at 11:21:51PM +0800, Heyi Guo wrote:
-> Add SDEI table if SDEI is enabled, so that guest OS can get aware and
-> utilize the interfaces.
-> 
-> Signed-off-by: Heyi Guo <guoheyi@huawei.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Dave Martin <Dave.Martin@arm.com>
-> Cc: Marc Zyngier <marc.zyngier@arm.com>
-> Cc: Mark Rutland <mark.rutland@arm.com>
-> Cc: James Morse <james.morse@arm.com>
-> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Cc: Igor Mammedov <imammedo@redhat.com>
+--000000000000e61350059497e940
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> =E4=BA=8E2019=E5=B9=B410=E6=
+=9C=8810=E6=97=A5=E5=91=A8=E5=9B=9B =E4=B8=8B=E5=8D=889:16=E5=86=99=E9=81=
+=93=EF=BC=9A
+
+> The PIIX/IDE is a PCI device within a PIIX chipset, it will be reset
+> when the PCI bus it stands on is reset.
+>
+> Convert its reset handler into a proper Device reset method.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>
+
+
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
+
+
 > ---
->  hw/arm/virt-acpi-build.c    | 16 ++++++++++++++++
->  include/hw/acpi/acpi-defs.h |  5 +++++
->  2 files changed, 21 insertions(+)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 6cdf156..1088214 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -32,6 +32,7 @@
+> v3: Also convert PIIX4 (Li Qiang)
+> ---
+>  hw/ide/piix.c | 9 ++++-----
+>  1 file changed, 4 insertions(+), 5 deletions(-)
+>
+> diff --git a/hw/ide/piix.c b/hw/ide/piix.c
+> index fba6bc8bff..db313dd3b1 100644
+> --- a/hw/ide/piix.c
+> +++ b/hw/ide/piix.c
+> @@ -30,7 +30,6 @@
+>  #include "sysemu/block-backend.h"
+>  #include "sysemu/blockdev.h"
+>  #include "sysemu/dma.h"
+> -#include "sysemu/reset.h"
+>
+>  #include "hw/ide/pci.h"
 >  #include "trace.h"
->  #include "hw/core/cpu.h"
->  #include "target/arm/cpu.h"
-> +#include "target/arm/sdei.h"
->  #include "hw/acpi/acpi-defs.h"
->  #include "hw/acpi/acpi.h"
->  #include "hw/nvram/fw_cfg.h"
-> @@ -475,6 +476,16 @@ build_iort(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> @@ -103,9 +102,9 @@ static void bmdma_setup_bar(PCIIDEState *d)
+>      }
 >  }
->  
->  static void
-> +build_sdei(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> +{
-> +    int sdei_start = table_data->len;
-> +
-> +    (void)acpi_data_push(table_data, sizeof(AcpiSdei));
-> +    build_header(linker, table_data, (void *)(table_data->data + sdei_start),
-> +                 "SDEI", table_data->len - sdei_start, 1, NULL, NULL);
-> +}
-> +
-
-Please quote the relevant spec, earliest version that includes
-this table, and chapter in that spec.
-
-> +static void
->  build_spcr(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>
+> -static void piix3_reset(void *opaque)
+> +static void piix_ide_reset(DeviceState *dev)
 >  {
->      AcpiSerialPortConsoleRedirection *spcr;
-> @@ -796,6 +807,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
->      acpi_add_table(table_offsets, tables_blob);
->      build_spcr(tables_blob, tables->linker, vms);
->  
-> +    if (sdei_enabled) {
-> +        acpi_add_table(table_offsets, tables_blob);
-> +        build_sdei(tables_blob, tables->linker, vms);
-> +    }
-> +
->      if (ms->numa_state->num_nodes > 0) {
->          acpi_add_table(table_offsets, tables_blob);
->          build_srat(tables_blob, tables->linker, vms);
-> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
-> index 57a3f58..0a2265d 100644
-> --- a/include/hw/acpi/acpi-defs.h
-> +++ b/include/hw/acpi/acpi-defs.h
-> @@ -634,4 +634,9 @@ struct AcpiIortRC {
->  } QEMU_PACKED;
->  typedef struct AcpiIortRC AcpiIortRC;
->  
-> +struct AcpiSdei {
-> +    ACPI_TABLE_HEADER_DEF     /* ACPI common table header */
-> +} QEMU_PACKED;
-> +typedef struct AcpiSdei AcpiSdei;
-> +
->  #endif
-> -- 
-> 1.8.3.1
-_______________________________________________
-kvmarm mailing list
-kvmarm@lists.cs.columbia.edu
-https://lists.cs.columbia.edu/mailman/listinfo/kvmarm
+> -    PCIIDEState *d =3D opaque;
+> +    PCIIDEState *d =3D PCI_IDE(dev);
+>      PCIDevice *pd =3D PCI_DEVICE(d);
+>      uint8_t *pci_conf =3D pd->config;
+>      int i;
+> @@ -154,8 +153,6 @@ static void pci_piix_ide_realize(PCIDevice *dev, Erro=
+r
+> **errp)
+>
+>      pci_conf[PCI_CLASS_PROG] =3D 0x80; // legacy ATA mode
+>
+> -    qemu_register_reset(piix3_reset, d);
+> -
+>      bmdma_setup_bar(d);
+>      pci_register_bar(dev, 4, PCI_BASE_ADDRESS_SPACE_IO, &d->bmdma_bar);
+>
+> @@ -247,6 +244,7 @@ static void piix3_ide_class_init(ObjectClass *klass,
+> void *data)
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>      PCIDeviceClass *k =3D PCI_DEVICE_CLASS(klass);
+>
+> +    dc->reset =3D piix_ide_reset;
+>      k->realize =3D pci_piix_ide_realize;
+>      k->exit =3D pci_piix_ide_exitfn;
+>      k->vendor_id =3D PCI_VENDOR_ID_INTEL;
+> @@ -273,6 +271,7 @@ static void piix4_ide_class_init(ObjectClass *klass,
+> void *data)
+>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+>      PCIDeviceClass *k =3D PCI_DEVICE_CLASS(klass);
+>
+> +    dc->reset =3D piix_ide_reset;
+>      k->realize =3D pci_piix_ide_realize;
+>      k->exit =3D pci_piix_ide_exitfn;
+>      k->vendor_id =3D PCI_VENDOR_ID_INTEL;
+> --
+> 2.21.0
+>
+>
+
+--000000000000e61350059497e940
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">Philippe Mathieu-Daud=C3=A9 &lt;<a hr=
+ef=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; =E4=BA=8E2019=E5=
+=B9=B410=E6=9C=8810=E6=97=A5=E5=91=A8=E5=9B=9B =E4=B8=8B=E5=8D=889:16=E5=86=
+=99=E9=81=93=EF=BC=9A<br></div><blockquote class=3D"gmail_quote" style=3D"m=
+argin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left=
+:1ex">The PIIX/IDE is a PCI device within a PIIX chipset, it will be reset<=
+br>
+when the PCI bus it stands on is reset.<br>
+<br>
+Convert its reset handler into a proper Device reset method.<br>
+<br>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@red=
+hat.com" target=3D"_blank">philmd@redhat.com</a>&gt;<br></blockquote><div><=
+br></div><div><br></div>Reviewed-by: Li Qiang &lt;<a href=3D"mailto:liq3ea@=
+gmail.com">liq3ea@gmail.com</a>&gt;<br><div>=C2=A0<br></div><blockquote cla=
+ss=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid =
+rgb(204,204,204);padding-left:1ex">
+---<br>
+v3: Also convert PIIX4 (Li Qiang)<br>
+---<br>
+=C2=A0hw/ide/piix.c | 9 ++++-----<br>
+=C2=A01 file changed, 4 insertions(+), 5 deletions(-)<br>
+<br>
+diff --git a/hw/ide/piix.c b/hw/ide/piix.c<br>
+index fba6bc8bff..db313dd3b1 100644<br>
+--- a/hw/ide/piix.c<br>
++++ b/hw/ide/piix.c<br>
+@@ -30,7 +30,6 @@<br>
+=C2=A0#include &quot;sysemu/block-backend.h&quot;<br>
+=C2=A0#include &quot;sysemu/blockdev.h&quot;<br>
+=C2=A0#include &quot;sysemu/dma.h&quot;<br>
+-#include &quot;sysemu/reset.h&quot;<br>
+<br>
+=C2=A0#include &quot;hw/ide/pci.h&quot;<br>
+=C2=A0#include &quot;trace.h&quot;<br>
+@@ -103,9 +102,9 @@ static void bmdma_setup_bar(PCIIDEState *d)<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0}<br>
+<br>
+-static void piix3_reset(void *opaque)<br>
++static void piix_ide_reset(DeviceState *dev)<br>
+=C2=A0{<br>
+-=C2=A0 =C2=A0 PCIIDEState *d =3D opaque;<br>
++=C2=A0 =C2=A0 PCIIDEState *d =3D PCI_IDE(dev);<br>
+=C2=A0 =C2=A0 =C2=A0PCIDevice *pd =3D PCI_DEVICE(d);<br>
+=C2=A0 =C2=A0 =C2=A0uint8_t *pci_conf =3D pd-&gt;config;<br>
+=C2=A0 =C2=A0 =C2=A0int i;<br>
+@@ -154,8 +153,6 @@ static void pci_piix_ide_realize(PCIDevice *dev, Error =
+**errp)<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0pci_conf[PCI_CLASS_PROG] =3D 0x80; // legacy ATA mode<b=
+r>
+<br>
+-=C2=A0 =C2=A0 qemu_register_reset(piix3_reset, d);<br>
+-<br>
+=C2=A0 =C2=A0 =C2=A0bmdma_setup_bar(d);<br>
+=C2=A0 =C2=A0 =C2=A0pci_register_bar(dev, 4, PCI_BASE_ADDRESS_SPACE_IO, &am=
+p;d-&gt;bmdma_bar);<br>
+<br>
+@@ -247,6 +244,7 @@ static void piix3_ide_class_init(ObjectClass *klass, vo=
+id *data)<br>
+=C2=A0 =C2=A0 =C2=A0DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
+=C2=A0 =C2=A0 =C2=A0PCIDeviceClass *k =3D PCI_DEVICE_CLASS(klass);<br>
+<br>
++=C2=A0 =C2=A0 dc-&gt;reset =3D piix_ide_reset;<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;realize =3D pci_piix_ide_realize;<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;exit =3D pci_piix_ide_exitfn;<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;vendor_id =3D PCI_VENDOR_ID_INTEL;<br>
+@@ -273,6 +271,7 @@ static void piix4_ide_class_init(ObjectClass *klass, vo=
+id *data)<br>
+=C2=A0 =C2=A0 =C2=A0DeviceClass *dc =3D DEVICE_CLASS(klass);<br>
+=C2=A0 =C2=A0 =C2=A0PCIDeviceClass *k =3D PCI_DEVICE_CLASS(klass);<br>
+<br>
++=C2=A0 =C2=A0 dc-&gt;reset =3D piix_ide_reset;<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;realize =3D pci_piix_ide_realize;<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;exit =3D pci_piix_ide_exitfn;<br>
+=C2=A0 =C2=A0 =C2=A0k-&gt;vendor_id =3D PCI_VENDOR_ID_INTEL;<br>
+-- <br>
+2.21.0<br>
+<br>
+</blockquote></div></div>
+
+--000000000000e61350059497e940--

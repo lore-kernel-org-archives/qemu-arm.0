@@ -1,78 +1,78 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4512575wrm;
-        Mon, 14 Oct 2019 07:34:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxY0DpqliMMICNszbxKp7+mRg4er49W81zXS0KWtRFtVs3mcrxk6H1d17LZ5qV1e5vbKuwO
-X-Received: by 2002:a17:906:f2c1:: with SMTP id gz1mr28651948ejb.51.1571063656699;
-        Mon, 14 Oct 2019 07:34:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571063656; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4512964wrm;
+        Mon, 14 Oct 2019 07:34:34 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzzGjKUR0xg9gzIDqto7Uw/DzPHYoxWU0Mvt0wn0rE74hADtcL5wl/IXtw29RI6eXYiAW32
+X-Received: by 2002:a17:906:8391:: with SMTP id p17mr27903618ejx.216.1571063674623;
+        Mon, 14 Oct 2019 07:34:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571063674; cv=none;
         d=google.com; s=arc-20160816;
-        b=aiF7KdAR5ug7Zz4n/m/xxIkbuUnLiW0zIeWZNzA68fLwOaLEFSU2C0nPKsEvMNYvge
-         fSKlrTwAQo+HiUeBUFnUoi+EThEjwsxY5fy38Gy9/NOfIMh0k5Pxwg9l6P8AFfqjLzO6
-         waCt8F8OeKb14EKzWXrVkdea8Ov4dVIYjlaoWMUKU4XMar5J4I202nqdA4jP5Gsd0GeL
-         r+1E/ZxoIEkiHVbbhhQ/cwfj+UQB0PDVI1gCAfgqelefPpmZLiRTARLTSXijSzBCuv+U
-         Ln2JFclrshZ4S0fKepFILRVHRwUyeY6W/5/Gj2e3EUlueY5VfGkJdukdRys/0ZBrNXH2
-         dSHA==
+        b=pCa10pUNJlViDEOr4lzr/UCKZFfzjNODz6CWnhWV9oUDXNLWTBF/iBuzWABTPWO62o
+         DFGo+10MLASUEowAe0ouXTAleqqYRJ8YuUHjVVGSVfVKeVC/u4/hVojsmm4cjEpzXVCj
+         m6C7pxkt+0sUiC51QGJ8LjeEaFjVVcTXMLdjW11dQX0mU6CMTy05yQpxtnmTTHu6RlR9
+         fFy8rpljcIl1qk/HX+Atzhcf8soHdiO9AYSa5Ttmh3MZbAfmGlbIclrs+H4NtxSTPb49
+         k9/dsV4LCzPzHfpUG0K1PIlDkKnoEC0a5Lq0NDRxQe2hu3RJg1pAp4cQk7ALob267seT
+         du5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=7Lx3eCfMtxgD5QnQkM1AjbkKhj/bKsvy4PkaXxtk3ng=;
-        b=b0dycQLlykI4USbBrGNkv3Chef2yw9QyO2r/GGUDwdnGkbBfdY0JW0OAo4tFhK/ysb
-         SGgz7GFzpnbp8BVaEq1tXydsPeUkilP03NKYrTneInt0KO2/YFGp8rBrzyaWKSDGtaz5
-         W2Me/Ca4LJ75lZvSgqsE5RMNAuKhLT0fO6mi1IgOQjEG+gwyIu1jTFJ4v16dKOnAnij4
-         LEclfyxbWhTxYtdpU3Nm5HqKG/i+0KzUrBhk3lBAe0yNlURR1wmtS0VuZwQlOR1ESyxW
-         X/b9A1R+pPPpra3i2Bt+lRCO6+hnXamcV4SJoTsgnTtIQVhtUm1FzjfciZCUN7rgYvk7
-         vO3w==
+        bh=b+N3SfYHdzyojlcBlumPKIhf1MGxIzygdYnWtYcA2iM=;
+        b=HaIBd3BD8TkgU4Bq7/nBLPGjRqpXMCGUJ9Khx2BF7mQqcIcwb0rD61ixib4oSBYgpO
+         TX2QDuodOBo9IvtBi4OH3S06HarFvF/yF53dQA/BSC51/2k9L5CSzdtPqp8jrkuU5xyY
+         etLHKQAc06+M95AQvurr1+xqo4bAt0DxgcqDz5HxxsVjrThXw0fJX1Uvw9OsWGmuAvQq
+         PmJ0aBbXJPoPSFGKl4mVaKT9DIAbr7inAJr8mDndNJCcM6Vfra3Gdo5dwhi/k1EXQXO5
+         1DebOndsXW9gqCpZ3WIs8wUACCGSMx8XlenLTm4QZ60AARoD0xM4iv9wh6Sy1acfN1Xw
+         iaHg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s21si11331833ejm.122.2019.10.14.07.34.16
+        by mx.google.com with ESMTPS id p20si10079553eju.109.2019.10.14.07.34.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Oct 2019 07:34:16 -0700 (PDT)
+        Mon, 14 Oct 2019 07:34:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50646 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50648 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iK1QM-0008A2-Uo
-	for alex.bennee@linaro.org; Mon, 14 Oct 2019 10:34:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49620)
+	id 1iK1Qf-00004w-EQ
+	for alex.bennee@linaro.org; Mon, 14 Oct 2019 10:34:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49762)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iK1M2-0003xf-VC
- for qemu-arm@nongnu.org; Mon, 14 Oct 2019 10:29:51 -0400
+ (envelope-from <philmd@redhat.com>) id 1iK1MR-0004Dv-Mj
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2019 10:30:12 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iK1M1-00020h-9C
- for qemu-arm@nongnu.org; Mon, 14 Oct 2019 10:29:46 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:40244)
+ (envelope-from <philmd@redhat.com>) id 1iK1MQ-0002AQ-KP
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2019 10:30:11 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45148)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1iK1M0-00020O-VR; Mon, 14 Oct 2019 10:29:45 -0400
+ id 1iK1MQ-00028r-FI; Mon, 14 Oct 2019 10:30:10 -0400
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 168D7300BEAF;
- Mon, 14 Oct 2019 14:29:42 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 546E62108;
+ Mon, 14 Oct 2019 14:30:09 +0000 (UTC)
 Received: from x1w.redhat.com (unknown [10.40.206.0])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 28912600CD;
- Mon, 14 Oct 2019 14:29:17 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D59E0600CD;
+ Mon, 14 Oct 2019 14:29:42 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Markus Armbruster <armbru@redhat.com>,
 	qemu-devel@nongnu.org
-Subject: [PATCH 13/20] hw/timer/hpet: Include "exec/address-spaces.h"
-Date: Mon, 14 Oct 2019 16:22:39 +0200
-Message-Id: <20191014142246.4538-14-philmd@redhat.com>
+Subject: [PATCH 14/20] hw/pci-host/q35: Include "qemu/range.h"
+Date: Mon, 14 Oct 2019 16:22:40 +0200
+Message-Id: <20191014142246.4538-15-philmd@redhat.com>
 In-Reply-To: <20191014142246.4538-1-philmd@redhat.com>
 References: <20191014142246.4538-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.40]); Mon, 14 Oct 2019 14:29:42 +0000 (UTC)
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.71]); Mon, 14 Oct 2019 14:30:09 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -108,35 +108,40 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9JcPOLvceHbf
+X-TUID: fsbfMbTosohn
 
-hw/timer/hpet.c calls address_space_stl_le() declared in
-"exec/address-spaces.h". Include it.
+The MCHPCIState structure uses the Range type which is declared in
+"qemu/range.h". Include it.
 
 This fixes (when modifying unrelated headers):
 
-  hw/timer/hpet.c:210:31: error: use of undeclared identifier 'address_sp=
-ace_memory'
-          address_space_stl_le(&address_space_memory, timer->fsb >> 32,
-                               ^~~~~~~~~~~~~~~~~~~~
+  In file included from hw/pci-host/q35.c:32:
+  include/hw/pci-host/q35.h:57:11: error: field has incomplete type 'Rang=
+e' (aka 'struct Range')
+      Range pci_hole;
+            ^
+  include/qemu/typedefs.h:116:16: note: forward declaration of 'struct Ra=
+nge'
+  typedef struct Range Range;
+                 ^
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/timer/hpet.c | 1 +
+ include/hw/pci-host/q35.h | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
-index 4772cccfe3..6589d63ebb 100644
---- a/hw/timer/hpet.c
-+++ b/hw/timer/hpet.c
-@@ -35,6 +35,7 @@
- #include "hw/timer/mc146818rtc.h"
- #include "migration/vmstate.h"
- #include "hw/timer/i8254.h"
-+#include "exec/address-spaces.h"
+diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
+index b3bcf2e632..79a88d67b1 100644
+--- a/include/hw/pci-host/q35.h
++++ b/include/hw/pci-host/q35.h
+@@ -32,6 +32,7 @@
+ #include "hw/acpi/ich9.h"
+ #include "hw/pci-host/pam.h"
+ #include "hw/i386/intel_iommu.h"
++#include "qemu/range.h"
 =20
- //#define HPET_DEBUG
- #ifdef HPET_DEBUG
+ #define TYPE_Q35_HOST_DEVICE "q35-pcihost"
+ #define Q35_HOST_DEVICE(obj) \
 --=20
 2.21.0
 

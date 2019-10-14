@@ -1,212 +1,132 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id x5sm34222663wrg.69.2019.10.14.08.43.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Oct 2019 08:43:41 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 773881FF87;
-	Mon, 14 Oct 2019 16:43:40 +0100 (BST)
-References: <20191011155546.14342-1-richard.henderson@linaro.org>
- <20191011155546.14342-3-richard.henderson@linaro.org>
-User-agent: mu4e 1.3.5; emacs 27.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: laurent.desnogues@gmail.com, peter.maydell@linaro.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH v6 02/20] target/arm: Split out rebuild_hflags_a64
-In-reply-to: <20191011155546.14342-3-richard.henderson@linaro.org>
-Date: Mon, 14 Oct 2019 16:43:40 +0100
-Message-ID: <87v9srmixf.fsf@linaro.org>
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4599978wrm;
+        Mon, 14 Oct 2019 08:50:35 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwTj+UY3B7diYt2keuXV8Y9BvT12dEZDU7jiRCYYN8PDJaMZkEvLJEHOT0GUkDYo92Ul1ES
+X-Received: by 2002:aed:2f04:: with SMTP id l4mr33172683qtd.345.1571068234793;
+        Mon, 14 Oct 2019 08:50:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571068234; cv=none;
+        d=google.com; s=arc-20160816;
+        b=W5T922+yfsJLe1GrRP9fkfFBxcTWRjT/8uhkxwPJzQhZzMYNdPYBR/T3OccV/w8AQ5
+         Lz9AyBaF8YewayX4keFRokJ+DcDu3HaLUcYQccflcwlP1IqrbVs9uYUxXlFP4KMuZ4wK
+         bFOBFrV6+//oLZtEh2gKhz+081gZt/j1spA8GGNVYoxVpPFS8AVJ3qrtRSSq7IZ8QFz5
+         hSYK3lIJ9wwB2Mq+IsZ3F0fBwkNanYDvyA1TvygNkP+DeLI8ziurU0bTnL+KKYrFq1KL
+         UlA6eKUq9iOm+oblZtG21tFW02+SPoLLBI2GWrYIYt2sxRBoXFikrBgVim6ord9RgCuo
+         joVw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=rCb7D5gkeVaSwddOI1LsIISMT/+XwM/ydhEjVq54D/I=;
+        b=mKLpES8opP6KFF0RNGwqhtP1L322rXkPpfeSctRDC2Ik53cA/RH0dggPYndFJwZIaz
+         wUzvzg0kwbRmeO27kl4gRcbNm9t/o8UtWh3iNZCgQ36zhC/O+ICp9Xm0pAD0dOHBtqnS
+         ocjEAtfGa8J8d+YCXH8osLv8qoKFvGJOQ9jiJdtu+qGLz+OjHVSByih1VgaXNHEWAtWx
+         hnEpqMkb1lj/qudz3gYBJQabmAk+u1cZlTlAYFix28i62RLty8jcDdNX04ubkzXgG3Fn
+         DUbkW3oZ8pWSZTKHkl4shHbPrm3Zx80Y/jAudZlddYpbgpMLFsnJYigpQWDObwb/CM1d
+         te6A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=hdv26wwp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y63si17538282qkb.261.2019.10.14.08.50.34
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 14 Oct 2019 08:50:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b=hdv26wwp;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51844 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iK2cD-0000Xm-Qy
+	for alex.bennee@linaro.org; Mon, 14 Oct 2019 11:50:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33835)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <peter.maydell@linaro.org>) id 1iK2Yh-0005FQ-8Q
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2019 11:46:57 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <peter.maydell@linaro.org>) id 1iK2Yf-00084j-6d
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2019 11:46:55 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:37860)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
+ id 1iK2Yd-000836-7Y
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2019 11:46:53 -0400
+Received: by mail-oi1-x241.google.com with SMTP id i16so14147046oie.4
+ for <qemu-arm@nongnu.org>; Mon, 14 Oct 2019 08:46:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=rCb7D5gkeVaSwddOI1LsIISMT/+XwM/ydhEjVq54D/I=;
+ b=hdv26wwpptnVy/gkVYCbFhooTIAP+apKZzNcOKvOLDDrOCYAcP3nRXxqqW3askA9l9
+ jdAhF2O6Lb/eV8Hmn+oM2wGsbCvw70HmZagb6R/CO4uryHBaAxmafdLeOtppxqXpLhqa
+ 9IsWdMuZFtEN3izdwVJ4QlPlZPa26AL1yr3T30LcLjTMMwNRFlyzcRdviDE6EZPtom2a
+ YHy+Mq58Bq0vP/h0+YpASbY/yKMeMiuYwU+NmZiqy9Pu0V/pWqeDWAzl08qr1xe9NN5X
+ 8TfOPXtZSFC3wFKv88G0+Tm9cd0XP/5DkTTYGnqK8Zj01OY6yRQkNeogDkqZuzapkvxT
+ py0g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=rCb7D5gkeVaSwddOI1LsIISMT/+XwM/ydhEjVq54D/I=;
+ b=Mj73E1061/8y9+gDU/aohjUJJ0THfR9RYgCU1gEZnd1axq+t16loyrtD/pL6KUbGdk
+ WGeN2/D3zIBodZGlWh56AuBnV1OqCOJ58OT3MlcRsF+ei/Rub2NOLGhSiaa7EOUH1wVi
+ M/Cez84v1obr8pkDT1gQ3t2drfkC8jVqIbR2a84dAs8jvbjCHc2VbAgjEUaLH8AzQW13
+ dn1L8QuUi44H+rR7kllA0qOhNtsKtjitVgH/ukGP/FSBU+dTRJ9F85KI/yW3X9vGV+Yh
+ f/vpePoEe/5P+vl6r5i73+yP1AdrAtF22fFKRNsrOfX6+sovlk7rZUOrTQVYjDJoK57O
+ J7Jg==
+X-Gm-Message-State: APjAAAXeHudGGDB4rd1Gf6vwYrwUUEN0TQt7mtaHcoty8kfDra7CTo+C
+ euWFp7AkPqwanI7XykqmTtea9HcS8corNPT51Eanzct51T0=
+X-Received: by 2002:a05:6808:9:: with SMTP id u9mr25460529oic.98.1571068009994; 
+ Mon, 14 Oct 2019 08:46:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20190925143248.10000-1-clg@kaod.org>
+In-Reply-To: <20190925143248.10000-1-clg@kaod.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 14 Oct 2019 16:46:39 +0100
+Message-ID: <CAFEAcA_i_3p8AJKWCVA4VcxBj9g1y_atid1Di4eLhWKkfY00Vw@mail.gmail.com>
+Subject: Re: [PATCH v2 00/23] aspeed: Add support for the AST2600 SoC
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: s4wBtVvENqTB
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::241
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: mv/Q/RjS9H9b
+
+On Wed, 25 Sep 2019 at 15:33, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> Hello,
+>
+> The series starts with a watchdog fix and a new model for the SDHCI
+> controller. Follows the code for the AST2600 SoC.
+>
+> Most of the Aspeed models are reworked with an object class to
+> introduce the AST2600 variant. A model for the AST2600 SoC and a
+> simple AST2600 EVB machine is proposed at the end of the series. It
+> can boot the OpenBMC firmware image which is currently used for HW
+> bringup.
 
 
-Richard Henderson <richard.henderson@linaro.org> writes:
 
-> Create a function to compute the values of the TBFLAG_A64 bits
-> that will be cached.  For now, the env->hflags variable is not
-> used, and the results are fed back to cpu_get_tb_cpu_state.
->
-> Note that not all BTI related flags are cached, so we have to
-> test the BTI feature twice -- once for those bits moved out to
-> rebuild_hflags_a64 and once for those bits that remain in
-> cpu_get_tb_cpu_state.
->
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+Applied to target-arm.next, thanks.
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-> ---
->  target/arm/helper.c | 131 +++++++++++++++++++++++---------------------
->  1 file changed, 69 insertions(+), 62 deletions(-)
->
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 8829d91ae1..69da04786e 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -11070,6 +11070,71 @@ static uint32_t rebuild_hflags_common(CPUARMStat=
-e *env, int fp_el,
->      return flags;
->  }
->
-> +static uint32_t rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
-> +                                   ARMMMUIdx mmu_idx)
-> +{
-> +    ARMMMUIdx stage1 =3D stage_1_mmu_idx(mmu_idx);
-> +    ARMVAParameters p0 =3D aa64_va_parameters_both(env, 0, stage1);
-> +    uint32_t flags =3D 0;
-> +    uint64_t sctlr;
-> +    int tbii, tbid;
-> +
-> +    flags =3D FIELD_DP32(flags, TBFLAG_ANY, AARCH64_STATE, 1);
-> +
-> +    /* FIXME: ARMv8.1-VHE S2 translation regime.  */
-> +    if (regime_el(env, stage1) < 2) {
-> +        ARMVAParameters p1 =3D aa64_va_parameters_both(env, -1, stage1);
-> +        tbid =3D (p1.tbi << 1) | p0.tbi;
-> +        tbii =3D tbid & ~((p1.tbid << 1) | p0.tbid);
-> +    } else {
-> +        tbid =3D p0.tbi;
-> +        tbii =3D tbid & !p0.tbid;
-> +    }
-> +
-> +    flags =3D FIELD_DP32(flags, TBFLAG_A64, TBII, tbii);
-> +    flags =3D FIELD_DP32(flags, TBFLAG_A64, TBID, tbid);
-> +
-> +    if (cpu_isar_feature(aa64_sve, env_archcpu(env))) {
-> +        int sve_el =3D sve_exception_el(env, el);
-> +        uint32_t zcr_len;
-> +
-> +        /*
-> +         * If SVE is disabled, but FP is enabled,
-> +         * then the effective len is 0.
-> +         */
-> +        if (sve_el !=3D 0 && fp_el =3D=3D 0) {
-> +            zcr_len =3D 0;
-> +        } else {
-> +            zcr_len =3D sve_zcr_len_for_el(env, el);
-> +        }
-> +        flags =3D FIELD_DP32(flags, TBFLAG_A64, SVEEXC_EL, sve_el);
-> +        flags =3D FIELD_DP32(flags, TBFLAG_A64, ZCR_LEN, zcr_len);
-> +    }
-> +
-> +    sctlr =3D arm_sctlr(env, el);
-> +
-> +    if (cpu_isar_feature(aa64_pauth, env_archcpu(env))) {
-> +        /*
-> +         * In order to save space in flags, we record only whether
-> +         * pauth is "inactive", meaning all insns are implemented as
-> +         * a nop, or "active" when some action must be performed.
-> +         * The decision of which action to take is left to a helper.
-> +         */
-> +        if (sctlr & (SCTLR_EnIA | SCTLR_EnIB | SCTLR_EnDA | SCTLR_EnDB))=
- {
-> +            flags =3D FIELD_DP32(flags, TBFLAG_A64, PAUTH_ACTIVE, 1);
-> +        }
-> +    }
-> +
-> +    if (cpu_isar_feature(aa64_bti, env_archcpu(env))) {
-> +        /* Note that SCTLR_EL[23].BT =3D=3D SCTLR_BT1.  */
-> +        if (sctlr & (el =3D=3D 0 ? SCTLR_BT0 : SCTLR_BT1)) {
-> +            flags =3D FIELD_DP32(flags, TBFLAG_A64, BT, 1);
-> +        }
-> +    }
-> +
-> +    return rebuild_hflags_common(env, fp_el, mmu_idx, flags);
-> +}
-> +
->  void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
->                            target_ulong *cs_base, uint32_t *pflags)
->  {
-> @@ -11079,67 +11144,9 @@ void cpu_get_tb_cpu_state(CPUARMState *env, targ=
-et_ulong *pc,
->      uint32_t flags =3D 0;
->
->      if (is_a64(env)) {
-> -        ARMCPU *cpu =3D env_archcpu(env);
-> -        uint64_t sctlr;
-> -
->          *pc =3D env->pc;
-> -        flags =3D FIELD_DP32(flags, TBFLAG_ANY, AARCH64_STATE, 1);
-> -
-> -        /* Get control bits for tagged addresses.  */
-> -        {
-> -            ARMMMUIdx stage1 =3D stage_1_mmu_idx(mmu_idx);
-> -            ARMVAParameters p0 =3D aa64_va_parameters_both(env, 0, stage=
-1);
-> -            int tbii, tbid;
-> -
-> -            /* FIXME: ARMv8.1-VHE S2 translation regime.  */
-> -            if (regime_el(env, stage1) < 2) {
-> -                ARMVAParameters p1 =3D aa64_va_parameters_both(env, -1, =
-stage1);
-> -                tbid =3D (p1.tbi << 1) | p0.tbi;
-> -                tbii =3D tbid & ~((p1.tbid << 1) | p0.tbid);
-> -            } else {
-> -                tbid =3D p0.tbi;
-> -                tbii =3D tbid & !p0.tbid;
-> -            }
-> -
-> -            flags =3D FIELD_DP32(flags, TBFLAG_A64, TBII, tbii);
-> -            flags =3D FIELD_DP32(flags, TBFLAG_A64, TBID, tbid);
-> -        }
-> -
-> -        if (cpu_isar_feature(aa64_sve, cpu)) {
-> -            int sve_el =3D sve_exception_el(env, current_el);
-> -            uint32_t zcr_len;
-> -
-> -            /* If SVE is disabled, but FP is enabled,
-> -             * then the effective len is 0.
-> -             */
-> -            if (sve_el !=3D 0 && fp_el =3D=3D 0) {
-> -                zcr_len =3D 0;
-> -            } else {
-> -                zcr_len =3D sve_zcr_len_for_el(env, current_el);
-> -            }
-> -            flags =3D FIELD_DP32(flags, TBFLAG_A64, SVEEXC_EL, sve_el);
-> -            flags =3D FIELD_DP32(flags, TBFLAG_A64, ZCR_LEN, zcr_len);
-> -        }
-> -
-> -        sctlr =3D arm_sctlr(env, current_el);
-> -
-> -        if (cpu_isar_feature(aa64_pauth, cpu)) {
-> -            /*
-> -             * In order to save space in flags, we record only whether
-> -             * pauth is "inactive", meaning all insns are implemented as
-> -             * a nop, or "active" when some action must be performed.
-> -             * The decision of which action to take is left to a helper.
-> -             */
-> -            if (sctlr & (SCTLR_EnIA | SCTLR_EnIB | SCTLR_EnDA | SCTLR_En=
-DB)) {
-> -                flags =3D FIELD_DP32(flags, TBFLAG_A64, PAUTH_ACTIVE, 1);
-> -            }
-> -        }
-> -
-> -        if (cpu_isar_feature(aa64_bti, cpu)) {
-> -            /* Note that SCTLR_EL[23].BT =3D=3D SCTLR_BT1.  */
-> -            if (sctlr & (current_el =3D=3D 0 ? SCTLR_BT0 : SCTLR_BT1)) {
-> -                flags =3D FIELD_DP32(flags, TBFLAG_A64, BT, 1);
-> -            }
-> +        flags =3D rebuild_hflags_a64(env, current_el, fp_el, mmu_idx);
-> +        if (cpu_isar_feature(aa64_bti, env_archcpu(env))) {
->              flags =3D FIELD_DP32(flags, TBFLAG_A64, BTYPE, env->btype);
->          }
->      } else {
-> @@ -11159,9 +11166,9 @@ void cpu_get_tb_cpu_state(CPUARMState *env, targe=
-t_ulong *pc,
->              flags =3D FIELD_DP32(flags, TBFLAG_A32,
->                                 XSCALE_CPAR, env->cp15.c15_cpar);
->          }
-> -    }
->
-> -    flags =3D rebuild_hflags_common(env, fp_el, mmu_idx, flags);
-> +        flags =3D rebuild_hflags_common(env, fp_el, mmu_idx, flags);
-> +    }
->
->      /* The SS_ACTIVE and PSTATE_SS bits correspond to the state machine
->       * states defined in the ARM ARM for software singlestep:
-
-
---
-Alex Benn=C3=A9e
+-- PMM

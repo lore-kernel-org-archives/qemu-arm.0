@@ -1,175 +1,250 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4670820wrm;
-        Mon, 14 Oct 2019 09:55:26 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyES6vAwFDNTRXCorUauybO0ttqcZxICAcOLDnVv/NywfCgLDpPg/gGTZxQkmtphDLSLgz3
-X-Received: by 2002:ac8:6683:: with SMTP id d3mr32512732qtp.85.1571072126323;
-        Mon, 14 Oct 2019 09:55:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571072126; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4705138wrm;
+        Mon, 14 Oct 2019 10:26:47 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzNlr1YPdpFxzMu3B9rTtYT4nxohsoWaqsZ+zdhyWr7f8QOXebEEenoAz9/EXkAjeGTPXcR
+X-Received: by 2002:ac8:b42:: with SMTP id m2mr33542488qti.174.1571074007201;
+        Mon, 14 Oct 2019 10:26:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571074007; cv=none;
         d=google.com; s=arc-20160816;
-        b=jVjZ5RF7HtlmHx3OxDF/2hnbxmO31LUsy0DxW+qFXFsw2RE96P4bgaWG9dt3qUHQUO
-         lckgpKm6cr0GOKpM9F8GKocTt3TJZWm42pNytPcqAquwHafqoz2pdY0RPwH5Hwhd3VZO
-         /xO+C91F2XvEAkQeUGOK6Wnaa3z4SxyikQXdn8v75vGHx9azDQ+adXZr2xSLuKaqqNcO
-         PecumU+IQL7aHYjw8PfVLIJ7Hp3Yk8Vm3w5IW/lcXFYO/wQbLv6lTmbRtWvekkzvlF8A
-         2Bwkn86u6lOwmlJsdc1s9RuNzhN3wgeBlTvkcssbvOHI55OzmatpYOOBNM3iBodcU6Zu
-         ybWg==
+        b=TKDXz/OWejs7D5j7ElBuFq7WB8ss9QV3wR+Q9n9Y9+GUG0JVJRPesjKOJqVq4s55+f
+         mmPdK2xYOorxJTLI2jVZGuzSisB0vuTR6gXCJHKztkTF2JFmksS2XxPvX7fcXv/xOFT5
+         be4vNPg7GLv8J6U2aqWyKeI/kZ97jXuQqIg5xe2ghJP3D8R6mB/blCBMHFDHwijxN4fT
+         7HMkTSBrNktOhF9Hp2a6CRsW5sE7hqmsP3lc5U8mr5XMksXwizcliEDZOacjbCDrFYSd
+         e+NFOtZc6VgFYssujdqTQ3ku2W13PxbZ1I/qeQYbVrCqzr7iHQagaq9qmOe38KUKT6nL
+         HPYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=DcXgWkyOh1fgXICM01ruV2uk9CbdGMUHaoXAtuHaEPk=;
-        b=ADGPsdhwscZqjNz1VMCt+EEWpJqM6CMSyo9O3rZHnbG2PPiZCGc8gHF/uDtuCxuDk/
-         29vioTki7ymRv7FCPLs5V4Rnb/5vE0ZiGGPHf8DQvoTAzLy7vwWxnV7nzpchYi/ttBSi
-         oEaRxXigUQMFRzZeO1n+ROQVKXV/seZJmejDzGSCTBaV5z+vuzl16OyzxAoPkjD3KucC
-         UCUDrjCdH9lyZjvIgYR+GOD96klS4yIzenz6JJB9AEuOLtz3/DWhQC3aam/pC1IZH+kc
-         VjnMlbS/ypfalX7oHiqZRAIGC5LGYi06CnH7zBqAVjGD3KjZJQ1sSaJHH6siu+Na7Ebm
-         inyQ==
+         :message-id:autocrypt:from:references:to:subject;
+        bh=7lJrxpldjcMTTpEare94w9TuHinQTPw3EfJS+ikIBlo=;
+        b=PtXFMYIapr0jGKWtD7XW9VKpmQ0xE+FeBG6A2UnDeTEksTrMqHhjgpBC9qbeGPWsfs
+         cS3b+Jw6l7eEkF8wux4uUMGpwvkZMc7s0eFvt0VTUB6K6OD54J4SE2Z3GNybn3dcN3DU
+         mqyXUNJod+9TJbNAXqErZaFuDa5fAaSjyAYtLks9O85ufA8WZT9WgGhPATmKaownHBlc
+         9U6MFx2/wWWV1yGbovlevZKu74jQ1bd2n25zcCVGk89FuzEk8sEDNrkXPyy9zguiVpc/
+         PJ5DXecP9P/3gjdWezQoh+npCngnefwk4OlLw/co9wBjq2vDmHPt8iJqtx4+hUlU0LSH
+         DS6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o13si18079304qtb.213.2019.10.14.09.55.26
+        by mx.google.com with ESMTPS id 21si18996382qke.116.2019.10.14.10.26.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Oct 2019 09:55:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 14 Oct 2019 10:26:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53780 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54522 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iK3cz-0000jA-E1
-	for alex.bennee@linaro.org; Mon, 14 Oct 2019 12:55:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37824)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iK47K-0000qW-7P
+	for alex.bennee@linaro.org; Mon, 14 Oct 2019 13:26:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45456)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iK2sP-000818-8f
- for qemu-devel@nongnu.org; Mon, 14 Oct 2019 12:07:18 -0400
+ (envelope-from <jsnow@redhat.com>) id 1iK3jV-0002wD-Iw
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2019 13:02:10 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iK2sN-0000hX-Tx
- for qemu-devel@nongnu.org; Mon, 14 Oct 2019 12:07:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:52292)
+ (envelope-from <jsnow@redhat.com>) id 1iK3jT-0005w9-FV
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2019 13:02:08 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:26679)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iK2sN-0000gj-Ky
- for qemu-devel@nongnu.org; Mon, 14 Oct 2019 12:07:15 -0400
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69])
- (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (Exim 4.71) (envelope-from <jsnow@redhat.com>)
+ id 1iK3jT-0005vZ-6n; Mon, 14 Oct 2019 13:02:07 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 9D7815945E
- for <qemu-devel@nongnu.org>; Mon, 14 Oct 2019 16:07:14 +0000 (UTC)
-Received: by mail-wr1-f69.google.com with SMTP id i14so8687731wro.19
- for <qemu-devel@nongnu.org>; Mon, 14 Oct 2019 09:07:14 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=PHFpWThQhnJj62Bl/tihULoYzZMcq0hbNQYAPPTHm9w=;
- b=cEuAQiSu3oVz/NNMaK6URpZLULuZjokkQ6U9ckJPUE/ENKni8XPzOaqiiCEJ+ZRQs6
- bkHUMZCbNzAi9tO5S6BcnKuJ8qCtgX2rSvWBm+imSa8Jtb79KAJNYB77kU9rHZ9dzsF8
- EM4W/OgkW9i2foXLbuToYiUzfLWqpoVyHe8uIfGABI54J74KPHhQRxj92iVnQxMzXg9k
- ax7kdNm+cM0ykWxFKVzwBUwC5sIjTs+Cdac3PC7SlOalYIor3mZkJYwuIwsyUEOI1kHK
- 4MV2879x9nUlEniitWiUqhOwBx3CdksVI4hGYrhEYLFZvHLb1XV51NaM0yLlCrt/hsBx
- Pdug==
-X-Gm-Message-State: APjAAAU1sCxiSbovhXSKidbIN2bnLod2lzJUd+1bXZcoX1geId36ZMbG
- 5EhGmbGED3nDen2UOjWDuCvdplrYqcG3s5auYXYR7izfZNhpmS6Yk7M6dgyHOegFZBJY50AfbI0
- +fcccHjSOgrE/rqE=
-X-Received: by 2002:adf:e5c4:: with SMTP id a4mr8929606wrn.334.1571069233392; 
- Mon, 14 Oct 2019 09:07:13 -0700 (PDT)
-X-Received: by 2002:adf:e5c4:: with SMTP id a4mr8929574wrn.334.1571069233185; 
- Mon, 14 Oct 2019 09:07:13 -0700 (PDT)
-Received: from [192.168.1.35] (46.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.46])
- by smtp.gmail.com with ESMTPSA id g3sm22545742wro.14.2019.10.14.09.07.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Oct 2019 09:07:12 -0700 (PDT)
-Subject: Re: [PATCH 00/19] hw/arm/raspi: Improve Raspberry Pi 2/3 reliability
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-References: <20190926173428.10713-1-f4bug@amsat.org>
- <CAFEAcA-2ovf5Y4uaCteRB7Ytt2bcOS1BgfQNRr8G6z5_VobKZw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <bf9829b5-395b-eec3-7824-408d35febc44@redhat.com>
-Date: Mon, 14 Oct 2019 18:07:11 +0200
+ by mx1.redhat.com (Postfix) with ESMTPS id B0DBB18CB8FC;
+ Mon, 14 Oct 2019 17:02:05 +0000 (UTC)
+Received: from [10.18.17.152] (dhcp-17-152.bos.redhat.com [10.18.17.152])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F16C16012C;
+ Mon, 14 Oct 2019 17:01:37 +0000 (UTC)
+Subject: Re: [PATCH 02/20] hw/southbridge/ich9: Removed unused headers
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+References: <20191014142246.4538-1-philmd@redhat.com>
+ <20191014142246.4538-3-philmd@redhat.com>
+From: John Snow <jsnow@redhat.com>
+Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <09ad3737-ae74-2be0-ce70-500fc5c0cf00@redhat.com>
+Date: Mon, 14 Oct 2019 13:01:37 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-2ovf5Y4uaCteRB7Ytt2bcOS1BgfQNRr8G6z5_VobKZw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+In-Reply-To: <20191014142246.4538-3-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.63]); Mon, 14 Oct 2019 17:02:06 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?Zolt=c3=a1n_Baldaszti?= <bztemail@gmail.com>,
- Laurent Bonnans <laurent.bonnans@here.com>,
- Esteban Bosse <estebanbosse@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- Clement Deschamps <clement.deschamps@antfield.fr>,
- Cleber Rosa <crosa@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Cheng Xiang <ext-cheng.xiang@here.com>, Pekka Enberg <penberg@iki.fi>,
- Guenter Roeck <linux@roeck-us.net>, Eduardo Habkost <ehabkost@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: u+7AnkM7BS0W
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Paul Durrant <paul@xen.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, Eric Blake <eblake@redhat.com>,
+ Stefano Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org,
+ Helge Deller <deller@gmx.de>, David Hildenbrand <david@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
+ Andrzej Zaborowski <balrogg@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Xie Changlong <xiechanglong.d@gmail.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Kevin Wolf <kwolf@redhat.com>, Wen Congyang <wencongyang2@huawei.com>,
+ Cornelia Huck <cohuck@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hIsMszTAwQQe
 
-On 10/14/19 5:45 PM, Peter Maydell wrote:
-> On Thu, 26 Sep 2019 at 18:34, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.=
-org> wrote:
->>
->> Hi,
->>
->> I previously posted a RFC for the Raspberry Pi 4:
->> https://www.mail-archive.com/qemu-devel@nongnu.org/msg642241.html
->> and got it almost working (boots Linux kernel to userland, sadly
->> I'm still having timeout issues with the eMMC block).
->> However since it is quite usable, I started to clean up to post
->> the series and realized it is way too big for Peter Maydell, so
->> I'm following his rule of thumb by splitting in 3 sets of ~20
->> functional patches.
->=20
->> Philippe Mathieu-Daud=C3=A9 (19):
->>    hw/arm/raspi: Use the IEC binary prefix definitions
->>    hw/arm/bcm2835_peripherals: Improve logging
->>    hw/arm/bcm2835_peripherals: Name various address spaces
->>    hw/arm/bcm2835: Rename some definitions
->>    hw/arm/bcm2835: Add various unimplemented peripherals
->>    hw/char/bcm2835_aux: Add trace events
->>    hw/misc/bcm2835_mbox: Add trace events
->>    hw/misc/bcm2835_thermal: Add a dummy BCM2835 thermal sensor
->>    hw/arm/bcm2835_peripherals: Use the thermal sensor block
->>    hw/timer/bcm2835: Add the BCM2835 SYS_timer
->>    hw/arm/bcm2835_peripherals: Use the SYS_timer
->>    hw/arm/bcm2835_peripherals: Add Clock/Power/Reset Manager blocks
->>    hw/arm/raspi: Define various blocks base addresses
->>    python/qemu/machine: Allow to use other serial consoles than defaul=
-t
->>    tests/boot_linux_console: Extract the gunzip() helper
->>    tests/boot_linux_console: Add a test for the Raspberry Pi 2
->>    tests/boot_linux_console: Test the raspi2 UART1 (16550 based)
->>    tests/boot_linux_console: Boot Linux and run few commands on raspi3
->>    tests/boot_linux_console: Test SDHCI and termal sensor on raspi3
->=20
->  From this patchset, I'm going to apply patches 1-5 and 7
-> to target-arm.next, since they're good cleanups that have
-> been reviewed. I've given a few review comments on
-> some of the others but mostly it seems to have been reviewed
-> by others already (so thanks to those reviewers).
 
-OK, thanks!
+
+On 10/14/19 10:22 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> The ICH9 chipset is not X86/PC specific.
+>=20
+> These files don't use anything declared by the "hw/i386/pc.h"
+> or "hw/i386/ioapic.h" headers. Remove them.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+Reviewed-by: John Snow <jsnow@redhat.com>
+
+> ---
+>  hw/acpi/ich9.c         | 1 -
+>  hw/isa/lpc_ich9.c      | 2 --
+>  include/hw/i386/ich9.h | 1 -
+>  3 files changed, 4 deletions(-)
+>=20
+> diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
+> index 2034dd749e..fdd0a6c79e 100644
+> --- a/hw/acpi/ich9.c
+> +++ b/hw/acpi/ich9.c
+> @@ -27,7 +27,6 @@
+>  #include "qemu/osdep.h"
+>  #include "qapi/error.h"
+>  #include "qapi/visitor.h"
+> -#include "hw/i386/pc.h"
+>  #include "hw/pci/pci.h"
+>  #include "migration/vmstate.h"
+>  #include "qemu/timer.h"
+> diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
+> index 17c292e306..61cee2ae3a 100644
+> --- a/hw/isa/lpc_ich9.c
+> +++ b/hw/isa/lpc_ich9.c
+> @@ -35,10 +35,8 @@
+>  #include "hw/isa/isa.h"
+>  #include "hw/sysbus.h"
+>  #include "migration/vmstate.h"
+> -#include "hw/i386/pc.h"
+>  #include "hw/irq.h"
+>  #include "hw/isa/apm.h"
+> -#include "hw/i386/ioapic.h"
+>  #include "hw/pci/pci.h"
+>  #include "hw/pci/pci_bridge.h"
+>  #include "hw/i386/ich9.h"
+> diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
+> index 72e803f6e2..a98d10b252 100644
+> --- a/include/hw/i386/ich9.h
+> +++ b/include/hw/i386/ich9.h
+> @@ -5,7 +5,6 @@
+>  #include "hw/sysbus.h"
+>  #include "hw/i386/pc.h"
+>  #include "hw/isa/apm.h"
+> -#include "hw/i386/ioapic.h"
+>  #include "hw/pci/pci.h"
+>  #include "hw/pci/pcie_host.h"
+>  #include "hw/pci/pci_bridge.h"
+>=20
+
+--=20
+=E2=80=94js

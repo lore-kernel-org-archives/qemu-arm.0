@@ -1,206 +1,144 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4480876wrm;
-        Mon, 14 Oct 2019 07:07:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzMsZGTWU0rZnFXa60gsy4w46RTCVhKa3luVGRu8S5iY0RtgIYlhp+qHkB/o8DxKcKa3p02
-X-Received: by 2002:a5d:568a:: with SMTP id f10mr3902103wrv.215.1571062023959;
-        Mon, 14 Oct 2019 07:07:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571062023; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4502134wrm;
+        Mon, 14 Oct 2019 07:25:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwikE9OdJGwFLpQ+ovYRthXzjz8Q6ZnE7pjY7oxKuYqyvLX/9+pvRwjmagUeqhEJ3Kcw5Yn
+X-Received: by 2002:a17:906:3016:: with SMTP id 22mr28218426ejz.227.1571063104769;
+        Mon, 14 Oct 2019 07:25:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571063104; cv=none;
         d=google.com; s=arc-20160816;
-        b=VC1RYjyHiY362JH6MOmQp5Xef3EVW1rfAXFN/9owCSAk7i99JRCynKU1j81B5wwqi4
-         N6GkITMCCF51mBmd3emPpMCcGrTdpOIhMReY+MELTn3VshQnX2AZXrzxAriutSWiv7Vs
-         E7vBuKLYgNA/AsMHVbgl6Tle447EemxYQbGPeEJvyHcd9YVVB8/DNZ2CFltojtJdHaDf
-         VQyM98Vd9eKGV+2WXLnQqeQeVxowS9ogCWSomCqb5z6/4DPkCZE2NdV8aAEk+SG24aSy
-         IDSvl6kZwxdaJXB1B0tkSCYAzHRbOPcrhT9rC/t9LzMN0Y1Sl9bRQkzEN1VK8VsTWYyt
-         AbPQ==
+        b=QwjAyP8kvn/v0XGmgf45lhN/c5IKRx99M0hGGsbVXG0QLvx6P81+eLUacjVMP2f3lE
+         NDY6p39UpbezDZ6MGZFukWAl25Z4X9s76QmP0+0nvcQJ0c5rW6yxI815bSfRwcuWdfPc
+         otBKJAHZ9vzAyu7Lb0RH6uVdo7/id6NmH+r2Gp4DHB2Rm7eh/D1RRzRyG5uqyHGoZuXK
+         SI5aXQcRJ3un0MOLqw/oXzLfiXJC4raFMRW+N0L9ZVyjeE1m96t6ytfDn4DlUj/BFNfw
+         0UYNHuBHwAC5Cv1fBhYiN+oAckc44I+5DMWK+WQhK1TnHoy/OOwq6aFowQTPmBZMOOU/
+         EMxQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:from:references:to:subject;
-        bh=99Y978KDdwv43+9Xa2BjWkMuIeejMRm5P//61iZCeiM=;
-        b=yu2Qp3Vh4+jLReVCSpkT/bbrnXJg09szhkdrGv5PMbAXOBmGD0uOvQhvGzdel/BBAf
-         1Ypo99xnLjBQYomWVdLszAJg7j1Hufj8lFkKUX+Vg4t1+0fJDtny04uZmLoIjZp0H65w
-         akiuSap8RHJwcnEiK4u9cY4/KFGhO1HP8dDms7mx7sD4bkNYCjpf0aRYyRw566QDdoyI
-         y4nUuotvu5ZTvfbEuahmtb8Ltceygdl/V748iPXkRRTODQup13kUg1UXu1Ymc0nLwSLo
-         8rV0E2j7EuIAcyMsEqEGBa+AemF8aWxK/0DJZLy6ueA9KEZNsweQm4Chdzcp49mg0z7w
-         l9fw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=Zn0L3UkbHN07y7/3DEcmABvEQG8v3eUBO7dsQfzppY8=;
+        b=oy77yipuRUrp3H5XM0WbF4ZfhVoMiyyCH6k2bCKEJS3efAtKbJaDpvwUv2H7PV15vo
+         EvB2TgAnrk8o7C6fI6DzSS7jBdyI6NPJ5xCg0JgCzLHb3vvKKaQSPE5VO+tvlGX5aQuL
+         XlhoF/SKj1N9noOTjv7AazeCZhCl5Azf9fLnl9CQZ/V1nIKQCFvpme7huv5KZ/9UVzQA
+         zeFxFdLWTIx1kRWFgiQCiXv5bCrFolz9n1PpnGGjOlXm3l0neV5YRD2nIWEjAeKssEGE
+         zn2SOG2wmXmmSG5t6VCd3cSw59Ha6HltGNuT27niuORVE8PcA49ddarC57woaWnQQaU5
+         YIjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i16si13496614ede.86.2019.10.14.07.07.03
+        by mx.google.com with ESMTPS id z10si11111017ejx.236.2019.10.14.07.25.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Oct 2019 07:07:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 14 Oct 2019 07:25:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50104 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50364 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iK102-0001GY-J9
-	for alex.bennee@linaro.org; Mon, 14 Oct 2019 10:07:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44534)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iK1HT-0005ro-Fe
+	for alex.bennee@linaro.org; Mon, 14 Oct 2019 10:25:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48398)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eblake@redhat.com>) id 1iK0uG-0004Fd-Pw
- for qemu-arm@nongnu.org; Mon, 14 Oct 2019 10:01:05 -0400
+ (envelope-from <philmd@redhat.com>) id 1iK1GS-0005na-75
+ for qemu-devel@nongnu.org; Mon, 14 Oct 2019 10:24:01 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eblake@redhat.com>) id 1iK0uF-00085t-21
- for qemu-arm@nongnu.org; Mon, 14 Oct 2019 10:01:04 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:9908)
+ (envelope-from <philmd@redhat.com>) id 1iK1GN-00006E-C0
+ for qemu-devel@nongnu.org; Mon, 14 Oct 2019 10:24:00 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:55636)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <eblake@redhat.com>)
- id 1iK0uC-000828-91; Mon, 14 Oct 2019 10:01:02 -0400
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ (Exim 4.71) (envelope-from <philmd@redhat.com>)
+ id 1iK1GD-0008Tu-Ba; Mon, 14 Oct 2019 10:23:45 -0400
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 62DE020FD;
- Mon, 14 Oct 2019 14:00:56 +0000 (UTC)
-Received: from [10.3.116.168] (ovpn-116-168.phx2.redhat.com [10.3.116.168])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id EDD0E5C541;
- Mon, 14 Oct 2019 14:00:19 +0000 (UTC)
-Subject: Re: [RFC v5 025/126] scripts: add coccinelle script to use auto
- propagated errp
-To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-References: <20191011160552.22907-1-vsementsov@virtuozzo.com>
- <20191011160552.22907-26-vsementsov@virtuozzo.com>
- <5dd4d642-7ea6-42a2-66fc-6d6710b77b8d@redhat.com>
- <6856bd09-65fc-30d7-2a3c-c85334a024e9@virtuozzo.com>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Message-ID: <e8fa1e71-5f48-e1f0-80f3-ef438c117693@redhat.com>
-Date: Mon, 14 Oct 2019 09:00:19 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.0
+ by mx1.redhat.com (Postfix) with ESMTPS id 2E2BB3086228;
+ Mon, 14 Oct 2019 14:23:43 +0000 (UTC)
+Received: from x1w.redhat.com (unknown [10.40.206.0])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A45FB600CD;
+ Mon, 14 Oct 2019 14:23:14 +0000 (UTC)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>,
+	qemu-devel@nongnu.org
+Subject: [PATCH 01/20] vl: Add missing "hw/boards.h" include
+Date: Mon, 14 Oct 2019 16:22:27 +0200
+Message-Id: <20191014142246.4538-2-philmd@redhat.com>
+In-Reply-To: <20191014142246.4538-1-philmd@redhat.com>
+References: <20191014142246.4538-1-philmd@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <6856bd09-65fc-30d7-2a3c-c85334a024e9@virtuozzo.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.71]); Mon, 14 Oct 2019 14:00:57 +0000 (UTC)
+Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.42]); Mon, 14 Oct 2019 14:23:43 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Stefan Hajnoczi <stefanha@redhat.com>, Jeff Cody <codyprime@gmail.com>,
- Jan Kiszka <jan.kiszka@siemens.com>, Alberto Garcia <berto@igalia.com>,
- Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
- "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
- Aleksandar Rikalo <arikalo@wavecomp.com>, Halil Pasic <pasic@linux.ibm.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Anthony Perard <anthony.perard@citrix.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Anthony Green <green@moxielogic.com>, Laurent Vivier <lvivier@redhat.com>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Paul Durrant <paul@xen.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ qemu-block@nongnu.org, Helge Deller <deller@gmx.de>,
+ David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
  Eduardo Habkost <ehabkost@redhat.com>,
- Xie Changlong <xiechanglong.d@gmail.com>, Peter Lieven <pl@kamp.de>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- Ronnie Sahlberg <ronniesahlberg@gmail.com>, John Snow <jsnow@redhat.com>,
+ Xie Changlong <xiechanglong.d@gmail.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
  Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>, Chris Wulff <crwulff@gmail.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Michael Walle <michael@walle.cc>,
- "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Igor Mammedov <imammedo@redhat.com>, Fam Zheng <fam@euphon.net>,
- Peter Maydell <peter.maydell@linaro.org>,
- "sheepdog@lists.wpkg.org" <sheepdog@lists.wpkg.org>,
- Matthew Rosato <mjrosato@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
- Palmer Dabbelt <palmer@sifive.com>, Thomas Huth <thuth@redhat.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Hannes Reinecke <hare@suse.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- "Gonglei \(Arei\)" <arei.gonglei@huawei.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Liu Yuan <namei.unix@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Eric Farman <farman@linux.ibm.com>,
- Amit Shah <amit@kernel.org>, Stefan Weil <sw@weilnetz.de>,
- Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia@oracle.com>,
- "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Stafford Horne <shorne@gmail.com>,
- "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- Cornelia Huck <cohuck@redhat.com>,
- Aleksandar Markovic <amarkovic@wavecomp.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Paul Burton <pburton@wavecomp.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>, Paul Durrant <paul@xen.org>,
- Jason Wang <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>, Ari Sundholm <ari@tuxera.com>,
- Juan Quintela <quintela@redhat.com>, Michael Roth <mdroth@linux.vnet.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Joel Stanley <joel@jms.id.au>,
- Jason Dillaman <dillaman@redhat.com>, Antony Pavlov <antonynpavlov@gmail.com>,
- "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
- "integration@gluster.org" <integration@gluster.org>,
- Laszlo Ersek <lersek@redhat.com>, "Richard W.M. Jones" <rjones@redhat.com>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, Max Reitz <mreitz@redhat.com>,
- Denis Lunev <den@virtuozzo.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Vincenzo Maffione <v.maffione@gmail.com>, Marek Vasut <marex@denx.de>,
- "armbru@redhat.com" <armbru@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Giuseppe Lettieri <g.lettieri@iet.unipi.it>, Luigi Rizzo <rizzo@iet.unipi.it>,
- David Gibson <david@gibson.dropbear.id.au>,
- Tony Krowiak <akrowiak@linux.ibm.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
- Pierre Morel <pmorel@linux.ibm.com>, Wen Congyang <wencongyang2@huawei.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7F6Ia2lwK60y
+ Wen Congyang <wencongyang2@huawei.com>, Cornelia Huck <cohuck@redhat.com>,
+ Max Reitz <mreitz@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6+Y899ZoC0Hu
 
-On 10/14/19 3:19 AM, Vladimir Sementsov-Ogievskiy wrote:
+vl.c calls machine_usb() declared in "hw/boards.h". Include it.
 
->>> +|
->>> +-=C2=A0=C2=A0=C2=A0 error_propagate(errp, local_err);
->>> +)
->>> +=C2=A0=C2=A0=C2=A0=C2=A0 ...>
->>> + }
->>> +
->>
->> It looks like once this script is run, error_propagate_prepend() will =
-have no clients.
->=20
-> No, it still have a bit, when working with error_copy, and/or moving er=
-rors from/to structures.
+This fixes (when modifying unrelated headers):
 
-No public clients. So can we turn it into a static function only used by=20
-error.c?
+  vl.c:1283:10: error: implicit declaration of function 'machine_usb' is =
+invalid in C99 [-Werror,-Wimplicit-function-declaration]
+      if (!machine_usb(current_machine)) {
+           ^
+  vl.c:1283:10: error: this function declaration is not a prototype [-Wer=
+ror,-Wstrict-prototypes]
+  vl.c:1283:22: error: use of undeclared identifier 'current_machine'
+      if (!machine_usb(current_machine)) {
+                       ^
 
->=20
->> Is there a non-generated cleanup patch that removes it (and once it is=
- removed, it can also be removed from the .cocci script as no further cli=
-ents will reappear later)?
->=20
-> Maybe.
->=20
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+ vl.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-Basically, if we can get error_propagate out of error.h, that's a good=20
-sign.  But it's not a show-stopper if we can't do it for some legitimate=20
-reason (such a reason might include that the definition of the=20
-ERRP_AUTO_PROPAGATE macro is easier to write if error_propagate remains=20
-in the .h), so we'll just have to see what is possible.
-
+diff --git a/vl.c b/vl.c
+index 002bf4919e..e85b31df1b 100644
+--- a/vl.c
++++ b/vl.c
+@@ -25,6 +25,7 @@
+ #include "qemu/osdep.h"
+ #include "qemu-common.h"
+ #include "qemu/units.h"
++#include "hw/boards.h"
+ #include "hw/qdev-properties.h"
+ #include "qapi/error.h"
+ #include "qemu-version.h"
 --=20
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
+2.21.0
+

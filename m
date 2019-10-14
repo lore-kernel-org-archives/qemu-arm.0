@@ -1,330 +1,71 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1372054wrm;
-        Fri, 11 Oct 2019 15:00:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxvJ0NnuXVizqcSJvw4KkoCd0vV+xwC9vUJrEeGgN54YC/y7bW8CGLQ54g+aghXWvszq8rs
-X-Received: by 2002:a0c:c15d:: with SMTP id i29mr18474514qvh.5.1570831247235;
-        Fri, 11 Oct 2019 15:00:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1570831247; cv=none;
-        d=google.com; s=arc-20160816;
-        b=HlepdWiIq6wVIsjwFSPRa+OpBcMmsRLj054R3qdhtBgCDFAXrUKWnv6BWGcbCwR1vV
-         HTv9JoOAKnyFzNkTUzsPr6i9RCyWuUTCSAzrjP6nzcWa7ZC3UsCnZF81z/Xaxths+EMz
-         5wRZVzXUTFix6m49xEhEOALOMcMXPUmTXuxDzGfc3fbPu/VtU7TN3GShoW0Zlk4WBizt
-         W3aK447PTv/ahOxdYXD1j+HUBAwFBdYBiQBZ5ejLBtXTLdw+BgOuiV7OJQCq6Ueg32/D
-         /mWD7u7uWImPcGKJsdmY7W6Z496AkX/utXJEtBELGLi5kGmoNWpv7X7eSyPTyYZjQHjy
-         uJNQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=GeRrffJPAcWK8bPnIORtmSTEkZUm+mHxmMxBGxmazI0=;
-        b=FjuKQFH6ddPiAVh+wmOJxnpGyiRLZBn1LRqZIrmUWHUvOOPr+0MKy2lzPtuc/b1drn
-         fhHGFTxYLj80UzjgDsLZcuo6vZRIavvjKjB9IfM8GQxy36veuv1GVbwCxRviw9cUWujc
-         TLw0Syd423Zd/qsRaNkqSIWZUvCBdukBSKFr6U+5NvdlX2HeEZ6S+7E+O/CjzsstNQwB
-         DiSOTfmSq/R1vn0fC7s7ZhilPEXJLdt1x/I6KzHesmaUbW8Ruumm4+3B9Kz1s6z3bnHE
-         1q1KGylZlcBj45yI+h3jPtCVGfMf5gUWH1gdIersIlW+ukNVFLtrz6trCZGMKVktce61
-         8mCg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Beqntp9j;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j28si9453720qki.173.2019.10.11.15.00.47
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Oct 2019 15:00:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Beqntp9j;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:57484 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iJ2xq-0008Fj-ML
-	for alex.bennee@linaro.org; Fri, 11 Oct 2019 18:00:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59781)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <alistair23@gmail.com>) id 1iJ2xg-0008Cr-G0
- for qemu-arm@nongnu.org; Fri, 11 Oct 2019 18:00:38 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <alistair23@gmail.com>) id 1iJ2xe-0003eh-ND
- for qemu-arm@nongnu.org; Fri, 11 Oct 2019 18:00:36 -0400
-Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:33593)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <alistair23@gmail.com>)
- id 1iJ2xa-0003dn-JR; Fri, 11 Oct 2019 18:00:30 -0400
-Received: by mail-lj1-x242.google.com with SMTP id a22so11258066ljd.0;
- Fri, 11 Oct 2019 15:00:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=GeRrffJPAcWK8bPnIORtmSTEkZUm+mHxmMxBGxmazI0=;
- b=Beqntp9jjnons/HJwM649D3OFOpaWusibTaZU9bvAjj8ZXKU4vuXBv/krL1ejkwenv
- tsQlU2+saDea23uUeJ1LOfPhv8/vJIgOl2g5K6edNw8+SAY7MR6FG+zeKPYJRIn+mQ9F
- drAUauk+Nrzrx/bMIjVhZj73n2rb+EYLl/8P00uJSHFa4ynnEQbwcPe7ZUeurYFNvaCO
- 5+q34hU+UkYVD/kkux8bTJ+FbA1TdpGGU+uFiw78rDLRtWS6iS453YW7U08zUAStHd0w
- F9jPS6dm2LkrwZIHq4r1hi/wdolarTX3QOwK3A4oo9QU0S2WVoTxOUkZSPRIHqnX2AuT
- v5Xg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=GeRrffJPAcWK8bPnIORtmSTEkZUm+mHxmMxBGxmazI0=;
- b=ufT1GxNQzIW5AoXar6beATLJR69IzaPKxwOU6Ulc1/gJetBh1JkSvu07N8Nyw2N5s5
- D0sEstmorteWgbgnndyf6aUdqq68ZynT481M5ietFRo5uOGc1AYMln3FPTZRSoz7Ke/6
- /QXYLySp/lnM/5f3qdlBtkhSvFfSeAaFBT9qhxFDc5icUGa91lHrDaER+5hL5MfVx0k4
- I2hoRKA9dvstwSRZ6XBXy7hi5Joh6Zfjx/CLufB7Eus3yLy7ddZmdoUJcfPQmcCJThZD
- Ug5pRYgSC9a831Ph6MHoT25QLyEG+2ykR7n1mgsZw9IYSFWD9ptRIsZ4SgPQbTjav7B3
- DrBQ==
-X-Gm-Message-State: APjAAAXHErNgj7d3Ck4s6BupvpTM6CU7+GUO67ms9nUtBR2pj7ncGYTz
- rG3YrMQVkxjOHPt+eNNBoL2n1yGAXMgdIWuIny0=
-X-Received: by 2002:a2e:894b:: with SMTP id b11mr10269620ljk.152.1570831228442; 
- Fri, 11 Oct 2019 15:00:28 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id x129sm34203080wmg.8.2019.10.14.03.56.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 14 Oct 2019 03:56:52 -0700 (PDT)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 57AEF1FF96;
+	Mon, 14 Oct 2019 11:49:58 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: cota@braap.org,
+	aaron@os.amperecomputing.com,
+	peter.puhov@futurewei.com,
+	robert.foley@futurewei.com,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH  v5 42/55] tests/tcg: move "virtual" tests to EXTRA_TESTS
+Date: Mon, 14 Oct 2019 11:49:35 +0100
+Message-Id: <20191014104948.4291-43-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20191014104948.4291-1-alex.bennee@linaro.org>
+References: <20191014104948.4291-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-References: <20190926173428.10713-1-f4bug@amsat.org>
- <20190926173428.10713-6-f4bug@amsat.org>
- <CAKmqyKP+ABP9J=1UJEA+HEO4+UBuyjOoyzZVEJEDiM7N63bMag@mail.gmail.com>
- <d2ab9145-cf4e-008c-8351-51f271fa37f8@amsat.org>
-In-Reply-To: <d2ab9145-cf4e-008c-8351-51f271fa37f8@amsat.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 11 Oct 2019 14:55:25 -0700
-Message-ID: <CAKmqyKOifObHz9vsrnk5=FaaQPZcQYF2AN946P2eY13VxZQ9Ew@mail.gmail.com>
-Subject: Re: [PATCH 05/19] hw/arm/bcm2835: Add various unimplemented
- peripherals
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2a00:1450:4864:20::242
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Zolt=C3=A1n_Baldaszti?= <bztemail@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Esteban Bosse <estebanbosse@gmail.com>, Cleber Rosa <crosa@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- Clement Deschamps <clement.deschamps@antfield.fr>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- Laurent Bonnans <laurent.bonnans@here.com>,
- Cheng Xiang <ext-cheng.xiang@here.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Pekka Enberg <penberg@iki.fi>, Guenter Roeck <linux@roeck-us.net>,
- Eduardo Habkost <ehabkost@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yHEaDhemYQh5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TUID: LTxELl5X39oc
 
-On Tue, Oct 8, 2019 at 2:43 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
-> wrote:
->
-> Hi Alistair,
->
-> On 9/27/19 11:42 PM, Alistair Francis wrote:
-> >   On Thu, Sep 26, 2019 at 10:44 AM Philippe Mathieu-Daud=C3=A9
-> > <f4bug@amsat.org> wrote:
-> >>
-> >> Base addresses and sizes taken from the "BCM2835 ARM Peripherals"
-> >> datasheet from February 06 2012:
-> >> https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripheral=
-s.pdf
-> >>
-> >> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> >> ---
-> >>   hw/arm/bcm2835_peripherals.c         | 31 ++++++++++++++++++++++++++=
-++
-> >>   include/hw/arm/bcm2835_peripherals.h | 15 ++++++++++++++
-> >>   include/hw/arm/raspi_platform.h      |  8 +++++++
-> >>   3 files changed, 54 insertions(+)
-> >>
-> >> diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals=
-.c
-> >> index 1bd2ff41d5..fdcf616c56 100644
-> >> --- a/hw/arm/bcm2835_peripherals.c
-> >> +++ b/hw/arm/bcm2835_peripherals.c
-> >> @@ -22,6 +22,20 @@
-> >>   /* Capabilities for SD controller: no DMA, high-speed, default clock=
-s etc. */
-> >>   #define BCM2835_SDHC_CAPAREG 0x52134b4
-> >>
-> >> +static void create_unimp(BCM2835PeripheralState *ps,
-> >> +                         UnimplementedDeviceState *uds,
-> >> +                         const char *name, hwaddr ofs, hwaddr size)
-> >> +{
-> >> +    sysbus_init_child_obj(OBJECT(ps), name, uds,
-> >> +                          sizeof(UnimplementedDeviceState),
-> >> +                          TYPE_UNIMPLEMENTED_DEVICE);
-> >> +    qdev_prop_set_string(DEVICE(uds), "name", name);
-> >> +    qdev_prop_set_uint64(DEVICE(uds), "size", size);
-> >> +    object_property_set_bool(OBJECT(uds), true, "realized", &error_fa=
-tal);
-> >> +    memory_region_add_subregion_overlap(&ps->peri_mr, ofs,
-> >> +                    sysbus_mmio_get_region(SYS_BUS_DEVICE(uds), 0), -=
-1000);
-> >
-> > Why not just use create_unimplemented_device() and not bother saving
-> > the UnimplementedDeviceState members in the struct?
->
-> create_unimplemented_device() calls
->   -> sysbus_mmio_map_overlap()
->      -> sysbus_mmio_map_common()
->        -> memory_region_del_subregion(get_system_memory())
->
-> So it maps the device at *absolute* offset in the system memory.
->
-> create_unimp() maps the device at offset *relative* to peri_mr.
->
-> Patch 8 of this series maps the PERI (container) block at peri_base
-> (fixed at BCM2836_PERI_BASE=3D0x3F000000 for the 2836/2837), then patch 1=
-2
-> adds the 2838 which has PERI mapped at 0xfe000000. So we have the same
-> "container" block mapped at different addresses.
-> Not the PERI block itself doesn't know its base address, all offsets are
-> relative.
->
-> So using create_unimp() allow to use the same block in two different SoCs=
-.
+Otherwise clever expanders like the plugins test get unstuck.
 
-Ah, makes sense.
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ tests/tcg/Makefile.target                 | 4 +++-
+ tests/tcg/aarch64/Makefile.softmmu-target | 2 +-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-Maybe that is worth adding in the commit message, unless it's just
-obvious and I am missing something.
-
-Either way:
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-
-Alistair
-
->
-> 8:  https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg00678.html
-> 12: https://lists.gnu.org/archive/html/qemu-devel/2019-09/msg00684.html
->
-> >> +}
-> >> +
-> >>   static void bcm2835_peripherals_init(Object *obj)
-> >>   {
-> >>       BCM2835PeripheralState *s =3D BCM2835_PERIPHERALS(obj);
-> >> @@ -323,6 +337,23 @@ static void bcm2835_peripherals_realize(DeviceSta=
-te *dev, Error **errp)
-> >>           error_propagate(errp, err);
-> >>           return;
-> >>       }
-> >> +
-> >> +    create_unimp(s, &s->armtmr, "bcm2835-sp804", ARMCTRL_TIMER0_1_OFF=
-SET, 0x40);
-> >> +    create_unimp(s, &s->systmr, "bcm2835-systimer", ST_OFFSET, 0x20);
-> >> +    create_unimp(s, &s->cprman, "bcm2835-cprman", CPRMAN_OFFSET, 0x10=
-00);
-> >> +    create_unimp(s, &s->a2w, "bcm2835-a2w", A2W_OFFSET, 0x1000);
-> >> +    create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
-> >> +    create_unimp(s, &s->smi, "bcm2835-smi", SMI_OFFSET, 0x100);
-> >> +    create_unimp(s, &s->spi[0], "bcm2835-spi0", SPI0_OFFSET, 0x20);
-> >> +    create_unimp(s, &s->bscsl, "bcm2835-spis", BSC_SL_OFFSET, 0x100);
-> >> +    create_unimp(s, &s->i2c[0], "bcm2835-i2c0", BSC0_OFFSET, 0x20);
-> >> +    create_unimp(s, &s->i2c[1], "bcm2835-i2c1", BSC1_OFFSET, 0x20);
-> >> +    create_unimp(s, &s->i2c[2], "bcm2835-i2c2", BSC2_OFFSET, 0x20);
-> >> +    create_unimp(s, &s->otp, "bcm2835-otp", OTP_OFFSET, 0x80);
-> >> +    create_unimp(s, &s->dbus, "bcm2835-dbus", DBUS_OFFSET, 0x8000);
-> >> +    create_unimp(s, &s->ave0, "bcm2835-ave0", AVE0_OFFSET, 0x8000);
-> >> +    create_unimp(s, &s->dwc2, "dwc-usb2", USB_OTG_OFFSET, 0x1000);
-> >> +    create_unimp(s, &s->sdramc, "bcm2835-sdramc", SDRAMC_OFFSET, 0x10=
-0);
-> >>   }
-> >>
-> >>   static void bcm2835_peripherals_class_init(ObjectClass *oc, void *da=
-ta)
-> >> diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm=
-2835_peripherals.h
-> >> index 6b17f6a382..62a4c7b559 100644
-> >> --- a/include/hw/arm/bcm2835_peripherals.h
-> >> +++ b/include/hw/arm/bcm2835_peripherals.h
-> >> @@ -23,6 +23,7 @@
-> >>   #include "hw/sd/sdhci.h"
-> >>   #include "hw/sd/bcm2835_sdhost.h"
-> >>   #include "hw/gpio/bcm2835_gpio.h"
-> >> +#include "hw/misc/unimp.h"
-> >>
-> >>   #define TYPE_BCM2835_PERIPHERALS "bcm2835-peripherals"
-> >>   #define BCM2835_PERIPHERALS(obj) \
-> >> @@ -37,6 +38,10 @@ typedef struct BCM2835PeripheralState {
-> >>       MemoryRegion ram_alias[4];
-> >>       qemu_irq irq, fiq;
-> >>
-> >> +    UnimplementedDeviceState systmr;
-> >> +    UnimplementedDeviceState armtmr;
-> >> +    UnimplementedDeviceState cprman;
-> >> +    UnimplementedDeviceState a2w;
-> >>       PL011State uart0;
-> >>       BCM2835AuxState aux;
-> >>       BCM2835FBState fb;
-> >> @@ -48,6 +53,16 @@ typedef struct BCM2835PeripheralState {
-> >>       SDHCIState sdhci;
-> >>       BCM2835SDHostState sdhost;
-> >>       BCM2835GpioState gpio;
-> >> +    UnimplementedDeviceState i2s;
-> >> +    UnimplementedDeviceState spi[1];
-> >> +    UnimplementedDeviceState i2c[3];
-> >> +    UnimplementedDeviceState otp;
-> >> +    UnimplementedDeviceState dbus;
-> >> +    UnimplementedDeviceState ave0;
-> >> +    UnimplementedDeviceState bscsl;
-> >> +    UnimplementedDeviceState smi;
-> >> +    UnimplementedDeviceState dwc2;
-> >> +    UnimplementedDeviceState sdramc;
-> >>   } BCM2835PeripheralState;
-> >>
-> >>   #endif /* BCM2835_PERIPHERALS_H */
-> >> diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_pl=
-atform.h
-> >> index 66969fac5d..cdcbca943f 100644
-> >> --- a/include/hw/arm/raspi_platform.h
-> >> +++ b/include/hw/arm/raspi_platform.h
-> >> @@ -38,6 +38,8 @@
-> >>                                                         * Doorbells & =
-Mailboxes */
-> >>   #define CPRMAN_OFFSET           0x100000 /* Power Management, Watchd=
-og */
-> >>   #define CM_OFFSET               0x101000 /* Clock Management */
-> >> +#define A2W_OFFSET              0x102000 /* Reset controller */
-> >> +#define AVS_OFFSET              0x103000 /* Audio Video Standard */
-> >>   #define RNG_OFFSET              0x104000
-> >>   #define GPIO_OFFSET             0x200000
-> >>   #define UART0_OFFSET            0x201000
-> >> @@ -45,11 +47,17 @@
-> >>   #define I2S_OFFSET              0x203000
-> >>   #define SPI0_OFFSET             0x204000
-> >>   #define BSC0_OFFSET             0x205000 /* BSC0 I2C/TWI */
-> >> +#define OTP_OFFSET              0x20f000
-> >> +#define BSC_SL_OFFSET           0x214000 /* SPI slave */
-> >>   #define AUX_OFFSET              0x215000 /* AUX: UART1/SPI1/SPI2 */
-> >>   #define EMMC1_OFFSET            0x300000
-> >>   #define SMI_OFFSET              0x600000
-> >>   #define BSC1_OFFSET             0x804000 /* BSC1 I2C/TWI */
-> >> +#define BSC2_OFFSET             0x805000 /* BSC2 I2C/TWI */
-> >> +#define DBUS_OFFSET             0x900000
-> >> +#define AVE0_OFFSET             0x910000
-> >>   #define USB_OTG_OFFSET          0x980000 /* DTC_OTG USB controller *=
-/
-> >> +#define SDRAMC_OFFSET           0xe00000
-> >>   #define DMA15_OFFSET            0xE05000 /* DMA controller, channel =
-15 */
-> >>
-> >>   /* GPU interrupts */
-> >> --
-> >> 2.20.1
-> >>
-> >>
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index 84abbd24f3..9664613002 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -66,6 +66,8 @@ conditional-diff-out = 							\
+ 
+ # Tests we are building
+ TESTS=
++# additional tests which may re-use existing binaries
++EXTRA_TESTS=
+ 
+ # Start with a blank slate, the build targets get to add stuff first
+ CFLAGS=
+@@ -109,7 +111,7 @@ else
+ 
+ endif
+ 
+-all: $(TESTS)
++all: $(TESTS) $(EXTRA_TESTS)
+ 
+ #
+ # Test Runners
+diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
+index b4b3957963..950dbb4bac 100644
+--- a/tests/tcg/aarch64/Makefile.softmmu-target
++++ b/tests/tcg/aarch64/Makefile.softmmu-target
+@@ -52,4 +52,4 @@ run-memory-replay: memory-replay run-memory-record
+ 	   	  $(QEMU_OPTS) memory, \
+ 	  "$< on $(TARGET_NAME)")
+ 
+-TESTS+=memory-record memory-replay
++EXTRA_TESTS+=memory-record memory-replay
+-- 
+2.20.1

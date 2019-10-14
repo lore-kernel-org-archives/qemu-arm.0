@@ -1,98 +1,91 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4396094wrm;
-        Mon, 14 Oct 2019 05:52:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwJzOpJ+kvv3l9uuxqDoIPb+hQMVyGFXZZlIQPnDayDwaUKz3lY2OWdCXrDyAhZNiAXE+pN
-X-Received: by 2002:a0c:95a5:: with SMTP id s34mr13061555qvs.72.1571057522437;
-        Mon, 14 Oct 2019 05:52:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571057522; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4480876wrm;
+        Mon, 14 Oct 2019 07:07:04 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzMsZGTWU0rZnFXa60gsy4w46RTCVhKa3luVGRu8S5iY0RtgIYlhp+qHkB/o8DxKcKa3p02
+X-Received: by 2002:a5d:568a:: with SMTP id f10mr3902103wrv.215.1571062023959;
+        Mon, 14 Oct 2019 07:07:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571062023; cv=none;
         d=google.com; s=arc-20160816;
-        b=aHUqDRY9Wj1HWbfpvZhhsXhZ2Sgso2OIcwVhdJlfbtHJdwq1ycT9YYGGd8RLZCgGvg
-         OsiV/Ne8A7i8hcWFgfm8hMR4/CfLrhWw3QsEsX49Ler8/2k7zT0VOPZ/0OYfsfQyqj6U
-         g8aCnSglanQ1oeD0N6BlwFn7Eu8v8eNEKGIlVuPshx4Ao2WPvECKGzD7smOMtjw+LXLU
-         hVs+l1lCKycN8KAB/GLwRCMzNxzAVp8HDT1lcLQaz7diHafcbfl7svg9xPCQY2X0eIZD
-         TC5rWmtO6ceQyYfJI87aNxzFAbx/DZ5l3cZAR01fk3cR+TAmbQu2hTrG60+RQ3tYYB5Y
-         9quA==
+        b=VC1RYjyHiY362JH6MOmQp5Xef3EVW1rfAXFN/9owCSAk7i99JRCynKU1j81B5wwqi4
+         N6GkITMCCF51mBmd3emPpMCcGrTdpOIhMReY+MELTn3VshQnX2AZXrzxAriutSWiv7Vs
+         E7vBuKLYgNA/AsMHVbgl6Tle447EemxYQbGPeEJvyHcd9YVVB8/DNZ2CFltojtJdHaDf
+         VQyM98Vd9eKGV+2WXLnQqeQeVxowS9ogCWSomCqb5z6/4DPkCZE2NdV8aAEk+SG24aSy
+         IDSvl6kZwxdaJXB1B0tkSCYAzHRbOPcrhT9rC/t9LzMN0Y1Sl9bRQkzEN1VK8VsTWYyt
+         AbPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=gJCveQWwdmN+Z1ZK4WHcVke3NOyYamcJHyo0B2XOHio=;
-        b=EzASrINf7fMJaoO4vDCaHW7cfd+rmWpzh5DeGuSDSrkiBpz76A0Bn+XxIjIkfGmpY3
-         6xhhyngci6QIgbJrkKxoW52ys22/C21/SLvAN/17M/72hAjTCHqI8uo+dZv0JMsmrwJu
-         kAXKTvJzlT0kszSltdRb3ga5QL1rEt9gVNcm/IbNGiZ9U00mig883LTXFpj/OI84WwLL
-         qcEaBhbKsYIhw37wirkY7LAVGJg9tz6F5JAbdfl4ufNFiv2UO2i2EVnwEx6lz4MeJlm0
-         qx7D0lwzBV75kJUkfFkrIL8D04GVR6tqrOKmmByWL0NqEQse6+7F6+VebIJXCx3juZ0F
-         WIBQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:organization:from:references:to:subject;
+        bh=99Y978KDdwv43+9Xa2BjWkMuIeejMRm5P//61iZCeiM=;
+        b=yu2Qp3Vh4+jLReVCSpkT/bbrnXJg09szhkdrGv5PMbAXOBmGD0uOvQhvGzdel/BBAf
+         1Ypo99xnLjBQYomWVdLszAJg7j1Hufj8lFkKUX+Vg4t1+0fJDtny04uZmLoIjZp0H65w
+         akiuSap8RHJwcnEiK4u9cY4/KFGhO1HP8dDms7mx7sD4bkNYCjpf0aRYyRw566QDdoyI
+         y4nUuotvu5ZTvfbEuahmtb8Ltceygdl/V748iPXkRRTODQup13kUg1UXu1Ymc0nLwSLo
+         8rV0E2j7EuIAcyMsEqEGBa+AemF8aWxK/0DJZLy6ueA9KEZNsweQm4Chdzcp49mg0z7w
+         l9fw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=usPKIRpw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e27si17414998qvd.28.2019.10.14.05.52.02
+        by mx.google.com with ESMTPS id i16si13496614ede.86.2019.10.14.07.07.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Oct 2019 05:52:02 -0700 (PDT)
+        Mon, 14 Oct 2019 07:07:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=usPKIRpw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49362 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:50104 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iJzpR-00028r-Tf
-	for alex.bennee@linaro.org; Mon, 14 Oct 2019 08:52:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32866)
+	id 1iK102-0001GY-J9
+	for alex.bennee@linaro.org; Mon, 14 Oct 2019 10:07:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44534)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iJzpI-000270-P0
- for qemu-arm@nongnu.org; Mon, 14 Oct 2019 08:51:53 -0400
+ (envelope-from <eblake@redhat.com>) id 1iK0uG-0004Fd-Pw
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2019 10:01:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iJzpH-0000dc-He
- for qemu-arm@nongnu.org; Mon, 14 Oct 2019 08:51:52 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:39881)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iJzpH-0000d4-Bh
- for qemu-arm@nongnu.org; Mon, 14 Oct 2019 08:51:51 -0400
-Received: by mail-ot1-x341.google.com with SMTP id s22so13663302otr.6
- for <qemu-arm@nongnu.org>; Mon, 14 Oct 2019 05:51:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gJCveQWwdmN+Z1ZK4WHcVke3NOyYamcJHyo0B2XOHio=;
- b=usPKIRpwGoPFE0NEVD4aezC2K3/qJwuUN1/H53Qa8lklS5RenDcaZpqnhWH3gkB/oy
- iY8Kr2TWTo05Dw+Zz+GKsj6i6YJ1g+PD/deZAPLRb67hpTnZqX133wR1k9FcQGRp0bS8
- jDcOuiS/FeMALdz0jR333B8yCO60HgB3PHg/9GcOzph0sEGDhFOzrWdKSMZs3+OpIdtG
- JGcuPvm1Jn6F83kHtlYWcnm0wH9TRbMtJusmhuKNPxhNkfeJppWNWur0q6nlKsCaBAOu
- DtXpXIAfzKpwUVW+Z16MNlTfLm1bYNkVtVU7DU9UtsRiNvfXvkmC8tlkUvATkcn7Flx1
- ObaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=gJCveQWwdmN+Z1ZK4WHcVke3NOyYamcJHyo0B2XOHio=;
- b=SsP6zijDPp7pi52I17tnYueYKTvfzYFW3GdYOzpKq3rp5WROThXP/8Rnq+wWpIXYmj
- HdVREPUtmDNL1Yg4U7G5BXhUHTu2sZv1W9U3h+Jg6QaUZfgPhzK5QSJnkTbpS54+hpTZ
- b9DNDFLYepKH67RK2w9vDCfDR7lWCatinudTn3RmPkLizCHlVupOsxcuGARo6J71iQE+
- S9VONAxIJEd9a8raRCddHv7ztepzIrDp7oQoMKse3EGWAqx4I+G00b/3vOn84E4iDmRN
- N5chJeGkmTyXHIZBYpSFhap2b0PaQiklYLU+VYd9h404LNwfMVD6HJXGoW7temiZqbzT
- tm/g==
-X-Gm-Message-State: APjAAAXG3ZQg17qqe8hUr0qbCH+AgQZ7/QJY1BXMXtdGVEI1ELesErqu
- qL8IgJqf0QaLUsxU5olXeL54ne9NCGJgxFLzZkK46Q==
-X-Received: by 2002:a05:6830:ca:: with SMTP id
- x10mr22928697oto.221.1571057510375; 
- Mon, 14 Oct 2019 05:51:50 -0700 (PDT)
+ (envelope-from <eblake@redhat.com>) id 1iK0uF-00085t-21
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2019 10:01:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:9908)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <eblake@redhat.com>)
+ id 1iK0uC-000828-91; Mon, 14 Oct 2019 10:01:02 -0400
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 62DE020FD;
+ Mon, 14 Oct 2019 14:00:56 +0000 (UTC)
+Received: from [10.3.116.168] (ovpn-116-168.phx2.redhat.com [10.3.116.168])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id EDD0E5C541;
+ Mon, 14 Oct 2019 14:00:19 +0000 (UTC)
+Subject: Re: [RFC v5 025/126] scripts: add coccinelle script to use auto
+ propagated errp
+To: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+References: <20191011160552.22907-1-vsementsov@virtuozzo.com>
+ <20191011160552.22907-26-vsementsov@virtuozzo.com>
+ <5dd4d642-7ea6-42a2-66fc-6d6710b77b8d@redhat.com>
+ <6856bd09-65fc-30d7-2a3c-c85334a024e9@virtuozzo.com>
+From: Eric Blake <eblake@redhat.com>
+Organization: Red Hat, Inc.
+Message-ID: <e8fa1e71-5f48-e1f0-80f3-ef438c117693@redhat.com>
+Date: Mon, 14 Oct 2019 09:00:19 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.0
 MIME-Version: 1.0
-References: <20191004025509.3012-1-david@gibson.dropbear.id.au>
-In-Reply-To: <20191004025509.3012-1-david@gibson.dropbear.id.au>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Oct 2019 13:51:39 +0100
-Message-ID: <CAFEAcA9soWUfyfvV5Onyy0wP842Gq698_sZ+E1xGwkmnrLHnJg@mail.gmail.com>
-Subject: Re: [PATCH] exynos4210_gic: Suppress gcc9 format-truncation warnings
-To: David Gibson <david@gibson.dropbear.id.au>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::341
+In-Reply-To: <6856bd09-65fc-30d7-2a3c-c85334a024e9@virtuozzo.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.71]); Mon, 14 Oct 2019 14:00:57 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -104,52 +97,110 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: Stefan Hajnoczi <stefanha@redhat.com>, Jeff Cody <codyprime@gmail.com>,
+ Jan Kiszka <jan.kiszka@siemens.com>, Alberto Garcia <berto@igalia.com>,
+ Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
+ "qemu-block@nongnu.org" <qemu-block@nongnu.org>,
+ Aleksandar Rikalo <arikalo@wavecomp.com>, Halil Pasic <pasic@linux.ibm.com>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Anthony Green <green@moxielogic.com>, Laurent Vivier <lvivier@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Xie Changlong <xiechanglong.d@gmail.com>, Peter Lieven <pl@kamp.de>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Ronnie Sahlberg <ronniesahlberg@gmail.com>, John Snow <jsnow@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Kevin Wolf <kwolf@redhat.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Chris Wulff <crwulff@gmail.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Michael Walle <michael@walle.cc>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Igor Mammedov <imammedo@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "sheepdog@lists.wpkg.org" <sheepdog@lists.wpkg.org>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, David Hildenbrand <david@redhat.com>,
+ Palmer Dabbelt <palmer@sifive.com>, Thomas Huth <thuth@redhat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Hannes Reinecke <hare@suse.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ "Gonglei \(Arei\)" <arei.gonglei@huawei.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Liu Yuan <namei.unix@gmail.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Eric Farman <farman@linux.ibm.com>,
+ Amit Shah <amit@kernel.org>, Stefan Weil <sw@weilnetz.de>,
+ Greg Kurz <groug@kaod.org>, Yuval Shaia <yuval.shaia@oracle.com>,
+ "qemu-s390x@nongnu.org" <qemu-s390x@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ Peter Chubb <peter.chubb@nicta.com.au>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Stafford Horne <shorne@gmail.com>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Aleksandar Markovic <amarkovic@wavecomp.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Paul Burton <pburton@wavecomp.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>, Paul Durrant <paul@xen.org>,
+ Jason Wang <jasowang@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>, Ari Sundholm <ari@tuxera.com>,
+ Juan Quintela <quintela@redhat.com>, Michael Roth <mdroth@linux.vnet.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Joel Stanley <joel@jms.id.au>,
+ Jason Dillaman <dillaman@redhat.com>, Antony Pavlov <antonynpavlov@gmail.com>,
+ "xen-devel@lists.xenproject.org" <xen-devel@lists.xenproject.org>,
+ "integration@gluster.org" <integration@gluster.org>,
+ Laszlo Ersek <lersek@redhat.com>, "Richard W.M. Jones" <rjones@redhat.com>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, Max Reitz <mreitz@redhat.com>,
+ Denis Lunev <den@virtuozzo.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Vincenzo Maffione <v.maffione@gmail.com>, Marek Vasut <marex@denx.de>,
+ "armbru@redhat.com" <armbru@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Giuseppe Lettieri <g.lettieri@iet.unipi.it>, Luigi Rizzo <rizzo@iet.unipi.it>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Tony Krowiak <akrowiak@linux.ibm.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Xiao Guangrong <xiaoguangrong.eric@gmail.com>,
+ Pierre Morel <pmorel@linux.ibm.com>, Wen Congyang <wencongyang2@huawei.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Paolo Bonzini <pbonzini@redhat.com>, Stefan Berger <stefanb@linux.ibm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1CQg1uhe2mln
+X-TUID: 7F6Ia2lwK60y
 
-On Fri, 4 Oct 2019 at 04:10, David Gibson <david@gibson.dropbear.id.au> wrote:
->
-> exynos4210_gic_realize() prints the number of cpus into some temporary
-> buffers, but it only allows 3 bytes space for it.  That's plenty - I'm
-> pretty sure that existing machines will only ever set this value to 2
-> (EXYNOS4210_NCPUS).  But the compiler can't really be expected to figure
-> that out.
->
-> Some[*] gcc9 versions therefore emit -Wformat-truncation warnings.  Fix
-> that by allowing more space in the temporary buffers - these are on stack
-> very briefly before being essentially strdup()ed inside the memory region
-> code, so there's not much cost to doing so.
->
-> [*] The bizarre thing here, is that I've long gotten these warnings
-> compiling in a 32-bit x86 container as host - Fedora 30 with
-> gcc-9.2.1-1.fc30.i686 - but it compiles just fine on my normal x86_64 host
-> - Fedora 30 with and gcc-9.2.1-1.fc30.x86_64.
->
-> Signed-off-by: David Gibson <david@gibson.dropbear.id.au>
-> ---
->  hw/intc/exynos4210_gic.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/intc/exynos4210_gic.c b/hw/intc/exynos4210_gic.c
-> index a1b699b6ba..2e5e47f9ec 100644
-> --- a/hw/intc/exynos4210_gic.c
-> +++ b/hw/intc/exynos4210_gic.c
-> @@ -290,8 +290,8 @@ static void exynos4210_gic_realize(DeviceState *dev, Error **errp)
->      SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
->      const char cpu_prefix[] = "exynos4210-gic-alias_cpu";
->      const char dist_prefix[] = "exynos4210-gic-alias_dist";
-> -    char cpu_alias_name[sizeof(cpu_prefix) + 3];
-> -    char dist_alias_name[sizeof(cpu_prefix) + 3];
-> +    char cpu_alias_name[sizeof(cpu_prefix) + 10];
-> +    char dist_alias_name[sizeof(cpu_prefix) + 10];
->      SysBusDevice *gicbusdev;
->      uint32_t i;
+On 10/14/19 3:19 AM, Vladimir Sementsov-Ogievskiy wrote:
 
-If we assert() that num_cpu is always <= EXYNOS4210_NCPUS
-is that sufficient to clue gcc in that the buffer can't overflow?
+>>> +|
+>>> +-=C2=A0=C2=A0=C2=A0 error_propagate(errp, local_err);
+>>> +)
+>>> +=C2=A0=C2=A0=C2=A0=C2=A0 ...>
+>>> + }
+>>> +
+>>
+>> It looks like once this script is run, error_propagate_prepend() will =
+have no clients.
+>=20
+> No, it still have a bit, when working with error_copy, and/or moving er=
+rors from/to structures.
 
-thanks
--- PMM
+No public clients. So can we turn it into a static function only used by=20
+error.c?
+
+>=20
+>> Is there a non-generated cleanup patch that removes it (and once it is=
+ removed, it can also be removed from the .cocci script as no further cli=
+ents will reappear later)?
+>=20
+> Maybe.
+>=20
+
+Basically, if we can get error_propagate out of error.h, that's a good=20
+sign.  But it's not a show-stopper if we can't do it for some legitimate=20
+reason (such a reason might include that the definition of the=20
+ERRP_AUTO_PROPAGATE macro is easier to write if error_propagate remains=20
+in the .h), so we'll just have to see what is possible.
+
+--=20
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org

@@ -1,104 +1,102 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4504753wrm;
-        Mon, 14 Oct 2019 07:27:28 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqy+gTtryTkk5E8zbOpLQdnLbsUJ5ZMxsCjzETilrTyBDErAofOeDGkNJ8wpKz0N9AO7otf4
-X-Received: by 2002:a37:93c4:: with SMTP id v187mr7998252qkd.490.1571063248239;
-        Mon, 14 Oct 2019 07:27:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571063248; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4504907wrm;
+        Mon, 14 Oct 2019 07:27:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwV9qcpfMmN7dthH4qlDp4Ujvz58Io1nUxadQgQbrL48ySNbpo6b5DLU9mEtJzJXSNQFack
+X-Received: by 2002:a05:620a:15c9:: with SMTP id o9mr29322711qkm.34.1571063257245;
+        Mon, 14 Oct 2019 07:27:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571063257; cv=none;
         d=google.com; s=arc-20160816;
-        b=yMFrHweRl4YKitGbbilgR7M45hzmV5N728ORcufbz+uWcIplE9Eb9NtEIfdsn76i0Q
-         2+VeWiNG/iF0MbEt1kAsL1fQmHF80P2XVcCCYORyQ6s393C7i4TqKQ0+X31t2qQvYAwD
-         aeXeY3uVkiJjnK2imKVhTiV7oSzCfcjj102/4k8xgu1h/aTp52n/wSaktxUh9dIwTT/G
-         bWB8pxlYZuHreBA/niSF6xUjxZ3Dwtml+CoLcobfLQ7A4brnEokNyykLxM35xBzyGYea
-         NZ+/zCzOolIOgtMXZ/VLY6VkbCBSPbfG463xJ+QedC4z61yuIjnl1ED8p8f/KNtUwsBu
-         cbpg==
+        b=WgkGKt4nQQZ5Fjgv+W/uzLxZEH+uL2zIaXO2K5xc78uQXa/oQuaw5G2WyXeoQlj2Zg
+         +p513cU5BPq4/hvekNZJtVUyKlbuwsM45la+yZ0U4R41edQwFxDMzx8ZysZETLokn7Ek
+         hewN45aSQkNzHodMJ+FcuuE2HIAQ9Lo+SwRlO5zHgvjhbj48ooqxQQ5ruIF/qjJ7I/gm
+         bxP/EgBfR4lhja+hLeA0bMr7uYoQL7Er4baXmp4NaGNf8h0GVcKN6zFYtqwTwLBlAWxt
+         AWL9+L6S+4LTz5Jk6DyHPAJGeKESploRNOct1zItUbR0OmCmII8mYddwfVDgpjDTd+N/
+         IeaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=A9s1VEZlG8VcrCsUEYhzwPKqm8c6JbvXFKuH2wkqWRQ=;
-        b=GzLJEcJWHUxg7/jgxA0aQQXR8pw/RBZOvJn9iufa6eIBpKCtaGPGO+Zuckp9tjCgSP
-         uVHigXSNVLEDoJywP1g2iojUfw2dwW8x8mSb5H1rnrdnlAdWvuUHzT1aLiXy/2WNDML0
-         ghGueNYM/uXq53Ya7kaw4jJfRXycoPBjujFOKIHN/rjqP3zxIesrnfwYZOuREkc01trh
-         Rsr/azkP9TOSTsKZYqFjrdUgcxbQgDacRyh+QFJKK6MSDtcSfYpphIP4JDXv6QPYoeZ2
-         xXSvkC5AkYDkSYAmiqbSkUm/nfkUhSuQeBoAGjH2/2ymHzFu8nSmx7hhyD0BPZhSgBnQ
-         Mxtw==
+        bh=WcaTYShzRgD5VMt4dmD8OyXLnAHH8w+VD7mT6l/aUYM=;
+        b=vGrlUFP8j8GkCT7m5Pi8pyX9eUva84mTe+RTJOEPPkU5C5HTdraXHev6TlowrUtaqO
+         /Asdh/xnD8q0QhisBNrmJeoCOzwJWocmAnBmKI39GT4qgGXYV19YxkUoTo5Xwy5JNSQB
+         1zbWU9kX35YSB3Ft/rGdRNUB/zvNq2J0ouBfDVFlpsIpTiXoV3Ox7kQ592hOlYq1cEUJ
+         64ZOGCJICahMR8ixRA+FsTBiZyL3wx5kH04rc6L3UztioFY+sJW4MO8EfISl2ahT4Pv8
+         A+BeVswLG5clC4IwbRjj12HQY5UCpphVNoUADyAdQBuedhCV84JTEUOKj5qOvTcaL71j
+         T0Jg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d3si7829637qki.313.2019.10.14.07.27.28
+        by mx.google.com with ESMTPS id e91si18413849qtd.12.2019.10.14.07.27.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Oct 2019 07:27:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 14 Oct 2019 07:27:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50464 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50446 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iK1Jn-0001GP-4c
-	for alex.bennee@linaro.org; Mon, 14 Oct 2019 10:27:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48447)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iK1Jw-0000XL-F0
+	for alex.bennee@linaro.org; Mon, 14 Oct 2019 10:27:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48914)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iK1Gc-00066M-9O
- for qemu-arm@nongnu.org; Mon, 14 Oct 2019 10:24:11 -0400
+ (envelope-from <philmd@redhat.com>) id 1iK1IU-00006J-Q4
+ for qemu-devel@nongnu.org; Mon, 14 Oct 2019 10:26:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iK1Gb-0000A9-7C
- for qemu-arm@nongnu.org; Mon, 14 Oct 2019 10:24:10 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:55832)
+ (envelope-from <philmd@redhat.com>) id 1iK1IT-0000v4-Pb
+ for qemu-devel@nongnu.org; Mon, 14 Oct 2019 10:26:06 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:46678)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1iK1Gb-00009x-29; Mon, 14 Oct 2019 10:24:09 -0400
+ id 1iK1IP-0000sh-EU; Mon, 14 Oct 2019 10:26:01 -0400
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id 112BA3086228;
- Mon, 14 Oct 2019 14:24:08 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 7A91418C4274;
+ Mon, 14 Oct 2019 14:26:00 +0000 (UTC)
 Received: from x1w.redhat.com (unknown [10.40.206.0])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B130D600CD;
- Mon, 14 Oct 2019 14:23:43 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 28E6D60126;
+ Mon, 14 Oct 2019 14:25:23 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Markus Armbruster <armbru@redhat.com>,
 	qemu-devel@nongnu.org
-Subject: [PATCH 02/20] hw/southbridge/ich9: Removed unused headers
-Date: Mon, 14 Oct 2019 16:22:28 +0200
-Message-Id: <20191014142246.4538-3-philmd@redhat.com>
+Subject: [PATCH 06/20] hw/usb/dev-storage: Remove unused "ui/console.h" header
+Date: Mon, 14 Oct 2019 16:22:32 +0200
+Message-Id: <20191014142246.4538-7-philmd@redhat.com>
 In-Reply-To: <20191014142246.4538-1-philmd@redhat.com>
 References: <20191014142246.4538-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.42]); Mon, 14 Oct 2019 14:24:08 +0000 (UTC)
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.62]); Mon, 14 Oct 2019 14:26:00 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
 X-Received-From: 209.132.183.28
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Matthew Rosato <mjrosato@linux.ibm.com>, Paul Durrant <paul@xen.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Eric Blake <eblake@redhat.com>,
- Stefano Stabellini <sstabellini@kernel.org>, qemu-block@nongnu.org,
- Helge Deller <deller@gmx.de>, David Hildenbrand <david@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ qemu-block@nongnu.org, Helge Deller <deller@gmx.de>,
+ David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@de.ibm.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
- Andrzej Zaborowski <balrogg@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
  Xie Changlong <xiechanglong.d@gmail.com>, qemu-s390x@nongnu.org,
  qemu-arm@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
@@ -106,61 +104,30 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Wen Congyang <wencongyang2@huawei.com>, Cornelia Huck <cohuck@redhat.com>,
  Max Reitz <mreitz@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Igor Mammedov <imammedo@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7dWjO7TGTxCN
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4wmk6qhCEaPB
 
-The ICH9 chipset is not X86/PC specific.
-
-These files don't use anything declared by the "hw/i386/pc.h"
-or "hw/i386/ioapic.h" headers. Remove them.
+The USB models related to storage don't need anything from
+"ui/console.h". Remove it.
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/acpi/ich9.c         | 1 -
- hw/isa/lpc_ich9.c      | 2 --
- include/hw/i386/ich9.h | 1 -
- 3 files changed, 4 deletions(-)
+ hw/usb/dev-storage.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
-index 2034dd749e..fdd0a6c79e 100644
---- a/hw/acpi/ich9.c
-+++ b/hw/acpi/ich9.c
-@@ -27,7 +27,6 @@
- #include "qemu/osdep.h"
- #include "qapi/error.h"
- #include "qapi/visitor.h"
--#include "hw/i386/pc.h"
- #include "hw/pci/pci.h"
+diff --git a/hw/usb/dev-storage.c b/hw/usb/dev-storage.c
+index 8545193488..a2ff52d3e5 100644
+--- a/hw/usb/dev-storage.c
++++ b/hw/usb/dev-storage.c
+@@ -17,7 +17,6 @@
+ #include "desc.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/scsi/scsi.h"
+-#include "ui/console.h"
  #include "migration/vmstate.h"
- #include "qemu/timer.h"
-diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
-index 17c292e306..61cee2ae3a 100644
---- a/hw/isa/lpc_ich9.c
-+++ b/hw/isa/lpc_ich9.c
-@@ -35,10 +35,8 @@
- #include "hw/isa/isa.h"
- #include "hw/sysbus.h"
- #include "migration/vmstate.h"
--#include "hw/i386/pc.h"
- #include "hw/irq.h"
- #include "hw/isa/apm.h"
--#include "hw/i386/ioapic.h"
- #include "hw/pci/pci.h"
- #include "hw/pci/pci_bridge.h"
- #include "hw/i386/ich9.h"
-diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
-index 72e803f6e2..a98d10b252 100644
---- a/include/hw/i386/ich9.h
-+++ b/include/hw/i386/ich9.h
-@@ -5,7 +5,6 @@
- #include "hw/sysbus.h"
- #include "hw/i386/pc.h"
- #include "hw/isa/apm.h"
--#include "hw/i386/ioapic.h"
- #include "hw/pci/pci.h"
- #include "hw/pci/pcie_host.h"
- #include "hw/pci/pci_bridge.h"
+ #include "monitor/monitor.h"
+ #include "sysemu/sysemu.h"
 --=20
 2.21.0
 

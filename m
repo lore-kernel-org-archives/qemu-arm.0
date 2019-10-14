@@ -1,78 +1,78 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4517442wrm;
-        Mon, 14 Oct 2019 07:38:43 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwd6m3x+m3SasVw4conN+17IpHbhsFDI/kN/WXOekpdHkk/RfRcFF7lVNCKyeSpwTd2SUse
-X-Received: by 2002:a05:6402:68f:: with SMTP id f15mr27877609edy.170.1571063923637;
-        Mon, 14 Oct 2019 07:38:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571063923; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4517639wrm;
+        Mon, 14 Oct 2019 07:38:55 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxrpgdSuewGAS5GidtW7JacWJEFDwhMaW1TWdUJjLsiAvw8DV5sOIrGV3u9WhmJVVJ58vkh
+X-Received: by 2002:aa7:cf12:: with SMTP id a18mr28820390edy.278.1571063935160;
+        Mon, 14 Oct 2019 07:38:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571063935; cv=none;
         d=google.com; s=arc-20160816;
-        b=F6FQI49svCWAid2jZBGSZCqrkRdypFztBGdqCHzAQvbuGAqrqXa5SaDMvK8lHRpf2z
-         m/9Hd0x0bk/xYEaXlPiolpNOGZoFgyWxgsZ2FuZUPqobY+Aoqn3+B/muxWR/MylzxKp7
-         q0hL9aN/X6fCcynjefJFTGNZneX3taXwOtmWQcxE5WrUSh7lpsVWGKAxddok01frZBAn
-         5YOZ/A05GDWpSZF+H4hoH3Ql9bHvm89iSTIJSFjE0YdXKHxomSRFokt2B/nm941q0U+K
-         QAtC6npaTRee3JIoeqN5gcafZM1Sbq19O1ZvX3UkqUci5reRTfAmR1dbS7nB25LXgQwq
-         R6dw==
+        b=qOJEd46VlvomHORxuKIT1A91WaxikK9ZCu7Js3WucYLCG/InMNItVsrq8YczV6xmY8
+         vZMsecSORGJPgBB4aRuJiPTtO+fyoOpXye2BhxQqADScrb1LuR+6xGZvCvTqT9IPc3FL
+         5LP8JODMha7v0AvjfmhHAGhnkPJpcWN9xrrYLr8wGM/uX8k1qONeXw3qkPSfJhKZh4sg
+         r+Gpsxx3sKUnxdA1QauGvyhY6S3Q9XJ2Botwngtboh1W62VMsfdIar94NwrCOvEOUtMf
+         B5No61gikuVG9C/pUuBOOHGJt5OUQI2/Ny+Dkn3H7FeoxUnJ8UUoqdRVpUpHB/BPWJ7T
+         e3Qg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=mq10IHekzsqHaFjsgmvMuaZ9vYX7+k4Ru6mwdaFAMfc=;
-        b=foAn4s74Ul0nrPc6paewWKGaNqeHy7H7NzpH7KFVjSU0rvVSprJJt8GxOs8/y0h8wp
-         aTVaHs3JoC012WLNffdam55zTled5FZnWBD/3f18JBpIjeLXBMRxsslGGQwF5aOFPB2Z
-         t0V8WV8gCm6y++TPsfPahLigeV2dk+pQebAjDtNGKykX3yL7J7AAfXZIxM8J9ia7efVp
-         y7OUbyZ0opUZXjTrjlgICJstEpoHkO9j+xkpsweCvkOWiYUI3BlA6ClV3r1+SGRCtSBX
-         SLuN3K583VJST9wjg8K0OfOGa9Ev4B7jMk+/B2STA9FlnnipBcGwAr6yIkZOYQrv4JS4
-         lcbA==
+        bh=8wq06n0LKStFhK8v/SNeSCnwMskAXuAIbdJvPFdEtbY=;
+        b=scBJT35w4Af0N2LS1QmqRZlK9K35pCUxrisEShehefHIYVTIaLQ5isFKh3eAByjjL0
+         cy3okhHCBXgyLwmTErf20AawXiVW19Ot/97nfselEVvaEaEZxm9gl/TgXPnz6NILlR4K
+         1xm7/CuetDqmPgD39hASa2B/sgcguODx8iaBcSlui38ymmkHB1Zm/S4DllVwtr/Rbm/E
+         8dThqIsEG01UAxgmM7GarTTwQgvOGvntYcITnP4hrzAaDDpMqb9ZXbBWYUyW//+1FYLG
+         vwqocmt6gJXQL19/U9PWUdl8jzK54n5UjLL++7N1y3J/2j1TgqUP6RaBLT8F40k/J9Qq
+         VI3g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f12si12096185ejj.108.2019.10.14.07.38.43
+        by mx.google.com with ESMTPS id g22si13367373eda.27.2019.10.14.07.38.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Oct 2019 07:38:43 -0700 (PDT)
+        Mon, 14 Oct 2019 07:38:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50740 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50744 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iK1Ug-0005Mx-6j
-	for alex.bennee@linaro.org; Mon, 14 Oct 2019 10:38:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50321)
+	id 1iK1Ur-0005gV-L1
+	for alex.bennee@linaro.org; Mon, 14 Oct 2019 10:38:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50414)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <philmd@redhat.com>) id 1iK1OU-00064o-2b
- for qemu-arm@nongnu.org; Mon, 14 Oct 2019 10:32:19 -0400
+ (envelope-from <philmd@redhat.com>) id 1iK1Ot-0006PT-US
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2019 10:32:44 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <philmd@redhat.com>) id 1iK1OS-0002rh-U0
- for qemu-arm@nongnu.org; Mon, 14 Oct 2019 10:32:17 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:58912)
+ (envelope-from <philmd@redhat.com>) id 1iK1Or-00034G-Sc
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2019 10:32:42 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:50722)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <philmd@redhat.com>)
- id 1iK1OS-0002rK-OT; Mon, 14 Oct 2019 10:32:16 -0400
+ id 1iK1Or-00033y-NI; Mon, 14 Oct 2019 10:32:41 -0400
 Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
  [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id A9DD7308FBB4;
- Mon, 14 Oct 2019 14:32:15 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 1372C18C891B;
+ Mon, 14 Oct 2019 14:32:40 +0000 (UTC)
 Received: from x1w.redhat.com (unknown [10.40.206.0])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A8E70600CD;
- Mon, 14 Oct 2019 14:31:48 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 545AE600CD;
+ Mon, 14 Oct 2019 14:32:16 +0000 (UTC)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: Markus Armbruster <armbru@redhat.com>,
 	qemu-devel@nongnu.org
-Subject: [PATCH 19/20] hw/pci-host/q35: Remove unused includes
-Date: Mon, 14 Oct 2019 16:22:45 +0200
-Message-Id: <20191014142246.4538-20-philmd@redhat.com>
+Subject: [PATCH 20/20] hw/i386/pc: Clean up includes
+Date: Mon, 14 Oct 2019 16:22:46 +0200
+Message-Id: <20191014142246.4538-21-philmd@redhat.com>
 In-Reply-To: <20191014142246.4538-1-philmd@redhat.com>
 References: <20191014142246.4538-1-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.43]); Mon, 14 Oct 2019 14:32:15 +0000 (UTC)
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.70]); Mon, 14 Oct 2019 14:32:40 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -108,50 +108,69 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q0Cu1cErl7Nc
+X-TUID: 4kC1JXJXWps7
 
-Only q35.c requires declarations from "hw/i386/pc.h", move it there.
-Remove all the includes not used by "q35.h".
+Various headers are not required by hw/i386/pc.h:
+
+ - "qemu/range.h"
+ - "qemu/bitmap.h"
+ - "qemu/module.h"
+ - "exec/memory.h"
+ - "hw/pci/pci.h"
+ - "hw/mem/pc-dimm.h"
+ - "hw/mem/nvdimm.h"
+ - "net/net.h"
+
+Remove them.
+
+Add 3 headers that were missing:
+
+ - "hw/hotplug.h"
+
+   PCMachineState::acpi_dev is of type HotplugHandler
+
+ - "qemu/notify.h"
+
+   PCMachineState::machine_done is of type Notifier
+
+ - "qapi/qapi-types-common.h"
+
+   PCMachineState::vmport/smm is of type OnOffAuto
 
 Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 ---
- hw/pci-host/q35.c         | 1 +
- include/hw/pci-host/q35.h | 7 -------
- 2 files changed, 1 insertion(+), 7 deletions(-)
+ include/hw/i386/pc.h | 12 +++---------
+ 1 file changed, 3 insertions(+), 9 deletions(-)
 
-diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
-index 158d270b9f..918843d373 100644
---- a/hw/pci-host/q35.c
-+++ b/hw/pci-host/q35.c
-@@ -29,6 +29,7 @@
-  */
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index 6df4f4b6fb..e5c2dc9081 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -1,21 +1,15 @@
+ #ifndef HW_PC_H
+ #define HW_PC_H
 =20
- #include "qemu/osdep.h"
-+#include "hw/i386/pc.h"
- #include "hw/pci-host/q35.h"
- #include "hw/qdev-properties.h"
- #include "migration/vmstate.h"
-diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
-index 79a88d67b1..534d90dbaf 100644
---- a/include/hw/pci-host/q35.h
-+++ b/include/hw/pci-host/q35.h
-@@ -22,16 +22,9 @@
- #ifndef HW_Q35_H
- #define HW_Q35_H
+-#include "exec/memory.h"
++#include "qemu/notify.h"
++#include "qapi/qapi-types-common.h"
+ #include "hw/boards.h"
+ #include "hw/isa/isa.h"
+ #include "hw/block/fdc.h"
+ #include "hw/block/flash.h"
+-#include "net/net.h"
+ #include "hw/i386/ioapic.h"
+-
+-#include "qemu/range.h"
+-#include "qemu/bitmap.h"
+-#include "qemu/module.h"
+-#include "hw/pci/pci.h"
+-#include "hw/mem/pc-dimm.h"
+-#include "hw/mem/nvdimm.h"
+ #include "hw/acpi/acpi_dev_interface.h"
++#include "hw/hotplug.h"
 =20
--#include "hw/isa/isa.h"
--#include "hw/sysbus.h"
--#include "hw/i386/pc.h"
--#include "hw/isa/apm.h"
- #include "hw/pci/pci.h"
- #include "hw/pci/pcie_host.h"
--#include "hw/acpi/acpi.h"
--#include "hw/acpi/ich9.h"
- #include "hw/pci-host/pam.h"
--#include "hw/i386/intel_iommu.h"
- #include "qemu/range.h"
+ #define HPET_INTCAP "hpet-intcap"
 =20
- #define TYPE_Q35_HOST_DEVICE "q35-pcihost"
 --=20
 2.21.0
 

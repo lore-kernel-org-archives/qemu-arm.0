@@ -1,71 +1,70 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4705138wrm;
-        Mon, 14 Oct 2019 10:26:47 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzNlr1YPdpFxzMu3B9rTtYT4nxohsoWaqsZ+zdhyWr7f8QOXebEEenoAz9/EXkAjeGTPXcR
-X-Received: by 2002:ac8:b42:: with SMTP id m2mr33542488qti.174.1571074007201;
-        Mon, 14 Oct 2019 10:26:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571074007; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp4733399wrm;
+        Mon, 14 Oct 2019 10:52:58 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy9pFPmzBNDUACUn+5BEXiY0uxwmv3JSJIXPAtYH1zbVg3ID9/DQlmFwURpdIDVZJd24eIG
+X-Received: by 2002:ac8:67c1:: with SMTP id r1mr30185712qtp.83.1571075578072;
+        Mon, 14 Oct 2019 10:52:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571075578; cv=none;
         d=google.com; s=arc-20160816;
-        b=TKDXz/OWejs7D5j7ElBuFq7WB8ss9QV3wR+Q9n9Y9+GUG0JVJRPesjKOJqVq4s55+f
-         mmPdK2xYOorxJTLI2jVZGuzSisB0vuTR6gXCJHKztkTF2JFmksS2XxPvX7fcXv/xOFT5
-         be4vNPg7GLv8J6U2aqWyKeI/kZ97jXuQqIg5xe2ghJP3D8R6mB/blCBMHFDHwijxN4fT
-         7HMkTSBrNktOhF9Hp2a6CRsW5sE7hqmsP3lc5U8mr5XMksXwizcliEDZOacjbCDrFYSd
-         e+NFOtZc6VgFYssujdqTQ3ku2W13PxbZ1I/qeQYbVrCqzr7iHQagaq9qmOe38KUKT6nL
-         HPYg==
+        b=zT5dYRo1ZuWqhhkRMozJbFsI/Oq+L9kTBnsHbEkdJezRs+1yaee33a7cqm7srd3A2h
+         0UNZ3wTOydBy3cb/KfAc/X6yMGp+ubIUKAl6fHsjxpN9CIJGFD/2GzQhE18JB5AWZk7L
+         QgUZoVbPHqNa6raY15Ds/iMqqoCAo+aol0wWBfz/LHkUd0W1DSyT6LhrGzHiYs/I6d2O
+         t2Y22ICqKH0iiXP3kJnDZw4SGtpapIHkvNuf6ddTrrkcU7oZOibB5FUhafinqXbjpCQp
+         Ky5Wybxo3wbYMNP48LWsSu7HUWVctvsFIePLvuCl9JLUnK6lB9MzTum/hf9OPtlDFVWh
+         n+NA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:autocrypt:from:references:to:subject;
-        bh=7lJrxpldjcMTTpEare94w9TuHinQTPw3EfJS+ikIBlo=;
-        b=PtXFMYIapr0jGKWtD7XW9VKpmQ0xE+FeBG6A2UnDeTEksTrMqHhjgpBC9qbeGPWsfs
-         cS3b+Jw6l7eEkF8wux4uUMGpwvkZMc7s0eFvt0VTUB6K6OD54J4SE2Z3GNybn3dcN3DU
-         mqyXUNJod+9TJbNAXqErZaFuDa5fAaSjyAYtLks9O85ufA8WZT9WgGhPATmKaownHBlc
-         9U6MFx2/wWWV1yGbovlevZKu74jQ1bd2n25zcCVGk89FuzEk8sEDNrkXPyy9zguiVpc/
-         PJ5DXecP9P/3gjdWezQoh+npCngnefwk4OlLw/co9wBjq2vDmHPt8iJqtx4+hUlU0LSH
-         DS6A==
+        bh=gJXFESEObG54UjgxBNeegh325JrQNe7/SN9Ixu2us78=;
+        b=ZWgCDM4EyrAApdC1hawgdMUvrkCttquXg0SUi2MRq1fuZb8KLM7p2/zTgmsKJTaSp2
+         RtzVTvrHkdu37ARiTh1Opllk8z7SISPMpoxNhwhLS0KF2VO7jgb5i0V8GnE44vjbs3Br
+         BfM68UjpYcPBM95v2LPN2cExzR7fWPKKzKU3lVM18L6WTn/o6k5QKdMKuqbrT1LmhAvt
+         OZTmHRxsMPtRr5ULbWXO9Geny0gFxGzJ86s6iC1EdTXuI6allkbD7bwvj+n7JGRlnDnK
+         85+QI8kGbdOO4yJ12JqaxJlBVAp/zQ5ph35z6xGhWmSSaTK8OIG14zdx2wpBzvCgLGlf
+         YUYQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 21si18996382qke.116.2019.10.14.10.26.47
+        by mx.google.com with ESMTPS id f16si19035293qke.254.2019.10.14.10.52.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Oct 2019 10:26:47 -0700 (PDT)
+        Mon, 14 Oct 2019 10:52:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54522 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54988 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iK47K-0000qW-7P
-	for alex.bennee@linaro.org; Mon, 14 Oct 2019 13:26:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45456)
+	id 1iK4Wf-0005l2-8N
+	for alex.bennee@linaro.org; Mon, 14 Oct 2019 13:52:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45713)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jsnow@redhat.com>) id 1iK3jV-0002wD-Iw
- for qemu-arm@nongnu.org; Mon, 14 Oct 2019 13:02:10 -0400
+ (envelope-from <jsnow@redhat.com>) id 1iK3lM-0004rl-5t
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2019 13:04:05 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jsnow@redhat.com>) id 1iK3jT-0005w9-FV
- for qemu-arm@nongnu.org; Mon, 14 Oct 2019 13:02:08 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:26679)
+ (envelope-from <jsnow@redhat.com>) id 1iK3lK-0006cI-Ow
+ for qemu-arm@nongnu.org; Mon, 14 Oct 2019 13:04:04 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:45942)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <jsnow@redhat.com>)
- id 1iK3jT-0005vZ-6n; Mon, 14 Oct 2019 13:02:07 -0400
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ id 1iK3lK-0006c9-GP; Mon, 14 Oct 2019 13:04:02 -0400
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id B0DBB18CB8FC;
- Mon, 14 Oct 2019 17:02:05 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id 7318C80167A;
+ Mon, 14 Oct 2019 17:04:01 +0000 (UTC)
 Received: from [10.18.17.152] (dhcp-17-152.bos.redhat.com [10.18.17.152])
- by smtp.corp.redhat.com (Postfix) with ESMTP id F16C16012C;
- Mon, 14 Oct 2019 17:01:37 +0000 (UTC)
-Subject: Re: [PATCH 02/20] hw/southbridge/ich9: Removed unused headers
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E03C25DC1E;
+ Mon, 14 Oct 2019 17:03:45 +0000 (UTC)
+Subject: Re: [PATCH 00/20] hw: Clean up hw/i386 headers (and few alpha/hppa)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
 References: <20191014142246.4538-1-philmd@redhat.com>
- <20191014142246.4538-3-philmd@redhat.com>
 From: John Snow <jsnow@redhat.com>
 Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
  mQINBFTKefwBEAChvwqYC6saTzawbih87LqBYq0d5A8jXYXaiFMV/EvMSDqqY4EY6whXliNO
@@ -141,17 +140,17 @@ Autocrypt: addr=jsnow@redhat.com; prefer-encrypt=mutual; keydata=
  i0HjnLoJP5jDcoMTabZTIazXmJz3pKM11HYJ5/ZsTIf3ZRJJKIvXJpbmcAPVwTZII6XxiJdh
  RSSX4Mvd5pL/+5WI6NTdW6DMfigTtdd85fe6PwBNVJL2ZvBfsBJZ5rxg1TOH3KLsYBqBTgW2
  glQofxhkJhDEcvjLhe3Y2BlbCWKOmvM8XS9TRt0OwUs=
-Message-ID: <09ad3737-ae74-2be0-ce70-500fc5c0cf00@redhat.com>
-Date: Mon, 14 Oct 2019 13:01:37 -0400
+Message-ID: <11ede8ff-3914-153c-a46a-41034d431d57@redhat.com>
+Date: Mon, 14 Oct 2019 13:03:45 -0400
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.1.0
 MIME-Version: 1.0
-In-Reply-To: <20191014142246.4538-3-philmd@redhat.com>
+In-Reply-To: <20191014142246.4538-1-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.63]); Mon, 14 Oct 2019 17:02:06 +0000 (UTC)
+ (mx1.redhat.com [10.5.110.67]); Mon, 14 Oct 2019 17:04:01 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -185,66 +184,74 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hIsMszTAwQQe
+X-TUID: sMNAioD+KW7D
 
 
 
 On 10/14/19 10:22 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> The ICH9 chipset is not X86/PC specific.
+> This is a follow-up of Markus's cleanup series:
+> Tame a few "touch this, recompile the world"
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg635748.html
 >=20
-> These files don't use anything declared by the "hw/i386/pc.h"
-> or "hw/i386/ioapic.h" headers. Remove them.
+> This part is mostly restricted to X86, but since some file from the
+> Alpha/PA-RISC machines include "hw/i386/pc.h" I had to fix them
+> too.
 >=20
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Eventually I'll succeed at removing hw/i386/ dependency on non-X86
+> platforms (Quest I started 2 years ago...).
+>=20
+> Regards,
+>=20
+> Phil.
+>=20
+> Philippe Mathieu-Daud=C3=A9 (20):
+>   vl: Add missing "hw/boards.h" include
+>   hw/southbridge/ich9: Removed unused headers
+>   hw/input/pckbd: Remove unused "hw/i386/pc.h" header
+>   hw/i386/ioapic_internal: Remove unused "hw/i386/ioapic.h" header
+>   hw/timer: Remove unused "ui/console.h" header
+>   hw/usb/dev-storage: Remove unused "ui/console.h" header
+>   hw/i386/intel_iommu: Remove unused includes
+>   hw/xen/xen_pt_load_rom: Remove unused includes
+>   hw/alpha/alpha_sys: Remove unused "hw/ide.h" header
+>   hw/alpha/dp264: Include "net/net.h"
+>   hw/hppa/machine: Include "net/net.h"
+>   hw/acpi/cpu_hotplug: Include "hw/pci/pci.h"
+>   hw/timer/hpet: Include "exec/address-spaces.h"
+>   hw/pci-host/q35: Include "qemu/range.h"
+>   hw/i2c/smbus_ich9: Include "qemu/range.h"
+>   hw/pci-host/piix: Include "qemu/range.h"
+>   hw/acpi: Include "hw/mem/nvdimm.h"
+>   hw/i386: Include "hw/mem/nvdimm.h"
+>   hw/pci-host/q35: Remove unused includes
+>   hw/i386/pc: Clean up includes
+>=20
+>  hw/acpi/cpu_hotplug.c             |  1 +
+>  hw/acpi/ich9.c                    |  2 +-
+>  hw/acpi/piix4.c                   |  1 +
+>  hw/alpha/alpha_sys.h              |  1 -
+>  hw/alpha/dp264.c                  |  1 +
+>  hw/hppa/machine.c                 |  1 +
+>  hw/i2c/smbus_ich9.c               |  1 +
+>  hw/i386/acpi-build.c              |  1 +
+>  hw/i386/pc.c                      |  1 +
+>  hw/i386/pc_piix.c                 |  1 +
+>  hw/i386/pc_q35.c                  |  1 +
+>  hw/input/pckbd.c                  |  1 -
+>  hw/isa/lpc_ich9.c                 |  2 --
+>  hw/pci-host/piix.c                |  1 +
+>  hw/pci-host/q35.c                 |  1 +
+>  hw/timer/hpet.c                   |  2 +-
+>  hw/timer/twl92230.c               |  1 -
+>  hw/usb/dev-storage.c              |  1 -
+>  hw/xen/xen_pt_load_rom.c          |  4 ----
+>  include/hw/i386/ich9.h            |  1 -
+>  include/hw/i386/intel_iommu.h     |  4 ----
+>  include/hw/i386/ioapic_internal.h |  1 -
+>  include/hw/i386/pc.h              | 12 +++---------
+>  include/hw/pci-host/q35.h         |  8 +-------
+>  vl.c                              |  1 +
+>  25 files changed, 18 insertions(+), 34 deletions(-)
+>=20
 
-Reviewed-by: John Snow <jsnow@redhat.com>
-
-> ---
->  hw/acpi/ich9.c         | 1 -
->  hw/isa/lpc_ich9.c      | 2 --
->  include/hw/i386/ich9.h | 1 -
->  3 files changed, 4 deletions(-)
->=20
-> diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
-> index 2034dd749e..fdd0a6c79e 100644
-> --- a/hw/acpi/ich9.c
-> +++ b/hw/acpi/ich9.c
-> @@ -27,7 +27,6 @@
->  #include "qemu/osdep.h"
->  #include "qapi/error.h"
->  #include "qapi/visitor.h"
-> -#include "hw/i386/pc.h"
->  #include "hw/pci/pci.h"
->  #include "migration/vmstate.h"
->  #include "qemu/timer.h"
-> diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
-> index 17c292e306..61cee2ae3a 100644
-> --- a/hw/isa/lpc_ich9.c
-> +++ b/hw/isa/lpc_ich9.c
-> @@ -35,10 +35,8 @@
->  #include "hw/isa/isa.h"
->  #include "hw/sysbus.h"
->  #include "migration/vmstate.h"
-> -#include "hw/i386/pc.h"
->  #include "hw/irq.h"
->  #include "hw/isa/apm.h"
-> -#include "hw/i386/ioapic.h"
->  #include "hw/pci/pci.h"
->  #include "hw/pci/pci_bridge.h"
->  #include "hw/i386/ich9.h"
-> diff --git a/include/hw/i386/ich9.h b/include/hw/i386/ich9.h
-> index 72e803f6e2..a98d10b252 100644
-> --- a/include/hw/i386/ich9.h
-> +++ b/include/hw/i386/ich9.h
-> @@ -5,7 +5,6 @@
->  #include "hw/sysbus.h"
->  #include "hw/i386/pc.h"
->  #include "hw/isa/apm.h"
-> -#include "hw/i386/ioapic.h"
->  #include "hw/pci/pci.h"
->  #include "hw/pci/pcie_host.h"
->  #include "hw/pci/pci_bridge.h"
->=20
-
---=20
-=E2=80=94js
+Acked-by: John Snow <jsnow@redhat.com>

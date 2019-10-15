@@ -1,166 +1,156 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5866528wrm;
-        Tue, 15 Oct 2019 07:49:14 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxZwJhVpFh4DWze7H+WAnOKBtz+McGmXNwH2XYAQe5GsKlG1KOhYcgjukUae+xdAqJekVzE
-X-Received: by 2002:a05:6402:8cf:: with SMTP id d15mr32777824edz.225.1571150954309;
-        Tue, 15 Oct 2019 07:49:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571150954; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp6004296wrm;
+        Tue, 15 Oct 2019 09:46:53 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyrSFE1zIgjCuhdYdXLnXgXXhSy41g52mGPvZja8PkHEL6IonpLpfr7XiDoslKeaoBXD3Vg
+X-Received: by 2002:a37:454d:: with SMTP id s74mr36093597qka.498.1571158013664;
+        Tue, 15 Oct 2019 09:46:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571158013; cv=none;
         d=google.com; s=arc-20160816;
-        b=uvSn/6QKhoqLKVsGkaMpFWU+vTUMavhWkiLTwbaGhzKnYKIxvhaGXBCtkcowE2lVYr
-         LkDasl4tPFL7lhZW6gbSdTXyt4V/nHpzB3NrF0ZgOWodoZqtBAgUwN+6S1VbkmV8o+JO
-         Lxt+yBU9Pm/oOVWNh4AMbXDUCJXVKoWMTPmeSOMqPk3R3IifkNU9ExHTSze+cmUeP3Hc
-         L6Zj7KcAekfOIXUmLfH54RurzuivJ0zFd/ntLqLuFP13G9hhGfgk99XiSN9Df7D+XKCZ
-         Johxq3qpCIeVs9We0nHSXbtX4gwpC8I2qUgbmJ9SRnFy8yUwtXHOyz3QiZZA8b9x/UBg
-         BWXQ==
+        b=w9K7i4bt2GqKkMhy4jyr6WixMWBuS4/lOdMMshCvDS0Da4hRZWk3LbDmgqJtkhySyn
+         Tjl6d+cdX/lMrcLT0EdrzlJLNCJ+9H1rfN0c1gggE7rupr/Kf8zwf2l8vfYYtaOEbAHv
+         DEPU/h3H7Bg/2g4AfcvYhAZmP0s6zoZafNnf2ZF6sGov2W43leC/7E/6Ee1eTKpdZx+0
+         y412C0iopDcG+Rsu04XezWmi4jV85/XWaX785yUq5AYK5lCvvHucfOwJEkZI2snLJ2pE
+         OikEY+7DIY6BhnXRxmD9Km4WxwIAeGdvsCLfuvr8WKzVsK107fxdvVtoedgQqVOm3bNO
+         Qjtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=/kwSlXh6iJx2O0gCfEtXXAa4F2WK8uIGGEOp4n92JOM=;
-        b=UIVRdoU9oDT8SkMM8FW9n7RYJCH3E/ak7nQfVVSQPv6zTz5kYMhNcNNFyRNkmguM49
-         bREoUM+IIyX4B0XA5TrZOJTIQ4RsHjiwEkHUcd8yPm+BK2M+DH65pYnGSja2D6rCmI4h
-         K/rzuVq8z829EMd3gDv5oPJAs9ffQTVNJMn/9QdZLIZSzQNvJjQGw5HWYLq2IKdJmfAW
-         ockYn4VJtadosHYMatkqv0XGsFm+e2gzLsjpJQ7W7Tyav3TYruY5ml/nR6UmpLOJ46to
-         +6kCp8HlchQPB6syflrBDxAMsB9+Db71Gs4pQAqwUgGuOHPlGQxaLLX5xHWUa5YE5yZy
-         tAVA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=H6OVoJrQX7RGgK41fMCeCXgNG3P+xR1iomsErR3VVAM=;
+        b=rikuSk7NHm71CjaIBmxjILHeQljLia6cxjed0zvJ5HvCxYa/EGh1OJxhoBN5aQX/yX
+         Soh+okxPTQXiaYFQSAw3xlrKLUEcnhr+vO1BUeJ7bSti4NLA29Lcz127Z1v2HFRpQGQk
+         l386lR5A9zdcG27QUQlLlQSEgo/VMr8PagFdlzkfu4LQfWnuO/GUsm++p8aYPHoI8+WC
+         lVutI08J0EVvDunBftz/16nvzDANnrwrqZgKkDbVXiDo/VfluYLP/Evyc3DlUQvt/8AJ
+         BIKdn/eew2c5XfcdJ8bl2JcYIMwkJU563biD3KJpDDJABmkH8hFl8P94g5Jnah53FLhy
+         Vh4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="LkjWXU/f";
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id g32si14701943eda.330.2019.10.15.07.49.14;
-        Tue, 15 Oct 2019 07:49:14 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       dkim=fail header.i=@linaro.org header.s=google header.b="zl3sWEF/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 89si22270975qtc.116.2019.10.15.09.46.53
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 15 Oct 2019 09:46:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="LkjWXU/f";
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1733039AbfJOOtM (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Tue, 15 Oct 2019 10:49:12 -0400
-Received: from mail-oi1-f196.google.com ([209.85.167.196]:36709 "EHLO
-        mail-oi1-f196.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1732599AbfJOOtG (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 15 Oct 2019 10:49:06 -0400
-Received: by mail-oi1-f196.google.com with SMTP id k20so17040876oih.3
-        for <kvm@vger.kernel.org>; Tue, 15 Oct 2019 07:49:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=/kwSlXh6iJx2O0gCfEtXXAa4F2WK8uIGGEOp4n92JOM=;
-        b=LkjWXU/fZpk5VVnZObAdiPhF8A1Ozh6Fl7p+l0J7kmC3t20Uh+d+oCGGy3oF3r6NLe
-         hEMsy2Wbsoy88zOrL45mi3wV5z9sQOIlnfWr49WcGTrBZZFV2BGwb3FveDziPpo2JDHn
-         kpfwm1CHlRPfu67CpYnsHA+1wpF0ME1e5MUbXx5mtN+kOdrNVrNnJDBrZ1EIU+mV5Pdc
-         tzOgjKPkaHhXJTvyHhOC488MgyE1HprVgxyht758wl7rSo7bBSglCnMNh6dlHJRqWz03
-         BJmurMMAc0G60/VAehe5JtgYrsbOa1fAHAfsIw8/AbrFpjs06sppNhC+IkGXs5ZWKzIv
-         V3jA==
+       dkim=fail header.i=@linaro.org header.s=google header.b="zl3sWEF/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52898 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iKPyF-00060d-MM
+	for alex.bennee@linaro.org; Tue, 15 Oct 2019 12:46:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42096)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <richard.henderson@linaro.org>) id 1iKPkp-0005ET-TS
+ for qemu-arm@nongnu.org; Tue, 15 Oct 2019 12:33:01 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <richard.henderson@linaro.org>) id 1iKPko-0007PR-K0
+ for qemu-arm@nongnu.org; Tue, 15 Oct 2019 12:32:59 -0400
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:37217)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1iKPko-0007OI-CX
+ for qemu-arm@nongnu.org; Tue, 15 Oct 2019 12:32:58 -0400
+Received: by mail-pg1-x541.google.com with SMTP id p1so12463529pgi.4
+ for <qemu-arm@nongnu.org>; Tue, 15 Oct 2019 09:32:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=H6OVoJrQX7RGgK41fMCeCXgNG3P+xR1iomsErR3VVAM=;
+ b=zl3sWEF/MS+j7lZIxe67oEtKIkuRKHcYsJsQmpsETegnV9urD4UhOJay7qRlZr4wJ/
+ u+bo9vuXgGYQyuGtzTSdIf9Tqo777e+BN3QdZ0cm1lnVz1NxvLQ6Rrd2qbJRP8cIKHDn
+ p1DQfdDXHiTFLwI5h4jop8b5DGm4XmcWh4HfiWuL627yxIkFbr5rr3wK03alxevF/+8x
+ BlRjvg/regGi5camyzZkQN3uKEP2lXKg0rqQGrD4kAeCCZf/T+rMXpsjQBy0B8GNA2d/
+ fXQfHMQkhcUVr0joFzR69OAqvVWpPp8vNKj1oCk+bvet4dV8HMv7kQJ20SuLA/LGPCdG
+ ebFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=/kwSlXh6iJx2O0gCfEtXXAa4F2WK8uIGGEOp4n92JOM=;
-        b=I5ldSUxhB4H8BOutVwAq/FvsOMMTnKuROuIgpj7DLNfpAXZxTduwN71Qo37TmSYV4n
-         abhpoOLgx02BVNLd1lndAvPh74HMnT6B8epXsiv2glmc9kSotkznzcCW1DfQUVu/vA8Y
-         bk4YuT0uKEegkXAYx4TGTMkHzNl1ov6D7+vgaHfFX0JPCueJ7epmwNukzIIqsHaEn1oF
-         +bjT+os0jyK5UZwAofENWeldoKx6+wbleA1FVnJl7FVdGOVN+DKBFF10yDOY2F49LAfC
-         ZMQVFLk1eidp3f2Wb345cSYUyzN+1y0rwzjknHiWeQBUUTyV6oodjBd8pt8kkbsaOfZj
-         C1dg==
-X-Gm-Message-State: APjAAAU8+0DNa/mjY7gcL3Bqi+9QM8I713gLXrQID+ErubvFWguYxOWp
-        m2enGT4QwEOHQuAsDAL99N7Oho9lUlWJVpB8qU+Z5Q==
-X-Received: by 2002:aca:49c2:: with SMTP id w185mr29667804oia.163.1571150945480;
- Tue, 15 Oct 2019 07:49:05 -0700 (PDT)
-MIME-Version: 1.0
-References: <20191015140140.34748-1-zhengxiang9@huawei.com> <20191015140140.34748-6-zhengxiang9@huawei.com>
-In-Reply-To: <20191015140140.34748-6-zhengxiang9@huawei.com>
-From:   Peter Maydell <peter.maydell@linaro.org>
-Date:   Tue, 15 Oct 2019 15:48:53 +0100
-Message-ID: <CAFEAcA-92YEgrBPDVVFEmjBYnw=keJWKUDnqNRakw-jKYaxK5Q@mail.gmail.com>
-Subject: Re: [PATCH v19 5/5] target-arm: kvm64: handle SIGBUS signal from
- kernel or KVM
-To:     Xiang Zheng <zhengxiang9@huawei.com>
-Cc:     Paolo Bonzini <pbonzini@redhat.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Igor Mammedov <imammedo@redhat.com>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        Laszlo Ersek <lersek@redhat.com>,
-        James Morse <james.morse@arm.com>,
-        gengdongjiu <gengdongjiu@huawei.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Jonathan Cameron <jonathan.cameron@huawei.com>,
-        "xuwei (O)" <xuwei5@huawei.com>, kvm-devel <kvm@vger.kernel.org>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>, Linuxarm <linuxarm@huawei.com>,
-        wanghaibin.wang@huawei.com
-Content-Type: text/plain; charset="UTF-8"
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 4zFBHxuO2mti
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=H6OVoJrQX7RGgK41fMCeCXgNG3P+xR1iomsErR3VVAM=;
+ b=Kk+AApttF6G8+vR5c/5U/D5CN5zgPNXrYfGc8ohjJ4dE5+BZBI5p+akKwtQ5ZE1nFG
+ mq7CFJIjbcgc4SI6jN6LT09+9G/WXMPl/N0rKwJ23MzYtl+vrt7p9SBtEQ0kH0ggY7p8
+ 7aTNHxqiRDURREHk6jUFw036UuYxhik7uZbJwV+tLKJ1NLpp121scKoj8bn2UU6inybF
+ 7ipr58t4HpFyr1r65tR6/L/eUz4awl2uJLt9hhPAXjkSbb+/r4rS7SGqCeGl+6AJBwlM
+ FfoqP6QFvId1nR9foTuaWZVkmwP7Jpjux2ciKAm4oQRQuTQzA0UMgbZlQ0NQOLEyQcsi
+ c4mg==
+X-Gm-Message-State: APjAAAVLr0Xdksx+zPWeP+YVBgHGXJbJKX66IGrKyVEvSAte150pRGxo
+ IML7+SvKsd6xHpvEcAWFMKFTQg==
+X-Received: by 2002:a62:1dd2:: with SMTP id
+ d201mr40173621pfd.131.1571157176172; 
+ Tue, 15 Oct 2019 09:32:56 -0700 (PDT)
+Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
+ [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id g4sm20082824pfo.33.2019.10.15.09.32.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 15 Oct 2019 09:32:55 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 0/3] target/arm: Implement ARMv8.5-MemTag, user mode
+Date: Tue, 15 Oct 2019 09:32:48 -0700
+Message-Id: <20191015163254.12041-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.17.1
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::541
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: elver@google.com, icb@rice.edu, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: lr42Xjc/w9dq
 
-On Tue, 15 Oct 2019 at 15:02, Xiang Zheng <zhengxiang9@huawei.com> wrote:
->
-> From: Dongjiu Geng <gengdongjiu@huawei.com>
->
-> Add a SIGBUS signal handler. In this handler, it checks the SIGBUS type,
-> translates the host VA delivered by host to guest PA, then fills this PA
-> to guest APEI GHES memory, then notifies guest according to the SIGBUS
-> type.
->
-> When guest accesses the poisoned memory, it will generate a Synchronous
-> External Abort(SEA). Then host kernel gets an APEI notification and calls
-> memory_failure() to unmapped the affected page in stage 2, finally
-> returns to guest.
->
-> Guest continues to access the PG_hwpoison page, it will trap to KVM as
-> stage2 fault, then a SIGBUS_MCEERR_AR synchronous signal is delivered to
-> Qemu, Qemu records this error address into guest APEI GHES memory and
-> notifes guest using Synchronous-External-Abort(SEA).
->
-> In order to inject a vSEA, we introduce the kvm_inject_arm_sea() function
-> in which we can setup the type of exception and the syndrome information.
-> When switching to guest, the target vcpu will jump to the synchronous
-> external abort vector table entry.
->
-> The ESR_ELx.DFSC is set to synchronous external abort(0x10), and the
-> ESR_ELx.FnV is set to not valid(0x1), which will tell guest that FAR is
-> not valid and hold an UNKNOWN value. These values will be set to KVM
-> register structures through KVM_SET_ONE_REG IOCTL.
->
-> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+This is a refresh of the user-only patch set from March.
 
-> +static int acpi_ghes_record_mem_error(uint64_t error_block_address,
-> +                                      uint64_t error_physical_addr,
-> +                                      uint32_t data_length)
-> +{
-> +    GArray *block;
-> +    uint64_t current_block_length;
-> +    /* Memory Error Section Type */
-> +    QemuUUID mem_section_id_le = UEFI_CPER_SEC_PLATFORM_MEM;
-> +    QemuUUID fru_id = {0};
+I do not attempt to implement any part of a kernel abi wrt mmap
+and/or mprotect.  Instead, it uses a x-tagged-pages property to
+assume that all anonymous pages have tags.
 
-Hi; this makes at least some versions of clang complain
-(this is a clang bug, but it's present in shipped versions):
+The tests added are disabled by default, but do pass if you have
+binutils 2.32 installed.
 
-/home/petmay01/linaro/qemu-from-laptop/qemu/hw/acpi/acpi_ghes.c:135:24:
-error: suggest braces around
-      initialization of subobject [-Werror,-Wmissing-braces]
-    QemuUUID fru_id = {0};
-                       ^
-                       {}
 
-We generally use "{}" as the generic zero-initializer for
-this reason (it's gcc/clang specific whereas "{0}" is
-in the standard, but all of the compilers we care about
-support it and don't warn about its use).
+r~
 
-> +    uint8_t fru_text[20] = {0};
 
-Clang doesn't mind this one because it's not initializing
-a struct type, but you could use "{}" here too for consistency.
+Based-on: <20191011134744.2477-1-richard.henderson@linaro.org>
+("target/arm: Implement ARMv8.5-MemTag, system mode")
 
-thanks
--- PMM
+Based-on: <20190803210803.5701-1-richard.henderson@linaro.org>
+("target/arm: Implement ARMv8.5-BTI for linux-user")
+
+Complete tree: https://github.com/rth7680/qemu/tree/tgt-arm-mte-user
+
+
+Richard Henderson (3):
+  tcg: Introduce target-specific page data for user-only
+  target/arm: Add allocation tag storage for user mode
+  tests/tcg/aarch64: Add mte smoke tests
+
+ include/exec/cpu-all.h            | 10 ++++++--
+ target/arm/cpu.h                  |  4 ++++
+ accel/tcg/translate-all.c         | 28 ++++++++++++++++++++++
+ linux-user/mmap.c                 |  8 ++++++-
+ linux-user/syscall.c              |  4 ++--
+ target/arm/cpu64.c                | 20 ++++++++++++++++
+ target/arm/mte_helper.c           | 35 +++++++++++++++++++++++++--
+ tests/tcg/aarch64/mte-1.c         | 27 +++++++++++++++++++++
+ tests/tcg/aarch64/mte-2.c         | 39 +++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |  5 ++++
+ 10 files changed, 173 insertions(+), 7 deletions(-)
+ create mode 100644 tests/tcg/aarch64/mte-1.c
+ create mode 100644 tests/tcg/aarch64/mte-2.c
+
+-- 
+2.17.1
+

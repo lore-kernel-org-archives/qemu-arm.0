@@ -1,158 +1,139 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5657933wrm;
-        Tue, 15 Oct 2019 04:57:33 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyo6t/FUW73y+Tn3PC7PsudfO01+YoknUnIfr2Hm7TCKbBrxZhLBDxxsl19HtNJtBHDkH9F
-X-Received: by 2002:a0c:fa02:: with SMTP id q2mr73847qvn.43.1571140653415;
-        Tue, 15 Oct 2019 04:57:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571140653; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5809684wrm;
+        Tue, 15 Oct 2019 07:03:02 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyvRZWRdjPKgMCguYqpvS2Pp9jNBpIsMQpG94bYwGdhAzSL43xFl2VH849rH2SOzsv32XqO
+X-Received: by 2002:a17:906:2d49:: with SMTP id e9mr34064430eji.240.1571148182250;
+        Tue, 15 Oct 2019 07:03:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571148182; cv=none;
         d=google.com; s=arc-20160816;
-        b=eBXTPjTucEE3QOATD4MdbbhSYM1NHn45iz9h2sJsU/u8y3pegbcpNwd3GEgkpm9bt3
-         /xDCHKKA7aT7+58FhhTciU43axE7tvfBnLeG1VZgPlY9C6+vmmf40r7WNE5Z2zixCOcT
-         igO6mqbrp7Hd798F+CD6zLY8IGtbCjjJRPyafjOrRxhC720IYypKlW82rc+qkz7DjUyI
-         IifJJlSXhZP+KnierFVZfUD5krsTEzY7h/ZbKU2C2EsyfGZyHXtZykDJ34Tq/aNHZhzF
-         Oo0HZmd0ZZL8nay66Dxoj0ZbHfd6ZKmt1C8zIiNz/YQ0T1RSm38HqPsngpg7f1BY5bR/
-         KaHg==
+        b=PnDM2QO1i8QNBN7FT9os69GuyoSm+DI8Lxe2mzVHaVuB2RYEZ2J41drKWxvqsSdDv3
+         Sje5vtQyd0hUz/7iDr2iMGq1R2vj3ZLfsM4sQnue+oCRcCegAZnUAf/xthmhCW7b7VOH
+         6TE6mEJu+ink4Euplf/xnF77diwy1fCIJ7JYl/PPYXenYsSpw2QmjfNuAJN2vKkGY+9o
+         e09HuH3b6oJ6x6YxWORZl4hs9vK93MKUhoEwdVbPUobG1xuWzil90wHJjHOjH10AI7Q/
+         g/tvY4vwXdEM/SF+h7VlGDu0juK3D88h+SDO59f4LQsorVrGW0JX2Q5M/L0mxirwy6cT
+         FXlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=IL5FBdAvXUA93jNHA93fQEkKBO6jrOksRZy3o133Nw0=;
-        b=MhjtL2judjCKd/3A969lny/NeiZCq0Y7kdkOb7KxzU2Cv2hOWLXLdLoIM0VWLH2v0f
-         OR1Qje8dj+ye6xeg4eG6vh5m7ewMhl2rhsCXJxvW94UI5dKJRNMTiUi+2GPDG/d+ypFv
-         hnJwymSaQz0wfTVlSBaS3ac3bYFDmrrvMAI5Es3MuWtQ+qoPGvt1IypCOK3+tXWjlLiv
-         iDf6XZJKrZoOVFA78X5RK4ji1goXgbYj+xtNONZ2YeZlT9xfbPqbxavzS5ClsyOW+QF4
-         uDUNK3yrxh32WsXobTqCfjIf/EIpu6PlcyArMhhDZVTfFlGxrHFyH7IDD2KnIX/Tmx1G
-         iGoA==
+        h=list-id:precedence:sender:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=5Y00I1eVSIIUo9bs/NLeUXNuw2FS3fSbQeRzmLoP4C0=;
+        b=PpLCk2xqxAKbS3etpv6ksweIa9HpmuGd9VldxVnKdUzSLmd2t6QlutX15RXZjBC0Ee
+         BGI/Rtp1ckDJfTIF6Iodc86LkW3pdgJdZE1JE9ni9cHG9l0mCSDYZcjVSOMCRY6MIEA+
+         asgS1An3zlCafVgpzGN8Ms8MFdZm+AF4X4pzg9XP+WVlrS4wBzQaaOAnsT+I8YGOdMVc
+         RnpC87af8It5cV8jp/Fh+nRfdNDJK6l4ItP8ufpVMuHHuSsya5AU4HxZXRoAKvpppzei
+         lW18pN9TOlaKvwIa9njMKTRL+Dl1DBsxlM6ptvcxvu+tBp/fj8zFMK+eebT9xr1kk2dM
+         ow2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BCIoVq1T;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v8si20844249qtb.125.2019.10.15.04.57.33
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Oct 2019 04:57:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id b47si14176091edc.45.2019.10.15.07.03.02;
+        Tue, 15 Oct 2019 07:03:02 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BCIoVq1T;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42320 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iKLSG-0001tB-Sb
-	for alex.bennee@linaro.org; Tue, 15 Oct 2019 07:57:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33718)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <beata.michalska@linaro.org>) id 1iKLRM-0001Pp-OL
- for qemu-devel@nongnu.org; Tue, 15 Oct 2019 07:56:37 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <beata.michalska@linaro.org>) id 1iKLRK-0002PD-JW
- for qemu-devel@nongnu.org; Tue, 15 Oct 2019 07:56:36 -0400
-Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:45019)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <beata.michalska@linaro.org>)
- id 1iKLRI-0002OF-Lh
- for qemu-devel@nongnu.org; Tue, 15 Oct 2019 07:56:33 -0400
-Received: by mail-io1-xd41.google.com with SMTP id w12so45100005iol.11
- for <qemu-devel@nongnu.org>; Tue, 15 Oct 2019 04:56:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=IL5FBdAvXUA93jNHA93fQEkKBO6jrOksRZy3o133Nw0=;
- b=BCIoVq1TFJ8Sa5mrARu8UDRZotgXpHaEZamYmzIEi7QiOsgD3HJYqXfSdachcVgC4j
- 3IJUvJiqmHu/MFsy0WvPF/CrsxvzLGC5j/b9umU+xnNNdU/WCHorK5LSSZ7DDK/C3EnW
- uoWYTN4wUyXr1oB6pAQS7A0w2N4n6/DTviOSwpKOybtuXmBCEo+Bl/JxWKJfs++x2Q24
- LtPj4WUtR/fr6Ik4rVU5AHkh2WAEuRyWQN9uM35jgeETGOIKacQ3RQinmS2qypTgYAsD
- gPT7kRxiosrymbJRQuXtXIWKduc22Ad7dcEB9alpKysTNRmz6HYY5NWoFSG15WoHhPf3
- uDIQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=IL5FBdAvXUA93jNHA93fQEkKBO6jrOksRZy3o133Nw0=;
- b=EQXO59JwILVpqCUyzB58BX+2GfhsRF55BPaI5WS1CjrtWUd7R2o9GUjjgh5HusW0nZ
- 5K5IVHTh8x2IsHur/pvsidGzSwBxnbkzoe0byRWABhxqd/vpD87Pzn8HhajY+JOLupYY
- MCNfQILd2Gv9xq7QhhW54c64ftk4NrD59JYPeNbkodLf8FiCLovlhbP/iyrhskOUlAD9
- V06MtySpzdtCweOgFHRKItpkvblNun0QgqMrEXI1/vEdme2QlfocHT6D2DWktQGv3qMU
- Yj0lhvZyDUyKsbEajTm8wnfWALze/+z1M3nWHNRAADw7jz3bpSgeymE77gpuxQ5Yk/ch
- 6CnQ==
-X-Gm-Message-State: APjAAAVHKbKZKy/8RkwJOKFw+SNfpLph7Z3jCgH4vai22y+BTBNC8ft8
- Cb0+lEtNgmtehxbj/dAYOXyY1U5k4jIeGPrDLcfZ5g==
-X-Received: by 2002:a5e:9741:: with SMTP id h1mr7061223ioq.143.1571140590103; 
- Tue, 15 Oct 2019 04:56:30 -0700 (PDT)
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1732426AbfJOODB (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Tue, 15 Oct 2019 10:03:01 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:3773 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S1732416AbfJOODA (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 15 Oct 2019 10:03:00 -0400
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id 305DAD86F79D72C0877C;
+        Tue, 15 Oct 2019 22:02:57 +0800 (CST)
+Received: from HGHY4Z004218071.china.huawei.com (10.133.224.57) by
+ DGGEMS410-HUB.china.huawei.com (10.3.19.210) with Microsoft SMTP Server id
+ 14.3.439.0; Tue, 15 Oct 2019 22:02:46 +0800
+From:   Xiang Zheng <zhengxiang9@huawei.com>
+To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
+        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
+        <lersek@redhat.com>, <james.morse@arm.com>,
+        <gengdongjiu@huawei.com>, <mtosatti@redhat.com>, <rth@twiddle.net>,
+        <ehabkost@redhat.com>, <jonathan.cameron@huawei.com>,
+        <xuwei5@huawei.com>, <kvm@vger.kernel.org>,
+        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
+        <linuxarm@huawei.com>
+CC:     <zhengxiang9@huawei.com>, <wanghaibin.wang@huawei.com>
+Subject: [PATCH v19 1/5] hw/arm/virt: Introduce a RAS machine option
+Date:   Tue, 15 Oct 2019 22:01:36 +0800
+Message-ID: <20191015140140.34748-2-zhengxiang9@huawei.com>
+X-Mailer: git-send-email 2.15.1.windows.2
+In-Reply-To: <20191015140140.34748-1-zhengxiang9@huawei.com>
+References: <20191015140140.34748-1-zhengxiang9@huawei.com>
 MIME-Version: 1.0
-References: <20191001125845.8793-1-drjones@redhat.com>
- <20191001125845.8793-2-drjones@redhat.com>
- <CADSWDztJDUEd+_7XnBPWL1bk5Xh=V_aLc1+VrP97_Ycbe3489A@mail.gmail.com>
- <20191015105628.7ln6ph5s3vpsyfuw@kamzik.brq.redhat.com>
-In-Reply-To: <20191015105628.7ln6ph5s3vpsyfuw@kamzik.brq.redhat.com>
-From: Beata Michalska <beata.michalska@linaro.org>
-Date: Tue, 15 Oct 2019 12:56:19 +0100
-Message-ID: <CADSWDzsKx7+4mR4pmsqi0+rddUv47q=UKwVt509B8g68UoRiMA@mail.gmail.com>
-Subject: Re: [PATCH v5 1/9] target/arm/monitor: Introduce
- qmp_query_cpu_model_expansion
-To: Andrew Jones <drjones@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::d41
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
- armbru@redhat.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
- imammedo@redhat.com, Dave.Martin@arm.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4541NEb1KkQ4
+Content-Type: text/plain
+X-Originating-IP: [10.133.224.57]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: EOrgN545maSJ
 
-On Tue, 15 Oct 2019 at 11:56, Andrew Jones <drjones@redhat.com> wrote:
->
-> On Tue, Oct 15, 2019 at 10:59:16AM +0100, Beata Michalska wrote:
-> > On Tue, 1 Oct 2019 at 14:04, Andrew Jones <drjones@redhat.com> wrote:
-> > > +
-> > > +    obj = object_new(object_class_get_name(oc));
-> > > +
-> > > +    if (qdict_in) {
-> > > +        Visitor *visitor;
-> > > +        Error *err = NULL;
-> > > +
-> > > +        visitor = qobject_input_visitor_new(model->props);
-> > > +        visit_start_struct(visitor, NULL, NULL, 0, &err);
-> > > +        if (err) {
-> > > +            object_unref(obj);
-> >
-> > Shouldn't we free the 'visitor' here as well ?
->
-> Yes. Good catch. So we also need to fix
-> target/s390x/cpu_models.c:cpu_model_from_info(), which has the same
-> construction (the construction from which I derived this)
->
-> >
-> > > +            error_propagate(errp, err);
-> > > +            return NULL;
-> > > +        }
-> > > +
->
-> What about the rest of the patch? With that fixed for v6 can I
-> add your r-b?
->
+From: Dongjiu Geng <gengdongjiu@huawei.com>
 
-I still got this feeling that we could optimize that a bit - which I'm
-currently on, so hopefully I'll be able to add more comments soon if
-that proves to be the case.
+RAS Virtualization feature is not supported now, so add a RAS machine
+option and disable it by default.
 
-BR
-Beata
+Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+---
+ hw/arm/virt.c         | 23 +++++++++++++++++++++++
+ include/hw/arm/virt.h |  1 +
+ 2 files changed, 24 insertions(+)
 
-> Thanks,
-> drew
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index d74538b..130ea7a 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1783,6 +1783,20 @@ static void virt_set_its(Object *obj, bool value, Error **errp)
+     vms->its = value;
+ }
+ 
++static bool virt_get_ras(Object *obj, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    return vms->ras;
++}
++
++static void virt_set_ras(Object *obj, bool value, Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    vms->ras = value;
++}
++
+ static char *virt_get_gic_version(Object *obj, Error **errp)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+@@ -2026,6 +2040,15 @@ static void virt_instance_init(Object *obj)
+                                     "Valid values are none and smmuv3",
+                                     NULL);
+ 
++    /* Default disallows RAS instantiation */
++    vms->ras = false;
++    object_property_add_bool(obj, "ras", virt_get_ras,
++                             virt_set_ras, NULL);
++    object_property_set_description(obj, "ras",
++                                    "Set on/off to enable/disable "
++                                    "RAS instantiation",
++                                    NULL);
++
+     vms->irqmap = a15irqmap;
+ 
+     virt_flash_create(vms);
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index a720942..21ca4e0 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -119,6 +119,7 @@ typedef struct {
+     bool highmem_ecam;
+     bool its;
+     bool virt;
++    bool ras;
+     int32_t gic_version;
+     VirtIOMMUType iommu;
+     struct arm_boot_info bootinfo;
+-- 
+1.8.3.1
+

@@ -1,472 +1,199 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp6250766wrm;
-        Tue, 15 Oct 2019 13:41:37 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqx7gfftDEbGJdrGrTwKuKh7LXE2m16HMhTnl5UTvXFwbZ0bwoVCscuQFuAoyCfk8Pdx9Xb7
-X-Received: by 2002:a17:906:538a:: with SMTP id g10mr35673348ejo.94.1571172097699;
-        Tue, 15 Oct 2019 13:41:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571172097; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp6322971wrm;
+        Tue, 15 Oct 2019 15:04:26 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqza7OGVbnnu+b7prcFHiYsvs0ucRauy2MUtyMC9ULIEac6c1HcALNNykupUrDX6SKMXRevn
+X-Received: by 2002:ad4:50a8:: with SMTP id d8mr39501576qvq.8.1571177066282;
+        Tue, 15 Oct 2019 15:04:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571177066; cv=none;
         d=google.com; s=arc-20160816;
-        b=z2qXV0biuCToJ07dmlKQEftHxhB5RPXujMktlG9nUfZwjTwx37Z3Ka3VxEQdZF+0GE
-         xEVh3rCz+ipuNCBZKmRMCGbsBl2xNPyrPsl8xaGIdvt7OnMLoduwyRllAuMXH5o95hJJ
-         Wy9+DFnwW+Ith2j6yPH/lrrlbDLBbEgiFN3e3K00aW2Vh/mRrjxYIwUC3J9neRIt2oop
-         DoEIiisiHp8pCy6tU1MsSodD6ifQQlZJRJP8ck3BFPXMZQ+4jqcptuyWuoW9lF8DUrpQ
-         s4R/13mHY9PkeVOwF1KsDd8nFYcrX+zWRvzf/YIJ6fqpijP3j+5zaYxbsoTXmWiV1BRC
-         6QKg==
+        b=xHekOBL6AxaUnXf3kB9JffAoR6FARz9lW/xZTMVwb/dmYK4ywT2YBHSjYoiLsX5ATW
+         4NdBCugmXZn9bi35p/BJ4HweVmfXUkz8udFkvs502tQa7aVp5yo1NTaRH2v/+5T05Xn6
+         deUVjAQWsRhY5jGJ12nn/XHKY9QxTwNpqE4yH0apbseES9pyESfdpJ5dU4HaAo+gD1JW
+         FZk1GuhFFzIlEOGeICsXVbkfyMQE2raatace1tTAfNzHBGxM+iYqyHD0rAbFCEh2gUzt
+         zbs5xx42fRSMv+sSl/KuVTfD/0icgvwRMHgfpclxPuzlO+IpP8lOhfvCGtC6HuRP9eOt
+         XBDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=6UstkcjxI+4z5rFiL+3+y+IKkqZJcL3HhwST2wcN60Y=;
-        b=br1fdcLMxuvHbnGrRNqnL6LWtOrCeb2cLuPed8hR57buRfw3WDTwmBoiYJua9n5Csm
-         9NMcmMATOyeq87Lj2sQYgwLKBi/QmOa292SMKGvBbm/HXf5Q50/AWor2IHp+PS56VIfU
-         OD5BvBORVcHSYLa9L8/idPGNd8rNVKP8XoqLbtR11qFdZDiYtcya536u3kMBgHi+SXd5
-         oSI7pLiVBwcUChfh+yIo5/WvgfI21CnTFbbfqeiwHbRN+KBGujS+sWDr/88ml92X60Af
-         65fwWZUwiVxnNTFnsg/MTwBnbe6ORlTO3xU5pgdRxAUwHtcrWqz1CSxnBXKs+93ZUA4u
-         CTRA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:openpgp:from:references:to:subject:dkim-signature;
+        bh=WlM9qJ26FVCtq2jMelepxWIYCn2U4CiSRTZw+YpUCb8=;
+        b=c4WmuGFVMWy9SMGAnxA7KOod6j17nFxy8w3K/Z5cUCIKu1udDkBuIK1th6F3oD28zn
+         maC37WI5L7ySREuXl36N1XBrisCETukht31gyIQuBcBJrM75pvVNpA0RyLes7NoP93Zj
+         P1R3h3ZTLMW0rmomFopq2tmPydELwB+O1SbdIlRdO5fvXci/xexr+dbztN0VoMpNtEvc
+         PQrDIrYtlicSdgH0ejl8uDQWGscR/0ddTLmKVYxKVxOjVXvPBT1dQfOMwEzXFLktMobH
+         dam0Ll0Yj9hR+oJzyVOaR1/xk+7/mBFFdTzRJQg6+cy19jubOaS8uxRfw3AAsBnBS8BX
+         JpbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mPWAuAYu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b="e+o7Flo/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s42si14094390edm.292.2019.10.15.13.41.37
+        by mx.google.com with ESMTPS id o130si22775116qke.281.2019.10.15.15.04.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Oct 2019 13:41:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 15 Oct 2019 15:04:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mPWAuAYu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:59030 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="e+o7Flo/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60426 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iKTdQ-0002HW-C3
-	for alex.bennee@linaro.org; Tue, 15 Oct 2019 16:41:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50607)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iKUvZ-0006F0-MQ
+	for alex.bennee@linaro.org; Tue, 15 Oct 2019 18:04:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35236)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <eugeni.stepanov@gmail.com>) id 1iKTbu-0001I6-GL
- for qemu-devel@nongnu.org; Tue, 15 Oct 2019 16:40:04 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1iKUvQ-0006EH-Hp
+ for qemu-arm@nongnu.org; Tue, 15 Oct 2019 18:04:17 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <eugeni.stepanov@gmail.com>) id 1iKTbs-0003rh-Df
- for qemu-devel@nongnu.org; Tue, 15 Oct 2019 16:40:02 -0400
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:40531)
+ (envelope-from <richard.henderson@linaro.org>) id 1iKUvP-00008J-7T
+ for qemu-arm@nongnu.org; Tue, 15 Oct 2019 18:04:16 -0400
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:40170)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <eugeni.stepanov@gmail.com>)
- id 1iKTbs-0003qv-4q; Tue, 15 Oct 2019 16:40:00 -0400
-Received: by mail-io1-xd44.google.com with SMTP id h144so49426784iof.7;
- Tue, 15 Oct 2019 13:39:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6UstkcjxI+4z5rFiL+3+y+IKkqZJcL3HhwST2wcN60Y=;
- b=mPWAuAYu7ZAWCd/hGcrJJ+aXYBqSWItPKxFJkFJenmULJkO5jQRuG2diygjr6gQ1Q8
- tI3YuVhxmeGChNXs8j7QrOhd4hKLMacntAAloozVMSZkf7OYE7yEqDoE/+skYLEIbDBR
- 9jjT92PeTRQDdLu+3MNwkpbEfzfF3ol+Z0IVZuyw1O+8fpD00CZM97ip5+EAZNR4Gnqt
- Cv2U0+YfU/3p4tx+U3GyVYQ8NH8/fEAaR9oZ4ptaWPbZzRAAuLAv9SgWDUAAGlrYuPa8
- 9X4sZXB4lsGxbsz81LHb7xYSlZ/Ir/8tUXqINZrNJr+6yTCPL9c2Yei5gk+y/+9+6LPL
- JVGw==
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1iKUvP-000082-0h
+ for qemu-arm@nongnu.org; Tue, 15 Oct 2019 18:04:15 -0400
+Received: by mail-pl1-x644.google.com with SMTP id d22so10233356pll.7
+ for <qemu-arm@nongnu.org>; Tue, 15 Oct 2019 15:04:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=WlM9qJ26FVCtq2jMelepxWIYCn2U4CiSRTZw+YpUCb8=;
+ b=e+o7Flo/RQIdkm3zHprASXlgV+xKalpnNuUy66Cg4pWH2jsaB12eTKbyOX1XHcS2RW
+ aglfuAnOOkt2Izir/zLe5YrkGtMeLQd0K6LjUBMnwW2lWDPOwtyOhXStbVpJInUVHubz
+ UzRH8F/z3uL6Ml1nqWUAe5sSYdk8qwr3gY3fSkGCmYFx/LzlTI4KskfJzgWOZ7QxHbx+
+ pyBIrziISb8v/QfN8zTxKdxtNYH563nJkGhDr9N8HAeHV/dCotuNcsQ51vEi6BDkIBvQ
+ 5/e9+arnYRUOGoXS89fvKEqcF0caGde7VzBbMwA2JsP9O1KpBdn4nFW3P59zv1KZg6E3
+ VXdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=6UstkcjxI+4z5rFiL+3+y+IKkqZJcL3HhwST2wcN60Y=;
- b=Pm8tcWJoCl8nmkN+BS2zUiH584XU00GJV4s8gMAHc0r5YcHNBPqQB+In5LFIAI/71i
- 8IvotfRbFDbcML09OlWiFyKyexPwR2Vqa402DyI9kqONJot76YqBTnzytp0JN+XLBq0p
- uZRjM3p+5k2I0WHI2+Txd5iTJhF5iVPcbTeTDiJiit/x3HGTWWPhkedSfMwxUvdJ9VZ8
- wpFDNF/gAA12+Hu2DN2OklEMByusIJKNlZ/OP0qBdPWRsWfz3p9D53tzMb3XXsVnTeUt
- d9/L5wTR2fDi56EM1nkdzijUzvXUmRGSwFGgobc7CChL7vl8uYllrWBrbZJwfpty9jts
- /Rlw==
-X-Gm-Message-State: APjAAAUdXKoYS1W09vJNeQPJer7YpehrFtLJWhocxolflTm5UKM0Uc6O
- N26ZTGvL1XIRWrThXLrRbS8mmcPHWyj2TdwDag==
-X-Received: by 2002:a02:9102:: with SMTP id a2mr43254770jag.108.1571171998572; 
- Tue, 15 Oct 2019 13:39:58 -0700 (PDT)
-MIME-Version: 1.0
-References: <20191011134744.2477-1-richard.henderson@linaro.org>
-In-Reply-To: <20191011134744.2477-1-richard.henderson@linaro.org>
-From: Evgenii Stepanov <eugeni.stepanov@gmail.com>
-Date: Tue, 15 Oct 2019 13:39:47 -0700
-Message-ID: <CABMLtrhb2n3WbpROs0Qa9hFBObom0Qm60t2nioOyWTtgbpu7HA@mail.gmail.com>
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=WlM9qJ26FVCtq2jMelepxWIYCn2U4CiSRTZw+YpUCb8=;
+ b=YCFtrXM9Lj2woyWN+L1CDdJ+GTKc5KAChghiz+QHotEyzxcw850BoB0xmRO2OH9E7E
+ adYB5Q+CW7AWtsR9StVj/9JkTEfYrvVWU2GqVM6/gjDoJy2uJDXlZkoYwpbymJgca6SI
+ yxqZ163fDwnxAnIoq62MWuQxijmu8iDjBBd2Y6o6cZM4U2byttAWHucHp1QTSV62ZWtp
+ 7/fiTmlEEHipM8fJopSNhq47/gRSj/p/TCskFBBgHu343mTZiEiNo8pwuhsL6hWUya2L
+ Rp+qKADVxDe1JVjJdmIlPnUQpOMxianTGvwz/FXCiuwzjfMnPlYMZZ/km57Vzyr3Dee9
+ pmoA==
+X-Gm-Message-State: APjAAAX+I7S4oiabRw/iAueJLhU51zy7Y4lGwhdM5vQdvN4OmT40ZSkb
+ NWkKW8lrEx4IYBspEp8XUlsGDWFWahs=
+X-Received: by 2002:a17:902:bd47:: with SMTP id
+ b7mr3491572plx.124.1571177053361; 
+ Tue, 15 Oct 2019 15:04:13 -0700 (PDT)
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id a13sm33727661pfg.10.2019.10.15.15.04.11
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 15 Oct 2019 15:04:12 -0700 (PDT)
 Subject: Re: [PATCH v5 00/22] target/arm: Implement ARMv8.5-MemTag, system mode
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: multipart/mixed; boundary="000000000000dbba7a0594f8fc7a"
+To: Evgenii Stepanov <eugeni.stepanov@gmail.com>
+References: <20191011134744.2477-1-richard.henderson@linaro.org>
+ <CABMLtrhb2n3WbpROs0Qa9hFBObom0Qm60t2nioOyWTtgbpu7HA@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <3d53c538-9725-18a8-079f-de490ed586a5@linaro.org>
+Date: Tue, 15 Oct 2019 15:04:10 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
+MIME-Version: 1.0
+In-Reply-To: <CABMLtrhb2n3WbpROs0Qa9hFBObom0Qm60t2nioOyWTtgbpu7HA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::d44
-X-BeenThere: qemu-devel@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::644
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 67euZ/mmO1iB
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /C6uf0+Irpmx
 
---000000000000dbba7a0594f8fc7a
-Content-Type: text/plain; charset="UTF-8"
+On 10/15/19 1:39 PM, Evgenii Stepanov wrote:
+> Hi,
+> 
+> please find attached three random fixes for instruction translation
+> and one for syscall emulation.
 
-Hi,
+Thanks for the patches.
 
-please find attached three random fixes for instruction translation
-and one for syscall emulation.
+> @@ -2763,7 +2763,8 @@ static void disas_ldst_pair
+>          return;
+>      }
+>  
+> -    offset <<= size;
+> +    // STGP offset is 16-scaled.
+> +    offset <<= (size + set_tag);
 
-On Fri, Oct 11, 2019 at 6:48 AM Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> This is an update of the v4 patch from March.
->
-> I believe I've fixed the address space issues that Peter noticed.
-> If the board model does not supply tag memory, then I downgrade
-> the cpu support to "instructions only" (id_aa64pfr1.mte == 1),
-> which does not allow tag memory access to be enabled in the cpu.
->
-> I did not update the arm_hcr_el2_eff comment re ARMv8.4, because
-> I have not done a complete audit of all of the v8.5 bits.
->
-> The hacky kernel testing patch has needed some updates since March.
-> The following applies to v5.4-rc2.
->
->
-> r~
->
->
-> Richard Henderson (22):
->   target/arm: Add MTE_ACTIVE to tb_flags
->   target/arm: Add regime_has_2_ranges
->   target/arm: Add MTE system registers
->   target/arm: Add helper_mte_check{1,2,3}
->   target/arm: Suppress tag check for sp+offset
->   target/arm: Implement the IRG instruction
->   target/arm: Implement ADDG, SUBG instructions
->   target/arm: Implement the GMI instruction
->   target/arm: Implement the SUBP instruction
->   target/arm: Define arm_cpu_do_unaligned_access for CONFIG_USER_ONLY
->   target/arm: Implement LDG, STG, ST2G instructions
->   target/arm: Implement the STGP instruction
->   target/arm: Implement the LDGM and STGM instructions
->   target/arm: Implement the access tag cache flushes
->   target/arm: Clean address for DC ZVA
->   target/arm: Implement data cache set allocation tags
->   target/arm: Set PSTATE.TCO on exception entry
->   target/arm: Enable MTE
->   target/arm: Cache the Tagged bit for a page in MemTxAttrs
->   target/arm: Create tagged ram when MTE is enabled
->   target/arm: Add mmu indexes for tag memory
->   target/arm: Add allocation tag storage for system mode
->
->  target/arm/cpu-param.h     |   2 +-
->  target/arm/cpu.h           |  37 ++-
->  target/arm/helper-a64.h    |  17 ++
->  target/arm/internals.h     |  45 +++
->  target/arm/translate.h     |   2 +
->  hw/arm/virt.c              |  54 ++++
->  target/arm/cpu.c           |  63 +++-
->  target/arm/cpu64.c         |   1 +
->  target/arm/helper.c        | 277 ++++++++++++++---
->  target/arm/mte_helper.c    | 601 +++++++++++++++++++++++++++++++++++++
->  target/arm/tlb_helper.c    |   3 +-
->  target/arm/translate-a64.c | 342 ++++++++++++++++++---
->  target/arm/Makefile.objs   |   1 +
->  13 files changed, 1345 insertions(+), 100 deletions(-)
->  create mode 100644 target/arm/mte_helper.c
->
-> --- kernel patch
->
-> diff --git a/arch/arm64/include/asm/cpucaps.h b/arch/arm64/include/asm/cpucaps.h
-> index f19fe4b9acc4..ee6b7f387a9a 100644
-> --- a/arch/arm64/include/asm/cpucaps.h
-> +++ b/arch/arm64/include/asm/cpucaps.h
-> @@ -52,7 +52,8 @@
->  #define ARM64_HAS_IRQ_PRIO_MASKING             42
->  #define ARM64_HAS_DCPODP                       43
->  #define ARM64_WORKAROUND_1463225               44
-> +#define ARM64_HAS_MTE                          45
->
-> -#define ARM64_NCAPS                            45
-> +#define ARM64_NCAPS                            46
->
->  #endif /* __ASM_CPUCAPS_H */
-> diff --git a/arch/arm64/include/asm/kvm_arm.h b/arch/arm64/include/asm/kvm_arm.h
-> index ddf9d762ac62..5825130bd8eb 100644
-> --- a/arch/arm64/include/asm/kvm_arm.h
-> +++ b/arch/arm64/include/asm/kvm_arm.h
-> @@ -12,6 +12,7 @@
->  #include <asm/types.h>
->
->  /* Hyp Configuration Register (HCR) bits */
-> +#define HCR_ATA                (UL(1) << 56)
->  #define HCR_FWB                (UL(1) << 46)
->  #define HCR_API                (UL(1) << 41)
->  #define HCR_APK                (UL(1) << 40)
-> @@ -78,8 +79,8 @@
->                          HCR_AMO | HCR_SWIO | HCR_TIDCP | HCR_RW | HCR_TLOR | \
->                          HCR_FMO | HCR_IMO)
->  #define HCR_VIRT_EXCP_MASK (HCR_VSE | HCR_VI | HCR_VF)
-> -#define HCR_HOST_NVHE_FLAGS (HCR_RW | HCR_API | HCR_APK)
-> -#define HCR_HOST_VHE_FLAGS (HCR_RW | HCR_TGE | HCR_E2H)
-> +#define HCR_HOST_NVHE_FLAGS (HCR_RW | HCR_API | HCR_APK | HCR_ATA)
-> +#define HCR_HOST_VHE_FLAGS (HCR_RW | HCR_TGE | HCR_E2H | HCR_ATA)
->
->  /* TCR_EL2 Registers bits */
->  #define TCR_EL2_RES1           ((1 << 31) | (1 << 23))
-> diff --git a/arch/arm64/include/asm/sysreg.h b/arch/arm64/include/asm/sysreg.h
-> index 972d196c7714..2a65831f6e0f 100644
-> --- a/arch/arm64/include/asm/sysreg.h
-> +++ b/arch/arm64/include/asm/sysreg.h
-> @@ -482,6 +482,7 @@
->
->  /* Common SCTLR_ELx flags. */
->  #define SCTLR_ELx_DSSBS        (BIT(44))
-> +#define SCTLR_ELx_ATA  (BIT(43))
->  #define SCTLR_ELx_ENIA (BIT(31))
->  #define SCTLR_ELx_ENIB (BIT(30))
->  #define SCTLR_ELx_ENDA (BIT(27))
-> @@ -510,6 +511,7 @@
->  #endif
->
->  /* SCTLR_EL1 specific flags. */
-> +#define SCTLR_EL1_ATA0         (BIT(42))
->  #define SCTLR_EL1_UCI          (BIT(26))
->  #define SCTLR_EL1_E0E          (BIT(24))
->  #define SCTLR_EL1_SPAN         (BIT(23))
-> @@ -598,6 +600,7 @@
->  #define ID_AA64PFR0_EL0_32BIT_64BIT    0x2
->
->  /* id_aa64pfr1 */
-> +#define ID_AA64PFR1_MTE_SHIFT          8
->  #define ID_AA64PFR1_SSBS_SHIFT         4
->
->  #define ID_AA64PFR1_SSBS_PSTATE_NI     0
-> diff --git a/arch/arm64/kernel/cpufeature.c b/arch/arm64/kernel/cpufeature.c
-> index cabebf1a7976..6a122ed7f76b 100644
-> --- a/arch/arm64/kernel/cpufeature.c
-> +++ b/arch/arm64/kernel/cpufeature.c
-> @@ -171,6 +171,7 @@ static const struct arm64_ftr_bits ftr_id_aa64pfr0[] = {
->  };
->
->  static const struct arm64_ftr_bits ftr_id_aa64pfr1[] = {
-> +       ARM64_FTR_BITS(FTR_VISIBLE, FTR_STRICT, FTR_LOWER_SAFE, ID_AA64PFR1_MTE_SHIFT, 4, 0),
->         ARM64_FTR_BITS(FTR_VISIBLE, FTR_STRICT, FTR_LOWER_SAFE, ID_AA64PFR1_SSBS_SHIFT, 4, ID_AA64PFR1_SSBS_PSTATE_NI),
->         ARM64_FTR_END,
->  };
-> @@ -1261,6 +1262,11 @@ static bool can_use_gic_priorities(const struct arm64_cpu_capabilities *entry,
->  }
->  #endif
->
-> +static void cpu_enable_mte(struct arm64_cpu_capabilities const *cap)
-> +{
-> +       sysreg_clear_set(sctlr_el1, 0, SCTLR_ELx_ATA | SCTLR_EL1_ATA0);
+Right.  I'll fix this with
+
+    offset <<= (set_tag ? LOG2_TAG_GRANULE : size);
+
+which I think is a bit clearer.
+
+> @@ -3611,7 +3611,7 @@ static void disas_ldst_tag
+>      int rt = extract32(insn, 0, 5);
+>      int rn = extract32(insn, 5, 5);
+>      uint64_t offset = sextract64(insn, 12, 9) << LOG2_TAG_GRANULE;
+> -    int op2 = extract32(insn, 10, 3);
+> +    int op2 = extract32(insn, 10, 2);
+
+Yep.
+
+> @@ -3679,7 +3679,7 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
+>      }
+>  
+>      dirty_addr = read_cpu_reg_sp(s, rn, true);
+> -    if (index <= 0) {
+> +    if (index >= 0) {
+>          /* pre-index or signed offset */
+>          tcg_gen_addi_i64(dirty_addr, dirty_addr, offset);
+>      }
+> @@ -3726,7 +3726,7 @@ static void disas_ldst_tag(DisasContext *s, uint32_t insn)
+>  
+>      if (index != 0) {
+>          /* pre-index or post-index */
+> -        if (index > 0) {
+> +        if (index < 0) {
+>              /* post-index */
+>              tcg_gen_addi_i64(dirty_addr, dirty_addr, offset);
+>          }
+
+Yep.
+
+Ideally there'd be a kernel patch for MTE that works well enough to run RISU on
+the fast model, and I'd be able to compare results.  I suppose in the meantime
+more unit testing will have to do.
+
+> +++ b/linux-user/qemu.h
+> @@ -456,8 +456,16 @@ extern unsigned long guest_stack_size;
+>  #define VERIFY_READ 0
+>  #define VERIFY_WRITE 1 /* implies read access */
+>  
+> +static inline abi_ulong untagged_addr(abi_ulong addr) {
+> +#if TARGET_ABI_BITS == 64
+> +    addr &= (((abi_ulong)-1) >> 8);
+> +#endif
+> +    return addr;
 > +}
-> +
->  static const struct arm64_cpu_capabilities arm64_features[] = {
->         {
->                 .desc = "GIC system register CPU interface",
-> @@ -1561,6 +1567,17 @@ static const struct arm64_cpu_capabilities arm64_features[] = {
->                 .min_field_value = 1,
->         },
->  #endif
-> +       {
-> +               .desc = "Memory Tagging",
-> +               .capability = ARM64_HAS_MTE,
-> +               .type = ARM64_CPUCAP_SYSTEM_FEATURE,
-> +               .matches = has_cpuid_feature,
-> +               .sys_reg = SYS_ID_AA64PFR1_EL1,
-> +               .field_pos = ID_AA64PFR1_MTE_SHIFT,
-> +               .sign = FTR_UNSIGNED,
-> +               .min_field_value = 2,
-> +               .cpu_enable = cpu_enable_mte,
-> +       },
->         {},
->  };
->
-> diff --git a/arch/arm64/mm/proc.S b/arch/arm64/mm/proc.S
-> index a1e0592d1fbc..32cfa35195ae 100644
-> --- a/arch/arm64/mm/proc.S
-> +++ b/arch/arm64/mm/proc.S
-> @@ -424,14 +424,14 @@ ENTRY(__cpu_setup)
->          *   DEVICE_nGnRE       001     00000100
->          *   DEVICE_GRE         010     00001100
->          *   NORMAL_NC          011     01000100
-> -        *   NORMAL             100     11111111
-> +        *   NORMAL             100     11110000 (Tag)
->          *   NORMAL_WT          101     10111011
->          */
->         ldr     x5, =MAIR(0x00, MT_DEVICE_nGnRnE) | \
->                      MAIR(0x04, MT_DEVICE_nGnRE) | \
->                      MAIR(0x0c, MT_DEVICE_GRE) | \
->                      MAIR(0x44, MT_NORMAL_NC) | \
-> -                    MAIR(0xff, MT_NORMAL) | \
-> +                    MAIR(0xf0, MT_NORMAL) | \
->                      MAIR(0xbb, MT_NORMAL_WT)
->         msr     mair_el1, x5
->         /*
->
-> --- mte smoke test
->
-> /*
->  * Memory tagging, basic pass cases.
->  */
->
-> #include <stdio.h>
-> #include <assert.h>
-> #include <sys/mman.h>
->
-> asm(".arch armv8.5-a+memtag");
->
-> int data[16 / sizeof(int)] __attribute__((aligned(16)));
->
-> int main(int ac, char **av)
-> {
->     int *p0 = data;
->     int *p1, *p2;
->     long c;
->
->     if (mlock(data, sizeof(data)) < 0) {
->         perror("mlock");
->         return 1;
->     }
->
->     asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(1));
->     assert(p1 != p0);
->     asm("subp %0,%1,%2" : "=r"(c) : "r"(p0), "r"(p1));
->     assert(c == 0);
->
->     asm("stg %0, [%0]" : : "r"(p1));
->     asm("ldg %0, [%1]" : "=r"(p2) : "r"(p0), "0"(p0));
->     assert(p1 == p2);
->
->     return 0;
-> }
->
->
 
---000000000000dbba7a0594f8fc7a
-Content-Type: text/x-patch; charset="US-ASCII"; 
-	name="0004-Fix-pre-post-index-confusion-in-disas_ldst_tag.patch"
-Content-Disposition: attachment; 
-	filename="0004-Fix-pre-post-index-confusion-in-disas_ldst_tag.patch"
-Content-Transfer-Encoding: base64
-Content-ID: <f_k1sb817o0>
-X-Attachment-Id: f_k1sb817o0
+At minimum this needs TARGET_AARCH64, because this kernel feature doesn't apply
+to other targets.  But I'll see if I can do this such that it doesn't put
+target-specific stuff in linux-user/qemu.h.
 
-RnJvbSA3ZGZlM2Y1M2JjNjA2ZDJjNWJiODFlNTgyOGU2Y2YzMjIyNWY2YjcyIE1vbiBTZXAgMTcg
-MDA6MDA6MDAgMjAwMQpGcm9tOiBFdmdlbmlpIFN0ZXBhbm92IDxldWdlbmlzQGdvb2dsZS5jb20+
-CkRhdGU6IFR1ZSwgMjcgQXVnIDIwMTkgMTY6MTQ6MzcgLTA3MDAKU3ViamVjdDogW1BBVENIIDQv
-NF0gRml4IHByZS9wb3N0LWluZGV4IGNvbmZ1c2lvbiBpbiBkaXNhc19sZHN0X3RhZy4KCi0tLQog
-dGFyZ2V0L2FybS90cmFuc2xhdGUtYTY0LmMgfCA0ICsrLS0KIDEgZmlsZSBjaGFuZ2VkLCAyIGlu
-c2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvdGFyZ2V0L2FybS90cmFu
-c2xhdGUtYTY0LmMgYi90YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQuYwppbmRleCBhODViYWUxZjI3
-Li41NzI4YjY4Y2NjIDEwMDY0NAotLS0gYS90YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQuYworKysg
-Yi90YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQuYwpAQCAtMzY3OSw3ICszNjc5LDcgQEAgc3RhdGlj
-IHZvaWQgZGlzYXNfbGRzdF90YWcoRGlzYXNDb250ZXh0ICpzLCB1aW50MzJfdCBpbnNuKQogICAg
-IH0KIAogICAgIGRpcnR5X2FkZHIgPSByZWFkX2NwdV9yZWdfc3Aocywgcm4sIHRydWUpOwotICAg
-IGlmIChpbmRleCA8PSAwKSB7CisgICAgaWYgKGluZGV4ID49IDApIHsKICAgICAgICAgLyogcHJl
-LWluZGV4IG9yIHNpZ25lZCBvZmZzZXQgKi8KICAgICAgICAgdGNnX2dlbl9hZGRpX2k2NChkaXJ0
-eV9hZGRyLCBkaXJ0eV9hZGRyLCBvZmZzZXQpOwogICAgIH0KQEAgLTM3MjYsNyArMzcyNiw3IEBA
-IHN0YXRpYyB2b2lkIGRpc2FzX2xkc3RfdGFnKERpc2FzQ29udGV4dCAqcywgdWludDMyX3QgaW5z
-bikKIAogICAgIGlmIChpbmRleCAhPSAwKSB7CiAgICAgICAgIC8qIHByZS1pbmRleCBvciBwb3N0
-LWluZGV4ICovCi0gICAgICAgIGlmIChpbmRleCA+IDApIHsKKyAgICAgICAgaWYgKGluZGV4IDwg
-MCkgewogICAgICAgICAgICAgLyogcG9zdC1pbmRleCAqLwogICAgICAgICAgICAgdGNnX2dlbl9h
-ZGRpX2k2NChkaXJ0eV9hZGRyLCBkaXJ0eV9hZGRyLCBvZmZzZXQpOwogICAgICAgICB9Ci0tIAoy
-LjIzLjAuNzAwLmc1NmNmNzY3YmRiLWdvb2cKCg==
---000000000000dbba7a0594f8fc7a
-Content-Type: text/x-patch; charset="US-ASCII"; 
-	name="0003-Fix-wrong-field-size-in-disas_ldst_tag.patch"
-Content-Disposition: attachment; 
-	filename="0003-Fix-wrong-field-size-in-disas_ldst_tag.patch"
-Content-Transfer-Encoding: base64
-Content-ID: <f_k1sb818j1>
-X-Attachment-Id: f_k1sb818j1
 
-RnJvbSAxZWNmNGY3YmFlZGZlMmRlODBhOTdjNDA4ZmEyY2M2NGNjZDk5ZGJlIE1vbiBTZXAgMTcg
-MDA6MDA6MDAgMjAwMQpGcm9tOiBFdmdlbmlpIFN0ZXBhbm92IDxldWdlbmlzQGdvb2dsZS5jb20+
-CkRhdGU6IFR1ZSwgMjcgQXVnIDIwMTkgMTY6MTM6MjYgLTA3MDAKU3ViamVjdDogW1BBVENIIDMv
-NF0gRml4IHdyb25nIGZpZWxkIHNpemUgaW4gZGlzYXNfbGRzdF90YWcuCgotLS0KIHRhcmdldC9h
-cm0vdHJhbnNsYXRlLWE2NC5jIHwgMiArLQogMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCsp
-LCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEvdGFyZ2V0L2FybS90cmFuc2xhdGUtYTY0LmMg
-Yi90YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQuYwppbmRleCAwYTE2ODUwNmQyLi5hODViYWUxZjI3
-IDEwMDY0NAotLS0gYS90YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQuYworKysgYi90YXJnZXQvYXJt
-L3RyYW5zbGF0ZS1hNjQuYwpAQCAtMzYxMSw3ICszNjExLDcgQEAgc3RhdGljIHZvaWQgZGlzYXNf
-bGRzdF90YWcoRGlzYXNDb250ZXh0ICpzLCB1aW50MzJfdCBpbnNuKQogICAgIGludCBydCA9IGV4
-dHJhY3QzMihpbnNuLCAwLCA1KTsKICAgICBpbnQgcm4gPSBleHRyYWN0MzIoaW5zbiwgNSwgNSk7
-CiAgICAgdWludDY0X3Qgb2Zmc2V0ID0gc2V4dHJhY3Q2NChpbnNuLCAxMiwgOSkgPDwgTE9HMl9U
-QUdfR1JBTlVMRTsKLSAgICBpbnQgb3AyID0gZXh0cmFjdDMyKGluc24sIDEwLCAzKTsKKyAgICBp
-bnQgb3AyID0gZXh0cmFjdDMyKGluc24sIDEwLCAyKTsKICAgICBpbnQgb3AxID0gZXh0cmFjdDMy
-KGluc24sIDIyLCAyKTsKICAgICBib29sIGlzX2xvYWQgPSBmYWxzZSwgaXNfcGFpciA9IGZhbHNl
-LCBpc196ZXJvID0gZmFsc2UsIGlzX211bHQgPSBmYWxzZTsKICAgICBpbnQgaW5kZXggPSAwOwot
-LSAKMi4yMy4wLjcwMC5nNTZjZjc2N2JkYi1nb29nCgo=
---000000000000dbba7a0594f8fc7a
-Content-Type: text/x-patch; charset="US-ASCII"; name="0001-Fix-STGP-offset-scale.patch"
-Content-Disposition: attachment; filename="0001-Fix-STGP-offset-scale.patch"
-Content-Transfer-Encoding: base64
-Content-ID: <f_k1sb818l3>
-X-Attachment-Id: f_k1sb818l3
-
-RnJvbSBhOGEwMjQyMDJkMWJhODAxNDJlYWNjMDlkYWIxMGM3NzgwODc0NTgyIE1vbiBTZXAgMTcg
-MDA6MDA6MDAgMjAwMQpGcm9tOiBFdmdlbmlpIFN0ZXBhbm92IDxldWdlbmlzQGdvb2dsZS5jb20+
-CkRhdGU6IFRodSwgMjIgQXVnIDIwMTkgMTg6MDU6MzQgLTA3MDAKU3ViamVjdDogW1BBVENIIDEv
-NF0gRml4IFNUR1Agb2Zmc2V0IHNjYWxlLgoKLS0tCiB0YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQu
-YyB8IDMgKystCiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0p
-CgpkaWZmIC0tZ2l0IGEvdGFyZ2V0L2FybS90cmFuc2xhdGUtYTY0LmMgYi90YXJnZXQvYXJtL3Ry
-YW5zbGF0ZS1hNjQuYwppbmRleCA5YTU1NDg1NmU5Li4wYTE2ODUwNmQyIDEwMDY0NAotLS0gYS90
-YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQuYworKysgYi90YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQu
-YwpAQCAtMjc2Myw3ICsyNzYzLDggQEAgc3RhdGljIHZvaWQgZGlzYXNfbGRzdF9wYWlyKERpc2Fz
-Q29udGV4dCAqcywgdWludDMyX3QgaW5zbikKICAgICAgICAgcmV0dXJuOwogICAgIH0KIAotICAg
-IG9mZnNldCA8PD0gc2l6ZTsKKyAgICAvLyBTVEdQIG9mZnNldCBpcyAxNi1zY2FsZWQuCisgICAg
-b2Zmc2V0IDw8PSAoc2l6ZSArIHNldF90YWcpOwogCiAgICAgaWYgKHJuID09IDMxKSB7CiAgICAg
-ICAgIGdlbl9jaGVja19zcF9hbGlnbm1lbnQocyk7Ci0tIAoyLjIzLjAuNzAwLmc1NmNmNzY3YmRi
-LWdvb2cKCg==
---000000000000dbba7a0594f8fc7a
-Content-Type: text/x-patch; charset="US-ASCII"; 
-	name="0002-Untag-userspace-addresses-in-syscall-emulation.patch"
-Content-Disposition: attachment; 
-	filename="0002-Untag-userspace-addresses-in-syscall-emulation.patch"
-Content-Transfer-Encoding: base64
-Content-ID: <f_k1sb818k2>
-X-Attachment-Id: f_k1sb818k2
-
-RnJvbSBiZGUzMDA3Y2JlMzNjY2JiYmE0NjQ4YzdlZTA5MzUzNGJlMDhjY2QwIE1vbiBTZXAgMTcg
-MDA6MDA6MDAgMjAwMQpGcm9tOiBFdmdlbmlpIFN0ZXBhbm92IDxldWdlbmlzQGdvb2dsZS5jb20+
-CkRhdGU6IFR1ZSwgMjcgQXVnIDIwMTkgMTY6MTI6MzggLTA3MDAKU3ViamVjdDogW1BBVENIIDIv
-NF0gVW50YWcgdXNlcnNwYWNlIGFkZHJlc3NlcyBpbiBzeXNjYWxsIGVtdWxhdGlvbi4KCi0tLQog
-bGludXgtdXNlci9xZW11LmggfCAxMyArKysrKysrKysrKy0tCiAxIGZpbGUgY2hhbmdlZCwgMTEg
-aW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9saW51eC11c2VyL3Fl
-bXUuaCBiL2xpbnV4LXVzZXIvcWVtdS5oCmluZGV4IGFhYzAzMzQ2MjcuLmE4ZjBhOGVlZTkgMTAw
-NjQ0Ci0tLSBhL2xpbnV4LXVzZXIvcWVtdS5oCisrKyBiL2xpbnV4LXVzZXIvcWVtdS5oCkBAIC00
-NTYsOCArNDU2LDE2IEBAIGV4dGVybiB1bnNpZ25lZCBsb25nIGd1ZXN0X3N0YWNrX3NpemU7CiAj
-ZGVmaW5lIFZFUklGWV9SRUFEIDAKICNkZWZpbmUgVkVSSUZZX1dSSVRFIDEgLyogaW1wbGllcyBy
-ZWFkIGFjY2VzcyAqLwogCitzdGF0aWMgaW5saW5lIGFiaV91bG9uZyB1bnRhZ2dlZF9hZGRyKGFi
-aV91bG9uZyBhZGRyKSB7CisjaWYgVEFSR0VUX0FCSV9CSVRTID09IDY0CisgICAgYWRkciAmPSAo
-KChhYmlfdWxvbmcpLTEpID4+IDgpOworI2VuZGlmCisgICAgcmV0dXJuIGFkZHI7Cit9CisKIHN0
-YXRpYyBpbmxpbmUgaW50IGFjY2Vzc19vayhpbnQgdHlwZSwgYWJpX3Vsb25nIGFkZHIsIGFiaV91
-bG9uZyBzaXplKQogeworICAgIGFkZHIgPSB1bnRhZ2dlZF9hZGRyKGFkZHIpOwogICAgIHJldHVy
-biBndWVzdF9hZGRyX3ZhbGlkKGFkZHIpICYmCiAgICAgICAgICAgIChzaXplID09IDAgfHwgZ3Vl
-c3RfYWRkcl92YWxpZChhZGRyICsgc2l6ZSAtIDEpKSAmJgogICAgICAgICAgICBwYWdlX2NoZWNr
-X3JhbmdlKCh0YXJnZXRfdWxvbmcpYWRkciwgc2l6ZSwKQEAgLTYwMSw2ICs2MDksNyBAQCBzdGF0
-aWMgaW5saW5lIHZvaWQgKmxvY2tfdXNlcihpbnQgdHlwZSwgYWJpX3Vsb25nIGd1ZXN0X2FkZHIs
-IGxvbmcgbGVuLCBpbnQgY29weQogewogICAgIGlmICghYWNjZXNzX29rKHR5cGUsIGd1ZXN0X2Fk
-ZHIsIGxlbikpCiAgICAgICAgIHJldHVybiBOVUxMOworICAgIGd1ZXN0X2FkZHIgPSB1bnRhZ2dl
-ZF9hZGRyKGd1ZXN0X2FkZHIpOwogI2lmZGVmIERFQlVHX1JFTUFQCiAgICAgewogICAgICAgICB2
-b2lkICphZGRyOwpAQCAtNjQyLDcgKzY1MSw3IEBAIGFiaV9sb25nIHRhcmdldF9zdHJsZW4oYWJp
-X3Vsb25nIGdhZGRyKTsKIHN0YXRpYyBpbmxpbmUgdm9pZCAqbG9ja191c2VyX3N0cmluZyhhYmlf
-dWxvbmcgZ3Vlc3RfYWRkcikKIHsKICAgICBhYmlfbG9uZyBsZW47Ci0gICAgbGVuID0gdGFyZ2V0
-X3N0cmxlbihndWVzdF9hZGRyKTsKKyAgICBsZW4gPSB0YXJnZXRfc3RybGVuKHVudGFnZ2VkX2Fk
-ZHIoZ3Vlc3RfYWRkcikpOwogICAgIGlmIChsZW4gPCAwKQogICAgICAgICByZXR1cm4gTlVMTDsK
-ICAgICByZXR1cm4gbG9ja191c2VyKFZFUklGWV9SRUFELCBndWVzdF9hZGRyLCAobG9uZykobGVu
-ICsgMSksIDEpOwpAQCAtNjUwLDcgKzY1OSw3IEBAIHN0YXRpYyBpbmxpbmUgdm9pZCAqbG9ja191
-c2VyX3N0cmluZyhhYmlfdWxvbmcgZ3Vlc3RfYWRkcikKIAogLyogSGVscGVyIG1hY3JvcyBmb3Ig
-bG9ja2luZy91bmxvY2tpbmcgYSB0YXJnZXQgc3RydWN0LiAgKi8KICNkZWZpbmUgbG9ja191c2Vy
-X3N0cnVjdCh0eXBlLCBob3N0X3B0ciwgZ3Vlc3RfYWRkciwgY29weSkJXAotICAgIChob3N0X3B0
-ciA9IGxvY2tfdXNlcih0eXBlLCBndWVzdF9hZGRyLCBzaXplb2YoKmhvc3RfcHRyKSwgY29weSkp
-CisgICAgKGhvc3RfcHRyID0gbG9ja191c2VyKHR5cGUsIHVudGFnZ2VkX2FkZHIoZ3Vlc3RfYWRk
-ciksIHNpemVvZigqaG9zdF9wdHIpLCBjb3B5KSkKICNkZWZpbmUgdW5sb2NrX3VzZXJfc3RydWN0
-KGhvc3RfcHRyLCBndWVzdF9hZGRyLCBjb3B5KQkJXAogICAgIHVubG9ja191c2VyKGhvc3RfcHRy
-LCBndWVzdF9hZGRyLCAoY29weSkgPyBzaXplb2YoKmhvc3RfcHRyKSA6IDApCiAKLS0gCjIuMjMu
-MC43MDAuZzU2Y2Y3NjdiZGItZ29vZwoK
---000000000000dbba7a0594f8fc7a--
+r~

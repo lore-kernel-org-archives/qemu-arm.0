@@ -1,384 +1,472 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp438740wrm;
-        Wed, 16 Oct 2019 21:47:38 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwSeF6A24un18YNzeBfa/Iv37nQ/Nj4N5Mb3waEgJn66aj09EP5B5eeEGW5lZ2zp7S0edNP
-X-Received: by 2002:a37:a956:: with SMTP id s83mr1486561qke.341.1571287658059;
-        Wed, 16 Oct 2019 21:47:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571287658; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp6250766wrm;
+        Tue, 15 Oct 2019 13:41:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqx7gfftDEbGJdrGrTwKuKh7LXE2m16HMhTnl5UTvXFwbZ0bwoVCscuQFuAoyCfk8Pdx9Xb7
+X-Received: by 2002:a17:906:538a:: with SMTP id g10mr35673348ejo.94.1571172097699;
+        Tue, 15 Oct 2019 13:41:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571172097; cv=none;
         d=google.com; s=arc-20160816;
-        b=d5Qnibno5eEOH+UjsSZjWH8J1BylTF1BgVq83BHOGOjjuBlsnTBWMba2TO/R35bMYe
-         bVoZmP/sR7zf3nAuX2AgkYoA98ADAq61rLj1h1w/FZfmhM/IAMVwStrMk7SuC0/6TKwo
-         QGFcO9ujEf8yt/lhZW+bv0h9ND6GS+VpJxcuUvrXQY907huuWU6JkQCE3PUOogfASPpT
-         8MDPsbjWGkQoafgmGlnaSFwss/OQBcHvpOzzvKTedyn5QBW1q523hUt8+mfzKRERmwKE
-         YF0Wml3U4f2OeUt4W1F7hhgoKqzmq5S5gwRnygfWHuac70bbpj2vJET3fY9IRgalDYpU
-         pyog==
+        b=z2qXV0biuCToJ07dmlKQEftHxhB5RPXujMktlG9nUfZwjTwx37Z3Ka3VxEQdZF+0GE
+         xEVh3rCz+ipuNCBZKmRMCGbsBl2xNPyrPsl8xaGIdvt7OnMLoduwyRllAuMXH5o95hJJ
+         Wy9+DFnwW+Ith2j6yPH/lrrlbDLBbEgiFN3e3K00aW2Vh/mRrjxYIwUC3J9neRIt2oop
+         DoEIiisiHp8pCy6tU1MsSodD6ifQQlZJRJP8ck3BFPXMZQ+4jqcptuyWuoW9lF8DUrpQ
+         s4R/13mHY9PkeVOwF1KsDd8nFYcrX+zWRvzf/YIJ6fqpijP3j+5zaYxbsoTXmWiV1BRC
+         6QKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=zOC1XFUB3wi7uYonQZJi3b57G5irg2dMBLyQa/p2Rwg=;
-        b=oLkNHegqzBfCD1/iTqCEAyWOl5lbDVAddyd26ypxHCu8RJwIGTc1sYEGTOSCoD6VU1
-         1ZBR8q+zj6M7ZZmpOGR1Eatq+bVh0mL6+N4yemUxx9E8oNeU8VEL37mjeJ3Wg20LukKQ
-         DTIYhAZoOiIULSg9RjKiHqrWPFiYcViNdFUF5aWrrYFgXngRbSALjZHhb9AB14lR6hM6
-         bqSGGlx1OYsWFt1r0Kx8Cv2rzoVsKfCTIIdbUZTFRAyJQDTSlPyCfTKZ2QX9M/9Q/u+o
-         tea7vD0zskzMRp1C0BsEupabs6udNxlLpMA/n4zUb1hV3rfyaPvZ5ey6zHfLh2GImS1t
-         EqqA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=6UstkcjxI+4z5rFiL+3+y+IKkqZJcL3HhwST2wcN60Y=;
+        b=br1fdcLMxuvHbnGrRNqnL6LWtOrCeb2cLuPed8hR57buRfw3WDTwmBoiYJua9n5Csm
+         9NMcmMATOyeq87Lj2sQYgwLKBi/QmOa292SMKGvBbm/HXf5Q50/AWor2IHp+PS56VIfU
+         OD5BvBORVcHSYLa9L8/idPGNd8rNVKP8XoqLbtR11qFdZDiYtcya536u3kMBgHi+SXd5
+         oSI7pLiVBwcUChfh+yIo5/WvgfI21CnTFbbfqeiwHbRN+KBGujS+sWDr/88ml92X60Af
+         65fwWZUwiVxnNTFnsg/MTwBnbe6ORlTO3xU5pgdRxAUwHtcrWqz1CSxnBXKs+93ZUA4u
+         CTRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=PqasWzus;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mPWAuAYu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q26si1033802qtf.3.2019.10.16.21.47.37
+        by mx.google.com with ESMTPS id s42si14094390edm.292.2019.10.15.13.41.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Oct 2019 21:47:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 15 Oct 2019 13:41:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=PqasWzus;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33330 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mPWAuAYu;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:59030 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iKxhJ-00035U-Dg
-	for alex.bennee@linaro.org; Thu, 17 Oct 2019 00:47:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53501)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iKTdQ-0002HW-C3
+	for alex.bennee@linaro.org; Tue, 15 Oct 2019 16:41:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50607)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1iKxca-0007D2-SU
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 00:42:46 -0400
+ (envelope-from <eugeni.stepanov@gmail.com>) id 1iKTbu-0001I6-GL
+ for qemu-devel@nongnu.org; Tue, 15 Oct 2019 16:40:04 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1iKxcX-000276-Uk
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 00:42:43 -0400
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:43072)
+ (envelope-from <eugeni.stepanov@gmail.com>) id 1iKTbs-0003rh-Df
+ for qemu-devel@nongnu.org; Tue, 15 Oct 2019 16:40:02 -0400
+Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:40531)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1iKxcX-00026Q-Mq
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 00:42:41 -0400
-Received: by mail-pf1-x443.google.com with SMTP id a2so776989pfo.10
- for <qemu-arm@nongnu.org>; Wed, 16 Oct 2019 21:42:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=zOC1XFUB3wi7uYonQZJi3b57G5irg2dMBLyQa/p2Rwg=;
- b=PqasWzusV5n8E3FTj5KAwIup8KIFEElEg4opN7fBG35UMUfAmUVUR4vf7HI8LbR9az
- +uVJBjR6ouG7FVGpCwaI2wl7JIpL+fFUae4OrCaPI0TOIM9GvDk8hcbNcf25owk0iQ7h
- /9QvZ44yAkI5+/Zqbw4sdZUBelVefNdS3hCIndTp7+wv6hmWQF/bkiCnZ+4dEyZq52kV
- SlZPKdgoauQwj9l2kXusIP0Zbx5qrhkL/eBvB3LBrB23JEw2D/lNJQpxBWYlSGh+Pw8y
- 8oj98Xj4TmGucpjiOQlGS/XlUCBwSdMASw2Ffpdm5COMvQ3nQdLj7OwZwYgiX7jm6B+g
- szIw==
+ (Exim 4.71) (envelope-from <eugeni.stepanov@gmail.com>)
+ id 1iKTbs-0003qv-4q; Tue, 15 Oct 2019 16:40:00 -0400
+Received: by mail-io1-xd44.google.com with SMTP id h144so49426784iof.7;
+ Tue, 15 Oct 2019 13:39:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=6UstkcjxI+4z5rFiL+3+y+IKkqZJcL3HhwST2wcN60Y=;
+ b=mPWAuAYu7ZAWCd/hGcrJJ+aXYBqSWItPKxFJkFJenmULJkO5jQRuG2diygjr6gQ1Q8
+ tI3YuVhxmeGChNXs8j7QrOhd4hKLMacntAAloozVMSZkf7OYE7yEqDoE/+skYLEIbDBR
+ 9jjT92PeTRQDdLu+3MNwkpbEfzfF3ol+Z0IVZuyw1O+8fpD00CZM97ip5+EAZNR4Gnqt
+ Cv2U0+YfU/3p4tx+U3GyVYQ8NH8/fEAaR9oZ4ptaWPbZzRAAuLAv9SgWDUAAGlrYuPa8
+ 9X4sZXB4lsGxbsz81LHb7xYSlZ/Ir/8tUXqINZrNJr+6yTCPL9c2Yei5gk+y/+9+6LPL
+ JVGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=zOC1XFUB3wi7uYonQZJi3b57G5irg2dMBLyQa/p2Rwg=;
- b=PhpFYIJ0NxOQgoQgGBKa10SX9W9o9up0o+C1C+R1GQbWlqfZdCOqTLXYvnTdvZ1W0h
- 83samT/90yDdEvGPR1qCpIway2M6lXl1OEGdLnntQGxIUfLZYppss4vI6QeOWtLIYjWF
- aBYlZ+kYeHJI10NKkw2gEJ0dUTwuVfk0Wq5IonVqRpDvx3ttbtefj+3L4d7Hue/l/497
- lrhjkLfxqVJEB9U/Kd7/F/WdYth2s4R4ZYolFnkl/iRT2mABotXgYMAjba6t3FEKFtsK
- fnOh9MGI57Jd37fCxSSnIuj2W9rqgkZG9AXzJadKF/0zvc+fFlZsSG2DZaln/VlpVe0o
- N1Sw==
-X-Gm-Message-State: APjAAAXkVevP4qBcDVYqzALlEihZ5yOc88G/SzLuK55D/yQJ8ehBNrXk
- tIlpUWR1J3uEIVeUWZtxn/5iYQ==
-X-Received: by 2002:a63:e055:: with SMTP id n21mr1852972pgj.411.1571287360556; 
- Wed, 16 Oct 2019 21:42:40 -0700 (PDT)
-Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
- [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id n15sm718923pjt.13.2019.10.16.21.42.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Oct 2019 21:42:39 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 4/4] target/arm: Convert PMULL.8 to gvec
-Date: Wed, 16 Oct 2019 21:42:32 -0700
-Message-Id: <20191017044232.27601-5-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20191017044232.27601-1-richard.henderson@linaro.org>
-References: <20191017044232.27601-1-richard.henderson@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=6UstkcjxI+4z5rFiL+3+y+IKkqZJcL3HhwST2wcN60Y=;
+ b=Pm8tcWJoCl8nmkN+BS2zUiH584XU00GJV4s8gMAHc0r5YcHNBPqQB+In5LFIAI/71i
+ 8IvotfRbFDbcML09OlWiFyKyexPwR2Vqa402DyI9kqONJot76YqBTnzytp0JN+XLBq0p
+ uZRjM3p+5k2I0WHI2+Txd5iTJhF5iVPcbTeTDiJiit/x3HGTWWPhkedSfMwxUvdJ9VZ8
+ wpFDNF/gAA12+Hu2DN2OklEMByusIJKNlZ/OP0qBdPWRsWfz3p9D53tzMb3XXsVnTeUt
+ d9/L5wTR2fDi56EM1nkdzijUzvXUmRGSwFGgobc7CChL7vl8uYllrWBrbZJwfpty9jts
+ /Rlw==
+X-Gm-Message-State: APjAAAUdXKoYS1W09vJNeQPJer7YpehrFtLJWhocxolflTm5UKM0Uc6O
+ N26ZTGvL1XIRWrThXLrRbS8mmcPHWyj2TdwDag==
+X-Received: by 2002:a02:9102:: with SMTP id a2mr43254770jag.108.1571171998572; 
+ Tue, 15 Oct 2019 13:39:58 -0700 (PDT)
+MIME-Version: 1.0
+References: <20191011134744.2477-1-richard.henderson@linaro.org>
+In-Reply-To: <20191011134744.2477-1-richard.henderson@linaro.org>
+From: Evgenii Stepanov <eugeni.stepanov@gmail.com>
+Date: Tue, 15 Oct 2019 13:39:47 -0700
+Message-ID: <CABMLtrhb2n3WbpROs0Qa9hFBObom0Qm60t2nioOyWTtgbpu7HA@mail.gmail.com>
+Subject: Re: [PATCH v5 00/22] target/arm: Implement ARMv8.5-MemTag, system mode
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: multipart/mixed; boundary="000000000000dbba7a0594f8fc7a"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::443
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::d44
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Wy4G55HPu/tB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 67euZ/mmO1iB
 
-We still need two different helpers, since NEON and SVE2 get the
-inputs from different locations within the source vector.  However,
-we can convert both to the same internal form for computation.
+--000000000000dbba7a0594f8fc7a
+Content-Type: text/plain; charset="UTF-8"
 
-The sve2 helper is not used yet, but adding it with this patch
-helps illustrate why the neon changes are helpful.
+Hi,
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/helper-sve.h    |  2 ++
- target/arm/helper.h        |  3 +-
- target/arm/neon_helper.c   | 32 --------------------
- target/arm/translate-a64.c | 27 +++++++++++------
- target/arm/translate.c     | 26 ++++++++---------
- target/arm/vec_helper.c    | 60 ++++++++++++++++++++++++++++++++++++++
- 6 files changed, 95 insertions(+), 55 deletions(-)
+please find attached three random fixes for instruction translation
+and one for syscall emulation.
 
-diff --git a/target/arm/helper-sve.h b/target/arm/helper-sve.h
-index 9e79182ab4..2f47279155 100644
---- a/target/arm/helper-sve.h
-+++ b/target/arm/helper-sve.h
-@@ -1574,3 +1574,5 @@ DEF_HELPER_FLAGS_6(sve_stdd_le_zd, TCG_CALL_NO_WG,
-                    void, env, ptr, ptr, ptr, tl, i32)
- DEF_HELPER_FLAGS_6(sve_stdd_be_zd, TCG_CALL_NO_WG,
-                    void, env, ptr, ptr, ptr, tl, i32)
-+
-+DEF_HELPER_FLAGS_4(sve2_pmull_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-diff --git a/target/arm/helper.h b/target/arm/helper.h
-index d954399b7e..8a8517cf34 100644
---- a/target/arm/helper.h
-+++ b/target/arm/helper.h
-@@ -335,7 +335,6 @@ DEF_HELPER_2(neon_sub_u8, i32, i32, i32)
- DEF_HELPER_2(neon_sub_u16, i32, i32, i32)
- DEF_HELPER_2(neon_mul_u8, i32, i32, i32)
- DEF_HELPER_2(neon_mul_u16, i32, i32, i32)
--DEF_HELPER_2(neon_mull_p8, i64, i32, i32)
- 
- DEF_HELPER_2(neon_tst_u8, i32, i32, i32)
- DEF_HELPER_2(neon_tst_u16, i32, i32, i32)
-@@ -688,6 +687,8 @@ DEF_HELPER_FLAGS_4(gvec_ushl_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(gvec_pmul_b, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(gvec_pmull_q, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- 
-+DEF_HELPER_FLAGS_4(neon_pmull_h, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-+
- #ifdef TARGET_AARCH64
- #include "helper-a64.h"
- #include "helper-sve.h"
-diff --git a/target/arm/neon_helper.c b/target/arm/neon_helper.c
-index 6a107da0e1..c7a8438b42 100644
---- a/target/arm/neon_helper.c
-+++ b/target/arm/neon_helper.c
-@@ -1129,38 +1129,6 @@ NEON_VOP(mul_u8, neon_u8, 4)
- NEON_VOP(mul_u16, neon_u16, 2)
- #undef NEON_FN
- 
--/* Polynomial multiplication is like integer multiplication except the
--   partial products are XORed, not added.  */
--uint64_t HELPER(neon_mull_p8)(uint32_t op1, uint32_t op2)
--{
--    uint64_t result = 0;
--    uint64_t mask;
--    uint64_t op2ex = op2;
--    op2ex = (op2ex & 0xff) |
--        ((op2ex & 0xff00) << 8) |
--        ((op2ex & 0xff0000) << 16) |
--        ((op2ex & 0xff000000) << 24);
--    while (op1) {
--        mask = 0;
--        if (op1 & 1) {
--            mask |= 0xffff;
--        }
--        if (op1 & (1 << 8)) {
--            mask |= (0xffffU << 16);
--        }
--        if (op1 & (1 << 16)) {
--            mask |= (0xffffULL << 32);
--        }
--        if (op1 & (1 << 24)) {
--            mask |= (0xffffULL << 48);
--        }
--        result ^= op2ex & mask;
--        op1 = (op1 >> 1) & 0x7f7f7f7f;
--        op2ex <<= 1;
--    }
--    return result;
--}
--
- #define NEON_FN(dest, src1, src2) dest = (src1 & src2) ? -1 : 0
- NEON_VOP(tst_u8, neon_u8, 4)
- NEON_VOP(tst_u16, neon_u16, 2)
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 12588d18df..2934e4fc16 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -10483,10 +10483,6 @@ static void handle_3rd_widening(DisasContext *s, int is_q, int is_u, int size,
-                 gen_helper_neon_addl_saturate_s32(tcg_passres, cpu_env,
-                                                   tcg_passres, tcg_passres);
-                 break;
--            case 14: /* PMULL */
--                assert(size == 0);
--                gen_helper_neon_mull_p8(tcg_passres, tcg_op1, tcg_op2);
--                break;
-             default:
-                 g_assert_not_reached();
-             }
-@@ -10650,11 +10646,21 @@ static void disas_simd_three_reg_diff(DisasContext *s, uint32_t insn)
-         handle_3rd_narrowing(s, is_q, is_u, size, opcode, rd, rn, rm);
-         break;
-     case 14: /* PMULL, PMULL2 */
--        if (is_u || size == 1 || size == 2) {
-+        if (is_u) {
-             unallocated_encoding(s);
-             return;
-         }
--        if (size == 3) {
-+        switch (size) {
-+        case 0: /* PMULL.P8 */
-+            if (!fp_access_check(s)) {
-+                return;
-+            }
-+            /* The Q field specifies lo/hi half input for this insn.  */
-+            gen_gvec_op3_ool(s, true, rd, rn, rm, is_q,
-+                             gen_helper_neon_pmull_h);
-+            break;
-+
-+        case 3: /* PMULL.P64 */
-             if (!dc_isar_feature(aa64_pmull, s)) {
-                 unallocated_encoding(s);
-                 return;
-@@ -10665,9 +10671,13 @@ static void disas_simd_three_reg_diff(DisasContext *s, uint32_t insn)
-             /* The Q field specifies lo/hi half input for this insn.  */
-             gen_gvec_op3_ool(s, true, rd, rn, rm, is_q,
-                              gen_helper_gvec_pmull_q);
--            return;
-+            break;
-+
-+        default:
-+            unallocated_encoding(s);
-+            break;
-         }
--        goto is_widening;
-+        return;
-     case 9: /* SQDMLAL, SQDMLAL2 */
-     case 11: /* SQDMLSL, SQDMLSL2 */
-     case 13: /* SQDMULL, SQDMULL2 */
-@@ -10688,7 +10698,6 @@ static void disas_simd_three_reg_diff(DisasContext *s, uint32_t insn)
-             unallocated_encoding(s);
-             return;
-         }
--    is_widening:
-         if (!fp_access_check(s)) {
-             return;
-         }
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 4e34249672..c3abf130cc 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -5873,15 +5873,20 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
-                     return 1;
-                 }
- 
--                /* Handle VMULL.P64 (Polynomial 64x64 to 128 bit multiply)
--                 * outside the loop below as it only performs a single pass.
--                 */
--                if (op == 14 && size == 2) {
--                    if (!dc_isar_feature(aa32_pmull, s)) {
--                        return 1;
-+                /* Handle polynomial VMULL in a single pass.  */
-+                if (op == 14) {
-+                    if (size == 0) {
-+                        /* VMULL.P8 */
-+                        tcg_gen_gvec_3_ool(rd_ofs, rn_ofs, rm_ofs, 16, 16,
-+                                           0, gen_helper_neon_pmull_h);
-+                    } else {
-+                        /* VMULL.P64 */
-+                        if (!dc_isar_feature(aa32_pmull, s)) {
-+                            return 1;
-+                        }
-+                        tcg_gen_gvec_3_ool(rd_ofs, rn_ofs, rm_ofs, 16, 16,
-+                                           0, gen_helper_gvec_pmull_q);
-                     }
--                    tcg_gen_gvec_3_ool(rd_ofs, rn_ofs, rm_ofs, 16, 16,
--                                       0, gen_helper_gvec_pmull_q);
-                     return 0;
-                 }
- 
-@@ -5959,11 +5964,6 @@ static int disas_neon_data_insn(DisasContext *s, uint32_t insn)
-                         /* VMLAL, VQDMLAL, VMLSL, VQDMLSL, VMULL, VQDMULL */
-                         gen_neon_mull(cpu_V0, tmp, tmp2, size, u);
-                         break;
--                    case 14: /* Polynomial VMULL */
--                        gen_helper_neon_mull_p8(cpu_V0, tmp, tmp2);
--                        tcg_temp_free_i32(tmp2);
--                        tcg_temp_free_i32(tmp);
--                        break;
-                     default: /* 15 is RESERVED: caught earlier  */
-                         abort();
-                     }
-diff --git a/target/arm/vec_helper.c b/target/arm/vec_helper.c
-index 5c1074374e..04b4d7402d 100644
---- a/target/arm/vec_helper.c
-+++ b/target/arm/vec_helper.c
-@@ -1197,3 +1197,63 @@ void HELPER(gvec_pmull_q)(void *vd, void *vn, void *vm, uint32_t desc)
-     }
-     clear_tail(d, opr_sz, simd_maxsz(desc));
- }
-+
-+/*
-+ * 8x8->16 polynomial multiply.
-+ *
-+ * The byte inputs are expanded to (or extracted from) half-words.
-+ * Note that neon and sve2 get the inputs from different positions.
-+ * This allows 4 bytes to be processed in parallel with uint64_t.
-+ */
-+
-+static uint64_t expand_byte_to_half(uint64_t x)
-+{
-+    return  (x & 0x000000ff)
-+         | ((x & 0x0000ff00) << 8)
-+         | ((x & 0x00ff0000) << 16)
-+         | ((x & 0xff000000) << 24);
-+}
-+
-+static uint64_t pmull_h(uint64_t op1, uint64_t op2)
-+{
-+    uint64_t result = 0;
-+    int i;
-+
-+    for (i = 0; i < 8; ++i) {
-+        uint64_t mask = (op1 & 0x0001000100010001ull) * 0xffff;
-+        result ^= op2 & mask;
-+        op1 >>= 1;
-+        op2 <<= 1;
-+    }
-+    return result;
-+}
-+
-+void HELPER(neon_pmull_h)(void *vd, void *vn, void *vm, uint32_t desc)
-+{
-+    int hi = simd_data(desc);
-+    uint64_t *d = vd, *n = vn, *m = vm;
-+    uint64_t nn = n[hi], mm = m[hi];
-+
-+    d[0] = pmull_h(expand_byte_to_half(nn), expand_byte_to_half(mm));
-+    nn >>= 32;
-+    mm >>= 32;
-+    d[1] = pmull_h(expand_byte_to_half(nn), expand_byte_to_half(mm));
-+
-+    clear_tail(d, 16, simd_maxsz(desc));
-+}
-+
-+#ifdef TARGET_AARCH64
-+void HELPER(sve2_pmull_h)(void *vd, void *vn, void *vm, uint32_t desc)
-+{
-+    int shift = simd_data(desc) * 8;
-+    intptr_t i, opr_sz = simd_oprsz(desc);
-+    uint64_t *d = vd, *n = vn, *m = vm;
-+
-+    for (i = 0; i < opr_sz / 8; ++i) {
-+        uint64_t nn = (n[i] >> shift) & 0x00ff00ff00ff00ffull;
-+        uint64_t mm = (m[i] >> shift) & 0x00ff00ff00ff00ffull;
-+
-+        d[i] = pmull_h(nn, mm);
-+    }
-+}
-+#endif
--- 
-2.17.1
+On Fri, Oct 11, 2019 at 6:48 AM Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> This is an update of the v4 patch from March.
+>
+> I believe I've fixed the address space issues that Peter noticed.
+> If the board model does not supply tag memory, then I downgrade
+> the cpu support to "instructions only" (id_aa64pfr1.mte == 1),
+> which does not allow tag memory access to be enabled in the cpu.
+>
+> I did not update the arm_hcr_el2_eff comment re ARMv8.4, because
+> I have not done a complete audit of all of the v8.5 bits.
+>
+> The hacky kernel testing patch has needed some updates since March.
+> The following applies to v5.4-rc2.
+>
+>
+> r~
+>
+>
+> Richard Henderson (22):
+>   target/arm: Add MTE_ACTIVE to tb_flags
+>   target/arm: Add regime_has_2_ranges
+>   target/arm: Add MTE system registers
+>   target/arm: Add helper_mte_check{1,2,3}
+>   target/arm: Suppress tag check for sp+offset
+>   target/arm: Implement the IRG instruction
+>   target/arm: Implement ADDG, SUBG instructions
+>   target/arm: Implement the GMI instruction
+>   target/arm: Implement the SUBP instruction
+>   target/arm: Define arm_cpu_do_unaligned_access for CONFIG_USER_ONLY
+>   target/arm: Implement LDG, STG, ST2G instructions
+>   target/arm: Implement the STGP instruction
+>   target/arm: Implement the LDGM and STGM instructions
+>   target/arm: Implement the access tag cache flushes
+>   target/arm: Clean address for DC ZVA
+>   target/arm: Implement data cache set allocation tags
+>   target/arm: Set PSTATE.TCO on exception entry
+>   target/arm: Enable MTE
+>   target/arm: Cache the Tagged bit for a page in MemTxAttrs
+>   target/arm: Create tagged ram when MTE is enabled
+>   target/arm: Add mmu indexes for tag memory
+>   target/arm: Add allocation tag storage for system mode
+>
+>  target/arm/cpu-param.h     |   2 +-
+>  target/arm/cpu.h           |  37 ++-
+>  target/arm/helper-a64.h    |  17 ++
+>  target/arm/internals.h     |  45 +++
+>  target/arm/translate.h     |   2 +
+>  hw/arm/virt.c              |  54 ++++
+>  target/arm/cpu.c           |  63 +++-
+>  target/arm/cpu64.c         |   1 +
+>  target/arm/helper.c        | 277 ++++++++++++++---
+>  target/arm/mte_helper.c    | 601 +++++++++++++++++++++++++++++++++++++
+>  target/arm/tlb_helper.c    |   3 +-
+>  target/arm/translate-a64.c | 342 ++++++++++++++++++---
+>  target/arm/Makefile.objs   |   1 +
+>  13 files changed, 1345 insertions(+), 100 deletions(-)
+>  create mode 100644 target/arm/mte_helper.c
+>
+> --- kernel patch
+>
+> diff --git a/arch/arm64/include/asm/cpucaps.h b/arch/arm64/include/asm/cpucaps.h
+> index f19fe4b9acc4..ee6b7f387a9a 100644
+> --- a/arch/arm64/include/asm/cpucaps.h
+> +++ b/arch/arm64/include/asm/cpucaps.h
+> @@ -52,7 +52,8 @@
+>  #define ARM64_HAS_IRQ_PRIO_MASKING             42
+>  #define ARM64_HAS_DCPODP                       43
+>  #define ARM64_WORKAROUND_1463225               44
+> +#define ARM64_HAS_MTE                          45
+>
+> -#define ARM64_NCAPS                            45
+> +#define ARM64_NCAPS                            46
+>
+>  #endif /* __ASM_CPUCAPS_H */
+> diff --git a/arch/arm64/include/asm/kvm_arm.h b/arch/arm64/include/asm/kvm_arm.h
+> index ddf9d762ac62..5825130bd8eb 100644
+> --- a/arch/arm64/include/asm/kvm_arm.h
+> +++ b/arch/arm64/include/asm/kvm_arm.h
+> @@ -12,6 +12,7 @@
+>  #include <asm/types.h>
+>
+>  /* Hyp Configuration Register (HCR) bits */
+> +#define HCR_ATA                (UL(1) << 56)
+>  #define HCR_FWB                (UL(1) << 46)
+>  #define HCR_API                (UL(1) << 41)
+>  #define HCR_APK                (UL(1) << 40)
+> @@ -78,8 +79,8 @@
+>                          HCR_AMO | HCR_SWIO | HCR_TIDCP | HCR_RW | HCR_TLOR | \
+>                          HCR_FMO | HCR_IMO)
+>  #define HCR_VIRT_EXCP_MASK (HCR_VSE | HCR_VI | HCR_VF)
+> -#define HCR_HOST_NVHE_FLAGS (HCR_RW | HCR_API | HCR_APK)
+> -#define HCR_HOST_VHE_FLAGS (HCR_RW | HCR_TGE | HCR_E2H)
+> +#define HCR_HOST_NVHE_FLAGS (HCR_RW | HCR_API | HCR_APK | HCR_ATA)
+> +#define HCR_HOST_VHE_FLAGS (HCR_RW | HCR_TGE | HCR_E2H | HCR_ATA)
+>
+>  /* TCR_EL2 Registers bits */
+>  #define TCR_EL2_RES1           ((1 << 31) | (1 << 23))
+> diff --git a/arch/arm64/include/asm/sysreg.h b/arch/arm64/include/asm/sysreg.h
+> index 972d196c7714..2a65831f6e0f 100644
+> --- a/arch/arm64/include/asm/sysreg.h
+> +++ b/arch/arm64/include/asm/sysreg.h
+> @@ -482,6 +482,7 @@
+>
+>  /* Common SCTLR_ELx flags. */
+>  #define SCTLR_ELx_DSSBS        (BIT(44))
+> +#define SCTLR_ELx_ATA  (BIT(43))
+>  #define SCTLR_ELx_ENIA (BIT(31))
+>  #define SCTLR_ELx_ENIB (BIT(30))
+>  #define SCTLR_ELx_ENDA (BIT(27))
+> @@ -510,6 +511,7 @@
+>  #endif
+>
+>  /* SCTLR_EL1 specific flags. */
+> +#define SCTLR_EL1_ATA0         (BIT(42))
+>  #define SCTLR_EL1_UCI          (BIT(26))
+>  #define SCTLR_EL1_E0E          (BIT(24))
+>  #define SCTLR_EL1_SPAN         (BIT(23))
+> @@ -598,6 +600,7 @@
+>  #define ID_AA64PFR0_EL0_32BIT_64BIT    0x2
+>
+>  /* id_aa64pfr1 */
+> +#define ID_AA64PFR1_MTE_SHIFT          8
+>  #define ID_AA64PFR1_SSBS_SHIFT         4
+>
+>  #define ID_AA64PFR1_SSBS_PSTATE_NI     0
+> diff --git a/arch/arm64/kernel/cpufeature.c b/arch/arm64/kernel/cpufeature.c
+> index cabebf1a7976..6a122ed7f76b 100644
+> --- a/arch/arm64/kernel/cpufeature.c
+> +++ b/arch/arm64/kernel/cpufeature.c
+> @@ -171,6 +171,7 @@ static const struct arm64_ftr_bits ftr_id_aa64pfr0[] = {
+>  };
+>
+>  static const struct arm64_ftr_bits ftr_id_aa64pfr1[] = {
+> +       ARM64_FTR_BITS(FTR_VISIBLE, FTR_STRICT, FTR_LOWER_SAFE, ID_AA64PFR1_MTE_SHIFT, 4, 0),
+>         ARM64_FTR_BITS(FTR_VISIBLE, FTR_STRICT, FTR_LOWER_SAFE, ID_AA64PFR1_SSBS_SHIFT, 4, ID_AA64PFR1_SSBS_PSTATE_NI),
+>         ARM64_FTR_END,
+>  };
+> @@ -1261,6 +1262,11 @@ static bool can_use_gic_priorities(const struct arm64_cpu_capabilities *entry,
+>  }
+>  #endif
+>
+> +static void cpu_enable_mte(struct arm64_cpu_capabilities const *cap)
+> +{
+> +       sysreg_clear_set(sctlr_el1, 0, SCTLR_ELx_ATA | SCTLR_EL1_ATA0);
+> +}
+> +
+>  static const struct arm64_cpu_capabilities arm64_features[] = {
+>         {
+>                 .desc = "GIC system register CPU interface",
+> @@ -1561,6 +1567,17 @@ static const struct arm64_cpu_capabilities arm64_features[] = {
+>                 .min_field_value = 1,
+>         },
+>  #endif
+> +       {
+> +               .desc = "Memory Tagging",
+> +               .capability = ARM64_HAS_MTE,
+> +               .type = ARM64_CPUCAP_SYSTEM_FEATURE,
+> +               .matches = has_cpuid_feature,
+> +               .sys_reg = SYS_ID_AA64PFR1_EL1,
+> +               .field_pos = ID_AA64PFR1_MTE_SHIFT,
+> +               .sign = FTR_UNSIGNED,
+> +               .min_field_value = 2,
+> +               .cpu_enable = cpu_enable_mte,
+> +       },
+>         {},
+>  };
+>
+> diff --git a/arch/arm64/mm/proc.S b/arch/arm64/mm/proc.S
+> index a1e0592d1fbc..32cfa35195ae 100644
+> --- a/arch/arm64/mm/proc.S
+> +++ b/arch/arm64/mm/proc.S
+> @@ -424,14 +424,14 @@ ENTRY(__cpu_setup)
+>          *   DEVICE_nGnRE       001     00000100
+>          *   DEVICE_GRE         010     00001100
+>          *   NORMAL_NC          011     01000100
+> -        *   NORMAL             100     11111111
+> +        *   NORMAL             100     11110000 (Tag)
+>          *   NORMAL_WT          101     10111011
+>          */
+>         ldr     x5, =MAIR(0x00, MT_DEVICE_nGnRnE) | \
+>                      MAIR(0x04, MT_DEVICE_nGnRE) | \
+>                      MAIR(0x0c, MT_DEVICE_GRE) | \
+>                      MAIR(0x44, MT_NORMAL_NC) | \
+> -                    MAIR(0xff, MT_NORMAL) | \
+> +                    MAIR(0xf0, MT_NORMAL) | \
+>                      MAIR(0xbb, MT_NORMAL_WT)
+>         msr     mair_el1, x5
+>         /*
+>
+> --- mte smoke test
+>
+> /*
+>  * Memory tagging, basic pass cases.
+>  */
+>
+> #include <stdio.h>
+> #include <assert.h>
+> #include <sys/mman.h>
+>
+> asm(".arch armv8.5-a+memtag");
+>
+> int data[16 / sizeof(int)] __attribute__((aligned(16)));
+>
+> int main(int ac, char **av)
+> {
+>     int *p0 = data;
+>     int *p1, *p2;
+>     long c;
+>
+>     if (mlock(data, sizeof(data)) < 0) {
+>         perror("mlock");
+>         return 1;
+>     }
+>
+>     asm("irg %0,%1,%2" : "=r"(p1) : "r"(p0), "r"(1));
+>     assert(p1 != p0);
+>     asm("subp %0,%1,%2" : "=r"(c) : "r"(p0), "r"(p1));
+>     assert(c == 0);
+>
+>     asm("stg %0, [%0]" : : "r"(p1));
+>     asm("ldg %0, [%1]" : "=r"(p2) : "r"(p0), "0"(p0));
+>     assert(p1 == p2);
+>
+>     return 0;
+> }
+>
+>
 
+--000000000000dbba7a0594f8fc7a
+Content-Type: text/x-patch; charset="US-ASCII"; 
+	name="0004-Fix-pre-post-index-confusion-in-disas_ldst_tag.patch"
+Content-Disposition: attachment; 
+	filename="0004-Fix-pre-post-index-confusion-in-disas_ldst_tag.patch"
+Content-Transfer-Encoding: base64
+Content-ID: <f_k1sb817o0>
+X-Attachment-Id: f_k1sb817o0
+
+RnJvbSA3ZGZlM2Y1M2JjNjA2ZDJjNWJiODFlNTgyOGU2Y2YzMjIyNWY2YjcyIE1vbiBTZXAgMTcg
+MDA6MDA6MDAgMjAwMQpGcm9tOiBFdmdlbmlpIFN0ZXBhbm92IDxldWdlbmlzQGdvb2dsZS5jb20+
+CkRhdGU6IFR1ZSwgMjcgQXVnIDIwMTkgMTY6MTQ6MzcgLTA3MDAKU3ViamVjdDogW1BBVENIIDQv
+NF0gRml4IHByZS9wb3N0LWluZGV4IGNvbmZ1c2lvbiBpbiBkaXNhc19sZHN0X3RhZy4KCi0tLQog
+dGFyZ2V0L2FybS90cmFuc2xhdGUtYTY0LmMgfCA0ICsrLS0KIDEgZmlsZSBjaGFuZ2VkLCAyIGlu
+c2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvdGFyZ2V0L2FybS90cmFu
+c2xhdGUtYTY0LmMgYi90YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQuYwppbmRleCBhODViYWUxZjI3
+Li41NzI4YjY4Y2NjIDEwMDY0NAotLS0gYS90YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQuYworKysg
+Yi90YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQuYwpAQCAtMzY3OSw3ICszNjc5LDcgQEAgc3RhdGlj
+IHZvaWQgZGlzYXNfbGRzdF90YWcoRGlzYXNDb250ZXh0ICpzLCB1aW50MzJfdCBpbnNuKQogICAg
+IH0KIAogICAgIGRpcnR5X2FkZHIgPSByZWFkX2NwdV9yZWdfc3Aocywgcm4sIHRydWUpOwotICAg
+IGlmIChpbmRleCA8PSAwKSB7CisgICAgaWYgKGluZGV4ID49IDApIHsKICAgICAgICAgLyogcHJl
+LWluZGV4IG9yIHNpZ25lZCBvZmZzZXQgKi8KICAgICAgICAgdGNnX2dlbl9hZGRpX2k2NChkaXJ0
+eV9hZGRyLCBkaXJ0eV9hZGRyLCBvZmZzZXQpOwogICAgIH0KQEAgLTM3MjYsNyArMzcyNiw3IEBA
+IHN0YXRpYyB2b2lkIGRpc2FzX2xkc3RfdGFnKERpc2FzQ29udGV4dCAqcywgdWludDMyX3QgaW5z
+bikKIAogICAgIGlmIChpbmRleCAhPSAwKSB7CiAgICAgICAgIC8qIHByZS1pbmRleCBvciBwb3N0
+LWluZGV4ICovCi0gICAgICAgIGlmIChpbmRleCA+IDApIHsKKyAgICAgICAgaWYgKGluZGV4IDwg
+MCkgewogICAgICAgICAgICAgLyogcG9zdC1pbmRleCAqLwogICAgICAgICAgICAgdGNnX2dlbl9h
+ZGRpX2k2NChkaXJ0eV9hZGRyLCBkaXJ0eV9hZGRyLCBvZmZzZXQpOwogICAgICAgICB9Ci0tIAoy
+LjIzLjAuNzAwLmc1NmNmNzY3YmRiLWdvb2cKCg==
+--000000000000dbba7a0594f8fc7a
+Content-Type: text/x-patch; charset="US-ASCII"; 
+	name="0003-Fix-wrong-field-size-in-disas_ldst_tag.patch"
+Content-Disposition: attachment; 
+	filename="0003-Fix-wrong-field-size-in-disas_ldst_tag.patch"
+Content-Transfer-Encoding: base64
+Content-ID: <f_k1sb818j1>
+X-Attachment-Id: f_k1sb818j1
+
+RnJvbSAxZWNmNGY3YmFlZGZlMmRlODBhOTdjNDA4ZmEyY2M2NGNjZDk5ZGJlIE1vbiBTZXAgMTcg
+MDA6MDA6MDAgMjAwMQpGcm9tOiBFdmdlbmlpIFN0ZXBhbm92IDxldWdlbmlzQGdvb2dsZS5jb20+
+CkRhdGU6IFR1ZSwgMjcgQXVnIDIwMTkgMTY6MTM6MjYgLTA3MDAKU3ViamVjdDogW1BBVENIIDMv
+NF0gRml4IHdyb25nIGZpZWxkIHNpemUgaW4gZGlzYXNfbGRzdF90YWcuCgotLS0KIHRhcmdldC9h
+cm0vdHJhbnNsYXRlLWE2NC5jIHwgMiArLQogMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCsp
+LCAxIGRlbGV0aW9uKC0pCgpkaWZmIC0tZ2l0IGEvdGFyZ2V0L2FybS90cmFuc2xhdGUtYTY0LmMg
+Yi90YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQuYwppbmRleCAwYTE2ODUwNmQyLi5hODViYWUxZjI3
+IDEwMDY0NAotLS0gYS90YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQuYworKysgYi90YXJnZXQvYXJt
+L3RyYW5zbGF0ZS1hNjQuYwpAQCAtMzYxMSw3ICszNjExLDcgQEAgc3RhdGljIHZvaWQgZGlzYXNf
+bGRzdF90YWcoRGlzYXNDb250ZXh0ICpzLCB1aW50MzJfdCBpbnNuKQogICAgIGludCBydCA9IGV4
+dHJhY3QzMihpbnNuLCAwLCA1KTsKICAgICBpbnQgcm4gPSBleHRyYWN0MzIoaW5zbiwgNSwgNSk7
+CiAgICAgdWludDY0X3Qgb2Zmc2V0ID0gc2V4dHJhY3Q2NChpbnNuLCAxMiwgOSkgPDwgTE9HMl9U
+QUdfR1JBTlVMRTsKLSAgICBpbnQgb3AyID0gZXh0cmFjdDMyKGluc24sIDEwLCAzKTsKKyAgICBp
+bnQgb3AyID0gZXh0cmFjdDMyKGluc24sIDEwLCAyKTsKICAgICBpbnQgb3AxID0gZXh0cmFjdDMy
+KGluc24sIDIyLCAyKTsKICAgICBib29sIGlzX2xvYWQgPSBmYWxzZSwgaXNfcGFpciA9IGZhbHNl
+LCBpc196ZXJvID0gZmFsc2UsIGlzX211bHQgPSBmYWxzZTsKICAgICBpbnQgaW5kZXggPSAwOwot
+LSAKMi4yMy4wLjcwMC5nNTZjZjc2N2JkYi1nb29nCgo=
+--000000000000dbba7a0594f8fc7a
+Content-Type: text/x-patch; charset="US-ASCII"; name="0001-Fix-STGP-offset-scale.patch"
+Content-Disposition: attachment; filename="0001-Fix-STGP-offset-scale.patch"
+Content-Transfer-Encoding: base64
+Content-ID: <f_k1sb818l3>
+X-Attachment-Id: f_k1sb818l3
+
+RnJvbSBhOGEwMjQyMDJkMWJhODAxNDJlYWNjMDlkYWIxMGM3NzgwODc0NTgyIE1vbiBTZXAgMTcg
+MDA6MDA6MDAgMjAwMQpGcm9tOiBFdmdlbmlpIFN0ZXBhbm92IDxldWdlbmlzQGdvb2dsZS5jb20+
+CkRhdGU6IFRodSwgMjIgQXVnIDIwMTkgMTg6MDU6MzQgLTA3MDAKU3ViamVjdDogW1BBVENIIDEv
+NF0gRml4IFNUR1Agb2Zmc2V0IHNjYWxlLgoKLS0tCiB0YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQu
+YyB8IDMgKystCiAxIGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0p
+CgpkaWZmIC0tZ2l0IGEvdGFyZ2V0L2FybS90cmFuc2xhdGUtYTY0LmMgYi90YXJnZXQvYXJtL3Ry
+YW5zbGF0ZS1hNjQuYwppbmRleCA5YTU1NDg1NmU5Li4wYTE2ODUwNmQyIDEwMDY0NAotLS0gYS90
+YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQuYworKysgYi90YXJnZXQvYXJtL3RyYW5zbGF0ZS1hNjQu
+YwpAQCAtMjc2Myw3ICsyNzYzLDggQEAgc3RhdGljIHZvaWQgZGlzYXNfbGRzdF9wYWlyKERpc2Fz
+Q29udGV4dCAqcywgdWludDMyX3QgaW5zbikKICAgICAgICAgcmV0dXJuOwogICAgIH0KIAotICAg
+IG9mZnNldCA8PD0gc2l6ZTsKKyAgICAvLyBTVEdQIG9mZnNldCBpcyAxNi1zY2FsZWQuCisgICAg
+b2Zmc2V0IDw8PSAoc2l6ZSArIHNldF90YWcpOwogCiAgICAgaWYgKHJuID09IDMxKSB7CiAgICAg
+ICAgIGdlbl9jaGVja19zcF9hbGlnbm1lbnQocyk7Ci0tIAoyLjIzLjAuNzAwLmc1NmNmNzY3YmRi
+LWdvb2cKCg==
+--000000000000dbba7a0594f8fc7a
+Content-Type: text/x-patch; charset="US-ASCII"; 
+	name="0002-Untag-userspace-addresses-in-syscall-emulation.patch"
+Content-Disposition: attachment; 
+	filename="0002-Untag-userspace-addresses-in-syscall-emulation.patch"
+Content-Transfer-Encoding: base64
+Content-ID: <f_k1sb818k2>
+X-Attachment-Id: f_k1sb818k2
+
+RnJvbSBiZGUzMDA3Y2JlMzNjY2JiYmE0NjQ4YzdlZTA5MzUzNGJlMDhjY2QwIE1vbiBTZXAgMTcg
+MDA6MDA6MDAgMjAwMQpGcm9tOiBFdmdlbmlpIFN0ZXBhbm92IDxldWdlbmlzQGdvb2dsZS5jb20+
+CkRhdGU6IFR1ZSwgMjcgQXVnIDIwMTkgMTY6MTI6MzggLTA3MDAKU3ViamVjdDogW1BBVENIIDIv
+NF0gVW50YWcgdXNlcnNwYWNlIGFkZHJlc3NlcyBpbiBzeXNjYWxsIGVtdWxhdGlvbi4KCi0tLQog
+bGludXgtdXNlci9xZW11LmggfCAxMyArKysrKysrKysrKy0tCiAxIGZpbGUgY2hhbmdlZCwgMTEg
+aW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9saW51eC11c2VyL3Fl
+bXUuaCBiL2xpbnV4LXVzZXIvcWVtdS5oCmluZGV4IGFhYzAzMzQ2MjcuLmE4ZjBhOGVlZTkgMTAw
+NjQ0Ci0tLSBhL2xpbnV4LXVzZXIvcWVtdS5oCisrKyBiL2xpbnV4LXVzZXIvcWVtdS5oCkBAIC00
+NTYsOCArNDU2LDE2IEBAIGV4dGVybiB1bnNpZ25lZCBsb25nIGd1ZXN0X3N0YWNrX3NpemU7CiAj
+ZGVmaW5lIFZFUklGWV9SRUFEIDAKICNkZWZpbmUgVkVSSUZZX1dSSVRFIDEgLyogaW1wbGllcyBy
+ZWFkIGFjY2VzcyAqLwogCitzdGF0aWMgaW5saW5lIGFiaV91bG9uZyB1bnRhZ2dlZF9hZGRyKGFi
+aV91bG9uZyBhZGRyKSB7CisjaWYgVEFSR0VUX0FCSV9CSVRTID09IDY0CisgICAgYWRkciAmPSAo
+KChhYmlfdWxvbmcpLTEpID4+IDgpOworI2VuZGlmCisgICAgcmV0dXJuIGFkZHI7Cit9CisKIHN0
+YXRpYyBpbmxpbmUgaW50IGFjY2Vzc19vayhpbnQgdHlwZSwgYWJpX3Vsb25nIGFkZHIsIGFiaV91
+bG9uZyBzaXplKQogeworICAgIGFkZHIgPSB1bnRhZ2dlZF9hZGRyKGFkZHIpOwogICAgIHJldHVy
+biBndWVzdF9hZGRyX3ZhbGlkKGFkZHIpICYmCiAgICAgICAgICAgIChzaXplID09IDAgfHwgZ3Vl
+c3RfYWRkcl92YWxpZChhZGRyICsgc2l6ZSAtIDEpKSAmJgogICAgICAgICAgICBwYWdlX2NoZWNr
+X3JhbmdlKCh0YXJnZXRfdWxvbmcpYWRkciwgc2l6ZSwKQEAgLTYwMSw2ICs2MDksNyBAQCBzdGF0
+aWMgaW5saW5lIHZvaWQgKmxvY2tfdXNlcihpbnQgdHlwZSwgYWJpX3Vsb25nIGd1ZXN0X2FkZHIs
+IGxvbmcgbGVuLCBpbnQgY29weQogewogICAgIGlmICghYWNjZXNzX29rKHR5cGUsIGd1ZXN0X2Fk
+ZHIsIGxlbikpCiAgICAgICAgIHJldHVybiBOVUxMOworICAgIGd1ZXN0X2FkZHIgPSB1bnRhZ2dl
+ZF9hZGRyKGd1ZXN0X2FkZHIpOwogI2lmZGVmIERFQlVHX1JFTUFQCiAgICAgewogICAgICAgICB2
+b2lkICphZGRyOwpAQCAtNjQyLDcgKzY1MSw3IEBAIGFiaV9sb25nIHRhcmdldF9zdHJsZW4oYWJp
+X3Vsb25nIGdhZGRyKTsKIHN0YXRpYyBpbmxpbmUgdm9pZCAqbG9ja191c2VyX3N0cmluZyhhYmlf
+dWxvbmcgZ3Vlc3RfYWRkcikKIHsKICAgICBhYmlfbG9uZyBsZW47Ci0gICAgbGVuID0gdGFyZ2V0
+X3N0cmxlbihndWVzdF9hZGRyKTsKKyAgICBsZW4gPSB0YXJnZXRfc3RybGVuKHVudGFnZ2VkX2Fk
+ZHIoZ3Vlc3RfYWRkcikpOwogICAgIGlmIChsZW4gPCAwKQogICAgICAgICByZXR1cm4gTlVMTDsK
+ICAgICByZXR1cm4gbG9ja191c2VyKFZFUklGWV9SRUFELCBndWVzdF9hZGRyLCAobG9uZykobGVu
+ICsgMSksIDEpOwpAQCAtNjUwLDcgKzY1OSw3IEBAIHN0YXRpYyBpbmxpbmUgdm9pZCAqbG9ja191
+c2VyX3N0cmluZyhhYmlfdWxvbmcgZ3Vlc3RfYWRkcikKIAogLyogSGVscGVyIG1hY3JvcyBmb3Ig
+bG9ja2luZy91bmxvY2tpbmcgYSB0YXJnZXQgc3RydWN0LiAgKi8KICNkZWZpbmUgbG9ja191c2Vy
+X3N0cnVjdCh0eXBlLCBob3N0X3B0ciwgZ3Vlc3RfYWRkciwgY29weSkJXAotICAgIChob3N0X3B0
+ciA9IGxvY2tfdXNlcih0eXBlLCBndWVzdF9hZGRyLCBzaXplb2YoKmhvc3RfcHRyKSwgY29weSkp
+CisgICAgKGhvc3RfcHRyID0gbG9ja191c2VyKHR5cGUsIHVudGFnZ2VkX2FkZHIoZ3Vlc3RfYWRk
+ciksIHNpemVvZigqaG9zdF9wdHIpLCBjb3B5KSkKICNkZWZpbmUgdW5sb2NrX3VzZXJfc3RydWN0
+KGhvc3RfcHRyLCBndWVzdF9hZGRyLCBjb3B5KQkJXAogICAgIHVubG9ja191c2VyKGhvc3RfcHRy
+LCBndWVzdF9hZGRyLCAoY29weSkgPyBzaXplb2YoKmhvc3RfcHRyKSA6IDApCiAKLS0gCjIuMjMu
+MC43MDAuZzU2Y2Y3NjdiZGItZ29vZwoK
+--000000000000dbba7a0594f8fc7a--

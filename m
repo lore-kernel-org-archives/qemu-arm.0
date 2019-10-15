@@ -1,139 +1,146 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5809684wrm;
-        Tue, 15 Oct 2019 07:03:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqyvRZWRdjPKgMCguYqpvS2Pp9jNBpIsMQpG94bYwGdhAzSL43xFl2VH849rH2SOzsv32XqO
-X-Received: by 2002:a17:906:2d49:: with SMTP id e9mr34064430eji.240.1571148182250;
-        Tue, 15 Oct 2019 07:03:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571148182; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5870868wrm;
+        Tue, 15 Oct 2019 07:53:13 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwiDaxMeevZ39KpFvc/UsL/jMLy0wBTsA6AlGdFHmXGGr4X/hbKXs1IrXR2xYG56aJtHXH1
+X-Received: by 2002:aa7:d2cf:: with SMTP id k15mr32090456edr.208.1571151193651;
+        Tue, 15 Oct 2019 07:53:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571151193; cv=none;
         d=google.com; s=arc-20160816;
-        b=PnDM2QO1i8QNBN7FT9os69GuyoSm+DI8Lxe2mzVHaVuB2RYEZ2J41drKWxvqsSdDv3
-         Sje5vtQyd0hUz/7iDr2iMGq1R2vj3ZLfsM4sQnue+oCRcCegAZnUAf/xthmhCW7b7VOH
-         6TE6mEJu+ink4Euplf/xnF77diwy1fCIJ7JYl/PPYXenYsSpw2QmjfNuAJN2vKkGY+9o
-         e09HuH3b6oJ6x6YxWORZl4hs9vK93MKUhoEwdVbPUobG1xuWzil90wHJjHOjH10AI7Q/
-         g/tvY4vwXdEM/SF+h7VlGDu0juK3D88h+SDO59f4LQsorVrGW0JX2Q5M/L0mxirwy6cT
-         FXlQ==
+        b=N2z8kbjnGVVi8JPy7BRDoSARdQCRsH0qrMuJ5sr0SLJpoOlfEoWvXTZOK/dPtJP1dW
+         NeqNFwKbppqTKTLrb13FA2lex9+mGZ8u3U4JlSw0rm9kLn3KE2w4yDDH1SqQUc+2IHSt
+         2gEUdBGVxEGQzdkOInhQ/pm5oUvq8szrmmGwKjsnLlK5atitbfwm/iV9nnbysoc0eS9P
+         rNXh0PMiupMWLwgrprPAqD8p+jWMYjHY8mOH4gz3TsVS/Ds1aNXrFO+PPVHmSSdQsdwt
+         4nMUp/9/MlJeE9e5vu8hEEb+L4lZ1bvKJVpbe7c98GRbWsPP8JhZR7wANFMI3zvzbRFZ
+         v2dw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from;
-        bh=5Y00I1eVSIIUo9bs/NLeUXNuw2FS3fSbQeRzmLoP4C0=;
-        b=PpLCk2xqxAKbS3etpv6ksweIa9HpmuGd9VldxVnKdUzSLmd2t6QlutX15RXZjBC0Ee
-         BGI/Rtp1ckDJfTIF6Iodc86LkW3pdgJdZE1JE9ni9cHG9l0mCSDYZcjVSOMCRY6MIEA+
-         asgS1An3zlCafVgpzGN8Ms8MFdZm+AF4X4pzg9XP+WVlrS4wBzQaaOAnsT+I8YGOdMVc
-         RnpC87af8It5cV8jp/Fh+nRfdNDJK6l4ItP8ufpVMuHHuSsya5AU4HxZXRoAKvpppzei
-         lW18pN9TOlaKvwIa9njMKTRL+Dl1DBsxlM6ptvcxvu+tBp/fj8zFMK+eebT9xr1kk2dM
-         ow2A==
+        h=list-id:precedence:sender:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=pJHLxWBHfbqmvzOZUSxQLaGo5BYoxOcdXmYT8MESVjw=;
+        b=X/CqwPo2P8qkYXT0je8on/REOH9u73SOESL4JnYe1UqamY3dDQy+8qlUftAZZbokH8
+         qvDdZbnhOGkO3oZL36Sc9EUMOtGh80ETAEacSNa/49Z89geVmBCuExd6sMAku0FlqR1w
+         +gYi1ufvvYnQ90ERO4ZHVKb3m/wdbikZqbiG8aCCf7Na7BkNEBMxnfb2Y8bM3Mo792Eb
+         zYL5Lv6nOLUxIIYbQjyNLn7IzgQHu2M8aUWwuSQcI+Tzss2WAMwhVL5y3ek0ix5PR9bQ
+         gG06E0W0z/9iW2mSVrjgtpbgq0SlmMVTeYPpxm72Get496DGUeN0GXGl47WKb0tQO8y/
+         LbOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       dkim=pass header.i=@linaro.org header.s=google header.b=xub1vEGE;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <kvm-owner@vger.kernel.org>
 Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id b47si14176091edc.45.2019.10.15.07.03.02;
-        Tue, 15 Oct 2019 07:03:02 -0700 (PDT)
+        by mx.google.com with ESMTP id g23si13160350ejk.186.2019.10.15.07.53.13;
+        Tue, 15 Oct 2019 07:53:13 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+       dkim=pass header.i=@linaro.org header.s=google header.b=xub1vEGE;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1732426AbfJOODB (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Tue, 15 Oct 2019 10:03:01 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:3773 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1732416AbfJOODA (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 15 Oct 2019 10:03:00 -0400
-Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 305DAD86F79D72C0877C;
-        Tue, 15 Oct 2019 22:02:57 +0800 (CST)
-Received: from HGHY4Z004218071.china.huawei.com (10.133.224.57) by
- DGGEMS410-HUB.china.huawei.com (10.3.19.210) with Microsoft SMTP Server id
- 14.3.439.0; Tue, 15 Oct 2019 22:02:46 +0800
-From:   Xiang Zheng <zhengxiang9@huawei.com>
-To:     <pbonzini@redhat.com>, <mst@redhat.com>, <imammedo@redhat.com>,
-        <shannon.zhaosl@gmail.com>, <peter.maydell@linaro.org>,
-        <lersek@redhat.com>, <james.morse@arm.com>,
-        <gengdongjiu@huawei.com>, <mtosatti@redhat.com>, <rth@twiddle.net>,
-        <ehabkost@redhat.com>, <jonathan.cameron@huawei.com>,
-        <xuwei5@huawei.com>, <kvm@vger.kernel.org>,
-        <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
-        <linuxarm@huawei.com>
-CC:     <zhengxiang9@huawei.com>, <wanghaibin.wang@huawei.com>
-Subject: [PATCH v19 1/5] hw/arm/virt: Introduce a RAS machine option
-Date:   Tue, 15 Oct 2019 22:01:36 +0800
-Message-ID: <20191015140140.34748-2-zhengxiang9@huawei.com>
-X-Mailer: git-send-email 2.15.1.windows.2
-In-Reply-To: <20191015140140.34748-1-zhengxiang9@huawei.com>
-References: <20191015140140.34748-1-zhengxiang9@huawei.com>
+        id S1732931AbfJOOxL (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Tue, 15 Oct 2019 10:53:11 -0400
+Received: from mail-oi1-f194.google.com ([209.85.167.194]:41096 "EHLO
+        mail-oi1-f194.google.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
+        with ESMTP id S1732539AbfJOOxL (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Tue, 15 Oct 2019 10:53:11 -0400
+Received: by mail-oi1-f194.google.com with SMTP id w65so17047719oiw.8
+        for <kvm@vger.kernel.org>; Tue, 15 Oct 2019 07:53:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=pJHLxWBHfbqmvzOZUSxQLaGo5BYoxOcdXmYT8MESVjw=;
+        b=xub1vEGEH9eORcaWMny1wqHLHVDX8S+d+vqaqqeWA5aKqQSbiX7OrCIGAthe6hu1/d
+         Mrp97VpPtfEgTqcvJ62iH5fRPmM3VcGoRg/OBifl4WEPwpYj64dGvu8B6yBHQ82l5neY
+         eaEnn00p8ynrcNEPceCCijGcb42XzIddNsoN6st0PvBxXwPKwN/36BY7RG6KBgSmNy6p
+         7/IzPL33RNCtbClPxUtV7wBEfETxpz57wORrtVJodn0AlQ+9IEfAc2E46iFBGz54CXva
+         puTcYU/tgOJ3lLl32zPvdBjNWrRTFQjp+D+CFZksw41S9zGnVWzuT5WBCdW7khas7YPq
+         B/qg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=pJHLxWBHfbqmvzOZUSxQLaGo5BYoxOcdXmYT8MESVjw=;
+        b=EdPo28xbp7Dk0sd2pXAnr6NSbWXjDZXI25dw7jQFA5FesYY5y2jun1Cbgz3b2iqxLP
+         LzL91bXkAsjWLhI1VhWt3EWBvMK0D3Ymff+6aAhVDog2jYBnwfD7+3ClMTyQKMb+0Lkd
+         RmjDLYbbKNW+uOCewbrp2gQPWis4om9S/6Ia+X03WC+2BuWGXcQqsh4hl/3kdYOJAxeT
+         2szbsHHCYiex+tyStPJOJBAvFcqsr3TSlAV0/R/gZYtglHYuI3opibkD5lxb9mSL12BB
+         sFKmcuuXZhsiEsiQz18wFzfe43kHb8L2Coqb+JlQ/SdB5Qn28+3zzqMERH/GCtwbWONq
+         Usiw==
+X-Gm-Message-State: APjAAAWPvTUNVQAgBL1SFevtUZzXPp8SxYKDqYgo8nmHn0C1bH5VVUCX
+        SJMYsHDB9a3SKe4nyOsmhBVTi3mxP3YpcNHQuMCmqg==
+X-Received: by 2002:a54:4e83:: with SMTP id c3mr29597998oiy.170.1571151190401;
+ Tue, 15 Oct 2019 07:53:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.133.224.57]
-X-CFilter-Loop: Reflected
+References: <20191015140140.34748-1-zhengxiang9@huawei.com> <20191015140140.34748-4-zhengxiang9@huawei.com>
+In-Reply-To: <20191015140140.34748-4-zhengxiang9@huawei.com>
+From:   Peter Maydell <peter.maydell@linaro.org>
+Date:   Tue, 15 Oct 2019 15:52:59 +0100
+Message-ID: <CAFEAcA9CWPKF5XibFtZRwavVj4PboGoaM5368Omje6qrOjV3AQ@mail.gmail.com>
+Subject: Re: [PATCH v19 3/5] ACPI: Add APEI GHES table generation support
+To:     Xiang Zheng <zhengxiang9@huawei.com>
+Cc:     Paolo Bonzini <pbonzini@redhat.com>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Shannon Zhao <shannon.zhaosl@gmail.com>,
+        Laszlo Ersek <lersek@redhat.com>,
+        James Morse <james.morse@arm.com>,
+        gengdongjiu <gengdongjiu@huawei.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Jonathan Cameron <jonathan.cameron@huawei.com>,
+        "xuwei (O)" <xuwei5@huawei.com>, kvm-devel <kvm@vger.kernel.org>,
+        QEMU Developers <qemu-devel@nongnu.org>,
+        qemu-arm <qemu-arm@nongnu.org>, Linuxarm <linuxarm@huawei.com>,
+        wanghaibin.wang@huawei.com
+Content-Type: text/plain; charset="UTF-8"
 Sender: kvm-owner@vger.kernel.org
 Precedence: bulk
 List-ID: <kvm.vger.kernel.org>
 X-Mailing-List: kvm@vger.kernel.org
-X-TUID: EOrgN545maSJ
+X-TUID: 1dz6MLV8RL7/
 
-From: Dongjiu Geng <gengdongjiu@huawei.com>
+On Tue, 15 Oct 2019 at 15:02, Xiang Zheng <zhengxiang9@huawei.com> wrote:
+>
+> From: Dongjiu Geng <gengdongjiu@huawei.com>
+>
+> This patch implements APEI GHES Table generation via fw_cfg blobs. Now
+> it only supports ARMv8 SEA, a type of GHESv2 error source. Afterwards,
+> we can extend the supported types if needed. For the CPER section,
+> currently it is memory section because kernel mainly wants userspace to
+> handle the memory errors.
+>
+> This patch follows the spec ACPI 6.2 to build the Hardware Error Source
+> table. For more detailed information, please refer to document:
+> docs/specs/acpi_hest_ghes.rst
+>
+> Suggested-by: Laszlo Ersek <lersek@redhat.com>
+> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
 
-RAS Virtualization feature is not supported now, so add a RAS machine
-option and disable it by default.
+> +    /* Error Status Address */
+> +    build_append_gas(table_data, AML_SYSTEM_MEMORY, 0x40, 0,
+> +                     4 /* QWord access */, 0);
 
-Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
----
- hw/arm/virt.c         | 23 +++++++++++++++++++++++
- include/hw/arm/virt.h |  1 +
- 2 files changed, 24 insertions(+)
+Hi; this doesn't seem to compile with clang:
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index d74538b..130ea7a 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1783,6 +1783,20 @@ static void virt_set_its(Object *obj, bool value, Error **errp)
-     vms->its = value;
- }
- 
-+static bool virt_get_ras(Object *obj, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    return vms->ras;
-+}
-+
-+static void virt_set_ras(Object *obj, bool value, Error **errp)
-+{
-+    VirtMachineState *vms = VIRT_MACHINE(obj);
-+
-+    vms->ras = value;
-+}
-+
- static char *virt_get_gic_version(Object *obj, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
-@@ -2026,6 +2040,15 @@ static void virt_instance_init(Object *obj)
-                                     "Valid values are none and smmuv3",
-                                     NULL);
- 
-+    /* Default disallows RAS instantiation */
-+    vms->ras = false;
-+    object_property_add_bool(obj, "ras", virt_get_ras,
-+                             virt_set_ras, NULL);
-+    object_property_set_description(obj, "ras",
-+                                    "Set on/off to enable/disable "
-+                                    "RAS instantiation",
-+                                    NULL);
-+
-     vms->irqmap = a15irqmap;
- 
-     virt_flash_create(vms);
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index a720942..21ca4e0 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -119,6 +119,7 @@ typedef struct {
-     bool highmem_ecam;
-     bool its;
-     bool virt;
-+    bool ras;
-     int32_t gic_version;
-     VirtIOMMUType iommu;
-     struct arm_boot_info bootinfo;
--- 
-1.8.3.1
+/home/petmay01/linaro/qemu-from-laptop/qemu/hw/acpi/acpi_ghes.c:330:34:
+error: implicit conversion from
+      enumeration type 'AmlRegionSpace' to different enumeration type
+'AmlAddressSpace'
+      [-Werror,-Wenum-conversion]
+    build_append_gas(table_data, AML_SYSTEM_MEMORY, 0x40, 0,
+    ~~~~~~~~~~~~~~~~             ^~~~~~~~~~~~~~~~~
+/home/petmay01/linaro/qemu-from-laptop/qemu/hw/acpi/acpi_ghes.c:351:34:
+error: implicit conversion from
+      enumeration type 'AmlRegionSpace' to different enumeration type
+'AmlAddressSpace'
+      [-Werror,-Wenum-conversion]
+    build_append_gas(table_data, AML_SYSTEM_MEMORY, 0x40, 0,
+    ~~~~~~~~~~~~~~~~             ^~~~~~~~~~~~~~~~~
+2 errors generated.
 
+Should these be AML_AS_SYSTEM_MEMORY, or should the build_append_gas()
+function be taking an AmlRegionSpace rather than an AmlAddressSpace ?
+
+thanks
+-- PMM

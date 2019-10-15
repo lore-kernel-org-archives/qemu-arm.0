@@ -1,133 +1,158 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5594396wrm;
-        Tue, 15 Oct 2019 04:00:02 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwCxVKDpQw4elj+VzBKHVYOrurUasdkJyZ7i1nMrziVI/fxrLNyusFaI4gKU9uJ++U+4tNR
-X-Received: by 2002:aa7:d4d9:: with SMTP id t25mr33013071edr.76.1571137202115;
-        Tue, 15 Oct 2019 04:00:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571137202; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp5657933wrm;
+        Tue, 15 Oct 2019 04:57:33 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyo6t/FUW73y+Tn3PC7PsudfO01+YoknUnIfr2Hm7TCKbBrxZhLBDxxsl19HtNJtBHDkH9F
+X-Received: by 2002:a0c:fa02:: with SMTP id q2mr73847qvn.43.1571140653415;
+        Tue, 15 Oct 2019 04:57:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571140653; cv=none;
         d=google.com; s=arc-20160816;
-        b=piRE4C89OD50A9H3aoCkVgQAEjMM9EmJH/zwc3tcPNUtM02ySCHGN1dsPd8i74e4f/
-         H1Ew4df3NZ8vcfekIRSsVpHQfX3/s7e0BGUwYqcGnnhqd9aWN4FoNNjQZgY+4cyssOc3
-         P/9EMaYBBZkt4zFbzdR8O+od/Anx2BQJOEXbYQRYHB8easLVAHfVmNEKQequqw65m7VE
-         lN1RmtgS+poHBbbW/7Qflc7Ib0SbXcNeGabpNL7/WL6R4aGC+HSD3aNCeUPSPnCPOmZa
-         h/0riujGgT7sSPIEoJHqiVUVaJA1CLercoJy06eKTPm9+kfcvnhp1b5IZef6IyF1aqAE
-         VVQg==
+        b=eBXTPjTucEE3QOATD4MdbbhSYM1NHn45iz9h2sJsU/u8y3pegbcpNwd3GEgkpm9bt3
+         /xDCHKKA7aT7+58FhhTciU43axE7tvfBnLeG1VZgPlY9C6+vmmf40r7WNE5Z2zixCOcT
+         igO6mqbrp7Hd798F+CD6zLY8IGtbCjjJRPyafjOrRxhC720IYypKlW82rc+qkz7DjUyI
+         IifJJlSXhZP+KnierFVZfUD5krsTEzY7h/ZbKU2C2EsyfGZyHXtZykDJ34Tq/aNHZhzF
+         Oo0HZmd0ZZL8nay66Dxoj0ZbHfd6ZKmt1C8zIiNz/YQ0T1RSm38HqPsngpg7f1BY5bR/
+         KaHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date;
-        bh=hYKgRKSKCwkepisISQS0LSUr/EfWMgxd6VxtSJoJ7/8=;
-        b=Mst18EGhp1nQXUoO03nAG1b4BLj8CdlbXsCKhM6KdInuu2qTsETEu0ENJNcIQCCUOg
-         XsDeAA/Bjqk8Q8PQL+/sDajL/4xVPScVdrAsfGoF6choLhSrAFSRVw4Dl3TRD/1Izjnp
-         Ah4+ALrfZTCxjNyZmSk1CyalGOtau+0de08Qgo1+TMag3Xy8L7eKtatcdDDGbgrwvG3F
-         3OqPOJjkFHyj+UWvdBEkbds7n6KC+tXcbcQmITLoRkr+LlH1x03KcDKvop3eaNSaG2wP
-         FprEzM3t1p10TEbHjkesNt0UrD4XjVpXT2KPMD1Rl9AdqqSV7UwEwLJDlPTrHqcFJlLp
-         PjLA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=IL5FBdAvXUA93jNHA93fQEkKBO6jrOksRZy3o133Nw0=;
+        b=MhjtL2judjCKd/3A969lny/NeiZCq0Y7kdkOb7KxzU2Cv2hOWLXLdLoIM0VWLH2v0f
+         OR1Qje8dj+ye6xeg4eG6vh5m7ewMhl2rhsCXJxvW94UI5dKJRNMTiUi+2GPDG/d+ypFv
+         hnJwymSaQz0wfTVlSBaS3ac3bYFDmrrvMAI5Es3MuWtQ+qoPGvt1IypCOK3+tXWjlLiv
+         iDf6XZJKrZoOVFA78X5RK4ji1goXgbYj+xtNONZ2YeZlT9xfbPqbxavzS5ClsyOW+QF4
+         uDUNK3yrxh32WsXobTqCfjIf/EIpu6PlcyArMhhDZVTfFlGxrHFyH7IDD2KnIX/Tmx1G
+         iGoA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=BCIoVq1T;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r3si12969928ejs.439.2019.10.15.04.00.02
+        by mx.google.com with ESMTPS id v8si20844249qtb.125.2019.10.15.04.57.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Oct 2019 04:00:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 15 Oct 2019 04:57:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40902 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=BCIoVq1T;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42320 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iKKYb-0005qo-4I
-	for alex.bennee@linaro.org; Tue, 15 Oct 2019 07:00:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52191)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iKLSG-0001tB-Sb
+	for alex.bennee@linaro.org; Tue, 15 Oct 2019 07:57:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33718)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1iKKVM-0001wI-5V
- for qemu-arm@nongnu.org; Tue, 15 Oct 2019 06:56:40 -0400
+ (envelope-from <beata.michalska@linaro.org>) id 1iKLRM-0001Pp-OL
+ for qemu-devel@nongnu.org; Tue, 15 Oct 2019 07:56:37 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1iKKVL-0008Kd-6V
- for qemu-arm@nongnu.org; Tue, 15 Oct 2019 06:56:40 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:60530)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>)
- id 1iKKVK-0008Hl-VA; Tue, 15 Oct 2019 06:56:39 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id E1795307BCC5;
- Tue, 15 Oct 2019 10:56:34 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B5FE6194B6;
- Tue, 15 Oct 2019 10:56:30 +0000 (UTC)
-Date: Tue, 15 Oct 2019 12:56:28 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Beata Michalska <beata.michalska@linaro.org>
-Subject: Re: [PATCH v5 1/9] target/arm/monitor: Introduce
- qmp_query_cpu_model_expansion
-Message-ID: <20191015105628.7ln6ph5s3vpsyfuw@kamzik.brq.redhat.com>
+ (envelope-from <beata.michalska@linaro.org>) id 1iKLRK-0002PD-JW
+ for qemu-devel@nongnu.org; Tue, 15 Oct 2019 07:56:36 -0400
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:45019)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
+ (Exim 4.71) (envelope-from <beata.michalska@linaro.org>)
+ id 1iKLRI-0002OF-Lh
+ for qemu-devel@nongnu.org; Tue, 15 Oct 2019 07:56:33 -0400
+Received: by mail-io1-xd41.google.com with SMTP id w12so45100005iol.11
+ for <qemu-devel@nongnu.org>; Tue, 15 Oct 2019 04:56:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=IL5FBdAvXUA93jNHA93fQEkKBO6jrOksRZy3o133Nw0=;
+ b=BCIoVq1TFJ8Sa5mrARu8UDRZotgXpHaEZamYmzIEi7QiOsgD3HJYqXfSdachcVgC4j
+ 3IJUvJiqmHu/MFsy0WvPF/CrsxvzLGC5j/b9umU+xnNNdU/WCHorK5LSSZ7DDK/C3EnW
+ uoWYTN4wUyXr1oB6pAQS7A0w2N4n6/DTviOSwpKOybtuXmBCEo+Bl/JxWKJfs++x2Q24
+ LtPj4WUtR/fr6Ik4rVU5AHkh2WAEuRyWQN9uM35jgeETGOIKacQ3RQinmS2qypTgYAsD
+ gPT7kRxiosrymbJRQuXtXIWKduc22Ad7dcEB9alpKysTNRmz6HYY5NWoFSG15WoHhPf3
+ uDIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=IL5FBdAvXUA93jNHA93fQEkKBO6jrOksRZy3o133Nw0=;
+ b=EQXO59JwILVpqCUyzB58BX+2GfhsRF55BPaI5WS1CjrtWUd7R2o9GUjjgh5HusW0nZ
+ 5K5IVHTh8x2IsHur/pvsidGzSwBxnbkzoe0byRWABhxqd/vpD87Pzn8HhajY+JOLupYY
+ MCNfQILd2Gv9xq7QhhW54c64ftk4NrD59JYPeNbkodLf8FiCLovlhbP/iyrhskOUlAD9
+ V06MtySpzdtCweOgFHRKItpkvblNun0QgqMrEXI1/vEdme2QlfocHT6D2DWktQGv3qMU
+ Yj0lhvZyDUyKsbEajTm8wnfWALze/+z1M3nWHNRAADw7jz3bpSgeymE77gpuxQ5Yk/ch
+ 6CnQ==
+X-Gm-Message-State: APjAAAVHKbKZKy/8RkwJOKFw+SNfpLph7Z3jCgH4vai22y+BTBNC8ft8
+ Cb0+lEtNgmtehxbj/dAYOXyY1U5k4jIeGPrDLcfZ5g==
+X-Received: by 2002:a5e:9741:: with SMTP id h1mr7061223ioq.143.1571140590103; 
+ Tue, 15 Oct 2019 04:56:30 -0700 (PDT)
+MIME-Version: 1.0
 References: <20191001125845.8793-1-drjones@redhat.com>
  <20191001125845.8793-2-drjones@redhat.com>
  <CADSWDztJDUEd+_7XnBPWL1bk5Xh=V_aLc1+VrP97_Ycbe3489A@mail.gmail.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CADSWDztJDUEd+_7XnBPWL1bk5Xh=V_aLc1+VrP97_Ycbe3489A@mail.gmail.com>
-User-Agent: NeoMutt/20180716
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.49]); Tue, 15 Oct 2019 10:56:35 +0000 (UTC)
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
-X-BeenThere: qemu-arm@nongnu.org
+ <20191015105628.7ln6ph5s3vpsyfuw@kamzik.brq.redhat.com>
+In-Reply-To: <20191015105628.7ln6ph5s3vpsyfuw@kamzik.brq.redhat.com>
+From: Beata Michalska <beata.michalska@linaro.org>
+Date: Tue, 15 Oct 2019 12:56:19 +0100
+Message-ID: <CADSWDzsKx7+4mR4pmsqi0+rddUv47q=UKwVt509B8g68UoRiMA@mail.gmail.com>
+Subject: Re: [PATCH v5 1/9] target/arm/monitor: Introduce
+ qmp_query_cpu_model_expansion
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 2607:f8b0:4864:20::d41
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
  armbru@redhat.com, eric.auger@redhat.com, qemu-arm@nongnu.org,
  imammedo@redhat.com, Dave.Martin@arm.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: O86bMk8LOr/g
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4541NEb1KkQ4
 
-On Tue, Oct 15, 2019 at 10:59:16AM +0100, Beata Michalska wrote:
-> On Tue, 1 Oct 2019 at 14:04, Andrew Jones <drjones@redhat.com> wrote:
-> > +
-> > +    obj = object_new(object_class_get_name(oc));
-> > +
-> > +    if (qdict_in) {
-> > +        Visitor *visitor;
-> > +        Error *err = NULL;
-> > +
-> > +        visitor = qobject_input_visitor_new(model->props);
-> > +        visit_start_struct(visitor, NULL, NULL, 0, &err);
-> > +        if (err) {
-> > +            object_unref(obj);
-> 
-> Shouldn't we free the 'visitor' here as well ?
+On Tue, 15 Oct 2019 at 11:56, Andrew Jones <drjones@redhat.com> wrote:
+>
+> On Tue, Oct 15, 2019 at 10:59:16AM +0100, Beata Michalska wrote:
+> > On Tue, 1 Oct 2019 at 14:04, Andrew Jones <drjones@redhat.com> wrote:
+> > > +
+> > > +    obj = object_new(object_class_get_name(oc));
+> > > +
+> > > +    if (qdict_in) {
+> > > +        Visitor *visitor;
+> > > +        Error *err = NULL;
+> > > +
+> > > +        visitor = qobject_input_visitor_new(model->props);
+> > > +        visit_start_struct(visitor, NULL, NULL, 0, &err);
+> > > +        if (err) {
+> > > +            object_unref(obj);
+> >
+> > Shouldn't we free the 'visitor' here as well ?
+>
+> Yes. Good catch. So we also need to fix
+> target/s390x/cpu_models.c:cpu_model_from_info(), which has the same
+> construction (the construction from which I derived this)
+>
+> >
+> > > +            error_propagate(errp, err);
+> > > +            return NULL;
+> > > +        }
+> > > +
+>
+> What about the rest of the patch? With that fixed for v6 can I
+> add your r-b?
+>
 
-Yes. Good catch. So we also need to fix
-target/s390x/cpu_models.c:cpu_model_from_info(), which has the same
-construction (the construction from which I derived this)
+I still got this feeling that we could optimize that a bit - which I'm
+currently on, so hopefully I'll be able to add more comments soon if
+that proves to be the case.
 
-> 
-> > +            error_propagate(errp, err);
-> > +            return NULL;
-> > +        }
-> > +
+BR
+Beata
 
-What about the rest of the patch? With that fixed for v6 can I
-add your r-b?
-
-Thanks,
-drew
+> Thanks,
+> drew

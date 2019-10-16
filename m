@@ -1,81 +1,86 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp7234880wrm;
-        Wed, 16 Oct 2019 07:35:30 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwu32UpSMu4B3qYZxZi+Z+/RhX+sa0fvGCS4Q0r43vsOjs/XAzVAQ0qTRoxn13StrESGURJ
-X-Received: by 2002:aed:30d1:: with SMTP id 75mr45409595qtf.163.1571236530335;
-        Wed, 16 Oct 2019 07:35:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571236530; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp7610930wrm;
+        Wed, 16 Oct 2019 13:16:20 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw5wrWSeWT0usPhjf68RD7Y8wMzB0n8zEKPUB+408RBL81tbhn6tvNy6WqZxxZRXrkrEs+N
+X-Received: by 2002:a37:6f06:: with SMTP id k6mr25651325qkc.141.1571256980398;
+        Wed, 16 Oct 2019 13:16:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571256980; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZJt04Ie0noqLMvXOY9Eo4tIKZjS9B7NP4QV9Sx6aI3EnHWpj1vSOPfJKDfXBdYglpn
-         7l5EjjM8ElTf6k2IsD2OhnjJSxxOI5tQkXGNNwoPlj9LfWCjDuTluvc1LwaNe2KTpk+V
-         SZTGkg1J7fSZr6hHa+6HiP6BzUO8kwmRU41tOMrdBMOgPZzf0W7wnQrGFsnXvKDTwPjS
-         V1ycXNngPO+0FykmSdjvnGz0wf8Ow0lgBMYGEEt1R5MqzGcW1QM30czC/e8272voCvSF
-         DlLEGei3COfmkKvkwVykp2JO2ujaYG9N4gzC02b4v+Nn7D+68eGpk/XhFBfv0AnwdU3E
-         QP7g==
+        b=MzEp6XvLwW0rxrAIOr2/TXud0gllc5sVZK2x371VP8v6bHF9T8InA5xNAgDD8TUzTf
+         o4EDGhAMIKLFC+5/YbwDU1FwEtTG+C2vRdFINhDRTdk+abKCKxfrdiAxLByiQQfaiyMc
+         n3CmlwRA390RnlzJPthe8Umv5GKsqdyebRghJpNYEpkGGhscOflXzlTWJJhQeBKjuNlj
+         66ATJQ+dowKMplHVtcCsj70WIM6qlFvWVpFzJ0AS0bSP2tT+XD9gnvIFjEZlpULdMKpa
+         FK2po1lhEVGoj2hRq2l2IPkf1e/UEtUy6wziy0x3nze64uWTtF4Fz7P/lTUuSthFP69Q
+         mMNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=NUVGCcqNi07F1iYKJxDPRco/bKxJ56iqEVjbB2QWYpE=;
-        b=xsVAIlLSiLi9iFMMtfSyAhnMYpSNMu7FsAtUV6bUlD2uUzwxKnUJem0AGlKMidngpX
-         VDGebnbgdRTtr305qo/CDPcS/4Dou1cSzeM+wk/b8Ij+8uYlHadxhxVF1QqF3aKK0hAo
-         Rc2uDZvFJAQD7K8RlleDHmGYElOTYfPP9ZJsdR715Xyd+XWauXDE4RfRosNPJgvqlhaH
-         SG0YQXbTD3bVVH0h3Plq74yqTaPLHjRZnovupJoJldPTeGDk13n0FvYbBJ1zNCji/c+s
-         pGzvl2pXYu9s0wgMzBAlyBn86pizSo5QVF5ypRBLE75Qja6jYuwHtULIrwZJNU0RKDuc
-         e6zQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=xeAM3tzrTC7v2YkxJAGMQw0xiqRGFFmxZAz1nNNQh08=;
+        b=CcEEPSzjUUmZHdi2el1e/cOymtg+KwZcnORs+bW5cRO97GFVzNVVtIZIJcFUOMtnrP
+         bDnlMSxzjOBCi5RkcELvNk2lfvf44hXEFW0yLY2N9xK0Dt9Ga67W4XU5ax6ZxAE4nl0q
+         dGaNh2DBvv+Glx+UXitI++Sw3jUOHrYJ3MRU6IogW/BttqJggFIuiokK0NiIfLtzg4xa
+         FmWMrrixFxTP5ZLFTcKFAWPIRzpmkyIBbzeFmR6XRk588OpmiifEOLg5myrF3x3dtu9v
+         xDEjjsqA6m+Br2+m4GL1X6xrAMUPgFBLsjkiSIjNbIXiIY/exAru//sCuTBs4r4JQcEp
+         mpCw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v185si24508318qkc.291.2019.10.16.07.35.30
+        by mx.google.com with ESMTPS id cx11si39162qvb.25.2019.10.16.13.16.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Oct 2019 07:35:30 -0700 (PDT)
+        Wed, 16 Oct 2019 13:16:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43412 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from localhost ([::1]:47786 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iKkOf-0005yx-Dl
-	for alex.bennee@linaro.org; Wed, 16 Oct 2019 10:35:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41764)
+	id 1iKpiV-0000Jc-1x
+	for alex.bennee@linaro.org; Wed, 16 Oct 2019 16:16:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58438)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1iKkNd-0005C0-Ny
- for qemu-arm@nongnu.org; Wed, 16 Oct 2019 10:34:27 -0400
+ (envelope-from <jae.hyun.yoo@linux.intel.com>) id 1iKoZd-0002V3-7B
+ for qemu-arm@nongnu.org; Wed, 16 Oct 2019 15:03:07 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1iKkNb-0000kQ-Ph
- for qemu-arm@nongnu.org; Wed, 16 Oct 2019 10:34:25 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:42846)
+ (envelope-from <jae.hyun.yoo@linux.intel.com>) id 1iKoZZ-0006tU-C9
+ for qemu-arm@nongnu.org; Wed, 16 Oct 2019 15:03:03 -0400
+Received: from mga18.intel.com ([134.134.136.126]:17053)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <drjones@redhat.com>)
- id 1iKkNb-0000k0-HV; Wed, 16 Oct 2019 10:34:23 -0400
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id AA32E18CB90C;
- Wed, 16 Oct 2019 14:34:22 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3761F19C68;
- Wed, 16 Oct 2019 14:34:21 +0000 (UTC)
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH v1 5/5] target/arm/cpu: Add the kvm-adjvtime CPU property
-Date: Wed, 16 Oct 2019 16:34:10 +0200
-Message-Id: <20191016143410.5023-6-drjones@redhat.com>
-In-Reply-To: <20191016143410.5023-1-drjones@redhat.com>
-References: <20191016143410.5023-1-drjones@redhat.com>
+ (Exim 4.71) (envelope-from <jae.hyun.yoo@linux.intel.com>)
+ id 1iKoZU-0006o2-Us; Wed, 16 Oct 2019 15:02:57 -0400
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+ by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
+ 16 Oct 2019 12:02:49 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.67,304,1566889200"; d="scan'208";a="186243015"
+Received: from yoojae-mobl1.amr.corp.intel.com (HELO [10.7.153.143])
+ ([10.7.153.143])
+ by orsmga007.jf.intel.com with ESMTP; 16 Oct 2019 12:02:49 -0700
+Subject: Re: [PATCH 1/5] aspeed/i2c: Add support for pool buffer transfers
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20191016085035.12136-1-clg@kaod.org>
+ <20191016085035.12136-2-clg@kaod.org>
+From: Jae Hyun Yoo <jae.hyun.yoo@linux.intel.com>
+Message-ID: <03475e1b-84c3-f5d1-ac23-81365ea150b9@linux.intel.com>
+Date: Wed, 16 Oct 2019 12:02:49 -0700
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
- (mx1.redhat.com [10.5.110.63]); Wed, 16 Oct 2019 14:34:22 +0000 (UTC)
-Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 209.132.183.28
+In-Reply-To: <20191016085035.12136-2-clg@kaod.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
+ recognized.
+X-Received-From: 134.134.136.126
+X-Mailman-Approved-At: Wed, 16 Oct 2019 16:16:04 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -87,234 +92,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
- bijan.mottahedeh@oracle.com, maz@kernel.org
+Cc: Andrew Jeffery <andrew@aj.id.au>, Eddie James <eajames@linux.vnet.ibm.com>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s5oobHBFZqU4
+X-TUID: Ro8l12pRUc/O
 
-kvm-adjvtime is a KVM specific CPU property and a first of its kind.
-To accommodate it we also add kvm_arm_add_vcpu_properties() and a
-KVM specific CPU properties description to the CPU features document.
+On 10/16/2019 1:50 AM, Cédric Le Goater wrote:
+> The Aspeed I2C controller can operate in different transfer modes :
+> 
+>    - Byte Buffer mode, using a dedicated register to transfer a
+>      byte. This is what the model supports today.
+> 
+>    - Pool Buffer mode, using an internal SRAM to transfer multiple
+>      bytes in the same command sequence.
+> 
+> Each SoC has different SRAM characteristics. On the AST2400, 2048
+> bytes of SRAM are available at offset 0x800 of the controller AHB
+> window. The pool buffer can be configured from 1 to 256 bytes per bus.
+> 
+> On the AST2500, the SRAM is at offset 0x200 and the pool buffer is of
+> 16 bytes per bus.
+> 
+> On the AST2600, the SRAM is at offset 0xC00 and the pool buffer is of
+> 32 bytes per bus. It can be splitted in two for TX and RX but the
+> current model does not add support for it as it it unused by known
+> drivers.
+> 
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- docs/arm-cpu-features.rst | 27 ++++++++++++++++++++++++++-
- target/arm/cpu.c          |  2 ++
- target/arm/cpu64.c        |  1 +
- target/arm/kvm.c          | 27 +++++++++++++++++++++++++++
- target/arm/kvm_arm.h      | 11 +++++++++++
- target/arm/monitor.c      |  1 +
- tests/arm-cpu-features.c  |  4 ++++
- 7 files changed, 72 insertions(+), 1 deletion(-)
-
-diff --git a/docs/arm-cpu-features.rst b/docs/arm-cpu-features.rst
-index 1b367e22e16e..5c317296845f 100644
---- a/docs/arm-cpu-features.rst
-+++ b/docs/arm-cpu-features.rst
-@@ -31,7 +31,9 @@ supporting the feature or only supporting the feature u=
-nder certain
- configurations.  For example, the `aarch64` CPU feature, which, when
- disabled, enables the optional AArch32 CPU feature, is only supported
- when using the KVM accelerator and when running on a host CPU type that
--supports the feature.
-+supports the feature.  While `aarch64` currently only works with KVM,
-+it could work with TCG.  CPU features that are specific to KVM are
-+prefixed with "kvm-" and are described in "KVM VCPU Features".
-=20
- CPU Feature Probing
- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-@@ -171,6 +173,29 @@ disabling many SVE vector lengths would be quite ver=
-bose, the `sve<N>` CPU
- properties have special semantics (see "SVE CPU Property Parsing
- Semantics").
-=20
-+KVM VCPU Features
-+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-+
-+KVM VCPU features are CPU features that are specific to KVM, such as
-+paravirt features or features that enable CPU virtualization extensions.
-+The features' CPU properties are only available when KVM is enabled and =
-are
-+named with the prefix "kvm-".  KVM VCPU features may be probed, enabled,=
- and
-+disabled in the same way as other CPU features.  Below is the list of KV=
-M
-+VCPU features and their descriptions.
-+
-+  kvm-adjvtime             When enabled, each time the VM transitions ba=
-ck
-+                           to running state the VCPU's vitual counter is
-+                           updated to ensure stopped time is not counted=
-.
-+                           This avoids time jumps surprising guest OSes =
-and
-+                           applications, as long as they use the virtual
-+                           counter for timekeeping, but has the side eff=
-ect
-+                           of the virtual and physical counters divergin=
-g.
-+                           All timekeeping based on the virtual counter =
-will
-+                           appear to lag behind any timekeeping that doe=
-s
-+                           not subtract VM stopped time.  The guest may
-+                           resynchronize its virtual counter with other =
-time
-+                           sources as needed.
-+
- SVE CPU Properties
- =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-=20
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 0c4465880ddd..151771e12bc5 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -2481,6 +2481,7 @@ static void arm_max_initfn(Object *obj)
-=20
-     if (kvm_enabled()) {
-         kvm_arm_set_cpu_features_from_host(cpu);
-+        kvm_arm_add_vcpu_properties(obj);
-     } else {
-         cortex_a15_initfn(obj);
-=20
-@@ -2672,6 +2673,7 @@ static void arm_host_initfn(Object *obj)
-     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-         aarch64_add_sve_properties(obj);
-     }
-+    kvm_arm_add_vcpu_properties(obj);
-     arm_cpu_post_init(obj);
- }
-=20
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 68baf0482ffa..c9a657a178ce 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -620,6 +620,7 @@ static void aarch64_max_initfn(Object *obj)
-=20
-     if (kvm_enabled()) {
-         kvm_arm_set_cpu_features_from_host(cpu);
-+        kvm_arm_add_vcpu_properties(obj);
-     } else {
-         uint64_t t;
-         uint32_t u;
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 373b868dc248..35160e8d0525 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -17,6 +17,8 @@
- #include "qemu/timer.h"
- #include "qemu/error-report.h"
- #include "qemu/main-loop.h"
-+#include "qom/object.h"
-+#include "qapi/error.h"
- #include "sysemu/sysemu.h"
- #include "sysemu/kvm.h"
- #include "sysemu/kvm_int.h"
-@@ -179,6 +181,31 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
-     env->features =3D arm_host_cpu_features.features;
- }
-=20
-+static bool kvm_adjvtime_get(Object *obj, Error **errp)
-+{
-+    return ARM_CPU(obj)->kvm_adjvtime;
-+}
-+
-+static void kvm_adjvtime_set(Object *obj, bool value, Error **errp)
-+{
-+    ARM_CPU(obj)->kvm_adjvtime =3D value;
-+}
-+
-+/* KVM VCPU properties should be prefixed with "kvm-". */
-+void kvm_arm_add_vcpu_properties(Object *obj)
-+{
-+    if (!kvm_enabled()) {
-+        return;
-+    }
-+
-+    object_property_add_bool(obj, "kvm-adjvtime", kvm_adjvtime_get,
-+                             kvm_adjvtime_set, &error_abort);
-+    object_property_set_description(obj, "kvm-adjvtime",
-+                                    "Set on to enable the adjustment of =
-"
-+                                    "the virtual counter. VM stopped tim=
-e "
-+                                    "will not be counted.", &error_abort=
-);
-+}
-+
- bool kvm_arm_pmu_supported(CPUState *cpu)
- {
-     KVMState *s =3D KVM_STATE(current_machine->accelerator);
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index 3bb7e331aa06..a5429bfc0dbf 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -232,6 +232,15 @@ void kvm_arm_sve_get_vls(CPUState *cs, unsigned long=
- *map);
-  */
- void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
-=20
-+/**
-+ * void kvm_arm_add_vcpu_properties:
-+ * @obj: The CPU object to add the properties to
-+ *
-+ * Add all KVM specific CPU properties to the CPU object. These
-+ * are the CPU properties with "kvm-" prefixed names.
-+ */
-+void kvm_arm_add_vcpu_properties(Object *obj);
-+
- /**
-  * void kvm_arm_set_virtual_time:
-  * @cs: CPUState
-@@ -311,6 +320,8 @@ static inline void kvm_arm_set_cpu_features_from_host=
-(ARMCPU *cpu)
-     cpu->host_cpu_probe_failed =3D true;
- }
-=20
-+static inline void kvm_arm_add_vcpu_properties(Object *obj) {}
-+
- static inline bool kvm_arm_aarch32_supported(CPUState *cs)
- {
-     return false;
-diff --git a/target/arm/monitor.c b/target/arm/monitor.c
-index fa054f8a369c..d9b2d94ac3fa 100644
---- a/target/arm/monitor.c
-+++ b/target/arm/monitor.c
-@@ -103,6 +103,7 @@ static const char *cpu_model_advertised_features[] =3D=
- {
-     "sve128", "sve256", "sve384", "sve512",
-     "sve640", "sve768", "sve896", "sve1024", "sve1152", "sve1280",
-     "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
-+    "kvm-adjvtime",
-     NULL
- };
-=20
-diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
-index ee444b04010f..c207a2bec9e9 100644
---- a/tests/arm-cpu-features.c
-+++ b/tests/arm-cpu-features.c
-@@ -417,6 +417,8 @@ static void test_query_cpu_model_expansion(const void=
- *data)
-     assert_has_feature_enabled(qts, "cortex-a15", "pmu");
-     assert_has_not_feature(qts, "cortex-a15", "aarch64");
-=20
-+    assert_has_not_feature(qts, "max", "kvm-adjvtime");
-+
-     if (g_str_equal(qtest_get_arch(), "aarch64")) {
-         assert_has_feature_enabled(qts, "max", "aarch64");
-         assert_has_feature_enabled(qts, "max", "sve");
-@@ -445,6 +447,8 @@ static void test_query_cpu_model_expansion_kvm(const =
-void *data)
-=20
-     assert_has_feature_enabled(qts, "host", "pmu");
-=20
-+    assert_has_feature_disabled(qts, "host", "kvm-adjvtime");
-+
-     if (g_str_equal(qtest_get_arch(), "aarch64")) {
-         bool kvm_supports_sve;
-         char max_name[8], name[8];
---=20
-2.21.0
-
+Tested-by: Jae Hyun Yoo <jae.hyun.yoo@linux.intel.com>

@@ -1,124 +1,340 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp7610930wrm;
-        Wed, 16 Oct 2019 13:16:20 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw5wrWSeWT0usPhjf68RD7Y8wMzB0n8zEKPUB+408RBL81tbhn6tvNy6WqZxxZRXrkrEs+N
-X-Received: by 2002:a37:6f06:: with SMTP id k6mr25651325qkc.141.1571256980398;
-        Wed, 16 Oct 2019 13:16:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571256980; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp7384099wrm;
+        Wed, 16 Oct 2019 09:37:57 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyrPSAwUE01n2vtPzLwg3/dEM8h44ZjXrDMrxFn2d1zzqm00pklqocKnp66tvxQMawxQDhf
+X-Received: by 2002:a5e:8e05:: with SMTP id a5mr25540386ion.125.1571243876892;
+        Wed, 16 Oct 2019 09:37:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571243876; cv=none;
         d=google.com; s=arc-20160816;
-        b=MzEp6XvLwW0rxrAIOr2/TXud0gllc5sVZK2x371VP8v6bHF9T8InA5xNAgDD8TUzTf
-         o4EDGhAMIKLFC+5/YbwDU1FwEtTG+C2vRdFINhDRTdk+abKCKxfrdiAxLByiQQfaiyMc
-         n3CmlwRA390RnlzJPthe8Umv5GKsqdyebRghJpNYEpkGGhscOflXzlTWJJhQeBKjuNlj
-         66ATJQ+dowKMplHVtcCsj70WIM6qlFvWVpFzJ0AS0bSP2tT+XD9gnvIFjEZlpULdMKpa
-         FK2po1lhEVGoj2hRq2l2IPkf1e/UEtUy6wziy0x3nze64uWTtF4Fz7P/lTUuSthFP69Q
-         mMNw==
+        b=QBW25isSxEpEj9/d/GHZxeNZs+BiXsJxrK4LHHdkbm9iRXzJSINwNIEa6HopYPtqq5
+         RJiqVNbJbxdRhR4NEXe8YlP9beCYrGPMEveWJRBzY7jNQOW8VgC74k1/vq7E3git1s2I
+         pKIFAi7BuhWtEOWTZbhelDzPMlzonekaSi5tEwhoEdKlQQLY09IauXlYEaHHAFO+Xytg
+         hn4mC88UkJrBrAfF05zvC8umfIrZ2ZTcqvYP4QMJF9IAd5MRg+EqFaeX2qQ947C3N8P0
+         nDptMU0dNQSW212fMrQTpK0BC2tlmo3oMEeQA0kMUmRtTcB7D9BUcYPTymhlv1YAD4cr
+         C0OQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=xeAM3tzrTC7v2YkxJAGMQw0xiqRGFFmxZAz1nNNQh08=;
-        b=CcEEPSzjUUmZHdi2el1e/cOymtg+KwZcnORs+bW5cRO97GFVzNVVtIZIJcFUOMtnrP
-         bDnlMSxzjOBCi5RkcELvNk2lfvf44hXEFW0yLY2N9xK0Dt9Ga67W4XU5ax6ZxAE4nl0q
-         dGaNh2DBvv+Glx+UXitI++Sw3jUOHrYJ3MRU6IogW/BttqJggFIuiokK0NiIfLtzg4xa
-         FmWMrrixFxTP5ZLFTcKFAWPIRzpmkyIBbzeFmR6XRk588OpmiifEOLg5myrF3x3dtu9v
-         xDEjjsqA6m+Br2+m4GL1X6xrAMUPgFBLsjkiSIjNbIXiIY/exAru//sCuTBs4r4JQcEp
-         mpCw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=EAjV9A/iKL+hkSxz5IXws2mn0Bxr9tZ8x3567y7nfYE=;
+        b=EWrn5fFUmc22JIP20/H/BWOm/cnGV3PkDho7aRDGqe9gQAc9td5wjSQgotRTColcVm
+         TUUD5prnUgZRoqkgTEDay8vorsAtXrrFyBRD9l3YLg/h2jdv6C7KbI616FusZB2/LWvi
+         sMXzYwd7cRUKjsG3P8u+cwPe36nTwkhy1F8iLzxZUQKZQErRAQoSNgONp2hO4VYnlAYe
+         YAgXo19D7QaXkwgdBsJ1G+VoShY8XK3ZCrnywZy6xB5IDfAY8CpFjkjt7Rcm6oYwpbPz
+         iT0EfAVcTUuEtyltjhFMw59hABQQ1AhMf6jPP/eSdZZmIxsZsWHzSR+RwpjmXyJaJ9e+
+         nGtg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id cx11si39162qvb.25.2019.10.16.13.16.20
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Oct 2019 13:16:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id d8si11178220iln.118.2019.10.16.09.37.56
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 16 Oct 2019 09:37:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:47786 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iKpiV-0000Jc-1x
-	for alex.bennee@linaro.org; Wed, 16 Oct 2019 16:16:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58438)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jae.hyun.yoo@linux.intel.com>) id 1iKoZd-0002V3-7B
- for qemu-arm@nongnu.org; Wed, 16 Oct 2019 15:03:07 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jae.hyun.yoo@linux.intel.com>) id 1iKoZZ-0006tU-C9
- for qemu-arm@nongnu.org; Wed, 16 Oct 2019 15:03:03 -0400
-Received: from mga18.intel.com ([134.134.136.126]:17053)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jae.hyun.yoo@linux.intel.com>)
- id 1iKoZU-0006o2-Us; Wed, 16 Oct 2019 15:02:57 -0400
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga106.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 16 Oct 2019 12:02:49 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,304,1566889200"; d="scan'208";a="186243015"
-Received: from yoojae-mobl1.amr.corp.intel.com (HELO [10.7.153.143])
- ([10.7.153.143])
- by orsmga007.jf.intel.com with ESMTP; 16 Oct 2019 12:02:49 -0700
-Subject: Re: [PATCH 1/5] aspeed/i2c: Add support for pool buffer transfers
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20191016085035.12136-1-clg@kaod.org>
- <20191016085035.12136-2-clg@kaod.org>
-From: Jae Hyun Yoo <jae.hyun.yoo@linux.intel.com>
-Message-ID: <03475e1b-84c3-f5d1-ac23-81365ea150b9@linux.intel.com>
-Date: Wed, 16 Oct 2019 12:02:49 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 1C8273082A8D;
+	Wed, 16 Oct 2019 16:37:56 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 396DF5D6A9;
+	Wed, 16 Oct 2019 16:37:52 +0000 (UTC)
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	Dave.Martin@arm.com,
+	eric.auger@redhat.com
+Subject: [PATCH v3] target/arm/arch_dump: Add SVE notes
+Date: Wed, 16 Oct 2019 18:37:50 +0200
+Message-Id: <20191016163750.11751-1-drjones@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20191016085035.12136-2-clg@kaod.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 134.134.136.126
-X-Mailman-Approved-At: Wed, 16 Oct 2019 16:16:04 -0400
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Eddie James <eajames@linux.vnet.ibm.com>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ro8l12pRUc/O
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.45]); Wed, 16 Oct 2019 16:37:56 +0000 (UTC)
+X-TUID: GlDt9DRePC05
 
-On 10/16/2019 1:50 AM, Cédric Le Goater wrote:
-> The Aspeed I2C controller can operate in different transfer modes :
-> 
->    - Byte Buffer mode, using a dedicated register to transfer a
->      byte. This is what the model supports today.
-> 
->    - Pool Buffer mode, using an internal SRAM to transfer multiple
->      bytes in the same command sequence.
-> 
-> Each SoC has different SRAM characteristics. On the AST2400, 2048
-> bytes of SRAM are available at offset 0x800 of the controller AHB
-> window. The pool buffer can be configured from 1 to 256 bytes per bus.
-> 
-> On the AST2500, the SRAM is at offset 0x200 and the pool buffer is of
-> 16 bytes per bus.
-> 
-> On the AST2600, the SRAM is at offset 0xC00 and the pool buffer is of
-> 32 bytes per bus. It can be splitted in two for TX and RX but the
-> current model does not add support for it as it it unused by known
-> drivers.
-> 
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+When dumping a guest with dump-guest-memory also dump the SVE
+registers if they are in use.
 
-Tested-by: Jae Hyun Yoo <jae.hyun.yoo@linux.intel.com>
+Signed-off-by: Andrew Jones <drjones@redhat.com>
+---
+v3:
+  - Pulled sve_bswap64 out of kvm64.c and reused it here
+  - Changed fpsr_offset and sve_size to only align to a
+    16 byte boundary from the note payload offset, not
+    from the note head. Doing this makes it consistent
+    with the documentation and what gcore does. Testing
+    shows that the elf headers and gdb are still happy.
+  - Added blank lines between functions
+
+
+ include/elf.h          |   2 +
+ target/arm/arch_dump.c | 124 ++++++++++++++++++++++++++++++++++++++++-
+ target/arm/cpu.h       |  25 +++++++++
+ target/arm/kvm64.c     |  24 --------
+ 4 files changed, 149 insertions(+), 26 deletions(-)
+
+diff --git a/include/elf.h b/include/elf.h
+index 3501e0c8d03a..a7c357af74ca 100644
+--- a/include/elf.h
++++ b/include/elf.h
+@@ -1650,6 +1650,8 @@ typedef struct elf64_shdr {
+ #define NT_ARM_HW_BREAK 0x402           /* ARM hardware breakpoint registers */
+ #define NT_ARM_HW_WATCH 0x403           /* ARM hardware watchpoint registers */
+ #define NT_ARM_SYSTEM_CALL      0x404   /* ARM system call number */
++#define NT_ARM_SVE	0x405		/* ARM Scalable Vector Extension
++					   registers */
+ 
+ /*
+  * Physical entry point into the kernel.
+diff --git a/target/arm/arch_dump.c b/target/arm/arch_dump.c
+index 26a2c098687c..2345dec3c2c2 100644
+--- a/target/arm/arch_dump.c
++++ b/target/arm/arch_dump.c
+@@ -62,12 +62,23 @@ struct aarch64_user_vfp_state {
+ 
+ QEMU_BUILD_BUG_ON(sizeof(struct aarch64_user_vfp_state) != 528);
+ 
++/* struct user_sve_header from arch/arm64/include/uapi/asm/ptrace.h */
++struct aarch64_user_sve_header {
++    uint32_t size;
++    uint32_t max_size;
++    uint16_t vl;
++    uint16_t max_vl;
++    uint16_t flags;
++    uint16_t reserved;
++} QEMU_PACKED;
++
+ struct aarch64_note {
+     Elf64_Nhdr hdr;
+     char name[8]; /* align_up(sizeof("CORE"), 4) */
+     union {
+         struct aarch64_elf_prstatus prstatus;
+         struct aarch64_user_vfp_state vfp;
++        struct aarch64_user_sve_header sve;
+     };
+ } QEMU_PACKED;
+ 
+@@ -76,6 +87,8 @@ struct aarch64_note {
+             (AARCH64_NOTE_HEADER_SIZE + sizeof(struct aarch64_elf_prstatus))
+ #define AARCH64_PRFPREG_NOTE_SIZE \
+             (AARCH64_NOTE_HEADER_SIZE + sizeof(struct aarch64_user_vfp_state))
++#define AARCH64_SVE_NOTE_SIZE(env) \
++            (AARCH64_NOTE_HEADER_SIZE + sve_size(env))
+ 
+ static void aarch64_note_init(struct aarch64_note *note, DumpState *s,
+                               const char *name, Elf64_Word namesz,
+@@ -128,11 +141,102 @@ static int aarch64_write_elf64_prfpreg(WriteCoreDumpFunction f,
+     return 0;
+ }
+ 
++#ifdef TARGET_AARCH64
++static off_t sve_zreg_offset(uint32_t vq, int n)
++{
++    off_t off = sizeof(struct aarch64_user_sve_header);
++    return ROUND_UP(off, 16) + vq * 16 * n;
++}
++
++static off_t sve_preg_offset(uint32_t vq, int n)
++{
++    return sve_zreg_offset(vq, 32) + vq * 16 / 8 * n;
++}
++
++static off_t sve_fpsr_offset(uint32_t vq)
++{
++    off_t off = sve_preg_offset(vq, 17);
++    return ROUND_UP(off, 16);
++}
++
++static off_t sve_fpcr_offset(uint32_t vq)
++{
++    return sve_fpsr_offset(vq) + sizeof(uint32_t);
++}
++
++static uint32_t sve_current_vq(CPUARMState *env)
++{
++    return sve_zcr_len_for_el(env, arm_current_el(env)) + 1;
++}
++
++static size_t sve_size_vq(uint32_t vq)
++{
++    off_t off = sve_fpcr_offset(vq) + sizeof(uint32_t);
++    return ROUND_UP(off, 16);
++}
++
++static size_t sve_size(CPUARMState *env)
++{
++    return sve_size_vq(sve_current_vq(env));
++}
++
++static int aarch64_write_elf64_sve(WriteCoreDumpFunction f,
++                                   CPUARMState *env, int cpuid,
++                                   DumpState *s)
++{
++    struct aarch64_note *note;
++    ARMCPU *cpu = env_archcpu(env);
++    uint32_t vq = sve_current_vq(env);
++    uint64_t tmp[ARM_MAX_VQ * 2], *r;
++    uint32_t fpr;
++    uint8_t *buf;
++    int ret, i;
++
++    note = g_malloc0(AARCH64_SVE_NOTE_SIZE(env));
++    buf = (uint8_t *)&note->sve;
++
++    aarch64_note_init(note, s, "LINUX", 6, NT_ARM_SVE, sve_size_vq(vq));
++
++    note->sve.size = cpu_to_dump32(s, sve_size_vq(vq));
++    note->sve.max_size = cpu_to_dump32(s, sve_size_vq(cpu->sve_max_vq));
++    note->sve.vl = cpu_to_dump16(s, vq * 16);
++    note->sve.max_vl = cpu_to_dump16(s, cpu->sve_max_vq * 16);
++    note->sve.flags = cpu_to_dump16(s, 1);
++
++    for (i = 0; i < 32; ++i) {
++        r = sve_bswap64(tmp, &env->vfp.zregs[i].d[0], vq * 2);
++        memcpy(&buf[sve_zreg_offset(vq, i)], r, vq * 16);
++    }
++
++    for (i = 0; i < 17; ++i) {
++        r = sve_bswap64(tmp, r = &env->vfp.pregs[i].p[0],
++                        DIV_ROUND_UP(vq * 2, 8));
++        memcpy(&buf[sve_preg_offset(vq, i)], r, vq * 16 / 8);
++    }
++
++    fpr = cpu_to_dump32(s, vfp_get_fpsr(env));
++    memcpy(&buf[sve_fpsr_offset(vq)], &fpr, sizeof(uint32_t));
++
++    fpr = cpu_to_dump32(s, vfp_get_fpcr(env));
++    memcpy(&buf[sve_fpcr_offset(vq)], &fpr, sizeof(uint32_t));
++
++    ret = f(note, AARCH64_SVE_NOTE_SIZE(env), s);
++    g_free(note);
++
++    if (ret < 0) {
++        return -1;
++    }
++
++    return 0;
++}
++#endif
++
+ int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
+                              int cpuid, void *opaque)
+ {
+     struct aarch64_note note;
+-    CPUARMState *env = &ARM_CPU(cs)->env;
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
+     DumpState *s = opaque;
+     uint64_t pstate, sp;
+     int ret, i;
+@@ -163,7 +267,18 @@ int arm_cpu_write_elf64_note(WriteCoreDumpFunction f, CPUState *cs,
+         return -1;
+     }
+ 
+-    return aarch64_write_elf64_prfpreg(f, env, cpuid, s);
++    ret = aarch64_write_elf64_prfpreg(f, env, cpuid, s);
++    if (ret) {
++        return ret;
++    }
++
++#ifdef TARGET_AARCH64
++    if (cpu_isar_feature(aa64_sve, cpu)) {
++        ret = aarch64_write_elf64_sve(f, env, cpuid, s);
++    }
++#endif
++
++    return ret;
+ }
+ 
+ /* struct pt_regs from arch/arm/include/asm/ptrace.h */
+@@ -335,6 +450,11 @@ ssize_t cpu_get_note_size(int class, int machine, int nr_cpus)
+     if (class == ELFCLASS64) {
+         note_size = AARCH64_PRSTATUS_NOTE_SIZE;
+         note_size += AARCH64_PRFPREG_NOTE_SIZE;
++#ifdef TARGET_AARCH64
++        if (cpu_isar_feature(aa64_sve, cpu)) {
++            note_size += AARCH64_SVE_NOTE_SIZE(env);
++        }
++#endif
+     } else {
+         note_size = ARM_PRSTATUS_NOTE_SIZE;
+         if (arm_feature(env, ARM_FEATURE_VFP)) {
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 5b9c3e4cd73d..b3092e5213e6 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -975,6 +975,31 @@ void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq);
+ void aarch64_sve_change_el(CPUARMState *env, int old_el,
+                            int new_el, bool el0_a64);
+ void aarch64_add_sve_properties(Object *obj);
++
++/*
++ * SVE registers are encoded in KVM's memory in an endianness-invariant format.
++ * The byte at offset i from the start of the in-memory representation contains
++ * the bits [(7 + 8 * i) : (8 * i)] of the register value. As this means the
++ * lowest offsets are stored in the lowest memory addresses, then that nearly
++ * matches QEMU's representation, which is to use an array of host-endian
++ * uint64_t's, where the lower offsets are at the lower indices. To complete
++ * the translation we just need to byte swap the uint64_t's on big-endian hosts.
++ */
++static inline uint64_t *sve_bswap64(uint64_t *dst, uint64_t *src, int nr)
++{
++#ifdef HOST_WORDS_BIGENDIAN
++    int i;
++
++    for (i = 0; i < nr; ++i) {
++        dst[i] = bswap64(src[i]);
++    }
++
++    return dst;
++#else
++    return src;
++#endif
++}
++
+ #else
+ static inline void aarch64_sve_narrow_vq(CPUARMState *env, unsigned vq) { }
+ static inline void aarch64_sve_change_el(CPUARMState *env, int o,
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 876184b8fe4d..e2da756e65ed 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -876,30 +876,6 @@ static int kvm_arch_put_fpsimd(CPUState *cs)
+     return 0;
+ }
+ 
+-/*
+- * SVE registers are encoded in KVM's memory in an endianness-invariant format.
+- * The byte at offset i from the start of the in-memory representation contains
+- * the bits [(7 + 8 * i) : (8 * i)] of the register value. As this means the
+- * lowest offsets are stored in the lowest memory addresses, then that nearly
+- * matches QEMU's representation, which is to use an array of host-endian
+- * uint64_t's, where the lower offsets are at the lower indices. To complete
+- * the translation we just need to byte swap the uint64_t's on big-endian hosts.
+- */
+-static uint64_t *sve_bswap64(uint64_t *dst, uint64_t *src, int nr)
+-{
+-#ifdef HOST_WORDS_BIGENDIAN
+-    int i;
+-
+-    for (i = 0; i < nr; ++i) {
+-        dst[i] = bswap64(src[i]);
+-    }
+-
+-    return dst;
+-#else
+-    return src;
+-#endif
+-}
+-
+ /*
+  * KVM SVE registers come in slices where ZREGs have a slice size of 2048 bits
+  * and PREGS and the FFR have a slice size of 256 bits. However we simply hard
+-- 
+2.21.0

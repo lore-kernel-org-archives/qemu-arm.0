@@ -1,182 +1,128 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp6583199wrm;
-        Tue, 15 Oct 2019 20:26:27 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxWAVxo/zmJK/7wtqnVAb6K0cLL/Ip4105s6FdjuWnN1N6si4gmack54K1QVFOTkd+jXYtd
-X-Received: by 2002:a17:906:24c9:: with SMTP id f9mr37891494ejb.201.1571196387125;
-        Tue, 15 Oct 2019 20:26:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571196387; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp6822328wrm;
+        Wed, 16 Oct 2019 01:11:06 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwtwf0PZT9O1r+cJKpsUu6no6JQUqX/4Yc0GawBVl9lvvO4t0id5kQgsBnXlT2pP5+J3niD
+X-Received: by 2002:a02:4ec3:: with SMTP id r186mr46340683jaa.44.1571213465867;
+        Wed, 16 Oct 2019 01:11:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571213465; cv=none;
         d=google.com; s=arc-20160816;
-        b=yxhXoETS2pwNeP20VMv7JnfWeTH/8lmomZLIGHOe/bbSmLbzncIJt70HG7H6iUaJkf
-         qDZd5kUFZ4udCGaTqmQhFzBd9ebbfiNvY5YP7pkJ+BDoAkrR5JAjDgRDFogR1x3ryx5M
-         SJYv27BTVWbW+eqkzOrmLZdNevaE39D5JvU4UJZkazMQs4I0+l9sGUQ1VXUc1l3jInSD
-         J0iP22r7c1KSz4ARRgtNQKlmumg5cB2LnFvLXSXPnWgKN+DFcS+eKJFr0DD5GrvGfzF0
-         +TZ8lVOCHbIiiiNUheF1LOvAdLofyKpbkvXiIk0a8YWp5tyWaOUgtLZwZ9WnzYIYDRhW
-         G/Gw==
+        b=dfQ42hLqqQfAzsN7PRurlsL1LkVNNGx/rC766VL+dVrIGaNsSSlud64x/+Dl5PyM0k
+         N4yvaXtmm2DNUGqmsIJqgtGXYnPJzce3DovbvmJ5CJskmymYV/D1o85rERAM4F3xv6Lr
+         KfZHdWFg+QT8fZZRg13DMz4HRRoHqTtzpP1l6c1hinUSEwmbfkvMjqnJ+QnDuqpCyfB0
+         WURMINB35QIP8N2P60hLP1hzqwnwUOoFiTHAAXPjhOyNKaUE+j7IZhD1gROwaKQVkKoX
+         8Hc0I1ECU6vmknr6ZlV/vTAdsC3YV8GVyUltD7YSrSUUYD0/Nf3+Pwu/9NaXgkAvGlxp
+         DlNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=AK+kg8DeZdcbIgmNcA3mo8MmEXgBVYVLFlX8pPs1IK4=;
-        b=EC6BcMg2b4oeFdREyDOpAL2uZ/yWx+0rvH9AlwZIzyB95Q1lM97U7017cIU4Kh/LhF
-         6ohjEVigDcN733SJcEE9r8prwLKI/fLk6JCVmWgV5HRnUvCQJn+BQV0Q758T4yeHXse7
-         +9iZX96mR2LeOKCyhFErBQAbddEb3NjqzyRbKElBc7OPezDGwyQqR0u1JM72d8SABc9W
-         7XJPRMaTwIa2TAt4ba1GNG7qCJKExWU6FaZaztjjkV/NUGhSX+PYEohvLl+eheD3JbQc
-         gcG8F44MSrH5mIBZfyDoB2spLZmq67QAFTRsmH4ccB8PciiWNDodyq3N7ROMxpE2WEoc
-         hbfA==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=cdr8EBiZqmaefawunQgUBSQBvBNNyAX+JmqpD/vjLtk=;
+        b=z+QXq8UoMqN+YF7C8LEQLkAB4XUOkZmeSMIOm/aKg+4B/W0BaaMtBX7OtxqmIyTv4E
+         ipIVn6rbBtA/NegIEa2hmVydd4N3R4USbkKCQvLd2QUA6LCzbHx11XXHdpVooLWWbYKu
+         Q6TDsSKGqSEqlXGMfpFPVGL9u2dHZcMBWlS9SbMHGQ6bZ0mgFjFzLkbHcu+hsd/fZ2Rr
+         e84Z6zu//QL5KQoW5CYNF6H+pdgwOqc8jI/T/3cgygGFZdvKmbh3MmpAAtHdGDGVQfRR
+         C14Xml/NmqSE+9dqovz5TAxPnlqxgcC77QvcwSipKDzZZVHvDGPUOyIeWZzqBKje06UW
+         g/Xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
-        by mx.google.com with ESMTP id h7si14372385ejx.59.2019.10.15.20.26.26;
-        Tue, 15 Oct 2019 20:26:27 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id r204si33555366jar.48.2019.10.16.01.11.04
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 16 Oct 2019 01:11:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S2389155AbfJPD0Z (ORCPT <rfc822;daniel.diaz@linaro.org>
-        + 4 others); Tue, 15 Oct 2019 23:26:25 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:4162 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1728871AbfJPD0Z (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 15 Oct 2019 23:26:25 -0400
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
-        by Forcepoint Email with ESMTP id 83F0FEC8CDB2DA02A902;
-        Wed, 16 Oct 2019 11:26:22 +0800 (CST)
-Received: from [127.0.0.1] (10.133.224.57) by DGGEMS408-HUB.china.huawei.com
- (10.3.19.208) with Microsoft SMTP Server id 14.3.439.0; Wed, 16 Oct 2019
- 11:26:13 +0800
-Subject: Re: [PATCH v19 2/5] docs: APEI GHES generation and CPER record
- description
-To:     Peter Maydell <peter.maydell@linaro.org>
-CC:     Paolo Bonzini <pbonzini@redhat.com>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Igor Mammedov <imammedo@redhat.com>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        Laszlo Ersek <lersek@redhat.com>,
-        James Morse <james.morse@arm.com>,
-        gengdongjiu <gengdongjiu@huawei.com>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Jonathan Cameron <jonathan.cameron@huawei.com>,
-        "xuwei (O)" <xuwei5@huawei.com>, kvm-devel <kvm@vger.kernel.org>,
-        "QEMU Developers" <qemu-devel@nongnu.org>,
-        qemu-arm <qemu-arm@nongnu.org>, Linuxarm <linuxarm@huawei.com>,
-        <wanghaibin.wang@huawei.com>
-References: <20191015140140.34748-1-zhengxiang9@huawei.com>
- <20191015140140.34748-3-zhengxiang9@huawei.com>
- <CAFEAcA85gZUXnL+Qy=Wdg-MVbb1PqiKWCi72XvRnX8pZsgVr_A@mail.gmail.com>
-From:   Xiang Zheng <zhengxiang9@huawei.com>
-Message-ID: <9724f69a-2887-7896-29d8-3e9aa022df14@huawei.com>
-Date:   Wed, 16 Oct 2019 11:26:11 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.0
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id 3D9023082B41;
+	Wed, 16 Oct 2019 08:11:04 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C5ABE5D9CD;
+	Wed, 16 Oct 2019 08:10:59 +0000 (UTC)
+Date: Wed, 16 Oct 2019 10:10:57 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Beata Michalska <beata.michalska@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	qemu-devel@nongnu.org, armbru@redhat.com, eric.auger@redhat.com,
+	qemu-arm@nongnu.org, imammedo@redhat.com,
+	Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Dave.Martin@arm.com
+Subject: Re: [PATCH v5 4/9] target/arm/cpu64: max cpu: Introduce sve<N>
+ properties
+Message-ID: <20191016081057.svdt6uvftshzzjkr@kamzik.brq.redhat.com>
+References: <20191001125845.8793-1-drjones@redhat.com>
+ <20191001125845.8793-5-drjones@redhat.com>
+ <CADSWDzu2mUvTDYJj42747DgBAzWRDoMQRNgtepqyvv23OArHNQ@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA85gZUXnL+Qy=Wdg-MVbb1PqiKWCi72XvRnX8pZsgVr_A@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.133.224.57]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 7rAteKiz5jO1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CADSWDzu2mUvTDYJj42747DgBAzWRDoMQRNgtepqyvv23OArHNQ@mail.gmail.com>
+User-Agent: NeoMutt/20180716
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.45]); Wed, 16 Oct 2019 08:11:04 +0000 (UTC)
+X-TUID: QboChrkn7Fj2
 
+On Wed, Oct 09, 2019 at 03:01:15PM +0100, Beata Michalska wrote:
+> On Tue, 1 Oct 2019 at 14:04, Andrew Jones <drjones@redhat.com> wrote:
+> >
+> > Introduce cpu properties to give fine control over SVE vector lengths.
+> > We introduce a property for each valid length up to the current
+> > maximum supported, which is 2048-bits. The properties are named, e.g.
+> > sve128, sve256, sve384, sve512, ..., where the number is the number of
+> > bits. See the updates to docs/arm-cpu-features.rst for a description
+> > of the semantics and for example uses.
+> >
+> > Note, as sve-max-vq is still present and we'd like to be able to
+> > support qmp_query_cpu_model_expansion with guests launched with e.g.
+> > -cpu max,sve-max-vq=8 on their command lines, then we do allow
+> > sve-max-vq and sve<N> properties to be provided at the same time, but
+> > this is not recommended, and is why sve-max-vq is not mentioned in the
+> > document.  If sve-max-vq is provided then it enables all lengths smaller
+> > than and including the max and disables all lengths larger. It also has
+> > the side-effect that no larger lengths may be enabled and that the max
+> > itself cannot be disabled. Smaller non-power-of-two lengths may,
+> > however, be disabled, e.g. -cpu max,sve-max-vq=4,sve384=off provides a
+> > guest the vector lengths 128, 256, and 512 bits.
+> >
+> > This patch has been co-authored with Richard Henderson, who reworked
+> > the target/arm/cpu64.c changes in order to push all the validation and
+> > auto-enabling/disabling steps into the finalizer, resulting in a nice
+> > LOC reduction.
+> >
+> 
+> I have most probably missed part of previous discussions around the vector
+> lengths  so apologies if the question is not relevant anymore  but ...
+> why the idea of having bitmap representation for those has been dropped ?
 
+https://lists.gnu.org/archive/html/qemu-devel/2019-05/msg03439.html
 
-On 2019/10/15 23:08, Peter Maydell wrote:
-> On Tue, 15 Oct 2019 at 15:02, Xiang Zheng <zhengxiang9@huawei.com> wrote:
->>
->> From: Dongjiu Geng <gengdongjiu@huawei.com>
->>
->> Add APEI/GHES detailed design document
->>
->> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
->> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
->> ---
->>  docs/specs/acpi_hest_ghes.rst | 94 +++++++++++++++++++++++++++++++++++++++++++
->>  docs/specs/index.rst          |  1 +
->>  2 files changed, 95 insertions(+)
->>  create mode 100644 docs/specs/acpi_hest_ghes.rst
->>
->> diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
->> new file mode 100644
->> index 0000000..905b6d1
->> --- /dev/null
->> +++ b/docs/specs/acpi_hest_ghes.rst
->> @@ -0,0 +1,94 @@
->> +APEI tables generating and CPER record
->> +======================================
->> +
->> +Copyright (c) 2019 HUAWEI TECHNOLOGIES CO., LTD.
->> +
->> +This work is licensed under the terms of the GNU GPL, version 2 or later.
->> +See the COPYING file in the top-level directory.
-> 
-> This puts the copyright/license statement into the HTML rendered
-> docs seen by the user. We generally put them into an RST comment,
-> so they're in the source .rst but not the rendered views, like this:
-> 
-> diff --git a/docs/specs/acpi_hest_ghes.rst b/docs/specs/acpi_hest_ghes.rst
-> index 5b43e4b0da2..348825f9d3e 100644
-> --- a/docs/specs/acpi_hest_ghes.rst
-> +++ b/docs/specs/acpi_hest_ghes.rst
-> @@ -1,10 +1,11 @@
->  APEI tables generating and CPER record
->  ======================================
-> 
-> -Copyright (c) 2019 HUAWEI TECHNOLOGIES CO., LTD.
-> +..
-> +   Copyright (c) 2019 HUAWEI TECHNOLOGIES CO., LTD.
-> 
-> -This work is licensed under the terms of the GNU GPL, version 2 or later.
-> -See the COPYING file in the top-level directory.
-> +   This work is licensed under the terms of the GNU GPL, version 2 or later.
-> +   See the COPYING file in the top-level directory.
+> Although the proposed solution provides indeed fine control over the vector
+> lengths it also adds extra logic for handling corner cases and makes specifying
+> those on the command line rather cumbersome in some cases.
+
+Examples?
+
+> What if we could re-consider bitmaps and add an option for sve with a 'help'
+> switch to query available options and present them (or just a subset
+> as an example)
+> with additional information on how to interpret/modify it ? Smth like :
+>            -cpu max,sve=help
+> which would print the bitmap of available lengths with note on what each bit
+> represents and which ones can be modified .
+> Than it should be pretty straightforward to enable/disable selected lengths.
+> This could potentially simplify things a bit....
 > 
 
-OK.
-
-> 
->> +(9) When QEMU gets a SIGBUS from the kernel, QEMU formats the CPER right into
->> +    guest memory, and then injects platform specific interrupt (in case of
->> +    arm/virt machine it's Synchronous External Abort) as a notification which
->> +    is necessary for notifying the guest.
->> +
->> +(10) This notification (in virtual hardware) will be handled by the guest
->> +    kernel, guest APEI driver will read the CPER which is recorded by QEMU and
->> +    do the recovery.
-> 
-> Sphinx thinks the indentation here is not syntactically valid:
-> 
->   SPHINX  docs/specs
-> 
-> Warning, treated as error:
-> /home/petmay01/linaro/qemu-from-laptop/qemu/docs/specs/acpi_hest_ghes.rst:93:Enumerated
-> list ends without a blank line; unexpected unindent.
-> Makefile:997: recipe for target 'docs/specs/index.html' failed
-> 
-> That's because for an enumerated list all the lines in the paragraph need to
-> start at the same column. Moving in the two following lines in the (10) item
-> fixes this:
-> 
-> --- a/docs/specs/acpi_hest_ghes.rst
-> +++ b/docs/specs/acpi_hest_ghes.rst
-> @@ -90,5 +90,5 @@ Design Details
->      is necessary for notifying the guest.
-> 
->  (10) This notification (in virtual hardware) will be handled by the guest
-> -    kernel, guest APEI driver will read the CPER which is recorded by QEMU and
-> -    do the recovery.
-> +     kernel, guest APEI driver will read the CPER which is recorded by QEMU and
-> +     do the recovery.
-> 
-
-Thanks, I will fix them.
-
-
--- 
+I won't be re-considering bitmaps, but arm is in need of better help text
+for the cpu option. qemu-system-aarch64 -M virt -cpu help only produces a
+list of available CPUs, which don't have descriptions. When checking '-cpu
+help' on x86 we get descriptions, and we get another section "Recognized
+CPUID flags". After this series is applied we could perhaps add a
+"Recognized CPU features" section to arm's '-cpu help'. I don't intend
+to do that myself, but I'll take a look at whatever you post :-)
 
 Thanks,
-Xiang
+drew

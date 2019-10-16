@@ -1,191 +1,188 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp6918550wrm;
-        Wed, 16 Oct 2019 02:58:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwDs/WxiLFxM/xsgBPoow/5n+UwNKOSn72+EPh2A17DqS/NLH4vwcDaVhiBdDSY4kXhNNkG
-X-Received: by 2002:a17:906:4c97:: with SMTP id q23mr37639217eju.78.1571219919561;
-        Wed, 16 Oct 2019 02:58:39 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1571219919; cv=pass;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp6857960wrm;
+        Wed, 16 Oct 2019 01:54:15 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw6ISitSwjF6eIUTZ/AulBkChBe+c+glhy0G5yg93VvZ9kwotNVjU1kv5WpRdky0n2RsPAc
+X-Received: by 2002:a02:cceb:: with SMTP id l11mr9308213jaq.80.1571216055839;
+        Wed, 16 Oct 2019 01:54:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571216055; cv=none;
         d=google.com; s=arc-20160816;
-        b=z7SS5irWtpKCl9IgSAHEMBAMywrj3GQhGsvyZVAmdmWM/M69NXIvqpneuE+/2lWNGH
-         pUu9KgYagP2eTQflnQ/dpyVDmz/AjoWN0/SP/OgrZLCC9l0LFH7t8qGSUMsiitJKuviN
-         G0w3X4b7SVWfh8GMFNvsoaN72uGaQN0+zV6EAHodMde3Ci7b2GyBqVJVGlUP+2rH9u7h
-         DNh+/XF8QQG2u3m1lf2pByHj70Z9gct+cJVaNDv2NX4TgHgOFtIloBVnMkxbyzxXgscS
-         ojZHeuO4HBSKIbfH8kxgS7LfOHQpgnQ+xkHYLCxkaM0dHepyEQRGuyoD2+xE09rgwQZB
-         NN9g==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:to:from:dkim-signature;
-        bh=2kCoMf0RgSyPH00pF51anISg9P7MH4E5ivjJ2aNMtLM=;
-        b=rk3KSAoUCabwJdHlXNTztRg4oUeB7gFKHh5alXr5cTKJ/sgxrLlAekMPcuQHiulT8V
-         GiwgCEXTZMyiLiOCfH1czhrIs3W4xspicyjkeRbX5XgoYAYQDmuh+8Iq70GC05Tkhq74
-         QK04uFWb9jJtcvV2exPekOb/rc2EOlvX5IL5lijkQeEoQuKpVh/Uw+CIGemtGlgUiOs3
-         D2spQwPemMraCHAg4lCejeoqChFPoZeRaN0xeQb3NOxoT7jXAAw4aFw+V2G0WCTL+gv9
-         B1sm+1KU3PVCFjGWrUDd0hhgsBpDHbMEsAESiv3JGwCEIdU7TRP7dWM1Rnqi5JrFi9ZQ
-         vM3A==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@here.com header.s=selector2 header.b=sNUwt+1P;
-       arc=pass (i=1 spf=pass spfdomain=here.com dkim=pass dkdomain=here.com dmarc=pass fromdomain=here.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=here.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id ov32si14735554ejb.411.2019.10.16.02.58.39
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Oct 2019 02:58:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        b=H5xzKIzu5BsgyMVx2dmCyNivldhBUjV40NfM2j7a2bYqFfoWXC6v/XX9rNicGDAnH2
+         cOleZIgT+/ww6HlCNVyM+vwg0SDlfBtctgiCL3bJ8v3Sfg9QA0ZSPiyrrbm2C666kfhF
+         vF7UBa58ELr1cbqovCz8bQ6wNjxblpgFXNdawb0OpSsvioBu9U56Aw5AT8dBSWkL63Rr
+         0IPazejocP+6zoUybmS0cI6RYC3YFhOQ05r2NDaYOa+eYVvs09Jw5Ae28mvohvbnlHh1
+         JZdMa11iGM7V14MCXIh2IJpLAHLx1QcbIeBi9iknvpg6YLlTaxtAL50rYaa620IUV7WW
+         eaVA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=zbFFZJ9MR/HvgifEw5XaF1KFUbEoZ1xhUSPvQm1Mpq0=;
+        b=e1llJzYzhKu1sM2docKhLmk7v30eQLZ7ViGYhUuVqYqhBnX52/j1wQkHNbXtDdQLNq
+         F2bwqwycBR0gSJRLP9Bxa3RMDILPlqZAHBejVAsYfzPA7v2byJ/H6oErPcXnvQCTcS+0
+         519lufFo54FG5MDPico23CTBYqEmn1H0XpATO0qoZhz2VNhtXB4URCPDypjmy5HWIxfk
+         jMQ/0ar+AW0VfRuhrPB7rW303BHsdNownSM64BoBcOf2uO5jSAHn85rbZcrUtErn1ttP
+         lrtVlmtQG43ma3Y0zYLB+Q5a2vLQVoKJb6VeFuaE2G6erOb63FijhZ+ox4xU3+oVXm2/
+         8LoQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <drjones@redhat.com>
+Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
+        by mx.google.com with ESMTPS id c3si40266528jae.49.2019.10.16.01.54.15
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 16 Oct 2019 01:54:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@here.com header.s=selector2 header.b=sNUwt+1P;
-       arc=pass (i=1 spf=pass spfdomain=here.com dkim=pass dkdomain=here.com dmarc=pass fromdomain=here.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=here.com
-Received: from localhost ([::1]:40290 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iKg4k-0002Qg-GS
-	for alex.bennee@linaro.org; Wed, 16 Oct 2019 05:58:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59649)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <laurent.bonnans@here.com>) id 1iKg3j-0001xL-HG
- for qemu-devel@nongnu.org; Wed, 16 Oct 2019 05:57:36 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <laurent.bonnans@here.com>) id 1iKg3g-0004Lv-TH
- for qemu-devel@nongnu.org; Wed, 16 Oct 2019 05:57:34 -0400
-Received: from mail-eopbgr60133.outbound.protection.outlook.com
- ([40.107.6.133]:45155 helo=EUR04-DB3-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <laurent.bonnans@here.com>)
- id 1iKg3g-0004L3-JQ; Wed, 16 Oct 2019 05:57:32 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=C/Ssa4ARDlfqcyKzzedf3JrrsggbVh2GXxFl0SM2KGPPEgcR8H+DYGfWUuhRKxi21027CDHmYdXI/a84YYA/oCWrCJ10EqdcOjblo9Tq034pmwL0zSgFDJGxmMuVb27sbx6jVqtjgU9YAxLF4PF9ztW6l7SsjIl7WrhkjcaFADpIqh9pnROCGHKEssRTAPWE4v4ySzCqFtCtyeKuKhjgNkwmEUlkoEQLqDFpwLUOxgK1WHzjrbbuqEq6x0BA1dQ606TTbfLKt2IJT115waBVp/jz6m4et7bAhwARpX9p5GRq5agagB25GtRfDuBfjO5rFLWAk/FCIZV1ijuMQnN+ZQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2kCoMf0RgSyPH00pF51anISg9P7MH4E5ivjJ2aNMtLM=;
- b=GsI5piRxpLaukKgyuPB/KruUADVLZ5ACKuGTOuUKaAybJ3P0snrYf3V3RBThbkBMgCtdSm/bHcrsfdl26PAcju89g0DnucO69ozOBs/OpMDGdIdfIrQD2JYrAdo0RMZoTzvHVKEN7B4f9KKrRcOMtLaETzM/r1LJbUxzPyoYotUZjY3FaeHma9odkAmcbUTjOyuBWI7bGF1ifVJNXtYVgPjgAhdcbn9TYIK0fa3jKvhfc7mVH0Y3pDKd9YEzIbi8FW/iGw/w6Cgad0qIxqZu204Wo9s0Zihsnt9x4GrEXi8++RkwFJPTeWhZYtn0UndOEEfgOPnW6JBcb7PMwCcuSw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=here.com; dmarc=pass action=none header.from=here.com;
- dkim=pass header.d=here.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=here.com; s=selector2; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2kCoMf0RgSyPH00pF51anISg9P7MH4E5ivjJ2aNMtLM=;
- b=sNUwt+1PBGKUWLVv1jJTfUzQ/Yy+cNTGfvLGvjq26EGeNZv9hgyyvkMb+uFly+dUFuREqNRi5YJTCZbO0wsYQOEhEADntD0Nfth/FuH7OS/4b30JD0ZJWP7tFJCFBM/n0tNOLvkc2j4fJEOvdNHgPlRE4vZphcypys+r7V38G/I=
-Received: from AM5PR04MB3299.eurprd04.prod.outlook.com (10.173.255.158) by
- AM5PR04MB2962.eurprd04.prod.outlook.com (10.167.170.17) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2347.17; Wed, 16 Oct 2019 09:57:29 +0000
-Received: from AM5PR04MB3299.eurprd04.prod.outlook.com
- ([fe80::204a:79f8:1bb8:f8a8]) by AM5PR04MB3299.eurprd04.prod.outlook.com
- ([fe80::204a:79f8:1bb8:f8a8%7]) with mapi id 15.20.2347.023; Wed, 16 Oct 2019
- 09:57:29 +0000
-From: "Bonnans, Laurent" <laurent.bonnans@here.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: Re: [PATCH 00/19] hw/arm/raspi: Improve Raspberry Pi 2/3 reliability
-Thread-Topic: [PATCH 00/19] hw/arm/raspi: Improve Raspberry Pi 2/3 reliability
-Thread-Index: AQHVdJCqR93wWUmCgke4ueNfTHgz2addJxsA
-Date: Wed, 16 Oct 2019 09:57:29 +0000
-Message-ID: <08cd5ba1-2c27-97cd-cc93-4e355bad9ded@here.com>
-References: <20190926173428.10713-1-f4bug@amsat.org>
-In-Reply-To: <20190926173428.10713-1-f4bug@amsat.org>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: spf=none (sender IP is )
- smtp.mailfrom=laurent.bonnans@here.com; 
-x-originating-ip: [131.228.216.128]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: c9de2a2d-0436-449f-699f-08d7521f41cd
-x-ms-office365-filtering-ht: Tenant
-x-ms-traffictypediagnostic: AM5PR04MB2962:|AM5PR04MB2962:
-x-ms-exchange-purlcount: 1
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <AM5PR04MB29620BE4EBB501A8B145E5E985920@AM5PR04MB2962.eurprd04.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:8273;
-x-forefront-prvs: 0192E812EC
-x-forefront-antispam-report: SFV:NSPM;
- SFS:(10019020)(4636009)(376002)(396003)(346002)(39860400002)(136003)(366004)(199004)(189003)(102836004)(110136005)(76176011)(8936002)(25786009)(6436002)(966005)(86362001)(8676002)(81166006)(81156014)(6512007)(6306002)(11346002)(186003)(446003)(316002)(54906003)(2616005)(53546011)(6506007)(26005)(7416002)(476003)(2501003)(486006)(71200400001)(66476007)(66556008)(64756008)(91956017)(36756003)(31686004)(66446008)(305945005)(31696002)(99286004)(76116006)(229853002)(256004)(14454004)(14444005)(6486002)(5660300002)(6116002)(3846002)(71190400001)(66946007)(66066001)(478600001)(6246003)(4326008)(7736002)(2906002);
- DIR:OUT; SFP:1102; SCL:1; SRVR:AM5PR04MB2962;
- H:AM5PR04MB3299.eurprd04.prod.outlook.com; FPR:; SPF:None; LANG:en;
- PTR:InfoNoRecords; A:1; MX:1; 
-received-spf: None (protection.outlook.com: here.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: CKMGE5UQp3BUtKEUR7wxxRuxGJKpYarRdC5FWwiaQJ2wWNAnrce/CYblnoDGT6osLpz3Y5YWw7FWO6sO+1+LNTRwjnECq9jK+ftliEBKej+xGsCQxn3DvS05W7i5L7YGdUwRkRUmmkq/svnE86hDr7U2Vb4k6gZtEVH/xxXAVVtBR5LVVAWPak3KoskEPPLTui1Pf1/sf+dtauh93DPJwtOggdBFvy1rSCmZheshkcPbslEv9K8bBGYMZA/ZiztCmwby0vCjr0xRV0k6zacgTx8v0qeW/Vay+y1LRcaN3t0XN5vPxXa3GY05dMnL83Cz84weMq5Vjm2ktnuaSHOCaUMYXu3lmPLU9/o3TrH5Tnt8NoKBhH8wGbeEEYWaN565iT6nNYT7XSpR/bD7/rzsjL9p/feGCVOE4dQe1l8a/fS/stSg2s9nGf+OlshOYMM1yoFTcqImxb7iaQ5gghEJ+w==
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <1C10F73EB70FD84D82BD048B90004E56@eurprd04.prod.outlook.com>
-Content-Transfer-Encoding: base64
+       spf=pass (google.com: domain of drjones@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=drjones@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mx1.redhat.com (Postfix) with ESMTPS id EBA753082E0F;
+	Wed, 16 Oct 2019 08:54:14 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 6BCEC5D9CD;
+	Wed, 16 Oct 2019 08:54:10 +0000 (UTC)
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: peter.maydell@linaro.org,
+	richard.henderson@linaro.org,
+	alex.bennee@linaro.org,
+	armbru@redhat.com,
+	eblake@redhat.com,
+	Dave.Martin@arm.com,
+	eric.auger@redhat.com,
+	imammedo@redhat.com
+Subject: [PATCH v6 0/9] target/arm/kvm: enable SVE in guests
+Date: Wed, 16 Oct 2019 10:53:59 +0200
+Message-Id: <20191016085408.24360-1-drjones@redhat.com>
 MIME-Version: 1.0
-X-OriginatorOrg: here.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c9de2a2d-0436-449f-699f-08d7521f41cd
-X-MS-Exchange-CrossTenant-originalarrivaltime: 16 Oct 2019 09:57:29.5910 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 6d4034cd-7225-4f72-b853-91feaea64919
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: HMD5DMi11drv1SVpG/PqVhL5YjoeqQV2wmwX7ZjxFmabxxwa9BOwm3I4TmF4fWzZEY8ZmLqMSGgGqjaK+p62Ax2/zDBwzOtLQreCVjZ08WE=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM5PR04MB2962
-X-detected-operating-system: by eggs.gnu.org: Windows 7 or 8 [fuzzy]
-X-Received-From: 40.107.6.133
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?utf-8?B?Wm9sdMOhbiBCYWxkYXN6dGk=?= <bztemail@gmail.com>,
- Esteban Bosse <estebanbosse@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- =?utf-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Clement Deschamps <clement.deschamps@antfield.fr>,
- Cleber Rosa <crosa@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, "Xiang,
- Cheng" <ext-cheng.xiang@here.com>,
- =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
- Pekka Enberg <penberg@iki.fi>, Guenter Roeck <linux@roeck-us.net>,
- Eduardo Habkost <ehabkost@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UbPE1C2cDzte
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16 (mx1.redhat.com [10.5.110.46]); Wed, 16 Oct 2019 08:54:15 +0000 (UTC)
+X-TUID: LYpxRCWcocW/
 
-T24gOS8yNi8xOSA3OjM0IFBNLCBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSB3cm90ZToNCg0KPiBI
-aSwNCj4NCj4gSSBwcmV2aW91c2x5IHBvc3RlZCBhIFJGQyBmb3IgdGhlIFJhc3BiZXJyeSBQaSA0
-Og0KPiBodHRwczovL3d3dy5tYWlsLWFyY2hpdmUuY29tL3FlbXUtZGV2ZWxAbm9uZ251Lm9yZy9t
-c2c2NDIyNDEuaHRtbA0KPiBhbmQgZ290IGl0IGFsbW9zdCB3b3JraW5nIChib290cyBMaW51eCBr
-ZXJuZWwgdG8gdXNlcmxhbmQsIHNhZGx5DQo+IEknbSBzdGlsbCBoYXZpbmcgdGltZW91dCBpc3N1
-ZXMgd2l0aCB0aGUgZU1NQyBibG9jaykuDQo+IEhvd2V2ZXIgc2luY2UgaXQgaXMgcXVpdGUgdXNh
-YmxlLCBJIHN0YXJ0ZWQgdG8gY2xlYW4gdXAgdG8gcG9zdA0KPiB0aGUgc2VyaWVzIGFuZCByZWFs
-aXplZCBpdCBpcyB3YXkgdG9vIGJpZyBmb3IgUGV0ZXIgTWF5ZGVsbCwgc28NCj4gSSdtIGZvbGxv
-d2luZyBoaXMgcnVsZSBvZiB0aHVtYiBieSBzcGxpdHRpbmcgaW4gMyBzZXRzIG9mIH4yMA0KPiBm
-dW5jdGlvbmFsIHBhdGNoZXMuDQo+DQo+IEluIHRoaXMgZmlyc3Qgc2VyaWVzLCB3ZSBwYXkgb2xk
-IGRlYnRzIHdpdGggdGhlc2UgbW9kZWxzLiBMaW51eA0KPiBldm9sdmVkIGFuZCByZWNlbnQga2Vy
-bmVscyB3ZXJlIGJhcmVseSB1c2FibGUuIFUtYm9vdCBub3cgdGlja3MsDQo+IExpbnV4IHN0b3Bz
-IHRvIE9vcHMgZXZlcnkgc28gYW5kIHRoZW4uIFdlIGNhbiB1c2UgbW9yZSB0aGFuIG9uZQ0KPiBj
-b25zb2xlIGF0IGEgdGltZSAodGhpbmsgcHBwZD8pLg0KPg0KPiBUaGVuIHdlIGFkZCB2YXJpb3Vz
-IHRlc3RzIHRvIGNvbmZpcm0gb3VyIGVmZm9ydCBtYWRlIHNlbnNlLCBhbmQNCj4gdG8gYXZvaWQg
-cmVncmVzc2lvbnMuDQo+DQo+IExhdXJlbnQsIENoZW5nLCBkbyB5b3UgbWluZCB0ZXN0aW5nIG9u
-IFUtQm9vdD8NCg0KR3JlYXQsIHRoYW5rcyBhIGxvdCBQaGlsIQ0KDQpXZSd2ZSBtYW5hZ2VkIHRv
-IHJ1biB1LWJvb3Qgd2l0aCBzZXJpYWwgb3V0cHV0IGFuZCBzd2l0Y2ggdG8gdGhlIGtlcm5lbCAN
-CnJlYWQgZnJvbSB0aGUgc2FtZSBzZCBjYXJkIGltYWdlIHdlIHVzZSBvbiByZWFsIGhhcmR3YXJl
-Lg0KDQpJdCBhbHNvIHJlcXVpcmVzIHRoZSBzbWFsbCBoYWNrIHRvIG1ha2UgcWVtdSBzaW11bGF0
-ZSB0aGUgZWFybHkgYm9vdCANCnNlcXVlbmNlIGZyb20gdGhlIHJwaSBmaXJtd2FyZSwgZm9sbG93
-aW5nIHRoZSBleHBsYW5hdGlvbnMgb2YgUGV0ZXI6DQoNCiDCoMKgwqAgbWtpbWFnZSAtQSBhcm0g
-LVQga2VybmVsIC1DIG5vbmUgLU8gbGludXggLWEgMHg4MDAgLWUgMHg4MDAgLWQgDQp1LWJvb3Qu
-YmluIHUtYm9vdC5pbWcNCiDCoMKgwqAgcWVtdSAuLi4gLWtlcm5lbCB1LWJvb3QuaW1nIC4uLg0K
-DQpBZnRlciB0aGF0LCB3ZSBhcmUgZ2V0dGluZyBrZXJuZWwgcGFuaWNzIGF0IHRoZSBwb2ludCB3
-aGVyZSBvdXIgDQppbml0cmFtZnMnIGluaXQgZ2V0IGV4ZWN1dGVkLiBXZSBhcmUgbm90IHlldCBz
-dXJlIGFib3V0IHRoZSBleGFjdCANCnJlYXNvbiwgYnV0IHRoYXQncyBzdGlsbCBhIGdyZWF0IGlt
-cHJvdmVtZW50Lg0KDQpMYXVyZW50DQoNCj4gSW4gdGhlIG5leHQgcGFydCB3ZSdsbCBpbXByb3Zl
-L3VwZGF0ZSB0aGUgTUJveC9Qcm9wZXJ0aWVzIGFuZCB0aGUNCj4gaW50ZXJydXB0IGNvbnRyb2xs
-ZXIgYmxvY2tzLg0KPg0KPiBGaW5hbGx5IHRoZSBsYXN0IHBhcnQgYWRkcyB0aGUgcmFzcGk0Lg0K
-Pg0KPiBQbGVhc2UgcmV2aWV3Lg0KPg0KPiBSZWdhcmRzLA0KPg0KPiBQaGlsLg0KPg==
+Since Linux kernel v5.2-rc1 KVM has support for enabling SVE in guests.
+This series provides the QEMU bits for that enablement. First, we
+select existing CPU properties representing features we want to
+advertise in addition to the SVE vector lengths and prepare
+them for a qmp query. Then we introduce the qmp query, applying
+it immediately to those selected features. We also document ARM CPU
+features at this time. We next add a qtest for the selected CPU
+features that uses the qmp query for its tests - and we continue to
+add tests as we add CPU features with the following patches. So then,
+once we have the support we need for CPU feature querying and testing,
+we add our first SVE CPU feature property, 'sve', which just allows
+SVE to be completely enabled/disabled. Following that feature property,
+we add all 16 vector length properties along with the input validation
+they need and tests to prove the validation works. At this point the
+SVE features are still only for TCG, so we provide some patches to
+prepare for KVM and then a patch that allows the 'max' CPU type to
+enable SVE with KVM, but at first without vector length properties.
+After a bit more preparation we add the SVE vector length properties
+to the KVM-enabled 'max' CPU type along with the additional input
+validation and tests that that needs.  Finally we allow the 'host'
+CPU type to also enjoy these properties by simply sharing them with it.
+
+v6:
+  - Adding missing visit_free() to an error path in
+    qmp_query_cpu_model_expansion() in patch 1/9.
+  - Rebased on latest master (applied cleanly)
+  - Picked up r-b's from Richard and Eric
+
+v5:
+  - Now generate an error if vector lengths have been explicitly
+    enabled, but SVE is disabled
+  - Fixed a bug in sve_zcr_len_for_el()
+  - Fixed a bug in kvm_arch_put/get_sve() and brought back the
+    put/get of FPSR/FPCR
+  - A few document clarifications and added some new sentences
+  - Added a couple more tests
+  - Added BIT_ULL and use it in the test
+  - Removed an unnecessary bitmap search
+  - Moved a cpu_max_get_sve_max_vq() hunk from 4/9 to 3/9 and
+    added a fix for it in 8/9
+  - Picked up some more tags from Eric
+
+v4:
+  - Integrated Richard Henderson's rework for the sve property
+    validation, in order to do all validating at finalize time
+    and save several lines of code.
+  - Fixed 'host' cpu SVE default. It was still off by default.
+  - Cleaned up #ifdef's for sve_bswap64()
+  - Removed redundant KVM_CAP_ARM_SVE extension check in
+    kvm_arm_sve_get_vls()
+  - Improved the KVM SVE qtest
+  - Renamed sve<vl-bits> to sve<N> everywhere
+  - Renamed power-of-2 to power-of-two everywhere
+  - Picked up some more tags from Richard
+
+Thanks!
+drew
+
+
+Andrew Jones (9):
+  target/arm/monitor: Introduce qmp_query_cpu_model_expansion
+  tests: arm: Introduce cpu feature tests
+  target/arm: Allow SVE to be disabled via a CPU property
+  target/arm/cpu64: max cpu: Introduce sve<N> properties
+  target/arm/kvm64: Add kvm_arch_get/put_sve
+  target/arm/kvm64: max cpu: Enable SVE when available
+  target/arm/kvm: scratch vcpu: Preserve input kvm_vcpu_init features
+  target/arm/cpu64: max cpu: Support sve properties with KVM
+  target/arm/kvm: host cpu: Add support for sve<N> properties
+
+ docs/arm-cpu-features.rst | 317 ++++++++++++++++++++++
+ include/qemu/bitops.h     |   1 +
+ qapi/machine-target.json  |   6 +-
+ target/arm/cpu.c          |  25 +-
+ target/arm/cpu.h          |  21 ++
+ target/arm/cpu64.c        | 356 ++++++++++++++++++++++++-
+ target/arm/helper.c       |  10 +-
+ target/arm/kvm.c          |  25 +-
+ target/arm/kvm32.c        |   6 +-
+ target/arm/kvm64.c        | 323 ++++++++++++++++++++---
+ target/arm/kvm_arm.h      |  39 +++
+ target/arm/monitor.c      | 157 +++++++++++
+ tests/Makefile.include    |   5 +-
+ tests/arm-cpu-features.c  | 542 ++++++++++++++++++++++++++++++++++++++
+ 14 files changed, 1776 insertions(+), 57 deletions(-)
+ create mode 100644 docs/arm-cpu-features.rst
+ create mode 100644 tests/arm-cpu-features.c
+
+-- 
+2.20.1
+
+
+*** BLURB HERE ***
+
+Andrew Jones (9):
+  target/arm/monitor: Introduce qmp_query_cpu_model_expansion
+  tests: arm: Introduce cpu feature tests
+  target/arm: Allow SVE to be disabled via a CPU property
+  target/arm/cpu64: max cpu: Introduce sve<N> properties
+  target/arm/kvm64: Add kvm_arch_get/put_sve
+  target/arm/kvm64: max cpu: Enable SVE when available
+  target/arm/kvm: scratch vcpu: Preserve input kvm_vcpu_init features
+  target/arm/cpu64: max cpu: Support sve properties with KVM
+  target/arm/kvm: host cpu: Add support for sve<N> properties
+
+ docs/arm-cpu-features.rst | 317 ++++++++++++++++++++++
+ include/qemu/bitops.h     |   1 +
+ qapi/machine-target.json  |   6 +-
+ target/arm/cpu.c          |  25 +-
+ target/arm/cpu.h          |  21 ++
+ target/arm/cpu64.c        | 358 ++++++++++++++++++++++++-
+ target/arm/helper.c       |  10 +-
+ target/arm/kvm.c          |  25 +-
+ target/arm/kvm32.c        |   6 +-
+ target/arm/kvm64.c        | 323 ++++++++++++++++++++---
+ target/arm/kvm_arm.h      |  39 +++
+ target/arm/monitor.c      | 158 +++++++++++
+ tests/Makefile.include    |   5 +-
+ tests/arm-cpu-features.c  | 542 ++++++++++++++++++++++++++++++++++++++
+ 14 files changed, 1778 insertions(+), 58 deletions(-)
+ create mode 100644 docs/arm-cpu-features.rst
+ create mode 100644 tests/arm-cpu-features.c
+
+-- 
+2.21.0

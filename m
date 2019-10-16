@@ -1,77 +1,77 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp7234315wrm;
-        Wed, 16 Oct 2019 07:35:04 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqw6zNg/jeJjssmLIHnjFz1kTWQUmiDp/dmnzY6iilQbwywsTiYrjZ4II3CNzv+w7H2GKfNp
-X-Received: by 2002:ac8:1903:: with SMTP id t3mr46487461qtj.344.1571236503903;
-        Wed, 16 Oct 2019 07:35:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571236503; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp7234880wrm;
+        Wed, 16 Oct 2019 07:35:30 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqwu32UpSMu4B3qYZxZi+Z+/RhX+sa0fvGCS4Q0r43vsOjs/XAzVAQ0qTRoxn13StrESGURJ
+X-Received: by 2002:aed:30d1:: with SMTP id 75mr45409595qtf.163.1571236530335;
+        Wed, 16 Oct 2019 07:35:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571236530; cv=none;
         d=google.com; s=arc-20160816;
-        b=HDULnWKwV/7ZIKsGb9MKimviuHdhXIgAkfu2PbacQJPaED/8lMwmmh4Pt6c+nUtiRW
-         lqlF9CkHlfPEU6GacnBbFHoY/zb99t44T+uyOLtTusq3R4EzMbpIo6g9Eo68lwCknKle
-         sL7g7BElL6l4M2DYFxxX5BtzKh4dcoolcyol6gSUE57NdnzLBKTxzEN/7bgGkwDX/cLq
-         e4Uzd7mXh4CvG89Dd/K/ujPEpo5ADay1YOUtJH/wlJm3kb5mFrWfhKulK48Roa3ACZn9
-         NiHWKja7Z44bHZ7gv1km6dDubzLogTsw+r6uQ8Z4UlIc06kQ5KHxryLeCUpztNtClXJU
-         ns4A==
+        b=ZJt04Ie0noqLMvXOY9Eo4tIKZjS9B7NP4QV9Sx6aI3EnHWpj1vSOPfJKDfXBdYglpn
+         7l5EjjM8ElTf6k2IsD2OhnjJSxxOI5tQkXGNNwoPlj9LfWCjDuTluvc1LwaNe2KTpk+V
+         SZTGkg1J7fSZr6hHa+6HiP6BzUO8kwmRU41tOMrdBMOgPZzf0W7wnQrGFsnXvKDTwPjS
+         V1ycXNngPO+0FykmSdjvnGz0wf8Ow0lgBMYGEEt1R5MqzGcW1QM30czC/e8272voCvSF
+         DlLEGei3COfmkKvkwVykp2JO2ujaYG9N4gzC02b4v+Nn7D+68eGpk/XhFBfv0AnwdU3E
+         QP7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=BCZxxFCyKetmJFUitjV+FMKS7jLVlIVL1kaYos3Wqfs=;
-        b=d/aFCROlOcd3BL7cj/LPhP402buOiylapCq8y531QEcj109gP94m1z75zMQg938jEh
-         8KqeOf6jKb91cLoKxn7aY1oJ+khwZmd/ZQEOT8vxYAgyNFQ55M+kv0ASPcl/S79IUlNE
-         v3lULNkKKzHF4g1aJpZNbXJEg2t2iSLfck5ym2qMgCn2JGHJTdTVZ7f5qIU1LapjSkIH
-         Wt177sIUST3mVDhJqcLGBbgvVKNowWtl/1ap1NQ0w+exj6zlnyEAc39TZul5ZToVkYf6
-         oieLuX54q3jrE0/XixcoQOOk9AzPCMA2U4yaafNZpSafK3JRB5oWPpMOUmGJuqiOQ4vf
-         hETA==
+        bh=NUVGCcqNi07F1iYKJxDPRco/bKxJ56iqEVjbB2QWYpE=;
+        b=xsVAIlLSiLi9iFMMtfSyAhnMYpSNMu7FsAtUV6bUlD2uUzwxKnUJem0AGlKMidngpX
+         VDGebnbgdRTtr305qo/CDPcS/4Dou1cSzeM+wk/b8Ij+8uYlHadxhxVF1QqF3aKK0hAo
+         Rc2uDZvFJAQD7K8RlleDHmGYElOTYfPP9ZJsdR715Xyd+XWauXDE4RfRosNPJgvqlhaH
+         SG0YQXbTD3bVVH0h3Plq74yqTaPLHjRZnovupJoJldPTeGDk13n0FvYbBJ1zNCji/c+s
+         pGzvl2pXYu9s0wgMzBAlyBn86pizSo5QVF5ypRBLE75Qja6jYuwHtULIrwZJNU0RKDuc
+         e6zQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g5si2125678qka.162.2019.10.16.07.35.03
+        by mx.google.com with ESMTPS id v185si24508318qkc.291.2019.10.16.07.35.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Oct 2019 07:35:03 -0700 (PDT)
+        Wed, 16 Oct 2019 07:35:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43409 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43412 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iKkOE-0005cc-E6
-	for alex.bennee@linaro.org; Wed, 16 Oct 2019 10:35:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41739)
+	id 1iKkOf-0005yx-Dl
+	for alex.bennee@linaro.org; Wed, 16 Oct 2019 10:35:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41764)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <drjones@redhat.com>) id 1iKkNb-00058a-Be
- for qemu-arm@nongnu.org; Wed, 16 Oct 2019 10:34:24 -0400
+ (envelope-from <drjones@redhat.com>) id 1iKkNd-0005C0-Ny
+ for qemu-arm@nongnu.org; Wed, 16 Oct 2019 10:34:27 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <drjones@redhat.com>) id 1iKkNa-0000jf-2Q
- for qemu-arm@nongnu.org; Wed, 16 Oct 2019 10:34:23 -0400
-Received: from mx1.redhat.com ([209.132.183.28]:48796)
+ (envelope-from <drjones@redhat.com>) id 1iKkNb-0000kQ-Ph
+ for qemu-arm@nongnu.org; Wed, 16 Oct 2019 10:34:25 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:42846)
  by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
  (Exim 4.71) (envelope-from <drjones@redhat.com>)
- id 1iKkNZ-0000jE-QZ; Wed, 16 Oct 2019 10:34:22 -0400
+ id 1iKkNb-0000k0-HV; Wed, 16 Oct 2019 10:34:23 -0400
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mx1.redhat.com (Postfix) with ESMTPS id E5E41307D96D;
- Wed, 16 Oct 2019 14:34:20 +0000 (UTC)
+ by mx1.redhat.com (Postfix) with ESMTPS id AA32E18CB90C;
+ Wed, 16 Oct 2019 14:34:22 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 72D5719C68;
- Wed, 16 Oct 2019 14:34:19 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3761F19C68;
+ Wed, 16 Oct 2019 14:34:21 +0000 (UTC)
 From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH v1 4/5] tests/arm-cpu-features: Check feature default values
-Date: Wed, 16 Oct 2019 16:34:09 +0200
-Message-Id: <20191016143410.5023-5-drjones@redhat.com>
+Subject: [PATCH v1 5/5] target/arm/cpu: Add the kvm-adjvtime CPU property
+Date: Wed, 16 Oct 2019 16:34:10 +0200
+Message-Id: <20191016143410.5023-6-drjones@redhat.com>
 In-Reply-To: <20191016143410.5023-1-drjones@redhat.com>
 References: <20191016143410.5023-1-drjones@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
- (mx1.redhat.com [10.5.110.48]); Wed, 16 Oct 2019 14:34:21 +0000 (UTC)
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.2
+ (mx1.redhat.com [10.5.110.63]); Wed, 16 Oct 2019 14:34:22 +0000 (UTC)
 Content-Transfer-Encoding: quoted-printable
 X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
  [fuzzy]
@@ -91,104 +91,230 @@ Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
  bijan.mottahedeh@oracle.com, maz@kernel.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ImgTOWo9nWKa
+X-TUID: s5oobHBFZqU4
 
-If we know what the default value should be then we can test for
-that as well as the feature existence.
+kvm-adjvtime is a KVM specific CPU property and a first of its kind.
+To accommodate it we also add kvm_arm_add_vcpu_properties() and a
+KVM specific CPU properties description to the CPU features document.
 
 Signed-off-by: Andrew Jones <drjones@redhat.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tests/arm-cpu-features.c | 44 ++++++++++++++++++++++++++++++++--------
- 1 file changed, 35 insertions(+), 9 deletions(-)
+ docs/arm-cpu-features.rst | 27 ++++++++++++++++++++++++++-
+ target/arm/cpu.c          |  2 ++
+ target/arm/cpu64.c        |  1 +
+ target/arm/kvm.c          | 27 +++++++++++++++++++++++++++
+ target/arm/kvm_arm.h      | 11 +++++++++++
+ target/arm/monitor.c      |  1 +
+ tests/arm-cpu-features.c  |  4 ++++
+ 7 files changed, 72 insertions(+), 1 deletion(-)
 
+diff --git a/docs/arm-cpu-features.rst b/docs/arm-cpu-features.rst
+index 1b367e22e16e..5c317296845f 100644
+--- a/docs/arm-cpu-features.rst
++++ b/docs/arm-cpu-features.rst
+@@ -31,7 +31,9 @@ supporting the feature or only supporting the feature u=
+nder certain
+ configurations.  For example, the `aarch64` CPU feature, which, when
+ disabled, enables the optional AArch32 CPU feature, is only supported
+ when using the KVM accelerator and when running on a host CPU type that
+-supports the feature.
++supports the feature.  While `aarch64` currently only works with KVM,
++it could work with TCG.  CPU features that are specific to KVM are
++prefixed with "kvm-" and are described in "KVM VCPU Features".
+=20
+ CPU Feature Probing
+ =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+@@ -171,6 +173,29 @@ disabling many SVE vector lengths would be quite ver=
+bose, the `sve<N>` CPU
+ properties have special semantics (see "SVE CPU Property Parsing
+ Semantics").
+=20
++KVM VCPU Features
++=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
++
++KVM VCPU features are CPU features that are specific to KVM, such as
++paravirt features or features that enable CPU virtualization extensions.
++The features' CPU properties are only available when KVM is enabled and =
+are
++named with the prefix "kvm-".  KVM VCPU features may be probed, enabled,=
+ and
++disabled in the same way as other CPU features.  Below is the list of KV=
+M
++VCPU features and their descriptions.
++
++  kvm-adjvtime             When enabled, each time the VM transitions ba=
+ck
++                           to running state the VCPU's vitual counter is
++                           updated to ensure stopped time is not counted=
+.
++                           This avoids time jumps surprising guest OSes =
+and
++                           applications, as long as they use the virtual
++                           counter for timekeeping, but has the side eff=
+ect
++                           of the virtual and physical counters divergin=
+g.
++                           All timekeeping based on the virtual counter =
+will
++                           appear to lag behind any timekeeping that doe=
+s
++                           not subtract VM stopped time.  The guest may
++                           resynchronize its virtual counter with other =
+time
++                           sources as needed.
++
+ SVE CPU Properties
+ =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+=20
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 0c4465880ddd..151771e12bc5 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2481,6 +2481,7 @@ static void arm_max_initfn(Object *obj)
+=20
+     if (kvm_enabled()) {
+         kvm_arm_set_cpu_features_from_host(cpu);
++        kvm_arm_add_vcpu_properties(obj);
+     } else {
+         cortex_a15_initfn(obj);
+=20
+@@ -2672,6 +2673,7 @@ static void arm_host_initfn(Object *obj)
+     if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+         aarch64_add_sve_properties(obj);
+     }
++    kvm_arm_add_vcpu_properties(obj);
+     arm_cpu_post_init(obj);
+ }
+=20
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 68baf0482ffa..c9a657a178ce 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -620,6 +620,7 @@ static void aarch64_max_initfn(Object *obj)
+=20
+     if (kvm_enabled()) {
+         kvm_arm_set_cpu_features_from_host(cpu);
++        kvm_arm_add_vcpu_properties(obj);
+     } else {
+         uint64_t t;
+         uint32_t u;
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 373b868dc248..35160e8d0525 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -17,6 +17,8 @@
+ #include "qemu/timer.h"
+ #include "qemu/error-report.h"
+ #include "qemu/main-loop.h"
++#include "qom/object.h"
++#include "qapi/error.h"
+ #include "sysemu/sysemu.h"
+ #include "sysemu/kvm.h"
+ #include "sysemu/kvm_int.h"
+@@ -179,6 +181,31 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+     env->features =3D arm_host_cpu_features.features;
+ }
+=20
++static bool kvm_adjvtime_get(Object *obj, Error **errp)
++{
++    return ARM_CPU(obj)->kvm_adjvtime;
++}
++
++static void kvm_adjvtime_set(Object *obj, bool value, Error **errp)
++{
++    ARM_CPU(obj)->kvm_adjvtime =3D value;
++}
++
++/* KVM VCPU properties should be prefixed with "kvm-". */
++void kvm_arm_add_vcpu_properties(Object *obj)
++{
++    if (!kvm_enabled()) {
++        return;
++    }
++
++    object_property_add_bool(obj, "kvm-adjvtime", kvm_adjvtime_get,
++                             kvm_adjvtime_set, &error_abort);
++    object_property_set_description(obj, "kvm-adjvtime",
++                                    "Set on to enable the adjustment of =
+"
++                                    "the virtual counter. VM stopped tim=
+e "
++                                    "will not be counted.", &error_abort=
+);
++}
++
+ bool kvm_arm_pmu_supported(CPUState *cpu)
+ {
+     KVMState *s =3D KVM_STATE(current_machine->accelerator);
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 3bb7e331aa06..a5429bfc0dbf 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -232,6 +232,15 @@ void kvm_arm_sve_get_vls(CPUState *cs, unsigned long=
+ *map);
+  */
+ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
+=20
++/**
++ * void kvm_arm_add_vcpu_properties:
++ * @obj: The CPU object to add the properties to
++ *
++ * Add all KVM specific CPU properties to the CPU object. These
++ * are the CPU properties with "kvm-" prefixed names.
++ */
++void kvm_arm_add_vcpu_properties(Object *obj);
++
+ /**
+  * void kvm_arm_set_virtual_time:
+  * @cs: CPUState
+@@ -311,6 +320,8 @@ static inline void kvm_arm_set_cpu_features_from_host=
+(ARMCPU *cpu)
+     cpu->host_cpu_probe_failed =3D true;
+ }
+=20
++static inline void kvm_arm_add_vcpu_properties(Object *obj) {}
++
+ static inline bool kvm_arm_aarch32_supported(CPUState *cs)
+ {
+     return false;
+diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+index fa054f8a369c..d9b2d94ac3fa 100644
+--- a/target/arm/monitor.c
++++ b/target/arm/monitor.c
+@@ -103,6 +103,7 @@ static const char *cpu_model_advertised_features[] =3D=
+ {
+     "sve128", "sve256", "sve384", "sve512",
+     "sve640", "sve768", "sve896", "sve1024", "sve1152", "sve1280",
+     "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
++    "kvm-adjvtime",
+     NULL
+ };
+=20
 diff --git a/tests/arm-cpu-features.c b/tests/arm-cpu-features.c
-index 92668efb8f56..ee444b04010f 100644
+index ee444b04010f..c207a2bec9e9 100644
 --- a/tests/arm-cpu-features.c
 +++ b/tests/arm-cpu-features.c
-@@ -141,6 +141,32 @@ static bool resp_get_feature(QDict *resp, const char=
- *feature)
-     qobject_unref(_resp);                                              \
- })
-=20
-+#define assert_has_feature_enabled(qts, cpu_type, feature)             \
-+({                                                                     \
-+    QDict *_resp, *_props;                                             \
-+                                                                       \
-+    _resp =3D do_query_no_props(qts, cpu_type);                         =
- \
-+    g_assert(_resp);                                                   \
-+    g_assert(resp_has_props(_resp));                                   \
-+    _props =3D resp_get_props(_resp);                                   =
- \
-+    g_assert(qdict_get(_props, feature));                              \
-+    g_assert(qdict_get_bool(_props, feature));                         \
-+    qobject_unref(_resp);                                              \
-+})
-+
-+#define assert_has_feature_disabled(qts, cpu_type, feature)            \
-+({                                                                     \
-+    QDict *_resp, *_props;                                             \
-+                                                                       \
-+    _resp =3D do_query_no_props(qts, cpu_type);                         =
- \
-+    g_assert(_resp);                                                   \
-+    g_assert(resp_has_props(_resp));                                   \
-+    _props =3D resp_get_props(_resp);                                   =
- \
-+    g_assert(qdict_get(_props, feature));                              \
-+    g_assert(!qdict_get_bool(_props, feature));                        \
-+    qobject_unref(_resp);                                              \
-+})
-+
- static void assert_type_full(QTestState *qts)
- {
-     const char *error;
-@@ -387,16 +413,16 @@ static void test_query_cpu_model_expansion(const vo=
-id *data)
-     assert_error(qts, "host", "The CPU type 'host' requires KVM", NULL);
-=20
-     /* Test expected feature presence/absence for some cpu types */
--    assert_has_feature(qts, "max", "pmu");
--    assert_has_feature(qts, "cortex-a15", "pmu");
-+    assert_has_feature_enabled(qts, "max", "pmu");
-+    assert_has_feature_enabled(qts, "cortex-a15", "pmu");
+@@ -417,6 +417,8 @@ static void test_query_cpu_model_expansion(const void=
+ *data)
+     assert_has_feature_enabled(qts, "cortex-a15", "pmu");
      assert_has_not_feature(qts, "cortex-a15", "aarch64");
 =20
++    assert_has_not_feature(qts, "max", "kvm-adjvtime");
++
      if (g_str_equal(qtest_get_arch(), "aarch64")) {
--        assert_has_feature(qts, "max", "aarch64");
--        assert_has_feature(qts, "max", "sve");
--        assert_has_feature(qts, "max", "sve128");
--        assert_has_feature(qts, "cortex-a57", "pmu");
--        assert_has_feature(qts, "cortex-a57", "aarch64");
-+        assert_has_feature_enabled(qts, "max", "aarch64");
-+        assert_has_feature_enabled(qts, "max", "sve");
-+        assert_has_feature_enabled(qts, "max", "sve128");
-+        assert_has_feature_enabled(qts, "cortex-a57", "pmu");
-+        assert_has_feature_enabled(qts, "cortex-a57", "aarch64");
-=20
-         sve_tests_default(qts, "max");
-=20
-@@ -417,7 +443,7 @@ static void test_query_cpu_model_expansion_kvm(const =
+         assert_has_feature_enabled(qts, "max", "aarch64");
+         assert_has_feature_enabled(qts, "max", "sve");
+@@ -445,6 +447,8 @@ static void test_query_cpu_model_expansion_kvm(const =
 void *data)
 =20
-     qts =3D qtest_init(MACHINE "-accel kvm -cpu host");
+     assert_has_feature_enabled(qts, "host", "pmu");
 =20
--    assert_has_feature(qts, "host", "pmu");
-+    assert_has_feature_enabled(qts, "host", "pmu");
-=20
++    assert_has_feature_disabled(qts, "host", "kvm-adjvtime");
++
      if (g_str_equal(qtest_get_arch(), "aarch64")) {
          bool kvm_supports_sve;
-@@ -427,7 +453,7 @@ static void test_query_cpu_model_expansion_kvm(const =
-void *data)
-         QDict *resp;
-         char *error;
-=20
--        assert_has_feature(qts, "host", "aarch64");
-+        assert_has_feature_enabled(qts, "host", "aarch64");
-=20
-         assert_error(qts, "cortex-a15",
-             "We cannot guarantee the CPU type 'cortex-a15' works "
+         char max_name[8], name[8];
 --=20
 2.21.0
 

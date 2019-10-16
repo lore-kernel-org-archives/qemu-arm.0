@@ -1,117 +1,134 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp7076272wrm;
-        Wed, 16 Oct 2019 05:26:09 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxT2J7XckkQjA3IK1hz4LbCPAFD84vhXtLGMLIPOclXz2OUq7+3hYEY7JhP/owtTHcLVTTz
-X-Received: by 2002:a92:4743:: with SMTP id u64mr11979889ila.239.1571228769601;
-        Wed, 16 Oct 2019 05:26:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571228769; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp7233973wrm;
+        Wed, 16 Oct 2019 07:34:45 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxoe7q8CmY2IpYEiP6l1S+RSmOSFhEekQDLo6LTzSkr46YKT7bViUtvUbAIv2x3OMCRvJiG
+X-Received: by 2002:a05:6214:32f:: with SMTP id j15mr42617618qvu.29.1571236485792;
+        Wed, 16 Oct 2019 07:34:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571236485; cv=none;
         d=google.com; s=arc-20160816;
-        b=NpPLrjSkrVVxKn+ySOInCVgSp1T6FWXWh4Q9vlojOlygiex6NA8hjvtYwDWJxBn2Mv
-         x2MExMXMMnNJG+lWfFV5/q+bVmK3Udoa1sYTiCUSB/sQpnUxa78IZfq6S5VlfH2L/Oy8
-         HiSFTnzH6ZINFwy3TVt1vxJp2ZBBibBUrrFR4n3zUQF0wc3nkbiPDVSWks22bG/u84YZ
-         QTbU9QwFSpclVp5w3p3gLrle43HUJWX7a8XGqg6nMeleM3cAzguxbStjgecX85NKudOe
-         A4X/UHToVn0rN9uBxPkKlc1FOpxlP+RbkupsGOzJRI78m9iMLapC4o6/LyQu02S0VuCx
-         s8Iw==
+        b=jyHGNdA7xN3pPjgO7mZUFrCJSsMnRDTD/FTrDj6fMS9Ulo7TAKzsaOKO61yRi13YG6
+         502qS4VUnkV61DFTw0nflu60Ht+rTCuEUGspxFs3UPysKn49wcrF3RvbTm5+c7Qdf16p
+         50Uiu0eLMSk9zVnLdeZrWtnplAUL1LoqxVtcXChvlXHgFh8jKHmSSP/3n4UeQFgK/ZNW
+         MiXieaj8XWKPa24DQW74Hruyy4rJEPAY+ss2HKoEj8QrVic46r2ynRgN2RZQxSK9DKJb
+         bGS9ghj7+8rjV/5RQZ+TM/ZRxLAXfhqZIWsAQ2W5ppmHCzvYlcBOLn+CsftwNmsdHjPk
+         gQHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=D3fmE5URL3lZrrxnAvrx/BLBCrKFk1+z6Ak/1mn8qEI=;
-        b=aCemdTN8gXeHgAANOAptARPQfuHe2HRDBQSbuwNzVEXGCcgLdBCTH9+tIKkTzHBwAk
-         sSbgKhyC9OWzqvKqS3SccMke8MQpcDQ1sy1ffHqCZJz3jQDLpNTCKdWyfQkeD168a00W
-         tdih8OVyf4cDmGL6RHqV2/hV4iembxQSd/yb2mJtno4ibziuk63BwOFjNg3Pu02vAcRm
-         080UeEBqqgAe8eN6WiOOaoClUfwfy3KaaP+yA7pEE62OBN/wy0yOLMMNi0gFVuT+LPwE
-         7m1fw3B2H9BoVnJLI1dKtAnrnzlez8uK69UeGq4RBCIR45kGoneTEZonVVHVzJO+1G8J
-         xykw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=v/hsNSN5jDApl8dVpT6B91c1F4vI8PyCF0luRxCSefY=;
+        b=lgC9SKqNSHe7iyLt6lA1s/fja72U4rKrUTjxnJqPI1i/SMr99Krn/VpYPDqb7YneQY
+         7Y4ZnakVJC3/+3myWlm1xvCGhEJrdursflWTzP6ojYFvx5cpZWP0HuE9BeZhoLG0v3i+
+         /MXIku7/ssKmgurgLtQ+J7Mur1j6esHrDVJKrSLY6AIqeDNtaecsfg0S+guHy3nzEnPj
+         3EsbHAKYUgpuG79ZuqIaajc6T4AUM+39n8gP44Ny/qlcjiFAUUpgUJBxIrgWymwncE1k
+         LpWeFHf8QGgiI0mQlaVwNNF+B/LqGmPHMBwtmK2Rq3CjV3YOja8vdFueN0Lk4FPpoRYD
+         CzXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from mx1.redhat.com (mx1.redhat.com. [209.132.183.28])
-        by mx.google.com with ESMTPS id g205si42242286jac.56.2019.10.16.05.26.09
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v138si24305674qkb.355.2019.10.16.07.34.45
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 16 Oct 2019 05:26:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) client-ip=209.132.183.28;
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 16 Oct 2019 07:34:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of philmd@redhat.com designates 209.132.183.28 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com [209.85.128.71])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mx1.redhat.com (Postfix) with ESMTPS id B0A6E51EE6
-	for <alex.bennee@linaro.org>; Wed, 16 Oct 2019 12:26:08 +0000 (UTC)
-Received: by mail-wm1-f71.google.com with SMTP id 190so1139582wme.4
-        for <alex.bennee@linaro.org>; Wed, 16 Oct 2019 05:26:08 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=D3fmE5URL3lZrrxnAvrx/BLBCrKFk1+z6Ak/1mn8qEI=;
-        b=UFA+1xVRXId/UvOCINryEm/67Id0zgNps7KXfNgvQpRK90KQRYwRkxH+oM9XCuISU2
-         UfptEUxxYtHxWzjr129uCgf7DkRo23yVGr/Ie+/pdXs4o6ytjvDxX44gZVlP6HAtnDpJ
-         LrumOGg+jYBWsReMRGLCaLvuAWt3wnjdyl5jiuy8l4goCac9XVJfMIFwGAYvSRxfpFwK
-         /vEEXzyHJ5DjuInX6O0KhFGyHnhJpB7LwM538hdr0cRQ1t6GeKgZ0pzckuI3w0t66R2G
-         VV5FdESGPj6lanieB3eVNv6zR+hJiYOiYEPdKkfXyB71UbmTXXI+Ht2HPLfqB12O6OpU
-         oZtA==
-X-Gm-Message-State: APjAAAUQv1Sy3YawD+XFhR/KFlTc9zdYQFPvf4fJcPW0mxkCfX+E04M6
-	+NQphV3CzXjqv1bPlMOxgMJLZ+5UdQs6CcgIgg9SxWFRIf11pp+tf9qBylyv7nwTV/Fdz3kO2Nm
-	nYOcY9esl7X8Mlyt6
-X-Received: by 2002:a5d:67c5:: with SMTP id n5mr2617975wrw.72.1571228767489;
-        Wed, 16 Oct 2019 05:26:07 -0700 (PDT)
-X-Received: by 2002:a5d:67c5:: with SMTP id n5mr2617960wrw.72.1571228767320;
-        Wed, 16 Oct 2019 05:26:07 -0700 (PDT)
-Received: from [192.168.1.36] (14.red-88-21-201.staticip.rima-tde.net. [88.21.201.14])
-        by smtp.gmail.com with ESMTPSA id q124sm3814325wma.5.2019.10.16.05.26.05
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 16 Oct 2019 05:26:06 -0700 (PDT)
-Subject: Re: [PATCH v6 2/9] tests: arm: Introduce cpu feature tests
-To: Andrew Jones <drjones@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- richard.henderson@linaro.org, armbru@redhat.com, eric.auger@redhat.com,
- imammedo@redhat.com, alex.bennee@linaro.org, Dave.Martin@arm.com
-References: <20191016085408.24360-1-drjones@redhat.com>
- <20191016085408.24360-3-drjones@redhat.com>
- <cec54f08-9508-13e5-600f-3442962a1642@redhat.com>
- <20191016122103.l6vz423k3gpdr2bv@kamzik.brq.redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <626412a4-5c61-1f6e-0f18-7b0d9f754baa@redhat.com>
-Date: Wed, 16 Oct 2019 14:26:05 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.1.0
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43380 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iKkNw-000550-EV
+	for alex.bennee@linaro.org; Wed, 16 Oct 2019 10:34:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41682)
+ by lists.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <drjones@redhat.com>) id 1iKkNX-000540-AS
+ for qemu-arm@nongnu.org; Wed, 16 Oct 2019 10:34:20 -0400
+Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
+ (envelope-from <drjones@redhat.com>) id 1iKkNW-0000hj-Bp
+ for qemu-arm@nongnu.org; Wed, 16 Oct 2019 10:34:19 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:49760)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <drjones@redhat.com>)
+ id 1iKkNW-0000hQ-6W; Wed, 16 Oct 2019 10:34:18 -0400
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id 64BF1883BA;
+ Wed, 16 Oct 2019 14:34:17 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.43.2.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E6DEC19C68;
+ Wed, 16 Oct 2019 14:34:15 +0000 (UTC)
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH v1 2/5] timer: arm: Introduce functions to get the host cntfrq
+Date: Wed, 16 Oct 2019 16:34:07 +0200
+Message-Id: <20191016143410.5023-3-drjones@redhat.com>
+In-Reply-To: <20191016143410.5023-1-drjones@redhat.com>
+References: <20191016143410.5023-1-drjones@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20191016122103.l6vz423k3gpdr2bv@kamzik.brq.redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: QweB2w3uW77K
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.5.16
+ (mx1.redhat.com [10.5.110.26]); Wed, 16 Oct 2019 14:34:17 +0000 (UTC)
+Content-Transfer-Encoding: quoted-printable
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
+ bijan.mottahedeh@oracle.com, maz@kernel.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yA59IDUqTiG+
 
-On 10/16/19 2:21 PM, Andrew Jones wrote:
-> On Wed, Oct 16, 2019 at 02:05:24PM +0200, Philippe Mathieu-Daudé wrote:
->>> +static void test_query_cpu_model_expansion_kvm(const void *data)
->>> +{
->>> +    QTestState *qts;
->>> +
->>> +    qts = qtest_init(MACHINE "-accel kvm -cpu host");
->>> +
->>> +    assert_has_feature(qts, "host", "pmu");
->>
->> Have you tried this on a ARM host? I wanted to but don't have access to one
->> :(
->>
-> 
-> Yes. All code in this series has been tested; covering these
-> configurations
-> 
->   - TCG aarch64
->   - TCG arm
->   - KVM aarch64 without SVE
->   - KVM aarch64 with SVE
->   - compile tested arm code with CONFIG_KVM enabled
+When acceleration like KVM is in use it's necessary to use the host's
+counter frequency when converting ticks to or from time units.
 
-OK, I'd appreciate if someone with ARM hardware can test:
+Signed-off-by: Andrew Jones <drjones@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ include/qemu/timer.h | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-     - KVM arm
+diff --git a/include/qemu/timer.h b/include/qemu/timer.h
+index 85bc6eb00b21..8941ddea8242 100644
+--- a/include/qemu/timer.h
++++ b/include/qemu/timer.h
+@@ -1006,6 +1006,22 @@ static inline int64_t cpu_get_host_ticks(void)
+ }
+ #endif
+=20
++#if defined(__aarch64__)
++static inline uint32_t cpu_get_host_tick_frequency(void)
++{
++    uint64_t frq;
++    asm volatile("mrs %0, cntfrq_el0" : "=3Dr" (frq));
++    return frq;
++}
++#elif defined(__arm__)
++static inline uint32_t cpu_get_host_tick_frequency(void)
++{
++    uint32_t frq;
++    asm volatile("mrc p15, 0, %0, c14, c0, 0" : "=3Dr" (frq));
++    return frq;
++}
++#endif
++
+ #ifdef CONFIG_PROFILER
+ static inline int64_t profile_getclock(void)
+ {
+--=20
+2.21.0
 
-Thanks,
-
-Phil.

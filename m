@@ -1,114 +1,163 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp466208wrm;
-        Wed, 16 Oct 2019 22:22:16 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzBvy12tokoJ9/Vmx1R4/E4oOEqK6J3BCXdCcxsdTHmGmOg2BxeRg7foCdh5U/Lh3WYhKYD
-X-Received: by 2002:ac8:5559:: with SMTP id o25mr1947503qtr.267.1571289736385;
-        Wed, 16 Oct 2019 22:22:16 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j8si1227169qkl.130.2019.10.16.22.22.16
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Oct 2019 22:22:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp500731wrm;
+        Wed, 16 Oct 2019 23:03:49 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqw4SDgBNVi934cQ7X1CApKnu5ItFhc+kmZm6Fm/Lpuq2b949RnG64zRKX8RcR+mC9WN2mza
+X-Received: by 2002:a17:906:8315:: with SMTP id j21mr1910340ejx.244.1571292229848;
+        Wed, 16 Oct 2019 23:03:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571292229; cv=none;
+        d=google.com; s=arc-20160816;
+        b=DstP1Cfqv2C44QGENeKoriJzyteucWdkHWAHuGZU5WeqBF9tLqYDPw79fe+y527Eff
+         rBVOhBZ9RMFLIt49AjzOjMdG054bCxHqUyu7Y0hqoMPMLa4nPBtUoaGtbL94qmD7dn3n
+         qhNZ/IsKeLPIPk43a0P6w3q4fs2GBC9q6XCWolYVaztJSB0N5hRnxSB6D4gh+aFuEpKu
+         KnrQsJRhD7inzp0lZyOW9WTxGDwGHGVVspw2JNWLsh+k+fif4vN7j9ebRJBE7qsK1sGP
+         rRBl20mC2NLODLVLUOzB5Dzf1yk3v6UDxfra+UufiigeUlmtdIAdzK0m8xcGI2eKSqV9
+         4isQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-id:precedence:sender:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject;
+        bh=2l2SCT87HXBSpLb/32jCU3MDrj5clIQQSAJ0q0WlYGY=;
+        b=NpxQy/DLLju3TZ3K+7wX3FJ9rnoKgVjbZvguvVRQKZ9pBu9adGWzcrhtxtB7cxoy35
+         +BsPx5s9FCd2flFuk2D8wSYak2geTlqJk4hRLUnQJc7Io98lJtLF9ybih3c1XlL31pbc
+         4NjG8T5DIBFcRLUjg2wqsoUMXHpH2tAMN6OVyHoYKp77PBcAcP0mhMz9BvzOGe6zbPil
+         4pwjpxrg/nePUkrI1vjSib6/ZthQ1Iu2JoQLfbb0Ux0Ce73jGozLZkIjlpBnVR8fHfvV
+         OMoaq/NQ41WpfYIKH/GO38ERy9Mk8dOmHZbwvQd+rm9A9kHareSlSiufXN4EOoLYZXyS
+         h/zw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [209.132.180.67])
+        by mx.google.com with ESMTP id om23si751518ejb.194.2019.10.16.23.03.49;
+        Wed, 16 Oct 2019 23:03:49 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) client-ip=209.132.180.67;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34786 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iKyEp-000536-Pe
-	for alex.bennee@linaro.org; Thu, 17 Oct 2019 01:22:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37567)
- by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <no-reply@patchew.org>) id 1iKyEh-00050u-Co
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 01:22:08 -0400
-Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <no-reply@patchew.org>) id 1iKyEg-0003jR-5h
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 01:22:07 -0400
-Resent-Date: Thu, 17 Oct 2019 01:22:07 -0400
-Resent-Message-Id: <E1iKyEg-0003jR-5h@eggs.gnu.org>
-Received: from sender4-of-o56.zoho.com ([136.143.188.56]:21606)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <no-reply@patchew.org>)
- id 1iKyEd-0003hz-25; Thu, 17 Oct 2019 01:22:03 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1571289710; cv=none; d=zoho.com; s=zohoarc; 
- b=iouCWKFn6K+1h3U+/Ykd4LBlpii1mALxVtyZwlJir2eOIL+fUk6DyvAgw7niAS9LcjdtOy9AQfd0g+TiX9+LdhzZhcOS43eWQ6wTV8PXBYln+FWYzVJ3Iimxp49GQkkYEvBsk2dJbFl2c8ZDzx9hwehQPE+5ZeSdsj8e4BBlJy8=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
- s=zohoarc; t=1571289710;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=rgh9h98f0l/z0NEN89kufBa3+3XXSwpM+1EwMe9Qzj4=; 
- b=b8ntY1vtD3B/+/1sCLuIVRoi1q6cIIkGYvxa5jcyxnqPKyRt4XdHG1zY4T9nZ1wdYAPpgES5+aqzBiPhzWFgEC3LQ1XB2n2TOnniHGq+Bv4LSdURFxHK6d4T2/+Gon1AUP+FbJA9s36ZA3yjyRBARmOktwOpWfRLqkj9rkrZFU8=
-ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1571289708411157.54615192034214;
- Wed, 16 Oct 2019 22:21:48 -0700 (PDT)
-In-Reply-To: <20191017044232.27601-1-richard.henderson@linaro.org>
-Subject: Re: [PATCH 0/4] target/arm vector improvements
-Message-ID: <157128970723.19066.12876415670200560539@37313f22b938>
+       spf=pass (google.com: best guess record for domain of kvm-owner@vger.kernel.org designates 209.132.180.67 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S2404804AbfJQGDq (ORCPT <rfc822;daniel.diaz@linaro.org>
+        + 4 others); Thu, 17 Oct 2019 02:03:46 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:43594 "EHLO huawei.com"
+        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
+        id S2392531AbfJQGDp (ORCPT <rfc822;kvm@vger.kernel.org>);
+        Thu, 17 Oct 2019 02:03:45 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.60])
+        by Forcepoint Email with ESMTP id E14F230BF13D4765E53A;
+        Thu, 17 Oct 2019 14:03:42 +0800 (CST)
+Received: from [127.0.0.1] (10.133.224.57) by DGGEMS406-HUB.china.huawei.com
+ (10.3.19.206) with Microsoft SMTP Server id 14.3.439.0; Thu, 17 Oct 2019
+ 14:03:32 +0800
+Subject: Re: [PATCH v19 5/5] target-arm: kvm64: handle SIGBUS signal from
+ kernel or KVM
+To:     Peter Maydell <peter.maydell@linaro.org>
+CC:     Paolo Bonzini <pbonzini@redhat.com>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Igor Mammedov <imammedo@redhat.com>,
+        Shannon Zhao <shannon.zhaosl@gmail.com>,
+        Laszlo Ersek <lersek@redhat.com>,
+        James Morse <james.morse@arm.com>,
+        gengdongjiu <gengdongjiu@huawei.com>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Jonathan Cameron <jonathan.cameron@huawei.com>,
+        "xuwei (O)" <xuwei5@huawei.com>, kvm-devel <kvm@vger.kernel.org>,
+        "QEMU Developers" <qemu-devel@nongnu.org>,
+        qemu-arm <qemu-arm@nongnu.org>, Linuxarm <linuxarm@huawei.com>,
+        <wanghaibin.wang@huawei.com>
+References: <20191015140140.34748-1-zhengxiang9@huawei.com>
+ <20191015140140.34748-6-zhengxiang9@huawei.com>
+ <CAFEAcA-92YEgrBPDVVFEmjBYnw=keJWKUDnqNRakw-jKYaxK5Q@mail.gmail.com>
+From:   Xiang Zheng <zhengxiang9@huawei.com>
+Message-ID: <c0ecb6af-c26f-0f97-c6dd-7745a03da94c@huawei.com>
+Date:   Thu, 17 Oct 2019 14:03:30 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.0
 MIME-Version: 1.0
+In-Reply-To: <CAFEAcA-92YEgrBPDVVFEmjBYnw=keJWKUDnqNRakw-jKYaxK5Q@mail.gmail.com>
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: richard.henderson@linaro.org
-Date: Wed, 16 Oct 2019 22:21:48 -0700 (PDT)
-X-ZohoMailClient: External
-X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
- [fuzzy]
-X-Received-From: 136.143.188.56
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +sUCFDjd9a0S
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.133.224.57]
+X-CFilter-Loop: Reflected
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 0bkzvH0i3NiU
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTAxNzA0NDIzMi4yNzYw
-MS0xLXJpY2hhcmQuaGVuZGVyc29uQGxpbmFyby5vcmcvCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2Vl
-bXMgdG8gaGF2ZSBzb21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBm
-b3IKbW9yZSBpbmZvcm1hdGlvbjoKClN1YmplY3Q6IFtQQVRDSCAwLzRdIHRhcmdldC9hcm0gdmVj
-dG9yIGltcHJvdmVtZW50cwpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAxOTEwMTcwNDQyMzIu
-Mjc2MDEtMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnCgo9PT0gVEVTVCBTQ1JJUFQgQkVH
-SU4gPT09CiMhL2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0
-IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9j
-YWwgZGlmZi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhp
-c3RvZ3JhbQouL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVT
-VCBTQ1JJUFQgRU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRi
-ZDg4ODcxMzM4NApTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCjNlYTY2NTMgdGFyZ2V0
-L2FybTogQ29udmVydCBQTVVMTC44IHRvIGd2ZWMKYjZjZjhlYSB0YXJnZXQvYXJtOiBDb252ZXJ0
-IFBNVUxMLjY0IHRvIGd2ZWMKNWVkZGFmMiB0YXJnZXQvYXJtOiBDb252ZXJ0IFBNVUwuOCB0byBn
-dmVjCmJkOGY5NjcgdGFyZ2V0L2FybTogVmVjdG9yaXplIFVTSEwgYW5kIFNTSEwKCj09PSBPVVRQ
-VVQgQkVHSU4gPT09CjEvNCBDaGVja2luZyBjb21taXQgYmQ4Zjk2NzU1MWI2ICh0YXJnZXQvYXJt
-OiBWZWN0b3JpemUgVVNITCBhbmQgU1NITCkKRVJST1I6IHRyYWlsaW5nIHN0YXRlbWVudHMgc2hv
-dWxkIGJlIG9uIG5leHQgbGluZQojMTYwOiBGSUxFOiB0YXJnZXQvYXJtL3RyYW5zbGF0ZS5jOjM1
-ODM6CisgICAgICAgICAgICBjYXNlIDI6IGdlbl91c2hsX2kzMih2YXIsIHZhciwgc2hpZnQpOyBi
-cmVhazsKCkVSUk9SOiB0cmFpbGluZyBzdGF0ZW1lbnRzIHNob3VsZCBiZSBvbiBuZXh0IGxpbmUK
-IzE2NzogRklMRTogdGFyZ2V0L2FybS90cmFuc2xhdGUuYzozNTg5OgorICAgICAgICAgICAgY2Fz
-ZSAyOiBnZW5fc3NobF9pMzIodmFyLCB2YXIsIHNoaWZ0KTsgYnJlYWs7Cgp0b3RhbDogMiBlcnJv
-cnMsIDAgd2FybmluZ3MsIDU3MSBsaW5lcyBjaGVja2VkCgpQYXRjaCAxLzQgaGFzIHN0eWxlIHBy
-b2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2Ug
-cG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBp
-biBNQUlOVEFJTkVSUy4KCjIvNCBDaGVja2luZyBjb21taXQgNWVkZGFmMjY2MWUzICh0YXJnZXQv
-YXJtOiBDb252ZXJ0IFBNVUwuOCB0byBndmVjKQozLzQgQ2hlY2tpbmcgY29tbWl0IGI2Y2Y4ZWEw
-OTVkYiAodGFyZ2V0L2FybTogQ29udmVydCBQTVVMTC42NCB0byBndmVjKQo0LzQgQ2hlY2tpbmcg
-Y29tbWl0IDNlYTY2NTMzNmU2YyAodGFyZ2V0L2FybTogQ29udmVydCBQTVVMTC44IHRvIGd2ZWMp
-Cj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpU
-aGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMTkx
-MDE3MDQ0MjMyLjI3NjAxLTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZy90ZXN0aW5nLmNo
-ZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5
-IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVk
-YmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
 
+
+On 2019/10/15 22:48, Peter Maydell wrote:
+> On Tue, 15 Oct 2019 at 15:02, Xiang Zheng <zhengxiang9@huawei.com> wrote:
+>>
+>> From: Dongjiu Geng <gengdongjiu@huawei.com>
+>>
+>> Add a SIGBUS signal handler. In this handler, it checks the SIGBUS type,
+>> translates the host VA delivered by host to guest PA, then fills this PA
+>> to guest APEI GHES memory, then notifies guest according to the SIGBUS
+>> type.
+>>
+>> When guest accesses the poisoned memory, it will generate a Synchronous
+>> External Abort(SEA). Then host kernel gets an APEI notification and calls
+>> memory_failure() to unmapped the affected page in stage 2, finally
+>> returns to guest.
+>>
+>> Guest continues to access the PG_hwpoison page, it will trap to KVM as
+>> stage2 fault, then a SIGBUS_MCEERR_AR synchronous signal is delivered to
+>> Qemu, Qemu records this error address into guest APEI GHES memory and
+>> notifes guest using Synchronous-External-Abort(SEA).
+>>
+>> In order to inject a vSEA, we introduce the kvm_inject_arm_sea() function
+>> in which we can setup the type of exception and the syndrome information.
+>> When switching to guest, the target vcpu will jump to the synchronous
+>> external abort vector table entry.
+>>
+>> The ESR_ELx.DFSC is set to synchronous external abort(0x10), and the
+>> ESR_ELx.FnV is set to not valid(0x1), which will tell guest that FAR is
+>> not valid and hold an UNKNOWN value. These values will be set to KVM
+>> register structures through KVM_SET_ONE_REG IOCTL.
+>>
+>> Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+>> Signed-off-by: Xiang Zheng <zhengxiang9@huawei.com>
+> 
+>> +static int acpi_ghes_record_mem_error(uint64_t error_block_address,
+>> +                                      uint64_t error_physical_addr,
+>> +                                      uint32_t data_length)
+>> +{
+>> +    GArray *block;
+>> +    uint64_t current_block_length;
+>> +    /* Memory Error Section Type */
+>> +    QemuUUID mem_section_id_le = UEFI_CPER_SEC_PLATFORM_MEM;
+>> +    QemuUUID fru_id = {0};
+> 
+> Hi; this makes at least some versions of clang complain
+> (this is a clang bug, but it's present in shipped versions):
+> 
+> /home/petmay01/linaro/qemu-from-laptop/qemu/hw/acpi/acpi_ghes.c:135:24:
+> error: suggest braces around
+>       initialization of subobject [-Werror,-Wmissing-braces]
+>     QemuUUID fru_id = {0};
+>                        ^
+>                        {}
+> 
+> We generally use "{}" as the generic zero-initializer for
+> this reason (it's gcc/clang specific whereas "{0}" is
+> in the standard, but all of the compilers we care about
+> support it and don't warn about its use).
+> 
+>> +    uint8_t fru_text[20] = {0};
+> 
+> Clang doesn't mind this one because it's not initializing
+> a struct type, but you could use "{}" here too for consistency.
+> 
+
+OK, I will replace all the "{0}" with "{}".
+
+> thanks
+> -- PMM
+> 
+> .
+> 
+
+-- 
+
+Thanks,
+Xiang

@@ -1,94 +1,108 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp527321wrm;
-        Wed, 16 Oct 2019 23:34:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzJT1cU2AkaG4ncDyzMOh90mX4DxI/txyydLp5kW2gYuLDbCXPE/EE4big+4U0lwYeCt537
-X-Received: by 2002:a50:f152:: with SMTP id z18mr1990073edl.263.1571294089045;
-        Wed, 16 Oct 2019 23:34:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571294089; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp739977wrm;
+        Thu, 17 Oct 2019 03:22:21 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqy7Ky2WdvL4w7wX+qABqp8kn8hdYiCkwl2jb6JKVi1GOCzphZ5qaLydHMipjf8AszP7G1u9
+X-Received: by 2002:a05:620a:14b9:: with SMTP id x25mr2582391qkj.9.1571307741188;
+        Thu, 17 Oct 2019 03:22:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571307741; cv=none;
         d=google.com; s=arc-20160816;
-        b=FQMoW+U2/dbAqe9L/vAPIZytqEGrRNtlbrDCNA4Sa2emPfRjVHar+m9X8+Pa+8whVU
-         sg3DRSAQA4yC4d+dYKCpZvZAajgiix7UdUPsy0q4yMdPHhm/0dHk2EIpQ/Jy6LQ14+/p
-         EN/qXgEn5QCtDrNCeSQkBdtxE1EaQR//9jncBIV7DuQSps5zBwRQjltDtEzqY7+H8IXE
-         TLhm7F3ErxRjSDOOl4bCEr9UDkK5OY45ezpd1r/Q3tnQ4upkBchc5fQ0Pn6kPfOTXPQI
-         aLZntqPuprmE64V5a9Z3LFeFVI/yq3laiIzmGdejmbl/A1KOfjltj5B6228clV9OB+CC
-         /uAA==
+        b=d+tUhVGgSrBRWcg+75ZYYjWvkvuy7rG2HRGqXNPn+fKZLcuBnPLIteT28ZE+xMtC/f
+         U5CqisJNe/jm1RGYBbgQEkS2OkWq9e9PZTFcoJVeMsny/TeN54hCRalGI2Derhd5tP6o
+         dmvn5puObblgqe5nV4B/EGq5x3/OX8sYtT0qrjPnrVj/TcvPwXyNqNy7z9ZmvsjEelfL
+         G5oFulJA1pT8UUHoGMl3M8uTGeunva9K2RrCET9e+2bZiF1gMubzj7dwbwALQB2aMINX
+         zJPO3MH+XMFYzNAyb9vJMzbnGL/IZhcScO3vU+EPpF62JotO4bMZ53N1YVF9b4Sq0VMU
+         hi5A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=liYEOxYNZbGAJroK2AsMxBWZpouKVq7N+VunlUN+J9k=;
-        b=b6IFjXiEiRKsvpH040/+spyE3ZO887SdZe2126qV9spI0HXMqmqHP/7nHxf8VWSP9E
-         PPD1UDleOPF5XT9GlKHDNnAYEDgwgew9tfoi4Fmran059O3MCILBlIxOYawFLIDWzqUq
-         SfSF0VE7nT5Shpdcls1Qx5cOD3qoWE19ZLzTEFY3VBCwHF7CrS9FWbD5ySHi0aBZSGtr
-         BFIoCkHnfgWWf5GLsjP14hD/Gny2Kx6i0ro2O4jb/pEsMrFk4b8gYXYPX3LCRtiAydkJ
-         V6P8WTn6oLfUuMMacPFry1W8LdMo7SisLoovBpm3j6H+WOoGsqXJ6XdJRl7ABvXVjcbR
-         Zn8w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=t+eIDWCltQpOLnREZqr/9qimNZYVLZj3DTMpEmXrRXk=;
+        b=JRqXT0ypIMRIQmmzYwtxcmGS9K4JwvpkGTOOoarquF/jwrJsrICO+DCbxDolTjWPkK
+         y7DiX5jNlIUtt+C3vPCun28UVp+LjISHlSPaiM2UUt167upTWt1G9eEq19+Gt8Kqw6zV
+         4rTXhAkq3bAL/BP+GGijZYe2KxVPTUtJw2DVSTDU/x2DCfoKtgm818aj+7eQ9+g/w7Si
+         VQ4Z0fMsVmvAxYoyVK8FIaE9pQNpoff5XOkOhSjO4wJCrWUbdMtCVzdpcq4BL2EMDmNk
+         nkP66D5bXDlOyFNdZrLYKAtaJtTaW+miTY/6Q30VqN6kptcl3RNLksvNtWxdgHGKEgW1
+         A6Wg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=Jy+lkGxu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y10si843378eje.50.2019.10.16.23.34.48
+        by mx.google.com with ESMTPS id 141si1620425qkf.183.2019.10.17.03.22.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Oct 2019 23:34:49 -0700 (PDT)
+        Thu, 17 Oct 2019 03:22:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@jms.id.au header.s=google header.b=Jy+lkGxu;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37188 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:41656 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iKzN1-00038w-WF
-	for alex.bennee@linaro.org; Thu, 17 Oct 2019 02:34:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55679)
+	id 1iL2vE-0002DQ-GT
+	for alex.bennee@linaro.org; Thu, 17 Oct 2019 06:22:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60477)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <joel.stan@gmail.com>) id 1iKzLz-00036j-Kf
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 02:33:48 -0400
+ (envelope-from <philmd@redhat.com>) id 1iL2v5-0002AA-94
+ for qemu-arm@nongnu.org; Thu, 17 Oct 2019 06:22:14 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <joel.stan@gmail.com>) id 1iKzLy-0006RM-DP
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 02:33:43 -0400
-Received: from mail-qk1-x743.google.com ([2607:f8b0:4864:20::743]:36531)
- by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <joel.stan@gmail.com>)
- id 1iKzLx-0006QI-Q3; Thu, 17 Oct 2019 02:33:42 -0400
-Received: by mail-qk1-x743.google.com with SMTP id y189so886760qkc.3;
- Wed, 16 Oct 2019 23:33:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=liYEOxYNZbGAJroK2AsMxBWZpouKVq7N+VunlUN+J9k=;
- b=Jy+lkGxuNzyQS5aPmMqdNWInJeLZPl26ozmTl/EMaQ7sReehhYRFoHQjdv+SxsMyt1
- mRcFBLcwTuwO8vEu/JsxELDNHueRa6YRzi90hjpUQ33zlFt5P8SnPl7EdEcxR4kR1OuH
- noGcbbB+VX8FViAnrO53Vgudta8l9MySuv+m8=
+ (envelope-from <philmd@redhat.com>) id 1iL2v2-00006o-6n
+ for qemu-arm@nongnu.org; Thu, 17 Oct 2019 06:22:11 -0400
+Received: from mx1.redhat.com ([209.132.183.28]:52092)
+ by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <philmd@redhat.com>) id 1iL2v1-00006F-Vp
+ for qemu-arm@nongnu.org; Thu, 17 Oct 2019 06:22:08 -0400
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+ (No client certificate requested)
+ by mx1.redhat.com (Postfix) with ESMTPS id EC6A6C05AA56
+ for <qemu-arm@nongnu.org>; Thu, 17 Oct 2019 10:22:06 +0000 (UTC)
+Received: by mail-wm1-f72.google.com with SMTP id o128so3440086wmo.1
+ for <qemu-arm@nongnu.org>; Thu, 17 Oct 2019 03:22:06 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=liYEOxYNZbGAJroK2AsMxBWZpouKVq7N+VunlUN+J9k=;
- b=nJ9jEaaK1CJo9JsRYGnpYFy5Ni3gzCF5LeVHeStLNQKTyAOVfg4LCDtuFuwiOHy51r
- e9TtUq160URup93VCn2vo2Nih9lDAVrEY0q/H6P7yXMC90fmuYwoQtkKZGI5UsTzYEo6
- AePCEMfaMnzvS2saKZQOCcu5exdlzdggMBcPFpfdLRihumih1EjMn4X74PDmvbaZ/jK1
- 1texpv73aNZpIAvovCKhpcHEOBMyBnU0BHwhnaKDh3ZbOTGbKHgbcja6vPgQ7tjtw0zK
- Qyn7SXtxTU4rUPlIf/7Rxmr65iEejsXSiK/IXO98H3et/kq2+xeGXz8Qw5v+9zOrJO4m
- GcyA==
-X-Gm-Message-State: APjAAAUjWjZmNwOChTRJiEanO8Lxn64zRwVUGUiEAGwWcMbKxWGaAopU
- t9Je4zxtMNfBl36JUzRFEe0s/kEWU3OcUcRaHys=
-X-Received: by 2002:a37:4dca:: with SMTP id a193mr1822231qkb.292.1571294020365; 
- Wed, 16 Oct 2019 23:33:40 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=9zYRSMLnnbJ8ZnnpJ56K0ySwTNpSPZDolsr4LmqlR94=;
+ b=OM+JxiA+lRdvUqJJRsyp/Hm+NE62fAmHK9lY1tE4M5DH5LFZFQa+7K8AeZrcvvcshb
+ iSaskjevB+mIG6YqhmlccfRHZed2XMDSAdiISxUBqL55gvokSm2SE+hqaw+1uIHd5UpK
+ N4gbmZY1MxvHc1HytK258vXmJSWK6J0pXtTqpgSMk0GDIWkPxiBvaVsshaiEIPtF3Iuy
+ BEeHe7ljDYRlzAu3ugwJlao7qsC3K+9oDEJVW5dMnCRzM77dnR8i7kwWY9/9gQ3gL2tv
+ ODPsZst9L7GPVl45NPP3geRRB3BvrLfCYOcltZUhHCVEoS9u/3+a4dw8g9r2uOQrsJjj
+ dPJw==
+X-Gm-Message-State: APjAAAUz1RvyAs3KTpGYc3qeAAOmE7JknONQtAy5ETk+spEC1ecc+uvo
+ avqHamLs7bk0bQyUmKEASFsmKIrM49d8qa38Tl8+FE6AKSaCABiLH7xQU9VG7YlKNDU/jzlk16l
+ xXY+frkM6guxs
+X-Received: by 2002:adf:ab5b:: with SMTP id r27mr2397511wrc.13.1571307725640; 
+ Thu, 17 Oct 2019 03:22:05 -0700 (PDT)
+X-Received: by 2002:adf:ab5b:: with SMTP id r27mr2397483wrc.13.1571307725324; 
+ Thu, 17 Oct 2019 03:22:05 -0700 (PDT)
+Received: from [192.168.1.36] (14.red-88-21-201.staticip.rima-tde.net.
+ [88.21.201.14])
+ by smtp.gmail.com with ESMTPSA id l18sm2493759wrn.48.2019.10.17.03.22.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 17 Oct 2019 03:22:04 -0700 (PDT)
+Subject: Re: [PATCH 5/5] aspeed/i2c: Add trace events
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>
+References: <20191016085035.12136-1-clg@kaod.org>
+ <20191016085035.12136-6-clg@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <1e79a3e1-1531-11f8-9306-edfecad9896e@redhat.com>
+Date: Thu, 17 Oct 2019 12:22:03 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-References: <20191016090745.15334-1-clg@kaod.org>
-In-Reply-To: <20191016090745.15334-1-clg@kaod.org>
-From: Joel Stanley <joel@jms.id.au>
-Date: Thu, 17 Oct 2019 06:33:28 +0000
-Message-ID: <CACPK8XdT0_JCxzfxd4dCafK0Ae9+18ZWcusuXV+d4eEmwwBnkA@mail.gmail.com>
-Subject: Re: [PATCH] aspeed: Add an AST2600 eval board
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <20191016085035.12136-6-clg@kaod.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: quoted-printable
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 2607:f8b0:4864:20::743
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 209.132.183.28
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -100,117 +114,285 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Jae Hyun Yoo <jae.hyun.yoo@linux.intel.com>,
+ Andrew Jeffery <andrew@aj.id.au>, Eddie James <eajames@linux.vnet.ibm.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TOMnveNPeNkd
+X-TUID: 9wdTVE8O/Kwk
 
-On Wed, 16 Oct 2019 at 09:08, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> Define the board with 1 GiB of RAM but some boards can have up to 2
-> GiB.
->
+Hi C=C3=A9dric,
+
+On 10/16/19 10:50 AM, C=C3=A9dric Le Goater wrote:
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> Reviewed-by: Joel Stanley <joel@jms.id.au>
 > ---
->
->  Changes since AST2600 patchset:
->
->  - lowered the RAM size to 1 GiB as it was breaking the tests on some
->    hosts.
-
-Peter,
-
-After chatting with C=C3=A9dric I agree we should merge this patch.
-
-As it turns out the EVBs have differing amounts of RAM; his has 1GB
-while mine has 2GB. So we are not being inaccurate by setting 1GB as
-the default here.
-
-Cheers,
-
-Joel
-
->
->  include/hw/arm/aspeed.h |  1 +
->  hw/arm/aspeed.c         | 23 +++++++++++++++++++++++
->  2 files changed, 24 insertions(+)
->
-> diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-> index 02073a6b4d61..f49bc7081e4d 100644
-> --- a/include/hw/arm/aspeed.h
-> +++ b/include/hw/arm/aspeed.h
-> @@ -18,6 +18,7 @@ typedef struct AspeedBoardConfig {
->      const char *desc;
->      const char *soc_name;
->      uint32_t hw_strap1;
-> +    uint32_t hw_strap2;
->      const char *fmc_model;
->      const char *spi_model;
->      uint32_t num_cs;
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 52993f84b461..028191ff36fc 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -88,6 +88,10 @@ struct AspeedBoardState {
->  /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) *=
-/
->  #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
->
-> +/* AST2600 evb hardware value */
-> +#define AST2600_EVB_HW_STRAP1 0x000000C0
-> +#define AST2600_EVB_HW_STRAP2 0x00000003
+>   hw/i2c/aspeed_i2c.c | 93 ++++++++++++++++++++++++++++++++++++++------=
+-
+>   hw/i2c/trace-events |  9 +++++
+>   2 files changed, 89 insertions(+), 13 deletions(-)
+>=20
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index 030d9c56be65..2da04a4bff30 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -28,6 +28,7 @@
+>   #include "hw/i2c/aspeed_i2c.h"
+>   #include "hw/irq.h"
+>   #include "hw/qdev-properties.h"
+> +#include "trace.h"
+>  =20
+>   /* I2C Global Register */
+>  =20
+> @@ -158,6 +159,13 @@ static inline void aspeed_i2c_bus_raise_interrupt(=
+AspeedI2CBus *bus)
+>   {
+>       AspeedI2CClass *aic =3D ASPEED_I2C_GET_CLASS(bus->controller);
+>  =20
+> +    trace_aspeed_i2c_bus_raise_interrupt(bus->intr_status,
+> +          bus->intr_status & I2CD_INTR_TX_NAK ? "nak|" : "",
+> +          bus->intr_status & I2CD_INTR_TX_ACK ? "ack|" : "",
+> +          bus->intr_status & I2CD_INTR_RX_DONE ? "done|" : "",
+> +          bus->intr_status & I2CD_INTR_NORMAL_STOP ? "normal|" : "",
+> +          bus->intr_status & I2CD_INTR_ABNORMAL ? "abnormal" : "");
 > +
->  /*
->   * The max ram region is for firmwares that scan the address space
->   * with load/store to guess how much RAM the SoC has.
-> @@ -187,6 +191,8 @@ static void aspeed_board_init(MachineState *machine,
->                               &error_abort);
->      object_property_set_int(OBJECT(&bmc->soc), cfg->hw_strap1, "hw-strap=
-1",
->                              &error_abort);
-> +    object_property_set_int(OBJECT(&bmc->soc), cfg->hw_strap2, "hw-strap=
-2",
-> +                            &error_abort);
->      object_property_set_int(OBJECT(&bmc->soc), cfg->num_cs, "num-cs",
->                              &error_abort);
->      object_property_set_int(OBJECT(&bmc->soc), machine->smp.cpus, "num-c=
-pus",
-> @@ -308,6 +314,12 @@ static void ast2500_evb_i2c_init(AspeedBoardState *b=
-mc)
->      i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338"=
-, 0x32);
->  }
->
-> +static void ast2600_evb_i2c_init(AspeedBoardState *bmc)
+>       bus->intr_status &=3D bus->intr_ctrl;
+>       if (bus->intr_status) {
+>           bus->controller->intr_status |=3D 1 << bus->id;
+> @@ -170,41 +178,57 @@ static uint64_t aspeed_i2c_bus_read(void *opaque,=
+ hwaddr offset,
+>   {
+>       AspeedI2CBus *bus =3D opaque;
+>       AspeedI2CClass *aic =3D ASPEED_I2C_GET_CLASS(bus->controller);
+> +    uint64_t value =3D -1;
+>  =20
+>       switch (offset) {
+>       case I2CD_FUN_CTRL_REG:
+> -        return bus->ctrl;
+> +        value =3D bus->ctrl;
+> +        break;
+>       case I2CD_AC_TIMING_REG1:
+> -        return bus->timing[0];
+> +        value =3D bus->timing[0];
+> +        break;
+>       case I2CD_AC_TIMING_REG2:
+> -        return bus->timing[1];
+> +        value =3D bus->timing[1];
+> +        break;
+>       case I2CD_INTR_CTRL_REG:
+> -        return bus->intr_ctrl;
+> +        value =3D bus->intr_ctrl;
+> +        break;
+>       case I2CD_INTR_STS_REG:
+> -        return bus->intr_status;
+> +        value =3D bus->intr_status;
+> +        break;
+>       case I2CD_POOL_CTRL_REG:
+> -        return bus->pool_ctrl;
+> +        value =3D bus->pool_ctrl;
+> +        break;
+>       case I2CD_BYTE_BUF_REG:
+> -        return bus->buf;
+> +        value =3D bus->buf;
+> +        break;
+>       case I2CD_CMD_REG:
+> -        return bus->cmd | (i2c_bus_busy(bus->bus) << 16);
+> +        value =3D bus->cmd | (i2c_bus_busy(bus->bus) << 16);
+> +        break;
+>       case I2CD_DMA_ADDR:
+>           if (!aic->has_dma) {
+>               qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",  _=
+_func__);
+> -            return -1;
+> +            break;
+>           }
+> -        return bus->dma_addr;
+> +        value =3D bus->dma_addr;
+> +        break;
+>       case I2CD_DMA_LEN:
+>           if (!aic->has_dma) {
+>               qemu_log_mask(LOG_GUEST_ERROR, "%s: No DMA support\n",  _=
+_func__);
+> -            return -1;
+> +            break;
+>           }
+> -        return bus->dma_len;
+> +        value =3D bus->dma_len;
+> +        break;
+> +
+>       default:
+>           qemu_log_mask(LOG_GUEST_ERROR,
+>                         "%s: Bad offset 0x%" HWADDR_PRIx "\n", __func__=
+, offset);
+> -        return -1;
+> +        value =3D -1;
+> +        break;
+>       }
+> +
+> +    trace_aspeed_i2c_bus_read(bus->id, offset, size, value);
+> +    return value;
+>   }
+>  =20
+>   static void aspeed_i2c_set_state(AspeedI2CBus *bus, uint8_t state)
+> @@ -246,6 +270,9 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, u=
+int8_t pool_start)
+>           for (i =3D pool_start; i < I2CD_POOL_TX_COUNT(bus->pool_ctrl)=
+; i++) {
+>               uint8_t *pool_base =3D aic->bus_pool_base(bus);
+>  =20
+> +            trace_aspeed_i2c_bus_send("BUF", i + 1,
+> +                                      I2CD_POOL_TX_COUNT(bus->pool_ctr=
+l),
+> +                                      pool_base[i]);
+>               ret =3D i2c_send(bus->bus, pool_base[i]);
+>               if (ret) {
+>                   break;
+> @@ -256,6 +283,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, u=
+int8_t pool_start)
+>           while (bus->dma_len) {
+>               uint8_t data;
+>               aspeed_i2c_dma_read(bus, &data);
+> +            trace_aspeed_i2c_bus_send("DMA", bus->dma_len, bus->dma_le=
+n, data);
+>               ret =3D i2c_send(bus->bus, data);
+>               if (ret) {
+>                   break;
+> @@ -263,6 +291,7 @@ static int aspeed_i2c_bus_send(AspeedI2CBus *bus, u=
+int8_t pool_start)
+>           }
+>           bus->cmd &=3D ~I2CD_TX_DMA_ENABLE;
+>       } else {
+> +        trace_aspeed_i2c_bus_send("BYTE", pool_start, 1, bus->buf);
+>           ret =3D i2c_send(bus->bus, bus->buf);
+>       }
+>  =20
+> @@ -281,6 +310,9 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
+>  =20
+>           for (i =3D 0; i < I2CD_POOL_RX_SIZE(bus->pool_ctrl); i++) {
+>               pool_base[i] =3D i2c_recv(bus->bus);
+> +            trace_aspeed_i2c_bus_recv("BUF", i + 1,
+> +                                      I2CD_POOL_RX_SIZE(bus->pool_ctrl=
+),
+> +                                      pool_base[i]);
+>           }
+>  =20
+>           /* Update RX count */
+> @@ -294,6 +326,7 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
+>               MemTxResult result;
+>  =20
+>               data =3D i2c_recv(bus->bus);
+> +            trace_aspeed_i2c_bus_recv("DMA", bus->dma_len, bus->dma_le=
+n, data);
+>               result =3D address_space_write(&s->dram_as, bus->dma_addr=
+,
+>                                            MEMTXATTRS_UNSPECIFIED, &dat=
+a, 1);
+>               if (result !=3D MEMTX_OK) {
+> @@ -307,6 +340,7 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
+>           bus->cmd &=3D ~I2CD_RX_DMA_ENABLE;
+>       } else {
+>           data =3D i2c_recv(bus->bus);
+> +        trace_aspeed_i2c_bus_recv("BYTE", 1, 1, bus->buf);
+>           bus->buf =3D (data & I2CD_BYTE_BUF_RX_MASK) << I2CD_BYTE_BUF_=
+RX_SHIFT;
+>       }
+>   }
+> @@ -364,6 +398,33 @@ static bool aspeed_i2c_check_sram(AspeedI2CBus *bu=
+s)
+>       return true;
+>   }
+>  =20
+> +static void aspeed_i2c_bus_cmd_dump(AspeedI2CBus *bus)
 > +{
-> +    /* Start with some devices on our I2C busses */
-> +    ast2500_evb_i2c_init(bmc);
+> +    g_autofree char *cmd_flags;
+> +    uint32_t count;
+> +
+> +    if (bus->cmd & (I2CD_RX_BUFF_ENABLE | I2CD_RX_BUFF_ENABLE)) {
+> +        count =3D I2CD_POOL_TX_COUNT(bus->pool_ctrl);
+> +    } else if (bus->cmd & (I2CD_RX_DMA_ENABLE | I2CD_RX_DMA_ENABLE)) {
+> +        count =3D bus->dma_len;
+> +    } else { /* BYTE mode */
+> +        count =3D 1;
+> +    }
+> +
+> +    cmd_flags =3D g_strdup_printf("%s%s%s%s%s%s%s%s%s",
+> +                                bus->cmd & I2CD_M_START_CMD ? "start|"=
+ : "",
+> +                                bus->cmd & I2CD_RX_DMA_ENABLE ? "rxdma=
+|" : "",
+> +                                bus->cmd & I2CD_TX_DMA_ENABLE ? "txdma=
+|" : "",
+> +                                bus->cmd & I2CD_RX_BUFF_ENABLE ? "rxbu=
+f|" : "",
+> +                                bus->cmd & I2CD_TX_BUFF_ENABLE ? "txbu=
+f|" : "",
+> +                                bus->cmd & I2CD_M_TX_CMD ? "tx|" : "",
+> +                                bus->cmd & I2CD_M_RX_CMD ? "rx|" : "",
+> +                                bus->cmd & I2CD_M_S_RX_CMD_LAST ? "las=
+t|" : "",
+> +                                bus->cmd & I2CD_M_STOP_CMD ? "stop" : =
+"");
+> +
+> +    trace_aspeed_i2c_bus_cmd(bus->cmd, cmd_flags, count, bus->intr_sta=
+tus);
 > +}
 > +
->  static void romulus_bmc_i2c_init(AspeedBoardState *bmc)
->  {
->      AspeedSoCState *soc =3D &bmc->soc;
-> @@ -455,6 +467,17 @@ static const AspeedBoardConfig aspeed_boards[] =3D {
->          .num_cs    =3D 2,
->          .i2c_init  =3D witherspoon_bmc_i2c_init,
->          .ram       =3D 512 * MiB,
-> +    }, {
-> +        .name      =3D MACHINE_TYPE_NAME("ast2600-evb"),
-> +        .desc      =3D "Aspeed AST2600 EVB (Cortex A7)",
-> +        .soc_name  =3D "ast2600-a0",
-> +        .hw_strap1 =3D AST2600_EVB_HW_STRAP1,
-> +        .hw_strap2 =3D AST2600_EVB_HW_STRAP2,
-> +        .fmc_model =3D "w25q512jv",
-> +        .spi_model =3D "mx66u51235f",
-> +        .num_cs    =3D 1,
-> +        .i2c_init  =3D ast2600_evb_i2c_init,
-> +        .ram       =3D 1 * GiB,
->      },
->  };
->
-> --
-> 2.21.0
->
+>   /*
+>    * The state machine needs some refinement. It is only used to track
+>    * invalid STOP commands for the moment.
+> @@ -379,6 +440,10 @@ static void aspeed_i2c_bus_handle_cmd(AspeedI2CBus=
+ *bus, uint64_t value)
+>           return;
+>       }
+>  =20
+> +    if (trace_event_get_state_backends(TRACE_ASPEED_I2C_BUS_CMD)) {
+> +        aspeed_i2c_bus_cmd_dump(bus);
+> +    }
+> +
+>       if (bus->cmd & I2CD_M_START_CMD) {
+>           uint8_t state =3D aspeed_i2c_get_state(bus) & I2CD_MACTIVE ?
+>               I2CD_MSTARTR : I2CD_MSTART;
+> @@ -465,6 +530,8 @@ static void aspeed_i2c_bus_write(void *opaque, hwad=
+dr offset,
+>       AspeedI2CClass *aic =3D ASPEED_I2C_GET_CLASS(bus->controller);
+>       bool handle_rx;
+>  =20
+> +    trace_aspeed_i2c_bus_write(bus->id, offset, size, value);
+> +
+>       switch (offset) {
+>       case I2CD_FUN_CTRL_REG:
+>           if (value & I2CD_SLAVE_EN) {
+> diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
+> index e1c810d5bd08..08db8fa68924 100644
+> --- a/hw/i2c/trace-events
+> +++ b/hw/i2c/trace-events
+> @@ -5,3 +5,12 @@
+>   i2c_event(const char *event, uint8_t address) "%s(addr:0x%02x)"
+>   i2c_send(uint8_t address, uint8_t data) "send(addr:0x%02x) data:0x%02=
+x"
+>   i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02=
+x"
+> +
+> +# aspeed_i2c.c
+> +
+> +aspeed_i2c_bus_cmd(uint32_t cmd, const char *cmd_flags, uint32_t count=
+, uint32_t intr_status) "handling cmd=3D0x%x %s count=3D%d intr=3D0x%x"
+> +aspeed_i2c_bus_raise_interrupt(uint32_t intr_status, const char *str1,=
+ const char *str2, const char *str3, const char *str4, const char *str5) =
+"handled intr=3D0x%x %s%s%s%s%s"
+
+There are various trace backends, your output seems designed only for=20
+the "log" backend.
+
+Using 'unsigned is_nak, unsigned is_ack, ...' "nak:%u ack:%u ..." would=20
+make your event compatible with the other backends (and ease their parsin=
+g).
+
+> +aspeed_i2c_bus_read(uint32_t busid, uint64_t offset, unsigned size, ui=
+nt64_t value) "bus[%d]: To 0x%" PRIx64 " of size %u: 0x%" PRIx64
+> +aspeed_i2c_bus_write(uint32_t busid, uint64_t offset, unsigned size, u=
+int64_t value) "bus[%d]: To 0x%" PRIx64 " of size %u: 0x%" PRIx64
+> +aspeed_i2c_bus_send(const char *mode, int i, int count, uint8_t byte) =
+"%s send %d/%d 0x%02x"
+> +aspeed_i2c_bus_recv(const char *mode, int i, int count, uint8_t byte) =
+"%s recv %d/%d 0x%02x"
+>=20

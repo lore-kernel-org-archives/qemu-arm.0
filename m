@@ -1,148 +1,144 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1039811wrm;
-        Thu, 17 Oct 2019 07:38:07 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqxDnH9AOKl9LjWJxWHEvj+Xlrg2UEwusUE0n2EyBvNMFOQPloYDj7yKHId4yShWsZytft1J
-X-Received: by 2002:a37:8185:: with SMTP id c127mr3523198qkd.420.1571323087309;
-        Thu, 17 Oct 2019 07:38:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571323087; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1054631wrm;
+        Thu, 17 Oct 2019 07:50:14 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqxSEm5wnivjA8/QjhTqN6U8gTSIxvvb6bOGJT2aVX3184UXxc4AsdUGlypG8MizWKUvQBar
+X-Received: by 2002:ac8:704c:: with SMTP id y12mr4265550qtm.363.1571323814594;
+        Thu, 17 Oct 2019 07:50:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571323814; cv=none;
         d=google.com; s=arc-20160816;
-        b=Z4p/Cv+/oJm5Q98fEAvlyiyDBBMc1NJE/e9i8WhDjjdq+XvxSmWjFi5YPi1JV4vm+L
-         yp9B/g85iMHpyesyRW/V3t2ITURhS2L3FG0bd1GS7JQh8PoySWF8xK2T0OIMmqrqzlwa
-         vptap0I0m7gUcXcbAyjeJWN9u8/VJfRngb80fM5MM3qvDEjv2tUByLbYWuij4yySq9RQ
-         jvJC8UInANjIO2JY22Vhj8CHGvt2CX24AQ0zD1SScpq4otTak8xrUIfFmnyhpKhjK9bL
-         ECuvJas3XDybIp7gQJM+O96lSlFrgkSozRQMNpVSndXFj1L9PmU3dIEUXQXpbs5pf395
-         VnUw==
+        b=OLy40aG6Mb6ZBkSrS7acG5Sam6vG2zCxkkvGWck23ui6oll0T7REnaZPoPCXK+SA2x
+         wQMTMEsCLyArIWe/5wf7ZCj+JvMl9bBJymWvpf6hWMDXmfp84W33tM0zRyAup18jEZr7
+         Osz9giikOaBdmTO2UEEAa0VHVuPg7a5JTwQM/AI1x59vo79+WgSvEqcVGmX/Z6B6iJVg
+         8nDkVMXAds7FQphuSuK64FHfTxu6aBT0nlk5rV2Gfz+dy78Xfiu08WtSeDRy60Ws1tQb
+         wElBGQHCmaV9IpIbMgbgyuu0FQjLJti9yshicdAvjnD7YurVW8FZUFRwP0/WoWQlC/zG
+         CJfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=IX1tG7Jw/XnjQLIGLFO1DNvERo7K99yeCr4zuiNJ0l8=;
-        b=xRCtmUXlt0gBGzWJDGWrlrCzLGEPCfselBzaODnFRR0yEODv+hX1mXTDVEciKvAETr
-         sokf1bDYlYAJUDHdtliORlE9pKLARy1VRa/pnND3B6l26/PnR5xin0zERhIzyVJwOAHG
-         VfciJyajiY/s6dfwBiyReKKYRC59Ce0hlm8ZkVU00ijk8Q5uFcm4GbqsanNmA3dFblAG
-         oFWqewsRzR/yph9ivrLFEAqIiIw0G5IC13UbO+JIrmDNGw96Qw9XrPnZhMYorJPTiE6K
-         HWGnT7nQmoQQZd/X2exTFO3UgZoh/rxWRgaion38CNpT7/wvlON53VWH/9pmuvmSPyDh
-         Uu0A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:openpgp:from:references:to:subject:dkim-signature;
+        bh=ncZZKTj+JLdpJh3OEt20ZcEqe7Mn2RwqY7iUd1RZ5mc=;
+        b=fAiFvLQSXB+lmD6dPuhKxqQC1IbDC3oJbr30ePcid2VsXcmLDTS9zPy8eehm7xZfDk
+         pi4D7iDerLrRmOiKcEDIBtwfM0ddGcbpRR2Q2JirRdmhiNytB42j3BbHqVoU+IvVcc/V
+         su1CoW92bhr+WwWdDo+8TmnANLDTcqEPrZo7rM9SNoPLy1UFE/sJ4VHI9eol0hWdfE5Z
+         NhrH053a+G+CO3jF39owAHhcFWSDszGYHPnc5OE2K6DaauwCz8YXkVLQztX4T4BXItEm
+         lzwPvutBlDHOIGkLfRkZnaHN2bxRRMgbfeeo5BADawXGeSES66AGdRHYb6+pEJN17s1C
+         97og==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E+QdpjK+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=MhPtaBhM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f3si2349300qkl.170.2019.10.17.07.38.07
+        by mx.google.com with ESMTPS id h1si2489242qvj.198.2019.10.17.07.50.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Oct 2019 07:38:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 17 Oct 2019 07:50:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E+QdpjK+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=MhPtaBhM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49456 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49706 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iL6uk-000668-A7
-	for alex.bennee@linaro.org; Thu, 17 Oct 2019 10:38:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41091)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iL76T-0003BR-60
+	for alex.bennee@linaro.org; Thu, 17 Oct 2019 10:50:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44065)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <peter.maydell@linaro.org>) id 1iL6Ep-0003u5-Hf
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 09:54:52 -0400
+ (envelope-from <richard.henderson@linaro.org>) id 1iL6We-0000g1-Lv
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2019 10:13:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <peter.maydell@linaro.org>) id 1iL6Eo-00040S-Dt
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 09:54:47 -0400
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:43252)
+ (envelope-from <richard.henderson@linaro.org>) id 1iL6Wd-0000ip-Hz
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2019 10:13:12 -0400
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:37792)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <peter.maydell@linaro.org>)
- id 1iL6Eo-000407-9u
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 09:54:46 -0400
-Received: by mail-io1-xd44.google.com with SMTP id v2so3049947iob.10
- for <qemu-arm@nongnu.org>; Thu, 17 Oct 2019 06:54:46 -0700 (PDT)
+ (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
+ id 1iL6Wd-0000fg-74
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2019 10:13:11 -0400
+Received: by mail-pl1-x641.google.com with SMTP id u20so1205260plq.4
+ for <qemu-devel@nongnu.org>; Thu, 17 Oct 2019 07:13:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=IX1tG7Jw/XnjQLIGLFO1DNvERo7K99yeCr4zuiNJ0l8=;
- b=E+QdpjK+mwsXOh5Q+wX7L3eXaC2nKtqQ5FiwJw6RF9YIX/FLhGUhoTYEPMrHrAIF+p
- 37KlnnrFPnB+bvAj+WheNq0YaoBbI50rCVoSa7BdJwSuH93iQOc3abPt00F2+TPgcy7J
- 6gPJYRVoX1yV1OOCz0A5XCsXyoZYhcA5eSalm1EPwGACQ4SGJo77N74mBrdl8lYqo7hf
- 3AysTukaiav3Fdm8qRPYmeHTjS0fphMJOlC1MPz3AB3YQfWXw2yn4+INmMJnasGotqNp
- xtOi7p74kHgw4UPrXhGEwLY4o2t9w5ePEcJ2Vb2xo8IRnmDa61sSwlPLk0MsbEfmxjPT
- us+w==
+ h=subject:to:cc:references:from:openpgp:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ncZZKTj+JLdpJh3OEt20ZcEqe7Mn2RwqY7iUd1RZ5mc=;
+ b=MhPtaBhMBo7Cmz1HYA1hmgGUaUkcf7a38chZBqGGQwZTtF1ZE6p9Y7PelsiU3sdnlQ
+ XYeHe31eH3e5uOA/aNoDsEr+kRZzl4aQiPTAvxnrGLBVuJgsPskFWrWDBiMAXZvlr6jo
+ 2usC3k6mpblRWreL0QeEs0oGIUXFxPERypXCB4BmJYZ0GrYFf/26QOpyeMJVlCJ4xA3S
+ 84bUpTYeW0ELh5nm2EobVjnaevH9vBYgEmYQszpKmOQvRPcJVa+iNl/LLhPUr/E1iuAp
+ UGRXaZ19iXKMqpjyDUgNeQNh2zR3ISLlsZsb/T17wR1UOWkBM1BUeB8acbo+wX//zcvq
+ 7alg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=IX1tG7Jw/XnjQLIGLFO1DNvERo7K99yeCr4zuiNJ0l8=;
- b=FuPvY5EwM+eW4Ms3fS+qPZRSxX5BXSQlfaO7fwWZlqV9Iw6v9Y8n0AoqOLFPoXhsMi
- N6epLxyWiQexFJwWhGnyssXEh4mWN9PlaiCRM7t3QtxzzB8EUn1GddXgJpZNWhltywI6
- TqaRnXNuERR/afa9TJy2xNMN5xAF02m4K6M+eYzVgLxWfYpoYjv26eEa09o4T/T+0qxP
- kWybhtoN5y6cNuppFMLl8Qs78FNy7D9zCFhJZGeLOA+wxAy3PJRZ+kvcwhEfZ2wubpsZ
- 8w8Y9UNvwOwmJChx4NSw5beBphk2df+owkui6IlFk25Ho0zvO369aIQfuE9BoDkvhILB
- l1kg==
-X-Gm-Message-State: APjAAAUFhKrMFbjhKshcBh4AXGwtO9mr0C1KJJBvSmqsS+xgwmZjKArT
- tESDMfQhG5uytyZuYk3+gwyS8mSvHPvfcguM+TYjXn/+5N0=
-X-Received: by 2002:a6b:6405:: with SMTP id t5mr2939472iog.93.1571320485481;
- Thu, 17 Oct 2019 06:54:45 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:openpgp:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ncZZKTj+JLdpJh3OEt20ZcEqe7Mn2RwqY7iUd1RZ5mc=;
+ b=nQKmvYj2CaymClMqJTDZXbT44xgaZZwn88gWwlkrCzhOwzEBMtAojsfw/dTslR4pFO
+ NBHv2lmll/ZSZxOqUkFaFHdlnl/dLNRfFjzRaq6o9ZWEjBtRBvulJOeJHCrgFLKmOuoe
+ v19Z+NsS8oSlD/lykwUxaeYyWxt5znLE/8KE7KvAiuulqmDtdz9oYbNMVaSMyTzfOCEy
+ lxMzrZGcccrBOo1RjBziWGHzVLfI7EKO9ZQ5U/WDo6zIspxZCC8vcZ3EsArBavkR0BKn
+ rBVmmw+K+kCkvm1Bz42Yp5DbQDW/BdkH2+r8ARHt6Qi/TUAtQWlocVIterI8cxILbmG0
+ gZ5w==
+X-Gm-Message-State: APjAAAXEZ7SVjRgEZ8wWsKuWOOmnUX0X5YDBAfFPsceaONLOwva7FN/D
+ 3YQVrmz6jzMy5472vIU/jAvNYA==
+X-Received: by 2002:a17:902:aa02:: with SMTP id
+ be2mr4284215plb.326.1571321585175; 
+ Thu, 17 Oct 2019 07:13:05 -0700 (PDT)
+Received: from [192.168.1.11] (97-113-7-119.tukw.qwest.net. [97.113.7.119])
+ by smtp.gmail.com with ESMTPSA id q26sm1399746pgk.60.2019.10.17.07.13.04
+ (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 17 Oct 2019 07:13:04 -0700 (PDT)
+Subject: Re: [PATCH 1/3] hw/net/fsl_etsec/etsec.c: Switch to transaction-based
+ ptimer API
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+References: <20191017132122.4402-1-peter.maydell@linaro.org>
+ <20191017132122.4402-2-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Openpgp: preference=signencrypt
+Message-ID: <45d7e704-c22c-dfec-9f54-c73568f31ccc@linaro.org>
+Date: Thu, 17 Oct 2019 07:13:02 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-References: <20191016090745.15334-1-clg@kaod.org>
- <CACPK8XdT0_JCxzfxd4dCafK0Ae9+18ZWcusuXV+d4eEmwwBnkA@mail.gmail.com>
-In-Reply-To: <CACPK8XdT0_JCxzfxd4dCafK0Ae9+18ZWcusuXV+d4eEmwwBnkA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 17 Oct 2019 14:54:34 +0100
-Message-ID: <CAFEAcA_6yxaanT2N6Twos_FxjJNgvVKShwgq=pR4fqmcZUsQFA@mail.gmail.com>
-Subject: Re: [PATCH] aspeed: Add an AST2600 eval board
-To: Joel Stanley <joel@jms.id.au>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20191017132122.4402-2-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::d44
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2607:f8b0:4864:20::641
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: L8af73iY+M9A
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: P6Xgs53NTnFw
 
-On Thu, 17 Oct 2019 at 07:33, Joel Stanley <joel@jms.id.au> wrote:
->
-> On Wed, 16 Oct 2019 at 09:08, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
-> >
-> > Define the board with 1 GiB of RAM but some boards can have up to 2
-> > GiB.
-> >
-> > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> > Reviewed-by: Joel Stanley <joel@jms.id.au>
-> > ---
-> >
-> >  Changes since AST2600 patchset:
-> >
-> >  - lowered the RAM size to 1 GiB as it was breaking the tests on some
-> >    hosts.
->
-> Peter,
->
-> After chatting with C=C3=A9dric I agree we should merge this patch.
->
-> As it turns out the EVBs have differing amounts of RAM; his has 1GB
-> while mine has 2GB. So we are not being inaccurate by setting 1GB as
-> the default here.
+On 10/17/19 6:21 AM, Peter Maydell wrote:
+> Switch the fsl_etsec code away from bottom-half based ptimers to
+> the new transaction-based ptimer API.  This just requires adding
+> begin/commit calls around the various places that modify the ptimer
+> state, and using the new ptimer_init() function to create the timer.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/net/fsl_etsec/etsec.h | 1 -
+>  hw/net/fsl_etsec/etsec.c | 9 +++++----
+>  2 files changed, 5 insertions(+), 5 deletions(-)
 
-That's convenient, means we don't have to figure out how to
-special-case the test infrastructure for it :-)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
-
-Applied to target-arm.next, thanks.
-
--- PMM
+r~

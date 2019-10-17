@@ -1,96 +1,96 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp84406wrm;
-        Thu, 17 Oct 2019 16:00:49 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwd2Fd5qm9aUbbIfAkhL/QEmDn2XFAGuc0ZkxfXxdyA7QZE0kx+pOpzhJhdZlnZ+/q9FIMi
-X-Received: by 2002:a37:8e46:: with SMTP id q67mr5984979qkd.455.1571353249582;
-        Thu, 17 Oct 2019 16:00:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571353249; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp86541wrm;
+        Thu, 17 Oct 2019 16:02:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzAM7vw0y51rpeGOj0qtrxbnYgzLeWocrpfIvSYVZUAkYLj93tSM9qXZy/htqtTHtnyFwN5
+X-Received: by 2002:a0c:ef87:: with SMTP id w7mr6775009qvr.49.1571353357455;
+        Thu, 17 Oct 2019 16:02:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571353357; cv=none;
         d=google.com; s=arc-20160816;
-        b=aL4j0FKYQJkb1Mk+015cILy7P7W1GFkpL5GzpatEeyhnL00fbL3ZDm+DUmJe6CiUvo
-         QPk5ZV1g+JyMrTxGiVSzjBq6aB6UY+mw00xnrrzuUy77KY0bmmq4sjVF1k2p8kijx1kh
-         xqKO3ool/F8n6bKcoP46f7XltQSmDBIfJi4gPY4GOpC44ciPYFxrlnBsnZfCxIWvNmQ2
-         cdMvV5yUhEUr5PDsQRVnWqL7CLy8isK1gXmZlseRfPMNKb4lFf9nuiZ2UmC6lXy4/rqo
-         Bapj6NknQHLwbMpqtY/QUAKhdXPDfW/17KryKY1sQj2hLjSsLEjSYfLUe9uu2kLOMxlB
-         tEkw==
+        b=xSfTNb66EuJQGHxL2aIHYPVeKEiGFWxaD4ksXarqV8felty1P9N8qwDp2GRvliMMrp
+         VQfG1xE8hXlbDs77hc6lbVS7y3vRqmuOz9/94PtYpVMJ35cLLVVvydqHHLhu4UnPA/2l
+         vbB/gCHFDLZv/96DoivNS0VesPxON60XIHxqNfetuNkidF42eTOJPKFMEr9VqmKCo4iZ
+         PGNGHD5F2Ge7eNBATl7lhRQNxUVt6ZfntbtOhuY+8v91tP60CTtNF/ZOnIufP/xWgvTn
+         utzIWr+d1nx41WiH6XYwdCPUiDfGowSF6pfnlQtyRQAvPYIKROinYUCusUKRejC4I3WO
+         MFqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=UczWB2dKogl9AoRJa3TFc8YDLFDTmfUp76S49YZYgfg=;
-        b=lFw7lheC3WA6NnTYybP7ZBWGC2s6dnIJvroJV1l1/iZ3l9OI0Q5UDeBAPK7Y0jo6TA
-         39oj9psBRmBGOTt24MaWprsDaXAp5Whz2IocI7mkGi9nYjrbYi+2YUrPSUVaEj3jn9Mw
-         ULCDrdWfKE/6aU7t8H1MxrKWa/1RwXyQn0/eVC7SnLHvGE4H9JcLIlVCSB/FMjK66gwR
-         YH6ryY2/eVF8rG0+G03XgKwUzOJe6UNsYdd04z5mS5EJotTlEOt2P1Bhc3AsLKAdkN5P
-         4uwyR1M6jWWGkVW4YXFlEgmx0zw9vYzaQhkFWhpYBCOmgv6XCNzDq/RgvH0goi4K54vt
-         5lsg==
+        bh=NVqM6/eMg5gUahCCntrXGBHs6P0goJRZ8NGaPOkjzKE=;
+        b=Z+gyoF3o4m/WVAHaGSYkjN51w22HtlL1SGn+faaWugOCQ+7/baEnbeL7ixIAYhfmEE
+         CrCH41ioEyCQt9x4qFeEEqvGQ1T1FzB52X7sItRHwo8JqL1mNqllVXwXTFr2agVeMs2m
+         UJV/4qNwj1sNulKfRLK5mWfNO6yI94n/WZMUqNQ35DEzzRm1gKBgdQyxgrxlPo6FwlR3
+         xRMjAhAjtuMt9icwOcXp0d+dufGWosl/sqhwf9D0DFr1BEgkMnySz/CKaBwZuG3nxHj7
+         b1JgxjrkdVRBvT07lQ7eGgha6RFcc6P0PYwHYxqr5RAGK5KPG7uueR5y94AHs4XcOQXU
+         WJ9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RrPNgMKo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AT0mQUhj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f7si4299583qvd.66.2019.10.17.16.00.49
+        by mx.google.com with ESMTPS id d39si3775366qvc.55.2019.10.17.16.02.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Oct 2019 16:00:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 17 Oct 2019 16:02:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RrPNgMKo;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33812 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AT0mQUhj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33828 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLElE-00040q-IF
-	for alex.bennee@linaro.org; Thu, 17 Oct 2019 19:00:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41093)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iLEmy-0004x1-8O
+	for alex.bennee@linaro.org; Thu, 17 Oct 2019 19:02:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41180)
  by lists.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iLEir-0000fC-Tn
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 18:58:23 -0400
+ id 1iLEj0-0000vu-88
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2019 18:58:31 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
  (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iLEiq-0002Q7-L8
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 18:58:21 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:44652)
+ id 1iLEiy-0002Uc-O4
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2019 18:58:30 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:53090)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
  (Exim 4.71) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1iLEin-0002OM-Vm; Thu, 17 Oct 2019 18:58:18 -0400
-Received: by mail-wr1-x441.google.com with SMTP id z9so4113082wrl.11;
- Thu, 17 Oct 2019 15:58:17 -0700 (PDT)
+ id 1iLEiy-0002UE-HS; Thu, 17 Oct 2019 18:58:28 -0400
+Received: by mail-wm1-x335.google.com with SMTP id r19so4179619wmh.2;
+ Thu, 17 Oct 2019 15:58:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=UczWB2dKogl9AoRJa3TFc8YDLFDTmfUp76S49YZYgfg=;
- b=RrPNgMKokkEoBkzXaXRxc59qGsdoN2dSfOgH0uGhTX12UvIIngXeCkYQcj4H/b2X8K
- ZAzCLBeqeAUpiASh/7VGsnupCJzacr8v93Eunx6TlP0dDEuGpl1GdI5W4pxxuPjjeoah
- UHSqZlu3z8IP2g7P+X0HvNnAaeEUQNjvw9EPEhfCjSpoZijV1Sny/Us1OX2M+Tw6lH1b
- U6T/CM1ufeDwKQbz2K+D1mL7j4RdaII8LJ59tt05Uw6XLXavi23iEFkgTMbClEa6rMHz
- RPlb7bMWpzqlQrtHBm5EvsifWmN9jxU7F5IaL7549Vk0/er1RotdBOnk3qOhki+iXvhu
- NY1A==
+ bh=NVqM6/eMg5gUahCCntrXGBHs6P0goJRZ8NGaPOkjzKE=;
+ b=AT0mQUhj8Uj2VNlxMoqKkcjmJL2BNduz/QbPN8gC5WjsItT8IrZ2rBZmUL/A2XfLIn
+ xQLCvSZi3eCGGbYKPs4KinMBac+BzE7fwwRLzXICfISmb0PanwdSLQ6FVgwnGccIPkpn
+ XDQmE3Le83iI+W2trWc8b9oKrafJzExguaqfy1iF63gbFvistNeAUo+CMTHHiSnIy87f
+ EahHnc3fCdhrDl8SH39zlgPUp+JiZd7YXWOLENTNSQzacpkyUYVIKok6pSfo/w+aXAlS
+ Jpj/sI7U8xMyuE0kczcX1cyyvfWLIrkNchz3l+sqFLr0imtOZ3r5LExsBwEM9IxWNByD
+ GNnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=UczWB2dKogl9AoRJa3TFc8YDLFDTmfUp76S49YZYgfg=;
- b=Q3h/reXYW1DdhUYvhOfqkRezZ/laSr+OYr4qxGfqCWSzYr5qtAHoTee4Ywps01aynk
- j+b/HB5jsHEX4iaILY0sQVwfqRGC0Yp8A/8SM30Jb6XyN6qYbOStiRss4CoWqg7aOgR6
- Wl/0KY0gOtSQ6Y3nD4XYa6/0ftsyvphP831QntlqS+tmJO9YdyS5w4bLPg7Ow4E8LyHv
- LGezQBlAa5uMJmBCGNcI4dN1QcO5lOO9IIzE8arKyk23C/DmBaULi88Z2EK0af7+vRXo
- S/JeL7zefNJoDvlDAqrl7N3hE1CO37TBi5k9W6zI8EIns0aZwL8tk6blOMJjtlloZD1x
- yDEQ==
-X-Gm-Message-State: APjAAAUPP5iDxCEgbMxIxOOMOzkmI8G2YWEdhxsQGDAunSoR0J5HYJlD
- cr2KurAvAEf/yjkjENmo4H1gfUvh
-X-Received: by 2002:a5d:5309:: with SMTP id e9mr5323299wrv.276.1571353096703; 
- Thu, 17 Oct 2019 15:58:16 -0700 (PDT)
+ bh=NVqM6/eMg5gUahCCntrXGBHs6P0goJRZ8NGaPOkjzKE=;
+ b=gB2uL3PL2nvl2wwBbCNBFBtwC944LLvds1Hw+G1iWf4Rgas2Kqkjvm6g39w9Row5oX
+ dSNTXy8AA8wZmdG1kHBHOusjYeg6FxaQEvkeYch04780dRurU4D/WBltZRLO9PK6dTId
+ VCw6lsAGwj7yBK3HiX1tIt3YZ0wHQ/D0HPrDpruyHj5PbXv2PDu+PtwrQxg1Bgp78gkr
+ BlxXtYk2mbi0giZrn+E9D358br1LKKc12MTYDlE28U9NUqBuR9vOr6tUZcEaoMFpXUzW
+ RA/kYUQnJLWf9u4cId/mugFRJkciZNnybqtHqCdVn7h3j/q1D8PejPT+5kUx8LdCmfx3
+ aahw==
+X-Gm-Message-State: APjAAAULiHXthOO1EpQPkzCoZ22qSkLf7zDtJAAANQ3McKnfMANJaDkN
+ aknljUMVbcYkuTexa3xBRXsisNfN
+X-Received: by 2002:a1c:2306:: with SMTP id j6mr4962500wmj.96.1571353106977;
+ Thu, 17 Oct 2019 15:58:26 -0700 (PDT)
 Received: from localhost.localdomain (14.red-88-21-201.staticip.rima-tde.net.
  [88.21.201.14])
- by smtp.gmail.com with ESMTPSA id m18sm3993873wrg.97.2019.10.17.15.58.14
+ by smtp.gmail.com with ESMTPSA id m18sm3993873wrg.97.2019.10.17.15.58.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Oct 2019 15:58:15 -0700 (PDT)
+ Thu, 17 Oct 2019 15:58:26 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 04/10] hw/arm/bcm2835_peripherals: Use the SYS_timer
-Date: Fri, 18 Oct 2019 00:57:54 +0200
-Message-Id: <20191017225800.6946-5-f4bug@amsat.org>
+Subject: [PATCH v2 09/10] hw/arm/raspi: Make the board code modular
+Date: Fri, 18 Oct 2019 00:57:59 +0200
+Message-Id: <20191017225800.6946-10-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.0
 In-Reply-To: <20191017225800.6946-1-f4bug@amsat.org>
 References: <20191017225800.6946-1-f4bug@amsat.org>
@@ -100,18 +100,18 @@ Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2a00:1450:4864:20::441
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::335
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Rob Herring <robh@kernel.org>, Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
@@ -122,86 +122,199 @@ Cc: Rob Herring <robh@kernel.org>, Peter Maydell <peter.maydell@linaro.org>,
  Cheng Xiang <ext-cheng.xiang@here.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Clement Deschamps <clement.deschamps@antfield.fr>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NZUqWVGzewF5
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: G6XVz9PEt1TD
 
-Connect the recently added SYS_timer.
-Now U-Boot does not hang anymore polling a free running counter
-stuck at 0.
-This timer is also used by the Linux kernel thermal subsystem.
+Our code currently create the raspi2 (based on the BCM2836)
+and the raspi3 (on the BCM2837). Similarly, the raspi4 is
+based on the BCM2838. To be able to add the new board,
+make the current code more modular:
+
+- Dynamically fills the 'board-rev' value
+- Allow DRAM sizes different than 1 GiB
+
+Rename the board model name as 'B' since this is the one
+encoded in the 'board-rev' tag.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-v2: Remove spurious error check (Alex)
----
- hw/arm/bcm2835_peripherals.c         | 17 ++++++++++++++++-
- include/hw/arm/bcm2835_peripherals.h |  3 ++-
- 2 files changed, 18 insertions(+), 2 deletions(-)
+ hw/arm/raspi.c | 107 +++++++++++++++++++++++++++++++++++++++++++------
+ 1 file changed, 94 insertions(+), 13 deletions(-)
 
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index 70bf927a02..17207ae07e 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -58,6 +58,10 @@ static void bcm2835_peripherals_init(Object *obj)
-     /* Interrupt Controller */
-     sysbus_init_child_obj(obj, "ic", &s->ic, sizeof(s->ic), TYPE_BCM2835_IC);
+diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+index 569d85c11a..7ccb6ceb4f 100644
+--- a/hw/arm/raspi.c
++++ b/hw/arm/raspi.c
+@@ -13,6 +13,7 @@
  
-+    /* SYS Timer */
-+    sysbus_init_child_obj(obj, "systimer", &s->systmr, sizeof(s->systmr),
-+                          TYPE_BCM2835_SYSTIMER);
+ #include "qemu/osdep.h"
+ #include "qemu/units.h"
++#include "qemu/cutils.h"
+ #include "qapi/error.h"
+ #include "cpu.h"
+ #include "hw/arm/bcm2836.h"
+@@ -29,8 +30,67 @@
+ #define FIRMWARE_ADDR_3 0x80000 /* Pi 3 loads kernel.img here by default */
+ #define SPINTABLE_ADDR  0xd8 /* Pi 3 bootloader spintable */
+ 
+-/* Table of Linux board IDs for different Pi versions */
+-static const int raspi_boardid[] = {[1] = 0xc42, [2] = 0xc43, [3] = 0xc44};
++enum BoardIdManufacturer {
++    M_SONY_UK = 0,
++    M_EMBEST = 2,
++};
 +
-     /* UART0 */
-     sysbus_init_child_obj(obj, "uart0", &s->uart0, sizeof(s->uart0),
-                           TYPE_PL011);
-@@ -171,6 +175,18 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->ic), 0));
-     sysbus_pass_irq(SYS_BUS_DEVICE(s), SYS_BUS_DEVICE(&s->ic));
++enum BoardIdChip {
++    C_BCM2835 = 0,
++    C_BCM2836 = 1,
++    C_BCM2837 = 2,
++};
++
++enum BoardIdType {
++    T_2B = 0x04,
++    T_3B = 0x08,
++};
++
++enum BoardIdRevision {
++    R_1_0 = 0,
++    R_1_1 = 1,
++    R_1_2 = 2,
++    R_1_3 = 3,
++};
++
++static const char *processor_typename[] = {
++    [C_BCM2836] = TYPE_BCM2836,
++    [C_BCM2837] = TYPE_BCM2837,
++};
++
++typedef struct BoardInfo BoardInfo;
++
++struct BoardInfo {
++    /* Table of Linux board IDs for different Pi versions */
++    int board_id;
++    /*
++     * Board revision codes:
++     * www.raspberrypi.org/documentation/hardware/raspberrypi/revision-codes/
++     */
++    struct {
++        enum BoardIdType type;
++        enum BoardIdRevision revision;
++        enum BoardIdChip chip;
++        enum BoardIdManufacturer manufacturer;
++    } board_rev;
++    uint64_t ram_size_min;
++    uint64_t ram_size_max;
++};
++
++static const BoardInfo bcm283x_boards[] = {
++    [2] = {
++        .board_id = 0xc43,
++        .board_rev = { T_2B, R_1_1, C_BCM2836, M_EMBEST },
++        .ram_size_min = 1 * GiB,
++        .ram_size_max = 1 * GiB,
++    },
++    [3] = {
++        .board_id = 0xc44,
++        .board_rev = { T_3B, R_1_2, C_BCM2837, M_SONY_UK },
++        .ram_size_min = 1 * GiB,
++        .ram_size_max = 1 * GiB,
++    },
++};
  
-+    /* Sys Timer */
-+    object_property_set_bool(OBJECT(&s->systmr), true, "realized", &err);
-+    if (err) {
-+        error_propagate(errp, err);
-+        return;
+ typedef struct RasPiState {
+     BCM283XState soc;
+@@ -116,7 +176,7 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
+     static struct arm_boot_info binfo;
+     int r;
+ 
+-    binfo.board_id = raspi_boardid[version];
++    binfo.board_id = bcm283x_boards[version].board_id;
+     binfo.ram_size = ram_size;
+     binfo.nb_cpus = machine->smp.cpus;
+ 
+@@ -148,7 +208,7 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
+      * the normal Linux boot process
+      */
+     if (machine->firmware) {
+-        hwaddr firmware_addr = version == 3 ? FIRMWARE_ADDR_3 : FIRMWARE_ADDR_2;
++        hwaddr firmware_addr = version >= 3 ? FIRMWARE_ADDR_3 : FIRMWARE_ADDR_2;
+         /* load the firmware image (typically kernel.img) */
+         r = load_image_targphys(machine->firmware, firmware_addr,
+                                 ram_size - firmware_addr);
+@@ -172,16 +232,32 @@ static void raspi_init(MachineState *machine, int version)
+     BlockBackend *blk;
+     BusState *bus;
+     DeviceState *carddev;
++    char *size_str;
++    int board_rev;
++    const char *soc_type;
+ 
+-    if (machine->ram_size > 1 * GiB) {
++    if (machine->ram_size < bcm283x_boards[version].ram_size_min) {
++        size_str = size_to_str(bcm283x_boards[version].ram_size_min);
++        error_report("Requested ram size is too small for this machine: "
++                     "minimum is %s", size_str);
++        g_free(size_str);
++        exit(1);
 +    }
-+    memory_region_add_subregion(&s->peri_mr, ST_OFFSET,
-+                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->systmr), 0));
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->systmr), 0,
-+        qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_ARM_IRQ,
-+                               INTERRUPT_ARM_TIMER));
-+
-     /* UART0 */
-     qdev_prop_set_chr(DEVICE(&s->uart0), "chardev", serial_hd(0));
-     object_property_set_bool(OBJECT(&s->uart0), true, "realized", &err);
-@@ -352,7 +368,6 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
++    if (machine->ram_size > bcm283x_boards[version].ram_size_max) {
++        size_str = size_to_str(bcm283x_boards[version].ram_size_max);
+         error_report("Requested ram size is too large for this machine: "
+-                     "maximum is 1GB");
++                     "maximum is %s", size_str);
++        g_free(size_str);
++        exit(1);
++    }
++    if (!is_power_of_2(machine->ram_size)) {
++        error_report("Requested ram size is not a power of 2");
+         exit(1);
      }
  
-     create_unimp(s, &s->armtmr, "bcm2835-sp804", ARMCTRL_TIMER0_1_OFFSET, 0x40);
--    create_unimp(s, &s->systmr, "bcm2835-systimer", ST_OFFSET, 0x20);
-     create_unimp(s, &s->cprman, "bcm2835-cprman", CPRMAN_OFFSET, 0x1000);
-     create_unimp(s, &s->a2w, "bcm2835-a2w", A2W_OFFSET, 0x1000);
-     create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
-diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
-index be7ad9b499..7859281e11 100644
---- a/include/hw/arm/bcm2835_peripherals.h
-+++ b/include/hw/arm/bcm2835_peripherals.h
-@@ -24,6 +24,7 @@
- #include "hw/sd/sdhci.h"
- #include "hw/sd/bcm2835_sdhost.h"
- #include "hw/gpio/bcm2835_gpio.h"
-+#include "hw/timer/bcm2835_systmr.h"
- #include "hw/misc/unimp.h"
++    soc_type = processor_typename[bcm283x_boards[version].board_rev.chip];
+     object_initialize_child(OBJECT(machine), "soc", &s->soc, sizeof(s->soc),
+-                            version == 3 ? TYPE_BCM2837 : TYPE_BCM2836,
+-                            &error_abort, NULL);
++                            soc_type, &error_abort, NULL);
  
- #define TYPE_BCM2835_PERIPHERALS "bcm2835-peripherals"
-@@ -39,7 +40,7 @@ typedef struct BCM2835PeripheralState {
-     MemoryRegion ram_alias[4];
-     qemu_irq irq, fiq;
+     /* Allocate and map RAM */
+     memory_region_allocate_system_memory(&s->ram, OBJECT(machine), "ram",
+@@ -192,9 +268,14 @@ static void raspi_init(MachineState *machine, int version)
+                                    &error_abort);
+     object_property_set_int(OBJECT(&s->soc), machine->smp.cpus, "enabled-cpus",
+                             &error_abort);
+-    int board_rev = version == 3 ? 0xa02082 : 0xa21041;
+-    object_property_set_int(OBJECT(&s->soc), board_rev, "board-rev",
+-                            &error_abort);
++
++    board_rev = ((63 - clz64(machine->ram_size / MiB)) << 20)
++                | (bcm283x_boards[version].board_rev.manufacturer << 16)
++                | (bcm283x_boards[version].board_rev.chip << 12)
++                | (bcm283x_boards[version].board_rev.type << 4)
++                | (bcm283x_boards[version].board_rev.revision << 0);
++    object_property_set_int(OBJECT(&s->soc), board_rev,
++                            "board-rev", &error_abort);
+     object_property_set_bool(OBJECT(&s->soc), true, "realized", &error_abort);
  
--    UnimplementedDeviceState systmr;
-+    BCM2835SystemTimerState systmr;
-     UnimplementedDeviceState armtmr;
-     UnimplementedDeviceState cprman;
-     UnimplementedDeviceState a2w;
+     /* Create and plug in the SD cards */
+@@ -221,7 +302,7 @@ static void raspi2_init(MachineState *machine)
+ 
+ static void raspi2_machine_init(MachineClass *mc)
+ {
+-    mc->desc = "Raspberry Pi 2";
++    mc->desc = "Raspberry Pi 2B";
+     mc->init = raspi2_init;
+     mc->block_default_type = IF_SD;
+     mc->no_parallel = 1;
+@@ -243,7 +324,7 @@ static void raspi3_init(MachineState *machine)
+ 
+ static void raspi3_machine_init(MachineClass *mc)
+ {
+-    mc->desc = "Raspberry Pi 3";
++    mc->desc = "Raspberry Pi 3B";
+     mc->init = raspi3_init;
+     mc->block_default_type = IF_SD;
+     mc->no_parallel = 1;
 -- 
 2.21.0
 

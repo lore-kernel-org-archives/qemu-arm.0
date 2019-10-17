@@ -1,86 +1,64 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp7611391wrm;
-        Wed, 16 Oct 2019 13:16:42 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqwYnzB7bUegUzEUk1bWoUmTJ6WfzePHphgWFITeQacPqoqVJwkHI76RtoU/86Osc1n67HjE
-X-Received: by 2002:a37:8806:: with SMTP id k6mr42123645qkd.127.1571257002688;
-        Wed, 16 Oct 2019 13:16:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571257002; cv=none;
-        d=google.com; s=arc-20160816;
-        b=pelCQsiSWND6ImJAP2+MvDTj6SirS0U55vOE/4JUzi074WEDW8YZ2GRFGfDIFEDCBy
-         53RXsQHmhWLrsRkRnzGGK0bTHk/k5fBXpVqrZPcJDt/CFM62ODzrMQz/eBwja23JO4F3
-         TPwzP3LjpUyf9T0q0l5ig8vOEznpggOMv1IDh6izYcGkZ5uYq+qulqQ65ShYGEaBPV9K
-         RIMnhJenm4NYlX2yfPH+jLcOiRmuVYTmzoL11nlyqejbo77/30haazOOE0ARcNPn31t7
-         6tGZXS/OslzuourXn4JxZbprfUcyCosTnmq6BkjyOGvTcqUL6mjkMtziVDJ8sQoryEXY
-         pNKw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=mr12D7xLDu3n0MTAoRGERMNnTvPHBrOTpIZQ1ycFtJ0=;
-        b=F+vO2pg0Xx7m9pVsNiPwA5PtdGa8WkeZcVkS93COqoY5oYD5/5V/c1mpBb28TJFiMk
-         MXSbXuie59A8Yq8u8QrDswlkoW2RA51ugBCIHLmbMOy5L5wrx+kDwuqkBwTb57ANWX4s
-         uPoGRXmk3TCPxs3MGMkQl4cvzrzB6By57h0AovzFE+e+cJamVC+sfsg0Lgal9QDgwe5m
-         WWeAcJanHvHmr+o40MqhI9lwToP7UdCvlTKrLYgowxWIqy/ZqK9MFay3oOd/wzWII50S
-         KZozLKiF+LzyRIu82E7S0FsUA+oQhnxHk+BIEkufBCqRwpptj65pnxlK63Gl53w70P1j
-         gvcw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp466208wrm;
+        Wed, 16 Oct 2019 22:22:16 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzBvy12tokoJ9/Vmx1R4/E4oOEqK6J3BCXdCcxsdTHmGmOg2BxeRg7foCdh5U/Lh3WYhKYD
+X-Received: by 2002:ac8:5559:: with SMTP id o25mr1947503qtr.267.1571289736385;
+        Wed, 16 Oct 2019 22:22:16 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l10si2915459qkl.322.2019.10.16.13.16.42
+        by mx.google.com with ESMTPS id j8si1227169qkl.130.2019.10.16.22.22.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Oct 2019 13:16:42 -0700 (PDT)
+        Wed, 16 Oct 2019 22:22:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from localhost ([::1]:47804 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34786 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iKpir-0000nx-ME
-	for alex.bennee@linaro.org; Wed, 16 Oct 2019 16:16:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58696)
+	id 1iKyEp-000536-Pe
+	for alex.bennee@linaro.org; Thu, 17 Oct 2019 01:22:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37567)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <jae.hyun.yoo@linux.intel.com>) id 1iKoaZ-0003Bo-65
- for qemu-arm@nongnu.org; Wed, 16 Oct 2019 15:04:04 -0400
+ (envelope-from <no-reply@patchew.org>) id 1iKyEh-00050u-Co
+ for qemu-arm@nongnu.org; Thu, 17 Oct 2019 01:22:08 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <jae.hyun.yoo@linux.intel.com>) id 1iKoaY-00081K-9I
- for qemu-arm@nongnu.org; Wed, 16 Oct 2019 15:04:03 -0400
-Received: from mga02.intel.com ([134.134.136.20]:51555)
- by eggs.gnu.org with esmtps (TLS1.0:DHE_RSA_AES_256_CBC_SHA1:32)
- (Exim 4.71) (envelope-from <jae.hyun.yoo@linux.intel.com>)
- id 1iKoaV-0007n8-M4; Wed, 16 Oct 2019 15:03:59 -0400
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from orsmga007.jf.intel.com ([10.7.209.58])
- by orsmga101.jf.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384;
- 16 Oct 2019 12:03:58 -0700
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.67,304,1566889200"; d="scan'208";a="186243322"
-Received: from yoojae-mobl1.amr.corp.intel.com (HELO [10.7.153.143])
- ([10.7.153.143])
- by orsmga007.jf.intel.com with ESMTP; 16 Oct 2019 12:03:58 -0700
-Subject: Re: [PATCH 4/5] aspeed/i2c: Add support for DMA transfers
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20191016085035.12136-1-clg@kaod.org>
- <20191016085035.12136-5-clg@kaod.org>
-From: Jae Hyun Yoo <jae.hyun.yoo@linux.intel.com>
-Message-ID: <5ab94f78-9b67-8d70-9cca-0bdf8961aa2f@linux.intel.com>
-Date: Wed, 16 Oct 2019 12:03:58 -0700
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ (envelope-from <no-reply@patchew.org>) id 1iKyEg-0003jR-5h
+ for qemu-arm@nongnu.org; Thu, 17 Oct 2019 01:22:07 -0400
+Resent-Date: Thu, 17 Oct 2019 01:22:07 -0400
+Resent-Message-Id: <E1iKyEg-0003jR-5h@eggs.gnu.org>
+Received: from sender4-of-o56.zoho.com ([136.143.188.56]:21606)
+ by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+ (Exim 4.71) (envelope-from <no-reply@patchew.org>)
+ id 1iKyEd-0003hz-25; Thu, 17 Oct 2019 01:22:03 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1571289710; cv=none; d=zoho.com; s=zohoarc; 
+ b=iouCWKFn6K+1h3U+/Ykd4LBlpii1mALxVtyZwlJir2eOIL+fUk6DyvAgw7niAS9LcjdtOy9AQfd0g+TiX9+LdhzZhcOS43eWQ6wTV8PXBYln+FWYzVJ3Iimxp49GQkkYEvBsk2dJbFl2c8ZDzx9hwehQPE+5ZeSdsj8e4BBlJy8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zoho.com;
+ s=zohoarc; t=1571289710;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=rgh9h98f0l/z0NEN89kufBa3+3XXSwpM+1EwMe9Qzj4=; 
+ b=b8ntY1vtD3B/+/1sCLuIVRoi1q6cIIkGYvxa5jcyxnqPKyRt4XdHG1zY4T9nZ1wdYAPpgES5+aqzBiPhzWFgEC3LQ1XB2n2TOnniHGq+Bv4LSdURFxHK6d4T2/+Gon1AUP+FbJA9s36ZA3yjyRBARmOktwOpWfRLqkj9rkrZFU8=
+ARC-Authentication-Results: i=1; mx.zoho.com; dkim=pass  header.i=patchew.org;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1571289708411157.54615192034214;
+ Wed, 16 Oct 2019 22:21:48 -0700 (PDT)
+In-Reply-To: <20191017044232.27601-1-richard.henderson@linaro.org>
+Subject: Re: [PATCH 0/4] target/arm vector improvements
+Message-ID: <157128970723.19066.12876415670200560539@37313f22b938>
 MIME-Version: 1.0
-In-Reply-To: <20191016085035.12136-5-clg@kaod.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
- recognized.
-X-Received-From: 134.134.136.20
-X-Mailman-Approved-At: Wed, 16 Oct 2019 16:16:04 -0400
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: richard.henderson@linaro.org
+Date: Wed, 16 Oct 2019 22:21:48 -0700 (PDT)
+X-ZohoMailClient: External
+X-detected-operating-system: by eggs.gnu.org: GNU/Linux 2.2.x-3.x [generic]
+ [fuzzy]
+X-Received-From: 136.143.188.56
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -92,22 +70,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Eddie James <eajames@linux.vnet.ibm.com>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: B7KDjdySgTEd
+X-TUID: +sUCFDjd9a0S
 
-On 10/16/2019 1:50 AM, Cédric Le Goater wrote:
-> The I2C controller of the Aspeed AST2500 and AST2600 SoCs supports DMA
-> transfers to and from DRAM.
-> 
-> A pair of registers defines the buffer address and the length of the
-> DMA transfer. The address should be aligned on 4 bytes and the maximum
-> length should not exceed 4K. The receive or transmit DMA transfer can
-> then be initiated with specific bits in the Command/Status register of
-> the controller.
-> 
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDE5MTAxNzA0NDIzMi4yNzYw
+MS0xLXJpY2hhcmQuaGVuZGVyc29uQGxpbmFyby5vcmcvCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2Vl
+bXMgdG8gaGF2ZSBzb21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBm
+b3IKbW9yZSBpbmZvcm1hdGlvbjoKClN1YmplY3Q6IFtQQVRDSCAwLzRdIHRhcmdldC9hcm0gdmVj
+dG9yIGltcHJvdmVtZW50cwpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAxOTEwMTcwNDQyMzIu
+Mjc2MDEtMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnCgo9PT0gVEVTVCBTQ1JJUFQgQkVH
+SU4gPT09CiMhL2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0
+IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9j
+YWwgZGlmZi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhp
+c3RvZ3JhbQouL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVT
+VCBTQ1JJUFQgRU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3ODIxNjRkMWRlZjdmNDRi
+ZDg4ODcxMzM4NApTd2l0Y2hlZCB0byBhIG5ldyBicmFuY2ggJ3Rlc3QnCjNlYTY2NTMgdGFyZ2V0
+L2FybTogQ29udmVydCBQTVVMTC44IHRvIGd2ZWMKYjZjZjhlYSB0YXJnZXQvYXJtOiBDb252ZXJ0
+IFBNVUxMLjY0IHRvIGd2ZWMKNWVkZGFmMiB0YXJnZXQvYXJtOiBDb252ZXJ0IFBNVUwuOCB0byBn
+dmVjCmJkOGY5NjcgdGFyZ2V0L2FybTogVmVjdG9yaXplIFVTSEwgYW5kIFNTSEwKCj09PSBPVVRQ
+VVQgQkVHSU4gPT09CjEvNCBDaGVja2luZyBjb21taXQgYmQ4Zjk2NzU1MWI2ICh0YXJnZXQvYXJt
+OiBWZWN0b3JpemUgVVNITCBhbmQgU1NITCkKRVJST1I6IHRyYWlsaW5nIHN0YXRlbWVudHMgc2hv
+dWxkIGJlIG9uIG5leHQgbGluZQojMTYwOiBGSUxFOiB0YXJnZXQvYXJtL3RyYW5zbGF0ZS5jOjM1
+ODM6CisgICAgICAgICAgICBjYXNlIDI6IGdlbl91c2hsX2kzMih2YXIsIHZhciwgc2hpZnQpOyBi
+cmVhazsKCkVSUk9SOiB0cmFpbGluZyBzdGF0ZW1lbnRzIHNob3VsZCBiZSBvbiBuZXh0IGxpbmUK
+IzE2NzogRklMRTogdGFyZ2V0L2FybS90cmFuc2xhdGUuYzozNTg5OgorICAgICAgICAgICAgY2Fz
+ZSAyOiBnZW5fc3NobF9pMzIodmFyLCB2YXIsIHNoaWZ0KTsgYnJlYWs7Cgp0b3RhbDogMiBlcnJv
+cnMsIDAgd2FybmluZ3MsIDU3MSBsaW5lcyBjaGVja2VkCgpQYXRjaCAxLzQgaGFzIHN0eWxlIHBy
+b2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2Ug
+cG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBp
+biBNQUlOVEFJTkVSUy4KCjIvNCBDaGVja2luZyBjb21taXQgNWVkZGFmMjY2MWUzICh0YXJnZXQv
+YXJtOiBDb252ZXJ0IFBNVUwuOCB0byBndmVjKQozLzQgQ2hlY2tpbmcgY29tbWl0IGI2Y2Y4ZWEw
+OTVkYiAodGFyZ2V0L2FybTogQ29udmVydCBQTVVMTC42NCB0byBndmVjKQo0LzQgQ2hlY2tpbmcg
+Y29tbWl0IDNlYTY2NTMzNmU2YyAodGFyZ2V0L2FybTogQ29udmVydCBQTVVMTC44IHRvIGd2ZWMp
+Cj09PSBPVVRQVVQgRU5EID09PQoKVGVzdCBjb21tYW5kIGV4aXRlZCB3aXRoIGNvZGU6IDEKCgpU
+aGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMTkx
+MDE3MDQ0MjMyLjI3NjAxLTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZy90ZXN0aW5nLmNo
+ZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5
+IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVk
+YmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
 
-Tested-by: Jae Hyun Yoo <jae.hyun.yoo@linux.intel.com>

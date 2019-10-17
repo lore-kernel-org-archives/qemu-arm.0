@@ -1,186 +1,190 @@
-Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp1362302wrm;
-        Thu, 17 Oct 2019 12:08:39 -0700 (PDT)
-X-Google-Smtp-Source: APXvYqzzleQJlcXCc9LfPJekkfRKzr7O3ddLdZnFXZJ07SJC/RJNPyj9ZE4iMWON0G+2HTUqU/Ke
-X-Received: by 2002:ac8:5514:: with SMTP id j20mr427669qtq.241.1571339319285;
-        Thu, 17 Oct 2019 12:08:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571339319; cv=none;
+Received: by 2002:adf:e804:0:0:0:0:0 with SMTP id o4csp33629wrm;
+        Thu, 17 Oct 2019 15:08:37 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqyXYIJ361b5XY07597tyCnE8ysL2Q0Pk13ilqdASrxbJkijuhKK3YfEVHDkaOR9uC9jfXXh
+X-Received: by 2002:a37:644f:: with SMTP id y76mr5776634qkb.369.1571350117429;
+        Thu, 17 Oct 2019 15:08:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1571350117; cv=none;
         d=google.com; s=arc-20160816;
-        b=jc73XLfYVJm21AySTjUuyHUEsVH/gWKImTEiH6IR/lxiVTkPXfZxm59pkQ6wZiTsIM
-         sObw1WRQV9L6qC7Ez9aylVyXDAp7DabnO/90ImqKc81H73EErLB5HlTn9hqVYtriP7F8
-         F/VLY2vWl3tmrs34caSoWqPog+K9ZhoIpbcLzsulQi58UTiARN5lrBS1JDb/tLxYcSew
-         i/1LDSY9wE5iYZP5WRDXipbZ5mIZC1bHl+eZOf9mKelIjNHuxpxO9erxjlYU3VM2Ko80
-         6iulCYjZQAkG/u2qVR6eaB0U+cXY/48CRAOslKeCzaNzrINFxhU/d4r7+DHfqTh/Nq3v
-         s69A==
+        b=SZusumvDkwfdOt8lMe9WU/FirTRIVbYn8Ie0fQCzYc5ZE7lyFcjsQgkNrpd48Z4Q1r
+         32wLw+VRCmE6BDk4ecnWx7TFJcFSYC8nj32nAqbUz7CAmabaCeToFqEEOIneH1HJQg5q
+         DKely9g52d5uPN2eU3AKIe1SGiLpMUerXsPpqlx4Wl2z2xpHdAt7kjUxtEwsIFTgcLHq
+         jK00s/RkLL51T079PWXKIeeogr3woeTpt97ZYBOO1BTEX0heKJ4J4174qXup5XLQu2Ey
+         xEXVa9zpfAyeHLNDi1IjaePNGUsVBKkcI7RtVb9lDlkkZeSB32qBJMwUPQBIsX9XukRv
+         Wd8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=v4LDoKiCDj8UEOXKdxGeWLogI6gqriKirwE9ruJcfe0=;
-        b=oufYj527lliSFJiqkom39uf+idTGMbrJUCH8PvUr9zvhNR63DZTJgztY5zPEOPNeQF
-         bGEF1MvtDK2jVvECdKC6w4+xXyWFg4IANjUsOXqNfDZ4c9jFBwBCakyMjp5lnJdSBfLS
-         MJifbftRvU8CVJ6cQb2T3GW2D7NpPHCMAs8hv4RUhHs4YqHGKTCugE0Rj46AKKHqB27w
-         vD6QmltmWQzokF/2VDKwUI8old618WSb4VAL4hdV2eobHZGSApmMcp2cqqBplcMaT4eo
-         8eaLWdnRbJsN+VKrt5CX+v2Qa6xe7GG8Eh+Ha1HQcLAPb4WEVsTGjCiyXr8JQM0V2XMN
-         KMNQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=wW1gsJAKAqrWA84LZQqMug49UEkbIIAcdKY/aWru668=;
+        b=kBTleza5SDdatA4t/9UW0ieMikpQM4OcRhkLrK8+/aH4eq5KAt8j+G1RsG4kjPPOuS
+         lCKhO6/+oMQ+zqg6ZC5C1t8977r3CH7nAAl9JYAOka9fnsVf1faKTX7f+xjNbIvOs1fK
+         byK9d2BpZXAbCFsmR56xBvj1Z8zTy5JKTmZLOjCUDTE1PZh0rq5WEuFZApRHw+/dNfm2
+         8YLxCF4R+t4gVedOFo1QyYEAbdllURnWgIVelyhJb9GRO2WD7wk84Rf8K22sM1Bj+Vif
+         oVstKqJYpecIxtppjf6C0n1E9m8iN187CZjFXecopZJZUSavHuk8g0E1h7nwDQlGglQV
+         e4/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kkvgoGSh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=teLzqaBt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s94si2820377qtd.29.2019.10.17.12.08.39
+        by mx.google.com with ESMTPS id a130si3512404qkg.307.2019.10.17.15.08.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Oct 2019 12:08:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 17 Oct 2019 15:08:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kkvgoGSh;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57320 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=teLzqaBt;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:32830 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1iLB8Y-0004j5-EG
-	for alex.bennee@linaro.org; Thu, 17 Oct 2019 15:08:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35200)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1iLDwi-0005PN-CO
+	for alex.bennee@linaro.org; Thu, 17 Oct 2019 18:08:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34278)
  by lists.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <richard.henderson@linaro.org>) id 1iLAs6-0001Ei-4A
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 14:51:39 -0400
+ (envelope-from <alistair23@gmail.com>) id 1iLDuN-0003Oa-V4
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2019 18:06:13 -0400
 Received: from Debian-exim by eggs.gnu.org with spam-scanned (Exim 4.71)
- (envelope-from <richard.henderson@linaro.org>) id 1iLAs2-0000v9-Ba
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 14:51:37 -0400
-Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:43639)
+ (envelope-from <alistair23@gmail.com>) id 1iLDuM-00070m-L8
+ for qemu-devel@nongnu.org; Thu, 17 Oct 2019 18:06:11 -0400
+Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:44110)
  by eggs.gnu.org with esmtps (TLS1.0:RSA_AES_128_CBC_SHA1:16)
- (Exim 4.71) (envelope-from <richard.henderson@linaro.org>)
- id 1iLAru-0000tO-Pt
- for qemu-arm@nongnu.org; Thu, 17 Oct 2019 14:51:28 -0400
-Received: by mail-pl1-x644.google.com with SMTP id f21so1551995plj.10
- for <qemu-arm@nongnu.org>; Thu, 17 Oct 2019 11:51:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=v4LDoKiCDj8UEOXKdxGeWLogI6gqriKirwE9ruJcfe0=;
- b=kkvgoGShiDYFdnVG69AeK6rYe+drgSTZVX8QhFqP9Bp90hOTywYxJ6GoZxFnuFCd8u
- t9GHqpK6jtFaHAfOQHeG35azMcz5T5DIrTBXnnBreWyDuW02x4Lykz7Ke4/BoYahZt54
- iKBWSC+72w+uxFwV9H8vqmMqq/SS+wR2png+abaID3KD8AkMK8ZURPBu3oIZC6FTBw0T
- /rIv2avFBe8jDa7Wa59f/ucyIhsRBQDjh0Sdr9Bp/ojSQPyagxsj3Y97A7SEaOBvzmnz
- 2g8K7wpc1zqRwRK9zxVzA1dHbA9388EHYWORDBMZWNkL1+vXoJVuhaA6IvmrE2If3rZ9
- m+Jg==
+ (Exim 4.71) (envelope-from <alistair23@gmail.com>)
+ id 1iLDuM-00070W-Dz; Thu, 17 Oct 2019 18:06:10 -0400
+Received: by mail-lj1-x241.google.com with SMTP id m13so4117915ljj.11;
+ Thu, 17 Oct 2019 15:06:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=wW1gsJAKAqrWA84LZQqMug49UEkbIIAcdKY/aWru668=;
+ b=teLzqaBtxGX7fqTGy4CvuUbrwOrorhAnmYH54uJgfUqjQCi7sMwkmwrevuKs/IV50C
+ qOLkE8L1p0dFSO9yhMLWyTWn9WEh73L2zmaKiI9spy8QLi51sRVcp3E1pXf7WSpHXv8m
+ 2yPeXU9mIavJJKe+XZB0k41vWyHzNP7WAVIpOirwpBgLsafFEudDVGAgpQsMLL9M2FNf
+ PViM/yzJe7Rq0wC0wBVAR5IffDcAMSBAy1HRcyR2DinW30V/AjxxtZ36AlhB/ipbiaW6
+ pX5+dy+mMHIbygx/hYgzA/UwW2kZPoe62jGrjVfTXR3cH0z6M+IvJfdTIrwKPCdkB1aB
+ jT9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=v4LDoKiCDj8UEOXKdxGeWLogI6gqriKirwE9ruJcfe0=;
- b=p44PwZ3d2MdknLmP+BJ3C/PYhU9g3njG8Ve7l8XdghOJFu18Spcb4biZNyUb/rPWp0
- L1+vAlYOZVsXRIAitGjaib7GkbxHWP+m+eEk+AZZWdSsgN+tPRqe/K3RNL1PoCxgSrNw
- nfsgb+Yju0yO0L9NaHpOzjXDG/nC0VGdHSyRHjvH/aVTt71B7oxDLfAzJLWa5wpeXIlK
- AXXEbsL2huienAwuuG0v4SkR5a1iTk0M7k04VE6hAkvsaaKJZDibHRJJwJ7sAo94Or07
- 9FurkAqQCMcc5uVy0vjUKUByhdXx3FkyJT4G1l2HrZEeDA/kf4tr1crnROFOnwa9aRmj
- qfSg==
-X-Gm-Message-State: APjAAAX+hbmRmIHntpfWG0Tb1ZtqV44obE2OzSXDj4Hf88gdccb3eTew
- v3hChIqseyhFjuqK6BES/B+T9A==
-X-Received: by 2002:a17:902:820f:: with SMTP id
- x15mr5640663pln.288.1571338285472; 
- Thu, 17 Oct 2019 11:51:25 -0700 (PDT)
-Received: from localhost.localdomain (97-113-7-119.tukw.qwest.net.
- [97.113.7.119])
- by smtp.gmail.com with ESMTPSA id s97sm5009256pjc.4.2019.10.17.11.51.24
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Oct 2019 11:51:24 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v7 10/20] target/arm: Simplify set of PSTATE_SS in
- cpu_get_tb_cpu_state
-Date: Thu, 17 Oct 2019 11:51:00 -0700
-Message-Id: <20191017185110.539-11-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20191017185110.539-1-richard.henderson@linaro.org>
-References: <20191017185110.539-1-richard.henderson@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=wW1gsJAKAqrWA84LZQqMug49UEkbIIAcdKY/aWru668=;
+ b=Fd2EOKqWxO6EGAxXlvQ7a4YlO1nj9zrFU9NVaOSeJPKcTslA2W5YuLHSAYrD3w4e4n
+ 0d0tb1R6KUAnljmCKLxV4iI33a7RSBpit/PaXVX60MK8ON9fx3IrRUW86PgIg/NqruP+
+ HzMqRSXZZAibcbpjcF8vLN3Da5Lo9HnaXIENfDTpzpJvRceZrDeKOrG0bH01XZBONIdJ
+ IDCgSWM3FiINxZIZNJWN1sFkvOuZnim4lWiGFHkhEQ7exmFVUMAb5kBpxK0sNFecf7tb
+ 1TSrsjcijffuSR+ra/9ZSVbo57wmjTt9V4Lo3MtbUlBy3W2AhATsoeBFt9lTpjHAZ5eD
+ 76WQ==
+X-Gm-Message-State: APjAAAWVfZfI5HaNpiLKWA8OY7xuNl3+yjtwEy9sXsEMb6P3u3Z79Oew
+ GrsBjuWPS0WZfUgcpzwniRY7GfjL55SOgdJSMG7BAkwL
+X-Received: by 2002:a2e:9890:: with SMTP id b16mr4050577ljj.4.1571349969098;
+ Thu, 17 Oct 2019 15:06:09 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+References: <20191017132122.4402-1-peter.maydell@linaro.org>
+ <20191017132122.4402-3-peter.maydell@linaro.org>
+In-Reply-To: <20191017132122.4402-3-peter.maydell@linaro.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Thu, 17 Oct 2019 15:00:59 -0700
+Message-ID: <CAKmqyKMVf_htgF5MpKVV5gsD0iKasaPdKOQmgWTRL9i4JsYDfg@mail.gmail.com>
+Subject: Re: [PATCH 2/3] hw/timer/xilinx_timer.c: Switch to transaction-based
+ ptimer API
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
 X-detected-operating-system: by eggs.gnu.org: Genre and OS details not
  recognized.
-X-Received-From: 2607:f8b0:4864:20::644
-X-BeenThere: qemu-arm@nongnu.org
+X-Received-From: 2a00:1450:4864:20::241
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YZLo3Tx6mqBt
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, "open list:New World" <qemu-ppc@nongnu.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: E8i8d7ewuio7
 
-Hoist the variable load for PSTATE into the existing test vs is_a64.
+On Thu, Oct 17, 2019 at 6:50 AM Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> Switch the xilinx_timer code away from bottom-half based ptimers to
+> the new transaction-based ptimer API.  This just requires adding
+> begin/commit calls around the various places that modify the ptimer
+> state, and using the new ptimer_init() function to create the timer.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/helper.c | 20 ++++++++------------
- 1 file changed, 8 insertions(+), 12 deletions(-)
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index e2a62cf19a..398e5f5d6d 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -11197,7 +11197,7 @@ void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-     ARMMMUIdx mmu_idx = arm_mmu_idx(env);
-     int current_el = arm_current_el(env);
-     int fp_el = fp_exception_el(env, current_el);
--    uint32_t flags;
-+    uint32_t flags, pstate_for_ss;
- 
-     if (is_a64(env)) {
-         *pc = env->pc;
-@@ -11205,6 +11205,7 @@ void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-         if (cpu_isar_feature(aa64_bti, env_archcpu(env))) {
-             flags = FIELD_DP32(flags, TBFLAG_A64, BTYPE, env->btype);
-         }
-+        pstate_for_ss = env->pstate;
-     } else {
-         *pc = env->regs[15];
- 
-@@ -11257,9 +11258,11 @@ void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-             || arm_el_is_aa64(env, 1) || arm_feature(env, ARM_FEATURE_M)) {
-             flags = FIELD_DP32(flags, TBFLAG_A32, VFPEN, 1);
-         }
-+        pstate_for_ss = env->uncached_cpsr;
-     }
- 
--    /* The SS_ACTIVE and PSTATE_SS bits correspond to the state machine
-+    /*
-+     * The SS_ACTIVE and PSTATE_SS bits correspond to the state machine
-      * states defined in the ARM ARM for software singlestep:
-      *  SS_ACTIVE   PSTATE.SS   State
-      *     0            x       Inactive (the TB flag for SS is always 0)
-@@ -11267,16 +11270,9 @@ void cpu_get_tb_cpu_state(CPUARMState *env, target_ulong *pc,
-      *     1            1       Active-not-pending
-      * SS_ACTIVE is set in hflags; PSTATE_SS is computed every TB.
-      */
--    if (FIELD_EX32(flags, TBFLAG_ANY, SS_ACTIVE)) {
--        if (is_a64(env)) {
--            if (env->pstate & PSTATE_SS) {
--                flags = FIELD_DP32(flags, TBFLAG_ANY, PSTATE_SS, 1);
--            }
--        } else {
--            if (env->uncached_cpsr & PSTATE_SS) {
--                flags = FIELD_DP32(flags, TBFLAG_ANY, PSTATE_SS, 1);
--            }
--        }
-+    if (FIELD_EX32(flags, TBFLAG_ANY, SS_ACTIVE) &&
-+        (pstate_for_ss & PSTATE_SS)) {
-+        flags = FIELD_DP32(flags, TBFLAG_ANY, PSTATE_SS, 1);
-     }
- 
-     *pflags = flags;
--- 
-2.17.1
+Alistair
 
+> ---
+>  hw/timer/xilinx_timer.c | 13 ++++++++-----
+>  1 file changed, 8 insertions(+), 5 deletions(-)
+>
+> diff --git a/hw/timer/xilinx_timer.c b/hw/timer/xilinx_timer.c
+> index 92dbff304d9..7191ea54f58 100644
+> --- a/hw/timer/xilinx_timer.c
+> +++ b/hw/timer/xilinx_timer.c
+> @@ -28,7 +28,6 @@
+>  #include "hw/ptimer.h"
+>  #include "hw/qdev-properties.h"
+>  #include "qemu/log.h"
+> -#include "qemu/main-loop.h"
+>  #include "qemu/module.h"
+>
+>  #define D(x)
+> @@ -52,7 +51,6 @@
+>
+>  struct xlx_timer
+>  {
+> -    QEMUBH *bh;
+>      ptimer_state *ptimer;
+>      void *parent;
+>      int nr; /* for debug.  */
+> @@ -134,6 +132,7 @@ timer_read(void *opaque, hwaddr addr, unsigned int size)
+>      return r;
+>  }
+>
+> +/* Must be called inside ptimer transaction block */
+>  static void timer_enable(struct xlx_timer *xt)
+>  {
+>      uint64_t count;
+> @@ -174,8 +173,11 @@ timer_write(void *opaque, hwaddr addr,
+>                  value &= ~TCSR_TINT;
+>
+>              xt->regs[addr] = value & 0x7ff;
+> -            if (value & TCSR_ENT)
+> +            if (value & TCSR_ENT) {
+> +                ptimer_transaction_begin(xt->ptimer);
+>                  timer_enable(xt);
+> +                ptimer_transaction_commit(xt->ptimer);
+> +            }
+>              break;
+>
+>          default:
+> @@ -220,9 +222,10 @@ static void xilinx_timer_realize(DeviceState *dev, Error **errp)
+>
+>          xt->parent = t;
+>          xt->nr = i;
+> -        xt->bh = qemu_bh_new(timer_hit, xt);
+> -        xt->ptimer = ptimer_init_with_bh(xt->bh, PTIMER_POLICY_DEFAULT);
+> +        xt->ptimer = ptimer_init(timer_hit, xt, PTIMER_POLICY_DEFAULT);
+> +        ptimer_transaction_begin(xt->ptimer);
+>          ptimer_set_freq(xt->ptimer, t->freq_hz);
+> +        ptimer_transaction_commit(xt->ptimer);
+>      }
+>
+>      memory_region_init_io(&t->mmio, OBJECT(t), &timer_ops, t, "xlnx.xps-timer",
+> --
+> 2.20.1
+>
+>
